@@ -32,6 +32,7 @@ requires:
     - git
     - gobject-introspection
     - gvfs
+    - gtk-doc-tools
     - hicolor-icon-theme
     - itstool
     - libatk-bridge2.0-dev
