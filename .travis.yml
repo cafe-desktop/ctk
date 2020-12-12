@@ -1,0 +1,47 @@
+dist: focal
+language: shell
+os: linux
+services:
+  - docker
+addons:
+  apt:
+    packages:
+      - python3-pip
+      - python3-setuptools
+
+before_install:
+  - curl -Ls -o docker-build https://github.com/cafe-desktop/cafe-dev-scripts/raw/master/travis/docker-build
+  - chmod +x docker-build
+
+install:
+  - pip3 install PyGithub
+  - ./docker-build --name ${DISTRO} --config .build.yml --install
+
+script:
+  - ./docker-build --name ${DISTRO} --verbose --config .build.yml --build scripts
+
+notifications:
+  irc:
+    if: (tag OR branch = "1.24") AND
+        repo = cafe-desktop/ctk
+    channels:
+      - "irc.freenode.org#cafe-dev"
+    template:
+      - "[%{repository_name}] %{author}: %{commit_subject}"
+      - "[%{branch}] %{commit} %{message} %{build_url}"
+    on_success: never
+    on_failure: always
+
+deploy:
+  - provider: script
+    edge: true
+    script: ./docker-build --verbose --config .build.yml --release github
+    on:
+      tags: true
+      condition: "${TRAVIS_TAG} =~ ^v.*$ && ${DISTRO} =~ ^fedora.*$"
+
+env:
+  - DISTRO="archlinux"
+  - DISTRO="debian"
+  - DISTRO="fedora"
+  - DISTRO="ubuntu"

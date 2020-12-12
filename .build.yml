@@ -1,0 +1,145 @@
+##########################################################
+# THE FOLLOWING LINES IS USED BY docker-build
+##########################################################
+requires:
+  archlinux:
+    # Useful URL: https://git.archlinux.org/svntogit/community.git/tree/grapa
+    - autoconf-archive
+    - automake
+    - caja
+    - clang
+    - file
+    - gcc
+    - gettext
+    - git
+    - gtk3
+    - libtool
+    - json-glib
+    - make
+    - pkgconf
+    - which
+    - yelp-tools
+
+  debian:
+    # Useful URL: https://github.com/cafe-desktop/debian-packages
+    # Useful URL: https://salsa.debian.org/debian-cafe-team/grapa
+    - adwaita-icon-theme
+    - ccache
+    - dconf-gsettings-backend
+    - g++
+    - gcc
+    - gettext
+    - git
+    - gobject-introspection
+    - gvfs
+    - hicolor-icon-theme
+    - itstool
+    - libatk-bridge2.0-dev
+    - libatk1.0-dev
+    - libc6-dev
+    - libcairo2-dev
+    - libcairo-gobject2
+    - libcolord-dev
+    - libcups2-dev
+    - libegl1-mesa-dev
+    - libepoxy-dev
+    - libfontconfig1-dev
+    - libfreetype6-dev
+    - libgdk-pixbuf2.0-dev
+    - libgirepository1.0-dev
+    - libglib2.0-dev
+    - libharfbuzz-dev
+    - libjson-glib-dev
+    - libpango1.0-dev
+    - librest-dev
+    - librsvg2-common
+    - libsoup2.4-dev
+    - libwayland-dev
+    - libx11-dev
+    - libxcomposite-dev
+    - libxcursor-dev
+    - libxdamage-dev
+    - libxext-dev
+    - libxfixes-dev
+    - libxi-dev
+    - libxinerama-dev
+    - libxkbcommon-dev
+    - libxkbcommon-x11-dev
+    - libxml2-dev
+    - libxrandr-dev
+    - locales
+    - ninja-build
+    - pkg-config
+    - python3
+    - python3-pip
+    - python3-setuptools
+    - python3-wheel
+    - shared-mime-info
+    - wayland-protocols
+    - xauth
+    - xvfb
+
+  fedora:
+    # Useful URL: https://src.fedoraproject.org/cgit/rpms/grapa.git
+    - autoconf-archive
+    - caja-devel
+    - clang
+    - clang-analyzer
+    - desktop-file-utils
+    - file-devel
+    - gcc
+    - gettext-devel
+    - git
+    - gtk3-devel
+    - json-glib-devel
+    - libSM-devel
+    - libtool
+    - make
+    - redhat-rpm-config
+    - yelp-tools
+
+  ubuntu:
+    - autoconf-archive
+    - autopoint
+    - clang
+    - clang-tools
+    - gcc
+    - gettext
+    - git
+    - libcaja-extension-dev
+    - libglib2.0-dev
+    - libgtk-3-dev
+    - libjson-glib-dev
+    - libmagic-dev
+    - libtool
+    - make
+    - yelp-tools
+
+build_scripts:
+  - NOCONFIGURE=1 ./autogen.sh
+  - scan-build $CHECKERS ./configure --enable-compile-warnings=maximum
+  - if [ $CPU_COUNT -gt 1 ]; then
+  -     scan-build $CHECKERS --keep-cc -o html-report make -j $(( $CPU_COUNT + 1 ))
+  - else
+  -     scan-build $CHECKERS --keep-cc -o html-report make
+  - fi
+  - if [ ${DISTRO_NAME} == "debian" ];then
+  -     cppcheck --enable=warning,style,performance,portability,information,missingInclude .
+  - fi
+
+after_scripts:
+  - make distcheck
+
+releases:
+  draft: false
+  prerelease: false
+  checksum: true
+  file_glob: true
+  files: grapa-*.tar.xz
+  github_release:
+    tags: true
+    overwrite: true
+    base_version: 1.20.0
+    notify_servers:
+      - https://release.cafe-desktop.org/release
+
