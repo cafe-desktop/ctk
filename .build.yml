@@ -23,6 +23,7 @@ requires:
   debian:
     # Useful URL: https://github.com/cafe-desktop/debian-packages
     # Useful URL: https://salsa.debian.org/debian-cafe-team/grapa
+    - autoconf
     - adwaita-icon-theme
     - ccache
     - dconf-gsettings-backend
