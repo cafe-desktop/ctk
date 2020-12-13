@@ -781,6 +781,7 @@ AM_PATH_GLIB_2_0(glib_required_version, :,
 *** GLIB is always available from ftp://ftp.gtk.org/pub/gtk/.]),
   gobject gmodule-no-export)
 
+m4_pattern_allow(PKG_PROG_PKG_CONFIG_FOR_BUILD)
 PKG_PROG_PKG_CONFIG_FOR_BUILD
 GLIB_CFLAGS_FOR_BUILD=`$PKG_CONFIG_FOR_BUILD --cflags glib-2.0 gobject-2.0 gmodule-no-export-2.0`
 GLIB_LIBS_FOR_BUILD=`$PKG_CONFIG_FOR_BUILD --libs glib-2.0 gobject-2.0 gmodule-no-export-2.0`
