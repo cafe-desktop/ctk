@@ -24,6 +24,7 @@ requires:
     # Useful URL: https://github.com/cafe-desktop/debian-packages
     # Useful URL: https://salsa.debian.org/debian-cafe-team/grapa
     - autoconf
+    - automake
     - autopoint
     - autotools-dev
     - adwaita-icon-theme
