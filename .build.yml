@@ -12,6 +12,7 @@ requires:
     - ccache
     - clang
     - clang-tools
+    - cppcheck
     - dconf-gsettings-backend
     - g++
     - gcc
