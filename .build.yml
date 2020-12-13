@@ -25,6 +25,7 @@ requires:
     # Useful URL: https://salsa.debian.org/debian-cafe-team/grapa
     - autoconf
     - autopoint
+    - autotools-dev
     - adwaita-icon-theme
     - ccache
     - dconf-gsettings-backend
@@ -33,6 +34,7 @@ requires:
     - gettext
     - git
     - gobject-introspection
+    - gettext
     - gvfs
     - gtk-doc-tools
     - hicolor-icon-theme
