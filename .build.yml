@@ -14,6 +14,7 @@ requires:
     - clang-tools
     - cppcheck
     - dconf-gsettings-backend
+    - dh-autoreconf
     - g++
     - gcc
     - gettext
