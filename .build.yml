@@ -45,6 +45,7 @@ requires:
     - librsvg2-common
     - libsoup2.4-dev
     - libtool
+    - libtool-bin
     - libwayland-dev
     - libx11-dev
     - libxcomposite-dev
