@@ -16,7 +16,12 @@ requires:
     - cppcheck
     - dconf-gsettings-backend
     - dh-autoreconf
+    - docbook
+    - docbook-dsssl
+    - docbook-to-man
+    - docbook-utils
     - docbook-xml
+    - docbook-xsl
     - g++
     - gcc
     - gettext
