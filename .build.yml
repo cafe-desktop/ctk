@@ -74,11 +74,8 @@ requires:
     - xvfb
 
 build_scripts:
-  - whereis pkgconfig
-  - export ACLOCAL_PATH=/usr/share/aclocal
-  - export PKG_CONFIG_PATH=/usr/share/pkgconfig
-  - ./autogen.sh
-  - scan-build $CHECKERS ./configure
+  - NOCONFIGURE=1 ./autogen.sh
+  - scan-build $CHECKERS ./configure --enable-man
   - if [ $CPU_COUNT -gt 1 ]; then
   -     scan-build $CHECKERS --keep-cc -o html-report make -j $(( $CPU_COUNT + 1 ))
   - else
@@ -89,6 +86,7 @@ build_scripts:
   - fi
 
 after_scripts:
+  - make check
   - make distcheck
 
 releases:
