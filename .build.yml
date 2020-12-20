@@ -76,6 +76,7 @@ requires:
 build_scripts:
   - whereis pkgconfig
   - export ACLOCAL_PATH=/usr/share/aclocal
+  - export PKG_CONFIG_PATH=/usr/share/pkgconfig
   - ./autogen.sh
   - scan-build $CHECKERS ./configure
   - if [ $CPU_COUNT -gt 1 ]; then
