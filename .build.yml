@@ -92,7 +92,8 @@ build_scripts:
   - fi
 
 after_scripts:
-  - make install
+  - make check
+  - make distcheck
 
 releases:
   draft: false
