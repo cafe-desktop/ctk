@@ -260,6 +260,20 @@ save_image (cairo_surface_t *surface,
   g_free (filename);
 }
 
+static gboolean
+known_fail(const char *test_name)
+{
+  char *filename = get_test_file (test_name, ".ui.known_fail", TRUE);
+
+  if (filename)
+    {
+      g_free (filename);
+      return TRUE;
+    }
+
+  return FALSE;
+}
+
 static void
 test_ui_file (GFile *file)
 {
@@ -292,7 +306,13 @@ test_ui_file (GFile *file)
   if (diff_image)
     {
       save_image (diff_image, ui_file, ".diff.png");
-      g_test_fail ();
+      if (known_fail(ui_file))
+        {
+          printf("KNOWN FAIL: ");
+          g_test_message ("KNOWN FAIL: %s", ui_file);
+        }
+      else
+        g_test_fail ();
     }
 
   remove_extra_css (provider);
