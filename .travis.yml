@@ -42,4 +42,4 @@ deploy:
       condition: "${TRAVIS_TAG} =~ ^v.*$ && ${DISTRO} =~ ^fedora.*$"
 
 env:
-  - DISTRO="debian:sid"
+  - DISTRO="debian"
