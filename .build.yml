@@ -80,6 +80,9 @@ requires:
     - xvfb
 
 build_scripts:
+  - chmod 655 /etc/xml
+  - chmod 644 /etc/xml/docbook
+  - chmod 644 /etc/xml/catalog
   - NOCONFIGURE=1 ./autogen.sh
   - scan-build $CHECKERS ./configure --enable-broadway-backend --enable-x11-backend --enable-gtk-doc --enable-man --enable-shared --enable-introspection --enable-cloudprint --disable-static --enable-installed-tests
   - if [ $CPU_COUNT -gt 1 ]; then
