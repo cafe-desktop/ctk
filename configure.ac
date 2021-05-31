@@ -1730,7 +1730,7 @@ fi
 AM_CONDITIONAL(HAVE_COLORD, test "x$have_colord" = "xyes")
 
 ##################################################
-# Checks for ctk-doc and docbook-tools
+# Checks for gtk-doc and docbook-tools
 ##################################################
 
 GTK_DOC_CHECK([1.20],[--flavour no-tmpl])

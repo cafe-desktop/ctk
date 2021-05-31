@@ -358,8 +358,8 @@ How to compile GTK+ itself
           </group>
           <sbr/>
           <group>
-            <arg choice="plain">--disable-ctk-doc</arg>
-            <arg choice="plain">--enable-ctk-doc</arg>
+            <arg choice="plain">--disable-gtk-doc</arg>
+            <arg choice="plain">--enable-gtk-doc</arg>
           </group>
           <sbr/>
           <group>
@@ -540,19 +540,19 @@ How to compile GTK+ itself
       </formalpara>
 
       <formalpara>
-        <title><systemitem>--disable-ctk-doc</systemitem> and
-          <systemitem>--enable-ctk-doc</systemitem></title>
+        <title><systemitem>--disable-gtk-doc</systemitem> and
+          <systemitem>--enable-gtk-doc</systemitem></title>
 
         <para>
-          The <application>ctk-doc</application> package is
+          The <application>gtk-doc</application> package is
           used to generate the reference documentation included
-          with GTK+. By default support for <application>ctk-doc</application>
+          with GTK+. By default support for <application>gtk-doc</application>
           is disabled because it requires various extra dependencies
           to be installed. If you have
-          <application>ctk-doc</application> installed and
+          <application>gtk-doc</application> installed and
           are modifying GTK+, you may want to enable
-          <application>ctk-doc</application> support by passing
-          in <systemitem>--enable-ctk-doc</systemitem>. If not
+          <application>gtk-doc</application> support by passing
+          in <systemitem>--enable-gtk-doc</systemitem>. If not
           enabled, pre-generated HTML files distributed with GTK+
           will be installed.
         </para>
@@ -642,5 +642,5 @@ How to compile GTK+ itself
 </refentry>
 
 <!-- Local Variables: -->
-<!-- sgml-parent-document: ("ctk-docs.sgml" "chapter" "refentry")  -->
+<!-- sgml-parent-document: ("gtk-docs.sgml" "chapter" "refentry")  -->
 <!-- End: -->

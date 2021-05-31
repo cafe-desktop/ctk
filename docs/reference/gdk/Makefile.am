@@ -190,12 +190,12 @@ HTML_IMAGES = 				\
 if ENABLE_DOC_CROSS_REFERENCES
 # Extra options to supply to gtkdoc-fixref
 FIXXREF_OPTIONS= \
-	--extra-dir=$(GLIB_PREFIX)/share/ctk-doc/html/gobject \
-	--extra-dir=$(GLIB_PREFIX)/share/ctk-doc/html/glib \
-	--extra-dir=$(CAIRO_PREFIX)/share/ctk-doc/html/cairo
+	--extra-dir=$(GLIB_PREFIX)/share/gtk-doc/html/gobject \
+	--extra-dir=$(GLIB_PREFIX)/share/gtk-doc/html/glib \
+	--extra-dir=$(CAIRO_PREFIX)/share/gtk-doc/html/cairo
 endif
 
-include $(top_srcdir)/ctk-doc.make
+include $(top_srcdir)/gtk-doc.make
 
 # Other files to distribute
 EXTRA_DIST += \

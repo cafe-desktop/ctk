@@ -122,9 +122,9 @@ all on topic.
 </varlistentry>
 
 <varlistentry>
-<term><ulink url="mailto:ctk-doc-list@gnome.org">ctk-doc-list@gnome.org</ulink></term>
+<term><ulink url="mailto:gtk-doc-list@gnome.org">gtk-doc-list@gnome.org</ulink></term>
 <listitem><para>
-ctk-doc-list is for discussion of the <application>ctk-doc</application> 
+gtk-doc-list is for discussion of the <application>gtk-doc</application> 
 documentation system (used to document GTK+), and for work on the GTK+ 
 documentation.
 </para></listitem>

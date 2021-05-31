@@ -29,7 +29,7 @@ any license fees or royalties.</description>
   <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/ctk-list" />
   <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/ctk-app-devel-list" />
   <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/ctk-devel-list" />
-  <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/ctk-doc-list" />
+  <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/gtk-doc-list" />
   <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/ctk-i18n-list" />
   <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/ctk-perl-list" />
   <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/language-bindings" />

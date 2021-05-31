@@ -19,7 +19,7 @@
         "/include",
         "/lib/pkgconfig", "/share/pkgconfig",
         "/share/aclocal",
-        "/man", "/share/man", "/share/ctk-doc",
+        "/man", "/share/man", "/share/gtk-doc",
         "*.la", ".a",
         "/lib/girepository-1.0",
         "/share/gir-1.0",

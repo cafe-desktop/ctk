@@ -22,7 +22,7 @@ RUN dnf -y install \
     glib2-devel \
     gobject-introspection-devel \
     graphene-devel \
-    ctk-doc \
+    gtk-doc \
     hicolor-icon-theme \
     iso-codes \
     itstool \

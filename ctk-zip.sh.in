@@ -58,7 +58,7 @@ lib/ctk-@CTK_API_VERSION@/include
 lib/pkgconfig
 share/aclocal
 share/ctk-@CTK_API_VERSION@
-share/ctk-doc
+share/gtk-doc
 EOF
 
 zip -r $DEVZIP share/doc/ctk+-dev-@CTK_VERSION@

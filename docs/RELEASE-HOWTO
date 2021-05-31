@@ -4,10 +4,10 @@ How to do a GTK+ release?
 Make sure you have suitable versions of autoconf and libtool.
 Also make sure you have the following packages installed with all their
 dependencies:
-* ctk-doc
+* gtk-doc
 * docbook-utils
 Without those packages make distcheck will *not* pass.
-Make sure that ctk-doc is the latest released version.
+Make sure that gtk-doc is the latest released version.
 
 
  0) Go back to a pristine working directory. With git, this works:
@@ -15,7 +15,7 @@ Make sure that ctk-doc is the latest released version.
     git clean -f -x
 
  1) autogen and build it, make sure to enable docs by specifying
-    --enable-ctk-doc --enable-man
+    --enable-gtk-doc --enable-man
 
  2) Update NEWS based on the content of git log; follow the format
     of prior entries. This includes finding noteworthy new features,

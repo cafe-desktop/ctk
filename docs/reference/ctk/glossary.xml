@@ -368,6 +368,6 @@
 <!--
 Local variables:
 mode: sgml
-sgml-parent-document: ("ctk-docs.sgml" "book" "glossary")
+sgml-parent-document: ("gtk-docs.sgml" "book" "glossary")
 End:
 -->

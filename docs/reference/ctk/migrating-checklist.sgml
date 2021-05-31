@@ -305,6 +305,6 @@ my_widget_key_press_event_handler (GtkWidget *widget, GdkEventKey *event)
 <!--
 Local variables:
 mode: sgml
-sgml-parent-document: ("ctk-docs.sgml" "book" "part" "chapter")
+sgml-parent-document: ("gtk-docs.sgml" "book" "part" "chapter")
 End:
 -->
