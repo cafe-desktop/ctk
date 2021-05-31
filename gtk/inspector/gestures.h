@@ -20,7 +20,7 @@
 
 #include <gtk/gtkbox.h>
 
-#define GTK_TYPE_INSPECTOR_GESTURES            (gtk_inspector_gestures_get_type())
+#define GTK_TYPE_INSPECTOR_GESTURES            (ctk_inspector_gestures_get_type())
 #define GTK_INSPECTOR_GESTURES(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_INSPECTOR_GESTURES, GtkInspectorGestures))
 #define GTK_INSPECTOR_GESTURES_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GTK_TYPE_INSPECTOR_GESTURES, GtkInspectorGesturesClass))
 #define GTK_INSPECTOR_IS_GESTURES(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), GTK_TYPE_INSPECTOR_GESTURES))
@@ -43,8 +43,8 @@ typedef struct _GtkInspectorGesturesClass
 
 G_BEGIN_DECLS
 
-GType      gtk_inspector_gestures_get_type   (void);
-void       gtk_inspector_gestures_set_object (GtkInspectorGestures *sl,
+GType      ctk_inspector_gestures_get_type   (void);
+void       ctk_inspector_gestures_set_object (GtkInspectorGestures *sl,
                                              GObject             *object);
 
 G_END_DECLS

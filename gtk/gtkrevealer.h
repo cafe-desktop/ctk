@@ -27,7 +27,7 @@
 G_BEGIN_DECLS
 
 
-#define GTK_TYPE_REVEALER (gtk_revealer_get_type ())
+#define GTK_TYPE_REVEALER (ctk_revealer_get_type ())
 #define GTK_REVEALER(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_REVEALER, GtkRevealer))
 #define GTK_REVEALER_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_REVEALER, GtkRevealerClass))
 #define GTK_IS_REVEALER(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_REVEALER))
@@ -59,26 +59,26 @@ struct _GtkRevealerClass {
 };
 
 GDK_AVAILABLE_IN_3_10
-GType                      gtk_revealer_get_type                (void) G_GNUC_CONST;
+GType                      ctk_revealer_get_type                (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_3_10
-GtkWidget*                 gtk_revealer_new                     (void);
+GtkWidget*                 ctk_revealer_new                     (void);
 GDK_AVAILABLE_IN_3_10
-gboolean                   gtk_revealer_get_reveal_child        (GtkRevealer               *revealer);
+gboolean                   ctk_revealer_get_reveal_child        (GtkRevealer               *revealer);
 GDK_AVAILABLE_IN_3_10
-void                       gtk_revealer_set_reveal_child        (GtkRevealer               *revealer,
+void                       ctk_revealer_set_reveal_child        (GtkRevealer               *revealer,
                                                                  gboolean                   reveal_child);
 GDK_AVAILABLE_IN_3_10
-gboolean                   gtk_revealer_get_child_revealed      (GtkRevealer               *revealer);
+gboolean                   ctk_revealer_get_child_revealed      (GtkRevealer               *revealer);
 GDK_AVAILABLE_IN_3_10
-guint                      gtk_revealer_get_transition_duration (GtkRevealer               *revealer);
+guint                      ctk_revealer_get_transition_duration (GtkRevealer               *revealer);
 GDK_AVAILABLE_IN_3_10
-void                       gtk_revealer_set_transition_duration (GtkRevealer               *revealer,
+void                       ctk_revealer_set_transition_duration (GtkRevealer               *revealer,
                                                                  guint                      duration);
 GDK_AVAILABLE_IN_3_10
-void                       gtk_revealer_set_transition_type     (GtkRevealer               *revealer,
+void                       ctk_revealer_set_transition_type     (GtkRevealer               *revealer,
                                                                  GtkRevealerTransitionType  transition);
 GDK_AVAILABLE_IN_3_10
-GtkRevealerTransitionType  gtk_revealer_get_transition_type     (GtkRevealer               *revealer);
+GtkRevealerTransitionType  ctk_revealer_get_transition_type     (GtkRevealer               *revealer);
 
 
 G_END_DECLS

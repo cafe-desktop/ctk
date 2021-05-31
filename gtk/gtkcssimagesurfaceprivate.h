@@ -24,7 +24,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_IMAGE_SURFACE           (_gtk_css_image_surface_get_type ())
+#define GTK_TYPE_CSS_IMAGE_SURFACE           (_ctk_css_image_surface_get_type ())
 #define GTK_CSS_IMAGE_SURFACE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_IMAGE_SURFACE, GtkCssImageSurface))
 #define GTK_CSS_IMAGE_SURFACE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_IMAGE_SURFACE, GtkCssImageSurfaceClass))
 #define GTK_IS_CSS_IMAGE_SURFACE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_IMAGE_SURFACE))
@@ -49,10 +49,10 @@ struct _GtkCssImageSurfaceClass
   GtkCssImageClass parent_class;
 };
 
-GType          _gtk_css_image_surface_get_type             (void) G_GNUC_CONST;
+GType          _ctk_css_image_surface_get_type             (void) G_GNUC_CONST;
 
-GtkCssImage *  _gtk_css_image_surface_new                  (cairo_surface_t *surface);
-GtkCssImage *  _gtk_css_image_surface_new_for_pixbuf       (GdkPixbuf       *pixbuf);
+GtkCssImage *  _ctk_css_image_surface_new                  (cairo_surface_t *surface);
+GtkCssImage *  _ctk_css_image_surface_new_for_pixbuf       (GdkPixbuf       *pixbuf);
 
 G_END_DECLS
 

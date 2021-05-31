@@ -28,9 +28,9 @@ request (GtkWidget      *widget,
 	 gpointer        user_data)
 {
   gchar *str;
-  GdkScreen *screen = gtk_widget_get_screen (widget);
+  GdkScreen *screen = ctk_widget_get_screen (widget);
   gint i = gdk_screen_get_monitor_at_window (screen,
-                                             gtk_widget_get_window (widget));
+                                             ctk_widget_get_window (widget));
 
   if (i < 0)
     str = g_strdup ("<big><span foreground='white' background='black'>Not on a monitor </span></big>");
@@ -53,7 +53,7 @@ request (GtkWidget      *widget,
                              primary_monitor);
     }
 
-  gtk_label_set_markup (GTK_LABEL (user_data), str);
+  ctk_label_set_markup (GTK_LABEL (user_data), str);
   g_free (str);
 }
 
@@ -73,7 +73,7 @@ main (int argc, char *argv[])
   GdkScreen *screen;
   gint i;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
   screen = gdk_screen_get_default ();
 
@@ -88,14 +88,14 @@ main (int argc, char *argv[])
       GdkRectangle monitor; 
       gchar *str;
       
-      window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
       
       gdk_screen_get_monitor_geometry (screen, i, &monitor);
-      gtk_window_set_default_size (GTK_WINDOW (window), 200, 200);
-      gtk_window_move (GTK_WINDOW (window), (monitor.width - 200) / 2 + monitor.x,
+      ctk_window_set_default_size (GTK_WINDOW (window), 200, 200);
+      ctk_window_move (GTK_WINDOW (window), (monitor.width - 200) / 2 + monitor.x,
 		       (monitor.height - 200) / 2 + monitor.y);
       
-      label = gtk_label_new (NULL);
+      label = ctk_label_new (NULL);
       str = g_strdup_printf ("<big><span foreground='white' background='black'>"
 			     "Monitor %d of %d</span></big>\n"
 			     "<i>Width - Height       </i>: (%d,%d)\n"
@@ -105,25 +105,25 @@ main (int argc, char *argv[])
 			     monitor.width, monitor.height,
                              monitor.x, monitor.y,
                              primary_monitor);
-      gtk_label_set_markup (GTK_LABEL (label), str);
+      ctk_label_set_markup (GTK_LABEL (label), str);
       g_free (str);
-      vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 1);
-      gtk_box_set_homogeneous (GTK_BOX (vbox), TRUE);
-      gtk_container_add (GTK_CONTAINER (window), vbox);
-      gtk_container_add (GTK_CONTAINER (vbox), label);
-      button = gtk_button_new_with_label ("Query current monitor");
+      vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 1);
+      ctk_box_set_homogeneous (GTK_BOX (vbox), TRUE);
+      ctk_container_add (GTK_CONTAINER (window), vbox);
+      ctk_container_add (GTK_CONTAINER (vbox), label);
+      button = ctk_button_new_with_label ("Query current monitor");
       g_signal_connect (button, "clicked", G_CALLBACK (request), label);
-      gtk_container_add (GTK_CONTAINER (vbox), button);
-      button = gtk_button_new_with_label ("Close");
-      g_signal_connect (button, "clicked", G_CALLBACK (gtk_main_quit), NULL);
-      gtk_container_add (GTK_CONTAINER (vbox), button);
-      gtk_widget_show_all (window);
+      ctk_container_add (GTK_CONTAINER (vbox), button);
+      button = ctk_button_new_with_label ("Close");
+      g_signal_connect (button, "clicked", G_CALLBACK (ctk_main_quit), NULL);
+      ctk_container_add (GTK_CONTAINER (vbox), button);
+      ctk_widget_show_all (window);
 
       g_signal_connect (screen, "monitors-changed",
                         G_CALLBACK (monitors_changed_cb), label);
     }
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

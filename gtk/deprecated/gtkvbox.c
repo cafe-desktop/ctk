@@ -46,7 +46,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  * All children are allocated the same width.
  *
  * GtkVBox has been deprecated. You can use #GtkBox with a #GtkOrientable:orientation
- * set to %GTK_ORIENTATION_VERTICAL instead when calling gtk_box_new(),
+ * set to %GTK_ORIENTATION_VERTICAL instead when calling ctk_box_new(),
  * which is a very quick and easy change.
  *
  * If you have derived your own classes from GtkVBox, you can change the
@@ -55,7 +55,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  * with a call like:
  *
  * |[<!-- language="C" -->
- *   gtk_orientable_set_orientation (GTK_ORIENTABLE (object),
+ *   ctk_orientable_set_orientation (GTK_ORIENTABLE (object),
  *                                   GTK_ORIENTATION_VERTICAL);
  * ]|
  *
@@ -65,24 +65,24 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  * [Migrating from other containers to GtkGrid][gtk-migrating-GtkGrid].
  */
 
-G_DEFINE_TYPE (GtkVBox, gtk_vbox, GTK_TYPE_BOX)
+G_DEFINE_TYPE (GtkVBox, ctk_vbox, GTK_TYPE_BOX)
 
 static void
-gtk_vbox_class_init (GtkVBoxClass *class)
+ctk_vbox_class_init (GtkVBoxClass *class)
 {
 }
 
 static void
-gtk_vbox_init (GtkVBox *vbox)
+ctk_vbox_init (GtkVBox *vbox)
 {
-  gtk_orientable_set_orientation (GTK_ORIENTABLE (vbox),
+  ctk_orientable_set_orientation (GTK_ORIENTABLE (vbox),
                                   GTK_ORIENTATION_VERTICAL);
 
-  _gtk_box_set_old_defaults (GTK_BOX (vbox));
+  _ctk_box_set_old_defaults (GTK_BOX (vbox));
 }
 
 /**
- * gtk_vbox_new:
+ * ctk_vbox_new:
  * @homogeneous: %TRUE if all children are to be given equal space allotments.
  * @spacing: the number of pixels to place by default between children.
  *
@@ -90,13 +90,13 @@ gtk_vbox_init (GtkVBox *vbox)
  *
  * Returns: a new #GtkVBox.
  *
- * Deprecated: 3.2: You can use gtk_box_new() with %GTK_ORIENTATION_VERTICAL instead,
+ * Deprecated: 3.2: You can use ctk_box_new() with %GTK_ORIENTATION_VERTICAL instead,
  *   which is a quick and easy change. But the recommendation is to switch to
  *   #GtkGrid, since #GtkBox is going to go away eventually.
  *   See [Migrating from other containers to GtkGrid][gtk-migrating-GtkGrid].
  */
 GtkWidget *
-gtk_vbox_new (gboolean homogeneous,
+ctk_vbox_new (gboolean homogeneous,
 	      gint     spacing)
 {
   return g_object_new (GTK_TYPE_VBOX,

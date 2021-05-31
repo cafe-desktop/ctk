@@ -27,7 +27,7 @@
 G_BEGIN_DECLS
 
 void
-gtk_file_chooser_widget_set_save_entry (GtkFileChooserWidget *chooser,
+ctk_file_chooser_widget_set_save_entry (GtkFileChooserWidget *chooser,
                                         GtkWidget            *entry);
 
 G_END_DECLS

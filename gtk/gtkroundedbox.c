@@ -26,7 +26,7 @@
 #include <string.h>
 
 /**
- * _gtk_rounded_box_init_rect:
+ * _ctk_rounded_box_init_rect:
  * @box: box to initialize
  * @x: x coordinate of box
  * @y: y coordinate of box
@@ -37,7 +37,7 @@
  * The
  **/
 void
-_gtk_rounded_box_init_rect (GtkRoundedBox *box,
+_ctk_rounded_box_init_rect (GtkRoundedBox *box,
                             double         x,
                             double         y,
                             double         width,
@@ -53,7 +53,7 @@ _gtk_rounded_box_init_rect (GtkRoundedBox *box,
 
 /* clamp border radius, following CSS specs */
 static void
-gtk_rounded_box_clamp_border_radius (GtkRoundedBox *box)
+ctk_rounded_box_clamp_border_radius (GtkRoundedBox *box)
 {
   gdouble factor = 1.0;
   gdouble corners;
@@ -85,74 +85,74 @@ gtk_rounded_box_clamp_border_radius (GtkRoundedBox *box)
 }
 
 static void
-_gtk_rounded_box_apply_border_radius (GtkRoundedBox *box,
+_ctk_rounded_box_apply_border_radius (GtkRoundedBox *box,
                                       GtkCssValue **corner,
                                       GtkJunctionSides junction)
 {
   if (corner[GTK_CSS_TOP_LEFT] && (junction & GTK_JUNCTION_CORNER_TOPLEFT) == 0)
     {
-      box->corner[GTK_CSS_TOP_LEFT].horizontal = _gtk_css_corner_value_get_x (corner[GTK_CSS_TOP_LEFT],
+      box->corner[GTK_CSS_TOP_LEFT].horizontal = _ctk_css_corner_value_get_x (corner[GTK_CSS_TOP_LEFT],
                                                                               box->box.width);
-      box->corner[GTK_CSS_TOP_LEFT].vertical = _gtk_css_corner_value_get_y (corner[GTK_CSS_TOP_LEFT],
+      box->corner[GTK_CSS_TOP_LEFT].vertical = _ctk_css_corner_value_get_y (corner[GTK_CSS_TOP_LEFT],
                                                                             box->box.height);
     }
   if (corner[GTK_CSS_TOP_RIGHT] && (junction & GTK_JUNCTION_CORNER_TOPRIGHT) == 0)
     {
-      box->corner[GTK_CSS_TOP_RIGHT].horizontal = _gtk_css_corner_value_get_x (corner[GTK_CSS_TOP_RIGHT],
+      box->corner[GTK_CSS_TOP_RIGHT].horizontal = _ctk_css_corner_value_get_x (corner[GTK_CSS_TOP_RIGHT],
                                                                                box->box.width);
-      box->corner[GTK_CSS_TOP_RIGHT].vertical = _gtk_css_corner_value_get_y (corner[GTK_CSS_TOP_RIGHT],
+      box->corner[GTK_CSS_TOP_RIGHT].vertical = _ctk_css_corner_value_get_y (corner[GTK_CSS_TOP_RIGHT],
                                                                              box->box.height);
     }
   if (corner[GTK_CSS_BOTTOM_RIGHT] && (junction & GTK_JUNCTION_CORNER_BOTTOMRIGHT) == 0)
     {
-      box->corner[GTK_CSS_BOTTOM_RIGHT].horizontal = _gtk_css_corner_value_get_x (corner[GTK_CSS_BOTTOM_RIGHT],
+      box->corner[GTK_CSS_BOTTOM_RIGHT].horizontal = _ctk_css_corner_value_get_x (corner[GTK_CSS_BOTTOM_RIGHT],
                                                                                   box->box.width);
-      box->corner[GTK_CSS_BOTTOM_RIGHT].vertical = _gtk_css_corner_value_get_y (corner[GTK_CSS_BOTTOM_RIGHT],
+      box->corner[GTK_CSS_BOTTOM_RIGHT].vertical = _ctk_css_corner_value_get_y (corner[GTK_CSS_BOTTOM_RIGHT],
                                                                                 box->box.height);
     }
   if (corner[GTK_CSS_BOTTOM_LEFT] && (junction & GTK_JUNCTION_CORNER_BOTTOMLEFT) == 0)
     {
-      box->corner[GTK_CSS_BOTTOM_LEFT].horizontal = _gtk_css_corner_value_get_x (corner[GTK_CSS_BOTTOM_LEFT],
+      box->corner[GTK_CSS_BOTTOM_LEFT].horizontal = _ctk_css_corner_value_get_x (corner[GTK_CSS_BOTTOM_LEFT],
                                                                                  box->box.width);
-      box->corner[GTK_CSS_BOTTOM_LEFT].vertical = _gtk_css_corner_value_get_y (corner[GTK_CSS_BOTTOM_LEFT],
+      box->corner[GTK_CSS_BOTTOM_LEFT].vertical = _ctk_css_corner_value_get_y (corner[GTK_CSS_BOTTOM_LEFT],
                                                                                box->box.height);
     }
 
-  gtk_rounded_box_clamp_border_radius (box);
+  ctk_rounded_box_clamp_border_radius (box);
 }
 
 void
-_gtk_rounded_box_apply_border_radius_for_style (GtkRoundedBox    *box,
+_ctk_rounded_box_apply_border_radius_for_style (GtkRoundedBox    *box,
                                                 GtkCssStyle      *style,
                                                 GtkJunctionSides  junction)
 {
   GtkCssValue *corner[4];
 
-  corner[GTK_CSS_TOP_LEFT] = gtk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_TOP_LEFT_RADIUS);
-  corner[GTK_CSS_TOP_RIGHT] = gtk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_TOP_RIGHT_RADIUS);
-  corner[GTK_CSS_BOTTOM_LEFT] = gtk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_BOTTOM_LEFT_RADIUS);
-  corner[GTK_CSS_BOTTOM_RIGHT] = gtk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_BOTTOM_RIGHT_RADIUS);
+  corner[GTK_CSS_TOP_LEFT] = ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_TOP_LEFT_RADIUS);
+  corner[GTK_CSS_TOP_RIGHT] = ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_TOP_RIGHT_RADIUS);
+  corner[GTK_CSS_BOTTOM_LEFT] = ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_BOTTOM_LEFT_RADIUS);
+  corner[GTK_CSS_BOTTOM_RIGHT] = ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_BOTTOM_RIGHT_RADIUS);
 
-  _gtk_rounded_box_apply_border_radius (box, corner, junction);
+  _ctk_rounded_box_apply_border_radius (box, corner, junction);
 }
 
 void
-_gtk_rounded_box_apply_outline_radius_for_style (GtkRoundedBox    *box,
+_ctk_rounded_box_apply_outline_radius_for_style (GtkRoundedBox    *box,
                                                  GtkCssStyle      *style,
                                                  GtkJunctionSides  junction)
 {
   GtkCssValue *corner[4];
 
-  corner[GTK_CSS_TOP_LEFT] = gtk_css_style_get_value (style, GTK_CSS_PROPERTY_OUTLINE_TOP_LEFT_RADIUS);
-  corner[GTK_CSS_TOP_RIGHT] = gtk_css_style_get_value (style, GTK_CSS_PROPERTY_OUTLINE_TOP_RIGHT_RADIUS);
-  corner[GTK_CSS_BOTTOM_LEFT] = gtk_css_style_get_value (style, GTK_CSS_PROPERTY_OUTLINE_BOTTOM_LEFT_RADIUS);
-  corner[GTK_CSS_BOTTOM_RIGHT] = gtk_css_style_get_value (style, GTK_CSS_PROPERTY_OUTLINE_BOTTOM_RIGHT_RADIUS);
+  corner[GTK_CSS_TOP_LEFT] = ctk_css_style_get_value (style, GTK_CSS_PROPERTY_OUTLINE_TOP_LEFT_RADIUS);
+  corner[GTK_CSS_TOP_RIGHT] = ctk_css_style_get_value (style, GTK_CSS_PROPERTY_OUTLINE_TOP_RIGHT_RADIUS);
+  corner[GTK_CSS_BOTTOM_LEFT] = ctk_css_style_get_value (style, GTK_CSS_PROPERTY_OUTLINE_BOTTOM_LEFT_RADIUS);
+  corner[GTK_CSS_BOTTOM_RIGHT] = ctk_css_style_get_value (style, GTK_CSS_PROPERTY_OUTLINE_BOTTOM_RIGHT_RADIUS);
 
-  _gtk_rounded_box_apply_border_radius (box, corner, junction);
+  _ctk_rounded_box_apply_border_radius (box, corner, junction);
 }
 
 static void
-gtk_css_border_radius_grow (GtkRoundedBoxCorner *corner,
+ctk_css_border_radius_grow (GtkRoundedBoxCorner *corner,
                             double               horizontal,
                             double               vertical)
 {
@@ -169,7 +169,7 @@ gtk_css_border_radius_grow (GtkRoundedBoxCorner *corner,
 }
 
 void
-_gtk_rounded_box_grow (GtkRoundedBox *box,
+_ctk_rounded_box_grow (GtkRoundedBox *box,
                        double         top,
                        double         right,
                        double         bottom,
@@ -197,24 +197,24 @@ _gtk_rounded_box_grow (GtkRoundedBox *box,
       box->box.height += top + bottom;
     }
 
-  gtk_css_border_radius_grow (&box->corner[GTK_CSS_TOP_LEFT], left, top);
-  gtk_css_border_radius_grow (&box->corner[GTK_CSS_TOP_RIGHT], right, top);
-  gtk_css_border_radius_grow (&box->corner[GTK_CSS_BOTTOM_RIGHT], right, bottom);
-  gtk_css_border_radius_grow (&box->corner[GTK_CSS_BOTTOM_LEFT], left, bottom);
+  ctk_css_border_radius_grow (&box->corner[GTK_CSS_TOP_LEFT], left, top);
+  ctk_css_border_radius_grow (&box->corner[GTK_CSS_TOP_RIGHT], right, top);
+  ctk_css_border_radius_grow (&box->corner[GTK_CSS_BOTTOM_RIGHT], right, bottom);
+  ctk_css_border_radius_grow (&box->corner[GTK_CSS_BOTTOM_LEFT], left, bottom);
 }
 
 void
-_gtk_rounded_box_shrink (GtkRoundedBox *box,
+_ctk_rounded_box_shrink (GtkRoundedBox *box,
                          double         top,
                          double         right,
                          double         bottom,
                          double         left)
 {
-  _gtk_rounded_box_grow (box, -top, -right, -bottom, -left);
+  _ctk_rounded_box_grow (box, -top, -right, -bottom, -left);
 }
 
 void
-_gtk_rounded_box_move (GtkRoundedBox *box,
+_ctk_rounded_box_move (GtkRoundedBox *box,
                        double         dx,
                        double         dy)
 {
@@ -355,7 +355,7 @@ _cairo_ellipsis_negative (cairo_t *cr,
 }
 
 void
-_gtk_rounded_box_path (const GtkRoundedBox *box,
+_ctk_rounded_box_path (const GtkRoundedBox *box,
                        cairo_t             *cr)
 {
   cairo_new_sub_path (cr);
@@ -389,7 +389,7 @@ _gtk_rounded_box_path (const GtkRoundedBox *box,
 }
 
 double
-_gtk_rounded_box_guess_length (const GtkRoundedBox *box,
+_ctk_rounded_box_guess_length (const GtkRoundedBox *box,
                                GtkCssSide           side)
 {
   double length;
@@ -416,7 +416,7 @@ _gtk_rounded_box_guess_length (const GtkRoundedBox *box,
 }
 
 void
-_gtk_rounded_box_path_side (const GtkRoundedBox *box,
+_ctk_rounded_box_path_side (const GtkRoundedBox *box,
                             cairo_t             *cr,
                             GtkCssSide           side)
 {
@@ -485,7 +485,7 @@ _gtk_rounded_box_path_side (const GtkRoundedBox *box,
 }
 
 void
-_gtk_rounded_box_path_top (const GtkRoundedBox *outer,
+_ctk_rounded_box_path_top (const GtkRoundedBox *outer,
                            const GtkRoundedBox *inner,
                            cairo_t             *cr)
 {
@@ -536,7 +536,7 @@ _gtk_rounded_box_path_top (const GtkRoundedBox *outer,
 }
 
 void
-_gtk_rounded_box_path_right (const GtkRoundedBox *outer,
+_ctk_rounded_box_path_right (const GtkRoundedBox *outer,
                              const GtkRoundedBox *inner,
                              cairo_t             *cr)
 {
@@ -587,7 +587,7 @@ _gtk_rounded_box_path_right (const GtkRoundedBox *outer,
 }
 
 void
-_gtk_rounded_box_path_bottom (const GtkRoundedBox *outer,
+_ctk_rounded_box_path_bottom (const GtkRoundedBox *outer,
                               const GtkRoundedBox *inner,
                               cairo_t             *cr)
 {
@@ -638,7 +638,7 @@ _gtk_rounded_box_path_bottom (const GtkRoundedBox *outer,
 }
 
 void
-_gtk_rounded_box_path_left (const GtkRoundedBox *outer,
+_ctk_rounded_box_path_left (const GtkRoundedBox *outer,
                             const GtkRoundedBox *inner,
                             cairo_t             *cr)
 {
@@ -689,7 +689,7 @@ _gtk_rounded_box_path_left (const GtkRoundedBox *outer,
 }
 
 void
-_gtk_rounded_box_clip_path (const GtkRoundedBox *box,
+_ctk_rounded_box_clip_path (const GtkRoundedBox *box,
                             cairo_t             *cr)
 {
   cairo_rectangle (cr,
@@ -698,7 +698,7 @@ _gtk_rounded_box_clip_path (const GtkRoundedBox *box,
 }
 
 gboolean
-_gtk_rounded_box_intersects_rectangle (const GtkRoundedBox *box,
+_ctk_rounded_box_intersects_rectangle (const GtkRoundedBox *box,
                                        gdouble              x1,
                                        gdouble              y1,
                                        gdouble              x2,
@@ -714,7 +714,7 @@ _gtk_rounded_box_intersects_rectangle (const GtkRoundedBox *box,
 }
 
 gboolean
-_gtk_rounded_box_contains_rectangle (const GtkRoundedBox *box,
+_ctk_rounded_box_contains_rectangle (const GtkRoundedBox *box,
                                      gdouble              x1,
                                      gdouble              y1,
                                      gdouble              x2,

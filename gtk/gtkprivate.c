@@ -36,38 +36,38 @@
 #if !defined G_OS_WIN32 && !(defined GDK_WINDOWING_QUARTZ && defined QUARTZ_RELOCATION)
 
 const gchar *
-_gtk_get_datadir (void)
+_ctk_get_datadir (void)
 {
   return GTK_DATADIR;
 }
 
 const gchar *
-_gtk_get_libdir (void)
+_ctk_get_libdir (void)
 {
   return GTK_LIBDIR;
 }
 
 const gchar *
-_gtk_get_sysconfdir (void)
+_ctk_get_sysconfdir (void)
 {
   return GTK_SYSCONFDIR;
 }
 
 const gchar *
-_gtk_get_localedir (void)
+_ctk_get_localedir (void)
 {
   return GTK_LOCALEDIR;
 }
 
 const gchar *
-_gtk_get_data_prefix (void)
+_ctk_get_data_prefix (void)
 {
   return GTK_DATA_PREFIX;
 }
 
 #endif
 
-/* _gtk_get_lc_ctype:
+/* _ctk_get_lc_ctype:
  *
  * Return the Unix-style locale string for the language currently in
  * effect. On Unix systems, this is the return value from
@@ -93,7 +93,7 @@ _gtk_get_data_prefix (void)
  */
 
 gchar *
-_gtk_get_lc_ctype (void)
+_ctk_get_lc_ctype (void)
 {
 #ifdef G_OS_WIN32
   /* Somebody might try to set the locale for this process using the
@@ -127,7 +127,7 @@ _gtk_get_lc_ctype (void)
 }
 
 gboolean
-_gtk_boolean_handled_accumulator (GSignalInvocationHint *ihint,
+_ctk_boolean_handled_accumulator (GSignalInvocationHint *ihint,
                                   GValue                *return_accu,
                                   const GValue          *handler_return,
                                   gpointer               dummy)
@@ -143,7 +143,7 @@ _gtk_boolean_handled_accumulator (GSignalInvocationHint *ihint,
 }
 
 gboolean
-_gtk_single_string_accumulator (GSignalInvocationHint *ihint,
+_ctk_single_string_accumulator (GSignalInvocationHint *ihint,
 				GValue                *return_accu,
 				const GValue          *handler_return,
 				gpointer               dummy)
@@ -159,7 +159,7 @@ _gtk_single_string_accumulator (GSignalInvocationHint *ihint,
 }
 
 GdkModifierType
-_gtk_replace_virtual_modifiers (GdkKeymap       *keymap,
+_ctk_replace_virtual_modifiers (GdkKeymap       *keymap,
                                 GdkModifierType  modifiers)
 {
   GdkModifierType result = 0;
@@ -188,7 +188,7 @@ _gtk_replace_virtual_modifiers (GdkKeymap       *keymap,
 }
 
 GdkModifierType
-_gtk_get_primary_accel_mod (void)
+_ctk_get_primary_accel_mod (void)
 {
   static GdkModifierType primary = 0;
 
@@ -198,7 +198,7 @@ _gtk_get_primary_accel_mod (void)
 
       primary = gdk_keymap_get_modifier_mask (gdk_keymap_get_for_display (display),
                                               GDK_MODIFIER_INTENT_PRIMARY_ACCELERATOR);
-      primary = _gtk_replace_virtual_modifiers (gdk_keymap_get_for_display (display),
+      primary = _ctk_replace_virtual_modifiers (gdk_keymap_get_for_display (display),
                                                 primary);
     }
 
@@ -206,7 +206,7 @@ _gtk_get_primary_accel_mod (void)
 }
 
 gboolean
-_gtk_translate_keyboard_accel_state (GdkKeymap       *keymap,
+_ctk_translate_keyboard_accel_state (GdkKeymap       *keymap,
                                      guint            hardware_keycode,
                                      GdkModifierType  state,
                                      GdkModifierType  accel_mask,
@@ -256,12 +256,12 @@ _gtk_translate_keyboard_accel_state (GdkKeymap       *keymap,
 static gpointer
 register_resources (gpointer data)
 {
-  _gtk_register_resource ();
+  _ctk_register_resource ();
   return NULL;
 }
 
 void
-_gtk_ensure_resources (void)
+_ctk_ensure_resources (void)
 {
   static GOnce register_resources_once = G_ONCE_INIT;
 
@@ -269,7 +269,7 @@ _gtk_ensure_resources (void)
 }
 
 gboolean
-gtk_should_use_portal (void)
+ctk_should_use_portal (void)
 {
   static const char *use_portal = NULL;
 
@@ -293,7 +293,7 @@ gtk_should_use_portal (void)
 }
 
 /*
- * gtk_get_portal_interface_version:
+ * ctk_get_portal_interface_version:
  * @connection: a session #GDBusConnection
  * @interface_name: the interface name for the portal interface
  *   we're interested in.
@@ -301,7 +301,7 @@ gtk_should_use_portal (void)
  * Returns: the version number of the portal, or 0 on error.
  */
 guint
-gtk_get_portal_interface_version (GDBusConnection *connection,
+ctk_get_portal_interface_version (GDBusConnection *connection,
                                   const char      *interface_name)
 {
   GDBusProxy *proxy = NULL;
@@ -372,14 +372,14 @@ get_portal_path (GDBusConnection  *connection,
 }
 
 char *
-gtk_get_portal_request_path (GDBusConnection  *connection,
+ctk_get_portal_request_path (GDBusConnection  *connection,
                              char            **token)
 {
    return get_portal_path (connection, "request", token);
 }
 
 char *
-gtk_get_portal_session_path (GDBusConnection  *connection,
+ctk_get_portal_session_path (GDBusConnection  *connection,
                              char            **token)
 {
    return get_portal_path (connection, "session", token);

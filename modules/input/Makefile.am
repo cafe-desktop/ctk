@@ -195,11 +195,11 @@ protocol_built_sources_gtk =	\
 	gtk-text-input-protocol.c	\
 	gtk-text-input-client-protocol.h
 
-im_waylandgtk_la_CPPFLAGS = $(AM_CPPFLAGS)
-im_waylandgtk_la_LDFLAGS = -rpath $(moduledir) -avoid-version -module $(no_undefined)
-im_waylandgtk_la_SOURCES = imwaylandgtk.c $(protocol_built_sources_gtk)
-libstatic_im_waylandgtk_la_SOURCES = $(im_waylandgtk_la_SOURCES)
-im_waylandgtk_la_LIBADD = $(LDADDS)
+im_waylandctk_la_CPPFLAGS = $(AM_CPPFLAGS)
+im_waylandctk_la_LDFLAGS = -rpath $(moduledir) -avoid-version -module $(no_undefined)
+im_waylandctk_la_SOURCES = imwaylandgtk.c $(protocol_built_sources_gtk)
+libstatic_im_waylandctk_la_SOURCES = $(im_waylandctk_la_SOURCES)
+im_waylandctk_la_LIBADD = $(LDADDS)
 if INCLUDE_IM_WAYLAND
 STATIC_WAYLANDGTK_MODULE = libstatic-im-waylandgtk.la
 else

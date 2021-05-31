@@ -177,12 +177,12 @@ update_clicked (GtkButton *button, GtkLockButton *lockbutton)
   gboolean allowed, can_acquire, can_release;
   gboolean success;
 
-  permission = gtk_lock_button_get_permission (lockbutton);
+  permission = ctk_lock_button_get_permission (lockbutton);
 
-  allowed = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (allowed_button));
-  can_acquire = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (can_acquire_button));
-  can_release = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (can_release_button));
-  success = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (success_button));
+  allowed = ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (allowed_button));
+  can_acquire = ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (can_acquire_button));
+  can_release = ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (can_release_button));
+  success = ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (success_button));
   g_permission_impl_update (permission, allowed, can_acquire, can_release);
   g_test_permission_set_success (G_TEST_PERMISSION (permission), success);
 }
@@ -201,11 +201,11 @@ permission_changed (GPermission *permission,
                 "can-release", &can_release,
                 NULL);
 
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (allowed_button), allowed);
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (can_acquire_button), can_acquire);
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (can_release_button), can_release);
+  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (allowed_button), allowed);
+  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (can_acquire_button), can_acquire);
+  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (can_release_button), can_release);
 
-  gtk_widget_set_sensitive (content, allowed);
+  ctk_widget_set_sensitive (content, allowed);
 }
 
 int
@@ -218,53 +218,53 @@ main (int argc, char *argv[])
   GtkWidget *update;
   GPermission *permission;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
   permission = g_object_new (G_TYPE_TEST_PERMISSION, NULL);
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_resizable (GTK_WINDOW (window), FALSE);
-  gtk_container_set_border_width (GTK_CONTAINER (window), 12);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_window_set_resizable (GTK_WINDOW (window), FALSE);
+  ctk_container_set_border_width (GTK_CONTAINER (window), 12);
 
-  box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
-  gtk_container_add (GTK_CONTAINER (window), box);
+  box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 5);
+  ctk_container_add (GTK_CONTAINER (window), box);
 
-  allowed_button = gtk_check_button_new_with_label ("Allowed");
-  gtk_container_add (GTK_CONTAINER (box), allowed_button);
-  can_acquire_button = gtk_check_button_new_with_label ("Can acquire");
-  gtk_container_add (GTK_CONTAINER (box), can_acquire_button);
-  can_release_button = gtk_check_button_new_with_label ("Can release");
-  gtk_container_add (GTK_CONTAINER (box), can_release_button);
-  success_button = gtk_check_button_new_with_label ("Will succeed");
-  gtk_container_add (GTK_CONTAINER (box), success_button);
-  update = gtk_button_new_with_label ("Update");
-  gtk_container_add (GTK_CONTAINER (box), update);
+  allowed_button = ctk_check_button_new_with_label ("Allowed");
+  ctk_container_add (GTK_CONTAINER (box), allowed_button);
+  can_acquire_button = ctk_check_button_new_with_label ("Can acquire");
+  ctk_container_add (GTK_CONTAINER (box), can_acquire_button);
+  can_release_button = ctk_check_button_new_with_label ("Can release");
+  ctk_container_add (GTK_CONTAINER (box), can_release_button);
+  success_button = ctk_check_button_new_with_label ("Will succeed");
+  ctk_container_add (GTK_CONTAINER (box), success_button);
+  update = ctk_button_new_with_label ("Update");
+  ctk_container_add (GTK_CONTAINER (box), update);
   g_signal_connect (permission, "notify",
                     G_CALLBACK (permission_changed), NULL);
 
-  button = gtk_lock_button_new (permission);
+  button = ctk_lock_button_new (permission);
 
   g_signal_connect (update, "clicked",
                     G_CALLBACK (update_clicked), button);
 
-  dialog = gtk_dialog_new_with_buttons ("Dialog", NULL, 0,
+  dialog = ctk_dialog_new_with_buttons ("Dialog", NULL, 0,
                                         "Close", GTK_RESPONSE_CLOSE,
                                         "Some other action", GTK_RESPONSE_APPLY,
                                         NULL);
-  gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+  ctk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 
-  content = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
-  gtk_container_add (GTK_CONTAINER (content), gtk_check_button_new_with_label ("Control 1"));
-  gtk_container_add (GTK_CONTAINER (content), gtk_check_button_new_with_label ("Control 2"));
-  gtk_widget_set_sensitive (content, FALSE);
+  content = ctk_box_new (GTK_ORIENTATION_VERTICAL, 5);
+  ctk_container_add (GTK_CONTAINER (content), ctk_check_button_new_with_label ("Control 1"));
+  ctk_container_add (GTK_CONTAINER (content), ctk_check_button_new_with_label ("Control 2"));
+  ctk_widget_set_sensitive (content, FALSE);
 
-  gtk_container_add (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), content);
-  gtk_container_add (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), button);
+  ctk_container_add (GTK_CONTAINER (ctk_dialog_get_content_area (GTK_DIALOG (dialog))), content);
+  ctk_container_add (GTK_CONTAINER (ctk_dialog_get_content_area (GTK_DIALOG (dialog))), button);
 
-  gtk_widget_show_all (window);
-  gtk_widget_show_all (dialog);
+  ctk_widget_show_all (window);
+  ctk_widget_show_all (dialog);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

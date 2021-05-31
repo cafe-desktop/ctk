@@ -32,7 +32,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_WIN32_EMBED_WIDGET            (gtk_win32_embed_widget_get_type ())
+#define GTK_TYPE_WIN32_EMBED_WIDGET            (ctk_win32_embed_widget_get_type ())
 #define GTK_WIN32_EMBED_WIDGET(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_WIN32_EMBED_WIDGET, GtkWin32EmbedWidget))
 #define GTK_WIN32_EMBED_WIDGET_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_WIN32_EMBED_WIDGET, GtkWin32EmbedWidgetClass))
 #define GTK_IS_WIN32_EMBED_WIDGET(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_WIN32_EMBED_WIDGET))
@@ -57,16 +57,16 @@ struct _GtkWin32EmbedWidgetClass
   GtkWindowClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
-GType      gtk_win32_embed_widget_get_type (void) G_GNUC_CONST;
-GtkWidget* _gtk_win32_embed_widget_new              (HWND parent);
-BOOL       _gtk_win32_embed_widget_dialog_procedure (GtkWin32EmbedWidget *embed_widget,
+GType      ctk_win32_embed_widget_get_type (void) G_GNUC_CONST;
+GtkWidget* _ctk_win32_embed_widget_new              (HWND parent);
+BOOL       _ctk_win32_embed_widget_dialog_procedure (GtkWin32EmbedWidget *embed_widget,
 						     HWND wnd, UINT message, WPARAM wparam, LPARAM lparam);
 
 

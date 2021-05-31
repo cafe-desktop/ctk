@@ -26,7 +26,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_MENU_BUTTON_ACCESSIBLE               (gtk_menu_button_accessible_get_type ())
+#define GTK_TYPE_MENU_BUTTON_ACCESSIBLE               (ctk_menu_button_accessible_get_type ())
 #define GTK_MENU_BUTTON_ACCESSIBLE(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_MENU_BUTTON_ACCESSIBLE, GtkMenuButtonAccessible))
 #define GTK_MENU_BUTTON_ACCESSIBLE_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_MENU_BUTTON_ACCESSIBLE, GtkMenuButtonAccessibleClass))
 #define GTK_IS_MENU_BUTTON_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_MENU_BUTTON_ACCESSIBLE))
@@ -50,7 +50,7 @@ struct _GtkMenuButtonAccessibleClass
 };
 
 GDK_AVAILABLE_IN_ALL
-GType gtk_menu_button_accessible_get_type (void);
+GType ctk_menu_button_accessible_get_type (void);
 
 G_END_DECLS
 

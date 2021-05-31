@@ -60,7 +60,7 @@ static void vfunc_get_preedit_string (GtkIMContext   *context,
  * is also why we are not using G_DEFINE_TYPE().
  */
 void
-gtk_im_context_multipress_register_type (GTypeModule* type_module)
+ctk_im_context_multipress_register_type (GTypeModule* type_module)
 {
   const GTypeInfo im_context_multipress_info =
     {
@@ -84,7 +84,7 @@ gtk_im_context_multipress_register_type (GTypeModule* type_module)
 }
 
 GType
-gtk_im_context_multipress_get_type (void)
+ctk_im_context_multipress_get_type (void)
 {
   g_assert (im_context_multipress_type != 0);
 
@@ -147,7 +147,7 @@ im_context_multipress_finalize (GObject *obj)
 
 
 GtkIMContext *
-gtk_im_context_multipress_new (void)
+ctk_im_context_multipress_new (void)
 {
   return (GtkIMContext *)g_object_new (GTK_TYPE_IM_CONTEXT_MULTIPRESS, NULL);
 }
@@ -187,7 +187,7 @@ accept_character (GtkImContextMultipress *multipress_context, const gchar *chara
 {
   /* Clear the compose buffer, so we are ready to compose the next character.
    * Note that if we emit "preedit-changed" after "commit", there's a segfault/
-   * invalid-write with GtkTextView in gtk_text_layout_free_line_display(), when
+   * invalid-write with GtkTextView in ctk_text_layout_free_line_display(), when
    * destroying a PangoLayout (this can also be avoided by not using any Pango
    * attributes in get_preedit_string(). */
   clear_compose_buffer (multipress_context);

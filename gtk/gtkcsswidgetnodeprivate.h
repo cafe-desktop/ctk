@@ -23,7 +23,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_WIDGET_NODE           (gtk_css_widget_node_get_type ())
+#define GTK_TYPE_CSS_WIDGET_NODE           (ctk_css_widget_node_get_type ())
 #define GTK_CSS_WIDGET_NODE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_WIDGET_NODE, GtkCssWidgetNode))
 #define GTK_CSS_WIDGET_NODE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_WIDGET_NODE, GtkCssWidgetNodeClass))
 #define GTK_IS_CSS_WIDGET_NODE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_WIDGET_NODE))
@@ -47,13 +47,13 @@ struct _GtkCssWidgetNodeClass
   GtkCssNodeClass node_class;
 };
 
-GType                   gtk_css_widget_node_get_type            (void) G_GNUC_CONST;
+GType                   ctk_css_widget_node_get_type            (void) G_GNUC_CONST;
 
-GtkCssNode *            gtk_css_widget_node_new                 (GtkWidget              *widget);
+GtkCssNode *            ctk_css_widget_node_new                 (GtkWidget              *widget);
 
-void                    gtk_css_widget_node_widget_destroyed    (GtkCssWidgetNode       *node);
+void                    ctk_css_widget_node_widget_destroyed    (GtkCssWidgetNode       *node);
 
-GtkWidget *             gtk_css_widget_node_get_widget          (GtkCssWidgetNode       *node);
+GtkWidget *             ctk_css_widget_node_get_widget          (GtkCssWidgetNode       *node);
 
 G_END_DECLS
 

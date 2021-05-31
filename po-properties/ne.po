@@ -789,7 +789,7 @@ msgstr "मान"
 
 #: gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action is the current "
+"The value returned by ctk_radio_action_get_current_value() when this action is the current "
 "action of its group."
 msgstr " जब जीटीके_अनुपात_कार्य_प्राप्ती_वर्तमान_मान() ले मान फर्काउँछ यो कार्य वर्तमान समूहको कार्य हुन्छ "
 
@@ -1258,9 +1258,9 @@ msgstr "लोगो"
 #: gtk/gtkaboutdialog.c:544
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
-"जानकारी बाकसका लागि लोगो। यदि सेट भएको छैन भने, यो gtk_window_get_default_icon_list() मा "
+"जानकारी बाकसका लागि लोगो। यदि सेट भएको छैन भने, यो ctk_window_get_default_icon_list() मा "
 "पूर्वनिर्धारित हुन्छ"
 
 #: gtk/gtkaboutdialog.c:558
@@ -3608,7 +3608,7 @@ msgstr "स्पन्दनको तह"
 #, fuzzy
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for each call to "
-"gtk_entry_progress_pulse()"
+"ctk_entry_progress_pulse()"
 msgstr "ज्यादा उतार चढावको स्पन्दन नियन्त्रण गर्न संपूर्ण प्रगतिको विभाजन "
 
 #: gtk/gtkentry.c:1105
@@ -9743,7 +9743,7 @@ msgid "No show all"
 msgstr "सबै नदेखाऊ"
 
 #: gtk/gtkwidget.c:1255
-msgid "Whether gtk_widget_show_all() should not affect this widget"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
 msgstr "जीटीके_औजार_देखाउने_सबै() ले यो औजारलाई असरपार्न सक्दैन"
 
 #: gtk/gtkwidget.c:1277

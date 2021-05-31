@@ -62,7 +62,7 @@ static const GtkIMContextInfo *info_list[] =
 #ifndef INCLUDE_IM_broadway
 #define MODULE_ENTRY(type,function) G_MODULE_EXPORT type im_module_ ## function
 #else
-#define MODULE_ENTRY(type, function) type _gtk_immodule_broadway_ ## function
+#define MODULE_ENTRY(type, function) type _ctk_immodule_broadway_ ## function
 #endif
 
 static void
@@ -100,7 +100,7 @@ broadway_focus_out (GtkIMContext *context)
 }
 
 static void
-gtk_im_context_broadway_class_init (GtkIMContextClass *klass)
+ctk_im_context_broadway_class_init (GtkIMContextClass *klass)
 {
   parent_class = g_type_class_peek_parent (klass);
 
@@ -110,24 +110,24 @@ gtk_im_context_broadway_class_init (GtkIMContextClass *klass)
 }
 
 static void
-gtk_im_context_broadway_init (GtkIMContext *im_context)
+ctk_im_context_broadway_init (GtkIMContext *im_context)
 {
 }
 
 static void
-gtk_im_context_broadway_register_type (GTypeModule *module)
+ctk_im_context_broadway_register_type (GTypeModule *module)
 {
   const GTypeInfo object_info =
   {
     sizeof (GtkIMContextBroadwayClass),
     (GBaseInitFunc) NULL,
     (GBaseFinalizeFunc) NULL,
-    (GClassInitFunc) gtk_im_context_broadway_class_init,
+    (GClassInitFunc) ctk_im_context_broadway_class_init,
     NULL,           /* class_finalize */
     NULL,           /* class_data */
     sizeof (GtkIMContextBroadway),
     0,
-    (GInstanceInitFunc) gtk_im_context_broadway_init,
+    (GInstanceInitFunc) ctk_im_context_broadway_init,
   };
 
   type_broadway =
@@ -139,7 +139,7 @@ gtk_im_context_broadway_register_type (GTypeModule *module)
 
 MODULE_ENTRY (void, init) (GTypeModule * module)
 {
-  gtk_im_context_broadway_register_type (module);
+  ctk_im_context_broadway_register_type (module);
 }
 
 MODULE_ENTRY (void, exit) (void)

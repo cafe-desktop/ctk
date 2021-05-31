@@ -37,7 +37,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_STYLE              (gtk_style_get_type ())
+#define GTK_TYPE_STYLE              (ctk_style_get_type ())
 #define GTK_STYLE(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GTK_TYPE_STYLE, GtkStyle))
 #define GTK_STYLE_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_STYLE, GtkStyleClass))
 #define GTK_IS_STYLE(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GTK_TYPE_STYLE))
@@ -423,36 +423,36 @@ struct _GtkStyleClass
   /*< private >*/
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1)  (void);
-  void (*_gtk_reserved2)  (void);
-  void (*_gtk_reserved3)  (void);
-  void (*_gtk_reserved4)  (void);
-  void (*_gtk_reserved5)  (void);
-  void (*_gtk_reserved6)  (void);
-  void (*_gtk_reserved7)  (void);
-  void (*_gtk_reserved8)  (void);
-  void (*_gtk_reserved9)  (void);
-  void (*_gtk_reserved10) (void);
-  void (*_gtk_reserved11) (void);
+  void (*_ctk_reserved1)  (void);
+  void (*_ctk_reserved2)  (void);
+  void (*_ctk_reserved3)  (void);
+  void (*_ctk_reserved4)  (void);
+  void (*_ctk_reserved5)  (void);
+  void (*_ctk_reserved6)  (void);
+  void (*_ctk_reserved7)  (void);
+  void (*_ctk_reserved8)  (void);
+  void (*_ctk_reserved9)  (void);
+  void (*_ctk_reserved10) (void);
+  void (*_ctk_reserved11) (void);
 };
 
 GDK_DEPRECATED_IN_3_0
-GType     gtk_style_get_type                 (void) G_GNUC_CONST;
+GType     ctk_style_get_type                 (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-GtkStyle* gtk_style_new                      (void);
+GtkStyle* ctk_style_new                      (void);
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-GtkStyle* gtk_style_copy                     (GtkStyle     *style);
+GtkStyle* ctk_style_copy                     (GtkStyle     *style);
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-GtkStyle* gtk_style_attach                   (GtkStyle     *style,
+GtkStyle* ctk_style_attach                   (GtkStyle     *style,
                                               GdkWindow    *window);
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-void      gtk_style_detach                   (GtkStyle     *style);
+void      ctk_style_detach                   (GtkStyle     *style);
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-void      gtk_style_set_background           (GtkStyle     *style,
+void      ctk_style_set_background           (GtkStyle     *style,
                                               GdkWindow    *window,
                                               GtkStateType  state_type);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and gtk_render_background)
-void      gtk_style_apply_default_background (GtkStyle     *style,
+GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and ctk_render_background)
+void      ctk_style_apply_default_background (GtkStyle     *style,
                                               cairo_t      *cr,
                                               GdkWindow    *window,
                                               GtkStateType  state_type,
@@ -462,15 +462,15 @@ void      gtk_style_apply_default_background (GtkStyle     *style,
                                               gint          height);
 
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and a style class)
-GtkIconSet* gtk_style_lookup_icon_set        (GtkStyle     *style,
+GtkIconSet* ctk_style_lookup_icon_set        (GtkStyle     *style,
                                               const gchar  *stock_id);
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and a style class)
-gboolean    gtk_style_lookup_color           (GtkStyle     *style,
+gboolean    ctk_style_lookup_color           (GtkStyle     *style,
                                               const gchar  *color_name,
                                               GdkColor     *color);
 
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and gtk_render_icon)
-GdkPixbuf*  gtk_style_render_icon     (GtkStyle            *style,
+GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and ctk_render_icon)
+GdkPixbuf*  ctk_style_render_icon     (GtkStyle            *style,
                                        const GtkIconSource *source,
                                        GtkTextDirection     direction,
                                        GtkStateType         state,
@@ -478,8 +478,8 @@ GdkPixbuf*  gtk_style_render_icon     (GtkStyle            *style,
                                        GtkWidget           *widget,
                                        const gchar         *detail);
 
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and gtk_render_line)
-void gtk_paint_hline             (GtkStyle           *style,
+GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and ctk_render_line)
+void ctk_paint_hline             (GtkStyle           *style,
                                   cairo_t            *cr,
                                   GtkStateType        state_type,
                                   GtkWidget          *widget,
@@ -487,8 +487,8 @@ void gtk_paint_hline             (GtkStyle           *style,
                                   gint                x1,
                                   gint                x2,
                                   gint                y);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and gtk_render_line)
-void gtk_paint_vline             (GtkStyle           *style,
+GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and ctk_render_line)
+void ctk_paint_vline             (GtkStyle           *style,
                                   cairo_t            *cr,
                                   GtkStateType        state_type,
                                   GtkWidget          *widget,
@@ -496,8 +496,8 @@ void gtk_paint_vline             (GtkStyle           *style,
                                   gint                y1_,
                                   gint                y2_,
                                   gint                x);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and gtk_render_background)
-void gtk_paint_shadow            (GtkStyle           *style,
+GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and ctk_render_background)
+void ctk_paint_shadow            (GtkStyle           *style,
                                   cairo_t            *cr,
                                   GtkStateType        state_type,
                                   GtkShadowType       shadow_type,
@@ -507,8 +507,8 @@ void gtk_paint_shadow            (GtkStyle           *style,
                                   gint                y,
                                   gint                width,
                                   gint                height);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and gtk_render_arrow)
-void gtk_paint_arrow             (GtkStyle           *style,
+GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and ctk_render_arrow)
+void ctk_paint_arrow             (GtkStyle           *style,
                                   cairo_t            *cr,
                                   GtkStateType        state_type,
                                   GtkShadowType       shadow_type,
@@ -520,8 +520,8 @@ void gtk_paint_arrow             (GtkStyle           *style,
                                   gint                y,
                                   gint                width,
                                   gint                height);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and gtk_render_icon)
-void gtk_paint_diamond           (GtkStyle           *style,
+GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and ctk_render_icon)
+void ctk_paint_diamond           (GtkStyle           *style,
                                   cairo_t            *cr,
                                   GtkStateType        state_type,
                                   GtkShadowType       shadow_type,
@@ -531,8 +531,8 @@ void gtk_paint_diamond           (GtkStyle           *style,
                                   gint                y,
                                   gint                width,
                                   gint                height);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and gtk_render_frame)
-void gtk_paint_box               (GtkStyle           *style,
+GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and ctk_render_frame)
+void ctk_paint_box               (GtkStyle           *style,
                                   cairo_t            *cr,
                                   GtkStateType        state_type,
                                   GtkShadowType       shadow_type,
@@ -542,8 +542,8 @@ void gtk_paint_box               (GtkStyle           *style,
                                   gint                y,
                                   gint                width,
                                   gint                height);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and gtk_render_background)
-void gtk_paint_flat_box          (GtkStyle           *style,
+GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and ctk_render_background)
+void ctk_paint_flat_box          (GtkStyle           *style,
                                   cairo_t            *cr,
                                   GtkStateType        state_type,
                                   GtkShadowType       shadow_type,
@@ -553,8 +553,8 @@ void gtk_paint_flat_box          (GtkStyle           *style,
                                   gint                y,
                                   gint                width,
                                   gint                height);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and gtk_render_check)
-void gtk_paint_check             (GtkStyle           *style,
+GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and ctk_render_check)
+void ctk_paint_check             (GtkStyle           *style,
                                   cairo_t            *cr,
                                   GtkStateType        state_type,
                                   GtkShadowType       shadow_type,
@@ -564,8 +564,8 @@ void gtk_paint_check             (GtkStyle           *style,
                                   gint                y,
                                   gint                width,
                                   gint                height);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and gtk_render_option)
-void gtk_paint_option            (GtkStyle           *style,
+GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and ctk_render_option)
+void ctk_paint_option            (GtkStyle           *style,
                                   cairo_t            *cr,
                                   GtkStateType        state_type,
                                   GtkShadowType       shadow_type,
@@ -575,8 +575,8 @@ void gtk_paint_option            (GtkStyle           *style,
                                   gint                y,
                                   gint                width,
                                   gint                height);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and gtk_render_background)
-void gtk_paint_tab               (GtkStyle           *style,
+GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and ctk_render_background)
+void ctk_paint_tab               (GtkStyle           *style,
                                   cairo_t            *cr,
                                   GtkStateType        state_type,
                                   GtkShadowType       shadow_type,
@@ -587,7 +587,7 @@ void gtk_paint_tab               (GtkStyle           *style,
                                   gint                width,
                                   gint                height);
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-void gtk_paint_shadow_gap        (GtkStyle           *style,
+void ctk_paint_shadow_gap        (GtkStyle           *style,
                                   cairo_t            *cr,
                                   GtkStateType        state_type,
                                   GtkShadowType       shadow_type,
@@ -601,7 +601,7 @@ void gtk_paint_shadow_gap        (GtkStyle           *style,
                                   gint                gap_x,
                                   gint                gap_width);
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-void gtk_paint_box_gap           (GtkStyle           *style,
+void ctk_paint_box_gap           (GtkStyle           *style,
                                   cairo_t            *cr,
                                   GtkStateType        state_type,
                                   GtkShadowType       shadow_type,
@@ -614,8 +614,8 @@ void gtk_paint_box_gap           (GtkStyle           *style,
                                   GtkPositionType     gap_side,
                                   gint                gap_x,
                                   gint                gap_width);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and gtk_render_extension)
-void gtk_paint_extension         (GtkStyle           *style,
+GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and ctk_render_extension)
+void ctk_paint_extension         (GtkStyle           *style,
                                   cairo_t            *cr,
                                   GtkStateType        state_type,
                                   GtkShadowType       shadow_type,
@@ -626,8 +626,8 @@ void gtk_paint_extension         (GtkStyle           *style,
                                   gint                width,
                                   gint                height,
                                   GtkPositionType     gap_side);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and gtk_render_focus)
-void gtk_paint_focus             (GtkStyle           *style,
+GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and ctk_render_focus)
+void ctk_paint_focus             (GtkStyle           *style,
                                   cairo_t            *cr,
                                   GtkStateType        state_type,
                                   GtkWidget          *widget,
@@ -636,8 +636,8 @@ void gtk_paint_focus             (GtkStyle           *style,
                                   gint                y,
                                   gint                width,
                                   gint                height);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and gtk_render_focus)
-void gtk_paint_slider            (GtkStyle           *style,
+GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and ctk_render_focus)
+void ctk_paint_slider            (GtkStyle           *style,
                                   cairo_t            *cr,
                                   GtkStateType        state_type,
                                   GtkShadowType       shadow_type,
@@ -648,8 +648,8 @@ void gtk_paint_slider            (GtkStyle           *style,
                                   gint                width,
                                   gint                height,
                                   GtkOrientation      orientation);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and gtk_render_handle)
-void gtk_paint_handle            (GtkStyle           *style,
+GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and ctk_render_handle)
+void ctk_paint_handle            (GtkStyle           *style,
                                   cairo_t            *cr,
                                   GtkStateType        state_type,
                                   GtkShadowType       shadow_type,
@@ -660,8 +660,8 @@ void gtk_paint_handle            (GtkStyle           *style,
                                   gint                width,
                                   gint                height,
                                   GtkOrientation      orientation);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and gtk_render_expander)
-void gtk_paint_expander          (GtkStyle           *style,
+GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and ctk_render_expander)
+void ctk_paint_expander          (GtkStyle           *style,
                                   cairo_t            *cr,
                                   GtkStateType        state_type,
                                   GtkWidget          *widget,
@@ -669,8 +669,8 @@ void gtk_paint_expander          (GtkStyle           *style,
                                   gint                x,
                                   gint                y,
                                   GtkExpanderStyle    expander_style);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and gtk_render_layout)
-void gtk_paint_layout            (GtkStyle           *style,
+GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and ctk_render_layout)
+void ctk_paint_layout            (GtkStyle           *style,
                                   cairo_t            *cr,
                                   GtkStateType        state_type,
                                   gboolean            use_text,
@@ -679,8 +679,8 @@ void gtk_paint_layout            (GtkStyle           *style,
                                   gint                x,
                                   gint                y,
                                   PangoLayout        *layout);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and gtk_render_handle)
-void gtk_paint_resize_grip       (GtkStyle           *style,
+GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and ctk_render_handle)
+void ctk_paint_resize_grip       (GtkStyle           *style,
                                   cairo_t            *cr,
                                   GtkStateType        state_type,
                                   GtkWidget          *widget,
@@ -690,8 +690,8 @@ void gtk_paint_resize_grip       (GtkStyle           *style,
                                   gint                y,
                                   gint                width,
                                   gint                height);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and gtk_render_icon)
-void gtk_paint_spinner           (GtkStyle           *style,
+GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and ctk_render_icon)
+void ctk_paint_spinner           (GtkStyle           *style,
                                   cairo_t            *cr,
                                   GtkStateType        state_type,
                                   GtkWidget          *widget,
@@ -702,88 +702,88 @@ void gtk_paint_spinner           (GtkStyle           *style,
                                   gint                width,
                                   gint                height);
 
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and gtk_style_context_get_property)
-void gtk_style_get_style_property (GtkStyle    *style,
+GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and ctk_style_context_get_property)
+void ctk_style_get_style_property (GtkStyle    *style,
                                    GType        widget_type,
                                    const gchar *property_name,
                                    GValue      *value);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and gtk_style_context_get_property)
-void gtk_style_get_valist         (GtkStyle    *style,
+GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and ctk_style_context_get_property)
+void ctk_style_get_valist         (GtkStyle    *style,
                                    GType        widget_type,
                                    const gchar *first_property_name,
                                    va_list      var_args);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and gtk_style_context_get_property)
-void gtk_style_get                (GtkStyle    *style,
+GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext and ctk_style_context_get_property)
+void ctk_style_get                (GtkStyle    *style,
                                    GType        widget_type,
                                    const gchar *first_property_name,
                                    ...) G_GNUC_NULL_TERMINATED;
 
 
 /* --- private API --- */
-GtkStyle*     _gtk_style_new_for_path     (GdkScreen          *screen,
+GtkStyle*     _ctk_style_new_for_path     (GdkScreen          *screen,
                                            GtkWidgetPath      *path);
-void          _gtk_style_shade            (const GdkColor     *a,
+void          _ctk_style_shade            (const GdkColor     *a,
                                            GdkColor           *b,
                                            gdouble             k);
 
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-gboolean    gtk_style_has_context         (GtkStyle *style);
+gboolean    ctk_style_has_context         (GtkStyle *style);
 
 GDK_DEPRECATED_IN_3_0
-void        gtk_widget_style_attach       (GtkWidget     *widget);
+void        ctk_widget_style_attach       (GtkWidget     *widget);
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-gboolean    gtk_widget_has_rc_style       (GtkWidget            *widget);
+gboolean    ctk_widget_has_rc_style       (GtkWidget            *widget);
 GDK_DEPRECATED_IN_3_0
-void        gtk_widget_set_style          (GtkWidget            *widget,
+void        ctk_widget_set_style          (GtkWidget            *widget,
                                            GtkStyle             *style);
 GDK_DEPRECATED_IN_3_0
-void        gtk_widget_ensure_style       (GtkWidget            *widget);
-GDK_DEPRECATED_IN_3_0_FOR(gtk_widget_get_style_context)
-GtkStyle *  gtk_widget_get_style          (GtkWidget            *widget);
+void        ctk_widget_ensure_style       (GtkWidget            *widget);
+GDK_DEPRECATED_IN_3_0_FOR(ctk_widget_get_style_context)
+GtkStyle *  ctk_widget_get_style          (GtkWidget            *widget);
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-void        gtk_widget_modify_style       (GtkWidget            *widget,
+void        ctk_widget_modify_style       (GtkWidget            *widget,
                                            GtkRcStyle           *style);
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-GtkRcStyle *gtk_widget_get_modifier_style (GtkWidget            *widget);
-GDK_DEPRECATED_IN_3_0_FOR(gtk_widget_override_color)
-void        gtk_widget_modify_fg          (GtkWidget            *widget,
+GtkRcStyle *ctk_widget_get_modifier_style (GtkWidget            *widget);
+GDK_DEPRECATED_IN_3_0_FOR(ctk_widget_override_color)
+void        ctk_widget_modify_fg          (GtkWidget            *widget,
                                            GtkStateType          state,
                                            const GdkColor       *color);
-GDK_DEPRECATED_IN_3_0_FOR(gtk_widget_override_background_color)
-void        gtk_widget_modify_bg          (GtkWidget            *widget,
-                                           GtkStateType          state,
-                                           const GdkColor       *color);
-GDK_DEPRECATED_IN_3_0_FOR(CSS style classes)
-void        gtk_widget_modify_text        (GtkWidget            *widget,
+GDK_DEPRECATED_IN_3_0_FOR(ctk_widget_override_background_color)
+void        ctk_widget_modify_bg          (GtkWidget            *widget,
                                            GtkStateType          state,
                                            const GdkColor       *color);
 GDK_DEPRECATED_IN_3_0_FOR(CSS style classes)
-void        gtk_widget_modify_base        (GtkWidget            *widget,
+void        ctk_widget_modify_text        (GtkWidget            *widget,
                                            GtkStateType          state,
                                            const GdkColor       *color);
 GDK_DEPRECATED_IN_3_0_FOR(CSS style classes)
-void        gtk_widget_modify_cursor      (GtkWidget            *widget,
+void        ctk_widget_modify_base        (GtkWidget            *widget,
+                                           GtkStateType          state,
+                                           const GdkColor       *color);
+GDK_DEPRECATED_IN_3_0_FOR(CSS style classes)
+void        ctk_widget_modify_cursor      (GtkWidget            *widget,
                                            const GdkColor       *primary,
                                            const GdkColor       *secondary);
-GDK_DEPRECATED_IN_3_0_FOR(gtk_widget_override_font)
-void        gtk_widget_modify_font        (GtkWidget            *widget,
+GDK_DEPRECATED_IN_3_0_FOR(ctk_widget_override_font)
+void        ctk_widget_modify_font        (GtkWidget            *widget,
                                            PangoFontDescription *font_desc);
-GDK_DEPRECATED_IN_3_0_FOR(gtk_widget_reset_style)
-void       gtk_widget_reset_rc_styles     (GtkWidget      *widget);
-GDK_DEPRECATED_IN_3_0_FOR(gtk_style_context_new)
-GtkStyle*  gtk_widget_get_default_style   (void);
-GDK_DEPRECATED_IN_3_0_FOR(gtk_widget_get_path)
-void       gtk_widget_path                (GtkWidget *widget,
+GDK_DEPRECATED_IN_3_0_FOR(ctk_widget_reset_style)
+void       ctk_widget_reset_rc_styles     (GtkWidget      *widget);
+GDK_DEPRECATED_IN_3_0_FOR(ctk_style_context_new)
+GtkStyle*  ctk_widget_get_default_style   (void);
+GDK_DEPRECATED_IN_3_0_FOR(ctk_widget_get_path)
+void       ctk_widget_path                (GtkWidget *widget,
                                            guint     *path_length,
                                            gchar    **path,
                                            gchar    **path_reversed);
 GDK_DEPRECATED_IN_3_0
-void       gtk_widget_class_path          (GtkWidget *widget,
+void       ctk_widget_class_path          (GtkWidget *widget,
                                            guint     *path_length,
                                            gchar    **path,
                                            gchar    **path_reversed);
-GDK_DEPRECATED_IN_3_0_FOR(gtk_widget_render_icon_pixbuf)
-GdkPixbuf *gtk_widget_render_icon         (GtkWidget   *widget,
+GDK_DEPRECATED_IN_3_0_FOR(ctk_widget_render_icon_pixbuf)
+GdkPixbuf *ctk_widget_render_icon         (GtkWidget   *widget,
                                            const gchar *stock_id,
                                            GtkIconSize  size,
                                            const gchar *detail);

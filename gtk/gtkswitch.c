@@ -123,54 +123,54 @@ static guint signals[LAST_SIGNAL] = { 0 };
 
 static GParamSpec *switch_props[LAST_PROP] = { NULL, };
 
-static void gtk_switch_actionable_iface_init (GtkActionableInterface *iface);
-static void gtk_switch_activatable_interface_init (GtkActivatableIface *iface);
+static void ctk_switch_actionable_iface_init (GtkActionableInterface *iface);
+static void ctk_switch_activatable_interface_init (GtkActivatableIface *iface);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-G_DEFINE_TYPE_WITH_CODE (GtkSwitch, gtk_switch, GTK_TYPE_WIDGET,
+G_DEFINE_TYPE_WITH_CODE (GtkSwitch, ctk_switch, GTK_TYPE_WIDGET,
                          G_ADD_PRIVATE (GtkSwitch)
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_ACTIONABLE,
-                                                gtk_switch_actionable_iface_init)
+                                                ctk_switch_actionable_iface_init)
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_ACTIVATABLE,
-                                                gtk_switch_activatable_interface_init));
+                                                ctk_switch_activatable_interface_init));
 G_GNUC_END_IGNORE_DEPRECATIONS;
 
 static void
-gtk_switch_end_toggle_animation (GtkSwitch *sw)
+ctk_switch_end_toggle_animation (GtkSwitch *sw)
 {
   GtkSwitchPrivate *priv = sw->priv;
 
   if (priv->tick_id != 0)
     {
-      gtk_widget_remove_tick_callback (GTK_WIDGET (sw), priv->tick_id);
+      ctk_widget_remove_tick_callback (GTK_WIDGET (sw), priv->tick_id);
       priv->tick_id = 0;
     }
 }
 
 static gboolean
-gtk_switch_on_frame_clock_update (GtkWidget     *widget,
+ctk_switch_on_frame_clock_update (GtkWidget     *widget,
                                   GdkFrameClock *clock,
                                   gpointer       user_data)
 {
   GtkSwitch *sw = GTK_SWITCH (widget);
   GtkSwitchPrivate *priv = sw->priv;
 
-  gtk_progress_tracker_advance_frame (&priv->tracker,
+  ctk_progress_tracker_advance_frame (&priv->tracker,
                                       gdk_frame_clock_get_frame_time (clock));
 
-  if (gtk_progress_tracker_get_state (&priv->tracker) != GTK_PROGRESS_STATE_AFTER)
+  if (ctk_progress_tracker_get_state (&priv->tracker) != GTK_PROGRESS_STATE_AFTER)
     {
       if (priv->is_active)
-        priv->handle_pos = 1.0 - gtk_progress_tracker_get_ease_out_cubic (&priv->tracker, FALSE);
+        priv->handle_pos = 1.0 - ctk_progress_tracker_get_ease_out_cubic (&priv->tracker, FALSE);
       else
-        priv->handle_pos = gtk_progress_tracker_get_ease_out_cubic (&priv->tracker, FALSE);
+        priv->handle_pos = ctk_progress_tracker_get_ease_out_cubic (&priv->tracker, FALSE);
     }
   else
     {
-      gtk_switch_set_active (sw, !priv->is_active);
+      ctk_switch_set_active (sw, !priv->is_active);
     }
 
-  gtk_widget_queue_allocate (GTK_WIDGET (sw));
+  ctk_widget_queue_allocate (GTK_WIDGET (sw));
 
   return G_SOURCE_CONTINUE;
 }
@@ -178,26 +178,26 @@ gtk_switch_on_frame_clock_update (GtkWidget     *widget,
 #define ANIMATION_DURATION 100
 
 static void
-gtk_switch_begin_toggle_animation (GtkSwitch *sw)
+ctk_switch_begin_toggle_animation (GtkSwitch *sw)
 {
   GtkSwitchPrivate *priv = sw->priv;
 
-  if (gtk_settings_get_enable_animations (gtk_widget_get_settings (GTK_WIDGET (sw))))
+  if (ctk_settings_get_enable_animations (ctk_widget_get_settings (GTK_WIDGET (sw))))
     {
-      gtk_progress_tracker_start (&priv->tracker, 1000 * ANIMATION_DURATION, 0, 1.0);
+      ctk_progress_tracker_start (&priv->tracker, 1000 * ANIMATION_DURATION, 0, 1.0);
       if (priv->tick_id == 0)
-        priv->tick_id = gtk_widget_add_tick_callback (GTK_WIDGET (sw),
-                                                      gtk_switch_on_frame_clock_update,
+        priv->tick_id = ctk_widget_add_tick_callback (GTK_WIDGET (sw),
+                                                      ctk_switch_on_frame_clock_update,
                                                       NULL, NULL);
     }
   else
     {
-      gtk_switch_set_active (sw, !priv->is_active);
+      ctk_switch_set_active (sw, !priv->is_active);
     }
 }
 
 static void
-gtk_switch_multipress_gesture_pressed (GtkGestureMultiPress *gesture,
+ctk_switch_multipress_gesture_pressed (GtkGestureMultiPress *gesture,
                                        gint                  n_press,
                                        gdouble               x,
                                        gdouble               y,
@@ -206,8 +206,8 @@ gtk_switch_multipress_gesture_pressed (GtkGestureMultiPress *gesture,
   GtkSwitchPrivate *priv = sw->priv;
   GtkAllocation allocation;
 
-  gtk_widget_get_allocation (GTK_WIDGET (sw), &allocation);
-  gtk_gesture_set_state (GTK_GESTURE (gesture), GTK_EVENT_SEQUENCE_CLAIMED);
+  ctk_widget_get_allocation (GTK_WIDGET (sw), &allocation);
+  ctk_gesture_set_state (GTK_GESTURE (gesture), GTK_EVENT_SEQUENCE_CLAIMED);
   priv->in_switch = TRUE;
 
   /* If the press didn't happen in the draggable handle,
@@ -215,11 +215,11 @@ gtk_switch_multipress_gesture_pressed (GtkGestureMultiPress *gesture,
    */
   if ((priv->is_active && x <= allocation.width / 2.0) ||
       (!priv->is_active && x > allocation.width / 2.0))
-    gtk_gesture_set_state (priv->pan_gesture, GTK_EVENT_SEQUENCE_DENIED);
+    ctk_gesture_set_state (priv->pan_gesture, GTK_EVENT_SEQUENCE_DENIED);
 }
 
 static void
-gtk_switch_multipress_gesture_released (GtkGestureMultiPress *gesture,
+ctk_switch_multipress_gesture_released (GtkGestureMultiPress *gesture,
                                         gint                  n_press,
                                         gdouble               x,
                                         gdouble               y,
@@ -228,17 +228,17 @@ gtk_switch_multipress_gesture_released (GtkGestureMultiPress *gesture,
   GtkSwitchPrivate *priv = sw->priv;
   GdkEventSequence *sequence;
 
-  sequence = gtk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
+  sequence = ctk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
 
   if (priv->in_switch &&
-      gtk_gesture_handles_sequence (GTK_GESTURE (gesture), sequence))
-    gtk_switch_begin_toggle_animation (sw);
+      ctk_gesture_handles_sequence (GTK_GESTURE (gesture), sequence))
+    ctk_switch_begin_toggle_animation (sw);
 
   priv->in_switch = FALSE;
 }
 
 static void
-gtk_switch_pan_gesture_pan (GtkGesturePan   *gesture,
+ctk_switch_pan_gesture_pan (GtkGesturePan   *gesture,
                             GtkPanDirection  direction,
                             gdouble          offset,
                             GtkSwitch       *sw)
@@ -250,9 +250,9 @@ gtk_switch_pan_gesture_pan (GtkGesturePan   *gesture,
   if (direction == GTK_PAN_DIRECTION_LEFT)
     offset = -offset;
 
-  gtk_gesture_set_state (GTK_GESTURE (gesture), GTK_EVENT_SEQUENCE_CLAIMED);
+  ctk_gesture_set_state (GTK_GESTURE (gesture), GTK_EVENT_SEQUENCE_CLAIMED);
 
-  width = gtk_widget_get_allocated_width (widget);
+  width = ctk_widget_get_allocated_width (widget);
 
   if (priv->is_active)
     offset += width / 2;
@@ -262,11 +262,11 @@ gtk_switch_pan_gesture_pan (GtkGesturePan   *gesture,
   priv->handle_pos = CLAMP (offset, 0, 1.0);
 
   /* we need to redraw the handle */
-  gtk_widget_queue_allocate (widget);
+  ctk_widget_queue_allocate (widget);
 }
 
 static void
-gtk_switch_pan_gesture_drag_end (GtkGestureDrag *gesture,
+ctk_switch_pan_gesture_drag_end (GtkGestureDrag *gesture,
                                  gdouble         x,
                                  gdouble         y,
                                  GtkSwitch      *sw)
@@ -276,29 +276,29 @@ gtk_switch_pan_gesture_drag_end (GtkGestureDrag *gesture,
   GtkAllocation allocation;
   gboolean active;
 
-  sequence = gtk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
+  sequence = ctk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
 
-  if (gtk_gesture_get_sequence_state (GTK_GESTURE (gesture), sequence) == GTK_EVENT_SEQUENCE_CLAIMED)
+  if (ctk_gesture_get_sequence_state (GTK_GESTURE (gesture), sequence) == GTK_EVENT_SEQUENCE_CLAIMED)
     {
-      gtk_widget_get_allocation (GTK_WIDGET (sw), &allocation);
+      ctk_widget_get_allocation (GTK_WIDGET (sw), &allocation);
 
       /* if half the handle passed the middle of the switch, then we
        * consider it to be on
        */
       active = priv->handle_pos >= 0.5;
     }
-  else if (!gtk_gesture_handles_sequence (priv->multipress_gesture, sequence))
+  else if (!ctk_gesture_handles_sequence (priv->multipress_gesture, sequence))
     active = priv->is_active;
   else
     return;
 
   priv->handle_pos = active ? 1.0 : 0.0;
-  gtk_switch_set_active (sw, active);
-  gtk_widget_queue_allocate (GTK_WIDGET (sw));
+  ctk_switch_set_active (sw, active);
+  ctk_widget_queue_allocate (GTK_WIDGET (sw));
 }
 
 static gboolean
-gtk_switch_enter (GtkWidget        *widget,
+ctk_switch_enter (GtkWidget        *widget,
                   GdkEventCrossing *event)
 {
   GtkSwitchPrivate *priv = GTK_SWITCH (widget)->priv;
@@ -306,14 +306,14 @@ gtk_switch_enter (GtkWidget        *widget,
   if (event->window == priv->event_window)
     {
       priv->in_switch = TRUE;
-      gtk_widget_set_state_flags (widget, GTK_STATE_FLAG_PRELIGHT, FALSE);
+      ctk_widget_set_state_flags (widget, GTK_STATE_FLAG_PRELIGHT, FALSE);
     }
 
   return FALSE;
 }
 
 static gboolean
-gtk_switch_leave (GtkWidget        *widget,
+ctk_switch_leave (GtkWidget        *widget,
                   GdkEventCrossing *event)
 {
   GtkSwitchPrivate *priv = GTK_SWITCH (widget)->priv;
@@ -321,20 +321,20 @@ gtk_switch_leave (GtkWidget        *widget,
   if (event->window == priv->event_window)
     {
       priv->in_switch = FALSE;
-      gtk_widget_unset_state_flags (widget, GTK_STATE_FLAG_PRELIGHT);
+      ctk_widget_unset_state_flags (widget, GTK_STATE_FLAG_PRELIGHT);
     }
 
   return FALSE;
 }
 
 static void
-gtk_switch_activate (GtkSwitch *sw)
+ctk_switch_activate (GtkSwitch *sw)
 {
-  gtk_switch_begin_toggle_animation (sw);
+  ctk_switch_begin_toggle_animation (sw);
 }
 
 static void
-gtk_switch_get_slider_size (GtkCssGadget   *gadget,
+ctk_switch_get_slider_size (GtkCssGadget   *gadget,
                             GtkOrientation  orientation,
                             gint            for_size,
                             gint           *minimum,
@@ -343,33 +343,33 @@ gtk_switch_get_slider_size (GtkCssGadget   *gadget,
                             gint           *natural_baseline,
                             gpointer        unused)
 {
-  GtkWidget *widget = gtk_css_gadget_get_owner (gadget);
+  GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   gdouble min_size;
 
   if (orientation == GTK_ORIENTATION_HORIZONTAL)
     {
-      min_size = _gtk_css_number_value_get (gtk_css_style_get_value (gtk_css_gadget_get_style (gadget), GTK_CSS_PROPERTY_MIN_WIDTH), 100);
+      min_size = _ctk_css_number_value_get (ctk_css_style_get_value (ctk_css_gadget_get_style (gadget), GTK_CSS_PROPERTY_MIN_WIDTH), 100);
 
       if (min_size > 0.0)
         *minimum = 0;
       else
-        gtk_widget_style_get (widget, "slider-width", minimum, NULL);
+        ctk_widget_style_get (widget, "slider-width", minimum, NULL);
     }
   else
     {
-      min_size = _gtk_css_number_value_get (gtk_css_style_get_value (gtk_css_gadget_get_style (gadget), GTK_CSS_PROPERTY_MIN_HEIGHT), 100);
+      min_size = _ctk_css_number_value_get (ctk_css_style_get_value (ctk_css_gadget_get_style (gadget), GTK_CSS_PROPERTY_MIN_HEIGHT), 100);
 
       if (min_size > 0.0)
         *minimum = 0;
       else
-        gtk_widget_style_get (widget, "slider-height", minimum, NULL);
+        ctk_widget_style_get (widget, "slider-height", minimum, NULL);
     }
 
   *natural = *minimum;
 }
 
 static void
-gtk_switch_get_content_size (GtkCssGadget   *gadget,
+ctk_switch_get_content_size (GtkCssGadget   *gadget,
                              GtkOrientation  orientation,
                              gint            for_size,
                              gint           *minimum,
@@ -385,22 +385,22 @@ gtk_switch_get_content_size (GtkCssGadget   *gadget,
   gint on_minimum, on_natural;
   gint off_minimum, off_natural;
 
-  widget = gtk_css_gadget_get_owner (gadget);
+  widget = ctk_css_gadget_get_owner (gadget);
   self = GTK_SWITCH (widget);
   priv = self->priv;
 
-  gtk_css_gadget_get_preferred_size (priv->slider_gadget,
+  ctk_css_gadget_get_preferred_size (priv->slider_gadget,
                                      orientation,
                                      -1,
                                      &slider_minimum, &slider_natural,
                                      NULL, NULL);
 
-  gtk_css_gadget_get_preferred_size (priv->on_gadget,
+  ctk_css_gadget_get_preferred_size (priv->on_gadget,
                                      orientation,
                                      -1,
                                      &on_minimum, &on_natural,
                                      NULL, NULL);
-  gtk_css_gadget_get_preferred_size (priv->off_gadget,
+  ctk_css_gadget_get_preferred_size (priv->off_gadget,
                                      orientation,
                                      -1,
                                      &off_minimum, &off_natural,
@@ -419,11 +419,11 @@ gtk_switch_get_content_size (GtkCssGadget   *gadget,
 }
 
 static void
-gtk_switch_get_preferred_width (GtkWidget *widget,
+ctk_switch_get_preferred_width (GtkWidget *widget,
                                 gint      *minimum,
                                 gint      *natural)
 {
-  gtk_css_gadget_get_preferred_size (GTK_SWITCH (widget)->priv->gadget,
+  ctk_css_gadget_get_preferred_size (GTK_SWITCH (widget)->priv->gadget,
                                      GTK_ORIENTATION_HORIZONTAL,
                                      -1,
                                      minimum, natural,
@@ -431,11 +431,11 @@ gtk_switch_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-gtk_switch_get_preferred_height (GtkWidget *widget,
+ctk_switch_get_preferred_height (GtkWidget *widget,
                                  gint      *minimum,
                                  gint      *natural)
 {
-  gtk_css_gadget_get_preferred_size (GTK_SWITCH (widget)->priv->gadget,
+  ctk_css_gadget_get_preferred_size (GTK_SWITCH (widget)->priv->gadget,
                                      GTK_ORIENTATION_VERTICAL,
                                      -1,
                                      minimum, natural,
@@ -443,13 +443,13 @@ gtk_switch_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-gtk_switch_allocate_contents (GtkCssGadget        *gadget,
+ctk_switch_allocate_contents (GtkCssGadget        *gadget,
                               const GtkAllocation *allocation,
                               int                  baseline,
                               GtkAllocation       *out_clip,
                               gpointer             unused)
 {
-  GtkSwitch *self = GTK_SWITCH (gtk_css_gadget_get_owner (gadget));
+  GtkSwitch *self = GTK_SWITCH (ctk_css_gadget_get_owner (gadget));
   GtkSwitchPrivate *priv = self->priv;
   GtkAllocation child_alloc;
   GtkAllocation on_clip, off_clip;
@@ -459,14 +459,14 @@ gtk_switch_allocate_contents (GtkCssGadget        *gadget,
   child_alloc.width = allocation->width / 2;
   child_alloc.height = allocation->height;
 
-  gtk_css_gadget_allocate (priv->slider_gadget,
+  ctk_css_gadget_allocate (priv->slider_gadget,
                            &child_alloc,
                            baseline,
                            out_clip);
 
   child_alloc.x = allocation->x;
 
-  gtk_css_gadget_allocate (priv->on_gadget,
+  ctk_css_gadget_allocate (priv->on_gadget,
                            &child_alloc,
                            baseline,
                            &on_clip);
@@ -474,17 +474,17 @@ gtk_switch_allocate_contents (GtkCssGadget        *gadget,
   gdk_rectangle_union (out_clip, &on_clip, out_clip);
 
   child_alloc.x = allocation->x + allocation->width - child_alloc.width;
-  gtk_css_gadget_allocate (priv->off_gadget,
+  ctk_css_gadget_allocate (priv->off_gadget,
                            &child_alloc,
                            baseline,
                            &off_clip);
 
   gdk_rectangle_union (out_clip, &off_clip, out_clip);
 
-  if (gtk_widget_get_realized (GTK_WIDGET (self)))
+  if (ctk_widget_get_realized (GTK_WIDGET (self)))
     {
       GtkAllocation border_allocation;
-      gtk_css_gadget_get_border_allocation (gadget, &border_allocation, NULL);
+      ctk_css_gadget_get_border_allocation (gadget, &border_allocation, NULL);
       gdk_window_move_resize (priv->event_window,
                               border_allocation.x,
                               border_allocation.y,
@@ -494,23 +494,23 @@ gtk_switch_allocate_contents (GtkCssGadget        *gadget,
 }
 
 static void
-gtk_switch_size_allocate (GtkWidget     *widget,
+ctk_switch_size_allocate (GtkWidget     *widget,
                           GtkAllocation *allocation)
 {
   GtkSwitchPrivate *priv = GTK_SWITCH (widget)->priv;
   GtkAllocation clip;
 
-  gtk_widget_set_allocation (widget, allocation);
-  gtk_css_gadget_allocate (priv->gadget,
+  ctk_widget_set_allocation (widget, allocation);
+  ctk_css_gadget_allocate (priv->gadget,
                            allocation,
-                           gtk_widget_get_allocated_baseline (widget),
+                           ctk_widget_get_allocated_baseline (widget),
                            &clip);
 
-  gtk_widget_set_clip (widget, &clip);
+  ctk_widget_set_clip (widget, &clip);
 }
 
 static void
-gtk_switch_realize (GtkWidget *widget)
+ctk_switch_realize (GtkWidget *widget)
 {
   GtkSwitchPrivate *priv = GTK_SWITCH (widget)->priv;
   GdkWindow *parent_window;
@@ -518,12 +518,12 @@ gtk_switch_realize (GtkWidget *widget)
   gint attributes_mask;
   GtkAllocation allocation;
 
-  gtk_widget_set_realized (widget, TRUE);
-  parent_window = gtk_widget_get_parent_window (widget);
-  gtk_widget_set_window (widget, parent_window);
+  ctk_widget_set_realized (widget, TRUE);
+  parent_window = ctk_widget_get_parent_window (widget);
+  ctk_widget_set_window (widget, parent_window);
   g_object_ref (parent_window);
 
-  gtk_widget_get_allocation (widget, &allocation);
+  ctk_widget_get_allocation (widget, &allocation);
 
   attributes.window_type = GDK_WINDOW_CHILD;
   attributes.wclass = GDK_INPUT_ONLY;
@@ -531,7 +531,7 @@ gtk_switch_realize (GtkWidget *widget)
   attributes.y = allocation.y;
   attributes.width = allocation.width;
   attributes.height = allocation.height;
-  attributes.event_mask = gtk_widget_get_events (widget);
+  attributes.event_mask = ctk_widget_get_events (widget);
   attributes.event_mask |= (GDK_BUTTON_PRESS_MASK |
                             GDK_BUTTON_RELEASE_MASK |
                             GDK_BUTTON1_MOTION_MASK |
@@ -543,48 +543,48 @@ gtk_switch_realize (GtkWidget *widget)
   priv->event_window = gdk_window_new (parent_window,
                                        &attributes,
                                        attributes_mask);
-  gtk_widget_register_window (widget, priv->event_window);
+  ctk_widget_register_window (widget, priv->event_window);
 }
 
 static void
-gtk_switch_unrealize (GtkWidget *widget)
+ctk_switch_unrealize (GtkWidget *widget)
 {
   GtkSwitchPrivate *priv = GTK_SWITCH (widget)->priv;
 
   if (priv->event_window != NULL)
     {
-      gtk_widget_unregister_window (widget, priv->event_window);
+      ctk_widget_unregister_window (widget, priv->event_window);
       gdk_window_destroy (priv->event_window);
       priv->event_window = NULL;
     }
 
-  GTK_WIDGET_CLASS (gtk_switch_parent_class)->unrealize (widget);
+  GTK_WIDGET_CLASS (ctk_switch_parent_class)->unrealize (widget);
 }
 
 static void
-gtk_switch_map (GtkWidget *widget)
+ctk_switch_map (GtkWidget *widget)
 {
   GtkSwitchPrivate *priv = GTK_SWITCH (widget)->priv;
 
-  GTK_WIDGET_CLASS (gtk_switch_parent_class)->map (widget);
+  GTK_WIDGET_CLASS (ctk_switch_parent_class)->map (widget);
 
   if (priv->event_window)
     gdk_window_show (priv->event_window);
 }
 
 static void
-gtk_switch_unmap (GtkWidget *widget)
+ctk_switch_unmap (GtkWidget *widget)
 {
   GtkSwitchPrivate *priv = GTK_SWITCH (widget)->priv;
 
   if (priv->event_window)
     gdk_window_hide (priv->event_window);
 
-  GTK_WIDGET_CLASS (gtk_switch_parent_class)->unmap (widget);
+  GTK_WIDGET_CLASS (ctk_switch_parent_class)->unmap (widget);
 }
 
 static gboolean
-gtk_switch_render_slider (GtkCssGadget *gadget,
+ctk_switch_render_slider (GtkCssGadget *gadget,
                           cairo_t      *cr,
                           int           x,
                           int           y,
@@ -592,11 +592,11 @@ gtk_switch_render_slider (GtkCssGadget *gadget,
                           int           height,
                           gpointer      data)
 {
-  return gtk_widget_has_visible_focus (gtk_css_gadget_get_owner (gadget));
+  return ctk_widget_has_visible_focus (ctk_css_gadget_get_owner (gadget));
 }
 
 static gboolean
-gtk_switch_render_trough (GtkCssGadget *gadget,
+ctk_switch_render_trough (GtkCssGadget *gadget,
                           cairo_t      *cr,
                           int           x,
                           int           y,
@@ -604,42 +604,42 @@ gtk_switch_render_trough (GtkCssGadget *gadget,
                           int           height,
                           gpointer      data)
 {
-  GtkWidget *widget = gtk_css_gadget_get_owner (gadget);
+  GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   GtkSwitchPrivate *priv = GTK_SWITCH (widget)->priv;
 
-  gtk_css_gadget_draw (priv->on_gadget, cr);
-  gtk_css_gadget_draw (priv->off_gadget, cr);
-  gtk_css_gadget_draw (priv->slider_gadget, cr);
+  ctk_css_gadget_draw (priv->on_gadget, cr);
+  ctk_css_gadget_draw (priv->off_gadget, cr);
+  ctk_css_gadget_draw (priv->slider_gadget, cr);
 
   return FALSE;
 }
 
 static gboolean
-gtk_switch_draw (GtkWidget *widget,
+ctk_switch_draw (GtkWidget *widget,
                  cairo_t   *cr)
 {
-  gtk_css_gadget_draw (GTK_SWITCH (widget)->priv->gadget, cr);
+  ctk_css_gadget_draw (GTK_SWITCH (widget)->priv->gadget, cr);
 
   return FALSE;
 }
 
 static void
-gtk_switch_state_flags_changed (GtkWidget     *widget,
+ctk_switch_state_flags_changed (GtkWidget     *widget,
                                 GtkStateFlags  previous_state_flags)
 {
   GtkSwitchPrivate *priv = GTK_SWITCH (widget)->priv;
-  GtkStateFlags state = gtk_widget_get_state_flags (widget);
+  GtkStateFlags state = ctk_widget_get_state_flags (widget);
 
-  gtk_css_gadget_set_state (priv->gadget, state);
-  gtk_css_gadget_set_state (priv->slider_gadget, state);
-  gtk_css_gadget_set_state (priv->on_gadget, state);
-  gtk_css_gadget_set_state (priv->off_gadget, state);
+  ctk_css_gadget_set_state (priv->gadget, state);
+  ctk_css_gadget_set_state (priv->slider_gadget, state);
+  ctk_css_gadget_set_state (priv->on_gadget, state);
+  ctk_css_gadget_set_state (priv->off_gadget, state);
 
-  GTK_WIDGET_CLASS (gtk_switch_parent_class)->state_flags_changed (widget, previous_state_flags);
+  GTK_WIDGET_CLASS (ctk_switch_parent_class)->state_flags_changed (widget, previous_state_flags);
 }
 
 static void
-gtk_switch_set_related_action (GtkSwitch *sw,
+ctk_switch_set_related_action (GtkSwitch *sw,
                                GtkAction *action)
 {
   GtkSwitchPrivate *priv = sw->priv;
@@ -648,14 +648,14 @@ gtk_switch_set_related_action (GtkSwitch *sw,
     return;
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  gtk_activatable_do_set_related_action (GTK_ACTIVATABLE (sw), action);
+  ctk_activatable_do_set_related_action (GTK_ACTIVATABLE (sw), action);
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
   priv->action = action;
 }
 
 static void
-gtk_switch_set_use_action_appearance (GtkSwitch *sw,
+ctk_switch_set_use_action_appearance (GtkSwitch *sw,
                                       gboolean   use_appearance)
 {
   GtkSwitchPrivate *priv = sw->priv;
@@ -665,62 +665,62 @@ gtk_switch_set_use_action_appearance (GtkSwitch *sw,
       priv->use_action_appearance = use_appearance;
 
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-      gtk_activatable_sync_action_properties (GTK_ACTIVATABLE (sw), priv->action);
+      ctk_activatable_sync_action_properties (GTK_ACTIVATABLE (sw), priv->action);
       G_GNUC_END_IGNORE_DEPRECATIONS;
     }
 }
 
 static void
-gtk_switch_set_action_name (GtkActionable *actionable,
+ctk_switch_set_action_name (GtkActionable *actionable,
                             const gchar   *action_name)
 {
   GtkSwitch *sw = GTK_SWITCH (actionable);
 
   if (!sw->priv->action_helper)
-    sw->priv->action_helper = gtk_action_helper_new (actionable);
+    sw->priv->action_helper = ctk_action_helper_new (actionable);
 
-  gtk_action_helper_set_action_name (sw->priv->action_helper, action_name);
+  ctk_action_helper_set_action_name (sw->priv->action_helper, action_name);
 }
 
 static void
-gtk_switch_set_action_target_value (GtkActionable *actionable,
+ctk_switch_set_action_target_value (GtkActionable *actionable,
                                     GVariant      *action_target)
 {
   GtkSwitch *sw = GTK_SWITCH (actionable);
 
   if (!sw->priv->action_helper)
-    sw->priv->action_helper = gtk_action_helper_new (actionable);
+    sw->priv->action_helper = ctk_action_helper_new (actionable);
 
-  gtk_action_helper_set_action_target_value (sw->priv->action_helper, action_target);
+  ctk_action_helper_set_action_target_value (sw->priv->action_helper, action_target);
 }
 
 static const gchar *
-gtk_switch_get_action_name (GtkActionable *actionable)
+ctk_switch_get_action_name (GtkActionable *actionable)
 {
   GtkSwitch *sw = GTK_SWITCH (actionable);
 
-  return gtk_action_helper_get_action_name (sw->priv->action_helper);
+  return ctk_action_helper_get_action_name (sw->priv->action_helper);
 }
 
 static GVariant *
-gtk_switch_get_action_target_value (GtkActionable *actionable)
+ctk_switch_get_action_target_value (GtkActionable *actionable)
 {
   GtkSwitch *sw = GTK_SWITCH (actionable);
 
-  return gtk_action_helper_get_action_target_value (sw->priv->action_helper);
+  return ctk_action_helper_get_action_target_value (sw->priv->action_helper);
 }
 
 static void
-gtk_switch_actionable_iface_init (GtkActionableInterface *iface)
+ctk_switch_actionable_iface_init (GtkActionableInterface *iface)
 {
-  iface->get_action_name = gtk_switch_get_action_name;
-  iface->set_action_name = gtk_switch_set_action_name;
-  iface->get_action_target_value = gtk_switch_get_action_target_value;
-  iface->set_action_target_value = gtk_switch_set_action_target_value;
+  iface->get_action_name = ctk_switch_get_action_name;
+  iface->set_action_name = ctk_switch_set_action_name;
+  iface->get_action_target_value = ctk_switch_get_action_target_value;
+  iface->set_action_target_value = ctk_switch_set_action_target_value;
 }
 
 static void
-gtk_switch_set_property (GObject      *gobject,
+ctk_switch_set_property (GObject      *gobject,
                          guint         prop_id,
                          const GValue *value,
                          GParamSpec   *pspec)
@@ -730,27 +730,27 @@ gtk_switch_set_property (GObject      *gobject,
   switch (prop_id)
     {
     case PROP_ACTIVE:
-      gtk_switch_set_active (sw, g_value_get_boolean (value));
+      ctk_switch_set_active (sw, g_value_get_boolean (value));
       break;
 
     case PROP_STATE:
-      gtk_switch_set_state (sw, g_value_get_boolean (value));
+      ctk_switch_set_state (sw, g_value_get_boolean (value));
       break;
 
     case PROP_RELATED_ACTION:
-      gtk_switch_set_related_action (sw, g_value_get_object (value));
+      ctk_switch_set_related_action (sw, g_value_get_object (value));
       break;
 
     case PROP_USE_ACTION_APPEARANCE:
-      gtk_switch_set_use_action_appearance (sw, g_value_get_boolean (value));
+      ctk_switch_set_use_action_appearance (sw, g_value_get_boolean (value));
       break;
 
     case PROP_ACTION_NAME:
-      gtk_switch_set_action_name (GTK_ACTIONABLE (sw), g_value_get_string (value));
+      ctk_switch_set_action_name (GTK_ACTIONABLE (sw), g_value_get_string (value));
       break;
 
     case PROP_ACTION_TARGET:
-      gtk_switch_set_action_target_value (GTK_ACTIONABLE (sw), g_value_get_variant (value));
+      ctk_switch_set_action_target_value (GTK_ACTIONABLE (sw), g_value_get_variant (value));
       break;
 
     default:
@@ -759,7 +759,7 @@ gtk_switch_set_property (GObject      *gobject,
 }
 
 static void
-gtk_switch_get_property (GObject    *gobject,
+ctk_switch_get_property (GObject    *gobject,
                          guint       prop_id,
                          GValue     *value,
                          GParamSpec *pspec)
@@ -785,11 +785,11 @@ gtk_switch_get_property (GObject    *gobject,
       break;
 
     case PROP_ACTION_NAME:
-      g_value_set_string (value, gtk_action_helper_get_action_name (priv->action_helper));
+      g_value_set_string (value, ctk_action_helper_get_action_name (priv->action_helper));
       break;
 
     case PROP_ACTION_TARGET:
-      g_value_set_variant (value, gtk_action_helper_get_action_target_value (priv->action_helper));
+      g_value_set_variant (value, ctk_action_helper_get_action_target_value (priv->action_helper));
       break;
 
     default:
@@ -798,7 +798,7 @@ gtk_switch_get_property (GObject    *gobject,
 }
 
 static void
-gtk_switch_dispose (GObject *object)
+ctk_switch_dispose (GObject *object)
 {
   GtkSwitchPrivate *priv = GTK_SWITCH (object)->priv;
 
@@ -807,7 +807,7 @@ gtk_switch_dispose (GObject *object)
   if (priv->action)
     {
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-      gtk_activatable_do_set_related_action (GTK_ACTIVATABLE (object), NULL);
+      ctk_activatable_do_set_related_action (GTK_ACTIVATABLE (object), NULL);
       G_GNUC_END_IGNORE_DEPRECATIONS;
       priv->action = NULL;
     }
@@ -820,35 +820,35 @@ gtk_switch_dispose (GObject *object)
   g_clear_object (&priv->pan_gesture);
   g_clear_object (&priv->multipress_gesture);
 
-  G_OBJECT_CLASS (gtk_switch_parent_class)->dispose (object);
+  G_OBJECT_CLASS (ctk_switch_parent_class)->dispose (object);
 }
 
 static void
-gtk_switch_finalize (GObject *object)
+ctk_switch_finalize (GObject *object)
 {
-  gtk_switch_end_toggle_animation (GTK_SWITCH (object));
+  ctk_switch_end_toggle_animation (GTK_SWITCH (object));
 
-  G_OBJECT_CLASS (gtk_switch_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_switch_parent_class)->finalize (object);
 }
 
 static gboolean
 state_set (GtkSwitch *sw, gboolean state)
 {
   if (sw->priv->action_helper)
-    gtk_action_helper_activate (sw->priv->action_helper);
+    ctk_action_helper_activate (sw->priv->action_helper);
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   if (sw->priv->action)
-    gtk_action_activate (sw->priv->action);
+    ctk_action_activate (sw->priv->action);
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
-  gtk_switch_set_state (sw, state);
+  ctk_switch_set_state (sw, state);
 
   return TRUE;
 }
 
 static void
-gtk_switch_class_init (GtkSwitchClass *klass)
+ctk_switch_class_init (GtkSwitchClass *klass)
 {
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
@@ -895,26 +895,26 @@ gtk_switch_class_init (GtkSwitchClass *klass)
                           FALSE,
                           GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
-  gobject_class->set_property = gtk_switch_set_property;
-  gobject_class->get_property = gtk_switch_get_property;
-  gobject_class->dispose = gtk_switch_dispose;
-  gobject_class->finalize = gtk_switch_finalize;
+  gobject_class->set_property = ctk_switch_set_property;
+  gobject_class->get_property = ctk_switch_get_property;
+  gobject_class->dispose = ctk_switch_dispose;
+  gobject_class->finalize = ctk_switch_finalize;
 
   g_object_class_install_properties (gobject_class, LAST_PROP, switch_props);
 
-  widget_class->get_preferred_width = gtk_switch_get_preferred_width;
-  widget_class->get_preferred_height = gtk_switch_get_preferred_height;
-  widget_class->size_allocate = gtk_switch_size_allocate;
-  widget_class->realize = gtk_switch_realize;
-  widget_class->unrealize = gtk_switch_unrealize;
-  widget_class->map = gtk_switch_map;
-  widget_class->unmap = gtk_switch_unmap;
-  widget_class->draw = gtk_switch_draw;
-  widget_class->enter_notify_event = gtk_switch_enter;
-  widget_class->leave_notify_event = gtk_switch_leave;
-  widget_class->state_flags_changed = gtk_switch_state_flags_changed;
+  widget_class->get_preferred_width = ctk_switch_get_preferred_width;
+  widget_class->get_preferred_height = ctk_switch_get_preferred_height;
+  widget_class->size_allocate = ctk_switch_size_allocate;
+  widget_class->realize = ctk_switch_realize;
+  widget_class->unrealize = ctk_switch_unrealize;
+  widget_class->map = ctk_switch_map;
+  widget_class->unmap = ctk_switch_unmap;
+  widget_class->draw = ctk_switch_draw;
+  widget_class->enter_notify_event = ctk_switch_enter;
+  widget_class->leave_notify_event = ctk_switch_leave;
+  widget_class->state_flags_changed = ctk_switch_state_flags_changed;
 
-  klass->activate = gtk_switch_activate;
+  klass->activate = ctk_switch_activate;
   klass->state_set = state_set;
 
   /**
@@ -924,7 +924,7 @@ gtk_switch_class_init (GtkSwitchClass *klass)
    *
    * Deprecated: 3.20: Use the CSS min-width property instead.
    */
-  gtk_widget_class_install_style_property (widget_class,
+  ctk_widget_class_install_style_property (widget_class,
                                            g_param_spec_int ("slider-width",
                                                              P_("Slider Width"),
                                                              P_("The minimum width of the handle"),
@@ -941,7 +941,7 @@ gtk_switch_class_init (GtkSwitchClass *klass)
    *
    * Deprecated: 3.20: Use the CSS min-height property instead.
    */
-  gtk_widget_class_install_style_property (widget_class,
+  ctk_widget_class_install_style_property (widget_class,
                                            g_param_spec_int ("slider-height",
                                                              P_("Slider Height"),
                                                              P_("The minimum height of the handle"),
@@ -979,7 +979,7 @@ gtk_switch_class_init (GtkSwitchClass *klass)
    * property.
    *
    * To implement delayed state change, applications can connect to this signal,
-   * initiate the change of the underlying state, and call gtk_switch_set_state()
+   * initiate the change of the underlying state, and call ctk_switch_set_state()
    * when the underlying state change is complete. The signal handler should
    * return %TRUE to prevent the default handler from running.
    *
@@ -996,91 +996,91 @@ gtk_switch_class_init (GtkSwitchClass *klass)
                   G_OBJECT_CLASS_TYPE (gobject_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkSwitchClass, state_set),
-                  _gtk_boolean_handled_accumulator, NULL,
-                  _gtk_marshal_BOOLEAN__BOOLEAN,
+                  _ctk_boolean_handled_accumulator, NULL,
+                  _ctk_marshal_BOOLEAN__BOOLEAN,
                   G_TYPE_BOOLEAN, 1,
                   G_TYPE_BOOLEAN);
   g_signal_set_va_marshaller (signals[STATE_SET],
                               G_TYPE_FROM_CLASS (gobject_class),
-                              _gtk_marshal_BOOLEAN__BOOLEANv);
+                              _ctk_marshal_BOOLEAN__BOOLEANv);
 
   g_object_class_override_property (gobject_class, PROP_ACTION_NAME, "action-name");
   g_object_class_override_property (gobject_class, PROP_ACTION_TARGET, "action-target");
 
-  gtk_widget_class_set_accessible_type (widget_class, GTK_TYPE_SWITCH_ACCESSIBLE);
-  gtk_widget_class_set_accessible_role (widget_class, ATK_ROLE_TOGGLE_BUTTON);
+  ctk_widget_class_set_accessible_type (widget_class, GTK_TYPE_SWITCH_ACCESSIBLE);
+  ctk_widget_class_set_accessible_role (widget_class, ATK_ROLE_TOGGLE_BUTTON);
 
-  gtk_widget_class_set_css_name (widget_class, "switch");
+  ctk_widget_class_set_css_name (widget_class, "switch");
 }
 
 static void
-gtk_switch_init (GtkSwitch *self)
+ctk_switch_init (GtkSwitch *self)
 {
   GtkSwitchPrivate *priv;
   GtkGesture *gesture;
   GtkCssNode *widget_node;
 
-  priv = self->priv = gtk_switch_get_instance_private (self);
+  priv = self->priv = ctk_switch_get_instance_private (self);
 
   priv->use_action_appearance = TRUE;
-  gtk_widget_set_has_window (GTK_WIDGET (self), FALSE);
-  gtk_widget_set_can_focus (GTK_WIDGET (self), TRUE);
+  ctk_widget_set_has_window (GTK_WIDGET (self), FALSE);
+  ctk_widget_set_can_focus (GTK_WIDGET (self), TRUE);
 
-  widget_node = gtk_widget_get_css_node (GTK_WIDGET (self));
-  priv->gadget = gtk_css_custom_gadget_new_for_node (widget_node,
+  widget_node = ctk_widget_get_css_node (GTK_WIDGET (self));
+  priv->gadget = ctk_css_custom_gadget_new_for_node (widget_node,
                                                      GTK_WIDGET (self),
-                                                     gtk_switch_get_content_size,
-                                                     gtk_switch_allocate_contents,
-                                                     gtk_switch_render_trough,
+                                                     ctk_switch_get_content_size,
+                                                     ctk_switch_allocate_contents,
+                                                     ctk_switch_render_trough,
                                                      NULL,
                                                      NULL);
 
-  priv->slider_gadget = gtk_css_custom_gadget_new ("slider",
+  priv->slider_gadget = ctk_css_custom_gadget_new ("slider",
                                                    GTK_WIDGET (self),
                                                    priv->gadget,
                                                    NULL,
-                                                   gtk_switch_get_slider_size,
+                                                   ctk_switch_get_slider_size,
                                                    NULL,
-                                                   gtk_switch_render_slider,
+                                                   ctk_switch_render_slider,
                                                    NULL,
                                                    NULL);
 
-  priv->on_gadget = gtk_icon_helper_new_named ("image", GTK_WIDGET (self));
-  _gtk_icon_helper_set_icon_name (GTK_ICON_HELPER (priv->on_gadget), "switch-on-symbolic", GTK_ICON_SIZE_MENU);
-  gtk_css_node_set_parent (gtk_css_gadget_get_node (priv->on_gadget), widget_node);
-  gtk_css_node_set_state (gtk_css_gadget_get_node (priv->on_gadget), gtk_css_node_get_state (widget_node));
+  priv->on_gadget = ctk_icon_helper_new_named ("image", GTK_WIDGET (self));
+  _ctk_icon_helper_set_icon_name (GTK_ICON_HELPER (priv->on_gadget), "switch-on-symbolic", GTK_ICON_SIZE_MENU);
+  ctk_css_node_set_parent (ctk_css_gadget_get_node (priv->on_gadget), widget_node);
+  ctk_css_node_set_state (ctk_css_gadget_get_node (priv->on_gadget), ctk_css_node_get_state (widget_node));
 
-  priv->off_gadget = gtk_icon_helper_new_named ("image", GTK_WIDGET (self));
-  _gtk_icon_helper_set_icon_name (GTK_ICON_HELPER (priv->off_gadget), "switch-off-symbolic", GTK_ICON_SIZE_MENU);
-  gtk_css_node_set_parent (gtk_css_gadget_get_node (priv->off_gadget), widget_node);
-  gtk_css_node_set_state (gtk_css_gadget_get_node (priv->off_gadget), gtk_css_node_get_state (widget_node));
+  priv->off_gadget = ctk_icon_helper_new_named ("image", GTK_WIDGET (self));
+  _ctk_icon_helper_set_icon_name (GTK_ICON_HELPER (priv->off_gadget), "switch-off-symbolic", GTK_ICON_SIZE_MENU);
+  ctk_css_node_set_parent (ctk_css_gadget_get_node (priv->off_gadget), widget_node);
+  ctk_css_node_set_state (ctk_css_gadget_get_node (priv->off_gadget), ctk_css_node_get_state (widget_node));
 
-  gesture = gtk_gesture_multi_press_new (GTK_WIDGET (self));
-  gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), FALSE);
-  gtk_gesture_single_set_exclusive (GTK_GESTURE_SINGLE (gesture), TRUE);
+  gesture = ctk_gesture_multi_press_new (GTK_WIDGET (self));
+  ctk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), FALSE);
+  ctk_gesture_single_set_exclusive (GTK_GESTURE_SINGLE (gesture), TRUE);
   g_signal_connect (gesture, "pressed",
-                    G_CALLBACK (gtk_switch_multipress_gesture_pressed), self);
+                    G_CALLBACK (ctk_switch_multipress_gesture_pressed), self);
   g_signal_connect (gesture, "released",
-                    G_CALLBACK (gtk_switch_multipress_gesture_released), self);
-  gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture),
+                    G_CALLBACK (ctk_switch_multipress_gesture_released), self);
+  ctk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture),
                                               GTK_PHASE_BUBBLE);
   priv->multipress_gesture = gesture;
 
-  gesture = gtk_gesture_pan_new (GTK_WIDGET (self),
+  gesture = ctk_gesture_pan_new (GTK_WIDGET (self),
                                  GTK_ORIENTATION_HORIZONTAL);
-  gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), FALSE);
-  gtk_gesture_single_set_exclusive (GTK_GESTURE_SINGLE (gesture), TRUE);
+  ctk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), FALSE);
+  ctk_gesture_single_set_exclusive (GTK_GESTURE_SINGLE (gesture), TRUE);
   g_signal_connect (gesture, "pan",
-                    G_CALLBACK (gtk_switch_pan_gesture_pan), self);
+                    G_CALLBACK (ctk_switch_pan_gesture_pan), self);
   g_signal_connect (gesture, "drag-end",
-                    G_CALLBACK (gtk_switch_pan_gesture_drag_end), self);
-  gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture),
+                    G_CALLBACK (ctk_switch_pan_gesture_drag_end), self);
+  ctk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture),
                                               GTK_PHASE_BUBBLE);
   priv->pan_gesture = gesture;
 }
 
 /**
- * gtk_switch_new:
+ * ctk_switch_new:
  *
  * Creates a new #GtkSwitch widget.
  *
@@ -1089,13 +1089,13 @@ gtk_switch_init (GtkSwitch *self)
  * Since: 3.0
  */
 GtkWidget *
-gtk_switch_new (void)
+ctk_switch_new (void)
 {
   return g_object_new (GTK_TYPE_SWITCH, NULL);
 }
 
 /**
- * gtk_switch_set_active:
+ * ctk_switch_set_active:
  * @sw: a #GtkSwitch
  * @is_active: %TRUE if @sw should be active, and %FALSE otherwise
  *
@@ -1104,14 +1104,14 @@ gtk_switch_new (void)
  * Since: 3.0
  */
 void
-gtk_switch_set_active (GtkSwitch *sw,
+ctk_switch_set_active (GtkSwitch *sw,
                        gboolean   is_active)
 {
   GtkSwitchPrivate *priv;
 
   g_return_if_fail (GTK_IS_SWITCH (sw));
 
-  gtk_switch_end_toggle_animation (sw);
+  ctk_switch_end_toggle_animation (sw);
 
   is_active = !!is_active;
 
@@ -1133,15 +1133,15 @@ gtk_switch_set_active (GtkSwitch *sw,
 
       g_object_notify_by_pspec (G_OBJECT (sw), switch_props[PROP_ACTIVE]);
 
-      accessible = gtk_widget_get_accessible (GTK_WIDGET (sw));
+      accessible = ctk_widget_get_accessible (GTK_WIDGET (sw));
       atk_object_notify_state_change (accessible, ATK_STATE_CHECKED, priv->is_active);
 
-      gtk_widget_queue_allocate (GTK_WIDGET (sw));
+      ctk_widget_queue_allocate (GTK_WIDGET (sw));
     }
 }
 
 /**
- * gtk_switch_get_active:
+ * ctk_switch_get_active:
  * @sw: a #GtkSwitch
  *
  * Gets whether the #GtkSwitch is in its “on” or “off” state.
@@ -1151,7 +1151,7 @@ gtk_switch_set_active (GtkSwitch *sw,
  * Since: 3.0
  */
 gboolean
-gtk_switch_get_active (GtkSwitch *sw)
+ctk_switch_get_active (GtkSwitch *sw)
 {
   g_return_val_if_fail (GTK_IS_SWITCH (sw), FALSE);
 
@@ -1159,7 +1159,7 @@ gtk_switch_get_active (GtkSwitch *sw)
 }
 
 /**
- * gtk_switch_set_state:
+ * ctk_switch_set_state:
  * @sw: a #GtkSwitch
  * @state: the new state
  *
@@ -1174,7 +1174,7 @@ gtk_switch_get_active (GtkSwitch *sw)
  * Since: 3.14
  */
 void
-gtk_switch_set_state (GtkSwitch *sw,
+ctk_switch_set_state (GtkSwitch *sw,
                       gboolean   state)
 {
   g_return_if_fail (GTK_IS_SWITCH (sw));
@@ -1190,18 +1190,18 @@ gtk_switch_set_state (GtkSwitch *sw,
    * to a UI change. We're setting active anyway, to catch 'spontaneous'
    * state changes.
    */
-  gtk_switch_set_active (sw, state);
+  ctk_switch_set_active (sw, state);
 
   if (state)
-    gtk_widget_set_state_flags (GTK_WIDGET (sw), GTK_STATE_FLAG_CHECKED, FALSE);
+    ctk_widget_set_state_flags (GTK_WIDGET (sw), GTK_STATE_FLAG_CHECKED, FALSE);
   else
-    gtk_widget_unset_state_flags (GTK_WIDGET (sw), GTK_STATE_FLAG_CHECKED);
+    ctk_widget_unset_state_flags (GTK_WIDGET (sw), GTK_STATE_FLAG_CHECKED);
 
   g_object_notify (G_OBJECT (sw), "state");
 }
 
 /**
- * gtk_switch_get_state:
+ * ctk_switch_get_state:
  * @sw: a #GtkSwitch
  *
  * Gets the underlying state of the #GtkSwitch.
@@ -1211,7 +1211,7 @@ gtk_switch_set_state (GtkSwitch *sw,
  * Since: 3.14
  */
 gboolean
-gtk_switch_get_state (GtkSwitch *sw)
+ctk_switch_get_state (GtkSwitch *sw)
 {
   g_return_val_if_fail (GTK_IS_SWITCH (sw), FALSE);
 
@@ -1219,7 +1219,7 @@ gtk_switch_get_state (GtkSwitch *sw)
 }
 
 static void
-gtk_switch_update (GtkActivatable *activatable,
+ctk_switch_update (GtkActivatable *activatable,
                    GtkAction      *action,
                    const gchar    *property_name)
 {
@@ -1227,27 +1227,27 @@ gtk_switch_update (GtkActivatable *activatable,
 
   if (strcmp (property_name, "visible") == 0)
     {
-      if (gtk_action_is_visible (action))
-        gtk_widget_show (GTK_WIDGET (activatable));
+      if (ctk_action_is_visible (action))
+        ctk_widget_show (GTK_WIDGET (activatable));
       else
-        gtk_widget_hide (GTK_WIDGET (activatable));
+        ctk_widget_hide (GTK_WIDGET (activatable));
     }
   else if (strcmp (property_name, "sensitive") == 0)
     {
-      gtk_widget_set_sensitive (GTK_WIDGET (activatable), gtk_action_is_sensitive (action));
+      ctk_widget_set_sensitive (GTK_WIDGET (activatable), ctk_action_is_sensitive (action));
     }
   else if (strcmp (property_name, "active") == 0)
     {
-      gtk_action_block_activate (action);
-      gtk_switch_set_active (GTK_SWITCH (activatable), gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)));
-      gtk_action_unblock_activate (action);
+      ctk_action_block_activate (action);
+      ctk_switch_set_active (GTK_SWITCH (activatable), ctk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)));
+      ctk_action_unblock_activate (action);
     }
 
   G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 static void
-gtk_switch_sync_action_properties (GtkActivatable *activatable,
+ctk_switch_sync_action_properties (GtkActivatable *activatable,
                                    GtkAction      *action)
 {
   if (!action)
@@ -1255,23 +1255,23 @@ gtk_switch_sync_action_properties (GtkActivatable *activatable,
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-  if (gtk_action_is_visible (action))
-    gtk_widget_show (GTK_WIDGET (activatable));
+  if (ctk_action_is_visible (action))
+    ctk_widget_show (GTK_WIDGET (activatable));
   else
-    gtk_widget_hide (GTK_WIDGET (activatable));
+    ctk_widget_hide (GTK_WIDGET (activatable));
 
-  gtk_widget_set_sensitive (GTK_WIDGET (activatable), gtk_action_is_sensitive (action));
+  ctk_widget_set_sensitive (GTK_WIDGET (activatable), ctk_action_is_sensitive (action));
 
-  gtk_action_block_activate (action);
-  gtk_switch_set_active (GTK_SWITCH (activatable), gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)));
-  gtk_action_unblock_activate (action);
+  ctk_action_block_activate (action);
+  ctk_switch_set_active (GTK_SWITCH (activatable), ctk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)));
+  ctk_action_unblock_activate (action);
 
   G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 static void
-gtk_switch_activatable_interface_init (GtkActivatableIface *iface)
+ctk_switch_activatable_interface_init (GtkActivatableIface *iface)
 {
-  iface->update = gtk_switch_update;
-  iface->sync_action_properties = gtk_switch_sync_action_properties;
+  iface->update = ctk_switch_update;
+  iface->sync_action_properties = ctk_switch_sync_action_properties;
 }

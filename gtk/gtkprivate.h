@@ -41,43 +41,43 @@ G_BEGIN_DECLS
 
 #ifdef G_DISABLE_CAST_CHECKS
 /* This is true for debug no and minimum */
-#define gtk_internal_return_if_fail(__expr) G_STMT_START{ (void)0; }G_STMT_END
-#define gtk_internal_return_val_if_fail(__expr, __val) G_STMT_START{ (void)0; }G_STMT_END
+#define ctk_internal_return_if_fail(__expr) G_STMT_START{ (void)0; }G_STMT_END
+#define ctk_internal_return_val_if_fail(__expr, __val) G_STMT_START{ (void)0; }G_STMT_END
 #else
 /* This is true for debug yes */
-#define gtk_internal_return_if_fail(__expr) g_return_if_fail(__expr)
-#define gtk_internal_return_val_if_fail(__expr, __val) g_return_val_if_fail(__expr, __val)
+#define ctk_internal_return_if_fail(__expr) g_return_if_fail(__expr)
+#define ctk_internal_return_val_if_fail(__expr, __val) g_return_val_if_fail(__expr, __val)
 #endif
 
-const gchar * _gtk_get_datadir            (void);
-const gchar * _gtk_get_libdir             (void);
-const gchar * _gtk_get_sysconfdir         (void);
-const gchar * _gtk_get_localedir          (void);
-const gchar * _gtk_get_data_prefix        (void);
+const gchar * _ctk_get_datadir            (void);
+const gchar * _ctk_get_libdir             (void);
+const gchar * _ctk_get_sysconfdir         (void);
+const gchar * _ctk_get_localedir          (void);
+const gchar * _ctk_get_data_prefix        (void);
 
-gboolean      _gtk_fnmatch                (const char *pattern,
+gboolean      _ctk_fnmatch                (const char *pattern,
                                            const char *string,
                                            gboolean    no_leading_period);
 
-gchar       * _gtk_get_lc_ctype           (void);
+gchar       * _ctk_get_lc_ctype           (void);
 
-void          _gtk_ensure_resources       (void);
+void          _ctk_ensure_resources       (void);
 
-gboolean _gtk_boolean_handled_accumulator (GSignalInvocationHint *ihint,
+gboolean _ctk_boolean_handled_accumulator (GSignalInvocationHint *ihint,
                                            GValue                *return_accu,
                                            const GValue          *handler_return,
                                            gpointer               dummy);
 
-gboolean _gtk_single_string_accumulator   (GSignalInvocationHint *ihint,
+gboolean _ctk_single_string_accumulator   (GSignalInvocationHint *ihint,
                                            GValue                *return_accu,
                                            const GValue          *handler_return,
                                            gpointer               dummy);
 
-GdkModifierType _gtk_replace_virtual_modifiers (GdkKeymap       *keymap,
+GdkModifierType _ctk_replace_virtual_modifiers (GdkKeymap       *keymap,
                                                 GdkModifierType  modifiers);
-GdkModifierType _gtk_get_primary_accel_mod     (void);
+GdkModifierType _ctk_get_primary_accel_mod     (void);
 
-gboolean _gtk_translate_keyboard_accel_state   (GdkKeymap       *keymap,
+gboolean _ctk_translate_keyboard_accel_state   (GdkKeymap       *keymap,
                                                 guint            hardware_keycode,
                                                 GdkModifierType  state,
                                                 GdkModifierType  accel_mask,
@@ -87,33 +87,33 @@ gboolean _gtk_translate_keyboard_accel_state   (GdkKeymap       *keymap,
                                                 gint            *level,
                                                 GdkModifierType *consumed_modifiers);
 
-gboolean        _gtk_propagate_captured_event  (GtkWidget       *widget,
+gboolean        _ctk_propagate_captured_event  (GtkWidget       *widget,
                                                 GdkEvent        *event,
                                                 GtkWidget       *topmost);
 
 
-gdouble _gtk_get_slowdown ();
-void    _gtk_set_slowdown (gdouble slowdown_factor);
+gdouble _ctk_get_slowdown ();
+void    _ctk_set_slowdown (gdouble slowdown_factor);
 
-gboolean gtk_should_use_portal (void);
-char *gtk_get_portal_request_path (GDBusConnection  *connection,
+gboolean ctk_should_use_portal (void);
+char *ctk_get_portal_request_path (GDBusConnection  *connection,
                                    char            **token);
-char *gtk_get_portal_session_path (GDBusConnection  *connection,
+char *ctk_get_portal_session_path (GDBusConnection  *connection,
                                    char            **token);
-guint gtk_get_portal_interface_version (GDBusConnection *connection,
+guint ctk_get_portal_interface_version (GDBusConnection *connection,
                                         const char      *interface_name);
 
 #ifdef G_OS_WIN32
-void _gtk_load_dll_with_libgtk3_manifest (const char *dllname);
+void _ctk_load_dll_with_libgtk3_manifest (const char *dllname);
 #endif
 
-gboolean        gtk_simulate_touchscreen (void);
+gboolean        ctk_simulate_touchscreen (void);
 
-guint gtk_get_display_debug_flags (GdkDisplay *display);
+guint ctk_get_display_debug_flags (GdkDisplay *display);
 
 #ifdef G_ENABLE_DEBUG
 
-#define GTK_DISPLAY_DEBUG_CHECK(display,type) G_UNLIKELY (gtk_get_display_debug_flags (display) & GTK_DEBUG_##type)
+#define GTK_DISPLAY_DEBUG_CHECK(display,type) G_UNLIKELY (ctk_get_display_debug_flags (display) & GTK_DEBUG_##type)
 
 #else
 

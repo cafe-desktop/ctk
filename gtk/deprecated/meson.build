@@ -1,4 +1,4 @@
-gtk_deprecated_sources = files(
+ctk_deprecated_sources = files(
   'gtkactivatable.c',
   'gtkaction.c',
   'gtkactiongroup.c',
@@ -41,7 +41,7 @@ gtk_deprecated_sources = files(
   'gtkvpaned.c',
 )
 
-gtk_deprecated_headers = files(
+ctk_deprecated_headers = files(
   'gtkactivatable.h',
   'gtkaction.h',
   'gtkactiongroup.h',
@@ -84,4 +84,4 @@ gtk_deprecated_headers = files(
   'gtkvpaned.h',
 )
 
-install_headers(gtk_deprecated_headers, subdir: 'gtk-3.0/gtk/deprecated/')
+install_headers(ctk_deprecated_headers, subdir: 'gtk-3.0/gtk/deprecated/')

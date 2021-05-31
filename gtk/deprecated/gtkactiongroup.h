@@ -38,7 +38,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ACTION_GROUP              (gtk_action_group_get_type ())
+#define GTK_TYPE_ACTION_GROUP              (ctk_action_group_get_type ())
 #define GTK_ACTION_GROUP(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_ACTION_GROUP, GtkActionGroup))
 #define GTK_ACTION_GROUP_CLASS(vtable)     (G_TYPE_CHECK_CLASS_CAST ((vtable), GTK_TYPE_ACTION_GROUP, GtkActionGroupClass))
 #define GTK_IS_ACTION_GROUP(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_ACTION_GROUP))
@@ -75,10 +75,10 @@ struct _GtkActionGroupClass
   /*< private >*/
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 /**
@@ -87,15 +87,15 @@ struct _GtkActionGroupClass
  * @stock_id: The stock id for the action, or the name of an icon from the
  *  icon theme.
  * @label: The label for the action. This field should typically be marked
- *  for translation, see gtk_action_group_set_translation_domain(). If
+ *  for translation, see ctk_action_group_set_translation_domain(). If
  *  @label is %NULL, the label of the stock item with id @stock_id is used.
  * @accelerator: The accelerator for the action, in the format understood by
- *  gtk_accelerator_parse().
+ *  ctk_accelerator_parse().
  * @tooltip: The tooltip for the action. This field should typically be
- *  marked for translation, see gtk_action_group_set_translation_domain().
+ *  marked for translation, see ctk_action_group_set_translation_domain().
  * @callback: The function to call when the action is activated.
  *
- * #GtkActionEntry structs are used with gtk_action_group_add_actions() to
+ * #GtkActionEntry structs are used with ctk_action_group_add_actions() to
  * construct actions.
  *
  * Deprecated: 3.10
@@ -116,16 +116,16 @@ struct _GtkActionEntry
  * @stock_id: The stock id for the action, or the name of an icon from the
  *  icon theme.
  * @label: The label for the action. This field should typically be marked
- *  for translation, see gtk_action_group_set_translation_domain().
+ *  for translation, see ctk_action_group_set_translation_domain().
  * @accelerator: The accelerator for the action, in the format understood by
- *  gtk_accelerator_parse().
+ *  ctk_accelerator_parse().
  * @tooltip: The tooltip for the action. This field should typically be
- *  marked for translation, see gtk_action_group_set_translation_domain().
+ *  marked for translation, see ctk_action_group_set_translation_domain().
  * @callback: The function to call when the action is activated.
  * @is_active: The initial state of the toggle action.
  *
  * #GtkToggleActionEntry structs are used with
- * gtk_action_group_add_toggle_actions() to construct toggle actions.
+ * ctk_action_group_add_toggle_actions() to construct toggle actions.
  *
  * Deprecated: 3.10
  */
@@ -146,16 +146,16 @@ struct _GtkToggleActionEntry
  * @stock_id: The stock id for the action, or the name of an icon from the
  *  icon theme.
  * @label: The label for the action. This field should typically be marked
- *  for translation, see gtk_action_group_set_translation_domain().
+ *  for translation, see ctk_action_group_set_translation_domain().
  * @accelerator: The accelerator for the action, in the format understood by
- *  gtk_accelerator_parse().
+ *  ctk_accelerator_parse().
  * @tooltip: The tooltip for the action. This field should typically be
- *  marked for translation, see gtk_action_group_set_translation_domain().
+ *  marked for translation, see ctk_action_group_set_translation_domain().
  * @value: The value to set on the radio action. See
- *  gtk_radio_action_get_current_value().
+ *  ctk_radio_action_get_current_value().
  *
  * #GtkRadioActionEntry structs are used with
- * gtk_action_group_add_radio_actions() to construct groups of radio actions.
+ * ctk_action_group_add_radio_actions() to construct groups of radio actions.
  *
  * Deprecated: 3.10
  */
@@ -170,73 +170,73 @@ struct _GtkRadioActionEntry
 };
 
 GDK_DEPRECATED_IN_3_10
-GType           gtk_action_group_get_type                (void) G_GNUC_CONST;
+GType           ctk_action_group_get_type                (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_10
-GtkActionGroup *gtk_action_group_new                     (const gchar                *name);
+GtkActionGroup *ctk_action_group_new                     (const gchar                *name);
 GDK_DEPRECATED_IN_3_10
-const gchar    *gtk_action_group_get_name                (GtkActionGroup             *action_group);
+const gchar    *ctk_action_group_get_name                (GtkActionGroup             *action_group);
 GDK_DEPRECATED_IN_3_10
-gboolean        gtk_action_group_get_sensitive           (GtkActionGroup             *action_group);
+gboolean        ctk_action_group_get_sensitive           (GtkActionGroup             *action_group);
 GDK_DEPRECATED_IN_3_10
-void            gtk_action_group_set_sensitive           (GtkActionGroup             *action_group,
+void            ctk_action_group_set_sensitive           (GtkActionGroup             *action_group,
 							  gboolean                    sensitive);
 GDK_DEPRECATED_IN_3_10
-gboolean        gtk_action_group_get_visible             (GtkActionGroup             *action_group);
+gboolean        ctk_action_group_get_visible             (GtkActionGroup             *action_group);
 GDK_DEPRECATED_IN_3_10
-void            gtk_action_group_set_visible             (GtkActionGroup             *action_group,
+void            ctk_action_group_set_visible             (GtkActionGroup             *action_group,
 							  gboolean                    visible);
 GDK_DEPRECATED_IN_3_10
-GtkAccelGroup  *gtk_action_group_get_accel_group         (GtkActionGroup             *action_group);
+GtkAccelGroup  *ctk_action_group_get_accel_group         (GtkActionGroup             *action_group);
 GDK_DEPRECATED_IN_3_10
-void            gtk_action_group_set_accel_group         (GtkActionGroup             *action_group,
+void            ctk_action_group_set_accel_group         (GtkActionGroup             *action_group,
                                                           GtkAccelGroup              *accel_group);
 
 GDK_DEPRECATED_IN_3_10
-GtkAction      *gtk_action_group_get_action              (GtkActionGroup             *action_group,
+GtkAction      *ctk_action_group_get_action              (GtkActionGroup             *action_group,
 							  const gchar                *action_name);
 GDK_DEPRECATED_IN_3_10
-GList          *gtk_action_group_list_actions            (GtkActionGroup             *action_group);
+GList          *ctk_action_group_list_actions            (GtkActionGroup             *action_group);
 GDK_DEPRECATED_IN_3_10
-void            gtk_action_group_add_action              (GtkActionGroup             *action_group,
+void            ctk_action_group_add_action              (GtkActionGroup             *action_group,
 							  GtkAction                  *action);
 GDK_DEPRECATED_IN_3_10
-void            gtk_action_group_add_action_with_accel   (GtkActionGroup             *action_group,
+void            ctk_action_group_add_action_with_accel   (GtkActionGroup             *action_group,
 							  GtkAction                  *action,
 							  const gchar                *accelerator);
 GDK_DEPRECATED_IN_3_10
-void            gtk_action_group_remove_action           (GtkActionGroup             *action_group,
+void            ctk_action_group_remove_action           (GtkActionGroup             *action_group,
 							  GtkAction                  *action);
 GDK_DEPRECATED_IN_3_10
-void            gtk_action_group_add_actions             (GtkActionGroup             *action_group,
+void            ctk_action_group_add_actions             (GtkActionGroup             *action_group,
 							  const GtkActionEntry       *entries,
 							  guint                       n_entries,
 							  gpointer                    user_data);
 GDK_DEPRECATED_IN_3_10
-void            gtk_action_group_add_toggle_actions      (GtkActionGroup             *action_group,
+void            ctk_action_group_add_toggle_actions      (GtkActionGroup             *action_group,
 							  const GtkToggleActionEntry *entries,
 							  guint                       n_entries,
 							  gpointer                    user_data);
 GDK_DEPRECATED_IN_3_10
-void            gtk_action_group_add_radio_actions       (GtkActionGroup             *action_group,
+void            ctk_action_group_add_radio_actions       (GtkActionGroup             *action_group,
 							  const GtkRadioActionEntry  *entries,
 							  guint                       n_entries,
 							  gint                        value,
 							  GCallback                   on_change,
 							  gpointer                    user_data);
 GDK_DEPRECATED_IN_3_10
-void            gtk_action_group_add_actions_full        (GtkActionGroup             *action_group,
+void            ctk_action_group_add_actions_full        (GtkActionGroup             *action_group,
 							  const GtkActionEntry       *entries,
 							  guint                       n_entries,
 							  gpointer                    user_data,
 							  GDestroyNotify              destroy);
 GDK_DEPRECATED_IN_3_10
-void            gtk_action_group_add_toggle_actions_full (GtkActionGroup             *action_group,
+void            ctk_action_group_add_toggle_actions_full (GtkActionGroup             *action_group,
 							  const GtkToggleActionEntry *entries,
 							  guint                       n_entries,
 							  gpointer                    user_data,
 							  GDestroyNotify              destroy);
 GDK_DEPRECATED_IN_3_10
-void            gtk_action_group_add_radio_actions_full  (GtkActionGroup             *action_group,
+void            ctk_action_group_add_radio_actions_full  (GtkActionGroup             *action_group,
 							  const GtkRadioActionEntry  *entries,
 							  guint                       n_entries,
 							  gint                        value,
@@ -244,27 +244,27 @@ void            gtk_action_group_add_radio_actions_full  (GtkActionGroup        
 							  gpointer                    user_data,
 							  GDestroyNotify              destroy);
 GDK_DEPRECATED_IN_3_10
-void            gtk_action_group_set_translate_func      (GtkActionGroup             *action_group,
+void            ctk_action_group_set_translate_func      (GtkActionGroup             *action_group,
 							  GtkTranslateFunc            func,
 							  gpointer                    data,
 							  GDestroyNotify              notify);
 GDK_DEPRECATED_IN_3_10
-void            gtk_action_group_set_translation_domain  (GtkActionGroup             *action_group,
+void            ctk_action_group_set_translation_domain  (GtkActionGroup             *action_group,
 							  const gchar                *domain);
 GDK_DEPRECATED_IN_3_10
-const gchar *   gtk_action_group_translate_string        (GtkActionGroup             *action_group,
+const gchar *   ctk_action_group_translate_string        (GtkActionGroup             *action_group,
   	                                                  const gchar                *string);
 
 /* Protected for use by GtkAction */
-void _gtk_action_group_emit_connect_proxy    (GtkActionGroup *action_group,
+void _ctk_action_group_emit_connect_proxy    (GtkActionGroup *action_group,
                                               GtkAction      *action,
                                               GtkWidget      *proxy);
-void _gtk_action_group_emit_disconnect_proxy (GtkActionGroup *action_group,
+void _ctk_action_group_emit_disconnect_proxy (GtkActionGroup *action_group,
                                               GtkAction      *action,
                                               GtkWidget      *proxy);
-void _gtk_action_group_emit_pre_activate     (GtkActionGroup *action_group,
+void _ctk_action_group_emit_pre_activate     (GtkActionGroup *action_group,
                                               GtkAction      *action);
-void _gtk_action_group_emit_post_activate    (GtkActionGroup *action_group,
+void _ctk_action_group_emit_post_activate    (GtkActionGroup *action_group,
                                               GtkAction      *action);
 
 G_END_DECLS

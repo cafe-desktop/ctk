@@ -38,8 +38,8 @@ test_file (const gchar *filename, GString *string)
       return;
     }
 
-  builder = gtk_builder_new ();
-  ret = gtk_builder_add_from_string (builder, contents, length, &error);
+  builder = ctk_builder_new ();
+  ret = ctk_builder_add_from_string (builder, contents, length, &error);
   g_free (contents);
 
   if (ret)
@@ -108,7 +108,7 @@ main (int argc, char *argv[])
   const gchar *name;
   gchar *path;
 
-  gtk_test_init (&argc, &argv, NULL);
+  ctk_test_init (&argc, &argv, NULL);
 
   /* allow to easily generate expected output for new test cases */
   if (argc > 1)

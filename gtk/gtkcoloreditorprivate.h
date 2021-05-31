@@ -22,7 +22,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_COLOR_EDITOR            (gtk_color_editor_get_type ())
+#define GTK_TYPE_COLOR_EDITOR            (ctk_color_editor_get_type ())
 #define GTK_COLOR_EDITOR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_COLOR_EDITOR, GtkColorEditor))
 #define GTK_COLOR_EDITOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_COLOR_EDITOR, GtkColorEditorClass))
 #define GTK_IS_COLOR_EDITOR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_COLOR_EDITOR))
@@ -46,15 +46,15 @@ struct _GtkColorEditorClass
   GtkBoxClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
-GType       gtk_color_editor_get_type (void) G_GNUC_CONST;
-GtkWidget * gtk_color_editor_new      (void);
+GType       ctk_color_editor_get_type (void) G_GNUC_CONST;
+GtkWidget * ctk_color_editor_new      (void);
 
 G_END_DECLS
 

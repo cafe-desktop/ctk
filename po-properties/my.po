@@ -246,10 +246,10 @@ msgstr "အမှတ်တံဆိပ်"
 #: gtk/gtkaboutdialog.c:487
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "အကွက်နဲ့ ပါတ်သက်တဲ့ အမှတ်တံဆိပ်။ ဒါကို မချမှတ်ထားရင်၊ ၄င်းရဲ့ စံထားချက်ဟာ "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 
 #: gtk/gtkaboutdialog.c:502
 msgid "Logo Icon Name"
@@ -2297,9 +2297,9 @@ msgstr "တိုးတက်နေတဲ့ တုန်ခါလှုပ်�
 #: gtk/gtkentry.c:888
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
-"ခေါ်ဆိုမှု တခုစီကို gtk_entry_progress_pulse() ဆီ တိုးတက်မှု ကန်ထွက်နေတဲ့ ပိတ်ဆို့မှုကို ရွှေ့ဖို့ စုပေါင်း "
+"ခေါ်ဆိုမှု တခုစီကို ctk_entry_progress_pulse() ဆီ တိုးတက်မှု ကန်ထွက်နေတဲ့ ပိတ်ဆို့မှုကို ရွှေ့ဖို့ စုပေါင်း "
 "ရေးသွင်းချက် အကျယ်ရဲ့ အစိတ်အပိုင်း"
 
 #: gtk/gtkentry.c:904
@@ -4332,10 +4332,10 @@ msgstr "တန်ဖိုး"
 
 #: gtk/gtkradioaction.c:119
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"ဒီလုပ်ဆောင်ချက်ဟာ ၄င်းအုပ်စုရဲ့ လက်ရှိ လုပ်ဆောင်ချက် ဖြစ်တဲ့အခါ gtk_radio_action_get_current_value"
+"ဒီလုပ်ဆောင်ချက်ဟာ ၄င်းအုပ်စုရဲ့ လက်ရှိ လုပ်ဆောင်ချက် ဖြစ်တဲ့အခါ ctk_radio_action_get_current_value"
 "() က တန်ဖိုးကို ထုတ်ပေးတယ်။"
 
 #: gtk/gtkradioaction.c:135 gtk/gtkradiobutton.c:160
@@ -6722,8 +6722,8 @@ msgid "No show all"
 msgstr "အားလုံးကို မပြဘူး"
 
 #: gtk/gtkwidget.c:841
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "gtk_widget_show_all() က ဒီ widget ကို ထိခိုက်သင့်၊ မထိခိုက်သင့်"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "ctk_widget_show_all() က ဒီ widget ကို ထိခိုက်သင့်၊ မထိခိုက်သင့်"
 
 #: gtk/gtkwidget.c:864
 msgid "Whether this widget has a tooltip"
@@ -7282,9 +7282,9 @@ msgstr "ထည့်သွင်းမှု နည်းလမ်း statusbar 
 #~ "ရေးဆွဲထားတယ်"
 
 #~ msgid ""
-#~ "The maximum number of items to be returned by gtk_recent_manager_get_items"
+#~ "The maximum number of items to be returned by ctk_recent_manager_get_items"
 #~ "()"
-#~ msgstr "gtk_recent_manager_get_items() မှ ပြန်ထုတ်ပေးမဲံ အချက်များရဲ့ အများဆုံး အရေအတွက်"
+#~ msgstr "ctk_recent_manager_get_items() မှ ပြန်ထုတ်ပေးမဲံ အချက်များရဲ့ အများဆုံး အရေအတွက်"
 
 #~ msgid "Blinking"
 #~ msgstr "မှိတ်တုတ်မှိတ်တုတ်"

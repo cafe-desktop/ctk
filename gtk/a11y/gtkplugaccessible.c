@@ -30,27 +30,27 @@ struct _GtkPlugAccessiblePrivate
   AtkObject *accessible_plug;
 };
 
-G_DEFINE_TYPE_WITH_CODE (GtkPlugAccessible, gtk_plug_accessible, GTK_TYPE_WINDOW_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (GtkPlugAccessible, ctk_plug_accessible, GTK_TYPE_WINDOW_ACCESSIBLE,
                          G_ADD_PRIVATE (GtkPlugAccessible))
 
 
 static void
-gtk_plug_accessible_finalize (GObject *object)
+ctk_plug_accessible_finalize (GObject *object)
 {
   GtkPlugAccessible *plug = GTK_PLUG_ACCESSIBLE (object);
   GtkPlugAccessiblePrivate *priv = plug->priv;
 
   g_clear_object (&priv->accessible_plug);
 
-  G_OBJECT_CLASS (gtk_plug_accessible_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_plug_accessible_parent_class)->finalize (object);
 }
 
 static void
-gtk_plug_accessible_initialize (AtkObject *plug, gpointer data)
+ctk_plug_accessible_initialize (AtkObject *plug, gpointer data)
 {
   AtkObject *atk_plug;
 
-  ATK_OBJECT_CLASS (gtk_plug_accessible_parent_class)->initialize (plug, data);
+  ATK_OBJECT_CLASS (ctk_plug_accessible_parent_class)->initialize (plug, data);
 
   atk_plug = atk_plug_new ();
   atk_plug_set_child (ATK_PLUG (atk_plug), plug);
@@ -58,22 +58,22 @@ gtk_plug_accessible_initialize (AtkObject *plug, gpointer data)
 }
 
 static void
-gtk_plug_accessible_class_init (GtkPlugAccessibleClass *klass) {
+ctk_plug_accessible_class_init (GtkPlugAccessibleClass *klass) {
   AtkObjectClass *atk_class     = ATK_OBJECT_CLASS (klass);
   GObjectClass   *gobject_class = G_OBJECT_CLASS (klass);
 
-  atk_class->initialize   = gtk_plug_accessible_initialize;
-  gobject_class->finalize = gtk_plug_accessible_finalize;
+  atk_class->initialize   = ctk_plug_accessible_initialize;
+  gobject_class->finalize = ctk_plug_accessible_finalize;
 }
 
 static void
-gtk_plug_accessible_init (GtkPlugAccessible *plug)
+ctk_plug_accessible_init (GtkPlugAccessible *plug)
 {
-  plug->priv = gtk_plug_accessible_get_instance_private (plug);
+  plug->priv = ctk_plug_accessible_get_instance_private (plug);
 }
 
 gchar *
-gtk_plug_accessible_get_id (GtkPlugAccessible *plug)
+ctk_plug_accessible_get_id (GtkPlugAccessible *plug)
 {
   return atk_plug_get_id (ATK_PLUG (plug->priv->accessible_plug));
 }

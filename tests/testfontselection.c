@@ -24,13 +24,13 @@
 static void
 notify_font_name_cb (GObject *fontsel, GParamSpec *pspec, gpointer data)
 {
-  g_debug ("Changed font name %s", gtk_font_selection_get_font_name (GTK_FONT_SELECTION (fontsel)));
+  g_debug ("Changed font name %s", ctk_font_selection_get_font_name (GTK_FONT_SELECTION (fontsel)));
 }
 
 static void
 notify_preview_text_cb (GObject *fontsel, GParamSpec *pspec, gpointer data)
 {
-  g_debug ("Changed preview text %s", gtk_font_selection_get_preview_text (GTK_FONT_SELECTION (fontsel)));
+  g_debug ("Changed preview text %s", ctk_font_selection_get_preview_text (GTK_FONT_SELECTION (fontsel)));
 }
 
 int
@@ -40,39 +40,39 @@ main (int argc, char *argv[])
   GtkWidget *hbox;
   GtkWidget *fontsel;
   
-  gtk_init (NULL, NULL);
+  ctk_init (NULL, NULL);
     
-  fontsel = gtk_font_selection_new ();
+  fontsel = ctk_font_selection_new ();
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_widget_set_size_request (window, 600, 600);
-  hbox = gtk_hbox_new (FALSE, 6);
-  gtk_container_add (GTK_CONTAINER (window), hbox);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_widget_set_size_request (window, 600, 600);
+  hbox = ctk_hbox_new (FALSE, 6);
+  ctk_container_add (GTK_CONTAINER (window), hbox);
 
 #ifndef GTK_DISABLE_DEPRECATED
-  g_object_ref (gtk_font_selection_get_size_list (GTK_FONT_SELECTION (fontsel)));
-  g_object_ref (gtk_font_selection_get_family_list (GTK_FONT_SELECTION (fontsel)));
-  g_object_ref (gtk_font_selection_get_face_list (GTK_FONT_SELECTION (fontsel)));
+  g_object_ref (ctk_font_selection_get_size_list (GTK_FONT_SELECTION (fontsel)));
+  g_object_ref (ctk_font_selection_get_family_list (GTK_FONT_SELECTION (fontsel)));
+  g_object_ref (ctk_font_selection_get_face_list (GTK_FONT_SELECTION (fontsel)));
 
-  gtk_container_add (GTK_CONTAINER (hbox), gtk_font_selection_get_size_list (GTK_FONT_SELECTION (fontsel)));
-  gtk_container_add (GTK_CONTAINER (hbox), gtk_font_selection_get_family_list (GTK_FONT_SELECTION (fontsel)));
-  gtk_container_add (GTK_CONTAINER (hbox), gtk_font_selection_get_face_list (GTK_FONT_SELECTION (fontsel)));
+  ctk_container_add (GTK_CONTAINER (hbox), ctk_font_selection_get_size_list (GTK_FONT_SELECTION (fontsel)));
+  ctk_container_add (GTK_CONTAINER (hbox), ctk_font_selection_get_family_list (GTK_FONT_SELECTION (fontsel)));
+  ctk_container_add (GTK_CONTAINER (hbox), ctk_font_selection_get_face_list (GTK_FONT_SELECTION (fontsel)));
 #endif 
 
-  gtk_container_add (GTK_CONTAINER (hbox), fontsel);
+  ctk_container_add (GTK_CONTAINER (hbox), fontsel);
 
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
 
-  g_signal_connect (G_OBJECT (window), "delete-event",          G_CALLBACK(gtk_main_quit), NULL);
+  g_signal_connect (G_OBJECT (window), "delete-event",          G_CALLBACK(ctk_main_quit), NULL);
   g_signal_connect (G_OBJECT (fontsel), "notify::font-name",    G_CALLBACK(notify_font_name_cb), NULL);
   g_signal_connect (G_OBJECT (fontsel), "notify::preview-text", G_CALLBACK(notify_preview_text_cb), NULL);
 
-  gtk_font_selection_set_font_name (GTK_FONT_SELECTION (fontsel), "Bitstream Vera Sans 45");
-  gtk_font_selection_set_preview_text (GTK_FONT_SELECTION (fontsel), "[user@host ~]$ ");
+  ctk_font_selection_set_font_name (GTK_FONT_SELECTION (fontsel), "Bitstream Vera Sans 45");
+  ctk_font_selection_set_preview_text (GTK_FONT_SELECTION (fontsel), "[user@host ~]$ ");
 
-  gtk_main ();
+  ctk_main ();
 
-  gtk_widget_destroy (window);
+  ctk_widget_destroy (window);
 
   return 0;
 }

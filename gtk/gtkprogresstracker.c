@@ -36,36 +36,36 @@
  * the speed of animations. This can be useful for debugging.
  */
 
-static gdouble gtk_slowdown = 1.0;
+static gdouble ctk_slowdown = 1.0;
 
 void
-_gtk_set_slowdown (gdouble factor)
+_ctk_set_slowdown (gdouble factor)
 {
-  gtk_slowdown = factor;
+  ctk_slowdown = factor;
 }
 
 gdouble
-_gtk_get_slowdown (gdouble factor)
+_ctk_get_slowdown (gdouble factor)
 {
-  return gtk_slowdown;
+  return ctk_slowdown;
 }
 
 /**
- * gtk_progress_tracker_init_copy:
+ * ctk_progress_tracker_init_copy:
  * @source: The source progress tracker
  * @dest: The destination progress tracker
  *
  * Copy all progress tracker state from the source tracker to dest tracker.
  **/
 void
-gtk_progress_tracker_init_copy (GtkProgressTracker *source,
+ctk_progress_tracker_init_copy (GtkProgressTracker *source,
                                 GtkProgressTracker *dest)
 {
   memcpy (dest, source, sizeof (GtkProgressTracker));
 }
 
 /**
- * gtk_progress_tracker_start:
+ * ctk_progress_tracker_start:
  * @tracker: The progress tracker
  * @duration: Animation duration in us
  * @delay: Animation delay in us
@@ -74,7 +74,7 @@ gtk_progress_tracker_init_copy (GtkProgressTracker *source,
  * Begins tracking progress for a new animation. Clears all previous state.
  **/
 void
-gtk_progress_tracker_start (GtkProgressTracker *tracker,
+ctk_progress_tracker_start (GtkProgressTracker *tracker,
                             guint64 duration,
                             gint64 delay,
                             gdouble iteration_count)
@@ -87,19 +87,19 @@ gtk_progress_tracker_start (GtkProgressTracker *tracker,
 }
 
 /**
- * gtk_progress_tracker_finish:
+ * ctk_progress_tracker_finish:
  * @tracker: The progress tracker
  *
  * Stops running the current animation.
  **/
 void
-gtk_progress_tracker_finish (GtkProgressTracker *tracker)
+ctk_progress_tracker_finish (GtkProgressTracker *tracker)
 {
   tracker->is_running = FALSE;
 }
 
 /**
- * gtk_progress_tracker_advance_frame:
+ * ctk_progress_tracker_advance_frame:
  * @tracker: The progress tracker
  * @frame_time: The current frame time, usually from the frame clock.
  *
@@ -107,7 +107,7 @@ gtk_progress_tracker_finish (GtkProgressTracker *tracker)
  * been started, does nothing.
  **/
 void
-gtk_progress_tracker_advance_frame (GtkProgressTracker *tracker,
+ctk_progress_tracker_advance_frame (GtkProgressTracker *tracker,
                                     guint64             frame_time)
 {
   gdouble delta;
@@ -127,13 +127,13 @@ gtk_progress_tracker_advance_frame (GtkProgressTracker *tracker,
       return;
     }
 
-  delta = (frame_time - tracker->last_frame_time) / gtk_slowdown / MAX (tracker->duration, 1);
+  delta = (frame_time - tracker->last_frame_time) / ctk_slowdown / MAX (tracker->duration, 1);
   tracker->last_frame_time = frame_time;
   tracker->iteration += delta;
 }
 
 /**
- * gtk_progress_tracker_skip_frame:
+ * ctk_progress_tracker_skip_frame:
  * @tracker: The progress tracker
  * @frame_time: The current frame time, usually from the frame clock.
  *
@@ -142,7 +142,7 @@ gtk_progress_tracker_advance_frame (GtkProgressTracker *tracker,
  * the animation.
  **/
 void
-gtk_progress_tracker_skip_frame (GtkProgressTracker *tracker,
+ctk_progress_tracker_skip_frame (GtkProgressTracker *tracker,
                                  guint64 frame_time)
 {
   if (!tracker->is_running)
@@ -152,7 +152,7 @@ gtk_progress_tracker_skip_frame (GtkProgressTracker *tracker,
 }
 
 /**
- * gtk_progress_tracker_get_state:
+ * ctk_progress_tracker_get_state:
  * @tracker: The progress tracker
  *
  * Returns whether the tracker is before, during or after the currently started
@@ -163,7 +163,7 @@ gtk_progress_tracker_skip_frame (GtkProgressTracker *tracker,
  * Returns: A GtkProgressState
  **/
 GtkProgressState
-gtk_progress_tracker_get_state (GtkProgressTracker *tracker)
+ctk_progress_tracker_get_state (GtkProgressTracker *tracker)
 {
   if (!tracker->is_running || tracker->iteration > tracker->iteration_count)
     return GTK_PROGRESS_STATE_AFTER;
@@ -173,7 +173,7 @@ gtk_progress_tracker_get_state (GtkProgressTracker *tracker)
 }
 
 /**
- * gtk_progress_tracker_get_iteration:
+ * ctk_progress_tracker_get_iteration:
  * @tracker: The progress tracker
  *
  * Returns the fractional number of cycles the animation has completed. For
@@ -183,26 +183,26 @@ gtk_progress_tracker_get_state (GtkProgressTracker *tracker)
  * Returns: The current iteration.
  **/
 gdouble
-gtk_progress_tracker_get_iteration (GtkProgressTracker *tracker)
+ctk_progress_tracker_get_iteration (GtkProgressTracker *tracker)
 {
   return tracker->is_running ? CLAMP (tracker->iteration, 0.0, tracker->iteration_count) : 1.0;
 }
 
 /**
- * gtk_progress_tracker_get_iteration_cycle:
+ * ctk_progress_tracker_get_iteration_cycle:
  * @tracker: The progress tracker
  *
  * Returns an integer index of the current iteration cycle tracker is
  * progressing through. Handles edge cases, such as an iteration value of 2.0
  * which could be considered the end of the second iteration of the beginning of
- * the third, in the same way as gtk_progress_tracker_get_progress().
+ * the third, in the same way as ctk_progress_tracker_get_progress().
  *
  * Returns: The integer count of the current animation cycle.
  **/
 guint64
-gtk_progress_tracker_get_iteration_cycle (GtkProgressTracker *tracker)
+ctk_progress_tracker_get_iteration_cycle (GtkProgressTracker *tracker)
 {
-  gdouble iteration = gtk_progress_tracker_get_iteration (tracker);
+  gdouble iteration = ctk_progress_tracker_get_iteration (tracker);
 
   /* Some complexity here. We want an iteration of 0.0 to always map to 0 (start
    * of the first iteration), but an iteration of 1.0 to also map to 0 (end of
@@ -215,7 +215,7 @@ gtk_progress_tracker_get_iteration_cycle (GtkProgressTracker *tracker)
 }
 
 /**
- * gtk_progress_tracker_get_progress:
+ * ctk_progress_tracker_get_progress:
  * @tracker: The progress tracker
  * @reversed: If progress should be reversed.
  *
@@ -226,14 +226,14 @@ gtk_progress_tracker_get_iteration_cycle (GtkProgressTracker *tracker)
  * Returns: The progress value.
  **/
 gdouble
-gtk_progress_tracker_get_progress (GtkProgressTracker *tracker,
+ctk_progress_tracker_get_progress (GtkProgressTracker *tracker,
                                    gboolean reversed)
 {
   gdouble progress, iteration;
   guint64 iteration_cycle;
 
-  iteration = gtk_progress_tracker_get_iteration (tracker);
-  iteration_cycle = gtk_progress_tracker_get_iteration_cycle (tracker);
+  iteration = ctk_progress_tracker_get_iteration (tracker);
+  iteration_cycle = ctk_progress_tracker_get_iteration_cycle (tracker);
 
   progress = iteration - iteration_cycle;
   return reversed ? 1.0 - progress : progress;
@@ -250,19 +250,19 @@ ease_out_cubic (gdouble t)
 }
 
 /**
- * gtk_progress_tracker_get_ease_out_cubic:
+ * ctk_progress_tracker_get_ease_out_cubic:
  * @tracker: The progress tracker
  * @reversed: If progress should be reversed before applying the ease function.
  *
  * Applies a simple ease out cubic function to the result of
- * gtk_progress_tracker_get_progress().
+ * ctk_progress_tracker_get_progress().
  *
  * Returns: The eased progress value.
  **/
 gdouble
-gtk_progress_tracker_get_ease_out_cubic (GtkProgressTracker *tracker,
+ctk_progress_tracker_get_ease_out_cubic (GtkProgressTracker *tracker,
                                          gboolean reversed)
 {
-  gdouble progress = gtk_progress_tracker_get_progress (tracker, reversed);
+  gdouble progress = ctk_progress_tracker_get_progress (tracker, reversed);
   return ease_out_cubic (progress);
 }

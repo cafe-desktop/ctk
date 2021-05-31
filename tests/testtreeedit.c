@@ -54,7 +54,7 @@ create_model (void)
   GtkTreeIter iter;
   gint i;
 
-  model = gtk_tree_store_new (NUM_COLUMNS,
+  model = ctk_tree_store_new (NUM_COLUMNS,
 			      G_TYPE_STRING,
 			      G_TYPE_BOOLEAN,
 			      G_TYPE_BOOLEAN,
@@ -64,9 +64,9 @@ create_model (void)
 
   for (i = 0; model_strings[i].string != NULL; i++)
     {
-      gtk_tree_store_append (model, &iter, NULL);
+      ctk_tree_store_append (model, &iter, NULL);
 
-      gtk_tree_store_set (model, &iter,
+      ctk_tree_store_set (model, &iter,
 			  STRING_COLUMN, model_strings[i].string,
 			  IS_EDITABLE_COLUMN, model_strings[i].is_editable,
 			  IS_SENSITIVE_COLUMN, model_strings[i].is_sensitive,
@@ -86,16 +86,16 @@ editable_toggled (GtkCellRendererToggle *cell,
 {
   GtkTreeModel *model = GTK_TREE_MODEL (data);
   GtkTreeIter iter;
-  GtkTreePath *path = gtk_tree_path_new_from_string (path_string);
+  GtkTreePath *path = ctk_tree_path_new_from_string (path_string);
   gboolean value;
 
-  gtk_tree_model_get_iter (model, &iter, path);
-  gtk_tree_model_get (model, &iter, IS_EDITABLE_COLUMN, &value, -1);
+  ctk_tree_model_get_iter (model, &iter, path);
+  ctk_tree_model_get (model, &iter, IS_EDITABLE_COLUMN, &value, -1);
 
   value = !value;
-  gtk_tree_store_set (GTK_TREE_STORE (model), &iter, IS_EDITABLE_COLUMN, value, -1);
+  ctk_tree_store_set (GTK_TREE_STORE (model), &iter, IS_EDITABLE_COLUMN, value, -1);
 
-  gtk_tree_path_free (path);
+  ctk_tree_path_free (path);
 }
 
 static void
@@ -105,16 +105,16 @@ sensitive_toggled (GtkCellRendererToggle *cell,
 {
   GtkTreeModel *model = GTK_TREE_MODEL (data);
   GtkTreeIter iter;
-  GtkTreePath *path = gtk_tree_path_new_from_string (path_string);
+  GtkTreePath *path = ctk_tree_path_new_from_string (path_string);
   gboolean value;
 
-  gtk_tree_model_get_iter (model, &iter, path);
-  gtk_tree_model_get (model, &iter, IS_SENSITIVE_COLUMN, &value, -1);
+  ctk_tree_model_get_iter (model, &iter, path);
+  ctk_tree_model_get (model, &iter, IS_SENSITIVE_COLUMN, &value, -1);
 
   value = !value;
-  gtk_tree_store_set (GTK_TREE_STORE (model), &iter, IS_SENSITIVE_COLUMN, value, -1);
+  ctk_tree_store_set (GTK_TREE_STORE (model), &iter, IS_SENSITIVE_COLUMN, value, -1);
 
-  gtk_tree_path_free (path);
+  ctk_tree_path_free (path);
 }
 
 static void
@@ -125,22 +125,22 @@ edited (GtkCellRendererText *cell,
 {
   GtkTreeModel *model = GTK_TREE_MODEL (data);
   GtkTreeIter iter;
-  GtkTreePath *path = gtk_tree_path_new_from_string (path_string);
+  GtkTreePath *path = ctk_tree_path_new_from_string (path_string);
 
-  gtk_tree_model_get_iter (model, &iter, path);
-  gtk_tree_store_set (GTK_TREE_STORE (model), &iter, STRING_COLUMN, new_text, -1);
+  ctk_tree_model_get_iter (model, &iter, path);
+  ctk_tree_store_set (GTK_TREE_STORE (model), &iter, STRING_COLUMN, new_text, -1);
 
-  gtk_tree_path_free (path);
+  ctk_tree_path_free (path);
 }
 
 static gboolean
 button_press_event (GtkWidget *widget, GdkEventButton *event, gpointer callback_data)
 {
 	/* Deselect if people click outside any row. */
-	if (event->window == gtk_tree_view_get_bin_window (GTK_TREE_VIEW (widget))
-	    && !gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (widget),
+	if (event->window == ctk_tree_view_get_bin_window (GTK_TREE_VIEW (widget))
+	    && !ctk_tree_view_get_path_at_pos (GTK_TREE_VIEW (widget),
 					       event->x, event->y, NULL, NULL, NULL, NULL)) {
-		gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (GTK_TREE_VIEW (widget)));
+		ctk_tree_selection_unselect_all (ctk_tree_view_get_selection (GTK_TREE_VIEW (widget)));
 	}
 
 	/* Let the default code run in any case; it won't reselect anything. */
@@ -156,27 +156,27 @@ static void
 align_cell_toggled (GtkToggleButton  *toggle,
 		    CallbackData     *data)
 {
-  gboolean active = gtk_toggle_button_get_active (toggle);
+  gboolean active = ctk_toggle_button_get_active (toggle);
 
-  gtk_cell_area_cell_set (data->area, data->renderer, "align", active, NULL);
+  ctk_cell_area_cell_set (data->area, data->renderer, "align", active, NULL);
 }
 
 static void
 expand_cell_toggled (GtkToggleButton  *toggle,
 		     CallbackData     *data)
 {
-  gboolean active = gtk_toggle_button_get_active (toggle);
+  gboolean active = ctk_toggle_button_get_active (toggle);
 
-  gtk_cell_area_cell_set (data->area, data->renderer, "expand", active, NULL);
+  ctk_cell_area_cell_set (data->area, data->renderer, "expand", active, NULL);
 }
 
 static void
 fixed_cell_toggled (GtkToggleButton  *toggle,
 		    CallbackData     *data)
 {
-  gboolean active = gtk_toggle_button_get_active (toggle);
+  gboolean active = ctk_toggle_button_get_active (toggle);
 
-  gtk_cell_area_cell_set (data->area, data->renderer, "fixed-size", active, NULL);
+  ctk_cell_area_cell_set (data->area, data->renderer, "fixed-size", active, NULL);
 }
 
 enum {
@@ -208,10 +208,10 @@ create_control (GtkWidget *box, gint number, gint cntl, CallbackData *data)
       break;
     }
 
-  checkbutton = gtk_check_button_new_with_label (name);
-  gtk_widget_show (checkbutton);
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbutton), cntl == CNTL_FIXED);
-  gtk_box_pack_start (GTK_BOX (box), checkbutton, FALSE, FALSE, 0);
+  checkbutton = ctk_check_button_new_with_label (name);
+  ctk_widget_show (checkbutton);
+  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbutton), cntl == CNTL_FIXED);
+  ctk_box_pack_start (GTK_BOX (box), checkbutton, FALSE, FALSE, 0);
 
   g_signal_connect (G_OBJECT (checkbutton), "toggled", callback, data);
   g_free (name);
@@ -230,46 +230,46 @@ main (gint argc, gchar **argv)
   GtkCellArea *area;
   CallbackData callback[4];
   
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
   if (g_getenv ("RTL"))
-    gtk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
+    ctk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_title (GTK_WINDOW (window), "GtkTreeView editing sample");
-  g_signal_connect (window, "destroy", gtk_main_quit, NULL);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (GTK_WINDOW (window), "GtkTreeView editing sample");
+  g_signal_connect (window, "destroy", ctk_main_quit, NULL);
 
-  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-  gtk_widget_show (vbox);
-  gtk_container_add (GTK_CONTAINER (window), vbox);
+  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+  ctk_widget_show (vbox);
+  ctk_container_add (GTK_CONTAINER (window), vbox);
 
-  scrolled_window = gtk_scrolled_window_new (NULL, NULL);
-  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolled_window), GTK_SHADOW_ETCHED_IN);
-  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window), 
+  scrolled_window = ctk_scrolled_window_new (NULL, NULL);
+  ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolled_window), GTK_SHADOW_ETCHED_IN);
+  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window), 
 				  GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
-  gtk_box_pack_start (GTK_BOX (vbox), scrolled_window, TRUE, TRUE, 0);
+  ctk_box_pack_start (GTK_BOX (vbox), scrolled_window, TRUE, TRUE, 0);
 
   tree_model = create_model ();
-  tree_view = gtk_tree_view_new_with_model (tree_model);
+  tree_view = ctk_tree_view_new_with_model (tree_model);
   g_signal_connect (tree_view, "button_press_event", G_CALLBACK (button_press_event), NULL);
-  gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (tree_view), TRUE);
+  ctk_tree_view_set_headers_visible (GTK_TREE_VIEW (tree_view), TRUE);
 
-  column = gtk_tree_view_column_new ();
-  gtk_tree_view_column_set_title (column, "String");
-  area = gtk_cell_layout_get_area (GTK_CELL_LAYOUT (column));
+  column = ctk_tree_view_column_new ();
+  ctk_tree_view_column_set_title (column, "String");
+  area = ctk_cell_layout_get_area (GTK_CELL_LAYOUT (column));
 
-  renderer = gtk_cell_renderer_pixbuf_new ();
-  gtk_tree_view_column_pack_start (column, renderer, FALSE);
-  gtk_tree_view_column_set_attributes (column, renderer,
+  renderer = ctk_cell_renderer_pixbuf_new ();
+  ctk_tree_view_column_pack_start (column, renderer, FALSE);
+  ctk_tree_view_column_set_attributes (column, renderer,
 				       "icon-name", ICON_NAME_COLUMN, 
 				       "sensitive", IS_SENSITIVE_COLUMN,
 				       NULL);
   callback[0].area = area;
   callback[0].renderer = renderer;
 
-  renderer = gtk_cell_renderer_text_new ();
-  gtk_tree_view_column_pack_start (column, renderer, FALSE);
-  gtk_tree_view_column_set_attributes (column, renderer,
+  renderer = ctk_cell_renderer_text_new ();
+  ctk_tree_view_column_pack_start (column, renderer, FALSE);
+  ctk_tree_view_column_set_attributes (column, renderer,
 				       "text", STRING_COLUMN,
 				       "editable", IS_EDITABLE_COLUMN,
 				       "sensitive", IS_SENSITIVE_COLUMN,
@@ -282,9 +282,9 @@ main (gint argc, gchar **argv)
                 "placeholder-text", "Type here",
                 NULL);
 
-  renderer = gtk_cell_renderer_text_new ();
-  gtk_tree_view_column_pack_start (column, renderer, FALSE);
-  gtk_tree_view_column_set_attributes (column, renderer,
+  renderer = ctk_cell_renderer_text_new ();
+  ctk_tree_view_column_pack_start (column, renderer, FALSE);
+  ctk_tree_view_column_set_attributes (column, renderer,
 		  		       "text", STRING_COLUMN,
 				       "editable", IS_EDITABLE_COLUMN,
 				       "sensitive", IS_SENSITIVE_COLUMN,
@@ -297,66 +297,66 @@ main (gint argc, gchar **argv)
                 "placeholder-text", "Type here too",
                 NULL);
 
-  renderer = gtk_cell_renderer_pixbuf_new ();
+  renderer = ctk_cell_renderer_pixbuf_new ();
   g_object_set (renderer,
 		"xalign", 0.0,
 		NULL);
-  gtk_tree_view_column_pack_start (column, renderer, FALSE);
-  gtk_tree_view_column_set_attributes (column, renderer,
+  ctk_tree_view_column_pack_start (column, renderer, FALSE);
+  ctk_tree_view_column_set_attributes (column, renderer,
 				       "icon-name", LAST_ICON_NAME_COLUMN, 
 				       "sensitive", IS_SENSITIVE_COLUMN,
 				       NULL);
   callback[3].area = area;
   callback[3].renderer = renderer;
 
-  gtk_tree_view_append_column (GTK_TREE_VIEW (tree_view), column);
+  ctk_tree_view_append_column (GTK_TREE_VIEW (tree_view), column);
 
-  renderer = gtk_cell_renderer_toggle_new ();
+  renderer = ctk_cell_renderer_toggle_new ();
   g_signal_connect (renderer, "toggled",
 		    G_CALLBACK (editable_toggled), tree_model);
   
   g_object_set (renderer,
 		"xalign", 0.0,
 		NULL);
-  gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tree_view),
+  ctk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tree_view),
 					       -1, "Editable",
 					       renderer,
 					       "active", IS_EDITABLE_COLUMN,
 					       NULL);
 
-  renderer = gtk_cell_renderer_toggle_new ();
+  renderer = ctk_cell_renderer_toggle_new ();
   g_signal_connect (renderer, "toggled",
 		    G_CALLBACK (sensitive_toggled), tree_model);
   
   g_object_set (renderer,
 		"xalign", 0.0,
 		NULL);
-  gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tree_view),
+  ctk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tree_view),
 					       -1, "Sensitive",
 					       renderer,
 					       "active", IS_SENSITIVE_COLUMN,
 					       NULL);
 
-  renderer = gtk_cell_renderer_progress_new ();
-  gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tree_view),
+  renderer = ctk_cell_renderer_progress_new ();
+  ctk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tree_view),
 					       -1, "Progress",
 					       renderer,
 					       "value", PROGRESS_COLUMN,
 					       NULL);
 
-  gtk_container_add (GTK_CONTAINER (scrolled_window), tree_view);
+  ctk_container_add (GTK_CONTAINER (scrolled_window), tree_view);
   
-  gtk_window_set_default_size (GTK_WINDOW (window),
+  ctk_window_set_default_size (GTK_WINDOW (window),
 			       800, 250);
 
-  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
-  gtk_widget_show (hbox);
-  gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
+  hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
+  ctk_widget_show (hbox);
+  ctk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
 
   /* Alignment controls */
-  cntl_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 2);
-  gtk_widget_show (cntl_vbox);
-  gtk_box_pack_start (GTK_BOX (hbox), cntl_vbox, FALSE, FALSE, 0);
+  cntl_vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 2);
+  ctk_widget_show (cntl_vbox);
+  ctk_box_pack_start (GTK_BOX (hbox), cntl_vbox, FALSE, FALSE, 0);
 
   create_control (cntl_vbox, 1, CNTL_ALIGN, &callback[0]);
   create_control (cntl_vbox, 2, CNTL_ALIGN, &callback[1]);
@@ -364,9 +364,9 @@ main (gint argc, gchar **argv)
   create_control (cntl_vbox, 4, CNTL_ALIGN, &callback[3]);
 
   /* Expand controls */
-  cntl_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 2);
-  gtk_widget_show (cntl_vbox);
-  gtk_box_pack_start (GTK_BOX (hbox), cntl_vbox, FALSE, FALSE, 0);
+  cntl_vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 2);
+  ctk_widget_show (cntl_vbox);
+  ctk_box_pack_start (GTK_BOX (hbox), cntl_vbox, FALSE, FALSE, 0);
 
   create_control (cntl_vbox, 1, CNTL_EXPAND, &callback[0]);
   create_control (cntl_vbox, 2, CNTL_EXPAND, &callback[1]);
@@ -374,17 +374,17 @@ main (gint argc, gchar **argv)
   create_control (cntl_vbox, 4, CNTL_EXPAND, &callback[3]);
 
   /* Fixed controls */
-  cntl_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 2);
-  gtk_widget_show (cntl_vbox);
-  gtk_box_pack_start (GTK_BOX (hbox), cntl_vbox, FALSE, FALSE, 0);
+  cntl_vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 2);
+  ctk_widget_show (cntl_vbox);
+  ctk_box_pack_start (GTK_BOX (hbox), cntl_vbox, FALSE, FALSE, 0);
 
   create_control (cntl_vbox, 1, CNTL_FIXED, &callback[0]);
   create_control (cntl_vbox, 2, CNTL_FIXED, &callback[1]);
   create_control (cntl_vbox, 3, CNTL_FIXED, &callback[2]);
   create_control (cntl_vbox, 4, CNTL_FIXED, &callback[3]);
 
-  gtk_widget_show_all (window);
-  gtk_main ();
+  ctk_widget_show_all (window);
+  ctk_main ();
 
   return 0;
 }

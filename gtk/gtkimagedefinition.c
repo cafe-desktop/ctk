@@ -100,15 +100,15 @@ union _GtkImageDefinition
 };
 
 GtkImageDefinition *
-gtk_image_definition_new_empty (void)
+ctk_image_definition_new_empty (void)
 {
   static GtkImageDefinitionEmpty empty = { GTK_IMAGE_EMPTY, 1 };
 
-  return gtk_image_definition_ref ((GtkImageDefinition *) &empty);
+  return ctk_image_definition_ref ((GtkImageDefinition *) &empty);
 }
 
 static inline GtkImageDefinition *
-gtk_image_definition_alloc (GtkImageType type)
+ctk_image_definition_alloc (GtkImageType type)
 {
   static gsize sizes[] = {
     sizeof (GtkImageDefinitionEmpty),
@@ -132,7 +132,7 @@ gtk_image_definition_alloc (GtkImageType type)
 }
 
 GtkImageDefinition *
-gtk_image_definition_new_pixbuf (GdkPixbuf *pixbuf,
+ctk_image_definition_new_pixbuf (GdkPixbuf *pixbuf,
                                  int        scale)
 {
   GtkImageDefinition *def;
@@ -140,7 +140,7 @@ gtk_image_definition_new_pixbuf (GdkPixbuf *pixbuf,
   if (pixbuf == NULL || scale <= 0)
     return NULL;
 
-  def = gtk_image_definition_alloc (GTK_IMAGE_PIXBUF);
+  def = ctk_image_definition_alloc (GTK_IMAGE_PIXBUF);
   def->pixbuf.pixbuf = g_object_ref (pixbuf);
   def->pixbuf.scale = scale;
 
@@ -148,37 +148,37 @@ gtk_image_definition_new_pixbuf (GdkPixbuf *pixbuf,
 }
 
 GtkImageDefinition *
-gtk_image_definition_new_stock (const char *stock_id)
+ctk_image_definition_new_stock (const char *stock_id)
 {
   GtkImageDefinition *def;
 
   if (stock_id == NULL || stock_id[0] == '\0')
     return NULL;
 
-  def = gtk_image_definition_alloc (GTK_IMAGE_STOCK);
+  def = ctk_image_definition_alloc (GTK_IMAGE_STOCK);
   def->stock.id = g_strdup (stock_id);
 
   return def;
 }
 
 GtkImageDefinition *
-gtk_image_definition_new_icon_set (GtkIconSet *icon_set)
+ctk_image_definition_new_icon_set (GtkIconSet *icon_set)
 {
   GtkImageDefinition *def;
 
   if (icon_set == NULL)
     return NULL;
 
-  def = gtk_image_definition_alloc (GTK_IMAGE_ICON_SET);
+  def = ctk_image_definition_alloc (GTK_IMAGE_ICON_SET);
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  def->icon_set.icon_set = gtk_icon_set_ref (icon_set);
+  def->icon_set.icon_set = ctk_icon_set_ref (icon_set);
 G_GNUC_END_IGNORE_DEPRECATIONS;
 
   return def;
 }
 
 GtkImageDefinition *
-gtk_image_definition_new_animation (GdkPixbufAnimation *animation,
+ctk_image_definition_new_animation (GdkPixbufAnimation *animation,
                                     int                 scale)
 {
   GtkImageDefinition *def;
@@ -186,7 +186,7 @@ gtk_image_definition_new_animation (GdkPixbufAnimation *animation,
   if (animation == NULL || scale <= 0)
     return NULL;
 
-  def = gtk_image_definition_alloc (GTK_IMAGE_ANIMATION);
+  def = ctk_image_definition_alloc (GTK_IMAGE_ANIMATION);
   def->animation.animation = g_object_ref (animation);
   def->animation.scale = scale;
 
@@ -194,49 +194,49 @@ gtk_image_definition_new_animation (GdkPixbufAnimation *animation,
 }
 
 GtkImageDefinition *
-gtk_image_definition_new_icon_name (const char *icon_name)
+ctk_image_definition_new_icon_name (const char *icon_name)
 {
   GtkImageDefinition *def;
 
   if (icon_name == NULL || icon_name[0] == '\0')
     return NULL;
 
-  def = gtk_image_definition_alloc (GTK_IMAGE_ICON_NAME);
+  def = ctk_image_definition_alloc (GTK_IMAGE_ICON_NAME);
   def->icon_name.icon_name = g_strdup (icon_name);
 
   return def;
 }
 
 GtkImageDefinition *
-gtk_image_definition_new_gicon (GIcon *gicon)
+ctk_image_definition_new_gicon (GIcon *gicon)
 {
   GtkImageDefinition *def;
 
   if (gicon == NULL)
     return NULL;
 
-  def = gtk_image_definition_alloc (GTK_IMAGE_GICON);
+  def = ctk_image_definition_alloc (GTK_IMAGE_GICON);
   def->gicon.gicon = g_object_ref (gicon);
 
   return def;
 }
 
 GtkImageDefinition *
-gtk_image_definition_new_surface (cairo_surface_t *surface)
+ctk_image_definition_new_surface (cairo_surface_t *surface)
 {
   GtkImageDefinition *def;
 
   if (surface == NULL)
     return NULL;
 
-  def = gtk_image_definition_alloc (GTK_IMAGE_SURFACE);
+  def = ctk_image_definition_alloc (GTK_IMAGE_SURFACE);
   def->surface.surface = cairo_surface_reference (surface);
 
   return def;
 }
 
 GtkImageDefinition *
-gtk_image_definition_ref (GtkImageDefinition *def)
+ctk_image_definition_ref (GtkImageDefinition *def)
 {
   def->empty.ref_count++;
 
@@ -244,7 +244,7 @@ gtk_image_definition_ref (GtkImageDefinition *def)
 }
 
 void
-gtk_image_definition_unref (GtkImageDefinition *def)
+ctk_image_definition_unref (GtkImageDefinition *def)
 {
   def->empty.ref_count--;
 
@@ -271,7 +271,7 @@ gtk_image_definition_unref (GtkImageDefinition *def)
       break;
     case GTK_IMAGE_ICON_SET:
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-      gtk_icon_set_unref (def->icon_set.icon_set);
+      ctk_icon_set_unref (def->icon_set.icon_set);
 G_GNUC_END_IGNORE_DEPRECATIONS;
       break;
     case GTK_IMAGE_ICON_NAME:
@@ -286,13 +286,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 GtkImageType
-gtk_image_definition_get_storage_type (const GtkImageDefinition *def)
+ctk_image_definition_get_storage_type (const GtkImageDefinition *def)
 {
   return def->type;
 }
 
 gint
-gtk_image_definition_get_scale (const GtkImageDefinition *def)
+ctk_image_definition_get_scale (const GtkImageDefinition *def)
 {
   switch (def->type)
     {
@@ -313,7 +313,7 @@ gtk_image_definition_get_scale (const GtkImageDefinition *def)
 }
 
 GdkPixbuf *
-gtk_image_definition_get_pixbuf (const GtkImageDefinition *def)
+ctk_image_definition_get_pixbuf (const GtkImageDefinition *def)
 {
   if (def->type != GTK_IMAGE_PIXBUF)
     return NULL;
@@ -322,7 +322,7 @@ gtk_image_definition_get_pixbuf (const GtkImageDefinition *def)
 }
 
 const gchar *
-gtk_image_definition_get_stock (const GtkImageDefinition *def)
+ctk_image_definition_get_stock (const GtkImageDefinition *def)
 {
   if (def->type != GTK_IMAGE_STOCK)
     return NULL;
@@ -331,7 +331,7 @@ gtk_image_definition_get_stock (const GtkImageDefinition *def)
 }
 
 GtkIconSet *
-gtk_image_definition_get_icon_set (const GtkImageDefinition *def)
+ctk_image_definition_get_icon_set (const GtkImageDefinition *def)
 {
   if (def->type != GTK_IMAGE_ICON_SET)
     return NULL;
@@ -340,7 +340,7 @@ gtk_image_definition_get_icon_set (const GtkImageDefinition *def)
 }
 
 GdkPixbufAnimation *
-gtk_image_definition_get_animation (const GtkImageDefinition *def)
+ctk_image_definition_get_animation (const GtkImageDefinition *def)
 {
   if (def->type != GTK_IMAGE_ANIMATION)
     return NULL;
@@ -349,7 +349,7 @@ gtk_image_definition_get_animation (const GtkImageDefinition *def)
 }
 
 const gchar *
-gtk_image_definition_get_icon_name (const GtkImageDefinition *def)
+ctk_image_definition_get_icon_name (const GtkImageDefinition *def)
 {
   if (def->type != GTK_IMAGE_ICON_NAME)
     return NULL;
@@ -358,7 +358,7 @@ gtk_image_definition_get_icon_name (const GtkImageDefinition *def)
 }
 
 GIcon *
-gtk_image_definition_get_gicon (const GtkImageDefinition *def)
+ctk_image_definition_get_gicon (const GtkImageDefinition *def)
 {
   if (def->type != GTK_IMAGE_GICON)
     return NULL;
@@ -367,7 +367,7 @@ gtk_image_definition_get_gicon (const GtkImageDefinition *def)
 }
 
 cairo_surface_t *
-gtk_image_definition_get_surface (const GtkImageDefinition *def)
+ctk_image_definition_get_surface (const GtkImageDefinition *def)
 {
   if (def->type != GTK_IMAGE_SURFACE)
     return NULL;

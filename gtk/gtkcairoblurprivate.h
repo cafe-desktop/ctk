@@ -36,10 +36,10 @@ typedef enum {
   GTK_BLUR_REPEAT = 1<<2
 } GtkBlurFlags;
 
-void            _gtk_cairo_blur_surface         (cairo_surface_t *surface,
+void            _ctk_cairo_blur_surface         (cairo_surface_t *surface,
                                                  double           radius,
 						 GtkBlurFlags     flags);;
-int             _gtk_cairo_blur_compute_pixels  (double           radius);
+int             _ctk_cairo_blur_compute_pixels  (double           radius);
 
 G_END_DECLS
 

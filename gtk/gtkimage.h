@@ -36,7 +36,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_IMAGE                  (gtk_image_get_type ())
+#define GTK_TYPE_IMAGE                  (ctk_image_get_type ())
 #define GTK_IMAGE(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_IMAGE, GtkImage))
 #define GTK_IMAGE_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_IMAGE, GtkImageClass))
 #define GTK_IS_IMAGE(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_IMAGE))
@@ -65,8 +65,8 @@ typedef struct _GtkImageClass         GtkImageClass;
  * Describes the image data representation used by a #GtkImage. If you
  * want to get the image from the widget, you can only get the
  * currently-stored representation. e.g.  if the
- * gtk_image_get_storage_type() returns #GTK_IMAGE_PIXBUF, then you can
- * call gtk_image_get_pixbuf() but not gtk_image_get_stock().  For empty
+ * ctk_image_get_storage_type() returns #GTK_IMAGE_PIXBUF, then you can
+ * call ctk_image_get_pixbuf() but not ctk_image_get_stock().  For empty
  * images, you can request any storage type (call any of the "get"
  * functions), but they will all return %NULL values.
  */
@@ -101,102 +101,102 @@ struct _GtkImageClass
   GtkMiscClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_ALL
-GType      gtk_image_get_type (void) G_GNUC_CONST;
+GType      ctk_image_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_image_new                (void);
+GtkWidget* ctk_image_new                (void);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_image_new_from_file      (const gchar     *filename);
+GtkWidget* ctk_image_new_from_file      (const gchar     *filename);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_image_new_from_resource  (const gchar     *resource_path);
+GtkWidget* ctk_image_new_from_resource  (const gchar     *resource_path);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_image_new_from_pixbuf    (GdkPixbuf       *pixbuf);
-GDK_DEPRECATED_IN_3_10_FOR(gtk_image_new_from_icon_name)
-GtkWidget* gtk_image_new_from_stock     (const gchar     *stock_id,
+GtkWidget* ctk_image_new_from_pixbuf    (GdkPixbuf       *pixbuf);
+GDK_DEPRECATED_IN_3_10_FOR(ctk_image_new_from_icon_name)
+GtkWidget* ctk_image_new_from_stock     (const gchar     *stock_id,
                                          GtkIconSize      size);
-GDK_DEPRECATED_IN_3_10_FOR(gtk_image_new_from_icon_name)
-GtkWidget* gtk_image_new_from_icon_set  (GtkIconSet      *icon_set,
+GDK_DEPRECATED_IN_3_10_FOR(ctk_image_new_from_icon_name)
+GtkWidget* ctk_image_new_from_icon_set  (GtkIconSet      *icon_set,
                                          GtkIconSize      size);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_image_new_from_animation (GdkPixbufAnimation *animation);
+GtkWidget* ctk_image_new_from_animation (GdkPixbufAnimation *animation);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_image_new_from_icon_name (const gchar     *icon_name,
+GtkWidget* ctk_image_new_from_icon_name (const gchar     *icon_name,
 					 GtkIconSize      size);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_image_new_from_gicon     (GIcon           *icon,
+GtkWidget* ctk_image_new_from_gicon     (GIcon           *icon,
 					 GtkIconSize      size);
 GDK_AVAILABLE_IN_3_10
-GtkWidget* gtk_image_new_from_surface   (cairo_surface_t *surface);
+GtkWidget* ctk_image_new_from_surface   (cairo_surface_t *surface);
 
 GDK_AVAILABLE_IN_ALL
-void gtk_image_clear              (GtkImage        *image);
+void ctk_image_clear              (GtkImage        *image);
 GDK_AVAILABLE_IN_ALL
-void gtk_image_set_from_file      (GtkImage        *image,
+void ctk_image_set_from_file      (GtkImage        *image,
                                    const gchar     *filename);
 GDK_AVAILABLE_IN_ALL
-void gtk_image_set_from_resource  (GtkImage        *image,
+void ctk_image_set_from_resource  (GtkImage        *image,
                                    const gchar     *resource_path);
 GDK_AVAILABLE_IN_ALL
-void gtk_image_set_from_pixbuf    (GtkImage        *image,
+void ctk_image_set_from_pixbuf    (GtkImage        *image,
                                    GdkPixbuf       *pixbuf);
-GDK_DEPRECATED_IN_3_10_FOR(gtk_image_set_from_icon_name)
-void gtk_image_set_from_stock     (GtkImage        *image,
+GDK_DEPRECATED_IN_3_10_FOR(ctk_image_set_from_icon_name)
+void ctk_image_set_from_stock     (GtkImage        *image,
                                    const gchar     *stock_id,
                                    GtkIconSize      size);
-GDK_DEPRECATED_IN_3_10_FOR(gtk_image_set_from_icon_name)
-void gtk_image_set_from_icon_set  (GtkImage        *image,
+GDK_DEPRECATED_IN_3_10_FOR(ctk_image_set_from_icon_name)
+void ctk_image_set_from_icon_set  (GtkImage        *image,
                                    GtkIconSet      *icon_set,
                                    GtkIconSize      size);
 GDK_AVAILABLE_IN_ALL
-void gtk_image_set_from_animation (GtkImage           *image,
+void ctk_image_set_from_animation (GtkImage           *image,
                                    GdkPixbufAnimation *animation);
 GDK_AVAILABLE_IN_ALL
-void gtk_image_set_from_icon_name (GtkImage        *image,
+void ctk_image_set_from_icon_name (GtkImage        *image,
 				   const gchar     *icon_name,
 				   GtkIconSize      size);
 GDK_AVAILABLE_IN_ALL
-void gtk_image_set_from_gicon     (GtkImage        *image,
+void ctk_image_set_from_gicon     (GtkImage        *image,
 				   GIcon           *icon,
 				   GtkIconSize      size);
 GDK_AVAILABLE_IN_3_10
-void gtk_image_set_from_surface   (GtkImage        *image,
+void ctk_image_set_from_surface   (GtkImage        *image,
 				   cairo_surface_t *surface);
 GDK_AVAILABLE_IN_ALL
-void gtk_image_set_pixel_size     (GtkImage        *image,
+void ctk_image_set_pixel_size     (GtkImage        *image,
 				   gint             pixel_size);
 
 GDK_AVAILABLE_IN_ALL
-GtkImageType gtk_image_get_storage_type (GtkImage   *image);
+GtkImageType ctk_image_get_storage_type (GtkImage   *image);
 
 GDK_AVAILABLE_IN_ALL
-GdkPixbuf* gtk_image_get_pixbuf   (GtkImage         *image);
-GDK_DEPRECATED_IN_3_10_FOR(gtk_image_get_icon_name)
-void       gtk_image_get_stock    (GtkImage         *image,
+GdkPixbuf* ctk_image_get_pixbuf   (GtkImage         *image);
+GDK_DEPRECATED_IN_3_10_FOR(ctk_image_get_icon_name)
+void       ctk_image_get_stock    (GtkImage         *image,
                                    gchar           **stock_id,
                                    GtkIconSize      *size);
-GDK_DEPRECATED_IN_3_10_FOR(gtk_image_get_icon_name)
-void       gtk_image_get_icon_set (GtkImage         *image,
+GDK_DEPRECATED_IN_3_10_FOR(ctk_image_get_icon_name)
+void       ctk_image_get_icon_set (GtkImage         *image,
                                    GtkIconSet      **icon_set,
                                    GtkIconSize      *size);
 GDK_AVAILABLE_IN_ALL
-GdkPixbufAnimation* gtk_image_get_animation (GtkImage *image);
+GdkPixbufAnimation* ctk_image_get_animation (GtkImage *image);
 GDK_AVAILABLE_IN_ALL
-void       gtk_image_get_icon_name (GtkImage     *image,
+void       ctk_image_get_icon_name (GtkImage     *image,
 				    const gchar **icon_name,
 				    GtkIconSize  *size);
 GDK_AVAILABLE_IN_ALL
-void       gtk_image_get_gicon     (GtkImage              *image,
+void       ctk_image_get_gicon     (GtkImage              *image,
 				    GIcon                **gicon,
 				    GtkIconSize           *size);
 GDK_AVAILABLE_IN_ALL
-gint       gtk_image_get_pixel_size (GtkImage             *image);
+gint       ctk_image_get_pixel_size (GtkImage             *image);
 
 G_END_DECLS
 

@@ -52,7 +52,7 @@ struct _GtkLabelAccessibleLinkClass
   AtkHyperlinkClass parent_class;
 };
 
-static GtkLabelAccessibleLink *gtk_label_accessible_link_new (GtkLabelAccessible *label,
+static GtkLabelAccessibleLink *ctk_label_accessible_link_new (GtkLabelAccessible *label,
                                                               gint                idx);
 
 typedef struct _GtkLabelAccessibleLinkImpl      GtkLabelAccessibleLinkImpl;
@@ -72,15 +72,15 @@ struct _GtkLabelAccessibleLinkImplClass
 
 /* GtkLabelAccessibleLinkImpl {{{1 */
 
-GType _gtk_label_accessible_link_impl_get_type (void);
+GType _ctk_label_accessible_link_impl_get_type (void);
 
 static void atk_hyperlink_impl_interface_init (AtkHyperlinkImplIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkLabelAccessibleLinkImpl, _gtk_label_accessible_link_impl, ATK_TYPE_OBJECT,
+G_DEFINE_TYPE_WITH_CODE (GtkLabelAccessibleLinkImpl, _ctk_label_accessible_link_impl, ATK_TYPE_OBJECT,
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_HYPERLINK_IMPL, atk_hyperlink_impl_interface_init))
 
 static AtkHyperlink *
-gtk_label_accessible_link_impl_get_hyperlink (AtkHyperlinkImpl *atk_impl)
+ctk_label_accessible_link_impl_get_hyperlink (AtkHyperlinkImpl *atk_impl)
 {
   GtkLabelAccessibleLinkImpl *impl = (GtkLabelAccessibleLinkImpl *)atk_impl;
 
@@ -90,11 +90,11 @@ gtk_label_accessible_link_impl_get_hyperlink (AtkHyperlinkImpl *atk_impl)
 static void
 atk_hyperlink_impl_interface_init (AtkHyperlinkImplIface *iface)
 {
-  iface->get_hyperlink = gtk_label_accessible_link_impl_get_hyperlink;
+  iface->get_hyperlink = ctk_label_accessible_link_impl_get_hyperlink;
 }
 
 static AtkStateSet *
-gtk_label_accessible_link_impl_ref_state_set (AtkObject *obj)
+ctk_label_accessible_link_impl_ref_state_set (AtkObject *obj)
 {
   AtkStateSet *state_set;
   GtkLabelAccessibleLink *link;
@@ -104,19 +104,19 @@ gtk_label_accessible_link_impl_ref_state_set (AtkObject *obj)
 
   state_set = atk_object_ref_state_set (atk_object_get_parent (obj));
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (atk_object_get_parent (obj)));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (atk_object_get_parent (obj)));
   if (widget)
     {
-      if (gtk_widget_get_can_focus (widget))
+      if (ctk_widget_get_can_focus (widget))
         {
           atk_state_set_add_state (state_set, ATK_STATE_FOCUSABLE);
-          if (_gtk_label_get_link_focused (GTK_LABEL (widget), link->index))
+          if (_ctk_label_get_link_focused (GTK_LABEL (widget), link->index))
             atk_state_set_add_state (state_set, ATK_STATE_FOCUSED);
           else
             atk_state_set_remove_state (state_set, ATK_STATE_FOCUSED);
         }
 
-      if (_gtk_label_get_link_visited (GTK_LABEL (widget), link->index))
+      if (_ctk_label_get_link_visited (GTK_LABEL (widget), link->index))
         atk_state_set_add_state (state_set, ATK_STATE_VISITED);
     }
 
@@ -124,41 +124,41 @@ gtk_label_accessible_link_impl_ref_state_set (AtkObject *obj)
 }
 
 static void
-_gtk_label_accessible_link_impl_init (GtkLabelAccessibleLinkImpl *impl)
+_ctk_label_accessible_link_impl_init (GtkLabelAccessibleLinkImpl *impl)
 {
   atk_object_set_role (ATK_OBJECT (impl), ATK_ROLE_LINK);
 }
 
 static void
-_gtk_label_accessible_link_impl_finalize (GObject *obj)
+_ctk_label_accessible_link_impl_finalize (GObject *obj)
 {
   GtkLabelAccessibleLinkImpl *impl = (GtkLabelAccessibleLinkImpl *)obj;
 
   g_object_unref (impl->link);
 
-  G_OBJECT_CLASS (_gtk_label_accessible_link_impl_parent_class)->finalize (obj);
+  G_OBJECT_CLASS (_ctk_label_accessible_link_impl_parent_class)->finalize (obj);
 }
 
 static void
-_gtk_label_accessible_link_impl_class_init (GtkLabelAccessibleLinkImplClass *class)
+_ctk_label_accessible_link_impl_class_init (GtkLabelAccessibleLinkImplClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
   AtkObjectClass *atk_obj_class = ATK_OBJECT_CLASS (class);
 
-  object_class->finalize = _gtk_label_accessible_link_impl_finalize;
-  atk_obj_class->ref_state_set = gtk_label_accessible_link_impl_ref_state_set;
+  object_class->finalize = _ctk_label_accessible_link_impl_finalize;
+  atk_obj_class->ref_state_set = ctk_label_accessible_link_impl_ref_state_set;
 }
 
 /* 'Public' API {{{2 */
 
 static GtkLabelAccessibleLinkImpl *
-gtk_label_accessible_link_impl_new (GtkLabelAccessible *label,
+ctk_label_accessible_link_impl_new (GtkLabelAccessible *label,
                                     gint                idx)
 {
   GtkLabelAccessibleLinkImpl *impl;
 
-  impl = g_object_new (_gtk_label_accessible_link_impl_get_type (), NULL);
-  impl->link = gtk_label_accessible_link_new (label, idx);
+  impl = g_object_new (_ctk_label_accessible_link_impl_get_type (), NULL);
+  impl->link = ctk_label_accessible_link_new (label, idx);
   atk_object_set_parent (ATK_OBJECT (impl), ATK_OBJECT (label));
 
   return impl;
@@ -166,15 +166,15 @@ gtk_label_accessible_link_impl_new (GtkLabelAccessible *label,
 
 /* GtkLabelAccessibleLink {{{1 */
 
-GType _gtk_label_accessible_link_get_type (void);
+GType _ctk_label_accessible_link_get_type (void);
 
 static void atk_action_interface_init (AtkActionIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkLabelAccessibleLink, _gtk_label_accessible_link, ATK_TYPE_HYPERLINK,
+G_DEFINE_TYPE_WITH_CODE (GtkLabelAccessibleLink, _ctk_label_accessible_link, ATK_TYPE_HYPERLINK,
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_ACTION, atk_action_interface_init))
 
 static gchar *
-gtk_label_accessible_link_get_uri (AtkHyperlink *atk_link,
+ctk_label_accessible_link_get_uri (AtkHyperlink *atk_link,
                                    gint          i)
 {
   GtkLabelAccessibleLink *link = (GtkLabelAccessibleLink *)atk_link;
@@ -186,26 +186,26 @@ gtk_label_accessible_link_get_uri (AtkHyperlink *atk_link,
   if (link->label == NULL)
     return NULL;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (link->label));
-  uri = _gtk_label_get_link_uri (GTK_LABEL (widget), link->index);
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (link->label));
+  uri = _ctk_label_get_link_uri (GTK_LABEL (widget), link->index);
 
   return g_strdup (uri);
 }
 
 static gint
-gtk_label_accessible_link_get_n_anchors (AtkHyperlink *atk_link)
+ctk_label_accessible_link_get_n_anchors (AtkHyperlink *atk_link)
 {
   return 1;
 }
 
 static gboolean
-gtk_label_accessible_link_is_valid (AtkHyperlink *atk_link)
+ctk_label_accessible_link_is_valid (AtkHyperlink *atk_link)
 {
   return TRUE;
 }
 
 static AtkObject *
-gtk_label_accessible_link_get_object (AtkHyperlink *atk_link,
+ctk_label_accessible_link_get_object (AtkHyperlink *atk_link,
                                       gint          i)
 {
   GtkLabelAccessibleLink *link = (GtkLabelAccessibleLink *)atk_link;
@@ -216,7 +216,7 @@ gtk_label_accessible_link_get_object (AtkHyperlink *atk_link,
 }
 
 static gint
-gtk_label_accessible_link_get_start_index (AtkHyperlink *atk_link)
+ctk_label_accessible_link_get_start_index (AtkHyperlink *atk_link)
 {
   GtkLabelAccessibleLink *link = (GtkLabelAccessibleLink *)atk_link;
   GtkWidget *widget;
@@ -225,14 +225,14 @@ gtk_label_accessible_link_get_start_index (AtkHyperlink *atk_link)
   if (link->label == NULL)
     return 0;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (link->label));
-  _gtk_label_get_link_extent (GTK_LABEL (widget), link->index, &start, &end);
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (link->label));
+  _ctk_label_get_link_extent (GTK_LABEL (widget), link->index, &start, &end);
 
   return start;
 }
 
 static gint
-gtk_label_accessible_link_get_end_index (AtkHyperlink *atk_link)
+ctk_label_accessible_link_get_end_index (AtkHyperlink *atk_link)
 {
   GtkLabelAccessibleLink *link = (GtkLabelAccessibleLink *)atk_link;
   GtkWidget *widget;
@@ -241,39 +241,39 @@ gtk_label_accessible_link_get_end_index (AtkHyperlink *atk_link)
   if (link->label == NULL)
     return 0;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (link->label));
-  _gtk_label_get_link_extent (GTK_LABEL (widget), link->index, &start, &end);
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (link->label));
+  _ctk_label_get_link_extent (GTK_LABEL (widget), link->index, &start, &end);
 
   return end;
 }
 
 static void
-_gtk_label_accessible_link_init (GtkLabelAccessibleLink *link)
+_ctk_label_accessible_link_init (GtkLabelAccessibleLink *link)
 {
 }
 
 static void
-_gtk_label_accessible_link_class_init (GtkLabelAccessibleLinkClass *class)
+_ctk_label_accessible_link_class_init (GtkLabelAccessibleLinkClass *class)
 {
   AtkHyperlinkClass *atk_link_class = ATK_HYPERLINK_CLASS (class);
 
-  atk_link_class->get_uri = gtk_label_accessible_link_get_uri;
-  atk_link_class->get_n_anchors = gtk_label_accessible_link_get_n_anchors;
-  atk_link_class->is_valid = gtk_label_accessible_link_is_valid;
-  atk_link_class->get_object = gtk_label_accessible_link_get_object;
-  atk_link_class->get_start_index = gtk_label_accessible_link_get_start_index;
-  atk_link_class->get_end_index = gtk_label_accessible_link_get_end_index;
+  atk_link_class->get_uri = ctk_label_accessible_link_get_uri;
+  atk_link_class->get_n_anchors = ctk_label_accessible_link_get_n_anchors;
+  atk_link_class->is_valid = ctk_label_accessible_link_is_valid;
+  atk_link_class->get_object = ctk_label_accessible_link_get_object;
+  atk_link_class->get_start_index = ctk_label_accessible_link_get_start_index;
+  atk_link_class->get_end_index = ctk_label_accessible_link_get_end_index;
 }
 
 /* 'Public' API {{{2 */
 
 static GtkLabelAccessibleLink *
-gtk_label_accessible_link_new (GtkLabelAccessible *label,
+ctk_label_accessible_link_new (GtkLabelAccessible *label,
                                gint                idx)
 {
   GtkLabelAccessibleLink *link;
 
-  link = g_object_new (_gtk_label_accessible_link_get_type (), NULL);
+  link = g_object_new (_ctk_label_accessible_link_get_type (), NULL);
   link->label = label;
   link->index = idx;
 
@@ -283,7 +283,7 @@ gtk_label_accessible_link_new (GtkLabelAccessible *label,
 /* AtkAction implementation {{{2 */
 
 static gboolean
-gtk_label_accessible_link_do_action (AtkAction *action,
+ctk_label_accessible_link_do_action (AtkAction *action,
                                      gint       i)
 {
   GtkLabelAccessibleLink *link = (GtkLabelAccessibleLink *)action;
@@ -295,26 +295,26 @@ gtk_label_accessible_link_do_action (AtkAction *action,
   if (link->label == NULL)
     return FALSE;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (link->label));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (link->label));
   if (widget == NULL)
     return FALSE;
 
-  if (!gtk_widget_is_sensitive (widget) || !gtk_widget_get_visible (widget))
+  if (!ctk_widget_is_sensitive (widget) || !ctk_widget_get_visible (widget))
     return FALSE;
 
-  _gtk_label_activate_link (GTK_LABEL (widget), link->index);
+  _ctk_label_activate_link (GTK_LABEL (widget), link->index);
 
   return TRUE;
 }
 
 static gint
-gtk_label_accessible_link_get_n_actions (AtkAction *action)
+ctk_label_accessible_link_get_n_actions (AtkAction *action)
 {
   return 1;
 }
 
 static const gchar *
-gtk_label_accessible_link_get_name (AtkAction *action,
+ctk_label_accessible_link_get_name (AtkAction *action,
                                     gint       i)
 {
   if (i != 0)
@@ -326,9 +326,9 @@ gtk_label_accessible_link_get_name (AtkAction *action,
 static void
 atk_action_interface_init (AtkActionIface *iface)
 {
-  iface->do_action = gtk_label_accessible_link_do_action;
-  iface->get_n_actions = gtk_label_accessible_link_get_n_actions;
-  iface->get_name = gtk_label_accessible_link_get_name;
+  iface->do_action = ctk_label_accessible_link_do_action;
+  iface->get_n_actions = ctk_label_accessible_link_get_n_actions;
+  iface->get_name = ctk_label_accessible_link_get_name;
 }
 
 /* GtkLabelAccessible {{{1 */
@@ -336,38 +336,38 @@ atk_action_interface_init (AtkActionIface *iface)
 static void atk_text_interface_init       (AtkTextIface      *iface);
 static void atk_hypertext_interface_init (AtkHypertextIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkLabelAccessible, gtk_label_accessible, GTK_TYPE_WIDGET_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (GtkLabelAccessible, ctk_label_accessible, GTK_TYPE_WIDGET_ACCESSIBLE,
                          G_ADD_PRIVATE (GtkLabelAccessible)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_TEXT, atk_text_interface_init)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_HYPERTEXT, atk_hypertext_interface_init))
 
 static void
-gtk_label_accessible_init (GtkLabelAccessible *label)
+ctk_label_accessible_init (GtkLabelAccessible *label)
 {
-  label->priv = gtk_label_accessible_get_instance_private (label);
+  label->priv = ctk_label_accessible_get_instance_private (label);
 }
 
 static void
-gtk_label_accessible_initialize (AtkObject *obj,
+ctk_label_accessible_initialize (AtkObject *obj,
                                  gpointer   data)
 {
   GtkWidget  *widget;
 
-  ATK_OBJECT_CLASS (gtk_label_accessible_parent_class)->initialize (obj, data);
+  ATK_OBJECT_CLASS (ctk_label_accessible_parent_class)->initialize (obj, data);
 
   widget = GTK_WIDGET (data);
 
-  _gtk_label_accessible_update_links (GTK_LABEL (widget));
+  _ctk_label_accessible_update_links (GTK_LABEL (widget));
 
   /* Check whether ancestor of GtkLabel is a GtkButton
    * and if so set accessible parent for GtkLabelAccessible
    */
   while (widget != NULL)
     {
-      widget = gtk_widget_get_parent (widget);
+      widget = ctk_widget_get_parent (widget);
       if (GTK_IS_BUTTON (widget))
         {
-          atk_object_set_parent (obj, gtk_widget_get_accessible (widget));
+          atk_object_set_parent (obj, ctk_widget_get_accessible (widget));
           break;
         }
     }
@@ -382,7 +382,7 @@ check_for_selection_change (GtkLabelAccessible *accessible,
   gboolean ret_val = FALSE;
   gint start, end;
 
-  if (gtk_label_get_selection_bounds (label, &start, &end))
+  if (ctk_label_get_selection_bounds (label, &start, &end))
     {
       if (end != accessible->priv->cursor_position ||
           start != accessible->priv->selection_bound)
@@ -400,11 +400,11 @@ check_for_selection_change (GtkLabelAccessible *accessible,
 }
 
 static void
-gtk_label_accessible_notify_gtk (GObject    *obj,
+ctk_label_accessible_notify_gtk (GObject    *obj,
                                  GParamSpec *pspec)
 {
   GtkWidget *widget = GTK_WIDGET (obj);
-  AtkObject* atk_obj = gtk_widget_get_accessible (widget);
+  AtkObject* atk_obj = ctk_widget_get_accessible (widget);
   GtkLabelAccessible *accessible;
 
   accessible = GTK_LABEL_ACCESSIBLE (atk_obj);
@@ -412,7 +412,7 @@ gtk_label_accessible_notify_gtk (GObject    *obj,
   if (g_strcmp0 (pspec->name, "cursor-position") == 0)
     {
       g_signal_emit_by_name (atk_obj, "text-caret-moved",
-                             _gtk_label_get_cursor_position (GTK_LABEL (widget)));
+                             _ctk_label_get_cursor_position (GTK_LABEL (widget)));
       if (check_for_selection_change (accessible, GTK_LABEL (widget)))
         g_signal_emit_by_name (atk_obj, "text-selection-changed");
     }
@@ -422,40 +422,40 @@ gtk_label_accessible_notify_gtk (GObject    *obj,
         g_signal_emit_by_name (atk_obj, "text-selection-changed");
     }
   else
-    GTK_WIDGET_ACCESSIBLE_CLASS (gtk_label_accessible_parent_class)->notify_gtk (obj, pspec);
+    GTK_WIDGET_ACCESSIBLE_CLASS (ctk_label_accessible_parent_class)->notify_gtk (obj, pspec);
 }
 
 /* atkobject.h */
 
 static AtkStateSet *
-gtk_label_accessible_ref_state_set (AtkObject *accessible)
+ctk_label_accessible_ref_state_set (AtkObject *accessible)
 {
   AtkStateSet *state_set;
   GtkWidget *widget;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
   if (widget == NULL)
     return NULL;
 
-  state_set = ATK_OBJECT_CLASS (gtk_label_accessible_parent_class)->ref_state_set (accessible);
+  state_set = ATK_OBJECT_CLASS (ctk_label_accessible_parent_class)->ref_state_set (accessible);
   atk_state_set_add_state (state_set, ATK_STATE_MULTI_LINE);
 
   return state_set;
 }
 
 static AtkRelationSet *
-gtk_label_accessible_ref_relation_set (AtkObject *obj)
+ctk_label_accessible_ref_relation_set (AtkObject *obj)
 {
   GtkWidget *widget;
   AtkRelationSet *relation_set;
 
   g_return_val_if_fail (GTK_IS_LABEL_ACCESSIBLE (obj), NULL);
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
   if (widget == NULL)
     return NULL;
 
-  relation_set = ATK_OBJECT_CLASS (gtk_label_accessible_parent_class)->ref_relation_set (obj);
+  relation_set = ATK_OBJECT_CLASS (ctk_label_accessible_parent_class)->ref_relation_set (obj);
 
   if (!atk_relation_set_contains (relation_set, ATK_RELATION_LABEL_FOR))
     {
@@ -464,14 +464,14 @@ gtk_label_accessible_ref_relation_set (AtkObject *obj)
        */
       GtkWidget *mnemonic_widget;
 
-      mnemonic_widget = gtk_label_get_mnemonic_widget (GTK_LABEL (widget));
+      mnemonic_widget = ctk_label_get_mnemonic_widget (GTK_LABEL (widget));
 
       if (mnemonic_widget)
         {
           AtkObject *accessible_array[1];
           AtkRelation* relation;
 
-          if (!gtk_widget_get_can_focus (mnemonic_widget))
+          if (!ctk_widget_get_can_focus (mnemonic_widget))
             {
             /*
              * Handle the case where a GtkFileChooserButton is specified
@@ -482,7 +482,7 @@ gtk_label_accessible_ref_relation_set (AtkObject *obj)
                {
                   GList *list, *tmpl;
 
-                  list = gtk_container_get_children (GTK_CONTAINER (mnemonic_widget));
+                  list = ctk_container_get_children (GTK_CONTAINER (mnemonic_widget));
                   if (g_list_length (list) == 2)
                     {
                       tmpl = g_list_last (list);
@@ -494,7 +494,7 @@ gtk_label_accessible_ref_relation_set (AtkObject *obj)
                   g_list_free (list);
                 }
             }
-          accessible_array[0] = gtk_widget_get_accessible (mnemonic_widget);
+          accessible_array[0] = ctk_widget_get_accessible (mnemonic_widget);
           relation = atk_relation_new (accessible_array, 1,
                                        ATK_RELATION_LABEL_FOR);
           atk_relation_set_add (relation_set, relation);
@@ -508,13 +508,13 @@ gtk_label_accessible_ref_relation_set (AtkObject *obj)
 }
 
 static const gchar*
-gtk_label_accessible_get_name (AtkObject *accessible)
+ctk_label_accessible_get_name (AtkObject *accessible)
 {
   const gchar *name;
 
   g_return_val_if_fail (GTK_IS_LABEL_ACCESSIBLE (accessible), NULL);
 
-  name = ATK_OBJECT_CLASS (gtk_label_accessible_parent_class)->get_name (accessible);
+  name = ATK_OBJECT_CLASS (ctk_label_accessible_parent_class)->get_name (accessible);
   if (name != NULL)
     return name;
   else
@@ -524,18 +524,18 @@ gtk_label_accessible_get_name (AtkObject *accessible)
        */
       GtkWidget *widget;
 
-      widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
+      widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
       if (widget == NULL)
         return NULL;
 
       g_return_val_if_fail (GTK_IS_LABEL (widget), NULL);
 
-      return gtk_label_get_text (GTK_LABEL (widget));
+      return ctk_label_get_text (GTK_LABEL (widget));
     }
 }
 
 static gint
-gtk_label_accessible_get_n_children (AtkObject *obj)
+ctk_label_accessible_get_n_children (AtkObject *obj)
 {
   GtkLabelAccessible *accessible = GTK_LABEL_ACCESSIBLE (obj);
 
@@ -543,7 +543,7 @@ gtk_label_accessible_get_n_children (AtkObject *obj)
 }
 
 static AtkObject *
-gtk_label_accessible_ref_child (AtkObject *obj,
+ctk_label_accessible_ref_child (AtkObject *obj,
                                 gint       idx)
 {
   GtkLabelAccessible *accessible = GTK_LABEL_ACCESSIBLE (obj);
@@ -560,66 +560,66 @@ gtk_label_accessible_ref_child (AtkObject *obj,
 static void clear_links (GtkLabelAccessible *accessible);
 
 static void
-gtk_label_accessible_finalize (GObject *obj)
+ctk_label_accessible_finalize (GObject *obj)
 {
   GtkLabelAccessible *accessible = GTK_LABEL_ACCESSIBLE (obj);
 
   clear_links (accessible);
 
-  G_OBJECT_CLASS (gtk_label_accessible_parent_class)->finalize (obj);
+  G_OBJECT_CLASS (ctk_label_accessible_parent_class)->finalize (obj);
 }
 
 static void
-gtk_label_accessible_class_init (GtkLabelAccessibleClass *klass)
+ctk_label_accessible_class_init (GtkLabelAccessibleClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
   GtkWidgetAccessibleClass *widget_class = GTK_WIDGET_ACCESSIBLE_CLASS (klass);
 
-  object_class->finalize = gtk_label_accessible_finalize;
+  object_class->finalize = ctk_label_accessible_finalize;
 
-  class->get_name = gtk_label_accessible_get_name;
-  class->ref_state_set = gtk_label_accessible_ref_state_set;
-  class->ref_relation_set = gtk_label_accessible_ref_relation_set;
-  class->initialize = gtk_label_accessible_initialize;
+  class->get_name = ctk_label_accessible_get_name;
+  class->ref_state_set = ctk_label_accessible_ref_state_set;
+  class->ref_relation_set = ctk_label_accessible_ref_relation_set;
+  class->initialize = ctk_label_accessible_initialize;
 
-  class->get_n_children = gtk_label_accessible_get_n_children;
-  class->ref_child = gtk_label_accessible_ref_child;
+  class->get_n_children = ctk_label_accessible_get_n_children;
+  class->ref_child = ctk_label_accessible_ref_child;
 
-  widget_class->notify_gtk = gtk_label_accessible_notify_gtk;
+  widget_class->notify_gtk = ctk_label_accessible_notify_gtk;
 }
 
 /* 'Public' API {{{2 */
 
 void
-_gtk_label_accessible_text_deleted (GtkLabel *label)
+_ctk_label_accessible_text_deleted (GtkLabel *label)
 {
   AtkObject *obj;
   const char *text;
   guint length;
 
-  obj = _gtk_widget_peek_accessible (GTK_WIDGET (label));
+  obj = _ctk_widget_peek_accessible (GTK_WIDGET (label));
   if (obj == NULL)
     return;
 
-  text = gtk_label_get_text (label);
+  text = ctk_label_get_text (label);
   length = g_utf8_strlen (text, -1);
   if (length > 0)
     g_signal_emit_by_name (obj, "text-changed::delete", 0, length);
 }
 
 void
-_gtk_label_accessible_text_inserted (GtkLabel *label)
+_ctk_label_accessible_text_inserted (GtkLabel *label)
 {
   AtkObject *obj;
   const char *text;
   guint length;
 
-  obj = _gtk_widget_peek_accessible (GTK_WIDGET (label));
+  obj = _ctk_widget_peek_accessible (GTK_WIDGET (label));
   if (obj == NULL)
     return;
 
-  text = gtk_label_get_text (label);
+  text = ctk_label_get_text (label);
   length = g_utf8_strlen (text, -1);
   if (length > 0)
     g_signal_emit_by_name (obj, "text-changed::insert", 0, length);
@@ -656,23 +656,23 @@ create_links (GtkLabelAccessible *accessible)
   gint n, i;
   GtkLabelAccessibleLinkImpl *impl;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
 
-  n = _gtk_label_get_n_links (GTK_LABEL (widget));
+  n = _ctk_label_get_n_links (GTK_LABEL (widget));
   for (i = 0; i < n; i++)
     {
-      impl = gtk_label_accessible_link_impl_new (accessible, i);
+      impl = ctk_label_accessible_link_impl_new (accessible, i);
       accessible->priv->links = g_list_append (accessible->priv->links, impl);
       g_signal_emit_by_name (accessible, "children-changed::add", i, impl, NULL);
     }
 }
 
 void
-_gtk_label_accessible_update_links (GtkLabel *label)
+_ctk_label_accessible_update_links (GtkLabel *label)
 {
   AtkObject *obj;
 
-  obj = _gtk_widget_peek_accessible (GTK_WIDGET (label));
+  obj = _ctk_widget_peek_accessible (GTK_WIDGET (label));
   if (obj == NULL)
     return;
 
@@ -681,7 +681,7 @@ _gtk_label_accessible_update_links (GtkLabel *label)
 }
 
 void
-_gtk_label_accessible_focus_link_changed (GtkLabel *label)
+_ctk_label_accessible_focus_link_changed (GtkLabel *label)
 {
   AtkObject *obj;
   GtkLabelAccessible *accessible;
@@ -689,7 +689,7 @@ _gtk_label_accessible_focus_link_changed (GtkLabel *label)
   GtkLabelAccessibleLinkImpl *impl;
   gboolean focused;
 
-  obj = _gtk_widget_peek_accessible (GTK_WIDGET (label));
+  obj = _ctk_widget_peek_accessible (GTK_WIDGET (label));
   if (obj == NULL)
     return;
 
@@ -698,7 +698,7 @@ _gtk_label_accessible_focus_link_changed (GtkLabel *label)
   for (l = accessible->priv->links; l; l = l->next)
     {
       impl = l->data;
-      focused = _gtk_label_get_link_focused (label, impl->link->index);
+      focused = _ctk_label_get_link_focused (label, impl->link->index);
       if (impl->link->focused != focused)
         {
           impl->link->focused = focused;
@@ -710,18 +710,18 @@ _gtk_label_accessible_focus_link_changed (GtkLabel *label)
 /* AtkText implementation {{{2 */
 
 static gchar*
-gtk_label_accessible_get_text (AtkText *atk_text,
+ctk_label_accessible_get_text (AtkText *atk_text,
                                gint     start_pos,
                                gint     end_pos)
 {
   GtkWidget *widget;
   const gchar *text;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (atk_text));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (atk_text));
   if (widget == NULL)
     return NULL;
 
-  text = gtk_label_get_text (GTK_LABEL (widget));
+  text = ctk_label_get_text (GTK_LABEL (widget));
 
   if (text)
     {
@@ -744,7 +744,7 @@ gtk_label_accessible_get_text (AtkText *atk_text,
 }
 
 static gchar *
-gtk_label_accessible_get_text_before_offset (AtkText         *text,
+ctk_label_accessible_get_text_before_offset (AtkText         *text,
                                              gint             offset,
                                              AtkTextBoundary  boundary_type,
                                              gint            *start_offset,
@@ -752,17 +752,17 @@ gtk_label_accessible_get_text_before_offset (AtkText         *text,
 {
   GtkWidget *widget;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (text));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (text));
   if (widget == NULL)
     return NULL;
 
-  return _gtk_pango_get_text_before (gtk_label_get_layout (GTK_LABEL (widget)),
+  return _ctk_pango_get_text_before (ctk_label_get_layout (GTK_LABEL (widget)),
                                      boundary_type, offset,
                                      start_offset, end_offset);
 }
 
 static gchar*
-gtk_label_accessible_get_text_at_offset (AtkText         *text,
+ctk_label_accessible_get_text_at_offset (AtkText         *text,
                                          gint             offset,
                                          AtkTextBoundary  boundary_type,
                                          gint            *start_offset,
@@ -770,17 +770,17 @@ gtk_label_accessible_get_text_at_offset (AtkText         *text,
 {
   GtkWidget *widget;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (text));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (text));
   if (widget == NULL)
     return NULL;
 
-  return _gtk_pango_get_text_at (gtk_label_get_layout (GTK_LABEL (widget)),
+  return _ctk_pango_get_text_at (ctk_label_get_layout (GTK_LABEL (widget)),
                                  boundary_type, offset,
                                  start_offset, end_offset);
 }
 
 static gchar*
-gtk_label_accessible_get_text_after_offset (AtkText         *text,
+ctk_label_accessible_get_text_after_offset (AtkText         *text,
                                             gint             offset,
                                             AtkTextBoundary  boundary_type,
                                             gint            *start_offset,
@@ -788,26 +788,26 @@ gtk_label_accessible_get_text_after_offset (AtkText         *text,
 {
   GtkWidget *widget;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (text));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (text));
   if (widget == NULL)
     return NULL;
 
-  return _gtk_pango_get_text_after (gtk_label_get_layout (GTK_LABEL (widget)),
+  return _ctk_pango_get_text_after (ctk_label_get_layout (GTK_LABEL (widget)),
                                     boundary_type, offset,
                                     start_offset, end_offset);
 }
 
 static gint
-gtk_label_accessible_get_character_count (AtkText *atk_text)
+ctk_label_accessible_get_character_count (AtkText *atk_text)
 {
   GtkWidget *widget;
   const gchar *text;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (atk_text));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (atk_text));
   if (widget == NULL)
     return 0;
 
-  text = gtk_label_get_text (GTK_LABEL (widget));
+  text = ctk_label_get_text (GTK_LABEL (widget));
 
   if (text)
     return g_utf8_strlen (text, -1);
@@ -816,55 +816,55 @@ gtk_label_accessible_get_character_count (AtkText *atk_text)
 }
 
 static gint
-gtk_label_accessible_get_caret_offset (AtkText *text)
+ctk_label_accessible_get_caret_offset (AtkText *text)
 {
   GtkWidget *widget;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (text));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (text));
   if (widget == NULL)
     return 0;
 
-  return _gtk_label_get_cursor_position (GTK_LABEL (widget));
+  return _ctk_label_get_cursor_position (GTK_LABEL (widget));
 }
 
 static gboolean
-gtk_label_accessible_set_caret_offset (AtkText *text,
+ctk_label_accessible_set_caret_offset (AtkText *text,
                                        gint     offset)
 {
   GtkWidget *widget;
   GtkLabel *label;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (text));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (text));
   if (widget == NULL)
     return FALSE;
 
   label = GTK_LABEL (widget);
 
-  if (!gtk_label_get_selectable (label))
+  if (!ctk_label_get_selectable (label))
     return FALSE;
 
-  gtk_label_select_region (label, offset, offset);
+  ctk_label_select_region (label, offset, offset);
 
   return TRUE;
 }
 
 static gint
-gtk_label_accessible_get_n_selections (AtkText *text)
+ctk_label_accessible_get_n_selections (AtkText *text)
 {
   GtkWidget *widget;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (text));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (text));
   if (widget == NULL)
     return 0;
 
-  if (gtk_label_get_selection_bounds (GTK_LABEL (widget), NULL, NULL))
+  if (ctk_label_get_selection_bounds (GTK_LABEL (widget), NULL, NULL))
     return 1;
 
   return 0;
 }
 
 static gchar *
-gtk_label_accessible_get_selection (AtkText *atk_text,
+ctk_label_accessible_get_selection (AtkText *atk_text,
                                     gint     selection_num,
                                     gint    *start_pos,
                                     gint    *end_pos)
@@ -872,7 +872,7 @@ gtk_label_accessible_get_selection (AtkText *atk_text,
   GtkWidget *widget;
   GtkLabel  *label;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (atk_text));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (atk_text));
   if (widget == NULL)
     return NULL;
 
@@ -881,11 +881,11 @@ gtk_label_accessible_get_selection (AtkText *atk_text,
 
   label = GTK_LABEL (widget);
 
-  if (gtk_label_get_selection_bounds (label, start_pos, end_pos))
+  if (ctk_label_get_selection_bounds (label, start_pos, end_pos))
     {
       const gchar *text;
 
-      text = gtk_label_get_text (label);
+      text = ctk_label_get_text (label);
 
       if (text)
         return g_utf8_substring (text, *start_pos, *end_pos);
@@ -895,7 +895,7 @@ gtk_label_accessible_get_selection (AtkText *atk_text,
 }
 
 static gboolean
-gtk_label_accessible_add_selection (AtkText *text,
+ctk_label_accessible_add_selection (AtkText *text,
                                     gint     start_pos,
                                     gint     end_pos)
 {
@@ -903,18 +903,18 @@ gtk_label_accessible_add_selection (AtkText *text,
   GtkLabel  *label;
   gint start, end;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (text));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (text));
   if (widget == NULL)
     return FALSE;
 
   label = GTK_LABEL (widget);
 
-  if (!gtk_label_get_selectable (label))
+  if (!ctk_label_get_selectable (label))
     return FALSE;
 
-  if (!gtk_label_get_selection_bounds (label, &start, &end))
+  if (!ctk_label_get_selection_bounds (label, &start, &end))
     {
-      gtk_label_select_region (label, start_pos, end_pos);
+      ctk_label_select_region (label, start_pos, end_pos);
       return TRUE;
     }
   else
@@ -922,14 +922,14 @@ gtk_label_accessible_add_selection (AtkText *text,
 }
 
 static gboolean
-gtk_label_accessible_remove_selection (AtkText *text,
+ctk_label_accessible_remove_selection (AtkText *text,
                                        gint     selection_num)
 {
   GtkWidget *widget;
   GtkLabel  *label;
   gint start, end;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (text));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (text));
   if (widget == NULL)
     return FALSE;
 
@@ -938,12 +938,12 @@ gtk_label_accessible_remove_selection (AtkText *text,
 
   label = GTK_LABEL (widget);
 
-  if (!gtk_label_get_selectable (label))
+  if (!ctk_label_get_selectable (label))
      return FALSE;
 
-  if (gtk_label_get_selection_bounds (label, &start, &end))
+  if (ctk_label_get_selection_bounds (label, &start, &end))
     {
-      gtk_label_select_region (label, end, end);
+      ctk_label_select_region (label, end, end);
       return TRUE;
     }
   else
@@ -951,7 +951,7 @@ gtk_label_accessible_remove_selection (AtkText *text,
 }
 
 static gboolean
-gtk_label_accessible_set_selection (AtkText *text,
+ctk_label_accessible_set_selection (AtkText *text,
                                     gint     selection_num,
                                     gint     start_pos,
                                     gint     end_pos)
@@ -960,7 +960,7 @@ gtk_label_accessible_set_selection (AtkText *text,
   GtkLabel  *label;
   gint start, end;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (text));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (text));
   if (widget == NULL)
     return FALSE;
 
@@ -969,12 +969,12 @@ gtk_label_accessible_set_selection (AtkText *text,
 
   label = GTK_LABEL (widget);
 
-  if (!gtk_label_get_selectable (label))
+  if (!ctk_label_get_selectable (label))
     return FALSE;
 
-  if (gtk_label_get_selection_bounds (label, &start, &end))
+  if (ctk_label_get_selection_bounds (label, &start, &end))
     {
-      gtk_label_select_region (label, start_pos, end_pos);
+      ctk_label_select_region (label, start_pos, end_pos);
       return TRUE;
     }
   else
@@ -982,7 +982,7 @@ gtk_label_accessible_set_selection (AtkText *text,
 }
 
 static void
-gtk_label_accessible_get_character_extents (AtkText      *text,
+ctk_label_accessible_get_character_extents (AtkText      *text,
                                             gint          offset,
                                             gint         *x,
                                             gint         *y,
@@ -998,19 +998,19 @@ gtk_label_accessible_get_character_extents (AtkText      *text,
   GdkWindow *window;
   gint x_window, y_window;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (text));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (text));
   if (widget == NULL)
     return;
 
   label = GTK_LABEL (widget);
 
-  gtk_label_get_layout_offsets (label, &x_layout, &y_layout);
-  label_text = gtk_label_get_text (label);
+  ctk_label_get_layout_offsets (label, &x_layout, &y_layout);
+  label_text = ctk_label_get_text (label);
   index = g_utf8_offset_to_pointer (label_text, offset) - label_text;
-  pango_layout_index_to_pos (gtk_label_get_layout (label), index, &char_rect);
+  pango_layout_index_to_pos (ctk_label_get_layout (label), index, &char_rect);
   pango_extents_to_pixels (&char_rect, NULL);
 
-  window = gtk_widget_get_window (widget);
+  window = ctk_widget_get_window (widget);
   gdk_window_get_origin (window, &x_window, &y_window);
 
   *x = x_window + x_layout + char_rect.x;
@@ -1029,7 +1029,7 @@ gtk_label_accessible_get_character_extents (AtkText      *text,
 }
 
 static gint
-gtk_label_accessible_get_offset_at_point (AtkText      *atk_text,
+ctk_label_accessible_get_offset_at_point (AtkText      *atk_text,
                                           gint          x,
                                           gint          y,
                                           AtkCoordType  coords)
@@ -1042,15 +1042,15 @@ gtk_label_accessible_get_offset_at_point (AtkText      *atk_text,
   gint x_local, y_local;
   GdkWindow *window;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (atk_text));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (atk_text));
   if (widget == NULL)
     return -1;
 
   label = GTK_LABEL (widget);
 
-  gtk_label_get_layout_offsets (label, &x_layout, &y_layout);
+  ctk_label_get_layout_offsets (label, &x_layout, &y_layout);
 
-  window = gtk_widget_get_window (widget);
+  window = ctk_widget_get_window (widget);
   gdk_window_get_origin (window, &x_window, &y_window);
 
   x_local = x - x_layout - x_window;
@@ -1065,7 +1065,7 @@ gtk_label_accessible_get_offset_at_point (AtkText      *atk_text,
       y_local += y_window;
     }
 
-  if (!pango_layout_xy_to_index (gtk_label_get_layout (label),
+  if (!pango_layout_xy_to_index (ctk_label_get_layout (label),
                                  x_local * PANGO_SCALE,
                                  y_local * PANGO_SCALE,
                                  &index, NULL))
@@ -1078,7 +1078,7 @@ gtk_label_accessible_get_offset_at_point (AtkText      *atk_text,
 
   if (index != -1)
     {
-      text = gtk_label_get_text (label);
+      text = ctk_label_get_text (label);
       return g_utf8_pointer_to_offset (text, text + index);
     }
 
@@ -1100,7 +1100,7 @@ add_attribute (AtkAttributeSet  *attributes,
 }
 
 static AtkAttributeSet*
-gtk_label_accessible_get_run_attributes (AtkText *text,
+ctk_label_accessible_get_run_attributes (AtkText *text,
                                          gint     offset,
                                          gint    *start_offset,
                                          gint    *end_offset)
@@ -1108,16 +1108,16 @@ gtk_label_accessible_get_run_attributes (AtkText *text,
   GtkWidget *widget;
   AtkAttributeSet *attributes;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (text));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (text));
   if (widget == NULL)
     return NULL;
 
   attributes = NULL;
   attributes = add_attribute (attributes, ATK_TEXT_ATTR_DIRECTION,
                    atk_text_attribute_get_value (ATK_TEXT_ATTR_DIRECTION,
-                                                 gtk_widget_get_direction (widget)));
-  attributes = _gtk_pango_get_run_attributes (attributes,
-                                              gtk_label_get_layout (GTK_LABEL (widget)),
+                                                 ctk_widget_get_direction (widget)));
+  attributes = _ctk_pango_get_run_attributes (attributes,
+                                              ctk_label_get_layout (GTK_LABEL (widget)),
                                               offset,
                                               start_offset,
                                               end_offset);
@@ -1126,41 +1126,41 @@ gtk_label_accessible_get_run_attributes (AtkText *text,
 }
 
 static AtkAttributeSet *
-gtk_label_accessible_get_default_attributes (AtkText *text)
+ctk_label_accessible_get_default_attributes (AtkText *text)
 {
   GtkWidget *widget;
   AtkAttributeSet *attributes;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (text));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (text));
   if (widget == NULL)
     return NULL;
 
   attributes = NULL;
   attributes = add_attribute (attributes, ATK_TEXT_ATTR_DIRECTION,
                    atk_text_attribute_get_value (ATK_TEXT_ATTR_DIRECTION,
-                                                 gtk_widget_get_direction (widget)));
-  attributes = _gtk_pango_get_default_attributes (attributes,
-                                                  gtk_label_get_layout (GTK_LABEL (widget)));
-  attributes = _gtk_style_context_get_attributes (attributes,
-                                                  gtk_widget_get_style_context (widget),
-                                                  gtk_widget_get_state_flags (widget));
+                                                 ctk_widget_get_direction (widget)));
+  attributes = _ctk_pango_get_default_attributes (attributes,
+                                                  ctk_label_get_layout (GTK_LABEL (widget)));
+  attributes = _ctk_style_context_get_attributes (attributes,
+                                                  ctk_widget_get_style_context (widget),
+                                                  ctk_widget_get_state_flags (widget));
 
   return attributes;
 }
 
 static gunichar
-gtk_label_accessible_get_character_at_offset (AtkText *atk_text,
+ctk_label_accessible_get_character_at_offset (AtkText *atk_text,
                                               gint     offset)
 {
   GtkWidget *widget;
   const gchar *text;
   gchar *index;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (atk_text));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (atk_text));
   if (widget == NULL)
     return '\0';
 
-  text = gtk_label_get_text (GTK_LABEL (widget));
+  text = ctk_label_get_text (GTK_LABEL (widget));
   if (offset >= g_utf8_strlen (text, -1))
     return '\0';
 
@@ -1172,29 +1172,29 @@ gtk_label_accessible_get_character_at_offset (AtkText *atk_text,
 static void
 atk_text_interface_init (AtkTextIface *iface)
 {
-  iface->get_text = gtk_label_accessible_get_text;
-  iface->get_character_at_offset = gtk_label_accessible_get_character_at_offset;
-  iface->get_text_before_offset = gtk_label_accessible_get_text_before_offset;
-  iface->get_text_at_offset = gtk_label_accessible_get_text_at_offset;
-  iface->get_text_after_offset = gtk_label_accessible_get_text_after_offset;
-  iface->get_character_count = gtk_label_accessible_get_character_count;
-  iface->get_caret_offset = gtk_label_accessible_get_caret_offset;
-  iface->set_caret_offset = gtk_label_accessible_set_caret_offset;
-  iface->get_n_selections = gtk_label_accessible_get_n_selections;
-  iface->get_selection = gtk_label_accessible_get_selection;
-  iface->add_selection = gtk_label_accessible_add_selection;
-  iface->remove_selection = gtk_label_accessible_remove_selection;
-  iface->set_selection = gtk_label_accessible_set_selection;
-  iface->get_character_extents = gtk_label_accessible_get_character_extents;
-  iface->get_offset_at_point = gtk_label_accessible_get_offset_at_point;
-  iface->get_run_attributes = gtk_label_accessible_get_run_attributes;
-  iface->get_default_attributes = gtk_label_accessible_get_default_attributes;
+  iface->get_text = ctk_label_accessible_get_text;
+  iface->get_character_at_offset = ctk_label_accessible_get_character_at_offset;
+  iface->get_text_before_offset = ctk_label_accessible_get_text_before_offset;
+  iface->get_text_at_offset = ctk_label_accessible_get_text_at_offset;
+  iface->get_text_after_offset = ctk_label_accessible_get_text_after_offset;
+  iface->get_character_count = ctk_label_accessible_get_character_count;
+  iface->get_caret_offset = ctk_label_accessible_get_caret_offset;
+  iface->set_caret_offset = ctk_label_accessible_set_caret_offset;
+  iface->get_n_selections = ctk_label_accessible_get_n_selections;
+  iface->get_selection = ctk_label_accessible_get_selection;
+  iface->add_selection = ctk_label_accessible_add_selection;
+  iface->remove_selection = ctk_label_accessible_remove_selection;
+  iface->set_selection = ctk_label_accessible_set_selection;
+  iface->get_character_extents = ctk_label_accessible_get_character_extents;
+  iface->get_offset_at_point = ctk_label_accessible_get_offset_at_point;
+  iface->get_run_attributes = ctk_label_accessible_get_run_attributes;
+  iface->get_default_attributes = ctk_label_accessible_get_default_attributes;
 }
 
 /* AtkHypertext implementation {{{2 */
 
 static AtkHyperlink *
-gtk_label_accessible_get_link (AtkHypertext *hypertext,
+ctk_label_accessible_get_link (AtkHypertext *hypertext,
                                gint          idx)
 {
   GtkLabelAccessible *label = GTK_LABEL_ACCESSIBLE (hypertext);
@@ -1209,32 +1209,32 @@ gtk_label_accessible_get_link (AtkHypertext *hypertext,
 }
 
 static gint
-gtk_label_accessible_get_n_links (AtkHypertext *hypertext)
+ctk_label_accessible_get_n_links (AtkHypertext *hypertext)
 {
   GtkWidget *widget;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (hypertext));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (hypertext));
 
-  return _gtk_label_get_n_links (GTK_LABEL (widget));
+  return _ctk_label_get_n_links (GTK_LABEL (widget));
 }
 
 static gint
-gtk_label_accessible_get_link_index (AtkHypertext *hypertext,
+ctk_label_accessible_get_link_index (AtkHypertext *hypertext,
                                      gint          char_index)
 {
   GtkWidget *widget;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (hypertext));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (hypertext));
 
-  return _gtk_label_get_link_at (GTK_LABEL (widget), char_index);
+  return _ctk_label_get_link_at (GTK_LABEL (widget), char_index);
 }
 
 static void
 atk_hypertext_interface_init (AtkHypertextIface *iface)
 {
-  iface->get_link = gtk_label_accessible_get_link;
-  iface->get_n_links = gtk_label_accessible_get_n_links;
-  iface->get_link_index = gtk_label_accessible_get_link_index;
+  iface->get_link = ctk_label_accessible_get_link;
+  iface->get_n_links = ctk_label_accessible_get_n_links;
+  iface->get_link_index = ctk_label_accessible_get_link_index;
 }
 
 /* vim:set foldmethod=marker expandtab: */

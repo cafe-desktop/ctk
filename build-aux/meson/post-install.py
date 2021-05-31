@@ -6,23 +6,23 @@ import sys
 import subprocess
 
 if 'DESTDIR' not in os.environ:
-    gtk_api_version = sys.argv[1]
-    gtk_abi_version = sys.argv[2]
-    gtk_bindir = sys.argv[3]
-    gtk_libdir = sys.argv[4]
-    gtk_datadir = sys.argv[5]
-    gtk_query_immodules = os.path.join(gtk_bindir, 'gtk-query-immodules-' + gtk_api_version)
-    gtk_update_icon_cache = os.path.join(gtk_bindir, 'gtk-update-icon-cache')
+    ctk_api_version = sys.argv[1]
+    ctk_abi_version = sys.argv[2]
+    ctk_bindir = sys.argv[3]
+    ctk_libdir = sys.argv[4]
+    ctk_datadir = sys.argv[5]
+    ctk_query_immodules = os.path.join(ctk_bindir, 'gtk-query-immodules-' + ctk_api_version)
+    ctk_update_icon_cache = os.path.join(ctk_bindir, 'gtk-update-icon-cache')
 
-    gtk_moduledir = os.path.join(gtk_libdir, 'gtk-' + gtk_api_version, gtk_abi_version)
-    gtk_immodule_dir = os.path.join(gtk_moduledir, 'immodules')
-    gtk_printmodule_dir = os.path.join(gtk_moduledir, 'printbackends')
+    ctk_moduledir = os.path.join(ctk_libdir, 'gtk-' + ctk_api_version, ctk_abi_version)
+    ctk_immodule_dir = os.path.join(ctk_moduledir, 'immodules')
+    ctk_printmodule_dir = os.path.join(ctk_moduledir, 'printbackends')
 
     if os.name == 'nt':
         for lib in ['gdk', 'gtk', 'gailutil']:
             # Make copy for MSVC-built .lib files, e.g. xxx-3.lib->xxx-3.0.lib
-            installed_lib = os.path.join(gtk_libdir, lib + '-' + gtk_api_version.split('.')[0] + '.lib')
-            installed_lib_dst = os.path.join(gtk_libdir, lib + '-' + gtk_api_version + '.lib')
+            installed_lib = os.path.join(ctk_libdir, lib + '-' + ctk_api_version.split('.')[0] + '.lib')
+            installed_lib_dst = os.path.join(ctk_libdir, lib + '-' + ctk_api_version + '.lib')
             if os.path.isfile(installed_lib):
                 shutil.copyfile(installed_lib, installed_lib_dst)
 
@@ -34,25 +34,25 @@ if 'DESTDIR' not in os.environ:
         # pkg-config variables only available since GLib 2.62.0.
         glib_compile_schemas = 'glib-compile-schemas'
     subprocess.call([glib_compile_schemas,
-                    os.path.join(gtk_datadir, 'glib-2.0', 'schemas')])
+                    os.path.join(ctk_datadir, 'glib-2.0', 'schemas')])
 
     print('Updating icon cache...')
-    subprocess.call([gtk_update_icon_cache, '-q', '-t' ,'-f',
-                    os.path.join(gtk_datadir, 'icons', 'hicolor')])
+    subprocess.call([ctk_update_icon_cache, '-q', '-t' ,'-f',
+                    os.path.join(ctk_datadir, 'icons', 'hicolor')])
 
     print('Updating module cache for input methods...')
-    os.makedirs(gtk_immodule_dir, exist_ok=True)
-    immodule_cache_file = open(os.path.join(gtk_moduledir, 'immodules.cache'), 'w')
-    subprocess.call([gtk_query_immodules], stdout=immodule_cache_file)
+    os.makedirs(ctk_immodule_dir, exist_ok=True)
+    immodule_cache_file = open(os.path.join(ctk_moduledir, 'immodules.cache'), 'w')
+    subprocess.call([ctk_query_immodules], stdout=immodule_cache_file)
     immodule_cache_file.close()
 
     # Untested!
     print('Updating module cache for print backends...')
-    os.makedirs(gtk_printmodule_dir, exist_ok=True)
+    os.makedirs(ctk_printmodule_dir, exist_ok=True)
     gio_querymodules = subprocess.check_output(['pkg-config',
                                                 '--variable=gio_querymodules',
                                                 'gio-2.0']).strip()
     if not os.path.exists(gio_querymodules):
         # pkg-config variables only available since GLib 2.62.0.
         gio_querymodules = 'gio-querymodules'
-    subprocess.call([gio_querymodules, gtk_printmodule_dir])
+    subprocess.call([gio_querymodules, ctk_printmodule_dir])

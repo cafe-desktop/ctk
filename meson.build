@@ -44,41 +44,41 @@ add_project_arguments('-DGLIB_MIN_REQUIRED_VERSION=' + glib_min_required, langua
 add_project_arguments('-DGLIB_MAX_ALLOWED_VERSION=' + glib_max_allowed, language: 'c')
 
 # Making releases:
-#  1. gtk_micro_version += 1;
-#  2. gtk_interface_age += 1;
-#  3. if any functions have been added, set gtk_interface_age to 0.
+#  1. ctk_micro_version += 1;
+#  2. ctk_interface_age += 1;
+#  3. if any functions have been added, set ctk_interface_age to 0.
 #  4. if backwards compatibility has been broken, we're in trouble
-gtk_version       = meson.project_version()
-gtk_major_version = gtk_version.split('.')[0].to_int()
-gtk_minor_version = gtk_version.split('.')[1].to_int()
-gtk_micro_version = gtk_version.split('.')[2].to_int()
-gtk_interface_age = 20
+ctk_version       = meson.project_version()
+ctk_major_version = ctk_version.split('.')[0].to_int()
+ctk_minor_version = ctk_version.split('.')[1].to_int()
+ctk_micro_version = ctk_version.split('.')[2].to_int()
+ctk_interface_age = 20
 add_project_arguments('-DGTK_VERSION="@0@"'.format(meson.project_version()), language: 'c')
 
 add_project_arguments('-D_GNU_SOURCE', language: 'c')
 
-gtk_debug_cflags = []
+ctk_debug_cflags = []
 debug = get_option('debug')
 optimization = get_option('optimization')
 if debug
-  gtk_debug_cflags += '-DG_ENABLE_DEBUG'
+  ctk_debug_cflags += '-DG_ENABLE_DEBUG'
   if optimization in ['0', 'g']
-    gtk_debug_cflags += '-DG_ENABLE_CONSISTENCY_CHECKS'
+    ctk_debug_cflags += '-DG_ENABLE_CONSISTENCY_CHECKS'
   endif
 elif optimization in ['2', '3', 's']
-  gtk_debug_cflags += '-DG_DISABLE_CAST_CHECKS'
+  ctk_debug_cflags += '-DG_DISABLE_CAST_CHECKS'
 endif
 
-add_project_arguments(gtk_debug_cflags, language: 'c')
+add_project_arguments(ctk_debug_cflags, language: 'c')
 
 # Define a string for the earliest version that this release has
 # backwards binary compatibility with for all interfaces a module
 # might. Unless we add module-only API with lower stability
 # guarantees, this should be unchanged until we break binary compat
 # for GTK+.
-gtk_binary_version = '3.0.0'
+ctk_binary_version = '3.0.0'
 
-gtk_binary_age = 100 * gtk_minor_version + gtk_micro_version
+ctk_binary_age = 100 * ctk_minor_version + ctk_micro_version
 
 cc = meson.get_compiler('c')
 
@@ -105,28 +105,28 @@ if cc.get_id() == 'msvc'
     endif
   endif
 
-  gtk_soversion = 'vs@0@'.format(vsver)
+  ctk_soversion = 'vs@0@'.format(vsver)
 else
-  gtk_soversion = '0'
+  ctk_soversion = '0'
 endif
 
 # Maintain compatibility with the Autotools build
 
-gtk_library_version = ''
+ctk_library_version = ''
 gail_library_version = ''
 if cc.get_id() == 'msvc'
-  gtk_library_version = gtk_major_version.to_string()
-  gail_library_version = gtk_major_version.to_string()
+  ctk_library_version = ctk_major_version.to_string()
+  gail_library_version = ctk_major_version.to_string()
 else
-  current = gtk_binary_age - gtk_interface_age
-  gtk_library_version = '@0@.@1@.@2@'.format(gtk_soversion, current, gtk_interface_age)
+  current = ctk_binary_age - ctk_interface_age
+  ctk_library_version = '@0@.@1@.@2@'.format(ctk_soversion, current, ctk_interface_age)
   gail_library_version = '0.0.0'
 endif
 
-osx_current = gtk_binary_age - gtk_interface_age + 1
-gtk_osxversions = [osx_current, '@0@.@1@.0'.format(osx_current, gtk_interface_age)]
+osx_current = ctk_binary_age - ctk_interface_age + 1
+ctk_osxversions = [osx_current, '@0@.@1@.0'.format(osx_current, ctk_interface_age)]
 
-gtk_api_version = '@0@.0'.format(gtk_major_version)
+ctk_api_version = '@0@.0'.format(ctk_major_version)
 
 x11_enabled            = get_option('x11_backend')
 wayland_enabled        = get_option('wayland_backend')
@@ -166,31 +166,31 @@ else
   win32_enabled = false
 endif
 
-gtk_prefix = get_option('prefix')
-gtk_includedir = join_paths(gtk_prefix, get_option('includedir'))
-gtk_libdir = join_paths(gtk_prefix, get_option('libdir'))
-gtk_datadir = join_paths(gtk_prefix, get_option('datadir'))
-gtk_localedir = join_paths(gtk_prefix, get_option('localedir'))
-gtk_sysconfdir = join_paths(gtk_prefix, get_option('sysconfdir'))
-gtk_applicationsdir = join_paths(gtk_datadir, 'applications')
-gtk_schemasdir = join_paths(gtk_datadir, 'glib-2.0/schemas')
-gtk_appdatadir = join_paths(gtk_datadir, 'metainfo')
+ctk_prefix = get_option('prefix')
+ctk_includedir = join_paths(ctk_prefix, get_option('includedir'))
+ctk_libdir = join_paths(ctk_prefix, get_option('libdir'))
+ctk_datadir = join_paths(ctk_prefix, get_option('datadir'))
+ctk_localedir = join_paths(ctk_prefix, get_option('localedir'))
+ctk_sysconfdir = join_paths(ctk_prefix, get_option('sysconfdir'))
+ctk_applicationsdir = join_paths(ctk_datadir, 'applications')
+ctk_schemasdir = join_paths(ctk_datadir, 'glib-2.0/schemas')
+ctk_appdatadir = join_paths(ctk_datadir, 'metainfo')
 
 # multipress: is mplocaledir defined somewhere?
-gtk_mplocaledir = join_paths(gtk_prefix, get_option('localedir'))
+ctk_mplocaledir = join_paths(ctk_prefix, get_option('localedir'))
 
 cdata = configuration_data()
 cdata.set_quoted('PACKAGE_VERSION', meson.project_version())
-cdata.set_quoted('GTK_LOCALEDIR', gtk_localedir)
-cdata.set_quoted('GTK_DATADIR', gtk_datadir)
-cdata.set_quoted('GTK_LIBDIR', gtk_libdir)
-cdata.set_quoted('GTK_SYSCONFDIR', gtk_sysconfdir)
+cdata.set_quoted('GTK_LOCALEDIR', ctk_localedir)
+cdata.set_quoted('GTK_DATADIR', ctk_datadir)
+cdata.set_quoted('GTK_LIBDIR', ctk_libdir)
+cdata.set_quoted('GTK_SYSCONFDIR', ctk_sysconfdir)
 cdata.set_quoted('GETTEXT_PACKAGE', 'gtk30')
-cdata.set('GTK_MAJOR_VERSION', gtk_major_version)
-cdata.set('GTK_MINOR_VERSION', gtk_minor_version)
-cdata.set('GTK_MICRO_VERSION', gtk_micro_version)
-cdata.set('GTK_BINARY_AGE', gtk_binary_age)
-cdata.set('GTK_INTERFACE_AGE', gtk_interface_age)
+cdata.set('GTK_MAJOR_VERSION', ctk_major_version)
+cdata.set('GTK_MINOR_VERSION', ctk_minor_version)
+cdata.set('GTK_MICRO_VERSION', ctk_micro_version)
+cdata.set('GTK_BINARY_AGE', ctk_binary_age)
+cdata.set('GTK_INTERFACE_AGE', ctk_interface_age)
 
 cdata.set_quoted('PACKAGE_URL', '')
 cdata.set_quoted('PACKAGE_NAME', 'gtk+')
@@ -268,7 +268,7 @@ cdata.set('HAVE_DECL_ISNAN', cc.has_header_symbol('math.h', 'isnan') ? 1 : false
 # a stable GTK version.
 # We don't ever want to turn off deprecation warnings for master however, because
 # that's where we get rid of deprecated API we use.
-if gtk_minor_version.is_even()
+if ctk_minor_version.is_even()
   cdata.set('GLIB_DISABLE_DEPRECATION_WARNINGS', 1)
 endif
 
@@ -738,8 +738,8 @@ immodules = [
   [ 'inuktitut', files([ immodule_srcdir + 'iminuktitut.c' ]) ],
   [ 'ipa', files([ immodule_srcdir + 'imipa.c' ]) ],
   [ 'multipress', files( [ immodule_srcdir + 'gtkimcontextmultipress.c', immodule_srcdir + 'immultipress.c' ]), true,
-                    ['-DMULTIPRESS_LOCALEDIR="@0@"'.format(gtk_mplocaledir),
-                     '-DMULTIPRESS_CONFDIR="@0@/gtk-3.0"'.format(gtk_sysconfdir)] ],
+                    ['-DMULTIPRESS_LOCALEDIR="@0@"'.format(ctk_mplocaledir),
+                     '-DMULTIPRESS_CONFDIR="@0@/gtk-3.0"'.format(ctk_sysconfdir)] ],
   [ 'thai', files([ immodule_srcdir + 'thai-charprop.c', immodule_srcdir + 'gtkimcontextthai.c', immodule_srcdir + 'imthai.c' ]) ],
   [ 'ti-er', files([ immodule_srcdir + 'imti-er.c' ]) ],
   [ 'ti-et', files([ immodule_srcdir + 'imti-et.c' ]) ],
@@ -752,7 +752,7 @@ immodules = [
   [ 'xim', files([ immodule_srcdir + 'gtkimcontextxim.c', immodule_srcdir + 'imxim.c' ]), x11_enabled ],
 ]
 
-install_data(join_paths(immodule_srcdir, 'im-multipress.conf'), install_dir: join_paths(gtk_sysconfdir, 'gtk-3.0'))
+install_data(join_paths(immodule_srcdir, 'im-multipress.conf'), install_dir: join_paths(ctk_sysconfdir, 'gtk-3.0'))
 
 # Check for bind_textdomain_codeset, including -lintl if GLib brings it in by
 # doing the same check as glib. We can't check that by linking to glib because
@@ -863,9 +863,9 @@ pkgconf.set('prefix', get_option('prefix'))
 pkgconf.set('exec_prefix', '${prefix}')
 pkgconf.set('libdir', '${prefix}' / get_option('libdir'))
 pkgconf.set('includedir', '${prefix}' / get_option('includedir'))
-pkgconf.set('GTK_API_VERSION', gtk_api_version)
+pkgconf.set('GTK_API_VERSION', ctk_api_version)
 pkgconf.set('VERSION', meson.project_version())
-pkgconf.set('GTK_BINARY_VERSION', gtk_binary_version)
+pkgconf.set('GTK_BINARY_VERSION', ctk_binary_version)
 pkgconf.set('host', '@0@-@1@'.format(host_machine.cpu_family(), host_machine.system())) # FIXME
 
 # Requires
@@ -901,24 +901,24 @@ pkgconf.set('GDK_PRIVATE_PACKAGES',
                      ['epoxy', epoxy_req] + cloudproviders_packages +
                      ['fribidi', fribidi_req]))
 
-gtk_packages = ' '.join([
+ctk_packages = ' '.join([
     atk_dep.name(), atk_req,
     cairo_packages,
     pixbuf_dep.name(), gdk_pixbuf_req,
     'gio-2.0', glib_req,
 ])
-pkgconf.set('GTK_PACKAGES', gtk_packages)
+pkgconf.set('GTK_PACKAGES', ctk_packages)
 
 # Requires.private
 pc_gdk_extra_libs += cairo_libs
 
-gtk_private_packages = atk_pkgs + wayland_pkgs + ['epoxy', epoxy_req, 'fribidi', fribidi_req]
+ctk_private_packages = atk_pkgs + wayland_pkgs + ['epoxy', epoxy_req, 'fribidi', fribidi_req]
 if wayland_enabled or x11_enabled
-  gtk_private_packages += ['pangoft2']
+  ctk_private_packages += ['pangoft2']
 endif
-gtk_private_packages += gio_packages
+ctk_private_packages += gio_packages
 
-pkgconf.set('GTK_PRIVATE_PACKAGES', ' '.join(gtk_private_packages))
+pkgconf.set('GTK_PRIVATE_PACKAGES', ' '.join(ctk_private_packages))
 
 pkgconf.set('GDK_EXTRA_LIBS', ' '.join(pc_gdk_extra_libs))
 pkgconf.set('GSK_EXTRA_LIBS', '')
@@ -930,14 +930,14 @@ pkgconf.set('GTK_EXTRA_CFLAGS', '')
 
 pkg_install_dir = join_paths(get_option('libdir'), 'pkgconfig')
 
-gtk_pcs = ['gtk+-3.0.pc']
+ctk_pcs = ['gtk+-3.0.pc']
 gdk_pcs = ['gdk-3.0.pc']
 
 pkg_targets = ''
 disabled_backends = []
 foreach backend: [ 'broadway', 'quartz', 'wayland', 'win32', 'x11']
   if get_variable('@0@_enabled'.format(backend))
-    gtk_pcs += ['gtk+-@0@-3.0.pc'.format(backend)]
+    ctk_pcs += ['gtk+-@0@-3.0.pc'.format(backend)]
     gdk_pcs += ['gdk-@0@-3.0.pc'.format(backend)]
     pkg_targets += ' ' + backend
   else
@@ -958,7 +958,7 @@ foreach pkg: gdk_pcs
                  install_dir: pkg_install_dir)
 endforeach
 
-foreach pkg: gtk_pcs
+foreach pkg: ctk_pcs
   configure_file(input: 'gtk+-3.0.pc.in',
                  output: pkg,
                  configuration: pkgconf,
@@ -981,17 +981,17 @@ install_data('m4macros/gtk-3.0.m4', install_dir: join_paths(get_option('datadir'
 
 # Keep this in sync with post-install.py expected arguments
 meson.add_install_script('build-aux/meson/post-install.py',
-                         gtk_api_version,
-                         gtk_binary_version,
-                         join_paths(gtk_prefix, get_option('bindir')),
-                         gtk_libdir,
-                         gtk_datadir)
+                         ctk_api_version,
+                         ctk_binary_version,
+                         join_paths(ctk_prefix, get_option('bindir')),
+                         ctk_libdir,
+                         ctk_datadir)
 
 if host_machine.system() != 'windows'
   # Install Valgrind suppression files (except on Windows,
   # as Valgrind is currently not supported on Windows)
   install_data('gtk.supp',
-    install_dir : join_paths(gtk_datadir, 'gtk-3.0', 'valgrind'))
+    install_dir : join_paths(ctk_datadir, 'gtk-3.0', 'valgrind'))
 endif
 
 test(
@@ -1007,7 +1007,7 @@ test(
 summary = [
   '',
   '------',
-  'GTK+ @0@ (@1@)'.format(gtk_version, gtk_api_version),
+  'GTK+ @0@ (@1@)'.format(ctk_version, ctk_api_version),
   '',
   '  Display backends: @0@ [disabled: @1@]'.format(pkg_targets.strip(), ' '.join(disabled_backends)),
   '    Print backends: @0@ [disabled: @1@]'.format(' '.join(print_backends), ' '.join(disabled_print_backends)),
@@ -1015,17 +1015,17 @@ summary = [
   '    Colord support: @0@'.format(get_option('colord')),
   '          Profiler: @0@'.format(get_option('profiler')),
   '     Introspection: @0@'.format(get_option('introspection')),
-  '     Documentation: @0@'.format(get_option('gtk_doc')),
+  '     Documentation: @0@'.format(get_option('ctk_doc')),
   '         Man pages: @0@'.format(get_option('man')),
   '       Build tests: @0@'.format(get_option('tests')),
   '   Installed tests: @0@'.format(get_option('installed_tests')),
   '             Demos: @0@'.format(get_option('demos')),
   '          Examples: @0@'.format(get_option('examples')),
   'Directories:',
-  '            prefix: @0@'.format(gtk_prefix),
-  '        includedir: @0@'.format(gtk_includedir),
-  '            libdir: @0@'.format(gtk_libdir),
-  '           datadir: @0@'.format(gtk_datadir),
+  '            prefix: @0@'.format(ctk_prefix),
+  '        includedir: @0@'.format(ctk_includedir),
+  '            libdir: @0@'.format(ctk_libdir),
+  '           datadir: @0@'.format(ctk_datadir),
   '------',
   ''
 ]

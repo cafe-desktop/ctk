@@ -34,7 +34,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_BIN                  (gtk_bin_get_type ())
+#define GTK_TYPE_BIN                  (ctk_bin_get_type ())
 #define GTK_BIN(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_BIN, GtkBin))
 #define GTK_BIN_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_BIN, GtkBinClass))
 #define GTK_IS_BIN(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_BIN))
@@ -65,20 +65,20 @@ struct _GtkBinClass
   /*< private >*/
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
 GDK_AVAILABLE_IN_ALL
-GType      gtk_bin_get_type  (void) G_GNUC_CONST;
+GType      ctk_bin_get_type  (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget *gtk_bin_get_child (GtkBin *bin);
+GtkWidget *ctk_bin_get_child (GtkBin *bin);
 
-void       _gtk_bin_set_child (GtkBin    *bin,
+void       _ctk_bin_set_child (GtkBin    *bin,
                                GtkWidget *widget);
 
 G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkBin, g_object_unref)

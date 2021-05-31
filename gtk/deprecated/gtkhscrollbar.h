@@ -33,7 +33,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_HSCROLLBAR            (gtk_hscrollbar_get_type ())
+#define GTK_TYPE_HSCROLLBAR            (ctk_hscrollbar_get_type ())
 #define GTK_HSCROLLBAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_HSCROLLBAR, GtkHScrollbar))
 #define GTK_HSCROLLBAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_HSCROLLBAR, GtkHScrollbarClass))
 #define GTK_IS_HSCROLLBAR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_HSCROLLBAR))
@@ -56,9 +56,9 @@ struct _GtkHScrollbarClass
 
 
 GDK_DEPRECATED_IN_3_2
-GType      gtk_hscrollbar_get_type (void) G_GNUC_CONST;
-GDK_DEPRECATED_IN_3_2_FOR(gtk_scrollbar_new)
-GtkWidget* gtk_hscrollbar_new      (GtkAdjustment *adjustment);
+GType      ctk_hscrollbar_get_type (void) G_GNUC_CONST;
+GDK_DEPRECATED_IN_3_2_FOR(ctk_scrollbar_new)
+GtkWidget* ctk_hscrollbar_new      (GtkAdjustment *adjustment);
 
 G_END_DECLS
 

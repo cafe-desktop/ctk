@@ -84,12 +84,12 @@ struct _GdkWaylandDisplay
   struct wl_shm *shm;
   struct xdg_wm_base *xdg_wm_base;
   struct zxdg_shell_v6 *zxdg_shell_v6;
-  struct gtk_shell1 *gtk_shell;
+  struct ctk_shell1 *ctk_shell;
   struct wl_input_device *input_device;
   struct wl_data_device_manager *data_device_manager;
   struct wl_subcompositor *subcompositor;
   struct zwp_pointer_gestures_v1 *pointer_gestures;
-  struct gtk_primary_selection_device_manager *gtk_primary_selection_manager;
+  struct ctk_primary_selection_device_manager *ctk_primary_selection_manager;
   struct zwp_primary_selection_device_manager_v1 *zwp_primary_selection_manager_v1;
   struct zwp_tablet_manager_v2 *tablet_manager;
   struct zxdg_exporter_v1 *xdg_exporter;
@@ -123,7 +123,7 @@ struct _GdkWaylandDisplay
   int compositor_version;
   int seat_version;
   int data_device_manager_version;
-  int gtk_shell_version;
+  int ctk_shell_version;
   int xdg_output_manager_version;
 
   uint32_t server_decoration_mode;

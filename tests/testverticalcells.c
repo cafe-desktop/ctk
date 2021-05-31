@@ -253,8 +253,8 @@ populate_model (GtkTreeStore *model,
 
   for (i = 0; entries[i].info != NULL; i++)
     {
-      gtk_tree_store_append (model, &iter, parent);
-      gtk_tree_store_set (model, &iter,
+      ctk_tree_store_append (model, &iter, parent);
+      ctk_tree_store_set (model, &iter,
 			  ICON_COLUMN, entries[i].icon,
 			  INFO_COLUMN, entries[i].info,
 			  DESCRIPTION_COLUMN, entries[i].description,
@@ -274,7 +274,7 @@ create_model (void)
   GtkTreeStore *model;
   gint          i;
 
-  model = gtk_tree_store_new (NUM_COLUMNS,
+  model = ctk_tree_store_new (NUM_COLUMNS,
 			      G_TYPE_STRING,
 			      G_TYPE_STRING,
 			      G_TYPE_STRING,
@@ -299,79 +299,79 @@ main (gint argc, gchar **argv)
   GtkTreeViewColumn *column;
   GtkCellArea *area;
   
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
   if (g_getenv ("RTL"))
-    gtk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
+    ctk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_title (GTK_WINDOW (window), "Vertical cells in GtkTreeViewColumn example");
-  g_signal_connect (window, "destroy", gtk_main_quit, NULL);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (GTK_WINDOW (window), "Vertical cells in GtkTreeViewColumn example");
+  g_signal_connect (window, "destroy", ctk_main_quit, NULL);
 
-  scrolled_window = gtk_scrolled_window_new (NULL, NULL);
-  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolled_window), GTK_SHADOW_ETCHED_IN);
-  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window), 
+  scrolled_window = ctk_scrolled_window_new (NULL, NULL);
+  ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolled_window), GTK_SHADOW_ETCHED_IN);
+  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window), 
 				  GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
-  gtk_container_add (GTK_CONTAINER (window), scrolled_window);
+  ctk_container_add (GTK_CONTAINER (window), scrolled_window);
 
   tree_model = create_model ();
-  tree_view = gtk_tree_view_new_with_model (tree_model);
-  gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (tree_view), FALSE);
+  tree_view = ctk_tree_view_new_with_model (tree_model);
+  ctk_tree_view_set_headers_visible (GTK_TREE_VIEW (tree_view), FALSE);
 
   /* First column */
-  column = gtk_tree_view_column_new ();
+  column = ctk_tree_view_column_new ();
 
-  renderer = gtk_cell_renderer_pixbuf_new ();
+  renderer = ctk_cell_renderer_pixbuf_new ();
   g_object_set (renderer, "stock-size", GTK_ICON_SIZE_DIALOG, NULL);
-  gtk_tree_view_column_pack_start (column, renderer, TRUE);
-  gtk_tree_view_column_set_attributes (column, renderer,
+  ctk_tree_view_column_pack_start (column, renderer, TRUE);
+  ctk_tree_view_column_set_attributes (column, renderer,
 				       "icon-name", ICON_COLUMN, NULL);
 
-  renderer = gtk_cell_renderer_text_new ();
+  renderer = ctk_cell_renderer_text_new ();
   g_object_set (renderer, "scale", 1.2F, "weight", PANGO_WEIGHT_BOLD, NULL);
-  gtk_tree_view_column_pack_start (column, renderer, TRUE);
-  gtk_tree_view_column_set_attributes (column, renderer,
+  ctk_tree_view_column_pack_start (column, renderer, TRUE);
+  ctk_tree_view_column_set_attributes (column, renderer,
 				       "text", INFO_COLUMN,
 				       NULL);
-  gtk_tree_view_append_column (GTK_TREE_VIEW (tree_view), column);
+  ctk_tree_view_append_column (GTK_TREE_VIEW (tree_view), column);
 
   /* Second (vertical) column */
-  column = gtk_tree_view_column_new ();
-  area = gtk_cell_layout_get_area (GTK_CELL_LAYOUT (column));
-  gtk_orientable_set_orientation (GTK_ORIENTABLE (area), GTK_ORIENTATION_VERTICAL);
+  column = ctk_tree_view_column_new ();
+  area = ctk_cell_layout_get_area (GTK_CELL_LAYOUT (column));
+  ctk_orientable_set_orientation (GTK_ORIENTABLE (area), GTK_ORIENTATION_VERTICAL);
 
-  renderer = gtk_cell_renderer_text_new ();
+  renderer = ctk_cell_renderer_text_new ();
   g_object_set (renderer, "ellipsize", PANGO_ELLIPSIZE_END, "editable", TRUE, NULL);
-  gtk_tree_view_column_pack_start (column, renderer, TRUE);
-  gtk_tree_view_column_set_attributes (column, renderer,
+  ctk_tree_view_column_pack_start (column, renderer, TRUE);
+  ctk_tree_view_column_set_attributes (column, renderer,
 				       "text", DESCRIPTION_COLUMN,
 				       NULL);
 
-  renderer = gtk_cell_renderer_progress_new ();
-  gtk_tree_view_column_pack_start (column, renderer, TRUE);
-  gtk_tree_view_column_set_attributes (column, renderer,
+  renderer = ctk_cell_renderer_progress_new ();
+  ctk_tree_view_column_pack_start (column, renderer, TRUE);
+  ctk_tree_view_column_set_attributes (column, renderer,
 				       "value", PROGRESS_COLUMN,
 				       NULL);
 
-  renderer = gtk_cell_renderer_text_new ();
+  renderer = ctk_cell_renderer_text_new ();
   g_object_set (renderer, "scale", 0.6F, "ellipsize", PANGO_ELLIPSIZE_END, NULL);
-  gtk_tree_view_column_pack_start (column, renderer, TRUE);
-  gtk_tree_view_column_set_attributes (column, renderer,
+  ctk_tree_view_column_pack_start (column, renderer, TRUE);
+  ctk_tree_view_column_set_attributes (column, renderer,
 				       "text", FINE_PRINT_COLUMN,
 				       "foreground", FINE_PRINT_COLOR_COLUMN,
 				       NULL);
 
-  gtk_tree_view_append_column (GTK_TREE_VIEW (tree_view), column);
+  ctk_tree_view_append_column (GTK_TREE_VIEW (tree_view), column);
 
-  gtk_tree_view_expand_all (GTK_TREE_VIEW (tree_view));
+  ctk_tree_view_expand_all (GTK_TREE_VIEW (tree_view));
 
-  gtk_container_add (GTK_CONTAINER (scrolled_window), tree_view);
+  ctk_container_add (GTK_CONTAINER (scrolled_window), tree_view);
   
-  gtk_window_set_default_size (GTK_WINDOW (window),
+  ctk_window_set_default_size (GTK_WINDOW (window),
 			       800, 400);
 
-  gtk_widget_show_all (window);
-  gtk_main ();
+  ctk_widget_show_all (window);
+  ctk_main ();
 
   return 0;
 }

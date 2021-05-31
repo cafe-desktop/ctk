@@ -15,21 +15,21 @@ show_parsing_error (GtkCssProvider *provider,
   GtkTextIter start, end;
   const char *tag_name;
 
-  gtk_text_buffer_get_iter_at_line_index (buffer,
+  ctk_text_buffer_get_iter_at_line_index (buffer,
                                           &start,
-                                          gtk_css_section_get_start_line (section),
-                                          gtk_css_section_get_start_position (section));
-  gtk_text_buffer_get_iter_at_line_index (buffer,
+                                          ctk_css_section_get_start_line (section),
+                                          ctk_css_section_get_start_position (section));
+  ctk_text_buffer_get_iter_at_line_index (buffer,
                                           &end,
-                                          gtk_css_section_get_end_line (section),
-                                          gtk_css_section_get_end_position (section));
+                                          ctk_css_section_get_end_line (section),
+                                          ctk_css_section_get_end_position (section));
 
   if (g_error_matches (error, GTK_CSS_PROVIDER_ERROR, GTK_CSS_PROVIDER_ERROR_DEPRECATED))
     tag_name = "warning";
   else
     tag_name = "error";
 
-  gtk_text_buffer_apply_tag_by_name (buffer, tag_name, &start, &end);
+  ctk_text_buffer_apply_tag_by_name (buffer, tag_name, &start, &end);
 }
 
 static void
@@ -39,23 +39,23 @@ css_text_changed (GtkTextBuffer  *buffer,
   GtkTextIter start, end;
   char *text;
 
-  gtk_text_buffer_get_start_iter (buffer, &start);
-  gtk_text_buffer_get_end_iter (buffer, &end);
-  gtk_text_buffer_remove_all_tags (buffer, &start, &end);
+  ctk_text_buffer_get_start_iter (buffer, &start);
+  ctk_text_buffer_get_end_iter (buffer, &end);
+  ctk_text_buffer_remove_all_tags (buffer, &start, &end);
 
-  text = gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
-  gtk_css_provider_load_from_data (provider, text, -1, NULL);
+  text = ctk_text_buffer_get_text (buffer, &start, &end, FALSE);
+  ctk_css_provider_load_from_data (provider, text, -1, NULL);
   g_free (text);
 
-  gtk_style_context_reset_widgets (gdk_screen_get_default ());
+  ctk_style_context_reset_widgets (gdk_screen_get_default ());
 }
 
 static void
 apply_css (GtkWidget *widget, GtkStyleProvider *provider)
 {
-  gtk_style_context_add_provider (gtk_widget_get_style_context (widget), provider, G_MAXUINT);
+  ctk_style_context_add_provider (ctk_widget_get_style_context (widget), provider, G_MAXUINT);
   if (GTK_IS_CONTAINER (widget))
-    gtk_container_forall (GTK_CONTAINER (widget), (GtkCallback) apply_css, provider);
+    ctk_container_forall (GTK_CONTAINER (widget), (GtkCallback) apply_css, provider);
 }
 
 GtkWidget *
@@ -70,55 +70,55 @@ do_css_pixbufs (GtkWidget *do_widget)
       GtkTextBuffer *text;
       GBytes *bytes;
 
-      window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-      gtk_window_set_title (GTK_WINDOW (window), "Animated Backgrounds");
-      gtk_window_set_transient_for (GTK_WINDOW (window), GTK_WINDOW (do_widget));
-      gtk_window_set_default_size (GTK_WINDOW (window), 400, 300);
+      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+      ctk_window_set_title (GTK_WINDOW (window), "Animated Backgrounds");
+      ctk_window_set_transient_for (GTK_WINDOW (window), GTK_WINDOW (do_widget));
+      ctk_window_set_default_size (GTK_WINDOW (window), 400, 300);
       g_signal_connect (window, "destroy",
-                        G_CALLBACK (gtk_widget_destroyed), &window);
+                        G_CALLBACK (ctk_widget_destroyed), &window);
 
-      paned = gtk_paned_new (GTK_ORIENTATION_VERTICAL);
-      gtk_container_add (GTK_CONTAINER (window), paned);
+      paned = ctk_paned_new (GTK_ORIENTATION_VERTICAL);
+      ctk_container_add (GTK_CONTAINER (window), paned);
 
       /* Need a filler so we get a handle */
-      child = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-      gtk_container_add (GTK_CONTAINER (paned), child);
+      child = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+      ctk_container_add (GTK_CONTAINER (paned), child);
 
-      text = gtk_text_buffer_new (NULL);
-      gtk_text_buffer_create_tag (text,
+      text = ctk_text_buffer_new (NULL);
+      ctk_text_buffer_create_tag (text,
                                   "warning",
                                   "underline", PANGO_UNDERLINE_SINGLE,
                                   NULL);
-      gtk_text_buffer_create_tag (text,
+      ctk_text_buffer_create_tag (text,
                                   "error",
                                   "underline", PANGO_UNDERLINE_ERROR,
                                   NULL);
 
-      provider = GTK_STYLE_PROVIDER (gtk_css_provider_new ());
+      provider = GTK_STYLE_PROVIDER (ctk_css_provider_new ());
 
-      container = gtk_scrolled_window_new (NULL, NULL);
-      gtk_container_add (GTK_CONTAINER (paned), container);
-      child = gtk_text_view_new_with_buffer (text);
-      gtk_container_add (GTK_CONTAINER (container), child);
+      container = ctk_scrolled_window_new (NULL, NULL);
+      ctk_container_add (GTK_CONTAINER (paned), container);
+      child = ctk_text_view_new_with_buffer (text);
+      ctk_container_add (GTK_CONTAINER (container), child);
       g_signal_connect (text, "changed",
                         G_CALLBACK (css_text_changed), provider);
 
       bytes = g_resources_lookup_data ("/css_pixbufs/gtk.css", 0, NULL);
-      gtk_text_buffer_set_text (text, g_bytes_get_data (bytes, NULL), g_bytes_get_size (bytes));
+      ctk_text_buffer_set_text (text, g_bytes_get_data (bytes, NULL), g_bytes_get_size (bytes));
       g_bytes_unref (bytes);
 
       g_signal_connect (provider,
                         "parsing-error",
                         G_CALLBACK (show_parsing_error),
-                        gtk_text_view_get_buffer (GTK_TEXT_VIEW (child)));
+                        ctk_text_view_get_buffer (GTK_TEXT_VIEW (child)));
 
       apply_css (window, provider);
     }
 
-  if (!gtk_widget_get_visible (window))
-    gtk_widget_show_all (window);
+  if (!ctk_widget_get_visible (window))
+    ctk_widget_show_all (window);
   else
-    gtk_widget_destroy (window);
+    ctk_widget_destroy (window);
 
   return window;
 }

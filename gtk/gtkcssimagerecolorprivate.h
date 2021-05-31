@@ -25,7 +25,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_IMAGE_RECOLOR           (_gtk_css_image_recolor_get_type ())
+#define GTK_TYPE_CSS_IMAGE_RECOLOR           (_ctk_css_image_recolor_get_type ())
 #define GTK_CSS_IMAGE_RECOLOR(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_IMAGE_RECOLOR, GtkCssImageRecolor))
 #define GTK_CSS_IMAGE_RECOLOR_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_IMAGE_RECOLOR, GtkCssImageRecolorClass))
 #define GTK_IS_CSS_IMAGE_RECOLOR(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_IMAGE_RECOLOR))
@@ -47,7 +47,7 @@ struct _GtkCssImageRecolorClass
   GtkCssImageClass parent_class;
 };
 
-GType          _gtk_css_image_recolor_get_type             (void) G_GNUC_CONST;
+GType          _ctk_css_image_recolor_get_type             (void) G_GNUC_CONST;
 
 G_END_DECLS
 

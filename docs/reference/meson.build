@@ -1,4 +1,4 @@
-if get_option('gtk_doc')
+if get_option('ctk_doc')
     glib_prefix = dependency('glib-2.0').get_pkgconfig_variable('prefix')
     glib_docpath = join_paths(glib_prefix, 'share', 'gtk-doc', 'html')
 
@@ -8,7 +8,7 @@ if get_option('gtk_doc')
     gdkpixbuf_prefix = dependency('gdk-pixbuf-2.0').get_pkgconfig_variable('prefix')
     gdkpixbuf_docpath = join_paths(gdkpixbuf_prefix, 'share', 'gtk-doc', 'html', 'gdk-pixbuf')
 
-    docpath = join_paths(gtk_datadir, 'gtk-doc', 'html')
+    docpath = join_paths(ctk_datadir, 'gtk-doc', 'html')
 
     version_conf = configuration_data()
     version_conf.set('GTK_VERSION', meson.project_version())

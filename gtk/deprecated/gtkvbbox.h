@@ -33,7 +33,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_VBUTTON_BOX            (gtk_vbutton_box_get_type ())
+#define GTK_TYPE_VBUTTON_BOX            (ctk_vbutton_box_get_type ())
 #define GTK_VBUTTON_BOX(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_VBUTTON_BOX, GtkVButtonBox))
 #define GTK_VBUTTON_BOX_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_VBUTTON_BOX, GtkVButtonBoxClass))
 #define GTK_IS_VBUTTON_BOX(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_VBUTTON_BOX))
@@ -56,9 +56,9 @@ struct _GtkVButtonBoxClass
 
 
 GDK_DEPRECATED_IN_3_2
-GType      gtk_vbutton_box_get_type (void) G_GNUC_CONST;
-GDK_DEPRECATED_IN_3_2_FOR(gtk_button_box_new)
-GtkWidget *gtk_vbutton_box_new      (void);
+GType      ctk_vbutton_box_get_type (void) G_GNUC_CONST;
+GDK_DEPRECATED_IN_3_2_FOR(ctk_button_box_new)
+GtkWidget *ctk_vbutton_box_new      (void);
 
 G_END_DECLS
 

@@ -20,7 +20,7 @@
 
 #include <gtk/gtkpaned.h>
 
-#define GTK_TYPE_INSPECTOR_SIGNALS_LIST            (gtk_inspector_signals_list_get_type())
+#define GTK_TYPE_INSPECTOR_SIGNALS_LIST            (ctk_inspector_signals_list_get_type())
 #define GTK_INSPECTOR_SIGNALS_LIST(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_INSPECTOR_SIGNALS_LIST, GtkInspectorSignalsList))
 #define GTK_INSPECTOR_SIGNALS_LIST_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GTK_TYPE_INSPECTOR_SIGNALS_LIST, GtkInspectorSignalsListClass))
 #define GTK_INSPECTOR_IS_SIGNALS_LIST(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), GTK_TYPE_INSPECTOR_SIGNALS_LIST))
@@ -43,8 +43,8 @@ typedef struct _GtkInspectorSignalsListClass
 
 G_BEGIN_DECLS
 
-GType      gtk_inspector_signals_list_get_type   (void);
-void       gtk_inspector_signals_list_set_object (GtkInspectorSignalsList *sl,
+GType      ctk_inspector_signals_list_get_type   (void);
+void       ctk_inspector_signals_list_set_object (GtkInspectorSignalsList *sl,
                                                   GObject                 *object);
 
 G_END_DECLS

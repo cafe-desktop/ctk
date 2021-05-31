@@ -25,7 +25,7 @@ on_toggle_hexpand (GtkToggleButton *toggle,
                    void            *data)
 {
   g_object_set (toggle,
-                "hexpand", gtk_toggle_button_get_active (toggle),
+                "hexpand", ctk_toggle_button_get_active (toggle),
                 NULL);
 }
 
@@ -34,7 +34,7 @@ on_toggle_vexpand (GtkToggleButton *toggle,
                    void            *data)
 {
   g_object_set (toggle,
-                "vexpand", gtk_toggle_button_get_active (toggle),
+                "vexpand", ctk_toggle_button_get_active (toggle),
                 NULL);
 }
 
@@ -46,65 +46,65 @@ create_box_window (void)
   GtkWidget *toggle;
   GtkWidget *colorbox;
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_title (GTK_WINDOW (window), "Boxes");
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (GTK_WINDOW (window), "Boxes");
 
-  box1 = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  box2 = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  box3 = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+  box1 = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+  box2 = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  box3 = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 
-  gtk_box_pack_start (GTK_BOX (box1),
-                      gtk_label_new ("VBox 1 Top"),
+  ctk_box_pack_start (GTK_BOX (box1),
+                      ctk_label_new ("VBox 1 Top"),
                       FALSE, FALSE, 0);
-  gtk_box_pack_start (GTK_BOX (box1),
+  ctk_box_pack_start (GTK_BOX (box1),
                       box2,
                       FALSE, TRUE, 0);
-  gtk_box_pack_end (GTK_BOX (box1),
-                    gtk_label_new ("VBox 1 Bottom"),
+  ctk_box_pack_end (GTK_BOX (box1),
+                    ctk_label_new ("VBox 1 Bottom"),
                     FALSE, FALSE, 0);
 
-  gtk_box_pack_start (GTK_BOX (box2),
-                      gtk_label_new ("HBox 2 Left"),
+  ctk_box_pack_start (GTK_BOX (box2),
+                      ctk_label_new ("HBox 2 Left"),
                       FALSE, FALSE, 0);
-  gtk_box_pack_start (GTK_BOX (box2),
+  ctk_box_pack_start (GTK_BOX (box2),
                       box3,
                       FALSE, TRUE, 0);
-  gtk_box_pack_end (GTK_BOX (box2),
-                    gtk_label_new ("HBox 2 Right"),
+  ctk_box_pack_end (GTK_BOX (box2),
+                    ctk_label_new ("HBox 2 Right"),
                     FALSE, FALSE, 0);
 
-  gtk_box_pack_start (GTK_BOX (box3),
-                      gtk_label_new ("VBox 3 Top"),
+  ctk_box_pack_start (GTK_BOX (box3),
+                      ctk_label_new ("VBox 3 Top"),
                       FALSE, FALSE, 0);
-  gtk_box_pack_end (GTK_BOX (box3),
-                    gtk_label_new ("VBox 3 Bottom"),
+  ctk_box_pack_end (GTK_BOX (box3),
+                    ctk_label_new ("VBox 3 Bottom"),
                     FALSE, FALSE, 0);
 
-  colorbox = gtk_frame_new (NULL);
+  colorbox = ctk_frame_new (NULL);
 
-  toggle = gtk_toggle_button_new_with_label ("H Expand");
-  gtk_widget_set_halign (toggle, GTK_ALIGN_CENTER);
-  gtk_widget_set_valign (toggle, GTK_ALIGN_CENTER);
+  toggle = ctk_toggle_button_new_with_label ("H Expand");
+  ctk_widget_set_halign (toggle, GTK_ALIGN_CENTER);
+  ctk_widget_set_valign (toggle, GTK_ALIGN_CENTER);
   g_object_set (toggle, "margin", 5, NULL);
   g_signal_connect (G_OBJECT (toggle), "toggled",
                     G_CALLBACK (on_toggle_hexpand), NULL);
-  gtk_container_add (GTK_CONTAINER (colorbox), toggle);
+  ctk_container_add (GTK_CONTAINER (colorbox), toggle);
 
-  gtk_box_pack_start (GTK_BOX (box3), colorbox, FALSE, TRUE, 0);
+  ctk_box_pack_start (GTK_BOX (box3), colorbox, FALSE, TRUE, 0);
 
-  colorbox = gtk_frame_new (NULL);
+  colorbox = ctk_frame_new (NULL);
 
-  toggle = gtk_toggle_button_new_with_label ("V Expand");
-  gtk_widget_set_halign (toggle, GTK_ALIGN_CENTER);
-  gtk_widget_set_valign (toggle, GTK_ALIGN_CENTER);
+  toggle = ctk_toggle_button_new_with_label ("V Expand");
+  ctk_widget_set_halign (toggle, GTK_ALIGN_CENTER);
+  ctk_widget_set_valign (toggle, GTK_ALIGN_CENTER);
   g_object_set (toggle, "margin", 5, NULL);
   g_signal_connect (G_OBJECT (toggle), "toggled",
                     G_CALLBACK (on_toggle_vexpand), NULL);
-  gtk_container_add (GTK_CONTAINER (colorbox), toggle);
-  gtk_box_pack_start (GTK_BOX (box3), colorbox, FALSE, TRUE, 0);
+  ctk_container_add (GTK_CONTAINER (colorbox), toggle);
+  ctk_box_pack_start (GTK_BOX (box3), colorbox, FALSE, TRUE, 0);
 
-  gtk_container_add (GTK_CONTAINER (window), box1);
-  gtk_widget_show_all (window);
+  ctk_container_add (GTK_CONTAINER (window), box1);
+  ctk_widget_show_all (window);
 }
 
 static void
@@ -115,56 +115,56 @@ create_grid_window (void)
   GtkWidget *toggle;
   GtkWidget *colorbox;
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_title (GTK_WINDOW (window), "Grid");
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (GTK_WINDOW (window), "Grid");
 
-  grid = gtk_grid_new ();
+  grid = ctk_grid_new ();
 
-  gtk_grid_attach (GTK_GRID (grid), gtk_label_new ("Top"), 1, 0, 1, 1);
-  gtk_grid_attach (GTK_GRID (grid), gtk_label_new ("Bottom"), 1, 3, 1, 1);
-  gtk_grid_attach (GTK_GRID (grid), gtk_label_new ("Left"), 0, 1, 1, 2);
-  gtk_grid_attach (GTK_GRID (grid), gtk_label_new ("Right"), 2, 1, 1, 2);
+  ctk_grid_attach (GTK_GRID (grid), ctk_label_new ("Top"), 1, 0, 1, 1);
+  ctk_grid_attach (GTK_GRID (grid), ctk_label_new ("Bottom"), 1, 3, 1, 1);
+  ctk_grid_attach (GTK_GRID (grid), ctk_label_new ("Left"), 0, 1, 1, 2);
+  ctk_grid_attach (GTK_GRID (grid), ctk_label_new ("Right"), 2, 1, 1, 2);
 
-  colorbox = gtk_frame_new (NULL);
+  colorbox = ctk_frame_new (NULL);
 
-  toggle = gtk_toggle_button_new_with_label ("H Expand");
-  gtk_widget_set_halign (toggle, GTK_ALIGN_CENTER);
-  gtk_widget_set_valign (toggle, GTK_ALIGN_CENTER);
+  toggle = ctk_toggle_button_new_with_label ("H Expand");
+  ctk_widget_set_halign (toggle, GTK_ALIGN_CENTER);
+  ctk_widget_set_valign (toggle, GTK_ALIGN_CENTER);
   g_object_set (toggle, "margin", 5, NULL);
   g_signal_connect (G_OBJECT (toggle), "toggled",
                     G_CALLBACK (on_toggle_hexpand), NULL);
-  gtk_container_add (GTK_CONTAINER (colorbox), toggle);
+  ctk_container_add (GTK_CONTAINER (colorbox), toggle);
 
-  gtk_grid_attach (GTK_GRID (grid), colorbox, 1, 1, 1, 1);
+  ctk_grid_attach (GTK_GRID (grid), colorbox, 1, 1, 1, 1);
 
-  colorbox = gtk_frame_new (NULL);
+  colorbox = ctk_frame_new (NULL);
 
-  toggle = gtk_toggle_button_new_with_label ("V Expand");
-  gtk_widget_set_halign (toggle, GTK_ALIGN_CENTER);
-  gtk_widget_set_valign (toggle, GTK_ALIGN_CENTER);
+  toggle = ctk_toggle_button_new_with_label ("V Expand");
+  ctk_widget_set_halign (toggle, GTK_ALIGN_CENTER);
+  ctk_widget_set_valign (toggle, GTK_ALIGN_CENTER);
   g_object_set (toggle, "margin", 5, NULL);
   g_signal_connect (G_OBJECT (toggle), "toggled",
                     G_CALLBACK (on_toggle_vexpand), NULL);
-  gtk_container_add (GTK_CONTAINER (colorbox), toggle);
+  ctk_container_add (GTK_CONTAINER (colorbox), toggle);
 
-  gtk_grid_attach (GTK_GRID (grid), colorbox, 1, 2, 1, 1); 
+  ctk_grid_attach (GTK_GRID (grid), colorbox, 1, 2, 1, 1); 
 
-  gtk_container_add (GTK_CONTAINER (window), grid);
-  gtk_widget_show_all (window);
+  ctk_container_add (GTK_CONTAINER (window), grid);
+  ctk_widget_show_all (window);
 }
 
 int
 main (int argc, char *argv[])
 {
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
   if (g_getenv ("RTL"))
-    gtk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
+    ctk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
 
   create_box_window ();
   create_grid_window ();
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

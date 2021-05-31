@@ -26,7 +26,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_RANGE_ACCESSIBLE                       (gtk_range_accessible_get_type ())
+#define GTK_TYPE_RANGE_ACCESSIBLE                       (ctk_range_accessible_get_type ())
 #define GTK_RANGE_ACCESSIBLE(obj)                       (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_RANGE_ACCESSIBLE, GtkRangeAccessible))
 #define GTK_RANGE_ACCESSIBLE_CLASS(klass)               (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_RANGE_ACCESSIBLE, GtkRangeAccessibleClass))
 #define GTK_IS_RANGE_ACCESSIBLE(obj)                    (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_RANGE_ACCESSIBLE))
@@ -50,7 +50,7 @@ struct _GtkRangeAccessibleClass
 };
 
 GDK_AVAILABLE_IN_ALL
-GType gtk_range_accessible_get_type (void);
+GType ctk_range_accessible_get_type (void);
 
 G_END_DECLS
 

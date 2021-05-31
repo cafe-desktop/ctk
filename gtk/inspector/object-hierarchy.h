@@ -25,7 +25,7 @@
 
 #include <gtk/gtkbox.h>
 
-#define GTK_TYPE_INSPECTOR_OBJECT_HIERARCHY            (gtk_inspector_object_hierarchy_get_type())
+#define GTK_TYPE_INSPECTOR_OBJECT_HIERARCHY            (ctk_inspector_object_hierarchy_get_type())
 #define GTK_INSPECTOR_OBJECT_HIERARCHY(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_INSPECTOR_OBJECT_HIERARCHY, GtkInspectorObjectHierarchy))
 #define GTK_INSPECTOR_OBJECT_HIERARCHY_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GTK_TYPE_INSPECTOR_OBJECT_HIERARCHY, GtkInspectorObjectHierarchyClass))
 #define GTK_INSPECTOR_IS_OBJECT_HIERARCHY(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), GTK_TYPE_INSPECTOR_OBJECT_HIERARCHY))
@@ -48,8 +48,8 @@ typedef struct _GtkInspectorObjectHierarchyClass
 
 G_BEGIN_DECLS
 
-GType      gtk_inspector_object_hierarchy_get_type   (void);
-void       gtk_inspector_object_hierarchy_set_object (GtkInspectorObjectHierarchy *oh,
+GType      ctk_inspector_object_hierarchy_get_type   (void);
+void       ctk_inspector_object_hierarchy_set_object (GtkInspectorObjectHierarchy *oh,
                                                       GObject                     *object);
 
 G_END_DECLS

@@ -1,7 +1,7 @@
-gtk_tests_export_dynamic_ldflag = []
+ctk_tests_export_dynamic_ldflag = []
 
 if cc.get_id() != 'msvc' and cc.get_id() != 'clang'
-  gtk_tests_export_dynamic_ldflag = ['-Wl,--export-dynamic']
+  ctk_tests_export_dynamic_ldflag = ['-Wl,--export-dynamic']
 endif
 
 tests = [
@@ -10,7 +10,7 @@ tests = [
   ['action'],
   ['adjustment'],
   ['bitmask', ['../../gtk/gtkallocatedbitmask.c'], ['-DGTK_COMPILATION', '-UG_ENABLE_DEBUG']],
-  ['builder', [], [], gtk_tests_export_dynamic_ldflag],
+  ['builder', [], [], ctk_tests_export_dynamic_ldflag],
   ['builderparser'],
   ['cellarea'],
   ['check-icon-names'],
@@ -25,7 +25,7 @@ tests = [
   ['grid'],
   ['gtkmenu'],
   ['icontheme'],
-  ['keyhash', ['../../gtk/gtkkeyhash.c', gtkresources, '../../gtk/gtkprivate.c'], gtk_cargs],
+  ['keyhash', ['../../gtk/gtkkeyhash.c', gtkresources, '../../gtk/gtkprivate.c'], ctk_cargs],
   ['listbox'],
   ['notify'],
   ['no-gtk-init'],
@@ -79,7 +79,7 @@ foreach t : tests
   test_exe = executable(test_name, test_srcs,
     c_args : test_cargs + test_extra_cargs,
     link_args : test_extra_ldflags,
-    dependencies : libgtk_dep,
+    dependencies : libctk_dep,
     install: get_option('installed_tests'),
     install_dir: installed_test_bindir)
 
@@ -94,7 +94,7 @@ foreach t : tests
               'GSK_RENDERER=cairo',
               'G_TEST_SRCDIR=@0@'.format(meson.current_source_dir()),
               'G_TEST_BUILDDIR=@0@'.format(meson.current_build_dir()),
-              'GSETTINGS_SCHEMA_DIR=@0@'.format(gtk_schema_build_dir),
+              'GSETTINGS_SCHEMA_DIR=@0@'.format(ctk_schema_build_dir),
               'GTK_TEST_MESON=1',
             ],
        suite: 'gtk',
@@ -107,7 +107,7 @@ if add_languages('cpp', required: false)
   test_exe = executable('autotestkeywords',
                         'autotestkeywords.cc',
                         c_args : test_cargs + ['-Idummy-headers'],
-                        dependencies : libgtk_dep,
+                        dependencies : libctk_dep,
                         install: get_option('installed_tests'),
                         install_dir: installed_test_bindir)
   test('c++ keywords', test_exe,
@@ -118,7 +118,7 @@ if add_languages('cpp', required: false)
               'G_ENABLE_DIAGNOSTIC=0',
               'G_TEST_SRCDIR=@0@'.format(meson.current_source_dir()),
               'G_TEST_BUILDDIR=@0@'.format(meson.current_build_dir()),
-              'GSETTINGS_SCHEMA_DIR=@0@'.format(gtk_schema_build_dir),
+              'GSETTINGS_SCHEMA_DIR=@0@'.format(ctk_schema_build_dir),
             ],
        suite: 'gtk')
 

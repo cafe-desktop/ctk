@@ -150,7 +150,7 @@ GtkTextTagTable for that buffer. The tag table is just a collection of
 tags.
 
 The real work of applying/removing tags happens in the function
-_gtk_text_btree_tag(). Essentially we remove all tag toggle segments
+_ctk_text_btree_tag(). Essentially we remove all tag toggle segments
 that affect the tag being applied or removed from the given range;
 then we add a toggle-on and a toggle-off segment at either end of the
 range; then for any lines we modified, we call the CleanupFunc
@@ -257,7 +257,7 @@ The layout has three signals:
  - "allocate_child" means we need to size allocate a 
    child widget
 
-gtk_text_layout_get_line_display() is sort of the "heart" of
+ctk_text_layout_get_line_display() is sort of the "heart" of
 GtkTextLayout. This function validates a line. 
 
 Line validation involves:
@@ -276,13 +276,13 @@ up.)
 There's a single-GtkTextAttributes cache, "layout->one_style_cache",
 which is used to avoid recomputing the mapping from tags to attributes
 for every segment. The one_style_cache is stored in the GtkTextLayout
-instead of just a local variable in gtk_text_layout_get_line_display()
+instead of just a local variable in ctk_text_layout_get_line_display()
 so we can use it across multiple lines. Any time we see a segment that
 may change the current style (such as a tag toggle), the cache has to
 be dropped.
 
 To compute a GtkTextAttributes from the GtkTextTag that apply to a
-given segment, the function is _gtk_text_attributes_fill_from_tags(). 
+given segment, the function is _ctk_text_attributes_fill_from_tags(). 
 This "mashes" a list of tags into a single set of text attributes. 
 If no tags affect a given attribute, a default set of attributes are
 used. These defaults sometimes come from widget->style on the
@@ -332,7 +332,7 @@ clear if you try implementing invisible text. ;-)
 To finish invisible text support, all the cursor navigation
 etc. functions (the _display_lines() stuff) will need to skip
 invisible text. Also, various functions with _visible in the name,
-such as gtk_text_iter_get_visible_text(), have to be audited to be
+such as ctk_text_iter_get_visible_text(), have to be audited to be
 sure they don't get invisible text. And user operations such as
 cut-and-paste need to copy only visible text.
 

@@ -38,34 +38,34 @@ struct _GtkInspectorMagnifierPrivate
   GtkAdjustment *adjustment;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorMagnifier, gtk_inspector_magnifier, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorMagnifier, ctk_inspector_magnifier, GTK_TYPE_BOX)
 
 static void
-gtk_inspector_magnifier_init (GtkInspectorMagnifier *sl)
+ctk_inspector_magnifier_init (GtkInspectorMagnifier *sl)
 {
-  sl->priv = gtk_inspector_magnifier_get_instance_private (sl);
-  gtk_widget_init_template (GTK_WIDGET (sl));
+  sl->priv = ctk_inspector_magnifier_get_instance_private (sl);
+  ctk_widget_init_template (GTK_WIDGET (sl));
 }
 
 void
-gtk_inspector_magnifier_set_object (GtkInspectorMagnifier *sl,
+ctk_inspector_magnifier_set_object (GtkInspectorMagnifier *sl,
                                     GObject              *object)
 {
   sl->priv->object = NULL;
 
-  if (!GTK_IS_WIDGET (object) || !gtk_widget_is_visible (GTK_WIDGET (object)))
+  if (!GTK_IS_WIDGET (object) || !ctk_widget_is_visible (GTK_WIDGET (object)))
     {
-      gtk_widget_hide (GTK_WIDGET (sl));
-      _gtk_magnifier_set_inspected (GTK_MAGNIFIER (sl->priv->magnifier), NULL);
+      ctk_widget_hide (GTK_WIDGET (sl));
+      _ctk_magnifier_set_inspected (GTK_MAGNIFIER (sl->priv->magnifier), NULL);
       return;
     }
 
-  gtk_widget_show (GTK_WIDGET (sl));
+  ctk_widget_show (GTK_WIDGET (sl));
 
   sl->priv->object = GTK_WIDGET (object);
 
-  _gtk_magnifier_set_inspected (GTK_MAGNIFIER (sl->priv->magnifier), GTK_WIDGET (object));
-  _gtk_magnifier_set_coords (GTK_MAGNIFIER (sl->priv->magnifier), 0, 0);
+  _ctk_magnifier_set_inspected (GTK_MAGNIFIER (sl->priv->magnifier), GTK_WIDGET (object));
+  _ctk_magnifier_set_coords (GTK_MAGNIFIER (sl->priv->magnifier), 0, 0);
 }
 
 static void
@@ -119,7 +119,7 @@ constructed (GObject *object)
 }
 
 static void
-gtk_inspector_magnifier_class_init (GtkInspectorMagnifierClass *klass)
+ctk_inspector_magnifier_class_init (GtkInspectorMagnifierClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
@@ -132,8 +132,8 @@ gtk_inspector_magnifier_class_init (GtkInspectorMagnifierClass *klass)
       g_param_spec_object ("adjustment", NULL, NULL,
                            GTK_TYPE_ADJUSTMENT, G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
-  gtk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/magnifier.ui");
-  gtk_widget_class_bind_template_child_private (widget_class, GtkInspectorMagnifier, magnifier);
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/magnifier.ui");
+  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMagnifier, magnifier);
 }
 
 // vim: set et sw=2 ts=2:

@@ -99,7 +99,7 @@ progressive_prepared_callback (GdkPixbufLoader* loader,
   /* Could set the pixbuf instead, if we only wanted to display
    * static images.
    */
-  gtk_image_set_from_animation (GTK_IMAGE (image),
+  ctk_image_set_from_animation (GTK_IMAGE (image),
                                 gdk_pixbuf_loader_get_animation (loader));
 }
 
@@ -125,7 +125,7 @@ progressive_updated_callback (GdkPixbufLoader* loader,
    * who cares.
    */
   
-  gtk_widget_queue_draw (image);
+  ctk_widget_queue_draw (image);
 }
 
 static gint
@@ -154,7 +154,7 @@ progressive_timeout (gpointer data)
         {
           GtkWidget *dialog;
           
-          dialog = gtk_message_dialog_new (GTK_WINDOW (lc->window),
+          dialog = ctk_message_dialog_new (GTK_WINDOW (lc->window),
                                            GTK_DIALOG_DESTROY_WITH_PARENT,
                                            GTK_MESSAGE_ERROR,
                                            GTK_BUTTONS_CLOSE,
@@ -162,12 +162,12 @@ progressive_timeout (gpointer data)
                                            g_strerror (errno));
 
           g_signal_connect (dialog, "response",
-			    G_CALLBACK (gtk_widget_destroy), NULL);
+			    G_CALLBACK (ctk_widget_destroy), NULL);
 
           fclose (lc->image_stream);
           lc->image_stream = NULL;
 
-          gtk_widget_show (dialog);
+          ctk_widget_show (dialog);
           
           lc->load_timeout = 0;
 
@@ -180,7 +180,7 @@ progressive_timeout (gpointer data)
         {
           GtkWidget *dialog;
           
-          dialog = gtk_message_dialog_new (GTK_WINDOW (lc->window),
+          dialog = ctk_message_dialog_new (GTK_WINDOW (lc->window),
                                            GTK_DIALOG_DESTROY_WITH_PARENT,
                                            GTK_MESSAGE_ERROR,
                                            GTK_BUTTONS_CLOSE,
@@ -190,12 +190,12 @@ progressive_timeout (gpointer data)
           g_error_free (error);
           
           g_signal_connect (dialog, "response",
-			    G_CALLBACK (gtk_widget_destroy), NULL);
+			    G_CALLBACK (ctk_widget_destroy), NULL);
 
           fclose (lc->image_stream);
           lc->image_stream = NULL;
           
-          gtk_widget_show (dialog);
+          ctk_widget_show (dialog);
 
           lc->load_timeout = 0;
 
@@ -217,7 +217,7 @@ progressive_timeout (gpointer data)
             {
               GtkWidget *dialog;
               
-              dialog = gtk_message_dialog_new (GTK_WINDOW (lc->window),
+              dialog = ctk_message_dialog_new (GTK_WINDOW (lc->window),
                                                GTK_DIALOG_DESTROY_WITH_PARENT,
                                                GTK_MESSAGE_ERROR,
                                                GTK_BUTTONS_CLOSE,
@@ -227,9 +227,9 @@ progressive_timeout (gpointer data)
               g_error_free (error);
               
               g_signal_connect (dialog, "response",
-				G_CALLBACK (gtk_widget_destroy), NULL);
+				G_CALLBACK (ctk_widget_destroy), NULL);
               
-              gtk_widget_show (dialog);
+              ctk_widget_show (dialog);
 
               g_object_unref (lc->pixbuf_loader);
               lc->pixbuf_loader = NULL;
@@ -251,7 +251,7 @@ progressive_timeout (gpointer data)
         {
           GtkWidget *dialog;
           
-          dialog = gtk_message_dialog_new (GTK_WINDOW (lc->window),
+          dialog = ctk_message_dialog_new (GTK_WINDOW (lc->window),
                                            GTK_DIALOG_DESTROY_WITH_PARENT,
                                            GTK_MESSAGE_ERROR,
                                            GTK_BUTTONS_CLOSE,
@@ -260,9 +260,9 @@ progressive_timeout (gpointer data)
                                            g_strerror (errno));
 
           g_signal_connect (dialog, "response",
-			    G_CALLBACK (gtk_widget_destroy), NULL);
+			    G_CALLBACK (ctk_widget_destroy), NULL);
           
-          gtk_widget_show (dialog);
+          ctk_widget_show (dialog);
 
           lc->load_timeout = 0;
 
@@ -318,34 +318,34 @@ do_image (const char *filename)
   gchar *str, *escaped;
   LoadContext *lc;
   
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_title (GTK_WINDOW (window), "Image Loading");
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (GTK_WINDOW (window), "Image Loading");
 
-  gtk_container_set_border_width (GTK_CONTAINER (window), 8);
+  ctk_container_set_border_width (GTK_CONTAINER (window), 8);
 
-  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 8);
-  gtk_container_set_border_width (GTK_CONTAINER (vbox), 8);
-  gtk_container_add (GTK_CONTAINER (window), vbox);
+  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 8);
+  ctk_container_set_border_width (GTK_CONTAINER (vbox), 8);
+  ctk_container_add (GTK_CONTAINER (window), vbox);
 
-  label = gtk_label_new (NULL);
-  gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
+  label = ctk_label_new (NULL);
+  ctk_label_set_line_wrap (GTK_LABEL (label), TRUE);
   escaped = g_markup_escape_text (filename, -1);
   str = g_strdup_printf ("Progressively loading: <b>%s</b>", escaped);
-  gtk_label_set_markup (GTK_LABEL (label),
+  ctk_label_set_markup (GTK_LABEL (label),
                         str);
   g_free (escaped);
   g_free (str);
   
-  gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+  ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
       
-  frame = gtk_frame_new (NULL);
-  gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
-  gtk_widget_set_halign (frame, GTK_ALIGN_CENTER);
-  gtk_widget_set_valign (frame, GTK_ALIGN_CENTER);
-  gtk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
+  frame = ctk_frame_new (NULL);
+  ctk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
+  ctk_widget_set_halign (frame, GTK_ALIGN_CENTER);
+  ctk_widget_set_valign (frame, GTK_ALIGN_CENTER);
+  ctk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
 
-  image = gtk_image_new_from_pixbuf (NULL);
-  gtk_container_add (GTK_CONTAINER (frame), image);
+  image = ctk_image_new_from_pixbuf (NULL);
+  ctk_container_add (GTK_CONTAINER (frame), image);
 
   lc = get_load_context (image);
 
@@ -355,12 +355,12 @@ do_image (const char *filename)
   start_progressive_loading (image);
 
   g_signal_connect (window, "destroy",
-		    G_CALLBACK (gtk_main_quit), NULL);
+		    G_CALLBACK (ctk_main_quit), NULL);
   
   g_signal_connect (window, "delete_event",
-		    G_CALLBACK (gtk_main_quit), NULL);
+		    G_CALLBACK (ctk_main_quit), NULL);
 
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
 
   return window;
 }
@@ -375,42 +375,42 @@ do_nonprogressive (const gchar *filename)
   GtkWidget *window;
   gchar *str, *escaped;
   
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_title (GTK_WINDOW (window), "Animation");
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (GTK_WINDOW (window), "Animation");
 
-  gtk_container_set_border_width (GTK_CONTAINER (window), 8);
+  ctk_container_set_border_width (GTK_CONTAINER (window), 8);
 
-  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 8);
-  gtk_container_set_border_width (GTK_CONTAINER (vbox), 8);
-  gtk_container_add (GTK_CONTAINER (window), vbox);
+  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 8);
+  ctk_container_set_border_width (GTK_CONTAINER (vbox), 8);
+  ctk_container_add (GTK_CONTAINER (window), vbox);
 
-  label = gtk_label_new (NULL);
-  gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
+  label = ctk_label_new (NULL);
+  ctk_label_set_line_wrap (GTK_LABEL (label), TRUE);
   escaped = g_markup_escape_text (filename, -1);
   str = g_strdup_printf ("Loaded from file: <b>%s</b>", escaped);
-  gtk_label_set_markup (GTK_LABEL (label),
+  ctk_label_set_markup (GTK_LABEL (label),
                         str);
   g_free (escaped);
   g_free (str);
   
-  gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+  ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
       
-  frame = gtk_frame_new (NULL);
-  gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
-  gtk_widget_set_halign (frame, GTK_ALIGN_CENTER);
-  gtk_widget_set_valign (frame, GTK_ALIGN_CENTER);
-  gtk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
+  frame = ctk_frame_new (NULL);
+  ctk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
+  ctk_widget_set_halign (frame, GTK_ALIGN_CENTER);
+  ctk_widget_set_valign (frame, GTK_ALIGN_CENTER);
+  ctk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
 
-  image = gtk_image_new_from_file (filename);
-  gtk_container_add (GTK_CONTAINER (frame), image);
+  image = ctk_image_new_from_file (filename);
+  ctk_container_add (GTK_CONTAINER (frame), image);
 
   g_signal_connect (window, "destroy",
-		    G_CALLBACK (gtk_main_quit), NULL);
+		    G_CALLBACK (ctk_main_quit), NULL);
   
   g_signal_connect (window, "delete_event",
-		    G_CALLBACK (gtk_main_quit), NULL);
+		    G_CALLBACK (ctk_main_quit), NULL);
 
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
 }
 
 int
@@ -419,7 +419,7 @@ main (int    argc,
 {
   gint i;
   
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
   i = 1;
   while (i < argc)
@@ -430,7 +430,7 @@ main (int    argc,
       ++i;
     }
 
-  gtk_main ();
+  ctk_main ();
   
   return 0;
 }

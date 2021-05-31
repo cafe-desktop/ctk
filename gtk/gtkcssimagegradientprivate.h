@@ -26,7 +26,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_IMAGE_GRADIENT           (_gtk_css_image_gradient_get_type ())
+#define GTK_TYPE_CSS_IMAGE_GRADIENT           (_ctk_css_image_gradient_get_type ())
 #define GTK_CSS_IMAGE_GRADIENT(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_IMAGE_GRADIENT, GtkCssImageGradient))
 #define GTK_CSS_IMAGE_GRADIENT_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_IMAGE_GRADIENT, GtkCssImageGradientClass))
 #define GTK_IS_CSS_IMAGE_GRADIENT(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_IMAGE_GRADIENT))
@@ -49,10 +49,10 @@ struct _GtkCssImageGradientClass
   GtkCssImageClass parent_class;
 };
 
-GType          _gtk_css_image_gradient_get_type             (void) G_GNUC_CONST;
+GType          _ctk_css_image_gradient_get_type             (void) G_GNUC_CONST;
 
 /* for lack of a better place to put it */
-GtkGradient *  _gtk_gradient_parse                          (GtkCssParser *parser);
+GtkGradient *  _ctk_gradient_parse                          (GtkCssParser *parser);
 
 G_END_DECLS
 

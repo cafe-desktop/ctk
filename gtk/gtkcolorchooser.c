@@ -48,10 +48,10 @@ enum
 
 static guint signals[LAST_SIGNAL];
 
-G_DEFINE_INTERFACE (GtkColorChooser, gtk_color_chooser, G_TYPE_OBJECT);
+G_DEFINE_INTERFACE (GtkColorChooser, ctk_color_chooser, G_TYPE_OBJECT);
 
 static void
-gtk_color_chooser_default_init (GtkColorChooserInterface *iface)
+ctk_color_chooser_default_init (GtkColorChooserInterface *iface)
 {
   /**
    * GtkColorChooser:rgba:
@@ -113,14 +113,14 @@ gtk_color_chooser_default_init (GtkColorChooserInterface *iface)
 }
 
 void
-_gtk_color_chooser_color_activated (GtkColorChooser *chooser,
+_ctk_color_chooser_color_activated (GtkColorChooser *chooser,
                                     const GdkRGBA   *color)
 {
   g_signal_emit (chooser, signals[COLOR_ACTIVATED], 0, color);
 }
 
 /**
- * gtk_color_chooser_get_rgba:
+ * ctk_color_chooser_get_rgba:
  * @chooser: a #GtkColorChooser
  * @color: (out): a #GdkRGBA to fill in with the current color
  *
@@ -129,7 +129,7 @@ _gtk_color_chooser_color_activated (GtkColorChooser *chooser,
  * Since: 3.4
  */
 void
-gtk_color_chooser_get_rgba (GtkColorChooser *chooser,
+ctk_color_chooser_get_rgba (GtkColorChooser *chooser,
                             GdkRGBA         *color)
 {
   g_return_if_fail (GTK_IS_COLOR_CHOOSER (chooser));
@@ -138,7 +138,7 @@ gtk_color_chooser_get_rgba (GtkColorChooser *chooser,
 }
 
 /**
- * gtk_color_chooser_set_rgba:
+ * ctk_color_chooser_set_rgba:
  * @chooser: a #GtkColorChooser
  * @color: the new color
  *
@@ -147,7 +147,7 @@ gtk_color_chooser_get_rgba (GtkColorChooser *chooser,
  * Since: 3.4
  */
 void
-gtk_color_chooser_set_rgba (GtkColorChooser *chooser,
+ctk_color_chooser_set_rgba (GtkColorChooser *chooser,
                             const GdkRGBA   *color)
 {
   g_return_if_fail (GTK_IS_COLOR_CHOOSER (chooser));
@@ -157,7 +157,7 @@ gtk_color_chooser_set_rgba (GtkColorChooser *chooser,
 }
 
 /**
- * gtk_color_chooser_get_use_alpha:
+ * ctk_color_chooser_get_use_alpha:
  * @chooser: a #GtkColorChooser
  *
  * Returns whether the color chooser shows the alpha channel.
@@ -168,7 +168,7 @@ gtk_color_chooser_set_rgba (GtkColorChooser *chooser,
  * Since: 3.4
  */
 gboolean
-gtk_color_chooser_get_use_alpha (GtkColorChooser *chooser)
+ctk_color_chooser_get_use_alpha (GtkColorChooser *chooser)
 {
   gboolean use_alpha;
 
@@ -180,7 +180,7 @@ gtk_color_chooser_get_use_alpha (GtkColorChooser *chooser)
 }
 
 /**
- * gtk_color_chooser_set_use_alpha:
+ * ctk_color_chooser_set_use_alpha:
  * @chooser: a #GtkColorChooser
  * @use_alpha: %TRUE if color chooser should use alpha channel, %FALSE if not
  *
@@ -189,7 +189,7 @@ gtk_color_chooser_get_use_alpha (GtkColorChooser *chooser)
  * Since: 3.4
  */
 void
-gtk_color_chooser_set_use_alpha (GtkColorChooser *chooser,
+ctk_color_chooser_set_use_alpha (GtkColorChooser *chooser,
                                  gboolean         use_alpha)
 {
 
@@ -199,7 +199,7 @@ gtk_color_chooser_set_use_alpha (GtkColorChooser *chooser,
 }
 
 /**
- * gtk_color_chooser_add_palette:
+ * ctk_color_chooser_add_palette:
  * @chooser: a #GtkColorChooser
  * @orientation: %GTK_ORIENTATION_HORIZONTAL if the palette should
  *     be displayed in rows, %GTK_ORIENTATION_VERTICAL for columns
@@ -228,7 +228,7 @@ gtk_color_chooser_set_use_alpha (GtkColorChooser *chooser,
  * Since: 3.4
  */
 void
-gtk_color_chooser_add_palette (GtkColorChooser *chooser,
+ctk_color_chooser_add_palette (GtkColorChooser *chooser,
                                GtkOrientation   orientation,
                                gint             colors_per_line,
                                gint             n_colors,
@@ -241,7 +241,7 @@ gtk_color_chooser_add_palette (GtkColorChooser *chooser,
 }
 
 cairo_pattern_t *
-_gtk_color_chooser_get_checkered_pattern (void)
+_ctk_color_chooser_get_checkered_pattern (void)
 {
   /* need to respect pixman's stride being a multiple of 4 */
   static unsigned char data[8] = { 0xFF, 0x00, 0x00, 0x00,

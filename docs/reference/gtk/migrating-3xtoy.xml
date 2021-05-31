@@ -66,8 +66,8 @@
     </para>
 
     <para>
-      GtkApplication no longer uses the gtk_ mainloop wrappers, so
-      it is no longer possible to use gtk_main_quit() to stop it.
+      GtkApplication no longer uses the ctk_ mainloop wrappers, so
+      it is no longer possible to use ctk_main_quit() to stop it.
     </para>
 
     <para>
@@ -207,7 +207,7 @@
     </para>
 
     <para>
-      gtk_text_view_add_child_in_window has changed behaviour a bit.
+      ctk_text_view_add_child_in_window has changed behaviour a bit.
       It now always positions the child in buffer coordinates, where
       it used to inconsistently scroll with the buffer but then go
       reposition to a window-relative position on redraw.
@@ -294,7 +294,7 @@
       The lookup order for actions that are activated via keyboard
       accelerators has been changed to start at the currently focused
       widget. If your application is making use fo nested action groups
-      via gtk_widget_insert_action_group, you may want to check that
+      via ctk_widget_insert_action_group, you may want to check that
       this change does not upset your accelerators.
     </para>
 
@@ -319,7 +319,7 @@
 
     <para>
       The GtkListBox model support that was introduced in 3.16 has been
-      changed to no longer call gtk_widget_show_all on rows created by
+      changed to no longer call ctk_widget_show_all on rows created by
       the create_widget_func. You need to manage the visibility of child
       widgets yourself in your create_widget_func.
     </para>
@@ -358,22 +358,22 @@
       decorations may affect applications that are saving and restoring window
       sizes. The recommended best practice for this which is known to work with
       client-side and server-side decorations and with older and newer versions
-      of GTK+ is to use gtk_window_get_size() to save window sizes and
-      gtk_window_set_default_size() to restore it.
+      of GTK+ is to use ctk_window_get_size() to save window sizes and
+      ctk_window_set_default_size() to restore it.
       See https://wiki.gnome.org/HowDoI/SaveWindowState for a detailed example.
     </para>
 
     <para>
       Geometry handling in GtkWindow has been removed. If you are using the
-      functions gtk_window_resize_to_geometry, gtk_window_set_default_geometry,
-      gtk_window_parse_geometry or gtk_window_set_geometry_hints, you may need
+      functions ctk_window_resize_to_geometry, ctk_window_set_default_geometry,
+      ctk_window_parse_geometry or ctk_window_set_geometry_hints, you may need
       to make some changes to your code.
     </para>
 
     <para>
       GtkDrawingArea used to implicitly render the theme background before
       calling the ::draw handler. This is no longer the case. If you rely
-      on having a theme-provided background, call gtk_render_background()
+      on having a theme-provided background, call ctk_render_background()
       from your ::draw handler.
     </para>
 
@@ -432,11 +432,11 @@
      </para>
 
      <para>
-       The way GtkPopover behaved during a call to gtk_widget_hide() violated
+       The way GtkPopover behaved during a call to ctk_widget_hide() violated
        some of the internal assumptions GTK+ makes about widget visibility.
-       gtk_popover_popup() and gtk_popover_popdown() have been introduced to
-       show or hide the popover with a transition, while gtk_widget_show()
-       and gtk_widget_hide() on a GtkPopover now work the same way they do
+       ctk_popover_popup() and ctk_popover_popdown() have been introduced to
+       show or hide the popover with a transition, while ctk_widget_show()
+       and ctk_widget_hide() on a GtkPopover now work the same way they do
        on any other widget and immediately hide (or show) the popover.
      </para>
   </section>

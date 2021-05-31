@@ -86,14 +86,14 @@ get_property_pspec (MyParserData *data,
   canonical_name = g_strdup (property_name);
   canonicalize_key (canonical_name);
   if (data->packing)
-    pspec = gtk_container_class_find_child_property (class, canonical_name);
+    pspec = ctk_container_class_find_child_property (class, canonical_name);
   else if (data->cell_packing)
     {
       GObjectClass *cell_class;
 
       /* We're just assuming that the cell layout is using a GtkCellAreaBox. */
       cell_class = g_type_class_ref (GTK_TYPE_CELL_AREA_BOX);
-      pspec = gtk_cell_area_class_find_cell_property (GTK_CELL_AREA_CLASS (cell_class), canonical_name);
+      pspec = ctk_cell_area_class_find_cell_property (GTK_CELL_AREA_CLASS (cell_class), canonical_name);
       g_type_class_unref (cell_class);
     }
   else
@@ -131,7 +131,7 @@ value_is_default (MyParserData *data,
   else if (g_type_is_a (G_PARAM_SPEC_VALUE_TYPE (pspec), G_TYPE_OBJECT))
     return FALSE;
 
-  if (!gtk_builder_value_from_string (data->builder, pspec, value_string, &value, &error))
+  if (!ctk_builder_value_from_string (data->builder, pspec, value_string, &value, &error))
     {
       g_printerr (_("Couldn't parse value for %s::%s: %s\n"), class_name, property_name, error->message);
       g_error_free (error);
@@ -166,7 +166,7 @@ canonical_boolean_value (MyParserData *data,
   GValue value = G_VALUE_INIT;
   gboolean b = FALSE;
 
-  if (gtk_builder_value_from_string_type (data->builder, G_TYPE_BOOLEAN, string, &value, NULL))
+  if (ctk_builder_value_from_string_type (data->builder, G_TYPE_BOOLEAN, string, &value, NULL))
     b = g_value_get_boolean (&value);
 
   return b ? "1" : "0";
@@ -672,7 +672,7 @@ do_simplify (int          *argc,
       exit (1);
     }
 
-  data.builder = gtk_builder_new ();
+  data.builder = ctk_builder_new ();
   data.classes = NULL;
   data.attribute_names = NULL;
   data.attribute_values = NULL;
@@ -763,10 +763,10 @@ do_validate_template (const gchar *filename,
       exit (1);
     }
 
-  builder = gtk_builder_new ();
-  ret = gtk_builder_extend_with_template (builder, widget, template_type, " ", 1, &error);
+  builder = ctk_builder_new ();
+  ret = ctk_builder_extend_with_template (builder, widget, template_type, " ", 1, &error);
   if (ret)
-    ret = gtk_builder_add_from_file (builder, filename, &error);
+    ret = ctk_builder_add_from_file (builder, filename, &error);
   g_object_unref (builder);
 
   if (ret == 0)
@@ -815,8 +815,8 @@ do_validate (const gchar *filename)
   gchar *class_name = NULL;
   gchar *parent_name = NULL;
 
-  builder = gtk_builder_new ();
-  ret = gtk_builder_add_from_file (builder, filename, &error);
+  builder = ctk_builder_new ();
+  ret = ctk_builder_add_from_file (builder, filename, &error);
   g_object_unref (builder);
 
   if (ret == 0)
@@ -838,7 +838,7 @@ static const gchar *
 object_get_name (GObject *object)
 {
   if (GTK_IS_BUILDABLE (object))
-    return gtk_buildable_get_name (GTK_BUILDABLE (object));
+    return ctk_buildable_get_name (GTK_BUILDABLE (object));
   else
     return g_object_get_data (object, "gtk-builder-name");
 }
@@ -853,8 +853,8 @@ do_enumerate (const gchar *filename)
   GObject *object;
   const gchar *name;
 
-  builder = gtk_builder_new ();
-  ret = gtk_builder_add_from_file (builder, filename, &error);
+  builder = ctk_builder_new ();
+  ret = ctk_builder_add_from_file (builder, filename, &error);
 
   if (ret == 0)
     {
@@ -862,7 +862,7 @@ do_enumerate (const gchar *filename)
       exit (1);
     }
 
-  list = gtk_builder_get_objects (builder);
+  list = ctk_builder_get_objects (builder);
   for (l = list; l; l = l->next)
     {
       object = l->data;
@@ -892,7 +892,7 @@ set_window_title (GtkWindow  *window,
   else
     title = g_strdup (name);
 
-  gtk_window_set_title (window, title);
+  ctk_window_set_title (window, title);
 
   g_free (title);
   g_free (name);
@@ -912,20 +912,20 @@ preview_file (const char *filename,
     {
       GtkCssProvider *provider;
 
-      provider = gtk_css_provider_new ();
-      if (!gtk_css_provider_load_from_path (provider, cssfile, &error))
+      provider = ctk_css_provider_new ();
+      if (!ctk_css_provider_load_from_path (provider, cssfile, &error))
         {
           g_printerr ("%s\n", error->message);
           exit (1);
         }
 
-      gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+      ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
                                                  GTK_STYLE_PROVIDER (provider),
                                                  GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
     }
 
-  builder = gtk_builder_new ();
-  if (!gtk_builder_add_from_file (builder, filename, &error))
+  builder = ctk_builder_new ();
+  if (!ctk_builder_add_from_file (builder, filename, &error))
     {
       g_printerr ("%s\n", error->message);
       exit (1);
@@ -935,13 +935,13 @@ preview_file (const char *filename,
 
   if (id)
     {
-      object = gtk_builder_get_object (builder, id);
+      object = ctk_builder_get_object (builder, id);
     }
   else
     {
       GSList *objects, *l;
 
-      objects = gtk_builder_get_objects (builder);
+      objects = ctk_builder_get_objects (builder);
       for (l = objects; l; l = l->next)
         {
           GObject *obj = l->data;
@@ -981,25 +981,25 @@ preview_file (const char *filename,
     {
       GtkWidget *widget = GTK_WIDGET (object);
 
-      window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
 
       if (GTK_IS_BUILDABLE (object))
-        id = gtk_buildable_get_name (GTK_BUILDABLE (object));
+        id = ctk_buildable_get_name (GTK_BUILDABLE (object));
 
       set_window_title (GTK_WINDOW (window), filename, id);
 
       g_object_ref (widget);
-      if (gtk_widget_get_parent (widget) != NULL)
-        gtk_container_remove (GTK_CONTAINER (gtk_widget_get_parent (widget)), widget);
-      gtk_container_add (GTK_CONTAINER (window), widget);
+      if (ctk_widget_get_parent (widget) != NULL)
+        ctk_container_remove (GTK_CONTAINER (ctk_widget_get_parent (widget)), widget);
+      ctk_container_add (GTK_CONTAINER (window), widget);
       g_object_unref (widget);
     }
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  gtk_window_present (GTK_WINDOW (window));
+  ctk_window_present (GTK_WINDOW (window));
   G_GNUC_END_IGNORE_DEPRECATIONS
 
-  gtk_main ();
+  ctk_main ();
 
   g_object_unref (builder);
 }
@@ -1080,9 +1080,9 @@ main (int argc, const char *argv[])
 {
   g_set_prgname ("gtk-builder-tool");
 
-  gtk_init (NULL, NULL);
+  ctk_init (NULL, NULL);
 
-  gtk_test_register_all_types ();
+  ctk_test_register_all_types ();
 
   if (argc < 3)
     usage ();

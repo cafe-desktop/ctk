@@ -21,9 +21,9 @@
 
 #include <gtk/gtk.h>
 
-extern GType gtk_type_im_context_ime;
+extern GType ctk_type_im_context_ime;
 
-#define GTK_TYPE_IM_CONTEXT_IME            gtk_type_im_context_ime
+#define GTK_TYPE_IM_CONTEXT_IME            ctk_type_im_context_ime
 #define GTK_IM_CONTEXT_IME(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_IM_CONTEXT_IME, GtkIMContextIME))
 #define GTK_IM_CONTEXT_IME_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_IM_CONTEXT_IME, GtkIMContextIMEClass))
 #define GTK_IS_IM_CONTEXT_IME(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_IM_CONTEXT_IME))
@@ -56,5 +56,5 @@ struct _GtkIMContextIMEClass
 };
 
 
-void          gtk_im_context_ime_register_type (GTypeModule * type_module);
-GtkIMContext *gtk_im_context_ime_new           (void);
+void          ctk_im_context_ime_register_type (GTypeModule * type_module);
+GtkIMContext *ctk_im_context_ime_new           (void);

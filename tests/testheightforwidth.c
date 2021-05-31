@@ -930,10 +930,10 @@ test_clicked (GtkWidget     *button,
 {
   if (!interface->window)
     {
-      GtkBuilder *builder = gtk_builder_new ();
+      GtkBuilder *builder = ctk_builder_new ();
       GError *error = NULL;
       
-      gtk_builder_add_from_string (builder, interface->interface, -1, &error);
+      ctk_builder_add_from_string (builder, interface->interface, -1, &error);
 
       if (error)
         {
@@ -946,15 +946,15 @@ test_clicked (GtkWidget     *button,
           return;
         }
 
-      interface->window = (GtkWidget *)gtk_builder_get_object (builder, "window");
+      interface->window = (GtkWidget *)ctk_builder_get_object (builder, "window");
 
       g_signal_connect (interface->window, "delete_event",
-                        G_CALLBACK (gtk_widget_hide_on_delete), NULL);
+                        G_CALLBACK (ctk_widget_hide_on_delete), NULL);
 
       g_object_unref (builder);
     }
 
-  gtk_widget_show (interface->window);
+  ctk_widget_show (interface->window);
 }
 
 
@@ -964,23 +964,23 @@ create_window (void)
   GtkWidget *window, *vbox, *button;
   gint i;
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  vbox   = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  vbox   = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 
-  gtk_container_set_border_width (GTK_CONTAINER (window), 8);
+  ctk_container_set_border_width (GTK_CONTAINER (window), 8);
 
-  gtk_container_add (GTK_CONTAINER (window), vbox);
+  ctk_container_add (GTK_CONTAINER (window), vbox);
 
   for (i = 0; i < G_N_ELEMENTS (interfaces); i++)
     {
-      button = gtk_button_new_with_label (interfaces[i].name);
+      button = ctk_button_new_with_label (interfaces[i].name);
 
-      gtk_widget_set_tooltip_text (button, interfaces[i].tooltip);
+      ctk_widget_set_tooltip_text (button, interfaces[i].tooltip);
 
       g_signal_connect (button, "clicked",
                         G_CALLBACK (test_clicked), &interfaces[i]);
 
-      gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
+      ctk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
     }
 
   return window;
@@ -994,12 +994,12 @@ main_window_delete_cb (GtkWidget *widget, GdkEvent *event, gpointer user_data)
   for (i = 0; i < G_N_ELEMENTS (interfaces); ++i)
     {
       if (interfaces[i].window)
-        gtk_widget_destroy (interfaces[i].window);
+        ctk_widget_destroy (interfaces[i].window);
     }
 
-  gtk_widget_destroy (widget);
+  ctk_widget_destroy (widget);
 
-  gtk_main_quit ();
+  ctk_main_quit ();
 
   return TRUE;
 }
@@ -1009,16 +1009,16 @@ main (int argc, char *argv[])
 {
   GtkWidget *window;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
   window = create_window ();
 
   g_signal_connect (window, "delete-event",
                     G_CALLBACK (main_window_delete_cb), window);
 
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

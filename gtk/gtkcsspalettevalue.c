@@ -29,10 +29,10 @@ struct _GtkCssValue {
 
 static GtkCssValue *default_palette;
 
-static GtkCssValue *gtk_css_palette_value_new_empty (void);
+static GtkCssValue *ctk_css_palette_value_new_empty (void);
 
 static void
-gtk_css_palette_value_add_color (GtkCssValue *value,
+ctk_css_palette_value_add_color (GtkCssValue *value,
                                  const char  *name,
                                  GtkCssValue *color)
 {
@@ -40,7 +40,7 @@ gtk_css_palette_value_add_color (GtkCssValue *value,
 }
 
 static void
-gtk_css_value_palette_free (GtkCssValue *value)
+ctk_css_value_palette_free (GtkCssValue *value)
 {
   g_hash_table_unref (value->colors);
 
@@ -48,7 +48,7 @@ gtk_css_value_palette_free (GtkCssValue *value)
 }
 
 static GtkCssValue *
-gtk_css_value_palette_compute (GtkCssValue             *specified,
+ctk_css_value_palette_compute (GtkCssValue             *specified,
                                guint                    property_id,
                                GtkStyleProviderPrivate *provider,
                                GtkCssStyle             *style,
@@ -60,27 +60,27 @@ gtk_css_value_palette_compute (GtkCssValue             *specified,
   GtkCssValue *result;
   gboolean changes = FALSE;
 
-  result = gtk_css_palette_value_new_empty ();
+  result = ctk_css_palette_value_new_empty ();
 
   g_hash_table_iter_init (&iter, specified->colors);
   while (g_hash_table_iter_next (&iter, &name, &value))
     {
-      computed_color = _gtk_css_value_compute (value, property_id, provider, style, parent_style);
+      computed_color = _ctk_css_value_compute (value, property_id, provider, style, parent_style);
       changes |= computed_color != value;
-      gtk_css_palette_value_add_color (result, name, computed_color);
+      ctk_css_palette_value_add_color (result, name, computed_color);
     }
 
   if (!changes)
     {
-      _gtk_css_value_unref (result);
-      result = _gtk_css_value_ref (specified);
+      _ctk_css_value_unref (result);
+      result = _ctk_css_value_ref (specified);
     }
 
   return result;
 }
 
 static gboolean
-gtk_css_value_palette_equal (const GtkCssValue *value1,
+ctk_css_value_palette_equal (const GtkCssValue *value1,
                              const GtkCssValue *value2)
 {
   gpointer name, color1, color2;
@@ -96,7 +96,7 @@ gtk_css_value_palette_equal (const GtkCssValue *value1,
       if (color2 == NULL)
         return FALSE;
 
-      if (!_gtk_css_value_equal (color1, color2))
+      if (!_ctk_css_value_equal (color1, color2))
         return FALSE;
     }
 
@@ -104,7 +104,7 @@ gtk_css_value_palette_equal (const GtkCssValue *value1,
 }
 
 static GtkCssValue *
-gtk_css_value_palette_transition (GtkCssValue *start,
+ctk_css_value_palette_transition (GtkCssValue *start,
                                   GtkCssValue *end,
                                   guint        property_id,
                                   double       progress)
@@ -118,18 +118,18 @@ gtk_css_value_palette_transition (GtkCssValue *start,
    * That causes an abrupt transition to currentColor at the end.
    */
 
-  result = gtk_css_palette_value_new_empty ();
+  result = ctk_css_palette_value_new_empty ();
 
   g_hash_table_iter_init (&iter, start->colors);
   while (g_hash_table_iter_next (&iter, &name, &start_color))
     {
       end_color = g_hash_table_lookup (end->colors, name);
       if (end_color == NULL)
-        transition = _gtk_css_value_ref (start_color);
+        transition = _ctk_css_value_ref (start_color);
       else
-        transition = _gtk_css_value_transition (start_color, end_color, property_id, progress);
+        transition = _ctk_css_value_transition (start_color, end_color, property_id, progress);
 
-      gtk_css_palette_value_add_color (result, name, transition);
+      ctk_css_palette_value_add_color (result, name, transition);
     }
 
   g_hash_table_iter_init (&iter, end->colors);
@@ -139,14 +139,14 @@ gtk_css_value_palette_transition (GtkCssValue *start,
       if (start_color != NULL)
         continue;
 
-      gtk_css_palette_value_add_color (result, name, _gtk_css_value_ref (end_color));
+      ctk_css_palette_value_add_color (result, name, _ctk_css_value_ref (end_color));
     }
 
   return result;
 }
 
 static void
-gtk_css_value_palette_print (const GtkCssValue *value,
+ctk_css_value_palette_print (const GtkCssValue *value,
                              GString           *string)
 {
   GHashTableIter iter;
@@ -168,82 +168,82 @@ gtk_css_value_palette_print (const GtkCssValue *value,
         g_string_append (string, ", ");
       g_string_append (string, name);
       g_string_append_c (string, ' ');
-      _gtk_css_value_print (color, string);
+      _ctk_css_value_print (color, string);
     }
 }
 
 static const GtkCssValueClass GTK_CSS_VALUE_PALETTE = {
-  gtk_css_value_palette_free,
-  gtk_css_value_palette_compute,
-  gtk_css_value_palette_equal,
-  gtk_css_value_palette_transition,
-  gtk_css_value_palette_print
+  ctk_css_value_palette_free,
+  ctk_css_value_palette_compute,
+  ctk_css_value_palette_equal,
+  ctk_css_value_palette_transition,
+  ctk_css_value_palette_print
 };
 
 static GtkCssValue *
-gtk_css_palette_value_new_empty (void)
+ctk_css_palette_value_new_empty (void)
 {
   GtkCssValue *result;
 
-  result = _gtk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_PALETTE);
+  result = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_PALETTE);
   result->colors = g_hash_table_new_full (g_str_hash, g_str_equal,
                                           g_free,
-                                          (GDestroyNotify) _gtk_css_value_unref);
+                                          (GDestroyNotify) _ctk_css_value_unref);
 
   return result;
 }
 
 GtkCssValue *
-gtk_css_palette_value_new_default (void)
+ctk_css_palette_value_new_default (void)
 {
   if (default_palette == NULL)
     {
-      default_palette = gtk_css_palette_value_new_empty ();
-      gtk_css_palette_value_add_color (default_palette, "error", _gtk_css_color_value_new_name ("error_color"));
-      gtk_css_palette_value_add_color (default_palette, "warning", _gtk_css_color_value_new_name ("warning_color"));
-      gtk_css_palette_value_add_color (default_palette, "success", _gtk_css_color_value_new_name ("success_color"));
+      default_palette = ctk_css_palette_value_new_empty ();
+      ctk_css_palette_value_add_color (default_palette, "error", _ctk_css_color_value_new_name ("error_color"));
+      ctk_css_palette_value_add_color (default_palette, "warning", _ctk_css_color_value_new_name ("warning_color"));
+      ctk_css_palette_value_add_color (default_palette, "success", _ctk_css_color_value_new_name ("success_color"));
     }
 
-  return _gtk_css_value_ref (default_palette);
+  return _ctk_css_value_ref (default_palette);
 }
 
 GtkCssValue *
-gtk_css_palette_value_parse (GtkCssParser *parser)
+ctk_css_palette_value_parse (GtkCssParser *parser)
 {
   GtkCssValue *result, *color;
   char *ident;
 
-  if (_gtk_css_parser_try (parser, "default", TRUE))
-    return gtk_css_palette_value_new_default ();
+  if (_ctk_css_parser_try (parser, "default", TRUE))
+    return ctk_css_palette_value_new_default ();
   
-  result = gtk_css_palette_value_new_empty ();
+  result = ctk_css_palette_value_new_empty ();
 
   do {
-    ident = _gtk_css_parser_try_ident (parser, TRUE);
+    ident = _ctk_css_parser_try_ident (parser, TRUE);
     if (ident == NULL)
       {
-        _gtk_css_parser_error (parser, "expected color name");
-        _gtk_css_value_unref (result);
+        _ctk_css_parser_error (parser, "expected color name");
+        _ctk_css_value_unref (result);
         return NULL;
       }
     
-    color = _gtk_css_color_value_parse (parser);
+    color = _ctk_css_color_value_parse (parser);
     if (color == NULL)
       {
         g_free (ident);
-        _gtk_css_value_unref (result);
+        _ctk_css_value_unref (result);
         return NULL;
       }
 
-    gtk_css_palette_value_add_color (result, ident, color);
+    ctk_css_palette_value_add_color (result, ident, color);
     g_free (ident);
-  } while (_gtk_css_parser_try (parser, ",", TRUE));
+  } while (_ctk_css_parser_try (parser, ",", TRUE));
 
   return result;
 }
 
 const GdkRGBA *
-gtk_css_palette_value_get_color (GtkCssValue *value,
+ctk_css_palette_value_get_color (GtkCssValue *value,
                                  const char  *name)
 {
   GtkCssValue *color;
@@ -254,5 +254,5 @@ gtk_css_palette_value_get_color (GtkCssValue *value,
   if (color == NULL)
     return NULL;
 
-  return _gtk_css_rgba_value_get_rgba (color);
+  return _ctk_css_rgba_value_get_rgba (color);
 }

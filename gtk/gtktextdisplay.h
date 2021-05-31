@@ -91,7 +91,7 @@ G_BEGIN_DECLS
  * widgets           - list of widgets that need exposing
  */
 GDK_AVAILABLE_IN_ALL
-void gtk_text_layout_draw (GtkTextLayout        *layout,
+void ctk_text_layout_draw (GtkTextLayout        *layout,
                            GtkWidget            *widget,
                            cairo_t              *cr,
                            GList               **widgets);

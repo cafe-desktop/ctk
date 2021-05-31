@@ -267,7 +267,7 @@ msgid "Logo"
 msgstr ""
 
 #: ../gtk/gtkaboutdialog.c:492
-msgid "A logo for the about box. If this is not set, it defaults to gtk_window_get_default_icon_list()"
+msgid "A logo for the about box. If this is not set, it defaults to ctk_window_get_default_icon_list()"
 msgstr ""
 
 #: ../gtk/gtkaboutdialog.c:507
@@ -2831,7 +2831,7 @@ msgid "Progress Pulse Step"
 msgstr ""
 
 #: ../gtk/gtkentry.c:983
-msgid "The fraction of total entry width to move the progress bouncing block for each call to gtk_entry_progress_pulse()"
+msgid "The fraction of total entry width to move the progress bouncing block for each call to ctk_entry_progress_pulse()"
 msgstr ""
 
 #: ../gtk/gtkentry.c:999
@@ -5067,7 +5067,7 @@ msgid "The value"
 msgstr "مقدار"
 
 #: ../gtk/gtkradioaction.c:119
-msgid "The value returned by gtk_radio_action_get_current_value() when this action is the current action of its group."
+msgid "The value returned by ctk_radio_action_get_current_value() when this action is the current action of its group."
 msgstr ""
 
 #: ../gtk/gtkradioaction.c:135
@@ -7589,7 +7589,7 @@ msgid "No show all"
 msgstr ""
 
 #: ../gtk/gtkwidget.c:1050
-msgid "Whether gtk_widget_show_all() should not affect this widget"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
 msgstr ""
 
 #: ../gtk/gtkwidget.c:1073

@@ -27,7 +27,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ACCESSIBLE                  (gtk_accessible_get_type ())
+#define GTK_TYPE_ACCESSIBLE                  (ctk_accessible_get_type ())
 #define GTK_ACCESSIBLE(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_ACCESSIBLE, GtkAccessible))
 #define GTK_ACCESSIBLE_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_ACCESSIBLE, GtkAccessibleClass))
 #define GTK_IS_ACCESSIBLE(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_ACCESSIBLE))
@@ -55,21 +55,21 @@ struct _GtkAccessibleClass
   void (*widget_set)               (GtkAccessible *accessible);
   void (*widget_unset)             (GtkAccessible *accessible);
   /* Padding for future expansion */
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_ALL
-GType      gtk_accessible_get_type                 (void) G_GNUC_CONST;
+GType      ctk_accessible_get_type                 (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-void       gtk_accessible_set_widget               (GtkAccessible *accessible,
+void       ctk_accessible_set_widget               (GtkAccessible *accessible,
                                                     GtkWidget     *widget);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *gtk_accessible_get_widget               (GtkAccessible *accessible);
+GtkWidget *ctk_accessible_get_widget               (GtkAccessible *accessible);
 
-GDK_DEPRECATED_IN_3_4_FOR(gtk_accessible_set_widget)
-void       gtk_accessible_connect_widget_destroyed (GtkAccessible *accessible);
+GDK_DEPRECATED_IN_3_4_FOR(ctk_accessible_set_widget)
+void       ctk_accessible_connect_widget_destroyed (GtkAccessible *accessible);
 
 G_END_DECLS
 

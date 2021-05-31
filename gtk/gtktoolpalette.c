@@ -46,29 +46,29 @@
  * A #GtkToolPalette allows you to add #GtkToolItems to a palette-like
  * container with different categories and drag and drop support.
  *
- * A #GtkToolPalette is created with a call to gtk_tool_palette_new().
+ * A #GtkToolPalette is created with a call to ctk_tool_palette_new().
  *
  * #GtkToolItems cannot be added directly to a #GtkToolPalette -
  * instead they are added to a #GtkToolItemGroup which can than be added
  * to a #GtkToolPalette. To add a #GtkToolItemGroup to a #GtkToolPalette,
- * use gtk_container_add().
+ * use ctk_container_add().
  *
  * |[<!-- language="C" -->
  * GtkWidget *palette, *group;
  * GtkToolItem *item;
  *
- * palette = gtk_tool_palette_new ();
- * group = gtk_tool_item_group_new (_("Test Category"));
- * gtk_container_add (GTK_CONTAINER (palette), group);
+ * palette = ctk_tool_palette_new ();
+ * group = ctk_tool_item_group_new (_("Test Category"));
+ * ctk_container_add (GTK_CONTAINER (palette), group);
  *
- * item = gtk_tool_button_new (NULL, _("_Open"));
- * gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (item), "document-open");
- * gtk_tool_item_group_insert (GTK_TOOL_ITEM_GROUP (group), item, -1);
+ * item = ctk_tool_button_new (NULL, _("_Open"));
+ * ctk_tool_button_set_icon_name (GTK_TOOL_BUTTON (item), "document-open");
+ * ctk_tool_item_group_insert (GTK_TOOL_ITEM_GROUP (group), item, -1);
  * ]|
  *
  * The easiest way to use drag and drop with #GtkToolPalette is to call
- * gtk_tool_palette_add_drag_dest() with the desired drag source @palette
- * and the desired drag target @widget. Then gtk_tool_palette_get_drag_item()
+ * ctk_tool_palette_add_drag_dest() with the desired drag source @palette
+ * and the desired drag target @widget. Then ctk_tool_palette_get_drag_item()
  * can be used to get the dragged item in the #GtkWidget::drag-data-received
  * signal handler of the drag target.
  *
@@ -87,10 +87,10 @@
  *   GtkWidget *item;
  *
  *   // Get the dragged item
- *   palette = gtk_widget_get_ancestor (gtk_drag_get_source_widget (context),
+ *   palette = ctk_widget_get_ancestor (ctk_drag_get_source_widget (context),
  *                                      GTK_TYPE_TOOL_PALETTE);
  *   if (palette != NULL)
- *     item = gtk_tool_palette_get_drag_item (GTK_TOOL_PALETTE (palette),
+ *     item = ctk_tool_palette_get_drag_item (GTK_TOOL_PALETTE (palette),
  *                                            selection);
  *
  *   // Do something with item
@@ -98,12 +98,12 @@
  *
  * GtkWidget *target, palette;
  *
- * palette = gtk_tool_palette_new ();
- * target = gtk_drawing_area_new ();
+ * palette = ctk_tool_palette_new ();
+ * target = ctk_drawing_area_new ();
  *
  * g_signal_connect (G_OBJECT (target), "drag-data-received",
  *                   G_CALLBACK (passive_canvas_drag_data_received), NULL);
- * gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
+ * ctk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
  *                                 GTK_DEST_DEFAULT_ALL,
  *                                 GTK_TOOL_PALETTE_DRAG_ITEMS,
  *                                 GDK_ACTION_COPY);
@@ -189,23 +189,23 @@ static const GtkTargetEntry dnd_targets[] =
   { "application/x-gtk-tool-palette-group", GTK_TARGET_SAME_APP, 0 },
 };
 
-static void gtk_tool_palette_set_hadjustment (GtkToolPalette *palette,
+static void ctk_tool_palette_set_hadjustment (GtkToolPalette *palette,
                                               GtkAdjustment  *adjustment);
-static void gtk_tool_palette_set_vadjustment (GtkToolPalette *palette,
+static void ctk_tool_palette_set_vadjustment (GtkToolPalette *palette,
                                               GtkAdjustment  *adjustment);
 
 
 G_DEFINE_TYPE_WITH_CODE (GtkToolPalette,
-                         gtk_tool_palette,
+                         ctk_tool_palette,
                          GTK_TYPE_CONTAINER,
                          G_ADD_PRIVATE (GtkToolPalette)
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_ORIENTABLE, NULL)
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_SCROLLABLE, NULL))
 
 static void
-gtk_tool_palette_init (GtkToolPalette *palette)
+ctk_tool_palette_init (GtkToolPalette *palette)
 {
-  palette->priv = gtk_tool_palette_get_instance_private (palette);
+  palette->priv = ctk_tool_palette_get_instance_private (palette);
   palette->priv->groups = g_ptr_array_sized_new (4);
   g_ptr_array_set_free_func (palette->priv->groups, g_free);
 
@@ -215,7 +215,7 @@ gtk_tool_palette_init (GtkToolPalette *palette)
   palette->priv->style = DEFAULT_TOOLBAR_STYLE;
   palette->priv->style_set = FALSE;
 
-  palette->priv->text_size_group = gtk_size_group_new (GTK_SIZE_GROUP_BOTH);
+  palette->priv->text_size_group = ctk_size_group_new (GTK_SIZE_GROUP_BOTH);
 
   if (dnd_target_atom_item == GDK_NONE)
     {
@@ -225,7 +225,7 @@ gtk_tool_palette_init (GtkToolPalette *palette)
 }
 
 static void
-gtk_tool_palette_reconfigured (GtkToolPalette *palette)
+ctk_tool_palette_reconfigured (GtkToolPalette *palette)
 {
   guint i;
 
@@ -233,14 +233,14 @@ gtk_tool_palette_reconfigured (GtkToolPalette *palette)
     {
       GtkToolItemGroupInfo *info = g_ptr_array_index (palette->priv->groups, i);
       if (info->widget)
-        _gtk_tool_item_group_palette_reconfigured (info->widget);
+        _ctk_tool_item_group_palette_reconfigured (info->widget);
     }
 
-  gtk_widget_queue_resize_no_redraw (GTK_WIDGET (palette));
+  ctk_widget_queue_resize_no_redraw (GTK_WIDGET (palette));
 }
 
 static void
-gtk_tool_palette_set_property (GObject      *object,
+ctk_tool_palette_set_property (GObject      *object,
                                guint         prop_id,
                                const GValue *value,
                                GParamSpec   *pspec)
@@ -253,7 +253,7 @@ gtk_tool_palette_set_property (GObject      *object,
         if (palette->priv->icon_size != g_value_get_enum (value))
           {
             palette->priv->icon_size = g_value_get_enum (value);
-            gtk_tool_palette_reconfigured (palette);
+            ctk_tool_palette_reconfigured (palette);
             g_object_notify_by_pspec (object, pspec);
           }
         break;
@@ -262,7 +262,7 @@ gtk_tool_palette_set_property (GObject      *object,
         if (palette->priv->icon_size_set != g_value_get_boolean (value))
           {
             palette->priv->icon_size_set = g_value_get_boolean (value);
-            gtk_tool_palette_reconfigured (palette);
+            ctk_tool_palette_reconfigured (palette);
             g_object_notify_by_pspec (object, pspec);
           }
         break;
@@ -271,8 +271,8 @@ gtk_tool_palette_set_property (GObject      *object,
         if (palette->priv->orientation != g_value_get_enum (value))
           {
             palette->priv->orientation = g_value_get_enum (value);
-            _gtk_orientable_set_style_classes (GTK_ORIENTABLE (palette));
-            gtk_tool_palette_reconfigured (palette);
+            _ctk_orientable_set_style_classes (GTK_ORIENTABLE (palette));
+            ctk_tool_palette_reconfigured (palette);
             g_object_notify_by_pspec (object, pspec);
           }
         break;
@@ -281,24 +281,24 @@ gtk_tool_palette_set_property (GObject      *object,
         if (palette->priv->style != g_value_get_enum (value))
           {
             palette->priv->style = g_value_get_enum (value);
-            gtk_tool_palette_reconfigured (palette);
+            ctk_tool_palette_reconfigured (palette);
             g_object_notify_by_pspec (object, pspec);
           }
         break;
 
       case PROP_HADJUSTMENT:
-        gtk_tool_palette_set_hadjustment (palette, g_value_get_object (value));
+        ctk_tool_palette_set_hadjustment (palette, g_value_get_object (value));
         break;
 
       case PROP_VADJUSTMENT:
-        gtk_tool_palette_set_vadjustment (palette, g_value_get_object (value));
+        ctk_tool_palette_set_vadjustment (palette, g_value_get_object (value));
         break;
 
       case PROP_HSCROLL_POLICY:
         if (palette->priv->hscroll_policy != g_value_get_enum (value))
           {
 	    palette->priv->hscroll_policy = g_value_get_enum (value);
-	    gtk_widget_queue_resize (GTK_WIDGET (palette));
+	    ctk_widget_queue_resize (GTK_WIDGET (palette));
             g_object_notify_by_pspec (object, pspec);
           }
 	break;
@@ -307,7 +307,7 @@ gtk_tool_palette_set_property (GObject      *object,
         if (palette->priv->vscroll_policy != g_value_get_enum (value))
           {
 	    palette->priv->vscroll_policy = g_value_get_enum (value);
-	    gtk_widget_queue_resize (GTK_WIDGET (palette));
+	    ctk_widget_queue_resize (GTK_WIDGET (palette));
             g_object_notify_by_pspec (object, pspec);
           }
 	break;
@@ -319,7 +319,7 @@ gtk_tool_palette_set_property (GObject      *object,
 }
 
 static void
-gtk_tool_palette_get_property (GObject    *object,
+ctk_tool_palette_get_property (GObject    *object,
                                guint       prop_id,
                                GValue     *value,
                                GParamSpec *pspec)
@@ -329,7 +329,7 @@ gtk_tool_palette_get_property (GObject    *object,
   switch (prop_id)
     {
       case PROP_ICON_SIZE:
-        g_value_set_enum (value, gtk_tool_palette_get_icon_size (palette));
+        g_value_set_enum (value, ctk_tool_palette_get_icon_size (palette));
         break;
 
       case PROP_ICON_SIZE_SET:
@@ -341,7 +341,7 @@ gtk_tool_palette_get_property (GObject    *object,
         break;
 
       case PROP_TOOLBAR_STYLE:
-        g_value_set_enum (value, gtk_tool_palette_get_style (palette));
+        g_value_set_enum (value, ctk_tool_palette_get_style (palette));
         break;
 
       case PROP_HADJUSTMENT:
@@ -367,7 +367,7 @@ gtk_tool_palette_get_property (GObject    *object,
 }
 
 static void
-gtk_tool_palette_dispose (GObject *object)
+ctk_tool_palette_dispose (GObject *object)
 {
   GtkToolPalette *palette = GTK_TOOL_PALETTE (object);
   guint i;
@@ -401,21 +401,21 @@ gtk_tool_palette_dispose (GObject *object)
       palette->priv->text_size_group = NULL;
     }
 
-  G_OBJECT_CLASS (gtk_tool_palette_parent_class)->dispose (object);
+  G_OBJECT_CLASS (ctk_tool_palette_parent_class)->dispose (object);
 }
 
 static void
-gtk_tool_palette_finalize (GObject *object)
+ctk_tool_palette_finalize (GObject *object)
 {
   GtkToolPalette *palette = GTK_TOOL_PALETTE (object);
 
   g_ptr_array_free (palette->priv->groups, TRUE);
 
-  G_OBJECT_CLASS (gtk_tool_palette_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_tool_palette_parent_class)->finalize (object);
 }
 
 static void
-gtk_tool_palette_size_request (GtkWidget      *widget,
+ctk_tool_palette_size_request (GtkWidget      *widget,
                                GtkRequisition *requisition)
 {
   GtkToolPalette *palette = GTK_TOOL_PALETTE (widget);
@@ -423,7 +423,7 @@ gtk_tool_palette_size_request (GtkWidget      *widget,
   guint border_width;
   guint i;
 
-  border_width = gtk_container_get_border_width (GTK_CONTAINER (widget));
+  border_width = ctk_container_get_border_width (GTK_CONTAINER (widget));
 
   requisition->width = 0;
   requisition->height = 0;
@@ -435,7 +435,7 @@ gtk_tool_palette_size_request (GtkWidget      *widget,
       if (!group->widget)
         continue;
 
-      gtk_widget_get_preferred_size (GTK_WIDGET (group->widget),
+      ctk_widget_get_preferred_size (GTK_WIDGET (group->widget),
                                      &child_requisition, NULL);
 
       if (GTK_ORIENTATION_VERTICAL == palette->priv->orientation)
@@ -455,32 +455,32 @@ gtk_tool_palette_size_request (GtkWidget      *widget,
 }
 
 static void
-gtk_tool_palette_get_preferred_width (GtkWidget *widget,
+ctk_tool_palette_get_preferred_width (GtkWidget *widget,
 				      gint      *minimum,
 				      gint      *natural)
 {
   GtkRequisition requisition;
 
-  gtk_tool_palette_size_request (widget, &requisition);
+  ctk_tool_palette_size_request (widget, &requisition);
 
   *minimum = *natural = requisition.width;
 }
 
 static void
-gtk_tool_palette_get_preferred_height (GtkWidget *widget,
+ctk_tool_palette_get_preferred_height (GtkWidget *widget,
 				       gint      *minimum,
 				       gint      *natural)
 {
   GtkRequisition requisition;
 
-  gtk_tool_palette_size_request (widget, &requisition);
+  ctk_tool_palette_size_request (widget, &requisition);
 
   *minimum = *natural = requisition.height;
 }
 
 
 static void
-gtk_tool_palette_size_allocate (GtkWidget     *widget,
+ctk_tool_palette_size_allocate (GtkWidget     *widget,
                                 GtkAllocation *allocation)
 {
   GtkToolPalette *palette = GTK_TOOL_PALETTE (widget);
@@ -503,10 +503,10 @@ gtk_tool_palette_size_allocate (GtkWidget     *widget,
   gint *group_sizes = g_newa (gint, palette->priv->groups->len);
   GtkTextDirection direction;
 
-  border_width = gtk_container_get_border_width (GTK_CONTAINER (widget));
-  direction = gtk_widget_get_direction (widget);
+  border_width = ctk_container_get_border_width (GTK_CONTAINER (widget));
+  direction = ctk_widget_get_direction (widget);
 
-  GTK_WIDGET_CLASS (gtk_tool_palette_parent_class)->size_allocate (widget, allocation);
+  GTK_WIDGET_CLASS (ctk_tool_palette_parent_class)->size_allocate (widget, allocation);
 
   if (GTK_ORIENTATION_VERTICAL == palette->priv->orientation)
     {
@@ -520,7 +520,7 @@ gtk_tool_palette_size_allocate (GtkWidget     *widget,
     }
 
   if (adjustment)
-    offset = gtk_adjustment_get_value (adjustment);
+    offset = ctk_adjustment_get_value (adjustment);
   if (GTK_ORIENTATION_HORIZONTAL == palette->priv->orientation &&
       GTK_TEXT_DIR_RTL == direction)
     offset = -offset;
@@ -550,14 +550,14 @@ gtk_tool_palette_size_allocate (GtkWidget     *widget,
 
       widget = GTK_WIDGET (group->widget);
 
-      if (gtk_tool_item_group_get_n_items (group->widget))
+      if (ctk_tool_item_group_get_n_items (group->widget))
         {
           if (GTK_ORIENTATION_VERTICAL == palette->priv->orientation)
-            size = _gtk_tool_item_group_get_height_for_width (group->widget, child_allocation.width);
+            size = _ctk_tool_item_group_get_height_for_width (group->widget, child_allocation.width);
           else
-            size = _gtk_tool_item_group_get_width_for_height (group->widget, child_allocation.height);
+            size = _ctk_tool_item_group_get_width_for_height (group->widget, child_allocation.height);
 
-          if (group->expand && !gtk_tool_item_group_get_collapsed (group->widget))
+          if (group->expand && !ctk_tool_item_group_get_collapsed (group->widget))
             n_expand_groups += 1;
         }
       else
@@ -585,7 +585,7 @@ gtk_tool_palette_size_allocate (GtkWidget     *widget,
 
           max_offset = min_offset + group_sizes[i];
 
-          real_size = _gtk_tool_item_group_get_size_for_limit
+          real_size = _ctk_tool_item_group_get_size_for_limit
             (GTK_TOOL_ITEM_GROUP (widget), limit,
              GTK_ORIENTATION_VERTICAL == palette->priv->orientation,
              FALSE);
@@ -629,11 +629,11 @@ gtk_tool_palette_size_allocate (GtkWidget     *widget,
       if (!group->widget)
         continue;
 
-      if (gtk_tool_item_group_get_n_items (group->widget))
+      if (ctk_tool_item_group_get_n_items (group->widget))
         {
           gint size = group_sizes[i];
 
-          if (group->expand && !gtk_tool_item_group_get_collapsed (group->widget))
+          if (group->expand && !ctk_tool_item_group_get_collapsed (group->widget))
             {
               size += MIN (expand_space, remaining_space);
               remaining_space -= expand_space;
@@ -650,8 +650,8 @@ gtk_tool_palette_size_allocate (GtkWidget     *widget,
           else
             child_allocation.x = x;
 
-          gtk_widget_size_allocate (GTK_WIDGET (group->widget), &child_allocation);
-          gtk_widget_show (GTK_WIDGET (group->widget));
+          ctk_widget_size_allocate (GTK_WIDGET (group->widget), &child_allocation);
+          ctk_widget_show (GTK_WIDGET (group->widget));
 
           if (GTK_ORIENTATION_VERTICAL == palette->priv->orientation)
             child_allocation.y += child_allocation.height;
@@ -659,7 +659,7 @@ gtk_tool_palette_size_allocate (GtkWidget     *widget,
             x += child_allocation.width;
         }
       else
-        gtk_widget_hide (GTK_WIDGET (group->widget));
+        ctk_widget_hide (GTK_WIDGET (group->widget));
     }
 
   if (GTK_ORIENTATION_VERTICAL == palette->priv->orientation)
@@ -699,7 +699,7 @@ gtk_tool_palette_size_allocate (GtkWidget     *widget,
           offset = -offset;
         }
 
-      gtk_adjustment_configure (adjustment,
+      ctk_adjustment_configure (adjustment,
                                 offset,
                                 lower,
                                 upper,
@@ -710,7 +710,7 @@ gtk_tool_palette_size_allocate (GtkWidget     *widget,
 }
 
 static void
-gtk_tool_palette_realize (GtkWidget *widget)
+ctk_tool_palette_realize (GtkWidget *widget)
 {
   GtkAllocation allocation;
   GdkWindow *window;
@@ -718,11 +718,11 @@ gtk_tool_palette_realize (GtkWidget *widget)
   gint attributes_mask;
   guint border_width;
 
-  gtk_widget_set_realized (widget, TRUE);
+  ctk_widget_set_realized (widget, TRUE);
 
-  border_width = gtk_container_get_border_width (GTK_CONTAINER (widget));
+  border_width = ctk_container_get_border_width (GTK_CONTAINER (widget));
 
-  gtk_widget_get_allocation (widget, &allocation);
+  ctk_widget_get_allocation (widget, &allocation);
 
   attributes.window_type = GDK_WINDOW_CHILD;
   attributes.x = allocation.x + border_width;
@@ -730,8 +730,8 @@ gtk_tool_palette_realize (GtkWidget *widget)
   attributes.width = allocation.width - border_width * 2;
   attributes.height = allocation.height - border_width * 2;
   attributes.wclass = GDK_INPUT_OUTPUT;
-  attributes.visual = gtk_widget_get_visual (widget);
-  attributes.event_mask = gtk_widget_get_events (widget)
+  attributes.visual = ctk_widget_get_visual (widget);
+  attributes.event_mask = ctk_widget_get_events (widget)
                          | GDK_VISIBILITY_NOTIFY_MASK
                          | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK
                          | GDK_BUTTON_MOTION_MASK
@@ -739,43 +739,43 @@ gtk_tool_palette_realize (GtkWidget *widget)
                          | GDK_TOUCH_MASK;
   attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
 
-  window = gdk_window_new (gtk_widget_get_parent_window (widget),
+  window = gdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);
-  gtk_widget_set_window (widget, window);
-  gtk_widget_register_window (widget, window);
+  ctk_widget_set_window (widget, window);
+  ctk_widget_register_window (widget, window);
 
-  gtk_container_forall (GTK_CONTAINER (widget),
-                        (GtkCallback) gtk_widget_set_parent_window,
+  ctk_container_forall (GTK_CONTAINER (widget),
+                        (GtkCallback) ctk_widget_set_parent_window,
                         window);
 
-  gtk_widget_queue_resize_no_redraw (widget);
+  ctk_widget_queue_resize_no_redraw (widget);
 }
 
 static void
-gtk_tool_palette_adjustment_value_changed (GtkAdjustment *adjustment,
+ctk_tool_palette_adjustment_value_changed (GtkAdjustment *adjustment,
                                            gpointer       data)
 {
   GtkAllocation allocation;
   GtkWidget *widget = GTK_WIDGET (data);
 
-  gtk_widget_get_allocation (widget, &allocation);
-  gtk_tool_palette_size_allocate (widget, &allocation);
+  ctk_widget_get_allocation (widget, &allocation);
+  ctk_tool_palette_size_allocate (widget, &allocation);
 }
 
 static gboolean
-gtk_tool_palette_draw (GtkWidget *widget,
+ctk_tool_palette_draw (GtkWidget *widget,
                        cairo_t   *cr)
 {
-  gtk_render_background (gtk_widget_get_style_context (widget), cr,
+  ctk_render_background (ctk_widget_get_style_context (widget), cr,
                          0, 0,
-                         gtk_widget_get_allocated_width (widget),
-                         gtk_widget_get_allocated_height (widget));
+                         ctk_widget_get_allocated_width (widget),
+                         ctk_widget_get_allocated_height (widget));
 
-  return GTK_WIDGET_CLASS (gtk_tool_palette_parent_class)->draw (widget, cr);
+  return GTK_WIDGET_CLASS (ctk_tool_palette_parent_class)->draw (widget, cr);
 }
 
 static void
-gtk_tool_palette_add (GtkContainer *container,
+ctk_tool_palette_add (GtkContainer *container,
                       GtkWidget    *child)
 {
   GtkToolPalette *palette;
@@ -790,11 +790,11 @@ gtk_tool_palette_add (GtkContainer *container,
   info->pos = palette->priv->groups->len - 1;
   info->widget = (GtkToolItemGroup *) g_object_ref_sink (child);
 
-  gtk_widget_set_parent (child, GTK_WIDGET (palette));
+  ctk_widget_set_parent (child, GTK_WIDGET (palette));
 }
 
 static void
-gtk_tool_palette_remove (GtkContainer *container,
+ctk_tool_palette_remove (GtkContainer *container,
                          GtkWidget    *child)
 {
   GtkToolPalette *palette;
@@ -809,7 +809,7 @@ gtk_tool_palette_remove (GtkContainer *container,
       if (GTK_WIDGET(info->widget) == child)
         {
           g_object_unref (child);
-          gtk_widget_unparent (child);
+          ctk_widget_unparent (child);
 
           g_ptr_array_remove_index (palette->priv->groups, i);
         }
@@ -817,7 +817,7 @@ gtk_tool_palette_remove (GtkContainer *container,
 }
 
 static void
-gtk_tool_palette_forall (GtkContainer *container,
+ctk_tool_palette_forall (GtkContainer *container,
                          gboolean      internals,
                          GtkCallback   callback,
                          gpointer      callback_data)
@@ -842,13 +842,13 @@ gtk_tool_palette_forall (GtkContainer *container,
 }
 
 static GType
-gtk_tool_palette_child_type (GtkContainer *container)
+ctk_tool_palette_child_type (GtkContainer *container)
 {
   return GTK_TYPE_TOOL_ITEM_GROUP;
 }
 
 static void
-gtk_tool_palette_set_child_property (GtkContainer *container,
+ctk_tool_palette_set_child_property (GtkContainer *container,
                                      GtkWidget    *child,
                                      guint         prop_id,
                                      const GValue *value,
@@ -859,12 +859,12 @@ gtk_tool_palette_set_child_property (GtkContainer *container,
   switch (prop_id)
     {
       case CHILD_PROP_EXCLUSIVE:
-        gtk_tool_palette_set_exclusive (palette, GTK_TOOL_ITEM_GROUP (child),
+        ctk_tool_palette_set_exclusive (palette, GTK_TOOL_ITEM_GROUP (child),
           g_value_get_boolean (value));
         break;
 
       case CHILD_PROP_EXPAND:
-        gtk_tool_palette_set_expand (palette, GTK_TOOL_ITEM_GROUP (child),
+        ctk_tool_palette_set_expand (palette, GTK_TOOL_ITEM_GROUP (child),
           g_value_get_boolean (value));
         break;
 
@@ -875,7 +875,7 @@ gtk_tool_palette_set_child_property (GtkContainer *container,
 }
 
 static void
-gtk_tool_palette_get_child_property (GtkContainer *container,
+ctk_tool_palette_get_child_property (GtkContainer *container,
                                      GtkWidget    *child,
                                      guint         prop_id,
                                      GValue       *value,
@@ -887,12 +887,12 @@ gtk_tool_palette_get_child_property (GtkContainer *container,
     {
       case CHILD_PROP_EXCLUSIVE:
         g_value_set_boolean (value,
-          gtk_tool_palette_get_exclusive (palette, GTK_TOOL_ITEM_GROUP (child)));
+          ctk_tool_palette_get_exclusive (palette, GTK_TOOL_ITEM_GROUP (child)));
         break;
 
       case CHILD_PROP_EXPAND:
         g_value_set_boolean (value,
-          gtk_tool_palette_get_expand (palette, GTK_TOOL_ITEM_GROUP (child)));
+          ctk_tool_palette_get_expand (palette, GTK_TOOL_ITEM_GROUP (child)));
         break;
 
       default:
@@ -902,43 +902,43 @@ gtk_tool_palette_get_child_property (GtkContainer *container,
 }
 
 static void
-gtk_tool_palette_screen_changed (GtkWidget *widget,
+ctk_tool_palette_screen_changed (GtkWidget *widget,
                                  GdkScreen *previous_screen)
 {
   GtkToolPalette *palette = GTK_TOOL_PALETTE (widget);
 
-  gtk_tool_palette_reconfigured (palette);
+  ctk_tool_palette_reconfigured (palette);
 }
 
 
 static void
-gtk_tool_palette_class_init (GtkToolPaletteClass *cls)
+ctk_tool_palette_class_init (GtkToolPaletteClass *cls)
 {
   GObjectClass      *oclass   = G_OBJECT_CLASS (cls);
   GtkWidgetClass    *wclass   = GTK_WIDGET_CLASS (cls);
   GtkContainerClass *cclass   = GTK_CONTAINER_CLASS (cls);
 
-  oclass->set_property        = gtk_tool_palette_set_property;
-  oclass->get_property        = gtk_tool_palette_get_property;
-  oclass->dispose             = gtk_tool_palette_dispose;
-  oclass->finalize            = gtk_tool_palette_finalize;
+  oclass->set_property        = ctk_tool_palette_set_property;
+  oclass->get_property        = ctk_tool_palette_get_property;
+  oclass->dispose             = ctk_tool_palette_dispose;
+  oclass->finalize            = ctk_tool_palette_finalize;
 
-  wclass->get_preferred_width = gtk_tool_palette_get_preferred_width;
-  wclass->get_preferred_height= gtk_tool_palette_get_preferred_height;
-  wclass->size_allocate       = gtk_tool_palette_size_allocate;
-  wclass->realize             = gtk_tool_palette_realize;
-  wclass->draw                = gtk_tool_palette_draw;
+  wclass->get_preferred_width = ctk_tool_palette_get_preferred_width;
+  wclass->get_preferred_height= ctk_tool_palette_get_preferred_height;
+  wclass->size_allocate       = ctk_tool_palette_size_allocate;
+  wclass->realize             = ctk_tool_palette_realize;
+  wclass->draw                = ctk_tool_palette_draw;
 
-  cclass->add                 = gtk_tool_palette_add;
-  cclass->remove              = gtk_tool_palette_remove;
-  cclass->forall              = gtk_tool_palette_forall;
-  cclass->child_type          = gtk_tool_palette_child_type;
-  cclass->set_child_property  = gtk_tool_palette_set_child_property;
-  cclass->get_child_property  = gtk_tool_palette_get_child_property;
+  cclass->add                 = ctk_tool_palette_add;
+  cclass->remove              = ctk_tool_palette_remove;
+  cclass->forall              = ctk_tool_palette_forall;
+  cclass->child_type          = ctk_tool_palette_child_type;
+  cclass->set_child_property  = ctk_tool_palette_set_child_property;
+  cclass->get_child_property  = ctk_tool_palette_get_child_property;
 
   /* Handle screen-changed so we can update our configuration.
    */
-  wclass->screen_changed      = gtk_tool_palette_screen_changed;
+  wclass->screen_changed      = ctk_tool_palette_screen_changed;
 
   g_object_class_override_property (oclass, PROP_ORIENTATION,    "orientation");
 
@@ -1007,7 +1007,7 @@ gtk_tool_palette_class_init (GtkToolPaletteClass *cls)
    *
    * Since: 2.20
    */
-  gtk_container_class_install_child_property (cclass, CHILD_PROP_EXCLUSIVE,
+  ctk_container_class_install_child_property (cclass, CHILD_PROP_EXCLUSIVE,
                                               g_param_spec_boolean ("exclusive",
                                                                     P_("Exclusive"),
                                                                     P_("Whether the item group should be the only expanded at a given time"),
@@ -1022,18 +1022,18 @@ gtk_tool_palette_class_init (GtkToolPaletteClass *cls)
    *
    * Since: 2.20
    */
-  gtk_container_class_install_child_property (cclass, CHILD_PROP_EXPAND,
+  ctk_container_class_install_child_property (cclass, CHILD_PROP_EXPAND,
                                               g_param_spec_boolean ("expand",
                                                                     P_("Expand"),
                                                                     P_("Whether the item group should receive extra space when the palette grows"),
                                                                     DEFAULT_CHILD_EXPAND,
                                                                     GTK_PARAM_READWRITE));
 
-  gtk_widget_class_set_css_name (wclass, "toolpalette");
+  ctk_widget_class_set_css_name (wclass, "toolpalette");
 }
 
 /**
- * gtk_tool_palette_new:
+ * ctk_tool_palette_new:
  *
  * Creates a new tool palette.
  *
@@ -1042,13 +1042,13 @@ gtk_tool_palette_class_init (GtkToolPaletteClass *cls)
  * Since: 2.20
  */
 GtkWidget*
-gtk_tool_palette_new (void)
+ctk_tool_palette_new (void)
 {
   return g_object_new (GTK_TYPE_TOOL_PALETTE, NULL);
 }
 
 /**
- * gtk_tool_palette_set_icon_size:
+ * ctk_tool_palette_set_icon_size:
  * @palette: a #GtkToolPalette
  * @icon_size: (type int): the #GtkIconSize that icons in the tool
  *     palette shall have
@@ -1058,7 +1058,7 @@ gtk_tool_palette_new (void)
  * Since: 2.20
  */
 void
-gtk_tool_palette_set_icon_size (GtkToolPalette *palette,
+ctk_tool_palette_set_icon_size (GtkToolPalette *palette,
                                 GtkIconSize     icon_size)
 {
   GtkToolPalettePrivate *priv;
@@ -1080,22 +1080,22 @@ gtk_tool_palette_set_icon_size (GtkToolPalette *palette,
   priv->icon_size = icon_size;
   g_object_notify (G_OBJECT (palette), "icon-size");
 
-  gtk_tool_palette_reconfigured (palette);
+  ctk_tool_palette_reconfigured (palette);
 
-  gtk_widget_queue_resize (GTK_WIDGET (palette));
+  ctk_widget_queue_resize (GTK_WIDGET (palette));
 }
 
 /**
- * gtk_tool_palette_unset_icon_size:
+ * ctk_tool_palette_unset_icon_size:
  * @palette: a #GtkToolPalette
  *
- * Unsets the tool palette icon size set with gtk_tool_palette_set_icon_size(),
+ * Unsets the tool palette icon size set with ctk_tool_palette_set_icon_size(),
  * so that user preferences will be used to determine the icon size.
  *
  * Since: 2.20
  */
 void
-gtk_tool_palette_unset_icon_size (GtkToolPalette *palette)
+ctk_tool_palette_unset_icon_size (GtkToolPalette *palette)
 {
   GtkToolPalettePrivate* priv = palette->priv;
   GtkIconSize size;
@@ -1108,7 +1108,7 @@ gtk_tool_palette_unset_icon_size (GtkToolPalette *palette)
 
       if (size != palette->priv->icon_size)
       {
-        gtk_tool_palette_set_icon_size (palette, size);
+        ctk_tool_palette_set_icon_size (palette, size);
         g_object_notify (G_OBJECT (palette), "icon-size");
       }
 
@@ -1122,7 +1122,7 @@ gtk_tool_palette_unset_icon_size (GtkToolPalette *palette)
  * calling a function...
  */
 static void
-gtk_tool_palette_change_style (GtkToolPalette  *palette,
+ctk_tool_palette_change_style (GtkToolPalette  *palette,
                                GtkToolbarStyle  style)
 {
   GtkToolPalettePrivate* priv = palette->priv;
@@ -1131,16 +1131,16 @@ gtk_tool_palette_change_style (GtkToolPalette  *palette,
     {
       priv->style = style;
 
-      gtk_tool_palette_reconfigured (palette);
+      ctk_tool_palette_reconfigured (palette);
 
-      gtk_widget_queue_resize (GTK_WIDGET (palette));
+      ctk_widget_queue_resize (GTK_WIDGET (palette));
       g_object_notify (G_OBJECT (palette), "toolbar-style");
     }
 }
 
 
 /**
- * gtk_tool_palette_set_style:
+ * ctk_tool_palette_set_style:
  * @palette: a #GtkToolPalette
  * @style: the #GtkToolbarStyle that items in the tool palette shall have
  *
@@ -1149,27 +1149,27 @@ gtk_tool_palette_change_style (GtkToolPalette  *palette,
  * Since: 2.20
  */
 void
-gtk_tool_palette_set_style (GtkToolPalette  *palette,
+ctk_tool_palette_set_style (GtkToolPalette  *palette,
                             GtkToolbarStyle  style)
 {
   g_return_if_fail (GTK_IS_TOOL_PALETTE (palette));
 
   palette->priv->style_set = TRUE;
-  gtk_tool_palette_change_style (palette, style);
+  ctk_tool_palette_change_style (palette, style);
 }
 
 
 /**
- * gtk_tool_palette_unset_style:
+ * ctk_tool_palette_unset_style:
  * @palette: a #GtkToolPalette
  *
- * Unsets a toolbar style set with gtk_tool_palette_set_style(),
+ * Unsets a toolbar style set with ctk_tool_palette_set_style(),
  * so that user preferences will be used to determine the toolbar style.
  *
  * Since: 2.20
  */
 void
-gtk_tool_palette_unset_style (GtkToolPalette *palette)
+ctk_tool_palette_unset_style (GtkToolPalette *palette)
 {
   GtkToolPalettePrivate* priv = palette->priv;
   GtkToolbarStyle style;
@@ -1181,25 +1181,25 @@ gtk_tool_palette_unset_style (GtkToolPalette *palette)
       style = DEFAULT_TOOLBAR_STYLE;
 
       if (style != priv->style)
-        gtk_tool_palette_change_style (palette, style);
+        ctk_tool_palette_change_style (palette, style);
 
       priv->style_set = FALSE;
     }
 }
 
 /**
- * gtk_tool_palette_get_icon_size:
+ * ctk_tool_palette_get_icon_size:
  * @palette: a #GtkToolPalette
  *
  * Gets the size of icons in the tool palette.
- * See gtk_tool_palette_set_icon_size().
+ * See ctk_tool_palette_set_icon_size().
  *
  * Returns: (type int): the #GtkIconSize of icons in the tool palette
  *
  * Since: 2.20
  */
 GtkIconSize
-gtk_tool_palette_get_icon_size (GtkToolPalette *palette)
+ctk_tool_palette_get_icon_size (GtkToolPalette *palette)
 {
   g_return_val_if_fail (GTK_IS_TOOL_PALETTE (palette), DEFAULT_ICON_SIZE);
 
@@ -1207,7 +1207,7 @@ gtk_tool_palette_get_icon_size (GtkToolPalette *palette)
 }
 
 /**
- * gtk_tool_palette_get_style:
+ * ctk_tool_palette_get_style:
  * @palette: a #GtkToolPalette
  *
  * Gets the style (icons, text or both) of items in the tool palette.
@@ -1217,7 +1217,7 @@ gtk_tool_palette_get_icon_size (GtkToolPalette *palette)
  * Since: 2.20
  */
 GtkToolbarStyle
-gtk_tool_palette_get_style (GtkToolPalette *palette)
+ctk_tool_palette_get_style (GtkToolPalette *palette)
 {
   g_return_val_if_fail (GTK_IS_TOOL_PALETTE (palette), DEFAULT_TOOLBAR_STYLE);
 
@@ -1225,7 +1225,7 @@ gtk_tool_palette_get_style (GtkToolPalette *palette)
 }
 
 static gint
-gtk_tool_palette_compare_groups (gconstpointer a,
+ctk_tool_palette_compare_groups (gconstpointer a,
                                  gconstpointer b)
 {
   const GtkToolItemGroupInfo *group_a = *((GtkToolItemGroupInfo **) a);
@@ -1235,7 +1235,7 @@ gtk_tool_palette_compare_groups (gconstpointer a,
 }
 
 /**
- * gtk_tool_palette_set_group_position:
+ * ctk_tool_palette_set_group_position:
  * @palette: a #GtkToolPalette
  * @group: a #GtkToolItemGroup which is a child of palette
  * @position: a new index for group
@@ -1247,7 +1247,7 @@ gtk_tool_palette_compare_groups (gconstpointer a,
  * Since: 2.20
  */
 void
-gtk_tool_palette_set_group_position (GtkToolPalette   *palette,
+ctk_tool_palette_set_group_position (GtkToolPalette   *palette,
                                      GtkToolItemGroup *group,
                                      gint             position)
 {
@@ -1269,7 +1269,7 @@ gtk_tool_palette_set_group_position (GtkToolPalette   *palette,
   if (GTK_TOOL_ITEM_GROUP (group) == group_new->widget)
     return;
 
-  old_position = gtk_tool_palette_get_group_position (palette, group);
+  old_position = ctk_tool_palette_get_group_position (palette, group);
   g_return_if_fail (old_position >= 0);
 
   group_old = g_ptr_array_index (palette->priv->groups, old_position);
@@ -1277,20 +1277,20 @@ gtk_tool_palette_set_group_position (GtkToolPalette   *palette,
   group_new->pos = position;
   group_old->pos = old_position;
 
-  g_ptr_array_sort (palette->priv->groups, gtk_tool_palette_compare_groups);
+  g_ptr_array_sort (palette->priv->groups, ctk_tool_palette_compare_groups);
 
-  gtk_widget_queue_resize (GTK_WIDGET (palette));
+  ctk_widget_queue_resize (GTK_WIDGET (palette));
 }
 
 static void
-gtk_tool_palette_group_notify_collapsed (GtkToolItemGroup *group,
+ctk_tool_palette_group_notify_collapsed (GtkToolItemGroup *group,
                                          GParamSpec       *pspec,
                                          gpointer          data)
 {
   GtkToolPalette *palette = GTK_TOOL_PALETTE (data);
   guint i;
 
-  if (gtk_tool_item_group_get_collapsed (group))
+  if (ctk_tool_item_group_get_collapsed (group))
     return;
 
   for (i = 0; i < palette->priv->groups->len; ++i)
@@ -1299,12 +1299,12 @@ gtk_tool_palette_group_notify_collapsed (GtkToolItemGroup *group,
       GtkToolItemGroup *current_group = info->widget;
 
       if (current_group && current_group != group)
-        gtk_tool_item_group_set_collapsed (current_group, TRUE);
+        ctk_tool_item_group_set_collapsed (current_group, TRUE);
     }
 }
 
 /**
- * gtk_tool_palette_set_exclusive:
+ * ctk_tool_palette_set_exclusive:
  * @palette: a #GtkToolPalette
  * @group: a #GtkToolItemGroup which is a child of palette
  * @exclusive: whether the group should be exclusive or not
@@ -1315,7 +1315,7 @@ gtk_tool_palette_group_notify_collapsed (GtkToolItemGroup *group,
  * Since: 2.20
  */
 void
-gtk_tool_palette_set_exclusive (GtkToolPalette   *palette,
+ctk_tool_palette_set_exclusive (GtkToolPalette   *palette,
                                 GtkToolItemGroup *group,
                                 gboolean          exclusive)
 {
@@ -1325,7 +1325,7 @@ gtk_tool_palette_set_exclusive (GtkToolPalette   *palette,
   g_return_if_fail (GTK_IS_TOOL_PALETTE (palette));
   g_return_if_fail (GTK_IS_TOOL_ITEM_GROUP (group));
 
-  position = gtk_tool_palette_get_group_position (palette, group);
+  position = ctk_tool_palette_get_group_position (palette, group);
   g_return_if_fail (position >= 0);
 
   group_info = g_ptr_array_index (palette->priv->groups, position);
@@ -1341,7 +1341,7 @@ gtk_tool_palette_set_exclusive (GtkToolPalette   *palette,
         {
           group_info->notify_collapsed =
             g_signal_connect (group, "notify::collapsed",
-                              G_CALLBACK (gtk_tool_palette_group_notify_collapsed),
+                              G_CALLBACK (ctk_tool_palette_group_notify_collapsed),
                               palette);
         }
       else
@@ -1351,12 +1351,12 @@ gtk_tool_palette_set_exclusive (GtkToolPalette   *palette,
         }
     }
 
-  gtk_tool_palette_group_notify_collapsed (group_info->widget, NULL, palette);
-  gtk_widget_child_notify (GTK_WIDGET (group), "exclusive");
+  ctk_tool_palette_group_notify_collapsed (group_info->widget, NULL, palette);
+  ctk_widget_child_notify (GTK_WIDGET (group), "exclusive");
 }
 
 /**
- * gtk_tool_palette_set_expand:
+ * ctk_tool_palette_set_expand:
  * @palette: a #GtkToolPalette
  * @group: a #GtkToolItemGroup which is a child of palette
  * @expand: whether the group should be given extra space
@@ -1366,7 +1366,7 @@ gtk_tool_palette_set_exclusive (GtkToolPalette   *palette,
  * Since: 2.20
  */
 void
-gtk_tool_palette_set_expand (GtkToolPalette   *palette,
+ctk_tool_palette_set_expand (GtkToolPalette   *palette,
                              GtkToolItemGroup *group,
                              gboolean        expand)
 {
@@ -1376,7 +1376,7 @@ gtk_tool_palette_set_expand (GtkToolPalette   *palette,
   g_return_if_fail (GTK_IS_TOOL_PALETTE (palette));
   g_return_if_fail (GTK_IS_TOOL_ITEM_GROUP (group));
 
-  position = gtk_tool_palette_get_group_position (palette, group);
+  position = ctk_tool_palette_get_group_position (palette, group);
   g_return_if_fail (position >= 0);
 
   group_info = g_ptr_array_index (palette->priv->groups, position);
@@ -1384,25 +1384,25 @@ gtk_tool_palette_set_expand (GtkToolPalette   *palette,
   if (expand != group_info->expand)
     {
       group_info->expand = expand;
-      gtk_widget_queue_resize (GTK_WIDGET (palette));
-      gtk_widget_child_notify (GTK_WIDGET (group), "expand");
+      ctk_widget_queue_resize (GTK_WIDGET (palette));
+      ctk_widget_child_notify (GTK_WIDGET (group), "expand");
     }
 }
 
 /**
- * gtk_tool_palette_get_group_position:
+ * ctk_tool_palette_get_group_position:
  * @palette: a #GtkToolPalette
  * @group: a #GtkToolItemGroup
  *
  * Gets the position of @group in @palette as index.
- * See gtk_tool_palette_set_group_position().
+ * See ctk_tool_palette_set_group_position().
  *
  * Returns: the index of group or -1 if @group is not a child of @palette
  *
  * Since: 2.20
  */
 gint
-gtk_tool_palette_get_group_position (GtkToolPalette   *palette,
+ctk_tool_palette_get_group_position (GtkToolPalette   *palette,
                                      GtkToolItemGroup *group)
 {
   guint i;
@@ -1421,19 +1421,19 @@ gtk_tool_palette_get_group_position (GtkToolPalette   *palette,
 }
 
 /**
- * gtk_tool_palette_get_exclusive:
+ * ctk_tool_palette_get_exclusive:
  * @palette: a #GtkToolPalette
  * @group: a #GtkToolItemGroup which is a child of palette
  *
  * Gets whether @group is exclusive or not.
- * See gtk_tool_palette_set_exclusive().
+ * See ctk_tool_palette_set_exclusive().
  *
  * Returns: %TRUE if @group is exclusive
  *
  * Since: 2.20
  */
 gboolean
-gtk_tool_palette_get_exclusive (GtkToolPalette   *palette,
+ctk_tool_palette_get_exclusive (GtkToolPalette   *palette,
                                 GtkToolItemGroup *group)
 {
   gint position;
@@ -1442,7 +1442,7 @@ gtk_tool_palette_get_exclusive (GtkToolPalette   *palette,
   g_return_val_if_fail (GTK_IS_TOOL_PALETTE (palette), DEFAULT_CHILD_EXCLUSIVE);
   g_return_val_if_fail (GTK_IS_TOOL_ITEM_GROUP (group), DEFAULT_CHILD_EXCLUSIVE);
 
-  position = gtk_tool_palette_get_group_position (palette, group);
+  position = ctk_tool_palette_get_group_position (palette, group);
   g_return_val_if_fail (position >= 0, DEFAULT_CHILD_EXCLUSIVE);
 
   info = g_ptr_array_index (palette->priv->groups, position);
@@ -1451,19 +1451,19 @@ gtk_tool_palette_get_exclusive (GtkToolPalette   *palette,
 }
 
 /**
- * gtk_tool_palette_get_expand:
+ * ctk_tool_palette_get_expand:
  * @palette: a #GtkToolPalette
  * @group: a #GtkToolItemGroup which is a child of palette
  *
  * Gets whether group should be given extra space.
- * See gtk_tool_palette_set_expand().
+ * See ctk_tool_palette_set_expand().
  *
  * Returns: %TRUE if group should be given extra space, %FALSE otherwise
  *
  * Since: 2.20
  */
 gboolean
-gtk_tool_palette_get_expand (GtkToolPalette   *palette,
+ctk_tool_palette_get_expand (GtkToolPalette   *palette,
                              GtkToolItemGroup *group)
 {
   gint position;
@@ -1472,7 +1472,7 @@ gtk_tool_palette_get_expand (GtkToolPalette   *palette,
   g_return_val_if_fail (GTK_IS_TOOL_PALETTE (palette), DEFAULT_CHILD_EXPAND);
   g_return_val_if_fail (GTK_IS_TOOL_ITEM_GROUP (group), DEFAULT_CHILD_EXPAND);
 
-  position = gtk_tool_palette_get_group_position (palette, group);
+  position = ctk_tool_palette_get_group_position (palette, group);
   g_return_val_if_fail (position >= 0, DEFAULT_CHILD_EXPAND);
 
   info = g_ptr_array_index (palette->priv->groups, position);
@@ -1481,31 +1481,31 @@ gtk_tool_palette_get_expand (GtkToolPalette   *palette,
 }
 
 /**
- * gtk_tool_palette_get_drop_item:
+ * ctk_tool_palette_get_drop_item:
  * @palette: a #GtkToolPalette
  * @x: the x position
  * @y: the y position
  *
  * Gets the item at position (x, y).
- * See gtk_tool_palette_get_drop_group().
+ * See ctk_tool_palette_get_drop_group().
  *
  * Returns: (nullable) (transfer none): the #GtkToolItem at position or %NULL if there is no such item
  *
  * Since: 2.20
  */
 GtkToolItem*
-gtk_tool_palette_get_drop_item (GtkToolPalette *palette,
+ctk_tool_palette_get_drop_item (GtkToolPalette *palette,
                                 gint            x,
                                 gint            y)
 {
   GtkAllocation allocation;
-  GtkToolItemGroup *group = gtk_tool_palette_get_drop_group (palette, x, y);
+  GtkToolItemGroup *group = ctk_tool_palette_get_drop_group (palette, x, y);
   GtkWidget *widget = GTK_WIDGET (group);
 
   if (group)
     {
-      gtk_widget_get_allocation (widget, &allocation);
-      return gtk_tool_item_group_get_drop_item (group,
+      ctk_widget_get_allocation (widget, &allocation);
+      return ctk_tool_item_group_get_drop_item (group,
                                                 x - allocation.x,
                                                 y - allocation.y);
     }
@@ -1514,7 +1514,7 @@ gtk_tool_palette_get_drop_item (GtkToolPalette *palette,
 }
 
 /**
- * gtk_tool_palette_get_drop_group:
+ * ctk_tool_palette_get_drop_group:
  * @palette: a #GtkToolPalette
  * @x: the x position
  * @y: the y position
@@ -1527,7 +1527,7 @@ gtk_tool_palette_get_drop_item (GtkToolPalette *palette,
  * Since: 2.20
  */
 GtkToolItemGroup*
-gtk_tool_palette_get_drop_group (GtkToolPalette *palette,
+ctk_tool_palette_get_drop_group (GtkToolPalette *palette,
                                  gint            x,
                                  gint            y)
 {
@@ -1536,7 +1536,7 @@ gtk_tool_palette_get_drop_group (GtkToolPalette *palette,
 
   g_return_val_if_fail (GTK_IS_TOOL_PALETTE (palette), NULL);
 
-  gtk_widget_get_allocation (GTK_WIDGET (palette), &allocation);
+  ctk_widget_get_allocation (GTK_WIDGET (palette), &allocation);
 
   g_return_val_if_fail (x >= 0 && x < allocation.width, NULL);
   g_return_val_if_fail (y >= 0 && y < allocation.height, NULL);
@@ -1551,7 +1551,7 @@ gtk_tool_palette_get_drop_group (GtkToolPalette *palette,
         continue;
 
       widget = GTK_WIDGET (group->widget);
-      gtk_widget_get_allocation (widget, &allocation);
+      ctk_widget_get_allocation (widget, &allocation);
 
       x0 = x - allocation.x;
       y0 = y - allocation.y;
@@ -1565,7 +1565,7 @@ gtk_tool_palette_get_drop_group (GtkToolPalette *palette,
 }
 
 /**
- * gtk_tool_palette_get_drag_item:
+ * ctk_tool_palette_get_drag_item:
  * @palette: a #GtkToolPalette
  * @selection: a #GtkSelectionData
  *
@@ -1577,7 +1577,7 @@ gtk_tool_palette_get_drop_group (GtkToolPalette *palette,
  * Since: 2.20
  */
 GtkWidget*
-gtk_tool_palette_get_drag_item (GtkToolPalette         *palette,
+ctk_tool_palette_get_drag_item (GtkToolPalette         *palette,
                                 const GtkSelectionData *selection)
 {
   GtkToolPaletteDragData *data;
@@ -1586,14 +1586,14 @@ gtk_tool_palette_get_drag_item (GtkToolPalette         *palette,
   g_return_val_if_fail (GTK_IS_TOOL_PALETTE (palette), NULL);
   g_return_val_if_fail (NULL != selection, NULL);
 
-  g_return_val_if_fail (gtk_selection_data_get_format (selection) == 8, NULL);
-  g_return_val_if_fail (gtk_selection_data_get_length (selection) == sizeof (GtkToolPaletteDragData), NULL);
-  target = gtk_selection_data_get_target (selection);
+  g_return_val_if_fail (ctk_selection_data_get_format (selection) == 8, NULL);
+  g_return_val_if_fail (ctk_selection_data_get_length (selection) == sizeof (GtkToolPaletteDragData), NULL);
+  target = ctk_selection_data_get_target (selection);
   g_return_val_if_fail (target == dnd_target_atom_item ||
                         target == dnd_target_atom_group,
                         NULL);
 
-  data = (GtkToolPaletteDragData*) gtk_selection_data_get_data (selection);
+  data = (GtkToolPaletteDragData*) ctk_selection_data_get_data (selection);
 
   g_return_val_if_fail (data->palette == palette, NULL);
 
@@ -1606,7 +1606,7 @@ gtk_tool_palette_get_drag_item (GtkToolPalette         *palette,
 }
 
 /**
- * gtk_tool_palette_set_drag_source:
+ * ctk_tool_palette_set_drag_source:
  * @palette: a #GtkToolPalette
  * @targets: the #GtkToolPaletteDragTargets
  *     which the widget should support
@@ -1614,12 +1614,12 @@ gtk_tool_palette_get_drag_item (GtkToolPalette         *palette,
  * Sets the tool palette as a drag source.
  * Enables all groups and items in the tool palette as drag sources
  * on button 1 and button 3 press with copy and move actions.
- * See gtk_drag_source_set().
+ * See ctk_drag_source_set().
  *
  * Since: 2.20
  */
 void
-gtk_tool_palette_set_drag_source (GtkToolPalette            *palette,
+ctk_tool_palette_set_drag_source (GtkToolPalette            *palette,
                                   GtkToolPaletteDragTargets  targets)
 {
   guint i;
@@ -1635,14 +1635,14 @@ gtk_tool_palette_set_drag_source (GtkToolPalette            *palette,
     {
       GtkToolItemGroupInfo *info = g_ptr_array_index (palette->priv->groups, i);
       if (info->widget)
-        gtk_container_forall (GTK_CONTAINER (info->widget),
-                              _gtk_tool_palette_child_set_drag_source,
+        ctk_container_forall (GTK_CONTAINER (info->widget),
+                              _ctk_tool_palette_child_set_drag_source,
                               palette);
     }
 }
 
 /**
- * gtk_tool_palette_add_drag_dest:
+ * ctk_tool_palette_add_drag_dest:
  * @palette: a #GtkToolPalette
  * @widget: a #GtkWidget which should be a drag destination for @palette
  * @flags: the flags that specify what actions GTK+ should take for drops
@@ -1651,14 +1651,14 @@ gtk_tool_palette_set_drag_source (GtkToolPalette            *palette,
  *     should support
  * @actions: the #GdkDragActions which the widget should suppport
  *
- * Sets @palette as drag source (see gtk_tool_palette_set_drag_source())
+ * Sets @palette as drag source (see ctk_tool_palette_set_drag_source())
  * and sets @widget as a drag destination for drags from @palette.
- * See gtk_drag_dest_set().
+ * See ctk_drag_dest_set().
  *
  * Since: 2.20
  */
 void
-gtk_tool_palette_add_drag_dest (GtkToolPalette            *palette,
+ctk_tool_palette_add_drag_dest (GtkToolPalette            *palette,
                                 GtkWidget                 *widget,
                                 GtkDestDefaults            flags,
                                 GtkToolPaletteDragTargets  targets,
@@ -1670,7 +1670,7 @@ gtk_tool_palette_add_drag_dest (GtkToolPalette            *palette,
   g_return_if_fail (GTK_IS_TOOL_PALETTE (palette));
   g_return_if_fail (GTK_IS_WIDGET (widget));
 
-  gtk_tool_palette_set_drag_source (palette,
+  ctk_tool_palette_set_drag_source (palette,
                                     targets);
 
   if (targets & GTK_TOOL_PALETTE_DRAG_ITEMS)
@@ -1678,11 +1678,11 @@ gtk_tool_palette_add_drag_dest (GtkToolPalette            *palette,
   if (targets & GTK_TOOL_PALETTE_DRAG_GROUPS)
     entries[n_entries++] = dnd_targets[1];
 
-  gtk_drag_dest_set (widget, flags, entries, n_entries, actions);
+  ctk_drag_dest_set (widget, flags, entries, n_entries, actions);
 }
 
 void
-_gtk_tool_palette_get_item_size (GtkToolPalette *palette,
+_ctk_tool_palette_get_item_size (GtkToolPalette *palette,
                                  GtkRequisition *item_size,
                                  gboolean        homogeneous_only,
                                  gint           *requested_rows)
@@ -1708,7 +1708,7 @@ _gtk_tool_palette_get_item_size (GtkToolPalette *palette,
       if (!group->widget)
         continue;
 
-      _gtk_tool_item_group_item_size_request (group->widget, &requisition, homogeneous_only, &rows);
+      _ctk_tool_item_group_item_size_request (group->widget, &requisition, homogeneous_only, &rows);
 
       max_requisition.width = MAX (max_requisition.width, requisition.width);
       max_requisition.height = MAX (max_requisition.height, requisition.height);
@@ -1721,7 +1721,7 @@ _gtk_tool_palette_get_item_size (GtkToolPalette *palette,
 }
 
 static void
-gtk_tool_palette_item_drag_data_get (GtkWidget        *widget,
+ctk_tool_palette_item_drag_data_get (GtkWidget        *widget,
                                      GdkDragContext   *context,
                                      GtkSelectionData *selection,
                                      guint             info,
@@ -1731,18 +1731,18 @@ gtk_tool_palette_item_drag_data_get (GtkWidget        *widget,
   GtkToolPaletteDragData drag_data = { GTK_TOOL_PALETTE (data), NULL };
   GdkAtom target;
 
-  target = gtk_selection_data_get_target (selection);
+  target = ctk_selection_data_get_target (selection);
 
   if (target == dnd_target_atom_item)
-    drag_data.item = gtk_widget_get_ancestor (widget, GTK_TYPE_TOOL_ITEM);
+    drag_data.item = ctk_widget_get_ancestor (widget, GTK_TYPE_TOOL_ITEM);
 
   if (drag_data.item)
-    gtk_selection_data_set (selection, target, 8,
+    ctk_selection_data_set (selection, target, 8,
                             (guchar*) &drag_data, sizeof (drag_data));
 }
 
 static void
-gtk_tool_palette_child_drag_data_get (GtkWidget        *widget,
+ctk_tool_palette_child_drag_data_get (GtkWidget        *widget,
                                       GdkDragContext   *context,
                                       GtkSelectionData *selection,
                                       guint             info,
@@ -1752,24 +1752,24 @@ gtk_tool_palette_child_drag_data_get (GtkWidget        *widget,
   GtkToolPaletteDragData drag_data = { GTK_TOOL_PALETTE (data), NULL };
   GdkAtom target;
 
-  target = gtk_selection_data_get_target (selection);
+  target = ctk_selection_data_get_target (selection);
 
   if (target == dnd_target_atom_group)
-    drag_data.item = gtk_widget_get_ancestor (widget, GTK_TYPE_TOOL_ITEM_GROUP);
+    drag_data.item = ctk_widget_get_ancestor (widget, GTK_TYPE_TOOL_ITEM_GROUP);
 
   if (drag_data.item)
-    gtk_selection_data_set (selection, target, 8,
+    ctk_selection_data_set (selection, target, 8,
                             (guchar*) &drag_data, sizeof (drag_data));
 }
 
 void
-_gtk_tool_palette_child_set_drag_source (GtkWidget *child,
+_ctk_tool_palette_child_set_drag_source (GtkWidget *child,
                                          gpointer   data)
 {
   GtkToolPalette *palette = GTK_TOOL_PALETTE (data);
 
   /* Check drag_source,
-   * to work properly when called from gtk_tool_item_group_insert().
+   * to work properly when called from ctk_tool_item_group_insert().
    */
   if (!palette->priv->drag_source)
     return;
@@ -1781,32 +1781,32 @@ _gtk_tool_palette_child_set_drag_source (GtkWidget *child,
        * to work arround bug 510377.
        */
       if (GTK_IS_TOOL_BUTTON (child))
-        child = gtk_bin_get_child (GTK_BIN (child));
+        child = ctk_bin_get_child (GTK_BIN (child));
 
       if (!child)
         return;
 
-      gtk_drag_source_set (child, GDK_BUTTON1_MASK | GDK_BUTTON3_MASK,
+      ctk_drag_source_set (child, GDK_BUTTON1_MASK | GDK_BUTTON3_MASK,
                            &dnd_targets[0], 1, GDK_ACTION_COPY | GDK_ACTION_MOVE);
 
       g_signal_connect (child, "drag-data-get",
-                        G_CALLBACK (gtk_tool_palette_item_drag_data_get),
+                        G_CALLBACK (ctk_tool_palette_item_drag_data_get),
                         palette);
     }
   else if (GTK_IS_BUTTON (child) &&
            (palette->priv->drag_source & GTK_TOOL_PALETTE_DRAG_GROUPS))
     {
-      gtk_drag_source_set (child, GDK_BUTTON1_MASK | GDK_BUTTON3_MASK,
+      ctk_drag_source_set (child, GDK_BUTTON1_MASK | GDK_BUTTON3_MASK,
                            &dnd_targets[1], 1, GDK_ACTION_COPY | GDK_ACTION_MOVE);
 
       g_signal_connect (child, "drag-data-get",
-                        G_CALLBACK (gtk_tool_palette_child_drag_data_get),
+                        G_CALLBACK (ctk_tool_palette_child_drag_data_get),
                         palette);
     }
 }
 
 /**
- * gtk_tool_palette_get_drag_target_item:
+ * ctk_tool_palette_get_drag_target_item:
  *
  * Gets the target entry for a dragged #GtkToolItem.
  *
@@ -1815,13 +1815,13 @@ _gtk_tool_palette_child_set_drag_source (GtkWidget *child,
  * Since: 2.20
  */
 const GtkTargetEntry*
-gtk_tool_palette_get_drag_target_item (void)
+ctk_tool_palette_get_drag_target_item (void)
 {
   return &dnd_targets[0];
 }
 
 /**
- * gtk_tool_palette_get_drag_target_group:
+ * ctk_tool_palette_get_drag_target_group:
  *
  * Get the target entry for a dragged #GtkToolItemGroup.
  *
@@ -1830,13 +1830,13 @@ gtk_tool_palette_get_drag_target_item (void)
  * Since: 2.20
  */
 const GtkTargetEntry*
-gtk_tool_palette_get_drag_target_group (void)
+ctk_tool_palette_get_drag_target_group (void)
 {
   return &dnd_targets[1];
 }
 
 void
-_gtk_tool_palette_set_expanding_child (GtkToolPalette *palette,
+_ctk_tool_palette_set_expanding_child (GtkToolPalette *palette,
                                        GtkWidget      *widget)
 {
   g_return_if_fail (GTK_IS_TOOL_PALETTE (palette));
@@ -1844,7 +1844,7 @@ _gtk_tool_palette_set_expanding_child (GtkToolPalette *palette,
 }
 
 /**
- * gtk_tool_palette_get_hadjustment:
+ * ctk_tool_palette_get_hadjustment:
  * @palette: a #GtkToolPalette
  *
  * Gets the horizontal adjustment of the tool palette.
@@ -1853,10 +1853,10 @@ _gtk_tool_palette_set_expanding_child (GtkToolPalette *palette,
  *
  * Since: 2.20
  *
- * Deprecated: 3.0: Use gtk_scrollable_get_hadjustment()
+ * Deprecated: 3.0: Use ctk_scrollable_get_hadjustment()
  */
 GtkAdjustment*
-gtk_tool_palette_get_hadjustment (GtkToolPalette *palette)
+ctk_tool_palette_get_hadjustment (GtkToolPalette *palette)
 {
   g_return_val_if_fail (GTK_IS_TOOL_PALETTE (palette), NULL);
 
@@ -1864,7 +1864,7 @@ gtk_tool_palette_get_hadjustment (GtkToolPalette *palette)
 }
 
 static void
-gtk_tool_palette_set_hadjustment (GtkToolPalette *palette,
+ctk_tool_palette_set_hadjustment (GtkToolPalette *palette,
                                   GtkAdjustment  *adjustment)
 {
   GtkToolPalettePrivate *priv = palette->priv;
@@ -1875,17 +1875,17 @@ gtk_tool_palette_set_hadjustment (GtkToolPalette *palette,
   if (priv->hadjustment != NULL)
     {
       g_signal_handlers_disconnect_by_func (priv->hadjustment,
-                                            gtk_tool_palette_adjustment_value_changed,
+                                            ctk_tool_palette_adjustment_value_changed,
                                             palette);
       g_object_unref (priv->hadjustment);
     }
 
   if (adjustment == NULL)
-    adjustment = gtk_adjustment_new (0.0, 0.0, 0.0,
+    adjustment = ctk_adjustment_new (0.0, 0.0, 0.0,
                                      0.0, 0.0, 0.0);
 
   g_signal_connect (adjustment, "value-changed",
-                    G_CALLBACK (gtk_tool_palette_adjustment_value_changed),
+                    G_CALLBACK (ctk_tool_palette_adjustment_value_changed),
                     palette);
   priv->hadjustment = g_object_ref_sink (adjustment);
   /* FIXME: Adjustment should probably have its values updated now */
@@ -1893,7 +1893,7 @@ gtk_tool_palette_set_hadjustment (GtkToolPalette *palette,
 }
 
 /**
- * gtk_tool_palette_get_vadjustment:
+ * ctk_tool_palette_get_vadjustment:
  * @palette: a #GtkToolPalette
  *
  * Gets the vertical adjustment of the tool palette.
@@ -1902,10 +1902,10 @@ gtk_tool_palette_set_hadjustment (GtkToolPalette *palette,
  *
  * Since: 2.20
  *
- * Deprecated: 3.0: Use gtk_scrollable_get_vadjustment()
+ * Deprecated: 3.0: Use ctk_scrollable_get_vadjustment()
  */
 GtkAdjustment*
-gtk_tool_palette_get_vadjustment (GtkToolPalette *palette)
+ctk_tool_palette_get_vadjustment (GtkToolPalette *palette)
 {
   g_return_val_if_fail (GTK_IS_TOOL_PALETTE (palette), NULL);
 
@@ -1913,7 +1913,7 @@ gtk_tool_palette_get_vadjustment (GtkToolPalette *palette)
 }
 
 static void
-gtk_tool_palette_set_vadjustment (GtkToolPalette *palette,
+ctk_tool_palette_set_vadjustment (GtkToolPalette *palette,
                                   GtkAdjustment  *adjustment)
 {
   GtkToolPalettePrivate *priv = palette->priv;
@@ -1924,17 +1924,17 @@ gtk_tool_palette_set_vadjustment (GtkToolPalette *palette,
   if (priv->vadjustment != NULL)
     {
       g_signal_handlers_disconnect_by_func (priv->vadjustment,
-                                            gtk_tool_palette_adjustment_value_changed,
+                                            ctk_tool_palette_adjustment_value_changed,
                                             palette);
       g_object_unref (priv->vadjustment);
     }
 
   if (adjustment == NULL)
-    adjustment = gtk_adjustment_new (0.0, 0.0, 0.0,
+    adjustment = ctk_adjustment_new (0.0, 0.0, 0.0,
                                      0.0, 0.0, 0.0);
 
   g_signal_connect (adjustment, "value-changed",
-                    G_CALLBACK (gtk_tool_palette_adjustment_value_changed),
+                    G_CALLBACK (ctk_tool_palette_adjustment_value_changed),
                     palette);
   priv->vadjustment = g_object_ref_sink (adjustment);
   /* FIXME: Adjustment should probably have its values updated now */
@@ -1942,7 +1942,7 @@ gtk_tool_palette_set_vadjustment (GtkToolPalette *palette,
 }
 
 GtkSizeGroup *
-_gtk_tool_palette_get_size_group (GtkToolPalette *palette)
+_ctk_tool_palette_get_size_group (GtkToolPalette *palette)
 {
   g_return_val_if_fail (GTK_IS_TOOL_PALETTE (palette), NULL);
 

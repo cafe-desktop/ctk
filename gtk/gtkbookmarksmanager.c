@@ -31,7 +31,7 @@
 #include "gtkfilechooser.h" /* for the GError types */
 
 static void
-_gtk_bookmark_free (gpointer data)
+_ctk_bookmark_free (gpointer data)
 {
   GtkBookmark *bookmark = data;
 
@@ -199,7 +199,7 @@ bookmarks_file_changed (GFileMonitor      *monitor,
     case G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT:
     case G_FILE_MONITOR_EVENT_CREATED:
     case G_FILE_MONITOR_EVENT_DELETED:
-      g_slist_free_full (manager->bookmarks, _gtk_bookmark_free);
+      g_slist_free_full (manager->bookmarks, _ctk_bookmark_free);
       manager->bookmarks = read_bookmarks (file);
 
       gdk_threads_enter ();
@@ -214,7 +214,7 @@ bookmarks_file_changed (GFileMonitor      *monitor,
 }
 
 GtkBookmarksManager *
-_gtk_bookmarks_manager_new (GtkBookmarksChangedFunc changed_func, gpointer changed_func_data)
+_ctk_bookmarks_manager_new (GtkBookmarksChangedFunc changed_func, gpointer changed_func_data)
 {
   GtkBookmarksManager *manager;
   GFile *bookmarks_file;
@@ -259,7 +259,7 @@ _gtk_bookmarks_manager_new (GtkBookmarksChangedFunc changed_func, gpointer chang
 }
 
 void
-_gtk_bookmarks_manager_free (GtkBookmarksManager *manager)
+_ctk_bookmarks_manager_free (GtkBookmarksManager *manager)
 {
   g_return_if_fail (manager != NULL);
 
@@ -271,13 +271,13 @@ _gtk_bookmarks_manager_free (GtkBookmarksManager *manager)
       g_object_unref (manager->bookmarks_monitor);
     }
 
-  g_slist_free_full (manager->bookmarks, _gtk_bookmark_free);
+  g_slist_free_full (manager->bookmarks, _ctk_bookmark_free);
 
   g_free (manager);
 }
 
 GSList *
-_gtk_bookmarks_manager_list_bookmarks (GtkBookmarksManager *manager)
+_ctk_bookmarks_manager_list_bookmarks (GtkBookmarksManager *manager)
 {
   GSList *bookmarks, *files = NULL;
 
@@ -326,7 +326,7 @@ find_bookmark_link_for_file (GSList *bookmarks, GFile *file, int *position_ret)
 }
 
 gboolean
-_gtk_bookmarks_manager_has_bookmark (GtkBookmarksManager *manager,
+_ctk_bookmarks_manager_has_bookmark (GtkBookmarksManager *manager,
                                      GFile               *file)
 {
   GSList *link;
@@ -336,7 +336,7 @@ _gtk_bookmarks_manager_has_bookmark (GtkBookmarksManager *manager,
 }
 
 gboolean
-_gtk_bookmarks_manager_insert_bookmark (GtkBookmarksManager *manager,
+_ctk_bookmarks_manager_insert_bookmark (GtkBookmarksManager *manager,
 					GFile               *file,
 					gint                 position,
 					GError             **error)
@@ -382,7 +382,7 @@ _gtk_bookmarks_manager_insert_bookmark (GtkBookmarksManager *manager,
 }
 
 gboolean
-_gtk_bookmarks_manager_remove_bookmark (GtkBookmarksManager *manager,
+_ctk_bookmarks_manager_remove_bookmark (GtkBookmarksManager *manager,
 					GFile               *file,
 					GError             **error)
 {
@@ -401,7 +401,7 @@ _gtk_bookmarks_manager_remove_bookmark (GtkBookmarksManager *manager,
       GtkBookmark *bookmark = link->data;
 
       manager->bookmarks = g_slist_remove_link (manager->bookmarks, link);
-      _gtk_bookmark_free (bookmark);
+      _ctk_bookmark_free (bookmark);
       g_slist_free_1 (link);
     }
   else
@@ -420,7 +420,7 @@ _gtk_bookmarks_manager_remove_bookmark (GtkBookmarksManager *manager,
 }
 
 gboolean
-_gtk_bookmarks_manager_reorder_bookmark (GtkBookmarksManager *manager,
+_ctk_bookmarks_manager_reorder_bookmark (GtkBookmarksManager *manager,
 					 GFile               *file,
 					 gint                 new_position,
 					 GError             **error)
@@ -468,7 +468,7 @@ _gtk_bookmarks_manager_reorder_bookmark (GtkBookmarksManager *manager,
 }
 
 gchar *
-_gtk_bookmarks_manager_get_bookmark_label (GtkBookmarksManager *manager,
+_ctk_bookmarks_manager_get_bookmark_label (GtkBookmarksManager *manager,
 					   GFile               *file)
 {
   GSList *bookmarks;
@@ -497,7 +497,7 @@ _gtk_bookmarks_manager_get_bookmark_label (GtkBookmarksManager *manager,
 }
 
 gboolean
-_gtk_bookmarks_manager_set_bookmark_label (GtkBookmarksManager *manager,
+_ctk_bookmarks_manager_set_bookmark_label (GtkBookmarksManager *manager,
 					   GFile               *file,
 					   const gchar         *label,
 					   GError             **error)
@@ -532,7 +532,7 @@ _gtk_bookmarks_manager_set_bookmark_label (GtkBookmarksManager *manager,
 }
 
 gboolean
-_gtk_bookmarks_manager_get_xdg_type (GtkBookmarksManager *manager,
+_ctk_bookmarks_manager_get_xdg_type (GtkBookmarksManager *manager,
                                      GFile               *file,
                                      GUserDirectory      *directory)
 {
@@ -571,21 +571,21 @@ _gtk_bookmarks_manager_get_xdg_type (GtkBookmarksManager *manager,
 }
 
 gboolean
-_gtk_bookmarks_manager_get_is_builtin (GtkBookmarksManager *manager,
+_ctk_bookmarks_manager_get_is_builtin (GtkBookmarksManager *manager,
                                        GFile               *file)
 {
   GUserDirectory xdg_type;
 
   /* if this is not an XDG dir, it's never builtin */
-  if (!_gtk_bookmarks_manager_get_xdg_type (manager, file, &xdg_type))
+  if (!_ctk_bookmarks_manager_get_xdg_type (manager, file, &xdg_type))
     return FALSE;
 
   /* exclude XDG locations we don't display by default */
-  return _gtk_bookmarks_manager_get_is_xdg_dir_builtin (xdg_type);
+  return _ctk_bookmarks_manager_get_is_xdg_dir_builtin (xdg_type);
 }
 
 gboolean
-_gtk_bookmarks_manager_get_is_xdg_dir_builtin (GUserDirectory xdg_type)
+_ctk_bookmarks_manager_get_is_xdg_dir_builtin (GUserDirectory xdg_type)
 {
   return (xdg_type != G_USER_DIRECTORY_DESKTOP) &&
     (xdg_type != G_USER_DIRECTORY_TEMPLATES) &&

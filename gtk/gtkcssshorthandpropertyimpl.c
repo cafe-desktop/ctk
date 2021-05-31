@@ -52,10 +52,10 @@
 static gboolean
 value_is_done_parsing (GtkCssParser *parser)
 {
-  return _gtk_css_parser_is_eof (parser) ||
-         _gtk_css_parser_begins_with (parser, ',') ||
-         _gtk_css_parser_begins_with (parser, ';') ||
-         _gtk_css_parser_begins_with (parser, '}');
+  return _ctk_css_parser_is_eof (parser) ||
+         _ctk_css_parser_begins_with (parser, ',') ||
+         _ctk_css_parser_begins_with (parser, ';') ||
+         _ctk_css_parser_begins_with (parser, '}');
 }
 
 static gboolean
@@ -68,23 +68,23 @@ parse_four_numbers (GtkCssShorthandProperty  *shorthand,
 
   for (i = 0; i < 4; i++)
     {
-      if (!gtk_css_number_value_can_parse (parser))
+      if (!ctk_css_number_value_can_parse (parser))
         break;
 
-      values[i] = _gtk_css_number_value_parse (parser, flags);
+      values[i] = _ctk_css_number_value_parse (parser, flags);
       if (values[i] == NULL)
         return FALSE;
     }
 
   if (i == 0)
     {
-      _gtk_css_parser_error (parser, "Expected a length");
+      _ctk_css_parser_error (parser, "Expected a length");
       return FALSE;
     }
 
   for (; i < 4; i++)
     {
-      values[i] = _gtk_css_value_ref (values[(i - 1) >> 1]);
+      values[i] = _ctk_css_value_ref (values[(i - 1) >> 1]);
     }
 
   return TRUE;
@@ -138,9 +138,9 @@ parse_border_radius (GtkCssShorthandProperty  *shorthand,
 
   for (i = 0; i < 4; i++)
     {
-      if (!gtk_css_number_value_can_parse (parser))
+      if (!ctk_css_number_value_can_parse (parser))
         break;
-      x[i] = _gtk_css_number_value_parse (parser,
+      x[i] = _ctk_css_number_value_parse (parser,
                                           GTK_CSS_POSITIVE_ONLY
                                           | GTK_CSS_PARSE_PERCENT
                                           | GTK_CSS_NUMBER_AS_PIXELS
@@ -151,7 +151,7 @@ parse_border_radius (GtkCssShorthandProperty  *shorthand,
 
   if (i == 0)
     {
-      _gtk_css_parser_error (parser, "Expected a number");
+      _ctk_css_parser_error (parser, "Expected a number");
       goto fail;
     }
 
@@ -159,15 +159,15 @@ parse_border_radius (GtkCssShorthandProperty  *shorthand,
    * according to spec. Feel free to check the 4 cases
    */
   for (; i < 4; i++)
-    x[i] = _gtk_css_value_ref (x[(i - 1) >> 1]);
+    x[i] = _ctk_css_value_ref (x[(i - 1) >> 1]);
 
-  if (_gtk_css_parser_try (parser, "/", TRUE))
+  if (_ctk_css_parser_try (parser, "/", TRUE))
     {
       for (i = 0; i < 4; i++)
         {
-          if (!gtk_css_number_value_can_parse (parser))
+          if (!ctk_css_number_value_can_parse (parser))
             break;
-          y[i] = _gtk_css_number_value_parse (parser,
+          y[i] = _ctk_css_number_value_parse (parser,
                                               GTK_CSS_POSITIVE_ONLY
                                               | GTK_CSS_PARSE_PERCENT
                                               | GTK_CSS_NUMBER_AS_PIXELS
@@ -178,22 +178,22 @@ parse_border_radius (GtkCssShorthandProperty  *shorthand,
 
       if (i == 0)
         {
-          _gtk_css_parser_error (parser, "Expected a number");
+          _ctk_css_parser_error (parser, "Expected a number");
           goto fail;
         }
 
       for (; i < 4; i++)
-        y[i] = _gtk_css_value_ref (y[(i - 1) >> 1]);
+        y[i] = _ctk_css_value_ref (y[(i - 1) >> 1]);
     }
   else
     {
       for (i = 0; i < 4; i++)
-        y[i] = _gtk_css_value_ref (x[i]);
+        y[i] = _ctk_css_value_ref (x[i]);
     }
 
   for (i = 0; i < 4; i++)
     {
-      values[i] = _gtk_css_corner_value_new (x[i], y[i]);
+      values[i] = _ctk_css_corner_value_new (x[i], y[i]);
     }
 
   return TRUE;
@@ -202,9 +202,9 @@ fail:
   for (i = 0; i < 4; i++)
     {
       if (x[i])
-        _gtk_css_value_unref (x[i]);
+        _ctk_css_value_unref (x[i]);
       if (y[i])
-        _gtk_css_value_unref (y[i]);
+        _ctk_css_value_unref (y[i]);
     }
   return FALSE;
 }
@@ -218,7 +218,7 @@ parse_border_color (GtkCssShorthandProperty  *shorthand,
 
   for (i = 0; i < 4; i++)
     {
-      values[i] = _gtk_css_color_value_parse (parser);
+      values[i] = _ctk_css_color_value_parse (parser);
       if (values[i] == NULL)
         return FALSE;
 
@@ -228,7 +228,7 @@ parse_border_color (GtkCssShorthandProperty  *shorthand,
 
   for (i++; i < 4; i++)
     {
-      values[i] = _gtk_css_value_ref (values[(i - 1) >> 1]);
+      values[i] = _ctk_css_value_ref (values[(i - 1) >> 1]);
     }
 
   return TRUE;
@@ -243,19 +243,19 @@ parse_border_style (GtkCssShorthandProperty  *shorthand,
 
   for (i = 0; i < 4; i++)
     {
-      values[i] = _gtk_css_border_style_value_try_parse (parser);
+      values[i] = _ctk_css_border_style_value_try_parse (parser);
       if (values[i] == NULL)
         break;
     }
 
   if (i == 0)
     {
-      _gtk_css_parser_error (parser, "Expected a border style");
+      _ctk_css_parser_error (parser, "Expected a border style");
       return FALSE;
     }
 
   for (; i < 4; i++)
-    values[i] = _gtk_css_value_ref (values[(i - 1) >> 1]);
+    values[i] = _ctk_css_value_ref (values[(i - 1) >> 1]);
 
   return TRUE;
 }
@@ -268,30 +268,30 @@ parse_border_image (GtkCssShorthandProperty  *shorthand,
   do
     {
       if (values[0] == NULL &&
-          (_gtk_css_parser_has_prefix (parser, "none") ||
-           _gtk_css_image_can_parse (parser)))
+          (_ctk_css_parser_has_prefix (parser, "none") ||
+           _ctk_css_image_can_parse (parser)))
         {
           GtkCssImage *image;
 
-          if (_gtk_css_parser_try (parser, "none", TRUE))
+          if (_ctk_css_parser_try (parser, "none", TRUE))
             image = NULL;
           else
             {
-              image = _gtk_css_image_new_parse (parser);
+              image = _ctk_css_image_new_parse (parser);
               if (image == NULL)
                 return FALSE;
             }
 
-          values[0] = _gtk_css_image_value_new (image);
+          values[0] = _ctk_css_image_value_new (image);
         }
       else if (values[3] == NULL &&
-               (values[3] = _gtk_css_border_repeat_value_try_parse (parser)))
+               (values[3] = _ctk_css_border_repeat_value_try_parse (parser)))
         {
           /* please move along */
         }
       else if (values[1] == NULL)
         {
-          values[1] = _gtk_css_border_value_parse (parser,
+          values[1] = _ctk_css_border_value_parse (parser,
                                                    GTK_CSS_PARSE_PERCENT
                                                    | GTK_CSS_PARSE_NUMBER
                                                    | GTK_CSS_POSITIVE_ONLY,
@@ -300,9 +300,9 @@ parse_border_image (GtkCssShorthandProperty  *shorthand,
           if (values[1] == NULL)
             return FALSE;
 
-          if (_gtk_css_parser_try (parser, "/", TRUE))
+          if (_ctk_css_parser_try (parser, "/", TRUE))
             {
-              values[2] = _gtk_css_border_value_parse (parser,
+              values[2] = _ctk_css_border_value_parse (parser,
                                                        GTK_CSS_PARSE_PERCENT
                                                        | GTK_CSS_PARSE_LENGTH
                                                        | GTK_CSS_PARSE_NUMBER
@@ -335,9 +335,9 @@ parse_border_side (GtkCssShorthandProperty  *shorthand,
   do
   {
     if (values[0] == NULL &&
-        gtk_css_number_value_can_parse (parser))
+        ctk_css_number_value_can_parse (parser))
       {
-        values[0] = _gtk_css_number_value_parse (parser,
+        values[0] = _ctk_css_number_value_parse (parser,
                                                  GTK_CSS_POSITIVE_ONLY
                                                  | GTK_CSS_NUMBER_AS_PIXELS
                                                  | GTK_CSS_PARSE_LENGTH);
@@ -345,13 +345,13 @@ parse_border_side (GtkCssShorthandProperty  *shorthand,
           return FALSE;
       }
     else if (values[1] == NULL &&
-             (values[1] = _gtk_css_border_style_value_try_parse (parser)))
+             (values[1] = _ctk_css_border_style_value_try_parse (parser)))
       {
         /* Nothing to do */
       }
     else if (values[2] == NULL)
       {
-        values[2] = _gtk_css_color_value_parse (parser);
+        values[2] = _ctk_css_color_value_parse (parser);
         if (values[2] == NULL)
           return FALSE;
       }
@@ -377,34 +377,34 @@ parse_border (GtkCssShorthandProperty  *shorthand,
   do
   {
     if (values[0] == NULL &&
-        gtk_css_number_value_can_parse (parser))
+        ctk_css_number_value_can_parse (parser))
       {
-        values[0] = _gtk_css_number_value_parse (parser,
+        values[0] = _ctk_css_number_value_parse (parser,
                                                  GTK_CSS_POSITIVE_ONLY
                                                  | GTK_CSS_NUMBER_AS_PIXELS
                                                  | GTK_CSS_PARSE_LENGTH);
         if (values[0] == NULL)
           return FALSE;
-        values[1] = _gtk_css_value_ref (values[0]);
-        values[2] = _gtk_css_value_ref (values[0]);
-        values[3] = _gtk_css_value_ref (values[0]);
+        values[1] = _ctk_css_value_ref (values[0]);
+        values[2] = _ctk_css_value_ref (values[0]);
+        values[3] = _ctk_css_value_ref (values[0]);
       }
     else if (values[4] == NULL &&
-             (values[4] = _gtk_css_border_style_value_try_parse (parser)))
+             (values[4] = _ctk_css_border_style_value_try_parse (parser)))
       {
-        values[5] = _gtk_css_value_ref (values[4]);
-        values[6] = _gtk_css_value_ref (values[4]);
-        values[7] = _gtk_css_value_ref (values[4]);
+        values[5] = _ctk_css_value_ref (values[4]);
+        values[6] = _ctk_css_value_ref (values[4]);
+        values[7] = _ctk_css_value_ref (values[4]);
       }
     else if (values[8] == NULL)
       {
-        values[8] = _gtk_css_color_value_parse (parser);
+        values[8] = _ctk_css_color_value_parse (parser);
         if (values[8] == NULL)
           return FALSE;
 
-        values[9] = _gtk_css_value_ref (values[8]);
-        values[10] = _gtk_css_value_ref (values[8]);
-        values[11] = _gtk_css_value_ref (values[8]);
+        values[9] = _ctk_css_value_ref (values[8]);
+        values[10] = _ctk_css_value_ref (values[8]);
+        values[11] = _ctk_css_value_ref (values[8]);
       }
     else
       {
@@ -433,7 +433,7 @@ parse_font_with_pango (GtkCssShorthandProperty  *shorthand,
   guint mask;
   char *str;
 
-  str = _gtk_css_parser_read_value (parser);
+  str = _ctk_css_parser_read_value (parser);
   if (str == NULL)
     return FALSE;
 
@@ -444,27 +444,27 @@ parse_font_with_pango (GtkCssShorthandProperty  *shorthand,
 
   if (mask & PANGO_FONT_MASK_FAMILY)
     {
-      values[0] = _gtk_css_array_value_new (_gtk_css_string_value_new (pango_font_description_get_family (desc)));
+      values[0] = _ctk_css_array_value_new (_ctk_css_string_value_new (pango_font_description_get_family (desc)));
     }
   if (mask & PANGO_FONT_MASK_STYLE)
     {
-      values[1] = _gtk_css_font_style_value_new (pango_font_description_get_style (desc));
+      values[1] = _ctk_css_font_style_value_new (pango_font_description_get_style (desc));
     }
   if (mask & PANGO_FONT_MASK_VARIANT)
     {
-      values[2] = _gtk_css_font_variant_value_new (pango_font_description_get_variant (desc));
+      values[2] = _ctk_css_font_variant_value_new (pango_font_description_get_variant (desc));
     }
   if (mask & PANGO_FONT_MASK_WEIGHT)
     {
-      values[3] = _gtk_css_font_weight_value_new (pango_font_description_get_weight (desc));
+      values[3] = _ctk_css_font_weight_value_new (pango_font_description_get_weight (desc));
     }
   if (mask & PANGO_FONT_MASK_STRETCH)
     {
-      values[4] = _gtk_css_font_stretch_value_new (pango_font_description_get_stretch (desc));
+      values[4] = _ctk_css_font_stretch_value_new (pango_font_description_get_stretch (desc));
     }
   if (mask & PANGO_FONT_MASK_SIZE)
     {
-      values[5] = _gtk_css_number_value_new ((double) pango_font_description_get_size (desc) / PANGO_SCALE, GTK_CSS_PX);
+      values[5] = _ctk_css_number_value_new ((double) pango_font_description_get_size (desc) / PANGO_SCALE, GTK_CSS_PX);
     }
 
   pango_font_description_free (desc);
@@ -485,45 +485,45 @@ parse_font (GtkCssShorthandProperty  *shorthand,
 
       if (values[1] == NULL)
         {
-          values[1] = _gtk_css_font_style_value_try_parse (parser);
+          values[1] = _ctk_css_font_style_value_try_parse (parser);
           parsed_one = parsed_one || values[1] != NULL;
         }
 
       if (values[2] == NULL)
         {
-          values[2] = _gtk_css_font_variant_value_try_parse (parser);
+          values[2] = _ctk_css_font_variant_value_try_parse (parser);
           parsed_one = parsed_one || values[2] != NULL;
         }
 
       if (values[3] == NULL)
         {
-          values[3] = _gtk_css_font_weight_value_try_parse (parser);
+          values[3] = _ctk_css_font_weight_value_try_parse (parser);
           parsed_one = parsed_one || values[3] != NULL;
         }
 
       if (values[4] == NULL)
         {
-          values[4] = _gtk_css_font_stretch_value_try_parse (parser);
+          values[4] = _ctk_css_font_stretch_value_try_parse (parser);
           parsed_one = parsed_one || values[4] != NULL;
         }
     }
   while (parsed_one && !value_is_done_parsing (parser));
 
-  values[5] = gtk_css_font_size_value_parse (parser);
+  values[5] = ctk_css_font_size_value_parse (parser);
 
   if (values[1] == NULL && values[2] == NULL && values[3] == NULL &&
       values[4] == NULL && values[5] == NULL)
     {
       if (parse_font_with_pango (shorthand, values, parser))
         {
-          _gtk_css_parser_error_full (parser,
+          _ctk_css_parser_error_full (parser,
                                       GTK_CSS_PROVIDER_ERROR_DEPRECATED,
                                       "Using Pango syntax for the font: style property is deprecated; please use CSS syntax");
           return TRUE;
         }
     }
 
-  values[0] = gtk_css_font_family_value_parse (parser);
+  values[0] = ctk_css_font_family_value_parse (parser);
 
   return values[0] != NULL && values[5] != NULL;
 }
@@ -539,43 +539,43 @@ parse_one_background (GtkCssShorthandProperty  *shorthand,
     {
       /* the image part */
       if (values[0] == NULL &&
-          (_gtk_css_parser_has_prefix (parser, "none") ||
-           _gtk_css_image_can_parse (parser)))
+          (_ctk_css_parser_has_prefix (parser, "none") ||
+           _ctk_css_image_can_parse (parser)))
         {
           GtkCssImage *image;
 
-          if (_gtk_css_parser_try (parser, "none", TRUE))
+          if (_ctk_css_parser_try (parser, "none", TRUE))
             image = NULL;
           else
             {
-              image = _gtk_css_image_new_parse (parser);
+              image = _ctk_css_image_new_parse (parser);
               if (image == NULL)
                 return FALSE;
             }
 
-          values[0] = _gtk_css_image_value_new (image);
+          values[0] = _ctk_css_image_value_new (image);
         }
       else if (values[1] == NULL &&
-               (value = _gtk_css_position_value_try_parse (parser)))
+               (value = _ctk_css_position_value_try_parse (parser)))
         {
           values[1] = value;
           value = NULL;
 
-          if (_gtk_css_parser_try (parser, "/", TRUE) &&
-              (value = _gtk_css_bg_size_value_parse (parser)))
+          if (_ctk_css_parser_try (parser, "/", TRUE) &&
+              (value = _ctk_css_bg_size_value_parse (parser)))
             {
               values[2] = value;
               value = NULL;
             }
         }
       else if (values[3] == NULL &&
-               (value = _gtk_css_background_repeat_value_try_parse (parser)))
+               (value = _ctk_css_background_repeat_value_try_parse (parser)))
         {
           values[3] = value;
           value = NULL;
         }
       else if ((values[4] == NULL || values[5] == NULL) &&
-               (value = _gtk_css_area_value_try_parse (parser)))
+               (value = _ctk_css_area_value_try_parse (parser)))
         {
           values[4] = value;
 
@@ -588,10 +588,10 @@ parse_one_background (GtkCssShorthandProperty  *shorthand,
         }
       else if (values[6] == NULL)
         {
-          value = _gtk_css_color_value_parse (parser);
+          value = _ctk_css_color_value_parse (parser);
           if (value == NULL)
-            values[6] = _gtk_css_value_ref (_gtk_css_style_property_get_initial_value 
-                                            (_gtk_css_shorthand_property_get_subproperty (shorthand, 6)));
+            values[6] = _ctk_css_value_ref (_ctk_css_style_property_get_initial_value 
+                                            (_ctk_css_shorthand_property_get_subproperty (shorthand, 6)));
           else
             values[6] = value;
 
@@ -609,7 +609,7 @@ parse_one_background (GtkCssShorthandProperty  *shorthand,
   while (!value_is_done_parsing (parser));
 
   if (values[5] != NULL && values[4] == NULL)
-    values[4] = _gtk_css_value_ref (values[5]);
+    values[4] = _ctk_css_value_ref (values[5]);
 
   return TRUE;
 }
@@ -636,7 +636,7 @@ parse_background (GtkCssShorthandProperty  *shorthand,
       {
         for (i = 0; i < 6; i++)
           {
-            g_ptr_array_set_free_func (arrays[i], (GDestroyNotify) _gtk_css_value_unref);
+            g_ptr_array_set_free_func (arrays[i], (GDestroyNotify) _ctk_css_value_unref);
             g_ptr_array_unref (arrays[i]);
           }
         return FALSE;
@@ -646,19 +646,19 @@ parse_background (GtkCssShorthandProperty  *shorthand,
         {
           if (step_values[i] == NULL)
             {
-              GtkCssValue *initial = _gtk_css_style_property_get_initial_value (
-                                         _gtk_css_shorthand_property_get_subproperty (shorthand, i));
-              step_values[i] = _gtk_css_value_ref (_gtk_css_array_value_get_nth (initial, 0));
+              GtkCssValue *initial = _ctk_css_style_property_get_initial_value (
+                                         _ctk_css_shorthand_property_get_subproperty (shorthand, i));
+              step_values[i] = _ctk_css_value_ref (_ctk_css_array_value_get_nth (initial, 0));
             }
 
           g_ptr_array_add (arrays[i], step_values[i]);
           step_values[i] = NULL;
         }
-  } while (_gtk_css_parser_try (parser, ",", TRUE));
+  } while (_ctk_css_parser_try (parser, ",", TRUE));
 
   for (i = 0; i < 6; i++)
     {
-      values[i] = _gtk_css_array_value_new_from_array ((GtkCssValue **) arrays[i]->pdata, arrays[i]->len);
+      values[i] = _ctk_css_array_value_new_from_array ((GtkCssValue **) arrays[i]->pdata, arrays[i]->len);
       g_ptr_array_unref (arrays[i]);
     }
 
@@ -676,9 +676,9 @@ parse_one_transition (GtkCssShorthandProperty  *shorthand,
     {
       /* the image part */
       if (values[2] == NULL &&
-          gtk_css_number_value_can_parse (parser) && !_gtk_css_parser_begins_with (parser, '-'))
+          ctk_css_number_value_can_parse (parser) && !_ctk_css_parser_begins_with (parser, '-'))
         {
-          GtkCssValue *number = _gtk_css_number_value_parse (parser, GTK_CSS_PARSE_TIME);
+          GtkCssValue *number = _ctk_css_number_value_parse (parser, GTK_CSS_PARSE_TIME);
 
           if (number == NULL)
             return FALSE;
@@ -689,19 +689,19 @@ parse_one_transition (GtkCssShorthandProperty  *shorthand,
             values[2] = number;
         }
       else if (values[3] == NULL &&
-               _gtk_css_ease_value_can_parse (parser))
+               _ctk_css_ease_value_can_parse (parser))
         {
-          values[3] = _gtk_css_ease_value_parse (parser);
+          values[3] = _ctk_css_ease_value_parse (parser);
 
           if (values[3] == NULL)
             return FALSE;
         }
       else if (values[0] == NULL)
         {
-          values[0] = _gtk_css_ident_value_try_parse (parser);
+          values[0] = _ctk_css_ident_value_try_parse (parser);
           if (values[0] == NULL)
             {
-              _gtk_css_parser_error (parser, "Unknown value for property");
+              _ctk_css_parser_error (parser, "Unknown value for property");
               return FALSE;
             }
 
@@ -740,7 +740,7 @@ parse_transition (GtkCssShorthandProperty  *shorthand,
       {
         for (i = 0; i < 4; i++)
           {
-            g_ptr_array_set_free_func (arrays[i], (GDestroyNotify) _gtk_css_value_unref);
+            g_ptr_array_set_free_func (arrays[i], (GDestroyNotify) _ctk_css_value_unref);
             g_ptr_array_unref (arrays[i]);
           }
         return FALSE;
@@ -750,19 +750,19 @@ parse_transition (GtkCssShorthandProperty  *shorthand,
         {
           if (step_values[i] == NULL)
             {
-              GtkCssValue *initial = _gtk_css_style_property_get_initial_value (
-                                         _gtk_css_shorthand_property_get_subproperty (shorthand, i));
-              step_values[i] = _gtk_css_value_ref (_gtk_css_array_value_get_nth (initial, 0));
+              GtkCssValue *initial = _ctk_css_style_property_get_initial_value (
+                                         _ctk_css_shorthand_property_get_subproperty (shorthand, i));
+              step_values[i] = _ctk_css_value_ref (_ctk_css_array_value_get_nth (initial, 0));
             }
 
           g_ptr_array_add (arrays[i], step_values[i]);
           step_values[i] = NULL;
         }
-  } while (_gtk_css_parser_try (parser, ",", TRUE));
+  } while (_ctk_css_parser_try (parser, ",", TRUE));
 
   for (i = 0; i < 4; i++)
     {
-      values[i] = _gtk_css_array_value_new_from_array ((GtkCssValue **) arrays[i]->pdata, arrays[i]->len);
+      values[i] = _ctk_css_array_value_new_from_array ((GtkCssValue **) arrays[i]->pdata, arrays[i]->len);
       g_ptr_array_unref (arrays[i]);
     }
 
@@ -776,23 +776,23 @@ parse_one_animation (GtkCssShorthandProperty  *shorthand,
 {
   do
     {
-      if (values[1] == NULL && _gtk_css_parser_try (parser, "infinite", TRUE))
+      if (values[1] == NULL && _ctk_css_parser_try (parser, "infinite", TRUE))
         {
-          values[1] = _gtk_css_number_value_new (HUGE_VAL, GTK_CSS_NUMBER);
+          values[1] = _ctk_css_number_value_new (HUGE_VAL, GTK_CSS_NUMBER);
         }
       else if ((values[1] == NULL || values[3] == NULL) &&
-               gtk_css_number_value_can_parse (parser))
+               ctk_css_number_value_can_parse (parser))
         {
           GtkCssValue *value;
           
-          value = _gtk_css_number_value_parse (parser,
+          value = _ctk_css_number_value_parse (parser,
                                                GTK_CSS_POSITIVE_ONLY
                                                | (values[1] == NULL ? GTK_CSS_PARSE_NUMBER : 0)
                                                | (values[3] == NULL ? GTK_CSS_PARSE_TIME : 0));
           if (value == NULL)
             return FALSE;
 
-          if (gtk_css_number_value_get_dimension (value) == GTK_CSS_DIMENSION_NUMBER)
+          if (ctk_css_number_value_get_dimension (value) == GTK_CSS_DIMENSION_NUMBER)
             values[1] = value;
           else if (values[2] == NULL)
             values[2] = value;
@@ -800,25 +800,25 @@ parse_one_animation (GtkCssShorthandProperty  *shorthand,
             values[3] = value;
         }
       else if (values[4] == NULL &&
-               _gtk_css_ease_value_can_parse (parser))
+               _ctk_css_ease_value_can_parse (parser))
         {
-          values[4] = _gtk_css_ease_value_parse (parser);
+          values[4] = _ctk_css_ease_value_parse (parser);
 
           if (values[4] == NULL)
             return FALSE;
         }
       else if (values[5] == NULL &&
-               (values[5] = _gtk_css_direction_value_try_parse (parser)))
+               (values[5] = _ctk_css_direction_value_try_parse (parser)))
         {
           /* nothing to do */
         }
       else if (values[6] == NULL &&
-               (values[6] = _gtk_css_fill_mode_value_try_parse (parser)))
+               (values[6] = _ctk_css_fill_mode_value_try_parse (parser)))
         {
           /* nothing to do */
         }
       else if (values[0] == NULL &&
-               (values[0] = _gtk_css_ident_value_try_parse (parser)))
+               (values[0] = _ctk_css_ident_value_try_parse (parser)))
         {
           /* nothing to do */
           /* keep in mind though that this needs to come last as fill modes, directions
@@ -857,7 +857,7 @@ parse_animation (GtkCssShorthandProperty  *shorthand,
       {
         for (i = 0; i < 7; i++)
           {
-            g_ptr_array_set_free_func (arrays[i], (GDestroyNotify) _gtk_css_value_unref);
+            g_ptr_array_set_free_func (arrays[i], (GDestroyNotify) _ctk_css_value_unref);
             g_ptr_array_unref (arrays[i]);
           }
         return FALSE;
@@ -867,19 +867,19 @@ parse_animation (GtkCssShorthandProperty  *shorthand,
         {
           if (step_values[i] == NULL)
             {
-              GtkCssValue *initial = _gtk_css_style_property_get_initial_value (
-                                         _gtk_css_shorthand_property_get_subproperty (shorthand, i));
-              step_values[i] = _gtk_css_value_ref (_gtk_css_array_value_get_nth (initial, 0));
+              GtkCssValue *initial = _ctk_css_style_property_get_initial_value (
+                                         _ctk_css_shorthand_property_get_subproperty (shorthand, i));
+              step_values[i] = _ctk_css_value_ref (_ctk_css_array_value_get_nth (initial, 0));
             }
 
           g_ptr_array_add (arrays[i], step_values[i]);
           step_values[i] = NULL;
         }
-  } while (_gtk_css_parser_try (parser, ",", TRUE));
+  } while (_ctk_css_parser_try (parser, ",", TRUE));
 
   for (i = 0; i < 7; i++)
     {
-      values[i] = _gtk_css_array_value_new_from_array ((GtkCssValue **) arrays[i]->pdata, arrays[i]->len);
+      values[i] = _ctk_css_array_value_new_from_array ((GtkCssValue **) arrays[i]->pdata, arrays[i]->len);
       g_ptr_array_unref (arrays[i]);
     }
 
@@ -894,20 +894,20 @@ parse_text_decoration (GtkCssShorthandProperty  *shorthand,
   do
   {
     if (values[0] == NULL &&
-        (values[0] = _gtk_css_text_decoration_line_value_try_parse (parser)))
+        (values[0] = _ctk_css_text_decoration_line_value_try_parse (parser)))
       {
         if (values[0] == NULL)
           return FALSE;
       }
     else if (values[1] == NULL &&
-        (values[1] = _gtk_css_text_decoration_style_value_try_parse (parser)))
+        (values[1] = _ctk_css_text_decoration_style_value_try_parse (parser)))
       {
         if (values[1] == NULL)
           return FALSE;
       }
     else if (values[2] == NULL)
       {
-        values[2] = _gtk_css_color_value_parse (parser);
+        values[2] = _ctk_css_color_value_parse (parser);
         if (values[2] == NULL)
           return FALSE;
       }
@@ -929,7 +929,7 @@ parse_all (GtkCssShorthandProperty  *shorthand,
            GtkCssValue             **values,
            GtkCssParser             *parser)
 {
-  _gtk_css_parser_error (parser, "The 'all' property can only be set to 'initial', 'inherit' or 'unset'");
+  _ctk_css_parser_error (parser, "The 'all' property can only be set to 'initial', 'inherit' or 'unset'");
   return FALSE;
 }
 
@@ -947,13 +947,13 @@ unpack_border (GtkCssShorthandProperty *shorthand,
   g_value_init (&v, G_TYPE_INT);
 
   g_value_set_int (&v, border->top);
-  _gtk_style_property_assign (GTK_STYLE_PROPERTY (_gtk_css_shorthand_property_get_subproperty (shorthand, 0)), props, state, &v);
+  _ctk_style_property_assign (GTK_STYLE_PROPERTY (_ctk_css_shorthand_property_get_subproperty (shorthand, 0)), props, state, &v);
   g_value_set_int (&v, border->right);
-  _gtk_style_property_assign (GTK_STYLE_PROPERTY (_gtk_css_shorthand_property_get_subproperty (shorthand, 1)), props, state, &v);
+  _ctk_style_property_assign (GTK_STYLE_PROPERTY (_ctk_css_shorthand_property_get_subproperty (shorthand, 1)), props, state, &v);
   g_value_set_int (&v, border->bottom);
-  _gtk_style_property_assign (GTK_STYLE_PROPERTY (_gtk_css_shorthand_property_get_subproperty (shorthand, 2)), props, state, &v);
+  _ctk_style_property_assign (GTK_STYLE_PROPERTY (_ctk_css_shorthand_property_get_subproperty (shorthand, 2)), props, state, &v);
   g_value_set_int (&v, border->left);
-  _gtk_style_property_assign (GTK_STYLE_PROPERTY (_gtk_css_shorthand_property_get_subproperty (shorthand, 3)), props, state, &v);
+  _ctk_style_property_assign (GTK_STYLE_PROPERTY (_ctk_css_shorthand_property_get_subproperty (shorthand, 3)), props, state, &v);
 
   g_value_unset (&v);
 }
@@ -968,23 +968,23 @@ pack_border (GtkCssShorthandProperty *shorthand,
   GtkBorder border;
   GValue v;
 
-  prop = _gtk_css_shorthand_property_get_subproperty (shorthand, 0);
-  _gtk_style_property_query (GTK_STYLE_PROPERTY (prop), &v, query_func, query_data);
+  prop = _ctk_css_shorthand_property_get_subproperty (shorthand, 0);
+  _ctk_style_property_query (GTK_STYLE_PROPERTY (prop), &v, query_func, query_data);
   border.top = g_value_get_int (&v);
   g_value_unset (&v);
 
-  prop = _gtk_css_shorthand_property_get_subproperty (shorthand, 1);
-  _gtk_style_property_query (GTK_STYLE_PROPERTY (prop), &v, query_func, query_data);
+  prop = _ctk_css_shorthand_property_get_subproperty (shorthand, 1);
+  _ctk_style_property_query (GTK_STYLE_PROPERTY (prop), &v, query_func, query_data);
   border.right = g_value_get_int (&v);
   g_value_unset (&v);
 
-  prop = _gtk_css_shorthand_property_get_subproperty (shorthand, 2);
-  _gtk_style_property_query (GTK_STYLE_PROPERTY (prop), &v, query_func, query_data);
+  prop = _ctk_css_shorthand_property_get_subproperty (shorthand, 2);
+  _ctk_style_property_query (GTK_STYLE_PROPERTY (prop), &v, query_func, query_data);
   border.bottom = g_value_get_int (&v);
   g_value_unset (&v);
 
-  prop = _gtk_css_shorthand_property_get_subproperty (shorthand, 3);
-  _gtk_style_property_query (GTK_STYLE_PROPERTY (prop), &v, query_func, query_data);
+  prop = _ctk_css_shorthand_property_get_subproperty (shorthand, 3);
+  _ctk_style_property_query (GTK_STYLE_PROPERTY (prop), &v, query_func, query_data);
   border.left = g_value_get_int (&v);
   g_value_unset (&v);
 
@@ -1001,16 +1001,16 @@ unpack_border_radius (GtkCssShorthandProperty *shorthand,
   GtkCssValue *css_value;
   guint i;
   
-  css_value = _gtk_css_corner_value_new (_gtk_css_number_value_new (g_value_get_int (value), GTK_CSS_PX),
-                                         _gtk_css_number_value_new (g_value_get_int (value), GTK_CSS_PX));
+  css_value = _ctk_css_corner_value_new (_ctk_css_number_value_new (g_value_get_int (value), GTK_CSS_PX),
+                                         _ctk_css_number_value_new (g_value_get_int (value), GTK_CSS_PX));
 
   for (i = 0; i < 4; i++)
-    _gtk_style_properties_set_property_by_property (props,
-                                                    _gtk_css_shorthand_property_get_subproperty (shorthand, i),
+    _ctk_style_properties_set_property_by_property (props,
+                                                    _ctk_css_shorthand_property_get_subproperty (shorthand, i),
                                                     state,
                                                     css_value);
 
-  _gtk_css_value_unref (css_value);
+  _ctk_css_value_unref (css_value);
 }
 
 static void
@@ -1023,10 +1023,10 @@ pack_border_radius (GtkCssShorthandProperty *shorthand,
   GtkCssValue *v;
   int i = 0;
 
-  prop = GTK_CSS_STYLE_PROPERTY (_gtk_style_property_lookup ("border-top-left-radius"));
-  v = (* query_func) (_gtk_css_style_property_get_id (prop), query_data);
+  prop = GTK_CSS_STYLE_PROPERTY (_ctk_style_property_lookup ("border-top-left-radius"));
+  v = (* query_func) (_ctk_css_style_property_get_id (prop), query_data);
   if (v)
-    i = _gtk_css_corner_value_get_x (v, 100);
+    i = _ctk_css_corner_value_get_x (v, 100);
 
   g_value_init (value, G_TYPE_INT);
   g_value_set_int (value, i);
@@ -1066,8 +1066,8 @@ unpack_font_description (GtkCssShorthandProperty *shorthand,
       g_value_init (&v, G_TYPE_STRV);
       g_value_take_boxed (&v, g_ptr_array_free (strv, FALSE));
 
-      prop = _gtk_style_property_lookup ("font-family");
-      _gtk_style_property_assign (prop, props, state, &v);
+      prop = _ctk_style_property_lookup ("font-family");
+      _ctk_style_property_assign (prop, props, state, &v);
       g_value_unset (&v);
     }
 
@@ -1076,8 +1076,8 @@ unpack_font_description (GtkCssShorthandProperty *shorthand,
       g_value_init (&v, PANGO_TYPE_STYLE);
       g_value_set_enum (&v, pango_font_description_get_style (description));
 
-      prop = _gtk_style_property_lookup ("font-style");
-      _gtk_style_property_assign (prop, props, state, &v);
+      prop = _ctk_style_property_lookup ("font-style");
+      _ctk_style_property_assign (prop, props, state, &v);
       g_value_unset (&v);
     }
 
@@ -1086,8 +1086,8 @@ unpack_font_description (GtkCssShorthandProperty *shorthand,
       g_value_init (&v, PANGO_TYPE_VARIANT);
       g_value_set_enum (&v, pango_font_description_get_variant (description));
 
-      prop = _gtk_style_property_lookup ("font-variant");
-      _gtk_style_property_assign (prop, props, state, &v);
+      prop = _ctk_style_property_lookup ("font-variant");
+      _ctk_style_property_assign (prop, props, state, &v);
       g_value_unset (&v);
     }
 
@@ -1096,8 +1096,8 @@ unpack_font_description (GtkCssShorthandProperty *shorthand,
       g_value_init (&v, PANGO_TYPE_WEIGHT);
       g_value_set_enum (&v, pango_font_description_get_weight (description));
 
-      prop = _gtk_style_property_lookup ("font-weight");
-      _gtk_style_property_assign (prop, props, state, &v);
+      prop = _ctk_style_property_lookup ("font-weight");
+      _ctk_style_property_assign (prop, props, state, &v);
       g_value_unset (&v);
     }
 
@@ -1106,8 +1106,8 @@ unpack_font_description (GtkCssShorthandProperty *shorthand,
       g_value_init (&v, PANGO_TYPE_STRETCH);
       g_value_set_enum (&v, pango_font_description_get_stretch (description));
 
-      prop = _gtk_style_property_lookup ("font-stretch");
-      _gtk_style_property_assign (prop, props, state, &v);
+      prop = _ctk_style_property_lookup ("font-stretch");
+      _ctk_style_property_assign (prop, props, state, &v);
       g_value_unset (&v);
     }
 
@@ -1125,8 +1125,8 @@ unpack_font_description (GtkCssShorthandProperty *shorthand,
           size = size * dpi / 72.0;
         }
       g_value_set_double (&v, size);
-      prop = _gtk_style_property_lookup ("font-size");
-      _gtk_style_property_assign (prop, props, state, &v);
+      prop = _ctk_style_property_lookup ("font-size");
+      _ctk_style_property_assign (prop, props, state, &v);
       g_value_unset (&v);
     }
 }
@@ -1143,44 +1143,44 @@ pack_font_description (GtkCssShorthandProperty *shorthand,
 
   description = pango_font_description_new ();
 
-  v = (* query_func) (_gtk_css_style_property_get_id (GTK_CSS_STYLE_PROPERTY (_gtk_style_property_lookup ("font-family"))), query_data);
+  v = (* query_func) (_ctk_css_style_property_get_id (GTK_CSS_STYLE_PROPERTY (_ctk_style_property_lookup ("font-family"))), query_data);
   if (v)
     {
       int i;
       GString *s = g_string_new ("");
 
-      for (i = 0; i < _gtk_css_array_value_get_n_values (v); i++)
+      for (i = 0; i < _ctk_css_array_value_get_n_values (v); i++)
         {
           if (i > 0)
             g_string_append (s, ",");
-          g_string_append (s, _gtk_css_string_value_get (_gtk_css_array_value_get_nth (v, i)));
+          g_string_append (s, _ctk_css_string_value_get (_ctk_css_array_value_get_nth (v, i)));
         }
 
       pango_font_description_set_family (description, s->str);
       g_string_free (s, TRUE);
     }
 
-  v = (* query_func) (_gtk_css_style_property_get_id (GTK_CSS_STYLE_PROPERTY (_gtk_style_property_lookup ("-gtk-dpi"))), query_data);
-  dpi = _gtk_css_number_value_get (v, 96);
-  v = (* query_func) (_gtk_css_style_property_get_id (GTK_CSS_STYLE_PROPERTY (_gtk_style_property_lookup ("font-size"))), query_data);
+  v = (* query_func) (_ctk_css_style_property_get_id (GTK_CSS_STYLE_PROPERTY (_ctk_style_property_lookup ("-gtk-dpi"))), query_data);
+  dpi = _ctk_css_number_value_get (v, 96);
+  v = (* query_func) (_ctk_css_style_property_get_id (GTK_CSS_STYLE_PROPERTY (_ctk_style_property_lookup ("font-size"))), query_data);
   if (v)
-    pango_font_description_set_size (description, round (_gtk_css_number_value_get (v, 100) * PANGO_SCALE * 72 / dpi));
+    pango_font_description_set_size (description, round (_ctk_css_number_value_get (v, 100) * PANGO_SCALE * 72 / dpi));
 
-  v = (* query_func) (_gtk_css_style_property_get_id (GTK_CSS_STYLE_PROPERTY (_gtk_style_property_lookup ("font-style"))), query_data);
+  v = (* query_func) (_ctk_css_style_property_get_id (GTK_CSS_STYLE_PROPERTY (_ctk_style_property_lookup ("font-style"))), query_data);
   if (v)
-    pango_font_description_set_style (description, _gtk_css_font_style_value_get (v));
+    pango_font_description_set_style (description, _ctk_css_font_style_value_get (v));
 
-  v = (* query_func) (_gtk_css_style_property_get_id (GTK_CSS_STYLE_PROPERTY (_gtk_style_property_lookup ("font-variant"))), query_data);
+  v = (* query_func) (_ctk_css_style_property_get_id (GTK_CSS_STYLE_PROPERTY (_ctk_style_property_lookup ("font-variant"))), query_data);
   if (v)
-    pango_font_description_set_variant (description, _gtk_css_font_variant_value_get (v));
+    pango_font_description_set_variant (description, _ctk_css_font_variant_value_get (v));
 
-  v = (* query_func) (_gtk_css_style_property_get_id (GTK_CSS_STYLE_PROPERTY (_gtk_style_property_lookup ("font-weight"))), query_data);
+  v = (* query_func) (_ctk_css_style_property_get_id (GTK_CSS_STYLE_PROPERTY (_ctk_style_property_lookup ("font-weight"))), query_data);
   if (v)
-    pango_font_description_set_weight (description, _gtk_css_font_weight_value_get (v));
+    pango_font_description_set_weight (description, _ctk_css_font_weight_value_get (v));
 
-  v = (* query_func) (_gtk_css_style_property_get_id (GTK_CSS_STYLE_PROPERTY (_gtk_style_property_lookup ("font-stretch"))), query_data);
+  v = (* query_func) (_ctk_css_style_property_get_id (GTK_CSS_STYLE_PROPERTY (_ctk_style_property_lookup ("font-stretch"))), query_data);
   if (v)
-    pango_font_description_set_stretch (description, _gtk_css_font_stretch_value_get (v));
+    pango_font_description_set_stretch (description, _ctk_css_font_stretch_value_get (v));
 
   g_value_init (value, PANGO_TYPE_FONT_DESCRIPTION);
   g_value_take_boxed (value, description);
@@ -1195,12 +1195,12 @@ unpack_to_everything (GtkCssShorthandProperty *shorthand,
   GtkCssStyleProperty *prop;
   guint i, n;
   
-  n = _gtk_css_shorthand_property_get_n_subproperties (shorthand);
+  n = _ctk_css_shorthand_property_get_n_subproperties (shorthand);
 
   for (i = 0; i < n; i++)
     {
-      prop = _gtk_css_shorthand_property_get_subproperty (shorthand, i);
-      _gtk_style_property_assign (GTK_STYLE_PROPERTY (prop), props, state, value);
+      prop = _ctk_css_shorthand_property_get_subproperty (shorthand, i);
+      _ctk_style_property_assign (GTK_STYLE_PROPERTY (prop), props, state, value);
     }
 }
 
@@ -1217,15 +1217,15 @@ pack_first_element (GtkCssShorthandProperty *shorthand,
    * as a representative.
    * Lesson learned: Don't query the shorthand, query the 
    * real properties instead. */
-  prop = _gtk_css_shorthand_property_get_subproperty (shorthand, 0);
-  _gtk_style_property_query (GTK_STYLE_PROPERTY (prop),
+  prop = _ctk_css_shorthand_property_get_subproperty (shorthand, 0);
+  _ctk_style_property_query (GTK_STYLE_PROPERTY (prop),
                              value,
                              query_func,
                              query_data);
 }
 
 static void
-_gtk_css_shorthand_property_register (const char                        *name,
+_ctk_css_shorthand_property_register (const char                        *name,
                                       GType                              value_type,
                                       const char                       **subproperties,
                                       GtkCssShorthandPropertyParseFunc   parse_func,
@@ -1252,20 +1252,20 @@ get_all_subproperties (void)
   const char **properties;
   guint i, n;
 
-  n = _gtk_css_style_property_get_n_properties ();
+  n = _ctk_css_style_property_get_n_properties ();
   properties = g_new (const char *, n + 1);
   properties[n] = NULL;
 
   for (i = 0; i < n; i++)
     {
-      properties[i] = _gtk_style_property_get_name (GTK_STYLE_PROPERTY (_gtk_css_style_property_lookup_by_id (i)));
+      properties[i] = _ctk_style_property_get_name (GTK_STYLE_PROPERTY (_ctk_css_style_property_lookup_by_id (i)));
     }
 
   return properties;
 }
 
 void
-_gtk_css_shorthand_property_init_properties (void)
+_ctk_css_shorthand_property_init_properties (void)
 {
   /* The order is important here, be careful when changing it */
   const char *font_subproperties[] = { "font-family", "font-style", "font-variant", "font-weight", "font-stretch", "font-size", NULL };
@@ -1297,116 +1297,116 @@ _gtk_css_shorthand_property_init_properties (void)
 
   const char **all_subproperties;
 
-  _gtk_css_shorthand_property_register   ("font",
+  _ctk_css_shorthand_property_register   ("font",
                                           PANGO_TYPE_FONT_DESCRIPTION,
                                           font_subproperties,
                                           parse_font,
                                           unpack_font_description,
                                           pack_font_description);
-  _gtk_css_shorthand_property_register   ("margin",
+  _ctk_css_shorthand_property_register   ("margin",
                                           GTK_TYPE_BORDER,
                                           margin_subproperties,
                                           parse_margin,
                                           unpack_border,
                                           pack_border);
-  _gtk_css_shorthand_property_register   ("padding",
+  _ctk_css_shorthand_property_register   ("padding",
                                           GTK_TYPE_BORDER,
                                           padding_subproperties,
                                           parse_padding,
                                           unpack_border,
                                           pack_border);
-  _gtk_css_shorthand_property_register   ("border-width",
+  _ctk_css_shorthand_property_register   ("border-width",
                                           GTK_TYPE_BORDER,
                                           border_width_subproperties,
                                           parse_border_width,
                                           unpack_border,
                                           pack_border);
-  _gtk_css_shorthand_property_register   ("border-radius",
+  _ctk_css_shorthand_property_register   ("border-radius",
                                           G_TYPE_INT,
                                           border_radius_subproperties,
                                           parse_border_radius,
                                           unpack_border_radius,
                                           pack_border_radius);
-  _gtk_css_shorthand_property_register   ("border-color",
+  _ctk_css_shorthand_property_register   ("border-color",
                                           GDK_TYPE_RGBA,
                                           border_color_subproperties,
                                           parse_border_color,
                                           unpack_to_everything,
                                           pack_first_element);
-  _gtk_css_shorthand_property_register   ("border-style",
+  _ctk_css_shorthand_property_register   ("border-style",
                                           GTK_TYPE_BORDER_STYLE,
                                           border_style_subproperties,
                                           parse_border_style,
                                           unpack_to_everything,
                                           pack_first_element);
-  _gtk_css_shorthand_property_register   ("border-image",
+  _ctk_css_shorthand_property_register   ("border-image",
                                           G_TYPE_NONE,
                                           border_image_subproperties,
                                           parse_border_image,
                                           NULL,
                                           NULL);
-  _gtk_css_shorthand_property_register   ("border-top",
+  _ctk_css_shorthand_property_register   ("border-top",
                                           G_TYPE_NONE,
                                           border_top_subproperties,
                                           parse_border_side,
                                           NULL,
                                           NULL);
-  _gtk_css_shorthand_property_register   ("border-right",
+  _ctk_css_shorthand_property_register   ("border-right",
                                           G_TYPE_NONE,
                                           border_right_subproperties,
                                           parse_border_side,
                                           NULL,
                                           NULL);
-  _gtk_css_shorthand_property_register   ("border-bottom",
+  _ctk_css_shorthand_property_register   ("border-bottom",
                                           G_TYPE_NONE,
                                           border_bottom_subproperties,
                                           parse_border_side,
                                           NULL,
                                           NULL);
-  _gtk_css_shorthand_property_register   ("border-left",
+  _ctk_css_shorthand_property_register   ("border-left",
                                           G_TYPE_NONE,
                                           border_left_subproperties,
                                           parse_border_side,
                                           NULL,
                                           NULL);
-  _gtk_css_shorthand_property_register   ("border",
+  _ctk_css_shorthand_property_register   ("border",
                                           G_TYPE_NONE,
                                           border_subproperties,
                                           parse_border,
                                           NULL,
                                           NULL);
-  _gtk_css_shorthand_property_register   ("-gtk-outline-radius",
+  _ctk_css_shorthand_property_register   ("-gtk-outline-radius",
                                           G_TYPE_INT,
                                           outline_radius_subproperties,
                                           parse_border_radius,
                                           unpack_border_radius,
                                           pack_border_radius);
-  _gtk_style_property_add_alias ("-gtk-outline-radius", "outline-radius");
-  _gtk_css_shorthand_property_register   ("outline",
+  _ctk_style_property_add_alias ("-gtk-outline-radius", "outline-radius");
+  _ctk_css_shorthand_property_register   ("outline",
                                           G_TYPE_NONE,
                                           outline_subproperties,
                                           parse_border_side,
                                           NULL,
                                           NULL);
-  _gtk_css_shorthand_property_register   ("background",
+  _ctk_css_shorthand_property_register   ("background",
                                           G_TYPE_NONE,
                                           background_subproperties,
                                           parse_background,
                                           NULL,
                                           NULL);
-  _gtk_css_shorthand_property_register   ("transition",
+  _ctk_css_shorthand_property_register   ("transition",
                                           G_TYPE_NONE,
                                           transition_subproperties,
                                           parse_transition,
                                           NULL,
                                           NULL);
-  _gtk_css_shorthand_property_register   ("animation",
+  _ctk_css_shorthand_property_register   ("animation",
                                           G_TYPE_NONE,
                                           animation_subproperties,
                                           parse_animation,
                                           NULL,
                                           NULL);
-  _gtk_css_shorthand_property_register   ("text-decoration",
+  _ctk_css_shorthand_property_register   ("text-decoration",
                                           G_TYPE_NONE,
                                           text_decoration_subproperties,
                                           parse_text_decoration,
@@ -1414,7 +1414,7 @@ _gtk_css_shorthand_property_init_properties (void)
                                           NULL);
 
   all_subproperties = get_all_subproperties ();
-  _gtk_css_shorthand_property_register   ("all",
+  _ctk_css_shorthand_property_register   ("all",
                                           G_TYPE_NONE,
                                           all_subproperties,
                                           parse_all,

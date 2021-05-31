@@ -97,7 +97,7 @@ get_toolkit_version (void)
 }
 
 void
-_gtk_accessibility_override_atk_util (void)
+_ctk_accessibility_override_atk_util (void)
 {
   AtkUtilClass *atk_class = ATK_UTIL_CLASS (g_type_class_ref (ATK_TYPE_UTIL));
 
@@ -136,7 +136,7 @@ atk_key_event_from_gdk_event_key (GdkEventKey       *key,
 }
 
 gboolean
-_gtk_accessibility_key_snooper (GtkWidget   *widget,
+_ctk_accessibility_key_snooper (GtkWidget   *widget,
                                 GdkEventKey *event)
 {
   GSList *l;

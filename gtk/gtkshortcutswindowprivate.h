@@ -30,7 +30,7 @@
 
 G_BEGIN_DECLS
 
-void gtk_shortcuts_window_set_window (GtkShortcutsWindow *self,
+void ctk_shortcuts_window_set_window (GtkShortcutsWindow *self,
                                       GtkWindow          *window);
 
 G_END_DECLS

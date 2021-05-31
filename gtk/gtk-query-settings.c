@@ -30,12 +30,12 @@ main (int argc, char **argv)
   int           max_prop_name_length = 0;
   gchar        *pattern = NULL;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
   if (argc > 1)
     pattern = argv[1];
 
-  settings = gtk_settings_get_default ();
+  settings = ctk_settings_get_default ();
   props = g_object_class_list_properties (G_OBJECT_GET_CLASS (settings), &n_properties);
 
   for (i = 0; i < n_properties; i ++)

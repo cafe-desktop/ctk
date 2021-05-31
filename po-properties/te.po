@@ -538,10 +538,10 @@ msgstr "చిహ్నము"
 #: ../gtk/gtkaboutdialog.c:504
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "గురించి పెట్టె కొరకు ఒక చిహ్నము. ఒకవేళ ఇది అమర్చబడకపోతే, ఇది "
-"gtk_window_get_default_icon_list() అప్రమేయాలకు అమర్చబడును"
+"ctk_window_get_default_icon_list() అప్రమేయాలకు అమర్చబడును"
 
 #: ../gtk/gtkaboutdialog.c:519
 msgid "Logo Icon Name"
@@ -3025,9 +3025,9 @@ msgstr "వృద్ది పల్సు అమర్పు"
 #: ../gtk/gtkentry.c:990
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
-"gtk_entry_progress_pulse() ప్రతికాల్‌కు  వృద్ది బౌన్సింగు బ్లాక్‌ను "
+"ctk_entry_progress_pulse() ప్రతికాల్‌కు  వృద్ది బౌన్సింగు బ్లాక్‌ను "
 "కదుల్చుటకు మొత్తం ప్రవేశపు "
 "భిన్నము"
 
@@ -5229,11 +5229,11 @@ msgstr "విలువ"
 
 #: ../gtk/gtkradioaction.c:117
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
 "ఈ చర్య దాని సమూహంయొక్క ప్రస్తుతచర్య అయినప్పుడు "
-"gtk_radio_action_get_current_value() "
+"ctk_radio_action_get_current_value() "
 "ద్వారా తిరిగియివ్వబడిన విలువ."
 
 #: ../gtk/gtkradioaction.c:133 ../gtk/gtkradiobutton.c:163
@@ -7773,8 +7773,8 @@ msgid "No show all"
 msgstr "ప్రదర్శనలేదు"
 
 #: ../gtk/gtkwidget.c:1104
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "gtk_widget_show_all() ఈ విడ్జట్‌ను ప్రభావితం చేయకూడదా"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "ctk_widget_show_all() ఈ విడ్జట్‌ను ప్రభావితం చేయకూడదా"
 
 #: ../gtk/gtkwidget.c:1127
 msgid "Whether this widget has a tooltip"
@@ -8531,9 +8531,9 @@ msgstr "ఉపయోగించడానికి రంగును ప్ర�
 #~ "సత్యము అయినప్పుడు, స్లైడర్ యొక్క రెండు ప్రక్కలపైన వంపుయొక్క బాగములు వేర్వేరు వివరములతో గీయబడతాయి"
 
 #~ msgid ""
-#~ "The maximum number of items to be returned by gtk_recent_manager_get_items"
+#~ "The maximum number of items to be returned by ctk_recent_manager_get_items"
 #~ "()"
-#~ msgstr "gtk_recent_manager_get_items() ద్వారా తిరిగియివ్వబడే అంశములయొక్క గరిష్ఠ సంఖ్య"
+#~ msgstr "ctk_recent_manager_get_items() ద్వారా తిరిగియివ్వబడే అంశములయొక్క గరిష్ఠ సంఖ్య"
 
 #~ msgid "Blinking"
 #~ msgstr "మిణుగురు"

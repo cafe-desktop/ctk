@@ -38,38 +38,38 @@
 G_BEGIN_DECLS
 
 GDK_AVAILABLE_IN_ALL
-void gtk_drag_source_set  (GtkWidget            *widget,
+void ctk_drag_source_set  (GtkWidget            *widget,
 			   GdkModifierType       start_button_mask,
 			   const GtkTargetEntry *targets,
 			   gint                  n_targets,
 			   GdkDragAction         actions);
 
 GDK_AVAILABLE_IN_ALL
-void gtk_drag_source_unset (GtkWidget        *widget);
+void ctk_drag_source_unset (GtkWidget        *widget);
 
 GDK_AVAILABLE_IN_ALL
-GtkTargetList* gtk_drag_source_get_target_list (GtkWidget     *widget);
+GtkTargetList* ctk_drag_source_get_target_list (GtkWidget     *widget);
 GDK_AVAILABLE_IN_ALL
-void           gtk_drag_source_set_target_list (GtkWidget     *widget,
+void           ctk_drag_source_set_target_list (GtkWidget     *widget,
                                                 GtkTargetList *target_list);
 GDK_AVAILABLE_IN_ALL
-void           gtk_drag_source_add_text_targets  (GtkWidget     *widget);
+void           ctk_drag_source_add_text_targets  (GtkWidget     *widget);
 GDK_AVAILABLE_IN_ALL
-void           gtk_drag_source_add_image_targets (GtkWidget    *widget);
+void           ctk_drag_source_add_image_targets (GtkWidget    *widget);
 GDK_AVAILABLE_IN_ALL
-void           gtk_drag_source_add_uri_targets   (GtkWidget    *widget);
+void           ctk_drag_source_add_uri_targets   (GtkWidget    *widget);
 
 GDK_AVAILABLE_IN_ALL
-void gtk_drag_source_set_icon_pixbuf  (GtkWidget       *widget,
+void ctk_drag_source_set_icon_pixbuf  (GtkWidget       *widget,
 				       GdkPixbuf       *pixbuf);
-GDK_DEPRECATED_IN_3_10_FOR(gtk_drag_source_set_icon_name)
-void gtk_drag_source_set_icon_stock   (GtkWidget       *widget,
+GDK_DEPRECATED_IN_3_10_FOR(ctk_drag_source_set_icon_name)
+void ctk_drag_source_set_icon_stock   (GtkWidget       *widget,
 				       const gchar     *stock_id);
 GDK_AVAILABLE_IN_ALL
-void gtk_drag_source_set_icon_name    (GtkWidget       *widget,
+void ctk_drag_source_set_icon_name    (GtkWidget       *widget,
 				       const gchar     *icon_name);
 GDK_AVAILABLE_IN_3_2
-void gtk_drag_source_set_icon_gicon   (GtkWidget       *widget,
+void ctk_drag_source_set_icon_gicon   (GtkWidget       *widget,
 				       GIcon           *icon);
 
 

@@ -82,7 +82,7 @@ for parent in parents:
 # Sort demos by title
 demos = sorted(demos, key=lambda x: x[1])
 
-file_output += "\nDemo gtk_demos[] = {\n"
+file_output += "\nDemo ctk_demos[] = {\n"
 for demo in demos:
     # Do not generate one of these for demos with a parent demo
     if "/" not in demo[1]:

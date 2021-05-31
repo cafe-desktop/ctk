@@ -102,7 +102,7 @@ activate_cb (GtkWidget *menu_item,
 }
 
 /*
- * _gtk_text_util_append_special_char_menuitems
+ * _ctk_text_util_append_special_char_menuitems
  * @menushell: a #GtkMenuShell
  * @callback:  call this when an item is chosen
  * @data: data for callback
@@ -117,7 +117,7 @@ activate_cb (GtkWidget *menu_item,
  * instead of requiring the menu items to be created.
  */
 void
-_gtk_text_util_append_special_char_menuitems (GtkMenuShell              *menushell,
+_ctk_text_util_append_special_char_menuitems (GtkMenuShell              *menushell,
                                               GtkTextUtilCharChosenFunc  func,
                                               gpointer                   data)
 {
@@ -130,7 +130,7 @@ _gtk_text_util_append_special_char_menuitems (GtkMenuShell              *menushe
 
       info = callback_info_new (func, data);
 
-      menuitem = gtk_menu_item_new_with_mnemonic (_(bidi_menu_entries[i].label));
+      menuitem = ctk_menu_item_new_with_mnemonic (_(bidi_menu_entries[i].label));
       g_object_set_data (G_OBJECT (menuitem), I_("gtk-unicode-menu-entry"),
                          (gpointer)&bidi_menu_entries[i]);
 
@@ -138,8 +138,8 @@ _gtk_text_util_append_special_char_menuitems (GtkMenuShell              *menushe
                              G_CALLBACK (activate_cb),
                              info, (GClosureNotify) callback_info_free, 0);
 
-      gtk_widget_show (menuitem);
-      gtk_menu_shell_append (menushell, menuitem);
+      ctk_widget_show (menuitem);
+      ctk_menu_shell_append (menushell, menuitem);
     }
 }
 
@@ -191,7 +191,7 @@ limit_layout_lines (PangoLayout *layout)
 }
 
 /**
- * _gtk_text_util_create_drag_icon:
+ * _ctk_text_util_create_drag_icon:
  * @widget: #GtkWidget to extract the pango context
  * @text: a #gchar to render the icon
  * @len: length of @text, or -1 for NUL-terminated text
@@ -201,7 +201,7 @@ limit_layout_lines (PangoLayout *layout)
  * Returns: a #cairo_surface_t to use as DND icon
  */
 cairo_surface_t *
-_gtk_text_util_create_drag_icon (GtkWidget *widget,
+_ctk_text_util_create_drag_icon (GtkWidget *widget,
                                  gchar     *text,
                                  gsize      len)
 {
@@ -217,7 +217,7 @@ _gtk_text_util_create_drag_icon (GtkWidget *widget,
   g_return_val_if_fail (widget != NULL, NULL);
   g_return_val_if_fail (text != NULL, NULL);
 
-  context = gtk_widget_get_pango_context (widget);
+  context = ctk_widget_get_pango_context (widget);
   layout  = pango_layout_new (context);
 
   pango_layout_set_text (layout, text, len);
@@ -235,14 +235,14 @@ _gtk_text_util_create_drag_icon (GtkWidget *widget,
   pixmap_width  = layout_width  / PANGO_SCALE;
   pixmap_height = layout_height / PANGO_SCALE;
 
-  surface = gdk_window_create_similar_surface (gtk_widget_get_window (widget),
+  surface = gdk_window_create_similar_surface (ctk_widget_get_window (widget),
                                                CAIRO_CONTENT_COLOR_ALPHA,
                                                pixmap_width, pixmap_height);
   cr = cairo_create (surface);
 
-  style_context = gtk_widget_get_style_context (widget);
-  gtk_style_context_get_color (style_context,
-                               gtk_style_context_get_state (style_context),
+  style_context = ctk_widget_get_style_context (widget);
+  ctk_style_context_get_color (style_context,
+                               ctk_style_context_get_state (style_context),
                                &color);
   gdk_cairo_set_source_rgba (cr, &color);
   pango_cairo_show_layout (cr, layout);
@@ -260,12 +260,12 @@ set_attributes_from_style (GtkStyleContext   *context,
   GdkRGBA bg_color, fg_color;
   GtkStateFlags state;
 
-  state = gtk_style_context_get_state (context);
+  state = ctk_style_context_get_state (context);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  gtk_style_context_get_background_color (context, state, &bg_color);
+  ctk_style_context_get_background_color (context, state, &bg_color);
 G_GNUC_END_IGNORE_DEPRECATIONS
-  gtk_style_context_get_color (context, state, &fg_color);
+  ctk_style_context_get_color (context, state, &fg_color);
 
   values->appearance.bg_color.red = CLAMP (bg_color.red * 65535. + 0.5, 0, 65535);
   values->appearance.bg_color.green = CLAMP (bg_color.green * 65535. + 0.5, 0, 65535);
@@ -278,11 +278,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   if (values->font)
     pango_font_description_free (values->font);
 
-  gtk_style_context_get (context, state, "font", &values->font, NULL);
+  ctk_style_context_get (context, state, "font", &values->font, NULL);
 }
 
 cairo_surface_t *
-_gtk_text_util_create_rich_drag_icon (GtkWidget     *widget,
+_ctk_text_util_create_rich_drag_icon (GtkWidget     *widget,
                                       GtkTextBuffer *buffer,
                                       GtkTextIter   *start,
                                       GtkTextIter   *end)
@@ -302,62 +302,62 @@ _gtk_text_util_create_rich_drag_icon (GtkWidget     *widget,
   g_return_val_if_fail (start != NULL, NULL);
   g_return_val_if_fail (end != NULL, NULL);
 
-  new_buffer = gtk_text_buffer_new (gtk_text_buffer_get_tag_table (buffer));
-  gtk_text_buffer_get_start_iter (new_buffer, &iter);
+  new_buffer = ctk_text_buffer_new (ctk_text_buffer_get_tag_table (buffer));
+  ctk_text_buffer_get_start_iter (new_buffer, &iter);
 
-  gtk_text_buffer_insert_range (new_buffer, &iter, start, end);
+  ctk_text_buffer_insert_range (new_buffer, &iter, start, end);
 
-  gtk_text_buffer_get_start_iter (new_buffer, &iter);
+  ctk_text_buffer_get_start_iter (new_buffer, &iter);
 
-  layout = gtk_text_layout_new ();
+  layout = ctk_text_layout_new ();
 
-  ltr_context = gtk_widget_create_pango_context (widget);
+  ltr_context = ctk_widget_create_pango_context (widget);
   pango_context_set_base_dir (ltr_context, PANGO_DIRECTION_LTR);
-  rtl_context = gtk_widget_create_pango_context (widget);
+  rtl_context = ctk_widget_create_pango_context (widget);
   pango_context_set_base_dir (rtl_context, PANGO_DIRECTION_RTL);
 
-  gtk_text_layout_set_contexts (layout, ltr_context, rtl_context);
+  ctk_text_layout_set_contexts (layout, ltr_context, rtl_context);
 
   g_object_unref (ltr_context);
   g_object_unref (rtl_context);
 
-  style = gtk_text_attributes_new ();
+  style = ctk_text_attributes_new ();
 
-  gtk_widget_get_allocation (widget, &allocation);
+  ctk_widget_get_allocation (widget, &allocation);
   layout_width = allocation.width;
 
-  set_attributes_from_style (gtk_widget_get_style_context (widget), style);
+  set_attributes_from_style (ctk_widget_get_style_context (widget), style);
 
   if (GTK_IS_TEXT_VIEW (widget))
     {
       layout_width = layout_width
-        - gtk_text_view_get_border_window_size (GTK_TEXT_VIEW (widget), GTK_TEXT_WINDOW_LEFT)
-        - gtk_text_view_get_border_window_size (GTK_TEXT_VIEW (widget), GTK_TEXT_WINDOW_RIGHT);
+        - ctk_text_view_get_border_window_size (GTK_TEXT_VIEW (widget), GTK_TEXT_WINDOW_LEFT)
+        - ctk_text_view_get_border_window_size (GTK_TEXT_VIEW (widget), GTK_TEXT_WINDOW_RIGHT);
     }
 
-  style->direction = gtk_widget_get_direction (widget);
+  style->direction = ctk_widget_get_direction (widget);
   style->wrap_mode = GTK_WRAP_WORD_CHAR;
 
-  gtk_text_layout_set_default_style (layout, style);
-  gtk_text_attributes_unref (style);
+  ctk_text_layout_set_default_style (layout, style);
+  ctk_text_attributes_unref (style);
 
-  gtk_text_layout_set_buffer (layout, new_buffer);
-  gtk_text_layout_set_cursor_visible (layout, FALSE);
-  gtk_text_layout_set_screen_width (layout, layout_width);
+  ctk_text_layout_set_buffer (layout, new_buffer);
+  ctk_text_layout_set_cursor_visible (layout, FALSE);
+  ctk_text_layout_set_screen_width (layout, layout_width);
 
-  gtk_text_layout_validate (layout, DRAG_ICON_MAX_HEIGHT);
-  gtk_text_layout_get_size (layout, &layout_width, &layout_height);
+  ctk_text_layout_validate (layout, DRAG_ICON_MAX_HEIGHT);
+  ctk_text_layout_get_size (layout, &layout_width, &layout_height);
 
   layout_width = MIN (layout_width, DRAG_ICON_MAX_WIDTH);
   layout_height = MIN (layout_height, DRAG_ICON_MAX_HEIGHT);
 
-  surface = gdk_window_create_similar_surface (gtk_widget_get_window (widget),
+  surface = gdk_window_create_similar_surface (ctk_widget_get_window (widget),
                                                CAIRO_CONTENT_COLOR_ALPHA,
                                                layout_width, layout_height);
 
   cr = cairo_create (surface);
 
-  gtk_text_layout_draw (layout, widget, cr, NULL);
+  ctk_text_layout_draw (layout, widget, cr, NULL);
 
   cairo_destroy (cr);
   g_object_unref (layout);
@@ -386,7 +386,7 @@ layout_get_char_width (PangoLayout *layout)
 }
 
 /*
- * _gtk_text_util_get_block_cursor_location
+ * _ctk_text_util_get_block_cursor_location
  * @layout: a #PangoLayout
  * @index: index at which cursor is located
  * @pos: cursor location
@@ -397,7 +397,7 @@ layout_get_char_width (PangoLayout *layout)
  *     It may not be the case if character at index is invisible.
  */
 gboolean
-_gtk_text_util_get_block_cursor_location (PangoLayout    *layout,
+_ctk_text_util_get_block_cursor_location (PangoLayout    *layout,
 					  gint            index,
 					  PangoRectangle *pos,
 					  gboolean       *at_line_end)

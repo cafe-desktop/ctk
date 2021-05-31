@@ -28,7 +28,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_PLACES_VIEW        (gtk_places_view_get_type ())
+#define GTK_TYPE_PLACES_VIEW        (ctk_places_view_get_type ())
 #define GTK_PLACES_VIEW(obj)        (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PLACES_VIEW, GtkPlacesView))
 #define GTK_PLACES_VIEW_CLASS(klass)(G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_PLACES_VIEW, GtkPlacesViewClass))
 #define GTK_IS_PLACES_VIEW(obj)     (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PLACES_VIEW))
@@ -62,24 +62,24 @@ struct _GtkPlacesView
   GtkBox parent_instance;
 };
 
-GType              gtk_places_view_get_type                      (void) G_GNUC_CONST;
+GType              ctk_places_view_get_type                      (void) G_GNUC_CONST;
 
-GtkPlacesOpenFlags gtk_places_view_get_open_flags                (GtkPlacesView      *view);
-void               gtk_places_view_set_open_flags                (GtkPlacesView      *view,
+GtkPlacesOpenFlags ctk_places_view_get_open_flags                (GtkPlacesView      *view);
+void               ctk_places_view_set_open_flags                (GtkPlacesView      *view,
                                                                   GtkPlacesOpenFlags  flags);
 
-const gchar*       gtk_places_view_get_search_query              (GtkPlacesView      *view);
-void               gtk_places_view_set_search_query              (GtkPlacesView      *view,
+const gchar*       ctk_places_view_get_search_query              (GtkPlacesView      *view);
+void               ctk_places_view_set_search_query              (GtkPlacesView      *view,
                                                                   const gchar        *query_text);
 
-gboolean           gtk_places_view_get_local_only                (GtkPlacesView         *view);
+gboolean           ctk_places_view_get_local_only                (GtkPlacesView         *view);
 
-void               gtk_places_view_set_local_only                (GtkPlacesView         *view,
+void               ctk_places_view_set_local_only                (GtkPlacesView         *view,
                                                                   gboolean               local_only);
 
-gboolean           gtk_places_view_get_loading                   (GtkPlacesView         *view);
+gboolean           ctk_places_view_get_loading                   (GtkPlacesView         *view);
 
-GtkWidget *        gtk_places_view_new                           (void);
+GtkWidget *        ctk_places_view_new                           (void);
 
 G_END_DECLS
 

@@ -745,11 +745,11 @@ msgstr "மதிப்பு"
 
 #: ../gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
 "இந்த செயல் அதன் குழுவின் நடப்பு செயலாக உள்ளபோது "
-"gtk_radio_action_get_current_value() ஆல் திருப்பபட்ட மதிப்பு "
+"ctk_radio_action_get_current_value() ஆல் திருப்பபட்ட மதிப்பு "
 
 #: ../gtk/deprecated/gtkradioaction.c:139 ../gtk/gtkradiobutton.c:162
 #: ../gtk/gtkradiomenuitem.c:410 ../gtk/gtkradiotoolbutton.c:80
@@ -1205,11 +1205,11 @@ msgstr "சின்னம்"
 #: ../gtk/gtkaboutdialog.c:546
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "இதனை பற்றிய பெட்டிக்கான சின்னம். இது அமைக்கப்படவில்லை எனில், அதன் "
 "முன்னிருப்பு "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 
 #: ../gtk/gtkaboutdialog.c:560
 msgid "Logo Icon Name"
@@ -3400,9 +3400,9 @@ msgstr "முன்னேற்றம்- துடிப்பு படி"
 #: ../gtk/gtkentry.c:1047
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
-"gtk_entry_progress_pulse() இன் ஒவ்வொரு அழைப்புக்கும் துடிக்கும் முன்னேற்ற "
+"ctk_entry_progress_pulse() இன் ஒவ்வொரு அழைப்புக்கும் துடிக்கும் முன்னேற்ற "
 "துண்டின் "
 "நகர்த்த வேண்டிய  முழு உள்ளீட்டு அகலத்தின் பாகம்."
 
@@ -8400,8 +8400,8 @@ msgid "No show all"
 msgstr "இல்லை அனைத்தையும் காட்டு"
 
 #: ../gtk/gtkwidget.c:1362
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "Whether gtk_widget_show_all() should not affect this widget"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "Whether ctk_widget_show_all() should not affect this widget"
 
 #: ../gtk/gtkwidget.c:1385
 msgid "Whether this widget has a tooltip"
@@ -9245,10 +9245,10 @@ msgstr "பயன்படுத்துவதற்கான வண்ண வ�
 
 #~ msgid ""
 #~ "The maximum number of items to be returned by "
-#~ "gtk_recent_manager_get_items()"
+#~ "ctk_recent_manager_get_items()"
 #~ msgstr ""
 #~ "The maximum number of items to be returned by "
-#~ "gtk_recent_manager_get_items()"
+#~ "ctk_recent_manager_get_items()"
 
 #~ msgid "Blinking"
 #~ msgstr "சிமிட்டுதல்"

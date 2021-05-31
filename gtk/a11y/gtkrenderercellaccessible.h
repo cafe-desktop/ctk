@@ -27,7 +27,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_RENDERER_CELL_ACCESSIBLE            (gtk_renderer_cell_accessible_get_type ())
+#define GTK_TYPE_RENDERER_CELL_ACCESSIBLE            (ctk_renderer_cell_accessible_get_type ())
 #define GTK_RENDERER_CELL_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_RENDERER_CELL_ACCESSIBLE, GtkRendererCellAccessible))
 #define GTK_RENDERER_CELL_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_RENDERER_CELL_ACCESSIBLE, GtkRendererCellAccessibleClass))
 #define GTK_IS_RENDERER_CELL_ACCESSIBLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_RENDERER_CELL_ACCESSIBLE))
@@ -51,10 +51,10 @@ struct _GtkRendererCellAccessibleClass
 };
 
 GDK_AVAILABLE_IN_ALL
-GType      gtk_renderer_cell_accessible_get_type     (void);
+GType      ctk_renderer_cell_accessible_get_type     (void);
 
 GDK_AVAILABLE_IN_ALL
-AtkObject *gtk_renderer_cell_accessible_new          (GtkCellRenderer * renderer);
+AtkObject *ctk_renderer_cell_accessible_new          (GtkCellRenderer * renderer);
 
 G_END_DECLS
 

@@ -16,10 +16,10 @@ get_test_icontheme (gboolean force_reload)
   if (icon_theme)
     return icon_theme;
 
-  icon_theme = gtk_icon_theme_new ();
-  gtk_icon_theme_set_custom_theme (icon_theme, "icons");
+  icon_theme = ctk_icon_theme_new ();
+  ctk_icon_theme_set_custom_theme (icon_theme, "icons");
   current_dir = g_test_get_dir (G_TEST_DIST);
-  gtk_icon_theme_set_search_path (icon_theme, &current_dir, 1);
+  ctk_icon_theme_set_search_path (icon_theme, &current_dir, 1);
 
   return icon_theme;
 }
@@ -56,7 +56,7 @@ assert_icon_lookup_size (const char         *icon_name,
 {
   GtkIconInfo *info;
 
-  info = gtk_icon_theme_lookup_icon (get_test_icontheme (FALSE), icon_name, size, flags);
+  info = ctk_icon_theme_lookup_icon (get_test_icontheme (FALSE), icon_name, size, flags);
   if (info == NULL)
     {
       g_error ("Could not look up an icon for \"%s\" with flags %s at size %d",
@@ -66,17 +66,17 @@ assert_icon_lookup_size (const char         *icon_name,
 
   if (filename)
     {
-      if (!g_str_has_suffix (gtk_icon_info_get_filename (info), filename))
+      if (!g_str_has_suffix (ctk_icon_info_get_filename (info), filename))
         {
           g_error ("Icon for \"%s\" with flags %s at size %d should be \"...%s\" but is \"...%s\"",
                    icon_name, lookup_flags_to_string (flags), size,
-                   filename, gtk_icon_info_get_filename (info) + strlen (g_get_current_dir ()));
+                   filename, ctk_icon_info_get_filename (info) + strlen (g_get_current_dir ()));
           return;
         }
     }
   else
     {
-      g_assert (gtk_icon_info_get_filename (info) == NULL);
+      g_assert (ctk_icon_info_get_filename (info) == NULL);
     }
 
   if (pixbuf_size > 0)
@@ -84,7 +84,7 @@ assert_icon_lookup_size (const char         *icon_name,
       GdkPixbuf *pixbuf;
       GError *error = NULL;
 
-      pixbuf = gtk_icon_info_load_icon (info, &error);
+      pixbuf = ctk_icon_info_load_icon (info, &error);
       g_assert_no_error (error);
       g_assert_cmpint (gdk_pixbuf_get_width (pixbuf), ==, pixbuf_size);
       g_object_unref (pixbuf);
@@ -109,12 +109,12 @@ assert_icon_lookup_fails (const char         *icon_name,
 {
   GtkIconInfo *info;
 
-  info = gtk_icon_theme_lookup_icon (get_test_icontheme (FALSE), icon_name, size, flags);
+  info = ctk_icon_theme_lookup_icon (get_test_icontheme (FALSE), icon_name, size, flags);
 
   if (info != NULL)
     {
       g_error ("Should not find an icon for \"%s\" with flags %s at size %d, but found \"%s\"",
-               icon_name, lookup_flags_to_string (flags), size, gtk_icon_info_get_filename (info) + strlen (g_get_current_dir ()));
+               icon_name, lookup_flags_to_string (flags), size, ctk_icon_info_get_filename (info) + strlen (g_get_current_dir ()));
       g_object_unref (info);
       return;
     }
@@ -171,13 +171,13 @@ assert_lookup_order (const char         *icon_name,
   g_assert_not_reached ();
 #endif
 
-  debug_flags = gtk_get_debug_flags ();
-  gtk_set_debug_flags (debug_flags | GTK_DEBUG_ICONTHEME);
+  debug_flags = ctk_get_debug_flags ();
+  ctk_set_debug_flags (debug_flags | GTK_DEBUG_ICONTHEME);
   g_log_set_writer_func (log_writer, NULL, NULL);
 
   g_assert (lookups == NULL);
 
-  info = gtk_icon_theme_lookup_icon (get_test_icontheme (FALSE), icon_name, size, flags);
+  info = ctk_icon_theme_lookup_icon (get_test_icontheme (FALSE), icon_name, size, flags);
   if (info)
     g_object_unref (info);
   
@@ -198,7 +198,7 @@ assert_lookup_order (const char         *icon_name,
   lookups = NULL;
 
   g_log_set_writer_func (g_log_writer_default, NULL, NULL);
-  gtk_set_debug_flags (debug_flags);
+  ctk_set_debug_flags (debug_flags);
 }
 
 #ifdef G_ENABLE_DEBUG
@@ -582,7 +582,7 @@ test_list (void)
   GList *icons;
 
   theme = get_test_icontheme (TRUE);
-  icons = gtk_icon_theme_list_icons (theme, NULL);
+  icons = ctk_icon_theme_list_icons (theme, NULL);
 
   g_assert (g_list_find_custom (icons, "size-test", (GCompareFunc)g_strcmp0));
   g_assert (g_list_find_custom (icons, "simple", (GCompareFunc)g_strcmp0));
@@ -597,18 +597,18 @@ test_list (void)
   g_assert (g_list_find_custom (icons, "everything-symbolic-rtl", (GCompareFunc)g_strcmp0));
   g_assert (g_list_find_custom (icons, "everything-justsymbolic-symbolic", (GCompareFunc)g_strcmp0));
 
-  g_assert (gtk_icon_theme_has_icon (theme, "size-test"));
-  g_assert (gtk_icon_theme_has_icon (theme, "simple"));
-  g_assert (gtk_icon_theme_has_icon (theme, "twosize-fixed"));
-  g_assert (gtk_icon_theme_has_icon (theme, "twosize"));
-  g_assert (gtk_icon_theme_has_icon (theme, "only32-symbolic"));
-  g_assert (gtk_icon_theme_has_icon (theme, "everything"));
-  g_assert (gtk_icon_theme_has_icon (theme, "everything-rtl"));
-  g_assert (gtk_icon_theme_has_icon (theme, "everything-symbolic"));
-  g_assert (gtk_icon_theme_has_icon (theme, "everything-justregular"));
-  g_assert (gtk_icon_theme_has_icon (theme, "everything-justrtl-rtl"));
-  g_assert (gtk_icon_theme_has_icon (theme, "everything-symbolic-rtl"));
-  g_assert (gtk_icon_theme_has_icon (theme, "everything-justsymbolic-symbolic"));
+  g_assert (ctk_icon_theme_has_icon (theme, "size-test"));
+  g_assert (ctk_icon_theme_has_icon (theme, "simple"));
+  g_assert (ctk_icon_theme_has_icon (theme, "twosize-fixed"));
+  g_assert (ctk_icon_theme_has_icon (theme, "twosize"));
+  g_assert (ctk_icon_theme_has_icon (theme, "only32-symbolic"));
+  g_assert (ctk_icon_theme_has_icon (theme, "everything"));
+  g_assert (ctk_icon_theme_has_icon (theme, "everything-rtl"));
+  g_assert (ctk_icon_theme_has_icon (theme, "everything-symbolic"));
+  g_assert (ctk_icon_theme_has_icon (theme, "everything-justregular"));
+  g_assert (ctk_icon_theme_has_icon (theme, "everything-justrtl-rtl"));
+  g_assert (ctk_icon_theme_has_icon (theme, "everything-symbolic-rtl"));
+  g_assert (ctk_icon_theme_has_icon (theme, "everything-justsymbolic-symbolic"));
 
   g_list_free_full (icons, g_free);
 }
@@ -624,7 +624,7 @@ load_icon (GObject      *source,
   GError *error = NULL;
   GdkPixbuf *pixbuf;
 
-  pixbuf = gtk_icon_info_load_icon_finish (info, res, &error);
+  pixbuf = ctk_icon_info_load_icon_finish (info, res, &error);
   g_assert (pixbuf != NULL);
   g_assert_no_error (error);
   g_object_unref (pixbuf);
@@ -642,7 +642,7 @@ load_symbolic (GObject      *source,
   gboolean symbolic;
   GdkPixbuf *pixbuf;
 
-  pixbuf = gtk_icon_info_load_symbolic_finish (info, res, &symbolic, &error);
+  pixbuf = ctk_icon_info_load_symbolic_finish (info, res, &symbolic, &error);
   g_assert (pixbuf != NULL);
   g_assert_no_error (error);
   g_object_unref (pixbuf);
@@ -680,12 +680,12 @@ test_async (void)
   g_idle_add_full (G_PRIORITY_LOW, quit_loop, loop, NULL);
 
   theme = get_test_icontheme (TRUE);
-  info1 = gtk_icon_theme_lookup_icon (theme, "twosize-fixed", 32, 0);
-  info2 = gtk_icon_theme_lookup_icon (theme, "only32-symbolic", 32, 0);
+  info1 = ctk_icon_theme_lookup_icon (theme, "twosize-fixed", 32, 0);
+  info2 = ctk_icon_theme_lookup_icon (theme, "only32-symbolic", 32, 0);
   g_assert (info1);
   g_assert (info2);
-  gtk_icon_info_load_icon_async (info1, NULL, load_icon, NULL);
-  gtk_icon_info_load_symbolic_async (info2, &fg, &red, &green, &blue, NULL, load_symbolic, NULL);
+  ctk_icon_info_load_icon_async (info1, NULL, load_icon, NULL);
+  ctk_icon_info_load_symbolic_async (info2, &fg, &red, &green, &blue, NULL, load_symbolic, NULL);
   g_object_unref (info1);
   g_object_unref (info2);
 
@@ -751,15 +751,15 @@ test_nonsquare_symbolic (void)
   g_assert_cmpint (width, !=, height);
 
   /* now load it through GtkIconTheme */
-  icon_theme = gtk_icon_theme_get_default ();
+  icon_theme = ctk_icon_theme_get_default ();
   file = g_file_new_for_path (path);
   icon = g_file_icon_new (file);
-  info = gtk_icon_theme_lookup_by_gicon_for_scale (icon_theme, icon,
+  info = ctk_icon_theme_lookup_by_gicon_for_scale (icon_theme, icon,
 						   height, 1, 0);
   g_assert_nonnull (info);
 
   g_object_unref (pixbuf);
-  pixbuf = gtk_icon_info_load_symbolic (info, &black, NULL, NULL, NULL,
+  pixbuf = ctk_icon_info_load_symbolic (info, &black, NULL, NULL, NULL,
 					&was_symbolic, &error);
 
   /* we are loaded successfully */
@@ -797,7 +797,7 @@ main (int argc, char *argv[])
 {
   gboolean ignore_warnings = TRUE;
 
-  gtk_test_init (&argc, &argv);
+  ctk_test_init (&argc, &argv);
 
   /* Ignore the one-time warning that the fallback icon theme can’t be found
    * (because we’ve changed the search paths). */

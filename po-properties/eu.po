@@ -766,9 +766,9 @@ msgstr "Balioa"
 
 #: gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
-msgstr "Ekintza hau bere taldeko uneko ekintza denean, gtk_radio_action_get_current_value()-k itzultzen duen balioa."
+msgstr "Ekintza hau bere taldeko uneko ekintza denean, ctk_radio_action_get_current_value()-k itzultzen duen balioa."
 
 #: gtk/deprecated/gtkradioaction.c:139 gtk/gtkradiobutton.c:184
 #: gtk/gtkradiomenuitem.c:424 gtk/gtkradiotoolbutton.c:83
@@ -1223,8 +1223,8 @@ msgstr "Logotipoa"
 #: gtk/gtkaboutdialog.c:552
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
-msgstr "'Honi buruzko' kutxaren logotipoa. Ez bada ezartzen, gtk_window_get_default_icon_list() erabiliko da lehenetsi gisa."
+"ctk_window_get_default_icon_list()"
+msgstr "'Honi buruzko' kutxaren logotipoa. Ez bada ezartzen, ctk_window_get_default_icon_list() erabiliko da lehenetsi gisa."
 
 #: gtk/gtkaboutdialog.c:566
 msgid "Logo Icon Name"
@@ -3406,8 +3406,8 @@ msgstr "Aurrerapenaren pultsuaren urratsa"
 #: gtk/gtkentry.c:1094
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
-msgstr "Sarreraren zabalera osoaren frakzioa progresioaren itzulerako blokea mugitzeko gtk_entry_progress_pulse() funtzioaren dei bakoitzagatik"
+"each call to ctk_entry_progress_pulse()"
+msgstr "Sarreraren zabalera osoaren frakzioa progresioaren itzulerako blokea mugitzeko ctk_entry_progress_pulse() funtzioaren dei bakoitzagatik"
 
 #: gtk/gtkentry.c:1110
 msgid "Show text in the entry when it's empty and unfocused"
@@ -8946,8 +8946,8 @@ msgid "No show all"
 msgstr "Ez erakutsi dena"
 
 #: gtk/gtkwidget.c:1264
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "gtk_widget_show_all()-ek trepeta honi ez dion eragingo ala bai adierazten du"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "ctk_widget_show_all()-ek trepeta honi ez dion eragingo ala bai adierazten du"
 
 #: gtk/gtkwidget.c:1286
 msgid "Whether this widget has a tooltip"

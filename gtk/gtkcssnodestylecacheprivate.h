@@ -25,18 +25,18 @@ G_BEGIN_DECLS
 
 typedef struct _GtkCssNodeStyleCache GtkCssNodeStyleCache;
 
-GtkCssNodeStyleCache *  gtk_css_node_style_cache_new            (GtkCssStyle            *style);
-GtkCssNodeStyleCache *  gtk_css_node_style_cache_ref            (GtkCssNodeStyleCache   *cache);
-void                    gtk_css_node_style_cache_unref          (GtkCssNodeStyleCache   *cache);
+GtkCssNodeStyleCache *  ctk_css_node_style_cache_new            (GtkCssStyle            *style);
+GtkCssNodeStyleCache *  ctk_css_node_style_cache_ref            (GtkCssNodeStyleCache   *cache);
+void                    ctk_css_node_style_cache_unref          (GtkCssNodeStyleCache   *cache);
 
-GtkCssStyle *           gtk_css_node_style_cache_get_style      (GtkCssNodeStyleCache   *cache);
+GtkCssStyle *           ctk_css_node_style_cache_get_style      (GtkCssNodeStyleCache   *cache);
 
-GtkCssNodeStyleCache *  gtk_css_node_style_cache_insert         (GtkCssNodeStyleCache   *parent,
+GtkCssNodeStyleCache *  ctk_css_node_style_cache_insert         (GtkCssNodeStyleCache   *parent,
                                                                  GtkCssNodeDeclaration  *decl,
                                                                  gboolean                is_first,
                                                                  gboolean                is_last,
                                                                  GtkCssStyle            *style);
-GtkCssNodeStyleCache *  gtk_css_node_style_cache_lookup         (GtkCssNodeStyleCache        *parent,
+GtkCssNodeStyleCache *  ctk_css_node_style_cache_lookup         (GtkCssNodeStyleCache        *parent,
                                                                  const GtkCssNodeDeclaration *decl,
                                                                  gboolean                     is_first,
                                                                  gboolean                     is_last);

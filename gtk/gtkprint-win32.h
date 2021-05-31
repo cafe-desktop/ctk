@@ -49,15 +49,15 @@ typedef struct {
 } GtkPrintWin32Devnames;
 
 GDK_AVAILABLE_IN_ALL
-void gtk_print_win32_devnames_free (GtkPrintWin32Devnames *devnames);
+void ctk_print_win32_devnames_free (GtkPrintWin32Devnames *devnames);
 GDK_AVAILABLE_IN_ALL
-GtkPrintWin32Devnames *gtk_print_win32_devnames_from_win32 (HGLOBAL global);
+GtkPrintWin32Devnames *ctk_print_win32_devnames_from_win32 (HGLOBAL global);
 GDK_AVAILABLE_IN_ALL
-GtkPrintWin32Devnames *gtk_print_win32_devnames_from_printer_name (const char *printer);
+GtkPrintWin32Devnames *ctk_print_win32_devnames_from_printer_name (const char *printer);
 GDK_AVAILABLE_IN_ALL
-HGLOBAL gtk_print_win32_devnames_to_win32 (const GtkPrintWin32Devnames *devnames);
+HGLOBAL ctk_print_win32_devnames_to_win32 (const GtkPrintWin32Devnames *devnames);
 GDK_AVAILABLE_IN_ALL
-HGLOBAL gtk_print_win32_devnames_to_win32_from_printer_name (const char *printer);
+HGLOBAL ctk_print_win32_devnames_to_win32_from_printer_name (const char *printer);
 
 G_END_DECLS
 

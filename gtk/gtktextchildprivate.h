@@ -61,7 +61,7 @@ struct _GtkTextPixbuf
   GdkPixbuf *pixbuf;
 };
 
-GtkTextLineSegment *_gtk_pixbuf_segment_new (GdkPixbuf *pixbuf);
+GtkTextLineSegment *_ctk_pixbuf_segment_new (GdkPixbuf *pixbuf);
 
 typedef struct _GtkTextChildBody GtkTextChildBody;
 
@@ -73,15 +73,15 @@ struct _GtkTextChildBody
   GtkTextLine *line;
 };
 
-GtkTextLineSegment *_gtk_widget_segment_new      (GtkTextChildAnchor *anchor);
-void                _gtk_widget_segment_add      (GtkTextLineSegment *widget_segment,
+GtkTextLineSegment *_ctk_widget_segment_new      (GtkTextChildAnchor *anchor);
+void                _ctk_widget_segment_add      (GtkTextLineSegment *widget_segment,
                                                   GtkWidget          *child);
-void                _gtk_widget_segment_remove   (GtkTextLineSegment *widget_segment,
+void                _ctk_widget_segment_remove   (GtkTextLineSegment *widget_segment,
                                                   GtkWidget          *child);
-void                _gtk_widget_segment_ref      (GtkTextLineSegment *widget_segment);
-void                _gtk_widget_segment_unref    (GtkTextLineSegment *widget_segment);
+void                _ctk_widget_segment_ref      (GtkTextLineSegment *widget_segment);
+void                _ctk_widget_segment_unref    (GtkTextLineSegment *widget_segment);
 
-GtkTextLayout*      _gtk_anchored_child_get_layout (GtkWidget *child);
+GtkTextLayout*      _ctk_anchored_child_get_layout (GtkWidget *child);
 
 G_END_DECLS
 

@@ -819,10 +819,10 @@ msgstr "De waarde"
 
 #: gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"De waarde teruggegeven door gtk_radio_action_get_current_value() wanneer "
+"De waarde teruggegeven door ctk_radio_action_get_current_value() wanneer "
 "deze actie de huidige actie van zijn groep is."
 
 #: gtk/deprecated/gtkradioaction.c:139 gtk/gtkradiobutton.c:184
@@ -1296,10 +1296,10 @@ msgstr "Logo"
 #: gtk/gtkaboutdialog.c:552
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Een logo voor het info-dialoogvenster. Als er geen logo is gegeven wordt "
-"standaard gtk_window_het_default_icon_list() gebruikt."
+"standaard ctk_window_het_default_icon_list() gebruikt."
 
 #: gtk/gtkaboutdialog.c:566
 msgid "Logo Icon Name"
@@ -3544,10 +3544,10 @@ msgstr "Voortgang puls-stap"
 #: gtk/gtkentry.c:1094
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "De fractie van de breedte van het totale veld waarmee het kaatsende blok "
-"verplaatst wordt bij elke aanroep naar gtk_entry_progress_pulse()"
+"verplaatst wordt bij elke aanroep naar ctk_entry_progress_pulse()"
 
 #: gtk/gtkentry.c:1110
 msgid "Show text in the entry when it's empty and unfocused"
@@ -9361,8 +9361,8 @@ msgid "No show all"
 msgstr "Geen 'alles tonen'"
 
 #: gtk/gtkwidget.c:1264
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "Of gtk_widget_show_all() wel of geen invloed heeft op dit widget"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "Of ctk_widget_show_all() wel of geen invloed heeft op dit widget"
 
 #: gtk/gtkwidget.c:1286
 msgid "Whether this widget has a tooltip"
@@ -10201,10 +10201,10 @@ msgstr "Titel van het kleurprofiel om te gebruiken"
 
 #~ msgid ""
 #~ "The maximum number of items to be returned by "
-#~ "gtk_recent_manager_get_items()"
+#~ "ctk_recent_manager_get_items()"
 #~ msgstr ""
 #~ "Het maximum aantal items dat gegeven wordt door "
-#~ "gtk_recent_manager_get_items()"
+#~ "ctk_recent_manager_get_items()"
 
 # pulseren/knipperen
 #~ msgid "Blinking"

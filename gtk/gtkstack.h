@@ -31,7 +31,7 @@
 G_BEGIN_DECLS
 
 
-#define GTK_TYPE_STACK (gtk_stack_get_type ())
+#define GTK_TYPE_STACK (ctk_stack_get_type ())
 #define GTK_STACK(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_STACK, GtkStack))
 #define GTK_STACK_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_STACK, GtkStackClass))
 #define GTK_IS_STACK(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_STACK))
@@ -73,68 +73,68 @@ struct _GtkStackClass {
 };
 
 GDK_AVAILABLE_IN_3_10
-GType                  gtk_stack_get_type                (void) G_GNUC_CONST;
+GType                  ctk_stack_get_type                (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_10
-GtkWidget *            gtk_stack_new                     (void);
+GtkWidget *            ctk_stack_new                     (void);
 GDK_AVAILABLE_IN_3_10
-void                   gtk_stack_add_named               (GtkStack               *stack,
+void                   ctk_stack_add_named               (GtkStack               *stack,
                                                           GtkWidget              *child,
                                                           const gchar            *name);
 GDK_AVAILABLE_IN_3_10
-void                   gtk_stack_add_titled              (GtkStack               *stack,
+void                   ctk_stack_add_titled              (GtkStack               *stack,
                                                           GtkWidget              *child,
                                                           const gchar            *name,
                                                           const gchar            *title);
 GDK_AVAILABLE_IN_3_12
-GtkWidget *            gtk_stack_get_child_by_name       (GtkStack               *stack,
+GtkWidget *            ctk_stack_get_child_by_name       (GtkStack               *stack,
                                                           const gchar            *name);
 GDK_AVAILABLE_IN_3_10
-void                   gtk_stack_set_visible_child       (GtkStack               *stack,
+void                   ctk_stack_set_visible_child       (GtkStack               *stack,
                                                           GtkWidget              *child);
 GDK_AVAILABLE_IN_3_10
-GtkWidget *            gtk_stack_get_visible_child       (GtkStack               *stack);
+GtkWidget *            ctk_stack_get_visible_child       (GtkStack               *stack);
 GDK_AVAILABLE_IN_3_10
-void                   gtk_stack_set_visible_child_name  (GtkStack               *stack,
+void                   ctk_stack_set_visible_child_name  (GtkStack               *stack,
                                                           const gchar            *name);
 GDK_AVAILABLE_IN_3_10
-const gchar *          gtk_stack_get_visible_child_name  (GtkStack               *stack);
+const gchar *          ctk_stack_get_visible_child_name  (GtkStack               *stack);
 GDK_AVAILABLE_IN_3_10
-void                   gtk_stack_set_visible_child_full  (GtkStack               *stack,
+void                   ctk_stack_set_visible_child_full  (GtkStack               *stack,
                                                           const gchar            *name,
                                                           GtkStackTransitionType  transition);
 GDK_AVAILABLE_IN_3_10
-void                   gtk_stack_set_homogeneous         (GtkStack               *stack,
+void                   ctk_stack_set_homogeneous         (GtkStack               *stack,
                                                           gboolean                homogeneous);
 GDK_AVAILABLE_IN_3_10
-gboolean               gtk_stack_get_homogeneous         (GtkStack               *stack);
+gboolean               ctk_stack_get_homogeneous         (GtkStack               *stack);
 GDK_AVAILABLE_IN_3_16
-void                   gtk_stack_set_hhomogeneous        (GtkStack               *stack,
+void                   ctk_stack_set_hhomogeneous        (GtkStack               *stack,
                                                           gboolean                hhomogeneous);
 GDK_AVAILABLE_IN_3_16
-gboolean               gtk_stack_get_hhomogeneous        (GtkStack               *stack);
+gboolean               ctk_stack_get_hhomogeneous        (GtkStack               *stack);
 GDK_AVAILABLE_IN_3_16
-void                   gtk_stack_set_vhomogeneous        (GtkStack               *stack,
+void                   ctk_stack_set_vhomogeneous        (GtkStack               *stack,
                                                           gboolean                vhomogeneous);
 GDK_AVAILABLE_IN_3_16
-gboolean               gtk_stack_get_vhomogeneous        (GtkStack               *stack);
+gboolean               ctk_stack_get_vhomogeneous        (GtkStack               *stack);
 GDK_AVAILABLE_IN_3_10
-void                   gtk_stack_set_transition_duration (GtkStack               *stack,
+void                   ctk_stack_set_transition_duration (GtkStack               *stack,
                                                           guint                   duration);
 GDK_AVAILABLE_IN_3_10
-guint                  gtk_stack_get_transition_duration (GtkStack               *stack);
+guint                  ctk_stack_get_transition_duration (GtkStack               *stack);
 GDK_AVAILABLE_IN_3_10
-void                   gtk_stack_set_transition_type     (GtkStack               *stack,
+void                   ctk_stack_set_transition_type     (GtkStack               *stack,
                                                           GtkStackTransitionType  transition);
 GDK_AVAILABLE_IN_3_10
-GtkStackTransitionType gtk_stack_get_transition_type     (GtkStack               *stack);
+GtkStackTransitionType ctk_stack_get_transition_type     (GtkStack               *stack);
 GDK_AVAILABLE_IN_3_12
-gboolean               gtk_stack_get_transition_running  (GtkStack               *stack);
+gboolean               ctk_stack_get_transition_running  (GtkStack               *stack);
 GDK_AVAILABLE_IN_3_18
-void                   gtk_stack_set_interpolate_size    (GtkStack *stack,
+void                   ctk_stack_set_interpolate_size    (GtkStack *stack,
                                                           gboolean  interpolate_size);
 GDK_AVAILABLE_IN_3_18
-gboolean               gtk_stack_get_interpolate_size    (GtkStack *stack);
+gboolean               ctk_stack_get_interpolate_size    (GtkStack *stack);
 G_END_DECLS
 
 #endif

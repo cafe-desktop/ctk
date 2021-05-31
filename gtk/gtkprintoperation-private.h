@@ -100,46 +100,46 @@ typedef void (* GtkPrintOperationPrintFunc) (GtkPrintOperation      *op,
 					     gboolean                do_print,
 					     GtkPrintOperationResult result);
 
-GtkPrintOperationResult _gtk_print_operation_platform_backend_run_dialog             (GtkPrintOperation           *operation,
+GtkPrintOperationResult _ctk_print_operation_platform_backend_run_dialog             (GtkPrintOperation           *operation,
 										      gboolean                     show_dialog,
 										      GtkWindow                   *parent,
 										      gboolean                    *do_print);
-void                    _gtk_print_operation_platform_backend_run_dialog_async       (GtkPrintOperation           *op,
+void                    _ctk_print_operation_platform_backend_run_dialog_async       (GtkPrintOperation           *op,
 										      gboolean                     show_dialog,
 										      GtkWindow                   *parent,
 										      GtkPrintOperationPrintFunc   print_cb);
-void                    _gtk_print_operation_platform_backend_launch_preview         (GtkPrintOperation           *op,
+void                    _ctk_print_operation_platform_backend_launch_preview         (GtkPrintOperation           *op,
 										      cairo_surface_t             *surface,
 										      GtkWindow                   *parent,
 										      const char                  *filename);
-cairo_surface_t *       _gtk_print_operation_platform_backend_create_preview_surface (GtkPrintOperation           *op,
+cairo_surface_t *       _ctk_print_operation_platform_backend_create_preview_surface (GtkPrintOperation           *op,
 										      GtkPageSetup                *page_setup,
 										      gdouble                     *dpi_x,
 										      gdouble                     *dpi_y,
 										      gchar                       **target);
-void                    _gtk_print_operation_platform_backend_resize_preview_surface (GtkPrintOperation           *op,
+void                    _ctk_print_operation_platform_backend_resize_preview_surface (GtkPrintOperation           *op,
 										      GtkPageSetup                *page_setup,
 										      cairo_surface_t             *surface);
-void                    _gtk_print_operation_platform_backend_preview_start_page     (GtkPrintOperation *op,
+void                    _ctk_print_operation_platform_backend_preview_start_page     (GtkPrintOperation *op,
 										      cairo_surface_t *surface,
 										      cairo_t *cr);
-void                    _gtk_print_operation_platform_backend_preview_end_page       (GtkPrintOperation *op,
+void                    _ctk_print_operation_platform_backend_preview_end_page       (GtkPrintOperation *op,
 										      cairo_surface_t *surface,
 										      cairo_t *cr);
 
-void _gtk_print_operation_set_status (GtkPrintOperation *op,
+void _ctk_print_operation_set_status (GtkPrintOperation *op,
 				      GtkPrintStatus     status,
 				      const gchar       *string);
 
 /* GtkPrintContext private functions: */
 
-GtkPrintContext *_gtk_print_context_new                             (GtkPrintOperation *op);
-void             _gtk_print_context_set_page_setup                  (GtkPrintContext   *context,
+GtkPrintContext *_ctk_print_context_new                             (GtkPrintOperation *op);
+void             _ctk_print_context_set_page_setup                  (GtkPrintContext   *context,
 								     GtkPageSetup      *page_setup);
-void             _gtk_print_context_translate_into_margin           (GtkPrintContext   *context);
-void             _gtk_print_context_rotate_according_to_orientation (GtkPrintContext   *context);
-void             _gtk_print_context_reverse_according_to_orientation (GtkPrintContext *context);
-void             _gtk_print_context_set_hard_margins                (GtkPrintContext   *context,
+void             _ctk_print_context_translate_into_margin           (GtkPrintContext   *context);
+void             _ctk_print_context_rotate_according_to_orientation (GtkPrintContext   *context);
+void             _ctk_print_context_reverse_according_to_orientation (GtkPrintContext *context);
+void             _ctk_print_context_set_hard_margins                (GtkPrintContext   *context,
 								     gdouble            top,
 								     gdouble            bottom,
 								     gdouble            left,

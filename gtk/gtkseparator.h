@@ -35,7 +35,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SEPARATOR                  (gtk_separator_get_type ())
+#define GTK_TYPE_SEPARATOR                  (ctk_separator_get_type ())
 #define GTK_SEPARATOR(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SEPARATOR, GtkSeparator))
 #define GTK_SEPARATOR_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SEPARATOR, GtkSeparatorClass))
 #define GTK_IS_SEPARATOR(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SEPARATOR))
@@ -59,17 +59,17 @@ struct _GtkSeparatorClass
   GtkWidgetClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
 GDK_AVAILABLE_IN_ALL
-GType       gtk_separator_get_type (void) G_GNUC_CONST;
+GType       ctk_separator_get_type (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget * gtk_separator_new      (GtkOrientation orientation);
+GtkWidget * ctk_separator_new      (GtkOrientation orientation);
 
 
 G_END_DECLS

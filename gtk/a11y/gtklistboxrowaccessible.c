@@ -22,40 +22,40 @@
 #include "gtk/gtklistbox.h"
 
 
-G_DEFINE_TYPE (GtkListBoxRowAccessible, gtk_list_box_row_accessible, GTK_TYPE_CONTAINER_ACCESSIBLE)
+G_DEFINE_TYPE (GtkListBoxRowAccessible, ctk_list_box_row_accessible, GTK_TYPE_CONTAINER_ACCESSIBLE)
 
 static void
-gtk_list_box_row_accessible_init (GtkListBoxRowAccessible *accessible)
+ctk_list_box_row_accessible_init (GtkListBoxRowAccessible *accessible)
 {
 }
 
 static void
-gtk_list_box_row_accessible_initialize (AtkObject *obj,
+ctk_list_box_row_accessible_initialize (AtkObject *obj,
                                         gpointer   data)
 {
-  ATK_OBJECT_CLASS (gtk_list_box_row_accessible_parent_class)->initialize (obj, data);
+  ATK_OBJECT_CLASS (ctk_list_box_row_accessible_parent_class)->initialize (obj, data);
 
   obj->role = ATK_ROLE_LIST_ITEM;
 }
 
 static AtkStateSet*
-gtk_list_box_row_accessible_ref_state_set (AtkObject *obj)
+ctk_list_box_row_accessible_ref_state_set (AtkObject *obj)
 {
   AtkStateSet *state_set;
   GtkWidget *widget, *parent;
 
-  state_set = ATK_OBJECT_CLASS (gtk_list_box_row_accessible_parent_class)->ref_state_set (obj);
+  state_set = ATK_OBJECT_CLASS (ctk_list_box_row_accessible_parent_class)->ref_state_set (obj);
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
   if (widget != NULL)
     {
-      parent = gtk_widget_get_parent (widget);
+      parent = ctk_widget_get_parent (widget);
       if (parent != NULL && 
           GTK_IS_LIST_BOX (parent) &&
-          gtk_list_box_get_selection_mode (GTK_LIST_BOX (parent)) != GTK_SELECTION_NONE)
+          ctk_list_box_get_selection_mode (GTK_LIST_BOX (parent)) != GTK_SELECTION_NONE)
         atk_state_set_add_state (state_set, ATK_STATE_SELECTABLE);
 
-      if (gtk_list_box_row_is_selected (GTK_LIST_BOX_ROW (widget)))
+      if (ctk_list_box_row_is_selected (GTK_LIST_BOX_ROW (widget)))
         atk_state_set_add_state (state_set, ATK_STATE_SELECTED);
     }
 
@@ -63,10 +63,10 @@ gtk_list_box_row_accessible_ref_state_set (AtkObject *obj)
 }
 
 static void
-gtk_list_box_row_accessible_class_init (GtkListBoxRowAccessibleClass *klass)
+ctk_list_box_row_accessible_class_init (GtkListBoxRowAccessibleClass *klass)
 {
   AtkObjectClass *object_class = ATK_OBJECT_CLASS (klass);
 
-  object_class->initialize = gtk_list_box_row_accessible_initialize;
-  object_class->ref_state_set = gtk_list_box_row_accessible_ref_state_set;
+  object_class->initialize = ctk_list_box_row_accessible_initialize;
+  object_class->ref_state_set = ctk_list_box_row_accessible_ref_state_set;
 }

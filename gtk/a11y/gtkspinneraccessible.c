@@ -27,14 +27,14 @@
 
 static void atk_image_interface_init (AtkImageIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkSpinnerAccessible, gtk_spinner_accessible, GTK_TYPE_WIDGET_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (GtkSpinnerAccessible, ctk_spinner_accessible, GTK_TYPE_WIDGET_ACCESSIBLE,
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_IMAGE, atk_image_interface_init));
 
 static void
-gtk_spinner_accessible_initialize (AtkObject *accessible,
+ctk_spinner_accessible_initialize (AtkObject *accessible,
                                    gpointer   widget)
 {
-  ATK_OBJECT_CLASS (gtk_spinner_accessible_parent_class)->initialize (accessible, widget);
+  ATK_OBJECT_CLASS (ctk_spinner_accessible_parent_class)->initialize (accessible, widget);
 
   atk_object_set_name (accessible, C_("throbbing progress animation widget", "Spinner"));
   atk_object_set_description (accessible, _("Provides visual indication of progress"));
@@ -42,26 +42,26 @@ gtk_spinner_accessible_initialize (AtkObject *accessible,
 }
 
 static void
-gtk_spinner_accessible_class_init (GtkSpinnerAccessibleClass *klass)
+ctk_spinner_accessible_class_init (GtkSpinnerAccessibleClass *klass)
 {
   AtkObjectClass *atk_class = ATK_OBJECT_CLASS (klass);
 
-  atk_class->initialize = gtk_spinner_accessible_initialize;
+  atk_class->initialize = ctk_spinner_accessible_initialize;
 }
 
 static void
-gtk_spinner_accessible_init (GtkSpinnerAccessible *self)
+ctk_spinner_accessible_init (GtkSpinnerAccessible *self)
 {
 }
 
 static void
-gtk_spinner_accessible_image_get_size (AtkImage *image,
+ctk_spinner_accessible_image_get_size (AtkImage *image,
                                        gint     *width,
                                        gint     *height)
 {
   GtkWidget *widget;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (image));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (image));
   if (widget == NULL)
     {
       *width = 0;
@@ -69,12 +69,12 @@ gtk_spinner_accessible_image_get_size (AtkImage *image,
       return;
     }
 
-  *width = gtk_widget_get_allocated_width (widget);
-  *height = gtk_widget_get_allocated_height (widget);
+  *width = ctk_widget_get_allocated_width (widget);
+  *height = ctk_widget_get_allocated_height (widget);
 }
 
 static void
 atk_image_interface_init (AtkImageIface *iface)
 {
-  iface->get_image_size = gtk_spinner_accessible_image_get_size;
+  iface->get_image_size = ctk_spinner_accessible_image_get_size;
 }

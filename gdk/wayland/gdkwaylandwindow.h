@@ -52,7 +52,7 @@ GDK_AVAILABLE_IN_ALL
 void                     gdk_wayland_window_set_use_custom_surface (GdkWindow *window);
 
 GDK_AVAILABLE_IN_3_10
-void                     gdk_wayland_window_set_dbus_properties_libgtk_only (GdkWindow  *window,
+void                     gdk_wayland_window_set_dbus_properties_libctk_only (GdkWindow  *window,
 									     const char *application_id,
 									     const char *app_menu_path,
 									     const char *menubar_path,

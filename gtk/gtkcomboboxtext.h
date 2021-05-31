@@ -27,7 +27,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_COMBO_BOX_TEXT                 (gtk_combo_box_text_get_type ())
+#define GTK_TYPE_COMBO_BOX_TEXT                 (ctk_combo_box_text_get_type ())
 #define GTK_COMBO_BOX_TEXT(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_COMBO_BOX_TEXT, GtkComboBoxText))
 #define GTK_COMBO_BOX_TEXT_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_COMBO_BOX_TEXT, GtkComboBoxTextClass))
 #define GTK_IS_COMBO_BOX_TEXT(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_COMBO_BOX_TEXT))
@@ -51,47 +51,47 @@ struct _GtkComboBoxTextClass
   GtkComboBoxClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_ALL
-GType         gtk_combo_box_text_get_type        (void) G_GNUC_CONST;
+GType         ctk_combo_box_text_get_type        (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget*    gtk_combo_box_text_new             (void);
+GtkWidget*    ctk_combo_box_text_new             (void);
 GDK_AVAILABLE_IN_ALL
-GtkWidget*    gtk_combo_box_text_new_with_entry  (void);
+GtkWidget*    ctk_combo_box_text_new_with_entry  (void);
 GDK_AVAILABLE_IN_ALL
-void          gtk_combo_box_text_append_text     (GtkComboBoxText     *combo_box,
+void          ctk_combo_box_text_append_text     (GtkComboBoxText     *combo_box,
                                                   const gchar         *text);
 GDK_AVAILABLE_IN_ALL
-void          gtk_combo_box_text_insert_text     (GtkComboBoxText     *combo_box,
+void          ctk_combo_box_text_insert_text     (GtkComboBoxText     *combo_box,
                                                   gint                 position,
                                                   const gchar         *text);
 GDK_AVAILABLE_IN_ALL
-void          gtk_combo_box_text_prepend_text    (GtkComboBoxText     *combo_box,
+void          ctk_combo_box_text_prepend_text    (GtkComboBoxText     *combo_box,
                                                   const gchar         *text);
 GDK_AVAILABLE_IN_ALL
-void          gtk_combo_box_text_remove          (GtkComboBoxText     *combo_box,
+void          ctk_combo_box_text_remove          (GtkComboBoxText     *combo_box,
                                                   gint                 position);
 GDK_AVAILABLE_IN_ALL
-void          gtk_combo_box_text_remove_all      (GtkComboBoxText     *combo_box);
+void          ctk_combo_box_text_remove_all      (GtkComboBoxText     *combo_box);
 GDK_AVAILABLE_IN_ALL
-gchar        *gtk_combo_box_text_get_active_text (GtkComboBoxText     *combo_box);
+gchar        *ctk_combo_box_text_get_active_text (GtkComboBoxText     *combo_box);
 
 GDK_AVAILABLE_IN_ALL
-void          gtk_combo_box_text_insert          (GtkComboBoxText     *combo_box,
+void          ctk_combo_box_text_insert          (GtkComboBoxText     *combo_box,
                                                   gint                 position,
                                                   const gchar         *id,
                                                   const gchar         *text);
 GDK_AVAILABLE_IN_ALL
-void          gtk_combo_box_text_append          (GtkComboBoxText     *combo_box,
+void          ctk_combo_box_text_append          (GtkComboBoxText     *combo_box,
                                                   const gchar         *id,
                                                   const gchar         *text);
 GDK_AVAILABLE_IN_ALL
-void          gtk_combo_box_text_prepend         (GtkComboBoxText     *combo_box,
+void          ctk_combo_box_text_prepend         (GtkComboBoxText     *combo_box,
                                                   const gchar         *id,
                                                   const gchar         *text);
 

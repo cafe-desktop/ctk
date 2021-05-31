@@ -36,13 +36,13 @@ strip_attributes_if_no_animation (GtkWidget *widget)
 {
   gboolean enabled;
 
-  g_object_get (gtk_widget_get_settings (widget), "gtk-enable-animations", &enabled, NULL);
+  g_object_get (ctk_widget_get_settings (widget), "gtk-enable-animations", &enabled, NULL);
   if (enabled)
     return;
 
   g_message ("Unsetting text attributes because animation is disabled.");
 
   reftest_inhibit_snapshot ();
-  gtk_label_set_attributes (GTK_LABEL (widget), NULL);
+  ctk_label_set_attributes (GTK_LABEL (widget), NULL);
   g_timeout_add (500, unblock, NULL);
 }

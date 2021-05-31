@@ -30,7 +30,7 @@
  *
  * It supports theming by taking font and color information
  * from a provided #GtkStyleContext; see
- * gtk_numerable_icon_set_style_context().
+ * ctk_numerable_icon_set_style_context().
  *
  * Typical numerable icons:
  * ![](numerableicon.png)
@@ -95,7 +95,7 @@ enum {
 
 static GParamSpec *properties[NUM_PROPERTIES] = { NULL, };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkNumerableIcon, gtk_numerable_icon, G_TYPE_EMBLEMED_ICON)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkNumerableIcon, ctk_numerable_icon, G_TYPE_EMBLEMED_ICON)
 
 static gint
 get_surface_size (cairo_surface_t *surface)
@@ -200,21 +200,21 @@ draw_from_gicon (GtkNumerableIcon *self)
 
   if (self->priv->style != NULL)
     {
-      theme = gtk_css_icon_theme_value_get_icon_theme
-          (_gtk_style_context_peek_property (self->priv->style, GTK_CSS_PROPERTY_ICON_THEME));
+      theme = ctk_css_icon_theme_value_get_icon_theme
+          (_ctk_style_context_peek_property (self->priv->style, GTK_CSS_PROPERTY_ICON_THEME));
     }
   else
     {
-      theme = gtk_icon_theme_get_default ();
+      theme = ctk_icon_theme_get_default ();
     }
 
-  info = gtk_icon_theme_lookup_by_gicon (theme, self->priv->background_icon,
+  info = ctk_icon_theme_lookup_by_gicon (theme, self->priv->background_icon,
                                          self->priv->icon_size,
                                          GTK_ICON_LOOKUP_GENERIC_FALLBACK);
   if (info == NULL)
     return NULL;
 
-  pixbuf = gtk_icon_info_load_icon (info, NULL);
+  pixbuf = ctk_icon_info_load_icon (info, NULL);
   g_object_unref (info);
 
   if (pixbuf == NULL)
@@ -264,7 +264,7 @@ get_pango_layout (GtkNumerableIcon *self)
 
   if (self->priv->style != NULL)
     {
-      screen = gtk_style_context_get_screen (self->priv->style);
+      screen = ctk_style_context_get_screen (self->priv->style);
       context = gdk_pango_context_get_for_screen (screen);
       layout = pango_layout_new (context);
 
@@ -280,16 +280,16 @@ get_pango_layout (GtkNumerableIcon *self)
       GtkWidget *fake;
 
       /* steal gtk text settings from the window */
-      fake = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-      layout = gtk_widget_create_pango_layout (fake, self->priv->rendered_string);
-      gtk_widget_destroy (fake);
+      fake = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+      layout = ctk_widget_create_pango_layout (fake, self->priv->rendered_string);
+      ctk_widget_destroy (fake);
     }
 
   return layout;
 }
 
 static void
-gtk_numerable_icon_ensure_emblem (GtkNumerableIcon *self)
+ctk_numerable_icon_ensure_emblem (GtkNumerableIcon *self)
 {
   cairo_t *cr;
   cairo_surface_t *surface;
@@ -356,7 +356,7 @@ gtk_numerable_icon_ensure_emblem (GtkNumerableIcon *self)
 }
 
 static void
-gtk_numerable_icon_update_properties_from_style (GtkNumerableIcon *self)
+ctk_numerable_icon_update_properties_from_style (GtkNumerableIcon *self)
 {
   GtkStyleContext *style = self->priv->style;
   GtkWidgetPath *path, *saved;
@@ -366,19 +366,19 @@ gtk_numerable_icon_update_properties_from_style (GtkNumerableIcon *self)
 
   /* save an unmodified copy of the original widget path, in order
    * to restore it later */
-  path = gtk_widget_path_copy (gtk_style_context_get_path (style));
-  saved = gtk_widget_path_copy (path);
+  path = ctk_widget_path_copy (ctk_style_context_get_path (style));
+  saved = ctk_widget_path_copy (path);
 
-  if (!gtk_widget_path_is_type (path, GTK_TYPE_NUMERABLE_ICON))
+  if (!ctk_widget_path_is_type (path, GTK_TYPE_NUMERABLE_ICON))
     {
       /* append our GType to the style context to fetch appropriate colors */
-      gtk_widget_path_append_type (path, GTK_TYPE_NUMERABLE_ICON);
-      gtk_style_context_set_path (style, path);
+      ctk_widget_path_append_type (path, GTK_TYPE_NUMERABLE_ICON);
+      ctk_style_context_set_path (style, path);
     }
 
-  gtk_style_context_get_background_color (style, gtk_style_context_get_state (style),
+  ctk_style_context_get_background_color (style, ctk_style_context_get_state (style),
                                           &background);
-  gtk_style_context_get_color (style, gtk_style_context_get_state (style),
+  ctk_style_context_get_color (style, ctk_style_context_get_state (style),
                                &foreground);
 
   if (self->priv->background != NULL)
@@ -391,7 +391,7 @@ gtk_numerable_icon_update_properties_from_style (GtkNumerableIcon *self)
 
   self->priv->foreground = gdk_rgba_copy (&foreground);
 
-  gtk_style_context_get (style, gtk_style_context_get_state (style),
+  ctk_style_context_get (style, ctk_style_context_get_state (style),
                          GTK_STYLE_PROPERTY_BACKGROUND_IMAGE, &pattern,
                          NULL);
 
@@ -403,7 +403,7 @@ gtk_numerable_icon_update_properties_from_style (GtkNumerableIcon *self)
       self->priv->background_image = pattern;
     }
 
-  gtk_style_context_get (style, gtk_style_context_get_state (style),
+  ctk_style_context_get (style, ctk_style_context_get_state (style),
                          GTK_STYLE_PROPERTY_FONT, &font,
                          NULL);
 
@@ -415,32 +415,32 @@ gtk_numerable_icon_update_properties_from_style (GtkNumerableIcon *self)
       self->priv->font = font;
     }
 
-  gtk_numerable_icon_ensure_emblem (self);
+  ctk_numerable_icon_ensure_emblem (self);
 
   /* restore original widget path */
-  gtk_style_context_set_path (style, saved);
+  ctk_style_context_set_path (style, saved);
 
-  gtk_widget_path_free (path);
-  gtk_widget_path_free (saved);
+  ctk_widget_path_free (path);
+  ctk_widget_path_free (saved);
 }
 
 static void
-gtk_numerable_icon_init_style (GtkNumerableIcon *self)
+ctk_numerable_icon_init_style (GtkNumerableIcon *self)
 {
   GtkStyleContext *style = self->priv->style;
 
   if (style == NULL)
     return;
 
-  gtk_numerable_icon_update_properties_from_style (self);
+  ctk_numerable_icon_update_properties_from_style (self);
 
   self->priv->style_changed_id =
     g_signal_connect_swapped (style, "changed",
-                              G_CALLBACK (gtk_numerable_icon_update_properties_from_style), self);
+                              G_CALLBACK (ctk_numerable_icon_update_properties_from_style), self);
 }
 
 static void
-gtk_numerable_icon_ensure_and_replace_label (GtkNumerableIcon *self,
+ctk_numerable_icon_ensure_and_replace_label (GtkNumerableIcon *self,
                                              gint              count,
                                              const gchar      *label)
 {
@@ -508,7 +508,7 @@ real_set_background_icon (GtkNumerableIcon *self,
       if (icon != NULL)
         self->priv->background_icon = g_object_ref (icon);
 
-      gtk_numerable_icon_ensure_emblem (self);
+      ctk_numerable_icon_ensure_emblem (self);
 
       return TRUE;
     }
@@ -517,18 +517,18 @@ real_set_background_icon (GtkNumerableIcon *self,
 }
 
 static void
-gtk_numerable_icon_constructed (GObject *object)
+ctk_numerable_icon_constructed (GObject *object)
 {
   GtkNumerableIcon *self = GTK_NUMERABLE_ICON (object);
 
-  if (G_OBJECT_CLASS (gtk_numerable_icon_parent_class)->constructed != NULL)
-    G_OBJECT_CLASS (gtk_numerable_icon_parent_class)->constructed (object);
+  if (G_OBJECT_CLASS (ctk_numerable_icon_parent_class)->constructed != NULL)
+    G_OBJECT_CLASS (ctk_numerable_icon_parent_class)->constructed (object);
 
-  gtk_numerable_icon_ensure_emblem (self);
+  ctk_numerable_icon_ensure_emblem (self);
 }
 
 static void
-gtk_numerable_icon_finalize (GObject *object)
+ctk_numerable_icon_finalize (GObject *object)
 {
   GtkNumerableIcon *self = GTK_NUMERABLE_ICON (object);
 
@@ -542,11 +542,11 @@ gtk_numerable_icon_finalize (GObject *object)
 
   cairo_pattern_destroy (self->priv->background_image);
 
-  G_OBJECT_CLASS (gtk_numerable_icon_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_numerable_icon_parent_class)->finalize (object);
 }
 
 static void
-gtk_numerable_icon_dispose (GObject *object)
+ctk_numerable_icon_dispose (GObject *object)
 {
   GtkNumerableIcon *self = GTK_NUMERABLE_ICON (object);
 
@@ -560,11 +560,11 @@ gtk_numerable_icon_dispose (GObject *object)
   g_clear_object (&self->priv->style);
   g_clear_object (&self->priv->background_icon);
 
-  G_OBJECT_CLASS (gtk_numerable_icon_parent_class)->dispose (object);
+  G_OBJECT_CLASS (ctk_numerable_icon_parent_class)->dispose (object);
 }
 
 static void
-gtk_numerable_icon_set_property (GObject      *object,
+ctk_numerable_icon_set_property (GObject      *object,
                                  guint         property_id,
                                  const GValue *value,
                                  GParamSpec   *pspec)
@@ -574,19 +574,19 @@ gtk_numerable_icon_set_property (GObject      *object,
   switch (property_id)
     {
     case PROP_COUNT:
-      gtk_numerable_icon_set_count (self, g_value_get_int (value));
+      ctk_numerable_icon_set_count (self, g_value_get_int (value));
       break;
     case PROP_LABEL:
-      gtk_numerable_icon_set_label (self, g_value_get_string (value));
+      ctk_numerable_icon_set_label (self, g_value_get_string (value));
       break;
     case PROP_STYLE:
-      gtk_numerable_icon_set_style_context (self, g_value_get_object (value));
+      ctk_numerable_icon_set_style_context (self, g_value_get_object (value));
       break;
     case PROP_BACKGROUND_ICON:
-      gtk_numerable_icon_set_background_gicon (self, g_value_get_object (value));
+      ctk_numerable_icon_set_background_gicon (self, g_value_get_object (value));
       break;
     case PROP_BACKGROUND_ICON_NAME:
-      gtk_numerable_icon_set_background_icon_name (self, g_value_get_string (value));
+      ctk_numerable_icon_set_background_icon_name (self, g_value_get_string (value));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
@@ -595,7 +595,7 @@ gtk_numerable_icon_set_property (GObject      *object,
 }
 
 static void
-gtk_numerable_icon_get_property (GObject    *object,
+ctk_numerable_icon_get_property (GObject    *object,
                                  guint       property_id,
                                  GValue     *value,
                                  GParamSpec *pspec)
@@ -627,15 +627,15 @@ gtk_numerable_icon_get_property (GObject    *object,
 }
 
 static void
-gtk_numerable_icon_class_init (GtkNumerableIconClass *klass)
+ctk_numerable_icon_class_init (GtkNumerableIconClass *klass)
 {
   GObjectClass *oclass = G_OBJECT_CLASS (klass);
 
-  oclass->get_property = gtk_numerable_icon_get_property;
-  oclass->set_property = gtk_numerable_icon_set_property;
-  oclass->constructed = gtk_numerable_icon_constructed;
-  oclass->dispose = gtk_numerable_icon_dispose;
-  oclass->finalize = gtk_numerable_icon_finalize;
+  oclass->get_property = ctk_numerable_icon_get_property;
+  oclass->set_property = ctk_numerable_icon_set_property;
+  oclass->constructed = ctk_numerable_icon_constructed;
+  oclass->dispose = ctk_numerable_icon_dispose;
+  oclass->finalize = ctk_numerable_icon_finalize;
 
   properties[PROP_COUNT] =
     g_param_spec_int ("count",
@@ -676,12 +676,12 @@ gtk_numerable_icon_class_init (GtkNumerableIconClass *klass)
 }
 
 static void
-gtk_numerable_icon_init (GtkNumerableIcon *self)
+ctk_numerable_icon_init (GtkNumerableIcon *self)
 {
   GdkRGBA bg;
   GdkRGBA fg;
 
-  self->priv = gtk_numerable_icon_get_instance_private (self);
+  self->priv = ctk_numerable_icon_get_instance_private (self);
 
   gdk_rgba_parse (&bg, DEFAULT_BACKGROUND);
   gdk_rgba_parse (&fg, DEFAULT_FOREGROUND);
@@ -694,7 +694,7 @@ gtk_numerable_icon_init (GtkNumerableIcon *self)
 
 /* private */
 void
-_gtk_numerable_icon_set_background_icon_size (GtkNumerableIcon *self,
+_ctk_numerable_icon_set_background_icon_size (GtkNumerableIcon *self,
                                               gint              icon_size)
 {
   if (self->priv->background_icon == NULL)
@@ -703,12 +703,12 @@ _gtk_numerable_icon_set_background_icon_size (GtkNumerableIcon *self,
   if (self->priv->icon_size != icon_size)
     {
       self->priv->icon_size = icon_size;
-      gtk_numerable_icon_ensure_emblem (self);
+      ctk_numerable_icon_ensure_emblem (self);
     }
 }
 
 /**
- * gtk_numerable_icon_get_label:
+ * ctk_numerable_icon_get_label:
  * @self: a #GtkNumerableIcon
  *
  * Returns the currently displayed label of the icon, or %NULL.
@@ -720,7 +720,7 @@ _gtk_numerable_icon_set_background_icon_size (GtkNumerableIcon *self,
  * Deprecated: 3.14
  */
 const gchar *
-gtk_numerable_icon_get_label (GtkNumerableIcon *self)
+ctk_numerable_icon_get_label (GtkNumerableIcon *self)
 {
   g_return_val_if_fail (GTK_IS_NUMERABLE_ICON (self), NULL);
 
@@ -728,7 +728,7 @@ gtk_numerable_icon_get_label (GtkNumerableIcon *self)
 }
 
 /**
- * gtk_numerable_icon_set_label:
+ * ctk_numerable_icon_set_label:
  * @self: a #GtkNumerableIcon
  * @label: (allow-none): a short label, or %NULL
  *
@@ -743,7 +743,7 @@ gtk_numerable_icon_get_label (GtkNumerableIcon *self)
  * If this method is called, and a number was already set on the
  * icon, it will automatically be reset to zero before rendering
  * the label, i.e. the last method called between
- * gtk_numerable_icon_set_label() and gtk_numerable_icon_set_count()
+ * ctk_numerable_icon_set_label() and ctk_numerable_icon_set_count()
  * has always priority.
  *
  * Since: 3.0
@@ -751,22 +751,22 @@ gtk_numerable_icon_get_label (GtkNumerableIcon *self)
  * Deprecated: 3.14
  */
 void
-gtk_numerable_icon_set_label (GtkNumerableIcon *self,
+ctk_numerable_icon_set_label (GtkNumerableIcon *self,
                               const gchar      *label)
 {
   g_return_if_fail (GTK_IS_NUMERABLE_ICON (self));
 
   if (g_strcmp0 (label, self->priv->label) != 0)
     {
-      gtk_numerable_icon_ensure_and_replace_label (self, 0, label);
-      gtk_numerable_icon_ensure_emblem (self);
+      ctk_numerable_icon_ensure_and_replace_label (self, 0, label);
+      ctk_numerable_icon_ensure_emblem (self);
 
       g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_LABEL]);
     }
 }
 
 /**
- * gtk_numerable_icon_get_count:
+ * ctk_numerable_icon_get_count:
  * @self: a #GtkNumerableIcon
  *
  * Returns the value currently displayed by @self.
@@ -778,7 +778,7 @@ gtk_numerable_icon_set_label (GtkNumerableIcon *self,
  * Deprecated: 3.14
  */
 gint
-gtk_numerable_icon_get_count (GtkNumerableIcon *self)
+ctk_numerable_icon_get_count (GtkNumerableIcon *self)
 {
   g_return_val_if_fail (GTK_IS_NUMERABLE_ICON (self), 0);
 
@@ -786,7 +786,7 @@ gtk_numerable_icon_get_count (GtkNumerableIcon *self)
 }
 
 /**
- * gtk_numerable_icon_set_count:
+ * ctk_numerable_icon_set_count:
  * @self: a #GtkNumerableIcon
  * @count: a number between -99 and 99
  *
@@ -796,30 +796,30 @@ gtk_numerable_icon_get_count (GtkNumerableIcon *self)
  * between -99 and 99. Setting a count of zero removes the emblem.
  * If this method is called, and a label was already set on the icon,
  * it will automatically be reset to %NULL before rendering the number,
- * i.e. the last method called between gtk_numerable_icon_set_count()
- * and gtk_numerable_icon_set_label() has always priority.
+ * i.e. the last method called between ctk_numerable_icon_set_count()
+ * and ctk_numerable_icon_set_label() has always priority.
  *
  * Since: 3.0
  *
  * Deprecated: 3.14
  */
 void
-gtk_numerable_icon_set_count (GtkNumerableIcon *self,
+ctk_numerable_icon_set_count (GtkNumerableIcon *self,
                               gint              count)
 {
   g_return_if_fail (GTK_IS_NUMERABLE_ICON (self));
 
   if (count != self->priv->count)
     {
-      gtk_numerable_icon_ensure_and_replace_label (self, count, NULL);
-      gtk_numerable_icon_ensure_emblem (self);
+      ctk_numerable_icon_ensure_and_replace_label (self, count, NULL);
+      ctk_numerable_icon_ensure_emblem (self);
 
       g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_COUNT]);
     }
 }
 
 /**
- * gtk_numerable_icon_get_style_context:
+ * ctk_numerable_icon_get_style_context:
  * @self: a #GtkNumerableIcon
  *
  * Returns the #GtkStyleContext used by the icon for theming,
@@ -834,7 +834,7 @@ gtk_numerable_icon_set_count (GtkNumerableIcon *self,
  * Deprecated: 3.14
  */
 GtkStyleContext *
-gtk_numerable_icon_get_style_context (GtkNumerableIcon *self)
+ctk_numerable_icon_get_style_context (GtkNumerableIcon *self)
 {
   g_return_val_if_fail (GTK_IS_NUMERABLE_ICON (self), NULL);
 
@@ -842,7 +842,7 @@ gtk_numerable_icon_get_style_context (GtkNumerableIcon *self)
 }
 
 /**
- * gtk_numerable_icon_set_style_context:
+ * ctk_numerable_icon_set_style_context:
  * @self: a #GtkNumerableIcon
  * @style: a #GtkStyleContext
  *
@@ -854,7 +854,7 @@ gtk_numerable_icon_get_style_context (GtkNumerableIcon *self)
  * Deprecated: 3.14
  */
 void
-gtk_numerable_icon_set_style_context (GtkNumerableIcon *self,
+ctk_numerable_icon_set_style_context (GtkNumerableIcon *self,
                                       GtkStyleContext  *style)
 {
   g_return_if_fail (GTK_IS_NUMERABLE_ICON (self));
@@ -871,14 +871,14 @@ gtk_numerable_icon_set_style_context (GtkNumerableIcon *self,
 
       self->priv->style = g_object_ref (style);
 
-      gtk_numerable_icon_init_style (self);
+      ctk_numerable_icon_init_style (self);
 
       g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_STYLE]);
     }
 }
 
 /**
- * gtk_numerable_icon_set_background_gicon:
+ * ctk_numerable_icon_set_background_gicon:
  * @self: a #GtkNumerableIcon
  * @icon: (allow-none): a #GIcon, or %NULL
  *
@@ -888,15 +888,15 @@ gtk_numerable_icon_set_style_context (GtkNumerableIcon *self,
  *
  * If this method is called and an icon name was already set as
  * background for the icon, @icon will be used, i.e. the last method
- * called between gtk_numerable_icon_set_background_gicon() and
- * gtk_numerable_icon_set_background_icon_name() has always priority.
+ * called between ctk_numerable_icon_set_background_gicon() and
+ * ctk_numerable_icon_set_background_icon_name() has always priority.
  *
  * Since: 3.0
  *
  * Deprecated: 3.14
  */
 void
-gtk_numerable_icon_set_background_gicon (GtkNumerableIcon *self,
+ctk_numerable_icon_set_background_gicon (GtkNumerableIcon *self,
                                          GIcon            *icon)
 {
   gboolean res;
@@ -912,7 +912,7 @@ gtk_numerable_icon_set_background_gicon (GtkNumerableIcon *self,
 }
 
 /**
- * gtk_numerable_icon_get_background_gicon:
+ * ctk_numerable_icon_get_background_gicon:
  * @self: a #GtkNumerableIcon
  *
  * Returns the #GIcon that was set as the base background image, or
@@ -926,7 +926,7 @@ gtk_numerable_icon_set_background_gicon (GtkNumerableIcon *self,
  * Deprecated: 3.14
  */
 GIcon *
-gtk_numerable_icon_get_background_gicon (GtkNumerableIcon *self)
+ctk_numerable_icon_get_background_gicon (GtkNumerableIcon *self)
 {
   GIcon *retval = NULL;
 
@@ -940,7 +940,7 @@ gtk_numerable_icon_get_background_gicon (GtkNumerableIcon *self)
 }
 
 /**
- * gtk_numerable_icon_set_background_icon_name:
+ * ctk_numerable_icon_set_background_icon_name:
  * @self: a #GtkNumerableIcon
  * @icon_name: (allow-none): an icon name, or %NULL
  *
@@ -951,15 +951,15 @@ gtk_numerable_icon_get_background_gicon (GtkNumerableIcon *self)
  *
  * If this method is called and a #GIcon was already set as
  * background for the icon, @icon_name will be used, i.e. the
- * last method called between gtk_numerable_icon_set_background_icon_name()
- * and gtk_numerable_icon_set_background_gicon() has always priority.
+ * last method called between ctk_numerable_icon_set_background_icon_name()
+ * and ctk_numerable_icon_set_background_gicon() has always priority.
  *
  * Since: 3.0
  *
  * Deprecated: 3.14
  */
 void
-gtk_numerable_icon_set_background_icon_name (GtkNumerableIcon *self,
+ctk_numerable_icon_set_background_icon_name (GtkNumerableIcon *self,
                                              const gchar      *icon_name)
 {
   GIcon *icon = NULL;
@@ -986,7 +986,7 @@ gtk_numerable_icon_set_background_icon_name (GtkNumerableIcon *self,
 }
 
 /**
- * gtk_numerable_icon_get_background_icon_name:
+ * ctk_numerable_icon_get_background_icon_name:
  * @self: a #GtkNumerableIcon
  *
  * Returns the icon name used as the base background image,
@@ -999,7 +999,7 @@ gtk_numerable_icon_set_background_icon_name (GtkNumerableIcon *self,
  * Deprecated: 3.14
  */
 const gchar *
-gtk_numerable_icon_get_background_icon_name (GtkNumerableIcon *self)
+ctk_numerable_icon_get_background_icon_name (GtkNumerableIcon *self)
 {
   g_return_val_if_fail (GTK_IS_NUMERABLE_ICON (self), NULL);
 
@@ -1007,7 +1007,7 @@ gtk_numerable_icon_get_background_icon_name (GtkNumerableIcon *self)
 }
 
 /**
- * gtk_numerable_icon_new:
+ * ctk_numerable_icon_new:
  * @base_icon: a #GIcon to overlay on
  *
  * Creates a new unthemed #GtkNumerableIcon.
@@ -1019,7 +1019,7 @@ gtk_numerable_icon_get_background_icon_name (GtkNumerableIcon *self)
  * Deprecated: 3.14
  */
 GIcon *
-gtk_numerable_icon_new (GIcon *base_icon)
+ctk_numerable_icon_new (GIcon *base_icon)
 {
   g_return_val_if_fail (G_IS_ICON (base_icon), NULL);
 
@@ -1029,13 +1029,13 @@ gtk_numerable_icon_new (GIcon *base_icon)
 }
 
 /**
- * gtk_numerable_icon_new_with_style_context:
+ * ctk_numerable_icon_new_with_style_context:
  * @base_icon: a #GIcon to overlay on
  * @context: a #GtkStyleContext
  *
  * Creates a new #GtkNumerableIcon which will themed according
  * to the passed #GtkStyleContext. This is a convenience constructor
- * that calls gtk_numerable_icon_set_style_context() internally.
+ * that calls ctk_numerable_icon_set_style_context() internally.
  *
  * Returns: (transfer full): a new #GIcon
  *
@@ -1044,7 +1044,7 @@ gtk_numerable_icon_new (GIcon *base_icon)
  * Deprecated: 3.14
  */
 GIcon *
-gtk_numerable_icon_new_with_style_context (GIcon           *base_icon,
+ctk_numerable_icon_new_with_style_context (GIcon           *base_icon,
                                            GtkStyleContext *context)
 {
   g_return_val_if_fail (G_IS_ICON (base_icon), NULL);

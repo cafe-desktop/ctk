@@ -22,7 +22,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_PRINTER_OPTION_WIDGET                  (gtk_printer_option_widget_get_type ())
+#define GTK_TYPE_PRINTER_OPTION_WIDGET                  (ctk_printer_option_widget_get_type ())
 #define GTK_PRINTER_OPTION_WIDGET(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PRINTER_OPTION_WIDGET, GtkPrinterOptionWidget))
 #define GTK_PRINTER_OPTION_WIDGET_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_PRINTER_OPTION_WIDGET, GtkPrinterOptionWidgetClass))
 #define GTK_IS_PRINTER_OPTION_WIDGET(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PRINTER_OPTION_WIDGET))
@@ -48,26 +48,26 @@ struct _GtkPrinterOptionWidgetClass
   void (*changed) (GtkPrinterOptionWidget *widget);
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_ALL
-GType	     gtk_printer_option_widget_get_type           (void) G_GNUC_CONST;
+GType	     ctk_printer_option_widget_get_type           (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget   *gtk_printer_option_widget_new                (GtkPrinterOption       *source);
+GtkWidget   *ctk_printer_option_widget_new                (GtkPrinterOption       *source);
 GDK_AVAILABLE_IN_ALL
-void         gtk_printer_option_widget_set_source         (GtkPrinterOptionWidget *setting,
+void         ctk_printer_option_widget_set_source         (GtkPrinterOptionWidget *setting,
 		 					   GtkPrinterOption       *source);
 GDK_AVAILABLE_IN_ALL
-gboolean     gtk_printer_option_widget_has_external_label (GtkPrinterOptionWidget *setting);
+gboolean     ctk_printer_option_widget_has_external_label (GtkPrinterOptionWidget *setting);
 GDK_AVAILABLE_IN_ALL
-GtkWidget   *gtk_printer_option_widget_get_external_label (GtkPrinterOptionWidget *setting);
+GtkWidget   *ctk_printer_option_widget_get_external_label (GtkPrinterOptionWidget *setting);
 GDK_AVAILABLE_IN_ALL
-const gchar *gtk_printer_option_widget_get_value          (GtkPrinterOptionWidget *setting);
+const gchar *ctk_printer_option_widget_get_value          (GtkPrinterOptionWidget *setting);
 
 G_END_DECLS
 

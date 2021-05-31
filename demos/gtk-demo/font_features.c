@@ -50,25 +50,25 @@ update_display (void)
   GtkTreeIter iter;
   const char *lang;
 
-  text = gtk_entry_get_text (GTK_ENTRY (entry));
+  text = ctk_entry_get_text (GTK_ENTRY (entry));
 
-  font_desc = gtk_font_chooser_get_font (GTK_FONT_CHOOSER (font));
+  font_desc = ctk_font_chooser_get_font (GTK_FONT_CHOOSER (font));
 
   s = g_string_new ("");
 
   has_feature = FALSE;
   for (i = 0; i < num_features; i++)
     {
-      if (!gtk_widget_is_sensitive (toggle[i]))
+      if (!ctk_widget_is_sensitive (toggle[i]))
         continue;
 
       if (GTK_IS_RADIO_BUTTON (toggle[i]))
         {
-          if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (toggle[i])))
+          if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (toggle[i])))
             {
               if (has_feature)
                 g_string_append (s, ", ");
-              g_string_append (s, gtk_buildable_get_name (GTK_BUILDABLE (toggle[i])));
+              g_string_append (s, ctk_buildable_get_name (GTK_BUILDABLE (toggle[i])));
               g_string_append (s, " 1");
               has_feature = TRUE;
             }
@@ -77,8 +77,8 @@ update_display (void)
         {
           if (has_feature)
             g_string_append (s, ", ");
-          g_string_append (s, gtk_buildable_get_name (GTK_BUILDABLE (toggle[i])));
-          if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (toggle[i])))
+          g_string_append (s, ctk_buildable_get_name (GTK_BUILDABLE (toggle[i])));
+          if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (toggle[i])))
             g_string_append (s, " 1");
           else
             g_string_append (s, " 0");
@@ -88,13 +88,13 @@ update_display (void)
 
   font_settings = g_string_free (s, FALSE);
 
-  gtk_label_set_text (GTK_LABEL (settings), font_settings);
+  ctk_label_set_text (GTK_LABEL (settings), font_settings);
 
 
-  if (gtk_combo_box_get_active_iter (GTK_COMBO_BOX (script_lang), &iter))
+  if (ctk_combo_box_get_active_iter (GTK_COMBO_BOX (script_lang), &iter))
     {
-      model = gtk_combo_box_get_model (GTK_COMBO_BOX (script_lang));
-      gtk_tree_model_get (model, &iter,
+      model = ctk_combo_box_get_model (GTK_COMBO_BOX (script_lang));
+      ctk_tree_model_get (model, &iter,
                           3, &lang_tag,
                           -1);
 
@@ -109,7 +109,7 @@ update_display (void)
     g_string_append_printf (s, " lang='%s'", lang);
   g_string_append_printf (s, ">%s</span>", text);
 
-  gtk_label_set_markup (GTK_LABEL (label), s->str);
+  ctk_label_set_markup (GTK_LABEL (label), s->str);
 
   g_string_free (s, TRUE);
 
@@ -124,8 +124,8 @@ get_pango_font (void)
   PangoContext *context;
   PangoFontMap *map;
 
-  desc = gtk_font_chooser_get_font_desc (GTK_FONT_CHOOSER (font));
-  context = gtk_widget_get_pango_context (font);
+  desc = ctk_font_chooser_get_font_desc (GTK_FONT_CHOOSER (font));
+  context = ctk_widget_get_pango_context (font);
   map = pango_context_get_font_map (context);
 
   return pango_font_map_load_font (map, context, desc);
@@ -213,7 +213,7 @@ update_script_combo (void)
   GHashTableIter iter;
   TagPair *pair;
 
-  store = gtk_list_store_new (4, G_TYPE_STRING, G_TYPE_UINT, G_TYPE_UINT, G_TYPE_UINT);
+  store = ctk_list_store_new (4, G_TYPE_STRING, G_TYPE_UINT, G_TYPE_UINT, G_TYPE_UINT);
 
   pango_font = get_pango_font ();
   ft_face = pango_fc_font_lock_face (PANGO_FC_FONT (pango_font)),
@@ -322,7 +322,7 @@ update_script_combo (void)
 
       name = g_strdup_printf ("%s - %s", scriptname, langname);
 
-      gtk_list_store_insert_with_values (store, NULL, -1,
+      ctk_list_store_insert_with_values (store, NULL, -1,
                                          0, name,
                                          1, pair->script_index,
                                          2, pair->lang_index,
@@ -334,8 +334,8 @@ update_script_combo (void)
 
   g_hash_table_destroy (tags);
 
-  gtk_combo_box_set_model (GTK_COMBO_BOX (script_lang), GTK_TREE_MODEL (store));
-  gtk_combo_box_set_active (GTK_COMBO_BOX (script_lang), 0);
+  ctk_combo_box_set_model (GTK_COMBO_BOX (script_lang), GTK_TREE_MODEL (store));
+  ctk_combo_box_set_active (GTK_COMBO_BOX (script_lang), 0);
 }
 
 static void
@@ -350,15 +350,15 @@ update_features (void)
   hb_font_t *hb_font;
 
   for (i = 0; i < num_features; i++)
-    gtk_widget_set_opacity (icon[i], 0);
+    ctk_widget_set_opacity (icon[i], 0);
 
   /* set feature presence checks from the font features */
 
-  if (!gtk_combo_box_get_active_iter (GTK_COMBO_BOX (script_lang), &iter))
+  if (!ctk_combo_box_get_active_iter (GTK_COMBO_BOX (script_lang), &iter))
     return;
 
-  model = gtk_combo_box_get_model (GTK_COMBO_BOX (script_lang));
-  gtk_tree_model_get (model, &iter,
+  model = ctk_combo_box_get_model (GTK_COMBO_BOX (script_lang));
+  ctk_tree_model_get (model, &iter,
                       1, &script_index,
                       2, &lang_index,
                       -1);
@@ -392,7 +392,7 @@ update_features (void)
               for (k = 0; k < num_features; k++)
                 {
                   if (hb_tag_from_string (feature_names[k], -1) == features[j])
-                    gtk_widget_set_opacity (icon[k], 0.5);
+                    ctk_widget_set_opacity (icon[k], 0.5);
                 }
             }
         }
@@ -422,15 +422,15 @@ reset_features (void)
 {
   int i;
 
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (numcasedefault), TRUE);
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (numspacedefault), TRUE);
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (fractiondefault), TRUE);
+  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (numcasedefault), TRUE);
+  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (numspacedefault), TRUE);
+  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (fractiondefault), TRUE);
   for (i = 0; i < num_features; i++)
     {
       if (!GTK_IS_RADIO_BUTTON (toggle[i]))
         {
-          gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (toggle[i]), FALSE);
-          gtk_widget_set_sensitive (toggle[i], FALSE);
+          ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (toggle[i]), FALSE);
+          ctk_widget_set_sensitive (toggle[i], FALSE);
         }
     }
 }
@@ -440,8 +440,8 @@ static char *text;
 static void
 switch_to_entry (void)
 {
-  text = g_strdup (gtk_entry_get_text (GTK_ENTRY (entry)));
-  gtk_stack_set_visible_child_name (GTK_STACK (stack), "entry");
+  text = g_strdup (ctk_entry_get_text (GTK_ENTRY (entry)));
+  ctk_stack_set_visible_child_name (GTK_STACK (stack), "entry");
 }
 
 static void
@@ -449,7 +449,7 @@ switch_to_label (void)
 {
   g_free (text);
   text = NULL;
-  gtk_stack_set_visible_child_name (GTK_STACK (stack), "label");
+  ctk_stack_set_visible_child_name (GTK_STACK (stack), "label");
   update_display ();
 }
 
@@ -458,7 +458,7 @@ entry_key_press (GtkEntry *entry, GdkEventKey *event)
 {
   if (event->keyval == GDK_KEY_Escape)
     {
-      gtk_entry_set_text (GTK_ENTRY (entry), text);
+      ctk_entry_set_text (GTK_ENTRY (entry), text);
       switch_to_label ();
       return GDK_EVENT_STOP;
     }
@@ -476,51 +476,51 @@ do_font_features (GtkWidget *do_widget)
       GtkBuilder *builder;
       int i;
 
-      builder = gtk_builder_new_from_resource ("/font_features/font-features.ui");
+      builder = ctk_builder_new_from_resource ("/font_features/font-features.ui");
 
-      gtk_builder_add_callback_symbol (builder, "update_display", update_display);
-      gtk_builder_add_callback_symbol (builder, "font_changed", font_changed);
-      gtk_builder_add_callback_symbol (builder, "script_changed", script_changed);
-      gtk_builder_add_callback_symbol (builder, "reset", reset_features);
-      gtk_builder_add_callback_symbol (builder, "switch_to_entry", switch_to_entry);
-      gtk_builder_add_callback_symbol (builder, "switch_to_label", switch_to_label);
-      gtk_builder_add_callback_symbol (builder, "entry_key_press", G_CALLBACK (entry_key_press));
-      gtk_builder_connect_signals (builder, NULL);
+      ctk_builder_add_callback_symbol (builder, "update_display", update_display);
+      ctk_builder_add_callback_symbol (builder, "font_changed", font_changed);
+      ctk_builder_add_callback_symbol (builder, "script_changed", script_changed);
+      ctk_builder_add_callback_symbol (builder, "reset", reset_features);
+      ctk_builder_add_callback_symbol (builder, "switch_to_entry", switch_to_entry);
+      ctk_builder_add_callback_symbol (builder, "switch_to_label", switch_to_label);
+      ctk_builder_add_callback_symbol (builder, "entry_key_press", G_CALLBACK (entry_key_press));
+      ctk_builder_connect_signals (builder, NULL);
 
-      window = GTK_WIDGET (gtk_builder_get_object (builder, "window"));
-      label = GTK_WIDGET (gtk_builder_get_object (builder, "label"));
-      settings = GTK_WIDGET (gtk_builder_get_object (builder, "settings"));
-      resetbutton = GTK_WIDGET (gtk_builder_get_object (builder, "reset"));
-      font = GTK_WIDGET (gtk_builder_get_object (builder, "font"));
-      script_lang = GTK_WIDGET (gtk_builder_get_object (builder, "script_lang"));
-      numcasedefault = GTK_WIDGET (gtk_builder_get_object (builder, "numcasedefault"));
-      numspacedefault = GTK_WIDGET (gtk_builder_get_object (builder, "numspacedefault"));
-      fractiondefault = GTK_WIDGET (gtk_builder_get_object (builder, "fractiondefault"));
-      stack = GTK_WIDGET (gtk_builder_get_object (builder, "stack"));
-      entry = GTK_WIDGET (gtk_builder_get_object (builder, "entry"));
+      window = GTK_WIDGET (ctk_builder_get_object (builder, "window"));
+      label = GTK_WIDGET (ctk_builder_get_object (builder, "label"));
+      settings = GTK_WIDGET (ctk_builder_get_object (builder, "settings"));
+      resetbutton = GTK_WIDGET (ctk_builder_get_object (builder, "reset"));
+      font = GTK_WIDGET (ctk_builder_get_object (builder, "font"));
+      script_lang = GTK_WIDGET (ctk_builder_get_object (builder, "script_lang"));
+      numcasedefault = GTK_WIDGET (ctk_builder_get_object (builder, "numcasedefault"));
+      numspacedefault = GTK_WIDGET (ctk_builder_get_object (builder, "numspacedefault"));
+      fractiondefault = GTK_WIDGET (ctk_builder_get_object (builder, "fractiondefault"));
+      stack = GTK_WIDGET (ctk_builder_get_object (builder, "stack"));
+      entry = GTK_WIDGET (ctk_builder_get_object (builder, "entry"));
 
       for (i = 0; i < num_features; i++)
         {
           char *iname;
 
-          toggle[i] = GTK_WIDGET (gtk_builder_get_object (builder, feature_names[i]));
+          toggle[i] = GTK_WIDGET (ctk_builder_get_object (builder, feature_names[i]));
           iname = g_strconcat (feature_names[i], "_pres", NULL);
-          icon[i] = GTK_WIDGET (gtk_builder_get_object (builder, iname));
+          icon[i] = GTK_WIDGET (ctk_builder_get_object (builder, iname));
           g_free (iname);
         }
 
       font_changed ();
 
       g_signal_connect (window, "destroy",
-                        G_CALLBACK (gtk_widget_destroyed), &window);
+                        G_CALLBACK (ctk_widget_destroyed), &window);
 
       g_object_unref (builder);
     }
 
-  if (!gtk_widget_get_visible (window))
-    gtk_window_present (GTK_WINDOW (window));
+  if (!ctk_widget_get_visible (window))
+    ctk_window_present (GTK_WINDOW (window));
   else
-    gtk_widget_destroy (window);
+    ctk_widget_destroy (window);
 
   return window;
 }

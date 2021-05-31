@@ -9,10 +9,10 @@ test_type (GType t)
   if (g_type_is_a (t, GTK_TYPE_WIDGET))
     {
       w = (GtkWidget *)g_object_new (t, NULL);
-      a = gtk_widget_get_accessible (w);
+      a = ctk_widget_get_accessible (w);
 
       g_assert (GTK_IS_ACCESSIBLE (a));
-      g_assert (gtk_accessible_get_widget (GTK_ACCESSIBLE (a)) == w);
+      g_assert (ctk_accessible_get_widget (GTK_ACCESSIBLE (a)) == w);
 
       g_object_unref (w);
     }
@@ -24,9 +24,9 @@ main (int argc, char *argv[])
   const GType *tp;
   guint i, n;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
-  tp = gtk_test_list_all_types (&n);
+  tp = ctk_test_list_all_types (&n);
 
   for (i = 0; i < n; i++)
     test_type (tp[i]);

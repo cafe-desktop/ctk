@@ -26,28 +26,28 @@ struct _GtkRadioMenuItemAccessiblePrivate
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (GtkRadioMenuItemAccessible,
-                            gtk_radio_menu_item_accessible,
+                            ctk_radio_menu_item_accessible,
                             GTK_TYPE_CHECK_MENU_ITEM_ACCESSIBLE)
 
 
 static AtkRelationSet *
-gtk_radio_menu_item_accessible_ref_relation_set (AtkObject *obj)
+ctk_radio_menu_item_accessible_ref_relation_set (AtkObject *obj)
 {
   GtkWidget *widget;
   AtkRelationSet *relation_set;
   GSList *list;
   GtkRadioMenuItemAccessible *radio_menu_item;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
   if (widget == NULL)
     return NULL;
 
   radio_menu_item = GTK_RADIO_MENU_ITEM_ACCESSIBLE (obj);
 
-  relation_set = ATK_OBJECT_CLASS (gtk_radio_menu_item_accessible_parent_class)->ref_relation_set (obj);
+  relation_set = ATK_OBJECT_CLASS (ctk_radio_menu_item_accessible_parent_class)->ref_relation_set (obj);
 
   /* If the radio menu_item's group has changed remove the relation */
-  list = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (widget));
+  list = ctk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (widget));
 
   if (radio_menu_item->priv->old_group != list)
     {
@@ -74,7 +74,7 @@ gtk_radio_menu_item_accessible_ref_relation_set (AtkObject *obj)
             {
               GtkWidget* list_item = list->data;
 
-              accessible_array[i++] = gtk_widget_get_accessible (list_item);
+              accessible_array[i++] = ctk_widget_get_accessible (list_item);
 
               list = list->next;
             }
@@ -93,25 +93,25 @@ gtk_radio_menu_item_accessible_ref_relation_set (AtkObject *obj)
 }
 
 static void
-gtk_radio_menu_item_accessible_initialize (AtkObject *obj,
+ctk_radio_menu_item_accessible_initialize (AtkObject *obj,
                                               gpointer   data)
 {
-  ATK_OBJECT_CLASS (gtk_radio_menu_item_accessible_parent_class)->initialize (obj, data);
+  ATK_OBJECT_CLASS (ctk_radio_menu_item_accessible_parent_class)->initialize (obj, data);
 
   obj->role = ATK_ROLE_RADIO_MENU_ITEM;
 }
 
 static void
-gtk_radio_menu_item_accessible_class_init (GtkRadioMenuItemAccessibleClass *klass)
+ctk_radio_menu_item_accessible_class_init (GtkRadioMenuItemAccessibleClass *klass)
 {
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
 
-  class->ref_relation_set = gtk_radio_menu_item_accessible_ref_relation_set;
-  class->initialize = gtk_radio_menu_item_accessible_initialize;
+  class->ref_relation_set = ctk_radio_menu_item_accessible_ref_relation_set;
+  class->initialize = ctk_radio_menu_item_accessible_initialize;
 }
 
 static void
-gtk_radio_menu_item_accessible_init (GtkRadioMenuItemAccessible *radio_menu_item)
+ctk_radio_menu_item_accessible_init (GtkRadioMenuItemAccessible *radio_menu_item)
 {
-  radio_menu_item->priv = gtk_radio_menu_item_accessible_get_instance_private (radio_menu_item);
+  radio_menu_item->priv = ctk_radio_menu_item_accessible_get_instance_private (radio_menu_item);
 }

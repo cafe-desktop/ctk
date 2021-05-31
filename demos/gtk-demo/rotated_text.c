@@ -113,8 +113,8 @@ rotated_text_draw (GtkWidget *widget,
    * space coordinates for the centered square where we draw are [-RADIUS, RADIUS],
    * [-RADIUS, RADIUS].
    * We first center, then change the scale. */
-  width = gtk_widget_get_allocated_width (widget);
-  height = gtk_widget_get_allocated_height (widget);
+  width = ctk_widget_get_allocated_width (widget);
+  height = ctk_widget_get_allocated_height (widget);
   device_radius = MIN (width, height) / 2.;
   cairo_translate (cr,
                    device_radius + (width - 2 * device_radius) / 2,
@@ -128,7 +128,7 @@ rotated_text_draw (GtkWidget *widget,
   cairo_set_source (cr, pattern);
 
   /* Create a PangoContext and set up our shape renderer */
-  context = gtk_widget_create_pango_context (widget);
+  context = ctk_widget_create_pango_context (widget);
   pango_cairo_context_set_shape_renderer (context,
                                           fancy_shape_renderer,
                                           NULL, NULL);
@@ -181,47 +181,47 @@ do_rotated_text (GtkWidget *do_widget)
       PangoLayout *layout;
       PangoAttrList *attrs;
 
-      window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-      gtk_window_set_screen (GTK_WINDOW (window),
-                             gtk_widget_get_screen (do_widget));
-      gtk_window_set_title (GTK_WINDOW (window), "Rotated Text");
-      gtk_window_set_default_size (GTK_WINDOW (window), 4 * RADIUS, 2 * RADIUS);
+      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+      ctk_window_set_screen (GTK_WINDOW (window),
+                             ctk_widget_get_screen (do_widget));
+      ctk_window_set_title (GTK_WINDOW (window), "Rotated Text");
+      ctk_window_set_default_size (GTK_WINDOW (window), 4 * RADIUS, 2 * RADIUS);
       g_signal_connect (window, "destroy",
-                        G_CALLBACK (gtk_widget_destroyed), &window);
+                        G_CALLBACK (ctk_widget_destroyed), &window);
 
-      box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-      gtk_box_set_homogeneous (GTK_BOX (box), TRUE);
-      gtk_container_add (GTK_CONTAINER (window), box);
+      box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+      ctk_box_set_homogeneous (GTK_BOX (box), TRUE);
+      ctk_container_add (GTK_CONTAINER (window), box);
 
       /* Add a drawing area */
-      drawing_area = gtk_drawing_area_new ();
-      gtk_container_add (GTK_CONTAINER (box), drawing_area);
-      gtk_style_context_add_class (gtk_widget_get_style_context (drawing_area),
+      drawing_area = ctk_drawing_area_new ();
+      ctk_container_add (GTK_CONTAINER (box), drawing_area);
+      ctk_style_context_add_class (ctk_widget_get_style_context (drawing_area),
                                    GTK_STYLE_CLASS_VIEW);
 
       g_signal_connect (drawing_area, "draw",
                         G_CALLBACK (rotated_text_draw), NULL);
 
       /* And a label */
-      label = gtk_label_new (text);
-      gtk_container_add (GTK_CONTAINER (box), label);
+      label = ctk_label_new (text);
+      ctk_container_add (GTK_CONTAINER (box), label);
 
-      gtk_label_set_angle (GTK_LABEL (label), 45);
+      ctk_label_set_angle (GTK_LABEL (label), 45);
 
       /* Set up fancy stuff on the label */
-      layout = gtk_label_get_layout (GTK_LABEL (label));
+      layout = ctk_label_get_layout (GTK_LABEL (label));
       pango_cairo_context_set_shape_renderer (pango_layout_get_context (layout),
                                               fancy_shape_renderer,
                                               NULL, NULL);
       attrs = create_fancy_attr_list_for_layout (layout);
-      gtk_label_set_attributes (GTK_LABEL (label), attrs);
+      ctk_label_set_attributes (GTK_LABEL (label), attrs);
       pango_attr_list_unref (attrs);
     }
 
-  if (!gtk_widget_get_visible (window))
-    gtk_widget_show_all (window);
+  if (!ctk_widget_get_visible (window))
+    ctk_widget_show_all (window);
   else
-    gtk_widget_destroy (window);
+    ctk_widget_destroy (window);
 
   return window;
 }

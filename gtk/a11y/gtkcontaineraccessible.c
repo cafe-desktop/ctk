@@ -29,7 +29,7 @@ struct _GtkContainerAccessiblePrivate
   GList *children;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkContainerAccessible, gtk_container_accessible, GTK_TYPE_WIDGET_ACCESSIBLE)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkContainerAccessible, ctk_container_accessible, GTK_TYPE_WIDGET_ACCESSIBLE)
 
 static void
 count_widget (GtkWidget *widget,
@@ -39,39 +39,39 @@ count_widget (GtkWidget *widget,
 }
 
 static gint
-gtk_container_accessible_get_n_children (AtkObject* obj)
+ctk_container_accessible_get_n_children (AtkObject* obj)
 {
   GtkWidget *widget;
   gint count = 0;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
   if (widget == NULL)
     return 0;
 
-  gtk_container_foreach (GTK_CONTAINER (widget), (GtkCallback) count_widget, &count);
+  ctk_container_foreach (GTK_CONTAINER (widget), (GtkCallback) count_widget, &count);
   return count;
 }
 
 static AtkObject *
-gtk_container_accessible_ref_child (AtkObject *obj,
+ctk_container_accessible_ref_child (AtkObject *obj,
                                     gint       i)
 {
   GList *children, *tmp_list;
   AtkObject  *accessible;
   GtkWidget *widget;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
   if (widget == NULL)
     return NULL;
 
-  children = gtk_container_get_children (GTK_CONTAINER (widget));
+  children = ctk_container_get_children (GTK_CONTAINER (widget));
   tmp_list = g_list_nth (children, i);
   if (!tmp_list)
     {
       g_list_free (children);
       return NULL;
     }
-  accessible = gtk_widget_get_accessible (GTK_WIDGET (tmp_list->data));
+  accessible = ctk_widget_get_accessible (GTK_WIDGET (tmp_list->data));
 
   g_list_free (children);
   g_object_ref (accessible);
@@ -80,14 +80,14 @@ gtk_container_accessible_ref_child (AtkObject *obj,
 }
 
 void
-_gtk_container_accessible_add (GtkWidget *parent,
+_ctk_container_accessible_add (GtkWidget *parent,
                                GtkWidget *child)
 {
   GtkContainerAccessible *accessible;
   GtkContainerAccessibleClass *klass;
   AtkObject *obj;
 
-  obj = _gtk_widget_peek_accessible (GTK_WIDGET (parent));
+  obj = _ctk_widget_peek_accessible (GTK_WIDGET (parent));
   if (!GTK_IS_CONTAINER_ACCESSIBLE (obj))
     return;
 
@@ -99,14 +99,14 @@ _gtk_container_accessible_add (GtkWidget *parent,
 }
 
 void
-_gtk_container_accessible_remove (GtkWidget *parent,
+_ctk_container_accessible_remove (GtkWidget *parent,
                                   GtkWidget *child)
 {
   GtkContainerAccessible *accessible;
   GtkContainerAccessibleClass *klass;
   AtkObject *obj;
 
-  obj = _gtk_widget_peek_accessible (GTK_WIDGET (parent));
+  obj = _ctk_widget_peek_accessible (GTK_WIDGET (parent));
   if (!GTK_IS_CONTAINER_ACCESSIBLE (obj))
     return;
 
@@ -118,7 +118,7 @@ _gtk_container_accessible_remove (GtkWidget *parent,
 }
 
 static gint
-gtk_container_accessible_real_add_gtk (GtkContainer *container,
+ctk_container_accessible_real_add_gtk (GtkContainer *container,
                                        GtkWidget    *widget,
                                        gpointer      data)
 {
@@ -128,19 +128,19 @@ gtk_container_accessible_real_add_gtk (GtkContainer *container,
   gint index;
 
   atk_parent = ATK_OBJECT (data);
-  atk_child = gtk_widget_get_accessible (widget);
+  atk_child = ctk_widget_get_accessible (widget);
   accessible = GTK_CONTAINER_ACCESSIBLE (atk_parent);
 
   g_list_free (accessible->priv->children);
-  accessible->priv->children = gtk_container_get_children (container);
+  accessible->priv->children = ctk_container_get_children (container);
   index = g_list_index (accessible->priv->children, widget);
-  _gtk_container_accessible_add_child (accessible, atk_child, index);
+  _ctk_container_accessible_add_child (accessible, atk_child, index);
 
   return 1;
 }
 
 static gint
-gtk_container_accessible_real_remove_gtk (GtkContainer *container,
+ctk_container_accessible_real_remove_gtk (GtkContainer *container,
                                           GtkWidget    *widget,
                                           gpointer      data)
 {
@@ -150,67 +150,67 @@ gtk_container_accessible_real_remove_gtk (GtkContainer *container,
   gint index;
 
   atk_parent = ATK_OBJECT (data);
-  atk_child = _gtk_widget_peek_accessible (widget);
+  atk_child = _ctk_widget_peek_accessible (widget);
   if (atk_child == NULL)
     return 1;
   accessible = GTK_CONTAINER_ACCESSIBLE (atk_parent);
 
   index = g_list_index (accessible->priv->children, widget);
   g_list_free (accessible->priv->children);
-  accessible->priv->children = gtk_container_get_children (container);
+  accessible->priv->children = ctk_container_get_children (container);
   if (index >= 0)
-    _gtk_container_accessible_remove_child (accessible, atk_child, index);
+    _ctk_container_accessible_remove_child (accessible, atk_child, index);
 
   return 1;
 }
 
 static void
-gtk_container_accessible_real_initialize (AtkObject *obj,
+ctk_container_accessible_real_initialize (AtkObject *obj,
                                           gpointer   data)
 {
   GtkContainerAccessible *accessible = GTK_CONTAINER_ACCESSIBLE (obj);
 
-  ATK_OBJECT_CLASS (gtk_container_accessible_parent_class)->initialize (obj, data);
+  ATK_OBJECT_CLASS (ctk_container_accessible_parent_class)->initialize (obj, data);
 
-  accessible->priv->children = gtk_container_get_children (GTK_CONTAINER (data));
+  accessible->priv->children = ctk_container_get_children (GTK_CONTAINER (data));
 
   obj->role = ATK_ROLE_PANEL;
 }
 
 static void
-gtk_container_accessible_finalize (GObject *object)
+ctk_container_accessible_finalize (GObject *object)
 {
   GtkContainerAccessible *accessible = GTK_CONTAINER_ACCESSIBLE (object);
 
   g_list_free (accessible->priv->children);
 
-  G_OBJECT_CLASS (gtk_container_accessible_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_container_accessible_parent_class)->finalize (object);
 }
 
 static void
-gtk_container_accessible_class_init (GtkContainerAccessibleClass *klass)
+ctk_container_accessible_class_init (GtkContainerAccessibleClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
 
-  gobject_class->finalize = gtk_container_accessible_finalize;
+  gobject_class->finalize = ctk_container_accessible_finalize;
 
-  class->get_n_children = gtk_container_accessible_get_n_children;
-  class->ref_child = gtk_container_accessible_ref_child;
-  class->initialize = gtk_container_accessible_real_initialize;
+  class->get_n_children = ctk_container_accessible_get_n_children;
+  class->ref_child = ctk_container_accessible_ref_child;
+  class->initialize = ctk_container_accessible_real_initialize;
 
-  klass->add_gtk = gtk_container_accessible_real_add_gtk;
-  klass->remove_gtk = gtk_container_accessible_real_remove_gtk;
+  klass->add_gtk = ctk_container_accessible_real_add_gtk;
+  klass->remove_gtk = ctk_container_accessible_real_remove_gtk;
 }
 
 static void
-gtk_container_accessible_init (GtkContainerAccessible *container)
+ctk_container_accessible_init (GtkContainerAccessible *container)
 {
-  container->priv = gtk_container_accessible_get_instance_private (container);
+  container->priv = ctk_container_accessible_get_instance_private (container);
 }
 
 void
-_gtk_container_accessible_add_child (GtkContainerAccessible *accessible,
+_ctk_container_accessible_add_child (GtkContainerAccessible *accessible,
                                      AtkObject              *child,
                                      gint                    index)
 {
@@ -219,7 +219,7 @@ _gtk_container_accessible_add_child (GtkContainerAccessible *accessible,
 }
 
 void
-_gtk_container_accessible_remove_child (GtkContainerAccessible *accessible,
+_ctk_container_accessible_remove_child (GtkContainerAccessible *accessible,
                                         AtkObject              *child,
                                         gint                    index)
 {

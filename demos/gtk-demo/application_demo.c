@@ -33,7 +33,7 @@ on_name_vanished (GDBusConnection *connection,
 
   if (placeholder)
     {
-      gtk_widget_destroy (placeholder);
+      ctk_widget_destroy (placeholder);
       g_object_unref (placeholder);
       placeholder = NULL;
     }
@@ -74,7 +74,7 @@ do_application_demo (GtkWidget *toplevel)
           g_error_free (error);
         }
 
-      placeholder = gtk_label_new ("");
+      placeholder = ctk_label_new ("");
       g_object_ref_sink (placeholder);
     }
   else

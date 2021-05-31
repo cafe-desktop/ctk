@@ -15,10 +15,10 @@ iconbrowser = executable(
   'gtk3-icon-browser',
   iconbrowser_sources,
   iconbrowser_resources,
-  dependencies: libgtk_dep,
+  dependencies: libctk_dep,
   include_directories : confinc,
   install: true
 )
 
 # desktop file
-install_data('gtk3-icon-browser.desktop', install_dir: gtk_applicationsdir)
+install_data('gtk3-icon-browser.desktop', install_dir: ctk_applicationsdir)

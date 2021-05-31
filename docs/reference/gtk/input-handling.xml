@@ -92,10 +92,10 @@
 
     <para>
       For widgets which have a #GdkWindow set, events are received from the
-      windowing system and passed to gtk_main_do_event(). See its documentation
+      windowing system and passed to ctk_main_do_event(). See its documentation
       for details of what it does: compression of enter/leave events,
       identification of the widget receiving the event, pushing the event onto a
-      stack for gtk_get_current_event(), and propagating the event to the
+      stack for ctk_get_current_event(), and propagating the event to the
       widget.
     </para>
 
@@ -104,14 +104,14 @@
       a #GdkWindow, which in turn represents a windowing system surface in the
       backend. If a widget has grabbed the current input device, or all input
       devices, the event is propagated to that #GtkWidget. Otherwise, it is
-      propagated to the the #GtkWidget which called gtk_widget_register_window()
+      propagated to the the #GtkWidget which called ctk_widget_register_window()
       on the #GdkWindow receiving the event.
     </para>
 
     <para>
       Grabs are implemented for each input device, and globally. A grab for a
-      specific input device (gtk_device_grab_add()), is sent events in
-      preference to a global grab (gtk_grab_add()). Input grabs only have effect
+      specific input device (ctk_device_grab_add()), is sent events in
+      preference to a global grab (ctk_grab_add()). Input grabs only have effect
       within the #GtkWindowGroup containing the #GtkWidget which registered the
       event’s #GdkWindow. If this #GtkWidget is a child of the grab widget, the
       event is propagated to the child — this is the basis for propagating
@@ -119,7 +119,7 @@
     </para>
 
     <para>
-      An event is propagated to a widget using gtk_propagate_event().
+      An event is propagated to a widget using ctk_propagate_event().
       Propagation differs between event types: key events (%GDK_KEY_PRESS,
       %GDK_KEY_RELEASE) are delivered to the top-level #GtkWindow; other events
       are propagated down and up the widget hierarchy in three phases (see
@@ -130,8 +130,8 @@
       For key events, the top-level window’s default #GtkWindow::key-press-event
       and #GtkWindow::key-release-event signal handlers handle mnemonics and
       accelerators first. Other key presses are then passed to
-      gtk_window_propagate_key_event() which propagates the event upwards from
-      the window’s current focus widget (gtk_window_get_focus()) to the
+      ctk_window_propagate_key_event() which propagates the event upwards from
+      the window’s current focus widget (ctk_window_get_focus()) to the
       top-level.
     </para>
 
@@ -192,7 +192,7 @@
     </para>
 
     <para>
-      If a widget is windowless (gtk_widget_get_has_window() returns %FALSE) and
+      If a widget is windowless (ctk_widget_get_has_window() returns %FALSE) and
       an application wants to receive custom events on it, it must be placed
       inside a #GtkEventBox to receive the events, and an appropriate event mask
       must be set on the box. When implementing a widget, use a %GDK_INPUT_ONLY
@@ -209,11 +209,11 @@
 
     <para>
       This means that widgets must add to the event mask for each event type
-      they expect to receive, using gtk_widget_set_events() or
-      gtk_widget_add_events() to preserve the existing mask. Widgets which are
-      aware of floating devices should use gtk_widget_set_device_events() or
-      gtk_widget_add_device_events(), and must explicitly enable the device
-      using gtk_widget_set_device_enabled(). See the #GdkDeviceManager
+      they expect to receive, using ctk_widget_set_events() or
+      ctk_widget_add_events() to preserve the existing mask. Widgets which are
+      aware of floating devices should use ctk_widget_set_device_events() or
+      ctk_widget_add_device_events(), and must explicitly enable the device
+      using ctk_widget_set_device_enabled(). See the #GdkDeviceManager
       documentation for more information.
     </para>
 

@@ -26,7 +26,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ACTIVATABLE            (gtk_activatable_get_type ())
+#define GTK_TYPE_ACTIVATABLE            (ctk_activatable_get_type ())
 #define GTK_ACTIVATABLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_ACTIVATABLE, GtkActivatable))
 #define GTK_ACTIVATABLE_CLASS(obj)      (G_TYPE_CHECK_CLASS_CAST ((obj), GTK_TYPE_ACTIVATABLE, GtkActivatableIface))
 #define GTK_IS_ACTIVATABLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_ACTIVATABLE))
@@ -70,27 +70,27 @@ struct _GtkActivatableIface
 
 
 GDK_DEPRECATED_IN_3_10
-GType      gtk_activatable_get_type                   (void) G_GNUC_CONST;
+GType      ctk_activatable_get_type                   (void) G_GNUC_CONST;
 
 GDK_DEPRECATED_IN_3_10
-void       gtk_activatable_sync_action_properties     (GtkActivatable *activatable,
+void       ctk_activatable_sync_action_properties     (GtkActivatable *activatable,
 						       GtkAction      *action);
 
 GDK_DEPRECATED_IN_3_10
-void       gtk_activatable_set_related_action         (GtkActivatable *activatable,
+void       ctk_activatable_set_related_action         (GtkActivatable *activatable,
 						       GtkAction      *action);
 GDK_DEPRECATED_IN_3_10
-GtkAction *gtk_activatable_get_related_action         (GtkActivatable *activatable);
+GtkAction *ctk_activatable_get_related_action         (GtkActivatable *activatable);
 
 GDK_DEPRECATED_IN_3_10
-void       gtk_activatable_set_use_action_appearance  (GtkActivatable *activatable,
+void       ctk_activatable_set_use_action_appearance  (GtkActivatable *activatable,
 						       gboolean        use_appearance);
 GDK_DEPRECATED_IN_3_10
-gboolean   gtk_activatable_get_use_action_appearance  (GtkActivatable *activatable);
+gboolean   ctk_activatable_get_use_action_appearance  (GtkActivatable *activatable);
 
 /* For use in activatable implementations */
 GDK_DEPRECATED_IN_3_10
-void       gtk_activatable_do_set_related_action      (GtkActivatable *activatable,
+void       ctk_activatable_do_set_related_action      (GtkActivatable *activatable,
 						       GtkAction      *action);
 
 G_END_DECLS

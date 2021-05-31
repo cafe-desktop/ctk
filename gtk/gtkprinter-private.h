@@ -25,26 +25,26 @@
 
 G_BEGIN_DECLS
 
-GtkPrinterOptionSet *_gtk_printer_get_options               (GtkPrinter          *printer,
+GtkPrinterOptionSet *_ctk_printer_get_options               (GtkPrinter          *printer,
 							     GtkPrintSettings    *settings,
 							     GtkPageSetup        *page_setup,
 							     GtkPrintCapabilities capabilities);
-gboolean             _gtk_printer_mark_conflicts            (GtkPrinter          *printer,
+gboolean             _ctk_printer_mark_conflicts            (GtkPrinter          *printer,
 							     GtkPrinterOptionSet *options);
-void                 _gtk_printer_get_settings_from_options (GtkPrinter          *printer,
+void                 _ctk_printer_get_settings_from_options (GtkPrinter          *printer,
 							     GtkPrinterOptionSet *options,
 							     GtkPrintSettings    *settings);
-void                 _gtk_printer_prepare_for_print         (GtkPrinter          *printer,
+void                 _ctk_printer_prepare_for_print         (GtkPrinter          *printer,
 							     GtkPrintJob         *print_job,
 							     GtkPrintSettings    *settings,
 							     GtkPageSetup        *page_setup);
-cairo_surface_t *    _gtk_printer_create_cairo_surface      (GtkPrinter          *printer,
+cairo_surface_t *    _ctk_printer_create_cairo_surface      (GtkPrinter          *printer,
 							     GtkPrintSettings    *settings,
 							     gdouble              width,
 							     gdouble              height,
 							     GIOChannel          *cache_io);
-GHashTable *         _gtk_printer_get_custom_widgets        (GtkPrinter          *printer);
-gboolean             _gtk_printer_get_hard_margins_for_paper_size (GtkPrinter       *printer,
+GHashTable *         _ctk_printer_get_custom_widgets        (GtkPrinter          *printer);
+gboolean             _ctk_printer_get_hard_margins_for_paper_size (GtkPrinter       *printer,
 								   GtkPaperSize     *paper_size,
 								   gdouble          *top,
 								   gdouble          *bottom,
@@ -53,7 +53,7 @@ gboolean             _gtk_printer_get_hard_margins_for_paper_size (GtkPrinter   
 
 /* GtkPrintJob private methods: */
 GDK_AVAILABLE_IN_ALL
-void gtk_print_job_set_status (GtkPrintJob   *job,
+void ctk_print_job_set_status (GtkPrintJob   *job,
 			       GtkPrintStatus status);
 
 G_END_DECLS

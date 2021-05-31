@@ -799,10 +799,10 @@ msgstr "An luach"
 
 #: gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"An luach a thilleas gtk_radio_action_get_current_value() mas e an gnìomh seo "
+"An luach a thilleas ctk_radio_action_get_current_value() mas e an gnìomh seo "
 "gnìomh làithreach a’ bhuidhinn aige."
 
 #: gtk/deprecated/gtkradioaction.c:139 gtk/gtkradiobutton.c:184
@@ -1267,10 +1267,10 @@ msgstr "Suaicheantas"
 #: gtk/gtkaboutdialog.c:546
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Suaicheantas airson a’ bhogsa a dh’innseas mun phrògram. Mur an deach seo a "
-"shuidheachadh, thèid a’ bhun-roghainn gtk_window_get_default_icon_list() a "
+"shuidheachadh, thèid a’ bhun-roghainn ctk_window_get_default_icon_list() a "
 "chleachdadh."
 
 #: gtk/gtkaboutdialog.c:560
@@ -3512,10 +3512,10 @@ msgstr "Ceum boillsgeadh an adhartais"
 #: gtk/gtkentry.c:1091
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "Bloigh leud slàn na h-innteirt a thèid bloca sgeingeach an adhartais a "
-"ghluasad airson gach gairm air gtk_entry_progress_pulse()"
+"ghluasad airson gach gairm air ctk_entry_progress_pulse()"
 
 #: gtk/gtkentry.c:1107
 msgid "Show text in the entry when it's empty and unfocused"
@@ -9302,10 +9302,10 @@ msgid "No show all"
 msgstr "Na seall na h-uile"
 
 #: gtk/gtkwidget.c:1261
-msgid "Whether gtk_widget_show_all() should not affect this widget"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
 msgstr ""
 "Co-dhiù am bu chòir do bhuaidh a bhith air a’ widget seo aig "
-"gtk_widget_show_all() gus nach bi"
+"ctk_widget_show_all() gus nach bi"
 
 #: gtk/gtkwidget.c:1283
 msgid "Whether this widget has a tooltip"

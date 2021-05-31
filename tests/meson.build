@@ -1,4 +1,4 @@
-gtk_tests = [
+ctk_tests = [
   # testname, optional extra sources
   ['animated-resizing', ['frame-stats.c', 'variable.c']],
   ['animated-revealing', ['frame-stats.c', 'variable.c']],
@@ -131,26 +131,26 @@ gtk_tests = [
 
 # Conditionally compiled tests
 if x11_enabled
-  gtk_tests += [
+  ctk_tests += [
     ['testsocket', ['testsocket_common.c']],
     ['testsocket_child', ['testsocket_common.c']],
   ]
 endif
 
 if os_linux
-  gtk_tests += [['testfontchooserdialog']]
+  ctk_tests += [['testfontchooserdialog']]
 endif
 
 # Pass the source dir here so programs can change into the source directory
 # and find .ui files and .png files and such that they load at runtime
 test_args = ['-DGTK_SRCDIR="@0@"'.format(meson.current_source_dir())]
 
-foreach t: gtk_tests
+foreach t: ctk_tests
   test_name = t.get(0)
   test_srcs = ['@0@.c'.format(test_name), t.get(1, [])]
   executable(test_name, test_srcs,
              c_args: test_args,
-             dependencies: [libgtk_dep, libm])
+             dependencies: [libctk_dep, libm])
 endforeach
 
 subdir('visuals')

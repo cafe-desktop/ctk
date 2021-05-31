@@ -125,12 +125,12 @@ mask_icon (cairo_t *cr,
 }
 
 static void
-gtk_cairo_set_source_sys_color (cairo_t *cr,
+ctk_cairo_set_source_sys_color (cairo_t *cr,
                                 gint     id)
 {
   GdkRGBA rgba;
 
-  gtk_win32_get_sys_color (id, &rgba);
+  ctk_win32_get_sys_color (id, &rgba);
   gdk_cairo_set_source_rgba (cr, &rgba);
 }
 
@@ -143,12 +143,12 @@ draw_outline (cairo_t *cr,
               int      width,
               int      height)
 {
-  gtk_cairo_set_source_sys_color (cr, top_color_id);
+  ctk_cairo_set_source_sys_color (cr, top_color_id);
   cairo_rectangle (cr, x, y,     width, 1);
   cairo_rectangle (cr, x, y,     1,     height);
   cairo_fill (cr);
 
-  gtk_cairo_set_source_sys_color (cr, bottom_color_id);
+  ctk_cairo_set_source_sys_color (cr, bottom_color_id);
   cairo_rectangle (cr, x + width, y + height, -1,     -height);
   cairo_rectangle (cr, x + width, y + height, -width, -1);
   cairo_fill (cr);
@@ -229,7 +229,7 @@ draw_button (cairo_t *cr,
 {
   draw_edge (cr, state == 3 ? EDGE_SUNKEN : EDGE_RAISED, TRUE, 0, 0, width, height);
 
-  gtk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_BTNFACE);
+  ctk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_BTNFACE);
   cairo_rectangle (cr, 2, 2, width - 4, height - 4);
   cairo_fill (cr);
 }
@@ -243,7 +243,7 @@ draw_frame (cairo_t *cr,
 {
   draw_edge (cr, EDGE_ETCHED, FALSE, 0, 0, width, height);
 
-  gtk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_BTNFACE);
+  ctk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_BTNFACE);
   cairo_rectangle (cr, 2, 2, width - 4, height - 4);
   cairo_fill (cr);
 }
@@ -255,7 +255,7 @@ draw_check (cairo_t *cr,
             int      width,
             int      height)
 {
-  gtk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_BTNHIGHLIGHT);
+  ctk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_BTNHIGHLIGHT);
   cairo_set_line_width (cr, 1.0);
   cairo_rectangle (cr, 0.5, 0.5, width - 1.0, height - 1.0);
   cairo_stroke (cr);
@@ -268,7 +268,7 @@ draw_radio (cairo_t *cr,
             int      width,
             int      height)
 {
-  gtk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_BTNHIGHLIGHT);
+  ctk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_BTNHIGHLIGHT);
   cairo_set_line_width (cr, 1.0);
   cairo_arc (cr, width / 2.0, height / 2.0, MIN (width, height) / 2.0 - 0.5, 0, G_PI * 2);
   cairo_stroke (cr);
@@ -281,17 +281,17 @@ draw_edit (cairo_t *cr,
            int      width,
            int      height)
 {
-  int xborder = gtk_win32_get_sys_metric (GTK_WIN32_SYS_METRIC_CXBORDER);
-  int yborder = gtk_win32_get_sys_metric (GTK_WIN32_SYS_METRIC_CYBORDER);
+  int xborder = ctk_win32_get_sys_metric (GTK_WIN32_SYS_METRIC_CXBORDER);
+  int yborder = ctk_win32_get_sys_metric (GTK_WIN32_SYS_METRIC_CYBORDER);
 
   cairo_rectangle (cr, 0, 0, width, height);
-  gtk_cairo_set_source_sys_color (cr, (state == 6 || state == 4) ? GTK_WIN32_SYS_COLOR_BTNFACE
+  ctk_cairo_set_source_sys_color (cr, (state == 6 || state == 4) ? GTK_WIN32_SYS_COLOR_BTNFACE
                                                                  : GTK_WIN32_SYS_COLOR_WINDOW);
   cairo_fill_preserve (cr);
 
   cairo_rectangle (cr, width - xborder, yborder,
                    - (width - 2 * xborder), height - 2 * yborder);
-  gtk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_WINDOWFRAME);
+  ctk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_WINDOWFRAME);
   cairo_fill (cr);
 }
 
@@ -304,7 +304,7 @@ draw_edit_noborder (cairo_t *cr,
 {
 
   cairo_rectangle (cr, 0, 0, width, height);
-  gtk_cairo_set_source_sys_color (cr, (state == 6 || state == 4) ? GTK_WIN32_SYS_COLOR_BTNFACE
+  ctk_cairo_set_source_sys_color (cr, (state == 6 || state == 4) ? GTK_WIN32_SYS_COLOR_BTNFACE
                                                                  : GTK_WIN32_SYS_COLOR_WINDOW);
   cairo_fill (cr);
 }
@@ -318,7 +318,7 @@ draw_window (cairo_t *cr,
 {
   draw_edge (cr, EDGE_RAISED, TRUE, 0, 0, width, height + 2);
 
-  gtk_cairo_set_source_sys_color (cr, state == 2 ? GTK_WIN32_SYS_COLOR_INACTIVECAPTION
+  ctk_cairo_set_source_sys_color (cr, state == 2 ? GTK_WIN32_SYS_COLOR_INACTIVECAPTION
                                                  : GTK_WIN32_SYS_COLOR_ACTIVECAPTION);
   cairo_rectangle (cr, 2, 2, width - 4, height - 2);
   cairo_fill (cr);
@@ -333,7 +333,7 @@ draw_window_left (cairo_t *cr,
 {
   draw_edge (cr, EDGE_RAISED, TRUE, 0, -2, width + 2, height + 4);
 
-  gtk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_BTNFACE);
+  ctk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_BTNFACE);
   cairo_rectangle (cr, 2, 0, width - 2, height);
   cairo_fill (cr);
 }
@@ -347,7 +347,7 @@ draw_window_right (cairo_t *cr,
 {
   draw_edge (cr, EDGE_RAISED, TRUE, -2, -2, width + 2, height + 4);
 
-  gtk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_BTNFACE);
+  ctk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_BTNFACE);
   cairo_rectangle (cr, 0, 0, width - 2, height);
   cairo_fill (cr);
 }
@@ -361,7 +361,7 @@ draw_window_bottom (cairo_t *cr,
 {
   draw_edge (cr, EDGE_RAISED, TRUE, 0, -2, width, height + 2);
 
-  gtk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_BTNFACE);
+  ctk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_BTNFACE);
   cairo_rectangle (cr, 2, 0, width - 4, height - 2);
   cairo_fill (cr);
 }
@@ -396,7 +396,7 @@ draw_window_button (cairo_t *cr,
 
   draw_button (cr, 0, state, width, height);
 
-  gtk_cairo_set_source_sys_color (cr, state == 4 ? GTK_WIN32_SYS_COLOR_BTNSHADOW
+  ctk_cairo_set_source_sys_color (cr, state == 4 ? GTK_WIN32_SYS_COLOR_BTNSHADOW
                                                  : GTK_WIN32_SYS_COLOR_BTNTEXT);
   mask_icon (cr, icon, 1, 1, width - 2, height - 2);
 }
@@ -410,7 +410,7 @@ draw_tab_item (cairo_t *cr,
 {
   draw_edge (cr, EDGE_RAISED, TRUE, 0, 0, width, height + 2);
 
-  gtk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_BTNFACE);
+  ctk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_BTNFACE);
   cairo_rectangle (cr, 2, 2, width - 4, height - 2);
   cairo_fill (cr);
 }
@@ -424,7 +424,7 @@ draw_tab_pane (cairo_t *cr,
 {
   draw_edge (cr, EDGE_RAISED, TRUE, 0, 0, width, height);
 
-  gtk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_BTNFACE);
+  ctk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_BTNFACE);
   cairo_rectangle (cr, 2, 2, width - 4, height - 4);
   cairo_fill (cr);
 }
@@ -436,15 +436,15 @@ draw_tooltip (cairo_t *cr,
               int      width,
               int      height)
 {
-  int xborder = gtk_win32_get_sys_metric (GTK_WIN32_SYS_METRIC_CXDLGFRAME) -
-                gtk_win32_get_sys_metric (GTK_WIN32_SYS_METRIC_CXEDGE);
-  int yborder = gtk_win32_get_sys_metric (GTK_WIN32_SYS_METRIC_CYDLGFRAME) -
-                gtk_win32_get_sys_metric (GTK_WIN32_SYS_METRIC_CYEDGE);
+  int xborder = ctk_win32_get_sys_metric (GTK_WIN32_SYS_METRIC_CXDLGFRAME) -
+                ctk_win32_get_sys_metric (GTK_WIN32_SYS_METRIC_CXEDGE);
+  int yborder = ctk_win32_get_sys_metric (GTK_WIN32_SYS_METRIC_CYDLGFRAME) -
+                ctk_win32_get_sys_metric (GTK_WIN32_SYS_METRIC_CYEDGE);
 
   cairo_rectangle (cr, 0, 0, width, height);
   cairo_rectangle (cr, width - xborder, yborder,
                    - (width - 2 * xborder), height - 2 * yborder);
-  gtk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_WINDOWFRAME);
+  ctk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_WINDOWFRAME);
   cairo_fill (cr);
 }
 
@@ -509,7 +509,7 @@ get_theme_part (const char *class_name,
 }
 
 void
-gtk_win32_draw_theme_background (cairo_t    *cr,
+ctk_win32_draw_theme_background (cairo_t    *cr,
                                  const char *class_name,
                                  int         part,
                                  int         state,
@@ -531,7 +531,7 @@ gtk_win32_draw_theme_background (cairo_t    *cr,
 }
 
 void
-gtk_win32_get_theme_part_size (const char *class_name,
+ctk_win32_get_theme_part_size (const char *class_name,
                                int          part,
                                int          state,
                                int         *width,
@@ -558,7 +558,7 @@ gtk_win32_get_theme_part_size (const char *class_name,
 }
 
 void
-gtk_win32_get_theme_margins (const char     *class_name,
+ctk_win32_get_theme_margins (const char     *class_name,
                              int             part,
                              int             state,
                              GtkBorder      *out_margins)
@@ -685,7 +685,7 @@ static struct {
 };
 
 const char *
-gtk_win32_get_sys_metric_name_for_id (gint id)
+ctk_win32_get_sys_metric_name_for_id (gint id)
 {
   if (id >= 0 && id < G_N_ELEMENTS (win32_default_metrics))
     return win32_default_metrics[id].name;
@@ -694,7 +694,7 @@ gtk_win32_get_sys_metric_name_for_id (gint id)
 }
 
 int
-gtk_win32_get_sys_metric_id_for_name (const char *name)
+ctk_win32_get_sys_metric_id_for_name (const char *name)
 {
   int i;
 
@@ -713,7 +713,7 @@ gtk_win32_get_sys_metric_id_for_name (const char *name)
 }
 
 int
-gtk_win32_get_sys_metric (gint id)
+ctk_win32_get_sys_metric (gint id)
 {
   if (id < 0 || id >= G_N_ELEMENTS (win32_default_metrics))
     return 0;
@@ -764,7 +764,7 @@ static struct {
 };
 
 const char *
-gtk_win32_get_sys_color_name_for_id (gint id)
+ctk_win32_get_sys_color_name_for_id (gint id)
 {
   if (id >= 0 && id < G_N_ELEMENTS (win32_default_colors))
     return win32_default_colors[id].name;
@@ -773,7 +773,7 @@ gtk_win32_get_sys_color_name_for_id (gint id)
 }
 
 int
-gtk_win32_get_sys_color_id_for_name (const char *name)
+ctk_win32_get_sys_color_id_for_name (const char *name)
 {
   int i;
 
@@ -789,7 +789,7 @@ gtk_win32_get_sys_color_id_for_name (const char *name)
 }
 
 void
-gtk_win32_get_sys_color (gint     id,
+ctk_win32_get_sys_color (gint     id,
                          GdkRGBA *color)
 {
   if (id < 0 || id >= G_N_ELEMENTS (win32_default_colors))

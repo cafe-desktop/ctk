@@ -23,10 +23,10 @@
 
 #include "gtkcssprovider.h"
 
-G_DEFINE_TYPE (GtkCssImageWin32, _gtk_css_image_win32, GTK_TYPE_CSS_IMAGE)
+G_DEFINE_TYPE (GtkCssImageWin32, _ctk_css_image_win32, GTK_TYPE_CSS_IMAGE)
 
 static void
-gtk_css_image_win32_draw (GtkCssImage        *image,
+ctk_css_image_win32_draw (GtkCssImage        *image,
                           cairo_t            *cr,
                           double              width,
                           double              height)
@@ -35,7 +35,7 @@ gtk_css_image_win32_draw (GtkCssImage        *image,
   cairo_surface_t *surface;
   int dx, dy;
 
-  surface = gtk_win32_theme_create_surface (wimage->theme, wimage->part, wimage->state, wimage->margins,
+  surface = ctk_win32_theme_create_surface (wimage->theme, wimage->part, wimage->state, wimage->margins,
 				            width, height, &dx, &dy);
   
   if (wimage->state2 >= 0)
@@ -44,7 +44,7 @@ gtk_css_image_win32_draw (GtkCssImage        *image,
       cairo_t *cr2;
       int dx2, dy2;
 
-      surface2 = gtk_win32_theme_create_surface (wimage->theme, wimage->part2, wimage->state2, wimage->margins,
+      surface2 = ctk_win32_theme_create_surface (wimage->theme, wimage->part2, wimage->state2, wimage->margins,
 						 width, height, &dx2, &dy2);
 
       cr2 = cairo_create (surface);
@@ -66,117 +66,117 @@ gtk_css_image_win32_draw (GtkCssImage        *image,
 }
 
 static gboolean
-gtk_css_image_win32_parse (GtkCssImage  *image,
+ctk_css_image_win32_parse (GtkCssImage  *image,
                            GtkCssParser *parser)
 {
   GtkCssImageWin32 *wimage = GTK_CSS_IMAGE_WIN32 (image);
 
-  if (!_gtk_css_parser_try (parser, "-gtk-win32-theme-part", TRUE))
+  if (!_ctk_css_parser_try (parser, "-gtk-win32-theme-part", TRUE))
     {
-      _gtk_css_parser_error (parser, "'-gtk-win32-theme-part'");
+      _ctk_css_parser_error (parser, "'-gtk-win32-theme-part'");
       return FALSE;
     }
   
-  if (!_gtk_css_parser_try (parser, "(", TRUE))
+  if (!_ctk_css_parser_try (parser, "(", TRUE))
     {
-      _gtk_css_parser_error (parser,
+      _ctk_css_parser_error (parser,
                              "Expected '(' after '-gtk-win32-theme-part'");
       return FALSE;
     }
   
-  wimage->theme = gtk_win32_theme_parse (parser);
+  wimage->theme = ctk_win32_theme_parse (parser);
   if (wimage->theme == NULL)
     return FALSE;
 
-  if (! _gtk_css_parser_try (parser, ",", TRUE))
+  if (! _ctk_css_parser_try (parser, ",", TRUE))
     {
-      _gtk_css_parser_error (parser, "Expected ','");
+      _ctk_css_parser_error (parser, "Expected ','");
       return FALSE;
     }
 
-  if (!_gtk_css_parser_try_int (parser, &wimage->part))
+  if (!_ctk_css_parser_try_int (parser, &wimage->part))
     {
-      _gtk_css_parser_error (parser, "Expected a valid integer value");
+      _ctk_css_parser_error (parser, "Expected a valid integer value");
       return FALSE;
     }
 
-  if (! _gtk_css_parser_try (parser, ",", TRUE))
+  if (! _ctk_css_parser_try (parser, ",", TRUE))
     {
-      _gtk_css_parser_error (parser, "Expected ','");
+      _ctk_css_parser_error (parser, "Expected ','");
       return FALSE;
     }
 
-  if (!_gtk_css_parser_try_int (parser, &wimage->state))
+  if (!_ctk_css_parser_try_int (parser, &wimage->state))
     {
-      _gtk_css_parser_error (parser, "Expected a valid integer value");
+      _ctk_css_parser_error (parser, "Expected a valid integer value");
       return FALSE;
     }
 
-  while ( _gtk_css_parser_try (parser, ",", TRUE))
+  while ( _ctk_css_parser_try (parser, ",", TRUE))
     {
-      if ( _gtk_css_parser_try (parser, "over", TRUE))
+      if ( _ctk_css_parser_try (parser, "over", TRUE))
         {
-          if (!_gtk_css_parser_try (parser, "(", TRUE))
+          if (!_ctk_css_parser_try (parser, "(", TRUE))
             {
-              _gtk_css_parser_error (parser,
+              _ctk_css_parser_error (parser,
                                      "Expected '(' after 'over'");
               return FALSE;
             }
 
-          if (!_gtk_css_parser_try_int (parser, &wimage->part2))
+          if (!_ctk_css_parser_try_int (parser, &wimage->part2))
             {
-              _gtk_css_parser_error (parser, "Expected a valid integer value");
+              _ctk_css_parser_error (parser, "Expected a valid integer value");
               return FALSE;
             }
 
-          if (! _gtk_css_parser_try (parser, ",", TRUE))
+          if (! _ctk_css_parser_try (parser, ",", TRUE))
             {
-              _gtk_css_parser_error (parser, "Expected ','");
+              _ctk_css_parser_error (parser, "Expected ','");
               return FALSE;
             }
 
-          if (!_gtk_css_parser_try_int (parser, &wimage->state2))
+          if (!_ctk_css_parser_try_int (parser, &wimage->state2))
             {
-              _gtk_css_parser_error (parser, "Expected a valid integer value");
+              _ctk_css_parser_error (parser, "Expected a valid integer value");
               return FALSE;
             }
 
-          if ( _gtk_css_parser_try (parser, ",", TRUE))
+          if ( _ctk_css_parser_try (parser, ",", TRUE))
             {
-              if (!_gtk_css_parser_try_double (parser, &wimage->over_alpha))
+              if (!_ctk_css_parser_try_double (parser, &wimage->over_alpha))
                 {
-                  _gtk_css_parser_error (parser, "Expected a valid double value");
+                  _ctk_css_parser_error (parser, "Expected a valid double value");
                   return FALSE;
                 }
             }
 
-          if (!_gtk_css_parser_try (parser, ")", TRUE))
+          if (!_ctk_css_parser_try (parser, ")", TRUE))
             {
-              _gtk_css_parser_error (parser,
+              _ctk_css_parser_error (parser,
                                      "Expected ')' at end of 'over'");
               return FALSE;
             }
         }
-      else if ( _gtk_css_parser_try (parser, "margins", TRUE))
+      else if ( _ctk_css_parser_try (parser, "margins", TRUE))
         {
           guint i;
 
-          if (!_gtk_css_parser_try (parser, "(", TRUE))
+          if (!_ctk_css_parser_try (parser, "(", TRUE))
             {
-              _gtk_css_parser_error (parser,
+              _ctk_css_parser_error (parser,
                                      "Expected '(' after 'margins'");
               return FALSE;
             }
 
           for (i = 0; i < 4; i++)
             {
-              if (!_gtk_css_parser_try_int (parser, &wimage->margins[i]))
+              if (!_ctk_css_parser_try_int (parser, &wimage->margins[i]))
                 break;
             }
           
           if (i == 0)
             {
-              _gtk_css_parser_error (parser, "Expected valid margins");
+              _ctk_css_parser_error (parser, "Expected valid margins");
               return FALSE;
             }
 
@@ -187,24 +187,24 @@ gtk_css_image_win32_parse (GtkCssImage  *image,
           if (i <= 3)
             wimage->margins[3] = wimage->margins[2];
           
-          if (!_gtk_css_parser_try (parser, ")", TRUE))
+          if (!_ctk_css_parser_try (parser, ")", TRUE))
             {
-              _gtk_css_parser_error (parser,
+              _ctk_css_parser_error (parser,
                                      "Expected ')' at end of 'margins'");
               return FALSE;
             }
         }
       else
         {
-          _gtk_css_parser_error (parser,
+          _ctk_css_parser_error (parser,
                                  "Expected identifier");
           return FALSE;
         }
     }
 
-  if (!_gtk_css_parser_try (parser, ")", TRUE))
+  if (!_ctk_css_parser_try (parser, ")", TRUE))
     {
-      _gtk_css_parser_error (parser,
+      _ctk_css_parser_error (parser,
 			     "Expected ')'");
       return FALSE;
     }
@@ -213,42 +213,42 @@ gtk_css_image_win32_parse (GtkCssImage  *image,
 }
 
 static void
-gtk_css_image_win32_print (GtkCssImage *image,
+ctk_css_image_win32_print (GtkCssImage *image,
                            GString     *string)
 {
   GtkCssImageWin32 *wimage = GTK_CSS_IMAGE_WIN32 (image);
 
   g_string_append (string, "-gtk-win32-theme-part(");
-  gtk_win32_theme_print (wimage->theme, string);
+  ctk_win32_theme_print (wimage->theme, string);
   g_string_append_printf (string, ", %d, %d)", wimage->part, wimage->state);
 }
 
 static void
-gtk_css_image_win32_finalize (GObject *object)
+ctk_css_image_win32_finalize (GObject *object)
 {
   GtkCssImageWin32 *wimage = GTK_CSS_IMAGE_WIN32 (object);
 
   if (wimage->theme)
-    gtk_win32_theme_unref (wimage->theme);
+    ctk_win32_theme_unref (wimage->theme);
 
-  G_OBJECT_CLASS (_gtk_css_image_win32_parent_class)->finalize (object);
+  G_OBJECT_CLASS (_ctk_css_image_win32_parent_class)->finalize (object);
 }
 
 static void
-_gtk_css_image_win32_class_init (GtkCssImageWin32Class *klass)
+_ctk_css_image_win32_class_init (GtkCssImageWin32Class *klass)
 {
   GtkCssImageClass *image_class = GTK_CSS_IMAGE_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  object_class->finalize = gtk_css_image_win32_finalize;
+  object_class->finalize = ctk_css_image_win32_finalize;
 
-  image_class->draw = gtk_css_image_win32_draw;
-  image_class->parse = gtk_css_image_win32_parse;
-  image_class->print = gtk_css_image_win32_print;
+  image_class->draw = ctk_css_image_win32_draw;
+  image_class->parse = ctk_css_image_win32_parse;
+  image_class->print = ctk_css_image_win32_print;
 }
 
 static void
-_gtk_css_image_win32_init (GtkCssImageWin32 *wimage)
+_ctk_css_image_win32_init (GtkCssImageWin32 *wimage)
 {
   wimage->over_alpha = 1.0;
   wimage->part2 = -1;

@@ -114,21 +114,21 @@ load_ui_file (GFile *file, gboolean generate)
   css_file = test_get_other_file (ui_file, ".css");
   g_assert (css_file != NULL);
 
-  provider = gtk_css_provider_new ();
-  gtk_css_provider_load_from_path (provider, css_file, &error);
+  provider = ctk_css_provider_new ();
+  ctk_css_provider_load_from_path (provider, css_file, &error);
   g_assert_no_error (error);
-  gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+  ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
                                              GTK_STYLE_PROVIDER (provider),
                                              GTK_STYLE_PROVIDER_PRIORITY_FORCE);
 
-  builder = gtk_builder_new_from_file (ui_file);
-  window = GTK_WIDGET (gtk_builder_get_object (builder, "window1"));
+  builder = ctk_builder_new_from_file (ui_file);
+  window = GTK_WIDGET (ctk_builder_get_object (builder, "window1"));
 
   g_assert (window != NULL);
 
-  context = gtk_widget_get_style_context (window);
+  context = ctk_widget_get_style_context (window);
 
-  output = gtk_style_context_to_string (context, GTK_STYLE_CONTEXT_PRINT_RECURSE |
+  output = ctk_style_context_to_string (context, GTK_STYLE_CONTEXT_PRINT_RECURSE |
                                                  GTK_STYLE_CONTEXT_PRINT_SHOW_STYLE);
 
   if (generate)
@@ -151,7 +151,7 @@ load_ui_file (GFile *file, gboolean generate)
   g_free (diff);
 
 out:
-  gtk_style_context_remove_provider_for_screen (gdk_screen_get_default (),
+  ctk_style_context_remove_provider_for_screen (gdk_screen_get_default (),
                                                 GTK_STYLE_PROVIDER (provider));
   g_object_unref (provider);
 
@@ -245,9 +245,9 @@ main (int argc, char **argv)
 {
   g_setenv ("GTK_CSS_DEBUG", "1", TRUE);
 
-  gtk_test_init (&argc, &argv);
+  ctk_test_init (&argc, &argv);
 
-  g_object_set (gtk_settings_get_default (),
+  g_object_set (ctk_settings_get_default (),
                 "gtk-font-name", "Sans",
                 "gtk-theme-name", "Empty",
                 NULL);

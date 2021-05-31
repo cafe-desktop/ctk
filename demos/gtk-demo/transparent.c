@@ -167,7 +167,7 @@ draw_callback (GtkWidget *widget,
 {
   GdkRectangle rect;
 
-  gtk_widget_get_allocation (widget, &rect);
+  ctk_widget_get_allocation (widget, &rect);
   rect.x += SHADOW_OFFSET_X;
   rect.y += SHADOW_OFFSET_Y;
   rect.width -= SHADOW_OFFSET_X;
@@ -193,50 +193,50 @@ do_transparent (GtkWidget *do_widget)
       GtkCssProvider *provider;
       gchar *css;
 
-      window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-      gtk_window_set_screen (GTK_WINDOW (window),
-                             gtk_widget_get_screen (do_widget));
-      gtk_window_set_default_size (GTK_WINDOW (window), 450, 450);
+      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+      ctk_window_set_screen (GTK_WINDOW (window),
+                             ctk_widget_get_screen (do_widget));
+      ctk_window_set_default_size (GTK_WINDOW (window), 450, 450);
 
       g_signal_connect (window, "destroy",
-                        G_CALLBACK (gtk_widget_destroyed), &window);
+                        G_CALLBACK (ctk_widget_destroyed), &window);
 
-      gtk_window_set_title (GTK_WINDOW (window), "Transparency");
-      gtk_container_set_border_width (GTK_CONTAINER (window), 0);
+      ctk_window_set_title (GTK_WINDOW (window), "Transparency");
+      ctk_container_set_border_width (GTK_CONTAINER (window), 0);
 
-      view = gtk_text_view_new ();
+      view = ctk_text_view_new ();
 
-      sw = gtk_scrolled_window_new (NULL, NULL);
-      gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
+      sw = ctk_scrolled_window_new (NULL, NULL);
+      ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
                                       GTK_POLICY_AUTOMATIC,
                                       GTK_POLICY_AUTOMATIC);
-      gtk_container_add (GTK_CONTAINER (sw), view);
+      ctk_container_add (GTK_CONTAINER (sw), view);
 
-      overlay = gtk_overlay_new ();
-      gtk_container_add (GTK_CONTAINER (overlay), sw);
-      gtk_container_add (GTK_CONTAINER (window), overlay);
+      overlay = ctk_overlay_new ();
+      ctk_container_add (GTK_CONTAINER (overlay), sw);
+      ctk_container_add (GTK_CONTAINER (window), overlay);
 
-      entry = gtk_entry_new ();
-      provider = gtk_css_provider_new ();
+      entry = ctk_entry_new ();
+      provider = ctk_css_provider_new ();
       css = g_strdup_printf ("* { border-width: 0px %dpx %dpx 0px; }",
                              SHADOW_OFFSET_X, SHADOW_OFFSET_Y);
-      gtk_css_provider_load_from_data (provider, css, -1, NULL);
+      ctk_css_provider_load_from_data (provider, css, -1, NULL);
       g_free (css);
-      gtk_style_context_add_provider (gtk_widget_get_style_context (entry),
+      ctk_style_context_add_provider (ctk_widget_get_style_context (entry),
                                       GTK_STYLE_PROVIDER (provider),
                                       GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
       g_signal_connect (entry, "draw", G_CALLBACK (draw_callback), NULL);
-      gtk_overlay_add_overlay (GTK_OVERLAY (overlay), entry);
-      gtk_widget_set_halign (entry, GTK_ALIGN_CENTER);
-      gtk_widget_set_valign (entry, GTK_ALIGN_START);
+      ctk_overlay_add_overlay (GTK_OVERLAY (overlay), entry);
+      ctk_widget_set_halign (entry, GTK_ALIGN_CENTER);
+      ctk_widget_set_valign (entry, GTK_ALIGN_START);
 
-      gtk_widget_show_all (overlay);
+      ctk_widget_show_all (overlay);
     }
 
-  if (!gtk_widget_get_visible (window))
-    gtk_widget_show (window);
+  if (!ctk_widget_get_visible (window))
+    ctk_widget_show (window);
   else
-    gtk_widget_destroy (window);
+    ctk_widget_destroy (window);
 
   return window;
 }

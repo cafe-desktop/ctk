@@ -36,8 +36,8 @@ struct _GtkIMContextWaylandGlobal
   struct wl_display *display;
   struct wl_registry *registry;
   uint32_t text_input_manager_wl_id;
-  struct gtk_text_input_manager *text_input_manager;
-  struct gtk_text_input *text_input;
+  struct ctk_text_input_manager *text_input_manager;
+  struct ctk_text_input *text_input;
   uint32_t enter_serial;
 
   GtkIMContext *current;
@@ -95,7 +95,7 @@ static const GtkIMContextInfo *info_list[] =
 #ifndef INCLUDE_IM_wayland
 #define MODULE_ENTRY(type,function) G_MODULE_EXPORT type im_module_ ## function
 #else
-#define MODULE_ENTRY(type, function) type _gtk_immodule_wayland_ ## function
+#define MODULE_ENTRY(type, function) type _ctk_immodule_wayland_ ## function
 #endif
 
 static void
@@ -111,7 +111,7 @@ reset_preedit (GtkIMContextWayland *context)
 
 static void
 text_input_enter (void                     *data,
-                  struct gtk_text_input    *text_input,
+                  struct ctk_text_input    *text_input,
                   uint32_t                  serial,
                   struct wl_surface        *surface)
 {
@@ -122,7 +122,7 @@ text_input_enter (void                     *data,
 
 static void
 text_input_leave (void                     *data,
-                  struct gtk_text_input    *text_input,
+                  struct ctk_text_input    *text_input,
                   uint32_t                  serial,
                   struct wl_surface        *surface)
 {
@@ -137,7 +137,7 @@ text_input_leave (void                     *data,
 
 static void
 text_input_preedit (void                     *data,
-                    struct gtk_text_input    *text_input,
+                    struct ctk_text_input    *text_input,
                     const char               *text,
                     guint                     cursor)
 {
@@ -168,7 +168,7 @@ text_input_preedit (void                     *data,
 
 static void
 text_input_commit (void                     *data,
-                   struct gtk_text_input    *text_input,
+                   struct ctk_text_input    *text_input,
                    const char               *text)
 {
   GtkIMContextWaylandGlobal *global = data;
@@ -179,7 +179,7 @@ text_input_commit (void                     *data,
 
 static void
 text_input_delete_surrounding_text (void                     *data,
-                                    struct gtk_text_input    *text_input,
+                                    struct ctk_text_input    *text_input,
                                     uint32_t                  offset,
                                     uint32_t                  len)
 {
@@ -189,7 +189,7 @@ text_input_delete_surrounding_text (void                     *data,
     g_signal_emit_by_name (global->current, "delete-surrounding", offset, len);
 }
 
-static const struct gtk_text_input_listener text_input_listener = {
+static const struct ctk_text_input_listener text_input_listener = {
   text_input_enter,
   text_input_leave,
   text_input_preedit,
@@ -207,16 +207,16 @@ registry_handle_global (void               *data,
   GtkIMContextWaylandGlobal *global = data;
   GdkSeat *seat = gdk_display_get_default_seat (gdk_display_get_default ());
 
-  if (strcmp (interface, "gtk_text_input_manager") == 0)
+  if (strcmp (interface, "ctk_text_input_manager") == 0)
     {
       global->text_input_manager_wl_id = id;
       global->text_input_manager =
         wl_registry_bind (global->registry, global->text_input_manager_wl_id,
-                          &gtk_text_input_manager_interface, 1);
+                          &ctk_text_input_manager_interface, 1);
       global->text_input =
-        gtk_text_input_manager_get_text_input (global->text_input_manager,
+        ctk_text_input_manager_get_text_input (global->text_input_manager,
                                                gdk_wayland_seat_get_wl_seat (seat));
-      gtk_text_input_add_listener (global->text_input,
+      ctk_text_input_add_listener (global->text_input,
                                    &text_input_listener, global);
     }
 }
@@ -231,8 +231,8 @@ registry_handle_global_remove (void               *data,
   if (id != global->text_input_manager_wl_id)
     return;
 
-  g_clear_pointer(&global->text_input, gtk_text_input_destroy);
-  g_clear_pointer(&global->text_input_manager, gtk_text_input_manager_destroy);
+  g_clear_pointer(&global->text_input, ctk_text_input_destroy);
+  g_clear_pointer(&global->text_input_manager, ctk_text_input_manager_destroy);
 }
 
 static const struct wl_registry_listener registry_listener = {
@@ -241,7 +241,7 @@ static const struct wl_registry_listener registry_listener = {
 };
 
 static void
-gtk_im_context_wayland_global_init (GdkDisplay *display)
+ctk_im_context_wayland_global_init (GdkDisplay *display)
 {
   g_return_if_fail (global == NULL);
 
@@ -262,7 +262,7 @@ notify_surrounding_text (GtkIMContextWayland *context)
   if (!context->surrounding.text)
     return;
 
-  gtk_text_input_set_surrounding_text (global->text_input,
+  ctk_text_input_set_surrounding_text (global->text_input,
                                        context->surrounding.text,
                                        context->surrounding.cursor_idx,
                                        context->surrounding.cursor_idx);
@@ -284,7 +284,7 @@ notify_cursor_location (GtkIMContextWayland *context)
   gdk_window_get_root_coords (context->window, rect.x, rect.y,
                               &rect.x, &rect.y);
 
-  gtk_text_input_set_cursor_rectangle (global->text_input,
+  ctk_text_input_set_cursor_rectangle (global->text_input,
                                        rect.x, rect.y,
                                        rect.width, rect.height);
 }
@@ -364,7 +364,7 @@ notify_content_type (GtkIMContextWayland *context)
                 "input-purpose", &purpose,
                 NULL);
 
-  gtk_text_input_set_content_type (global->text_input,
+  ctk_text_input_set_content_type (global->text_input,
                                    translate_hints (hints, purpose),
                                    translate_purpose (purpose));
 }
@@ -374,7 +374,7 @@ commit_state (GtkIMContextWayland *context)
 {
   if (global->current != GTK_IM_CONTEXT (context))
     return;
-  gtk_text_input_commit (global->text_input);
+  ctk_text_input_commit (global->text_input);
 }
 
 static void
@@ -388,13 +388,13 @@ enable_text_input (GtkIMContextWayland *context,
   if (toggle_panel)
     flags |= GTK_TEXT_INPUT_ENABLE_FLAGS_TOGGLE_INPUT_PANEL;
 
-  gtk_text_input_enable (global->text_input,
+  ctk_text_input_enable (global->text_input,
                          global->enter_serial,
                          flags);
 }
 
 static void
-gtk_im_context_wayland_finalize (GObject *object)
+ctk_im_context_wayland_finalize (GObject *object)
 {
   GtkIMContextWayland *context = GTK_IM_CONTEXT_WAYLAND (object);
 
@@ -434,7 +434,7 @@ released_cb (GtkGestureMultiPress *gesture,
 
   if (n_press == 1 &&
       (hints & GTK_INPUT_HINT_INHIBIT_OSK) == 0 &&
-      !gtk_drag_check_threshold (context->widget,
+      !ctk_drag_check_threshold (context->widget,
                                  context->press_x,
                                  context->press_y,
                                  x, y))
@@ -444,7 +444,7 @@ released_cb (GtkGestureMultiPress *gesture,
 }
 
 static void
-gtk_im_context_wayland_set_client_window (GtkIMContext *context,
+ctk_im_context_wayland_set_client_window (GtkIMContext *context,
                                           GdkWindow    *window)
 {
   GtkIMContextWayland *context_wayland = GTK_IM_CONTEXT_WAYLAND (context);
@@ -469,8 +469,8 @@ gtk_im_context_wayland_set_client_window (GtkIMContext *context,
         {
           GtkGesture *gesture;
 
-          gesture = gtk_gesture_multi_press_new (widget);
-          gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture),
+          gesture = ctk_gesture_multi_press_new (widget);
+          ctk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture),
                                                       GTK_PHASE_CAPTURE);
           g_signal_connect (gesture, "pressed",
                             G_CALLBACK (pressed_cb), context);
@@ -482,7 +482,7 @@ gtk_im_context_wayland_set_client_window (GtkIMContext *context,
 }
 
 static void
-gtk_im_context_wayland_get_preedit_string (GtkIMContext   *context,
+ctk_im_context_wayland_get_preedit_string (GtkIMContext   *context,
                                            gchar         **str,
                                            PangoAttrList **attrs,
                                            gint           *cursor_pos)
@@ -522,7 +522,7 @@ gtk_im_context_wayland_get_preedit_string (GtkIMContext   *context,
 }
 
 static gboolean
-gtk_im_context_wayland_filter_keypress (GtkIMContext *context,
+ctk_im_context_wayland_filter_keypress (GtkIMContext *context,
                                         GdkEventKey  *key)
 {
   /* This is done by the compositor */
@@ -530,7 +530,7 @@ gtk_im_context_wayland_filter_keypress (GtkIMContext *context,
 }
 
 static void
-gtk_im_context_wayland_focus_in (GtkIMContext *context)
+ctk_im_context_wayland_focus_in (GtkIMContext *context)
 {
   GtkIMContextWayland *context_wayland = GTK_IM_CONTEXT_WAYLAND (context);
 
@@ -548,17 +548,17 @@ gtk_im_context_wayland_focus_in (GtkIMContext *context)
 }
 
 static void
-gtk_im_context_wayland_focus_out (GtkIMContext *context)
+ctk_im_context_wayland_focus_out (GtkIMContext *context)
 {
   if (global->current != context)
     return;
 
-  gtk_text_input_disable (global->text_input);
+  ctk_text_input_disable (global->text_input);
   global->current = NULL;
 }
 
 static void
-gtk_im_context_wayland_reset (GtkIMContext *context)
+ctk_im_context_wayland_reset (GtkIMContext *context)
 {
   reset_preedit (GTK_IM_CONTEXT_WAYLAND (context));
 
@@ -566,7 +566,7 @@ gtk_im_context_wayland_reset (GtkIMContext *context)
 }
 
 static void
-gtk_im_context_wayland_set_cursor_location (GtkIMContext *context,
+ctk_im_context_wayland_set_cursor_location (GtkIMContext *context,
                                             GdkRectangle *rect)
 {
   GtkIMContextWayland *context_wayland;
@@ -579,7 +579,7 @@ gtk_im_context_wayland_set_cursor_location (GtkIMContext *context,
 }
 
 static void
-gtk_im_context_wayland_set_use_preedit (GtkIMContext *context,
+ctk_im_context_wayland_set_use_preedit (GtkIMContext *context,
                                         gboolean      use_preedit)
 {
   GtkIMContextWayland *context_wayland = GTK_IM_CONTEXT_WAYLAND (context);
@@ -588,7 +588,7 @@ gtk_im_context_wayland_set_use_preedit (GtkIMContext *context,
 }
 
 static void
-gtk_im_context_wayland_set_surrounding (GtkIMContext *context,
+ctk_im_context_wayland_set_surrounding (GtkIMContext *context,
                                         const gchar  *text,
                                         gint          len,
                                         gint          cursor_index)
@@ -606,7 +606,7 @@ gtk_im_context_wayland_set_surrounding (GtkIMContext *context,
 }
 
 static gboolean
-gtk_im_context_wayland_get_surrounding (GtkIMContext  *context,
+ctk_im_context_wayland_get_surrounding (GtkIMContext  *context,
                                         gchar        **text,
                                         gint          *cursor_index)
 {
@@ -623,23 +623,23 @@ gtk_im_context_wayland_get_surrounding (GtkIMContext  *context,
 }
 
 static void
-gtk_im_context_wayland_class_init (GtkIMContextWaylandClass *klass)
+ctk_im_context_wayland_class_init (GtkIMContextWaylandClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GtkIMContextClass *im_context_class = GTK_IM_CONTEXT_CLASS (klass);
 
-  object_class->finalize = gtk_im_context_wayland_finalize;
+  object_class->finalize = ctk_im_context_wayland_finalize;
 
-  im_context_class->set_client_window = gtk_im_context_wayland_set_client_window;
-  im_context_class->get_preedit_string = gtk_im_context_wayland_get_preedit_string;
-  im_context_class->filter_keypress = gtk_im_context_wayland_filter_keypress;
-  im_context_class->focus_in = gtk_im_context_wayland_focus_in;
-  im_context_class->focus_out = gtk_im_context_wayland_focus_out;
-  im_context_class->reset = gtk_im_context_wayland_reset;
-  im_context_class->set_cursor_location = gtk_im_context_wayland_set_cursor_location;
-  im_context_class->set_use_preedit = gtk_im_context_wayland_set_use_preedit;
-  im_context_class->set_surrounding = gtk_im_context_wayland_set_surrounding;
-  im_context_class->get_surrounding = gtk_im_context_wayland_get_surrounding;
+  im_context_class->set_client_window = ctk_im_context_wayland_set_client_window;
+  im_context_class->get_preedit_string = ctk_im_context_wayland_get_preedit_string;
+  im_context_class->filter_keypress = ctk_im_context_wayland_filter_keypress;
+  im_context_class->focus_in = ctk_im_context_wayland_focus_in;
+  im_context_class->focus_out = ctk_im_context_wayland_focus_out;
+  im_context_class->reset = ctk_im_context_wayland_reset;
+  im_context_class->set_cursor_location = ctk_im_context_wayland_set_cursor_location;
+  im_context_class->set_use_preedit = ctk_im_context_wayland_set_use_preedit;
+  im_context_class->set_surrounding = ctk_im_context_wayland_set_surrounding;
+  im_context_class->get_surrounding = ctk_im_context_wayland_get_surrounding;
 
   parent_class = g_type_class_peek_parent (klass);
 }
@@ -652,7 +652,7 @@ on_content_type_changed (GtkIMContextWayland *context)
 }
 
 static void
-gtk_im_context_wayland_init (GtkIMContextWayland *context)
+ctk_im_context_wayland_init (GtkIMContextWayland *context)
 {
   context->use_preedit = TRUE;
   g_signal_connect_swapped (context, "notify::input-purpose",
@@ -662,16 +662,16 @@ gtk_im_context_wayland_init (GtkIMContextWayland *context)
 }
 
 static void
-gtk_im_context_wayland_register_type (GTypeModule *module)
+ctk_im_context_wayland_register_type (GTypeModule *module)
 {
   const GTypeInfo object_info = {
     sizeof (GtkIMContextWaylandClass),
     NULL, NULL,
-    (GClassInitFunc) gtk_im_context_wayland_class_init,
+    (GClassInitFunc) ctk_im_context_wayland_class_init,
     NULL, NULL,
     sizeof (GtkIMContextWayland),
     0,
-    (GInstanceInitFunc) gtk_im_context_wayland_init,
+    (GInstanceInitFunc) ctk_im_context_wayland_init,
   };
 
   type_wayland = g_type_module_register_type (module,
@@ -682,8 +682,8 @@ gtk_im_context_wayland_register_type (GTypeModule *module)
 
 MODULE_ENTRY (void, init) (GTypeModule * module)
 {
-  gtk_im_context_wayland_register_type (module);
-  gtk_im_context_wayland_global_init (gdk_display_get_default ());
+  ctk_im_context_wayland_register_type (module);
+  ctk_im_context_wayland_global_init (gdk_display_get_default ());
 }
 
 MODULE_ENTRY (void, exit) (void)

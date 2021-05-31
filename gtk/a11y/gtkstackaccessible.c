@@ -23,13 +23,13 @@
 #include "gtkwidgetprivate.h"
 
 
-G_DEFINE_TYPE (GtkStackAccessible, gtk_stack_accessible, GTK_TYPE_CONTAINER_ACCESSIBLE)
+G_DEFINE_TYPE (GtkStackAccessible, ctk_stack_accessible, GTK_TYPE_CONTAINER_ACCESSIBLE)
 
 static AtkObject*
-gtk_stack_accessible_ref_child (AtkObject *obj,
+ctk_stack_accessible_ref_child (AtkObject *obj,
                                 int        i)
 {
-  GtkWidget *stack = gtk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  GtkWidget *stack = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
   GtkWidget *visible_child;
 
   if (stack == NULL)
@@ -38,36 +38,36 @@ gtk_stack_accessible_ref_child (AtkObject *obj,
   if (i != 0)
     return NULL;
 
-  visible_child = gtk_stack_get_visible_child (GTK_STACK (stack));
+  visible_child = ctk_stack_get_visible_child (GTK_STACK (stack));
 
   if (visible_child == NULL)
     return NULL;
 
-  return g_object_ref (gtk_widget_get_accessible (visible_child));
+  return g_object_ref (ctk_widget_get_accessible (visible_child));
 }
 
 static int
-gtk_stack_accessible_get_n_children (AtkObject *obj)
+ctk_stack_accessible_get_n_children (AtkObject *obj)
 {
-  GtkWidget *stack = gtk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  GtkWidget *stack = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
 
   if (stack == NULL)
     return 0;
 
-  if (gtk_stack_get_visible_child (GTK_STACK (stack)))
+  if (ctk_stack_get_visible_child (GTK_STACK (stack)))
     return 1;
 
   return 0;
 }
 
 static void
-gtk_stack_accessible_class_init (GtkStackAccessibleClass *klass)
+ctk_stack_accessible_class_init (GtkStackAccessibleClass *klass)
 {
   AtkObjectClass *class                        = ATK_OBJECT_CLASS (klass);
   GtkContainerAccessibleClass *container_class = (GtkContainerAccessibleClass*)klass;
 
-  class->get_n_children = gtk_stack_accessible_get_n_children;
-  class->ref_child      = gtk_stack_accessible_ref_child;
+  class->get_n_children = ctk_stack_accessible_get_n_children;
+  class->ref_child      = ctk_stack_accessible_ref_child;
   /*
    * As we report the stack as having only the visible child,
    * we are not interested in add and remove signals
@@ -77,29 +77,29 @@ gtk_stack_accessible_class_init (GtkStackAccessibleClass *klass)
 }
 
 static void
-gtk_stack_accessible_init (GtkStackAccessible *bar) {}
+ctk_stack_accessible_init (GtkStackAccessible *bar) {}
 
 
 void
-gtk_stack_accessible_update_visible_child (GtkStack  *stack,
+ctk_stack_accessible_update_visible_child (GtkStack  *stack,
                                            GtkWidget *old_visible_child,
                                            GtkWidget *new_visible_child)
 {
-  AtkObject *stack_accessible = _gtk_widget_peek_accessible (GTK_WIDGET (stack));
+  AtkObject *stack_accessible = _ctk_widget_peek_accessible (GTK_WIDGET (stack));
 
   if (stack_accessible == NULL)
     return;
 
   if (old_visible_child)
     {
-      AtkObject *accessible = gtk_widget_get_accessible (old_visible_child);
+      AtkObject *accessible = ctk_widget_get_accessible (old_visible_child);
       g_object_notify (G_OBJECT (accessible), "accessible-parent");
       g_signal_emit_by_name (stack_accessible, "children-changed::remove", 0, accessible, NULL);
     }
 
   if (new_visible_child)
     {
-      AtkObject *accessible = gtk_widget_get_accessible (new_visible_child);
+      AtkObject *accessible = ctk_widget_get_accessible (new_visible_child);
       g_object_notify (G_OBJECT (accessible), "accessible-parent");
       g_signal_emit_by_name (stack_accessible, "children-changed::add", 0, accessible, NULL);
     }

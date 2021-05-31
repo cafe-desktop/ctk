@@ -24,9 +24,9 @@ preferences_activated (GSimpleAction *action,
   ExampleAppPrefs *prefs;
   GtkWindow *win;
 
-  win = gtk_application_get_active_window (GTK_APPLICATION (app));
+  win = ctk_application_get_active_window (GTK_APPLICATION (app));
   prefs = example_app_prefs_new (EXAMPLE_APP_WINDOW (win));
-  gtk_window_present (GTK_WINDOW (prefs));
+  ctk_window_present (GTK_WINDOW (prefs));
 }
 
 static void
@@ -55,13 +55,13 @@ example_app_startup (GApplication *app)
   g_action_map_add_action_entries (G_ACTION_MAP (app),
                                    app_entries, G_N_ELEMENTS (app_entries),
                                    app);
-  gtk_application_set_accels_for_action (GTK_APPLICATION (app),
+  ctk_application_set_accels_for_action (GTK_APPLICATION (app),
                                          "app.quit",
                                          quit_accels);
 
-  builder = gtk_builder_new_from_resource ("/org/gtk/exampleapp/app-menu.ui");
-  app_menu = G_MENU_MODEL (gtk_builder_get_object (builder, "appmenu"));
-  gtk_application_set_app_menu (GTK_APPLICATION (app), app_menu);
+  builder = ctk_builder_new_from_resource ("/org/gtk/exampleapp/app-menu.ui");
+  app_menu = G_MENU_MODEL (ctk_builder_get_object (builder, "appmenu"));
+  ctk_application_set_app_menu (GTK_APPLICATION (app), app_menu);
   g_object_unref (builder);
 }
 
@@ -71,7 +71,7 @@ example_app_activate (GApplication *app)
   ExampleAppWindow *win;
 
   win = example_app_window_new (EXAMPLE_APP (app));
-  gtk_window_present (GTK_WINDOW (win));
+  ctk_window_present (GTK_WINDOW (win));
 }
 
 static void
@@ -84,7 +84,7 @@ example_app_open (GApplication  *app,
   ExampleAppWindow *win;
   int i;
 
-  windows = gtk_application_get_windows (GTK_APPLICATION (app));
+  windows = ctk_application_get_windows (GTK_APPLICATION (app));
   if (windows)
     win = EXAMPLE_APP_WINDOW (windows->data);
   else
@@ -93,7 +93,7 @@ example_app_open (GApplication  *app,
   for (i = 0; i < n_files; i++)
     example_app_window_open (win, files[i]);
 
-  gtk_window_present (GTK_WINDOW (win));
+  ctk_window_present (GTK_WINDOW (win));
 }
 
 static void

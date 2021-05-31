@@ -19,5 +19,5 @@ app9 = executable(
   'exampleappprefs.h',
   app9_resources,
   app9_schemas,
-  dependencies: libgtk_dep
+  dependencies: libctk_dep
 )

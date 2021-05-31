@@ -31,7 +31,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_MOUNT_OPERATION         (gtk_mount_operation_get_type ())
+#define GTK_TYPE_MOUNT_OPERATION         (ctk_mount_operation_get_type ())
 #define GTK_MOUNT_OPERATION(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_MOUNT_OPERATION, GtkMountOperation))
 #define GTK_MOUNT_OPERATION_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST((k), GTK_TYPE_MOUNT_OPERATION, GtkMountOperationClass))
 #define GTK_IS_MOUNT_OPERATION(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_MOUNT_OPERATION))
@@ -65,29 +65,29 @@ struct _GtkMountOperationClass
   /*< private >*/
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
 GDK_AVAILABLE_IN_ALL
-GType            gtk_mount_operation_get_type   (void);
+GType            ctk_mount_operation_get_type   (void);
 GDK_AVAILABLE_IN_ALL
-GMountOperation *gtk_mount_operation_new        (GtkWindow         *parent);
+GMountOperation *ctk_mount_operation_new        (GtkWindow         *parent);
 GDK_AVAILABLE_IN_ALL
-gboolean         gtk_mount_operation_is_showing (GtkMountOperation *op);
+gboolean         ctk_mount_operation_is_showing (GtkMountOperation *op);
 GDK_AVAILABLE_IN_ALL
-void             gtk_mount_operation_set_parent (GtkMountOperation *op,
+void             ctk_mount_operation_set_parent (GtkMountOperation *op,
                                                  GtkWindow         *parent);
 GDK_AVAILABLE_IN_ALL
-GtkWindow *      gtk_mount_operation_get_parent (GtkMountOperation *op);
+GtkWindow *      ctk_mount_operation_get_parent (GtkMountOperation *op);
 GDK_AVAILABLE_IN_ALL
-void             gtk_mount_operation_set_screen (GtkMountOperation *op,
+void             ctk_mount_operation_set_screen (GtkMountOperation *op,
                                                  GdkScreen         *screen);
 GDK_AVAILABLE_IN_ALL
-GdkScreen       *gtk_mount_operation_get_screen (GtkMountOperation *op);
+GdkScreen       *ctk_mount_operation_get_screen (GtkMountOperation *op);
 
 G_END_DECLS
 

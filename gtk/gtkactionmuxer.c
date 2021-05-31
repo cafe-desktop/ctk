@@ -56,8 +56,8 @@
  * different objects).
  */
 
-static void     gtk_action_muxer_group_iface_init         (GActionGroupInterface        *iface);
-static void     gtk_action_muxer_observable_iface_init    (GtkActionObservableInterface *iface);
+static void     ctk_action_muxer_group_iface_init         (GActionGroupInterface        *iface);
+static void     ctk_action_muxer_observable_iface_init    (GtkActionObservableInterface *iface);
 
 typedef GObjectClass GtkActionMuxerClass;
 
@@ -71,9 +71,9 @@ struct _GtkActionMuxer
   GtkActionMuxer *parent;
 };
 
-G_DEFINE_TYPE_WITH_CODE (GtkActionMuxer, gtk_action_muxer, G_TYPE_OBJECT,
-                         G_IMPLEMENT_INTERFACE (G_TYPE_ACTION_GROUP, gtk_action_muxer_group_iface_init)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_ACTION_OBSERVABLE, gtk_action_muxer_observable_iface_init))
+G_DEFINE_TYPE_WITH_CODE (GtkActionMuxer, ctk_action_muxer, G_TYPE_OBJECT,
+                         G_IMPLEMENT_INTERFACE (G_TYPE_ACTION_GROUP, ctk_action_muxer_group_iface_init)
+                         G_IMPLEMENT_INTERFACE (GTK_TYPE_ACTION_OBSERVABLE, ctk_action_muxer_observable_iface_init))
 
 enum
 {
@@ -102,7 +102,7 @@ typedef struct
 } Group;
 
 static void
-gtk_action_muxer_append_group_actions (gpointer key,
+ctk_action_muxer_append_group_actions (gpointer key,
                                        gpointer value,
                                        gpointer user_data)
 {
@@ -125,7 +125,7 @@ gtk_action_muxer_append_group_actions (gpointer key,
 }
 
 static gchar **
-gtk_action_muxer_list_actions (GActionGroup *action_group)
+ctk_action_muxer_list_actions (GActionGroup *action_group)
 {
   GtkActionMuxer *muxer = GTK_ACTION_MUXER (action_group);
   GArray *actions;
@@ -135,7 +135,7 @@ gtk_action_muxer_list_actions (GActionGroup *action_group)
   for ( ; muxer != NULL; muxer = muxer->parent)
     {
       g_hash_table_foreach (muxer->groups,
-                            gtk_action_muxer_append_group_actions,
+                            ctk_action_muxer_append_group_actions,
                             actions);
     }
 
@@ -143,7 +143,7 @@ gtk_action_muxer_list_actions (GActionGroup *action_group)
 }
 
 static Group *
-gtk_action_muxer_find_group (GtkActionMuxer  *muxer,
+ctk_action_muxer_find_group (GtkActionMuxer  *muxer,
                              const gchar     *full_name,
                              const gchar    **action_name)
 {
@@ -167,7 +167,7 @@ gtk_action_muxer_find_group (GtkActionMuxer  *muxer,
 }
 
 static void
-gtk_action_muxer_action_enabled_changed (GtkActionMuxer *muxer,
+ctk_action_muxer_action_enabled_changed (GtkActionMuxer *muxer,
                                          const gchar    *action_name,
                                          gboolean        enabled)
 {
@@ -176,12 +176,12 @@ gtk_action_muxer_action_enabled_changed (GtkActionMuxer *muxer,
 
   action = g_hash_table_lookup (muxer->observed_actions, action_name);
   for (node = action ? action->watchers : NULL; node; node = node->next)
-    gtk_action_observer_action_enabled_changed (node->data, GTK_ACTION_OBSERVABLE (muxer), action_name, enabled);
+    ctk_action_observer_action_enabled_changed (node->data, GTK_ACTION_OBSERVABLE (muxer), action_name, enabled);
   g_action_group_action_enabled_changed (G_ACTION_GROUP (muxer), action_name, enabled);
 }
 
 static void
-gtk_action_muxer_group_action_enabled_changed (GActionGroup *action_group,
+ctk_action_muxer_group_action_enabled_changed (GActionGroup *action_group,
                                                const gchar  *action_name,
                                                gboolean      enabled,
                                                gpointer      user_data)
@@ -190,24 +190,24 @@ gtk_action_muxer_group_action_enabled_changed (GActionGroup *action_group,
   gchar *fullname;
 
   fullname = g_strconcat (group->prefix, ".", action_name, NULL);
-  gtk_action_muxer_action_enabled_changed (group->muxer, fullname, enabled);
+  ctk_action_muxer_action_enabled_changed (group->muxer, fullname, enabled);
 
   g_free (fullname);
 }
 
 static void
-gtk_action_muxer_parent_action_enabled_changed (GActionGroup *action_group,
+ctk_action_muxer_parent_action_enabled_changed (GActionGroup *action_group,
                                                 const gchar  *action_name,
                                                 gboolean      enabled,
                                                 gpointer      user_data)
 {
   GtkActionMuxer *muxer = user_data;
 
-  gtk_action_muxer_action_enabled_changed (muxer, action_name, enabled);
+  ctk_action_muxer_action_enabled_changed (muxer, action_name, enabled);
 }
 
 static void
-gtk_action_muxer_action_state_changed (GtkActionMuxer *muxer,
+ctk_action_muxer_action_state_changed (GtkActionMuxer *muxer,
                                        const gchar    *action_name,
                                        GVariant       *state)
 {
@@ -216,12 +216,12 @@ gtk_action_muxer_action_state_changed (GtkActionMuxer *muxer,
 
   action = g_hash_table_lookup (muxer->observed_actions, action_name);
   for (node = action ? action->watchers : NULL; node; node = node->next)
-    gtk_action_observer_action_state_changed (node->data, GTK_ACTION_OBSERVABLE (muxer), action_name, state);
+    ctk_action_observer_action_state_changed (node->data, GTK_ACTION_OBSERVABLE (muxer), action_name, state);
   g_action_group_action_state_changed (G_ACTION_GROUP (muxer), action_name, state);
 }
 
 static void
-gtk_action_muxer_group_action_state_changed (GActionGroup *action_group,
+ctk_action_muxer_group_action_state_changed (GActionGroup *action_group,
                                              const gchar  *action_name,
                                              GVariant     *state,
                                              gpointer      user_data)
@@ -230,24 +230,24 @@ gtk_action_muxer_group_action_state_changed (GActionGroup *action_group,
   gchar *fullname;
 
   fullname = g_strconcat (group->prefix, ".", action_name, NULL);
-  gtk_action_muxer_action_state_changed (group->muxer, fullname, state);
+  ctk_action_muxer_action_state_changed (group->muxer, fullname, state);
 
   g_free (fullname);
 }
 
 static void
-gtk_action_muxer_parent_action_state_changed (GActionGroup *action_group,
+ctk_action_muxer_parent_action_state_changed (GActionGroup *action_group,
                                               const gchar  *action_name,
                                               GVariant     *state,
                                               gpointer      user_data)
 {
   GtkActionMuxer *muxer = user_data;
 
-  gtk_action_muxer_action_state_changed (muxer, action_name, state);
+  ctk_action_muxer_action_state_changed (muxer, action_name, state);
 }
 
 static void
-gtk_action_muxer_action_added (GtkActionMuxer *muxer,
+ctk_action_muxer_action_added (GtkActionMuxer *muxer,
                                const gchar    *action_name,
                                GActionGroup   *original_group,
                                const gchar    *orignal_action_name)
@@ -266,7 +266,7 @@ gtk_action_muxer_action_added (GtkActionMuxer *muxer,
       GSList *node;
 
       for (node = action->watchers; node; node = node->next)
-        gtk_action_observer_action_added (node->data,
+        ctk_action_observer_action_added (node->data,
                                         GTK_ACTION_OBSERVABLE (muxer),
                                         action_name, parameter_type, enabled, state);
 
@@ -278,7 +278,7 @@ gtk_action_muxer_action_added (GtkActionMuxer *muxer,
 }
 
 static void
-gtk_action_muxer_action_added_to_group (GActionGroup *action_group,
+ctk_action_muxer_action_added_to_group (GActionGroup *action_group,
                                         const gchar  *action_name,
                                         gpointer      user_data)
 {
@@ -286,23 +286,23 @@ gtk_action_muxer_action_added_to_group (GActionGroup *action_group,
   gchar *fullname;
 
   fullname = g_strconcat (group->prefix, ".", action_name, NULL);
-  gtk_action_muxer_action_added (group->muxer, fullname, action_group, action_name);
+  ctk_action_muxer_action_added (group->muxer, fullname, action_group, action_name);
 
   g_free (fullname);
 }
 
 static void
-gtk_action_muxer_action_added_to_parent (GActionGroup *action_group,
+ctk_action_muxer_action_added_to_parent (GActionGroup *action_group,
                                          const gchar  *action_name,
                                          gpointer      user_data)
 {
   GtkActionMuxer *muxer = user_data;
 
-  gtk_action_muxer_action_added (muxer, action_name, action_group, action_name);
+  ctk_action_muxer_action_added (muxer, action_name, action_group, action_name);
 }
 
 static void
-gtk_action_muxer_action_removed (GtkActionMuxer *muxer,
+ctk_action_muxer_action_removed (GtkActionMuxer *muxer,
                                  const gchar    *action_name)
 {
   Action *action;
@@ -310,12 +310,12 @@ gtk_action_muxer_action_removed (GtkActionMuxer *muxer,
 
   action = g_hash_table_lookup (muxer->observed_actions, action_name);
   for (node = action ? action->watchers : NULL; node; node = node->next)
-    gtk_action_observer_action_removed (node->data, GTK_ACTION_OBSERVABLE (muxer), action_name);
+    ctk_action_observer_action_removed (node->data, GTK_ACTION_OBSERVABLE (muxer), action_name);
   g_action_group_action_removed (G_ACTION_GROUP (muxer), action_name);
 }
 
 static void
-gtk_action_muxer_action_removed_from_group (GActionGroup *action_group,
+ctk_action_muxer_action_removed_from_group (GActionGroup *action_group,
                                             const gchar  *action_name,
                                             gpointer      user_data)
 {
@@ -323,23 +323,23 @@ gtk_action_muxer_action_removed_from_group (GActionGroup *action_group,
   gchar *fullname;
 
   fullname = g_strconcat (group->prefix, ".", action_name, NULL);
-  gtk_action_muxer_action_removed (group->muxer, fullname);
+  ctk_action_muxer_action_removed (group->muxer, fullname);
 
   g_free (fullname);
 }
 
 static void
-gtk_action_muxer_action_removed_from_parent (GActionGroup *action_group,
+ctk_action_muxer_action_removed_from_parent (GActionGroup *action_group,
                                              const gchar  *action_name,
                                              gpointer      user_data)
 {
   GtkActionMuxer *muxer = user_data;
 
-  gtk_action_muxer_action_removed (muxer, action_name);
+  ctk_action_muxer_action_removed (muxer, action_name);
 }
 
 static void
-gtk_action_muxer_primary_accel_changed (GtkActionMuxer *muxer,
+ctk_action_muxer_primary_accel_changed (GtkActionMuxer *muxer,
                                         const gchar    *action_name,
                                         const gchar    *action_and_target)
 {
@@ -351,13 +351,13 @@ gtk_action_muxer_primary_accel_changed (GtkActionMuxer *muxer,
 
   action = g_hash_table_lookup (muxer->observed_actions, action_name);
   for (node = action ? action->watchers : NULL; node; node = node->next)
-    gtk_action_observer_primary_accel_changed (node->data, GTK_ACTION_OBSERVABLE (muxer),
+    ctk_action_observer_primary_accel_changed (node->data, GTK_ACTION_OBSERVABLE (muxer),
                                                action_name, action_and_target);
   g_signal_emit (muxer, accel_signal, 0, action_name, action_and_target);
 }
 
 static void
-gtk_action_muxer_parent_primary_accel_changed (GtkActionMuxer *parent,
+ctk_action_muxer_parent_primary_accel_changed (GtkActionMuxer *parent,
                                                const gchar    *action_name,
                                                const gchar    *action_and_target,
                                                gpointer        user_data)
@@ -368,11 +368,11 @@ gtk_action_muxer_parent_primary_accel_changed (GtkActionMuxer *parent,
   if (muxer->primary_accels && g_hash_table_lookup (muxer->primary_accels, action_and_target))
     return;
 
-  gtk_action_muxer_primary_accel_changed (muxer, action_name, action_and_target);
+  ctk_action_muxer_primary_accel_changed (muxer, action_name, action_and_target);
 }
 
 static gboolean
-gtk_action_muxer_query_action (GActionGroup        *action_group,
+ctk_action_muxer_query_action (GActionGroup        *action_group,
                                const gchar         *action_name,
                                gboolean            *enabled,
                                const GVariantType **parameter_type,
@@ -384,7 +384,7 @@ gtk_action_muxer_query_action (GActionGroup        *action_group,
   Group *group;
   const gchar *unprefixed_name;
 
-  group = gtk_action_muxer_find_group (muxer, action_name, &unprefixed_name);
+  group = ctk_action_muxer_find_group (muxer, action_name, &unprefixed_name);
 
   if (group)
     return g_action_group_query_action (group->group, unprefixed_name, enabled,
@@ -399,7 +399,7 @@ gtk_action_muxer_query_action (GActionGroup        *action_group,
 }
 
 static void
-gtk_action_muxer_activate_action (GActionGroup *action_group,
+ctk_action_muxer_activate_action (GActionGroup *action_group,
                                   const gchar  *action_name,
                                   GVariant     *parameter)
 {
@@ -407,7 +407,7 @@ gtk_action_muxer_activate_action (GActionGroup *action_group,
   Group *group;
   const gchar *unprefixed_name;
 
-  group = gtk_action_muxer_find_group (muxer, action_name, &unprefixed_name);
+  group = ctk_action_muxer_find_group (muxer, action_name, &unprefixed_name);
 
   if (group)
     g_action_group_activate_action (group->group, unprefixed_name, parameter);
@@ -416,7 +416,7 @@ gtk_action_muxer_activate_action (GActionGroup *action_group,
 }
 
 static void
-gtk_action_muxer_change_action_state (GActionGroup *action_group,
+ctk_action_muxer_change_action_state (GActionGroup *action_group,
                                       const gchar  *action_name,
                                       GVariant     *state)
 {
@@ -424,7 +424,7 @@ gtk_action_muxer_change_action_state (GActionGroup *action_group,
   Group *group;
   const gchar *unprefixed_name;
 
-  group = gtk_action_muxer_find_group (muxer, action_name, &unprefixed_name);
+  group = ctk_action_muxer_find_group (muxer, action_name, &unprefixed_name);
 
   if (group)
     g_action_group_change_action_state (group->group, unprefixed_name, state);
@@ -433,7 +433,7 @@ gtk_action_muxer_change_action_state (GActionGroup *action_group,
 }
 
 static void
-gtk_action_muxer_unregister_internal (Action   *action,
+ctk_action_muxer_unregister_internal (Action   *action,
                                       gpointer  observer)
 {
   GtkActionMuxer *muxer = action->muxer;
@@ -452,16 +452,16 @@ gtk_action_muxer_unregister_internal (Action   *action,
 }
 
 static void
-gtk_action_muxer_weak_notify (gpointer  data,
+ctk_action_muxer_weak_notify (gpointer  data,
                               GObject  *where_the_object_was)
 {
   Action *action = data;
 
-  gtk_action_muxer_unregister_internal (action, where_the_object_was);
+  ctk_action_muxer_unregister_internal (action, where_the_object_was);
 }
 
 static void
-gtk_action_muxer_register_observer (GtkActionObservable *observable,
+ctk_action_muxer_register_observer (GtkActionObservable *observable,
                                     const gchar         *name,
                                     GtkActionObserver   *observer)
 {
@@ -481,11 +481,11 @@ gtk_action_muxer_register_observer (GtkActionObservable *observable,
     }
 
   action->watchers = g_slist_prepend (action->watchers, observer);
-  g_object_weak_ref (G_OBJECT (observer), gtk_action_muxer_weak_notify, action);
+  g_object_weak_ref (G_OBJECT (observer), ctk_action_muxer_weak_notify, action);
 }
 
 static void
-gtk_action_muxer_unregister_observer (GtkActionObservable *observable,
+ctk_action_muxer_unregister_observer (GtkActionObservable *observable,
                                       const gchar         *name,
                                       GtkActionObserver   *observer)
 {
@@ -493,12 +493,12 @@ gtk_action_muxer_unregister_observer (GtkActionObservable *observable,
   Action *action;
 
   action = g_hash_table_lookup (muxer->observed_actions, name);
-  g_object_weak_unref (G_OBJECT (observer), gtk_action_muxer_weak_notify, action);
-  gtk_action_muxer_unregister_internal (action, observer);
+  g_object_weak_unref (G_OBJECT (observer), ctk_action_muxer_weak_notify, action);
+  ctk_action_muxer_unregister_internal (action, observer);
 }
 
 static void
-gtk_action_muxer_free_group (gpointer data)
+ctk_action_muxer_free_group (gpointer data)
 {
   Group *group = data;
   gint i;
@@ -514,13 +514,13 @@ gtk_action_muxer_free_group (gpointer data)
 }
 
 static void
-gtk_action_muxer_free_action (gpointer data)
+ctk_action_muxer_free_action (gpointer data)
 {
   Action *action = data;
   GSList *it;
 
   for (it = action->watchers; it; it = it->next)
-    g_object_weak_unref (G_OBJECT (it->data), gtk_action_muxer_weak_notify, action);
+    g_object_weak_unref (G_OBJECT (it->data), ctk_action_muxer_weak_notify, action);
 
   g_slist_free (action->watchers);
   g_free (action->fullname);
@@ -529,7 +529,7 @@ gtk_action_muxer_free_action (gpointer data)
 }
 
 static void
-gtk_action_muxer_finalize (GObject *object)
+ctk_action_muxer_finalize (GObject *object)
 {
   GtkActionMuxer *muxer = GTK_ACTION_MUXER (object);
 
@@ -539,34 +539,34 @@ gtk_action_muxer_finalize (GObject *object)
   if (muxer->primary_accels)
     g_hash_table_unref (muxer->primary_accels);
 
-  G_OBJECT_CLASS (gtk_action_muxer_parent_class)
+  G_OBJECT_CLASS (ctk_action_muxer_parent_class)
     ->finalize (object);
 }
 
 static void
-gtk_action_muxer_dispose (GObject *object)
+ctk_action_muxer_dispose (GObject *object)
 {
   GtkActionMuxer *muxer = GTK_ACTION_MUXER (object);
 
   if (muxer->parent)
   {
-    g_signal_handlers_disconnect_by_func (muxer->parent, gtk_action_muxer_action_added_to_parent, muxer);
-    g_signal_handlers_disconnect_by_func (muxer->parent, gtk_action_muxer_action_removed_from_parent, muxer);
-    g_signal_handlers_disconnect_by_func (muxer->parent, gtk_action_muxer_parent_action_enabled_changed, muxer);
-    g_signal_handlers_disconnect_by_func (muxer->parent, gtk_action_muxer_parent_action_state_changed, muxer);
-    g_signal_handlers_disconnect_by_func (muxer->parent, gtk_action_muxer_parent_primary_accel_changed, muxer);
+    g_signal_handlers_disconnect_by_func (muxer->parent, ctk_action_muxer_action_added_to_parent, muxer);
+    g_signal_handlers_disconnect_by_func (muxer->parent, ctk_action_muxer_action_removed_from_parent, muxer);
+    g_signal_handlers_disconnect_by_func (muxer->parent, ctk_action_muxer_parent_action_enabled_changed, muxer);
+    g_signal_handlers_disconnect_by_func (muxer->parent, ctk_action_muxer_parent_action_state_changed, muxer);
+    g_signal_handlers_disconnect_by_func (muxer->parent, ctk_action_muxer_parent_primary_accel_changed, muxer);
 
     g_clear_object (&muxer->parent);
   }
 
   g_hash_table_remove_all (muxer->observed_actions);
 
-  G_OBJECT_CLASS (gtk_action_muxer_parent_class)
+  G_OBJECT_CLASS (ctk_action_muxer_parent_class)
     ->dispose (object);
 }
 
 static void
-gtk_action_muxer_get_property (GObject    *object,
+ctk_action_muxer_get_property (GObject    *object,
                                guint       property_id,
                                GValue     *value,
                                GParamSpec *pspec)
@@ -576,7 +576,7 @@ gtk_action_muxer_get_property (GObject    *object,
   switch (property_id)
     {
     case PROP_PARENT:
-      g_value_set_object (value, gtk_action_muxer_get_parent (muxer));
+      g_value_set_object (value, ctk_action_muxer_get_parent (muxer));
       break;
 
     default:
@@ -585,7 +585,7 @@ gtk_action_muxer_get_property (GObject    *object,
 }
 
 static void
-gtk_action_muxer_set_property (GObject      *object,
+ctk_action_muxer_set_property (GObject      *object,
                                guint         property_id,
                                const GValue *value,
                                GParamSpec   *pspec)
@@ -595,7 +595,7 @@ gtk_action_muxer_set_property (GObject      *object,
   switch (property_id)
     {
     case PROP_PARENT:
-      gtk_action_muxer_set_parent (muxer, g_value_get_object (value));
+      ctk_action_muxer_set_parent (muxer, g_value_get_object (value));
       break;
 
     default:
@@ -604,46 +604,46 @@ gtk_action_muxer_set_property (GObject      *object,
 }
 
 static void
-gtk_action_muxer_init (GtkActionMuxer *muxer)
+ctk_action_muxer_init (GtkActionMuxer *muxer)
 {
-  muxer->observed_actions = g_hash_table_new_full (g_str_hash, g_str_equal, NULL, gtk_action_muxer_free_action);
-  muxer->groups = g_hash_table_new_full (g_str_hash, g_str_equal, NULL, gtk_action_muxer_free_group);
+  muxer->observed_actions = g_hash_table_new_full (g_str_hash, g_str_equal, NULL, ctk_action_muxer_free_action);
+  muxer->groups = g_hash_table_new_full (g_str_hash, g_str_equal, NULL, ctk_action_muxer_free_group);
 }
 
 static void
-gtk_action_muxer_observable_iface_init (GtkActionObservableInterface *iface)
+ctk_action_muxer_observable_iface_init (GtkActionObservableInterface *iface)
 {
-  iface->register_observer = gtk_action_muxer_register_observer;
-  iface->unregister_observer = gtk_action_muxer_unregister_observer;
+  iface->register_observer = ctk_action_muxer_register_observer;
+  iface->unregister_observer = ctk_action_muxer_unregister_observer;
 }
 
 static void
-gtk_action_muxer_group_iface_init (GActionGroupInterface *iface)
+ctk_action_muxer_group_iface_init (GActionGroupInterface *iface)
 {
-  iface->list_actions = gtk_action_muxer_list_actions;
-  iface->query_action = gtk_action_muxer_query_action;
-  iface->activate_action = gtk_action_muxer_activate_action;
-  iface->change_action_state = gtk_action_muxer_change_action_state;
+  iface->list_actions = ctk_action_muxer_list_actions;
+  iface->query_action = ctk_action_muxer_query_action;
+  iface->activate_action = ctk_action_muxer_activate_action;
+  iface->change_action_state = ctk_action_muxer_change_action_state;
 }
 
 static void
-gtk_action_muxer_class_init (GObjectClass *class)
+ctk_action_muxer_class_init (GObjectClass *class)
 {
-  class->get_property = gtk_action_muxer_get_property;
-  class->set_property = gtk_action_muxer_set_property;
-  class->finalize = gtk_action_muxer_finalize;
-  class->dispose = gtk_action_muxer_dispose;
+  class->get_property = ctk_action_muxer_get_property;
+  class->set_property = ctk_action_muxer_set_property;
+  class->finalize = ctk_action_muxer_finalize;
+  class->dispose = ctk_action_muxer_dispose;
 
   accel_signal = g_signal_new (I_("primary-accel-changed"),
                                GTK_TYPE_ACTION_MUXER,
                                G_SIGNAL_RUN_LAST,
                                0,
                                NULL, NULL,
-                               _gtk_marshal_VOID__STRING_STRING,
+                               _ctk_marshal_VOID__STRING_STRING,
                                G_TYPE_NONE, 2, G_TYPE_STRING, G_TYPE_STRING);
   g_signal_set_va_marshaller (accel_signal,
                               G_TYPE_FROM_CLASS (class),
-                              _gtk_marshal_VOID__STRING_STRINGv);
+                              _ctk_marshal_VOID__STRING_STRINGv);
 
   properties[PROP_PARENT] = g_param_spec_object ("parent", "Parent",
                                                  "The parent muxer",
@@ -655,7 +655,7 @@ gtk_action_muxer_class_init (GObjectClass *class)
 }
 
 /*< private >
- * gtk_action_muxer_insert:
+ * ctk_action_muxer_insert:
  * @muxer: a #GtkActionMuxer
  * @prefix: the prefix string for the action group
  * @action_group: a #GActionGroup
@@ -675,7 +675,7 @@ gtk_action_muxer_class_init (GObjectClass *class)
  * @prefix must not contain a dot ('.').
  */
 void
-gtk_action_muxer_insert (GtkActionMuxer *muxer,
+ctk_action_muxer_insert (GtkActionMuxer *muxer,
                          const gchar    *prefix,
                          GActionGroup   *action_group)
 {
@@ -686,7 +686,7 @@ gtk_action_muxer_insert (GtkActionMuxer *muxer,
   g_object_ref (action_group);
 
   /* TODO: diff instead of ripout and replace */
-  gtk_action_muxer_remove (muxer, prefix);
+  ctk_action_muxer_remove (muxer, prefix);
 
   group = g_slice_new (Group);
   group->muxer = muxer;
@@ -697,21 +697,21 @@ gtk_action_muxer_insert (GtkActionMuxer *muxer,
 
   actions = g_action_group_list_actions (group->group);
   for (i = 0; actions[i]; i++)
-    gtk_action_muxer_action_added_to_group (group->group, actions[i], group);
+    ctk_action_muxer_action_added_to_group (group->group, actions[i], group);
   g_strfreev (actions);
 
   group->handler_ids[0] = g_signal_connect (group->group, "action-added",
-                                            G_CALLBACK (gtk_action_muxer_action_added_to_group), group);
+                                            G_CALLBACK (ctk_action_muxer_action_added_to_group), group);
   group->handler_ids[1] = g_signal_connect (group->group, "action-removed",
-                                            G_CALLBACK (gtk_action_muxer_action_removed_from_group), group);
+                                            G_CALLBACK (ctk_action_muxer_action_removed_from_group), group);
   group->handler_ids[2] = g_signal_connect (group->group, "action-enabled-changed",
-                                            G_CALLBACK (gtk_action_muxer_group_action_enabled_changed), group);
+                                            G_CALLBACK (ctk_action_muxer_group_action_enabled_changed), group);
   group->handler_ids[3] = g_signal_connect (group->group, "action-state-changed",
-                                            G_CALLBACK (gtk_action_muxer_group_action_state_changed), group);
+                                            G_CALLBACK (ctk_action_muxer_group_action_state_changed), group);
 }
 
 /*< private >
- * gtk_action_muxer_remove:
+ * ctk_action_muxer_remove:
  * @muxer: a #GtkActionMuxer
  * @prefix: the prefix of the action group to remove
  *
@@ -721,7 +721,7 @@ gtk_action_muxer_insert (GtkActionMuxer *muxer,
  * “action_removed” notifications will be emitted, as appropriate.
  */
 void
-gtk_action_muxer_remove (GtkActionMuxer *muxer,
+ctk_action_muxer_remove (GtkActionMuxer *muxer,
                          const gchar    *prefix)
 {
   Group *group;
@@ -737,15 +737,15 @@ gtk_action_muxer_remove (GtkActionMuxer *muxer,
 
       actions = g_action_group_list_actions (group->group);
       for (i = 0; actions[i]; i++)
-        gtk_action_muxer_action_removed_from_group (group->group, actions[i], group);
+        ctk_action_muxer_action_removed_from_group (group->group, actions[i], group);
       g_strfreev (actions);
 
-      gtk_action_muxer_free_group (group);
+      ctk_action_muxer_free_group (group);
     }
 }
 
 static void
-gtk_action_muxer_append_prefixes (gpointer key,
+ctk_action_muxer_append_prefixes (gpointer key,
                                   gpointer value,
                                   gpointer user_data)
 {
@@ -756,7 +756,7 @@ gtk_action_muxer_append_prefixes (gpointer key,
 }
 
 const gchar **
-gtk_action_muxer_list_prefixes (GtkActionMuxer *muxer)
+ctk_action_muxer_list_prefixes (GtkActionMuxer *muxer)
 {
   GArray *prefixes;
 
@@ -765,7 +765,7 @@ gtk_action_muxer_list_prefixes (GtkActionMuxer *muxer)
   for ( ; muxer != NULL; muxer = muxer->parent)
     {
       g_hash_table_foreach (muxer->groups,
-                            gtk_action_muxer_append_prefixes,
+                            ctk_action_muxer_append_prefixes,
                             prefixes);
     }
 
@@ -773,7 +773,7 @@ gtk_action_muxer_list_prefixes (GtkActionMuxer *muxer)
 }
 
 GActionGroup *
-gtk_action_muxer_lookup (GtkActionMuxer *muxer,
+ctk_action_muxer_lookup (GtkActionMuxer *muxer,
                          const gchar    *prefix)
 {
   Group *group;
@@ -790,24 +790,24 @@ gtk_action_muxer_lookup (GtkActionMuxer *muxer,
 }
 
 /*< private >
- * gtk_action_muxer_new:
+ * ctk_action_muxer_new:
  *
  * Creates a new #GtkActionMuxer.
  */
 GtkActionMuxer *
-gtk_action_muxer_new (void)
+ctk_action_muxer_new (void)
 {
   return g_object_new (GTK_TYPE_ACTION_MUXER, NULL);
 }
 
 /*< private >
- * gtk_action_muxer_get_parent:
+ * ctk_action_muxer_get_parent:
  * @muxer: a #GtkActionMuxer
  *
  * Returns: (transfer none): the parent of @muxer, or NULL.
  */
 GtkActionMuxer *
-gtk_action_muxer_get_parent (GtkActionMuxer *muxer)
+ctk_action_muxer_get_parent (GtkActionMuxer *muxer)
 {
   g_return_val_if_fail (GTK_IS_ACTION_MUXER (muxer), NULL);
 
@@ -827,7 +827,7 @@ emit_changed_accels (GtkActionMuxer  *muxer,
 
           g_hash_table_iter_init (&iter, parent->primary_accels);
           while (g_hash_table_iter_next (&iter, &key, NULL))
-            gtk_action_muxer_primary_accel_changed (muxer, NULL, key);
+            ctk_action_muxer_primary_accel_changed (muxer, NULL, key);
         }
 
       parent = parent->parent;
@@ -835,14 +835,14 @@ emit_changed_accels (GtkActionMuxer  *muxer,
 }
 
 /*< private >
- * gtk_action_muxer_set_parent:
+ * ctk_action_muxer_set_parent:
  * @muxer: a #GtkActionMuxer
  * @parent: (allow-none): the new parent #GtkActionMuxer
  *
  * Sets the parent of @muxer to @parent.
  */
 void
-gtk_action_muxer_set_parent (GtkActionMuxer *muxer,
+ctk_action_muxer_set_parent (GtkActionMuxer *muxer,
                              GtkActionMuxer *parent)
 {
   g_return_if_fail (GTK_IS_ACTION_MUXER (muxer));
@@ -858,16 +858,16 @@ gtk_action_muxer_set_parent (GtkActionMuxer *muxer,
 
       actions = g_action_group_list_actions (G_ACTION_GROUP (muxer->parent));
       for (it = actions; *it; it++)
-        gtk_action_muxer_action_removed (muxer, *it);
+        ctk_action_muxer_action_removed (muxer, *it);
       g_strfreev (actions);
 
       emit_changed_accels (muxer, muxer->parent);
 
-      g_signal_handlers_disconnect_by_func (muxer->parent, gtk_action_muxer_action_added_to_parent, muxer);
-      g_signal_handlers_disconnect_by_func (muxer->parent, gtk_action_muxer_action_removed_from_parent, muxer);
-      g_signal_handlers_disconnect_by_func (muxer->parent, gtk_action_muxer_parent_action_enabled_changed, muxer);
-      g_signal_handlers_disconnect_by_func (muxer->parent, gtk_action_muxer_parent_action_state_changed, muxer);
-      g_signal_handlers_disconnect_by_func (muxer->parent, gtk_action_muxer_parent_primary_accel_changed, muxer);
+      g_signal_handlers_disconnect_by_func (muxer->parent, ctk_action_muxer_action_added_to_parent, muxer);
+      g_signal_handlers_disconnect_by_func (muxer->parent, ctk_action_muxer_action_removed_from_parent, muxer);
+      g_signal_handlers_disconnect_by_func (muxer->parent, ctk_action_muxer_parent_action_enabled_changed, muxer);
+      g_signal_handlers_disconnect_by_func (muxer->parent, ctk_action_muxer_parent_action_state_changed, muxer);
+      g_signal_handlers_disconnect_by_func (muxer->parent, ctk_action_muxer_parent_primary_accel_changed, muxer);
 
       g_object_unref (muxer->parent);
     }
@@ -883,28 +883,28 @@ gtk_action_muxer_set_parent (GtkActionMuxer *muxer,
 
       actions = g_action_group_list_actions (G_ACTION_GROUP (muxer->parent));
       for (it = actions; *it; it++)
-        gtk_action_muxer_action_added (muxer, *it, G_ACTION_GROUP (muxer->parent), *it);
+        ctk_action_muxer_action_added (muxer, *it, G_ACTION_GROUP (muxer->parent), *it);
       g_strfreev (actions);
 
       emit_changed_accels (muxer, muxer->parent);
 
       g_signal_connect (muxer->parent, "action-added",
-                        G_CALLBACK (gtk_action_muxer_action_added_to_parent), muxer);
+                        G_CALLBACK (ctk_action_muxer_action_added_to_parent), muxer);
       g_signal_connect (muxer->parent, "action-removed",
-                        G_CALLBACK (gtk_action_muxer_action_removed_from_parent), muxer);
+                        G_CALLBACK (ctk_action_muxer_action_removed_from_parent), muxer);
       g_signal_connect (muxer->parent, "action-enabled-changed",
-                        G_CALLBACK (gtk_action_muxer_parent_action_enabled_changed), muxer);
+                        G_CALLBACK (ctk_action_muxer_parent_action_enabled_changed), muxer);
       g_signal_connect (muxer->parent, "action-state-changed",
-                        G_CALLBACK (gtk_action_muxer_parent_action_state_changed), muxer);
+                        G_CALLBACK (ctk_action_muxer_parent_action_state_changed), muxer);
       g_signal_connect (muxer->parent, "primary-accel-changed",
-                        G_CALLBACK (gtk_action_muxer_parent_primary_accel_changed), muxer);
+                        G_CALLBACK (ctk_action_muxer_parent_primary_accel_changed), muxer);
     }
 
   g_object_notify_by_pspec (G_OBJECT (muxer), properties[PROP_PARENT]);
 }
 
 void
-gtk_action_muxer_set_primary_accel (GtkActionMuxer *muxer,
+ctk_action_muxer_set_primary_accel (GtkActionMuxer *muxer,
                                     const gchar    *action_and_target,
                                     const gchar    *primary_accel)
 {
@@ -916,11 +916,11 @@ gtk_action_muxer_set_primary_accel (GtkActionMuxer *muxer,
   else
     g_hash_table_remove (muxer->primary_accels, action_and_target);
 
-  gtk_action_muxer_primary_accel_changed (muxer, NULL, action_and_target);
+  ctk_action_muxer_primary_accel_changed (muxer, NULL, action_and_target);
 }
 
 const gchar *
-gtk_action_muxer_get_primary_accel (GtkActionMuxer *muxer,
+ctk_action_muxer_get_primary_accel (GtkActionMuxer *muxer,
                                     const gchar    *action_and_target)
 {
   if (muxer->primary_accels)
@@ -936,11 +936,11 @@ gtk_action_muxer_get_primary_accel (GtkActionMuxer *muxer,
   if (!muxer->parent)
     return NULL;
 
-  return gtk_action_muxer_get_primary_accel (muxer->parent, action_and_target);
+  return ctk_action_muxer_get_primary_accel (muxer->parent, action_and_target);
 }
 
 gchar *
-gtk_print_action_and_target (const gchar *action_namespace,
+ctk_print_action_and_target (const gchar *action_namespace,
                              const gchar *action_name,
                              GVariant    *target)
 {
@@ -967,7 +967,7 @@ gtk_print_action_and_target (const gchar *action_namespace,
 }
 
 gchar *
-gtk_normalise_detailed_action_name (const gchar *detailed_action_name)
+ctk_normalise_detailed_action_name (const gchar *detailed_action_name)
 {
   GError *error = NULL;
   gchar *action_and_target;
@@ -977,7 +977,7 @@ gtk_normalise_detailed_action_name (const gchar *detailed_action_name)
   g_action_parse_detailed_name (detailed_action_name, &action_name, &target, &error);
   g_assert_no_error (error);
 
-  action_and_target = gtk_print_action_and_target (NULL, action_name, target);
+  action_and_target = ctk_print_action_and_target (NULL, action_name, target);
 
   if (target)
     g_variant_unref (target);

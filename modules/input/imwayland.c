@@ -113,14 +113,14 @@ static const GtkIMContextInfo *info_list[] =
   &imwayland_info,
 };
 
-static void gtk_im_context_wayland_focus_out (GtkIMContext *context);
+static void ctk_im_context_wayland_focus_out (GtkIMContext *context);
 
 #define GTK_IM_CONTEXT_WAYLAND(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), type_wayland, GtkIMContextWayland))
 
 #ifndef INCLUDE_IM_wayland
 #define MODULE_ENTRY(type,function) G_MODULE_EXPORT type im_module_ ## function
 #else
-#define MODULE_ENTRY(type, function) type _gtk_immodule_wayland_ ## function
+#define MODULE_ENTRY(type, function) type _ctk_immodule_wayland_ ## function
 #endif
 
 static void
@@ -467,11 +467,11 @@ commit_state (GtkIMContextWayland *context)
 }
 
 static void
-gtk_im_context_wayland_finalize (GObject *object)
+ctk_im_context_wayland_finalize (GObject *object)
 {
   GtkIMContextWayland *context = GTK_IM_CONTEXT_WAYLAND (object);
 
-  gtk_im_context_wayland_focus_out (GTK_IM_CONTEXT (context));
+  ctk_im_context_wayland_focus_out (GTK_IM_CONTEXT (context));
 
   g_clear_object (&context->window);
   g_clear_object (&context->gesture);
@@ -484,7 +484,7 @@ gtk_im_context_wayland_finalize (GObject *object)
 }
 
 static void
-gtk_im_context_wayland_get_preedit_string (GtkIMContext   *context,
+ctk_im_context_wayland_get_preedit_string (GtkIMContext   *context,
                                            gchar         **str,
                                            PangoAttrList **attrs,
                                            gint           *cursor_pos)
@@ -536,7 +536,7 @@ gtk_im_context_wayland_get_preedit_string (GtkIMContext   *context,
 }
 
 static gboolean
-gtk_im_context_wayland_filter_keypress (GtkIMContext *context,
+ctk_im_context_wayland_filter_keypress (GtkIMContext *context,
                                         GdkEventKey  *key)
 {
   /* This is done by the compositor */
@@ -605,7 +605,7 @@ released_cb (GtkGestureMultiPress *gesture,
   if (global->focused &&
       n_press == 1 &&
       (hints & GTK_INPUT_HINT_INHIBIT_OSK) == 0 &&
-      !gtk_drag_check_threshold (context->widget,
+      !ctk_drag_check_threshold (context->widget,
                                  context->press_x,
                                  context->press_y,
                                  x, y))
@@ -613,7 +613,7 @@ released_cb (GtkGestureMultiPress *gesture,
 }
 
 static void
-gtk_im_context_wayland_set_client_window (GtkIMContext *context,
+ctk_im_context_wayland_set_client_window (GtkIMContext *context,
                                           GdkWindow    *window)
 {
   GtkIMContextWayland *context_wayland = GTK_IM_CONTEXT_WAYLAND (context);
@@ -638,8 +638,8 @@ gtk_im_context_wayland_set_client_window (GtkIMContext *context,
         {
           GtkGesture *gesture;
 
-          gesture = gtk_gesture_multi_press_new (widget);
-          gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture),
+          gesture = ctk_gesture_multi_press_new (widget);
+          ctk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture),
                                                       GTK_PHASE_CAPTURE);
           g_signal_connect (gesture, "pressed",
                             G_CALLBACK (pressed_cb), context);
@@ -729,7 +729,7 @@ static const struct wl_registry_listener registry_listener = {
 };
 
 static void
-gtk_im_context_wayland_global_init (GdkDisplay *display)
+ctk_im_context_wayland_global_init (GdkDisplay *display)
 {
   g_return_if_fail (global == NULL);
 
@@ -741,7 +741,7 @@ gtk_im_context_wayland_global_init (GdkDisplay *display)
 }
 
 static void
-gtk_im_context_wayland_focus_in (GtkIMContext *context)
+ctk_im_context_wayland_focus_in (GtkIMContext *context)
 {
   GtkIMContextWayland *context_wayland = GTK_IM_CONTEXT_WAYLAND (context);
 
@@ -751,7 +751,7 @@ gtk_im_context_wayland_focus_in (GtkIMContext *context)
     return;
 
   if (context_wayland->gesture)
-    gtk_event_controller_reset (GTK_EVENT_CONTROLLER (context_wayland->gesture));
+    ctk_event_controller_reset (GTK_EVENT_CONTROLLER (context_wayland->gesture));
   global->current = context;
 
   if (global->focused)
@@ -759,7 +759,7 @@ gtk_im_context_wayland_focus_in (GtkIMContext *context)
 }
 
 static void
-gtk_im_context_wayland_focus_out (GtkIMContext *context)
+ctk_im_context_wayland_focus_out (GtkIMContext *context)
 {
   GtkIMContextWayland *context_wayland = GTK_IM_CONTEXT_WAYLAND (context);
 
@@ -773,7 +773,7 @@ gtk_im_context_wayland_focus_out (GtkIMContext *context)
 }
 
 static void
-gtk_im_context_wayland_reset (GtkIMContext *context)
+ctk_im_context_wayland_reset (GtkIMContext *context)
 {
   notify_external_change (GTK_IM_CONTEXT_WAYLAND (context));
 
@@ -781,7 +781,7 @@ gtk_im_context_wayland_reset (GtkIMContext *context)
 }
 
 static void
-gtk_im_context_wayland_set_cursor_location (GtkIMContext *context,
+ctk_im_context_wayland_set_cursor_location (GtkIMContext *context,
                                             GdkRectangle *rect)
 {
   GtkIMContextWayland *context_wayland;
@@ -807,7 +807,7 @@ gtk_im_context_wayland_set_cursor_location (GtkIMContext *context,
   if (context_wayland->gesture &&
       (ABS (rect->x - context_wayland->cursor_rect.x) >= side ||
        ABS (rect->y - context_wayland->cursor_rect.y) >= side))
-    gtk_event_controller_reset (GTK_EVENT_CONTROLLER (context_wayland->gesture));
+    ctk_event_controller_reset (GTK_EVENT_CONTROLLER (context_wayland->gesture));
 
   context_wayland->cursor_rect = *rect;
   notify_cursor_location (context_wayland);
@@ -815,7 +815,7 @@ gtk_im_context_wayland_set_cursor_location (GtkIMContext *context,
 }
 
 static void
-gtk_im_context_wayland_set_use_preedit (GtkIMContext *context,
+ctk_im_context_wayland_set_use_preedit (GtkIMContext *context,
                                         gboolean      use_preedit)
 {
   GtkIMContextWayland *context_wayland = GTK_IM_CONTEXT_WAYLAND (context);
@@ -824,7 +824,7 @@ gtk_im_context_wayland_set_use_preedit (GtkIMContext *context,
 }
 
 static void
-gtk_im_context_wayland_set_surrounding (GtkIMContext *context,
+ctk_im_context_wayland_set_surrounding (GtkIMContext *context,
                                         const gchar  *text,
                                         gint          len,
                                         gint          cursor_index)
@@ -848,7 +848,7 @@ gtk_im_context_wayland_set_surrounding (GtkIMContext *context,
 }
 
 static gboolean
-gtk_im_context_wayland_get_surrounding (GtkIMContext  *context,
+ctk_im_context_wayland_get_surrounding (GtkIMContext  *context,
                                         gchar        **text,
                                         gint          *cursor_index)
 {
@@ -865,23 +865,23 @@ gtk_im_context_wayland_get_surrounding (GtkIMContext  *context,
 }
 
 static void
-gtk_im_context_wayland_class_init (GtkIMContextWaylandClass *klass)
+ctk_im_context_wayland_class_init (GtkIMContextWaylandClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GtkIMContextClass *im_context_class = GTK_IM_CONTEXT_CLASS (klass);
 
-  object_class->finalize = gtk_im_context_wayland_finalize;
+  object_class->finalize = ctk_im_context_wayland_finalize;
 
-  im_context_class->set_client_window = gtk_im_context_wayland_set_client_window;
-  im_context_class->get_preedit_string = gtk_im_context_wayland_get_preedit_string;
-  im_context_class->filter_keypress = gtk_im_context_wayland_filter_keypress;
-  im_context_class->focus_in = gtk_im_context_wayland_focus_in;
-  im_context_class->focus_out = gtk_im_context_wayland_focus_out;
-  im_context_class->reset = gtk_im_context_wayland_reset;
-  im_context_class->set_cursor_location = gtk_im_context_wayland_set_cursor_location;
-  im_context_class->set_use_preedit = gtk_im_context_wayland_set_use_preedit;
-  im_context_class->set_surrounding = gtk_im_context_wayland_set_surrounding;
-  im_context_class->get_surrounding = gtk_im_context_wayland_get_surrounding;
+  im_context_class->set_client_window = ctk_im_context_wayland_set_client_window;
+  im_context_class->get_preedit_string = ctk_im_context_wayland_get_preedit_string;
+  im_context_class->filter_keypress = ctk_im_context_wayland_filter_keypress;
+  im_context_class->focus_in = ctk_im_context_wayland_focus_in;
+  im_context_class->focus_out = ctk_im_context_wayland_focus_out;
+  im_context_class->reset = ctk_im_context_wayland_reset;
+  im_context_class->set_cursor_location = ctk_im_context_wayland_set_cursor_location;
+  im_context_class->set_use_preedit = ctk_im_context_wayland_set_use_preedit;
+  im_context_class->set_surrounding = ctk_im_context_wayland_set_surrounding;
+  im_context_class->get_surrounding = ctk_im_context_wayland_get_surrounding;
 
   parent_class = g_type_class_peek_parent (klass);
 }
@@ -894,7 +894,7 @@ on_content_type_changed (GtkIMContextWayland *context)
 }
 
 static void
-gtk_im_context_wayland_init (GtkIMContextWayland *context)
+ctk_im_context_wayland_init (GtkIMContextWayland *context)
 {
   context->use_preedit = TRUE;
   g_signal_connect_swapped (context, "notify::input-purpose",
@@ -904,16 +904,16 @@ gtk_im_context_wayland_init (GtkIMContextWayland *context)
 }
 
 static void
-gtk_im_context_wayland_register_type (GTypeModule *module)
+ctk_im_context_wayland_register_type (GTypeModule *module)
 {
   const GTypeInfo object_info = {
     sizeof (GtkIMContextWaylandClass),
     NULL, NULL,
-    (GClassInitFunc) gtk_im_context_wayland_class_init,
+    (GClassInitFunc) ctk_im_context_wayland_class_init,
     NULL, NULL,
     sizeof (GtkIMContextWayland),
     0,
-    (GInstanceInitFunc) gtk_im_context_wayland_init,
+    (GInstanceInitFunc) ctk_im_context_wayland_init,
   };
 
   type_wayland = g_type_module_register_type (module,
@@ -924,8 +924,8 @@ gtk_im_context_wayland_register_type (GTypeModule *module)
 
 MODULE_ENTRY (void, init) (GTypeModule * module)
 {
-  gtk_im_context_wayland_register_type (module);
-  gtk_im_context_wayland_global_init (gdk_display_get_default ());
+  ctk_im_context_wayland_register_type (module);
+  ctk_im_context_wayland_global_init (gdk_display_get_default ());
 }
 
 MODULE_ENTRY (void, exit) (void)

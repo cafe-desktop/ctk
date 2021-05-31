@@ -28,11 +28,11 @@ struct _GtkSocketAccessiblePrivate
   AtkObject *accessible_socket;
 };
 
-G_DEFINE_TYPE_WITH_CODE (GtkSocketAccessible, gtk_socket_accessible, GTK_TYPE_CONTAINER_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (GtkSocketAccessible, ctk_socket_accessible, GTK_TYPE_CONTAINER_ACCESSIBLE,
                          G_ADD_PRIVATE (GtkSocketAccessible))
 
 static AtkObject*
-gtk_socket_accessible_ref_child (AtkObject *obj, int i)
+ctk_socket_accessible_ref_child (AtkObject *obj, int i)
 {
   GtkSocketAccessible *socket = GTK_SOCKET_ACCESSIBLE (obj);
 
@@ -43,28 +43,28 @@ gtk_socket_accessible_ref_child (AtkObject *obj, int i)
 }
 
 static int
-gtk_socket_accessible_get_n_children (AtkObject *obj)
+ctk_socket_accessible_get_n_children (AtkObject *obj)
 {
   return 1;
 }
 
 static void
-gtk_socket_accessible_finalize (GObject *object)
+ctk_socket_accessible_finalize (GObject *object)
 {
   GtkSocketAccessible *socket = GTK_SOCKET_ACCESSIBLE (object);
   GtkSocketAccessiblePrivate *priv = socket->priv;
 
   g_clear_object (&priv->accessible_socket);
 
-  G_OBJECT_CLASS (gtk_socket_accessible_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_socket_accessible_parent_class)->finalize (object);
 }
 
 static void
-gtk_socket_accessible_initialize (AtkObject *socket, gpointer data)
+ctk_socket_accessible_initialize (AtkObject *socket, gpointer data)
 {
   AtkObject *atk_socket;
 
-  ATK_OBJECT_CLASS (gtk_socket_accessible_parent_class)->initialize (socket, data);
+  ATK_OBJECT_CLASS (ctk_socket_accessible_parent_class)->initialize (socket, data);
 
   atk_socket = atk_socket_new ();
 
@@ -73,7 +73,7 @@ gtk_socket_accessible_initialize (AtkObject *socket, gpointer data)
 }
 
 static void
-gtk_socket_accessible_class_init (GtkSocketAccessibleClass *klass)
+ctk_socket_accessible_class_init (GtkSocketAccessibleClass *klass)
 {
   GtkContainerAccessibleClass *container_class = (GtkContainerAccessibleClass*)klass;
   AtkObjectClass              *atk_class       = ATK_OBJECT_CLASS (klass);
@@ -82,21 +82,21 @@ gtk_socket_accessible_class_init (GtkSocketAccessibleClass *klass)
   container_class->add_gtk    = NULL;
   container_class->remove_gtk = NULL;
 
-  atk_class->initialize     = gtk_socket_accessible_initialize;
-  atk_class->get_n_children = gtk_socket_accessible_get_n_children;
-  atk_class->ref_child      = gtk_socket_accessible_ref_child;
+  atk_class->initialize     = ctk_socket_accessible_initialize;
+  atk_class->get_n_children = ctk_socket_accessible_get_n_children;
+  atk_class->ref_child      = ctk_socket_accessible_ref_child;
 
-  gobject_class->finalize = gtk_socket_accessible_finalize;
+  gobject_class->finalize = ctk_socket_accessible_finalize;
 }
 
 static void
-gtk_socket_accessible_init (GtkSocketAccessible *socket)
+ctk_socket_accessible_init (GtkSocketAccessible *socket)
 {
-  socket->priv = gtk_socket_accessible_get_instance_private (socket);
+  socket->priv = ctk_socket_accessible_get_instance_private (socket);
 }
 
 void
-gtk_socket_accessible_embed (GtkSocketAccessible *socket, gchar *path)
+ctk_socket_accessible_embed (GtkSocketAccessible *socket, gchar *path)
 {
   atk_socket_embed (ATK_SOCKET (socket->priv->accessible_socket), path);
 }

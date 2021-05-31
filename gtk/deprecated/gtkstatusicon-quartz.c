@@ -104,7 +104,7 @@
     return;
   }
 
-  current_image = gdk_quartz_pixbuf_to_ns_image_libgtk_only (pixbuf);
+  current_image = gdk_quartz_pixbuf_to_ns_image_libctk_only (pixbuf);
   [current_image retain];
 
   [ns_item setImage:current_image];

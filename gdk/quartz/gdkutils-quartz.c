@@ -26,7 +26,7 @@
 #include <gdkquartzutils.h>
 
 NSImage *
-gdk_quartz_pixbuf_to_ns_image_libgtk_only (GdkPixbuf *pixbuf)
+gdk_quartz_pixbuf_to_ns_image_libctk_only (GdkPixbuf *pixbuf)
 {
   NSBitmapImageRep  *bitmap_rep;
   NSImage           *image;

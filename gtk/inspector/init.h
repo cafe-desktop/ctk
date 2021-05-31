@@ -20,7 +20,7 @@
 
 G_BEGIN_DECLS
 
-void gtk_inspector_init (void);
+void ctk_inspector_init (void);
 
 G_END_DECLS
 

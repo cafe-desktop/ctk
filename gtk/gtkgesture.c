@@ -47,8 +47,8 @@
  * ## Event propagation
  *
  * In order to receive events, a gesture needs to either set a propagation phase
- * through gtk_event_controller_set_propagation_phase(), or feed those manually
- * through gtk_event_controller_handle_event().
+ * through ctk_event_controller_set_propagation_phase(), or feed those manually
+ * through ctk_event_controller_handle_event().
  *
  * In the capture phase, events are propagated from the toplevel down to the
  * target widget, and gestures that are attached to containers above the widget
@@ -72,9 +72,9 @@
  * in order to enable cooperation of gestures around the #GdkEventSequences
  * triggering those.
  *
- * Within a widget, gestures can be grouped through gtk_gesture_group(),
+ * Within a widget, gestures can be grouped through ctk_gesture_group(),
  * grouped gestures synchronize the state of sequences, so calling
- * gtk_gesture_set_sequence_state() on one will effectively propagate
+ * ctk_gesture_set_sequence_state() on one will effectively propagate
  * the state throughout the group.
  *
  * By default, all sequences start out in the #GTK_EVENT_SEQUENCE_NONE state,
@@ -102,7 +102,7 @@
  * This way event coherence is preserved before event propagation is unstopped
  * again.
  *
- * Sequence states can't be changed freely, see gtk_gesture_set_sequence_state()
+ * Sequence states can't be changed freely, see ctk_gesture_set_sequence_state()
  * to know about the possible lifetimes of a #GdkEventSequence.
  *
  * ## Touchpad gestures
@@ -177,17 +177,17 @@ static guint signals[N_SIGNALS] = { 0 };
 #define EVENT_IS_TOUCHPAD_GESTURE(e) ((e)->type == GDK_TOUCHPAD_SWIPE || \
                                       (e)->type == GDK_TOUCHPAD_PINCH)
 
-GList * _gtk_gesture_get_group_link (GtkGesture *gesture);
+GList * _ctk_gesture_get_group_link (GtkGesture *gesture);
 
-G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (GtkGesture, gtk_gesture, GTK_TYPE_EVENT_CONTROLLER)
+G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (GtkGesture, ctk_gesture, GTK_TYPE_EVENT_CONTROLLER)
 
 static void
-gtk_gesture_get_property (GObject    *object,
+ctk_gesture_get_property (GObject    *object,
                           guint       prop_id,
                           GValue     *value,
                           GParamSpec *pspec)
 {
-  GtkGesturePrivate *priv = gtk_gesture_get_instance_private (GTK_GESTURE (object));
+  GtkGesturePrivate *priv = ctk_gesture_get_instance_private (GTK_GESTURE (object));
 
   switch (prop_id)
     {
@@ -203,12 +203,12 @@ gtk_gesture_get_property (GObject    *object,
 }
 
 static void
-gtk_gesture_set_property (GObject      *object,
+ctk_gesture_set_property (GObject      *object,
                           guint         prop_id,
                           const GValue *value,
                           GParamSpec   *pspec)
 {
-  GtkGesturePrivate *priv = gtk_gesture_get_instance_private (GTK_GESTURE (object));
+  GtkGesturePrivate *priv = ctk_gesture_get_instance_private (GTK_GESTURE (object));
 
   switch (prop_id)
     {
@@ -216,7 +216,7 @@ gtk_gesture_set_property (GObject      *object,
       priv->n_points = g_value_get_uint (value);
       break;
     case PROP_WINDOW:
-      gtk_gesture_set_window (GTK_GESTURE (object),
+      ctk_gesture_set_window (GTK_GESTURE (object),
                               g_value_get_object (value));
       break;
     default:
@@ -225,27 +225,27 @@ gtk_gesture_set_property (GObject      *object,
 }
 
 static void
-gtk_gesture_finalize (GObject *object)
+ctk_gesture_finalize (GObject *object)
 {
   GtkGesture *gesture = GTK_GESTURE (object);
-  GtkGesturePrivate *priv = gtk_gesture_get_instance_private (gesture);
+  GtkGesturePrivate *priv = ctk_gesture_get_instance_private (gesture);
 
-  gtk_gesture_ungroup (gesture);
+  ctk_gesture_ungroup (gesture);
   g_list_free (priv->group_link);
 
   g_hash_table_destroy (priv->points);
 
-  G_OBJECT_CLASS (gtk_gesture_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_gesture_parent_class)->finalize (object);
 }
 
 static guint
-_gtk_gesture_get_n_touchpad_points (GtkGesture *gesture,
+_ctk_gesture_get_n_touchpad_points (GtkGesture *gesture,
                                     gboolean    only_active)
 {
   GtkGesturePrivate *priv;
   PointData *data;
 
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
 
   if (!priv->touchpad)
     return 0;
@@ -275,7 +275,7 @@ _gtk_gesture_get_n_touchpad_points (GtkGesture *gesture,
 }
 
 static guint
-_gtk_gesture_get_n_touch_points (GtkGesture *gesture,
+_ctk_gesture_get_n_touch_points (GtkGesture *gesture,
                                  gboolean    only_active)
 {
   GtkGesturePrivate *priv;
@@ -283,7 +283,7 @@ _gtk_gesture_get_n_touch_points (GtkGesture *gesture,
   guint n_points = 0;
   PointData *data;
 
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
   g_hash_table_iter_init (&iter, priv->points);
 
   while (g_hash_table_iter_next (&iter, NULL, (gpointer *) &data))
@@ -301,39 +301,39 @@ _gtk_gesture_get_n_touch_points (GtkGesture *gesture,
 }
 
 static guint
-_gtk_gesture_get_n_physical_points (GtkGesture *gesture,
+_ctk_gesture_get_n_physical_points (GtkGesture *gesture,
                                     gboolean    only_active)
 {
   GtkGesturePrivate *priv;
 
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
 
   if (priv->touchpad)
-    return _gtk_gesture_get_n_touchpad_points (gesture, only_active);
+    return _ctk_gesture_get_n_touchpad_points (gesture, only_active);
   else
-    return _gtk_gesture_get_n_touch_points (gesture, only_active);
+    return _ctk_gesture_get_n_touch_points (gesture, only_active);
 }
 
 static gboolean
-gtk_gesture_check_impl (GtkGesture *gesture)
+ctk_gesture_check_impl (GtkGesture *gesture)
 {
   GtkGesturePrivate *priv;
   guint n_points;
 
-  priv = gtk_gesture_get_instance_private (gesture);
-  n_points = _gtk_gesture_get_n_physical_points (gesture, TRUE);
+  priv = ctk_gesture_get_instance_private (gesture);
+  n_points = _ctk_gesture_get_n_physical_points (gesture, TRUE);
 
   return n_points == priv->n_points;
 }
 
 static void
-_gtk_gesture_set_recognized (GtkGesture       *gesture,
+_ctk_gesture_set_recognized (GtkGesture       *gesture,
                              gboolean          recognized,
                              GdkEventSequence *sequence)
 {
   GtkGesturePrivate *priv;
 
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
 
   if (priv->recognized == recognized)
     return;
@@ -347,7 +347,7 @@ _gtk_gesture_set_recognized (GtkGesture       *gesture,
 }
 
 static gboolean
-_gtk_gesture_do_check (GtkGesture *gesture)
+_ctk_gesture_do_check (GtkGesture *gesture)
 {
   GtkGestureClass *gesture_class;
   gboolean retval = FALSE;
@@ -362,32 +362,32 @@ _gtk_gesture_do_check (GtkGesture *gesture)
 }
 
 static gboolean
-_gtk_gesture_has_matching_touchpoints (GtkGesture *gesture)
+_ctk_gesture_has_matching_touchpoints (GtkGesture *gesture)
 {
-  GtkGesturePrivate *priv = gtk_gesture_get_instance_private (gesture);
+  GtkGesturePrivate *priv = ctk_gesture_get_instance_private (gesture);
   guint active_n_points, current_n_points;
 
-  current_n_points = _gtk_gesture_get_n_physical_points (gesture, FALSE);
-  active_n_points = _gtk_gesture_get_n_physical_points (gesture, TRUE);
+  current_n_points = _ctk_gesture_get_n_physical_points (gesture, FALSE);
+  active_n_points = _ctk_gesture_get_n_physical_points (gesture, TRUE);
 
   return (active_n_points == priv->n_points &&
           current_n_points == priv->n_points);
 }
 
 static gboolean
-_gtk_gesture_check_recognized (GtkGesture       *gesture,
+_ctk_gesture_check_recognized (GtkGesture       *gesture,
                                GdkEventSequence *sequence)
 {
-  GtkGesturePrivate *priv = gtk_gesture_get_instance_private (gesture);
+  GtkGesturePrivate *priv = ctk_gesture_get_instance_private (gesture);
   gboolean has_matching_touchpoints;
 
-  has_matching_touchpoints = _gtk_gesture_has_matching_touchpoints (gesture);
+  has_matching_touchpoints = _ctk_gesture_has_matching_touchpoints (gesture);
 
   if (priv->recognized && !has_matching_touchpoints)
-    _gtk_gesture_set_recognized (gesture, FALSE, sequence);
+    _ctk_gesture_set_recognized (gesture, FALSE, sequence);
   else if (!priv->recognized && has_matching_touchpoints &&
-           _gtk_gesture_do_check (gesture))
-    _gtk_gesture_set_recognized (gesture, TRUE, sequence);
+           _ctk_gesture_do_check (gesture))
+    _ctk_gesture_set_recognized (gesture, TRUE, sequence);
 
   return priv->recognized;
 }
@@ -399,14 +399,14 @@ _find_widget_window (GtkGesture *gesture,
 {
   GtkWidget *widget, *window_widget;
 
-  widget = gtk_event_controller_get_widget (GTK_EVENT_CONTROLLER (gesture));
+  widget = ctk_event_controller_get_widget (GTK_EVENT_CONTROLLER (gesture));
 
   while (window && !gdk_window_is_destroyed (window))
     {
       gdk_window_get_user_data (window, (gpointer*) &window_widget);
 
       if (window_widget == widget ||
-          gtk_widget_get_window (widget) == window)
+          ctk_widget_get_window (widget) == window)
         return window;
 
       window = gdk_window_get_effective_parent (window);
@@ -474,13 +474,13 @@ _update_widget_coordinates (GtkGesture *gesture,
   gdouble event_x, event_y;
   gint wx, wy, x, y;
 
-  event_widget = gtk_get_event_widget (data->event);
+  event_widget = ctk_get_event_widget (data->event);
 
   if (!event_widget)
     return;
 
-  widget = gtk_event_controller_get_widget (GTK_EVENT_CONTROLLER (gesture));
-  event_widget_window = gtk_widget_get_window (event_widget);
+  widget = ctk_event_controller_get_widget (GTK_EVENT_CONTROLLER (gesture));
+  event_widget_window = ctk_widget_get_window (event_widget);
   _get_event_coordinates (data, &event_x, &event_y);
   window = data->event->any.window;
 
@@ -495,36 +495,36 @@ _update_widget_coordinates (GtkGesture *gesture,
   if (!window)
     return;
 
-  if (!gtk_widget_get_has_window (event_widget))
+  if (!ctk_widget_get_has_window (event_widget))
     {
-      gtk_widget_get_allocation (event_widget, &allocation);
+      ctk_widget_get_allocation (event_widget, &allocation);
       event_x -= allocation.x;
       event_y -= allocation.y;
     }
 
-  gtk_widget_translate_coordinates (event_widget, widget,
+  ctk_widget_translate_coordinates (event_widget, widget,
                                     event_x, event_y, &x, &y);
   data->widget_x = x;
   data->widget_y = y;
 }
 
 static GtkEventSequenceState
-gtk_gesture_get_group_state (GtkGesture       *gesture,
+ctk_gesture_get_group_state (GtkGesture       *gesture,
                              GdkEventSequence *sequence)
 {
   GtkEventSequenceState state = GTK_EVENT_SEQUENCE_NONE;
   GList *group_elem;
 
-  group_elem = g_list_first (_gtk_gesture_get_group_link (gesture));
+  group_elem = g_list_first (_ctk_gesture_get_group_link (gesture));
 
   for (; group_elem; group_elem = group_elem->next)
     {
       if (group_elem->data == gesture)
         continue;
-      if (!gtk_gesture_handles_sequence (group_elem->data, sequence))
+      if (!ctk_gesture_handles_sequence (group_elem->data, sequence))
         continue;
 
-      state = gtk_gesture_get_sequence_state (group_elem->data, sequence);
+      state = ctk_gesture_get_sequence_state (group_elem->data, sequence);
       break;
     }
 
@@ -532,7 +532,7 @@ gtk_gesture_get_group_state (GtkGesture       *gesture,
 }
 
 static gboolean
-_gtk_gesture_update_point (GtkGesture     *gesture,
+_ctk_gesture_update_point (GtkGesture     *gesture,
                            const GdkEvent *event,
                            gboolean        add)
 {
@@ -551,7 +551,7 @@ _gtk_gesture_update_point (GtkGesture     *gesture,
   if (!device)
     return FALSE;
 
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
   widget_window = _find_widget_window (gesture, event->any.window);
 
   if (!widget_window)
@@ -600,8 +600,8 @@ _gtk_gesture_update_point (GtkGesture     *gesture,
       data = g_new0 (PointData, 1);
       g_hash_table_insert (priv->points, sequence, data);
 
-      group_state = gtk_gesture_get_group_state (gesture, sequence);
-      gtk_gesture_set_sequence_state (gesture, sequence, group_state);
+      group_state = ctk_gesture_get_group_state (gesture, sequence);
+      ctk_gesture_set_sequence_state (gesture, sequence, group_state);
     }
 
   if (data->event)
@@ -613,21 +613,21 @@ _gtk_gesture_update_point (GtkGesture     *gesture,
 
   /* Deny the sequence right away if the expected
    * number of points is exceeded, so this sequence
-   * can be tracked with gtk_gesture_handles_sequence().
+   * can be tracked with ctk_gesture_handles_sequence().
    */
-  if (!existed && _gtk_gesture_get_n_physical_points (gesture, FALSE) > priv->n_points)
-    gtk_gesture_set_sequence_state (gesture, sequence,
+  if (!existed && _ctk_gesture_get_n_physical_points (gesture, FALSE) > priv->n_points)
+    ctk_gesture_set_sequence_state (gesture, sequence,
                                     GTK_EVENT_SEQUENCE_DENIED);
 
   return TRUE;
 }
 
 static void
-_gtk_gesture_check_empty (GtkGesture *gesture)
+_ctk_gesture_check_empty (GtkGesture *gesture)
 {
   GtkGesturePrivate *priv;
 
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
 
   if (g_hash_table_size (priv->points) == 0)
     {
@@ -638,7 +638,7 @@ _gtk_gesture_check_empty (GtkGesture *gesture)
 }
 
 static void
-_gtk_gesture_remove_point (GtkGesture     *gesture,
+_ctk_gesture_remove_point (GtkGesture     *gesture,
                            const GdkEvent *event)
 {
   GdkEventSequence *sequence;
@@ -647,33 +647,33 @@ _gtk_gesture_remove_point (GtkGesture     *gesture,
 
   sequence = gdk_event_get_event_sequence (event);
   device = gdk_event_get_device (event);
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
 
   if (priv->device != device)
     return;
 
   g_hash_table_remove (priv->points, sequence);
-  _gtk_gesture_check_empty (gesture);
+  _ctk_gesture_check_empty (gesture);
 }
 
 static void
-_gtk_gesture_cancel_all (GtkGesture *gesture)
+_ctk_gesture_cancel_all (GtkGesture *gesture)
 {
   GdkEventSequence *sequence;
   GtkGesturePrivate *priv;
   GHashTableIter iter;
 
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
   g_hash_table_iter_init (&iter, priv->points);
 
   while (g_hash_table_iter_next (&iter, (gpointer*) &sequence, NULL))
     {
       g_signal_emit (gesture, signals[CANCEL], 0, sequence);
       g_hash_table_iter_remove (&iter);
-      _gtk_gesture_check_recognized (gesture, sequence);
+      _ctk_gesture_check_recognized (gesture, sequence);
     }
 
-  _gtk_gesture_check_empty (gesture);
+  _ctk_gesture_check_empty (gesture);
 }
 
 static gboolean
@@ -683,8 +683,8 @@ gesture_within_window (GtkGesture *gesture,
   GdkWindow *window;
   GtkWidget *widget;
 
-  widget = gtk_event_controller_get_widget (GTK_EVENT_CONTROLLER (gesture));
-  window = gtk_widget_get_window (widget);
+  widget = ctk_event_controller_get_widget (GTK_EVENT_CONTROLLER (gesture));
+  window = ctk_widget_get_window (widget);
 
   while (window)
     {
@@ -698,7 +698,7 @@ gesture_within_window (GtkGesture *gesture,
 }
 
 static gboolean
-gtk_gesture_filter_event (GtkEventController *controller,
+ctk_gesture_filter_event (GtkEventController *controller,
                           const GdkEvent     *event)
 {
   /* Even though GtkGesture handles these events, we want
@@ -710,7 +710,7 @@ gtk_gesture_filter_event (GtkEventController *controller,
 }
 
 static gboolean
-gtk_gesture_handle_event (GtkEventController *controller,
+ctk_gesture_handle_event (GtkEventController *controller,
                           const GdkEvent     *event)
 {
   GtkGesture *gesture = GTK_GESTURE (controller);
@@ -724,11 +724,11 @@ gtk_gesture_handle_event (GtkEventController *controller,
   if (!source_device)
     return FALSE;
 
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
   sequence = gdk_event_get_event_sequence (event);
-  was_recognized = gtk_gesture_is_recognized (gesture);
+  was_recognized = ctk_gesture_is_recognized (gesture);
 
-  if (gtk_gesture_get_sequence_state (gesture, sequence) != GTK_EVENT_SEQUENCE_DENIED)
+  if (ctk_gesture_get_sequence_state (gesture, sequence) != GTK_EVENT_SEQUENCE_DENIED)
     priv->last_sequence = sequence;
 
   if (event->type == GDK_BUTTON_PRESS ||
@@ -738,21 +738,21 @@ gtk_gesture_handle_event (GtkEventController *controller,
       (event->type == GDK_TOUCHPAD_PINCH &&
        event->touchpad_pinch.phase == GDK_TOUCHPAD_GESTURE_PHASE_BEGIN))
     {
-      if (_gtk_gesture_update_point (gesture, event, TRUE))
+      if (_ctk_gesture_update_point (gesture, event, TRUE))
         {
           gboolean triggered_recognition;
 
           triggered_recognition =
-            !was_recognized && _gtk_gesture_has_matching_touchpoints (gesture);
+            !was_recognized && _ctk_gesture_has_matching_touchpoints (gesture);
 
-          if (_gtk_gesture_check_recognized (gesture, sequence))
+          if (_ctk_gesture_check_recognized (gesture, sequence))
             {
               PointData *data;
 
               data = g_hash_table_lookup (priv->points, sequence);
 
               /* If the sequence was claimed early, the press event will be consumed */
-              if (gtk_gesture_get_sequence_state (gesture, sequence) == GTK_EVENT_SEQUENCE_CLAIMED)
+              if (ctk_gesture_get_sequence_state (gesture, sequence) == GTK_EVENT_SEQUENCE_CLAIMED)
                 data->press_handled = TRUE;
             }
           else if (triggered_recognition && g_hash_table_size (priv->points) == 0)
@@ -772,13 +772,13 @@ gtk_gesture_handle_event (GtkEventController *controller,
            (event->type == GDK_TOUCHPAD_PINCH &&
             event->touchpad_pinch.phase == GDK_TOUCHPAD_GESTURE_PHASE_END))
     {
-      if (_gtk_gesture_update_point (gesture, event, FALSE))
+      if (_ctk_gesture_update_point (gesture, event, FALSE))
         {
           if (was_recognized &&
-              _gtk_gesture_check_recognized (gesture, sequence))
+              _ctk_gesture_check_recognized (gesture, sequence))
             g_signal_emit (gesture, signals[UPDATE], 0, sequence);
 
-          _gtk_gesture_remove_point (gesture, event);
+          _ctk_gesture_remove_point (gesture, event);
         }
     }
   else if (event->type == GDK_MOTION_NOTIFY ||
@@ -797,14 +797,14 @@ gtk_gesture_handle_event (GtkEventController *controller,
             gdk_event_request_motions (&event->motion);
         }
 
-      if (_gtk_gesture_update_point (gesture, event, FALSE) &&
-          _gtk_gesture_check_recognized (gesture, sequence))
+      if (_ctk_gesture_update_point (gesture, event, FALSE) &&
+          _ctk_gesture_check_recognized (gesture, sequence))
         g_signal_emit (gesture, signals[UPDATE], 0, sequence);
     }
   else if (event->type == GDK_TOUCH_CANCEL)
     {
       if (!priv->touchpad)
-        _gtk_gesture_cancel_sequence (gesture, sequence);
+        _ctk_gesture_cancel_sequence (gesture, sequence);
     }
   else if ((event->type == GDK_TOUCHPAD_SWIPE &&
             event->touchpad_swipe.phase == GDK_TOUCHPAD_GESTURE_PHASE_CANCEL) ||
@@ -812,13 +812,13 @@ gtk_gesture_handle_event (GtkEventController *controller,
             event->touchpad_pinch.phase == GDK_TOUCHPAD_GESTURE_PHASE_CANCEL))
     {
       if (priv->touchpad)
-        _gtk_gesture_cancel_sequence (gesture, sequence);
+        _ctk_gesture_cancel_sequence (gesture, sequence);
     }
   else if (event->type == GDK_GRAB_BROKEN)
     {
       if (!event->grab_broken.grab_window ||
           !gesture_within_window (gesture, event->grab_broken.grab_window))
-        _gtk_gesture_cancel_all (gesture);
+        _ctk_gesture_cancel_all (gesture);
 
       return FALSE;
     }
@@ -828,33 +828,33 @@ gtk_gesture_handle_event (GtkEventController *controller,
       return FALSE;
     }
 
-  if (gtk_gesture_get_sequence_state (gesture, sequence) != GTK_EVENT_SEQUENCE_CLAIMED)
+  if (ctk_gesture_get_sequence_state (gesture, sequence) != GTK_EVENT_SEQUENCE_CLAIMED)
     return FALSE;
 
   return priv->recognized;
 }
 
 static void
-gtk_gesture_reset (GtkEventController *controller)
+ctk_gesture_reset (GtkEventController *controller)
 {
-  _gtk_gesture_cancel_all (GTK_GESTURE (controller));
+  _ctk_gesture_cancel_all (GTK_GESTURE (controller));
 }
 
 static void
-gtk_gesture_class_init (GtkGestureClass *klass)
+ctk_gesture_class_init (GtkGestureClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GtkEventControllerClass *controller_class = GTK_EVENT_CONTROLLER_CLASS (klass);
 
-  object_class->get_property = gtk_gesture_get_property;
-  object_class->set_property = gtk_gesture_set_property;
-  object_class->finalize = gtk_gesture_finalize;
+  object_class->get_property = ctk_gesture_get_property;
+  object_class->set_property = ctk_gesture_set_property;
+  object_class->finalize = ctk_gesture_finalize;
 
-  controller_class->filter_event = gtk_gesture_filter_event;
-  controller_class->handle_event = gtk_gesture_handle_event;
-  controller_class->reset = gtk_gesture_reset;
+  controller_class->filter_event = ctk_gesture_filter_event;
+  controller_class->handle_event = ctk_gesture_handle_event;
+  controller_class->reset = ctk_gesture_reset;
 
-  klass->check = gtk_gesture_check_impl;
+  klass->check = ctk_gesture_check_impl;
 
   /**
    * GtkGesture:n-points:
@@ -923,7 +923,7 @@ gtk_gesture_class_init (GtkGestureClass *klass)
    * Note: @sequence might not pertain to the group of sequences that were
    * previously triggering recognition on @gesture (ie. a just pressed touch
    * sequence that exceeds #GtkGesture:n-points). This situation may be detected
-   * by checking through gtk_gesture_handles_sequence().
+   * by checking through ctk_gesture_handles_sequence().
    *
    * Since: 3.14
    */
@@ -957,9 +957,9 @@ gtk_gesture_class_init (GtkGestureClass *klass)
    * @sequence: (nullable): the #GdkEventSequence that was cancelled
    *
    * This signal is emitted whenever a sequence is cancelled. This usually
-   * happens on active touches when gtk_event_controller_reset() is called
+   * happens on active touches when ctk_event_controller_reset() is called
    * on @gesture (manually, due to grabs...), or the individual @sequence
-   * was claimed by parent widgets' controllers (see gtk_gesture_set_sequence_state()).
+   * was claimed by parent widgets' controllers (see ctk_gesture_set_sequence_state()).
    *
    * @gesture must forget everything about @sequence as a reaction to this signal.
    *
@@ -979,7 +979,7 @@ gtk_gesture_class_init (GtkGestureClass *klass)
    * @state: the new sequence state
    *
    * This signal is emitted whenever a sequence state changes. See
-   * gtk_gesture_set_sequence_state() to know more about the expectable
+   * ctk_gesture_set_sequence_state() to know more about the expectable
    * sequence lifetimes.
    *
    * Since: 3.14
@@ -990,12 +990,12 @@ gtk_gesture_class_init (GtkGestureClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkGestureClass, sequence_state_changed),
                   NULL, NULL,
-                  _gtk_marshal_VOID__BOXED_ENUM,
+                  _ctk_marshal_VOID__BOXED_ENUM,
                   G_TYPE_NONE, 2, GDK_TYPE_EVENT_SEQUENCE,
                   GTK_TYPE_EVENT_SEQUENCE_STATE);
   g_signal_set_va_marshaller (signals[SEQUENCE_STATE_CHANGED],
                               G_TYPE_FROM_CLASS (klass),
-                              _gtk_marshal_VOID__BOXED_ENUMv);
+                              _ctk_marshal_VOID__BOXED_ENUMv);
 }
 
 static void
@@ -1010,14 +1010,14 @@ free_point_data (gpointer data)
 }
 
 static void
-gtk_gesture_init (GtkGesture *gesture)
+ctk_gesture_init (GtkGesture *gesture)
 {
   GtkGesturePrivate *priv;
 
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
   priv->points = g_hash_table_new_full (NULL, NULL, NULL,
                                         (GDestroyNotify) free_point_data);
-  gtk_event_controller_set_event_mask (GTK_EVENT_CONTROLLER (gesture),
+  ctk_event_controller_set_event_mask (GTK_EVENT_CONTROLLER (gesture),
                                        GDK_TOUCH_MASK |
                                        GDK_TOUCHPAD_GESTURE_MASK);
 
@@ -1025,7 +1025,7 @@ gtk_gesture_init (GtkGesture *gesture)
 }
 
 /**
- * gtk_gesture_get_device:
+ * ctk_gesture_get_device:
  * @gesture: a #GtkGesture
  *
  * Returns the master #GdkDevice that is currently operating
@@ -1036,19 +1036,19 @@ gtk_gesture_init (GtkGesture *gesture)
  * Since: 3.14
  **/
 GdkDevice *
-gtk_gesture_get_device (GtkGesture *gesture)
+ctk_gesture_get_device (GtkGesture *gesture)
 {
   GtkGesturePrivate *priv;
 
   g_return_val_if_fail (GTK_IS_GESTURE (gesture), NULL);
 
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
 
   return priv->device;
 }
 
 /**
- * gtk_gesture_get_sequence_state:
+ * ctk_gesture_get_sequence_state:
  * @gesture: a #GtkGesture
  * @sequence: a #GdkEventSequence
  *
@@ -1059,7 +1059,7 @@ gtk_gesture_get_device (GtkGesture *gesture)
  * Since: 3.14
  **/
 GtkEventSequenceState
-gtk_gesture_get_sequence_state (GtkGesture       *gesture,
+ctk_gesture_get_sequence_state (GtkGesture       *gesture,
                                 GdkEventSequence *sequence)
 {
   GtkGesturePrivate *priv;
@@ -1068,7 +1068,7 @@ gtk_gesture_get_sequence_state (GtkGesture       *gesture,
   g_return_val_if_fail (GTK_IS_GESTURE (gesture),
                         GTK_EVENT_SEQUENCE_NONE);
 
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
   data = g_hash_table_lookup (priv->points, sequence);
 
   if (!data)
@@ -1078,7 +1078,7 @@ gtk_gesture_get_sequence_state (GtkGesture       *gesture,
 }
 
 /**
- * gtk_gesture_set_sequence_state:
+ * ctk_gesture_set_sequence_state:
  * @gesture: a #GtkGesture
  * @sequence: a #GdkEventSequence
  * @state: the sequence state
@@ -1107,8 +1107,8 @@ gtk_gesture_get_sequence_state (GtkGesture       *gesture,
  *                         GdkEventSequence *sequence,
  *                         gpointer          user_data)
  * {
- *   gtk_gesture_set_sequence_state (first_gesture, sequence, GTK_EVENT_SEQUENCE_CLAIMED);
- *   gtk_gesture_set_sequence_state (second_gesture, sequence, GTK_EVENT_SEQUENCE_DENIED);
+ *   ctk_gesture_set_sequence_state (first_gesture, sequence, GTK_EVENT_SEQUENCE_CLAIMED);
+ *   ctk_gesture_set_sequence_state (second_gesture, sequence, GTK_EVENT_SEQUENCE_DENIED);
  * }
  *
  * static void
@@ -1116,8 +1116,8 @@ gtk_gesture_get_sequence_state (GtkGesture       *gesture,
  *                          GdkEventSequence *sequence,
  *                          gpointer          user_data)
  * {
- *   if (gtk_gesture_get_sequence_state (first_gesture, sequence) == GTK_EVENT_SEQUENCE_CLAIMED)
- *     gtk_gesture_set_sequence_state (second_gesture, sequence, GTK_EVENT_SEQUENCE_DENIED);
+ *   if (ctk_gesture_get_sequence_state (first_gesture, sequence) == GTK_EVENT_SEQUENCE_CLAIMED)
+ *     ctk_gesture_set_sequence_state (second_gesture, sequence, GTK_EVENT_SEQUENCE_DENIED);
  * }
  * ]|
  *
@@ -1132,7 +1132,7 @@ gtk_gesture_get_sequence_state (GtkGesture       *gesture,
  * Since: 3.14
  **/
 gboolean
-gtk_gesture_set_sequence_state (GtkGesture            *gesture,
+ctk_gesture_set_sequence_state (GtkGesture            *gesture,
                                 GdkEventSequence      *sequence,
                                 GtkEventSequenceState  state)
 {
@@ -1143,7 +1143,7 @@ gtk_gesture_set_sequence_state (GtkGesture            *gesture,
   g_return_val_if_fail (state >= GTK_EVENT_SEQUENCE_NONE &&
                         state <= GTK_EVENT_SEQUENCE_DENIED, FALSE);
 
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
   data = g_hash_table_lookup (priv->points, sequence);
 
   if (!data)
@@ -1166,18 +1166,18 @@ gtk_gesture_set_sequence_state (GtkGesture            *gesture,
                  sequence, state);
 
   if (state == GTK_EVENT_SEQUENCE_DENIED)
-    _gtk_gesture_check_recognized (gesture, sequence);
+    _ctk_gesture_check_recognized (gesture, sequence);
 
   return TRUE;
 }
 
 /**
- * gtk_gesture_set_state:
+ * ctk_gesture_set_state:
  * @gesture: a #GtkGesture
  * @state: the sequence state
  *
  * Sets the state of all sequences that @gesture is currently
- * interacting with. See gtk_gesture_set_sequence_state()
+ * interacting with. See ctk_gesture_set_sequence_state()
  * for more details on sequence states.
  *
  * Returns: %TRUE if the state of at least one sequence
@@ -1186,7 +1186,7 @@ gtk_gesture_set_sequence_state (GtkGesture            *gesture,
  * Since: 3.14
  */
 gboolean
-gtk_gesture_set_state (GtkGesture            *gesture,
+ctk_gesture_set_state (GtkGesture            *gesture,
                        GtkEventSequenceState  state)
 {
   gboolean handled = FALSE;
@@ -1197,11 +1197,11 @@ gtk_gesture_set_state (GtkGesture            *gesture,
   g_return_val_if_fail (state >= GTK_EVENT_SEQUENCE_NONE &&
                         state <= GTK_EVENT_SEQUENCE_DENIED, FALSE);
 
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
   sequences = g_hash_table_get_keys (priv->points);
 
   for (l = sequences; l; l = l->next)
-    handled |= gtk_gesture_set_sequence_state (gesture, l->data, state);
+    handled |= ctk_gesture_set_sequence_state (gesture, l->data, state);
 
   g_list_free (sequences);
 
@@ -1209,7 +1209,7 @@ gtk_gesture_set_state (GtkGesture            *gesture,
 }
 
 /**
- * gtk_gesture_get_sequences:
+ * ctk_gesture_get_sequences:
  * @gesture: a #GtkGesture
  *
  * Returns the list of #GdkEventSequences currently being interpreted
@@ -1223,7 +1223,7 @@ gtk_gesture_set_state (GtkGesture            *gesture,
  * Since: 3.14
  **/
 GList *
-gtk_gesture_get_sequences (GtkGesture *gesture)
+ctk_gesture_get_sequences (GtkGesture *gesture)
 {
   GdkEventSequence *sequence;
   GtkGesturePrivate *priv;
@@ -1233,7 +1233,7 @@ gtk_gesture_get_sequences (GtkGesture *gesture)
 
   g_return_val_if_fail (GTK_IS_GESTURE (gesture), NULL);
 
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
   g_hash_table_iter_init (&iter, priv->points);
 
   while (g_hash_table_iter_next (&iter, (gpointer *) &sequence, (gpointer *) &data))
@@ -1251,7 +1251,7 @@ gtk_gesture_get_sequences (GtkGesture *gesture)
 }
 
 /**
- * gtk_gesture_get_last_updated_sequence:
+ * ctk_gesture_get_last_updated_sequence:
  * @gesture: a #GtkGesture
  *
  * Returns the #GdkEventSequence that was last updated on @gesture.
@@ -1261,19 +1261,19 @@ gtk_gesture_get_sequences (GtkGesture *gesture)
  * Since: 3.14
  **/
 GdkEventSequence *
-gtk_gesture_get_last_updated_sequence (GtkGesture *gesture)
+ctk_gesture_get_last_updated_sequence (GtkGesture *gesture)
 {
   GtkGesturePrivate *priv;
 
   g_return_val_if_fail (GTK_IS_GESTURE (gesture), NULL);
 
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
 
   return priv->last_sequence;
 }
 
 /**
- * gtk_gesture_get_last_event:
+ * ctk_gesture_get_last_event:
  * @gesture: a #GtkGesture
  * @sequence: (nullable): a #GdkEventSequence
  *
@@ -1286,7 +1286,7 @@ gtk_gesture_get_last_updated_sequence (GtkGesture *gesture)
  * Returns: (transfer none) (nullable): The last event from @sequence
  **/
 const GdkEvent *
-gtk_gesture_get_last_event (GtkGesture       *gesture,
+ctk_gesture_get_last_event (GtkGesture       *gesture,
                             GdkEventSequence *sequence)
 {
   GtkGesturePrivate *priv;
@@ -1294,7 +1294,7 @@ gtk_gesture_get_last_event (GtkGesture       *gesture,
 
   g_return_val_if_fail (GTK_IS_GESTURE (gesture), NULL);
 
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
   data = g_hash_table_lookup (priv->points, sequence);
 
   if (!data)
@@ -1304,7 +1304,7 @@ gtk_gesture_get_last_event (GtkGesture       *gesture,
 }
 
 /**
- * gtk_gesture_get_point:
+ * ctk_gesture_get_point:
  * @gesture: a #GtkGesture
  * @sequence: (allow-none): a #GdkEventSequence, or %NULL for pointer events
  * @x: (out) (allow-none): return location for X axis of the sequence coordinates
@@ -1320,7 +1320,7 @@ gtk_gesture_get_last_event (GtkGesture       *gesture,
  * Since: 3.14
  **/
 gboolean
-gtk_gesture_get_point (GtkGesture       *gesture,
+ctk_gesture_get_point (GtkGesture       *gesture,
                        GdkEventSequence *sequence,
                        gdouble          *x,
                        gdouble          *y)
@@ -1330,7 +1330,7 @@ gtk_gesture_get_point (GtkGesture       *gesture,
 
   g_return_val_if_fail (GTK_IS_GESTURE (gesture), FALSE);
 
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
 
   if (!g_hash_table_lookup_extended (priv->points, sequence,
                                      NULL, (gpointer *) &data))
@@ -1345,7 +1345,7 @@ gtk_gesture_get_point (GtkGesture       *gesture,
 }
 
 gboolean
-_gtk_gesture_get_last_update_time (GtkGesture       *gesture,
+_ctk_gesture_get_last_update_time (GtkGesture       *gesture,
                                    GdkEventSequence *sequence,
                                    guint32          *evtime)
 {
@@ -1354,7 +1354,7 @@ _gtk_gesture_get_last_update_time (GtkGesture       *gesture,
 
   g_return_val_if_fail (GTK_IS_GESTURE (gesture), FALSE);
 
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
 
   if (!g_hash_table_lookup_extended (priv->points, sequence,
                                      NULL, (gpointer *) &data))
@@ -1367,7 +1367,7 @@ _gtk_gesture_get_last_update_time (GtkGesture       *gesture,
 };
 
 /**
- * gtk_gesture_get_bounding_box:
+ * ctk_gesture_get_bounding_box:
  * @gesture: a #GtkGesture
  * @rect: (out): bounding box containing all active touches.
  *
@@ -1387,7 +1387,7 @@ _gtk_gesture_get_last_update_time (GtkGesture       *gesture,
  * Since: 3.14
  **/
 gboolean
-gtk_gesture_get_bounding_box (GtkGesture   *gesture,
+ctk_gesture_get_bounding_box (GtkGesture   *gesture,
                               GdkRectangle *rect)
 {
   GtkGesturePrivate *priv;
@@ -1399,7 +1399,7 @@ gtk_gesture_get_bounding_box (GtkGesture   *gesture,
   g_return_val_if_fail (GTK_IS_GESTURE (gesture), FALSE);
   g_return_val_if_fail (rect != NULL, FALSE);
 
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
   x1 = y1 = G_MAXDOUBLE;
   x2 = y2 = -G_MAXDOUBLE;
 
@@ -1436,7 +1436,7 @@ gtk_gesture_get_bounding_box (GtkGesture   *gesture,
 
 
 /**
- * gtk_gesture_get_bounding_box_center:
+ * ctk_gesture_get_bounding_box_center:
  * @gesture: a #GtkGesture
  * @x: (out): X coordinate for the bounding box center
  * @y: (out): Y coordinate for the bounding box center
@@ -1451,7 +1451,7 @@ gtk_gesture_get_bounding_box (GtkGesture   *gesture,
  * Since: 3.14
  **/
 gboolean
-gtk_gesture_get_bounding_box_center (GtkGesture *gesture,
+ctk_gesture_get_bounding_box_center (GtkGesture *gesture,
                                      gdouble    *x,
                                      gdouble    *y)
 {
@@ -1462,12 +1462,12 @@ gtk_gesture_get_bounding_box_center (GtkGesture *gesture,
   g_return_val_if_fail (GTK_IS_GESTURE (gesture), FALSE);
   g_return_val_if_fail (x != NULL && y != NULL, FALSE);
 
-  sequence = gtk_gesture_get_last_updated_sequence (gesture);
-  last_event = gtk_gesture_get_last_event (gesture, sequence);
+  sequence = ctk_gesture_get_last_updated_sequence (gesture);
+  last_event = ctk_gesture_get_last_event (gesture, sequence);
 
   if (EVENT_IS_TOUCHPAD_GESTURE (last_event))
-    return gtk_gesture_get_point (gesture, sequence, x, y);
-  else if (!gtk_gesture_get_bounding_box (gesture, &rect))
+    return ctk_gesture_get_point (gesture, sequence, x, y);
+  else if (!ctk_gesture_get_bounding_box (gesture, &rect))
     return FALSE;
 
   *x = rect.x + rect.width / 2;
@@ -1476,7 +1476,7 @@ gtk_gesture_get_bounding_box_center (GtkGesture *gesture,
 }
 
 /**
- * gtk_gesture_is_active:
+ * ctk_gesture_is_active:
  * @gesture: a #GtkGesture
  *
  * Returns %TRUE if the gesture is currently active.
@@ -1488,15 +1488,15 @@ gtk_gesture_get_bounding_box_center (GtkGesture *gesture,
  * Since: 3.14
  **/
 gboolean
-gtk_gesture_is_active (GtkGesture *gesture)
+ctk_gesture_is_active (GtkGesture *gesture)
 {
   g_return_val_if_fail (GTK_IS_GESTURE (gesture), FALSE);
 
-  return _gtk_gesture_get_n_physical_points (gesture, TRUE) != 0;
+  return _ctk_gesture_get_n_physical_points (gesture, TRUE) != 0;
 }
 
 /**
- * gtk_gesture_is_recognized:
+ * ctk_gesture_is_recognized:
  * @gesture: a #GtkGesture
  *
  * Returns %TRUE if the gesture is currently recognized.
@@ -1509,31 +1509,31 @@ gtk_gesture_is_active (GtkGesture *gesture)
  * Since: 3.14
  **/
 gboolean
-gtk_gesture_is_recognized (GtkGesture *gesture)
+ctk_gesture_is_recognized (GtkGesture *gesture)
 {
   GtkGesturePrivate *priv;
 
   g_return_val_if_fail (GTK_IS_GESTURE (gesture), FALSE);
 
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
 
   return priv->recognized;
 }
 
 gboolean
-_gtk_gesture_check (GtkGesture *gesture)
+_ctk_gesture_check (GtkGesture *gesture)
 {
   GtkGesturePrivate *priv;
 
   g_return_val_if_fail (GTK_IS_GESTURE (gesture), FALSE);
 
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
 
-  return _gtk_gesture_check_recognized (gesture, priv->last_sequence);
+  return _ctk_gesture_check_recognized (gesture, priv->last_sequence);
 }
 
 /**
- * gtk_gesture_handles_sequence:
+ * ctk_gesture_handles_sequence:
  * @gesture: a #GtkGesture
  * @sequence: (nullable): a #GdkEventSequence or %NULL
  *
@@ -1545,7 +1545,7 @@ _gtk_gesture_check (GtkGesture *gesture)
  * Since: 3.14
  **/
 gboolean
-gtk_gesture_handles_sequence (GtkGesture       *gesture,
+ctk_gesture_handles_sequence (GtkGesture       *gesture,
                               GdkEventSequence *sequence)
 {
   GtkGesturePrivate *priv;
@@ -1553,7 +1553,7 @@ gtk_gesture_handles_sequence (GtkGesture       *gesture,
 
   g_return_val_if_fail (GTK_IS_GESTURE (gesture), FALSE);
 
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
   data = g_hash_table_lookup (priv->points, sequence);
 
   if (!data)
@@ -1566,7 +1566,7 @@ gtk_gesture_handles_sequence (GtkGesture       *gesture,
 }
 
 gboolean
-_gtk_gesture_cancel_sequence (GtkGesture       *gesture,
+_ctk_gesture_cancel_sequence (GtkGesture       *gesture,
                               GdkEventSequence *sequence)
 {
   GtkGesturePrivate *priv;
@@ -1574,25 +1574,25 @@ _gtk_gesture_cancel_sequence (GtkGesture       *gesture,
 
   g_return_val_if_fail (GTK_IS_GESTURE (gesture), FALSE);
 
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
   data = g_hash_table_lookup (priv->points, sequence);
 
   if (!data)
     return FALSE;
 
   g_signal_emit (gesture, signals[CANCEL], 0, sequence);
-  _gtk_gesture_remove_point (gesture, data->event);
-  _gtk_gesture_check_recognized (gesture, sequence);
+  _ctk_gesture_remove_point (gesture, data->event);
+  _ctk_gesture_check_recognized (gesture, sequence);
 
   return TRUE;
 }
 
 /**
- * gtk_gesture_get_window:
+ * ctk_gesture_get_window:
  * @gesture: a #GtkGesture
  *
  * Returns the user-defined window that receives the events
- * handled by @gesture. See gtk_gesture_set_window() for more
+ * handled by @gesture. See ctk_gesture_set_window() for more
  * information.
  *
  * Returns: (nullable) (transfer none): the user defined window, or %NULL if none
@@ -1600,30 +1600,30 @@ _gtk_gesture_cancel_sequence (GtkGesture       *gesture,
  * Since: 3.14
  **/
 GdkWindow *
-gtk_gesture_get_window (GtkGesture *gesture)
+ctk_gesture_get_window (GtkGesture *gesture)
 {
   GtkGesturePrivate *priv;
 
   g_return_val_if_fail (GTK_IS_GESTURE (gesture), NULL);
 
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
 
   return priv->user_window;
 }
 
 /**
- * gtk_gesture_set_window:
+ * ctk_gesture_set_window:
  * @gesture: a #GtkGesture
  * @window: (allow-none): a #GdkWindow, or %NULL
  *
  * Sets a specific window to receive events about, so @gesture
  * will effectively handle only events targeting @window, or
- * a child of it. @window must pertain to gtk_event_controller_get_widget().
+ * a child of it. @window must pertain to ctk_event_controller_get_widget().
  *
  * Since: 3.14
  **/
 void
-gtk_gesture_set_window (GtkGesture *gesture,
+ctk_gesture_set_window (GtkGesture *gesture,
                         GdkWindow  *window)
 {
   GtkGesturePrivate *priv;
@@ -1631,7 +1631,7 @@ gtk_gesture_set_window (GtkGesture *gesture,
   g_return_if_fail (GTK_IS_GESTURE (gesture));
   g_return_if_fail (!window || GDK_IS_WINDOW (window));
 
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
 
   if (window)
     {
@@ -1639,7 +1639,7 @@ gtk_gesture_set_window (GtkGesture *gesture,
 
       gdk_window_get_user_data (window, (gpointer*) &window_widget);
       g_return_if_fail (window_widget ==
-                        gtk_event_controller_get_widget (GTK_EVENT_CONTROLLER (gesture)));
+                        ctk_event_controller_get_widget (GTK_EVENT_CONTROLLER (gesture)));
     }
 
   if (priv->user_window == window)
@@ -1650,17 +1650,17 @@ gtk_gesture_set_window (GtkGesture *gesture,
 }
 
 GList *
-_gtk_gesture_get_group_link (GtkGesture *gesture)
+_ctk_gesture_get_group_link (GtkGesture *gesture)
 {
   GtkGesturePrivate *priv;
 
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
 
   return priv->group_link;
 }
 
 /**
- * gtk_gesture_group:
+ * ctk_gesture_group:
  * @gesture: a #GtkGesture
  * @group_gesture: #GtkGesture to group @gesture with
  *
@@ -1668,7 +1668,7 @@ _gtk_gesture_get_group_link (GtkGesture *gesture)
  * are by default isolated in their own groups.
  *
  * When gestures are grouped, the state of #GdkEventSequences
- * is kept in sync for all of those, so calling gtk_gesture_set_sequence_state(),
+ * is kept in sync for all of those, so calling ctk_gesture_set_sequence_state(),
  * on one will transfer the same value to the others.
  *
  * Groups also perform an "implicit grabbing" of sequences, if a
@@ -1679,26 +1679,26 @@ _gtk_gesture_get_group_link (GtkGesture *gesture)
  * Since: 3.14
  **/
 void
-gtk_gesture_group (GtkGesture *gesture,
+ctk_gesture_group (GtkGesture *gesture,
                    GtkGesture *group_gesture)
 {
   GList *link, *group_link, *next;
 
   g_return_if_fail (GTK_IS_GESTURE (gesture));
   g_return_if_fail (GTK_IS_GESTURE (group_gesture));
-  g_return_if_fail (gtk_event_controller_get_widget (GTK_EVENT_CONTROLLER (group_gesture)) ==
-                    gtk_event_controller_get_widget (GTK_EVENT_CONTROLLER (gesture)));
+  g_return_if_fail (ctk_event_controller_get_widget (GTK_EVENT_CONTROLLER (group_gesture)) ==
+                    ctk_event_controller_get_widget (GTK_EVENT_CONTROLLER (gesture)));
 
-  link = _gtk_gesture_get_group_link (gesture);
+  link = _ctk_gesture_get_group_link (gesture);
 
   if (link->prev || link->next)
     {
-      if (gtk_gesture_is_grouped_with (gesture, group_gesture))
+      if (ctk_gesture_is_grouped_with (gesture, group_gesture))
         return;
-      gtk_gesture_ungroup (gesture);
+      ctk_gesture_ungroup (gesture);
     }
 
-  group_link = _gtk_gesture_get_group_link (group_gesture);
+  group_link = _ctk_gesture_get_group_link (group_gesture);
   next = group_link->next;
 
   /* Rewire link so it's inserted after the group_gesture elem */
@@ -1710,7 +1710,7 @@ gtk_gesture_group (GtkGesture *gesture,
 }
 
 /**
- * gtk_gesture_ungroup:
+ * ctk_gesture_ungroup:
  * @gesture: a #GtkGesture
  *
  * Separates @gesture into an isolated group.
@@ -1718,13 +1718,13 @@ gtk_gesture_group (GtkGesture *gesture,
  * Since: 3.14
  **/
 void
-gtk_gesture_ungroup (GtkGesture *gesture)
+ctk_gesture_ungroup (GtkGesture *gesture)
 {
   GList *link, *prev, *next;
 
   g_return_if_fail (GTK_IS_GESTURE (gesture));
 
-  link = _gtk_gesture_get_group_link (gesture);
+  link = _ctk_gesture_get_group_link (gesture);
   prev = link->prev;
   next = link->next;
 
@@ -1738,7 +1738,7 @@ gtk_gesture_ungroup (GtkGesture *gesture)
 }
 
 /**
- * gtk_gesture_get_group:
+ * ctk_gesture_get_group:
  * @gesture: a #GtkGesture
  *
  * Returns all gestures in the group of @gesture
@@ -1749,19 +1749,19 @@ gtk_gesture_ungroup (GtkGesture *gesture)
  * Since: 3.14
  **/
 GList *
-gtk_gesture_get_group (GtkGesture *gesture)
+ctk_gesture_get_group (GtkGesture *gesture)
 {
   GList *link;
 
   g_return_val_if_fail (GTK_IS_GESTURE (gesture), NULL);
 
-  link = _gtk_gesture_get_group_link (gesture);
+  link = _ctk_gesture_get_group_link (gesture);
 
   return g_list_copy (g_list_first (link));
 }
 
 /**
- * gtk_gesture_is_grouped_with:
+ * ctk_gesture_is_grouped_with:
  * @gesture: a #GtkGesture
  * @other: another #GtkGesture
  *
@@ -1772,7 +1772,7 @@ gtk_gesture_get_group (GtkGesture *gesture)
  * Since: 3.14
  **/
 gboolean
-gtk_gesture_is_grouped_with (GtkGesture *gesture,
+ctk_gesture_is_grouped_with (GtkGesture *gesture,
                              GtkGesture *other)
 {
   GList *link;
@@ -1780,14 +1780,14 @@ gtk_gesture_is_grouped_with (GtkGesture *gesture,
   g_return_val_if_fail (GTK_IS_GESTURE (gesture), FALSE);
   g_return_val_if_fail (GTK_IS_GESTURE (other), FALSE);
 
-  link = _gtk_gesture_get_group_link (gesture);
+  link = _ctk_gesture_get_group_link (gesture);
   link = g_list_first (link);
 
   return g_list_find (link, other) != NULL;
 }
 
 gboolean
-_gtk_gesture_handled_sequence_press (GtkGesture       *gesture,
+_ctk_gesture_handled_sequence_press (GtkGesture       *gesture,
                                      GdkEventSequence *sequence)
 {
   GtkGesturePrivate *priv;
@@ -1795,7 +1795,7 @@ _gtk_gesture_handled_sequence_press (GtkGesture       *gesture,
 
   g_return_val_if_fail (GTK_IS_GESTURE (gesture), FALSE);
 
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
   data = g_hash_table_lookup (priv->points, sequence);
 
   if (!data)
@@ -1805,7 +1805,7 @@ _gtk_gesture_handled_sequence_press (GtkGesture       *gesture,
 }
 
 gboolean
-_gtk_gesture_get_pointer_emulating_sequence (GtkGesture        *gesture,
+_ctk_gesture_get_pointer_emulating_sequence (GtkGesture        *gesture,
                                              GdkEventSequence **sequence)
 {
   GtkGesturePrivate *priv;
@@ -1815,7 +1815,7 @@ _gtk_gesture_get_pointer_emulating_sequence (GtkGesture        *gesture,
 
   g_return_val_if_fail (GTK_IS_GESTURE (gesture), FALSE);
 
-  priv = gtk_gesture_get_instance_private (gesture);
+  priv = ctk_gesture_get_instance_private (gesture);
   g_hash_table_iter_init (&iter, priv->points);
 
   while (g_hash_table_iter_next (&iter, (gpointer*) &seq, (gpointer*) &data))

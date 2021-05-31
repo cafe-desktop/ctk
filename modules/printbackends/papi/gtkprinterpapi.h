@@ -26,7 +26,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_PRINTER_PAPI                  (gtk_printer_papi_get_type ())
+#define GTK_TYPE_PRINTER_PAPI                  (ctk_printer_papi_get_type ())
 #define GTK_PRINTER_PAPI(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PRINTER_PAPI, GtkPrinterPapi))
 #define GTK_PRINTER_PAPI_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_PRINTER_PAPI, GtkPrinterPapiClass))
 #define GTK_IS_PRINTER_PAPI(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PRINTER_PAPI))
@@ -50,9 +50,9 @@ struct _GtkPrinterPapiClass
 
 };
 
-GType                    gtk_printer_papi_get_type      (void) G_GNUC_CONST;
-void                     gtk_printer_papi_register_type (GTypeModule     *module);
-GtkPrinterPapi          *gtk_printer_papi_new           (const char      *name, GtkPrintBackend *backend);
+GType                    ctk_printer_papi_get_type      (void) G_GNUC_CONST;
+void                     ctk_printer_papi_register_type (GTypeModule     *module);
+GtkPrinterPapi          *ctk_printer_papi_new           (const char      *name, GtkPrintBackend *backend);
 
 G_END_DECLS
 

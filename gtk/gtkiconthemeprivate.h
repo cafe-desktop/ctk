@@ -21,17 +21,17 @@
 #include <gtk/gtkicontheme.h>
 #include <gtk/gtkcssstyleprivate.h>
 
-void        gtk_icon_theme_lookup_symbolic_colors       (GtkCssStyle    *style,
+void        ctk_icon_theme_lookup_symbolic_colors       (GtkCssStyle    *style,
                                                          GdkRGBA        *color_out,
                                                          GdkRGBA        *success_out,
                                                          GdkRGBA        *warning_out,
                                                          GdkRGBA        *error_out);
 
-GtkIconInfo *gtk_icon_info_new_for_file (GFile *file,
+GtkIconInfo *ctk_icon_info_new_for_file (GFile *file,
                                          gint   size,
                                          gint   scale);
 
-GdkPixbuf * gtk_icon_theme_color_symbolic_pixbuf (GdkPixbuf     *symbolic,
+GdkPixbuf * ctk_icon_theme_color_symbolic_pixbuf (GdkPixbuf     *symbolic,
                                                   const GdkRGBA *fg_color,
                                                   const GdkRGBA *success_color,
                                                   const GdkRGBA *warning_color,

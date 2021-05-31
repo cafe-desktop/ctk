@@ -34,11 +34,11 @@ AM_CPPFLAGS =						\
 	$(INCLUDED_IMMODULE_DEFINE)
 
 if OS_WIN32
-gtk_def = gtk.def
-gtk_win32_symbols = -export-symbols $(srcdir)/gtk.def
+ctk_def = gtk.def
+ctk_win32_symbols = -export-symbols $(srcdir)/gtk.def
 
-gtk_win32_res = gtk-win32-res.o
-gtk_win32_res_ldflag = -Wl,gtk-win32-res.o
+ctk_win32_res = gtk-win32-res.o
+ctk_win32_res_ldflag = -Wl,gtk-win32-res.o
 
 gtk-win32-res.o : gtk-win32.rc libgtk3.manifest
 	$(WINDRES) gtk-win32.rc $@
@@ -119,7 +119,7 @@ include $(srcdir)/inspector/Makefile.inc
 # GTK+ header files for public installation (non-generated, or generated
 # by configure)
 
-gtk_public_h_sources = 		\
+ctk_public_h_sources = 		\
 	gtk.h			\
 	gtk-autocleanups.h	\
 	gtkx.h			\
@@ -347,7 +347,7 @@ gtk_public_h_sources = 		\
 	gtkwindowgroup.h
 
 if OS_UNIX
-gtk_unix_print_public_h_sources = 	\
+ctk_unix_print_public_h_sources = 	\
 	gtkpagesetupunixdialog.h	\
 	gtkprintunixdialog.h		\
 	gtkprinter.h			\
@@ -358,18 +358,18 @@ endif
 
 # Installed header files without compatibility guarantees
 # that are not included in gtk/gtk.h
-gtk_semi_private_h_sources = \
+ctk_semi_private_h_sources = \
 	gtktextlayout.h
 
-gtk_private_type_h_sources =	\
+ctk_private_type_h_sources =	\
 	gtkcsstypesprivate.h	\
 	gtktexthandleprivate.h
 
 
 # GTK+ header files that don't get installed
-gtk_private_h_sources =		\
+ctk_private_h_sources =		\
 	$(inspector_h_sources)	\
-	$(gtk_private_type_h_sources) \
+	$(ctk_private_type_h_sources) \
 	gtkactionmuxer.h	\
 	gtkactionobserver.h	\
 	gtkactionobservable.h	\
@@ -607,7 +607,7 @@ gtk_private_h_sources =		\
 	script-names.h
 
 # GTK+ C sources to build the library from
-gtk_base_c_sources = 		\
+ctk_base_c_sources = 		\
 	$(a11y_c_sources)	\
 	$(deprecated_c_sources)	\
 	$(inspector_c_sources)	\
@@ -981,31 +981,31 @@ gtk_base_c_sources = 		\
 	script-names.c
 
 if USE_QUARTZ
-gtk_base_c_sources += 		\
+ctk_base_c_sources += 		\
 	gtkclipboard-quartz.c	\
 	gtkdnd-quartz.c
 else
-gtk_base_c_sources += 		\
+ctk_base_c_sources += 		\
 	gtkclipboard.c 		\
 	gtkdnd.c		\
 	gtkdragdest.c
 endif
 
-nodist_gtk_c_sources =
-gtk_c_sources = $(gtk_base_c_sources)
+nodist_ctk_c_sources =
+ctk_c_sources = $(ctk_base_c_sources)
 
-gtk_dbus_built_sources = gtkdbusgenerated.c gtkdbusgenerated.h
+ctk_dbus_built_sources = gtkdbusgenerated.c gtkdbusgenerated.h
 
-$(gtk_dbus_built_sources) : Makefile.am gtkdbusinterfaces.xml
+$(ctk_dbus_built_sources) : Makefile.am gtkdbusinterfaces.xml
 	$(AM_V_GEN) gdbus-codegen \
 	--interface-prefix org.Gtk. \
 	--c-namespace _Gtk \
 	--generate-c-code gtkdbusgenerated \
 	$(srcdir)/gtkdbusinterfaces.xml
 
-nodist_gtk_c_sources += $(gtk_dbus_built_sources)
+nodist_ctk_c_sources += $(ctk_dbus_built_sources)
 
-gtk_os_unix_c_sources = 		\
+ctk_os_unix_c_sources = 		\
 	gtkcustompaperunixdialog.c	\
 	gtkpagesetupunixdialog.c	\
 	gtkprinter.c			\
@@ -1021,7 +1021,7 @@ gtk_os_unix_c_sources = 		\
 	gtksearchenginetracker.c
 
 if OS_UNIX
-gtk_private_h_sources += \
+ctk_private_h_sources += \
 	gtkiconcachevalidator.h		\
 	gtkprintbackend.h		\
 	gtkprinter-private.h		\
@@ -1031,26 +1031,26 @@ gtk_private_h_sources += \
 	gtksearchenginetracker.h
 
 if HAVE_TRACKER3
-gtk_private_h_sources += \
+ctk_private_h_sources += \
 	gtksearchenginetracker3.h
-gtk_os_unix_c_sources += \
+ctk_os_unix_c_sources += \
 	gtksearchenginetracker3.c
 endif
 
-gtk_c_sources += $(gtk_os_unix_c_sources)
+ctk_c_sources += $(ctk_os_unix_c_sources)
 endif
 
-gtk_os_win32_c_sources = \
+ctk_os_win32_c_sources = \
 	gtkprint-win32.c		\
 	gtkprintoperation-win32.c	\
 	gtkfilechoosernativewin32.c	\
 	gtkwin32.c
 if OS_WIN32
-gtk_private_h_sources += gtkprint-win32.h
-gtk_c_sources += $(gtk_os_win32_c_sources)
+ctk_private_h_sources += gtkprint-win32.h
+ctk_c_sources += $(ctk_os_win32_c_sources)
 endif
 
-gtk_use_x11_c_sources = 	\
+ctk_use_x11_c_sources = 	\
 	gtkplug.c		\
 	gtksocket.c		\
 	gtkxembed.c		\
@@ -1058,76 +1058,76 @@ gtk_use_x11_c_sources = 	\
 	gtkapplication-x11.c	\
 	gtkmountoperation-x11.c
 
-gtk_use_wayland_c_sources = \
+ctk_use_wayland_c_sources = \
 	gtkapplication-wayland.c
 
-gtk_use_wayland_or_x11_c_sources = \
+ctk_use_wayland_or_x11_c_sources = \
 	gtkapplication-dbus.c
 
-gtk_use_win32_c_sources = 	\
+ctk_use_win32_c_sources = 	\
 	gtkwin32embed.c		\
 	gtkwin32embedwidget.c	\
 	gtkmountoperation-stub.c
-gtk_use_quartz_c_sources = 	\
+ctk_use_quartz_c_sources = 	\
 	gtksearchenginequartz.c	\
 	gtkmountoperation-stub.c \
 	gtkapplication-quartz.c \
 	gtkapplication-quartz-menu.c \
 	gtkfilechoosernativequartz.c \
 	gtkquartz.c
-gtk_use_stub_c_sources = 	\
+ctk_use_stub_c_sources = 	\
 	gtkmountoperation-stub.c
-gtk_use_x11_private_h_sources = 	\
+ctk_use_x11_private_h_sources = 	\
 	gtkxembed.h		\
 	deprecated/gtktrayicon.h	\
 	xembed.h
 if USE_X11
-gtk_c_sources += $(gtk_use_x11_c_sources)
-gtk_private_h_sources += $(gtk_use_x11_private_h_sources)
+ctk_c_sources += $(ctk_use_x11_c_sources)
+ctk_private_h_sources += $(ctk_use_x11_private_h_sources)
 endif
 
 if USE_WAYLAND
-gtk_c_sources += $(gtk_use_wayland_c_sources)
+ctk_c_sources += $(ctk_use_wayland_c_sources)
 endif
 
 # pretty tricky way to write USE_WAYLAND || USE_X11...
 if USE_WAYLAND
-gtk_c_sources += $(gtk_use_wayland_or_x11_c_sources)
+ctk_c_sources += $(ctk_use_wayland_or_x11_c_sources)
 else
 if USE_X11
-gtk_c_sources += $(gtk_use_wayland_or_x11_c_sources)
+ctk_c_sources += $(ctk_use_wayland_or_x11_c_sources)
 else
 endif
 endif
 
-gtk_use_win32_private_h_sources = 	\
+ctk_use_win32_private_h_sources = 	\
 	gtkwin32embed.h		\
 	gtkwin32embedwidget.h
 if USE_WIN32
-gtk_c_sources += $(gtk_use_win32_c_sources)
-gtk_private_h_sources += $(gtk_use_win32_private_h_sources)
+ctk_c_sources += $(ctk_use_win32_c_sources)
+ctk_private_h_sources += $(ctk_use_win32_private_h_sources)
 endif
 
-gtk_use_quartz_private_h_sources = 	\
+ctk_use_quartz_private_h_sources = 	\
 	gtksearchenginequartz.h	\
 	gtkquartz.h
 if USE_QUARTZ
-gtk_c_sources += $(gtk_use_quartz_c_sources)
-gtk_private_h_sources += $(gtk_use_quartz_private_h_sources)
+ctk_c_sources += $(ctk_use_quartz_c_sources)
+ctk_private_h_sources += $(ctk_use_quartz_private_h_sources)
 endif
 
-gtk_all_private_h_sources = \
+ctk_all_private_h_sources = \
 	$(a11y_private_h_sources) \
 	$(deprecated_private_h_sources) \
-	$(gtk_private_h_sources) \
-	$(gtk_use_x11_private_h_sources) \
-	$(gtk_use_win32_private_h_sources) \
-	$(gtk_use_quartz_private_h_sources)
+	$(ctk_private_h_sources) \
+	$(ctk_use_x11_private_h_sources) \
+	$(ctk_use_win32_private_h_sources) \
+	$(ctk_use_quartz_private_h_sources)
 
 if !USE_X11
 if !USE_WIN32
 if !USE_QUARTZ
-gtk_c_sources += $(gtk_use_stub_c_sources)
+ctk_c_sources += $(ctk_use_stub_c_sources)
 endif
 endif
 endif
@@ -1139,25 +1139,25 @@ endif
 # content
 
 # built sources that get installed with the header files
-gtk_built_public_sources =			\
+ctk_built_public_sources =			\
 	gtktypebuiltins.h
 
 # built headers that don't get installed
-gtk_built_private_headers =			\
+ctk_built_private_headers =			\
 	gtkresources.h				\
 	gtkmarshalers.h				\
 	gtkprivatetypebuiltins.h
 
-gtk_built_sources =				\
-	$(gtk_built_private_headers)		\
-	$(gtk_built_public_sources)		\
+ctk_built_sources =				\
+	$(ctk_built_private_headers)		\
+	$(ctk_built_public_sources)		\
 	gtkresources.c				\
 	gtk.gresource.xml			\
 	gtktypebuiltins.c			\
 	gtkmarshalers.c				\
 	gtkprivatetypebuiltins.c
 
-nodist_gtk_c_sources += $(gtk_built_sources)
+nodist_ctk_c_sources += $(ctk_built_sources)
 
 stamp_files =					\
 	stamp-gtkmarshalers.h			\
@@ -1167,7 +1167,7 @@ stamp_files =					\
 # non-header sources (headers should be specified in the above variables)
 # that don't serve as direct make target sources, i.e. they don't have
 # their own .lo rules and don't get publically installed
-gtk_extra_sources =				\
+ctk_extra_sources =				\
 	paper_names.c				\
 	paper_names_offsets.c			\
 	gen-paper-names.c			\
@@ -1180,8 +1180,8 @@ gtk_extra_sources =				\
 # setup GTK+ sources and their dependencies
 #
 MAINTAINERCLEANFILES = \
-	$(gtk_built_sources) 			\
-	$(gtk_dbus_built_sources)		\
+	$(ctk_built_sources) 			\
+	$(ctk_dbus_built_sources)		\
 	$(print_portal_built_sources)		\
 	$(stamp_files)
 
@@ -1191,8 +1191,8 @@ if OS_WIN32
 DISTCLEANFILES += gtk-win32.rc
 endif
 
-EXTRA_DIST += $(gtk_all_private_h_sources) $(gtk_extra_sources)
-EXTRA_DIST += $(gtk_built_sources)
+EXTRA_DIST += $(ctk_all_private_h_sources) $(ctk_extra_sources)
+EXTRA_DIST += $(ctk_built_sources)
 
 
 pkgdatadir = $(datadir)/gtk-$(GTK_API_VERSION)
@@ -1248,8 +1248,8 @@ gen_sources = xgen-gdef xgen-gtbh xgen-gtic xgen-gmh xgen-gmc xgen-gmlh xgen-gml
 CLEANFILES = $(gen_sources)
 
 BUILT_SOURCES = \
-	$(gtk_built_sources) \
-	$(gtk_dbus_built_sources) \
+	$(ctk_built_sources) \
+	$(ctk_dbus_built_sources) \
 	$(print_portal_built_sources)
 
 # all autogenerated files need to be generated in the srcdir,
@@ -1261,7 +1261,7 @@ gtkmarshalers.h: stamp-gtkmarshalers.h
 	@true
 stamp-gtkmarshalers.h: gtkmarshalers.list
 	$(AM_V_GEN) $(GLIB_GENMARSHAL) \
-		--prefix=_gtk_marshal \
+		--prefix=_ctk_marshal \
 		--header \
 		--valist-marshallers \
 		$(srcdir)/gtkmarshalers.list >> xgen-gmlh \
@@ -1271,7 +1271,7 @@ stamp-gtkmarshalers.h: gtkmarshalers.list
 gtkmarshalers.c: gtkmarshalers.list
 	$(AM_V_GEN) (echo "#undef G_ENABLE_DEBUG"; \
 	 $(GLIB_GENMARSHAL) \
-	 	--prefix=_gtk_marshal \
+	 	--prefix=_ctk_marshal \
 		--body \
 		--valist-marshallers $(srcdir)/gtkmarshalers.list) >> xgen-gmlc \
 	&& cp xgen-gmlc gtkmarshalers.c \
@@ -1279,15 +1279,15 @@ gtkmarshalers.c: gtkmarshalers.list
 
 gtktypebuiltins.h: stamp-gtktypebuiltins.h
 	@true
-stamp-gtktypebuiltins.h: $(gtk_public_h_sources) $(a11y_h_sources) $(deprecated_h_sources) gtktypebuiltins.h.template
+stamp-gtktypebuiltins.h: $(ctk_public_h_sources) $(a11y_h_sources) $(deprecated_h_sources) gtktypebuiltins.h.template
 	$(AM_V_GEN) ( cd $(srcdir) && $(GLIB_MKENUMS) --template gtktypebuiltins.h.template \
-		$(gtk_public_h_sources) $(a11y_h_sources) $(deprecated_h_sources) ) > xgen-gtbh \
+		$(ctk_public_h_sources) $(a11y_h_sources) $(deprecated_h_sources) ) > xgen-gtbh \
 	&& (cmp -s xgen-gtbh gtktypebuiltins.h || cp xgen-gtbh gtktypebuiltins.h ) \
 	&& rm -f xgen-gtbh \
 	&& echo timestamp > $(@F)
-gtktypebuiltins.c: $(gtk_public_h_sources) $(a11y_h_sources) $(deprecated_h_sources) gtktypebuiltins.c.template
+gtktypebuiltins.c: $(ctk_public_h_sources) $(a11y_h_sources) $(deprecated_h_sources) gtktypebuiltins.c.template
 	$(AM_V_GEN) ( cd $(srcdir) && $(GLIB_MKENUMS) --template gtktypebuiltins.c.template \
-		$(gtk_public_h_sources) $(a11y_h_sources) $(deprecated_h_sources) ) > xgen-gtbc \
+		$(ctk_public_h_sources) $(a11y_h_sources) $(deprecated_h_sources) ) > xgen-gtbc \
 	&& cp xgen-gtbc gtktypebuiltins.c  \
 	&& rm -f xgen-gtbc
 
@@ -1435,15 +1435,15 @@ gtkresources.c: gtk.gresource.xml $(resource_files)
 
 gtkprivatetypebuiltins.h: stamp-gtkprivatetypebuiltins.h
 	@true
-stamp-gtkprivatetypebuiltins.h: $(gtk_private_type_h_sources) gtkprivatetypebuiltins.h.template
+stamp-gtkprivatetypebuiltins.h: $(ctk_private_type_h_sources) gtkprivatetypebuiltins.h.template
 	$(AM_V_GEN) ( cd $(srcdir) && $(GLIB_MKENUMS) --template gtkprivatetypebuiltins.h.template \
-		$(gtk_private_type_h_sources) ) > xgen-gptbh \
+		$(ctk_private_type_h_sources) ) > xgen-gptbh \
 	&& (cmp -s xgen-gptbh gtkprivatetypebuiltins.h || cp xgen-gptbh gtkprivatetypebuiltins.h ) \
 	&& rm -f xgen-gptbh \
 	&& echo timestamp > $(@F)
-gtkprivatetypebuiltins.c: $(gtk_private_type_h_sources)  gtkprivatetypebuiltins.c.template
+gtkprivatetypebuiltins.c: $(ctk_private_type_h_sources)  gtkprivatetypebuiltins.c.template
 	$(AM_V_GEN) ( cd $(srcdir) && $(GLIB_MKENUMS) --template gtkprivatetypebuiltins.c.template \
-		$(gtk_private_type_h_sources) ) > xgen-gptbc \
+		$(ctk_private_type_h_sources) ) > xgen-gptbc \
 	&& cp xgen-gptbc gtkprivatetypebuiltins.c  \
 	&& rm -f xgen-gptbc
 
@@ -1455,7 +1455,7 @@ gtktypefuncs.inc: stamp-gtktypebuiltins.h stamp-gtkprivatetypebuiltins.h $(top_s
 	  ${CPP} $(DEFS) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) xgen-gtfsrc.c | \
 	  $(GREP) -o '\bg[td]k_[a-zA-Z0-9_]*_get_type\b' | \
 	  sort | uniq | \
-	  $(SED) '{ s/^/*tp++ = /; s/$$/();/; s/^.*\(gdk_x11\|gtk_plug_\|gtk_socket_\).*$$/#ifdef GDK_WINDOWING_X11\n&\n#endif/; }' >> xgen-gtf \
+	  $(SED) '{ s/^/*tp++ = /; s/$$/();/; s/^.*\(gdk_x11\|ctk_plug_\|ctk_socket_\).*$$/#ifdef GDK_WINDOWING_X11\n&\n#endif/; }' >> xgen-gtf \
 	&& cp xgen-gtf $@ && rm -f xgen-gtf
 $(srcdir)/gtktestutils.c: gtktypefuncs.inc
 
@@ -1463,7 +1463,7 @@ $(srcdir)/gtktestutils.c: gtktypefuncs.inc
 lib_LTLIBRARIES = libgtk-3.la
 
 gtkincludedir = $(includedir)/gtk-3.0/gtk
-gtkinclude_HEADERS = $(gtk_public_h_sources) $(gtk_semi_private_h_sources) $(gtk_built_public_sources) gtkversion.h
+gtkinclude_HEADERS = $(ctk_public_h_sources) $(ctk_semi_private_h_sources) $(ctk_built_public_sources) gtkversion.h
 
 a11yincludedir = $(includedir)/gtk-3.0/gtk/a11y
 a11yinclude_HEADERS= $(a11y_h_sources)
@@ -1472,23 +1472,23 @@ deprecatedincludedir = $(includedir)/gtk-3.0/gtk/deprecated
 deprecatedinclude_HEADERS= $(deprecated_h_sources)
 
 gtkunixprintincludedir = $(includedir)/gtk-3.0/unix-print/gtk
-gtkunixprintinclude_HEADERS = $(gtk_unix_print_public_h_sources)
+gtkunixprintinclude_HEADERS = $(ctk_unix_print_public_h_sources)
 
-nodist_libgtk_3_la_SOURCES = $(nodist_gtk_c_sources)
-libgtk_3_la_SOURCES = $(gtk_c_sources)
-libgtk_3_la_CFLAGS = $(AM_CFLAGS) $(GDK_HIDDEN_VISIBILITY_CFLAGS)
-libgtk_3_la_LDFLAGS = $(libtool_opts)
-libgtk_3_la_LIBADD = $(libadd)
-libgtk_3_la_DEPENDENCIES = $(deps)
+nodist_libctk_3_la_SOURCES = $(nodist_ctk_c_sources)
+libctk_3_la_SOURCES = $(ctk_c_sources)
+libctk_3_la_CFLAGS = $(AM_CFLAGS) $(GDK_HIDDEN_VISIBILITY_CFLAGS)
+libctk_3_la_LDFLAGS = $(libtool_opts)
+libctk_3_la_LIBADD = $(libadd)
+libctk_3_la_DEPENDENCIES = $(deps)
 
 if USE_QUARTZ
-libgtk_3_la_CFLAGS += "-xobjective-c"
+libctk_3_la_CFLAGS += "-xobjective-c"
 endif
 
 if USE_WIN32
-libgtk_3_la_LIBADD += -lole32 -lgdi32 -lcomdlg32 -lwinspool -lcomctl32
-libgtk_3_la_LDFLAGS += -Wl,-luuid $(gtk_win32_res_ldflag)
-libgtk_3_la_DEPENDENCIES += $(gtk_win32_res)
+libctk_3_la_LIBADD += -lole32 -lgdi32 -lcomdlg32 -lwinspool -lcomctl32
+libctk_3_la_LDFLAGS += -Wl,-luuid $(ctk_win32_res_ldflag)
+libctk_3_la_DEPENDENCIES += $(ctk_win32_res)
 endif
 
 install-exec-hook:
@@ -1510,22 +1510,22 @@ endif
 # ------------------- MSVC Build Items ----------------
 MSVCPROJS = gtk-3
 
-gtk_3_FILES = \
-	$(gtk_base_c_sources)		\
-	$(gtk_os_win32_c_sources)	\
-	$(gtk_use_win32_c_sources)	\
-	$(gtk_dbus_built_sources)	\
-	$(gtk_built_sources)
+ctk_3_FILES = \
+	$(ctk_base_c_sources)		\
+	$(ctk_os_win32_c_sources)	\
+	$(ctk_use_win32_c_sources)	\
+	$(ctk_dbus_built_sources)	\
+	$(ctk_built_sources)
 
-gtk_3_EXCLUDES = dummy
-gtk_3_HEADERS_DIR = $(gtkincludedir)
+ctk_3_EXCLUDES = dummy
+ctk_3_HEADERS_DIR = $(gtkincludedir)
 
-gtk_3_HEADERS_INST = \
+ctk_3_HEADERS_INST = \
 	$(gtkinclude_HEADERS)	\
 	$(a11y_h_sources)	\
 	$(deprecated_h_sources)
 
-gtk_3_HEADERS_EXCLUDES = dummy
+ctk_3_HEADERS_EXCLUDES = dummy
 
 include $(top_srcdir)/win32/Makefile.msvcproj
 
@@ -1561,8 +1561,8 @@ INTROSPECTION_INTERMEDIATE_ITEMS = \
 
 Gtk_3_0_gir_MSVC_FILES =		\
 	$(introspected_pub_headers)	\
-	$(gtk_base_c_sources)		\
-	$(gtk_os_win32_c_sources)	\
+	$(ctk_base_c_sources)		\
+	$(ctk_os_win32_c_sources)	\
 	gtktypebuiltins.h		\
 	gtktypebuiltins.c
 
@@ -1607,7 +1607,7 @@ introspected_pub_headers = $(filter-out %private.h gtktextdisplay.h gtktextlayou
 
 introspection_files = \
     $(introspected_pub_headers) \
-    $(filter-out %win32.c, $(gtk_base_c_sources)) \
+    $(filter-out %win32.c, $(ctk_base_c_sources)) \
     gtkprintoperation-unix.c \
     gtktypebuiltins.h \
     gtktypebuiltins.c
@@ -1665,36 +1665,36 @@ bin_PROGRAMS = \
 	gtk-query-settings \
 	gtk-launch
 
-gtk_query_immodules_3_0_SOURCES = queryimmodules.c gtkutils.c
-gtk_query_immodules_3_0_LDADD = 		\
+ctk_query_immodules_3_0_SOURCES = queryimmodules.c gtkutils.c
+ctk_query_immodules_3_0_LDADD = 		\
 	libgtk-3.la				\
 	$(top_builddir)/gdk/libgdk-3.la		\
 	$(GMODULE_LIBS)				\
 	$(GTK_DEP_LIBS)
 
-gtk_update_icon_cache_SOURCES = updateiconcache.c
-gtk_update_icon_cache_LDADD = $(GDK_PIXBUF_LIBS)
+ctk_update_icon_cache_SOURCES = updateiconcache.c
+ctk_update_icon_cache_LDADD = $(GDK_PIXBUF_LIBS)
 
-gtk_encode_symbolic_svg_SOURCES = encodesymbolic.c
-gtk_encode_symbolic_svg_LDADD =			\
+ctk_encode_symbolic_svg_SOURCES = encodesymbolic.c
+ctk_encode_symbolic_svg_LDADD =			\
 	$(GDK_PIXBUF_LIBS)			\
 	$(top_builddir)/gdk/libgdk-3.la		\
 	$(GTK_DEP_LIBS)
 
-gtk_builder_tool_SOURCES = gtk-builder-tool.c
-gtk_builder_tool_LDADD =			\
+ctk_builder_tool_SOURCES = gtk-builder-tool.c
+ctk_builder_tool_LDADD =			\
 	libgtk-3.la				\
 	$(top_builddir)/gdk/libgdk-3.la		\
 	$(GTK_DEP_LIBS)
 
-gtk_query_settings_SOURCES = gtk-query-settings.c
-gtk_query_settings_LDADD= 			\
+ctk_query_settings_SOURCES = gtk-query-settings.c
+ctk_query_settings_LDADD= 			\
 	libgtk-3.la				\
 	$(top_builddir)/gdk/libgdk-3.la		\
 	$(GTK_DEP_LIBS)
 
-gtk_launch_SOURCES = gtk-launch.c
-gtk_launch_LDADD =				\
+ctk_launch_SOURCES = gtk-launch.c
+ctk_launch_LDADD =				\
 	libgtk-3.la				\
 	$(top_builddir)/gdk/libgdk-3.la		\
 	$(GTK_DEP_LIBS)
@@ -1735,7 +1735,7 @@ $(GTK_UPDATE_ICON_CACHE_RC):
 $(GTK_UPDATE_ICON_CACHE_MANIFEST_OBJECT): $(GTK_UPDATE_ICON_CACHE_RC) $(GTK_UPDATE_ICON_CACHE_MANIFEST)
 	$(WINDRES) --input $< --output $@ --output-format=coff
 
-gtk_update_icon_cache_LDADD += $(GTK_UPDATE_ICON_CACHE_MANIFEST_OBJECT)
+ctk_update_icon_cache_LDADD += $(GTK_UPDATE_ICON_CACHE_MANIFEST_OBJECT)
 
 endif
 

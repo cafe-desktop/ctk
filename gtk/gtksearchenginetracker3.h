@@ -28,17 +28,17 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SEARCH_ENGINE_TRACKER3 (gtk_search_engine_tracker3_get_type ())
+#define GTK_TYPE_SEARCH_ENGINE_TRACKER3 (ctk_search_engine_tracker3_get_type ())
 G_DECLARE_FINAL_TYPE (GtkSearchEngineTracker3,
-                      gtk_search_engine_tracker3,
+                      ctk_search_engine_tracker3,
                       GTK, SEARCH_ENGINE_TRACKER3,
                       GtkSearchEngine)
 
-GType            gtk_search_engine_tracker3_get_type (void);
+GType            ctk_search_engine_tracker3_get_type (void);
 
-GtkSearchEngine* gtk_search_engine_tracker3_new      (void);
+GtkSearchEngine* ctk_search_engine_tracker3_new      (void);
 
-gboolean         gtk_search_engine_tracker3_is_indexed (GFile    *file,
+gboolean         ctk_search_engine_tracker3_is_indexed (GFile    *file,
                                                         gpointer  data);
 G_END_DECLS
 

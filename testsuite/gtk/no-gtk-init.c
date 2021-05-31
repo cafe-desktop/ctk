@@ -18,7 +18,7 @@
 #include <gtk/gtk.h>
 #include <locale.h>
 
-/* This test tests functions that are supposed to work without calling gtk_init()
+/* This test tests functions that are supposed to work without calling ctk_init()
  * or gdk_init().
  */
 
@@ -45,14 +45,14 @@ int
 main (int   argc,
       char *argv[])
 {
-  /* Keep in sync with gtk_test_init() */
+  /* Keep in sync with ctk_test_init() */
   g_test_init (&argc, &argv, NULL);
   g_setenv ("GTK_MODULES", "", TRUE);
   setlocale (LC_ALL, "C");
   g_test_bug_base ("http://bugzilla.gnome.org/show_bug.cgi?id=%s");
 
 
-  g_test_add_func ("/no_gtk_init/gdk_cairo_set_source_pixbuf", test_gdk_cairo_set_source_pixbuf);
+  g_test_add_func ("/no_ctk_init/gdk_cairo_set_source_pixbuf", test_gdk_cairo_set_source_pixbuf);
 
 
   return g_test_run();

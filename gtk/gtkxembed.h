@@ -27,20 +27,20 @@ G_BEGIN_DECLS
 /* Latest version we implement */
 #define GTK_XEMBED_PROTOCOL_VERSION 1
 
-void _gtk_xembed_send_message       (GdkWindow         *recipient,
+void _ctk_xembed_send_message       (GdkWindow         *recipient,
 				     XEmbedMessageType  message,
 				     glong              detail,
 				     glong              data1,
 				     glong              data2);
-void _gtk_xembed_send_focus_message (GdkWindow         *recipient,
+void _ctk_xembed_send_focus_message (GdkWindow         *recipient,
 				     XEmbedMessageType  message,
 				     glong              detail);
 
-void        _gtk_xembed_push_message       (XEvent    *xevent);
-void        _gtk_xembed_pop_message        (void);
-void        _gtk_xembed_set_focus_wrapped  (void);
-gboolean    _gtk_xembed_get_focus_wrapped  (void);
-const char *_gtk_xembed_message_name       (XEmbedMessageType message);
+void        _ctk_xembed_push_message       (XEvent    *xevent);
+void        _ctk_xembed_pop_message        (void);
+void        _ctk_xembed_set_focus_wrapped  (void);
+gboolean    _ctk_xembed_get_focus_wrapped  (void);
+const char *_ctk_xembed_message_name       (XEmbedMessageType message);
 
 G_END_DECLS
 

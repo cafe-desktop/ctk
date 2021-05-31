@@ -102,7 +102,7 @@ on_frame_clock_after_paint (GdkFrameClock *frame_clock,
       variable_init (&frame_stats->latency);
 
       if (frame_stats->num_stats == max_stats)
-        gtk_main_quit ();
+        ctk_main_quit ();
     }
 
   frame_stats->frames_since_last_print++;
@@ -133,7 +133,7 @@ void
 on_window_realize (GtkWidget  *window,
                    FrameStats *frame_stats)
 {
-  frame_stats->frame_clock = gtk_widget_get_frame_clock (GTK_WIDGET (window));
+  frame_stats->frame_clock = ctk_widget_get_frame_clock (GTK_WIDGET (window));
   g_signal_connect (frame_stats->frame_clock, "after-paint",
                     G_CALLBACK (on_frame_clock_after_paint), frame_stats);
 }
@@ -177,6 +177,6 @@ frame_stats_ensure (GtkWindow *window)
   g_signal_connect (window, "destroy",
                     G_CALLBACK (on_window_destroy), frame_stats);
 
-  if (gtk_widget_get_realized (GTK_WIDGET (window)))
+  if (ctk_widget_get_realized (GTK_WIDGET (window)))
     on_window_realize (GTK_WIDGET (window), frame_stats);
 }

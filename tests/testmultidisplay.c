@@ -36,7 +36,7 @@ get_screen_response (GtkDialog *dialog,
   if (response_id == GTK_RESPONSE_DELETE_EVENT)
     return;
   g_free (screen2_name);
-  screen2_name = g_strdup (gtk_entry_get_text (entry));
+  screen2_name = g_strdup (ctk_entry_get_text (entry));
 }
 
 void
@@ -45,9 +45,9 @@ entry_dialog_response (GtkDialog        *dialog,
 		       MyDoubleGtkEntry *de)
 {
   if (response_id == GTK_RESPONSE_APPLY)
-    gtk_entry_set_text (de->e2, gtk_entry_get_text (de->e1));
+    ctk_entry_set_text (de->e2, ctk_entry_get_text (de->e1));
   else
-    gtk_main_quit ();
+    ctk_main_quit ();
 }
 
 void
@@ -71,29 +71,29 @@ make_selection_dialog (GdkScreen * screen,
 			   "title", "MultiDisplay Cut & Paste",
 			   "border_width", 10, NULL);
   g_signal_connect (window, "destroy",
-		    G_CALLBACK (gtk_main_quit), NULL);
+		    G_CALLBACK (ctk_main_quit), NULL);
 
-  content_area = gtk_dialog_get_content_area (GTK_DIALOG (window));
+  content_area = ctk_dialog_get_content_area (GTK_DIALOG (window));
 
   vbox = g_object_new (GTK_TYPE_BOX,
 			 "border_width", 5,
                          "orientation", GTK_ORIENTATION_VERTICAL,
 			 NULL);
-  gtk_box_pack_start (GTK_BOX (content_area), vbox, FALSE, FALSE, 0);
+  ctk_box_pack_start (GTK_BOX (content_area), vbox, FALSE, FALSE, 0);
 
-  gtk_box_pack_start (GTK_BOX (vbox), entry, FALSE, FALSE, 0);
-  gtk_widget_grab_focus (entry);
+  ctk_box_pack_start (GTK_BOX (vbox), entry, FALSE, FALSE, 0);
+  ctk_widget_grab_focus (entry);
 
-  gtk_dialog_add_buttons (GTK_DIALOG (window),
+  ctk_dialog_add_buttons (GTK_DIALOG (window),
 			  "_Apply", GTK_RESPONSE_APPLY,
 			  "_Quit", GTK_RESPONSE_DELETE_EVENT,
 			  NULL);
-  gtk_dialog_set_default_response (GTK_DIALOG (window), GTK_RESPONSE_APPLY);
+  ctk_dialog_set_default_response (GTK_DIALOG (window), GTK_RESPONSE_APPLY);
 
   g_signal_connect (window, "response",
 		    G_CALLBACK (entry_dialog_response), double_entry);
 
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
 }
 
 int
@@ -106,34 +106,34 @@ main (int argc, char *argv[])
   GdkScreen *scr2 = NULL;	/* Quiet GCC */
   gboolean correct_second_display = FALSE;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
   if (argc == 2)
     screen2_name = g_strdup (argv[1]);
   
   /* Get the second display information */
 
-  dialog = gtk_dialog_new_with_buttons ("Second Display Selection",
+  dialog = ctk_dialog_new_with_buttons ("Second Display Selection",
 					NULL,
 					GTK_DIALOG_MODAL,
 					"_OK",
 					GTK_RESPONSE_OK, NULL);
 
-  gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
-  display_entry = gtk_entry_new ();
-  gtk_entry_set_activates_default (GTK_ENTRY (display_entry), TRUE);
+  ctk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
+  display_entry = ctk_entry_new ();
+  ctk_entry_set_activates_default (GTK_ENTRY (display_entry), TRUE);
   dialog_label =
-    gtk_label_new ("Please enter the name of\nthe second display\n");
+    ctk_label_new ("Please enter the name of\nthe second display\n");
 
-  content_area = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
+  content_area = ctk_dialog_get_content_area (GTK_DIALOG (dialog));
 
-  gtk_container_add (GTK_CONTAINER (content_area), dialog_label);
-  gtk_container_add (GTK_CONTAINER (content_area), display_entry);
+  ctk_container_add (GTK_CONTAINER (content_area), dialog_label);
+  ctk_container_add (GTK_CONTAINER (content_area), display_entry);
   g_signal_connect (dialog, "response",
 		    G_CALLBACK (get_screen_response), display_entry);
 
-  gtk_widget_grab_focus (display_entry);
-  gtk_widget_show_all (gtk_bin_get_child (GTK_BIN (dialog)));
+  ctk_widget_grab_focus (display_entry);
+  ctk_widget_show_all (ctk_bin_get_child (GTK_BIN (dialog)));
   
   while (!correct_second_display)
     {
@@ -153,16 +153,16 @@ main (int argc, char *argv[])
 	      char *error_msg =
 		g_strdup_printf  ("Can't open display :\n\t%s\nplease try another one\n",
 				  screen2_name);
-	      gtk_label_set_text (GTK_LABEL (dialog_label), error_msg);
+	      ctk_label_set_text (GTK_LABEL (dialog_label), error_msg);
 	      g_free (error_msg);
 	    }
        }
 
       if (!correct_second_display)
-	gtk_dialog_run (GTK_DIALOG (dialog));
+	ctk_dialog_run (GTK_DIALOG (dialog));
     }
   
-  gtk_widget_destroy (dialog);
+  ctk_widget_destroy (dialog);
 
   entry = g_object_new (GTK_TYPE_ENTRY,
 			  "activates_default", TRUE,
@@ -177,7 +177,7 @@ main (int argc, char *argv[])
   make_selection_dialog (NULL, entry2, entry);
   /* for selected display */
   make_selection_dialog (scr2, entry, entry2);
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

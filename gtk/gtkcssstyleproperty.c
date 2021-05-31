@@ -46,12 +46,12 @@ enum {
   PROP_INITIAL
 };
 
-G_DEFINE_TYPE (GtkCssStyleProperty, _gtk_css_style_property, GTK_TYPE_STYLE_PROPERTY)
+G_DEFINE_TYPE (GtkCssStyleProperty, _ctk_css_style_property, GTK_TYPE_STYLE_PROPERTY)
 
-static GtkCssStylePropertyClass *gtk_css_style_property_class = NULL;
+static GtkCssStylePropertyClass *ctk_css_style_property_class = NULL;
 
 static void
-gtk_css_style_property_constructed (GObject *object)
+ctk_css_style_property_constructed (GObject *object)
 {
   GtkCssStyleProperty *property = GTK_CSS_STYLE_PROPERTY (object);
   GtkCssStylePropertyClass *klass = GTK_CSS_STYLE_PROPERTY_GET_CLASS (property);
@@ -59,11 +59,11 @@ gtk_css_style_property_constructed (GObject *object)
   property->id = klass->style_properties->len;
   g_ptr_array_add (klass->style_properties, property);
 
-  G_OBJECT_CLASS (_gtk_css_style_property_parent_class)->constructed (object);
+  G_OBJECT_CLASS (_ctk_css_style_property_parent_class)->constructed (object);
 }
 
 static void
-gtk_css_style_property_set_property (GObject      *object,
+ctk_css_style_property_set_property (GObject      *object,
                                      guint         prop_id,
                                      const GValue *value,
                                      GParamSpec   *pspec)
@@ -92,7 +92,7 @@ gtk_css_style_property_set_property (GObject      *object,
 }
 
 static void
-gtk_css_style_property_get_property (GObject    *object,
+ctk_css_style_property_get_property (GObject    *object,
                                      guint       prop_id,
                                      GValue     *value,
                                      GParamSpec *pspec)
@@ -123,7 +123,7 @@ gtk_css_style_property_get_property (GObject    *object,
 }
 
 static void
-_gtk_css_style_property_assign (GtkStyleProperty   *property,
+_ctk_css_style_property_assign (GtkStyleProperty   *property,
                                 GtkStyleProperties *props,
                                 GtkStateFlags       state,
                                 const GValue       *value)
@@ -134,15 +134,15 @@ _gtk_css_style_property_assign (GtkStyleProperty   *property,
   style = GTK_CSS_STYLE_PROPERTY (property);
   css_value = style->assign_value (style, value);
 
-  _gtk_style_properties_set_property_by_property (props,
+  _ctk_style_properties_set_property_by_property (props,
                                                   style,
                                                   state,
                                                   css_value);
-  _gtk_css_value_unref (css_value);
+  _ctk_css_value_unref (css_value);
 }
 
 static void
-_gtk_css_style_property_query (GtkStyleProperty   *property,
+_ctk_css_style_property_query (GtkStyleProperty   *property,
                                GValue             *value,
                                GtkStyleQueryFunc   query_func,
                                gpointer            query_data)
@@ -152,25 +152,25 @@ _gtk_css_style_property_query (GtkStyleProperty   *property,
 
   css_value = (* query_func) (GTK_CSS_STYLE_PROPERTY (property)->id, query_data);
   if (css_value == NULL)
-    css_value =_gtk_css_style_property_get_initial_value (style_property);
+    css_value =_ctk_css_style_property_get_initial_value (style_property);
 
   style_property->query_value (style_property, css_value, value);
 }
 
 static GtkCssValue *
-gtk_css_style_property_parse_value (GtkStyleProperty *property,
+ctk_css_style_property_parse_value (GtkStyleProperty *property,
                                     GtkCssParser     *parser)
 {
   GtkCssStyleProperty *style_property = GTK_CSS_STYLE_PROPERTY (property);
 
-  if (_gtk_css_parser_try (parser, "initial", TRUE))
+  if (_ctk_css_parser_try (parser, "initial", TRUE))
     {
       /* the initial value can be explicitly specified with the
        * ‘initial’ keyword which all properties accept.
        */
-      return _gtk_css_initial_value_new ();
+      return _ctk_css_initial_value_new ();
     }
-  else if (_gtk_css_parser_try (parser, "inherit", TRUE))
+  else if (_ctk_css_parser_try (parser, "inherit", TRUE))
     {
       /* All properties accept the ‘inherit’ value which
        * explicitly specifies that the value will be determined
@@ -178,29 +178,29 @@ gtk_css_style_property_parse_value (GtkStyleProperty *property,
        * strengthen inherited values in the cascade, and it can
        * also be used on properties that are not normally inherited.
        */
-      return _gtk_css_inherit_value_new ();
+      return _ctk_css_inherit_value_new ();
     }
-  else if (_gtk_css_parser_try (parser, "unset", TRUE))
+  else if (_ctk_css_parser_try (parser, "unset", TRUE))
     {
       /* If the cascaded value of a property is the unset keyword,
        * then if it is an inherited property, this is treated as
        * inherit, and if it is not, this is treated as initial.
        */
-      return _gtk_css_unset_value_new ();
+      return _ctk_css_unset_value_new ();
     }
 
   return (* style_property->parse_value) (style_property, parser);
 }
 
 static void
-_gtk_css_style_property_class_init (GtkCssStylePropertyClass *klass)
+_ctk_css_style_property_class_init (GtkCssStylePropertyClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GtkStylePropertyClass *property_class = GTK_STYLE_PROPERTY_CLASS (klass);
 
-  object_class->constructed = gtk_css_style_property_constructed;
-  object_class->set_property = gtk_css_style_property_set_property;
-  object_class->get_property = gtk_css_style_property_get_property;
+  object_class->constructed = ctk_css_style_property_constructed;
+  object_class->set_property = ctk_css_style_property_set_property;
+  object_class->get_property = ctk_css_style_property_get_property;
 
   g_object_class_install_property (object_class,
                                    PROP_ANIMATED,
@@ -239,17 +239,17 @@ _gtk_css_style_property_class_init (GtkCssStylePropertyClass *klass)
                                                        GTK_TYPE_CSS_VALUE,
                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
-  property_class->assign = _gtk_css_style_property_assign;
-  property_class->query = _gtk_css_style_property_query;
-  property_class->parse_value = gtk_css_style_property_parse_value;
+  property_class->assign = _ctk_css_style_property_assign;
+  property_class->query = _ctk_css_style_property_query;
+  property_class->parse_value = ctk_css_style_property_parse_value;
 
   klass->style_properties = g_ptr_array_new ();
 
-  gtk_css_style_property_class = klass;
+  ctk_css_style_property_class = klass;
 }
 
 static GtkCssValue *
-gtk_css_style_property_real_parse_value (GtkCssStyleProperty *property,
+ctk_css_style_property_real_parse_value (GtkCssStyleProperty *property,
                                          GtkCssParser        *parser)
 {
   g_assert_not_reached ();
@@ -257,13 +257,13 @@ gtk_css_style_property_real_parse_value (GtkCssStyleProperty *property,
 }
 
 static void
-_gtk_css_style_property_init (GtkCssStyleProperty *property)
+_ctk_css_style_property_init (GtkCssStyleProperty *property)
 {
-  property->parse_value = gtk_css_style_property_real_parse_value;
+  property->parse_value = ctk_css_style_property_real_parse_value;
 }
 
 /**
- * _gtk_css_style_property_get_n_properties:
+ * _ctk_css_style_property_get_n_properties:
  *
  * Gets the number of style properties. This number can increase when new
  * theme engines are loaded. Shorthand properties are not included here.
@@ -271,19 +271,19 @@ _gtk_css_style_property_init (GtkCssStyleProperty *property)
  * Returns: The number of style properties.
  **/
 guint
-_gtk_css_style_property_get_n_properties (void)
+_ctk_css_style_property_get_n_properties (void)
 {
-  if (G_UNLIKELY (gtk_css_style_property_class == NULL))
+  if (G_UNLIKELY (ctk_css_style_property_class == NULL))
     {
-      _gtk_style_property_init_properties ();
-      g_assert (gtk_css_style_property_class);
+      _ctk_style_property_init_properties ();
+      g_assert (ctk_css_style_property_class);
     }
 
-  return gtk_css_style_property_class->style_properties->len;
+  return ctk_css_style_property_class->style_properties->len;
 }
 
 /**
- * _gtk_css_style_property_lookup_by_id:
+ * _ctk_css_style_property_lookup_by_id:
  * @id: the id of the property
  *
  * Gets the style property with the given id. All style properties (but not
@@ -293,22 +293,22 @@ _gtk_css_style_property_get_n_properties (void)
  * Returns: (transfer none): The style property with the given id
  **/
 GtkCssStyleProperty *
-_gtk_css_style_property_lookup_by_id (guint id)
+_ctk_css_style_property_lookup_by_id (guint id)
 {
 
-  if (G_UNLIKELY (gtk_css_style_property_class == NULL))
+  if (G_UNLIKELY (ctk_css_style_property_class == NULL))
     {
-      _gtk_style_property_init_properties ();
-      g_assert (gtk_css_style_property_class);
+      _ctk_style_property_init_properties ();
+      g_assert (ctk_css_style_property_class);
     }
 
-  gtk_internal_return_val_if_fail (id < gtk_css_style_property_class->style_properties->len, NULL);
+  ctk_internal_return_val_if_fail (id < ctk_css_style_property_class->style_properties->len, NULL);
 
-  return g_ptr_array_index (gtk_css_style_property_class->style_properties, id);
+  return g_ptr_array_index (ctk_css_style_property_class->style_properties, id);
 }
 
 /**
- * _gtk_css_style_property_is_inherit:
+ * _ctk_css_style_property_is_inherit:
  * @property: the property
  *
  * Queries if the given @property is inherited. See the
@@ -318,15 +318,15 @@ _gtk_css_style_property_lookup_by_id (guint id)
  * Returns: %TRUE if the property is inherited by default.
  **/
 gboolean
-_gtk_css_style_property_is_inherit (GtkCssStyleProperty *property)
+_ctk_css_style_property_is_inherit (GtkCssStyleProperty *property)
 {
-  gtk_internal_return_val_if_fail (GTK_IS_CSS_STYLE_PROPERTY (property), FALSE);
+  ctk_internal_return_val_if_fail (GTK_IS_CSS_STYLE_PROPERTY (property), FALSE);
 
   return property->inherit;
 }
 
 /**
- * _gtk_css_style_property_is_animated:
+ * _ctk_css_style_property_is_animated:
  * @property: the property
  *
  * Queries if the given @property can be is animated. See the
@@ -336,15 +336,15 @@ _gtk_css_style_property_is_inherit (GtkCssStyleProperty *property)
  * Returns: %TRUE if the property can be animated.
  **/
 gboolean
-_gtk_css_style_property_is_animated (GtkCssStyleProperty *property)
+_ctk_css_style_property_is_animated (GtkCssStyleProperty *property)
 {
-  gtk_internal_return_val_if_fail (GTK_IS_CSS_STYLE_PROPERTY (property), FALSE);
+  ctk_internal_return_val_if_fail (GTK_IS_CSS_STYLE_PROPERTY (property), FALSE);
 
   return property->animated;
 }
 
 /**
- * _gtk_css_style_property_get_affects:
+ * _ctk_css_style_property_get_affects:
  * @property: the property
  *
  * Returns all the things this property affects. See @GtkCssAffects for what
@@ -353,15 +353,15 @@ _gtk_css_style_property_is_animated (GtkCssStyleProperty *property)
  * Returns: The things this property affects.
  **/
 GtkCssAffects
-_gtk_css_style_property_get_affects (GtkCssStyleProperty *property)
+_ctk_css_style_property_get_affects (GtkCssStyleProperty *property)
 {
-  gtk_internal_return_val_if_fail (GTK_IS_CSS_STYLE_PROPERTY (property), 0);
+  ctk_internal_return_val_if_fail (GTK_IS_CSS_STYLE_PROPERTY (property), 0);
 
   return property->affects;
 }
 
 /**
- * _gtk_css_style_property_get_id:
+ * _ctk_css_style_property_get_id:
  * @property: the property
  *
  * Gets the id for the given property. IDs are used to allow using arrays
@@ -370,15 +370,15 @@ _gtk_css_style_property_get_affects (GtkCssStyleProperty *property)
  * Returns: The id of the property
  **/
 guint
-_gtk_css_style_property_get_id (GtkCssStyleProperty *property)
+_ctk_css_style_property_get_id (GtkCssStyleProperty *property)
 {
-  gtk_internal_return_val_if_fail (GTK_IS_CSS_STYLE_PROPERTY (property), 0);
+  ctk_internal_return_val_if_fail (GTK_IS_CSS_STYLE_PROPERTY (property), 0);
 
   return property->id;
 }
 
 /**
- * _gtk_css_style_property_get_initial_value:
+ * _ctk_css_style_property_get_initial_value:
  * @property: the property
  *
  * Queries the initial value of the given @property. See the
@@ -388,15 +388,15 @@ _gtk_css_style_property_get_id (GtkCssStyleProperty *property)
  * Returns: (transfer none): the initial value. The value will never change.
  **/
 GtkCssValue *
-_gtk_css_style_property_get_initial_value (GtkCssStyleProperty *property)
+_ctk_css_style_property_get_initial_value (GtkCssStyleProperty *property)
 {
-  gtk_internal_return_val_if_fail (GTK_IS_CSS_STYLE_PROPERTY (property), NULL);
+  ctk_internal_return_val_if_fail (GTK_IS_CSS_STYLE_PROPERTY (property), NULL);
 
   return property->initial_value;
 }
 
 /**
- * _gtk_css_style_property_get_mask_affecting:
+ * _ctk_css_style_property_get_mask_affecting:
  * @flags: the flags that are affected
  *
  * Computes a bitmask for all properties that have at least one of @flags
@@ -406,19 +406,19 @@ _gtk_css_style_property_get_initial_value (GtkCssStyleProperty *property)
  *          property that has at least one of @flags set.
  */
 GtkBitmask *
-_gtk_css_style_property_get_mask_affecting (GtkCssAffects affects)
+_ctk_css_style_property_get_mask_affecting (GtkCssAffects affects)
 {
   GtkBitmask *result;
   guint i;
 
-  result = _gtk_bitmask_new ();
+  result = _ctk_bitmask_new ();
 
-  for (i = 0; i < _gtk_css_style_property_get_n_properties (); i++)
+  for (i = 0; i < _ctk_css_style_property_get_n_properties (); i++)
     {
-      GtkCssStyleProperty *prop = _gtk_css_style_property_lookup_by_id (i);
+      GtkCssStyleProperty *prop = _ctk_css_style_property_lookup_by_id (i);
 
-      if (_gtk_css_style_property_get_affects (prop) & affects)
-        result = _gtk_bitmask_set (result, i, TRUE);
+      if (_ctk_css_style_property_get_affects (prop) & affects)
+        result = _ctk_bitmask_set (result, i, TRUE);
     }
 
   return result;

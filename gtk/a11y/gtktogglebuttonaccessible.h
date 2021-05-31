@@ -26,7 +26,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_TOGGLE_BUTTON_ACCESSIBLE              (gtk_toggle_button_accessible_get_type ())
+#define GTK_TYPE_TOGGLE_BUTTON_ACCESSIBLE              (ctk_toggle_button_accessible_get_type ())
 #define GTK_TOGGLE_BUTTON_ACCESSIBLE(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TOGGLE_BUTTON_ACCESSIBLE, GtkToggleButtonAccessible))
 #define GTK_TOGGLE_BUTTON_ACCESSIBLE_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_TOGGLE_BUTTON_ACCESSIBLE, GtkToggleButtonAccessibleClass))
 #define GTK_IS_TOGGLE_BUTTON_ACCESSIBLE(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TOGGLE_BUTTON_ACCESSIBLE))
@@ -50,7 +50,7 @@ struct _GtkToggleButtonAccessibleClass
 };
 
 GDK_AVAILABLE_IN_ALL
-GType gtk_toggle_button_accessible_get_type (void);
+GType ctk_toggle_button_accessible_get_type (void);
 
 G_END_DECLS
 

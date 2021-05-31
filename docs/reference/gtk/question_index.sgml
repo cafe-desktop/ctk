@@ -124,8 +124,8 @@ after creating it ?
 <para>
 If <structname>GtkFoo</structname> isn't a toplevel window, then
 <informalexample><programlisting>
- foo = gtk_foo_new (<!-- -->);
- gtk_widget_destroy (foo);
+ foo = ctk_foo_new (<!-- -->);
+ ctk_widget_destroy (foo);
 </programlisting></informalexample>
 is a memory leak, because no one assumed the initial floating
 reference. If you are using a widget and you aren't immediately
@@ -138,19 +138,19 @@ To get this, you must acquire a reference to the widget and drop the
 floating reference (<quote>ref and sink</quote> in GTK+ parlance) after
 creating it:
 <informalexample><programlisting>
- foo = gtk_foo_new (<!-- -->);
+ foo = ctk_foo_new (<!-- -->);
  g_object_ref_sink (foo);
 </programlisting></informalexample>
-When you want to get rid of the widget, you must call gtk_widget_destroy()
+When you want to get rid of the widget, you must call ctk_widget_destroy()
 to break any external connections to the widget before dropping your
 reference:
 <informalexample><programlisting>
- gtk_widget_destroy (foo);
+ ctk_widget_destroy (foo);
  g_object_unref (foo);
 </programlisting></informalexample>
 When you immediately add a widget to a container, it takes care of
 assuming the initial floating reference and you don't have to worry
-about reference counting at all ... just call gtk_widget_destroy()
+about reference counting at all ... just call ctk_widget_destroy()
 to get rid of the widget.
 </para>
 </answer>
@@ -228,8 +228,8 @@ Code using these macros ends up looking like this:
     GtkWidget *label1;
     GtkWidget *label2;
 
-    label1 = gtk_label_new (_("Another string to translate"));
-    label2 = gtk_label_new (_(global_variable));
+    label1 = ctk_label_new (_("Another string to translate"));
+    label2 = ctk_label_new (_(global_variable));
 ...
 </programlisting>
 </informalexample>
@@ -433,10 +433,10 @@ How do I load an image or animation from a file?
 
 <para>
 To load an image file straight into a display widget, use
-gtk_image_new_from_file() <footnote><para> If the file load fails,
-gtk_image_new_from_file() will display no image graphic &mdash; to detect
+ctk_image_new_from_file() <footnote><para> If the file load fails,
+ctk_image_new_from_file() will display no image graphic &mdash; to detect
 a failed load yourself, use gdk_pixbuf_new_from_file() directly, then
-gtk_image_new_from_pixbuf().</para></footnote>.
+ctk_image_new_from_pixbuf().</para></footnote>.
 To load an image for another purpose, use gdk_pixbuf_new_from_file(). To
 load an animation, use gdk_pixbuf_animation_new_from_file().
 gdk_pixbuf_animation_new_from_file() can also load non-animated images, so
@@ -461,7 +461,7 @@ How do I draw text ?
 To draw a piece of text, use a Pango layout and pango_cairo_show_layout().
 <informalexample>
 <programlisting>
- layout = gtk_widget_create_pango_layout (widget, text);
+ layout = ctk_widget_create_pango_layout (widget, text);
  fontdesc = pango_font_description_from_string ("Luxi Mono 12");
  pango_layout_set_font_description (layout, fontdesc);
  pango_cairo_show_layout (cr, layout);
@@ -493,7 +493,7 @@ To obtain the size of a piece of text, use a Pango layout and
 pango_layout_get_pixel_size(), using code like the following:
 <informalexample>
 <programlisting>
- layout = gtk_widget_create_pango_layout (widget, text);
+ layout = ctk_widget_create_pango_layout (widget, text);
  fontdesc = pango_font_description_from_string ("Luxi Mono 12");
  pango_layout_set_font_description (layout, fontdesc);
  pango_layout_get_pixel_size (layout, &amp;width, &amp;height);
@@ -522,7 +522,7 @@ macro ?
 <answer>
 <para>
 The <literal>GTK_TYPE_BLAH</literal> macros are defined as calls to
-<literal>gtk_blah_get_type(<!-- -->)</literal>, and the <literal>_get_type(<!-- -->)</literal>
+<literal>ctk_blah_get_type(<!-- -->)</literal>, and the <literal>_get_type(<!-- -->)</literal>
 functions are declared as %G_GNUC_CONST which allows the compiler to optimize
 the call away if it appears that the value is not being used.
 </para>
@@ -561,7 +561,7 @@ visual = gdk_screen_get_rgba_visual (screen);
 if (visual == NULL)
   visual = gdk_screen_get_system_visual (screen);
 
-gtk_widget_set_visual (GTK_WIDGET (window), visual);
+ctk_widget_set_visual (GTK_WIDGET (window), visual);
 </programlisting></informalexample>
 To fill the alpha channel on the window simply use cairos
 RGBA drawing capabilities.
@@ -570,7 +570,7 @@ RGBA drawing capabilities.
 Note that the presence of an RGBA visual is no guarantee that the
 window will actually appear transparent on screen. On X11, this
 requires a compositing manager to be running. See
-gtk_widget_is_composited() for a way to find out if the alpha
+ctk_widget_is_composited() for a way to find out if the alpha
 channel will be respected.
 </para>
 </answer>
@@ -606,7 +606,7 @@ should use the #GtkTextView widget.
 </para>
 <para>
 If you only have a small amount of text, #GtkLabel may also be appropriate
-of course. It can be made selectable with gtk_label_set_selectable(). For a
+of course. It can be made selectable with ctk_label_set_selectable(). For a
 single-line text entry, see #GtkEntry.
 </para>
 </answer>
@@ -653,9 +653,9 @@ How do I change the color of a widget?
 </para></question>
 
 <answer><para>
-See gtk_widget_override_color() and gtk_widget_override_background_color().
+See ctk_widget_override_color() and ctk_widget_override_background_color().
 You can also change the appearance of a widget by installing a
-custom style provider, see gtk_style_context_add_provider().
+custom style provider, see ctk_style_context_add_provider().
 </para>
 
 <para>To change the background color for widgets such as #GtkLabel that
@@ -671,19 +671,19 @@ How do I change the font of a widget?
 
 <answer><para>
 This has several possible answers, depending on what exactly you want to
-achieve. One option is gtk_widget_override_font().
+achieve. One option is ctk_widget_override_font().
 <informalexample><programlisting>
  PangoFontDesc *font_desc = pango_font_description_new (<!-- -->);
  pango_font_description_set_size (font_desc, 40);
- gtk_widget_override_font (widget, font);
+ ctk_widget_override_font (widget, font);
  pango_font_description_free (font_desc);
 </programlisting></informalexample>
 </para>
 <para>
 If you want to make the text of a label larger, you can use
-gtk_label_set_markup():
+ctk_label_set_markup():
 <informalexample><programlisting>
-gtk_label_set_markup (label, "&lt;big&gt;big text&lt;/big&gt;");
+ctk_label_set_markup (label, "&lt;big&gt;big text&lt;/big&gt;");
 </programlisting></informalexample>
 This is preferred for many apps because it's a relative size to the
 user's chosen font size. See g_markup_escape_text() if you are
@@ -696,10 +696,10 @@ You can also change the font of a widget by putting
    font: Sans 30;
  }
 </programlisting>
-in a CSS file, loading it with gtk_css_provider_load_from_file(), and
-adding the provider with gtk_style_context_add_provider_for_screen().
+in a CSS file, loading it with ctk_css_provider_load_from_file(), and
+adding the provider with ctk_style_context_add_provider_for_screen().
 To associate this style information with your widget, set a style class
-on its #GtkStyleContext using gtk_style_context_add_class().
+on its #GtkStyleContext using ctk_style_context_add_class().
 The advantage of this approach is that users can then override the font
 you have chosen. See the #GtkStyleContext documentation for more discussion.
 </para>
@@ -713,7 +713,7 @@ How do I disable/ghost/desensitize a widget?
 
 <answer><para>
 In GTK+ a disabled widget is termed "insensitive."
-See gtk_widget_set_sensitive().
+See ctk_widget_set_sensitive().
 </para></answer>
 </qandaentry>
 
@@ -728,8 +728,8 @@ How do I get the contents of the entire text widget as a string?
 </para></question>
 
 <answer><para>
-See gtk_text_buffer_get_bounds() and gtk_text_buffer_get_text()
-or gtk_text_iter_get_text().
+See ctk_text_buffer_get_bounds() and ctk_text_buffer_get_text()
+or ctk_text_iter_get_text().
 </para>
 <para>
 <informalexample><programlisting>
@@ -737,9 +737,9 @@ or gtk_text_iter_get_text().
   GtkTextBuffer *buffer;
   char *text;
 
-  buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (text_view));
-  gtk_text_buffer_get_bounds (buffer, &amp;start, &amp;end);
-  text = gtk_text_iter_get_text (&amp;start, &amp;end);
+  buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (text_view));
+  ctk_text_buffer_get_bounds (buffer, &amp;start, &amp;end);
+  text = ctk_text_iter_get_text (&amp;start, &amp;end);
   /* use text */
   g_free (text);
 </programlisting></informalexample>
@@ -752,14 +752,14 @@ How do I make a text widget display its complete contents in a specific font?
 </para></question>
 
 <answer><para>
-If you use gtk_text_buffer_insert_with_tags() with appropriate tags to
+If you use ctk_text_buffer_insert_with_tags() with appropriate tags to
 select the font, the inserted text will have the desired appearance, but
 text typed in by the user before or after the tagged block will appear in
 the default style.
 </para>
 <para>
 To ensure that all text has the desired appearance, use
-gtk_widget_override_font() to change the default font for the widget.
+ctk_widget_override_font() to change the default font for the widget.
 </para></answer>
 </qandaentry>
 
@@ -781,7 +781,7 @@ at the end.
 
 <para>
 To ensure that the end of the buffer remains visible, use
-gtk_text_view_scroll_to_mark() to scroll to the mark after
+ctk_text_view_scroll_to_mark() to scroll to the mark after
 inserting new text.
 </para>
 
@@ -805,7 +805,7 @@ How do I associate some data with a row in the tree?
 <para>
 Remember that the #GtkTreeModel columns don't necessarily have to be
 displayed. So you can put non-user-visible data in your model just
-like any other data, and retrieve it with gtk_tree_model_get().
+like any other data, and retrieve it with ctk_tree_model_get().
 See the <link linkend="TreeWidget">tree widget overview</link>.
 </para>
 </answer>
@@ -819,7 +819,7 @@ How do I put an image and some text in the same column?
 <answer>
 <para>
 You can pack more than one #GtkCellRenderer into a single #GtkTreeViewColumn
-using gtk_tree_view_column_pack_start() or gtk_tree_view_column_pack_end().
+using ctk_tree_view_column_pack_start() or ctk_tree_view_column_pack_end().
 So pack both a #GtkCellRendererPixbuf and a #GtkCellRendererText into the
 column.
 </para>
@@ -829,7 +829,7 @@ column.
 <qandaentry>
 <question><para>
 I can set data easily on my #GtkTreeStore/#GtkListStore models using
-gtk_list_store_set() and gtk_tree_store_set(), but can't read it back?
+ctk_list_store_set() and ctk_tree_store_set(), but can't read it back?
 </para></question>
 
 <answer>
@@ -837,7 +837,7 @@ gtk_list_store_set() and gtk_tree_store_set(), but can't read it back?
 Both the #GtkTreeStore and the #GtkListStore implement the #GtkTreeModel
 interface. Consequentially, you can use any function this interface
 implements. The easiest way to read a set of data back is to use
-gtk_tree_model_get().
+ctk_tree_model_get().
 </para>
 </answer>
 </qandaentry>
@@ -847,8 +847,8 @@ gtk_tree_model_get().
 How do I change the way that numbers are formatted by #GtkTreeView?
 </para></question>
 <answer><para>
-Use gtk_tree_view_insert_column_with_data_func()
-or gtk_tree_view_column_set_cell_data_func() and do the conversion
+Use ctk_tree_view_insert_column_with_data_func()
+or ctk_tree_view_column_set_cell_data_func() and do the conversion
 from number to string yourself (with, say, g_strdup_printf()).
 </para>
 
@@ -876,7 +876,7 @@ my_cell_double_to_text (GtkTreeViewColumn *tree_column,
   gchar *text;
 
   /* Get the double value from the model. */
-  gtk_tree_model_get (tree_model, iter, (gint)data, &amp;d, -1);
+  ctk_tree_model_get (tree_model, iter, (gint)data, &amp;d, -1);
   /* Now we can format the value ourselves. */
   text = g_strdup_printf ("&percnt;.2f", d);
   g_object_set (cell, "text", text, NULL);
@@ -891,23 +891,23 @@ set_up_new_columns (GtkTreeView *myview)
   GtkListStore *mycolumns;
 
   /* Create the data model and associate it with the given TreeView */
-  mycolumns = gtk_list_store_new (N_COLUMNS, G_TYPE_DOUBLE);
-  gtk_tree_view_set_model (myview, GTK_TREE_MODEL (mycolumns));
+  mycolumns = ctk_list_store_new (N_COLUMNS, G_TYPE_DOUBLE);
+  ctk_tree_view_set_model (myview, GTK_TREE_MODEL (mycolumns));
 
   /* Create a GtkCellRendererText */
-  renderer = gtk_cell_renderer_text_new (<!-- -->);
+  renderer = ctk_cell_renderer_text_new (<!-- -->);
 
   /* Create a new column that has a title ("Example column"),
    * uses the above created renderer that will render the double
    * value into text from the associated model's rows.
    */
-  column = gtk_tree_view_column_new (<!-- -->);
-  gtk_tree_view_column_set_title  (column, "Example column");
-  renderer = gtk_cell_renderer_text_new (<!-- -->);
-  gtk_tree_view_column_pack_start (column, renderer, TRUE);
+  column = ctk_tree_view_column_new (<!-- -->);
+  ctk_tree_view_column_set_title  (column, "Example column");
+  renderer = ctk_cell_renderer_text_new (<!-- -->);
+  ctk_tree_view_column_pack_start (column, renderer, TRUE);
 
   /* Append the new column after the GtkTreeView's previous columns. */
-  gtk_tree_view_append_column (GTK_TREE_VIEW (myview), column);
+  ctk_tree_view_append_column (GTK_TREE_VIEW (myview), column);
   /* Since we created the column by hand, we can set it up for our
    * needs, e.g. set its minimum and maximum width, etc.
    */
@@ -915,7 +915,7 @@ set_up_new_columns (GtkTreeView *myview)
    * is rendered. We use the func_data pointer as an index into our
    * model. This is convenient when using multi column lists.
    */
-  gtk_tree_view_column_set_cell_data_func (column, renderer,
+  ctk_tree_view_column_set_cell_data_func (column, renderer,
 	                                   my_cell_double_to_text,
                                            (gpointer)DOUBLE_COLUMN, NULL);
 }
@@ -930,7 +930,7 @@ How do I hide the expander arrows in my tree view ?
 
 <answer><para>
 Set the expander-column property of the tree view to a hidden column.
-See gtk_tree_view_set_expander_column() and gtk_tree_view_column_set_visible().
+See ctk_tree_view_set_expander_column() and ctk_tree_view_column_set_visible().
 </para></answer>
 </qandaentry>
 
@@ -951,7 +951,7 @@ as parameter that you should use.
 All drawing in GTK+ is normally done in a draw handler, and GTK+
 creates a temporary pixmap for double-buffering the drawing.
 It is possible to turn off double-buffering, with
-gtk_widget_set_double_buffered(), but this is not ideal,
+ctk_widget_set_double_buffered(), but this is not ideal,
 since it can cause some flickering.
 </para>
 </answer>

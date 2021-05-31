@@ -43,7 +43,7 @@ icon_loaded_cb (GObject *source_object,
   GError *error;
 
   error = NULL;
-  pixbuf = gtk_icon_info_load_icon_finish (GTK_ICON_INFO (source_object),
+  pixbuf = ctk_icon_info_load_icon_finish (GTK_ICON_INFO (source_object),
 					   res, &error);
 
   if (pixbuf == NULL)
@@ -52,7 +52,7 @@ icon_loaded_cb (GObject *source_object,
       exit (1);
     }
 
-  gtk_image_set_from_pixbuf (GTK_IMAGE (user_data), pixbuf);
+  ctk_image_set_from_pixbuf (GTK_IMAGE (user_data), pixbuf);
   g_object_unref (pixbuf);
 }
 
@@ -69,7 +69,7 @@ main (int argc, char *argv[])
   int scale = 1;
   GtkIconLookupFlags flags;
   
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
   if (argc < 3)
     {
@@ -86,9 +86,9 @@ main (int argc, char *argv[])
 
   themename = argv[2];
   
-  icon_theme = gtk_icon_theme_new ();
+  icon_theme = ctk_icon_theme_new ();
   
-  gtk_icon_theme_set_custom_theme (icon_theme, themename);
+  ctk_icon_theme_set_custom_theme (icon_theme, themename);
 
   if (strcmp (argv[1], "display") == 0)
     {
@@ -110,23 +110,23 @@ main (int argc, char *argv[])
 	scale = atoi (argv[5]);
 
       error = NULL;
-      pixbuf = gtk_icon_theme_load_icon_for_scale (icon_theme, argv[3], size, scale, flags, &error);
+      pixbuf = ctk_icon_theme_load_icon_for_scale (icon_theme, argv[3], size, scale, flags, &error);
       if (!pixbuf)
         {
           g_print ("%s\n", error->message);
           return 1;
         }
 
-      window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-      image = gtk_image_new ();
-      gtk_image_set_from_pixbuf (GTK_IMAGE (image), pixbuf);
+      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+      image = ctk_image_new ();
+      ctk_image_set_from_pixbuf (GTK_IMAGE (image), pixbuf);
       g_object_unref (pixbuf);
-      gtk_container_add (GTK_CONTAINER (window), image);
+      ctk_container_add (GTK_CONTAINER (window), image);
       g_signal_connect (window, "delete-event",
-                        G_CALLBACK (gtk_main_quit), window);
-      gtk_widget_show_all (window);
+                        G_CALLBACK (ctk_main_quit), window);
+      ctk_widget_show_all (window);
       
-      gtk_main ();
+      ctk_main ();
     }
   else if (strcmp (argv[1], "display-async") == 0)
     {
@@ -146,14 +146,14 @@ main (int argc, char *argv[])
       if (argc >= 6)
 	scale = atoi (argv[5]);
 
-      window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-      image = gtk_image_new ();
-      gtk_container_add (GTK_CONTAINER (window), image);
+      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+      image = ctk_image_new ();
+      ctk_container_add (GTK_CONTAINER (window), image);
       g_signal_connect (window, "delete-event",
-                        G_CALLBACK (gtk_main_quit), window);
-      gtk_widget_show_all (window);
+                        G_CALLBACK (ctk_main_quit), window);
+      ctk_widget_show_all (window);
 
-      info = gtk_icon_theme_lookup_icon_for_scale (icon_theme, argv[3], size, scale, flags);
+      info = ctk_icon_theme_lookup_icon_for_scale (icon_theme, argv[3], size, scale, flags);
 
       if (info == NULL)
 	{
@@ -161,10 +161,10 @@ main (int argc, char *argv[])
           return 1;
 	}
 
-      gtk_icon_info_load_icon_async (info,
+      ctk_icon_info_load_icon_async (info,
 				     NULL, icon_loaded_cb, image);
 
-      gtk_main ();
+      ctk_main ();
     }
   else if (strcmp (argv[1], "list") == 0)
     {
@@ -173,7 +173,7 @@ main (int argc, char *argv[])
       else
 	context = NULL;
 
-      list = gtk_icon_theme_list_icons (icon_theme,
+      list = ctk_icon_theme_list_icons (icon_theme,
 					   context);
       
       while (list)
@@ -184,7 +184,7 @@ main (int argc, char *argv[])
     }
   else if (strcmp (argv[1], "contexts") == 0)
     {
-      list = gtk_icon_theme_list_contexts (icon_theme);
+      list = ctk_icon_theme_list_contexts (icon_theme);
       
       while (list)
 	{
@@ -207,19 +207,19 @@ main (int argc, char *argv[])
       if (argc >= 6)
 	scale = atoi (argv[5]);
 
-      icon_info = gtk_icon_theme_lookup_icon_for_scale (icon_theme, argv[3], size, scale, flags);
+      icon_info = ctk_icon_theme_lookup_icon_for_scale (icon_theme, argv[3], size, scale, flags);
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       g_print ("icon for %s at %dx%d@%dx is %s\n", argv[3], size, size, scale,
-	       icon_info ? (gtk_icon_info_get_builtin_pixbuf (icon_info) ? "<builtin>" : gtk_icon_info_get_filename (icon_info)) : "<none>");
+	       icon_info ? (ctk_icon_info_get_builtin_pixbuf (icon_info) ? "<builtin>" : ctk_icon_info_get_filename (icon_info)) : "<none>");
 G_GNUC_END_IGNORE_DEPRECATIONS
 
       if (icon_info)
 	{
           GdkPixbuf *pixbuf;
 
-          g_print ("Base size: %d, Scale: %d\n", gtk_icon_info_get_base_size (icon_info), gtk_icon_info_get_base_scale (icon_info));
+          g_print ("Base size: %d, Scale: %d\n", ctk_icon_info_get_base_size (icon_info), ctk_icon_info_get_base_scale (icon_info));
 
-          pixbuf = gtk_icon_info_load_icon (icon_info, NULL);
+          pixbuf = ctk_icon_info_load_icon (icon_info, NULL);
           if (pixbuf != NULL)
             {
               g_print ("Pixbuf size: %dx%d\n", gdk_pixbuf_get_width (pixbuf), gdk_pixbuf_get_height (pixbuf));

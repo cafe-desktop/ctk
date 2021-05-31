@@ -28,7 +28,7 @@
 #include <fribidi.h>
 #include "gtkintl.h"
 
-#define GTK_TYPE_FILL_LAYOUT_RENDERER            (_gtk_fill_layout_renderer_get_type())
+#define GTK_TYPE_FILL_LAYOUT_RENDERER            (_ctk_fill_layout_renderer_get_type())
 #define GTK_FILL_LAYOUT_RENDERER(object)         (G_TYPE_CHECK_INSTANCE_CAST ((object), GTK_TYPE_FILL_LAYOUT_RENDERER, GtkFillLayoutRenderer))
 #define GTK_IS_FILL_LAYOUT_RENDERER(object)      (G_TYPE_CHECK_INSTANCE_TYPE ((object), GTK_TYPE_FILL_LAYOUT_RENDERER))
 #define GTK_FILL_LAYOUT_RENDERER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_FILL_LAYOUT_RENDERER, GtkFillLayoutRendererClass))
@@ -50,12 +50,12 @@ struct _GtkFillLayoutRendererClass
   PangoRendererClass parent_class;
 };
 
-GType _gtk_fill_layout_renderer_get_type (void);
+GType _ctk_fill_layout_renderer_get_type (void);
 
-G_DEFINE_TYPE (GtkFillLayoutRenderer, _gtk_fill_layout_renderer, PANGO_TYPE_RENDERER)
+G_DEFINE_TYPE (GtkFillLayoutRenderer, _ctk_fill_layout_renderer, PANGO_TYPE_RENDERER)
 
 static void
-gtk_fill_layout_renderer_draw_glyphs (PangoRenderer     *renderer,
+ctk_fill_layout_renderer_draw_glyphs (PangoRenderer     *renderer,
                                       PangoFont         *font,
                                       PangoGlyphString  *glyphs,
                                       int                x,
@@ -68,7 +68,7 @@ gtk_fill_layout_renderer_draw_glyphs (PangoRenderer     *renderer,
 }
 
 static void
-gtk_fill_layout_renderer_draw_glyph_item (PangoRenderer     *renderer,
+ctk_fill_layout_renderer_draw_glyph_item (PangoRenderer     *renderer,
                                           const char        *text,
                                           PangoGlyphItem    *glyph_item,
                                           int                x,
@@ -81,7 +81,7 @@ gtk_fill_layout_renderer_draw_glyph_item (PangoRenderer     *renderer,
 }
 
 static void
-gtk_fill_layout_renderer_draw_rectangle (PangoRenderer     *renderer,
+ctk_fill_layout_renderer_draw_rectangle (PangoRenderer     *renderer,
                                          PangoRenderPart    part,
                                          int                x,
                                          int                y,
@@ -100,7 +100,7 @@ gtk_fill_layout_renderer_draw_rectangle (PangoRenderer     *renderer,
 }
 
 static void
-gtk_fill_layout_renderer_draw_trapezoid (PangoRenderer     *renderer,
+ctk_fill_layout_renderer_draw_trapezoid (PangoRenderer     *renderer,
                                          PangoRenderPart    part,
                                          double             y1_,
                                          double             x11,
@@ -135,7 +135,7 @@ gtk_fill_layout_renderer_draw_trapezoid (PangoRenderer     *renderer,
 }
 
 static void
-gtk_fill_layout_renderer_draw_error_underline (PangoRenderer *renderer,
+ctk_fill_layout_renderer_draw_error_underline (PangoRenderer *renderer,
                                                int            x,
                                                int            y,
                                                int            width,
@@ -149,7 +149,7 @@ gtk_fill_layout_renderer_draw_error_underline (PangoRenderer *renderer,
 }
 
 static void
-gtk_fill_layout_renderer_draw_shape (PangoRenderer   *renderer,
+ctk_fill_layout_renderer_draw_shape (PangoRenderer   *renderer,
                                      PangoAttrShape  *attr,
                                      int              x,
                                      int              y)
@@ -181,35 +181,35 @@ gtk_fill_layout_renderer_draw_shape (PangoRenderer   *renderer,
 }
 
 static void
-gtk_fill_layout_renderer_finalize (GObject *object)
+ctk_fill_layout_renderer_finalize (GObject *object)
 {
-  G_OBJECT_CLASS (_gtk_fill_layout_renderer_parent_class)->finalize (object);
+  G_OBJECT_CLASS (_ctk_fill_layout_renderer_parent_class)->finalize (object);
 }
 
 static void
-_gtk_fill_layout_renderer_init (GtkFillLayoutRenderer *renderer)
+_ctk_fill_layout_renderer_init (GtkFillLayoutRenderer *renderer)
 {
 }
 
 static void
-_gtk_fill_layout_renderer_class_init (GtkFillLayoutRendererClass *klass)
+_ctk_fill_layout_renderer_class_init (GtkFillLayoutRendererClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   
   PangoRendererClass *renderer_class = PANGO_RENDERER_CLASS (klass);
   
-  renderer_class->draw_glyphs = gtk_fill_layout_renderer_draw_glyphs;
-  renderer_class->draw_glyph_item = gtk_fill_layout_renderer_draw_glyph_item;
-  renderer_class->draw_rectangle = gtk_fill_layout_renderer_draw_rectangle;
-  renderer_class->draw_trapezoid = gtk_fill_layout_renderer_draw_trapezoid;
-  renderer_class->draw_error_underline = gtk_fill_layout_renderer_draw_error_underline;
-  renderer_class->draw_shape = gtk_fill_layout_renderer_draw_shape;
+  renderer_class->draw_glyphs = ctk_fill_layout_renderer_draw_glyphs;
+  renderer_class->draw_glyph_item = ctk_fill_layout_renderer_draw_glyph_item;
+  renderer_class->draw_rectangle = ctk_fill_layout_renderer_draw_rectangle;
+  renderer_class->draw_trapezoid = ctk_fill_layout_renderer_draw_trapezoid;
+  renderer_class->draw_error_underline = ctk_fill_layout_renderer_draw_error_underline;
+  renderer_class->draw_shape = ctk_fill_layout_renderer_draw_shape;
 
-  object_class->finalize = gtk_fill_layout_renderer_finalize;
+  object_class->finalize = ctk_fill_layout_renderer_finalize;
 }
 
 void
-_gtk_pango_fill_layout (cairo_t     *cr,
+_ctk_pango_fill_layout (cairo_t     *cr,
                         PangoLayout *layout)
 {
   static GtkFillLayoutRenderer *renderer = NULL;
@@ -249,7 +249,7 @@ add_attribute (AtkAttributeSet  *attributes,
 }
 
 /*
- * _gtk_pango_get_default_attributes:
+ * _ctk_pango_get_default_attributes:
  * @attributes: a #AtkAttributeSet to add the attributes to
  * @layout: the #PangoLayout from which to get attributes
  *
@@ -263,7 +263,7 @@ add_attribute (AtkAttributeSet  *attributes,
  * Returns: the modified @attributes
  */
 AtkAttributeSet*
-_gtk_pango_get_default_attributes (AtkAttributeSet *attributes,
+_ctk_pango_get_default_attributes (AtkAttributeSet *attributes,
                                    PangoLayout     *layout)
 {
   PangoContext *context;
@@ -350,7 +350,7 @@ _gtk_pango_get_default_attributes (AtkAttributeSet *attributes,
 }
 
 /*
- * _gtk_pango_get_run_attributes:
+ * _ctk_pango_get_run_attributes:
  * @attributes: a #AtkAttributeSet to add attributes to
  * @layout: the #PangoLayout to get the attributes from
  * @offset: the offset at which the attributes are wanted
@@ -373,7 +373,7 @@ _gtk_pango_get_default_attributes (AtkAttributeSet *attributes,
  * Returns: the modified #AtkAttributeSet
  */
 AtkAttributeSet *
-_gtk_pango_get_run_attributes (AtkAttributeSet *attributes,
+_ctk_pango_get_run_attributes (AtkAttributeSet *attributes,
                                PangoLayout     *layout,
                                gint             offset,
                                gint            *start_offset,
@@ -529,7 +529,7 @@ _gtk_pango_get_run_attributes (AtkAttributeSet *attributes,
 }
 
 /*
- * _gtk_pango_move_chars:
+ * _ctk_pango_move_chars:
  * @layout: a #PangoLayout
  * @offset: a character offset in @layout
  * @count: the number of characters to move from @offset
@@ -543,7 +543,7 @@ _gtk_pango_get_run_attributes (AtkAttributeSet *attributes,
  * Returns: the new position
  */
 gint
-_gtk_pango_move_chars (PangoLayout *layout,
+_ctk_pango_move_chars (PangoLayout *layout,
                        gint         offset,
                        gint         count)
 {
@@ -573,7 +573,7 @@ _gtk_pango_move_chars (PangoLayout *layout,
 }
 
 /*
- * _gtk_pango_move_words:
+ * _ctk_pango_move_words:
  * @layout: a #PangoLayout
  * @offset: a character offset in @layout
  * @count: the number of words to move from @offset
@@ -589,7 +589,7 @@ _gtk_pango_move_chars (PangoLayout *layout,
  * Returns: the new position
  */
 gint
-_gtk_pango_move_words (PangoLayout  *layout,
+_ctk_pango_move_words (PangoLayout  *layout,
                        gint          offset,
                        gint          count)
 {
@@ -619,7 +619,7 @@ _gtk_pango_move_words (PangoLayout  *layout,
 }
 
 /*
- * _gtk_pango_move_sentences:
+ * _ctk_pango_move_sentences:
  * @layout: a #PangoLayout
  * @offset: a character offset in @layout
  * @count: the number of sentences to move from @offset
@@ -635,7 +635,7 @@ _gtk_pango_move_words (PangoLayout  *layout,
  * Returns: the new position
  */
 gint
-_gtk_pango_move_sentences (PangoLayout  *layout,
+_ctk_pango_move_sentences (PangoLayout  *layout,
                            gint          offset,
                            gint          count)
 {
@@ -665,7 +665,7 @@ _gtk_pango_move_sentences (PangoLayout  *layout,
 }
 
 /*
- * _gtk_pango_move_lines:
+ * _ctk_pango_move_lines:
  * @layout: a #PangoLayout
  * @offset: a character offset in @layout
  * @count: the number of lines to move from @offset
@@ -680,7 +680,7 @@ _gtk_pango_move_sentences (PangoLayout  *layout,
  * Returns: the new position
  */
 gint
-_gtk_pango_move_lines (PangoLayout *layout,
+_ctk_pango_move_lines (PangoLayout *layout,
                        gint         offset,
                        gint         count)
 {
@@ -735,7 +735,7 @@ _gtk_pango_move_lines (PangoLayout *layout,
 }
 
 /*
- * _gtk_pango_is_inside_word:
+ * _ctk_pango_is_inside_word:
  * @layout: a #PangoLayout
  * @offset: a character offset in @layout
  *
@@ -745,7 +745,7 @@ _gtk_pango_move_lines (PangoLayout *layout,
  * Returns: %TRUE if @offset is inside a word
  */
 gboolean
-_gtk_pango_is_inside_word (PangoLayout  *layout,
+_ctk_pango_is_inside_word (PangoLayout  *layout,
                            gint          offset)
 {
   const PangoLogAttr *attrs;
@@ -764,7 +764,7 @@ _gtk_pango_is_inside_word (PangoLayout  *layout,
 }
 
 /*
- * _gtk_pango_is_inside_sentence:
+ * _ctk_pango_is_inside_sentence:
  * @layout: a #PangoLayout
  * @offset: a character offset in @layout
  *
@@ -774,7 +774,7 @@ _gtk_pango_is_inside_word (PangoLayout  *layout,
  * Returns: %TRUE if @offset is inside a sentence
  */
 gboolean
-_gtk_pango_is_inside_sentence (PangoLayout  *layout,
+_ctk_pango_is_inside_sentence (PangoLayout  *layout,
                                gint          offset)
 {
   const PangoLogAttr *attrs;
@@ -985,7 +985,7 @@ pango_layout_get_line_after (PangoLayout     *layout,
 }
 
 /*
- * _gtk_pango_get_text_before:
+ * _ctk_pango_get_text_before:
  * @layout: a #PangoLayout
  * @boundary_type: a #AtkTextBoundary
  * @offset: a character offset in @layout
@@ -1002,7 +1002,7 @@ pango_layout_get_line_after (PangoLayout     *layout,
  *     from layout. Free with g_free().
  */
 gchar *
-_gtk_pango_get_text_before (PangoLayout     *layout,
+_ctk_pango_get_text_before (PangoLayout     *layout,
                             AtkTextBoundary  boundary_type,
                             gint             offset,
                             gint            *start_offset,
@@ -1030,45 +1030,45 @@ _gtk_pango_get_text_before (PangoLayout     *layout,
   switch (boundary_type)
     {
     case ATK_TEXT_BOUNDARY_CHAR:
-      start = _gtk_pango_move_chars (layout, start, -1);
+      start = _ctk_pango_move_chars (layout, start, -1);
       break;
 
     case ATK_TEXT_BOUNDARY_WORD_START:
       if (!attrs[start].is_word_start)
-        start = _gtk_pango_move_words (layout, start, -1);
+        start = _ctk_pango_move_words (layout, start, -1);
       end = start;
-      start = _gtk_pango_move_words (layout, start, -1);
+      start = _ctk_pango_move_words (layout, start, -1);
       break;
 
     case ATK_TEXT_BOUNDARY_WORD_END:
-      if (_gtk_pango_is_inside_word (layout, start) &&
+      if (_ctk_pango_is_inside_word (layout, start) &&
           !attrs[start].is_word_start)
-        start = _gtk_pango_move_words (layout, start, -1);
+        start = _ctk_pango_move_words (layout, start, -1);
       while (!attrs[start].is_word_end && start > 0)
-        start = _gtk_pango_move_chars (layout, start, -1);
+        start = _ctk_pango_move_chars (layout, start, -1);
       end = start;
-      start = _gtk_pango_move_words (layout, start, -1);
+      start = _ctk_pango_move_words (layout, start, -1);
       while (!attrs[start].is_word_end && start > 0)
-        start = _gtk_pango_move_chars (layout, start, -1);
+        start = _ctk_pango_move_chars (layout, start, -1);
       break;
 
     case ATK_TEXT_BOUNDARY_SENTENCE_START:
       if (!attrs[start].is_sentence_start)
-        start = _gtk_pango_move_sentences (layout, start, -1);
+        start = _ctk_pango_move_sentences (layout, start, -1);
       end = start;
-      start = _gtk_pango_move_sentences (layout, start, -1);
+      start = _ctk_pango_move_sentences (layout, start, -1);
       break;
 
     case ATK_TEXT_BOUNDARY_SENTENCE_END:
-      if (_gtk_pango_is_inside_sentence (layout, start) &&
+      if (_ctk_pango_is_inside_sentence (layout, start) &&
           !attrs[start].is_sentence_start)
-        start = _gtk_pango_move_sentences (layout, start, -1);
+        start = _ctk_pango_move_sentences (layout, start, -1);
       while (!attrs[start].is_sentence_end && start > 0)
-        start = _gtk_pango_move_chars (layout, start, -1);
+        start = _ctk_pango_move_chars (layout, start, -1);
       end = start;
-      start = _gtk_pango_move_sentences (layout, start, -1);
+      start = _ctk_pango_move_sentences (layout, start, -1);
       while (!attrs[start].is_sentence_end && start > 0)
-        start = _gtk_pango_move_chars (layout, start, -1);
+        start = _ctk_pango_move_chars (layout, start, -1);
       break;
 
     case ATK_TEXT_BOUNDARY_LINE_START:
@@ -1086,7 +1086,7 @@ _gtk_pango_get_text_before (PangoLayout     *layout,
 }
 
 /*
- * _gtk_pango_get_text_after:
+ * _ctk_pango_get_text_after:
  * @layout: a #PangoLayout
  * @boundary_type: a #AtkTextBoundary
  * @offset: a character offset in @layout
@@ -1103,7 +1103,7 @@ _gtk_pango_get_text_before (PangoLayout     *layout,
  *     from layout. Free with g_free().
  */
 gchar *
-_gtk_pango_get_text_after (PangoLayout     *layout,
+_ctk_pango_get_text_after (PangoLayout     *layout,
                            AtkTextBoundary  boundary_type,
                            gint             offset,
                            gint            *start_offset,
@@ -1131,51 +1131,51 @@ _gtk_pango_get_text_after (PangoLayout     *layout,
   switch (boundary_type)
     {
     case ATK_TEXT_BOUNDARY_CHAR:
-      start = _gtk_pango_move_chars (layout, start, 1);
+      start = _ctk_pango_move_chars (layout, start, 1);
       end = start;
-      end = _gtk_pango_move_chars (layout, end, 1);
+      end = _ctk_pango_move_chars (layout, end, 1);
       break;
 
     case ATK_TEXT_BOUNDARY_WORD_START:
-      if (_gtk_pango_is_inside_word (layout, end))
-        end = _gtk_pango_move_words (layout, end, 1);
+      if (_ctk_pango_is_inside_word (layout, end))
+        end = _ctk_pango_move_words (layout, end, 1);
       while (!attrs[end].is_word_start && end < n_attrs - 1)
-        end = _gtk_pango_move_chars (layout, end, 1);
+        end = _ctk_pango_move_chars (layout, end, 1);
       start = end;
       if (end < n_attrs - 1)
         {
-          end = _gtk_pango_move_words (layout, end, 1);
+          end = _ctk_pango_move_words (layout, end, 1);
           while (!attrs[end].is_word_start && end < n_attrs - 1)
-            end = _gtk_pango_move_chars (layout, end, 1);
+            end = _ctk_pango_move_chars (layout, end, 1);
         }
       break;
 
     case ATK_TEXT_BOUNDARY_WORD_END:
-      end = _gtk_pango_move_words (layout, end, 1);
+      end = _ctk_pango_move_words (layout, end, 1);
       start = end;
       if (end < n_attrs - 1)
-        end = _gtk_pango_move_words (layout, end, 1);
+        end = _ctk_pango_move_words (layout, end, 1);
       break;
 
     case ATK_TEXT_BOUNDARY_SENTENCE_START:
-      if (_gtk_pango_is_inside_sentence (layout, end))
-        end = _gtk_pango_move_sentences (layout, end, 1);
+      if (_ctk_pango_is_inside_sentence (layout, end))
+        end = _ctk_pango_move_sentences (layout, end, 1);
       while (!attrs[end].is_sentence_start && end < n_attrs - 1)
-        end = _gtk_pango_move_chars (layout, end, 1);
+        end = _ctk_pango_move_chars (layout, end, 1);
       start = end;
       if (end < n_attrs - 1)
         {
-          end = _gtk_pango_move_sentences (layout, end, 1);
+          end = _ctk_pango_move_sentences (layout, end, 1);
           while (!attrs[end].is_sentence_start && end < n_attrs - 1)
-            end = _gtk_pango_move_chars (layout, end, 1);
+            end = _ctk_pango_move_chars (layout, end, 1);
         }
       break;
 
     case ATK_TEXT_BOUNDARY_SENTENCE_END:
-      end = _gtk_pango_move_sentences (layout, end, 1);
+      end = _ctk_pango_move_sentences (layout, end, 1);
       start = end;
       if (end < n_attrs - 1)
-        end = _gtk_pango_move_sentences (layout, end, 1);
+        end = _ctk_pango_move_sentences (layout, end, 1);
       break;
 
     case ATK_TEXT_BOUNDARY_LINE_START:
@@ -1193,7 +1193,7 @@ _gtk_pango_get_text_after (PangoLayout     *layout,
 }
 
 /*
- * _gtk_pango_get_text_at:
+ * _ctk_pango_get_text_at:
  * @layout: a #PangoLayout
  * @boundary_type: a #AtkTextBoundary
  * @offset: a character offset in @layout
@@ -1210,7 +1210,7 @@ _gtk_pango_get_text_after (PangoLayout     *layout,
  *     from layout. Free with g_free().
  */
 gchar *
-_gtk_pango_get_text_at (PangoLayout     *layout,
+_ctk_pango_get_text_at (PangoLayout     *layout,
                         AtkTextBoundary  boundary_type,
                         gint             offset,
                         gint            *start_offset,
@@ -1238,43 +1238,43 @@ _gtk_pango_get_text_at (PangoLayout     *layout,
   switch (boundary_type)
     {
     case ATK_TEXT_BOUNDARY_CHAR:
-      end = _gtk_pango_move_chars (layout, end, 1);
+      end = _ctk_pango_move_chars (layout, end, 1);
       break;
 
     case ATK_TEXT_BOUNDARY_WORD_START:
       if (!attrs[start].is_word_start)
-        start = _gtk_pango_move_words (layout, start, -1);
-      if (_gtk_pango_is_inside_word (layout, end))
-        end = _gtk_pango_move_words (layout, end, 1);
+        start = _ctk_pango_move_words (layout, start, -1);
+      if (_ctk_pango_is_inside_word (layout, end))
+        end = _ctk_pango_move_words (layout, end, 1);
       while (!attrs[end].is_word_start && end < n_attrs - 1)
-        end = _gtk_pango_move_chars (layout, end, 1);
+        end = _ctk_pango_move_chars (layout, end, 1);
       break;
 
     case ATK_TEXT_BOUNDARY_WORD_END:
-      if (_gtk_pango_is_inside_word (layout, start) &&
+      if (_ctk_pango_is_inside_word (layout, start) &&
           !attrs[start].is_word_start)
-        start = _gtk_pango_move_words (layout, start, -1);
+        start = _ctk_pango_move_words (layout, start, -1);
       while (!attrs[start].is_word_end && start > 0)
-        start = _gtk_pango_move_chars (layout, start, -1);
-      end = _gtk_pango_move_words (layout, end, 1);
+        start = _ctk_pango_move_chars (layout, start, -1);
+      end = _ctk_pango_move_words (layout, end, 1);
       break;
 
     case ATK_TEXT_BOUNDARY_SENTENCE_START:
       if (!attrs[start].is_sentence_start)
-        start = _gtk_pango_move_sentences (layout, start, -1);
-      if (_gtk_pango_is_inside_sentence (layout, end))
-        end = _gtk_pango_move_sentences (layout, end, 1);
+        start = _ctk_pango_move_sentences (layout, start, -1);
+      if (_ctk_pango_is_inside_sentence (layout, end))
+        end = _ctk_pango_move_sentences (layout, end, 1);
       while (!attrs[end].is_sentence_start && end < n_attrs - 1)
-        end = _gtk_pango_move_chars (layout, end, 1);
+        end = _ctk_pango_move_chars (layout, end, 1);
       break;
 
     case ATK_TEXT_BOUNDARY_SENTENCE_END:
-      if (_gtk_pango_is_inside_sentence (layout, start) &&
+      if (_ctk_pango_is_inside_sentence (layout, start) &&
           !attrs[start].is_sentence_start)
-        start = _gtk_pango_move_sentences (layout, start, -1);
+        start = _ctk_pango_move_sentences (layout, start, -1);
       while (!attrs[start].is_sentence_end && start > 0)
-        start = _gtk_pango_move_chars (layout, start, -1);
-      end = _gtk_pango_move_sentences (layout, end, 1);
+        start = _ctk_pango_move_chars (layout, start, -1);
+      end = _ctk_pango_move_sentences (layout, end, 1);
       break;
 
     case ATK_TEXT_BOUNDARY_LINE_START:
@@ -1300,7 +1300,7 @@ attr_list_merge_filter (PangoAttribute *attribute,
 }
 
 /*
- * _gtk_pango_attr_list_merge:
+ * _ctk_pango_attr_list_merge:
  * @into: a #PangoAttrList where attributes are merged or %NULL
  * @from: a #PangoAttrList with the attributes to merge or %NULL
  *
@@ -1309,7 +1309,7 @@ attr_list_merge_filter (PangoAttribute *attribute,
  * Returns: the merged list.
  */
 PangoAttrList *
-_gtk_pango_attr_list_merge (PangoAttrList *into,
+_ctk_pango_attr_list_merge (PangoAttrList *into,
                             PangoAttrList *from)
 {
   if (from)
@@ -1324,7 +1324,7 @@ _gtk_pango_attr_list_merge (PangoAttrList *into,
 }
 
 PangoDirection
-_gtk_pango_unichar_direction (gunichar ch)
+_ctk_pango_unichar_direction (gunichar ch)
 {
   FriBidiCharType fribidi_ch_type;
 
@@ -1341,7 +1341,7 @@ _gtk_pango_unichar_direction (gunichar ch)
 }
 
 PangoDirection
-_gtk_pango_find_base_dir (const gchar *text,
+_ctk_pango_find_base_dir (const gchar *text,
                           gint         length)
 {
   PangoDirection dir = PANGO_DIRECTION_NEUTRAL;
@@ -1354,7 +1354,7 @@ _gtk_pango_find_base_dir (const gchar *text,
     {
       gunichar wc = g_utf8_get_char (p);
 
-      dir = _gtk_pango_unichar_direction (wc);
+      dir = _ctk_pango_unichar_direction (wc);
 
       if (dir != PANGO_DIRECTION_NEUTRAL)
         break;

@@ -24,25 +24,25 @@
 
 G_BEGIN_DECLS
 
-void _gtk_label_mnemonics_visible_apply_recursively (GtkWidget *widget,
+void _ctk_label_mnemonics_visible_apply_recursively (GtkWidget *widget,
                                                      gboolean   mnemonics_visible);
-gint _gtk_label_get_cursor_position (GtkLabel *label);
-gint _gtk_label_get_selection_bound (GtkLabel *label);
+gint _ctk_label_get_cursor_position (GtkLabel *label);
+gint _ctk_label_get_selection_bound (GtkLabel *label);
 
-gint         _gtk_label_get_n_links     (GtkLabel *label);
-gint         _gtk_label_get_link_at     (GtkLabel *label,
+gint         _ctk_label_get_n_links     (GtkLabel *label);
+gint         _ctk_label_get_link_at     (GtkLabel *label,
                                          gint      pos);
-void         _gtk_label_activate_link   (GtkLabel *label, 
+void         _ctk_label_activate_link   (GtkLabel *label, 
                                          gint      idx);
-const gchar *_gtk_label_get_link_uri    (GtkLabel *label,
+const gchar *_ctk_label_get_link_uri    (GtkLabel *label,
                                          gint      idx);
-void         _gtk_label_get_link_extent (GtkLabel *label,
+void         _ctk_label_get_link_extent (GtkLabel *label,
                                          gint      idx,
                                          gint     *start,
                                          gint     *end);
-gboolean     _gtk_label_get_link_visited (GtkLabel *label,
+gboolean     _ctk_label_get_link_visited (GtkLabel *label,
                                           gint      idx);
-gboolean     _gtk_label_get_link_focused (GtkLabel *label,
+gboolean     _ctk_label_get_link_focused (GtkLabel *label,
                                           gint      idx);
                              
 G_END_DECLS

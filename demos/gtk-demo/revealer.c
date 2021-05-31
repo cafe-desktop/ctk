@@ -12,12 +12,12 @@ static guint timeout = 0;
 static void
 change_direction (GtkRevealer *revealer)
 {
-  if (gtk_widget_get_mapped (GTK_WIDGET (revealer)))
+  if (ctk_widget_get_mapped (GTK_WIDGET (revealer)))
     {
       gboolean revealed;
 
-      revealed = gtk_revealer_get_child_revealed (revealer);
-      gtk_revealer_set_reveal_child (revealer, !revealed);
+      revealed = ctk_revealer_get_child_revealed (revealer);
+      ctk_revealer_set_reveal_child (revealer, !revealed);
     }
 }
 
@@ -31,9 +31,9 @@ reveal_one (gpointer data)
 
   builder = GTK_BUILDER (g_object_get_data (G_OBJECT (window), "builder"));
   name = g_strdup_printf ("revealer%d", count);
-  revealer = (GtkRevealer *)gtk_builder_get_object (builder, name);
+  revealer = (GtkRevealer *)ctk_builder_get_object (builder, name);
 
-  gtk_revealer_set_reveal_child (revealer, TRUE);
+  ctk_revealer_set_reveal_child (revealer, TRUE);
 
   g_signal_connect (revealer, "notify::child-revealed",
                     G_CALLBACK (change_direction), NULL);
@@ -68,25 +68,25 @@ do_revealer (GtkWidget *do_widget)
     {
       GtkBuilder *builder;
 
-      builder = gtk_builder_new_from_resource ("/revealer/revealer.ui");
-      gtk_builder_connect_signals (builder, NULL);
-      window = GTK_WIDGET (gtk_builder_get_object (builder, "window"));
-      gtk_window_set_screen (GTK_WINDOW (window),
-                             gtk_widget_get_screen (do_widget));
+      builder = ctk_builder_new_from_resource ("/revealer/revealer.ui");
+      ctk_builder_connect_signals (builder, NULL);
+      window = GTK_WIDGET (ctk_builder_get_object (builder, "window"));
+      ctk_window_set_screen (GTK_WINDOW (window),
+                             ctk_widget_get_screen (do_widget));
       g_signal_connect (window, "destroy",
                         G_CALLBACK (on_destroy), NULL);
       g_object_set_data_full (G_OBJECT (window), "builder", builder, g_object_unref);
     }
 
-  if (!gtk_widget_get_visible (window))
+  if (!ctk_widget_get_visible (window))
     {
       count = 0;
       timeout = g_timeout_add (690, reveal_one, window);
-      gtk_widget_show_all (window);
+      ctk_widget_show_all (window);
     }
   else
     {
-      gtk_widget_destroy (window);
+      ctk_widget_destroy (window);
     }
 
 

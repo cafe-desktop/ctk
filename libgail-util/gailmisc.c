@@ -381,7 +381,7 @@ gail_misc_get_default_attributes (AtkAttributeSet *attrib_set,
   attrib_set = gail_misc_add_attribute (attrib_set, 
                                         ATK_TEXT_ATTR_DIRECTION,
      g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_DIRECTION, 
-                                        gtk_widget_get_direction (widget))));
+                                        ctk_widget_get_direction (widget))));
 
   context = pango_layout_get_context (layout);
   if (context)
@@ -454,10 +454,10 @@ gail_misc_get_default_attributes (AtkAttributeSet *attrib_set,
               g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_WRAP_MODE, 
                                                       int_value))); 
 
-  style_context = gtk_widget_get_style_context (widget);
+  style_context = ctk_widget_get_style_context (widget);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  gtk_style_context_get_background_color (style_context, 0, &color);
+  ctk_style_context_get_background_color (style_context, 0, &color);
 G_GNUC_END_IGNORE_DEPRECATIONS
   value = g_strdup_printf ("%u,%u,%u",
                            (guint) ceil (color.red * 65536 - color.red),
@@ -467,7 +467,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                                         ATK_TEXT_ATTR_BG_COLOR,
                                         value); 
 
-  gtk_style_context_get_color (style_context, 0, &color);
+  ctk_style_context_get_color (style_context, 0, &color);
   value = g_strdup_printf ("%u,%u,%u",
                            (guint) ceil (color.red * 65536 - color.red),
                            (guint) ceil (color.green * 65536 - color.green),
@@ -551,12 +551,12 @@ gail_misc_get_origins (GtkWidget *widget,
   GdkWindow *window;
 
   if (GTK_IS_TREE_VIEW (widget))
-    window = gtk_tree_view_get_bin_window (GTK_TREE_VIEW (widget));
+    window = ctk_tree_view_get_bin_window (GTK_TREE_VIEW (widget));
   else
-    window = gtk_widget_get_window (widget);
+    window = ctk_widget_get_window (widget);
 
   gdk_window_get_origin (window, x_window, y_window);
-  window = gdk_window_get_toplevel (gtk_widget_get_window (widget));
+  window = gdk_window_get_toplevel (ctk_widget_get_window (widget));
   gdk_window_get_origin (window, x_toplevel, y_toplevel);
 }
 
@@ -585,17 +585,17 @@ gail_misc_buffer_get_run_attributes (GtkTextBuffer *buffer,
   gdouble scale = 1;
   gboolean val_set = FALSE;
 
-  gtk_text_buffer_get_iter_at_offset (buffer, &iter, offset);
+  ctk_text_buffer_get_iter_at_offset (buffer, &iter, offset);
 
-  gtk_text_iter_forward_to_tag_toggle (&iter, NULL);
-  *end_offset = gtk_text_iter_get_offset (&iter);
+  ctk_text_iter_forward_to_tag_toggle (&iter, NULL);
+  *end_offset = ctk_text_iter_get_offset (&iter);
 
-  gtk_text_iter_backward_to_tag_toggle (&iter, NULL);
-  *start_offset = gtk_text_iter_get_offset (&iter);
+  ctk_text_iter_backward_to_tag_toggle (&iter, NULL);
+  *start_offset = ctk_text_iter_get_offset (&iter);
 
-  gtk_text_buffer_get_iter_at_offset (buffer, &iter, offset);
+  ctk_text_buffer_get_iter_at_offset (buffer, &iter, offset);
 
-  tags = gtk_text_iter_get_tags (&iter);
+  tags = ctk_text_iter_get_tags (&iter);
   tags = g_slist_reverse (tags);
 
   temp_tags = tags;

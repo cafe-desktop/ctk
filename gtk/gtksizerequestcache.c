@@ -26,7 +26,7 @@
 #include <string.h>
 
 void
-_gtk_size_request_cache_init (SizeRequestCache *cache)
+_ctk_size_request_cache_init (SizeRequestCache *cache)
 {
   memset (cache, 0, sizeof (SizeRequestCache));
 }
@@ -54,7 +54,7 @@ free_sizes_y (SizeRequestY **sizes)
 }
 
 void
-_gtk_size_request_cache_free (SizeRequestCache *cache)
+_ctk_size_request_cache_free (SizeRequestCache *cache)
 {
   if (cache->requests_x)
     free_sizes_x (cache->requests_x);
@@ -63,14 +63,14 @@ _gtk_size_request_cache_free (SizeRequestCache *cache)
 }
 
 void
-_gtk_size_request_cache_clear (SizeRequestCache *cache)
+_ctk_size_request_cache_clear (SizeRequestCache *cache)
 {
-  _gtk_size_request_cache_free (cache);
-  _gtk_size_request_cache_init (cache);
+  _ctk_size_request_cache_free (cache);
+  _ctk_size_request_cache_init (cache);
 }
 
 void
-_gtk_size_request_cache_commit (SizeRequestCache *cache,
+_ctk_size_request_cache_commit (SizeRequestCache *cache,
                                 GtkOrientation    orientation,
                                 gint              for_size,
                                 gint              minimum_size,
@@ -211,7 +211,7 @@ _gtk_size_request_cache_commit (SizeRequestCache *cache,
  * the Clutter toolkit but has evolved for other GTK+ requirements.
  */
 gboolean
-_gtk_size_request_cache_lookup (SizeRequestCache *cache,
+_ctk_size_request_cache_lookup (SizeRequestCache *cache,
                                 GtkOrientation    orientation,
                                 gint              for_size,
                                 gint             *minimum,

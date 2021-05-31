@@ -31,7 +31,7 @@ main (int argc, char *argv[])
   guint32 xid;
   guint32 plug_xid;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
   if (argc != 1 && argc != 2)
     {
@@ -57,7 +57,7 @@ main (int argc, char *argv[])
       fflush (stdout);
     }
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

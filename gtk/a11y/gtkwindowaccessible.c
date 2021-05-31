@@ -27,13 +27,13 @@
 
 /* atkcomponent.h */
 
-static void                  gtk_window_accessible_get_extents      (AtkComponent         *component,
+static void                  ctk_window_accessible_get_extents      (AtkComponent         *component,
                                                            gint                 *x,
                                                            gint                 *y,
                                                            gint                 *width,
                                                            gint                 *height,
                                                            AtkCoordType         coord_type);
-static void                  gtk_window_accessible_get_size         (AtkComponent         *component,
+static void                  ctk_window_accessible_get_size         (AtkComponent         *component,
                                                            gint                 *width,
                                                            gint                 *height);
 
@@ -41,7 +41,7 @@ static void atk_component_interface_init (AtkComponentIface *iface);
 static void atk_window_interface_init (AtkWindowIface *iface);
 
 G_DEFINE_TYPE_WITH_CODE (GtkWindowAccessible,
-                         gtk_window_accessible,
+                         ctk_window_accessible,
                          GTK_TYPE_CONTAINER_ACCESSIBLE,
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_COMPONENT,
                                                 atk_component_interface_init)
@@ -50,18 +50,18 @@ G_DEFINE_TYPE_WITH_CODE (GtkWindowAccessible,
 
 
 static void
-gtk_window_accessible_focus_event (AtkObject *obj,
+ctk_window_accessible_focus_event (AtkObject *obj,
                                    gboolean   focus_in)
 {
   atk_object_notify_state_change (obj, ATK_STATE_ACTIVE, focus_in);
 }
 
 static void
-gtk_window_accessible_notify_gtk (GObject    *obj,
+ctk_window_accessible_notify_gtk (GObject    *obj,
                                   GParamSpec *pspec)
 {
   GtkWidget *widget = GTK_WIDGET (obj);
-  AtkObject* atk_obj = gtk_widget_get_accessible (widget);
+  AtkObject* atk_obj = ctk_widget_get_accessible (widget);
 
   if (g_strcmp0 (pspec->name, "title") == 0)
     {
@@ -69,7 +69,7 @@ gtk_window_accessible_notify_gtk (GObject    *obj,
       g_signal_emit_by_name (atk_obj, "visible-data-changed");
     }
   else
-    GTK_WIDGET_ACCESSIBLE_CLASS (gtk_window_accessible_parent_class)->notify_gtk (obj, pspec);
+    GTK_WIDGET_ACCESSIBLE_CLASS (ctk_window_accessible_parent_class)->notify_gtk (obj, pspec);
 }
 
 static gboolean
@@ -78,7 +78,7 @@ window_state_event_cb (GtkWidget           *widget,
 {
   AtkObject* obj;
 
-  obj = gtk_widget_get_accessible (widget);
+  obj = ctk_widget_get_accessible (widget);
   atk_object_notify_state_change (obj, ATK_STATE_ICONIFIED,
                                   (event->new_window_state & GDK_WINDOW_STATE_ICONIFIED) != 0);
 
@@ -86,17 +86,17 @@ window_state_event_cb (GtkWidget           *widget,
 }
 
 static void
-gtk_window_accessible_initialize (AtkObject *obj,
+ctk_window_accessible_initialize (AtkObject *obj,
                                   gpointer   data)
 {
   GtkWidget *widget = GTK_WIDGET (data);
 
-  ATK_OBJECT_CLASS (gtk_window_accessible_parent_class)->initialize (obj, data);
+  ATK_OBJECT_CLASS (ctk_window_accessible_parent_class)->initialize (obj, data);
 
   g_signal_connect (data, "window-state-event", G_CALLBACK (window_state_event_cb), NULL);
-  _gtk_widget_accessible_set_layer (GTK_WIDGET_ACCESSIBLE (obj), ATK_LAYER_WINDOW);
+  _ctk_widget_accessible_set_layer (GTK_WIDGET_ACCESSIBLE (obj), ATK_LAYER_WINDOW);
 
-  if (gtk_window_get_window_type (GTK_WINDOW (widget)) == GTK_WINDOW_POPUP)
+  if (ctk_window_get_window_type (GTK_WINDOW (widget)) == GTK_WINDOW_POPUP)
     obj->role = ATK_ROLE_WINDOW;
   else
     obj->role = ATK_ROLE_FRAME;
@@ -108,7 +108,7 @@ find_label_child (GtkContainer *container)
   GList *children, *tmp_list;
   GtkWidget *child;
 
-  children = gtk_container_get_children (container);
+  children = ctk_container_get_children (container);
 
   child = NULL;
   for (tmp_list = children; tmp_list != NULL; tmp_list = tmp_list->next)
@@ -130,16 +130,16 @@ find_label_child (GtkContainer *container)
 }
 
 static const gchar *
-gtk_window_accessible_get_name (AtkObject *accessible)
+ctk_window_accessible_get_name (AtkObject *accessible)
 {
   const gchar* name;
   GtkWidget* widget;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
   if (widget == NULL)
     return NULL;
 
-  name = ATK_OBJECT_CLASS (gtk_window_accessible_parent_class)->get_name (accessible);
+  name = ATK_OBJECT_CLASS (ctk_window_accessible_parent_class)->get_name (accessible);
   if (name != NULL)
     return name;
 
@@ -147,31 +147,31 @@ gtk_window_accessible_get_name (AtkObject *accessible)
     {
       GtkWindow *window = GTK_WINDOW (widget);
 
-      name = gtk_window_get_title (window);
+      name = ctk_window_get_title (window);
       if (name == NULL && accessible->role == ATK_ROLE_TOOL_TIP)
         {
           GtkWidget *child;
 
           child = find_label_child (GTK_CONTAINER (window));
           if (GTK_IS_LABEL (child))
-            name = gtk_label_get_text (GTK_LABEL (child));
+            name = ctk_label_get_text (GTK_LABEL (child));
         }
     }
   return name;
 }
 
 static gint
-gtk_window_accessible_get_index_in_parent (AtkObject *accessible)
+ctk_window_accessible_get_index_in_parent (AtkObject *accessible)
 {
   GtkWidget* widget;
   AtkObject* atk_obj;
   gint index = -1;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
   if (widget == NULL)
     return -1;
 
-  index = ATK_OBJECT_CLASS (gtk_window_accessible_parent_class)->get_index_in_parent (accessible);
+  index = ATK_OBJECT_CLASS (ctk_window_accessible_parent_class)->get_index_in_parent (accessible);
   if (index != -1)
     return index;
 
@@ -183,7 +183,7 @@ gtk_window_accessible_get_index_in_parent (AtkObject *accessible)
       if (GTK_IS_TOPLEVEL_ACCESSIBLE (atk_obj))
         {
           GtkToplevelAccessible *toplevel = GTK_TOPLEVEL_ACCESSIBLE (atk_obj);
-          index = g_list_index (gtk_toplevel_accessible_get_children (toplevel), window);
+          index = g_list_index (ctk_toplevel_accessible_get_children (toplevel), window);
         }
       else
         {
@@ -203,7 +203,7 @@ gtk_window_accessible_get_index_in_parent (AtkObject *accessible)
 }
 
 static AtkRelationSet *
-gtk_window_accessible_ref_relation_set (AtkObject *obj)
+ctk_window_accessible_ref_relation_set (AtkObject *obj)
 {
   GtkWidget *widget;
   AtkRelationSet *relation_set;
@@ -211,11 +211,11 @@ gtk_window_accessible_ref_relation_set (AtkObject *obj)
   AtkRelation* relation;
   GtkWidget *current_widget;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
   if (widget == NULL)
     return NULL;
 
-  relation_set = ATK_OBJECT_CLASS (gtk_window_accessible_parent_class)->ref_relation_set (obj);
+  relation_set = ATK_OBJECT_CLASS (ctk_window_accessible_parent_class)->ref_relation_set (obj);
 
   if (atk_object_get_role (obj) == ATK_ROLE_TOOL_TIP)
     {
@@ -225,7 +225,7 @@ gtk_window_accessible_ref_relation_set (AtkObject *obj)
 
       if (0) /* FIXME need a way to go from tooltip window to widget */
         {
-          array[0] = gtk_widget_get_accessible (current_widget);
+          array[0] = ctk_widget_get_accessible (current_widget);
           relation = atk_relation_new (array, 1, ATK_RELATION_POPUP_FOR);
           atk_relation_set_add (relation_set, relation);
           g_object_unref (relation);
@@ -235,7 +235,7 @@ gtk_window_accessible_ref_relation_set (AtkObject *obj)
 }
 
 static AtkStateSet *
-gtk_window_accessible_ref_state_set (AtkObject *accessible)
+ctk_window_accessible_ref_state_set (AtkObject *accessible)
 {
   AtkStateSet *state_set;
   GtkWidget *widget;
@@ -243,28 +243,28 @@ gtk_window_accessible_ref_state_set (AtkObject *accessible)
   GdkWindow *gdk_window;
   GdkWindowState state;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
   if (widget == NULL)
     return NULL;
 
-  state_set = ATK_OBJECT_CLASS (gtk_window_accessible_parent_class)->ref_state_set (accessible);
+  state_set = ATK_OBJECT_CLASS (ctk_window_accessible_parent_class)->ref_state_set (accessible);
 
   window = GTK_WINDOW (widget);
 
-  if (gtk_window_has_toplevel_focus (window) && gtk_window_is_active (window))
+  if (ctk_window_has_toplevel_focus (window) && ctk_window_is_active (window))
     atk_state_set_add_state (state_set, ATK_STATE_ACTIVE);
 
-  gdk_window = gtk_widget_get_window (widget);
+  gdk_window = ctk_widget_get_window (widget);
   if (gdk_window)
     {
       state = gdk_window_get_state (gdk_window);
       if (state & GDK_WINDOW_STATE_ICONIFIED)
         atk_state_set_add_state (state_set, ATK_STATE_ICONIFIED);
     }
-  if (gtk_window_get_modal (window))
+  if (ctk_window_get_modal (window))
     atk_state_set_add_state (state_set, ATK_STATE_MODAL);
 
-  if (gtk_window_get_resizable (window))
+  if (ctk_window_get_resizable (window))
     atk_state_set_add_state (state_set, ATK_STATE_RESIZABLE);
 
   return state_set;
@@ -285,26 +285,26 @@ prepend_widget (GtkWidget  *widget,
 }
 
 static gint
-gtk_window_accessible_get_n_children (AtkObject *object)
+ctk_window_accessible_get_n_children (AtkObject *object)
 {
   GtkWidget *window;
   gint count = 0;
 
-  window = gtk_accessible_get_widget (GTK_ACCESSIBLE (object));
-  gtk_container_forall (GTK_CONTAINER (window),
+  window = ctk_accessible_get_widget (GTK_ACCESSIBLE (object));
+  ctk_container_forall (GTK_CONTAINER (window),
 			(GtkCallback) count_widget, &count);
   return count;
 }
 
 static AtkObject *
-gtk_window_accessible_ref_child (AtkObject *object,
+ctk_window_accessible_ref_child (AtkObject *object,
                                  gint       i)
 {
   GtkWidget *window, *ref_child;
   GList *children = NULL;
 
-  window = gtk_accessible_get_widget (GTK_ACCESSIBLE (object));
-  gtk_container_forall (GTK_CONTAINER (window),
+  window = ctk_accessible_get_widget (GTK_ACCESSIBLE (object));
+  ctk_container_forall (GTK_CONTAINER (window),
 			(GtkCallback) prepend_widget, &children);
   ref_child = g_list_nth_data (children, i);
   g_list_free (children);
@@ -312,11 +312,11 @@ gtk_window_accessible_ref_child (AtkObject *object,
   if (!ref_child)
     return NULL;
 
-  return g_object_ref (gtk_widget_get_accessible (ref_child));
+  return g_object_ref (ctk_widget_get_accessible (ref_child));
 }
 
 static AtkAttributeSet *
-gtk_widget_accessible_get_attributes (AtkObject *obj)
+ctk_widget_accessible_get_attributes (AtkObject *obj)
 {
   GtkWidget *window;
   GdkWindowTypeHint hint;
@@ -325,13 +325,13 @@ gtk_widget_accessible_get_attributes (AtkObject *obj)
   GEnumClass *class;
   GEnumValue *value;
 
-  attributes = ATK_OBJECT_CLASS (gtk_window_accessible_parent_class)->get_attributes (obj);
+  attributes = ATK_OBJECT_CLASS (ctk_window_accessible_parent_class)->get_attributes (obj);
 
   attr = g_new (AtkAttribute, 1);
   attr->name = g_strdup ("window-type");
 
-  window = gtk_accessible_get_widget (GTK_ACCESSIBLE (obj));
-  hint = gtk_window_get_type_hint (GTK_WINDOW (window));
+  window = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  hint = ctk_window_get_type_hint (GTK_WINDOW (window));
 
   class = g_type_class_ref (GDK_TYPE_WINDOW_TYPE_HINT);
   for (value = class->values; value->value_name; value++)
@@ -350,31 +350,31 @@ gtk_widget_accessible_get_attributes (AtkObject *obj)
 }
 
 static void
-gtk_window_accessible_class_init (GtkWindowAccessibleClass *klass)
+ctk_window_accessible_class_init (GtkWindowAccessibleClass *klass)
 {
   GtkWidgetAccessibleClass *widget_class = (GtkWidgetAccessibleClass*)klass;
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
 
-  widget_class->notify_gtk = gtk_window_accessible_notify_gtk;
+  widget_class->notify_gtk = ctk_window_accessible_notify_gtk;
 
-  class->get_name = gtk_window_accessible_get_name;
-  class->get_index_in_parent = gtk_window_accessible_get_index_in_parent;
-  class->ref_relation_set = gtk_window_accessible_ref_relation_set;
-  class->ref_state_set = gtk_window_accessible_ref_state_set;
-  class->initialize = gtk_window_accessible_initialize;
-  class->focus_event = gtk_window_accessible_focus_event;
-  class->get_n_children = gtk_window_accessible_get_n_children;
-  class->ref_child = gtk_window_accessible_ref_child;
-  class->get_attributes = gtk_widget_accessible_get_attributes;
+  class->get_name = ctk_window_accessible_get_name;
+  class->get_index_in_parent = ctk_window_accessible_get_index_in_parent;
+  class->ref_relation_set = ctk_window_accessible_ref_relation_set;
+  class->ref_state_set = ctk_window_accessible_ref_state_set;
+  class->initialize = ctk_window_accessible_initialize;
+  class->focus_event = ctk_window_accessible_focus_event;
+  class->get_n_children = ctk_window_accessible_get_n_children;
+  class->ref_child = ctk_window_accessible_ref_child;
+  class->get_attributes = ctk_widget_accessible_get_attributes;
 }
 
 static void
-gtk_window_accessible_init (GtkWindowAccessible *accessible)
+ctk_window_accessible_init (GtkWindowAccessible *accessible)
 {
 }
 
 static void
-gtk_window_accessible_get_extents (AtkComponent  *component,
+ctk_window_accessible_get_extents (AtkComponent  *component,
                                    gint          *x,
                                    gint          *y,
                                    gint          *width,
@@ -386,11 +386,11 @@ gtk_window_accessible_get_extents (AtkComponent  *component,
   GdkRectangle rect;
   gint x_toplevel, y_toplevel;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (component));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (component));
   if (widget == NULL)
     return;
 
-  if (!gtk_widget_is_toplevel (widget))
+  if (!ctk_widget_is_toplevel (widget))
     {
       AtkComponentIface *parent_iface;
 
@@ -399,7 +399,7 @@ gtk_window_accessible_get_extents (AtkComponent  *component,
       return;
     }
 
-  window = gtk_widget_get_window (widget);
+  window = ctk_widget_get_window (widget);
   if (window == NULL)
     return;
 
@@ -407,7 +407,7 @@ gtk_window_accessible_get_extents (AtkComponent  *component,
 
   *width = rect.width;
   *height = rect.height;
-  if (!gtk_widget_is_drawable (widget))
+  if (!ctk_widget_is_drawable (widget))
     {
       *x = G_MININT;
       *y = G_MININT;
@@ -425,7 +425,7 @@ gtk_window_accessible_get_extents (AtkComponent  *component,
 }
 
 static void
-gtk_window_accessible_get_size (AtkComponent *component,
+ctk_window_accessible_get_size (AtkComponent *component,
                                 gint         *width,
                                 gint         *height)
 {
@@ -433,11 +433,11 @@ gtk_window_accessible_get_size (AtkComponent *component,
   GdkWindow *window;
   GdkRectangle rect;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (component));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (component));
   if (widget == NULL)
     return;
 
-  if (!gtk_widget_is_toplevel (widget))
+  if (!ctk_widget_is_toplevel (widget))
     {
       AtkComponentIface *parent_iface;
 
@@ -446,7 +446,7 @@ gtk_window_accessible_get_size (AtkComponent *component,
       return;
     }
 
-  window = gtk_widget_get_window (widget);
+  window = ctk_widget_get_window (widget);
   if (window == NULL)
     return;
 
@@ -459,8 +459,8 @@ gtk_window_accessible_get_size (AtkComponent *component,
 static void
 atk_component_interface_init (AtkComponentIface *iface)
 {
-  iface->get_extents = gtk_window_accessible_get_extents;
-  iface->get_size = gtk_window_accessible_get_size;
+  iface->get_extents = ctk_window_accessible_get_extents;
+  iface->get_size = ctk_window_accessible_get_size;
 }
 
 static void

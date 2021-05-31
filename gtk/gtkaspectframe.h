@@ -35,7 +35,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ASPECT_FRAME            (gtk_aspect_frame_get_type ())
+#define GTK_TYPE_ASPECT_FRAME            (ctk_aspect_frame_get_type ())
 #define GTK_ASPECT_FRAME(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_ASPECT_FRAME, GtkAspectFrame))
 #define GTK_ASPECT_FRAME_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_ASPECT_FRAME, GtkAspectFrameClass))
 #define GTK_IS_ASPECT_FRAME(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_ASPECT_FRAME))
@@ -65,23 +65,23 @@ struct _GtkAspectFrameClass
   /*< private >*/
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
 GDK_AVAILABLE_IN_ALL
-GType      gtk_aspect_frame_get_type   (void) G_GNUC_CONST;
+GType      ctk_aspect_frame_get_type   (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_aspect_frame_new        (const gchar     *label,
+GtkWidget* ctk_aspect_frame_new        (const gchar     *label,
 					gfloat           xalign,
 					gfloat           yalign,
 					gfloat           ratio,
 					gboolean         obey_child);
 GDK_AVAILABLE_IN_ALL
-void       gtk_aspect_frame_set        (GtkAspectFrame  *aspect_frame,
+void       ctk_aspect_frame_set        (GtkAspectFrame  *aspect_frame,
 					gfloat           xalign,
 					gfloat           yalign,
 					gfloat           ratio,

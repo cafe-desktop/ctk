@@ -21,7 +21,7 @@
 
 #include "gtkactionobservable.h"
 
-G_DEFINE_INTERFACE (GtkActionObservable, gtk_action_observable, G_TYPE_OBJECT)
+G_DEFINE_INTERFACE (GtkActionObservable, ctk_action_observable, G_TYPE_OBJECT)
 
 /*
  * SECTION:gtkactionobserable
@@ -30,12 +30,12 @@ G_DEFINE_INTERFACE (GtkActionObservable, gtk_action_observable, G_TYPE_OBJECT)
  */
 
 void
-gtk_action_observable_default_init (GtkActionObservableInterface *iface)
+ctk_action_observable_default_init (GtkActionObservableInterface *iface)
 {
 }
 
 /**
- * gtk_action_observable_register_observer:
+ * ctk_action_observable_register_observer:
  * @observable: a #GtkActionObservable
  * @action_name: the name of the action
  * @observer: the #GtkActionObserver to which the events will be reported
@@ -44,7 +44,7 @@ gtk_action_observable_default_init (GtkActionObservableInterface *iface)
  * @observable.
  */
 void
-gtk_action_observable_register_observer (GtkActionObservable *observable,
+ctk_action_observable_register_observer (GtkActionObservable *observable,
                                          const gchar         *action_name,
                                          GtkActionObserver   *observer)
 {
@@ -55,7 +55,7 @@ gtk_action_observable_register_observer (GtkActionObservable *observable,
 }
 
 /**
- * gtk_action_observable_unregister_observer:
+ * ctk_action_observable_unregister_observer:
  * @observable: a #GtkActionObservable
  * @action_name: the name of the action
  * @observer: the #GtkActionObserver to which the events will be reported
@@ -67,7 +67,7 @@ gtk_action_observable_register_observer (GtkActionObservable *observable,
  * unregistered an equal number of times.
  */
 void
-gtk_action_observable_unregister_observer (GtkActionObservable *observable,
+ctk_action_observable_unregister_observer (GtkActionObservable *observable,
                                            const gchar         *action_name,
                                            GtkActionObserver   *observer)
 {

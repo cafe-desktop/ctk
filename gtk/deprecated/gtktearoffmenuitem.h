@@ -33,7 +33,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_TEAROFF_MENU_ITEM	      (gtk_tearoff_menu_item_get_type ())
+#define GTK_TYPE_TEAROFF_MENU_ITEM	      (ctk_tearoff_menu_item_get_type ())
 #define GTK_TEAROFF_MENU_ITEM(obj)	      (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TEAROFF_MENU_ITEM, GtkTearoffMenuItem))
 #define GTK_TEAROFF_MENU_ITEM_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_TEAROFF_MENU_ITEM, GtkTearoffMenuItemClass))
 #define GTK_IS_TEAROFF_MENU_ITEM(obj)	      (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TEAROFF_MENU_ITEM))
@@ -64,17 +64,17 @@ struct _GtkTearoffMenuItemClass
   /*< private >*/
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
 GDK_DEPRECATED_IN_3_4
-GType	   gtk_tearoff_menu_item_get_type     (void) G_GNUC_CONST;
+GType	   ctk_tearoff_menu_item_get_type     (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_4
-GtkWidget* gtk_tearoff_menu_item_new	      (void);
+GtkWidget* ctk_tearoff_menu_item_new	      (void);
 
 G_END_DECLS
 

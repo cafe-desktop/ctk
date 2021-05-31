@@ -25,10 +25,10 @@
 #include "gtkcssimagesurfaceprivate.h"
 #include "gtkstyleproviderprivate.h"
 
-G_DEFINE_TYPE (GtkCssImageUrl, _gtk_css_image_url, GTK_TYPE_CSS_IMAGE)
+G_DEFINE_TYPE (GtkCssImageUrl, _ctk_css_image_url, GTK_TYPE_CSS_IMAGE)
 
 static GtkCssImage *
-gtk_css_image_url_load_image (GtkCssImageUrl  *url,
+ctk_css_image_url_load_image (GtkCssImageUrl  *url,
                               GError         **error)
 {
   GdkPixbuf *pixbuf;
@@ -82,54 +82,54 @@ gtk_css_image_url_load_image (GtkCssImageUrl  *url,
        }
 
       empty = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, 0, 0);
-      url->loaded_image = _gtk_css_image_surface_new (empty);
+      url->loaded_image = _ctk_css_image_surface_new (empty);
       cairo_surface_destroy (empty);
       return url->loaded_image;
     }
 
-  url->loaded_image = _gtk_css_image_surface_new_for_pixbuf (pixbuf);
+  url->loaded_image = _ctk_css_image_surface_new_for_pixbuf (pixbuf);
   g_object_unref (pixbuf);
 
   return url->loaded_image;
 }
 
 static int
-gtk_css_image_url_get_width (GtkCssImage *image)
+ctk_css_image_url_get_width (GtkCssImage *image)
 {
   GtkCssImageUrl *url = GTK_CSS_IMAGE_URL (image);
 
-  return _gtk_css_image_get_width (gtk_css_image_url_load_image (url, NULL));
+  return _ctk_css_image_get_width (ctk_css_image_url_load_image (url, NULL));
 }
 
 static int
-gtk_css_image_url_get_height (GtkCssImage *image)
+ctk_css_image_url_get_height (GtkCssImage *image)
 {
   GtkCssImageUrl *url = GTK_CSS_IMAGE_URL (image);
 
-  return _gtk_css_image_get_height (gtk_css_image_url_load_image (url, NULL));
+  return _ctk_css_image_get_height (ctk_css_image_url_load_image (url, NULL));
 }
 
 static double
-gtk_css_image_url_get_aspect_ratio (GtkCssImage *image)
+ctk_css_image_url_get_aspect_ratio (GtkCssImage *image)
 {
   GtkCssImageUrl *url = GTK_CSS_IMAGE_URL (image);
 
-  return _gtk_css_image_get_aspect_ratio (gtk_css_image_url_load_image (url, NULL));
+  return _ctk_css_image_get_aspect_ratio (ctk_css_image_url_load_image (url, NULL));
 }
 
 static void
-gtk_css_image_url_draw (GtkCssImage        *image,
+ctk_css_image_url_draw (GtkCssImage        *image,
                         cairo_t            *cr,
                         double              width,
                         double              height)
 {
   GtkCssImageUrl *url = GTK_CSS_IMAGE_URL (image);
 
-  _gtk_css_image_draw (gtk_css_image_url_load_image (url, NULL), cr, width, height);
+  _ctk_css_image_draw (ctk_css_image_url_load_image (url, NULL), cr, width, height);
 }
 
 static GtkCssImage *
-gtk_css_image_url_compute (GtkCssImage             *image,
+ctk_css_image_url_compute (GtkCssImage             *image,
                            guint                    property_id,
                            GtkStyleProviderPrivate *provider,
                            GtkCssStyle             *style,
@@ -139,11 +139,11 @@ gtk_css_image_url_compute (GtkCssImage             *image,
   GtkCssImage *copy;
   GError *error = NULL;
 
-  copy = gtk_css_image_url_load_image (url, &error);
+  copy = ctk_css_image_url_load_image (url, &error);
   if (error)
     {
-      GtkCssSection *section = gtk_css_style_get_section (style, property_id);
-      _gtk_style_provider_private_emit_error (provider, section, error);
+      GtkCssSection *section = ctk_css_style_get_section (style, property_id);
+      _ctk_style_provider_private_emit_error (provider, section, error);
       g_error_free (error);
     }
 
@@ -151,12 +151,12 @@ gtk_css_image_url_compute (GtkCssImage             *image,
 }
 
 static gboolean
-gtk_css_image_url_parse (GtkCssImage  *image,
+ctk_css_image_url_parse (GtkCssImage  *image,
                          GtkCssParser *parser)
 {
   GtkCssImageUrl *url = GTK_CSS_IMAGE_URL (image);
 
-  url->file = _gtk_css_parser_read_url (parser);
+  url->file = _ctk_css_parser_read_url (parser);
   if (url->file == NULL)
     return FALSE;
 
@@ -164,44 +164,44 @@ gtk_css_image_url_parse (GtkCssImage  *image,
 }
 
 static void
-gtk_css_image_url_print (GtkCssImage *image,
+ctk_css_image_url_print (GtkCssImage *image,
                          GString     *string)
 {
   GtkCssImageUrl *url = GTK_CSS_IMAGE_URL (image);
 
-  _gtk_css_image_print (gtk_css_image_url_load_image (url, NULL), string);
+  _ctk_css_image_print (ctk_css_image_url_load_image (url, NULL), string);
 }
 
 static void
-gtk_css_image_url_dispose (GObject *object)
+ctk_css_image_url_dispose (GObject *object)
 {
   GtkCssImageUrl *url = GTK_CSS_IMAGE_URL (object);
 
   g_clear_object (&url->file);
   g_clear_object (&url->loaded_image);
 
-  G_OBJECT_CLASS (_gtk_css_image_url_parent_class)->dispose (object);
+  G_OBJECT_CLASS (_ctk_css_image_url_parent_class)->dispose (object);
 }
 
 static void
-_gtk_css_image_url_class_init (GtkCssImageUrlClass *klass)
+_ctk_css_image_url_class_init (GtkCssImageUrlClass *klass)
 {
   GtkCssImageClass *image_class = GTK_CSS_IMAGE_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  image_class->get_width = gtk_css_image_url_get_width;
-  image_class->get_height = gtk_css_image_url_get_height;
-  image_class->get_aspect_ratio = gtk_css_image_url_get_aspect_ratio;
-  image_class->compute = gtk_css_image_url_compute;
-  image_class->draw = gtk_css_image_url_draw;
-  image_class->parse = gtk_css_image_url_parse;
-  image_class->print = gtk_css_image_url_print;
+  image_class->get_width = ctk_css_image_url_get_width;
+  image_class->get_height = ctk_css_image_url_get_height;
+  image_class->get_aspect_ratio = ctk_css_image_url_get_aspect_ratio;
+  image_class->compute = ctk_css_image_url_compute;
+  image_class->draw = ctk_css_image_url_draw;
+  image_class->parse = ctk_css_image_url_parse;
+  image_class->print = ctk_css_image_url_print;
 
-  object_class->dispose = gtk_css_image_url_dispose;
+  object_class->dispose = ctk_css_image_url_dispose;
 }
 
 static void
-_gtk_css_image_url_init (GtkCssImageUrl *image_url)
+_ctk_css_image_url_init (GtkCssImageUrl *image_url)
 {
 }
 

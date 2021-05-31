@@ -21,7 +21,7 @@
 
 #include "gtkactionobserver.h"
 
-G_DEFINE_INTERFACE (GtkActionObserver, gtk_action_observer, G_TYPE_OBJECT)
+G_DEFINE_INTERFACE (GtkActionObserver, ctk_action_observer, G_TYPE_OBJECT)
 
 /*< private >
  * SECTION:gtkactionobserver
@@ -50,12 +50,12 @@ G_DEFINE_INTERFACE (GtkActionObserver, gtk_action_observer, G_TYPE_OBJECT)
  */
 
 void
-gtk_action_observer_default_init (GtkActionObserverInterface *class)
+ctk_action_observer_default_init (GtkActionObserverInterface *class)
 {
 }
 
 /*< private >
- * gtk_action_observer_action_added:
+ * ctk_action_observer_action_added:
  * @observer: a #GtkActionObserver
  * @observable: the source of the event
  * @action_name: the name of the action
@@ -72,7 +72,7 @@ gtk_action_observer_default_init (GtkActionObserverInterface *class)
  * observer has explicitly registered itself to receive events.
  */
 void
-gtk_action_observer_action_added (GtkActionObserver   *observer,
+ctk_action_observer_action_added (GtkActionObserver   *observer,
                                   GtkActionObservable *observable,
                                   const gchar         *action_name,
                                   const GVariantType  *parameter_type,
@@ -86,7 +86,7 @@ gtk_action_observer_action_added (GtkActionObserver   *observer,
 }
 
 /*< private >
- * gtk_action_observer_action_enabled_changed:
+ * ctk_action_observer_action_enabled_changed:
  * @observer: a #GtkActionObserver
  * @observable: the source of the event
  * @action_name: the name of the action
@@ -99,7 +99,7 @@ gtk_action_observer_action_added (GtkActionObserver   *observer,
  * observer has explicitly registered itself to receive events.
  */
 void
-gtk_action_observer_action_enabled_changed (GtkActionObserver   *observer,
+ctk_action_observer_action_enabled_changed (GtkActionObserver   *observer,
                                             GtkActionObservable *observable,
                                             const gchar         *action_name,
                                             gboolean             enabled)
@@ -111,7 +111,7 @@ gtk_action_observer_action_enabled_changed (GtkActionObserver   *observer,
 }
 
 /*< private >
- * gtk_action_observer_action_state_changed:
+ * ctk_action_observer_action_state_changed:
  * @observer: a #GtkActionObserver
  * @observable: the source of the event
  * @action_name: the name of the action
@@ -124,7 +124,7 @@ gtk_action_observer_action_enabled_changed (GtkActionObserver   *observer,
  * observer has explicitly registered itself to receive events.
  */
 void
-gtk_action_observer_action_state_changed (GtkActionObserver   *observer,
+ctk_action_observer_action_state_changed (GtkActionObserver   *observer,
                                           GtkActionObservable *observable,
                                           const gchar         *action_name,
                                           GVariant            *state)
@@ -136,7 +136,7 @@ gtk_action_observer_action_state_changed (GtkActionObserver   *observer,
 }
 
 /*< private >
- * gtk_action_observer_action_removed:
+ * ctk_action_observer_action_removed:
  * @observer: a #GtkActionObserver
  * @observable: the source of the event
  * @action_name: the name of the action
@@ -148,7 +148,7 @@ gtk_action_observer_action_state_changed (GtkActionObserver   *observer,
  * observer has explicitly registered itself to receive events.
  */
 void
-gtk_action_observer_action_removed (GtkActionObserver   *observer,
+ctk_action_observer_action_removed (GtkActionObserver   *observer,
                                     GtkActionObservable *observable,
                                     const gchar         *action_name)
 {
@@ -159,7 +159,7 @@ gtk_action_observer_action_removed (GtkActionObserver   *observer,
 }
 
 /*< private >
- * gtk_action_observer_primary_accel_changed:
+ * ctk_action_observer_primary_accel_changed:
  * @observer: a #GtkActionObserver
  * @observable: the source of the event
  * @action_name: the name of the action
@@ -173,7 +173,7 @@ gtk_action_observer_action_removed (GtkActionObserver   *observer,
  * reported target is the one that the observer is interested in.
  */
 void
-gtk_action_observer_primary_accel_changed (GtkActionObserver   *observer,
+ctk_action_observer_primary_accel_changed (GtkActionObserver   *observer,
                                            GtkActionObservable *observable,
                                            const gchar         *action_name,
                                            const gchar         *action_and_target)

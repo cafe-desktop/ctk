@@ -37,7 +37,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_TOGGLE_ACTION            (gtk_toggle_action_get_type ())
+#define GTK_TYPE_TOGGLE_ACTION            (ctk_toggle_action_get_type ())
 #define GTK_TOGGLE_ACTION(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TOGGLE_ACTION, GtkToggleAction))
 #define GTK_TOGGLE_ACTION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_TOGGLE_ACTION, GtkToggleActionClass))
 #define GTK_IS_TOGGLE_ACTION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TOGGLE_ACTION))
@@ -63,34 +63,34 @@ struct _GtkToggleActionClass
   void (* toggled) (GtkToggleAction *action);
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_DEPRECATED_IN_3_10
-GType            gtk_toggle_action_get_type          (void) G_GNUC_CONST;
+GType            ctk_toggle_action_get_type          (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_10
-GtkToggleAction *gtk_toggle_action_new               (const gchar     *name,
+GtkToggleAction *ctk_toggle_action_new               (const gchar     *name,
                                                       const gchar     *label,
                                                       const gchar     *tooltip,
                                                       const gchar     *stock_id);
 GDK_DEPRECATED_IN_3_10
-void             gtk_toggle_action_toggled           (GtkToggleAction *action);
+void             ctk_toggle_action_toggled           (GtkToggleAction *action);
 GDK_DEPRECATED_IN_3_10
-void             gtk_toggle_action_set_active        (GtkToggleAction *action,
+void             ctk_toggle_action_set_active        (GtkToggleAction *action,
                                                       gboolean         is_active);
 GDK_DEPRECATED_IN_3_10
-gboolean         gtk_toggle_action_get_active        (GtkToggleAction *action);
+gboolean         ctk_toggle_action_get_active        (GtkToggleAction *action);
 GDK_DEPRECATED_IN_3_10
-void             gtk_toggle_action_set_draw_as_radio (GtkToggleAction *action,
+void             ctk_toggle_action_set_draw_as_radio (GtkToggleAction *action,
                                                       gboolean         draw_as_radio);
 GDK_DEPRECATED_IN_3_10
-gboolean         gtk_toggle_action_get_draw_as_radio (GtkToggleAction *action);
+gboolean         ctk_toggle_action_get_draw_as_radio (GtkToggleAction *action);
 
 /* private */
-void             _gtk_toggle_action_set_active       (GtkToggleAction *toggle_action,
+void             _ctk_toggle_action_set_active       (GtkToggleAction *toggle_action,
                                                       gboolean         is_active);
 
 

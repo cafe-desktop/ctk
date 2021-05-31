@@ -25,7 +25,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_IMAGE_RADIAL           (_gtk_css_image_radial_get_type ())
+#define GTK_TYPE_CSS_IMAGE_RADIAL           (_ctk_css_image_radial_get_type ())
 #define GTK_CSS_IMAGE_RADIAL(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_IMAGE_RADIAL, GtkCssImageRadial))
 #define GTK_CSS_IMAGE_RADIAL_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_IMAGE_RADIAL, GtkCssImageRadialClass))
 #define GTK_IS_CSS_IMAGE_RADIAL(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_IMAGE_RADIAL))
@@ -66,7 +66,7 @@ struct _GtkCssImageRadialClass
   GtkCssImageClass parent_class;
 };
 
-GType          _gtk_css_image_radial_get_type             (void) G_GNUC_CONST;
+GType          _ctk_css_image_radial_get_type             (void) G_GNUC_CONST;
 
 G_END_DECLS
 

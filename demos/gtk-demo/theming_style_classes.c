@@ -20,27 +20,27 @@ do_theming_style_classes (GtkWidget *do_widget)
 
   if (!window)
     {
-      window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-      gtk_window_set_screen (GTK_WINDOW (window),
-                             gtk_widget_get_screen (do_widget));
-      gtk_window_set_title (GTK_WINDOW (window), "Style Classes");
-      gtk_window_set_resizable (GTK_WINDOW (window), FALSE);
-      gtk_container_set_border_width (GTK_CONTAINER (window), 12);
+      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+      ctk_window_set_screen (GTK_WINDOW (window),
+                             ctk_widget_get_screen (do_widget));
+      ctk_window_set_title (GTK_WINDOW (window), "Style Classes");
+      ctk_window_set_resizable (GTK_WINDOW (window), FALSE);
+      ctk_container_set_border_width (GTK_CONTAINER (window), 12);
       g_signal_connect (window, "destroy",
-                        G_CALLBACK (gtk_widget_destroyed), &window);
+                        G_CALLBACK (ctk_widget_destroyed), &window);
 
-      builder = gtk_builder_new_from_resource ("/theming_style_classes/theming.ui");
+      builder = ctk_builder_new_from_resource ("/theming_style_classes/theming.ui");
 
-      grid = (GtkWidget *)gtk_builder_get_object (builder, "grid");
-      gtk_widget_show_all (grid);
-      gtk_container_add (GTK_CONTAINER (window), grid);
+      grid = (GtkWidget *)ctk_builder_get_object (builder, "grid");
+      ctk_widget_show_all (grid);
+      ctk_container_add (GTK_CONTAINER (window), grid);
       g_object_unref (builder);
     }
 
-  if (!gtk_widget_get_visible (window))
-    gtk_widget_show (window);
+  if (!ctk_widget_get_visible (window))
+    ctk_widget_show (window);
   else
-    gtk_widget_destroy (window);
+    ctk_widget_destroy (window);
 
   return window;
 }

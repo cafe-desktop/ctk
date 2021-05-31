@@ -32,7 +32,7 @@ struct _GtkQueryPrivate
   gchar **words;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkQuery, gtk_query, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkQuery, ctk_query, G_TYPE_OBJECT)
 
 static void
 finalize (GObject *object)
@@ -45,11 +45,11 @@ finalize (GObject *object)
   g_free (query->priv->text);
   g_strfreev (query->priv->words);
 
-  G_OBJECT_CLASS (gtk_query_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_query_parent_class)->finalize (object);
 }
 
 static void
-gtk_query_class_init (GtkQueryClass *class)
+ctk_query_class_init (GtkQueryClass *class)
 {
   GObjectClass *gobject_class;
 
@@ -58,26 +58,26 @@ gtk_query_class_init (GtkQueryClass *class)
 }
 
 static void
-gtk_query_init (GtkQuery *query)
+ctk_query_init (GtkQuery *query)
 {
-  query->priv = gtk_query_get_instance_private (query);
+  query->priv = ctk_query_get_instance_private (query);
 }
 
 GtkQuery *
-gtk_query_new (void)
+ctk_query_new (void)
 {
   return g_object_new (GTK_TYPE_QUERY,  NULL);
 }
 
 
 const gchar *
-gtk_query_get_text (GtkQuery *query)
+ctk_query_get_text (GtkQuery *query)
 {
   return query->priv->text;
 }
 
 void
-gtk_query_set_text (GtkQuery    *query,
+ctk_query_set_text (GtkQuery    *query,
                     const gchar *text)
 {
   g_free (query->priv->text);
@@ -88,13 +88,13 @@ gtk_query_set_text (GtkQuery    *query,
 }
 
 GFile *
-gtk_query_get_location (GtkQuery *query)
+ctk_query_get_location (GtkQuery *query)
 {
   return query->priv->location;
 }
 
 void
-gtk_query_set_location (GtkQuery *query,
+ctk_query_set_location (GtkQuery *query,
                         GFile    *file)
 {
   g_set_object (&query->priv->location, file);
@@ -113,7 +113,7 @@ prepare_string_for_compare (const gchar *string)
 }
 
 gboolean
-gtk_query_matches_string (GtkQuery    *query,
+ctk_query_matches_string (GtkQuery    *query,
                           const gchar *string)
 {
   gchar *prepared;

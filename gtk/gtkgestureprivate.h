@@ -54,19 +54,19 @@ struct _GtkGestureClass
 
 G_BEGIN_DECLS
 
-gboolean _gtk_gesture_check                  (GtkGesture       *gesture);
+gboolean _ctk_gesture_check                  (GtkGesture       *gesture);
 
-gboolean _gtk_gesture_handled_sequence_press (GtkGesture       *gesture,
+gboolean _ctk_gesture_handled_sequence_press (GtkGesture       *gesture,
                                               GdkEventSequence *sequence);
 
-gboolean _gtk_gesture_get_pointer_emulating_sequence
+gboolean _ctk_gesture_get_pointer_emulating_sequence
                                                 (GtkGesture        *gesture,
                                                  GdkEventSequence **sequence);
 
-gboolean _gtk_gesture_cancel_sequence        (GtkGesture       *gesture,
+gboolean _ctk_gesture_cancel_sequence        (GtkGesture       *gesture,
                                               GdkEventSequence *sequence);
 
-gboolean _gtk_gesture_get_last_update_time   (GtkGesture       *gesture,
+gboolean _ctk_gesture_get_last_update_time   (GtkGesture       *gesture,
                                               GdkEventSequence *sequence,
                                               guint32          *evtime);
 

@@ -16,12 +16,12 @@ show_shortcuts (GtkWidget   *window,
   gchar *path;
 
   path = g_strdup_printf ("/shortcuts/%s.ui", id);
-  builder = gtk_builder_new_from_resource (path);
+  builder = ctk_builder_new_from_resource (path);
   g_free (path);
-  overlay = GTK_WIDGET (gtk_builder_get_object (builder, id));
-  gtk_window_set_transient_for (GTK_WINDOW (overlay), GTK_WINDOW (window));
+  overlay = GTK_WIDGET (ctk_builder_get_object (builder, id));
+  ctk_window_set_transient_for (GTK_WINDOW (overlay), GTK_WINDOW (window));
   g_object_set (overlay, "view-name", view, NULL);
-  gtk_widget_show (overlay);
+  ctk_widget_show (overlay);
   g_object_unref (builder);
 }
 
@@ -76,7 +76,7 @@ do_shortcuts (GtkWidget *do_widget)
   if (!icons_added)
     {
       icons_added = TRUE;
-      gtk_icon_theme_add_resource_path (gtk_icon_theme_get_default (), "/icons");
+      ctk_icon_theme_add_resource_path (ctk_icon_theme_get_default (), "/icons");
     }
 
   g_type_ensure (G_TYPE_FILE_ICON);
@@ -85,8 +85,8 @@ do_shortcuts (GtkWidget *do_widget)
     {
       GtkBuilder *builder;
 
-      builder = gtk_builder_new_from_resource ("/shortcuts/shortcuts.ui");
-      gtk_builder_add_callback_symbols (builder,
+      builder = ctk_builder_new_from_resource ("/shortcuts/shortcuts.ui");
+      ctk_builder_add_callback_symbols (builder,
                                         "builder_shortcuts", G_CALLBACK (builder_shortcuts),
                                         "gedit_shortcuts", G_CALLBACK (gedit_shortcuts),
                                         "clocks_shortcuts", G_CALLBACK (clocks_shortcuts),
@@ -95,20 +95,20 @@ do_shortcuts (GtkWidget *do_widget)
                                         "boxes_shortcuts_wizard", G_CALLBACK (boxes_shortcuts_wizard),
                                         "boxes_shortcuts_display", G_CALLBACK (boxes_shortcuts_display),
                                         NULL);
-      gtk_builder_connect_signals (builder, NULL);
-      window = GTK_WIDGET (gtk_builder_get_object (builder, "window1"));
-      gtk_window_set_screen (GTK_WINDOW (window),
-                             gtk_widget_get_screen (do_widget));
+      ctk_builder_connect_signals (builder, NULL);
+      window = GTK_WIDGET (ctk_builder_get_object (builder, "window1"));
+      ctk_window_set_screen (GTK_WINDOW (window),
+                             ctk_widget_get_screen (do_widget));
       g_signal_connect (window, "destroy",
-                        G_CALLBACK (gtk_widget_destroyed), &window);
+                        G_CALLBACK (ctk_widget_destroyed), &window);
 
       g_object_unref (builder);
     }
 
-  if (!gtk_widget_get_visible (window))
-    gtk_widget_show_all (window);
+  if (!ctk_widget_get_visible (window))
+    ctk_widget_show_all (window);
   else
-    gtk_widget_destroy (window);
+    ctk_widget_destroy (window);
 
   return window;
 }

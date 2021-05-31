@@ -23,39 +23,39 @@
 G_BEGIN_DECLS
 
 /* called by treeview code */
-void            _gtk_tree_view_accessible_reorder       (GtkTreeView       *treeview);
-void            _gtk_tree_view_accessible_add           (GtkTreeView       *treeview,
+void            _ctk_tree_view_accessible_reorder       (GtkTreeView       *treeview);
+void            _ctk_tree_view_accessible_add           (GtkTreeView       *treeview,
                                                          GtkRBTree         *tree,
                                                          GtkRBNode         *node);
-void            _gtk_tree_view_accessible_remove        (GtkTreeView       *treeview,
+void            _ctk_tree_view_accessible_remove        (GtkTreeView       *treeview,
                                                          GtkRBTree         *tree,
                                                          GtkRBNode         *node);
-void            _gtk_tree_view_accessible_changed       (GtkTreeView       *treeview,
+void            _ctk_tree_view_accessible_changed       (GtkTreeView       *treeview,
                                                          GtkRBTree         *tree,
                                                          GtkRBNode         *node);
 
-void            _gtk_tree_view_accessible_add_column    (GtkTreeView       *treeview,
+void            _ctk_tree_view_accessible_add_column    (GtkTreeView       *treeview,
                                                          GtkTreeViewColumn *column,
                                                          guint              id);
-void            _gtk_tree_view_accessible_remove_column (GtkTreeView       *treeview,
+void            _ctk_tree_view_accessible_remove_column (GtkTreeView       *treeview,
                                                          GtkTreeViewColumn *column,
                                                          guint              id);
-void            _gtk_tree_view_accessible_reorder_column
+void            _ctk_tree_view_accessible_reorder_column
                                                         (GtkTreeView       *treeview,
                                                          GtkTreeViewColumn *column);
-void            _gtk_tree_view_accessible_toggle_visibility
+void            _ctk_tree_view_accessible_toggle_visibility
                                                         (GtkTreeView       *treeview,
                                                          GtkTreeViewColumn *column);
-void            _gtk_tree_view_accessible_update_focus_column
+void            _ctk_tree_view_accessible_update_focus_column
                                                         (GtkTreeView       *treeview,
                                                          GtkTreeViewColumn *old_focus,
                                                          GtkTreeViewColumn *new_focus);
 
-void            _gtk_tree_view_accessible_add_state     (GtkTreeView       *treeview,
+void            _ctk_tree_view_accessible_add_state     (GtkTreeView       *treeview,
                                                          GtkRBTree         *tree,
                                                          GtkRBNode         *node,
                                                          GtkCellRendererState state);
-void            _gtk_tree_view_accessible_remove_state  (GtkTreeView       *treeview,
+void            _ctk_tree_view_accessible_remove_state  (GtkTreeView       *treeview,
                                                          GtkRBTree         *tree,
                                                          GtkRBNode         *node,
                                                          GtkCellRendererState state);

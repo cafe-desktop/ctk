@@ -138,20 +138,20 @@ init_atoms (void)
 void
 selection_toggled (GtkWidget *widget)
 {
-  if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget)))
+  if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget)))
     {
-      have_selection = gtk_selection_owner_set (selection_widget,
+      have_selection = ctk_selection_owner_set (selection_widget,
 						GDK_SELECTION_PRIMARY,
 						GDK_CURRENT_TIME);
       if (!have_selection)
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(widget), FALSE);
+	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON(widget), FALSE);
     }
   else
     {
       if (have_selection)
 	{
-          if (gdk_selection_owner_get (GDK_SELECTION_PRIMARY) == gtk_widget_get_window (widget))
-	    gtk_selection_owner_set (NULL, GDK_SELECTION_PRIMARY,
+          if (gdk_selection_owner_get (GDK_SELECTION_PRIMARY) == ctk_widget_get_window (widget))
+	    ctk_selection_owner_set (NULL, GDK_SELECTION_PRIMARY,
 				     GDK_CURRENT_TIME);
 	  have_selection = FALSE;
 	}
@@ -191,14 +191,14 @@ selection_get (GtkWidget *widget,
       break;
     }
   
-  gtk_selection_data_set (selection_data, type, 8, buffer, len);
+  ctk_selection_data_set (selection_data, type, 8, buffer, len);
 }
 
 gint
 selection_clear (GtkWidget *widget, GdkEventSelection *event)
 {
   have_selection = FALSE;
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(selection_button), FALSE);
+  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON(selection_button), FALSE);
 
   return TRUE;
 }
@@ -275,13 +275,13 @@ selection_received (GtkWidget *widget, GtkSelectionData *selection_data)
   GtkTextBuffer *buffer;
   GdkAtom type;
 
-  if (gtk_selection_data_get_length (selection_data) < 0)
+  if (ctk_selection_data_get_length (selection_data) < 0)
     {
       g_print("Error retrieving selection\n");
       return;
     }
 
-  type = gtk_selection_data_get_data_type (selection_data);
+  type = ctk_selection_data_get_data_type (selection_data);
 
   seltype = SEL_TYPE_NONE;
   for (i=0; i<LAST_SEL_TYPE; i++)
@@ -306,13 +306,13 @@ selection_received (GtkWidget *widget, GtkSelectionData *selection_data)
 
   selection_string = g_string_new (NULL);
 
-  buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (selection_text));
-  gtk_text_buffer_set_text (buffer, "", -1);
+  buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (selection_text));
+  ctk_text_buffer_set_text (buffer, "", -1);
 
   position = 0;
-  while (position < gtk_selection_data_get_length (selection_data))
+  while (position < ctk_selection_data_get_length (selection_data))
     {
-      data = (guchar *) gtk_selection_data_get_data (selection_data);
+      data = (guchar *) ctk_selection_data_get_data (selection_data);
       switch (seltype)
 	{
 	case ATOM:
@@ -339,15 +339,15 @@ selection_received (GtkWidget *widget, GtkSelectionData *selection_data)
 	  break;
 	default:
 	  {
-	    char *name = gdk_atom_name (gtk_selection_data_get_data_type (selection_data));
+	    char *name = gdk_atom_name (ctk_selection_data_get_data_type (selection_data));
 	    g_print("Can't convert type %s to string\n",
 		    name?name:"<unknown>");
-	    position = gtk_selection_data_get_length (selection_data);
+	    position = ctk_selection_data_get_length (selection_data);
 	    continue;
 	  }
 	}
-      gtk_text_buffer_insert_at_cursor (buffer, str, -1);
-      gtk_text_buffer_insert_at_cursor (buffer, "\n", -1);
+      ctk_text_buffer_insert_at_cursor (buffer, str, -1);
+      ctk_text_buffer_insert_at_cursor (buffer, "\n", -1);
       g_string_append (selection_string, str);
       g_free (str);
     }
@@ -361,11 +361,11 @@ paste (GtkWidget *dialog, gint response, GtkWidget *entry)
 
   if (response != GTK_RESPONSE_APPLY)
     {
-      gtk_widget_destroy (dialog);
+      ctk_widget_destroy (dialog);
       return;
     }
 
-  name = gtk_entry_get_text (GTK_ENTRY(entry));
+  name = ctk_entry_get_text (GTK_ENTRY(entry));
   atom = gdk_atom_intern (name, FALSE);
 
   if (atom == GDK_NONE)
@@ -374,14 +374,14 @@ paste (GtkWidget *dialog, gint response, GtkWidget *entry)
       return;
     }
 
-  gtk_selection_convert (selection_widget, GDK_SELECTION_PRIMARY, atom, 
+  ctk_selection_convert (selection_widget, GDK_SELECTION_PRIMARY, atom, 
 			 GDK_CURRENT_TIME);
 }
 
 void
 quit (void)
 {
-  gtk_main_quit ();
+  ctk_main_quit ();
 }
 
 int
@@ -402,30 +402,30 @@ main (int argc, char *argv[])
   };
   static gint ntargets = sizeof(targetlist) / sizeof(targetlist[0]);
   
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
   init_atoms();
 
-  selection_widget = gtk_invisible_new ();
+  selection_widget = ctk_invisible_new ();
 
-  dialog = gtk_dialog_new ();
-  gtk_widget_set_name (dialog, "Test Input");
-  gtk_container_set_border_width (GTK_CONTAINER(dialog), 0);
+  dialog = ctk_dialog_new ();
+  ctk_widget_set_name (dialog, "Test Input");
+  ctk_container_set_border_width (GTK_CONTAINER(dialog), 0);
 
   g_signal_connect (dialog, "destroy",
 		    G_CALLBACK (quit), NULL);
 
-  content_area = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
+  content_area = ctk_dialog_get_content_area (GTK_DIALOG (dialog));
 
-  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 2);
-  gtk_container_set_border_width (GTK_CONTAINER (vbox), 10);
+  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 2);
+  ctk_container_set_border_width (GTK_CONTAINER (vbox), 10);
 
-  gtk_box_pack_start (GTK_BOX (content_area), vbox, TRUE, TRUE, 0);
-  gtk_widget_show (vbox);
+  ctk_box_pack_start (GTK_BOX (content_area), vbox, TRUE, TRUE, 0);
+  ctk_widget_show (vbox);
   
-  selection_button = gtk_toggle_button_new_with_label ("Claim Selection");
-  gtk_container_add (GTK_CONTAINER (vbox), selection_button);
-  gtk_widget_show (selection_button);
+  selection_button = ctk_toggle_button_new_with_label ("Claim Selection");
+  ctk_container_add (GTK_CONTAINER (vbox), selection_button);
+  ctk_widget_show (selection_button);
 
   g_signal_connect (selection_button, "toggled",
 		    G_CALLBACK (selection_toggled), NULL);
@@ -434,44 +434,44 @@ main (int argc, char *argv[])
   g_signal_connect (selection_widget, "selection_received",
 		    G_CALLBACK (selection_received), NULL);
 
-  gtk_selection_add_targets (selection_widget, GDK_SELECTION_PRIMARY,
+  ctk_selection_add_targets (selection_widget, GDK_SELECTION_PRIMARY,
 			     targetlist, ntargets);
 
   g_signal_connect (selection_widget, "selection_get",
 		    G_CALLBACK (selection_get), NULL);
 
-  selection_text = gtk_text_view_new ();
-  scrolled = gtk_scrolled_window_new (NULL, NULL);
-  gtk_container_add (GTK_CONTAINER (scrolled), selection_text);
-  gtk_container_add (GTK_CONTAINER (vbox), scrolled);
-  gtk_widget_show (selection_text);
+  selection_text = ctk_text_view_new ();
+  scrolled = ctk_scrolled_window_new (NULL, NULL);
+  ctk_container_add (GTK_CONTAINER (scrolled), selection_text);
+  ctk_container_add (GTK_CONTAINER (vbox), scrolled);
+  ctk_widget_show (selection_text);
 
-  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
-  gtk_container_add (GTK_CONTAINER (vbox), hbox);
-  gtk_widget_show (hbox);
+  hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
+  ctk_container_add (GTK_CONTAINER (vbox), hbox);
+  ctk_widget_show (hbox);
 
-  label = gtk_label_new ("Target:");
-  gtk_box_pack_start (GTK_BOX(hbox), label, FALSE, FALSE, 0);
-  gtk_widget_show (label);
+  label = ctk_label_new ("Target:");
+  ctk_box_pack_start (GTK_BOX(hbox), label, FALSE, FALSE, 0);
+  ctk_widget_show (label);
 
-  entry = gtk_entry_new ();
-  gtk_box_pack_start (GTK_BOX(hbox), entry, TRUE, TRUE, 0);
-  gtk_widget_show (entry);
+  entry = ctk_entry_new ();
+  ctk_box_pack_start (GTK_BOX(hbox), entry, TRUE, TRUE, 0);
+  ctk_widget_show (entry);
 
   /* .. And create some buttons */
-  gtk_dialog_add_button (GTK_DIALOG (dialog),
+  ctk_dialog_add_button (GTK_DIALOG (dialog),
                          "Paste",
                          GTK_RESPONSE_APPLY);
-  gtk_dialog_add_button (GTK_DIALOG (dialog),
+  ctk_dialog_add_button (GTK_DIALOG (dialog),
                          "Quit",
                          GTK_RESPONSE_CLOSE);
 
   g_signal_connect (dialog, "response",
 		    G_CALLBACK (paste), entry);
 
-  gtk_widget_show (dialog);
+  ctk_widget_show (dialog);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

@@ -244,10 +244,10 @@ msgstr "ලාංජනය"
 #: gtk/gtkaboutdialog.c:487
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "පිළිබදව කොටුව සඳහා සංකේතය. මෙය සැකසුවේ නැත් නම් එහි ප්‍රකෘතිය "
-"gtk_window_get_default_icon_list() වේ"
+"ctk_window_get_default_icon_list() වේ"
 
 #: gtk/gtkaboutdialog.c:502
 msgid "Logo Icon Name"
@@ -2292,7 +2292,7 @@ msgstr ""
 #: gtk/gtkentry.c:888
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 
 #: gtk/gtkentry.c:904
@@ -4342,7 +4342,7 @@ msgstr ""
 
 #: gtk/gtkradioaction.c:119
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
 
@@ -6689,7 +6689,7 @@ msgid "No show all"
 msgstr ""
 
 #: gtk/gtkwidget.c:841
-msgid "Whether gtk_widget_show_all() should not affect this widget"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
 msgstr ""
 
 #: gtk/gtkwidget.c:864

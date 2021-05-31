@@ -8,28 +8,28 @@ new_window (GApplication *app,
   GtkWidget *window, *scrolled, *view, *overlay;
   GtkWidget *header;
 
-  window = gtk_application_window_new (GTK_APPLICATION (app));
-  gtk_application_window_set_show_menubar (GTK_APPLICATION_WINDOW (window), FALSE);
-  gtk_window_set_default_size ((GtkWindow*)window, 640, 480);
-  gtk_window_set_title (GTK_WINDOW (window), "Sunny");
-  gtk_window_set_icon_name (GTK_WINDOW (window), "sunny");
+  window = ctk_application_window_new (GTK_APPLICATION (app));
+  ctk_application_window_set_show_menubar (GTK_APPLICATION_WINDOW (window), FALSE);
+  ctk_window_set_default_size ((GtkWindow*)window, 640, 480);
+  ctk_window_set_title (GTK_WINDOW (window), "Sunny");
+  ctk_window_set_icon_name (GTK_WINDOW (window), "sunny");
 
-  header = gtk_header_bar_new ();
-  gtk_widget_show (header);
-  gtk_header_bar_set_title (GTK_HEADER_BAR (header), "Sunny");
-  gtk_header_bar_set_show_close_button (GTK_HEADER_BAR (header), TRUE);
-  gtk_window_set_titlebar (GTK_WINDOW (window), header);
+  header = ctk_header_bar_new ();
+  ctk_widget_show (header);
+  ctk_header_bar_set_title (GTK_HEADER_BAR (header), "Sunny");
+  ctk_header_bar_set_show_close_button (GTK_HEADER_BAR (header), TRUE);
+  ctk_window_set_titlebar (GTK_WINDOW (window), header);
 
-  overlay = gtk_overlay_new ();
-  gtk_container_add (GTK_CONTAINER (window), overlay);
+  overlay = ctk_overlay_new ();
+  ctk_container_add (GTK_CONTAINER (window), overlay);
 
-  scrolled = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_set_hexpand (scrolled, TRUE);
-  gtk_widget_set_vexpand (scrolled, TRUE);
-  view = gtk_text_view_new ();
+  scrolled = ctk_scrolled_window_new (NULL, NULL);
+  ctk_widget_set_hexpand (scrolled, TRUE);
+  ctk_widget_set_vexpand (scrolled, TRUE);
+  view = ctk_text_view_new ();
 
-  gtk_container_add (GTK_CONTAINER (scrolled), view);
-  gtk_container_add (GTK_CONTAINER (overlay), scrolled);
+  ctk_container_add (GTK_CONTAINER (scrolled), view);
+  ctk_container_add (GTK_CONTAINER (overlay), scrolled);
 
   if (file != NULL)
     {
@@ -40,13 +40,13 @@ new_window (GApplication *app,
         {
           GtkTextBuffer *buffer;
 
-          buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
-          gtk_text_buffer_set_text (buffer, contents, length);
+          buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+          ctk_text_buffer_set_text (buffer, contents, length);
           g_free (contents);
         }
     }
 
-  gtk_widget_show_all (GTK_WIDGET (window));
+  ctk_widget_show_all (GTK_WIDGET (window));
 }
 
 static void
@@ -77,7 +77,7 @@ show_about (GSimpleAction *action,
             GVariant      *parameter,
             gpointer       user_data)
 {
-  gtk_show_about_dialog (NULL,
+  ctk_show_about_dialog (NULL,
                          "program-name", "Sunny",
                          "title", "About Sunny",
                          "logo-icon-name", "sunny",
@@ -96,13 +96,13 @@ quit_app (GSimpleAction *action,
 
   g_print ("Going down...\n");
 
-  list = gtk_application_get_windows (GTK_APPLICATION (g_application_get_default ()));
+  list = ctk_application_get_windows (GTK_APPLICATION (g_application_get_default ()));
   while (list)
     {
       win = list->data;
       next = list->next;
 
-      gtk_widget_destroy (GTK_WIDGET (win));
+      ctk_widget_destroy (GTK_WIDGET (win));
 
       list = next;
     }
@@ -134,10 +134,10 @@ startup (GApplication *application)
   g_action_map_add_action_entries (G_ACTION_MAP (application), app_entries, G_N_ELEMENTS (app_entries), application);
 
   if (g_getenv ("APP_MENU_FALLBACK"))
-    g_object_set (gtk_settings_get_default (), "gtk-shell-shows-app-menu", FALSE, NULL);
+    g_object_set (ctk_settings_get_default (), "gtk-shell-shows-app-menu", FALSE, NULL);
  
-  builder = gtk_builder_new ();
-  gtk_builder_add_from_string (builder,
+  builder = ctk_builder_new ();
+  ctk_builder_add_from_string (builder,
                                "<interface>"
                                "  <menu id='app-menu'>"
                                "    <section>"
@@ -157,7 +157,7 @@ startup (GApplication *application)
                                "    </section>"
                                "  </menu>"
                                "</interface>", -1, NULL);
-  gtk_application_set_app_menu (GTK_APPLICATION (application), G_MENU_MODEL (gtk_builder_get_object (builder, "app-menu")));
+  ctk_application_set_app_menu (GTK_APPLICATION (application), G_MENU_MODEL (ctk_builder_get_object (builder, "app-menu")));
   g_object_unref (builder);
 }
 

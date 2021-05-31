@@ -23,7 +23,7 @@
 #include "gtkstylecontextprivate.h"
 
 cairo_operator_t
-_gtk_css_blend_mode_get_operator (GtkCssBlendMode mode)
+_ctk_css_blend_mode_get_operator (GtkCssBlendMode mode)
 {
   switch (mode)
     {
@@ -63,7 +63,7 @@ _gtk_css_blend_mode_get_operator (GtkCssBlendMode mode)
 }
 
 GtkCssChange
-_gtk_css_change_for_sibling (GtkCssChange match)
+_ctk_css_change_for_sibling (GtkCssChange match)
 {
 #define BASE_STATES ( GTK_CSS_CHANGE_CLASS \
                     | GTK_CSS_CHANGE_NAME \
@@ -88,7 +88,7 @@ _gtk_css_change_for_sibling (GtkCssChange match)
 }
 
 GtkCssChange
-_gtk_css_change_for_child (GtkCssChange match)
+_ctk_css_change_for_child (GtkCssChange match)
 {
 #define BASE_STATES ( GTK_CSS_CHANGE_CLASS \
                     | GTK_CSS_CHANGE_NAME \
@@ -116,7 +116,7 @@ _gtk_css_change_for_child (GtkCssChange match)
 }
 
 void
-gtk_css_change_print (GtkCssChange  change,
+ctk_css_change_print (GtkCssChange  change,
                       GString      *string)
 {
   const struct {
@@ -179,7 +179,7 @@ gtk_css_change_print (GtkCssChange  change,
 }
 
 GtkCssDimension
-gtk_css_unit_get_dimension (GtkCssUnit unit)
+ctk_css_unit_get_dimension (GtkCssUnit unit)
 {
   switch (unit)
     {
@@ -217,11 +217,11 @@ gtk_css_unit_get_dimension (GtkCssUnit unit)
 }
 
 char *
-gtk_css_change_to_string (GtkCssChange change)
+ctk_css_change_to_string (GtkCssChange change)
 {
   GString *string = g_string_new (NULL);
 
-  gtk_css_change_print (change, string);
+  ctk_css_change_print (change, string);
 
   return g_string_free (string, FALSE);
 }

@@ -835,10 +835,10 @@ msgstr "Die waarde"
 
 #: gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"Die waarde wat deur gtk_radio_action_get_current_value gegee word wanneer "
+"Die waarde wat deur ctk_radio_action_get_current_value gegee word wanneer "
 "hierdie aksie die huidige aksie in sy groep is."
 
 #: gtk/deprecated/gtkradioaction.c:139 gtk/gtkradiobutton.c:184
@@ -1333,7 +1333,7 @@ msgstr ""
 #: gtk/gtkaboutdialog.c:546
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 
 #: gtk/gtkaboutdialog.c:560
@@ -3758,7 +3758,7 @@ msgstr "Polsstap"
 #, fuzzy
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "Die fraksie van die totale vordering wat die wipblok beweeg moet word "
 "wanneer dit gepols word"
@@ -10007,9 +10007,9 @@ msgid "No show all"
 msgstr "Glad nie vertoon nie"
 
 #: gtk/gtkwidget.c:1261
-msgid "Whether gtk_widget_show_all() should not affect this widget"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
 msgstr ""
-"Of gtk_widget_show_all() nie 'n uitwerking op hierdie dingesie moet hê nie"
+"Of ctk_widget_show_all() nie 'n uitwerking op hierdie dingesie moet hê nie"
 
 #: gtk/gtkwidget.c:1283
 #, fuzzy

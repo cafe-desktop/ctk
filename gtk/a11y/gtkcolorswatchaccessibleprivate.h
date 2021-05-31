@@ -22,7 +22,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_COLOR_SWATCH_ACCESSIBLE                         (_gtk_color_swatch_accessible_get_type ())
+#define GTK_TYPE_COLOR_SWATCH_ACCESSIBLE                         (_ctk_color_swatch_accessible_get_type ())
 #define GTK_COLOR_SWATCH_ACCESSIBLE(obj)                         (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_COLOR_SWATCH_ACCESSIBLE, GtkColorSwatchAccessible))
 #define GTK_COLOR_SWATCH_ACCESSIBLE_CLASS(klass)                       (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_COLOR_SWATCH_ACCESSIBLE, GtkColorSwatchAccessibleClass))
 #define GTK_IS_COLOR_SWATCH_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_COLOR_SWATCH_ACCESSIBLE))
@@ -45,7 +45,7 @@ struct _GtkColorSwatchAccessibleClass
   GtkWidgetAccessibleClass parent_class;
 };
 
-GType _gtk_color_swatch_accessible_get_type (void);
+GType _ctk_color_swatch_accessible_get_type (void);
 
 G_END_DECLS
 

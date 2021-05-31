@@ -27,19 +27,19 @@ int main (int argc, char *argv[])
   GtkWidget *button;
   GdkDisplay *display;
 
-  gtk_parse_args (&argc, &argv);
+  ctk_parse_args (&argc, &argv);
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  button = gtk_button_new ();
-  gtk_container_add (GTK_CONTAINER (window), button);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  button = ctk_button_new ();
+  ctk_container_add (GTK_CONTAINER (window), button);
 
   display = gdk_display_open (NULL);
 
-  gtk_window_set_screen (GTK_WINDOW (window), gdk_display_get_default_screen (display));
+  ctk_window_set_screen (GTK_WINDOW (window), gdk_display_get_default_screen (display));
 
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

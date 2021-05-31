@@ -40,12 +40,12 @@ static const GtkIMContextInfo *info_list[] = {
 #ifndef INCLUDE_IM_multipress
 #define MODULE_ENTRY(type, function) G_MODULE_EXPORT type im_module_ ## function
 #else
-#define MODULE_ENTRY(type, function) type _gtk_immodule_multipress_ ## function
+#define MODULE_ENTRY(type, function) type _ctk_immodule_multipress_ ## function
 #endif
 
 MODULE_ENTRY (void, init) (GTypeModule *module)
 {
-  gtk_im_context_multipress_register_type(module);
+  ctk_im_context_multipress_register_type(module);
 }
 
 MODULE_ENTRY (void, exit) (void)

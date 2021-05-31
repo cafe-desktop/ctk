@@ -34,7 +34,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_COLOR_SELECTION_DIALOG            (gtk_color_selection_dialog_get_type ())
+#define GTK_TYPE_COLOR_SELECTION_DIALOG            (ctk_color_selection_dialog_get_type ())
 #define GTK_COLOR_SELECTION_DIALOG(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_COLOR_SELECTION_DIALOG, GtkColorSelectionDialog))
 #define GTK_COLOR_SELECTION_DIALOG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_COLOR_SELECTION_DIALOG, GtkColorSelectionDialogClass))
 #define GTK_IS_COLOR_SELECTION_DIALOG(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_COLOR_SELECTION_DIALOG))
@@ -60,20 +60,20 @@ struct _GtkColorSelectionDialogClass
   GtkDialogClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
 /* ColorSelectionDialog */
 GDK_DEPRECATED_IN_3_4
-GType      gtk_color_selection_dialog_get_type            (void) G_GNUC_CONST;
-GDK_DEPRECATED_IN_3_4_FOR(gtk_color_chooser_dialog_new)
-GtkWidget* gtk_color_selection_dialog_new                 (const gchar *title);
+GType      ctk_color_selection_dialog_get_type            (void) G_GNUC_CONST;
+GDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_dialog_new)
+GtkWidget* ctk_color_selection_dialog_new                 (const gchar *title);
 GDK_DEPRECATED_IN_3_4_FOR(GtkColorChooser)
-GtkWidget* gtk_color_selection_dialog_get_color_selection (GtkColorSelectionDialog *colorsel);
+GtkWidget* ctk_color_selection_dialog_get_color_selection (GtkColorSelectionDialog *colorsel);
 
 
 G_END_DECLS

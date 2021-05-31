@@ -75,24 +75,24 @@ enum {
   PROP_OBEY_CHILD
 };
 
-static void gtk_aspect_frame_set_property (GObject         *object,
+static void ctk_aspect_frame_set_property (GObject         *object,
 					   guint            prop_id,
 					   const GValue    *value,
 					   GParamSpec      *pspec);
-static void gtk_aspect_frame_get_property (GObject         *object,
+static void ctk_aspect_frame_get_property (GObject         *object,
 					   guint            prop_id,
 					   GValue          *value,
 					   GParamSpec      *pspec);
-static void gtk_aspect_frame_compute_child_allocation (GtkFrame            *frame,
+static void ctk_aspect_frame_compute_child_allocation (GtkFrame            *frame,
 						       GtkAllocation       *child_allocation);
 
 #define MAX_RATIO 10000.0
 #define MIN_RATIO 0.0001
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkAspectFrame, gtk_aspect_frame, GTK_TYPE_FRAME)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkAspectFrame, ctk_aspect_frame, GTK_TYPE_FRAME)
 
 static void
-gtk_aspect_frame_class_init (GtkAspectFrameClass *class)
+ctk_aspect_frame_class_init (GtkAspectFrameClass *class)
 {
   GObjectClass *gobject_class;
   GtkFrameClass *frame_class;
@@ -100,10 +100,10 @@ gtk_aspect_frame_class_init (GtkAspectFrameClass *class)
   gobject_class = (GObjectClass*) class;
   frame_class = (GtkFrameClass*) class;
   
-  gobject_class->set_property = gtk_aspect_frame_set_property;
-  gobject_class->get_property = gtk_aspect_frame_get_property;
+  gobject_class->set_property = ctk_aspect_frame_set_property;
+  gobject_class->get_property = ctk_aspect_frame_get_property;
 
-  frame_class->compute_child_allocation = gtk_aspect_frame_compute_child_allocation;
+  frame_class->compute_child_allocation = ctk_aspect_frame_compute_child_allocation;
 
   g_object_class_install_property (gobject_class,
                                    PROP_XALIGN,
@@ -134,13 +134,13 @@ gtk_aspect_frame_class_init (GtkAspectFrameClass *class)
                                                          TRUE,
                                                          GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
-  gtk_widget_class_set_css_name (GTK_WIDGET_CLASS (class), "frame");
+  ctk_widget_class_set_css_name (GTK_WIDGET_CLASS (class), "frame");
 }
 
 static void
-gtk_aspect_frame_init (GtkAspectFrame *aspect_frame)
+ctk_aspect_frame_init (GtkAspectFrame *aspect_frame)
 {
-  aspect_frame->priv = gtk_aspect_frame_get_instance_private (aspect_frame);
+  aspect_frame->priv = ctk_aspect_frame_get_instance_private (aspect_frame);
 
   aspect_frame->priv->xalign = 0.5;
   aspect_frame->priv->yalign = 0.5;
@@ -149,7 +149,7 @@ gtk_aspect_frame_init (GtkAspectFrame *aspect_frame)
 }
 
 static void
-gtk_aspect_frame_set_property (GObject         *object,
+ctk_aspect_frame_set_property (GObject         *object,
 			       guint            prop_id,
 			       const GValue    *value,
 			       GParamSpec      *pspec)
@@ -161,28 +161,28 @@ gtk_aspect_frame_set_property (GObject         *object,
     {
       /* g_object_notify is handled by the _frame_set function */
     case PROP_XALIGN:
-      gtk_aspect_frame_set (aspect_frame,
+      ctk_aspect_frame_set (aspect_frame,
 			    g_value_get_float (value),
 			    priv->yalign,
 			    priv->ratio,
 			    priv->obey_child);
       break;
     case PROP_YALIGN:
-      gtk_aspect_frame_set (aspect_frame,
+      ctk_aspect_frame_set (aspect_frame,
 			    priv->xalign,
 			    g_value_get_float (value),
 			    priv->ratio,
 			    priv->obey_child);
       break;
     case PROP_RATIO:
-      gtk_aspect_frame_set (aspect_frame,
+      ctk_aspect_frame_set (aspect_frame,
 			    priv->xalign,
 			    priv->yalign,
 			    g_value_get_float (value),
 			    priv->obey_child);
       break;
     case PROP_OBEY_CHILD:
-      gtk_aspect_frame_set (aspect_frame,
+      ctk_aspect_frame_set (aspect_frame,
 			    priv->xalign,
 			    priv->yalign,
 			    priv->ratio,
@@ -195,7 +195,7 @@ gtk_aspect_frame_set_property (GObject         *object,
 }
 
 static void
-gtk_aspect_frame_get_property (GObject         *object,
+ctk_aspect_frame_get_property (GObject         *object,
 			       guint            prop_id,
 			       GValue          *value,
 			       GParamSpec      *pspec)
@@ -224,7 +224,7 @@ gtk_aspect_frame_get_property (GObject         *object,
 }
 
 /**
- * gtk_aspect_frame_new:
+ * ctk_aspect_frame_new:
  * @label: (allow-none): Label text.
  * @xalign: Horizontal alignment of the child within the allocation of
  *  the #GtkAspectFrame. This ranges from 0.0 (left aligned)
@@ -241,7 +241,7 @@ gtk_aspect_frame_get_property (GObject         *object,
  * Returns: the new #GtkAspectFrame.
  */
 GtkWidget*
-gtk_aspect_frame_new (const gchar *label,
+ctk_aspect_frame_new (const gchar *label,
 		      gfloat       xalign,
 		      gfloat       yalign,
 		      gfloat       ratio,
@@ -259,13 +259,13 @@ gtk_aspect_frame_new (const gchar *label,
   priv->ratio = CLAMP (ratio, MIN_RATIO, MAX_RATIO);
   priv->obey_child = obey_child != FALSE;
 
-  gtk_frame_set_label (GTK_FRAME(aspect_frame), label);
+  ctk_frame_set_label (GTK_FRAME(aspect_frame), label);
 
   return GTK_WIDGET (aspect_frame);
 }
 
 /**
- * gtk_aspect_frame_set:
+ * ctk_aspect_frame_set:
  * @aspect_frame: a #GtkAspectFrame
  * @xalign: Horizontal alignment of the child within the allocation of
  *  the #GtkAspectFrame. This ranges from 0.0 (left aligned)
@@ -280,7 +280,7 @@ gtk_aspect_frame_new (const gchar *label,
  * Set parameters for an existing #GtkAspectFrame.
  */
 void
-gtk_aspect_frame_set (GtkAspectFrame *aspect_frame,
+ctk_aspect_frame_set (GtkAspectFrame *aspect_frame,
 		      gfloat          xalign,
 		      gfloat          yalign,
 		      gfloat          ratio,
@@ -326,12 +326,12 @@ gtk_aspect_frame_set (GtkAspectFrame *aspect_frame,
         }
       g_object_thaw_notify (G_OBJECT (aspect_frame));
 
-      gtk_widget_queue_resize (GTK_WIDGET (aspect_frame));
+      ctk_widget_queue_resize (GTK_WIDGET (aspect_frame));
     }
 }
 
 static void
-gtk_aspect_frame_compute_child_allocation (GtkFrame      *frame,
+ctk_aspect_frame_compute_child_allocation (GtkFrame      *frame,
 					   GtkAllocation *child_allocation)
 {
   GtkAspectFrame *aspect_frame = GTK_ASPECT_FRAME (frame);
@@ -340,8 +340,8 @@ gtk_aspect_frame_compute_child_allocation (GtkFrame      *frame,
   GtkWidget *child;
   gdouble ratio;
 
-  child = gtk_bin_get_child (bin);
-  if (child && gtk_widget_get_visible (child))
+  child = ctk_bin_get_child (bin);
+  if (child && ctk_widget_get_visible (child))
     {
       GtkAllocation full_allocation;
       
@@ -349,7 +349,7 @@ gtk_aspect_frame_compute_child_allocation (GtkFrame      *frame,
 	{
 	  GtkRequisition child_requisition;
 
-          gtk_widget_get_preferred_size (child, &child_requisition, NULL);
+          ctk_widget_get_preferred_size (child, &child_requisition, NULL);
 	  if (child_requisition.height != 0)
 	    {
 	      ratio = ((gdouble) child_requisition.width /
@@ -365,7 +365,7 @@ gtk_aspect_frame_compute_child_allocation (GtkFrame      *frame,
       else
 	ratio = priv->ratio;
 
-      GTK_FRAME_CLASS (gtk_aspect_frame_parent_class)->compute_child_allocation (frame, &full_allocation);
+      GTK_FRAME_CLASS (ctk_aspect_frame_parent_class)->compute_child_allocation (frame, &full_allocation);
       
       if (ratio * full_allocation.height > full_allocation.width)
 	{
@@ -382,5 +382,5 @@ gtk_aspect_frame_compute_child_allocation (GtkFrame      *frame,
       child_allocation->y = full_allocation.y + priv->yalign * (full_allocation.height - child_allocation->height);
     }
   else
-    GTK_FRAME_CLASS (gtk_aspect_frame_parent_class)->compute_child_allocation (frame, child_allocation);
+    GTK_FRAME_CLASS (ctk_aspect_frame_parent_class)->compute_child_allocation (frame, child_allocation);
 }

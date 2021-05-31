@@ -29,7 +29,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_APPLICATION            (gtk_application_get_type ())
+#define GTK_TYPE_APPLICATION            (ctk_application_get_type ())
 #define GTK_APPLICATION(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_APPLICATION, GtkApplication))
 #define GTK_APPLICATION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_APPLICATION, GtkApplicationClass))
 #define GTK_IS_APPLICATION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_APPLICATION))
@@ -52,10 +52,10 @@ struct _GtkApplication
  * GtkApplicationClass:
  * @parent_class: The parent class.
  * @window_added: Signal emitted when a #GtkWindow is added to
- *    application through gtk_application_add_window().
+ *    application through ctk_application_add_window().
  * @window_removed: Signal emitted when a #GtkWindow is removed from
  *    application, either as a side-effect of being destroyed or
- *    explicitly through gtk_application_remove_window().
+ *    explicitly through ctk_application_remove_window().
  */
 struct _GtkApplicationClass
 {
@@ -73,42 +73,42 @@ struct _GtkApplicationClass
 };
 
 GDK_AVAILABLE_IN_ALL
-GType            gtk_application_get_type      (void) G_GNUC_CONST;
+GType            ctk_application_get_type      (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkApplication * gtk_application_new           (const gchar       *application_id,
+GtkApplication * ctk_application_new           (const gchar       *application_id,
                                                 GApplicationFlags  flags);
 
 GDK_AVAILABLE_IN_ALL
-void             gtk_application_add_window    (GtkApplication    *application,
+void             ctk_application_add_window    (GtkApplication    *application,
                                                 GtkWindow         *window);
 
 GDK_AVAILABLE_IN_ALL
-void             gtk_application_remove_window (GtkApplication    *application,
+void             ctk_application_remove_window (GtkApplication    *application,
                                                 GtkWindow         *window);
 GDK_AVAILABLE_IN_ALL
-GList *          gtk_application_get_windows   (GtkApplication    *application);
+GList *          ctk_application_get_windows   (GtkApplication    *application);
 
 GDK_AVAILABLE_IN_3_4
-GMenuModel *     gtk_application_get_app_menu  (GtkApplication    *application);
+GMenuModel *     ctk_application_get_app_menu  (GtkApplication    *application);
 GDK_AVAILABLE_IN_3_4
-void             gtk_application_set_app_menu  (GtkApplication    *application,
+void             ctk_application_set_app_menu  (GtkApplication    *application,
                                                 GMenuModel        *app_menu);
 
 GDK_AVAILABLE_IN_3_4
-GMenuModel *     gtk_application_get_menubar   (GtkApplication    *application);
+GMenuModel *     ctk_application_get_menubar   (GtkApplication    *application);
 GDK_AVAILABLE_IN_3_4
-void             gtk_application_set_menubar   (GtkApplication    *application,
+void             ctk_application_set_menubar   (GtkApplication    *application,
                                                 GMenuModel        *menubar);
 
-GDK_DEPRECATED_IN_3_14_FOR(gtk_application_set_accels_for_action)
-void             gtk_application_add_accelerator    (GtkApplication  *application,
+GDK_DEPRECATED_IN_3_14_FOR(ctk_application_set_accels_for_action)
+void             ctk_application_add_accelerator    (GtkApplication  *application,
                                                      const gchar     *accelerator,
                                                      const gchar     *action_name,
                                                      GVariant        *parameter);
 
-GDK_DEPRECATED_IN_3_14_FOR(gtk_application_set_accels_for_action)
-void             gtk_application_remove_accelerator (GtkApplication *application,
+GDK_DEPRECATED_IN_3_14_FOR(ctk_application_set_accels_for_action)
+void             ctk_application_remove_accelerator (GtkApplication *application,
                                                      const gchar    *action_name,
                                                      GVariant       *parameter);
 
@@ -121,45 +121,45 @@ typedef enum
 } GtkApplicationInhibitFlags;
 
 GDK_AVAILABLE_IN_3_4
-guint            gtk_application_inhibit            (GtkApplication             *application,
+guint            ctk_application_inhibit            (GtkApplication             *application,
                                                      GtkWindow                  *window,
                                                      GtkApplicationInhibitFlags  flags,
                                                      const gchar                *reason);
 GDK_AVAILABLE_IN_3_4
-void             gtk_application_uninhibit          (GtkApplication             *application,
+void             ctk_application_uninhibit          (GtkApplication             *application,
                                                      guint                       cookie);
 GDK_AVAILABLE_IN_3_4
-gboolean         gtk_application_is_inhibited       (GtkApplication             *application,
+gboolean         ctk_application_is_inhibited       (GtkApplication             *application,
                                                      GtkApplicationInhibitFlags  flags);
 
 GDK_AVAILABLE_IN_3_6
-GtkWindow *      gtk_application_get_window_by_id   (GtkApplication             *application,
+GtkWindow *      ctk_application_get_window_by_id   (GtkApplication             *application,
                                                      guint                       id);
 
 GDK_AVAILABLE_IN_3_6
-GtkWindow *      gtk_application_get_active_window  (GtkApplication             *application);
+GtkWindow *      ctk_application_get_active_window  (GtkApplication             *application);
 
 GDK_AVAILABLE_IN_3_12
-gchar **         gtk_application_list_action_descriptions        (GtkApplication       *application);
+gchar **         ctk_application_list_action_descriptions        (GtkApplication       *application);
 
 GDK_AVAILABLE_IN_3_12
-gchar **         gtk_application_get_accels_for_action           (GtkApplication       *application,
+gchar **         ctk_application_get_accels_for_action           (GtkApplication       *application,
                                                                   const gchar          *detailed_action_name);
 GDK_AVAILABLE_IN_3_14
-gchar **         gtk_application_get_actions_for_accel           (GtkApplication       *application,
+gchar **         ctk_application_get_actions_for_accel           (GtkApplication       *application,
                                                                   const gchar          *accel);
 
 
 GDK_AVAILABLE_IN_3_12
-void             gtk_application_set_accels_for_action           (GtkApplication       *application,
+void             ctk_application_set_accels_for_action           (GtkApplication       *application,
                                                                   const gchar          *detailed_action_name,
                                                                   const gchar * const  *accels);
 
 GDK_AVAILABLE_IN_3_14
-gboolean         gtk_application_prefers_app_menu                (GtkApplication       *application);
+gboolean         ctk_application_prefers_app_menu                (GtkApplication       *application);
 
 GDK_AVAILABLE_IN_3_14
-GMenu *          gtk_application_get_menu_by_id                  (GtkApplication       *application,
+GMenu *          ctk_application_get_menu_by_id                  (GtkApplication       *application,
                                                                   const gchar          *id);
 
 G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkApplication, g_object_unref)

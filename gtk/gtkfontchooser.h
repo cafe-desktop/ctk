@@ -33,10 +33,10 @@ G_BEGIN_DECLS
  * GtkFontFilterFunc:
  * @family: a #PangoFontFamily
  * @face: a #PangoFontFace belonging to @family
- * @data: (closure): user data passed to gtk_font_chooser_set_filter_func()
+ * @data: (closure): user data passed to ctk_font_chooser_set_filter_func()
  *
  * The type of function that is used for deciding what fonts get
- * shown in a #GtkFontChooser. See gtk_font_chooser_set_filter_func().
+ * shown in a #GtkFontChooser. See ctk_font_chooser_set_filter_func().
  *
  * Returns: %TRUE if the font should be displayed
  */
@@ -66,7 +66,7 @@ typedef enum {
   GTK_FONT_CHOOSER_LEVEL_FEATURES   = 1 << 3
 } GtkFontChooserLevel;
 
-#define GTK_TYPE_FONT_CHOOSER			(gtk_font_chooser_get_type ())
+#define GTK_TYPE_FONT_CHOOSER			(ctk_font_chooser_get_type ())
 #define GTK_FONT_CHOOSER(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_FONT_CHOOSER, GtkFontChooser))
 #define GTK_IS_FONT_CHOOSER(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_FONT_CHOOSER))
 #define GTK_FONT_CHOOSER_GET_IFACE(inst)	(G_TYPE_INSTANCE_GET_INTERFACE ((inst), GTK_TYPE_FONT_CHOOSER, GtkFontChooserIface))
@@ -102,61 +102,61 @@ struct _GtkFontChooserIface
 };
 
 GDK_AVAILABLE_IN_3_2
-GType            gtk_font_chooser_get_type                 (void) G_GNUC_CONST;
+GType            ctk_font_chooser_get_type                 (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_2
-PangoFontFamily *gtk_font_chooser_get_font_family          (GtkFontChooser   *fontchooser);
+PangoFontFamily *ctk_font_chooser_get_font_family          (GtkFontChooser   *fontchooser);
 GDK_AVAILABLE_IN_3_2
-PangoFontFace   *gtk_font_chooser_get_font_face            (GtkFontChooser   *fontchooser);
+PangoFontFace   *ctk_font_chooser_get_font_face            (GtkFontChooser   *fontchooser);
 GDK_AVAILABLE_IN_3_2
-gint             gtk_font_chooser_get_font_size            (GtkFontChooser   *fontchooser);
+gint             ctk_font_chooser_get_font_size            (GtkFontChooser   *fontchooser);
 
 GDK_AVAILABLE_IN_3_2
 PangoFontDescription *
-                 gtk_font_chooser_get_font_desc            (GtkFontChooser             *fontchooser);
+                 ctk_font_chooser_get_font_desc            (GtkFontChooser             *fontchooser);
 GDK_AVAILABLE_IN_3_2
-void             gtk_font_chooser_set_font_desc            (GtkFontChooser             *fontchooser,
+void             ctk_font_chooser_set_font_desc            (GtkFontChooser             *fontchooser,
                                                             const PangoFontDescription *font_desc);
 
 GDK_AVAILABLE_IN_3_2
-gchar*           gtk_font_chooser_get_font                 (GtkFontChooser   *fontchooser);
+gchar*           ctk_font_chooser_get_font                 (GtkFontChooser   *fontchooser);
 
 GDK_AVAILABLE_IN_3_2
-void             gtk_font_chooser_set_font                 (GtkFontChooser   *fontchooser,
+void             ctk_font_chooser_set_font                 (GtkFontChooser   *fontchooser,
                                                             const gchar      *fontname);
 GDK_AVAILABLE_IN_3_2
-gchar*           gtk_font_chooser_get_preview_text         (GtkFontChooser   *fontchooser);
+gchar*           ctk_font_chooser_get_preview_text         (GtkFontChooser   *fontchooser);
 GDK_AVAILABLE_IN_3_2
-void             gtk_font_chooser_set_preview_text         (GtkFontChooser   *fontchooser,
+void             ctk_font_chooser_set_preview_text         (GtkFontChooser   *fontchooser,
                                                             const gchar      *text);
 GDK_AVAILABLE_IN_3_2
-gboolean         gtk_font_chooser_get_show_preview_entry   (GtkFontChooser   *fontchooser);
+gboolean         ctk_font_chooser_get_show_preview_entry   (GtkFontChooser   *fontchooser);
 GDK_AVAILABLE_IN_3_2
-void             gtk_font_chooser_set_show_preview_entry   (GtkFontChooser   *fontchooser,
+void             ctk_font_chooser_set_show_preview_entry   (GtkFontChooser   *fontchooser,
                                                             gboolean          show_preview_entry);
 GDK_AVAILABLE_IN_3_2
-void             gtk_font_chooser_set_filter_func          (GtkFontChooser   *fontchooser,
+void             ctk_font_chooser_set_filter_func          (GtkFontChooser   *fontchooser,
                                                             GtkFontFilterFunc filter,
                                                             gpointer          user_data,
                                                             GDestroyNotify    destroy);
 GDK_AVAILABLE_IN_3_18
-void             gtk_font_chooser_set_font_map             (GtkFontChooser   *fontchooser,
+void             ctk_font_chooser_set_font_map             (GtkFontChooser   *fontchooser,
                                                             PangoFontMap     *fontmap);
 GDK_AVAILABLE_IN_3_18
-PangoFontMap *   gtk_font_chooser_get_font_map             (GtkFontChooser   *fontchooser);
+PangoFontMap *   ctk_font_chooser_get_font_map             (GtkFontChooser   *fontchooser);
 
 GDK_AVAILABLE_IN_3_24
-void             gtk_font_chooser_set_level                (GtkFontChooser   *fontchooser,
+void             ctk_font_chooser_set_level                (GtkFontChooser   *fontchooser,
                                                             GtkFontChooserLevel level);
 GDK_AVAILABLE_IN_3_24
 GtkFontChooserLevel
-                 gtk_font_chooser_get_level                (GtkFontChooser   *fontchooser);
+                 ctk_font_chooser_get_level                (GtkFontChooser   *fontchooser);
 GDK_AVAILABLE_IN_3_24
-char *           gtk_font_chooser_get_font_features        (GtkFontChooser   *fontchooser);
+char *           ctk_font_chooser_get_font_features        (GtkFontChooser   *fontchooser);
 GDK_AVAILABLE_IN_3_24
-char *           gtk_font_chooser_get_language             (GtkFontChooser   *fontchooser);
+char *           ctk_font_chooser_get_language             (GtkFontChooser   *fontchooser);
 GDK_AVAILABLE_IN_3_24
-void             gtk_font_chooser_set_language             (GtkFontChooser   *fontchooser,
+void             ctk_font_chooser_set_language             (GtkFontChooser   *fontchooser,
                                                             const char       *language);
 
 G_END_DECLS

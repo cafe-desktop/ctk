@@ -27,7 +27,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_LIST_BOX_ROW_ACCESSIBLE               (gtk_list_box_row_accessible_get_type ())
+#define GTK_TYPE_LIST_BOX_ROW_ACCESSIBLE               (ctk_list_box_row_accessible_get_type ())
 #define GTK_LIST_BOX_ROW_ACCESSIBLE(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_LIST_BOX_ROW_ACCESSIBLE, GtkListBoxRowAccessible))
 #define GTK_LIST_BOX_ROW_ACCESSIBLE_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_LIST_BOX_ROW_ACCESSIBLE, GtkListBoxRowAccessibleClass))
 #define GTK_IS_LIST_BOX_ROW_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_LIST_BOX_ROW_ACCESSIBLE))
@@ -48,7 +48,7 @@ struct _GtkListBoxRowAccessibleClass
 };
 
 GDK_AVAILABLE_IN_3_10
-GType gtk_list_box_row_accessible_get_type (void);
+GType ctk_list_box_row_accessible_get_type (void);
 
 G_END_DECLS
 

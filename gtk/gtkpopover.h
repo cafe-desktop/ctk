@@ -26,7 +26,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_POPOVER           (gtk_popover_get_type ())
+#define GTK_TYPE_POPOVER           (ctk_popover_get_type ())
 #define GTK_POPOVER(o)             (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_POPOVER, GtkPopover))
 #define GTK_POPOVER_CLASS(c)       (G_TYPE_CHECK_CLASS_CAST ((c), GTK_TYPE_POPOVER, GtkPopoverClass))
 #define GTK_IS_POPOVER(o)          (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_POPOVER))
@@ -59,68 +59,68 @@ struct _GtkPopoverClass
 };
 
 GDK_AVAILABLE_IN_3_12
-GType           gtk_popover_get_type        (void) G_GNUC_CONST;
+GType           ctk_popover_get_type        (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_12
-GtkWidget *     gtk_popover_new             (GtkWidget             *relative_to);
+GtkWidget *     ctk_popover_new             (GtkWidget             *relative_to);
 
 GDK_AVAILABLE_IN_3_12
-GtkWidget *     gtk_popover_new_from_model  (GtkWidget             *relative_to,
+GtkWidget *     ctk_popover_new_from_model  (GtkWidget             *relative_to,
                                              GMenuModel            *model);
 
 GDK_AVAILABLE_IN_3_12
-void            gtk_popover_set_relative_to (GtkPopover            *popover,
+void            ctk_popover_set_relative_to (GtkPopover            *popover,
                                              GtkWidget             *relative_to);
 GDK_AVAILABLE_IN_3_12
-GtkWidget *     gtk_popover_get_relative_to (GtkPopover            *popover);
+GtkWidget *     ctk_popover_get_relative_to (GtkPopover            *popover);
 
 GDK_AVAILABLE_IN_3_12
-void            gtk_popover_set_pointing_to (GtkPopover            *popover,
+void            ctk_popover_set_pointing_to (GtkPopover            *popover,
                                              const GdkRectangle    *rect);
 GDK_AVAILABLE_IN_3_12
-gboolean        gtk_popover_get_pointing_to (GtkPopover            *popover,
+gboolean        ctk_popover_get_pointing_to (GtkPopover            *popover,
                                              GdkRectangle          *rect);
 GDK_AVAILABLE_IN_3_12
-void            gtk_popover_set_position    (GtkPopover            *popover,
+void            ctk_popover_set_position    (GtkPopover            *popover,
                                              GtkPositionType        position);
 GDK_AVAILABLE_IN_3_12
-GtkPositionType gtk_popover_get_position    (GtkPopover            *popover);
+GtkPositionType ctk_popover_get_position    (GtkPopover            *popover);
 
 GDK_AVAILABLE_IN_3_12
-void            gtk_popover_set_modal       (GtkPopover            *popover,
+void            ctk_popover_set_modal       (GtkPopover            *popover,
                                              gboolean               modal);
 GDK_AVAILABLE_IN_3_12
-gboolean        gtk_popover_get_modal       (GtkPopover            *popover);
+gboolean        ctk_popover_get_modal       (GtkPopover            *popover);
 
 GDK_AVAILABLE_IN_3_12
-void            gtk_popover_bind_model      (GtkPopover            *popover,
+void            ctk_popover_bind_model      (GtkPopover            *popover,
                                              GMenuModel            *model,
                                              const gchar           *action_namespace);
 
 GDK_DEPRECATED_IN_3_22
-void            gtk_popover_set_transitions_enabled (GtkPopover *popover,
+void            ctk_popover_set_transitions_enabled (GtkPopover *popover,
                                                      gboolean    transitions_enabled);
 GDK_DEPRECATED_IN_3_22
-gboolean        gtk_popover_get_transitions_enabled (GtkPopover *popover);
+gboolean        ctk_popover_get_transitions_enabled (GtkPopover *popover);
 
 GDK_AVAILABLE_IN_3_18
-void            gtk_popover_set_default_widget (GtkPopover *popover,
+void            ctk_popover_set_default_widget (GtkPopover *popover,
                                                 GtkWidget  *widget);
 GDK_AVAILABLE_IN_3_18
-GtkWidget *     gtk_popover_get_default_widget (GtkPopover *popover);
+GtkWidget *     ctk_popover_get_default_widget (GtkPopover *popover);
 
 GDK_AVAILABLE_IN_3_20
-void                 gtk_popover_set_constrain_to (GtkPopover           *popover,
+void                 ctk_popover_set_constrain_to (GtkPopover           *popover,
                                                    GtkPopoverConstraint  constraint);
 
 GDK_AVAILABLE_IN_3_20
-GtkPopoverConstraint gtk_popover_get_constrain_to (GtkPopover           *popover);
+GtkPopoverConstraint ctk_popover_get_constrain_to (GtkPopover           *popover);
 
 GDK_AVAILABLE_IN_3_22
-void                 gtk_popover_popup            (GtkPopover *popover);
+void                 ctk_popover_popup            (GtkPopover *popover);
 
 GDK_AVAILABLE_IN_3_22
-void                 gtk_popover_popdown          (GtkPopover *popover);
+void                 ctk_popover_popdown          (GtkPopover *popover);
 
 
 G_END_DECLS

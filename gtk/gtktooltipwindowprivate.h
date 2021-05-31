@@ -31,28 +31,28 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_TOOLTIP_WINDOW (gtk_tooltip_window_get_type ())
+#define GTK_TYPE_TOOLTIP_WINDOW (ctk_tooltip_window_get_type ())
 
-G_DECLARE_FINAL_TYPE (GtkTooltipWindow, gtk_tooltip_window, GTK, TOOLTIP_WINDOW, GtkWindow)
+G_DECLARE_FINAL_TYPE (GtkTooltipWindow, ctk_tooltip_window, GTK, TOOLTIP_WINDOW, GtkWindow)
 
-GtkWidget *     gtk_tooltip_window_new                          (void);
+GtkWidget *     ctk_tooltip_window_new                          (void);
 
-void            gtk_tooltip_window_set_label_markup             (GtkTooltipWindow *window,
+void            ctk_tooltip_window_set_label_markup             (GtkTooltipWindow *window,
                                                                  const char       *markup);
-void            gtk_tooltip_window_set_label_text               (GtkTooltipWindow *window,
+void            ctk_tooltip_window_set_label_text               (GtkTooltipWindow *window,
                                                                  const char       *text);
-void            gtk_tooltip_window_set_image_icon               (GtkTooltipWindow *window,
+void            ctk_tooltip_window_set_image_icon               (GtkTooltipWindow *window,
                                                                  GdkPixbuf        *pixbuf);
-void            gtk_tooltip_window_set_image_icon_from_stock    (GtkTooltipWindow *window,
+void            ctk_tooltip_window_set_image_icon_from_stock    (GtkTooltipWindow *window,
                                                                  const char       *stock_id,
                                                                  GtkIconSize       icon_size);
-void            gtk_tooltip_window_set_image_icon_from_name     (GtkTooltipWindow *window,
+void            ctk_tooltip_window_set_image_icon_from_name     (GtkTooltipWindow *window,
                                                                  const char       *icon_name,
                                                                  GtkIconSize       icon_size);
-void            gtk_tooltip_window_set_image_icon_from_gicon    (GtkTooltipWindow *window,
+void            ctk_tooltip_window_set_image_icon_from_gicon    (GtkTooltipWindow *window,
                                                                  GIcon            *gicon,
                                                                  GtkIconSize       icon_size);
-void            gtk_tooltip_window_set_custom_widget            (GtkTooltipWindow *window,
+void            ctk_tooltip_window_set_custom_widget            (GtkTooltipWindow *window,
                                                                  GtkWidget        *custom_widget);
 
 G_END_DECLS

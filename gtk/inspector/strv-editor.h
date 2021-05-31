@@ -22,7 +22,7 @@
 #include <gtk/gtkbox.h>
 
 
-#define GTK_TYPE_INSPECTOR_STRV_EDITOR            (gtk_inspector_strv_editor_get_type())
+#define GTK_TYPE_INSPECTOR_STRV_EDITOR            (ctk_inspector_strv_editor_get_type())
 #define GTK_INSPECTOR_STRV_EDITOR(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_INSPECTOR_STRV_EDITOR, GtkInspectorStrvEditor))
 #define GTK_INSPECTOR_STRV_EDITOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GTK_TYPE_INSPECTOR_STRV_EDITOR, GtkInspectorStrvEditorClass))
 #define GTK_INSPECTOR_IS_STRV_EDITOR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), GTK_TYPE_INSPECTOR_STRV_EDITOR))
@@ -52,12 +52,12 @@ typedef struct
 G_BEGIN_DECLS
 
 
-GType gtk_inspector_strv_editor_get_type (void);
+GType ctk_inspector_strv_editor_get_type (void);
 
-void    gtk_inspector_strv_editor_set_strv (GtkInspectorStrvEditor  *editor,
+void    ctk_inspector_strv_editor_set_strv (GtkInspectorStrvEditor  *editor,
                                             gchar                  **strv);
 
-gchar **gtk_inspector_strv_editor_get_strv (GtkInspectorStrvEditor  *editor);
+gchar **ctk_inspector_strv_editor_get_strv (GtkInspectorStrvEditor  *editor);
 
 G_END_DECLS
 

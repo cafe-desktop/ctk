@@ -22,7 +22,7 @@
 #include <gtk/gtkbox.h>
 
 
-#define GTK_TYPE_INSPECTOR_PROP_EDITOR            (gtk_inspector_prop_editor_get_type())
+#define GTK_TYPE_INSPECTOR_PROP_EDITOR            (ctk_inspector_prop_editor_get_type())
 #define GTK_INSPECTOR_PROP_EDITOR(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_INSPECTOR_PROP_EDITOR, GtkInspectorPropEditor))
 #define GTK_INSPECTOR_PROP_EDITOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GTK_TYPE_INSPECTOR_PROP_EDITOR, GtkInspectorPropEditorClass))
 #define GTK_INSPECTOR_IS_PROP_EDITOR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), GTK_TYPE_INSPECTOR_PROP_EDITOR))
@@ -51,12 +51,12 @@ typedef struct
 G_BEGIN_DECLS
 
 
-GType      gtk_inspector_prop_editor_get_type (void);
-GtkWidget *gtk_inspector_prop_editor_new      (GObject     *object,
+GType      ctk_inspector_prop_editor_get_type (void);
+GtkWidget *ctk_inspector_prop_editor_new      (GObject     *object,
                                                const gchar *name,
                                                gboolean     is_child_property);
 
-gboolean   gtk_inspector_prop_editor_should_expand (GtkInspectorPropEditor *editor);
+gboolean   ctk_inspector_prop_editor_should_expand (GtkInspectorPropEditor *editor);
 
 G_END_DECLS
 

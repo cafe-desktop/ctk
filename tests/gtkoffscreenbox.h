@@ -8,7 +8,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_OFFSCREEN_BOX              (gtk_offscreen_box_get_type ())
+#define GTK_TYPE_OFFSCREEN_BOX              (ctk_offscreen_box_get_type ())
 #define GTK_OFFSCREEN_BOX(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_OFFSCREEN_BOX, GtkOffscreenBox))
 #define GTK_OFFSCREEN_BOX_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_OFFSCREEN_BOX, GtkOffscreenBoxClass))
 #define GTK_IS_OFFSCREEN_BOX(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_OFFSCREEN_BOX))
@@ -36,13 +36,13 @@ struct _GtkOffscreenBoxClass
   GtkBinClass parent_class;
 };
 
-GType	   gtk_offscreen_box_get_type           (void) G_GNUC_CONST;
-GtkWidget* gtk_offscreen_box_new       (void);
-void       gtk_offscreen_box_add1      (GtkOffscreenBox *offscreen,
+GType	   ctk_offscreen_box_get_type           (void) G_GNUC_CONST;
+GtkWidget* ctk_offscreen_box_new       (void);
+void       ctk_offscreen_box_add1      (GtkOffscreenBox *offscreen,
 					GtkWidget       *child);
-void       gtk_offscreen_box_add2      (GtkOffscreenBox *offscreen,
+void       ctk_offscreen_box_add2      (GtkOffscreenBox *offscreen,
 					GtkWidget       *child);
-void       gtk_offscreen_box_set_angle (GtkOffscreenBox *offscreen,
+void       ctk_offscreen_box_set_angle (GtkOffscreenBox *offscreen,
 					double           angle);
 
 

@@ -28,7 +28,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_STYLE           (gtk_css_style_get_type ())
+#define GTK_TYPE_CSS_STYLE           (ctk_css_style_get_type ())
 #define GTK_CSS_STYLE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_STYLE, GtkCssStyle))
 #define GTK_CSS_STYLE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_STYLE, GtkCssStyleClass))
 #define GTK_IS_CSS_STYLE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_STYLE))
@@ -58,25 +58,25 @@ struct _GtkCssStyleClass
   gboolean              (* is_static)                           (GtkCssStyle            *style);
 };
 
-GType                   gtk_css_style_get_type                  (void) G_GNUC_CONST;
+GType                   ctk_css_style_get_type                  (void) G_GNUC_CONST;
 
-GtkCssValue *           gtk_css_style_get_value                 (GtkCssStyle            *style,
+GtkCssValue *           ctk_css_style_get_value                 (GtkCssStyle            *style,
                                                                  guint                   id);
-GtkCssSection *         gtk_css_style_get_section               (GtkCssStyle            *style,
+GtkCssSection *         ctk_css_style_get_section               (GtkCssStyle            *style,
                                                                  guint                   id);
-GtkBitmask *            gtk_css_style_add_difference            (GtkBitmask             *accumulated,
+GtkBitmask *            ctk_css_style_add_difference            (GtkBitmask             *accumulated,
                                                                  GtkCssStyle            *style,
                                                                  GtkCssStyle            *other);
-gboolean                gtk_css_style_is_static                 (GtkCssStyle            *style);
+gboolean                ctk_css_style_is_static                 (GtkCssStyle            *style);
 
-char *                  gtk_css_style_to_string                 (GtkCssStyle            *style);
-gboolean                gtk_css_style_print                     (GtkCssStyle            *style,
+char *                  ctk_css_style_to_string                 (GtkCssStyle            *style);
+gboolean                ctk_css_style_print                     (GtkCssStyle            *style,
                                                                  GString                *string,
                                                                  guint                   indent,
                                                                  gboolean                skip_initial);
-PangoAttrList *         gtk_css_style_get_pango_attributes      (GtkCssStyle            *style);
+PangoAttrList *         ctk_css_style_get_pango_attributes      (GtkCssStyle            *style);
 
-PangoFontDescription *  gtk_css_style_get_pango_font            (GtkCssStyle            *style);
+PangoFontDescription *  ctk_css_style_get_pango_font            (GtkCssStyle            *style);
 
 G_END_DECLS
 

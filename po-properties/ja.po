@@ -791,11 +791,11 @@ msgstr "値"
 
 #: gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
 "このアクションがそのグループの現在のアクションのときに、"
-"gtk_radio_action_get_current_value() によって返される値です。"
+"ctk_radio_action_get_current_value() によって返される値です。"
 
 #: gtk/deprecated/gtkradioaction.c:139 gtk/gtkradiobutton.c:184
 #: gtk/gtkradiomenuitem.c:424 gtk/gtkradiotoolbutton.c:83
@@ -1260,10 +1260,10 @@ msgstr "ロゴ"
 #: gtk/gtkaboutdialog.c:546
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "情報ダイアログのロゴです (これがセットされていない場合、"
-"gtk_window_get_default_icon_list() の結果をデフォルトにします)"
+"ctk_window_get_default_icon_list() の結果をデフォルトにします)"
 
 #: gtk/gtkaboutdialog.c:560
 msgid "Logo Icon Name"
@@ -3607,9 +3607,9 @@ msgstr "進捗状況を表すブロックの幅"
 #: gtk/gtkentry.c:1094
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
-"gtk_entry_progress_pulse() 関数を呼び出す度に移動する進捗状況を表すブロックの"
+"ctk_entry_progress_pulse() 関数を呼び出す度に移動する進捗状況を表すブロックの"
 "幅の合計です"
 
 #: gtk/gtkentry.c:1110
@@ -9708,8 +9708,8 @@ msgid "No show all"
 msgstr "何も表示しない"
 
 #: gtk/gtkwidget.c:1264
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "gtk_widget_show_all() がこのウィジェットに影響すべきでないかどうか"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "ctk_widget_show_all() がこのウィジェットに影響すべきでないかどうか"
 
 #: gtk/gtkwidget.c:1286
 msgid "Whether this widget has a tooltip"
@@ -10753,8 +10753,8 @@ msgstr "色選択ダイアログのタイトル"
 
 #~ msgid ""
 #~ "The maximum number of items to be returned by "
-#~ "gtk_recent_manager_get_items()"
-#~ msgstr "gtk_recent_manager_get_items() が返すアイテムの総数です"
+#~ "ctk_recent_manager_get_items()"
+#~ msgstr "ctk_recent_manager_get_items() が返すアイテムの総数です"
 
 #~ msgid "The adjustment that holds the value of the spinbutton"
 #~ msgstr "スピンボタンの値を格納するアジャストメント"

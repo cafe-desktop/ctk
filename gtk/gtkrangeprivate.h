@@ -33,26 +33,26 @@
 
 G_BEGIN_DECLS
 
-gdouble            _gtk_range_get_wheel_delta              (GtkRange       *range,
+gdouble            _ctk_range_get_wheel_delta              (GtkRange       *range,
                                                             GdkEventScroll *event);
-void               _gtk_range_set_has_origin               (GtkRange      *range,
+void               _ctk_range_set_has_origin               (GtkRange      *range,
                                                             gboolean       has_origin);
-gboolean           _gtk_range_get_has_origin               (GtkRange      *range);
-void               _gtk_range_set_stop_values              (GtkRange      *range,
+gboolean           _ctk_range_get_has_origin               (GtkRange      *range);
+void               _ctk_range_set_stop_values              (GtkRange      *range,
                                                             gdouble       *values,
                                                             gint           n_values);
-gint               _gtk_range_get_stop_positions           (GtkRange      *range,
+gint               _ctk_range_get_stop_positions           (GtkRange      *range,
                                                             gint         **values);
-void               _gtk_range_set_steppers                 (GtkRange      *range,
+void               _ctk_range_set_steppers                 (GtkRange      *range,
                                                             gboolean       has_a,
                                                             gboolean       has_b,
                                                             gboolean       has_c,
                                                             gboolean       has_d);
 
-void               gtk_range_set_slider_use_min_size       (GtkRange      *range,
+void               ctk_range_set_slider_use_min_size       (GtkRange      *range,
                                                             gboolean       use_min_size);
-GtkCssGadget      *gtk_range_get_slider_gadget             (GtkRange *range);
-GtkCssGadget      *gtk_range_get_gadget                    (GtkRange *range);
+GtkCssGadget      *ctk_range_get_slider_gadget             (GtkRange *range);
+GtkCssGadget      *ctk_range_get_gadget                    (GtkRange *range);
 
 G_END_DECLS
 

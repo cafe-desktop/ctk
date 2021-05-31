@@ -34,7 +34,7 @@
 
 G_BEGIN_DECLS
 
-gchar *         _gtk_toolbar_elide_underscores      (const gchar         *original);
+gchar *         _ctk_toolbar_elide_underscores      (const gchar         *original);
 
 G_END_DECLS
 

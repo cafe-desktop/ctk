@@ -20,7 +20,7 @@
 
 #include "gtkscrolledwindow.h"
 
-#define GTK_TYPE_INSPECTOR_MISC_INFO            (gtk_inspector_misc_info_get_type())
+#define GTK_TYPE_INSPECTOR_MISC_INFO            (ctk_inspector_misc_info_get_type())
 #define GTK_INSPECTOR_MISC_INFO(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_INSPECTOR_MISC_INFO, GtkInspectorMiscInfo))
 #define GTK_INSPECTOR_MISC_INFO_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GTK_TYPE_INSPECTOR_MISC_INFO, GtkInspectorMiscInfoClass))
 #define GTK_INSPECTOR_IS_MISC_INFO(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), GTK_TYPE_INSPECTOR_MISC_INFO))
@@ -43,8 +43,8 @@ typedef struct _GtkInspectorMiscInfoClass
 
 G_BEGIN_DECLS
 
-GType gtk_inspector_misc_info_get_type   (void);
-void  gtk_inspector_misc_info_set_object (GtkInspectorMiscInfo *sl,
+GType ctk_inspector_misc_info_get_type   (void);
+void  ctk_inspector_misc_info_set_object (GtkInspectorMiscInfo *sl,
                                           GObject              *object);
 
 G_END_DECLS

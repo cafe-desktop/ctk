@@ -38,7 +38,7 @@ G_MODULE_EXPORT gboolean
 inhibit_for_1_frame (GtkWidget *widget)
 {
   reftest_inhibit_snapshot ();
-  gtk_widget_add_tick_callback (widget,
+  ctk_widget_add_tick_callback (widget,
                                 tick_callback_for_1_frame,
                                 NULL, NULL);
 
@@ -60,7 +60,7 @@ G_MODULE_EXPORT gboolean
 inhibit_for_2_frames (GtkWidget *widget)
 {
   reftest_inhibit_snapshot ();
-  gtk_widget_add_tick_callback (widget,
+  ctk_widget_add_tick_callback (widget,
                                 tick_callback_for_2_frames,
                                 NULL, NULL);
 
@@ -82,7 +82,7 @@ G_MODULE_EXPORT gboolean
 inhibit_for_3_frames (GtkWidget *widget)
 {
   reftest_inhibit_snapshot ();
-  gtk_widget_add_tick_callback (widget,
+  ctk_widget_add_tick_callback (widget,
                                 tick_callback_for_3_frames,
                                 NULL, NULL);
 
@@ -95,14 +95,14 @@ add_reference_class_if_no_animation (GtkWidget *widget)
   gboolean enabled;
   GtkStyleContext *context;
 
-  g_object_get (gtk_widget_get_settings (widget), "gtk-enable-animations", &enabled, NULL);
+  g_object_get (ctk_widget_get_settings (widget), "gtk-enable-animations", &enabled, NULL);
   if (enabled)
     return FALSE;
 
   g_message ("Adding reference class because animation is disabled");
 
-  context = gtk_widget_get_style_context (widget);
-  gtk_style_context_add_class (context, "reference");
+  context = ctk_widget_get_style_context (widget);
+  ctk_style_context_add_class (context, "reference");
 
   return FALSE;
 }

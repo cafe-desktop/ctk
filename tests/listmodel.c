@@ -108,7 +108,7 @@ create_widget (gpointer item,
   MyObject *obj = (MyObject *)item;
   GtkWidget *label;
 
-  label = gtk_label_new ("");
+  label = ctk_label_new ("");
   g_object_bind_property (obj, "label", label, "label", G_BINDING_SYNC_CREATE);
 
   return label;
@@ -171,7 +171,7 @@ main (int argc, char *argv[])
   GListStore *store;
   gint i;
 
-  gtk_init (NULL, NULL);
+  ctk_init (NULL, NULL);
 
   store = g_list_store_new (my_object_get_type ());
   for (i = 0; i < 100; i++)
@@ -189,44 +189,44 @@ main (int argc, char *argv[])
       g_object_unref (obj);
     }
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  grid = gtk_grid_new ();
-  gtk_container_add (GTK_CONTAINER (window), grid);
-  sw = gtk_scrolled_window_new (NULL, NULL);
-  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  grid = ctk_grid_new ();
+  ctk_container_add (GTK_CONTAINER (window), grid);
+  sw = ctk_scrolled_window_new (NULL, NULL);
+  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
                                   GTK_POLICY_AUTOMATIC,
                                   GTK_POLICY_AUTOMATIC);
-  gtk_widget_set_hexpand (sw, TRUE);
-  gtk_widget_set_vexpand (sw, TRUE);
-  gtk_grid_attach (GTK_GRID (grid), sw, 0, 0, 1, 1);
+  ctk_widget_set_hexpand (sw, TRUE);
+  ctk_widget_set_vexpand (sw, TRUE);
+  ctk_grid_attach (GTK_GRID (grid), sw, 0, 0, 1, 1);
 
-  box = gtk_list_box_new ();
-  gtk_list_box_bind_model (GTK_LIST_BOX (box), G_LIST_MODEL (store), create_widget, NULL, NULL);
-  gtk_container_add (GTK_CONTAINER (sw), box);
+  box = ctk_list_box_new ();
+  ctk_list_box_bind_model (GTK_LIST_BOX (box), G_LIST_MODEL (store), create_widget, NULL, NULL);
+  ctk_container_add (GTK_CONTAINER (sw), box);
 
-  sw = gtk_scrolled_window_new (NULL, NULL);
-  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
+  sw = ctk_scrolled_window_new (NULL, NULL);
+  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
                                   GTK_POLICY_AUTOMATIC,
                                   GTK_POLICY_AUTOMATIC);
-  gtk_widget_set_hexpand (sw, TRUE);
-  gtk_widget_set_vexpand (sw, TRUE);
-  gtk_grid_attach (GTK_GRID (grid), sw, 1, 0, 1, 1);
+  ctk_widget_set_hexpand (sw, TRUE);
+  ctk_widget_set_vexpand (sw, TRUE);
+  ctk_grid_attach (GTK_GRID (grid), sw, 1, 0, 1, 1);
 
-  box = gtk_flow_box_new ();
-  gtk_flow_box_bind_model (GTK_FLOW_BOX (box), G_LIST_MODEL (store), create_widget, NULL, NULL);
-  gtk_container_add (GTK_CONTAINER (sw), box);
+  box = ctk_flow_box_new ();
+  ctk_flow_box_bind_model (GTK_FLOW_BOX (box), G_LIST_MODEL (store), create_widget, NULL, NULL);
+  ctk_container_add (GTK_CONTAINER (sw), box);
 
-  button = gtk_button_new_with_label ("Add some");
+  button = ctk_button_new_with_label ("Add some");
   g_signal_connect (button, "clicked", G_CALLBACK (add_some), store);
-  gtk_grid_attach (GTK_GRID (grid), button, 0, 1, 1, 1);
+  ctk_grid_attach (GTK_GRID (grid), button, 0, 1, 1, 1);
 
-  button = gtk_button_new_with_label ("Remove some");
+  button = ctk_button_new_with_label ("Remove some");
   g_signal_connect (button, "clicked", G_CALLBACK (remove_some), store);
-  gtk_grid_attach (GTK_GRID (grid), button, 0, 2, 1, 1);
+  ctk_grid_attach (GTK_GRID (grid), button, 0, 2, 1, 1);
 
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

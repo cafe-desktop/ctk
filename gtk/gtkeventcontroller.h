@@ -33,7 +33,7 @@ typedef struct _GtkEventControllerClass GtkEventControllerClass;
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_EVENT_CONTROLLER         (gtk_event_controller_get_type ())
+#define GTK_TYPE_EVENT_CONTROLLER         (ctk_event_controller_get_type ())
 #define GTK_EVENT_CONTROLLER(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_EVENT_CONTROLLER, GtkEventController))
 #define GTK_EVENT_CONTROLLER_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), GTK_TYPE_EVENT_CONTROLLER, GtkEventControllerClass))
 #define GTK_IS_EVENT_CONTROLLER(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_EVENT_CONTROLLER))
@@ -42,22 +42,22 @@ G_BEGIN_DECLS
 
 
 GDK_AVAILABLE_IN_3_14
-GType        gtk_event_controller_get_type       (void) G_GNUC_CONST;
+GType        ctk_event_controller_get_type       (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_14
-GtkWidget  * gtk_event_controller_get_widget     (GtkEventController *controller);
+GtkWidget  * ctk_event_controller_get_widget     (GtkEventController *controller);
 
 GDK_AVAILABLE_IN_3_14
-gboolean     gtk_event_controller_handle_event   (GtkEventController *controller,
+gboolean     ctk_event_controller_handle_event   (GtkEventController *controller,
                                                   const GdkEvent     *event);
 GDK_AVAILABLE_IN_3_14
-void         gtk_event_controller_reset          (GtkEventController *controller);
+void         ctk_event_controller_reset          (GtkEventController *controller);
 
 GDK_AVAILABLE_IN_3_14
-GtkPropagationPhase gtk_event_controller_get_propagation_phase (GtkEventController *controller);
+GtkPropagationPhase ctk_event_controller_get_propagation_phase (GtkEventController *controller);
 
 GDK_AVAILABLE_IN_3_14
-void                gtk_event_controller_set_propagation_phase (GtkEventController  *controller,
+void                ctk_event_controller_set_propagation_phase (GtkEventController  *controller,
                                                                 GtkPropagationPhase  phase);
 
 G_END_DECLS

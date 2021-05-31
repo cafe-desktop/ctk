@@ -40,7 +40,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_FONT_SELECTION              (gtk_font_selection_get_type ())
+#define GTK_TYPE_FONT_SELECTION              (ctk_font_selection_get_type ())
 #define GTK_FONT_SELECTION(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_FONT_SELECTION, GtkFontSelection))
 #define GTK_FONT_SELECTION_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_FONT_SELECTION, GtkFontSelectionClass))
 #define GTK_IS_FONT_SELECTION(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_FONT_SELECTION))
@@ -48,7 +48,7 @@ G_BEGIN_DECLS
 #define GTK_FONT_SELECTION_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_FONT_SELECTION, GtkFontSelectionClass))
 
 
-#define GTK_TYPE_FONT_SELECTION_DIALOG              (gtk_font_selection_dialog_get_type ())
+#define GTK_TYPE_FONT_SELECTION_DIALOG              (ctk_font_selection_dialog_get_type ())
 #define GTK_FONT_SELECTION_DIALOG(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_FONT_SELECTION_DIALOG, GtkFontSelectionDialog))
 #define GTK_FONT_SELECTION_DIALOG_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_FONT_SELECTION_DIALOG, GtkFontSelectionDialogClass))
 #define GTK_IS_FONT_SELECTION_DIALOG(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_FONT_SELECTION_DIALOG))
@@ -77,10 +77,10 @@ struct _GtkFontSelectionClass
   GtkBoxClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
@@ -97,67 +97,67 @@ struct _GtkFontSelectionDialogClass
   GtkDialogClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_DEPRECATED_IN_3_2
-GType        gtk_font_selection_get_type          (void) G_GNUC_CONST;
+GType        ctk_font_selection_get_type          (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_2_FOR(GtkFontChooser)
-GtkWidget *  gtk_font_selection_new               (void);
+GtkWidget *  ctk_font_selection_new               (void);
 GDK_DEPRECATED_IN_3_2_FOR(GtkFontChooser)
-GtkWidget *  gtk_font_selection_get_family_list   (GtkFontSelection *fontsel);
+GtkWidget *  ctk_font_selection_get_family_list   (GtkFontSelection *fontsel);
 GDK_DEPRECATED_IN_3_2_FOR(GtkFontChooser)
-GtkWidget *  gtk_font_selection_get_face_list     (GtkFontSelection *fontsel);
+GtkWidget *  ctk_font_selection_get_face_list     (GtkFontSelection *fontsel);
 GDK_DEPRECATED_IN_3_2_FOR(GtkFontChooser)
-GtkWidget *  gtk_font_selection_get_size_entry    (GtkFontSelection *fontsel);
+GtkWidget *  ctk_font_selection_get_size_entry    (GtkFontSelection *fontsel);
 GDK_DEPRECATED_IN_3_2_FOR(GtkFontChooser)
-GtkWidget *  gtk_font_selection_get_size_list     (GtkFontSelection *fontsel);
+GtkWidget *  ctk_font_selection_get_size_list     (GtkFontSelection *fontsel);
 GDK_DEPRECATED_IN_3_2_FOR(GtkFontChooser)
-GtkWidget *  gtk_font_selection_get_preview_entry (GtkFontSelection *fontsel);
+GtkWidget *  ctk_font_selection_get_preview_entry (GtkFontSelection *fontsel);
 GDK_DEPRECATED_IN_3_2_FOR(GtkFontChooser)
 PangoFontFamily *
-             gtk_font_selection_get_family        (GtkFontSelection *fontsel);
+             ctk_font_selection_get_family        (GtkFontSelection *fontsel);
 GDK_DEPRECATED_IN_3_2_FOR(GtkFontChooser)
 PangoFontFace *
-             gtk_font_selection_get_face          (GtkFontSelection *fontsel);
+             ctk_font_selection_get_face          (GtkFontSelection *fontsel);
 GDK_DEPRECATED_IN_3_2_FOR(GtkFontChooser)
-gint         gtk_font_selection_get_size          (GtkFontSelection *fontsel);
+gint         ctk_font_selection_get_size          (GtkFontSelection *fontsel);
 GDK_DEPRECATED_IN_3_2_FOR(GtkFontChooser)
-gchar*       gtk_font_selection_get_font_name     (GtkFontSelection *fontsel);
+gchar*       ctk_font_selection_get_font_name     (GtkFontSelection *fontsel);
 
 GDK_DEPRECATED_IN_3_2_FOR(GtkFontChooser)
-gboolean     gtk_font_selection_set_font_name     (GtkFontSelection *fontsel,
+gboolean     ctk_font_selection_set_font_name     (GtkFontSelection *fontsel,
                                                    const gchar      *fontname);
 GDK_DEPRECATED_IN_3_2_FOR(GtkFontChooser)
-const gchar* gtk_font_selection_get_preview_text  (GtkFontSelection *fontsel);
+const gchar* ctk_font_selection_get_preview_text  (GtkFontSelection *fontsel);
 GDK_DEPRECATED_IN_3_2_FOR(GtkFontChooser)
-void         gtk_font_selection_set_preview_text  (GtkFontSelection *fontsel,
+void         ctk_font_selection_set_preview_text  (GtkFontSelection *fontsel,
                                                    const gchar      *text);
 
 GDK_DEPRECATED_IN_3_2
-GType      gtk_font_selection_dialog_get_type          (void) G_GNUC_CONST;
+GType      ctk_font_selection_dialog_get_type          (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_2_FOR(GtkFontChooser)
-GtkWidget *gtk_font_selection_dialog_new               (const gchar            *title);
+GtkWidget *ctk_font_selection_dialog_new               (const gchar            *title);
 
 GDK_DEPRECATED_IN_3_2_FOR(GtkFontChooser)
-GtkWidget *gtk_font_selection_dialog_get_ok_button     (GtkFontSelectionDialog *fsd);
+GtkWidget *ctk_font_selection_dialog_get_ok_button     (GtkFontSelectionDialog *fsd);
 GDK_DEPRECATED_IN_3_2_FOR(GtkFontChooser)
-GtkWidget *gtk_font_selection_dialog_get_cancel_button (GtkFontSelectionDialog *fsd);
+GtkWidget *ctk_font_selection_dialog_get_cancel_button (GtkFontSelectionDialog *fsd);
 GDK_DEPRECATED_IN_3_2_FOR(GtkFontChooser)
-GtkWidget *gtk_font_selection_dialog_get_font_selection (GtkFontSelectionDialog *fsd);
+GtkWidget *ctk_font_selection_dialog_get_font_selection (GtkFontSelectionDialog *fsd);
 GDK_DEPRECATED_IN_3_2_FOR(GtkFontChooser)
-gchar*     gtk_font_selection_dialog_get_font_name     (GtkFontSelectionDialog *fsd);
+gchar*     ctk_font_selection_dialog_get_font_name     (GtkFontSelectionDialog *fsd);
 GDK_DEPRECATED_IN_3_2_FOR(GtkFontChooser)
-gboolean   gtk_font_selection_dialog_set_font_name     (GtkFontSelectionDialog *fsd,
+gboolean   ctk_font_selection_dialog_set_font_name     (GtkFontSelectionDialog *fsd,
                                                         const gchar            *fontname);
 GDK_DEPRECATED_IN_3_2_FOR(GtkFontChooser)
 const gchar*
-          gtk_font_selection_dialog_get_preview_text   (GtkFontSelectionDialog *fsd);
+          ctk_font_selection_dialog_get_preview_text   (GtkFontSelectionDialog *fsd);
 GDK_DEPRECATED_IN_3_2_FOR(GtkFontChooser)
-void      gtk_font_selection_dialog_set_preview_text   (GtkFontSelectionDialog *fsd,
+void      ctk_font_selection_dialog_set_preview_text   (GtkFontSelectionDialog *fsd,
                                                         const gchar            *text);
 
 G_END_DECLS

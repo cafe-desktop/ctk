@@ -64,7 +64,7 @@ G_BEGIN_DECLS
 typedef struct _GtkTextIter GtkTextIter;
 typedef struct _GtkTextTagTable GtkTextTagTable;
 
-#define GTK_TYPE_TEXT_TAG            (gtk_text_tag_get_type ())
+#define GTK_TYPE_TEXT_TAG            (ctk_text_tag_get_type ())
 #define GTK_TEXT_TAG(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TEXT_TAG, GtkTextTag))
 #define GTK_TEXT_TAG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_TEXT_TAG, GtkTextTagClass))
 #define GTK_IS_TEXT_TAG(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TEXT_TAG))
@@ -92,28 +92,28 @@ struct _GtkTextTagClass
                       const GtkTextIter *iter);        /* location of event in buffer */
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_ALL
-GType        gtk_text_tag_get_type     (void) G_GNUC_CONST;
+GType        ctk_text_tag_get_type     (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkTextTag  *gtk_text_tag_new          (const gchar       *name);
+GtkTextTag  *ctk_text_tag_new          (const gchar       *name);
 GDK_AVAILABLE_IN_ALL
-gint         gtk_text_tag_get_priority (GtkTextTag        *tag);
+gint         ctk_text_tag_get_priority (GtkTextTag        *tag);
 GDK_AVAILABLE_IN_ALL
-void         gtk_text_tag_set_priority (GtkTextTag        *tag,
+void         ctk_text_tag_set_priority (GtkTextTag        *tag,
                                         gint               priority);
 GDK_AVAILABLE_IN_ALL
-gboolean     gtk_text_tag_event        (GtkTextTag        *tag,
+gboolean     ctk_text_tag_event        (GtkTextTag        *tag,
                                         GObject           *event_object,
                                         GdkEvent          *event,
                                         const GtkTextIter *iter);
 GDK_AVAILABLE_IN_3_20
-void         gtk_text_tag_changed      (GtkTextTag        *tag,
+void         ctk_text_tag_changed      (GtkTextTag        *tag,
                                         gboolean           size_changed);
 
 G_END_DECLS

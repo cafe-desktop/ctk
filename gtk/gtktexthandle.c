@@ -68,15 +68,15 @@ struct _GtkTextHandlePrivate
   guint mode : 2;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkTextHandle, _gtk_text_handle, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkTextHandle, _ctk_text_handle, G_TYPE_OBJECT)
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-static void _gtk_text_handle_update (GtkTextHandle         *handle,
+static void _ctk_text_handle_update (GtkTextHandle         *handle,
                                      GtkTextHandlePosition  pos);
 
 static void
-_gtk_text_handle_get_size (GtkTextHandle *handle,
+_ctk_text_handle_get_size (GtkTextHandle *handle,
                            gint          *width,
                            gint          *height)
 {
@@ -85,7 +85,7 @@ _gtk_text_handle_get_size (GtkTextHandle *handle,
 
   priv = handle->priv;
 
-  gtk_widget_style_get (priv->parent,
+  ctk_widget_style_get (priv->parent,
                         "text-handle-width", &w,
                         "text-handle-height", &h,
                         NULL);
@@ -97,7 +97,7 @@ _gtk_text_handle_get_size (GtkTextHandle *handle,
 }
 
 static void
-_gtk_text_handle_draw (GtkTextHandle         *handle,
+_ctk_text_handle_draw (GtkTextHandle         *handle,
                        cairo_t               *cr,
                        GtkTextHandlePosition  pos)
 {
@@ -109,13 +109,13 @@ _gtk_text_handle_draw (GtkTextHandle         *handle,
   priv = handle->priv;
   handle_window = &priv->windows[pos];
 
-  context = gtk_widget_get_style_context (handle_window->widget);
-  _gtk_text_handle_get_size (handle, &width, &height);
+  context = ctk_widget_get_style_context (handle_window->widget);
+  _ctk_text_handle_get_size (handle, &width, &height);
 
   cairo_save (cr);
   cairo_translate (cr, handle_window->border.left, handle_window->border.top);
 
-  gtk_render_handle (context, cr, 0, 0, width, height);
+  ctk_render_handle (context, cr, 0, 0, width, height);
 
   cairo_restore (cr);
 }
@@ -135,7 +135,7 @@ _text_handle_pos_from_widget (GtkTextHandle *handle,
 }
 
 static gboolean
-gtk_text_handle_widget_draw (GtkWidget     *widget,
+ctk_text_handle_widget_draw (GtkWidget     *widget,
                              cairo_t       *cr,
                              GtkTextHandle *handle)
 {
@@ -152,12 +152,12 @@ gtk_text_handle_widget_draw (GtkWidget     *widget,
   cairo_paint (cr);
 #endif
 
-  _gtk_text_handle_draw (handle, cr, pos);
+  _ctk_text_handle_draw (handle, cr, pos);
   return TRUE;
 }
 
 static void
-gtk_text_handle_set_state (GtkTextHandle *handle,
+ctk_text_handle_set_state (GtkTextHandle *handle,
                            gint           pos,
                            GtkStateFlags  state)
 {
@@ -166,12 +166,12 @@ gtk_text_handle_set_state (GtkTextHandle *handle,
   if (!priv->windows[pos].widget)
     return;
 
-  gtk_widget_set_state_flags (priv->windows[pos].widget, state, FALSE);
-  gtk_widget_queue_draw (priv->windows[pos].widget);
+  ctk_widget_set_state_flags (priv->windows[pos].widget, state, FALSE);
+  ctk_widget_queue_draw (priv->windows[pos].widget);
 }
 
 static void
-gtk_text_handle_unset_state (GtkTextHandle *handle,
+ctk_text_handle_unset_state (GtkTextHandle *handle,
                              gint           pos,
                              GtkStateFlags  state)
 {
@@ -180,12 +180,12 @@ gtk_text_handle_unset_state (GtkTextHandle *handle,
   if (!priv->windows[pos].widget)
     return;
 
-  gtk_widget_unset_state_flags (priv->windows[pos].widget, state);
-  gtk_widget_queue_draw (priv->windows[pos].widget);
+  ctk_widget_unset_state_flags (priv->windows[pos].widget, state);
+  ctk_widget_queue_draw (priv->windows[pos].widget);
 }
 
 static gboolean
-gtk_text_handle_widget_event (GtkWidget     *widget,
+ctk_text_handle_widget_event (GtkWidget     *widget,
                               GdkEvent      *event,
                               GtkTextHandle *handle)
 {
@@ -203,23 +203,23 @@ gtk_text_handle_widget_event (GtkWidget     *widget,
       priv->windows[pos].dx = event->button.x;
       priv->windows[pos].dy = event->button.y;
       priv->windows[pos].dragged = TRUE;
-      gtk_text_handle_set_state (handle, pos, GTK_STATE_FLAG_ACTIVE);
+      ctk_text_handle_set_state (handle, pos, GTK_STATE_FLAG_ACTIVE);
       g_signal_emit (handle, signals[DRAG_STARTED], 0, pos);
     }
   else if (event->type == GDK_BUTTON_RELEASE)
     {
       g_signal_emit (handle, signals[DRAG_FINISHED], 0, pos);
       priv->windows[pos].dragged = FALSE;
-      gtk_text_handle_unset_state (handle, pos, GTK_STATE_FLAG_ACTIVE);
+      ctk_text_handle_unset_state (handle, pos, GTK_STATE_FLAG_ACTIVE);
     }
   else if (event->type == GDK_ENTER_NOTIFY)
-    gtk_text_handle_set_state (handle, pos, GTK_STATE_FLAG_PRELIGHT);
+    ctk_text_handle_set_state (handle, pos, GTK_STATE_FLAG_PRELIGHT);
   else if (event->type == GDK_LEAVE_NOTIFY)
     {
       if (!priv->windows[pos].dragged &&
           (event->crossing.mode == GDK_CROSSING_NORMAL ||
            event->crossing.mode == GDK_CROSSING_UNGRAB))
-        gtk_text_handle_unset_state (handle, pos, GTK_STATE_FLAG_PRELIGHT);
+        ctk_text_handle_unset_state (handle, pos, GTK_STATE_FLAG_PRELIGHT);
     }
   else if (event->type == GDK_MOTION_NOTIFY &&
            event->motion.state & GDK_BUTTON1_MASK &&
@@ -230,11 +230,11 @@ gtk_text_handle_widget_event (GtkWidget     *widget,
       GtkAllocation allocation;
       GtkWidget *window;
 
-      window = gtk_widget_get_parent (priv->windows[pos].widget);
-      gtk_widget_get_allocation (priv->windows[pos].widget, &allocation);
-      _gtk_text_handle_get_size (handle, &handle_width, &handle_height);
+      window = ctk_widget_get_parent (priv->windows[pos].widget);
+      ctk_widget_get_allocation (priv->windows[pos].widget, &allocation);
+      _ctk_text_handle_get_size (handle, &handle_width, &handle_height);
 
-      _gtk_window_get_popover_position (GTK_WINDOW (window),
+      _ctk_window_get_popover_position (GTK_WINDOW (window),
                                         priv->windows[pos].widget,
                                         NULL, &rect);
 
@@ -251,7 +251,7 @@ gtk_text_handle_widget_event (GtkWidget     *widget,
                 priv->windows[pos].dir != GTK_TEXT_DIR_RTL))
         x += handle_width;
 
-      gtk_widget_translate_coordinates (window, priv->parent, x, y, &x, &y);
+      ctk_widget_translate_coordinates (window, priv->parent, x, y, &x, &y);
       g_signal_emit (handle, signals[HANDLE_DRAGGED], 0, pos, x, y);
     }
 
@@ -259,21 +259,21 @@ gtk_text_handle_widget_event (GtkWidget     *widget,
 }
 
 static void
-gtk_text_handle_widget_style_updated (GtkWidget     *widget,
+ctk_text_handle_widget_style_updated (GtkWidget     *widget,
                                       GtkTextHandle *handle)
 {
   GtkTextHandlePrivate *priv;
 
   priv = handle->priv;
-  gtk_style_context_set_parent (gtk_widget_get_style_context (widget),
-                                gtk_widget_get_style_context (priv->parent));
+  ctk_style_context_set_parent (ctk_widget_get_style_context (widget),
+                                ctk_widget_get_style_context (priv->parent));
 
-  _gtk_text_handle_update (handle, GTK_TEXT_HANDLE_POSITION_SELECTION_START);
-  _gtk_text_handle_update (handle, GTK_TEXT_HANDLE_POSITION_SELECTION_END);
+  _ctk_text_handle_update (handle, GTK_TEXT_HANDLE_POSITION_SELECTION_START);
+  _ctk_text_handle_update (handle, GTK_TEXT_HANDLE_POSITION_SELECTION_END);
 }
 
 static GtkWidget *
-_gtk_text_handle_ensure_widget (GtkTextHandle         *handle,
+_ctk_text_handle_ensure_widget (GtkTextHandle         *handle,
                                 GtkTextHandlePosition  pos)
 {
   GtkTextHandlePrivate *priv;
@@ -285,40 +285,40 @@ _gtk_text_handle_ensure_widget (GtkTextHandle         *handle,
       GtkWidget *widget, *window;
       GtkStyleContext *context;
 
-      widget = gtk_event_box_new ();
-      gtk_event_box_set_visible_window (GTK_EVENT_BOX (widget), TRUE);
-      gtk_widget_set_events (widget,
+      widget = ctk_event_box_new ();
+      ctk_event_box_set_visible_window (GTK_EVENT_BOX (widget), TRUE);
+      ctk_widget_set_events (widget,
                              GDK_BUTTON_PRESS_MASK |
                              GDK_BUTTON_RELEASE_MASK |
                              GDK_ENTER_NOTIFY_MASK |
                              GDK_LEAVE_NOTIFY_MASK |
                              GDK_POINTER_MOTION_MASK);
 
-      gtk_widget_set_direction (widget, priv->windows[pos].dir);
+      ctk_widget_set_direction (widget, priv->windows[pos].dir);
 
       g_signal_connect (widget, "draw",
-                        G_CALLBACK (gtk_text_handle_widget_draw), handle);
+                        G_CALLBACK (ctk_text_handle_widget_draw), handle);
       g_signal_connect (widget, "event",
-                        G_CALLBACK (gtk_text_handle_widget_event), handle);
+                        G_CALLBACK (ctk_text_handle_widget_event), handle);
       g_signal_connect (widget, "style-updated",
-                        G_CALLBACK (gtk_text_handle_widget_style_updated),
+                        G_CALLBACK (ctk_text_handle_widget_style_updated),
                         handle);
 
       priv->windows[pos].widget = g_object_ref_sink (widget);
-      window = gtk_widget_get_ancestor (priv->parent, GTK_TYPE_WINDOW);
-      _gtk_window_add_popover (GTK_WINDOW (window), widget, priv->parent, FALSE);
+      window = ctk_widget_get_ancestor (priv->parent, GTK_TYPE_WINDOW);
+      _ctk_window_add_popover (GTK_WINDOW (window), widget, priv->parent, FALSE);
 
-      context = gtk_widget_get_style_context (widget);
-      gtk_style_context_set_parent (context, gtk_widget_get_style_context (priv->parent));
-      gtk_css_node_set_name (gtk_widget_get_css_node (widget), I_("cursor-handle"));
+      context = ctk_widget_get_style_context (widget);
+      ctk_style_context_set_parent (context, ctk_widget_get_style_context (priv->parent));
+      ctk_css_node_set_name (ctk_widget_get_css_node (widget), I_("cursor-handle"));
       if (pos == GTK_TEXT_HANDLE_POSITION_SELECTION_END)
         {
-          gtk_style_context_add_class (context, GTK_STYLE_CLASS_BOTTOM);
+          ctk_style_context_add_class (context, GTK_STYLE_CLASS_BOTTOM);
           if (priv->mode == GTK_TEXT_HANDLE_MODE_CURSOR)
-            gtk_style_context_add_class (context, GTK_STYLE_CLASS_INSERTION_CURSOR);
+            ctk_style_context_add_class (context, GTK_STYLE_CLASS_INSERTION_CURSOR);
         }
       else
-        gtk_style_context_add_class (context, GTK_STYLE_CLASS_TOP);
+        ctk_style_context_add_class (context, GTK_STYLE_CLASS_TOP);
     }
 
   return priv->windows[pos].widget;
@@ -339,27 +339,27 @@ _handle_update_child_visible (GtkTextHandle         *handle,
 
   if (!priv->parent_scrollable)
     {
-      gtk_widget_set_child_visible (handle_window->widget, TRUE);
+      ctk_widget_set_child_visible (handle_window->widget, TRUE);
       return;
     }
 
-  parent = gtk_widget_get_parent (GTK_WIDGET (priv->parent_scrollable));
+  parent = ctk_widget_get_parent (GTK_WIDGET (priv->parent_scrollable));
   rect = handle_window->pointing_to;
 
-  gtk_widget_translate_coordinates (priv->parent, parent,
+  ctk_widget_translate_coordinates (priv->parent, parent,
                                     rect.x, rect.y, &rect.x, &rect.y);
 
-  gtk_widget_get_allocation (GTK_WIDGET (parent), &allocation);
+  ctk_widget_get_allocation (GTK_WIDGET (parent), &allocation);
 
   if (rect.x < 0 || rect.x + rect.width > allocation.width ||
       rect.y < 0 || rect.y + rect.height > allocation.height)
-    gtk_widget_set_child_visible (handle_window->widget, FALSE);
+    ctk_widget_set_child_visible (handle_window->widget, FALSE);
   else
-    gtk_widget_set_child_visible (handle_window->widget, TRUE);
+    ctk_widget_set_child_visible (handle_window->widget, TRUE);
 }
 
 static void
-_gtk_text_handle_update (GtkTextHandle         *handle,
+_ctk_text_handle_update (GtkTextHandle         *handle,
                          GtkTextHandlePosition  pos)
 {
   GtkTextHandlePrivate *priv;
@@ -370,7 +370,7 @@ _gtk_text_handle_update (GtkTextHandle         *handle,
   handle_window = &priv->windows[pos];
   border = &handle_window->border;
 
-  if (!priv->parent || !gtk_widget_is_drawable (priv->parent))
+  if (!priv->parent || !ctk_widget_is_drawable (priv->parent))
     return;
 
   if (handle_window->has_point &&
@@ -382,8 +382,8 @@ _gtk_text_handle_update (GtkTextHandle         *handle,
       GtkAllocation alloc;
       gint w, h;
 
-      _gtk_text_handle_ensure_widget (handle, pos);
-      _gtk_text_handle_get_size (handle, &width, &height);
+      _ctk_text_handle_ensure_widget (handle, pos);
+      _ctk_text_handle_get_size (handle, &width, &height);
 
       border->top = height;
       border->bottom = height;
@@ -397,8 +397,8 @@ _gtk_text_handle_update (GtkTextHandle         *handle,
 
       _handle_update_child_visible (handle, pos);
 
-      window = gtk_widget_get_parent (handle_window->widget);
-      gtk_widget_translate_coordinates (priv->parent, window,
+      window = ctk_widget_get_parent (handle_window->widget);
+      ctk_widget_translate_coordinates (priv->parent, window,
                                         rect.x, rect.y, &rect.x, &rect.y);
 
       if (pos == GTK_TEXT_HANDLE_POSITION_CURSOR &&
@@ -417,7 +417,7 @@ _gtk_text_handle_update (GtkTextHandle         *handle,
        * knowledge about how popover_get_rect() works.
        */
 
-      gtk_widget_get_allocation (window, &alloc);
+      ctk_widget_get_allocation (window, &alloc);
 
       w = width + border->left + border->right;
       h = height + border->top + border->bottom;
@@ -434,27 +434,27 @@ _gtk_text_handle_update (GtkTextHandle         *handle,
       width += border->left + border->right;
       height += border->top + border->bottom;
 
-      gtk_widget_set_size_request (handle_window->widget, width, height);
-      gtk_widget_show (handle_window->widget);
-      _gtk_window_raise_popover (GTK_WINDOW (window), handle_window->widget);
-      _gtk_window_set_popover_position (GTK_WINDOW (window),
+      ctk_widget_set_size_request (handle_window->widget, width, height);
+      ctk_widget_show (handle_window->widget);
+      _ctk_window_raise_popover (GTK_WINDOW (window), handle_window->widget);
+      _ctk_window_set_popover_position (GTK_WINDOW (window),
                                         handle_window->widget,
                                         GTK_POS_BOTTOM, &rect);
     }
   else if (handle_window->widget)
-    gtk_widget_hide (handle_window->widget);
+    ctk_widget_hide (handle_window->widget);
 }
 
 static void
 adjustment_changed_cb (GtkAdjustment *adjustment,
                        GtkTextHandle *handle)
 {
-  _gtk_text_handle_update (handle, GTK_TEXT_HANDLE_POSITION_SELECTION_START);
-  _gtk_text_handle_update (handle, GTK_TEXT_HANDLE_POSITION_SELECTION_END);
+  _ctk_text_handle_update (handle, GTK_TEXT_HANDLE_POSITION_SELECTION_START);
+  _ctk_text_handle_update (handle, GTK_TEXT_HANDLE_POSITION_SELECTION_END);
 }
 
 static void
-_gtk_text_handle_set_scrollable (GtkTextHandle *handle,
+_ctk_text_handle_set_scrollable (GtkTextHandle *handle,
                                  GtkScrollable *scrollable)
 {
   GtkTextHandlePrivate *priv;
@@ -482,8 +482,8 @@ _gtk_text_handle_set_scrollable (GtkTextHandle *handle,
     {
       g_object_add_weak_pointer (G_OBJECT (priv->parent_scrollable), (gpointer *) &priv->parent_scrollable);
 
-      priv->vadj = gtk_scrollable_get_vadjustment (scrollable);
-      priv->hadj = gtk_scrollable_get_hadjustment (scrollable);
+      priv->vadj = ctk_scrollable_get_vadjustment (scrollable);
+      priv->hadj = ctk_scrollable_get_hadjustment (scrollable);
 
       if (priv->vadj)
         {
@@ -506,16 +506,16 @@ _gtk_text_handle_set_scrollable (GtkTextHandle *handle,
 }
 
 static void
-_gtk_text_handle_scrollable_notify (GObject       *object,
+_ctk_text_handle_scrollable_notify (GObject       *object,
                                     GParamSpec    *pspec,
                                     GtkTextHandle *handle)
 {
   if (pspec->value_type == GTK_TYPE_ADJUSTMENT)
-    _gtk_text_handle_set_scrollable (handle, GTK_SCROLLABLE (object));
+    _ctk_text_handle_set_scrollable (handle, GTK_SCROLLABLE (object));
 }
 
 static void
-_gtk_text_handle_update_scrollable (GtkTextHandle *handle,
+_ctk_text_handle_update_scrollable (GtkTextHandle *handle,
                                     GtkScrollable *scrollable)
 {
   GtkTextHandlePrivate *priv;
@@ -531,32 +531,32 @@ _gtk_text_handle_update_scrollable (GtkTextHandle *handle,
     g_signal_handler_disconnect (priv->parent_scrollable,
                                  priv->scrollable_notify_id);
 
-  _gtk_text_handle_set_scrollable (handle, scrollable);
+  _ctk_text_handle_set_scrollable (handle, scrollable);
 
   if (priv->parent_scrollable)
     priv->scrollable_notify_id =
       g_signal_connect (priv->parent_scrollable, "notify",
-                        G_CALLBACK (_gtk_text_handle_scrollable_notify),
+                        G_CALLBACK (_ctk_text_handle_scrollable_notify),
                         handle);
 }
 
 static GtkWidget *
-gtk_text_handle_lookup_scrollable (GtkTextHandle *handle)
+ctk_text_handle_lookup_scrollable (GtkTextHandle *handle)
 {
   GtkTextHandlePrivate *priv;
   GtkWidget *scrolled_window;
 
   priv = handle->priv;
-  scrolled_window = gtk_widget_get_ancestor (priv->parent,
+  scrolled_window = ctk_widget_get_ancestor (priv->parent,
                                              GTK_TYPE_SCROLLED_WINDOW);
   if (!scrolled_window)
     return NULL;
 
-  return gtk_bin_get_child (GTK_BIN (scrolled_window));
+  return ctk_bin_get_child (GTK_BIN (scrolled_window));
 }
 
 static void
-_gtk_text_handle_parent_hierarchy_changed (GtkWidget     *widget,
+_ctk_text_handle_parent_hierarchy_changed (GtkWidget     *widget,
                                            GtkWindow     *previous_toplevel,
                                            GtkTextHandle *handle)
 {
@@ -564,13 +564,13 @@ _gtk_text_handle_parent_hierarchy_changed (GtkWidget     *widget,
   GtkTextHandlePrivate *priv;
 
   priv = handle->priv;
-  toplevel = gtk_widget_get_ancestor (widget, GTK_TYPE_WINDOW);
+  toplevel = ctk_widget_get_ancestor (widget, GTK_TYPE_WINDOW);
 
   if (previous_toplevel && !toplevel)
     {
       if (priv->windows[GTK_TEXT_HANDLE_POSITION_SELECTION_START].widget)
         {
-          _gtk_window_remove_popover (GTK_WINDOW (previous_toplevel),
+          _ctk_window_remove_popover (GTK_WINDOW (previous_toplevel),
                                       priv->windows[GTK_TEXT_HANDLE_POSITION_SELECTION_START].widget);
           g_object_unref (priv->windows[GTK_TEXT_HANDLE_POSITION_SELECTION_START].widget);
           priv->windows[GTK_TEXT_HANDLE_POSITION_SELECTION_START].widget = NULL;
@@ -578,19 +578,19 @@ _gtk_text_handle_parent_hierarchy_changed (GtkWidget     *widget,
 
       if (priv->windows[GTK_TEXT_HANDLE_POSITION_SELECTION_END].widget)
         {
-          _gtk_window_remove_popover (GTK_WINDOW (previous_toplevel),
+          _ctk_window_remove_popover (GTK_WINDOW (previous_toplevel),
                                       priv->windows[GTK_TEXT_HANDLE_POSITION_SELECTION_END].widget);
           g_object_unref (priv->windows[GTK_TEXT_HANDLE_POSITION_SELECTION_END].widget);
           priv->windows[GTK_TEXT_HANDLE_POSITION_SELECTION_END].widget = NULL;
         }
     }
 
-  scrollable = gtk_text_handle_lookup_scrollable (handle);
-  _gtk_text_handle_update_scrollable (handle, GTK_SCROLLABLE (scrollable));
+  scrollable = ctk_text_handle_lookup_scrollable (handle);
+  _ctk_text_handle_update_scrollable (handle, GTK_SCROLLABLE (scrollable));
 }
 
 static void
-_gtk_text_handle_set_parent (GtkTextHandle *handle,
+_ctk_text_handle_set_parent (GtkTextHandle *handle,
                              GtkWidget     *parent)
 {
   GtkTextHandlePrivate *priv;
@@ -611,23 +611,23 @@ _gtk_text_handle_set_parent (GtkTextHandle *handle,
     {
       priv->hierarchy_changed_id =
         g_signal_connect (parent, "hierarchy-changed",
-                          G_CALLBACK (_gtk_text_handle_parent_hierarchy_changed),
+                          G_CALLBACK (_ctk_text_handle_parent_hierarchy_changed),
                           handle);
 
-      scrollable = gtk_text_handle_lookup_scrollable (handle);
+      scrollable = ctk_text_handle_lookup_scrollable (handle);
     }
 
-  _gtk_text_handle_update_scrollable (handle, GTK_SCROLLABLE (scrollable));
+  _ctk_text_handle_update_scrollable (handle, GTK_SCROLLABLE (scrollable));
 }
 
 static void
-gtk_text_handle_finalize (GObject *object)
+ctk_text_handle_finalize (GObject *object)
 {
   GtkTextHandlePrivate *priv;
 
   priv = GTK_TEXT_HANDLE (object)->priv;
 
-  _gtk_text_handle_set_parent (GTK_TEXT_HANDLE (object), NULL);
+  _ctk_text_handle_set_parent (GTK_TEXT_HANDLE (object), NULL);
 
   /* We sank the references, unref here */
   if (priv->windows[GTK_TEXT_HANDLE_POSITION_SELECTION_START].widget)
@@ -636,11 +636,11 @@ gtk_text_handle_finalize (GObject *object)
   if (priv->windows[GTK_TEXT_HANDLE_POSITION_SELECTION_END].widget)
     g_object_unref (priv->windows[GTK_TEXT_HANDLE_POSITION_SELECTION_END].widget);
 
-  G_OBJECT_CLASS (_gtk_text_handle_parent_class)->finalize (object);
+  G_OBJECT_CLASS (_ctk_text_handle_parent_class)->finalize (object);
 }
 
 static void
-gtk_text_handle_set_property (GObject      *object,
+ctk_text_handle_set_property (GObject      *object,
                               guint         prop_id,
                               const GValue *value,
                               GParamSpec   *pspec)
@@ -652,7 +652,7 @@ gtk_text_handle_set_property (GObject      *object,
   switch (prop_id)
     {
     case PROP_PARENT:
-      _gtk_text_handle_set_parent (handle, g_value_get_object (value));
+      _ctk_text_handle_set_parent (handle, g_value_get_object (value));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -660,7 +660,7 @@ gtk_text_handle_set_property (GObject      *object,
 }
 
 static void
-gtk_text_handle_get_property (GObject    *object,
+ctk_text_handle_get_property (GObject    *object,
                               guint       prop_id,
                               GValue     *value,
                               GParamSpec *pspec)
@@ -680,13 +680,13 @@ gtk_text_handle_get_property (GObject    *object,
 }
 
 static void
-_gtk_text_handle_class_init (GtkTextHandleClass *klass)
+_ctk_text_handle_class_init (GtkTextHandleClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  object_class->finalize = gtk_text_handle_finalize;
-  object_class->set_property = gtk_text_handle_set_property;
-  object_class->get_property = gtk_text_handle_get_property;
+  object_class->finalize = ctk_text_handle_finalize;
+  object_class->set_property = ctk_text_handle_set_property;
+  object_class->get_property = ctk_text_handle_get_property;
 
   signals[HANDLE_DRAGGED] =
     g_signal_new (I_("handle-dragged"),
@@ -694,7 +694,7 @@ _gtk_text_handle_class_init (GtkTextHandleClass *klass)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkTextHandleClass, handle_dragged),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__ENUM_INT_INT,
+		  _ctk_marshal_VOID__ENUM_INT_INT,
 		  G_TYPE_NONE, 3,
                   GTK_TYPE_TEXT_HANDLE_POSITION,
                   G_TYPE_INT, G_TYPE_INT);
@@ -726,13 +726,13 @@ _gtk_text_handle_class_init (GtkTextHandleClass *klass)
 }
 
 static void
-_gtk_text_handle_init (GtkTextHandle *handle)
+_ctk_text_handle_init (GtkTextHandle *handle)
 {
-  handle->priv = _gtk_text_handle_get_instance_private (handle);
+  handle->priv = _ctk_text_handle_get_instance_private (handle);
 }
 
 GtkTextHandle *
-_gtk_text_handle_new (GtkWidget *parent)
+_ctk_text_handle_new (GtkWidget *parent)
 {
   return g_object_new (GTK_TYPE_TEXT_HANDLE,
                        "parent", parent,
@@ -740,7 +740,7 @@ _gtk_text_handle_new (GtkWidget *parent)
 }
 
 void
-_gtk_text_handle_set_mode (GtkTextHandle     *handle,
+_ctk_text_handle_set_mode (GtkTextHandle     *handle,
                            GtkTextHandleMode  mode)
 {
   GtkTextHandlePrivate *priv;
@@ -778,22 +778,22 @@ _gtk_text_handle_set_mode (GtkTextHandle     *handle,
   if (end->widget)
     {
       if (mode == GTK_TEXT_HANDLE_MODE_CURSOR)
-        gtk_style_context_add_class (gtk_widget_get_style_context (end->widget), GTK_STYLE_CLASS_INSERTION_CURSOR);
+        ctk_style_context_add_class (ctk_widget_get_style_context (end->widget), GTK_STYLE_CLASS_INSERTION_CURSOR);
       else
-        gtk_style_context_remove_class (gtk_widget_get_style_context (end->widget), GTK_STYLE_CLASS_INSERTION_CURSOR);
+        ctk_style_context_remove_class (ctk_widget_get_style_context (end->widget), GTK_STYLE_CLASS_INSERTION_CURSOR);
     }
 
-  _gtk_text_handle_update (handle, GTK_TEXT_HANDLE_POSITION_SELECTION_START);
-  _gtk_text_handle_update (handle, GTK_TEXT_HANDLE_POSITION_SELECTION_END);
+  _ctk_text_handle_update (handle, GTK_TEXT_HANDLE_POSITION_SELECTION_START);
+  _ctk_text_handle_update (handle, GTK_TEXT_HANDLE_POSITION_SELECTION_END);
 
   if (start->widget && start->mode_visible)
-    gtk_widget_queue_draw (start->widget);
+    ctk_widget_queue_draw (start->widget);
   if (end->widget && end->mode_visible)
-    gtk_widget_queue_draw (end->widget);
+    ctk_widget_queue_draw (end->widget);
 }
 
 GtkTextHandleMode
-_gtk_text_handle_get_mode (GtkTextHandle *handle)
+_ctk_text_handle_get_mode (GtkTextHandle *handle)
 {
   GtkTextHandlePrivate *priv;
 
@@ -804,7 +804,7 @@ _gtk_text_handle_get_mode (GtkTextHandle *handle)
 }
 
 void
-_gtk_text_handle_set_position (GtkTextHandle         *handle,
+_ctk_text_handle_set_position (GtkTextHandle         *handle,
                                GtkTextHandlePosition  pos,
                                GdkRectangle          *rect)
 {
@@ -826,12 +826,12 @@ _gtk_text_handle_set_position (GtkTextHandle         *handle,
   handle_window->pointing_to = *rect;
   handle_window->has_point = TRUE;
 
-  if (gtk_widget_is_visible (priv->parent))
-    _gtk_text_handle_update (handle, pos);
+  if (ctk_widget_is_visible (priv->parent))
+    _ctk_text_handle_update (handle, pos);
 }
 
 void
-_gtk_text_handle_set_visible (GtkTextHandle         *handle,
+_ctk_text_handle_set_visible (GtkTextHandle         *handle,
                               GtkTextHandlePosition  pos,
                               gboolean               visible)
 {
@@ -845,12 +845,12 @@ _gtk_text_handle_set_visible (GtkTextHandle         *handle,
 
   priv->windows[pos].user_visible = visible;
 
-  if (gtk_widget_is_visible (priv->parent))
-    _gtk_text_handle_update (handle, pos);
+  if (ctk_widget_is_visible (priv->parent))
+    _ctk_text_handle_update (handle, pos);
 }
 
 gboolean
-_gtk_text_handle_get_is_dragged (GtkTextHandle         *handle,
+_ctk_text_handle_get_is_dragged (GtkTextHandle         *handle,
                                  GtkTextHandlePosition  pos)
 {
   GtkTextHandlePrivate *priv;
@@ -865,7 +865,7 @@ _gtk_text_handle_get_is_dragged (GtkTextHandle         *handle,
 }
 
 void
-_gtk_text_handle_set_direction (GtkTextHandle         *handle,
+_ctk_text_handle_set_direction (GtkTextHandle         *handle,
                                 GtkTextHandlePosition  pos,
                                 GtkTextDirection       dir)
 {
@@ -880,7 +880,7 @@ _gtk_text_handle_set_direction (GtkTextHandle         *handle,
 
   if (priv->windows[pos].widget)
     {
-      gtk_widget_set_direction (priv->windows[pos].widget, dir);
-      _gtk_text_handle_update (handle, pos);
+      ctk_widget_set_direction (priv->windows[pos].widget, dir);
+      _ctk_text_handle_update (handle, pos);
     }
 }

@@ -25,7 +25,7 @@
 
 #include <gtk/gtkbox.h>
 
-#define GTK_TYPE_INSPECTOR_SELECTOR            (gtk_inspector_selector_get_type())
+#define GTK_TYPE_INSPECTOR_SELECTOR            (ctk_inspector_selector_get_type())
 #define GTK_INSPECTOR_SELECTOR(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_INSPECTOR_SELECTOR, GtkInspectorSelector))
 #define GTK_INSPECTOR_SELECTOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GTK_TYPE_INSPECTOR_SELECTOR, GtkInspectorSelectorClass))
 #define GTK_INSPECTOR_IS_SELECTOR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), GTK_TYPE_INSPECTOR_SELECTOR))
@@ -48,8 +48,8 @@ typedef struct _GtkInspectorSelectorClass
 
 G_BEGIN_DECLS
 
-GType      gtk_inspector_selector_get_type   (void);
-void       gtk_inspector_selector_set_object (GtkInspectorSelector *oh,
+GType      ctk_inspector_selector_get_type   (void);
+void       ctk_inspector_selector_set_object (GtkInspectorSelector *oh,
                                               GObject              *object);
 
 G_END_DECLS

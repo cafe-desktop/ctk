@@ -31,7 +31,7 @@ static gboolean finalized = FALSE;
 static gboolean
 main_loop_quit_cb (gpointer data)
 {
-  gtk_main_quit ();
+  ctk_main_quit ();
 
   g_assert (finalized);
   return FALSE;
@@ -64,13 +64,13 @@ test_finalize_object (gconstpointer data)
 
   /* Toplevels are owned by GTK+, just tell GTK+ to destroy it */
   if (GTK_IS_WINDOW (object) || GTK_IS_INVISIBLE (object))
-    gtk_widget_destroy (GTK_WIDGET (object));
+    ctk_widget_destroy (GTK_WIDGET (object));
   else
     g_object_unref (object);
 
   /* Even if the object did finalize, it may have left some dangerous stuff in the GMainContext */
   g_timeout_add (50, main_loop_quit_cb, NULL);
-  gtk_main();
+  ctk_main();
 }
 
 int
@@ -82,15 +82,15 @@ main (int argc, char **argv)
   GTestDBus *bus;
   gint result;
 
-  /* These must be set before before gtk_test_init */
+  /* These must be set before before ctk_test_init */
   g_setenv ("GIO_USE_VFS", "local", TRUE);
   g_setenv ("GSETTINGS_BACKEND", "memory", TRUE);
 
   /* initialize test program */
-  gtk_test_init (&argc, &argv);
-  gtk_test_register_all_types ();
+  ctk_test_init (&argc, &argv);
+  ctk_test_register_all_types ();
 
-  /* g_test_build_filename must be called after gtk_test_init */
+  /* g_test_build_filename must be called after ctk_test_init */
   schema_dir = g_test_build_filename (G_TEST_BUILT, "", NULL);
   if (g_getenv ("GTK_TEST_MESON") == NULL)
     g_setenv ("GSETTINGS_SCHEMA_DIR", schema_dir, TRUE);
@@ -101,7 +101,7 @@ main (int argc, char **argv)
   bus = g_test_dbus_new (G_TEST_DBUS_NONE);
   g_test_dbus_up (bus);
 
-  all_types = gtk_test_list_all_types (&n_types);
+  all_types = ctk_test_list_all_types (&n_types);
 
   for (i = 0; i < n_types; i++)
     {

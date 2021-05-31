@@ -26,10 +26,10 @@
 
 G_BEGIN_DECLS
 
-GtkCssValue *       _gtk_css_engine_value_new           (GtkThemingEngine       *engine);
-GtkCssValue *       _gtk_css_engine_value_parse         (GtkCssParser           *parser);
+GtkCssValue *       _ctk_css_engine_value_new           (GtkThemingEngine       *engine);
+GtkCssValue *       _ctk_css_engine_value_parse         (GtkCssParser           *parser);
 
-GtkThemingEngine *  _gtk_css_engine_value_get_engine    (const GtkCssValue      *engine);
+GtkThemingEngine *  _ctk_css_engine_value_get_engine    (const GtkCssValue      *engine);
 
 
 G_END_DECLS

@@ -74,18 +74,18 @@ parse_command_line (int *argc, char ***argv)
       return FALSE;
     }
 
-  gtk_test_init (argc, argv);
+  ctk_test_init (argc, argv);
 
-  /* g_test_build_filename must be called after gtk_test_init */
+  /* g_test_build_filename must be called after ctk_test_init */
   schema_dir = g_test_build_filename (G_TEST_BUILT, "", NULL);
   if (g_getenv ("GTK_TEST_MESON") == NULL)
     g_setenv ("GSETTINGS_SCHEMA_DIR", schema_dir, TRUE);
   g_free (schema_dir);
 
   if (g_strcmp0 (arg_direction, "rtl") == 0)
-    gtk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
+    ctk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
   else if (g_strcmp0 (arg_direction, "ltr") == 0)
-    gtk_widget_set_default_direction (GTK_TEXT_DIR_LTR);
+    ctk_widget_set_default_direction (GTK_TEXT_DIR_LTR);
   else if (arg_direction != NULL)
     g_printerr ("Invalid argument passed to --direction argument. Valid arguments are 'ltr' and 'rtl'\n");
 
@@ -224,11 +224,11 @@ add_extra_css (const char *testname,
   if (css_file == NULL)
     return NULL;
 
-  provider = GTK_STYLE_PROVIDER (gtk_css_provider_new ());
-  gtk_css_provider_load_from_path (GTK_CSS_PROVIDER (provider),
+  provider = GTK_STYLE_PROVIDER (ctk_css_provider_new ());
+  ctk_css_provider_load_from_path (GTK_CSS_PROVIDER (provider),
                                    css_file,
                                    NULL);
-  gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+  ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
                                              provider,
                                              GTK_STYLE_PROVIDER_PRIORITY_FORCE);
 
@@ -243,7 +243,7 @@ remove_extra_css (GtkStyleProvider *provider)
   if (provider == NULL)
     return;
 
-  gtk_style_context_remove_provider_for_screen (gdk_screen_get_default (),
+  ctk_style_context_remove_provider_for_screen (gdk_screen_get_default (),
                                                 provider);
 }
 

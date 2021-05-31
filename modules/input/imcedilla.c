@@ -79,7 +79,7 @@ cedilla_class_init (GtkIMContextSimpleClass *class)
 static void
 cedilla_init (GtkIMContextSimple *im_context)
 {
-  gtk_im_context_simple_add_table (im_context,
+  ctk_im_context_simple_add_table (im_context,
 				   cedilla_compose_seqs,
 				   4,
 				   G_N_ELEMENTS (cedilla_compose_seqs) / (4 + 2));
@@ -100,7 +100,7 @@ static const GtkIMContextInfo *info_list[] = {
 #ifndef INCLUDE_IM_cedilla
 #define MODULE_ENTRY(type, function) G_MODULE_EXPORT type im_module_ ## function
 #else
-#define MODULE_ENTRY(type, function) type _gtk_immodule_cedilla_ ## function
+#define MODULE_ENTRY(type, function) type _ctk_immodule_cedilla_ ## function
 #endif
 
 MODULE_ENTRY (void, init) (GTypeModule *module)

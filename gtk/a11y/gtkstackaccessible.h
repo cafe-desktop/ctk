@@ -26,7 +26,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_STACK_ACCESSIBLE            (gtk_stack_accessible_get_type ())
+#define GTK_TYPE_STACK_ACCESSIBLE            (ctk_stack_accessible_get_type ())
 #define GTK_STACK_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_STACK_ACCESSIBLE, GtkStackAccessible))
 #define GTK_STACK_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_STACK_ACCESSIBLE, GtkStackAccessibleClass))
 #define GTK_IS_STACK_ACCESSIBLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_STACK_ACCESSIBLE))
@@ -47,7 +47,7 @@ struct _GtkStackAccessibleClass
 };
 
 GDK_AVAILABLE_IN_3_22
-GType gtk_stack_accessible_get_type (void);
+GType ctk_stack_accessible_get_type (void);
 
 G_END_DECLS
 

@@ -38,7 +38,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SPIN_BUTTON                  (gtk_spin_button_get_type ())
+#define GTK_TYPE_SPIN_BUTTON                  (ctk_spin_button_get_type ())
 #define GTK_SPIN_BUTTON(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SPIN_BUTTON, GtkSpinButton))
 #define GTK_SPIN_BUTTON_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SPIN_BUTTON, GtkSpinButtonClass))
 #define GTK_IS_SPIN_BUTTON(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SPIN_BUTTON))
@@ -63,7 +63,7 @@ G_BEGIN_DECLS
  *
  * The spin button update policy determines whether the spin button displays
  * values even if they are outside the bounds of its adjustment.
- * See gtk_spin_button_set_update_policy().
+ * See ctk_spin_button_set_update_policy().
  */
 typedef enum
 {
@@ -82,7 +82,7 @@ typedef enum
  * @GTK_SPIN_USER_DEFINED: Change by a specified amount.
  *
  * The values of the GtkSpinType enumeration are used to specify the
- * change to make in gtk_spin_button_spin().
+ * change to make in ctk_spin_button_spin().
  */
 typedef enum
 {
@@ -130,106 +130,106 @@ struct _GtkSpinButtonClass
   void (*wrapped) (GtkSpinButton *spin_button);
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
 GDK_AVAILABLE_IN_ALL
-GType		gtk_spin_button_get_type	   (void) G_GNUC_CONST;
+GType		ctk_spin_button_get_type	   (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-void		gtk_spin_button_configure	   (GtkSpinButton  *spin_button,
+void		ctk_spin_button_configure	   (GtkSpinButton  *spin_button,
 						    GtkAdjustment  *adjustment,
 						    gdouble	    climb_rate,
 						    guint	    digits);
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget*	gtk_spin_button_new		   (GtkAdjustment  *adjustment,
+GtkWidget*	ctk_spin_button_new		   (GtkAdjustment  *adjustment,
 						    gdouble	    climb_rate,
 						    guint	    digits);
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget*	gtk_spin_button_new_with_range	   (gdouble  min,
+GtkWidget*	ctk_spin_button_new_with_range	   (gdouble  min,
 						    gdouble  max,
 						    gdouble  step);
 
 GDK_AVAILABLE_IN_ALL
-void		gtk_spin_button_set_adjustment	   (GtkSpinButton  *spin_button,
+void		ctk_spin_button_set_adjustment	   (GtkSpinButton  *spin_button,
 						    GtkAdjustment  *adjustment);
 
 GDK_AVAILABLE_IN_ALL
-GtkAdjustment*	gtk_spin_button_get_adjustment	   (GtkSpinButton  *spin_button);
+GtkAdjustment*	ctk_spin_button_get_adjustment	   (GtkSpinButton  *spin_button);
 
 GDK_AVAILABLE_IN_ALL
-void		gtk_spin_button_set_digits	   (GtkSpinButton  *spin_button,
+void		ctk_spin_button_set_digits	   (GtkSpinButton  *spin_button,
 						    guint	    digits);
 GDK_AVAILABLE_IN_ALL
-guint           gtk_spin_button_get_digits         (GtkSpinButton  *spin_button);
+guint           ctk_spin_button_get_digits         (GtkSpinButton  *spin_button);
 
 GDK_AVAILABLE_IN_ALL
-void		gtk_spin_button_set_increments	   (GtkSpinButton  *spin_button,
+void		ctk_spin_button_set_increments	   (GtkSpinButton  *spin_button,
 						    gdouble         step,
 						    gdouble         page);
 GDK_AVAILABLE_IN_ALL
-void            gtk_spin_button_get_increments     (GtkSpinButton  *spin_button,
+void            ctk_spin_button_get_increments     (GtkSpinButton  *spin_button,
 						    gdouble        *step,
 						    gdouble        *page);
 
 GDK_AVAILABLE_IN_ALL
-void		gtk_spin_button_set_range	   (GtkSpinButton  *spin_button,
+void		ctk_spin_button_set_range	   (GtkSpinButton  *spin_button,
 						    gdouble         min,
 						    gdouble         max);
 GDK_AVAILABLE_IN_ALL
-void            gtk_spin_button_get_range          (GtkSpinButton  *spin_button,
+void            ctk_spin_button_get_range          (GtkSpinButton  *spin_button,
 						    gdouble        *min,
 						    gdouble        *max);
 
 GDK_AVAILABLE_IN_ALL
-gdouble		gtk_spin_button_get_value          (GtkSpinButton  *spin_button);
+gdouble		ctk_spin_button_get_value          (GtkSpinButton  *spin_button);
 
 GDK_AVAILABLE_IN_ALL
-gint		gtk_spin_button_get_value_as_int   (GtkSpinButton  *spin_button);
+gint		ctk_spin_button_get_value_as_int   (GtkSpinButton  *spin_button);
 
 GDK_AVAILABLE_IN_ALL
-void		gtk_spin_button_set_value	   (GtkSpinButton  *spin_button,
+void		ctk_spin_button_set_value	   (GtkSpinButton  *spin_button,
 						    gdouble	    value);
 
 GDK_AVAILABLE_IN_ALL
-void		gtk_spin_button_set_update_policy  (GtkSpinButton  *spin_button,
+void		ctk_spin_button_set_update_policy  (GtkSpinButton  *spin_button,
 						    GtkSpinButtonUpdatePolicy  policy);
 GDK_AVAILABLE_IN_ALL
-GtkSpinButtonUpdatePolicy gtk_spin_button_get_update_policy (GtkSpinButton *spin_button);
+GtkSpinButtonUpdatePolicy ctk_spin_button_get_update_policy (GtkSpinButton *spin_button);
 
 GDK_AVAILABLE_IN_ALL
-void		gtk_spin_button_set_numeric	   (GtkSpinButton  *spin_button,
+void		ctk_spin_button_set_numeric	   (GtkSpinButton  *spin_button,
 						    gboolean	    numeric);
 GDK_AVAILABLE_IN_ALL
-gboolean        gtk_spin_button_get_numeric        (GtkSpinButton  *spin_button);
+gboolean        ctk_spin_button_get_numeric        (GtkSpinButton  *spin_button);
 
 GDK_AVAILABLE_IN_ALL
-void		gtk_spin_button_spin		   (GtkSpinButton  *spin_button,
+void		ctk_spin_button_spin		   (GtkSpinButton  *spin_button,
 						    GtkSpinType     direction,
 						    gdouble	    increment);
 
 GDK_AVAILABLE_IN_ALL
-void		gtk_spin_button_set_wrap	   (GtkSpinButton  *spin_button,
+void		ctk_spin_button_set_wrap	   (GtkSpinButton  *spin_button,
 						    gboolean	    wrap);
 GDK_AVAILABLE_IN_ALL
-gboolean        gtk_spin_button_get_wrap           (GtkSpinButton  *spin_button);
+gboolean        ctk_spin_button_get_wrap           (GtkSpinButton  *spin_button);
 
 GDK_AVAILABLE_IN_ALL
-void		gtk_spin_button_set_snap_to_ticks  (GtkSpinButton  *spin_button,
+void		ctk_spin_button_set_snap_to_ticks  (GtkSpinButton  *spin_button,
 						    gboolean	    snap_to_ticks);
 GDK_AVAILABLE_IN_ALL
-gboolean        gtk_spin_button_get_snap_to_ticks  (GtkSpinButton  *spin_button);
+gboolean        ctk_spin_button_get_snap_to_ticks  (GtkSpinButton  *spin_button);
 GDK_AVAILABLE_IN_ALL
-void            gtk_spin_button_update             (GtkSpinButton  *spin_button);
+void            ctk_spin_button_update             (GtkSpinButton  *spin_button);
 
 /* private */
-void            _gtk_spin_button_get_panels        (GtkSpinButton  *spin_button,
+void            _ctk_spin_button_get_panels        (GtkSpinButton  *spin_button,
                                                     GdkWindow     **down_panel,
                                                     GdkWindow     **up_panel);
 

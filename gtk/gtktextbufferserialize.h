@@ -21,14 +21,14 @@
 
 #include <gtk/gtktextbuffer.h>
 
-guint8 * _gtk_text_buffer_serialize_rich_text   (GtkTextBuffer     *register_buffer,
+guint8 * _ctk_text_buffer_serialize_rich_text   (GtkTextBuffer     *register_buffer,
                                                  GtkTextBuffer     *content_buffer,
                                                  const GtkTextIter *start,
                                                  const GtkTextIter *end,
                                                  gsize             *length,
                                                  gpointer           user_data);
 
-gboolean _gtk_text_buffer_deserialize_rich_text (GtkTextBuffer     *register_buffer,
+gboolean _ctk_text_buffer_deserialize_rich_text (GtkTextBuffer     *register_buffer,
                                                  GtkTextBuffer     *content_buffer,
                                                  GtkTextIter       *iter,
                                                  const guint8      *data,

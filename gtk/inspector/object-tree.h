@@ -26,7 +26,7 @@
 #include <gtk/gtkbox.h>
 #include <gtk/gtktreemodel.h>
 
-#define GTK_TYPE_INSPECTOR_OBJECT_TREE            (gtk_inspector_object_tree_get_type())
+#define GTK_TYPE_INSPECTOR_OBJECT_TREE            (ctk_inspector_object_tree_get_type())
 #define GTK_INSPECTOR_OBJECT_TREE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_INSPECTOR_OBJECT_TREE, GtkInspectorObjectTree))
 #define GTK_INSPECTOR_OBJECT_TREE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GTK_TYPE_INSPECTOR_OBJECT_TREE, GtkInspectorObjectTreeClass))
 #define GTK_INSPECTOR_IS_OBJECT_TREE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), GTK_TYPE_INSPECTOR_OBJECT_TREE))
@@ -56,21 +56,21 @@ typedef struct _GtkInspectorObjectTreeClass
 G_BEGIN_DECLS
 
 
-GType      gtk_inspector_object_tree_get_type            (void);
+GType      ctk_inspector_object_tree_get_type            (void);
 
-void       gtk_inspector_object_tree_scan                (GtkInspectorObjectTree *wt,
+void       ctk_inspector_object_tree_scan                (GtkInspectorObjectTree *wt,
                                                           GtkWidget              *window);
-gboolean   gtk_inspector_object_tree_select_object       (GtkInspectorObjectTree *wt,
+gboolean   ctk_inspector_object_tree_select_object       (GtkInspectorObjectTree *wt,
                                                           GObject                *object);
-void       gtk_inspector_object_tree_append_object       (GtkInspectorObjectTree *wt,
+void       ctk_inspector_object_tree_append_object       (GtkInspectorObjectTree *wt,
                                                           GObject                *object,
                                                           GtkTreeIter            *parent_iter,
                                                           const gchar            *name);
-gboolean   gtk_inspector_object_tree_find_object         (GtkInspectorObjectTree *wt,
+gboolean   ctk_inspector_object_tree_find_object         (GtkInspectorObjectTree *wt,
                                                           GObject                *object,
                                                           GtkTreeIter            *iter);
 
-GObject   *gtk_inspector_object_tree_get_selected        (GtkInspectorObjectTree *wt);
+GObject   *ctk_inspector_object_tree_get_selected        (GtkInspectorObjectTree *wt);
 
 G_END_DECLS
 

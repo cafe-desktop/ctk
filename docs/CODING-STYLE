@@ -421,17 +421,17 @@ definitions should be vertically aligned in three columns:
 The maximum width of each column is given by the longest element in the
 column:
 
-  void         gtk_type_set_property (GtkType      *type,
+  void         ctk_type_set_property (GtkType      *type,
                                       const gchar  *value,
                                       GError      **error);
-  const gchar *gtk_type_get_property (GtkType      *type);
+  const gchar *ctk_type_get_property (GtkType      *type);
 
 It is also possible to align the columns to the next tab:
 
-  void          gtk_type_set_prop           (GtkType *type,
+  void          ctk_type_set_prop           (GtkType *type,
                                              gfloat   value);
-  gfloat        gtk_type_get_prop           (GtkType *type);
-  gint          gtk_type_update_foobar      (GtkType *type);
+  gfloat        ctk_type_get_prop           (GtkType *type);
+  gint          ctk_type_update_foobar      (GtkType *type);
 
 Public headers should never be included directly:
 
@@ -574,7 +574,7 @@ All public functions must be listed in the gtk.symbols file.
 + Private API
 
 Non-exported functions that are needed in more than one source file
-should be named "_gtk_...", and declared in a private header file.
+should be named "_ctk_...", and declared in a private header file.
 
 Underscore-prefixed functions are never exported.
 
@@ -588,7 +588,7 @@ be placed in the source file, directly above the function.
 
   /* valid */
   /**
-   * gtk_get_flow:
+   * ctk_get_flow:
    * @widget: a #GtkWidget
    *
    * Gets the flow of a widget.
@@ -598,7 +598,7 @@ be placed in the source file, directly above the function.
    * Returns: (transfer none): the flow of @widget
    */
   GtkFlow *
-  gtk_get_flow (GtkWidget *widget)
+  ctk_get_flow (GtkWidget *widget)
   {
 
     ...

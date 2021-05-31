@@ -23,10 +23,10 @@ notify_font_cb (GtkFontChooser *fontchooser, GParamSpec *pspec, gpointer data)
   PangoFontFamily *family;
   PangoFontFace *face;
 
-  g_debug ("Changed font name %s", gtk_font_chooser_get_font (fontchooser));
+  g_debug ("Changed font name %s", ctk_font_chooser_get_font (fontchooser));
 
-  family = gtk_font_chooser_get_font_family (fontchooser);
-  face = gtk_font_chooser_get_font_face (fontchooser);
+  family = ctk_font_chooser_get_font_family (fontchooser);
+  face = ctk_font_chooser_get_font_face (fontchooser);
   if (family)
     {
        g_debug ("  Family: %s is-monospace:%s",
@@ -45,7 +45,7 @@ notify_font_cb (GtkFontChooser *fontchooser, GParamSpec *pspec, gpointer data)
 static void
 notify_preview_text_cb (GObject *fontchooser, GParamSpec *pspec, gpointer data)
 {
-  g_debug ("Changed preview text %s", gtk_font_chooser_get_preview_text (GTK_FONT_CHOOSER (fontchooser)));
+  g_debug ("Changed preview text %s", ctk_font_chooser_get_preview_text (GTK_FONT_CHOOSER (fontchooser)));
 }
 
 static void
@@ -61,20 +61,20 @@ main (int argc, char *argv[])
   GtkWidget *box;
   GtkWidget *fontchooser;
 
-  gtk_init (NULL, NULL);
+  ctk_init (NULL, NULL);
 
-  fontchooser = gtk_font_chooser_widget_new ();
+  fontchooser = ctk_font_chooser_widget_new ();
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_widget_set_size_request (window, 600, 600);
-  box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
-  gtk_container_add (GTK_CONTAINER (window), box);
-  gtk_container_add (GTK_CONTAINER (box), fontchooser);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_widget_set_size_request (window, 600, 600);
+  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
+  ctk_container_add (GTK_CONTAINER (window), box);
+  ctk_container_add (GTK_CONTAINER (box), fontchooser);
 
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
 
   g_signal_connect (window, "delete-event",
-                    G_CALLBACK (gtk_main_quit), NULL);
+                    G_CALLBACK (ctk_main_quit), NULL);
   g_signal_connect (fontchooser, "notify::font",
                     G_CALLBACK (notify_font_cb), NULL);
   g_signal_connect (fontchooser, "notify::preview-text",
@@ -82,11 +82,11 @@ main (int argc, char *argv[])
   g_signal_connect (fontchooser, "font-activated",
                     G_CALLBACK (font_activated_cb), NULL);
 
-  gtk_font_chooser_set_font (GTK_FONT_CHOOSER (fontchooser), "Bitstream Vera Sans 45");
-  gtk_font_chooser_set_preview_text (GTK_FONT_CHOOSER (fontchooser), "[user@host ~]$ &>>");
-  gtk_font_chooser_set_show_preview_entry (GTK_FONT_CHOOSER (fontchooser), FALSE);
+  ctk_font_chooser_set_font (GTK_FONT_CHOOSER (fontchooser), "Bitstream Vera Sans 45");
+  ctk_font_chooser_set_preview_text (GTK_FONT_CHOOSER (fontchooser), "[user@host ~]$ &>>");
+  ctk_font_chooser_set_show_preview_entry (GTK_FONT_CHOOSER (fontchooser), FALSE);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

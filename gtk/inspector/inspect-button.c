@@ -48,9 +48,9 @@ find_widget (GtkWidget      *widget,
   gint x_offset = 0;
   gint y_offset = 0;
 
-  gtk_widget_get_allocation (widget, &new_allocation);
+  ctk_widget_get_allocation (widget, &new_allocation);
 
-  if (data->found || !gtk_widget_get_mapped (widget))
+  if (data->found || !ctk_widget_get_mapped (widget))
     return;
 
   /* Note that in the following code, we only count the
@@ -59,18 +59,18 @@ find_widget (GtkWidget      *widget,
    * but within the allocation are not counted. This is consistent
    * with the way we highlight drag targets.
    */
-  if (gtk_widget_get_has_window (widget))
+  if (ctk_widget_get_has_window (widget))
     {
       new_allocation.x = 0;
       new_allocation.y = 0;
     }
 
-  if (gtk_widget_get_parent (widget) && !data->first)
+  if (ctk_widget_get_parent (widget) && !data->first)
     {
       GdkWindow *window;
 
-      window = gtk_widget_get_window (widget);
-      while (window != gtk_widget_get_window (gtk_widget_get_parent (widget)))
+      window = ctk_widget_get_window (widget);
+      while (window != ctk_widget_get_window (ctk_widget_get_parent (widget)))
         {
           gint tx, ty, twidth, theight;
 
@@ -121,7 +121,7 @@ find_widget (GtkWidget      *widget,
           new_data.found = FALSE;
           new_data.first = FALSE;
 
-          gtk_container_forall (GTK_CONTAINER (widget),
+          ctk_container_forall (GTK_CONTAINER (widget),
                                 (GtkCallback)find_widget,
                                 &new_data);
 
@@ -162,7 +162,7 @@ find_widget_at_pointer (GdkDevice *device)
 
   if (widget)
     {
-      gdk_window_get_device_position (gtk_widget_get_window (widget),
+      gdk_window_get_device_position (ctk_widget_get_window (widget),
                                       device, &x, &y, NULL);
 
       data.x = x;
@@ -189,7 +189,7 @@ clear_flash (GtkInspectorWindow *iw)
 {
   if (iw->flash_widget)
     {
-      gtk_widget_queue_draw (iw->flash_widget);
+      ctk_widget_queue_draw (iw->flash_widget);
       g_signal_handlers_disconnect_by_func (iw->flash_widget, draw_flash, iw);
       g_signal_handlers_disconnect_by_func (iw->flash_widget, clear_flash, iw);
       iw->flash_widget = NULL;
@@ -206,7 +206,7 @@ start_flash (GtkInspectorWindow *iw,
   iw->flash_widget = widget;
   g_signal_connect_after (widget, "draw", G_CALLBACK (draw_flash), iw);
   g_signal_connect_swapped (widget, "unmap", G_CALLBACK (clear_flash), iw);
-  gtk_widget_queue_draw (widget);
+  ctk_widget_queue_draw (widget);
 }
 
 static void
@@ -217,10 +217,10 @@ select_widget (GtkInspectorWindow *iw,
 
   iw->selected_widget = widget;
 
-  if (!gtk_inspector_object_tree_select_object (wt, G_OBJECT (widget)))
+  if (!ctk_inspector_object_tree_select_object (wt, G_OBJECT (widget)))
     {
-      gtk_inspector_object_tree_scan (wt, gtk_widget_get_toplevel (widget));
-      gtk_inspector_object_tree_select_object (wt, G_OBJECT (widget));
+      ctk_inspector_object_tree_scan (wt, ctk_widget_get_toplevel (widget));
+      ctk_inspector_object_tree_select_object (wt, G_OBJECT (widget));
     }
 }
 
@@ -231,7 +231,7 @@ on_inspect_widget (GtkWidget          *button,
 {
   GtkWidget *widget;
 
-  gdk_window_raise (gtk_widget_get_window (GTK_WIDGET (iw)));
+  gdk_window_raise (ctk_widget_get_window (GTK_WIDGET (iw)));
 
   clear_flash (iw);
 
@@ -256,7 +256,7 @@ on_highlight_widget (GtkWidget          *button,
       return;
     }
 
-  if (gtk_widget_get_toplevel (widget) == GTK_WIDGET (iw))
+  if (ctk_widget_get_toplevel (widget) == GTK_WIDGET (iw))
     {
       /* Don't hilight things in the inspector window */
       return;
@@ -277,21 +277,21 @@ deemphasize_window (GtkWidget *window)
 {
   GdkScreen *screen;
 
-  screen = gtk_widget_get_screen (window);
+  screen = ctk_widget_get_screen (window);
   if (gdk_screen_is_composited (screen) &&
-      gtk_widget_get_visual (window) == gdk_screen_get_rgba_visual (screen))
+      ctk_widget_get_visual (window) == gdk_screen_get_rgba_visual (screen))
     {
       cairo_rectangle_int_t rect;
       cairo_region_t *region;
 
-      gtk_widget_set_opacity (window, 0.3);
+      ctk_widget_set_opacity (window, 0.3);
       rect.x = rect.y = rect.width = rect.height = 0;
       region = cairo_region_create_rectangle (&rect);
-      gtk_widget_input_shape_combine_region (window, region);
+      ctk_widget_input_shape_combine_region (window, region);
       cairo_region_destroy (region);
     }
   else
-    gdk_window_lower (gtk_widget_get_window (window));
+    gdk_window_lower (ctk_widget_get_window (window));
 }
 
 static void
@@ -299,15 +299,15 @@ reemphasize_window (GtkWidget *window)
 {
   GdkScreen *screen;
 
-  screen = gtk_widget_get_screen (window);
+  screen = ctk_widget_get_screen (window);
   if (gdk_screen_is_composited (screen) &&
-      gtk_widget_get_visual (window) == gdk_screen_get_rgba_visual (screen))
+      ctk_widget_get_visual (window) == gdk_screen_get_rgba_visual (screen))
     {
-      gtk_widget_set_opacity (window, 1.0);
-      gtk_widget_input_shape_combine_region (window, NULL);
+      ctk_widget_set_opacity (window, 1.0);
+      ctk_widget_input_shape_combine_region (window, NULL);
     }
   else
-    gdk_window_raise (gtk_widget_get_window (window));
+    gdk_window_raise (ctk_widget_get_window (window));
 }
 
 static gboolean
@@ -320,7 +320,7 @@ property_query_event (GtkWidget *widget,
   if (event->type == GDK_BUTTON_RELEASE)
     {
       g_signal_handlers_disconnect_by_func (widget, property_query_event, data);
-      gtk_grab_remove (widget);
+      ctk_grab_remove (widget);
       if (iw->grabbed)
         gdk_seat_ungrab (gdk_event_get_seat (event));
       reemphasize_window (GTK_WIDGET (iw));
@@ -338,7 +338,7 @@ property_query_event (GtkWidget *widget,
       if (ke->keyval == GDK_KEY_Escape)
         {
           g_signal_handlers_disconnect_by_func (widget, property_query_event, data);
-          gtk_grab_remove (widget);
+          ctk_grab_remove (widget);
           if (iw->grabbed)
             gdk_seat_ungrab (gdk_event_get_seat (event));
           reemphasize_window (GTK_WIDGET (iw));
@@ -351,7 +351,7 @@ property_query_event (GtkWidget *widget,
 }
 
 void
-gtk_inspector_on_inspect (GtkWidget          *button,
+ctk_inspector_on_inspect (GtkWidget          *button,
                           GtkInspectorWindow *iw)
 {
   GdkDisplay *display;
@@ -360,21 +360,21 @@ gtk_inspector_on_inspect (GtkWidget          *button,
 
   if (!iw->invisible)
     {
-      iw->invisible = gtk_invisible_new_for_screen (gdk_screen_get_default ());
-      gtk_widget_add_events (iw->invisible,
+      iw->invisible = ctk_invisible_new_for_screen (gdk_screen_get_default ());
+      ctk_widget_add_events (iw->invisible,
                              GDK_POINTER_MOTION_MASK |
                              GDK_BUTTON_PRESS_MASK |
                              GDK_BUTTON_RELEASE_MASK |
                              GDK_KEY_PRESS_MASK |
                              GDK_KEY_RELEASE_MASK);
-      gtk_widget_realize (iw->invisible);
-      gtk_widget_show (iw->invisible);
+      ctk_widget_realize (iw->invisible);
+      ctk_widget_show (iw->invisible);
     }
 
   display = gdk_display_get_default ();
   cursor = gdk_cursor_new_from_name (display, "crosshair");
   status = gdk_seat_grab (gdk_display_get_default_seat (display),
-                          gtk_widget_get_window (iw->invisible),
+                          ctk_widget_get_window (iw->invisible),
                           GDK_SEAT_CAPABILITY_ALL_POINTING, TRUE,
                           cursor, NULL, NULL, NULL);
   g_object_unref (cursor);
@@ -382,7 +382,7 @@ gtk_inspector_on_inspect (GtkWidget          *button,
 
   g_signal_connect (iw->invisible, "event", G_CALLBACK (property_query_event), iw);
 
-  gtk_grab_add (GTK_WIDGET (iw->invisible));
+  ctk_grab_add (GTK_WIDGET (iw->invisible));
   deemphasize_window (GTK_WIDGET (iw));
 }
 
@@ -398,21 +398,21 @@ draw_flash (GtkWidget          *widget,
 
   if (GTK_IS_WINDOW (widget))
     {
-      GtkWidget *child = gtk_bin_get_child (GTK_BIN (widget));
+      GtkWidget *child = ctk_bin_get_child (GTK_BIN (widget));
       /* We don't want to draw the drag highlight around the
        * CSD window decorations
        */
       if (child == NULL)
         return FALSE;
 
-      gtk_widget_get_allocation (child, &alloc);
+      ctk_widget_get_allocation (child, &alloc);
     }
   else
     {
       alloc.x = 0;
       alloc.y = 0;
-      alloc.width = gtk_widget_get_allocated_width (widget);
-      alloc.height = gtk_widget_get_allocated_height (widget);
+      alloc.width = ctk_widget_get_allocated_width (widget);
+      alloc.height = ctk_widget_get_allocated_height (widget);
     }
 
   cairo_set_source_rgba (cr, 0.0, 0.0, 1.0, 0.2);
@@ -427,7 +427,7 @@ draw_flash (GtkWidget          *widget,
 static gboolean
 on_flash_timeout (GtkInspectorWindow *iw)
 {
-  gtk_widget_queue_draw (iw->flash_widget);
+  ctk_widget_queue_draw (iw->flash_widget);
 
   iw->flash_count++;
 
@@ -445,10 +445,10 @@ on_flash_timeout (GtkInspectorWindow *iw)
 }
 
 void
-gtk_inspector_flash_widget (GtkInspectorWindow *iw,
+ctk_inspector_flash_widget (GtkInspectorWindow *iw,
                             GtkWidget          *widget)
 {
-  if (!gtk_widget_get_visible (widget) || !gtk_widget_get_mapped (widget))
+  if (!ctk_widget_get_visible (widget) || !ctk_widget_get_mapped (widget))
     return;
 
   if (iw->flash_cnx != 0)
@@ -462,22 +462,22 @@ gtk_inspector_flash_widget (GtkInspectorWindow *iw,
 }
 
 void
-gtk_inspector_start_highlight (GtkWidget *widget)
+ctk_inspector_start_highlight (GtkWidget *widget)
 {
   g_signal_connect_after (widget, "draw", G_CALLBACK (draw_flash), NULL);
-  gtk_widget_queue_draw (widget);
+  ctk_widget_queue_draw (widget);
 }
 
 void
-gtk_inspector_stop_highlight (GtkWidget *widget)
+ctk_inspector_stop_highlight (GtkWidget *widget)
 {
   g_signal_handlers_disconnect_by_func (widget, draw_flash, NULL);
   g_signal_handlers_disconnect_by_func (widget, clear_flash, NULL);
-  gtk_widget_queue_draw (widget);
+  ctk_widget_queue_draw (widget);
 }
 
 void
-gtk_inspector_window_select_widget_under_pointer (GtkInspectorWindow *iw)
+ctk_inspector_window_select_widget_under_pointer (GtkInspectorWindow *iw)
 {
   GdkDisplay *display;
   GdkDevice *device;

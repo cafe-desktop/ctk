@@ -22,9 +22,9 @@
 
 G_BEGIN_DECLS
 
-guint _gtk_binding_parse_binding     (GScanner        *scanner);
-void  _gtk_binding_reset_parsed      (void);
-void  _gtk_binding_entry_add_signall (GtkBindingSet   *binding_set,
+guint _ctk_binding_parse_binding     (GScanner        *scanner);
+void  _ctk_binding_reset_parsed      (void);
+void  _ctk_binding_entry_add_signall (GtkBindingSet   *binding_set,
                                       guint            keyval,
                                       GdkModifierType  modifiers,
                                       const gchar     *signal_name,

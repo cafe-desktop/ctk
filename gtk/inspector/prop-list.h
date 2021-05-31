@@ -26,7 +26,7 @@
 
 #include <gtk/gtkbox.h>
 
-#define GTK_TYPE_INSPECTOR_PROP_LIST            (gtk_inspector_prop_list_get_type())
+#define GTK_TYPE_INSPECTOR_PROP_LIST            (ctk_inspector_prop_list_get_type())
 #define GTK_INSPECTOR_PROP_LIST(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_INSPECTOR_PROP_LIST, GtkInspectorPropList))
 #define GTK_INSPECTOR_PROP_LIST_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GTK_TYPE_INSPECTOR_PROP_LIST, GtkInspectorPropListClass))
 #define GTK_INSPECTOR_IS_PROP_LIST(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), GTK_TYPE_INSPECTOR_PROP_LIST))
@@ -50,8 +50,8 @@ typedef struct _GtkInspectorPropListClass
 
 G_BEGIN_DECLS
 
-GType      gtk_inspector_prop_list_get_type   (void);
-gboolean   gtk_inspector_prop_list_set_object (GtkInspectorPropList *pl,
+GType      ctk_inspector_prop_list_get_type   (void);
+gboolean   ctk_inspector_prop_list_set_object (GtkInspectorPropList *pl,
                                                GObject              *object);
 
 G_END_DECLS

@@ -31,7 +31,7 @@ invert (GtkButton *button)
   for (l = scales; l; l = l->next)
     {
       GtkRange *range = l->data;
-      gtk_range_set_inverted (range, !gtk_range_get_inverted (range));
+      ctk_range_set_inverted (range, !ctk_range_get_inverted (range));
     }
 }
 
@@ -40,12 +40,12 @@ flip (GtkButton *button)
 {
   GSList *l;
 
-  gtk_orientable_set_orientation (GTK_ORIENTABLE (flipbox), 1 - gtk_orientable_get_orientation (GTK_ORIENTABLE (flipbox)));
+  ctk_orientable_set_orientation (GTK_ORIENTABLE (flipbox), 1 - ctk_orientable_get_orientation (GTK_ORIENTABLE (flipbox)));
 
   for (l = scales; l; l = l->next)
     {
       GtkOrientable *o = l->data;
-      gtk_orientable_set_orientation (o, 1 - gtk_orientable_get_orientation (o));
+      ctk_orientable_set_orientation (o, 1 - ctk_orientable_get_orientation (o));
     }
 }
 
@@ -55,12 +55,12 @@ trough (GtkToggleButton *button)
   GSList *l;
   gboolean value;
 
-  value = gtk_toggle_button_get_active (button);
+  value = ctk_toggle_button_get_active (button);
 
   for (l = scales; l; l = l->next)
     {
       GtkRange *range = l->data;
-      gtk_range_set_range (range, 0., value ? 100.0 : 0.);
+      ctk_range_set_range (range, 0., value ? 100.0 : 0.);
     }
 }
 
@@ -72,19 +72,19 @@ extra (GtkToggleButton *button)
 {
   gboolean value;
 
-  value = gtk_toggle_button_get_active (button);
+  value = ctk_toggle_button_get_active (button);
 
   if (value)
     {
-      gtk_scale_add_mark (GTK_SCALE (extra_scale), extra_marks[0], GTK_POS_TOP, NULL);
-      gtk_scale_add_mark (GTK_SCALE (extra_scale), extra_marks[1], GTK_POS_TOP, NULL);
+      ctk_scale_add_mark (GTK_SCALE (extra_scale), extra_marks[0], GTK_POS_TOP, NULL);
+      ctk_scale_add_mark (GTK_SCALE (extra_scale), extra_marks[1], GTK_POS_TOP, NULL);
     }
   else
     {
-      gtk_scale_clear_marks (GTK_SCALE (extra_scale));
-      gtk_scale_add_mark (GTK_SCALE (extra_scale), marks[0], GTK_POS_BOTTOM, NULL);
-      gtk_scale_add_mark (GTK_SCALE (extra_scale), marks[1], GTK_POS_BOTTOM, NULL);
-      gtk_scale_add_mark (GTK_SCALE (extra_scale), marks[2], GTK_POS_BOTTOM, NULL);
+      ctk_scale_clear_marks (GTK_SCALE (extra_scale));
+      ctk_scale_add_mark (GTK_SCALE (extra_scale), marks[0], GTK_POS_BOTTOM, NULL);
+      ctk_scale_add_mark (GTK_SCALE (extra_scale), marks[1], GTK_POS_BOTTOM, NULL);
+      ctk_scale_add_mark (GTK_SCALE (extra_scale), marks[2], GTK_POS_BOTTOM, NULL);
     }
 }
 
@@ -114,120 +114,120 @@ int main (int argc, char *argv[])
   gdouble pos_marks[4] = { 0.0, 33.3, 66.6, 100.0 };
   const gchar *pos_labels[4] = { "Left", "Right", "Top", "Bottom" };
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_title (GTK_WINDOW (window), "Ranges with marks");
-  box1 = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
-  flipbox = box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
-  gtk_widget_set_hexpand (flipbox, TRUE);
-  gtk_widget_set_vexpand (flipbox, TRUE);
-  gtk_container_add (GTK_CONTAINER (box1), box);
-  gtk_container_add (GTK_CONTAINER (window), box1);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (GTK_WINDOW (window), "Ranges with marks");
+  box1 = ctk_box_new (GTK_ORIENTATION_VERTICAL, 5);
+  flipbox = box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 5);
+  ctk_widget_set_hexpand (flipbox, TRUE);
+  ctk_widget_set_vexpand (flipbox, TRUE);
+  ctk_container_add (GTK_CONTAINER (box1), box);
+  ctk_container_add (GTK_CONTAINER (window), box1);
 
-  frame = gtk_frame_new ("No marks");
-  scale = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
+  frame = ctk_frame_new ("No marks");
+  scale = ctk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
   scales = g_slist_prepend (scales, scale);
-  gtk_scale_set_draw_value (GTK_SCALE (scale), FALSE);
-  gtk_container_add (GTK_CONTAINER (frame), scale);
-  gtk_box_pack_start (GTK_BOX (box), frame, FALSE, FALSE, 0);
+  ctk_scale_set_draw_value (GTK_SCALE (scale), FALSE);
+  ctk_container_add (GTK_CONTAINER (frame), scale);
+  ctk_box_pack_start (GTK_BOX (box), frame, FALSE, FALSE, 0);
 
-  frame = gtk_frame_new ("With fill level");
-  scale = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
+  frame = ctk_frame_new ("With fill level");
+  scale = ctk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
   scales = g_slist_prepend (scales, scale);
-  gtk_scale_set_draw_value (GTK_SCALE (scale), FALSE);
-  gtk_range_set_show_fill_level (GTK_RANGE (scale), TRUE);
-  gtk_range_set_fill_level (GTK_RANGE (scale), 50);
-  gtk_container_add (GTK_CONTAINER (frame), scale);
-  gtk_box_pack_start (GTK_BOX (box), frame, FALSE, FALSE, 0);
+  ctk_scale_set_draw_value (GTK_SCALE (scale), FALSE);
+  ctk_range_set_show_fill_level (GTK_RANGE (scale), TRUE);
+  ctk_range_set_fill_level (GTK_RANGE (scale), 50);
+  ctk_container_add (GTK_CONTAINER (frame), scale);
+  ctk_box_pack_start (GTK_BOX (box), frame, FALSE, FALSE, 0);
 
-  frame = gtk_frame_new ("Simple marks");
-  extra_scale = scale = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
+  frame = ctk_frame_new ("Simple marks");
+  extra_scale = scale = ctk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
   scales = g_slist_prepend (scales, scale);
-  gtk_scale_set_draw_value (GTK_SCALE (scale), FALSE);
-  gtk_scale_add_mark (GTK_SCALE (scale), marks[0], GTK_POS_BOTTOM, NULL);
-  gtk_scale_add_mark (GTK_SCALE (scale), marks[1], GTK_POS_BOTTOM, NULL);
-  gtk_scale_add_mark (GTK_SCALE (scale), marks[2], GTK_POS_BOTTOM, NULL);
-  gtk_container_add (GTK_CONTAINER (frame), scale);
-  gtk_box_pack_start (GTK_BOX (box), frame, FALSE, FALSE, 0);
+  ctk_scale_set_draw_value (GTK_SCALE (scale), FALSE);
+  ctk_scale_add_mark (GTK_SCALE (scale), marks[0], GTK_POS_BOTTOM, NULL);
+  ctk_scale_add_mark (GTK_SCALE (scale), marks[1], GTK_POS_BOTTOM, NULL);
+  ctk_scale_add_mark (GTK_SCALE (scale), marks[2], GTK_POS_BOTTOM, NULL);
+  ctk_container_add (GTK_CONTAINER (frame), scale);
+  ctk_box_pack_start (GTK_BOX (box), frame, FALSE, FALSE, 0);
 
-  frame = gtk_frame_new ("Simple marks up");
-  scale = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
+  frame = ctk_frame_new ("Simple marks up");
+  scale = ctk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
   scales = g_slist_prepend (scales, scale);
-  gtk_scale_set_draw_value (GTK_SCALE (scale), FALSE);
-  gtk_scale_add_mark (GTK_SCALE (scale), marks[0], GTK_POS_TOP, NULL);
-  gtk_scale_add_mark (GTK_SCALE (scale), marks[1], GTK_POS_TOP, NULL);
-  gtk_scale_add_mark (GTK_SCALE (scale), marks[2], GTK_POS_TOP, NULL);
-  gtk_container_add (GTK_CONTAINER (frame), scale);
-  gtk_box_pack_start (GTK_BOX (box), frame, FALSE, FALSE, 0);
+  ctk_scale_set_draw_value (GTK_SCALE (scale), FALSE);
+  ctk_scale_add_mark (GTK_SCALE (scale), marks[0], GTK_POS_TOP, NULL);
+  ctk_scale_add_mark (GTK_SCALE (scale), marks[1], GTK_POS_TOP, NULL);
+  ctk_scale_add_mark (GTK_SCALE (scale), marks[2], GTK_POS_TOP, NULL);
+  ctk_container_add (GTK_CONTAINER (frame), scale);
+  ctk_box_pack_start (GTK_BOX (box), frame, FALSE, FALSE, 0);
 
-  frame = gtk_frame_new ("Labeled marks");
-  box2 = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
+  frame = ctk_frame_new ("Labeled marks");
+  box2 = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
 
-  scale = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
+  scale = ctk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
   scales = g_slist_prepend (scales, scale);
-  gtk_scale_set_draw_value (GTK_SCALE (scale), FALSE);
-  gtk_scale_add_mark (GTK_SCALE (scale), marks[0], GTK_POS_BOTTOM, labels[0]);
-  gtk_scale_add_mark (GTK_SCALE (scale), marks[1], GTK_POS_BOTTOM, labels[1]);
-  gtk_scale_add_mark (GTK_SCALE (scale), marks[2], GTK_POS_BOTTOM, labels[2]);
-  gtk_container_add (GTK_CONTAINER (frame), scale);
-  gtk_box_pack_start (GTK_BOX (box), frame, FALSE, FALSE, 0);
+  ctk_scale_set_draw_value (GTK_SCALE (scale), FALSE);
+  ctk_scale_add_mark (GTK_SCALE (scale), marks[0], GTK_POS_BOTTOM, labels[0]);
+  ctk_scale_add_mark (GTK_SCALE (scale), marks[1], GTK_POS_BOTTOM, labels[1]);
+  ctk_scale_add_mark (GTK_SCALE (scale), marks[2], GTK_POS_BOTTOM, labels[2]);
+  ctk_container_add (GTK_CONTAINER (frame), scale);
+  ctk_box_pack_start (GTK_BOX (box), frame, FALSE, FALSE, 0);
 
-  frame = gtk_frame_new ("Some labels");
-  scale = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
+  frame = ctk_frame_new ("Some labels");
+  scale = ctk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
   scales = g_slist_prepend (scales, scale);
-  gtk_scale_set_draw_value (GTK_SCALE (scale), FALSE);
-  gtk_scale_add_mark (GTK_SCALE (scale), marks[0], GTK_POS_TOP, labels[0]);
-  gtk_scale_add_mark (GTK_SCALE (scale), marks[1], GTK_POS_TOP, NULL);
-  gtk_scale_add_mark (GTK_SCALE (scale), marks[2], GTK_POS_TOP, labels[2]);
-  gtk_container_add (GTK_CONTAINER (frame), scale);
-  gtk_box_pack_start (GTK_BOX (box), frame, FALSE, FALSE, 0);
+  ctk_scale_set_draw_value (GTK_SCALE (scale), FALSE);
+  ctk_scale_add_mark (GTK_SCALE (scale), marks[0], GTK_POS_TOP, labels[0]);
+  ctk_scale_add_mark (GTK_SCALE (scale), marks[1], GTK_POS_TOP, NULL);
+  ctk_scale_add_mark (GTK_SCALE (scale), marks[2], GTK_POS_TOP, labels[2]);
+  ctk_container_add (GTK_CONTAINER (frame), scale);
+  ctk_box_pack_start (GTK_BOX (box), frame, FALSE, FALSE, 0);
 
-  frame = gtk_frame_new ("Above and below");
-  scale = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
+  frame = ctk_frame_new ("Above and below");
+  scale = ctk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
   scales = g_slist_prepend (scales, scale);
-  gtk_scale_set_draw_value (GTK_SCALE (scale), FALSE);
-  gtk_scale_add_mark (GTK_SCALE (scale), bath_marks[0], GTK_POS_TOP, bath_labels[0]);
-  gtk_scale_add_mark (GTK_SCALE (scale), bath_marks[1], GTK_POS_BOTTOM, bath_labels[1]);
-  gtk_scale_add_mark (GTK_SCALE (scale), bath_marks[2], GTK_POS_BOTTOM, bath_labels[2]);
-  gtk_scale_add_mark (GTK_SCALE (scale), bath_marks[3], GTK_POS_TOP, bath_labels[3]);
-  gtk_container_add (GTK_CONTAINER (frame), scale);
-  gtk_box_pack_start (GTK_BOX (box), frame, FALSE, FALSE, 0);
+  ctk_scale_set_draw_value (GTK_SCALE (scale), FALSE);
+  ctk_scale_add_mark (GTK_SCALE (scale), bath_marks[0], GTK_POS_TOP, bath_labels[0]);
+  ctk_scale_add_mark (GTK_SCALE (scale), bath_marks[1], GTK_POS_BOTTOM, bath_labels[1]);
+  ctk_scale_add_mark (GTK_SCALE (scale), bath_marks[2], GTK_POS_BOTTOM, bath_labels[2]);
+  ctk_scale_add_mark (GTK_SCALE (scale), bath_marks[3], GTK_POS_TOP, bath_labels[3]);
+  ctk_container_add (GTK_CONTAINER (frame), scale);
+  ctk_box_pack_start (GTK_BOX (box), frame, FALSE, FALSE, 0);
 
-  frame = gtk_frame_new ("Positions");
-  scale = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
+  frame = ctk_frame_new ("Positions");
+  scale = ctk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
   scales = g_slist_prepend (scales, scale);
-  gtk_scale_set_draw_value (GTK_SCALE (scale), FALSE);
-  gtk_scale_add_mark (GTK_SCALE (scale), pos_marks[0], GTK_POS_LEFT, pos_labels[0]);
-  gtk_scale_add_mark (GTK_SCALE (scale), pos_marks[1], GTK_POS_RIGHT, pos_labels[1]);
-  gtk_scale_add_mark (GTK_SCALE (scale), pos_marks[2], GTK_POS_TOP, pos_labels[2]);
-  gtk_scale_add_mark (GTK_SCALE (scale), pos_marks[3], GTK_POS_BOTTOM, pos_labels[3]);
-  gtk_container_add (GTK_CONTAINER (frame), scale);
-  gtk_box_pack_start (GTK_BOX (box), frame, FALSE, FALSE, 0);
+  ctk_scale_set_draw_value (GTK_SCALE (scale), FALSE);
+  ctk_scale_add_mark (GTK_SCALE (scale), pos_marks[0], GTK_POS_LEFT, pos_labels[0]);
+  ctk_scale_add_mark (GTK_SCALE (scale), pos_marks[1], GTK_POS_RIGHT, pos_labels[1]);
+  ctk_scale_add_mark (GTK_SCALE (scale), pos_marks[2], GTK_POS_TOP, pos_labels[2]);
+  ctk_scale_add_mark (GTK_SCALE (scale), pos_marks[3], GTK_POS_BOTTOM, pos_labels[3]);
+  ctk_container_add (GTK_CONTAINER (frame), scale);
+  ctk_box_pack_start (GTK_BOX (box), frame, FALSE, FALSE, 0);
 
-  box2 = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
-  gtk_container_add (GTK_CONTAINER (box1), box2);
-  button = gtk_button_new_with_label ("Flip");
+  box2 = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
+  ctk_container_add (GTK_CONTAINER (box1), box2);
+  button = ctk_button_new_with_label ("Flip");
   g_signal_connect (button, "clicked", G_CALLBACK (flip), NULL);
-  gtk_container_add (GTK_CONTAINER (box2), button);
+  ctk_container_add (GTK_CONTAINER (box2), button);
 
-  button = gtk_button_new_with_label ("Invert");
+  button = ctk_button_new_with_label ("Invert");
   g_signal_connect (button, "clicked", G_CALLBACK (invert), NULL);
-  gtk_container_add (GTK_CONTAINER (box2), button);
+  ctk_container_add (GTK_CONTAINER (box2), button);
 
-  button = gtk_toggle_button_new_with_label ("Trough");
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), TRUE);
+  button = ctk_toggle_button_new_with_label ("Trough");
+  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), TRUE);
   g_signal_connect (button, "toggled", G_CALLBACK (trough), NULL);
-  gtk_container_add (GTK_CONTAINER (box2), button);
-  gtk_widget_show_all (window);
+  ctk_container_add (GTK_CONTAINER (box2), button);
+  ctk_widget_show_all (window);
 
-  button = gtk_toggle_button_new_with_label ("Extra");
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), FALSE);
+  button = ctk_toggle_button_new_with_label ("Extra");
+  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), FALSE);
   g_signal_connect (button, "toggled", G_CALLBACK (extra), NULL);
-  gtk_container_add (GTK_CONTAINER (box2), button);
-  gtk_widget_show_all (window);
+  ctk_container_add (GTK_CONTAINER (box2), button);
+  ctk_widget_show_all (window);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

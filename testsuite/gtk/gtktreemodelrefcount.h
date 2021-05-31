@@ -22,7 +22,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_TREE_MODEL_REF_COUNT              (gtk_tree_model_ref_count_get_type ())
+#define GTK_TYPE_TREE_MODEL_REF_COUNT              (ctk_tree_model_ref_count_get_type ())
 #define GTK_TREE_MODEL_REF_COUNT(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TREE_MODEL_REF_COUNT, GtkTreeModelRefCount))
 #define GTK_TREE_MODEL_REF_COUNT_CLASS(vtable)     (G_TYPE_CHECK_CLASS_CAST ((vtable), GTK_TYPE_TREE_MODEL_REF_COUNT, GtkTreeModelRefCountClass))
 #define GTK_IS_TREE_MODEL_REF_COUNT(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TREE_MODEL_REF_COUNT))
@@ -48,16 +48,16 @@ struct _GtkTreeModelRefCountClass
 };
 
 
-GType         gtk_tree_model_ref_count_get_type    (void) G_GNUC_CONST;
-GtkTreeModel *gtk_tree_model_ref_count_new         (void);
+GType         ctk_tree_model_ref_count_get_type    (void) G_GNUC_CONST;
+GtkTreeModel *ctk_tree_model_ref_count_new         (void);
 
-void          gtk_tree_model_ref_count_dump        (GtkTreeModelRefCount *ref_model);
-gboolean      gtk_tree_model_ref_count_check_level (GtkTreeModelRefCount *ref_model,
+void          ctk_tree_model_ref_count_dump        (GtkTreeModelRefCount *ref_model);
+gboolean      ctk_tree_model_ref_count_check_level (GtkTreeModelRefCount *ref_model,
                                                     GtkTreeIter          *parent,
                                                     gint                  expected_ref_count,
                                                     gboolean              recurse,
                                                     gboolean              may_assert);
-gboolean      gtk_tree_model_ref_count_check_node  (GtkTreeModelRefCount *ref_model,
+gboolean      ctk_tree_model_ref_count_check_node  (GtkTreeModelRefCount *ref_model,
                                                     GtkTreeIter          *iter,
                                                     gint                  expected_ref_count,
                                                     gboolean              may_assert);
@@ -70,34 +70,34 @@ gboolean      gtk_tree_model_ref_count_check_node  (GtkTreeModelRefCount *ref_mo
 static inline void
 assert_entire_model_unreferenced (GtkTreeModelRefCount *ref_model)
 {
-  gtk_tree_model_ref_count_check_level (ref_model, NULL, 0, TRUE, TRUE);
+  ctk_tree_model_ref_count_check_level (ref_model, NULL, 0, TRUE, TRUE);
 }
 
 static inline void
 assert_root_level_unreferenced (GtkTreeModelRefCount *ref_model)
 {
-  gtk_tree_model_ref_count_check_level (ref_model, NULL, 0, FALSE, TRUE);
+  ctk_tree_model_ref_count_check_level (ref_model, NULL, 0, FALSE, TRUE);
 }
 
 static inline void
 assert_level_unreferenced (GtkTreeModelRefCount *ref_model,
                            GtkTreeIter          *iter)
 {
-  gtk_tree_model_ref_count_check_level (ref_model, iter, 0, FALSE, TRUE);
+  ctk_tree_model_ref_count_check_level (ref_model, iter, 0, FALSE, TRUE);
 }
 
 static inline void
 assert_entire_model_referenced (GtkTreeModelRefCount *ref_model,
                                 gint                  ref_count)
 {
-  gtk_tree_model_ref_count_check_level (ref_model, NULL, ref_count, TRUE, TRUE);
+  ctk_tree_model_ref_count_check_level (ref_model, NULL, ref_count, TRUE, TRUE);
 }
 
 static inline void
 assert_not_entire_model_referenced (GtkTreeModelRefCount *ref_model,
                                     gint                  ref_count)
 {
-  g_assert_cmpint (gtk_tree_model_ref_count_check_level (ref_model, NULL,
+  g_assert_cmpint (ctk_tree_model_ref_count_check_level (ref_model, NULL,
                                                          ref_count,
                                                          TRUE, FALSE),
                    ==, FALSE);
@@ -107,7 +107,7 @@ static inline void
 assert_root_level_referenced (GtkTreeModelRefCount *ref_model,
                               gint                  ref_count)
 {
-  gtk_tree_model_ref_count_check_level (ref_model, NULL, ref_count,
+  ctk_tree_model_ref_count_check_level (ref_model, NULL, ref_count,
                                         FALSE, TRUE);
 }
 
@@ -116,7 +116,7 @@ assert_level_referenced (GtkTreeModelRefCount *ref_model,
                          gint                  ref_count,
                          GtkTreeIter          *iter)
 {
-  gtk_tree_model_ref_count_check_level (ref_model, iter, ref_count,
+  ctk_tree_model_ref_count_check_level (ref_model, iter, ref_count,
                                         FALSE, TRUE);
 }
 
@@ -125,7 +125,7 @@ assert_node_ref_count (GtkTreeModelRefCount *ref_model,
                        GtkTreeIter          *iter,
                        gint                  ref_count)
 {
-  gtk_tree_model_ref_count_check_node (ref_model, iter, ref_count, TRUE);
+  ctk_tree_model_ref_count_check_node (ref_model, iter, ref_count, TRUE);
 }
 
 

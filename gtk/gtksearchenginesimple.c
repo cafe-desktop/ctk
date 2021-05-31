@@ -69,10 +69,10 @@ struct _GtkSearchEngineSimpleClass
   GtkSearchEngineClass parent_class;
 };
 
-G_DEFINE_TYPE (GtkSearchEngineSimple, _gtk_search_engine_simple, GTK_TYPE_SEARCH_ENGINE)
+G_DEFINE_TYPE (GtkSearchEngineSimple, _ctk_search_engine_simple, GTK_TYPE_SEARCH_ENGINE)
 
 static void
-gtk_search_engine_simple_dispose (GObject *object)
+ctk_search_engine_simple_dispose (GObject *object)
 {
   GtkSearchEngineSimple *simple = GTK_SEARCH_ENGINE_SIMPLE (object);
 
@@ -84,9 +84,9 @@ gtk_search_engine_simple_dispose (GObject *object)
       simple->active_search = NULL;
     }
 
-  _gtk_search_engine_simple_set_indexed_cb (simple, NULL, NULL, NULL);
+  _ctk_search_engine_simple_set_indexed_cb (simple, NULL, NULL, NULL);
 
-  G_OBJECT_CLASS (_gtk_search_engine_simple_parent_class)->dispose (object);
+  G_OBJECT_CLASS (_ctk_search_engine_simple_parent_class)->dispose (object);
 }
 
 static void
@@ -94,7 +94,7 @@ queue_if_local (SearchThreadData *data,
                 GFile            *file)
 {
   if (file &&
-      !_gtk_file_consider_as_remote (file) &&
+      !_ctk_file_consider_as_remote (file) &&
       !g_file_has_uri_scheme (file, "recent"))
     g_queue_push_tail (data->directories, g_object_ref (file));
 }
@@ -112,7 +112,7 @@ search_thread_data_new (GtkSearchEngineSimple *engine,
   data->query = g_object_ref (query);
   /* Simple search engine is too slow to be recursive */
   data->recursive = FALSE;
-  queue_if_local (data, gtk_query_get_location (query));
+  queue_if_local (data, ctk_query_get_location (query));
 
   data->cancellable = g_cancellable_new ();
 
@@ -140,7 +140,7 @@ search_thread_done_idle (gpointer user_data)
 
   if (!g_cancellable_is_cancelled (data->cancellable))
     {
-      _gtk_search_engine_finished (GTK_SEARCH_ENGINE (data->engine),
+      _ctk_search_engine_finished (GTK_SEARCH_ENGINE (data->engine),
                                    data->got_results);
     }
 
@@ -162,9 +162,9 @@ search_thread_add_hits_idle (gpointer user_data)
   Batch *batch = user_data;
 
   if (!g_cancellable_is_cancelled (batch->thread_data->cancellable))
-    _gtk_search_engine_hits_added (GTK_SEARCH_ENGINE (batch->thread_data->engine), batch->hits);
+    _ctk_search_engine_hits_added (GTK_SEARCH_ENGINE (batch->thread_data->engine), batch->hits);
 
-  g_list_free_full (batch->hits, (GDestroyNotify)_gtk_search_hit_free);
+  g_list_free_full (batch->hits, (GDestroyNotify)_ctk_search_hit_free);
   g_free (batch);
 
   return FALSE;
@@ -251,7 +251,7 @@ visit_directory (GFile *dir, SearchThreadData *data)
       if (g_file_info_get_is_hidden (info))
         continue;
 
-      if (gtk_query_matches_string (data->query, display_name))
+      if (ctk_query_matches_string (data->query, display_name))
         {
           GtkSearchHit *hit;
 
@@ -300,7 +300,7 @@ search_thread_func (gpointer user_data)
 }
 
 static void
-gtk_search_engine_simple_start (GtkSearchEngine *engine)
+ctk_search_engine_simple_start (GtkSearchEngine *engine)
 {
   GtkSearchEngineSimple *simple;
   SearchThreadData *data;
@@ -321,7 +321,7 @@ gtk_search_engine_simple_start (GtkSearchEngine *engine)
 }
 
 static void
-gtk_search_engine_simple_stop (GtkSearchEngine *engine)
+ctk_search_engine_simple_stop (GtkSearchEngine *engine)
 {
   GtkSearchEngineSimple *simple;
 
@@ -335,7 +335,7 @@ gtk_search_engine_simple_stop (GtkSearchEngine *engine)
 }
 
 static void
-gtk_search_engine_simple_set_query (GtkSearchEngine *engine,
+ctk_search_engine_simple_set_query (GtkSearchEngine *engine,
 				    GtkQuery        *query)
 {
   GtkSearchEngineSimple *simple;
@@ -352,33 +352,33 @@ gtk_search_engine_simple_set_query (GtkSearchEngine *engine,
 }
 
 static void
-_gtk_search_engine_simple_class_init (GtkSearchEngineSimpleClass *class)
+_ctk_search_engine_simple_class_init (GtkSearchEngineSimpleClass *class)
 {
   GObjectClass *gobject_class;
   GtkSearchEngineClass *engine_class;
 
   gobject_class = G_OBJECT_CLASS (class);
-  gobject_class->dispose = gtk_search_engine_simple_dispose;
+  gobject_class->dispose = ctk_search_engine_simple_dispose;
 
   engine_class = GTK_SEARCH_ENGINE_CLASS (class);
-  engine_class->set_query = gtk_search_engine_simple_set_query;
-  engine_class->start = gtk_search_engine_simple_start;
-  engine_class->stop = gtk_search_engine_simple_stop;
+  engine_class->set_query = ctk_search_engine_simple_set_query;
+  engine_class->start = ctk_search_engine_simple_start;
+  engine_class->stop = ctk_search_engine_simple_stop;
 }
 
 static void
-_gtk_search_engine_simple_init (GtkSearchEngineSimple *engine)
+_ctk_search_engine_simple_init (GtkSearchEngineSimple *engine)
 {
 }
 
 GtkSearchEngine *
-_gtk_search_engine_simple_new (void)
+_ctk_search_engine_simple_new (void)
 {
   return g_object_new (GTK_TYPE_SEARCH_ENGINE_SIMPLE, NULL);
 }
 
 void
-_gtk_search_engine_simple_set_indexed_cb (GtkSearchEngineSimple          *engine,
+_ctk_search_engine_simple_set_indexed_cb (GtkSearchEngineSimple          *engine,
                                           GtkSearchEngineSimpleIsIndexed  callback,
                                           gpointer                        data,
                                           GDestroyNotify                  destroy)

@@ -71,7 +71,7 @@ get_unescaped_char (const char **str,
    it matches, nonzero if not.  */
 
 static gboolean
-gtk_fnmatch_intern (const char *pattern,
+ctk_fnmatch_intern (const char *pattern,
 		    const char *string,
 		    gboolean    component_start,
 		    gboolean    no_leading_period)
@@ -143,7 +143,7 @@ gtk_fnmatch_intern (const char *pattern,
 	    for (p = last_p; nc != '\0';)
 	      {
 		if ((c == '[' || nc == c) &&
-		    gtk_fnmatch_intern (p, last_n, component_start, no_leading_period))
+		    ctk_fnmatch_intern (p, last_n, component_start, no_leading_period))
 		  return TRUE;
 		
 		component_start = (nc == G_DIR_SEPARATOR);
@@ -244,18 +244,18 @@ gtk_fnmatch_intern (const char *pattern,
  *   FNM_CASEFOLD    - set only on windows
  */
 gboolean
-_gtk_fnmatch (const char *pattern,
+_ctk_fnmatch (const char *pattern,
 	      const char *string,
 	      gboolean no_leading_period)
 {
-  return gtk_fnmatch_intern (pattern, string, TRUE, no_leading_period);
+  return ctk_fnmatch_intern (pattern, string, TRUE, no_leading_period);
 }
 
 #undef FNMATCH_TEST_CASES
 #ifdef FNMATCH_TEST_CASES
 
 #define TEST(pat, str, no_leading_period, result) \
-  g_assert (_gtk_fnmatch ((pat), (str), (no_leading_period)) == result)
+  g_assert (_ctk_fnmatch ((pat), (str), (no_leading_period)) == result)
 
 int main (int argc, char **argv)
 {

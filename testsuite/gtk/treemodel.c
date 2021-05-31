@@ -23,7 +23,7 @@ int
 main (int    argc,
       char **argv)
 {
-  gtk_test_init (&argc, &argv, NULL);
+  ctk_test_init (&argc, &argv, NULL);
 
   g_test_bug_base ("http://bugzilla.gnome.org/");
 
@@ -87,7 +87,7 @@ signal_new (SignalName signal, GtkTreePath *path)
 
   s = g_new0 (Signal, 1);
   s->signal = signal;
-  s->path = gtk_tree_path_copy (path);
+  s->path = ctk_tree_path_copy (path);
   s->new_order = NULL;
 
   return s;
@@ -109,7 +109,7 @@ static void
 signal_free (Signal *s)
 {
   if (s->path)
-    gtk_tree_path_free (s->path);
+    ctk_tree_path_free (s->path);
 
   g_free (s);
 }
@@ -137,7 +137,7 @@ signal_monitor_generic_handler (SignalMonitor *m,
     {
       gchar *path_str;
 
-      path_str = gtk_tree_path_to_string (path);
+      path_str = ctk_tree_path_to_string (path);
       g_error ("Signal queue empty, got signal %s path %s",
                signal_name_to_string (signal), path_str);
       g_free (path_str);
@@ -157,19 +157,19 @@ signal_monitor_generic_handler (SignalMonitor *m,
 #if 0
   /* For debugging: output signals that are coming in.  Leaks memory. */
   g_print ("signal=%s path=%s\n", signal_name_to_string (signal),
-           gtk_tree_path_to_string (path));
+           ctk_tree_path_to_string (path));
 #endif
 
   if (s->signal != signal ||
-      (gtk_tree_path_get_depth (s->path) == 0 &&
-       gtk_tree_path_get_depth (path) != 0) ||
-      (gtk_tree_path_get_depth (s->path) != 0 &&
-       gtk_tree_path_compare (s->path, path) != 0))
+      (ctk_tree_path_get_depth (s->path) == 0 &&
+       ctk_tree_path_get_depth (path) != 0) ||
+      (ctk_tree_path_get_depth (s->path) != 0 &&
+       ctk_tree_path_compare (s->path, path) != 0))
     {
       gchar *path_str, *s_path_str;
 
-      s_path_str = gtk_tree_path_to_string (s->path);
-      path_str = gtk_tree_path_to_string (path);
+      s_path_str = ctk_tree_path_to_string (s->path);
+      path_str = ctk_tree_path_to_string (path);
 
       g_error ("Signals don't match; expected signal %s path %s, got signal %s path %s",
                signal_name_to_string (s->signal), s_path_str,
@@ -187,7 +187,7 @@ signal_monitor_generic_handler (SignalMonitor *m,
 
       g_assert (new_order != NULL);
 
-      len = gtk_tree_model_iter_n_children (model, iter);
+      len = ctk_tree_model_iter_n_children (model, iter);
       g_assert (s->len == len);
 
       for (i = 0; i < len; i++)
@@ -336,10 +336,10 @@ signal_monitor_append_signal (SignalMonitor *m,
   Signal *s;
   GtkTreePath *path;
 
-  path = gtk_tree_path_new_from_string (path_string);
+  path = ctk_tree_path_new_from_string (path_string);
 
   s = signal_new (signal, path);
   g_queue_push_head (m->queue, s);
 
-  gtk_tree_path_free (path);
+  ctk_tree_path_free (path);
 }

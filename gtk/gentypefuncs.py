@@ -41,7 +41,7 @@ file_output = 'G_GNUC_BEGIN_IGNORE_DEPRECATIONS\n'
 funcs = sorted(funcs)
 
 for f in funcs:
-  if f.startswith('gdk_x11') or f.startswith('gtk_socket') or f.startswith('gtk_plug'):
+  if f.startswith('gdk_x11') or f.startswith('ctk_socket') or f.startswith('ctk_plug'):
     file_output += '#ifdef GDK_WINDOWING_X11\n'
     file_output += '*tp++ = {0}();\n'.format(f)
     file_output += '#endif\n'

@@ -31,58 +31,58 @@
 
 G_BEGIN_DECLS
 
-void             _gtk_pango_fill_layout            (cairo_t         *cr,
+void             _ctk_pango_fill_layout            (cairo_t         *cr,
                                                     PangoLayout     *layout);
 
 
-AtkAttributeSet *_gtk_pango_get_default_attributes (AtkAttributeSet *attributes,
+AtkAttributeSet *_ctk_pango_get_default_attributes (AtkAttributeSet *attributes,
                                                     PangoLayout     *layout);
 
-AtkAttributeSet *_gtk_pango_get_run_attributes     (AtkAttributeSet *attributes,
+AtkAttributeSet *_ctk_pango_get_run_attributes     (AtkAttributeSet *attributes,
                                                     PangoLayout     *layout,
                                                     gint             offset,
                                                     gint            *start_offset,
                                                     gint            *end_offset);
 
-gint _gtk_pango_move_chars     (PangoLayout  *layout,
+gint _ctk_pango_move_chars     (PangoLayout  *layout,
                                 gint          offset,
                                 gint          count);
-gint _gtk_pango_move_words     (PangoLayout  *layout,
+gint _ctk_pango_move_words     (PangoLayout  *layout,
                                 gint          offset,
                                 gint          count);
-gint _gtk_pango_move_sentences (PangoLayout  *layout,
+gint _ctk_pango_move_sentences (PangoLayout  *layout,
                                 gint          offset,
                                 gint          count);
-gint _gtk_pango_move_lines     (PangoLayout  *layout,
+gint _ctk_pango_move_lines     (PangoLayout  *layout,
                                 gint          offset,
                                 gint          count);
 
-gboolean _gtk_pango_is_inside_word     (PangoLayout  *layout,
+gboolean _ctk_pango_is_inside_word     (PangoLayout  *layout,
                                         gint          offset);
-gboolean _gtk_pango_is_inside_sentence (PangoLayout  *layout,
+gboolean _ctk_pango_is_inside_sentence (PangoLayout  *layout,
                                         gint          offset);
 
 
-gchar *_gtk_pango_get_text_before (PangoLayout     *layout,
+gchar *_ctk_pango_get_text_before (PangoLayout     *layout,
                                    AtkTextBoundary  boundary_type,
                                    gint             offset,
                                    gint            *start_offset,
                                    gint            *end_offset);
-gchar *_gtk_pango_get_text_at     (PangoLayout     *layout,
+gchar *_ctk_pango_get_text_at     (PangoLayout     *layout,
                                    AtkTextBoundary  boundary_type,
                                    gint             offset,
                                    gint            *start_offset,
                                    gint            *end_offset);
-gchar *_gtk_pango_get_text_after  (PangoLayout     *layout,
+gchar *_ctk_pango_get_text_after  (PangoLayout     *layout,
                                    AtkTextBoundary  boundary_type,
                                    gint             offset,
                                    gint            *start_offset,
                                    gint            *end_offset);
 
-PangoAttrList *_gtk_pango_attr_list_merge (PangoAttrList *into,
+PangoAttrList *_ctk_pango_attr_list_merge (PangoAttrList *into,
                                            PangoAttrList *from);
 
-PangoDirection _gtk_pango_find_base_dir (const gchar *text,
+PangoDirection _ctk_pango_find_base_dir (const gchar *text,
                                          gint         length);
 
 G_END_DECLS

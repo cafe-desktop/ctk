@@ -24,7 +24,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_FILE_CHOOSER_DELEGATE_QUARK	  (_gtk_file_chooser_delegate_get_quark ())
+#define GTK_FILE_CHOOSER_DELEGATE_QUARK	  (_ctk_file_chooser_delegate_get_quark ())
 
 typedef enum {
   GTK_FILE_CHOOSER_PROP_FIRST                  = 0x1000,
@@ -42,19 +42,19 @@ typedef enum {
   GTK_FILE_CHOOSER_PROP_LAST                   = GTK_FILE_CHOOSER_PROP_CREATE_FOLDERS
 } GtkFileChooserProp;
 
-void _gtk_file_chooser_install_properties (GObjectClass *klass);
+void _ctk_file_chooser_install_properties (GObjectClass *klass);
 
-void _gtk_file_chooser_delegate_iface_init (GtkFileChooserIface *iface);
-void _gtk_file_chooser_set_delegate        (GtkFileChooser *receiver,
+void _ctk_file_chooser_delegate_iface_init (GtkFileChooserIface *iface);
+void _ctk_file_chooser_set_delegate        (GtkFileChooser *receiver,
 					    GtkFileChooser *delegate);
 
-GQuark _gtk_file_chooser_delegate_get_quark (void) G_GNUC_CONST;
+GQuark _ctk_file_chooser_delegate_get_quark (void) G_GNUC_CONST;
 
-GList *_gtk_file_chooser_extract_recent_folders (GList *infos);
+GList *_ctk_file_chooser_extract_recent_folders (GList *infos);
 
-GSettings *_gtk_file_chooser_get_settings_for_widget (GtkWidget *widget);
+GSettings *_ctk_file_chooser_get_settings_for_widget (GtkWidget *widget);
 
-gchar * _gtk_file_chooser_label_for_file (GFile *file);
+gchar * _ctk_file_chooser_label_for_file (GFile *file);
 
 G_END_DECLS
 

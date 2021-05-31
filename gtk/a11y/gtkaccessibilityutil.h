@@ -22,7 +22,7 @@
 
 G_BEGIN_DECLS
 
-void _gtk_accessibility_override_atk_util (void);
+void _ctk_accessibility_override_atk_util (void);
 
 G_END_DECLS
 

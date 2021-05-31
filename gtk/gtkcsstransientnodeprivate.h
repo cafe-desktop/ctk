@@ -22,7 +22,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_TRANSIENT_NODE           (gtk_css_transient_node_get_type ())
+#define GTK_TYPE_CSS_TRANSIENT_NODE           (ctk_css_transient_node_get_type ())
 #define GTK_CSS_TRANSIENT_NODE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_TRANSIENT_NODE, GtkCssTransientNode))
 #define GTK_CSS_TRANSIENT_NODE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_TRANSIENT_NODE, GtkCssTransientNodeClass))
 #define GTK_IS_CSS_TRANSIENT_NODE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_TRANSIENT_NODE))
@@ -42,9 +42,9 @@ struct _GtkCssTransientNodeClass
   GtkCssNodeClass node_class;
 };
 
-GType                   gtk_css_transient_node_get_type         (void) G_GNUC_CONST;
+GType                   ctk_css_transient_node_get_type         (void) G_GNUC_CONST;
 
-GtkCssNode *            gtk_css_transient_node_new              (GtkCssNode     *parent);
+GtkCssNode *            ctk_css_transient_node_new              (GtkCssNode     *parent);
 
 G_END_DECLS
 

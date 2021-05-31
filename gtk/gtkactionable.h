@@ -25,7 +25,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ACTIONABLE                                 (gtk_actionable_get_type ())
+#define GTK_TYPE_ACTIONABLE                                 (ctk_actionable_get_type ())
 #define GTK_ACTIONABLE(inst)                                (G_TYPE_CHECK_INSTANCE_CAST ((inst),                     \
                                                              GTK_TYPE_ACTIONABLE, GtkActionable))
 #define GTK_IS_ACTIONABLE(inst)                             (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                     \
@@ -52,27 +52,27 @@ struct _GtkActionableInterface
 };
 
 GDK_AVAILABLE_IN_3_4
-GType                   gtk_actionable_get_type                         (void) G_GNUC_CONST;
+GType                   ctk_actionable_get_type                         (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_4
-const gchar *           gtk_actionable_get_action_name                  (GtkActionable *actionable);
+const gchar *           ctk_actionable_get_action_name                  (GtkActionable *actionable);
 GDK_AVAILABLE_IN_3_4
-void                    gtk_actionable_set_action_name                  (GtkActionable *actionable,
+void                    ctk_actionable_set_action_name                  (GtkActionable *actionable,
                                                                          const gchar   *action_name);
 
 GDK_AVAILABLE_IN_3_4
-GVariant *              gtk_actionable_get_action_target_value          (GtkActionable *actionable);
+GVariant *              ctk_actionable_get_action_target_value          (GtkActionable *actionable);
 GDK_AVAILABLE_IN_3_4
-void                    gtk_actionable_set_action_target_value          (GtkActionable *actionable,
+void                    ctk_actionable_set_action_target_value          (GtkActionable *actionable,
                                                                          GVariant      *target_value);
 
 GDK_AVAILABLE_IN_3_4
-void                    gtk_actionable_set_action_target                (GtkActionable *actionable,
+void                    ctk_actionable_set_action_target                (GtkActionable *actionable,
                                                                          const gchar   *format_string,
                                                                          ...);
 
 GDK_AVAILABLE_IN_3_4
-void                    gtk_actionable_set_detailed_action_name         (GtkActionable *actionable,
+void                    ctk_actionable_set_detailed_action_name         (GtkActionable *actionable,
                                                                          const gchar   *detailed_action_name);
 
 G_END_DECLS

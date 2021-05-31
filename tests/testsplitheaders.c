@@ -9,8 +9,8 @@ split_decorations (GtkSettings *settings,
   gchar *layout, *p1, *p2;
   gchar **p;
 
-  sheader = (GtkWidget *)gtk_builder_get_object (builder, "sidebar-header");
-  mheader = (GtkWidget *)gtk_builder_get_object (builder, "main-header");
+  sheader = (GtkWidget *)ctk_builder_get_object (builder, "sidebar-header");
+  mheader = (GtkWidget *)ctk_builder_get_object (builder, "main-header");
 
   g_object_get (settings, "gtk-decoration-layout", &layout, NULL);
 
@@ -23,8 +23,8 @@ split_decorations (GtkSettings *settings,
   else
     p2 = g_strdup ("");
 
-  gtk_header_bar_set_decoration_layout (GTK_HEADER_BAR (sheader), p1);
-  gtk_header_bar_set_decoration_layout (GTK_HEADER_BAR (mheader), p2);
+  ctk_header_bar_set_decoration_layout (GTK_HEADER_BAR (sheader), p1);
+  ctk_header_bar_set_decoration_layout (GTK_HEADER_BAR (mheader), p2);
  
   g_free (p1);
   g_free (p2);
@@ -42,33 +42,33 @@ main (int argc, char *argv[])
   GtkWidget *check;
   GtkWidget *header;
 
-  gtk_init (NULL, NULL);
+  ctk_init (NULL, NULL);
 
-  builder = gtk_builder_new_from_file ("testsplitheaders.ui");
+  builder = ctk_builder_new_from_file ("testsplitheaders.ui");
 
-  win = (GtkWidget *)gtk_builder_get_object (builder, "window");
-  settings = gtk_widget_get_settings (win);
+  win = (GtkWidget *)ctk_builder_get_object (builder, "window");
+  settings = ctk_widget_get_settings (win);
 
   g_signal_connect (settings, "notify::gtk-decoration-layout",
                     G_CALLBACK (split_decorations), builder);
   split_decorations (settings, NULL, builder);
   
-  entry = (GtkWidget *)gtk_builder_get_object (builder, "layout-entry");
+  entry = (GtkWidget *)ctk_builder_get_object (builder, "layout-entry");
   g_object_bind_property (settings, "gtk-decoration-layout",
                           entry, "text",
                           G_BINDING_BIDIRECTIONAL|G_BINDING_SYNC_CREATE);                      
-  check = (GtkWidget *)gtk_builder_get_object (builder, "decorations");
-  header = (GtkWidget *)gtk_builder_get_object (builder, "sidebar-header");
+  check = (GtkWidget *)ctk_builder_get_object (builder, "decorations");
+  header = (GtkWidget *)ctk_builder_get_object (builder, "sidebar-header");
   g_object_bind_property (check, "active", 
                           header, "show-close-button",
 			  G_BINDING_DEFAULT);                      
-  header = (GtkWidget *)gtk_builder_get_object (builder, "main-header");
+  header = (GtkWidget *)ctk_builder_get_object (builder, "main-header");
   g_object_bind_property (check, "active", 
                           header, "show-close-button",
 			  G_BINDING_DEFAULT);                      
-  gtk_window_present (GTK_WINDOW (win));
+  ctk_window_present (GTK_WINDOW (win));
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

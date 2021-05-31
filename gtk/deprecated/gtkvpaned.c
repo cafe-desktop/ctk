@@ -43,31 +43,31 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  * GtkVPaned has been deprecated, use #GtkPaned instead.
  */
 
-G_DEFINE_TYPE (GtkVPaned, gtk_vpaned, GTK_TYPE_PANED)
+G_DEFINE_TYPE (GtkVPaned, ctk_vpaned, GTK_TYPE_PANED)
 
 static void
-gtk_vpaned_class_init (GtkVPanedClass *class)
+ctk_vpaned_class_init (GtkVPanedClass *class)
 {
 }
 
 static void
-gtk_vpaned_init (GtkVPaned *vpaned)
+ctk_vpaned_init (GtkVPaned *vpaned)
 {
-  gtk_orientable_set_orientation (GTK_ORIENTABLE (vpaned),
+  ctk_orientable_set_orientation (GTK_ORIENTABLE (vpaned),
                                   GTK_ORIENTATION_VERTICAL);
 }
 
 /**
- * gtk_vpaned_new:
+ * ctk_vpaned_new:
  *
  * Create a new #GtkVPaned
  *
  * Returns: the new #GtkVPaned
  *
- * Deprecated: 3.2: Use gtk_paned_new() with %GTK_ORIENTATION_VERTICAL instead
+ * Deprecated: 3.2: Use ctk_paned_new() with %GTK_ORIENTATION_VERTICAL instead
  */
 GtkWidget *
-gtk_vpaned_new (void)
+ctk_vpaned_new (void)
 {
   return g_object_new (GTK_TYPE_VPANED, NULL);
 }

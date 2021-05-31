@@ -144,10 +144,10 @@ parsing_error_cb (GtkCssProvider *provider,
 {
   char *basename;
 
-  basename = g_file_get_basename (gtk_css_section_get_file (section));
+  basename = g_file_get_basename (ctk_css_section_get_file (section));
   g_string_append_printf (errors,
                           "%s:%u: error: ",
-                          basename, gtk_css_section_get_end_line (section) + 1);
+                          basename, ctk_css_section_get_end_line (section) + 1);
   g_free (basename);
 
   if (error->domain == GTK_CSS_PROVIDER_ERROR)
@@ -173,14 +173,14 @@ parse_css_file (GFile *file, gboolean generate)
   css_file = g_file_get_path (file);
   errors = g_string_new ("");
 
-  provider = gtk_css_provider_new ();
+  provider = ctk_css_provider_new ();
   g_signal_connect (provider, 
                     "parsing-error",
                     G_CALLBACK (parsing_error_cb),
                     errors);
-  gtk_css_provider_load_from_path (provider, css_file, NULL);
+  ctk_css_provider_load_from_path (provider, css_file, NULL);
 
-  css = gtk_css_provider_to_string (provider);
+  css = ctk_css_provider_to_string (provider);
 
   if (generate)
     {
@@ -313,7 +313,7 @@ add_tests_for_files_in_directory (GFile *dir)
 int
 main (int argc, char **argv)
 {
-  gtk_test_init (&argc, &argv);
+  ctk_test_init (&argc, &argv);
 
   if (argc < 2)
     {

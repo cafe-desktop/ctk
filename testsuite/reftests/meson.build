@@ -4,7 +4,7 @@ libgtkreftestprivate = library('gtkreftestprivate', [
   'reftest-compare.c',
   'reftest-module.c',
   'reftest-snapshot.c'],
-  dependencies : libgtk_dep)
+  dependencies : libctk_dep)
 
 libreftest = shared_library('reftest',
   [ 'expand-expander.c',
@@ -18,11 +18,11 @@ libreftest = shared_library('reftest',
     'animation-direction.c',
   ],
   link_with: libgtkreftestprivate,
-  dependencies : libgtk_dep)
+  dependencies : libctk_dep)
 
-gtk_reftest = executable('gtk-reftest', 'gtk-reftest.c',
+ctk_reftest = executable('gtk-reftest', 'gtk-reftest.c',
   link_with : [libgtkreftestprivate, libreftest],
-  dependencies : libgtk_dep,
+  dependencies : libctk_dep,
   install: get_option('installed_tests'),
   install_dir: installed_test_bindir)
 
@@ -442,7 +442,7 @@ foreach testname : test_data
   if testname.endswith('.ui') and not testname.endswith('.ref.ui')
     # reftests fail when multiple windows open at the same time stealing the focus,
     # so set is_parallel to false
-    test('reftest ' + testname, gtk_reftest,
+    test('reftest ' + testname, ctk_reftest,
          args: [ '--tap',
                  '-k',
                  '--verbose',
@@ -451,7 +451,7 @@ foreach testname : test_data
          ],
          env: [ 'GTK_IM_MODULE=gtk-im-context-simple',
                 'GSETTINGS_BACKEND=memory',
-                'GSETTINGS_SCHEMA_DIR=@0@'.format(gtk_schema_build_dir),
+                'GSETTINGS_SCHEMA_DIR=@0@'.format(ctk_schema_build_dir),
                 'GTK_TEST_MESON=1',
                 'GTK_CSD=0',
                 'G_ENABLE_DIAGNOSTIC=0',
@@ -474,7 +474,7 @@ reftests_installed_tests = [
 
 if get_option('installed_tests')
   test_cdata = configuration_data()
-  test_cdata.set('libexecdir', gtk_libexecdir)
+  test_cdata.set('libexecdir', ctk_libexecdir)
 
   foreach t: reftests_installed_tests
     configure_file(input: '@0@.in'.format(t),

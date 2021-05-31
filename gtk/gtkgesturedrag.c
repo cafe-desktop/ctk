@@ -27,8 +27,8 @@
  * operations. The drag operation itself can be tracked throught the
  * #GtkGestureDrag::drag-begin, #GtkGestureDrag::drag-update and
  * #GtkGestureDrag::drag-end signals, or the relevant coordinates be
- * extracted through gtk_gesture_drag_get_offset() and
- * gtk_gesture_drag_get_start_point().
+ * extracted through ctk_gesture_drag_get_offset() and
+ * ctk_gesture_drag_get_start_point().
  */
 #include "config.h"
 #include "gtkgesturedrag.h"
@@ -56,10 +56,10 @@ enum {
 
 static guint signals[N_SIGNALS] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkGestureDrag, gtk_gesture_drag, GTK_TYPE_GESTURE_SINGLE)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkGestureDrag, ctk_gesture_drag, GTK_TYPE_GESTURE_SINGLE)
 
 static gboolean
-gtk_gesture_drag_filter_event (GtkEventController *controller,
+ctk_gesture_drag_filter_event (GtkEventController *controller,
                                const GdkEvent     *event)
 {
   /* Let touchpad swipe events go through, only if they match n-points  */
@@ -75,20 +75,20 @@ gtk_gesture_drag_filter_event (GtkEventController *controller,
         return TRUE;
     }
 
-  return GTK_EVENT_CONTROLLER_CLASS (gtk_gesture_drag_parent_class)->filter_event (controller, event);
+  return GTK_EVENT_CONTROLLER_CLASS (ctk_gesture_drag_parent_class)->filter_event (controller, event);
 }
 
 static void
-gtk_gesture_drag_begin (GtkGesture       *gesture,
+ctk_gesture_drag_begin (GtkGesture       *gesture,
                         GdkEventSequence *sequence)
 {
   GtkGestureDragPrivate *priv;
   GdkEventSequence *current;
 
-  current = gtk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
+  current = ctk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
 
-  priv = gtk_gesture_drag_get_instance_private (GTK_GESTURE_DRAG (gesture));
-  gtk_gesture_get_point (gesture, current, &priv->start_x, &priv->start_y);
+  priv = ctk_gesture_drag_get_instance_private (GTK_GESTURE_DRAG (gesture));
+  ctk_gesture_get_point (gesture, current, &priv->start_x, &priv->start_y);
   priv->last_x = priv->start_x;
   priv->last_y = priv->start_y;
 
@@ -96,14 +96,14 @@ gtk_gesture_drag_begin (GtkGesture       *gesture,
 }
 
 static void
-gtk_gesture_drag_update (GtkGesture       *gesture,
+ctk_gesture_drag_update (GtkGesture       *gesture,
                          GdkEventSequence *sequence)
 {
   GtkGestureDragPrivate *priv;
   gdouble x, y;
 
-  priv = gtk_gesture_drag_get_instance_private (GTK_GESTURE_DRAG (gesture));
-  gtk_gesture_get_point (gesture, sequence, &priv->last_x, &priv->last_y);
+  priv = ctk_gesture_drag_get_instance_private (GTK_GESTURE_DRAG (gesture));
+  ctk_gesture_get_point (gesture, sequence, &priv->last_x, &priv->last_y);
   x = priv->last_x - priv->start_x;
   y = priv->last_y - priv->start_y;
 
@@ -111,17 +111,17 @@ gtk_gesture_drag_update (GtkGesture       *gesture,
 }
 
 static void
-gtk_gesture_drag_end (GtkGesture       *gesture,
+ctk_gesture_drag_end (GtkGesture       *gesture,
                       GdkEventSequence *sequence)
 {
   GtkGestureDragPrivate *priv;
   GdkEventSequence *current;
   gdouble x, y;
 
-  current = gtk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
+  current = ctk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
 
-  priv = gtk_gesture_drag_get_instance_private (GTK_GESTURE_DRAG (gesture));
-  gtk_gesture_get_point (gesture, current, &priv->last_x, &priv->last_y);
+  priv = ctk_gesture_drag_get_instance_private (GTK_GESTURE_DRAG (gesture));
+  ctk_gesture_get_point (gesture, current, &priv->last_x, &priv->last_y);
   x = priv->last_x - priv->start_x;
   y = priv->last_y - priv->start_y;
 
@@ -129,16 +129,16 @@ gtk_gesture_drag_end (GtkGesture       *gesture,
 }
 
 static void
-gtk_gesture_drag_class_init (GtkGestureDragClass *klass)
+ctk_gesture_drag_class_init (GtkGestureDragClass *klass)
 {
   GtkGestureClass *gesture_class = GTK_GESTURE_CLASS (klass);
   GtkEventControllerClass *event_controller_class = GTK_EVENT_CONTROLLER_CLASS (klass);
 
-  event_controller_class->filter_event = gtk_gesture_drag_filter_event;
+  event_controller_class->filter_event = ctk_gesture_drag_filter_event;
 
-  gesture_class->begin = gtk_gesture_drag_begin;
-  gesture_class->update = gtk_gesture_drag_update;
-  gesture_class->end = gtk_gesture_drag_end;
+  gesture_class->begin = ctk_gesture_drag_begin;
+  gesture_class->update = ctk_gesture_drag_update;
+  gesture_class->end = ctk_gesture_drag_end;
 
   /**
    * GtkGestureDrag::drag-begin:
@@ -156,11 +156,11 @@ gtk_gesture_drag_class_init (GtkGestureDragClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkGestureDragClass, drag_begin),
                   NULL, NULL,
-                  _gtk_marshal_VOID__DOUBLE_DOUBLE,
+                  _ctk_marshal_VOID__DOUBLE_DOUBLE,
                   G_TYPE_NONE, 2, G_TYPE_DOUBLE, G_TYPE_DOUBLE);
   g_signal_set_va_marshaller (signals[DRAG_BEGIN],
                               G_TYPE_FROM_CLASS (klass),
-                              _gtk_marshal_VOID__DOUBLE_DOUBLEv);
+                              _ctk_marshal_VOID__DOUBLE_DOUBLEv);
   /**
    * GtkGestureDrag::drag-update:
    * @gesture: the object which received the signal
@@ -177,11 +177,11 @@ gtk_gesture_drag_class_init (GtkGestureDragClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkGestureDragClass, drag_update),
                   NULL, NULL,
-                  _gtk_marshal_VOID__DOUBLE_DOUBLE,
+                  _ctk_marshal_VOID__DOUBLE_DOUBLE,
                   G_TYPE_NONE, 2, G_TYPE_DOUBLE, G_TYPE_DOUBLE);
   g_signal_set_va_marshaller (signals[DRAG_UPDATE],
                               G_TYPE_FROM_CLASS (klass),
-                              _gtk_marshal_VOID__DOUBLE_DOUBLEv);
+                              _ctk_marshal_VOID__DOUBLE_DOUBLEv);
   /**
    * GtkGestureDrag::drag-end:
    * @gesture: the object which received the signal
@@ -198,20 +198,20 @@ gtk_gesture_drag_class_init (GtkGestureDragClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkGestureDragClass, drag_end),
                   NULL, NULL,
-                  _gtk_marshal_VOID__DOUBLE_DOUBLE,
+                  _ctk_marshal_VOID__DOUBLE_DOUBLE,
                   G_TYPE_NONE, 2, G_TYPE_DOUBLE, G_TYPE_DOUBLE);
   g_signal_set_va_marshaller (signals[DRAG_END],
                               G_TYPE_FROM_CLASS (klass),
-                              _gtk_marshal_VOID__DOUBLE_DOUBLEv);
+                              _ctk_marshal_VOID__DOUBLE_DOUBLEv);
 }
 
 static void
-gtk_gesture_drag_init (GtkGestureDrag *gesture)
+ctk_gesture_drag_init (GtkGestureDrag *gesture)
 {
 }
 
 /**
- * gtk_gesture_drag_new:
+ * ctk_gesture_drag_new:
  * @widget: a #GtkWidget
  *
  * Returns a newly created #GtkGesture that recognizes drags.
@@ -221,7 +221,7 @@ gtk_gesture_drag_init (GtkGestureDrag *gesture)
  * Since: 3.14
  **/
 GtkGesture *
-gtk_gesture_drag_new (GtkWidget *widget)
+ctk_gesture_drag_new (GtkWidget *widget)
 {
   g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
 
@@ -231,7 +231,7 @@ gtk_gesture_drag_new (GtkWidget *widget)
 }
 
 /**
- * gtk_gesture_drag_get_start_point:
+ * ctk_gesture_drag_get_start_point:
  * @gesture: a #GtkGesture
  * @x: (out) (nullable): X coordinate for the drag start point
  * @y: (out) (nullable): Y coordinate for the drag start point
@@ -245,7 +245,7 @@ gtk_gesture_drag_new (GtkWidget *widget)
  * Since: 3.14
  **/
 gboolean
-gtk_gesture_drag_get_start_point (GtkGestureDrag *gesture,
+ctk_gesture_drag_get_start_point (GtkGestureDrag *gesture,
                                   gdouble        *x,
                                   gdouble        *y)
 {
@@ -254,12 +254,12 @@ gtk_gesture_drag_get_start_point (GtkGestureDrag *gesture,
 
   g_return_val_if_fail (GTK_IS_GESTURE_DRAG (gesture), FALSE);
 
-  sequence = gtk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
+  sequence = ctk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
 
-  if (!gtk_gesture_handles_sequence (GTK_GESTURE (gesture), sequence))
+  if (!ctk_gesture_handles_sequence (GTK_GESTURE (gesture), sequence))
     return FALSE;
 
-  priv = gtk_gesture_drag_get_instance_private (gesture);
+  priv = ctk_gesture_drag_get_instance_private (gesture);
 
   if (x)
     *x = priv->start_x;
@@ -271,7 +271,7 @@ gtk_gesture_drag_get_start_point (GtkGestureDrag *gesture,
 }
 
 /**
- * gtk_gesture_drag_get_offset:
+ * ctk_gesture_drag_get_offset:
  * @gesture: a #GtkGesture
  * @x: (out) (nullable): X offset for the current point
  * @y: (out) (nullable): Y offset for the current point
@@ -285,7 +285,7 @@ gtk_gesture_drag_get_start_point (GtkGestureDrag *gesture,
  * Since: 3.14
  **/
 gboolean
-gtk_gesture_drag_get_offset (GtkGestureDrag *gesture,
+ctk_gesture_drag_get_offset (GtkGestureDrag *gesture,
                              gdouble        *x,
                              gdouble        *y)
 {
@@ -294,12 +294,12 @@ gtk_gesture_drag_get_offset (GtkGestureDrag *gesture,
 
   g_return_val_if_fail (GTK_IS_GESTURE_DRAG (gesture), FALSE);
 
-  sequence = gtk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
+  sequence = ctk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
 
-  if (!gtk_gesture_handles_sequence (GTK_GESTURE (gesture), sequence))
+  if (!ctk_gesture_handles_sequence (GTK_GESTURE (gesture), sequence))
     return FALSE;
 
-  priv = gtk_gesture_drag_get_instance_private (gesture);
+  priv = ctk_gesture_drag_get_instance_private (gesture);
 
   if (x)
     *x = priv->last_x - priv->start_x;

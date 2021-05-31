@@ -253,10 +253,10 @@ msgstr "الشعار"
 #: gtk/gtkaboutdialog.c:487
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "شعار لصندوق حوْل. لو لم يحدد سيستخدم الإفتراضي "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 
 #: gtk/gtkaboutdialog.c:502
 msgid "Logo Icon Name"
@@ -2313,7 +2313,7 @@ msgstr "خطوة النبض"
 #, fuzzy
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr "جزء التقدم الكلي لتحريك الكتلة القافزة عند النبض"
 
 #: gtk/gtkentry.c:904
@@ -4393,10 +4393,10 @@ msgstr "القيمة"
 
 #: gtk/gtkradioaction.c:119
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"القيمة المرجعة من قبل gtk_radio_action_get_current_value() عندما يكون هذا "
+"القيمة المرجعة من قبل ctk_radio_action_get_current_value() عندما يكون هذا "
 "الحدث هو الحدث الحالي لمجموعته."
 
 #: gtk/gtkradioaction.c:135 gtk/gtkradiobutton.c:160
@@ -6778,8 +6778,8 @@ msgid "No show all"
 msgstr "لا عرض للكل"
 
 #: gtk/gtkwidget.c:841
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "فيما إذا لن يؤثّر gtk_widget_show_all() هذه الودجة"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "فيما إذا لن يؤثّر ctk_widget_show_all() هذه الودجة"
 
 #: gtk/gtkwidget.c:864
 msgid "Whether this widget has a tooltip"
@@ -7341,9 +7341,9 @@ msgstr "كيفية رسم عمود الحالة لطريقة الإدخال"
 #~ "مختلفة"
 
 #~ msgid ""
-#~ "The maximum number of items to be returned by gtk_recent_manager_get_items"
+#~ "The maximum number of items to be returned by ctk_recent_manager_get_items"
 #~ "()"
-#~ msgstr "أكبر عدد من العناصر المرجعة من gtk_recent_manager_get_items()"
+#~ msgstr "أكبر عدد من العناصر المرجعة من ctk_recent_manager_get_items()"
 
 #~ msgid "Blinking"
 #~ msgstr "ومّاض"

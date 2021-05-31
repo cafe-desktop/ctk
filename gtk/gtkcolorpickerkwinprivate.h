@@ -30,11 +30,11 @@
 G_BEGIN_DECLS
 
 
-#define GTK_TYPE_COLOR_PICKER_KWIN gtk_color_picker_kwin_get_type ()
-G_DECLARE_FINAL_TYPE (GtkColorPickerKwin, gtk_color_picker_kwin, GTK, COLOR_PICKER_KWIN, GObject)
+#define GTK_TYPE_COLOR_PICKER_KWIN ctk_color_picker_kwin_get_type ()
+G_DECLARE_FINAL_TYPE (GtkColorPickerKwin, ctk_color_picker_kwin, GTK, COLOR_PICKER_KWIN, GObject)
 
 GDK_AVAILABLE_IN_ALL
-GtkColorPicker * gtk_color_picker_kwin_new (void);
+GtkColorPicker * ctk_color_picker_kwin_new (void);
 
 G_END_DECLS
 

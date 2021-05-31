@@ -22,26 +22,26 @@
 
 #include <gtk/gtk.h>
 
-G_DEFINE_TYPE (GtkMenuAccessible, gtk_menu_accessible, GTK_TYPE_MENU_SHELL_ACCESSIBLE)
+G_DEFINE_TYPE (GtkMenuAccessible, ctk_menu_accessible, GTK_TYPE_MENU_SHELL_ACCESSIBLE)
 
 static void
-gtk_menu_accessible_initialize (AtkObject *obj,
+ctk_menu_accessible_initialize (AtkObject *obj,
                                 gpointer   data)
 {
-  ATK_OBJECT_CLASS (gtk_menu_accessible_parent_class)->initialize (obj, data);
+  ATK_OBJECT_CLASS (ctk_menu_accessible_parent_class)->initialize (obj, data);
 
   obj->role = ATK_ROLE_MENU;
 
-  _gtk_widget_accessible_set_layer (GTK_WIDGET_ACCESSIBLE (obj), ATK_LAYER_POPUP);
+  _ctk_widget_accessible_set_layer (GTK_WIDGET_ACCESSIBLE (obj), ATK_LAYER_POPUP);
 }
 
 static AtkObject *
-gtk_menu_accessible_get_parent (AtkObject *accessible)
+ctk_menu_accessible_get_parent (AtkObject *accessible)
 {
   AtkObject *parent;
   GtkWidget *widget, *parent_widget;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
   if (widget == NULL)
     return NULL;
 
@@ -52,48 +52,48 @@ gtk_menu_accessible_get_parent (AtkObject *accessible)
   /* If the menu is attached to a menu item or a button (Gnome Menu)
    * report the menu item as parent.
    */
-  parent_widget = gtk_menu_get_attach_widget (GTK_MENU (widget));
+  parent_widget = ctk_menu_get_attach_widget (GTK_MENU (widget));
 
   if (!GTK_IS_MENU_ITEM (parent_widget) &&
       !GTK_IS_BUTTON (parent_widget) &&
       !GTK_IS_COMBO_BOX (parent_widget))
-    parent_widget = gtk_widget_get_parent (widget);
+    parent_widget = ctk_widget_get_parent (widget);
 
   if (parent_widget == NULL)
     return NULL;
 
-  parent = gtk_widget_get_accessible (parent_widget);
+  parent = ctk_widget_get_accessible (parent_widget);
   atk_object_set_parent (accessible, parent);
 
   return parent;
 }
 
 static gint
-gtk_menu_accessible_get_index_in_parent (AtkObject *accessible)
+ctk_menu_accessible_get_index_in_parent (AtkObject *accessible)
 {
   GtkWidget *widget;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
   if (widget == NULL)
     return -1;
 
-  if (gtk_menu_get_attach_widget (GTK_MENU (widget)))
+  if (ctk_menu_get_attach_widget (GTK_MENU (widget)))
     return 0;
 
-  return ATK_OBJECT_CLASS (gtk_menu_accessible_parent_class)->get_index_in_parent (accessible);
+  return ATK_OBJECT_CLASS (ctk_menu_accessible_parent_class)->get_index_in_parent (accessible);
 }
 
 static void
-gtk_menu_accessible_class_init (GtkMenuAccessibleClass *klass)
+ctk_menu_accessible_class_init (GtkMenuAccessibleClass *klass)
 {
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
 
-  class->get_parent = gtk_menu_accessible_get_parent;
-  class->get_index_in_parent = gtk_menu_accessible_get_index_in_parent;
-  class->initialize = gtk_menu_accessible_initialize;
+  class->get_parent = ctk_menu_accessible_get_parent;
+  class->get_index_in_parent = ctk_menu_accessible_get_index_in_parent;
+  class->initialize = ctk_menu_accessible_initialize;
 }
 
 static void
-gtk_menu_accessible_init (GtkMenuAccessible *accessible)
+ctk_menu_accessible_init (GtkMenuAccessible *accessible)
 {
 }

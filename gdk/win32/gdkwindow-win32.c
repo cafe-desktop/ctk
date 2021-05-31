@@ -1828,7 +1828,7 @@ gdk_win32_window_raise (GdkWindow *window)
       else if (window->accept_focus)
         /* Do not wrap this in an API_CALL macro as SetForegroundWindow might
          * fail when for example dragging a window belonging to a different
-         * application at the time of a gtk_window_present() call due to focus
+         * application at the time of a ctk_window_present() call due to focus
          * stealing prevention. */
         SetForegroundWindow (GDK_WINDOW_HWND (window));
       else

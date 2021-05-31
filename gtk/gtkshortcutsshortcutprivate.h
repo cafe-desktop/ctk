@@ -29,7 +29,7 @@
 
 G_BEGIN_DECLS
 
-void gtk_shortcuts_shortcut_update_accel (GtkShortcutsShortcut *self,
+void ctk_shortcuts_shortcut_update_accel (GtkShortcutsShortcut *self,
                                           GtkWindow            *window);
 
 G_END_DECLS

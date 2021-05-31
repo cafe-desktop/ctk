@@ -253,7 +253,7 @@ gdk_add_option_entries (GOptionGroup *group)
 }
 
 /**
- * gdk_add_option_entries_libgtk_only:
+ * gdk_add_option_entries_libctk_only:
  * @group: An option group.
  *
  * Appends gdk option entries to the passed in option group. This is
@@ -263,7 +263,7 @@ gdk_add_option_entries (GOptionGroup *group)
  *   of GTK+
  */
 void
-gdk_add_option_entries_libgtk_only (GOptionGroup *group)
+gdk_add_option_entries_libctk_only (GOptionGroup *group)
 {
   gdk_add_option_entries (group);
 }
@@ -341,7 +341,7 @@ gdk_pre_parse (void)
 }
 
 /**
- * gdk_pre_parse_libgtk_only:
+ * gdk_pre_parse_libctk_only:
  *
  * Prepare for parsing command line arguments for GDK. This is not
  * public API and should not be used in application code.
@@ -350,7 +350,7 @@ gdk_pre_parse (void)
  *   of GTK+
  */
 void
-gdk_pre_parse_libgtk_only (void)
+gdk_pre_parse_libctk_only (void)
 {
   gdk_pre_parse ();
 }
@@ -367,7 +367,7 @@ gdk_pre_parse_libgtk_only (void)
  * updated accordingly.
  *
  * You shouldn’t call this function explicitly if you are using
- * gtk_init(), gtk_init_check(), gdk_init(), or gdk_init_check().
+ * ctk_init(), ctk_init_check(), gdk_init(), or gdk_init_check().
  *
  * Since: 2.2
  **/
@@ -496,7 +496,7 @@ gdk_should_use_portal (void)
 }
 
 /**
- * gdk_display_open_default_libgtk_only:
+ * gdk_display_open_default_libctk_only:
  *
  * Opens the default display specified by command line arguments or
  * environment variables, sets it as the default display, and returns
@@ -511,7 +511,7 @@ gdk_should_use_portal (void)
  *   of GTK+
  */
 GdkDisplay *
-gdk_display_open_default_libgtk_only (void)
+gdk_display_open_default_libctk_only (void)
 {
   return gdk_display_open_default ();
 }
@@ -527,7 +527,7 @@ gdk_display_open_default_libgtk_only (void)
  * Any arguments used by GDK are removed from the array and @argc and @argv
  * are updated accordingly.
  *
- * GTK+ initializes GDK in gtk_init() and so this function is not usually
+ * GTK+ initializes GDK in ctk_init() and so this function is not usually
  * needed by GTK+ applications.
  *
  * Returns: %TRUE if initialization succeeded.
@@ -554,7 +554,7 @@ gdk_init_check (int    *argc,
  * Any arguments used by GDK are removed from the array and @argc and @argv
  * are updated accordingly.
  *
- * GTK+ initializes GDK in gtk_init() and so this function is not usually
+ * GTK+ initializes GDK in ctk_init() and so this function is not usually
  * needed by GTK+ applications.
  */
 void
@@ -584,7 +584,7 @@ gdk_init (int *argc, char ***argv)
  * accesses to the same #GHashTable from multiple threads.
  *
  * GTK+, however, is not thread safe. You should only use GTK+ and GDK
- * from the thread gtk_init() and gtk_main() were called on.
+ * from the thread ctk_init() and ctk_main() were called on.
  * This is usually referred to as the “main thread”.
  *
  * Signals on GTK+ and GDK types, as well as non-signal callbacks, are
@@ -608,8 +608,8 @@ gdk_init (int *argc, char ***argv)
  *   ExpensiveData *expensive_data = user_data;
  *
  *   my_app->expensive_data = expensive_data;
- *   gtk_button_set_sensitive (my_app->button, TRUE);
- *   gtk_button_set_label (my_app->button, expensive_data->result_label);
+ *   ctk_button_set_sensitive (my_app->button, TRUE);
+ *   ctk_button_set_label (my_app->button, expensive_data->result_label);
  *
  *   return G_SOURCE_REMOVE;
  * }
@@ -682,7 +682,7 @@ gdk_threads_impl_unlock (void)
    * case we unlock it as expected.
    *
    * this is needed in the case somebody called gdk_threads_init()
-   * without calling gdk_threads_enter() before calling gtk_main().
+   * without calling gdk_threads_enter() before calling ctk_main().
    * in theory, we could just say that this is undefined behaviour,
    * but our documentation has always been *less* than explicit as
    * to what the behaviour should actually be.
@@ -700,7 +700,7 @@ gdk_threads_impl_unlock (void)
  * in conjunction with gdk_threads_enter() and gdk_threads_leave().
  *
  * This call must be made before any use of the main loop from
- * GTK+; to be safe, call it before gtk_init().
+ * GTK+; to be safe, call it before ctk_init().
  *
  * Deprecated:3.6: All GDK and GTK+ calls should be made from the main
  *     thread
@@ -1096,8 +1096,8 @@ gdk_set_program_class (const char *program_class)
  * gdk_disable_multidevice:
  *
  * Disables multidevice support in GDK. This call must happen prior
- * to gdk_display_open(), gtk_init(), gtk_init_with_args() or
- * gtk_init_check() in order to take effect.
+ * to gdk_display_open(), ctk_init(), ctk_init_with_args() or
+ * ctk_init_check() in order to take effect.
  *
  * Most common GTK+ applications won’t ever need to call this. Only
  * applications that do mixed GDK/Xlib calls could want to disable

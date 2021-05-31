@@ -86,12 +86,12 @@
  * While bookmarks are completely in control of the user, the places sidebar also
  * allows individual applications to provide extra shortcut folders that are unique
  * to each application.  For example, a Paint program may want to add a shortcut
- * for a Clipart folder.  You can do this with gtk_places_sidebar_add_shortcut().
+ * for a Clipart folder.  You can do this with ctk_places_sidebar_add_shortcut().
  *
  * To make use of the places sidebar, an application at least needs to connect
  * to the #GtkPlacesSidebar::open-location signal.  This is emitted when the
  * user selects in the sidebar a location to open.  The application should also
- * call gtk_places_sidebar_set_location() when it changes the currently-viewed
+ * call ctk_places_sidebar_set_location() when it changes the currently-viewed
  * location.
  *
  * # CSS nodes
@@ -134,7 +134,7 @@ struct _GtkPlacesSidebar {
 
   GVolumeMonitor    *volume_monitor;
   GtkTrashMonitor   *trash_monitor;
-  GtkSettings       *gtk_settings;
+  GtkSettings       *ctk_settings;
   GFile             *current_location;
 
   GtkWidget *rename_popover;
@@ -328,7 +328,7 @@ static const GtkTargetEntry dnd_drop_targets [] = {
   { "DND_GTK_SIDEBAR_ROW", GTK_TARGET_SAME_WIDGET, DND_GTK_SIDEBAR_ROW }
 };
 
-G_DEFINE_TYPE (GtkPlacesSidebar, gtk_places_sidebar, GTK_TYPE_SCROLLED_WINDOW);
+G_DEFINE_TYPE (GtkPlacesSidebar, ctk_places_sidebar, GTK_TYPE_SCROLLED_WINDOW);
 
 static void
 emit_open_location (GtkPlacesSidebar   *sidebar,
@@ -444,7 +444,7 @@ list_box_header_func (GtkListBoxRow *row,
   GtkPlacesSidebarSectionType before_section_type;
   GtkWidget *separator;
 
-  gtk_list_box_row_set_header (row, NULL);
+  ctk_list_box_row_set_header (row, NULL);
 
   g_object_get (row, "section-type", &row_section_type, NULL);
   if (before)
@@ -454,15 +454,15 @@ list_box_header_func (GtkListBoxRow *row,
   else
     {
       before_section_type = SECTION_INVALID;
-      gtk_widget_set_margin_top (GTK_WIDGET (row), 4);
+      ctk_widget_set_margin_top (GTK_WIDGET (row), 4);
     }
 
   if (before && before_section_type != row_section_type)
     {
-      separator = gtk_separator_new (GTK_ORIENTATION_HORIZONTAL);
-      gtk_widget_set_margin_top (separator, 4);
-      gtk_widget_set_margin_bottom (separator, 4);
-      gtk_list_box_row_set_header (row, separator);
+      separator = ctk_separator_new (GTK_ORIENTATION_HORIZONTAL);
+      ctk_widget_set_margin_top (separator, 4);
+      ctk_widget_set_margin_bottom (separator, 4);
+      ctk_list_box_row_set_header (row, separator);
     }
 }
 
@@ -518,8 +518,8 @@ add_place (GtkPlacesSidebar            *sidebar,
 #endif
                       NULL);
 
-  eject_button = gtk_sidebar_row_get_eject_button (GTK_SIDEBAR_ROW (row));
-  event_box = gtk_sidebar_row_get_event_box (GTK_SIDEBAR_ROW (row));
+  eject_button = ctk_sidebar_row_get_eject_button (GTK_SIDEBAR_ROW (row));
+  event_box = ctk_sidebar_row_get_event_box (GTK_SIDEBAR_ROW (row));
 
   g_signal_connect_swapped (eject_button, "clicked",
                             G_CALLBACK (eject_or_unmount_bookmark), row);
@@ -528,8 +528,8 @@ add_place (GtkPlacesSidebar            *sidebar,
   g_signal_connect (event_box, "button-release-event",
                     G_CALLBACK (on_button_release_event), row);
 
-  gtk_container_add (GTK_CONTAINER (sidebar->list_box), GTK_WIDGET (row));
-  gtk_widget_show_all (row);
+  ctk_container_add (GTK_CONTAINER (sidebar->list_box), GTK_WIDGET (row));
+  ctk_widget_show_all (row);
 
   return row;
 }
@@ -566,7 +566,7 @@ recent_files_setting_is_enabled (GtkPlacesSidebar *sidebar)
   GtkSettings *settings;
   gboolean enabled;
 
-  settings = gtk_widget_get_settings (GTK_WIDGET (sidebar));
+  settings = ctk_widget_get_settings (GTK_WIDGET (sidebar));
   g_object_get (settings, "gtk-recent-files-enabled", &enabled, NULL);
 
   return enabled;
@@ -646,7 +646,7 @@ add_special_dirs (GtkPlacesSidebar *sidebar)
       gchar *mount_uri;
       gchar *tooltip;
 
-      if (!_gtk_bookmarks_manager_get_is_xdg_dir_builtin (index))
+      if (!_ctk_bookmarks_manager_get_is_xdg_dir_builtin (index))
         continue;
 
       path = g_get_user_special_dir (index);
@@ -662,7 +662,7 @@ add_special_dirs (GtkPlacesSidebar *sidebar)
 
       root = g_file_new_for_path (path);
 
-      name = _gtk_bookmarks_manager_get_bookmark_label (sidebar->bookmarks_manager, root);
+      name = _ctk_bookmarks_manager_get_bookmark_label (sidebar->bookmarks_manager, root);
       if (!name)
         name = g_file_get_basename (root);
 
@@ -743,7 +743,7 @@ file_is_shown (GtkPlacesSidebar *sidebar,
   GList *l;
   gboolean found = FALSE;
 
-  rows = gtk_container_get_children (GTK_CONTAINER (sidebar->list_box));
+  rows = ctk_container_get_children (GTK_CONTAINER (sidebar->list_box));
   l = rows;
   while (l != NULL && !found)
     {
@@ -859,7 +859,7 @@ on_bookmark_query_info_complete (GObject      *source,
   if (g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
     goto out;
 
-  bookmark_name = _gtk_bookmarks_manager_get_bookmark_label (sidebar->bookmarks_manager, root);
+  bookmark_name = _ctk_bookmarks_manager_get_bookmark_label (sidebar->bookmarks_manager, root);
   if (bookmark_name == NULL && info != NULL)
     bookmark_name = g_strdup (g_file_info_get_display_name (info));
   else if (bookmark_name == NULL)
@@ -929,8 +929,8 @@ update_trash_icon (GtkPlacesSidebar *sidebar)
     {
       GIcon *icon;
 
-      icon = _gtk_trash_monitor_get_icon (sidebar->trash_monitor);
-      gtk_sidebar_row_set_start_icon (GTK_SIDEBAR_ROW (sidebar->trash_row), icon);
+      icon = _ctk_trash_monitor_get_icon (sidebar->trash_monitor);
+      ctk_sidebar_row_set_start_icon (GTK_SIDEBAR_ROW (sidebar->trash_row), icon);
       g_object_unref (icon);
     }
 }
@@ -1040,7 +1040,7 @@ update_places (GtkPlacesSidebar *sidebar)
   GtkStyleContext *context;
 
   /* save original selection */
-  selected = gtk_list_box_get_selected_row (GTK_LIST_BOX (sidebar->list_box));
+  selected = ctk_list_box_get_selected_row (GTK_LIST_BOX (sidebar->list_box));
   if (selected)
     g_object_get (selected, "uri", &original_uri, NULL);
   else
@@ -1054,8 +1054,8 @@ update_places (GtkPlacesSidebar *sidebar)
   /* Reset drag state, just in case we update the places while dragging or
    * ending a drag */
   stop_drop_feedback (sidebar);
-  gtk_container_foreach (GTK_CONTAINER (sidebar->list_box),
-                         (GtkCallback) gtk_widget_destroy,
+  ctk_container_foreach (GTK_CONTAINER (sidebar->list_box),
+                         (GtkCallback) ctk_widget_destroy,
                          NULL);
 
   network_mounts = network_volumes = NULL;
@@ -1131,7 +1131,7 @@ update_places (GtkPlacesSidebar *sidebar)
   /* Trash */
   if (!sidebar->local_only && sidebar->show_trash)
     {
-      start_icon = _gtk_trash_monitor_get_icon (sidebar->trash_monitor);
+      start_icon = _ctk_trash_monitor_get_icon (sidebar->trash_monitor);
       sidebar->trash_row = add_place (sidebar, PLACES_BUILT_IN,
                                       SECTION_COMPUTER,
                                       _("Trash"), start_icon, NULL, "trash:///",
@@ -1417,7 +1417,7 @@ update_places (GtkPlacesSidebar *sidebar)
   g_list_free (mounts);
 
   /* add bookmarks */
-  bookmarks = _gtk_bookmarks_manager_list_bookmarks (sidebar->bookmarks_manager);
+  bookmarks = _ctk_bookmarks_manager_list_bookmarks (sidebar->bookmarks_manager);
 
   for (sl = bookmarks, index = 0; sl; sl = sl->next, index++)
     {
@@ -1427,7 +1427,7 @@ update_places (GtkPlacesSidebar *sidebar)
       root = sl->data;
       is_native = g_file_is_native (root);
 
-      if (_gtk_bookmarks_manager_get_is_builtin (sidebar->bookmarks_manager, root))
+      if (_ctk_bookmarks_manager_get_is_builtin (sidebar->bookmarks_manager, root))
         continue;
 
       if (sidebar->local_only && !is_native)
@@ -1455,8 +1455,8 @@ update_places (GtkPlacesSidebar *sidebar)
                                          _("New bookmark"), new_bookmark_icon, NULL, NULL,
                                          NULL, NULL, NULL, NULL, 0,
                                          _("Add a new bookmark"));
-  context = gtk_widget_get_style_context (sidebar->new_bookmark_row);
-  gtk_style_context_add_class (context, "sidebar-new-bookmark-row");
+  context = ctk_widget_get_style_context (sidebar->new_bookmark_row);
+  ctk_style_context_add_class (context, "sidebar-new-bookmark-row");
   g_object_unref (new_bookmark_icon);
 
   /* network */
@@ -1537,9 +1537,9 @@ update_places (GtkPlacesSidebar *sidebar)
       g_object_unref (start_icon);
     }
 
-  gtk_widget_show_all (GTK_WIDGET (sidebar));
+  ctk_widget_show_all (GTK_WIDGET (sidebar));
   /* We want this hidden by default, but need to do it after the show_all call */
-  gtk_sidebar_row_hide (GTK_SIDEBAR_ROW (sidebar->new_bookmark_row), TRUE);
+  ctk_sidebar_row_hide (GTK_SIDEBAR_ROW (sidebar->new_bookmark_row), TRUE);
 
   /* restore original selection */
   if (original_uri)
@@ -1547,7 +1547,7 @@ update_places (GtkPlacesSidebar *sidebar)
       GFile *restore;
 
       restore = g_file_new_for_uri (original_uri);
-      gtk_places_sidebar_set_location (sidebar, restore);
+      ctk_places_sidebar_set_location (sidebar, restore);
       g_object_unref (restore);
       g_free (original_uri);
     }
@@ -1651,12 +1651,12 @@ update_possible_drop_targets (GtkPlacesSidebar *sidebar,
   GList *l;
   gboolean sensitive;
 
-  rows = gtk_container_get_children (GTK_CONTAINER (sidebar->list_box));
+  rows = ctk_container_get_children (GTK_CONTAINER (sidebar->list_box));
 
   for (l = rows; l != NULL; l = l->next)
     {
       sensitive = !dragging || check_valid_drop_target (sidebar, GTK_SIDEBAR_ROW (l->data), context);
-      gtk_widget_set_sensitive (GTK_WIDGET (l->data), sensitive);
+      ctk_widget_set_sensitive (GTK_WIDGET (l->data), sensitive);
     }
 
   g_list_free (rows);
@@ -1669,12 +1669,12 @@ get_drag_data (GtkWidget      *list_box,
 {
   GdkAtom target;
 
-  target = gtk_drag_dest_find_target (list_box, context, NULL);
+  target = ctk_drag_dest_find_target (list_box, context, NULL);
 
   if (target == GDK_NONE)
     return FALSE;
 
-  gtk_drag_get_data (list_box, context, target, time);
+  ctk_drag_get_data (list_box, context, target, time);
 
   return TRUE;
 }
@@ -1699,7 +1699,7 @@ start_drop_feedback (GtkPlacesSidebar *sidebar,
 {
   if (sidebar->drag_data_info != DND_GTK_SIDEBAR_ROW)
     {
-      gtk_sidebar_row_reveal (GTK_SIDEBAR_ROW (sidebar->new_bookmark_row));
+      ctk_sidebar_row_reveal (GTK_SIDEBAR_ROW (sidebar->new_bookmark_row));
       /* If the state is permanent, don't change it. The application controls it. */
       if (sidebar->drop_state != DROP_STATE_NEW_BOOKMARK_ARMED_PERMANENT)
         sidebar->drop_state = DROP_STATE_NEW_BOOKMARK_ARMED;
@@ -1718,19 +1718,19 @@ stop_drop_feedback (GtkPlacesSidebar *sidebar)
   if (sidebar->drop_state != DROP_STATE_NEW_BOOKMARK_ARMED_PERMANENT &&
       sidebar->new_bookmark_row != NULL)
     {
-      gtk_sidebar_row_hide (GTK_SIDEBAR_ROW (sidebar->new_bookmark_row), FALSE);
+      ctk_sidebar_row_hide (GTK_SIDEBAR_ROW (sidebar->new_bookmark_row), FALSE);
       sidebar->drop_state = DROP_STATE_NORMAL;
     }
 
   if (sidebar->drag_row != NULL)
     {
-      gtk_widget_show (sidebar->drag_row);
+      ctk_widget_show (sidebar->drag_row);
       sidebar->drag_row = NULL;
     }
 
   if (sidebar->row_placeholder != NULL)
     {
-      gtk_widget_destroy (sidebar->row_placeholder);
+      ctk_widget_destroy (sidebar->row_placeholder);
       sidebar->row_placeholder = NULL;
     }
 
@@ -1751,13 +1751,13 @@ on_motion_notify_event (GtkWidget      *widget,
   if (!(event->state & GDK_BUTTON1_MASK))
     return FALSE;
 
-  if (gtk_drag_check_threshold (widget,
+  if (ctk_drag_check_threshold (widget,
                                 sidebar->drag_root_x, sidebar->drag_root_y,
                                 event->x_root, event->y_root))
     {
       sidebar->dragging_over = TRUE;
 
-      gtk_drag_begin_with_coordinates (widget, sidebar->source_targets, GDK_ACTION_MOVE,
+      ctk_drag_begin_with_coordinates (widget, sidebar->source_targets, GDK_ACTION_MOVE,
                                        GDK_BUTTON_PRIMARY, (GdkEvent*)event,
                                        -1, -1);
     }
@@ -1775,19 +1775,19 @@ drag_begin_callback (GtkWidget      *widget,
   GtkWidget *drag_widget;
   GtkWidget *window;
 
-  gtk_widget_get_allocation (sidebar->drag_row, &allocation);
-  gtk_widget_hide (sidebar->drag_row);
+  ctk_widget_get_allocation (sidebar->drag_row, &allocation);
+  ctk_widget_hide (sidebar->drag_row);
 
-  drag_widget = GTK_WIDGET (gtk_sidebar_row_clone (GTK_SIDEBAR_ROW (sidebar->drag_row)));
-  window = gtk_window_new (GTK_WINDOW_POPUP);
+  drag_widget = GTK_WIDGET (ctk_sidebar_row_clone (GTK_SIDEBAR_ROW (sidebar->drag_row)));
+  window = ctk_window_new (GTK_WINDOW_POPUP);
   sidebar->drag_row_height = allocation.height;
-  gtk_widget_set_size_request (window, allocation.width, allocation.height);
+  ctk_widget_set_size_request (window, allocation.width, allocation.height);
 
-  gtk_container_add (GTK_CONTAINER (window), drag_widget);
-  gtk_widget_show_all (window);
-  gtk_widget_set_opacity (window, 0.8);
+  ctk_container_add (GTK_CONTAINER (window), drag_widget);
+  ctk_widget_show_all (window);
+  ctk_widget_set_opacity (window, 0.8);
 
-  gtk_drag_set_icon_widget (context,
+  ctk_drag_set_icon_widget (context,
                             window,
                             sidebar->drag_row_x,
                             sidebar->drag_row_y);
@@ -1819,9 +1819,9 @@ drag_motion_callback (GtkWidget      *widget,
 
   sidebar->dragging_over = TRUE;
   action = 0;
-  row = gtk_list_box_get_row_at_y (GTK_LIST_BOX (sidebar->list_box), y);
+  row = ctk_list_box_get_row_at_y (GTK_LIST_BOX (sidebar->list_box), y);
 
-  gtk_list_box_drag_unhighlight_row (GTK_LIST_BOX (sidebar->list_box));
+  ctk_list_box_drag_unhighlight_row (GTK_LIST_BOX (sidebar->list_box));
 
   /* Nothing to do if no drag data */
   if (!sidebar->drag_data_received &&
@@ -1840,7 +1840,7 @@ drag_motion_callback (GtkWidget      *widget,
       if (sidebar->row_placeholder == NULL)
         {
           sidebar->row_placeholder = create_placeholder_row (sidebar);
-          gtk_widget_show (sidebar->row_placeholder);
+          ctk_widget_show (sidebar->row_placeholder);
           g_object_ref_sink (sidebar->row_placeholder);
         }
       else if (GTK_WIDGET (row) == sidebar->row_placeholder)
@@ -1848,9 +1848,9 @@ drag_motion_callback (GtkWidget      *widget,
           goto out;
         }
 
-      if (gtk_widget_get_parent (sidebar->row_placeholder) != NULL)
+      if (ctk_widget_get_parent (sidebar->row_placeholder) != NULL)
         {
-          gtk_container_remove (GTK_CONTAINER (sidebar->list_box),
+          ctk_container_remove (GTK_CONTAINER (sidebar->list_box),
                                 sidebar->row_placeholder);
         }
 
@@ -1871,7 +1871,7 @@ drag_motion_callback (GtkWidget      *widget,
            * of the row, we need to increase the order-index.
            */
           row_placeholder_index = row_index;
-          gtk_widget_translate_coordinates (widget, GTK_WIDGET (row),
+          ctk_widget_translate_coordinates (widget, GTK_WIDGET (row),
 		                            x, y,
 		                            &dest_x, &dest_y);
 
@@ -1888,12 +1888,12 @@ drag_motion_callback (GtkWidget      *widget,
 
       g_object_set (sidebar->row_placeholder, "order-index", row_placeholder_index, NULL);
 
-      gtk_list_box_prepend (GTK_LIST_BOX (sidebar->list_box),
+      ctk_list_box_prepend (GTK_LIST_BOX (sidebar->list_box),
                             sidebar->row_placeholder);
     }
   else
     {
-      gtk_list_box_drag_highlight_row (GTK_LIST_BOX (sidebar->list_box), row);
+      ctk_list_box_drag_highlight_row (GTK_LIST_BOX (sidebar->list_box), row);
 
       g_object_get (row,
                     "place-type", &place_type,
@@ -1966,7 +1966,7 @@ reorder_bookmarks (GtkPlacesSidebar *sidebar,
 
   g_object_get (row, "uri", &uri, NULL);
   file = g_file_new_for_uri (uri);
-  _gtk_bookmarks_manager_reorder_bookmark (sidebar->bookmarks_manager, file, new_position, NULL);
+  _ctk_bookmarks_manager_reorder_bookmark (sidebar->bookmarks_manager, file, new_position, NULL);
 
   g_object_unref (file);
   g_free (uri);
@@ -1991,8 +1991,8 @@ drop_files_as_bookmarks (GtkPlacesSidebar *sidebar,
 
       if (info)
         {
-          if (_gtk_file_info_consider_as_directory (info))
-            _gtk_bookmarks_manager_insert_bookmark (sidebar->bookmarks_manager, f, position++, NULL);
+          if (_ctk_file_info_consider_as_directory (info))
+            _ctk_bookmarks_manager_insert_bookmark (sidebar->bookmarks_manager, f, position++, NULL);
 
           g_object_unref (info);
         }
@@ -2008,11 +2008,11 @@ drag_data_get_callback (GtkWidget        *widget,
                         gpointer          user_data)
 {
   GtkPlacesSidebar *sidebar = GTK_PLACES_SIDEBAR (user_data);
-  GdkAtom target = gtk_selection_data_get_target (data);
+  GdkAtom target = ctk_selection_data_get_target (data);
 
   if (target == gdk_atom_intern_static_string ("DND_GTK_SIDEBAR_ROW"))
     {
-      gtk_selection_data_set (data,
+      ctk_selection_data_set (data,
                               target,
                               8,
                               (void*)&sidebar->drag_row,
@@ -2040,12 +2040,12 @@ drag_data_received_callback (GtkWidget        *list_box,
 
   if (!sidebar->drag_data_received)
     {
-      if (gtk_selection_data_get_target (selection_data) != GDK_NONE &&
+      if (ctk_selection_data_get_target (selection_data) != GDK_NONE &&
           info == DND_TEXT_URI_LIST)
         {
           gchar **uris;
 
-          uris = gtk_selection_data_get_uris (selection_data);
+          uris = ctk_selection_data_get_uris (selection_data);
           /* Free spurious drag data from previous drags if present */
           if (sidebar->drag_list != NULL)
             g_list_free_full (sidebar->drag_list, g_object_unref);
@@ -2065,7 +2065,7 @@ drag_data_received_callback (GtkWidget        *list_box,
   if (!sidebar->drop_occurred)
     return;
 
-  target_row = gtk_list_box_get_row_at_y (GTK_LIST_BOX (sidebar->list_box), y);
+  target_row = ctk_list_box_get_row_at_y (GTK_LIST_BOX (sidebar->list_box), y);
 
   if (target_row == NULL)
     return;
@@ -2089,7 +2089,7 @@ drag_data_received_callback (GtkWidget        *list_box,
       if (target_section_type != SECTION_BOOKMARKS)
         goto out;
 
-      source_row = (void*) gtk_selection_data_get_data (selection_data);
+      source_row = (void*) ctk_selection_data_get_data (selection_data);
 
       if (sidebar->row_placeholder != NULL)
         g_object_get (sidebar->row_placeholder, "order-index", &target_order_index, NULL);
@@ -2114,7 +2114,7 @@ drag_data_received_callback (GtkWidget        *list_box,
         {
           GFile *dest_file;
 
-          uris = gtk_selection_data_get_uris (selection_data);
+          uris = ctk_selection_data_get_uris (selection_data);
           source_file_list = build_file_list_from_uris ((const gchar **) uris);
 
           if (target_place_type == PLACES_DROP_FEEDBACK)
@@ -2138,7 +2138,7 @@ drag_data_received_callback (GtkWidget        *list_box,
 
 out:
   sidebar->drop_occurred = FALSE;
-  gtk_drag_finish (context, success, FALSE, time);
+  ctk_drag_finish (context, success, FALSE, time);
   stop_drop_feedback (sidebar);
   g_free (target_uri);
 }
@@ -2166,7 +2166,7 @@ drag_end_callback (GtkWidget      *widget,
  * sidebar, when the drag stops the last drag signal we receive is drag-leave.
  * So here what we will do is restore the state of the sidebar as if no drag
  * is being done (and if the application didnt request for permanent hints with
- * gtk_places_sidebar_show_drop_hints) and we will free the drag data next time
+ * ctk_places_sidebar_show_drop_hints) and we will free the drag data next time
  * we build new drag data in drag_data_received.
  */
 static void
@@ -2180,7 +2180,7 @@ drag_leave_callback (GtkWidget      *widget,
   if (sidebar->drop_state != DROP_STATE_NEW_BOOKMARK_ARMED_PERMANENT)
     {
       update_possible_drop_targets (sidebar, FALSE, context);
-      gtk_sidebar_row_hide (GTK_SIDEBAR_ROW (sidebar->new_bookmark_row), FALSE);
+      ctk_sidebar_row_hide (GTK_SIDEBAR_ROW (sidebar->new_bookmark_row), FALSE);
       sidebar->drop_state = DROP_STATE_NORMAL;
     }
 
@@ -2308,27 +2308,27 @@ check_popover_sensitivity (GtkSidebarRow *row,
                 "mount", &mount,
                 NULL);
 
-  gtk_widget_set_visible (data->add_shortcut_item, (type == PLACES_MOUNTED_VOLUME));
+  ctk_widget_set_visible (data->add_shortcut_item, (type == PLACES_MOUNTED_VOLUME));
 
-  actions = gtk_widget_get_action_group (sidebar, "row");
+  actions = ctk_widget_get_action_group (sidebar, "row");
   action = g_action_map_lookup_action (G_ACTION_MAP (actions), "remove");
   g_simple_action_set_enabled (G_SIMPLE_ACTION (action), (type == PLACES_BOOKMARK));
   action = g_action_map_lookup_action (G_ACTION_MAP (actions), "rename");
   g_simple_action_set_enabled (G_SIMPLE_ACTION (action), (type == PLACES_BOOKMARK ||
                                                           type == PLACES_XDG_DIR));
   action = g_action_map_lookup_action (G_ACTION_MAP (actions), "open");
-  g_simple_action_set_enabled (G_SIMPLE_ACTION (action), !gtk_list_box_row_is_selected (GTK_LIST_BOX_ROW (row)));
+  g_simple_action_set_enabled (G_SIMPLE_ACTION (action), !ctk_list_box_row_is_selected (GTK_LIST_BOX_ROW (row)));
 
   check_visibility (mount, volume, drive,
                     &show_mount, &show_unmount, &show_eject, &show_rescan, &show_start, &show_stop);
 
-  gtk_widget_set_visible (data->separator_item, show_mount || show_unmount || show_eject);
-  gtk_widget_set_visible (data->mount_item, show_mount);
-  gtk_widget_set_visible (data->unmount_item, show_unmount);
-  gtk_widget_set_visible (data->eject_item, show_eject);
-  gtk_widget_set_visible (data->rescan_item, show_rescan);
-  gtk_widget_set_visible (data->start_item, show_start);
-  gtk_widget_set_visible (data->stop_item, show_stop);
+  ctk_widget_set_visible (data->separator_item, show_mount || show_unmount || show_eject);
+  ctk_widget_set_visible (data->mount_item, show_mount);
+  ctk_widget_set_visible (data->unmount_item, show_unmount);
+  ctk_widget_set_visible (data->eject_item, show_eject);
+  ctk_widget_set_visible (data->rescan_item, show_rescan);
+  ctk_widget_set_visible (data->start_item, show_start);
+  ctk_widget_set_visible (data->stop_item, show_stop);
 
   /* Adjust start/stop items to reflect the type of the drive */
   g_object_set (data->start_item, "text", _("_Start"), NULL);
@@ -2438,7 +2438,7 @@ volume_mount_cb (GObject      *source_object,
     }
 
   sidebar->mounting = FALSE;
-  gtk_sidebar_row_set_busy (row, FALSE);
+  ctk_sidebar_row_set_busy (row, FALSE);
 
   mount = g_volume_get_mount (volume);
   if (mount != NULL)
@@ -2487,7 +2487,7 @@ open_drive (GtkSidebarRow      *row,
     {
       GMountOperation *mount_op;
 
-      gtk_sidebar_row_set_busy (row, TRUE);
+      ctk_sidebar_row_set_busy (row, TRUE);
       mount_op = get_mount_operation (sidebar);
       g_drive_start (drive, G_DRIVE_START_NONE, mount_op, NULL, drive_start_from_bookmark_cb, NULL);
       g_object_unref (mount_op);
@@ -2507,7 +2507,7 @@ open_volume (GtkSidebarRow      *row,
     {
       sidebar->mounting = TRUE;
       sidebar->go_to_after_mount_open_flags = open_flags;
-      gtk_sidebar_row_set_busy (row, TRUE);
+      ctk_sidebar_row_set_busy (row, TRUE);
       mount_volume (row, volume);
     }
 }
@@ -2612,8 +2612,8 @@ add_shortcut_cb (GSimpleAction *action,
   if (uri != NULL)
     {
       location = g_file_new_for_uri (uri);
-      if (_gtk_bookmarks_manager_insert_bookmark (sidebar->bookmarks_manager, location, -1, NULL))
-        _gtk_bookmarks_manager_set_bookmark_label (sidebar->bookmarks_manager, location, name, NULL);
+      if (_ctk_bookmarks_manager_insert_bookmark (sidebar->bookmarks_manager, location, -1, NULL))
+        _ctk_bookmarks_manager_set_bookmark_label (sidebar->bookmarks_manager, location, name, NULL);
       g_object_unref (location);
     }
 
@@ -2633,16 +2633,16 @@ rename_entry_changed (GtkEntry         *entry,
   GList *rows;
   GList *l;
 
-  new_name = gtk_entry_get_text (GTK_ENTRY (sidebar->rename_entry));
+  new_name = ctk_entry_get_text (GTK_ENTRY (sidebar->rename_entry));
 
   if (strcmp (new_name, "") == 0)
     {
-      gtk_widget_set_sensitive (sidebar->rename_button, FALSE);
-      gtk_label_set_label (GTK_LABEL (sidebar->rename_error), "");
+      ctk_widget_set_sensitive (sidebar->rename_button, FALSE);
+      ctk_label_set_label (GTK_LABEL (sidebar->rename_error), "");
       return;
     }
 
-  rows = gtk_container_get_children (GTK_CONTAINER (sidebar->list_box));
+  rows = ctk_container_get_children (GTK_CONTAINER (sidebar->list_box));
   for (l = rows; l && !found; l = l->next)
     {
       g_object_get (l->data,
@@ -2661,8 +2661,8 @@ rename_entry_changed (GtkEntry         *entry,
     }
   g_list_free (rows);
 
-  gtk_widget_set_sensitive (sidebar->rename_button, !found);
-  gtk_label_set_label (GTK_LABEL (sidebar->rename_error),
+  ctk_widget_set_sensitive (sidebar->rename_button, !found);
+  ctk_label_set_label (GTK_LABEL (sidebar->rename_error),
                        found ? _("This name is already taken") : "");
 }
 
@@ -2673,13 +2673,13 @@ do_rename (GtkButton        *button,
   gchar *new_text;
   GFile *file;
 
-  new_text = g_strdup (gtk_entry_get_text (GTK_ENTRY (sidebar->rename_entry)));
+  new_text = g_strdup (ctk_entry_get_text (GTK_ENTRY (sidebar->rename_entry)));
 
   file = g_file_new_for_uri (sidebar->rename_uri);
-  if (!_gtk_bookmarks_manager_has_bookmark (sidebar->bookmarks_manager, file))
-    _gtk_bookmarks_manager_insert_bookmark (sidebar->bookmarks_manager, file, -1, NULL);
+  if (!_ctk_bookmarks_manager_has_bookmark (sidebar->bookmarks_manager, file))
+    _ctk_bookmarks_manager_insert_bookmark (sidebar->bookmarks_manager, file, -1, NULL);
 
-  _gtk_bookmarks_manager_set_bookmark_label (sidebar->bookmarks_manager, file, new_text, NULL);
+  _ctk_bookmarks_manager_set_bookmark_label (sidebar->bookmarks_manager, file, new_text, NULL);
 
   g_object_unref (file);
   g_free (new_text);
@@ -2687,7 +2687,7 @@ do_rename (GtkButton        *button,
   g_clear_pointer (&sidebar->rename_uri, g_free);
 
   if (sidebar->rename_popover)
-    gtk_popover_popdown (GTK_POPOVER (sidebar->rename_popover));
+    ctk_popover_popdown (GTK_POPOVER (sidebar->rename_popover));
 }
 
 static void
@@ -2717,39 +2717,39 @@ create_rename_popover (GtkPlacesSidebar *sidebar)
   if (sidebar->rename_popover)
     return;
 
-  popover = gtk_popover_new (GTK_WIDGET (sidebar));
+  popover = ctk_popover_new (GTK_WIDGET (sidebar));
   /* Clean sidebar pointer when its destroyed, most of the times due to its
    * relative_to associated row being destroyed */
   g_signal_connect (popover, "destroy", G_CALLBACK (on_rename_popover_destroy), sidebar);
-  gtk_popover_set_position (GTK_POPOVER (popover), GTK_POS_RIGHT);
-  grid = gtk_grid_new ();
-  gtk_container_add (GTK_CONTAINER (popover), grid);
+  ctk_popover_set_position (GTK_POPOVER (popover), GTK_POS_RIGHT);
+  grid = ctk_grid_new ();
+  ctk_container_add (GTK_CONTAINER (popover), grid);
   g_object_set (grid,
                 "margin", 10,
                 "row-spacing", 6,
                 "column-spacing", 6,
                 NULL);
-  entry = gtk_entry_new ();
-  gtk_entry_set_activates_default (GTK_ENTRY (entry), TRUE);
+  entry = ctk_entry_new ();
+  ctk_entry_set_activates_default (GTK_ENTRY (entry), TRUE);
   g_signal_connect (entry, "changed", G_CALLBACK (rename_entry_changed), sidebar);
   str = g_strdup_printf ("<b>%s</b>", _("Name"));
-  label = gtk_label_new (str);
-  gtk_widget_set_halign (label, GTK_ALIGN_START);
-  gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
-  gtk_label_set_mnemonic_widget (GTK_LABEL (label), entry);
+  label = ctk_label_new (str);
+  ctk_widget_set_halign (label, GTK_ALIGN_START);
+  ctk_label_set_use_markup (GTK_LABEL (label), TRUE);
+  ctk_label_set_mnemonic_widget (GTK_LABEL (label), entry);
   g_free (str);
-  button = gtk_button_new_with_mnemonic (_("_Rename"));
-  gtk_widget_set_can_default (button, TRUE);
-  gtk_style_context_add_class (gtk_widget_get_style_context (button), "suggested-action");
+  button = ctk_button_new_with_mnemonic (_("_Rename"));
+  ctk_widget_set_can_default (button, TRUE);
+  ctk_style_context_add_class (ctk_widget_get_style_context (button), "suggested-action");
   g_signal_connect (button, "clicked", G_CALLBACK (do_rename), sidebar);
-  error = gtk_label_new ("");
-  gtk_widget_set_halign (error, GTK_ALIGN_START);
-  gtk_grid_attach (GTK_GRID (grid), label, 0, 0, 2, 1);
-  gtk_grid_attach (GTK_GRID (grid), entry, 0, 1, 1, 1);
-  gtk_grid_attach (GTK_GRID (grid), button,1, 1, 1, 1);
-  gtk_grid_attach (GTK_GRID (grid), error, 0, 2, 2, 1);
-  gtk_widget_show_all (grid);
-  gtk_popover_set_default_widget (GTK_POPOVER (popover), button);
+  error = ctk_label_new ("");
+  ctk_widget_set_halign (error, GTK_ALIGN_START);
+  ctk_grid_attach (GTK_GRID (grid), label, 0, 0, 2, 1);
+  ctk_grid_attach (GTK_GRID (grid), entry, 0, 1, 1, 1);
+  ctk_grid_attach (GTK_GRID (grid), button,1, 1, 1, 1);
+  ctk_grid_attach (GTK_GRID (grid), error, 0, 2, 2, 1);
+  ctk_widget_show_all (grid);
+  ctk_popover_set_default_widget (GTK_POPOVER (popover), button);
 
   sidebar->rename_popover = popover;
   sidebar->rename_entry = entry;
@@ -2778,23 +2778,23 @@ update_popover_shadowing (GtkWidget *row,
   count = shown ? count + 1 : count - 1;
   g_object_set_data (G_OBJECT (row), "popover-count", GINT_TO_POINTER (count));
 
-  context = gtk_widget_get_style_context (row);
+  context = ctk_widget_get_style_context (row);
   if (count > 0)
-    gtk_style_context_add_class (context, "has-open-popup");
+    ctk_style_context_add_class (context, "has-open-popup");
   else
-    gtk_style_context_remove_class (context, "has-open-popup");
+    ctk_style_context_remove_class (context, "has-open-popup");
 }
 
 static void
 set_prelight (GtkPopover *popover)
 {
-  update_popover_shadowing (gtk_popover_get_relative_to (popover), TRUE);
+  update_popover_shadowing (ctk_popover_get_relative_to (popover), TRUE);
 }
 
 static void
 unset_prelight (GtkPopover *popover)
 {
-  update_popover_shadowing (gtk_popover_get_relative_to (popover), FALSE);
+  update_popover_shadowing (ctk_popover_get_relative_to (popover), FALSE);
 }
 
 static void
@@ -2823,12 +2823,12 @@ show_rename_popover (GtkSidebarRow *row)
     g_free (sidebar->rename_uri);
   sidebar->rename_uri = g_strdup (uri);
 
-  gtk_entry_set_text (GTK_ENTRY (sidebar->rename_entry), name);
-  gtk_popover_set_relative_to (GTK_POPOVER (sidebar->rename_popover), GTK_WIDGET (row));
+  ctk_entry_set_text (GTK_ENTRY (sidebar->rename_entry), name);
+  ctk_popover_set_relative_to (GTK_POPOVER (sidebar->rename_popover), GTK_WIDGET (row));
   setup_popover_shadowing (sidebar->rename_popover);
 
-  gtk_popover_popup (GTK_POPOVER (sidebar->rename_popover));
-  gtk_widget_grab_focus (sidebar->rename_entry);
+  ctk_popover_popup (GTK_POPOVER (sidebar->rename_popover));
+  ctk_widget_grab_focus (sidebar->rename_entry);
 
   g_free (name);
   g_free (uri);
@@ -2875,7 +2875,7 @@ remove_bookmark (GtkSidebarRow *row)
   if (type == PLACES_BOOKMARK)
     {
       file = g_file_new_for_uri (uri);
-      _gtk_bookmarks_manager_remove_bookmark (sidebar->bookmarks_manager, file, NULL);
+      _ctk_bookmarks_manager_remove_bookmark (sidebar->bookmarks_manager, file, NULL);
       g_object_unref (file);
     }
 
@@ -2949,7 +2949,7 @@ get_mount_operation (GtkPlacesSidebar *sidebar)
 {
   GMountOperation *mount_op;
 
-  mount_op = gtk_mount_operation_new (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (sidebar))));
+  mount_op = ctk_mount_operation_new (GTK_WINDOW (ctk_widget_get_toplevel (GTK_WIDGET (sidebar))));
 
   emit_mount_operation (sidebar, mount_op);
 
@@ -2961,7 +2961,7 @@ get_unmount_operation (GtkPlacesSidebar *sidebar)
 {
   GMountOperation *mount_op;
 
-  mount_op = gtk_mount_operation_new (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (sidebar))));
+  mount_op = ctk_mount_operation_new (GTK_WINDOW (ctk_widget_get_toplevel (GTK_WIDGET (sidebar))));
 
   emit_unmount_operation (sidebar, mount_op);
 
@@ -3319,7 +3319,7 @@ eject_or_unmount_selection (GtkPlacesSidebar *sidebar)
   gboolean ret;
   GtkListBoxRow *row;
 
-  row = gtk_list_box_get_selected_row (GTK_LIST_BOX (sidebar->list_box));
+  row = ctk_list_box_get_selected_row (GTK_LIST_BOX (sidebar->list_box));
   ret = eject_or_unmount_bookmark (GTK_SIDEBAR_ROW (row));
 
   return ret;
@@ -3462,10 +3462,10 @@ on_key_press_event (GtkWidget        *widget,
 
   if (event)
     {
-      row = gtk_list_box_get_selected_row (GTK_LIST_BOX (sidebar->list_box));
+      row = ctk_list_box_get_selected_row (GTK_LIST_BOX (sidebar->list_box));
       if (row)
         {
-          modifiers = gtk_accelerator_get_default_mod_mask ();
+          modifiers = ctk_accelerator_get_default_mod_mask ();
 
           if (event->keyval == GDK_KEY_Return ||
               event->keyval == GDK_KEY_KP_Enter ||
@@ -3540,7 +3540,7 @@ add_actions (GtkPlacesSidebar *sidebar)
   g_action_map_add_action_entries (G_ACTION_MAP (actions),
                                    entries, G_N_ELEMENTS (entries),
                                    sidebar);
-  gtk_widget_insert_action_group (GTK_WIDGET (sidebar), "row", actions);
+  ctk_widget_insert_action_group (GTK_WIDGET (sidebar), "row", actions);
   g_object_unref (actions);
 }
 
@@ -3555,7 +3555,7 @@ append_separator (GtkWidget *box)
                             "margin-top", 6,
                             "margin-bottom", 6,
                             NULL);
-  gtk_container_add (GTK_CONTAINER (box), separator);
+  ctk_container_add (GTK_CONTAINER (box), separator);
 
   return separator;
 }
@@ -3572,7 +3572,7 @@ add_button (GtkWidget   *box,
                        "action-name", action,
                        "text", label,
                        NULL);
-  gtk_container_add (GTK_CONTAINER (box), item);
+  ctk_container_add (GTK_CONTAINER (box), item);
 
   return item;
 }
@@ -3590,7 +3590,7 @@ add_open_button (GtkWidget          *box,
                        "action-target", g_variant_new_int32 (flags),
                        "text", label,
                        NULL);
-  gtk_container_add (GTK_CONTAINER (box), item);
+  ctk_container_add (GTK_CONTAINER (box), item);
 
   return item;
 }
@@ -3642,15 +3642,15 @@ build_popup_menu_using_gmenu (GtkSidebarRow *row)
       if (cloud_provider_menu != NULL && cloud_provider_action_group != NULL)
         {
           g_menu_append_section (menu, NULL, cloud_provider_menu);
-          gtk_widget_insert_action_group (GTK_WIDGET (sidebar),
+          ctk_widget_insert_action_group (GTK_WIDGET (sidebar),
                                           "cloudprovider",
                                           G_ACTION_GROUP (cloud_provider_action_group));
         }
       add_actions (sidebar);
       if (sidebar->popover)
-        gtk_widget_destroy (sidebar->popover);
+        ctk_widget_destroy (sidebar->popover);
 
-      sidebar->popover = gtk_popover_new_from_model (GTK_WIDGET (sidebar),
+      sidebar->popover = ctk_popover_new_from_model (GTK_WIDGET (sidebar),
                                                      G_MENU_MODEL (menu));
       g_signal_connect (sidebar->popover, "destroy",
                         G_CALLBACK (on_row_popover_destroy), sidebar);
@@ -3680,15 +3680,15 @@ create_row_popover (GtkPlacesSidebar *sidebar,
     }
 #endif
 
-  sidebar->popover = gtk_popover_new (GTK_WIDGET (sidebar));
+  sidebar->popover = ctk_popover_new (GTK_WIDGET (sidebar));
   /* Clean sidebar pointer when its destroyed, most of the times due to its
    * relative_to associated row being destroyed */
   g_signal_connect (sidebar->popover, "destroy", G_CALLBACK (on_row_popover_destroy), sidebar);
   setup_popover_shadowing (sidebar->popover);
-  box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+  box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
   g_object_set (box, "margin", 10, NULL);
-  gtk_widget_show (box);
-  gtk_container_add (GTK_CONTAINER (sidebar->popover), box);
+  ctk_widget_show (box);
+  ctk_container_add (GTK_CONTAINER (sidebar->popover), box);
 
   add_open_button (box, _("_Open"), GTK_PLACES_OPEN_NORMAL);
 
@@ -3752,14 +3752,14 @@ show_row_popover (GtkSidebarRow *row)
   g_object_get (row, "sidebar", &sidebar, NULL);
 
   if (sidebar->popover)
-    gtk_widget_destroy (sidebar->popover);
+    ctk_widget_destroy (sidebar->popover);
 
   create_row_popover (sidebar, row);
 
-  gtk_popover_set_relative_to (GTK_POPOVER (sidebar->popover), GTK_WIDGET (row));
+  ctk_popover_set_relative_to (GTK_POPOVER (sidebar->popover), GTK_WIDGET (row));
 
   sidebar->context_row = row;
-  gtk_popover_popup (GTK_POPOVER (sidebar->popover));
+  ctk_popover_popup (GTK_POPOVER (sidebar->popover));
 
   g_object_unref (sidebar);
 }
@@ -3778,7 +3778,7 @@ on_row_activated (GtkListBox    *list_box,
   if (GTK_PLACES_SIDEBAR (user_data)->dragging_over)
     return;
 
-  selected_row = GTK_SIDEBAR_ROW (gtk_list_box_get_selected_row (list_box));
+  selected_row = GTK_SIDEBAR_ROW (ctk_list_box_get_selected_row (list_box));
   open_row (selected_row, 0);
 }
 
@@ -3864,7 +3864,7 @@ long_press_cb (GtkGesture       *gesture,
 {
   GtkWidget *row;
 
-  row = GTK_WIDGET (gtk_list_box_get_row_at_y (GTK_LIST_BOX (sidebar->list_box), y));
+  row = GTK_WIDGET (ctk_list_box_get_row_at_y (GTK_LIST_BOX (sidebar->list_box), y));
   if (GTK_IS_SIDEBAR_ROW (row))
     popup_menu_cb (GTK_SIDEBAR_ROW (row));
 }
@@ -4052,7 +4052,7 @@ shell_shows_desktop_changed (GtkSettings *settings,
   GtkPlacesSidebar *sidebar = user_data;
   gboolean show_desktop;
 
-  g_assert (settings == sidebar->gtk_settings);
+  g_assert (settings == sidebar->ctk_settings);
 
   /* Check if the user explicitly set this and, if so, don't change it. */
   if (sidebar->show_desktop_set)
@@ -4069,7 +4069,7 @@ shell_shows_desktop_changed (GtkSettings *settings,
 }
 
 static void
-gtk_places_sidebar_init (GtkPlacesSidebar *sidebar)
+ctk_places_sidebar_init (GtkPlacesSidebar *sidebar)
 {
   GtkTargetList *target_list;
   gboolean show_desktop;
@@ -4083,54 +4083,54 @@ gtk_places_sidebar_init (GtkPlacesSidebar *sidebar)
 
   sidebar->open_flags = GTK_PLACES_OPEN_NORMAL;
 
-  sidebar->bookmarks_manager = _gtk_bookmarks_manager_new ((GtkBookmarksChangedFunc)update_places, sidebar);
+  sidebar->bookmarks_manager = _ctk_bookmarks_manager_new ((GtkBookmarksChangedFunc)update_places, sidebar);
 
-  sidebar->trash_monitor = _gtk_trash_monitor_get ();
+  sidebar->trash_monitor = _ctk_trash_monitor_get ();
   sidebar->trash_monitor_changed_id = g_signal_connect_swapped (sidebar->trash_monitor, "trash-state-changed",
                                                                 G_CALLBACK (update_trash_icon), sidebar);
 
-  gtk_widget_set_size_request (GTK_WIDGET (sidebar), 140, 280);
+  ctk_widget_set_size_request (GTK_WIDGET (sidebar), 140, 280);
 
-  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sidebar),
+  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sidebar),
                                   GTK_POLICY_NEVER,
                                   GTK_POLICY_AUTOMATIC);
-  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (sidebar), GTK_SHADOW_IN);
+  ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (sidebar), GTK_SHADOW_IN);
 
-  context = gtk_widget_get_style_context (GTK_WIDGET (sidebar));
-  gtk_style_context_add_class (context, GTK_STYLE_CLASS_SIDEBAR);
-  gtk_style_context_set_junction_sides (context, GTK_JUNCTION_RIGHT | GTK_JUNCTION_LEFT);
+  context = ctk_widget_get_style_context (GTK_WIDGET (sidebar));
+  ctk_style_context_add_class (context, GTK_STYLE_CLASS_SIDEBAR);
+  ctk_style_context_set_junction_sides (context, GTK_JUNCTION_RIGHT | GTK_JUNCTION_LEFT);
 
   /* list box */
-  sidebar->list_box = gtk_list_box_new ();
+  sidebar->list_box = ctk_list_box_new ();
 
-  gtk_list_box_set_header_func (GTK_LIST_BOX (sidebar->list_box),
+  ctk_list_box_set_header_func (GTK_LIST_BOX (sidebar->list_box),
                                 list_box_header_func, sidebar, NULL);
-  gtk_list_box_set_sort_func (GTK_LIST_BOX (sidebar->list_box),
+  ctk_list_box_set_sort_func (GTK_LIST_BOX (sidebar->list_box),
                               list_box_sort_func, NULL, NULL);
-  gtk_list_box_set_selection_mode (GTK_LIST_BOX (sidebar->list_box), GTK_SELECTION_SINGLE);
-  gtk_list_box_set_activate_on_single_click (GTK_LIST_BOX (sidebar->list_box), TRUE);
+  ctk_list_box_set_selection_mode (GTK_LIST_BOX (sidebar->list_box), GTK_SELECTION_SINGLE);
+  ctk_list_box_set_activate_on_single_click (GTK_LIST_BOX (sidebar->list_box), TRUE);
 
   g_signal_connect (sidebar->list_box, "row-activated",
                     G_CALLBACK (on_row_activated), sidebar);
   g_signal_connect (sidebar->list_box, "key-press-event",
                     G_CALLBACK (on_key_press_event), sidebar);
 
-  sidebar->long_press_gesture = gtk_gesture_long_press_new (GTK_WIDGET (sidebar));
-  gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (sidebar->long_press_gesture), TRUE);
+  sidebar->long_press_gesture = ctk_gesture_long_press_new (GTK_WIDGET (sidebar));
+  ctk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (sidebar->long_press_gesture), TRUE);
   g_signal_connect (sidebar->long_press_gesture, "pressed",
                     G_CALLBACK (long_press_cb), sidebar);
 
   /* DND support */
-  gtk_drag_dest_set (sidebar->list_box,
+  ctk_drag_dest_set (sidebar->list_box,
                      0,
                      NULL, 0,
                      GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK);
-  target_list = gtk_target_list_new  (dnd_drop_targets, G_N_ELEMENTS (dnd_drop_targets));
-  gtk_target_list_add_uri_targets (target_list, DND_TEXT_URI_LIST);
-  gtk_drag_dest_set_target_list (sidebar->list_box, target_list);
-  gtk_target_list_unref (target_list);
-  sidebar->source_targets = gtk_target_list_new (dnd_source_targets, G_N_ELEMENTS (dnd_source_targets));
-  gtk_target_list_add_text_targets (sidebar->source_targets, 0);
+  target_list = ctk_target_list_new  (dnd_drop_targets, G_N_ELEMENTS (dnd_drop_targets));
+  ctk_target_list_add_uri_targets (target_list, DND_TEXT_URI_LIST);
+  ctk_drag_dest_set_target_list (sidebar->list_box, target_list);
+  ctk_target_list_unref (target_list);
+  sidebar->source_targets = ctk_target_list_new (dnd_source_targets, G_N_ELEMENTS (dnd_source_targets));
+  ctk_target_list_add_text_targets (sidebar->source_targets, 0);
 
   g_signal_connect (sidebar->list_box, "motion-notify-event",
                     G_CALLBACK (on_motion_notify_event), sidebar);
@@ -4153,7 +4153,7 @@ gtk_places_sidebar_init (GtkPlacesSidebar *sidebar)
   sidebar->dragging_over = FALSE;
   sidebar->drag_data_info = DND_UNKNOWN;
 
-  gtk_container_add (GTK_CONTAINER (sidebar), sidebar->list_box);
+  ctk_container_add (GTK_CONTAINER (sidebar), sidebar->list_box);
 
   sidebar->hostname = g_strdup (_("Computer"));
   sidebar->hostnamed_cancellable = g_cancellable_new ();
@@ -4170,10 +4170,10 @@ gtk_places_sidebar_init (GtkPlacesSidebar *sidebar)
   sidebar->drop_state = DROP_STATE_NORMAL;
 
   /* Don't bother trying to trace this across hierarchy changes... */
-  sidebar->gtk_settings = gtk_settings_get_default ();
-  g_signal_connect (sidebar->gtk_settings, "notify::gtk-shell-shows-desktop",
+  sidebar->ctk_settings = ctk_settings_get_default ();
+  g_signal_connect (sidebar->ctk_settings, "notify::gtk-shell-shows-desktop",
                     G_CALLBACK (shell_shows_desktop_changed), sidebar);
-  g_object_get (sidebar->gtk_settings, "gtk-shell-shows-desktop", &show_desktop, NULL);
+  g_object_get (sidebar->ctk_settings, "gtk-shell-shows-desktop", &show_desktop, NULL);
   sidebar->show_desktop = show_desktop;
 
   /* Cloud providers */
@@ -4192,7 +4192,7 @@ gtk_places_sidebar_init (GtkPlacesSidebar *sidebar)
 }
 
 static void
-gtk_places_sidebar_set_property (GObject      *obj,
+ctk_places_sidebar_set_property (GObject      *obj,
                                  guint         property_id,
                                  const GValue *value,
                                  GParamSpec   *pspec)
@@ -4202,45 +4202,45 @@ gtk_places_sidebar_set_property (GObject      *obj,
   switch (property_id)
     {
     case PROP_LOCATION:
-      gtk_places_sidebar_set_location (sidebar, g_value_get_object (value));
+      ctk_places_sidebar_set_location (sidebar, g_value_get_object (value));
       break;
 
     case PROP_OPEN_FLAGS:
-      gtk_places_sidebar_set_open_flags (sidebar, g_value_get_flags (value));
+      ctk_places_sidebar_set_open_flags (sidebar, g_value_get_flags (value));
       break;
 
     case PROP_SHOW_RECENT:
-      gtk_places_sidebar_set_show_recent (sidebar, g_value_get_boolean (value));
+      ctk_places_sidebar_set_show_recent (sidebar, g_value_get_boolean (value));
       break;
 
     case PROP_SHOW_DESKTOP:
-      gtk_places_sidebar_set_show_desktop (sidebar, g_value_get_boolean (value));
+      ctk_places_sidebar_set_show_desktop (sidebar, g_value_get_boolean (value));
       break;
 
     case PROP_SHOW_CONNECT_TO_SERVER:
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-      gtk_places_sidebar_set_show_connect_to_server (sidebar, g_value_get_boolean (value));
+      ctk_places_sidebar_set_show_connect_to_server (sidebar, g_value_get_boolean (value));
 G_GNUC_END_IGNORE_DEPRECATIONS
       break;
 
     case PROP_SHOW_ENTER_LOCATION:
-      gtk_places_sidebar_set_show_enter_location (sidebar, g_value_get_boolean (value));
+      ctk_places_sidebar_set_show_enter_location (sidebar, g_value_get_boolean (value));
       break;
 
     case PROP_SHOW_OTHER_LOCATIONS:
-      gtk_places_sidebar_set_show_other_locations (sidebar, g_value_get_boolean (value));
+      ctk_places_sidebar_set_show_other_locations (sidebar, g_value_get_boolean (value));
       break;
 
     case PROP_SHOW_TRASH:
-      gtk_places_sidebar_set_show_trash (sidebar, g_value_get_boolean (value));
+      ctk_places_sidebar_set_show_trash (sidebar, g_value_get_boolean (value));
       break;
 
     case PROP_SHOW_STARRED_LOCATION:
-      gtk_places_sidebar_set_show_starred_location (sidebar, g_value_get_boolean (value));
+      ctk_places_sidebar_set_show_starred_location (sidebar, g_value_get_boolean (value));
       break;
 
     case PROP_LOCAL_ONLY:
-      gtk_places_sidebar_set_local_only (sidebar, g_value_get_boolean (value));
+      ctk_places_sidebar_set_local_only (sidebar, g_value_get_boolean (value));
       break;
 
     case PROP_POPULATE_ALL:
@@ -4258,7 +4258,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-gtk_places_sidebar_get_property (GObject    *obj,
+ctk_places_sidebar_get_property (GObject    *obj,
                                  guint       property_id,
                                  GValue     *value,
                                  GParamSpec *pspec)
@@ -4268,45 +4268,45 @@ gtk_places_sidebar_get_property (GObject    *obj,
   switch (property_id)
     {
     case PROP_LOCATION:
-      g_value_take_object (value, gtk_places_sidebar_get_location (sidebar));
+      g_value_take_object (value, ctk_places_sidebar_get_location (sidebar));
       break;
 
     case PROP_OPEN_FLAGS:
-      g_value_set_flags (value, gtk_places_sidebar_get_open_flags (sidebar));
+      g_value_set_flags (value, ctk_places_sidebar_get_open_flags (sidebar));
       break;
 
     case PROP_SHOW_RECENT:
-      g_value_set_boolean (value, gtk_places_sidebar_get_show_recent (sidebar));
+      g_value_set_boolean (value, ctk_places_sidebar_get_show_recent (sidebar));
       break;
 
     case PROP_SHOW_DESKTOP:
-      g_value_set_boolean (value, gtk_places_sidebar_get_show_desktop (sidebar));
+      g_value_set_boolean (value, ctk_places_sidebar_get_show_desktop (sidebar));
       break;
 
     case PROP_SHOW_CONNECT_TO_SERVER:
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-      g_value_set_boolean (value, gtk_places_sidebar_get_show_connect_to_server (sidebar));
+      g_value_set_boolean (value, ctk_places_sidebar_get_show_connect_to_server (sidebar));
 G_GNUC_END_IGNORE_DEPRECATIONS
       break;
 
     case PROP_SHOW_ENTER_LOCATION:
-      g_value_set_boolean (value, gtk_places_sidebar_get_show_enter_location (sidebar));
+      g_value_set_boolean (value, ctk_places_sidebar_get_show_enter_location (sidebar));
       break;
 
     case PROP_SHOW_OTHER_LOCATIONS:
-      g_value_set_boolean (value, gtk_places_sidebar_get_show_other_locations (sidebar));
+      g_value_set_boolean (value, ctk_places_sidebar_get_show_other_locations (sidebar));
       break;
 
     case PROP_SHOW_TRASH:
-      g_value_set_boolean (value, gtk_places_sidebar_get_show_trash (sidebar));
+      g_value_set_boolean (value, ctk_places_sidebar_get_show_trash (sidebar));
       break;
 
     case PROP_SHOW_STARRED_LOCATION:
-      g_value_set_boolean (value, gtk_places_sidebar_get_show_starred_location (sidebar));
+      g_value_set_boolean (value, ctk_places_sidebar_get_show_starred_location (sidebar));
       break;
 
     case PROP_LOCAL_ONLY:
-      g_value_set_boolean (value, gtk_places_sidebar_get_local_only (sidebar));
+      g_value_set_boolean (value, ctk_places_sidebar_get_local_only (sidebar));
       break;
 
     case PROP_POPULATE_ALL:
@@ -4320,7 +4320,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-gtk_places_sidebar_dispose (GObject *object)
+ctk_places_sidebar_dispose (GObject *object)
 {
   GtkPlacesSidebar *sidebar;
 #ifdef HAVE_CLOUDPROVIDERS
@@ -4340,19 +4340,19 @@ gtk_places_sidebar_dispose (GObject *object)
 
   if (sidebar->bookmarks_manager != NULL)
     {
-      _gtk_bookmarks_manager_free (sidebar->bookmarks_manager);
+      _ctk_bookmarks_manager_free (sidebar->bookmarks_manager);
       sidebar->bookmarks_manager = NULL;
     }
 
   if (sidebar->popover)
     {
-      gtk_widget_destroy (sidebar->popover);
+      ctk_widget_destroy (sidebar->popover);
       sidebar->popover = NULL;
     }
 
   if (sidebar->rename_popover)
     {
-      gtk_widget_destroy (sidebar->rename_popover);
+      ctk_widget_destroy (sidebar->rename_popover);
       sidebar->rename_popover = NULL;
       sidebar->rename_entry = NULL;
       sidebar->rename_button = NULL;
@@ -4390,10 +4390,10 @@ gtk_places_sidebar_dispose (GObject *object)
   g_free (sidebar->hostname);
   sidebar->hostname = NULL;
 
-  if (sidebar->gtk_settings)
+  if (sidebar->ctk_settings)
     {
-      g_signal_handlers_disconnect_by_func (sidebar->gtk_settings, shell_shows_desktop_changed, sidebar);
-      sidebar->gtk_settings = NULL;
+      g_signal_handlers_disconnect_by_func (sidebar->ctk_settings, shell_shows_desktop_changed, sidebar);
+      sidebar->ctk_settings = NULL;
     }
 
   g_clear_object (&sidebar->current_location);
@@ -4403,7 +4403,7 @@ gtk_places_sidebar_dispose (GObject *object)
 
   if (sidebar->source_targets)
     {
-      gtk_target_list_unref (sidebar->source_targets);
+      ctk_target_list_unref (sidebar->source_targets);
       sidebar->source_targets = NULL;
     }
 
@@ -4431,26 +4431,26 @@ gtk_places_sidebar_dispose (GObject *object)
     }
 #endif
 
-  G_OBJECT_CLASS (gtk_places_sidebar_parent_class)->dispose (object);
+  G_OBJECT_CLASS (ctk_places_sidebar_parent_class)->dispose (object);
 }
 
 static void
-gtk_places_sidebar_finalize (GObject *object)
+ctk_places_sidebar_finalize (GObject *object)
 {
-  G_OBJECT_CLASS (gtk_places_sidebar_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_places_sidebar_parent_class)->finalize (object);
 }
 
 static void
-gtk_places_sidebar_class_init (GtkPlacesSidebarClass *class)
+ctk_places_sidebar_class_init (GtkPlacesSidebarClass *class)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (class);
 
 
-  gobject_class->dispose = gtk_places_sidebar_dispose;
-  gobject_class->finalize = gtk_places_sidebar_finalize;
-  gobject_class->set_property = gtk_places_sidebar_set_property;
-  gobject_class->get_property = gtk_places_sidebar_get_property;
+  gobject_class->dispose = ctk_places_sidebar_dispose;
+  gobject_class->finalize = ctk_places_sidebar_finalize;
+  gobject_class->set_property = ctk_places_sidebar_set_property;
+  gobject_class->get_property = ctk_places_sidebar_get_property;
 
   /**
    * GtkPlacesSidebar::open-location:
@@ -4471,7 +4471,7 @@ gtk_places_sidebar_class_init (GtkPlacesSidebarClass *class)
                         G_SIGNAL_RUN_FIRST,
                         G_STRUCT_OFFSET (GtkPlacesSidebarClass, open_location),
                         NULL, NULL,
-                        _gtk_marshal_VOID__OBJECT_FLAGS,
+                        _ctk_marshal_VOID__OBJECT_FLAGS,
                         G_TYPE_NONE, 2,
                         G_TYPE_OBJECT,
                         GTK_TYPE_PLACES_OPEN_FLAGS);
@@ -4491,7 +4491,7 @@ gtk_places_sidebar_class_init (GtkPlacesSidebarClass *class)
    * may want to add a "Properties" command to the menu.
    *
    * It is not necessary to store the @selected_item for each menu item;
-   * during their callbacks, the application can use gtk_places_sidebar_get_location()
+   * during their callbacks, the application can use ctk_places_sidebar_get_location()
    * to get the file to which the item refers.
    *
    * The @selected_item argument may be %NULL in case the selection refers to
@@ -4519,7 +4519,7 @@ gtk_places_sidebar_class_init (GtkPlacesSidebarClass *class)
                         G_SIGNAL_RUN_FIRST,
                         G_STRUCT_OFFSET (GtkPlacesSidebarClass, populate_popup),
                         NULL, NULL,
-                        _gtk_marshal_VOID__OBJECT_OBJECT_OBJECT,
+                        _ctk_marshal_VOID__OBJECT_OBJECT_OBJECT,
                         G_TYPE_NONE, 3,
                         GTK_TYPE_WIDGET,
                         G_TYPE_FILE,
@@ -4544,7 +4544,7 @@ gtk_places_sidebar_class_init (GtkPlacesSidebarClass *class)
                         G_SIGNAL_RUN_FIRST,
                         G_STRUCT_OFFSET (GtkPlacesSidebarClass, show_error_message),
                         NULL, NULL,
-                        _gtk_marshal_VOID__STRING_STRING,
+                        _ctk_marshal_VOID__STRING_STRING,
                         G_TYPE_NONE, 2,
                         G_TYPE_STRING,
                         G_TYPE_STRING);
@@ -4621,7 +4621,7 @@ gtk_places_sidebar_class_init (GtkPlacesSidebarClass *class)
                         G_SIGNAL_RUN_LAST,
                         G_STRUCT_OFFSET (GtkPlacesSidebarClass, drag_action_requested),
                         NULL, NULL,
-                        _gtk_marshal_INT__OBJECT_OBJECT_POINTER,
+                        _ctk_marshal_INT__OBJECT_OBJECT_POINTER,
                         G_TYPE_INT, 3,
                         GDK_TYPE_DRAG_CONTEXT,
                         G_TYPE_OBJECT,
@@ -4646,7 +4646,7 @@ gtk_places_sidebar_class_init (GtkPlacesSidebarClass *class)
                         G_SIGNAL_RUN_LAST,
                         G_STRUCT_OFFSET (GtkPlacesSidebarClass, drag_action_ask),
                         NULL, NULL,
-                        _gtk_marshal_INT__INT,
+                        _ctk_marshal_INT__INT,
                         G_TYPE_INT, 1,
                         G_TYPE_INT);
 
@@ -4672,7 +4672,7 @@ gtk_places_sidebar_class_init (GtkPlacesSidebarClass *class)
                         G_SIGNAL_RUN_FIRST,
                         G_STRUCT_OFFSET (GtkPlacesSidebarClass, drag_perform_drop),
                         NULL, NULL,
-                        _gtk_marshal_VOID__OBJECT_POINTER_INT,
+                        _ctk_marshal_VOID__OBJECT_POINTER_INT,
                         G_TYPE_NONE, 3,
                         G_TYPE_OBJECT,
                         G_TYPE_POINTER, /* GList of GFile */
@@ -4874,11 +4874,11 @@ gtk_places_sidebar_class_init (GtkPlacesSidebarClass *class)
 
   g_object_class_install_properties (gobject_class, NUM_PROPERTIES, properties);
 
-  gtk_widget_class_set_css_name (widget_class, "placessidebar");
+  ctk_widget_class_set_css_name (widget_class, "placessidebar");
 }
 
 /**
- * gtk_places_sidebar_new:
+ * ctk_places_sidebar_new:
  *
  * Creates a new #GtkPlacesSidebar widget.
  *
@@ -4891,15 +4891,15 @@ gtk_places_sidebar_class_init (GtkPlacesSidebarClass *class)
  * Since: 3.10
  */
 GtkWidget *
-gtk_places_sidebar_new (void)
+ctk_places_sidebar_new (void)
 {
-  return GTK_WIDGET (g_object_new (gtk_places_sidebar_get_type (), NULL));
+  return GTK_WIDGET (g_object_new (ctk_places_sidebar_get_type (), NULL));
 }
 
 /* Public methods for GtkPlacesSidebar */
 
 /**
- * gtk_places_sidebar_set_open_flags:
+ * ctk_places_sidebar_set_open_flags:
  * @sidebar: a places sidebar
  * @flags: Bitmask of modes in which the calling application can open locations
  *
@@ -4914,7 +4914,7 @@ gtk_places_sidebar_new (void)
  *
  * When the #GtkPlacesSidebar::open-location signal is emitted, its flags
  * argument will be set to one of the @flags that was passed in
- * gtk_places_sidebar_set_open_flags().
+ * ctk_places_sidebar_set_open_flags().
  *
  * Passing 0 for @flags will cause #GTK_PLACES_OPEN_NORMAL to always be sent
  * to callbacks for the “open-location” signal.
@@ -4922,7 +4922,7 @@ gtk_places_sidebar_new (void)
  * Since: 3.10
  */
 void
-gtk_places_sidebar_set_open_flags (GtkPlacesSidebar   *sidebar,
+ctk_places_sidebar_set_open_flags (GtkPlacesSidebar   *sidebar,
                                    GtkPlacesOpenFlags  flags)
 {
   g_return_if_fail (GTK_IS_PLACES_SIDEBAR (sidebar));
@@ -4935,7 +4935,7 @@ gtk_places_sidebar_set_open_flags (GtkPlacesSidebar   *sidebar,
 }
 
 /**
- * gtk_places_sidebar_get_open_flags:
+ * ctk_places_sidebar_get_open_flags:
  * @sidebar: a #GtkPlacesSidebar
  *
  * Gets the open flags.
@@ -4945,7 +4945,7 @@ gtk_places_sidebar_set_open_flags (GtkPlacesSidebar   *sidebar,
  * Since: 3.10
  */
 GtkPlacesOpenFlags
-gtk_places_sidebar_get_open_flags (GtkPlacesSidebar *sidebar)
+ctk_places_sidebar_get_open_flags (GtkPlacesSidebar *sidebar)
 {
   g_return_val_if_fail (GTK_IS_PLACES_SIDEBAR (sidebar), 0);
 
@@ -4953,7 +4953,7 @@ gtk_places_sidebar_get_open_flags (GtkPlacesSidebar *sidebar)
 }
 
 /**
- * gtk_places_sidebar_set_location:
+ * ctk_places_sidebar_set_location:
  * @sidebar: a places sidebar
  * @location: (nullable): location to select, or %NULL for no current path
  *
@@ -4966,7 +4966,7 @@ gtk_places_sidebar_get_open_flags (GtkPlacesSidebar *sidebar)
  * Since: 3.10
  */
 void
-gtk_places_sidebar_set_location (GtkPlacesSidebar *sidebar,
+ctk_places_sidebar_set_location (GtkPlacesSidebar *sidebar,
                                  GFile            *location)
 {
   GList *children;
@@ -4977,7 +4977,7 @@ gtk_places_sidebar_set_location (GtkPlacesSidebar *sidebar,
 
   g_return_if_fail (GTK_IS_PLACES_SIDEBAR (sidebar));
 
-  gtk_list_box_unselect_all (GTK_LIST_BOX (sidebar->list_box));
+  ctk_list_box_unselect_all (GTK_LIST_BOX (sidebar->list_box));
 
   if (sidebar->current_location != NULL)
     g_object_unref (sidebar->current_location);
@@ -4990,13 +4990,13 @@ gtk_places_sidebar_set_location (GtkPlacesSidebar *sidebar,
 
   uri = g_file_get_uri (location);
 
-  children = gtk_container_get_children (GTK_CONTAINER (sidebar->list_box));
+  children = ctk_container_get_children (GTK_CONTAINER (sidebar->list_box));
   for (child = children; child != NULL && !found; child = child->next)
     {
       g_object_get (child->data, "uri", &row_uri, NULL);
       if (row_uri != NULL && g_strcmp0 (row_uri, uri) == 0)
         {
-          gtk_list_box_select_row (GTK_LIST_BOX (sidebar->list_box),
+          ctk_list_box_select_row (GTK_LIST_BOX (sidebar->list_box),
                                    GTK_LIST_BOX_ROW (child->data));
           found = TRUE;
         }
@@ -5012,11 +5012,11 @@ gtk_places_sidebar_set_location (GtkPlacesSidebar *sidebar,
 }
 
 /**
- * gtk_places_sidebar_get_location:
+ * ctk_places_sidebar_get_location:
  * @sidebar: a places sidebar
  *
  * Gets the currently selected location in the @sidebar. This can be %NULL when
- * nothing is selected, for example, when gtk_places_sidebar_set_location() has
+ * nothing is selected, for example, when ctk_places_sidebar_set_location() has
  * been called with a location that is not among the sidebar’s list of places to
  * show.
  *
@@ -5031,7 +5031,7 @@ gtk_places_sidebar_set_location (GtkPlacesSidebar *sidebar,
  * Since: 3.10
  */
 GFile *
-gtk_places_sidebar_get_location (GtkPlacesSidebar *sidebar)
+ctk_places_sidebar_get_location (GtkPlacesSidebar *sidebar)
 {
   GtkListBoxRow *selected;
   GFile *file;
@@ -5039,7 +5039,7 @@ gtk_places_sidebar_get_location (GtkPlacesSidebar *sidebar)
   g_return_val_if_fail (sidebar != NULL, NULL);
 
   file = NULL;
-  selected = gtk_list_box_get_selected_row (GTK_LIST_BOX (sidebar->list_box));
+  selected = ctk_list_box_get_selected_row (GTK_LIST_BOX (sidebar->list_box));
 
   if (selected)
     {
@@ -5054,7 +5054,7 @@ gtk_places_sidebar_get_location (GtkPlacesSidebar *sidebar)
 }
 
 gchar *
-gtk_places_sidebar_get_location_title (GtkPlacesSidebar *sidebar)
+ctk_places_sidebar_get_location_title (GtkPlacesSidebar *sidebar)
 {
   GtkListBoxRow *selected;
   gchar *title;
@@ -5062,7 +5062,7 @@ gtk_places_sidebar_get_location_title (GtkPlacesSidebar *sidebar)
   g_return_val_if_fail (sidebar != NULL, NULL);
 
   title = NULL;
-  selected = gtk_list_box_get_selected_row (GTK_LIST_BOX (sidebar->list_box));
+  selected = ctk_list_box_get_selected_row (GTK_LIST_BOX (sidebar->list_box));
 
   if (selected)
     g_object_get (selected, "label", &title, NULL);
@@ -5071,7 +5071,7 @@ gtk_places_sidebar_get_location_title (GtkPlacesSidebar *sidebar)
 }
 
 /**
- * gtk_places_sidebar_set_show_recent:
+ * ctk_places_sidebar_set_show_recent:
  * @sidebar: a places sidebar
  * @show_recent: whether to show an item for recent files
  *
@@ -5083,7 +5083,7 @@ gtk_places_sidebar_get_location_title (GtkPlacesSidebar *sidebar)
  * Since: 3.18
  */
 void
-gtk_places_sidebar_set_show_recent (GtkPlacesSidebar *sidebar,
+ctk_places_sidebar_set_show_recent (GtkPlacesSidebar *sidebar,
                                     gboolean          show_recent)
 {
   g_return_if_fail (GTK_IS_PLACES_SIDEBAR (sidebar));
@@ -5100,17 +5100,17 @@ gtk_places_sidebar_set_show_recent (GtkPlacesSidebar *sidebar,
 }
 
 /**
- * gtk_places_sidebar_get_show_recent:
+ * ctk_places_sidebar_get_show_recent:
  * @sidebar: a places sidebar
  *
- * Returns the value previously set with gtk_places_sidebar_set_show_recent()
+ * Returns the value previously set with ctk_places_sidebar_set_show_recent()
  *
  * Returns: %TRUE if the sidebar will display a builtin shortcut for recent files
  *
  * Since: 3.18
  */
 gboolean
-gtk_places_sidebar_get_show_recent (GtkPlacesSidebar *sidebar)
+ctk_places_sidebar_get_show_recent (GtkPlacesSidebar *sidebar)
 {
   g_return_val_if_fail (GTK_IS_PLACES_SIDEBAR (sidebar), FALSE);
 
@@ -5118,7 +5118,7 @@ gtk_places_sidebar_get_show_recent (GtkPlacesSidebar *sidebar)
 }
 
 /**
- * gtk_places_sidebar_set_show_desktop:
+ * ctk_places_sidebar_set_show_desktop:
  * @sidebar: a places sidebar
  * @show_desktop: whether to show an item for the Desktop folder
  *
@@ -5130,7 +5130,7 @@ gtk_places_sidebar_get_show_recent (GtkPlacesSidebar *sidebar)
  * Since: 3.10
  */
 void
-gtk_places_sidebar_set_show_desktop (GtkPlacesSidebar *sidebar,
+ctk_places_sidebar_set_show_desktop (GtkPlacesSidebar *sidebar,
                                      gboolean          show_desktop)
 {
   g_return_if_fail (GTK_IS_PLACES_SIDEBAR (sidebar));
@@ -5151,17 +5151,17 @@ gtk_places_sidebar_set_show_desktop (GtkPlacesSidebar *sidebar,
 }
 
 /**
- * gtk_places_sidebar_get_show_desktop:
+ * ctk_places_sidebar_get_show_desktop:
  * @sidebar: a places sidebar
  *
- * Returns the value previously set with gtk_places_sidebar_set_show_desktop()
+ * Returns the value previously set with ctk_places_sidebar_set_show_desktop()
  *
  * Returns: %TRUE if the sidebar will display a builtin shortcut to the desktop folder.
  *
  * Since: 3.10
  */
 gboolean
-gtk_places_sidebar_get_show_desktop (GtkPlacesSidebar *sidebar)
+ctk_places_sidebar_get_show_desktop (GtkPlacesSidebar *sidebar)
 {
   g_return_val_if_fail (GTK_IS_PLACES_SIDEBAR (sidebar), FALSE);
 
@@ -5169,7 +5169,7 @@ gtk_places_sidebar_get_show_desktop (GtkPlacesSidebar *sidebar)
 }
 
 /**
- * gtk_places_sidebar_set_show_connect_to_server:
+ * ctk_places_sidebar_set_show_connect_to_server:
  * @sidebar: a places sidebar
  * @show_connect_to_server: whether to show an item for the Connect to Server command
  *
@@ -5186,7 +5186,7 @@ gtk_places_sidebar_get_show_desktop (GtkPlacesSidebar *sidebar)
  *     and network location under the new 'Other Location' item
  */
 void
-gtk_places_sidebar_set_show_connect_to_server (GtkPlacesSidebar *sidebar,
+ctk_places_sidebar_set_show_connect_to_server (GtkPlacesSidebar *sidebar,
                                                gboolean          show_connect_to_server)
 {
   g_return_if_fail (GTK_IS_PLACES_SIDEBAR (sidebar));
@@ -5201,10 +5201,10 @@ gtk_places_sidebar_set_show_connect_to_server (GtkPlacesSidebar *sidebar,
 }
 
 /**
- * gtk_places_sidebar_get_show_connect_to_server:
+ * ctk_places_sidebar_get_show_connect_to_server:
  * @sidebar: a places sidebar
  *
- * Returns the value previously set with gtk_places_sidebar_set_show_connect_to_server()
+ * Returns the value previously set with ctk_places_sidebar_set_show_connect_to_server()
  *
  * Returns: %TRUE if the sidebar will display a “Connect to Server” item.
  *
@@ -5212,7 +5212,7 @@ gtk_places_sidebar_set_show_connect_to_server (GtkPlacesSidebar *sidebar,
  *     and network location under the new 'Other Location' item
  */
 gboolean
-gtk_places_sidebar_get_show_connect_to_server (GtkPlacesSidebar *sidebar)
+ctk_places_sidebar_get_show_connect_to_server (GtkPlacesSidebar *sidebar)
 {
   g_return_val_if_fail (GTK_IS_PLACES_SIDEBAR (sidebar), FALSE);
 
@@ -5220,7 +5220,7 @@ gtk_places_sidebar_get_show_connect_to_server (GtkPlacesSidebar *sidebar)
 }
 
 /**
- * gtk_places_sidebar_set_show_enter_location:
+ * ctk_places_sidebar_set_show_enter_location:
  * @sidebar: a places sidebar
  * @show_enter_location: whether to show an item to enter a location
  *
@@ -5234,7 +5234,7 @@ gtk_places_sidebar_get_show_connect_to_server (GtkPlacesSidebar *sidebar)
  * Since: 3.14
  */
 void
-gtk_places_sidebar_set_show_enter_location (GtkPlacesSidebar *sidebar,
+ctk_places_sidebar_set_show_enter_location (GtkPlacesSidebar *sidebar,
                                             gboolean          show_enter_location)
 {
   g_return_if_fail (GTK_IS_PLACES_SIDEBAR (sidebar));
@@ -5249,17 +5249,17 @@ gtk_places_sidebar_set_show_enter_location (GtkPlacesSidebar *sidebar,
 }
 
 /**
- * gtk_places_sidebar_get_show_enter_location:
+ * ctk_places_sidebar_get_show_enter_location:
  * @sidebar: a places sidebar
  *
- * Returns the value previously set with gtk_places_sidebar_set_show_enter_location()
+ * Returns the value previously set with ctk_places_sidebar_set_show_enter_location()
  *
  * Returns: %TRUE if the sidebar will display an “Enter Location” item.
  *
  * Since: 3.14
  */
 gboolean
-gtk_places_sidebar_get_show_enter_location (GtkPlacesSidebar *sidebar)
+ctk_places_sidebar_get_show_enter_location (GtkPlacesSidebar *sidebar)
 {
   g_return_val_if_fail (GTK_IS_PLACES_SIDEBAR (sidebar), FALSE);
 
@@ -5267,7 +5267,7 @@ gtk_places_sidebar_get_show_enter_location (GtkPlacesSidebar *sidebar)
 }
 
 /**
- * gtk_places_sidebar_set_show_other_locations:
+ * ctk_places_sidebar_set_show_other_locations:
  * @sidebar: a places sidebar
  * @show_other_locations: whether to show an item for the Other Locations view
  *
@@ -5283,7 +5283,7 @@ gtk_places_sidebar_get_show_enter_location (GtkPlacesSidebar *sidebar)
  * Since: 3.18
  */
 void
-gtk_places_sidebar_set_show_other_locations (GtkPlacesSidebar *sidebar,
+ctk_places_sidebar_set_show_other_locations (GtkPlacesSidebar *sidebar,
                                              gboolean          show_other_locations)
 {
   g_return_if_fail (GTK_IS_PLACES_SIDEBAR (sidebar));
@@ -5298,17 +5298,17 @@ gtk_places_sidebar_set_show_other_locations (GtkPlacesSidebar *sidebar,
   }
 
 /**
- * gtk_places_sidebar_get_show_other_locations:
+ * ctk_places_sidebar_get_show_other_locations:
  * @sidebar: a places sidebar
  *
- * Returns the value previously set with gtk_places_sidebar_set_show_other_locations()
+ * Returns the value previously set with ctk_places_sidebar_set_show_other_locations()
  *
  * Returns: %TRUE if the sidebar will display an “Other Locations” item.
  *
  * Since: 3.18
  */
 gboolean
-gtk_places_sidebar_get_show_other_locations (GtkPlacesSidebar *sidebar)
+ctk_places_sidebar_get_show_other_locations (GtkPlacesSidebar *sidebar)
 {
   g_return_val_if_fail (GTK_IS_PLACES_SIDEBAR (sidebar), FALSE);
 
@@ -5316,7 +5316,7 @@ gtk_places_sidebar_get_show_other_locations (GtkPlacesSidebar *sidebar)
 }
 
 /**
- * gtk_places_sidebar_set_show_trash:
+ * ctk_places_sidebar_set_show_trash:
  * @sidebar: a places sidebar
  * @show_trash: whether to show an item for the Trash location
  *
@@ -5325,7 +5325,7 @@ gtk_places_sidebar_get_show_other_locations (GtkPlacesSidebar *sidebar)
  * Since: 3.18
  */
 void
-gtk_places_sidebar_set_show_trash (GtkPlacesSidebar *sidebar,
+ctk_places_sidebar_set_show_trash (GtkPlacesSidebar *sidebar,
                                    gboolean          show_trash)
 {
   g_return_if_fail (GTK_IS_PLACES_SIDEBAR (sidebar));
@@ -5340,17 +5340,17 @@ gtk_places_sidebar_set_show_trash (GtkPlacesSidebar *sidebar,
 }
 
 /**
- * gtk_places_sidebar_get_show_trash:
+ * ctk_places_sidebar_get_show_trash:
  * @sidebar: a places sidebar
  *
- * Returns the value previously set with gtk_places_sidebar_set_show_trash()
+ * Returns the value previously set with ctk_places_sidebar_set_show_trash()
  *
  * Returns: %TRUE if the sidebar will display a “Trash” item.
  *
  * Since: 3.18
  */
 gboolean
-gtk_places_sidebar_get_show_trash (GtkPlacesSidebar *sidebar)
+ctk_places_sidebar_get_show_trash (GtkPlacesSidebar *sidebar)
 {
   g_return_val_if_fail (GTK_IS_PLACES_SIDEBAR (sidebar), TRUE);
 
@@ -5358,7 +5358,7 @@ gtk_places_sidebar_get_show_trash (GtkPlacesSidebar *sidebar)
 }
 
 /**
- * gtk_places_sidebar_set_local_only:
+ * ctk_places_sidebar_set_local_only:
  * @sidebar: a places sidebar
  * @local_only: whether to show only local files
  *
@@ -5367,7 +5367,7 @@ gtk_places_sidebar_get_show_trash (GtkPlacesSidebar *sidebar)
  * Since: 3.12
  */
 void
-gtk_places_sidebar_set_local_only (GtkPlacesSidebar *sidebar,
+ctk_places_sidebar_set_local_only (GtkPlacesSidebar *sidebar,
                                    gboolean          local_only)
 {
   g_return_if_fail (GTK_IS_PLACES_SIDEBAR (sidebar));
@@ -5382,17 +5382,17 @@ gtk_places_sidebar_set_local_only (GtkPlacesSidebar *sidebar,
 }
 
 /**
- * gtk_places_sidebar_get_local_only:
+ * ctk_places_sidebar_get_local_only:
  * @sidebar: a places sidebar
  *
- * Returns the value previously set with gtk_places_sidebar_set_local_only().
+ * Returns the value previously set with ctk_places_sidebar_set_local_only().
  *
  * Returns: %TRUE if the sidebar will only show local files.
  *
  * Since: 3.12
  */
 gboolean
-gtk_places_sidebar_get_local_only (GtkPlacesSidebar *sidebar)
+ctk_places_sidebar_get_local_only (GtkPlacesSidebar *sidebar)
 {
   g_return_val_if_fail (GTK_IS_PLACES_SIDEBAR (sidebar), FALSE);
 
@@ -5418,7 +5418,7 @@ find_shortcut_link (GtkPlacesSidebar *sidebar,
 }
 
 /**
- * gtk_places_sidebar_add_shortcut:
+ * ctk_places_sidebar_add_shortcut:
  * @sidebar: a places sidebar
  * @location: location to add as an application-specific shortcut
  *
@@ -5436,7 +5436,7 @@ find_shortcut_link (GtkPlacesSidebar *sidebar,
  * Since: 3.10
  */
 void
-gtk_places_sidebar_add_shortcut (GtkPlacesSidebar *sidebar,
+ctk_places_sidebar_add_shortcut (GtkPlacesSidebar *sidebar,
                                  GFile            *location)
 {
   g_return_if_fail (GTK_IS_PLACES_SIDEBAR (sidebar));
@@ -5449,18 +5449,18 @@ gtk_places_sidebar_add_shortcut (GtkPlacesSidebar *sidebar,
 }
 
 /**
- * gtk_places_sidebar_remove_shortcut:
+ * ctk_places_sidebar_remove_shortcut:
  * @sidebar: a places sidebar
  * @location: location to remove
  *
  * Removes an application-specific shortcut that has been previously been
- * inserted with gtk_places_sidebar_add_shortcut().  If the @location is not a
+ * inserted with ctk_places_sidebar_add_shortcut().  If the @location is not a
  * shortcut in the sidebar, then nothing is done.
  *
  * Since: 3.10
  */
 void
-gtk_places_sidebar_remove_shortcut (GtkPlacesSidebar *sidebar,
+ctk_places_sidebar_remove_shortcut (GtkPlacesSidebar *sidebar,
                                     GFile            *location)
 {
   GSList *link;
@@ -5481,14 +5481,14 @@ gtk_places_sidebar_remove_shortcut (GtkPlacesSidebar *sidebar,
 }
 
 /**
- * gtk_places_sidebar_list_shortcuts:
+ * ctk_places_sidebar_list_shortcuts:
  * @sidebar: a places sidebar
  *
  * Gets the list of shortcuts.
  *
  * Returns: (element-type GFile) (transfer full):
  *     A #GSList of #GFile of the locations that have been added as
- *     application-specific shortcuts with gtk_places_sidebar_add_shortcut().
+ *     application-specific shortcuts with ctk_places_sidebar_add_shortcut().
  *     To free this list, you can use
  * |[<!-- language="C" -->
  * g_slist_free_full (list, (GDestroyNotify) g_object_unref);
@@ -5497,7 +5497,7 @@ gtk_places_sidebar_remove_shortcut (GtkPlacesSidebar *sidebar,
  * Since: 3.10
  */
 GSList *
-gtk_places_sidebar_list_shortcuts (GtkPlacesSidebar *sidebar)
+ctk_places_sidebar_list_shortcuts (GtkPlacesSidebar *sidebar)
 {
   g_return_val_if_fail (GTK_IS_PLACES_SIDEBAR (sidebar), NULL);
 
@@ -5505,7 +5505,7 @@ gtk_places_sidebar_list_shortcuts (GtkPlacesSidebar *sidebar)
 }
 
 /**
- * gtk_places_sidebar_get_nth_bookmark:
+ * ctk_places_sidebar_get_nth_bookmark:
  * @sidebar: a places sidebar
  * @n: index of the bookmark to query
  *
@@ -5520,7 +5520,7 @@ gtk_places_sidebar_list_shortcuts (GtkPlacesSidebar *sidebar)
  * Since: 3.10
  */
 GFile *
-gtk_places_sidebar_get_nth_bookmark (GtkPlacesSidebar *sidebar,
+ctk_places_sidebar_get_nth_bookmark (GtkPlacesSidebar *sidebar,
                                      gint              n)
 {
   GList *rows;
@@ -5531,7 +5531,7 @@ gtk_places_sidebar_get_nth_bookmark (GtkPlacesSidebar *sidebar,
   g_return_val_if_fail (GTK_IS_PLACES_SIDEBAR (sidebar), NULL);
 
   file = NULL;
-  rows = gtk_container_get_children (GTK_CONTAINER (sidebar->list_box));
+  rows = ctk_container_get_children (GTK_CONTAINER (sidebar->list_box));
   l = rows;
 
   k = 0;
@@ -5564,7 +5564,7 @@ gtk_places_sidebar_get_nth_bookmark (GtkPlacesSidebar *sidebar,
 }
 
 /**
- * gtk_places_sidebar_set_drop_targets_visible:
+ * ctk_places_sidebar_set_drop_targets_visible:
  * @sidebar: a places sidebar.
  * @visible: whether to show the valid targets or not.
  * @context: drag context used to ask the source about the action that wants to
@@ -5583,7 +5583,7 @@ gtk_places_sidebar_get_nth_bookmark (GtkPlacesSidebar *sidebar,
  * Since: 3.18
  */
 void
-gtk_places_sidebar_set_drop_targets_visible (GtkPlacesSidebar *sidebar,
+ctk_places_sidebar_set_drop_targets_visible (GtkPlacesSidebar *sidebar,
                                              gboolean          visible,
                                              GdkDragContext   *context)
 {
@@ -5615,7 +5615,7 @@ gtk_places_sidebar_set_drop_targets_visible (GtkPlacesSidebar *sidebar,
 }
 
 /**
- * gtk_places_sidebar_set_show_starred_location:
+ * ctk_places_sidebar_set_show_starred_location:
  * @sidebar: a places sidebar
  * @show_starred_location: whether to show an item for Starred files
  *
@@ -5625,7 +5625,7 @@ gtk_places_sidebar_set_drop_targets_visible (GtkPlacesSidebar *sidebar,
  * Since: 3.22.26
  */
 void
-gtk_places_sidebar_set_show_starred_location (GtkPlacesSidebar *sidebar,
+ctk_places_sidebar_set_show_starred_location (GtkPlacesSidebar *sidebar,
                                               gboolean          show_starred_location)
 {
   g_return_if_fail (GTK_IS_PLACES_SIDEBAR (sidebar));
@@ -5640,17 +5640,17 @@ gtk_places_sidebar_set_show_starred_location (GtkPlacesSidebar *sidebar,
 }
 
 /**
- * gtk_places_sidebar_get_show_starred_location:
+ * ctk_places_sidebar_get_show_starred_location:
  * @sidebar: a places sidebar
  *
- * Returns the value previously set with gtk_places_sidebar_set_show_starred_location()
+ * Returns the value previously set with ctk_places_sidebar_set_show_starred_location()
  *
  * Returns: %TRUE if the sidebar will display a Starred item.
  *
  * Since: 3.22.26
  */
 gboolean
-gtk_places_sidebar_get_show_starred_location (GtkPlacesSidebar *sidebar)
+ctk_places_sidebar_get_show_starred_location (GtkPlacesSidebar *sidebar)
 {
   g_return_val_if_fail (GTK_IS_PLACES_SIDEBAR (sidebar), FALSE);
 

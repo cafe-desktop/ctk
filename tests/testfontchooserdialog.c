@@ -33,10 +33,10 @@ notify_font_cb (GtkFontChooser *fontchooser, GParamSpec *pspec, gpointer data)
   PangoFontFamily *family;
   PangoFontFace *face;
 
-  g_debug ("Changed font name %s", gtk_font_chooser_get_font (fontchooser));
+  g_debug ("Changed font name %s", ctk_font_chooser_get_font (fontchooser));
 
-  family = gtk_font_chooser_get_font_family (fontchooser);
-  face = gtk_font_chooser_get_font_face (fontchooser);
+  family = ctk_font_chooser_get_font_family (fontchooser);
+  face = ctk_font_chooser_get_font_face (fontchooser);
   if (family)
     {
        g_debug ("  Family: %s is-monospace:%s",
@@ -55,7 +55,7 @@ notify_font_cb (GtkFontChooser *fontchooser, GParamSpec *pspec, gpointer data)
 static void
 notify_preview_text_cb (GObject *fontchooser, GParamSpec *pspec, gpointer data)
 {
-  g_debug ("Changed preview text %s", gtk_font_chooser_get_preview_text (GTK_FONT_CHOOSER (fontchooser)));
+  g_debug ("Changed preview text %s", ctk_font_chooser_get_preview_text (GTK_FONT_CHOOSER (fontchooser)));
 }
 
 static void
@@ -70,9 +70,9 @@ main (int argc, char *argv[])
   GtkWidget *window;
   GtkWidget *font_button;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
-  font_button = gtk_font_button_new ();
+  font_button = ctk_font_button_new ();
 
   if (argc > 0)
     {
@@ -89,14 +89,14 @@ main (int argc, char *argv[])
 
       fontmap = pango_cairo_font_map_new_for_font_type (CAIRO_FONT_TYPE_FT);
       pango_fc_font_map_set_config (PANGO_FC_FONT_MAP (fontmap), config);
-      gtk_font_chooser_set_font_map (GTK_FONT_CHOOSER (font_button), fontmap);
+      ctk_font_chooser_set_font_map (GTK_FONT_CHOOSER (font_button), fontmap);
     }
 
-  gtk_font_button_set_use_font (GTK_FONT_BUTTON (font_button), TRUE);
+  ctk_font_button_set_use_font (GTK_FONT_BUTTON (font_button), TRUE);
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_container_add (GTK_CONTAINER (window), font_button);
-  gtk_widget_show_all (window);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_container_add (GTK_CONTAINER (window), font_button);
+  ctk_widget_show_all (window);
 
   g_signal_connect (font_button, "notify::font",
                     G_CALLBACK (notify_font_cb), NULL);
@@ -107,14 +107,14 @@ main (int argc, char *argv[])
 
   if (argc >= 2 && strcmp (argv[1], "--monospace") == 0)
     {
-      gtk_font_chooser_set_filter_func (GTK_FONT_CHOOSER (font_button),
+      ctk_font_chooser_set_filter_func (GTK_FONT_CHOOSER (font_button),
                                         monospace_filter, NULL, NULL);
     }
 
   g_signal_connect (window, "delete-event",
-                    G_CALLBACK (gtk_main_quit), NULL);
+                    G_CALLBACK (ctk_main_quit), NULL);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

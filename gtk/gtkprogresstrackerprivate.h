@@ -42,32 +42,32 @@ struct _GtkProgressTracker
   gdouble iteration_count;
 };
 
-void                 gtk_progress_tracker_init_copy           (GtkProgressTracker *source,
+void                 ctk_progress_tracker_init_copy           (GtkProgressTracker *source,
                                                                GtkProgressTracker *dest);
 
-void                 gtk_progress_tracker_start               (GtkProgressTracker *tracker,
+void                 ctk_progress_tracker_start               (GtkProgressTracker *tracker,
                                                                guint64 duration,
                                                                gint64 delay,
                                                                gdouble iteration_count);
 
-void                 gtk_progress_tracker_finish              (GtkProgressTracker *tracker);
+void                 ctk_progress_tracker_finish              (GtkProgressTracker *tracker);
 
-void                 gtk_progress_tracker_advance_frame       (GtkProgressTracker *tracker,
+void                 ctk_progress_tracker_advance_frame       (GtkProgressTracker *tracker,
                                                                guint64 frame_time);
 
-void                 gtk_progress_tracker_skip_frame          (GtkProgressTracker *tracker,
+void                 ctk_progress_tracker_skip_frame          (GtkProgressTracker *tracker,
                                                                guint64 frame_time);
 
-GtkProgressState     gtk_progress_tracker_get_state           (GtkProgressTracker *tracker);
+GtkProgressState     ctk_progress_tracker_get_state           (GtkProgressTracker *tracker);
 
-gdouble              gtk_progress_tracker_get_iteration       (GtkProgressTracker *tracker);
+gdouble              ctk_progress_tracker_get_iteration       (GtkProgressTracker *tracker);
 
-guint64              gtk_progress_tracker_get_iteration_cycle (GtkProgressTracker *tracker);
+guint64              ctk_progress_tracker_get_iteration_cycle (GtkProgressTracker *tracker);
 
-gdouble              gtk_progress_tracker_get_progress        (GtkProgressTracker *tracker,
+gdouble              ctk_progress_tracker_get_progress        (GtkProgressTracker *tracker,
                                                                gboolean reverse);
 
-gdouble              gtk_progress_tracker_get_ease_out_cubic  (GtkProgressTracker *tracker,
+gdouble              ctk_progress_tracker_get_ease_out_cubic  (GtkProgressTracker *tracker,
                                                                gboolean reverse);
 
 G_END_DECLS

@@ -46,17 +46,17 @@ struct _GtkSearchEngineModelClass
   GtkSearchEngineClass parent_class;
 };
 
-G_DEFINE_TYPE (GtkSearchEngineModel, _gtk_search_engine_model, GTK_TYPE_SEARCH_ENGINE)
+G_DEFINE_TYPE (GtkSearchEngineModel, _ctk_search_engine_model, GTK_TYPE_SEARCH_ENGINE)
 
 static void
-gtk_search_engine_model_dispose (GObject *object)
+ctk_search_engine_model_dispose (GObject *object)
 {
   GtkSearchEngineModel *model = GTK_SEARCH_ENGINE_MODEL (object);
 
   g_clear_object (&model->query);
   g_clear_object (&model->model);
 
-  G_OBJECT_CLASS (_gtk_search_engine_model_parent_class)->dispose (object);
+  G_OBJECT_CLASS (_ctk_search_engine_model_parent_class)->dispose (object);
 }
 
 gboolean
@@ -72,7 +72,7 @@ info_matches_query (GtkQuery  *query,
   if (g_file_info_get_is_hidden (info))
     return FALSE;
 
-  if (!gtk_query_matches_string (query, display_name))
+  if (!ctk_query_matches_string (query, display_name))
     return FALSE;
 
   return TRUE;
@@ -85,31 +85,31 @@ do_search (gpointer data)
   GtkTreeIter iter;
   GList *hits = NULL;
 
-  if (gtk_tree_model_get_iter_first (GTK_TREE_MODEL (model->model), &iter))
+  if (ctk_tree_model_get_iter_first (GTK_TREE_MODEL (model->model), &iter))
     {
       do
         {
           GFileInfo *info;
 
-          info = _gtk_file_system_model_get_info (model->model, &iter);
+          info = _ctk_file_system_model_get_info (model->model, &iter);
           if (info_matches_query (model->query, info))
             {
               GFile *file;
               GtkSearchHit *hit;
 
-              file = _gtk_file_system_model_get_file (model->model, &iter);
+              file = _ctk_file_system_model_get_file (model->model, &iter);
               hit = g_new (GtkSearchHit, 1);
               hit->file = g_object_ref (file);
               hit->info = g_object_ref (info);
               hits = g_list_prepend (hits, hit);
             }
         }
-      while (gtk_tree_model_iter_next (GTK_TREE_MODEL (model->model), &iter));
+      while (ctk_tree_model_iter_next (GTK_TREE_MODEL (model->model), &iter));
 
       if (hits)
         {
-          _gtk_search_engine_hits_added (GTK_SEARCH_ENGINE (model), hits);
-          g_list_free_full (hits, (GDestroyNotify)_gtk_search_hit_free);
+          _ctk_search_engine_hits_added (GTK_SEARCH_ENGINE (model), hits);
+          g_list_free_full (hits, (GDestroyNotify)_ctk_search_hit_free);
         }
     }
 
@@ -119,7 +119,7 @@ do_search (gpointer data)
 }
 
 static void
-gtk_search_engine_model_start (GtkSearchEngine *engine)
+ctk_search_engine_model_start (GtkSearchEngine *engine)
 {
   GtkSearchEngineModel *model;
 
@@ -129,11 +129,11 @@ gtk_search_engine_model_start (GtkSearchEngine *engine)
     return;
 
   model->idle = gdk_threads_add_idle (do_search, engine);
-  g_source_set_name_by_id (model->idle, "[gtk+] gtk_search_engine_model_start");
+  g_source_set_name_by_id (model->idle, "[gtk+] ctk_search_engine_model_start");
 }
 
 static void
-gtk_search_engine_model_stop (GtkSearchEngine *engine)
+ctk_search_engine_model_stop (GtkSearchEngine *engine)
 {
   GtkSearchEngineModel *model;
 
@@ -147,7 +147,7 @@ gtk_search_engine_model_stop (GtkSearchEngine *engine)
 }
 
 static void
-gtk_search_engine_model_set_query (GtkSearchEngine *engine,
+ctk_search_engine_model_set_query (GtkSearchEngine *engine,
                                    GtkQuery        *query)
 {
   GtkSearchEngineModel *model = GTK_SEARCH_ENGINE_MODEL (engine);
@@ -156,27 +156,27 @@ gtk_search_engine_model_set_query (GtkSearchEngine *engine,
 }
 
 static void
-_gtk_search_engine_model_class_init (GtkSearchEngineModelClass *class)
+_ctk_search_engine_model_class_init (GtkSearchEngineModelClass *class)
 {
   GObjectClass *gobject_class;
   GtkSearchEngineClass *engine_class;
 
   gobject_class = G_OBJECT_CLASS (class);
-  gobject_class->dispose = gtk_search_engine_model_dispose;
+  gobject_class->dispose = ctk_search_engine_model_dispose;
 
   engine_class = GTK_SEARCH_ENGINE_CLASS (class);
-  engine_class->set_query = gtk_search_engine_model_set_query;
-  engine_class->start = gtk_search_engine_model_start;
-  engine_class->stop = gtk_search_engine_model_stop;
+  engine_class->set_query = ctk_search_engine_model_set_query;
+  engine_class->start = ctk_search_engine_model_start;
+  engine_class->stop = ctk_search_engine_model_stop;
 }
 
 static void
-_gtk_search_engine_model_init (GtkSearchEngineModel *engine)
+_ctk_search_engine_model_init (GtkSearchEngineModel *engine)
 {
 }
 
 GtkSearchEngine *
-_gtk_search_engine_model_new (GtkFileSystemModel *model)
+_ctk_search_engine_model_new (GtkFileSystemModel *model)
 {
   GtkSearchEngineModel *engine;
 

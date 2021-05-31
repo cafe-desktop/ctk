@@ -57,18 +57,18 @@ struct _GtkCellRendererSpinPrivate
   guint   digits;
 };
 
-static void gtk_cell_renderer_spin_finalize   (GObject                  *object);
+static void ctk_cell_renderer_spin_finalize   (GObject                  *object);
 
-static void gtk_cell_renderer_spin_get_property (GObject      *object,
+static void ctk_cell_renderer_spin_get_property (GObject      *object,
 						 guint         prop_id,
 						 GValue       *value,
 						 GParamSpec   *spec);
-static void gtk_cell_renderer_spin_set_property (GObject      *object,
+static void ctk_cell_renderer_spin_set_property (GObject      *object,
 						 guint         prop_id,
 						 const GValue *value,
 						 GParamSpec   *spec);
 
-static GtkCellEditable * gtk_cell_renderer_spin_start_editing (GtkCellRenderer     *cell,
+static GtkCellEditable * ctk_cell_renderer_spin_start_editing (GtkCellRenderer     *cell,
 							       GdkEvent            *event,
 							       GtkWidget           *widget,
 							       const gchar         *path,
@@ -84,20 +84,20 @@ enum {
 
 #define GTK_CELL_RENDERER_SPIN_PATH "gtk-cell-renderer-spin-path"
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkCellRendererSpin, gtk_cell_renderer_spin, GTK_TYPE_CELL_RENDERER_TEXT)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkCellRendererSpin, ctk_cell_renderer_spin, GTK_TYPE_CELL_RENDERER_TEXT)
 
 
 static void
-gtk_cell_renderer_spin_class_init (GtkCellRendererSpinClass *klass)
+ctk_cell_renderer_spin_class_init (GtkCellRendererSpinClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GtkCellRendererClass *cell_class = GTK_CELL_RENDERER_CLASS (klass);
 
-  object_class->finalize     = gtk_cell_renderer_spin_finalize;
-  object_class->get_property = gtk_cell_renderer_spin_get_property;
-  object_class->set_property = gtk_cell_renderer_spin_set_property;
+  object_class->finalize     = ctk_cell_renderer_spin_finalize;
+  object_class->get_property = ctk_cell_renderer_spin_get_property;
+  object_class->set_property = ctk_cell_renderer_spin_set_property;
 
-  cell_class->start_editing  = gtk_cell_renderer_spin_start_editing;
+  cell_class->start_editing  = ctk_cell_renderer_spin_start_editing;
 
   /**
    * GtkCellRendererSpin:adjustment:
@@ -147,11 +147,11 @@ gtk_cell_renderer_spin_class_init (GtkCellRendererSpinClass *klass)
 }
 
 static void
-gtk_cell_renderer_spin_init (GtkCellRendererSpin *self)
+ctk_cell_renderer_spin_init (GtkCellRendererSpin *self)
 {
   GtkCellRendererSpinPrivate *priv;
 
-  self->priv = gtk_cell_renderer_spin_get_instance_private (self);
+  self->priv = ctk_cell_renderer_spin_get_instance_private (self);
   priv = self->priv;
 
   priv->adjustment = NULL;
@@ -160,7 +160,7 @@ gtk_cell_renderer_spin_init (GtkCellRendererSpin *self)
 }
 
 static void
-gtk_cell_renderer_spin_finalize (GObject *object)
+ctk_cell_renderer_spin_finalize (GObject *object)
 {
   GtkCellRendererSpinPrivate *priv;
 
@@ -169,11 +169,11 @@ gtk_cell_renderer_spin_finalize (GObject *object)
   if (priv && priv->adjustment)
     g_object_unref (priv->adjustment);
 
-  G_OBJECT_CLASS (gtk_cell_renderer_spin_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_cell_renderer_spin_parent_class)->finalize (object);
 }
 
 static void
-gtk_cell_renderer_spin_get_property (GObject      *object,
+ctk_cell_renderer_spin_get_property (GObject      *object,
 				     guint         prop_id,
 				     GValue       *value,
 				     GParamSpec   *pspec)
@@ -202,7 +202,7 @@ gtk_cell_renderer_spin_get_property (GObject      *object,
 }
 
 static void
-gtk_cell_renderer_spin_set_property (GObject      *object,
+ctk_cell_renderer_spin_set_property (GObject      *object,
 				     guint         prop_id,
 				     const GValue *value,
 				     GParamSpec   *pspec)
@@ -245,7 +245,7 @@ gtk_cell_renderer_spin_set_property (GObject      *object,
 }
 
 static gboolean
-gtk_cell_renderer_spin_focus_out_event (GtkWidget *widget,
+ctk_cell_renderer_spin_focus_out_event (GtkWidget *widget,
 					GdkEvent  *event,
 					gpointer   data)
 {
@@ -258,16 +258,16 @@ gtk_cell_renderer_spin_focus_out_event (GtkWidget *widget,
                 NULL);
 
   g_signal_handlers_disconnect_by_func (widget,
-					gtk_cell_renderer_spin_focus_out_event,
+					ctk_cell_renderer_spin_focus_out_event,
 					data);
 
-  gtk_cell_renderer_stop_editing (GTK_CELL_RENDERER (data), canceled);
+  ctk_cell_renderer_stop_editing (GTK_CELL_RENDERER (data), canceled);
 
   if (!canceled)
     {
       path = g_object_get_data (G_OBJECT (widget), GTK_CELL_RENDERER_SPIN_PATH);
 
-      new_text = gtk_entry_get_text (GTK_ENTRY (widget));
+      new_text = ctk_entry_get_text (GTK_ENTRY (widget));
       g_signal_emit_by_name (data, "edited", path, new_text);
     }
   
@@ -275,7 +275,7 @@ gtk_cell_renderer_spin_focus_out_event (GtkWidget *widget,
 }
 
 static gboolean
-gtk_cell_renderer_spin_key_press_event (GtkWidget   *widget,
+ctk_cell_renderer_spin_key_press_event (GtkWidget   *widget,
 					GdkEventKey *event,
 					gpointer     data)
 {
@@ -283,12 +283,12 @@ gtk_cell_renderer_spin_key_press_event (GtkWidget   *widget,
     {
       if (event->keyval == GDK_KEY_Up)
 	{
-	  gtk_spin_button_spin (GTK_SPIN_BUTTON (widget), GTK_SPIN_STEP_FORWARD, 1);
+	  ctk_spin_button_spin (GTK_SPIN_BUTTON (widget), GTK_SPIN_STEP_FORWARD, 1);
 	  return TRUE;
 	}
       else if (event->keyval == GDK_KEY_Down)
 	{
-	  gtk_spin_button_spin (GTK_SPIN_BUTTON (widget), GTK_SPIN_STEP_BACKWARD, 1);
+	  ctk_spin_button_spin (GTK_SPIN_BUTTON (widget), GTK_SPIN_STEP_BACKWARD, 1);
 	  return TRUE;
 	}
     }
@@ -297,7 +297,7 @@ gtk_cell_renderer_spin_key_press_event (GtkWidget   *widget,
 }
 
 static gboolean
-gtk_cell_renderer_spin_button_press_event (GtkWidget      *widget,
+ctk_cell_renderer_spin_button_press_event (GtkWidget      *widget,
                                            GdkEventButton *event,
                                            gpointer        user_data)
 {
@@ -312,7 +312,7 @@ gtk_cell_renderer_spin_button_press_event (GtkWidget      *widget,
 }
 
 static GtkCellEditable *
-gtk_cell_renderer_spin_start_editing (GtkCellRenderer      *cell,
+ctk_cell_renderer_spin_start_editing (GtkCellRenderer      *cell,
 				      GdkEvent             *event,
 				      GtkWidget            *widget,
 				      const gchar          *path,
@@ -336,17 +336,17 @@ gtk_cell_renderer_spin_start_editing (GtkCellRenderer      *cell,
   if (!priv->adjustment)
     return NULL;
 
-  spin = gtk_spin_button_new (priv->adjustment,
+  spin = ctk_spin_button_new (priv->adjustment,
 			      priv->climb_rate, priv->digits);
 
   g_signal_connect (spin, "button-press-event",
-                    G_CALLBACK (gtk_cell_renderer_spin_button_press_event),
+                    G_CALLBACK (ctk_cell_renderer_spin_button_press_event),
                     NULL);
 
   g_object_get (cell_text, "text", &text, NULL);
   if (text)
     {
-      gtk_spin_button_set_value (GTK_SPIN_BUTTON (spin),
+      ctk_spin_button_set_value (GTK_SPIN_BUTTON (spin),
                                  g_strtod (text, NULL));
       g_free (text);
     }
@@ -355,19 +355,19 @@ gtk_cell_renderer_spin_start_editing (GtkCellRenderer      *cell,
 			  g_strdup (path), g_free);
 
   g_signal_connect (G_OBJECT (spin), "focus-out-event",
-		    G_CALLBACK (gtk_cell_renderer_spin_focus_out_event),
+		    G_CALLBACK (ctk_cell_renderer_spin_focus_out_event),
 		    cell);
   g_signal_connect (G_OBJECT (spin), "key-press-event",
-		    G_CALLBACK (gtk_cell_renderer_spin_key_press_event),
+		    G_CALLBACK (ctk_cell_renderer_spin_key_press_event),
 		    cell);
 
-  gtk_widget_show (spin);
+  ctk_widget_show (spin);
 
   return GTK_CELL_EDITABLE (spin);
 }
 
 /**
- * gtk_cell_renderer_spin_new:
+ * ctk_cell_renderer_spin_new:
  *
  * Creates a new #GtkCellRendererSpin. 
  *
@@ -376,7 +376,7 @@ gtk_cell_renderer_spin_start_editing (GtkCellRenderer      *cell,
  * Since: 2.10
  */
 GtkCellRenderer *
-gtk_cell_renderer_spin_new (void)
+ctk_cell_renderer_spin_new (void)
 {
   return g_object_new (GTK_TYPE_CELL_RENDERER_SPIN, NULL);
 }

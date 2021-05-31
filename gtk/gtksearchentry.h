@@ -36,7 +36,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SEARCH_ENTRY                 (gtk_search_entry_get_type ())
+#define GTK_TYPE_SEARCH_ENTRY                 (ctk_search_entry_get_type ())
 #define GTK_SEARCH_ENTRY(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SEARCH_ENTRY, GtkSearchEntry))
 #define GTK_SEARCH_ENTRY_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SEARCH_ENTRY, GtkSearchEntryClass))
 #define GTK_IS_SEARCH_ENTRY(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SEARCH_ENTRY))
@@ -62,13 +62,13 @@ struct _GtkSearchEntryClass
 };
 
 GDK_AVAILABLE_IN_3_6
-GType           gtk_search_entry_get_type       (void) G_GNUC_CONST;
+GType           ctk_search_entry_get_type       (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_6
-GtkWidget*      gtk_search_entry_new            (void);
+GtkWidget*      ctk_search_entry_new            (void);
 
 GDK_AVAILABLE_IN_3_16
-gboolean        gtk_search_entry_handle_event   (GtkSearchEntry *entry,
+gboolean        ctk_search_entry_handle_event   (GtkSearchEntry *entry,
                                                  GdkEvent       *event);
 
 G_END_DECLS

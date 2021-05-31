@@ -23,7 +23,7 @@
 #include <gtk/gtkcheckmenuitem.h>
 #include <gtk/gtkmenutrackeritem.h>
 
-#define GTK_TYPE_MODEL_MENU_ITEM                            (gtk_model_menu_item_get_type ())
+#define GTK_TYPE_MODEL_MENU_ITEM                            (ctk_model_menu_item_get_type ())
 #define GTK_MODEL_MENU_ITEM(inst)                           (G_TYPE_CHECK_INSTANCE_CAST ((inst),                      \
                                                              GTK_TYPE_MODEL_MENU_ITEM, GtkModelMenuItem))
 #define GTK_IS_MODEL_MENU_ITEM(inst)                        (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                      \
@@ -32,9 +32,9 @@
 typedef struct _GtkModelMenuItem                            GtkModelMenuItem;
 
 G_GNUC_INTERNAL
-GType                   gtk_model_menu_item_get_type                    (void) G_GNUC_CONST;
+GType                   ctk_model_menu_item_get_type                    (void) G_GNUC_CONST;
 
 G_GNUC_INTERNAL
-GtkWidget *             gtk_model_menu_item_new                         (void);
+GtkWidget *             ctk_model_menu_item_new                         (void);
 
 #endif /* __GTK_MODEL_MENU_ITEM_H__ */

@@ -526,10 +526,10 @@ msgstr "រូប​សញ្ញា"
 #: ../gtk/gtkaboutdialog.c:504
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "រូប​សញ្ញា​សម្រាប់​ប្រអប់​អំពី ។ ប្រសិនបើ​វា​មិន​ទាន់​ត្រូវ​បាន​កំណត់ វា​នឹង​មាន​លំនាំដើម​ជា "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 
 #: ../gtk/gtkaboutdialog.c:519
 msgid "Logo Icon Name"
@@ -2952,10 +2952,10 @@ msgstr "ជំហាន​ចលនា​នៃ​វឌ្ឍនភាព"
 #: ../gtk/gtkentry.c:990
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "ប្រភាគ​នៃ​ទទឹង​ធាតុ​សរុប​ដែល​ត្រូវ​ផ្លាស់ទី​វឌ្ឍនភាព​សម្រាប់​ការ​ហៅ​នីមួយ​ៗ​ទៅកាន់ "
-"gtk_entry_progress_pulse()"
+"ctk_entry_progress_pulse()"
 
 #: ../gtk/gtkentry.c:1008
 msgid "Show text in the entry when it's empty and unfocused"
@@ -5079,10 +5079,10 @@ msgstr "តម្លៃ"
 
 #: ../gtk/gtkradioaction.c:117
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"តម្លៃ​ត្រូវ​បាន​ត្រឡប់​ដោយ gtk_radio_action_get_current_value() នៅ​ពេល​សកម្មភាព​ជា​សកម្មភាព​"
+"តម្លៃ​ត្រូវ​បាន​ត្រឡប់​ដោយ ctk_radio_action_get_current_value() នៅ​ពេល​សកម្មភាព​ជា​សកម្មភាព​"
 "បច្ចុប្បន្ន​នៃ​ក្រុម​នេះ ។"
 
 #: ../gtk/gtkradioaction.c:133 ../gtk/gtkradiobutton.c:163
@@ -7556,8 +7556,8 @@ msgid "No show all"
 msgstr "មិន​បង្ហាញ"
 
 #: ../gtk/gtkwidget.c:1104
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "ថា​តើ gtk_widget_show_all() មិន​គួរ​មាន​ឥទ្ធិពល​ទៅលើ​ធាតុ​ក្រាហ្វិក​នេះ​ដែរ​ឬ​ទេ"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "ថា​តើ ctk_widget_show_all() មិន​គួរ​មាន​ឥទ្ធិពល​ទៅលើ​ធាតុ​ក្រាហ្វិក​នេះ​ដែរ​ឬ​ទេ"
 
 #: ../gtk/gtkwidget.c:1127
 msgid "Whether this widget has a tooltip"

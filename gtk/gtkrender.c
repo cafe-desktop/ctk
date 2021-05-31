@@ -38,7 +38,7 @@
 #include "fallback-c89.c"
 
 static void
-gtk_do_render_check (GtkStyleContext *context,
+ctk_do_render_check (GtkStyleContext *context,
                      cairo_t         *cr,
                      gdouble          x,
                      gdouble          y,
@@ -48,7 +48,7 @@ gtk_do_render_check (GtkStyleContext *context,
   GtkStateFlags state;
   GtkCssImageBuiltinType image_type;
 
-  state = gtk_style_context_get_state (context);
+  state = ctk_style_context_get_state (context);
   if (state & GTK_STATE_FLAG_INCONSISTENT)
     image_type = GTK_CSS_IMAGE_BUILTIN_CHECK_INCONSISTENT;
   else if (state & GTK_STATE_FLAG_CHECKED)
@@ -56,11 +56,11 @@ gtk_do_render_check (GtkStyleContext *context,
   else
     image_type = GTK_CSS_IMAGE_BUILTIN_NONE;
 
-  gtk_css_style_render_icon (gtk_style_context_lookup_style (context), cr, x, y, width, height, image_type);
+  ctk_css_style_render_icon (ctk_style_context_lookup_style (context), cr, x, y, width, height, image_type);
 }
 
 /**
- * gtk_render_check:
+ * ctk_render_check:
  * @context: a #GtkStyleContext
  * @cr: a #cairo_t
  * @x: X origin of the rectangle
@@ -81,7 +81,7 @@ gtk_do_render_check (GtkStyleContext *context,
  * Since: 3.0
  **/
 void
-gtk_render_check (GtkStyleContext *context,
+ctk_render_check (GtkStyleContext *context,
                   cairo_t         *cr,
                   gdouble          x,
                   gdouble          y,
@@ -94,11 +94,11 @@ gtk_render_check (GtkStyleContext *context,
   if (width <= 0 || height <= 0)
     return;
 
-  gtk_do_render_check (context, cr, x, y, width, height);
+  ctk_do_render_check (context, cr, x, y, width, height);
 }
 
 static void
-gtk_do_render_option (GtkStyleContext *context,
+ctk_do_render_option (GtkStyleContext *context,
                       cairo_t         *cr,
                       gdouble          x,
                       gdouble          y,
@@ -108,7 +108,7 @@ gtk_do_render_option (GtkStyleContext *context,
   GtkStateFlags state;
   GtkCssImageBuiltinType image_type;
 
-  state = gtk_style_context_get_state (context);
+  state = ctk_style_context_get_state (context);
   if (state & GTK_STATE_FLAG_INCONSISTENT)
     image_type = GTK_CSS_IMAGE_BUILTIN_OPTION_INCONSISTENT;
   else if (state & GTK_STATE_FLAG_CHECKED)
@@ -116,11 +116,11 @@ gtk_do_render_option (GtkStyleContext *context,
   else
     image_type = GTK_CSS_IMAGE_BUILTIN_NONE;
 
-  gtk_css_style_render_icon (gtk_style_context_lookup_style (context), cr, x, y, width, height, image_type);
+  ctk_css_style_render_icon (ctk_style_context_lookup_style (context), cr, x, y, width, height, image_type);
 }
 
 /**
- * gtk_render_option:
+ * ctk_render_option:
  * @context: a #GtkStyleContext
  * @cr: a #cairo_t
  * @x: X origin of the rectangle
@@ -139,7 +139,7 @@ gtk_do_render_option (GtkStyleContext *context,
  * Since: 3.0
  **/
 void
-gtk_render_option (GtkStyleContext *context,
+ctk_render_option (GtkStyleContext *context,
                    cairo_t         *cr,
                    gdouble          x,
                    gdouble          y,
@@ -152,11 +152,11 @@ gtk_render_option (GtkStyleContext *context,
   if (width <= 0 || height <= 0)
     return;
 
-  gtk_do_render_option (context, cr, x, y, width, height);
+  ctk_do_render_option (context, cr, x, y, width, height);
 }
 
 static void
-gtk_do_render_arrow (GtkStyleContext *context,
+ctk_do_render_arrow (GtkStyleContext *context,
                      cairo_t         *cr,
                      gdouble          angle,
                      gdouble          x,
@@ -188,11 +188,11 @@ gtk_do_render_arrow (GtkStyleContext *context,
     break;
   }
 
-  gtk_css_style_render_icon (gtk_style_context_lookup_style (context), cr, x, y, size, size, image_type);
+  ctk_css_style_render_icon (ctk_style_context_lookup_style (context), cr, x, y, size, size, image_type);
 }
 
 /**
- * gtk_render_arrow:
+ * ctk_render_arrow:
  * @context: a #GtkStyleContext
  * @cr: a #cairo_t
  * @angle: arrow angle from 0 to 2 * %G_PI, being 0 the arrow pointing to the north
@@ -209,7 +209,7 @@ gtk_do_render_arrow (GtkStyleContext *context,
  * Since: 3.0
  **/
 void
-gtk_render_arrow (GtkStyleContext *context,
+ctk_render_arrow (GtkStyleContext *context,
                   cairo_t         *cr,
                   gdouble          angle,
                   gdouble          x,
@@ -222,11 +222,11 @@ gtk_render_arrow (GtkStyleContext *context,
   if (size <= 0)
     return;
 
-  gtk_do_render_arrow (context, cr, angle, x, y, size);
+  ctk_do_render_arrow (context, cr, angle, x, y, size);
 }
 
 /**
- * gtk_render_background:
+ * ctk_render_background:
  * @context: a #GtkStyleContext
  * @cr: a #cairo_t
  * @x: X origin of the rectangle
@@ -244,7 +244,7 @@ gtk_render_arrow (GtkStyleContext *context,
  * Since: 3.0.
  **/
 void
-gtk_render_background (GtkStyleContext *context,
+ctk_render_background (GtkStyleContext *context,
                        cairo_t         *cr,
                        gdouble          x,
                        gdouble          y,
@@ -257,13 +257,13 @@ gtk_render_background (GtkStyleContext *context,
   if (width <= 0 || height <= 0)
     return;
 
-  gtk_css_style_render_background (gtk_style_context_lookup_style (context),
+  ctk_css_style_render_background (ctk_style_context_lookup_style (context),
                                    cr, x, y, width, height,
-                                   gtk_style_context_get_junction_sides (context));
+                                   ctk_style_context_get_junction_sides (context));
 }
 
 /**
- * gtk_render_background_get_clip:
+ * ctk_render_background_get_clip:
  * @context: a #GtkStyleContext
  * @x: X origin of the rectangle
  * @y: Y origin of the rectangle
@@ -272,13 +272,13 @@ gtk_render_background (GtkStyleContext *context,
  * @out_clip: (out): return location for the clip
  *
  * Returns the area that will be affected (i.e. drawn to) when
- * calling gtk_render_background() for the given @context and
+ * calling ctk_render_background() for the given @context and
  * rectangle.
  *
  * Since: 3.20
  */
 void
-gtk_render_background_get_clip (GtkStyleContext *context,
+ctk_render_background_get_clip (GtkStyleContext *context,
                                 gdouble          x,
                                 gdouble          y,
                                 gdouble          width,
@@ -287,7 +287,7 @@ gtk_render_background_get_clip (GtkStyleContext *context,
 {
   GtkBorder shadow;
 
-  _gtk_css_shadows_value_get_extents (_gtk_style_context_peek_property (context, GTK_CSS_PROPERTY_BOX_SHADOW), &shadow);
+  _ctk_css_shadows_value_get_extents (_ctk_style_context_peek_property (context, GTK_CSS_PROPERTY_BOX_SHADOW), &shadow);
 
   out_clip->x = floor (x) - shadow.left;
   out_clip->y = floor (y) - shadow.top;
@@ -296,7 +296,7 @@ gtk_render_background_get_clip (GtkStyleContext *context,
 }
 
 /**
- * gtk_render_frame:
+ * ctk_render_frame:
  * @context: a #GtkStyleContext
  * @cr: a #cairo_t
  * @x: X origin of the rectangle
@@ -314,7 +314,7 @@ gtk_render_background_get_clip (GtkStyleContext *context,
  * Since: 3.0
  **/
 void
-gtk_render_frame (GtkStyleContext *context,
+ctk_render_frame (GtkStyleContext *context,
                   cairo_t         *cr,
                   gdouble          x,
                   gdouble          y,
@@ -327,15 +327,15 @@ gtk_render_frame (GtkStyleContext *context,
   if (width <= 0 || height <= 0)
     return;
 
-  gtk_css_style_render_border (gtk_style_context_lookup_style (context),
+  ctk_css_style_render_border (ctk_style_context_lookup_style (context),
                                cr,
                                x, y, width, height,
                                0,
-                               gtk_style_context_get_junction_sides (context));
+                               ctk_style_context_get_junction_sides (context));
 }
 
 static void
-gtk_do_render_expander (GtkStyleContext *context,
+ctk_do_render_expander (GtkStyleContext *context,
                         cairo_t         *cr,
                         gdouble          x,
                         gdouble          y,
@@ -345,8 +345,8 @@ gtk_do_render_expander (GtkStyleContext *context,
   GtkCssImageBuiltinType image_type;
   GtkStateFlags state;
 
-  state = gtk_style_context_get_state (context);
-  if (gtk_style_context_has_class (context, "horizontal"))
+  state = ctk_style_context_get_state (context);
+  if (ctk_style_context_has_class (context, "horizontal"))
     {
       if (state & GTK_STATE_FLAG_DIR_RTL)
         image_type = (state & GTK_STATE_FLAG_CHECKED)
@@ -369,11 +369,11 @@ gtk_do_render_expander (GtkStyleContext *context,
                      : GTK_CSS_IMAGE_BUILTIN_EXPANDER_VERTICAL_LEFT;
     }
 
-  gtk_css_style_render_icon (gtk_style_context_lookup_style (context), cr, x, y, width, height, image_type);
+  ctk_css_style_render_icon (ctk_style_context_lookup_style (context), cr, x, y, width, height, image_type);
 }
 
 /**
- * gtk_render_expander:
+ * ctk_render_expander:
  * @context: a #GtkStyleContext
  * @cr: a #cairo_t
  * @x: X origin of the rectangle
@@ -392,7 +392,7 @@ gtk_do_render_expander (GtkStyleContext *context,
  * Since: 3.0
  **/
 void
-gtk_render_expander (GtkStyleContext *context,
+ctk_render_expander (GtkStyleContext *context,
                      cairo_t         *cr,
                      gdouble          x,
                      gdouble          y,
@@ -405,11 +405,11 @@ gtk_render_expander (GtkStyleContext *context,
   if (width <= 0 || height <= 0)
     return;
 
-  gtk_do_render_expander (context, cr, x, y, width, height);
+  ctk_do_render_expander (context, cr, x, y, width, height);
 }
 
 /**
- * gtk_render_focus:
+ * ctk_render_focus:
  * @context: a #GtkStyleContext
  * @cr: a #cairo_t
  * @x: X origin of the rectangle
@@ -426,7 +426,7 @@ gtk_render_expander (GtkStyleContext *context,
  * Since: 3.0
  **/
 void
-gtk_render_focus (GtkStyleContext *context,
+ctk_render_focus (GtkStyleContext *context,
                   cairo_t         *cr,
                   gdouble          x,
                   gdouble          y,
@@ -439,7 +439,7 @@ gtk_render_focus (GtkStyleContext *context,
   if (width <= 0 || height <= 0)
     return;
 
-  gtk_css_style_render_outline (gtk_style_context_lookup_style (context),
+  ctk_css_style_render_outline (ctk_style_context_lookup_style (context),
                                 cr,
                                 x, y, width, height);
 }
@@ -470,7 +470,7 @@ prepare_context_for_layout (cairo_t *cr,
 }
 
 static void
-gtk_do_render_layout (GtkStyleContext *context,
+ctk_do_render_layout (GtkStyleContext *context,
                       cairo_t         *cr,
                       gdouble          x,
                       gdouble          y,
@@ -479,11 +479,11 @@ gtk_do_render_layout (GtkStyleContext *context,
   const GdkRGBA *fg_color;
 
   cairo_save (cr);
-  fg_color = _gtk_css_rgba_value_get_rgba (_gtk_style_context_peek_property (context, GTK_CSS_PROPERTY_COLOR));
+  fg_color = _ctk_css_rgba_value_get_rgba (_ctk_style_context_peek_property (context, GTK_CSS_PROPERTY_COLOR));
 
   prepare_context_for_layout (cr, x, y, layout);
 
-  _gtk_css_shadows_value_paint_layout (_gtk_style_context_peek_property (context, GTK_CSS_PROPERTY_TEXT_SHADOW),
+  _ctk_css_shadows_value_paint_layout (_ctk_style_context_peek_property (context, GTK_CSS_PROPERTY_TEXT_SHADOW),
                                        cr, layout);
 
   gdk_cairo_set_source_rgba (cr, fg_color);
@@ -493,7 +493,7 @@ gtk_do_render_layout (GtkStyleContext *context,
 }
 
 /**
- * gtk_render_layout:
+ * ctk_render_layout:
  * @context: a #GtkStyleContext
  * @cr: a #cairo_t
  * @x: X origin
@@ -505,7 +505,7 @@ gtk_do_render_layout (GtkStyleContext *context,
  * Since: 3.0
  **/
 void
-gtk_render_layout (GtkStyleContext *context,
+ctk_render_layout (GtkStyleContext *context,
                    cairo_t         *cr,
                    gdouble          x,
                    gdouble          y,
@@ -515,11 +515,11 @@ gtk_render_layout (GtkStyleContext *context,
   g_return_if_fail (PANGO_IS_LAYOUT (layout));
   g_return_if_fail (cr != NULL);
 
-  gtk_do_render_layout (context, cr, x, y, layout);
+  ctk_do_render_layout (context, cr, x, y, layout);
 }
 
 static void
-gtk_do_render_line (GtkStyleContext *context,
+ctk_do_render_line (GtkStyleContext *context,
                     cairo_t         *cr,
                     gdouble          x0,
                     gdouble          y0,
@@ -530,7 +530,7 @@ gtk_do_render_line (GtkStyleContext *context,
 
   cairo_save (cr);
 
-  color = _gtk_css_rgba_value_get_rgba (_gtk_style_context_peek_property (context, GTK_CSS_PROPERTY_COLOR));
+  color = _ctk_css_rgba_value_get_rgba (_ctk_style_context_peek_property (context, GTK_CSS_PROPERTY_COLOR));
 
   cairo_set_line_cap (cr, CAIRO_LINE_CAP_SQUARE);
   cairo_set_line_width (cr, 1);
@@ -545,7 +545,7 @@ gtk_do_render_line (GtkStyleContext *context,
 }
 
 /**
- * gtk_render_line:
+ * ctk_render_line:
  * @context: a #GtkStyleContext
  * @cr: a #cairo_t
  * @x0: X coordinate for the origin of the line
@@ -558,7 +558,7 @@ gtk_do_render_line (GtkStyleContext *context,
  * Since: 3.0
  **/
 void
-gtk_render_line (GtkStyleContext *context,
+ctk_render_line (GtkStyleContext *context,
                  cairo_t         *cr,
                  gdouble          x0,
                  gdouble          y0,
@@ -568,11 +568,11 @@ gtk_render_line (GtkStyleContext *context,
   g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
   g_return_if_fail (cr != NULL);
 
-  gtk_do_render_line (context, cr, x0, y0, x1, y1);
+  ctk_do_render_line (context, cr, x0, y0, x1, y1);
 }
 
 static void
-gtk_do_render_slider (GtkStyleContext *context,
+ctk_do_render_slider (GtkStyleContext *context,
                       cairo_t         *cr,
                       gdouble          x,
                       gdouble          y,
@@ -583,14 +583,14 @@ gtk_do_render_slider (GtkStyleContext *context,
   GtkCssStyle *style;
   GtkJunctionSides junction;
 
-  style = gtk_style_context_lookup_style (context);
-  junction = gtk_style_context_get_junction_sides (context);
+  style = ctk_style_context_lookup_style (context);
+  junction = ctk_style_context_get_junction_sides (context);
 
-  gtk_css_style_render_background (style,
+  ctk_css_style_render_background (style,
                                    cr,
                                    x, y, width, height,
                                    junction);
-  gtk_css_style_render_border (style,
+  ctk_css_style_render_border (style,
                                cr,
                                x, y, width, height,
                                0,
@@ -598,7 +598,7 @@ gtk_do_render_slider (GtkStyleContext *context,
 }
 
 /**
- * gtk_render_slider:
+ * ctk_render_slider:
  * @context: a #GtkStyleContext
  * @cr: a #cairo_t
  * @x: X origin of the rectangle
@@ -618,7 +618,7 @@ gtk_do_render_slider (GtkStyleContext *context,
  * Since: 3.0
  **/
 void
-gtk_render_slider (GtkStyleContext *context,
+ctk_render_slider (GtkStyleContext *context,
                    cairo_t         *cr,
                    gdouble          x,
                    gdouble          y,
@@ -632,11 +632,11 @@ gtk_render_slider (GtkStyleContext *context,
   if (width <= 0 || height <= 0)
     return;
 
-  gtk_do_render_slider (context, cr, x, y, width, height, orientation);
+  ctk_do_render_slider (context, cr, x, y, width, height, orientation);
 }
 
 static void
-gtk_css_style_render_frame_gap (GtkCssStyle     *style,
+ctk_css_style_render_frame_gap (GtkCssStyle     *style,
                                 cairo_t         *cr,
                                 gdouble          x,
                                 gdouble          y,
@@ -652,14 +652,14 @@ gtk_css_style_render_frame_gap (GtkCssStyle     *style,
   gdouble x0, y0, x1, y1, xc = 0.0, yc = 0.0, wc = 0.0, hc = 0.0;
   GtkBorder border;
 
-  border.top = _gtk_css_number_value_get (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_TOP_WIDTH), 100);
-  border.right = _gtk_css_number_value_get (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_RIGHT_WIDTH), 100);
-  border.bottom = _gtk_css_number_value_get (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_BOTTOM_WIDTH), 100);
-  border.left = _gtk_css_number_value_get (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_LEFT_WIDTH), 100);
-  corner[GTK_CSS_TOP_LEFT] = gtk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_TOP_LEFT_RADIUS);
-  corner[GTK_CSS_TOP_RIGHT] = gtk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_TOP_RIGHT_RADIUS);
-  corner[GTK_CSS_BOTTOM_LEFT] = gtk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_BOTTOM_LEFT_RADIUS);
-  corner[GTK_CSS_BOTTOM_RIGHT] = gtk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_BOTTOM_RIGHT_RADIUS);
+  border.top = _ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_TOP_WIDTH), 100);
+  border.right = _ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_RIGHT_WIDTH), 100);
+  border.bottom = _ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_BOTTOM_WIDTH), 100);
+  border.left = _ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_LEFT_WIDTH), 100);
+  corner[GTK_CSS_TOP_LEFT] = ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_TOP_LEFT_RADIUS);
+  corner[GTK_CSS_TOP_RIGHT] = ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_TOP_RIGHT_RADIUS);
+  corner[GTK_CSS_BOTTOM_LEFT] = ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_BOTTOM_LEFT_RADIUS);
+  corner[GTK_CSS_BOTTOM_RIGHT] = ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_BOTTOM_RIGHT_RADIUS);
 
   border_width = MIN (MIN (border.top, border.bottom),
                       MIN (border.left, border.right));
@@ -674,10 +674,10 @@ gtk_css_style_render_frame_gap (GtkCssStyle     *style,
       wc = MAX (xy1_gap - xy0_gap - 2 * border_width, 0);
       hc = border_width;
 
-      if (xy0_gap < _gtk_css_corner_value_get_x (corner[GTK_CSS_TOP_LEFT], width))
+      if (xy0_gap < _ctk_css_corner_value_get_x (corner[GTK_CSS_TOP_LEFT], width))
         junction |= GTK_JUNCTION_CORNER_TOPLEFT;
 
-      if (xy1_gap > width - _gtk_css_corner_value_get_x (corner[GTK_CSS_TOP_RIGHT], width))
+      if (xy1_gap > width - _ctk_css_corner_value_get_x (corner[GTK_CSS_TOP_RIGHT], width))
         junction |= GTK_JUNCTION_CORNER_TOPRIGHT;
       break;
     case GTK_POS_BOTTOM:
@@ -686,10 +686,10 @@ gtk_css_style_render_frame_gap (GtkCssStyle     *style,
       wc = MAX (xy1_gap - xy0_gap - 2 * border_width, 0);
       hc = border_width;
 
-      if (xy0_gap < _gtk_css_corner_value_get_x (corner[GTK_CSS_BOTTOM_LEFT], width))
+      if (xy0_gap < _ctk_css_corner_value_get_x (corner[GTK_CSS_BOTTOM_LEFT], width))
         junction |= GTK_JUNCTION_CORNER_BOTTOMLEFT;
 
-      if (xy1_gap > width - _gtk_css_corner_value_get_x (corner[GTK_CSS_BOTTOM_RIGHT], width))
+      if (xy1_gap > width - _ctk_css_corner_value_get_x (corner[GTK_CSS_BOTTOM_RIGHT], width))
         junction |= GTK_JUNCTION_CORNER_BOTTOMRIGHT;
 
       break;
@@ -699,10 +699,10 @@ gtk_css_style_render_frame_gap (GtkCssStyle     *style,
       wc = border_width;
       hc = MAX (xy1_gap - xy0_gap - 2 * border_width, 0);
 
-      if (xy0_gap < _gtk_css_corner_value_get_y (corner[GTK_CSS_TOP_LEFT], height))
+      if (xy0_gap < _ctk_css_corner_value_get_y (corner[GTK_CSS_TOP_LEFT], height))
         junction |= GTK_JUNCTION_CORNER_TOPLEFT;
 
-      if (xy1_gap > height - _gtk_css_corner_value_get_y (corner[GTK_CSS_BOTTOM_LEFT], height))
+      if (xy1_gap > height - _ctk_css_corner_value_get_y (corner[GTK_CSS_BOTTOM_LEFT], height))
         junction |= GTK_JUNCTION_CORNER_BOTTOMLEFT;
 
       break;
@@ -712,10 +712,10 @@ gtk_css_style_render_frame_gap (GtkCssStyle     *style,
       wc = border_width;
       hc = MAX (xy1_gap - xy0_gap - 2 * border_width, 0);
 
-      if (xy0_gap < _gtk_css_corner_value_get_y (corner[GTK_CSS_TOP_RIGHT], height))
+      if (xy0_gap < _ctk_css_corner_value_get_y (corner[GTK_CSS_TOP_RIGHT], height))
         junction |= GTK_JUNCTION_CORNER_TOPRIGHT;
 
-      if (xy1_gap > height - _gtk_css_corner_value_get_y (corner[GTK_CSS_BOTTOM_RIGHT], height))
+      if (xy1_gap > height - _ctk_css_corner_value_get_y (corner[GTK_CSS_BOTTOM_RIGHT], height))
         junction |= GTK_JUNCTION_CORNER_BOTTOMRIGHT;
 
       break;
@@ -728,7 +728,7 @@ gtk_css_style_render_frame_gap (GtkCssStyle     *style,
   cairo_rectangle (cr, x0, yc + hc, x1 - x0, y1 - (yc + hc));
   cairo_clip (cr);
 
-  gtk_css_style_render_border (style, cr,
+  ctk_css_style_render_border (style, cr,
                                x, y, width, height,
                                0, junction);
 
@@ -736,7 +736,7 @@ gtk_css_style_render_frame_gap (GtkCssStyle     *style,
 }
 
 /**
- * gtk_render_frame_gap:
+ * ctk_render_frame_gap:
  * @context: a #GtkStyleContext
  * @cr: a #cairo_t
  * @x: X origin of the rectangle
@@ -758,11 +758,11 @@ gtk_css_style_render_frame_gap (GtkCssStyle     *style,
  *
  * Since: 3.0
  *
- * Deprecated: 3.24: Use gtk_render_frame() instead. Themes can create gaps
+ * Deprecated: 3.24: Use ctk_render_frame() instead. Themes can create gaps
  *     by omitting borders via CSS.
  **/
 void
-gtk_render_frame_gap (GtkStyleContext *context,
+ctk_render_frame_gap (GtkStyleContext *context,
                       cairo_t         *cr,
                       gdouble          x,
                       gdouble          y,
@@ -786,15 +786,15 @@ gtk_render_frame_gap (GtkStyleContext *context,
   else
     g_return_if_fail (xy1_gap <= width);
 
-  gtk_css_style_render_frame_gap (gtk_style_context_lookup_style (context),
+  ctk_css_style_render_frame_gap (ctk_style_context_lookup_style (context),
                                   cr,
                                   x, y, width, height, gap_side,
                                   xy0_gap, xy1_gap,
-                                  gtk_style_context_get_junction_sides (context));
+                                  ctk_style_context_get_junction_sides (context));
 }
 
 static void
-gtk_css_style_render_extension (GtkCssStyle     *style,
+ctk_css_style_render_extension (GtkCssStyle     *style,
                                 cairo_t         *cr,
                                 gdouble          x,
                                 gdouble          y,
@@ -825,19 +825,19 @@ gtk_css_style_render_extension (GtkCssStyle     *style,
       break;
     }
 
-  gtk_css_style_render_background (style,
+  ctk_css_style_render_background (style,
                                    cr,
                                    x, y,
                                    width, height,
                                    junction);
 
-  gtk_css_style_render_border (style, cr,
+  ctk_css_style_render_border (style, cr,
                                x, y, width, height,
                                hidden_side, junction);
 }
 
 /**
- * gtk_render_extension:
+ * ctk_render_extension:
  * @context: a #GtkStyleContext
  * @cr: a #cairo_t
  * @x: X origin of the rectangle
@@ -857,7 +857,7 @@ gtk_css_style_render_extension (GtkCssStyle     *style,
  * Since: 3.0
  **/
 void
-gtk_render_extension (GtkStyleContext *context,
+ctk_render_extension (GtkStyleContext *context,
                       cairo_t         *cr,
                       gdouble          x,
                       gdouble          y,
@@ -871,14 +871,14 @@ gtk_render_extension (GtkStyleContext *context,
   if (width <= 0 || height <= 0)
     return;
 
-  gtk_css_style_render_extension (gtk_style_context_lookup_style (context),
+  ctk_css_style_render_extension (ctk_style_context_lookup_style (context),
                                   cr,
                                   x, y, width, height,
                                   gap_side);
 }
 
 static void
-gtk_do_render_handle (GtkStyleContext *context,
+ctk_do_render_handle (GtkStyleContext *context,
                       cairo_t         *cr,
                       gdouble          x,
                       gdouble          y,
@@ -887,12 +887,12 @@ gtk_do_render_handle (GtkStyleContext *context,
 {
   GtkCssImageBuiltinType type;
 
-  gtk_render_background (context, cr, x, y, width, height);
-  gtk_render_frame (context, cr, x, y, width, height);
+  ctk_render_background (context, cr, x, y, width, height);
+  ctk_render_frame (context, cr, x, y, width, height);
 
-  if (gtk_style_context_has_class (context, GTK_STYLE_CLASS_GRIP))
+  if (ctk_style_context_has_class (context, GTK_STYLE_CLASS_GRIP))
     {
-      GtkJunctionSides sides = gtk_style_context_get_junction_sides (context);
+      GtkJunctionSides sides = ctk_style_context_get_junction_sides (context);
 
       /* order is important here for when too many (or too few) sides are set */
       if ((sides & GTK_JUNCTION_CORNER_BOTTOMRIGHT) == GTK_JUNCTION_CORNER_BOTTOMRIGHT)
@@ -914,7 +914,7 @@ gtk_do_render_handle (GtkStyleContext *context,
       else
         type = GTK_CSS_IMAGE_BUILTIN_GRIP_BOTTOMRIGHT;
     }
-  else if (gtk_style_context_has_class (context, GTK_STYLE_CLASS_PANE_SEPARATOR))
+  else if (ctk_style_context_has_class (context, GTK_STYLE_CLASS_PANE_SEPARATOR))
     {
       type = GTK_CSS_IMAGE_BUILTIN_PANE_SEPARATOR;
     }
@@ -923,11 +923,11 @@ gtk_do_render_handle (GtkStyleContext *context,
       type = GTK_CSS_IMAGE_BUILTIN_HANDLE;
     }
 
-  gtk_css_style_render_icon (gtk_style_context_lookup_style (context), cr, x, y, width, height, type);
+  ctk_css_style_render_icon (ctk_style_context_lookup_style (context), cr, x, y, width, height, type);
 }
 
 /**
- * gtk_render_handle:
+ * ctk_render_handle:
  * @context: a #GtkStyleContext
  * @cr: a #cairo_t
  * @x: X origin of the rectangle
@@ -946,7 +946,7 @@ gtk_do_render_handle (GtkStyleContext *context,
  * Since: 3.0
  **/
 void
-gtk_render_handle (GtkStyleContext *context,
+ctk_render_handle (GtkStyleContext *context,
                    cairo_t         *cr,
                    gdouble          x,
                    gdouble          y,
@@ -959,11 +959,11 @@ gtk_render_handle (GtkStyleContext *context,
   if (width <= 0 || height <= 0)
     return;
 
-  gtk_do_render_handle (context, cr, x, y, width, height);
+  ctk_do_render_handle (context, cr, x, y, width, height);
 }
 
 /**
- * gtk_render_activity:
+ * ctk_render_activity:
  * @context: a #GtkStyleContext
  * @cr: a #cairo_t
  * @x: X origin of the rectangle
@@ -978,7 +978,7 @@ gtk_render_handle (GtkStyleContext *context,
  * Since: 3.0
  **/
 void
-gtk_render_activity (GtkStyleContext *context,
+ctk_render_activity (GtkStyleContext *context,
                      cairo_t         *cr,
                      gdouble          x,
                      gdouble          y,
@@ -991,7 +991,7 @@ gtk_render_activity (GtkStyleContext *context,
   if (width <= 0 || height <= 0)
     return;
 
-  gtk_css_style_render_icon (gtk_style_context_lookup_style (context), cr, x, y, width, height, GTK_CSS_IMAGE_BUILTIN_SPINNER);
+  ctk_css_style_render_icon (ctk_style_context_lookup_style (context), cr, x, y, width, height, GTK_CSS_IMAGE_BUILTIN_SPINNER);
 }
 
 static GdkPixbuf *
@@ -1009,7 +1009,7 @@ scale_or_ref (GdkPixbuf *src,
 }
 
 GdkPixbuf *
-gtk_render_icon_pixbuf_unpacked (GdkPixbuf           *base_pixbuf,
+ctk_render_icon_pixbuf_unpacked (GdkPixbuf           *base_pixbuf,
                                  GtkIconSize          size,
                                  GtkCssIconEffect     icon_effect)
 {
@@ -1027,7 +1027,7 @@ gtk_render_icon_pixbuf_unpacked (GdkPixbuf           *base_pixbuf,
       int width = 1;
       int height = 1;
 
-      if (!gtk_icon_size_lookup (size, &width, &height))
+      if (!ctk_icon_size_lookup (size, &width, &height))
         {
           g_warning (G_STRLOC ": invalid icon size '%d'", size);
           return NULL;
@@ -1043,7 +1043,7 @@ gtk_render_icon_pixbuf_unpacked (GdkPixbuf           *base_pixbuf,
   if (icon_effect != GTK_CSS_ICON_EFFECT_NONE)
     {
       surface = gdk_cairo_surface_create_from_pixbuf (scaled, 1, NULL);
-      gtk_css_icon_effect_apply (icon_effect, surface);
+      ctk_css_icon_effect_apply (icon_effect, surface);
       stated = gdk_pixbuf_get_from_surface (surface, 0, 0,
 					    cairo_image_surface_get_width (surface),
 					    cairo_image_surface_get_height (surface));
@@ -1058,7 +1058,7 @@ gtk_render_icon_pixbuf_unpacked (GdkPixbuf           *base_pixbuf,
 }
 
 /**
- * gtk_render_icon_pixbuf:
+ * ctk_render_icon_pixbuf:
  * @context: a #GtkStyleContext
  * @source: the #GtkIconSource specifying the icon to render
  * @size: (type int): the size (#GtkIconSize) to render the icon at.
@@ -1072,10 +1072,10 @@ gtk_render_icon_pixbuf_unpacked (GdkPixbuf           *base_pixbuf,
  *
  * Since: 3.0
  *
- * Deprecated: 3.10: Use gtk_icon_theme_load_icon() instead.
+ * Deprecated: 3.10: Use ctk_icon_theme_load_icon() instead.
  **/
 GdkPixbuf *
-gtk_render_icon_pixbuf (GtkStyleContext     *context,
+ctk_render_icon_pixbuf (GtkStyleContext     *context,
                         const GtkIconSource *source,
                         GtkIconSize          size)
 {
@@ -1084,17 +1084,17 @@ gtk_render_icon_pixbuf (GtkStyleContext     *context,
   g_return_val_if_fail (source != NULL, NULL);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  return gtk_render_icon_pixbuf_unpacked (gtk_icon_source_get_pixbuf (source),
-                                          gtk_icon_source_get_size_wildcarded (source) ? size : -1,
-                                          gtk_icon_source_get_state_wildcarded (source)
-                                          ? _gtk_css_icon_effect_value_get (
-                                             _gtk_style_context_peek_property (context, GTK_CSS_PROPERTY_ICON_EFFECT))
+  return ctk_render_icon_pixbuf_unpacked (ctk_icon_source_get_pixbuf (source),
+                                          ctk_icon_source_get_size_wildcarded (source) ? size : -1,
+                                          ctk_icon_source_get_state_wildcarded (source)
+                                          ? _ctk_css_icon_effect_value_get (
+                                             _ctk_style_context_peek_property (context, GTK_CSS_PROPERTY_ICON_EFFECT))
                                           : GTK_CSS_ICON_EFFECT_NONE);
 G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 /**
- * gtk_render_icon:
+ * ctk_render_icon:
  * @context: a #GtkStyleContext
  * @cr: a #cairo_t
  * @pixbuf: a #GdkPixbuf containing the icon to draw
@@ -1107,13 +1107,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
  * regardless of scaling factors, which may not be appropriate when
  * drawing on displays with high pixel densities.
  *
- * You probably want to use gtk_render_icon_surface() instead, if you
+ * You probably want to use ctk_render_icon_surface() instead, if you
  * already have a Cairo surface.
  *
  * Since: 3.2
  **/
 void
-gtk_render_icon (GtkStyleContext *context,
+ctk_render_icon (GtkStyleContext *context,
                  cairo_t         *cr,
                  GdkPixbuf       *pixbuf,
                  gdouble          x,
@@ -1126,7 +1126,7 @@ gtk_render_icon (GtkStyleContext *context,
 
   surface = gdk_cairo_surface_create_from_pixbuf (pixbuf, 1, NULL);
 
-  gtk_css_style_render_icon_surface (gtk_style_context_lookup_style (context),
+  ctk_css_style_render_icon_surface (ctk_style_context_lookup_style (context),
                                      cr,
                                      surface,
                                      x, y);
@@ -1135,7 +1135,7 @@ gtk_render_icon (GtkStyleContext *context,
 }
 
 /**
- * gtk_render_icon_surface:
+ * ctk_render_icon_surface:
  * @context: a #GtkStyleContext
  * @cr: a #cairo_t
  * @surface: a #cairo_surface_t containing the icon to draw
@@ -1147,7 +1147,7 @@ gtk_render_icon (GtkStyleContext *context,
  * Since: 3.10
  **/
 void
-gtk_render_icon_surface (GtkStyleContext *context,
+ctk_render_icon_surface (GtkStyleContext *context,
 			 cairo_t         *cr,
 			 cairo_surface_t *surface,
 			 gdouble          x,
@@ -1156,14 +1156,14 @@ gtk_render_icon_surface (GtkStyleContext *context,
   g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
   g_return_if_fail (cr != NULL);
 
-  gtk_css_style_render_icon_surface (gtk_style_context_lookup_style (context),
+  ctk_css_style_render_icon_surface (ctk_style_context_lookup_style (context),
                                      cr,
                                      surface,
                                      x, y);
 }
 
 /*
- * gtk_render_content_path:
+ * ctk_render_content_path:
  * @context: style context to get style information from
  * @cr: cairo context to add path to
  * @x: x coordinate of CSS box
@@ -1179,7 +1179,7 @@ gtk_render_icon_surface (GtkStyleContext *context,
  * #GtkColorChooserDialog.
  **/
 void
-gtk_render_content_path (GtkStyleContext *context,
+ctk_render_content_path (GtkStyleContext *context,
                          cairo_t         *cr,
                          double           x,
                          double           y,
@@ -1191,18 +1191,18 @@ gtk_render_content_path (GtkStyleContext *context,
   g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
   g_return_if_fail (cr != NULL);
 
-  _gtk_rounded_box_init_rect (&box, x, y, width, height);
-  _gtk_rounded_box_apply_border_radius_for_style (&box, gtk_style_context_lookup_style (context), 0);
+  _ctk_rounded_box_init_rect (&box, x, y, width, height);
+  _ctk_rounded_box_apply_border_radius_for_style (&box, ctk_style_context_lookup_style (context), 0);
 
-  _gtk_rounded_box_shrink (&box,
-                           _gtk_css_number_value_get (_gtk_style_context_peek_property (context, GTK_CSS_PROPERTY_BORDER_TOP_WIDTH), 100)
-                           + _gtk_css_number_value_get (_gtk_style_context_peek_property (context, GTK_CSS_PROPERTY_PADDING_TOP), 100),
-                           _gtk_css_number_value_get (_gtk_style_context_peek_property (context, GTK_CSS_PROPERTY_BORDER_RIGHT_WIDTH), 100)
-                           + _gtk_css_number_value_get (_gtk_style_context_peek_property (context, GTK_CSS_PROPERTY_PADDING_RIGHT), 100),
-                           _gtk_css_number_value_get (_gtk_style_context_peek_property (context, GTK_CSS_PROPERTY_BORDER_BOTTOM_WIDTH), 100)
-                           + _gtk_css_number_value_get (_gtk_style_context_peek_property (context, GTK_CSS_PROPERTY_PADDING_BOTTOM), 100),
-                           _gtk_css_number_value_get (_gtk_style_context_peek_property (context, GTK_CSS_PROPERTY_BORDER_LEFT_WIDTH), 100)
-                           + _gtk_css_number_value_get (_gtk_style_context_peek_property (context, GTK_CSS_PROPERTY_PADDING_LEFT), 100));
+  _ctk_rounded_box_shrink (&box,
+                           _ctk_css_number_value_get (_ctk_style_context_peek_property (context, GTK_CSS_PROPERTY_BORDER_TOP_WIDTH), 100)
+                           + _ctk_css_number_value_get (_ctk_style_context_peek_property (context, GTK_CSS_PROPERTY_PADDING_TOP), 100),
+                           _ctk_css_number_value_get (_ctk_style_context_peek_property (context, GTK_CSS_PROPERTY_BORDER_RIGHT_WIDTH), 100)
+                           + _ctk_css_number_value_get (_ctk_style_context_peek_property (context, GTK_CSS_PROPERTY_PADDING_RIGHT), 100),
+                           _ctk_css_number_value_get (_ctk_style_context_peek_property (context, GTK_CSS_PROPERTY_BORDER_BOTTOM_WIDTH), 100)
+                           + _ctk_css_number_value_get (_ctk_style_context_peek_property (context, GTK_CSS_PROPERTY_PADDING_BOTTOM), 100),
+                           _ctk_css_number_value_get (_ctk_style_context_peek_property (context, GTK_CSS_PROPERTY_BORDER_LEFT_WIDTH), 100)
+                           + _ctk_css_number_value_get (_ctk_style_context_peek_property (context, GTK_CSS_PROPERTY_PADDING_LEFT), 100));
 
-  _gtk_rounded_box_path (&box, cr);
+  _ctk_rounded_box_path (&box, cr);
 }

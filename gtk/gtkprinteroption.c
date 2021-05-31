@@ -40,19 +40,19 @@ enum {
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-static void gtk_printer_option_set_property (GObject      *object,
+static void ctk_printer_option_set_property (GObject      *object,
                                              guint         prop_id,
                                              const GValue *value,
                                              GParamSpec   *pspec);
-static void gtk_printer_option_get_property (GObject      *object,
+static void ctk_printer_option_get_property (GObject      *object,
                                              guint         prop_id,
                                              GValue       *value,
                                              GParamSpec   *pspec);
 
-G_DEFINE_TYPE (GtkPrinterOption, gtk_printer_option, G_TYPE_OBJECT)
+G_DEFINE_TYPE (GtkPrinterOption, ctk_printer_option, G_TYPE_OBJECT)
 
 static void
-gtk_printer_option_finalize (GObject *object)
+ctk_printer_option_finalize (GObject *object)
 {
   GtkPrinterOption *option = GTK_PRINTER_OPTION (object);
   int i;
@@ -69,24 +69,24 @@ gtk_printer_option_finalize (GObject *object)
   g_free (option->choices_display);
   g_free (option->group);
   
-  G_OBJECT_CLASS (gtk_printer_option_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_printer_option_parent_class)->finalize (object);
 }
 
 static void
-gtk_printer_option_init (GtkPrinterOption *option)
+ctk_printer_option_init (GtkPrinterOption *option)
 {
   option->value = g_strdup ("");
   option->activates_default = FALSE;
 }
 
 static void
-gtk_printer_option_class_init (GtkPrinterOptionClass *class)
+ctk_printer_option_class_init (GtkPrinterOptionClass *class)
 {
   GObjectClass *gobject_class = (GObjectClass *)class;
 
-  gobject_class->finalize = gtk_printer_option_finalize;
-  gobject_class->set_property = gtk_printer_option_set_property;
-  gobject_class->get_property = gtk_printer_option_get_property;
+  gobject_class->finalize = ctk_printer_option_finalize;
+  gobject_class->set_property = ctk_printer_option_set_property;
+  gobject_class->get_property = ctk_printer_option_get_property;
 
   signals[CHANGED] =
     g_signal_new (I_("changed"),
@@ -107,7 +107,7 @@ gtk_printer_option_class_init (GtkPrinterOptionClass *class)
 }
 
 GtkPrinterOption *
-gtk_printer_option_new (const char *name, const char *display_text,
+ctk_printer_option_new (const char *name, const char *display_text,
 			GtkPrinterOptionType type)
 {
   GtkPrinterOption *option;
@@ -122,7 +122,7 @@ gtk_printer_option_new (const char *name, const char *display_text,
 }
 
 static void
-gtk_printer_option_set_property (GObject         *object,
+ctk_printer_option_set_property (GObject         *object,
                                  guint            prop_id,
                                  const GValue    *value,
                                  GParamSpec      *pspec)
@@ -132,7 +132,7 @@ gtk_printer_option_set_property (GObject         *object,
   switch (prop_id)
     {
     case PROP_VALUE:
-      gtk_printer_option_set (option, g_value_get_string (value));
+      ctk_printer_option_set (option, g_value_get_string (value));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -141,7 +141,7 @@ gtk_printer_option_set_property (GObject         *object,
 }
 
 static void
-gtk_printer_option_get_property (GObject    *object,
+ctk_printer_option_get_property (GObject    *object,
                                  guint       prop_id,
                                  GValue     *value,
                                  GParamSpec *pspec)
@@ -166,7 +166,7 @@ emit_changed (GtkPrinterOption *option)
 }
 
 void
-gtk_printer_option_set (GtkPrinterOption *option,
+ctk_printer_option_set (GtkPrinterOption *option,
 			const char *value)
 {
   if (value == NULL)
@@ -200,14 +200,14 @@ gtk_printer_option_set (GtkPrinterOption *option,
 }
 
 void
-gtk_printer_option_set_boolean (GtkPrinterOption *option,
+ctk_printer_option_set_boolean (GtkPrinterOption *option,
 				gboolean value)
 {
-  gtk_printer_option_set (option, value ? "True" : "False");
+  ctk_printer_option_set (option, value ? "True" : "False");
 }
 
 void
-gtk_printer_option_set_has_conflict  (GtkPrinterOption *option,
+ctk_printer_option_set_has_conflict  (GtkPrinterOption *option,
 				      gboolean  has_conflict)
 {
   has_conflict = has_conflict != 0;
@@ -220,13 +220,13 @@ gtk_printer_option_set_has_conflict  (GtkPrinterOption *option,
 }
 
 void
-gtk_printer_option_clear_has_conflict (GtkPrinterOption     *option)
+ctk_printer_option_clear_has_conflict (GtkPrinterOption     *option)
 {
-  gtk_printer_option_set_has_conflict  (option, FALSE);
+  ctk_printer_option_set_has_conflict  (option, FALSE);
 }
 
 void
-gtk_printer_option_allocate_choices (GtkPrinterOption     *option,
+ctk_printer_option_allocate_choices (GtkPrinterOption     *option,
 				     int num)
 {
   g_free (option->choices);
@@ -246,14 +246,14 @@ gtk_printer_option_allocate_choices (GtkPrinterOption     *option,
 }
 
 void
-gtk_printer_option_choices_from_array (GtkPrinterOption   *option,
+ctk_printer_option_choices_from_array (GtkPrinterOption   *option,
 				       int                 num_choices,
 				       char               *choices[],
 				       char              *choices_display[])
 {
   int i;
   
-  gtk_printer_option_allocate_choices (option, num_choices);
+  ctk_printer_option_allocate_choices (option, num_choices);
   for (i = 0; i < num_choices; i++)
     {
       option->choices[i] = g_strdup (choices[i]);
@@ -262,7 +262,7 @@ gtk_printer_option_choices_from_array (GtkPrinterOption   *option,
 }
 
 gboolean
-gtk_printer_option_has_choice (GtkPrinterOption     *option,
+ctk_printer_option_has_choice (GtkPrinterOption     *option,
 			       const char           *choice)
 {
   int i;
@@ -277,7 +277,7 @@ gtk_printer_option_has_choice (GtkPrinterOption     *option,
 }
 
 void
-gtk_printer_option_set_activates_default (GtkPrinterOption *option,
+ctk_printer_option_set_activates_default (GtkPrinterOption *option,
 					  gboolean          activates)
 {
   g_return_if_fail (GTK_IS_PRINTER_OPTION (option));
@@ -286,7 +286,7 @@ gtk_printer_option_set_activates_default (GtkPrinterOption *option,
 }
 
 gboolean
-gtk_printer_option_get_activates_default (GtkPrinterOption *option)
+ctk_printer_option_get_activates_default (GtkPrinterOption *option)
 {
   g_return_val_if_fail (GTK_IS_PRINTER_OPTION (option), FALSE);
 

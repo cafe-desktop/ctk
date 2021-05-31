@@ -36,7 +36,7 @@
 G_BEGIN_DECLS
 
 
-#define GTK_TYPE_BOX            (gtk_box_get_type ())
+#define GTK_TYPE_BOX            (ctk_box_get_type ())
 #define GTK_BOX(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_BOX, GtkBox))
 #define GTK_BOX_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_BOX, GtkBoxClass))
 #define GTK_IS_BOX(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_BOX))
@@ -67,62 +67,62 @@ struct _GtkBoxClass
   /*< private >*/
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
 GDK_AVAILABLE_IN_ALL
-GType       gtk_box_get_type            (void) G_GNUC_CONST;
+GType       ctk_box_get_type            (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget*  gtk_box_new                 (GtkOrientation  orientation,
+GtkWidget*  ctk_box_new                 (GtkOrientation  orientation,
                                          gint            spacing);
 
 GDK_AVAILABLE_IN_ALL
-void        gtk_box_pack_start          (GtkBox         *box,
+void        ctk_box_pack_start          (GtkBox         *box,
                                          GtkWidget      *child,
                                          gboolean        expand,
                                          gboolean        fill,
                                          guint           padding);
 GDK_AVAILABLE_IN_ALL
-void        gtk_box_pack_end            (GtkBox         *box,
+void        ctk_box_pack_end            (GtkBox         *box,
                                          GtkWidget      *child,
                                          gboolean        expand,
                                          gboolean        fill,
                                          guint           padding);
 
 GDK_AVAILABLE_IN_ALL
-void        gtk_box_set_homogeneous     (GtkBox         *box,
+void        ctk_box_set_homogeneous     (GtkBox         *box,
                                          gboolean        homogeneous);
 GDK_AVAILABLE_IN_ALL
-gboolean    gtk_box_get_homogeneous     (GtkBox         *box);
+gboolean    ctk_box_get_homogeneous     (GtkBox         *box);
 GDK_AVAILABLE_IN_ALL
-void        gtk_box_set_spacing         (GtkBox         *box,
+void        ctk_box_set_spacing         (GtkBox         *box,
                                          gint            spacing);
 GDK_AVAILABLE_IN_ALL
-gint        gtk_box_get_spacing         (GtkBox         *box);
+gint        ctk_box_get_spacing         (GtkBox         *box);
 GDK_AVAILABLE_IN_3_10
-void        gtk_box_set_baseline_position (GtkBox             *box,
+void        ctk_box_set_baseline_position (GtkBox             *box,
 					   GtkBaselinePosition position);
 GDK_AVAILABLE_IN_3_10
-GtkBaselinePosition gtk_box_get_baseline_position (GtkBox         *box);
+GtkBaselinePosition ctk_box_get_baseline_position (GtkBox         *box);
 
 GDK_AVAILABLE_IN_ALL
-void        gtk_box_reorder_child       (GtkBox         *box,
+void        ctk_box_reorder_child       (GtkBox         *box,
                                          GtkWidget      *child,
                                          gint            position);
 
 GDK_AVAILABLE_IN_ALL
-void        gtk_box_query_child_packing (GtkBox         *box,
+void        ctk_box_query_child_packing (GtkBox         *box,
                                          GtkWidget      *child,
                                          gboolean       *expand,
                                          gboolean       *fill,
                                          guint          *padding,
                                          GtkPackType    *pack_type);
 GDK_AVAILABLE_IN_ALL
-void        gtk_box_set_child_packing   (GtkBox         *box,
+void        ctk_box_set_child_packing   (GtkBox         *box,
                                          GtkWidget      *child,
                                          gboolean        expand,
                                          gboolean        fill,
@@ -130,10 +130,10 @@ void        gtk_box_set_child_packing   (GtkBox         *box,
                                          GtkPackType     pack_type);
 
 GDK_AVAILABLE_IN_3_12
-void        gtk_box_set_center_widget   (GtkBox         *box,
+void        ctk_box_set_center_widget   (GtkBox         *box,
                                          GtkWidget      *widget);
 GDK_AVAILABLE_IN_3_12
-GtkWidget  *gtk_box_get_center_widget   (GtkBox         *box);
+GtkWidget  *ctk_box_get_center_widget   (GtkBox         *box);
 
 G_END_DECLS
 

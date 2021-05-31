@@ -27,7 +27,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CELL_ACCESSIBLE                           (gtk_cell_accessible_get_type ())
+#define GTK_TYPE_CELL_ACCESSIBLE                           (ctk_cell_accessible_get_type ())
 #define GTK_CELL_ACCESSIBLE(obj)                           (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_CELL_ACCESSIBLE, GtkCellAccessible))
 #define GTK_CELL_ACCESSIBLE_CLASS(klass)                   (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_CELL_ACCESSIBLE, GtkCellAccessibleClass))
 #define GTK_IS_CELL_ACCESSIBLE(obj)                        (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_CELL_ACCESSIBLE))
@@ -53,7 +53,7 @@ struct _GtkCellAccessibleClass
 };
 
 GDK_AVAILABLE_IN_ALL
-GType    gtk_cell_accessible_get_type      (void);
+GType    ctk_cell_accessible_get_type      (void);
 
 G_END_DECLS
 

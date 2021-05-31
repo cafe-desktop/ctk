@@ -83,17 +83,17 @@ enum
   PROP_SHOW_NUMBERS
 };
 
-static void gtk_recent_chooser_iface_init (GtkRecentChooserIface *iface);
+static void ctk_recent_chooser_iface_init (GtkRecentChooserIface *iface);
 
 G_DEFINE_TYPE_WITH_CODE (GtkRecentAction,
-                         gtk_recent_action,
+                         ctk_recent_action,
                          GTK_TYPE_ACTION,
                          G_ADD_PRIVATE (GtkRecentAction)
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_RECENT_CHOOSER,
-                                                gtk_recent_chooser_iface_init));
+                                                ctk_recent_chooser_iface_init));
 
 static gboolean
-gtk_recent_action_set_current_uri (GtkRecentChooser  *chooser,
+ctk_recent_action_set_current_uri (GtkRecentChooser  *chooser,
                                    const gchar       *uri,
                                    GError           **error)
 {
@@ -105,7 +105,7 @@ gtk_recent_action_set_current_uri (GtkRecentChooser  *chooser,
     {
       GtkRecentChooser *recent_chooser = l->data;
 
-      if (!gtk_recent_chooser_set_current_uri (recent_chooser, uri, error))
+      if (!ctk_recent_chooser_set_current_uri (recent_chooser, uri, error))
         return FALSE;
     }
 
@@ -113,19 +113,19 @@ gtk_recent_action_set_current_uri (GtkRecentChooser  *chooser,
 }
 
 static gchar *
-gtk_recent_action_get_current_uri (GtkRecentChooser *chooser)
+ctk_recent_action_get_current_uri (GtkRecentChooser *chooser)
 {
   GtkRecentAction *recent_action = GTK_RECENT_ACTION (chooser);
   GtkRecentActionPrivate *priv = recent_action->priv;
 
   if (priv->current_chooser)
-    return gtk_recent_chooser_get_current_uri (priv->current_chooser);
+    return ctk_recent_chooser_get_current_uri (priv->current_chooser);
 
   return NULL;
 }
 
 static gboolean
-gtk_recent_action_select_uri (GtkRecentChooser  *chooser,
+ctk_recent_action_select_uri (GtkRecentChooser  *chooser,
                               const gchar       *uri,
                               GError           **error)
 {
@@ -137,7 +137,7 @@ gtk_recent_action_select_uri (GtkRecentChooser  *chooser,
     {
       GtkRecentChooser *recent_chooser = l->data;
 
-      if (!gtk_recent_chooser_select_uri (recent_chooser, uri, error))
+      if (!ctk_recent_chooser_select_uri (recent_chooser, uri, error))
         return FALSE;
     }
 
@@ -145,7 +145,7 @@ gtk_recent_action_select_uri (GtkRecentChooser  *chooser,
 }
 
 static void
-gtk_recent_action_unselect_uri (GtkRecentChooser *chooser,
+ctk_recent_action_unselect_uri (GtkRecentChooser *chooser,
                                 const gchar      *uri)
 {
   GtkRecentAction *action = GTK_RECENT_ACTION (chooser);
@@ -155,19 +155,19 @@ gtk_recent_action_unselect_uri (GtkRecentChooser *chooser,
   for (l = priv->choosers; l; l = l->next)
     {
       GtkRecentChooser *c = l->data;
-      gtk_recent_chooser_unselect_uri (c, uri);
+      ctk_recent_chooser_unselect_uri (c, uri);
     }
 }
 
 static void
-gtk_recent_action_select_all (GtkRecentChooser *chooser)
+ctk_recent_action_select_all (GtkRecentChooser *chooser)
 {
   g_warning ("This function is not implemented for widgets of class '%s'",
              g_type_name (G_OBJECT_TYPE (chooser)));
 }
 
 static void
-gtk_recent_action_unselect_all (GtkRecentChooser *chooser)
+ctk_recent_action_unselect_all (GtkRecentChooser *chooser)
 {
   g_warning ("This function is not implemented for widgets of class '%s'",
              g_type_name (G_OBJECT_TYPE (chooser)));
@@ -175,25 +175,25 @@ gtk_recent_action_unselect_all (GtkRecentChooser *chooser)
 
 
 static GList *
-gtk_recent_action_get_items (GtkRecentChooser *chooser)
+ctk_recent_action_get_items (GtkRecentChooser *chooser)
 {
   GtkRecentAction *action = GTK_RECENT_ACTION (chooser);
   GtkRecentActionPrivate *priv = action->priv;
 
-  return _gtk_recent_chooser_get_items (chooser,
+  return _ctk_recent_chooser_get_items (chooser,
                                         priv->current_filter,
                                         priv->sort_func,
                                         priv->sort_data);
 }
 
 static GtkRecentManager *
-gtk_recent_action_get_recent_manager (GtkRecentChooser *chooser)
+ctk_recent_action_get_recent_manager (GtkRecentChooser *chooser)
 {
   return GTK_RECENT_ACTION (chooser)->priv->manager;
 }
 
 static void
-gtk_recent_action_set_sort_func (GtkRecentChooser  *chooser,
+ctk_recent_action_set_sort_func (GtkRecentChooser  *chooser,
                                  GtkRecentSortFunc  sort_func,
                                  gpointer           sort_data,
                                  GDestroyNotify     data_destroy)
@@ -222,7 +222,7 @@ gtk_recent_action_set_sort_func (GtkRecentChooser  *chooser,
     {
       GtkRecentChooser *chooser_menu = l->data;
       
-      gtk_recent_chooser_set_sort_func (chooser_menu, priv->sort_func,
+      ctk_recent_chooser_set_sort_func (chooser_menu, priv->sort_func,
                                         priv->sort_data,
                                         priv->data_destroy);
     }
@@ -250,7 +250,7 @@ set_current_filter (GtkRecentAction *action,
 }
 
 static void
-gtk_recent_action_add_filter (GtkRecentChooser *chooser,
+ctk_recent_action_add_filter (GtkRecentChooser *chooser,
                               GtkRecentFilter  *filter)
 {
   GtkRecentAction *action = GTK_RECENT_ACTION (chooser);
@@ -261,7 +261,7 @@ gtk_recent_action_add_filter (GtkRecentChooser *chooser,
 }
 
 static void
-gtk_recent_action_remove_filter (GtkRecentChooser *chooser,
+ctk_recent_action_remove_filter (GtkRecentChooser *chooser,
                                  GtkRecentFilter  *filter)
 {
   GtkRecentAction *action = GTK_RECENT_ACTION (chooser);
@@ -272,7 +272,7 @@ gtk_recent_action_remove_filter (GtkRecentChooser *chooser,
 }
 
 static GSList *
-gtk_recent_action_list_filters (GtkRecentChooser *chooser)
+ctk_recent_action_list_filters (GtkRecentChooser *chooser)
 {
   GtkRecentAction *action = GTK_RECENT_ACTION (chooser);
   GtkRecentActionPrivate *priv = action->priv;
@@ -287,30 +287,30 @@ gtk_recent_action_list_filters (GtkRecentChooser *chooser)
 
 
 static void
-gtk_recent_chooser_iface_init (GtkRecentChooserIface *iface)
+ctk_recent_chooser_iface_init (GtkRecentChooserIface *iface)
 {
-  iface->set_current_uri = gtk_recent_action_set_current_uri;
-  iface->get_current_uri = gtk_recent_action_get_current_uri;
-  iface->select_uri = gtk_recent_action_select_uri;
-  iface->unselect_uri = gtk_recent_action_unselect_uri;
-  iface->select_all = gtk_recent_action_select_all;
-  iface->unselect_all = gtk_recent_action_unselect_all;
-  iface->get_items = gtk_recent_action_get_items;
-  iface->get_recent_manager = gtk_recent_action_get_recent_manager;
-  iface->set_sort_func = gtk_recent_action_set_sort_func;
-  iface->add_filter = gtk_recent_action_add_filter;
-  iface->remove_filter = gtk_recent_action_remove_filter;
-  iface->list_filters = gtk_recent_action_list_filters;
+  iface->set_current_uri = ctk_recent_action_set_current_uri;
+  iface->get_current_uri = ctk_recent_action_get_current_uri;
+  iface->select_uri = ctk_recent_action_select_uri;
+  iface->unselect_uri = ctk_recent_action_unselect_uri;
+  iface->select_all = ctk_recent_action_select_all;
+  iface->unselect_all = ctk_recent_action_unselect_all;
+  iface->get_items = ctk_recent_action_get_items;
+  iface->get_recent_manager = ctk_recent_action_get_recent_manager;
+  iface->set_sort_func = ctk_recent_action_set_sort_func;
+  iface->add_filter = ctk_recent_action_add_filter;
+  iface->remove_filter = ctk_recent_action_remove_filter;
+  iface->list_filters = ctk_recent_action_list_filters;
 }
 
 static void
-gtk_recent_action_activate (GtkAction *action)
+ctk_recent_action_activate (GtkAction *action)
 {
   GtkRecentAction *recent_action = GTK_RECENT_ACTION (action);
   GtkRecentActionPrivate *priv = recent_action->priv;
 
   /* we have probably been invoked by a menu tool button or by a
-   * direct call of gtk_action_activate(); since no item has been
+   * direct call of ctk_action_activate(); since no item has been
    * selected, we must unset the current recent chooser pointer
    */
   priv->current_chooser = NULL;
@@ -339,7 +339,7 @@ delegate_item_activated (GtkRecentAction  *action,
 }
 
 static void
-gtk_recent_action_connect_proxy (GtkAction *action,
+ctk_recent_action_connect_proxy (GtkAction *action,
                                  GtkWidget *widget)
 {
   GtkRecentAction *recent_action = GTK_RECENT_ACTION (action);
@@ -351,7 +351,7 @@ gtk_recent_action_connect_proxy (GtkAction *action,
     {
       if (priv->sort_func)
         {
-          gtk_recent_chooser_set_sort_func (GTK_RECENT_CHOOSER (widget),
+          ctk_recent_chooser_set_sort_func (GTK_RECENT_CHOOSER (widget),
                                             priv->sort_func,
                                             priv->sort_data,
                                             priv->data_destroy);
@@ -365,12 +365,12 @@ gtk_recent_action_connect_proxy (GtkAction *action,
                                 action);
     }
 
-  if (GTK_ACTION_CLASS (gtk_recent_action_parent_class)->connect_proxy)
-    GTK_ACTION_CLASS (gtk_recent_action_parent_class)->connect_proxy (action, widget);
+  if (GTK_ACTION_CLASS (ctk_recent_action_parent_class)->connect_proxy)
+    GTK_ACTION_CLASS (ctk_recent_action_parent_class)->connect_proxy (action, widget);
 }
 
 static void
-gtk_recent_action_disconnect_proxy (GtkAction *action,
+ctk_recent_action_disconnect_proxy (GtkAction *action,
                                     GtkWidget *widget)
 {
   GtkRecentAction *recent_action = GTK_RECENT_ACTION (action);
@@ -382,12 +382,12 @@ gtk_recent_action_disconnect_proxy (GtkAction *action,
   if (g_slist_find (priv->choosers, widget))
     priv->choosers = g_slist_remove (priv->choosers, widget);
 
-  if (GTK_ACTION_CLASS (gtk_recent_action_parent_class)->disconnect_proxy)
-    GTK_ACTION_CLASS (gtk_recent_action_parent_class)->disconnect_proxy (action, widget);
+  if (GTK_ACTION_CLASS (ctk_recent_action_parent_class)->disconnect_proxy)
+    GTK_ACTION_CLASS (ctk_recent_action_parent_class)->disconnect_proxy (action, widget);
 }
 
 static GtkWidget *
-gtk_recent_action_create_menu (GtkAction *action)
+ctk_recent_action_create_menu (GtkAction *action)
 {
   GtkRecentAction *recent_action = GTK_RECENT_ACTION (action);
   GtkRecentActionPrivate *priv = recent_action->priv;
@@ -408,7 +408,7 @@ gtk_recent_action_create_menu (GtkAction *action)
   
   if (priv->sort_func)
     {
-      gtk_recent_chooser_set_sort_func (GTK_RECENT_CHOOSER (widget),
+      ctk_recent_chooser_set_sort_func (GTK_RECENT_CHOOSER (widget),
                                         priv->sort_func,
                                         priv->sort_data,
                                         priv->data_destroy);
@@ -428,31 +428,31 @@ gtk_recent_action_create_menu (GtkAction *action)
 }
 
 static GtkWidget *
-gtk_recent_action_create_menu_item (GtkAction *action)
+ctk_recent_action_create_menu_item (GtkAction *action)
 {
   GtkWidget *menu;
   GtkWidget *menuitem;
 
-  menu = gtk_recent_action_create_menu (action);
+  menu = ctk_recent_action_create_menu (action);
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   menuitem = g_object_new (GTK_TYPE_IMAGE_MENU_ITEM, NULL);
   G_GNUC_END_IGNORE_DEPRECATIONS;
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), menu);
-  gtk_widget_show (menu);
+  ctk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), menu);
+  ctk_widget_show (menu);
 
   return menuitem;
 }
 
 static GtkWidget *
-gtk_recent_action_create_tool_item (GtkAction *action)
+ctk_recent_action_create_tool_item (GtkAction *action)
 {
   GtkWidget *menu;
   GtkWidget *toolitem;
 
-  menu = gtk_recent_action_create_menu (action);
+  menu = ctk_recent_action_create_menu (action);
   toolitem = g_object_new (GTK_TYPE_MENU_TOOL_BUTTON, NULL);
-  gtk_menu_tool_button_set_menu (GTK_MENU_TOOL_BUTTON (toolitem), menu);
-  gtk_widget_show (menu);
+  ctk_menu_tool_button_set_menu (GTK_MENU_TOOL_BUTTON (toolitem), menu);
+  ctk_widget_show (menu);
 
   return toolitem;
 }
@@ -466,11 +466,11 @@ set_recent_manager (GtkRecentAction  *action,
   if (manager)
     priv->manager = manager;
   else
-    priv->manager = gtk_recent_manager_get_default ();
+    priv->manager = ctk_recent_manager_get_default ();
 }
 
 static void
-gtk_recent_action_finalize (GObject *gobject)
+ctk_recent_action_finalize (GObject *gobject)
 {
   GtkRecentAction *action = GTK_RECENT_ACTION (gobject);
   GtkRecentActionPrivate *priv = action->priv;
@@ -486,11 +486,11 @@ gtk_recent_action_finalize (GObject *gobject)
 
   g_slist_free (priv->choosers);
 
-  G_OBJECT_CLASS (gtk_recent_action_parent_class)->finalize (gobject);
+  G_OBJECT_CLASS (ctk_recent_action_parent_class)->finalize (gobject);
 }
 
 static void
-gtk_recent_action_dispose (GObject *gobject)
+ctk_recent_action_dispose (GObject *gobject)
 {
   GtkRecentAction *action = GTK_RECENT_ACTION (gobject);
   GtkRecentActionPrivate *priv = action->priv;
@@ -503,11 +503,11 @@ gtk_recent_action_dispose (GObject *gobject)
 
   priv->manager = NULL;
   
-  G_OBJECT_CLASS (gtk_recent_action_parent_class)->dispose (gobject);
+  G_OBJECT_CLASS (ctk_recent_action_parent_class)->dispose (gobject);
 }
 
 static void
-gtk_recent_action_set_property (GObject      *gobject,
+ctk_recent_action_set_property (GObject      *gobject,
                                 guint         prop_id,
                                 const GValue *value,
                                 GParamSpec   *pspec)
@@ -591,7 +591,7 @@ gtk_recent_action_set_property (GObject      *gobject,
 }
 
 static void
-gtk_recent_action_get_property (GObject    *gobject,
+ctk_recent_action_get_property (GObject    *gobject,
                                 guint       prop_id,
                                 GValue     *value,
                                 GParamSpec *pspec)
@@ -638,28 +638,28 @@ gtk_recent_action_get_property (GObject    *gobject,
 }
 
 static void
-gtk_recent_action_class_init (GtkRecentActionClass *klass)
+ctk_recent_action_class_init (GtkRecentActionClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
   GtkActionClass *action_class = GTK_ACTION_CLASS (klass);
 
-  gobject_class->finalize = gtk_recent_action_finalize;
-  gobject_class->dispose = gtk_recent_action_dispose;
-  gobject_class->set_property = gtk_recent_action_set_property;
-  gobject_class->get_property = gtk_recent_action_get_property;
+  gobject_class->finalize = ctk_recent_action_finalize;
+  gobject_class->dispose = ctk_recent_action_dispose;
+  gobject_class->set_property = ctk_recent_action_set_property;
+  gobject_class->get_property = ctk_recent_action_get_property;
 
-  action_class->activate = gtk_recent_action_activate;
-  action_class->connect_proxy = gtk_recent_action_connect_proxy;
-  action_class->disconnect_proxy = gtk_recent_action_disconnect_proxy;
-  action_class->create_menu_item = gtk_recent_action_create_menu_item;
-  action_class->create_tool_item = gtk_recent_action_create_tool_item;
-  action_class->create_menu = gtk_recent_action_create_menu;
+  action_class->activate = ctk_recent_action_activate;
+  action_class->connect_proxy = ctk_recent_action_connect_proxy;
+  action_class->disconnect_proxy = ctk_recent_action_disconnect_proxy;
+  action_class->create_menu_item = ctk_recent_action_create_menu_item;
+  action_class->create_tool_item = ctk_recent_action_create_tool_item;
+  action_class->create_menu = ctk_recent_action_create_menu;
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   action_class->menu_item_type = GTK_TYPE_IMAGE_MENU_ITEM;
   G_GNUC_END_IGNORE_DEPRECATIONS;
   action_class->toolbar_item_type = GTK_TYPE_MENU_TOOL_BUTTON;
 
-  _gtk_recent_chooser_install_properties (gobject_class);
+  _ctk_recent_chooser_install_properties (gobject_class);
 
   /**
    * GtkRecentAction:show-numbers:
@@ -679,11 +679,11 @@ gtk_recent_action_class_init (GtkRecentActionClass *klass)
 }
 
 static void
-gtk_recent_action_init (GtkRecentAction *action)
+ctk_recent_action_init (GtkRecentAction *action)
 {
   GtkRecentActionPrivate *priv;
 
-  action->priv = priv = gtk_recent_action_get_instance_private (action);
+  action->priv = priv = ctk_recent_action_get_instance_private (action);
 
   priv->show_numbers = FALSE;
   priv->show_icons = TRUE;
@@ -705,7 +705,7 @@ gtk_recent_action_init (GtkRecentAction *action)
 }
 
 /**
- * gtk_recent_action_new:
+ * ctk_recent_action_new:
  * @name: a unique name for the action
  * @label: (allow-none): the label displayed in menu items and on buttons,
  *   or %NULL
@@ -715,7 +715,7 @@ gtk_recent_action_init (GtkRecentAction *action)
  *
  * Creates a new #GtkRecentAction object. To add the action to
  * a #GtkActionGroup and set the accelerator for the action,
- * call gtk_action_group_add_action_with_accel().
+ * call ctk_action_group_add_action_with_accel().
  *
  * Returns: the newly created #GtkRecentAction.
  *
@@ -724,7 +724,7 @@ gtk_recent_action_init (GtkRecentAction *action)
  * Deprecated: 3.10
  */
 GtkAction *
-gtk_recent_action_new (const gchar *name,
+ctk_recent_action_new (const gchar *name,
                        const gchar *label,
                        const gchar *tooltip,
                        const gchar *stock_id)
@@ -740,7 +740,7 @@ gtk_recent_action_new (const gchar *name,
 }
 
 /**
- * gtk_recent_action_new_for_manager:
+ * ctk_recent_action_new_for_manager:
  * @name: a unique name for the action
  * @label: (allow-none): the label displayed in menu items and on buttons,
  *   or %NULL
@@ -752,7 +752,7 @@ gtk_recent_action_new (const gchar *name,
  *
  * Creates a new #GtkRecentAction object. To add the action to
  * a #GtkActionGroup and set the accelerator for the action,
- * call gtk_action_group_add_action_with_accel().
+ * call ctk_action_group_add_action_with_accel().
  *
  * Returns: the newly created #GtkRecentAction
  * 
@@ -761,7 +761,7 @@ gtk_recent_action_new (const gchar *name,
  * Deprecated: 3.10
  */
 GtkAction *
-gtk_recent_action_new_for_manager (const gchar      *name,
+ctk_recent_action_new_for_manager (const gchar      *name,
                                    const gchar      *label,
                                    const gchar      *tooltip,
                                    const gchar      *stock_id,
@@ -780,10 +780,10 @@ gtk_recent_action_new_for_manager (const gchar      *name,
 }
 
 /**
- * gtk_recent_action_get_show_numbers:
+ * ctk_recent_action_get_show_numbers:
  * @action: a #GtkRecentAction
  *
- * Returns the value set by gtk_recent_chooser_menu_set_show_numbers().
+ * Returns the value set by ctk_recent_chooser_menu_set_show_numbers().
  *
  * Returns: %TRUE if numbers should be shown.
  *
@@ -792,7 +792,7 @@ gtk_recent_action_new_for_manager (const gchar      *name,
  * Deprecated: 3.10
  */
 gboolean
-gtk_recent_action_get_show_numbers (GtkRecentAction *action)
+ctk_recent_action_get_show_numbers (GtkRecentAction *action)
 {
   g_return_val_if_fail (GTK_IS_RECENT_ACTION (action), FALSE);
 
@@ -800,7 +800,7 @@ gtk_recent_action_get_show_numbers (GtkRecentAction *action)
 }
 
 /**
- * gtk_recent_action_set_show_numbers:
+ * ctk_recent_action_set_show_numbers:
  * @action: a #GtkRecentAction
  * @show_numbers: %TRUE if the shown items should be numbered
  *
@@ -814,7 +814,7 @@ gtk_recent_action_get_show_numbers (GtkRecentAction *action)
  * Deprecated: 3.10
  */
 void
-gtk_recent_action_set_show_numbers (GtkRecentAction *action,
+ctk_recent_action_set_show_numbers (GtkRecentAction *action,
                                     gboolean         show_numbers)
 {
   GtkRecentActionPrivate *priv;

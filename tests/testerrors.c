@@ -133,7 +133,7 @@ main (gint argc, gchar *argv[])
 {
   GdkDisplay *extra_display;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
   test_error_trapping (gdk_display_get_default ());
 

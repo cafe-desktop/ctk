@@ -54,7 +54,7 @@
 #endif
 
 gboolean
-gtk_scan_string (const char **pos, GString *out)
+ctk_scan_string (const char **pos, GString *out)
 {
   const char *p = *pos, *q = *pos;
   char *tmp, *tmp2;
@@ -91,7 +91,7 @@ gtk_scan_string (const char **pos, GString *out)
 }
 
 gboolean
-gtk_skip_space (const char **pos)
+ctk_skip_space (const char **pos)
 {
   const char *p = *pos;
 
@@ -104,7 +104,7 @@ gtk_skip_space (const char **pos)
 }
 
 gint
-gtk_read_line (FILE *stream, GString *str)
+ctk_read_line (FILE *stream, GString *str)
 {
   gboolean quoted = FALSE;
   gboolean comment = FALSE;
@@ -195,7 +195,7 @@ gtk_read_line (FILE *stream, GString *str)
 }
 
 char *
-gtk_trim_string (const char *str)
+ctk_trim_string (const char *str)
 {
   int len;
 
@@ -212,7 +212,7 @@ gtk_trim_string (const char *str)
 }
 
 char **
-gtk_split_file_list (const char *str)
+ctk_split_file_list (const char *str)
 {
   int i = 0;
   int j;
@@ -222,7 +222,7 @@ gtk_split_file_list (const char *str)
 
   while (files[i])
     {
-      char *file = gtk_trim_string (files[i]);
+      char *file = ctk_trim_string (files[i]);
 
       /* If the resulting file is empty, skip it */
       if (file[0] == '\0')
@@ -268,7 +268,7 @@ gtk_split_file_list (const char *str)
 }
 
 GBytes *
-gtk_file_load_bytes (GFile         *file,
+ctk_file_load_bytes (GFile         *file,
                      GCancellable  *cancellable,
                      GError       **error)
 {

@@ -33,7 +33,7 @@ begin_print (GtkPrintOperation *operation,
   int i;
   double height;
 
-  height = gtk_print_context_get_height (context) - HEADER_HEIGHT - HEADER_GAP;
+  height = ctk_print_context_get_height (context) - HEADER_HEIGHT - HEADER_GAP;
 
   data->lines_per_page = floor (height / data->font_size);
 
@@ -49,7 +49,7 @@ begin_print (GtkPrintOperation *operation,
   data->num_lines = i;
   data->num_pages = (data->num_lines - 1) / data->lines_per_page + 1;
 
-  gtk_print_operation_set_n_pages (operation, data->num_pages);
+  ctk_print_operation_set_n_pages (operation, data->num_pages);
 }
 
 static void
@@ -67,8 +67,8 @@ draw_page (GtkPrintOperation *operation,
   PangoFontDescription *desc;
   gchar *page_str;
 
-  cr = gtk_print_context_get_cairo_context (context);
-  width = gtk_print_context_get_width (context);
+  cr = ctk_print_context_get_cairo_context (context);
+  width = ctk_print_context_get_width (context);
 
   cairo_rectangle (cr, 0, 0, width, HEADER_HEIGHT);
 
@@ -79,7 +79,7 @@ draw_page (GtkPrintOperation *operation,
   cairo_set_line_width (cr, 1);
   cairo_stroke (cr);
 
-  layout = gtk_print_context_create_pango_layout (context);
+  layout = ctk_print_context_create_pango_layout (context);
 
   desc = pango_font_description_from_string ("sans 14");
   pango_layout_set_font_description (layout, desc);
@@ -109,7 +109,7 @@ draw_page (GtkPrintOperation *operation,
 
   g_object_unref (layout);
 
-  layout = gtk_print_context_create_pango_layout (context);
+  layout = ctk_print_context_create_pango_layout (context);
 
   desc = pango_font_description_from_string ("monospace");
   pango_font_description_set_size (desc, data->font_size * PANGO_SCALE);
@@ -150,7 +150,7 @@ do_printing (GtkWidget *do_widget)
   PrintData *data;
   GError *error = NULL;
 
-  operation = gtk_print_operation_new ();
+  operation = ctk_print_operation_new ();
   data = g_new0 (PrintData, 1);
   data->resourcename = g_strdup ("/sources/printing.c");
   data->font_size = 12.0;
@@ -162,16 +162,16 @@ do_printing (GtkWidget *do_widget)
   g_signal_connect (G_OBJECT (operation), "end-print",
                     G_CALLBACK (end_print), data);
 
-  gtk_print_operation_set_use_full_page (operation, FALSE);
-  gtk_print_operation_set_unit (operation, GTK_UNIT_POINTS);
-  gtk_print_operation_set_embed_page_setup (operation, TRUE);
+  ctk_print_operation_set_use_full_page (operation, FALSE);
+  ctk_print_operation_set_unit (operation, GTK_UNIT_POINTS);
+  ctk_print_operation_set_embed_page_setup (operation, TRUE);
 
-  settings = gtk_print_settings_new ();
+  settings = ctk_print_settings_new ();
 
-  gtk_print_settings_set (settings, GTK_PRINT_SETTINGS_OUTPUT_BASENAME, "gtk-demo");
-  gtk_print_operation_set_print_settings (operation, settings);
+  ctk_print_settings_set (settings, GTK_PRINT_SETTINGS_OUTPUT_BASENAME, "gtk-demo");
+  ctk_print_operation_set_print_settings (operation, settings);
 
-  gtk_print_operation_run (operation, GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG, GTK_WINDOW (do_widget), &error);
+  ctk_print_operation_run (operation, GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG, GTK_WINDOW (do_widget), &error);
 
   g_object_unref (operation);
   g_object_unref (settings);
@@ -180,7 +180,7 @@ do_printing (GtkWidget *do_widget)
     {
       GtkWidget *dialog;
 
-      dialog = gtk_message_dialog_new (GTK_WINDOW (do_widget),
+      dialog = ctk_message_dialog_new (GTK_WINDOW (do_widget),
                                        GTK_DIALOG_DESTROY_WITH_PARENT,
                                        GTK_MESSAGE_ERROR,
                                        GTK_BUTTONS_CLOSE,
@@ -188,9 +188,9 @@ do_printing (GtkWidget *do_widget)
       g_error_free (error);
 
       g_signal_connect (dialog, "response",
-                        G_CALLBACK (gtk_widget_destroy), NULL);
+                        G_CALLBACK (ctk_widget_destroy), NULL);
 
-      gtk_widget_show (dialog);
+      ctk_widget_show (dialog);
     }
 
 

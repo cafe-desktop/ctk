@@ -41,23 +41,23 @@ typedef struct
 NodeInfo;
 
 
-static void      gtk_tree_model_ref_count_tree_model_init (GtkTreeModelIface *iface);
-static void      gtk_tree_model_ref_count_finalize        (GObject           *object);
+static void      ctk_tree_model_ref_count_tree_model_init (GtkTreeModelIface *iface);
+static void      ctk_tree_model_ref_count_finalize        (GObject           *object);
 
 static NodeInfo *node_info_new                            (void);
 static void      node_info_free                           (NodeInfo          *info);
 
 /* GtkTreeModel interface */
-static void      gtk_tree_model_ref_count_ref_node        (GtkTreeModel      *model,
+static void      ctk_tree_model_ref_count_ref_node        (GtkTreeModel      *model,
                                                            GtkTreeIter       *iter);
-static void      gtk_tree_model_ref_count_unref_node      (GtkTreeModel      *model,
+static void      ctk_tree_model_ref_count_unref_node      (GtkTreeModel      *model,
                                                            GtkTreeIter       *iter);
 
 
-G_DEFINE_TYPE_WITH_CODE (GtkTreeModelRefCount, gtk_tree_model_ref_count, GTK_TYPE_TREE_STORE,
+G_DEFINE_TYPE_WITH_CODE (GtkTreeModelRefCount, ctk_tree_model_ref_count, GTK_TYPE_TREE_STORE,
                          G_ADD_PRIVATE (GtkTreeModelRefCount)
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_TREE_MODEL,
-                                                gtk_tree_model_ref_count_tree_model_init))
+                                                ctk_tree_model_ref_count_tree_model_init))
 
 static void
 row_removed (GtkTreeModelRefCount *ref_model,
@@ -66,7 +66,7 @@ row_removed (GtkTreeModelRefCount *ref_model,
   GHashTableIter iter;
   GtkTreeIter tree_iter;
 
-  if (!gtk_tree_model_get_iter_first (GTK_TREE_MODEL (ref_model), &tree_iter))
+  if (!ctk_tree_model_get_iter_first (GTK_TREE_MODEL (ref_model), &tree_iter))
     {
       g_hash_table_remove_all (ref_model->priv->node_hash);
       return;
@@ -76,15 +76,15 @@ row_removed (GtkTreeModelRefCount *ref_model,
 
   while (g_hash_table_iter_next (&iter, &tree_iter.user_data, NULL))
     {
-      if (!gtk_tree_store_iter_is_valid (GTK_TREE_STORE (ref_model), &tree_iter))
+      if (!ctk_tree_store_iter_is_valid (GTK_TREE_STORE (ref_model), &tree_iter))
         g_hash_table_iter_remove (&iter);
     }
 }
 
 static void
-gtk_tree_model_ref_count_init (GtkTreeModelRefCount *ref_model)
+ctk_tree_model_ref_count_init (GtkTreeModelRefCount *ref_model)
 {
-  ref_model->priv = gtk_tree_model_ref_count_get_instance_private (ref_model); 
+  ref_model->priv = ctk_tree_model_ref_count_get_instance_private (ref_model); 
 
   ref_model->priv->node_hash = g_hash_table_new_full (g_direct_hash,
                                                       g_direct_equal,
@@ -95,20 +95,20 @@ gtk_tree_model_ref_count_init (GtkTreeModelRefCount *ref_model)
 }
 
 static void
-gtk_tree_model_ref_count_class_init (GtkTreeModelRefCountClass *ref_model_class)
+ctk_tree_model_ref_count_class_init (GtkTreeModelRefCountClass *ref_model_class)
 {
-  G_OBJECT_CLASS (ref_model_class)->finalize = gtk_tree_model_ref_count_finalize;
+  G_OBJECT_CLASS (ref_model_class)->finalize = ctk_tree_model_ref_count_finalize;
 }
 
 static void
-gtk_tree_model_ref_count_tree_model_init (GtkTreeModelIface *iface)
+ctk_tree_model_ref_count_tree_model_init (GtkTreeModelIface *iface)
 {
-  iface->ref_node = gtk_tree_model_ref_count_ref_node;
-  iface->unref_node = gtk_tree_model_ref_count_unref_node;
+  iface->ref_node = ctk_tree_model_ref_count_ref_node;
+  iface->unref_node = ctk_tree_model_ref_count_unref_node;
 }
 
 static void
-gtk_tree_model_ref_count_finalize (GObject *object)
+ctk_tree_model_ref_count_finalize (GObject *object)
 {
   GtkTreeModelRefCount *ref_model = GTK_TREE_MODEL_REF_COUNT (object);
 
@@ -118,7 +118,7 @@ gtk_tree_model_ref_count_finalize (GObject *object)
       ref_model->priv->node_hash = NULL;
     }
 
-  G_OBJECT_CLASS (gtk_tree_model_ref_count_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_tree_model_ref_count_parent_class)->finalize (object);
 }
 
 
@@ -138,7 +138,7 @@ node_info_free (NodeInfo *info)
 }
 
 static void
-gtk_tree_model_ref_count_ref_node (GtkTreeModel *model,
+ctk_tree_model_ref_count_ref_node (GtkTreeModel *model,
                                    GtkTreeIter  *iter)
 {
   NodeInfo *info;
@@ -156,7 +156,7 @@ gtk_tree_model_ref_count_ref_node (GtkTreeModel *model,
 }
 
 static void
-gtk_tree_model_ref_count_unref_node (GtkTreeModel *model,
+ctk_tree_model_ref_count_unref_node (GtkTreeModel *model,
                                      GtkTreeIter  *iter)
 {
   NodeInfo *info;
@@ -171,11 +171,11 @@ gtk_tree_model_ref_count_unref_node (GtkTreeModel *model,
 
 
 GtkTreeModel *
-gtk_tree_model_ref_count_new (void)
+ctk_tree_model_ref_count_new (void)
 {
   GtkTreeModel *retval;
 
-  retval = g_object_new (gtk_tree_model_ref_count_get_type (), NULL);
+  retval = g_object_new (ctk_tree_model_ref_count_get_type (), NULL);
 
   return retval;
 }
@@ -188,9 +188,9 @@ dump_iter (GtkTreeModelRefCount *ref_model,
   NodeInfo *info;
   GtkTreePath *path;
 
-  path = gtk_tree_model_get_path (GTK_TREE_MODEL (ref_model), iter);
-  path_str = gtk_tree_path_to_string (path);
-  gtk_tree_path_free (path);
+  path = ctk_tree_model_get_path (GTK_TREE_MODEL (ref_model), iter);
+  path_str = ctk_tree_path_to_string (path);
+  ctk_tree_path_free (path);
 
   info = g_hash_table_lookup (ref_model->priv->node_hash, iter->user_data);
   if (!info)
@@ -202,7 +202,7 @@ dump_iter (GtkTreeModelRefCount *ref_model,
 }
 
 static void
-gtk_tree_model_ref_count_dump_recurse (GtkTreeModelRefCount *ref_model,
+ctk_tree_model_ref_count_dump_recurse (GtkTreeModelRefCount *ref_model,
                                        GtkTreeIter          *iter)
 {
   do
@@ -211,22 +211,22 @@ gtk_tree_model_ref_count_dump_recurse (GtkTreeModelRefCount *ref_model,
 
       dump_iter (ref_model, iter);
 
-      if (gtk_tree_model_iter_children (GTK_TREE_MODEL (ref_model),
+      if (ctk_tree_model_iter_children (GTK_TREE_MODEL (ref_model),
                                         &child, iter))
-        gtk_tree_model_ref_count_dump_recurse (ref_model, &child);
+        ctk_tree_model_ref_count_dump_recurse (ref_model, &child);
     }
-  while (gtk_tree_model_iter_next (GTK_TREE_MODEL (ref_model), iter));
+  while (ctk_tree_model_iter_next (GTK_TREE_MODEL (ref_model), iter));
 }
 
 void
-gtk_tree_model_ref_count_dump (GtkTreeModelRefCount *ref_model)
+ctk_tree_model_ref_count_dump (GtkTreeModelRefCount *ref_model)
 {
   GtkTreeIter iter;
 
-  if (!gtk_tree_model_get_iter_first (GTK_TREE_MODEL (ref_model), &iter))
+  if (!ctk_tree_model_get_iter_first (GTK_TREE_MODEL (ref_model), &iter))
     return;
 
-  gtk_tree_model_ref_count_dump_recurse (ref_model, &iter);
+  ctk_tree_model_ref_count_dump_recurse (ref_model, &iter);
 }
 
 static gboolean
@@ -238,7 +238,7 @@ check_iter (GtkTreeModelRefCount *ref_model,
   NodeInfo *info;
 
   if (may_assert)
-    g_assert (gtk_tree_store_iter_is_valid (GTK_TREE_STORE (ref_model), iter));
+    g_assert (ctk_tree_store_iter_is_valid (GTK_TREE_STORE (ref_model), iter));
 
   info = g_hash_table_lookup (ref_model->priv->node_hash, iter->user_data);
   if (!info)
@@ -265,7 +265,7 @@ check_iter (GtkTreeModelRefCount *ref_model,
 }
 
 gboolean
-gtk_tree_model_ref_count_check_level (GtkTreeModelRefCount *ref_model,
+ctk_tree_model_ref_count_check_level (GtkTreeModelRefCount *ref_model,
                                       GtkTreeIter          *parent,
                                       gint                  expected_ref_count,
                                       gboolean              recurse,
@@ -273,7 +273,7 @@ gtk_tree_model_ref_count_check_level (GtkTreeModelRefCount *ref_model,
 {
   GtkTreeIter iter;
 
-  if (!gtk_tree_model_iter_children (GTK_TREE_MODEL (ref_model),
+  if (!ctk_tree_model_iter_children (GTK_TREE_MODEL (ref_model),
                                      &iter, parent))
     return TRUE;
 
@@ -283,21 +283,21 @@ gtk_tree_model_ref_count_check_level (GtkTreeModelRefCount *ref_model,
         return FALSE;
 
       if (recurse &&
-          gtk_tree_model_iter_has_child (GTK_TREE_MODEL (ref_model), &iter))
+          ctk_tree_model_iter_has_child (GTK_TREE_MODEL (ref_model), &iter))
         {
-          if (!gtk_tree_model_ref_count_check_level (ref_model, &iter,
+          if (!ctk_tree_model_ref_count_check_level (ref_model, &iter,
                                                      expected_ref_count,
                                                      recurse, may_assert))
             return FALSE;
         }
     }
-  while (gtk_tree_model_iter_next (GTK_TREE_MODEL (ref_model), &iter));
+  while (ctk_tree_model_iter_next (GTK_TREE_MODEL (ref_model), &iter));
 
   return TRUE;
 }
 
 gboolean
-gtk_tree_model_ref_count_check_node (GtkTreeModelRefCount *ref_model,
+ctk_tree_model_ref_count_check_node (GtkTreeModelRefCount *ref_model,
                                      GtkTreeIter          *iter,
                                      gint                  expected_ref_count,
                                      gboolean              may_assert)

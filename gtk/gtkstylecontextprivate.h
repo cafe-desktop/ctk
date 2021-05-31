@@ -28,52 +28,52 @@
 
 G_BEGIN_DECLS
 
-GtkStyleContext *gtk_style_context_new_for_node              (GtkCssNode      *node);
+GtkStyleContext *ctk_style_context_new_for_node              (GtkCssNode      *node);
 
-GtkCssNode     *gtk_style_context_get_node                   (GtkStyleContext *context);
-void            gtk_style_context_set_id                     (GtkStyleContext *context,
+GtkCssNode     *ctk_style_context_get_node                   (GtkStyleContext *context);
+void            ctk_style_context_set_id                     (GtkStyleContext *context,
                                                               const char      *id);
-const char *    gtk_style_context_get_id                     (GtkStyleContext *context);
+const char *    ctk_style_context_get_id                     (GtkStyleContext *context);
 GtkStyleProviderPrivate *
-                gtk_style_context_get_style_provider         (GtkStyleContext *context);
+                ctk_style_context_get_style_provider         (GtkStyleContext *context);
 
-void            gtk_style_context_save_named                 (GtkStyleContext *context,
+void            ctk_style_context_save_named                 (GtkStyleContext *context,
                                                               const char      *name);
-void            gtk_style_context_save_to_node               (GtkStyleContext *context,
+void            ctk_style_context_save_to_node               (GtkStyleContext *context,
                                                               GtkCssNode      *node);
 
 GtkCssStyleChange *
-                gtk_style_context_get_change                 (GtkStyleContext *context);
+                ctk_style_context_get_change                 (GtkStyleContext *context);
 
-GtkCssStyle *   gtk_style_context_lookup_style               (GtkStyleContext *context);
-GtkCssValue   * _gtk_style_context_peek_property             (GtkStyleContext *context,
+GtkCssStyle *   ctk_style_context_lookup_style               (GtkStyleContext *context);
+GtkCssValue   * _ctk_style_context_peek_property             (GtkStyleContext *context,
                                                               guint            property_id);
-const GValue * _gtk_style_context_peek_style_property        (GtkStyleContext *context,
+const GValue * _ctk_style_context_peek_style_property        (GtkStyleContext *context,
                                                               GType            widget_type,
                                                               GParamSpec      *pspec);
-void            gtk_style_context_validate                   (GtkStyleContext *context,
+void            ctk_style_context_validate                   (GtkStyleContext *context,
                                                               GtkCssStyleChange *change);
-void            gtk_style_context_clear_property_cache       (GtkStyleContext *context);
-gboolean       _gtk_style_context_check_region_name          (const gchar     *str);
+void            ctk_style_context_clear_property_cache       (GtkStyleContext *context);
+gboolean       _ctk_style_context_check_region_name          (const gchar     *str);
 
-gboolean       _gtk_style_context_resolve_color              (GtkStyleContext    *context,
+gboolean       _ctk_style_context_resolve_color              (GtkStyleContext    *context,
                                                               GtkCssValue        *color,
                                                               GdkRGBA            *result);
-void           _gtk_style_context_get_cursor_color           (GtkStyleContext    *context,
+void           _ctk_style_context_get_cursor_color           (GtkStyleContext    *context,
                                                               GdkRGBA            *primary_color,
                                                               GdkRGBA            *secondary_color);
 
-void           _gtk_style_context_get_icon_extents           (GtkStyleContext    *context,
+void           _ctk_style_context_get_icon_extents           (GtkStyleContext    *context,
                                                               GdkRectangle       *extents,
                                                               gint                x,
                                                               gint                y,
                                                               gint                width,
                                                               gint                height);
 
-PangoAttrList *_gtk_style_context_get_pango_attributes       (GtkStyleContext *context);
+PangoAttrList *_ctk_style_context_get_pango_attributes       (GtkStyleContext *context);
 
 /* Accessibility support */
-AtkAttributeSet *_gtk_style_context_get_attributes           (AtkAttributeSet    *attributes,
+AtkAttributeSet *_ctk_style_context_get_attributes           (AtkAttributeSet    *attributes,
                                                               GtkStyleContext    *context,
                                                               GtkStateFlags       flags);
 

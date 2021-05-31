@@ -58,19 +58,19 @@ struct _GtkCssValue {
   }                      val;
 };
 
-static GtkCssValue *    gtk_css_win32_size_value_new (double            scale,
+static GtkCssValue *    ctk_css_win32_size_value_new (double            scale,
                                                       GtkWin32Theme    *theme,
                                                       GtkWin32SizeType  type);
 
 static void
-gtk_css_value_win32_size_free (GtkCssValue *value)
+ctk_css_value_win32_size_free (GtkCssValue *value)
 {
-  gtk_win32_theme_unref (value->theme);
+  ctk_win32_theme_unref (value->theme);
   g_slice_free (GtkCssValue, value);
 }
 
 static int
-gtk_css_value_win32_compute_size (const GtkCssValue *value)
+ctk_css_value_win32_compute_size (const GtkCssValue *value)
 {
   GtkBorder border;
   int size;
@@ -78,34 +78,34 @@ gtk_css_value_win32_compute_size (const GtkCssValue *value)
   switch (value->type)
     {
     case GTK_WIN32_SIZE:
-      size = gtk_win32_theme_get_size (value->theme, value->val.size.id);
+      size = ctk_win32_theme_get_size (value->theme, value->val.size.id);
       break;
 
     case GTK_WIN32_PART_WIDTH:
-      gtk_win32_theme_get_part_size (value->theme, value->val.part.part, value->val.part.state, &size, NULL);
+      ctk_win32_theme_get_part_size (value->theme, value->val.part.part, value->val.part.state, &size, NULL);
       break;
 
     case GTK_WIN32_PART_HEIGHT:
-      gtk_win32_theme_get_part_size (value->theme, value->val.part.part, value->val.part.state, NULL, &size);
+      ctk_win32_theme_get_part_size (value->theme, value->val.part.part, value->val.part.state, NULL, &size);
       break;
 
     case GTK_WIN32_PART_BORDER_TOP:
-      gtk_win32_theme_get_part_border (value->theme, value->val.part.part, value->val.part.state, &border);
+      ctk_win32_theme_get_part_border (value->theme, value->val.part.part, value->val.part.state, &border);
       size = border.top;
       break;
 
     case GTK_WIN32_PART_BORDER_RIGHT:
-      gtk_win32_theme_get_part_border (value->theme, value->val.part.part, value->val.part.state, &border);
+      ctk_win32_theme_get_part_border (value->theme, value->val.part.part, value->val.part.state, &border);
       size = border.right;
       break;
 
     case GTK_WIN32_PART_BORDER_BOTTOM:
-      gtk_win32_theme_get_part_border (value->theme, value->val.part.part, value->val.part.state, &border);
+      ctk_win32_theme_get_part_border (value->theme, value->val.part.part, value->val.part.state, &border);
       size = border.bottom;
       break;
 
     case GTK_WIN32_PART_BORDER_LEFT:
-      gtk_win32_theme_get_part_border (value->theme, value->val.part.part, value->val.part.state, &border);
+      ctk_win32_theme_get_part_border (value->theme, value->val.part.part, value->val.part.state, &border);
       size = border.left;
       break;
 
@@ -118,21 +118,21 @@ gtk_css_value_win32_compute_size (const GtkCssValue *value)
 }
 
 static GtkCssValue *
-gtk_css_value_win32_size_compute (GtkCssValue             *value,
+ctk_css_value_win32_size_compute (GtkCssValue             *value,
                                   guint                    property_id,
                                   GtkStyleProviderPrivate *provider,
                                   GtkCssStyle             *style,
                                   GtkCssStyle             *parent_style)
 {
-  return _gtk_css_number_value_new (value->scale * gtk_css_value_win32_compute_size (value), GTK_CSS_PX);
+  return _ctk_css_number_value_new (value->scale * ctk_css_value_win32_compute_size (value), GTK_CSS_PX);
 }
 
 static gboolean
-gtk_css_value_win32_size_equal (const GtkCssValue *value1,
+ctk_css_value_win32_size_equal (const GtkCssValue *value1,
                                 const GtkCssValue *value2)
 {
   if (value1->type != value2->type ||
-      !gtk_win32_theme_equal (value1->theme, value2->theme) )
+      !ctk_win32_theme_equal (value1->theme, value2->theme) )
     return FALSE;
 
   switch (value1->type)
@@ -152,7 +152,7 @@ gtk_css_value_win32_size_equal (const GtkCssValue *value1,
 }
 
 static void
-gtk_css_value_win32_size_print (const GtkCssValue *value,
+ctk_css_value_win32_size_print (const GtkCssValue *value,
                                 GString           *string)
 {
   if (value->scale != 1.0)
@@ -160,13 +160,13 @@ gtk_css_value_win32_size_print (const GtkCssValue *value,
       g_string_append_printf (string, "%g * ", value->scale);
     }
   g_string_append (string, css_value_names[value->type]);
-  gtk_win32_theme_print (value->theme, string);
+  ctk_win32_theme_print (value->theme, string);
 
   switch (value->type)
     {
     case GTK_WIN32_SIZE:
       {
-        const char *name = gtk_win32_get_sys_metric_name_for_id (value->val.size.id);
+        const char *name = ctk_win32_get_sys_metric_name_for_id (value->val.size.id);
         if (name)
           g_string_append (string, name);
         else
@@ -192,111 +192,111 @@ gtk_css_value_win32_size_print (const GtkCssValue *value,
 }
 
 static double
-gtk_css_value_win32_size_get (const GtkCssValue *value,
+ctk_css_value_win32_size_get (const GtkCssValue *value,
                               double             one_hundred_percent)
 {
-  return value->scale * gtk_css_value_win32_compute_size (value);
+  return value->scale * ctk_css_value_win32_compute_size (value);
 }
 
 static GtkCssDimension
-gtk_css_value_win32_size_get_dimension (const GtkCssValue *value)
+ctk_css_value_win32_size_get_dimension (const GtkCssValue *value)
 {
   return GTK_CSS_DIMENSION_LENGTH;
 }
 
 static gboolean
-gtk_css_value_win32_size_has_percent (const GtkCssValue *value)
+ctk_css_value_win32_size_has_percent (const GtkCssValue *value)
 {
   return FALSE;
 }
 
 static GtkCssValue *
-gtk_css_value_win32_size_multiply (const GtkCssValue *value,
+ctk_css_value_win32_size_multiply (const GtkCssValue *value,
                                    double             factor)
 {
   GtkCssValue *result;
 
-  result = gtk_css_win32_size_value_new (value->scale * factor, value->theme, value->type);
+  result = ctk_css_win32_size_value_new (value->scale * factor, value->theme, value->type);
   result->val = value->val;
 
   return result;
 }
 
 static GtkCssValue *
-gtk_css_value_win32_size_try_add (const GtkCssValue *value1,
+ctk_css_value_win32_size_try_add (const GtkCssValue *value1,
                                   const GtkCssValue *value2)
 {
   GtkCssValue *result;
 
-  if (!gtk_css_value_win32_size_equal (value1, value2))
+  if (!ctk_css_value_win32_size_equal (value1, value2))
     return NULL;
 
-  result = gtk_css_win32_size_value_new (value1->scale + value2->scale, value1->theme, value1->type);
+  result = ctk_css_win32_size_value_new (value1->scale + value2->scale, value1->theme, value1->type);
   result->val = value1->val;
 
   return result;
 }
 
 static gint
-gtk_css_value_win32_size_get_calc_term_order (const GtkCssValue *value)
+ctk_css_value_win32_size_get_calc_term_order (const GtkCssValue *value)
 {
   return 2000 + 100 * value->type;
 }
 
 static const GtkCssNumberValueClass GTK_CSS_VALUE_WIN32_SIZE = {
   {
-    gtk_css_value_win32_size_free,
-    gtk_css_value_win32_size_compute,
-    gtk_css_value_win32_size_equal,
-    gtk_css_number_value_transition,
-    gtk_css_value_win32_size_print
+    ctk_css_value_win32_size_free,
+    ctk_css_value_win32_size_compute,
+    ctk_css_value_win32_size_equal,
+    ctk_css_number_value_transition,
+    ctk_css_value_win32_size_print
   },
-  gtk_css_value_win32_size_get,
-  gtk_css_value_win32_size_get_dimension,
-  gtk_css_value_win32_size_has_percent,
-  gtk_css_value_win32_size_multiply,
-  gtk_css_value_win32_size_try_add,
-  gtk_css_value_win32_size_get_calc_term_order
+  ctk_css_value_win32_size_get,
+  ctk_css_value_win32_size_get_dimension,
+  ctk_css_value_win32_size_has_percent,
+  ctk_css_value_win32_size_multiply,
+  ctk_css_value_win32_size_try_add,
+  ctk_css_value_win32_size_get_calc_term_order
 };
 
 static GtkCssValue *
-gtk_css_win32_size_value_new (double            scale,
+ctk_css_win32_size_value_new (double            scale,
                               GtkWin32Theme    *theme,
                               GtkWin32SizeType  type)
 {
   GtkCssValue *result;
 
-  result = _gtk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_WIN32_SIZE.value_class);
+  result = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_WIN32_SIZE.value_class);
   result->scale = scale;
-  result->theme = gtk_win32_theme_ref (theme);
+  result->theme = ctk_win32_theme_ref (theme);
   result->type = type;
 
   return result;
 }
 
 static GtkCssValue *
-gtk_css_win32_size_value_parse_size (GtkCssValue *value,
+ctk_css_win32_size_value_parse_size (GtkCssValue *value,
                                      GtkCssParser *parser)
 {
   char *name;
 
-  name = _gtk_css_parser_try_ident (parser, TRUE);
+  name = _ctk_css_parser_try_ident (parser, TRUE);
   if (name)
     {
-      value->val.size.id = gtk_win32_get_sys_metric_id_for_name (name);
+      value->val.size.id = ctk_win32_get_sys_metric_id_for_name (name);
       if (value->val.size.id == -1)
         {
-          _gtk_css_parser_error (parser, "'%s' is not a name for a win32 metric.", name);
-          _gtk_css_value_unref (value);
+          _ctk_css_parser_error (parser, "'%s' is not a name for a win32 metric.", name);
+          _ctk_css_value_unref (value);
           g_free (name);
           return NULL;
         }
       g_free (name);
     }
-  else if (!_gtk_css_parser_try_int (parser, &value->val.size.id))
+  else if (!_ctk_css_parser_try_int (parser, &value->val.size.id))
     {
-      _gtk_css_value_unref (value);
-      _gtk_css_parser_error (parser, "Expected an integer ID");
+      _ctk_css_value_unref (value);
+      _ctk_css_parser_error (parser, "Expected an integer ID");
       return NULL;
     }
 
@@ -304,27 +304,27 @@ gtk_css_win32_size_value_parse_size (GtkCssValue *value,
 }
 
 static GtkCssValue *
-gtk_css_win32_size_value_parse_part_size (GtkCssValue *value,
+ctk_css_win32_size_value_parse_part_size (GtkCssValue *value,
                                           GtkCssParser *parser)
 {
-  if (!_gtk_css_parser_try_int (parser, &value->val.part.part))
+  if (!_ctk_css_parser_try_int (parser, &value->val.part.part))
     {
-      _gtk_css_value_unref (value);
-      _gtk_css_parser_error (parser, "Expected an integer part ID");
+      _ctk_css_value_unref (value);
+      _ctk_css_parser_error (parser, "Expected an integer part ID");
       return NULL;
     }
 
-  if (! _gtk_css_parser_try (parser, ",", TRUE))
+  if (! _ctk_css_parser_try (parser, ",", TRUE))
     {
-      _gtk_css_value_unref (value);
-      _gtk_css_parser_error (parser, "Expected ','");
+      _ctk_css_value_unref (value);
+      _ctk_css_parser_error (parser, "Expected ','");
       return NULL;
     }
 
-  if (!_gtk_css_parser_try_int (parser, &value->val.part.state))
+  if (!_ctk_css_parser_try_int (parser, &value->val.part.state))
     {
-      _gtk_css_value_unref (value);
-      _gtk_css_parser_error (parser, "Expected an integer state ID");
+      _ctk_css_value_unref (value);
+      _ctk_css_parser_error (parser, "Expected an integer state ID");
       return NULL;
     }
 
@@ -332,7 +332,7 @@ gtk_css_win32_size_value_parse_part_size (GtkCssValue *value,
 }
 
 GtkCssValue *
-gtk_css_win32_size_value_parse (GtkCssParser           *parser,
+ctk_css_win32_size_value_parse (GtkCssParser           *parser,
                                 GtkCssNumberParseFlags  flags)
 {
   GtkWin32Theme *theme;
@@ -341,34 +341,34 @@ gtk_css_win32_size_value_parse (GtkCssParser           *parser,
 
   for (type = 0; type < G_N_ELEMENTS(css_value_names); type++)
     {
-      if (_gtk_css_parser_try (parser, css_value_names[type], TRUE))
+      if (_ctk_css_parser_try (parser, css_value_names[type], TRUE))
         break;
     }
 
   if (type >= G_N_ELEMENTS(css_value_names))
     {
-      _gtk_css_parser_error (parser, "Not a win32 size value");
+      _ctk_css_parser_error (parser, "Not a win32 size value");
       return NULL;
     }
 
-  theme = gtk_win32_theme_parse (parser);
+  theme = ctk_win32_theme_parse (parser);
   if (theme == NULL)
     return NULL;
 
-  result = gtk_css_win32_size_value_new (1.0, theme, type);
-  gtk_win32_theme_unref (theme);
+  result = ctk_css_win32_size_value_new (1.0, theme, type);
+  ctk_win32_theme_unref (theme);
 
-  if (! _gtk_css_parser_try (parser, ",", TRUE))
+  if (! _ctk_css_parser_try (parser, ",", TRUE))
     {
-      _gtk_css_value_unref (result);
-      _gtk_css_parser_error (parser, "Expected ','");
+      _ctk_css_value_unref (result);
+      _ctk_css_parser_error (parser, "Expected ','");
       return NULL;
     }
 
   switch (result->type)
     {
     case GTK_WIN32_SIZE:
-      result = gtk_css_win32_size_value_parse_size (result, parser);
+      result = ctk_css_win32_size_value_parse_size (result, parser);
       break;
 
     case GTK_WIN32_PART_WIDTH:
@@ -377,12 +377,12 @@ gtk_css_win32_size_value_parse (GtkCssParser           *parser,
     case GTK_WIN32_PART_BORDER_RIGHT:
     case GTK_WIN32_PART_BORDER_BOTTOM:
     case GTK_WIN32_PART_BORDER_LEFT:
-      result = gtk_css_win32_size_value_parse_part_size (result, parser);
+      result = ctk_css_win32_size_value_parse_part_size (result, parser);
       break;
 
     default:
       g_assert_not_reached ();
-      _gtk_css_value_unref (result);
+      _ctk_css_value_unref (result);
       result = NULL;
       break;
     }
@@ -390,10 +390,10 @@ gtk_css_win32_size_value_parse (GtkCssParser           *parser,
   if (result == NULL)
     return NULL;
 
-  if (!_gtk_css_parser_try (parser, ")", TRUE))
+  if (!_ctk_css_parser_try (parser, ")", TRUE))
     {
-      _gtk_css_value_unref (result);
-      _gtk_css_parser_error (parser, "Expected ')'");
+      _ctk_css_value_unref (result);
+      _ctk_css_parser_error (parser, "Expected ')'");
       return NULL;
     }
 

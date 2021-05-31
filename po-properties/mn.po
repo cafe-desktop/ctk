@@ -282,7 +282,7 @@ msgstr ""
 #: gtk/gtkaboutdialog.c:487
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 
 # gtk/gtksettings.c:215
@@ -2707,7 +2707,7 @@ msgstr "Өсөх алхам"
 #, fuzzy
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr "Процессийн индикаторын өсөлтийн үед нэмэгдэх хувь"
 
 # gtk/gtkimage.c:129
@@ -5097,10 +5097,10 @@ msgstr "Утга"
 
 #: gtk/gtkradioaction.c:119
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"Энэ үйлдэл бүлгийнхээ идэвхтэй үйлдэл бол gtk_radio_action_get_current_value"
+"Энэ үйлдэл бүлгийнхээ идэвхтэй үйлдэл бол ctk_radio_action_get_current_value"
 "() -с буцаах утга."
 
 #: gtk/gtkradioaction.c:135 gtk/gtkradiobutton.c:160
@@ -7858,8 +7858,8 @@ msgid "No show all"
 msgstr "Бүгдийн харуулагүй"
 
 #: gtk/gtkwidget.c:841
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "gtk_widget_show_all() энэ вижетэд хамаарахгүй эсэх"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "ctk_widget_show_all() энэ вижетэд хамаарахгүй эсэх"
 
 # gtk/gtkwidget.c:452
 #: gtk/gtkwidget.c:864

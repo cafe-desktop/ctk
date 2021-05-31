@@ -28,7 +28,7 @@
 G_BEGIN_DECLS
 
 
-#define GTK_TYPE_CELL_RENDERER_TOGGLE			(gtk_cell_renderer_toggle_get_type ())
+#define GTK_TYPE_CELL_RENDERER_TOGGLE			(ctk_cell_renderer_toggle_get_type ())
 #define GTK_CELL_RENDERER_TOGGLE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_CELL_RENDERER_TOGGLE, GtkCellRendererToggle))
 #define GTK_CELL_RENDERER_TOGGLE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_CELL_RENDERER_TOGGLE, GtkCellRendererToggleClass))
 #define GTK_IS_CELL_RENDERER_TOGGLE(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_CELL_RENDERER_TOGGLE))
@@ -55,33 +55,33 @@ struct _GtkCellRendererToggleClass
 		    const gchar                 *path);
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_ALL
-GType            gtk_cell_renderer_toggle_get_type       (void) G_GNUC_CONST;
+GType            ctk_cell_renderer_toggle_get_type       (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkCellRenderer *gtk_cell_renderer_toggle_new            (void);
+GtkCellRenderer *ctk_cell_renderer_toggle_new            (void);
 
 GDK_AVAILABLE_IN_ALL
-gboolean         gtk_cell_renderer_toggle_get_radio      (GtkCellRendererToggle *toggle);
+gboolean         ctk_cell_renderer_toggle_get_radio      (GtkCellRendererToggle *toggle);
 GDK_AVAILABLE_IN_ALL
-void             gtk_cell_renderer_toggle_set_radio      (GtkCellRendererToggle *toggle,
+void             ctk_cell_renderer_toggle_set_radio      (GtkCellRendererToggle *toggle,
                                                           gboolean               radio);
 
 GDK_AVAILABLE_IN_ALL
-gboolean        gtk_cell_renderer_toggle_get_active      (GtkCellRendererToggle *toggle);
+gboolean        ctk_cell_renderer_toggle_get_active      (GtkCellRendererToggle *toggle);
 GDK_AVAILABLE_IN_ALL
-void            gtk_cell_renderer_toggle_set_active      (GtkCellRendererToggle *toggle,
+void            ctk_cell_renderer_toggle_set_active      (GtkCellRendererToggle *toggle,
                                                           gboolean               setting);
 
 GDK_AVAILABLE_IN_ALL
-gboolean        gtk_cell_renderer_toggle_get_activatable (GtkCellRendererToggle *toggle);
+gboolean        ctk_cell_renderer_toggle_get_activatable (GtkCellRendererToggle *toggle);
 GDK_AVAILABLE_IN_ALL
-void            gtk_cell_renderer_toggle_set_activatable (GtkCellRendererToggle *toggle,
+void            ctk_cell_renderer_toggle_set_activatable (GtkCellRendererToggle *toggle,
                                                           gboolean               setting);
 
 

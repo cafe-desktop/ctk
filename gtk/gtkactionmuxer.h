@@ -24,7 +24,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ACTION_MUXER                               (gtk_action_muxer_get_type ())
+#define GTK_TYPE_ACTION_MUXER                               (ctk_action_muxer_get_type ())
 #define GTK_ACTION_MUXER(inst)                              (G_TYPE_CHECK_INSTANCE_CAST ((inst),                     \
                                                              GTK_TYPE_ACTION_MUXER, GtkActionMuxer))
 #define GTK_IS_ACTION_MUXER(inst)                           (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                     \
@@ -32,36 +32,36 @@ G_BEGIN_DECLS
 
 typedef struct _GtkActionMuxer                              GtkActionMuxer;
 
-GType                   gtk_action_muxer_get_type                       (void);
-GtkActionMuxer *        gtk_action_muxer_new                            (void);
+GType                   ctk_action_muxer_get_type                       (void);
+GtkActionMuxer *        ctk_action_muxer_new                            (void);
 
-void                    gtk_action_muxer_insert                         (GtkActionMuxer *muxer,
+void                    ctk_action_muxer_insert                         (GtkActionMuxer *muxer,
                                                                          const gchar    *prefix,
                                                                          GActionGroup   *action_group);
 
-void                    gtk_action_muxer_remove                         (GtkActionMuxer *muxer,
+void                    ctk_action_muxer_remove                         (GtkActionMuxer *muxer,
                                                                          const gchar    *prefix);
-const gchar **          gtk_action_muxer_list_prefixes                  (GtkActionMuxer *muxer);
-GActionGroup *          gtk_action_muxer_lookup                         (GtkActionMuxer *muxer,
+const gchar **          ctk_action_muxer_list_prefixes                  (GtkActionMuxer *muxer);
+GActionGroup *          ctk_action_muxer_lookup                         (GtkActionMuxer *muxer,
                                                                          const gchar    *prefix);
-GtkActionMuxer *        gtk_action_muxer_get_parent                     (GtkActionMuxer *muxer);
+GtkActionMuxer *        ctk_action_muxer_get_parent                     (GtkActionMuxer *muxer);
 
-void                    gtk_action_muxer_set_parent                     (GtkActionMuxer *muxer,
+void                    ctk_action_muxer_set_parent                     (GtkActionMuxer *muxer,
                                                                          GtkActionMuxer *parent);
 
-void                    gtk_action_muxer_set_primary_accel              (GtkActionMuxer *muxer,
+void                    ctk_action_muxer_set_primary_accel              (GtkActionMuxer *muxer,
                                                                          const gchar    *action_and_target,
                                                                          const gchar    *primary_accel);
 
-const gchar *           gtk_action_muxer_get_primary_accel              (GtkActionMuxer *muxer,
+const gchar *           ctk_action_muxer_get_primary_accel              (GtkActionMuxer *muxer,
                                                                          const gchar    *action_and_target);
 
 /* No better place for these... */
-gchar *                 gtk_print_action_and_target                     (const gchar    *action_namespace,
+gchar *                 ctk_print_action_and_target                     (const gchar    *action_namespace,
                                                                          const gchar    *action_name,
                                                                          GVariant       *target);
 
-gchar *                 gtk_normalise_detailed_action_name              (const gchar *detailed_action_name);
+gchar *                 ctk_normalise_detailed_action_name              (const gchar *detailed_action_name);
 
 G_END_DECLS
 

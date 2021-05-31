@@ -23,45 +23,45 @@
 
 #include "gtkstyleproviderprivate.h"
 
-G_DEFINE_TYPE (GtkCssImageScaled, _gtk_css_image_scaled, GTK_TYPE_CSS_IMAGE)
+G_DEFINE_TYPE (GtkCssImageScaled, _ctk_css_image_scaled, GTK_TYPE_CSS_IMAGE)
 
 static int
-gtk_css_image_scaled_get_width (GtkCssImage *image)
+ctk_css_image_scaled_get_width (GtkCssImage *image)
 {
   GtkCssImageScaled *scaled = GTK_CSS_IMAGE_SCALED (image);
 
-  return _gtk_css_image_get_width (scaled->images[scaled->scale - 1]) / scaled->scale;
+  return _ctk_css_image_get_width (scaled->images[scaled->scale - 1]) / scaled->scale;
 }
 
 static int
-gtk_css_image_scaled_get_height (GtkCssImage *image)
+ctk_css_image_scaled_get_height (GtkCssImage *image)
 {
   GtkCssImageScaled *scaled = GTK_CSS_IMAGE_SCALED (image);
 
-  return _gtk_css_image_get_height (scaled->images[scaled->scale - 1]) / scaled->scale;
+  return _ctk_css_image_get_height (scaled->images[scaled->scale - 1]) / scaled->scale;
 }
 
 static double
-gtk_css_image_scaled_get_aspect_ratio (GtkCssImage *image)
+ctk_css_image_scaled_get_aspect_ratio (GtkCssImage *image)
 {
   GtkCssImageScaled *scaled = GTK_CSS_IMAGE_SCALED (image);
 
-  return _gtk_css_image_get_aspect_ratio (scaled->images[scaled->scale - 1]);
+  return _ctk_css_image_get_aspect_ratio (scaled->images[scaled->scale - 1]);
 }
 
 static void
-gtk_css_image_scaled_draw (GtkCssImage *image,
+ctk_css_image_scaled_draw (GtkCssImage *image,
 			   cairo_t     *cr,
 			   double       width,
 			   double       height)
 {
   GtkCssImageScaled *scaled = GTK_CSS_IMAGE_SCALED (image);
 
-  _gtk_css_image_draw (scaled->images[scaled->scale - 1], cr, width, height);
+  _ctk_css_image_draw (scaled->images[scaled->scale - 1], cr, width, height);
 }
 
 static void
-gtk_css_image_scaled_print (GtkCssImage *image,
+ctk_css_image_scaled_print (GtkCssImage *image,
                              GString     *string)
 {
   GtkCssImageScaled *scaled = GTK_CSS_IMAGE_SCALED (image);
@@ -70,7 +70,7 @@ gtk_css_image_scaled_print (GtkCssImage *image,
   g_string_append (string, "-gtk-scaled(");
   for (i = 0; i < scaled->n_images; i++)
     {
-      _gtk_css_image_print (scaled->images[i], string);
+      _ctk_css_image_print (scaled->images[i], string);
       if (i != scaled->n_images - 1)
 	g_string_append (string, ",");
     }
@@ -78,7 +78,7 @@ gtk_css_image_scaled_print (GtkCssImage *image,
 }
 
 static void
-gtk_css_image_scaled_dispose (GObject *object)
+ctk_css_image_scaled_dispose (GObject *object)
 {
   GtkCssImageScaled *scaled = GTK_CSS_IMAGE_SCALED (object);
   int i;
@@ -88,12 +88,12 @@ gtk_css_image_scaled_dispose (GObject *object)
   g_free (scaled->images);
   scaled->images = NULL;
 
-  G_OBJECT_CLASS (_gtk_css_image_scaled_parent_class)->dispose (object);
+  G_OBJECT_CLASS (_ctk_css_image_scaled_parent_class)->dispose (object);
 }
 
 
 static GtkCssImage *
-gtk_css_image_scaled_compute (GtkCssImage             *image,
+ctk_css_image_scaled_compute (GtkCssImage             *image,
 			      guint                    property_id,
 			      GtkStyleProviderPrivate *provider,
 			      GtkCssStyle             *style,
@@ -103,21 +103,21 @@ gtk_css_image_scaled_compute (GtkCssImage             *image,
   GtkCssImageScaled *copy;
   int i, scale;
 
-  scale = _gtk_style_provider_private_get_scale (provider);
+  scale = _ctk_style_provider_private_get_scale (provider);
   scale = MAX(MIN (scale, scaled->n_images), 1);
 
   if (scaled->scale == scale)
     return GTK_CSS_IMAGE (g_object_ref (scaled));
   else
     {
-      copy = g_object_new (_gtk_css_image_scaled_get_type (), NULL);
+      copy = g_object_new (_ctk_css_image_scaled_get_type (), NULL);
       copy->scale = scale;
       copy->n_images = scaled->n_images;
       copy->images = g_new (GtkCssImage *, scaled->n_images);
       for (i = 0; i < scaled->n_images; i++)
         {
           if (i == scale - 1)
-            copy->images[i] = _gtk_css_image_compute (scaled->images[i],
+            copy->images[i] = _ctk_css_image_compute (scaled->images[i],
                                                       property_id,
                                                       provider,
                                                       style,
@@ -131,22 +131,22 @@ gtk_css_image_scaled_compute (GtkCssImage             *image,
 }
 
 static gboolean
-gtk_css_image_scaled_parse (GtkCssImage  *image,
+ctk_css_image_scaled_parse (GtkCssImage  *image,
 			    GtkCssParser *parser)
 {
   GtkCssImageScaled *scaled = GTK_CSS_IMAGE_SCALED (image);
   GPtrArray *images;
   GtkCssImage *child;
 
-  if (!_gtk_css_parser_try (parser, "-gtk-scaled", TRUE))
+  if (!_ctk_css_parser_try (parser, "-gtk-scaled", TRUE))
     {
-      _gtk_css_parser_error (parser, "'-gtk-scaled'");
+      _ctk_css_parser_error (parser, "'-gtk-scaled'");
       return FALSE;
     }
 
-  if (!_gtk_css_parser_try (parser, "(", TRUE))
+  if (!_ctk_css_parser_try (parser, "(", TRUE))
     {
-      _gtk_css_parser_error (parser,
+      _ctk_css_parser_error (parser,
                              "Expected '(' after '-gtk-scaled'");
       return FALSE;
     }
@@ -155,7 +155,7 @@ gtk_css_image_scaled_parse (GtkCssImage  *image,
 
   do
     {
-      child = _gtk_css_image_new_parse (parser);
+      child = _ctk_css_image_new_parse (parser);
       if (child == NULL)
 	{
 	  g_ptr_array_free (images, TRUE);
@@ -164,12 +164,12 @@ gtk_css_image_scaled_parse (GtkCssImage  *image,
       g_ptr_array_add (images, child);
       
     }
-  while ( _gtk_css_parser_try (parser, ",", TRUE));
+  while ( _ctk_css_parser_try (parser, ",", TRUE));
 
-  if (!_gtk_css_parser_try (parser, ")", TRUE))
+  if (!_ctk_css_parser_try (parser, ")", TRUE))
     {
       g_ptr_array_free (images, TRUE);
-      _gtk_css_parser_error (parser,
+      _ctk_css_parser_error (parser,
                              "Expected ')' at end of '-gtk-scaled'");
       return FALSE;
     }
@@ -181,24 +181,24 @@ gtk_css_image_scaled_parse (GtkCssImage  *image,
 }
 
 static void
-_gtk_css_image_scaled_class_init (GtkCssImageScaledClass *klass)
+_ctk_css_image_scaled_class_init (GtkCssImageScaledClass *klass)
 {
   GtkCssImageClass *image_class = GTK_CSS_IMAGE_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  image_class->get_width = gtk_css_image_scaled_get_width;
-  image_class->get_height = gtk_css_image_scaled_get_height;
-  image_class->get_aspect_ratio = gtk_css_image_scaled_get_aspect_ratio;
-  image_class->draw = gtk_css_image_scaled_draw;
-  image_class->parse = gtk_css_image_scaled_parse;
-  image_class->compute = gtk_css_image_scaled_compute;
-  image_class->print = gtk_css_image_scaled_print;
+  image_class->get_width = ctk_css_image_scaled_get_width;
+  image_class->get_height = ctk_css_image_scaled_get_height;
+  image_class->get_aspect_ratio = ctk_css_image_scaled_get_aspect_ratio;
+  image_class->draw = ctk_css_image_scaled_draw;
+  image_class->parse = ctk_css_image_scaled_parse;
+  image_class->compute = ctk_css_image_scaled_compute;
+  image_class->print = ctk_css_image_scaled_print;
 
-  object_class->dispose = gtk_css_image_scaled_dispose;
+  object_class->dispose = ctk_css_image_scaled_dispose;
 }
 
 static void
-_gtk_css_image_scaled_init (GtkCssImageScaled *image_scaled)
+_ctk_css_image_scaled_init (GtkCssImageScaled *image_scaled)
 {
   image_scaled->scale = 1;
 }

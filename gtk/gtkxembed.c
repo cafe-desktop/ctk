@@ -39,13 +39,13 @@ static GSList *current_messages;
 
 
 /**
- * _gtk_xembed_push_message:
+ * _ctk_xembed_push_message:
  * @xevent: a XEvent
  * 
  * Adds a client message to the stack of current XEMBED events.
  **/
 void
-_gtk_xembed_push_message (XEvent *xevent)
+_ctk_xembed_push_message (XEvent *xevent)
 {
   GtkXEmbedMessage *message = g_slice_new (GtkXEmbedMessage);
   
@@ -59,12 +59,12 @@ _gtk_xembed_push_message (XEvent *xevent)
 }
 
 /**
- * _gtk_xembed_pop_message:
+ * _ctk_xembed_pop_message:
  * 
- * Removes an event added with _gtk_xembed_push_message()
+ * Removes an event added with _ctk_xembed_push_message()
  **/
 void
-_gtk_xembed_pop_message (void)
+_ctk_xembed_pop_message (void)
 {
   GtkXEmbedMessage *message = current_messages->data;
   current_messages = g_slist_delete_link (current_messages, current_messages);
@@ -72,13 +72,13 @@ _gtk_xembed_pop_message (void)
 }
 
 /**
- * _gtk_xembed_set_focus_wrapped:
+ * _ctk_xembed_set_focus_wrapped:
  * 
  * Sets a flag indicating that the current focus sequence wrapped
  * around to the beginning of the ultimate toplevel.
  **/
 void
-_gtk_xembed_set_focus_wrapped (void)
+_ctk_xembed_set_focus_wrapped (void)
 {
   GtkXEmbedMessage *message;
   
@@ -90,7 +90,7 @@ _gtk_xembed_set_focus_wrapped (void)
 }
 
 /**
- * _gtk_xembed_get_focus_wrapped:
+ * _ctk_xembed_get_focus_wrapped:
  * 
  * Gets whether the current focus sequence has wrapped around
  * to the beginning of the ultimate toplevel.
@@ -98,7 +98,7 @@ _gtk_xembed_set_focus_wrapped (void)
  * Returns: %TRUE if the focus sequence has wrapped around.
  **/
 gboolean
-_gtk_xembed_get_focus_wrapped (void)
+_ctk_xembed_get_focus_wrapped (void)
 {
   GtkXEmbedMessage *message;
   
@@ -109,7 +109,7 @@ _gtk_xembed_get_focus_wrapped (void)
 }
 
 static guint32
-gtk_xembed_get_time (void)
+ctk_xembed_get_time (void)
 {
   if (current_messages)
     {
@@ -117,11 +117,11 @@ gtk_xembed_get_time (void)
       return message->time;
     }
   else
-    return gtk_get_current_event_time ();
+    return ctk_get_current_event_time ();
 }
 
 /**
- * _gtk_xembed_send_message:
+ * _ctk_xembed_send_message:
  * @recipient: (allow-none): window to which to send the window, or %NULL
  *             in which case nothing will be sent
  * @message:   type of message
@@ -132,7 +132,7 @@ gtk_xembed_get_time (void)
  * Sends a generic XEMBED message to a particular window.
  **/
 void
-_gtk_xembed_send_message (GdkWindow        *recipient,
+_ctk_xembed_send_message (GdkWindow        *recipient,
 			  XEmbedMessageType message,
 			  glong             detail,
 			  glong             data1,
@@ -148,14 +148,14 @@ _gtk_xembed_send_message (GdkWindow        *recipient,
 
   display = gdk_window_get_display (recipient);
   GTK_NOTE (PLUGSOCKET,
-	    g_message ("Sending %s", _gtk_xembed_message_name (message)));
+	    g_message ("Sending %s", _ctk_xembed_message_name (message)));
 
   memset (&xclient, 0, sizeof (xclient));
   xclient.window = GDK_WINDOW_XID (recipient);
   xclient.type = ClientMessage;
   xclient.message_type = gdk_x11_get_xatom_by_name_for_display (display, "_XEMBED");
   xclient.format = 32;
-  xclient.data.l[0] = gtk_xembed_get_time ();
+  xclient.data.l[0] = ctk_xembed_get_time ();
   xclient.data.l[1] = message;
   xclient.data.l[2] = detail;
   xclient.data.l[3] = data1;
@@ -169,7 +169,7 @@ _gtk_xembed_send_message (GdkWindow        *recipient,
 }
 
 /**
- * _gtk_xembed_send_focus_message:
+ * _ctk_xembed_send_focus_message:
  * @recipient: (allow-none): window to which to send the window, or %NULL
  *             in which case nothing will be sent
  * @message_type:   type of message
@@ -180,7 +180,7 @@ _gtk_xembed_send_message (GdkWindow        *recipient,
  * will be correctly filled in.
  **/
 void
-_gtk_xembed_send_focus_message (GdkWindow        *recipient,
+_ctk_xembed_send_focus_message (GdkWindow        *recipient,
 				XEmbedMessageType message_type,
 				glong             detail)
 {
@@ -209,11 +209,11 @@ _gtk_xembed_send_focus_message (GdkWindow        *recipient,
 	}
     }
 
-  _gtk_xembed_send_message (recipient, message_type, detail, flags, 0);
+  _ctk_xembed_send_message (recipient, message_type, detail, flags, 0);
 }
 
 const char *
-_gtk_xembed_message_name (XEmbedMessageType message)
+_ctk_xembed_message_name (XEmbedMessageType message)
 {
   static char unk[24];
   

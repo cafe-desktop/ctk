@@ -28,25 +28,25 @@ spin_hpadding_cb (GtkSpinButton *spin, gpointer user_data)
   GtkStyleContext *context;
   gchar *data;
 
-  context = gtk_widget_get_style_context (frame);
+  context = ctk_widget_get_style_context (frame);
   provider = g_object_get_data (G_OBJECT (frame), "provider");
   if (provider == NULL)
     {
-      provider = gtk_css_provider_new ();
+      provider = ctk_css_provider_new ();
       g_object_set_data (G_OBJECT (frame), "provider", provider);
-      gtk_style_context_add_provider (context,
+      ctk_style_context_add_provider (context,
                                       GTK_STYLE_PROVIDER (provider),
                                       GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
     }
 
-  hpadding = (gint)gtk_spin_button_get_value (spin);
+  hpadding = (gint)ctk_spin_button_get_value (spin);
   data = g_strdup_printf ("frame > border { padding: %dpx %dpx }",
                           vpadding, hpadding);
 
-  gtk_css_provider_load_from_data (provider, data, -1, NULL);
+  ctk_css_provider_load_from_data (provider, data, -1, NULL);
   g_free (data);
 
-  gtk_widget_queue_resize (frame);
+  ctk_widget_queue_resize (frame);
 }
 
 static void
@@ -57,25 +57,25 @@ spin_vpadding_cb (GtkSpinButton *spin, gpointer user_data)
   GtkStyleContext *context;
   gchar *data;
 
-  context = gtk_widget_get_style_context (frame);
+  context = ctk_widget_get_style_context (frame);
   provider = g_object_get_data (G_OBJECT (frame), "provider");
   if (provider == NULL)
     {
-      provider = gtk_css_provider_new ();
+      provider = ctk_css_provider_new ();
       g_object_set_data (G_OBJECT (frame), "provider", provider);
-      gtk_style_context_add_provider (context,
+      ctk_style_context_add_provider (context,
                                       GTK_STYLE_PROVIDER (provider),
                                       GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
     }
 
-  vpadding = (gint)gtk_spin_button_get_value (spin);
+  vpadding = (gint)ctk_spin_button_get_value (spin);
   data = g_strdup_printf ("frame > border { padding: %dpx %dpx }",
                           vpadding, hpadding);
 
-  gtk_css_provider_load_from_data (provider, data, -1, NULL);
+  ctk_css_provider_load_from_data (provider, data, -1, NULL);
   g_free (data);
 
-  gtk_widget_queue_resize (frame);
+  ctk_widget_queue_resize (frame);
 }
 
 /* Function to normalize rounding errors in FP arithmetic to
@@ -100,9 +100,9 @@ spin_xalign_cb (GtkSpinButton *spin, GtkFrame *frame)
   gdouble xalign;
   gfloat yalign;
 
-  xalign = double_normalize (gtk_spin_button_get_value (spin));
-  gtk_frame_get_label_align (frame, NULL, &yalign);
-  gtk_frame_set_label_align (frame, xalign, yalign);
+  xalign = double_normalize (ctk_spin_button_get_value (spin));
+  ctk_frame_get_label_align (frame, NULL, &yalign);
+  ctk_frame_set_label_align (frame, xalign, yalign);
 }
 
 static void
@@ -111,18 +111,18 @@ spin_yalign_cb (GtkSpinButton *spin, GtkFrame *frame)
   gdouble yalign;
   gfloat xalign;
 
-  yalign = double_normalize (gtk_spin_button_get_value (spin));
-  gtk_frame_get_label_align (frame, &xalign, NULL);
-  gtk_frame_set_label_align (frame, xalign, yalign);
+  yalign = double_normalize (ctk_spin_button_get_value (spin));
+  ctk_frame_get_label_align (frame, &xalign, NULL);
+  ctk_frame_set_label_align (frame, xalign, yalign);
 }
 
 static void
 draw_border_cb (GtkToggleButton *toggle_button, GtkFrame *frame)
 {
-  GtkShadowType shadow_type = gtk_toggle_button_get_active (toggle_button)
+  GtkShadowType shadow_type = ctk_toggle_button_get_active (toggle_button)
                               ? GTK_SHADOW_IN : GTK_SHADOW_NONE;
 
-  gtk_frame_set_shadow_type (frame, shadow_type);
+  ctk_frame_set_shadow_type (frame, shadow_type);
 }
 
 int main (int argc, char **argv)
@@ -134,77 +134,77 @@ int main (int argc, char **argv)
   gfloat xalign, yalign;
   gboolean draw_border;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_container_set_border_width (GTK_CONTAINER (window), 5);
-  gtk_window_set_default_size (GTK_WINDOW (window), 300, 300);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_container_set_border_width (GTK_CONTAINER (window), 5);
+  ctk_window_set_default_size (GTK_WINDOW (window), 300, 300);
 
-  g_signal_connect (window, "delete-event", gtk_main_quit, NULL);
+  g_signal_connect (window, "delete-event", ctk_main_quit, NULL);
 
-  vbox = GTK_BOX (gtk_box_new (GTK_ORIENTATION_VERTICAL, 5));
+  vbox = GTK_BOX (ctk_box_new (GTK_ORIENTATION_VERTICAL, 5));
   g_object_set (vbox, "margin", 12, NULL);
-  gtk_container_add (GTK_CONTAINER (window), GTK_WIDGET (vbox));
+  ctk_container_add (GTK_CONTAINER (window), GTK_WIDGET (vbox));
 
-  frame = GTK_FRAME (gtk_frame_new ("Test GtkFrame"));
-  gtk_box_pack_start (vbox, GTK_WIDGET (frame), TRUE, TRUE, 0);
+  frame = GTK_FRAME (ctk_frame_new ("Test GtkFrame"));
+  ctk_box_pack_start (vbox, GTK_WIDGET (frame), TRUE, TRUE, 0);
 
-  widget = gtk_button_new_with_label ("Hello!");
-  gtk_container_add (GTK_CONTAINER (frame), widget);
+  widget = ctk_button_new_with_label ("Hello!");
+  ctk_container_add (GTK_CONTAINER (frame), widget);
 
-  grid = GTK_GRID (gtk_grid_new ());
-  gtk_grid_set_row_spacing (grid, 12);
-  gtk_grid_set_column_spacing (grid, 6);
-  gtk_box_pack_start (vbox, GTK_WIDGET (grid), FALSE, FALSE, 0);
+  grid = GTK_GRID (ctk_grid_new ());
+  ctk_grid_set_row_spacing (grid, 12);
+  ctk_grid_set_column_spacing (grid, 6);
+  ctk_box_pack_start (vbox, GTK_WIDGET (grid), FALSE, FALSE, 0);
 
-  gtk_frame_get_label_align (frame, &xalign, &yalign);
+  ctk_frame_get_label_align (frame, &xalign, &yalign);
 
   /* Spin to control :label-xalign */
-  widget = gtk_label_new ("label xalign:");
-  gtk_grid_attach (grid, widget, 0, 0, 1, 1);
+  widget = ctk_label_new ("label xalign:");
+  ctk_grid_attach (grid, widget, 0, 0, 1, 1);
 
-  widget = gtk_spin_button_new_with_range (0.0, 1.0, 0.1);
-  gtk_spin_button_set_value (GTK_SPIN_BUTTON (widget), xalign);
+  widget = ctk_spin_button_new_with_range (0.0, 1.0, 0.1);
+  ctk_spin_button_set_value (GTK_SPIN_BUTTON (widget), xalign);
   g_signal_connect (widget, "value-changed", G_CALLBACK (spin_xalign_cb), frame);
-  gtk_grid_attach (grid, widget, 1, 0, 1, 1);
+  ctk_grid_attach (grid, widget, 1, 0, 1, 1);
 
   /* Spin to control :label-yalign */
-  widget = gtk_label_new ("label yalign:");
-  gtk_grid_attach (grid, widget, 0, 1, 1, 1);
+  widget = ctk_label_new ("label yalign:");
+  ctk_grid_attach (grid, widget, 0, 1, 1, 1);
 
-  widget = gtk_spin_button_new_with_range (0.0, 1.0, 0.1);
-  gtk_spin_button_set_value (GTK_SPIN_BUTTON (widget), yalign);
+  widget = ctk_spin_button_new_with_range (0.0, 1.0, 0.1);
+  ctk_spin_button_set_value (GTK_SPIN_BUTTON (widget), yalign);
   g_signal_connect (widget, "value-changed", G_CALLBACK (spin_yalign_cb), frame);
-  gtk_grid_attach (grid, widget, 1, 1, 1, 1);
+  ctk_grid_attach (grid, widget, 1, 1, 1, 1);
 
   /* Spin to control vertical padding */
-  widget = gtk_label_new ("vertical padding:");
-  gtk_grid_attach (grid, widget, 0, 2, 1, 1);
+  widget = ctk_label_new ("vertical padding:");
+  ctk_grid_attach (grid, widget, 0, 2, 1, 1);
 
-  widget = gtk_spin_button_new_with_range (0, 250, 1);
+  widget = ctk_spin_button_new_with_range (0, 250, 1);
   g_signal_connect (widget, "value-changed", G_CALLBACK (spin_vpadding_cb), frame);
-  gtk_spin_button_set_value (GTK_SPIN_BUTTON (widget), vpadding);
-  gtk_grid_attach (grid, widget, 1, 2, 1, 1);
+  ctk_spin_button_set_value (GTK_SPIN_BUTTON (widget), vpadding);
+  ctk_grid_attach (grid, widget, 1, 2, 1, 1);
 
   /* Spin to control horizontal padding */
-  widget = gtk_label_new ("horizontal padding:");
-  gtk_grid_attach (grid, widget, 0, 3, 1, 1);
+  widget = ctk_label_new ("horizontal padding:");
+  ctk_grid_attach (grid, widget, 0, 3, 1, 1);
 
-  widget = gtk_spin_button_new_with_range (0, 250, 1);
+  widget = ctk_spin_button_new_with_range (0, 250, 1);
   g_signal_connect (widget, "value-changed", G_CALLBACK (spin_hpadding_cb), frame);
-  gtk_spin_button_set_value (GTK_SPIN_BUTTON (widget), hpadding);
-  gtk_grid_attach (grid, widget, 1, 3, 1, 1);
+  ctk_spin_button_set_value (GTK_SPIN_BUTTON (widget), hpadding);
+  ctk_grid_attach (grid, widget, 1, 3, 1, 1);
 
   /* CheckButton to control whether to draw border */
-  draw_border = gtk_frame_get_shadow_type (frame) != GTK_SHADOW_NONE;
-  widget = gtk_check_button_new_with_label ("draw border");
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), draw_border);
+  draw_border = ctk_frame_get_shadow_type (frame) != GTK_SHADOW_NONE;
+  widget = ctk_check_button_new_with_label ("draw border");
+  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), draw_border);
   g_signal_connect (widget, "toggled", G_CALLBACK (draw_border_cb), frame);
-  gtk_grid_attach (grid, widget, 0, 4, 2, 1);
+  ctk_grid_attach (grid, widget, 0, 4, 2, 1);
 
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

@@ -546,10 +546,10 @@ msgstr "ପ୍ରତୀକ"
 #: ../gtk/gtkaboutdialog.c:504
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "ବିବରଣୀ ବାକ୍ସ ପାଇଁ ଗୋଟିଏ ପ୍ରତୀକ। ଏହାକୁ ବିନ୍ଯାସ କରାଯାଇ ନ ଥିଲେ, "
-"gtk_window_get_default_icon_list() ପୂର୍ବନିର୍ଦ୍ଧାରିତ ହୋଇଥାଏ।"
+"ctk_window_get_default_icon_list() ପୂର୍ବନିର୍ଦ୍ଧାରିତ ହୋଇଥାଏ।"
 
 #: ../gtk/gtkaboutdialog.c:519
 msgid "Logo Icon Name"
@@ -3059,10 +3059,10 @@ msgstr "ପ୍ରଗତି ସ୍ପନ୍ଦନ ପଦକ୍ଷେପ"
 #: ../gtk/gtkentry.c:992
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "ଉନ୍ନତିକୁ ବୃଦ୍ଧି ବ୍ଲକକୁ ଘୁଞ୍ଚାଇଥିବା ସମୁଦାୟ ଭରଣ ଓସାରର ଅଂଶ ପ୍ରତି "
-"gtk_entry_progress_pulse()"
+"ctk_entry_progress_pulse()"
 
 #: ../gtk/gtkentry.c:1009
 msgid "Placeholder text"
@@ -5166,10 +5166,10 @@ msgstr "ମୂଲ୍ୟ"
 
 #: ../gtk/gtkradioaction.c:117
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"gtk_radio_action_get_current_value() ଦ୍ୱାରା ପ୍ରଦତ୍ତ ମୂଲ୍ୟ ଯେତେବେଳେ ଏହା ଏହି "
+"ctk_radio_action_get_current_value() ଦ୍ୱାରା ପ୍ରଦତ୍ତ ମୂଲ୍ୟ ଯେତେବେଳେ ଏହା ଏହି "
 "ଶ୍ରେଣୀର "
 "ପ୍ରଚଳିତ ମୂଲ୍ୟ ଅଟେ।"
 
@@ -7752,8 +7752,8 @@ msgid "No show all"
 msgstr "ନାଁ ସବୁକିଛି ଦେଖାନ୍ତୁ"
 
 #: ../gtk/gtkwidget.c:1102
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "gtk_widget_show_all() ଏହି ୱିଜେଟ ଉପରେ ପ୍ରଭାବ ପକାଇବ କି ନାହିଁ"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "ctk_widget_show_all() ଏହି ୱିଜେଟ ଉପରେ ପ୍ରଭାବ ପକାଇବ କି ନାହିଁ"
 
 #: ../gtk/gtkwidget.c:1125
 msgid "Whether this widget has a tooltip"
@@ -8528,10 +8528,10 @@ msgstr "ବ୍ୟବହାର କରିବାକୁ ଥିବା ରଙ୍ଗ �
 #~ "ଅଙ୍କାଯାଇଥାଏ"
 
 #~ msgid ""
-#~ "The maximum number of items to be returned by gtk_recent_manager_get_items"
+#~ "The maximum number of items to be returned by ctk_recent_manager_get_items"
 #~ "()"
 #~ msgstr ""
-#~ "gtk_recent_manager_get_items() ଦ୍ୱାରା ପ୍ରଦାନ କରିବାକୁ ଥିବା ସର୍ବାଧିକ ସଂଖ୍ୟକ ବସ୍ତୁଗୁଡ଼ିକ"
+#~ "ctk_recent_manager_get_items() ଦ୍ୱାରା ପ୍ରଦାନ କରିବାକୁ ଥିବା ସର୍ବାଧିକ ସଂଖ୍ୟକ ବସ୍ତୁଗୁଡ଼ିକ"
 
 #~ msgid "Blinking"
 #~ msgstr "ଦପଦପ ହେଉଛି"

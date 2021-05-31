@@ -251,10 +251,10 @@ msgstr "Logo"
 #: gtk/gtkaboutdialog.c:483
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Haqqında qutusı içün bir logo. Eger tesbit etilmegen ise, "
-"gtk_window_get_default_icon_list() qıymetine ög-belgilenir"
+"ctk_window_get_default_icon_list() qıymetine ög-belgilenir"
 
 # gtk/gtkfontsel.c:185
 #: gtk/gtkaboutdialog.c:498
@@ -2785,9 +2785,9 @@ msgstr "Teraqqiyat Nabzı Adımı"
 #: gtk/gtkentry.c:887
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
-"gtk_entry_progress_pulse() çağırılğan sayın teraqqiyat sıçrav blokunıñ "
+"ctk_entry_progress_pulse() çağırılğan sayın teraqqiyat sıçrav blokunıñ "
 "kirildiniñ topyekün kenişliginiñ ne qadar miqdarında hareket ettirilecegi"
 
 # gtk/gtkcellrendererpixbuf.c:102 gtk/gtkcellrenderertextpixbuf.c:125
@@ -5327,10 +5327,10 @@ msgstr "Qıymeti"
 
 #: gtk/gtkradioaction.c:112
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"Bu amel, zümresiniñ ağımdaki ameli olğanda gtk_radio_action_get_current_value"
+"Bu amel, zümresiniñ ağımdaki ameli olğanda ctk_radio_action_get_current_value"
 "() tarafından qaytarılğan qıymet."
 
 #: gtk/gtkradioaction.c:129
@@ -5648,9 +5648,9 @@ msgstr "Listeni mağazlamaq ve oqumaq içün qullanılacaq dosyeniñ tam yolçı
 
 #: gtk/gtkrecentmanager.c:230
 msgid ""
-"The maximum number of items to be returned by gtk_recent_manager_get_items()"
+"The maximum number of items to be returned by ctk_recent_manager_get_items()"
 msgstr ""
-"gtk_recent_manager_get_items() tarafından qaytarılacaq azamiy unsur sayısı"
+"ctk_recent_manager_get_items() tarafından qaytarılacaq azamiy unsur sayısı"
 
 #: gtk/gtkrecentmanager.c:246
 msgid "The size of the recently used resources list"
@@ -8251,8 +8251,8 @@ msgid "No show all"
 msgstr "Hepsini köster yoq"
 
 #: gtk/gtkwidget.c:680
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "Bu pencereçikke gtk_widget_show_all()'nıñ tesir etip etmeycegi"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "Bu pencereçikke ctk_widget_show_all()'nıñ tesir etip etmeycegi"
 
 # gtk/gtkwidget.c:471
 #: gtk/gtkwidget.c:703

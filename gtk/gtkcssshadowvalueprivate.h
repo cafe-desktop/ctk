@@ -30,27 +30,27 @@
 
 G_BEGIN_DECLS
 
-GtkCssValue *   _gtk_css_shadow_value_new_for_transition (GtkCssValue           *target);
+GtkCssValue *   _ctk_css_shadow_value_new_for_transition (GtkCssValue           *target);
 
-GtkCssValue *   _gtk_css_shadow_value_parse           (GtkCssParser             *parser,
+GtkCssValue *   _ctk_css_shadow_value_parse           (GtkCssParser             *parser,
                                                        gboolean                  box_shadow_mode);
 
-gboolean        _gtk_css_shadow_value_get_inset       (const GtkCssValue        *shadow);
+gboolean        _ctk_css_shadow_value_get_inset       (const GtkCssValue        *shadow);
 
-void            _gtk_css_shadow_value_get_geometry    (const GtkCssValue        *shadow,
+void            _ctk_css_shadow_value_get_geometry    (const GtkCssValue        *shadow,
                                                        gdouble                  *hoffset,
                                                        gdouble                  *voffset,
                                                        gdouble                  *radius,
                                                        gdouble                  *spread);
 
-void            _gtk_css_shadow_value_paint_layout    (const GtkCssValue        *shadow,
+void            _ctk_css_shadow_value_paint_layout    (const GtkCssValue        *shadow,
                                                        cairo_t                  *cr,
                                                        PangoLayout              *layout);
 
-void            _gtk_css_shadow_value_paint_icon      (const GtkCssValue        *shadow,
+void            _ctk_css_shadow_value_paint_icon      (const GtkCssValue        *shadow,
 					               cairo_t                  *cr);
 
-void            _gtk_css_shadow_value_paint_box       (const GtkCssValue        *shadow,
+void            _ctk_css_shadow_value_paint_box       (const GtkCssValue        *shadow,
                                                        cairo_t                  *cr,
                                                        const GtkRoundedBox      *padding_box);
 

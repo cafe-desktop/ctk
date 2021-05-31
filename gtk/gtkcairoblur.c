@@ -219,14 +219,14 @@ _boxblur (guchar      *buffer,
 }
 
 /*
- * _gtk_cairo_blur_surface:
+ * _ctk_cairo_blur_surface:
  * @surface: a cairo image surface.
  * @radius: the blur radius.
  *
  * Blurs the cairo image surface at the given radius.
  */
 void
-_gtk_cairo_blur_surface (cairo_surface_t* surface,
+_ctk_cairo_blur_surface (cairo_surface_t* surface,
                          double           radius_d,
                          GtkBlurFlags     flags)
 {
@@ -257,7 +257,7 @@ _gtk_cairo_blur_surface (cairo_surface_t* surface,
 }
 
 /*
- * _gtk_cairo_blur_compute_pixels:
+ * _ctk_cairo_blur_compute_pixels:
  * @radius: the radius to compute the pixels for
  *
  * Computes the number of pixels necessary to extend an image in one
@@ -275,7 +275,7 @@ _gtk_cairo_blur_surface (cairo_surface_t* surface,
  * https://bugzilla.mozilla.org/show_bug.cgi?id=590039#c19
  */
 int
-_gtk_cairo_blur_compute_pixels (double radius)
+_ctk_cairo_blur_compute_pixels (double radius)
 {
   return floor (radius * GAUSSIAN_SCALE_FACTOR * 1.5 + 0.5);
 }

@@ -798,10 +798,10 @@ msgstr "El valor"
 
 #: gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"El valor devuelto por gtk_radio_action_get_current_value() cuando esta "
+"El valor devuelto por ctk_radio_action_get_current_value() cuando esta "
 "acción es la acción actual de su grupo."
 
 #: gtk/deprecated/gtkradioaction.c:139 gtk/gtkradiobutton.c:184
@@ -1265,10 +1265,10 @@ msgstr "Logotipo"
 #: gtk/gtkaboutdialog.c:552
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Un logotipo para la caja «acerca de». Si no se establece, lo predeterminado "
-"es gtk_window_get_default_icon_list()"
+"es ctk_window_get_default_icon_list()"
 
 #: gtk/gtkaboutdialog.c:566
 msgid "Logo Icon Name"
@@ -3490,10 +3490,10 @@ msgstr "Progreso del paso del pulso"
 #: gtk/gtkentry.c:1094
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "La fracción del ancho total de la entrada para mover el bloque de rebote de "
-"progreso para cada llamada a gtk_entry_progress_pulse()"
+"progreso para cada llamada a ctk_entry_progress_pulse()"
 
 #: gtk/gtkentry.c:1110
 msgid "Show text in the entry when it's empty and unfocused"
@@ -9261,8 +9261,8 @@ msgid "No show all"
 msgstr "No mostrar todo"
 
 #: gtk/gtkwidget.c:1264
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "Indica que gtk_widget_show_all() no debe afectar a este widget"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "Indica que ctk_widget_show_all() no debe afectar a este widget"
 
 #: gtk/gtkwidget.c:1286
 msgid "Whether this widget has a tooltip"
@@ -10226,10 +10226,10 @@ msgstr "El título del perfil de color que usar"
 
 #~ msgid ""
 #~ "The maximum number of items to be returned by "
-#~ "gtk_recent_manager_get_items()"
+#~ "ctk_recent_manager_get_items()"
 #~ msgstr ""
 #~ "El número máximo de elementos a devolver por "
-#~ "gtk_recent_manager_get_items()"
+#~ "ctk_recent_manager_get_items()"
 
 #~ msgid "Allow Shrink"
 #~ msgstr "Permitir encoger"

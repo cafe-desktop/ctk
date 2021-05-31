@@ -61,26 +61,26 @@ counter (void *data)
 
   gdk_threads_enter();
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_title (GTK_WINDOW (window), name);
-  gtk_widget_set_size_request (window, 100, 50);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (GTK_WINDOW (window), name);
+  ctk_widget_set_size_request (window, 100, 50);
 
-  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, FALSE, 0);
+  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, FALSE, 0);
 
   g_signal_connect (window, "delete-event",
                     G_CALLBACK (delete_cb), &flag);
 
-  gtk_container_add (GTK_CONTAINER (window), vbox);
+  ctk_container_add (GTK_CONTAINER (window), vbox);
 
-  label = gtk_label_new ("0");
-  gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, FALSE, 0);
+  label = ctk_label_new ("0");
+  ctk_box_pack_start (GTK_BOX (vbox), label, TRUE, FALSE, 0);
 
-  button = gtk_button_new_with_label ("Close");
+  button = ctk_button_new_with_label ("Close");
   g_signal_connect (button, "clicked",
                     G_CALLBACK (close_cb), &flag);
-  gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
 
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
 
   /* Since flag is only checked or set inside the GTK lock,
    * we don't have to worry about locking it explicitly
@@ -88,7 +88,7 @@ counter (void *data)
   while (!flag)
     {
       sprintf(buffer, "%d", counter);
-      gtk_label_set_text (GTK_LABEL (label), buffer);
+      ctk_label_set_text (GTK_LABEL (label), buffer);
       gdk_threads_leave();
       counter++;
       /* Give someone else a chance to get the lock next time.
@@ -100,12 +100,12 @@ counter (void *data)
       gdk_threads_enter();
     }
 
-  gtk_widget_destroy (window);
+  ctk_widget_destroy (window);
 
   pthread_mutex_lock (&nthreads_mutex);
   nthreads--;
   if (nthreads == 0)
-    gtk_main_quit();
+    ctk_main_quit();
   pthread_mutex_unlock (&nthreads_mutex);
 
   gdk_threads_leave();
@@ -127,7 +127,7 @@ main (int argc, char **argv)
       exit(1);
     }
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
   pthread_mutex_lock (&nthreads_mutex);
 
@@ -148,7 +148,7 @@ main (int argc, char **argv)
   pthread_mutex_unlock (&nthreads_mutex);
 
   gdk_threads_enter();
-  gtk_main();
+  ctk_main();
   gdk_threads_leave();
   fprintf(stderr, "Done\n");
 #else /* !USE_PTHREADS */

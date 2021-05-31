@@ -39,7 +39,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_LAYOUT            (gtk_layout_get_type ())
+#define GTK_TYPE_LAYOUT            (ctk_layout_get_type ())
 #define GTK_LAYOUT(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_LAYOUT, GtkLayout))
 #define GTK_LAYOUT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_LAYOUT, GtkLayoutClass))
 #define GTK_IS_LAYOUT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_LAYOUT))
@@ -64,49 +64,49 @@ struct _GtkLayoutClass
   GtkContainerClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_ALL
-GType          gtk_layout_get_type        (void) G_GNUC_CONST;
+GType          ctk_layout_get_type        (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget*     gtk_layout_new             (GtkAdjustment *hadjustment,
+GtkWidget*     ctk_layout_new             (GtkAdjustment *hadjustment,
 				           GtkAdjustment *vadjustment);
 GDK_AVAILABLE_IN_ALL
-GdkWindow*     gtk_layout_get_bin_window  (GtkLayout     *layout);
+GdkWindow*     ctk_layout_get_bin_window  (GtkLayout     *layout);
 GDK_AVAILABLE_IN_ALL
-void           gtk_layout_put             (GtkLayout     *layout,
+void           ctk_layout_put             (GtkLayout     *layout,
 		                           GtkWidget     *child_widget,
 		                           gint           x,
 		                           gint           y);
 
 GDK_AVAILABLE_IN_ALL
-void           gtk_layout_move            (GtkLayout     *layout,
+void           ctk_layout_move            (GtkLayout     *layout,
 		                           GtkWidget     *child_widget,
 		                           gint           x,
 		                           gint           y);
 
 GDK_AVAILABLE_IN_ALL
-void           gtk_layout_set_size        (GtkLayout     *layout,
+void           ctk_layout_set_size        (GtkLayout     *layout,
 			                   guint          width,
 			                   guint          height);
 GDK_AVAILABLE_IN_ALL
-void           gtk_layout_get_size        (GtkLayout     *layout,
+void           ctk_layout_get_size        (GtkLayout     *layout,
 					   guint         *width,
 					   guint         *height);
 
-GDK_DEPRECATED_IN_3_0_FOR(gtk_scrollable_get_hadjustment)
-GtkAdjustment* gtk_layout_get_hadjustment (GtkLayout     *layout);
-GDK_DEPRECATED_IN_3_0_FOR(gtk_scrollable_get_vadjustment)
-GtkAdjustment* gtk_layout_get_vadjustment (GtkLayout     *layout);
-GDK_DEPRECATED_IN_3_0_FOR(gtk_scrollable_set_hadjustment)
-void           gtk_layout_set_hadjustment (GtkLayout     *layout,
+GDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_get_hadjustment)
+GtkAdjustment* ctk_layout_get_hadjustment (GtkLayout     *layout);
+GDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_get_vadjustment)
+GtkAdjustment* ctk_layout_get_vadjustment (GtkLayout     *layout);
+GDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_set_hadjustment)
+void           ctk_layout_set_hadjustment (GtkLayout     *layout,
                                            GtkAdjustment *adjustment);
-GDK_DEPRECATED_IN_3_0_FOR(gtk_scrollable_set_vadjustment)
-void           gtk_layout_set_vadjustment (GtkLayout     *layout,
+GDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_set_vadjustment)
+void           ctk_layout_set_vadjustment (GtkLayout     *layout,
                                            GtkAdjustment *adjustment);
 
 

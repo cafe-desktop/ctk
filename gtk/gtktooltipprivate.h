@@ -31,14 +31,14 @@
 
 G_BEGIN_DECLS
 
-void _gtk_tooltip_focus_in               (GtkWidget          *widget);
-void _gtk_tooltip_focus_out              (GtkWidget          *widget);
-void _gtk_tooltip_toggle_keyboard_mode   (GtkWidget          *widget);
-void _gtk_tooltip_handle_event           (GdkEvent           *event);
-void _gtk_tooltip_hide                   (GtkWidget          *widget);
-void _gtk_tooltip_hide_in_display        (GdkDisplay         *display);
+void _ctk_tooltip_focus_in               (GtkWidget          *widget);
+void _ctk_tooltip_focus_out              (GtkWidget          *widget);
+void _ctk_tooltip_toggle_keyboard_mode   (GtkWidget          *widget);
+void _ctk_tooltip_handle_event           (GdkEvent           *event);
+void _ctk_tooltip_hide                   (GtkWidget          *widget);
+void _ctk_tooltip_hide_in_display        (GdkDisplay         *display);
 
-GtkWidget * _gtk_widget_find_at_coords   (GdkWindow          *window,
+GtkWidget * _ctk_widget_find_at_coords   (GdkWindow          *window,
                                           gint                window_x,
                                           gint                window_y,
                                           gint               *widget_x,

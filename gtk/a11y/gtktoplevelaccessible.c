@@ -36,31 +36,31 @@ struct _GtkToplevelAccessiblePrivate
   GList *window_list;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkToplevelAccessible, gtk_toplevel_accessible, ATK_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkToplevelAccessible, ctk_toplevel_accessible, ATK_TYPE_OBJECT)
 
 static void
-gtk_toplevel_accessible_initialize (AtkObject *accessible,
+ctk_toplevel_accessible_initialize (AtkObject *accessible,
                                     gpointer   data)
 {
-  ATK_OBJECT_CLASS (gtk_toplevel_accessible_parent_class)->initialize (accessible, data);
+  ATK_OBJECT_CLASS (ctk_toplevel_accessible_parent_class)->initialize (accessible, data);
 
   accessible->role = ATK_ROLE_APPLICATION;
   accessible->accessible_parent = NULL;
 }
 
 static void
-gtk_toplevel_accessible_object_finalize (GObject *obj)
+ctk_toplevel_accessible_object_finalize (GObject *obj)
 {
   GtkToplevelAccessible *toplevel = GTK_TOPLEVEL_ACCESSIBLE (obj);
 
   if (toplevel->priv->window_list)
     g_list_free (toplevel->priv->window_list);
 
-  G_OBJECT_CLASS (gtk_toplevel_accessible_parent_class)->finalize (obj);
+  G_OBJECT_CLASS (ctk_toplevel_accessible_parent_class)->finalize (obj);
 }
 
 static gint
-gtk_toplevel_accessible_get_n_children (AtkObject *obj)
+ctk_toplevel_accessible_get_n_children (AtkObject *obj)
 {
   GtkToplevelAccessible *toplevel = GTK_TOPLEVEL_ACCESSIBLE (obj);
 
@@ -68,7 +68,7 @@ gtk_toplevel_accessible_get_n_children (AtkObject *obj)
 }
 
 static AtkObject *
-gtk_toplevel_accessible_ref_child (AtkObject *obj,
+ctk_toplevel_accessible_ref_child (AtkObject *obj,
                                    gint       i)
 {
   GtkToplevelAccessible *toplevel;
@@ -80,7 +80,7 @@ gtk_toplevel_accessible_ref_child (AtkObject *obj,
   if (!widget)
     return NULL;
 
-  atk_obj = gtk_widget_get_accessible (widget);
+  atk_obj = ctk_widget_get_accessible (widget);
 
   g_object_ref (atk_obj);
 
@@ -88,7 +88,7 @@ gtk_toplevel_accessible_ref_child (AtkObject *obj,
 }
 
 static const char *
-gtk_toplevel_accessible_get_name (AtkObject *obj)
+ctk_toplevel_accessible_get_name (AtkObject *obj)
 {
   return g_get_prgname ();
 }
@@ -99,22 +99,22 @@ is_combo_window (GtkWidget *widget)
   GtkWidget *child;
   AtkObject *obj;
 
-  child = gtk_bin_get_child (GTK_BIN (widget));
+  child = ctk_bin_get_child (GTK_BIN (widget));
 
   if (!GTK_IS_EVENT_BOX (child))
     return FALSE;
 
-  child = gtk_bin_get_child (GTK_BIN (child));
+  child = ctk_bin_get_child (GTK_BIN (child));
 
   if (!GTK_IS_FRAME (child))
     return FALSE;
 
-  child = gtk_bin_get_child (GTK_BIN (child));
+  child = ctk_bin_get_child (GTK_BIN (child));
 
   if (!GTK_IS_SCROLLED_WINDOW (child))
     return FALSE;
 
-  obj = gtk_widget_get_accessible (child);
+  obj = ctk_widget_get_accessible (child);
   obj = atk_object_get_parent (obj);
 
   return FALSE;
@@ -125,12 +125,12 @@ is_attached_menu_window (GtkWidget *widget)
 {
   GtkWidget *child;
 
-  child = gtk_bin_get_child (GTK_BIN (widget));
+  child = ctk_bin_get_child (GTK_BIN (widget));
   if (GTK_IS_MENU (child))
     {
       GtkWidget *attach;
 
-      attach = gtk_menu_get_attach_widget (GTK_MENU (child));
+      attach = ctk_menu_get_attach_widget (GTK_MENU (child));
       /* Allow for menu belonging to the Panel Menu, which is a GtkButton */
       if (GTK_IS_MENU_ITEM (attach) || GTK_IS_BUTTON (attach))
         return TRUE;
@@ -140,18 +140,18 @@ is_attached_menu_window (GtkWidget *widget)
 }
 
 static void
-gtk_toplevel_accessible_class_init (GtkToplevelAccessibleClass *klass)
+ctk_toplevel_accessible_class_init (GtkToplevelAccessibleClass *klass)
 {
   AtkObjectClass *class = ATK_OBJECT_CLASS(klass);
   GObjectClass *g_object_class = G_OBJECT_CLASS(klass);
 
-  class->initialize = gtk_toplevel_accessible_initialize;
-  class->get_n_children = gtk_toplevel_accessible_get_n_children;
-  class->ref_child = gtk_toplevel_accessible_ref_child;
+  class->initialize = ctk_toplevel_accessible_initialize;
+  class->get_n_children = ctk_toplevel_accessible_get_n_children;
+  class->ref_child = ctk_toplevel_accessible_ref_child;
   class->get_parent = NULL;
-  class->get_name = gtk_toplevel_accessible_get_name;
+  class->get_name = ctk_toplevel_accessible_get_name;
 
-  g_object_class->finalize = gtk_toplevel_accessible_object_finalize;
+  g_object_class->finalize = ctk_toplevel_accessible_object_finalize;
 }
 
 static void
@@ -175,7 +175,7 @@ remove_child (GtkToplevelAccessible *toplevel,
             {
               /* Remove the window from the window_list & emit the signal */
               toplevel->priv->window_list = g_list_delete_link (toplevel->priv->window_list, l);
-              child = gtk_widget_get_accessible (GTK_WIDGET (window));
+              child = ctk_widget_get_accessible (GTK_WIDGET (window));
               g_signal_emit_by_name (atk_obj, "children-changed::remove",
                                      window_count, child, NULL);
               atk_object_set_parent (child, NULL);
@@ -206,7 +206,7 @@ show_event_watcher (GSignalInvocationHint *ihint,
     return TRUE;
 
   widget = GTK_WIDGET (object);
-  if (gtk_widget_get_parent (widget) ||
+  if (ctk_widget_get_parent (widget) ||
       is_attached_menu_window (widget) ||
 #ifdef GDK_WINDOWING_X11
       GTK_IS_PLUG (widget) ||
@@ -214,7 +214,7 @@ show_event_watcher (GSignalInvocationHint *ihint,
       is_combo_window (widget))
     return TRUE;
 
-  child = gtk_widget_get_accessible (widget);
+  child = ctk_widget_get_accessible (widget);
   if (atk_object_get_role (child) == ATK_ROLE_REDUNDANT_OBJECT ||
       atk_object_get_role (child) == ATK_ROLE_TOOL_TIP)
     return TRUE;
@@ -252,28 +252,28 @@ hide_event_watcher (GSignalInvocationHint *ihint,
 }
 
 static void
-gtk_toplevel_accessible_init (GtkToplevelAccessible *toplevel)
+ctk_toplevel_accessible_init (GtkToplevelAccessible *toplevel)
 {
   GtkWindow *window;
   GtkWidget *widget;
   GList *l;
   guint signal_id;
 
-  toplevel->priv = gtk_toplevel_accessible_get_instance_private (toplevel);
+  toplevel->priv = ctk_toplevel_accessible_get_instance_private (toplevel);
 
-  l = toplevel->priv->window_list = gtk_window_list_toplevels ();
+  l = toplevel->priv->window_list = ctk_window_list_toplevels ();
 
   while (l)
     {
       window = GTK_WINDOW (l->data);
       widget = GTK_WIDGET (window);
       if (!window ||
-          !gtk_widget_get_visible (widget) ||
+          !ctk_widget_get_visible (widget) ||
           is_attached_menu_window (widget) ||
 #ifdef GDK_WINDOWING_X11
           GTK_IS_PLUG (window) ||
 #endif
-          gtk_widget_get_parent (GTK_WIDGET (window)))
+          ctk_widget_get_parent (GTK_WIDGET (window)))
         {
           GList *temp_l  = l->next;
 
@@ -300,13 +300,13 @@ gtk_toplevel_accessible_init (GtkToplevelAccessible *toplevel)
 }
 
 /**
- * gtk_toplevel_accessible_get_children:
+ * ctk_toplevel_accessible_get_children:
  *
  * Returns: (transfer none) (element-type Gtk.Window): List of
  *   children.
  */
 GList *
-gtk_toplevel_accessible_get_children (GtkToplevelAccessible *accessible)
+ctk_toplevel_accessible_get_children (GtkToplevelAccessible *accessible)
 {
   return accessible->priv->window_list;
 }

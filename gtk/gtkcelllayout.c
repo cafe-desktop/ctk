@@ -28,10 +28,10 @@
  * GtkCellLayout are attributes. Attributes let you set the properties
  * in flexible ways. They can just be set to constant values like regular
  * properties. But they can also be mapped to a column of the underlying
- * tree model with gtk_cell_layout_set_attributes(), which means that the value
+ * tree model with ctk_cell_layout_set_attributes(), which means that the value
  * of the attribute can change from cell to cell as they are rendered by
  * the cell renderer. Finally, it is possible to specify a function with
- * gtk_cell_layout_set_cell_data_func() that is called to determine the
+ * ctk_cell_layout_set_cell_data_func() that is called to determine the
  * value of the attribute for each cell that is rendered.
  *
  * # GtkCellLayouts as GtkBuildable
@@ -103,10 +103,10 @@
  * {
  *   GtkCellRenderer *cell;
  *
- *   cell = gtk_cell_renderer_pixbuf_new ();
+ *   cell = ctk_cell_renderer_pixbuf_new ();
  *   // The following call causes the default cell area for combo boxes,
  *   // a GtkCellAreaBox, to be instantiated
- *   gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (b), cell, FALSE);
+ *   ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (b), cell, FALSE);
  *   ...
  * }
  *
@@ -137,48 +137,48 @@
   g_critical ("%s: Called but no GtkCellArea is available yet", func)
 
 typedef GtkCellLayoutIface GtkCellLayoutInterface;
-G_DEFINE_INTERFACE (GtkCellLayout, gtk_cell_layout, G_TYPE_OBJECT);
+G_DEFINE_INTERFACE (GtkCellLayout, ctk_cell_layout, G_TYPE_OBJECT);
 
-static void   gtk_cell_layout_default_pack_start         (GtkCellLayout         *cell_layout,
+static void   ctk_cell_layout_default_pack_start         (GtkCellLayout         *cell_layout,
 							  GtkCellRenderer       *cell,
 							  gboolean               expand);
-static void   gtk_cell_layout_default_pack_end           (GtkCellLayout         *cell_layout,
+static void   ctk_cell_layout_default_pack_end           (GtkCellLayout         *cell_layout,
 							  GtkCellRenderer       *cell,
 							  gboolean               expand);
-static void   gtk_cell_layout_default_clear              (GtkCellLayout         *cell_layout);
-static void   gtk_cell_layout_default_add_attribute      (GtkCellLayout         *cell_layout,
+static void   ctk_cell_layout_default_clear              (GtkCellLayout         *cell_layout);
+static void   ctk_cell_layout_default_add_attribute      (GtkCellLayout         *cell_layout,
 							  GtkCellRenderer       *cell,
 							  const gchar           *attribute,
 							  gint                   column);
-static void   gtk_cell_layout_default_set_cell_data_func (GtkCellLayout         *cell_layout,
+static void   ctk_cell_layout_default_set_cell_data_func (GtkCellLayout         *cell_layout,
 							  GtkCellRenderer       *cell,
 							  GtkCellLayoutDataFunc  func,
 							  gpointer               func_data,
 							  GDestroyNotify         destroy);
-static void   gtk_cell_layout_default_clear_attributes   (GtkCellLayout         *cell_layout,
+static void   ctk_cell_layout_default_clear_attributes   (GtkCellLayout         *cell_layout,
 							  GtkCellRenderer       *cell);
-static void   gtk_cell_layout_default_reorder            (GtkCellLayout         *cell_layout,
+static void   ctk_cell_layout_default_reorder            (GtkCellLayout         *cell_layout,
 							  GtkCellRenderer       *cell,
 							  gint                   position);
-static GList *gtk_cell_layout_default_get_cells          (GtkCellLayout         *cell_layout);
+static GList *ctk_cell_layout_default_get_cells          (GtkCellLayout         *cell_layout);
 
 
 static void
-gtk_cell_layout_default_init (GtkCellLayoutIface *iface)
+ctk_cell_layout_default_init (GtkCellLayoutIface *iface)
 {
-  iface->pack_start         = gtk_cell_layout_default_pack_start;
-  iface->pack_end           = gtk_cell_layout_default_pack_end;
-  iface->clear              = gtk_cell_layout_default_clear;
-  iface->add_attribute      = gtk_cell_layout_default_add_attribute;
-  iface->set_cell_data_func = gtk_cell_layout_default_set_cell_data_func;
-  iface->clear_attributes   = gtk_cell_layout_default_clear_attributes;
-  iface->reorder            = gtk_cell_layout_default_reorder;
-  iface->get_cells          = gtk_cell_layout_default_get_cells;
+  iface->pack_start         = ctk_cell_layout_default_pack_start;
+  iface->pack_end           = ctk_cell_layout_default_pack_end;
+  iface->clear              = ctk_cell_layout_default_clear;
+  iface->add_attribute      = ctk_cell_layout_default_add_attribute;
+  iface->set_cell_data_func = ctk_cell_layout_default_set_cell_data_func;
+  iface->clear_attributes   = ctk_cell_layout_default_clear_attributes;
+  iface->reorder            = ctk_cell_layout_default_reorder;
+  iface->get_cells          = ctk_cell_layout_default_get_cells;
 }
 
 /* Default implementation is to fall back on an underlying cell area */
 static void
-gtk_cell_layout_default_pack_start (GtkCellLayout         *cell_layout,
+ctk_cell_layout_default_pack_start (GtkCellLayout         *cell_layout,
 				    GtkCellRenderer       *cell,
 				    gboolean               expand)
 {
@@ -192,14 +192,14 @@ gtk_cell_layout_default_pack_start (GtkCellLayout         *cell_layout,
       area = iface->get_area (cell_layout);
 
       if (area)
-	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (area), cell, expand);
+	ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (area), cell, expand);
       else
 	warn_no_cell_area ("GtkCellLayoutIface->pack_start()");
     }
 }
 
 static void
-gtk_cell_layout_default_pack_end (GtkCellLayout         *cell_layout,
+ctk_cell_layout_default_pack_end (GtkCellLayout         *cell_layout,
 				  GtkCellRenderer       *cell,
 				  gboolean               expand)
 {
@@ -213,14 +213,14 @@ gtk_cell_layout_default_pack_end (GtkCellLayout         *cell_layout,
       area = iface->get_area (cell_layout);
 
       if (area)
-	gtk_cell_layout_pack_end (GTK_CELL_LAYOUT (area), cell, expand);
+	ctk_cell_layout_pack_end (GTK_CELL_LAYOUT (area), cell, expand);
       else
 	warn_no_cell_area ("GtkCellLayoutIface->pack_end()");
     }
 }
 
 static void
-gtk_cell_layout_default_clear (GtkCellLayout *cell_layout)
+ctk_cell_layout_default_clear (GtkCellLayout *cell_layout)
 {
   GtkCellLayoutIface *iface;
   GtkCellArea        *area;
@@ -232,14 +232,14 @@ gtk_cell_layout_default_clear (GtkCellLayout *cell_layout)
       area = iface->get_area (cell_layout);
 
       if (area)
-	gtk_cell_layout_clear (GTK_CELL_LAYOUT (area));
+	ctk_cell_layout_clear (GTK_CELL_LAYOUT (area));
       else
 	warn_no_cell_area ("GtkCellLayoutIface->clear()");
     }
 }
 
 static void
-gtk_cell_layout_default_add_attribute (GtkCellLayout         *cell_layout,
+ctk_cell_layout_default_add_attribute (GtkCellLayout         *cell_layout,
 				       GtkCellRenderer       *cell,
 				       const gchar           *attribute,
 				       gint                   column)
@@ -254,14 +254,14 @@ gtk_cell_layout_default_add_attribute (GtkCellLayout         *cell_layout,
       area = iface->get_area (cell_layout);
 
       if (area)
-	gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (area), cell, attribute, column);
+	ctk_cell_layout_add_attribute (GTK_CELL_LAYOUT (area), cell, attribute, column);
       else
 	warn_no_cell_area ("GtkCellLayoutIface->add_attribute()");
     }
 }
 
 static void
-gtk_cell_layout_default_set_cell_data_func (GtkCellLayout         *cell_layout,
+ctk_cell_layout_default_set_cell_data_func (GtkCellLayout         *cell_layout,
 					    GtkCellRenderer       *cell,
 					    GtkCellLayoutDataFunc  func,
 					    gpointer               func_data,
@@ -277,7 +277,7 @@ gtk_cell_layout_default_set_cell_data_func (GtkCellLayout         *cell_layout,
       area = iface->get_area (cell_layout);
 
       if (area)
-	_gtk_cell_area_set_cell_data_func_with_proxy (area, cell, 
+	_ctk_cell_area_set_cell_data_func_with_proxy (area, cell, 
 						      (GFunc)func, func_data, destroy, 
 						      cell_layout);
       else
@@ -286,7 +286,7 @@ gtk_cell_layout_default_set_cell_data_func (GtkCellLayout         *cell_layout,
 }
 
 static void
-gtk_cell_layout_default_clear_attributes (GtkCellLayout         *cell_layout,
+ctk_cell_layout_default_clear_attributes (GtkCellLayout         *cell_layout,
 					  GtkCellRenderer       *cell)
 {
   GtkCellLayoutIface *iface;
@@ -299,14 +299,14 @@ gtk_cell_layout_default_clear_attributes (GtkCellLayout         *cell_layout,
       area = iface->get_area (cell_layout);
 
       if (area)
-	gtk_cell_layout_clear_attributes (GTK_CELL_LAYOUT (area), cell);
+	ctk_cell_layout_clear_attributes (GTK_CELL_LAYOUT (area), cell);
       else
 	warn_no_cell_area ("GtkCellLayoutIface->clear_attributes()");
     }
 }
 
 static void
-gtk_cell_layout_default_reorder (GtkCellLayout         *cell_layout,
+ctk_cell_layout_default_reorder (GtkCellLayout         *cell_layout,
 				 GtkCellRenderer       *cell,
 				 gint                   position)
 {
@@ -320,14 +320,14 @@ gtk_cell_layout_default_reorder (GtkCellLayout         *cell_layout,
       area = iface->get_area (cell_layout);
 
       if (area)
-	gtk_cell_layout_reorder (GTK_CELL_LAYOUT (area), cell, position);
+	ctk_cell_layout_reorder (GTK_CELL_LAYOUT (area), cell, position);
       else
 	warn_no_cell_area ("GtkCellLayoutIface->reorder()");
     }
 }
 
 static GList *
-gtk_cell_layout_default_get_cells (GtkCellLayout *cell_layout)
+ctk_cell_layout_default_get_cells (GtkCellLayout *cell_layout)
 {
   GtkCellLayoutIface *iface;
   GtkCellArea        *area;
@@ -339,7 +339,7 @@ gtk_cell_layout_default_get_cells (GtkCellLayout *cell_layout)
       area = iface->get_area (cell_layout);
 
       if (area)
-	return gtk_cell_layout_get_cells (GTK_CELL_LAYOUT (area));
+	return ctk_cell_layout_get_cells (GTK_CELL_LAYOUT (area));
       else
 	warn_no_cell_area ("GtkCellLayoutIface->get_cells()");
     }
@@ -348,7 +348,7 @@ gtk_cell_layout_default_get_cells (GtkCellLayout *cell_layout)
 
 
 /**
- * gtk_cell_layout_pack_start:
+ * ctk_cell_layout_pack_start:
  * @cell_layout: a #GtkCellLayout
  * @cell: a #GtkCellRenderer
  * @expand: %TRUE if @cell is to be given extra space allocated to @cell_layout
@@ -362,7 +362,7 @@ gtk_cell_layout_default_get_cells (GtkCellLayout *cell_layout)
  * Since: 2.4
  */
 void
-gtk_cell_layout_pack_start (GtkCellLayout   *cell_layout,
+ctk_cell_layout_pack_start (GtkCellLayout   *cell_layout,
                             GtkCellRenderer *cell,
                             gboolean         expand)
 {
@@ -373,7 +373,7 @@ gtk_cell_layout_pack_start (GtkCellLayout   *cell_layout,
 }
 
 /**
- * gtk_cell_layout_pack_end:
+ * ctk_cell_layout_pack_end:
  * @cell_layout: a #GtkCellLayout
  * @cell: a #GtkCellRenderer
  * @expand: %TRUE if @cell is to be given extra space allocated to @cell_layout
@@ -387,7 +387,7 @@ gtk_cell_layout_pack_start (GtkCellLayout   *cell_layout,
  * Since: 2.4
  */
 void
-gtk_cell_layout_pack_end (GtkCellLayout   *cell_layout,
+ctk_cell_layout_pack_end (GtkCellLayout   *cell_layout,
                           GtkCellRenderer *cell,
                           gboolean         expand)
 {
@@ -398,7 +398,7 @@ gtk_cell_layout_pack_end (GtkCellLayout   *cell_layout,
 }
 
 /**
- * gtk_cell_layout_clear:
+ * ctk_cell_layout_clear:
  * @cell_layout: a #GtkCellLayout
  *
  * Unsets all the mappings on all renderers on @cell_layout and
@@ -407,7 +407,7 @@ gtk_cell_layout_pack_end (GtkCellLayout   *cell_layout,
  * Since: 2.4
  */
 void
-gtk_cell_layout_clear (GtkCellLayout *cell_layout)
+ctk_cell_layout_clear (GtkCellLayout *cell_layout)
 {
   g_return_if_fail (GTK_IS_CELL_LAYOUT (cell_layout));
 
@@ -415,7 +415,7 @@ gtk_cell_layout_clear (GtkCellLayout *cell_layout)
 }
 
 static void
-gtk_cell_layout_set_attributesv (GtkCellLayout   *cell_layout,
+ctk_cell_layout_set_attributesv (GtkCellLayout   *cell_layout,
                                  GtkCellRenderer *cell,
                                  va_list          args)
 {
@@ -424,20 +424,20 @@ gtk_cell_layout_set_attributesv (GtkCellLayout   *cell_layout,
 
   attribute = va_arg (args, gchar *);
 
-  gtk_cell_layout_clear_attributes (cell_layout, cell);
+  ctk_cell_layout_clear_attributes (cell_layout, cell);
 
   while (attribute != NULL)
     {
       column = va_arg (args, gint);
 
-      gtk_cell_layout_add_attribute (cell_layout, cell, attribute, column);
+      ctk_cell_layout_add_attribute (cell_layout, cell, attribute, column);
 
       attribute = va_arg (args, gchar *);
     }
 }
 
 /**
- * gtk_cell_layout_set_attributes:
+ * ctk_cell_layout_set_attributes:
  * @cell_layout: a #GtkCellLayout
  * @cell: a #GtkCellRenderer
  * @...: a %NULL-terminated list of attributes
@@ -445,13 +445,13 @@ gtk_cell_layout_set_attributesv (GtkCellLayout   *cell_layout,
  * Sets the attributes in list as the attributes of @cell_layout.
  *
  * The attributes should be in attribute/column order, as in
- * gtk_cell_layout_add_attribute(). All existing attributes are
+ * ctk_cell_layout_add_attribute(). All existing attributes are
  * removed, and replaced with the new attributes.
  *
  * Since: 2.4
  */
 void
-gtk_cell_layout_set_attributes (GtkCellLayout   *cell_layout,
+ctk_cell_layout_set_attributes (GtkCellLayout   *cell_layout,
                                 GtkCellRenderer *cell,
                                 ...)
 {
@@ -461,12 +461,12 @@ gtk_cell_layout_set_attributes (GtkCellLayout   *cell_layout,
   g_return_if_fail (GTK_IS_CELL_RENDERER (cell));
 
   va_start (args, cell);
-  gtk_cell_layout_set_attributesv (cell_layout, cell, args);
+  ctk_cell_layout_set_attributesv (cell_layout, cell, args);
   va_end (args);
 }
 
 /**
- * gtk_cell_layout_add_attribute:
+ * ctk_cell_layout_add_attribute:
  * @cell_layout: a #GtkCellLayout
  * @cell: a #GtkCellRenderer
  * @attribute: an attribute on the renderer
@@ -482,7 +482,7 @@ gtk_cell_layout_set_attributes (GtkCellLayout   *cell_layout,
  * Since: 2.4
  */
 void
-gtk_cell_layout_add_attribute (GtkCellLayout   *cell_layout,
+ctk_cell_layout_add_attribute (GtkCellLayout   *cell_layout,
                                GtkCellRenderer *cell,
                                const gchar     *attribute,
                                gint             column)
@@ -496,7 +496,7 @@ gtk_cell_layout_add_attribute (GtkCellLayout   *cell_layout,
 }
 
 /**
- * gtk_cell_layout_set_cell_data_func:
+ * ctk_cell_layout_set_cell_data_func:
  * @cell_layout: a #GtkCellLayout
  * @cell: a #GtkCellRenderer
  * @func: (allow-none): the #GtkCellLayoutDataFunc to use, or %NULL
@@ -514,7 +514,7 @@ gtk_cell_layout_add_attribute (GtkCellLayout   *cell_layout,
  * Since: 2.4
  */
 void
-gtk_cell_layout_set_cell_data_func (GtkCellLayout         *cell_layout,
+ctk_cell_layout_set_cell_data_func (GtkCellLayout         *cell_layout,
                                     GtkCellRenderer       *cell,
                                     GtkCellLayoutDataFunc  func,
                                     gpointer               func_data,
@@ -528,17 +528,17 @@ gtk_cell_layout_set_cell_data_func (GtkCellLayout         *cell_layout,
 }
 
 /**
- * gtk_cell_layout_clear_attributes:
+ * ctk_cell_layout_clear_attributes:
  * @cell_layout: a #GtkCellLayout
  * @cell: a #GtkCellRenderer to clear the attribute mapping on
  *
  * Clears all existing attributes previously set with
- * gtk_cell_layout_set_attributes().
+ * ctk_cell_layout_set_attributes().
  *
  * Since: 2.4
  */
 void
-gtk_cell_layout_clear_attributes (GtkCellLayout   *cell_layout,
+ctk_cell_layout_clear_attributes (GtkCellLayout   *cell_layout,
                                   GtkCellRenderer *cell)
 {
   g_return_if_fail (GTK_IS_CELL_LAYOUT (cell_layout));
@@ -548,7 +548,7 @@ gtk_cell_layout_clear_attributes (GtkCellLayout   *cell_layout,
 }
 
 /**
- * gtk_cell_layout_reorder:
+ * ctk_cell_layout_reorder:
  * @cell_layout: a #GtkCellLayout
  * @cell: a #GtkCellRenderer to reorder
  * @position: new position to insert @cell at
@@ -561,7 +561,7 @@ gtk_cell_layout_clear_attributes (GtkCellLayout   *cell_layout,
  * Since: 2.4
  */
 void
-gtk_cell_layout_reorder (GtkCellLayout   *cell_layout,
+ctk_cell_layout_reorder (GtkCellLayout   *cell_layout,
                          GtkCellRenderer *cell,
                          gint             position)
 {
@@ -572,7 +572,7 @@ gtk_cell_layout_reorder (GtkCellLayout   *cell_layout,
 }
 
 /**
- * gtk_cell_layout_get_cells:
+ * ctk_cell_layout_get_cells:
  * @cell_layout: a #GtkCellLayout
  *
  * Returns the cell renderers which have been added to @cell_layout.
@@ -585,7 +585,7 @@ gtk_cell_layout_reorder (GtkCellLayout   *cell_layout,
  * Since: 2.12
  */
 GList *
-gtk_cell_layout_get_cells (GtkCellLayout *cell_layout)
+ctk_cell_layout_get_cells (GtkCellLayout *cell_layout)
 {
   g_return_val_if_fail (GTK_IS_CELL_LAYOUT (cell_layout), NULL);
 
@@ -593,7 +593,7 @@ gtk_cell_layout_get_cells (GtkCellLayout *cell_layout)
 }
 
 /**
- * gtk_cell_layout_get_area:
+ * ctk_cell_layout_get_area:
  * @cell_layout: a #GtkCellLayout
  *
  * Returns the underlying #GtkCellArea which might be @cell_layout
@@ -606,7 +606,7 @@ gtk_cell_layout_get_cells (GtkCellLayout *cell_layout)
  * Since: 3.0
  */
 GtkCellArea *
-gtk_cell_layout_get_area (GtkCellLayout *cell_layout)
+ctk_cell_layout_get_area (GtkCellLayout *cell_layout)
 {
   GtkCellLayoutIface *iface;
 
@@ -642,14 +642,14 @@ attributes_start_element (GMarkupParseContext *context,
     {
       const gchar *name;
 
-      if (!_gtk_builder_check_parent (data->builder, context, "attributes", error))
+      if (!_ctk_builder_check_parent (data->builder, context, "attributes", error))
         return;
 
       if (!g_markup_collect_attributes (element_name, names, values, error,
                                         G_MARKUP_COLLECT_STRING, "name", &name,
                                         G_MARKUP_COLLECT_INVALID))
         {
-          _gtk_builder_prefix_error (data->builder, context, error);
+          _ctk_builder_prefix_error (data->builder, context, error);
           return;
         }
 
@@ -657,17 +657,17 @@ attributes_start_element (GMarkupParseContext *context,
     }
   else if (strcmp (element_name, "attributes") == 0)
     {
-      if (!_gtk_builder_check_parent (data->builder, context, "child", error))
+      if (!_ctk_builder_check_parent (data->builder, context, "child", error))
         return;
 
       if (!g_markup_collect_attributes (element_name, names, values, error,
                                         G_MARKUP_COLLECT_INVALID, NULL, NULL,
                                         G_MARKUP_COLLECT_INVALID))
-        _gtk_builder_prefix_error (data->builder, context, error);
+        _ctk_builder_prefix_error (data->builder, context, error);
     }
   else
     {
-      _gtk_builder_error_unhandled_tag (data->builder, context,
+      _ctk_builder_error_unhandled_tag (data->builder, context,
                                         "GtkCellLayout", element_name,
                                         error);
     }
@@ -698,13 +698,13 @@ attributes_end_element (GMarkupParseContext  *context,
   if (!data->attr_name)
     return;
 
-  if (!gtk_builder_value_from_string_type (data->builder, G_TYPE_INT, data->string->str, &val, error))
+  if (!ctk_builder_value_from_string_type (data->builder, G_TYPE_INT, data->string->str, &val, error))
     {
-      _gtk_builder_prefix_error (data->builder, context, error);
+      _ctk_builder_prefix_error (data->builder, context, error);
        return;
     }
 
-  gtk_cell_layout_add_attribute (data->cell_layout,
+  ctk_cell_layout_add_attribute (data->cell_layout,
 				 data->renderer,
 				 data->attr_name,
                                  g_value_get_int (&val));
@@ -725,7 +725,7 @@ static const GMarkupParser attributes_parser =
 
 /* Cell packing parsing */
 static void
-gtk_cell_layout_buildable_set_cell_property (GtkCellArea     *area,
+ctk_cell_layout_buildable_set_cell_property (GtkCellArea     *area,
 					     GtkBuilder      *builder,
 					     GtkCellRenderer *cell,
 					     gchar           *name,
@@ -735,7 +735,7 @@ gtk_cell_layout_buildable_set_cell_property (GtkCellArea     *area,
   GValue gvalue = G_VALUE_INIT;
   GError *error = NULL;
 
-  pspec = gtk_cell_area_class_find_cell_property (GTK_CELL_AREA_GET_CLASS (area), name);
+  pspec = ctk_cell_area_class_find_cell_property (GTK_CELL_AREA_GET_CLASS (area), name);
   if (!pspec)
     {
       g_warning ("%s does not have a property called %s",
@@ -743,7 +743,7 @@ gtk_cell_layout_buildable_set_cell_property (GtkCellArea     *area,
       return;
     }
 
-  if (!gtk_builder_value_from_string (builder, pspec, value, &gvalue, &error))
+  if (!ctk_builder_value_from_string (builder, pspec, value, &gvalue, &error))
     {
       g_warning ("Could not read property %s:%s with value %s of type %s: %s",
 		 g_type_name (G_OBJECT_TYPE (area)),
@@ -755,7 +755,7 @@ gtk_cell_layout_buildable_set_cell_property (GtkCellArea     *area,
       return;
     }
 
-  gtk_cell_area_cell_set_property (area, cell, name, &gvalue);
+  ctk_cell_area_cell_set_property (area, cell, name, &gvalue);
   g_value_unset (&gvalue);
 }
 
@@ -785,7 +785,7 @@ cell_packing_start_element (GMarkupParseContext *context,
       gboolean translatable = FALSE;
       const gchar *ctx = NULL;
 
-      if (!_gtk_builder_check_parent (data->builder, context, "cell-packing", error))
+      if (!_ctk_builder_check_parent (data->builder, context, "cell-packing", error))
         return;
 
       if (!g_markup_collect_attributes (element_name, names, values, error,
@@ -795,7 +795,7 @@ cell_packing_start_element (GMarkupParseContext *context,
                                         G_MARKUP_COLLECT_STRING|G_MARKUP_COLLECT_OPTIONAL, "context", &ctx,
                                         G_MARKUP_COLLECT_INVALID))
        {
-         _gtk_builder_prefix_error (data->builder, context, error);
+         _ctk_builder_prefix_error (data->builder, context, error);
          return;
        }
 
@@ -805,17 +805,17 @@ cell_packing_start_element (GMarkupParseContext *context,
     }
   else if (strcmp (element_name, "cell-packing") == 0)
     {
-      if (!_gtk_builder_check_parent (data->builder, context, "child", error))
+      if (!_ctk_builder_check_parent (data->builder, context, "child", error))
         return;
 
       if (!g_markup_collect_attributes (element_name, names, values, error,
                                         G_MARKUP_COLLECT_INVALID, NULL, NULL,
                                         G_MARKUP_COLLECT_INVALID))
-        _gtk_builder_prefix_error (data->builder, context, error);
+        _ctk_builder_prefix_error (data->builder, context, error);
     }
   else
     {
-      _gtk_builder_error_unhandled_tag (data->builder, context,
+      _ctk_builder_error_unhandled_tag (data->builder, context,
                                         "GtkCellLayout", element_name,
                                         error);
     }
@@ -843,7 +843,7 @@ cell_packing_end_element (GMarkupParseContext *context,
   CellPackingSubParserData *data = (CellPackingSubParserData*)user_data;
   GtkCellArea *area;
 
-  area = gtk_cell_layout_get_area (data->cell_layout);
+  area = ctk_cell_layout_get_area (data->cell_layout);
 
   if (area)
     {
@@ -853,16 +853,16 @@ cell_packing_end_element (GMarkupParseContext *context,
 	  const gchar *translated;
 	  const gchar* domain;
 
-	  domain = gtk_builder_get_translation_domain (data->builder);
+	  domain = ctk_builder_get_translation_domain (data->builder);
 
-	  translated = _gtk_builder_parser_translate (domain,
+	  translated = _ctk_builder_parser_translate (domain,
 						      data->context,
 						      data->string->str);
 	  g_string_assign (data->string, translated);
 	}
 
       if (data->cell_prop_name)
-	gtk_cell_layout_buildable_set_cell_property (area,
+	ctk_cell_layout_buildable_set_cell_property (area,
 						     data->builder,
 						     data->renderer,
 						     data->cell_prop_name,
@@ -889,7 +889,7 @@ static const GMarkupParser cell_packing_parser =
   };
 
 gboolean
-_gtk_cell_layout_buildable_custom_tag_start (GtkBuildable  *buildable,
+_ctk_cell_layout_buildable_custom_tag_start (GtkBuildable  *buildable,
 					     GtkBuilder    *builder,
 					     GObject       *child,
 					     const gchar   *tagname,
@@ -934,7 +934,7 @@ _gtk_cell_layout_buildable_custom_tag_start (GtkBuildable  *buildable,
 }
 
 gboolean
-_gtk_cell_layout_buildable_custom_tag_end (GtkBuildable *buildable,
+_ctk_cell_layout_buildable_custom_tag_end (GtkBuildable *buildable,
 					   GtkBuilder   *builder,
 					   GObject      *child,
 					   const gchar  *tagname,
@@ -964,7 +964,7 @@ _gtk_cell_layout_buildable_custom_tag_end (GtkBuildable *buildable,
 }
 
 void
-_gtk_cell_layout_buildable_add_child (GtkBuildable      *buildable,
+_ctk_cell_layout_buildable_add_child (GtkBuildable      *buildable,
 				      GtkBuilder        *builder,
 				      GObject           *child,
 				      const gchar       *type)
@@ -972,5 +972,5 @@ _gtk_cell_layout_buildable_add_child (GtkBuildable      *buildable,
   g_return_if_fail (GTK_IS_CELL_LAYOUT (buildable));
   g_return_if_fail (GTK_IS_CELL_RENDERER (child));
 
-  gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (buildable), GTK_CELL_RENDERER (child), FALSE);
+  ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (buildable), GTK_CELL_RENDERER (child), FALSE);
 }

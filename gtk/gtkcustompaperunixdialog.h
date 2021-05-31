@@ -22,7 +22,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CUSTOM_PAPER_UNIX_DIALOG                  (gtk_custom_paper_unix_dialog_get_type ())
+#define GTK_TYPE_CUSTOM_PAPER_UNIX_DIALOG                  (ctk_custom_paper_unix_dialog_get_type ())
 #define GTK_CUSTOM_PAPER_UNIX_DIALOG(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_CUSTOM_PAPER_UNIX_DIALOG, GtkCustomPaperUnixDialog))
 #define GTK_CUSTOM_PAPER_UNIX_DIALOG_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_CUSTOM_PAPER_UNIX_DIALOG, GtkCustomPaperUnixDialogClass))
 #define GTK_IS_CUSTOM_PAPER_UNIX_DIALOG(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_CUSTOM_PAPER_UNIX_DIALOG))
@@ -52,20 +52,20 @@ struct _GtkCustomPaperUnixDialogClass
   /*< private >*/
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_ALL
-GType             gtk_custom_paper_unix_dialog_get_type           (void) G_GNUC_CONST;
-GtkWidget *       _gtk_custom_paper_unix_dialog_new                (GtkWindow   *parent,
+GType             ctk_custom_paper_unix_dialog_get_type           (void) G_GNUC_CONST;
+GtkWidget *       _ctk_custom_paper_unix_dialog_new                (GtkWindow   *parent,
 								   const gchar *title);
-GtkUnit           _gtk_print_get_default_user_units                (void);
-void              _gtk_print_load_custom_papers                    (GtkListStore *store);
-void              _gtk_print_save_custom_papers                    (GtkListStore *store);
-GList *           _gtk_load_custom_papers                          (void);
+GtkUnit           _ctk_print_get_default_user_units                (void);
+void              _ctk_print_load_custom_papers                    (GtkListStore *store);
+void              _ctk_print_save_custom_papers                    (GtkListStore *store);
+GList *           _ctk_load_custom_papers                          (void);
 
 
 G_END_DECLS

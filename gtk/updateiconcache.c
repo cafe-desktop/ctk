@@ -1427,7 +1427,7 @@ validate_file (const gchar *file)
   info.n_directories = 0;
   info.flags = CHECK_OFFSETS|CHECK_STRINGS|CHECK_PIXBUFS;
 
-  if (!_gtk_icon_cache_validate (&info))
+  if (!_ctk_icon_cache_validate (&info))
     {
       g_mapped_file_unref (map);
       return FALSE;

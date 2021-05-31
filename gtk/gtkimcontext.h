@@ -28,7 +28,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_IM_CONTEXT              (gtk_im_context_get_type ())
+#define GTK_TYPE_IM_CONTEXT              (ctk_im_context_get_type ())
 #define GTK_IM_CONTEXT(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_IM_CONTEXT, GtkIMContext))
 #define GTK_IM_CONTEXT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_IM_CONTEXT, GtkIMContextClass))
 #define GTK_IS_IM_CONTEXT(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_IM_CONTEXT))
@@ -85,51 +85,51 @@ struct _GtkIMContextClass
 				   gint           *cursor_index);
   /*< private >*/
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
-  void (*_gtk_reserved5) (void);
-  void (*_gtk_reserved6) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
+  void (*_ctk_reserved5) (void);
+  void (*_ctk_reserved6) (void);
 };
 
 GDK_AVAILABLE_IN_ALL
-GType    gtk_im_context_get_type            (void) G_GNUC_CONST;
+GType    ctk_im_context_get_type            (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-void     gtk_im_context_set_client_window   (GtkIMContext       *context,
+void     ctk_im_context_set_client_window   (GtkIMContext       *context,
 					     GdkWindow          *window);
 GDK_AVAILABLE_IN_ALL
-void     gtk_im_context_get_preedit_string  (GtkIMContext       *context,
+void     ctk_im_context_get_preedit_string  (GtkIMContext       *context,
 					     gchar             **str,
 					     PangoAttrList     **attrs,
 					     gint               *cursor_pos);
 GDK_AVAILABLE_IN_ALL
-gboolean gtk_im_context_filter_keypress     (GtkIMContext       *context,
+gboolean ctk_im_context_filter_keypress     (GtkIMContext       *context,
 					     GdkEventKey        *event);
 GDK_AVAILABLE_IN_ALL
-void     gtk_im_context_focus_in            (GtkIMContext       *context);
+void     ctk_im_context_focus_in            (GtkIMContext       *context);
 GDK_AVAILABLE_IN_ALL
-void     gtk_im_context_focus_out           (GtkIMContext       *context);
+void     ctk_im_context_focus_out           (GtkIMContext       *context);
 GDK_AVAILABLE_IN_ALL
-void     gtk_im_context_reset               (GtkIMContext       *context);
+void     ctk_im_context_reset               (GtkIMContext       *context);
 GDK_AVAILABLE_IN_ALL
-void     gtk_im_context_set_cursor_location (GtkIMContext       *context,
+void     ctk_im_context_set_cursor_location (GtkIMContext       *context,
 					     const GdkRectangle *area);
 GDK_AVAILABLE_IN_ALL
-void     gtk_im_context_set_use_preedit     (GtkIMContext       *context,
+void     ctk_im_context_set_use_preedit     (GtkIMContext       *context,
 					     gboolean            use_preedit);
 GDK_AVAILABLE_IN_ALL
-void     gtk_im_context_set_surrounding     (GtkIMContext       *context,
+void     ctk_im_context_set_surrounding     (GtkIMContext       *context,
 					     const gchar        *text,
 					     gint                len,
 					     gint                cursor_index);
 GDK_AVAILABLE_IN_ALL
-gboolean gtk_im_context_get_surrounding     (GtkIMContext       *context,
+gboolean ctk_im_context_get_surrounding     (GtkIMContext       *context,
 					     gchar             **text,
 					     gint               *cursor_index);
 GDK_AVAILABLE_IN_ALL
-gboolean gtk_im_context_delete_surrounding  (GtkIMContext       *context,
+gboolean ctk_im_context_delete_surrounding  (GtkIMContext       *context,
 					     gint                offset,
 					     gint                n_chars);
 

@@ -89,11 +89,11 @@ builder_get_toplevel (GtkBuilder *builder)
   GSList *list, *walk;
   GtkWidget *window = NULL;
 
-  list = gtk_builder_get_objects (builder);
+  list = ctk_builder_get_objects (builder);
   for (walk = list; walk; walk = walk->next)
     {
       if (GTK_IS_WINDOW (walk->data) &&
-          gtk_widget_get_parent (walk->data) == NULL)
+          ctk_widget_get_parent (walk->data) == NULL)
         {
           window = walk->data;
           break;
@@ -172,23 +172,23 @@ populate_tree (GtkBuilder *builder)
   GtkTreeStore *store;
   GtkTreeIter iter;
 
-  tv = (GtkTreeView *)gtk_builder_get_object (builder, "treeview1");
-  store = (GtkTreeStore *)gtk_tree_view_get_model (tv);
+  tv = (GtkTreeView *)ctk_builder_get_object (builder, "treeview1");
+  store = (GtkTreeStore *)ctk_tree_view_get_model (tv);
 
   /* append some rows */
-  gtk_tree_store_append (store, &iter, NULL);
-  gtk_tree_store_set (store, &iter, 0, "a(1)", 1, "a(2)", 2, "a(3)", 3, TRUE, 4, 0, 5, 0, -1);
-  gtk_tree_store_append (store, &iter, &iter);
-  gtk_tree_store_set (store, &iter, 0, "aa(1)", 1, "aa(2)", 2, "aa(3)", 3, TRUE, 4, 0, 5, 0, -1);
-      gtk_tree_store_append (store, &iter, &iter);
-  gtk_tree_store_set (store, &iter, 0, "aaa(1)", 1, "aaa(2)", 2, "aaa(3)", 3, TRUE, 4, 0, 5, 0, -1);
+  ctk_tree_store_append (store, &iter, NULL);
+  ctk_tree_store_set (store, &iter, 0, "a(1)", 1, "a(2)", 2, "a(3)", 3, TRUE, 4, 0, 5, 0, -1);
+  ctk_tree_store_append (store, &iter, &iter);
+  ctk_tree_store_set (store, &iter, 0, "aa(1)", 1, "aa(2)", 2, "aa(3)", 3, TRUE, 4, 0, 5, 0, -1);
+      ctk_tree_store_append (store, &iter, &iter);
+  ctk_tree_store_set (store, &iter, 0, "aaa(1)", 1, "aaa(2)", 2, "aaa(3)", 3, TRUE, 4, 0, 5, 0, -1);
 
-  gtk_tree_store_append (store, &iter, NULL);
-  gtk_tree_store_set (store, &iter, 0, "b(1)", 1, "b(2)", 2, "b(3)", 3, TRUE, 4, 0, 5, 0, -1);
-  gtk_tree_store_append (store, &iter, &iter);
-  gtk_tree_store_set (store, &iter, 0, "bb(1)", 1, "bb(2)", 2, "bb(3)", 3, TRUE, 4, 0, 5, 0, -1);
-      gtk_tree_store_append (store, &iter, &iter);
-  gtk_tree_store_set (store, &iter, 0, "bbb(1)", 1, "bbb(2)", 2, "bbb(3)", 3, TRUE, 4, 0, 5, 0, -1);
+  ctk_tree_store_append (store, &iter, NULL);
+  ctk_tree_store_set (store, &iter, 0, "b(1)", 1, "b(2)", 2, "b(3)", 3, TRUE, 4, 0, 5, 0, -1);
+  ctk_tree_store_append (store, &iter, &iter);
+  ctk_tree_store_set (store, &iter, 0, "bb(1)", 1, "bb(2)", 2, "bb(3)", 3, TRUE, 4, 0, 5, 0, -1);
+      ctk_tree_store_append (store, &iter, &iter);
+  ctk_tree_store_set (store, &iter, 0, "bbb(1)", 1, "bbb(2)", 2, "bbb(3)", 3, TRUE, 4, 0, 5, 0, -1);
 }
 
 typedef struct {
@@ -237,27 +237,27 @@ test_a11y_tree_focus (void)
   AtkObject *child;
   gchar *text;
 
-  builder = gtk_builder_new ();
-  gtk_builder_add_from_string (builder, tree_ui, -1, &error);
+  builder = ctk_builder_new ();
+  ctk_builder_add_from_string (builder, tree_ui, -1, &error);
   g_assert_no_error (error);
   window = builder_get_toplevel (builder);
   g_assert (window);
 
   populate_tree (builder);
 
-  tv = (GtkTreeView *)gtk_builder_get_object (builder, "treeview1");
-  gtk_tree_view_expand_all (tv);
+  tv = (GtkTreeView *)ctk_builder_get_object (builder, "treeview1");
+  ctk_tree_view_expand_all (tv);
 
-  gtk_widget_show (window);
+  ctk_widget_show (window);
 
-  gtk_tree_view_get_cursor (tv, &path, &focus_column);
-  gtk_tree_path_down (path);
+  ctk_tree_view_get_cursor (tv, &path, &focus_column);
+  ctk_tree_path_down (path);
   data.count = 0;
   data.descendant = NULL;
-  accessible = gtk_widget_get_accessible (GTK_WIDGET (tv));
+  accessible = ctk_widget_get_accessible (GTK_WIDGET (tv));
   g_signal_connect (accessible, "active_descendant_changed",
                     G_CALLBACK (active_descendant_changed), &data);
-  gtk_tree_view_set_cursor (tv, path, focus_column, FALSE);
+  ctk_tree_view_set_cursor (tv, path, focus_column, FALSE);
   /* hack: active_descendant_change gets fired in an idle handler */
   process_pending_idles ();
   /* Getting only one signal might be ideal, although we get three or so */
@@ -277,7 +277,7 @@ test_a11y_tree_focus (void)
 static AtkObject *
 find_root_accessible (GtkTreeView *tv, const char *name)
 {
-  AtkObject *tvaccessible = gtk_widget_get_accessible (GTK_WIDGET (tv));
+  AtkObject *tvaccessible = ctk_widget_get_accessible (GTK_WIDGET (tv));
   int i = 0;
 
   for (i = 0;;i++)
@@ -342,18 +342,18 @@ test_a11y_tree_relations (void)
   GtkTreeView *tv;
   AtkObject *parent, *child;
 
-  builder = gtk_builder_new ();
-  gtk_builder_add_from_string (builder, tree_ui, -1, &error);
+  builder = ctk_builder_new ();
+  ctk_builder_add_from_string (builder, tree_ui, -1, &error);
   g_assert_no_error (error);
   window = builder_get_toplevel (builder);
   g_assert (window);
 
   populate_tree (builder);
 
-  tv = (GtkTreeView *)gtk_builder_get_object (builder, "treeview1");
-  gtk_tree_view_expand_all (tv);
+  tv = (GtkTreeView *)ctk_builder_get_object (builder, "treeview1");
+  ctk_tree_view_expand_all (tv);
 
-  gtk_widget_show (window);
+  ctk_widget_show (window);
 
   parent = find_root_accessible (tv, "a(1)");
 child = find_root_accessible (tv, "aa(1)");
@@ -372,7 +372,7 @@ child = find_root_accessible (tv, "aaa(1)");
 int
 main (int argc, char *argv[])
 {
-  gtk_test_init (&argc, &argv, NULL);
+  ctk_test_init (&argc, &argv, NULL);
 
   g_test_add_func ("/a11y/tree/focus", test_a11y_tree_focus);
   g_test_add_func ("/a11y/tree/relations", test_a11y_tree_relations);

@@ -22,7 +22,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_MISC_IMPL (_gtk_misc_impl_get_type ())
+#define GTK_TYPE_MISC_IMPL (_ctk_misc_impl_get_type ())
 
 typedef struct _GtkMiscImpl      GtkMiscImpl;
 typedef struct _GtkMiscImplClass GtkMiscImplClass;
@@ -37,7 +37,7 @@ struct _GtkMiscImplClass
   AtkMiscClass parent_class;
 };
 
-GType _gtk_misc_impl_get_type (void);
+GType _ctk_misc_impl_get_type (void);
 
 G_END_DECLS
 

@@ -35,7 +35,7 @@ typedef struct {
   gint flags;
 } CacheInfo;
 
-gboolean _gtk_icon_cache_validate (CacheInfo *info);
+gboolean _ctk_icon_cache_validate (CacheInfo *info);
 
 G_END_DECLS
 

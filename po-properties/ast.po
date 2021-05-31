@@ -253,10 +253,10 @@ msgstr "Logotipu"
 #: ../gtk/gtkaboutdialog.c:495
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Un logotipu pa la caxa «tocante a». Si nun se afita, lo predeterminao ye "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 
 #: ../gtk/gtkaboutdialog.c:510
 msgid "Logo Icon Name"
@@ -2676,10 +2676,10 @@ msgstr "Progresu del pasu del pulsu"
 #: ../gtk/gtkentry.c:986
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "La fraición del anchor total de la entrada pa mover el bloque de rebote de "
-"progresu pa cada llamada a gtk_entry_progress_pulse()"
+"progresu pa cada llamada a ctk_entry_progress_pulse()"
 
 #: ../gtk/gtkentry.c:1003
 msgid "Placeholder text"
@@ -4855,10 +4855,10 @@ msgstr "El valor"
 
 #: ../gtk/gtkradioaction.c:119
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"El valor devueltu por gtk_radio_action_get_current_value() cuando esta "
+"El valor devueltu por ctk_radio_action_get_current_value() cuando esta "
 "aición ye l'aición actual del so grupu."
 
 #: ../gtk/gtkradioaction.c:135 ../gtk/gtkradiobutton.c:164
@@ -7470,8 +7470,8 @@ msgid "No show all"
 msgstr "Nun amosar too"
 
 #: ../gtk/gtkwidget.c:1069
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "Indica que gtk_widget_show_all() nun tien d'afeutar a esti widget"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "Indica que ctk_widget_show_all() nun tien d'afeutar a esti widget"
 
 #: ../gtk/gtkwidget.c:1092
 msgid "Whether this widget has a tooltip"
@@ -8205,10 +8205,10 @@ msgstr "El títulu del perfil de color qu'usar"
 #~ "dibuxaránse con detalles diferentes"
 
 #~ msgid ""
-#~ "The maximum number of items to be returned by gtk_recent_manager_get_items"
+#~ "The maximum number of items to be returned by ctk_recent_manager_get_items"
 #~ "()"
 #~ msgstr ""
-#~ "El númberu máximu d'elementos a devolver por gtk_recent_manager_get_items"
+#~ "El númberu máximu d'elementos a devolver por ctk_recent_manager_get_items"
 #~ "()"
 
 #~ msgid "Blinking"

@@ -82,7 +82,7 @@ static GtkCupsRequestStateFunc get_states[] = {
 };
 
 static void
-gtk_cups_result_set_error (GtkCupsResult    *result,
+ctk_cups_result_set_error (GtkCupsResult    *result,
                            GtkCupsErrorType  error_type,
                            int               error_status,
                            int               error_code, 
@@ -103,7 +103,7 @@ gtk_cups_result_set_error (GtkCupsResult    *result,
 }
 
 GtkCupsRequest *
-gtk_cups_request_new_with_username (http_t             *connection,
+ctk_cups_request_new_with_username (http_t             *connection,
                                     GtkCupsRequestType  req_type, 
                                     gint                operation_id,
                                     GIOChannel         *data_io,
@@ -168,20 +168,20 @@ gtk_cups_request_new_with_username (http_t             *connection,
 
   language = cupsLangDefault ();
 
-  gtk_cups_request_ipp_add_string (request, IPP_TAG_OPERATION, IPP_TAG_CHARSET,
+  ctk_cups_request_ipp_add_string (request, IPP_TAG_OPERATION, IPP_TAG_CHARSET,
                                    "attributes-charset", 
                                    NULL, "utf-8");
 	
-  gtk_cups_request_ipp_add_string (request, IPP_TAG_OPERATION, IPP_TAG_LANGUAGE,
+  ctk_cups_request_ipp_add_string (request, IPP_TAG_OPERATION, IPP_TAG_LANGUAGE,
                                    "attributes-natural-language", 
                                    NULL, language->language);
 
   if (username != NULL)
-    gtk_cups_request_ipp_add_string (request, IPP_TAG_OPERATION, IPP_TAG_NAME,
+    ctk_cups_request_ipp_add_string (request, IPP_TAG_OPERATION, IPP_TAG_NAME,
                                      "requesting-user-name",
                                      NULL, username);
   else
-    gtk_cups_request_ipp_add_string (request, IPP_TAG_OPERATION, IPP_TAG_NAME,
+    ctk_cups_request_ipp_add_string (request, IPP_TAG_OPERATION, IPP_TAG_NAME,
                                      "requesting-user-name",
                                      NULL, cupsUser ());
 
@@ -195,14 +195,14 @@ gtk_cups_request_new_with_username (http_t             *connection,
 }
 
 GtkCupsRequest *
-gtk_cups_request_new (http_t             *connection,
+ctk_cups_request_new (http_t             *connection,
                       GtkCupsRequestType  req_type, 
                       gint                operation_id,
                       GIOChannel         *data_io,
                       const char         *server,
                       const char         *resource)
 {
-  return gtk_cups_request_new_with_username (connection,
+  return ctk_cups_request_new_with_username (connection,
                                              req_type,
                                              operation_id,
                                              data_io,
@@ -212,7 +212,7 @@ gtk_cups_request_new (http_t             *connection,
 }
 
 static void
-gtk_cups_result_free (GtkCupsResult *result)
+ctk_cups_result_free (GtkCupsResult *result)
 {
   g_free (result->error_msg);
 
@@ -223,7 +223,7 @@ gtk_cups_result_free (GtkCupsResult *result)
 }
 
 void
-gtk_cups_request_free (GtkCupsRequest *request)
+ctk_cups_request_free (GtkCupsRequest *request)
 {
   if (request->own_http)
     {
@@ -245,13 +245,13 @@ gtk_cups_request_free (GtkCupsRequest *request)
   g_free (request->username);
   g_strfreev (request->auth_info_required);
 
-  gtk_cups_result_free (request->result);
+  ctk_cups_result_free (request->result);
 
   g_free (request);
 }
 
 gboolean 
-gtk_cups_request_read_write (GtkCupsRequest *request, gboolean connect_only)
+ctk_cups_request_read_write (GtkCupsRequest *request, gboolean connect_only)
 {
   if (connect_only && request->state != GTK_CUPS_REQUEST_START)
     return FALSE;
@@ -263,14 +263,14 @@ gtk_cups_request_read_write (GtkCupsRequest *request, gboolean connect_only)
       else if (request->type == GTK_CUPS_GET)
         get_states[request->state] (request);
 
-      if (gtk_cups_result_is_error (request->result))
+      if (ctk_cups_result_is_error (request->result))
         request->state = GTK_CUPS_REQUEST_DONE;
 
       if (request->attempts > _GTK_CUPS_MAX_ATTEMPTS &&
           request->state != GTK_CUPS_REQUEST_DONE)
         {
           /* TODO: should add a status or error code for too many failed attempts */
-          gtk_cups_result_set_error (request->result,
+          ctk_cups_result_set_error (request->result,
                                      GTK_CUPS_ERROR_GENERAL,
                                      0,
                                      0,
@@ -294,7 +294,7 @@ gtk_cups_request_read_write (GtkCupsRequest *request, gboolean connect_only)
 }
 
 GtkCupsPollState 
-gtk_cups_request_get_poll_state (GtkCupsRequest *request)
+ctk_cups_request_get_poll_state (GtkCupsRequest *request)
 {
   return request->poll_state;
 }
@@ -302,13 +302,13 @@ gtk_cups_request_get_poll_state (GtkCupsRequest *request)
 
 
 GtkCupsResult *
-gtk_cups_request_get_result (GtkCupsRequest *request)
+ctk_cups_request_get_result (GtkCupsRequest *request)
 {
   return request->result;
 }
 
 void            
-gtk_cups_request_ipp_add_string (GtkCupsRequest *request,
+ctk_cups_request_ipp_add_string (GtkCupsRequest *request,
                                  ipp_tag_t       group,
                                  ipp_tag_t       tag,
                                  const char     *name,
@@ -324,7 +324,7 @@ gtk_cups_request_ipp_add_string (GtkCupsRequest *request,
 }
 
 void            
-gtk_cups_request_ipp_add_strings (GtkCupsRequest    *request,
+ctk_cups_request_ipp_add_strings (GtkCupsRequest    *request,
 				  ipp_tag_t          group,
 				  ipp_tag_t          tag,
 				  const char        *name,
@@ -342,7 +342,7 @@ gtk_cups_request_ipp_add_strings (GtkCupsRequest    *request,
 }
 
 const char *
-gtk_cups_request_ipp_get_string (GtkCupsRequest *request,
+ctk_cups_request_ipp_get_string (GtkCupsRequest *request,
                                  ipp_tag_t       tag,
                                  const char     *name)
 {
@@ -455,7 +455,7 @@ _find_option_tag (const gchar *option)
  * See RFC 2911.
  */
 void
-gtk_cups_request_encode_option (GtkCupsRequest *request,
+ctk_cups_request_encode_option (GtkCupsRequest *request,
                                 const gchar    *option,
 			        const gchar    *value)
 {
@@ -649,7 +649,7 @@ gtk_cups_request_encode_option (GtkCupsRequest *request,
 }
 				
 void
-gtk_cups_request_set_ipp_version (GtkCupsRequest     *request,
+ctk_cups_request_set_ipp_version (GtkCupsRequest     *request,
 				  gint                major,
 				  gint                minor)
 {
@@ -723,7 +723,7 @@ _post_send (GtkCupsRequest *request)
           request->poll_state = GTK_CUPS_HTTP_IDLE;
 
           /* TODO: should add a status or error code for failed post */
-          gtk_cups_result_set_error (request->result,
+          ctk_cups_result_set_error (request->result,
                                      GTK_CUPS_ERROR_GENERAL,
                                      0,
                                      0,
@@ -758,7 +758,7 @@ _post_write_request (GtkCupsRequest *request)
       request->state = GTK_CUPS_POST_DONE;
       request->poll_state = GTK_CUPS_HTTP_IDLE;
  
-      gtk_cups_result_set_error (request->result, 
+      ctk_cups_result_set_error (request->result, 
                                  GTK_CUPS_ERROR_IPP,
                                  ipp_status,
                                  cups_error,
@@ -819,7 +819,7 @@ _post_write_data (GtkCupsRequest *request)
           request->state = GTK_CUPS_POST_DONE;
 	  request->poll_state = GTK_CUPS_HTTP_IDLE;
      
-          gtk_cups_result_set_error (request->result,
+          ctk_cups_result_set_error (request->result,
                                      GTK_CUPS_ERROR_IO,
                                      io_status,
                                      error->code, 
@@ -848,7 +848,7 @@ _post_write_data (GtkCupsRequest *request)
           request->state = GTK_CUPS_POST_DONE;
 	  request->poll_state = GTK_CUPS_HTTP_IDLE;
      
-          gtk_cups_result_set_error (request->result,
+          ctk_cups_result_set_error (request->result,
                                      GTK_CUPS_ERROR_HTTP,
                                      http_status,
                                      http_errno, 
@@ -881,7 +881,7 @@ _post_auth (GtkCupsRequest *request)
           request->state = GTK_CUPS_POST_DONE;
           request->poll_state = GTK_CUPS_HTTP_IDLE;
 
-          gtk_cups_result_set_error (request->result, 
+          ctk_cups_result_set_error (request->result, 
                                      GTK_CUPS_ERROR_AUTH,
                                      0,
                                      1,
@@ -902,7 +902,7 @@ _get_auth (GtkCupsRequest *request)
           request->state = GTK_CUPS_GET_DONE;
           request->poll_state = GTK_CUPS_HTTP_IDLE;
 
-          gtk_cups_result_set_error (request->result, 
+          ctk_cups_result_set_error (request->result, 
                                      GTK_CUPS_ERROR_AUTH,
                                      0,
                                      1,
@@ -1025,7 +1025,7 @@ _post_check (GtkCupsRequest *request)
 
           request->state = GTK_CUPS_POST_DONE;
           request->poll_state = GTK_CUPS_HTTP_IDLE;
-          gtk_cups_result_set_error (request->result, 
+          ctk_cups_result_set_error (request->result, 
                                      GTK_CUPS_ERROR_AUTH,
                                      0,
                                      0,
@@ -1056,7 +1056,7 @@ _post_check (GtkCupsRequest *request)
           request->state = GTK_CUPS_POST_DONE;
           request->poll_state = GTK_CUPS_HTTP_IDLE;
      
-          gtk_cups_result_set_error (request->result,
+          ctk_cups_result_set_error (request->result,
                                      GTK_CUPS_ERROR_HTTP,
                                      http_status,
                                      error, 
@@ -1093,7 +1093,7 @@ _post_check (GtkCupsRequest *request)
       else
         {
           request->state = GTK_CUPS_POST_DONE;
-          gtk_cups_result_set_error (request->result,
+          ctk_cups_result_set_error (request->result,
                                      GTK_CUPS_ERROR_HTTP,
                                      http_status,
                                      http_errno, 
@@ -1149,7 +1149,7 @@ _post_read_response (GtkCupsRequest *request)
   if (ipp_status == IPP_ERROR)
     {
       int ipp_error = cupsLastError ();
-      gtk_cups_result_set_error (request->result,  
+      ctk_cups_result_set_error (request->result,  
                                  GTK_CUPS_ERROR_IPP,
                                  ipp_status,
                                  ipp_error,
@@ -1179,7 +1179,7 @@ _get_send (GtkCupsRequest *request)
 
   if (request->data_io == NULL)
     {
-      gtk_cups_result_set_error (request->result,
+      ctk_cups_result_set_error (request->result,
                                  GTK_CUPS_ERROR_IO,
                                  G_IO_STATUS_ERROR,
                                  G_IO_CHANNEL_ERROR_FAILED, 
@@ -1205,7 +1205,7 @@ _get_send (GtkCupsRequest *request)
           request->poll_state = GTK_CUPS_HTTP_IDLE;
 	 
           /* TODO: should add a status or error code for failed GET */ 
-          gtk_cups_result_set_error (request->result, 
+          ctk_cups_result_set_error (request->result, 
                                      GTK_CUPS_ERROR_GENERAL,
                                      0,
                                      0,
@@ -1318,7 +1318,7 @@ _get_check (GtkCupsRequest *request)
 
           request->state = GTK_CUPS_GET_DONE;
           request->poll_state = GTK_CUPS_HTTP_IDLE;
-          gtk_cups_result_set_error (request->result, 
+          ctk_cups_result_set_error (request->result, 
                                      GTK_CUPS_ERROR_AUTH,
                                      0,
                                      0,
@@ -1359,7 +1359,7 @@ _get_check (GtkCupsRequest *request)
       else
         {
           request->state = GTK_CUPS_GET_DONE;
-          gtk_cups_result_set_error (request->result,
+          ctk_cups_result_set_error (request->result,
                                      GTK_CUPS_ERROR_HTTP,
                                      http_status,
                                      http_errno, 
@@ -1431,7 +1431,7 @@ _get_read_data (GtkCupsRequest *request)
       request->state = GTK_CUPS_GET_DONE;
       request->poll_state = GTK_CUPS_HTTP_IDLE;
     
-      gtk_cups_result_set_error (request->result,
+      ctk_cups_result_set_error (request->result,
                                  GTK_CUPS_ERROR_IO,
                                  io_status,
                                  error->code, 
@@ -1450,43 +1450,43 @@ _get_read_data (GtkCupsRequest *request)
 }
 
 gboolean
-gtk_cups_request_is_done (GtkCupsRequest *request)
+ctk_cups_request_is_done (GtkCupsRequest *request)
 {
   return (request->state == GTK_CUPS_REQUEST_DONE);
 }
 
 gboolean
-gtk_cups_result_is_error (GtkCupsResult *result)
+ctk_cups_result_is_error (GtkCupsResult *result)
 {
   return result->is_error;
 }
 
 ipp_t *
-gtk_cups_result_get_response (GtkCupsResult *result)
+ctk_cups_result_get_response (GtkCupsResult *result)
 {
   return result->ipp_response;
 }
 
 GtkCupsErrorType
-gtk_cups_result_get_error_type (GtkCupsResult *result)
+ctk_cups_result_get_error_type (GtkCupsResult *result)
 {
   return result->error_type;
 }
 
 int
-gtk_cups_result_get_error_status (GtkCupsResult *result)
+ctk_cups_result_get_error_status (GtkCupsResult *result)
 {
   return result->error_status;
 }
 
 int
-gtk_cups_result_get_error_code (GtkCupsResult *result)
+ctk_cups_result_get_error_code (GtkCupsResult *result)
 {
   return result->error_code;
 }
 
 const char *
-gtk_cups_result_get_error_string (GtkCupsResult *result)
+ctk_cups_result_get_error_string (GtkCupsResult *result)
 {
   return result->error_msg; 
 }
@@ -1495,7 +1495,7 @@ gtk_cups_result_get_error_string (GtkCupsResult *result)
  * a socket for communication with a CUPS server 'server'.
  */
 GtkCupsConnectionTest *
-gtk_cups_connection_test_new (const char *server,
+ctk_cups_connection_test_new (const char *server,
                               const int   port)
 {
   GtkCupsConnectionTest *result = NULL;
@@ -1520,7 +1520,7 @@ gtk_cups_connection_test_new (const char *server,
   result->last_wrong_addr = NULL;
   result->at_init = GTK_CUPS_CONNECTION_NOT_AVAILABLE;
 
-  result->at_init = gtk_cups_connection_test_get_state (result);
+  result->at_init = ctk_cups_connection_test_get_state (result);
 
   return result;
 }
@@ -1532,7 +1532,7 @@ gtk_cups_connection_test_new (const char *server,
  * The connection is closed after a successful connection.
  */
 GtkCupsConnectionState 
-gtk_cups_connection_test_get_state (GtkCupsConnectionTest *test)
+ctk_cups_connection_test_get_state (GtkCupsConnectionTest *test)
 {
   GtkCupsConnectionState result = GTK_CUPS_CONNECTION_NOT_AVAILABLE;
   http_addrlist_t       *iter;
@@ -1619,7 +1619,7 @@ gtk_cups_connection_test_get_state (GtkCupsConnectionTest *test)
 /* This function frees memory used by the GtkCupsConnectionTest structure.
  */
 void 
-gtk_cups_connection_test_free (GtkCupsConnectionTest *test)
+ctk_cups_connection_test_free (GtkCupsConnectionTest *test)
 {
   if (test == NULL)
     return;

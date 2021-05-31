@@ -776,10 +776,10 @@ msgstr "Il valôr"
 
 #: gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"Il valôr tornât di gtk_radio_action_get_current_value() cuant che cheste "
+"Il valôr tornât di ctk_radio_action_get_current_value() cuant che cheste "
 "azion e je la azion atuâl dal so grup."
 
 #: gtk/deprecated/gtkradioaction.c:139 gtk/gtkradiobutton.c:184
@@ -1239,10 +1239,10 @@ msgstr "Logo"
 #: gtk/gtkaboutdialog.c:552
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Un logo pal ricuadri informazions. Se chest nol è stabilît, si fâs "
-"riferiment al predefinît gtk_window_get_default_icon_list()"
+"riferiment al predefinît ctk_window_get_default_icon_list()"
 
 #: gtk/gtkaboutdialog.c:566
 msgid "Logo Icon Name"
@@ -3407,7 +3407,7 @@ msgstr ""
 #: gtk/gtkentry.c:1094
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 
 #: gtk/gtkentry.c:1110
@@ -8931,7 +8931,7 @@ msgid "No show all"
 msgstr "No mostrâ dut"
 
 #: gtk/gtkwidget.c:1264
-msgid "Whether gtk_widget_show_all() should not affect this widget"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
 msgstr ""
 
 #: gtk/gtkwidget.c:1286

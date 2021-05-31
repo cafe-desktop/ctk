@@ -26,7 +26,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_HEADER_BAR_ACCESSIBLE                  (gtk_header_bar_accessible_get_type ())
+#define GTK_TYPE_HEADER_BAR_ACCESSIBLE                  (ctk_header_bar_accessible_get_type ())
 #define GTK_HEADER_BAR_ACCESSIBLE(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_HEADER_BAR_ACCESSIBLE, GtkHeaderBarAccessible))
 #define GTK_HEADER_BAR_ACCESSIBLE_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_HEADER_BAR_ACCESSIBLE, GtkHeaderBarAccessibleClass))
 #define GTK_IS_HEADER_BAR_ACCESSIBLE(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_HEADER_BAR_ACCESSIBLE))
@@ -48,7 +48,7 @@ struct _GtkHeaderBarAccessibleClass
 };
 
 GDK_AVAILABLE_IN_ALL
-GType gtk_header_bar_accessible_get_type (void);
+GType ctk_header_bar_accessible_get_type (void);
 
 G_END_DECLS
 

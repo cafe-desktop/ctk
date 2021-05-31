@@ -25,7 +25,7 @@
 #include "gtkprivate.h"
 
 GtkCssLookup *
-_gtk_css_lookup_new (const GtkBitmask *relevant)
+_ctk_css_lookup_new (const GtkBitmask *relevant)
 {
   GtkCssLookup *lookup;
 
@@ -33,65 +33,65 @@ _gtk_css_lookup_new (const GtkBitmask *relevant)
 
   if (relevant)
     {
-      lookup->missing = _gtk_bitmask_copy (relevant);
+      lookup->missing = _ctk_bitmask_copy (relevant);
     }
   else
     {
-      lookup->missing = _gtk_bitmask_new ();
-      lookup->missing = _gtk_bitmask_invert_range (lookup->missing, 0, GTK_CSS_PROPERTY_N_PROPERTIES);
+      lookup->missing = _ctk_bitmask_new ();
+      lookup->missing = _ctk_bitmask_invert_range (lookup->missing, 0, GTK_CSS_PROPERTY_N_PROPERTIES);
     }
 
   return lookup;
 }
 
 void
-_gtk_css_lookup_free (GtkCssLookup *lookup)
+_ctk_css_lookup_free (GtkCssLookup *lookup)
 {
-  gtk_internal_return_if_fail (lookup != NULL);
+  ctk_internal_return_if_fail (lookup != NULL);
 
-  _gtk_bitmask_free (lookup->missing);
+  _ctk_bitmask_free (lookup->missing);
   g_free (lookup);
 }
 
 gboolean
-_gtk_css_lookup_is_missing (const GtkCssLookup *lookup,
+_ctk_css_lookup_is_missing (const GtkCssLookup *lookup,
                             guint               id)
 {
-  gtk_internal_return_val_if_fail (lookup != NULL, FALSE);
+  ctk_internal_return_val_if_fail (lookup != NULL, FALSE);
 
-  return _gtk_bitmask_get (lookup->missing, id);
+  return _ctk_bitmask_get (lookup->missing, id);
 }
 
 /**
- * _gtk_css_lookup_set:
+ * _ctk_css_lookup_set:
  * @lookup: the lookup
- * @id: id of the property to set, see _gtk_style_property_get_id()
+ * @id: id of the property to set, see _ctk_style_property_get_id()
  * @section: (allow-none): The @section the value was defined in or %NULL
  * @value: the “cascading value” to use
  *
  * Sets the @value for a given @id. No value may have been set for @id
- * before. See _gtk_css_lookup_is_missing(). This function is used to
+ * before. See _ctk_css_lookup_is_missing(). This function is used to
  * set the “winning declaration” of a lookup. Note that for performance
  * reasons @value and @section are not copied. It is your responsibility
- * to ensure they are kept alive until _gtk_css_lookup_free() is called.
+ * to ensure they are kept alive until _ctk_css_lookup_free() is called.
  **/
 void
-_gtk_css_lookup_set (GtkCssLookup  *lookup,
+_ctk_css_lookup_set (GtkCssLookup  *lookup,
                      guint          id,
                      GtkCssSection *section,
                      GtkCssValue   *value)
 {
-  gtk_internal_return_if_fail (lookup != NULL);
-  gtk_internal_return_if_fail (_gtk_bitmask_get (lookup->missing, id));
-  gtk_internal_return_if_fail (value != NULL);
+  ctk_internal_return_if_fail (lookup != NULL);
+  ctk_internal_return_if_fail (_ctk_bitmask_get (lookup->missing, id));
+  ctk_internal_return_if_fail (value != NULL);
 
-  lookup->missing = _gtk_bitmask_set (lookup->missing, id, FALSE);
+  lookup->missing = _ctk_bitmask_set (lookup->missing, id, FALSE);
   lookup->values[id].value = value;
   lookup->values[id].section = section;
 }
 
 /**
- * _gtk_css_lookup_resolve:
+ * _ctk_css_lookup_resolve:
  * @lookup: the lookup
  * @context: the context the values are resolved for
  * @values: a new #GtkCssStyle to be filled with the new properties
@@ -103,23 +103,23 @@ _gtk_css_lookup_set (GtkCssLookup  *lookup,
  * an issue, go fix it.
  **/
 void
-_gtk_css_lookup_resolve (GtkCssLookup            *lookup,
+_ctk_css_lookup_resolve (GtkCssLookup            *lookup,
                          GtkStyleProviderPrivate *provider,
                          GtkCssStaticStyle       *style,
                          GtkCssStyle             *parent_style)
 {
   guint i;
 
-  gtk_internal_return_if_fail (lookup != NULL);
-  gtk_internal_return_if_fail (GTK_IS_STYLE_PROVIDER_PRIVATE (provider));
-  gtk_internal_return_if_fail (GTK_IS_CSS_STATIC_STYLE (style));
-  gtk_internal_return_if_fail (parent_style == NULL || GTK_IS_CSS_STYLE (parent_style));
+  ctk_internal_return_if_fail (lookup != NULL);
+  ctk_internal_return_if_fail (GTK_IS_STYLE_PROVIDER_PRIVATE (provider));
+  ctk_internal_return_if_fail (GTK_IS_CSS_STATIC_STYLE (style));
+  ctk_internal_return_if_fail (parent_style == NULL || GTK_IS_CSS_STYLE (parent_style));
 
   for (i = 0; i < GTK_CSS_PROPERTY_N_PROPERTIES; i++)
     {
       if (lookup->values[i].value ||
-          _gtk_bitmask_get (lookup->missing, i))
-        gtk_css_static_style_compute_value (style,
+          _ctk_bitmask_get (lookup->missing, i))
+        ctk_css_static_style_compute_value (style,
                                             provider,
                                             parent_style,
                                             i,

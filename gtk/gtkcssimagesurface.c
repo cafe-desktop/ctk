@@ -22,10 +22,10 @@
 #include "gtkcssimagesurfaceprivate.h"
 #include <math.h>
 
-G_DEFINE_TYPE (GtkCssImageSurface, _gtk_css_image_surface, GTK_TYPE_CSS_IMAGE)
+G_DEFINE_TYPE (GtkCssImageSurface, _ctk_css_image_surface, GTK_TYPE_CSS_IMAGE)
 
 static int
-gtk_css_image_surface_get_width (GtkCssImage *image)
+ctk_css_image_surface_get_width (GtkCssImage *image)
 {
   GtkCssImageSurface *surface = GTK_CSS_IMAGE_SURFACE (image);
 
@@ -33,7 +33,7 @@ gtk_css_image_surface_get_width (GtkCssImage *image)
 }
 
 static int
-gtk_css_image_surface_get_height (GtkCssImage *image)
+ctk_css_image_surface_get_height (GtkCssImage *image)
 {
   GtkCssImageSurface *surface = GTK_CSS_IMAGE_SURFACE (image);
 
@@ -41,7 +41,7 @@ gtk_css_image_surface_get_height (GtkCssImage *image)
 }
 
 static void
-gtk_css_image_surface_draw (GtkCssImage *image,
+ctk_css_image_surface_draw (GtkCssImage *image,
                             cairo_t     *cr,
                             double       width,
                             double       height)
@@ -106,7 +106,7 @@ surface_write (void                *closure,
 }
 
 static void
-gtk_css_image_surface_print (GtkCssImage *image,
+ctk_css_image_surface_print (GtkCssImage *image,
                              GString     *string)
 {
 #if CAIRO_HAS_PNG_FUNCTIONS
@@ -130,7 +130,7 @@ gtk_css_image_surface_print (GtkCssImage *image,
 }
 
 static void
-gtk_css_image_surface_dispose (GObject *object)
+ctk_css_image_surface_dispose (GObject *object)
 {
   GtkCssImageSurface *surface = GTK_CSS_IMAGE_SURFACE (object);
 
@@ -142,30 +142,30 @@ gtk_css_image_surface_dispose (GObject *object)
 
   g_clear_pointer (&surface->cache, cairo_surface_destroy);
 
-  G_OBJECT_CLASS (_gtk_css_image_surface_parent_class)->dispose (object);
+  G_OBJECT_CLASS (_ctk_css_image_surface_parent_class)->dispose (object);
 }
 
 static void
-_gtk_css_image_surface_class_init (GtkCssImageSurfaceClass *klass)
+_ctk_css_image_surface_class_init (GtkCssImageSurfaceClass *klass)
 {
   GtkCssImageClass *image_class = GTK_CSS_IMAGE_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  image_class->get_width = gtk_css_image_surface_get_width;
-  image_class->get_height = gtk_css_image_surface_get_height;
-  image_class->draw = gtk_css_image_surface_draw;
-  image_class->print = gtk_css_image_surface_print;
+  image_class->get_width = ctk_css_image_surface_get_width;
+  image_class->get_height = ctk_css_image_surface_get_height;
+  image_class->draw = ctk_css_image_surface_draw;
+  image_class->print = ctk_css_image_surface_print;
 
-  object_class->dispose = gtk_css_image_surface_dispose;
+  object_class->dispose = ctk_css_image_surface_dispose;
 }
 
 static void
-_gtk_css_image_surface_init (GtkCssImageSurface *image_surface)
+_ctk_css_image_surface_init (GtkCssImageSurface *image_surface)
 {
 }
 
 GtkCssImage *
-_gtk_css_image_surface_new (cairo_surface_t *surface)
+_ctk_css_image_surface_new (cairo_surface_t *surface)
 {
   GtkCssImage *image;
 
@@ -179,7 +179,7 @@ _gtk_css_image_surface_new (cairo_surface_t *surface)
 }
 
 GtkCssImage *
-_gtk_css_image_surface_new_for_pixbuf (GdkPixbuf *pixbuf)
+_ctk_css_image_surface_new_for_pixbuf (GdkPixbuf *pixbuf)
 {
   GtkCssImage *image;
   cairo_surface_t *surface;
@@ -188,7 +188,7 @@ _gtk_css_image_surface_new_for_pixbuf (GdkPixbuf *pixbuf)
 
   surface = gdk_cairo_surface_create_from_pixbuf (pixbuf, 1, NULL);
 
-  image = _gtk_css_image_surface_new (surface);
+  image = _ctk_css_image_surface_new (surface);
   cairo_surface_destroy (surface);
 
   return image;

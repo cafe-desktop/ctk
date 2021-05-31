@@ -23,7 +23,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SHORTCUTS_WINDOW            (gtk_shortcuts_window_get_type ())
+#define GTK_TYPE_SHORTCUTS_WINDOW            (ctk_shortcuts_window_get_type ())
 #define GTK_SHORTCUTS_WINDOW(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SHORTCUTS_WINDOW, GtkShortcutsWindow))
 #define GTK_SHORTCUTS_WINDOW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SHORTCUTS_WINDOW, GtkShortcutsWindowClass))
 #define GTK_IS_SHORTCUTS_WINDOW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SHORTCUTS_WINDOW))
@@ -49,7 +49,7 @@ struct _GtkShortcutsWindowClass
 };
 
 GDK_AVAILABLE_IN_3_20
-GType gtk_shortcuts_window_get_type (void) G_GNUC_CONST;
+GType ctk_shortcuts_window_get_type (void) G_GNUC_CONST;
 
 G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkShortcutsWindow, g_object_unref)
 

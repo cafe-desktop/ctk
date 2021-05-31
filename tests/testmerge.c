@@ -43,7 +43,7 @@ dump_tree (GtkWidget    *button,
 {
   gchar *dump;
 
-  dump = gtk_ui_manager_get_ui (merge);
+  dump = ctk_ui_manager_get_ui (merge);
   g_message ("%s", dump);
   g_free (dump);
 }
@@ -51,7 +51,7 @@ dump_tree (GtkWidget    *button,
 static void
 dump_accels (void)
 {
-  gtk_accel_map_save_fd (STDOUT_FILENO);
+  ctk_accel_map_save_fd (STDOUT_FILENO);
 }
 
 static void
@@ -66,7 +66,7 @@ dump_toplevels (GtkWidget    *button,
 {
   GSList *toplevels;
 
-  toplevels = gtk_ui_manager_get_toplevels (merge, 
+  toplevels = ctk_ui_manager_get_toplevels (merge, 
 					    GTK_UI_MANAGER_MENUBAR |
 					    GTK_UI_MANAGER_TOOLBAR |
 					    GTK_UI_MANAGER_POPUP);
@@ -81,9 +81,9 @@ toggle_tearoffs (GtkWidget    *button,
 {
   gboolean add_tearoffs;
 
-  add_tearoffs = gtk_ui_manager_get_add_tearoffs (merge);
+  add_tearoffs = ctk_ui_manager_get_add_tearoffs (merge);
   
-  gtk_ui_manager_set_add_tearoffs (merge, !add_tearoffs);
+  ctk_ui_manager_set_add_tearoffs (merge, !add_tearoffs);
 }
 
 static gint
@@ -95,42 +95,42 @@ delayed_toggle_dynamic (GtkUIManager *merge)
 
   if (!dynamic)
     {
-      dynamic = gtk_action_group_new ("dynamic");
-      gtk_ui_manager_insert_action_group (merge, dynamic, 0);
+      dynamic = ctk_action_group_new ("dynamic");
+      ctk_ui_manager_insert_action_group (merge, dynamic, 0);
       dyn = g_object_new (GTK_TYPE_ACTION,
 			  "name", "dyn1",
 			  "label", "Dynamic action 1",
 			  "stock_id", GTK_STOCK_COPY,
 			  NULL);
-      gtk_action_group_add_action (dynamic, dyn);
+      ctk_action_group_add_action (dynamic, dyn);
       dyn = g_object_new (GTK_TYPE_ACTION,
 			  "name", "dyn2",
 			  "label", "Dynamic action 2",
 			  "stock_id", GTK_STOCK_EXECUTE,
 			  NULL);
-      gtk_action_group_add_action (dynamic, dyn);
+      ctk_action_group_add_action (dynamic, dyn);
     }
   
   if (merge_id == 0)
     {
-      merge_id = gtk_ui_manager_new_merge_id (merge);
-      gtk_ui_manager_add_ui (merge, merge_id, "/toolbar1/ToolbarPlaceholder", 
+      merge_id = ctk_ui_manager_new_merge_id (merge);
+      ctk_ui_manager_add_ui (merge, merge_id, "/toolbar1/ToolbarPlaceholder", 
 			     "dyn1", "dyn1", 0, 0);
-      gtk_ui_manager_add_ui (merge, merge_id, "/toolbar1/ToolbarPlaceholder", 
+      ctk_ui_manager_add_ui (merge, merge_id, "/toolbar1/ToolbarPlaceholder", 
 			     "dynsep", NULL, GTK_UI_MANAGER_SEPARATOR, 0);
-      gtk_ui_manager_add_ui (merge, merge_id, "/toolbar1/ToolbarPlaceholder", 
+      ctk_ui_manager_add_ui (merge, merge_id, "/toolbar1/ToolbarPlaceholder", 
 			     "dyn2", "dyn2", 0, 0);
 
-      gtk_ui_manager_add_ui (merge, merge_id, "/menubar/EditMenu", 
+      ctk_ui_manager_add_ui (merge, merge_id, "/menubar/EditMenu", 
 			     "dyn1menu", "dyn1", GTK_UI_MANAGER_MENU, 0);
-      gtk_ui_manager_add_ui (merge, merge_id, "/menubar/EditMenu/dyn1menu", 
+      ctk_ui_manager_add_ui (merge, merge_id, "/menubar/EditMenu/dyn1menu", 
 			     "dyn1", "dyn1", GTK_UI_MANAGER_MENUITEM, 0);
-      gtk_ui_manager_add_ui (merge, merge_id, "/menubar/EditMenu/dyn1menu/dyn1", 
+      ctk_ui_manager_add_ui (merge, merge_id, "/menubar/EditMenu/dyn1menu/dyn1", 
 			     "dyn2", "dyn2", GTK_UI_MANAGER_AUTO, FALSE);
     }
   else 
     {
-      gtk_ui_manager_remove_ui (merge, merge_id);
+      ctk_ui_manager_remove_ui (merge, merge_id);
       merge_id = 0;
     }
 
@@ -147,7 +147,7 @@ toggle_dynamic (GtkWidget    *button,
 static void
 activate_action (GtkAction *action)
 {
-  const gchar *name = gtk_action_get_name (action);
+  const gchar *name = ctk_action_get_name (action);
   const gchar *typename = G_OBJECT_TYPE_NAME (action);
 
   g_message ("Action %s (type=%s) activated", name, typename);
@@ -156,11 +156,11 @@ activate_action (GtkAction *action)
 static void
 toggle_action (GtkAction *action)
 {
-  const gchar *name = gtk_action_get_name (action);
+  const gchar *name = ctk_action_get_name (action);
   const gchar *typename = G_OBJECT_TYPE_NAME (action);
 
   g_message ("ToggleAction %s (type=%s) toggled (active=%d)", name, typename,
-	     gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)));
+	     ctk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)));
 }
 
 
@@ -168,10 +168,10 @@ static void
 radio_action_changed (GtkAction *action, GtkRadioAction *current)
 {
   g_message ("RadioAction %s (type=%s) activated (active=%d) (value %d)", 
-	     gtk_action_get_name (GTK_ACTION (current)), 
+	     ctk_action_get_name (GTK_ACTION (current)), 
 	     G_OBJECT_TYPE_NAME (GTK_ACTION (current)),
-	     gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (current)),
-	     gtk_radio_action_get_current_value (current));
+	     ctk_toggle_action_get_active (GTK_TOGGLE_ACTION (current)),
+	     ctk_radio_action_get_current_value (current));
 }
 
 static GtkActionEntry entries[] = {
@@ -183,7 +183,7 @@ static GtkActionEntry entries[] = {
   { "EmptyMenu2Action", NULL, "Empty 2" },
   { "Test", NULL, "Test" },
 
-  { "QuitAction",  GTK_STOCK_QUIT,  NULL,     "<control>q", "Quit", G_CALLBACK (gtk_main_quit) },
+  { "QuitAction",  GTK_STOCK_QUIT,  NULL,     "<control>q", "Quit", G_CALLBACK (ctk_main_quit) },
   { "NewAction",   GTK_STOCK_NEW,   NULL,     "<control>n", "Create something", G_CALLBACK (activate_action) },
   { "New2Action",  GTK_STOCK_NEW,   NULL,     "<control>m", "Create something else", G_CALLBACK (activate_action) },
   { "OpenAction",  GTK_STOCK_OPEN,  NULL,     NULL,         "Open it", G_CALLBACK (activate_action) },
@@ -224,8 +224,8 @@ add_widget (GtkUIManager *merge,
 	    GtkWidget    *widget, 
 	    GtkBox       *box)
 {
-  gtk_box_pack_start (box, widget, FALSE, FALSE, 0);
-  gtk_widget_show (widget);
+  ctk_box_pack_start (box, widget, FALSE, FALSE, 0);
+  ctk_widget_show (widget);
 }
 
 static void
@@ -236,24 +236,24 @@ toggle_merge (GtkWidget    *button,
 
   mergenum = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (button), "mergenum"));
 
-  if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button)))
+  if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button)))
     {
       GError *err = NULL;
 
       g_message ("merging %s", merge_ids[mergenum].filename);
       merge_ids[mergenum].merge_id =
-	gtk_ui_manager_add_ui_from_file (merge, merge_ids[mergenum].filename, &err);
+	ctk_ui_manager_add_ui_from_file (merge, merge_ids[mergenum].filename, &err);
       if (err != NULL)
 	{
 	  GtkWidget *dialog;
 
-	  dialog = gtk_message_dialog_new (GTK_WINDOW (gtk_widget_get_toplevel (button)),
+	  dialog = ctk_message_dialog_new (GTK_WINDOW (ctk_widget_get_toplevel (button)),
 					   0, GTK_MESSAGE_WARNING, GTK_BUTTONS_OK,
 					   "could not merge %s: %s", merge_ids[mergenum].filename,
 					   err->message);
 
-	  g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
-	  gtk_widget_show (dialog);
+	  g_signal_connect (dialog, "response", G_CALLBACK (ctk_widget_destroy), NULL);
+	  ctk_widget_show (dialog);
 
 	  g_clear_error (&err);
 	}
@@ -262,7 +262,7 @@ toggle_merge (GtkWidget    *button,
     {
       g_message ("unmerging %s (merge_id=%u)", merge_ids[mergenum].filename,
 		 merge_ids[mergenum].merge_id);
-      gtk_ui_manager_remove_ui (merge, merge_ids[mergenum].merge_id);
+      ctk_ui_manager_remove_ui (merge, merge_ids[mergenum].merge_id);
     }
 }
 
@@ -276,7 +276,7 @@ set_name_func (GtkTreeViewColumn *tree_column,
   GtkAction *action;
   char *name;
   
-  gtk_tree_model_get (tree_model, iter, 0, &action, -1);
+  ctk_tree_model_get (tree_model, iter, 0, &action, -1);
   g_object_get (action, "name", &name, NULL);
   g_object_set (cell, "text", name, NULL);
   g_free (name);
@@ -293,7 +293,7 @@ set_sensitive_func (GtkTreeViewColumn *tree_column,
   GtkAction *action;
   gboolean sensitive;
   
-  gtk_tree_model_get (tree_model, iter, 0, &action, -1);
+  ctk_tree_model_get (tree_model, iter, 0, &action, -1);
   g_object_get (action, "sensitive", &sensitive, NULL);
   g_object_set (cell, "active", sensitive, NULL);
   g_object_unref (action);
@@ -310,7 +310,7 @@ set_visible_func (GtkTreeViewColumn *tree_column,
   GtkAction *action;
   gboolean visible;
   
-  gtk_tree_model_get (tree_model, iter, 0, &action, -1);
+  ctk_tree_model_get (tree_model, iter, 0, &action, -1);
   g_object_get (action, "visible", &visible, NULL);
   g_object_set (cell, "active", visible, NULL);
   g_object_unref (action);
@@ -326,14 +326,14 @@ sensitivity_toggled (GtkCellRendererToggle *cell,
   GtkAction *action;
   gboolean sensitive;
 
-  path = gtk_tree_path_new_from_string (path_str);
-  gtk_tree_model_get_iter (model, &iter, path);
+  path = ctk_tree_path_new_from_string (path_str);
+  ctk_tree_model_get_iter (model, &iter, path);
 
-  gtk_tree_model_get (model, &iter, 0, &action, -1);
+  ctk_tree_model_get (model, &iter, 0, &action, -1);
   g_object_get (action, "sensitive", &sensitive, NULL);
   g_object_set (action, "sensitive", !sensitive, NULL);
-  gtk_tree_model_row_changed (model, path, &iter);
-  gtk_tree_path_free (path);
+  ctk_tree_model_row_changed (model, path, &iter);
+  ctk_tree_path_free (path);
 }
 
 static void
@@ -346,14 +346,14 @@ visibility_toggled (GtkCellRendererToggle *cell,
   GtkAction *action;
   gboolean visible;
 
-  path = gtk_tree_path_new_from_string (path_str);
-  gtk_tree_model_get_iter (model, &iter, path);
+  path = ctk_tree_path_new_from_string (path_str);
+  ctk_tree_model_get_iter (model, &iter, path);
 
-  gtk_tree_model_get (model, &iter, 0, &action, -1);
+  ctk_tree_model_get (model, &iter, 0, &action, -1);
   g_object_get (action, "visible", &visible, NULL);
   g_object_set (action, "visible", !visible, NULL);
-  gtk_tree_model_row_changed (model, path, &iter);
-  gtk_tree_path_free (path);
+  ctk_tree_model_row_changed (model, path, &iter);
+  ctk_tree_path_free (path);
 }
 
 static gint
@@ -367,13 +367,13 @@ iter_compare_func (GtkTreeModel *model,
   const gchar *a_name, *b_name;
   gint retval = 0;
 
-  gtk_tree_model_get_value (model, a, 0, &a_value);
-  gtk_tree_model_get_value (model, b, 0, &b_value);
+  ctk_tree_model_get_value (model, a, 0, &a_value);
+  ctk_tree_model_get_value (model, b, 0, &b_value);
   a_action = GTK_ACTION (g_value_get_object (&a_value));
   b_action = GTK_ACTION (g_value_get_object (&b_value));
 
-  a_name = gtk_action_get_name (a_action);
-  b_name = gtk_action_get_name (b_action);
+  a_name = ctk_action_get_name (a_action);
+  b_name = ctk_action_get_name (b_action);
   if (a_name == NULL && b_name == NULL) 
     retval = 0;
   else if (a_name == NULL)
@@ -397,57 +397,57 @@ create_tree_view (GtkUIManager *merge)
   GList *p;
   GtkCellRenderer *cell;
   
-  store = gtk_list_store_new (1, GTK_TYPE_ACTION);
-  gtk_tree_sortable_set_sort_func (GTK_TREE_SORTABLE (store), 0,
+  store = ctk_list_store_new (1, GTK_TYPE_ACTION);
+  ctk_tree_sortable_set_sort_func (GTK_TREE_SORTABLE (store), 0,
 				   iter_compare_func, NULL, NULL);
-  gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (store), 0,
+  ctk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (store), 0,
 					GTK_SORT_ASCENDING);
   
-  for (p = gtk_ui_manager_get_action_groups (merge); p; p = p->next)
+  for (p = ctk_ui_manager_get_action_groups (merge); p; p = p->next)
     {
       GList *actions, *l;
 
-      actions = gtk_action_group_list_actions (p->data);
+      actions = ctk_action_group_list_actions (p->data);
 
       for (l = actions; l; l = l->next)
 	{
 	  GtkTreeIter iter;
 
-	  gtk_list_store_append (store, &iter);
-	  gtk_list_store_set (store, &iter, 0, l->data, -1);
+	  ctk_list_store_append (store, &iter);
+	  ctk_list_store_set (store, &iter, 0, l->data, -1);
 	}
 
       g_list_free (actions);
     }
   
-  tree_view = gtk_tree_view_new_with_model (GTK_TREE_MODEL (store));
+  tree_view = ctk_tree_view_new_with_model (GTK_TREE_MODEL (store));
   g_object_unref (store);
 
-  gtk_tree_view_insert_column_with_data_func (GTK_TREE_VIEW (tree_view),
+  ctk_tree_view_insert_column_with_data_func (GTK_TREE_VIEW (tree_view),
 					      -1, "Action",
-					      gtk_cell_renderer_text_new (),
+					      ctk_cell_renderer_text_new (),
 					      set_name_func, NULL, NULL);
 
-  gtk_tree_view_column_set_sort_column_id (gtk_tree_view_get_column (GTK_TREE_VIEW (tree_view), 0), 0);
+  ctk_tree_view_column_set_sort_column_id (ctk_tree_view_get_column (GTK_TREE_VIEW (tree_view), 0), 0);
 
-  cell = gtk_cell_renderer_toggle_new ();
+  cell = ctk_cell_renderer_toggle_new ();
   g_signal_connect (cell, "toggled", G_CALLBACK (sensitivity_toggled), store);
-  gtk_tree_view_insert_column_with_data_func (GTK_TREE_VIEW (tree_view),
+  ctk_tree_view_insert_column_with_data_func (GTK_TREE_VIEW (tree_view),
 					      -1, "Sensitive",
 					      cell,
 					      set_sensitive_func, NULL, NULL);
 
-  cell = gtk_cell_renderer_toggle_new ();
+  cell = ctk_cell_renderer_toggle_new ();
   g_signal_connect (cell, "toggled", G_CALLBACK (visibility_toggled), store);
-  gtk_tree_view_insert_column_with_data_func (GTK_TREE_VIEW (tree_view),
+  ctk_tree_view_insert_column_with_data_func (GTK_TREE_VIEW (tree_view),
 					      -1, "Visible",
 					      cell,
 					      set_visible_func, NULL, NULL);
 
-  sw = gtk_scrolled_window_new (NULL, NULL);
-  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
+  sw = ctk_scrolled_window_new (NULL, NULL);
+  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
 				  GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
-  gtk_container_add (GTK_CONTAINER (sw), tree_view);
+  ctk_container_add (GTK_CONTAINER (sw), tree_view);
   
   return sw;
 }
@@ -457,16 +457,16 @@ area_press (GtkWidget      *drawing_area,
 	    GdkEventButton *event,
 	    GtkUIManager   *merge)
 {
-  gtk_widget_grab_focus (drawing_area);
+  ctk_widget_grab_focus (drawing_area);
 
   if (gdk_event_triggers_context_menu ((GdkEvent *) event) &&
       event->type == GDK_BUTTON_PRESS)
     {
-      GtkWidget *menu = gtk_ui_manager_get_widget (merge, "/FileMenu");
+      GtkWidget *menu = ctk_ui_manager_get_widget (merge, "/FileMenu");
       
       if (GTK_IS_MENU (menu)) 
 	{
-	  gtk_menu_popup (GTK_MENU (menu), NULL, NULL,
+	  ctk_menu_popup (GTK_MENU (menu), NULL, NULL,
 			  NULL, drawing_area,
 			  3, event->time);
 	  return TRUE;
@@ -481,10 +481,10 @@ static void
 activate_path (GtkWidget      *button,
 	       GtkUIManager   *merge)
 {
-  GtkAction *action = gtk_ui_manager_get_action (merge, 
+  GtkAction *action = ctk_ui_manager_get_action (merge, 
 						 "/menubar/HelpMenu/About");
   if (action)
-    gtk_action_activate (action);
+    ctk_action_activate (action);
   else 
     g_message ("no action found");
 }
@@ -519,7 +519,7 @@ set_tip (GtkWidget *widget)
     {
       g_object_get (data->action, "tooltip", &tooltip, NULL);
       
-      gtk_statusbar_push (GTK_STATUSBAR (data->statusbar), 0, 
+      ctk_statusbar_push (GTK_STATUSBAR (data->statusbar), 0, 
 			  tooltip ? tooltip : "");
       
       g_free (tooltip);
@@ -534,7 +534,7 @@ unset_tip (GtkWidget *widget)
   data = g_object_get_data (G_OBJECT (widget), "action-status");
 
   if (data)
-    gtk_statusbar_pop (GTK_STATUSBAR (data->statusbar), 0);
+    ctk_statusbar_pop (GTK_STATUSBAR (data->statusbar), 0);
 }
 		    
 static void
@@ -583,144 +583,144 @@ main (int argc, char **argv)
   GtkWidget *box;
   gint i;
   
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
-  action_group = gtk_action_group_new ("TestActions");
-  gtk_action_group_add_actions (action_group, 
+  action_group = ctk_action_group_new ("TestActions");
+  ctk_action_group_add_actions (action_group, 
 				entries, n_entries, 
 				NULL);
-  action = gtk_action_group_get_action (action_group, "EmptyMenu1Action");
+  action = ctk_action_group_get_action (action_group, "EmptyMenu1Action");
   g_object_set (action, "hide_if_empty", FALSE, NULL);
-  action = gtk_action_group_get_action (action_group, "EmptyMenu2Action");
+  action = ctk_action_group_get_action (action_group, "EmptyMenu2Action");
   g_object_set (action, "hide_if_empty", TRUE, NULL);
-  gtk_action_group_add_toggle_actions (action_group, 
+  ctk_action_group_add_toggle_actions (action_group, 
 				       toggle_entries, n_toggle_entries, 
 				       NULL);
-  gtk_action_group_add_radio_actions (action_group, 
+  ctk_action_group_add_radio_actions (action_group, 
 				      radio_entries, n_radio_entries, 
 				      JUSTIFY_RIGHT,
 				      G_CALLBACK (radio_action_changed), NULL);
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_default_size (GTK_WINDOW (window), -1, 400);
-  g_signal_connect (window, "destroy", G_CALLBACK (gtk_main_quit), NULL);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_window_set_default_size (GTK_WINDOW (window), -1, 400);
+  g_signal_connect (window, "destroy", G_CALLBACK (ctk_main_quit), NULL);
 
-  grid = gtk_grid_new ();
-  gtk_grid_set_row_spacing (GTK_GRID (grid), 2);
-  gtk_grid_set_column_spacing (GTK_GRID (grid), 2);
-  gtk_container_set_border_width (GTK_CONTAINER (grid), 2);
-  gtk_container_add (GTK_CONTAINER (window), grid);
+  grid = ctk_grid_new ();
+  ctk_grid_set_row_spacing (GTK_GRID (grid), 2);
+  ctk_grid_set_column_spacing (GTK_GRID (grid), 2);
+  ctk_container_set_border_width (GTK_CONTAINER (grid), 2);
+  ctk_container_add (GTK_CONTAINER (window), grid);
 
-  frame = gtk_frame_new ("Menus and Toolbars");
-  gtk_grid_attach (GTK_GRID (grid), frame, 0, 1, 2, 1);
+  frame = ctk_frame_new ("Menus and Toolbars");
+  ctk_grid_attach (GTK_GRID (grid), frame, 0, 1, 2, 1);
   
-  menu_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (menu_box), 2);
-  gtk_container_add (GTK_CONTAINER (frame), menu_box);
+  menu_box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+  ctk_container_set_border_width (GTK_CONTAINER (menu_box), 2);
+  ctk_container_add (GTK_CONTAINER (frame), menu_box);
 
-  statusbar = gtk_statusbar_new ();
-  gtk_box_pack_end (GTK_BOX (menu_box), statusbar, FALSE, FALSE, 0);
+  statusbar = ctk_statusbar_new ();
+  ctk_box_pack_end (GTK_BOX (menu_box), statusbar, FALSE, FALSE, 0);
     
-  area = gtk_drawing_area_new ();
-  gtk_widget_set_events (area, GDK_BUTTON_PRESS_MASK);
-  gtk_widget_set_size_request (area, -1, 40);
-  gtk_box_pack_end (GTK_BOX (menu_box), area, FALSE, FALSE, 0);
-  gtk_widget_show (area);
+  area = ctk_drawing_area_new ();
+  ctk_widget_set_events (area, GDK_BUTTON_PRESS_MASK);
+  ctk_widget_set_size_request (area, -1, 40);
+  ctk_box_pack_end (GTK_BOX (menu_box), area, FALSE, FALSE, 0);
+  ctk_widget_show (area);
 
-  button = gtk_button_new ();
-  gtk_box_pack_end (GTK_BOX (menu_box), button, FALSE, FALSE, 0);
-  gtk_activatable_set_related_action (GTK_ACTIVATABLE (button),
-			    gtk_action_group_get_action (action_group, "AboutAction"));
+  button = ctk_button_new ();
+  ctk_box_pack_end (GTK_BOX (menu_box), button, FALSE, FALSE, 0);
+  ctk_activatable_set_related_action (GTK_ACTIVATABLE (button),
+			    ctk_action_group_get_action (action_group, "AboutAction"));
 
-  gtk_widget_show (button);
+  ctk_widget_show (button);
 
-  button = gtk_check_button_new ();
-  gtk_box_pack_end (GTK_BOX (menu_box), button, FALSE, FALSE, 0);
-  gtk_activatable_set_related_action (GTK_ACTIVATABLE (button),
-			    gtk_action_group_get_action (action_group, "BoldAction"));
-  gtk_widget_show (button);
+  button = ctk_check_button_new ();
+  ctk_box_pack_end (GTK_BOX (menu_box), button, FALSE, FALSE, 0);
+  ctk_activatable_set_related_action (GTK_ACTIVATABLE (button),
+			    ctk_action_group_get_action (action_group, "BoldAction"));
+  ctk_widget_show (button);
 
-  box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
-  gtk_box_pack_end (GTK_BOX (menu_box), box, FALSE, FALSE, 0);
-  gtk_container_add (GTK_CONTAINER (box), gtk_label_new ("Bold:"));
-  button = gtk_switch_new ();
-  gtk_container_add (GTK_CONTAINER (box), button);
-  gtk_activatable_set_related_action (GTK_ACTIVATABLE (button),
-                            gtk_action_group_get_action (action_group, "BoldAction"));
-  gtk_widget_show_all (box);
+  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
+  ctk_box_pack_end (GTK_BOX (menu_box), box, FALSE, FALSE, 0);
+  ctk_container_add (GTK_CONTAINER (box), ctk_label_new ("Bold:"));
+  button = ctk_switch_new ();
+  ctk_container_add (GTK_CONTAINER (box), button);
+  ctk_activatable_set_related_action (GTK_ACTIVATABLE (button),
+                            ctk_action_group_get_action (action_group, "BoldAction"));
+  ctk_widget_show_all (box);
 
-  merge = gtk_ui_manager_new ();
+  merge = ctk_ui_manager_new ();
 
   g_signal_connect (merge, "connect-proxy", G_CALLBACK (connect_proxy), statusbar);
   g_signal_connect (area, "button_press_event", G_CALLBACK (area_press), merge);
 
-  gtk_ui_manager_insert_action_group (merge, action_group, 0);
+  ctk_ui_manager_insert_action_group (merge, action_group, 0);
   g_signal_connect (merge, "add_widget", G_CALLBACK (add_widget), menu_box);
 
-  gtk_window_add_accel_group (GTK_WINDOW (window), 
-			      gtk_ui_manager_get_accel_group (merge));
+  ctk_window_add_accel_group (GTK_WINDOW (window), 
+			      ctk_ui_manager_get_accel_group (merge));
   
-  frame = gtk_frame_new ("UI Files");
-  gtk_widget_set_vexpand (frame, TRUE);
-  gtk_grid_attach (GTK_GRID (grid), frame, 0, 0, 1, 1);
+  frame = ctk_frame_new ("UI Files");
+  ctk_widget_set_vexpand (frame, TRUE);
+  ctk_grid_attach (GTK_GRID (grid), frame, 0, 0, 1, 1);
 
-  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 2);
-  gtk_container_set_border_width (GTK_CONTAINER (vbox), 2);
-  gtk_container_add (GTK_CONTAINER (frame), vbox);
+  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 2);
+  ctk_container_set_border_width (GTK_CONTAINER (vbox), 2);
+  ctk_container_add (GTK_CONTAINER (frame), vbox);
 
   for (i = 0; i < G_N_ELEMENTS (merge_ids); i++)
     {
-      button = gtk_check_button_new_with_label (merge_ids[i].filename);
+      button = ctk_check_button_new_with_label (merge_ids[i].filename);
       g_object_set_data (G_OBJECT (button), "mergenum", GINT_TO_POINTER (i));
       g_signal_connect (button, "toggled", G_CALLBACK (toggle_merge), merge);
-      gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
-      gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), TRUE);
+      ctk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
+      ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), TRUE);
     }
 
-  button = gtk_check_button_new_with_label ("Tearoffs");
+  button = ctk_check_button_new_with_label ("Tearoffs");
   g_signal_connect (button, "clicked", G_CALLBACK (toggle_tearoffs), merge);
-  gtk_box_pack_end (GTK_BOX (vbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_end (GTK_BOX (vbox), button, FALSE, FALSE, 0);
 
-  button = gtk_check_button_new_with_label ("Dynamic");
+  button = ctk_check_button_new_with_label ("Dynamic");
   g_signal_connect (button, "clicked", G_CALLBACK (toggle_dynamic), merge);
-  gtk_box_pack_end (GTK_BOX (vbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_end (GTK_BOX (vbox), button, FALSE, FALSE, 0);
 
-  button = gtk_button_new_with_label ("Activate path");
+  button = ctk_button_new_with_label ("Activate path");
   g_signal_connect (button, "clicked", G_CALLBACK (activate_path), merge);
-  gtk_box_pack_end (GTK_BOX (vbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_end (GTK_BOX (vbox), button, FALSE, FALSE, 0);
 
-  button = gtk_button_new_with_label ("Dump Tree");
+  button = ctk_button_new_with_label ("Dump Tree");
   g_signal_connect (button, "clicked", G_CALLBACK (dump_tree), merge);
-  gtk_box_pack_end (GTK_BOX (vbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_end (GTK_BOX (vbox), button, FALSE, FALSE, 0);
 
-  button = gtk_button_new_with_label ("Dump Toplevels");
+  button = ctk_button_new_with_label ("Dump Toplevels");
   g_signal_connect (button, "clicked", G_CALLBACK (dump_toplevels), merge);
-  gtk_box_pack_end (GTK_BOX (vbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_end (GTK_BOX (vbox), button, FALSE, FALSE, 0);
 
-  button = gtk_button_new_with_label ("Dump Accels");
+  button = ctk_button_new_with_label ("Dump Accels");
   g_signal_connect (button, "clicked", G_CALLBACK (dump_accels), NULL);
-  gtk_box_pack_end (GTK_BOX (vbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_end (GTK_BOX (vbox), button, FALSE, FALSE, 0);
 
   view = create_tree_view (merge);
-  gtk_widget_set_hexpand (view, TRUE);
-  gtk_widget_set_vexpand (view, TRUE);
-  gtk_grid_attach (GTK_GRID (grid), view, 1, 0, 1, 1);
+  ctk_widget_set_hexpand (view, TRUE);
+  ctk_widget_set_vexpand (view, TRUE);
+  ctk_grid_attach (GTK_GRID (grid), view, 1, 0, 1, 1);
 
-  gtk_widget_show_all (window);
-  gtk_main ();
+  ctk_widget_show_all (window);
+  ctk_main ();
 
 #ifdef DEBUG_UI_MANAGER
   {
     GList *action;
     
     g_print ("\n> before unreffing the ui manager <\n");
-    for (action = gtk_action_group_list_actions (action_group);
+    for (action = ctk_action_group_list_actions (action_group);
 	 action; 
 	 action = action->next)
       {
 	GtkAction *a = action->data;
 	g_print ("  action %s ref count %d\n", 
-		 gtk_action_get_name (a), G_OBJECT (a)->ref_count);
+		 ctk_action_get_name (a), G_OBJECT (a)->ref_count);
       }
   }
 #endif
@@ -732,13 +732,13 @@ main (int argc, char **argv)
     GList *action;
 
     g_print ("\n> after unreffing the ui manager <\n");
-    for (action = gtk_action_group_list_actions (action_group);
+    for (action = ctk_action_group_list_actions (action_group);
 	 action; 
 	 action = action->next)
       {
 	GtkAction *a = action->data;
 	g_print ("  action %s ref count %d\n", 
-		 gtk_action_get_name (a), G_OBJECT (a)->ref_count);
+		 ctk_action_get_name (a), G_OBJECT (a)->ref_count);
       }
   }
 #endif

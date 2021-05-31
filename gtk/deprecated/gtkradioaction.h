@@ -37,7 +37,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_RADIO_ACTION            (gtk_radio_action_get_type ())
+#define GTK_TYPE_RADIO_ACTION            (ctk_radio_action_get_type ())
 #define GTK_RADIO_ACTION(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_RADIO_ACTION, GtkRadioAction))
 #define GTK_RADIO_ACTION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_RADIO_ACTION, GtkRadioActionClass))
 #define GTK_IS_RADIO_ACTION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_RADIO_ACTION))
@@ -63,32 +63,32 @@ struct _GtkRadioActionClass
   void       (* changed) (GtkRadioAction *action, GtkRadioAction *current);
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_DEPRECATED_IN_3_10
-GType           gtk_radio_action_get_type          (void) G_GNUC_CONST;
+GType           ctk_radio_action_get_type          (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_10
-GtkRadioAction *gtk_radio_action_new               (const gchar           *name,
+GtkRadioAction *ctk_radio_action_new               (const gchar           *name,
                                                     const gchar           *label,
                                                     const gchar           *tooltip,
                                                     const gchar           *stock_id,
                                                     gint                   value);
 GDK_DEPRECATED_IN_3_10
-GSList         *gtk_radio_action_get_group         (GtkRadioAction        *action);
+GSList         *ctk_radio_action_get_group         (GtkRadioAction        *action);
 GDK_DEPRECATED_IN_3_10
-void            gtk_radio_action_set_group         (GtkRadioAction        *action,
+void            ctk_radio_action_set_group         (GtkRadioAction        *action,
                                                     GSList                *group);
 GDK_DEPRECATED_IN_3_10
-void            gtk_radio_action_join_group        (GtkRadioAction        *action,
+void            ctk_radio_action_join_group        (GtkRadioAction        *action,
                                                     GtkRadioAction        *group_source);
 GDK_DEPRECATED_IN_3_10
-gint            gtk_radio_action_get_current_value (GtkRadioAction        *action);
+gint            ctk_radio_action_get_current_value (GtkRadioAction        *action);
 GDK_DEPRECATED_IN_3_10
-void            gtk_radio_action_set_current_value (GtkRadioAction        *action,
+void            ctk_radio_action_set_current_value (GtkRadioAction        *action,
                                                     gint                   current_value);
 
 G_END_DECLS

@@ -16,7 +16,7 @@ In detail, for every provided TESTFILE the test runner will:
 1) Add the css to the default screen
 2) Load the test.ui file and the test.ref.ui file
 3) Grab the first GtkWindow subclass widget
-4) gtk_widget_show() it and take a snapshot image of its contents into
+4) ctk_widget_show() it and take a snapshot image of its contents into
    a cairo surface.
 5) Compare the two images to be bitwise identical. If they are not, a
    diff image will be created hilighting the differences.

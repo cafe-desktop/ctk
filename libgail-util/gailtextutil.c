@@ -142,10 +142,10 @@ gail_text_util_text_setup (GailTextUtil *textutil,
     }
   else
     {
-      textutil->buffer = gtk_text_buffer_new (NULL);
+      textutil->buffer = ctk_text_buffer_new (NULL);
     }
 
-  gtk_text_buffer_set_text (textutil->buffer, text, -1);
+  ctk_text_buffer_set_text (textutil->buffer, text, -1);
 }
 
 /**
@@ -205,13 +205,13 @@ gail_text_util_get_text (GailTextUtil    *textutil,
       return NULL;
     }
 
-  if (!gtk_text_buffer_get_char_count (buffer))
+  if (!ctk_text_buffer_get_char_count (buffer))
     {
       *start_offset = 0;
       *end_offset = 0;
       return g_strdup ("");
     }
-  gtk_text_buffer_get_iter_at_offset (buffer, &start, offset);
+  ctk_text_buffer_get_iter_at_offset (buffer, &start, offset);
 
     
   end = start;
@@ -222,78 +222,78 @@ gail_text_util_get_text (GailTextUtil    *textutil,
       switch (boundary_type)
         {
         case ATK_TEXT_BOUNDARY_CHAR:
-          gtk_text_iter_backward_char(&start);
+          ctk_text_iter_backward_char(&start);
           break;
         case ATK_TEXT_BOUNDARY_WORD_START:
-          if (!gtk_text_iter_starts_word (&start))
-            gtk_text_iter_backward_word_start (&start);
+          if (!ctk_text_iter_starts_word (&start))
+            ctk_text_iter_backward_word_start (&start);
           end = start;
-          gtk_text_iter_backward_word_start(&start);
+          ctk_text_iter_backward_word_start(&start);
           break;
         case ATK_TEXT_BOUNDARY_WORD_END:
-          if (gtk_text_iter_inside_word (&start) &&
-              !gtk_text_iter_starts_word (&start))
-            gtk_text_iter_backward_word_start (&start);
-          while (!gtk_text_iter_ends_word (&start))
+          if (ctk_text_iter_inside_word (&start) &&
+              !ctk_text_iter_starts_word (&start))
+            ctk_text_iter_backward_word_start (&start);
+          while (!ctk_text_iter_ends_word (&start))
             {
-              if (!gtk_text_iter_backward_char (&start))
+              if (!ctk_text_iter_backward_char (&start))
                 break;
             }
           end = start;
-          gtk_text_iter_backward_word_start(&start);
-          while (!gtk_text_iter_ends_word (&start))
+          ctk_text_iter_backward_word_start(&start);
+          while (!ctk_text_iter_ends_word (&start))
             {
-              if (!gtk_text_iter_backward_char (&start))
+              if (!ctk_text_iter_backward_char (&start))
                 break;
             }
           break;
         case ATK_TEXT_BOUNDARY_SENTENCE_START:
-          if (!gtk_text_iter_starts_sentence (&start))
-            gtk_text_iter_backward_sentence_start (&start);
+          if (!ctk_text_iter_starts_sentence (&start))
+            ctk_text_iter_backward_sentence_start (&start);
           end = start;
-          gtk_text_iter_backward_sentence_start (&start);
+          ctk_text_iter_backward_sentence_start (&start);
           break;
         case ATK_TEXT_BOUNDARY_SENTENCE_END:
-          if (gtk_text_iter_inside_sentence (&start) &&
-              !gtk_text_iter_starts_sentence (&start))
-            gtk_text_iter_backward_sentence_start (&start);
-          while (!gtk_text_iter_ends_sentence (&start))
+          if (ctk_text_iter_inside_sentence (&start) &&
+              !ctk_text_iter_starts_sentence (&start))
+            ctk_text_iter_backward_sentence_start (&start);
+          while (!ctk_text_iter_ends_sentence (&start))
             {
-              if (!gtk_text_iter_backward_char (&start))
+              if (!ctk_text_iter_backward_char (&start))
                 break;
             }
           end = start;
-          gtk_text_iter_backward_sentence_start (&start);
-          while (!gtk_text_iter_ends_sentence (&start))
+          ctk_text_iter_backward_sentence_start (&start);
+          while (!ctk_text_iter_ends_sentence (&start))
             {
-              if (!gtk_text_iter_backward_char (&start))
+              if (!ctk_text_iter_backward_char (&start))
                 break;
             }
           break;
         case ATK_TEXT_BOUNDARY_LINE_START:
           if (layout == NULL)
             {
-              line_number = gtk_text_iter_get_line (&start);
+              line_number = ctk_text_iter_get_line (&start);
               if (line_number == 0)
                 {
-                  gtk_text_buffer_get_iter_at_offset (buffer,
+                  ctk_text_buffer_get_iter_at_offset (buffer,
                     &start, 0);
                 }
               else
                 {
-                  gtk_text_iter_backward_line (&start);
-                  gtk_text_iter_forward_line (&start);
+                  ctk_text_iter_backward_line (&start);
+                  ctk_text_iter_forward_line (&start);
                 }
               end = start;
-              gtk_text_iter_backward_line (&start);
+              ctk_text_iter_backward_line (&start);
             }
           else if GTK_IS_TEXT_VIEW (layout)
             {
               GtkTextView *view = GTK_TEXT_VIEW (layout);
 
-              gtk_text_view_backward_display_line_start (view, &start);
+              ctk_text_view_backward_display_line_start (view, &start);
               end = start;
-              gtk_text_view_backward_display_line (view, &start);
+              ctk_text_view_backward_display_line (view, &start);
             }
           else if (PANGO_IS_LAYOUT (layout))
             get_pango_text_offsets (PANGO_LAYOUT (layout),
@@ -309,40 +309,40 @@ gail_text_util_get_text (GailTextUtil    *textutil,
         case ATK_TEXT_BOUNDARY_LINE_END:
           if (layout == NULL)
             {
-              line_number = gtk_text_iter_get_line (&start);
+              line_number = ctk_text_iter_get_line (&start);
               if (line_number == 0)
                 {
-                  gtk_text_buffer_get_iter_at_offset (buffer,
+                  ctk_text_buffer_get_iter_at_offset (buffer,
                     &start, 0);
                   end = start;
                 }
               else
                 {
-                  gtk_text_iter_backward_line (&start);
+                  ctk_text_iter_backward_line (&start);
                   end = start;
-                  while (!gtk_text_iter_ends_line (&start))
+                  while (!ctk_text_iter_ends_line (&start))
                     {
-                      if (!gtk_text_iter_backward_char (&start))
+                      if (!ctk_text_iter_backward_char (&start))
                         break;
                     }
-                  gtk_text_iter_forward_to_line_end (&end);
+                  ctk_text_iter_forward_to_line_end (&end);
                 }
             }
           else if GTK_IS_TEXT_VIEW (layout)
             {
               GtkTextView *view = GTK_TEXT_VIEW (layout);
 
-              gtk_text_view_backward_display_line_start (view, &start);
-              if (!gtk_text_iter_is_start (&start))
+              ctk_text_view_backward_display_line_start (view, &start);
+              if (!ctk_text_iter_is_start (&start))
                 {
-                  gtk_text_view_backward_display_line (view, &start);
+                  ctk_text_view_backward_display_line (view, &start);
                   end = start;
-                  if (!gtk_text_iter_is_start (&start))
+                  if (!ctk_text_iter_is_start (&start))
                     {
-                      gtk_text_view_backward_display_line (view, &start);
-                      gtk_text_view_forward_display_line_end (view, &start);
+                      ctk_text_view_backward_display_line (view, &start);
+                      ctk_text_view_forward_display_line_end (view, &start);
                     }
-                  gtk_text_view_forward_display_line_end (view, &end);
+                  ctk_text_view_forward_display_line_end (view, &end);
                 } 
               else
                 {
@@ -367,79 +367,79 @@ gail_text_util_get_text (GailTextUtil    *textutil,
       switch (boundary_type)
         {
         case ATK_TEXT_BOUNDARY_CHAR:
-          gtk_text_iter_forward_char (&end);
+          ctk_text_iter_forward_char (&end);
           break;
         case ATK_TEXT_BOUNDARY_WORD_START:
-          if (!gtk_text_iter_starts_word (&start))
-            gtk_text_iter_backward_word_start (&start);
-          if (gtk_text_iter_inside_word (&end))
-            gtk_text_iter_forward_word_end (&end);
-          while (!gtk_text_iter_starts_word (&end))
+          if (!ctk_text_iter_starts_word (&start))
+            ctk_text_iter_backward_word_start (&start);
+          if (ctk_text_iter_inside_word (&end))
+            ctk_text_iter_forward_word_end (&end);
+          while (!ctk_text_iter_starts_word (&end))
             {
-              if (!gtk_text_iter_forward_char (&end))
+              if (!ctk_text_iter_forward_char (&end))
                 break;
             }
           break;
         case ATK_TEXT_BOUNDARY_WORD_END:
-          if (gtk_text_iter_inside_word (&start) &&
-              !gtk_text_iter_starts_word (&start))
-            gtk_text_iter_backward_word_start (&start);
-          while (!gtk_text_iter_ends_word (&start))
+          if (ctk_text_iter_inside_word (&start) &&
+              !ctk_text_iter_starts_word (&start))
+            ctk_text_iter_backward_word_start (&start);
+          while (!ctk_text_iter_ends_word (&start))
             {
-              if (!gtk_text_iter_backward_char (&start))
+              if (!ctk_text_iter_backward_char (&start))
                 break;
             }
-          gtk_text_iter_forward_word_end (&end);
+          ctk_text_iter_forward_word_end (&end);
           break;
         case ATK_TEXT_BOUNDARY_SENTENCE_START:
-          if (!gtk_text_iter_starts_sentence (&start))
-            gtk_text_iter_backward_sentence_start (&start);
-          if (gtk_text_iter_inside_sentence (&end))
-            gtk_text_iter_forward_sentence_end (&end);
-          while (!gtk_text_iter_starts_sentence (&end))
+          if (!ctk_text_iter_starts_sentence (&start))
+            ctk_text_iter_backward_sentence_start (&start);
+          if (ctk_text_iter_inside_sentence (&end))
+            ctk_text_iter_forward_sentence_end (&end);
+          while (!ctk_text_iter_starts_sentence (&end))
             {
-              if (!gtk_text_iter_forward_char (&end))
+              if (!ctk_text_iter_forward_char (&end))
                 break;
             }
           break;
         case ATK_TEXT_BOUNDARY_SENTENCE_END:
-          if (gtk_text_iter_inside_sentence (&start) &&
-              !gtk_text_iter_starts_sentence (&start))
-            gtk_text_iter_backward_sentence_start (&start);
-          while (!gtk_text_iter_ends_sentence (&start))
+          if (ctk_text_iter_inside_sentence (&start) &&
+              !ctk_text_iter_starts_sentence (&start))
+            ctk_text_iter_backward_sentence_start (&start);
+          while (!ctk_text_iter_ends_sentence (&start))
             {
-              if (!gtk_text_iter_backward_char (&start))
+              if (!ctk_text_iter_backward_char (&start))
                 break;
             }
-          gtk_text_iter_forward_sentence_end (&end);
+          ctk_text_iter_forward_sentence_end (&end);
           break;
         case ATK_TEXT_BOUNDARY_LINE_START:
           if (layout == NULL)
             {
-              line_number = gtk_text_iter_get_line (&start);
+              line_number = ctk_text_iter_get_line (&start);
               if (line_number == 0)
                 {
-                  gtk_text_buffer_get_iter_at_offset (buffer,
+                  ctk_text_buffer_get_iter_at_offset (buffer,
                     &start, 0);
                 }
               else
                 {
-                  gtk_text_iter_backward_line (&start);
-                  gtk_text_iter_forward_line (&start);
+                  ctk_text_iter_backward_line (&start);
+                  ctk_text_iter_forward_line (&start);
                 }
-              gtk_text_iter_forward_line (&end);
+              ctk_text_iter_forward_line (&end);
             }
           else if GTK_IS_TEXT_VIEW (layout)
             {
               GtkTextView *view = GTK_TEXT_VIEW (layout);
 
-              gtk_text_view_backward_display_line_start (view, &start);
+              ctk_text_view_backward_display_line_start (view, &start);
               /*
-               * The call to gtk_text_iter_forward_to_end() is needed
+               * The call to ctk_text_iter_forward_to_end() is needed
                * because of bug 81960
                */
-              if (!gtk_text_view_forward_display_line (view, &end))
-                gtk_text_iter_forward_to_end (&end);
+              if (!ctk_text_view_forward_display_line (view, &end))
+                ctk_text_iter_forward_to_end (&end);
             }
           else if PANGO_IS_LAYOUT (layout)
             get_pango_text_offsets (PANGO_LAYOUT (layout),
@@ -456,35 +456,35 @@ gail_text_util_get_text (GailTextUtil    *textutil,
         case ATK_TEXT_BOUNDARY_LINE_END:
           if (layout == NULL)
             {
-              line_number = gtk_text_iter_get_line (&start);
+              line_number = ctk_text_iter_get_line (&start);
               if (line_number == 0)
                 {
-                  gtk_text_buffer_get_iter_at_offset (buffer,
+                  ctk_text_buffer_get_iter_at_offset (buffer,
                     &start, 0);
                 }
               else
                 {
-                  gtk_text_iter_backward_line (&start);
-                  gtk_text_iter_forward_line (&start);
+                  ctk_text_iter_backward_line (&start);
+                  ctk_text_iter_forward_line (&start);
                 }
-              while (!gtk_text_iter_ends_line (&start))
+              while (!ctk_text_iter_ends_line (&start))
                 {
-                  if (!gtk_text_iter_backward_char (&start))
+                  if (!ctk_text_iter_backward_char (&start))
                     break;
                 }
-              gtk_text_iter_forward_to_line_end (&end);
+              ctk_text_iter_forward_to_line_end (&end);
             }
           else if GTK_IS_TEXT_VIEW (layout)
             {
               GtkTextView *view = GTK_TEXT_VIEW (layout);
 
-              gtk_text_view_backward_display_line_start (view, &start);
-              if (!gtk_text_iter_is_start (&start))
+              ctk_text_view_backward_display_line_start (view, &start);
+              if (!ctk_text_iter_is_start (&start))
                 {
-                  gtk_text_view_backward_display_line (view, &start);
-                  gtk_text_view_forward_display_line_end (view, &start);
+                  ctk_text_view_backward_display_line (view, &start);
+                  ctk_text_view_forward_display_line_end (view, &start);
                 } 
-              gtk_text_view_forward_display_line_end (view, &end);
+              ctk_text_view_forward_display_line_end (view, &end);
             }
           else if PANGO_IS_LAYOUT (layout)
             get_pango_text_offsets (PANGO_LAYOUT (layout),
@@ -504,73 +504,73 @@ gail_text_util_get_text (GailTextUtil    *textutil,
       switch (boundary_type)
         {
         case ATK_TEXT_BOUNDARY_CHAR:
-          gtk_text_iter_forward_char(&start);
-          gtk_text_iter_forward_chars(&end, 2);
+          ctk_text_iter_forward_char(&start);
+          ctk_text_iter_forward_chars(&end, 2);
           break;
         case ATK_TEXT_BOUNDARY_WORD_START:
-          if (gtk_text_iter_inside_word (&end))
-            gtk_text_iter_forward_word_end (&end);
-          while (!gtk_text_iter_starts_word (&end))
+          if (ctk_text_iter_inside_word (&end))
+            ctk_text_iter_forward_word_end (&end);
+          while (!ctk_text_iter_starts_word (&end))
             {
-              if (!gtk_text_iter_forward_char (&end))
+              if (!ctk_text_iter_forward_char (&end))
                 break;
             }
           start = end;
-          if (!gtk_text_iter_is_end (&end))
+          if (!ctk_text_iter_is_end (&end))
             {
-              gtk_text_iter_forward_word_end (&end);
-              while (!gtk_text_iter_starts_word (&end))
+              ctk_text_iter_forward_word_end (&end);
+              while (!ctk_text_iter_starts_word (&end))
                 {
-                  if (!gtk_text_iter_forward_char (&end))
+                  if (!ctk_text_iter_forward_char (&end))
                     break;
                 }
             }
           break;
         case ATK_TEXT_BOUNDARY_WORD_END:
-          gtk_text_iter_forward_word_end (&end);
+          ctk_text_iter_forward_word_end (&end);
           start = end;
-          if (!gtk_text_iter_is_end (&end))
-            gtk_text_iter_forward_word_end (&end);
+          if (!ctk_text_iter_is_end (&end))
+            ctk_text_iter_forward_word_end (&end);
           break;
         case ATK_TEXT_BOUNDARY_SENTENCE_START:
-          if (gtk_text_iter_inside_sentence (&end))
-            gtk_text_iter_forward_sentence_end (&end);
-          while (!gtk_text_iter_starts_sentence (&end))
+          if (ctk_text_iter_inside_sentence (&end))
+            ctk_text_iter_forward_sentence_end (&end);
+          while (!ctk_text_iter_starts_sentence (&end))
             {
-              if (!gtk_text_iter_forward_char (&end))
+              if (!ctk_text_iter_forward_char (&end))
                 break;
             }
           start = end;
-          if (!gtk_text_iter_is_end (&end))
+          if (!ctk_text_iter_is_end (&end))
             {
-              gtk_text_iter_forward_sentence_end (&end);
-              while (!gtk_text_iter_starts_sentence (&end))
+              ctk_text_iter_forward_sentence_end (&end);
+              while (!ctk_text_iter_starts_sentence (&end))
                 {
-                  if (!gtk_text_iter_forward_char (&end))
+                  if (!ctk_text_iter_forward_char (&end))
                     break;
                 }
             }
           break;
         case ATK_TEXT_BOUNDARY_SENTENCE_END:
-          gtk_text_iter_forward_sentence_end (&end);
+          ctk_text_iter_forward_sentence_end (&end);
           start = end;
-          if (!gtk_text_iter_is_end (&end))
-            gtk_text_iter_forward_sentence_end (&end);
+          if (!ctk_text_iter_is_end (&end))
+            ctk_text_iter_forward_sentence_end (&end);
           break;
         case ATK_TEXT_BOUNDARY_LINE_START:
           if (layout == NULL)
             {
-              gtk_text_iter_forward_line (&end);
+              ctk_text_iter_forward_line (&end);
               start = end;
-              gtk_text_iter_forward_line (&end);
+              ctk_text_iter_forward_line (&end);
             }
           else if GTK_IS_TEXT_VIEW (layout)
             {
               GtkTextView *view = GTK_TEXT_VIEW (layout);
 
-              gtk_text_view_forward_display_line (view, &end);
+              ctk_text_view_forward_display_line (view, &end);
               start = end; 
-              gtk_text_view_forward_display_line (view, &end);
+              ctk_text_view_forward_display_line (view, &end);
             }
           else if (PANGO_IS_LAYOUT (layout))
             get_pango_text_offsets (PANGO_LAYOUT (layout),
@@ -586,26 +586,26 @@ gail_text_util_get_text (GailTextUtil    *textutil,
         case ATK_TEXT_BOUNDARY_LINE_END:
           if (layout == NULL)
             {
-              gtk_text_iter_forward_line (&start);
+              ctk_text_iter_forward_line (&start);
               end = start;
-              if (!gtk_text_iter_is_end (&start))
+              if (!ctk_text_iter_is_end (&start))
                 { 
-                  while (!gtk_text_iter_ends_line (&start))
+                  while (!ctk_text_iter_ends_line (&start))
                   {
-                    if (!gtk_text_iter_backward_char (&start))
+                    if (!ctk_text_iter_backward_char (&start))
                       break;
                   }
-                  gtk_text_iter_forward_to_line_end (&end);
+                  ctk_text_iter_forward_to_line_end (&end);
                 }
             }
           else if GTK_IS_TEXT_VIEW (layout)
             {
               GtkTextView *view = GTK_TEXT_VIEW (layout);
 
-              gtk_text_view_forward_display_line_end (view, &end);
+              ctk_text_view_forward_display_line_end (view, &end);
               start = end; 
-              gtk_text_view_forward_display_line (view, &end);
-              gtk_text_view_forward_display_line_end (view, &end);
+              ctk_text_view_forward_display_line (view, &end);
+              ctk_text_view_forward_display_line_end (view, &end);
             }
           else if (PANGO_IS_LAYOUT (layout))
             get_pango_text_offsets (PANGO_LAYOUT (layout),
@@ -621,10 +621,10 @@ gail_text_util_get_text (GailTextUtil    *textutil,
         }
       break;
     }
-  *start_offset = gtk_text_iter_get_offset (&start);
-  *end_offset = gtk_text_iter_get_offset (&end);
+  *start_offset = ctk_text_iter_get_offset (&start);
+  *end_offset = ctk_text_iter_get_offset (&end);
 
-  return gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
+  return ctk_text_buffer_get_text (buffer, &start, &end, FALSE);
 }
 
 /**
@@ -651,13 +651,13 @@ gail_text_util_get_substring (GailTextUtil *textutil,
   if (buffer == NULL)
      return NULL;
 
-  gtk_text_buffer_get_iter_at_offset (buffer, &start, start_pos);
+  ctk_text_buffer_get_iter_at_offset (buffer, &start, start_pos);
   if (end_pos < 0)
-    gtk_text_buffer_get_end_iter (buffer, &end);
+    ctk_text_buffer_get_end_iter (buffer, &end);
   else
-    gtk_text_buffer_get_iter_at_offset (buffer, &end, end_pos);
+    ctk_text_buffer_get_iter_at_offset (buffer, &end, end_pos);
 
-  return gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
+  return ctk_text_buffer_get_text (buffer, &start, &end, FALSE);
 }
 
 static void
@@ -779,6 +779,6 @@ get_pango_text_offsets (PangoLayout         *layout,
   *start_offset = g_utf8_pointer_to_offset (text, text + start_index);
   *end_offset = g_utf8_pointer_to_offset (text, text + end_index);
  
-  gtk_text_buffer_get_iter_at_offset (buffer, start_iter, *start_offset);
-  gtk_text_buffer_get_iter_at_offset (buffer, end_iter, *end_offset);
+  ctk_text_buffer_get_iter_at_offset (buffer, start_iter, *start_offset);
+  ctk_text_buffer_get_iter_at_offset (buffer, end_iter, *end_offset);
 }

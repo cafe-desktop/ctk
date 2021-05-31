@@ -42,7 +42,7 @@ struct _GtkDragDestSite
 
 G_BEGIN_DECLS
 
-GdkDragContext *        gtk_drag_begin_internal         (GtkWidget              *widget,
+GdkDragContext *        ctk_drag_begin_internal         (GtkWidget              *widget,
                                                          gboolean               *out_needs_icon,
                                                          GtkTargetList          *target_list,
                                                          GdkDragAction           actions,
@@ -50,13 +50,13 @@ GdkDragContext *        gtk_drag_begin_internal         (GtkWidget              
                                                          const GdkEvent         *event,
                                                          int                     x,
                                                          int                     y);
-void                    gtk_drag_set_icon_definition    (GdkDragContext         *context,
+void                    ctk_drag_set_icon_definition    (GdkDragContext         *context,
                                                          GtkImageDefinition     *def,
                                                          gint                    hot_x,
                                                          gint                    hot_y);
-void                    _gtk_drag_source_handle_event   (GtkWidget              *widget,
+void                    _ctk_drag_source_handle_event   (GtkWidget              *widget,
                                                          GdkEvent               *event);
-void                    _gtk_drag_dest_handle_event     (GtkWidget              *toplevel,
+void                    _ctk_drag_dest_handle_event     (GtkWidget              *toplevel,
 				                         GdkEvent               *event);
 
 G_END_DECLS

@@ -17,5 +17,5 @@ app5 = executable(
   'exampleappwin.h',
   app5_resources,
   app5_schemas,
-  dependencies: libgtk_dep
+  dependencies: libctk_dep
 )

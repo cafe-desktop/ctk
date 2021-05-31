@@ -29,7 +29,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_OVERLAY             (gtk_overlay_get_type ())
+#define GTK_TYPE_OVERLAY             (ctk_overlay_get_type ())
 #define GTK_OVERLAY(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_OVERLAY, GtkOverlay))
 #define GTK_OVERLAY_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_OVERLAY, GtkOverlayClass))
 #define GTK_IS_OVERLAY(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_OVERLAY))
@@ -66,32 +66,32 @@ struct _GtkOverlayClass
   /*< private >*/
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
-  void (*_gtk_reserved5) (void);
-  void (*_gtk_reserved6) (void);
-  void (*_gtk_reserved7) (void);
-  void (*_gtk_reserved8) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
+  void (*_ctk_reserved5) (void);
+  void (*_ctk_reserved6) (void);
+  void (*_ctk_reserved7) (void);
+  void (*_ctk_reserved8) (void);
 };
 
 GDK_AVAILABLE_IN_3_2
-GType      gtk_overlay_get_type    (void) G_GNUC_CONST;
+GType      ctk_overlay_get_type    (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_3_2
-GtkWidget *gtk_overlay_new         (void);
+GtkWidget *ctk_overlay_new         (void);
 GDK_AVAILABLE_IN_3_2
-void       gtk_overlay_add_overlay (GtkOverlay *overlay,
+void       ctk_overlay_add_overlay (GtkOverlay *overlay,
                                     GtkWidget  *widget);
 GDK_AVAILABLE_IN_3_18
-void       gtk_overlay_reorder_overlay (GtkOverlay *overlay,
+void       ctk_overlay_reorder_overlay (GtkOverlay *overlay,
                                         GtkWidget  *child,
                                         int         index_);
 GDK_AVAILABLE_IN_3_18
-gboolean   gtk_overlay_get_overlay_pass_through (GtkOverlay *overlay,
+gboolean   ctk_overlay_get_overlay_pass_through (GtkOverlay *overlay,
 						 GtkWidget  *widget);
 GDK_AVAILABLE_IN_3_18
-void       gtk_overlay_set_overlay_pass_through (GtkOverlay *overlay,
+void       ctk_overlay_set_overlay_pass_through (GtkOverlay *overlay,
 						 GtkWidget  *widget,
 						 gboolean    pass_through);
 

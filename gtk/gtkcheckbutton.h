@@ -35,7 +35,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CHECK_BUTTON                  (gtk_check_button_get_type ())
+#define GTK_TYPE_CHECK_BUTTON                  (ctk_check_button_get_type ())
 #define GTK_CHECK_BUTTON(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_CHECK_BUTTON, GtkCheckButton))
 #define GTK_CHECK_BUTTON_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_CHECK_BUTTON, GtkCheckButtonClass))
 #define GTK_IS_CHECK_BUTTON(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_CHECK_BUTTON))
@@ -59,23 +59,23 @@ struct _GtkCheckButtonClass
 			   cairo_t        *cr);
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
 GDK_AVAILABLE_IN_ALL
-GType      gtk_check_button_get_type       (void) G_GNUC_CONST;
+GType      ctk_check_button_get_type       (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_check_button_new               (void);
+GtkWidget* ctk_check_button_new               (void);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_check_button_new_with_label    (const gchar *label);
+GtkWidget* ctk_check_button_new_with_label    (const gchar *label);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_check_button_new_with_mnemonic (const gchar *label);
+GtkWidget* ctk_check_button_new_with_mnemonic (const gchar *label);
 
-void _gtk_check_button_get_props (GtkCheckButton *check_button,
+void _ctk_check_button_get_props (GtkCheckButton *check_button,
 				  gint           *indicator_size,
 				  gint           *indicator_spacing);
 

@@ -47,16 +47,16 @@ quit_cb (gpointer        callback_data,
 	 guint           callback_action,
 	 GtkWidget      *widget)
 {
-  GtkWidget *message_dialog = gtk_message_dialog_new (GTK_WINDOW (window), 0,
+  GtkWidget *message_dialog = ctk_message_dialog_new (GTK_WINDOW (window), 0,
 						      GTK_MESSAGE_QUESTION,
 						      GTK_BUTTONS_YES_NO,
 						      "Really Quit?");
-  gtk_dialog_set_default_response (GTK_DIALOG (message_dialog), GTK_RESPONSE_NO);
+  ctk_dialog_set_default_response (GTK_DIALOG (message_dialog), GTK_RESPONSE_NO);
 
-  if (gtk_dialog_run (GTK_DIALOG (message_dialog)) == GTK_RESPONSE_YES)
-    gtk_widget_destroy (window);
+  if (ctk_dialog_run (GTK_DIALOG (message_dialog)) == GTK_RESPONSE_YES)
+    ctk_widget_destroy (window);
 
-  gtk_widget_destroy (message_dialog);
+  ctk_widget_destroy (message_dialog);
 }
 
 static void
@@ -73,8 +73,8 @@ plug_added (GtkWidget *widget,
 {
   g_print ("Plug added to socket\n");
   
-  gtk_widget_show (socket->socket);
-  gtk_widget_hide (socket->frame);
+  ctk_widget_show (socket->socket);
+  ctk_widget_hide (socket->frame);
 }
 
 static gboolean
@@ -83,8 +83,8 @@ plug_removed (GtkWidget *widget,
 {
   g_print ("Plug removed from socket\n");
   
-  gtk_widget_hide (socket->socket);
-  gtk_widget_show (socket->frame);
+  ctk_widget_hide (socket->socket);
+  ctk_widget_show (socket->frame);
   
   return TRUE;
 }
@@ -96,21 +96,21 @@ create_socket (void)
   
   Socket *socket = g_new (Socket, 1);
   
-  socket->box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+  socket->box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 
-  socket->socket = gtk_socket_new ();
+  socket->socket = ctk_socket_new ();
   
-  gtk_box_pack_start (GTK_BOX (socket->box), socket->socket, TRUE, TRUE, 0);
+  ctk_box_pack_start (GTK_BOX (socket->box), socket->socket, TRUE, TRUE, 0);
   
-  socket->frame = gtk_frame_new (NULL);
-  gtk_frame_set_shadow_type (GTK_FRAME (socket->frame), GTK_SHADOW_IN);
-  gtk_box_pack_start (GTK_BOX (socket->box), socket->frame, TRUE, TRUE, 0);
-  gtk_widget_show (socket->frame);
+  socket->frame = ctk_frame_new (NULL);
+  ctk_frame_set_shadow_type (GTK_FRAME (socket->frame), GTK_SHADOW_IN);
+  ctk_box_pack_start (GTK_BOX (socket->box), socket->frame, TRUE, TRUE, 0);
+  ctk_widget_show (socket->frame);
   
-  label = gtk_label_new (NULL);
-  gtk_label_set_markup (GTK_LABEL (label), "<span color=\"red\">Empty</span>");
-  gtk_container_add (GTK_CONTAINER (socket->frame), label);
-  gtk_widget_show (label);
+  label = ctk_label_new (NULL);
+  ctk_label_set_markup (GTK_LABEL (label), "<span color=\"red\">Empty</span>");
+  ctk_container_add (GTK_CONTAINER (socket->frame), label);
+  ctk_widget_show (label);
 
   sockets = g_slist_prepend (sockets, socket);
 
@@ -131,7 +131,7 @@ remove_child (GtkWidget *window)
   if (sockets)
     {
       Socket *socket = sockets->data;
-      gtk_widget_destroy (socket->box);
+      ctk_widget_destroy (socket->box);
     }
 }
 
@@ -157,10 +157,10 @@ child_read_watch (GIOChannel *channel, GIOCondition cond, gpointer data)
       else
 	{
 	  Socket *socket = create_socket ();
-	  gtk_box_pack_start (GTK_BOX (box), socket->box, TRUE, TRUE, 0);
-	  gtk_widget_show (socket->box);
+	  ctk_box_pack_start (GTK_BOX (box), socket->box, TRUE, TRUE, 0);
+	  ctk_widget_show (socket->box);
 	  
-	  gtk_socket_add_id (GTK_SOCKET (socket->socket), xid);
+	  ctk_socket_add_id (GTK_SOCKET (socket->socket), xid);
 	}
       g_free (line);
       return TRUE;
@@ -194,9 +194,9 @@ add_child (GtkWidget *window,
   if (active)
     {
       socket = create_socket ();
-      gtk_box_pack_start (GTK_BOX (box), socket->box, TRUE, TRUE, 0);
-      gtk_widget_show (socket->box);
-      sprintf(buffer, "%#lx", (gulong) gtk_socket_get_id (GTK_SOCKET (socket->socket)));
+      ctk_box_pack_start (GTK_BOX (box), socket->box, TRUE, TRUE, 0);
+      ctk_widget_show (socket->box);
+      sprintf(buffer, "%#lx", (gulong) ctk_socket_get_id (GTK_SOCKET (socket->socket)));
       argv[1] = buffer;
     }
   
@@ -238,10 +238,10 @@ add_local_active_child (GtkWidget *window)
   Socket *socket;
 
   socket = create_socket ();
-  gtk_box_pack_start (GTK_BOX (box), socket->box, TRUE, TRUE, 0);
-  gtk_widget_show (socket->box);
+  ctk_box_pack_start (GTK_BOX (box), socket->box, TRUE, TRUE, 0);
+  ctk_widget_show (socket->box);
 
-  create_child_plug (gtk_socket_get_id (GTK_SOCKET (socket->socket)), TRUE);
+  create_child_plug (ctk_socket_get_id (GTK_SOCKET (socket->socket)), TRUE);
 }
 
 void
@@ -251,11 +251,11 @@ add_local_passive_child (GtkWidget *window)
   Window xid;
 
   socket = create_socket ();
-  gtk_box_pack_start (GTK_BOX (box), socket->box, TRUE, TRUE, 0);
-  gtk_widget_show (socket->box);
+  ctk_box_pack_start (GTK_BOX (box), socket->box, TRUE, TRUE, 0);
+  ctk_widget_show (socket->box);
 
   xid = create_child_plug (0, TRUE);
-  gtk_socket_add_id (GTK_SOCKET (socket->socket), xid);
+  ctk_socket_add_id (GTK_SOCKET (socket->socket), xid);
 }
 
 static const char *
@@ -280,14 +280,14 @@ static void
 grab_window_toggled (GtkToggleButton *button,
 		     GtkWidget       *widget)
 {
-  GdkDevice *device = gtk_get_current_event_device ();
+  GdkDevice *device = ctk_get_current_event_device ();
   GdkSeat *seat = gdk_device_get_seat (device);
 
-  if (gtk_toggle_button_get_active (button))
+  if (ctk_toggle_button_get_active (button))
     {
       int status;
 
-      status = gdk_seat_grab (seat, gtk_widget_get_window (widget),
+      status = gdk_seat_grab (seat, ctk_widget_get_window (widget),
                               GDK_SEAT_CAPABILITY_KEYBOARD,
                               FALSE, NULL, NULL, NULL, NULL);
 
@@ -314,83 +314,83 @@ main (int argc, char *argv[])
   GtkWidget *checkbutton;
   GtkAccelGroup *accel_group;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
   g_signal_connect (window, "destroy",
-		    G_CALLBACK (gtk_main_quit), NULL);
+		    G_CALLBACK (ctk_main_quit), NULL);
   
-  gtk_window_set_title (GTK_WINDOW (window), "Socket Test");
-  gtk_container_set_border_width (GTK_CONTAINER (window), 0);
+  ctk_window_set_title (GTK_WINDOW (window), "Socket Test");
+  ctk_container_set_border_width (GTK_CONTAINER (window), 0);
 
-  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  gtk_container_add (GTK_CONTAINER (window), vbox);
+  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+  ctk_container_add (GTK_CONTAINER (window), vbox);
 
-  menubar = gtk_menu_bar_new ();
-  menuitem = gtk_menu_item_new_with_mnemonic ("_File");
-  gtk_menu_shell_append (GTK_MENU_SHELL (menubar), menuitem);
+  menubar = ctk_menu_bar_new ();
+  menuitem = ctk_menu_item_new_with_mnemonic ("_File");
+  ctk_menu_shell_append (GTK_MENU_SHELL (menubar), menuitem);
 
-  menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), menu);
-  menuitem = gtk_menu_item_new_with_mnemonic ("_Quit");
+  menu = ctk_menu_new ();
+  ctk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), menu);
+  menuitem = ctk_menu_item_new_with_mnemonic ("_Quit");
   g_signal_connect (menuitem, "activate", G_CALLBACK (quit_cb), window);
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
+  ctk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
 
-  accel_group = gtk_accel_group_new ();
-  gtk_window_add_accel_group (GTK_WINDOW (window), accel_group);
-  gtk_box_pack_start (GTK_BOX (vbox), menubar, FALSE, FALSE, 0);
+  accel_group = ctk_accel_group_new ();
+  ctk_window_add_accel_group (GTK_WINDOW (window), accel_group);
+  ctk_box_pack_start (GTK_BOX (vbox), menubar, FALSE, FALSE, 0);
 
-  button = gtk_button_new_with_label ("Add Active Child");
-  gtk_box_pack_start (GTK_BOX(vbox), button, FALSE, FALSE, 0);
+  button = ctk_button_new_with_label ("Add Active Child");
+  ctk_box_pack_start (GTK_BOX(vbox), button, FALSE, FALSE, 0);
 
   g_signal_connect_swapped (button, "clicked",
 			    G_CALLBACK (add_active_child), vbox);
 
-  button = gtk_button_new_with_label ("Add Passive Child");
-  gtk_box_pack_start (GTK_BOX(vbox), button, FALSE, FALSE, 0);
+  button = ctk_button_new_with_label ("Add Passive Child");
+  ctk_box_pack_start (GTK_BOX(vbox), button, FALSE, FALSE, 0);
 
   g_signal_connect_swapped (button, "clicked",
 			    G_CALLBACK (add_passive_child), vbox);
 
-  button = gtk_button_new_with_label ("Add Local Active Child");
-  gtk_box_pack_start (GTK_BOX(vbox), button, FALSE, FALSE, 0);
+  button = ctk_button_new_with_label ("Add Local Active Child");
+  ctk_box_pack_start (GTK_BOX(vbox), button, FALSE, FALSE, 0);
 
   g_signal_connect_swapped (button, "clicked",
 			    G_CALLBACK (add_local_active_child), vbox);
 
-  button = gtk_button_new_with_label ("Add Local Passive Child");
-  gtk_box_pack_start (GTK_BOX(vbox), button, FALSE, FALSE, 0);
+  button = ctk_button_new_with_label ("Add Local Passive Child");
+  ctk_box_pack_start (GTK_BOX(vbox), button, FALSE, FALSE, 0);
 
   g_signal_connect_swapped (button, "clicked",
 			    G_CALLBACK (add_local_passive_child), vbox);
 
-  button = gtk_button_new_with_label ("Remove Last Child");
-  gtk_box_pack_start (GTK_BOX(vbox), button, FALSE, FALSE, 0);
+  button = ctk_button_new_with_label ("Remove Last Child");
+  ctk_box_pack_start (GTK_BOX(vbox), button, FALSE, FALSE, 0);
 
   g_signal_connect_swapped (button, "clicked",
 			    G_CALLBACK (remove_child), vbox);
 
-  checkbutton = gtk_check_button_new_with_label ("Grab keyboard");
-  gtk_box_pack_start (GTK_BOX (vbox), checkbutton, FALSE, FALSE, 0);
+  checkbutton = ctk_check_button_new_with_label ("Grab keyboard");
+  ctk_box_pack_start (GTK_BOX (vbox), checkbutton, FALSE, FALSE, 0);
 
   g_signal_connect (checkbutton, "toggled",
 		    G_CALLBACK (grab_window_toggled),
 		    window);
 
-  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  gtk_box_pack_start (GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+  hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_box_pack_start (GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
 
-  entry = gtk_entry_new ();
-  gtk_box_pack_start (GTK_BOX(hbox), entry, FALSE, FALSE, 0);
+  entry = ctk_entry_new ();
+  ctk_box_pack_start (GTK_BOX(hbox), entry, FALSE, FALSE, 0);
 
-  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
+  hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
 
   box = hbox;
   
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
 
-  gtk_main ();
+  ctk_main ();
 
   if (n_children)
     {

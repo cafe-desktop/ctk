@@ -58,24 +58,24 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  */
 
 
-G_DEFINE_TYPE (GtkHBox, gtk_hbox, GTK_TYPE_BOX)
+G_DEFINE_TYPE (GtkHBox, ctk_hbox, GTK_TYPE_BOX)
 
 static void
-gtk_hbox_class_init (GtkHBoxClass *class)
+ctk_hbox_class_init (GtkHBoxClass *class)
 {
 }
 
 static void
-gtk_hbox_init (GtkHBox *hbox)
+ctk_hbox_init (GtkHBox *hbox)
 {
-  gtk_orientable_set_orientation (GTK_ORIENTABLE (hbox),
+  ctk_orientable_set_orientation (GTK_ORIENTABLE (hbox),
                                   GTK_ORIENTATION_HORIZONTAL);
 
-  _gtk_box_set_old_defaults (GTK_BOX (hbox));
+  _ctk_box_set_old_defaults (GTK_BOX (hbox));
 }
 
 /**
- * gtk_hbox_new:
+ * ctk_hbox_new:
  * @homogeneous: %TRUE if all children are to be given equal space allotments.
  * @spacing: the number of pixels to place by default between children.
  *
@@ -83,13 +83,13 @@ gtk_hbox_init (GtkHBox *hbox)
  *
  * Returns: a new #GtkHBox.
  *
- * Deprecated: 3.2: You can use gtk_box_new() with %GTK_ORIENTATION_HORIZONTAL instead,
+ * Deprecated: 3.2: You can use ctk_box_new() with %GTK_ORIENTATION_HORIZONTAL instead,
  *   which is a quick and easy change. But the recommendation is to switch to
  *   #GtkGrid, since #GtkBox is going to go away eventually.
  *   See [Migrating from other containers to GtkGrid][gtk-migrating-GtkGrid].
  */
 GtkWidget *
-gtk_hbox_new (gboolean homogeneous,
+ctk_hbox_new (gboolean homogeneous,
 	      gint     spacing)
 {
   return g_object_new (GTK_TYPE_HBOX,

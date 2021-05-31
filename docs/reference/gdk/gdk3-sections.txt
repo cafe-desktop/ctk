@@ -107,9 +107,9 @@ gdk_window_type_get_type
 gdk_window_type_hint_get_type
 gdk_wm_decoration_get_type
 gdk_wm_function_get_type
-gdk_device_grab_info_libgtk_only
-gdk_add_option_entries_libgtk_only
-gdk_pre_parse_libgtk_only
+gdk_device_grab_info_libctk_only
+gdk_add_option_entries_libctk_only
+gdk_pre_parse_libctk_only
 </SECTION>
 
 <SECTION>
@@ -174,7 +174,7 @@ GDK_IS_DISPLAY_CLASS
 GDK_DISPLAY_GET_CLASS
 
 <SUBSECTION Private>
-gdk_display_open_default_libgtk_only
+gdk_display_open_default_libctk_only
 gdk_display_get_type
 GdkDisplayClass
 </SECTION>
@@ -555,8 +555,8 @@ GdkWindowImpl
 GdkWindowImplClass
 GdkWindowRedirect
 gdk_window_impl_get_type
-gdk_window_freeze_toplevel_updates_libgtk_only
-gdk_window_thaw_toplevel_updates_libgtk_only
+gdk_window_freeze_toplevel_updates_libctk_only
+gdk_window_thaw_toplevel_updates_libctk_only
 gdk_fullscreen_mode_get_type
 </SECTION>
 

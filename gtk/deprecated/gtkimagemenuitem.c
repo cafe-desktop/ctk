@@ -52,17 +52,17 @@
  * This is functionally equivalent to:
  *
  * |[<!-- language="C" -->
- *   GtkWidget *box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
- *   GtkWidget *icon = gtk_image_new_from_icon_name ("folder-music-symbolic", GTK_ICON_SIZE_MENU);
- *   GtkWidget *label = gtk_label_new ("Music");
- *   GtkWidget *menu_item = gtk_menu_item_new ();
+ *   GtkWidget *box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
+ *   GtkWidget *icon = ctk_image_new_from_icon_name ("folder-music-symbolic", GTK_ICON_SIZE_MENU);
+ *   GtkWidget *label = ctk_label_new ("Music");
+ *   GtkWidget *menu_item = ctk_menu_item_new ();
  *
- *   gtk_container_add (GTK_CONTAINER (box), icon);
- *   gtk_container_add (GTK_CONTAINER (box), label);
+ *   ctk_container_add (GTK_CONTAINER (box), icon);
+ *   ctk_container_add (GTK_CONTAINER (box), label);
  *
- *   gtk_container_add (GTK_CONTAINER (menu_item), box);
+ *   ctk_container_add (GTK_CONTAINER (menu_item), box);
  *
- *   gtk_widget_show_all (menu_item);
+ *   ctk_widget_show_all (menu_item);
  * ]|
  *
  * Note that the user may disable display of menu icons using
@@ -81,32 +81,32 @@
  * "verbs") should not have icons.
  *
  * Furthermore, if you would like to display keyboard accelerator, you must
- * pack the accel label into the box using gtk_box_pack_end() and align the
+ * pack the accel label into the box using ctk_box_pack_end() and align the
  * label, otherwise the accelerator will not display correctly. The following
  * code snippet adds a keyboard accelerator to the menu item, with a key
  * binding of Ctrl+M:
  *
  * |[<!-- language="C" -->
- *   GtkWidget *box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
- *   GtkWidget *icon = gtk_image_new_from_icon_name ("folder-music-symbolic", GTK_ICON_SIZE_MENU);
- *   GtkWidget *label = gtk_accel_label_new ("Music");
- *   GtkWidget *menu_item = gtk_menu_item_new ();
- *   GtkAccelGroup *accel_group = gtk_accel_group_new ();
+ *   GtkWidget *box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
+ *   GtkWidget *icon = ctk_image_new_from_icon_name ("folder-music-symbolic", GTK_ICON_SIZE_MENU);
+ *   GtkWidget *label = ctk_accel_label_new ("Music");
+ *   GtkWidget *menu_item = ctk_menu_item_new ();
+ *   GtkAccelGroup *accel_group = ctk_accel_group_new ();
  *
- *   gtk_container_add (GTK_CONTAINER (box), icon);
+ *   ctk_container_add (GTK_CONTAINER (box), icon);
  *
- *   gtk_label_set_use_underline (GTK_LABEL (label), TRUE);
- *   gtk_label_set_xalign (GTK_LABEL (label), 0.0);
+ *   ctk_label_set_use_underline (GTK_LABEL (label), TRUE);
+ *   ctk_label_set_xalign (GTK_LABEL (label), 0.0);
  *
- *   gtk_widget_add_accelerator (menu_item, "activate", accel_group,
+ *   ctk_widget_add_accelerator (menu_item, "activate", accel_group,
  *                               GDK_KEY_m, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
- *   gtk_accel_label_set_accel_widget (GTK_ACCEL_LABEL (label), menu_item);
+ *   ctk_accel_label_set_accel_widget (GTK_ACCEL_LABEL (label), menu_item);
  *
- *   gtk_box_pack_end (GTK_BOX (box), label, TRUE, TRUE, 0);
+ *   ctk_box_pack_end (GTK_BOX (box), label, TRUE, TRUE, 0);
  *
- *   gtk_container_add (GTK_CONTAINER (menu_item), box);
+ *   ctk_container_add (GTK_CONTAINER (menu_item), box);
  *
- *   gtk_widget_show_all (menu_item);
+ *   ctk_widget_show_all (menu_item);
  * ]|
  */
 
@@ -130,87 +130,87 @@ enum {
 
 static GtkActivatableIface *parent_activatable_iface;
 
-static void gtk_image_menu_item_destroy              (GtkWidget        *widget);
-static void gtk_image_menu_item_get_preferred_width  (GtkWidget        *widget,
+static void ctk_image_menu_item_destroy              (GtkWidget        *widget);
+static void ctk_image_menu_item_get_preferred_width  (GtkWidget        *widget,
                                                       gint             *minimum,
                                                       gint             *natural);
-static void gtk_image_menu_item_get_preferred_height (GtkWidget        *widget,
+static void ctk_image_menu_item_get_preferred_height (GtkWidget        *widget,
                                                       gint             *minimum,
                                                       gint             *natural);
-static void gtk_image_menu_item_get_preferred_height_for_width (GtkWidget *widget,
+static void ctk_image_menu_item_get_preferred_height_for_width (GtkWidget *widget,
                                                                 gint       width,
                                                                 gint      *minimum,
                                                                 gint      *natural);
-static void gtk_image_menu_item_size_allocate        (GtkWidget        *widget,
+static void ctk_image_menu_item_size_allocate        (GtkWidget        *widget,
                                                       GtkAllocation    *allocation);
-static void gtk_image_menu_item_map                  (GtkWidget        *widget);
-static void gtk_image_menu_item_remove               (GtkContainer     *container,
+static void ctk_image_menu_item_map                  (GtkWidget        *widget);
+static void ctk_image_menu_item_remove               (GtkContainer     *container,
                                                       GtkWidget        *child);
-static void gtk_image_menu_item_toggle_size_request  (GtkMenuItem      *menu_item,
+static void ctk_image_menu_item_toggle_size_request  (GtkMenuItem      *menu_item,
                                                       gint             *requisition);
-static void gtk_image_menu_item_set_label            (GtkMenuItem      *menu_item,
+static void ctk_image_menu_item_set_label            (GtkMenuItem      *menu_item,
                                                       const gchar      *label);
-static const gchar * gtk_image_menu_item_get_label   (GtkMenuItem *menu_item);
+static const gchar * ctk_image_menu_item_get_label   (GtkMenuItem *menu_item);
 
-static void gtk_image_menu_item_forall               (GtkContainer    *container,
+static void ctk_image_menu_item_forall               (GtkContainer    *container,
                                                       gboolean         include_internals,
                                                       GtkCallback      callback,
                                                       gpointer         callback_data);
 
-static void gtk_image_menu_item_finalize             (GObject         *object);
-static void gtk_image_menu_item_set_property         (GObject         *object,
+static void ctk_image_menu_item_finalize             (GObject         *object);
+static void ctk_image_menu_item_set_property         (GObject         *object,
                                                       guint            prop_id,
                                                       const GValue    *value,
                                                       GParamSpec      *pspec);
-static void gtk_image_menu_item_get_property         (GObject         *object,
+static void ctk_image_menu_item_get_property         (GObject         *object,
                                                       guint            prop_id,
                                                       GValue          *value,
                                                       GParamSpec      *pspec);
-static void gtk_image_menu_item_screen_changed       (GtkWidget       *widget,
+static void ctk_image_menu_item_screen_changed       (GtkWidget       *widget,
                                                       GdkScreen       *previous_screen);
 
-static void gtk_image_menu_item_recalculate          (GtkImageMenuItem *image_menu_item);
+static void ctk_image_menu_item_recalculate          (GtkImageMenuItem *image_menu_item);
 
-static void gtk_image_menu_item_activatable_interface_init (GtkActivatableIface  *iface);
-static void gtk_image_menu_item_update                     (GtkActivatable       *activatable,
+static void ctk_image_menu_item_activatable_interface_init (GtkActivatableIface  *iface);
+static void ctk_image_menu_item_update                     (GtkActivatable       *activatable,
                                                             GtkAction            *action,
                                                             const gchar          *property_name);
-static void gtk_image_menu_item_sync_action_properties     (GtkActivatable       *activatable,
+static void ctk_image_menu_item_sync_action_properties     (GtkActivatable       *activatable,
                                                             GtkAction            *action);
 
 
-G_DEFINE_TYPE_WITH_CODE (GtkImageMenuItem, gtk_image_menu_item, GTK_TYPE_MENU_ITEM,
+G_DEFINE_TYPE_WITH_CODE (GtkImageMenuItem, ctk_image_menu_item, GTK_TYPE_MENU_ITEM,
                          G_ADD_PRIVATE (GtkImageMenuItem)
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_ACTIVATABLE,
-                                                gtk_image_menu_item_activatable_interface_init))
+                                                ctk_image_menu_item_activatable_interface_init))
 
 
 static void
-gtk_image_menu_item_class_init (GtkImageMenuItemClass *klass)
+ctk_image_menu_item_class_init (GtkImageMenuItemClass *klass)
 {
   GObjectClass *gobject_class = (GObjectClass*) klass;
   GtkWidgetClass *widget_class = (GtkWidgetClass*) klass;
   GtkMenuItemClass *menu_item_class = (GtkMenuItemClass*) klass;
   GtkContainerClass *container_class = (GtkContainerClass*) klass;
 
-  widget_class->destroy = gtk_image_menu_item_destroy;
-  widget_class->screen_changed = gtk_image_menu_item_screen_changed;
-  widget_class->get_preferred_width = gtk_image_menu_item_get_preferred_width;
-  widget_class->get_preferred_height = gtk_image_menu_item_get_preferred_height;
-  widget_class->get_preferred_height_for_width = gtk_image_menu_item_get_preferred_height_for_width;
-  widget_class->size_allocate = gtk_image_menu_item_size_allocate;
-  widget_class->map = gtk_image_menu_item_map;
+  widget_class->destroy = ctk_image_menu_item_destroy;
+  widget_class->screen_changed = ctk_image_menu_item_screen_changed;
+  widget_class->get_preferred_width = ctk_image_menu_item_get_preferred_width;
+  widget_class->get_preferred_height = ctk_image_menu_item_get_preferred_height;
+  widget_class->get_preferred_height_for_width = ctk_image_menu_item_get_preferred_height_for_width;
+  widget_class->size_allocate = ctk_image_menu_item_size_allocate;
+  widget_class->map = ctk_image_menu_item_map;
 
-  container_class->forall = gtk_image_menu_item_forall;
-  container_class->remove = gtk_image_menu_item_remove;
+  container_class->forall = ctk_image_menu_item_forall;
+  container_class->remove = ctk_image_menu_item_remove;
 
-  menu_item_class->toggle_size_request = gtk_image_menu_item_toggle_size_request;
-  menu_item_class->set_label           = gtk_image_menu_item_set_label;
-  menu_item_class->get_label           = gtk_image_menu_item_get_label;
+  menu_item_class->toggle_size_request = ctk_image_menu_item_toggle_size_request;
+  menu_item_class->set_label           = ctk_image_menu_item_set_label;
+  menu_item_class->get_label           = ctk_image_menu_item_get_label;
 
-  gobject_class->finalize     = gtk_image_menu_item_finalize;
-  gobject_class->set_property = gtk_image_menu_item_set_property;
-  gobject_class->get_property = gtk_image_menu_item_get_property;
+  gobject_class->finalize     = ctk_image_menu_item_finalize;
+  gobject_class->set_property = ctk_image_menu_item_set_property;
+  gobject_class->get_property = ctk_image_menu_item_get_property;
 
   /**
    * GtkImageMenuItem:image:
@@ -273,7 +273,7 @@ gtk_image_menu_item_class_init (GtkImageMenuItemClass *klass)
    *
    * Since: 2.16
    *
-   * Deprecated: 3.10: Use gtk_widget_add_accelerator() instead 
+   * Deprecated: 3.10: Use ctk_widget_add_accelerator() instead 
    */
   g_object_class_install_property (gobject_class,
                                    PROP_ACCEL_GROUP,
@@ -286,11 +286,11 @@ gtk_image_menu_item_class_init (GtkImageMenuItemClass *klass)
 }
 
 static void
-gtk_image_menu_item_init (GtkImageMenuItem *image_menu_item)
+ctk_image_menu_item_init (GtkImageMenuItem *image_menu_item)
 {
   GtkImageMenuItemPrivate *priv;
 
-  image_menu_item->priv = gtk_image_menu_item_get_instance_private (image_menu_item);
+  image_menu_item->priv = ctk_image_menu_item_get_instance_private (image_menu_item);
   priv = image_menu_item->priv;
 
   priv->image = NULL;
@@ -299,18 +299,18 @@ gtk_image_menu_item_init (GtkImageMenuItem *image_menu_item)
 }
 
 static void
-gtk_image_menu_item_finalize (GObject *object)
+ctk_image_menu_item_finalize (GObject *object)
 {
   GtkImageMenuItemPrivate *priv = GTK_IMAGE_MENU_ITEM (object)->priv;
 
   g_free (priv->label);
   priv->label  = NULL;
 
-  G_OBJECT_CLASS (gtk_image_menu_item_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_image_menu_item_parent_class)->finalize (object);
 }
 
 static void
-gtk_image_menu_item_set_property (GObject         *object,
+ctk_image_menu_item_set_property (GObject         *object,
                                   guint            prop_id,
                                   const GValue    *value,
                                   GParamSpec      *pspec)
@@ -320,19 +320,19 @@ gtk_image_menu_item_set_property (GObject         *object,
   switch (prop_id)
     {
     case PROP_IMAGE:
-      gtk_image_menu_item_set_image (image_menu_item, (GtkWidget *) g_value_get_object (value));
+      ctk_image_menu_item_set_image (image_menu_item, (GtkWidget *) g_value_get_object (value));
       break;
     case PROP_USE_STOCK:
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-      gtk_image_menu_item_set_use_stock (image_menu_item, g_value_get_boolean (value));
+      ctk_image_menu_item_set_use_stock (image_menu_item, g_value_get_boolean (value));
       G_GNUC_END_IGNORE_DEPRECATIONS;
       break;
     case PROP_ALWAYS_SHOW_IMAGE:
-      gtk_image_menu_item_set_always_show_image (image_menu_item, g_value_get_boolean (value));
+      ctk_image_menu_item_set_always_show_image (image_menu_item, g_value_get_boolean (value));
       break;
     case PROP_ACCEL_GROUP:
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-      gtk_image_menu_item_set_accel_group (image_menu_item, g_value_get_object (value));
+      ctk_image_menu_item_set_accel_group (image_menu_item, g_value_get_object (value));
       G_GNUC_END_IGNORE_DEPRECATIONS;
       break;
     default:
@@ -342,7 +342,7 @@ gtk_image_menu_item_set_property (GObject         *object,
 }
 
 static void
-gtk_image_menu_item_get_property (GObject         *object,
+ctk_image_menu_item_get_property (GObject         *object,
                                   guint            prop_id,
                                   GValue          *value,
                                   GParamSpec      *pspec)
@@ -352,15 +352,15 @@ gtk_image_menu_item_get_property (GObject         *object,
   switch (prop_id)
     {
     case PROP_IMAGE:
-      g_value_set_object (value, gtk_image_menu_item_get_image (image_menu_item));
+      g_value_set_object (value, ctk_image_menu_item_get_image (image_menu_item));
       break;
     case PROP_USE_STOCK:
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-      g_value_set_boolean (value, gtk_image_menu_item_get_use_stock (image_menu_item));
+      g_value_set_boolean (value, ctk_image_menu_item_get_use_stock (image_menu_item));
       G_GNUC_END_IGNORE_DEPRECATIONS;
       break;
     case PROP_ALWAYS_SHOW_IMAGE:
-      g_value_set_boolean (value, gtk_image_menu_item_get_always_show_image (image_menu_item));
+      g_value_set_boolean (value, ctk_image_menu_item_get_always_show_image (image_menu_item));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -372,7 +372,7 @@ static gboolean
 show_image (GtkImageMenuItem *image_menu_item)
 {
   GtkImageMenuItemPrivate *priv = image_menu_item->priv;
-  GtkSettings *settings = gtk_widget_get_settings (GTK_WIDGET (image_menu_item));
+  GtkSettings *settings = ctk_widget_get_settings (GTK_WIDGET (image_menu_item));
   gboolean show;
 
   if (priv->always_show_image)
@@ -384,12 +384,12 @@ show_image (GtkImageMenuItem *image_menu_item)
 }
 
 static void
-gtk_image_menu_item_map (GtkWidget *widget)
+ctk_image_menu_item_map (GtkWidget *widget)
 {
   GtkImageMenuItem *image_menu_item = GTK_IMAGE_MENU_ITEM (widget);
   GtkImageMenuItemPrivate *priv = image_menu_item->priv;
 
-  GTK_WIDGET_CLASS (gtk_image_menu_item_parent_class)->map (widget);
+  GTK_WIDGET_CLASS (ctk_image_menu_item_parent_class)->map (widget);
 
   if (priv->image)
     g_object_set (priv->image,
@@ -398,20 +398,20 @@ gtk_image_menu_item_map (GtkWidget *widget)
 }
 
 static void
-gtk_image_menu_item_destroy (GtkWidget *widget)
+ctk_image_menu_item_destroy (GtkWidget *widget)
 {
   GtkImageMenuItem *image_menu_item = GTK_IMAGE_MENU_ITEM (widget);
   GtkImageMenuItemPrivate *priv = image_menu_item->priv;
 
   if (priv->image)
-    gtk_container_remove (GTK_CONTAINER (image_menu_item),
+    ctk_container_remove (GTK_CONTAINER (image_menu_item),
                           priv->image);
 
-  GTK_WIDGET_CLASS (gtk_image_menu_item_parent_class)->destroy (widget);
+  GTK_WIDGET_CLASS (ctk_image_menu_item_parent_class)->destroy (widget);
 }
 
 static void
-gtk_image_menu_item_toggle_size_request (GtkMenuItem *menu_item,
+ctk_image_menu_item_toggle_size_request (GtkMenuItem *menu_item,
                                          gint        *requisition)
 {
   GtkImageMenuItem *image_menu_item = GTK_IMAGE_MENU_ITEM (menu_item);
@@ -420,23 +420,23 @@ gtk_image_menu_item_toggle_size_request (GtkMenuItem *menu_item,
   GtkWidget *parent;
   GtkWidget *widget = GTK_WIDGET (menu_item);
 
-  parent = gtk_widget_get_parent (widget);
+  parent = ctk_widget_get_parent (widget);
 
   if (GTK_IS_MENU_BAR (parent))
-    pack_dir = gtk_menu_bar_get_child_pack_direction (GTK_MENU_BAR (parent));
+    pack_dir = ctk_menu_bar_get_child_pack_direction (GTK_MENU_BAR (parent));
   else
     pack_dir = GTK_PACK_DIRECTION_LTR;
 
   *requisition = 0;
 
-  if (priv->image && gtk_widget_get_visible (priv->image))
+  if (priv->image && ctk_widget_get_visible (priv->image))
     {
       GtkRequisition image_requisition;
       guint toggle_spacing;
 
-      gtk_widget_get_preferred_size (priv->image, &image_requisition, NULL);
+      ctk_widget_get_preferred_size (priv->image, &image_requisition, NULL);
 
-      gtk_widget_style_get (GTK_WIDGET (menu_item),
+      ctk_widget_style_get (GTK_WIDGET (menu_item),
                             "toggle-spacing", &toggle_spacing,
                             NULL);
 
@@ -454,7 +454,7 @@ gtk_image_menu_item_toggle_size_request (GtkMenuItem *menu_item,
 }
 
 static void
-gtk_image_menu_item_recalculate (GtkImageMenuItem *image_menu_item)
+ctk_image_menu_item_recalculate (GtkImageMenuItem *image_menu_item)
 {
   GtkImageMenuItemPrivate    *priv = image_menu_item->priv;
   GtkStockItem             stock_item;
@@ -468,25 +468,25 @@ gtk_image_menu_item_recalculate (GtkImageMenuItem *image_menu_item)
 
       if (!priv->image)
         {
-          image = gtk_image_new_from_stock (priv->label, GTK_ICON_SIZE_MENU);
-          gtk_image_menu_item_set_image (image_menu_item, image);
+          image = ctk_image_new_from_stock (priv->label, GTK_ICON_SIZE_MENU);
+          ctk_image_menu_item_set_image (image_menu_item, image);
         }
 
-      if (gtk_stock_lookup (priv->label, &stock_item))
+      if (ctk_stock_lookup (priv->label, &stock_item))
           resolved_label = stock_item.label;
 
-      gtk_menu_item_set_use_underline (GTK_MENU_ITEM (image_menu_item), TRUE);
+      ctk_menu_item_set_use_underline (GTK_MENU_ITEM (image_menu_item), TRUE);
 
       G_GNUC_END_IGNORE_DEPRECATIONS;
     }
 
   GTK_MENU_ITEM_CLASS
-    (gtk_image_menu_item_parent_class)->set_label (GTK_MENU_ITEM (image_menu_item), resolved_label);
+    (ctk_image_menu_item_parent_class)->set_label (GTK_MENU_ITEM (image_menu_item), resolved_label);
 
 }
 
 static void
-gtk_image_menu_item_set_label (GtkMenuItem      *menu_item,
+ctk_image_menu_item_set_label (GtkMenuItem      *menu_item,
                                const gchar      *label)
 {
   GtkImageMenuItemPrivate *priv = GTK_IMAGE_MENU_ITEM (menu_item)->priv;
@@ -496,7 +496,7 @@ gtk_image_menu_item_set_label (GtkMenuItem      *menu_item,
       g_free (priv->label);
       priv->label = g_strdup (label);
 
-      gtk_image_menu_item_recalculate (GTK_IMAGE_MENU_ITEM (menu_item));
+      ctk_image_menu_item_recalculate (GTK_IMAGE_MENU_ITEM (menu_item));
 
       g_object_notify (G_OBJECT (menu_item), "label");
 
@@ -504,7 +504,7 @@ gtk_image_menu_item_set_label (GtkMenuItem      *menu_item,
 }
 
 static const gchar *
-gtk_image_menu_item_get_label (GtkMenuItem *menu_item)
+ctk_image_menu_item_get_label (GtkMenuItem *menu_item)
 {
   GtkImageMenuItemPrivate *priv = GTK_IMAGE_MENU_ITEM (menu_item)->priv;
 
@@ -512,7 +512,7 @@ gtk_image_menu_item_get_label (GtkMenuItem *menu_item)
 }
 
 static void
-gtk_image_menu_item_get_preferred_width (GtkWidget        *widget,
+ctk_image_menu_item_get_preferred_width (GtkWidget        *widget,
                                          gint             *minimum,
                                          gint             *natural)
 {
@@ -521,22 +521,22 @@ gtk_image_menu_item_get_preferred_width (GtkWidget        *widget,
   GtkPackDirection pack_dir;
   GtkWidget *parent;
 
-  parent = gtk_widget_get_parent (widget);
+  parent = ctk_widget_get_parent (widget);
 
   if (GTK_IS_MENU_BAR (parent))
-    pack_dir = gtk_menu_bar_get_child_pack_direction (GTK_MENU_BAR (parent));
+    pack_dir = ctk_menu_bar_get_child_pack_direction (GTK_MENU_BAR (parent));
   else
     pack_dir = GTK_PACK_DIRECTION_LTR;
 
-  GTK_WIDGET_CLASS (gtk_image_menu_item_parent_class)->get_preferred_width (widget, minimum, natural);
+  GTK_WIDGET_CLASS (ctk_image_menu_item_parent_class)->get_preferred_width (widget, minimum, natural);
 
   if ((pack_dir == GTK_PACK_DIRECTION_TTB || pack_dir == GTK_PACK_DIRECTION_BTT) &&
       priv->image &&
-      gtk_widget_get_visible (priv->image))
+      ctk_widget_get_visible (priv->image))
     {
       gint child_minimum, child_natural;
 
-      gtk_widget_get_preferred_width (priv->image, &child_minimum, &child_natural);
+      ctk_widget_get_preferred_width (priv->image, &child_minimum, &child_natural);
 
       *minimum = MAX (*minimum, child_minimum);
       *natural = MAX (*natural, child_natural);
@@ -544,7 +544,7 @@ gtk_image_menu_item_get_preferred_width (GtkWidget        *widget,
 }
 
 static void
-gtk_image_menu_item_get_preferred_height (GtkWidget        *widget,
+ctk_image_menu_item_get_preferred_height (GtkWidget        *widget,
                                           gint             *minimum,
                                           gint             *natural)
 {
@@ -554,23 +554,23 @@ gtk_image_menu_item_get_preferred_height (GtkWidget        *widget,
   GtkPackDirection pack_dir;
   GtkWidget *parent;
 
-  parent = gtk_widget_get_parent (widget);
+  parent = ctk_widget_get_parent (widget);
 
   if (GTK_IS_MENU_BAR (parent))
-    pack_dir = gtk_menu_bar_get_child_pack_direction (GTK_MENU_BAR (parent));
+    pack_dir = ctk_menu_bar_get_child_pack_direction (GTK_MENU_BAR (parent));
   else
     pack_dir = GTK_PACK_DIRECTION_LTR;
 
-  if (priv->image && gtk_widget_get_visible (priv->image))
+  if (priv->image && ctk_widget_get_visible (priv->image))
     {
       GtkRequisition child_requisition;
 
-      gtk_widget_get_preferred_size (priv->image, &child_requisition, NULL);
+      ctk_widget_get_preferred_size (priv->image, &child_requisition, NULL);
 
       child_height = child_requisition.height;
     }
 
-  GTK_WIDGET_CLASS (gtk_image_menu_item_parent_class)->get_preferred_height (widget, minimum, natural);
+  GTK_WIDGET_CLASS (ctk_image_menu_item_parent_class)->get_preferred_height (widget, minimum, natural);
 
   if (pack_dir == GTK_PACK_DIRECTION_RTL || pack_dir == GTK_PACK_DIRECTION_LTR)
     {
@@ -580,7 +580,7 @@ gtk_image_menu_item_get_preferred_height (GtkWidget        *widget,
 }
 
 static void
-gtk_image_menu_item_get_preferred_height_for_width (GtkWidget        *widget,
+ctk_image_menu_item_get_preferred_height_for_width (GtkWidget        *widget,
                                                     gint              width,
                                                     gint             *minimum,
                                                     gint             *natural)
@@ -591,24 +591,24 @@ gtk_image_menu_item_get_preferred_height_for_width (GtkWidget        *widget,
   GtkPackDirection pack_dir;
   GtkWidget *parent;
 
-  parent = gtk_widget_get_parent (widget);
+  parent = ctk_widget_get_parent (widget);
 
   if (GTK_IS_MENU_BAR (parent))
-    pack_dir = gtk_menu_bar_get_child_pack_direction (GTK_MENU_BAR (parent));
+    pack_dir = ctk_menu_bar_get_child_pack_direction (GTK_MENU_BAR (parent));
   else
     pack_dir = GTK_PACK_DIRECTION_LTR;
 
-  if (priv->image && gtk_widget_get_visible (priv->image))
+  if (priv->image && ctk_widget_get_visible (priv->image))
     {
       GtkRequisition child_requisition;
 
-      gtk_widget_get_preferred_size (priv->image, &child_requisition, NULL);
+      ctk_widget_get_preferred_size (priv->image, &child_requisition, NULL);
 
       child_height = child_requisition.height;
     }
 
   GTK_WIDGET_CLASS
-    (gtk_image_menu_item_parent_class)->get_preferred_height_for_width (widget, width, minimum, natural);
+    (ctk_image_menu_item_parent_class)->get_preferred_height_for_width (widget, width, minimum, natural);
 
   if (pack_dir == GTK_PACK_DIRECTION_RTL || pack_dir == GTK_PACK_DIRECTION_LTR)
     {
@@ -619,7 +619,7 @@ gtk_image_menu_item_get_preferred_height_for_width (GtkWidget        *widget,
 
 
 static void
-gtk_image_menu_item_size_allocate (GtkWidget     *widget,
+ctk_image_menu_item_size_allocate (GtkWidget     *widget,
                                    GtkAllocation *allocation)
 {
   GtkImageMenuItem *image_menu_item = GTK_IMAGE_MENU_ITEM (widget);
@@ -628,16 +628,16 @@ gtk_image_menu_item_size_allocate (GtkWidget     *widget,
   GtkPackDirection pack_dir;
   GtkWidget *parent;
 
-  parent = gtk_widget_get_parent (widget);
+  parent = ctk_widget_get_parent (widget);
 
   if (GTK_IS_MENU_BAR (parent))
-    pack_dir = gtk_menu_bar_get_child_pack_direction (GTK_MENU_BAR (parent));
+    pack_dir = ctk_menu_bar_get_child_pack_direction (GTK_MENU_BAR (parent));
   else
     pack_dir = GTK_PACK_DIRECTION_LTR;
 
-  GTK_WIDGET_CLASS (gtk_image_menu_item_parent_class)->size_allocate (widget, allocation);
+  GTK_WIDGET_CLASS (ctk_image_menu_item_parent_class)->size_allocate (widget, allocation);
 
-  if (priv->image && gtk_widget_get_visible (priv->image))
+  if (priv->image && ctk_widget_get_visible (priv->image))
     {
       gint x, y, offset;
       GtkStyleContext *context;
@@ -649,7 +649,7 @@ gtk_image_menu_item_size_allocate (GtkWidget     *widget,
       gint toggle_size;
 
       toggle_size = GTK_MENU_ITEM (image_menu_item)->priv->toggle_size;
-      gtk_widget_style_get (widget,
+      ctk_widget_style_get (widget,
                             "toggle-spacing", &toggle_spacing,
                             NULL);
 
@@ -657,19 +657,19 @@ gtk_image_menu_item_size_allocate (GtkWidget     *widget,
        * come up with a solution that's really better.
        */
 
-      gtk_widget_get_preferred_size (priv->image, &child_requisition, NULL);
+      ctk_widget_get_preferred_size (priv->image, &child_requisition, NULL);
 
-      gtk_widget_get_allocation (widget, &widget_allocation);
+      ctk_widget_get_allocation (widget, &widget_allocation);
 
-      context = gtk_widget_get_style_context (widget);
-      state = gtk_widget_get_state_flags (widget);
-      gtk_style_context_get_padding (context, state, &padding);
-      offset = gtk_container_get_border_width (GTK_CONTAINER (image_menu_item));
+      context = ctk_widget_get_style_context (widget);
+      state = ctk_widget_get_state_flags (widget);
+      ctk_style_context_get_padding (context, state, &padding);
+      offset = ctk_container_get_border_width (GTK_CONTAINER (image_menu_item));
 
       if (pack_dir == GTK_PACK_DIRECTION_LTR ||
           pack_dir == GTK_PACK_DIRECTION_RTL)
         {
-          if ((gtk_widget_get_direction (widget) == GTK_TEXT_DIR_LTR) ==
+          if ((ctk_widget_get_direction (widget) == GTK_TEXT_DIR_LTR) ==
               (pack_dir == GTK_PACK_DIRECTION_LTR))
             x = offset + padding.left +
                (toggle_size - toggle_spacing - child_requisition.width) / 2;
@@ -682,7 +682,7 @@ gtk_image_menu_item_size_allocate (GtkWidget     *widget,
         }
       else
         {
-          if ((gtk_widget_get_direction (widget) == GTK_TEXT_DIR_LTR) ==
+          if ((ctk_widget_get_direction (widget) == GTK_TEXT_DIR_LTR) ==
               (pack_dir == GTK_PACK_DIRECTION_TTB))
             y = offset + padding.top +
               (toggle_size - toggle_spacing - child_requisition.height) / 2;
@@ -699,12 +699,12 @@ gtk_image_menu_item_size_allocate (GtkWidget     *widget,
       child_allocation.x = widget_allocation.x + MAX (x, 0);
       child_allocation.y = widget_allocation.y + MAX (y, 0);
 
-      gtk_widget_size_allocate (priv->image, &child_allocation);
+      ctk_widget_size_allocate (priv->image, &child_allocation);
     }
 }
 
 static void
-gtk_image_menu_item_forall (GtkContainer   *container,
+ctk_image_menu_item_forall (GtkContainer   *container,
                             gboolean        include_internals,
                             GtkCallback     callback,
                             gpointer        callback_data)
@@ -712,7 +712,7 @@ gtk_image_menu_item_forall (GtkContainer   *container,
   GtkImageMenuItem *image_menu_item = GTK_IMAGE_MENU_ITEM (container);
   GtkImageMenuItemPrivate *priv = image_menu_item->priv;
 
-  GTK_CONTAINER_CLASS (gtk_image_menu_item_parent_class)->forall (container,
+  GTK_CONTAINER_CLASS (ctk_image_menu_item_parent_class)->forall (container,
                                                                   include_internals,
                                                                   callback,
                                                                   callback_data);
@@ -723,24 +723,24 @@ gtk_image_menu_item_forall (GtkContainer   *container,
 
 
 static void
-gtk_image_menu_item_activatable_interface_init (GtkActivatableIface  *iface)
+ctk_image_menu_item_activatable_interface_init (GtkActivatableIface  *iface)
 {
   parent_activatable_iface = g_type_interface_peek_parent (iface);
-  iface->update = gtk_image_menu_item_update;
-  iface->sync_action_properties = gtk_image_menu_item_sync_action_properties;
+  iface->update = ctk_image_menu_item_update;
+  iface->sync_action_properties = ctk_image_menu_item_sync_action_properties;
 }
 
 static GtkWidget *
-gtk_image_menu_item_ensure_image (GtkImageMenuItem *item)
+ctk_image_menu_item_ensure_image (GtkImageMenuItem *item)
 {
   GtkWidget *image;
 
-  image = gtk_image_menu_item_get_image (item);
+  image = ctk_image_menu_item_get_image (item);
   if (!GTK_IS_IMAGE (image))
     {
-      image = gtk_image_new ();
-      gtk_widget_show (image);
-      gtk_image_menu_item_set_image (item, image);
+      image = ctk_image_new ();
+      ctk_widget_show (image);
+      ctk_image_menu_item_set_image (item, image);
     }
 
   return image;
@@ -749,16 +749,16 @@ gtk_image_menu_item_ensure_image (GtkImageMenuItem *item)
 static gboolean
 activatable_update_stock_id (GtkImageMenuItem *image_menu_item, GtkAction *action)
 {
-  const gchar *stock_id  = gtk_action_get_stock_id (action);
+  const gchar *stock_id  = ctk_action_get_stock_id (action);
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-  if (stock_id && gtk_icon_factory_lookup_default (stock_id))
+  if (stock_id && ctk_icon_factory_lookup_default (stock_id))
     {
       GtkWidget *image;
 
-      image = gtk_image_menu_item_ensure_image (image_menu_item);
-      gtk_image_set_from_stock (GTK_IMAGE (image), stock_id, GTK_ICON_SIZE_MENU);
+      image = ctk_image_menu_item_ensure_image (image_menu_item);
+      ctk_image_set_from_stock (GTK_IMAGE (image), stock_id, GTK_ICON_SIZE_MENU);
       return TRUE;
     }
 
@@ -770,20 +770,20 @@ activatable_update_stock_id (GtkImageMenuItem *image_menu_item, GtkAction *actio
 static gboolean
 activatable_update_gicon (GtkImageMenuItem *image_menu_item, GtkAction *action)
 {
-  GIcon       *icon = gtk_action_get_gicon (action);
+  GIcon       *icon = ctk_action_get_gicon (action);
   const gchar *stock_id;
   gboolean     ret = FALSE;
 
-  stock_id = gtk_action_get_stock_id (action);
+  stock_id = ctk_action_get_stock_id (action);
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-  if (icon && !(stock_id && gtk_icon_factory_lookup_default (stock_id)))
+  if (icon && !(stock_id && ctk_icon_factory_lookup_default (stock_id)))
     {
       GtkWidget *image;
 
-      image = gtk_image_menu_item_ensure_image (image_menu_item);
-      gtk_image_set_from_gicon (GTK_IMAGE (image), icon, GTK_ICON_SIZE_MENU);
+      image = ctk_image_menu_item_ensure_image (image_menu_item);
+      ctk_image_set_from_gicon (GTK_IMAGE (image), icon, GTK_ICON_SIZE_MENU);
       ret = TRUE;
     }
 
@@ -795,14 +795,14 @@ activatable_update_gicon (GtkImageMenuItem *image_menu_item, GtkAction *action)
 static gboolean
 activatable_update_icon_name (GtkImageMenuItem *image_menu_item, GtkAction *action)
 {
-  const gchar *icon_name = gtk_action_get_icon_name (action);
+  const gchar *icon_name = ctk_action_get_icon_name (action);
 
   if (icon_name)
     {
       GtkWidget *image;
 
-      image = gtk_image_menu_item_ensure_image (image_menu_item);
-      gtk_image_set_from_icon_name (GTK_IMAGE (image), icon_name, GTK_ICON_SIZE_MENU);
+      image = ctk_image_menu_item_ensure_image (image_menu_item);
+      ctk_image_set_from_icon_name (GTK_IMAGE (image), icon_name, GTK_ICON_SIZE_MENU);
       return TRUE;
     }
 
@@ -810,7 +810,7 @@ activatable_update_icon_name (GtkImageMenuItem *image_menu_item, GtkAction *acti
 }
 
 static void
-gtk_image_menu_item_update (GtkActivatable *activatable,
+ctk_image_menu_item_update (GtkActivatable *activatable,
                             GtkAction      *action,
                             const gchar    *property_name)
 {
@@ -821,7 +821,7 @@ gtk_image_menu_item_update (GtkActivatable *activatable,
 
   parent_activatable_iface->update (activatable, action, property_name);
 
-  use_appearance = gtk_activatable_get_use_action_appearance (activatable);
+  use_appearance = ctk_activatable_get_use_action_appearance (activatable);
   if (!use_appearance)
     return;
 
@@ -834,7 +834,7 @@ gtk_image_menu_item_update (GtkActivatable *activatable,
 }
 
 static void
-gtk_image_menu_item_sync_action_properties (GtkActivatable *activatable,
+ctk_image_menu_item_sync_action_properties (GtkActivatable *activatable,
                                             GtkAction      *action)
 {
   GtkImageMenuItem *image_menu_item;
@@ -847,7 +847,7 @@ gtk_image_menu_item_sync_action_properties (GtkActivatable *activatable,
   if (!action)
     return;
 
-  use_appearance = gtk_activatable_get_use_action_appearance (activatable);
+  use_appearance = ctk_activatable_get_use_action_appearance (activatable);
   if (!use_appearance)
     return;
 
@@ -855,38 +855,38 @@ gtk_image_menu_item_sync_action_properties (GtkActivatable *activatable,
       !activatable_update_gicon (image_menu_item, action))
     activatable_update_icon_name (image_menu_item, action);
 
-  gtk_image_menu_item_set_always_show_image (image_menu_item,
-                                             gtk_action_get_always_show_image (action));
+  ctk_image_menu_item_set_always_show_image (image_menu_item,
+                                             ctk_action_get_always_show_image (action));
 }
 
 
 /**
- * gtk_image_menu_item_new:
+ * ctk_image_menu_item_new:
  *
  * Creates a new #GtkImageMenuItem with an empty label.
  *
  * Returns: a new #GtkImageMenuItem
  *
- * Deprecated: 3.10: Use gtk_menu_item_new() instead.
+ * Deprecated: 3.10: Use ctk_menu_item_new() instead.
  */
 GtkWidget*
-gtk_image_menu_item_new (void)
+ctk_image_menu_item_new (void)
 {
   return g_object_new (GTK_TYPE_IMAGE_MENU_ITEM, NULL);
 }
 
 /**
- * gtk_image_menu_item_new_with_label:
+ * ctk_image_menu_item_new_with_label:
  * @label: the text of the menu item.
  *
  * Creates a new #GtkImageMenuItem containing a label.
  *
  * Returns: a new #GtkImageMenuItem.
  *
- * Deprecated: 3.10: Use gtk_menu_item_new_with_label() instead.
+ * Deprecated: 3.10: Use ctk_menu_item_new_with_label() instead.
  */
 GtkWidget*
-gtk_image_menu_item_new_with_label (const gchar *label)
+ctk_image_menu_item_new_with_label (const gchar *label)
 {
   return g_object_new (GTK_TYPE_IMAGE_MENU_ITEM,
                        "label", label,
@@ -894,20 +894,20 @@ gtk_image_menu_item_new_with_label (const gchar *label)
 }
 
 /**
- * gtk_image_menu_item_new_with_mnemonic:
+ * ctk_image_menu_item_new_with_mnemonic:
  * @label: the text of the menu item, with an underscore in front of the
  *         mnemonic character
  *
  * Creates a new #GtkImageMenuItem containing a label. The label
- * will be created using gtk_label_new_with_mnemonic(), so underscores
+ * will be created using ctk_label_new_with_mnemonic(), so underscores
  * in @label indicate the mnemonic for the menu item.
  *
  * Returns: a new #GtkImageMenuItem
  *
- * Deprecated: 3.10: Use gtk_menu_item_new_with_mnemonic() instead.
+ * Deprecated: 3.10: Use ctk_menu_item_new_with_mnemonic() instead.
  */
 GtkWidget*
-gtk_image_menu_item_new_with_mnemonic (const gchar *label)
+ctk_image_menu_item_new_with_mnemonic (const gchar *label)
 {
   return g_object_new (GTK_TYPE_IMAGE_MENU_ITEM,
                        "use-underline", TRUE,
@@ -916,7 +916,7 @@ gtk_image_menu_item_new_with_mnemonic (const gchar *label)
 }
 
 /**
- * gtk_image_menu_item_new_from_stock:
+ * ctk_image_menu_item_new_from_stock:
  * @stock_id: the name of the stock item.
  * @accel_group: (allow-none): the #GtkAccelGroup to add the menu items
  *   accelerator to, or %NULL.
@@ -926,17 +926,17 @@ gtk_image_menu_item_new_with_mnemonic (const gchar *label)
  * and #GTK_STOCK_APPLY.
  *
  * If you want this menu item to have changeable accelerators, then pass in
- * %NULL for accel_group. Next call gtk_menu_item_set_accel_path() with an
- * appropriate path for the menu item, use gtk_stock_lookup() to look up the
+ * %NULL for accel_group. Next call ctk_menu_item_set_accel_path() with an
+ * appropriate path for the menu item, use ctk_stock_lookup() to look up the
  * standard accelerator for the stock item, and if one is found, call
- * gtk_accel_map_add_entry() to register it.
+ * ctk_accel_map_add_entry() to register it.
  *
  * Returns: a new #GtkImageMenuItem.
  *
- * Deprecated: 3.10: Use gtk_menu_item_new_with_mnemonic() instead.
+ * Deprecated: 3.10: Use ctk_menu_item_new_with_mnemonic() instead.
  */
 GtkWidget*
-gtk_image_menu_item_new_from_stock (const gchar   *stock_id,
+ctk_image_menu_item_new_from_stock (const gchar   *stock_id,
                                     GtkAccelGroup *accel_group)
 {
   return g_object_new (GTK_TYPE_IMAGE_MENU_ITEM,
@@ -947,7 +947,7 @@ gtk_image_menu_item_new_from_stock (const gchar   *stock_id,
 }
 
 /**
- * gtk_image_menu_item_set_use_stock:
+ * ctk_image_menu_item_set_use_stock:
  * @image_menu_item: a #GtkImageMenuItem
  * @use_stock: %TRUE if the menuitem should use a stock item
  *
@@ -959,7 +959,7 @@ gtk_image_menu_item_new_from_stock (const gchar   *stock_id,
  * Deprecated: 3.10
  */
 void
-gtk_image_menu_item_set_use_stock (GtkImageMenuItem *image_menu_item,
+ctk_image_menu_item_set_use_stock (GtkImageMenuItem *image_menu_item,
                                    gboolean          use_stock)
 {
   GtkImageMenuItemPrivate *priv;
@@ -972,14 +972,14 @@ gtk_image_menu_item_set_use_stock (GtkImageMenuItem *image_menu_item,
     {
       priv->use_stock = use_stock;
 
-      gtk_image_menu_item_recalculate (image_menu_item);
+      ctk_image_menu_item_recalculate (image_menu_item);
 
       g_object_notify (G_OBJECT (image_menu_item), "use-stock");
     }
 }
 
 /**
- * gtk_image_menu_item_get_use_stock:
+ * ctk_image_menu_item_get_use_stock:
  * @image_menu_item: a #GtkImageMenuItem
  *
  * Checks whether the label set in the menuitem is used as a
@@ -993,7 +993,7 @@ gtk_image_menu_item_set_use_stock (GtkImageMenuItem *image_menu_item,
  * Deprecated: 3.10
  */
 gboolean
-gtk_image_menu_item_get_use_stock (GtkImageMenuItem *image_menu_item)
+ctk_image_menu_item_get_use_stock (GtkImageMenuItem *image_menu_item)
 {
   g_return_val_if_fail (GTK_IS_IMAGE_MENU_ITEM (image_menu_item), FALSE);
 
@@ -1001,7 +1001,7 @@ gtk_image_menu_item_get_use_stock (GtkImageMenuItem *image_menu_item)
 }
 
 /**
- * gtk_image_menu_item_set_always_show_image:
+ * ctk_image_menu_item_set_always_show_image:
  * @image_menu_item: a #GtkImageMenuItem
  * @always_show: %TRUE if the menuitem should always show the image
  *
@@ -1016,7 +1016,7 @@ gtk_image_menu_item_get_use_stock (GtkImageMenuItem *image_menu_item)
  * Deprecated: 3.10
  */
 void
-gtk_image_menu_item_set_always_show_image (GtkImageMenuItem *image_menu_item,
+ctk_image_menu_item_set_always_show_image (GtkImageMenuItem *image_menu_item,
                                            gboolean          always_show)
 {
   GtkImageMenuItemPrivate *priv;
@@ -1032,9 +1032,9 @@ gtk_image_menu_item_set_always_show_image (GtkImageMenuItem *image_menu_item,
       if (priv->image)
         {
           if (show_image (image_menu_item))
-            gtk_widget_show (priv->image);
+            ctk_widget_show (priv->image);
           else
-            gtk_widget_hide (priv->image);
+            ctk_widget_hide (priv->image);
         }
 
       g_object_notify (G_OBJECT (image_menu_item), "always-show-image");
@@ -1042,7 +1042,7 @@ gtk_image_menu_item_set_always_show_image (GtkImageMenuItem *image_menu_item,
 }
 
 /**
- * gtk_image_menu_item_get_always_show_image:
+ * ctk_image_menu_item_get_always_show_image:
  * @image_menu_item: a #GtkImageMenuItem
  *
  * Returns whether the menu item will ignore the #GtkSettings:gtk-menu-images
@@ -1055,7 +1055,7 @@ gtk_image_menu_item_set_always_show_image (GtkImageMenuItem *image_menu_item,
  * Deprecated: 3.10
  */
 gboolean
-gtk_image_menu_item_get_always_show_image (GtkImageMenuItem *image_menu_item)
+ctk_image_menu_item_get_always_show_image (GtkImageMenuItem *image_menu_item)
 {
   g_return_val_if_fail (GTK_IS_IMAGE_MENU_ITEM (image_menu_item), FALSE);
 
@@ -1064,24 +1064,24 @@ gtk_image_menu_item_get_always_show_image (GtkImageMenuItem *image_menu_item)
 
 
 /**
- * gtk_image_menu_item_set_accel_group:
+ * ctk_image_menu_item_set_accel_group:
  * @image_menu_item: a #GtkImageMenuItem
  * @accel_group: the #GtkAccelGroup
  *
  * Specifies an @accel_group to add the menu items accelerator to
  * (this only applies to stock items so a stock item must already
- * be set, make sure to call gtk_image_menu_item_set_use_stock()
- * and gtk_menu_item_set_label() with a valid stock item first).
+ * be set, make sure to call ctk_image_menu_item_set_use_stock()
+ * and ctk_menu_item_set_label() with a valid stock item first).
  *
  * If you want this menu item to have changeable accelerators then
- * you shouldnt need this (see gtk_image_menu_item_new_from_stock()).
+ * you shouldnt need this (see ctk_image_menu_item_new_from_stock()).
  *
  * Since: 2.16
  *
  * Deprecated: 3.10
  */
 void
-gtk_image_menu_item_set_accel_group (GtkImageMenuItem *image_menu_item,
+ctk_image_menu_item_set_accel_group (GtkImageMenuItem *image_menu_item,
                                      GtkAccelGroup    *accel_group)
 {
   GtkImageMenuItemPrivate    *priv;
@@ -1098,10 +1098,10 @@ gtk_image_menu_item_set_accel_group (GtkImageMenuItem *image_menu_item,
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-  if (priv->use_stock && priv->label && gtk_stock_lookup (priv->label, &stock_item))
+  if (priv->use_stock && priv->label && ctk_stock_lookup (priv->label, &stock_item))
     if (stock_item.keyval)
       {
-        gtk_widget_add_accelerator (GTK_WIDGET (image_menu_item),
+        ctk_widget_add_accelerator (GTK_WIDGET (image_menu_item),
                                     "activate",
                                     accel_group,
                                     stock_item.keyval,
@@ -1116,7 +1116,7 @@ gtk_image_menu_item_set_accel_group (GtkImageMenuItem *image_menu_item,
 }
 
 /**
- * gtk_image_menu_item_set_image:
+ * ctk_image_menu_item_set_image:
  * @image_menu_item: a #GtkImageMenuItem.
  * @image: (allow-none): a widget to set as the image for the menu item.
  *
@@ -1127,7 +1127,7 @@ gtk_image_menu_item_set_accel_group (GtkImageMenuItem *image_menu_item,
  * Deprecated: 3.10
  */
 void
-gtk_image_menu_item_set_image (GtkImageMenuItem *image_menu_item,
+ctk_image_menu_item_set_image (GtkImageMenuItem *image_menu_item,
                                GtkWidget        *image)
 {
   GtkImageMenuItemPrivate *priv;
@@ -1140,7 +1140,7 @@ gtk_image_menu_item_set_image (GtkImageMenuItem *image_menu_item,
     return;
 
   if (priv->image)
-    gtk_container_remove (GTK_CONTAINER (image_menu_item),
+    ctk_container_remove (GTK_CONTAINER (image_menu_item),
                           priv->image);
 
   priv->image = image;
@@ -1148,29 +1148,29 @@ gtk_image_menu_item_set_image (GtkImageMenuItem *image_menu_item,
   if (image == NULL)
     return;
 
-  gtk_widget_set_parent (image, GTK_WIDGET (image_menu_item));
+  ctk_widget_set_parent (image, GTK_WIDGET (image_menu_item));
   g_object_set (image,
                 "visible", show_image (image_menu_item),
                 "no-show-all", TRUE,
                 NULL);
-  gtk_image_set_pixel_size (GTK_IMAGE (image), 16);
+  ctk_image_set_pixel_size (GTK_IMAGE (image), 16);
 
   g_object_notify (G_OBJECT (image_menu_item), "image");
 }
 
 /**
- * gtk_image_menu_item_get_image:
+ * ctk_image_menu_item_get_image:
  * @image_menu_item: a #GtkImageMenuItem
  *
  * Gets the widget that is currently set as the image of @image_menu_item.
- * See gtk_image_menu_item_set_image().
+ * See ctk_image_menu_item_set_image().
  *
  * Returns: (transfer none): the widget set as image of @image_menu_item
  *
  * Deprecated: 3.10
  **/
 GtkWidget*
-gtk_image_menu_item_get_image (GtkImageMenuItem *image_menu_item)
+ctk_image_menu_item_get_image (GtkImageMenuItem *image_menu_item)
 {
   g_return_val_if_fail (GTK_IS_IMAGE_MENU_ITEM (image_menu_item), NULL);
 
@@ -1178,7 +1178,7 @@ gtk_image_menu_item_get_image (GtkImageMenuItem *image_menu_item)
 }
 
 static void
-gtk_image_menu_item_remove (GtkContainer *container,
+ctk_image_menu_item_remove (GtkContainer *container,
                             GtkWidget    *child)
 {
   GtkImageMenuItem *image_menu_item = GTK_IMAGE_MENU_ITEM (container);
@@ -1188,20 +1188,20 @@ gtk_image_menu_item_remove (GtkContainer *container,
     {
       gboolean widget_was_visible;
 
-      widget_was_visible = gtk_widget_get_visible (child);
+      widget_was_visible = ctk_widget_get_visible (child);
 
-      gtk_widget_unparent (child);
+      ctk_widget_unparent (child);
       priv->image = NULL;
 
       if (widget_was_visible &&
-          gtk_widget_get_visible (GTK_WIDGET (container)))
-        gtk_widget_queue_resize (GTK_WIDGET (container));
+          ctk_widget_get_visible (GTK_WIDGET (container)))
+        ctk_widget_queue_resize (GTK_WIDGET (container));
 
       g_object_notify (G_OBJECT (image_menu_item), "image");
     }
   else
     {
-      GTK_CONTAINER_CLASS (gtk_image_menu_item_parent_class)->remove (container, child);
+      GTK_CONTAINER_CLASS (ctk_image_menu_item_parent_class)->remove (container, child);
     }
 }
 
@@ -1213,9 +1213,9 @@ show_image_change_notify (GtkImageMenuItem *image_menu_item)
   if (priv->image)
     {
       if (show_image (image_menu_item))
-        gtk_widget_show (priv->image);
+        ctk_widget_show (priv->image);
       else
-        gtk_widget_hide (priv->image);
+        ctk_widget_hide (priv->image);
     }
 }
 
@@ -1226,44 +1226,44 @@ traverse_container (GtkWidget *widget,
   if (GTK_IS_IMAGE_MENU_ITEM (widget))
     show_image_change_notify (GTK_IMAGE_MENU_ITEM (widget));
   else if (GTK_IS_CONTAINER (widget))
-    gtk_container_forall (GTK_CONTAINER (widget), traverse_container, NULL);
+    ctk_container_forall (GTK_CONTAINER (widget), traverse_container, NULL);
 }
 
 static void
-gtk_image_menu_item_setting_changed (GtkSettings *settings)
+ctk_image_menu_item_setting_changed (GtkSettings *settings)
 {
   GList *list, *l;
 
-  list = gtk_window_list_toplevels ();
+  list = ctk_window_list_toplevels ();
 
   for (l = list; l; l = l->next)
-    gtk_container_forall (GTK_CONTAINER (l->data),
+    ctk_container_forall (GTK_CONTAINER (l->data),
                           traverse_container, NULL);
 
   g_list_free (list);
 }
 
 static void
-gtk_image_menu_item_screen_changed (GtkWidget *widget,
+ctk_image_menu_item_screen_changed (GtkWidget *widget,
                                     GdkScreen *previous_screen)
 {
   GtkSettings *settings;
   gulong show_image_connection;
 
-  if (!gtk_widget_has_screen (widget))
+  if (!ctk_widget_has_screen (widget))
     return;
 
-  settings = gtk_widget_get_settings (widget);
+  settings = ctk_widget_get_settings (widget);
 
   show_image_connection =
     g_signal_handler_find (settings, G_SIGNAL_MATCH_FUNC, 0, 0,
-                           NULL, gtk_image_menu_item_setting_changed, NULL);
+                           NULL, ctk_image_menu_item_setting_changed, NULL);
 
   if (show_image_connection)
     return;
 
   g_signal_connect (settings, "notify::gtk-menu-images",
-                    G_CALLBACK (gtk_image_menu_item_setting_changed), NULL);
+                    G_CALLBACK (ctk_image_menu_item_setting_changed), NULL);
 
   show_image_change_notify (GTK_IMAGE_MENU_ITEM (widget));
 }

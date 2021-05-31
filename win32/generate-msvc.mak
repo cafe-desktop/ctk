@@ -25,7 +25,7 @@ GDK_CONFIG_TEMPLATE = ..\gdk\gdkconfig.h.win32
 
 GDK_MARSHALERS_FLAGS = --prefix=_gdk_marshal --valist-marshallers
 GDK_RESOURCES_ARGS = ..\gdk\gdk.gresource.xml --target=$@ --sourcedir=..\gdk --c-name _gdk --manual-register
-GTK_MARSHALERS_FLAGS = --prefix=_gtk_marshal --valist-marshallers
+GTK_MARSHALERS_FLAGS = --prefix=_ctk_marshal --valist-marshallers
 GTK_RESOURCES_ARGS = ..\gtk\gtk.gresource.xml --target=$@ --sourcedir=..\gtk --c-name _gtk --manual-register
 
 all:	\

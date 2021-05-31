@@ -132,19 +132,19 @@ struct _GtkIconViewPrivate
 
 };
 
-void                 _gtk_icon_view_set_cell_data                  (GtkIconView            *icon_view,
+void                 _ctk_icon_view_set_cell_data                  (GtkIconView            *icon_view,
                                                                     GtkIconViewItem        *item);
-void                 _gtk_icon_view_set_cursor_item                (GtkIconView            *icon_view,
+void                 _ctk_icon_view_set_cursor_item                (GtkIconView            *icon_view,
                                                                     GtkIconViewItem        *item,
                                                                     GtkCellRenderer        *cursor_cell);
-GtkIconViewItem *    _gtk_icon_view_get_item_at_coords             (GtkIconView            *icon_view,
+GtkIconViewItem *    _ctk_icon_view_get_item_at_coords             (GtkIconView            *icon_view,
                                                                     gint                    x,
                                                                     gint                    y,
                                                                     gboolean                only_in_cell,
                                                                     GtkCellRenderer       **cell_at_pos);
-void                 _gtk_icon_view_select_item                    (GtkIconView            *icon_view,
+void                 _ctk_icon_view_select_item                    (GtkIconView            *icon_view,
                                                                     GtkIconViewItem        *item);
-void                 _gtk_icon_view_unselect_item                  (GtkIconView            *icon_view,
+void                 _ctk_icon_view_unselect_item                  (GtkIconView            *icon_view,
                                                                     GtkIconViewItem        *item);
 
 G_END_DECLS

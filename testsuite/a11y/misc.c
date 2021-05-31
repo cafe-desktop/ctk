@@ -29,26 +29,26 @@ test_popover_parent (void)
 
   g_test_bug ("733923");
 
-  w = gtk_entry_new ();
+  w = ctk_entry_new ();
 
-  p = gtk_popover_new (NULL);
-  a = gtk_widget_get_accessible (p);
+  p = ctk_popover_new (NULL);
+  a = ctk_widget_get_accessible (p);
 
   g_assert (a != NULL);
   g_assert (atk_object_get_parent (a) == NULL);
 
-  gtk_popover_set_relative_to (GTK_POPOVER (p), w);
+  ctk_popover_set_relative_to (GTK_POPOVER (p), w);
 
   g_assert (atk_object_get_parent (a) != NULL);
 
-  gtk_widget_destroy (w);
-  gtk_widget_destroy (p);
+  ctk_widget_destroy (w);
+  ctk_widget_destroy (p);
 }
 
 int
 main (int argc, char *argv[])
 {
-  gtk_test_init (&argc, &argv, NULL);
+  ctk_test_init (&argc, &argv, NULL);
 
   g_test_bug_base ("http://bugzilla.gnome.org/");
 

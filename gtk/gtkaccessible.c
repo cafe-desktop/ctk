@@ -50,12 +50,12 @@ enum {
   PROP_WIDGET
 };
 
-static void gtk_accessible_real_connect_widget_destroyed (GtkAccessible *accessible);
+static void ctk_accessible_real_connect_widget_destroyed (GtkAccessible *accessible);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkAccessible, gtk_accessible, ATK_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkAccessible, ctk_accessible, ATK_TYPE_OBJECT)
 
 static void
-gtk_accessible_set_property (GObject      *object,
+ctk_accessible_set_property (GObject      *object,
                              guint         prop_id,
                              const GValue *value,
                              GParamSpec   *pspec)
@@ -65,7 +65,7 @@ gtk_accessible_set_property (GObject      *object,
   switch (prop_id)
     {
     case PROP_WIDGET:
-      gtk_accessible_set_widget (accessible, g_value_get_object (value));
+      ctk_accessible_set_widget (accessible, g_value_get_object (value));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -74,7 +74,7 @@ gtk_accessible_set_property (GObject      *object,
 }
 
 static void
-gtk_accessible_get_property (GObject    *object,
+ctk_accessible_get_property (GObject    *object,
                              guint       prop_id,
                              GValue     *value,
                              GParamSpec *pspec)
@@ -94,18 +94,18 @@ gtk_accessible_get_property (GObject    *object,
 }
 
 static void
-gtk_accessible_init (GtkAccessible *accessible)
+ctk_accessible_init (GtkAccessible *accessible)
 {
-  accessible->priv = gtk_accessible_get_instance_private (accessible);
+  accessible->priv = ctk_accessible_get_instance_private (accessible);
 }
 
 static AtkStateSet *
-gtk_accessible_ref_state_set (AtkObject *object)
+ctk_accessible_ref_state_set (AtkObject *object)
 {
   GtkAccessible *accessible = GTK_ACCESSIBLE (object);
   AtkStateSet *state_set;
 
-  state_set = ATK_OBJECT_CLASS (gtk_accessible_parent_class)->ref_state_set (object);
+  state_set = ATK_OBJECT_CLASS (ctk_accessible_parent_class)->ref_state_set (object);
 
   if (accessible->priv->widget == NULL)
     atk_state_set_add_state (state_set, ATK_STATE_DEFUNCT);
@@ -114,41 +114,41 @@ gtk_accessible_ref_state_set (AtkObject *object)
 }
 
 static void
-gtk_accessible_real_widget_set (GtkAccessible *accessible)
+ctk_accessible_real_widget_set (GtkAccessible *accessible)
 {
   atk_object_notify_state_change (ATK_OBJECT (accessible), ATK_STATE_DEFUNCT, FALSE);
 }
 
 static void
-gtk_accessible_real_widget_unset (GtkAccessible *accessible)
+ctk_accessible_real_widget_unset (GtkAccessible *accessible)
 {
   atk_object_notify_state_change (ATK_OBJECT (accessible), ATK_STATE_DEFUNCT, TRUE);
 }
 
 static void
-gtk_accessible_dispose (GObject *object)
+ctk_accessible_dispose (GObject *object)
 {
   GtkAccessible *accessible = GTK_ACCESSIBLE (object);
   
-  gtk_accessible_set_widget (accessible, NULL);
+  ctk_accessible_set_widget (accessible, NULL);
 
-  G_OBJECT_CLASS (gtk_accessible_parent_class)->dispose (object);
+  G_OBJECT_CLASS (ctk_accessible_parent_class)->dispose (object);
 }
 
 static void
-gtk_accessible_class_init (GtkAccessibleClass *klass)
+ctk_accessible_class_init (GtkAccessibleClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
   AtkObjectClass *atkobject_class = ATK_OBJECT_CLASS (klass);
 
-  klass->connect_widget_destroyed = gtk_accessible_real_connect_widget_destroyed;
-  klass->widget_set = gtk_accessible_real_widget_set;
-  klass->widget_unset = gtk_accessible_real_widget_unset;
+  klass->connect_widget_destroyed = ctk_accessible_real_connect_widget_destroyed;
+  klass->widget_set = ctk_accessible_real_widget_set;
+  klass->widget_unset = ctk_accessible_real_widget_unset;
 
-  atkobject_class->ref_state_set = gtk_accessible_ref_state_set;
-  gobject_class->get_property = gtk_accessible_get_property;
-  gobject_class->set_property = gtk_accessible_set_property;
-  gobject_class->dispose = gtk_accessible_dispose;
+  atkobject_class->ref_state_set = ctk_accessible_ref_state_set;
+  gobject_class->get_property = ctk_accessible_get_property;
+  gobject_class->set_property = ctk_accessible_set_property;
+  gobject_class->dispose = ctk_accessible_dispose;
 
   g_object_class_install_property (gobject_class,
 				   PROP_WIDGET,
@@ -160,7 +160,7 @@ gtk_accessible_class_init (GtkAccessibleClass *klass)
 }
 
 /**
- * gtk_accessible_set_widget:
+ * ctk_accessible_set_widget:
  * @accessible: a #GtkAccessible
  * @widget: (allow-none): a #GtkWidget or %NULL to unset
  *
@@ -174,7 +174,7 @@ gtk_accessible_class_init (GtkAccessibleClass *klass)
  * Since: 2.22
  */
 void
-gtk_accessible_set_widget (GtkAccessible *accessible,
+ctk_accessible_set_widget (GtkAccessible *accessible,
                            GtkWidget     *widget)
 {
   GtkAccessiblePrivate *priv;
@@ -200,7 +200,7 @@ gtk_accessible_set_widget (GtkAccessible *accessible,
 }
 
 /**
- * gtk_accessible_get_widget:
+ * ctk_accessible_get_widget:
  * @accessible: a #GtkAccessible
  *
  * Gets the #GtkWidget corresponding to the #GtkAccessible.
@@ -213,7 +213,7 @@ gtk_accessible_set_widget (GtkAccessible *accessible,
  * Since: 2.22
  */
 GtkWidget*
-gtk_accessible_get_widget (GtkAccessible *accessible)
+ctk_accessible_get_widget (GtkAccessible *accessible)
 {
   g_return_val_if_fail (GTK_IS_ACCESSIBLE (accessible), NULL);
 
@@ -221,16 +221,16 @@ gtk_accessible_get_widget (GtkAccessible *accessible)
 }
 
 /**
- * gtk_accessible_connect_widget_destroyed:
+ * ctk_accessible_connect_widget_destroyed:
  * @accessible: a #GtkAccessible
  *
  * This function specifies the callback function to be called
  * when the widget corresponding to a GtkAccessible is destroyed.
  *
- * Deprecated: 3.4: Use gtk_accessible_set_widget() and its vfuncs.
+ * Deprecated: 3.4: Use ctk_accessible_set_widget() and its vfuncs.
  */
 void
-gtk_accessible_connect_widget_destroyed (GtkAccessible *accessible)
+ctk_accessible_connect_widget_destroyed (GtkAccessible *accessible)
 {
   GtkAccessibleClass *class;
 
@@ -243,18 +243,18 @@ gtk_accessible_connect_widget_destroyed (GtkAccessible *accessible)
 }
 
 static void
-gtk_accessible_widget_destroyed (GtkWidget     *widget,
+ctk_accessible_widget_destroyed (GtkWidget     *widget,
                                  GtkAccessible *accessible)
 {
-  gtk_accessible_set_widget (accessible, NULL);
+  ctk_accessible_set_widget (accessible, NULL);
 }
 
 static void
-gtk_accessible_real_connect_widget_destroyed (GtkAccessible *accessible)
+ctk_accessible_real_connect_widget_destroyed (GtkAccessible *accessible)
 {
   GtkAccessiblePrivate *priv = accessible->priv;
 
   if (priv->widget)
     g_signal_connect (priv->widget, "destroy",
-                      G_CALLBACK (gtk_accessible_widget_destroyed), accessible);
+                      G_CALLBACK (ctk_accessible_widget_destroyed), accessible);
 }

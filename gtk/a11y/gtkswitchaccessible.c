@@ -32,48 +32,48 @@
 
 static void atk_action_interface_init (AtkActionIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkSwitchAccessible, gtk_switch_accessible, GTK_TYPE_WIDGET_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (GtkSwitchAccessible, ctk_switch_accessible, GTK_TYPE_WIDGET_ACCESSIBLE,
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_ACTION, atk_action_interface_init))
 
 static AtkStateSet *
-gtk_switch_accessible_ref_state_set (AtkObject *accessible)
+ctk_switch_accessible_ref_state_set (AtkObject *accessible)
 {
   AtkStateSet *state_set;
   GtkWidget *widget;
 
-  state_set = ATK_OBJECT_CLASS (gtk_switch_accessible_parent_class)->ref_state_set (accessible);
+  state_set = ATK_OBJECT_CLASS (ctk_switch_accessible_parent_class)->ref_state_set (accessible);
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
   if (widget == NULL)
     return state_set;
 
-  if (gtk_switch_get_active (GTK_SWITCH (widget)))
+  if (ctk_switch_get_active (GTK_SWITCH (widget)))
     atk_state_set_add_state (state_set, ATK_STATE_CHECKED);
 
   return state_set;
 }
 
 static void
-gtk_switch_accessible_class_init (GtkSwitchAccessibleClass *klass)
+ctk_switch_accessible_class_init (GtkSwitchAccessibleClass *klass)
 {
   AtkObjectClass *atk_class = ATK_OBJECT_CLASS (klass);
 
-  atk_class->ref_state_set = gtk_switch_accessible_ref_state_set;
+  atk_class->ref_state_set = ctk_switch_accessible_ref_state_set;
 }
 
 static void
-gtk_switch_accessible_init (GtkSwitchAccessible *self)
+ctk_switch_accessible_init (GtkSwitchAccessible *self)
 {
 }
 
 static gint
-gtk_switch_action_get_n_actions (AtkAction *action)
+ctk_switch_action_get_n_actions (AtkAction *action)
 {
   return 1;
 }
 
 static const gchar *
-gtk_switch_action_get_name (AtkAction *action,
+ctk_switch_action_get_name (AtkAction *action,
                             gint       i)
 {
   if (i == 0)
@@ -82,7 +82,7 @@ gtk_switch_action_get_name (AtkAction *action,
 }
 
 static const gchar *
-gtk_switch_action_get_localized_name (AtkAction *action,
+ctk_switch_action_get_localized_name (AtkAction *action,
                                       gint       i)
 {
   if (i == 0)
@@ -91,7 +91,7 @@ gtk_switch_action_get_localized_name (AtkAction *action,
 }
 
 static const gchar *
-gtk_switch_action_get_description (AtkAction *action,
+ctk_switch_action_get_description (AtkAction *action,
                                    gint       i)
 {
   if (i == 0)
@@ -100,24 +100,24 @@ gtk_switch_action_get_description (AtkAction *action,
 }
 
 static gboolean
-gtk_switch_action_do_action (AtkAction *action,
+ctk_switch_action_do_action (AtkAction *action,
                              gint       i)
 {
   GtkSwitch *sw;
   GtkWidget *widget;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (action));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (action));
   if (widget == NULL)
     return FALSE;
 
   if (i != 0)
     return FALSE;
 
-  if (!gtk_widget_is_sensitive (widget) || !gtk_widget_get_visible (widget))
+  if (!ctk_widget_is_sensitive (widget) || !ctk_widget_get_visible (widget))
     return FALSE;
 
   sw = GTK_SWITCH (widget);
-  gtk_switch_set_active (sw, !gtk_switch_get_active (sw));
+  ctk_switch_set_active (sw, !ctk_switch_get_active (sw));
 
   return TRUE;
 }
@@ -125,9 +125,9 @@ gtk_switch_action_do_action (AtkAction *action,
 static void
 atk_action_interface_init (AtkActionIface *iface)
 {
-  iface->do_action = gtk_switch_action_do_action;
-  iface->get_n_actions = gtk_switch_action_get_n_actions;
-  iface->get_name = gtk_switch_action_get_name;
-  iface->get_localized_name = gtk_switch_action_get_localized_name;
-  iface->get_description = gtk_switch_action_get_description;
+  iface->do_action = ctk_switch_action_do_action;
+  iface->get_n_actions = ctk_switch_action_get_n_actions;
+  iface->get_name = ctk_switch_action_get_name;
+  iface->get_localized_name = ctk_switch_action_get_localized_name;
+  iface->get_description = ctk_switch_action_get_description;
 }

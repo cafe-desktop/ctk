@@ -34,20 +34,20 @@ enum {
   PROP_VALUE_TYPE
 };
 
-G_DEFINE_ABSTRACT_TYPE (GtkStyleProperty, _gtk_style_property, G_TYPE_OBJECT)
+G_DEFINE_ABSTRACT_TYPE (GtkStyleProperty, _ctk_style_property, G_TYPE_OBJECT)
 
 static void
-gtk_style_property_finalize (GObject *object)
+ctk_style_property_finalize (GObject *object)
 {
   GtkStyleProperty *property = GTK_STYLE_PROPERTY (object);
 
   g_warning ("finalizing %s '%s', how could this happen?", G_OBJECT_TYPE_NAME (object), property->name);
 
-  G_OBJECT_CLASS (_gtk_style_property_parent_class)->finalize (object);
+  G_OBJECT_CLASS (_ctk_style_property_parent_class)->finalize (object);
 }
 
 static void
-gtk_style_property_set_property (GObject      *object,
+ctk_style_property_set_property (GObject      *object,
                                  guint         prop_id,
                                  const GValue *value,
                                  GParamSpec   *pspec)
@@ -73,7 +73,7 @@ gtk_style_property_set_property (GObject      *object,
 }
 
 static void
-gtk_style_property_get_property (GObject    *object,
+ctk_style_property_get_property (GObject    *object,
                                  guint       prop_id,
                                  GValue     *value,
                                  GParamSpec *pspec)
@@ -95,13 +95,13 @@ gtk_style_property_get_property (GObject    *object,
 }
 
 static void
-_gtk_style_property_class_init (GtkStylePropertyClass *klass)
+_ctk_style_property_class_init (GtkStylePropertyClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  object_class->finalize = gtk_style_property_finalize;
-  object_class->set_property = gtk_style_property_set_property;
-  object_class->get_property = gtk_style_property_get_property;
+  object_class->finalize = ctk_style_property_finalize;
+  object_class->set_property = ctk_style_property_set_property;
+  object_class->get_property = ctk_style_property_get_property;
 
   g_object_class_install_property (object_class,
                                    PROP_NAME,
@@ -122,13 +122,13 @@ _gtk_style_property_class_init (GtkStylePropertyClass *klass)
 }
 
 static void
-_gtk_style_property_init (GtkStyleProperty *property)
+_ctk_style_property_init (GtkStyleProperty *property)
 {
   property->value_type = G_TYPE_NONE;
 }
 
 /**
- * _gtk_style_property_parse_value:
+ * _ctk_style_property_parse_value:
  * @property: the property
  * @parser: the parser to parse from
  *
@@ -140,12 +140,12 @@ _gtk_style_property_init (GtkStyleProperty *property)
  *
  * Only if @property is a #GtkCssShorthandProperty, the @value will
  * always be a #GtkCssValue whose values can be queried with
- * _gtk_css_array_value_get_nth().
+ * _ctk_css_array_value_get_nth().
  *
  * Returns: %NULL on failure or the parsed #GtkCssValue
  **/
 GtkCssValue *
-_gtk_style_property_parse_value (GtkStyleProperty *property,
+_ctk_style_property_parse_value (GtkStyleProperty *property,
                                  GtkCssParser     *parser)
 {
   GtkStylePropertyClass *klass;
@@ -159,19 +159,19 @@ _gtk_style_property_parse_value (GtkStyleProperty *property,
 }
 
 /**
- * _gtk_style_property_assign:
+ * _ctk_style_property_assign:
  * @property: the property
  * @props: The properties to assign to
  * @state: The state to assign
  * @value: (out): the #GValue with the value to be
  *     assigned
  *
- * This function is called by gtk_style_properties_set() and in
- * turn gtk_style_context_set() and similar functions to set the
+ * This function is called by ctk_style_properties_set() and in
+ * turn ctk_style_context_set() and similar functions to set the
  * value from code using old APIs.
  **/
 void
-_gtk_style_property_assign (GtkStyleProperty   *property,
+_ctk_style_property_assign (GtkStyleProperty   *property,
                             GtkStyleProperties *props,
                             GtkStateFlags       state,
                             const GValue       *value)
@@ -190,19 +190,19 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 /**
- * _gtk_style_property_query:
+ * _ctk_style_property_query:
  * @property: the property
  * @value: (out): an uninitialized #GValue to be filled with the
  *   contents of the lookup
  * @query_func: The function to use to query properties
  * @query_data: The data to pass to @query_func
  *
- * This function is called by gtk_style_properties_get() and in
- * turn gtk_style_context_get() and similar functions to get the
+ * This function is called by ctk_style_properties_get() and in
+ * turn ctk_style_context_get() and similar functions to get the
  * value to return to code using old APIs.
  **/
 void
-_gtk_style_property_query (GtkStyleProperty  *property,
+_ctk_style_property_query (GtkStyleProperty  *property,
                            GValue            *value,
                            GtkStyleQueryFunc  query_func,
                            gpointer           query_data)
@@ -219,7 +219,7 @@ _gtk_style_property_query (GtkStyleProperty  *property,
 }
 
 void
-_gtk_style_property_init_properties (void)
+_ctk_style_property_init_properties (void)
 {
   static gboolean initialized = FALSE;
 
@@ -228,13 +228,13 @@ _gtk_style_property_init_properties (void)
 
   initialized = TRUE;
 
-  _gtk_css_style_property_init_properties ();
+  _ctk_css_style_property_init_properties ();
   /* initialize shorthands last, they depend on the real properties existing */
-  _gtk_css_shorthand_property_init_properties ();
+  _ctk_css_shorthand_property_init_properties ();
 }
 
 void
-_gtk_style_property_add_alias (const gchar *name,
+_ctk_style_property_add_alias (const gchar *name,
                                const gchar *alias)
 {
   GtkStylePropertyClass *klass;
@@ -254,7 +254,7 @@ _gtk_style_property_add_alias (const gchar *name,
 }
 
 /**
- * _gtk_style_property_lookup:
+ * _ctk_style_property_lookup:
  * @name: name of the property to lookup
  *
  * Looks up the CSS property with the given @name. If no such
@@ -264,13 +264,13 @@ _gtk_style_property_add_alias (const gchar *name,
  *     property with the given name exists.
  **/
 GtkStyleProperty *
-_gtk_style_property_lookup (const char *name)
+_ctk_style_property_lookup (const char *name)
 {
   GtkStylePropertyClass *klass;
 
   g_return_val_if_fail (name != NULL, NULL);
 
-  _gtk_style_property_init_properties ();
+  _ctk_style_property_init_properties ();
 
   klass = g_type_class_peek (GTK_TYPE_STYLE_PROPERTY);
 
@@ -278,7 +278,7 @@ _gtk_style_property_lookup (const char *name)
 }
 
 /**
- * _gtk_style_property_get_name:
+ * _ctk_style_property_get_name:
  * @property: the property to query
  *
  * Gets the name of the given property.
@@ -286,7 +286,7 @@ _gtk_style_property_lookup (const char *name)
  * Returns: the name of the property
  **/
 const char *
-_gtk_style_property_get_name (GtkStyleProperty *property)
+_ctk_style_property_get_name (GtkStyleProperty *property)
 {
   g_return_val_if_fail (GTK_IS_STYLE_PROPERTY (property), NULL);
 
@@ -294,18 +294,18 @@ _gtk_style_property_get_name (GtkStyleProperty *property)
 }
 
 /**
- * _gtk_style_property_get_value_type:
+ * _ctk_style_property_get_value_type:
  * @property: the property to query
  *
  * Gets the value type of the @property, if the property is usable
- * in public API via _gtk_style_property_assign() and
- * _gtk_style_property_query(). If the @property is not usable in that
+ * in public API via _ctk_style_property_assign() and
+ * _ctk_style_property_query(). If the @property is not usable in that
  * way, %G_TYPE_NONE is returned.
  *
  * Returns: the value type in use or %G_TYPE_NONE if none.
  **/
 GType
-_gtk_style_property_get_value_type (GtkStyleProperty *property)
+_ctk_style_property_get_value_type (GtkStyleProperty *property)
 {
   g_return_val_if_fail (GTK_IS_STYLE_PROPERTY (property), G_TYPE_NONE);
 

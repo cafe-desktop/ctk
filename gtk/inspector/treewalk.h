@@ -25,20 +25,20 @@ typedef gboolean (*RowPredicate) (GtkTreeModel *model,
 
 typedef struct _GtkTreeWalk GtkTreeWalk;
 
-GtkTreeWalk * gtk_tree_walk_new        (GtkTreeModel   *model,
+GtkTreeWalk * ctk_tree_walk_new        (GtkTreeModel   *model,
                                         RowPredicate    predicate,
                                         gpointer        data,
                                         GDestroyNotify  destroy);
 
-void          gtk_tree_walk_free       (GtkTreeWalk *walk);
+void          ctk_tree_walk_free       (GtkTreeWalk *walk);
 
-void          gtk_tree_walk_reset      (GtkTreeWalk *walk,
+void          ctk_tree_walk_reset      (GtkTreeWalk *walk,
                                         GtkTreeIter *iter);
 
-gboolean      gtk_tree_walk_next_match (GtkTreeWalk *walk,
+gboolean      ctk_tree_walk_next_match (GtkTreeWalk *walk,
                                         gboolean     force_move,
                                         gboolean     backwards,
                                         GtkTreeIter *iter);
 
-gboolean      gtk_tree_walk_get_position (GtkTreeWalk *walk,
+gboolean      ctk_tree_walk_get_position (GtkTreeWalk *walk,
                                           GtkTreeIter *iter);

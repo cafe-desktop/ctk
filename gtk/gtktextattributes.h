@@ -63,7 +63,7 @@ G_BEGIN_DECLS
 
 typedef struct _GtkTextAttributes GtkTextAttributes;
 
-#define GTK_TYPE_TEXT_ATTRIBUTES     (gtk_text_attributes_get_type ())
+#define GTK_TYPE_TEXT_ATTRIBUTES     (ctk_text_attributes_get_type ())
 
 typedef struct _GtkTextAppearance GtkTextAppearance;
 
@@ -159,7 +159,7 @@ struct _GtkTextAppearance
  * @letter_spacing: Extra space to insert between graphemes, in Pango units
  *
  * Using #GtkTextAttributes directly should rarely be necessary.
- * It’s primarily useful with gtk_text_iter_get_attributes().
+ * It’s primarily useful with ctk_text_iter_get_attributes().
  * As with most GTK+ structs, the fields in this struct should only
  * be read, never modified directly.
  */
@@ -227,19 +227,19 @@ struct _GtkTextAttributes
 };
 
 GDK_AVAILABLE_IN_ALL
-GtkTextAttributes* gtk_text_attributes_new         (void);
+GtkTextAttributes* ctk_text_attributes_new         (void);
 GDK_AVAILABLE_IN_ALL
-GtkTextAttributes* gtk_text_attributes_copy        (GtkTextAttributes *src);
+GtkTextAttributes* ctk_text_attributes_copy        (GtkTextAttributes *src);
 GDK_AVAILABLE_IN_ALL
-void               gtk_text_attributes_copy_values (GtkTextAttributes *src,
+void               ctk_text_attributes_copy_values (GtkTextAttributes *src,
                                                     GtkTextAttributes *dest);
 GDK_AVAILABLE_IN_ALL
-void               gtk_text_attributes_unref       (GtkTextAttributes *values);
+void               ctk_text_attributes_unref       (GtkTextAttributes *values);
 GDK_AVAILABLE_IN_ALL
-GtkTextAttributes *gtk_text_attributes_ref         (GtkTextAttributes *values);
+GtkTextAttributes *ctk_text_attributes_ref         (GtkTextAttributes *values);
 
 GDK_AVAILABLE_IN_ALL
-GType              gtk_text_attributes_get_type    (void) G_GNUC_CONST;
+GType              ctk_text_attributes_get_type    (void) G_GNUC_CONST;
 
 
 G_END_DECLS

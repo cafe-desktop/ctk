@@ -36,11 +36,11 @@ G_BEGIN_DECLS
 /**
  * GtkTextTagTableForeach:
  * @tag: the #GtkTextTag
- * @data: (closure): data passed to gtk_text_tag_table_foreach()
+ * @data: (closure): data passed to ctk_text_tag_table_foreach()
  */
 typedef void (* GtkTextTagTableForeach) (GtkTextTag *tag, gpointer data);
 
-#define GTK_TYPE_TEXT_TAG_TABLE            (gtk_text_tag_table_get_type ())
+#define GTK_TYPE_TEXT_TAG_TABLE            (ctk_text_tag_table_get_type ())
 #define GTK_TEXT_TAG_TABLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TEXT_TAG_TABLE, GtkTextTagTable))
 #define GTK_TEXT_TAG_TABLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_TEXT_TAG_TABLE, GtkTextTagTableClass))
 #define GTK_IS_TEXT_TAG_TABLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TEXT_TAG_TABLE))
@@ -66,32 +66,32 @@ struct _GtkTextTagTableClass
   void (* tag_removed) (GtkTextTagTable *table, GtkTextTag *tag);
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_ALL
-GType          gtk_text_tag_table_get_type (void) G_GNUC_CONST;
+GType          ctk_text_tag_table_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkTextTagTable *gtk_text_tag_table_new      (void);
+GtkTextTagTable *ctk_text_tag_table_new      (void);
 GDK_AVAILABLE_IN_ALL
-gboolean         gtk_text_tag_table_add      (GtkTextTagTable        *table,
+gboolean         ctk_text_tag_table_add      (GtkTextTagTable        *table,
                                               GtkTextTag             *tag);
 GDK_AVAILABLE_IN_ALL
-void             gtk_text_tag_table_remove   (GtkTextTagTable        *table,
+void             ctk_text_tag_table_remove   (GtkTextTagTable        *table,
                                               GtkTextTag             *tag);
 GDK_AVAILABLE_IN_ALL
-GtkTextTag      *gtk_text_tag_table_lookup   (GtkTextTagTable        *table,
+GtkTextTag      *ctk_text_tag_table_lookup   (GtkTextTagTable        *table,
                                               const gchar            *name);
 GDK_AVAILABLE_IN_ALL
-void             gtk_text_tag_table_foreach  (GtkTextTagTable        *table,
+void             ctk_text_tag_table_foreach  (GtkTextTagTable        *table,
                                               GtkTextTagTableForeach  func,
                                               gpointer                data);
 GDK_AVAILABLE_IN_ALL
-gint             gtk_text_tag_table_get_size (GtkTextTagTable        *table);
+gint             ctk_text_tag_table_get_size (GtkTextTagTable        *table);
 
 G_END_DECLS
 

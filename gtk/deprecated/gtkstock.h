@@ -73,28 +73,28 @@ struct _GtkStockItem
 };
 
 GDK_DEPRECATED_IN_3_10
-void     gtk_stock_add        (const GtkStockItem  *items,
+void     ctk_stock_add        (const GtkStockItem  *items,
                                guint                n_items);
 GDK_DEPRECATED_IN_3_10
-void     gtk_stock_add_static (const GtkStockItem  *items,
+void     ctk_stock_add_static (const GtkStockItem  *items,
                                guint                n_items);
 GDK_DEPRECATED_IN_3_10
-gboolean gtk_stock_lookup     (const gchar         *stock_id,
+gboolean ctk_stock_lookup     (const gchar         *stock_id,
                                GtkStockItem        *item);
 
 /* Should free the list (and free each string in it also).
  * This function is only useful for GUI builders and such.
  */
 GDK_DEPRECATED_IN_3_10
-GSList*  gtk_stock_list_ids  (void);
+GSList*  ctk_stock_list_ids  (void);
 
 GDK_DEPRECATED_IN_3_10
-GtkStockItem *gtk_stock_item_copy (const GtkStockItem *item);
+GtkStockItem *ctk_stock_item_copy (const GtkStockItem *item);
 GDK_DEPRECATED_IN_3_10
-void          gtk_stock_item_free (GtkStockItem       *item);
+void          ctk_stock_item_free (GtkStockItem       *item);
 
 GDK_DEPRECATED_IN_3_10
-void          gtk_stock_set_translate_func (const gchar      *domain,
+void          ctk_stock_set_translate_func (const gchar      *domain,
 					    GtkTranslateFunc  func,
 					    gpointer          data,
 					    GDestroyNotify    notify);

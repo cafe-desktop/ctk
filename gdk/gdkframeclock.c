@@ -156,7 +156,7 @@ gdk_frame_clock_class_init (GdkFrameClockClass *klass)
    * application processing of the frame. Animations should
    * be updated using gdk_frame_clock_get_frame_time().
    * Applications can connect directly to this signal, or
-   * use gtk_widget_add_tick_callback() as a more convenient
+   * use ctk_widget_add_tick_callback() as a more convenient
    * interface.
    */
   signals[UPDATE] =

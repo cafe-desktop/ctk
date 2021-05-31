@@ -27,44 +27,44 @@ G_BEGIN_DECLS
 
 typedef struct _GtkBitmask GtkBitmask;
 
-#define _gtk_bitmask_to_bits(mask) \
+#define _ctk_bitmask_to_bits(mask) \
   (GPOINTER_TO_SIZE (mask) >> ((gsize) 1))
 
-#define _gtk_bitmask_from_bits(bits) \
+#define _ctk_bitmask_from_bits(bits) \
   GSIZE_TO_POINTER ((((gsize) (bits)) << 1) | 1)
 
-#define _gtk_bitmask_is_allocated(mask) \
+#define _ctk_bitmask_is_allocated(mask) \
   (!(GPOINTER_TO_SIZE (mask) & 1))
 
 #define GTK_BITMASK_N_DIRECT_BITS (sizeof (gsize) * 8 - 1)
 
 
-GtkBitmask *   _gtk_allocated_bitmask_copy              (const GtkBitmask  *mask);
-void           _gtk_allocated_bitmask_free              (GtkBitmask        *mask);
+GtkBitmask *   _ctk_allocated_bitmask_copy              (const GtkBitmask  *mask);
+void           _ctk_allocated_bitmask_free              (GtkBitmask        *mask);
 
-void           _gtk_allocated_bitmask_print             (const GtkBitmask  *mask,
+void           _ctk_allocated_bitmask_print             (const GtkBitmask  *mask,
                                                          GString           *string);
 
-GtkBitmask *   _gtk_allocated_bitmask_intersect         (GtkBitmask        *mask,
+GtkBitmask *   _ctk_allocated_bitmask_intersect         (GtkBitmask        *mask,
                                                          const GtkBitmask  *other) G_GNUC_WARN_UNUSED_RESULT;
-GtkBitmask *   _gtk_allocated_bitmask_union             (GtkBitmask        *mask,
+GtkBitmask *   _ctk_allocated_bitmask_union             (GtkBitmask        *mask,
                                                          const GtkBitmask  *other) G_GNUC_WARN_UNUSED_RESULT;
-GtkBitmask *   _gtk_allocated_bitmask_subtract          (GtkBitmask        *mask,
+GtkBitmask *   _ctk_allocated_bitmask_subtract          (GtkBitmask        *mask,
                                                          const GtkBitmask  *other) G_GNUC_WARN_UNUSED_RESULT;
 
-gboolean       _gtk_allocated_bitmask_get               (const GtkBitmask  *mask,
+gboolean       _ctk_allocated_bitmask_get               (const GtkBitmask  *mask,
                                                          guint              index_);
-GtkBitmask *   _gtk_allocated_bitmask_set               (GtkBitmask        *mask,
+GtkBitmask *   _ctk_allocated_bitmask_set               (GtkBitmask        *mask,
                                                          guint              index_,
                                                          gboolean           value) G_GNUC_WARN_UNUSED_RESULT;
 
-GtkBitmask *   _gtk_allocated_bitmask_invert_range      (GtkBitmask        *mask,
+GtkBitmask *   _ctk_allocated_bitmask_invert_range      (GtkBitmask        *mask,
                                                          guint              start,
                                                          guint              end) G_GNUC_WARN_UNUSED_RESULT;
 
-gboolean       _gtk_allocated_bitmask_equals            (const GtkBitmask  *mask,
+gboolean       _ctk_allocated_bitmask_equals            (const GtkBitmask  *mask,
                                                          const GtkBitmask  *other);
-gboolean       _gtk_allocated_bitmask_intersects        (const GtkBitmask  *mask,
+gboolean       _ctk_allocated_bitmask_intersects        (const GtkBitmask  *mask,
                                                          const GtkBitmask  *other);
 
 G_END_DECLS

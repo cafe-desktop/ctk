@@ -253,10 +253,10 @@ msgstr "Stema"
 #: gtk/gtkaboutdialog.c:487
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Në stemë për kutinë e informacioneve. Nëse e pacaktuar, automatikisht "
-"vendoset gtk_window_get_default_icon_list()"
+"vendoset ctk_window_get_default_icon_list()"
 
 #: gtk/gtkaboutdialog.c:502
 msgid "Logo Icon Name"
@@ -2388,7 +2388,7 @@ msgstr "Hap Pulsimi"
 #, fuzzy
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "Pjesë e përparimit të plotë me të cilën të zhvendosen blloqet kërcyes kur "
 "pulsojnë"
@@ -4558,10 +4558,10 @@ msgstr "Vlera"
 
 #: gtk/gtkradioaction.c:119
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"Vlera e kthyer nga gtk_radio_action_get_current_value() kur ky aksion është "
+"Vlera e kthyer nga ctk_radio_action_get_current_value() kur ky aksion është "
 "aksioni aktual i grupit të tij."
 
 #: gtk/gtkradioaction.c:135 gtk/gtkradiobutton.c:160
@@ -7124,8 +7124,8 @@ msgid "No show all"
 msgstr "Mos shfaq gjithçka"
 
 #: gtk/gtkwidget.c:841
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "Kur gtk_widget_show_all() nuk duhet të ndikojë mbi këtë widget"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "Kur ctk_widget_show_all() nuk duhet të ndikojë mbi këtë widget"
 
 #: gtk/gtkwidget.c:864
 msgid "Whether this widget has a tooltip"
@@ -7717,10 +7717,10 @@ msgstr "Tregon si duhet shfaqur metod e input e panelit të gjendjes"
 #~ "detaje të ndryshëm"
 
 #~ msgid ""
-#~ "The maximum number of items to be returned by gtk_recent_manager_get_items"
+#~ "The maximum number of items to be returned by ctk_recent_manager_get_items"
 #~ "()"
 #~ msgstr ""
-#~ "Numri maksimum i elementëve që gtk_recent_manager_get_items() duhet të "
+#~ "Numri maksimum i elementëve që ctk_recent_manager_get_items() duhet të "
 #~ "kthejë"
 
 #~ msgid "Blinking"

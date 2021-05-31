@@ -83,7 +83,7 @@ static const char *   delegate_get_choice             (GtkFileChooser  *chooser,
 
 
 /**
- * _gtk_file_chooser_install_properties:
+ * _ctk_file_chooser_install_properties:
  * @klass: the class structure for a type deriving from #GObject
  *
  * Installs the necessary properties for a class implementing
@@ -94,7 +94,7 @@ static const char *   delegate_get_choice             (GtkFileChooser  *chooser,
  * are using.
  **/
 void
-_gtk_file_chooser_install_properties (GObjectClass *klass)
+_ctk_file_chooser_install_properties (GObjectClass *klass)
 {
   g_object_class_override_property (klass,
 				    GTK_FILE_CHOOSER_PROP_ACTION,
@@ -132,18 +132,18 @@ _gtk_file_chooser_install_properties (GObjectClass *klass)
 }
 
 /**
- * _gtk_file_chooser_delegate_iface_init:
+ * _ctk_file_chooser_delegate_iface_init:
  * @iface: a #GtkFileChoserIface structure
  *
  * An interface-initialization function for use in cases where
  * an object is simply delegating the methods, signals of
  * the #GtkFileChooser interface to another object.
- * _gtk_file_chooser_set_delegate() must be called on each
+ * _ctk_file_chooser_set_delegate() must be called on each
  * instance of the object so that the delegate object can
  * be found.
  **/
 void
-_gtk_file_chooser_delegate_iface_init (GtkFileChooserIface *iface)
+_ctk_file_chooser_delegate_iface_init (GtkFileChooserIface *iface)
 {
   iface->set_current_folder = delegate_set_current_folder;
   iface->get_current_folder = delegate_get_current_folder;
@@ -169,7 +169,7 @@ _gtk_file_chooser_delegate_iface_init (GtkFileChooserIface *iface)
 }
 
 /**
- * _gtk_file_chooser_set_delegate:
+ * _ctk_file_chooser_set_delegate:
  * @receiver: a #GObject implementing #GtkFileChooser
  * @delegate: another #GObject implementing #GtkFileChooser
  *
@@ -177,10 +177,10 @@ _gtk_file_chooser_delegate_iface_init (GtkFileChooserIface *iface)
  * methods should be delegated to @delegate, and that
  * #GtkFileChooser signals emitted on @delegate should be
  * forwarded to @receiver. Must be used in conjunction with
- * _gtk_file_chooser_delegate_iface_init().
+ * _ctk_file_chooser_delegate_iface_init().
  **/
 void
-_gtk_file_chooser_set_delegate (GtkFileChooser *receiver,
+_ctk_file_chooser_set_delegate (GtkFileChooser *receiver,
 				GtkFileChooser *delegate)
 {
   g_return_if_fail (GTK_IS_FILE_CHOOSER (receiver));
@@ -202,7 +202,7 @@ _gtk_file_chooser_set_delegate (GtkFileChooser *receiver,
 }
 
 GQuark
-_gtk_file_chooser_delegate_get_quark (void)
+_ctk_file_chooser_delegate_get_quark (void)
 {
   static GQuark quark = 0;
 
@@ -224,64 +224,64 @@ delegate_select_file (GtkFileChooser    *chooser,
 		      GFile             *file,
 		      GError           **error)
 {
-  return gtk_file_chooser_select_file (get_delegate (chooser), file, error);
+  return ctk_file_chooser_select_file (get_delegate (chooser), file, error);
 }
 
 static void
 delegate_unselect_file (GtkFileChooser *chooser,
 			GFile          *file)
 {
-  gtk_file_chooser_unselect_file (get_delegate (chooser), file);
+  ctk_file_chooser_unselect_file (get_delegate (chooser), file);
 }
 
 static void
 delegate_select_all (GtkFileChooser *chooser)
 {
-  gtk_file_chooser_select_all (get_delegate (chooser));
+  ctk_file_chooser_select_all (get_delegate (chooser));
 }
 
 static void
 delegate_unselect_all (GtkFileChooser *chooser)
 {
-  gtk_file_chooser_unselect_all (get_delegate (chooser));
+  ctk_file_chooser_unselect_all (get_delegate (chooser));
 }
 
 static GSList *
 delegate_get_files (GtkFileChooser *chooser)
 {
-  return gtk_file_chooser_get_files (get_delegate (chooser));
+  return ctk_file_chooser_get_files (get_delegate (chooser));
 }
 
 static GFile *
 delegate_get_preview_file (GtkFileChooser *chooser)
 {
-  return gtk_file_chooser_get_preview_file (get_delegate (chooser));
+  return ctk_file_chooser_get_preview_file (get_delegate (chooser));
 }
 
 static GtkFileSystem *
 delegate_get_file_system (GtkFileChooser *chooser)
 {
-  return _gtk_file_chooser_get_file_system (get_delegate (chooser));
+  return _ctk_file_chooser_get_file_system (get_delegate (chooser));
 }
 
 static void
 delegate_add_filter (GtkFileChooser *chooser,
 		     GtkFileFilter  *filter)
 {
-  gtk_file_chooser_add_filter (get_delegate (chooser), filter);
+  ctk_file_chooser_add_filter (get_delegate (chooser), filter);
 }
 
 static void
 delegate_remove_filter (GtkFileChooser *chooser,
 			GtkFileFilter  *filter)
 {
-  gtk_file_chooser_remove_filter (get_delegate (chooser), filter);
+  ctk_file_chooser_remove_filter (get_delegate (chooser), filter);
 }
 
 static GSList *
 delegate_list_filters (GtkFileChooser *chooser)
 {
-  return gtk_file_chooser_list_filters (get_delegate (chooser));
+  return ctk_file_chooser_list_filters (get_delegate (chooser));
 }
 
 static gboolean
@@ -289,7 +289,7 @@ delegate_add_shortcut_folder (GtkFileChooser  *chooser,
 			      GFile           *file,
 			      GError         **error)
 {
-  return _gtk_file_chooser_add_shortcut_folder (get_delegate (chooser), file, error);
+  return _ctk_file_chooser_add_shortcut_folder (get_delegate (chooser), file, error);
 }
 
 static gboolean
@@ -297,13 +297,13 @@ delegate_remove_shortcut_folder (GtkFileChooser  *chooser,
 				 GFile           *file,
 				 GError         **error)
 {
-  return _gtk_file_chooser_remove_shortcut_folder (get_delegate (chooser), file, error);
+  return _ctk_file_chooser_remove_shortcut_folder (get_delegate (chooser), file, error);
 }
 
 static GSList *
 delegate_list_shortcut_folders (GtkFileChooser *chooser)
 {
-  return _gtk_file_chooser_list_shortcut_folder_files (get_delegate (chooser));
+  return _ctk_file_chooser_list_shortcut_folder_files (get_delegate (chooser));
 }
 
 static gboolean
@@ -311,26 +311,26 @@ delegate_set_current_folder (GtkFileChooser  *chooser,
 			     GFile           *file,
 			     GError         **error)
 {
-  return gtk_file_chooser_set_current_folder_file (get_delegate (chooser), file, error);
+  return ctk_file_chooser_set_current_folder_file (get_delegate (chooser), file, error);
 }
 
 static GFile *
 delegate_get_current_folder (GtkFileChooser *chooser)
 {
-  return gtk_file_chooser_get_current_folder_file (get_delegate (chooser));
+  return ctk_file_chooser_get_current_folder_file (get_delegate (chooser));
 }
 
 static void
 delegate_set_current_name (GtkFileChooser *chooser,
 			   const gchar    *name)
 {
-  gtk_file_chooser_set_current_name (get_delegate (chooser), name);
+  ctk_file_chooser_set_current_name (get_delegate (chooser), name);
 }
 
 static gchar *
 delegate_get_current_name (GtkFileChooser *chooser)
 {
-  return gtk_file_chooser_get_current_name (get_delegate (chooser));
+  return ctk_file_chooser_get_current_name (get_delegate (chooser));
 }
 
 static void
@@ -341,7 +341,7 @@ delegate_notify (GObject    *object,
   gpointer iface;
 
   iface = g_type_interface_peek (g_type_class_peek (G_OBJECT_TYPE (object)),
-				 gtk_file_chooser_get_type ());
+				 ctk_file_chooser_get_type ());
   if (g_object_interface_find_property (iface, pspec->name))
     g_object_notify (data, pspec->name);
 }
@@ -402,7 +402,7 @@ get_parent_for_uri (const char *uri)
  * a list of GFile* for those unique parents.
  */
 GList *
-_gtk_file_chooser_extract_recent_folders (GList *infos)
+_ctk_file_chooser_extract_recent_folders (GList *infos)
 {
   GList *l;
   GList *result;
@@ -418,7 +418,7 @@ _gtk_file_chooser_extract_recent_folders (GList *infos)
       const char *uri;
       GFile *parent;
 
-      uri = gtk_recent_info_get_uri (info);
+      uri = ctk_recent_info_get_uri (info);
       parent = get_parent_for_uri (uri);
 
       if (parent)
@@ -441,7 +441,7 @@ _gtk_file_chooser_extract_recent_folders (GList *infos)
 }
 
 GSettings *
-_gtk_file_chooser_get_settings_for_widget (GtkWidget *widget)
+_ctk_file_chooser_get_settings_for_widget (GtkWidget *widget)
 {
   static GQuark file_chooser_settings_quark = 0;
   GtkSettings *gtksettings;
@@ -450,7 +450,7 @@ _gtk_file_chooser_get_settings_for_widget (GtkWidget *widget)
   if (G_UNLIKELY (file_chooser_settings_quark == 0))
     file_chooser_settings_quark = g_quark_from_static_string ("-gtk-file-chooser-settings");
 
-  gtksettings = gtk_widget_get_settings (widget);
+  gtksettings = ctk_widget_get_settings (widget);
   settings = g_object_get_qdata (G_OBJECT (gtksettings), file_chooser_settings_quark);
 
   if (G_UNLIKELY (settings == NULL))
@@ -468,7 +468,7 @@ _gtk_file_chooser_get_settings_for_widget (GtkWidget *widget)
 }
 
 gchar *
-_gtk_file_chooser_label_for_file (GFile *file)
+_ctk_file_chooser_label_for_file (GFile *file)
 {
   const gchar *path, *start, *end, *p;
   gchar *uri, *host, *label;
@@ -523,14 +523,14 @@ delegate_add_choice (GtkFileChooser *chooser,
                      const char     **options,
                      const char     **option_labels)
 {
-  gtk_file_chooser_add_choice (get_delegate (chooser),
+  ctk_file_chooser_add_choice (get_delegate (chooser),
                                id, label, options, option_labels);
 }
 static void
 delegate_remove_choice (GtkFileChooser  *chooser,
                         const char      *id)
 {
-  gtk_file_chooser_remove_choice (get_delegate (chooser), id);
+  ctk_file_chooser_remove_choice (get_delegate (chooser), id);
 }
 
 static void
@@ -538,7 +538,7 @@ delegate_set_choice (GtkFileChooser  *chooser,
                      const char      *id,
                      const char      *option)
 {
-  gtk_file_chooser_set_choice (get_delegate (chooser), id, option);
+  ctk_file_chooser_set_choice (get_delegate (chooser), id, option);
 }
 
 
@@ -546,5 +546,5 @@ static const char *
 delegate_get_choice (GtkFileChooser  *chooser,
                      const char      *id)
 {
-  return gtk_file_chooser_get_choice (get_delegate (chooser), id);
+  return ctk_file_chooser_get_choice (get_delegate (chooser), id);
 }

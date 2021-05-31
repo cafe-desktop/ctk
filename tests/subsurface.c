@@ -25,7 +25,7 @@ da_class_init (DAreaClass *class)
 static void
 da_init (DArea *darea)
 {
-  gtk_widget_set_has_window (GTK_WIDGET (darea), TRUE);
+  ctk_widget_set_has_window (GTK_WIDGET (darea), TRUE);
 }
 
 GtkWidget*
@@ -42,9 +42,9 @@ da_realize (GtkWidget *widget)
   GdkWindowAttr attributes;
   gint attributes_mask;
 
-  gtk_widget_set_realized (widget, TRUE);
+  ctk_widget_set_realized (widget, TRUE);
 
-  gtk_widget_get_allocation (widget, &allocation);
+  ctk_widget_get_allocation (widget, &allocation);
 
   attributes.window_type = GDK_WINDOW_SUBSURFACE;
   attributes.x = allocation.x;
@@ -52,25 +52,25 @@ da_realize (GtkWidget *widget)
   attributes.width = allocation.width;
   attributes.height = allocation.height;
   attributes.wclass = GDK_INPUT_OUTPUT;
-  attributes.visual = gtk_widget_get_visual (widget);
-  attributes.event_mask = gtk_widget_get_events (widget) | GDK_EXPOSURE_MASK;
+  attributes.visual = ctk_widget_get_visual (widget);
+  attributes.event_mask = ctk_widget_get_events (widget) | GDK_EXPOSURE_MASK;
 
   attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
 
-  window = gdk_window_new (gtk_widget_get_parent_window (widget),
+  window = gdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);
-  gtk_widget_register_window (widget, window);
-  gtk_widget_set_window (widget, window);
+  ctk_widget_register_window (widget, window);
+  ctk_widget_set_window (widget, window);
 }
 
 static void
 da_size_allocate (GtkWidget     *widget,
                   GtkAllocation *allocation)
 {
-  gtk_widget_set_allocation (widget, allocation);
+  ctk_widget_set_allocation (widget, allocation);
 
-  if (gtk_widget_get_realized (widget))
-    gdk_window_move_resize (gtk_widget_get_window (widget),
+  if (ctk_widget_get_realized (widget))
+    gdk_window_move_resize (ctk_widget_get_window (widget),
                             allocation->x, allocation->y,
                             allocation->width, allocation->height);
 }
@@ -91,27 +91,27 @@ main (int argc, char *argv[])
   GtkWidget *window, *label, *box, *widget;
   GtkWidget *stack, *switcher;
 
-  gtk_init (NULL, NULL);
+  ctk_init (NULL, NULL);
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_resizable (GTK_WINDOW (window), TRUE);
-  box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  gtk_container_add (GTK_CONTAINER (window), box);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_window_set_resizable (GTK_WINDOW (window), TRUE);
+  box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+  ctk_container_add (GTK_CONTAINER (window), box);
 
-  stack = gtk_stack_new ();
-  switcher = gtk_stack_switcher_new ();
-  gtk_stack_switcher_set_stack (GTK_STACK_SWITCHER (switcher), GTK_STACK (stack));
-  gtk_container_add (GTK_CONTAINER (box), switcher);
-  gtk_container_add (GTK_CONTAINER (box), stack);
+  stack = ctk_stack_new ();
+  switcher = ctk_stack_switcher_new ();
+  ctk_stack_switcher_set_stack (GTK_STACK_SWITCHER (switcher), GTK_STACK (stack));
+  ctk_container_add (GTK_CONTAINER (box), switcher);
+  ctk_container_add (GTK_CONTAINER (box), stack);
 
-  label = gtk_label_new ("Test test");
-  gtk_stack_add_titled (GTK_STACK (stack), label, "1", "One");
+  label = ctk_label_new ("Test test");
+  ctk_stack_add_titled (GTK_STACK (stack), label, "1", "One");
   widget = da_new ();
-  gtk_widget_set_size_request (widget, 100, 100);
-  gtk_stack_add_titled (GTK_STACK (stack), widget, "2", "Two");
-  gtk_widget_show_all (window);
+  ctk_widget_set_size_request (widget, 100, 100);
+  ctk_stack_add_titled (GTK_STACK (stack), widget, "2", "Two");
+  ctk_widget_show_all (window);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

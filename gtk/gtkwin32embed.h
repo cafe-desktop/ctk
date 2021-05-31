@@ -75,18 +75,18 @@ typedef enum {					/* send or post? */
  */
 #define GTK_WIN32_EMBED_FOCUS_WRAPAROUND         (1 << 0)
 
-guint _gtk_win32_embed_message_type (GtkWin32EmbedMessageType type);
-void _gtk_win32_embed_push_message (MSG *msg);
-void _gtk_win32_embed_pop_message (void);
-void _gtk_win32_embed_send (GdkWindow		    *recipient,
+guint _ctk_win32_embed_message_type (GtkWin32EmbedMessageType type);
+void _ctk_win32_embed_push_message (MSG *msg);
+void _ctk_win32_embed_pop_message (void);
+void _ctk_win32_embed_send (GdkWindow		    *recipient,
 			    GtkWin32EmbedMessageType message,
 			    WPARAM		     wparam,
 			    LPARAM                   lparam);
-void _gtk_win32_embed_send_focus_message (GdkWindow		  *recipient,
+void _ctk_win32_embed_send_focus_message (GdkWindow		  *recipient,
 					  GtkWin32EmbedMessageType message,
 					  WPARAM	           wparam);
-void     _gtk_win32_embed_set_focus_wrapped  (void);
-gboolean _gtk_win32_embed_get_focus_wrapped  (void);
+void     _ctk_win32_embed_set_focus_wrapped  (void);
+gboolean _ctk_win32_embed_get_focus_wrapped  (void);
 
 G_END_DECLS
 

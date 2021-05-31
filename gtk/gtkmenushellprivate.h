@@ -72,24 +72,24 @@ struct _GtkMenuShellPrivate
   GdkDevice *grab_pointer;
 };
 
-void        _gtk_menu_shell_select_last      (GtkMenuShell *menu_shell,
+void        _ctk_menu_shell_select_last      (GtkMenuShell *menu_shell,
                                               gboolean      search_sensitive);
-gint        _gtk_menu_shell_get_popup_delay  (GtkMenuShell *menu_shell);
-void        _gtk_menu_shell_set_grab_device  (GtkMenuShell *menu_shell,
+gint        _ctk_menu_shell_get_popup_delay  (GtkMenuShell *menu_shell);
+void        _ctk_menu_shell_set_grab_device  (GtkMenuShell *menu_shell,
                                               GdkDevice    *device);
-GdkDevice *_gtk_menu_shell_get_grab_device   (GtkMenuShell *menu_shell);
+GdkDevice *_ctk_menu_shell_get_grab_device   (GtkMenuShell *menu_shell);
 
-void       _gtk_menu_shell_add_mnemonic      (GtkMenuShell *menu_shell,
+void       _ctk_menu_shell_add_mnemonic      (GtkMenuShell *menu_shell,
                                               guint         keyval,
                                               GtkWidget    *target);
-void       _gtk_menu_shell_remove_mnemonic   (GtkMenuShell *menu_shell,
+void       _ctk_menu_shell_remove_mnemonic   (GtkMenuShell *menu_shell,
                                               guint         keyval,
                                               GtkWidget    *target);
 
-void       _gtk_menu_shell_update_mnemonics  (GtkMenuShell *menu_shell);
-void       _gtk_menu_shell_set_keyboard_mode (GtkMenuShell *menu_shell,
+void       _ctk_menu_shell_update_mnemonics  (GtkMenuShell *menu_shell);
+void       _ctk_menu_shell_set_keyboard_mode (GtkMenuShell *menu_shell,
                                               gboolean      keyboard_mode);
-gboolean   _gtk_menu_shell_get_keyboard_mode (GtkMenuShell *menu_shell);
+gboolean   _ctk_menu_shell_get_keyboard_mode (GtkMenuShell *menu_shell);
 
 
 G_END_DECLS

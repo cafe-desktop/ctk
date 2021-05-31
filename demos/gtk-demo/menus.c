@@ -36,7 +36,7 @@ create_menu (gint depth)
   if (depth < 1)
     return NULL;
 
-  menu = gtk_menu_new ();
+  menu = ctk_menu_new ();
   last_item = NULL;
 
   for (i = 0, j = 1; i < 5; i++, j++)
@@ -45,16 +45,16 @@ create_menu (gint depth)
 
       sprintf (buf, "item %2d - %d", depth, j);
 
-      menu_item = gtk_radio_menu_item_new_with_label_from_widget (NULL, buf);
-      gtk_radio_menu_item_join_group (GTK_RADIO_MENU_ITEM (menu_item), last_item);
+      menu_item = ctk_radio_menu_item_new_with_label_from_widget (NULL, buf);
+      ctk_radio_menu_item_join_group (GTK_RADIO_MENU_ITEM (menu_item), last_item);
       last_item = GTK_RADIO_MENU_ITEM (menu_item);
 
-      gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
-      gtk_widget_show (menu_item);
+      ctk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
+      ctk_widget_show (menu_item);
       if (i == 3)
-        gtk_widget_set_sensitive (menu_item, FALSE);
+        ctk_widget_set_sensitive (menu_item, FALSE);
 
-      gtk_menu_item_set_submenu (GTK_MENU_ITEM (menu_item), create_menu (depth - 1));
+      ctk_menu_item_set_submenu (GTK_MENU_ITEM (menu_item), create_menu (depth - 1));
     }
 
   return menu;
@@ -67,9 +67,9 @@ change_orientation (GtkWidget *button,
   GtkWidget *parent;
   GtkOrientation orientation;
 
-  parent = gtk_widget_get_parent (menubar);
-  orientation = gtk_orientable_get_orientation (GTK_ORIENTABLE (parent));
-  gtk_orientable_set_orientation (GTK_ORIENTABLE (parent), 1 - orientation);
+  parent = ctk_widget_get_parent (menubar);
+  orientation = ctk_orientable_get_orientation (GTK_ORIENTABLE (parent));
+  ctk_orientable_set_orientation (GTK_ORIENTABLE (parent), 1 - orientation);
 
   if (orientation == GTK_ORIENTATION_VERTICAL)
     g_object_set (menubar, "pack-direction", GTK_PACK_DIRECTION_TTB, NULL);
@@ -95,72 +95,72 @@ do_menus (GtkWidget *do_widget)
       GtkWidget *menuitem;
       GtkAccelGroup *accel_group;
 
-      window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-      gtk_window_set_screen (GTK_WINDOW (window),
-                             gtk_widget_get_screen (do_widget));
-      gtk_window_set_title (GTK_WINDOW (window), "Menus");
+      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+      ctk_window_set_screen (GTK_WINDOW (window),
+                             ctk_widget_get_screen (do_widget));
+      ctk_window_set_title (GTK_WINDOW (window), "Menus");
       g_signal_connect (window, "destroy",
-                        G_CALLBACK(gtk_widget_destroyed), &window);
+                        G_CALLBACK(ctk_widget_destroyed), &window);
 
-      accel_group = gtk_accel_group_new ();
-      gtk_window_add_accel_group (GTK_WINDOW (window), accel_group);
+      accel_group = ctk_accel_group_new ();
+      ctk_window_add_accel_group (GTK_WINDOW (window), accel_group);
 
-      gtk_container_set_border_width (GTK_CONTAINER (window), 0);
+      ctk_container_set_border_width (GTK_CONTAINER (window), 0);
 
-      box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-      gtk_container_add (GTK_CONTAINER (window), box);
-      gtk_widget_show (box);
+      box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+      ctk_container_add (GTK_CONTAINER (window), box);
+      ctk_widget_show (box);
 
-      box1 = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-      gtk_container_add (GTK_CONTAINER (box), box1);
-      gtk_widget_show (box1);
+      box1 = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+      ctk_container_add (GTK_CONTAINER (box), box1);
+      ctk_widget_show (box1);
 
-      menubar = gtk_menu_bar_new ();
-      gtk_widget_set_hexpand (menubar, TRUE);
-      gtk_box_pack_start (GTK_BOX (box1), menubar, FALSE, TRUE, 0);
-      gtk_widget_show (menubar);
+      menubar = ctk_menu_bar_new ();
+      ctk_widget_set_hexpand (menubar, TRUE);
+      ctk_box_pack_start (GTK_BOX (box1), menubar, FALSE, TRUE, 0);
+      ctk_widget_show (menubar);
 
       menu = create_menu (2);
 
-      menuitem = gtk_menu_item_new_with_label ("test\nline2");
-      gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), menu);
-      gtk_menu_shell_append (GTK_MENU_SHELL (menubar), menuitem);
-      gtk_widget_show (menuitem);
+      menuitem = ctk_menu_item_new_with_label ("test\nline2");
+      ctk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), menu);
+      ctk_menu_shell_append (GTK_MENU_SHELL (menubar), menuitem);
+      ctk_widget_show (menuitem);
 
-      menuitem = gtk_menu_item_new_with_label ("foo");
-      gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), create_menu (3));
-      gtk_menu_shell_append (GTK_MENU_SHELL (menubar), menuitem);
-      gtk_widget_show (menuitem);
+      menuitem = ctk_menu_item_new_with_label ("foo");
+      ctk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), create_menu (3));
+      ctk_menu_shell_append (GTK_MENU_SHELL (menubar), menuitem);
+      ctk_widget_show (menuitem);
 
-      menuitem = gtk_menu_item_new_with_label ("bar");
-      gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), create_menu (4));
-      gtk_menu_shell_append (GTK_MENU_SHELL (menubar), menuitem);
-      gtk_widget_show (menuitem);
+      menuitem = ctk_menu_item_new_with_label ("bar");
+      ctk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), create_menu (4));
+      ctk_menu_shell_append (GTK_MENU_SHELL (menubar), menuitem);
+      ctk_widget_show (menuitem);
 
-      box2 = gtk_box_new (GTK_ORIENTATION_VERTICAL, 10);
-      gtk_container_set_border_width (GTK_CONTAINER (box2), 10);
-      gtk_box_pack_start (GTK_BOX (box1), box2, FALSE, TRUE, 0);
-      gtk_widget_show (box2);
+      box2 = ctk_box_new (GTK_ORIENTATION_VERTICAL, 10);
+      ctk_container_set_border_width (GTK_CONTAINER (box2), 10);
+      ctk_box_pack_start (GTK_BOX (box1), box2, FALSE, TRUE, 0);
+      ctk_widget_show (box2);
 
-      button = gtk_button_new_with_label ("Flip");
+      button = ctk_button_new_with_label ("Flip");
       g_signal_connect (button, "clicked",
                         G_CALLBACK (change_orientation), menubar);
-      gtk_box_pack_start (GTK_BOX (box2), button, TRUE, TRUE, 0);
-      gtk_widget_show (button);
+      ctk_box_pack_start (GTK_BOX (box2), button, TRUE, TRUE, 0);
+      ctk_widget_show (button);
 
-      button = gtk_button_new_with_label ("Close");
+      button = ctk_button_new_with_label ("Close");
       g_signal_connect_swapped (button, "clicked",
-                                G_CALLBACK(gtk_widget_destroy), window);
-      gtk_box_pack_start (GTK_BOX (box2), button, TRUE, TRUE, 0);
-      gtk_widget_set_can_default (button, TRUE);
-      gtk_widget_grab_default (button);
-      gtk_widget_show (button);
+                                G_CALLBACK(ctk_widget_destroy), window);
+      ctk_box_pack_start (GTK_BOX (box2), button, TRUE, TRUE, 0);
+      ctk_widget_set_can_default (button, TRUE);
+      ctk_widget_grab_default (button);
+      ctk_widget_show (button);
     }
 
-  if (!gtk_widget_get_visible (window))
-    gtk_widget_show (window);
+  if (!ctk_widget_get_visible (window))
+    ctk_widget_show (window);
   else
-    gtk_widget_destroy (window);
+    ctk_widget_destroy (window);
 
   return window;
 }

@@ -25,8 +25,8 @@ if bash.found()
                 'G_ENABLE_DIAGNOSTIC=0',
                 'G_TEST_SRCDIR=@0@'.format(meson.current_source_dir()),
                 'G_TEST_BUILDDIR=@0@'.format(meson.current_build_dir()),
-                'GTK_BUILDER_TOOL=@0@'.format(gtk_builder_tool.full_path()),
-                'GTK_QUERY_SETTINGS=@0@'.format(gtk_query_settings.full_path())
+                'GTK_BUILDER_TOOL=@0@'.format(ctk_builder_tool.full_path()),
+                'GTK_QUERY_SETTINGS=@0@'.format(ctk_query_settings.full_path())
               ],
          suite: 'tools')
   endforeach

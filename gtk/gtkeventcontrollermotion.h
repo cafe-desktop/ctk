@@ -29,7 +29,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_EVENT_CONTROLLER_MOTION         (gtk_event_controller_motion_get_type ())
+#define GTK_TYPE_EVENT_CONTROLLER_MOTION         (ctk_event_controller_motion_get_type ())
 #define GTK_EVENT_CONTROLLER_MOTION(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_EVENT_CONTROLLER_MOTION, GtkEventControllerMotion))
 #define GTK_EVENT_CONTROLLER_MOTION_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), GTK_TYPE_EVENT_CONTROLLER_MOTION, GtkEventControllerMotionClass))
 #define GTK_IS_EVENT_CONTROLLER_MOTION(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_EVENT_CONTROLLER_MOTION))
@@ -40,10 +40,10 @@ typedef struct _GtkEventControllerMotion GtkEventControllerMotion;
 typedef struct _GtkEventControllerMotionClass GtkEventControllerMotionClass;
 
 GDK_AVAILABLE_IN_3_24
-GType               gtk_event_controller_motion_get_type (void) G_GNUC_CONST;
+GType               ctk_event_controller_motion_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_24
-GtkEventController *gtk_event_controller_motion_new      (GtkWidget *widget);
+GtkEventController *ctk_event_controller_motion_new      (GtkWidget *widget);
 
 G_END_DECLS
 

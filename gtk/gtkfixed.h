@@ -35,7 +35,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_FIXED                  (gtk_fixed_get_type ())
+#define GTK_TYPE_FIXED                  (ctk_fixed_get_type ())
 #define GTK_FIXED(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_FIXED, GtkFixed))
 #define GTK_FIXED_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_FIXED, GtkFixedClass))
 #define GTK_IS_FIXED(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_FIXED))
@@ -60,10 +60,10 @@ struct _GtkFixedClass
   GtkContainerClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 struct _GtkFixedChild
@@ -75,16 +75,16 @@ struct _GtkFixedChild
 
 
 GDK_AVAILABLE_IN_ALL
-GType      gtk_fixed_get_type          (void) G_GNUC_CONST;
+GType      ctk_fixed_get_type          (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_fixed_new               (void);
+GtkWidget* ctk_fixed_new               (void);
 GDK_AVAILABLE_IN_ALL
-void       gtk_fixed_put               (GtkFixed       *fixed,
+void       ctk_fixed_put               (GtkFixed       *fixed,
                                         GtkWidget      *widget,
                                         gint            x,
                                         gint            y);
 GDK_AVAILABLE_IN_ALL
-void       gtk_fixed_move              (GtkFixed       *fixed,
+void       ctk_fixed_move              (GtkFixed       *fixed,
                                         GtkWidget      *widget,
                                         gint            x,
                                         gint            y);

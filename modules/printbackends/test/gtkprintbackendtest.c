@@ -75,8 +75,8 @@ static const gchar* formats[N_FORMATS] =
 
 static GObjectClass *backend_parent_class;
 
-static void                 gtk_print_backend_test_class_init      (GtkPrintBackendTestClass *class);
-static void                 gtk_print_backend_test_init            (GtkPrintBackendTest      *impl);
+static void                 ctk_print_backend_test_class_init      (GtkPrintBackendTestClass *class);
+static void                 ctk_print_backend_test_init            (GtkPrintBackendTest      *impl);
 static void                 test_printer_get_settings_from_options (GtkPrinter              *printer,
 								    GtkPrinterOptionSet     *options,
 								    GtkPrintSettings        *settings);
@@ -88,7 +88,7 @@ static void                 test_printer_prepare_for_print         (GtkPrinter  
 								    GtkPrintJob             *print_job,
 								    GtkPrintSettings        *settings,
 								    GtkPageSetup            *page_setup);
-static void                 gtk_print_backend_test_print_stream    (GtkPrintBackend         *print_backend,
+static void                 ctk_print_backend_test_print_stream    (GtkPrintBackend         *print_backend,
 								    GtkPrintJob             *job,
 								    GIOChannel              *data_io,
 								    GtkPrintJobCompleteFunc  callback,
@@ -103,19 +103,19 @@ static cairo_surface_t *    test_printer_create_cairo_surface      (GtkPrinter  
 static void                 test_printer_request_details           (GtkPrinter              *printer);
 
 static void
-gtk_print_backend_test_register_type (GTypeModule *module)
+ctk_print_backend_test_register_type (GTypeModule *module)
 {
   const GTypeInfo print_backend_test_info =
   {
     sizeof (GtkPrintBackendTestClass),
     NULL,		/* base_init */
     NULL,		/* base_finalize */
-    (GClassInitFunc) gtk_print_backend_test_class_init,
+    (GClassInitFunc) ctk_print_backend_test_class_init,
     NULL,		/* class_finalize */
     NULL,		/* class_data */
     sizeof (GtkPrintBackendTest),
     0,		/* n_preallocs */
-    (GInstanceInitFunc) gtk_print_backend_test_init,
+    (GInstanceInitFunc) ctk_print_backend_test_init,
   };
 
   print_backend_test_type = g_type_module_register_type (module,
@@ -127,7 +127,7 @@ gtk_print_backend_test_register_type (GTypeModule *module)
 G_MODULE_EXPORT void 
 pb_module_init (GTypeModule *module)
 {
-  gtk_print_backend_test_register_type (module);
+  ctk_print_backend_test_register_type (module);
 }
 
 G_MODULE_EXPORT void 
@@ -139,20 +139,20 @@ pb_module_exit (void)
 G_MODULE_EXPORT GtkPrintBackend * 
 pb_module_create (void)
 {
-  return gtk_print_backend_test_new ();
+  return ctk_print_backend_test_new ();
 }
 
 /*
  * GtkPrintBackendTest
  */
 GType
-gtk_print_backend_test_get_type (void)
+ctk_print_backend_test_get_type (void)
 {
   return print_backend_test_type;
 }
 
 /**
- * gtk_print_backend_test_new:
+ * ctk_print_backend_test_new:
  *
  * Creates a new #GtkPrintBackendTest object. #GtkPrintBackendTest
  * implements the #GtkPrintBackend interface with direct access to
@@ -161,19 +161,19 @@ gtk_print_backend_test_get_type (void)
  * Returns: the new #GtkPrintBackendTest object
  **/
 GtkPrintBackend *
-gtk_print_backend_test_new (void)
+ctk_print_backend_test_new (void)
 {
   return g_object_new (GTK_TYPE_PRINT_BACKEND_TEST, NULL);
 }
 
 static void
-gtk_print_backend_test_class_init (GtkPrintBackendTestClass *class)
+ctk_print_backend_test_class_init (GtkPrintBackendTestClass *class)
 {
   GtkPrintBackendClass *backend_class = GTK_PRINT_BACKEND_CLASS (class);
 
   backend_parent_class = g_type_class_peek_parent (class);
 
-  backend_class->print_stream = gtk_print_backend_test_print_stream;
+  backend_class->print_stream = ctk_print_backend_test_print_stream;
   backend_class->printer_create_cairo_surface = test_printer_create_cairo_surface;
   backend_class->printer_get_options = test_printer_get_options;
   backend_class->printer_get_settings_from_options = test_printer_get_settings_from_options;
@@ -191,7 +191,7 @@ format_from_settings (GtkPrintSettings *settings)
   if (settings == NULL)
     return N_FORMATS;
 
-  value = gtk_print_settings_get (settings, GTK_PRINT_SETTINGS_OUTPUT_FILE_FORMAT);
+  value = ctk_print_settings_get (settings, GTK_PRINT_SETTINGS_OUTPUT_FILE_FORMAT);
   if (value == NULL)
     return N_FORMATS;
 
@@ -211,7 +211,7 @@ output_test_from_settings (GtkPrintSettings *settings,
   gchar *uri = NULL;
   
   if (settings)
-    uri = g_strdup (gtk_print_settings_get (settings, GTK_PRINT_SETTINGS_OUTPUT_URI));
+    uri = g_strdup (ctk_print_settings_get (settings, GTK_PRINT_SETTINGS_OUTPUT_URI));
 
   if (uri == NULL)
     { 
@@ -304,8 +304,8 @@ test_printer_create_cairo_surface (GtkPrinter       *printer,
     surface = cairo_pdf_surface_create_for_stream (_cairo_write, cache_io, width, height);
 
   cairo_surface_set_fallback_resolution (surface,
-                                         2.0 * gtk_print_settings_get_printer_lpi (settings),
-                                         2.0 * gtk_print_settings_get_printer_lpi (settings));
+                                         2.0 * ctk_print_settings_get_printer_lpi (settings),
+                                         2.0 * ctk_print_settings_get_printer_lpi (settings));
 
   return surface;
 }
@@ -335,7 +335,7 @@ test_print_cb (GtkPrintBackendTest *print_backend,
   if (ps->dnotify)
     ps->dnotify (ps->user_data);
 
-  gtk_print_job_set_status (ps->job,
+  ctk_print_job_set_status (ps->job,
 			    (error != NULL)?GTK_PRINT_STATUS_FINISHED_ABORTED:GTK_PRINT_STATUS_FINISHED);
 
   if (ps->job)
@@ -397,7 +397,7 @@ test_write (GIOChannel   *source,
 }
 
 static void
-gtk_print_backend_test_print_stream (GtkPrintBackend        *print_backend,
+ctk_print_backend_test_print_stream (GtkPrintBackend        *print_backend,
 				     GtkPrintJob            *job,
 				     GIOChannel             *data_io,
 				     GtkPrintJobCompleteFunc callback,
@@ -410,8 +410,8 @@ gtk_print_backend_test_print_stream (GtkPrintBackend        *print_backend,
   GtkPrintSettings *settings;
   gchar *uri, *testname;
 
-  printer = gtk_print_job_get_printer (job);
-  settings = gtk_print_job_get_settings (job);
+  printer = ctk_print_job_get_printer (job);
+  settings = ctk_print_job_get_settings (job);
 
   ps = g_new0 (_PrintStreamData, 1);
   ps->callback = callback;
@@ -452,7 +452,7 @@ error:
 }
 
 static void
-gtk_print_backend_test_init (GtkPrintBackendTest *backend)
+ctk_print_backend_test_init (GtkPrintBackendTest *backend)
 {
   GtkPrinter *printer;
   int i;
@@ -472,15 +472,15 @@ gtk_print_backend_test_init (GtkPrintBackendTest *backend)
 
       g_message ("TEST Backend: Adding printer %d\n", i);
 
-      gtk_printer_set_has_details (printer, FALSE);
-      gtk_printer_set_icon_name (printer, "edit-delete"); /* use a delete icon just for fun */
-      gtk_printer_set_is_active (printer, TRUE);
+      ctk_printer_set_has_details (printer, FALSE);
+      ctk_printer_set_icon_name (printer, "edit-delete"); /* use a delete icon just for fun */
+      ctk_printer_set_is_active (printer, TRUE);
 
-      gtk_print_backend_add_printer (GTK_PRINT_BACKEND (backend), printer);
+      ctk_print_backend_add_printer (GTK_PRINT_BACKEND (backend), printer);
       g_object_unref (printer);
     }
 
-  gtk_print_backend_set_list_done (GTK_PRINT_BACKEND (backend));
+  ctk_print_backend_set_list_done (GTK_PRINT_BACKEND (backend));
 }
 
 static GtkPrinterOptionSet *
@@ -496,13 +496,13 @@ test_printer_get_options (GtkPrinter           *printer,
 
   format = format_from_settings (settings);
 
-  set = gtk_printer_option_set_new ();
+  set = ctk_printer_option_set_new ();
 
-  option = gtk_printer_option_new ("gtk-n-up", _("Pages per _sheet:"), GTK_PRINTER_OPTION_TYPE_PICKONE);
-  gtk_printer_option_choices_from_array (option, G_N_ELEMENTS (n_up),
+  option = ctk_printer_option_new ("gtk-n-up", _("Pages per _sheet:"), GTK_PRINTER_OPTION_TYPE_PICKONE);
+  ctk_printer_option_choices_from_array (option, G_N_ELEMENTS (n_up),
 					 (char **) n_up, (char **) n_up /* FIXME i18n (localised digits)! */);
-  gtk_printer_option_set (option, "1");
-  gtk_printer_option_set_add (set, option);
+  ctk_printer_option_set (option, "1");
+  ctk_printer_option_set_add (set, option);
   g_object_unref (option);
 
   return set;
@@ -523,27 +523,27 @@ test_printer_prepare_for_print (GtkPrinter       *printer,
 {
   gdouble scale;
 
-  gtk_print_job_set_pages (print_job, gtk_print_settings_get_print_pages (settings));
-  gtk_print_job_set_page_ranges (print_job, NULL, 0);
+  ctk_print_job_set_pages (print_job, ctk_print_settings_get_print_pages (settings));
+  ctk_print_job_set_page_ranges (print_job, NULL, 0);
   
-  if (gtk_print_job_get_pages (print_job) == GTK_PRINT_PAGES_RANGES)
+  if (ctk_print_job_get_pages (print_job) == GTK_PRINT_PAGES_RANGES)
     {
       GtkPageRange *page_ranges;
       gint num_page_ranges;
-      page_ranges = gtk_print_settings_get_page_ranges (settings, &num_page_ranges);
-      gtk_print_job_set_page_ranges (print_job, page_ranges, num_page_ranges);
+      page_ranges = ctk_print_settings_get_page_ranges (settings, &num_page_ranges);
+      ctk_print_job_set_page_ranges (print_job, page_ranges, num_page_ranges);
     }
 
-  gtk_print_job_set_collate (print_job, gtk_print_settings_get_collate (settings));
-  gtk_print_job_set_reverse (print_job, gtk_print_settings_get_reverse (settings));
-  gtk_print_job_set_num_copies (print_job, gtk_print_settings_get_n_copies (settings));
+  ctk_print_job_set_collate (print_job, ctk_print_settings_get_collate (settings));
+  ctk_print_job_set_reverse (print_job, ctk_print_settings_get_reverse (settings));
+  ctk_print_job_set_num_copies (print_job, ctk_print_settings_get_n_copies (settings));
 
-  scale = gtk_print_settings_get_scale (settings);
+  scale = ctk_print_settings_get_scale (settings);
   if (scale != 100.0)
-    gtk_print_job_set_scale (print_job, scale/100.0);
+    ctk_print_job_set_scale (print_job, scale/100.0);
 
-  gtk_print_job_set_page_set (print_job, gtk_print_settings_get_page_set (settings));
-  gtk_print_job_set_rotate (print_job, TRUE);
+  ctk_print_job_set_page_set (print_job, ctk_print_settings_get_page_set (settings));
+  ctk_print_job_set_rotate (print_job, TRUE);
 }
 
 static gboolean
@@ -560,7 +560,7 @@ test_printer_details_acquired_cb (GtkPrinter *printer)
     success = TRUE;
 
   g_message ("success %i", success);
-  gtk_printer_set_has_details (printer, success);
+  ctk_printer_set_has_details (printer, success);
   g_signal_emit_by_name (printer, "details-acquired", success);
 
   return G_SOURCE_REMOVE;

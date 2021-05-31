@@ -29,7 +29,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_STACK_COMBO            (gtk_stack_combo_get_type ())
+#define GTK_TYPE_STACK_COMBO            (ctk_stack_combo_get_type ())
 #define GTK_STACK_COMBO(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_STACK_COMBO, GtkStackCombo))
 #define GTK_STACK_COMBO_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_STACK_COMBO, GtkStackComboClass))
 #define GTK_IS_STACK_COMBO(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_STACK_COMBO))
@@ -39,7 +39,7 @@ G_BEGIN_DECLS
 typedef struct _GtkStackCombo              GtkStackCombo;
 typedef struct _GtkStackComboClass         GtkStackComboClass;
 
-GType        gtk_stack_combo_get_type          (void) G_GNUC_CONST;
+GType        ctk_stack_combo_get_type          (void) G_GNUC_CONST;
 
 G_END_DECLS
 

@@ -25,7 +25,7 @@ update_title (GtkWindow *window)
   title = g_strdup_printf ("Simple Editor with printing - %s", basename);
   g_free (basename);
 
-  gtk_window_set_title (window, title);
+  ctk_window_set_title (window, title);
   g_free (title);
 }
 
@@ -37,20 +37,20 @@ update_statusbar (void)
   GtkTextIter iter;
   const char *print_str;
 
-  gtk_statusbar_pop (GTK_STATUSBAR (statusbar), 0);
+  ctk_statusbar_pop (GTK_STATUSBAR (statusbar), 0);
   
-  gtk_text_buffer_get_iter_at_mark (buffer,
+  ctk_text_buffer_get_iter_at_mark (buffer,
                                     &iter,
-                                    gtk_text_buffer_get_insert (buffer));
+                                    ctk_text_buffer_get_insert (buffer));
 
-  row = gtk_text_iter_get_line (&iter);
-  col = gtk_text_iter_get_line_offset (&iter);
+  row = ctk_text_iter_get_line (&iter);
+  col = ctk_text_iter_get_line_offset (&iter);
 
   print_str = "";
   if (active_prints)
     {
       GtkPrintOperation *op = active_prints->data;
-      print_str = gtk_print_operation_get_status_string (op);
+      print_str = ctk_print_operation_get_status_string (op);
     }
   
   msg = g_strdup_printf ("%d, %d%s %s",
@@ -58,7 +58,7 @@ update_statusbar (void)
 			 file_changed?" - Modified":"",
 			 print_str);
 
-  gtk_statusbar_push (GTK_STATUSBAR (statusbar), 0, msg);
+  ctk_statusbar_push (GTK_STATUSBAR (statusbar), 0, msg);
 
   g_free (msg);
 }
@@ -75,15 +75,15 @@ get_text (void)
 {
   GtkTextIter start, end;
 
-  gtk_text_buffer_get_start_iter (buffer, &start);
-  gtk_text_buffer_get_end_iter (buffer, &end);
-  return gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
+  ctk_text_buffer_get_start_iter (buffer, &start);
+  ctk_text_buffer_get_end_iter (buffer, &end);
+  return ctk_text_buffer_get_text (buffer, &start, &end, FALSE);
 }
 
 static void
 set_text (const char *text, gsize len)
 {
-  gtk_text_buffer_set_text (buffer, text, len);
+  ctk_text_buffer_set_text (buffer, text, len);
   file_changed = FALSE;
   update_ui ();
 }
@@ -108,7 +108,7 @@ load_file (const char *open_filename)
 	}
       else
 	{
-	  error_dialog = gtk_message_dialog_new (GTK_WINDOW (main_window),
+	  error_dialog = ctk_message_dialog_new (GTK_WINDOW (main_window),
 						 GTK_DIALOG_DESTROY_WITH_PARENT,
 						 GTK_MESSAGE_ERROR,
 						 GTK_BUTTONS_CLOSE,
@@ -119,7 +119,7 @@ load_file (const char *open_filename)
     }
   else
     {
-      error_dialog = gtk_message_dialog_new (GTK_WINDOW (main_window),
+      error_dialog = ctk_message_dialog_new (GTK_WINDOW (main_window),
 					     GTK_DIALOG_DESTROY_WITH_PARENT,
 					     GTK_MESSAGE_ERROR,
 					     GTK_BUTTONS_CLOSE,
@@ -131,8 +131,8 @@ load_file (const char *open_filename)
     }
   if (error_dialog)
     {
-      g_signal_connect (error_dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
-      gtk_widget_show (error_dialog);
+      g_signal_connect (error_dialog, "response", G_CALLBACK (ctk_widget_destroy), NULL);
+      ctk_widget_show (error_dialog);
     }
 }
 
@@ -158,7 +158,7 @@ save_file (const char *save_filename)
     }
   else
     {
-      error_dialog = gtk_message_dialog_new (GTK_WINDOW (main_window),
+      error_dialog = ctk_message_dialog_new (GTK_WINDOW (main_window),
 					     GTK_DIALOG_DESTROY_WITH_PARENT,
 					     GTK_MESSAGE_ERROR,
 					     GTK_BUTTONS_CLOSE,
@@ -166,8 +166,8 @@ save_file (const char *save_filename)
 					     filename,
 					     error->message);
       
-      g_signal_connect (error_dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
-      gtk_widget_show (error_dialog);
+      g_signal_connect (error_dialog, "response", G_CALLBACK (ctk_widget_destroy), NULL);
+      ctk_widget_show (error_dialog);
       
       g_error_free (error);
     }
@@ -195,10 +195,10 @@ begin_print (GtkPrintOperation *operation,
   int num_lines;
   int line;
 
-  width = gtk_print_context_get_width (context);
-  height = gtk_print_context_get_height (context);
+  width = ctk_print_context_get_width (context);
+  height = ctk_print_context_get_height (context);
 
-  print_data->layout = gtk_print_context_create_pango_layout (context);
+  print_data->layout = ctk_print_context_create_pango_layout (context);
 
   desc = pango_font_description_from_string (print_data->font);
   pango_layout_set_font_description (print_data->layout, desc);
@@ -233,7 +233,7 @@ begin_print (GtkPrintOperation *operation,
     }
 
   page_breaks = g_list_reverse (page_breaks);
-  gtk_print_operation_set_n_pages (operation, g_list_length (page_breaks) + 1);
+  ctk_print_operation_set_n_pages (operation, g_list_length (page_breaks) + 1);
   
   print_data->page_breaks = page_breaks;
 }
@@ -264,7 +264,7 @@ draw_page (GtkPrintOperation *operation,
   else
     end = GPOINTER_TO_INT (pagebreak->data);
     
-  cr = gtk_print_context_get_cairo_context (context);
+  cr = ctk_print_context_get_cairo_context (context);
 
   cairo_set_source_rgb (cr, 0, 0, 0);
   
@@ -303,7 +303,7 @@ static void
 status_changed_cb (GtkPrintOperation *op,
 		   gpointer user_data)
 {
-  if (gtk_print_operation_is_finished (op))
+  if (ctk_print_operation_is_finished (op))
     {
       active_prints = g_list_remove (active_prints, op);
       g_object_unref (op);
@@ -317,21 +317,21 @@ create_custom_widget (GtkPrintOperation *operation,
 {
   GtkWidget *vbox, *hbox, *font, *label;
 
-  gtk_print_operation_set_custom_tab_label (operation, "Other");
-  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
+  ctk_print_operation_set_custom_tab_label (operation, "Other");
+  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+  ctk_container_set_border_width (GTK_CONTAINER (vbox), 12);
 
-  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
-  gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
-  gtk_widget_show (hbox);
+  hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
+  ctk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
+  ctk_widget_show (hbox);
 
-  label = gtk_label_new ("Font:");
-  gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
-  gtk_widget_show (label);
+  label = ctk_label_new ("Font:");
+  ctk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+  ctk_widget_show (label);
   
-  font = gtk_font_button_new_with_font  (data->font);
-  gtk_box_pack_start (GTK_BOX (hbox), font, FALSE, FALSE, 0);
-  gtk_widget_show (font);
+  font = ctk_font_button_new_with_font  (data->font);
+  ctk_box_pack_start (GTK_BOX (hbox), font, FALSE, FALSE, 0);
+  ctk_widget_show (font);
   data->font_button = font;
 
   return vbox;
@@ -343,7 +343,7 @@ custom_widget_apply (GtkPrintOperation *operation,
 		     PrintData *data)
 {
   const char *selected_font;
-  selected_font = gtk_font_chooser_get_font (GTK_FONT_CHOOSER (data->font_button));
+  selected_font = ctk_font_chooser_get_font (GTK_FONT_CHOOSER (data->font_button));
 
   g_free (data->font);
   data->font = g_strdup (selected_font);
@@ -370,16 +370,16 @@ preview_draw (GtkWidget *widget,
   cairo_t *prev_cr;
   double dpi_x, dpi_y;
 
-  prev_cr = gtk_print_context_get_cairo_context (pop->context);
+  prev_cr = ctk_print_context_get_cairo_context (pop->context);
   cairo_reference (prev_cr);
-  dpi_x = gtk_print_context_get_dpi_x (pop->context);
-  dpi_y = gtk_print_context_get_dpi_y (pop->context);
+  dpi_x = ctk_print_context_get_dpi_x (pop->context);
+  dpi_y = ctk_print_context_get_dpi_y (pop->context);
 
-  gtk_print_context_set_cairo_context (pop->context,
+  ctk_print_context_set_cairo_context (pop->context,
                                        cr, dpi_x, dpi_y);
-  gtk_print_operation_preview_render_page (pop->preview,
+  ctk_print_operation_preview_render_page (pop->preview,
 					   pop->page - 1);
-  gtk_print_context_set_cairo_context (pop->context,
+  ctk_print_context_set_cairo_context (pop->context,
                                        prev_cr, dpi_x, dpi_y);
   cairo_destroy (prev_cr);
 
@@ -396,14 +396,14 @@ preview_ready (GtkPrintOperationPreview *preview,
 
   g_object_get (pop->op, "n-pages", &n_pages, NULL);
 
-  gtk_spin_button_set_range (GTK_SPIN_BUTTON (pop->spin), 
+  ctk_spin_button_set_range (GTK_SPIN_BUTTON (pop->spin), 
 			     1.0, n_pages);
 
   g_signal_connect (pop->area, "draw",
 		    G_CALLBACK (preview_draw),
 		    pop);
 
-  gtk_widget_queue_draw (pop->area);
+  ctk_widget_queue_draw (pop->area);
 }
 
 static void
@@ -419,23 +419,23 @@ preview_got_page_size (GtkPrintOperationPreview *preview,
   cairo_t *cr;
   gdouble dpi_x, dpi_y;
 
-  paper_size = gtk_page_setup_get_paper_size (page_setup);
+  paper_size = ctk_page_setup_get_paper_size (page_setup);
 
-  w = gtk_paper_size_get_width (paper_size, GTK_UNIT_INCH);
-  h = gtk_paper_size_get_height (paper_size, GTK_UNIT_INCH);
+  w = ctk_paper_size_get_width (paper_size, GTK_UNIT_INCH);
+  h = ctk_paper_size_get_height (paper_size, GTK_UNIT_INCH);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  cr = gdk_cairo_create (gtk_widget_get_window (pop->area));
+  cr = gdk_cairo_create (ctk_widget_get_window (pop->area));
 G_GNUC_END_IGNORE_DEPRECATIONS
 
-  gtk_widget_get_allocation (pop->area, &allocation);
+  ctk_widget_get_allocation (pop->area, &allocation);
   dpi_x = allocation.width/w;
   dpi_y = allocation.height/h;
 
   if (fabs (dpi_x - pop->dpi_x) > 0.001 ||
       fabs (dpi_y - pop->dpi_y) > 0.001)
     {
-      gtk_print_context_set_cairo_context (context, cr, dpi_x, dpi_y);
+      ctk_print_context_set_cairo_context (context, cr, dpi_x, dpi_y);
       pop->dpi_x = dpi_x;
       pop->dpi_y = dpi_y;
     }
@@ -450,15 +450,15 @@ update_page (GtkSpinButton *widget,
 {
   PreviewOp *pop = data;
 
-  pop->page = gtk_spin_button_get_value_as_int (widget);
-  gtk_widget_queue_draw (pop->area);
+  pop->page = ctk_spin_button_get_value_as_int (widget);
+  ctk_widget_queue_draw (pop->area);
 }
 
 static void
 preview_destroy (GtkWindow *window, 
 		 PreviewOp *pop)
 {
-  gtk_print_operation_preview_end_preview (pop->preview);
+  ctk_print_operation_preview_end_preview (pop->preview);
   g_object_unref (pop->op);
 
   g_free (pop);
@@ -483,32 +483,32 @@ preview_cb (GtkPrintOperation        *op,
 
   width = 200;
   height = 300;
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_transient_for (GTK_WINDOW (window), 
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_window_set_transient_for (GTK_WINDOW (window), 
 				GTK_WINDOW (main_window));
-  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  gtk_container_add (GTK_CONTAINER (window), vbox);
-  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  gtk_box_pack_start (GTK_BOX (vbox), hbox,
+  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+  ctk_container_add (GTK_CONTAINER (window), vbox);
+  hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_box_pack_start (GTK_BOX (vbox), hbox,
 		      FALSE, FALSE, 0);
-  page = gtk_spin_button_new_with_range (1, 100, 1);
-  gtk_box_pack_start (GTK_BOX (hbox), page, FALSE, FALSE, 0);
+  page = ctk_spin_button_new_with_range (1, 100, 1);
+  ctk_box_pack_start (GTK_BOX (hbox), page, FALSE, FALSE, 0);
   
-  close = gtk_button_new_with_label ("Close");
-  gtk_box_pack_start (GTK_BOX (hbox), close, FALSE, FALSE, 0);
+  close = ctk_button_new_with_label ("Close");
+  ctk_box_pack_start (GTK_BOX (hbox), close, FALSE, FALSE, 0);
 
-  da = gtk_drawing_area_new ();
-  gtk_widget_set_size_request (GTK_WIDGET (da), width, height);
-  gtk_box_pack_start (GTK_BOX (vbox), da, TRUE, TRUE, 0);
+  da = ctk_drawing_area_new ();
+  ctk_widget_set_size_request (GTK_WIDGET (da), width, height);
+  ctk_box_pack_start (GTK_BOX (vbox), da, TRUE, TRUE, 0);
 
-  gtk_widget_realize (da);
+  ctk_widget_realize (da);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  cr = gdk_cairo_create (gtk_widget_get_window (da));
+  cr = gdk_cairo_create (ctk_widget_get_window (da));
 G_GNUC_END_IGNORE_DEPRECATIONS
 
   /* TODO: What dpi to use here? This will be used for pagination.. */
-  gtk_print_context_set_cairo_context (context, cr, 72, 72);
+  ctk_print_context_set_cairo_context (context, cr, 72, 72);
   cairo_destroy (cr);
   
   pop->op = g_object_ref (op);
@@ -521,7 +521,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   g_signal_connect (page, "value-changed", 
 		    G_CALLBACK (update_page), pop);
   g_signal_connect_swapped (close, "clicked", 
-			    G_CALLBACK (gtk_widget_destroy), window);
+			    G_CALLBACK (ctk_widget_destroy), window);
 
   g_signal_connect (preview, "ready",
 		    G_CALLBACK (preview_ready), pop);
@@ -531,7 +531,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   g_signal_connect (window, "destroy", 
                     G_CALLBACK (preview_destroy), pop);
                             
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
   
   return TRUE;
 }
@@ -548,29 +548,29 @@ print_done (GtkPrintOperation *op,
 
       GtkWidget *error_dialog;
       
-      gtk_print_operation_get_error (op, &error);
+      ctk_print_operation_get_error (op, &error);
       
-      error_dialog = gtk_message_dialog_new (GTK_WINDOW (main_window),
+      error_dialog = ctk_message_dialog_new (GTK_WINDOW (main_window),
 					     GTK_DIALOG_DESTROY_WITH_PARENT,
 					     GTK_MESSAGE_ERROR,
 					     GTK_BUTTONS_CLOSE,
 					     "Error printing file:\n%s",
 					     error ? error->message : "no details");
-      g_signal_connect (error_dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
-      gtk_widget_show (error_dialog);
+      g_signal_connect (error_dialog, "response", G_CALLBACK (ctk_widget_destroy), NULL);
+      ctk_widget_show (error_dialog);
     }
   else if (res == GTK_PRINT_OPERATION_RESULT_APPLY)
     {
       if (settings != NULL)
 	g_object_unref (settings);
-      settings = g_object_ref (gtk_print_operation_get_print_settings (op));
+      settings = g_object_ref (ctk_print_operation_get_print_settings (op));
     }
 
   g_free (print_data->text);
   g_free (print_data->font);
   g_free (print_data);
   
-  if (!gtk_print_operation_is_finished (op))
+  if (!ctk_print_operation_is_finished (op))
     {
       g_object_ref (op);
       active_prints = g_list_append (active_prints, op);
@@ -602,15 +602,15 @@ print_or_preview (GSimpleAction *action, GtkPrintOperationAction print_action)
   print_data->text = get_text ();
   print_data->font = g_strdup ("Sans 12");
 
-  print = gtk_print_operation_new ();
+  print = ctk_print_operation_new ();
 
-  gtk_print_operation_set_track_print_status (print, TRUE);
+  ctk_print_operation_set_track_print_status (print, TRUE);
 
   if (settings != NULL)
-    gtk_print_operation_set_print_settings (print, settings);
+    ctk_print_operation_set_print_settings (print, settings);
 
   if (page_setup != NULL)
-    gtk_print_operation_set_default_page_setup (print, page_setup);
+    ctk_print_operation_set_default_page_setup (print, page_setup);
 
   g_signal_connect (print, "begin_print", G_CALLBACK (begin_print), print_data);
   g_signal_connect (print, "end-print", G_CALLBACK (end_print), print_data);
@@ -621,12 +621,12 @@ print_or_preview (GSimpleAction *action, GtkPrintOperationAction print_action)
 
   g_signal_connect (print, "done", G_CALLBACK (print_done), print_data);
 
-  gtk_print_operation_set_export_filename (print, "test.pdf");
+  ctk_print_operation_set_export_filename (print, "test.pdf");
 
 #if 0
-  gtk_print_operation_set_allow_async (print, TRUE);
+  ctk_print_operation_set_allow_async (print, TRUE);
 #endif
-  gtk_print_operation_run (print, print_action, GTK_WINDOW (main_window), NULL);
+  ctk_print_operation_run (print, print_action, GTK_WINDOW (main_window), NULL);
 
   g_object_unref (print);
 }
@@ -638,7 +638,7 @@ activate_page_setup (GSimpleAction *action,
 {
   GtkPageSetup *new_page_setup;
 
-  new_page_setup = gtk_print_run_page_setup_dialog (GTK_WINDOW (main_window),
+  new_page_setup = ctk_print_run_page_setup_dialog (GTK_WINDOW (main_window),
                                                     page_setup, settings);
 
   if (page_setup)
@@ -672,23 +672,23 @@ activate_save_as (GSimpleAction *action,
   gint response;
   char *save_filename;
 
-  dialog = gtk_file_chooser_dialog_new ("Select file",
+  dialog = ctk_file_chooser_dialog_new ("Select file",
                                         GTK_WINDOW (main_window),
                                         GTK_FILE_CHOOSER_ACTION_SAVE,
                                         "_Cancel", GTK_RESPONSE_CANCEL,
                                         "_Save", GTK_RESPONSE_OK,
                                         NULL);
-  gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
-  response = gtk_dialog_run (GTK_DIALOG (dialog));
+  ctk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
+  response = ctk_dialog_run (GTK_DIALOG (dialog));
 
   if (response == GTK_RESPONSE_OK)
     {
-      save_filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog));
+      save_filename = ctk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog));
       save_file (save_filename);
       g_free (save_filename);
     }
 
-  gtk_widget_destroy (dialog);
+  ctk_widget_destroy (dialog);
 }
 
 static void
@@ -711,23 +711,23 @@ activate_open (GSimpleAction *action,
   gint response;
   char *open_filename;
 
-  dialog = gtk_file_chooser_dialog_new ("Select file",
+  dialog = ctk_file_chooser_dialog_new ("Select file",
                                         GTK_WINDOW (main_window),
                                         GTK_FILE_CHOOSER_ACTION_OPEN,
                                         "_Cancel", GTK_RESPONSE_CANCEL,
                                         "_Open", GTK_RESPONSE_OK,
                                         NULL);
-  gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
-  response = gtk_dialog_run (GTK_DIALOG (dialog));
+  ctk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
+  response = ctk_dialog_run (GTK_DIALOG (dialog));
 
   if (response == GTK_RESPONSE_OK)
     {
-      open_filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog));
+      open_filename = ctk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog));
       load_file (open_filename);
       g_free (open_filename);
     }
 
-  gtk_widget_destroy (dialog);
+  ctk_widget_destroy (dialog);
 }
 
 static void
@@ -749,7 +749,7 @@ activate_about (GSimpleAction *action,
     "Alexander Larsson",
     NULL
   };
-  gtk_show_about_dialog (GTK_WINDOW (main_window),
+  ctk_show_about_dialog (GTK_WINDOW (main_window),
                          "name", "Print Test Editor",
                          "logo-icon-name", "text-editor",
                          "version", "0.1",
@@ -768,13 +768,13 @@ activate_quit (GSimpleAction *action,
   GtkWidget *win;
   GList *list, *next;
 
-  list = gtk_application_get_windows (app);
+  list = ctk_application_get_windows (app);
   while (list)
     {
       win = list->data;
       next = list->next;
 
-      gtk_widget_destroy (GTK_WIDGET (win));
+      ctk_widget_destroy (GTK_WIDGET (win));
 
       list = next;
     }
@@ -890,14 +890,14 @@ startup (GApplication *app)
   GMenuModel *appmenu;
   GMenuModel *menubar;
 
-  builder = gtk_builder_new ();
-  gtk_builder_add_from_string (builder, ui_info, -1, NULL);
+  builder = ctk_builder_new ();
+  ctk_builder_add_from_string (builder, ui_info, -1, NULL);
 
-  appmenu = (GMenuModel *)gtk_builder_get_object (builder, "appmenu");
-  menubar = (GMenuModel *)gtk_builder_get_object (builder, "menubar");
+  appmenu = (GMenuModel *)ctk_builder_get_object (builder, "appmenu");
+  menubar = (GMenuModel *)ctk_builder_get_object (builder, "menubar");
 
-  gtk_application_set_app_menu (GTK_APPLICATION (app), appmenu);
-  gtk_application_set_menubar (GTK_APPLICATION (app), menubar);
+  ctk_application_set_app_menu (GTK_APPLICATION (app), appmenu);
+  ctk_application_set_menubar (GTK_APPLICATION (app), menubar);
 
   g_object_unref (builder);
 }
@@ -910,43 +910,43 @@ activate (GApplication *app)
   GtkWidget *sw;
   GtkWidget *contents;
 
-  main_window = gtk_application_window_new (GTK_APPLICATION (app));
-  gtk_window_set_icon_name (GTK_WINDOW (main_window), "text-editor");
-  gtk_window_set_default_size (GTK_WINDOW (main_window), 400, 600);
+  main_window = ctk_application_window_new (GTK_APPLICATION (app));
+  ctk_window_set_icon_name (GTK_WINDOW (main_window), "text-editor");
+  ctk_window_set_default_size (GTK_WINDOW (main_window), 400, 600);
   update_title (GTK_WINDOW (main_window));
 
-  box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  gtk_container_add (GTK_CONTAINER (main_window), box);
+  box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+  ctk_container_add (GTK_CONTAINER (main_window), box);
 
-  bar = gtk_menu_bar_new ();
-  gtk_widget_show (bar);
-  gtk_container_add (GTK_CONTAINER (box), bar);
+  bar = ctk_menu_bar_new ();
+  ctk_widget_show (bar);
+  ctk_container_add (GTK_CONTAINER (box), bar);
 
   /* Create document  */
-  sw = gtk_scrolled_window_new (NULL, NULL);
+  sw = ctk_scrolled_window_new (NULL, NULL);
 
-  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
+  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
                                   GTK_POLICY_AUTOMATIC,
                                   GTK_POLICY_AUTOMATIC);
 
-  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (sw),
+  ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (sw),
                                        GTK_SHADOW_IN);
 
-  gtk_widget_set_vexpand (sw, TRUE);
-  gtk_container_add (GTK_CONTAINER (box), sw);
+  ctk_widget_set_vexpand (sw, TRUE);
+  ctk_container_add (GTK_CONTAINER (box), sw);
 
-  contents = gtk_text_view_new ();
-  gtk_widget_grab_focus (contents);
+  contents = ctk_text_view_new ();
+  ctk_widget_grab_focus (contents);
 
-  gtk_container_add (GTK_CONTAINER (sw),
+  ctk_container_add (GTK_CONTAINER (sw),
                      contents);
 
   /* Create statusbar */
-  statusbar = gtk_statusbar_new ();
-  gtk_container_add (GTK_CONTAINER (box), statusbar);
+  statusbar = ctk_statusbar_new ();
+  ctk_container_add (GTK_CONTAINER (box), statusbar);
 
   /* Show text widget info in the statusbar */
-  buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (contents));
+  buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (contents));
 
   g_signal_connect_object (buffer,
                            "changed",
@@ -962,7 +962,7 @@ activate (GApplication *app)
 
   update_ui ();
 
-  gtk_widget_show_all (main_window);
+  ctk_widget_show_all (main_window);
 }
 
 int
@@ -971,24 +971,24 @@ main (int argc, char **argv)
   GtkApplication *app;
   GError *error = NULL;
 
-  gtk_init (NULL, NULL);
+  ctk_init (NULL, NULL);
 
-  settings = gtk_print_settings_new_from_file ("print-settings.ini", &error);
+  settings = ctk_print_settings_new_from_file ("print-settings.ini", &error);
   if (error) {
     g_print ("Failed to load print settings: %s\n", error->message);
     g_clear_error (&error);
 
-    settings = gtk_print_settings_new ();
+    settings = ctk_print_settings_new ();
   }
   g_assert (settings != NULL);
 
-  page_setup = gtk_page_setup_new_from_file ("page-setup.ini", &error);
+  page_setup = ctk_page_setup_new_from_file ("page-setup.ini", &error);
   if (error) {
     g_print ("Failed to load page setup: %s\n", error->message);
     g_clear_error (&error);
   }
 
-  app = gtk_application_new ("org.gtk.PrintEditor", 0);
+  app = ctk_application_new ("org.gtk.PrintEditor", 0);
 
   g_action_map_add_action_entries (G_ACTION_MAP (app),
                                    app_entries, G_N_ELEMENTS (app_entries),
@@ -1000,12 +1000,12 @@ main (int argc, char **argv)
 
   g_application_run (G_APPLICATION (app), argc, argv);
 
-  if (!gtk_print_settings_to_file (settings, "print-settings.ini", &error)) {
+  if (!ctk_print_settings_to_file (settings, "print-settings.ini", &error)) {
     g_print ("Failed to save print settings: %s\n", error->message);
     g_clear_error (&error);
   }
   if (page_setup &&
-      !gtk_page_setup_to_file (page_setup, "page-setup.ini", &error)) {
+      !ctk_page_setup_to_file (page_setup, "page-setup.ini", &error)) {
     g_print ("Failed to save page setup: %s\n", error->message);
     g_clear_error (&error);
   }

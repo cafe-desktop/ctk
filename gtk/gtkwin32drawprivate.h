@@ -151,29 +151,29 @@ enum {
   GTK_WIN32_SYS_METRIC_CXPADDEDBORDER = 92
 };
 
-void                    gtk_win32_draw_theme_background         (cairo_t        *cr,
+void                    ctk_win32_draw_theme_background         (cairo_t        *cr,
                                                                  const char     *class_name,
                                                                  int             part,
                                                                  int             state,
                                                                  int             width,
                                                                  int             height);
-void                    gtk_win32_get_theme_part_size           (const char     *class_name,
+void                    ctk_win32_get_theme_part_size           (const char     *class_name,
                                                                  int             part,
                                                                  int             state,
                                                                  int            *width,
                                                                  int            *height);
-void                    gtk_win32_get_theme_margins             (const char     *class_name,
+void                    ctk_win32_get_theme_margins             (const char     *class_name,
                                                                  int             part,
                                                                  int             state,
                                                                  GtkBorder      *out_margins);
 
-const char *            gtk_win32_get_sys_metric_name_for_id    (gint            id);
-int                     gtk_win32_get_sys_metric_id_for_name    (const char     *name);
-int                     gtk_win32_get_sys_metric                (gint            id);
+const char *            ctk_win32_get_sys_metric_name_for_id    (gint            id);
+int                     ctk_win32_get_sys_metric_id_for_name    (const char     *name);
+int                     ctk_win32_get_sys_metric                (gint            id);
 
-const char *            gtk_win32_get_sys_color_name_for_id     (gint            id);
-int                     gtk_win32_get_sys_color_id_for_name     (const char     *name);
-void                    gtk_win32_get_sys_color                 (gint            id,
+const char *            ctk_win32_get_sys_color_name_for_id     (gint            id);
+int                     ctk_win32_get_sys_color_id_for_name     (const char     *name);
+void                    ctk_win32_get_sys_color                 (gint            id,
                                                                  GdkRGBA        *color);
 
 G_END_DECLS

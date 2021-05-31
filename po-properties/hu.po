@@ -778,10 +778,10 @@ msgstr "Az érték"
 
 #: gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"A gtk_radio_action_get_current_value() által visszaadott érték, ha a művelet "
+"A ctk_radio_action_get_current_value() által visszaadott érték, ha a művelet "
 "a csoport aktuális művelete."
 
 #: gtk/deprecated/gtkradioaction.c:139 gtk/gtkradiobutton.c:184
@@ -1240,10 +1240,10 @@ msgstr "Logó"
 #: gtk/gtkaboutdialog.c:552
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Logó a névjegy mezőhöz. Ha nincs beállítva, alapértelmezett értéke a "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 
 #: gtk/gtkaboutdialog.c:566
 msgid "Logo Icon Name"
@@ -3445,10 +3445,10 @@ msgstr "Előrehaladás lépésegysége"
 #: gtk/gtkentry.c:1094
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "A teljes bejegyzésszélesség része törtként, amennyivel a pattogó tégla "
-"elmozdul a gtk_entry_progress_pulse() minden hívásakor"
+"elmozdul a ctk_entry_progress_pulse() minden hívásakor"
 
 #: gtk/gtkentry.c:1110
 msgid "Show text in the entry when it's empty and unfocused"
@@ -9110,8 +9110,8 @@ msgid "No show all"
 msgstr "Összes megjelenítése hatástalan"
 
 #: gtk/gtkwidget.c:1264
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "A gtk_widget_show_all() nincs-e hatással a felületi elemre"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "A ctk_widget_show_all() nincs-e hatással a felületi elemre"
 
 #: gtk/gtkwidget.c:1286
 msgid "Whether this widget has a tooltip"

@@ -256,7 +256,7 @@ msgstr ""
 #: gtk/gtkaboutdialog.c:487
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 
 #: gtk/gtkaboutdialog.c:502
@@ -2408,7 +2408,7 @@ msgstr "Pulse Addımı"
 #, fuzzy
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "Nəbz əmələ gələndə ilərləyən blokun daşınması lazım olan vəziyyət çubuğu "
 "uzunluğunun hissəsi "
@@ -4603,11 +4603,11 @@ msgstr "Qiymət"
 
 #: gtk/gtkradioaction.c:119
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
 "Bu gedişatın onun qrupunun hazırkı gedişatı olduğunda "
-"gtk_radio_action_get_current_value() tərəfindən qaytarılan qiymət."
+"ctk_radio_action_get_current_value() tərəfindən qaytarılan qiymət."
 
 #: gtk/gtkradioaction.c:135 gtk/gtkradiobutton.c:160
 #: gtk/gtkradiomenuitem.c:373 gtk/gtkradiotoolbutton.c:65
@@ -7131,8 +7131,8 @@ msgid "No show all"
 msgstr "Hamısını göstər olmasın"
 
 #: gtk/gtkwidget.c:841
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "gtk_widget_show_all()-in bu widget-ə təsir etməməsi"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "ctk_widget_show_all()-in bu widget-ə təsir etməməsi"
 
 #: gtk/gtkwidget.c:864
 #, fuzzy

@@ -762,10 +762,10 @@ msgstr "值"
 
 #: gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"此操作为所在操作组的当前操作时，gtk_radio_action_get_current_value() 返回的"
+"此操作为所在操作组的当前操作时，ctk_radio_action_get_current_value() 返回的"
 "值。"
 
 #: gtk/deprecated/gtkradioaction.c:139 gtk/gtkradiobutton.c:184
@@ -1215,9 +1215,9 @@ msgstr "标志"
 #: gtk/gtkaboutdialog.c:552
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
-"关于对话框标志。如果未设置，则默认为 gtk_window_get_default_icon_list()"
+"关于对话框标志。如果未设置，则默认为 ctk_window_get_default_icon_list()"
 
 #: gtk/gtkaboutdialog.c:566
 msgid "Logo Icon Name"
@@ -3362,9 +3362,9 @@ msgstr "进度跳变步长"
 #: gtk/gtkentry.c:1094
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
-"每次调用 gtk_entry_progress_pulse() 时进度递增跳跃块的宽度占输入控件总宽度的"
+"每次调用 ctk_entry_progress_pulse() 时进度递增跳跃块的宽度占输入控件总宽度的"
 "比例"
 
 #: gtk/gtkentry.c:1110
@@ -8839,8 +8839,8 @@ msgid "No show all"
 msgstr "不全部显示"
 
 #: gtk/gtkwidget.c:1264
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "gtk_widget_show_all() 是否要影响此部件"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "ctk_widget_show_all() 是否要影响此部件"
 
 #: gtk/gtkwidget.c:1286
 msgid "Whether this widget has a tooltip"
@@ -9829,8 +9829,8 @@ msgstr "要使用的颜色配置的标题"
 
 #~ msgid ""
 #~ "The maximum number of items to be returned by "
-#~ "gtk_recent_manager_get_items()"
-#~ msgstr "gtk_recent_manager_get_items() 返回项的个数的最大值"
+#~ "ctk_recent_manager_get_items()"
+#~ msgstr "ctk_recent_manager_get_items() 返回项的个数的最大值"
 
 #~ msgid "Blinking"
 #~ msgstr "闪烁"

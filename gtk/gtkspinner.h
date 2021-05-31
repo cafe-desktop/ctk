@@ -31,7 +31,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SPINNER           (gtk_spinner_get_type ())
+#define GTK_TYPE_SPINNER           (ctk_spinner_get_type ())
 #define GTK_SPINNER(obj)           (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SPINNER, GtkSpinner))
 #define GTK_SPINNER_CLASS(obj)     (G_TYPE_CHECK_CLASS_CAST ((obj), GTK_TYPE_SPINNER,  GtkSpinnerClass))
 #define GTK_IS_SPINNER(obj)        (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SPINNER))
@@ -55,20 +55,20 @@ struct _GtkSpinnerClass
   GtkWidgetClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_ALL
-GType      gtk_spinner_get_type  (void) G_GNUC_CONST;
+GType      ctk_spinner_get_type  (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget *gtk_spinner_new (void);
+GtkWidget *ctk_spinner_new (void);
 GDK_AVAILABLE_IN_ALL
-void       gtk_spinner_start      (GtkSpinner *spinner);
+void       ctk_spinner_start      (GtkSpinner *spinner);
 GDK_AVAILABLE_IN_ALL
-void       gtk_spinner_stop       (GtkSpinner *spinner);
+void       ctk_spinner_stop       (GtkSpinner *spinner);
 
 G_END_DECLS
 

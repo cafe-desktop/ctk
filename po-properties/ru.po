@@ -787,10 +787,10 @@ msgstr "Значение"
 
 #: gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"Значение, возвращаемое функцией gtk_radio_action_get_current_value(), когда "
+"Значение, возвращаемое функцией ctk_radio_action_get_current_value(), когда "
 "это действие является текущим действием своей группы."
 
 #: gtk/deprecated/gtkradioaction.c:139 gtk/gtkradiobutton.c:184
@@ -1249,10 +1249,10 @@ msgstr "Значок"
 #: gtk/gtkaboutdialog.c:546
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Значок для окна «О программе». Если не установлено, по умолчанию "
-"используется результат gtk_window_get_default_icon_list()"
+"используется результат ctk_window_get_default_icon_list()"
 
 #: gtk/gtkaboutdialog.c:560
 msgid "Logo Icon Name"
@@ -3464,10 +3464,10 @@ msgstr "Шаг пульсации"
 #: gtk/gtkentry.c:1094
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "Доля общего объёма работы, при выполнении которой происходит приращение "
-"индикатора процесса при вызове gtk_entry_progress_pulse()"
+"индикатора процесса при вызове ctk_entry_progress_pulse()"
 
 #: gtk/gtkentry.c:1110
 msgid "Show text in the entry when it's empty and unfocused"
@@ -9153,11 +9153,11 @@ msgstr ""
 
 #: gtk/gtkwidget.c:1260
 msgid "No show all"
-msgstr "Игнорировать gtk_widget_show_all()"
+msgstr "Игнорировать ctk_widget_show_all()"
 
 #: gtk/gtkwidget.c:1261
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "Будет ли функция gtk_widget_show_all() воздействовать на этот виждет"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "Будет ли функция ctk_widget_show_all() воздействовать на этот виждет"
 
 #: gtk/gtkwidget.c:1283
 msgid "Whether this widget has a tooltip"

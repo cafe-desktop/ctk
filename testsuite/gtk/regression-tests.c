@@ -24,18 +24,18 @@ test_9d6da33ff5c5e41e3521e1afd63d2d67bc915753 (void)
 {
   GtkWidget *window, *label;
 
-  window = gtk_window_new (GTK_WINDOW_POPUP);
-  label = gtk_label_new ("I am sensitive.");
-  gtk_container_add (GTK_CONTAINER (window), label);
+  window = ctk_window_new (GTK_WINDOW_POPUP);
+  label = ctk_label_new ("I am sensitive.");
+  ctk_container_add (GTK_CONTAINER (window), label);
 
-  gtk_widget_set_sensitive (label, FALSE);
-  gtk_widget_set_sensitive (window, FALSE);
-  gtk_widget_set_sensitive (label, TRUE);
-  gtk_widget_set_sensitive (window, TRUE);
+  ctk_widget_set_sensitive (label, FALSE);
+  ctk_widget_set_sensitive (window, FALSE);
+  ctk_widget_set_sensitive (label, TRUE);
+  ctk_widget_set_sensitive (window, TRUE);
 
-  g_assert (gtk_widget_get_sensitive (label));
+  g_assert (ctk_widget_get_sensitive (label));
 
-  gtk_widget_destroy (window);
+  ctk_widget_destroy (window);
 }
 
 static void
@@ -43,23 +43,23 @@ test_94f00eb04dd1433cf1cc9a3341f485124e38abd1 (void)
 {
   GtkWidget *window, *label;
 
-  window = gtk_window_new (GTK_WINDOW_POPUP);
-  label = gtk_label_new ("I am insensitive.");
-  gtk_container_add (GTK_CONTAINER (window), label);
+  window = ctk_window_new (GTK_WINDOW_POPUP);
+  label = ctk_label_new ("I am insensitive.");
+  ctk_container_add (GTK_CONTAINER (window), label);
 
-  gtk_widget_set_sensitive (window, FALSE);
-  gtk_widget_set_sensitive (label, FALSE);
-  gtk_widget_set_sensitive (label, TRUE);
+  ctk_widget_set_sensitive (window, FALSE);
+  ctk_widget_set_sensitive (label, FALSE);
+  ctk_widget_set_sensitive (label, TRUE);
 
-  g_assert (!gtk_widget_is_sensitive (label));
+  g_assert (!ctk_widget_is_sensitive (label));
 
-  gtk_widget_destroy (window);
+  ctk_widget_destroy (window);
 }
 
 int
 main (int argc, char *argv[])
 {
-  gtk_test_init (&argc, &argv, NULL);
+  ctk_test_init (&argc, &argv, NULL);
 
   g_test_add_func ("/regression/94f00eb04dd1433cf1cc9a3341f485124e38abd1", test_94f00eb04dd1433cf1cc9a3341f485124e38abd1);
   g_test_add_func ("/regression/9d6da33ff5c5e41e3521e1afd63d2d67bc915753", test_9d6da33ff5c5e41e3521e1afd63d2d67bc915753);

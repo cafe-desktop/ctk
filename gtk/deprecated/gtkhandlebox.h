@@ -38,7 +38,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_HANDLE_BOX            (gtk_handle_box_get_type ())
+#define GTK_TYPE_HANDLE_BOX            (ctk_handle_box_get_type ())
 #define GTK_HANDLE_BOX(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_HANDLE_BOX, GtkHandleBox))
 #define GTK_HANDLE_BOX_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_HANDLE_BOX, GtkHandleBoxClass))
 #define GTK_IS_HANDLE_BOX(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_HANDLE_BOX))
@@ -77,34 +77,34 @@ struct _GtkHandleBoxClass
   /*< private >*/
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
 GDK_DEPRECATED_IN_3_4
-GType         gtk_handle_box_get_type             (void) G_GNUC_CONST;
+GType         ctk_handle_box_get_type             (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_4
-GtkWidget*    gtk_handle_box_new                  (void);
+GtkWidget*    ctk_handle_box_new                  (void);
 GDK_DEPRECATED_IN_3_4
-void          gtk_handle_box_set_shadow_type      (GtkHandleBox    *handle_box,
+void          ctk_handle_box_set_shadow_type      (GtkHandleBox    *handle_box,
                                                    GtkShadowType    type);
 GDK_DEPRECATED_IN_3_4
-GtkShadowType gtk_handle_box_get_shadow_type      (GtkHandleBox    *handle_box);
+GtkShadowType ctk_handle_box_get_shadow_type      (GtkHandleBox    *handle_box);
 GDK_DEPRECATED_IN_3_4
-void          gtk_handle_box_set_handle_position  (GtkHandleBox    *handle_box,
+void          ctk_handle_box_set_handle_position  (GtkHandleBox    *handle_box,
 					           GtkPositionType  position);
 GDK_DEPRECATED_IN_3_4
-GtkPositionType gtk_handle_box_get_handle_position(GtkHandleBox    *handle_box);
+GtkPositionType ctk_handle_box_get_handle_position(GtkHandleBox    *handle_box);
 GDK_DEPRECATED_IN_3_4
-void          gtk_handle_box_set_snap_edge        (GtkHandleBox    *handle_box,
+void          ctk_handle_box_set_snap_edge        (GtkHandleBox    *handle_box,
 						   GtkPositionType  edge);
 GDK_DEPRECATED_IN_3_4
-GtkPositionType gtk_handle_box_get_snap_edge      (GtkHandleBox    *handle_box);
+GtkPositionType ctk_handle_box_get_snap_edge      (GtkHandleBox    *handle_box);
 GDK_DEPRECATED_IN_3_4
-gboolean      gtk_handle_box_get_child_detached   (GtkHandleBox    *handle_box);
+gboolean      ctk_handle_box_get_child_detached   (GtkHandleBox    *handle_box);
 
 G_END_DECLS
 

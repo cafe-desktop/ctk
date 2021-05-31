@@ -26,7 +26,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_QUERY          (gtk_query_get_type ())
+#define GTK_TYPE_QUERY          (ctk_query_get_type ())
 #define GTK_QUERY(obj)          (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_QUERY, GtkQuery))
 #define GTK_QUERY_CLASS(klass)  (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_QUERY, GtkQueryClass))
 #define GTK_IS_QUERY(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_QUERY))
@@ -49,19 +49,19 @@ struct _GtkQueryClass
   GObjectClass parent_class;
 };
 
-GType        gtk_query_get_type       (void);
+GType        ctk_query_get_type       (void);
 
-GtkQuery    *gtk_query_new            (void);
+GtkQuery    *ctk_query_new            (void);
 
-const gchar *gtk_query_get_text       (GtkQuery    *query);
-void         gtk_query_set_text       (GtkQuery    *query,
+const gchar *ctk_query_get_text       (GtkQuery    *query);
+void         ctk_query_set_text       (GtkQuery    *query,
                                        const gchar *text);
 
-GFile       *gtk_query_get_location   (GtkQuery    *query);
-void         gtk_query_set_location   (GtkQuery    *query,
+GFile       *ctk_query_get_location   (GtkQuery    *query);
+void         ctk_query_set_location   (GtkQuery    *query,
                                        GFile       *file);
 
-gboolean     gtk_query_matches_string (GtkQuery    *query,
+gboolean     ctk_query_matches_string (GtkQuery    *query,
                                        const gchar *string);
 
 G_END_DECLS

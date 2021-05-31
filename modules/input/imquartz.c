@@ -80,7 +80,7 @@ static const GtkIMContextInfo *info_list[] =
 #ifndef INCLUDE_IM_quartz
 #define MODULE_ENTRY(type,function) G_MODULE_EXPORT type im_module_ ## function
 #else
-#define MODULE_ENTRY(type, function) type _gtk_immodule_quartz_ ## function
+#define MODULE_ENTRY(type, function) type _ctk_immodule_quartz_ ## function
 #endif
 
 static void
@@ -224,7 +224,7 @@ quartz_filter_keypress (GtkIMContext *context,
         /* update text input changes by mouse events */
         return output_result (context, event->window);
       else
-        return gtk_im_context_filter_keypress (qc->slave, event);
+        return ctk_im_context_filter_keypress (qc->slave, event);
     }
 
   nsview = gdk_quartz_window_get_nsview (qc->client_window);
@@ -396,9 +396,9 @@ imquartz_finalize (GObject *obj)
 }
 
 static void
-gtk_im_context_quartz_class_init (GtkIMContextClass *klass)
+ctk_im_context_quartz_class_init (GtkIMContextClass *klass)
 {
-  GTK_NOTE (MISC, g_print ("gtk_im_context_quartz_class_init\n"));
+  GTK_NOTE (MISC, g_print ("ctk_im_context_quartz_class_init\n"));
 
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   parent_class = g_type_class_peek_parent (klass);
@@ -416,9 +416,9 @@ gtk_im_context_quartz_class_init (GtkIMContextClass *klass)
 }
 
 static void
-gtk_im_context_quartz_init (GtkIMContext *im_context)
+ctk_im_context_quartz_init (GtkIMContext *im_context)
 {
-  GTK_NOTE (MISC, g_print ("gtk_im_context_quartz_init\n"));
+  GTK_NOTE (MISC, g_print ("ctk_im_context_quartz_init\n"));
 
   GtkIMContextQuartz *qc = GTK_IM_CONTEXT_QUARTZ (im_context);
   qc->preedit_str = g_strdup ("");
@@ -432,19 +432,19 @@ gtk_im_context_quartz_init (GtkIMContext *im_context)
 }
 
 static void
-gtk_im_context_quartz_register_type (GTypeModule *module)
+ctk_im_context_quartz_register_type (GTypeModule *module)
 {
   const GTypeInfo object_info =
   {
     sizeof (GtkIMContextQuartzClass),
     (GBaseInitFunc) NULL,
     (GBaseFinalizeFunc) NULL,
-    (GClassInitFunc) gtk_im_context_quartz_class_init,
+    (GClassInitFunc) ctk_im_context_quartz_class_init,
     NULL,           /* class_finalize */
     NULL,           /* class_data */
     sizeof (GtkIMContextQuartz),
     0,
-    (GInstanceInitFunc) gtk_im_context_quartz_init,
+    (GInstanceInitFunc) ctk_im_context_quartz_init,
   };
 
   type_quartz =
@@ -456,7 +456,7 @@ gtk_im_context_quartz_register_type (GTypeModule *module)
 
 MODULE_ENTRY (void, init) (GTypeModule * module)
 {
-  gtk_im_context_quartz_register_type (module);
+  ctk_im_context_quartz_register_type (module);
 }
 
 MODULE_ENTRY (void, exit) (void)

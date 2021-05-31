@@ -28,7 +28,7 @@ test_one_accel (const char *accel,
   char *label, *name;
 
   accel_key = 0;
-  gtk_accelerator_parse_with_keycode (accel,
+  ctk_accelerator_parse_with_keycode (accel,
 				      &accel_key,
 				      &keycodes,
 				      &mods);
@@ -38,7 +38,7 @@ test_one_accel (const char *accel,
       guint accel_key_2;
       GdkModifierType mods_2;
 
-      gtk_accelerator_parse (accel,
+      ctk_accelerator_parse (accel,
                              &accel_key_2,
                              &mods_2);
       g_assert (accel_key == accel_key_2);
@@ -50,14 +50,14 @@ test_one_accel (const char *accel,
   g_assert (keycodes);
   g_assert (keycodes[0] != 0);
 
-  label = gtk_accelerator_get_label_with_keycode (NULL,
+  label = ctk_accelerator_get_label_with_keycode (NULL,
 						  accel_key,
 						  *keycodes,
 						  mods);
 
   g_assert_cmpstr (label, ==, exp_label);
 
-  name = gtk_accelerator_name_with_keycode (NULL,
+  name = ctk_accelerator_name_with_keycode (NULL,
 					    accel_key,
 					    *keycodes,
 					    mods);
@@ -128,7 +128,7 @@ main (int   argc,
 {
   setlocale (LC_ALL, "en_GB.UTF-8");
 
-  gtk_test_init (&argc, &argv);
+  ctk_test_init (&argc, &argv);
 
   g_test_add_func ("/keysyms", keysyms);
 

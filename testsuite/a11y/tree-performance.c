@@ -108,11 +108,11 @@ builder_get_toplevel (GtkBuilder *builder)
   GSList *list, *walk;
   GtkWidget *window = NULL;
 
-  list = gtk_builder_get_objects (builder);
+  list = ctk_builder_get_objects (builder);
   for (walk = list; walk; walk = walk->next)
     {
       if (GTK_IS_WINDOW (walk->data) &&
-          gtk_widget_get_parent (walk->data) == NULL)
+          ctk_widget_get_parent (walk->data) == NULL)
         {
           window = walk->data;
           break;
@@ -132,14 +132,14 @@ populate_list (GtkBuilder *builder)
   GtkTreeIter iter;
   gint i;
 
-  tv = (GtkTreeView *)gtk_builder_get_object (builder, "treeview1");
-  store = (GtkListStore *)gtk_tree_view_get_model (tv);
+  tv = (GtkTreeView *)ctk_builder_get_object (builder, "treeview1");
+  store = (GtkListStore *)ctk_tree_view_get_model (tv);
 
   /* append a many rows */
   for (i = 0; i < N_ROWS; i++)
     {
-      gtk_list_store_append (store, &iter);
-      gtk_list_store_set (store, &iter, 0, "Bla", 1, "Bla bla", 2, "Bla bla bla", 3, i % 2 == 0 ? TRUE : FALSE, 4, i % 100, 5, i, -1);
+      ctk_list_store_append (store, &iter);
+      ctk_list_store_set (store, &iter, 0, "Bla", 1, "Bla bla", 2, "Bla bla bla", 3, i % 2 == 0 ? TRUE : FALSE, 4, i % 100, 5, i, -1);
     }
 }
 
@@ -151,13 +151,13 @@ test_performance_list (void)
   GtkWidget *window;
   GError *error = NULL;
 
-  builder = gtk_builder_new ();
-  gtk_builder_add_from_string (builder, list_ui, -1, &error);
+  builder = ctk_builder_new ();
+  ctk_builder_add_from_string (builder, list_ui, -1, &error);
   g_assert_no_error (error);
   window = builder_get_toplevel (builder);
   g_assert (window);
 
-  gtk_widget_show (window);
+  ctk_widget_show (window);
 
   g_test_timer_start ();
 
@@ -178,25 +178,25 @@ test_a11y_performance_list (void)
   gint count_before;
   gint count_after;
 
-  builder = gtk_builder_new ();
-  gtk_builder_add_from_string (builder, list_ui, -1, &error);
+  builder = ctk_builder_new ();
+  ctk_builder_add_from_string (builder, list_ui, -1, &error);
   g_assert_no_error (error);
   window = builder_get_toplevel (builder);
   g_assert (window);
 
-  gtk_widget_show (window);
+  ctk_widget_show (window);
 
   g_test_timer_start ();
 
   /* make sure all accessibles exist */
   count_before = 0;
-  walk_accessible_tree (gtk_widget_get_accessible (window), &count_before);
+  walk_accessible_tree (ctk_widget_get_accessible (window), &count_before);
 
   populate_list (builder);
 
   /* for good measure, do this again */
   count_after = 0;
-  walk_accessible_tree (gtk_widget_get_accessible (window), &count_after);
+  walk_accessible_tree (ctk_widget_get_accessible (window), &count_after);
 
   elapsed = g_test_timer_elapsed ();
   g_test_minimized_result (elapsed, "large list with a11y: %gsec", elapsed);
@@ -273,21 +273,21 @@ populate_tree (GtkBuilder *builder)
   GtkTreeIter iter;
   gint i;
 
-  tv = (GtkTreeView *)gtk_builder_get_object (builder, "treeview1");
-  store = (GtkTreeStore *)gtk_tree_view_get_model (tv);
+  tv = (GtkTreeView *)ctk_builder_get_object (builder, "treeview1");
+  store = (GtkTreeStore *)ctk_tree_view_get_model (tv);
 
   /* append a thousand rows */
   for (i = 0; i < N_ROWS / 3; i++)
     {
-      gtk_tree_store_append (store, &iter, NULL);
-      gtk_tree_store_set (store, &iter, 0, "Bla", 1, "Bla bla", 2, "Bla bla bla", 3, i % 2 == 0 ? TRUE : FALSE, 4, i % 100, 5, i, -1);
-      gtk_tree_store_append (store, &iter, &iter);
-      gtk_tree_store_set (store, &iter, 0, "Bla", 1, "Bla bla", 2, "Bla bla bla", 3, i % 2 == 0 ? TRUE : FALSE, 4, i % 100, 5, i, -1);
-      gtk_tree_store_append (store, &iter, &iter);
-      gtk_tree_store_set (store, &iter, 0, "Bla", 1, "Bla bla", 2, "Bla bla bla", 3, i % 2 == 0 ? TRUE : FALSE, 4, i % 100, 5, i, -1);
+      ctk_tree_store_append (store, &iter, NULL);
+      ctk_tree_store_set (store, &iter, 0, "Bla", 1, "Bla bla", 2, "Bla bla bla", 3, i % 2 == 0 ? TRUE : FALSE, 4, i % 100, 5, i, -1);
+      ctk_tree_store_append (store, &iter, &iter);
+      ctk_tree_store_set (store, &iter, 0, "Bla", 1, "Bla bla", 2, "Bla bla bla", 3, i % 2 == 0 ? TRUE : FALSE, 4, i % 100, 5, i, -1);
+      ctk_tree_store_append (store, &iter, &iter);
+      ctk_tree_store_set (store, &iter, 0, "Bla", 1, "Bla bla", 2, "Bla bla bla", 3, i % 2 == 0 ? TRUE : FALSE, 4, i % 100, 5, i, -1);
     }
 
-  gtk_tree_view_expand_all (tv);
+  ctk_tree_view_expand_all (tv);
 }
 
 static void
@@ -298,13 +298,13 @@ test_performance_tree (void)
   GtkWidget *window;
   GError *error = NULL;
 
-  builder = gtk_builder_new ();
-  gtk_builder_add_from_string (builder, tree_ui, -1, &error);
+  builder = ctk_builder_new ();
+  ctk_builder_add_from_string (builder, tree_ui, -1, &error);
   g_assert_no_error (error);
   window = builder_get_toplevel (builder);
   g_assert (window);
 
-  gtk_widget_show (window);
+  ctk_widget_show (window);
 
   g_test_timer_start ();
 
@@ -325,25 +325,25 @@ test_a11y_performance_tree (void)
   gint count_before;
   gint count_after;
 
-  builder = gtk_builder_new ();
-  gtk_builder_add_from_string (builder, tree_ui, -1, &error);
+  builder = ctk_builder_new ();
+  ctk_builder_add_from_string (builder, tree_ui, -1, &error);
   g_assert_no_error (error);
   window = builder_get_toplevel (builder);
   g_assert (window);
 
-  gtk_widget_show (window);
+  ctk_widget_show (window);
 
   g_test_timer_start ();
 
   /* make sure all accessibles exist */
   count_before = 0;
-  walk_accessible_tree (gtk_widget_get_accessible (window), &count_before);
+  walk_accessible_tree (ctk_widget_get_accessible (window), &count_before);
 
   populate_tree (builder);
 
   /* for good measure, do this again */
   count_after = 0;
-  walk_accessible_tree (gtk_widget_get_accessible (window), &count_after);
+  walk_accessible_tree (ctk_widget_get_accessible (window), &count_after);
 
   elapsed = g_test_timer_elapsed ();
   g_test_minimized_result (elapsed, "large tree with a11y: %gsec", elapsed);
@@ -355,7 +355,7 @@ test_a11y_performance_tree (void)
 int
 main (int argc, char *argv[])
 {
-  gtk_test_init (&argc, &argv, NULL);
+  ctk_test_init (&argc, &argv, NULL);
 
   if (!g_test_perf ())
     return 0;

@@ -6,14 +6,14 @@ child_size_allocate (GtkWidget *child,
                      gpointer user_data)
 {
   GtkStyleContext *context;
-  context = gtk_widget_get_style_context (child);
+  context = ctk_widget_get_style_context (child);
 
   g_print ("Child %p\nHas left? %d\nHas right? %d\nHas top? %d\nHas bottom? %d\n",
            child,
-           gtk_style_context_has_class (context, "left"),
-           gtk_style_context_has_class (context, "right"),
-           gtk_style_context_has_class (context, "top"),
-           gtk_style_context_has_class (context, "bottom"));
+           ctk_style_context_has_class (context, "left"),
+           ctk_style_context_has_class (context, "right"),
+           ctk_style_context_has_class (context, "top"),
+           ctk_style_context_has_class (context, "bottom"));
 }
 
 static gboolean
@@ -28,7 +28,7 @@ overlay_get_child_position (GtkOverlay *overlay,
   if (child != custom_child)
     return FALSE;
 
-  gtk_widget_get_preferred_size (child, NULL, &req);
+  ctk_widget_get_preferred_size (child, NULL, &req);
 
   allocation->x = 120;
   allocation->y = 0;
@@ -45,119 +45,119 @@ main (int argc, char *argv[])
   GtkCssProvider *provider;
   gchar *str;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
-  provider = gtk_css_provider_new ();
-  gtk_css_provider_load_from_data (provider,
+  provider = ctk_css_provider_new ();
+  ctk_css_provider_load_from_data (provider,
                                    "GtkLabel { border: 3px solid black; border-radius: 5px; padding: 2px; }"
                                    ".top { border-top-style: none; right-radius: 0px; border-top-left-radius: 0px; }"
                                    ".bottom { border-bottom-style: none; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; }"
                                    ".left { border-left-style: none; border-top-left-radius: 0px; border-bottom-left-radius: 0px; }"
                                    ".right { border-right-style: none; border-top-right-radius: 0px; border-bottom-right-radius: 0px; }",
                                    -1, NULL);
-  gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+  ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
                                              GTK_STYLE_PROVIDER (provider),
                                              GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-  win = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_default_size (GTK_WINDOW (win), 600, 600);
+  win = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_window_set_default_size (GTK_WINDOW (win), 600, 600);
 
-  grid = gtk_grid_new ();
-  child = gtk_event_box_new ();
-  gtk_widget_set_hexpand (child, TRUE);
-  gtk_widget_set_vexpand (child, TRUE);
-  gtk_container_add (GTK_CONTAINER (grid), child);
-  label = gtk_label_new ("Out of overlay");
-  gtk_container_add (GTK_CONTAINER (child), label);
+  grid = ctk_grid_new ();
+  child = ctk_event_box_new ();
+  ctk_widget_set_hexpand (child, TRUE);
+  ctk_widget_set_vexpand (child, TRUE);
+  ctk_container_add (GTK_CONTAINER (grid), child);
+  label = ctk_label_new ("Out of overlay");
+  ctk_container_add (GTK_CONTAINER (child), label);
 
-  overlay = gtk_overlay_new ();
-  sw = gtk_scrolled_window_new (NULL, NULL);
-  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
+  overlay = ctk_overlay_new ();
+  sw = ctk_scrolled_window_new (NULL, NULL);
+  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
                                   GTK_POLICY_ALWAYS,
                                   GTK_POLICY_ALWAYS);
-  gtk_container_add (GTK_CONTAINER (overlay), sw);
+  ctk_container_add (GTK_CONTAINER (overlay), sw);
 
-  main_child = gtk_event_box_new ();
-  gtk_container_add (GTK_CONTAINER (sw), main_child);
-  gtk_widget_set_hexpand (main_child, TRUE);
-  gtk_widget_set_vexpand (main_child, TRUE);
-  label = gtk_label_new ("Main child");
-  gtk_widget_set_halign (label, GTK_ALIGN_CENTER);
-  gtk_widget_set_valign (label, GTK_ALIGN_CENTER);
-  gtk_container_add (GTK_CONTAINER (main_child), label);
+  main_child = ctk_event_box_new ();
+  ctk_container_add (GTK_CONTAINER (sw), main_child);
+  ctk_widget_set_hexpand (main_child, TRUE);
+  ctk_widget_set_vexpand (main_child, TRUE);
+  label = ctk_label_new ("Main child");
+  ctk_widget_set_halign (label, GTK_ALIGN_CENTER);
+  ctk_widget_set_valign (label, GTK_ALIGN_CENTER);
+  ctk_container_add (GTK_CONTAINER (main_child), label);
 
-  child = gtk_label_new (NULL);
+  child = ctk_label_new (NULL);
   str = g_strdup_printf ("%p", child);
-  gtk_label_set_text (GTK_LABEL (child), str);
+  ctk_label_set_text (GTK_LABEL (child), str);
   g_free (str);
   g_print ("Bottom/Right child: %p\n", child);
-  gtk_widget_set_halign (child, GTK_ALIGN_END);
-  gtk_widget_set_valign (child, GTK_ALIGN_END);
-  gtk_overlay_add_overlay (GTK_OVERLAY (overlay), child);
+  ctk_widget_set_halign (child, GTK_ALIGN_END);
+  ctk_widget_set_valign (child, GTK_ALIGN_END);
+  ctk_overlay_add_overlay (GTK_OVERLAY (overlay), child);
 
   g_signal_connect (child, "size-allocate",
                     G_CALLBACK (child_size_allocate), overlay);
 
-  child = gtk_label_new (NULL);
+  child = ctk_label_new (NULL);
   str = g_strdup_printf ("%p", child);
-  gtk_label_set_text (GTK_LABEL (child), str);
+  ctk_label_set_text (GTK_LABEL (child), str);
   g_free (str);
   g_print ("Left/Top child: %p\n", child);
-  gtk_widget_set_halign (child, GTK_ALIGN_START);
-  gtk_widget_set_valign (child, GTK_ALIGN_START);
-  gtk_overlay_add_overlay (GTK_OVERLAY (overlay), child);
+  ctk_widget_set_halign (child, GTK_ALIGN_START);
+  ctk_widget_set_valign (child, GTK_ALIGN_START);
+  ctk_overlay_add_overlay (GTK_OVERLAY (overlay), child);
 
   g_signal_connect (child, "size-allocate",
                     G_CALLBACK (child_size_allocate), overlay);
 
-  child = gtk_label_new (NULL);
+  child = ctk_label_new (NULL);
   str = g_strdup_printf ("%p", child);
-  gtk_label_set_text (GTK_LABEL (child), str);
+  ctk_label_set_text (GTK_LABEL (child), str);
   g_free (str);
   g_print ("Right/Center child: %p\n", child);
-  gtk_widget_set_halign (child, GTK_ALIGN_END);
-  gtk_widget_set_valign (child, GTK_ALIGN_CENTER);
-  gtk_overlay_add_overlay (GTK_OVERLAY (overlay), child);
+  ctk_widget_set_halign (child, GTK_ALIGN_END);
+  ctk_widget_set_valign (child, GTK_ALIGN_CENTER);
+  ctk_overlay_add_overlay (GTK_OVERLAY (overlay), child);
 
   g_signal_connect (child, "size-allocate",
                     G_CALLBACK (child_size_allocate), overlay);
 
-  child = gtk_label_new (NULL);
+  child = ctk_label_new (NULL);
   str = g_strdup_printf ("%p", child);
-  gtk_label_set_text (GTK_LABEL (child), str);
+  ctk_label_set_text (GTK_LABEL (child), str);
   g_free (str);
-  gtk_widget_set_margin_start (child, 55);
-  gtk_widget_set_margin_top (child, 4);
+  ctk_widget_set_margin_start (child, 55);
+  ctk_widget_set_margin_top (child, 4);
   g_print ("Left/Top margined child: %p\n", child);
-  gtk_widget_set_halign (child, GTK_ALIGN_START);
-  gtk_widget_set_valign (child, GTK_ALIGN_START);
-  gtk_overlay_add_overlay (GTK_OVERLAY (overlay), child);
+  ctk_widget_set_halign (child, GTK_ALIGN_START);
+  ctk_widget_set_valign (child, GTK_ALIGN_START);
+  ctk_overlay_add_overlay (GTK_OVERLAY (overlay), child);
 
   g_signal_connect (child, "size-allocate",
                     G_CALLBACK (child_size_allocate), overlay);
 
-  child = gtk_label_new (NULL);
+  child = ctk_label_new (NULL);
   str = g_strdup_printf ("%p", child);
-  gtk_label_set_text (GTK_LABEL (child), str);
+  ctk_label_set_text (GTK_LABEL (child), str);
   g_free (str);
   g_print ("Custom get-child-position child: %p\n", child);
-  gtk_widget_set_halign (child, GTK_ALIGN_START);
-  gtk_widget_set_valign (child, GTK_ALIGN_START);
-  gtk_overlay_add_overlay (GTK_OVERLAY (overlay), child);
+  ctk_widget_set_halign (child, GTK_ALIGN_START);
+  ctk_widget_set_valign (child, GTK_ALIGN_START);
+  ctk_overlay_add_overlay (GTK_OVERLAY (overlay), child);
 
   g_signal_connect (child, "size-allocate",
                     G_CALLBACK (child_size_allocate), overlay);
   g_signal_connect (overlay, "get-child-position",
                     G_CALLBACK (overlay_get_child_position), child);
 
-  gtk_grid_attach (GTK_GRID (grid), overlay, 1, 0, 1, 3);
-  gtk_container_add (GTK_CONTAINER (win), grid);
+  ctk_grid_attach (GTK_GRID (grid), overlay, 1, 0, 1, 3);
+  ctk_container_add (GTK_CONTAINER (win), grid);
 
   g_print ("\n");
 
-  gtk_widget_show_all (win);
+  ctk_widget_show_all (win);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

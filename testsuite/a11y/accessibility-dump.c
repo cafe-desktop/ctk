@@ -122,9 +122,9 @@ get_name (AtkObject *accessible)
 
   if (GTK_IS_ACCESSIBLE (accessible))
     {
-      GtkWidget *widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
+      GtkWidget *widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
 
-      name = g_strdup (gtk_buildable_get_name (GTK_BUILDABLE (widget)));
+      name = g_strdup (ctk_buildable_get_name (GTK_BUILDABLE (widget)));
     }
 
   if (name == NULL && ATK_IS_TEXT (accessible))
@@ -744,11 +744,11 @@ builder_get_toplevel (GtkBuilder *builder)
   GSList *list, *walk;
   GtkWidget *window = NULL;
 
-  list = gtk_builder_get_objects (builder);
+  list = ctk_builder_get_objects (builder);
   for (walk = list; walk; walk = walk->next)
     {
       if (GTK_IS_WINDOW (walk->data) &&
-          gtk_widget_get_parent (walk->data) == NULL)
+          ctk_widget_get_parent (walk->data) == NULL)
         {
           window = walk->data;
           break;
@@ -768,17 +768,17 @@ dump_ui_file (const char *ui_file,
   GtkBuilder *builder;
   GError *error = NULL;
 
-  builder = gtk_builder_new ();
-  gtk_builder_add_from_file (builder, ui_file, &error);
+  builder = ctk_builder_new ();
+  ctk_builder_add_from_file (builder, ui_file, &error);
   g_assert_no_error (error);
   window = builder_get_toplevel (builder);
   g_object_unref (builder);
   g_assert (window);
 
-  gtk_widget_show (window);
+  ctk_widget_show (window);
 
-  dump_accessible (gtk_widget_get_accessible (window), 0, string);
-  gtk_widget_destroy (window);
+  dump_accessible (ctk_widget_get_accessible (window), 0, string);
+  ctk_widget_destroy (window);
 }
 
 static void
@@ -925,14 +925,14 @@ parse_command_line (int *argc, char ***argv)
       return FALSE;
     }
 
-  gtk_test_init (argc, argv);
+  ctk_test_init (argc, argv);
 
   schema_dir = g_test_build_filename (G_TEST_BUILT, "", NULL);
   if (g_getenv ("GTK_TEST_MESON") == NULL)
     g_setenv ("GSETTINGS_SCHEMA_DIR", schema_dir, TRUE);
   g_free (schema_dir);
 
-  /* gtk_test_init does not call setlocale(), so do it ourselves,
+  /* ctk_test_init does not call setlocale(), so do it ourselves,
    * since running in the C locale breaks some our fancy
    * utf8 output.
    */
@@ -948,7 +948,7 @@ fix_settings (void)
    * so we take some steps to isolate us from the ambient environment.
    */
 
-  g_object_set (gtk_settings_get_default (),
+  g_object_set (ctk_settings_get_default (),
                 "gtk-dialogs-use-header", TRUE,
                 NULL);
 }

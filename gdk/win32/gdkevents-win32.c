@@ -3888,7 +3888,7 @@ gdk_event_dispatch (GSource     *source,
 }
 
 void
-gdk_win32_set_modal_dialog_libgtk_only (HWND window)
+gdk_win32_set_modal_dialog_libctk_only (HWND window)
 {
   modal_win32_dialog = window;
 }

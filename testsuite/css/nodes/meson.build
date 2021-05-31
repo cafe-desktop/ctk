@@ -4,7 +4,7 @@ testdatadir = join_paths(installed_test_datadir, 'css', 'nodes')
 test_nodes = executable('test-css-nodes', 'test-css-nodes.c',
                         install: get_option('installed_tests'),
                         install_dir: testexecdir,
-                        dependencies: libgtk_dep)
+                        dependencies: libctk_dep)
 test('css/nodes/test-nodes', test_nodes)
 
 test_data = [
@@ -66,7 +66,7 @@ test_data = [
 
 if get_option('installed_tests')
   conf = configuration_data()
-  conf.set('libexecdir', gtk_libexecdir)
+  conf.set('libexecdir', ctk_libexecdir)
   configure_file(input: 'test-css-nodes.test.in',
                  output: 'test-css-nodes.test',
                  configuration: conf,

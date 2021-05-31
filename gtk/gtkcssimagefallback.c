@@ -26,43 +26,43 @@
 
 #include "gtkstyleproviderprivate.h"
 
-G_DEFINE_TYPE (GtkCssImageFallback, _gtk_css_image_fallback, GTK_TYPE_CSS_IMAGE)
+G_DEFINE_TYPE (GtkCssImageFallback, _ctk_css_image_fallback, GTK_TYPE_CSS_IMAGE)
 
 static int
-gtk_css_image_fallback_get_width (GtkCssImage *image)
+ctk_css_image_fallback_get_width (GtkCssImage *image)
 {
   GtkCssImageFallback *fallback = GTK_CSS_IMAGE_FALLBACK (image);
 
   if (fallback->used < 0)
     return 0;
 
-  return _gtk_css_image_get_width (fallback->images[fallback->used]);
+  return _ctk_css_image_get_width (fallback->images[fallback->used]);
 }
 
 static int
-gtk_css_image_fallback_get_height (GtkCssImage *image)
+ctk_css_image_fallback_get_height (GtkCssImage *image)
 {
   GtkCssImageFallback *fallback = GTK_CSS_IMAGE_FALLBACK (image);
 
   if (fallback->used < 0)
     return 0;
 
-  return _gtk_css_image_get_height (fallback->images[fallback->used]);
+  return _ctk_css_image_get_height (fallback->images[fallback->used]);
 }
 
 static double
-gtk_css_image_fallback_get_aspect_ratio (GtkCssImage *image)
+ctk_css_image_fallback_get_aspect_ratio (GtkCssImage *image)
 {
   GtkCssImageFallback *fallback = GTK_CSS_IMAGE_FALLBACK (image);
 
   if (fallback->used < 0)
     return 0;
 
-  return _gtk_css_image_get_aspect_ratio (fallback->images[fallback->used]);
+  return _ctk_css_image_get_aspect_ratio (fallback->images[fallback->used]);
 }
 
 static void
-gtk_css_image_fallback_draw (GtkCssImage *image,
+ctk_css_image_fallback_draw (GtkCssImage *image,
                              cairo_t     *cr,
                              double       width,
                              double       height)
@@ -72,7 +72,7 @@ gtk_css_image_fallback_draw (GtkCssImage *image,
   if (fallback->used < 0)
     {
       if (fallback->color)
-        gdk_cairo_set_source_rgba (cr, _gtk_css_rgba_value_get_rgba (fallback->color));
+        gdk_cairo_set_source_rgba (cr, _ctk_css_rgba_value_get_rgba (fallback->color));
       else
         cairo_set_source_rgb (cr, 1.0, 0.0, 0.0);
 
@@ -80,11 +80,11 @@ gtk_css_image_fallback_draw (GtkCssImage *image,
       cairo_fill (cr);
     }
   else
-    _gtk_css_image_draw (fallback->images[fallback->used], cr, width, height);
+    _ctk_css_image_draw (fallback->images[fallback->used], cr, width, height);
 }
 
 static void
-gtk_css_image_fallback_print (GtkCssImage *image,
+ctk_css_image_fallback_print (GtkCssImage *image,
                               GString     *string)
 {
   GtkCssImageFallback *fallback = GTK_CSS_IMAGE_FALLBACK (image);
@@ -95,20 +95,20 @@ gtk_css_image_fallback_print (GtkCssImage *image,
     {
       if (i > 0)
         g_string_append (string, ",");
-      _gtk_css_image_print (fallback->images[i], string);
+      _ctk_css_image_print (fallback->images[i], string);
     }
   if (fallback->color)
     {
       if (fallback->n_images > 0)
         g_string_append (string, ",");
-      _gtk_css_value_print (fallback->color, string);
+      _ctk_css_value_print (fallback->color, string);
     }
 
   g_string_append (string, ")");
 }
 
 static void
-gtk_css_image_fallback_dispose (GObject *object)
+ctk_css_image_fallback_dispose (GObject *object)
 {
   GtkCssImageFallback *fallback = GTK_CSS_IMAGE_FALLBACK (object);
   int i;
@@ -120,16 +120,16 @@ gtk_css_image_fallback_dispose (GObject *object)
 
   if (fallback->color)
     {
-      _gtk_css_value_unref (fallback->color);
+      _ctk_css_value_unref (fallback->color);
       fallback->color = NULL;
     }
 
-  G_OBJECT_CLASS (_gtk_css_image_fallback_parent_class)->dispose (object);
+  G_OBJECT_CLASS (_ctk_css_image_fallback_parent_class)->dispose (object);
 }
 
 
 static GtkCssImage *
-gtk_css_image_fallback_compute (GtkCssImage             *image,
+ctk_css_image_fallback_compute (GtkCssImage             *image,
                                 guint                    property_id,
                                 GtkStyleProviderPrivate *provider,
                                 GtkCssStyle             *style,
@@ -141,12 +141,12 @@ gtk_css_image_fallback_compute (GtkCssImage             *image,
 
   if (fallback->used < 0)
     {
-      copy = g_object_new (_gtk_css_image_fallback_get_type (), NULL);
+      copy = g_object_new (_ctk_css_image_fallback_get_type (), NULL);
       copy->n_images = fallback->n_images;
       copy->images = g_new (GtkCssImage *, fallback->n_images);
       for (i = 0; i < fallback->n_images; i++)
         {
-          copy->images[i] = _gtk_css_image_compute (fallback->images[i],
+          copy->images[i] = _ctk_css_image_compute (fallback->images[i],
                                                     property_id,
                                                     provider,
                                                     style,
@@ -154,8 +154,8 @@ gtk_css_image_fallback_compute (GtkCssImage             *image,
 
           /* Assume that failing to load an image leaves a 0x0 surface image */
           if (GTK_IS_CSS_IMAGE_SURFACE (copy->images[i]) &&
-              _gtk_css_image_get_width (copy->images[i]) == 0 &&
-              _gtk_css_image_get_height (copy->images[i]) == 0)
+              _ctk_css_image_get_width (copy->images[i]) == 0 &&
+              _ctk_css_image_get_height (copy->images[i]) == 0)
             continue;
 
           if (copy->used < 0)
@@ -163,7 +163,7 @@ gtk_css_image_fallback_compute (GtkCssImage             *image,
         }
 
       if (fallback->color)
-        copy->color = _gtk_css_value_compute (fallback->color,
+        copy->color = _ctk_css_value_compute (fallback->color,
                                               property_id,
                                               provider,
                                               style,
@@ -178,22 +178,22 @@ gtk_css_image_fallback_compute (GtkCssImage             *image,
 }
 
 static gboolean
-gtk_css_image_fallback_parse (GtkCssImage  *image,
+ctk_css_image_fallback_parse (GtkCssImage  *image,
                               GtkCssParser *parser)
 {
   GtkCssImageFallback *fallback = GTK_CSS_IMAGE_FALLBACK (image);
   GPtrArray *images;
   GtkCssImage *child;
 
-  if (!_gtk_css_parser_try (parser, "image", TRUE))
+  if (!_ctk_css_parser_try (parser, "image", TRUE))
     {
-      _gtk_css_parser_error (parser, "'image'");
+      _ctk_css_parser_error (parser, "'image'");
       return FALSE;
     }
 
-  if (!_gtk_css_parser_try (parser, "(", TRUE))
+  if (!_ctk_css_parser_try (parser, "(", TRUE))
     {
-      _gtk_css_parser_error (parser,
+      _ctk_css_parser_error (parser,
                              "Expected '(' after 'image'");
       return FALSE;
     }
@@ -203,11 +203,11 @@ gtk_css_image_fallback_parse (GtkCssImage  *image,
   do
     {
       child = NULL;
-      if (_gtk_css_image_can_parse (parser))
-        child = _gtk_css_image_new_parse (parser);
+      if (_ctk_css_image_can_parse (parser))
+        child = _ctk_css_image_new_parse (parser);
       if (child == NULL)
         {
-          fallback->color = _gtk_css_color_value_parse (parser);
+          fallback->color = _ctk_css_color_value_parse (parser);
           if (fallback->color)
             break;
 
@@ -216,12 +216,12 @@ gtk_css_image_fallback_parse (GtkCssImage  *image,
         }
       g_ptr_array_add (images, child);
     }
-  while ( _gtk_css_parser_try (parser, ",", TRUE));
+  while ( _ctk_css_parser_try (parser, ",", TRUE));
 
-  if (!_gtk_css_parser_try (parser, ")", TRUE))
+  if (!_ctk_css_parser_try (parser, ")", TRUE))
     {
       g_ptr_array_free (images, TRUE);
-      _gtk_css_parser_error (parser,
+      _ctk_css_parser_error (parser,
                              "Expected ')' at end of 'image'");
       return FALSE;
     }
@@ -233,24 +233,24 @@ gtk_css_image_fallback_parse (GtkCssImage  *image,
 }
 
 static void
-_gtk_css_image_fallback_class_init (GtkCssImageFallbackClass *klass)
+_ctk_css_image_fallback_class_init (GtkCssImageFallbackClass *klass)
 {
   GtkCssImageClass *image_class = GTK_CSS_IMAGE_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  image_class->get_width = gtk_css_image_fallback_get_width;
-  image_class->get_height = gtk_css_image_fallback_get_height;
-  image_class->get_aspect_ratio = gtk_css_image_fallback_get_aspect_ratio;
-  image_class->draw = gtk_css_image_fallback_draw;
-  image_class->parse = gtk_css_image_fallback_parse;
-  image_class->compute = gtk_css_image_fallback_compute;
-  image_class->print = gtk_css_image_fallback_print;
+  image_class->get_width = ctk_css_image_fallback_get_width;
+  image_class->get_height = ctk_css_image_fallback_get_height;
+  image_class->get_aspect_ratio = ctk_css_image_fallback_get_aspect_ratio;
+  image_class->draw = ctk_css_image_fallback_draw;
+  image_class->parse = ctk_css_image_fallback_parse;
+  image_class->compute = ctk_css_image_fallback_compute;
+  image_class->print = ctk_css_image_fallback_print;
 
-  object_class->dispose = gtk_css_image_fallback_dispose;
+  object_class->dispose = ctk_css_image_fallback_dispose;
 }
 
 static void
-_gtk_css_image_fallback_init (GtkCssImageFallback *image_fallback)
+_ctk_css_image_fallback_init (GtkCssImageFallback *image_fallback)
 {
   image_fallback->used = -1;
 }

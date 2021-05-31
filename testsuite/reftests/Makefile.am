@@ -11,7 +11,7 @@ TEST_PROGS += gtk-reftest
 
 check_PROGRAMS = $(TEST_PROGS)
 
-gtk_reftest_CFLAGS = \
+ctk_reftest_CFLAGS = \
 	-I$(top_srcdir)                 \
 	-I$(top_builddir)/gdk           \
 	-I$(top_srcdir)/gdk             \
@@ -22,7 +22,7 @@ gtk_reftest_CFLAGS = \
 	$(GMODULE_CFLAGS)		\
 	$(NULL)
 
-gtk_reftest_LDADD = \
+ctk_reftest_LDADD = \
 	libgtkreftestprivate.la		\
 	$(top_builddir)/gdk/libgdk-3.la \
 	$(top_builddir)/gtk/libgtk-3.la \
@@ -41,7 +41,7 @@ noinst_LTLIBRARIES =		\
 	$(NULL)
 endif
 
-libgtkreftestprivate_la_CFLAGS = $(gtk_reftest_CFLAGS)
+libgtkreftestprivate_la_CFLAGS = $(ctk_reftest_CFLAGS)
 libgtkreftestprivate_la_LDFLAGS = $(no_undefined)
 libgtkreftestprivate_la_LIBADD =	\
 	$(top_builddir)/gdk/libgdk-3.la \
@@ -59,7 +59,7 @@ libgtkreftestprivate_la_SOURCES =	\
 	reftest-snapshot.h		\
 	$(NULL)
 
-gtk_reftest_SOURCES = \
+ctk_reftest_SOURCES = \
 	gtk-reftest.c			\
 	gtk-reftest.h
 
@@ -536,8 +536,8 @@ libreftest_la_LDFLAGS = -rpath /iHaveNoIdeaWhatImDoing
 endif
 
 libreftest_la_LDFLAGS += -avoid-version -module $(no_undefined)
-libreftest_la_CFLAGS = $(gtk_reftest_CFLAGS)
-libreftest_la_LIBADD = $(gtk_reftest_LDADD)
+libreftest_la_CFLAGS = $(ctk_reftest_CFLAGS)
+libreftest_la_LIBADD = $(ctk_reftest_LDADD)
 libreftest_la_SOURCES =			\
 	expand-expander.c		\
 	frame-inhibitor.c	\

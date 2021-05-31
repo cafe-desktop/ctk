@@ -29,7 +29,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_APPLICATION_WINDOW            (gtk_application_window_get_type ())
+#define GTK_TYPE_APPLICATION_WINDOW            (ctk_application_window_get_type ())
 #define GTK_APPLICATION_WINDOW(inst)           (G_TYPE_CHECK_INSTANCE_CAST ((inst), \
                                                 GTK_TYPE_APPLICATION_WINDOW, GtkApplicationWindow))
 #define GTK_APPLICATION_WINDOW_CLASS(class)    (G_TYPE_CHECK_CLASS_CAST ((class),   \
@@ -66,25 +66,25 @@ struct _GtkApplicationWindowClass
 };
 
 GDK_AVAILABLE_IN_3_4
-GType       gtk_application_window_get_type          (void) G_GNUC_CONST;
+GType       ctk_application_window_get_type          (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_3_4
-GtkWidget * gtk_application_window_new               (GtkApplication      *application);
+GtkWidget * ctk_application_window_new               (GtkApplication      *application);
 
 GDK_AVAILABLE_IN_3_4
-void        gtk_application_window_set_show_menubar (GtkApplicationWindow *window,
+void        ctk_application_window_set_show_menubar (GtkApplicationWindow *window,
                                                      gboolean              show_menubar);
 GDK_AVAILABLE_IN_3_4
-gboolean    gtk_application_window_get_show_menubar (GtkApplicationWindow *window);
+gboolean    ctk_application_window_get_show_menubar (GtkApplicationWindow *window);
 
 GDK_AVAILABLE_IN_3_6
-guint       gtk_application_window_get_id           (GtkApplicationWindow *window);
+guint       ctk_application_window_get_id           (GtkApplicationWindow *window);
 
 GDK_AVAILABLE_IN_3_20
-void        gtk_application_window_set_help_overlay (GtkApplicationWindow *window,
+void        ctk_application_window_set_help_overlay (GtkApplicationWindow *window,
                                                      GtkShortcutsWindow   *help_overlay);
 GDK_AVAILABLE_IN_3_20
 GtkShortcutsWindow *
-            gtk_application_window_get_help_overlay (GtkApplicationWindow *window);
+            ctk_application_window_get_help_overlay (GtkApplicationWindow *window);
 
 G_END_DECLS
 

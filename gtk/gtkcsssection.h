@@ -23,12 +23,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_SECTION         (gtk_css_section_get_type ())
+#define GTK_TYPE_CSS_SECTION         (ctk_css_section_get_type ())
 
 /**
  * GtkCssSectionType:
  * @GTK_CSS_SECTION_DOCUMENT: The section describes a complete document.
- *   This section time is the only one where gtk_css_section_get_parent()
+ *   This section time is the only one where ctk_css_section_get_parent()
  *   might return %NULL.
  * @GTK_CSS_SECTION_IMPORT: The section defines an import rule.
  * @GTK_CSS_SECTION_COLOR_DEFINITION: The section defines a color. This
@@ -70,7 +70,7 @@ typedef enum
  * GtkCssSection:
  *
  * Defines a part of a CSS document. Because sections are nested into
- * one another, you can use gtk_css_section_get_parent() to get the
+ * one another, you can use ctk_css_section_get_parent() to get the
  * containing region.
  *
  * Since: 3.2
@@ -78,27 +78,27 @@ typedef enum
 typedef struct _GtkCssSection GtkCssSection;
 
 GDK_AVAILABLE_IN_3_2
-GType              gtk_css_section_get_type            (void) G_GNUC_CONST;
+GType              ctk_css_section_get_type            (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_2
-GtkCssSection *    gtk_css_section_ref                 (GtkCssSection        *section);
+GtkCssSection *    ctk_css_section_ref                 (GtkCssSection        *section);
 GDK_AVAILABLE_IN_3_2
-void               gtk_css_section_unref               (GtkCssSection        *section);
+void               ctk_css_section_unref               (GtkCssSection        *section);
 
 GDK_AVAILABLE_IN_3_2
-GtkCssSectionType  gtk_css_section_get_section_type    (const GtkCssSection  *section);
+GtkCssSectionType  ctk_css_section_get_section_type    (const GtkCssSection  *section);
 GDK_AVAILABLE_IN_3_2
-GtkCssSection *    gtk_css_section_get_parent          (const GtkCssSection  *section);
+GtkCssSection *    ctk_css_section_get_parent          (const GtkCssSection  *section);
 GDK_AVAILABLE_IN_3_2
-GFile *            gtk_css_section_get_file            (const GtkCssSection  *section);
+GFile *            ctk_css_section_get_file            (const GtkCssSection  *section);
 GDK_AVAILABLE_IN_3_2
-guint              gtk_css_section_get_start_line      (const GtkCssSection  *section);
+guint              ctk_css_section_get_start_line      (const GtkCssSection  *section);
 GDK_AVAILABLE_IN_3_2
-guint              gtk_css_section_get_start_position  (const GtkCssSection  *section);
+guint              ctk_css_section_get_start_position  (const GtkCssSection  *section);
 GDK_AVAILABLE_IN_3_2
-guint              gtk_css_section_get_end_line        (const GtkCssSection  *section);
+guint              ctk_css_section_get_end_line        (const GtkCssSection  *section);
 GDK_AVAILABLE_IN_3_2
-guint              gtk_css_section_get_end_position    (const GtkCssSection  *section);
+guint              ctk_css_section_get_end_position    (const GtkCssSection  *section);
 
 G_END_DECLS
 

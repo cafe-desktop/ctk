@@ -25,14 +25,14 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_PRINT_BACKEND_TEST    (gtk_print_backend_test_get_type ())
+#define GTK_TYPE_PRINT_BACKEND_TEST    (ctk_print_backend_test_get_type ())
 #define GTK_PRINT_BACKEND_TEST(obj)    (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PRINT_BACKEND_TEST, GtkPrintBackendTest))
 #define GTK_IS_PRINT_BACKEND_TEST(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PRINT_BACKEND_TEST))
 
 typedef struct _GtkPrintBackendTest    GtkPrintBackendTest;
 
-GtkPrintBackend *gtk_print_backend_test_new      (void);
-GType            gtk_print_backend_test_get_type (void) G_GNUC_CONST;
+GtkPrintBackend *ctk_print_backend_test_new      (void);
+GType            ctk_print_backend_test_get_type (void) G_GNUC_CONST;
 
 G_END_DECLS
 

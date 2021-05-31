@@ -296,7 +296,7 @@ widget_fixups (GtkWidget *widget)
   /* post-constructor for widgets that need additional settings to work correctly */
   if (GTK_IS_COMBO_BOX_TEXT (widget))
     {
-      gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (widget), "test text");
+      ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (widget), "test text");
     }
 }
 
@@ -305,7 +305,7 @@ widget_property_tests (gconstpointer test_data)
 {
   GType wtype = (GType) test_data;
   /* create widget */
-  GtkWidget *widget = gtk_widget_new (wtype, NULL);
+  GtkWidget *widget = ctk_widget_new (wtype, NULL);
   g_object_ref_sink (widget);
   widget_fixups (widget);
   /* test property values */
@@ -315,7 +315,7 @@ widget_property_tests (gconstpointer test_data)
   widget_test_properties (widget,   1); /* test maximum */
   widget_test_properties (widget,  -1); /* test random value */
   /* cleanup */
-  gtk_widget_destroy (widget);
+  ctk_widget_destroy (widget);
   g_object_unref (widget);
 }
 
@@ -331,16 +331,16 @@ main (int   argc,
   g_setenv ("GSETTINGS_BACKEND", "memory", TRUE);
 
   /* initialize test program */
-  gtk_test_init (&argc, &argv);
-  gtk_test_register_all_types ();
+  ctk_test_init (&argc, &argv);
+  ctk_test_register_all_types ();
 
-  /* g_test_build_filename must be called after gtk_test_init */
+  /* g_test_build_filename must be called after ctk_test_init */
   schema_dir = g_test_build_filename (G_TEST_BUILT, "", NULL);
   if (g_getenv ("GTK_TEST_MESON") == NULL)
     g_setenv ("GSETTINGS_SCHEMA_DIR", schema_dir, TRUE);
 
   /* install a property test for each widget type */
-  otypes = gtk_test_list_all_types (NULL);
+  otypes = ctk_test_list_all_types (NULL);
   for (i = 0; otypes[i]; i++)
     if (g_type_is_a (otypes[i], GTK_TYPE_WIDGET) &&
         G_TYPE_IS_OBJECT (otypes[i]) &&

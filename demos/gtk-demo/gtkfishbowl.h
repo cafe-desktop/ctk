@@ -22,7 +22,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_FISHBOWL                  (gtk_fishbowl_get_type ())
+#define GTK_TYPE_FISHBOWL                  (ctk_fishbowl_get_type ())
 #define GTK_FISHBOWL(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_FISHBOWL, GtkFishbowl))
 #define GTK_FISHBOWL_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_FISHBOWL, GtkFishbowlClass))
 #define GTK_IS_FISHBOWL(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_FISHBOWL))
@@ -44,24 +44,24 @@ struct _GtkFishbowlClass
   GtkContainerClass parent_class;
 };
 
-GType      gtk_fishbowl_get_type          (void) G_GNUC_CONST;
+GType      ctk_fishbowl_get_type          (void) G_GNUC_CONST;
 
-GtkWidget* gtk_fishbowl_new               (void);
+GtkWidget* ctk_fishbowl_new               (void);
 
-guint      gtk_fishbowl_get_count         (GtkFishbowl       *fishbowl);
-void       gtk_fishbowl_set_count         (GtkFishbowl       *fishbowl,
+guint      ctk_fishbowl_get_count         (GtkFishbowl       *fishbowl);
+void       ctk_fishbowl_set_count         (GtkFishbowl       *fishbowl,
                                            guint              count);
-gboolean   gtk_fishbowl_get_animating     (GtkFishbowl       *fishbowl);
-void       gtk_fishbowl_set_animating     (GtkFishbowl       *fishbowl,
+gboolean   ctk_fishbowl_get_animating     (GtkFishbowl       *fishbowl);
+void       ctk_fishbowl_set_animating     (GtkFishbowl       *fishbowl,
                                            gboolean           animating);
-gboolean   gtk_fishbowl_get_benchmark     (GtkFishbowl       *fishbowl);
-void       gtk_fishbowl_set_benchmark     (GtkFishbowl       *fishbowl,
+gboolean   ctk_fishbowl_get_benchmark     (GtkFishbowl       *fishbowl);
+void       ctk_fishbowl_set_benchmark     (GtkFishbowl       *fishbowl,
                                            gboolean           animating);
-double     gtk_fishbowl_get_framerate     (GtkFishbowl       *fishbowl);
-gint64     gtk_fishbowl_get_update_delay  (GtkFishbowl       *fishbowl);
-void       gtk_fishbowl_set_update_delay  (GtkFishbowl       *fishbowl,
+double     ctk_fishbowl_get_framerate     (GtkFishbowl       *fishbowl);
+gint64     ctk_fishbowl_get_update_delay  (GtkFishbowl       *fishbowl);
+void       ctk_fishbowl_set_update_delay  (GtkFishbowl       *fishbowl,
                                            gint64             update_delay);
-void       gtk_fishbowl_set_creation_func (GtkFishbowl       *fishbowl,
+void       ctk_fishbowl_set_creation_func (GtkFishbowl       *fishbowl,
                                            GtkFishCreationFunc creation_func);
 
 G_END_DECLS

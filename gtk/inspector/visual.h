@@ -20,7 +20,7 @@
 
 #include <gtk/gtkscrolledwindow.h>
 
-#define GTK_TYPE_INSPECTOR_VISUAL            (gtk_inspector_visual_get_type())
+#define GTK_TYPE_INSPECTOR_VISUAL            (ctk_inspector_visual_get_type())
 #define GTK_INSPECTOR_VISUAL(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_INSPECTOR_VISUAL, GtkInspectorVisual))
 #define GTK_INSPECTOR_VISUAL_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GTK_TYPE_INSPECTOR_VISUAL, GtkInspectorVisualClass))
 #define GTK_INSPECTOR_IS_VISUAL(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), GTK_TYPE_INSPECTOR_VISUAL))
@@ -43,7 +43,7 @@ typedef struct _GtkInspectorVisualClass
 
 G_BEGIN_DECLS
 
-GType      gtk_inspector_visual_get_type   (void);
+GType      ctk_inspector_visual_get_type   (void);
 
 G_END_DECLS
 

@@ -26,7 +26,7 @@ struct _GtkMnemnonicHash
 
 
 GtkMnemonicHash *
-_gtk_mnemonic_hash_new (void)
+_ctk_mnemonic_hash_new (void)
 {
   GtkMnemonicHash *mnemonic_hash = g_new (GtkMnemonicHash, 1);
 
@@ -43,7 +43,7 @@ mnemonic_hash_free_foreach (gpointer	key,
   guint keyval = GPOINTER_TO_UINT (key);
   GSList *targets = value;
 
-  gchar *name = gtk_accelerator_name (keyval, 0);
+  gchar *name = ctk_accelerator_name (keyval, 0);
       
   g_warning ("mnemonic \"%s\" wasn't removed for widget (%p)",
 	     name, targets->data);
@@ -53,7 +53,7 @@ mnemonic_hash_free_foreach (gpointer	key,
 }
 
 void
-_gtk_mnemonic_hash_free (GtkMnemonicHash *mnemonic_hash)
+_ctk_mnemonic_hash_free (GtkMnemonicHash *mnemonic_hash)
 {
   g_hash_table_foreach (mnemonic_hash->hash,
 			mnemonic_hash_free_foreach,
@@ -64,7 +64,7 @@ _gtk_mnemonic_hash_free (GtkMnemonicHash *mnemonic_hash)
 }
 
 void
-_gtk_mnemonic_hash_add (GtkMnemonicHash *mnemonic_hash,
+_ctk_mnemonic_hash_add (GtkMnemonicHash *mnemonic_hash,
 			guint            keyval,
 			GtkWidget       *target)
 {
@@ -82,7 +82,7 @@ _gtk_mnemonic_hash_add (GtkMnemonicHash *mnemonic_hash,
 }
 
 void
-_gtk_mnemonic_hash_remove (GtkMnemonicHash *mnemonic_hash,
+_ctk_mnemonic_hash_remove (GtkMnemonicHash *mnemonic_hash,
 			   guint           keyval,
 			   GtkWidget      *target)
 {
@@ -106,7 +106,7 @@ _gtk_mnemonic_hash_remove (GtkMnemonicHash *mnemonic_hash,
 }
 
 gboolean
-_gtk_mnemonic_hash_activate (GtkMnemonicHash *mnemonic_hash,
+_ctk_mnemonic_hash_activate (GtkMnemonicHash *mnemonic_hash,
 			     guint            keyval)
 {
   GSList *list, *targets;
@@ -124,10 +124,10 @@ _gtk_mnemonic_hash_activate (GtkMnemonicHash *mnemonic_hash,
   for (list = targets; list; list = list->next)
     {
       widget = GTK_WIDGET (list->data);
-      window = gtk_widget_get_window (widget);
+      window = ctk_widget_get_window (widget);
 
-      if (gtk_widget_is_sensitive (widget) &&
-	  gtk_widget_get_mapped (widget) &&
+      if (ctk_widget_is_sensitive (widget) &&
+	  ctk_widget_get_mapped (widget) &&
           window && gdk_window_is_viewable (window))
 	{
 	  if (chosen_widget)
@@ -151,13 +151,13 @@ _gtk_mnemonic_hash_activate (GtkMnemonicHash *mnemonic_hash,
 			   GUINT_TO_POINTER (keyval),
 			   targets);
 
-      return gtk_widget_mnemonic_activate (chosen_widget, overloaded);
+      return ctk_widget_mnemonic_activate (chosen_widget, overloaded);
     }
   return FALSE;
 }
 
 GSList *
-_gtk_mnemonic_hash_lookup (GtkMnemonicHash *mnemonic_hash,
+_ctk_mnemonic_hash_lookup (GtkMnemonicHash *mnemonic_hash,
 			   guint            keyval)
 {
   return g_hash_table_lookup (mnemonic_hash->hash, GUINT_TO_POINTER (keyval));
@@ -180,7 +180,7 @@ mnemonic_hash_foreach_func (gpointer key,
 }
 
 void
-_gtk_mnemonic_hash_foreach (GtkMnemonicHash       *mnemonic_hash,
+_ctk_mnemonic_hash_foreach (GtkMnemonicHash       *mnemonic_hash,
 			    GtkMnemonicHashForeach func,
 			    gpointer               func_data)
 {

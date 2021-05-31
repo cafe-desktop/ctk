@@ -27,7 +27,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_COLOR_CHOOSER                  (gtk_color_chooser_get_type ())
+#define GTK_TYPE_COLOR_CHOOSER                  (ctk_color_chooser_get_type ())
 #define GTK_COLOR_CHOOSER(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_COLOR_CHOOSER, GtkColorChooser))
 #define GTK_IS_COLOR_CHOOSER(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_COLOR_CHOOSER))
 #define GTK_COLOR_CHOOSER_GET_IFACE(inst)       (G_TYPE_INSTANCE_GET_INTERFACE ((inst), GTK_TYPE_COLOR_CHOOSER, GtkColorChooserInterface))
@@ -60,23 +60,23 @@ struct _GtkColorChooserInterface
 };
 
 GDK_AVAILABLE_IN_3_4
-GType    gtk_color_chooser_get_type        (void) G_GNUC_CONST;
+GType    ctk_color_chooser_get_type        (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_4
-void     gtk_color_chooser_get_rgba       (GtkColorChooser *chooser,
+void     ctk_color_chooser_get_rgba       (GtkColorChooser *chooser,
                                            GdkRGBA         *color);
 GDK_AVAILABLE_IN_3_4
-void     gtk_color_chooser_set_rgba       (GtkColorChooser *chooser,
+void     ctk_color_chooser_set_rgba       (GtkColorChooser *chooser,
                                            const GdkRGBA   *color);
 GDK_AVAILABLE_IN_3_4
-gboolean gtk_color_chooser_get_use_alpha  (GtkColorChooser *chooser);
+gboolean ctk_color_chooser_get_use_alpha  (GtkColorChooser *chooser);
 
 GDK_AVAILABLE_IN_3_4
-void     gtk_color_chooser_set_use_alpha  (GtkColorChooser *chooser,
+void     ctk_color_chooser_set_use_alpha  (GtkColorChooser *chooser,
                                            gboolean         use_alpha);
 
 GDK_AVAILABLE_IN_3_4
-void     gtk_color_chooser_add_palette    (GtkColorChooser *chooser,
+void     ctk_color_chooser_add_palette    (GtkColorChooser *chooser,
                                            GtkOrientation   orientation,
                                            gint             colors_per_line,
                                            gint             n_colors,

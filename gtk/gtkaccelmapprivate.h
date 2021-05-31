@@ -23,15 +23,15 @@
 
 G_BEGIN_DECLS
 
-void            _gtk_accel_map_init         (void);
+void            _ctk_accel_map_init         (void);
 
-void            _gtk_accel_map_add_group    (const gchar   *accel_path,
+void            _ctk_accel_map_add_group    (const gchar   *accel_path,
                                              GtkAccelGroup *accel_group);
-void            _gtk_accel_map_remove_group (const gchar   *accel_path,
+void            _ctk_accel_map_remove_group (const gchar   *accel_path,
                                              GtkAccelGroup *accel_group);
-gboolean        _gtk_accel_path_is_valid    (const gchar   *accel_path);
+gboolean        _ctk_accel_path_is_valid    (const gchar   *accel_path);
 
-gchar         * _gtk_accel_path_for_action  (const gchar   *action_name,
+gchar         * _ctk_accel_path_for_action  (const gchar   *action_name,
                                              GVariant      *parameter);
 
 G_END_DECLS

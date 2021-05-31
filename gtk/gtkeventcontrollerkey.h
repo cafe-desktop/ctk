@@ -30,7 +30,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_EVENT_CONTROLLER_KEY         (gtk_event_controller_key_get_type ())
+#define GTK_TYPE_EVENT_CONTROLLER_KEY         (ctk_event_controller_key_get_type ())
 #define GTK_EVENT_CONTROLLER_KEY(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_EVENT_CONTROLLER_KEY, GtkEventControllerKey))
 #define GTK_EVENT_CONTROLLER_KEY_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), GTK_TYPE_EVENT_CONTROLLER_KEY, GtkEventControllerKeyClass))
 #define GTK_IS_EVENT_CONTROLLER_KEY(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_EVENT_CONTROLLER_KEY))
@@ -41,22 +41,22 @@ typedef struct _GtkEventControllerKey GtkEventControllerKey;
 typedef struct _GtkEventControllerKeyClass GtkEventControllerKeyClass;
 
 GDK_AVAILABLE_IN_3_24
-GType               gtk_event_controller_key_get_type  (void) G_GNUC_CONST;
+GType               ctk_event_controller_key_get_type  (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_24
-GtkEventController *gtk_event_controller_key_new (GtkWidget *widget);
+GtkEventController *ctk_event_controller_key_new (GtkWidget *widget);
 
 GDK_AVAILABLE_IN_3_24
-void                gtk_event_controller_key_set_im_context (GtkEventControllerKey *controller,
+void                ctk_event_controller_key_set_im_context (GtkEventControllerKey *controller,
                                                              GtkIMContext          *im_context);
 GDK_AVAILABLE_IN_3_24
-GtkIMContext *      gtk_event_controller_key_get_im_context (GtkEventControllerKey *controller);
+GtkIMContext *      ctk_event_controller_key_get_im_context (GtkEventControllerKey *controller);
 
 GDK_AVAILABLE_IN_3_24
-gboolean            gtk_event_controller_key_forward        (GtkEventControllerKey *controller,
+gboolean            ctk_event_controller_key_forward        (GtkEventControllerKey *controller,
                                                              GtkWidget             *widget);
 GDK_AVAILABLE_IN_3_24
-guint               gtk_event_controller_key_get_group      (GtkEventControllerKey *controller);
+guint               ctk_event_controller_key_get_group      (GtkEventControllerKey *controller);
 
 G_END_DECLS
 

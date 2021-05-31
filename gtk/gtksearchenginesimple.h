@@ -26,7 +26,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SEARCH_ENGINE_SIMPLE		(_gtk_search_engine_simple_get_type ())
+#define GTK_TYPE_SEARCH_ENGINE_SIMPLE		(_ctk_search_engine_simple_get_type ())
 #define GTK_SEARCH_ENGINE_SIMPLE(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SEARCH_ENGINE_SIMPLE, GtkSearchEngineSimple))
 #define GTK_SEARCH_ENGINE_SIMPLE_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SEARCH_ENGINE_SIMPLE, GtkSearchEngineSimpleClass))
 #define GTK_IS_SEARCH_ENGINE_SIMPLE(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SEARCH_ENGINE_SIMPLE))
@@ -36,13 +36,13 @@ G_BEGIN_DECLS
 typedef struct _GtkSearchEngineSimple GtkSearchEngineSimple;
 typedef struct _GtkSearchEngineSimpleClass GtkSearchEngineSimpleClass;
 
-GType            _gtk_search_engine_simple_get_type (void);
+GType            _ctk_search_engine_simple_get_type (void);
 
-GtkSearchEngine* _gtk_search_engine_simple_new      (void);
+GtkSearchEngine* _ctk_search_engine_simple_new      (void);
 
 typedef gboolean (*GtkSearchEngineSimpleIsIndexed) (GFile *location, gpointer data);
 
-void             _gtk_search_engine_simple_set_indexed_cb (GtkSearchEngineSimple *engine,
+void             _ctk_search_engine_simple_set_indexed_cb (GtkSearchEngineSimple *engine,
                                                            GtkSearchEngineSimpleIsIndexed callback,
                                                            gpointer                       data,
                                                            GDestroyNotify                 destroy);

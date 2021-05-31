@@ -54,16 +54,16 @@
 #include "gtktexttagprivate.h"
 
 /**
- * gtk_text_attributes_new:
+ * ctk_text_attributes_new:
  * 
  * Creates a #GtkTextAttributes, which describes
  * a set of properties on some text.
  * 
  * Returns: a new #GtkTextAttributes,
- *     free with gtk_text_attributes_unref().
+ *     free with ctk_text_attributes_unref().
  */
 GtkTextAttributes*
-gtk_text_attributes_new (void)
+ctk_text_attributes_new (void)
 {
   GtkTextAttributes *values;
 
@@ -72,7 +72,7 @@ gtk_text_attributes_new (void)
   /* 0 is a valid value for most of the struct */
   values->refcount = 1;
 
-  values->language = gtk_get_default_language ();
+  values->language = ctk_get_default_language ();
 
   values->font_scale = 1.0;
 
@@ -82,31 +82,31 @@ gtk_text_attributes_new (void)
 }
 
 /**
- * gtk_text_attributes_copy:
+ * ctk_text_attributes_copy:
  * @src: a #GtkTextAttributes to be copied
  *
  * Copies @src and returns a new #GtkTextAttributes.
  *
  * Returns: a copy of @src,
- *     free with gtk_text_attributes_unref()
+ *     free with ctk_text_attributes_unref()
  */
 GtkTextAttributes*
-gtk_text_attributes_copy (GtkTextAttributes *src)
+ctk_text_attributes_copy (GtkTextAttributes *src)
 {
   GtkTextAttributes *dest;
 
-  dest = gtk_text_attributes_new ();
-  gtk_text_attributes_copy_values (src, dest);
+  dest = ctk_text_attributes_new ();
+  ctk_text_attributes_copy_values (src, dest);
 
   return dest;
 }
 
-G_DEFINE_BOXED_TYPE (GtkTextAttributes, gtk_text_attributes,
-                     gtk_text_attributes_ref,
-                     gtk_text_attributes_unref)
+G_DEFINE_BOXED_TYPE (GtkTextAttributes, ctk_text_attributes,
+                     ctk_text_attributes_ref,
+                     ctk_text_attributes_unref)
 
 /**
- * gtk_text_attributes_copy_values:
+ * ctk_text_attributes_copy_values:
  * @src: a #GtkTextAttributes
  * @dest: another #GtkTextAttributes
  *
@@ -114,7 +114,7 @@ G_DEFINE_BOXED_TYPE (GtkTextAttributes, gtk_text_attributes,
  * the same values as @src. Frees existing values in @dest.
  */
 void
-gtk_text_attributes_copy_values (GtkTextAttributes *src,
+ctk_text_attributes_copy_values (GtkTextAttributes *src,
                                  GtkTextAttributes *dest)
 {
   guint orig_refcount;
@@ -180,7 +180,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 /**
- * gtk_text_attributes_ref:
+ * ctk_text_attributes_ref:
  * @values: a #GtkTextAttributes
  *
  * Increments the reference count on @values.
@@ -188,7 +188,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
  * Returns: the #GtkTextAttributes that were passed in
  **/
 GtkTextAttributes *
-gtk_text_attributes_ref (GtkTextAttributes *values)
+ctk_text_attributes_ref (GtkTextAttributes *values)
 {
   g_return_val_if_fail (values != NULL, NULL);
 
@@ -198,14 +198,14 @@ gtk_text_attributes_ref (GtkTextAttributes *values)
 }
 
 /**
- * gtk_text_attributes_unref:
+ * ctk_text_attributes_unref:
  * @values: a #GtkTextAttributes
  * 
  * Decrements the reference count on @values, freeing the structure
  * if the reference count reaches 0.
  **/
 void
-gtk_text_attributes_unref (GtkTextAttributes *values)
+ctk_text_attributes_unref (GtkTextAttributes *values)
 {
   g_return_if_fail (values != NULL);
   g_return_if_fail (values->refcount > 0);
@@ -242,7 +242,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 void
-_gtk_text_attributes_fill_from_tags (GtkTextAttributes *dest,
+_ctk_text_attributes_fill_from_tags (GtkTextAttributes *dest,
                                      GtkTextTag**       tags,
                                      guint              n_tags)
 {
@@ -423,7 +423,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 gboolean
-_gtk_text_tag_affects_size (GtkTextTag *tag)
+_ctk_text_tag_affects_size (GtkTextTag *tag)
 {
   GtkTextTagPrivate *priv = tag->priv;
 
@@ -447,7 +447,7 @@ _gtk_text_tag_affects_size (GtkTextTag *tag)
 }
 
 gboolean
-_gtk_text_tag_affects_nonsize_appearance (GtkTextTag *tag)
+_ctk_text_tag_affects_nonsize_appearance (GtkTextTag *tag)
 {
   GtkTextTagPrivate *priv = tag->priv;
 

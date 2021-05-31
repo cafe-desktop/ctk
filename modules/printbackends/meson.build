@@ -103,14 +103,14 @@ printbackends_args = [
   '-DGTK_DISABLE_DEPRECATION_WARNINGS',
   '-DGTK_PRINT_BACKEND_ENABLE_UNSUPPORTED',
 ]
-printbackends_subdir = 'gtk-3.0/@0@/printbackends'.format(gtk_binary_version)
+printbackends_subdir = 'gtk-3.0/@0@/printbackends'.format(ctk_binary_version)
 printbackends_install_dir = join_paths(get_option('libdir'), printbackends_subdir)
 
 if print_backends.contains('file')
   shared_module('printbackend-file',
                 'file/gtkprintbackendfile.c',
                 c_args: printbackends_args,
-                dependencies: libgtk_dep,
+                dependencies: libctk_dep,
                 install_dir: printbackends_install_dir,
                 name_suffix: module_suffix,
                 install : true)
@@ -120,7 +120,7 @@ if print_backends.contains('lpr')
   shared_module('printbackend-lpr',
                 'lpr/gtkprintbackendlpr.c',
                 c_args: printbackends_args,
-                dependencies: libgtk_dep,
+                dependencies: libctk_dep,
                 install_dir: printbackends_install_dir,
                 name_suffix: module_suffix,
                 install : true)
@@ -130,7 +130,7 @@ if print_backends.contains('test')
   shared_module('printbackend-test',
                 'test/gtkprintbackendtest.c',
                 c_args: printbackends_args,
-                dependencies: libgtk_dep,
+                dependencies: libctk_dep,
                 install_dir: printbackends_install_dir,
                 name_suffix: module_suffix,
                 install : true)
@@ -142,7 +142,7 @@ if print_backends.contains('cloudprint')
                   'cloudprint/gtkprintercloudprint.c',
                   'cloudprint/gtkcloudprintaccount.c',
                   c_args: printbackends_args,
-                  dependencies: [ libgtk_dep, rest_dep, json_glib_dep ],
+                  dependencies: [ libctk_dep, rest_dep, json_glib_dep ],
                   install_dir: printbackends_install_dir,
                   name_suffix: module_suffix,
                   install : true)
@@ -155,7 +155,7 @@ if print_backends.contains('cups')
                 'cups/gtkcupsutils.c',
                 'cups/gtkcupssecretsutils.c',
                 c_args: printbackends_args,
-                dependencies: [libgtk_dep, cups_dep] + cups_extra_deps,
+                dependencies: [libctk_dep, cups_dep] + cups_extra_deps,
                 install_dir: printbackends_install_dir,
                 name_suffix: module_suffix,
                 install : true)

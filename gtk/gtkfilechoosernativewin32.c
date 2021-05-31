@@ -249,7 +249,7 @@ ifiledialogevents_OnTypeChange (IFileDialogEvents * self,
     }
 
   fileType--; // fileTypeIndex starts at 1 
-  filters = gtk_file_chooser_list_filters (GTK_FILE_CHOOSER (events->data->self));
+  filters = ctk_file_chooser_list_filters (GTK_FILE_CHOOSER (events->data->self));
   events->data->self->current_filter = g_slist_nth_data (filters, fileType);
   g_slist_free (filters);
   g_object_notify (G_OBJECT (events->data->self), "filter");
@@ -379,7 +379,7 @@ filechooser_win32_thread_done (gpointer _data)
       self->custom_files = data->files;
       data->files = NULL;
 
-      _gtk_native_dialog_emit_response (GTK_NATIVE_DIALOG (data->self),
+      _ctk_native_dialog_emit_response (GTK_NATIVE_DIALOG (data->self),
                                         data->response);
     }
 
@@ -602,7 +602,7 @@ filechooser_win32_thread (gpointer _data)
 
       if (data->self->current_filter)
         {
-          GSList *filters = gtk_file_chooser_list_filters (GTK_FILE_CHOOSER (data->self));
+          GSList *filters = ctk_file_chooser_list_filters (GTK_FILE_CHOOSER (data->self));
 	  gint current_filter_index = g_slist_index (filters, data->self->current_filter);
 	  g_slist_free (filters);
 
@@ -811,14 +811,14 @@ file_filter_to_win32 (GtkFileFilter *filter,
   char **patterns;
   char *pattern_list;
 
-  patterns = _gtk_file_filter_get_as_patterns (filter);
+  patterns = _ctk_file_filter_get_as_patterns (filter);
   if (patterns == NULL)
     return FALSE;
 
   pattern_list = g_strjoinv (";", patterns);
   g_strfreev (patterns);
 
-  name = gtk_file_filter_get_name (filter);
+  name = ctk_file_filter_get_name (filter);
   if (name == NULL)
     name = pattern_list;
   spec->pszName = g_utf8_to_utf16 (name, -1, NULL, NULL, NULL);
@@ -868,7 +868,7 @@ translate_mnemonics (const char *src)
 }
 
 gboolean
-gtk_file_chooser_native_win32_show (GtkFileChooserNative *self)
+ctk_file_chooser_native_win32_show (GtkFileChooserNative *self)
 {
   GThread *thread;
   FilechooserWin32ThreadData *data;
@@ -878,7 +878,7 @@ gtk_file_chooser_native_win32_show (GtkFileChooserNative *self)
   GSList *filters, *l;
   int n_filters, i;
 
-  if (gtk_file_chooser_get_extra_widget (GTK_FILE_CHOOSER (self)) != NULL &&
+  if (ctk_file_chooser_get_extra_widget (GTK_FILE_CHOOSER (self)) != NULL &&
       self->choices == NULL)
     return FALSE;
 
@@ -888,7 +888,7 @@ gtk_file_chooser_native_win32_show (GtkFileChooserNative *self)
 
   data = g_new0 (FilechooserWin32ThreadData, 1);
 
-  filters = gtk_file_chooser_list_filters (GTK_FILE_CHOOSER (self));
+  filters = ctk_file_chooser_list_filters (GTK_FILE_CHOOSER (self));
   n_filters = g_slist_length (filters);
   if (n_filters > 0)
     {
@@ -902,7 +902,7 @@ gtk_file_chooser_native_win32_show (GtkFileChooserNative *self)
               return FALSE;
             }
         }
-      self->current_filter = gtk_file_chooser_get_filter (GTK_FILE_CHOOSER (self));
+      self->current_filter = ctk_file_chooser_get_filter (GTK_FILE_CHOOSER (self));
     }
   else
     {
@@ -913,12 +913,12 @@ gtk_file_chooser_native_win32_show (GtkFileChooserNative *self)
   data->self = g_object_ref (self);
 
   data->shortcut_uris =
-    gtk_file_chooser_list_shortcut_folder_uris (GTK_FILE_CHOOSER (self->dialog));
+    ctk_file_chooser_list_shortcut_folder_uris (GTK_FILE_CHOOSER (self->dialog));
 
   data->accept_label = translate_mnemonics (self->accept_label);
   data->cancel_label = translate_mnemonics (self->cancel_label);
 
-  action = gtk_file_chooser_get_action (GTK_FILE_CHOOSER (self->dialog));
+  action = ctk_file_chooser_get_action (GTK_FILE_CHOOSER (self->dialog));
   if (action == GTK_FILE_CHOOSER_ACTION_SAVE ||
       action == GTK_FILE_CHOOSER_ACTION_CREATE_FOLDER)
     data->save = TRUE;
@@ -929,27 +929,27 @@ gtk_file_chooser_native_win32_show (GtkFileChooserNative *self)
 
   if ((action == GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER ||
        action == GTK_FILE_CHOOSER_ACTION_OPEN) &&
-      gtk_file_chooser_get_select_multiple (GTK_FILE_CHOOSER (self->dialog)))
+      ctk_file_chooser_get_select_multiple (GTK_FILE_CHOOSER (self->dialog)))
     data->select_multiple = TRUE;
 
-  if (gtk_file_chooser_get_do_overwrite_confirmation (GTK_FILE_CHOOSER (self->dialog)))
+  if (ctk_file_chooser_get_do_overwrite_confirmation (GTK_FILE_CHOOSER (self->dialog)))
     data->overwrite_confirmation = TRUE;
 
-  if (gtk_file_chooser_get_show_hidden (GTK_FILE_CHOOSER (self->dialog)))
+  if (ctk_file_chooser_get_show_hidden (GTK_FILE_CHOOSER (self->dialog)))
     data->show_hidden = TRUE;
 
-  transient_for = gtk_native_dialog_get_transient_for (GTK_NATIVE_DIALOG (self));
+  transient_for = ctk_native_dialog_get_transient_for (GTK_NATIVE_DIALOG (self));
   if (transient_for)
     {
-      gtk_widget_realize (GTK_WIDGET (transient_for));
-      data->parent = gdk_win32_window_get_handle (gtk_widget_get_window (GTK_WIDGET (transient_for)));
+      ctk_widget_realize (GTK_WIDGET (transient_for));
+      data->parent = gdk_win32_window_get_handle (ctk_widget_get_window (GTK_WIDGET (transient_for)));
 
-      if (gtk_native_dialog_get_modal (GTK_NATIVE_DIALOG (self)))
+      if (ctk_native_dialog_get_modal (GTK_NATIVE_DIALOG (self)))
         data->modal = TRUE;
     }
 
   data->title =
-    g_strdup (gtk_native_dialog_get_title (GTK_NATIVE_DIALOG (self)));
+    g_strdup (ctk_native_dialog_get_title (GTK_NATIVE_DIALOG (self)));
 
   if (self->current_file)
     data->current_file = g_object_ref (self->current_file);
@@ -976,7 +976,7 @@ gtk_file_chooser_native_win32_show (GtkFileChooserNative *self)
 }
 
 void
-gtk_file_chooser_native_win32_hide (GtkFileChooserNative *self)
+ctk_file_chooser_native_win32_hide (GtkFileChooserNative *self)
 {
   FilechooserWin32ThreadData *data = self->mode_data;
 

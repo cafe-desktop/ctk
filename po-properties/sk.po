@@ -783,10 +783,10 @@ msgstr "Hodnota"
 
 #: gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"Hodnota vrátená gtk_radio_action_get_current_value(), ak je táto akcia "
+"Hodnota vrátená ctk_radio_action_get_current_value(), ak je táto akcia "
 "vybranou akciou skupiny."
 
 #: gtk/deprecated/gtkradioaction.c:139 gtk/gtkradiobutton.c:184
@@ -1243,10 +1243,10 @@ msgstr "Logo"
 #: gtk/gtkaboutdialog.c:552
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Logo pre dialógové okno O programe. Ak nie je nastavené, tak sa použije "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 
 #: gtk/gtkaboutdialog.c:566
 msgid "Logo Icon Name"
@@ -3443,10 +3443,10 @@ msgstr "Krok pulzu priebehu"
 #: gtk/gtkentry.c:1094
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "Zlomok celkovej šírky vstupného poľa, o ktorý sa posunie pulzujúci indikátor "
-"pri každom volaní gtk_entry_progress_pulse()"
+"pri každom volaní ctk_entry_progress_pulse()"
 
 #: gtk/gtkentry.c:1110
 msgid "Show text in the entry when it's empty and unfocused"
@@ -9113,8 +9113,8 @@ msgid "No show all"
 msgstr "Nezobrazovať všetky"
 
 #: gtk/gtkwidget.c:1264
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "Určuje, či nemá gtk_widget_show_all() ovplyvniť tento ovládací prvok"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "Určuje, či nemá ctk_widget_show_all() ovplyvniť tento ovládací prvok"
 
 #: gtk/gtkwidget.c:1286
 msgid "Whether this widget has a tooltip"

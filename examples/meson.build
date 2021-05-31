@@ -1,49 +1,49 @@
 builder_example = executable(
   'builder_example',
   'builder.c',
-  dependencies: libgtk_dep
+  dependencies: libctk_dep
 )
 
 drawing = executable(
   'drawing',
   'drawing.c',
-  dependencies: libgtk_dep
+  dependencies: libctk_dep
 )
 
 grid_packing = executable(
   'grid-packing',
   'grid-packing.c',
-  dependencies: libgtk_dep
+  dependencies: libctk_dep
 )
 
 hello_world = executable(
   'hello-world',
   'hello-world.c',
-  dependencies: libgtk_dep
+  dependencies: libctk_dep
 )
 
 plugman = executable(
   'plugman',
   'plugman.c',
-  dependencies: libgtk_dep
+  dependencies: libctk_dep
 )
 
 search_bar = executable(
   'search-bar',
   'search-bar.c',
-  dependencies: libgtk_dep
+  dependencies: libctk_dep
 )
 
 sunny = executable(
   'sunny',
   'sunny.c',
-  dependencies: libgtk_dep
+  dependencies: libctk_dep
 )
 
 window_default = executable(
   'window-default',
   'window-default.c',
-  dependencies: libgtk_dep
+  dependencies: libctk_dep
 )
 
 

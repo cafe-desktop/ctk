@@ -115,7 +115,7 @@ pixbuf_segment_check_func (GtkTextLineSegment *seg,
 }
 
 
-const GtkTextLineSegmentClass gtk_text_pixbuf_type = {
+const GtkTextLineSegmentClass ctk_text_pixbuf_type = {
   "pixbuf",                          /* name */
   FALSE,                                            /* leftGravity */
   NULL,                                          /* splitFunc */
@@ -127,13 +127,13 @@ const GtkTextLineSegmentClass gtk_text_pixbuf_type = {
 };
 
 GtkTextLineSegment *
-_gtk_pixbuf_segment_new (GdkPixbuf *pixbuf)
+_ctk_pixbuf_segment_new (GdkPixbuf *pixbuf)
 {
   GtkTextLineSegment *seg;
 
   seg = g_slice_alloc (PIXBUF_SEG_SIZE);
 
-  seg->type = &gtk_text_pixbuf_type;
+  seg->type = &ctk_text_pixbuf_type;
 
   seg->next = NULL;
 
@@ -168,7 +168,7 @@ child_segment_delete_func (GtkTextLineSegment *seg,
   GSList *tmp_list;
   GSList *copy;
 
-  _gtk_text_btree_unregister_child_anchor (seg->body.child.obj);
+  _ctk_text_btree_unregister_child_anchor (seg->body.child.obj);
   
   seg->body.child.tree = NULL;
   seg->body.child.line = NULL;
@@ -180,7 +180,7 @@ child_segment_delete_func (GtkTextLineSegment *seg,
     {
       GtkWidget *child = tmp_list->data;
 
-      gtk_widget_destroy (child);
+      ctk_widget_destroy (child);
       
       tmp_list = tmp_list->next;
     }
@@ -192,7 +192,7 @@ child_segment_delete_func (GtkTextLineSegment *seg,
 
   g_slist_free (copy);
   
-  _gtk_widget_segment_unref (seg);  
+  _ctk_widget_segment_unref (seg);  
   
   return 0;
 }
@@ -211,7 +211,7 @@ child_segment_check_func (GtkTextLineSegment *seg,
     g_error ("child segment has char count of %d", seg->char_count);
 }
 
-const GtkTextLineSegmentClass gtk_text_child_type = {
+const GtkTextLineSegmentClass ctk_text_child_type = {
   "child-widget",                                        /* name */
   FALSE,                                                 /* leftGravity */
   NULL,                                                  /* splitFunc */
@@ -222,13 +222,13 @@ const GtkTextLineSegmentClass gtk_text_child_type = {
 };
 
 GtkTextLineSegment *
-_gtk_widget_segment_new (GtkTextChildAnchor *anchor)
+_ctk_widget_segment_new (GtkTextChildAnchor *anchor)
 {
   GtkTextLineSegment *seg;
 
   seg = g_slice_alloc (WIDGET_SEG_SIZE);
 
-  seg->type = &gtk_text_child_type;
+  seg->type = &ctk_text_child_type;
 
   seg->next = NULL;
 
@@ -250,10 +250,10 @@ _gtk_widget_segment_new (GtkTextChildAnchor *anchor)
 }
 
 void
-_gtk_widget_segment_add    (GtkTextLineSegment *widget_segment,
+_ctk_widget_segment_add    (GtkTextLineSegment *widget_segment,
                             GtkWidget          *child)
 {
-  g_return_if_fail (widget_segment->type == &gtk_text_child_type);
+  g_return_if_fail (widget_segment->type == &ctk_text_child_type);
   g_return_if_fail (widget_segment->body.child.tree != NULL);
 
   g_object_ref (child);
@@ -264,10 +264,10 @@ _gtk_widget_segment_add    (GtkTextLineSegment *widget_segment,
 }
 
 void
-_gtk_widget_segment_remove (GtkTextLineSegment *widget_segment,
+_ctk_widget_segment_remove (GtkTextLineSegment *widget_segment,
                             GtkWidget          *child)
 {
-  g_return_if_fail (widget_segment->type == &gtk_text_child_type);
+  g_return_if_fail (widget_segment->type == &ctk_text_child_type);
   
   widget_segment->body.child.widgets =
     g_slist_remove (widget_segment->body.child.widgets,
@@ -277,29 +277,29 @@ _gtk_widget_segment_remove (GtkTextLineSegment *widget_segment,
 }
 
 void
-_gtk_widget_segment_ref (GtkTextLineSegment *widget_segment)
+_ctk_widget_segment_ref (GtkTextLineSegment *widget_segment)
 {
-  g_assert (widget_segment->type == &gtk_text_child_type);
+  g_assert (widget_segment->type == &ctk_text_child_type);
 
   g_object_ref (widget_segment->body.child.obj);
 }
 
 void
-_gtk_widget_segment_unref (GtkTextLineSegment *widget_segment)
+_ctk_widget_segment_unref (GtkTextLineSegment *widget_segment)
 {
-  g_assert (widget_segment->type == &gtk_text_child_type);
+  g_assert (widget_segment->type == &ctk_text_child_type);
 
   g_object_unref (widget_segment->body.child.obj);
 }
 
 GtkTextLayout*
-_gtk_anchored_child_get_layout (GtkWidget *child)
+_ctk_anchored_child_get_layout (GtkWidget *child)
 {
   return g_object_get_data (G_OBJECT (child), "gtk-text-child-anchor-layout");  
 }
 
 static void
-_gtk_anchored_child_set_layout (GtkWidget     *child,
+_ctk_anchored_child_set_layout (GtkWidget     *child,
                                 GtkTextLayout *layout)
 {
   g_object_set_data (G_OBJECT (child),
@@ -307,42 +307,42 @@ _gtk_anchored_child_set_layout (GtkWidget     *child,
                      layout);  
 }
      
-static void gtk_text_child_anchor_finalize (GObject *obj);
+static void ctk_text_child_anchor_finalize (GObject *obj);
 
-G_DEFINE_TYPE (GtkTextChildAnchor, gtk_text_child_anchor, G_TYPE_OBJECT)
+G_DEFINE_TYPE (GtkTextChildAnchor, ctk_text_child_anchor, G_TYPE_OBJECT)
 
 static void
-gtk_text_child_anchor_init (GtkTextChildAnchor *child_anchor)
+ctk_text_child_anchor_init (GtkTextChildAnchor *child_anchor)
 {
   child_anchor->segment = NULL;
 }
 
 static void
-gtk_text_child_anchor_class_init (GtkTextChildAnchorClass *klass)
+ctk_text_child_anchor_class_init (GtkTextChildAnchorClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  object_class->finalize = gtk_text_child_anchor_finalize;
+  object_class->finalize = ctk_text_child_anchor_finalize;
 }
 
 /**
- * gtk_text_child_anchor_new:
+ * ctk_text_child_anchor_new:
  * 
  * Creates a new #GtkTextChildAnchor. Usually you would then insert
- * it into a #GtkTextBuffer with gtk_text_buffer_insert_child_anchor().
+ * it into a #GtkTextBuffer with ctk_text_buffer_insert_child_anchor().
  * To perform the creation and insertion in one step, use the
- * convenience function gtk_text_buffer_create_child_anchor().
+ * convenience function ctk_text_buffer_create_child_anchor().
  * 
  * Returns: a new #GtkTextChildAnchor
  **/
 GtkTextChildAnchor*
-gtk_text_child_anchor_new (void)
+ctk_text_child_anchor_new (void)
 {
   return g_object_new (GTK_TYPE_TEXT_CHILD_ANCHOR, NULL);
 }
 
 static void
-gtk_text_child_anchor_finalize (GObject *obj)
+ctk_text_child_anchor_finalize (GObject *obj)
 {
   GtkTextChildAnchor *anchor;
   GtkTextLineSegment *seg;
@@ -368,11 +368,11 @@ gtk_text_child_anchor_finalize (GObject *obj)
 
   anchor->segment = NULL;
 
-  G_OBJECT_CLASS (gtk_text_child_anchor_parent_class)->finalize (obj);
+  G_OBJECT_CLASS (ctk_text_child_anchor_parent_class)->finalize (obj);
 }
 
 /**
- * gtk_text_child_anchor_get_widgets:
+ * ctk_text_child_anchor_get_widgets:
  * @anchor: a #GtkTextChildAnchor
  * 
  * Gets a list of all widgets anchored at this child anchor.
@@ -382,7 +382,7 @@ gtk_text_child_anchor_finalize (GObject *obj)
  * Returns: (element-type GtkWidget) (transfer container): list of widgets anchored at @anchor
  **/
 GList*
-gtk_text_child_anchor_get_widgets (GtkTextChildAnchor *anchor)
+ctk_text_child_anchor_get_widgets (GtkTextChildAnchor *anchor)
 {
   GtkTextLineSegment *seg = anchor->segment;
   GList *list = NULL;
@@ -390,7 +390,7 @@ gtk_text_child_anchor_get_widgets (GtkTextChildAnchor *anchor)
 
   CHECK_IN_BUFFER_RETURN (anchor, NULL);
   
-  g_return_val_if_fail (seg->type == &gtk_text_child_type, NULL);
+  g_return_val_if_fail (seg->type == &ctk_text_child_type, NULL);
 
   iter = seg->body.child.widgets;
   while (iter != NULL)
@@ -407,7 +407,7 @@ gtk_text_child_anchor_get_widgets (GtkTextChildAnchor *anchor)
 }
 
 /**
- * gtk_text_child_anchor_get_deleted:
+ * ctk_text_child_anchor_get_deleted:
  * @anchor: a #GtkTextChildAnchor
  * 
  * Determines whether a child anchor has been deleted from
@@ -420,19 +420,19 @@ gtk_text_child_anchor_get_widgets (GtkTextChildAnchor *anchor)
  * Returns: %TRUE if the child anchor has been deleted from its buffer
  **/
 gboolean
-gtk_text_child_anchor_get_deleted (GtkTextChildAnchor *anchor)
+ctk_text_child_anchor_get_deleted (GtkTextChildAnchor *anchor)
 {
   GtkTextLineSegment *seg = anchor->segment;
 
   CHECK_IN_BUFFER_RETURN (anchor, TRUE);
   
-  g_return_val_if_fail (seg->type == &gtk_text_child_type, TRUE);
+  g_return_val_if_fail (seg->type == &ctk_text_child_type, TRUE);
 
   return seg->body.child.tree == NULL;
 }
 
 void
-gtk_text_child_anchor_register_child (GtkTextChildAnchor *anchor,
+ctk_text_child_anchor_register_child (GtkTextChildAnchor *anchor,
                                       GtkWidget          *child,
                                       GtkTextLayout      *layout)
 {
@@ -441,15 +441,15 @@ gtk_text_child_anchor_register_child (GtkTextChildAnchor *anchor,
 
   CHECK_IN_BUFFER (anchor);
   
-  _gtk_anchored_child_set_layout (child, layout);
+  _ctk_anchored_child_set_layout (child, layout);
   
-  _gtk_widget_segment_add (anchor->segment, child);
+  _ctk_widget_segment_add (anchor->segment, child);
 
-  gtk_text_child_anchor_queue_resize (anchor, layout);
+  ctk_text_child_anchor_queue_resize (anchor, layout);
 }
 
 void
-gtk_text_child_anchor_unregister_child (GtkTextChildAnchor *anchor,
+ctk_text_child_anchor_unregister_child (GtkTextChildAnchor *anchor,
                                         GtkWidget          *child)
 {
   g_return_if_fail (GTK_IS_TEXT_CHILD_ANCHOR (anchor));
@@ -457,19 +457,19 @@ gtk_text_child_anchor_unregister_child (GtkTextChildAnchor *anchor,
 
   CHECK_IN_BUFFER (anchor);
   
-  if (_gtk_anchored_child_get_layout (child))
+  if (_ctk_anchored_child_get_layout (child))
     {
-      gtk_text_child_anchor_queue_resize (anchor,
-                                          _gtk_anchored_child_get_layout (child));
+      ctk_text_child_anchor_queue_resize (anchor,
+                                          _ctk_anchored_child_get_layout (child));
     }
   
-  _gtk_anchored_child_set_layout (child, NULL);
+  _ctk_anchored_child_set_layout (child, NULL);
   
-  _gtk_widget_segment_remove (anchor->segment, child);
+  _ctk_widget_segment_remove (anchor->segment, child);
 }
 
 void
-gtk_text_child_anchor_queue_resize (GtkTextChildAnchor *anchor,
+ctk_text_child_anchor_queue_resize (GtkTextChildAnchor *anchor,
                                     GtkTextLayout      *layout)
 {
   GtkTextIter start;
@@ -486,20 +486,20 @@ gtk_text_child_anchor_queue_resize (GtkTextChildAnchor *anchor,
   if (seg->body.child.tree == NULL)
     return;
   
-  gtk_text_buffer_get_iter_at_child_anchor (layout->buffer,
+  ctk_text_buffer_get_iter_at_child_anchor (layout->buffer,
                                             &start, anchor);
   end = start;
-  gtk_text_iter_forward_char (&end);
+  ctk_text_iter_forward_char (&end);
   
-  gtk_text_layout_invalidate (layout, &start, &end);
+  ctk_text_layout_invalidate (layout, &start, &end);
 }
 
 void
-gtk_text_anchored_child_set_layout (GtkWidget     *child,
+ctk_text_anchored_child_set_layout (GtkWidget     *child,
                                     GtkTextLayout *layout)
 {
   g_return_if_fail (GTK_IS_WIDGET (child));
   g_return_if_fail (layout == NULL || GTK_IS_TEXT_LAYOUT (layout));
   
-  _gtk_anchored_child_set_layout (child, layout);
+  _ctk_anchored_child_set_layout (child, layout);
 }

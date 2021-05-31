@@ -25,13 +25,13 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_FILE_SYSTEM_MODEL             (_gtk_file_system_model_get_type ())
+#define GTK_TYPE_FILE_SYSTEM_MODEL             (_ctk_file_system_model_get_type ())
 #define GTK_FILE_SYSTEM_MODEL(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_FILE_SYSTEM_MODEL, GtkFileSystemModel))
 #define GTK_IS_FILE_SYSTEM_MODEL(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_FILE_SYSTEM_MODEL))
 
 typedef struct _GtkFileSystemModel      GtkFileSystemModel;
 
-GType _gtk_file_system_model_get_type (void) G_GNUC_CONST;
+GType _ctk_file_system_model_get_type (void) G_GNUC_CONST;
 
 typedef gboolean (*GtkFileSystemModelGetValue)   (GtkFileSystemModel *model,
                                                   GFile              *file,
@@ -40,58 +40,58 @@ typedef gboolean (*GtkFileSystemModelGetValue)   (GtkFileSystemModel *model,
                                                   GValue             *value,
                                                   gpointer            user_data);
 
-GtkFileSystemModel *_gtk_file_system_model_new              (GtkFileSystemModelGetValue get_func,
+GtkFileSystemModel *_ctk_file_system_model_new              (GtkFileSystemModelGetValue get_func,
                                                              gpointer            get_data,
                                                              guint               n_columns,
                                                              ...);
-GtkFileSystemModel *_gtk_file_system_model_new_for_directory(GFile *             dir,
+GtkFileSystemModel *_ctk_file_system_model_new_for_directory(GFile *             dir,
                                                              const gchar *       attributes,
                                                              GtkFileSystemModelGetValue get_func,
                                                              gpointer            get_data,
                                                              guint               n_columns,
                                                              ...);
-GFile *             _gtk_file_system_model_get_directory    (GtkFileSystemModel *model);
-GCancellable *      _gtk_file_system_model_get_cancellable  (GtkFileSystemModel *model);
-gboolean            _gtk_file_system_model_iter_is_visible  (GtkFileSystemModel *model,
+GFile *             _ctk_file_system_model_get_directory    (GtkFileSystemModel *model);
+GCancellable *      _ctk_file_system_model_get_cancellable  (GtkFileSystemModel *model);
+gboolean            _ctk_file_system_model_iter_is_visible  (GtkFileSystemModel *model,
 							     GtkTreeIter        *iter);
-gboolean            _gtk_file_system_model_iter_is_filtered_out (GtkFileSystemModel *model,
+gboolean            _ctk_file_system_model_iter_is_filtered_out (GtkFileSystemModel *model,
 								 GtkTreeIter        *iter);
-GFileInfo *         _gtk_file_system_model_get_info         (GtkFileSystemModel *model,
+GFileInfo *         _ctk_file_system_model_get_info         (GtkFileSystemModel *model,
 							     GtkTreeIter        *iter);
-gboolean            _gtk_file_system_model_get_iter_for_file(GtkFileSystemModel *model,
+gboolean            _ctk_file_system_model_get_iter_for_file(GtkFileSystemModel *model,
 							     GtkTreeIter        *iter,
 							     GFile              *file);
-GFile *             _gtk_file_system_model_get_file         (GtkFileSystemModel *model,
+GFile *             _ctk_file_system_model_get_file         (GtkFileSystemModel *model,
 							     GtkTreeIter        *iter);
-const GValue *      _gtk_file_system_model_get_value        (GtkFileSystemModel *model,
+const GValue *      _ctk_file_system_model_get_value        (GtkFileSystemModel *model,
                                                              GtkTreeIter *       iter,
                                                              int                 column);
 
-void                _gtk_file_system_model_add_and_query_file  (GtkFileSystemModel *model,
+void                _ctk_file_system_model_add_and_query_file  (GtkFileSystemModel *model,
                                                                 GFile              *file,
                                                                 const char         *attributes);
-void                _gtk_file_system_model_add_and_query_files (GtkFileSystemModel *model,
+void                _ctk_file_system_model_add_and_query_files (GtkFileSystemModel *model,
                                                                 GList              *files,
                                                                 const char         *attributes);
-void                _gtk_file_system_model_update_file      (GtkFileSystemModel *model,
+void                _ctk_file_system_model_update_file      (GtkFileSystemModel *model,
                                                              GFile              *file,
                                                              GFileInfo          *info);
-void                _gtk_file_system_model_update_files     (GtkFileSystemModel *model,
+void                _ctk_file_system_model_update_files     (GtkFileSystemModel *model,
                                                              GList              *files,
                                                              GList              *infos);
 
-void                _gtk_file_system_model_set_show_hidden  (GtkFileSystemModel *model,
+void                _ctk_file_system_model_set_show_hidden  (GtkFileSystemModel *model,
 							     gboolean            show_hidden);
-void                _gtk_file_system_model_set_show_folders (GtkFileSystemModel *model,
+void                _ctk_file_system_model_set_show_folders (GtkFileSystemModel *model,
 							     gboolean            show_folders);
-void                _gtk_file_system_model_set_show_files   (GtkFileSystemModel *model,
+void                _ctk_file_system_model_set_show_files   (GtkFileSystemModel *model,
 							     gboolean            show_files);
-void                _gtk_file_system_model_set_filter_folders (GtkFileSystemModel *model,
+void                _ctk_file_system_model_set_filter_folders (GtkFileSystemModel *model,
 							     gboolean            show_folders);
-void                _gtk_file_system_model_clear_cache      (GtkFileSystemModel *model,
+void                _ctk_file_system_model_clear_cache      (GtkFileSystemModel *model,
                                                              int                 column);
 
-void                _gtk_file_system_model_set_filter       (GtkFileSystemModel *model,
+void                _ctk_file_system_model_set_filter       (GtkFileSystemModel *model,
                                                              GtkFileFilter      *filter);
 
 G_END_DECLS

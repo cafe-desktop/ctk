@@ -71,9 +71,9 @@ drawing_area_map (GtkWidget *widget)
 
   GTK_WIDGET_CLASS (drawing_area_parent_class)->map (widget);
 
-  gdk_window_set_event_compression (gtk_widget_get_window (widget), TRUE);
+  gdk_window_set_event_compression (ctk_widget_get_window (widget), TRUE);
 
-  gtk_widget_get_allocation (widget, &allocation);
+  ctk_widget_get_allocation (widget, &allocation);
   drawing_area_ensure_surface ((DrawingArea *) widget,
                                allocation.width, allocation.height);
 }
@@ -96,7 +96,7 @@ drawing_area_draw (GtkWidget *widget,
   DrawingArea *area = (DrawingArea *) widget;
   GtkAllocation allocation;
 
-  gtk_widget_get_allocation (widget, &allocation);
+  ctk_widget_get_allocation (widget, &allocation);
 
   cairo_set_source_rgb (cr, 1, 1, 1);
   cairo_paint (cr);
@@ -169,22 +169,22 @@ stylus_gesture_motion (GtkGestureStylus *gesture,
   GdkDeviceTool *tool;
   gdouble pressure;
 
-  tool = gtk_gesture_stylus_get_device_tool (gesture);
+  tool = ctk_gesture_stylus_get_device_tool (gesture);
 
-  if (!gtk_gesture_stylus_get_axis (gesture, GDK_AXIS_PRESSURE, &pressure))
+  if (!ctk_gesture_stylus_get_axis (gesture, GDK_AXIS_PRESSURE, &pressure))
     pressure = 1;
 
   drawing_area_apply_stroke (area, tool, x, y, pressure);
-  gtk_widget_queue_draw (GTK_WIDGET (area));
+  ctk_widget_queue_draw (GTK_WIDGET (area));
 }
 
 static void
 drawing_area_init (DrawingArea *area)
 {
   const GdkRGBA draw_rgba = { 0, 0, 0, 1 };
-  gtk_event_box_set_visible_window (GTK_EVENT_BOX (area), TRUE);
+  ctk_event_box_set_visible_window (GTK_EVENT_BOX (area), TRUE);
 
-  area->stylus_gesture = gtk_gesture_stylus_new (GTK_WIDGET (area));
+  area->stylus_gesture = ctk_gesture_stylus_new (GTK_WIDGET (area));
   g_signal_connect (area->stylus_gesture, "down",
                     G_CALLBACK (stylus_gesture_down), area);
   g_signal_connect (area->stylus_gesture, "motion",
@@ -212,7 +212,7 @@ color_button_color_set (GtkColorButton *button,
 {
   GdkRGBA color;
 
-  gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (button), &color);
+  ctk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (button), &color);
   drawing_area_set_color (draw_area, &color);
 }
 
@@ -226,32 +226,32 @@ do_paint (GtkWidget *toplevel)
       GtkWidget *draw_area, *headerbar, *colorbutton;
       const GdkRGBA draw_rgba = { 0, 0, 0, 1 };
 
-      window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
 
       draw_area = drawing_area_new ();
-      gtk_container_add (GTK_CONTAINER (window), draw_area);
+      ctk_container_add (GTK_CONTAINER (window), draw_area);
 
-      headerbar = gtk_header_bar_new ();
-      gtk_header_bar_set_title (GTK_HEADER_BAR (headerbar), "Paint");
-      gtk_header_bar_set_show_close_button (GTK_HEADER_BAR (headerbar), TRUE);
+      headerbar = ctk_header_bar_new ();
+      ctk_header_bar_set_title (GTK_HEADER_BAR (headerbar), "Paint");
+      ctk_header_bar_set_show_close_button (GTK_HEADER_BAR (headerbar), TRUE);
 
-      colorbutton = gtk_color_button_new ();
+      colorbutton = ctk_color_button_new ();
       g_signal_connect (colorbutton, "color-set",
                         G_CALLBACK (color_button_color_set), draw_area);
-      gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (colorbutton),
+      ctk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (colorbutton),
                                   &draw_rgba);
 
-      gtk_header_bar_pack_end (GTK_HEADER_BAR (headerbar), colorbutton);
-      gtk_window_set_titlebar (GTK_WINDOW (window), headerbar);
+      ctk_header_bar_pack_end (GTK_HEADER_BAR (headerbar), colorbutton);
+      ctk_window_set_titlebar (GTK_WINDOW (window), headerbar);
 
       g_signal_connect (window, "destroy",
-                        G_CALLBACK (gtk_widget_destroyed), &window);
+                        G_CALLBACK (ctk_widget_destroyed), &window);
     }
 
-  if (!gtk_widget_get_visible (window))
-    gtk_widget_show_all (window);
+  if (!ctk_widget_get_visible (window))
+    ctk_widget_show_all (window);
   else
-    gtk_widget_destroy (window);
+    ctk_widget_destroy (window);
 
   return window;
 }

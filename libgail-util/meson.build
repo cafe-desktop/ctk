@@ -18,11 +18,11 @@ if cc.get_id() == 'msvc'
 endif
 
 libgailutil = library('gailutil-3',
-                      soversion: gtk_soversion,
+                      soversion: ctk_soversion,
                       version: gail_library_version,
                       darwin_versions: ['1', '1.0'],
                       sources: [gailutil_sources],
-                      dependencies: libgtk_dep,
+                      dependencies: libctk_dep,
                       include_directories: [confinc, gtkinc],
                       c_args: [
                         '-DGDK_DISABLE_DEPRECATED',

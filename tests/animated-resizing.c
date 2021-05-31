@@ -75,8 +75,8 @@ on_window_draw (GtkWidget *widget,
   int i;
   int width, height;
 
-  width = gtk_widget_get_allocated_width (widget);
-  height = gtk_widget_get_allocated_height (widget);
+  width = ctk_widget_get_allocated_width (widget);
+  height = ctk_widget_get_allocated_height (widget);
 
   ensure_resources (cairo_get_target (cr));
 
@@ -126,10 +126,10 @@ on_frame (double progress)
       window_height = HEIGHT + jitter;
     }
 
-  gtk_window_resize (GTK_WINDOW (window),
+  ctk_window_resize (GTK_WINDOW (window),
                      window_width, window_height);
 
-  gtk_widget_queue_draw (window);
+  ctk_widget_queue_draw (window);
 }
 
 static gboolean
@@ -153,7 +153,7 @@ static gboolean
 on_map_event (GtkWidget	  *widget,
               GdkEventAny *event)
 {
-  gtk_widget_add_tick_callback (window, tick_callback, NULL, NULL);
+  ctk_widget_add_tick_callback (window, tick_callback, NULL, NULL);
 
   return FALSE;
 }
@@ -175,7 +175,7 @@ main(int argc, char **argv)
   g_option_context_add_main_entries (context, options, NULL);
   frame_stats_add_options (g_option_context_get_main_group (context));
   g_option_context_add_group (context,
-                              gtk_get_option_group (TRUE));
+                              ctk_get_option_group (TRUE));
 
   if (!g_option_context_parse (context, &argc, &argv, &error))
     {
@@ -188,32 +188,32 @@ main(int argc, char **argv)
   g_print ("# Resizing?: %s\n",
            cb_no_resize ? "no" : "yes");
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
   frame_stats_ensure (GTK_WINDOW (window));
 
-  gtk_window_set_keep_above (GTK_WINDOW (window), TRUE);
-  gtk_window_set_gravity (GTK_WINDOW (window), GDK_GRAVITY_CENTER);
-  gtk_widget_set_app_paintable (window, TRUE);
+  ctk_window_set_keep_above (GTK_WINDOW (window), TRUE);
+  ctk_window_set_gravity (GTK_WINDOW (window), GDK_GRAVITY_CENTER);
+  ctk_widget_set_app_paintable (window, TRUE);
 
   g_signal_connect (window, "draw",
                     G_CALLBACK (on_window_draw), NULL);
   g_signal_connect (window, "destroy",
-                    G_CALLBACK (gtk_main_quit), NULL);
+                    G_CALLBACK (ctk_main_quit), NULL);
 
   g_signal_connect (window, "map-event",
                     G_CALLBACK (on_map_event), NULL);
   on_frame (0.);
 
-  monitor = gdk_display_get_primary_monitor (gtk_widget_get_display (window));
+  monitor = gdk_display_get_primary_monitor (ctk_widget_get_display (window));
   gdk_monitor_get_geometry (monitor, &monitor_bounds);
 
-  gtk_window_move (GTK_WINDOW (window),
+  ctk_window_move (GTK_WINDOW (window),
                    monitor_bounds.x + (monitor_bounds.width - window_width) / 2,
                    monitor_bounds.y + (monitor_bounds.height - window_height) / 2);
 
-  gtk_widget_show (window);
+  ctk_widget_show (window);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

@@ -80,7 +80,7 @@ static void	cb_value_changed (GtkVolumeButton *button,
                                   gdouble          value,
                                   gpointer         user_data);
 
-G_DEFINE_TYPE (GtkVolumeButton, gtk_volume_button, GTK_TYPE_SCALE_BUTTON)
+G_DEFINE_TYPE (GtkVolumeButton, ctk_volume_button, GTK_TYPE_SCALE_BUTTON)
 
 static gboolean
 get_symbolic (GtkScaleButton *button)
@@ -101,7 +101,7 @@ get_symbolic (GtkScaleButton *button)
 }
 
 static void
-gtk_volume_button_set_property (GObject       *object,
+ctk_volume_button_set_property (GObject       *object,
 				guint          prop_id,
 				const GValue  *value,
 				GParamSpec    *pspec)
@@ -114,9 +114,9 @@ gtk_volume_button_set_property (GObject       *object,
       if (get_symbolic (button) != g_value_get_boolean (value))
         {
           if (g_value_get_boolean (value))
-            gtk_scale_button_set_icons (button, (const char **) icons_symbolic);
+            ctk_scale_button_set_icons (button, (const char **) icons_symbolic);
           else
-	    gtk_scale_button_set_icons (button, (const char **) icons);
+	    ctk_scale_button_set_icons (button, (const char **) icons);
           g_object_notify_by_pspec (object, pspec);
         }
       break;
@@ -127,7 +127,7 @@ gtk_volume_button_set_property (GObject       *object,
 }
 
 static void
-gtk_volume_button_get_property (GObject     *object,
+ctk_volume_button_get_property (GObject     *object,
 			        guint        prop_id,
 			        GValue      *value,
 			        GParamSpec  *pspec)
@@ -144,13 +144,13 @@ gtk_volume_button_get_property (GObject     *object,
 }
 
 static void
-gtk_volume_button_class_init (GtkVolumeButtonClass *klass)
+ctk_volume_button_class_init (GtkVolumeButtonClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
-  gobject_class->set_property = gtk_volume_button_set_property;
-  gobject_class->get_property = gtk_volume_button_get_property;
+  gobject_class->set_property = ctk_volume_button_set_property;
+  gobject_class->get_property = ctk_volume_button_get_property;
 
   /**
    * GtkVolumeButton:use-symbolic:
@@ -172,25 +172,25 @@ gtk_volume_button_class_init (GtkVolumeButtonClass *klass)
 
   /* Bind class to template
    */
-  gtk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/ui/gtkvolumebutton.ui");
-  gtk_widget_class_bind_template_callback (widget_class, cb_query_tooltip);
-  gtk_widget_class_bind_template_callback (widget_class, cb_value_changed);
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/ui/gtkvolumebutton.ui");
+  ctk_widget_class_bind_template_callback (widget_class, cb_query_tooltip);
+  ctk_widget_class_bind_template_callback (widget_class, cb_value_changed);
 }
 
 static void
-gtk_volume_button_init (GtkVolumeButton *button)
+ctk_volume_button_init (GtkVolumeButton *button)
 {
   GtkWidget *widget = GTK_WIDGET (button);
 
-  gtk_widget_init_template (widget);
+  ctk_widget_init_template (widget);
 
   /* The atk action description is not supported by GtkBuilder */
-  atk_action_set_description (ATK_ACTION (gtk_widget_get_accessible (GTK_WIDGET (widget))),
+  atk_action_set_description (ATK_ACTION (ctk_widget_get_accessible (GTK_WIDGET (widget))),
 			      1, _("Adjusts the volume"));
 }
 
 /**
- * gtk_volume_button_new:
+ * ctk_volume_button_new:
  *
  * Creates a #GtkVolumeButton, with a range between 0.0 and 1.0, with
  * a stepping of 0.02. Volume values can be obtained and modified using
@@ -201,7 +201,7 @@ gtk_volume_button_init (GtkVolumeButton *button)
  * Since: 2.12
  */
 GtkWidget *
-gtk_volume_button_new (void)
+ctk_volume_button_new (void)
 {
   GObject *button;
   button = g_object_new (GTK_TYPE_VOLUME_BUTTON, NULL);
@@ -222,16 +222,16 @@ cb_query_tooltip (GtkWidget  *button,
   char *str;
   AtkImage *image;
 
-  image = ATK_IMAGE (gtk_widget_get_accessible (button));
+  image = ATK_IMAGE (ctk_widget_get_accessible (button));
 
-  adjustment = gtk_scale_button_get_adjustment (scale_button);
-  val = gtk_scale_button_get_value (scale_button);
+  adjustment = ctk_scale_button_get_adjustment (scale_button);
+  val = ctk_scale_button_get_value (scale_button);
 
-  if (val < (gtk_adjustment_get_lower (adjustment) + EPSILON))
+  if (val < (ctk_adjustment_get_lower (adjustment) + EPSILON))
     {
       str = g_strdup (_("Muted"));
     }
-  else if (val >= (gtk_adjustment_get_upper (adjustment) - EPSILON))
+  else if (val >= (ctk_adjustment_get_upper (adjustment) - EPSILON))
     {
       str = g_strdup (_("Full Volume"));
     }
@@ -239,7 +239,7 @@ cb_query_tooltip (GtkWidget  *button,
     {
       int percent;
 
-      percent = (int) (100. * val / (gtk_adjustment_get_upper (adjustment) - gtk_adjustment_get_lower (adjustment)) + .5);
+      percent = (int) (100. * val / (ctk_adjustment_get_upper (adjustment) - ctk_adjustment_get_lower (adjustment)) + .5);
 
       /* Translators: this is the percentage of the current volume,
        * as used in the tooltip, eg. "49 %".
@@ -249,7 +249,7 @@ cb_query_tooltip (GtkWidget  *button,
       str = g_strdup_printf (C_("volume percentage", "%d %%"), percent);
     }
 
-  gtk_tooltip_set_text (tooltip, str);
+  ctk_tooltip_set_text (tooltip, str);
   atk_image_set_image_description (image, str);
   g_free (str);
 
@@ -259,5 +259,5 @@ cb_query_tooltip (GtkWidget  *button,
 static void
 cb_value_changed (GtkVolumeButton *button, gdouble value, gpointer user_data)
 {
-  gtk_widget_trigger_tooltip_query (GTK_WIDGET (button));
+  ctk_widget_trigger_tooltip_query (GTK_WIDGET (button));
 }

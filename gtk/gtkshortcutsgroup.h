@@ -23,7 +23,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SHORTCUTS_GROUP            (gtk_shortcuts_group_get_type ())
+#define GTK_TYPE_SHORTCUTS_GROUP            (ctk_shortcuts_group_get_type ())
 #define GTK_SHORTCUTS_GROUP(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SHORTCUTS_GROUP, GtkShortcutsGroup))
 #define GTK_SHORTCUTS_GROUP_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SHORTCUTS_GROUP, GtkShortcutsGroupClass))
 #define GTK_IS_SHORTCUTS_GROUP(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SHORTCUTS_GROUP))
@@ -35,7 +35,7 @@ typedef struct _GtkShortcutsGroup         GtkShortcutsGroup;
 typedef struct _GtkShortcutsGroupClass    GtkShortcutsGroupClass;
 
 GDK_AVAILABLE_IN_3_20
-GType gtk_shortcuts_group_get_type (void) G_GNUC_CONST;
+GType ctk_shortcuts_group_get_type (void) G_GNUC_CONST;
 
 G_END_DECLS
 

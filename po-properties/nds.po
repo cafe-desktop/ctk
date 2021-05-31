@@ -258,10 +258,10 @@ msgstr "Logo"
 #, fuzzy
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Ein Logo für das Info-Fenster. Wird dies leer gelassen, so hat es den Wert "
-"von gtk_window_get_default_icon_list()"
+"von ctk_window_get_default_icon_list()"
 
 #: gtk/gtkaboutdialog.c:502
 msgid "Logo Icon Name"
@@ -2627,10 +2627,10 @@ msgstr "Fortschrittspuls-Schrittweite"
 #, fuzzy
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "Der Anteil an der gesamten Breite, um die sich der hüpfende Balken bei jedem "
-"Aufruf von gtk_entry_progress_pulse() bewegt"
+"Aufruf von ctk_entry_progress_pulse() bewegt"
 
 #: gtk/gtkentry.c:904
 #, fuzzy
@@ -5073,10 +5073,10 @@ msgstr "De Wert"
 #: gtk/gtkradioaction.c:119
 #, fuzzy
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"Der von \"gtk_radio_action_get_current_value()\" gelieferte wert, wenn diese "
+"Der von \"ctk_radio_action_get_current_value()\" gelieferte wert, wenn diese "
 "Aktion die derzeitige Gruppenaktion ist."
 
 #: gtk/gtkradioaction.c:135 gtk/gtkradiobutton.c:160
@@ -7982,8 +7982,8 @@ msgstr "Nich allens opwiesen"
 
 #: gtk/gtkwidget.c:841
 #, fuzzy
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "Soll \"gtk_widget_show_all()\" dieses Widget nicht betreffen?"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "Soll \"ctk_widget_show_all()\" dieses Widget nicht betreffen?"
 
 #: gtk/gtkwidget.c:864
 #, fuzzy
@@ -8653,10 +8653,10 @@ msgstr "Wie die Eingabemethoden-Statusleiste gezeichnet werden soll"
 
 #, fuzzy
 #~ msgid ""
-#~ "The maximum number of items to be returned by gtk_recent_manager_get_items"
+#~ "The maximum number of items to be returned by ctk_recent_manager_get_items"
 #~ "()"
 #~ msgstr ""
-#~ "Die maximale Anzahl an Einträgen, die von gtk_recent_manager_get_items() "
+#~ "Die maximale Anzahl an Einträgen, die von ctk_recent_manager_get_items() "
 #~ "zurück gegeben wird"
 
 #~ msgid "Blinking"

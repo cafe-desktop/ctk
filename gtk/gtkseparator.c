@@ -63,13 +63,13 @@ enum {
 };
 
 
-G_DEFINE_TYPE_WITH_CODE (GtkSeparator, gtk_separator, GTK_TYPE_WIDGET,
+G_DEFINE_TYPE_WITH_CODE (GtkSeparator, ctk_separator, GTK_TYPE_WIDGET,
                          G_ADD_PRIVATE (GtkSeparator)
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_ORIENTABLE, NULL))
 
 
 static void
-gtk_separator_set_property (GObject      *object,
+ctk_separator_set_property (GObject      *object,
                             guint         prop_id,
                             const GValue *value,
                             GParamSpec   *pspec)
@@ -83,8 +83,8 @@ gtk_separator_set_property (GObject      *object,
       if (private->orientation != g_value_get_enum (value))
         {
           private->orientation = g_value_get_enum (value);
-          _gtk_orientable_set_style_classes (GTK_ORIENTABLE (object));
-          gtk_widget_queue_resize (GTK_WIDGET (object));
+          _ctk_orientable_set_style_classes (GTK_ORIENTABLE (object));
+          ctk_widget_queue_resize (GTK_WIDGET (object));
           g_object_notify_by_pspec (object, pspec);
         }
       break;
@@ -95,7 +95,7 @@ gtk_separator_set_property (GObject      *object,
 }
 
 static void
-gtk_separator_get_property (GObject    *object,
+ctk_separator_get_property (GObject    *object,
                             guint       prop_id,
                             GValue     *value,
                             GParamSpec *pspec)
@@ -115,11 +115,11 @@ gtk_separator_get_property (GObject    *object,
 }
 
 static void
-gtk_separator_get_preferred_width (GtkWidget *widget,
+ctk_separator_get_preferred_width (GtkWidget *widget,
                                    gint      *minimum,
                                    gint      *natural)
 {
-  gtk_css_gadget_get_preferred_size (GTK_SEPARATOR (widget)->priv->gadget,
+  ctk_css_gadget_get_preferred_size (GTK_SEPARATOR (widget)->priv->gadget,
                                      GTK_ORIENTATION_HORIZONTAL,
                                      -1,
                                      minimum, natural,
@@ -127,11 +127,11 @@ gtk_separator_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-gtk_separator_get_preferred_height (GtkWidget *widget,
+ctk_separator_get_preferred_height (GtkWidget *widget,
                                     gint      *minimum,
                                     gint      *natural)
 {
-  gtk_css_gadget_get_preferred_size (GTK_SEPARATOR (widget)->priv->gadget,
+  ctk_css_gadget_get_preferred_size (GTK_SEPARATOR (widget)->priv->gadget,
                                      GTK_ORIENTATION_VERTICAL,
                                      -1,
                                      minimum, natural,
@@ -139,84 +139,84 @@ gtk_separator_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-gtk_separator_size_allocate (GtkWidget     *widget,
+ctk_separator_size_allocate (GtkWidget     *widget,
                              GtkAllocation *allocation)
 {
   GtkAllocation clip;
 
-  gtk_widget_set_allocation (widget, allocation);
+  ctk_widget_set_allocation (widget, allocation);
 
-  gtk_css_gadget_allocate (GTK_SEPARATOR (widget)->priv->gadget,
+  ctk_css_gadget_allocate (GTK_SEPARATOR (widget)->priv->gadget,
                            allocation,
-                           gtk_widget_get_allocated_baseline (widget),
+                           ctk_widget_get_allocated_baseline (widget),
                            &clip);
 
-  gtk_widget_set_clip (widget, &clip);
+  ctk_widget_set_clip (widget, &clip);
 }
 
 static gboolean
-gtk_separator_draw (GtkWidget *widget,
+ctk_separator_draw (GtkWidget *widget,
                     cairo_t   *cr)
 {
-  gtk_css_gadget_draw (GTK_SEPARATOR (widget)->priv->gadget, cr);
+  ctk_css_gadget_draw (GTK_SEPARATOR (widget)->priv->gadget, cr);
 
   return FALSE;
 }
 
 static void
-gtk_separator_init (GtkSeparator *separator)
+ctk_separator_init (GtkSeparator *separator)
 {
   GtkCssNode *widget_node;
 
-  separator->priv = gtk_separator_get_instance_private (separator);
+  separator->priv = ctk_separator_get_instance_private (separator);
   separator->priv->orientation = GTK_ORIENTATION_HORIZONTAL;
 
-  gtk_widget_set_has_window (GTK_WIDGET (separator), FALSE);
+  ctk_widget_set_has_window (GTK_WIDGET (separator), FALSE);
 
-  _gtk_orientable_set_style_classes (GTK_ORIENTABLE (separator));
+  _ctk_orientable_set_style_classes (GTK_ORIENTABLE (separator));
 
-  widget_node = gtk_widget_get_css_node (GTK_WIDGET (separator));
-  separator->priv->gadget = gtk_css_custom_gadget_new_for_node (widget_node,
+  widget_node = ctk_widget_get_css_node (GTK_WIDGET (separator));
+  separator->priv->gadget = ctk_css_custom_gadget_new_for_node (widget_node,
                                                                 GTK_WIDGET (separator),
                                                                 NULL, NULL, NULL,
                                                                 NULL, NULL);
 }
 
 static void
-gtk_separator_finalize (GObject *object)
+ctk_separator_finalize (GObject *object)
 {
   GtkSeparatorPrivate *priv = GTK_SEPARATOR (object)->priv;
 
   g_clear_object (&priv->gadget);
 
 
-  G_OBJECT_CLASS (gtk_separator_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_separator_parent_class)->finalize (object);
 }
 
 static void
-gtk_separator_class_init (GtkSeparatorClass *class)
+ctk_separator_class_init (GtkSeparatorClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (class);
 
-  object_class->set_property = gtk_separator_set_property;
-  object_class->get_property = gtk_separator_get_property;
-  object_class->finalize = gtk_separator_finalize;
+  object_class->set_property = ctk_separator_set_property;
+  object_class->get_property = ctk_separator_get_property;
+  object_class->finalize = ctk_separator_finalize;
 
-  widget_class->get_preferred_width = gtk_separator_get_preferred_width;
-  widget_class->get_preferred_height = gtk_separator_get_preferred_height;
-  widget_class->size_allocate = gtk_separator_size_allocate;
+  widget_class->get_preferred_width = ctk_separator_get_preferred_width;
+  widget_class->get_preferred_height = ctk_separator_get_preferred_height;
+  widget_class->size_allocate = ctk_separator_size_allocate;
 
-  widget_class->draw = gtk_separator_draw;
+  widget_class->draw = ctk_separator_draw;
 
   g_object_class_override_property (object_class, PROP_ORIENTATION, "orientation");
 
-  gtk_widget_class_set_accessible_role (widget_class, ATK_ROLE_SEPARATOR);
-  gtk_widget_class_set_css_name (widget_class, "separator");
+  ctk_widget_class_set_accessible_role (widget_class, ATK_ROLE_SEPARATOR);
+  ctk_widget_class_set_css_name (widget_class, "separator");
 }
 
 /**
- * gtk_separator_new:
+ * ctk_separator_new:
  * @orientation: the separator’s orientation.
  *
  * Creates a new #GtkSeparator with the given orientation.
@@ -226,7 +226,7 @@ gtk_separator_class_init (GtkSeparatorClass *class)
  * Since: 3.0
  */
 GtkWidget *
-gtk_separator_new (GtkOrientation orientation)
+ctk_separator_new (GtkOrientation orientation)
 {
   return g_object_new (GTK_TYPE_SEPARATOR,
                        "orientation", orientation,

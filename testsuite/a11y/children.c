@@ -36,13 +36,13 @@ test_scrolled_window_child_count (void)
   GtkWidget *sw;
   AtkObject *accessible;
 
-  sw = gtk_scrolled_window_new (NULL, NULL);
+  sw = ctk_scrolled_window_new (NULL, NULL);
   g_object_ref_sink (sw);
-  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
+  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
                                   GTK_POLICY_ALWAYS, GTK_POLICY_ALWAYS);
-  gtk_container_add (GTK_CONTAINER (sw), gtk_label_new ("Bla"));
+  ctk_container_add (GTK_CONTAINER (sw), ctk_label_new ("Bla"));
 
-  accessible = gtk_widget_get_accessible (sw);
+  accessible = ctk_widget_get_accessible (sw);
   g_assert_cmpint (atk_object_get_n_accessible_children (accessible), ==, 3);
 
   g_object_unref (sw);
@@ -77,12 +77,12 @@ remove_child (STATE *state,
       switch (i)
         {
         case 0:
-          gtk_entry_set_icon_from_gicon (GTK_ENTRY (state->widget),
+          ctk_entry_set_icon_from_gicon (GTK_ENTRY (state->widget),
                                          GTK_ENTRY_ICON_PRIMARY,
                                          NULL);
         return;
         case 1:
-          gtk_entry_set_icon_from_gicon (GTK_ENTRY (state->widget),
+          ctk_entry_set_icon_from_gicon (GTK_ENTRY (state->widget),
                                          GTK_ENTRY_ICON_SECONDARY,
                                          NULL);
         return;
@@ -94,11 +94,11 @@ remove_child (STATE *state,
   child = state->child [i];
   if (GTK_IS_SCROLLED_WINDOW (state->widget))
     {
-      if (gtk_widget_get_parent (child) != state->widget)
-        child = gtk_widget_get_parent (child);
+      if (ctk_widget_get_parent (child) != state->widget)
+        child = ctk_widget_get_parent (child);
     }
 
-  gtk_container_remove (GTK_CONTAINER (state->widget), child);
+  ctk_container_remove (GTK_CONTAINER (state->widget), child);
 }
 
 static void
@@ -116,12 +116,12 @@ do_create_child (STATE *state, gint i)
       switch (i)
         {
         case 0:
-          gtk_entry_set_icon_from_icon_name (GTK_ENTRY (state->widget),
+          ctk_entry_set_icon_from_icon_name (GTK_ENTRY (state->widget),
                                              GTK_ENTRY_ICON_PRIMARY,
                                              "dialog-warning-symbolic");
         return TRUE;
         case 1:
-          gtk_entry_set_icon_from_icon_name (GTK_ENTRY (state->widget),
+          ctk_entry_set_icon_from_icon_name (GTK_ENTRY (state->widget),
                                              GTK_ENTRY_ICON_SECONDARY,
                                              "edit-clear");
         return TRUE;
@@ -129,10 +129,10 @@ do_create_child (STATE *state, gint i)
           return FALSE;
         }
     }
-  else if (gtk_container_child_type (GTK_CONTAINER (state->widget)) == G_TYPE_NONE)
+  else if (ctk_container_child_type (GTK_CONTAINER (state->widget)) == G_TYPE_NONE)
     return FALSE;
 
-  state->child[i] = gtk_label_new ("bla");
+  state->child[i] = ctk_label_new ("bla");
   return TRUE;
 }
 
@@ -149,7 +149,7 @@ test_add_remove (GtkWidget *widget)
   gint step_children;
 
   state.widget = widget;
-  accessible = gtk_widget_get_accessible (widget);
+  accessible = ctk_widget_get_accessible (widget);
 
   add_data.count = 0;
   remove_data.count = 0;
@@ -167,10 +167,10 @@ test_add_remove (GtkWidget *widget)
       if (!GTK_IS_ENTRY (widget))
         {
           parent_data[i].count = 0;
-          child_accessible = gtk_widget_get_accessible (state.child[i]);
+          child_accessible = ctk_widget_get_accessible (state.child[i]);
           g_signal_connect (child_accessible, "notify::accessible-parent",
                             G_CALLBACK (parent_notify), &(parent_data[i]));
-          gtk_container_add (GTK_CONTAINER (widget), state.child[i]);
+          ctk_container_add (GTK_CONTAINER (widget), state.child[i]);
         }
       else
         child_accessible = atk_object_ref_accessible_child (accessible, i);
@@ -240,29 +240,29 @@ add_child_tests (GtkWidget *widget)
 int
 main (int argc, char *argv[])
 {
-  gtk_test_init (&argc, &argv, NULL);
+  ctk_test_init (&argc, &argv, NULL);
 
   g_test_add_func ("/scrolledwindow/child-count", test_scrolled_window_child_count);
 
-  add_child_tests (gtk_scrolled_window_new (NULL, NULL));
-  add_child_tests (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0));
-  add_child_tests (gtk_paned_new (GTK_ORIENTATION_HORIZONTAL));
-  add_child_tests (gtk_grid_new ());
-  add_child_tests (gtk_event_box_new ());
-  add_child_tests (gtk_window_new (GTK_WINDOW_TOPLEVEL));
-  add_child_tests (gtk_assistant_new ());
-  add_child_tests (gtk_frame_new ("frame"));
-  add_child_tests (gtk_expander_new ("expander"));
-  add_child_tests (gtk_table_new (2, 2, FALSE));
-  add_child_tests (gtk_text_view_new ());
-  add_child_tests (gtk_tree_view_new ());
+  add_child_tests (ctk_scrolled_window_new (NULL, NULL));
+  add_child_tests (ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0));
+  add_child_tests (ctk_paned_new (GTK_ORIENTATION_HORIZONTAL));
+  add_child_tests (ctk_grid_new ());
+  add_child_tests (ctk_event_box_new ());
+  add_child_tests (ctk_window_new (GTK_WINDOW_TOPLEVEL));
+  add_child_tests (ctk_assistant_new ());
+  add_child_tests (ctk_frame_new ("frame"));
+  add_child_tests (ctk_expander_new ("expander"));
+  add_child_tests (ctk_table_new (2, 2, FALSE));
+  add_child_tests (ctk_text_view_new ());
+  add_child_tests (ctk_tree_view_new ());
 #if 0
   /* gail doesn't handle non-label children in these */
-  add_child_tests (gtk_button_new ());
-  add_child_tests (gtk_statusbar_new ());
+  add_child_tests (ctk_button_new ());
+  add_child_tests (ctk_statusbar_new ());
 #endif
-  add_child_tests (gtk_notebook_new ());
-  add_child_tests (gtk_entry_new ());
+  add_child_tests (ctk_notebook_new ());
+  add_child_tests (ctk_entry_new ());
 
   return g_test_run ();
 }

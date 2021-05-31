@@ -25,7 +25,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_IMAGE_FALLBACK           (_gtk_css_image_fallback_get_type ())
+#define GTK_TYPE_CSS_IMAGE_FALLBACK           (_ctk_css_image_fallback_get_type ())
 #define GTK_CSS_IMAGE_FALLBACK(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_IMAGE_FALLBACK, GtkCssImageFallback))
 #define GTK_CSS_IMAGE_FALLBACK_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_IMAGE_FALLBACK, GtkCssImageFallbackClass))
 #define GTK_IS_CSS_IMAGE_FALLBACK(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_IMAGE_FALLBACK))
@@ -52,7 +52,7 @@ struct _GtkCssImageFallbackClass
   GtkCssImageClass parent_class;
 };
 
-GType          _gtk_css_image_fallback_get_type             (void) G_GNUC_CONST;
+GType          _ctk_css_image_fallback_get_type             (void) G_GNUC_CONST;
 
 G_END_DECLS
 

@@ -43,12 +43,12 @@ static const GtkIMContextInfo *info_list[] = {
 #ifndef INCLUDE_IM_thai
 #define MODULE_ENTRY(type, function) G_MODULE_EXPORT type im_module_ ## function
 #else
-#define MODULE_ENTRY(type, function) type _gtk_immodule_thai_ ## function
+#define MODULE_ENTRY(type, function) type _ctk_immodule_thai_ ## function
 #endif
 
 MODULE_ENTRY (void, init) (GTypeModule *module)
 {
-  gtk_im_context_thai_register_type (module);
+  ctk_im_context_thai_register_type (module);
 }
 
 MODULE_ENTRY (void, exit) (void)
@@ -65,7 +65,7 @@ MODULE_ENTRY (void, list) (const GtkIMContextInfo ***contexts,
 MODULE_ENTRY (GtkIMContext *, create) (const gchar *context_id)
 {
   if (strcmp (context_id, "thai") == 0)
-    return gtk_im_context_thai_new ();
+    return ctk_im_context_thai_new ();
   else
     return NULL;
 }

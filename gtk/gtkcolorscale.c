@@ -51,10 +51,10 @@ static void hold_action (GtkGestureLongPress *gesture,
                          gdouble              y,
                          GtkColorScale       *scale);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkColorScale, gtk_color_scale, GTK_TYPE_SCALE)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkColorScale, ctk_color_scale, GTK_TYPE_SCALE)
 
 void
-gtk_color_scale_draw_trough (GtkColorScale  *scale,
+ctk_color_scale_draw_trough (GtkColorScale  *scale,
                              cairo_t        *cr,
                              int             x,
                              int             y,
@@ -73,8 +73,8 @@ gtk_color_scale_draw_trough (GtkColorScale  *scale,
   cairo_rectangle (cr, 0, 0, width, height);
   cairo_clip (cr);
 
-  if (gtk_orientable_get_orientation (GTK_ORIENTABLE (widget)) == GTK_ORIENTATION_HORIZONTAL &&
-      gtk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL)
+  if (ctk_orientable_get_orientation (GTK_ORIENTABLE (widget)) == GTK_ORIENTATION_HORIZONTAL &&
+      ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL)
     {
       cairo_translate (cr, width, 0);
       cairo_scale (cr, -1, 1);
@@ -102,7 +102,7 @@ gtk_color_scale_draw_trough (GtkColorScale  *scale,
           p = data + y * (stride / 4);
           for (x = 0; x < width; x++)
             {
-              gtk_hsv_to_rgb (h, 1, 1, &r, &g, &b);
+              ctk_hsv_to_rgb (h, 1, 1, &r, &g, &b);
               red = CLAMP (r * 255, 0, 255);
               green = CLAMP (g * 255, 0, 255);
               blue = CLAMP (b * 255, 0, 255);
@@ -129,7 +129,7 @@ gtk_color_scale_draw_trough (GtkColorScale  *scale,
       cairo_paint (cr);
       cairo_set_source_rgb (cr, 0.66, 0.66, 0.66);
 
-      pattern = _gtk_color_chooser_get_checkered_pattern ();
+      pattern = _ctk_color_chooser_get_checkered_pattern ();
       cairo_matrix_init_scale (&matrix, 0.125, 0.125);
       cairo_pattern_set_matrix (pattern, &matrix);
       cairo_mask (cr, pattern);
@@ -149,22 +149,22 @@ gtk_color_scale_draw_trough (GtkColorScale  *scale,
 }
 
 static void
-gtk_color_scale_init (GtkColorScale *scale)
+ctk_color_scale_init (GtkColorScale *scale)
 {
   GtkStyleContext *context;
 
-  scale->priv = gtk_color_scale_get_instance_private (scale);
+  scale->priv = ctk_color_scale_get_instance_private (scale);
 
-  gtk_widget_add_events (GTK_WIDGET (scale), GDK_TOUCH_MASK);
+  ctk_widget_add_events (GTK_WIDGET (scale), GDK_TOUCH_MASK);
 
-  scale->priv->long_press_gesture = gtk_gesture_long_press_new (GTK_WIDGET (scale));
+  scale->priv->long_press_gesture = ctk_gesture_long_press_new (GTK_WIDGET (scale));
   g_signal_connect (scale->priv->long_press_gesture, "pressed",
                     G_CALLBACK (hold_action), scale);
-  gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (scale->priv->long_press_gesture),
+  ctk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (scale->priv->long_press_gesture),
                                               GTK_PHASE_TARGET);
 
-  context = gtk_widget_get_style_context (GTK_WIDGET (scale));
-  gtk_style_context_add_class (context, "color");
+  context = ctk_widget_get_style_context (GTK_WIDGET (scale));
+  ctk_style_context_add_class (context, "color");
 }
 
 static void
@@ -174,7 +174,7 @@ scale_finalize (GObject *object)
 
   g_clear_object (&scale->priv->long_press_gesture);
 
-  G_OBJECT_CLASS (gtk_color_scale_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_color_scale_parent_class)->finalize (object);
 }
 
 static void
@@ -204,7 +204,7 @@ scale_set_type (GtkColorScale     *scale,
 
   scale->priv->type = type;
 
-  atk_obj = gtk_widget_get_accessible (GTK_WIDGET (scale));
+  atk_obj = ctk_widget_get_accessible (GTK_WIDGET (scale));
   if (GTK_IS_ACCESSIBLE (atk_obj))
     {
       if (type == GTK_COLOR_SCALE_HUE)
@@ -246,7 +246,7 @@ hold_action (GtkGestureLongPress *gesture,
 }
 
 static void
-gtk_color_scale_class_init (GtkColorScaleClass *class)
+ctk_color_scale_class_init (GtkColorScaleClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
 
@@ -261,15 +261,15 @@ gtk_color_scale_class_init (GtkColorScaleClass *class)
 }
 
 void
-gtk_color_scale_set_rgba (GtkColorScale *scale,
+ctk_color_scale_set_rgba (GtkColorScale *scale,
                           const GdkRGBA *color)
 {
   scale->priv->color = *color;
-  gtk_widget_queue_draw (GTK_WIDGET (scale));
+  ctk_widget_queue_draw (GTK_WIDGET (scale));
 }
 
 GtkWidget *
-gtk_color_scale_new (GtkAdjustment     *adjustment,
+ctk_color_scale_new (GtkAdjustment     *adjustment,
                      GtkColorScaleType  type)
 {
   return g_object_new (GTK_TYPE_COLOR_SCALE,

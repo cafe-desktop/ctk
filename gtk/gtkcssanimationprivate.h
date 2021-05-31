@@ -27,7 +27,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_ANIMATION           (_gtk_css_animation_get_type ())
+#define GTK_TYPE_CSS_ANIMATION           (_ctk_css_animation_get_type ())
 #define GTK_CSS_ANIMATION(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_ANIMATION, GtkCssAnimation))
 #define GTK_CSS_ANIMATION_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_ANIMATION, GtkCssAnimationClass))
 #define GTK_IS_CSS_ANIMATION(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_ANIMATION))
@@ -55,9 +55,9 @@ struct _GtkCssAnimationClass
   GtkStyleAnimationClass parent_class;
 };
 
-GType                   _gtk_css_animation_get_type        (void) G_GNUC_CONST;
+GType                   _ctk_css_animation_get_type        (void) G_GNUC_CONST;
 
-GtkStyleAnimation *     _gtk_css_animation_new             (const char         *name,
+GtkStyleAnimation *     _ctk_css_animation_new             (const char         *name,
                                                             GtkCssKeyframes    *keyframes,
                                                             gint64              timestamp,
                                                             gint64              delay_us,
@@ -68,11 +68,11 @@ GtkStyleAnimation *     _gtk_css_animation_new             (const char         *
                                                             GtkCssFillMode      fill_mode,
                                                             double              iteration_count);
 
-GtkStyleAnimation *     _gtk_css_animation_advance_with_play_state (GtkCssAnimation   *animation,
+GtkStyleAnimation *     _ctk_css_animation_advance_with_play_state (GtkCssAnimation   *animation,
                                                                     gint64             timestamp,
                                                                     GtkCssPlayState    play_state);
 
-const char *            _gtk_css_animation_get_name        (GtkCssAnimation   *animation);
+const char *            _ctk_css_animation_get_name        (GtkCssAnimation   *animation);
 
 G_END_DECLS
 

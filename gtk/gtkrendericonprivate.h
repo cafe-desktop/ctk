@@ -28,7 +28,7 @@
 
 G_BEGIN_DECLS
 
-void    gtk_css_style_render_icon               (GtkCssStyle            *style,
+void    ctk_css_style_render_icon               (GtkCssStyle            *style,
                                                  cairo_t                *cr,
                                                  double                  x,
                                                  double                  y,
@@ -36,13 +36,13 @@ void    gtk_css_style_render_icon               (GtkCssStyle            *style,
                                                  double                  height,
                                                  GtkCssImageBuiltinType  builtin_type);
 
-void    gtk_css_style_render_icon_surface       (GtkCssStyle            *style,
+void    ctk_css_style_render_icon_surface       (GtkCssStyle            *style,
                                                  cairo_t                *cr,
                                                  cairo_surface_t        *surface,
                                                  double                  x,
                                                  double                  y);
 
-void    gtk_css_style_render_icon_get_extents   (GtkCssStyle            *style,
+void    ctk_css_style_render_icon_get_extents   (GtkCssStyle            *style,
                                                  GdkRectangle           *extents,
                                                  gint                    x,
                                                  gint                    y,

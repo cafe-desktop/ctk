@@ -49,9 +49,9 @@ row_new (const gchar* text, gint sort_id) {
   row = g_object_new (row_get_type (), NULL);
   if (text != NULL)
     {
-      row->label = gtk_label_new (text);
-      gtk_container_add (GTK_CONTAINER (row), row->label);
-      gtk_widget_show (row->label);
+      row->label = ctk_label_new (text);
+      ctk_container_add (GTK_CONTAINER (row), row->label);
+      ctk_widget_show (row->label);
     }
   row->sort_id = sort_id;
 
@@ -67,31 +67,31 @@ update_header_cb (Row *row, Row *before, gpointer data)
 
   if (before == NULL ||
       (row->label != NULL &&
-       strcmp (gtk_label_get_text (GTK_LABEL (row->label)), "blah3") == 0))
+       strcmp (ctk_label_get_text (GTK_LABEL (row->label)), "blah3") == 0))
     {
       /* Create header if needed */
-      if (gtk_list_box_row_get_header (GTK_LIST_BOX_ROW (row)) == NULL)
+      if (ctk_list_box_row_get_header (GTK_LIST_BOX_ROW (row)) == NULL)
         {
-          hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-          l = gtk_label_new ("Header");
-          gtk_container_add (GTK_CONTAINER (hbox), l);
-          b = gtk_button_new_with_label ("button");
-          gtk_container_add (GTK_CONTAINER (hbox), b);
-          gtk_widget_show (l);
-          gtk_widget_show (b);
-          gtk_list_box_row_set_header (GTK_LIST_BOX_ROW (row), hbox);
+          hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+          l = ctk_label_new ("Header");
+          ctk_container_add (GTK_CONTAINER (hbox), l);
+          b = ctk_button_new_with_label ("button");
+          ctk_container_add (GTK_CONTAINER (hbox), b);
+          ctk_widget_show (l);
+          ctk_widget_show (b);
+          ctk_list_box_row_set_header (GTK_LIST_BOX_ROW (row), hbox);
       }
 
-      hbox = gtk_list_box_row_get_header(GTK_LIST_BOX_ROW (row));
+      hbox = ctk_list_box_row_get_header(GTK_LIST_BOX_ROW (row));
 
-      children = gtk_container_get_children (GTK_CONTAINER (hbox));
+      children = ctk_container_get_children (GTK_CONTAINER (hbox));
       l = children->data;
       g_list_free (children);
-      gtk_label_set_text (GTK_LABEL (l), g_strdup_printf ("Header %d", row->sort_id));
+      ctk_label_set_text (GTK_LABEL (l), g_strdup_printf ("Header %d", row->sort_id));
     }
   else
     {
-      gtk_list_box_row_set_header(GTK_LIST_BOX_ROW (row), NULL);
+      ctk_list_box_row_set_header(GTK_LIST_BOX_ROW (row), NULL);
     }
 }
 
@@ -114,7 +114,7 @@ filter_cb (Row *row, gpointer data)
 
   if (row->label != NULL)
     {
-      text = gtk_label_get_text (GTK_LABEL (row->label));
+      text = ctk_label_get_text (GTK_LABEL (row->label));
       return strcmp (text, "blah3") != 0;
     }
 
@@ -141,7 +141,7 @@ sort_clicked_cb (GtkButton *button,
 {
   GtkListBox *list = data;
 
-  gtk_list_box_set_sort_func (list, (GtkListBoxSortFunc)sort_cb, NULL, NULL);
+  ctk_list_box_set_sort_func (list, (GtkListBoxSortFunc)sort_cb, NULL, NULL);
 }
 
 static void
@@ -150,7 +150,7 @@ reverse_sort_clicked_cb (GtkButton *button,
 {
   GtkListBox *list = data;
 
-  gtk_list_box_set_sort_func (list, (GtkListBoxSortFunc)reverse_sort_cb, NULL, NULL);
+  ctk_list_box_set_sort_func (list, (GtkListBoxSortFunc)reverse_sort_cb, NULL, NULL);
 }
 
 static void
@@ -159,7 +159,7 @@ filter_clicked_cb (GtkButton *button,
 {
   GtkListBox *list = data;
 
-  gtk_list_box_set_filter_func (list, (GtkListBoxFilterFunc)filter_cb, NULL, NULL);
+  ctk_list_box_set_filter_func (list, (GtkListBoxFilterFunc)filter_cb, NULL, NULL);
 }
 
 static void
@@ -168,7 +168,7 @@ unfilter_clicked_cb (GtkButton *button,
 {
   GtkListBox *list = data;
 
-  gtk_list_box_set_filter_func (list, NULL, NULL, NULL);
+  ctk_list_box_set_filter_func (list, NULL, NULL, NULL);
 }
 
 static void
@@ -177,17 +177,17 @@ change_clicked_cb (GtkButton *button,
 {
   Row *row = data;
 
-  if (strcmp (gtk_label_get_text (GTK_LABEL (row->label)), "blah3") == 0)
+  if (strcmp (ctk_label_get_text (GTK_LABEL (row->label)), "blah3") == 0)
     {
-      gtk_label_set_text (GTK_LABEL (row->label), "blah5");
+      ctk_label_set_text (GTK_LABEL (row->label), "blah5");
       row->sort_id = 5;
     }
   else
     {
-      gtk_label_set_text (GTK_LABEL (row->label), "blah3");
+      ctk_label_set_text (GTK_LABEL (row->label), "blah3");
       row->sort_id = 3;
     }
-  gtk_list_box_row_changed (GTK_LIST_BOX_ROW (row));
+  ctk_list_box_row_changed (GTK_LIST_BOX_ROW (row));
 }
 
 static void
@@ -199,8 +199,8 @@ add_clicked_cb (GtkButton *button,
   static int new_button_nr = 1;
 
   new_row = row_new( g_strdup_printf ("blah2 new %d", new_button_nr), new_button_nr);
-  gtk_widget_show_all (new_row);
-  gtk_container_add (GTK_CONTAINER (list), new_row);
+  ctk_widget_show_all (new_row);
+  ctk_container_add (GTK_CONTAINER (list), new_row);
   new_button_nr++;
 }
 
@@ -210,7 +210,7 @@ separate_clicked_cb (GtkButton *button,
 {
   GtkListBox *list = data;
 
-  gtk_list_box_set_header_func (list, (GtkListBoxUpdateHeaderFunc)update_header_cb, NULL, NULL);
+  ctk_list_box_set_header_func (list, (GtkListBoxUpdateHeaderFunc)update_header_cb, NULL, NULL);
 }
 
 static void
@@ -219,7 +219,7 @@ unseparate_clicked_cb (GtkButton *button,
 {
   GtkListBox *list = data;
 
-  gtk_list_box_set_header_func (list, NULL, NULL, NULL);
+  ctk_list_box_set_header_func (list, NULL, NULL, NULL);
 }
 
 static void
@@ -228,7 +228,7 @@ visibility_clicked_cb (GtkButton *button,
 {
   GtkWidget *row = data;
 
-  gtk_widget_set_visible (row, !gtk_widget_get_visible (row));
+  ctk_widget_set_visible (row, !ctk_widget_get_visible (row));
 }
 
 static void
@@ -236,7 +236,7 @@ selection_mode_changed (GtkComboBox *combo, gpointer data)
 {
   GtkListBox *list = data;
 
-  gtk_list_box_set_selection_mode (list, gtk_combo_box_get_active (combo));
+  ctk_list_box_set_selection_mode (list, ctk_combo_box_get_active (combo));
 }
 
 static void
@@ -244,8 +244,8 @@ single_click_clicked (GtkButton *check, gpointer data)
 {
   GtkListBox *list = data;
 
-  g_print ("single: %d\n", gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check)));
-  gtk_list_box_set_activate_on_single_click (list, gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check)));
+  g_print ("single: %d\n", ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check)));
+  ctk_list_box_set_activate_on_single_click (list, ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check)));
 }
 
 int
@@ -255,120 +255,120 @@ main (int argc, char *argv[])
   GtkWidget *window, *hbox, *vbox, *list, *row, *row3, *row_vbox, *row_hbox, *l;
   GtkWidget *check, *button, *combo, *scrolled;
 
-  gtk_init (NULL, NULL);
+  ctk_init (NULL, NULL);
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  gtk_container_add (GTK_CONTAINER (window), hbox);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_container_add (GTK_CONTAINER (window), hbox);
 
-  provider = gtk_css_provider_new ();
-  gtk_css_provider_load_from_data (provider, css, -1, NULL);
-  gtk_style_context_add_provider_for_screen (gtk_widget_get_screen (window),
+  provider = ctk_css_provider_new ();
+  ctk_css_provider_load_from_data (provider, css, -1, NULL);
+  ctk_style_context_add_provider_for_screen (ctk_widget_get_screen (window),
                                              GTK_STYLE_PROVIDER (provider),
                                              GTK_STYLE_PROVIDER_PRIORITY_USER);
 
 
-  list = gtk_list_box_new ();
+  list = ctk_list_box_new ();
 
-  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  gtk_container_add (GTK_CONTAINER (hbox), vbox);
+  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+  ctk_container_add (GTK_CONTAINER (hbox), vbox);
 
-  combo = gtk_combo_box_text_new ();
-  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo),
+  combo = ctk_combo_box_text_new ();
+  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo),
                                   "GTK_SELECTION_NONE");
-  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo),
+  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo),
                                   "GTK_SELECTION_SINGLE");
-  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo),
+  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo),
                                   "GTK_SELECTION_BROWSE");
   g_signal_connect (combo, "changed", G_CALLBACK (selection_mode_changed), list);
-  gtk_container_add (GTK_CONTAINER (vbox), combo);
-  gtk_combo_box_set_active (GTK_COMBO_BOX (combo), gtk_list_box_get_selection_mode (GTK_LIST_BOX (list)));
-  check = gtk_check_button_new_with_label ("single click mode");
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check), gtk_list_box_get_activate_on_single_click (GTK_LIST_BOX (list)));
+  ctk_container_add (GTK_CONTAINER (vbox), combo);
+  ctk_combo_box_set_active (GTK_COMBO_BOX (combo), ctk_list_box_get_selection_mode (GTK_LIST_BOX (list)));
+  check = ctk_check_button_new_with_label ("single click mode");
+  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check), ctk_list_box_get_activate_on_single_click (GTK_LIST_BOX (list)));
   g_signal_connect (check, "toggled", G_CALLBACK (single_click_clicked), list);
-  gtk_container_add (GTK_CONTAINER (vbox), check);
+  ctk_container_add (GTK_CONTAINER (vbox), check);
 
-  scrolled = gtk_scrolled_window_new (NULL, NULL);
-  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled), GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
-  gtk_container_add (GTK_CONTAINER (scrolled), list);
-  gtk_container_add (GTK_CONTAINER (hbox), scrolled);
+  scrolled = ctk_scrolled_window_new (NULL, NULL);
+  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled), GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
+  ctk_container_add (GTK_CONTAINER (scrolled), list);
+  ctk_container_add (GTK_CONTAINER (hbox), scrolled);
 
   g_signal_connect (list, "row-activated", G_CALLBACK (row_activated_cb), NULL);
   g_signal_connect (list, "row-selected", G_CALLBACK (row_selected_cb), NULL);
 
   row = row_new ("blah4", 4);
-  gtk_container_add (GTK_CONTAINER (list), row);
+  ctk_container_add (GTK_CONTAINER (list), row);
   row3 = row = row_new ("blah3", 3);
-  gtk_container_add (GTK_CONTAINER (list), row);
+  ctk_container_add (GTK_CONTAINER (list), row);
   row = row_new ("blah1", 1);
-  gtk_container_add (GTK_CONTAINER (list), row);
+  ctk_container_add (GTK_CONTAINER (list), row);
   row = row_new ("blah2", 2);
-  gtk_container_add (GTK_CONTAINER (list), row);
+  ctk_container_add (GTK_CONTAINER (list), row);
 
   row = row_new (NULL, 0);
-  row_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  row_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  l = gtk_label_new ("da box for da man");
-  gtk_container_add (GTK_CONTAINER (row_hbox), l);
-  check = gtk_check_button_new ();
-  gtk_container_add (GTK_CONTAINER (row_hbox), check);
-  button = gtk_button_new_with_label ("ya!");
-  gtk_container_add (GTK_CONTAINER (row_hbox), button);
-  gtk_container_add (GTK_CONTAINER (row_vbox), row_hbox);
-  check = gtk_check_button_new ();
-  gtk_container_add (GTK_CONTAINER (row_vbox), check);
-  gtk_container_add (GTK_CONTAINER (row), row_vbox);
-  gtk_container_add (GTK_CONTAINER (list), row);
+  row_vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+  row_hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  l = ctk_label_new ("da box for da man");
+  ctk_container_add (GTK_CONTAINER (row_hbox), l);
+  check = ctk_check_button_new ();
+  ctk_container_add (GTK_CONTAINER (row_hbox), check);
+  button = ctk_button_new_with_label ("ya!");
+  ctk_container_add (GTK_CONTAINER (row_hbox), button);
+  ctk_container_add (GTK_CONTAINER (row_vbox), row_hbox);
+  check = ctk_check_button_new ();
+  ctk_container_add (GTK_CONTAINER (row_vbox), check);
+  ctk_container_add (GTK_CONTAINER (row), row_vbox);
+  ctk_container_add (GTK_CONTAINER (list), row);
 
   row = row_new (NULL, 0);
-  button = gtk_button_new_with_label ("focusable row");
-  gtk_widget_set_hexpand (button, FALSE);
-  gtk_widget_set_halign (button, GTK_ALIGN_START);
-  gtk_container_add (GTK_CONTAINER (row), button);
-  gtk_container_add (GTK_CONTAINER (list), row);
+  button = ctk_button_new_with_label ("focusable row");
+  ctk_widget_set_hexpand (button, FALSE);
+  ctk_widget_set_halign (button, GTK_ALIGN_START);
+  ctk_container_add (GTK_CONTAINER (row), button);
+  ctk_container_add (GTK_CONTAINER (list), row);
 
-  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  gtk_container_add (GTK_CONTAINER (hbox), vbox);
+  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+  ctk_container_add (GTK_CONTAINER (hbox), vbox);
 
-  button = gtk_button_new_with_label ("sort");
-  gtk_container_add (GTK_CONTAINER (vbox), button);
+  button = ctk_button_new_with_label ("sort");
+  ctk_container_add (GTK_CONTAINER (vbox), button);
   g_signal_connect (button, "clicked", G_CALLBACK (sort_clicked_cb), list);
 
-  button = gtk_button_new_with_label ("reverse");
-  gtk_container_add (GTK_CONTAINER (vbox), button);
+  button = ctk_button_new_with_label ("reverse");
+  ctk_container_add (GTK_CONTAINER (vbox), button);
   g_signal_connect (button, "clicked", G_CALLBACK (reverse_sort_clicked_cb), list);
 
-  button = gtk_button_new_with_label ("change");
-  gtk_container_add (GTK_CONTAINER (vbox), button);
+  button = ctk_button_new_with_label ("change");
+  ctk_container_add (GTK_CONTAINER (vbox), button);
   g_signal_connect (button, "clicked", G_CALLBACK (change_clicked_cb), row3);
 
-  button = gtk_button_new_with_label ("filter");
-  gtk_container_add (GTK_CONTAINER (vbox), button);
+  button = ctk_button_new_with_label ("filter");
+  ctk_container_add (GTK_CONTAINER (vbox), button);
   g_signal_connect (button, "clicked", G_CALLBACK (filter_clicked_cb), list);
 
-  button = gtk_button_new_with_label ("unfilter");
-  gtk_container_add (GTK_CONTAINER (vbox), button);
+  button = ctk_button_new_with_label ("unfilter");
+  ctk_container_add (GTK_CONTAINER (vbox), button);
   g_signal_connect (button, "clicked", G_CALLBACK (unfilter_clicked_cb), list);
 
-  button = gtk_button_new_with_label ("add");
-  gtk_container_add (GTK_CONTAINER (vbox), button);
+  button = ctk_button_new_with_label ("add");
+  ctk_container_add (GTK_CONTAINER (vbox), button);
   g_signal_connect (button, "clicked", G_CALLBACK (add_clicked_cb), list);
 
-  button = gtk_button_new_with_label ("separate");
-  gtk_container_add (GTK_CONTAINER (vbox), button);
+  button = ctk_button_new_with_label ("separate");
+  ctk_container_add (GTK_CONTAINER (vbox), button);
   g_signal_connect (button, "clicked", G_CALLBACK (separate_clicked_cb), list);
 
-  button = gtk_button_new_with_label ("unseparate");
-  gtk_container_add (GTK_CONTAINER (vbox), button);
+  button = ctk_button_new_with_label ("unseparate");
+  ctk_container_add (GTK_CONTAINER (vbox), button);
   g_signal_connect (button, "clicked", G_CALLBACK (unseparate_clicked_cb), list);
 
-  button = gtk_button_new_with_label ("visibility");
-  gtk_container_add (GTK_CONTAINER (vbox), button);
+  button = ctk_button_new_with_label ("visibility");
+  ctk_container_add (GTK_CONTAINER (vbox), button);
   g_signal_connect (button, "clicked", G_CALLBACK (visibility_clicked_cb), row3);
 
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

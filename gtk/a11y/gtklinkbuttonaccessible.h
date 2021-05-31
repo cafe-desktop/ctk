@@ -26,7 +26,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_LINK_BUTTON_ACCESSIBLE                (gtk_link_button_accessible_get_type ())
+#define GTK_TYPE_LINK_BUTTON_ACCESSIBLE                (ctk_link_button_accessible_get_type ())
 #define GTK_LINK_BUTTON_ACCESSIBLE(obj)                (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_LINK_BUTTON_ACCESSIBLE, GtkLinkButtonAccessible))
 #define GTK_LINK_BUTTON_ACCESSIBLE_CLASS(klass)        (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_LINK_BUTTON_ACCESSIBLE, GtkLinkButtonAccessibleClass))
 #define GTK_IS_LINK_BUTTON_ACCESSIBLE(obj)             (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_LINK_BUTTON_ACCESSIBLE))
@@ -50,7 +50,7 @@ struct _GtkLinkButtonAccessibleClass
 };
 
 GDK_AVAILABLE_IN_ALL
-GType gtk_link_button_accessible_get_type (void);
+GType ctk_link_button_accessible_get_type (void);
 
 G_END_DECLS
 

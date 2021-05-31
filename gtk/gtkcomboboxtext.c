@@ -36,20 +36,20 @@
  * A GtkComboBoxText is a simple variant of #GtkComboBox that hides
  * the model-view complexity for simple text-only use cases.
  *
- * To create a GtkComboBoxText, use gtk_combo_box_text_new() or
- * gtk_combo_box_text_new_with_entry().
+ * To create a GtkComboBoxText, use ctk_combo_box_text_new() or
+ * ctk_combo_box_text_new_with_entry().
  *
  * You can add items to a GtkComboBoxText with
- * gtk_combo_box_text_append_text(), gtk_combo_box_text_insert_text()
- * or gtk_combo_box_text_prepend_text() and remove options with
- * gtk_combo_box_text_remove().
+ * ctk_combo_box_text_append_text(), ctk_combo_box_text_insert_text()
+ * or ctk_combo_box_text_prepend_text() and remove options with
+ * ctk_combo_box_text_remove().
  *
  * If the GtkComboBoxText contains an entry (via the “has-entry” property),
- * its contents can be retrieved using gtk_combo_box_text_get_active_text().
- * The entry itself can be accessed by calling gtk_bin_get_child() on the
+ * its contents can be retrieved using ctk_combo_box_text_get_active_text().
+ * The entry itself can be accessed by calling ctk_bin_get_child() on the
  * combo box.
  *
- * You should not call gtk_combo_box_set_model() or attempt to pack more cells
+ * You should not call ctk_combo_box_set_model() or attempt to pack more cells
  * into this combo box via its GtkCellLayout interface.
  *
  * # GtkComboBoxText as GtkBuildable
@@ -86,15 +86,15 @@
  * children, and the .linked class to the node of its internal box.
  */
 
-static void     gtk_combo_box_text_buildable_interface_init     (GtkBuildableIface *iface);
-static gboolean gtk_combo_box_text_buildable_custom_tag_start   (GtkBuildable     *buildable,
+static void     ctk_combo_box_text_buildable_interface_init     (GtkBuildableIface *iface);
+static gboolean ctk_combo_box_text_buildable_custom_tag_start   (GtkBuildable     *buildable,
 								 GtkBuilder       *builder,
 								 GObject          *child,
 								 const gchar      *tagname,
 								 GMarkupParser    *parser,
 								 gpointer         *data);
 
-static void     gtk_combo_box_text_buildable_custom_finished    (GtkBuildable     *buildable,
+static void     ctk_combo_box_text_buildable_custom_finished    (GtkBuildable     *buildable,
 								 GtkBuilder       *builder,
 								 GObject          *child,
 								 const gchar      *tagname,
@@ -102,58 +102,58 @@ static void     gtk_combo_box_text_buildable_custom_finished    (GtkBuildable   
 
 static GtkBuildableIface *buildable_parent_iface = NULL;
 
-G_DEFINE_TYPE_WITH_CODE (GtkComboBoxText, gtk_combo_box_text, GTK_TYPE_COMBO_BOX,
+G_DEFINE_TYPE_WITH_CODE (GtkComboBoxText, ctk_combo_box_text, GTK_TYPE_COMBO_BOX,
 			 G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
-						gtk_combo_box_text_buildable_interface_init));
+						ctk_combo_box_text_buildable_interface_init));
 
 static void
-gtk_combo_box_text_constructed (GObject *object)
+ctk_combo_box_text_constructed (GObject *object)
 {
   const gint text_column = 0;
 
-  G_OBJECT_CLASS (gtk_combo_box_text_parent_class)->constructed (object);
+  G_OBJECT_CLASS (ctk_combo_box_text_parent_class)->constructed (object);
 
-  gtk_combo_box_set_entry_text_column (GTK_COMBO_BOX (object), text_column);
-  gtk_combo_box_set_id_column (GTK_COMBO_BOX (object), 1);
+  ctk_combo_box_set_entry_text_column (GTK_COMBO_BOX (object), text_column);
+  ctk_combo_box_set_id_column (GTK_COMBO_BOX (object), 1);
 
-  if (!gtk_combo_box_get_has_entry (GTK_COMBO_BOX (object)))
+  if (!ctk_combo_box_get_has_entry (GTK_COMBO_BOX (object)))
     {
       GtkCellRenderer *cell;
 
-      cell = gtk_cell_renderer_text_new ();
-      gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (object), cell, TRUE);
-      gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (object), cell,
+      cell = ctk_cell_renderer_text_new ();
+      ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (object), cell, TRUE);
+      ctk_cell_layout_set_attributes (GTK_CELL_LAYOUT (object), cell,
                                       "text", text_column,
                                       NULL);
     }
 }
 
 static void
-gtk_combo_box_text_init (GtkComboBoxText *combo_box)
+ctk_combo_box_text_init (GtkComboBoxText *combo_box)
 {
   GtkListStore *store;
 
-  store = gtk_list_store_new (2, G_TYPE_STRING, G_TYPE_STRING);
-  gtk_combo_box_set_model (GTK_COMBO_BOX (combo_box), GTK_TREE_MODEL (store));
+  store = ctk_list_store_new (2, G_TYPE_STRING, G_TYPE_STRING);
+  ctk_combo_box_set_model (GTK_COMBO_BOX (combo_box), GTK_TREE_MODEL (store));
   g_object_unref (store);
 }
 
 static void
-gtk_combo_box_text_class_init (GtkComboBoxTextClass *klass)
+ctk_combo_box_text_class_init (GtkComboBoxTextClass *klass)
 {
   GObjectClass *object_class;
 
   object_class = (GObjectClass *)klass;
-  object_class->constructed = gtk_combo_box_text_constructed;
+  object_class->constructed = ctk_combo_box_text_constructed;
 }
 
 static void
-gtk_combo_box_text_buildable_interface_init (GtkBuildableIface *iface)
+ctk_combo_box_text_buildable_interface_init (GtkBuildableIface *iface)
 {
   buildable_parent_iface = g_type_interface_peek_parent (iface);
 
-  iface->custom_tag_start = gtk_combo_box_text_buildable_custom_tag_start;
-  iface->custom_finished = gtk_combo_box_text_buildable_custom_finished;
+  iface->custom_tag_start = ctk_combo_box_text_buildable_custom_tag_start;
+  iface->custom_finished = ctk_combo_box_text_buildable_custom_finished;
 }
 
 typedef struct {
@@ -182,13 +182,13 @@ item_start_element (GMarkupParseContext  *context,
 
   if (strcmp (element_name, "items") == 0)
     {
-      if (!_gtk_builder_check_parent (data->builder, context, "object", error))
+      if (!_ctk_builder_check_parent (data->builder, context, "object", error))
         return;
 
       if (!g_markup_collect_attributes (element_name, names, values, error,
                                         G_MARKUP_COLLECT_INVALID, NULL, NULL,
                                         G_MARKUP_COLLECT_INVALID))
-        _gtk_builder_prefix_error (data->builder, context, error);
+        _ctk_builder_prefix_error (data->builder, context, error);
     }
   else if (strcmp (element_name, "item") == 0)
     {
@@ -196,7 +196,7 @@ item_start_element (GMarkupParseContext  *context,
       gboolean translatable = FALSE;
       const gchar *msg_context = NULL;
 
-      if (!_gtk_builder_check_parent (data->builder, context, "items", error))
+      if (!_ctk_builder_check_parent (data->builder, context, "items", error))
         return;
 
       if (!g_markup_collect_attributes (element_name, names, values, error,
@@ -206,7 +206,7 @@ item_start_element (GMarkupParseContext  *context,
                                         G_MARKUP_COLLECT_STRING|G_MARKUP_COLLECT_OPTIONAL, "context", &msg_context,
                                         G_MARKUP_COLLECT_INVALID))
         {
-          _gtk_builder_prefix_error (data->builder, context, error);
+          _ctk_builder_prefix_error (data->builder, context, error);
           return;
         }
 
@@ -217,7 +217,7 @@ item_start_element (GMarkupParseContext  *context,
     }
   else
     {
-      _gtk_builder_error_unhandled_tag (data->builder, context,
+      _ctk_builder_error_unhandled_tag (data->builder, context,
                                         "GtkComboBoxText", element_name,
                                         error);
     }
@@ -251,13 +251,13 @@ item_end_element (GMarkupParseContext  *context,
 	{
 	  const gchar *translated;
 
-	  translated = _gtk_builder_parser_translate (data->domain,
+	  translated = _ctk_builder_parser_translate (data->domain,
 						      data->context,
 						      data->string->str);
 	  g_string_assign (data->string, translated);
 	}
 
-      gtk_combo_box_text_append (GTK_COMBO_BOX_TEXT (data->object), data->id, data->string->str);
+      ctk_combo_box_text_append (GTK_COMBO_BOX_TEXT (data->object), data->id, data->string->str);
     }
 
   data->translatable = FALSE;
@@ -275,7 +275,7 @@ static const GMarkupParser item_parser =
   };
 
 static gboolean
-gtk_combo_box_text_buildable_custom_tag_start (GtkBuildable  *buildable,
+ctk_combo_box_text_buildable_custom_tag_start (GtkBuildable  *buildable,
                                                GtkBuilder    *builder,
                                                GObject       *child,
                                                const gchar   *tagname,
@@ -293,7 +293,7 @@ gtk_combo_box_text_buildable_custom_tag_start (GtkBuildable  *buildable,
       data = g_slice_new0 (ItemParserData);
       data->builder = g_object_ref (builder);
       data->object = G_OBJECT (g_object_ref (buildable));
-      data->domain = gtk_builder_get_translation_domain (builder);
+      data->domain = ctk_builder_get_translation_domain (builder);
       data->string = g_string_new ("");
 
       *parser = item_parser;
@@ -306,7 +306,7 @@ gtk_combo_box_text_buildable_custom_tag_start (GtkBuildable  *buildable,
 }
 
 static void
-gtk_combo_box_text_buildable_custom_finished (GtkBuildable *buildable,
+ctk_combo_box_text_buildable_custom_finished (GtkBuildable *buildable,
                                               GtkBuilder   *builder,
                                               GObject      *child,
                                               const gchar  *tagname,
@@ -329,7 +329,7 @@ gtk_combo_box_text_buildable_custom_finished (GtkBuildable *buildable,
 }
 
 /**
- * gtk_combo_box_text_new:
+ * ctk_combo_box_text_new:
  *
  * Creates a new #GtkComboBoxText, which is a #GtkComboBox just displaying
  * strings.
@@ -339,14 +339,14 @@ gtk_combo_box_text_buildable_custom_finished (GtkBuildable *buildable,
  * Since: 2.24
  */
 GtkWidget *
-gtk_combo_box_text_new (void)
+ctk_combo_box_text_new (void)
 {
   return g_object_new (GTK_TYPE_COMBO_BOX_TEXT,
                        NULL);
 }
 
 /**
- * gtk_combo_box_text_new_with_entry:
+ * ctk_combo_box_text_new_with_entry:
  *
  * Creates a new #GtkComboBoxText, which is a #GtkComboBox just displaying
  * strings. The combo box created by this function has an entry.
@@ -356,7 +356,7 @@ gtk_combo_box_text_new (void)
  * Since: 2.24
  */
 GtkWidget *
-gtk_combo_box_text_new_with_entry (void)
+ctk_combo_box_text_new_with_entry (void)
 {
   return g_object_new (GTK_TYPE_COMBO_BOX_TEXT,
                        "has-entry", TRUE,
@@ -364,45 +364,45 @@ gtk_combo_box_text_new_with_entry (void)
 }
 
 /**
- * gtk_combo_box_text_append_text:
+ * ctk_combo_box_text_append_text:
  * @combo_box: A #GtkComboBoxText
  * @text: A string
  *
  * Appends @text to the list of strings stored in @combo_box.
  *
- * This is the same as calling gtk_combo_box_text_insert_text() with a
+ * This is the same as calling ctk_combo_box_text_insert_text() with a
  * position of -1.
  *
  * Since: 2.24
  */
 void
-gtk_combo_box_text_append_text (GtkComboBoxText *combo_box,
+ctk_combo_box_text_append_text (GtkComboBoxText *combo_box,
                                 const gchar     *text)
 {
-  gtk_combo_box_text_insert (combo_box, -1, NULL, text);
+  ctk_combo_box_text_insert (combo_box, -1, NULL, text);
 }
 
 /**
- * gtk_combo_box_text_prepend_text:
+ * ctk_combo_box_text_prepend_text:
  * @combo_box: A #GtkComboBox
  * @text: A string
  *
  * Prepends @text to the list of strings stored in @combo_box.
  *
- * This is the same as calling gtk_combo_box_text_insert_text() with a
+ * This is the same as calling ctk_combo_box_text_insert_text() with a
  * position of 0.
  *
  * Since: 2.24
  */
 void
-gtk_combo_box_text_prepend_text (GtkComboBoxText *combo_box,
+ctk_combo_box_text_prepend_text (GtkComboBoxText *combo_box,
                                  const gchar     *text)
 {
-  gtk_combo_box_text_insert (combo_box, 0, NULL, text);
+  ctk_combo_box_text_insert (combo_box, 0, NULL, text);
 }
 
 /**
- * gtk_combo_box_text_insert_text:
+ * ctk_combo_box_text_insert_text:
  * @combo_box: A #GtkComboBoxText
  * @position: An index to insert @text
  * @text: A string
@@ -411,21 +411,21 @@ gtk_combo_box_text_prepend_text (GtkComboBoxText *combo_box,
  *
  * If @position is negative then @text is appended.
  *
- * This is the same as calling gtk_combo_box_text_insert() with a %NULL
+ * This is the same as calling ctk_combo_box_text_insert() with a %NULL
  * ID string.
  *
  * Since: 2.24
  */
 void
-gtk_combo_box_text_insert_text (GtkComboBoxText *combo_box,
+ctk_combo_box_text_insert_text (GtkComboBoxText *combo_box,
                                 gint             position,
                                 const gchar     *text)
 {
-  gtk_combo_box_text_insert (combo_box, position, NULL, text);
+  ctk_combo_box_text_insert (combo_box, position, NULL, text);
 }
 
 /**
- * gtk_combo_box_text_append:
+ * ctk_combo_box_text_append:
  * @combo_box: A #GtkComboBoxText
  * @id: (allow-none): a string ID for this value, or %NULL
  * @text: A string
@@ -433,21 +433,21 @@ gtk_combo_box_text_insert_text (GtkComboBoxText *combo_box,
  * Appends @text to the list of strings stored in @combo_box.
  * If @id is non-%NULL then it is used as the ID of the row.
  *
- * This is the same as calling gtk_combo_box_text_insert() with a
+ * This is the same as calling ctk_combo_box_text_insert() with a
  * position of -1.
  *
  * Since: 2.24
  */
 void
-gtk_combo_box_text_append (GtkComboBoxText *combo_box,
+ctk_combo_box_text_append (GtkComboBoxText *combo_box,
                            const gchar     *id,
                            const gchar     *text)
 {
-  gtk_combo_box_text_insert (combo_box, -1, id, text);
+  ctk_combo_box_text_insert (combo_box, -1, id, text);
 }
 
 /**
- * gtk_combo_box_text_prepend:
+ * ctk_combo_box_text_prepend:
  * @combo_box: A #GtkComboBox
  * @id: (allow-none): a string ID for this value, or %NULL
  * @text: a string
@@ -455,22 +455,22 @@ gtk_combo_box_text_append (GtkComboBoxText *combo_box,
  * Prepends @text to the list of strings stored in @combo_box.
  * If @id is non-%NULL then it is used as the ID of the row.
  *
- * This is the same as calling gtk_combo_box_text_insert() with a
+ * This is the same as calling ctk_combo_box_text_insert() with a
  * position of 0.
  *
  * Since: 2.24
  */
 void
-gtk_combo_box_text_prepend (GtkComboBoxText *combo_box,
+ctk_combo_box_text_prepend (GtkComboBoxText *combo_box,
                             const gchar     *id,
                             const gchar     *text)
 {
-  gtk_combo_box_text_insert (combo_box, 0, id, text);
+  ctk_combo_box_text_insert (combo_box, 0, id, text);
 }
 
 
 /**
- * gtk_combo_box_text_insert:
+ * ctk_combo_box_text_insert:
  * @combo_box: A #GtkComboBoxText
  * @position: An index to insert @text
  * @id: (allow-none): a string ID for this value, or %NULL
@@ -485,7 +485,7 @@ gtk_combo_box_text_prepend (GtkComboBoxText *combo_box,
  * Since: 3.0
  */
 void
-gtk_combo_box_text_insert (GtkComboBoxText *combo_box,
+ctk_combo_box_text_insert (GtkComboBoxText *combo_box,
                            gint             position,
                            const gchar     *id,
                            const gchar     *text)
@@ -498,41 +498,41 @@ gtk_combo_box_text_insert (GtkComboBoxText *combo_box,
   g_return_if_fail (GTK_IS_COMBO_BOX_TEXT (combo_box));
   g_return_if_fail (text != NULL);
 
-  store = GTK_LIST_STORE (gtk_combo_box_get_model (GTK_COMBO_BOX (combo_box)));
+  store = GTK_LIST_STORE (ctk_combo_box_get_model (GTK_COMBO_BOX (combo_box)));
   g_return_if_fail (GTK_IS_LIST_STORE (store));
 
-  text_column = gtk_combo_box_get_entry_text_column (GTK_COMBO_BOX (combo_box));
+  text_column = ctk_combo_box_get_entry_text_column (GTK_COMBO_BOX (combo_box));
 
-  if (gtk_combo_box_get_has_entry (GTK_COMBO_BOX (combo_box)))
+  if (ctk_combo_box_get_has_entry (GTK_COMBO_BOX (combo_box)))
     g_return_if_fail (text_column >= 0);
   else if (text_column < 0)
     text_column = 0;
 
-  column_type = gtk_tree_model_get_column_type (GTK_TREE_MODEL (store), text_column);
+  column_type = ctk_tree_model_get_column_type (GTK_TREE_MODEL (store), text_column);
   g_return_if_fail (column_type == G_TYPE_STRING);
 
   if (position < 0)
-    gtk_list_store_append (store, &iter);
+    ctk_list_store_append (store, &iter);
   else
-    gtk_list_store_insert (store, &iter, position);
+    ctk_list_store_insert (store, &iter, position);
 
-  gtk_list_store_set (store, &iter, text_column, text, -1);
+  ctk_list_store_set (store, &iter, text_column, text, -1);
 
   if (id != NULL)
     {
       gint id_column;
 
-      id_column = gtk_combo_box_get_id_column (GTK_COMBO_BOX (combo_box));
+      id_column = ctk_combo_box_get_id_column (GTK_COMBO_BOX (combo_box));
       g_return_if_fail (id_column >= 0);
-      column_type = gtk_tree_model_get_column_type (GTK_TREE_MODEL (store), id_column);
+      column_type = ctk_tree_model_get_column_type (GTK_TREE_MODEL (store), id_column);
       g_return_if_fail (column_type == G_TYPE_STRING);
 
-      gtk_list_store_set (store, &iter, id_column, id, -1);
+      ctk_list_store_set (store, &iter, id_column, id, -1);
     }
 }
 
 /**
- * gtk_combo_box_text_remove:
+ * ctk_combo_box_text_remove:
  * @combo_box: A #GtkComboBox
  * @position: Index of the item to remove
  *
@@ -541,7 +541,7 @@ gtk_combo_box_text_insert (GtkComboBoxText *combo_box,
  * Since: 2.24
  */
 void
-gtk_combo_box_text_remove (GtkComboBoxText *combo_box,
+ctk_combo_box_text_remove (GtkComboBoxText *combo_box,
                            gint             position)
 {
   GtkTreeModel *model;
@@ -551,16 +551,16 @@ gtk_combo_box_text_remove (GtkComboBoxText *combo_box,
   g_return_if_fail (GTK_IS_COMBO_BOX_TEXT (combo_box));
   g_return_if_fail (position >= 0);
 
-  model = gtk_combo_box_get_model (GTK_COMBO_BOX (combo_box));
+  model = ctk_combo_box_get_model (GTK_COMBO_BOX (combo_box));
   store = GTK_LIST_STORE (model);
   g_return_if_fail (GTK_IS_LIST_STORE (store));
 
-  if (gtk_tree_model_iter_nth_child (model, &iter, NULL, position))
-    gtk_list_store_remove (store, &iter);
+  if (ctk_tree_model_iter_nth_child (model, &iter, NULL, position))
+    ctk_list_store_remove (store, &iter);
 }
 
 /**
- * gtk_combo_box_text_remove_all:
+ * ctk_combo_box_text_remove_all:
  * @combo_box: A #GtkComboBoxText
  *
  * Removes all the text entries from the combo box.
@@ -568,18 +568,18 @@ gtk_combo_box_text_remove (GtkComboBoxText *combo_box,
  * Since: 3.0
  */
 void
-gtk_combo_box_text_remove_all (GtkComboBoxText *combo_box)
+ctk_combo_box_text_remove_all (GtkComboBoxText *combo_box)
 {
   GtkListStore *store;
 
   g_return_if_fail (GTK_IS_COMBO_BOX_TEXT (combo_box));
 
-  store = GTK_LIST_STORE (gtk_combo_box_get_model (GTK_COMBO_BOX (combo_box)));
-  gtk_list_store_clear (store);
+  store = GTK_LIST_STORE (ctk_combo_box_get_model (GTK_COMBO_BOX (combo_box)));
+  ctk_list_store_clear (store);
 }
 
 /**
- * gtk_combo_box_text_get_active_text:
+ * ctk_combo_box_text_get_active_text:
  * @combo_box: A #GtkComboBoxText
  *
  * Returns the currently active string in @combo_box, or %NULL
@@ -593,33 +593,33 @@ gtk_combo_box_text_remove_all (GtkComboBoxText *combo_box)
  * Since: 2.24
  */
 gchar *
-gtk_combo_box_text_get_active_text (GtkComboBoxText *combo_box)
+ctk_combo_box_text_get_active_text (GtkComboBoxText *combo_box)
 {
   GtkTreeIter iter;
   gchar *text = NULL;
 
   g_return_val_if_fail (GTK_IS_COMBO_BOX_TEXT (combo_box), NULL);
 
- if (gtk_combo_box_get_has_entry (GTK_COMBO_BOX (combo_box)))
+ if (ctk_combo_box_get_has_entry (GTK_COMBO_BOX (combo_box)))
    {
      GtkWidget *entry;
 
-     entry = gtk_bin_get_child (GTK_BIN (combo_box));
-     text = g_strdup (gtk_entry_get_text (GTK_ENTRY (entry)));
+     entry = ctk_bin_get_child (GTK_BIN (combo_box));
+     text = g_strdup (ctk_entry_get_text (GTK_ENTRY (entry)));
    }
-  else if (gtk_combo_box_get_active_iter (GTK_COMBO_BOX (combo_box), &iter))
+  else if (ctk_combo_box_get_active_iter (GTK_COMBO_BOX (combo_box), &iter))
     {
       GtkTreeModel *model;
       gint text_column;
       gint column_type;
 
-      model = gtk_combo_box_get_model (GTK_COMBO_BOX (combo_box));
+      model = ctk_combo_box_get_model (GTK_COMBO_BOX (combo_box));
       g_return_val_if_fail (GTK_IS_LIST_STORE (model), NULL);
-      text_column = gtk_combo_box_get_entry_text_column (GTK_COMBO_BOX (combo_box));
+      text_column = ctk_combo_box_get_entry_text_column (GTK_COMBO_BOX (combo_box));
       g_return_val_if_fail (text_column >= 0, NULL);
-      column_type = gtk_tree_model_get_column_type (model, text_column);
+      column_type = ctk_tree_model_get_column_type (model, text_column);
       g_return_val_if_fail (column_type == G_TYPE_STRING, NULL);
-      gtk_tree_model_get (model, &iter, text_column, &text, -1);
+      ctk_tree_model_get (model, &iter, text_column, &text, -1);
     }
 
   return text;

@@ -8,26 +8,26 @@ static GList *menubuttons = NULL;
 static void
 horizontal_alignment_changed (GtkComboBox *box)
 {
-	GtkAlign alignment = gtk_combo_box_get_active (box);
+	GtkAlign alignment = ctk_combo_box_get_active (box);
 	GList *l;
 
 	for (l = menubuttons; l != NULL; l = l->next) {
-		GtkMenu *popup = gtk_menu_button_get_popup (GTK_MENU_BUTTON (l->data));
+		GtkMenu *popup = ctk_menu_button_get_popup (GTK_MENU_BUTTON (l->data));
 		if (popup != NULL)
-			gtk_widget_set_halign (GTK_WIDGET (popup), alignment);
+			ctk_widget_set_halign (GTK_WIDGET (popup), alignment);
 	}
 }
 
 static void
 vertical_alignment_changed (GtkComboBox *box)
 {
-	GtkAlign alignment = gtk_combo_box_get_active (box);
+	GtkAlign alignment = ctk_combo_box_get_active (box);
 	GList *l;
 
 	for (l = menubuttons; l != NULL; l = l->next) {
-		GtkMenu *popup = gtk_menu_button_get_popup (GTK_MENU_BUTTON (l->data));
+		GtkMenu *popup = ctk_menu_button_get_popup (GTK_MENU_BUTTON (l->data));
 		if (popup != NULL)
-			gtk_widget_set_valign (GTK_WIDGET (popup), alignment);
+			ctk_widget_set_valign (GTK_WIDGET (popup), alignment);
 	}
 }
 
@@ -46,92 +46,92 @@ int main (int argc, char **argv)
 	guint row = 0;
 	GMenu *menu;
 
-	gtk_init (&argc, &argv);
+	ctk_init (&argc, &argv);
 
-	window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-	gtk_window_resize (GTK_WINDOW (window), 400, 300);
+	window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+	ctk_window_resize (GTK_WINDOW (window), 400, 300);
 
-	grid = gtk_grid_new ();
-	gtk_container_set_border_width (GTK_CONTAINER (grid), 12);
-	gtk_grid_set_row_spacing (GTK_GRID (grid), 12);
-	gtk_grid_set_column_spacing (GTK_GRID (grid), 12);
-	gtk_container_add (GTK_CONTAINER (window), grid);
+	grid = ctk_grid_new ();
+	ctk_container_set_border_width (GTK_CONTAINER (grid), 12);
+	ctk_grid_set_row_spacing (GTK_GRID (grid), 12);
+	ctk_grid_set_column_spacing (GTK_GRID (grid), 12);
+	ctk_container_add (GTK_CONTAINER (window), grid);
 
-	accel_group = gtk_accel_group_new ();
-	gtk_window_add_accel_group (GTK_WINDOW (window), accel_group);
+	accel_group = ctk_accel_group_new ();
+	ctk_window_add_accel_group (GTK_WINDOW (window), accel_group);
 
 	/* horizontal alignment */
-	label = gtk_label_new ("Horizontal Alignment:");
-	gtk_widget_show (label);
-	gtk_grid_attach (GTK_GRID (grid), label, 0, row++, 1, 1);
+	label = ctk_label_new ("Horizontal Alignment:");
+	ctk_widget_show (label);
+	ctk_grid_attach (GTK_GRID (grid), label, 0, row++, 1, 1);
 
-	combo = gtk_combo_box_text_new ();
-	gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "Fill");
-	gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "Start");
-	gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "End");
-	gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "Center");
-	gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "Baseline");
-	gtk_combo_box_set_active (GTK_COMBO_BOX (combo), INITIAL_HALIGN);
-	gtk_widget_show (combo);
-	gtk_grid_attach_next_to (GTK_GRID (grid), combo, label, GTK_POS_RIGHT, 1, 1);
+	combo = ctk_combo_box_text_new ();
+	ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "Fill");
+	ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "Start");
+	ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "End");
+	ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "Center");
+	ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "Baseline");
+	ctk_combo_box_set_active (GTK_COMBO_BOX (combo), INITIAL_HALIGN);
+	ctk_widget_show (combo);
+	ctk_grid_attach_next_to (GTK_GRID (grid), combo, label, GTK_POS_RIGHT, 1, 1);
 	g_signal_connect (G_OBJECT (combo), "changed",
 			  G_CALLBACK (horizontal_alignment_changed), menubuttons);
 
 	/* vertical alignment */
-	label = gtk_label_new ("Vertical Alignment:");
-	gtk_widget_show (label);
-	gtk_grid_attach (GTK_GRID (grid), label, 0, row++, 1, 1);
+	label = ctk_label_new ("Vertical Alignment:");
+	ctk_widget_show (label);
+	ctk_grid_attach (GTK_GRID (grid), label, 0, row++, 1, 1);
 
-	combo = gtk_combo_box_text_new ();
-	gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "Fill");
-	gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "Start");
-	gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "End");
-	gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "Center");
-	gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "Baseline");
-	gtk_combo_box_set_active (GTK_COMBO_BOX (combo), INITIAL_HALIGN);
-	gtk_widget_show (combo);
-	gtk_grid_attach_next_to (GTK_GRID (grid), combo, label, GTK_POS_RIGHT, 1, 1);
+	combo = ctk_combo_box_text_new ();
+	ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "Fill");
+	ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "Start");
+	ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "End");
+	ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "Center");
+	ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "Baseline");
+	ctk_combo_box_set_active (GTK_COMBO_BOX (combo), INITIAL_HALIGN);
+	ctk_widget_show (combo);
+	ctk_grid_attach_next_to (GTK_GRID (grid), combo, label, GTK_POS_RIGHT, 1, 1);
 	g_signal_connect (G_OBJECT (combo), "changed",
 			  G_CALLBACK (vertical_alignment_changed), menubuttons);
 
 	/* Button next to entry */
-	entry = gtk_entry_new ();
-	gtk_grid_attach (GTK_GRID (grid), entry, 0, row++, 1, 1);
-	button = gtk_menu_button_new ();
-	gtk_widget_set_halign (button, GTK_ALIGN_START);
+	entry = ctk_entry_new ();
+	ctk_grid_attach (GTK_GRID (grid), entry, 0, row++, 1, 1);
+	button = ctk_menu_button_new ();
+	ctk_widget_set_halign (button, GTK_ALIGN_START);
 
-	gtk_grid_attach_next_to (GTK_GRID (grid), button, entry, GTK_POS_RIGHT, 1, 1);
+	ctk_grid_attach_next_to (GTK_GRID (grid), button, entry, GTK_POS_RIGHT, 1, 1);
 	menubuttons = g_list_prepend (menubuttons, button);
 
 	/* Button with GtkMenu */
-	menu_widget = gtk_menu_new ();
+	menu_widget = ctk_menu_new ();
 	for (i = 0; i < 5; ++i) {
 		GtkWidget *item;
 
 		if (i == 2) {
-			item = gtk_menu_item_new_with_mnemonic ("_Copy");
+			item = ctk_menu_item_new_with_mnemonic ("_Copy");
 		} else {
 			char *label;
 
 			label = g_strdup_printf ("Item _%d", i + 1);
-			item = gtk_menu_item_new_with_mnemonic (label);
+			item = ctk_menu_item_new_with_mnemonic (label);
 			g_free (label);
 		}
 
-		gtk_menu_item_set_use_underline (GTK_MENU_ITEM (item), TRUE);
-		gtk_container_add (GTK_CONTAINER (menu_widget), item);
+		ctk_menu_item_set_use_underline (GTK_MENU_ITEM (item), TRUE);
+		ctk_container_add (GTK_CONTAINER (menu_widget), item);
 	}
-	gtk_widget_show_all (menu_widget);
+	ctk_widget_show_all (menu_widget);
 
-	button = gtk_menu_button_new ();
-	gtk_widget_set_halign (button, GTK_ALIGN_START);
+	button = ctk_menu_button_new ();
+	ctk_widget_set_halign (button, GTK_ALIGN_START);
 	menubuttons = g_list_prepend (menubuttons, button);
-	gtk_menu_button_set_popup (GTK_MENU_BUTTON (button), menu_widget);
-	gtk_grid_attach (GTK_GRID (grid), button, 1, row++, 1, 1);
+	ctk_menu_button_set_popup (GTK_MENU_BUTTON (button), menu_widget);
+	ctk_grid_attach (GTK_GRID (grid), button, 1, row++, 1, 1);
 
-        check = gtk_check_button_new_with_label ("Popover");
-        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check), TRUE);
-	gtk_grid_attach (GTK_GRID (grid), check, 0, row, 1, 1);
+        check = ctk_check_button_new_with_label ("Popover");
+        ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check), TRUE);
+	ctk_grid_attach (GTK_GRID (grid), check, 0, row, 1, 1);
 
 	/* Button with GMenuModel */
 	menu = g_menu_new ();
@@ -147,17 +147,17 @@ int main (int argc, char **argv)
 		g_free (label);
 	}
 
-	button = gtk_menu_button_new ();
+	button = ctk_menu_button_new ();
         g_object_bind_property (check, "active", button, "use-popover", G_BINDING_SYNC_CREATE);
 
-	gtk_widget_set_halign (button, GTK_ALIGN_START);
+	ctk_widget_set_halign (button, GTK_ALIGN_START);
 	menubuttons = g_list_prepend (menubuttons, button);
-	gtk_menu_button_set_menu_model (GTK_MENU_BUTTON (button), G_MENU_MODEL (menu));
-	gtk_grid_attach (GTK_GRID (grid), button, 1, row++, 1, 1);
+	ctk_menu_button_set_menu_model (GTK_MENU_BUTTON (button), G_MENU_MODEL (menu));
+	ctk_grid_attach (GTK_GRID (grid), button, 1, row++, 1, 1);
 
-	gtk_widget_show_all (window);
+	ctk_widget_show_all (window);
 
-	gtk_main ();
+	ctk_main ();
 
 	return 0;
 }

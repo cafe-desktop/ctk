@@ -40,22 +40,22 @@ create_icon_store (void)
   GtkListStore *store;
   gint i;
 
-  store = gtk_list_store_new (2, G_TYPE_STRING, G_TYPE_STRING);
+  store = ctk_list_store_new (2, G_TYPE_STRING, G_TYPE_STRING);
 
   for (i = 0; i < G_N_ELEMENTS (icon_names); i++)
     {
       if (icon_names[i])
         {
-          gtk_list_store_append (store, &iter);
-          gtk_list_store_set (store, &iter,
+          ctk_list_store_append (store, &iter);
+          ctk_list_store_set (store, &iter,
                               ICON_NAME_COL, icon_names[i],
                               TEXT_COL, _(labels[i]),
                               -1);
         }
       else
         {
-          gtk_list_store_append (store, &iter);
-          gtk_list_store_set (store, &iter,
+          ctk_list_store_append (store, &iter);
+          ctk_list_store_set (store, &iter,
                               ICON_NAME_COL, NULL,
                               TEXT_COL, "separator",
                               -1);
@@ -80,10 +80,10 @@ set_sensitive (GtkCellLayout   *cell_layout,
   gint *indices;
   gboolean sensitive;
 
-  path = gtk_tree_model_get_path (tree_model, iter);
-  indices = gtk_tree_path_get_indices (path);
+  path = ctk_tree_model_get_path (tree_model, iter);
+  indices = ctk_tree_path_get_indices (path);
   sensitive = indices[0] != 1;
-  gtk_tree_path_free (path);
+  ctk_tree_path_free (path);
 
   g_object_set (cell, "sensitive", sensitive, NULL);
 }
@@ -100,9 +100,9 @@ is_separator (GtkTreeModel *model,
   GtkTreePath *path;
   gboolean result;
 
-  path = gtk_tree_model_get_path (model, iter);
-  result = gtk_tree_path_get_indices (path)[0] == 4;
-  gtk_tree_path_free (path);
+  path = ctk_tree_model_get_path (model, iter);
+  result = ctk_tree_path_get_indices (path)[0] == 4;
+  ctk_tree_path_free (path);
 
   return result;
 }
@@ -177,19 +177,19 @@ create_capital_store (void)
   GtkTreeStore *store;
   gint i;
 
-  store = gtk_tree_store_new (1, G_TYPE_STRING);
+  store = ctk_tree_store_new (1, G_TYPE_STRING);
 
   for (i = 0; capitals[i].group || capitals[i].capital; i++)
     {
       if (capitals[i].group)
         {
-          gtk_tree_store_append (store, &iter, NULL);
-          gtk_tree_store_set (store, &iter, 0, capitals[i].group, -1);
+          ctk_tree_store_append (store, &iter, NULL);
+          ctk_tree_store_set (store, &iter, 0, capitals[i].group, -1);
         }
       else if (capitals[i].capital)
         {
-          gtk_tree_store_append (store, &iter2, &iter);
-          gtk_tree_store_set (store, &iter2, 0, capitals[i].capital, -1);
+          ctk_tree_store_append (store, &iter2, &iter);
+          ctk_tree_store_set (store, &iter2, 0, capitals[i].capital, -1);
         }
     }
 
@@ -205,7 +205,7 @@ is_capital_sensitive (GtkCellLayout   *cell_layout,
 {
   gboolean sensitive;
 
-  sensitive = !gtk_tree_model_iter_has_child (tree_model, iter);
+  sensitive = !ctk_tree_model_iter_has_child (tree_model, iter);
 
   g_object_set (cell, "sensitive", sensitive, NULL);
 }
@@ -213,10 +213,10 @@ is_capital_sensitive (GtkCellLayout   *cell_layout,
 static void
 fill_combo_entry (GtkWidget *combo)
 {
-  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "One");
-  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "Two");
-  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "2\302\275");
-  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "Three");
+  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "One");
+  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "Two");
+  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "2\302\275");
+  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "Three");
 }
 
 
@@ -256,19 +256,19 @@ mask_entry_set_background (MaskEntry *entry)
 {
   if (entry->mask)
     {
-      if (!g_regex_match_simple (entry->mask, gtk_entry_get_text (GTK_ENTRY (entry)), 0, 0))
+      if (!g_regex_match_simple (entry->mask, ctk_entry_get_text (GTK_ENTRY (entry)), 0, 0))
         {
           PangoAttrList *attrs;
 
           attrs = pango_attr_list_new ();
           pango_attr_list_insert (attrs, pango_attr_foreground_new (65535, 32767, 32767));
-          gtk_entry_set_attributes (GTK_ENTRY (entry), attrs);
+          ctk_entry_set_attributes (GTK_ENTRY (entry), attrs);
           pango_attr_list_unref (attrs);
           return;
         }
     }
 
-  gtk_entry_set_attributes (GTK_ENTRY (entry), NULL);
+  ctk_entry_set_attributes (GTK_ENTRY (entry), NULL);
 }
 
 
@@ -310,133 +310,133 @@ do_combobox (GtkWidget *do_widget)
 
   if (!window)
   {
-    window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-    gtk_window_set_screen (GTK_WINDOW (window),
-                           gtk_widget_get_screen (do_widget));
-    gtk_window_set_title (GTK_WINDOW (window), "Combo Boxes");
+    window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+    ctk_window_set_screen (GTK_WINDOW (window),
+                           ctk_widget_get_screen (do_widget));
+    ctk_window_set_title (GTK_WINDOW (window), "Combo Boxes");
 
     g_signal_connect (window, "destroy",
-                      G_CALLBACK (gtk_widget_destroyed), &window);
+                      G_CALLBACK (ctk_widget_destroyed), &window);
 
-    gtk_container_set_border_width (GTK_CONTAINER (window), 10);
+    ctk_container_set_border_width (GTK_CONTAINER (window), 10);
 
-    vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 2);
-    gtk_container_add (GTK_CONTAINER (window), vbox);
+    vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 2);
+    ctk_container_add (GTK_CONTAINER (window), vbox);
 
     /* A combobox demonstrating cell renderers, separators and
      *  insensitive rows
      */
-    frame = gtk_frame_new ("Items with icons");
-    gtk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
+    frame = ctk_frame_new ("Items with icons");
+    ctk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
 
-    box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-    gtk_container_set_border_width (GTK_CONTAINER (box), 5);
-    gtk_container_add (GTK_CONTAINER (frame), box);
+    box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+    ctk_container_set_border_width (GTK_CONTAINER (box), 5);
+    ctk_container_add (GTK_CONTAINER (frame), box);
 
     model = create_icon_store ();
-    combo = gtk_combo_box_new_with_model (model);
+    combo = ctk_combo_box_new_with_model (model);
     g_object_unref (model);
-    gtk_container_add (GTK_CONTAINER (box), combo);
+    ctk_container_add (GTK_CONTAINER (box), combo);
 
-    renderer = gtk_cell_renderer_pixbuf_new ();
-    gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (combo), renderer, FALSE);
-    gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (combo), renderer,
+    renderer = ctk_cell_renderer_pixbuf_new ();
+    ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (combo), renderer, FALSE);
+    ctk_cell_layout_set_attributes (GTK_CELL_LAYOUT (combo), renderer,
                                     "icon-name", ICON_NAME_COL,
                                     NULL);
 
-    gtk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (combo),
+    ctk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (combo),
                                         renderer,
                                         set_sensitive,
                                         NULL, NULL);
 
-    renderer = gtk_cell_renderer_text_new ();
-    gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (combo), renderer, TRUE);
-    gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (combo), renderer,
+    renderer = ctk_cell_renderer_text_new ();
+    ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (combo), renderer, TRUE);
+    ctk_cell_layout_set_attributes (GTK_CELL_LAYOUT (combo), renderer,
                                     "text", TEXT_COL,
                                     NULL);
 
-    gtk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (combo),
+    ctk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (combo),
                                         renderer,
                                         set_sensitive,
                                         NULL, NULL);
 
-    gtk_combo_box_set_row_separator_func (GTK_COMBO_BOX (combo),
+    ctk_combo_box_set_row_separator_func (GTK_COMBO_BOX (combo),
                                           is_separator, NULL, NULL);
 
-    gtk_combo_box_set_active (GTK_COMBO_BOX (combo), 0);
+    ctk_combo_box_set_active (GTK_COMBO_BOX (combo), 0);
 
     /* A combobox demonstrating trees.
      */
-    frame = gtk_frame_new ("Where are we ?");
-    gtk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
+    frame = ctk_frame_new ("Where are we ?");
+    ctk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
 
-    box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-    gtk_container_set_border_width (GTK_CONTAINER (box), 5);
-    gtk_container_add (GTK_CONTAINER (frame), box);
+    box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+    ctk_container_set_border_width (GTK_CONTAINER (box), 5);
+    ctk_container_add (GTK_CONTAINER (frame), box);
 
     model = create_capital_store ();
-    combo = gtk_combo_box_new_with_model (model);
+    combo = ctk_combo_box_new_with_model (model);
     g_object_unref (model);
-    gtk_container_add (GTK_CONTAINER (box), combo);
+    ctk_container_add (GTK_CONTAINER (box), combo);
 
-    renderer = gtk_cell_renderer_text_new ();
-    gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (combo), renderer, TRUE);
-    gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (combo), renderer,
+    renderer = ctk_cell_renderer_text_new ();
+    ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (combo), renderer, TRUE);
+    ctk_cell_layout_set_attributes (GTK_CELL_LAYOUT (combo), renderer,
                                     "text", 0,
                                     NULL);
-    gtk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (combo),
+    ctk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (combo),
                                         renderer,
                                         is_capital_sensitive,
                                         NULL, NULL);
 
-    path = gtk_tree_path_new_from_indices (0, 8, -1);
-    gtk_tree_model_get_iter (model, &iter, path);
-    gtk_tree_path_free (path);
-    gtk_combo_box_set_active_iter (GTK_COMBO_BOX (combo), &iter);
+    path = ctk_tree_path_new_from_indices (0, 8, -1);
+    ctk_tree_model_get_iter (model, &iter, path);
+    ctk_tree_path_free (path);
+    ctk_combo_box_set_active_iter (GTK_COMBO_BOX (combo), &iter);
 
     /* A GtkComboBoxEntry with validation */
-    frame = gtk_frame_new ("Editable");
-    gtk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
+    frame = ctk_frame_new ("Editable");
+    ctk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
 
-    box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-    gtk_container_set_border_width (GTK_CONTAINER (box), 5);
-    gtk_container_add (GTK_CONTAINER (frame), box);
+    box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+    ctk_container_set_border_width (GTK_CONTAINER (box), 5);
+    ctk_container_add (GTK_CONTAINER (frame), box);
 
-    combo = gtk_combo_box_text_new_with_entry ();
+    combo = ctk_combo_box_text_new_with_entry ();
     fill_combo_entry (combo);
-    gtk_container_add (GTK_CONTAINER (box), combo);
+    ctk_container_add (GTK_CONTAINER (box), combo);
 
     entry = g_object_new (TYPE_MASK_ENTRY, NULL);
     MASK_ENTRY (entry)->mask = "^([0-9]*|One|Two|2\302\275|Three)$";
 
-    gtk_container_remove (GTK_CONTAINER (combo), gtk_bin_get_child (GTK_BIN (combo)));
-    gtk_container_add (GTK_CONTAINER (combo), entry);
+    ctk_container_remove (GTK_CONTAINER (combo), ctk_bin_get_child (GTK_BIN (combo)));
+    ctk_container_add (GTK_CONTAINER (combo), entry);
 
     /* A combobox with string IDs */
-    frame = gtk_frame_new ("String IDs");
-    gtk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
+    frame = ctk_frame_new ("String IDs");
+    ctk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
 
-    box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-    gtk_container_set_border_width (GTK_CONTAINER (box), 5);
-    gtk_container_add (GTK_CONTAINER (frame), box);
+    box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+    ctk_container_set_border_width (GTK_CONTAINER (box), 5);
+    ctk_container_add (GTK_CONTAINER (frame), box);
 
-    combo = gtk_combo_box_text_new ();
-    gtk_combo_box_text_append (GTK_COMBO_BOX_TEXT (combo), "never", "Not visible");
-    gtk_combo_box_text_append (GTK_COMBO_BOX_TEXT (combo), "when-active", "Visible when active");
-    gtk_combo_box_text_append (GTK_COMBO_BOX_TEXT (combo), "always", "Always visible");
-    gtk_container_add (GTK_CONTAINER (box), combo);
+    combo = ctk_combo_box_text_new ();
+    ctk_combo_box_text_append (GTK_COMBO_BOX_TEXT (combo), "never", "Not visible");
+    ctk_combo_box_text_append (GTK_COMBO_BOX_TEXT (combo), "when-active", "Visible when active");
+    ctk_combo_box_text_append (GTK_COMBO_BOX_TEXT (combo), "always", "Always visible");
+    ctk_container_add (GTK_CONTAINER (box), combo);
 
-    entry = gtk_entry_new ();
+    entry = ctk_entry_new ();
     g_object_bind_property (combo, "active-id",
                             entry, "text",
                             G_BINDING_BIDIRECTIONAL);
-    gtk_container_add (GTK_CONTAINER (box), entry);
+    ctk_container_add (GTK_CONTAINER (box), entry);
   }
 
-  if (!gtk_widget_get_visible (window))
-    gtk_widget_show_all (window);
+  if (!ctk_widget_get_visible (window))
+    ctk_widget_show_all (window);
   else
-    gtk_widget_destroy (window);
+    ctk_widget_destroy (window);
 
   return window;
 }

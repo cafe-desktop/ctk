@@ -25,31 +25,31 @@
 
 G_BEGIN_DECLS
 
-void _gtk_tool_palette_get_item_size           (GtkToolPalette   *palette,
+void _ctk_tool_palette_get_item_size           (GtkToolPalette   *palette,
                                                 GtkRequisition   *item_size,
                                                 gboolean          homogeneous_only,
                                                 gint             *requested_rows);
-void _gtk_tool_palette_child_set_drag_source   (GtkWidget        *widget,
+void _ctk_tool_palette_child_set_drag_source   (GtkWidget        *widget,
                                                 gpointer          data);
-void _gtk_tool_palette_set_expanding_child     (GtkToolPalette   *palette,
+void _ctk_tool_palette_set_expanding_child     (GtkToolPalette   *palette,
                                                 GtkWidget        *widget);
 
-void _gtk_tool_item_group_palette_reconfigured (GtkToolItemGroup *group);
-void _gtk_tool_item_group_item_size_request    (GtkToolItemGroup *group,
+void _ctk_tool_item_group_palette_reconfigured (GtkToolItemGroup *group);
+void _ctk_tool_item_group_item_size_request    (GtkToolItemGroup *group,
                                                 GtkRequisition   *item_size,
                                                 gboolean          homogeneous_only,
                                                 gint             *requested_rows);
-gint _gtk_tool_item_group_get_height_for_width (GtkToolItemGroup *group,
+gint _ctk_tool_item_group_get_height_for_width (GtkToolItemGroup *group,
                                                 gint              width);
-gint _gtk_tool_item_group_get_width_for_height (GtkToolItemGroup *group,
+gint _ctk_tool_item_group_get_width_for_height (GtkToolItemGroup *group,
                                                 gint              height);
-gint _gtk_tool_item_group_get_size_for_limit   (GtkToolItemGroup *group,
+gint _ctk_tool_item_group_get_size_for_limit   (GtkToolItemGroup *group,
                                                 gint              limit,
                                                 gboolean          vertical,
                                                 gboolean          animation);
 
 
-GtkSizeGroup *_gtk_tool_palette_get_size_group (GtkToolPalette   *palette);
+GtkSizeGroup *_ctk_tool_palette_get_size_group (GtkToolPalette   *palette);
 
 G_END_DECLS
 

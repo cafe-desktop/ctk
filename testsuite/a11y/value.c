@@ -27,16 +27,16 @@ set_value (GtkWidget   *widget,
            gint value)
 {
   if (GTK_IS_LEVEL_BAR (widget))
-    gtk_level_bar_set_value (GTK_LEVEL_BAR (widget), value);
+    ctk_level_bar_set_value (GTK_LEVEL_BAR (widget), value);
   else if (GTK_IS_RANGE (widget))
     {
-      GtkAdjustment *adjustment = gtk_range_get_adjustment (GTK_RANGE (widget));
-      gtk_adjustment_set_value (adjustment, value);
+      GtkAdjustment *adjustment = ctk_range_get_adjustment (GTK_RANGE (widget));
+      ctk_adjustment_set_value (adjustment, value);
     }
   else if (GTK_IS_SPIN_BUTTON (widget))
     {
-      GtkAdjustment *adjustment = gtk_spin_button_get_adjustment (GTK_SPIN_BUTTON (widget));
-      gtk_adjustment_set_value (adjustment, value);
+      GtkAdjustment *adjustment = ctk_spin_button_get_adjustment (GTK_SPIN_BUTTON (widget));
+      ctk_adjustment_set_value (adjustment, value);
     }
 }
 
@@ -65,7 +65,7 @@ test_basic (GtkWidget *widget)
   gdouble ret;
   gchar *text;
 
-  atk_object = gtk_widget_get_accessible (widget);
+  atk_object = ctk_widget_get_accessible (widget);
   atk_value = ATK_VALUE (atk_object);
 
   memset (&notify_data, 0, sizeof (notify_data));
@@ -117,12 +117,12 @@ add_value_tests (GtkWidget *widget)
 int
 main (int argc, char *argv[])
 {
-  gtk_test_init (&argc, &argv, NULL);
+  ctk_test_init (&argc, &argv, NULL);
 
   g_test_bug_base ("http://bugzilla.gnome.org/");
 
-  add_value_tests (gtk_spin_button_new_with_range (0, 100, 1));
-  add_value_tests (gtk_level_bar_new_for_interval (0, 100));
+  add_value_tests (ctk_spin_button_new_with_range (0, 100, 1));
+  add_value_tests (ctk_level_bar_new_for_interval (0, 100));
 
   return g_test_run ();
 }

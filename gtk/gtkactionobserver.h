@@ -24,7 +24,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ACTION_OBSERVER                            (gtk_action_observer_get_type ())
+#define GTK_TYPE_ACTION_OBSERVER                            (ctk_action_observer_get_type ())
 #define GTK_ACTION_OBSERVER(inst)                           (G_TYPE_CHECK_INSTANCE_CAST ((inst),                     \
                                                              GTK_TYPE_ACTION_OBSERVER, GtkActionObserver))
 #define GTK_IS_ACTION_OBSERVER(inst)                        (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                     \
@@ -63,25 +63,25 @@ struct _GtkActionObserverInterface
                                    const gchar          *action_and_target);
 };
 
-GType                   gtk_action_observer_get_type                    (void);
-void                    gtk_action_observer_action_added                (GtkActionObserver   *observer,
+GType                   ctk_action_observer_get_type                    (void);
+void                    ctk_action_observer_action_added                (GtkActionObserver   *observer,
                                                                          GtkActionObservable *observable,
                                                                          const gchar         *action_name,
                                                                          const GVariantType  *parameter_type,
                                                                          gboolean             enabled,
                                                                          GVariant            *state);
-void                    gtk_action_observer_action_enabled_changed      (GtkActionObserver   *observer,
+void                    ctk_action_observer_action_enabled_changed      (GtkActionObserver   *observer,
                                                                          GtkActionObservable *observable,
                                                                          const gchar         *action_name,
                                                                          gboolean             enabled);
-void                    gtk_action_observer_action_state_changed        (GtkActionObserver   *observer,
+void                    ctk_action_observer_action_state_changed        (GtkActionObserver   *observer,
                                                                          GtkActionObservable *observable,
                                                                          const gchar         *action_name,
                                                                          GVariant            *state);
-void                    gtk_action_observer_action_removed              (GtkActionObserver   *observer,
+void                    ctk_action_observer_action_removed              (GtkActionObserver   *observer,
                                                                          GtkActionObservable *observable,
                                                                          const gchar         *action_name);
-void                    gtk_action_observer_primary_accel_changed       (GtkActionObserver   *observer,
+void                    ctk_action_observer_primary_accel_changed       (GtkActionObserver   *observer,
                                                                          GtkActionObservable *observable,
                                                                          const gchar         *action_name,
                                                                          const gchar         *action_and_target);

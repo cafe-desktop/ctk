@@ -51,7 +51,7 @@
 #include "gtkwindow.h"
 #include "gtkwindowgroup.h"
 
-G_DEFINE_TYPE (GtkInspectorWindow, gtk_inspector_window, GTK_TYPE_WINDOW)
+G_DEFINE_TYPE (GtkInspectorWindow, ctk_inspector_window, GTK_TYPE_WINDOW)
 
 static gboolean
 set_selected_object (GtkInspectorWindow *iw,
@@ -60,24 +60,24 @@ set_selected_object (GtkInspectorWindow *iw,
   GList *l;
   const char *title;
 
-  if (!gtk_inspector_prop_list_set_object (GTK_INSPECTOR_PROP_LIST (iw->prop_list), selected))
+  if (!ctk_inspector_prop_list_set_object (GTK_INSPECTOR_PROP_LIST (iw->prop_list), selected))
     return FALSE;
 
   title = (const char *)g_object_get_data (selected, "gtk-inspector-object-title");
-  gtk_label_set_label (GTK_LABEL (iw->object_title), title);
+  ctk_label_set_label (GTK_LABEL (iw->object_title), title);
 
-  gtk_inspector_prop_list_set_object (GTK_INSPECTOR_PROP_LIST (iw->child_prop_list), selected);
-  gtk_inspector_signals_list_set_object (GTK_INSPECTOR_SIGNALS_LIST (iw->signals_list), selected);
-  gtk_inspector_object_hierarchy_set_object (GTK_INSPECTOR_OBJECT_HIERARCHY (iw->object_hierarchy), selected);
-  gtk_inspector_selector_set_object (GTK_INSPECTOR_SELECTOR (iw->selector), selected);
-  gtk_inspector_misc_info_set_object (GTK_INSPECTOR_MISC_INFO (iw->misc_info), selected);
-  gtk_inspector_css_node_tree_set_object (GTK_INSPECTOR_CSS_NODE_TREE (iw->widget_css_node_tree), selected);
-  gtk_inspector_size_groups_set_object (GTK_INSPECTOR_SIZE_GROUPS (iw->size_groups), selected);
-  gtk_inspector_data_list_set_object (GTK_INSPECTOR_DATA_LIST (iw->data_list), selected);
-  gtk_inspector_actions_set_object (GTK_INSPECTOR_ACTIONS (iw->actions), selected);
-  gtk_inspector_menu_set_object (GTK_INSPECTOR_MENU (iw->menu), selected);
-  gtk_inspector_gestures_set_object (GTK_INSPECTOR_GESTURES (iw->gestures), selected);
-  gtk_inspector_magnifier_set_object (GTK_INSPECTOR_MAGNIFIER (iw->magnifier), selected);
+  ctk_inspector_prop_list_set_object (GTK_INSPECTOR_PROP_LIST (iw->child_prop_list), selected);
+  ctk_inspector_signals_list_set_object (GTK_INSPECTOR_SIGNALS_LIST (iw->signals_list), selected);
+  ctk_inspector_object_hierarchy_set_object (GTK_INSPECTOR_OBJECT_HIERARCHY (iw->object_hierarchy), selected);
+  ctk_inspector_selector_set_object (GTK_INSPECTOR_SELECTOR (iw->selector), selected);
+  ctk_inspector_misc_info_set_object (GTK_INSPECTOR_MISC_INFO (iw->misc_info), selected);
+  ctk_inspector_css_node_tree_set_object (GTK_INSPECTOR_CSS_NODE_TREE (iw->widget_css_node_tree), selected);
+  ctk_inspector_size_groups_set_object (GTK_INSPECTOR_SIZE_GROUPS (iw->size_groups), selected);
+  ctk_inspector_data_list_set_object (GTK_INSPECTOR_DATA_LIST (iw->data_list), selected);
+  ctk_inspector_actions_set_object (GTK_INSPECTOR_ACTIONS (iw->actions), selected);
+  ctk_inspector_menu_set_object (GTK_INSPECTOR_MENU (iw->menu), selected);
+  ctk_inspector_gestures_set_object (GTK_INSPECTOR_GESTURES (iw->gestures), selected);
+  ctk_inspector_magnifier_set_object (GTK_INSPECTOR_MAGNIFIER (iw->magnifier), selected);
 
   for (l = iw->extra_pages; l != NULL; l = l->next)
     g_object_set (l->data, "object", selected, NULL);
@@ -98,10 +98,10 @@ on_object_activated (GtkInspectorObjectTree *wt,
 
   tab = g_object_get_data (G_OBJECT (wt), "next-tab");
   if (tab)
-    gtk_stack_set_visible_child_name (GTK_STACK (iw->object_details), tab);
+    ctk_stack_set_visible_child_name (GTK_STACK (iw->object_details), tab);
 
-  gtk_stack_set_visible_child_name (GTK_STACK (iw->object_stack), "object-details");
-  gtk_stack_set_visible_child_name (GTK_STACK (iw->object_buttons), "details");
+  ctk_stack_set_visible_child_name (GTK_STACK (iw->object_stack), "object-details");
+  ctk_stack_set_visible_child_name (GTK_STACK (iw->object_buttons), "details");
 }
 
 static void
@@ -109,16 +109,16 @@ on_object_selected (GtkInspectorObjectTree *wt,
                     GObject                *selected,
                     GtkInspectorWindow     *iw)
 {
-  gtk_widget_set_sensitive (iw->object_details_button, selected != NULL);
+  ctk_widget_set_sensitive (iw->object_details_button, selected != NULL);
   if (GTK_IS_WIDGET (selected))
-    gtk_inspector_flash_widget (iw, GTK_WIDGET (selected));
+    ctk_inspector_flash_widget (iw, GTK_WIDGET (selected));
 }
 
 static void
 close_object_details (GtkWidget *button, GtkInspectorWindow *iw)
 {
-  gtk_stack_set_visible_child_name (GTK_STACK (iw->object_stack), "object-tree");
-  gtk_stack_set_visible_child_name (GTK_STACK (iw->object_buttons), "list");
+  ctk_stack_set_visible_child_name (GTK_STACK (iw->object_stack), "object-tree");
+  ctk_stack_set_visible_child_name (GTK_STACK (iw->object_buttons), "list");
 }
 
 static void
@@ -126,13 +126,13 @@ open_object_details (GtkWidget *button, GtkInspectorWindow *iw)
 {
   GObject *selected;
 
-  selected = gtk_inspector_object_tree_get_selected (GTK_INSPECTOR_OBJECT_TREE (iw->object_tree));
+  selected = ctk_inspector_object_tree_get_selected (GTK_INSPECTOR_OBJECT_TREE (iw->object_tree));
  
   if (!set_selected_object (iw, selected))
     return;
 
-  gtk_stack_set_visible_child_name (GTK_STACK (iw->object_stack), "object-details");
-  gtk_stack_set_visible_child_name (GTK_STACK (iw->object_buttons), "details");
+  ctk_stack_set_visible_child_name (GTK_STACK (iw->object_stack), "object-details");
+  ctk_stack_set_visible_child_name (GTK_STACK (iw->object_buttons), "details");
 }
 
 static gboolean
@@ -146,7 +146,7 @@ translate_visible_child_name (GBinding     *binding,
 
   name = g_value_get_string (from);
 
-  if (gtk_stack_get_child_by_name (GTK_STACK (iw->object_start_stack), name))
+  if (ctk_stack_get_child_by_name (GTK_STACK (iw->object_start_stack), name))
     g_value_set_string (to, name);
   else
     g_value_set_string (to, "empty");
@@ -155,12 +155,12 @@ translate_visible_child_name (GBinding     *binding,
 }
 
 static void
-gtk_inspector_window_init (GtkInspectorWindow *iw)
+ctk_inspector_window_init (GtkInspectorWindow *iw)
 {
   GIOExtensionPoint *extension_point;
   GList *l, *extensions;
 
-  gtk_widget_init_template (GTK_WIDGET (iw));
+  ctk_widget_init_template (GTK_WIDGET (iw));
 
   g_object_bind_property_full (iw->object_details, "visible-child-name",
                                iw->object_start_stack, "visible-child-name",
@@ -170,7 +170,7 @@ gtk_inspector_window_init (GtkInspectorWindow *iw)
                                iw,
                                NULL);
 
-  gtk_window_group_add_window (gtk_window_group_new (), GTK_WINDOW (iw));
+  ctk_window_group_add_window (ctk_window_group_new (), GTK_WINDOW (iw));
 
   extension_point = g_io_extension_point_lookup ("gtk-inspector-page");
   extensions = g_io_extension_point_get_extensions (extension_point);
@@ -201,34 +201,34 @@ gtk_inspector_window_init (GtkInspectorWindow *iw)
 
       if (use_picker)
         {
-          button = gtk_button_new_from_icon_name ("find-location-symbolic",
+          button = ctk_button_new_from_icon_name ("find-location-symbolic",
                                                   GTK_ICON_SIZE_MENU);
-          gtk_widget_set_focus_on_click (button, FALSE);
-          gtk_widget_set_halign (button, GTK_ALIGN_START);
-          gtk_widget_set_valign (button, GTK_ALIGN_CENTER);
+          ctk_widget_set_focus_on_click (button, FALSE);
+          ctk_widget_set_halign (button, GTK_ALIGN_START);
+          ctk_widget_set_valign (button, GTK_ALIGN_CENTER);
           g_signal_connect (button, "clicked",
-                            G_CALLBACK (gtk_inspector_on_inspect), iw);
+                            G_CALLBACK (ctk_inspector_on_inspect), iw);
         }
       else
-        button = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+        button = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 
-      gtk_stack_add_titled (GTK_STACK (iw->top_stack), widget, name, title);
-      gtk_stack_add_named (GTK_STACK (iw->button_stack), button, name);
-      gtk_widget_show (widget);
-      gtk_widget_show (button);
+      ctk_stack_add_titled (GTK_STACK (iw->top_stack), widget, name, title);
+      ctk_stack_add_named (GTK_STACK (iw->button_stack), button, name);
+      ctk_widget_show (widget);
+      ctk_widget_show (button);
 
       g_free (title);
     }
 }
 
 static void
-gtk_inspector_window_constructed (GObject *object)
+ctk_inspector_window_constructed (GObject *object)
 {
   GtkInspectorWindow *iw = GTK_INSPECTOR_WINDOW (object);
 
-  G_OBJECT_CLASS (gtk_inspector_window_parent_class)->constructed (object);
+  G_OBJECT_CLASS (ctk_inspector_window_parent_class)->constructed (object);
 
-  gtk_inspector_object_tree_scan (GTK_INSPECTOR_OBJECT_TREE (iw->object_tree), NULL);
+  ctk_inspector_object_tree_scan (GTK_INSPECTOR_OBJECT_TREE (iw->object_tree), NULL);
 }
 
 static void
@@ -236,50 +236,50 @@ object_details_changed (GtkWidget          *combo,
                         GParamSpec         *pspec,
                         GtkInspectorWindow *iw)
 {
-  gtk_stack_set_visible_child_name (GTK_STACK (iw->object_center_stack), "title");
+  ctk_stack_set_visible_child_name (GTK_STACK (iw->object_center_stack), "title");
 }
 
 static void
-gtk_inspector_window_class_init (GtkInspectorWindowClass *klass)
+ctk_inspector_window_class_init (GtkInspectorWindowClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
-  object_class->constructed = gtk_inspector_window_constructed;
+  object_class->constructed = ctk_inspector_window_constructed;
 
-  gtk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/window.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/window.ui");
 
-  gtk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, top_stack);
-  gtk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, button_stack);
-  gtk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, object_stack);
-  gtk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, object_tree);
-  gtk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, object_details);
-  gtk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, object_start_stack);
-  gtk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, object_center_stack);
-  gtk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, object_buttons);
-  gtk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, object_details_button);
-  gtk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, select_object);
-  gtk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, prop_list);
-  gtk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, child_prop_list);
-  gtk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, signals_list);
-  gtk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, widget_css_node_tree);
-  gtk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, object_hierarchy);
-  gtk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, object_title);
-  gtk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, selector);
-  gtk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, size_groups);
-  gtk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, data_list);
-  gtk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, actions);
-  gtk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, menu);
-  gtk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, misc_info);
-  gtk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, gestures);
-  gtk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, magnifier);
+  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, top_stack);
+  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, button_stack);
+  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, object_stack);
+  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, object_tree);
+  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, object_details);
+  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, object_start_stack);
+  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, object_center_stack);
+  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, object_buttons);
+  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, object_details_button);
+  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, select_object);
+  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, prop_list);
+  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, child_prop_list);
+  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, signals_list);
+  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, widget_css_node_tree);
+  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, object_hierarchy);
+  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, object_title);
+  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, selector);
+  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, size_groups);
+  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, data_list);
+  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, actions);
+  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, menu);
+  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, misc_info);
+  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, gestures);
+  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, magnifier);
 
-  gtk_widget_class_bind_template_callback (widget_class, gtk_inspector_on_inspect);
-  gtk_widget_class_bind_template_callback (widget_class, on_object_activated);
-  gtk_widget_class_bind_template_callback (widget_class, on_object_selected);
-  gtk_widget_class_bind_template_callback (widget_class, open_object_details);
-  gtk_widget_class_bind_template_callback (widget_class, close_object_details);
-  gtk_widget_class_bind_template_callback (widget_class, object_details_changed);
+  ctk_widget_class_bind_template_callback (widget_class, ctk_inspector_on_inspect);
+  ctk_widget_class_bind_template_callback (widget_class, on_object_activated);
+  ctk_widget_class_bind_template_callback (widget_class, on_object_selected);
+  ctk_widget_class_bind_template_callback (widget_class, open_object_details);
+  ctk_widget_class_bind_template_callback (widget_class, close_object_details);
+  ctk_widget_class_bind_template_callback (widget_class, object_details_changed);
 }
 
 static GdkScreen *
@@ -316,7 +316,7 @@ get_inspector_screen (void)
 }
 
 GtkWidget *
-gtk_inspector_window_new (void)
+ctk_inspector_window_new (void)
 {
   return GTK_WIDGET (g_object_new (GTK_TYPE_INSPECTOR_WINDOW,
                                    "screen", get_inspector_screen (),
@@ -324,11 +324,11 @@ gtk_inspector_window_new (void)
 }
 
 void
-gtk_inspector_window_rescan (GtkWidget *widget)
+ctk_inspector_window_rescan (GtkWidget *widget)
 {
   GtkInspectorWindow *iw = GTK_INSPECTOR_WINDOW (widget);
 
-  gtk_inspector_object_tree_scan (GTK_INSPECTOR_OBJECT_TREE (iw->object_tree), NULL);
+  ctk_inspector_object_tree_scan (GTK_INSPECTOR_OBJECT_TREE (iw->object_tree), NULL);
 }
 
 // vim: set et sw=2 ts=2:

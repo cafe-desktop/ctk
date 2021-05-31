@@ -42,12 +42,12 @@ struct _GtkComposeTableCompact
   gint n_index_stride;
 };
 
-GtkComposeTable * gtk_compose_table_new_with_file (const gchar   *compose_file);
-GSList *gtk_compose_table_list_add_array          (GSList        *compose_tables,
+GtkComposeTable * ctk_compose_table_new_with_file (const gchar   *compose_file);
+GSList *ctk_compose_table_list_add_array          (GSList        *compose_tables,
                                                    const guint16 *data,
                                                    gint           max_seq_len,
                                                    gint           n_seqs);
-GSList *gtk_compose_table_list_add_file           (GSList        *compose_tables,
+GSList *ctk_compose_table_list_add_file           (GSList        *compose_tables,
                                                    const gchar   *compose_file);
 
 G_END_DECLS

@@ -416,14 +416,14 @@ gdk_registry_handle_global (void               *data,
     {
       display_wayland->zxdg_shell_v6_id = id;
     }
-  else if (strcmp (interface, "gtk_shell1") == 0)
+  else if (strcmp (interface, "ctk_shell1") == 0)
     {
-      display_wayland->gtk_shell =
+      display_wayland->ctk_shell =
         wl_registry_bind(display_wayland->wl_registry, id,
-                         &gtk_shell1_interface,
+                         &ctk_shell1_interface,
                          MIN (version, GTK_SHELL1_VERSION));
-      _gdk_wayland_screen_set_has_gtk_shell (display_wayland->screen);
-      display_wayland->gtk_shell_version = version;
+      _gdk_wayland_screen_set_has_ctk_shell (display_wayland->screen);
+      display_wayland->ctk_shell_version = version;
     }
   else if (strcmp (interface, "wl_output") == 0)
     {
@@ -474,11 +474,11 @@ gdk_registry_handle_global (void               *data,
         wl_registry_bind (display_wayland->wl_registry,
                           id, &zwp_pointer_gestures_v1_interface, version);
     }
-  else if (strcmp (interface, "gtk_primary_selection_device_manager") == 0)
+  else if (strcmp (interface, "ctk_primary_selection_device_manager") == 0)
     {
-      display_wayland->gtk_primary_selection_manager =
+      display_wayland->ctk_primary_selection_manager =
         wl_registry_bind(display_wayland->wl_registry, id,
-                         &gtk_primary_selection_device_manager_interface, 1);
+                         &ctk_primary_selection_device_manager_interface, 1);
     }
   else if (strcmp (interface, "zwp_primary_selection_device_manager_v1") == 0)
     {
@@ -765,20 +765,20 @@ gdk_wayland_display_system_bell (GdkDisplay *display,
                                  GdkWindow  *window)
 {
   GdkWaylandDisplay *display_wayland;
-  struct gtk_surface1 *gtk_surface;
+  struct ctk_surface1 *ctk_surface;
   gint64 now_ms;
 
   g_return_if_fail (GDK_IS_DISPLAY (display));
 
   display_wayland = GDK_WAYLAND_DISPLAY (display);
 
-  if (!display_wayland->gtk_shell)
+  if (!display_wayland->ctk_shell)
     return;
 
   if (window)
-    gtk_surface = gdk_wayland_window_get_gtk_surface (window);
+    ctk_surface = gdk_wayland_window_get_ctk_surface (window);
   else
-    gtk_surface = NULL;
+    ctk_surface = NULL;
 
   now_ms = g_get_monotonic_time () / 1000;
   if (now_ms - display_wayland->last_bell_time_ms < MIN_SYSTEM_BELL_DELAY_MS)
@@ -786,7 +786,7 @@ gdk_wayland_display_system_bell (GdkDisplay *display,
 
   display_wayland->last_bell_time_ms = now_ms;
 
-  gtk_shell1_system_bell (display_wayland->gtk_shell, gtk_surface);
+  ctk_shell1_system_bell (display_wayland->ctk_shell, ctk_surface);
 }
 
 static void
@@ -951,8 +951,8 @@ gdk_wayland_display_notify_startup_complete (GdkDisplay  *display,
         return;
     }
 
-  if (display_wayland->gtk_shell)
-    gtk_shell1_set_startup_id (display_wayland->gtk_shell, startup_id);
+  if (display_wayland->ctk_shell)
+    ctk_shell1_set_startup_id (display_wayland->ctk_shell, startup_id);
 }
 
 static GdkKeymap *

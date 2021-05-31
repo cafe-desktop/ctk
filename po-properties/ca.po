@@ -812,10 +812,10 @@ msgstr "El valor"
 
 #: gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"El valor que retorna gtk_radio_action_get_current_value() quan aquesta acció "
+"El valor que retorna ctk_radio_action_get_current_value() quan aquesta acció "
 "és l'acció activa del seu grup."
 
 #: gtk/deprecated/gtkradioaction.c:139 gtk/gtkradiobutton.c:184
@@ -1278,10 +1278,10 @@ msgstr "Logotip"
 #: gtk/gtkaboutdialog.c:552
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Un logotip per a la caixa d'informació de l'aplicació. Si no està definit, "
-"es fa servir el valor de gtk_window_get_default_icon_list()"
+"es fa servir el valor de ctk_window_get_default_icon_list()"
 
 #: gtk/gtkaboutdialog.c:566
 msgid "Logo Icon Name"
@@ -3502,10 +3502,10 @@ msgstr "Pas de la pulsació de progrés"
 #: gtk/gtkentry.c:1094
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "La fracció de l'amplada total de l'entrada en què es mourà el bloc de rebot "
-"del progrés cada vegada que s'invoqui la funció gtk_entry_progress_pulse()"
+"del progrés cada vegada que s'invoqui la funció ctk_entry_progress_pulse()"
 
 #: gtk/gtkentry.c:1110
 msgid "Show text in the entry when it's empty and unfocused"
@@ -9284,8 +9284,8 @@ msgid "No show all"
 msgstr "No «show all»"
 
 #: gtk/gtkwidget.c:1264
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "Si gtk_widget_show_all() no ha d'afectar aquest giny"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "Si ctk_widget_show_all() no ha d'afectar aquest giny"
 
 #: gtk/gtkwidget.c:1286
 msgid "Whether this widget has a tooltip"

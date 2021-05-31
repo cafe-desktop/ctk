@@ -49,25 +49,25 @@ button_clicked_cb (GtkButton *b,
 
   data = g_strdup_printf (data_format, bg_str, grad1, grad2);
 
-  provider = gtk_css_provider_new ();
-  gtk_css_provider_load_from_data (provider, data, -1, &error);
+  provider = ctk_css_provider_new ();
+  ctk_css_provider_load_from_data (provider, data, -1, &error);
 
   g_assert (error == NULL);
 
-  style = gtk_widget_get_style_context (d->image);
-  gtk_style_context_add_provider (style, GTK_STYLE_PROVIDER (provider),
+  style = ctk_widget_get_style_context (d->image);
+  ctk_style_context_add_provider (style, GTK_STYLE_PROVIDER (provider),
                                   GTK_STYLE_PROVIDER_PRIORITY_USER);
 
   if (d->odd) {
-    gtk_numerable_icon_set_background_icon_name (GTK_NUMERABLE_ICON (d->numerable), NULL);
-    gtk_numerable_icon_set_count (GTK_NUMERABLE_ICON (d->numerable), g_random_int_range (-99, 99));
+    ctk_numerable_icon_set_background_icon_name (GTK_NUMERABLE_ICON (d->numerable), NULL);
+    ctk_numerable_icon_set_count (GTK_NUMERABLE_ICON (d->numerable), g_random_int_range (-99, 99));
   } else {
-    gtk_numerable_icon_set_background_icon_name (GTK_NUMERABLE_ICON (d->numerable),
+    ctk_numerable_icon_set_background_icon_name (GTK_NUMERABLE_ICON (d->numerable),
                                                  "emblem-favorite");
-    gtk_numerable_icon_set_label (GTK_NUMERABLE_ICON (d->numerable), "IVX");
+    ctk_numerable_icon_set_label (GTK_NUMERABLE_ICON (d->numerable), "IVX");
   }
   
-  gtk_image_set_from_gicon (GTK_IMAGE (d->image), d->numerable, d->size);
+  ctk_image_set_from_gicon (GTK_IMAGE (d->image), d->numerable, d->size);
 
   d->odd = !d->odd;
 
@@ -85,7 +85,7 @@ refresh_cb (GtkWidget *button,
 {
   PackData *d = user_data;
 
-  gtk_image_set_from_gicon (GTK_IMAGE (d->image), d->numerable, d->size);
+  ctk_image_set_from_gicon (GTK_IMAGE (d->image), d->numerable, d->size);
 }
 
 static void
@@ -99,36 +99,36 @@ pack_numerable (GtkWidget *parent,
 
   d = g_slice_new0 (PackData);
 
-  image = gtk_image_new ();
+  image = ctk_image_new ();
   icon = g_themed_icon_new ("system-file-manager");
-  numerable = gtk_numerable_icon_new (icon);
+  numerable = ctk_numerable_icon_new (icon);
 
   d->image = image;
   d->numerable = numerable;
   d->odd = FALSE;
   d->size = size;
 
-  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 12);
-  gtk_box_pack_start (GTK_BOX (parent), vbox, FALSE, FALSE, 0);
+  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 12);
+  ctk_box_pack_start (GTK_BOX (parent), vbox, FALSE, FALSE, 0);
 
-  gtk_numerable_icon_set_count (GTK_NUMERABLE_ICON (numerable), 42);
-  gtk_box_pack_start (GTK_BOX (vbox), image, FALSE, FALSE, 0);
-  gtk_numerable_icon_set_style_context (GTK_NUMERABLE_ICON (numerable),
-                                        gtk_widget_get_style_context (image));
-  gtk_image_set_from_gicon (GTK_IMAGE (image), numerable, size);
+  ctk_numerable_icon_set_count (GTK_NUMERABLE_ICON (numerable), 42);
+  ctk_box_pack_start (GTK_BOX (vbox), image, FALSE, FALSE, 0);
+  ctk_numerable_icon_set_style_context (GTK_NUMERABLE_ICON (numerable),
+                                        ctk_widget_get_style_context (image));
+  ctk_image_set_from_gicon (GTK_IMAGE (image), numerable, size);
 
-  label = gtk_label_new (NULL);
+  label = ctk_label_new (NULL);
   str = g_strdup_printf ("Numerable icon, hash %u", g_icon_hash (numerable));
-  gtk_label_set_label (GTK_LABEL (label), str);
-  gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+  ctk_label_set_label (GTK_LABEL (label), str);
+  ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
 
-  button = gtk_button_new_with_label ("Change icon number");
-  gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
+  button = ctk_button_new_with_label ("Change icon number");
+  ctk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
   g_signal_connect (button, "clicked",
                     G_CALLBACK (button_clicked_cb), d);
 
-  button = gtk_button_new_with_label ("Refresh");
-  gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
+  button = ctk_button_new_with_label ("Refresh");
+  ctk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
   g_signal_connect (button, "clicked",
                     G_CALLBACK (refresh_cb), d);
 }
@@ -139,21 +139,21 @@ main (int argc,
 {
   GtkWidget *hbox, *toplevel;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
-  toplevel = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
-  gtk_container_add (GTK_CONTAINER (toplevel), hbox);
+  toplevel = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
+  ctk_container_add (GTK_CONTAINER (toplevel), hbox);
 
   pack_numerable (hbox, GTK_ICON_SIZE_DIALOG);
   pack_numerable (hbox, GTK_ICON_SIZE_BUTTON);
 
-  gtk_widget_show_all (toplevel);
+  ctk_widget_show_all (toplevel);
 
   g_signal_connect (toplevel, "delete-event",
-		    G_CALLBACK (gtk_main_quit), NULL);
+		    G_CALLBACK (ctk_main_quit), NULL);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

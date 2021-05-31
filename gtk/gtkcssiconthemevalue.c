@@ -40,7 +40,7 @@ struct _GtkCssValue {
 };
 
 static void
-gtk_css_value_icon_theme_disconnect_handler (GtkCssValue *value)
+ctk_css_value_icon_theme_disconnect_handler (GtkCssValue *value)
 {
   if (value->changed_id == 0)
     return;
@@ -52,16 +52,16 @@ gtk_css_value_icon_theme_disconnect_handler (GtkCssValue *value)
 }
 
 static void
-gtk_css_value_icon_theme_changed_cb (GtkIconTheme *icontheme,
+ctk_css_value_icon_theme_changed_cb (GtkIconTheme *icontheme,
                                      GtkCssValue  *value)
 {
-  gtk_css_value_icon_theme_disconnect_handler (value);
+  ctk_css_value_icon_theme_disconnect_handler (value);
 }
 
 static void
-gtk_css_value_icon_theme_free (GtkCssValue *value)
+ctk_css_value_icon_theme_free (GtkCssValue *value)
 {
-  gtk_css_value_icon_theme_disconnect_handler (value);
+  ctk_css_value_icon_theme_disconnect_handler (value);
 
   if (value->icontheme)
     g_object_unref (value->icontheme);
@@ -70,7 +70,7 @@ gtk_css_value_icon_theme_free (GtkCssValue *value)
 }
 
 static GtkCssValue *
-gtk_css_value_icon_theme_compute (GtkCssValue             *icon_theme,
+ctk_css_value_icon_theme_compute (GtkCssValue             *icon_theme,
                                   guint                    property_id,
                                   GtkStyleProviderPrivate *provider,
                                   GtkCssStyle             *style,
@@ -81,20 +81,20 @@ gtk_css_value_icon_theme_compute (GtkCssValue             *icon_theme,
   if (icon_theme->icontheme)
     icontheme = icon_theme->icontheme;
   else
-    icontheme = gtk_icon_theme_get_for_screen (_gtk_settings_get_screen (_gtk_style_provider_private_get_settings (provider)));
+    icontheme = ctk_icon_theme_get_for_screen (_ctk_settings_get_screen (_ctk_style_provider_private_get_settings (provider)));
 
-  return gtk_css_icon_theme_value_new (icontheme);
+  return ctk_css_icon_theme_value_new (icontheme);
 }
 
 static gboolean
-gtk_css_value_icon_theme_equal (const GtkCssValue *value1,
+ctk_css_value_icon_theme_equal (const GtkCssValue *value1,
                                 const GtkCssValue *value2)
 {
   return FALSE;
 }
 
 static GtkCssValue *
-gtk_css_value_icon_theme_transition (GtkCssValue *start,
+ctk_css_value_icon_theme_transition (GtkCssValue *start,
                                      GtkCssValue *end,
                                      guint        property_id,
                                      double       progress)
@@ -103,58 +103,58 @@ gtk_css_value_icon_theme_transition (GtkCssValue *start,
 }
 
 static void
-gtk_css_value_icon_theme_print (const GtkCssValue *icon_theme,
+ctk_css_value_icon_theme_print (const GtkCssValue *icon_theme,
                                 GString           *string)
 {
   g_string_append (string, "initial");
 }
 
 static const GtkCssValueClass GTK_CSS_VALUE_ICON_THEME = {
-  gtk_css_value_icon_theme_free,
-  gtk_css_value_icon_theme_compute,
-  gtk_css_value_icon_theme_equal,
-  gtk_css_value_icon_theme_transition,
-  gtk_css_value_icon_theme_print
+  ctk_css_value_icon_theme_free,
+  ctk_css_value_icon_theme_compute,
+  ctk_css_value_icon_theme_equal,
+  ctk_css_value_icon_theme_transition,
+  ctk_css_value_icon_theme_print
 };
 
 static GtkCssValue default_icon_theme_value = { &GTK_CSS_VALUE_ICON_THEME, 1, NULL, 0 };
 
 GtkCssValue *
-gtk_css_icon_theme_value_new (GtkIconTheme *icontheme)
+ctk_css_icon_theme_value_new (GtkIconTheme *icontheme)
 {
   GtkCssValue *result;
 
   if (icontheme == NULL)
-    return _gtk_css_value_ref (&default_icon_theme_value);
+    return _ctk_css_value_ref (&default_icon_theme_value);
 
   result = g_object_get_data (G_OBJECT (icontheme), "-gtk-css-value");
   if (result)
-    return _gtk_css_value_ref (result);
+    return _ctk_css_value_ref (result);
 
-  result = _gtk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_ICON_THEME);
+  result = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_ICON_THEME);
   result->icontheme = g_object_ref (icontheme);
 
   g_object_set_data (G_OBJECT (icontheme), "-gtk-css-value", result);
-  result->changed_id = g_signal_connect (icontheme, "changed", G_CALLBACK (gtk_css_value_icon_theme_changed_cb), result);
+  result->changed_id = g_signal_connect (icontheme, "changed", G_CALLBACK (ctk_css_value_icon_theme_changed_cb), result);
 
   return result;
 }
 
 GtkCssValue *
-gtk_css_icon_theme_value_parse (GtkCssParser *parser)
+ctk_css_icon_theme_value_parse (GtkCssParser *parser)
 {
   GtkIconTheme *icontheme;
   GtkCssValue *result;
   char *s;
 
-  s = _gtk_css_parser_read_string (parser);
+  s = _ctk_css_parser_read_string (parser);
   if (s == NULL)
     return NULL;
 
-  icontheme = gtk_icon_theme_new ();
-  gtk_icon_theme_set_custom_theme (icontheme, s);
+  icontheme = ctk_icon_theme_new ();
+  ctk_icon_theme_set_custom_theme (icontheme, s);
 
-  result = gtk_css_icon_theme_value_new (icontheme);
+  result = ctk_css_icon_theme_value_new (icontheme);
 
   g_object_unref (icontheme);
   g_free (s);
@@ -163,7 +163,7 @@ gtk_css_icon_theme_value_parse (GtkCssParser *parser)
 }
 
 GtkIconTheme *
-gtk_css_icon_theme_value_get_icon_theme (GtkCssValue *value)
+ctk_css_icon_theme_value_get_icon_theme (GtkCssValue *value)
 {
   g_return_val_if_fail (value->class == &GTK_CSS_VALUE_ICON_THEME, NULL);
 

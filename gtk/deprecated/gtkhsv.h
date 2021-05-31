@@ -38,7 +38,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_HSV            (gtk_hsv_get_type ())
+#define GTK_TYPE_HSV            (ctk_hsv_get_type ())
 #define GTK_HSV(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_HSV, GtkHSV))
 #define GTK_HSV_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_HSV, GtkHSVClass))
 #define GTK_IS_HSV(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_HSV))
@@ -70,37 +70,37 @@ struct _GtkHSVClass
                     GtkDirectionType type);
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
 GDK_DEPRECATED_IN_3_4
-GType      gtk_hsv_get_type     (void) G_GNUC_CONST;
+GType      ctk_hsv_get_type     (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_4
-GtkWidget* gtk_hsv_new          (void);
+GtkWidget* ctk_hsv_new          (void);
 GDK_DEPRECATED_IN_3_4
-void       gtk_hsv_set_color    (GtkHSV    *hsv,
+void       ctk_hsv_set_color    (GtkHSV    *hsv,
 				 double     h,
 				 double     s,
 				 double     v);
 GDK_DEPRECATED_IN_3_4
-void       gtk_hsv_get_color    (GtkHSV    *hsv,
+void       ctk_hsv_get_color    (GtkHSV    *hsv,
 				 gdouble   *h,
 				 gdouble   *s,
 				 gdouble   *v);
 GDK_DEPRECATED_IN_3_4
-void       gtk_hsv_set_metrics  (GtkHSV    *hsv,
+void       ctk_hsv_set_metrics  (GtkHSV    *hsv,
 				 gint       size,
 				 gint       ring_width);
 GDK_DEPRECATED_IN_3_4
-void       gtk_hsv_get_metrics  (GtkHSV    *hsv,
+void       ctk_hsv_get_metrics  (GtkHSV    *hsv,
 				 gint      *size,
 				 gint      *ring_width);
 GDK_DEPRECATED_IN_3_4
-gboolean   gtk_hsv_is_adjusting (GtkHSV    *hsv);
+gboolean   ctk_hsv_is_adjusting (GtkHSV    *hsv);
 
 G_END_DECLS
 

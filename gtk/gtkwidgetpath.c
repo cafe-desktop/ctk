@@ -40,8 +40,8 @@
  * widget in order to query style information.
  *
  * If you are using GTK+ widgets, you probably will not need to use
- * this API directly, as there is gtk_widget_get_path(), and the style
- * context returned by gtk_widget_get_style_context() will be automatically
+ * this API directly, as there is ctk_widget_get_path(), and the style
+ * context returned by ctk_widget_get_style_context() will be automatically
  * updated on widget hierarchy changes.
  *
  * The widget path generation is generally simple:
@@ -52,9 +52,9 @@
  * {
  *   GtkWidgetPath *path;
  *
- *   path = gtk_widget_path_new ();
- *   gtk_widget_path_append_type (path, GTK_TYPE_WINDOW);
- *   gtk_widget_path_append_type (path, GTK_TYPE_BUTTON);
+ *   path = ctk_widget_path_new ();
+ *   ctk_widget_path_append_type (path, GTK_TYPE_WINDOW);
+ *   ctk_widget_path_append_type (path, GTK_TYPE_BUTTON);
  * }
  * ]|
  *
@@ -69,13 +69,13 @@
  *   GtkWidgetPath *path;
  *   guint pos;
  *
- *   path = gtk_widget_path_new ();
+ *   path = ctk_widget_path_new ();
  *
- *   pos = gtk_widget_path_append_type (path, GTK_TYPE_NOTEBOOK);
- *   gtk_widget_path_iter_add_region (path, pos, "tab", GTK_REGION_EVEN | GTK_REGION_FIRST);
+ *   pos = ctk_widget_path_append_type (path, GTK_TYPE_NOTEBOOK);
+ *   ctk_widget_path_iter_add_region (path, pos, "tab", GTK_REGION_EVEN | GTK_REGION_FIRST);
  *
- *   pos = gtk_widget_path_append_type (path, GTK_TYPE_LABEL);
- *   gtk_widget_path_iter_set_name (path, pos, "first tab label");
+ *   pos = ctk_widget_path_append_type (path, GTK_TYPE_LABEL);
+ *   ctk_widget_path_iter_set_name (path, pos, "first tab label");
  * }
  * ]|
  *
@@ -83,8 +83,8 @@
  * that applies to the described widget.
  **/
 
-G_DEFINE_BOXED_TYPE (GtkWidgetPath, gtk_widget_path,
-		     gtk_widget_path_ref, gtk_widget_path_unref)
+G_DEFINE_BOXED_TYPE (GtkWidgetPath, ctk_widget_path,
+		     ctk_widget_path_ref, ctk_widget_path_unref)
 
 
 typedef struct GtkPathElement GtkPathElement;
@@ -104,7 +104,7 @@ struct _GtkWidgetPath
 };
 
 /**
- * gtk_widget_path_new:
+ * ctk_widget_path_new:
  *
  * Returns an empty widget path.
  *
@@ -113,7 +113,7 @@ struct _GtkWidgetPath
  * Since: 3.0
  **/
 GtkWidgetPath *
-gtk_widget_path_new (void)
+ctk_widget_path_new (void)
 {
   GtkWidgetPath *path;
 
@@ -125,19 +125,19 @@ gtk_widget_path_new (void)
 }
 
 static void
-gtk_path_element_copy (GtkPathElement       *dest,
+ctk_path_element_copy (GtkPathElement       *dest,
                        const GtkPathElement *src)
 {
   memset (dest, 0, sizeof (GtkPathElement));
 
-  dest->decl = gtk_css_node_declaration_ref (src->decl);
+  dest->decl = ctk_css_node_declaration_ref (src->decl);
   if (src->siblings)
-    dest->siblings = gtk_widget_path_ref (src->siblings);
+    dest->siblings = ctk_widget_path_ref (src->siblings);
   dest->sibling_index = src->sibling_index;
 }
 
 /**
- * gtk_widget_path_copy:
+ * ctk_widget_path_copy:
  * @path: a #GtkWidgetPath
  *
  * Returns a copy of @path
@@ -147,14 +147,14 @@ gtk_path_element_copy (GtkPathElement       *dest,
  * Since: 3.0
  **/
 GtkWidgetPath *
-gtk_widget_path_copy (const GtkWidgetPath *path)
+ctk_widget_path_copy (const GtkWidgetPath *path)
 {
   GtkWidgetPath *new_path;
   guint i;
 
-  gtk_internal_return_val_if_fail (path != NULL, NULL);
+  ctk_internal_return_val_if_fail (path != NULL, NULL);
 
-  new_path = gtk_widget_path_new ();
+  new_path = ctk_widget_path_new ();
 
   g_array_set_size (new_path->elems, path->elems->len);
 
@@ -165,14 +165,14 @@ gtk_widget_path_copy (const GtkWidgetPath *path)
       elem = &g_array_index (path->elems, GtkPathElement, i);
       dest = &g_array_index (new_path->elems, GtkPathElement, i);
 
-      gtk_path_element_copy (dest, elem);
+      ctk_path_element_copy (dest, elem);
     }
 
   return new_path;
 }
 
 /**
- * gtk_widget_path_ref:
+ * ctk_widget_path_ref:
  * @path: a #GtkWidgetPath
  *
  * Increments the reference count on @path.
@@ -182,9 +182,9 @@ gtk_widget_path_copy (const GtkWidgetPath *path)
  * Since: 3.2
  **/
 GtkWidgetPath *
-gtk_widget_path_ref (GtkWidgetPath *path)
+ctk_widget_path_ref (GtkWidgetPath *path)
 {
-  gtk_internal_return_val_if_fail (path != NULL, path);
+  ctk_internal_return_val_if_fail (path != NULL, path);
 
   path->ref_count += 1;
 
@@ -192,7 +192,7 @@ gtk_widget_path_ref (GtkWidgetPath *path)
 }
 
 /**
- * gtk_widget_path_unref:
+ * ctk_widget_path_unref:
  * @path: a #GtkWidgetPath
  *
  * Decrements the reference count on @path, freeing the structure
@@ -201,11 +201,11 @@ gtk_widget_path_ref (GtkWidgetPath *path)
  * Since: 3.2
  **/
 void
-gtk_widget_path_unref (GtkWidgetPath *path)
+ctk_widget_path_unref (GtkWidgetPath *path)
 {
   guint i;
 
-  gtk_internal_return_if_fail (path != NULL);
+  ctk_internal_return_if_fail (path != NULL);
 
   path->ref_count -= 1;
   if (path->ref_count > 0)
@@ -217,9 +217,9 @@ gtk_widget_path_unref (GtkWidgetPath *path)
 
       elem = &g_array_index (path->elems, GtkPathElement, i);
 
-      gtk_css_node_declaration_unref (elem->decl);
+      ctk_css_node_declaration_unref (elem->decl);
       if (elem->siblings)
-        gtk_widget_path_unref (elem->siblings);
+        ctk_widget_path_unref (elem->siblings);
     }
 
   g_array_free (path->elems, TRUE);
@@ -227,7 +227,7 @@ gtk_widget_path_unref (GtkWidgetPath *path)
 }
 
 /**
- * gtk_widget_path_free:
+ * ctk_widget_path_free:
  * @path: a #GtkWidgetPath
  *
  * Decrements the reference count on @path, freeing the structure
@@ -236,15 +236,15 @@ gtk_widget_path_unref (GtkWidgetPath *path)
  * Since: 3.0
  **/
 void
-gtk_widget_path_free (GtkWidgetPath *path)
+ctk_widget_path_free (GtkWidgetPath *path)
 {
-  gtk_internal_return_if_fail (path != NULL);
+  ctk_internal_return_if_fail (path != NULL);
 
-  gtk_widget_path_unref (path);
+  ctk_widget_path_unref (path);
 }
 
 /**
- * gtk_widget_path_length:
+ * ctk_widget_path_length:
  * @path: a #GtkWidgetPath
  *
  * Returns the number of #GtkWidget #GTypes between the represented
@@ -255,15 +255,15 @@ gtk_widget_path_free (GtkWidgetPath *path)
  * Since: 3.0
  **/
 gint
-gtk_widget_path_length (const GtkWidgetPath *path)
+ctk_widget_path_length (const GtkWidgetPath *path)
 {
-  gtk_internal_return_val_if_fail (path != NULL, 0);
+  ctk_internal_return_val_if_fail (path != NULL, 0);
 
   return path->elems->len;
 }
 
 /**
- * gtk_widget_path_to_string:
+ * ctk_widget_path_to_string:
  * @path: the path
  *
  * Dumps the widget path into a string representation. It tries to match
@@ -278,12 +278,12 @@ gtk_widget_path_length (const GtkWidgetPath *path)
  * Since: 3.2
  **/
 char *
-gtk_widget_path_to_string (const GtkWidgetPath *path)
+ctk_widget_path_to_string (const GtkWidgetPath *path)
 {
   GString *string;
   guint i, j, n;
 
-  gtk_internal_return_val_if_fail (path != NULL, NULL);
+  ctk_internal_return_val_if_fail (path != NULL, NULL);
 
   string = g_string_new ("");
 
@@ -299,19 +299,19 @@ gtk_widget_path_to_string (const GtkWidgetPath *path)
       if (i > 0)
         g_string_append_c (string, ' ');
 
-      if (gtk_css_node_declaration_get_name (elem->decl))
-        g_string_append (string, gtk_css_node_declaration_get_name (elem->decl));
+      if (ctk_css_node_declaration_get_name (elem->decl))
+        g_string_append (string, ctk_css_node_declaration_get_name (elem->decl));
       else
-        g_string_append (string, g_type_name (gtk_css_node_declaration_get_type (elem->decl)));
+        g_string_append (string, g_type_name (ctk_css_node_declaration_get_type (elem->decl)));
 
-      if (gtk_css_node_declaration_get_id (elem->decl))
+      if (ctk_css_node_declaration_get_id (elem->decl))
         {
           g_string_append_c (string, '(');
-          g_string_append (string, gtk_css_node_declaration_get_id (elem->decl));
+          g_string_append (string, ctk_css_node_declaration_get_id (elem->decl));
           g_string_append_c (string, ')');
         }
 
-      state = gtk_css_node_declaration_get_state (elem->decl);
+      state = ctk_css_node_declaration_get_state (elem->decl);
       if (state)
         {
           GFlagsClass *fclass;
@@ -331,16 +331,16 @@ gtk_widget_path_to_string (const GtkWidgetPath *path)
       if (elem->siblings)
         g_string_append_printf (string, "[%d/%d]",
                                 elem->sibling_index + 1,
-                                gtk_widget_path_length (elem->siblings));
+                                ctk_widget_path_length (elem->siblings));
 
-      classes = gtk_css_node_declaration_get_classes (elem->decl, &n);
+      classes = ctk_css_node_declaration_get_classes (elem->decl, &n);
       for (j = 0; j < n; j++)
         {
           g_string_append_c (string, '.');
           g_string_append (string, g_quark_to_string (classes[j]));
         }
 
-      regions = gtk_css_node_declaration_list_regions (elem->decl);
+      regions = ctk_css_node_declaration_list_regions (elem->decl);
       for (list = regions; list; list = list->next)
         {
           static const char *flag_names[] = {
@@ -354,7 +354,7 @@ gtk_widget_path_to_string (const GtkWidgetPath *path)
           GtkRegionFlags flags;
           GQuark region = GPOINTER_TO_UINT (regions->data);
 
-          gtk_css_node_declaration_has_region (elem->decl, region, &flags);
+          ctk_css_node_declaration_has_region (elem->decl, region, &flags);
           g_string_append_c (string, ' ');
           g_string_append (string, g_quark_to_string (region));
           for (j = 0; j < G_N_ELEMENTS(flag_names); j++)
@@ -373,7 +373,7 @@ gtk_widget_path_to_string (const GtkWidgetPath *path)
 }
 
 /**
- * gtk_widget_path_prepend_type:
+ * ctk_widget_path_prepend_type:
  * @path: a #GtkWidgetPath
  * @type: widget type to prepend
  *
@@ -382,21 +382,21 @@ gtk_widget_path_to_string (const GtkWidgetPath *path)
  * Since: 3.0
  **/
 void
-gtk_widget_path_prepend_type (GtkWidgetPath *path,
+ctk_widget_path_prepend_type (GtkWidgetPath *path,
                               GType          type)
 {
   GtkPathElement new = { NULL };
 
-  gtk_internal_return_if_fail (path != NULL);
+  ctk_internal_return_if_fail (path != NULL);
 
-  new.decl = gtk_css_node_declaration_new ();
-  gtk_css_node_declaration_set_type (&new.decl, type);
+  new.decl = ctk_css_node_declaration_new ();
+  ctk_css_node_declaration_set_type (&new.decl, type);
 
   g_array_prepend_val (path->elems, new);
 }
 
 /**
- * gtk_widget_path_append_type:
+ * ctk_widget_path_append_type:
  * @path: a #GtkWidgetPath
  * @type: widget type to append
  *
@@ -407,22 +407,22 @@ gtk_widget_path_prepend_type (GtkWidgetPath *path,
  * Since: 3.0
  **/
 gint
-gtk_widget_path_append_type (GtkWidgetPath *path,
+ctk_widget_path_append_type (GtkWidgetPath *path,
                              GType          type)
 {
   GtkPathElement new = { NULL };
 
-  gtk_internal_return_val_if_fail (path != NULL, 0);
+  ctk_internal_return_val_if_fail (path != NULL, 0);
 
-  new.decl = gtk_css_node_declaration_new ();
-  gtk_css_node_declaration_set_type (&new.decl, type);
+  new.decl = ctk_css_node_declaration_new ();
+  ctk_css_node_declaration_set_type (&new.decl, type);
   g_array_append_val (path->elems, new);
 
   return path->elems->len - 1;
 }
 
 /**
- * gtk_widget_path_append_with_siblings:
+ * ctk_widget_path_append_with_siblings:
  * @path: the widget path to append to
  * @siblings: a widget path describing a list of siblings. This path
  *   may not contain any siblings itself and it must not be modified
@@ -432,10 +432,10 @@ gtk_widget_path_append_type (GtkWidgetPath *path,
  *
  * Appends a widget type with all its siblings to the widget hierarchy
  * represented by @path. Using this function instead of
- * gtk_widget_path_append_type() will allow the CSS theming to use
+ * ctk_widget_path_append_type() will allow the CSS theming to use
  * sibling matches in selectors and apply :nth-child() pseudo classes.
  * In turn, it requires a lot more care in widget implementations as
- * widgets need to make sure to call gtk_widget_reset_style() on all
+ * widgets need to make sure to call ctk_widget_reset_style() on all
  * involved widgets when the @siblings path changes.
  *
  * Returns: the position where the element was inserted.
@@ -443,18 +443,18 @@ gtk_widget_path_append_type (GtkWidgetPath *path,
  * Since: 3.2
  **/
 gint
-gtk_widget_path_append_with_siblings (GtkWidgetPath *path,
+ctk_widget_path_append_with_siblings (GtkWidgetPath *path,
                                       GtkWidgetPath *siblings,
                                       guint          sibling_index)
 {
   GtkPathElement new;
 
-  gtk_internal_return_val_if_fail (path != NULL, 0);
-  gtk_internal_return_val_if_fail (siblings != NULL, 0);
-  gtk_internal_return_val_if_fail (sibling_index < gtk_widget_path_length (siblings), 0);
+  ctk_internal_return_val_if_fail (path != NULL, 0);
+  ctk_internal_return_val_if_fail (siblings != NULL, 0);
+  ctk_internal_return_val_if_fail (sibling_index < ctk_widget_path_length (siblings), 0);
 
-  gtk_path_element_copy (&new, &g_array_index (siblings->elems, GtkPathElement, sibling_index));
-  new.siblings = gtk_widget_path_ref (siblings);
+  ctk_path_element_copy (&new, &g_array_index (siblings->elems, GtkPathElement, sibling_index));
+  new.siblings = ctk_widget_path_ref (siblings);
   new.sibling_index = sibling_index;
   g_array_append_val (path->elems, new);
 
@@ -462,7 +462,7 @@ gtk_widget_path_append_with_siblings (GtkWidgetPath *path,
 }
 
 /**
- * gtk_widget_path_iter_get_siblings:
+ * ctk_widget_path_iter_get_siblings:
  * @path: a #GtkWidgetPath
  * @pos: position to get the siblings for, -1 for the path head
  *
@@ -472,13 +472,13 @@ gtk_widget_path_append_with_siblings (GtkWidgetPath *path,
  * Returns: %NULL or the list of siblings for the element at @pos.
  **/
 const GtkWidgetPath *
-gtk_widget_path_iter_get_siblings (const GtkWidgetPath *path,
+ctk_widget_path_iter_get_siblings (const GtkWidgetPath *path,
                                    gint                 pos)
 {
   GtkPathElement *elem;
 
-  gtk_internal_return_val_if_fail (path != NULL, NULL);
-  gtk_internal_return_val_if_fail (path->elems->len != 0, NULL);
+  ctk_internal_return_val_if_fail (path != NULL, NULL);
+  ctk_internal_return_val_if_fail (path->elems->len != 0, NULL);
 
   if (pos < 0 || pos >= path->elems->len)
     pos = path->elems->len - 1;
@@ -488,25 +488,25 @@ gtk_widget_path_iter_get_siblings (const GtkWidgetPath *path,
 }
 
 /**
- * gtk_widget_path_iter_get_sibling_index:
+ * ctk_widget_path_iter_get_sibling_index:
  * @path: a #GtkWidgetPath
  * @pos: position to get the sibling index for, -1 for the path head
  *
  * Returns the index into the list of siblings for the element at @pos as
- * returned by gtk_widget_path_iter_get_siblings(). If that function would
+ * returned by ctk_widget_path_iter_get_siblings(). If that function would
  * return %NULL because the element at @pos has no siblings, this function
  * will return 0.
  *
  * Returns: 0 or the index into the list of siblings for the element at @pos.
  **/
 guint
-gtk_widget_path_iter_get_sibling_index (const GtkWidgetPath *path,
+ctk_widget_path_iter_get_sibling_index (const GtkWidgetPath *path,
                                         gint                 pos)
 {
   GtkPathElement *elem;
 
-  gtk_internal_return_val_if_fail (path != NULL, G_TYPE_INVALID);
-  gtk_internal_return_val_if_fail (path->elems->len != 0, G_TYPE_INVALID);
+  ctk_internal_return_val_if_fail (path != NULL, G_TYPE_INVALID);
+  ctk_internal_return_val_if_fail (path->elems->len != 0, G_TYPE_INVALID);
 
   if (pos < 0 || pos >= path->elems->len)
     pos = path->elems->len - 1;
@@ -516,7 +516,7 @@ gtk_widget_path_iter_get_sibling_index (const GtkWidgetPath *path,
 }
 
 /**
- * gtk_widget_path_iter_get_object_name:
+ * ctk_widget_path_iter_get_object_name:
  * @path: a #GtkWidgetPath
  * @pos: position to get the object name for, -1 for the path head
  *
@@ -528,23 +528,23 @@ gtk_widget_path_iter_get_sibling_index (const GtkWidgetPath *path,
  * Since: 3.20
  **/
 const char *
-gtk_widget_path_iter_get_object_name (const GtkWidgetPath *path,
+ctk_widget_path_iter_get_object_name (const GtkWidgetPath *path,
                                       gint                 pos)
 {
   GtkPathElement *elem;
 
-  gtk_internal_return_val_if_fail (path != NULL, NULL);
-  gtk_internal_return_val_if_fail (path->elems->len != 0, NULL);
+  ctk_internal_return_val_if_fail (path != NULL, NULL);
+  ctk_internal_return_val_if_fail (path->elems->len != 0, NULL);
 
   if (pos < 0 || pos >= path->elems->len)
     pos = path->elems->len - 1;
 
   elem = &g_array_index (path->elems, GtkPathElement, pos);
-  return gtk_css_node_declaration_get_name (elem->decl);
+  return ctk_css_node_declaration_get_name (elem->decl);
 }
 
 /**
- * gtk_widget_path_iter_set_object_name:
+ * ctk_widget_path_iter_set_object_name:
  * @path: a #GtkWidgetPath
  * @pos: position to modify, -1 for the path head
  * @name: (allow-none): object name to set or %NULL to unset
@@ -558,24 +558,24 @@ gtk_widget_path_iter_get_object_name (const GtkWidgetPath *path,
  * Since: 3.20
  **/
 void
-gtk_widget_path_iter_set_object_name (GtkWidgetPath *path,
+ctk_widget_path_iter_set_object_name (GtkWidgetPath *path,
                                       gint           pos,
                                       const char    *name)
 {
   GtkPathElement *elem;
 
-  gtk_internal_return_if_fail (path != NULL);
-  gtk_internal_return_if_fail (path->elems->len != 0);
+  ctk_internal_return_if_fail (path != NULL);
+  ctk_internal_return_if_fail (path->elems->len != 0);
 
   if (pos < 0 || pos >= path->elems->len)
     pos = path->elems->len - 1;
 
   elem = &g_array_index (path->elems, GtkPathElement, pos);
-  gtk_css_node_declaration_set_name (&elem->decl, g_intern_string (name));
+  ctk_css_node_declaration_set_name (&elem->decl, g_intern_string (name));
 }
 
 /**
- * gtk_widget_path_iter_get_object_type:
+ * ctk_widget_path_iter_get_object_type:
  * @path: a #GtkWidgetPath
  * @pos: position to get the object type for, -1 for the path head
  *
@@ -587,23 +587,23 @@ gtk_widget_path_iter_set_object_name (GtkWidgetPath *path,
  * Since: 3.0
  **/
 GType
-gtk_widget_path_iter_get_object_type (const GtkWidgetPath *path,
+ctk_widget_path_iter_get_object_type (const GtkWidgetPath *path,
                                       gint                 pos)
 {
   GtkPathElement *elem;
 
-  gtk_internal_return_val_if_fail (path != NULL, G_TYPE_INVALID);
-  gtk_internal_return_val_if_fail (path->elems->len != 0, G_TYPE_INVALID);
+  ctk_internal_return_val_if_fail (path != NULL, G_TYPE_INVALID);
+  ctk_internal_return_val_if_fail (path->elems->len != 0, G_TYPE_INVALID);
 
   if (pos < 0 || pos >= path->elems->len)
     pos = path->elems->len - 1;
 
   elem = &g_array_index (path->elems, GtkPathElement, pos);
-  return gtk_css_node_declaration_get_type (elem->decl);
+  return ctk_css_node_declaration_get_type (elem->decl);
 }
 
 /**
- * gtk_widget_path_iter_set_object_type:
+ * ctk_widget_path_iter_set_object_type:
  * @path: a #GtkWidgetPath
  * @pos: position to modify, -1 for the path head
  * @type: object type to set
@@ -614,24 +614,24 @@ gtk_widget_path_iter_get_object_type (const GtkWidgetPath *path,
  * Since: 3.0
  **/
 void
-gtk_widget_path_iter_set_object_type (GtkWidgetPath *path,
+ctk_widget_path_iter_set_object_type (GtkWidgetPath *path,
                                       gint           pos,
                                       GType          type)
 {
   GtkPathElement *elem;
 
-  gtk_internal_return_if_fail (path != NULL);
-  gtk_internal_return_if_fail (path->elems->len != 0);
+  ctk_internal_return_if_fail (path != NULL);
+  ctk_internal_return_if_fail (path->elems->len != 0);
 
   if (pos < 0 || pos >= path->elems->len)
     pos = path->elems->len - 1;
 
   elem = &g_array_index (path->elems, GtkPathElement, pos);
-  gtk_css_node_declaration_set_type (&elem->decl, type);
+  ctk_css_node_declaration_set_type (&elem->decl, type);
 }
 
 /**
- * gtk_widget_path_iter_get_state:
+ * ctk_widget_path_iter_get_state:
  * @path: a #GtkWidgetPath
  * @pos: position to get the state for, -1 for the path head
  *
@@ -644,23 +644,23 @@ gtk_widget_path_iter_set_object_type (GtkWidgetPath *path,
  * Since: 3.14
  **/
 GtkStateFlags
-gtk_widget_path_iter_get_state (const GtkWidgetPath *path,
+ctk_widget_path_iter_get_state (const GtkWidgetPath *path,
                                 gint                 pos)
 {
   GtkPathElement *elem;
 
-  gtk_internal_return_val_if_fail (path != NULL, 0);
-  gtk_internal_return_val_if_fail (path->elems->len != 0, 0);
+  ctk_internal_return_val_if_fail (path != NULL, 0);
+  ctk_internal_return_val_if_fail (path->elems->len != 0, 0);
 
   if (pos < 0 || pos >= path->elems->len)
     pos = path->elems->len - 1;
 
   elem = &g_array_index (path->elems, GtkPathElement, pos);
-  return gtk_css_node_declaration_get_state (elem->decl);
+  return ctk_css_node_declaration_get_state (elem->decl);
 }
 
 /**
- * gtk_widget_path_iter_set_state:
+ * ctk_widget_path_iter_set_state:
  * @path: a #GtkWidgetPath
  * @pos: position to modify, -1 for the path head
  * @state: state flags
@@ -674,38 +674,38 @@ gtk_widget_path_iter_get_state (const GtkWidgetPath *path,
  * ## Setting a flag
  *
  * |[<!-- language="C" -->
- * gtk_widget_path_iter_set_state (path, pos, gtk_widget_path_iter_get_state (path, pos) | flag);
+ * ctk_widget_path_iter_set_state (path, pos, ctk_widget_path_iter_get_state (path, pos) | flag);
  * ]|
  *
  * ## Unsetting a flag
  *
  * |[<!-- language="C" -->
- * gtk_widget_path_iter_set_state (path, pos, gtk_widget_path_iter_get_state (path, pos) & ~flag);
+ * ctk_widget_path_iter_set_state (path, pos, ctk_widget_path_iter_get_state (path, pos) & ~flag);
  * ]|
  *
  *
  * Since: 3.14
  **/
 void
-gtk_widget_path_iter_set_state (GtkWidgetPath *path,
+ctk_widget_path_iter_set_state (GtkWidgetPath *path,
                                 gint           pos,
                                 GtkStateFlags  state)
 {
   GtkPathElement *elem;
 
-  gtk_internal_return_if_fail (path != NULL);
-  gtk_internal_return_if_fail (path->elems->len != 0);
+  ctk_internal_return_if_fail (path != NULL);
+  ctk_internal_return_if_fail (path->elems->len != 0);
 
   if (pos < 0 || pos >= path->elems->len)
     pos = path->elems->len - 1;
 
   elem = &g_array_index (path->elems, GtkPathElement, pos);
 
-  gtk_css_node_declaration_set_state (&elem->decl, state);
+  ctk_css_node_declaration_set_state (&elem->decl, state);
 }
 
 /**
- * gtk_widget_path_iter_get_name:
+ * ctk_widget_path_iter_get_name:
  * @path: a #GtkWidgetPath
  * @pos: position to get the widget name for, -1 for the path head
  *
@@ -716,23 +716,23 @@ gtk_widget_path_iter_set_state (GtkWidgetPath *path,
  * Returns: (nullable): The widget name, or %NULL if none was set.
  **/
 const gchar *
-gtk_widget_path_iter_get_name (const GtkWidgetPath *path,
+ctk_widget_path_iter_get_name (const GtkWidgetPath *path,
                                gint                 pos)
 {
   GtkPathElement *elem;
 
-  gtk_internal_return_val_if_fail (path != NULL, NULL);
-  gtk_internal_return_val_if_fail (path->elems->len != 0, NULL);
+  ctk_internal_return_val_if_fail (path != NULL, NULL);
+  ctk_internal_return_val_if_fail (path->elems->len != 0, NULL);
 
   if (pos < 0 || pos >= path->elems->len)
     pos = path->elems->len - 1;
 
   elem = &g_array_index (path->elems, GtkPathElement, pos);
-  return gtk_css_node_declaration_get_id (elem->decl);
+  return ctk_css_node_declaration_get_id (elem->decl);
 }
 
 /**
- * gtk_widget_path_iter_set_name:
+ * ctk_widget_path_iter_set_name:
  * @path: a #GtkWidgetPath
  * @pos: position to modify, -1 for the path head
  * @name: widget name
@@ -743,31 +743,31 @@ gtk_widget_path_iter_get_name (const GtkWidgetPath *path,
  * Since: 3.0
  **/
 void
-gtk_widget_path_iter_set_name (GtkWidgetPath *path,
+ctk_widget_path_iter_set_name (GtkWidgetPath *path,
                                gint           pos,
                                const gchar   *name)
 {
   GtkPathElement *elem;
 
-  gtk_internal_return_if_fail (path != NULL);
-  gtk_internal_return_if_fail (path->elems->len != 0);
-  gtk_internal_return_if_fail (name != NULL);
+  ctk_internal_return_if_fail (path != NULL);
+  ctk_internal_return_if_fail (path->elems->len != 0);
+  ctk_internal_return_if_fail (name != NULL);
 
   if (pos < 0 || pos >= path->elems->len)
     pos = path->elems->len - 1;
 
   elem = &g_array_index (path->elems, GtkPathElement, pos);
 
-  gtk_css_node_declaration_set_id (&elem->decl, g_intern_string (name));
+  ctk_css_node_declaration_set_id (&elem->decl, g_intern_string (name));
 }
 
 /**
- * gtk_widget_path_iter_has_qname:
+ * ctk_widget_path_iter_has_qname:
  * @path: a #GtkWidgetPath
  * @pos: position to query, -1 for the path head
  * @qname: widget name as a #GQuark
  *
- * See gtk_widget_path_iter_has_name(). This is a version
+ * See ctk_widget_path_iter_has_name(). This is a version
  * that operates on #GQuarks.
  *
  * Returns: %TRUE if the widget at @pos has this name
@@ -775,19 +775,19 @@ gtk_widget_path_iter_set_name (GtkWidgetPath *path,
  * Since: 3.0
  **/
 gboolean
-gtk_widget_path_iter_has_qname (const GtkWidgetPath *path,
+ctk_widget_path_iter_has_qname (const GtkWidgetPath *path,
                                 gint                 pos,
                                 GQuark               qname)
 {
-  gtk_internal_return_val_if_fail (path != NULL, FALSE);
-  gtk_internal_return_val_if_fail (path->elems->len != 0, FALSE);
-  gtk_internal_return_val_if_fail (qname != 0, FALSE);
+  ctk_internal_return_val_if_fail (path != NULL, FALSE);
+  ctk_internal_return_val_if_fail (path->elems->len != 0, FALSE);
+  ctk_internal_return_val_if_fail (qname != 0, FALSE);
 
-  return gtk_widget_path_iter_has_name (path, pos, g_quark_to_string (qname));
+  return ctk_widget_path_iter_has_name (path, pos, g_quark_to_string (qname));
 }
 
 /**
- * gtk_widget_path_iter_has_name:
+ * ctk_widget_path_iter_has_name:
  * @path: a #GtkWidgetPath
  * @pos: position to query, -1 for the path head
  * @name: a widget name
@@ -800,14 +800,14 @@ gtk_widget_path_iter_has_qname (const GtkWidgetPath *path,
  * Since: 3.0
  **/
 gboolean
-gtk_widget_path_iter_has_name (const GtkWidgetPath *path,
+ctk_widget_path_iter_has_name (const GtkWidgetPath *path,
                                gint                 pos,
                                const gchar         *name)
 {
   GtkPathElement *elem;
 
-  gtk_internal_return_val_if_fail (path != NULL, FALSE);
-  gtk_internal_return_val_if_fail (path->elems->len != 0, FALSE);
+  ctk_internal_return_val_if_fail (path != NULL, FALSE);
+  ctk_internal_return_val_if_fail (path->elems->len != 0, FALSE);
 
   if (pos < 0 || pos >= path->elems->len)
     pos = path->elems->len - 1;
@@ -815,38 +815,38 @@ gtk_widget_path_iter_has_name (const GtkWidgetPath *path,
   name = g_intern_string (name);
   elem = &g_array_index (path->elems, GtkPathElement, pos);
 
-  return gtk_css_node_declaration_get_id (elem->decl) == name;
+  return ctk_css_node_declaration_get_id (elem->decl) == name;
 }
 
 /**
- * gtk_widget_path_iter_add_class:
+ * ctk_widget_path_iter_add_class:
  * @path: a #GtkWidget
  * @pos: position to modify, -1 for the path head
  * @name: a class name
  *
  * Adds the class @name to the widget at position @pos in
  * the hierarchy defined in @path. See
- * gtk_style_context_add_class().
+ * ctk_style_context_add_class().
  *
  * Since: 3.0
  **/
 void
-gtk_widget_path_iter_add_class (GtkWidgetPath *path,
+ctk_widget_path_iter_add_class (GtkWidgetPath *path,
                                 gint           pos,
                                 const gchar   *name)
 {
-  gtk_internal_return_if_fail (path != NULL);
-  gtk_internal_return_if_fail (path->elems->len != 0);
-  gtk_internal_return_if_fail (name != NULL);
+  ctk_internal_return_if_fail (path != NULL);
+  ctk_internal_return_if_fail (path->elems->len != 0);
+  ctk_internal_return_if_fail (name != NULL);
 
   if (pos < 0 || pos >= path->elems->len)
     pos = path->elems->len - 1;
 
-  gtk_widget_path_iter_add_qclass (path, pos, g_quark_from_string (name));
+  ctk_widget_path_iter_add_qclass (path, pos, g_quark_from_string (name));
 }
 
 void
-gtk_widget_path_iter_add_qclass (GtkWidgetPath *path,
+ctk_widget_path_iter_add_qclass (GtkWidgetPath *path,
                                  gint           pos,
                                  GQuark         qname)
 {
@@ -854,11 +854,11 @@ gtk_widget_path_iter_add_qclass (GtkWidgetPath *path,
 
   elem = &g_array_index (path->elems, GtkPathElement, pos);
 
-  gtk_css_node_declaration_add_class (&elem->decl, qname);
+  ctk_css_node_declaration_add_class (&elem->decl, qname);
 }
 
 /**
- * gtk_widget_path_iter_remove_class:
+ * ctk_widget_path_iter_remove_class:
  * @path: a #GtkWidgetPath
  * @pos: position to modify, -1 for the path head
  * @name: class name
@@ -869,16 +869,16 @@ gtk_widget_path_iter_add_qclass (GtkWidgetPath *path,
  * Since: 3.0
  **/
 void
-gtk_widget_path_iter_remove_class (GtkWidgetPath *path,
+ctk_widget_path_iter_remove_class (GtkWidgetPath *path,
                                    gint           pos,
                                    const gchar   *name)
 {
   GtkPathElement *elem;
   GQuark qname;
 
-  gtk_internal_return_if_fail (path != NULL);
-  gtk_internal_return_if_fail (path->elems->len != 0);
-  gtk_internal_return_if_fail (name != NULL);
+  ctk_internal_return_if_fail (path != NULL);
+  ctk_internal_return_if_fail (path->elems->len != 0);
+  ctk_internal_return_if_fail (name != NULL);
 
   if (pos < 0 || pos >= path->elems->len)
     pos = path->elems->len - 1;
@@ -888,11 +888,11 @@ gtk_widget_path_iter_remove_class (GtkWidgetPath *path,
   if (qname == 0)
     return;
 
-  gtk_css_node_declaration_remove_class (&elem->decl, qname);
+  ctk_css_node_declaration_remove_class (&elem->decl, qname);
 }
 
 /**
- * gtk_widget_path_iter_clear_classes:
+ * ctk_widget_path_iter_clear_classes:
  * @path: a #GtkWidget
  * @pos: position to modify, -1 for the path head
  *
@@ -902,24 +902,24 @@ gtk_widget_path_iter_remove_class (GtkWidgetPath *path,
  * Since: 3.0
  **/
 void
-gtk_widget_path_iter_clear_classes (GtkWidgetPath *path,
+ctk_widget_path_iter_clear_classes (GtkWidgetPath *path,
                                     gint           pos)
 {
   GtkPathElement *elem;
 
-  gtk_internal_return_if_fail (path != NULL);
-  gtk_internal_return_if_fail (path->elems->len != 0);
+  ctk_internal_return_if_fail (path != NULL);
+  ctk_internal_return_if_fail (path->elems->len != 0);
 
   if (pos < 0 || pos >= path->elems->len)
     pos = path->elems->len - 1;
 
   elem = &g_array_index (path->elems, GtkPathElement, pos);
 
-  gtk_css_node_declaration_clear_classes (&elem->decl);
+  ctk_css_node_declaration_clear_classes (&elem->decl);
 }
 
 /**
- * gtk_widget_path_iter_list_classes:
+ * ctk_widget_path_iter_list_classes:
  * @path: a #GtkWidgetPath
  * @pos: position to query, -1 for the path head
  *
@@ -934,7 +934,7 @@ gtk_widget_path_iter_clear_classes (GtkWidgetPath *path,
  * Since: 3.0
  **/
 GSList *
-gtk_widget_path_iter_list_classes (const GtkWidgetPath *path,
+ctk_widget_path_iter_list_classes (const GtkWidgetPath *path,
                                    gint                 pos)
 {
   GtkPathElement *elem;
@@ -942,14 +942,14 @@ gtk_widget_path_iter_list_classes (const GtkWidgetPath *path,
   const GQuark *classes;
   guint i, n;
 
-  gtk_internal_return_val_if_fail (path != NULL, NULL);
-  gtk_internal_return_val_if_fail (path->elems->len != 0, NULL);
+  ctk_internal_return_val_if_fail (path != NULL, NULL);
+  ctk_internal_return_val_if_fail (path->elems->len != 0, NULL);
 
   if (pos < 0 || pos >= path->elems->len)
     pos = path->elems->len - 1;
 
   elem = &g_array_index (path->elems, GtkPathElement, pos);
-  classes = gtk_css_node_declaration_get_classes (elem->decl, &n);
+  classes = ctk_css_node_declaration_get_classes (elem->decl, &n);
 
   for (i = 0; i < n; i++)
     {
@@ -960,12 +960,12 @@ gtk_widget_path_iter_list_classes (const GtkWidgetPath *path,
 }
 
 /**
- * gtk_widget_path_iter_has_qclass:
+ * ctk_widget_path_iter_has_qclass:
  * @path: a #GtkWidgetPath
  * @pos: position to query, -1 for the path head
  * @qname: class name as a #GQuark
  *
- * See gtk_widget_path_iter_has_class(). This is a version that operates
+ * See ctk_widget_path_iter_has_class(). This is a version that operates
  * with GQuarks.
  *
  * Returns: %TRUE if the widget at @pos has the class defined.
@@ -973,26 +973,26 @@ gtk_widget_path_iter_list_classes (const GtkWidgetPath *path,
  * Since: 3.0
  **/
 gboolean
-gtk_widget_path_iter_has_qclass (const GtkWidgetPath *path,
+ctk_widget_path_iter_has_qclass (const GtkWidgetPath *path,
                                  gint                 pos,
                                  GQuark               qname)
 {
   GtkPathElement *elem;
 
-  gtk_internal_return_val_if_fail (path != NULL, FALSE);
-  gtk_internal_return_val_if_fail (path->elems->len != 0, FALSE);
-  gtk_internal_return_val_if_fail (qname != 0, FALSE);
+  ctk_internal_return_val_if_fail (path != NULL, FALSE);
+  ctk_internal_return_val_if_fail (path->elems->len != 0, FALSE);
+  ctk_internal_return_val_if_fail (qname != 0, FALSE);
 
   if (pos < 0 || pos >= path->elems->len)
     pos = path->elems->len - 1;
 
   elem = &g_array_index (path->elems, GtkPathElement, pos);
 
-  return gtk_css_node_declaration_has_class (elem->decl, qname);
+  return ctk_css_node_declaration_has_class (elem->decl, qname);
 }
 
 /**
- * gtk_widget_path_iter_has_class:
+ * ctk_widget_path_iter_has_class:
  * @path: a #GtkWidgetPath
  * @pos: position to query, -1 for the path head
  * @name: class name
@@ -1005,15 +1005,15 @@ gtk_widget_path_iter_has_qclass (const GtkWidgetPath *path,
  * Since: 3.0
  **/
 gboolean
-gtk_widget_path_iter_has_class (const GtkWidgetPath *path,
+ctk_widget_path_iter_has_class (const GtkWidgetPath *path,
                                 gint                 pos,
                                 const gchar         *name)
 {
   GQuark qname;
 
-  gtk_internal_return_val_if_fail (path != NULL, FALSE);
-  gtk_internal_return_val_if_fail (path->elems->len != 0, FALSE);
-  gtk_internal_return_val_if_fail (name != NULL, FALSE);
+  ctk_internal_return_val_if_fail (path != NULL, FALSE);
+  ctk_internal_return_val_if_fail (path->elems->len != 0, FALSE);
+  ctk_internal_return_val_if_fail (name != NULL, FALSE);
 
   if (pos < 0 || pos >= path->elems->len)
     pos = path->elems->len - 1;
@@ -1023,11 +1023,11 @@ gtk_widget_path_iter_has_class (const GtkWidgetPath *path,
   if (qname == 0)
     return FALSE;
 
-  return gtk_widget_path_iter_has_qclass (path, pos, qname);
+  return ctk_widget_path_iter_has_qclass (path, pos, qname);
 }
 
 /**
- * gtk_widget_path_iter_add_region:
+ * ctk_widget_path_iter_add_region:
  * @path: a #GtkWidgetPath
  * @pos: position to modify, -1 for the path head
  * @name: region name
@@ -1035,7 +1035,7 @@ gtk_widget_path_iter_has_class (const GtkWidgetPath *path,
  *
  * Adds the region @name to the widget at position @pos in
  * the hierarchy defined in @path. See
- * gtk_style_context_add_region().
+ * ctk_style_context_add_region().
  *
  * Region names must only contain lowercase letters
  * and “-”, starting always with a lowercase letter.
@@ -1045,7 +1045,7 @@ gtk_widget_path_iter_has_class (const GtkWidgetPath *path,
  * Deprecated: 3.14: The use of regions is deprecated.
  **/
 void
-gtk_widget_path_iter_add_region (GtkWidgetPath  *path,
+ctk_widget_path_iter_add_region (GtkWidgetPath  *path,
                                  gint            pos,
                                  const gchar    *name,
                                  GtkRegionFlags  flags)
@@ -1053,10 +1053,10 @@ gtk_widget_path_iter_add_region (GtkWidgetPath  *path,
   GtkPathElement *elem;
   GQuark qname;
 
-  gtk_internal_return_if_fail (path != NULL);
-  gtk_internal_return_if_fail (path->elems->len != 0);
-  gtk_internal_return_if_fail (name != NULL);
-  gtk_internal_return_if_fail (_gtk_style_context_check_region_name (name));
+  ctk_internal_return_if_fail (path != NULL);
+  ctk_internal_return_if_fail (path->elems->len != 0);
+  ctk_internal_return_if_fail (name != NULL);
+  ctk_internal_return_if_fail (_ctk_style_context_check_region_name (name));
 
   if (pos < 0 || pos >= path->elems->len)
     pos = path->elems->len - 1;
@@ -1064,11 +1064,11 @@ gtk_widget_path_iter_add_region (GtkWidgetPath  *path,
   elem = &g_array_index (path->elems, GtkPathElement, pos);
   qname = g_quark_from_string (name);
 
-  gtk_css_node_declaration_add_region (&elem->decl, qname, flags);
+  ctk_css_node_declaration_add_region (&elem->decl, qname, flags);
 }
 
 /**
- * gtk_widget_path_iter_remove_region:
+ * ctk_widget_path_iter_remove_region:
  * @path: a #GtkWidgetPath
  * @pos: position to modify, -1 for the path head
  * @name: region name
@@ -1081,16 +1081,16 @@ gtk_widget_path_iter_add_region (GtkWidgetPath  *path,
  * Deprecated: 3.14: The use of regions is deprecated.
  **/
 void
-gtk_widget_path_iter_remove_region (GtkWidgetPath *path,
+ctk_widget_path_iter_remove_region (GtkWidgetPath *path,
                                     gint           pos,
                                     const gchar   *name)
 {
   GtkPathElement *elem;
   GQuark qname;
 
-  gtk_internal_return_if_fail (path != NULL);
-  gtk_internal_return_if_fail (path->elems->len != 0);
-  gtk_internal_return_if_fail (name != NULL);
+  ctk_internal_return_if_fail (path != NULL);
+  ctk_internal_return_if_fail (path->elems->len != 0);
+  ctk_internal_return_if_fail (name != NULL);
 
   if (pos < 0 || pos >= path->elems->len)
     pos = path->elems->len - 1;
@@ -1100,11 +1100,11 @@ gtk_widget_path_iter_remove_region (GtkWidgetPath *path,
   if (qname == 0)
     return;
 
-  gtk_css_node_declaration_remove_region (&elem->decl, qname);
+  ctk_css_node_declaration_remove_region (&elem->decl, qname);
 }
 
 /**
- * gtk_widget_path_iter_clear_regions:
+ * ctk_widget_path_iter_clear_regions:
  * @path: a #GtkWidgetPath
  * @pos: position to modify, -1 for the path head
  *
@@ -1116,24 +1116,24 @@ gtk_widget_path_iter_remove_region (GtkWidgetPath *path,
  * Deprecated: 3.14: The use of regions is deprecated.
  **/
 void
-gtk_widget_path_iter_clear_regions (GtkWidgetPath *path,
+ctk_widget_path_iter_clear_regions (GtkWidgetPath *path,
                                     gint           pos)
 {
   GtkPathElement *elem;
 
-  gtk_internal_return_if_fail (path != NULL);
-  gtk_internal_return_if_fail (path->elems->len != 0);
+  ctk_internal_return_if_fail (path != NULL);
+  ctk_internal_return_if_fail (path->elems->len != 0);
 
   if (pos < 0 || pos >= path->elems->len)
     pos = path->elems->len - 1;
 
   elem = &g_array_index (path->elems, GtkPathElement, pos);
 
-  gtk_css_node_declaration_clear_regions (&elem->decl);
+  ctk_css_node_declaration_clear_regions (&elem->decl);
 }
 
 /**
- * gtk_widget_path_iter_list_regions:
+ * ctk_widget_path_iter_list_regions:
  * @path: a #GtkWidgetPath
  * @pos: position to query, -1 for the path head
  *
@@ -1150,22 +1150,22 @@ gtk_widget_path_iter_clear_regions (GtkWidgetPath *path,
  * Deprecated: 3.14: The use of regions is deprecated.
  **/
 GSList *
-gtk_widget_path_iter_list_regions (const GtkWidgetPath *path,
+ctk_widget_path_iter_list_regions (const GtkWidgetPath *path,
                                    gint                 pos)
 {
   GtkPathElement *elem;
   GSList *list = NULL;
   GList *l, *wrong_list;
 
-  gtk_internal_return_val_if_fail (path != NULL, NULL);
-  gtk_internal_return_val_if_fail (path->elems->len != 0, NULL);
+  ctk_internal_return_val_if_fail (path != NULL, NULL);
+  ctk_internal_return_val_if_fail (path->elems->len != 0, NULL);
 
   if (pos < 0 || pos >= path->elems->len)
     pos = path->elems->len - 1;
 
   elem = &g_array_index (path->elems, GtkPathElement, pos);
 
-  wrong_list = gtk_css_node_declaration_list_regions (elem->decl);
+  wrong_list = ctk_css_node_declaration_list_regions (elem->decl);
   for (l = wrong_list; l; l = l->next)
     {
       list = g_slist_prepend (list, (char *) g_quark_to_string (GPOINTER_TO_UINT (l->data)));
@@ -1176,13 +1176,13 @@ gtk_widget_path_iter_list_regions (const GtkWidgetPath *path,
 }
 
 /**
- * gtk_widget_path_iter_has_qregion:
+ * ctk_widget_path_iter_has_qregion:
  * @path: a #GtkWidgetPath
  * @pos: position to query, -1 for the path head
  * @qname: region name as a #GQuark
  * @flags: (out): return location for the region flags
  *
- * See gtk_widget_path_iter_has_region(). This is a version that operates
+ * See ctk_widget_path_iter_has_region(). This is a version that operates
  * with GQuarks.
  *
  * Returns: %TRUE if the widget at @pos has the region defined.
@@ -1192,27 +1192,27 @@ gtk_widget_path_iter_list_regions (const GtkWidgetPath *path,
  * Deprecated: 3.14: The use of regions is deprecated.
  **/
 gboolean
-gtk_widget_path_iter_has_qregion (const GtkWidgetPath *path,
+ctk_widget_path_iter_has_qregion (const GtkWidgetPath *path,
                                   gint                 pos,
                                   GQuark               qname,
                                   GtkRegionFlags      *flags)
 {
   GtkPathElement *elem;
 
-  gtk_internal_return_val_if_fail (path != NULL, FALSE);
-  gtk_internal_return_val_if_fail (path->elems->len != 0, FALSE);
-  gtk_internal_return_val_if_fail (qname != 0, FALSE);
+  ctk_internal_return_val_if_fail (path != NULL, FALSE);
+  ctk_internal_return_val_if_fail (path->elems->len != 0, FALSE);
+  ctk_internal_return_val_if_fail (qname != 0, FALSE);
 
   if (pos < 0 || pos >= path->elems->len)
     pos = path->elems->len - 1;
 
   elem = &g_array_index (path->elems, GtkPathElement, pos);
 
-  return gtk_css_node_declaration_has_region (elem->decl, qname, flags);
+  return ctk_css_node_declaration_has_region (elem->decl, qname, flags);
 }
 
 /**
- * gtk_widget_path_iter_has_region:
+ * ctk_widget_path_iter_has_region:
  * @path: a #GtkWidgetPath
  * @pos: position to query, -1 for the path head
  * @name: region name
@@ -1228,16 +1228,16 @@ gtk_widget_path_iter_has_qregion (const GtkWidgetPath *path,
  * Deprecated: 3.14: The use of regions is deprecated.
  **/
 gboolean
-gtk_widget_path_iter_has_region (const GtkWidgetPath *path,
+ctk_widget_path_iter_has_region (const GtkWidgetPath *path,
                                  gint                 pos,
                                  const gchar         *name,
                                  GtkRegionFlags      *flags)
 {
   GQuark qname;
 
-  gtk_internal_return_val_if_fail (path != NULL, FALSE);
-  gtk_internal_return_val_if_fail (path->elems->len != 0, FALSE);
-  gtk_internal_return_val_if_fail (name != NULL, FALSE);
+  ctk_internal_return_val_if_fail (path != NULL, FALSE);
+  ctk_internal_return_val_if_fail (path->elems->len != 0, FALSE);
+  ctk_internal_return_val_if_fail (name != NULL, FALSE);
 
   if (pos < 0 || pos >= path->elems->len)
     pos = path->elems->len - 1;
@@ -1248,12 +1248,12 @@ gtk_widget_path_iter_has_region (const GtkWidgetPath *path,
     return FALSE;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  return gtk_widget_path_iter_has_qregion (path, pos, qname, flags);
+  return ctk_widget_path_iter_has_qregion (path, pos, qname, flags);
 G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 /**
- * gtk_widget_path_get_object_type:
+ * ctk_widget_path_get_object_type:
  * @path: a #GtkWidget
  *
  * Returns the topmost object type, that is, the object type this path
@@ -1264,19 +1264,19 @@ G_GNUC_END_IGNORE_DEPRECATIONS
  * Since: 3.0
  **/
 GType
-gtk_widget_path_get_object_type (const GtkWidgetPath *path)
+ctk_widget_path_get_object_type (const GtkWidgetPath *path)
 {
   GtkPathElement *elem;
 
-  gtk_internal_return_val_if_fail (path != NULL, G_TYPE_INVALID);
+  ctk_internal_return_val_if_fail (path != NULL, G_TYPE_INVALID);
 
   elem = &g_array_index (path->elems, GtkPathElement,
                          path->elems->len - 1);
-  return gtk_css_node_declaration_get_type (elem->decl);
+  return ctk_css_node_declaration_get_type (elem->decl);
 }
 
 /**
- * gtk_widget_path_is_type:
+ * ctk_widget_path_is_type:
  * @path: a #GtkWidgetPath
  * @type: widget type to match
  *
@@ -1288,21 +1288,21 @@ gtk_widget_path_get_object_type (const GtkWidgetPath *path)
  * Since: 3.0
  **/
 gboolean
-gtk_widget_path_is_type (const GtkWidgetPath *path,
+ctk_widget_path_is_type (const GtkWidgetPath *path,
                          GType                type)
 {
   GtkPathElement *elem;
 
-  gtk_internal_return_val_if_fail (path != NULL, FALSE);
+  ctk_internal_return_val_if_fail (path != NULL, FALSE);
 
   elem = &g_array_index (path->elems, GtkPathElement,
                          path->elems->len - 1);
 
-  return g_type_is_a (gtk_css_node_declaration_get_type (elem->decl), type);
+  return g_type_is_a (ctk_css_node_declaration_get_type (elem->decl), type);
 }
 
 /**
- * gtk_widget_path_has_parent:
+ * ctk_widget_path_has_parent:
  * @path: a #GtkWidgetPath
  * @type: widget type to check in parents
  *
@@ -1314,12 +1314,12 @@ gtk_widget_path_is_type (const GtkWidgetPath *path,
  * Since: 3.0
  **/
 gboolean
-gtk_widget_path_has_parent (const GtkWidgetPath *path,
+ctk_widget_path_has_parent (const GtkWidgetPath *path,
                             GType                type)
 {
   guint i;
 
-  gtk_internal_return_val_if_fail (path != NULL, FALSE);
+  ctk_internal_return_val_if_fail (path != NULL, FALSE);
 
   for (i = 0; i < path->elems->len - 1; i++)
     {
@@ -1327,7 +1327,7 @@ gtk_widget_path_has_parent (const GtkWidgetPath *path,
 
       elem = &g_array_index (path->elems, GtkPathElement, i);
 
-      if (g_type_is_a (gtk_css_node_declaration_get_type (elem->decl), type))
+      if (g_type_is_a (ctk_css_node_declaration_get_type (elem->decl), type))
         return TRUE;
     }
 

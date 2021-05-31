@@ -22,15 +22,15 @@
 
 G_BEGIN_DECLS
 
-GtkPrintOperationResult gtk_print_operation_portal_run_dialog             (GtkPrintOperation           *op,
+GtkPrintOperationResult ctk_print_operation_portal_run_dialog             (GtkPrintOperation           *op,
                                                                            gboolean                     show_dialog,
                                                                            GtkWindow                   *parent,
                                                                            gboolean                    *do_print);
-void                    gtk_print_operation_portal_run_dialog_async       (GtkPrintOperation           *op,
+void                    ctk_print_operation_portal_run_dialog_async       (GtkPrintOperation           *op,
                                                                            gboolean                     show_dialog,
                                                                            GtkWindow                   *parent,
                                                                            GtkPrintOperationPrintFunc   print_cb);
-void                    gtk_print_operation_portal_launch_preview         (GtkPrintOperation           *op,
+void                    ctk_print_operation_portal_launch_preview         (GtkPrintOperation           *op,
                                                                            cairo_surface_t             *surface,
                                                                            GtkWindow                   *parent,
                                                                            const char                  *filename);

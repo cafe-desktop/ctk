@@ -22,10 +22,10 @@
 
 G_BEGIN_DECLS
 
-void _gtk_color_chooser_color_activated (GtkColorChooser *chooser,
+void _ctk_color_chooser_color_activated (GtkColorChooser *chooser,
                                          const GdkRGBA   *color);
 
-cairo_pattern_t * _gtk_color_chooser_get_checkered_pattern (void);
+cairo_pattern_t * _ctk_color_chooser_get_checkered_pattern (void);
 
 G_END_DECLS
 

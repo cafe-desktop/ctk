@@ -23,7 +23,7 @@
 
 G_BEGIN_DECLS
 
-const char *    _gtk_lock_button_get_current_text       (GtkLockButton  *button);
+const char *    _ctk_lock_button_get_current_text       (GtkLockButton  *button);
 
 G_END_DECLS
 

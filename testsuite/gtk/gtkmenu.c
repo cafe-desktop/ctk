@@ -219,15 +219,15 @@ static void assert_menu_equality (GtkContainer *container, GMenuModel   *model);
 static const gchar *
 get_label (GtkMenuItem *item)
 {
-  GList *children = gtk_container_get_children (GTK_CONTAINER (item));
+  GList *children = ctk_container_get_children (GTK_CONTAINER (item));
   const gchar *label = NULL;
 
   while (children)
     {
       if (GTK_IS_CONTAINER (children->data))
-        children = g_list_concat (children, gtk_container_get_children (children->data));
+        children = g_list_concat (children, ctk_container_get_children (children->data));
       else if (GTK_IS_LABEL (children->data))
-        label = gtk_label_get_text (children->data);
+        label = ctk_label_get_text (children->data);
 
       children = g_list_delete_link (children, children);
     }
@@ -239,7 +239,7 @@ get_label (GtkMenuItem *item)
  *
  * with_separators are if subsections of this GMenuModel should have
  * separators inserted between them (ie: in the same sense as the
- * 'with_separators' argument to gtk_menu_shell_bind_model().
+ * 'with_separators' argument to ctk_menu_shell_bind_model().
  *
  * needs_separator is true if this particular section needs to have a
  * separator before it in the case that it is non-empty.  this will be
@@ -327,7 +327,7 @@ assert_section_equality (GSList      **children,
 
           /* get_label() returns "" when it ought to return NULL */
           g_assert_cmpstr (get_label (item), ==, label ? label : "");
-          submenu_widget = gtk_menu_item_get_submenu (item);
+          submenu_widget = ctk_menu_item_get_submenu (item);
 
           if (submenu)
             {
@@ -369,9 +369,9 @@ assert_section_equality (GSList      **children,
        *
        * Make sure that separator was valid.
        */
-      contents = gtk_bin_get_child ((*children)->data);
+      contents = ctk_bin_get_child ((*children)->data);
       if (GTK_IS_LABEL (contents))
-        label = gtk_label_get_label (GTK_LABEL (contents));
+        label = ctk_label_get_label (GTK_LABEL (contents));
       else
         label = "";
 
@@ -407,7 +407,7 @@ assert_menu_equality (GtkContainer *container,
 {
   GSList *children = NULL;
 
-  gtk_container_foreach (container, get_children_into_slist, &children);
+  ctk_container_foreach (container, get_children_into_slist, &children);
   children = g_slist_reverse (children);
 
   assert_section_equality (&children, TRUE, FALSE, NULL, model);
@@ -422,11 +422,11 @@ test_bind_menu (void)
   GRand *rand;
   gint i;
 
-  gtk_init (0, 0);
+  ctk_init (0, 0);
 
   rand = g_rand_new_with_seed (g_test_rand_int ());
   model = random_menu_new (rand, TOP_ORDER);
-  menu = gtk_menu_new_from_model (G_MENU_MODEL (model));
+  menu = ctk_menu_new_from_model (G_MENU_MODEL (model));
   g_object_ref_sink (menu);
   assert_menu_equality (GTK_CONTAINER (menu), G_MENU_MODEL (model));
   for (i = 0; i < 100; i++)

@@ -68,41 +68,41 @@ struct _GtkGestureLongPressPrivate
 
 static guint signals[N_SIGNALS] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkGestureLongPress, gtk_gesture_long_press, GTK_TYPE_GESTURE_SINGLE)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkGestureLongPress, ctk_gesture_long_press, GTK_TYPE_GESTURE_SINGLE)
 
 static void
-gtk_gesture_long_press_init (GtkGestureLongPress *gesture)
+ctk_gesture_long_press_init (GtkGestureLongPress *gesture)
 {
   GtkGestureLongPressPrivate *priv;
 
-  priv = gtk_gesture_long_press_get_instance_private (GTK_GESTURE_LONG_PRESS (gesture));
+  priv = ctk_gesture_long_press_get_instance_private (GTK_GESTURE_LONG_PRESS (gesture));
   priv->delay_factor = 1.0;
 }
 
 static gboolean
-gtk_gesture_long_press_check (GtkGesture *gesture)
+ctk_gesture_long_press_check (GtkGesture *gesture)
 {
   GtkGestureLongPressPrivate *priv;
 
-  priv = gtk_gesture_long_press_get_instance_private (GTK_GESTURE_LONG_PRESS (gesture));
+  priv = ctk_gesture_long_press_get_instance_private (GTK_GESTURE_LONG_PRESS (gesture));
 
   if (priv->cancelled)
     return FALSE;
 
-  return GTK_GESTURE_CLASS (gtk_gesture_long_press_parent_class)->check (gesture);
+  return GTK_GESTURE_CLASS (ctk_gesture_long_press_parent_class)->check (gesture);
 }
 
 static gboolean
-_gtk_gesture_long_press_timeout (gpointer user_data)
+_ctk_gesture_long_press_timeout (gpointer user_data)
 {
   GtkGestureLongPress *gesture = user_data;
   GtkGestureLongPressPrivate *priv;
   GdkEventSequence *sequence;
   gdouble x, y;
 
-  priv = gtk_gesture_long_press_get_instance_private (gesture);
-  sequence = gtk_gesture_get_last_updated_sequence (GTK_GESTURE (gesture));
-  gtk_gesture_get_point (GTK_GESTURE (gesture), sequence, &x, &y);
+  priv = ctk_gesture_long_press_get_instance_private (gesture);
+  sequence = ctk_gesture_get_last_updated_sequence (GTK_GESTURE (gesture));
+  ctk_gesture_get_point (GTK_GESTURE (gesture), sequence, &x, &y);
 
   priv->timeout_id = 0;
   priv->triggered = TRUE;
@@ -112,7 +112,7 @@ _gtk_gesture_long_press_timeout (gpointer user_data)
 }
 
 static void
-gtk_gesture_long_press_begin (GtkGesture       *gesture,
+ctk_gesture_long_press_begin (GtkGesture       *gesture,
                               GdkEventSequence *sequence)
 {
   GtkGestureLongPressPrivate *priv;
@@ -120,43 +120,43 @@ gtk_gesture_long_press_begin (GtkGesture       *gesture,
   GtkWidget *widget;
   gint delay;
 
-  priv = gtk_gesture_long_press_get_instance_private (GTK_GESTURE_LONG_PRESS (gesture));
-  sequence = gtk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
-  event = gtk_gesture_get_last_event (gesture, sequence);
+  priv = ctk_gesture_long_press_get_instance_private (GTK_GESTURE_LONG_PRESS (gesture));
+  sequence = ctk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
+  event = ctk_gesture_get_last_event (gesture, sequence);
 
   if (!event ||
       (event->type != GDK_BUTTON_PRESS &&
        event->type != GDK_TOUCH_BEGIN))
     return;
 
-  widget = gtk_event_controller_get_widget (GTK_EVENT_CONTROLLER (gesture));
-  g_object_get (gtk_widget_get_settings (widget),
+  widget = ctk_event_controller_get_widget (GTK_EVENT_CONTROLLER (gesture));
+  g_object_get (ctk_widget_get_settings (widget),
                 "gtk-long-press-time", &delay,
                 NULL);
 
   delay = (gint)(priv->delay_factor * delay);
 
-  gtk_gesture_get_point (gesture, sequence,
+  ctk_gesture_get_point (gesture, sequence,
                          &priv->initial_x, &priv->initial_y);
   priv->timeout_id =
     gdk_threads_add_timeout (delay,
-                             _gtk_gesture_long_press_timeout,
+                             _ctk_gesture_long_press_timeout,
                              gesture);
 }
 
 static void
-gtk_gesture_long_press_update (GtkGesture       *gesture,
+ctk_gesture_long_press_update (GtkGesture       *gesture,
                                GdkEventSequence *sequence)
 {
   GtkGestureLongPressPrivate *priv;
   GtkWidget *widget;
   gdouble x, y;
 
-  widget = gtk_event_controller_get_widget (GTK_EVENT_CONTROLLER (gesture));
-  priv = gtk_gesture_long_press_get_instance_private (GTK_GESTURE_LONG_PRESS (gesture));
-  gtk_gesture_get_point (gesture, sequence, &x, &y);
+  widget = ctk_event_controller_get_widget (GTK_EVENT_CONTROLLER (gesture));
+  priv = ctk_gesture_long_press_get_instance_private (GTK_GESTURE_LONG_PRESS (gesture));
+  ctk_gesture_get_point (gesture, sequence, &x, &y);
 
-  if (gtk_drag_check_threshold (widget, priv->initial_x, priv->initial_y, x, y))
+  if (ctk_drag_check_threshold (widget, priv->initial_x, priv->initial_y, x, y))
     {
       if (priv->timeout_id)
         {
@@ -166,17 +166,17 @@ gtk_gesture_long_press_update (GtkGesture       *gesture,
         }
 
       priv->cancelled = TRUE;
-      _gtk_gesture_check (gesture);
+      _ctk_gesture_check (gesture);
     }
 }
 
 static void
-gtk_gesture_long_press_end (GtkGesture       *gesture,
+ctk_gesture_long_press_end (GtkGesture       *gesture,
                             GdkEventSequence *sequence)
 {
   GtkGestureLongPressPrivate *priv;
 
-  priv = gtk_gesture_long_press_get_instance_private (GTK_GESTURE_LONG_PRESS (gesture));
+  priv = ctk_gesture_long_press_get_instance_private (GTK_GESTURE_LONG_PRESS (gesture));
 
   if (priv->timeout_id)
     {
@@ -189,44 +189,44 @@ gtk_gesture_long_press_end (GtkGesture       *gesture,
 }
 
 static void
-gtk_gesture_long_press_cancel (GtkGesture       *gesture,
+ctk_gesture_long_press_cancel (GtkGesture       *gesture,
                                GdkEventSequence *sequence)
 {
-  gtk_gesture_long_press_end (gesture, sequence);
-  GTK_GESTURE_CLASS (gtk_gesture_long_press_parent_class)->cancel (gesture, sequence);
+  ctk_gesture_long_press_end (gesture, sequence);
+  GTK_GESTURE_CLASS (ctk_gesture_long_press_parent_class)->cancel (gesture, sequence);
 }
 
 static void
-gtk_gesture_long_press_sequence_state_changed (GtkGesture            *gesture,
+ctk_gesture_long_press_sequence_state_changed (GtkGesture            *gesture,
                                                GdkEventSequence      *sequence,
                                                GtkEventSequenceState  state)
 {
   if (state == GTK_EVENT_SEQUENCE_DENIED)
-    gtk_gesture_long_press_end (gesture, sequence);
+    ctk_gesture_long_press_end (gesture, sequence);
 }
 
 static void
-gtk_gesture_long_press_finalize (GObject *object)
+ctk_gesture_long_press_finalize (GObject *object)
 {
   GtkGestureLongPressPrivate *priv;
 
-  priv = gtk_gesture_long_press_get_instance_private (GTK_GESTURE_LONG_PRESS (object));
+  priv = ctk_gesture_long_press_get_instance_private (GTK_GESTURE_LONG_PRESS (object));
 
   if (priv->timeout_id)
     g_source_remove (priv->timeout_id);
 
-  G_OBJECT_CLASS (gtk_gesture_long_press_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_gesture_long_press_parent_class)->finalize (object);
 }
 
 static void
-gtk_gesture_long_press_get_property (GObject    *object,
+ctk_gesture_long_press_get_property (GObject    *object,
                                      guint       property_id,
                                      GValue     *value,
                                      GParamSpec *pspec)
 {
   GtkGestureLongPressPrivate *priv;
 
-  priv = gtk_gesture_long_press_get_instance_private (GTK_GESTURE_LONG_PRESS (object));
+  priv = ctk_gesture_long_press_get_instance_private (GTK_GESTURE_LONG_PRESS (object));
 
   switch (property_id)
     {
@@ -241,14 +241,14 @@ gtk_gesture_long_press_get_property (GObject    *object,
 }
 
 static void
-gtk_gesture_long_press_set_property (GObject      *object,
+ctk_gesture_long_press_set_property (GObject      *object,
                                      guint         property_id,
                                      const GValue *value,
                                      GParamSpec   *pspec)
 {
   GtkGestureLongPressPrivate *priv;
 
-  priv = gtk_gesture_long_press_get_instance_private (GTK_GESTURE_LONG_PRESS (object));
+  priv = ctk_gesture_long_press_get_instance_private (GTK_GESTURE_LONG_PRESS (object));
 
   switch (property_id)
     {
@@ -263,21 +263,21 @@ gtk_gesture_long_press_set_property (GObject      *object,
 }
 
 static void
-gtk_gesture_long_press_class_init (GtkGestureLongPressClass *klass)
+ctk_gesture_long_press_class_init (GtkGestureLongPressClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GtkGestureClass *gesture_class = GTK_GESTURE_CLASS (klass);
 
-  object_class->finalize = gtk_gesture_long_press_finalize;
-  object_class->get_property = gtk_gesture_long_press_get_property;
-  object_class->set_property = gtk_gesture_long_press_set_property;
+  object_class->finalize = ctk_gesture_long_press_finalize;
+  object_class->get_property = ctk_gesture_long_press_get_property;
+  object_class->set_property = ctk_gesture_long_press_set_property;
 
-  gesture_class->check = gtk_gesture_long_press_check;
-  gesture_class->begin = gtk_gesture_long_press_begin;
-  gesture_class->update = gtk_gesture_long_press_update;
-  gesture_class->end = gtk_gesture_long_press_end;
-  gesture_class->cancel = gtk_gesture_long_press_cancel;
-  gesture_class->sequence_state_changed = gtk_gesture_long_press_sequence_state_changed;
+  gesture_class->check = ctk_gesture_long_press_check;
+  gesture_class->begin = ctk_gesture_long_press_begin;
+  gesture_class->update = ctk_gesture_long_press_update;
+  gesture_class->end = ctk_gesture_long_press_end;
+  gesture_class->cancel = ctk_gesture_long_press_cancel;
+  gesture_class->sequence_state_changed = ctk_gesture_long_press_sequence_state_changed;
 
   g_object_class_install_property (object_class,
                                    PROP_DELAY_FACTOR,
@@ -304,11 +304,11 @@ gtk_gesture_long_press_class_init (GtkGestureLongPressClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkGestureLongPressClass, pressed),
                   NULL, NULL,
-                  _gtk_marshal_VOID__DOUBLE_DOUBLE,
+                  _ctk_marshal_VOID__DOUBLE_DOUBLE,
                   G_TYPE_NONE, 2, G_TYPE_DOUBLE, G_TYPE_DOUBLE);
   g_signal_set_va_marshaller (signals[PRESSED],
                               G_TYPE_FROM_CLASS (klass),
-                              _gtk_marshal_VOID__DOUBLE_DOUBLEv);
+                              _ctk_marshal_VOID__DOUBLE_DOUBLEv);
   /**
    * GtkGestureLongPress::cancelled:
    * @gesture: the object which received the signal
@@ -328,7 +328,7 @@ gtk_gesture_long_press_class_init (GtkGestureLongPressClass *klass)
 }
 
 /**
- * gtk_gesture_long_press_new:
+ * ctk_gesture_long_press_new:
  * @widget: a #GtkWidget
  *
  * Returns a newly created #GtkGesture that recognizes long presses.
@@ -338,7 +338,7 @@ gtk_gesture_long_press_class_init (GtkGestureLongPressClass *klass)
  * Since: 3.14
  **/
 GtkGesture *
-gtk_gesture_long_press_new (GtkWidget *widget)
+ctk_gesture_long_press_new (GtkWidget *widget)
 {
   g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
 

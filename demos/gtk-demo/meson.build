@@ -74,7 +74,7 @@ demos = files([
 ])
 
 
-gtkdemo_deps = [libgtk_dep]
+gtkdemo_deps = [libctk_dep]
 
 if harfbuzz_dep.found() and pangoft_dep.found()
   demos += files('font_features.c')
@@ -126,7 +126,7 @@ gtkapplicationdemo = executable(
   install: true
 )
 
-gtk_settings_schemas = [
+ctk_settings_schemas = [
   'org.gtk.Settings.FileChooser.gschema.xml',
   'org.gtk.Settings.ColorChooser.gschema.xml',
   'org.gtk.Settings.EmojiChooser.gschema.xml',
@@ -134,15 +134,15 @@ gtk_settings_schemas = [
 ]
 
 foreach s: [ '16', '22', '24', '32', '48', '256']
-  icon_destdir = join_paths(gtk_datadir, 'icons', 'hicolor', '@0@x@0@'.format(s), 'apps')
+  icon_destdir = join_paths(ctk_datadir, 'icons', 'hicolor', '@0@x@0@'.format(s), 'apps')
   icons = [join_paths('data', '@0@x@0@'.format(s), 'gtk3-demo.png'),
            join_paths('data', '@0@x@0@'.format(s), 'gtk3-demo-symbolic.symbolic.png')]
   install_data(icons, install_dir: icon_destdir)
 endforeach
 
 # desktop file
-install_data('gtk3-demo.desktop', install_dir: gtk_applicationsdir)
+install_data('gtk3-demo.desktop', install_dir: ctk_applicationsdir)
 
 # GSettings
-install_data('org.gtk.Demo.gschema.xml', install_dir: gtk_schemasdir)
+install_data('org.gtk.Demo.gschema.xml', install_dir: ctk_schemasdir)
 gnome.compile_schemas(depend_files: files(['org.gtk.Demo.gschema.xml']))

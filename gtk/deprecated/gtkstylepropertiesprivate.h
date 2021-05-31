@@ -24,7 +24,7 @@
 
 G_BEGIN_DECLS
 
-void           _gtk_style_properties_set_property_by_property (GtkStyleProperties      *props,
+void           _ctk_style_properties_set_property_by_property (GtkStyleProperties      *props,
                                                                GtkCssStyleProperty     *property,
                                                                GtkStateFlags            state,
                                                                GtkCssValue             *value);

@@ -44,9 +44,9 @@
  * allows the user to select a color much like the #GtkFileChooserDialog
  * provides a standard dialog for file selection.
  *
- * Use gtk_color_selection_dialog_get_color_selection() to get the
+ * Use ctk_color_selection_dialog_get_color_selection() to get the
  * #GtkColorSelection widget contained within the dialog. Use this widget
- * and its gtk_color_selection_get_current_color()
+ * and its ctk_color_selection_get_current_color()
  * function to gain access to the selected color.  Connect a handler
  * for this widget’s #GtkColorSelection::color-changed signal to be notified
  * when the color changes.
@@ -81,20 +81,20 @@ enum {
 /* GtkColorSelectionDialog */
 /***************************/
 
-static void gtk_color_selection_dialog_buildable_interface_init     (GtkBuildableIface *iface);
-static GObject * gtk_color_selection_dialog_buildable_get_internal_child (GtkBuildable *buildable,
+static void ctk_color_selection_dialog_buildable_interface_init     (GtkBuildableIface *iface);
+static GObject * ctk_color_selection_dialog_buildable_get_internal_child (GtkBuildable *buildable,
 									  GtkBuilder   *builder,
 									  const gchar  *childname);
 
-G_DEFINE_TYPE_WITH_CODE (GtkColorSelectionDialog, gtk_color_selection_dialog, GTK_TYPE_DIALOG,
+G_DEFINE_TYPE_WITH_CODE (GtkColorSelectionDialog, ctk_color_selection_dialog, GTK_TYPE_DIALOG,
                          G_ADD_PRIVATE (GtkColorSelectionDialog)
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
-                                                gtk_color_selection_dialog_buildable_interface_init))
+                                                ctk_color_selection_dialog_buildable_interface_init))
 
 static GtkBuildableIface *parent_buildable_iface;
 
 static void
-gtk_color_selection_dialog_get_property (GObject         *object,
+ctk_color_selection_dialog_get_property (GObject         *object,
 					 guint            prop_id,
 					 GValue          *value,
 					 GParamSpec      *pspec)
@@ -123,12 +123,12 @@ gtk_color_selection_dialog_get_property (GObject         *object,
 }
 
 static void
-gtk_color_selection_dialog_class_init (GtkColorSelectionDialogClass *klass)
+ctk_color_selection_dialog_class_init (GtkColorSelectionDialogClass *klass)
 {
   GObjectClass   *gobject_class = G_OBJECT_CLASS (klass);
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
-  gobject_class->get_property = gtk_color_selection_dialog_get_property;
+  gobject_class->get_property = ctk_color_selection_dialog_get_property;
 
   g_object_class_install_property (gobject_class,
 				   PROP_COLOR_SELECTION,
@@ -159,62 +159,62 @@ gtk_color_selection_dialog_class_init (GtkColorSelectionDialogClass *klass)
 						     GTK_TYPE_WIDGET,
 						     G_PARAM_READABLE));
 
-  gtk_widget_class_set_accessible_role (widget_class, ATK_ROLE_COLOR_CHOOSER);
+  ctk_widget_class_set_accessible_role (widget_class, ATK_ROLE_COLOR_CHOOSER);
 }
 
 static void
-gtk_color_selection_dialog_init (GtkColorSelectionDialog *colorseldiag)
+ctk_color_selection_dialog_init (GtkColorSelectionDialog *colorseldiag)
 {
   GtkColorSelectionDialogPrivate *priv;
   GtkDialog *dialog = GTK_DIALOG (colorseldiag);
   GtkWidget *action_area, *content_area;
 
-  colorseldiag->priv = gtk_color_selection_dialog_get_instance_private (colorseldiag);
+  colorseldiag->priv = ctk_color_selection_dialog_get_instance_private (colorseldiag);
   priv = colorseldiag->priv;
 
-  content_area = gtk_dialog_get_content_area (dialog);
-  action_area = gtk_dialog_get_action_area (dialog);
+  content_area = ctk_dialog_get_content_area (dialog);
+  action_area = ctk_dialog_get_action_area (dialog);
 
-  gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
-  gtk_box_set_spacing (GTK_BOX (content_area), 2); /* 2 * 5 + 2 = 12 */
-  gtk_container_set_border_width (GTK_CONTAINER (action_area), 5);
-  gtk_box_set_spacing (GTK_BOX (action_area), 6);
+  ctk_container_set_border_width (GTK_CONTAINER (dialog), 5);
+  ctk_box_set_spacing (GTK_BOX (content_area), 2); /* 2 * 5 + 2 = 12 */
+  ctk_container_set_border_width (GTK_CONTAINER (action_area), 5);
+  ctk_box_set_spacing (GTK_BOX (action_area), 6);
 
-  priv->colorsel = gtk_color_selection_new ();
-  gtk_container_set_border_width (GTK_CONTAINER (priv->colorsel), 5);
-  gtk_color_selection_set_has_palette (GTK_COLOR_SELECTION (priv->colorsel), FALSE);
-  gtk_color_selection_set_has_opacity_control (GTK_COLOR_SELECTION (priv->colorsel), FALSE);
-  gtk_container_add (GTK_CONTAINER (content_area), priv->colorsel);
-  gtk_widget_show (priv->colorsel);
+  priv->colorsel = ctk_color_selection_new ();
+  ctk_container_set_border_width (GTK_CONTAINER (priv->colorsel), 5);
+  ctk_color_selection_set_has_palette (GTK_COLOR_SELECTION (priv->colorsel), FALSE);
+  ctk_color_selection_set_has_opacity_control (GTK_COLOR_SELECTION (priv->colorsel), FALSE);
+  ctk_container_add (GTK_CONTAINER (content_area), priv->colorsel);
+  ctk_widget_show (priv->colorsel);
 
-  priv->cancel_button = gtk_dialog_add_button (dialog,
+  priv->cancel_button = ctk_dialog_add_button (dialog,
                                                _("_Cancel"),
                                                GTK_RESPONSE_CANCEL);
 
-  priv->ok_button = gtk_dialog_add_button (dialog,
+  priv->ok_button = ctk_dialog_add_button (dialog,
                                            _("_Select"),
                                            GTK_RESPONSE_OK);
 
-  gtk_widget_grab_default (priv->ok_button);
+  ctk_widget_grab_default (priv->ok_button);
 
-  priv->help_button = gtk_dialog_add_button (dialog,
+  priv->help_button = ctk_dialog_add_button (dialog,
                                              _("_Help"),
                                              GTK_RESPONSE_HELP);
 
-  gtk_widget_hide (priv->help_button);
+  ctk_widget_hide (priv->help_button);
 
-  gtk_dialog_set_alternative_button_order (dialog,
+  ctk_dialog_set_alternative_button_order (dialog,
 					   GTK_RESPONSE_OK,
 					   GTK_RESPONSE_CANCEL,
 					   GTK_RESPONSE_HELP,
 					   -1);
 
-  gtk_window_set_title (GTK_WINDOW (colorseldiag),
+  ctk_window_set_title (GTK_WINDOW (colorseldiag),
                         _("Color Selection"));
 }
 
 /**
- * gtk_color_selection_dialog_new:
+ * ctk_color_selection_dialog_new:
  * @title: a string containing the title text for the dialog.
  *
  * Creates a new #GtkColorSelectionDialog.
@@ -222,22 +222,22 @@ gtk_color_selection_dialog_init (GtkColorSelectionDialog *colorseldiag)
  * Returns: a #GtkColorSelectionDialog.
  */
 GtkWidget*
-gtk_color_selection_dialog_new (const gchar *title)
+ctk_color_selection_dialog_new (const gchar *title)
 {
   GtkColorSelectionDialog *colorseldiag;
   
   colorseldiag = g_object_new (GTK_TYPE_COLOR_SELECTION_DIALOG, NULL);
 
   if (title)
-    gtk_window_set_title (GTK_WINDOW (colorseldiag), title);
+    ctk_window_set_title (GTK_WINDOW (colorseldiag), title);
 
-  gtk_window_set_resizable (GTK_WINDOW (colorseldiag), FALSE);
+  ctk_window_set_resizable (GTK_WINDOW (colorseldiag), FALSE);
   
   return GTK_WIDGET (colorseldiag);
 }
 
 /**
- * gtk_color_selection_dialog_get_color_selection:
+ * ctk_color_selection_dialog_get_color_selection:
  * @colorsel: a #GtkColorSelectionDialog
  *
  * Retrieves the #GtkColorSelection widget embedded in the dialog.
@@ -247,7 +247,7 @@ gtk_color_selection_dialog_new (const gchar *title)
  * Since: 2.14
  **/
 GtkWidget*
-gtk_color_selection_dialog_get_color_selection (GtkColorSelectionDialog *colorsel)
+ctk_color_selection_dialog_get_color_selection (GtkColorSelectionDialog *colorsel)
 {
   g_return_val_if_fail (GTK_IS_COLOR_SELECTION_DIALOG (colorsel), NULL);
 
@@ -255,14 +255,14 @@ gtk_color_selection_dialog_get_color_selection (GtkColorSelectionDialog *colorse
 }
 
 static void
-gtk_color_selection_dialog_buildable_interface_init (GtkBuildableIface *iface)
+ctk_color_selection_dialog_buildable_interface_init (GtkBuildableIface *iface)
 {
   parent_buildable_iface = g_type_interface_peek_parent (iface);
-  iface->get_internal_child = gtk_color_selection_dialog_buildable_get_internal_child;
+  iface->get_internal_child = ctk_color_selection_dialog_buildable_get_internal_child;
 }
 
 static GObject *
-gtk_color_selection_dialog_buildable_get_internal_child (GtkBuildable *buildable,
+ctk_color_selection_dialog_buildable_get_internal_child (GtkBuildable *buildable,
 							 GtkBuilder   *builder,
 							 const gchar  *childname)
 {

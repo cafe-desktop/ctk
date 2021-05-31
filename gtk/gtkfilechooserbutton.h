@@ -28,7 +28,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_FILE_CHOOSER_BUTTON            (gtk_file_chooser_button_get_type ())
+#define GTK_TYPE_FILE_CHOOSER_BUTTON            (ctk_file_chooser_button_get_type ())
 #define GTK_FILE_CHOOSER_BUTTON(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_FILE_CHOOSER_BUTTON, GtkFileChooserButton))
 #define GTK_FILE_CHOOSER_BUTTON_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_FILE_CHOOSER_BUTTON, GtkFileChooserButtonClass))
 #define GTK_IS_FILE_CHOOSER_BUTTON(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_FILE_CHOOSER_BUTTON))
@@ -63,34 +63,34 @@ struct _GtkFileChooserButtonClass
   /*< private >*/
 
   /* Padding for future expansion */
-  void (*__gtk_reserved1) (void);
-  void (*__gtk_reserved2) (void);
-  void (*__gtk_reserved3) (void);
-  void (*__gtk_reserved4) (void);
+  void (*__ctk_reserved1) (void);
+  void (*__ctk_reserved2) (void);
+  void (*__ctk_reserved3) (void);
+  void (*__ctk_reserved4) (void);
 };
 
 
 GDK_AVAILABLE_IN_ALL
-GType                 gtk_file_chooser_button_get_type         (void) G_GNUC_CONST;
+GType                 ctk_file_chooser_button_get_type         (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget *           gtk_file_chooser_button_new              (const gchar          *title,
+GtkWidget *           ctk_file_chooser_button_new              (const gchar          *title,
 								GtkFileChooserAction  action);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *           gtk_file_chooser_button_new_with_dialog  (GtkWidget            *dialog);
+GtkWidget *           ctk_file_chooser_button_new_with_dialog  (GtkWidget            *dialog);
 GDK_AVAILABLE_IN_ALL
-const gchar *         gtk_file_chooser_button_get_title        (GtkFileChooserButton *button);
+const gchar *         ctk_file_chooser_button_get_title        (GtkFileChooserButton *button);
 GDK_AVAILABLE_IN_ALL
-void                  gtk_file_chooser_button_set_title        (GtkFileChooserButton *button,
+void                  ctk_file_chooser_button_set_title        (GtkFileChooserButton *button,
 								const gchar          *title);
 GDK_AVAILABLE_IN_ALL
-gint                  gtk_file_chooser_button_get_width_chars  (GtkFileChooserButton *button);
+gint                  ctk_file_chooser_button_get_width_chars  (GtkFileChooserButton *button);
 GDK_AVAILABLE_IN_ALL
-void                  gtk_file_chooser_button_set_width_chars  (GtkFileChooserButton *button,
+void                  ctk_file_chooser_button_set_width_chars  (GtkFileChooserButton *button,
 								gint                  n_chars);
-GDK_DEPRECATED_IN_3_20_FOR(gtk_widget_get_focus_on_click)
-gboolean              gtk_file_chooser_button_get_focus_on_click (GtkFileChooserButton *button);
-GDK_DEPRECATED_IN_3_20_FOR(gtk_widget_set_focus_on_click)
-void                  gtk_file_chooser_button_set_focus_on_click (GtkFileChooserButton *button,
+GDK_DEPRECATED_IN_3_20_FOR(ctk_widget_get_focus_on_click)
+gboolean              ctk_file_chooser_button_get_focus_on_click (GtkFileChooserButton *button);
+GDK_DEPRECATED_IN_3_20_FOR(ctk_widget_set_focus_on_click)
+void                  ctk_file_chooser_button_set_focus_on_click (GtkFileChooserButton *button,
                                                                   gboolean              focus_on_click);
 
 G_END_DECLS

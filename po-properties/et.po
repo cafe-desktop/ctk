@@ -792,7 +792,7 @@ msgstr "Väärtus"
 
 #: gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
 
@@ -1273,10 +1273,10 @@ msgstr "Logo"
 #: gtk/gtkaboutdialog.c:546
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Programmi andmete kasti logo. Kui seda pole määratud, siis vaikimisi on "
-"selleks gtk_window_get_default_icon_list()"
+"selleks ctk_window_get_default_icon_list()"
 
 #: gtk/gtkaboutdialog.c:560
 msgid "Logo Icon Name"
@@ -3591,7 +3591,7 @@ msgstr ""
 #: gtk/gtkentry.c:1091
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 
 #: gtk/gtkentry.c:1107
@@ -9572,7 +9572,7 @@ msgid "No show all"
 msgstr ""
 
 #: gtk/gtkwidget.c:1261
-msgid "Whether gtk_widget_show_all() should not affect this widget"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
 msgstr ""
 
 #: gtk/gtkwidget.c:1283

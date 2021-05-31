@@ -202,7 +202,7 @@ event_cb (GtkWidget *widget,
           gpointer   user_data)
 {
   update_axes_from_event (event, user_data);
-  gtk_widget_queue_draw (widget);
+  ctk_widget_queue_draw (widget);
   return FALSE;
 }
 
@@ -442,7 +442,7 @@ draw_device_info (GtkWidget        *widget,
     }
 
   cairo_move_to (cr, 10, *y);
-  layout = gtk_widget_create_pango_layout (widget, string->str);
+  layout = ctk_widget_create_pango_layout (widget, string->str);
   pango_cairo_show_layout (cr, layout);
   cairo_stroke (cr);
 
@@ -474,7 +474,7 @@ draw_cb (GtkWidget *widget,
   gpointer key, value;
   gint y = 0;
 
-  gtk_widget_get_allocation (widget, &allocation);
+  ctk_widget_get_allocation (widget, &allocation);
 
   /* Draw Abs info */
   g_hash_table_iter_init (&iter, data->pointer_info);
@@ -521,7 +521,7 @@ update_label_text (GtkWidget   *label,
 
   if (text)
     markup = g_strdup_printf ("<span font='48.0'>%s</span>", text);
-  gtk_label_set_markup (GTK_LABEL (label), markup);
+  ctk_label_set_markup (GTK_LABEL (label), markup);
   g_free (markup);
 }
 
@@ -577,7 +577,7 @@ init_pad_controller (GtkWidget *window,
   gint i;
 
   action_group = g_simple_action_group_new ();
-  pad_controller = gtk_pad_controller_new (GTK_WINDOW (window),
+  pad_controller = ctk_pad_controller_new (GTK_WINDOW (window),
                                            G_ACTION_GROUP (action_group),
                                            NULL);
 
@@ -601,7 +601,7 @@ init_pad_controller (GtkWidget *window,
       g_object_unref (action);
     }
 
-  gtk_pad_controller_set_action_entries (pad_controller, pad_actions,
+  ctk_pad_controller_set_action_entries (pad_controller, pad_actions,
                                          G_N_ELEMENTS (pad_actions));
   g_object_set_data_full (G_OBJECT (window), "pad-controller",
                           pad_controller, g_object_unref);
@@ -618,17 +618,17 @@ do_event_axes (GtkWidget *toplevel)
 
   if (!window)
     {
-      window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-      gtk_window_set_title (GTK_WINDOW (window), "Event Axes");
-      gtk_window_set_default_size (GTK_WINDOW (window), 400, 400);
+      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+      ctk_window_set_title (GTK_WINDOW (window), "Event Axes");
+      ctk_window_set_default_size (GTK_WINDOW (window), 400, 400);
 
       g_signal_connect (window, "destroy",
-                        G_CALLBACK (gtk_widget_destroyed), &window);
+                        G_CALLBACK (ctk_widget_destroyed), &window);
 
-      box = gtk_event_box_new ();
-      gtk_container_add (GTK_CONTAINER (window), box);
-      gtk_widget_set_support_multidevice (box, TRUE);
-      gtk_widget_add_events (box,
+      box = ctk_event_box_new ();
+      ctk_container_add (GTK_CONTAINER (window), box);
+      ctk_widget_set_support_multidevice (box, TRUE);
+      ctk_widget_add_events (box,
 			     GDK_POINTER_MOTION_MASK |
 			     GDK_BUTTON_PRESS_MASK |
 			     GDK_BUTTON_RELEASE_MASK |
@@ -646,17 +646,17 @@ do_event_axes (GtkWidget *toplevel)
       g_signal_connect (box, "draw",
                         G_CALLBACK (draw_cb), event_data);
 
-      label = gtk_label_new ("");
-      gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
-      gtk_container_add (GTK_CONTAINER (box), label);
+      label = ctk_label_new ("");
+      ctk_label_set_use_markup (GTK_LABEL (label), TRUE);
+      ctk_container_add (GTK_CONTAINER (box), label);
 
       init_pad_controller (window, label);
     }
 
-  if (!gtk_widget_get_visible (window))
-    gtk_widget_show_all (window);
+  if (!ctk_widget_get_visible (window))
+    ctk_widget_show_all (window);
   else
-    gtk_widget_destroy (window);
+    ctk_widget_destroy (window);
 
   return window;
 }

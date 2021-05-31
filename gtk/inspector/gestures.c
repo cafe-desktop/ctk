@@ -42,13 +42,13 @@ struct _GtkInspectorGesturesPrivate
   GtkInspectorObjectTree *object_tree;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorGestures, gtk_inspector_gestures, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorGestures, ctk_inspector_gestures, GTK_TYPE_BOX)
 
 static void
-gtk_inspector_gestures_init (GtkInspectorGestures *sl)
+ctk_inspector_gestures_init (GtkInspectorGestures *sl)
 {
-  sl->priv = gtk_inspector_gestures_get_instance_private (sl);
-  sl->priv->sizegroup = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
+  sl->priv = ctk_inspector_gestures_get_instance_private (sl);
+  sl->priv->sizegroup = ctk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
   g_object_set (sl,
                 "orientation", GTK_ORIENTATION_VERTICAL,
                 "margin-start", 60,
@@ -65,11 +65,11 @@ clear_all (GtkInspectorGestures *sl)
   GList *children, *l;
   GtkWidget *child;
 
-  children = gtk_container_get_children (GTK_CONTAINER (sl));
+  children = ctk_container_get_children (GTK_CONTAINER (sl));
   for (l = children; l; l = l->next)
     {
       child = l->data;
-      gtk_container_remove (GTK_CONTAINER (sl), child);
+      ctk_container_remove (GTK_CONTAINER (sl), child);
     }
   g_list_free (children);
 }
@@ -81,10 +81,10 @@ phase_changed_cb (GtkComboBox *combo, GtkInspectorGestures *sl)
   GtkPropagationPhase phase;
   GtkGesture *gesture;
 
-  phase = gtk_combo_box_get_active (combo);
-  row = gtk_widget_get_ancestor (GTK_WIDGET (combo), GTK_TYPE_LIST_BOX_ROW);
+  phase = ctk_combo_box_get_active (combo);
+  row = ctk_widget_get_ancestor (GTK_WIDGET (combo), GTK_TYPE_LIST_BOX_ROW);
   gesture = GTK_GESTURE (g_object_get_data (G_OBJECT (row), "gesture"));
-  gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), phase);
+  ctk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), phase);
 }
 
 static void
@@ -95,7 +95,7 @@ row_activated (GtkListBox           *box,
   GObject *gesture;
   
   gesture = G_OBJECT (g_object_get_data (G_OBJECT (row), "gesture"));
-  gtk_inspector_object_tree_select_object (sl->priv->object_tree, gesture);
+  ctk_inspector_object_tree_select_object (sl->priv->object_tree, gesture);
 }
 
 static void
@@ -110,31 +110,31 @@ add_gesture (GtkInspectorGestures *sl,
   GtkWidget *label;
   GtkWidget *combo;
 
-  row = gtk_list_box_row_new ();
-  gtk_container_add (GTK_CONTAINER (listbox), row);
-  gtk_widget_show (row);
-  box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 40);
-  gtk_container_add (GTK_CONTAINER (row), box);
+  row = ctk_list_box_row_new ();
+  ctk_container_add (GTK_CONTAINER (listbox), row);
+  ctk_widget_show (row);
+  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 40);
+  ctk_container_add (GTK_CONTAINER (row), box);
   g_object_set (box, "margin", 10, NULL);
-  gtk_widget_show (box);
-  label = gtk_label_new (g_type_name_from_instance ((GTypeInstance*)gesture));
+  ctk_widget_show (box);
+  label = ctk_label_new (g_type_name_from_instance ((GTypeInstance*)gesture));
   g_object_set (label, "xalign", 0.0, NULL);
-  gtk_container_add (GTK_CONTAINER (box), label);
-  gtk_size_group_add_widget (sl->priv->sizegroup, label);
-  gtk_widget_show (label);
-  gtk_widget_set_halign (label, GTK_ALIGN_START);
-  gtk_widget_set_valign (label, GTK_ALIGN_BASELINE);
+  ctk_container_add (GTK_CONTAINER (box), label);
+  ctk_size_group_add_widget (sl->priv->sizegroup, label);
+  ctk_widget_show (label);
+  ctk_widget_set_halign (label, GTK_ALIGN_START);
+  ctk_widget_set_valign (label, GTK_ALIGN_BASELINE);
 
-  combo = gtk_combo_box_text_new ();
-  gtk_combo_box_text_insert_text (GTK_COMBO_BOX_TEXT (combo), GTK_PHASE_NONE, C_("event phase", "None"));
-  gtk_combo_box_text_insert_text (GTK_COMBO_BOX_TEXT (combo), GTK_PHASE_CAPTURE, C_("event phase", "Capture"));
-  gtk_combo_box_text_insert_text (GTK_COMBO_BOX_TEXT (combo), GTK_PHASE_BUBBLE, C_("event phase", "Bubble"));
-  gtk_combo_box_text_insert_text (GTK_COMBO_BOX_TEXT (combo), GTK_PHASE_TARGET, C_("event phase", "Target"));
-  gtk_combo_box_set_active (GTK_COMBO_BOX (combo), phase);
-  gtk_container_add (GTK_CONTAINER (box), combo);
-  gtk_widget_show (combo);
-  gtk_widget_set_halign (label, GTK_ALIGN_END);
-  gtk_widget_set_valign (label, GTK_ALIGN_BASELINE);
+  combo = ctk_combo_box_text_new ();
+  ctk_combo_box_text_insert_text (GTK_COMBO_BOX_TEXT (combo), GTK_PHASE_NONE, C_("event phase", "None"));
+  ctk_combo_box_text_insert_text (GTK_COMBO_BOX_TEXT (combo), GTK_PHASE_CAPTURE, C_("event phase", "Capture"));
+  ctk_combo_box_text_insert_text (GTK_COMBO_BOX_TEXT (combo), GTK_PHASE_BUBBLE, C_("event phase", "Bubble"));
+  ctk_combo_box_text_insert_text (GTK_COMBO_BOX_TEXT (combo), GTK_PHASE_TARGET, C_("event phase", "Target"));
+  ctk_combo_box_set_active (GTK_COMBO_BOX (combo), phase);
+  ctk_container_add (GTK_CONTAINER (box), combo);
+  ctk_widget_show (combo);
+  ctk_widget_set_halign (label, GTK_ALIGN_END);
+  ctk_widget_set_valign (label, GTK_ALIGN_BASELINE);
 
   g_object_set_data (G_OBJECT (row), "gesture", gesture);
   g_signal_connect (combo, "changed", G_CALLBACK (phase_changed_cb), sl);
@@ -152,17 +152,17 @@ add_gesture_group (GtkInspectorGestures *sl,
   GtkGesture *g;
   GtkPropagationPhase phase;
 
-  frame = gtk_frame_new (NULL);
-  gtk_widget_show (frame);
-  gtk_widget_set_halign (frame, GTK_ALIGN_CENTER);
+  frame = ctk_frame_new (NULL);
+  ctk_widget_show (frame);
+  ctk_widget_set_halign (frame, GTK_ALIGN_CENTER);
 
-  listbox = gtk_list_box_new ();
+  listbox = ctk_list_box_new ();
   g_signal_connect (listbox, "row-activated", G_CALLBACK (row_activated), sl);
-  gtk_container_add (GTK_CONTAINER (frame), listbox);
-  gtk_widget_show (listbox);
-  gtk_list_box_set_selection_mode (GTK_LIST_BOX (listbox), GTK_SELECTION_NONE);
+  ctk_container_add (GTK_CONTAINER (frame), listbox);
+  ctk_widget_show (listbox);
+  ctk_list_box_set_selection_mode (GTK_LIST_BOX (listbox), GTK_SELECTION_NONE);
 
-  list = gtk_gesture_get_group (gesture);
+  list = ctk_gesture_get_group (gesture);
   for (l = list; l; l = l->next)
     {
       g = l->data;
@@ -172,11 +172,11 @@ add_gesture_group (GtkInspectorGestures *sl,
     }
   g_list_free (list);
 
-  gtk_container_add (GTK_CONTAINER (sl), frame);
+  ctk_container_add (GTK_CONTAINER (sl), frame);
 }
 
 void
-gtk_inspector_gestures_set_object (GtkInspectorGestures *sl,
+ctk_inspector_gestures_set_object (GtkInspectorGestures *sl,
                                    GObject              *object)
 {
   GHashTable *hash;
@@ -185,7 +185,7 @@ gtk_inspector_gestures_set_object (GtkInspectorGestures *sl,
   gint phase;
 
   clear_all (sl);
-  gtk_widget_hide (GTK_WIDGET (sl));
+  ctk_widget_hide (GTK_WIDGET (sl));
 
   if (!GTK_IS_WIDGET (object))
     return;
@@ -193,7 +193,7 @@ gtk_inspector_gestures_set_object (GtkInspectorGestures *sl,
   hash = g_hash_table_new (g_direct_hash, g_direct_equal);
   for (phase = GTK_PHASE_NONE; phase <= GTK_PHASE_TARGET; phase++)
     {
-      list = _gtk_widget_list_controllers (GTK_WIDGET (object), phase);
+      list = _ctk_widget_list_controllers (GTK_WIDGET (object), phase);
       for (l = list; l; l = l->next)
         {
           GtkEventController *controller = l->data;
@@ -205,7 +205,7 @@ gtk_inspector_gestures_set_object (GtkInspectorGestures *sl,
     }
 
   if (g_hash_table_size (hash))
-    gtk_widget_show (GTK_WIDGET (sl));
+    ctk_widget_show (GTK_WIDGET (sl));
 
   while (g_hash_table_size (hash) > 0)
     {
@@ -261,7 +261,7 @@ set_property (GObject      *object,
 }
 
 static void
-gtk_inspector_gestures_class_init (GtkInspectorGesturesClass *klass)
+ctk_inspector_gestures_class_init (GtkInspectorGesturesClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 

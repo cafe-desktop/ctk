@@ -65,30 +65,30 @@ struct _GtkWindowGroupPrivate
   GSList *device_grabs;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkWindowGroup, gtk_window_group, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkWindowGroup, ctk_window_group, G_TYPE_OBJECT)
 
 static void
-gtk_window_group_init (GtkWindowGroup *group)
+ctk_window_group_init (GtkWindowGroup *group)
 {
-  group->priv = gtk_window_group_get_instance_private (group);
+  group->priv = ctk_window_group_get_instance_private (group);
 }
 
 static void
-gtk_window_group_class_init (GtkWindowGroupClass *klass)
+ctk_window_group_class_init (GtkWindowGroupClass *klass)
 {
 }
 
 
 /**
- * gtk_window_group_new:
+ * ctk_window_group_new:
  * 
  * Creates a new #GtkWindowGroup object. Grabs added with
- * gtk_grab_add() only affect windows within the same #GtkWindowGroup.
+ * ctk_grab_add() only affect windows within the same #GtkWindowGroup.
  * 
  * Returns: a new #GtkWindowGroup. 
  **/
 GtkWindowGroup *
-gtk_window_group_new (void)
+ctk_window_group_new (void)
 {
   return g_object_new (GTK_TYPE_WINDOW_GROUP, NULL);
 }
@@ -107,14 +107,14 @@ window_group_cleanup_grabs (GtkWindowGroup *group,
   tmp_list = priv->grabs;
   while (tmp_list)
     {
-      if (gtk_widget_get_toplevel (tmp_list->data) == (GtkWidget*) window)
+      if (ctk_widget_get_toplevel (tmp_list->data) == (GtkWidget*) window)
         to_remove = g_slist_prepend (to_remove, g_object_ref (tmp_list->data));
       tmp_list = tmp_list->next;
     }
 
   while (to_remove)
     {
-      gtk_grab_remove (to_remove->data);
+      ctk_grab_remove (to_remove->data);
       g_object_unref (to_remove->data);
       to_remove = g_slist_delete_link (to_remove, to_remove);
     }
@@ -125,7 +125,7 @@ window_group_cleanup_grabs (GtkWindowGroup *group,
     {
       info = tmp_list->data;
 
-      if (gtk_widget_get_toplevel (info->widget) == (GtkWidget *) window)
+      if (ctk_widget_get_toplevel (info->widget) == (GtkWidget *) window)
         to_remove = g_slist_prepend (to_remove, info);
 
       tmp_list = tmp_list->next;
@@ -135,20 +135,20 @@ window_group_cleanup_grabs (GtkWindowGroup *group,
     {
       info = to_remove->data;
 
-      gtk_device_grab_remove (info->widget, info->device);
+      ctk_device_grab_remove (info->widget, info->device);
       to_remove = g_slist_delete_link (to_remove, to_remove);
     }
 }
 
 /**
- * gtk_window_group_add_window:
+ * ctk_window_group_add_window:
  * @window_group: a #GtkWindowGroup
  * @window: the #GtkWindow to add
  * 
  * Adds a window to a #GtkWindowGroup. 
  **/
 void
-gtk_window_group_add_window (GtkWindowGroup *window_group,
+ctk_window_group_add_window (GtkWindowGroup *window_group,
                              GtkWindow      *window)
 {
   GtkWindowGroup *old_group;
@@ -156,7 +156,7 @@ gtk_window_group_add_window (GtkWindowGroup *window_group,
   g_return_if_fail (GTK_IS_WINDOW_GROUP (window_group));
   g_return_if_fail (GTK_IS_WINDOW (window));
 
-  old_group = _gtk_window_get_window_group (window);
+  old_group = _ctk_window_get_window_group (window);
 
   if (old_group != window_group)
     {
@@ -164,42 +164,42 @@ gtk_window_group_add_window (GtkWindowGroup *window_group,
       g_object_ref (window_group);
 
       if (old_group)
-        gtk_window_group_remove_window (old_group, window);
+        ctk_window_group_remove_window (old_group, window);
       else
-        window_group_cleanup_grabs (gtk_window_get_group (NULL), window);
+        window_group_cleanup_grabs (ctk_window_get_group (NULL), window);
 
-      _gtk_window_set_window_group (window, window_group);
+      _ctk_window_set_window_group (window, window_group);
 
       g_object_unref (window);
     }
 }
 
 /**
- * gtk_window_group_remove_window:
+ * ctk_window_group_remove_window:
  * @window_group: a #GtkWindowGroup
  * @window: the #GtkWindow to remove
  * 
  * Removes a window from a #GtkWindowGroup.
  **/
 void
-gtk_window_group_remove_window (GtkWindowGroup *window_group,
+ctk_window_group_remove_window (GtkWindowGroup *window_group,
                                 GtkWindow      *window)
 {
   g_return_if_fail (GTK_IS_WINDOW_GROUP (window_group));
   g_return_if_fail (GTK_IS_WINDOW (window));
-  g_return_if_fail (_gtk_window_get_window_group (window) == window_group);
+  g_return_if_fail (_ctk_window_get_window_group (window) == window_group);
 
   g_object_ref (window);
 
   window_group_cleanup_grabs (window_group, window);
-  _gtk_window_set_window_group (window, NULL);
+  _ctk_window_set_window_group (window, NULL);
 
   g_object_unref (window_group);
   g_object_unref (window);
 }
 
 /**
- * gtk_window_group_list_windows:
+ * ctk_window_group_list_windows:
  * @window_group: a #GtkWindowGroup
  *
  * Returns a list of the #GtkWindows that belong to @window_group.
@@ -210,20 +210,20 @@ gtk_window_group_remove_window (GtkWindowGroup *window_group,
  * Since: 2.14
  **/
 GList *
-gtk_window_group_list_windows (GtkWindowGroup *window_group)
+ctk_window_group_list_windows (GtkWindowGroup *window_group)
 {
   GList *toplevels, *toplevel, *group_windows;
 
   g_return_val_if_fail (GTK_IS_WINDOW_GROUP (window_group), NULL);
 
   group_windows = NULL;
-  toplevels = gtk_window_list_toplevels ();
+  toplevels = ctk_window_list_toplevels ();
 
   for (toplevel = toplevels; toplevel; toplevel = toplevel->next)
     {
       GtkWindow *window = toplevel->data;
 
-      if (window_group == _gtk_window_get_window_group (window))
+      if (window_group == _ctk_window_get_window_group (window))
         group_windows = g_list_prepend (group_windows, window);
     }
 
@@ -233,18 +233,18 @@ gtk_window_group_list_windows (GtkWindowGroup *window_group)
 }
 
 /**
- * gtk_window_group_get_current_grab:
+ * ctk_window_group_get_current_grab:
  * @window_group: a #GtkWindowGroup
  *
  * Gets the current grab widget of the given group,
- * see gtk_grab_add().
+ * see ctk_grab_add().
  *
  * Returns: (transfer none): the current grab widget of the group
  *
  * Since: 2.22
  */
 GtkWidget *
-gtk_window_group_get_current_grab (GtkWindowGroup *window_group)
+ctk_window_group_get_current_grab (GtkWindowGroup *window_group)
 {
   g_return_val_if_fail (GTK_IS_WINDOW_GROUP (window_group), NULL);
 
@@ -254,7 +254,7 @@ gtk_window_group_get_current_grab (GtkWindowGroup *window_group)
 }
 
 void
-_gtk_window_group_add_grab (GtkWindowGroup *window_group,
+_ctk_window_group_add_grab (GtkWindowGroup *window_group,
                             GtkWidget      *widget)
 {
   GtkWindowGroupPrivate *priv;
@@ -264,7 +264,7 @@ _gtk_window_group_add_grab (GtkWindowGroup *window_group,
 }
 
 void
-_gtk_window_group_remove_grab (GtkWindowGroup *window_group,
+_ctk_window_group_remove_grab (GtkWindowGroup *window_group,
                                GtkWidget      *widget)
 {
   GtkWindowGroupPrivate *priv;
@@ -274,7 +274,7 @@ _gtk_window_group_remove_grab (GtkWindowGroup *window_group,
 }
 
 void
-_gtk_window_group_add_device_grab (GtkWindowGroup *window_group,
+_ctk_window_group_add_device_grab (GtkWindowGroup *window_group,
                                    GtkWidget      *widget,
                                    GdkDevice      *device,
                                    gboolean        block_others)
@@ -293,7 +293,7 @@ _gtk_window_group_add_device_grab (GtkWindowGroup *window_group,
 }
 
 void
-_gtk_window_group_remove_device_grab (GtkWindowGroup *window_group,
+_ctk_window_group_remove_device_grab (GtkWindowGroup *window_group,
                                       GtkWidget      *widget,
                                       GdkDevice      *device)
 {
@@ -331,7 +331,7 @@ _gtk_window_group_remove_device_grab (GtkWindowGroup *window_group,
 }
 
 /**
- * gtk_window_group_get_current_device_grab:
+ * ctk_window_group_get_current_device_grab:
  * @window_group: a #GtkWindowGroup
  * @device: a #GdkDevice
  *
@@ -342,7 +342,7 @@ _gtk_window_group_remove_device_grab (GtkWindowGroup *window_group,
  * Since: 3.0
  */
 GtkWidget *
-gtk_window_group_get_current_device_grab (GtkWindowGroup *window_group,
+ctk_window_group_get_current_device_grab (GtkWindowGroup *window_group,
                                           GdkDevice      *device)
 {
   GtkWindowGroupPrivate *priv;
@@ -371,7 +371,7 @@ gtk_window_group_get_current_device_grab (GtkWindowGroup *window_group,
 }
 
 gboolean
-_gtk_window_group_widget_is_blocked_for_device (GtkWindowGroup *window_group,
+_ctk_window_group_widget_is_blocked_for_device (GtkWindowGroup *window_group,
                                                 GtkWidget      *widget,
                                                 GdkDevice      *device)
 {
@@ -396,7 +396,7 @@ _gtk_window_group_widget_is_blocked_for_device (GtkWindowGroup *window_group,
           info->device != device &&
           info->device != other_device &&
           (info->widget == widget ||
-           gtk_widget_is_ancestor (widget, info->widget)))
+           ctk_widget_is_ancestor (widget, info->widget)))
         return TRUE;
     }
 

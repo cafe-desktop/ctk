@@ -633,7 +633,7 @@ typedef enum
  * @GTK_PRINT_PAGES_RANGES: Range of pages.
  * @GTK_PRINT_PAGES_SELECTION: Selected pages.
  *
- * See also gtk_print_job_set_pages()
+ * See also ctk_print_job_set_pages()
  */
 typedef enum
 {
@@ -649,7 +649,7 @@ typedef enum
  * @GTK_PAGE_SET_EVEN: Even pages.
  * @GTK_PAGE_SET_ODD: Odd pages.
  *
- * See also gtk_print_job_set_page_set().
+ * See also ctk_print_job_set_page_set().
  */
 typedef enum
 {
@@ -691,7 +691,7 @@ typedef enum
  * @GTK_PAGE_ORIENTATION_REVERSE_PORTRAIT: Reverse portrait mode.
  * @GTK_PAGE_ORIENTATION_REVERSE_LANDSCAPE: Reverse landscape mode.
  *
- * See also gtk_print_settings_set_orientation().
+ * See also ctk_print_settings_set_orientation().
  */
 typedef enum
 {
@@ -708,7 +708,7 @@ typedef enum
  * @GTK_PRINT_QUALITY_HIGH: High quality.
  * @GTK_PRINT_QUALITY_DRAFT: Draft quality.
  *
- * See also gtk_print_settings_set_quality().
+ * See also ctk_print_settings_set_quality().
  */
 typedef enum
 {
@@ -724,7 +724,7 @@ typedef enum
  * @GTK_PRINT_DUPLEX_HORIZONTAL: Horizontal duplex.
  * @GTK_PRINT_DUPLEX_VERTICAL: Vertical duplex.
  *
- * See also gtk_print_settings_set_duplex().
+ * See also ctk_print_settings_set_duplex().
  */
 typedef enum
 {
@@ -741,7 +741,7 @@ typedef enum
  * @GTK_UNIT_INCH: Dimensions in inches.
  * @GTK_UNIT_MM: Dimensions in millimeters
  *
- * See also gtk_print_settings_set_paper_width().
+ * See also ctk_print_settings_set_paper_width().
  */
 typedef enum
 {
@@ -1072,7 +1072,7 @@ typedef enum
 /**
  * GtkPropagationPhase:
  * @GTK_PHASE_NONE: Events are not delivered automatically. Those can be
- *   manually fed through gtk_event_controller_handle_event(). This should
+ *   manually fed through ctk_event_controller_handle_event(). This should
  *   only be used when full control about when, or whether the controller
  *   handles the event is needed.
  * @GTK_PHASE_CAPTURE: Events are delivered in the capture phase. The

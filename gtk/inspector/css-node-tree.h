@@ -27,7 +27,7 @@
 
 #include "gtk/gtkcssnodeprivate.h"
 
-#define GTK_TYPE_INSPECTOR_CSS_NODE_TREE            (gtk_inspector_css_node_tree_get_type())
+#define GTK_TYPE_INSPECTOR_CSS_NODE_TREE            (ctk_inspector_css_node_tree_get_type())
 #define GTK_INSPECTOR_CSS_NODE_TREE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_INSPECTOR_CSS_NODE_TREE, GtkInspectorCssNodeTree))
 #define GTK_INSPECTOR_CSS_NODE_TREE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GTK_TYPE_INSPECTOR_CSS_NODE_TREE, GtkInspectorCssNodeTreeClass))
 #define GTK_INSPECTOR_IS_CSS_NODE_TREE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), GTK_TYPE_INSPECTOR_CSS_NODE_TREE))
@@ -50,8 +50,8 @@ typedef struct _GtkInspectorCssNodeTreeClass
 
 G_BEGIN_DECLS
 
-GType      gtk_inspector_css_node_tree_get_type       (void);
-void       gtk_inspector_css_node_tree_set_object     (GtkInspectorCssNodeTree *cnt,
+GType      ctk_inspector_css_node_tree_get_type       (void);
+void       ctk_inspector_css_node_tree_set_object     (GtkInspectorCssNodeTree *cnt,
                                                        GObject                 *object);
 
 G_END_DECLS

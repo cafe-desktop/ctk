@@ -43,21 +43,21 @@
  * columns, making it easy to align many widgets next to each other,
  * horizontally and vertically.
  *
- * Tables are created with a call to gtk_table_new(), the size of which can
- * later be changed with gtk_table_resize().
+ * Tables are created with a call to ctk_table_new(), the size of which can
+ * later be changed with ctk_table_resize().
  *
- * Widgets can be added to a table using gtk_table_attach() or the more
- * convenient (but slightly less flexible) gtk_table_attach_defaults().
+ * Widgets can be added to a table using ctk_table_attach() or the more
+ * convenient (but slightly less flexible) ctk_table_attach_defaults().
  *
- * To alter the space next to a specific row, use gtk_table_set_row_spacing(),
- * and for a column, gtk_table_set_col_spacing().
+ * To alter the space next to a specific row, use ctk_table_set_row_spacing(),
+ * and for a column, ctk_table_set_col_spacing().
  * The gaps between all rows or columns can be changed by
- * calling gtk_table_set_row_spacings() or gtk_table_set_col_spacings()
+ * calling ctk_table_set_row_spacings() or ctk_table_set_col_spacings()
  * respectively. Note that spacing is added between the
- * children, while padding added by gtk_table_attach() is added on
+ * children, while padding added by ctk_table_attach() is added on
  * either side of the widget it belongs to.
  *
- * gtk_table_set_homogeneous(), can be used to set whether all cells in the
+ * ctk_table_set_homogeneous(), can be used to set whether all cells in the
  * table will resize themselves to the size of the largest widget in the table.
  *
  * > #GtkTable has been deprecated. Use #GtkGrid instead. It provides the same
@@ -105,79 +105,79 @@ enum
 };
   
 
-static void gtk_table_finalize	    (GObject	    *object);
-static void gtk_table_get_preferred_width  (GtkWidget *widget,
+static void ctk_table_finalize	    (GObject	    *object);
+static void ctk_table_get_preferred_width  (GtkWidget *widget,
                                             gint      *minimum,
                                             gint      *natural);
-static void gtk_table_get_preferred_height (GtkWidget *widget,
+static void ctk_table_get_preferred_height (GtkWidget *widget,
                                             gint      *minimum,
                                             gint      *natural);
-static void gtk_table_size_allocate (GtkWidget	    *widget,
+static void ctk_table_size_allocate (GtkWidget	    *widget,
 				     GtkAllocation  *allocation);
-static void gtk_table_add	    (GtkContainer   *container,
+static void ctk_table_add	    (GtkContainer   *container,
 				     GtkWidget	    *widget);
-static void gtk_table_remove	    (GtkContainer   *container,
+static void ctk_table_remove	    (GtkContainer   *container,
 				     GtkWidget	    *widget);
-static void gtk_table_forall	    (GtkContainer   *container,
+static void ctk_table_forall	    (GtkContainer   *container,
 				     gboolean	     include_internals,
 				     GtkCallback     callback,
 				     gpointer	     callback_data);
-static void gtk_table_get_property  (GObject         *object,
+static void ctk_table_get_property  (GObject         *object,
 				     guint            prop_id,
 				     GValue          *value,
 				     GParamSpec      *pspec);
-static void gtk_table_set_property  (GObject         *object,
+static void ctk_table_set_property  (GObject         *object,
 				     guint            prop_id,
 				     const GValue    *value,
 				     GParamSpec      *pspec);
-static void gtk_table_set_child_property (GtkContainer    *container,
+static void ctk_table_set_child_property (GtkContainer    *container,
 					  GtkWidget       *child,
 					  guint            property_id,
 					  const GValue    *value,
 					  GParamSpec      *pspec);
-static void gtk_table_get_child_property (GtkContainer    *container,
+static void ctk_table_get_child_property (GtkContainer    *container,
 					  GtkWidget       *child,
 					  guint            property_id,
 					  GValue          *value,
 					  GParamSpec      *pspec);
-static GType gtk_table_child_type   (GtkContainer   *container);
+static GType ctk_table_child_type   (GtkContainer   *container);
 
 
-static void gtk_table_size_request_init	 (GtkTable *table);
-static void gtk_table_size_request_pass1 (GtkTable *table);
-static void gtk_table_size_request_pass2 (GtkTable *table);
-static void gtk_table_size_request_pass3 (GtkTable *table);
+static void ctk_table_size_request_init	 (GtkTable *table);
+static void ctk_table_size_request_pass1 (GtkTable *table);
+static void ctk_table_size_request_pass2 (GtkTable *table);
+static void ctk_table_size_request_pass3 (GtkTable *table);
 
-static void gtk_table_size_allocate_init  (GtkTable *table);
-static void gtk_table_size_allocate_pass1 (GtkTable *table);
-static void gtk_table_size_allocate_pass2 (GtkTable *table);
+static void ctk_table_size_allocate_init  (GtkTable *table);
+static void ctk_table_size_allocate_pass1 (GtkTable *table);
+static void ctk_table_size_allocate_pass2 (GtkTable *table);
 
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkTable, gtk_table, GTK_TYPE_CONTAINER)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkTable, ctk_table, GTK_TYPE_CONTAINER)
 
 static void
-gtk_table_class_init (GtkTableClass *class)
+ctk_table_class_init (GtkTableClass *class)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (class);
   GtkContainerClass *container_class = GTK_CONTAINER_CLASS (class);
   
-  gobject_class->finalize = gtk_table_finalize;
+  gobject_class->finalize = ctk_table_finalize;
 
-  gobject_class->get_property = gtk_table_get_property;
-  gobject_class->set_property = gtk_table_set_property;
+  gobject_class->get_property = ctk_table_get_property;
+  gobject_class->set_property = ctk_table_set_property;
   
-  widget_class->get_preferred_width = gtk_table_get_preferred_width;
-  widget_class->get_preferred_height = gtk_table_get_preferred_height;
-  widget_class->size_allocate = gtk_table_size_allocate;
+  widget_class->get_preferred_width = ctk_table_get_preferred_width;
+  widget_class->get_preferred_height = ctk_table_get_preferred_height;
+  widget_class->size_allocate = ctk_table_size_allocate;
   
-  container_class->add = gtk_table_add;
-  container_class->remove = gtk_table_remove;
-  container_class->forall = gtk_table_forall;
-  container_class->child_type = gtk_table_child_type;
-  container_class->set_child_property = gtk_table_set_child_property;
-  container_class->get_child_property = gtk_table_get_child_property;
-  gtk_container_class_handle_border_width (container_class);
+  container_class->add = ctk_table_add;
+  container_class->remove = ctk_table_remove;
+  container_class->forall = ctk_table_forall;
+  container_class->child_type = ctk_table_child_type;
+  container_class->set_child_property = ctk_table_set_child_property;
+  container_class->get_child_property = ctk_table_get_child_property;
+  ctk_container_class_handle_border_width (container_class);
 
   g_object_class_install_property (gobject_class,
                                    PROP_N_ROWS,
@@ -223,56 +223,56 @@ gtk_table_class_init (GtkTableClass *class)
 							 FALSE,
 							 GTK_PARAM_READWRITE));
 
-  gtk_container_class_install_child_property (container_class,
+  ctk_container_class_install_child_property (container_class,
 					      CHILD_PROP_LEFT_ATTACH,
 					      g_param_spec_uint ("left-attach", 
 								 P_("Left attachment"), 
 								 P_("The column number to attach the left side of the child to"),
 								 0, 65535, 0,
 								 GTK_PARAM_READWRITE));
-  gtk_container_class_install_child_property (container_class,
+  ctk_container_class_install_child_property (container_class,
 					      CHILD_PROP_RIGHT_ATTACH,
 					      g_param_spec_uint ("right-attach", 
 								 P_("Right attachment"), 
 								 P_("The column number to attach the right side of a child widget to"),
 								 1, 65535, 1,
 								 GTK_PARAM_READWRITE));
-  gtk_container_class_install_child_property (container_class,
+  ctk_container_class_install_child_property (container_class,
 					      CHILD_PROP_TOP_ATTACH,
 					      g_param_spec_uint ("top-attach", 
 								 P_("Top attachment"), 
 								 P_("The row number to attach the top of a child widget to"),
 								 0, 65535, 0,
 								 GTK_PARAM_READWRITE));
-  gtk_container_class_install_child_property (container_class,
+  ctk_container_class_install_child_property (container_class,
 					      CHILD_PROP_BOTTOM_ATTACH,
 					      g_param_spec_uint ("bottom-attach",
 								 P_("Bottom attachment"), 
 								 P_("The row number to attach the bottom of the child to"),
 								 1, 65535, 1,
 								 GTK_PARAM_READWRITE));
-  gtk_container_class_install_child_property (container_class,
+  ctk_container_class_install_child_property (container_class,
 					      CHILD_PROP_X_OPTIONS,
 					      g_param_spec_flags ("x-options", 
 								  P_("Horizontal options"), 
 								  P_("Options specifying the horizontal behaviour of the child"),
 								  GTK_TYPE_ATTACH_OPTIONS, GTK_EXPAND | GTK_FILL,
 								  GTK_PARAM_READWRITE));
-  gtk_container_class_install_child_property (container_class,
+  ctk_container_class_install_child_property (container_class,
 					      CHILD_PROP_Y_OPTIONS,
 					      g_param_spec_flags ("y-options", 
 								  P_("Vertical options"), 
 								  P_("Options specifying the vertical behaviour of the child"),
 								  GTK_TYPE_ATTACH_OPTIONS, GTK_EXPAND | GTK_FILL,
 								  GTK_PARAM_READWRITE));
-  gtk_container_class_install_child_property (container_class,
+  ctk_container_class_install_child_property (container_class,
 					      CHILD_PROP_X_PADDING,
 					      g_param_spec_uint ("x-padding", 
 								 P_("Horizontal padding"), 
 								 P_("Extra space to put between the child and its left and right neighbors, in pixels"),
 								 0, 65535, 0,
 								 GTK_PARAM_READWRITE));
-  gtk_container_class_install_child_property (container_class,
+  ctk_container_class_install_child_property (container_class,
 					      CHILD_PROP_Y_PADDING,
 					      g_param_spec_uint ("y-padding", 
 								 P_("Vertical padding"), 
@@ -282,13 +282,13 @@ gtk_table_class_init (GtkTableClass *class)
 }
 
 static GType
-gtk_table_child_type (GtkContainer   *container)
+ctk_table_child_type (GtkContainer   *container)
 {
   return GTK_TYPE_WIDGET;
 }
 
 static void
-gtk_table_get_property (GObject      *object,
+ctk_table_get_property (GObject      *object,
 			guint         prop_id,
 			GValue       *value,
 			GParamSpec   *pspec)
@@ -320,7 +320,7 @@ gtk_table_get_property (GObject      *object,
 }
 
 static void
-gtk_table_set_property (GObject      *object,
+ctk_table_set_property (GObject      *object,
 			guint         prop_id,
 			const GValue *value,
 			GParamSpec   *pspec)
@@ -331,19 +331,19 @@ gtk_table_set_property (GObject      *object,
   switch (prop_id)
     {
     case PROP_N_ROWS:
-      gtk_table_resize (table, g_value_get_uint (value), priv->ncols);
+      ctk_table_resize (table, g_value_get_uint (value), priv->ncols);
       break;
     case PROP_N_COLUMNS:
-      gtk_table_resize (table, priv->nrows, g_value_get_uint (value));
+      ctk_table_resize (table, priv->nrows, g_value_get_uint (value));
       break;
     case PROP_ROW_SPACING:
-      gtk_table_set_row_spacings (table, g_value_get_uint (value));
+      ctk_table_set_row_spacings (table, g_value_get_uint (value));
       break;
     case PROP_COLUMN_SPACING:
-      gtk_table_set_col_spacings (table, g_value_get_uint (value));
+      ctk_table_set_col_spacings (table, g_value_get_uint (value));
       break;
     case PROP_HOMOGENEOUS:
-      gtk_table_set_homogeneous (table, g_value_get_boolean (value));
+      ctk_table_set_homogeneous (table, g_value_get_boolean (value));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -352,7 +352,7 @@ gtk_table_set_property (GObject      *object,
 }
 
 static void
-gtk_table_set_child_property (GtkContainer    *container,
+ctk_table_set_child_property (GtkContainer    *container,
 			      GtkWidget       *child,
 			      guint            property_id,
 			      const GValue    *value,
@@ -384,28 +384,28 @@ gtk_table_set_child_property (GtkContainer    *container,
       if (table_child->right_attach <= table_child->left_attach)
 	table_child->right_attach = table_child->left_attach + 1;
       if (table_child->right_attach >= priv->ncols)
-	gtk_table_resize (table, priv->nrows, table_child->right_attach);
+	ctk_table_resize (table, priv->nrows, table_child->right_attach);
       break;
     case CHILD_PROP_RIGHT_ATTACH:
       table_child->right_attach = g_value_get_uint (value);
       if (table_child->right_attach <= table_child->left_attach)
 	table_child->left_attach = table_child->right_attach - 1;
       if (table_child->right_attach >= priv->ncols)
-	gtk_table_resize (table, priv->nrows, table_child->right_attach);
+	ctk_table_resize (table, priv->nrows, table_child->right_attach);
       break;
     case CHILD_PROP_TOP_ATTACH:
       table_child->top_attach = g_value_get_uint (value);
       if (table_child->bottom_attach <= table_child->top_attach)
 	table_child->bottom_attach = table_child->top_attach + 1;
       if (table_child->bottom_attach >= priv->nrows)
-	gtk_table_resize (table, table_child->bottom_attach, priv->ncols);
+	ctk_table_resize (table, table_child->bottom_attach, priv->ncols);
       break;
     case CHILD_PROP_BOTTOM_ATTACH:
       table_child->bottom_attach = g_value_get_uint (value);
       if (table_child->bottom_attach <= table_child->top_attach)
 	table_child->top_attach = table_child->bottom_attach - 1;
       if (table_child->bottom_attach >= priv->nrows)
-	gtk_table_resize (table, table_child->bottom_attach, priv->ncols);
+	ctk_table_resize (table, table_child->bottom_attach, priv->ncols);
       break;
     case CHILD_PROP_X_OPTIONS:
       {
@@ -431,13 +431,13 @@ gtk_table_set_child_property (GtkContainer    *container,
       GTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, property_id, pspec);
       break;
     }
-  if (gtk_widget_get_visible (child) &&
-      gtk_widget_get_visible (GTK_WIDGET (table)))
-    gtk_widget_queue_resize (child);
+  if (ctk_widget_get_visible (child) &&
+      ctk_widget_get_visible (GTK_WIDGET (table)))
+    ctk_widget_queue_resize (child);
 }
 
 static void
-gtk_table_get_child_property (GtkContainer    *container,
+ctk_table_get_child_property (GtkContainer    *container,
 			      GtkWidget       *child,
 			      guint            property_id,
 			      GValue          *value,
@@ -499,14 +499,14 @@ gtk_table_get_child_property (GtkContainer    *container,
 }
 
 static void
-gtk_table_init (GtkTable *table)
+ctk_table_init (GtkTable *table)
 {
   GtkTablePrivate *priv;
 
-  table->priv = gtk_table_get_instance_private (table);
+  table->priv = ctk_table_get_instance_private (table);
   priv = table->priv;
 
-  gtk_widget_set_has_window (GTK_WIDGET (table), FALSE);
+  ctk_widget_set_has_window (GTK_WIDGET (table), FALSE);
 
   priv->children = NULL;
   priv->rows = NULL;
@@ -517,11 +517,11 @@ gtk_table_init (GtkTable *table)
   priv->row_spacing = 0;
   priv->homogeneous = FALSE;
 
-  gtk_table_resize (table, 1, 1);
+  ctk_table_resize (table, 1, 1);
 }
 
 /**
- * gtk_table_new:
+ * ctk_table_new:
  * @rows: The number of rows the new table should have.
  * @columns: The number of columns the new table should have.
  * @homogeneous: If set to %TRUE, all table cells are resized to the size of
@@ -529,16 +529,16 @@ gtk_table_init (GtkTable *table)
  *
  * Used to create a new table widget. An initial size must be given by
  * specifying how many rows and columns the table should have, although
- * this can be changed later with gtk_table_resize().  @rows and @columns
+ * this can be changed later with ctk_table_resize().  @rows and @columns
  * must both be in the range 1 .. 65535. For historical reasons, 0 is accepted
  * as well and is silently interpreted as 1.
  *
  * Returns: A pointer to the newly created table widget.
  *
- * Deprecated: 3.4: Use gtk_grid_new().
+ * Deprecated: 3.4: Use ctk_grid_new().
  */
 GtkWidget*
-gtk_table_new (guint	rows,
+ctk_table_new (guint	rows,
 	       guint	columns,
 	       gboolean homogeneous)
 {
@@ -555,13 +555,13 @@ gtk_table_new (guint	rows,
 
   priv->homogeneous = (homogeneous ? TRUE : FALSE);
 
-  gtk_table_resize (table, rows, columns);
+  ctk_table_resize (table, rows, columns);
   
   return GTK_WIDGET (table);
 }
 
 /**
- * gtk_table_resize:
+ * ctk_table_resize:
  * @table: The #GtkTable you wish to change the size of.
  * @rows: The new number of rows.
  * @columns: The new number of columns.
@@ -572,7 +572,7 @@ gtk_table_new (guint	rows,
  * Deprecated: 3.4: #GtkGrid resizes automatically.
  */
 void
-gtk_table_resize (GtkTable *table,
+ctk_table_resize (GtkTable *table,
 		  guint     n_rows,
 		  guint     n_cols)
 {
@@ -649,7 +649,7 @@ gtk_table_resize (GtkTable *table,
 }
 
 /**
- * gtk_table_attach:
+ * ctk_table_attach:
  * @table: The #GtkTable to add a new widget to.
  * @child: The widget to add.
  * @left_attach: the column number to attach the left side of a child widget to.
@@ -668,7 +668,7 @@ gtk_table_resize (GtkTable *table,
  *
  * To make a button occupy the lower right cell of a 2x2 table, use
  * |[
- * gtk_table_attach (table, button,
+ * ctk_table_attach (table, button,
  *                   1, 2, // left, right attach
  *                   1, 2, // top, bottom attach
  *                   xoptions, yoptions,
@@ -676,11 +676,11 @@ gtk_table_resize (GtkTable *table,
  * ]|
  * If you want to make the button span the entire bottom row, use @left_attach == 0 and @right_attach = 2 instead.
  *
- * Deprecated: 3.4: Use gtk_grid_attach() with #GtkGrid. Note that the attach
+ * Deprecated: 3.4: Use ctk_grid_attach() with #GtkGrid. Note that the attach
  *     arguments differ between those two functions.
  */
 void
-gtk_table_attach (GtkTable	  *table,
+ctk_table_attach (GtkTable	  *table,
 		  GtkWidget	  *child,
 		  guint		   left_attach,
 		  guint		   right_attach,
@@ -696,7 +696,7 @@ gtk_table_attach (GtkTable	  *table,
 
   g_return_if_fail (GTK_IS_TABLE (table));
   g_return_if_fail (GTK_IS_WIDGET (child));
-  g_return_if_fail (gtk_widget_get_parent (child) == NULL);
+  g_return_if_fail (ctk_widget_get_parent (child) == NULL);
 
   /* g_return_if_fail (left_attach >= 0); */
   g_return_if_fail (left_attach < right_attach);
@@ -706,10 +706,10 @@ gtk_table_attach (GtkTable	  *table,
   priv = table->priv;
 
   if (right_attach >= priv->ncols)
-    gtk_table_resize (table, priv->nrows, right_attach);
+    ctk_table_resize (table, priv->nrows, right_attach);
 
   if (bottom_attach >= priv->nrows)
-    gtk_table_resize (table, bottom_attach, priv->ncols);
+    ctk_table_resize (table, bottom_attach, priv->ncols);
 
   table_child = g_new (GtkTableChild, 1);
   table_child->widget = child;
@@ -728,11 +728,11 @@ gtk_table_attach (GtkTable	  *table,
 
   priv->children = g_list_prepend (priv->children, table_child);
 
-  gtk_widget_set_parent (child, GTK_WIDGET (table));
+  ctk_widget_set_parent (child, GTK_WIDGET (table));
 }
 
 /**
- * gtk_table_attach_defaults:
+ * ctk_table_attach_defaults:
  * @table: The table to add a new child widget to.
  * @widget: The child widget to add.
  * @left_attach: The column number to attach the left side of the child widget to.
@@ -740,23 +740,23 @@ gtk_table_attach (GtkTable	  *table,
  * @top_attach: The row number to attach the top of the child widget to.
  * @bottom_attach: The row number to attach the bottom of the child widget to.
  *
- * As there are many options associated with gtk_table_attach(), this convenience
+ * As there are many options associated with ctk_table_attach(), this convenience
  * function provides the programmer with a means to add children to a table with
  * identical padding and expansion options. The values used for the #GtkAttachOptions
  * are `GTK_EXPAND | GTK_FILL`, and the padding is set to 0.
  *
- * Deprecated: 3.4: Use gtk_grid_attach() with #GtkGrid. Note that the attach
+ * Deprecated: 3.4: Use ctk_grid_attach() with #GtkGrid. Note that the attach
  *     arguments differ between those two functions.
  */
 void
-gtk_table_attach_defaults (GtkTable  *table,
+ctk_table_attach_defaults (GtkTable  *table,
 			   GtkWidget *widget,
 			   guint      left_attach,
 			   guint      right_attach,
 			   guint      top_attach,
 			   guint      bottom_attach)
 {
-  gtk_table_attach (table, widget,
+  ctk_table_attach (table, widget,
 		    left_attach, right_attach,
 		    top_attach, bottom_attach,
 		    GTK_EXPAND | GTK_FILL,
@@ -765,19 +765,19 @@ gtk_table_attach_defaults (GtkTable  *table,
 }
 
 /**
- * gtk_table_set_row_spacing:
+ * ctk_table_set_row_spacing:
  * @table: a #GtkTable containing the row whose properties you wish to change.
  * @row: row number whose spacing will be changed.
  * @spacing: number of pixels that the spacing should take up.
  *
  * Changes the space between a given table row and the subsequent row.
  *
- * Deprecated: 3.4: Use gtk_widget_set_margin_top() and
- *     gtk_widget_set_margin_bottom() on the widgets contained in the row if
+ * Deprecated: 3.4: Use ctk_widget_set_margin_top() and
+ *     ctk_widget_set_margin_bottom() on the widgets contained in the row if
  *     you need this functionality. #GtkGrid does not support per-row spacing.
  */
 void
-gtk_table_set_row_spacing (GtkTable *table,
+ctk_table_set_row_spacing (GtkTable *table,
 			   guint     row,
 			   guint     spacing)
 {
@@ -793,18 +793,18 @@ gtk_table_set_row_spacing (GtkTable *table,
     {
       priv->rows[row].spacing = spacing;
 
-      if (gtk_widget_get_visible (GTK_WIDGET (table)))
-	gtk_widget_queue_resize (GTK_WIDGET (table));
+      if (ctk_widget_get_visible (GTK_WIDGET (table)))
+	ctk_widget_queue_resize (GTK_WIDGET (table));
     }
 }
 
 /**
- * gtk_table_get_row_spacing:
+ * ctk_table_get_row_spacing:
  * @table: a #GtkTable
  * @row: a row in the table, 0 indicates the first row
  *
  * Gets the amount of space between row @row, and
- * row @row + 1. See gtk_table_set_row_spacing().
+ * row @row + 1. See ctk_table_set_row_spacing().
  *
  * Returns: the row spacing
  *
@@ -812,7 +812,7 @@ gtk_table_set_row_spacing (GtkTable *table,
  *     functionality.
  **/
 guint
-gtk_table_get_row_spacing (GtkTable *table,
+ctk_table_get_row_spacing (GtkTable *table,
 			   guint     row)
 {
   GtkTablePrivate *priv;
@@ -827,7 +827,7 @@ gtk_table_get_row_spacing (GtkTable *table,
 }
 
 /**
- * gtk_table_set_col_spacing:
+ * ctk_table_set_col_spacing:
  * @table: a #GtkTable.
  * @column: the column whose spacing should be changed.
  * @spacing: number of pixels that the spacing should take up.
@@ -835,12 +835,12 @@ gtk_table_get_row_spacing (GtkTable *table,
  * Alters the amount of space between a given table column and the following
  * column.
  *
- * Deprecated: 3.4: Use gtk_widget_set_margin_start() and
- *     gtk_widget_set_margin_end() on the widgets contained in the row if
+ * Deprecated: 3.4: Use ctk_widget_set_margin_start() and
+ *     ctk_widget_set_margin_end() on the widgets contained in the row if
  *     you need this functionality. #GtkGrid does not support per-row spacing.
  */
 void
-gtk_table_set_col_spacing (GtkTable *table,
+ctk_table_set_col_spacing (GtkTable *table,
 			   guint     column,
 			   guint     spacing)
 {
@@ -856,18 +856,18 @@ gtk_table_set_col_spacing (GtkTable *table,
     {
       priv->cols[column].spacing = spacing;
 
-      if (gtk_widget_get_visible (GTK_WIDGET (table)))
-	gtk_widget_queue_resize (GTK_WIDGET (table));
+      if (ctk_widget_get_visible (GTK_WIDGET (table)))
+	ctk_widget_queue_resize (GTK_WIDGET (table));
     }
 }
 
 /**
- * gtk_table_get_col_spacing:
+ * ctk_table_get_col_spacing:
  * @table: a #GtkTable
  * @column: a column in the table, 0 indicates the first column
  *
  * Gets the amount of space between column @col, and
- * column @col + 1. See gtk_table_set_col_spacing().
+ * column @col + 1. See ctk_table_set_col_spacing().
  *
  * Returns: the column spacing
  *
@@ -875,7 +875,7 @@ gtk_table_set_col_spacing (GtkTable *table,
  *     functionality.
  **/
 guint
-gtk_table_get_col_spacing (GtkTable *table,
+ctk_table_get_col_spacing (GtkTable *table,
 			   guint     column)
 {
   GtkTablePrivate *priv;
@@ -890,16 +890,16 @@ gtk_table_get_col_spacing (GtkTable *table,
 }
 
 /**
- * gtk_table_set_row_spacings:
+ * ctk_table_set_row_spacings:
  * @table: a #GtkTable.
  * @spacing: the number of pixels of space to place between every row in the table.
  *
  * Sets the space between every row in @table equal to @spacing.
  *
- * Deprecated: 3.4: Use gtk_grid_set_row_spacing() with #GtkGrid.
+ * Deprecated: 3.4: Use ctk_grid_set_row_spacing() with #GtkGrid.
  */
 void
-gtk_table_set_row_spacings (GtkTable *table,
+ctk_table_set_row_spacings (GtkTable *table,
 			    guint     spacing)
 {
   GtkTablePrivate *priv;
@@ -913,26 +913,26 @@ gtk_table_set_row_spacings (GtkTable *table,
   for (row = 0; row < priv->nrows; row++)
     priv->rows[row].spacing = spacing;
 
-  if (gtk_widget_get_visible (GTK_WIDGET (table)))
-    gtk_widget_queue_resize (GTK_WIDGET (table));
+  if (ctk_widget_get_visible (GTK_WIDGET (table)))
+    ctk_widget_queue_resize (GTK_WIDGET (table));
 
   g_object_notify (G_OBJECT (table), "row-spacing");
 }
 
 /**
- * gtk_table_get_default_row_spacing:
+ * ctk_table_get_default_row_spacing:
  * @table: a #GtkTable
  *
  * Gets the default row spacing for the table. This is
  * the spacing that will be used for newly added rows.
- * (See gtk_table_set_row_spacings())
+ * (See ctk_table_set_row_spacings())
  *
  * Returns: the default row spacing
  *
- * Deprecated: 3.4: Use gtk_grid_get_row_spacing() with #GtkGrid.
+ * Deprecated: 3.4: Use ctk_grid_get_row_spacing() with #GtkGrid.
  **/
 guint
-gtk_table_get_default_row_spacing (GtkTable *table)
+ctk_table_get_default_row_spacing (GtkTable *table)
 {
   g_return_val_if_fail (GTK_IS_TABLE (table), 0);
 
@@ -940,17 +940,17 @@ gtk_table_get_default_row_spacing (GtkTable *table)
 }
 
 /**
- * gtk_table_set_col_spacings:
+ * ctk_table_set_col_spacings:
  * @table: a #GtkTable.
  * @spacing: the number of pixels of space to place between every column
  *   in the table.
  *
  * Sets the space between every column in @table equal to @spacing.
  *
- * Deprecated: 3.4: Use gtk_grid_set_column_spacing() with #GtkGrid.
+ * Deprecated: 3.4: Use ctk_grid_set_column_spacing() with #GtkGrid.
  */
 void
-gtk_table_set_col_spacings (GtkTable *table,
+ctk_table_set_col_spacings (GtkTable *table,
 			    guint     spacing)
 {
   GtkTablePrivate *priv;
@@ -964,26 +964,26 @@ gtk_table_set_col_spacings (GtkTable *table,
   for (col = 0; col < priv->ncols; col++)
     priv->cols[col].spacing = spacing;
 
-  if (gtk_widget_get_visible (GTK_WIDGET (table)))
-    gtk_widget_queue_resize (GTK_WIDGET (table));
+  if (ctk_widget_get_visible (GTK_WIDGET (table)))
+    ctk_widget_queue_resize (GTK_WIDGET (table));
 
   g_object_notify (G_OBJECT (table), "column-spacing");
 }
 
 /**
- * gtk_table_get_default_col_spacing:
+ * ctk_table_get_default_col_spacing:
  * @table: a #GtkTable
  *
  * Gets the default column spacing for the table. This is
  * the spacing that will be used for newly added columns.
- * (See gtk_table_set_col_spacings())
+ * (See ctk_table_set_col_spacings())
  *
  * Returns: the default column spacing
  *
- * Deprecated: 3.4: Use gtk_grid_get_column_spacing() with #GtkGrid.
+ * Deprecated: 3.4: Use ctk_grid_get_column_spacing() with #GtkGrid.
  **/
 guint
-gtk_table_get_default_col_spacing (GtkTable *table)
+ctk_table_get_default_col_spacing (GtkTable *table)
 {
   g_return_val_if_fail (GTK_IS_TABLE (table), 0);
 
@@ -991,7 +991,7 @@ gtk_table_get_default_col_spacing (GtkTable *table)
 }
 
 /**
- * gtk_table_set_homogeneous:
+ * ctk_table_set_homogeneous:
  * @table: The #GtkTable you wish to set the homogeneous properties of.
  * @homogeneous: Set to %TRUE to ensure all table cells are the same size. Set
  *   to %FALSE if this is not your desired behaviour.
@@ -999,11 +999,11 @@ gtk_table_get_default_col_spacing (GtkTable *table)
  * Changes the homogenous property of table cells, ie. whether all cells are
  * an equal size or not.
  *
- * Deprecated: 3.4: Use gtk_grid_set_row_homogeneous() and
- *     gtk_grid_set_column_homogeneous() with #GtkGrid.
+ * Deprecated: 3.4: Use ctk_grid_set_row_homogeneous() and
+ *     ctk_grid_set_column_homogeneous() with #GtkGrid.
  */
 void
-gtk_table_set_homogeneous (GtkTable *table,
+ctk_table_set_homogeneous (GtkTable *table,
 			   gboolean  homogeneous)
 {
   GtkTablePrivate *priv;
@@ -1017,27 +1017,27 @@ gtk_table_set_homogeneous (GtkTable *table,
     {
       priv->homogeneous = homogeneous;
       
-      if (gtk_widget_get_visible (GTK_WIDGET (table)))
-	gtk_widget_queue_resize (GTK_WIDGET (table));
+      if (ctk_widget_get_visible (GTK_WIDGET (table)))
+	ctk_widget_queue_resize (GTK_WIDGET (table));
 
       g_object_notify (G_OBJECT (table), "homogeneous");
     }
 }
 
 /**
- * gtk_table_get_homogeneous:
+ * ctk_table_get_homogeneous:
  * @table: a #GtkTable
  *
  * Returns whether the table cells are all constrained to the same
- * width and height. (See gtk_table_set_homogeneous ())
+ * width and height. (See ctk_table_set_homogeneous ())
  *
  * Returns: %TRUE if the cells are all constrained to the same size
  *
- * Deprecated: 3.4: Use gtk_grid_get_row_homogeneous() and
- *     gtk_grid_get_column_homogeneous() with #GtkGrid.
+ * Deprecated: 3.4: Use ctk_grid_get_row_homogeneous() and
+ *     ctk_grid_get_column_homogeneous() with #GtkGrid.
  **/
 gboolean
-gtk_table_get_homogeneous (GtkTable *table)
+ctk_table_get_homogeneous (GtkTable *table)
 {
   g_return_val_if_fail (GTK_IS_TABLE (table), FALSE);
 
@@ -1045,7 +1045,7 @@ gtk_table_get_homogeneous (GtkTable *table)
 }
 
 /**
- * gtk_table_get_size:
+ * ctk_table_get_size:
  * @table: a #GtkTable
  * @rows: (out) (allow-none): return location for the number of
  *   rows, or %NULL
@@ -1060,7 +1060,7 @@ gtk_table_get_homogeneous (GtkTable *table)
  *     rows.
  **/
 void
-gtk_table_get_size (GtkTable *table,
+ctk_table_get_size (GtkTable *table,
                     guint    *rows,
                     guint    *columns)
 {
@@ -1078,7 +1078,7 @@ gtk_table_get_size (GtkTable *table,
 }
 
 static void
-gtk_table_finalize (GObject *object)
+ctk_table_finalize (GObject *object)
 {
   GtkTable *table = GTK_TABLE (object);
   GtkTablePrivate *priv = table->priv;
@@ -1086,11 +1086,11 @@ gtk_table_finalize (GObject *object)
   g_free (priv->rows);
   g_free (priv->cols);
 
-  G_OBJECT_CLASS (gtk_table_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_table_parent_class)->finalize (object);
 }
 
 static void
-gtk_table_get_preferred_width (GtkWidget *widget,
+ctk_table_get_preferred_width (GtkWidget *widget,
                                gint      *minimum,
                                gint      *natural)
 {
@@ -1098,11 +1098,11 @@ gtk_table_get_preferred_width (GtkWidget *widget,
   GtkTablePrivate *priv = table->priv;
   gint col;
 
-  gtk_table_size_request_init (table);
-  gtk_table_size_request_pass1 (table);
-  gtk_table_size_request_pass2 (table);
-  gtk_table_size_request_pass3 (table);
-  gtk_table_size_request_pass2 (table);
+  ctk_table_size_request_init (table);
+  ctk_table_size_request_pass1 (table);
+  ctk_table_size_request_pass2 (table);
+  ctk_table_size_request_pass3 (table);
+  ctk_table_size_request_pass2 (table);
 
   *minimum = 0;
 
@@ -1115,7 +1115,7 @@ gtk_table_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-gtk_table_get_preferred_height (GtkWidget *widget,
+ctk_table_get_preferred_height (GtkWidget *widget,
                                 gint      *minimum,
                                 gint      *natural)
 {
@@ -1123,11 +1123,11 @@ gtk_table_get_preferred_height (GtkWidget *widget,
   GtkTablePrivate *priv = table->priv;
   gint row;
 
-  gtk_table_size_request_init (table);
-  gtk_table_size_request_pass1 (table);
-  gtk_table_size_request_pass2 (table);
-  gtk_table_size_request_pass3 (table);
-  gtk_table_size_request_pass2 (table);
+  ctk_table_size_request_init (table);
+  ctk_table_size_request_pass1 (table);
+  ctk_table_size_request_pass2 (table);
+  ctk_table_size_request_pass3 (table);
+  ctk_table_size_request_pass2 (table);
 
   *minimum = 0;
   for (row = 0; row < priv->nrows; row++)
@@ -1139,27 +1139,27 @@ gtk_table_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-gtk_table_size_allocate (GtkWidget     *widget,
+ctk_table_size_allocate (GtkWidget     *widget,
 			 GtkAllocation *allocation)
 {
   GtkTable *table = GTK_TABLE (widget);
 
-  gtk_widget_set_allocation (widget, allocation);
+  ctk_widget_set_allocation (widget, allocation);
 
-  gtk_table_size_allocate_init (table);
-  gtk_table_size_allocate_pass1 (table);
-  gtk_table_size_allocate_pass2 (table);
+  ctk_table_size_allocate_init (table);
+  ctk_table_size_allocate_pass1 (table);
+  ctk_table_size_allocate_pass2 (table);
 }
 
 static void
-gtk_table_add (GtkContainer *container,
+ctk_table_add (GtkContainer *container,
 	       GtkWidget    *widget)
 {
-  gtk_table_attach_defaults (GTK_TABLE (container), widget, 0, 1, 0, 1);
+  ctk_table_attach_defaults (GTK_TABLE (container), widget, 0, 1, 0, 1);
 }
 
 static void
-gtk_table_remove (GtkContainer *container,
+ctk_table_remove (GtkContainer *container,
 		  GtkWidget    *widget)
 {
   GtkTable *table = GTK_TABLE (container);
@@ -1177,22 +1177,22 @@ gtk_table_remove (GtkContainer *container,
       
       if (child->widget == widget)
 	{
-	  gboolean was_visible = gtk_widget_get_visible (widget);
+	  gboolean was_visible = ctk_widget_get_visible (widget);
 	  
-	  gtk_widget_unparent (widget);
+	  ctk_widget_unparent (widget);
 
 	  priv->children = g_list_remove (priv->children, child);
 	  g_free (child);
 	  
-	  if (was_visible && gtk_widget_get_visible (widget_container))
-	    gtk_widget_queue_resize (widget_container);
+	  if (was_visible && ctk_widget_get_visible (widget_container))
+	    ctk_widget_queue_resize (widget_container);
 	  break;
 	}
     }
 }
 
 static void
-gtk_table_forall (GtkContainer *container,
+ctk_table_forall (GtkContainer *container,
 		  gboolean	include_internals,
 		  GtkCallback	callback,
 		  gpointer	callback_data)
@@ -1214,7 +1214,7 @@ gtk_table_forall (GtkContainer *container,
 }
 
 static void
-gtk_table_size_request_init (GtkTable *table)
+ctk_table_size_request_init (GtkTable *table)
 {
   GtkTablePrivate *priv = table->priv;
   GtkTableChild *child;
@@ -1239,17 +1239,17 @@ gtk_table_size_request_init (GtkTable *table)
       children = children->next;
 
       if (child->left_attach == (child->right_attach - 1) &&
-          (child->xexpand || gtk_widget_compute_expand (child->widget, GTK_ORIENTATION_HORIZONTAL)))
+          (child->xexpand || ctk_widget_compute_expand (child->widget, GTK_ORIENTATION_HORIZONTAL)))
 	priv->cols[child->left_attach].expand = TRUE;
       
       if (child->top_attach == (child->bottom_attach - 1) &&
-          (child->yexpand || gtk_widget_compute_expand (child->widget, GTK_ORIENTATION_VERTICAL)))
+          (child->yexpand || ctk_widget_compute_expand (child->widget, GTK_ORIENTATION_VERTICAL)))
 	priv->rows[child->top_attach].expand = TRUE;
     }
 }
 
 static void
-gtk_table_size_request_pass1 (GtkTable *table)
+ctk_table_size_request_pass1 (GtkTable *table)
 {
   GtkTablePrivate *priv = table->priv;
   GtkTableChild *child;
@@ -1263,11 +1263,11 @@ gtk_table_size_request_pass1 (GtkTable *table)
       child = children->data;
       children = children->next;
       
-      if (gtk_widget_get_visible (child->widget))
+      if (ctk_widget_get_visible (child->widget))
 	{
 	  GtkRequisition child_requisition;
 
-          gtk_widget_get_preferred_size (child->widget, &child_requisition, NULL);
+          ctk_widget_get_preferred_size (child->widget, &child_requisition, NULL);
 
 	  /* Child spans a single column.
 	   */
@@ -1289,7 +1289,7 @@ gtk_table_size_request_pass1 (GtkTable *table)
 }
 
 static void
-gtk_table_size_request_pass2 (GtkTable *table)
+ctk_table_size_request_pass2 (GtkTable *table)
 {
   GtkTablePrivate *priv = table->priv;
   gint max_width;
@@ -1314,7 +1314,7 @@ gtk_table_size_request_pass2 (GtkTable *table)
 }
 
 static void
-gtk_table_size_request_pass3 (GtkTable *table)
+ctk_table_size_request_pass3 (GtkTable *table)
 {
   GtkTablePrivate *priv = table->priv;
   GtkTableChild *child;
@@ -1329,7 +1329,7 @@ gtk_table_size_request_pass3 (GtkTable *table)
       child = children->data;
       children = children->next;
       
-      if (gtk_widget_get_visible (child->widget))
+      if (ctk_widget_get_visible (child->widget))
 	{
 	  /* Child spans multiple columns.
 	   */
@@ -1337,7 +1337,7 @@ gtk_table_size_request_pass3 (GtkTable *table)
 	    {
 	      GtkRequisition child_requisition;
 
-              gtk_widget_get_preferred_size (child->widget,
+              ctk_widget_get_preferred_size (child->widget,
                                              &child_requisition, NULL);
 
 	      /* Check and see if there is already enough space
@@ -1389,7 +1389,7 @@ gtk_table_size_request_pass3 (GtkTable *table)
 	    {
 	      GtkRequisition child_requisition;
 
-              gtk_widget_get_preferred_size (child->widget,
+              ctk_widget_get_preferred_size (child->widget,
                                              &child_requisition, NULL);
 
 	      /* Check and see if there is already enough space
@@ -1441,7 +1441,7 @@ gtk_table_size_request_pass3 (GtkTable *table)
 }
 
 static void
-gtk_table_size_allocate_init (GtkTable *table)
+ctk_table_size_allocate_init (GtkTable *table)
 {
   GtkTablePrivate *priv = table->priv;
   GtkTableChild *child;
@@ -1485,11 +1485,11 @@ gtk_table_size_allocate_init (GtkTable *table)
       child = children->data;
       children = children->next;
       
-      if (gtk_widget_get_visible (child->widget))
+      if (ctk_widget_get_visible (child->widget))
 	{
 	  if (child->left_attach == (child->right_attach - 1))
 	    {
-	      if (child->xexpand || gtk_widget_compute_expand (child->widget, GTK_ORIENTATION_HORIZONTAL))
+	      if (child->xexpand || ctk_widget_compute_expand (child->widget, GTK_ORIENTATION_HORIZONTAL))
 		priv->cols[child->left_attach].expand = TRUE;
 
 	      if (!child->xshrink)
@@ -1500,7 +1500,7 @@ gtk_table_size_allocate_init (GtkTable *table)
 	  
 	  if (child->top_attach == (child->bottom_attach - 1))
 	    {
-	      if (child->yexpand || gtk_widget_compute_expand (child->widget, GTK_ORIENTATION_VERTICAL))
+	      if (child->yexpand || ctk_widget_compute_expand (child->widget, GTK_ORIENTATION_VERTICAL))
 		priv->rows[child->top_attach].expand = TRUE;
 	      
 	      if (!child->yshrink)
@@ -1520,7 +1520,7 @@ gtk_table_size_allocate_init (GtkTable *table)
       child = children->data;
       children = children->next;
       
-      if (gtk_widget_get_visible (child->widget))
+      if (ctk_widget_get_visible (child->widget))
 	{
 	  if (child->left_attach != (child->right_attach - 1))
 	    {
@@ -1636,7 +1636,7 @@ gtk_table_size_allocate_init (GtkTable *table)
 }
 
 static void
-gtk_table_size_allocate_pass1 (GtkTable *table)
+ctk_table_size_allocate_pass1 (GtkTable *table)
 {
   GtkTablePrivate *priv = table->priv;
   GtkAllocation allocation;
@@ -1652,7 +1652,7 @@ gtk_table_size_allocate_pass1 (GtkTable *table)
    *  then we have to expand any expandable rows and columns
    *  to fill in the extra space.
    */
-  gtk_widget_get_allocation (GTK_WIDGET (table), &allocation);
+  ctk_widget_get_allocation (GTK_WIDGET (table), &allocation);
   real_width = allocation.width;
   real_height = allocation.height;
 
@@ -1841,7 +1841,7 @@ gtk_table_size_allocate_pass1 (GtkTable *table)
 }
 
 static void
-gtk_table_size_allocate_pass2 (GtkTable *table)
+ctk_table_size_allocate_pass2 (GtkTable *table)
 {
   GtkTablePrivate *priv = table->priv;
   GtkTableChild *child;
@@ -1860,14 +1860,14 @@ gtk_table_size_allocate_pass2 (GtkTable *table)
       child = children->data;
       children = children->next;
       
-      if (gtk_widget_get_visible (child->widget))
+      if (ctk_widget_get_visible (child->widget))
 	{
 	  GtkRequisition child_requisition;
 
-          gtk_widget_get_preferred_size (child->widget,
+          ctk_widget_get_preferred_size (child->widget,
                                          &child_requisition, NULL);
 
-          gtk_widget_get_allocation (GTK_WIDGET (table), &table_allocation);
+          ctk_widget_get_allocation (GTK_WIDGET (table), &table_allocation);
 	  x = table_allocation.x;
 	  y = table_allocation.y;
 	  max_width = 0;
@@ -1921,12 +1921,12 @@ gtk_table_size_allocate_pass2 (GtkTable *table)
 	      allocation.y = y + (max_height - allocation.height) / 2;
 	    }
 
-          gtk_widget_get_allocation (widget, &widget_allocation);
-	  if (gtk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL)
+          ctk_widget_get_allocation (widget, &widget_allocation);
+	  if (ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL)
             allocation.x = widget_allocation.x + widget_allocation.width
                            - (allocation.x - widget_allocation.x) - allocation.width;
 
-	  gtk_widget_size_allocate (child->widget, &allocation);
+	  ctk_widget_size_allocate (child->widget, &allocation);
 	}
     }
 }

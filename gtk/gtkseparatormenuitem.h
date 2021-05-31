@@ -35,7 +35,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SEPARATOR_MENU_ITEM            (gtk_separator_menu_item_get_type ())
+#define GTK_TYPE_SEPARATOR_MENU_ITEM            (ctk_separator_menu_item_get_type ())
 #define GTK_SEPARATOR_MENU_ITEM(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SEPARATOR_MENU_ITEM, GtkSeparatorMenuItem))
 #define GTK_SEPARATOR_MENU_ITEM_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SEPARATOR_MENU_ITEM, GtkSeparatorMenuItemClass))
 #define GTK_IS_SEPARATOR_MENU_ITEM(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SEPARATOR_MENU_ITEM))
@@ -62,17 +62,17 @@ struct _GtkSeparatorMenuItemClass
   /*< private >*/
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
 GDK_AVAILABLE_IN_ALL
-GType	   gtk_separator_menu_item_get_type	   (void) G_GNUC_CONST;
+GType	   ctk_separator_menu_item_get_type	   (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_separator_menu_item_new	           (void);
+GtkWidget* ctk_separator_menu_item_new	           (void);
 
 
 G_END_DECLS

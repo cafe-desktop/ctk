@@ -88,7 +88,7 @@ void          gdk_win32_selection_add_targets (GdkWindow  *owner,
 					       GdkAtom    *targets);
 
 #if defined (GTK_COMPILATION) || defined (GDK_COMPILATION)
-#define gdk_win32_selection_clear_targets gdk_win32_selection_clear_targets_libgtk_only
+#define gdk_win32_selection_clear_targets gdk_win32_selection_clear_targets_libctk_only
 GDK_AVAILABLE_IN_ALL
 void          gdk_win32_selection_clear_targets (GdkDisplay *display,
                                                  GdkAtom     selection);
@@ -105,13 +105,13 @@ GdkWindow *   gdk_win32_window_lookup_for_display (GdkDisplay *display,
 
 /* For internal GTK use only */
 GDK_AVAILABLE_IN_ALL
-GdkPixbuf    *gdk_win32_icon_to_pixbuf_libgtk_only (HICON hicon,
+GdkPixbuf    *gdk_win32_icon_to_pixbuf_libctk_only (HICON hicon,
                                                     gdouble *x_hot,
                                                     gdouble *y_hot);
 GDK_AVAILABLE_IN_ALL
-HICON         gdk_win32_pixbuf_to_hicon_libgtk_only (GdkPixbuf *pixbuf);
+HICON         gdk_win32_pixbuf_to_hicon_libctk_only (GdkPixbuf *pixbuf);
 GDK_AVAILABLE_IN_ALL
-void          gdk_win32_set_modal_dialog_libgtk_only (HWND window);
+void          gdk_win32_set_modal_dialog_libctk_only (HWND window);
 
 #endif
 

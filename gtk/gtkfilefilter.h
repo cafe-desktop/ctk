@@ -28,7 +28,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_FILE_FILTER              (gtk_file_filter_get_type ())
+#define GTK_TYPE_FILE_FILTER              (ctk_file_filter_get_type ())
 #define GTK_FILE_FILTER(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_FILE_FILTER, GtkFileFilter))
 #define GTK_IS_FILE_FILTER(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_FILE_FILTER))
 
@@ -56,11 +56,11 @@ typedef enum {
 /**
  * GtkFileFilterFunc:
  * @filter_info: a #GtkFileFilterInfo that is filled according
- *   to the @needed flags passed to gtk_file_filter_add_custom()
- * @data: (closure): user data passed to gtk_file_filter_add_custom()
+ *   to the @needed flags passed to ctk_file_filter_add_custom()
+ * @data: (closure): user data passed to ctk_file_filter_add_custom()
  *
  * The type of function that is used with custom filters, see
- * gtk_file_filter_add_custom().
+ * ctk_file_filter_add_custom().
  *
  * Returns: %TRUE if the file should be displayed
  */
@@ -78,7 +78,7 @@ typedef gboolean (*GtkFileFilterFunc) (const GtkFileFilterInfo *filter_info,
  * @mime_type: the mime type of the file
  *
  * A #GtkFileFilterInfo-struct is used to pass information about the
- * tested file to gtk_file_filter_filter().
+ * tested file to ctk_file_filter_filter().
  */
 struct _GtkFileFilterInfo
 {
@@ -91,41 +91,41 @@ struct _GtkFileFilterInfo
 };
 
 GDK_AVAILABLE_IN_ALL
-GType gtk_file_filter_get_type (void) G_GNUC_CONST;
+GType ctk_file_filter_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkFileFilter *       gtk_file_filter_new      (void);
+GtkFileFilter *       ctk_file_filter_new      (void);
 GDK_AVAILABLE_IN_ALL
-void                  gtk_file_filter_set_name (GtkFileFilter *filter,
+void                  ctk_file_filter_set_name (GtkFileFilter *filter,
 						const gchar   *name);
 GDK_AVAILABLE_IN_ALL
-const gchar *         gtk_file_filter_get_name (GtkFileFilter *filter);
+const gchar *         ctk_file_filter_get_name (GtkFileFilter *filter);
 
 GDK_AVAILABLE_IN_ALL
-void gtk_file_filter_add_mime_type      (GtkFileFilter      *filter,
+void ctk_file_filter_add_mime_type      (GtkFileFilter      *filter,
 					 const gchar        *mime_type);
 GDK_AVAILABLE_IN_ALL
-void gtk_file_filter_add_pattern        (GtkFileFilter      *filter,
+void ctk_file_filter_add_pattern        (GtkFileFilter      *filter,
 					 const gchar        *pattern);
 GDK_AVAILABLE_IN_ALL
-void gtk_file_filter_add_pixbuf_formats (GtkFileFilter      *filter);
+void ctk_file_filter_add_pixbuf_formats (GtkFileFilter      *filter);
 GDK_AVAILABLE_IN_ALL
-void gtk_file_filter_add_custom         (GtkFileFilter      *filter,
+void ctk_file_filter_add_custom         (GtkFileFilter      *filter,
 					 GtkFileFilterFlags  needed,
 					 GtkFileFilterFunc   func,
 					 gpointer            data,
 					 GDestroyNotify      notify);
 
 GDK_AVAILABLE_IN_ALL
-GtkFileFilterFlags gtk_file_filter_get_needed (GtkFileFilter           *filter);
+GtkFileFilterFlags ctk_file_filter_get_needed (GtkFileFilter           *filter);
 GDK_AVAILABLE_IN_ALL
-gboolean           gtk_file_filter_filter     (GtkFileFilter           *filter,
+gboolean           ctk_file_filter_filter     (GtkFileFilter           *filter,
 					       const GtkFileFilterInfo *filter_info);
 
 GDK_AVAILABLE_IN_3_22
-GVariant      *gtk_file_filter_to_gvariant       (GtkFileFilter *filter);
+GVariant      *ctk_file_filter_to_gvariant       (GtkFileFilter *filter);
 GDK_AVAILABLE_IN_3_22
-GtkFileFilter *gtk_file_filter_new_from_gvariant (GVariant      *variant);
+GtkFileFilter *ctk_file_filter_new_from_gvariant (GVariant      *variant);
 
 G_END_DECLS
 

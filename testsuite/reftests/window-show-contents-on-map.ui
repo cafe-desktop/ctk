@@ -5,7 +5,7 @@
   <object class="GtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
-    <signal name="map" handler="gtk_widget_show" object="label1" after="yes" swapped="yes"/>
+    <signal name="map" handler="ctk_widget_show" object="label1" after="yes" swapped="yes"/>
     <child>
       <object class="GtkLabel" id="label1">
         <property name="can_focus">False</property>

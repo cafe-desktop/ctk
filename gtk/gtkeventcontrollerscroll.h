@@ -29,7 +29,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_EVENT_CONTROLLER_SCROLL         (gtk_event_controller_scroll_get_type ())
+#define GTK_TYPE_EVENT_CONTROLLER_SCROLL         (ctk_event_controller_scroll_get_type ())
 #define GTK_EVENT_CONTROLLER_SCROLL(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_EVENT_CONTROLLER_SCROLL, GtkEventControllerScroll))
 #define GTK_EVENT_CONTROLLER_SCROLL_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), GTK_TYPE_EVENT_CONTROLLER_SCROLL, GtkEventControllerScrollClass))
 #define GTK_IS_EVENT_CONTROLLER_SCROLL(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_EVENT_CONTROLLER_SCROLL))
@@ -63,17 +63,17 @@ typedef enum {
 } GtkEventControllerScrollFlags;
 
 GDK_AVAILABLE_IN_3_24
-GType               gtk_event_controller_scroll_get_type  (void) G_GNUC_CONST;
+GType               ctk_event_controller_scroll_get_type  (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_24
-GtkEventController *gtk_event_controller_scroll_new (GtkWidget                     *widget,
+GtkEventController *ctk_event_controller_scroll_new (GtkWidget                     *widget,
                                                      GtkEventControllerScrollFlags  flags);
 GDK_AVAILABLE_IN_3_24
-void                gtk_event_controller_scroll_set_flags (GtkEventControllerScroll      *controller,
+void                ctk_event_controller_scroll_set_flags (GtkEventControllerScroll      *controller,
                                                            GtkEventControllerScrollFlags  flags);
 GDK_AVAILABLE_IN_3_24
 GtkEventControllerScrollFlags
-                    gtk_event_controller_scroll_get_flags (GtkEventControllerScroll      *controller);
+                    ctk_event_controller_scroll_get_flags (GtkEventControllerScroll      *controller);
 
 G_END_DECLS
 

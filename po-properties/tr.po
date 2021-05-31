@@ -772,10 +772,10 @@ msgstr "Değer"
 
 #: gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"Bu eylem kümesinin geçerli eylemiyken gtk_radio_action_get_current_value() "
+"Bu eylem kümesinin geçerli eylemiyken ctk_radio_action_get_current_value() "
 "tarafından dönen değer."
 
 #: gtk/deprecated/gtkradioaction.c:139 gtk/gtkradiobutton.c:184
@@ -1231,10 +1231,10 @@ msgstr "Logo"
 #: gtk/gtkaboutdialog.c:552
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Hakkında kutusu için bir logo. Eğer atanmamışsa, "
-"gtk_window_get_default_icon_list() öntanımlı olarak kullanılır"
+"ctk_window_get_default_icon_list() öntanımlı olarak kullanılır"
 
 #: gtk/gtkaboutdialog.c:566
 msgid "Logo Icon Name"
@@ -3431,9 +3431,9 @@ msgstr "İlerleme Darbe Adımı"
 #: gtk/gtkentry.c:1094
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
-"Her gtk_entry_progress_pulse çağrısında gidip gelen ilerleme bloğunun "
+"Her ctk_entry_progress_pulse çağrısında gidip gelen ilerleme bloğunun "
 "taşınması için toplam giriş genişliği bölümü"
 
 #: gtk/gtkentry.c:1110
@@ -9056,8 +9056,8 @@ msgid "No show all"
 msgstr "Tümünü göster yok"
 
 #: gtk/gtkwidget.c:1264
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "Bu parçayı gtk_widget_show_all()'un etkilememesi"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "Bu parçayı ctk_widget_show_all()'un etkilememesi"
 
 #: gtk/gtkwidget.c:1286
 msgid "Whether this widget has a tooltip"

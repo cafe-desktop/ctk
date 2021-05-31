@@ -26,17 +26,17 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_PRINTER_CLOUDPRINT	(gtk_printer_cloudprint_get_type ())
+#define GTK_TYPE_PRINTER_CLOUDPRINT	(ctk_printer_cloudprint_get_type ())
 #define GTK_PRINTER_CLOUDPRINT(obj)	(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PRINTER_CLOUDPRINT, GtkPrinterCloudprint))
 #define GTK_IS_PRINTER_CLOUDPRINT(obj)	(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PRINTER_CLOUDPRINT))
 
-void	gtk_printer_cloudprint_register_type (GTypeModule *module);
-GtkPrinterCloudprint *gtk_printer_cloudprint_new	(const char *name,
+void	ctk_printer_cloudprint_register_type (GTypeModule *module);
+GtkPrinterCloudprint *ctk_printer_cloudprint_new	(const char *name,
 							 gboolean is_virtual,
 							 GtkPrintBackend *backend,
 							 GtkCloudprintAccount *account,
 							 const gchar *id);
-GType	gtk_printer_cloudprint_get_type			(void) G_GNUC_CONST;
+GType	ctk_printer_cloudprint_get_type			(void) G_GNUC_CONST;
 
 G_END_DECLS
 

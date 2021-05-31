@@ -53,7 +53,7 @@ my_button_init (MyButton *b)
 static void
 my_button_class_init (MyButtonClass *class)
 {
-  gtk_widget_class_set_accessible_type (GTK_WIDGET_CLASS (class),
+  ctk_widget_class_set_accessible_type (GTK_WIDGET_CLASS (class),
                                         my_button_accessible_get_type ());
 }
 
@@ -62,10 +62,10 @@ int main (int argc, char *argv[])
   GtkWidget *widget;
   GtkAccessible *accessible;
 
-  gtk_init (NULL, NULL);
+  ctk_init (NULL, NULL);
 
   widget = GTK_WIDGET (g_object_new (my_button_get_type (), NULL));
-  accessible = GTK_ACCESSIBLE (gtk_widget_get_accessible (widget));
+  accessible = GTK_ACCESSIBLE (ctk_widget_get_accessible (widget));
 
   g_assert (G_TYPE_CHECK_INSTANCE_TYPE (accessible, my_button_accessible_get_type ()));
 

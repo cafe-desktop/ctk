@@ -230,7 +230,7 @@ testframe_DEPENDENCIES = $(TEST_DEPS)
 testgeometry_DEPENDENCIES = $(TEST_DEPS)
 testgiconpixbuf = $(TEST_DEPS)
 testgrid_DEPENDENCIES = $(TEST_DEPS)
-testgtk_DEPENDENCIES = $(TEST_DEPS)
+testctk_DEPENDENCIES = $(TEST_DEPS)
 testheaderbar_DEPENDENCIES = $(TEST_DEPS)
 testinput_DEPENDENCIES = $(TEST_DEPS)
 testimage_DEPENDENCIES = $(TEST_DEPS)
@@ -377,7 +377,7 @@ testforeign_SOURCES = \
 testgrid_SOURCES =	\
 	testgrid.c
 
-testgtk_SOURCES =	\
+testctk_SOURCES =	\
 	testgtk.c
 
 testtreechanging_SOURCES =	\

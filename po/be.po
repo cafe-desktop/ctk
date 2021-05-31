@@ -1351,12 +1351,12 @@ msgstr "Пуста"
 #. * the `Help` menu. All parts of the dialog are optional.
 #. *
 #. * About dialogs often contain links and email addresses. GtkAboutDialog
-#. * displays these as clickable links. By default, it calls gtk_show_uri()
+#. * displays these as clickable links. By default, it calls ctk_show_uri()
 #. * when a user clicks one. The behaviour can be overridden with the
 #. * #GtkAboutDialog::activate-link signal.
 #. *
 #. * To make constructing a GtkAboutDialog as convenient as possible, you can
-#. * use the function gtk_show_about_dialog() which constructs and shows a dialog
+#. * use the function ctk_show_about_dialog() which constructs and shows a dialog
 #. * and keeps it around so that it can be shown again.
 #. *
 #. * Note that GTK+ sets a default title of `_("About %s")` on the dialog
@@ -1365,7 +1365,7 @@ msgstr "Пуста"
 #. * set the title property explicitly when constructing a GtkAboutDialog,
 #. * as shown in the following example:
 #. * |[<!-- language="C" -->
-#. * gtk_show_about_dialog (NULL,
+#. * ctk_show_about_dialog (NULL,
 #. *                        "program-name", "ExampleCode",
 #. *                        "logo", example_logo,
 #. *                        "title" _("About ExampleCode"),
@@ -1373,7 +1373,7 @@ msgstr "Пуста"
 #. * ]|
 #. *
 #. * It is also possible to show a #GtkAboutDialog like any other #GtkDialog,
-#. * e.g. using gtk_dialog_run(). In this case, you might need to know that
+#. * e.g. using ctk_dialog_run(). In this case, you might need to know that
 #. * the “Close” button returns the #GTK_RESPONSE_CANCEL response id.
 #.
 #. Translators: this is the license preamble; the string at the end
@@ -1760,7 +1760,7 @@ msgstr "Выключана"
 
 #. This label is displayed in a treeview cell displaying
 #. * an accelerator key combination that is not valid according
-#. * to gtk_accelerator_valid().
+#. * to ctk_accelerator_valid().
 #.
 #: ../gtk/gtkcellrendereraccel.c:288
 msgctxt "Accelerator"
@@ -2131,9 +2131,9 @@ msgstr "Caps Lock уключаны"
 #. * {
 #. *   GtkWidget *button;
 #. *
-#. *   button = gtk_file_chooser_button_new (_("Select a file"),
+#. *   button = ctk_file_chooser_button_new (_("Select a file"),
 #. *                                         GTK_FILE_CHOOSER_ACTION_OPEN);
-#. *   gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (button),
+#. *   ctk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (button),
 #. *                                        "/etc");
 #. * }
 #. * ]|
@@ -2143,8 +2143,8 @@ msgstr "Caps Lock уключаны"
 #. *
 #. * > The #GtkFileChooserButton will ellipsize the label, and will thus
 #. * > request little horizontal space.  To give the button more space,
-#. * > you should call gtk_widget_get_preferred_size(),
-#. * > gtk_file_chooser_button_set_width_chars(), or pack the button in
+#. * > you should call ctk_widget_get_preferred_size(),
+#. * > ctk_file_chooser_button_set_width_chars(), or pack the button in
 #. * > such a way that other interface elements give space to the
 #. * > widget.
 #.

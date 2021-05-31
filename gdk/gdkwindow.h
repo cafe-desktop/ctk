@@ -136,10 +136,10 @@ typedef enum
  * attention to. Also, the presence/absence of @GDK_HINT_POS,
  * @GDK_HINT_USER_POS, and @GDK_HINT_USER_SIZE is significant, though they don't
  * directly refer to #GdkGeometry fields. @GDK_HINT_USER_POS will be set
- * automatically by #GtkWindow if you call gtk_window_move().
+ * automatically by #GtkWindow if you call ctk_window_move().
  * @GDK_HINT_USER_POS and @GDK_HINT_USER_SIZE should be set if the user
  * specified a size/position using a --geometry command-line argument;
- * gtk_window_parse_geometry() automatically sets these flags.
+ * ctk_window_parse_geometry() automatically sets these flags.
  */
 typedef enum
 {
@@ -226,7 +226,7 @@ typedef enum
  *  window itself, ignoring window manager decorations.
  *
  * Defines the reference point of a window and the meaning of coordinates
- * passed to gtk_window_move(). See gtk_window_move() and the "implementation
+ * passed to ctk_window_move(). See ctk_window_move() and the "implementation
  * notes" section of the
  * [Extended Window Manager Hints](http://www.freedesktop.org/Standards/wm-spec)
  * specification for more details.
@@ -343,8 +343,8 @@ typedef enum
  * @visual: #GdkVisual for window
  * @window_type: type of window
  * @cursor: cursor for the window (see gdk_window_set_cursor())
- * @wmclass_name: don’t use (see gtk_window_set_wmclass())
- * @wmclass_class: don’t use (see gtk_window_set_wmclass())
+ * @wmclass_name: don’t use (see ctk_window_set_wmclass())
+ * @wmclass_class: don’t use (see ctk_window_set_wmclass())
  * @override_redirect: %TRUE to bypass the window manager
  * @type_hint: a hint of the function of the window
  *
@@ -385,16 +385,16 @@ struct _GdkWindowAttr
  * @height_inc: height resize increment
  * @min_aspect: minimum width/height ratio
  * @max_aspect: maximum width/height ratio
- * @win_gravity: window gravity, see gtk_window_set_gravity()
+ * @win_gravity: window gravity, see ctk_window_set_gravity()
  *
  * The #GdkGeometry struct gives the window manager information about
  * a window’s geometry constraints. Normally you would set these on
- * the GTK+ level using gtk_window_set_geometry_hints(). #GtkWindow
+ * the GTK+ level using ctk_window_set_geometry_hints(). #GtkWindow
  * then sets the hints on the #GdkWindow it creates.
  *
  * gdk_window_set_geometry_hints() expects the hints to be fully valid already
  * and simply passes them to the window manager; in contrast,
- * gtk_window_set_geometry_hints() performs some interpretation. For example,
+ * ctk_window_set_geometry_hints() performs some interpretation. For example,
  * #GtkWindow will apply the hints to the geometry widget instead of the
  * toplevel window, if you set a geometry widget. Also, the
  * @min_width/@min_height/@max_width/@max_height fields may be set to -1, and
@@ -405,7 +405,7 @@ struct _GdkWindowAttr
  * geometry widget rather than the entire window. The base size is treated
  * similarly.
  *
- * The canonical use-case for gtk_window_set_geometry_hints() is to get a
+ * The canonical use-case for ctk_window_set_geometry_hints() is to get a
  * terminal widget to resize properly. Here, the terminal text area should be
  * the geometry widget; #GtkWindow will then automatically set the base size to
  * the size of other widgets in the terminal window, such as the menubar and
@@ -428,7 +428,7 @@ struct _GdkWindowAttr
  *         hints.width_inc = terminal->char_width;
  *         hints.height_inc = terminal->char_height;
  *
- *  gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
+ *  ctk_window_set_geometry_hints (GTK_WINDOW (toplevel),
  *                                 GTK_WIDGET (terminal),
  *                                 &hints,
  *                                 GDK_HINT_RESIZE_INC |
@@ -1059,9 +1059,9 @@ GDK_AVAILABLE_IN_ALL
 void       gdk_window_thaw_updates        (GdkWindow    *window);
 
 GDK_DEPRECATED_IN_3_16
-void       gdk_window_freeze_toplevel_updates_libgtk_only (GdkWindow *window);
+void       gdk_window_freeze_toplevel_updates_libctk_only (GdkWindow *window);
 GDK_DEPRECATED_IN_3_16
-void       gdk_window_thaw_toplevel_updates_libgtk_only   (GdkWindow *window);
+void       gdk_window_thaw_toplevel_updates_libctk_only   (GdkWindow *window);
 
 GDK_DEPRECATED_IN_3_22
 void       gdk_window_process_all_updates (void);

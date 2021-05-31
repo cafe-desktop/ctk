@@ -34,7 +34,7 @@
 
 G_BEGIN_DECLS  
 
-#define GTK_TYPE_BUTTON_BOX             (gtk_button_box_get_type ())
+#define GTK_TYPE_BUTTON_BOX             (ctk_button_box_get_type ())
 #define GTK_BUTTON_BOX(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_BUTTON_BOX, GtkButtonBox))
 #define GTK_BUTTON_BOX_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_BUTTON_BOX, GtkButtonBoxClass))
 #define GTK_IS_BUTTON_BOX(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_BUTTON_BOX))
@@ -65,10 +65,10 @@ struct _GtkButtonBoxClass
   /*< private >*/
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
@@ -83,8 +83,8 @@ struct _GtkButtonBoxClass
  * @GTK_BUTTONBOX_CENTER: Buttons are centered in the box. Since 2.12.
  * @GTK_BUTTONBOX_EXPAND: Buttons expand to fill the box. This entails giving
  *   buttons a "linked" appearance, making button sizes homogeneous, and
- *   setting spacing to 0 (same as calling gtk_box_set_homogeneous() and
- *   gtk_box_set_spacing() manually). Since 3.12.
+ *   setting spacing to 0 (same as calling ctk_box_set_homogeneous() and
+ *   ctk_box_set_spacing() manually). Since 3.12.
  *
  * Used to dictate the style that a #GtkButtonBox uses to layout the buttons it
  * contains.
@@ -101,26 +101,26 @@ typedef enum
 
 
 GDK_AVAILABLE_IN_ALL
-GType             gtk_button_box_get_type            (void) G_GNUC_CONST;
+GType             ctk_button_box_get_type            (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget       * gtk_button_box_new                 (GtkOrientation     orientation);
+GtkWidget       * ctk_button_box_new                 (GtkOrientation     orientation);
 GDK_AVAILABLE_IN_ALL
-GtkButtonBoxStyle gtk_button_box_get_layout          (GtkButtonBox      *widget);
+GtkButtonBoxStyle ctk_button_box_get_layout          (GtkButtonBox      *widget);
 GDK_AVAILABLE_IN_ALL
-void              gtk_button_box_set_layout          (GtkButtonBox      *widget,
+void              ctk_button_box_set_layout          (GtkButtonBox      *widget,
                                                       GtkButtonBoxStyle  layout_style);
 GDK_AVAILABLE_IN_ALL
-gboolean          gtk_button_box_get_child_secondary (GtkButtonBox      *widget,
+gboolean          ctk_button_box_get_child_secondary (GtkButtonBox      *widget,
                                                       GtkWidget         *child);
 GDK_AVAILABLE_IN_ALL
-void              gtk_button_box_set_child_secondary (GtkButtonBox      *widget,
+void              ctk_button_box_set_child_secondary (GtkButtonBox      *widget,
                                                       GtkWidget         *child,
                                                       gboolean           is_secondary);
 GDK_AVAILABLE_IN_3_2
-gboolean          gtk_button_box_get_child_non_homogeneous (GtkButtonBox *widget,
+gboolean          ctk_button_box_get_child_non_homogeneous (GtkButtonBox *widget,
                                                             GtkWidget    *child);
 GDK_AVAILABLE_IN_3_2
-void              gtk_button_box_set_child_non_homogeneous (GtkButtonBox *widget,
+void              ctk_button_box_set_child_non_homogeneous (GtkButtonBox *widget,
                                                             GtkWidget    *child,
                                                             gboolean      non_homogeneous);
 

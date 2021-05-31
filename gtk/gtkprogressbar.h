@@ -33,7 +33,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_PROGRESS_BAR            (gtk_progress_bar_get_type ())
+#define GTK_TYPE_PROGRESS_BAR            (ctk_progress_bar_get_type ())
 #define GTK_PROGRESS_BAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PROGRESS_BAR, GtkProgressBar))
 #define GTK_PROGRESS_BAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_PROGRESS_BAR, GtkProgressBarClass))
 #define GTK_IS_PROGRESS_BAR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PROGRESS_BAR))
@@ -58,54 +58,54 @@ struct _GtkProgressBarClass
   GtkWidgetClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
 GDK_AVAILABLE_IN_ALL
-GType      gtk_progress_bar_get_type             (void) G_GNUC_CONST;
+GType      ctk_progress_bar_get_type             (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_progress_bar_new                  (void);
+GtkWidget* ctk_progress_bar_new                  (void);
 
 GDK_AVAILABLE_IN_ALL
-void       gtk_progress_bar_pulse                (GtkProgressBar *pbar);
+void       ctk_progress_bar_pulse                (GtkProgressBar *pbar);
 GDK_AVAILABLE_IN_ALL
-void       gtk_progress_bar_set_text             (GtkProgressBar *pbar,
+void       ctk_progress_bar_set_text             (GtkProgressBar *pbar,
                                                   const gchar    *text);
 GDK_AVAILABLE_IN_ALL
-void       gtk_progress_bar_set_fraction         (GtkProgressBar *pbar,
+void       ctk_progress_bar_set_fraction         (GtkProgressBar *pbar,
                                                   gdouble         fraction);
 
 GDK_AVAILABLE_IN_ALL
-void       gtk_progress_bar_set_pulse_step       (GtkProgressBar *pbar,
+void       ctk_progress_bar_set_pulse_step       (GtkProgressBar *pbar,
                                                   gdouble         fraction);
 GDK_AVAILABLE_IN_ALL
-void       gtk_progress_bar_set_inverted         (GtkProgressBar *pbar,
+void       ctk_progress_bar_set_inverted         (GtkProgressBar *pbar,
                                                   gboolean        inverted);
 
 GDK_AVAILABLE_IN_ALL
-const gchar *      gtk_progress_bar_get_text       (GtkProgressBar *pbar);
+const gchar *      ctk_progress_bar_get_text       (GtkProgressBar *pbar);
 GDK_AVAILABLE_IN_ALL
-gdouble            gtk_progress_bar_get_fraction   (GtkProgressBar *pbar);
+gdouble            ctk_progress_bar_get_fraction   (GtkProgressBar *pbar);
 GDK_AVAILABLE_IN_ALL
-gdouble            gtk_progress_bar_get_pulse_step (GtkProgressBar *pbar);
+gdouble            ctk_progress_bar_get_pulse_step (GtkProgressBar *pbar);
 
 GDK_AVAILABLE_IN_ALL
-gboolean           gtk_progress_bar_get_inverted    (GtkProgressBar *pbar);
+gboolean           ctk_progress_bar_get_inverted    (GtkProgressBar *pbar);
 GDK_AVAILABLE_IN_ALL
-void               gtk_progress_bar_set_ellipsize (GtkProgressBar     *pbar,
+void               ctk_progress_bar_set_ellipsize (GtkProgressBar     *pbar,
                                                    PangoEllipsizeMode  mode);
 GDK_AVAILABLE_IN_ALL
-PangoEllipsizeMode gtk_progress_bar_get_ellipsize (GtkProgressBar     *pbar);
+PangoEllipsizeMode ctk_progress_bar_get_ellipsize (GtkProgressBar     *pbar);
 
 GDK_AVAILABLE_IN_ALL
-void               gtk_progress_bar_set_show_text (GtkProgressBar     *pbar,
+void               ctk_progress_bar_set_show_text (GtkProgressBar     *pbar,
                                                    gboolean            show_text);
 GDK_AVAILABLE_IN_ALL
-gboolean           gtk_progress_bar_get_show_text (GtkProgressBar     *pbar);
+gboolean           ctk_progress_bar_get_show_text (GtkProgressBar     *pbar);
 
 G_END_DECLS
 

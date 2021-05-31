@@ -789,10 +789,10 @@ msgstr "La valor"
 
 #: gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"La valor renviada per gtk_radio_action_get_current_value() quand aquesta "
+"La valor renviada per ctk_radio_action_get_current_value() quand aquesta "
 "accion es l'accion actuala d'aqueste grop."
 
 #: gtk/deprecated/gtkradioaction.c:139 gtk/gtkradiobutton.c:184
@@ -1269,10 +1269,10 @@ msgstr "Lògo"
 #: gtk/gtkaboutdialog.c:544
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Un lògo per la bóstia de dialòg « A prepaus ». Se es pas definit, la valor "
-"utilizada es la qu'es renviada per gtk_window_get_default_icon_list()"
+"utilizada es la qu'es renviada per ctk_window_get_default_icon_list()"
 
 #: gtk/gtkaboutdialog.c:558
 msgid "Logo Icon Name"
@@ -3543,10 +3543,10 @@ msgstr "Gras de pulsacion de la barra de progression"
 #: gtk/gtkentry.c:1084
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "Lo percentatge de la largor totala de la zòna que se deu desplaçar lo blòt "
-"de progression per cada apèl a gtk_entry_progress_pulse()"
+"de progression per cada apèl a ctk_entry_progress_pulse()"
 
 #: gtk/gtkentry.c:1100
 msgid "Show text in the entry when it's empty and unfocused"
@@ -9334,9 +9334,9 @@ msgid "No show all"
 msgstr "Afichar pas tot"
 
 #: gtk/gtkwidget.c:1262
-msgid "Whether gtk_widget_show_all() should not affect this widget"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
 msgstr ""
-"Indica se la foncion gtk_widget_show_all() deu o deu pas concernir aqueste "
+"Indica se la foncion ctk_widget_show_all() deu o deu pas concernir aqueste "
 "element grafic"
 
 #: gtk/gtkwidget.c:1284

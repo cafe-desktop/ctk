@@ -53,7 +53,7 @@ enum {
 
 static guint signals[LAST_SIGNAL];
 
-G_DEFINE_TYPE (GtkTrashMonitor, _gtk_trash_monitor, G_TYPE_OBJECT)
+G_DEFINE_TYPE (GtkTrashMonitor, _ctk_trash_monitor, G_TYPE_OBJECT)
 
 static GtkTrashMonitor *the_trash_monitor;
 
@@ -61,7 +61,7 @@ static GtkTrashMonitor *the_trash_monitor;
 #define ICON_NAME_TRASH_FULL  "user-trash-full-symbolic"
 
 static void
-gtk_trash_monitor_dispose (GObject *object)
+ctk_trash_monitor_dispose (GObject *object)
 {
   GtkTrashMonitor *monitor;
 
@@ -79,17 +79,17 @@ gtk_trash_monitor_dispose (GObject *object)
     g_source_remove (monitor->timeout_id);
   monitor->timeout_id = 0;
 
-  G_OBJECT_CLASS (_gtk_trash_monitor_parent_class)->dispose (object);
+  G_OBJECT_CLASS (_ctk_trash_monitor_parent_class)->dispose (object);
 }
 
 static void
-_gtk_trash_monitor_class_init (GtkTrashMonitorClass *class)
+_ctk_trash_monitor_class_init (GtkTrashMonitorClass *class)
 {
   GObjectClass *gobject_class;
 
   gobject_class = (GObjectClass *) class;
 
-  gobject_class->dispose = gtk_trash_monitor_dispose;
+  gobject_class->dispose = ctk_trash_monitor_dispose;
 
   signals[TRASH_STATE_CHANGED] =
     g_signal_new (I_("trash-state-changed"),
@@ -205,7 +205,7 @@ file_monitor_changed_cb (GFileMonitor      *file_monitor,
 }
 
 static void
-_gtk_trash_monitor_init (GtkTrashMonitor *monitor)
+_ctk_trash_monitor_init (GtkTrashMonitor *monitor)
 {
   GFile *file;
 
@@ -225,14 +225,14 @@ _gtk_trash_monitor_init (GtkTrashMonitor *monitor)
 }
 
 /**
- * _gtk_trash_monitor_get:
+ * _ctk_trash_monitor_get:
  *
  * Returns: (transfer full): a new reference to the singleton
  * #GtkTrashMonitor object.  Be sure to call g_object_unref() on it when you are
  * done with the trash monitor.
  */
 GtkTrashMonitor *
-_gtk_trash_monitor_get (void)
+_ctk_trash_monitor_get (void)
 {
   if (the_trash_monitor != NULL)
     {
@@ -248,7 +248,7 @@ _gtk_trash_monitor_get (void)
 }
 
 /**
- * _gtk_trash_monitor_get_icon:
+ * _ctk_trash_monitor_get_icon:
  * @monitor: a #GtkTrashMonitor
  *
  * Returns: (transfer full): the #GIcon that should be used to represent
@@ -256,7 +256,7 @@ _gtk_trash_monitor_get (void)
  * not.
  */
 GIcon *
-_gtk_trash_monitor_get_icon (GtkTrashMonitor *monitor)
+_ctk_trash_monitor_get_icon (GtkTrashMonitor *monitor)
 {
   const char *icon_name;
 
@@ -271,13 +271,13 @@ _gtk_trash_monitor_get_icon (GtkTrashMonitor *monitor)
 }
 
 /**
- * _gtk_trash_monitor_get_has_trash:
+ * _ctk_trash_monitor_get_has_trash:
  * @monitor: a #GtkTrashMonitor
  *
  * Returns: #TRUE if there is trash in the trash:/// folder, or #FALSE otherwise.
  */
 gboolean
-_gtk_trash_monitor_get_has_trash (GtkTrashMonitor *monitor)
+_ctk_trash_monitor_get_has_trash (GtkTrashMonitor *monitor)
 {
   g_return_val_if_fail (GTK_IS_TRASH_MONITOR (monitor), FALSE);
 

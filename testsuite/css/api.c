@@ -21,14 +21,14 @@
 #include <gtk/gtk.h>
 
 static void
-gtk_css_provider_load_data_not_null_terminated (void)
+ctk_css_provider_load_data_not_null_terminated (void)
 {
   GtkCssProvider *p;
   const gchar data[3] = {'*', '{', '}'};
 
-  p = gtk_css_provider_new();
+  p = ctk_css_provider_new();
 
-  gtk_css_provider_load_from_data(p, data, sizeof (data), NULL);
+  ctk_css_provider_load_from_data(p, data, sizeof (data), NULL);
 
   g_object_unref (p);
 }
@@ -37,10 +37,10 @@ gtk_css_provider_load_data_not_null_terminated (void)
 int
 main (int argc, char *argv[])
 {
-  gtk_test_init (&argc, &argv, NULL);
+  ctk_test_init (&argc, &argv, NULL);
 
-  g_test_add_func ("/gtk_css_provider_load_data/not_null_terminated",
-      gtk_css_provider_load_data_not_null_terminated);
+  g_test_add_func ("/ctk_css_provider_load_data/not_null_terminated",
+      ctk_css_provider_load_data_not_null_terminated);
 
   return g_test_run ();
 }

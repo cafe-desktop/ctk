@@ -24,7 +24,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_PRINT_BACKEND_CLOUDPRINT    (gtk_print_backend_cloudprint_get_type ())
+#define GTK_TYPE_PRINT_BACKEND_CLOUDPRINT    (ctk_print_backend_cloudprint_get_type ())
 #define GTK_PRINT_BACKEND_CLOUDPRINT(obj)    (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PRINT_BACKEND_CLOUDPRINT, GtkPrintBackendCloudprint))
 #define GTK_IS_PRINT_BACKEND_CLOUDPRINT(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PRINT_BACKEND_CLOUDPRINT))
 
@@ -32,8 +32,8 @@ G_BEGIN_DECLS
 
 typedef struct _GtkPrintBackendCloudprint    GtkPrintBackendCloudprint;
 
-GtkPrintBackend *gtk_print_backend_cloudprint_new      (void);
-GType            gtk_print_backend_cloudprint_get_type (void) G_GNUC_CONST;
+GtkPrintBackend *ctk_print_backend_cloudprint_new      (void);
+GType            ctk_print_backend_cloudprint_get_type (void) G_GNUC_CONST;
 
 G_END_DECLS
 

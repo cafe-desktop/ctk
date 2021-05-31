@@ -26,7 +26,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_WIDGET_ACCESSIBLE                     (gtk_widget_accessible_get_type ())
+#define GTK_TYPE_WIDGET_ACCESSIBLE                     (ctk_widget_accessible_get_type ())
 #define GTK_WIDGET_ACCESSIBLE(obj)                     (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_WIDGET_ACCESSIBLE, GtkWidgetAccessible))
 #define GTK_WIDGET_ACCESSIBLE_CLASS(klass)             (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_WIDGET_ACCESSIBLE, GtkWidgetAccessibleClass))
 #define GTK_IS_WIDGET_ACCESSIBLE(obj)                  (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_WIDGET_ACCESSIBLE))
@@ -57,7 +57,7 @@ struct _GtkWidgetAccessibleClass
 };
 
 GDK_AVAILABLE_IN_ALL
-GType gtk_widget_accessible_get_type (void);
+GType ctk_widget_accessible_get_type (void);
 
 G_END_DECLS
 

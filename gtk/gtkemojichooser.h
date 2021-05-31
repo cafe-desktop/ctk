@@ -25,7 +25,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_EMOJI_CHOOSER                 (gtk_emoji_chooser_get_type ())
+#define GTK_TYPE_EMOJI_CHOOSER                 (ctk_emoji_chooser_get_type ())
 #define GTK_EMOJI_CHOOSER(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_EMOJI_CHOOSER, GtkEmojiChooser))
 #define GTK_EMOJI_CHOOSER_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_EMOJI_CHOOSER, GtkEmojiChooserClass))
 #define GTK_IS_EMOJI_CHOOSER(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_EMOJI_CHOOSER))
@@ -35,7 +35,7 @@ G_BEGIN_DECLS
 typedef struct _GtkEmojiChooser      GtkEmojiChooser;
 typedef struct _GtkEmojiChooserClass GtkEmojiChooserClass;
 
-GType      gtk_emoji_chooser_get_type (void) G_GNUC_CONST;
-GtkWidget *gtk_emoji_chooser_new      (void);
+GType      ctk_emoji_chooser_get_type (void) G_GNUC_CONST;
+GtkWidget *ctk_emoji_chooser_new      (void);
 
 G_END_DECLS

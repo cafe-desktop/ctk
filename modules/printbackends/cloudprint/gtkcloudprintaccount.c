@@ -35,8 +35,8 @@
 #define GTK_IS_CLOUDPRINT_ACCOUNT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_CLOUDPRINT_ACCOUNT))
 #define GTK_CLOUDPRINT_ACCOUNT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_CLOUDPRINT_ACCOUNT, GtkCloudprintAccountClass))
 
-static GObjectClass *gtk_cloudprint_account_parent_class;
-static GType gtk_cloudprint_account_type = 0;
+static GObjectClass *ctk_cloudprint_account_parent_class;
+static GType ctk_cloudprint_account_type = 0;
 
 typedef struct _GtkCloudprintAccountClass GtkCloudprintAccountClass;
 
@@ -56,27 +56,27 @@ struct _GtkCloudprintAccount
   gchar *oauth2_access_token;
 };
 
-static void                 gtk_cloudprint_account_class_init      (GtkCloudprintAccountClass *class);
-static void                 gtk_cloudprint_account_init            (GtkCloudprintAccount      *impl);
-static void                 gtk_cloudprint_account_finalize	 (GObject *object);
+static void                 ctk_cloudprint_account_class_init      (GtkCloudprintAccountClass *class);
+static void                 ctk_cloudprint_account_init            (GtkCloudprintAccount      *impl);
+static void                 ctk_cloudprint_account_finalize	 (GObject *object);
 
 void
-gtk_cloudprint_account_register_type (GTypeModule *module)
+ctk_cloudprint_account_register_type (GTypeModule *module)
 {
   const GTypeInfo cloudprint_account_info =
   {
     sizeof (GtkCloudprintAccountClass),
     NULL,		/* base_init */
     NULL,		/* base_finalize */
-    (GClassInitFunc) gtk_cloudprint_account_class_init,
+    (GClassInitFunc) ctk_cloudprint_account_class_init,
     NULL,		/* class_finalize */
     NULL,		/* class_data */
     sizeof (GtkCloudprintAccount),
     0,		/* n_preallocs */
-    (GInstanceInitFunc) gtk_cloudprint_account_init,
+    (GInstanceInitFunc) ctk_cloudprint_account_init,
   };
 
-  gtk_cloudprint_account_type = g_type_module_register_type (module,
+  ctk_cloudprint_account_type = g_type_module_register_type (module,
 							     G_TYPE_OBJECT,
 							     "GtkCloudprintAccount",
 							     &cloudprint_account_info, 0);
@@ -86,13 +86,13 @@ gtk_cloudprint_account_register_type (GTypeModule *module)
  * GtkCloudprintAccount
  */
 GType
-gtk_cloudprint_account_get_type (void)
+ctk_cloudprint_account_get_type (void)
 {
-  return gtk_cloudprint_account_type;
+  return ctk_cloudprint_account_type;
 }
 
 /**
- * gtk_cloudprint_account_new:
+ * ctk_cloudprint_account_new:
  *
  * Creates a new #GtkCloudprintAccount object, representing a Google
  * Cloud Print account and its state data.
@@ -100,7 +100,7 @@ gtk_cloudprint_account_get_type (void)
  * Returns: the new #GtkCloudprintAccount object
  **/
 GtkCloudprintAccount *
-gtk_cloudprint_account_new (const gchar *id,
+ctk_cloudprint_account_new (const gchar *id,
 			    const gchar *path,
 			    const gchar *presentation_identity)
 {
@@ -113,15 +113,15 @@ gtk_cloudprint_account_new (const gchar *id,
 }
 
 static void
-gtk_cloudprint_account_class_init (GtkCloudprintAccountClass *klass)
+ctk_cloudprint_account_class_init (GtkCloudprintAccountClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
-  gtk_cloudprint_account_parent_class = g_type_class_peek_parent (klass);
-  gobject_class->finalize = gtk_cloudprint_account_finalize;
+  ctk_cloudprint_account_parent_class = g_type_class_peek_parent (klass);
+  gobject_class->finalize = ctk_cloudprint_account_finalize;
 }
 
 static void
-gtk_cloudprint_account_init (GtkCloudprintAccount *account)
+ctk_cloudprint_account_init (GtkCloudprintAccount *account)
 {
   account->printer_id = NULL;
   account->goa_path = NULL;
@@ -135,7 +135,7 @@ gtk_cloudprint_account_init (GtkCloudprintAccount *account)
 }
 
 static void
-gtk_cloudprint_account_finalize (GObject *object)
+ctk_cloudprint_account_finalize (GObject *object)
 {
   GtkCloudprintAccount *account;
 
@@ -151,7 +151,7 @@ gtk_cloudprint_account_finalize (GObject *object)
   g_clear_pointer (&(account->presentation_identity), g_free);
   g_clear_pointer (&(account->oauth2_access_token), g_free);
 
-  G_OBJECT_CLASS (gtk_cloudprint_account_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_cloudprint_account_parent_class)->finalize (object);
 }
 
 static JsonParser *
@@ -175,7 +175,7 @@ cloudprint_json_parse (RestProxyCall *call, JsonObject **result, GError **error)
   if (JSON_NODE_TYPE (root) != JSON_NODE_OBJECT)
     {
       if (error != NULL)
-	*error = g_error_new_literal (gtk_print_error_quark (),
+	*error = g_error_new_literal (ctk_print_error_quark (),
 				      GTK_PRINT_ERROR_INTERNAL_ERROR,
 				      "Bad reply");
 
@@ -199,7 +199,7 @@ cloudprint_json_parse (RestProxyCall *call, JsonObject **result, GError **error)
 			 message));
 
       if (error != NULL)
-	*error = g_error_new_literal (gtk_print_error_quark (),
+	*error = g_error_new_literal (ctk_print_error_quark (),
 				      GTK_PRINT_ERROR_INTERNAL_ERROR,
 				      message);
 
@@ -214,7 +214,7 @@ cloudprint_json_parse (RestProxyCall *call, JsonObject **result, GError **error)
 }
 
 static void
-gtk_cloudprint_account_search_rest_call_cb (RestProxyCall *call,
+ctk_cloudprint_account_search_rest_call_cb (RestProxyCall *call,
 					    const GError *cb_error,
 					    GObject *weak_object,
 					    gpointer user_data)
@@ -265,7 +265,7 @@ gtk_cloudprint_account_search_rest_call_cb (RestProxyCall *call,
   if (printers == NULL)
     {
       g_task_return_new_error (task,
-			       gtk_print_error_quark (),
+			       ctk_print_error_quark (),
 			       GTK_PRINT_ERROR_INTERNAL_ERROR,
 			       "Bad reply to 'search' request");
       return;
@@ -278,7 +278,7 @@ gtk_cloudprint_account_search_rest_call_cb (RestProxyCall *call,
 }
 
 static void
-gtk_cloudprint_account_got_oauth2_access_token_cb (GObject *source,
+ctk_cloudprint_account_got_oauth2_access_token_cb (GObject *source,
 						   GAsyncResult *result,
 						   gpointer user_data)
 {
@@ -316,7 +316,7 @@ gtk_cloudprint_account_got_oauth2_access_token_cb (GObject *source,
   if (rest == NULL)
     {
       g_task_return_new_error (task,
-			       gtk_print_error_quark (),
+			       ctk_print_error_quark (),
 			       GTK_PRINT_ERROR_INTERNAL_ERROR,
 			       "REST proxy creation failed");
       g_object_unref (task);
@@ -335,7 +335,7 @@ gtk_cloudprint_account_got_oauth2_access_token_cb (GObject *source,
   rest_proxy_call_add_header (call, "X-CloudPrint-Proxy", CLOUDPRINT_PROXY);
   rest_proxy_call_add_param (call, "connection_status", "ALL");
   if (!rest_proxy_call_async (call,
-			      gtk_cloudprint_account_search_rest_call_cb,
+			      ctk_cloudprint_account_search_rest_call_cb,
 			      NULL,
 			      task,
 			      &error))
@@ -348,7 +348,7 @@ gtk_cloudprint_account_got_oauth2_access_token_cb (GObject *source,
 }
 
 static void
-gtk_cloudprint_account_ensure_credentials_cb (GObject *source,
+ctk_cloudprint_account_ensure_credentials_cb (GObject *source,
 					      GAsyncResult *result,
 					      gpointer user_data)
 {
@@ -397,12 +397,12 @@ gtk_cloudprint_account_ensure_credentials_cb (GObject *source,
 			  G_DBUS_CALL_FLAGS_NONE,
 			  -1,
 			  g_task_get_cancellable (task),
-			  gtk_cloudprint_account_got_oauth2_access_token_cb,
+			  ctk_cloudprint_account_got_oauth2_access_token_cb,
 			  task);
 }
 
 void
-gtk_cloudprint_account_search (GtkCloudprintAccount *account,
+ctk_cloudprint_account_search (GtkCloudprintAccount *account,
 			       GDBusConnection *dbus_connection,
 			       GCancellable *cancellable,
 			       GAsyncReadyCallback callback,
@@ -430,12 +430,12 @@ gtk_cloudprint_account_search (GtkCloudprintAccount *account,
 			  G_DBUS_CALL_FLAGS_NONE,
 			  -1,
 			  cancellable,
-			  gtk_cloudprint_account_ensure_credentials_cb,
+			  ctk_cloudprint_account_ensure_credentials_cb,
 			  task);
 }
 
 JsonNode *
-gtk_cloudprint_account_search_finish (GtkCloudprintAccount *account,
+ctk_cloudprint_account_search_finish (GtkCloudprintAccount *account,
 				      GAsyncResult *result,
 				      GError **error)
 {
@@ -444,7 +444,7 @@ gtk_cloudprint_account_search_finish (GtkCloudprintAccount *account,
 }
 
 static void
-gtk_cloudprint_account_printer_rest_call_cb (RestProxyCall *call,
+ctk_cloudprint_account_printer_rest_call_cb (RestProxyCall *call,
 					     const GError *cb_error,
 					     GObject *weak_object,
 					     gpointer user_data)
@@ -493,7 +493,7 @@ gtk_cloudprint_account_printer_rest_call_cb (RestProxyCall *call,
 }
 
 void
-gtk_cloudprint_account_printer (GtkCloudprintAccount *account,
+ctk_cloudprint_account_printer (GtkCloudprintAccount *account,
 				const gchar *printerid,
 				GCancellable *cancellable,
 				GAsyncReadyCallback callback,
@@ -518,7 +518,7 @@ gtk_cloudprint_account_printer (GtkCloudprintAccount *account,
   rest_proxy_call_add_header (call, "X-CloudPrint-Proxy", CLOUDPRINT_PROXY);
   rest_proxy_call_add_param (call, "printerid", printerid);
   if (!rest_proxy_call_async (call,
-			      gtk_cloudprint_account_printer_rest_call_cb,
+			      ctk_cloudprint_account_printer_rest_call_cb,
 			      NULL,
 			      task,
 			      &error))
@@ -531,7 +531,7 @@ gtk_cloudprint_account_printer (GtkCloudprintAccount *account,
 }
 
 JsonObject *
-gtk_cloudprint_account_printer_finish (GtkCloudprintAccount *account,
+ctk_cloudprint_account_printer_finish (GtkCloudprintAccount *account,
 				       GAsyncResult *result,
 				       GError **error)
 {
@@ -540,7 +540,7 @@ gtk_cloudprint_account_printer_finish (GtkCloudprintAccount *account,
 }
 
 static void
-gtk_cloudprint_account_submit_rest_call_cb (RestProxyCall *call,
+ctk_cloudprint_account_submit_rest_call_cb (RestProxyCall *call,
 					    const GError *cb_error,
 					    GObject *weak_object,
 					    gpointer user_data)
@@ -589,7 +589,7 @@ gtk_cloudprint_account_submit_rest_call_cb (RestProxyCall *call,
 }
 
 void
-gtk_cloudprint_account_submit (GtkCloudprintAccount *account,
+ctk_cloudprint_account_submit (GtkCloudprintAccount *account,
 			       GtkPrinterCloudprint *printer,
 			       GMappedFile *file,
 			       const gchar *title,
@@ -647,7 +647,7 @@ gtk_cloudprint_account_submit (GtkCloudprintAccount *account,
   rest_proxy_call_add_param_full (call, param);
 
   if (!rest_proxy_call_async (call,
-			      gtk_cloudprint_account_submit_rest_call_cb,
+			      ctk_cloudprint_account_submit_rest_call_cb,
 			      NULL,
 			      task,
 			      &error))
@@ -662,7 +662,7 @@ gtk_cloudprint_account_submit (GtkCloudprintAccount *account,
 }
 
 JsonObject *
-gtk_cloudprint_account_submit_finish (GtkCloudprintAccount *account,
+ctk_cloudprint_account_submit_finish (GtkCloudprintAccount *account,
 				      GAsyncResult *result,
 				      GError **error)
 {
@@ -671,7 +671,7 @@ gtk_cloudprint_account_submit_finish (GtkCloudprintAccount *account,
 }
 
 const gchar *
-gtk_cloudprint_account_get_presentation_identity (GtkCloudprintAccount *account)
+ctk_cloudprint_account_get_presentation_identity (GtkCloudprintAccount *account)
 {
   return account->presentation_identity;
 }

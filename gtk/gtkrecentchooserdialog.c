@@ -53,7 +53,7 @@
  * GtkWidget *dialog;
  * gint res;
  *
- * dialog = gtk_recent_chooser_dialog_new ("Recent Documents",
+ * dialog = ctk_recent_chooser_dialog_new ("Recent Documents",
  *                                         parent_window,
  *                                         _("_Cancel"),
  *                                         GTK_RESPONSE_CANCEL,
@@ -61,18 +61,18 @@
  *                                         GTK_RESPONSE_ACCEPT,
  *                                         NULL);
  *
- * res = gtk_dialog_run (GTK_DIALOG (dialog));
+ * res = ctk_dialog_run (GTK_DIALOG (dialog));
  * if (res == GTK_RESPONSE_ACCEPT)
  *   {
  *     GtkRecentInfo *info;
  *     GtkRecentChooser *chooser = GTK_RECENT_CHOOSER (dialog);
  *
- *     info = gtk_recent_chooser_get_current_item (chooser);
- *     open_file (gtk_recent_info_get_uri (info));
- *     gtk_recent_info_unref (info);
+ *     info = ctk_recent_chooser_get_current_item (chooser);
+ *     open_file (ctk_recent_info_get_uri (info));
+ *     ctk_recent_info_unref (info);
  *   }
  *
- * gtk_widget_destroy (dialog);
+ * ctk_widget_destroy (dialog);
  * ]|
  *
  * Recently used files are supported since GTK+ 2.10.
@@ -88,67 +88,67 @@ struct _GtkRecentChooserDialogPrivate
 
 #define GTK_RECENT_CHOOSER_DIALOG_GET_PRIVATE(obj)	(GTK_RECENT_CHOOSER_DIALOG (obj)->priv)
 
-static void gtk_recent_chooser_dialog_class_init (GtkRecentChooserDialogClass *klass);
-static void gtk_recent_chooser_dialog_init       (GtkRecentChooserDialog      *dialog);
-static void gtk_recent_chooser_dialog_finalize   (GObject                     *object);
+static void ctk_recent_chooser_dialog_class_init (GtkRecentChooserDialogClass *klass);
+static void ctk_recent_chooser_dialog_init       (GtkRecentChooserDialog      *dialog);
+static void ctk_recent_chooser_dialog_finalize   (GObject                     *object);
 
-static void gtk_recent_chooser_dialog_constructed (GObject *object);
+static void ctk_recent_chooser_dialog_constructed (GObject *object);
 
-static void gtk_recent_chooser_dialog_set_property (GObject      *object,
+static void ctk_recent_chooser_dialog_set_property (GObject      *object,
 						    guint         prop_id,
 						    const GValue *value,
 						    GParamSpec   *pspec);
-static void gtk_recent_chooser_dialog_get_property (GObject      *object,
+static void ctk_recent_chooser_dialog_get_property (GObject      *object,
 						    guint         prop_id,
 						    GValue       *value,
 						    GParamSpec   *pspec);
 
 G_DEFINE_TYPE_WITH_CODE (GtkRecentChooserDialog,
-			 gtk_recent_chooser_dialog,
+			 ctk_recent_chooser_dialog,
 			 GTK_TYPE_DIALOG,
                          G_ADD_PRIVATE (GtkRecentChooserDialog)
 			 G_IMPLEMENT_INTERFACE (GTK_TYPE_RECENT_CHOOSER,
-		       				_gtk_recent_chooser_delegate_iface_init))
+		       				_ctk_recent_chooser_delegate_iface_init))
 
 static void
-gtk_recent_chooser_dialog_class_init (GtkRecentChooserDialogClass *klass)
+ctk_recent_chooser_dialog_class_init (GtkRecentChooserDialogClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
   
-  gobject_class->set_property = gtk_recent_chooser_dialog_set_property;
-  gobject_class->get_property = gtk_recent_chooser_dialog_get_property;
-  gobject_class->constructed = gtk_recent_chooser_dialog_constructed;
-  gobject_class->finalize = gtk_recent_chooser_dialog_finalize;
+  gobject_class->set_property = ctk_recent_chooser_dialog_set_property;
+  gobject_class->get_property = ctk_recent_chooser_dialog_get_property;
+  gobject_class->constructed = ctk_recent_chooser_dialog_constructed;
+  gobject_class->finalize = ctk_recent_chooser_dialog_finalize;
   
-  _gtk_recent_chooser_install_properties (gobject_class);
+  _ctk_recent_chooser_install_properties (gobject_class);
 }
 
 static void
-gtk_recent_chooser_dialog_init (GtkRecentChooserDialog *dialog)
+ctk_recent_chooser_dialog_init (GtkRecentChooserDialog *dialog)
 {
   GtkRecentChooserDialogPrivate *priv;
   GtkWidget *content_area, *action_area;
   GtkDialog *rc_dialog = GTK_DIALOG (dialog);
 
-  priv = gtk_recent_chooser_dialog_get_instance_private (dialog);
+  priv = ctk_recent_chooser_dialog_get_instance_private (dialog);
   dialog->priv = priv;
-  gtk_dialog_set_use_header_bar_from_setting (GTK_DIALOG (dialog));
+  ctk_dialog_set_use_header_bar_from_setting (GTK_DIALOG (dialog));
 
-  content_area = gtk_dialog_get_content_area (rc_dialog);
+  content_area = ctk_dialog_get_content_area (rc_dialog);
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  action_area = gtk_dialog_get_action_area (rc_dialog);
+  action_area = ctk_dialog_get_action_area (rc_dialog);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
-  gtk_container_set_border_width (GTK_CONTAINER (rc_dialog), 5);
-  gtk_box_set_spacing (GTK_BOX (content_area), 2); /* 2 * 5 + 2 = 12 */
-  gtk_container_set_border_width (GTK_CONTAINER (action_area), 5);
+  ctk_container_set_border_width (GTK_CONTAINER (rc_dialog), 5);
+  ctk_box_set_spacing (GTK_BOX (content_area), 2); /* 2 * 5 + 2 = 12 */
+  ctk_container_set_border_width (GTK_CONTAINER (action_area), 5);
 }
 
 /* we intercept the GtkRecentChooser::item_activated signal and try to
  * make the dialog emit a valid response signal
  */
 static void
-gtk_recent_chooser_item_activated_cb (GtkRecentChooser *chooser,
+ctk_recent_chooser_item_activated_cb (GtkRecentChooser *chooser,
 				      gpointer          user_data)
 {
   GtkDialog *rc_dialog;
@@ -159,13 +159,13 @@ gtk_recent_chooser_item_activated_cb (GtkRecentChooser *chooser,
   dialog = GTK_RECENT_CHOOSER_DIALOG (user_data);
   rc_dialog = GTK_DIALOG (dialog);
 
-  if (gtk_window_activate_default (GTK_WINDOW (dialog)))
+  if (ctk_window_activate_default (GTK_WINDOW (dialog)))
     return;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  action_area = gtk_dialog_get_action_area (rc_dialog);
+  action_area = ctk_dialog_get_action_area (rc_dialog);
 G_GNUC_END_IGNORE_DEPRECATIONS
-  children = gtk_container_get_children (GTK_CONTAINER (action_area));
+  children = ctk_container_get_children (GTK_CONTAINER (action_area));
   
   for (l = children; l; l = l->next)
     {
@@ -173,7 +173,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       gint response_id;
       
       widget = GTK_WIDGET (l->data);
-      response_id = gtk_dialog_get_response_for_widget (rc_dialog, widget);
+      response_id = ctk_dialog_get_response_for_widget (rc_dialog, widget);
       
       if (response_id == GTK_RESPONSE_ACCEPT ||
           response_id == GTK_RESPONSE_OK     ||
@@ -182,7 +182,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
         {
           g_list_free (children);
 	  
-          gtk_dialog_response (GTK_DIALOG (dialog), response_id);
+          ctk_dialog_response (GTK_DIALOG (dialog), response_id);
 
           return;
         }
@@ -192,12 +192,12 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-gtk_recent_chooser_dialog_constructed (GObject *object)
+ctk_recent_chooser_dialog_constructed (GObject *object)
 {
   GtkRecentChooserDialogPrivate *priv;
   GtkWidget *content_area;
 
-  G_OBJECT_CLASS (gtk_recent_chooser_dialog_parent_class)->constructed (object);
+  G_OBJECT_CLASS (ctk_recent_chooser_dialog_parent_class)->constructed (object);
   priv = GTK_RECENT_CHOOSER_DIALOG_GET_PRIVATE (object);
 
   if (priv->manager)
@@ -208,22 +208,22 @@ gtk_recent_chooser_dialog_constructed (GObject *object)
     priv->chooser = g_object_new (GTK_TYPE_RECENT_CHOOSER_WIDGET, NULL);
   
   g_signal_connect (priv->chooser, "item-activated",
-  		    G_CALLBACK (gtk_recent_chooser_item_activated_cb),
+  		    G_CALLBACK (ctk_recent_chooser_item_activated_cb),
   		    object);
 
-  content_area = gtk_dialog_get_content_area (GTK_DIALOG (object));
+  content_area = ctk_dialog_get_content_area (GTK_DIALOG (object));
 
-  gtk_container_set_border_width (GTK_CONTAINER (priv->chooser), 5);
-  gtk_box_pack_start (GTK_BOX (content_area),
+  ctk_container_set_border_width (GTK_CONTAINER (priv->chooser), 5);
+  ctk_box_pack_start (GTK_BOX (content_area),
                       priv->chooser, TRUE, TRUE, 0);
-  gtk_widget_show (priv->chooser);
+  ctk_widget_show (priv->chooser);
   
-  _gtk_recent_chooser_set_delegate (GTK_RECENT_CHOOSER (object),
+  _ctk_recent_chooser_set_delegate (GTK_RECENT_CHOOSER (object),
   				    GTK_RECENT_CHOOSER (priv->chooser));
 }
 
 static void
-gtk_recent_chooser_dialog_set_property (GObject      *object,
+ctk_recent_chooser_dialog_set_property (GObject      *object,
 					guint         prop_id,
 					const GValue *value,
 					GParamSpec   *pspec)
@@ -244,7 +244,7 @@ gtk_recent_chooser_dialog_set_property (GObject      *object,
 }
 
 static void
-gtk_recent_chooser_dialog_get_property (GObject      *object,
+ctk_recent_chooser_dialog_get_property (GObject      *object,
 					guint         prop_id,
 					GValue       *value,
 					GParamSpec   *pspec)
@@ -257,17 +257,17 @@ gtk_recent_chooser_dialog_get_property (GObject      *object,
 }
 
 static void
-gtk_recent_chooser_dialog_finalize (GObject *object)
+ctk_recent_chooser_dialog_finalize (GObject *object)
 {
   GtkRecentChooserDialog *dialog = GTK_RECENT_CHOOSER_DIALOG (object);
  
   dialog->priv->manager = NULL;
   
-  G_OBJECT_CLASS (gtk_recent_chooser_dialog_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_recent_chooser_dialog_parent_class)->finalize (object);
 }
 
 static GtkWidget *
-gtk_recent_chooser_dialog_new_valist (const gchar      *title,
+ctk_recent_chooser_dialog_new_valist (const gchar      *title,
 				      GtkWindow        *parent,
 				      GtkRecentManager *manager,
 				      const gchar      *first_button_text,
@@ -283,12 +283,12 @@ gtk_recent_chooser_dialog_new_valist (const gchar      *title,
                          NULL);
   
   if (parent)
-    gtk_window_set_transient_for (GTK_WINDOW (result), parent);
+    ctk_window_set_transient_for (GTK_WINDOW (result), parent);
   
   while (button_text)
     {
       response_id = va_arg (varargs, gint);
-      gtk_dialog_add_button (GTK_DIALOG (result), button_text, response_id);
+      ctk_dialog_add_button (GTK_DIALOG (result), button_text, response_id);
       button_text = va_arg (varargs, const gchar *);
     }
   
@@ -296,7 +296,7 @@ gtk_recent_chooser_dialog_new_valist (const gchar      *title,
 }
 
 /**
- * gtk_recent_chooser_dialog_new:
+ * ctk_recent_chooser_dialog_new:
  * @title: (allow-none): Title of the dialog, or %NULL
  * @parent: (allow-none): Transient parent of the dialog, or %NULL,
  * @first_button_text: (allow-none): stock ID or text to go in the first button, or %NULL
@@ -304,14 +304,14 @@ gtk_recent_chooser_dialog_new_valist (const gchar      *title,
  *   pairs, ending with %NULL
  *
  * Creates a new #GtkRecentChooserDialog.  This function is analogous to
- * gtk_dialog_new_with_buttons().
+ * ctk_dialog_new_with_buttons().
  *
  * Returns: a new #GtkRecentChooserDialog
  *
  * Since: 2.10
  */
 GtkWidget *
-gtk_recent_chooser_dialog_new (const gchar *title,
+ctk_recent_chooser_dialog_new (const gchar *title,
 			       GtkWindow   *parent,
 			       const gchar *first_button_text,
 			       ...)
@@ -320,7 +320,7 @@ gtk_recent_chooser_dialog_new (const gchar *title,
   va_list varargs;
   
   va_start (varargs, first_button_text);
-  result = gtk_recent_chooser_dialog_new_valist (title,
+  result = ctk_recent_chooser_dialog_new_valist (title,
   						 parent,
   						 NULL,
   						 first_button_text,
@@ -331,7 +331,7 @@ gtk_recent_chooser_dialog_new (const gchar *title,
 }
 
 /**
- * gtk_recent_chooser_dialog_new_for_manager:
+ * ctk_recent_chooser_dialog_new_for_manager:
  * @title: (allow-none): Title of the dialog, or %NULL
  * @parent: (allow-none): Transient parent of the dialog, or %NULL,
  * @manager: a #GtkRecentManager
@@ -349,7 +349,7 @@ gtk_recent_chooser_dialog_new (const gchar *title,
  * Since: 2.10
  */
 GtkWidget *
-gtk_recent_chooser_dialog_new_for_manager (const gchar      *title,
+ctk_recent_chooser_dialog_new_for_manager (const gchar      *title,
 			                   GtkWindow        *parent,
 			                   GtkRecentManager *manager,
 			                   const gchar      *first_button_text,
@@ -359,7 +359,7 @@ gtk_recent_chooser_dialog_new_for_manager (const gchar      *title,
   va_list varargs;
   
   va_start (varargs, first_button_text);
-  result = gtk_recent_chooser_dialog_new_valist (title,
+  result = ctk_recent_chooser_dialog_new_valist (title,
   						 parent,
   						 manager,
   						 first_button_text,

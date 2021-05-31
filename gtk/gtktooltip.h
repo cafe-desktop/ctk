@@ -28,44 +28,44 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_TOOLTIP                 (gtk_tooltip_get_type ())
+#define GTK_TYPE_TOOLTIP                 (ctk_tooltip_get_type ())
 #define GTK_TOOLTIP(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TOOLTIP, GtkTooltip))
 #define GTK_IS_TOOLTIP(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TOOLTIP))
 
 GDK_AVAILABLE_IN_ALL
-GType gtk_tooltip_get_type (void);
+GType ctk_tooltip_get_type (void);
 
 GDK_AVAILABLE_IN_ALL
-void gtk_tooltip_set_markup              (GtkTooltip         *tooltip,
+void ctk_tooltip_set_markup              (GtkTooltip         *tooltip,
                                           const gchar        *markup);
 GDK_AVAILABLE_IN_ALL
-void gtk_tooltip_set_text                (GtkTooltip         *tooltip,
+void ctk_tooltip_set_text                (GtkTooltip         *tooltip,
                                           const gchar        *text);
 GDK_AVAILABLE_IN_ALL
-void gtk_tooltip_set_icon                (GtkTooltip         *tooltip,
+void ctk_tooltip_set_icon                (GtkTooltip         *tooltip,
                                           GdkPixbuf          *pixbuf);
-GDK_DEPRECATED_IN_3_10_FOR(gtk_tooltip_set_icon_from_icon_name)
-void gtk_tooltip_set_icon_from_stock     (GtkTooltip         *tooltip,
+GDK_DEPRECATED_IN_3_10_FOR(ctk_tooltip_set_icon_from_icon_name)
+void ctk_tooltip_set_icon_from_stock     (GtkTooltip         *tooltip,
                                           const gchar        *stock_id,
                                           GtkIconSize         size);
 GDK_AVAILABLE_IN_ALL
-void gtk_tooltip_set_icon_from_icon_name (GtkTooltip         *tooltip,
+void ctk_tooltip_set_icon_from_icon_name (GtkTooltip         *tooltip,
 				          const gchar        *icon_name,
 				          GtkIconSize         size);
 GDK_AVAILABLE_IN_ALL
-void gtk_tooltip_set_icon_from_gicon     (GtkTooltip         *tooltip,
+void ctk_tooltip_set_icon_from_gicon     (GtkTooltip         *tooltip,
 					  GIcon              *gicon,
 					  GtkIconSize         size);
 GDK_AVAILABLE_IN_ALL
-void gtk_tooltip_set_custom	         (GtkTooltip         *tooltip,
+void ctk_tooltip_set_custom	         (GtkTooltip         *tooltip,
                                           GtkWidget          *custom_widget);
 
 GDK_AVAILABLE_IN_ALL
-void gtk_tooltip_set_tip_area            (GtkTooltip         *tooltip,
+void ctk_tooltip_set_tip_area            (GtkTooltip         *tooltip,
                                           const GdkRectangle *rect);
 
 GDK_AVAILABLE_IN_ALL
-void gtk_tooltip_trigger_tooltip_query   (GdkDisplay         *display);
+void ctk_tooltip_trigger_tooltip_query   (GdkDisplay         *display);
 
 
 G_END_DECLS

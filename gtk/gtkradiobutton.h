@@ -35,7 +35,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_RADIO_BUTTON		       (gtk_radio_button_get_type ())
+#define GTK_TYPE_RADIO_BUTTON		       (ctk_radio_button_get_type ())
 #define GTK_RADIO_BUTTON(obj)		       (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_RADIO_BUTTON, GtkRadioButton))
 #define GTK_RADIO_BUTTON_CLASS(klass)	       (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_RADIO_BUTTON, GtkRadioButtonClass))
 #define GTK_IS_RADIO_BUTTON(obj)	       (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_RADIO_BUTTON))
@@ -63,39 +63,39 @@ struct _GtkRadioButtonClass
   void (*group_changed) (GtkRadioButton *radio_button);
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
 GDK_AVAILABLE_IN_ALL
-GType	   gtk_radio_button_get_type	     (void) G_GNUC_CONST;
+GType	   ctk_radio_button_get_type	     (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_radio_button_new                           (GSList         *group);
+GtkWidget* ctk_radio_button_new                           (GSList         *group);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_radio_button_new_from_widget               (GtkRadioButton *radio_group_member);
+GtkWidget* ctk_radio_button_new_from_widget               (GtkRadioButton *radio_group_member);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_radio_button_new_with_label                (GSList         *group,
+GtkWidget* ctk_radio_button_new_with_label                (GSList         *group,
                                                            const gchar    *label);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_radio_button_new_with_label_from_widget    (GtkRadioButton *radio_group_member,
+GtkWidget* ctk_radio_button_new_with_label_from_widget    (GtkRadioButton *radio_group_member,
                                                            const gchar    *label);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_radio_button_new_with_mnemonic             (GSList         *group,
+GtkWidget* ctk_radio_button_new_with_mnemonic             (GSList         *group,
                                                            const gchar    *label);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_radio_button_new_with_mnemonic_from_widget (GtkRadioButton *radio_group_member,
+GtkWidget* ctk_radio_button_new_with_mnemonic_from_widget (GtkRadioButton *radio_group_member,
                                                            const gchar    *label);
 GDK_AVAILABLE_IN_ALL
-GSList*    gtk_radio_button_get_group                     (GtkRadioButton *radio_button);
+GSList*    ctk_radio_button_get_group                     (GtkRadioButton *radio_button);
 GDK_AVAILABLE_IN_ALL
-void       gtk_radio_button_set_group                     (GtkRadioButton *radio_button,
+void       ctk_radio_button_set_group                     (GtkRadioButton *radio_button,
                                                            GSList         *group);
 GDK_AVAILABLE_IN_ALL
-void            gtk_radio_button_join_group        (GtkRadioButton        *radio_button,
+void            ctk_radio_button_join_group        (GtkRadioButton        *radio_button,
                                                     GtkRadioButton        *group_source);
 G_END_DECLS
 

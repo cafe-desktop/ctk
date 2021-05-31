@@ -26,7 +26,7 @@
 #include "gtkwindowprivate.h"
 
 /**
- * gtk_show_uri:
+ * ctk_show_uri:
  * @screen: (allow-none): screen to show the uri on
  *     or %NULL for the default screen
  * @uri: the uri to show
@@ -34,7 +34,7 @@
  * @error: a #GError that is returned in case of errors
  *
  * A convenience function for launching the default application
- * to show the uri. Like gtk_show_uri_on_window(), but takes a screen
+ * to show the uri. Like ctk_show_uri_on_window(), but takes a screen
  * as transient parent instead of a window.
  *
  * Note that this function is deprecated as it does not pass the necessary
@@ -45,10 +45,10 @@
  *
  * Since: 2.14
  *
- * Deprecated: 3.22: Use gtk_show_uri_on_window() instead.
+ * Deprecated: 3.22: Use ctk_show_uri_on_window() instead.
  */
 gboolean
-gtk_show_uri (GdkScreen    *screen,
+ctk_show_uri (GdkScreen    *screen,
               const gchar  *uri,
               guint32       timestamp,
               GError      **error)
@@ -84,7 +84,7 @@ launch_uri_done (GObject      *source,
   g_app_info_launch_default_for_uri_finish (result, NULL);
 
   if (window)
-    gtk_window_unexport_handle (window);
+    ctk_window_unexport_handle (window);
 }
 
 static void
@@ -105,7 +105,7 @@ window_handle_exported (GtkWindow  *window,
 }
 
 /**
- * gtk_show_uri_on_window:
+ * ctk_show_uri_on_window:
  * @parent: (allow-none): parent window
  * @uri: the uri to show
  * @timestamp: a timestamp to prevent focus stealing
@@ -121,7 +121,7 @@ window_handle_exported (GtkWindow  *window,
  * - `mailto:me@gnome.org`
  *
  * Ideally the timestamp is taken from the event triggering
- * the gtk_show_uri() call. If timestamp is not known you can take
+ * the ctk_show_uri() call. If timestamp is not known you can take
  * %GDK_CURRENT_TIME.
  *
  * This is the recommended call to be used as it passes information
@@ -132,7 +132,7 @@ window_handle_exported (GtkWindow  *window,
  * Since: 3.22
  */
 gboolean
-gtk_show_uri_on_window (GtkWindow   *parent,
+ctk_show_uri_on_window (GtkWindow   *parent,
                         const char  *uri,
                         guint32      timestamp,
                         GError     **error)
@@ -144,7 +144,7 @@ gtk_show_uri_on_window (GtkWindow   *parent,
   g_return_val_if_fail (uri != NULL, FALSE);
 
   if (parent)
-    display = gtk_widget_get_display (GTK_WIDGET (parent));
+    display = ctk_widget_get_display (GTK_WIDGET (parent));
   else
     display = gdk_display_get_default ();
 
@@ -153,7 +153,7 @@ gtk_show_uri_on_window (GtkWindow   *parent,
 
   g_object_set_data_full (G_OBJECT (context), "uri", g_strdup (uri), g_free);
 
-  if (parent && gtk_window_export_handle (parent, window_handle_exported, context))
+  if (parent && ctk_window_export_handle (parent, window_handle_exported, context))
     return TRUE;
 
   ret = g_app_info_launch_default_for_uri (uri, G_APP_LAUNCH_CONTEXT (context), error);

@@ -9,11 +9,11 @@ get_name (gpointer obj)
   else if (GTK_IS_WIDGET (obj))
     widget = GTK_WIDGET (obj);
   else if (GTK_IS_ACCESSIBLE (obj))
-    widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+    widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
   else
     return "OOPS";
   if (GTK_IS_BUILDABLE (widget))
-    return gtk_buildable_get_name (GTK_BUILDABLE (widget));
+    return ctk_buildable_get_name (GTK_BUILDABLE (widget));
   else
     return G_OBJECT_TYPE_NAME (widget);
 }
@@ -22,33 +22,33 @@ static gboolean
 compare_focus (gpointer data)
 {
   AtkObject *atk_focus;
-  AtkObject *gtk_focus;
+  AtkObject *ctk_focus;
   GtkWidget *focus_widget;
   GList *list, *l;
 
   atk_focus = atk_get_focus_object ();
 
   focus_widget = NULL;
-  list = gtk_window_list_toplevels ();
+  list = ctk_window_list_toplevels ();
   for (l = list; l; l = l->next)
     {
       GtkWindow *w = l->data;
-      if (gtk_window_is_active (w))
+      if (ctk_window_is_active (w))
         {
-          focus_widget = gtk_window_get_focus (w);
+          focus_widget = ctk_window_get_focus (w);
           break;
         }
     }
   g_list_free (list);
 
   if (GTK_IS_WIDGET (focus_widget))
-    gtk_focus = gtk_widget_get_accessible (focus_widget);
+    ctk_focus = ctk_widget_get_accessible (focus_widget);
   else
-    gtk_focus = NULL;
+    ctk_focus = NULL;
 
-  if (gtk_focus != atk_focus)
+  if (ctk_focus != atk_focus)
     g_print ("gtk focus: %s != atk focus: %s\n",
-             get_name (gtk_focus), get_name (atk_focus));
+             get_name (ctk_focus), get_name (atk_focus));
 
   return G_SOURCE_CONTINUE;
 }
@@ -85,14 +85,14 @@ main (int argc, char *argv[])
   GtkWidget *widget;
   AtkObject *accessible;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
-  builder = gtk_builder_new ();
-  gtk_builder_add_from_file (builder, argv[1], NULL);
+  builder = ctk_builder_new ();
+  ctk_builder_add_from_file (builder, argv[1], NULL);
 
-  window = (GtkWidget *)gtk_builder_get_object (builder, "window1");
+  window = (GtkWidget *)ctk_builder_get_object (builder, "window1");
 
-  o = gtk_builder_get_objects (builder);
+  o = ctk_builder_get_objects (builder);
   for (l = o; l;l = l->next)
     {
        if (!GTK_IS_WIDGET (l->data))
@@ -100,7 +100,7 @@ main (int argc, char *argv[])
 
        widget = l->data;
        g_signal_connect (widget, "notify::has-focus", G_CALLBACK (notify_cb), NULL);
-       accessible = gtk_widget_get_accessible (widget);
+       accessible = ctk_widget_get_accessible (widget);
        g_signal_connect (accessible, "state-change::focused", G_CALLBACK (state_change_cb), NULL);
 
     }
@@ -108,9 +108,9 @@ main (int argc, char *argv[])
 
   g_timeout_add (100, compare_focus, NULL);
 
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

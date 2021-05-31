@@ -559,10 +559,10 @@ msgstr "A valor"
 
 #: ../gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"A valor tornada por o gtk_radio_action_get_current_value() quan ista acción "
+"A valor tornada por o ctk_radio_action_get_current_value() quan ista acción "
 "ye l'acción actual d'o grupo d'ell."
 
 #: ../gtk/deprecated/gtkradioaction.c:139 ../gtk/gtkradiobutton.c:163
@@ -858,10 +858,10 @@ msgstr "Logotipo"
 #: ../gtk/gtkaboutdialog.c:581
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Un logotipo ta la caixa \"sobre\". Si no s'estableix, o predeterminau ye "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 
 #: ../gtk/gtkaboutdialog.c:596
 msgid "Logo Icon Name"
@@ -3217,10 +3217,10 @@ msgstr "Progreso d'o paso d'o preto"
 #, fuzzy
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "A fracción de l'amplo total d'a dentrada ta mover o bloque de rebote de "
-"progreso ta cada gritada a gtk_entry_progress_prete()"
+"progreso ta cada gritada a ctk_entry_progress_prete()"
 
 #: ../gtk/gtkentry.c:1031
 msgid "Show text in the entry when it's empty and unfocused"
@@ -8682,8 +8682,8 @@ msgid "No show all"
 msgstr "No amostrar-lo tot"
 
 #: ../gtk/gtkwidget.c:1277
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "Indica que o gtk_widget_show_all() no debe afectar a iste widget"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "Indica que o ctk_widget_show_all() no debe afectar a iste widget"
 
 #: ../gtk/gtkwidget.c:1300
 msgid "Whether this widget has a tooltip"

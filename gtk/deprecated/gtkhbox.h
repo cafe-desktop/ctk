@@ -35,7 +35,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_HBOX            (gtk_hbox_get_type ())
+#define GTK_TYPE_HBOX            (ctk_hbox_get_type ())
 #define GTK_HBOX(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_HBOX, GtkHBox))
 #define GTK_HBOX_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_HBOX, GtkHBoxClass))
 #define GTK_IS_HBOX(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_HBOX))
@@ -58,9 +58,9 @@ struct _GtkHBoxClass
 
 
 GDK_DEPRECATED_IN_3_2
-GType       gtk_hbox_get_type (void) G_GNUC_CONST;
-GDK_DEPRECATED_IN_3_2_FOR(gtk_box_new)
-GtkWidget * gtk_hbox_new      (gboolean homogeneous,
+GType       ctk_hbox_get_type (void) G_GNUC_CONST;
+GDK_DEPRECATED_IN_3_2_FOR(ctk_box_new)
+GtkWidget * ctk_hbox_new      (gboolean homogeneous,
                                gint     spacing);
 
 G_END_DECLS

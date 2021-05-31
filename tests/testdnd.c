@@ -309,7 +309,7 @@ target_drag_leave	   (GtkWidget	       *widget,
 {
   g_print("leave\n");
   have_drag = FALSE;
-  gtk_image_set_from_pixbuf (GTK_IMAGE (widget), trashcan_closed);
+  ctk_image_set_from_pixbuf (GTK_IMAGE (widget), trashcan_closed);
 }
 
 gboolean
@@ -325,10 +325,10 @@ target_drag_motion	   (GtkWidget	       *widget,
   if (!have_drag)
     {
       have_drag = TRUE;
-      gtk_image_set_from_pixbuf (GTK_IMAGE (widget), trashcan_open);
+      ctk_image_set_from_pixbuf (GTK_IMAGE (widget), trashcan_open);
     }
 
-  source_widget = gtk_drag_get_source_widget (context);
+  source_widget = ctk_drag_get_source_widget (context);
   g_print ("motion, source %s\n", source_widget ?
 	   G_OBJECT_TYPE_NAME (source_widget) :
 	   "NULL");
@@ -358,11 +358,11 @@ target_drag_drop	   (GtkWidget	       *widget,
   g_print("drop\n");
   have_drag = FALSE;
 
-  gtk_image_set_from_pixbuf (GTK_IMAGE (widget), trashcan_closed);
+  ctk_image_set_from_pixbuf (GTK_IMAGE (widget), trashcan_closed);
 
   if (gdk_drag_context_list_targets (context))
     {
-      gtk_drag_get_data (widget, context,
+      ctk_drag_get_data (widget, context,
 			 GDK_POINTER_TO_ATOM (gdk_drag_context_list_targets (context)->data),
 			 time);
       return TRUE;
@@ -380,15 +380,15 @@ target_drag_data_received  (GtkWidget          *widget,
 			    guint               info,
 			    guint               time)
 {
-  if (gtk_selection_data_get_length (selection_data) >= 0 &&
-      gtk_selection_data_get_format (selection_data) == 8)
+  if (ctk_selection_data_get_length (selection_data) >= 0 &&
+      ctk_selection_data_get_format (selection_data) == 8)
     {
-      g_print ("Received \"%s\" in trashcan\n", (gchar *) gtk_selection_data_get_data (selection_data));
-      gtk_drag_finish (context, TRUE, FALSE, time);
+      g_print ("Received \"%s\" in trashcan\n", (gchar *) ctk_selection_data_get_data (selection_data));
+      ctk_drag_finish (context, TRUE, FALSE, time);
       return;
     }
   
-  gtk_drag_finish (context, FALSE, FALSE, time);
+  ctk_drag_finish (context, FALSE, FALSE, time);
 }
   
 void  
@@ -400,15 +400,15 @@ label_drag_data_received  (GtkWidget          *widget,
 			    guint               info,
 			    guint               time)
 {
-  if (gtk_selection_data_get_length (selection_data) >= 0 &&
-      gtk_selection_data_get_format (selection_data) == 8)
+  if (ctk_selection_data_get_length (selection_data) >= 0 &&
+      ctk_selection_data_get_format (selection_data) == 8)
     {
-      g_print ("Received \"%s\" in label\n", (gchar *) gtk_selection_data_get_data (selection_data));
-      gtk_drag_finish (context, TRUE, FALSE, time);
+      g_print ("Received \"%s\" in label\n", (gchar *) ctk_selection_data_get_data (selection_data));
+      ctk_drag_finish (context, TRUE, FALSE, time);
       return;
     }
   
-  gtk_drag_finish (context, FALSE, FALSE, time);
+  ctk_drag_finish (context, FALSE, FALSE, time);
 }
 
 void  
@@ -422,8 +422,8 @@ source_drag_data_get  (GtkWidget          *widget,
   if (info == TARGET_ROOTWIN)
     g_print ("I was dropped on the rootwin\n");
   else
-    gtk_selection_data_set (selection_data,
-			    gtk_selection_data_get_target (selection_data),
+    ctk_selection_data_set (selection_data,
+			    ctk_selection_data_get_target (selection_data),
 			    8, (guchar *) "I'm Data!", 9);
 }
   
@@ -443,7 +443,7 @@ popdown_cb (gpointer data)
 {
   popdown_timer = 0;
 
-  gtk_widget_hide (popup_window);
+  ctk_widget_hide (popup_window);
   popped_up = FALSE;
 
   return FALSE;
@@ -497,22 +497,22 @@ popup_cb (gpointer data)
 	  GtkWidget *grid;
 	  int i, j;
 	  
-	  popup_window = gtk_window_new (GTK_WINDOW_POPUP);
-	  gtk_window_set_position (GTK_WINDOW (popup_window), GTK_WIN_POS_MOUSE);
+	  popup_window = ctk_window_new (GTK_WINDOW_POPUP);
+	  ctk_window_set_position (GTK_WINDOW (popup_window), GTK_WIN_POS_MOUSE);
 
-	  grid = gtk_grid_new ();
+	  grid = ctk_grid_new ();
 
 	  for (i=0; i<3; i++)
 	    for (j=0; j<3; j++)
 	      {
 		char buffer[128];
 		g_snprintf(buffer, sizeof(buffer), "%d,%d", i, j);
-		button = gtk_button_new_with_label (buffer);
-                gtk_widget_set_hexpand (button, TRUE);
-                gtk_widget_set_vexpand (button, TRUE);
-		gtk_grid_attach (GTK_GRID (grid), button, i, j, 1, 1);
+		button = ctk_button_new_with_label (buffer);
+                ctk_widget_set_hexpand (button, TRUE);
+                ctk_widget_set_vexpand (button, TRUE);
+		ctk_grid_attach (GTK_GRID (grid), button, i, j, 1, 1);
 
-		gtk_drag_dest_set (button,
+		ctk_drag_dest_set (button,
 				   GTK_DEST_DEFAULT_ALL,
 				   target_table, n_targets - 1, /* no rootwin */
 				   GDK_ACTION_COPY | GDK_ACTION_MOVE);
@@ -522,11 +522,11 @@ popup_cb (gpointer data)
 				  G_CALLBACK (popup_leave), NULL);
 	      }
 
-	  gtk_widget_show_all (grid);
-	  gtk_container_add (GTK_CONTAINER (popup_window), grid);
+	  ctk_widget_show_all (grid);
+	  ctk_container_add (GTK_CONTAINER (popup_window), grid);
 
 	}
-      gtk_widget_show (popup_window);
+      ctk_widget_show (popup_window);
       popped_up = TRUE;
     }
 
@@ -590,23 +590,23 @@ main (int argc, char **argv)
 
   test_init ();
   
-  gtk_init (&argc, &argv); 
+  ctk_init (&argc, &argv); 
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
   g_signal_connect (window, "destroy",
-		    G_CALLBACK (gtk_main_quit), NULL);
+		    G_CALLBACK (ctk_main_quit), NULL);
 
   
-  grid = gtk_grid_new ();
-  gtk_container_add (GTK_CONTAINER (window), grid);
+  grid = ctk_grid_new ();
+  ctk_container_add (GTK_CONTAINER (window), grid);
 
   drag_icon = gdk_pixbuf_new_from_xpm_data (drag_icon_xpm);
   trashcan_open = gdk_pixbuf_new_from_xpm_data (trashcan_open_xpm);
   trashcan_closed = gdk_pixbuf_new_from_xpm_data (trashcan_closed_xpm);
   
-  label = gtk_label_new ("Drop Here\n");
+  label = ctk_label_new ("Drop Here\n");
 
-  gtk_drag_dest_set (label,
+  ctk_drag_dest_set (label,
 		     GTK_DEST_DEFAULT_ALL,
 		     target_table, n_targets - 1, /* no rootwin */
 		     GDK_ACTION_COPY | GDK_ACTION_MOVE);
@@ -614,31 +614,31 @@ main (int argc, char **argv)
   g_signal_connect (label, "drag_data_received",
 		    G_CALLBACK( label_drag_data_received), NULL);
 
-  gtk_widget_set_hexpand (label, TRUE);
-  gtk_widget_set_vexpand (label, TRUE);
-  gtk_grid_attach (GTK_GRID (grid), label, 0, 0, 1, 1);
+  ctk_widget_set_hexpand (label, TRUE);
+  ctk_widget_set_vexpand (label, TRUE);
+  ctk_grid_attach (GTK_GRID (grid), label, 0, 0, 1, 1);
 
-  label = gtk_label_new ("Popup\n");
+  label = ctk_label_new ("Popup\n");
 
-  gtk_drag_dest_set (label,
+  ctk_drag_dest_set (label,
 		     GTK_DEST_DEFAULT_ALL,
 		     target_table, n_targets - 1, /* no rootwin */
 		     GDK_ACTION_COPY | GDK_ACTION_MOVE);
 
-  gtk_widget_set_hexpand (label, TRUE);
-  gtk_widget_set_vexpand (label, TRUE);
-  gtk_grid_attach (GTK_GRID (grid), label, 1, 1, 1, 1);
+  ctk_widget_set_hexpand (label, TRUE);
+  ctk_widget_set_vexpand (label, TRUE);
+  ctk_grid_attach (GTK_GRID (grid), label, 1, 1, 1, 1);
 
   g_signal_connect (label, "drag_motion",
 		    G_CALLBACK (popsite_motion), NULL);
   g_signal_connect (label, "drag_leave",
 		    G_CALLBACK (popsite_leave), NULL);
   
-  pixmap = gtk_image_new_from_pixbuf (trashcan_closed);
-  gtk_drag_dest_set (pixmap, 0, NULL, 0, 0);
-  gtk_widget_set_hexpand (pixmap, TRUE);
-  gtk_widget_set_vexpand (pixmap, TRUE);
-  gtk_grid_attach (GTK_GRID (grid), pixmap, 1, 0, 1, 1);
+  pixmap = ctk_image_new_from_pixbuf (trashcan_closed);
+  ctk_drag_dest_set (pixmap, 0, NULL, 0, 0);
+  ctk_widget_set_hexpand (pixmap, TRUE);
+  ctk_widget_set_vexpand (pixmap, TRUE);
+  ctk_grid_attach (GTK_GRID (grid), pixmap, 1, 0, 1, 1);
 
   g_signal_connect (pixmap, "drag_leave",
 		    G_CALLBACK (target_drag_leave), NULL);
@@ -654,27 +654,27 @@ main (int argc, char **argv)
 
   /* Drag site */
 
-  button = gtk_button_new_with_label ("Drag Here\n");
+  button = ctk_button_new_with_label ("Drag Here\n");
 
-  gtk_drag_source_set (button, GDK_BUTTON1_MASK | GDK_BUTTON3_MASK,
+  ctk_drag_source_set (button, GDK_BUTTON1_MASK | GDK_BUTTON3_MASK,
 		       target_table, n_targets, 
 		       GDK_ACTION_COPY | GDK_ACTION_MOVE);
-  gtk_drag_source_set_icon_pixbuf (button, drag_icon);
+  ctk_drag_source_set_icon_pixbuf (button, drag_icon);
 
   g_object_unref (drag_icon);
 
-  gtk_widget_set_hexpand (button, TRUE);
-  gtk_widget_set_vexpand (button, TRUE);
-  gtk_grid_attach (GTK_GRID (grid), button, 0, 1, 1, 1);
+  ctk_widget_set_hexpand (button, TRUE);
+  ctk_widget_set_vexpand (button, TRUE);
+  ctk_grid_attach (GTK_GRID (grid), button, 0, 1, 1, 1);
 
   g_signal_connect (button, "drag_data_get",
 		    G_CALLBACK (source_drag_data_get), NULL);
   g_signal_connect (button, "drag_data_delete",
 		    G_CALLBACK (source_drag_data_delete), NULL);
 
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

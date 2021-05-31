@@ -24,7 +24,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_STYLE_PROPERTY           (_gtk_css_style_property_get_type ())
+#define GTK_TYPE_CSS_STYLE_PROPERTY           (_ctk_css_style_property_get_type ())
 #define GTK_CSS_STYLE_PROPERTY(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_STYLE_PROPERTY, GtkCssStyleProperty))
 #define GTK_CSS_STYLE_PROPERTY_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_STYLE_PROPERTY, GtkCssStylePropertyClass))
 #define GTK_IS_CSS_STYLE_PROPERTY(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_STYLE_PROPERTY))
@@ -63,32 +63,32 @@ struct _GtkCssStylePropertyClass
   GPtrArray *style_properties;
 };
 
-GType                   _gtk_css_style_property_get_type        (void) G_GNUC_CONST;
+GType                   _ctk_css_style_property_get_type        (void) G_GNUC_CONST;
 
-void                    _gtk_css_style_property_init_properties (void);
+void                    _ctk_css_style_property_init_properties (void);
 
-guint                   _gtk_css_style_property_get_n_properties(void);
-GtkCssStyleProperty *   _gtk_css_style_property_lookup_by_id    (guint                   id);
+guint                   _ctk_css_style_property_get_n_properties(void);
+GtkCssStyleProperty *   _ctk_css_style_property_lookup_by_id    (guint                   id);
 
-gboolean                _gtk_css_style_property_is_inherit      (GtkCssStyleProperty    *property);
-gboolean                _gtk_css_style_property_is_animated     (GtkCssStyleProperty    *property);
-GtkCssAffects           _gtk_css_style_property_get_affects     (GtkCssStyleProperty    *property);
-gboolean                _gtk_css_style_property_affects_size    (GtkCssStyleProperty    *property);
-gboolean                _gtk_css_style_property_affects_font    (GtkCssStyleProperty    *property);
-guint                   _gtk_css_style_property_get_id          (GtkCssStyleProperty    *property);
-GtkCssValue  *          _gtk_css_style_property_get_initial_value
+gboolean                _ctk_css_style_property_is_inherit      (GtkCssStyleProperty    *property);
+gboolean                _ctk_css_style_property_is_animated     (GtkCssStyleProperty    *property);
+GtkCssAffects           _ctk_css_style_property_get_affects     (GtkCssStyleProperty    *property);
+gboolean                _ctk_css_style_property_affects_size    (GtkCssStyleProperty    *property);
+gboolean                _ctk_css_style_property_affects_font    (GtkCssStyleProperty    *property);
+guint                   _ctk_css_style_property_get_id          (GtkCssStyleProperty    *property);
+GtkCssValue  *          _ctk_css_style_property_get_initial_value
                                                                 (GtkCssStyleProperty    *property);
 
-void                    _gtk_css_style_property_print_value     (GtkCssStyleProperty    *property,
+void                    _ctk_css_style_property_print_value     (GtkCssStyleProperty    *property,
                                                                  GtkCssValue            *value,
                                                                  GString                *string);
 
-GtkBitmask *            _gtk_css_style_property_get_mask_affecting
+GtkBitmask *            _ctk_css_style_property_get_mask_affecting
                                                                 (GtkCssAffects           affects);
 
 /* XXX - find a better place for these */
-GtkCssValue * gtk_css_font_family_value_parse (GtkCssParser *parser);
-GtkCssValue * gtk_css_font_size_value_parse   (GtkCssParser *parser);
+GtkCssValue * ctk_css_font_family_value_parse (GtkCssParser *parser);
+GtkCssValue * ctk_css_font_size_value_parse   (GtkCssParser *parser);
 
 G_END_DECLS
 

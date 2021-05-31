@@ -33,17 +33,17 @@ typedef enum {
   GTK_CSS_REPEAT_STYLE_SPACE
 } GtkCssRepeatStyle;
 
-GtkCssValue *       _gtk_css_background_repeat_value_new        (GtkCssRepeatStyle       x,
+GtkCssValue *       _ctk_css_background_repeat_value_new        (GtkCssRepeatStyle       x,
                                                                  GtkCssRepeatStyle       y);
-GtkCssValue *       _gtk_css_background_repeat_value_try_parse  (GtkCssParser           *parser);
-GtkCssRepeatStyle   _gtk_css_background_repeat_value_get_x      (const GtkCssValue      *repeat);
-GtkCssRepeatStyle   _gtk_css_background_repeat_value_get_y      (const GtkCssValue      *repeat);
+GtkCssValue *       _ctk_css_background_repeat_value_try_parse  (GtkCssParser           *parser);
+GtkCssRepeatStyle   _ctk_css_background_repeat_value_get_x      (const GtkCssValue      *repeat);
+GtkCssRepeatStyle   _ctk_css_background_repeat_value_get_y      (const GtkCssValue      *repeat);
 
-GtkCssValue *       _gtk_css_border_repeat_value_new            (GtkCssRepeatStyle       x,
+GtkCssValue *       _ctk_css_border_repeat_value_new            (GtkCssRepeatStyle       x,
                                                                  GtkCssRepeatStyle       y);
-GtkCssValue *       _gtk_css_border_repeat_value_try_parse      (GtkCssParser           *parser);
-GtkCssRepeatStyle   _gtk_css_border_repeat_value_get_x          (const GtkCssValue      *repeat);
-GtkCssRepeatStyle   _gtk_css_border_repeat_value_get_y          (const GtkCssValue      *repeat);
+GtkCssValue *       _ctk_css_border_repeat_value_try_parse      (GtkCssParser           *parser);
+GtkCssRepeatStyle   _ctk_css_border_repeat_value_get_x          (const GtkCssValue      *repeat);
+GtkCssRepeatStyle   _ctk_css_border_repeat_value_get_y          (const GtkCssValue      *repeat);
 
 G_END_DECLS
 

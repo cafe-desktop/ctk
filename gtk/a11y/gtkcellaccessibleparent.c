@@ -21,7 +21,7 @@
 #include "gtkcellaccessibleparent.h"
 
 GType
-gtk_cell_accessible_parent_get_type (void)
+ctk_cell_accessible_parent_get_type (void)
 {
   static volatile gsize g_define_type_id__volatile = 0;
 
@@ -43,14 +43,14 @@ gtk_cell_accessible_parent_get_type (void)
 }
 
 /**
- * gtk_cell_accessible_parent_get_cell_extents:
+ * ctk_cell_accessible_parent_get_cell_extents:
  * @x: (out):
  * @y: (out):
  * @width: (out):
  * @height: (out):
  */
 void
-gtk_cell_accessible_parent_get_cell_extents (GtkCellAccessibleParent *parent,
+ctk_cell_accessible_parent_get_cell_extents (GtkCellAccessibleParent *parent,
                                              GtkCellAccessible       *cell,
                                              gint                    *x,
                                              gint                    *y,
@@ -69,11 +69,11 @@ gtk_cell_accessible_parent_get_cell_extents (GtkCellAccessibleParent *parent,
 }
 
 /**
- * gtk_cell_accessible_parent_get_cell_area:
+ * ctk_cell_accessible_parent_get_cell_area:
  * @cell_rect: (out):
  */
 void
-gtk_cell_accessible_parent_get_cell_area (GtkCellAccessibleParent *parent,
+ctk_cell_accessible_parent_get_cell_area (GtkCellAccessibleParent *parent,
                                           GtkCellAccessible       *cell,
                                           GdkRectangle            *cell_rect)
 {
@@ -89,7 +89,7 @@ gtk_cell_accessible_parent_get_cell_area (GtkCellAccessibleParent *parent,
 }
 
 gboolean
-gtk_cell_accessible_parent_grab_focus (GtkCellAccessibleParent *parent,
+ctk_cell_accessible_parent_grab_focus (GtkCellAccessibleParent *parent,
                                        GtkCellAccessible       *cell)
 {
   GtkCellAccessibleParentIface *iface;
@@ -105,7 +105,7 @@ gtk_cell_accessible_parent_grab_focus (GtkCellAccessibleParent *parent,
 }
 
 int
-gtk_cell_accessible_parent_get_child_index (GtkCellAccessibleParent *parent,
+ctk_cell_accessible_parent_get_child_index (GtkCellAccessibleParent *parent,
                                             GtkCellAccessible       *cell)
 {
   GtkCellAccessibleParentIface *iface;
@@ -121,7 +121,7 @@ gtk_cell_accessible_parent_get_child_index (GtkCellAccessibleParent *parent,
 }
 
 GtkCellRendererState
-gtk_cell_accessible_parent_get_renderer_state (GtkCellAccessibleParent *parent,
+ctk_cell_accessible_parent_get_renderer_state (GtkCellAccessibleParent *parent,
                                                GtkCellAccessible       *cell)
 {
   GtkCellAccessibleParentIface *iface;
@@ -138,7 +138,7 @@ gtk_cell_accessible_parent_get_renderer_state (GtkCellAccessibleParent *parent,
 }
 
 void
-gtk_cell_accessible_parent_expand_collapse (GtkCellAccessibleParent *parent,
+ctk_cell_accessible_parent_expand_collapse (GtkCellAccessibleParent *parent,
                                             GtkCellAccessible       *cell)
 {
   GtkCellAccessibleParentIface *iface;
@@ -153,7 +153,7 @@ gtk_cell_accessible_parent_expand_collapse (GtkCellAccessibleParent *parent,
 }
 
 void
-gtk_cell_accessible_parent_activate (GtkCellAccessibleParent *parent,
+ctk_cell_accessible_parent_activate (GtkCellAccessibleParent *parent,
                                      GtkCellAccessible       *cell)
 {
   GtkCellAccessibleParentIface *iface;
@@ -168,7 +168,7 @@ gtk_cell_accessible_parent_activate (GtkCellAccessibleParent *parent,
 }
 
 void
-gtk_cell_accessible_parent_edit (GtkCellAccessibleParent *parent,
+ctk_cell_accessible_parent_edit (GtkCellAccessibleParent *parent,
                                  GtkCellAccessible       *cell)
 {
   GtkCellAccessibleParentIface *iface;
@@ -183,7 +183,7 @@ gtk_cell_accessible_parent_edit (GtkCellAccessibleParent *parent,
 }
 
 void
-gtk_cell_accessible_parent_update_relationset (GtkCellAccessibleParent *parent,
+ctk_cell_accessible_parent_update_relationset (GtkCellAccessibleParent *parent,
                                                GtkCellAccessible       *cell,
                                                AtkRelationSet          *relationset)
 {
@@ -200,12 +200,12 @@ gtk_cell_accessible_parent_update_relationset (GtkCellAccessibleParent *parent,
 }
 
 /**
- * gtk_cell_accessible_parent_get_cell_position:
+ * ctk_cell_accessible_parent_get_cell_position:
  * @row: (out):
  * @column: (out):
  */
 void
-gtk_cell_accessible_parent_get_cell_position (GtkCellAccessibleParent *parent,
+ctk_cell_accessible_parent_get_cell_position (GtkCellAccessibleParent *parent,
                                               GtkCellAccessible       *cell,
                                               gint                    *row,
                                               gint                    *column)
@@ -229,11 +229,11 @@ gtk_cell_accessible_parent_get_cell_position (GtkCellAccessibleParent *parent,
 }
 
 /**
- * gtk_cell_accessible_parent_get_column_header_cells:
+ * ctk_cell_accessible_parent_get_column_header_cells:
  * Returns: (transfer full) (element-type AtkObject)
  */
 GPtrArray *
-gtk_cell_accessible_parent_get_column_header_cells (GtkCellAccessibleParent *parent,
+ctk_cell_accessible_parent_get_column_header_cells (GtkCellAccessibleParent *parent,
                                                     GtkCellAccessible       *cell)
 {
   GtkCellAccessibleParentIface *iface;
@@ -250,11 +250,11 @@ gtk_cell_accessible_parent_get_column_header_cells (GtkCellAccessibleParent *par
 }
 
 /**
- * gtk_cell_accessible_parent_get_row_header_cells:
+ * ctk_cell_accessible_parent_get_row_header_cells:
  * Returns: (transfer full) (element-type AtkObject)
  */
 GPtrArray *
-gtk_cell_accessible_parent_get_row_header_cells (GtkCellAccessibleParent *parent,
+ctk_cell_accessible_parent_get_row_header_cells (GtkCellAccessibleParent *parent,
                                                     GtkCellAccessible       *cell)
 {
   GtkCellAccessibleParentIface *iface;

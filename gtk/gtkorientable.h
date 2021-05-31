@@ -30,7 +30,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ORIENTABLE             (gtk_orientable_get_type ())
+#define GTK_TYPE_ORIENTABLE             (ctk_orientable_get_type ())
 #define GTK_ORIENTABLE(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_ORIENTABLE, GtkOrientable))
 #define GTK_ORIENTABLE_CLASS(vtable)    (G_TYPE_CHECK_CLASS_CAST ((vtable), GTK_TYPE_ORIENTABLE, GtkOrientableIface))
 #define GTK_IS_ORIENTABLE(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_ORIENTABLE))
@@ -48,13 +48,13 @@ struct _GtkOrientableIface
 
 
 GDK_AVAILABLE_IN_ALL
-GType          gtk_orientable_get_type        (void) G_GNUC_CONST;
+GType          ctk_orientable_get_type        (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-void           gtk_orientable_set_orientation (GtkOrientable  *orientable,
+void           ctk_orientable_set_orientation (GtkOrientable  *orientable,
                                                GtkOrientation  orientation);
 GDK_AVAILABLE_IN_ALL
-GtkOrientation gtk_orientable_get_orientation (GtkOrientable  *orientable);
+GtkOrientation ctk_orientable_get_orientation (GtkOrientable  *orientable);
 
 G_END_DECLS
 

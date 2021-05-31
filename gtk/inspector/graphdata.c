@@ -32,10 +32,10 @@ struct _GtkGraphDataPrivate
 };
 
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkGraphData, gtk_graph_data, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkGraphData, ctk_graph_data, G_TYPE_OBJECT)
 
 static void
-gtk_graph_data_get_property (GObject    *object,
+ctk_graph_data_get_property (GObject    *object,
                              guint       param_id,
                              GValue     *value,
                              GParamSpec *pspec)
@@ -54,18 +54,18 @@ gtk_graph_data_get_property (GObject    *object,
 }
 
 static void
-gtk_graph_data_finalize (GObject *object)
+ctk_graph_data_finalize (GObject *object)
 {
   GtkGraphData *graph = GTK_GRAPH_DATA (object);
   GtkGraphDataPrivate *priv = graph->priv;
 
   g_free (priv->values);
 
-  G_OBJECT_CLASS (gtk_graph_data_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_graph_data_parent_class)->finalize (object);
 }
 
 static void
-gtk_graph_data_set_property (GObject      *object,
+ctk_graph_data_set_property (GObject      *object,
                              guint         param_id,
                              const GValue *value,
                              GParamSpec   *pspec)
@@ -85,13 +85,13 @@ gtk_graph_data_set_property (GObject      *object,
 }
 
 static void
-gtk_graph_data_class_init (GtkGraphDataClass *klass)
+ctk_graph_data_class_init (GtkGraphDataClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  object_class->finalize = gtk_graph_data_finalize;
-  object_class->get_property = gtk_graph_data_get_property;
-  object_class->set_property = gtk_graph_data_set_property;
+  object_class->finalize = ctk_graph_data_finalize;
+  object_class->get_property = ctk_graph_data_get_property;
+  object_class->set_property = ctk_graph_data_set_property;
 
   g_object_class_install_property (object_class,
                                    PROP_N_VALUES,
@@ -103,13 +103,13 @@ gtk_graph_data_class_init (GtkGraphDataClass *klass)
 }
 
 static void
-gtk_graph_data_init (GtkGraphData *graph)
+ctk_graph_data_init (GtkGraphData *graph)
 {
-  graph->priv = gtk_graph_data_get_instance_private (graph);
+  graph->priv = ctk_graph_data_get_instance_private (graph);
 }
 
 GtkGraphData *
-gtk_graph_data_new (guint n_values)
+ctk_graph_data_new (guint n_values)
 {
   return g_object_new (GTK_TYPE_GRAPH_DATA,
                        "n-values", n_values,
@@ -117,13 +117,13 @@ gtk_graph_data_new (guint n_values)
 }
 
 guint
-gtk_graph_data_get_n_values (GtkGraphData *data)
+ctk_graph_data_get_n_values (GtkGraphData *data)
 {
   return data->priv->n_values;
 }
 
 double
-gtk_graph_data_get_value (GtkGraphData   *data,
+ctk_graph_data_get_value (GtkGraphData   *data,
                           guint           i)
 {
   GtkGraphDataPrivate *priv = data->priv;
@@ -132,7 +132,7 @@ gtk_graph_data_get_value (GtkGraphData   *data,
 }
 
 double
-gtk_graph_data_get_minimum (GtkGraphData *data)
+ctk_graph_data_get_minimum (GtkGraphData *data)
 {
   GtkGraphDataPrivate *priv = data->priv;
   double minimum = G_MAXDOUBLE;
@@ -147,7 +147,7 @@ gtk_graph_data_get_minimum (GtkGraphData *data)
 }
 
 double
-gtk_graph_data_get_maximum (GtkGraphData *data)
+ctk_graph_data_get_maximum (GtkGraphData *data)
 {
   GtkGraphDataPrivate *priv = data->priv;
   double maximum = -G_MAXDOUBLE;
@@ -162,7 +162,7 @@ gtk_graph_data_get_maximum (GtkGraphData *data)
 }
 
 void
-gtk_graph_data_prepend_value (GtkGraphData *data,
+ctk_graph_data_prepend_value (GtkGraphData *data,
                               double        value)
 {
   GtkGraphDataPrivate *priv = data->priv;

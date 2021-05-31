@@ -5,7 +5,7 @@
 
 #include <gtk/gtk.h>
 
-#define WID(x) ((GtkWidget*) gtk_builder_get_object (builder, x))
+#define WID(x) ((GtkWidget*) ctk_builder_get_object (builder, x))
 
 /*
  * These are the available blend modes.
@@ -50,7 +50,7 @@ update_css_for_blend_mode (GtkCssProvider *provider,
                          blend_mode,
                          blend_mode);
 
-  gtk_css_provider_load_from_data (provider, css, -1, NULL);
+  ctk_css_provider_load_from_data (provider, css, -1, NULL);
 
   g_bytes_unref (bytes);
   g_free (css);
@@ -64,7 +64,7 @@ row_activated (GtkListBox     *listbox,
 {
   const gchar *blend_mode;
 
-  blend_mode = blend_modes[gtk_list_box_row_get_index (row)].id;
+  blend_mode = blend_modes[ctk_list_box_row_get_index (row)].id;
 
   update_css_for_blend_mode (provider, blend_mode);
 }
@@ -78,8 +78,8 @@ setup_listbox (GtkBuilder       *builder,
   gint i;
 
   normal_row = NULL;
-  listbox = gtk_list_box_new ();
-  gtk_container_add (GTK_CONTAINER (WID ("scrolledwindow")), listbox);
+  listbox = ctk_list_box_new ();
+  ctk_container_add (GTK_CONTAINER (WID ("scrolledwindow")), listbox);
 
   g_signal_connect (listbox, "row-activated", G_CALLBACK (row_activated), provider);
 
@@ -89,15 +89,15 @@ setup_listbox (GtkBuilder       *builder,
       GtkWidget *label;
       GtkWidget *row;
 
-      row = gtk_list_box_row_new ();
+      row = ctk_list_box_row_new ();
       label = g_object_new (GTK_TYPE_LABEL,
                             "label", blend_modes[i].name,
                             "xalign", 0.0,
                             NULL);
 
-      gtk_container_add (GTK_CONTAINER (row), label);
+      ctk_container_add (GTK_CONTAINER (row), label);
 
-      gtk_container_add (GTK_CONTAINER (listbox), row);
+      ctk_container_add (GTK_CONTAINER (listbox), row);
 
       /* The first selected row is "normal" */
       if (g_strcmp0 (blend_modes[i].id, "normal") == 0)
@@ -105,10 +105,10 @@ setup_listbox (GtkBuilder       *builder,
     }
 
   /* Select the "normal" row */
-  gtk_list_box_select_row (GTK_LIST_BOX (listbox), GTK_LIST_BOX_ROW (normal_row));
+  ctk_list_box_select_row (GTK_LIST_BOX (listbox), GTK_LIST_BOX_ROW (normal_row));
   g_signal_emit_by_name (G_OBJECT (normal_row), "activate");
 
-  gtk_widget_grab_focus (normal_row);
+  ctk_widget_grab_focus (normal_row);
 }
 
 GtkWidget *
@@ -121,26 +121,26 @@ do_css_blendmodes (GtkWidget *do_widget)
       GtkStyleProvider *provider;
       GtkBuilder *builder;
 
-      builder = gtk_builder_new_from_resource ("/css_blendmodes/blendmodes.ui");
+      builder = ctk_builder_new_from_resource ("/css_blendmodes/blendmodes.ui");
 
       window = WID ("window");
-      gtk_window_set_transient_for (GTK_WINDOW (window), GTK_WINDOW (do_widget));
-      g_signal_connect (window, "destroy", G_CALLBACK (gtk_widget_destroyed), &window);
+      ctk_window_set_transient_for (GTK_WINDOW (window), GTK_WINDOW (do_widget));
+      g_signal_connect (window, "destroy", G_CALLBACK (ctk_widget_destroyed), &window);
 
       /* Setup the CSS provider for window */
-      provider = GTK_STYLE_PROVIDER (gtk_css_provider_new ());
+      provider = GTK_STYLE_PROVIDER (ctk_css_provider_new ());
 
-      gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+      ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
                                                  provider,
                                                  GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 
       setup_listbox (builder, provider);
     }
 
-  if (!gtk_widget_get_visible (window))
-    gtk_widget_show_all (window);
+  if (!ctk_widget_get_visible (window))
+    ctk_widget_show_all (window);
   else
-    gtk_widget_destroy (window);
+    ctk_widget_destroy (window);
 
   return window;
 }

@@ -25,7 +25,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_TRASH_MONITOR			(_gtk_trash_monitor_get_type ())
+#define GTK_TYPE_TRASH_MONITOR			(_ctk_trash_monitor_get_type ())
 #define GTK_TRASH_MONITOR(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TRASH_MONITOR, GtkTrashMonitor))
 #define GTK_TRASH_MONITOR_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_TRASH_MONITOR, GtkTrashMonitorClass))
 #define GTK_IS_TRASH_MONITOR(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TRASH_MONITOR))
@@ -35,12 +35,12 @@ G_BEGIN_DECLS
 typedef struct _GtkTrashMonitor GtkTrashMonitor;
 typedef struct _GtkTrashMonitorClass GtkTrashMonitorClass;
 
-GType _gtk_trash_monitor_get_type (void);
-GtkTrashMonitor *_gtk_trash_monitor_get (void);
+GType _ctk_trash_monitor_get_type (void);
+GtkTrashMonitor *_ctk_trash_monitor_get (void);
 
-GIcon *_gtk_trash_monitor_get_icon (GtkTrashMonitor *monitor);
+GIcon *_ctk_trash_monitor_get_icon (GtkTrashMonitor *monitor);
 
-gboolean _gtk_trash_monitor_get_has_trash (GtkTrashMonitor *monitor);
+gboolean _ctk_trash_monitor_get_has_trash (GtkTrashMonitor *monitor);
 
 G_END_DECLS
 

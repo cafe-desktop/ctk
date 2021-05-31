@@ -146,7 +146,7 @@ test_icon_existence (gconstpointer icon_name)
    * icon theme.
    * The icon size is randomly chosen.
    */
-  info = gtk_icon_theme_lookup_icon (gtk_icon_theme_get_default (), icon_name, 16, GTK_ICON_LOOKUP_DIR_LTR);
+  info = ctk_icon_theme_lookup_icon (ctk_icon_theme_get_default (), icon_name, 16, GTK_ICON_LOOKUP_DIR_LTR);
   if (info == NULL)
     {
       g_test_message ("Failed to look up icon for \"%s\"", (char *) icon_name);
@@ -164,9 +164,9 @@ main (int argc, char *argv[])
   char *test_name;
   char *theme;
 
-  gtk_test_init (&argc, &argv);
+  ctk_test_init (&argc, &argv);
 
-  g_object_get (gtk_settings_get_default (), "gtk-icon-theme-name", &theme, NULL);
+  g_object_get (ctk_settings_get_default (), "gtk-icon-theme-name", &theme, NULL);
   g_test_message ("Testing icon theme: %s", theme);
   g_free (theme);
 

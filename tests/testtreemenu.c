@@ -46,79 +46,79 @@ create_menu_grid_demo (void)
   GtkWidget *menu;
   GtkTreeIter iter;
   GdkPixbuf *pixbuf;
-  GtkCellRenderer *cell = gtk_cell_renderer_pixbuf_new ();
+  GtkCellRenderer *cell = ctk_cell_renderer_pixbuf_new ();
   GtkListStore *store;
   
-  store = gtk_list_store_new (1, GDK_TYPE_PIXBUF);
+  store = ctk_list_store_new (1, GDK_TYPE_PIXBUF);
 
-  menu = gtk_tree_menu_new_full (NULL, GTK_TREE_MODEL (store), NULL);
-  gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (menu), cell, TRUE);
-  gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (menu), cell, "pixbuf", 0, NULL);
+  menu = ctk_tree_menu_new_full (NULL, GTK_TREE_MODEL (store), NULL);
+  ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (menu), cell, TRUE);
+  ctk_cell_layout_set_attributes (GTK_CELL_LAYOUT (menu), cell, "pixbuf", 0, NULL);
   
-  gtk_tree_menu_set_wrap_width (GTK_TREE_MENU (menu), 3);
+  ctk_tree_menu_set_wrap_width (GTK_TREE_MENU (menu), 3);
 
   /* first row */
   pixbuf = create_color_pixbuf ("red");
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter,
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter,
 		      0, pixbuf,
 		      -1);
   g_object_unref (pixbuf);
   
   pixbuf = create_color_pixbuf ("green");
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter,
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter,
 		      0, pixbuf,
 		      -1);
   g_object_unref (pixbuf);
   
   pixbuf = create_color_pixbuf ("blue");
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter,
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter,
 		      0, pixbuf,
 		      -1);
   g_object_unref (pixbuf);
   
   /* second row */
   pixbuf = create_color_pixbuf ("yellow");
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter,
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter,
 		      0, pixbuf,
 		      -1);
   g_object_unref (pixbuf);
   
   pixbuf = create_color_pixbuf ("black");
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter,
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter,
 		      0, pixbuf,
 		      -1);
   g_object_unref (pixbuf);
   
   pixbuf = create_color_pixbuf ("white");
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter,
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter,
 		      0, pixbuf,
 		      -1);
   g_object_unref (pixbuf);
   
   /* third row */
   pixbuf = create_color_pixbuf ("gray");
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter,
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter,
 		      0, pixbuf,
 		      -1);
   g_object_unref (pixbuf);
   
   pixbuf = create_color_pixbuf ("snow");
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter,
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter,
 		      0, pixbuf,
 		      -1);
   g_object_unref (pixbuf);
   
   pixbuf = create_color_pixbuf ("magenta");
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter,
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter,
 		      0, pixbuf,
 		      -1);
   g_object_unref (pixbuf);
@@ -146,14 +146,14 @@ simple_tree_model (void)
 {
   GtkTreeIter   iter, parent, child;
   GtkTreeStore *store = 
-    gtk_tree_store_new (N_SIMPLE_COLUMNS,
+    ctk_tree_store_new (N_SIMPLE_COLUMNS,
 			G_TYPE_STRING,  /* name text */
 			G_TYPE_STRING,  /* icon name */
 			G_TYPE_STRING); /* description text */
 
 
-  gtk_tree_store_append (store, &parent, NULL);
-  gtk_tree_store_set (store, &parent, 
+  ctk_tree_store_append (store, &parent, NULL);
+  ctk_tree_store_set (store, &parent, 
 		      SIMPLE_COLUMN_NAME, "Alice in wonderland",
 		      SIMPLE_COLUMN_ICON, "system-run",
 		      SIMPLE_COLUMN_DESCRIPTION, 
@@ -161,109 +161,109 @@ simple_tree_model (void)
 		      "did gyre and gimble in the wabe",
 		      -1);
 
-  gtk_tree_store_append (store, &iter, &parent);
-  gtk_tree_store_set (store, &iter, 
+  ctk_tree_store_append (store, &iter, &parent);
+  ctk_tree_store_set (store, &iter, 
 		      SIMPLE_COLUMN_NAME, "Go ask",
 		      SIMPLE_COLUMN_ICON, "zoom-out",
 		      SIMPLE_COLUMN_DESCRIPTION, "One pill makes you shorter",
 		      -1);
 
-  gtk_tree_store_append (store, &iter, &parent);
-  gtk_tree_store_set (store, &iter, 
+  ctk_tree_store_append (store, &iter, &parent);
+  ctk_tree_store_set (store, &iter, 
 		      SIMPLE_COLUMN_NAME, "Alice",
 		      SIMPLE_COLUMN_ICON, "zoom-in",
 		      SIMPLE_COLUMN_DESCRIPTION, "Another one makes you tall",
 		      -1);
 
-  gtk_tree_store_append (store, &iter, &parent);
-  gtk_tree_store_set (store, &iter, 
+  ctk_tree_store_append (store, &iter, &parent);
+  ctk_tree_store_set (store, &iter, 
 		      SIMPLE_COLUMN_NAME, "Jefferson Airplane",
 		      SIMPLE_COLUMN_ICON, "zoom-fit-best",
 		      SIMPLE_COLUMN_DESCRIPTION, "The one's that mother gives you dont do anything at all",
 		      -1);
 
-  gtk_tree_store_append (store, &iter, NULL);
-  gtk_tree_store_set (store, &iter, 
+  ctk_tree_store_append (store, &iter, NULL);
+  ctk_tree_store_set (store, &iter, 
 		      SIMPLE_COLUMN_NAME, "Marry Poppins",
 		      SIMPLE_COLUMN_ICON, "dialog-information",
 		      SIMPLE_COLUMN_DESCRIPTION, "Supercalifragilisticexpialidocious",
 		      -1);
 
-  gtk_tree_store_append (store, &iter, NULL);
-  gtk_tree_store_set (store, &iter, 
+  ctk_tree_store_append (store, &iter, NULL);
+  ctk_tree_store_set (store, &iter, 
 		      SIMPLE_COLUMN_NAME, "George Bush",
 		      SIMPLE_COLUMN_ICON, "dialog-question",
 		      SIMPLE_COLUMN_DESCRIPTION, "It's a very good question, very direct, "
 		      "and I'm not going to answer it",
 		      -1);
 
-  gtk_tree_store_append (store, &parent, NULL);
-  gtk_tree_store_set (store, &parent, 
+  ctk_tree_store_append (store, &parent, NULL);
+  ctk_tree_store_set (store, &parent, 
 		      SIMPLE_COLUMN_NAME, "Whinnie the pooh",
 		      SIMPLE_COLUMN_ICON, "process-stop",
 		      SIMPLE_COLUMN_DESCRIPTION, "The most wonderful thing about tiggers, "
 		      "is tiggers are wonderful things",
 		      -1);
 
-  gtk_tree_store_append (store, &iter, &parent);
-  gtk_tree_store_set (store, &iter, 
+  ctk_tree_store_append (store, &iter, &parent);
+  ctk_tree_store_set (store, &iter, 
 		      SIMPLE_COLUMN_NAME, "Tigger",
 		      SIMPLE_COLUMN_ICON, "dialog-information",
 		      SIMPLE_COLUMN_DESCRIPTION, "Eager",
 		      -1);
 
-  gtk_tree_store_append (store, &child, &iter);
-  gtk_tree_store_set (store, &child, 
+  ctk_tree_store_append (store, &child, &iter);
+  ctk_tree_store_set (store, &child, 
 		      SIMPLE_COLUMN_NAME, "Jump",
 		      SIMPLE_COLUMN_ICON, "dialog-information",
 		      SIMPLE_COLUMN_DESCRIPTION, "Very High",
 		      -1);
 
-  gtk_tree_store_append (store, &child, &iter);
-  gtk_tree_store_set (store, &child, 
+  ctk_tree_store_append (store, &child, &iter);
+  ctk_tree_store_set (store, &child, 
 		      SIMPLE_COLUMN_NAME, "Pounce",
 		      SIMPLE_COLUMN_ICON, "dialog-question",
 		      SIMPLE_COLUMN_DESCRIPTION, "On Pooh",
 		      -1);
 
-  gtk_tree_store_append (store, &child, &iter);
-  gtk_tree_store_set (store, &child, 
+  ctk_tree_store_append (store, &child, &iter);
+  ctk_tree_store_set (store, &child, 
 		      SIMPLE_COLUMN_NAME, "Bounce",
 		      SIMPLE_COLUMN_ICON, "dialog-error",
 		      SIMPLE_COLUMN_DESCRIPTION, "Around",
 		      -1);
 
-  gtk_tree_store_append (store, &iter, &parent);
-  gtk_tree_store_set (store, &iter, 
+  ctk_tree_store_append (store, &iter, &parent);
+  ctk_tree_store_set (store, &iter, 
 		      SIMPLE_COLUMN_NAME, "Owl",
 		      SIMPLE_COLUMN_ICON, "process-stop",
 		      SIMPLE_COLUMN_DESCRIPTION, "Wise",
 		      -1);
 
-  gtk_tree_store_append (store, &iter, &parent);
-  gtk_tree_store_set (store, &iter, 
+  ctk_tree_store_append (store, &iter, &parent);
+  ctk_tree_store_set (store, &iter, 
 		      SIMPLE_COLUMN_NAME, "Eor",
 		      SIMPLE_COLUMN_ICON, "dialog-question",
 		      SIMPLE_COLUMN_DESCRIPTION, "Depressed",
 		      -1);
 
-  gtk_tree_store_append (store, &iter, &parent);
-  gtk_tree_store_set (store, &iter, 
+  ctk_tree_store_append (store, &iter, &parent);
+  ctk_tree_store_set (store, &iter, 
 		      SIMPLE_COLUMN_NAME, "Piglet",
 		      SIMPLE_COLUMN_ICON, "media-playback-start",
 		      SIMPLE_COLUMN_DESCRIPTION, "Insecure",
 		      -1);
 
-  gtk_tree_store_append (store, &iter, NULL);
-  gtk_tree_store_set (store, &iter, 
+  ctk_tree_store_append (store, &iter, NULL);
+  ctk_tree_store_set (store, &iter, 
 		      SIMPLE_COLUMN_NAME, "Aleister Crowley",
 		      SIMPLE_COLUMN_ICON, "help-about",
 		      SIMPLE_COLUMN_DESCRIPTION, 
 		      "Thou shalt do what thou wilt shall be the whole of the law",
 		      -1);
 
-  gtk_tree_store_append (store, &iter, NULL);
-  gtk_tree_store_set (store, &iter, 
+  ctk_tree_store_append (store, &iter, NULL);
+  ctk_tree_store_set (store, &iter, 
 		      SIMPLE_COLUMN_NAME, "Mark Twain",
 		      SIMPLE_COLUMN_ICON, "application-exit",
 		      SIMPLE_COLUMN_DESCRIPTION, 
@@ -281,24 +281,24 @@ create_cell_area (void)
   GtkCellArea *area;
   GtkCellRenderer *renderer;
 
-  area = gtk_cell_area_box_new ();
+  area = ctk_cell_area_box_new ();
 
-  cell_1 = renderer = gtk_cell_renderer_text_new ();
-  gtk_cell_area_box_pack_start (GTK_CELL_AREA_BOX (area), renderer, FALSE, FALSE, FALSE);
-  gtk_cell_area_attribute_connect (area, renderer, "text", SIMPLE_COLUMN_NAME);
+  cell_1 = renderer = ctk_cell_renderer_text_new ();
+  ctk_cell_area_box_pack_start (GTK_CELL_AREA_BOX (area), renderer, FALSE, FALSE, FALSE);
+  ctk_cell_area_attribute_connect (area, renderer, "text", SIMPLE_COLUMN_NAME);
 
-  cell_2 = renderer = gtk_cell_renderer_pixbuf_new ();
+  cell_2 = renderer = ctk_cell_renderer_pixbuf_new ();
   g_object_set (G_OBJECT (renderer), "xalign", 0.0F, NULL);
-  gtk_cell_area_box_pack_start (GTK_CELL_AREA_BOX (area), renderer, TRUE, FALSE, FALSE);
-  gtk_cell_area_attribute_connect (area, renderer, "icon-name", SIMPLE_COLUMN_ICON);
+  ctk_cell_area_box_pack_start (GTK_CELL_AREA_BOX (area), renderer, TRUE, FALSE, FALSE);
+  ctk_cell_area_attribute_connect (area, renderer, "icon-name", SIMPLE_COLUMN_ICON);
 
-  cell_3 = renderer = gtk_cell_renderer_text_new ();
+  cell_3 = renderer = ctk_cell_renderer_text_new ();
   g_object_set (G_OBJECT (renderer), 
 		"wrap-mode", PANGO_WRAP_WORD,
 		"wrap-width", 215,
 		NULL);
-  gtk_cell_area_box_pack_start (GTK_CELL_AREA_BOX (area), renderer, FALSE, TRUE, FALSE);
-  gtk_cell_area_attribute_connect (area, renderer, "text", SIMPLE_COLUMN_DESCRIPTION);
+  ctk_cell_area_box_pack_start (GTK_CELL_AREA_BOX (area), renderer, FALSE, TRUE, FALSE);
+  ctk_cell_area_attribute_connect (area, renderer, "text", SIMPLE_COLUMN_DESCRIPTION);
 
   return area;
 }
@@ -312,8 +312,8 @@ simple_tree_menu (GtkCellArea *area)
 
   model = simple_tree_model ();
 
-  menu = gtk_tree_menu_new_with_area (area);
-  gtk_tree_menu_set_model (GTK_TREE_MENU (menu), model);
+  menu = ctk_tree_menu_new_with_area (area);
+  ctk_tree_menu_set_model (GTK_TREE_MENU (menu), model);
 
   return menu;
 }
@@ -323,54 +323,54 @@ static void
 orientation_changed (GtkComboBox  *combo,
 		     GtkCellArea  *area)
 {
-  GtkOrientation orientation = gtk_combo_box_get_active (combo);
+  GtkOrientation orientation = ctk_combo_box_get_active (combo);
 
-  gtk_orientable_set_orientation (GTK_ORIENTABLE (area), orientation);
+  ctk_orientable_set_orientation (GTK_ORIENTABLE (area), orientation);
 }
 
 static void
 align_cell_2_toggled (GtkToggleButton  *toggle,
 		      GtkCellArea      *area)
 {
-  gboolean align = gtk_toggle_button_get_active (toggle);
+  gboolean align = ctk_toggle_button_get_active (toggle);
 
-  gtk_cell_area_cell_set (area, cell_2, "align", align, NULL);
+  ctk_cell_area_cell_set (area, cell_2, "align", align, NULL);
 }
 
 static void
 align_cell_3_toggled (GtkToggleButton  *toggle,
 		      GtkCellArea      *area)
 {
-  gboolean align = gtk_toggle_button_get_active (toggle);
+  gboolean align = ctk_toggle_button_get_active (toggle);
 
-  gtk_cell_area_cell_set (area, cell_3, "align", align, NULL);
+  ctk_cell_area_cell_set (area, cell_3, "align", align, NULL);
 }
 
 static void
 expand_cell_1_toggled (GtkToggleButton  *toggle,
 		       GtkCellArea      *area)
 {
-  gboolean expand = gtk_toggle_button_get_active (toggle);
+  gboolean expand = ctk_toggle_button_get_active (toggle);
 
-  gtk_cell_area_cell_set (area, cell_1, "expand", expand, NULL);
+  ctk_cell_area_cell_set (area, cell_1, "expand", expand, NULL);
 }
 
 static void
 expand_cell_2_toggled (GtkToggleButton  *toggle,
 		       GtkCellArea      *area)
 {
-  gboolean expand = gtk_toggle_button_get_active (toggle);
+  gboolean expand = ctk_toggle_button_get_active (toggle);
 
-  gtk_cell_area_cell_set (area, cell_2, "expand", expand, NULL);
+  ctk_cell_area_cell_set (area, cell_2, "expand", expand, NULL);
 }
 
 static void
 expand_cell_3_toggled (GtkToggleButton  *toggle,
 		       GtkCellArea      *area)
 {
-  gboolean expand = gtk_toggle_button_get_active (toggle);
+  gboolean expand = ctk_toggle_button_get_active (toggle);
 
-  gtk_cell_area_cell_set (area, cell_3, "expand", expand, NULL);
+  ctk_cell_area_cell_set (area, cell_3, "expand", expand, NULL);
 }
 
 gboolean 
@@ -388,14 +388,14 @@ menu_activated_cb (GtkTreeMenu *menu,
 		   const gchar *path,
 		   gpointer     unused)
 {
-  GtkTreeModel *model = gtk_tree_menu_get_model (menu);
+  GtkTreeModel *model = ctk_tree_menu_get_model (menu);
   GtkTreeIter   iter;
   gchar        *row_name;
 
-  if (!gtk_tree_model_get_iter_from_string (model, &iter, path))
+  if (!ctk_tree_model_get_iter_from_string (model, &iter, path))
     return;
 
-  gtk_tree_model_get (model, &iter, SIMPLE_COLUMN_NAME, &row_name, -1);
+  ctk_tree_model_get (model, &iter, SIMPLE_COLUMN_NAME, &row_name, -1);
 
   g_print ("Item activated: %s\n", row_name);
 
@@ -406,17 +406,17 @@ static void
 submenu_headers_toggled (GtkToggleButton  *toggle,
 			 GtkTreeMenu      *menu)
 {
-  if (gtk_toggle_button_get_active (toggle))
-    gtk_tree_menu_set_header_func (menu, enable_submenu_headers, NULL, NULL);
+  if (ctk_toggle_button_get_active (toggle))
+    ctk_tree_menu_set_header_func (menu, enable_submenu_headers, NULL, NULL);
   else
-    gtk_tree_menu_set_header_func (menu, NULL, NULL, NULL);
+    ctk_tree_menu_set_header_func (menu, NULL, NULL, NULL);
 }
 
 static void
 tearoff_toggled (GtkToggleButton *toggle,
 		 GtkTreeMenu     *menu)
 {
-  gtk_tree_menu_set_tearoff (menu, gtk_toggle_button_get_active (toggle));
+  ctk_tree_menu_set_tearoff (menu, ctk_toggle_button_get_active (toggle));
 }
 #endif
 
@@ -428,128 +428,128 @@ tree_menu (void)
   GtkCellArea *area;
   GtkTreeModel *store;
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
 
-  gtk_window_set_title (GTK_WINDOW (window), "GtkTreeMenu");
+  ctk_window_set_title (GTK_WINDOW (window), "GtkTreeMenu");
 
-  vbox  = gtk_box_new (GTK_ORIENTATION_VERTICAL, 4);
-  gtk_widget_show (vbox);
+  vbox  = ctk_box_new (GTK_ORIENTATION_VERTICAL, 4);
+  ctk_widget_show (vbox);
 
-  menubar = gtk_menu_bar_new ();
-  gtk_widget_show (menubar);
+  menubar = ctk_menu_bar_new ();
+  ctk_widget_show (menubar);
 
   store = simple_tree_model ();
   area  = create_cell_area ();
 
 #if _GTK_TREE_MENU_WAS_A_PUBLIC_CLASS_
-  menuitem = gtk_menu_item_new_with_label ("Grid");
+  menuitem = ctk_menu_item_new_with_label ("Grid");
   menu = create_menu_grid_demo ();
-  gtk_widget_show (menu);
-  gtk_widget_show (menuitem);
-  gtk_menu_shell_append (GTK_MENU_SHELL (menubar), menuitem);
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), menu);
+  ctk_widget_show (menu);
+  ctk_widget_show (menuitem);
+  ctk_menu_shell_append (GTK_MENU_SHELL (menubar), menuitem);
+  ctk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), menu);
 
-  menuitem = gtk_menu_item_new_with_label ("Tree");
+  menuitem = ctk_menu_item_new_with_label ("Tree");
   menu = simple_tree_menu ();
-  gtk_widget_show (menu);
-  gtk_widget_show (menuitem);
-  gtk_menu_shell_prepend (GTK_MENU_SHELL (menubar), menuitem);
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), menu);
+  ctk_widget_show (menu);
+  ctk_widget_show (menuitem);
+  ctk_menu_shell_prepend (GTK_MENU_SHELL (menubar), menuitem);
+  ctk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), menu);
 
   g_signal_connect (menu, "menu-activate", G_CALLBACK (menu_activated_cb), NULL);
 
-  gtk_box_pack_start (GTK_BOX (vbox), menubar, FALSE, FALSE, 0);
+  ctk_box_pack_start (GTK_BOX (vbox), menubar, FALSE, FALSE, 0);
 #endif
 
   /* Add a combo box with the same menu ! */
-  widget = gtk_combo_box_new_with_area (area);
-  gtk_combo_box_set_model (GTK_COMBO_BOX (widget), store);
-  gtk_combo_box_set_active (GTK_COMBO_BOX (widget), 0);
-  gtk_widget_show (widget);
-  gtk_box_pack_end (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
+  widget = ctk_combo_box_new_with_area (area);
+  ctk_combo_box_set_model (GTK_COMBO_BOX (widget), store);
+  ctk_combo_box_set_active (GTK_COMBO_BOX (widget), 0);
+  ctk_widget_show (widget);
+  ctk_box_pack_end (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
 
   /* Now add some controls */
-  widget = gtk_combo_box_text_new ();
-  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (widget), "Horizontal");
-  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (widget), "Vertical");
-  gtk_combo_box_set_active (GTK_COMBO_BOX (widget), 0);
-  gtk_widget_show (widget);
-  gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
+  widget = ctk_combo_box_text_new ();
+  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (widget), "Horizontal");
+  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (widget), "Vertical");
+  ctk_combo_box_set_active (GTK_COMBO_BOX (widget), 0);
+  ctk_widget_show (widget);
+  ctk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
 
   g_signal_connect (G_OBJECT (widget), "changed",
                     G_CALLBACK (orientation_changed), area);
 
-  widget = gtk_check_button_new_with_label ("Align 2nd Cell");
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), FALSE);
-  gtk_widget_show (widget);
-  gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
+  widget = ctk_check_button_new_with_label ("Align 2nd Cell");
+  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), FALSE);
+  ctk_widget_show (widget);
+  ctk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
   
   g_signal_connect (G_OBJECT (widget), "toggled",
                     G_CALLBACK (align_cell_2_toggled), area);
 
-  widget = gtk_check_button_new_with_label ("Align 3rd Cell");
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), TRUE);
-  gtk_widget_show (widget);
-  gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
+  widget = ctk_check_button_new_with_label ("Align 3rd Cell");
+  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), TRUE);
+  ctk_widget_show (widget);
+  ctk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
   
   g_signal_connect (G_OBJECT (widget), "toggled",
                     G_CALLBACK (align_cell_3_toggled), area);
 
-  widget = gtk_check_button_new_with_label ("Expand 1st Cell");
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), FALSE);
-  gtk_widget_show (widget);
-  gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
+  widget = ctk_check_button_new_with_label ("Expand 1st Cell");
+  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), FALSE);
+  ctk_widget_show (widget);
+  ctk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
   
   g_signal_connect (G_OBJECT (widget), "toggled",
                     G_CALLBACK (expand_cell_1_toggled), area);
 
-  widget = gtk_check_button_new_with_label ("Expand 2nd Cell");
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), TRUE);
-  gtk_widget_show (widget);
-  gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
+  widget = ctk_check_button_new_with_label ("Expand 2nd Cell");
+  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), TRUE);
+  ctk_widget_show (widget);
+  ctk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
   
   g_signal_connect (G_OBJECT (widget), "toggled",
                     G_CALLBACK (expand_cell_2_toggled), area);
 
-  widget = gtk_check_button_new_with_label ("Expand 3rd Cell");
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), FALSE);
-  gtk_widget_show (widget);
-  gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
+  widget = ctk_check_button_new_with_label ("Expand 3rd Cell");
+  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), FALSE);
+  ctk_widget_show (widget);
+  ctk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
   
   g_signal_connect (G_OBJECT (widget), "toggled",
                     G_CALLBACK (expand_cell_3_toggled), area);
 
 #if _GTK_TREE_MENU_WAS_A_PUBLIC_CLASS_
-  widget = gtk_check_button_new_with_label ("Submenu Headers");
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), FALSE);
-  gtk_widget_show (widget);
-  gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
+  widget = ctk_check_button_new_with_label ("Submenu Headers");
+  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), FALSE);
+  ctk_widget_show (widget);
+  ctk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
   
   g_signal_connect (G_OBJECT (widget), "toggled",
                     G_CALLBACK (submenu_headers_toggled), menu);
 
-  widget = gtk_check_button_new_with_label ("Tearoff menu");
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), FALSE);
-  gtk_widget_show (widget);
-  gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
+  widget = ctk_check_button_new_with_label ("Tearoff menu");
+  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), FALSE);
+  ctk_widget_show (widget);
+  ctk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
   
   g_signal_connect (G_OBJECT (widget), "toggled",
                     G_CALLBACK (tearoff_toggled), menu);
 #endif
 
-  gtk_container_add (GTK_CONTAINER (window), vbox);
+  ctk_container_add (GTK_CONTAINER (window), vbox);
 
-  gtk_widget_show (window);
+  ctk_widget_show (window);
 }
 
 int
 main (int argc, char *argv[])
 {
-  gtk_init (NULL, NULL);
+  ctk_init (NULL, NULL);
 
   tree_menu ();
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

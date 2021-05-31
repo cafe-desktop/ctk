@@ -36,19 +36,19 @@ get_delegate (GtkFontChooser *receiver)
 static PangoFontFamily *
 delegate_get_font_family (GtkFontChooser *chooser)
 {
-  return gtk_font_chooser_get_font_family (get_delegate (chooser));
+  return ctk_font_chooser_get_font_family (get_delegate (chooser));
 }
 
 static PangoFontFace *
 delegate_get_font_face (GtkFontChooser *chooser)
 {
-  return gtk_font_chooser_get_font_face (get_delegate (chooser));
+  return ctk_font_chooser_get_font_face (get_delegate (chooser));
 }
 
 static int
 delegate_get_font_size (GtkFontChooser *chooser)
 {
-  return gtk_font_chooser_get_font_size (get_delegate (chooser));
+  return ctk_font_chooser_get_font_size (get_delegate (chooser));
 }
 
 static void
@@ -57,7 +57,7 @@ delegate_set_filter_func (GtkFontChooser    *chooser,
                           gpointer           filter_data,
                           GDestroyNotify     data_destroy)
 {
-  gtk_font_chooser_set_filter_func (get_delegate (chooser),
+  ctk_font_chooser_set_filter_func (get_delegate (chooser),
                                     filter_func,
                                     filter_data,
                                     data_destroy);
@@ -67,13 +67,13 @@ static void
 delegate_set_font_map (GtkFontChooser *chooser,
                        PangoFontMap   *map)
 {
-  gtk_font_chooser_set_font_map (get_delegate (chooser), map);
+  ctk_font_chooser_set_font_map (get_delegate (chooser), map);
 }
 
 static PangoFontMap *
 delegate_get_font_map (GtkFontChooser *chooser)
 {
-  return gtk_font_chooser_get_font_map (get_delegate (chooser));
+  return ctk_font_chooser_get_font_map (get_delegate (chooser));
 }
 
 static void
@@ -94,11 +94,11 @@ delegate_font_activated (GtkFontChooser *receiver,
                          const gchar    *fontname,
                          GtkFontChooser *delegate)
 {
-  _gtk_font_chooser_font_activated (delegate, fontname);
+  _ctk_font_chooser_font_activated (delegate, fontname);
 }
 
 GQuark
-_gtk_font_chooser_delegate_get_quark (void)
+_ctk_font_chooser_delegate_get_quark (void)
 {
   static GQuark quark = 0;
 
@@ -109,7 +109,7 @@ _gtk_font_chooser_delegate_get_quark (void)
 }
 
 /**
- * _gtk_font_chooser_install_properties:
+ * _ctk_font_chooser_install_properties:
  * @klass: the class structure for a type deriving from #GObject
  *
  * Installs the necessary properties for a class implementing
@@ -120,7 +120,7 @@ _gtk_font_chooser_delegate_get_quark (void)
  * are using.
  */
 void
-_gtk_font_chooser_install_properties (GObjectClass *klass)
+_ctk_font_chooser_install_properties (GObjectClass *klass)
 {
   g_object_class_override_property (klass,
                                     GTK_FONT_CHOOSER_PROP_FONT,
@@ -146,18 +146,18 @@ _gtk_font_chooser_install_properties (GObjectClass *klass)
 }
 
 /**
- * _gtk_font_chooser_delegate_iface_init:
+ * _ctk_font_chooser_delegate_iface_init:
  * @iface: a #GtkFontChooserIface
  *
  * An interface-initialization function for use in cases where
  * an object is simply delegating the methods, signals of
  * the #GtkFontChooser interface to another object.
- * _gtk_font_chooser_set_delegate() must be called on each
+ * _ctk_font_chooser_set_delegate() must be called on each
  * instance of the object so that the delegate object can
  * be found.
  */
 void
-_gtk_font_chooser_delegate_iface_init (GtkFontChooserIface *iface)
+_ctk_font_chooser_delegate_iface_init (GtkFontChooserIface *iface)
 {
   iface->get_font_family = delegate_get_font_family;
   iface->get_font_face = delegate_get_font_face;
@@ -168,7 +168,7 @@ _gtk_font_chooser_delegate_iface_init (GtkFontChooserIface *iface)
 }
 
 /**
- * _gtk_font_chooser_set_delegate:
+ * _ctk_font_chooser_set_delegate:
  * @receiver: a #GObject implementing #GtkFontChooser
  * @delegate: another #GObject implementing #GtkFontChooser
  *
@@ -176,10 +176,10 @@ _gtk_font_chooser_delegate_iface_init (GtkFontChooserIface *iface)
  * methods should be delegated to @delegate, and that
  * #GtkFontChooser signals emitted on @delegate should be
  * forwarded to @receiver. Must be used in conjunction with
- * _gtk_font_chooser_delegate_iface_init().
+ * _ctk_font_chooser_delegate_iface_init().
  */
 void
-_gtk_font_chooser_set_delegate (GtkFontChooser *receiver,
+_ctk_font_chooser_set_delegate (GtkFontChooser *receiver,
                                 GtkFontChooser *delegate)
 {
   g_return_if_fail (GTK_IS_FONT_CHOOSER (receiver));

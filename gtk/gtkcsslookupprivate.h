@@ -38,23 +38,23 @@ struct _GtkCssLookup {
   GtkCssLookupValue  values[GTK_CSS_PROPERTY_N_PROPERTIES];
 };
 
-GtkCssLookup *          _gtk_css_lookup_new                     (const GtkBitmask           *relevant);
-void                    _gtk_css_lookup_free                    (GtkCssLookup               *lookup);
+GtkCssLookup *          _ctk_css_lookup_new                     (const GtkBitmask           *relevant);
+void                    _ctk_css_lookup_free                    (GtkCssLookup               *lookup);
 
-static inline const GtkBitmask *_gtk_css_lookup_get_missing     (const GtkCssLookup         *lookup);
-gboolean                _gtk_css_lookup_is_missing              (const GtkCssLookup         *lookup,
+static inline const GtkBitmask *_ctk_css_lookup_get_missing     (const GtkCssLookup         *lookup);
+gboolean                _ctk_css_lookup_is_missing              (const GtkCssLookup         *lookup,
                                                                  guint                       id);
-void                    _gtk_css_lookup_set                     (GtkCssLookup               *lookup,
+void                    _ctk_css_lookup_set                     (GtkCssLookup               *lookup,
                                                                  guint                       id,
                                                                  GtkCssSection              *section,
                                                                  GtkCssValue                *value);
-void                    _gtk_css_lookup_resolve                 (GtkCssLookup               *lookup,
+void                    _ctk_css_lookup_resolve                 (GtkCssLookup               *lookup,
                                                                  GtkStyleProviderPrivate    *provider,
                                                                  GtkCssStaticStyle          *style,
                                                                  GtkCssStyle                *parent_style);
 
 static inline const GtkBitmask *
-_gtk_css_lookup_get_missing (const GtkCssLookup *lookup)
+_ctk_css_lookup_get_missing (const GtkCssLookup *lookup)
 {
   return lookup->missing;
 }

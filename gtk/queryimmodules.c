@@ -165,7 +165,7 @@ int main (int argc, char **argv)
   if (argc > 1 && strcmp (argv[1], "--update-cache") == 0)
     {
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-      cache_file = gtk_rc_get_im_module_file ();
+      cache_file = ctk_rc_get_im_module_file ();
 G_GNUC_END_IGNORE_DEPRECATIONS
       first_file = 2;
     }
@@ -185,12 +185,12 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       GHashTable *dirs_done;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-      path = gtk_rc_get_im_module_path ();
+      path = ctk_rc_get_im_module_path ();
 G_GNUC_END_IGNORE_DEPRECATIONS
 
       g_string_append_printf (contents, "# ModulesPath = %s\n#\n", path);
 
-      dirs = gtk_split_file_list (path);
+      dirs = ctk_split_file_list (path);
       dirs_done = g_hash_table_new_full (g_str_hash, g_str_equal, NULL, NULL);
 
       for (i = 0; dirs[i]; i++)
