@@ -23,26 +23,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_TRAY_ICON		(ctk_tray_icon_get_type ())
-#define CTK_TRAY_ICON(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TRAY_ICON, GtkTrayIcon))
-#define CTK_TRAY_ICON_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TRAY_ICON, GtkTrayIconClass))
+#define CTK_TRAY_ICON(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TRAY_ICON, CtkTrayIcon))
+#define CTK_TRAY_ICON_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TRAY_ICON, CtkTrayIconClass))
 #define CTK_IS_TRAY_ICON(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TRAY_ICON))
 #define CTK_IS_TRAY_ICON_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TRAY_ICON))
-#define CTK_TRAY_ICON_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TRAY_ICON, GtkTrayIconClass))
+#define CTK_TRAY_ICON_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TRAY_ICON, CtkTrayIconClass))
 	
-typedef struct _GtkTrayIcon	   GtkTrayIcon;
-typedef struct _GtkTrayIconPrivate GtkTrayIconPrivate;
-typedef struct _GtkTrayIconClass   GtkTrayIconClass;
+typedef struct _CtkTrayIcon	   CtkTrayIcon;
+typedef struct _CtkTrayIconPrivate CtkTrayIconPrivate;
+typedef struct _CtkTrayIconClass   CtkTrayIconClass;
 
-struct _GtkTrayIcon
+struct _CtkTrayIcon
 {
-  GtkPlug parent_instance;
+  CtkPlug parent_instance;
 
-  GtkTrayIconPrivate *priv;
+  CtkTrayIconPrivate *priv;
 };
 
-struct _GtkTrayIconClass
+struct _CtkTrayIconClass
 {
-  GtkPlugClass parent_class;
+  CtkPlugClass parent_class;
 
   /* Padding for future expansion */
   void (*__ctk_reserved1) (void);
@@ -54,21 +54,21 @@ struct _GtkTrayIconClass
 GDK_AVAILABLE_IN_ALL
 GType          ctk_tray_icon_get_type         (void) G_GNUC_CONST;
 
-GtkTrayIcon   *_ctk_tray_icon_new_for_screen  (GdkScreen   *screen,
+CtkTrayIcon   *_ctk_tray_icon_new_for_screen  (GdkScreen   *screen,
 					       const gchar *name);
 
-GtkTrayIcon   *_ctk_tray_icon_new             (const gchar *name);
+CtkTrayIcon   *_ctk_tray_icon_new             (const gchar *name);
 
-guint          _ctk_tray_icon_send_message    (GtkTrayIcon *icon,
+guint          _ctk_tray_icon_send_message    (CtkTrayIcon *icon,
 					       gint         timeout,
 					       const gchar *message,
 					       gint         len);
-void           _ctk_tray_icon_cancel_message  (GtkTrayIcon *icon,
+void           _ctk_tray_icon_cancel_message  (CtkTrayIcon *icon,
 					       guint        id);
 
-GtkOrientation _ctk_tray_icon_get_orientation (GtkTrayIcon *icon);
-gint           _ctk_tray_icon_get_padding     (GtkTrayIcon *icon);
-gint           _ctk_tray_icon_get_icon_size   (GtkTrayIcon *icon);
+CtkOrientation _ctk_tray_icon_get_orientation (CtkTrayIcon *icon);
+gint           _ctk_tray_icon_get_padding     (CtkTrayIcon *icon);
+gint           _ctk_tray_icon_get_icon_size   (CtkTrayIcon *icon);
 
 G_END_DECLS
 

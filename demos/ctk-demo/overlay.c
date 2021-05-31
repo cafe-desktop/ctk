@@ -10,24 +10,24 @@
 #include <ctk/ctk.h>
 
 static void
-do_number (GtkButton *button, GtkEntry *entry)
+do_number (CtkButton *button, CtkEntry *entry)
 {
   ctk_entry_set_text (entry, ctk_button_get_label (button));
 }
 
-GtkWidget *
-do_overlay (GtkWidget *do_widget)
+CtkWidget *
+do_overlay (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkWidget *overlay;
-      GtkWidget *grid;
-      GtkWidget *button;
-      GtkWidget *vbox;
-      GtkWidget *label;
-      GtkWidget *entry;
+      CtkWidget *overlay;
+      CtkWidget *grid;
+      CtkWidget *button;
+      CtkWidget *vbox;
+      CtkWidget *label;
+      CtkWidget *entry;
       int i, j;
       char *text;
 

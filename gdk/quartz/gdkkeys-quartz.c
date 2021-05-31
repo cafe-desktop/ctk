@@ -385,7 +385,7 @@ update_keymap (void)
                    * the first of which is U+00a0, which isn't
                    * interesting; so we return the second. More
                    * sophisticated handling is the job of a
-                   * GtkIMContext.
+                   * CtkIMContext.
                    *
                    * If state isn't zero, it means that it's a dead
                    * key of some sort. Some of those are enumerated in

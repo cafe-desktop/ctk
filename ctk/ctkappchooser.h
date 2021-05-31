@@ -33,20 +33,20 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_APP_CHOOSER    (ctk_app_chooser_get_type ())
-#define CTK_APP_CHOOSER(obj)    (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_APP_CHOOSER, GtkAppChooser))
+#define CTK_APP_CHOOSER(obj)    (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_APP_CHOOSER, CtkAppChooser))
 #define CTK_IS_APP_CHOOSER(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_APP_CHOOSER))
 
-typedef struct _GtkAppChooser GtkAppChooser;
+typedef struct _CtkAppChooser CtkAppChooser;
 
 GDK_AVAILABLE_IN_ALL
 GType      ctk_app_chooser_get_type         (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GAppInfo * ctk_app_chooser_get_app_info     (GtkAppChooser *self);
+GAppInfo * ctk_app_chooser_get_app_info     (CtkAppChooser *self);
 GDK_AVAILABLE_IN_ALL
-gchar *    ctk_app_chooser_get_content_type (GtkAppChooser *self);
+gchar *    ctk_app_chooser_get_content_type (CtkAppChooser *self);
 GDK_AVAILABLE_IN_ALL
-void       ctk_app_chooser_refresh          (GtkAppChooser *self);
+void       ctk_app_chooser_refresh          (CtkAppChooser *self);
 
 G_END_DECLS
 

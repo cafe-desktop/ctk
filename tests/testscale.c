@@ -20,23 +20,23 @@
 
 
 GSList *scales;
-GtkWidget *flipbox;
-GtkWidget *extra_scale;
+CtkWidget *flipbox;
+CtkWidget *extra_scale;
 
 static void
-invert (GtkButton *button)
+invert (CtkButton *button)
 {
   GSList *l;
 
   for (l = scales; l; l = l->next)
     {
-      GtkRange *range = l->data;
+      CtkRange *range = l->data;
       ctk_range_set_inverted (range, !ctk_range_get_inverted (range));
     }
 }
 
 static void
-flip (GtkButton *button)
+flip (CtkButton *button)
 {
   GSList *l;
 
@@ -44,13 +44,13 @@ flip (GtkButton *button)
 
   for (l = scales; l; l = l->next)
     {
-      GtkOrientable *o = l->data;
+      CtkOrientable *o = l->data;
       ctk_orientable_set_orientation (o, 1 - ctk_orientable_get_orientation (o));
     }
 }
 
 static void
-trough (GtkToggleButton *button)
+trough (CtkToggleButton *button)
 {
   GSList *l;
   gboolean value;
@@ -59,7 +59,7 @@ trough (GtkToggleButton *button)
 
   for (l = scales; l; l = l->next)
     {
-      GtkRange *range = l->data;
+      CtkRange *range = l->data;
       ctk_range_set_range (range, 0., value ? 100.0 : 0.);
     }
 }
@@ -68,7 +68,7 @@ gdouble marks[3] = { 0.0, 50.0, 100.0 };
 gdouble extra_marks[2] = { 20.0, 40.0 };
 
 static void
-extra (GtkToggleButton *button)
+extra (CtkToggleButton *button)
 {
   gboolean value;
 
@@ -90,13 +90,13 @@ extra (GtkToggleButton *button)
 
 int main (int argc, char *argv[])
 {
-  GtkWidget *window;
-  GtkWidget *box;
-  GtkWidget *box1;
-  GtkWidget *box2;
-  GtkWidget *button;
-  GtkWidget *frame;
-  GtkWidget *scale;
+  CtkWidget *window;
+  CtkWidget *box;
+  CtkWidget *box1;
+  CtkWidget *box2;
+  CtkWidget *button;
+  CtkWidget *frame;
+  CtkWidget *scale;
   const gchar *labels[3] = {
     "<small>Left</small>",
     "<small>Middle</small>",

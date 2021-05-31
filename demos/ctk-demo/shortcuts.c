@@ -1,18 +1,18 @@
 /* Shortcuts Window
  *
- * GtkShortcutsWindow is a window that provides a help overlay
+ * CtkShortcutsWindow is a window that provides a help overlay
  * for shortcuts and gestures in an application.
  */
 
 #include <ctk/ctk.h>
 
 static void
-show_shortcuts (GtkWidget   *window,
+show_shortcuts (CtkWidget   *window,
                 const gchar *id,
                 const gchar *view)
 {
-  GtkBuilder *builder;
-  GtkWidget *overlay;
+  CtkBuilder *builder;
+  CtkWidget *overlay;
   gchar *path;
 
   path = g_strdup_printf ("/shortcuts/%s.ui", id);
@@ -26,51 +26,51 @@ show_shortcuts (GtkWidget   *window,
 }
 
 static void
-builder_shortcuts (GtkWidget *window)
+builder_shortcuts (CtkWidget *window)
 {
   show_shortcuts (window, "shortcuts-builder", NULL);
 }
 
 static void
-gedit_shortcuts (GtkWidget *window)
+gedit_shortcuts (CtkWidget *window)
 {
   show_shortcuts (window, "shortcuts-gedit", NULL);
 }
 
 static void
-clocks_shortcuts (GtkWidget *window)
+clocks_shortcuts (CtkWidget *window)
 {
   show_shortcuts (window, "shortcuts-clocks", NULL);
 }
 
 static void
-clocks_shortcuts_stopwatch (GtkWidget *window)
+clocks_shortcuts_stopwatch (CtkWidget *window)
 {
   show_shortcuts (window, "shortcuts-clocks", "stopwatch");
 }
 
 static void
-boxes_shortcuts (GtkWidget *window)
+boxes_shortcuts (CtkWidget *window)
 {
   show_shortcuts (window, "shortcuts-boxes", NULL);
 }
 
 static void
-boxes_shortcuts_wizard (GtkWidget *window)
+boxes_shortcuts_wizard (CtkWidget *window)
 {
   show_shortcuts (window, "shortcuts-boxes", "wizard");
 }
 
 static void
-boxes_shortcuts_display (GtkWidget *window)
+boxes_shortcuts_display (CtkWidget *window)
 {
   show_shortcuts (window, "shortcuts-boxes", "display");
 }
 
-GtkWidget *
-do_shortcuts (GtkWidget *do_widget)
+CtkWidget *
+do_shortcuts (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
   static gboolean icons_added = FALSE;
 
   if (!icons_added)
@@ -83,7 +83,7 @@ do_shortcuts (GtkWidget *do_widget)
 
   if (!window)
     {
-      GtkBuilder *builder;
+      CtkBuilder *builder;
 
       builder = ctk_builder_new_from_resource ("/shortcuts/shortcuts.ui");
       ctk_builder_add_callback_symbols (builder,

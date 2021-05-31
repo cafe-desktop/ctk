@@ -55,7 +55,7 @@ file_exists (const char *filename)
   return stat (filename, &statbuf) == 0;
 }
 
-GtkWidget *
+CtkWidget *
 shape_create_icon (GdkScreen *screen,
 		   char      *xpm_file,
 		   gint       x,
@@ -64,11 +64,11 @@ shape_create_icon (GdkScreen *screen,
 		   gint       py,
 		   gint       window_type);
 
-static GtkWidget *
+static CtkWidget *
 build_option_menu (gchar           *items[],
 		   gint             num_items,
 		   gint             history,
-		   void           (*func) (GtkWidget *widget, gpointer data),
+		   void           (*func) (CtkWidget *widget, gpointer data),
 		   gpointer         data);
 
 /* macro, structure and variables used by tree window demos */
@@ -77,32 +77,32 @@ build_option_menu (gchar           *items[],
 
 struct {
   GSList* selection_mode_group;
-  GtkWidget* single_button;
-  GtkWidget* browse_button;
-  GtkWidget* multiple_button;
-  GtkWidget* draw_line_button;
-  GtkWidget* view_line_button;
-  GtkWidget* no_root_item_button;
-  GtkWidget* nb_item_spinner;
-  GtkWidget* recursion_spinner;
+  CtkWidget* single_button;
+  CtkWidget* browse_button;
+  CtkWidget* multiple_button;
+  CtkWidget* draw_line_button;
+  CtkWidget* view_line_button;
+  CtkWidget* no_root_item_button;
+  CtkWidget* nb_item_spinner;
+  CtkWidget* recursion_spinner;
 } sTreeSampleSelection;
 
 typedef struct sTreeButtons {
   guint nb_item_add;
-  GtkWidget* add_button;
-  GtkWidget* remove_button;
-  GtkWidget* subtree_button;
+  CtkWidget* add_button;
+  CtkWidget* remove_button;
+  CtkWidget* subtree_button;
 } sTreeButtons;
 /* end of tree section */
 
-static GtkWidget *
+static CtkWidget *
 build_option_menu (gchar           *items[],
 		   gint             num_items,
 		   gint             history,
-		   void           (*func)(GtkWidget *widget, gpointer data),
+		   void           (*func)(CtkWidget *widget, gpointer data),
 		   gpointer         data)
 {
-  GtkWidget *omenu;
+  CtkWidget *omenu;
   gint i;
 
   omenu = ctk_combo_box_text_new ();
@@ -123,15 +123,15 @@ build_option_menu (gchar           *items[],
 
 
 static gboolean
-on_alpha_window_draw (GtkWidget *widget,
+on_alpha_window_draw (CtkWidget *widget,
                       cairo_t   *cr)
 {
   cairo_pattern_t *pattern;
   int radius, width, height;
 
   /* Get the child allocation to avoid painting over the borders */
-  GtkWidget *child = ctk_bin_get_child (CTK_BIN (widget));
-  GtkAllocation child_allocation;
+  CtkWidget *child = ctk_bin_get_child (CTK_BIN (widget));
+  CtkAllocation child_allocation;
   int border_width = ctk_container_get_border_width (CTK_CONTAINER (child));
 
   ctk_widget_get_allocation (child, &child_allocation);
@@ -178,15 +178,15 @@ on_alpha_window_draw (GtkWidget *widget,
   return FALSE;
 }
 
-static GtkWidget *
+static CtkWidget *
 build_alpha_widgets (void)
 {
-  GtkWidget *grid;
-  GtkWidget *radio_button;
-  GtkWidget *check_button;
-  GtkWidget *hbox;
-  GtkWidget *label;
-  GtkWidget *entry;
+  CtkWidget *grid;
+  CtkWidget *radio_button;
+  CtkWidget *check_button;
+  CtkWidget *hbox;
+  CtkWidget *label;
+  CtkWidget *entry;
 
   grid = ctk_grid_new ();
 
@@ -227,9 +227,9 @@ build_alpha_widgets (void)
 }
 
 static void
-on_alpha_screen_changed (GtkWindow *window,
+on_alpha_screen_changed (CtkWindow *window,
 			 GdkScreen *old_screen,
-			 GtkWidget *label)
+			 CtkWidget *label)
 {
   GdkScreen *screen = ctk_widget_get_screen (CTK_WIDGET (window));
   GdkVisual *visual = gdk_screen_get_rgba_visual (screen);
@@ -248,8 +248,8 @@ on_alpha_screen_changed (GtkWindow *window,
 }
 
 static void
-on_composited_changed (GtkWidget *window,
-		      GtkLabel *label)
+on_composited_changed (CtkWidget *window,
+		      CtkLabel *label)
 {
   gboolean is_composited = ctk_widget_is_composited (window);
 
@@ -260,15 +260,15 @@ on_composited_changed (GtkWidget *window,
 }
 
 void
-create_alpha_window (GtkWidget *widget)
+create_alpha_window (CtkWidget *widget)
 {
-  static GtkWidget *window;
+  static CtkWidget *window;
 
   if (!window)
     {
-      GtkWidget *content_area;
-      GtkWidget *vbox;
-      GtkWidget *label;
+      CtkWidget *content_area;
+      CtkWidget *vbox;
+      CtkWidget *label;
       
       window = ctk_dialog_new_with_buttons ("Alpha Window",
 					    CTK_WINDOW (ctk_widget_get_toplevel (widget)), 0,
@@ -331,7 +331,7 @@ create_alpha_window (GtkWidget *widget)
  * default background colour).
  */
 static gboolean
-transparent_draw (GtkWidget *widget,
+transparent_draw (CtkWidget *widget,
                   cairo_t   *cr)
 {
   cairo_set_operator (cr, CAIRO_OPERATOR_CLEAR);
@@ -352,11 +352,11 @@ transparent_draw (GtkWidget *widget,
  * called before then GTK would just blindly paint over our work.
  */
 static gboolean
-window_draw (GtkWidget *widget,
+window_draw (CtkWidget *widget,
              cairo_t   *cr)
 {
-  GtkAllocation allocation;
-  GtkWidget *child;
+  CtkAllocation allocation;
+  CtkWidget *child;
 
   /* put a red background on the window */
   cairo_set_source_rgb (cr, 1, 0, 0);
@@ -379,13 +379,13 @@ window_draw (GtkWidget *widget,
 }
 
 void
-create_composited_window (GtkWidget *widget)
+create_composited_window (CtkWidget *widget)
 {
-  static GtkWidget *window;
+  static CtkWidget *window;
 
   if (!window)
     {
-      GtkWidget *event, *button;
+      CtkWidget *event, *button;
 
       /* make the widgets */
       button = ctk_button_new_with_label ("A Button");
@@ -439,7 +439,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
  */
 
 static void
-pattern_set_bg (GtkWidget   *widget,
+pattern_set_bg (CtkWidget   *widget,
 		GdkWindow   *child,
 		gint         level)
 {
@@ -454,7 +454,7 @@ pattern_set_bg (GtkWidget   *widget,
 }
 
 static void
-create_pattern (GtkWidget   *widget,
+create_pattern (CtkWidget   *widget,
 		GdkWindow   *parent,
 		gint         level,
 		gint         width,
@@ -509,8 +509,8 @@ create_pattern (GtkWidget   *widget,
 #define PATTERN_SIZE (1 << 18)
 
 static void
-pattern_hadj_changed (GtkAdjustment *adjustment,
-		      GtkWidget     *darea)
+pattern_hadj_changed (CtkAdjustment *adjustment,
+		      CtkWidget     *darea)
 {
   gint *old_value = g_object_get_data (G_OBJECT (adjustment), "old-value");
   gint new_value = ctk_adjustment_get_value (adjustment);
@@ -524,8 +524,8 @@ pattern_hadj_changed (GtkAdjustment *adjustment,
 }
 
 static void
-pattern_vadj_changed (GtkAdjustment *adjustment,
-		      GtkWidget *darea)
+pattern_vadj_changed (CtkAdjustment *adjustment,
+		      CtkWidget *darea)
 {
   gint *old_value = g_object_get_data (G_OBJECT (adjustment), "old-value");
   gint new_value = ctk_adjustment_get_value (adjustment);
@@ -539,7 +539,7 @@ pattern_vadj_changed (GtkAdjustment *adjustment,
 }
 
 static void
-pattern_realize (GtkWidget *widget,
+pattern_realize (CtkWidget *widget,
 		 gpointer   data)
 {
   GdkWindow *window;
@@ -550,14 +550,14 @@ pattern_realize (GtkWidget *widget,
 }
 
 static void 
-create_big_windows (GtkWidget *widget)
+create_big_windows (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *content_area;
-  GtkWidget *darea, *grid, *scrollbar;
-  GtkWidget *eventbox;
-  GtkAdjustment *hadjustment;
-  GtkAdjustment *vadjustment;
+  static CtkWidget *window = NULL;
+  CtkWidget *content_area;
+  CtkWidget *darea, *grid, *scrollbar;
+  CtkWidget *eventbox;
+  CtkAdjustment *hadjustment;
+  CtkAdjustment *vadjustment;
   static gint current_x;
   static gint current_y;
  
@@ -629,12 +629,12 @@ create_big_windows (GtkWidget *widget)
 }
 
 /*
- * GtkButton
+ * CtkButton
  */
 
 static void
-button_window (GtkWidget *widget,
-	       GtkWidget *button)
+button_window (CtkWidget *widget,
+	       CtkWidget *button)
 {
   if (!ctk_widget_get_visible (button))
     ctk_widget_show (button);
@@ -643,14 +643,14 @@ button_window (GtkWidget *widget,
 }
 
 static void
-create_buttons (GtkWidget *widget)
+create_buttons (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *box1;
-  GtkWidget *box2;
-  GtkWidget *grid;
-  GtkWidget *separator;
-  GtkWidget *button[10];
+  static CtkWidget *window = NULL;
+  CtkWidget *box1;
+  CtkWidget *box2;
+  CtkWidget *grid;
+  CtkWidget *separator;
+  CtkWidget *button[10];
   int button_x[9] = { 0, 1, 2, 0, 2, 1, 1, 2, 0 };
   int button_y[9] = { 0, 1, 2, 2, 0, 2, 0, 1, 1 };
   guint i;
@@ -665,7 +665,7 @@ create_buttons (GtkWidget *widget)
 			G_CALLBACK (ctk_widget_destroyed),
 			&window);
 
-      ctk_window_set_title (CTK_WINDOW (window), "GtkButton");
+      ctk_window_set_title (CTK_WINDOW (window), "CtkButton");
       ctk_container_set_border_width (CTK_CONTAINER (window), 0);
 
       box1 = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
@@ -724,17 +724,17 @@ create_buttons (GtkWidget *widget)
 }
 
 /*
- * GtkToggleButton
+ * CtkToggleButton
  */
 
 static void
-create_toggle_buttons (GtkWidget *widget)
+create_toggle_buttons (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *box1;
-  GtkWidget *box2;
-  GtkWidget *button;
-  GtkWidget *separator;
+  static CtkWidget *window = NULL;
+  CtkWidget *box1;
+  CtkWidget *box2;
+  CtkWidget *button;
+  CtkWidget *separator;
 
   if (!window)
     {
@@ -746,7 +746,7 @@ create_toggle_buttons (GtkWidget *widget)
 			G_CALLBACK (ctk_widget_destroyed),
 			&window);
 
-      ctk_window_set_title (CTK_WINDOW (window), "GtkToggleButton");
+      ctk_window_set_title (CTK_WINDOW (window), "CtkToggleButton");
       ctk_container_set_border_width (CTK_CONTAINER (window), 0);
 
       box1 = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
@@ -791,11 +791,11 @@ create_toggle_buttons (GtkWidget *widget)
     ctk_widget_destroy (window);
 }
 
-static GtkWidget *
+static CtkWidget *
 create_widget_grid (GType widget_type)
 {
-  GtkWidget *grid;
-  GtkWidget *group_widget = NULL;
+  CtkWidget *grid;
+  CtkWidget *group_widget = NULL;
   gint i, j;
   
   grid = ctk_grid_new ();
@@ -804,7 +804,7 @@ create_widget_grid (GType widget_type)
     {
       for (j = 0; j < 5; j++)
 	{
-	  GtkWidget *widget;
+	  CtkWidget *widget;
 	  char *tmp;
 	  
 	  if (i == 0 && j == 0)
@@ -845,18 +845,18 @@ create_widget_grid (GType widget_type)
 }
 
 /*
- * GtkCheckButton
+ * CtkCheckButton
  */
 
 static void
-create_check_buttons (GtkWidget *widget)
+create_check_buttons (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *box1;
-  GtkWidget *box2;
-  GtkWidget *button;
-  GtkWidget *separator;
-  GtkWidget *table;
+  static CtkWidget *window = NULL;
+  CtkWidget *box1;
+  CtkWidget *box2;
+  CtkWidget *button;
+  CtkWidget *separator;
+  CtkWidget *table;
   
   if (!window)
     {
@@ -910,18 +910,18 @@ create_check_buttons (GtkWidget *widget)
 }
 
 /*
- * GtkRadioButton
+ * CtkRadioButton
  */
 
 static void
-create_radio_buttons (GtkWidget *widget)
+create_radio_buttons (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *box1;
-  GtkWidget *box2;
-  GtkWidget *button;
-  GtkWidget *separator;
-  GtkWidget *table;
+  static CtkWidget *window = NULL;
+  CtkWidget *box1;
+  CtkWidget *box2;
+  CtkWidget *button;
+  CtkWidget *separator;
+  CtkWidget *table;
 
   if (!window)
     {
@@ -1006,10 +1006,10 @@ create_radio_buttons (GtkWidget *widget)
 }
 
 /*
- * GtkButtonBox
+ * CtkButtonBox
  */
 
-static GtkWidget *
+static CtkWidget *
 create_bbox (gint  horizontal,
 	     char* title, 
 	     gint  spacing,
@@ -1017,9 +1017,9 @@ create_bbox (gint  horizontal,
 	     gint  child_h,
 	     gint  layout)
 {
-  GtkWidget *frame;
-  GtkWidget *bbox;
-  GtkWidget *button;
+  CtkWidget *frame;
+  CtkWidget *bbox;
+  CtkWidget *button;
 	
   frame = ctk_frame_new (title);
 
@@ -1047,14 +1047,14 @@ create_bbox (gint  horizontal,
 }
 
 static void
-create_button_box (GtkWidget *widget)
+create_button_box (CtkWidget *widget)
 {
-  static GtkWidget* window = NULL;
-  GtkWidget *main_vbox;
-  GtkWidget *vbox;
-  GtkWidget *hbox;
-  GtkWidget *frame_horz;
-  GtkWidget *frame_vert;
+  static CtkWidget* window = NULL;
+  CtkWidget *main_vbox;
+  CtkWidget *vbox;
+  CtkWidget *hbox;
+  CtkWidget *frame_horz;
+  CtkWidget *frame_vert;
 
   if (!window)
   {
@@ -1133,14 +1133,14 @@ create_button_box (GtkWidget *widget)
 }
 
 /*
- * GtkToolBar
+ * CtkToolBar
  */
 
-static GtkWidget*
+static CtkWidget*
 new_pixbuf (char      *filename,
 	    GdkWindow *window)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   GdkPixbuf *pixbuf;
 
   if (strcmp (filename, "test.xpm") == 0)
@@ -1160,63 +1160,63 @@ new_pixbuf (char      *filename,
 
 
 static void
-set_toolbar_small_stock (GtkWidget *widget,
+set_toolbar_small_stock (CtkWidget *widget,
 			 gpointer   data)
 {
   ctk_toolbar_set_icon_size (CTK_TOOLBAR (data), CTK_ICON_SIZE_SMALL_TOOLBAR);
 }
 
 static void
-set_toolbar_large_stock (GtkWidget *widget,
+set_toolbar_large_stock (CtkWidget *widget,
 			 gpointer   data)
 {
   ctk_toolbar_set_icon_size (CTK_TOOLBAR (data), CTK_ICON_SIZE_LARGE_TOOLBAR);
 }
 
 static void
-set_toolbar_horizontal (GtkWidget *widget,
+set_toolbar_horizontal (CtkWidget *widget,
 			gpointer   data)
 {
   ctk_orientable_set_orientation (CTK_ORIENTABLE (data), CTK_ORIENTATION_HORIZONTAL);
 }
 
 static void
-set_toolbar_vertical (GtkWidget *widget,
+set_toolbar_vertical (CtkWidget *widget,
 		      gpointer   data)
 {
   ctk_orientable_set_orientation (CTK_ORIENTABLE (data), CTK_ORIENTATION_VERTICAL);
 }
 
 static void
-set_toolbar_icons (GtkWidget *widget,
+set_toolbar_icons (CtkWidget *widget,
 		   gpointer   data)
 {
   ctk_toolbar_set_style (CTK_TOOLBAR (data), CTK_TOOLBAR_ICONS);
 }
 
 static void
-set_toolbar_text (GtkWidget *widget,
+set_toolbar_text (CtkWidget *widget,
 	          gpointer   data)
 {
   ctk_toolbar_set_style (CTK_TOOLBAR (data), CTK_TOOLBAR_TEXT);
 }
 
 static void
-set_toolbar_both (GtkWidget *widget,
+set_toolbar_both (CtkWidget *widget,
 		  gpointer   data)
 {
   ctk_toolbar_set_style (CTK_TOOLBAR (data), CTK_TOOLBAR_BOTH);
 }
 
 static void
-set_toolbar_both_horiz (GtkWidget *widget,
+set_toolbar_both_horiz (CtkWidget *widget,
 			gpointer   data)
 {
   ctk_toolbar_set_style (CTK_TOOLBAR (data), CTK_TOOLBAR_BOTH_HORIZ);
 }
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-static GtkActionEntry create_toolbar_items[] = {
+static CtkActionEntry create_toolbar_items[] = {
     { NULL, CTK_STOCK_NEW, NULL, NULL, "Stock icon: New",
       G_CALLBACK (set_toolbar_small_stock) },
     { NULL, CTK_STOCK_OPEN, NULL, NULL, "Stock icon: Open",
@@ -1235,7 +1235,7 @@ static GtkActionEntry create_toolbar_items[] = {
     { NULL, NULL, "Both (horizontal)", NULL, "Show toolbar icons and text in a horizontal fashion",
       G_CALLBACK (set_toolbar_both_horiz) },
     { NULL },
-    { "entry", NULL, NULL, "This is an unusable GtkEntry ;)",
+    { "entry", NULL, NULL, "This is an unusable CtkEntry ;)",
       NULL },
     { NULL },
     { NULL },
@@ -1252,10 +1252,10 @@ static GtkActionEntry create_toolbar_items[] = {
 G_GNUC_END_IGNORE_DEPRECATIONS;
 
 static void
-create_toolbar (GtkWidget *widget)
+create_toolbar (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *toolbar;
+  static CtkWidget *window = NULL;
+  CtkWidget *toolbar;
 
   if (!window)
     {
@@ -1277,13 +1277,13 @@ create_toolbar (GtkWidget *widget)
       toolbar = ctk_toolbar_new ();
       for (i = 0; i < G_N_ELEMENTS (create_toolbar_items); i++)
         {
-          GtkToolItem *toolitem;
+          CtkToolItem *toolitem;
 
           if (create_toolbar_items[i].tooltip == NULL)
             toolitem = ctk_separator_tool_item_new ();
           else if (g_strcmp0 (create_toolbar_items[i].name, "entry") == 0)
             {
-              GtkWidget *entry;
+              CtkWidget *entry;
 
               toolitem = ctk_tool_item_new ();
               entry = ctk_entry_new ();
@@ -1297,7 +1297,7 @@ create_toolbar (GtkWidget *widget)
             }
           else
             {
-              GtkWidget *icon;
+              CtkWidget *icon;
 
               icon = new_pixbuf ("test.xpm", ctk_widget_get_window (window));
               toolitem = ctk_tool_button_new (icon, create_toolbar_items[i].label);
@@ -1321,14 +1321,14 @@ create_toolbar (GtkWidget *widget)
 }
 
 /*
- * GtkStatusBar
+ * CtkStatusBar
  */
 
 static guint statusbar_counter = 1;
 
 static void
-statusbar_push (GtkWidget *button,
-		GtkStatusbar *statusbar)
+statusbar_push (CtkWidget *button,
+		CtkStatusbar *statusbar)
 {
   gchar text[1024];
 
@@ -1338,8 +1338,8 @@ statusbar_push (GtkWidget *button,
 }
 
 static void
-statusbar_push_long (GtkWidget *button,
-                     GtkStatusbar *statusbar)
+statusbar_push_long (CtkWidget *button,
+                     CtkStatusbar *statusbar)
 {
   gchar text[1024];
 
@@ -1349,21 +1349,21 @@ statusbar_push_long (GtkWidget *button,
 }
 
 static void
-statusbar_pop (GtkWidget *button,
-	       GtkStatusbar *statusbar)
+statusbar_pop (CtkWidget *button,
+	       CtkStatusbar *statusbar)
 {
   ctk_statusbar_pop (statusbar, 1);
 }
 
 static void
-statusbar_steal (GtkWidget *button,
-	         GtkStatusbar *statusbar)
+statusbar_steal (CtkWidget *button,
+	         CtkStatusbar *statusbar)
 {
   ctk_statusbar_remove (statusbar, 1, 4);
 }
 
 static void
-statusbar_popped (GtkStatusbar  *statusbar,
+statusbar_popped (CtkStatusbar  *statusbar,
 		  guint          context_id,
 		  const gchar	*text)
 {
@@ -1372,45 +1372,45 @@ statusbar_popped (GtkStatusbar  *statusbar,
 }
 
 static void
-statusbar_contexts (GtkStatusbar *statusbar)
+statusbar_contexts (CtkStatusbar *statusbar)
 {
   gchar *string;
 
   string = "any context";
-  g_print ("GtkStatusBar: context=\"%s\", context_id=%d\n",
+  g_print ("CtkStatusBar: context=\"%s\", context_id=%d\n",
 	   string,
 	   ctk_statusbar_get_context_id (statusbar, string));
   
   string = "idle messages";
-  g_print ("GtkStatusBar: context=\"%s\", context_id=%d\n",
+  g_print ("CtkStatusBar: context=\"%s\", context_id=%d\n",
 	   string,
 	   ctk_statusbar_get_context_id (statusbar, string));
   
   string = "some text";
-  g_print ("GtkStatusBar: context=\"%s\", context_id=%d\n",
+  g_print ("CtkStatusBar: context=\"%s\", context_id=%d\n",
 	   string,
 	   ctk_statusbar_get_context_id (statusbar, string));
 
   string = "hit the mouse";
-  g_print ("GtkStatusBar: context=\"%s\", context_id=%d\n",
+  g_print ("CtkStatusBar: context=\"%s\", context_id=%d\n",
 	   string,
 	   ctk_statusbar_get_context_id (statusbar, string));
 
   string = "hit the mouse2";
-  g_print ("GtkStatusBar: context=\"%s\", context_id=%d\n",
+  g_print ("CtkStatusBar: context=\"%s\", context_id=%d\n",
 	   string,
 	   ctk_statusbar_get_context_id (statusbar, string));
 }
 
 static void
-create_statusbar (GtkWidget *widget)
+create_statusbar (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *box1;
-  GtkWidget *box2;
-  GtkWidget *button;
-  GtkWidget *separator;
-  GtkWidget *statusbar;
+  static CtkWidget *window = NULL;
+  CtkWidget *box1;
+  CtkWidget *box2;
+  CtkWidget *button;
+  CtkWidget *separator;
+  CtkWidget *statusbar;
 
   if (!window)
     {
@@ -1505,7 +1505,7 @@ create_statusbar (GtkWidget *widget)
 /* Alpha demo */
 
 static void
-alpha_changed (GtkRange *range, GtkWidget *widget)
+alpha_changed (CtkRange *range, CtkWidget *widget)
 {
   gdouble alpha;
 
@@ -1516,15 +1516,15 @@ alpha_changed (GtkRange *range, GtkWidget *widget)
 
 
 void
-create_alpha_widgets (GtkWidget *widget)
+create_alpha_widgets (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkWidget *vbox2, *vbox, *main_hbox;
-      GtkWidget *button, *event_box, *label, *scale;
-      GtkWidget *alpha1, *alpha2, *alpha3;
+      CtkWidget *vbox2, *vbox, *main_hbox;
+      CtkWidget *button, *event_box, *label, *scale;
+      CtkWidget *alpha1, *alpha2, *alpha3;
 
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window),
@@ -1618,17 +1618,17 @@ create_alpha_widgets (GtkWidget *widget)
  * Label Demo
  */
 static void
-sensitivity_toggled (GtkWidget *toggle,
-                     GtkWidget *widget)
+sensitivity_toggled (CtkWidget *toggle,
+                     CtkWidget *widget)
 {
   ctk_widget_set_sensitive (widget,
                             ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (toggle)));
 }
 
-static GtkWidget*
-create_sensitivity_control (GtkWidget *widget)
+static CtkWidget*
+create_sensitivity_control (CtkWidget *widget)
 {
-  GtkWidget *button;
+  CtkWidget *button;
 
   button = ctk_toggle_button_new_with_label ("Sensitive");  
 
@@ -1646,7 +1646,7 @@ create_sensitivity_control (GtkWidget *widget)
 }
 
 static void
-set_selectable_recursive (GtkWidget *widget,
+set_selectable_recursive (CtkWidget *widget,
                           gboolean   setting)
 {
   if (CTK_IS_CONTAINER (widget))
@@ -1671,17 +1671,17 @@ set_selectable_recursive (GtkWidget *widget,
 }
 
 static void
-selectable_toggled (GtkWidget *toggle,
-                    GtkWidget *widget)
+selectable_toggled (CtkWidget *toggle,
+                    CtkWidget *widget)
 {
   set_selectable_recursive (widget,
                             ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (toggle)));
 }
 
-static GtkWidget*
-create_selectable_control (GtkWidget *widget)
+static CtkWidget*
+create_selectable_control (CtkWidget *widget)
 {
-  GtkWidget *button;
+  CtkWidget *button;
 
   button = ctk_toggle_button_new_with_label ("Selectable");  
 
@@ -1699,7 +1699,7 @@ create_selectable_control (GtkWidget *widget)
 }
 
 static void
-dialog_response (GtkWidget *dialog, gint response_id, GtkLabel *label)
+dialog_response (CtkWidget *dialog, gint response_id, CtkLabel *label)
 {
   const gchar *text;
 
@@ -1713,11 +1713,11 @@ dialog_response (GtkWidget *dialog, gint response_id, GtkLabel *label)
 }
 
 static gboolean
-activate_link (GtkWidget *label, const gchar *uri, gpointer data)
+activate_link (CtkWidget *label, const gchar *uri, gpointer data)
 {
   if (g_strcmp0 (uri, "keynav") == 0)
     {
-      GtkWidget *dialog;
+      CtkWidget *dialog;
 
       dialog = ctk_message_dialog_new_with_markup (CTK_WINDOW (ctk_widget_get_toplevel (label)),
                                        CTK_DIALOG_DESTROY_WITH_PARENT,
@@ -1737,14 +1737,14 @@ activate_link (GtkWidget *label, const gchar *uri, gpointer data)
   return FALSE;
 }
 
-void create_labels (GtkWidget *widget)
+void create_labels (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *hbox;
-  GtkWidget *vbox;
-  GtkWidget *frame;
-  GtkWidget *label;
-  GtkWidget *button;
+  static CtkWidget *window = NULL;
+  CtkWidget *hbox;
+  CtkWidget *vbox;
+  CtkWidget *frame;
+  CtkWidget *label;
+  CtkWidget *button;
 
   if (!window)
     {
@@ -1904,22 +1904,22 @@ void create_labels (GtkWidget *widget)
 }
 
 static void
-on_angle_scale_changed (GtkRange *range,
-			GtkLabel *label)
+on_angle_scale_changed (CtkRange *range,
+			CtkLabel *label)
 {
   ctk_label_set_angle (CTK_LABEL (label), ctk_range_get_value (range));
 }
 
 static void
-create_rotated_label (GtkWidget *widget)
+create_rotated_label (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *content_area;
-  GtkWidget *vbox;
-  GtkWidget *hscale;
-  GtkWidget *label;  
-  GtkWidget *scale_label;  
-  GtkWidget *scale_hbox;  
+  static CtkWidget *window = NULL;
+  CtkWidget *content_area;
+  CtkWidget *vbox;
+  CtkWidget *hscale;
+  CtkWidget *label;  
+  CtkWidget *scale_label;  
+  CtkWidget *scale_hbox;  
 
   if (!window)
     {
@@ -1974,13 +1974,13 @@ create_rotated_label (GtkWidget *widget)
 #define DEFAULT_TEXT_RADIUS 200
 
 static void
-on_rotated_text_unrealize (GtkWidget *widget)
+on_rotated_text_unrealize (CtkWidget *widget)
 {
   g_object_set_data (G_OBJECT (widget), "text-gc", NULL);
 }
 
 static gboolean
-on_rotated_text_draw (GtkWidget *widget,
+on_rotated_text_draw (CtkWidget *widget,
                       cairo_t   *cr,
 	              GdkPixbuf *tile_pixbuf)
 {
@@ -2045,15 +2045,15 @@ on_rotated_text_draw (GtkWidget *widget,
 }
 
 static void
-create_rotated_text (GtkWidget *widget)
+create_rotated_text (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkRequisition requisition;
-      GtkWidget *content_area;
-      GtkWidget *drawing_area;
+      CtkRequisition requisition;
+      CtkWidget *content_area;
+      CtkWidget *drawing_area;
       GdkPixbuf *tile_pixbuf;
 
       window = ctk_dialog_new_with_buttons ("Rotated Text",
@@ -2103,10 +2103,10 @@ create_rotated_text (GtkWidget *widget)
  */
 
 static void
-reparent_label (GtkWidget *widget,
-		GtkWidget *new_parent)
+reparent_label (CtkWidget *widget,
+		CtkWidget *new_parent)
 {
-  GtkWidget *label;
+  CtkWidget *label;
 
   label = g_object_get_data (G_OBJECT (widget), "user_data");
 
@@ -2116,11 +2116,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-set_parent_signal (GtkWidget *child,
-		   GtkWidget *old_parent,
+set_parent_signal (CtkWidget *child,
+		   CtkWidget *old_parent,
 		   gpointer   func_data)
 {
-  GtkWidget *parent;
+  CtkWidget *parent;
 
   parent = ctk_widget_get_parent (child);
   g_message ("set_parent for \"%s\": new parent: \"%s\", old parent: \"%s\", data: %d\n",
@@ -2131,17 +2131,17 @@ set_parent_signal (GtkWidget *child,
 }
 
 static void
-create_reparent (GtkWidget *widget)
+create_reparent (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *box1;
-  GtkWidget *box2;
-  GtkWidget *box3;
-  GtkWidget *frame;
-  GtkWidget *button;
-  GtkWidget *label;
-  GtkWidget *separator;
-  GtkWidget *event_box;
+  static CtkWidget *window = NULL;
+  CtkWidget *box1;
+  CtkWidget *box2;
+  CtkWidget *box3;
+  CtkWidget *frame;
+  CtkWidget *button;
+  CtkWidget *label;
+  CtkWidget *separator;
+  CtkWidget *event_box;
 
   if (!window)
     {
@@ -2232,7 +2232,7 @@ create_reparent (GtkWidget *widget)
  * Resize Grips
  */
 static gboolean
-grippy_button_press (GtkWidget *area, GdkEventButton *event, GdkWindowEdge edge)
+grippy_button_press (CtkWidget *area, GdkEventButton *event, GdkWindowEdge edge)
 {
   if (event->type == GDK_BUTTON_PRESS) 
     {
@@ -2249,10 +2249,10 @@ grippy_button_press (GtkWidget *area, GdkEventButton *event, GdkWindowEdge edge)
 }
 
 static gboolean
-grippy_draw (GtkWidget *area, cairo_t *cr, GdkWindowEdge edge)
+grippy_draw (CtkWidget *area, cairo_t *cr, GdkWindowEdge edge)
 {
-  GtkStyleContext *context;
-  GtkJunctionSides sides;
+  CtkStyleContext *context;
+  CtkJunctionSides sides;
 
   switch (edge)
     {
@@ -2299,11 +2299,11 @@ grippy_draw (GtkWidget *area, cairo_t *cr, GdkWindowEdge edge)
 }
 
 static void
-create_resize_grips (GtkWidget *widget)
+create_resize_grips (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *area;
-  GtkWidget *hbox, *vbox;
+  static CtkWidget *window = NULL;
+  CtkWidget *area;
+  CtkWidget *hbox, *vbox;
   if (!window)
     {
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -2419,10 +2419,10 @@ gint upositionx = 0;
 gint upositiony = 0;
 
 static gint
-uposition_configure (GtkWidget *window)
+uposition_configure (CtkWidget *window)
 {
-  GtkLabel *lx;
-  GtkLabel *ly;
+  CtkLabel *lx;
+  CtkLabel *ly;
   gchar buffer[64];
 
   lx = g_object_get_data (G_OBJECT (window), "x");
@@ -2439,7 +2439,7 @@ uposition_configure (GtkWidget *window)
 }
 
 static void
-uposition_stop_configure (GtkToggleButton *toggle,
+uposition_stop_configure (CtkToggleButton *toggle,
 			  GObject         *window)
 {
   if (ctk_toggle_button_get_active (toggle))
@@ -2449,20 +2449,20 @@ uposition_stop_configure (GtkToggleButton *toggle,
 }
 
 static void
-create_saved_position (GtkWidget *widget)
+create_saved_position (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkWidget *hbox;
-      GtkWidget *main_vbox;
-      GtkWidget *vbox;
-      GtkWidget *x_label;
-      GtkWidget *y_label;
-      GtkWidget *button;
-      GtkWidget *label;
-      GtkWidget *any;
+      CtkWidget *hbox;
+      CtkWidget *main_vbox;
+      CtkWidget *vbox;
+      CtkWidget *x_label;
+      CtkWidget *y_label;
+      CtkWidget *button;
+      CtkWidget *label;
+      CtkWidget *any;
 
       window = g_object_connect (g_object_new (CTK_TYPE_WINDOW,
 						 "type", CTK_WINDOW_TOPLEVEL,
@@ -2488,11 +2488,11 @@ create_saved_position (GtkWidget *widget)
       vbox =
 	g_object_new (CTK_TYPE_BOX,
                       "orientation", CTK_ORIENTATION_VERTICAL,
-			"GtkBox::homogeneous", FALSE,
-			"GtkBox::spacing", 5,
-			"GtkContainer::border_width", 10,
-			"GtkWidget::parent", main_vbox,
-			"GtkWidget::visible", TRUE,
+			"CtkBox::homogeneous", FALSE,
+			"CtkBox::spacing", 5,
+			"CtkContainer::border_width", 10,
+			"CtkWidget::parent", main_vbox,
+			"CtkWidget::visible", TRUE,
 			"child", g_object_connect (g_object_new (CTK_TYPE_TOGGLE_BUTTON,
 								   "label", "Stop Events",
 								   "active", FALSE,
@@ -2530,7 +2530,7 @@ create_saved_position (GtkWidget *widget)
 
       any =
 	g_object_new (ctk_separator_get_type (),
-			"GtkWidget::visible", TRUE,
+			"CtkWidget::visible", TRUE,
 			NULL);
       ctk_box_pack_start (CTK_BOX (main_vbox), any, FALSE, TRUE, 0);
 
@@ -2553,20 +2553,20 @@ create_saved_position (GtkWidget *widget)
 }
 
 /*
- * GtkPixmap
+ * CtkPixmap
  */
 
 static void
-create_pixbuf (GtkWidget *widget)
+create_pixbuf (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *box1;
-  GtkWidget *box2;
-  GtkWidget *box3;
-  GtkWidget *button;
-  GtkWidget *label;
-  GtkWidget *separator;
-  GtkWidget *pixbufwid;
+  static CtkWidget *window = NULL;
+  CtkWidget *box1;
+  CtkWidget *box2;
+  CtkWidget *box3;
+  CtkWidget *button;
+  CtkWidget *label;
+  CtkWidget *separator;
+  CtkWidget *pixbufwid;
   GdkWindow *gdk_window;
 
   if (!window)
@@ -2580,7 +2580,7 @@ create_pixbuf (GtkWidget *widget)
                         G_CALLBACK (ctk_widget_destroyed),
                         &window);
 
-      ctk_window_set_title (CTK_WINDOW (window), "GtkPixmap");
+      ctk_window_set_title (CTK_WINDOW (window), "CtkPixmap");
       ctk_container_set_border_width (CTK_CONTAINER (window), 0);
       ctk_widget_realize(window);
 
@@ -2642,25 +2642,25 @@ create_pixbuf (GtkWidget *widget)
 }
 
 static void
-create_tooltips (GtkWidget *widget)
+create_tooltips (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *box1;
-  GtkWidget *box2;
-  GtkWidget *box3;
-  GtkWidget *button;
-  GtkWidget *toggle;
-  GtkWidget *frame;
-  GtkWidget *separator;
+  static CtkWidget *window = NULL;
+  CtkWidget *box1;
+  CtkWidget *box2;
+  CtkWidget *box3;
+  CtkWidget *button;
+  CtkWidget *toggle;
+  CtkWidget *frame;
+  CtkWidget *separator;
 
   if (!window)
     {
       window =
 	g_object_new (ctk_window_get_type (),
-			"GtkWindow::type", CTK_WINDOW_TOPLEVEL,
-			"GtkContainer::border_width", 0,
-			"GtkWindow::title", "Tooltips",
-			"GtkWindow::resizable", FALSE,
+			"CtkWindow::type", CTK_WINDOW_TOPLEVEL,
+			"CtkContainer::border_width", 0,
+			"CtkWindow::title", "Tooltips",
+			"CtkWindow::resizable", FALSE,
 			NULL);
 
       ctk_window_set_screen (CTK_WINDOW (window),
@@ -2744,13 +2744,13 @@ create_tooltips (GtkWidget *widget)
 }
 
 /*
- * GtkImage
+ * CtkImage
  */
 
 static void
-pack_image (GtkWidget *box,
+pack_image (CtkWidget *box,
             const gchar *text,
-            GtkWidget *image)
+            CtkWidget *image)
 {
   ctk_box_pack_start (CTK_BOX (box),
                       ctk_label_new (text),
@@ -2762,13 +2762,13 @@ pack_image (GtkWidget *box,
 }
 
 static void
-create_image (GtkWidget *widget)
+create_image (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (window == NULL)
     {
-      GtkWidget *vbox;
+      CtkWidget *vbox;
       GdkPixbuf *pixbuf;
         
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -2812,7 +2812,7 @@ create_image (GtkWidget *widget)
  */
 
 static int
-list_sort_cb (GtkListBoxRow *a, GtkListBoxRow *b, gpointer data)
+list_sort_cb (CtkListBoxRow *a, CtkListBoxRow *b, gpointer data)
 {
   gint aa = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (a), "value"));
   gint bb = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (b), "value"));
@@ -2820,13 +2820,13 @@ list_sort_cb (GtkListBoxRow *a, GtkListBoxRow *b, gpointer data)
 }
 
 static gboolean
-list_filter_all_cb (GtkListBoxRow *row, gpointer data)
+list_filter_all_cb (CtkListBoxRow *row, gpointer data)
 {
   return FALSE;
 }
 
 static gboolean
-list_filter_odd_cb (GtkListBoxRow *row, gpointer data)
+list_filter_odd_cb (CtkListBoxRow *row, gpointer data)
 {
   gint value = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (row), "value"));
 
@@ -2834,48 +2834,48 @@ list_filter_odd_cb (GtkListBoxRow *row, gpointer data)
 }
 
 static void
-list_sort_clicked_cb (GtkButton *button,
+list_sort_clicked_cb (CtkButton *button,
                       gpointer data)
 {
-  GtkListBox *list = data;
+  CtkListBox *list = data;
 
   ctk_list_box_set_sort_func (list, list_sort_cb, NULL, NULL);
 }
 
 static void
-list_filter_odd_clicked_cb (GtkButton *button,
+list_filter_odd_clicked_cb (CtkButton *button,
                             gpointer data)
 {
-  GtkListBox *list = data;
+  CtkListBox *list = data;
 
   ctk_list_box_set_filter_func (list, list_filter_odd_cb, NULL, NULL);
 }
 
 static void
-list_filter_all_clicked_cb (GtkButton *button,
+list_filter_all_clicked_cb (CtkButton *button,
                             gpointer data)
 {
-  GtkListBox *list = data;
+  CtkListBox *list = data;
 
   ctk_list_box_set_filter_func (list, list_filter_all_cb, NULL, NULL);
 }
 
 
 static void
-list_unfilter_clicked_cb (GtkButton *button,
+list_unfilter_clicked_cb (CtkButton *button,
                           gpointer data)
 {
-  GtkListBox *list = data;
+  CtkListBox *list = data;
 
   ctk_list_box_set_filter_func (list, NULL, NULL, NULL);
 }
 
 static void
-add_placeholder_clicked_cb (GtkButton *button,
+add_placeholder_clicked_cb (CtkButton *button,
                             gpointer data)
 {
-  GtkListBox *list = data;
-  GtkWidget *label;
+  CtkListBox *list = data;
+  CtkWidget *label;
 
   label = ctk_label_new ("You filtered everything!!!");
   ctk_widget_show (label);
@@ -2883,23 +2883,23 @@ add_placeholder_clicked_cb (GtkButton *button,
 }
 
 static void
-remove_placeholder_clicked_cb (GtkButton *button,
+remove_placeholder_clicked_cb (CtkButton *button,
                             gpointer data)
 {
-  GtkListBox *list = data;
+  CtkListBox *list = data;
 
   ctk_list_box_set_placeholder (CTK_LIST_BOX (list), NULL);
 }
 
 
 static void
-create_listbox (GtkWidget *widget)
+create_listbox (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkWidget *hbox, *vbox, *scrolled, *scrolled_box, *list, *label, *button;
+      CtkWidget *hbox, *vbox, *scrolled, *scrolled_box, *list, *label, *button;
       GdkScreen *screen = ctk_widget_get_screen (widget);
       int i;
 
@@ -2980,12 +2980,12 @@ create_listbox (GtkWidget *widget)
  * Menu demo
  */
 
-static GtkWidget*
+static CtkWidget*
 create_menu (GdkScreen *screen, gint depth, gint length)
 {
-  GtkWidget *menu;
-  GtkWidget *menuitem;
-  GtkWidget *image;
+  CtkWidget *menu;
+  CtkWidget *menuitem;
+  CtkWidget *image;
   GSList *group;
   char buf[32];
   int i, j;
@@ -3033,13 +3033,13 @@ create_menu (GdkScreen *screen, gint depth, gint length)
   return menu;
 }
 
-static GtkWidget*
+static CtkWidget*
 create_table_menu (GdkScreen *screen, gint cols, gint rows)
 {
-  GtkWidget *menu;
-  GtkWidget *menuitem;
-  GtkWidget *submenu;
-  GtkWidget *image;
+  CtkWidget *menu;
+  CtkWidget *menuitem;
+  CtkWidget *submenu;
+  CtkWidget *image;
   char buf[32];
   int i, j;
 
@@ -3222,22 +3222,22 @@ create_table_menu (GdkScreen *screen, gint cols, gint rows)
 }
 
 static void
-create_menus (GtkWidget *widget)
+create_menus (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *box1;
-  GtkWidget *box2;
-  GtkWidget *button;
-  GtkWidget *optionmenu;
-  GtkWidget *separator;
+  static CtkWidget *window = NULL;
+  CtkWidget *box1;
+  CtkWidget *box2;
+  CtkWidget *button;
+  CtkWidget *optionmenu;
+  CtkWidget *separator;
   
   if (!window)
     {
-      GtkWidget *menubar;
-      GtkWidget *menu;
-      GtkWidget *menuitem;
-      GtkAccelGroup *accel_group;
-      GtkWidget *image;
+      CtkWidget *menubar;
+      CtkWidget *menu;
+      CtkWidget *menuitem;
+      CtkAccelGroup *accel_group;
+      CtkWidget *image;
       GdkScreen *screen = ctk_widget_get_screen (widget);
       
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -3383,15 +3383,15 @@ create_menus (GtkWidget *widget)
 }
 
 
-static GtkWidget *
-accel_button_new (GtkAccelGroup *accel_group,
+static CtkWidget *
+accel_button_new (CtkAccelGroup *accel_group,
 		  const gchar   *text,
 		  const gchar   *accel)
 {
   guint keyval;
   GdkModifierType modifiers;
-  GtkWidget *button;
-  GtkWidget *label;
+  CtkWidget *button;
+  CtkWidget *label;
 
   ctk_accelerator_parse (accel, &keyval, &modifiers);
   g_assert (keyval);
@@ -3410,16 +3410,16 @@ accel_button_new (GtkAccelGroup *accel_group,
 }
 
 static void
-create_key_lookup (GtkWidget *widget)
+create_key_lookup (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
   gpointer window_ptr;
 
   if (!window)
     {
-      GtkAccelGroup *accel_group = ctk_accel_group_new ();
-      GtkWidget *button;
-      GtkWidget *content_area;
+      CtkAccelGroup *accel_group = ctk_accel_group_new ();
+      CtkWidget *button;
+      CtkWidget *content_area;
 
       window = ctk_dialog_new_with_buttons ("Key Lookup", NULL, 0,
 					    "_Close", CTK_RESPONSE_CLOSE,
@@ -3481,7 +3481,7 @@ create_key_lookup (GtkWidget *widget)
  */
 
 static gboolean
-cmw_destroy_cb(GtkWidget *widget)
+cmw_destroy_cb(CtkWidget *widget)
 {
   /* This is needed to get out of ctk_main */
   ctk_main_quit ();
@@ -3490,9 +3490,9 @@ cmw_destroy_cb(GtkWidget *widget)
 }
 
 static void
-cmw_color (GtkWidget *widget, GtkWidget *parent)
+cmw_color (CtkWidget *widget, CtkWidget *parent)
 {
-    GtkWidget *csd;
+    CtkWidget *csd;
 
     csd = ctk_color_chooser_dialog_new ("This is a modal color selection dialog", CTK_WINDOW (parent));
 
@@ -3510,9 +3510,9 @@ cmw_color (GtkWidget *widget, GtkWidget *parent)
 }
 
 static void
-cmw_file (GtkWidget *widget, GtkWidget *parent)
+cmw_file (CtkWidget *widget, CtkWidget *parent)
 {
-    GtkWidget *fs;
+    CtkWidget *fs;
 
     fs = ctk_file_chooser_dialog_new ("This is a modal file selection dialog",
                                       CTK_WINDOW (parent),
@@ -3535,12 +3535,12 @@ cmw_file (GtkWidget *widget, GtkWidget *parent)
 
 
 static void
-create_modal_window (GtkWidget *widget)
+create_modal_window (CtkWidget *widget)
 {
-  GtkWidget *window = NULL;
-  GtkWidget *box1,*box2;
-  GtkWidget *frame1;
-  GtkWidget *btnColor,*btnFile,*btnClose;
+  CtkWidget *window = NULL;
+  CtkWidget *box1,*box2;
+  CtkWidget *frame1;
+  CtkWidget *btnColor,*btnFile,*btnClose;
 
   /* Create modal window (Here you can use any window descendent )*/
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -3594,14 +3594,14 @@ create_modal_window (GtkWidget *widget)
 }
 
 /*
- * GtkMessageDialog
+ * CtkMessageDialog
  */
 
 static void
 make_message_dialog (GdkScreen *screen,
-		     GtkWidget **dialog,
-                     GtkMessageType  type,
-                     GtkButtonsType  buttons,
+		     CtkWidget **dialog,
+                     CtkMessageType  type,
+                     CtkButtonsType  buttons,
 		     guint           default_response)
 {
   if (*dialog)
@@ -3632,12 +3632,12 @@ make_message_dialog (GdkScreen *screen,
 }
 
 static void
-create_message_dialog (GtkWidget *widget)
+create_message_dialog (CtkWidget *widget)
 {
-  static GtkWidget *info = NULL;
-  static GtkWidget *warning = NULL;
-  static GtkWidget *error = NULL;
-  static GtkWidget *question = NULL;
+  static CtkWidget *info = NULL;
+  static CtkWidget *warning = NULL;
+  static CtkWidget *error = NULL;
+  static CtkWidget *question = NULL;
   GdkScreen *screen = ctk_widget_get_screen (widget);
 
   make_message_dialog (screen, &info, CTK_MESSAGE_INFO, CTK_BUTTONS_OK, CTK_RESPONSE_OK);
@@ -3647,15 +3647,15 @@ create_message_dialog (GtkWidget *widget)
 }
 
 /*
- * GtkScrolledWindow
+ * CtkScrolledWindow
  */
 
-static GtkWidget *sw_parent = NULL;
-static GtkWidget *sw_float_parent;
+static CtkWidget *sw_parent = NULL;
+static CtkWidget *sw_float_parent;
 static gulong sw_destroyed_handler = 0;
 
 static gboolean
-scrolled_windows_delete_cb (GtkWidget *widget, GdkEventAny *event, GtkWidget *scrollwin)
+scrolled_windows_delete_cb (CtkWidget *widget, GdkEventAny *event, CtkWidget *scrollwin)
 {
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_widget_reparent (scrollwin, sw_parent);
@@ -3670,7 +3670,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-scrolled_windows_destroy_cb (GtkWidget *widget, GtkWidget *scrollwin)
+scrolled_windows_destroy_cb (CtkWidget *widget, CtkWidget *scrollwin)
 {
   ctk_widget_destroy (sw_float_parent);
 
@@ -3680,7 +3680,7 @@ scrolled_windows_destroy_cb (GtkWidget *widget, GtkWidget *scrollwin)
 }
 
 static void
-scrolled_windows_remove (GtkWidget *dialog, gint response, GtkWidget *scrollwin)
+scrolled_windows_remove (CtkWidget *dialog, gint response, CtkWidget *scrollwin)
 {
   if (response != CTK_RESPONSE_APPLY)
     {
@@ -3723,13 +3723,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-create_scrolled_windows (GtkWidget *widget)
+create_scrolled_windows (CtkWidget *widget)
 {
-  static GtkWidget *window;
-  GtkWidget *content_area;
-  GtkWidget *scrolled_window;
-  GtkWidget *button;
-  GtkWidget *grid;
+  static CtkWidget *window;
+  CtkWidget *content_area;
+  CtkWidget *scrolled_window;
+  CtkWidget *button;
+  CtkWidget *grid;
   char buffer[32];
   int i, j;
 
@@ -3798,20 +3798,20 @@ create_scrolled_windows (GtkWidget *widget)
 }
 
 /*
- * GtkEntry
+ * CtkEntry
  */
 
 static void
-entry_toggle_frame (GtkWidget *checkbutton,
-                    GtkWidget *entry)
+entry_toggle_frame (CtkWidget *checkbutton,
+                    CtkWidget *entry)
 {
    ctk_entry_set_has_frame (CTK_ENTRY(entry),
                             ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (checkbutton)));
 }
 
 static void
-entry_toggle_sensitive (GtkWidget *checkbutton,
-			GtkWidget *entry)
+entry_toggle_sensitive (CtkWidget *checkbutton,
+			CtkWidget *entry)
 {
    ctk_widget_set_sensitive (entry,
                              ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON(checkbutton)));
@@ -3847,8 +3847,8 @@ entry_remove_timeout (gpointer data)
 }
 
 static void
-entry_toggle_progress (GtkWidget *checkbutton,
-                       GtkWidget *entry)
+entry_toggle_progress (CtkWidget *checkbutton,
+                       CtkWidget *entry)
 {
   if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (checkbutton)))
     {
@@ -3869,28 +3869,28 @@ entry_toggle_progress (GtkWidget *checkbutton,
 }
 
 static void
-entry_toggle_pulse (GtkWidget *checkbutton,
-                    GtkWidget *entry)
+entry_toggle_pulse (CtkWidget *checkbutton,
+                    CtkWidget *entry)
 {
   g_object_set_data (G_OBJECT (entry), "progress-pulse",
                      GUINT_TO_POINTER ((guint) ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (checkbutton))));
 }
 
 static void
-create_entry (GtkWidget *widget)
+create_entry (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *box1;
-  GtkWidget *box2;
-  GtkWidget *hbox;
-  GtkWidget *has_frame_check;
-  GtkWidget *sensitive_check;
-  GtkWidget *progress_check;
-  GtkWidget *entry;
-  GtkComboBoxText *cb;
-  GtkWidget *cb_entry;
-  GtkWidget *button;
-  GtkWidget *separator;
+  static CtkWidget *window = NULL;
+  CtkWidget *box1;
+  CtkWidget *box2;
+  CtkWidget *hbox;
+  CtkWidget *has_frame_check;
+  CtkWidget *sensitive_check;
+  CtkWidget *progress_check;
+  CtkWidget *entry;
+  CtkComboBoxText *cb;
+  CtkWidget *cb_entry;
+  CtkWidget *button;
+  CtkWidget *separator;
 
   if (!window)
     {
@@ -3986,12 +3986,12 @@ create_entry (GtkWidget *widget)
 }
 
 static void
-create_expander (GtkWidget *widget)
+create_expander (CtkWidget *widget)
 {
-  GtkWidget *box1;
-  GtkWidget *expander;
-  GtkWidget *hidden;
-  static GtkWidget *window = NULL;
+  CtkWidget *box1;
+  CtkWidget *expander;
+  CtkWidget *hidden;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
@@ -4025,11 +4025,11 @@ create_expander (GtkWidget *widget)
 }
 
 
-/* GtkEventBox */
+/* CtkEventBox */
 
 
 static gboolean
-event_box_draw (GtkWidget *widget,
+event_box_draw (CtkWidget *widget,
 		cairo_t   *cr,
 		gpointer   user_data)
 {
@@ -4044,7 +4044,7 @@ event_box_draw (GtkWidget *widget,
 }
 
 static void
-event_box_label_pressed (GtkWidget        *widget,
+event_box_label_pressed (CtkWidget        *widget,
 			 GdkEventButton   *event,
 			 gpointer user_data)
 {
@@ -4052,43 +4052,43 @@ event_box_label_pressed (GtkWidget        *widget,
 }
 
 static void
-event_box_button_clicked (GtkWidget *widget,
-			  GtkWidget *button,
+event_box_button_clicked (CtkWidget *widget,
+			  CtkWidget *button,
 			  gpointer user_data)
 {
   g_print ("pushed button\n");
 }
 
 static void
-event_box_toggle_visible_window (GtkWidget *checkbutton,
-				 GtkEventBox *event_box)
+event_box_toggle_visible_window (CtkWidget *checkbutton,
+				 CtkEventBox *event_box)
 {
   ctk_event_box_set_visible_window (event_box,
                                     ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (checkbutton)));
 }
 
 static void
-event_box_toggle_above_child (GtkWidget *checkbutton,
-			      GtkEventBox *event_box)
+event_box_toggle_above_child (CtkWidget *checkbutton,
+			      CtkEventBox *event_box)
 {
   ctk_event_box_set_above_child (event_box,
                                  ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (checkbutton)));
 }
 
 static void
-create_event_box (GtkWidget *widget)
+create_event_box (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *box1;
-  GtkWidget *box2;
-  GtkWidget *hbox;
-  GtkWidget *vbox;
-  GtkWidget *button;
-  GtkWidget *separator;
-  GtkWidget *event_box;
-  GtkWidget *label;
-  GtkWidget *visible_window_check;
-  GtkWidget *above_child_check;
+  static CtkWidget *window = NULL;
+  CtkWidget *box1;
+  CtkWidget *box2;
+  CtkWidget *hbox;
+  CtkWidget *vbox;
+  CtkWidget *button;
+  CtkWidget *separator;
+  CtkWidget *event_box;
+  CtkWidget *label;
+  CtkWidget *visible_window_check;
+  CtkWidget *above_child_check;
 
   if (!window)
     {
@@ -4167,14 +4167,14 @@ create_event_box (GtkWidget *widget)
 
 
 /*
- * GtkSizeGroup
+ * CtkSizeGroup
  */
 
 #define SIZE_GROUP_INITIAL_SIZE 50
 
 static void
-size_group_hsize_changed (GtkSpinButton *spin_button,
-			  GtkWidget     *button)
+size_group_hsize_changed (CtkSpinButton *spin_button,
+			  CtkWidget     *button)
 {
   ctk_widget_set_size_request (ctk_bin_get_child (CTK_BIN (button)),
 			       ctk_spin_button_get_value_as_int (spin_button),
@@ -4182,31 +4182,31 @@ size_group_hsize_changed (GtkSpinButton *spin_button,
 }
 
 static void
-size_group_vsize_changed (GtkSpinButton *spin_button,
-			  GtkWidget     *button)
+size_group_vsize_changed (CtkSpinButton *spin_button,
+			  CtkWidget     *button)
 {
   ctk_widget_set_size_request (ctk_bin_get_child (CTK_BIN (button)),
 			       -1,
 			       ctk_spin_button_get_value_as_int (spin_button));
 }
 
-static GtkWidget *
+static CtkWidget *
 create_size_group_window (GdkScreen    *screen,
-			  GtkSizeGroup *master_size_group)
+			  CtkSizeGroup *master_size_group)
 {
-  GtkWidget *content_area;
-  GtkWidget *window;
-  GtkWidget *grid;
-  GtkWidget *main_button;
-  GtkWidget *button;
-  GtkWidget *spin_button;
-  GtkWidget *hbox;
-  GtkSizeGroup *hgroup1;
-  GtkSizeGroup *hgroup2;
-  GtkSizeGroup *vgroup1;
-  GtkSizeGroup *vgroup2;
+  CtkWidget *content_area;
+  CtkWidget *window;
+  CtkWidget *grid;
+  CtkWidget *main_button;
+  CtkWidget *button;
+  CtkWidget *spin_button;
+  CtkWidget *hbox;
+  CtkSizeGroup *hgroup1;
+  CtkSizeGroup *hgroup2;
+  CtkSizeGroup *vgroup1;
+  CtkSizeGroup *vgroup2;
 
-  window = ctk_dialog_new_with_buttons ("GtkSizeGroup",
+  window = ctk_dialog_new_with_buttons ("CtkSizeGroup",
 					NULL, 0,
 					"_Close",
 					CTK_RESPONSE_NONE,
@@ -4303,11 +4303,11 @@ create_size_group_window (GdkScreen    *screen,
 }
 
 static void
-create_size_groups (GtkWidget *widget)
+create_size_groups (CtkWidget *widget)
 {
-  static GtkWidget *window1 = NULL;
-  static GtkWidget *window2 = NULL;
-  static GtkSizeGroup *master_size_group;
+  static CtkWidget *window1 = NULL;
+  static CtkWidget *window2 = NULL;
+  static CtkSizeGroup *master_size_group;
 
   if (!master_size_group)
     master_size_group = ctk_size_group_new (CTK_SIZE_GROUP_BOTH);
@@ -4347,38 +4347,38 @@ create_size_groups (GtkWidget *widget)
 }
 
 /*
- * GtkSpinButton
+ * CtkSpinButton
  */
 
-static GtkWidget *spinner1;
+static CtkWidget *spinner1;
 
 static void
-toggle_snap (GtkWidget *widget, GtkSpinButton *spin)
+toggle_snap (CtkWidget *widget, CtkSpinButton *spin)
 {
   ctk_spin_button_set_snap_to_ticks (spin,
                                      ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (widget)));
 }
 
 static void
-toggle_numeric (GtkWidget *widget, GtkSpinButton *spin)
+toggle_numeric (CtkWidget *widget, CtkSpinButton *spin)
 {
   ctk_spin_button_set_numeric (spin,
                                ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (widget)));
 }
 
 static void
-change_digits (GtkWidget *widget, GtkSpinButton *spin)
+change_digits (CtkWidget *widget, CtkSpinButton *spin)
 {
   ctk_spin_button_set_digits (CTK_SPIN_BUTTON (spinner1),
 			      ctk_spin_button_get_value_as_int (spin));
 }
 
 static void
-get_value (GtkWidget *widget, gpointer data)
+get_value (CtkWidget *widget, gpointer data)
 {
   gchar buf[32];
-  GtkLabel *label;
-  GtkSpinButton *spin;
+  CtkLabel *label;
+  CtkSpinButton *spin;
 
   spin = CTK_SPIN_BUTTON (spinner1);
   label = CTK_LABEL (g_object_get_data (G_OBJECT (widget), "user_data"));
@@ -4393,11 +4393,11 @@ get_value (GtkWidget *widget, gpointer data)
 }
 
 static void
-get_spin_value (GtkWidget *widget, gpointer data)
+get_spin_value (CtkWidget *widget, gpointer data)
 {
   gchar *buffer;
-  GtkLabel *label;
-  GtkSpinButton *spin;
+  CtkLabel *label;
+  CtkSpinButton *spin;
 
   spin = CTK_SPIN_BUTTON (widget);
   label = CTK_LABEL (data);
@@ -4411,9 +4411,9 @@ get_spin_value (GtkWidget *widget, gpointer data)
 }
 
 static gint
-spin_button_time_output_func (GtkSpinButton *spin_button)
+spin_button_time_output_func (CtkSpinButton *spin_button)
 {
-  GtkAdjustment *adjustment;
+  CtkAdjustment *adjustment;
   static gchar buf[6];
   gdouble hours;
   gdouble minutes;
@@ -4428,7 +4428,7 @@ spin_button_time_output_func (GtkSpinButton *spin_button)
 }
 
 static gint
-spin_button_month_input_func (GtkSpinButton *spin_button,
+spin_button_month_input_func (CtkSpinButton *spin_button,
 			      gdouble       *new_val)
 {
   gint i;
@@ -4459,9 +4459,9 @@ spin_button_month_input_func (GtkSpinButton *spin_button,
 }
 
 static gint
-spin_button_month_output_func (GtkSpinButton *spin_button)
+spin_button_month_output_func (CtkSpinButton *spin_button)
 {
-  GtkAdjustment *adjustment;
+  CtkAdjustment *adjustment;
   gdouble value;
   gint i;
   static gchar *month[12] = { "January", "February", "March", "April",
@@ -4480,7 +4480,7 @@ spin_button_month_output_func (GtkSpinButton *spin_button)
 }
 
 static gint
-spin_button_hex_input_func (GtkSpinButton *spin_button,
+spin_button_hex_input_func (CtkSpinButton *spin_button,
 			    gdouble       *new_val)
 {
   const gchar *buf;
@@ -4497,9 +4497,9 @@ spin_button_hex_input_func (GtkSpinButton *spin_button,
 }
 
 static gint
-spin_button_hex_output_func (GtkSpinButton *spin_button)
+spin_button_hex_output_func (CtkSpinButton *spin_button)
 {
-  GtkAdjustment *adjustment;
+  CtkAdjustment *adjustment;
   static gchar buf[7];
   gint val;
 
@@ -4515,20 +4515,20 @@ spin_button_hex_output_func (GtkSpinButton *spin_button)
 }
 
 static void
-create_spins (GtkWidget *widget)
+create_spins (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *frame;
-  GtkWidget *hbox;
-  GtkWidget *main_vbox;
-  GtkWidget *vbox;
-  GtkWidget *vbox2;
-  GtkWidget *spinner2;
-  GtkWidget *spinner;
-  GtkWidget *button;
-  GtkWidget *label;
-  GtkWidget *val_label;
-  GtkAdjustment *adjustment;
+  static CtkWidget *window = NULL;
+  CtkWidget *frame;
+  CtkWidget *hbox;
+  CtkWidget *main_vbox;
+  CtkWidget *vbox;
+  CtkWidget *vbox2;
+  CtkWidget *spinner2;
+  CtkWidget *spinner;
+  CtkWidget *button;
+  CtkWidget *label;
+  CtkWidget *val_label;
+  CtkAdjustment *adjustment;
 
   if (!window)
     {
@@ -4540,7 +4540,7 @@ create_spins (GtkWidget *widget)
 			G_CALLBACK (ctk_widget_destroyed),
 			&window);
       
-      ctk_window_set_title (CTK_WINDOW (window), "GtkSpinButton");
+      ctk_window_set_title (CTK_WINDOW (window), "CtkSpinButton");
       
       main_vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 5);
       ctk_container_set_border_width (CTK_CONTAINER (main_vbox), 10);
@@ -4741,7 +4741,7 @@ create_spins (GtkWidget *widget)
  */
 
 static gint
-cursor_draw (GtkWidget *widget,
+cursor_draw (CtkWidget *widget,
 	     cairo_t   *cr,
 	     gpointer   user_data)
 {
@@ -4866,23 +4866,23 @@ static const gchar *cursor_names[] = {
     "zoom-out"
 };
 
-static GtkTreeModel *
+static CtkTreeModel *
 cursor_model (void)
 {
-  GtkListStore *store;
+  CtkListStore *store;
   gint i;
   store = ctk_list_store_new (1, G_TYPE_STRING);
 
   for (i = 0; i < G_N_ELEMENTS (cursor_names); i++)
     ctk_list_store_insert_with_values (store, NULL, -1, 0, cursor_names[i], -1);
 
-  return (GtkTreeModel *)store;
+  return (CtkTreeModel *)store;
 }
 
 static gint
-cursor_event (GtkWidget *widget,
+cursor_event (CtkWidget *widget,
               GdkEvent  *event,
-              GtkWidget *entry)
+              CtkWidget *entry)
 {
   const gchar *name;
   gint i;
@@ -4916,8 +4916,8 @@ cursor_event (GtkWidget *widget,
 }
 
 static void
-set_cursor_from_name (GtkWidget *entry,
-                      GtkWidget *widget)
+set_cursor_from_name (CtkWidget *entry,
+                      CtkWidget *widget)
 {
   const gchar *name;
   GdkCursor *cursor;
@@ -4945,7 +4945,7 @@ set_cursor_from_name (GtkWidget *entry,
 #endif
 
 static void
-change_cursor_theme (GtkWidget *widget,
+change_cursor_theme (CtkWidget *widget,
 		     gpointer   data)
 {
 #if defined(GDK_WINDOWING_X11) || defined (GDK_WINDOWING_WAYLAND)
@@ -4975,21 +4975,21 @@ change_cursor_theme (GtkWidget *widget,
 
 
 static void
-create_cursors (GtkWidget *widget)
+create_cursors (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *frame;
-  GtkWidget *hbox;
-  GtkWidget *main_vbox;
-  GtkWidget *vbox;
-  GtkWidget *darea;
-  GtkWidget *button;
-  GtkWidget *label;
-  GtkWidget *any;
-  GtkWidget *entry;
-  GtkWidget *size;
-  GtkEntryCompletion *completion;
-  GtkTreeModel *model;
+  static CtkWidget *window = NULL;
+  CtkWidget *frame;
+  CtkWidget *hbox;
+  CtkWidget *main_vbox;
+  CtkWidget *vbox;
+  CtkWidget *darea;
+  CtkWidget *button;
+  CtkWidget *label;
+  CtkWidget *any;
+  CtkWidget *entry;
+  CtkWidget *size;
+  CtkEntryCompletion *completion;
+  CtkTreeModel *model;
   gboolean cursor_demo = FALSE;
 
   if (!window)
@@ -5011,11 +5011,11 @@ create_cursors (GtkWidget *widget)
       vbox =
 	g_object_new (CTK_TYPE_BOX,
                       "orientation", CTK_ORIENTATION_VERTICAL,
-			"GtkBox::homogeneous", FALSE,
-			"GtkBox::spacing", 5,
-			"GtkContainer::border_width", 10,
-			"GtkWidget::parent", main_vbox,
-			"GtkWidget::visible", TRUE,
+			"CtkBox::homogeneous", FALSE,
+			"CtkBox::spacing", 5,
+			"CtkContainer::border_width", 10,
+			"CtkWidget::parent", main_vbox,
+			"CtkWidget::visible", TRUE,
 			NULL);
 
 #ifdef GDK_WINDOWING_X11
@@ -5075,11 +5075,11 @@ create_cursors (GtkWidget *widget)
 
       frame =
 	g_object_new (ctk_frame_get_type (),
-			"GtkFrame::label_xalign", 0.5,
-			"GtkFrame::label", "Cursor Area",
-			"GtkContainer::border_width", 10,
-			"GtkWidget::parent", vbox,
-			"GtkWidget::visible", TRUE,
+			"CtkFrame::label_xalign", 0.5,
+			"CtkFrame::label", "Cursor Area",
+			"CtkContainer::border_width", 10,
+			"CtkWidget::parent", vbox,
+			"CtkWidget::visible", TRUE,
 			NULL);
 
       darea = ctk_drawing_area_new ();
@@ -5120,19 +5120,19 @@ create_cursors (GtkWidget *widget)
 }
 
 /*
- * GtkColorSelection
+ * CtkColorSelection
  */
 
 void
-create_color_selection (GtkWidget *widget)
+create_color_selection (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkWidget *picker;
-      GtkWidget *hbox;
-      GtkWidget *label;
+      CtkWidget *picker;
+      CtkWidget *hbox;
+      CtkWidget *label;
       
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window), 
@@ -5142,7 +5142,7 @@ create_color_selection (GtkWidget *widget)
 			G_CALLBACK (ctk_widget_destroyed),
                         &window);
 
-      ctk_window_set_title (CTK_WINDOW (window), "GtkColorButton");
+      ctk_window_set_title (CTK_WINDOW (window), "CtkColorButton");
       ctk_container_set_border_width (CTK_CONTAINER (window), 0);
 
       hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 8);
@@ -5164,7 +5164,7 @@ create_color_selection (GtkWidget *widget)
 }
 
 void
-flipping_toggled_cb (GtkWidget *widget, gpointer data)
+flipping_toggled_cb (CtkWidget *widget, gpointer data)
 {
   int state = ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (widget));
   int new_direction = state ? CTK_TEXT_DIR_RTL : CTK_TEXT_DIR_LTR;
@@ -5173,9 +5173,9 @@ flipping_toggled_cb (GtkWidget *widget, gpointer data)
 }
 
 static void
-orientable_toggle_orientation (GtkOrientable *orientable)
+orientable_toggle_orientation (CtkOrientable *orientable)
 {
-  GtkOrientation orientation;
+  CtkOrientation orientation;
 
   orientation = ctk_orientable_get_orientation (orientable);
   ctk_orientable_set_orientation (orientable,
@@ -5201,10 +5201,10 @@ orientable_toggle_orientation (GtkOrientable *orientable)
 }
 
 void
-flipping_orientation_toggled_cb (GtkWidget *widget, gpointer data)
+flipping_orientation_toggled_cb (CtkWidget *widget, gpointer data)
 {
-  GtkWidget *content_area;
-  GtkWidget *toplevel;
+  CtkWidget *content_area;
+  CtkWidget *toplevel;
 
   toplevel = ctk_widget_get_toplevel (widget);
   content_area = ctk_dialog_get_content_area (CTK_DIALOG (toplevel));
@@ -5212,10 +5212,10 @@ flipping_orientation_toggled_cb (GtkWidget *widget, gpointer data)
 }
 
 static void
-set_direction_recurse (GtkWidget *widget,
+set_direction_recurse (CtkWidget *widget,
 		       gpointer   data)
 {
-  GtkTextDirection *dir = data;
+  CtkTextDirection *dir = data;
   
   ctk_widget_set_direction (widget, *dir);
   if (CTK_IS_CONTAINER (widget))
@@ -5224,14 +5224,14 @@ set_direction_recurse (GtkWidget *widget,
 			   data);
 }
 
-static GtkWidget *
+static CtkWidget *
 create_forward_back (const char       *title,
-		     GtkTextDirection  text_dir)
+		     CtkTextDirection  text_dir)
 {
-  GtkWidget *frame = ctk_frame_new (title);
-  GtkWidget *bbox = ctk_button_box_new (CTK_ORIENTATION_HORIZONTAL);
-  GtkWidget *back_button = ctk_button_new_with_label ("Back");
-  GtkWidget *forward_button = ctk_button_new_with_label ("Forward");
+  CtkWidget *frame = ctk_frame_new (title);
+  CtkWidget *bbox = ctk_button_box_new (CTK_ORIENTATION_HORIZONTAL);
+  CtkWidget *back_button = ctk_button_new_with_label ("Back");
+  CtkWidget *forward_button = ctk_button_new_with_label ("Forward");
 
   ctk_container_set_border_width (CTK_CONTAINER (bbox), 5);
   
@@ -5245,11 +5245,11 @@ create_forward_back (const char       *title,
 }
 
 void
-create_flipping (GtkWidget *widget)
+create_flipping (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *check_button;
-  GtkWidget *content_area;
+  static CtkWidget *window = NULL;
+  CtkWidget *check_button;
+  CtkWidget *content_area;
 
   if (!window)
     {
@@ -5309,10 +5309,10 @@ create_flipping (GtkWidget *widget)
  * Focus test
  */
 
-static GtkWidget*
+static CtkWidget*
 make_focus_table (GList **list)
 {
-  GtkWidget *grid;
+  CtkWidget *grid;
   gint i, j;
   
   grid = ctk_grid_new ();
@@ -5324,7 +5324,7 @@ make_focus_table (GList **list)
     {
       for (j = 0; j < 5; j++)
         {
-          GtkWidget *widget;
+          CtkWidget *widget;
           
           if ((i + j) % 2)
             widget = ctk_entry_new ();
@@ -5346,15 +5346,15 @@ make_focus_table (GList **list)
 }
 
 static void
-create_focus (GtkWidget *widget)
+create_focus (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
   
   if (!window)
     {
-      GtkWidget *content_area;
-      GtkWidget *table;
-      GtkWidget *frame;
+      CtkWidget *content_area;
+      CtkWidget *table;
+      CtkWidget *frame;
       GList *list = NULL;
       
       window = ctk_dialog_new_with_buttons ("Keyboard focus navigation",
@@ -5410,19 +5410,19 @@ create_focus (GtkWidget *widget)
 }
 
 /*
- * GtkFontSelection
+ * CtkFontSelection
  */
 
 void
-create_font_selection (GtkWidget *widget)
+create_font_selection (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkWidget *picker;
-      GtkWidget *hbox;
-      GtkWidget *label;
+      CtkWidget *picker;
+      CtkWidget *hbox;
+      CtkWidget *label;
       
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window),
@@ -5432,7 +5432,7 @@ create_font_selection (GtkWidget *widget)
 			G_CALLBACK (ctk_widget_destroyed),
 			&window);
 
-      ctk_window_set_title (CTK_WINDOW (window), "GtkFontButton");
+      ctk_window_set_title (CTK_WINDOW (window), "CtkFontButton");
       ctk_container_set_border_width (CTK_CONTAINER (window), 0);
 
       hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 8);
@@ -5454,15 +5454,15 @@ create_font_selection (GtkWidget *widget)
 }
 
 /*
- * GtkDialog
+ * CtkDialog
  */
 
-static GtkWidget *dialog_window = NULL;
+static CtkWidget *dialog_window = NULL;
 
 static void
-dialog_response_cb (GtkWidget *widget, gint response, gpointer unused)
+dialog_response_cb (CtkWidget *widget, gint response, gpointer unused)
 {
-  GtkWidget *content_area;
+  CtkWidget *content_area;
   GList *l, *children;
 
   if (response == CTK_RESPONSE_APPLY)
@@ -5482,7 +5482,7 @@ dialog_response_cb (GtkWidget *widget, gint response, gpointer unused)
       /* no label removed, so add one */
       if (l == NULL)
         {
-          GtkWidget *label;
+          CtkWidget *label;
           
           label = ctk_label_new ("Dialog Test");
           g_object_set (label, "margin", 10, NULL);
@@ -5496,7 +5496,7 @@ dialog_response_cb (GtkWidget *widget, gint response, gpointer unused)
 }
 
 static void
-create_dialog (GtkWidget *widget)
+create_dialog (CtkWidget *widget)
 {
   if (!dialog_window)
     {
@@ -5514,7 +5514,7 @@ create_dialog (GtkWidget *widget)
 			&dialog_window);
 
 
-      ctk_window_set_title (CTK_WINDOW (dialog_window), "GtkDialog");
+      ctk_window_set_title (CTK_WINDOW (dialog_window), "CtkDialog");
       ctk_container_set_border_width (CTK_CONTAINER (dialog_window), 0);
 
       ctk_dialog_add_button (CTK_DIALOG (dialog_window),
@@ -5541,18 +5541,18 @@ create_dialog (GtkWidget *widget)
 
 typedef struct
 {
-  GtkWidget *combo;
-  GtkWidget *entry;
-  GtkWidget *toplevel;
-  GtkWidget *dialog_window;
+  CtkWidget *combo;
+  CtkWidget *entry;
+  CtkWidget *toplevel;
+  CtkWidget *dialog_window;
 } ScreenDisplaySelection;
 
 static void
-screen_display_check (GtkWidget *widget, ScreenDisplaySelection *data)
+screen_display_check (CtkWidget *widget, ScreenDisplaySelection *data)
 {
   const gchar *display_name;
   GdkDisplay *display;
-  GtkWidget *dialog;
+  CtkWidget *dialog;
   GdkScreen *new_screen = NULL;
   GdkScreen *current_screen = ctk_widget_get_screen (widget);
   
@@ -5575,9 +5575,9 @@ screen_display_check (GtkWidget *widget, ScreenDisplaySelection *data)
     }
   else
     {
-      GtkTreeModel *model = ctk_combo_box_get_model (CTK_COMBO_BOX (data->combo));
+      CtkTreeModel *model = ctk_combo_box_get_model (CTK_COMBO_BOX (data->combo));
       gint i = 0;
-      GtkTreeIter iter;
+      CtkTreeIter iter;
       gboolean found = FALSE;
       while (ctk_tree_model_iter_nth_child (model, &iter, NULL, i++))
         {
@@ -5599,17 +5599,17 @@ screen_display_check (GtkWidget *widget, ScreenDisplaySelection *data)
 }
 
 void
-screen_display_destroy_diag (GtkWidget *widget, GtkWidget *data)
+screen_display_destroy_diag (CtkWidget *widget, CtkWidget *data)
 {
   ctk_widget_destroy (data);
 }
 
 void
-create_display_screen (GtkWidget *widget)
+create_display_screen (CtkWidget *widget)
 {
-  GtkWidget *grid, *frame, *window, *combo_dpy, *vbox;
-  GtkWidget *label_dpy, *applyb, *cancelb;
-  GtkWidget *bbox;
+  CtkWidget *grid, *frame, *window, *combo_dpy, *vbox;
+  CtkWidget *label_dpy, *applyb, *cancelb;
+  CtkWidget *bbox;
   ScreenDisplaySelection *scr_dpy_data;
   GdkScreen *screen = ctk_widget_get_screen (widget);
 
@@ -5717,10 +5717,10 @@ event_watcher_toggle (void)
 }
 
 static void
-create_event_watcher (GtkWidget *widget)
+create_event_watcher (CtkWidget *widget)
 {
-  GtkWidget *content_area;
-  GtkWidget *button;
+  CtkWidget *content_area;
+  CtkWidget *button;
 
   if (!dialog_window)
     {
@@ -5760,11 +5760,11 @@ create_event_watcher (GtkWidget *widget)
 }
 
 /*
- * GtkRange
+ * CtkRange
  */
 
 static gchar*
-reformat_value (GtkScale *scale,
+reformat_value (CtkScale *scale,
                 gdouble   value)
 {
   return g_strdup_printf ("-->%0.*g<--",
@@ -5772,17 +5772,17 @@ reformat_value (GtkScale *scale,
 }
 
 static void
-create_range_controls (GtkWidget *widget)
+create_range_controls (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *box1;
-  GtkWidget *box2;
-  GtkWidget *button;
-  GtkWidget *scrollbar;
-  GtkWidget *scale;
-  GtkWidget *separator;
-  GtkAdjustment *adjustment;
-  GtkWidget *hbox;
+  static CtkWidget *window = NULL;
+  CtkWidget *box1;
+  CtkWidget *box2;
+  CtkWidget *button;
+  CtkWidget *scrollbar;
+  CtkWidget *scale;
+  CtkWidget *separator;
+  CtkAdjustment *adjustment;
+  CtkWidget *hbox;
 
   if (!window)
     {
@@ -5906,7 +5906,7 @@ struct {
 int ntext_colors = sizeof(text_colors) / sizeof(text_colors[0]);
 
 /*
- * GtkNotebook
+ * CtkNotebook
  */
 
 static const char * book_open_xpm[] = {
@@ -5959,13 +5959,13 @@ static const char * book_closed_xpm[] = {
 
 GdkPixbuf *book_open;
 GdkPixbuf *book_closed;
-GtkWidget *sample_notebook;
+CtkWidget *sample_notebook;
 
 static void
-set_page_image (GtkNotebook *notebook, gint page_num, GdkPixbuf *pixbuf)
+set_page_image (CtkNotebook *notebook, gint page_num, GdkPixbuf *pixbuf)
 {
-  GtkWidget *page_widget;
-  GtkWidget *pixwid;
+  CtkWidget *page_widget;
+  CtkWidget *pixwid;
 
   page_widget = ctk_notebook_get_nth_page (notebook, page_num);
 
@@ -5977,9 +5977,9 @@ set_page_image (GtkNotebook *notebook, gint page_num, GdkPixbuf *pixbuf)
 }
 
 static void
-page_switch (GtkWidget *widget, gpointer *page, gint page_num)
+page_switch (CtkWidget *widget, gpointer *page, gint page_num)
 {
-  GtkNotebook *notebook = CTK_NOTEBOOK (widget);
+  CtkNotebook *notebook = CTK_NOTEBOOK (widget);
   gint old_page_num = ctk_notebook_get_current_page (notebook);
  
   if (page_num == old_page_num)
@@ -5992,7 +5992,7 @@ page_switch (GtkWidget *widget, gpointer *page, gint page_num)
 }
 
 static void
-tab_fill (GtkToggleButton *button, GtkWidget *child)
+tab_fill (CtkToggleButton *button, CtkWidget *child)
 {
   ctk_container_child_set (CTK_CONTAINER (sample_notebook), child,
                            "tab-fill", ctk_toggle_button_get_active (button),
@@ -6000,7 +6000,7 @@ tab_fill (GtkToggleButton *button, GtkWidget *child)
 }
 
 static void
-tab_expand (GtkToggleButton *button, GtkWidget *child)
+tab_expand (CtkToggleButton *button, CtkWidget *child)
 {
   ctk_container_child_set (CTK_CONTAINER (sample_notebook), child,
                            "tab-expand", ctk_toggle_button_get_active (button),
@@ -6008,16 +6008,16 @@ tab_expand (GtkToggleButton *button, GtkWidget *child)
 }
 
 static void
-create_pages (GtkNotebook *notebook, gint start, gint end)
+create_pages (CtkNotebook *notebook, gint start, gint end)
 {
-  GtkWidget *child = NULL;
-  GtkWidget *button;
-  GtkWidget *label;
-  GtkWidget *hbox;
-  GtkWidget *vbox;
-  GtkWidget *label_box;
-  GtkWidget *menu_box;
-  GtkWidget *pixwid;
+  CtkWidget *child = NULL;
+  CtkWidget *button;
+  CtkWidget *label;
+  CtkWidget *hbox;
+  CtkWidget *vbox;
+  CtkWidget *label_box;
+  CtkWidget *menu_box;
+  CtkWidget *pixwid;
   gint i;
   char buffer[32];
   char accel_buffer[32];
@@ -6090,25 +6090,25 @@ create_pages (GtkNotebook *notebook, gint start, gint end)
 }
 
 static void
-rotate_notebook (GtkButton   *button,
-		 GtkNotebook *notebook)
+rotate_notebook (CtkButton   *button,
+		 CtkNotebook *notebook)
 {
   ctk_notebook_set_tab_pos (notebook, (ctk_notebook_get_tab_pos (notebook) + 1) % 4);
 }
 
 static void
-show_all_pages (GtkButton   *button,
-		GtkNotebook *notebook)
+show_all_pages (CtkButton   *button,
+		CtkNotebook *notebook)
 {  
   ctk_container_foreach (CTK_CONTAINER (notebook),
-			 (GtkCallback) ctk_widget_show, NULL);
+			 (CtkCallback) ctk_widget_show, NULL);
 }
 
 static void
-notebook_type_changed (GtkWidget *optionmenu,
+notebook_type_changed (CtkWidget *optionmenu,
 		       gpointer   data)
 {
-  GtkNotebook *notebook;
+  CtkNotebook *notebook;
   gint i, c;
 
   enum {
@@ -6161,8 +6161,8 @@ notebook_type_changed (GtkWidget *optionmenu,
 }
 
 static void
-notebook_popup (GtkToggleButton *button,
-		GtkNotebook     *notebook)
+notebook_popup (CtkToggleButton *button,
+		CtkNotebook     *notebook)
 {
   if (ctk_toggle_button_get_active (button))
     ctk_notebook_popup_enable (notebook);
@@ -6171,15 +6171,15 @@ notebook_popup (GtkToggleButton *button,
 }
 
 static void
-create_notebook (GtkWidget *widget)
+create_notebook (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *box1;
-  GtkWidget *box2;
-  GtkWidget *button;
-  GtkWidget *separator;
-  GtkWidget *omenu;
-  GtkWidget *label;
+  static CtkWidget *window = NULL;
+  CtkWidget *box1;
+  CtkWidget *box2;
+  CtkWidget *button;
+  CtkWidget *separator;
+  CtkWidget *omenu;
+  CtkWidget *label;
 
   static gchar *items[] =
   {
@@ -6294,13 +6294,13 @@ create_notebook (GtkWidget *widget)
 }
 
 /*
- * GtkPanes
+ * CtkPanes
  */
 
 void
-toggle_resize (GtkWidget *widget, GtkWidget *child)
+toggle_resize (CtkWidget *widget, CtkWidget *child)
 {
-  GtkContainer *container = CTK_CONTAINER (ctk_widget_get_parent (child));
+  CtkContainer *container = CTK_CONTAINER (ctk_widget_get_parent (child));
   GValue value = G_VALUE_INIT;
   g_value_init (&value, G_TYPE_BOOLEAN);
   ctk_container_child_get_property (container, child, "resize", &value);
@@ -6309,9 +6309,9 @@ toggle_resize (GtkWidget *widget, GtkWidget *child)
 }
 
 void
-toggle_shrink (GtkWidget *widget, GtkWidget *child)
+toggle_shrink (CtkWidget *widget, CtkWidget *child)
 {
-  GtkContainer *container = CTK_CONTAINER (ctk_widget_get_parent (child));
+  CtkContainer *container = CTK_CONTAINER (ctk_widget_get_parent (child));
   GValue value = G_VALUE_INIT;
   g_value_init (&value, G_TYPE_BOOLEAN);
   ctk_container_child_get_property (container, child, "shrink", &value);
@@ -6319,17 +6319,17 @@ toggle_shrink (GtkWidget *widget, GtkWidget *child)
   ctk_container_child_set_property (container, child, "shrink", &value);
 }
 
-GtkWidget *
-create_pane_options (GtkPaned    *paned,
+CtkWidget *
+create_pane_options (CtkPaned    *paned,
 		     const gchar *frame_label,
 		     const gchar *label1,
 		     const gchar *label2)
 {
-  GtkWidget *child1, *child2;
-  GtkWidget *frame;
-  GtkWidget *grid;
-  GtkWidget *label;
-  GtkWidget *check_button;
+  CtkWidget *child1, *child2;
+  CtkWidget *frame;
+  CtkWidget *grid;
+  CtkWidget *label;
+  CtkWidget *check_button;
 
   child1 = ctk_paned_get_child1 (paned);
   child2 = ctk_paned_get_child2 (paned);
@@ -6380,14 +6380,14 @@ create_pane_options (GtkPaned    *paned,
 }
 
 void
-create_panes (GtkWidget *widget)
+create_panes (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *frame;
-  GtkWidget *hpaned;
-  GtkWidget *vpaned;
-  GtkWidget *button;
-  GtkWidget *vbox;
+  static CtkWidget *window = NULL;
+  CtkWidget *frame;
+  CtkWidget *hpaned;
+  CtkWidget *vpaned;
+  CtkWidget *button;
+  CtkWidget *vbox;
 
   if (!window)
     {
@@ -6460,29 +6460,29 @@ create_panes (GtkWidget *widget)
  * Paned keyboard navigation
  */
 
-static GtkWidget*
-paned_keyboard_window1 (GtkWidget *widget)
+static CtkWidget*
+paned_keyboard_window1 (CtkWidget *widget)
 {
-  GtkWidget *window1;
-  GtkWidget *hpaned1;
-  GtkWidget *frame1;
-  GtkWidget *vbox1;
-  GtkWidget *button7;
-  GtkWidget *button8;
-  GtkWidget *button9;
-  GtkWidget *vpaned1;
-  GtkWidget *frame2;
-  GtkWidget *frame5;
-  GtkWidget *hbox1;
-  GtkWidget *button5;
-  GtkWidget *button6;
-  GtkWidget *frame3;
-  GtkWidget *frame4;
-  GtkWidget *grid1;
-  GtkWidget *button1;
-  GtkWidget *button2;
-  GtkWidget *button3;
-  GtkWidget *button4;
+  CtkWidget *window1;
+  CtkWidget *hpaned1;
+  CtkWidget *frame1;
+  CtkWidget *vbox1;
+  CtkWidget *button7;
+  CtkWidget *button8;
+  CtkWidget *button9;
+  CtkWidget *vpaned1;
+  CtkWidget *frame2;
+  CtkWidget *frame5;
+  CtkWidget *hbox1;
+  CtkWidget *button5;
+  CtkWidget *button6;
+  CtkWidget *frame3;
+  CtkWidget *frame4;
+  CtkWidget *grid1;
+  CtkWidget *button1;
+  CtkWidget *button2;
+  CtkWidget *button3;
+  CtkWidget *button4;
 
   window1 = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_window_set_title (CTK_WINDOW (window1), "Basic paned navigation");
@@ -6554,20 +6554,20 @@ paned_keyboard_window1 (GtkWidget *widget)
   return window1;
 }
 
-static GtkWidget*
-paned_keyboard_window2 (GtkWidget *widget)
+static CtkWidget*
+paned_keyboard_window2 (CtkWidget *widget)
 {
-  GtkWidget *window2;
-  GtkWidget *hpaned2;
-  GtkWidget *frame6;
-  GtkWidget *button13;
-  GtkWidget *hbox2;
-  GtkWidget *vpaned2;
-  GtkWidget *frame7;
-  GtkWidget *button12;
-  GtkWidget *frame8;
-  GtkWidget *button11;
-  GtkWidget *button10;
+  CtkWidget *window2;
+  CtkWidget *hpaned2;
+  CtkWidget *frame6;
+  CtkWidget *button13;
+  CtkWidget *hbox2;
+  CtkWidget *vpaned2;
+  CtkWidget *frame7;
+  CtkWidget *button12;
+  CtkWidget *frame8;
+  CtkWidget *button11;
+  CtkWidget *button10;
 
   window2 = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_window_set_title (CTK_WINDOW (window2), "\"button 10\" is not inside the horisontal pane");
@@ -6611,23 +6611,23 @@ paned_keyboard_window2 (GtkWidget *widget)
   return window2;
 }
 
-static GtkWidget*
-paned_keyboard_window3 (GtkWidget *widget)
+static CtkWidget*
+paned_keyboard_window3 (CtkWidget *widget)
 {
-  GtkWidget *window3;
-  GtkWidget *vbox2;
-  GtkWidget *label1;
-  GtkWidget *hpaned3;
-  GtkWidget *frame9;
-  GtkWidget *button14;
-  GtkWidget *hpaned4;
-  GtkWidget *frame10;
-  GtkWidget *button15;
-  GtkWidget *hpaned5;
-  GtkWidget *frame11;
-  GtkWidget *button16;
-  GtkWidget *frame12;
-  GtkWidget *button17;
+  CtkWidget *window3;
+  CtkWidget *vbox2;
+  CtkWidget *label1;
+  CtkWidget *hpaned3;
+  CtkWidget *frame9;
+  CtkWidget *button14;
+  CtkWidget *hpaned4;
+  CtkWidget *frame10;
+  CtkWidget *button15;
+  CtkWidget *hpaned5;
+  CtkWidget *frame11;
+  CtkWidget *button16;
+  CtkWidget *frame12;
+  CtkWidget *button17;
 
   window3 = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   g_object_set_data (G_OBJECT (window3), "window3", window3);
@@ -6683,26 +6683,26 @@ paned_keyboard_window3 (GtkWidget *widget)
   return window3;
 }
 
-static GtkWidget*
-paned_keyboard_window4 (GtkWidget *widget)
+static CtkWidget*
+paned_keyboard_window4 (CtkWidget *widget)
 {
-  GtkWidget *window4;
-  GtkWidget *vbox3;
-  GtkWidget *label2;
-  GtkWidget *hpaned6;
-  GtkWidget *vpaned3;
-  GtkWidget *button19;
-  GtkWidget *button18;
-  GtkWidget *hbox3;
-  GtkWidget *vpaned4;
-  GtkWidget *button21;
-  GtkWidget *button20;
-  GtkWidget *vpaned5;
-  GtkWidget *button23;
-  GtkWidget *button22;
-  GtkWidget *vpaned6;
-  GtkWidget *button25;
-  GtkWidget *button24;
+  CtkWidget *window4;
+  CtkWidget *vbox3;
+  CtkWidget *label2;
+  CtkWidget *hpaned6;
+  CtkWidget *vpaned3;
+  CtkWidget *button19;
+  CtkWidget *button18;
+  CtkWidget *hbox3;
+  CtkWidget *vpaned4;
+  CtkWidget *button21;
+  CtkWidget *button20;
+  CtkWidget *vpaned5;
+  CtkWidget *button23;
+  CtkWidget *button22;
+  CtkWidget *vpaned6;
+  CtkWidget *button25;
+  CtkWidget *button24;
 
   window4 = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   g_object_set_data (G_OBJECT (window4), "window4", window4);
@@ -6764,12 +6764,12 @@ paned_keyboard_window4 (GtkWidget *widget)
 }
 
 static void
-create_paned_keyboard_navigation (GtkWidget *widget)
+create_paned_keyboard_navigation (CtkWidget *widget)
 {
-  static GtkWidget *window1 = NULL;
-  static GtkWidget *window2 = NULL;
-  static GtkWidget *window3 = NULL;
-  static GtkWidget *window4 = NULL;
+  static CtkWidget *window1 = NULL;
+  static CtkWidget *window2 = NULL;
+  static CtkWidget *window3 = NULL;
+  static CtkWidget *window4 = NULL;
 
   if (window1 && 
      (ctk_widget_get_screen (window1) != ctk_widget_get_screen (widget)))
@@ -6841,7 +6841,7 @@ create_paned_keyboard_navigation (GtkWidget *widget)
 typedef struct _cursoroffset {gint x,y;} CursorOffset;
 
 static void
-shape_pressed (GtkWidget *widget, GdkEventButton *event)
+shape_pressed (CtkWidget *widget, GdkEventButton *event)
 {
   CursorOffset *p;
 
@@ -6861,7 +6861,7 @@ shape_pressed (GtkWidget *widget, GdkEventButton *event)
 }
 
 static void
-shape_released (GtkWidget      *widget,
+shape_released (CtkWidget      *widget,
                 GdkEventButton *event)
 {
   ctk_grab_remove (widget);
@@ -6869,7 +6869,7 @@ shape_released (GtkWidget      *widget,
 }
 
 static void
-shape_motion (GtkWidget      *widget,
+shape_motion (CtkWidget      *widget,
 	      GdkEventMotion *event)
 {
   gint xp, yp;
@@ -6887,7 +6887,7 @@ shape_motion (GtkWidget      *widget,
   ctk_window_move (CTK_WINDOW (widget), xp  - p->x, yp  - p->y);
 }
 
-GtkWidget *
+CtkWidget *
 shape_create_icon (GdkScreen *screen,
 		   char      *xpm_file,
 		   gint       x,
@@ -6896,9 +6896,9 @@ shape_create_icon (GdkScreen *screen,
 		   gint       py,
 		   gint       window_type)
 {
-  GtkWidget *window;
-  GtkWidget *image;
-  GtkWidget *fixed;
+  CtkWidget *window;
+  CtkWidget *image;
+  CtkWidget *fixed;
   CursorOffset* icon_pos;
   cairo_surface_t *mask;
   cairo_region_t *mask_region;
@@ -6965,13 +6965,13 @@ shape_create_icon (GdkScreen *screen,
 }
 
 void 
-create_shapes (GtkWidget *widget)
+create_shapes (CtkWidget *widget)
 {
   /* Variables used by the Drag/Drop and Shape Window demos */
-  static GtkWidget *modeller = NULL;
-  static GtkWidget *sheets = NULL;
-  static GtkWidget *rings = NULL;
-  static GtkWidget *with_region = NULL;
+  static CtkWidget *modeller = NULL;
+  static CtkWidget *sheets = NULL;
+  static CtkWidget *rings = NULL;
+  static CtkWidget *with_region = NULL;
   GdkScreen *screen = ctk_widget_get_screen (widget);
   
   if (!(file_exists ("Modeller.xpm") &&
@@ -7067,14 +7067,14 @@ create_shapes (GtkWidget *widget)
  */
 
 void
-create_wmhints (GtkWidget *widget)
+create_wmhints (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *label;
-  GtkWidget *separator;
-  GtkWidget *button;
-  GtkWidget *box1;
-  GtkWidget *box2;
+  static CtkWidget *window = NULL;
+  CtkWidget *label;
+  CtkWidget *separator;
+  CtkWidget *button;
+  CtkWidget *box1;
+  CtkWidget *box2;
   GdkWindow *gdk_window;
   GdkPixbuf *pixbuf;
   GList *list;
@@ -7155,11 +7155,11 @@ create_wmhints (GtkWidget *widget)
  */
 
 static gint
-window_state_callback (GtkWidget *widget,
+window_state_callback (CtkWidget *widget,
                        GdkEventWindowState *event,
                        gpointer data)
 {
-  GtkWidget *label = data;
+  CtkWidget *label = data;
   gchar *msg;
 
   msg = g_strconcat (ctk_window_get_title (CTK_WINDOW (widget)), ": ",
@@ -7186,12 +7186,12 @@ window_state_callback (GtkWidget *widget,
   return FALSE;
 }
 
-static GtkWidget*
-tracking_label (GtkWidget *window)
+static CtkWidget*
+tracking_label (CtkWidget *window)
 {
-  GtkWidget *label;
-  GtkWidget *hbox;
-  GtkWidget *button;
+  CtkWidget *label;
+  CtkWidget *hbox;
+  CtkWidget *button;
 
   hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 5);
 
@@ -7264,9 +7264,9 @@ tracking_label (GtkWidget *window)
 }
 
 void
-keep_window_above (GtkToggleButton *togglebutton, gpointer data)
+keep_window_above (CtkToggleButton *togglebutton, gpointer data)
 {
-  GtkWidget *button = g_object_get_data (G_OBJECT (togglebutton), "radio");
+  CtkWidget *button = g_object_get_data (G_OBJECT (togglebutton), "radio");
 
   ctk_window_set_keep_above (CTK_WINDOW (data),
                              ctk_toggle_button_get_active (togglebutton));
@@ -7276,9 +7276,9 @@ keep_window_above (GtkToggleButton *togglebutton, gpointer data)
 }
 
 void
-keep_window_below (GtkToggleButton *togglebutton, gpointer data)
+keep_window_below (CtkToggleButton *togglebutton, gpointer data)
 {
-  GtkWidget *button = g_object_get_data (G_OBJECT (togglebutton), "radio");
+  CtkWidget *button = g_object_get_data (G_OBJECT (togglebutton), "radio");
 
   ctk_window_set_keep_below (CTK_WINDOW (data),
                              ctk_toggle_button_get_active (togglebutton));
@@ -7288,13 +7288,13 @@ keep_window_below (GtkToggleButton *togglebutton, gpointer data)
 }
 
 
-static GtkWidget*
-get_state_controls (GtkWidget *window)
+static CtkWidget*
+get_state_controls (CtkWidget *window)
 {
-  GtkWidget *vbox;
-  GtkWidget *button;
-  GtkWidget *button_above;
-  GtkWidget *button_below;
+  CtkWidget *vbox;
+  CtkWidget *button;
+  CtkWidget *button_above;
+  CtkWidget *button_below;
 
   vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
   
@@ -7385,14 +7385,14 @@ get_state_controls (GtkWidget *window)
 }
 
 void
-create_window_states (GtkWidget *widget)
+create_window_states (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *label;
-  GtkWidget *box1;
-  GtkWidget *iconified;
-  GtkWidget *normal;
-  GtkWidget *controls;
+  static CtkWidget *window = NULL;
+  CtkWidget *label;
+  CtkWidget *box1;
+  CtkWidget *iconified;
+  CtkWidget *normal;
+  CtkWidget *controls;
 
   if (!window)
     {
@@ -7459,11 +7459,11 @@ create_window_states (GtkWidget *widget)
  */
 
 static gint
-configure_event_callback (GtkWidget *widget,
+configure_event_callback (CtkWidget *widget,
                           GdkEventConfigure *event,
                           gpointer data)
 {
-  GtkWidget *label = data;
+  CtkWidget *label = data;
   gchar *msg;
   gint x, y;
   
@@ -7482,12 +7482,12 @@ configure_event_callback (GtkWidget *widget,
 }
 
 static void
-get_ints (GtkWidget *window,
+get_ints (CtkWidget *window,
           gint      *a,
           gint      *b)
 {
-  GtkWidget *spin1;
-  GtkWidget *spin2;
+  CtkWidget *spin1;
+  CtkWidget *spin2;
 
   spin1 = g_object_get_data (G_OBJECT (window), "spin1");
   spin2 = g_object_get_data (G_OBJECT (window), "spin2");
@@ -7497,7 +7497,7 @@ get_ints (GtkWidget *window,
 }
 
 static void
-set_size_callback (GtkWidget *widget,
+set_size_callback (CtkWidget *widget,
                    gpointer   data)
 {
   gint w, h;
@@ -7508,7 +7508,7 @@ set_size_callback (GtkWidget *widget,
 }
 
 static void
-unset_default_size_callback (GtkWidget *widget,
+unset_default_size_callback (CtkWidget *widget,
                              gpointer   data)
 {
   ctk_window_set_default_size (g_object_get_data (data, "target"),
@@ -7516,7 +7516,7 @@ unset_default_size_callback (GtkWidget *widget,
 }
 
 static void
-set_default_size_callback (GtkWidget *widget,
+set_default_size_callback (CtkWidget *widget,
                            gpointer   data)
 {
   gint w, h;
@@ -7528,7 +7528,7 @@ set_default_size_callback (GtkWidget *widget,
 }
 
 static void
-unset_size_request_callback (GtkWidget *widget,
+unset_size_request_callback (CtkWidget *widget,
 			     gpointer   data)
 {
   ctk_widget_set_size_request (g_object_get_data (data, "target"),
@@ -7536,7 +7536,7 @@ unset_size_request_callback (GtkWidget *widget,
 }
 
 static void
-set_size_request_callback (GtkWidget *widget,
+set_size_request_callback (CtkWidget *widget,
 			   gpointer   data)
 {
   gint w, h;
@@ -7548,7 +7548,7 @@ set_size_request_callback (GtkWidget *widget,
 }
 
 static void
-set_location_callback (GtkWidget *widget,
+set_location_callback (CtkWidget *widget,
                        gpointer   data)
 {
   gint x, y;
@@ -7559,11 +7559,11 @@ set_location_callback (GtkWidget *widget,
 }
 
 static void
-move_to_position_callback (GtkWidget *widget,
+move_to_position_callback (CtkWidget *widget,
                            gpointer   data)
 {
   gint x, y;
-  GtkWindow *window;
+  CtkWindow *window;
 
   window = g_object_get_data (data, "target");
   
@@ -7573,11 +7573,11 @@ move_to_position_callback (GtkWidget *widget,
 }
 
 static void
-set_geometry_callback (GtkWidget *entry,
+set_geometry_callback (CtkWidget *entry,
                        gpointer   data)
 {
   gchar *text;
-  GtkWindow *target;
+  CtkWindow *target;
 
   target = CTK_WINDOW (g_object_get_data (G_OBJECT (data), "target"));
   
@@ -7592,7 +7592,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-resizable_callback (GtkWidget *widget,
+resizable_callback (CtkWidget *widget,
                      gpointer   data)
 {
   g_object_set (g_object_get_data (data, "target"),
@@ -7601,7 +7601,7 @@ resizable_callback (GtkWidget *widget,
 }
 
 static void
-gravity_selected (GtkWidget *widget,
+gravity_selected (CtkWidget *widget,
                   gpointer   data)
 {
   ctk_window_set_gravity (CTK_WINDOW (g_object_get_data (data, "target")),
@@ -7609,7 +7609,7 @@ gravity_selected (GtkWidget *widget,
 }
 
 static void
-pos_selected (GtkWidget *widget,
+pos_selected (CtkWidget *widget,
               gpointer   data)
 {
   ctk_window_set_position (CTK_WINDOW (g_object_get_data (data, "target")),
@@ -7617,11 +7617,11 @@ pos_selected (GtkWidget *widget,
 }
 
 static void
-move_gravity_window_to_current_position (GtkWidget *widget,
+move_gravity_window_to_current_position (CtkWidget *widget,
                                          gpointer   data)
 {
   gint x, y;
-  GtkWindow *window;
+  CtkWindow *window;
 
   window = CTK_WINDOW (data);    
   
@@ -7631,7 +7631,7 @@ move_gravity_window_to_current_position (GtkWidget *widget,
 }
 
 static void
-get_screen_corner (GtkWindow *window,
+get_screen_corner (CtkWindow *window,
                    gint      *x,
                    gint      *y)
 {
@@ -7700,11 +7700,11 @@ get_screen_corner (GtkWindow *window,
 }
 
 static void
-move_gravity_window_to_starting_position (GtkWidget *widget,
+move_gravity_window_to_starting_position (CtkWidget *widget,
                                           gpointer   data)
 {
   gint x, y;
-  GtkWindow *window;
+  CtkWindow *window;
 
   window = CTK_WINDOW (data);    
   
@@ -7714,14 +7714,14 @@ move_gravity_window_to_starting_position (GtkWidget *widget,
   ctk_window_move (window, x, y);
 }
 
-static GtkWidget*
-make_gravity_window (GtkWidget   *destroy_with,
+static CtkWidget*
+make_gravity_window (CtkWidget   *destroy_with,
                      GdkGravity   gravity,
                      const gchar *title)
 {
-  GtkWidget *window;
-  GtkWidget *button;
-  GtkWidget *vbox;
+  CtkWidget *window;
+  CtkWidget *button;
+  CtkWidget *vbox;
   int x, y;
   
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -7783,11 +7783,11 @@ make_gravity_window (GtkWidget   *destroy_with,
 }
 
 static void
-do_gravity_test (GtkWidget *widget,
+do_gravity_test (CtkWidget *widget,
                  gpointer   data)
 {
-  GtkWidget *destroy_with = data;
-  GtkWidget *window;
+  CtkWidget *destroy_with = data;
+  CtkWidget *window;
   
   /* We put a window at each gravity point on the screen. */
   window = make_gravity_window (destroy_with, GDK_GRAVITY_NORTH_WEST,
@@ -7833,17 +7833,17 @@ do_gravity_test (GtkWidget *widget,
   ctk_widget_show (window);
 }
 
-static GtkWidget*
-window_controls (GtkWidget *window)
+static CtkWidget*
+window_controls (CtkWidget *window)
 {
-  GtkWidget *control_window;
-  GtkWidget *label;
-  GtkWidget *vbox;
-  GtkWidget *button;
-  GtkWidget *spin;
-  GtkAdjustment *adjustment;
-  GtkWidget *entry;
-  GtkWidget *om;
+  CtkWidget *control_window;
+  CtkWidget *label;
+  CtkWidget *vbox;
+  CtkWidget *button;
+  CtkWidget *spin;
+  CtkAdjustment *adjustment;
+  CtkWidget *entry;
+  CtkWidget *om;
   gint i;
   
   control_window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -8058,14 +8058,14 @@ window_controls (GtkWidget *window)
 }
 
 void
-create_window_sizing (GtkWidget *widget)
+create_window_sizing (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  static GtkWidget *target_window = NULL;
+  static CtkWidget *window = NULL;
+  static CtkWidget *target_window = NULL;
 
   if (!target_window)
     {
-      GtkWidget *label;
+      CtkWidget *label;
       
       target_window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (target_window),
@@ -8099,22 +8099,22 @@ create_window_sizing (GtkWidget *widget)
 }
 
 /*
- * GtkProgressBar
+ * CtkProgressBar
  */
 
 typedef struct _ProgressData {
-  GtkWidget *window;
-  GtkWidget *pbar;
-  GtkWidget *block_spin;
-  GtkWidget *x_align_spin;
-  GtkWidget *y_align_spin;
-  GtkWidget *step_spin;
-  GtkWidget *act_blocks_spin;
-  GtkWidget *label;
-  GtkWidget *omenu1;
-  GtkWidget *elmenu;
-  GtkWidget *omenu2;
-  GtkWidget *entry;
+  CtkWidget *window;
+  CtkWidget *pbar;
+  CtkWidget *block_spin;
+  CtkWidget *x_align_spin;
+  CtkWidget *y_align_spin;
+  CtkWidget *step_spin;
+  CtkWidget *act_blocks_spin;
+  CtkWidget *label;
+  CtkWidget *omenu1;
+  CtkWidget *elmenu;
+  CtkWidget *omenu2;
+  CtkWidget *entry;
   int timer;
   gboolean activity;
 } ProgressData;
@@ -8149,7 +8149,7 @@ progress_timeout (gpointer data)
 }
 
 static void
-destroy_progress (GtkWidget     *widget,
+destroy_progress (CtkWidget     *widget,
 		  ProgressData **pdata)
 {
   if ((*pdata)->timer)
@@ -8163,7 +8163,7 @@ destroy_progress (GtkWidget     *widget,
 }
 
 static void
-progressbar_toggle_orientation (GtkWidget *widget, gpointer data)
+progressbar_toggle_orientation (CtkWidget *widget, gpointer data)
 {
   ProgressData *pdata;
   gint i;
@@ -8187,7 +8187,7 @@ progressbar_toggle_orientation (GtkWidget *widget, gpointer data)
 }
 
 static void
-toggle_show_text (GtkWidget *widget, ProgressData *pdata)
+toggle_show_text (CtkWidget *widget, ProgressData *pdata)
 {
   gboolean active;
 
@@ -8196,7 +8196,7 @@ toggle_show_text (GtkWidget *widget, ProgressData *pdata)
 }
 
 static void
-progressbar_toggle_ellipsize (GtkWidget *widget,
+progressbar_toggle_ellipsize (CtkWidget *widget,
                               gpointer   data)
 {
   ProgressData *pdata = data;
@@ -8208,13 +8208,13 @@ progressbar_toggle_ellipsize (GtkWidget *widget,
 }
 
 static void
-toggle_activity_mode (GtkWidget *widget, ProgressData *pdata)
+toggle_activity_mode (CtkWidget *widget, ProgressData *pdata)
 {
   pdata->activity = ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (widget));
 }
 
 static void
-toggle_running (GtkWidget *widget, ProgressData *pdata)
+toggle_running (CtkWidget *widget, ProgressData *pdata)
 {
   if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (widget)))
     {
@@ -8232,23 +8232,23 @@ toggle_running (GtkWidget *widget, ProgressData *pdata)
 }
 
 static void
-entry_changed (GtkWidget *widget, ProgressData *pdata)
+entry_changed (CtkWidget *widget, ProgressData *pdata)
 {
   ctk_progress_bar_set_text (CTK_PROGRESS_BAR (pdata->pbar),
 			  ctk_entry_get_text (CTK_ENTRY (pdata->entry)));
 }
 
 void
-create_progress_bar (GtkWidget *widget)
+create_progress_bar (CtkWidget *widget)
 {
-  GtkWidget *content_area;
-  GtkWidget *vbox;
-  GtkWidget *vbox2;
-  GtkWidget *hbox;
-  GtkWidget *check;
-  GtkWidget *frame;
-  GtkWidget *grid;
-  GtkWidget *label;
+  CtkWidget *content_area;
+  CtkWidget *vbox;
+  CtkWidget *vbox2;
+  CtkWidget *hbox;
+  CtkWidget *check;
+  CtkWidget *frame;
+  CtkWidget *grid;
+  CtkWidget *label;
   static ProgressData *pdata = NULL;
 
   static gchar *items1[] =
@@ -8285,7 +8285,7 @@ create_progress_bar (GtkWidget *widget)
 
       content_area = ctk_dialog_get_content_area (CTK_DIALOG (pdata->window));
 
-      ctk_window_set_title (CTK_WINDOW (pdata->window), "GtkProgressBar");
+      ctk_window_set_title (CTK_WINDOW (pdata->window), "CtkProgressBar");
       ctk_container_set_border_width (CTK_CONTAINER (pdata->window), 0);
 
       vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 5);
@@ -8400,13 +8400,13 @@ typedef struct {
   int y;
   gboolean found;
   gboolean first;
-  GtkWidget *res_widget;
+  CtkWidget *res_widget;
 } FindWidgetData;
 
 static void
-find_widget (GtkWidget *widget, FindWidgetData *data)
+find_widget (CtkWidget *widget, FindWidgetData *data)
 {
-  GtkAllocation new_allocation;
+  CtkAllocation new_allocation;
   gint x_offset = 0;
   gint y_offset = 0;
 
@@ -8479,7 +8479,7 @@ find_widget (GtkWidget *widget, FindWidgetData *data)
 	  new_data.first = FALSE;
 	  
 	  ctk_container_forall (CTK_CONTAINER (widget),
-				(GtkCallback)find_widget,
+				(CtkCallback)find_widget,
 				&new_data);
 	  
 	  data->found = new_data.found;
@@ -8499,10 +8499,10 @@ find_widget (GtkWidget *widget, FindWidgetData *data)
     }
 }
 
-static GtkWidget *
+static CtkWidget *
 find_widget_at_pointer (GdkDevice *device)
 {
-  GtkWidget *widget = NULL;
+  CtkWidget *widget = NULL;
   GdkWindow *pointer_window;
   gint x, y;
   FindWidgetData data;
@@ -8537,8 +8537,8 @@ find_widget_at_pointer (GdkDevice *device)
 }
 
 struct SnapshotData {
-  GtkWidget *toplevel_button;
-  GtkWidget **window;
+  CtkWidget *toplevel_button;
+  CtkWidget **window;
   GdkCursor *cursor;
   gboolean in_query;
   gboolean is_toplevel;
@@ -8546,7 +8546,7 @@ struct SnapshotData {
 };
 
 static void
-destroy_snapshot_data (GtkWidget             *widget,
+destroy_snapshot_data (CtkWidget             *widget,
 		       struct SnapshotData *data)
 {
   if (*data->window)
@@ -8568,11 +8568,11 @@ destroy_snapshot_data (GtkWidget             *widget,
 }
 
 static gint
-snapshot_widget_event (GtkWidget	       *widget,
+snapshot_widget_event (CtkWidget	       *widget,
 		       GdkEvent	       *event,
 		       struct SnapshotData *data)
 {
-  GtkWidget *res_widget = NULL;
+  CtkWidget *res_widget = NULL;
 
   if (!data->in_query)
     return FALSE;
@@ -8588,7 +8588,7 @@ snapshot_widget_event (GtkWidget	       *widget,
       if (res_widget)
 	{
 	  cairo_surface_t *surface;
-	  GtkWidget *window, *image;
+	  CtkWidget *window, *image;
           GdkPixbuf *pixbuf;
           int width, height;
           cairo_t *cr;
@@ -8622,10 +8622,10 @@ snapshot_widget_event (GtkWidget	       *widget,
 
 
 static void
-snapshot_widget (GtkButton *button,
+snapshot_widget (CtkButton *button,
 		 struct SnapshotData *data)
 {
-  GtkWidget *widget = CTK_WIDGET (button);
+  CtkWidget *widget = CTK_WIDGET (button);
   GdkDevice *device;
 
   device = ctk_get_current_event_device ();
@@ -8652,11 +8652,11 @@ snapshot_widget (GtkButton *button,
 }
 
 static void
-create_snapshot (GtkWidget *widget)
+create_snapshot (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *button;
-  GtkWidget *vbox;
+  static CtkWidget *window = NULL;
+  CtkWidget *button;
+  CtkWidget *vbox;
   struct SnapshotData *data;
 
   data = g_new (struct SnapshotData, 1);
@@ -8708,11 +8708,11 @@ create_snapshot (GtkWidget *widget)
  */
 
 void
-selection_test_received (GtkWidget        *tree_view,
-                         GtkSelectionData *selection_data)
+selection_test_received (CtkWidget        *tree_view,
+                         CtkSelectionData *selection_data)
 {
-  GtkTreeModel *model;
-  GtkListStore *store;
+  CtkTreeModel *model;
+  CtkListStore *store;
   GdkAtom *atoms;
   int i, l;
 
@@ -8741,7 +8741,7 @@ selection_test_received (GtkWidget        *tree_view,
   for (i = 0; i < l; i++)
     {
       char *name;
-      GtkTreeIter iter;
+      CtkTreeIter iter;
 
       name = gdk_atom_name (atoms[i]);
       if (name != NULL)
@@ -8757,7 +8757,7 @@ selection_test_received (GtkWidget        *tree_view,
 }
 
 void
-selection_test_get_targets (GtkWidget *dialog, gint response, GtkWidget *tree_view)
+selection_test_get_targets (CtkWidget *dialog, gint response, CtkWidget *tree_view)
 {
   static GdkAtom targets_atom = GDK_NONE;
 
@@ -8775,17 +8775,17 @@ selection_test_get_targets (GtkWidget *dialog, gint response, GtkWidget *tree_vi
 }
 
 void
-create_selection_test (GtkWidget *widget)
+create_selection_test (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *content_area;
-  GtkWidget *vbox;
-  GtkWidget *scrolled_win;
-  GtkListStore* store;
-  GtkWidget *tree_view;
-  GtkTreeViewColumn *column;
-  GtkCellRenderer *renderer;
-  GtkWidget *label;
+  static CtkWidget *window = NULL;
+  CtkWidget *content_area;
+  CtkWidget *vbox;
+  CtkWidget *scrolled_win;
+  CtkListStore* store;
+  CtkWidget *tree_view;
+  CtkTreeViewColumn *column;
+  CtkCellRenderer *renderer;
+  CtkWidget *label;
 
   if (!window)
     {
@@ -8857,9 +8857,9 @@ create_selection_test (GtkWidget *widget)
 static int scroll_test_pos = 0.0;
 
 static gint
-scroll_test_draw (GtkWidget     *widget,
+scroll_test_draw (CtkWidget     *widget,
                   cairo_t       *cr,
-                  GtkAdjustment *adjustment)
+                  CtkAdjustment *adjustment)
 {
   gint i,j;
   gint imin, imax, jmin, jmax;
@@ -8884,8 +8884,8 @@ scroll_test_draw (GtkWidget     *widget,
 }
 
 static gint
-scroll_test_scroll (GtkWidget *widget, GdkEventScroll *event,
-		    GtkAdjustment *adjustment)
+scroll_test_scroll (CtkWidget *widget, GdkEventScroll *event,
+		    CtkAdjustment *adjustment)
 {
   gdouble new_value = ctk_adjustment_get_value (adjustment) + ((event->direction == GDK_SCROLL_UP) ?
 				    -ctk_adjustment_get_page_increment (adjustment) / 2:
@@ -8897,10 +8897,10 @@ scroll_test_scroll (GtkWidget *widget, GdkEventScroll *event,
 }
 
 static void
-scroll_test_configure (GtkWidget *widget, GdkEventConfigure *event,
-		       GtkAdjustment *adjustment)
+scroll_test_configure (CtkWidget *widget, GdkEventConfigure *event,
+		       CtkAdjustment *adjustment)
 {
-  GtkAllocation allocation;
+  CtkAllocation allocation;
 
   ctk_widget_get_allocation (widget, &allocation);
   ctk_adjustment_configure (adjustment,
@@ -8913,7 +8913,7 @@ scroll_test_configure (GtkWidget *widget, GdkEventConfigure *event,
 }
 
 static void
-scroll_test_adjustment_changed (GtkAdjustment *adjustment, GtkWidget *widget)
+scroll_test_adjustment_changed (CtkAdjustment *adjustment, CtkWidget *widget)
 {
   GdkWindow *window;
   gint dy;
@@ -8931,14 +8931,14 @@ scroll_test_adjustment_changed (GtkAdjustment *adjustment, GtkWidget *widget)
 
 
 void
-create_scroll_test (GtkWidget *widget)
+create_scroll_test (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *content_area;
-  GtkWidget *hbox;
-  GtkWidget *drawing_area;
-  GtkWidget *scrollbar;
-  GtkAdjustment *adjustment;
+  static CtkWidget *window = NULL;
+  CtkWidget *content_area;
+  CtkWidget *hbox;
+  CtkWidget *drawing_area;
+  CtkWidget *scrollbar;
+  CtkAdjustment *adjustment;
   GdkGeometry geometry;
   GdkWindowHints geometry_mask;
 
@@ -9026,7 +9026,7 @@ create_scroll_test (GtkWidget *widget)
 static int timer = 0;
 
 gint
-timeout_test (GtkWidget *label)
+timeout_test (CtkWidget *label)
 {
   static int count = 0;
   static char buffer[32];
@@ -9038,8 +9038,8 @@ timeout_test (GtkWidget *label)
 }
 
 void
-start_timeout_test (GtkWidget *widget,
-		    GtkWidget *label)
+start_timeout_test (CtkWidget *widget,
+		    CtkWidget *label)
 {
   if (!timer)
     {
@@ -9048,7 +9048,7 @@ start_timeout_test (GtkWidget *widget,
 }
 
 void
-stop_timeout_test (GtkWidget *widget,
+stop_timeout_test (CtkWidget *widget,
 		   gpointer   data)
 {
   if (timer)
@@ -9059,8 +9059,8 @@ stop_timeout_test (GtkWidget *widget,
 }
 
 void
-destroy_timeout_test (GtkWidget  *widget,
-		      GtkWidget **window)
+destroy_timeout_test (CtkWidget  *widget,
+		      CtkWidget **window)
 {
   stop_timeout_test (NULL, NULL);
 
@@ -9068,12 +9068,12 @@ destroy_timeout_test (GtkWidget  *widget,
 }
 
 void
-create_timeout_test (GtkWidget *widget)
+create_timeout_test (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *action_area, *content_area;
-  GtkWidget *button;
-  GtkWidget *label;
+  static CtkWidget *window = NULL;
+  CtkWidget *action_area, *content_area;
+  CtkWidget *button;
+  CtkWidget *label;
 
   if (!window)
     {
@@ -9134,18 +9134,18 @@ create_timeout_test (GtkWidget *widget)
  */
 
 void
-mainloop_destroyed (GtkWidget *w, GtkWidget **window)
+mainloop_destroyed (CtkWidget *w, CtkWidget **window)
 {
   *window = NULL;
   ctk_main_quit ();
 }
 
 void
-create_mainloop (GtkWidget *widget)
+create_mainloop (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *content_area;
-  GtkWidget *label;
+  static CtkWidget *window = NULL;
+  CtkWidget *content_area;
+  CtkWidget *label;
 
   if (!window)
     {
@@ -9189,9 +9189,9 @@ create_mainloop (GtkWidget *widget)
 }
 
 static gboolean
-layout_draw_handler (GtkWidget *widget, cairo_t *cr)
+layout_draw_handler (CtkWidget *widget, cairo_t *cr)
 {
-  GtkLayout *layout;
+  CtkLayout *layout;
   GdkWindow *bin_window;
   GdkRectangle clip;
   gint i,j,x,y;
@@ -9226,14 +9226,14 @@ layout_draw_handler (GtkWidget *widget, cairo_t *cr)
   return FALSE;
 }
 
-void create_layout (GtkWidget *widget)
+void create_layout (CtkWidget *widget)
 {
-  GtkAdjustment *hadjustment, *vadjustment;
-  GtkLayout *layout;
-  static GtkWidget *window = NULL;
-  GtkWidget *layout_widget;
-  GtkWidget *scrolledwindow;
-  GtkWidget *button;
+  CtkAdjustment *hadjustment, *vadjustment;
+  CtkLayout *layout;
+  static CtkWidget *window = NULL;
+  CtkWidget *layout_widget;
+  CtkWidget *scrolledwindow;
+  CtkWidget *button;
 
   if (!window)
     {
@@ -9264,7 +9264,7 @@ void create_layout (GtkWidget *widget)
       layout = CTK_LAYOUT (layout_widget);
       ctk_container_add (CTK_CONTAINER (scrolledwindow), layout_widget);
 
-      /* We set step sizes here since GtkLayout does not set
+      /* We set step sizes here since CtkLayout does not set
        * them itself.
        */
       hadjustment = ctk_scrollable_get_hadjustment (CTK_SCROLLABLE (layout));
@@ -9311,30 +9311,30 @@ void create_layout (GtkWidget *widget)
 }
 
 static void
-show_native (GtkWidget *button,
-             GtkFileChooserNative *native)
+show_native (CtkWidget *button,
+             CtkFileChooserNative *native)
 {
   ctk_native_dialog_show (CTK_NATIVE_DIALOG (native));
 }
 
 static void
-hide_native (GtkWidget *button,
-             GtkFileChooserNative *native)
+hide_native (CtkWidget *button,
+             CtkFileChooserNative *native)
 {
   ctk_native_dialog_hide (CTK_NATIVE_DIALOG (native));
 }
 
 static void
-native_response (GtkNativeDialog *self,
+native_response (CtkNativeDialog *self,
                  gint response_id,
-                 GtkWidget *label)
+                 CtkWidget *label)
 {
   static int count = 0;
   char *res;
   GSList *uris, *l;
   GString *s;
   char *response;
-  GtkFileFilter *filter;
+  CtkFileFilter *filter;
 
   uris = ctk_file_chooser_get_uris (CTK_FILE_CHOOSER (self));
   filter = ctk_file_chooser_get_filter (CTK_FILE_CHOOSER (self));
@@ -9387,38 +9387,38 @@ native_response (GtkNativeDialog *self,
 }
 
 static void
-native_modal_toggle (GtkWidget *checkbutton,
-                     GtkFileChooserNative *native)
+native_modal_toggle (CtkWidget *checkbutton,
+                     CtkFileChooserNative *native)
 {
   ctk_native_dialog_set_modal (CTK_NATIVE_DIALOG (native),
                                ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON(checkbutton)));
 }
 
 static void
-native_multi_select_toggle (GtkWidget *checkbutton,
-                            GtkFileChooserNative *native)
+native_multi_select_toggle (CtkWidget *checkbutton,
+                            CtkFileChooserNative *native)
 {
   ctk_file_chooser_set_select_multiple (CTK_FILE_CHOOSER (native),
                                         ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON(checkbutton)));
 }
 
 static void
-native_overwrite_confirmation_toggle (GtkWidget *checkbutton,
-                                      GtkFileChooserNative *native)
+native_overwrite_confirmation_toggle (CtkWidget *checkbutton,
+                                      CtkFileChooserNative *native)
 {
   ctk_file_chooser_set_do_overwrite_confirmation (CTK_FILE_CHOOSER (native),
                                                   ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON(checkbutton)));
 }
 
 static void
-native_extra_widget_toggle (GtkWidget *checkbutton,
-                            GtkFileChooserNative *native)
+native_extra_widget_toggle (CtkWidget *checkbutton,
+                            CtkFileChooserNative *native)
 {
   gboolean extra_widget = ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON(checkbutton));
 
   if (extra_widget)
     {
-      GtkWidget *extra = ctk_check_button_new_with_label ("Extra toggle");
+      CtkWidget *extra = ctk_check_button_new_with_label ("Extra toggle");
       ctk_widget_show (extra);
       ctk_file_chooser_set_extra_widget (CTK_FILE_CHOOSER (native), extra);
     }
@@ -9432,9 +9432,9 @@ native_extra_widget_toggle (GtkWidget *checkbutton,
 static void
 native_visible_notify_show (GObject	*object,
                             GParamSpec	*pspec,
-                            GtkWidget   *show_button)
+                            CtkWidget   *show_button)
 {
-  GtkFileChooserNative *native = CTK_FILE_CHOOSER_NATIVE (object);
+  CtkFileChooserNative *native = CTK_FILE_CHOOSER_NATIVE (object);
   gboolean visible;
 
   visible = ctk_native_dialog_get_visible (CTK_NATIVE_DIALOG (native));
@@ -9444,9 +9444,9 @@ native_visible_notify_show (GObject	*object,
 static void
 native_visible_notify_hide (GObject	*object,
                             GParamSpec	*pspec,
-                            GtkWidget   *hide_button)
+                            CtkWidget   *hide_button)
 {
-  GtkFileChooserNative *native = CTK_FILE_CHOOSER_NATIVE (object);
+  CtkFileChooserNative *native = CTK_FILE_CHOOSER_NATIVE (object);
   gboolean visible;
 
   visible = ctk_native_dialog_get_visible (CTK_NATIVE_DIALOG (native));
@@ -9487,8 +9487,8 @@ get_some_file (void)
 }
 
 static void
-native_action_changed (GtkWidget *combo,
-                       GtkFileChooserNative *native)
+native_action_changed (CtkWidget *combo,
+                       CtkFileChooserNative *native)
 {
   int i;
   gboolean save_as = FALSE;
@@ -9501,7 +9501,7 @@ native_action_changed (GtkWidget *combo,
     }
 
   ctk_file_chooser_set_action (CTK_FILE_CHOOSER (native),
-                               (GtkFileChooserAction) i);
+                               (CtkFileChooserAction) i);
 
 
   if (i == CTK_FILE_CHOOSER_ACTION_SAVE ||
@@ -9519,12 +9519,12 @@ native_action_changed (GtkWidget *combo,
 }
 
 static void
-native_filter_changed (GtkWidget *combo,
-                       GtkFileChooserNative *native)
+native_filter_changed (CtkWidget *combo,
+                       CtkFileChooserNative *native)
 {
   int i;
   GSList *filters, *l;
-  GtkFileFilter *filter;
+  CtkFileFilter *filter;
 
   i = ctk_combo_box_get_active (CTK_COMBO_BOX (combo));
 
@@ -9572,20 +9572,20 @@ native_filter_changed (GtkWidget *combo,
 }
 
 static void
-destroy_native (GtkFileChooserNative *native)
+destroy_native (CtkFileChooserNative *native)
 {
   ctk_native_dialog_destroy (CTK_NATIVE_DIALOG (native));
   g_object_unref (native);
 }
 
 void
-create_native_dialogs (GtkWidget *widget)
+create_native_dialogs (CtkWidget *widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *box, *label;
-  GtkWidget *show_button, *hide_button, *check_button;
-  GtkFileChooserNative *native;
-  GtkWidget *combo;
+  static CtkWidget *window = NULL;
+  CtkWidget *box, *label;
+  CtkWidget *show_button, *hide_button, *check_button;
+  CtkFileChooserNative *native;
+  CtkWidget *combo;
 
   if (!window)
     {
@@ -9693,7 +9693,7 @@ create_native_dialogs (GtkWidget *widget)
  */
 
 void
-do_exit (GtkWidget *widget, GtkWidget *window)
+do_exit (CtkWidget *widget, CtkWidget *window)
 {
   ctk_widget_destroy (window);
   ctk_main_quit ();
@@ -9701,7 +9701,7 @@ do_exit (GtkWidget *widget, GtkWidget *window)
 
 struct {
   char *label;
-  void (*func) (GtkWidget *widget);
+  void (*func) (CtkWidget *widget);
   gboolean do_not_benchmark;
 } buttons[] =
 {
@@ -9766,14 +9766,14 @@ int nbuttons = sizeof (buttons) / sizeof (buttons[0]);
 void
 create_main_window (void)
 {
-  GtkWidget *window;
-  GtkWidget *box1;
-  GtkWidget *box2;
-  GtkWidget *scrolled_window;
-  GtkWidget *button;
-  GtkWidget *label;
+  CtkWidget *window;
+  CtkWidget *box1;
+  CtkWidget *box2;
+  CtkWidget *scrolled_window;
+  CtkWidget *button;
+  CtkWidget *label;
   gchar buffer[64];
-  GtkWidget *separator;
+  CtkWidget *separator;
   GdkGeometry geometry;
   int i;
 
@@ -9802,13 +9802,13 @@ create_main_window (void)
 
   if (ctk_micro_version > 0)
     sprintf (buffer,
-	     "Gtk+ v%d.%d.%d",
+	     "Ctk+ v%d.%d.%d",
 	     ctk_get_major_version (),
 	     ctk_get_minor_version (),
 	     ctk_get_micro_version ());
   else
     sprintf (buffer,
-	     "Gtk+ v%d.%d",
+	     "Ctk+ v%d.%d",
 	     ctk_get_major_version (),
 	     ctk_get_minor_version ());
 
@@ -9886,7 +9886,7 @@ pad (const char *str, int to)
 }
 
 static void
-bench_iteration (GtkWidget *widget, void (* fn) (GtkWidget *widget))
+bench_iteration (CtkWidget *widget, void (* fn) (CtkWidget *widget))
 {
   fn (widget); /* on */
   while (g_main_context_iteration (NULL, FALSE));
@@ -9895,7 +9895,7 @@ bench_iteration (GtkWidget *widget, void (* fn) (GtkWidget *widget))
 }
 
 void
-do_real_bench (GtkWidget *widget, void (* fn) (GtkWidget *widget), char *name, int num)
+do_real_bench (CtkWidget *widget, void (* fn) (CtkWidget *widget), char *name, int num)
 {
   GTimeVal tv0, tv1;
   double dt_first;
@@ -9934,8 +9934,8 @@ void
 do_bench (char* what, int num)
 {
   int i;
-  GtkWidget *widget;
-  void (* fn) (GtkWidget *widget);
+  CtkWidget *widget;
+  void (* fn) (CtkWidget *widget);
   fn = NULL;
   widget = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
@@ -9977,10 +9977,10 @@ usage (void)
 int
 main (int argc, char *argv[])
 {
-  GtkCssProvider *provider, *memory_provider;
+  CtkCssProvider *provider, *memory_provider;
   GdkDisplay *display;
   GdkScreen *screen;
-  GtkBindingSet *binding_set;
+  CtkBindingSet *binding_set;
   int i;
   gboolean done_benchmarks = FALSE;
 
@@ -10068,7 +10068,7 @@ main (int argc, char *argv[])
 				'9', GDK_CONTROL_MASK | GDK_RELEASE_MASK,
 				"debug_msg",
 				1,
-				G_TYPE_STRING, "GtkWidgetClass <ctrl><release>9 test");
+				G_TYPE_STRING, "CtkWidgetClass <ctrl><release>9 test");
 
   memory_provider = ctk_css_provider_new ();
   ctk_css_provider_load_from_data (memory_provider,

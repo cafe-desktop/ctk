@@ -22,7 +22,7 @@
 
 G_BEGIN_DECLS
 
-GtkWidget *ctk_combo_box_get_popup (GtkComboBox *combo_box);
+CtkWidget *ctk_combo_box_get_popup (CtkComboBox *combo_box);
 
 G_END_DECLS
 

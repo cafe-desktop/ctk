@@ -23,14 +23,14 @@
 
 #include <string.h>
 
-struct _GtkCssValue {
+struct _CtkCssValue {
   CTK_CSS_VALUE_BASE
   guint         n_values;
-  GtkCssValue  *values[1];
+  CtkCssValue  *values[1];
 };
 
 static void
-ctk_css_value_array_free (GtkCssValue *value)
+ctk_css_value_array_free (CtkCssValue *value)
 {
   guint i;
 
@@ -39,18 +39,18 @@ ctk_css_value_array_free (GtkCssValue *value)
       _ctk_css_value_unref (value->values[i]);
     }
 
-  g_slice_free1 (sizeof (GtkCssValue) + sizeof (GtkCssValue *) * (value->n_values - 1), value);
+  g_slice_free1 (sizeof (CtkCssValue) + sizeof (CtkCssValue *) * (value->n_values - 1), value);
 }
 
-static GtkCssValue *
-ctk_css_value_array_compute (GtkCssValue             *value,
+static CtkCssValue *
+ctk_css_value_array_compute (CtkCssValue             *value,
                              guint                    property_id,
-                             GtkStyleProviderPrivate *provider,
-                             GtkCssStyle             *style,
-                             GtkCssStyle             *parent_style)
+                             CtkStyleProviderPrivate *provider,
+                             CtkCssStyle             *style,
+                             CtkCssStyle             *parent_style)
 {
-  GtkCssValue *result;
-  GtkCssValue *i_value;
+  CtkCssValue *result;
+  CtkCssValue *i_value;
   guint i, j;
 
   result = NULL;
@@ -79,8 +79,8 @@ ctk_css_value_array_compute (GtkCssValue             *value,
 }
 
 static gboolean
-ctk_css_value_array_equal (const GtkCssValue *value1,
-                           const GtkCssValue *value2)
+ctk_css_value_array_equal (const CtkCssValue *value1,
+                           const CtkCssValue *value2)
 {
   guint i;
 
@@ -115,17 +115,17 @@ lcm (guint a, guint b)
   return a / gcd (a, b) * b;
 }
 
-static GtkCssValue *
-ctk_css_value_array_transition_repeat (GtkCssValue *start,
-                                       GtkCssValue *end,
+static CtkCssValue *
+ctk_css_value_array_transition_repeat (CtkCssValue *start,
+                                       CtkCssValue *end,
                                        guint        property_id,
                                        double       progress)
 {
-  GtkCssValue **transitions;
+  CtkCssValue **transitions;
   guint i, n;
 
   n = lcm (start->n_values, end->n_values);
-  transitions = g_newa (GtkCssValue *, n);
+  transitions = g_newa (CtkCssValue *, n);
 
   for (i = 0; i < n; i++)
     {
@@ -144,7 +144,7 @@ ctk_css_value_array_transition_repeat (GtkCssValue *start,
   return _ctk_css_array_value_new_from_array (transitions, n);
 }
 
-static GtkCssValue *
+static CtkCssValue *
 ctk_css_array_value_create_default_transition_value (guint property_id)
 {
   switch (property_id)
@@ -156,17 +156,17 @@ ctk_css_array_value_create_default_transition_value (guint property_id)
     }
 }
 
-static GtkCssValue *
-ctk_css_value_array_transition_extend (GtkCssValue *start,
-                                       GtkCssValue *end,
+static CtkCssValue *
+ctk_css_value_array_transition_extend (CtkCssValue *start,
+                                       CtkCssValue *end,
                                        guint        property_id,
                                        double       progress)
 {
-  GtkCssValue **transitions;
+  CtkCssValue **transitions;
   guint i, n;
 
   n = MAX (start->n_values, end->n_values);
-  transitions = g_newa (GtkCssValue *, n);
+  transitions = g_newa (CtkCssValue *, n);
 
   for (i = 0; i < MIN (start->n_values, end->n_values); i++)
     {
@@ -184,7 +184,7 @@ ctk_css_value_array_transition_extend (GtkCssValue *start,
 
   if (start->n_values != end->n_values)
     {
-      GtkCssValue *default_value;
+      CtkCssValue *default_value;
 
       default_value = ctk_css_array_value_create_default_transition_value (property_id);
 
@@ -223,9 +223,9 @@ ctk_css_value_array_transition_extend (GtkCssValue *start,
   return _ctk_css_array_value_new_from_array (transitions, n);
 }
 
-static GtkCssValue *
-ctk_css_value_array_transition (GtkCssValue *start,
-                                GtkCssValue *end,
+static CtkCssValue *
+ctk_css_value_array_transition (CtkCssValue *start,
+                                CtkCssValue *end,
                                 guint        property_id,
                                 double       progress)
 {
@@ -301,7 +301,7 @@ ctk_css_value_array_transition (GtkCssValue *start,
 }
 
 static void
-ctk_css_value_array_print (const GtkCssValue *value,
+ctk_css_value_array_print (const CtkCssValue *value,
                            GString           *string)
 {
   guint i;
@@ -320,7 +320,7 @@ ctk_css_value_array_print (const GtkCssValue *value,
     }
 }
 
-static const GtkCssValueClass CTK_CSS_VALUE_ARRAY = {
+static const CtkCssValueClass CTK_CSS_VALUE_ARRAY = {
   ctk_css_value_array_free,
   ctk_css_value_array_compute,
   ctk_css_value_array_equal,
@@ -328,35 +328,35 @@ static const GtkCssValueClass CTK_CSS_VALUE_ARRAY = {
   ctk_css_value_array_print
 };
 
-GtkCssValue *
-_ctk_css_array_value_new (GtkCssValue *content)
+CtkCssValue *
+_ctk_css_array_value_new (CtkCssValue *content)
 {
   g_return_val_if_fail (content != NULL, NULL);
 
   return _ctk_css_array_value_new_from_array (&content, 1);
 }
 
-GtkCssValue *
-_ctk_css_array_value_new_from_array (GtkCssValue **values,
+CtkCssValue *
+_ctk_css_array_value_new_from_array (CtkCssValue **values,
                                      guint         n_values)
 {
-  GtkCssValue *result;
+  CtkCssValue *result;
            
   g_return_val_if_fail (values != NULL, NULL);
   g_return_val_if_fail (n_values > 0, NULL);
          
-  result = _ctk_css_value_alloc (&CTK_CSS_VALUE_ARRAY, sizeof (GtkCssValue) + sizeof (GtkCssValue *) * (n_values - 1));
+  result = _ctk_css_value_alloc (&CTK_CSS_VALUE_ARRAY, sizeof (CtkCssValue) + sizeof (CtkCssValue *) * (n_values - 1));
   result->n_values = n_values;
-  memcpy (&result->values[0], values, sizeof (GtkCssValue *) * n_values);
+  memcpy (&result->values[0], values, sizeof (CtkCssValue *) * n_values);
             
   return result;
 }
 
-GtkCssValue *
-_ctk_css_array_value_parse (GtkCssParser *parser,
-                            GtkCssValue  *(* parse_func) (GtkCssParser *parser))
+CtkCssValue *
+_ctk_css_array_value_parse (CtkCssParser *parser,
+                            CtkCssValue  *(* parse_func) (CtkCssParser *parser))
 {
-  GtkCssValue *value, *result;
+  CtkCssValue *value, *result;
   GPtrArray *values;
 
   values = g_ptr_array_new ();
@@ -374,13 +374,13 @@ _ctk_css_array_value_parse (GtkCssParser *parser,
     g_ptr_array_add (values, value);
   } while (_ctk_css_parser_try (parser, ",", TRUE));
 
-  result = _ctk_css_array_value_new_from_array ((GtkCssValue **) values->pdata, values->len);
+  result = _ctk_css_array_value_new_from_array ((CtkCssValue **) values->pdata, values->len);
   g_ptr_array_free (values, TRUE);
   return result;
 }
 
-GtkCssValue *
-_ctk_css_array_value_get_nth (const GtkCssValue *value,
+CtkCssValue *
+_ctk_css_array_value_get_nth (const CtkCssValue *value,
                               guint              i)
 {
   g_return_val_if_fail (value != NULL, NULL);
@@ -391,7 +391,7 @@ _ctk_css_array_value_get_nth (const GtkCssValue *value,
 }
 
 guint
-_ctk_css_array_value_get_n_values (const GtkCssValue *value)
+_ctk_css_array_value_get_n_values (const CtkCssValue *value)
 {
   g_return_val_if_fail (value != NULL, 0);
   g_return_val_if_fail (value->class == &CTK_CSS_VALUE_ARRAY, 0);

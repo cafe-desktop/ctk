@@ -21,10 +21,10 @@
 
 int main (int argc, char *argv[])
 {
-	GtkWidget *window, *box, *button, *hbox;
+	CtkWidget *window, *box, *button, *hbox;
         gchar *text;
 	gboolean use_underline, use_stock;
-	GtkWidget *image, *label;
+	CtkWidget *image, *label;
 
 	ctk_init (&argc, &argv);
 

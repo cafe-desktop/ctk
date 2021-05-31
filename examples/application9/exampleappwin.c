@@ -5,7 +5,7 @@
 
 struct _ExampleAppWindow
 {
-  GtkApplicationWindow parent;
+  CtkApplicationWindow parent;
 };
 
 typedef struct _ExampleAppWindowPrivate ExampleAppWindowPrivate;
@@ -13,29 +13,29 @@ typedef struct _ExampleAppWindowPrivate ExampleAppWindowPrivate;
 struct _ExampleAppWindowPrivate
 {
   GSettings *settings;
-  GtkWidget *stack;
-  GtkWidget *search;
-  GtkWidget *searchbar;
-  GtkWidget *searchentry;
-  GtkWidget *gears;
-  GtkWidget *sidebar;
-  GtkWidget *words;
-  GtkWidget *lines;
-  GtkWidget *lines_label;
+  CtkWidget *stack;
+  CtkWidget *search;
+  CtkWidget *searchbar;
+  CtkWidget *searchentry;
+  CtkWidget *gears;
+  CtkWidget *sidebar;
+  CtkWidget *words;
+  CtkWidget *lines;
+  CtkWidget *lines_label;
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE(ExampleAppWindow, example_app_window, CTK_TYPE_APPLICATION_WINDOW);
 
 static void
-search_text_changed (GtkEntry *entry)
+search_text_changed (CtkEntry *entry)
 {
   ExampleAppWindow *win;
   ExampleAppWindowPrivate *priv;
   const gchar *text;
-  GtkWidget *tab;
-  GtkWidget *view;
-  GtkTextBuffer *buffer;
-  GtkTextIter start, match_start, match_end;
+  CtkWidget *tab;
+  CtkWidget *view;
+  CtkTextBuffer *buffer;
+  CtkTextIter start, match_start, match_end;
 
   text = ctk_entry_get_text (entry);
 
@@ -61,7 +61,7 @@ search_text_changed (GtkEntry *entry)
 }
 
 static void
-find_word (GtkButton        *button,
+find_word (CtkButton        *button,
            ExampleAppWindow *win)
 {
   ExampleAppWindowPrivate *priv;
@@ -79,9 +79,9 @@ update_words (ExampleAppWindow *win)
   ExampleAppWindowPrivate *priv;
   GHashTable *strings;
   GHashTableIter iter;
-  GtkWidget *tab, *view, *row;
-  GtkTextBuffer *buffer;
-  GtkTextIter start, end;
+  CtkWidget *tab, *view, *row;
+  CtkTextBuffer *buffer;
+  CtkTextIter start, end;
   GList *children, *l;
   gchar *word, *key;
 
@@ -137,9 +137,9 @@ static void
 update_lines (ExampleAppWindow *win)
 {
   ExampleAppWindowPrivate *priv;
-  GtkWidget *tab, *view;
-  GtkTextBuffer *buffer;
-  GtkTextIter iter;
+  CtkWidget *tab, *view;
+  CtkTextBuffer *buffer;
+  CtkTextIter iter;
   int count;
   gchar *lines;
 
@@ -197,7 +197,7 @@ static void
 example_app_window_init (ExampleAppWindow *win)
 {
   ExampleAppWindowPrivate *priv;
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GMenuModel *menu;
   GAction *action;
 
@@ -286,12 +286,12 @@ example_app_window_open (ExampleAppWindow *win,
 {
   ExampleAppWindowPrivate *priv;
   gchar *basename;
-  GtkWidget *scrolled, *view;
+  CtkWidget *scrolled, *view;
   gchar *contents;
   gsize length;
-  GtkTextBuffer *buffer;
-  GtkTextTag *tag;
-  GtkTextIter start_iter, end_iter;
+  CtkTextBuffer *buffer;
+  CtkTextTag *tag;
+  CtkTextIter start_iter, end_iter;
 
   priv = example_app_window_get_instance_private (win);
   basename = g_file_get_basename (file);

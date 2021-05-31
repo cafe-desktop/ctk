@@ -437,7 +437,7 @@ msgstr "Handling"
 
 #: ctk/ctkaction.c:396
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
 
@@ -857,10 +857,10 @@ msgstr "Type pakking"
 
 #: ctk/ctkbox.c:287 ctk/ctknotebook.c:692
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
 msgstr ""
-"Ein GtkPackType som viser om barnet er pakka med referanse til starten eller "
+"Ein CtkPackType som viser om barnet er pakka med referanse til starten eller "
 "slutten av opphavet"
 
 #: ctk/ctkbox.c:293 ctk/ctknotebook.c:670 ctk/ctkpaned.c:270
@@ -1387,7 +1387,7 @@ msgstr "Storleik"
 
 #: ctk/ctkcellrendererpixbuf.c:153
 #, fuzzy
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
 msgstr "Storleiken på oppteikna ikon"
 
 #: ctk/ctkcellrendererpixbuf.c:162
@@ -1514,7 +1514,7 @@ msgstr "Namn på ikondrakta som skal brukast"
 
 #: ctk/ctkcellrendererspinner.c:154
 #, fuzzy
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
 msgstr "Storleiken på oppteikna ikon"
 
 #: ctk/ctkcellrenderertext.c:232
@@ -3372,11 +3372,11 @@ msgstr "Justering"
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkMisc::xalign for that"
+"CtkMisc::xalign for that"
 msgstr ""
 "Justeringa av linjene i teksten til merkelappen, relativt til kvarandre. "
 "Dette påvirkar IKKJE justeringa av merkelappen innanfor sitt område. Sjå "
-"GtkMisc::xalign for det"
+"CtkMisc::xalign for det"
 
 #: ctk/ctklabel.c:587
 msgid "Pattern"
@@ -3481,16 +3481,16 @@ msgid "Horizontal adjustment"
 msgstr "Vassrett justering"
 
 #: ctk/ctklayout.c:626 ctk/ctkscrolledwindow.c:244
-msgid "The GtkAdjustment for the horizontal position"
-msgstr "GtkAdjustment for den vassrette plasseringa"
+msgid "The CtkAdjustment for the horizontal position"
+msgstr "CtkAdjustment for den vassrette plasseringa"
 
 #: ctk/ctklayout.c:633 ctk/ctkviewport.c:150
 msgid "Vertical adjustment"
 msgstr "Loddrett justering"
 
 #: ctk/ctklayout.c:634 ctk/ctkscrolledwindow.c:251
-msgid "The GtkAdjustment for the vertical position"
-msgstr "GtkAdjustment for den loddrette justeringa"
+msgid "The CtkAdjustment for the vertical position"
+msgstr "CtkAdjustment for den loddrette justeringa"
 
 #: ctk/ctklayout.c:641 ctk/ctktreeviewcolumn.c:211
 msgid "Width"
@@ -3885,7 +3885,7 @@ msgid "Message area"
 msgstr "Meldingstype"
 
 #: ctk/ctkmessagedialog.c:306
-msgid "GtkVBox that holds the dialog's primary and secondary labels"
+msgid "CtkVBox that holds the dialog's primary and secondary labels"
 msgstr ""
 
 #: ctk/ctkmisc.c:91
@@ -4359,7 +4359,7 @@ msgid "Default Page Setup"
 msgstr "Standardhøgde"
 
 #: ctk/ctkprintoperation.c:1006
-msgid "The GtkPageSetup used by default"
+msgid "The CtkPageSetup used by default"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1024 ctk/ctkprintunixdialog.c:316
@@ -4367,7 +4367,7 @@ msgid "Print Settings"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1025 ctk/ctkprintunixdialog.c:317
-msgid "The GtkPrintSettings used for initializing the dialog"
+msgid "The CtkPrintSettings used for initializing the dialog"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1043
@@ -4498,7 +4498,7 @@ msgid "Embed Page Setup"
 msgstr "Største storleik"
 
 #: ctk/ctkprintoperation.c:1321
-msgid "TRUE if page setup combos are embedded in GtkPrintDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintDialog"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1342
@@ -4512,7 +4512,7 @@ msgid "The number of pages that will be printed."
 msgstr "Tal på rader i tabellen"
 
 #: ctk/ctkprintunixdialog.c:299
-msgid "The GtkPageSetup to use"
+msgid "The CtkPageSetup to use"
 msgstr ""
 
 #: ctk/ctkprintunixdialog.c:324
@@ -4522,7 +4522,7 @@ msgstr "Det valde året"
 
 #: ctk/ctkprintunixdialog.c:325
 #, fuzzy
-msgid "The GtkPrinter which is selected"
+msgid "The CtkPrinter which is selected"
 msgstr "Oppføringa som er valt no"
 
 #: ctk/ctkprintunixdialog.c:332
@@ -4544,7 +4544,7 @@ msgid "Whether the application has a selection"
 msgstr "Om handlinga er tilgjengeleg"
 
 #: ctk/ctkprintunixdialog.c:358
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
 msgstr ""
 
 #: ctk/ctkprogressbar.c:134
@@ -4697,9 +4697,9 @@ msgid "How the range should be updated on the screen"
 msgstr "Korleis området skal oppdaterast på skjermen"
 
 #: ctk/ctkrange.c:420
-msgid "The GtkAdjustment that contains the current value of this range object"
+msgid "The CtkAdjustment that contains the current value of this range object"
 msgstr ""
-"GtkAdjustment som inneheld den noverande verdien til dette områdeobjektet"
+"CtkAdjustment som inneheld den noverande verdien til dette områdeobjektet"
 
 #: ctk/ctkrange.c:428
 msgid "Invert direction slider moves to increase range value"
@@ -4975,9 +4975,9 @@ msgstr "Storleik på verktøylinjeikon"
 #: ctk/ctkscalebutton.c:240
 #, fuzzy
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
+"The CtkAdjustment that contains the current value of this scale button object"
 msgstr ""
-"GtkAdjustment som inneheld den noverande verdien til dette områdeobjektet"
+"CtkAdjustment som inneheld den noverande verdien til dette områdeobjektet"
 
 #: ctk/ctkscalebutton.c:268
 #, fuzzy
@@ -5503,7 +5503,7 @@ msgstr ""
 
 #: ctk/ctksettings.c:743
 #, fuzzy
-msgid "Name of the GtkFileChooser backend to use by default"
+msgid "Name of the CtkFileChooser backend to use by default"
 msgstr "Namn på ikondrakta som skal brukast"
 
 #: ctk/ctksettings.c:760
@@ -5513,7 +5513,7 @@ msgstr "Standard mellomrom"
 
 #: ctk/ctksettings.c:761
 #, fuzzy
-msgid "List of the GtkPrintBackend backends to use by default"
+msgid "List of the CtkPrintBackend backends to use by default"
 msgstr "Namn på ikondrakta som skal brukast"
 
 #: ctk/ctksettings.c:784
@@ -5745,7 +5745,7 @@ msgstr "Tal på kolonner i tabellen"
 #: ctk/ctkspinner.c:147
 msgid ""
 "The number of steps for the spinner to complete a full loop. The animation "
-"will complete a full cycle in one second by default (see #GtkSpinner:cycle-"
+"will complete a full cycle in one second by default (see #CtkSpinner:cycle-"
 "duration)."
 msgstr ""
 
@@ -6732,9 +6732,9 @@ msgid "Fixed Height Mode"
 msgstr "Modus for fast høgde"
 
 #: ctk/ctktreeview.c:657
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 msgstr ""
-"Får GtkTreeView til å gå raskare ved å gå ut ifrå at alle radene har same "
+"Får CtkTreeView til å gå raskare ved å gå ut ifrå at alle radene har same "
 "høgd"
 
 #: ctk/ctktreeview.c:677
@@ -7025,18 +7025,18 @@ msgstr "Ein XML-streng som skildrar fletta brukargrensesnitt"
 
 #: ctk/ctkviewport.c:143
 msgid ""
-"The GtkAdjustment that determines the values of the horizontal position for "
+"The CtkAdjustment that determines the values of the horizontal position for "
 "this viewport"
 msgstr ""
-"GtkAdjustment som styrer verdiane til den vassrette plasseringa til dette "
+"CtkAdjustment som styrer verdiane til den vassrette plasseringa til dette "
 "visingsområdet"
 
 #: ctk/ctkviewport.c:151
 msgid ""
-"The GtkAdjustment that determines the values of the vertical position for "
+"The CtkAdjustment that determines the values of the vertical position for "
 "this viewport"
 msgstr ""
-"GtkAdjustment som styrer verdiane til den loddrette plasseringa til dette "
+"CtkAdjustment som styrer verdiane til den loddrette plasseringa til dette "
 "visingsområdet"
 
 #: ctk/ctkviewport.c:159
@@ -7526,8 +7526,8 @@ msgid "Focus in Toplevel"
 msgstr "Fokus i toppnivå"
 
 #: ctk/ctkwindow.c:710
-msgid "Whether the input focus is within this GtkWindow"
-msgstr "Om inndatafokus er i dette GtkWindow-et"
+msgid "Whether the input focus is within this CtkWindow"
+msgstr "Om inndatafokus er i dette CtkWindow-et"
 
 #: ctk/ctkwindow.c:717
 msgid "Type hint"
@@ -7740,12 +7740,12 @@ msgstr "Korleis statuslinja for inndatametoden skal teiknast"
 
 #, fuzzy
 #~ msgid ""
-#~ "If TRUE, the GtkProgress is in activity mode, meaning that it signals "
+#~ "If TRUE, the CtkProgress is in activity mode, meaning that it signals "
 #~ "something is happening, but not how much of the activity is finished. "
 #~ "This is used when you're doing something but don't know how long it will "
 #~ "take."
 #~ msgstr ""
-#~ "Dersom denne er sann, er GtkProgress i aktivitetsmodus. Det vil seia at "
+#~ "Dersom denne er sann, er CtkProgress i aktivitetsmodus. Det vil seia at "
 #~ "det fortel at noko skjer, men ikkje kor langt det er kome. Dette vert "
 #~ "brukt til aktivitetar der det ikkje er kjent kor lang tid det vil ta"
 
@@ -7894,8 +7894,8 @@ msgstr "Korleis statuslinja for inndatametoden skal teiknast"
 #~ "Om førehandsvisingskjermelementet skal bruka all plassen som er satt av "
 #~ "til det"
 
-#~ msgid "The GtkAdjustment connected to the progress bar (Deprecated)"
-#~ msgstr "GtkAdjustment kopla til framdriftsvisaren (Fasa ut)"
+#~ msgid "The CtkAdjustment connected to the progress bar (Deprecated)"
+#~ msgstr "CtkAdjustment kopla til framdriftsvisaren (Fasa ut)"
 
 #~ msgid "Bar style"
 #~ msgstr "Stil på linja"

@@ -60,14 +60,14 @@ icon_loaded_cb (GObject *source_object,
 int
 main (int argc, char *argv[])
 {
-  GtkIconTheme *icon_theme;
-  GtkIconInfo *icon_info;
+  CtkIconTheme *icon_theme;
+  CtkIconInfo *icon_info;
   char *context;
   char *themename;
   GList *list;
   int size = 48;
   int scale = 1;
-  GtkIconLookupFlags flags;
+  CtkIconLookupFlags flags;
   
   ctk_init (&argc, &argv);
 
@@ -94,7 +94,7 @@ main (int argc, char *argv[])
     {
       GError *error;
       GdkPixbuf *pixbuf;
-      GtkWidget *window, *image;
+      CtkWidget *window, *image;
 
       if (argc < 4)
 	{
@@ -130,8 +130,8 @@ main (int argc, char *argv[])
     }
   else if (strcmp (argv[1], "display-async") == 0)
     {
-      GtkWidget *window, *image;
-      GtkIconInfo *info;
+      CtkWidget *window, *image;
+      CtkIconInfo *info;
 
       if (argc < 4)
 	{

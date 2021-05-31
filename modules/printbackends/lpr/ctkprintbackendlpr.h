@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * ctkprintbackendlpr.h: LPR implementation of GtkPrintBackend 
+ * ctkprintbackendlpr.h: LPR implementation of CtkPrintBackend 
  * for printing to lpr 
  * Copyright (C) 2006, 2007 Red Hat, Inc.
  *
@@ -26,12 +26,12 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_PRINT_BACKEND_LPR            (ctk_print_backend_lpr_get_type ())
-#define CTK_PRINT_BACKEND_LPR(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINT_BACKEND_LPR, GtkPrintBackendLpr))
+#define CTK_PRINT_BACKEND_LPR(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINT_BACKEND_LPR, CtkPrintBackendLpr))
 #define CTK_IS_PRINT_BACKEND_LPR(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PRINT_BACKEND_LPR))
 
-typedef struct _GtkPrintBackendLpr      GtkPrintBackendLpr;
+typedef struct _CtkPrintBackendLpr      CtkPrintBackendLpr;
 
-GtkPrintBackend *ctk_print_backend_lpr_new      (void);
+CtkPrintBackend *ctk_print_backend_lpr_new      (void);
 GType          ctk_print_backend_lpr_get_type (void) G_GNUC_CONST;
 
 G_END_DECLS

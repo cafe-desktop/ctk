@@ -22,8 +22,8 @@
 
 G_BEGIN_DECLS
 
-void _ctk_text_view_accessible_set_buffer (GtkTextView   *textview,
-                                           GtkTextBuffer *old_buffer);
+void _ctk_text_view_accessible_set_buffer (CtkTextView   *textview,
+                                           CtkTextBuffer *old_buffer);
 
 G_END_DECLS
 

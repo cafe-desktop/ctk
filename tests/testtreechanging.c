@@ -21,13 +21,13 @@
 #define MIN_ROWS 50
 #define MAX_ROWS 150
 
-typedef void (* DoStuffFunc) (GtkTreeView *treeview);
+typedef void (* DoStuffFunc) (CtkTreeView *treeview);
 
 static guint
-count_children (GtkTreeModel *model,
-                GtkTreeIter  *parent)
+count_children (CtkTreeModel *model,
+                CtkTreeIter  *parent)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   guint count = 0;
   gboolean valid;
 
@@ -42,20 +42,20 @@ count_children (GtkTreeModel *model,
 }
 
 static void
-set_rows (GtkTreeView *treeview, guint i)
+set_rows (CtkTreeView *treeview, guint i)
 {
   g_assert (i == count_children (ctk_tree_view_get_model (treeview), NULL));
   g_object_set_data (G_OBJECT (treeview), "rows", GUINT_TO_POINTER (i));
 }
 
 static guint
-get_rows (GtkTreeView *treeview)
+get_rows (CtkTreeView *treeview)
 {
   return GPOINTER_TO_UINT (g_object_get_data (G_OBJECT (treeview), "rows"));
 }
 
 static void
-log_operation_for_path (GtkTreePath *path,
+log_operation_for_path (CtkTreePath *path,
                         const char  *operation_name)
 {
   char *path_string;
@@ -68,11 +68,11 @@ log_operation_for_path (GtkTreePath *path,
 }
 
 static void
-log_operation (GtkTreeModel *model,
-               GtkTreeIter  *iter,
+log_operation (CtkTreeModel *model,
+               CtkTreeIter  *iter,
                const char   *operation_name)
 {
-  GtkTreePath *path;
+  CtkTreePath *path;
 
   path = ctk_tree_model_get_path (model, iter);
 
@@ -85,10 +85,10 @@ log_operation (GtkTreeModel *model,
  * inside a treeview. Returns FALSE if no more rows exist.
  */
 static gboolean
-tree_model_iter_step (GtkTreeModel *model,
-                      GtkTreeIter *iter)
+tree_model_iter_step (CtkTreeModel *model,
+                      CtkTreeIter *iter)
 {
-  GtkTreeIter tmp;
+  CtkTreeIter tmp;
   
   if (ctk_tree_model_iter_children (model, &tmp, iter))
     {
@@ -109,12 +109,12 @@ tree_model_iter_step (GtkTreeModel *model,
 
 /* NB: may include invisible iters (because they are collapsed) */
 static void
-tree_view_random_iter (GtkTreeView *treeview,
-                       GtkTreeIter *iter)
+tree_view_random_iter (CtkTreeView *treeview,
+                       CtkTreeIter *iter)
 {
   guint n_rows = get_rows (treeview);
   guint i = g_random_int_range (0, n_rows);
-  GtkTreeModel *model;
+  CtkTreeModel *model;
 
   model = ctk_tree_view_get_model (treeview);
   
@@ -134,11 +134,11 @@ tree_view_random_iter (GtkTreeView *treeview,
 }
 
 static void
-delete (GtkTreeView *treeview)
+delete (CtkTreeView *treeview)
 {
   guint n_rows = get_rows (treeview);
-  GtkTreeModel *model;
-  GtkTreeIter iter;
+  CtkTreeModel *model;
+  CtkTreeIter iter;
 
   model = ctk_tree_view_get_model (treeview);
   
@@ -151,16 +151,16 @@ delete (GtkTreeView *treeview)
 }
 
 static void
-add_one (GtkTreeModel *model,
-         GtkTreeIter *iter)
+add_one (CtkTreeModel *model,
+         CtkTreeIter *iter)
 {
   guint n = ctk_tree_model_iter_n_children (model, iter);
-  GtkTreeIter new_iter;
+  CtkTreeIter new_iter;
   static guint counter = 0;
   
   if (n > 0 && g_random_boolean ())
     {
-      GtkTreeIter child;
+      CtkTreeIter child;
       ctk_tree_model_iter_nth_child (model, &child, iter, g_random_int_range (0, n));
       add_one (model, &child);
       return;
@@ -176,9 +176,9 @@ add_one (GtkTreeModel *model,
 }
 
 static void
-add (GtkTreeView *treeview)
+add (CtkTreeView *treeview)
 {
-  GtkTreeModel *model;
+  CtkTreeModel *model;
 
   model = ctk_tree_view_get_model (treeview);
   add_one (model, NULL);
@@ -187,7 +187,7 @@ add (GtkTreeView *treeview)
 }
 
 static void
-add_or_delete (GtkTreeView *treeview)
+add_or_delete (CtkTreeView *treeview)
 {
   guint n_rows = get_rows (treeview);
 
@@ -199,11 +199,11 @@ add_or_delete (GtkTreeView *treeview)
 
 /* XXX: We only expand/collapse from the top and not randomly */
 static void
-expand (GtkTreeView *treeview)
+expand (CtkTreeView *treeview)
 {
-  GtkTreeModel *model;
-  GtkTreeIter iter;
-  GtkTreePath *path;
+  CtkTreeModel *model;
+  CtkTreeIter iter;
+  CtkTreePath *path;
   gboolean valid;
 
   model = ctk_tree_view_get_model (treeview);
@@ -228,11 +228,11 @@ expand (GtkTreeView *treeview)
 }
 
 static void
-collapse (GtkTreeView *treeview)
+collapse (CtkTreeView *treeview)
 {
-  GtkTreeModel *model;
-  GtkTreeIter iter;
-  GtkTreePath *last, *path;
+  CtkTreeModel *model;
+  CtkTreeIter iter;
+  CtkTreePath *last, *path;
   gboolean valid;
 
   model = ctk_tree_view_get_model (treeview);
@@ -262,9 +262,9 @@ collapse (GtkTreeView *treeview)
 }
 
 static void
-select_ (GtkTreeView *treeview)
+select_ (CtkTreeView *treeview)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
   tree_view_random_iter (treeview, &iter);
 
@@ -274,9 +274,9 @@ select_ (GtkTreeView *treeview)
 }
 
 static void
-unselect (GtkTreeView *treeview)
+unselect (CtkTreeView *treeview)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
   tree_view_random_iter (treeview, &iter);
 
@@ -286,12 +286,12 @@ unselect (GtkTreeView *treeview)
 }
 
 static void
-reset_model (GtkTreeView *treeview)
+reset_model (CtkTreeView *treeview)
 {
-  GtkTreeSelection *selection;
-  GtkTreeModel *model;
+  CtkTreeSelection *selection;
+  CtkTreeModel *model;
   GList *list, *selected;
-  GtkTreePath *cursor;
+  CtkTreePath *cursor;
   
   selection = ctk_tree_view_get_selection (treeview);
   model = g_object_ref (ctk_tree_view_get_model (treeview));
@@ -321,10 +321,10 @@ reset_model (GtkTreeView *treeview)
 /* sanity checks */
 
 static void
-assert_row_reference_is_path (GtkTreeRowReference *ref,
-                              GtkTreePath *path)
+assert_row_reference_is_path (CtkTreeRowReference *ref,
+                              CtkTreePath *path)
 {
-  GtkTreePath *expected;
+  CtkTreePath *expected;
 
   if (ref == NULL)
     {
@@ -342,10 +342,10 @@ assert_row_reference_is_path (GtkTreeRowReference *ref,
 }
 
 static void
-check_cursor (GtkTreeView *treeview)
+check_cursor (CtkTreeView *treeview)
 {
-  GtkTreeRowReference *ref = g_object_get_data (G_OBJECT (treeview), "cursor");
-  GtkTreePath *cursor;
+  CtkTreeRowReference *ref = g_object_get_data (G_OBJECT (treeview), "cursor");
+  CtkTreePath *cursor;
 
   ctk_tree_view_get_cursor (treeview, &cursor, NULL);
   assert_row_reference_is_path (ref, cursor);
@@ -355,9 +355,9 @@ check_cursor (GtkTreeView *treeview)
 }
 
 static void
-check_selection_item (GtkTreeModel *model,
-                      GtkTreePath  *path,
-                      GtkTreeIter  *iter,
+check_selection_item (CtkTreeModel *model,
+                      CtkTreePath  *path,
+                      CtkTreeIter  *iter,
                       gpointer      listp)
 {
   GList **list = listp;
@@ -368,7 +368,7 @@ check_selection_item (GtkTreeModel *model,
 }
 
 static void
-check_selection (GtkTreeView *treeview)
+check_selection (CtkTreeView *treeview)
 {
   GList *selection = g_object_get_data (G_OBJECT (treeview), "selection");
 
@@ -378,7 +378,7 @@ check_selection (GtkTreeView *treeview)
 }
 
 static void
-check_sanity (GtkTreeView *treeview)
+check_sanity (CtkTreeView *treeview)
 {
   check_cursor (treeview);
   check_selection (treeview);
@@ -408,11 +408,11 @@ dance (gpointer treeview)
 }
 
 static void
-cursor_changed_cb (GtkTreeView *treeview,
+cursor_changed_cb (CtkTreeView *treeview,
                    gpointer     unused)
 {
-  GtkTreePath *path;
-  GtkTreeRowReference *ref;
+  CtkTreePath *path;
+  CtkTreeRowReference *ref;
 
   ctk_tree_view_get_cursor (treeview, &path, NULL);
   if (path)
@@ -433,17 +433,17 @@ selection_list_free (gpointer list)
 }
 
 static void
-selection_changed_cb (GtkTreeSelection *tree_selection,
+selection_changed_cb (CtkTreeSelection *tree_selection,
                       gpointer          unused)
 {
   GList *selected, *list;
-  GtkTreeModel *model;
+  CtkTreeModel *model;
 
   selected = ctk_tree_selection_get_selected_rows (tree_selection, &model);
 
   for (list = selected; list; list = list->next)
     {
-      GtkTreePath *path = list->data;
+      CtkTreePath *path = list->data;
 
       list->data = ctk_tree_row_reference_new (model, path);
       ctk_tree_path_free (path);
@@ -456,7 +456,7 @@ selection_changed_cb (GtkTreeSelection *tree_selection,
 }
 
 static void
-setup_sanity_checks (GtkTreeView *treeview)
+setup_sanity_checks (CtkTreeView *treeview)
 {
   g_signal_connect (treeview, "cursor-changed", G_CALLBACK (cursor_changed_cb), NULL);
   cursor_changed_cb (treeview, NULL);
@@ -468,10 +468,10 @@ int
 main (int    argc,
       char **argv)
 {
-  GtkWidget *window;
-  GtkWidget *sw;
-  GtkWidget *treeview;
-  GtkTreeModel *model;
+  CtkWidget *window;
+  CtkWidget *sw;
+  CtkWidget *treeview;
+  CtkTreeModel *model;
   guint i;
   
   ctk_init (&argc, &argv);

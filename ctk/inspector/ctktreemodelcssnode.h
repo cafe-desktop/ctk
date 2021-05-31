@@ -27,29 +27,29 @@ G_BEGIN_DECLS
 
 
 #define CTK_TYPE_TREE_MODEL_CSS_NODE			(ctk_tree_model_css_node_get_type ())
-#define CTK_TREE_MODEL_CSS_NODE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TREE_MODEL_CSS_NODE, GtkTreeModelCssNode))
-#define CTK_TREE_MODEL_CSS_NODE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TREE_MODEL_CSS_NODE, GtkTreeModelCssNodeClass))
+#define CTK_TREE_MODEL_CSS_NODE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TREE_MODEL_CSS_NODE, CtkTreeModelCssNode))
+#define CTK_TREE_MODEL_CSS_NODE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TREE_MODEL_CSS_NODE, CtkTreeModelCssNodeClass))
 #define CTK_IS_TREE_MODEL_CSS_NODE(obj)			(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TREE_MODEL_CSS_NODE))
 #define CTK_IS_TREE_MODEL_CSS_NODE_CLASS(klass)		(G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TREE_MODEL_CSS_NODE))
-#define CTK_TREE_MODEL_CSS_NODE_GET_CLASS(obj)		(G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TREE_MODEL_CSS_NODE, GtkTreeModelCssNodeClass))
+#define CTK_TREE_MODEL_CSS_NODE_GET_CLASS(obj)		(G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TREE_MODEL_CSS_NODE, CtkTreeModelCssNodeClass))
 
-typedef struct _GtkTreeModelCssNode        GtkTreeModelCssNode;
-typedef struct _GtkTreeModelCssNodeClass   GtkTreeModelCssNodeClass;
-typedef struct _GtkTreeModelCssNodePrivate GtkTreeModelCssNodePrivate;
+typedef struct _CtkTreeModelCssNode        CtkTreeModelCssNode;
+typedef struct _CtkTreeModelCssNodeClass   CtkTreeModelCssNodeClass;
+typedef struct _CtkTreeModelCssNodePrivate CtkTreeModelCssNodePrivate;
 
-typedef void (* GtkTreeModelCssNodeGetFunc)             (GtkTreeModelCssNode   *model,
-                                                         GtkCssNode            *node,
+typedef void (* CtkTreeModelCssNodeGetFunc)             (CtkTreeModelCssNode   *model,
+                                                         CtkCssNode            *node,
                                                          int                    column,
                                                          GValue                *value);
 
-struct _GtkTreeModelCssNode
+struct _CtkTreeModelCssNode
 {
   GObject parent;
 
-  GtkTreeModelCssNodePrivate *priv;
+  CtkTreeModelCssNodePrivate *priv;
 };
 
-struct _GtkTreeModelCssNodeClass
+struct _CtkTreeModelCssNodeClass
 {
   GObjectClass parent_class;
 };
@@ -57,21 +57,21 @@ struct _GtkTreeModelCssNodeClass
 
 GType         ctk_tree_model_css_node_get_type          (void) G_GNUC_CONST;
 
-GtkTreeModel *ctk_tree_model_css_node_new               (GtkTreeModelCssNodeGetFunc get_func,
+CtkTreeModel *ctk_tree_model_css_node_new               (CtkTreeModelCssNodeGetFunc get_func,
                                                          gint            n_columns,
 					                 ...);
-GtkTreeModel *ctk_tree_model_css_node_newv              (GtkTreeModelCssNodeGetFunc get_func,
+CtkTreeModel *ctk_tree_model_css_node_newv              (CtkTreeModelCssNodeGetFunc get_func,
                                                          gint            n_columns,
 					                 GType          *types);
 
-void          ctk_tree_model_css_node_set_root_node     (GtkTreeModelCssNode    *model,
-                                                         GtkCssNode             *node);
-GtkCssNode   *ctk_tree_model_css_node_get_root_node     (GtkTreeModelCssNode    *model);
-GtkCssNode   *ctk_tree_model_css_node_get_node_from_iter(GtkTreeModelCssNode    *model,
-                                                         GtkTreeIter            *iter);
-void          ctk_tree_model_css_node_get_iter_from_node(GtkTreeModelCssNode    *model,
-                                                         GtkTreeIter            *iter,
-                                                         GtkCssNode             *node);
+void          ctk_tree_model_css_node_set_root_node     (CtkTreeModelCssNode    *model,
+                                                         CtkCssNode             *node);
+CtkCssNode   *ctk_tree_model_css_node_get_root_node     (CtkTreeModelCssNode    *model);
+CtkCssNode   *ctk_tree_model_css_node_get_node_from_iter(CtkTreeModelCssNode    *model,
+                                                         CtkTreeIter            *iter);
+void          ctk_tree_model_css_node_get_iter_from_node(CtkTreeModelCssNode    *model,
+                                                         CtkTreeIter            *iter,
+                                                         CtkCssNode             *node);
 
 
 G_END_DECLS

@@ -3,18 +3,18 @@
 # align-expand.sh [METHOD]
 #
 # This is the script used to create the align-expand tests. These tests
-# put a 20x20 size-requested GtkTreeView into a 40x40 size-requested
+# put a 20x20 size-requested CtkTreeView into a 40x40 size-requested
 # container and try to achieve multiple combinations of expand and align
-# flags. The resulting GtkBuilder file is written to stdout. All of the
+# flags. The resulting CtkBuilder file is written to stdout. All of the
 # resulting files should render identical.
 #
 # METHOD is one of:
 # * flags (default)
-#   Uses expand flags to align and expand the treeview inside a GtkGrid.
+#   Uses expand flags to align and expand the treeview inside a CtkGrid.
 #   You should use this as the reference when adding tests for other
 #   methods
 # * alignment
-#   Aligns and expands the treeview in a GtkAlignment using its scale
+#   Aligns and expands the treeview in a CtkAlignment using its scale
 #   and align properties.
 
 
@@ -28,11 +28,11 @@ cat << EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window">
+  <object class="CtkWindow" id="window">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkGrid" id="grid">
+      <object class="CtkGrid" id="grid">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="row_spacing">2</property>
@@ -46,7 +46,7 @@ for halign in "start" center end fill; do
 
 cat << EOF
         <child>
-          <object class="GtkLabel" id="hexpand-$halign-$hexpand">
+          <object class="CtkLabel" id="hexpand-$halign-$hexpand">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label">$hexpand</property>
@@ -60,7 +60,7 @@ cat << EOF
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="halign-$halign-$hexpand">
+          <object class="CtkLabel" id="halign-$halign-$hexpand">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label">$halign</property>
@@ -81,7 +81,7 @@ for valign in "start" center end fill; do
 if test $y = "2"; then
 cat << EOF
         <child>
-          <object class="GtkLabel" id="vexpand-$valign-$vexpand">
+          <object class="CtkLabel" id="vexpand-$valign-$vexpand">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label">$vexpand</property>
@@ -94,7 +94,7 @@ cat << EOF
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="valign-$valign-$vexpand">
+          <object class="CtkLabel" id="valign-$valign-$vexpand">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label">$valign</property>
@@ -113,13 +113,13 @@ if test $method = "flags"; then
 
 cat << EOF
         <child>
-          <object class="GtkGrid" id="grid-$valign-$halign-$vexpand-$hexpand">
+          <object class="CtkGrid" id="grid-$valign-$halign-$vexpand-$hexpand">
             <property name="width_request">40</property>
             <property name="height_request">40</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkTreeView" id="treeview-$valign-$halign-$vexpand-$hexpand">
+              <object class="CtkTreeView" id="treeview-$valign-$halign-$vexpand-$hexpand">
                 <property name="width_request">20</property>
                 <property name="height_request">20</property>
                 <property name="visible">True</property>
@@ -172,7 +172,7 @@ fi
 
 cat << EOF
         <child>
-          <object class="GtkAlignment" id="align-$valign-$halign-$vexpand-$hexpand">
+          <object class="CtkAlignment" id="align-$valign-$halign-$vexpand-$hexpand">
             <property name="width_request">40</property>
             <property name="height_request">40</property>
             <property name="visible">True</property>
@@ -182,7 +182,7 @@ cat << EOF
             <property name="xscale">$xscale</property>
             <property name="yscale">$yscale</property>
             <child>
-              <object class="GtkTreeView" id="treeview-$valign-$halign-$vexpand-$hexpand">
+              <object class="CtkTreeView" id="treeview-$valign-$halign-$vexpand-$hexpand">
                 <property name="width_request">20</property>
                 <property name="height_request">20</property>
                 <property name="visible">True</property>

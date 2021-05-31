@@ -3,7 +3,7 @@
 static gint value_changed_count;
 
 static void
-value_changed_cb (GtkSpinButton *spin)
+value_changed_cb (CtkSpinButton *spin)
 {
   value_changed_count++;
 }
@@ -11,8 +11,8 @@ value_changed_cb (GtkSpinButton *spin)
 static void
 test_value_changed (void)
 {
-  GtkWidget *spin;
-  GtkAdjustment *adj;
+  CtkWidget *spin;
+  CtkAdjustment *adj;
 
   spin = ctk_spin_button_new_with_range (0.0, 10.0, 1.0);
 
@@ -48,8 +48,8 @@ adjustment_changed_cb (GObject *object, GParamSpec *pspec)
 static void
 test_adjustment_changed (void)
 {
-  GtkWidget *spin;
-  GtkAdjustment *adj;
+  CtkWidget *spin;
+  CtkAdjustment *adj;
 
   spin = ctk_spin_button_new_with_range (0.0, 10.0, 1.0);
 
@@ -71,8 +71,8 @@ test_adjustment_changed (void)
 static void
 test_adjustment_null (void)
 {
-  GtkWidget *spin;
-  GtkAdjustment *adj;
+  CtkWidget *spin;
+  CtkAdjustment *adj;
 
   spin = ctk_spin_button_new_with_range (0.0, 10.0, 1.0);
 

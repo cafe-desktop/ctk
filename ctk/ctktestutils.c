@@ -1,4 +1,4 @@
-/* Gtk+ testing utilities
+/* Ctk+ testing utilities
  * Copyright (C) 2007 Imendio AB
  * Authors: Tim Janik
  *
@@ -61,7 +61,7 @@
  * It will in turn call g_test_init() and ctk_init() to properly
  * initialize the testing framework and graphical toolkit. It’ll 
  * also set the program’s locale to “C” and prevent loading of rc 
- * files and Gtk+ modules. This is done to make tets program
+ * files and Ctk+ modules. This is done to make tets program
  * environments as deterministic as possible.
  *
  * Like ctk_init() and g_test_init(), any known arguments will be
@@ -79,10 +79,10 @@ ctk_test_init (int    *argcp,
    * - call g_test_init();
    * - call ctk_init();
    * - prevent RC files from loading;
-   * - prevent Gtk modules from loading;
-   * - supply mock object for GtkSettings
+   * - prevent Ctk modules from loading;
+   * - supply mock object for CtkSettings
    * FUTURE TODO:
-   * - this function could install a mock object around GtkSettings
+   * - this function could install a mock object around CtkSettings
    */
   g_setenv ("CTK_MODULES", "", TRUE);
   ctk_disable_setlocale();
@@ -100,7 +100,7 @@ ctk_test_init (int    *argcp,
 }
 
 static GSList*
-test_find_widget_input_windows (GtkWidget *widget,
+test_find_widget_input_windows (CtkWidget *widget,
                                 gboolean   input_only)
 {
   GdkWindow *window;
@@ -124,7 +124,7 @@ test_find_widget_input_windows (GtkWidget *widget,
 }
 
 static gboolean
-quit_main_loop_callback (GtkWidget     *widget,
+quit_main_loop_callback (CtkWidget     *widget,
                          GdkFrameClock *frame_clock,
                          gpointer       user_data)
 {
@@ -148,7 +148,7 @@ quit_main_loop_callback (GtkWidget     *widget,
  * Since: 3.10
  **/
 void
-ctk_test_widget_wait_for_draw (GtkWidget *widget)
+ctk_test_widget_wait_for_draw (CtkWidget *widget)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -172,7 +172,7 @@ ctk_test_widget_wait_for_draw (GtkWidget *widget)
  *
  * This function will generate keyboard press and release events in
  * the middle of the first GdkWindow found that belongs to @widget.
- * For windowless widgets like #GtkButton (which returns %FALSE from
+ * For windowless widgets like #CtkButton (which returns %FALSE from
  * ctk_widget_get_has_window()), this will often be an
  * input-only event window. For other widgets, this is usually widget->window.
  * Certain caveats should be considered when using this function, in
@@ -184,7 +184,7 @@ ctk_test_widget_wait_for_draw (GtkWidget *widget)
  * Since: 2.14
  **/
 gboolean
-ctk_test_widget_send_key (GtkWidget      *widget,
+ctk_test_widget_send_key (CtkWidget      *widget,
                           guint           keyval,
                           GdkModifierType modifiers)
 {
@@ -209,7 +209,7 @@ ctk_test_widget_send_key (GtkWidget      *widget,
  * This function will generate a @button click (button press and button
  * release event) in the middle of the first GdkWindow found that belongs
  * to @widget.
- * For windowless widgets like #GtkButton (which returns %FALSE from
+ * For windowless widgets like #CtkButton (which returns %FALSE from
  * ctk_widget_get_has_window()), this will often be an
  * input-only event window. For other widgets, this is usually widget->window.
  * Certain caveats should be considered when using this function, in
@@ -223,7 +223,7 @@ ctk_test_widget_send_key (GtkWidget      *widget,
  * Deprecated: 3.20: This testing infrastructure is phased out in favor of reftests.
  **/
 gboolean
-ctk_test_widget_click (GtkWidget      *widget,
+ctk_test_widget_click (CtkWidget      *widget,
                        guint           button,
                        GdkModifierType modifiers)
 {
@@ -241,7 +241,7 @@ ctk_test_widget_click (GtkWidget      *widget,
 
 /**
  * ctk_test_spin_button_click:
- * @spinner: valid GtkSpinButton widget.
+ * @spinner: valid CtkSpinButton widget.
  * @button:  Number of the pointer button for the event, usually 1, 2 or 3.
  * @upwards: %TRUE for upwards arrow click, %FALSE for downwards arrow click.
  *
@@ -256,7 +256,7 @@ ctk_test_widget_click (GtkWidget      *widget,
  * Deprecated: 3.20: This testing infrastructure is phased out in favor of reftests.
  **/
 gboolean
-ctk_test_spin_button_click (GtkSpinButton  *spinner,
+ctk_test_spin_button_click (CtkSpinButton  *spinner,
                             guint           button,
                             gboolean        upwards)
 {
@@ -281,7 +281,7 @@ ctk_test_spin_button_click (GtkSpinButton  *spinner,
  * @widget:        Valid label or container widget.
  * @label_pattern: Shell-glob pattern to match a label string.
  *
- * This function will search @widget and all its descendants for a GtkLabel
+ * This function will search @widget and all its descendants for a CtkLabel
  * widget with a text string matching @label_pattern.
  * The @label_pattern may contain asterisks “*” and question marks “?” as
  * placeholders, g_pattern_match() is used for the matching.
@@ -289,15 +289,15 @@ ctk_test_spin_button_click (GtkSpinButton  *spinner,
  * so this function is genrally only useful in test programs with
  * predetermined locales, see ctk_test_init() for more details.
  *
- * Returns: (transfer none): a GtkLabel widget if any is found.
+ * Returns: (transfer none): a CtkLabel widget if any is found.
  *
  * Since: 2.14
  **/
-GtkWidget*
-ctk_test_find_label (GtkWidget    *widget,
+CtkWidget*
+ctk_test_find_label (CtkWidget    *widget,
                      const gchar  *label_pattern)
 {
-  GtkWidget *label = NULL;
+  CtkWidget *label = NULL;
 
   if (CTK_IS_LABEL (widget))
     {
@@ -323,7 +323,7 @@ ctk_test_find_label (GtkWidget    *widget,
 }
 
 static GList*
-test_list_descendants (GtkWidget *widget,
+test_list_descendants (CtkWidget *widget,
                        GType      widget_type)
 {
   GList *results = NULL;
@@ -343,11 +343,11 @@ test_list_descendants (GtkWidget *widget,
 }
 
 static int
-widget_geo_dist (GtkWidget *a,
-                 GtkWidget *b,
-                 GtkWidget *base)
+widget_geo_dist (CtkWidget *a,
+                 CtkWidget *b,
+                 CtkWidget *base)
 {
-  GtkAllocation allocation;
+  CtkAllocation allocation;
   int ax0, ay0, ax1, ay1, bx0, by0, bx1, by1, xdist = 0, ydist = 0;
 
   ctk_widget_get_allocation (a, &allocation);
@@ -378,7 +378,7 @@ widget_geo_cmp (gconstpointer a,
                 gpointer      user_data)
 {
   gpointer *data = user_data;
-  GtkWidget *wa = (void*) a, *wb = (void*) b, *toplevel = data[0], *base_widget = data[1];
+  CtkWidget *wa = (void*) a, *wb = (void*) b, *toplevel = data[0], *base_widget = data[1];
   int adist = widget_geo_dist (wa, base_widget, toplevel);
   int bdist = widget_geo_dist (wb, base_widget, toplevel);
   return adist > bdist ? +1 : adist == bdist ? 0 : -1;
@@ -401,12 +401,12 @@ widget_geo_cmp (gconstpointer a,
  *
  * Since: 2.14
  **/
-GtkWidget*
-ctk_test_find_sibling (GtkWidget *base_widget,
+CtkWidget*
+ctk_test_find_sibling (CtkWidget *base_widget,
                        GType      widget_type)
 {
   GList *siblings = NULL;
-  GtkWidget *tmpwidget = base_widget;
+  CtkWidget *tmpwidget = base_widget;
   gpointer data[2];
   /* find all sibling candidates */
   while (tmpwidget)
@@ -427,7 +427,7 @@ ctk_test_find_sibling (GtkWidget *base_widget,
 
 /**
  * ctk_test_find_widget:
- * @widget:        Container widget, usually a GtkWindow.
+ * @widget:        Container widget, usually a CtkWindow.
  * @label_pattern: Shell-glob pattern to match a label string.
  * @widget_type:   Type of a aearched for label sibling widget.
  *
@@ -443,12 +443,12 @@ ctk_test_find_sibling (GtkWidget *base_widget,
  *
  * Since: 2.14
  **/
-GtkWidget*
-ctk_test_find_widget (GtkWidget    *widget,
+CtkWidget*
+ctk_test_find_widget (CtkWidget    *widget,
                       const gchar  *label_pattern,
                       GType         widget_type)
 {
-  GtkWidget *label = ctk_test_find_label (widget, label_pattern);
+  CtkWidget *label = ctk_test_find_label (widget, label_pattern);
   if (!label)
     label = ctk_test_find_label (ctk_widget_get_toplevel (widget), label_pattern);
   if (label)
@@ -461,7 +461,7 @@ ctk_test_find_widget (GtkWidget    *widget,
  * @widget:     valid widget pointer.
  * @percentage: value between 0 and 100.
  *
- * This function will adjust the slider position of all GtkRange
+ * This function will adjust the slider position of all CtkRange
  * based widgets, such as scrollbars or scales, it’ll also adjust
  * spin buttons. The adjustment value of these widgets is set to
  * a value between the lower and upper limits, according to the
@@ -472,10 +472,10 @@ ctk_test_find_widget (GtkWidget    *widget,
  * Deprecated: 3.20: This testing infrastructure is phased out in favor of reftests.
  **/
 void
-ctk_test_slider_set_perc (GtkWidget      *widget,
+ctk_test_slider_set_perc (CtkWidget      *widget,
                           double          percentage)
 {
-  GtkAdjustment *adjustment = NULL;
+  CtkAdjustment *adjustment = NULL;
   if (CTK_IS_RANGE (widget))
     adjustment = ctk_range_get_adjustment (CTK_RANGE (widget));
   else if (CTK_IS_SPIN_BUTTON (widget))
@@ -493,7 +493,7 @@ ctk_test_slider_set_perc (GtkWidget      *widget,
  * ctk_test_slider_get_value:
  * @widget:     valid widget pointer.
  *
- * Retrive the literal adjustment value for GtkRange based
+ * Retrive the literal adjustment value for CtkRange based
  * widgets and spin buttons. Note that the value returned by
  * this function is anything between the lower and upper bounds
  * of the adjustment belonging to @widget, and is not a percentage
@@ -506,9 +506,9 @@ ctk_test_slider_set_perc (GtkWidget      *widget,
  * Deprecated: 3.20: This testing infrastructure is phased out in favor of reftests.
  **/
 double
-ctk_test_slider_get_value (GtkWidget *widget)
+ctk_test_slider_get_value (CtkWidget *widget)
 {
-  GtkAdjustment *adjustment = NULL;
+  CtkAdjustment *adjustment = NULL;
   if (CTK_IS_RANGE (widget))
     adjustment = ctk_range_get_adjustment (CTK_RANGE (widget));
   else if (CTK_IS_SPIN_BUTTON (widget))
@@ -521,15 +521,15 @@ ctk_test_slider_get_value (GtkWidget *widget)
  * @widget:     valid widget pointer.
  * @string:     a 0-terminated C string
  *
- * Set the text string of @widget to @string if it is a GtkLabel,
- * GtkEditable (entry and text widgets) or GtkTextView.
+ * Set the text string of @widget to @string if it is a CtkLabel,
+ * CtkEditable (entry and text widgets) or CtkTextView.
  *
  * Since: 2.14
  *
  * Deprecated: 3.20: This testing infrastructure is phased out in favor of reftests.
  **/
 void
-ctk_test_text_set (GtkWidget   *widget,
+ctk_test_text_set (CtkWidget   *widget,
                    const gchar *string)
 {
   if (CTK_IS_LABEL (widget))
@@ -542,7 +542,7 @@ ctk_test_text_set (GtkWidget   *widget,
     }
   else if (CTK_IS_TEXT_VIEW (widget))
     {
-      GtkTextBuffer *tbuffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (widget));
+      CtkTextBuffer *tbuffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (widget));
       ctk_text_buffer_set_text (tbuffer, string, -1);
     }
 }
@@ -551,8 +551,8 @@ ctk_test_text_set (GtkWidget   *widget,
  * ctk_test_text_get:
  * @widget:     valid widget pointer.
  *
- * Retrive the text string of @widget if it is a GtkLabel,
- * GtkEditable (entry and text widgets) or GtkTextView.
+ * Retrive the text string of @widget if it is a CtkLabel,
+ * CtkEditable (entry and text widgets) or CtkTextView.
  *
  * Returns: new 0-terminated C string, needs to be released with g_free().
  *
@@ -561,7 +561,7 @@ ctk_test_text_set (GtkWidget   *widget,
  * Deprecated: 3.20: This testing infrastructure is phased out in favor of reftests.
  **/
 gchar*
-ctk_test_text_get (GtkWidget *widget)
+ctk_test_text_get (CtkWidget *widget)
 {
   if (CTK_IS_LABEL (widget))
     return g_strdup (ctk_label_get_text (CTK_LABEL (widget)));
@@ -571,8 +571,8 @@ ctk_test_text_get (GtkWidget *widget)
     }
   else if (CTK_IS_TEXT_VIEW (widget))
     {
-      GtkTextBuffer *tbuffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (widget));
-      GtkTextIter start, end;
+      CtkTextBuffer *tbuffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (widget));
+      CtkTextIter start, end;
       ctk_text_buffer_get_start_iter (tbuffer, &start);
       ctk_text_buffer_get_end_iter (tbuffer, &end);
       return ctk_text_buffer_get_text (tbuffer, &start, &end, FALSE);
@@ -598,16 +598,16 @@ ctk_test_text_get (GtkWidget *widget)
  *
  * Deprecated: 3.20: This testing infrastructure is phased out in favor of reftests.
  */
-GtkWidget*
+CtkWidget*
 ctk_test_create_widget (GType        widget_type,
                         const gchar *first_property_name,
                         ...)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   va_list var_args;
   g_return_val_if_fail (g_type_is_a (widget_type, CTK_TYPE_WIDGET), NULL);
   va_start (var_args, first_property_name);
-  widget = (GtkWidget*) g_object_new_valist (widget_type, first_property_name, var_args);
+  widget = (CtkWidget*) g_object_new_valist (widget_type, first_property_name, var_args);
   va_end (var_args);
   if (widget)
     {
@@ -652,19 +652,19 @@ test_increment_intp (int *intp)
  * The window will quit any running ctk_main()-loop when destroyed, and it
  * will automatically be destroyed upon test function teardown.
  *
- * Returns: (transfer full): a widget pointer to the newly created GtkWindow.
+ * Returns: (transfer full): a widget pointer to the newly created CtkWindow.
  *
  * Since: 2.14
  *
  * Deprecated: 3.20: This testing infrastructure is phased out in favor of reftests.
  **/
-GtkWidget*
+CtkWidget*
 ctk_test_display_button_window (const gchar *window_title,
                                 const gchar *dialog_text,
                                 ...) /* NULL terminated list of (label, &int) pairs */
 {
   va_list var_args;
-  GtkWidget *window, *vbox;
+  CtkWidget *window, *vbox;
   const char *arg1;
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   window = ctk_test_create_widget (CTK_TYPE_WINDOW, "title", window_title, NULL);
@@ -677,7 +677,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
   while (arg1)
     {
       int *arg2 = va_arg (var_args, int*);
-      GtkWidget *button;
+      CtkWidget *button;
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       button = ctk_test_create_widget (CTK_TYPE_BUTTON, "label", arg1, "parent", vbox, NULL);
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
@@ -702,17 +702,17 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
  * The window will quit any running ctk_main()-loop when destroyed, and it
  * will automatically be destroyed upon test function teardown.
  *
- * Returns: (transfer none): a widget pointer to the newly created GtkWindow.
+ * Returns: (transfer none): a widget pointer to the newly created CtkWindow.
  *
  * Since: 2.14
  *
  * Deprecated: 3.20: This testing infrastructure is phased out in favor of reftests.
  **/
-GtkWidget*
+CtkWidget*
 ctk_test_create_simple_window (const gchar *window_title,
                                const gchar *dialog_text)
 {
-  GtkWidget *window, *vbox;
+  CtkWidget *window, *vbox;
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   window = ctk_test_create_widget (CTK_TYPE_WINDOW, "title", window_title, NULL);
   vbox = ctk_test_create_widget (CTK_TYPE_BOX, "parent", window, "orientation", CTK_ORIENTATION_VERTICAL, NULL);
@@ -749,7 +749,7 @@ ctk_test_list_all_types (guint *n_types)
 /**
  * ctk_test_register_all_types:
  *
- * Force registration of all core Gtk+ and Gdk object types.
+ * Force registration of all core Ctk+ and Gdk object types.
  * This allowes to refer to any of those object types via
  * g_type_from_name() after calling this function.
  *

@@ -25,7 +25,7 @@
 #include "ctkintl.h"
 
 /*****************************************
- *         GtkPrinterOptionSet    *
+ *         CtkPrinterOptionSet    *
  *****************************************/
 
 enum {
@@ -38,12 +38,12 @@ static guint signals[LAST_SIGNAL] = { 0 };
 /* ugly side-effect of aliasing */
 #undef ctk_printer_option_set
 
-G_DEFINE_TYPE (GtkPrinterOptionSet, ctk_printer_option_set, G_TYPE_OBJECT)
+G_DEFINE_TYPE (CtkPrinterOptionSet, ctk_printer_option_set, G_TYPE_OBJECT)
 
 static void
 ctk_printer_option_set_finalize (GObject *object)
 {
-  GtkPrinterOptionSet *set = CTK_PRINTER_OPTION_SET (object);
+  CtkPrinterOptionSet *set = CTK_PRINTER_OPTION_SET (object);
 
   g_hash_table_destroy (set->hash);
   g_ptr_array_foreach (set->array, (GFunc)g_object_unref, NULL);
@@ -53,14 +53,14 @@ ctk_printer_option_set_finalize (GObject *object)
 }
 
 static void
-ctk_printer_option_set_init (GtkPrinterOptionSet *set)
+ctk_printer_option_set_init (CtkPrinterOptionSet *set)
 {
   set->array = g_ptr_array_new ();
   set->hash = g_hash_table_new (g_str_hash, g_str_equal);
 }
 
 static void
-ctk_printer_option_set_class_init (GtkPrinterOptionSetClass *class)
+ctk_printer_option_set_class_init (CtkPrinterOptionSetClass *class)
 {
   GObjectClass *gobject_class = (GObjectClass *)class;
 
@@ -70,7 +70,7 @@ ctk_printer_option_set_class_init (GtkPrinterOptionSetClass *class)
     g_signal_new (I_("changed"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkPrinterOptionSetClass, changed),
+		  G_STRUCT_OFFSET (CtkPrinterOptionSetClass, changed),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
@@ -78,20 +78,20 @@ ctk_printer_option_set_class_init (GtkPrinterOptionSetClass *class)
 
 
 static void
-emit_changed (GtkPrinterOptionSet *set)
+emit_changed (CtkPrinterOptionSet *set)
 {
   g_signal_emit (set, signals[CHANGED], 0);
 }
 
-GtkPrinterOptionSet *
+CtkPrinterOptionSet *
 ctk_printer_option_set_new (void)
 {
   return g_object_new (CTK_TYPE_PRINTER_OPTION_SET, NULL);
 }
 
 void
-ctk_printer_option_set_remove (GtkPrinterOptionSet *set,
-			       GtkPrinterOption    *option)
+ctk_printer_option_set_remove (CtkPrinterOptionSet *set,
+			       CtkPrinterOption    *option)
 {
   int i;
   
@@ -110,8 +110,8 @@ ctk_printer_option_set_remove (GtkPrinterOptionSet *set,
 }
 
 void
-ctk_printer_option_set_add (GtkPrinterOptionSet *set,
-			    GtkPrinterOption    *option)
+ctk_printer_option_set_add (CtkPrinterOptionSet *set,
+			    CtkPrinterOption    *option)
 {
   g_object_ref (option);
   
@@ -123,8 +123,8 @@ ctk_printer_option_set_add (GtkPrinterOptionSet *set,
   g_signal_connect_object (option, "changed", G_CALLBACK (emit_changed), set, G_CONNECT_SWAPPED);
 }
 
-GtkPrinterOption *
-ctk_printer_option_set_lookup (GtkPrinterOptionSet *set,
+CtkPrinterOption *
+ctk_printer_option_set_lookup (CtkPrinterOptionSet *set,
 			       const char          *name)
 {
   gpointer ptr;
@@ -135,25 +135,25 @@ ctk_printer_option_set_lookup (GtkPrinterOptionSet *set,
 }
 
 void
-ctk_printer_option_set_clear_conflicts (GtkPrinterOptionSet *set)
+ctk_printer_option_set_clear_conflicts (CtkPrinterOptionSet *set)
 {
   ctk_printer_option_set_foreach (set,
-				  (GtkPrinterOptionSetFunc)ctk_printer_option_clear_has_conflict,
+				  (CtkPrinterOptionSetFunc)ctk_printer_option_clear_has_conflict,
 				  NULL);
 }
 
 /**
  * ctk_printer_option_set_get_groups:
- * @set: a #GtkPrinterOptionSet
+ * @set: a #CtkPrinterOptionSet
  *
  * Gets the groups in this set.
  *
  * Returns: (element-type utf8) (transfer full): a list of group names.
  */
 GList *
-ctk_printer_option_set_get_groups (GtkPrinterOptionSet *set)
+ctk_printer_option_set_get_groups (CtkPrinterOptionSet *set)
 {
-  GtkPrinterOption *option;
+  CtkPrinterOption *option;
   GList *list = NULL;
   int i;
 
@@ -169,12 +169,12 @@ ctk_printer_option_set_get_groups (GtkPrinterOptionSet *set)
 }
 
 void
-ctk_printer_option_set_foreach_in_group (GtkPrinterOptionSet     *set,
+ctk_printer_option_set_foreach_in_group (CtkPrinterOptionSet     *set,
 					 const char              *group,
-					 GtkPrinterOptionSetFunc  func,
+					 CtkPrinterOptionSetFunc  func,
 					 gpointer                 user_data)
 {
-  GtkPrinterOption *option;
+  CtkPrinterOption *option;
   int i;
 
   for (i = 0; i < set->array->len; i++)
@@ -187,8 +187,8 @@ ctk_printer_option_set_foreach_in_group (GtkPrinterOptionSet     *set,
 }
 
 void
-ctk_printer_option_set_foreach (GtkPrinterOptionSet *set,
-				GtkPrinterOptionSetFunc func,
+ctk_printer_option_set_foreach (CtkPrinterOptionSet *set,
+				CtkPrinterOptionSetFunc func,
 				gpointer user_data)
 {
   ctk_printer_option_set_foreach_in_group (set, NULL, func, user_data);

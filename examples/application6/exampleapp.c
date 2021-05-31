@@ -6,7 +6,7 @@
 
 struct _ExampleApp
 {
-  GtkApplication parent;
+  CtkApplication parent;
 };
 
 G_DEFINE_TYPE(ExampleApp, example_app, CTK_TYPE_APPLICATION);
@@ -22,7 +22,7 @@ preferences_activated (GSimpleAction *action,
                        gpointer       app)
 {
   ExampleAppPrefs *prefs;
-  GtkWindow *win;
+  CtkWindow *win;
 
   win = ctk_application_get_active_window (CTK_APPLICATION (app));
   prefs = example_app_prefs_new (EXAMPLE_APP_WINDOW (win));
@@ -46,7 +46,7 @@ static GActionEntry app_entries[] =
 static void
 example_app_startup (GApplication *app)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GMenuModel *app_menu;
   const gchar *quit_accels[2] = { "<Ctrl>Q", NULL };
 

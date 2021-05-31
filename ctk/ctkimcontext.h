@@ -29,58 +29,58 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_IM_CONTEXT              (ctk_im_context_get_type ())
-#define CTK_IM_CONTEXT(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_IM_CONTEXT, GtkIMContext))
-#define CTK_IM_CONTEXT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_IM_CONTEXT, GtkIMContextClass))
+#define CTK_IM_CONTEXT(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_IM_CONTEXT, CtkIMContext))
+#define CTK_IM_CONTEXT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_IM_CONTEXT, CtkIMContextClass))
 #define CTK_IS_IM_CONTEXT(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_IM_CONTEXT))
 #define CTK_IS_IM_CONTEXT_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_IM_CONTEXT))
-#define CTK_IM_CONTEXT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_IM_CONTEXT, GtkIMContextClass))
+#define CTK_IM_CONTEXT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_IM_CONTEXT, CtkIMContextClass))
 
 
-typedef struct _GtkIMContext       GtkIMContext;
-typedef struct _GtkIMContextClass  GtkIMContextClass;
+typedef struct _CtkIMContext       CtkIMContext;
+typedef struct _CtkIMContextClass  CtkIMContextClass;
 
-struct _GtkIMContext
+struct _CtkIMContext
 {
   GObject parent_instance;
 };
 
-struct _GtkIMContextClass
+struct _CtkIMContextClass
 {
   /*< private >*/
   GObjectClass parent_class;
 
   /*< public >*/
   /* Signals */
-  void     (*preedit_start)        (GtkIMContext *context);
-  void     (*preedit_end)          (GtkIMContext *context);
-  void     (*preedit_changed)      (GtkIMContext *context);
-  void     (*commit)               (GtkIMContext *context, const gchar *str);
-  gboolean (*retrieve_surrounding) (GtkIMContext *context);
-  gboolean (*delete_surrounding)   (GtkIMContext *context,
+  void     (*preedit_start)        (CtkIMContext *context);
+  void     (*preedit_end)          (CtkIMContext *context);
+  void     (*preedit_changed)      (CtkIMContext *context);
+  void     (*commit)               (CtkIMContext *context, const gchar *str);
+  gboolean (*retrieve_surrounding) (CtkIMContext *context);
+  gboolean (*delete_surrounding)   (CtkIMContext *context,
 				    gint          offset,
 				    gint          n_chars);
 
   /* Virtual functions */
-  void     (*set_client_window)   (GtkIMContext   *context,
+  void     (*set_client_window)   (CtkIMContext   *context,
 				   GdkWindow      *window);
-  void     (*get_preedit_string)  (GtkIMContext   *context,
+  void     (*get_preedit_string)  (CtkIMContext   *context,
 				   gchar         **str,
 				   PangoAttrList **attrs,
 				   gint           *cursor_pos);
-  gboolean (*filter_keypress)     (GtkIMContext   *context,
+  gboolean (*filter_keypress)     (CtkIMContext   *context,
 			           GdkEventKey    *event);
-  void     (*focus_in)            (GtkIMContext   *context);
-  void     (*focus_out)           (GtkIMContext   *context);
-  void     (*reset)               (GtkIMContext   *context);
-  void     (*set_cursor_location) (GtkIMContext   *context,
+  void     (*focus_in)            (CtkIMContext   *context);
+  void     (*focus_out)           (CtkIMContext   *context);
+  void     (*reset)               (CtkIMContext   *context);
+  void     (*set_cursor_location) (CtkIMContext   *context,
 				   GdkRectangle   *area);
-  void     (*set_use_preedit)     (GtkIMContext   *context,
+  void     (*set_use_preedit)     (CtkIMContext   *context,
 				   gboolean        use_preedit);
-  void     (*set_surrounding)     (GtkIMContext   *context,
+  void     (*set_surrounding)     (CtkIMContext   *context,
 				   const gchar    *text,
 				   gint            len,
 				   gint            cursor_index);
-  gboolean (*get_surrounding)     (GtkIMContext   *context,
+  gboolean (*get_surrounding)     (CtkIMContext   *context,
 				   gchar         **text,
 				   gint           *cursor_index);
   /*< private >*/
@@ -97,39 +97,39 @@ GDK_AVAILABLE_IN_ALL
 GType    ctk_im_context_get_type            (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-void     ctk_im_context_set_client_window   (GtkIMContext       *context,
+void     ctk_im_context_set_client_window   (CtkIMContext       *context,
 					     GdkWindow          *window);
 GDK_AVAILABLE_IN_ALL
-void     ctk_im_context_get_preedit_string  (GtkIMContext       *context,
+void     ctk_im_context_get_preedit_string  (CtkIMContext       *context,
 					     gchar             **str,
 					     PangoAttrList     **attrs,
 					     gint               *cursor_pos);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_im_context_filter_keypress     (GtkIMContext       *context,
+gboolean ctk_im_context_filter_keypress     (CtkIMContext       *context,
 					     GdkEventKey        *event);
 GDK_AVAILABLE_IN_ALL
-void     ctk_im_context_focus_in            (GtkIMContext       *context);
+void     ctk_im_context_focus_in            (CtkIMContext       *context);
 GDK_AVAILABLE_IN_ALL
-void     ctk_im_context_focus_out           (GtkIMContext       *context);
+void     ctk_im_context_focus_out           (CtkIMContext       *context);
 GDK_AVAILABLE_IN_ALL
-void     ctk_im_context_reset               (GtkIMContext       *context);
+void     ctk_im_context_reset               (CtkIMContext       *context);
 GDK_AVAILABLE_IN_ALL
-void     ctk_im_context_set_cursor_location (GtkIMContext       *context,
+void     ctk_im_context_set_cursor_location (CtkIMContext       *context,
 					     const GdkRectangle *area);
 GDK_AVAILABLE_IN_ALL
-void     ctk_im_context_set_use_preedit     (GtkIMContext       *context,
+void     ctk_im_context_set_use_preedit     (CtkIMContext       *context,
 					     gboolean            use_preedit);
 GDK_AVAILABLE_IN_ALL
-void     ctk_im_context_set_surrounding     (GtkIMContext       *context,
+void     ctk_im_context_set_surrounding     (CtkIMContext       *context,
 					     const gchar        *text,
 					     gint                len,
 					     gint                cursor_index);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_im_context_get_surrounding     (GtkIMContext       *context,
+gboolean ctk_im_context_get_surrounding     (CtkIMContext       *context,
 					     gchar             **text,
 					     gint               *cursor_index);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_im_context_delete_surrounding  (GtkIMContext       *context,
+gboolean ctk_im_context_delete_surrounding  (CtkIMContext       *context,
 					     gint                offset,
 					     gint                n_chars);
 

@@ -2,17 +2,17 @@
 #include <pango/pangocairo.h>
 #include <ctk/ctk.h>
 
-static GtkWidget *main_window;
+static CtkWidget *main_window;
 static char *filename = NULL;
-static GtkPageSetup *page_setup = NULL;
-static GtkPrintSettings *settings = NULL;
+static CtkPageSetup *page_setup = NULL;
+static CtkPrintSettings *settings = NULL;
 static gboolean file_changed = FALSE;
-static GtkTextBuffer *buffer;
-static GtkWidget *statusbar;
+static CtkTextBuffer *buffer;
+static CtkWidget *statusbar;
 static GList *active_prints = NULL;
 
 static void
-update_title (GtkWindow *window)
+update_title (CtkWindow *window)
 {
   char *basename;
   char *title;
@@ -34,7 +34,7 @@ update_statusbar (void)
 {
   gchar *msg;
   gint row, col;
-  GtkTextIter iter;
+  CtkTextIter iter;
   const char *print_str;
 
   ctk_statusbar_pop (CTK_STATUSBAR (statusbar), 0);
@@ -49,7 +49,7 @@ update_statusbar (void)
   print_str = "";
   if (active_prints)
     {
-      GtkPrintOperation *op = active_prints->data;
+      CtkPrintOperation *op = active_prints->data;
       print_str = ctk_print_operation_get_status_string (op);
     }
   
@@ -73,7 +73,7 @@ update_ui (void)
 static char *
 get_text (void)
 {
-  GtkTextIter start, end;
+  CtkTextIter start, end;
 
   ctk_text_buffer_get_start_iter (buffer, &start);
   ctk_text_buffer_get_end_iter (buffer, &end);
@@ -91,7 +91,7 @@ set_text (const char *text, gsize len)
 static void
 load_file (const char *open_filename)
 {
-  GtkWidget *error_dialog;
+  CtkWidget *error_dialog;
   char *contents;
   GError *error;
   gsize len;
@@ -141,7 +141,7 @@ static void
 save_file (const char *save_filename)
 {
   char *text = get_text ();
-  GtkWidget *error_dialog;
+  CtkWidget *error_dialog;
   GError *error;
 
   error = NULL;
@@ -178,13 +178,13 @@ typedef struct {
   char *text;
   PangoLayout *layout;
   GList *page_breaks;
-  GtkWidget *font_button;
+  CtkWidget *font_button;
   char *font;
 } PrintData;
 
 static void
-begin_print (GtkPrintOperation *operation,
-	     GtkPrintContext *context,
+begin_print (CtkPrintOperation *operation,
+	     CtkPrintContext *context,
 	     PrintData *print_data)
 {
   PangoFontDescription *desc;
@@ -239,8 +239,8 @@ begin_print (GtkPrintOperation *operation,
 }
 
 static void
-draw_page (GtkPrintOperation *operation,
-	   GtkPrintContext *context,
+draw_page (CtkPrintOperation *operation,
+	   CtkPrintContext *context,
 	   int page_nr,
 	   PrintData *print_data)
 {
@@ -300,7 +300,7 @@ draw_page (GtkPrintOperation *operation,
 }
 
 static void
-status_changed_cb (GtkPrintOperation *op,
+status_changed_cb (CtkPrintOperation *op,
 		   gpointer user_data)
 {
   if (ctk_print_operation_is_finished (op))
@@ -311,11 +311,11 @@ status_changed_cb (GtkPrintOperation *op,
   update_statusbar ();
 }
 
-static GtkWidget *
-create_custom_widget (GtkPrintOperation *operation,
+static CtkWidget *
+create_custom_widget (CtkPrintOperation *operation,
 		      PrintData *data)
 {
-  GtkWidget *vbox, *hbox, *font, *label;
+  CtkWidget *vbox, *hbox, *font, *label;
 
   ctk_print_operation_set_custom_tab_label (operation, "Other");
   vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
@@ -338,8 +338,8 @@ create_custom_widget (GtkPrintOperation *operation,
 }
 
 static void
-custom_widget_apply (GtkPrintOperation *operation,
-		     GtkWidget *widget,
+custom_widget_apply (CtkPrintOperation *operation,
+		     CtkWidget *widget,
 		     PrintData *data)
 {
   const char *selected_font;
@@ -351,18 +351,18 @@ custom_widget_apply (GtkPrintOperation *operation,
 
 typedef struct 
 {
-  GtkPrintOperation *op;
-  GtkPrintOperationPreview *preview;
-  GtkPrintContext   *context;
-  GtkWidget         *spin;
-  GtkWidget         *area;
+  CtkPrintOperation *op;
+  CtkPrintOperationPreview *preview;
+  CtkPrintContext   *context;
+  CtkWidget         *spin;
+  CtkWidget         *area;
   gint               page;
   PrintData *data;
   gdouble dpi_x, dpi_y;
 } PreviewOp;
 
 static gboolean
-preview_draw (GtkWidget *widget,
+preview_draw (CtkWidget *widget,
               cairo_t   *cr,
               gpointer   data)
 {
@@ -387,8 +387,8 @@ preview_draw (GtkWidget *widget,
 }
 
 static void
-preview_ready (GtkPrintOperationPreview *preview,
-	       GtkPrintContext          *context,
+preview_ready (CtkPrintOperationPreview *preview,
+	       CtkPrintContext          *context,
 	       gpointer                  data)
 {
   PreviewOp *pop = data;
@@ -407,14 +407,14 @@ preview_ready (GtkPrintOperationPreview *preview,
 }
 
 static void
-preview_got_page_size (GtkPrintOperationPreview *preview, 
-		       GtkPrintContext          *context,
-		       GtkPageSetup             *page_setup,
+preview_got_page_size (CtkPrintOperationPreview *preview, 
+		       CtkPrintContext          *context,
+		       CtkPageSetup             *page_setup,
 		       gpointer                  data)
 {
   PreviewOp *pop = data;
-  GtkAllocation allocation;
-  GtkPaperSize *paper_size;
+  CtkAllocation allocation;
+  CtkPaperSize *paper_size;
   double w, h;
   cairo_t *cr;
   gdouble dpi_x, dpi_y;
@@ -445,7 +445,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-update_page (GtkSpinButton *widget,
+update_page (CtkSpinButton *widget,
 	     gpointer       data)
 {
   PreviewOp *pop = data;
@@ -455,7 +455,7 @@ update_page (GtkSpinButton *widget,
 }
 
 static void
-preview_destroy (GtkWindow *window, 
+preview_destroy (CtkWindow *window, 
 		 PreviewOp *pop)
 {
   ctk_print_operation_preview_end_preview (pop->preview);
@@ -465,13 +465,13 @@ preview_destroy (GtkWindow *window,
 }
 
 static gboolean 
-preview_cb (GtkPrintOperation        *op,
-	    GtkPrintOperationPreview *preview,
-	    GtkPrintContext          *context,
-	    GtkWindow                *parent,
+preview_cb (CtkPrintOperation        *op,
+	    CtkPrintOperationPreview *preview,
+	    CtkPrintContext          *context,
+	    CtkWindow                *parent,
 	    gpointer                  data)
 {
-  GtkWidget *window, *close, *page, *hbox, *vbox, *da;
+  CtkWidget *window, *close, *page, *hbox, *vbox, *da;
   gdouble width, height;
   cairo_t *cr;
   PreviewOp *pop;
@@ -537,8 +537,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-print_done (GtkPrintOperation *op,
-	    GtkPrintOperationResult res,
+print_done (CtkPrintOperation *op,
+	    CtkPrintOperationResult res,
 	    PrintData *print_data)
 {
   GError *error = NULL;
@@ -546,7 +546,7 @@ print_done (GtkPrintOperation *op,
   if (res == CTK_PRINT_OPERATION_RESULT_ERROR)
     {
 
-      GtkWidget *error_dialog;
+      CtkWidget *error_dialog;
       
       ctk_print_operation_get_error (op, &error);
       
@@ -583,7 +583,7 @@ print_done (GtkPrintOperation *op,
 }
 
 static void
-end_print (GtkPrintOperation *op, GtkPrintContext *context, PrintData *print_data)
+end_print (CtkPrintOperation *op, CtkPrintContext *context, PrintData *print_data)
 {
   g_list_free (print_data->page_breaks);
   print_data->page_breaks = NULL;
@@ -592,9 +592,9 @@ end_print (GtkPrintOperation *op, GtkPrintContext *context, PrintData *print_dat
 }
 
 static void
-print_or_preview (GSimpleAction *action, GtkPrintOperationAction print_action)
+print_or_preview (GSimpleAction *action, CtkPrintOperationAction print_action)
 {
-  GtkPrintOperation *print;
+  CtkPrintOperation *print;
   PrintData *print_data;
 
   print_data = g_new0 (PrintData, 1);
@@ -636,7 +636,7 @@ activate_page_setup (GSimpleAction *action,
                      GVariant      *parameter,
                      gpointer       user_data)
 {
-  GtkPageSetup *new_page_setup;
+  CtkPageSetup *new_page_setup;
 
   new_page_setup = ctk_print_run_page_setup_dialog (CTK_WINDOW (main_window),
                                                     page_setup, settings);
@@ -668,7 +668,7 @@ activate_save_as (GSimpleAction *action,
                   GVariant      *parameter,
                   gpointer       user_data)
 {
-  GtkWidget *dialog;
+  CtkWidget *dialog;
   gint response;
   char *save_filename;
 
@@ -707,7 +707,7 @@ activate_open (GSimpleAction *action,
                GVariant      *parameter,
                gpointer       user_data)
 {
-  GtkWidget *dialog;
+  CtkWidget *dialog;
   gint response;
   char *open_filename;
 
@@ -764,8 +764,8 @@ activate_quit (GSimpleAction *action,
                GVariant      *parameter,
                gpointer       user_data)
 {
-  GtkApplication *app = user_data;
-  GtkWidget *win;
+  CtkApplication *app = user_data;
+  CtkWidget *win;
   GList *list, *next;
 
   list = ctk_application_get_windows (app);
@@ -853,16 +853,16 @@ static const gchar ui_info[] =
   "</interface>";
 
 static void
-buffer_changed_callback (GtkTextBuffer *buffer)
+buffer_changed_callback (CtkTextBuffer *buffer)
 {
   file_changed = TRUE;
   update_statusbar ();
 }
 
 static void
-mark_set_callback (GtkTextBuffer     *buffer,
-                   const GtkTextIter *new_location,
-                   GtkTextMark       *mark,
+mark_set_callback (CtkTextBuffer     *buffer,
+                   const CtkTextIter *new_location,
+                   CtkTextMark       *mark,
                    gpointer           data)
 {
   update_statusbar ();
@@ -886,7 +886,7 @@ command_line (GApplication            *application,
 static void
 startup (GApplication *app)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GMenuModel *appmenu;
   GMenuModel *menubar;
 
@@ -905,10 +905,10 @@ startup (GApplication *app)
 static void
 activate (GApplication *app)
 {
-  GtkWidget *box;
-  GtkWidget *bar;
-  GtkWidget *sw;
-  GtkWidget *contents;
+  CtkWidget *box;
+  CtkWidget *bar;
+  CtkWidget *sw;
+  CtkWidget *contents;
 
   main_window = ctk_application_window_new (CTK_APPLICATION (app));
   ctk_window_set_icon_name (CTK_WINDOW (main_window), "text-editor");
@@ -968,7 +968,7 @@ activate (GApplication *app)
 int
 main (int argc, char **argv)
 {
-  GtkApplication *app;
+  CtkApplication *app;
   GError *error = NULL;
 
   ctk_init (NULL, NULL);

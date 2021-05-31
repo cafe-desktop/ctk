@@ -37,37 +37,37 @@ G_BEGIN_DECLS
 
 
 #define CTK_TYPE_FRAME                  (ctk_frame_get_type ())
-#define CTK_FRAME(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FRAME, GtkFrame))
-#define CTK_FRAME_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_FRAME, GtkFrameClass))
+#define CTK_FRAME(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FRAME, CtkFrame))
+#define CTK_FRAME_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_FRAME, CtkFrameClass))
 #define CTK_IS_FRAME(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_FRAME))
 #define CTK_IS_FRAME_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_FRAME))
-#define CTK_FRAME_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_FRAME, GtkFrameClass))
+#define CTK_FRAME_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_FRAME, CtkFrameClass))
 
-typedef struct _GtkFrame              GtkFrame;
-typedef struct _GtkFramePrivate       GtkFramePrivate;
-typedef struct _GtkFrameClass         GtkFrameClass;
+typedef struct _CtkFrame              CtkFrame;
+typedef struct _CtkFramePrivate       CtkFramePrivate;
+typedef struct _CtkFrameClass         CtkFrameClass;
 
-struct _GtkFrame
+struct _CtkFrame
 {
-  GtkBin bin;
+  CtkBin bin;
 
   /*< private >*/
-  GtkFramePrivate *priv;
+  CtkFramePrivate *priv;
 };
 
 /**
- * GtkFrameClass:
+ * CtkFrameClass:
  * @parent_class: The parent class.
  * @compute_child_allocation:
  */
-struct _GtkFrameClass
+struct _CtkFrameClass
 {
-  GtkBinClass parent_class;
+  CtkBinClass parent_class;
 
   /*< public >*/
 
-  void (*compute_child_allocation) (GtkFrame *frame,
-                                    GtkAllocation *allocation);
+  void (*compute_child_allocation) (CtkFrame *frame,
+                                    CtkAllocation *allocation);
 
   /*< private >*/
 
@@ -82,32 +82,32 @@ struct _GtkFrameClass
 GDK_AVAILABLE_IN_ALL
 GType      ctk_frame_get_type         (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget* ctk_frame_new              (const gchar   *label);
+CtkWidget* ctk_frame_new              (const gchar   *label);
 
 GDK_AVAILABLE_IN_ALL
-void          ctk_frame_set_label (GtkFrame    *frame,
+void          ctk_frame_set_label (CtkFrame    *frame,
                                    const gchar *label);
 GDK_AVAILABLE_IN_ALL
-const gchar * ctk_frame_get_label (GtkFrame    *frame);
+const gchar * ctk_frame_get_label (CtkFrame    *frame);
 
 GDK_AVAILABLE_IN_ALL
-void       ctk_frame_set_label_widget (GtkFrame      *frame,
-				       GtkWidget     *label_widget);
+void       ctk_frame_set_label_widget (CtkFrame      *frame,
+				       CtkWidget     *label_widget);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *ctk_frame_get_label_widget (GtkFrame      *frame);
+CtkWidget *ctk_frame_get_label_widget (CtkFrame      *frame);
 GDK_AVAILABLE_IN_ALL
-void       ctk_frame_set_label_align  (GtkFrame      *frame,
+void       ctk_frame_set_label_align  (CtkFrame      *frame,
 				       gfloat         xalign,
 				       gfloat         yalign);
 GDK_AVAILABLE_IN_ALL
-void       ctk_frame_get_label_align  (GtkFrame      *frame,
+void       ctk_frame_get_label_align  (CtkFrame      *frame,
 				       gfloat        *xalign,
 				       gfloat        *yalign);
 GDK_AVAILABLE_IN_ALL
-void       ctk_frame_set_shadow_type  (GtkFrame      *frame,
-				       GtkShadowType  type);
+void       ctk_frame_set_shadow_type  (CtkFrame      *frame,
+				       CtkShadowType  type);
 GDK_AVAILABLE_IN_ALL
-GtkShadowType ctk_frame_get_shadow_type (GtkFrame    *frame);
+CtkShadowType ctk_frame_get_shadow_type (CtkFrame    *frame);
 
 
 G_END_DECLS

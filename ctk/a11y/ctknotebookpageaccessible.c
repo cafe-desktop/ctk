@@ -22,24 +22,24 @@
 #include "ctknotebookpageaccessible.h"
 
 
-struct _GtkNotebookPageAccessiblePrivate
+struct _CtkNotebookPageAccessiblePrivate
 {
-  GtkAccessible *notebook;
-  GtkWidget *child;
+  CtkAccessible *notebook;
+  CtkWidget *child;
 };
 
 static void atk_component_interface_init (AtkComponentIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkNotebookPageAccessible, ctk_notebook_page_accessible, ATK_TYPE_OBJECT,
-                         G_ADD_PRIVATE (GtkNotebookPageAccessible)
+G_DEFINE_TYPE_WITH_CODE (CtkNotebookPageAccessible, ctk_notebook_page_accessible, ATK_TYPE_OBJECT,
+                         G_ADD_PRIVATE (CtkNotebookPageAccessible)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_COMPONENT, atk_component_interface_init))
 
 
-static GtkWidget *
-find_label_child (GtkContainer *container)
+static CtkWidget *
+find_label_child (CtkContainer *container)
 {
   GList *children, *tmp_list;
-  GtkWidget *child;
+  CtkWidget *child;
 
   children = ctk_container_get_children (container);
 
@@ -63,11 +63,11 @@ find_label_child (GtkContainer *container)
   return child;
 }
 
-static GtkWidget *
-get_label_from_notebook_page (GtkNotebookPageAccessible *page)
+static CtkWidget *
+get_label_from_notebook_page (CtkNotebookPageAccessible *page)
 {
-  GtkWidget *child;
-  GtkNotebook *notebook;
+  CtkWidget *child;
+  CtkNotebook *notebook;
 
   notebook = CTK_NOTEBOOK (ctk_accessible_get_widget (page->priv->notebook));
   if (!notebook)
@@ -90,7 +90,7 @@ get_label_from_notebook_page (GtkNotebookPageAccessible *page)
 static const gchar *
 ctk_notebook_page_accessible_get_name (AtkObject *accessible)
 {
-  GtkWidget *label;
+  CtkWidget *label;
 
   if (accessible->name != NULL)
     return accessible->name;
@@ -105,7 +105,7 @@ ctk_notebook_page_accessible_get_name (AtkObject *accessible)
 static AtkObject *
 ctk_notebook_page_accessible_get_parent (AtkObject *accessible)
 {
-  GtkNotebookPageAccessible *page;
+  CtkNotebookPageAccessible *page;
 
   page = CTK_NOTEBOOK_PAGE_ACCESSIBLE (accessible);
 
@@ -123,7 +123,7 @@ ctk_notebook_page_accessible_ref_child (AtkObject *accessible,
                                         gint       i)
 {
   AtkObject *child_obj;
-  GtkNotebookPageAccessible *page = NULL;
+  CtkNotebookPageAccessible *page = NULL;
 
   if (i != 0)
     return NULL;
@@ -141,10 +141,10 @@ ctk_notebook_page_accessible_ref_child (AtkObject *accessible,
 static AtkStateSet *
 ctk_notebook_page_accessible_ref_state_set (AtkObject *accessible)
 {
-  GtkNotebookPageAccessible *page = CTK_NOTEBOOK_PAGE_ACCESSIBLE (accessible);
+  CtkNotebookPageAccessible *page = CTK_NOTEBOOK_PAGE_ACCESSIBLE (accessible);
   AtkStateSet *state_set, *label_state_set, *merged_state_set;
   AtkObject *atk_label;
-  GtkWidget *label;
+  CtkWidget *label;
   AtkObject *selected;
 
   state_set = ATK_OBJECT_CLASS (ctk_notebook_page_accessible_parent_class)->ref_state_set (accessible);
@@ -197,7 +197,7 @@ ctk_notebook_page_accessible_ref_state_set (AtkObject *accessible)
 static gint
 ctk_notebook_page_accessible_get_index_in_parent (AtkObject *accessible)
 {
-  GtkNotebookPageAccessible *page;
+  CtkNotebookPageAccessible *page;
 
   page = CTK_NOTEBOOK_PAGE_ACCESSIBLE (accessible);
   if (!page->priv->child)
@@ -208,7 +208,7 @@ ctk_notebook_page_accessible_get_index_in_parent (AtkObject *accessible)
 }
 
 static void
-ctk_notebook_page_accessible_class_init (GtkNotebookPageAccessibleClass *klass)
+ctk_notebook_page_accessible_class_init (CtkNotebookPageAccessibleClass *klass)
 {
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
 
@@ -221,7 +221,7 @@ ctk_notebook_page_accessible_class_init (GtkNotebookPageAccessibleClass *klass)
 }
 
 static void
-ctk_notebook_page_accessible_init (GtkNotebookPageAccessible *page)
+ctk_notebook_page_accessible_init (CtkNotebookPageAccessible *page)
 {
   page->priv = ctk_notebook_page_accessible_get_instance_private (page);
 }
@@ -237,12 +237,12 @@ notify_tab_label (GObject    *object,
 }
 
 AtkObject *
-ctk_notebook_page_accessible_new (GtkNotebookAccessible *notebook,
-                                  GtkWidget             *child)
+ctk_notebook_page_accessible_new (CtkNotebookAccessible *notebook,
+                                  CtkWidget             *child)
 {
   GObject *object;
   AtkObject *atk_object;
-  GtkNotebookPageAccessible *page;
+  CtkNotebookPageAccessible *page;
 
   g_return_val_if_fail (CTK_IS_NOTEBOOK_ACCESSIBLE (notebook), NULL);
   g_return_val_if_fail (CTK_WIDGET (child), NULL);
@@ -267,10 +267,10 @@ ctk_notebook_page_accessible_new (GtkNotebookAccessible *notebook,
 }
 
 void
-ctk_notebook_page_accessible_invalidate (GtkNotebookPageAccessible *page)
+ctk_notebook_page_accessible_invalidate (CtkNotebookPageAccessible *page)
 {
   AtkObject *obj = ATK_OBJECT (page);
-  GtkWidget *notebook;
+  CtkWidget *notebook;
 
   notebook = ctk_accessible_get_widget (page->priv->notebook);
   if (notebook)
@@ -305,7 +305,7 @@ ctk_notebook_page_accessible_get_extents (AtkComponent *component,
                                           gint         *height,
                                           AtkCoordType  coord_type)
 {
-  GtkWidget *label;
+  CtkWidget *label;
   AtkObject *atk_label;
 
   label = get_label_from_notebook_page (CTK_NOTEBOOK_PAGE_ACCESSIBLE (component));

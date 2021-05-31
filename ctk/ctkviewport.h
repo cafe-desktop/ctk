@@ -37,32 +37,32 @@ G_BEGIN_DECLS
 
 
 #define CTK_TYPE_VIEWPORT            (ctk_viewport_get_type ())
-#define CTK_VIEWPORT(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_VIEWPORT, GtkViewport))
-#define CTK_VIEWPORT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_VIEWPORT, GtkViewportClass))
+#define CTK_VIEWPORT(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_VIEWPORT, CtkViewport))
+#define CTK_VIEWPORT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_VIEWPORT, CtkViewportClass))
 #define CTK_IS_VIEWPORT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_VIEWPORT))
 #define CTK_IS_VIEWPORT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_VIEWPORT))
-#define CTK_VIEWPORT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_VIEWPORT, GtkViewportClass))
+#define CTK_VIEWPORT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_VIEWPORT, CtkViewportClass))
 
 
-typedef struct _GtkViewport              GtkViewport;
-typedef struct _GtkViewportPrivate       GtkViewportPrivate;
-typedef struct _GtkViewportClass         GtkViewportClass;
+typedef struct _CtkViewport              CtkViewport;
+typedef struct _CtkViewportPrivate       CtkViewportPrivate;
+typedef struct _CtkViewportClass         CtkViewportClass;
 
-struct _GtkViewport
+struct _CtkViewport
 {
-  GtkBin bin;
+  CtkBin bin;
 
   /*< private >*/
-  GtkViewportPrivate *priv;
+  CtkViewportPrivate *priv;
 };
 
 /**
- * GtkViewportClass:
+ * CtkViewportClass:
  * @parent_class: The parent class.
  */
-struct _GtkViewportClass
+struct _CtkViewportClass
 {
-  GtkBinClass parent_class;
+  CtkBinClass parent_class;
 
   /*< private >*/
 
@@ -77,29 +77,29 @@ struct _GtkViewportClass
 GDK_AVAILABLE_IN_ALL
 GType          ctk_viewport_get_type        (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget*     ctk_viewport_new             (GtkAdjustment *hadjustment,
-					     GtkAdjustment *vadjustment);
+CtkWidget*     ctk_viewport_new             (CtkAdjustment *hadjustment,
+					     CtkAdjustment *vadjustment);
 
 GDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_get_hadjustment)
-GtkAdjustment* ctk_viewport_get_hadjustment (GtkViewport   *viewport);
+CtkAdjustment* ctk_viewport_get_hadjustment (CtkViewport   *viewport);
 GDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_get_vadjustment)
-GtkAdjustment* ctk_viewport_get_vadjustment (GtkViewport   *viewport);
+CtkAdjustment* ctk_viewport_get_vadjustment (CtkViewport   *viewport);
 GDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_set_hadjustment)
-void           ctk_viewport_set_hadjustment (GtkViewport   *viewport,
-                                             GtkAdjustment *adjustment);
+void           ctk_viewport_set_hadjustment (CtkViewport   *viewport,
+                                             CtkAdjustment *adjustment);
 GDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_set_vadjustment)
-void           ctk_viewport_set_vadjustment (GtkViewport   *viewport,
-                                             GtkAdjustment *adjustment);
+void           ctk_viewport_set_vadjustment (CtkViewport   *viewport,
+                                             CtkAdjustment *adjustment);
 
 GDK_AVAILABLE_IN_ALL
-void           ctk_viewport_set_shadow_type (GtkViewport   *viewport,
-					     GtkShadowType  type);
+void           ctk_viewport_set_shadow_type (CtkViewport   *viewport,
+					     CtkShadowType  type);
 GDK_AVAILABLE_IN_ALL
-GtkShadowType  ctk_viewport_get_shadow_type (GtkViewport   *viewport);
+CtkShadowType  ctk_viewport_get_shadow_type (CtkViewport   *viewport);
 GDK_AVAILABLE_IN_ALL
-GdkWindow*     ctk_viewport_get_bin_window  (GtkViewport   *viewport);
+GdkWindow*     ctk_viewport_get_bin_window  (CtkViewport   *viewport);
 GDK_AVAILABLE_IN_ALL
-GdkWindow*     ctk_viewport_get_view_window (GtkViewport   *viewport);
+GdkWindow*     ctk_viewport_get_view_window (CtkViewport   *viewport);
 
 
 G_END_DECLS

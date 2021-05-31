@@ -24,15 +24,15 @@
 
 #include "ctkwidgetprivate.h"
 
-struct _GtkContainerAccessiblePrivate
+struct _CtkContainerAccessiblePrivate
 {
   GList *children;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkContainerAccessible, ctk_container_accessible, CTK_TYPE_WIDGET_ACCESSIBLE)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkContainerAccessible, ctk_container_accessible, CTK_TYPE_WIDGET_ACCESSIBLE)
 
 static void
-count_widget (GtkWidget *widget,
+count_widget (CtkWidget *widget,
               gint      *count)
 {
   (*count)++;
@@ -41,14 +41,14 @@ count_widget (GtkWidget *widget,
 static gint
 ctk_container_accessible_get_n_children (AtkObject* obj)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   gint count = 0;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
     return 0;
 
-  ctk_container_foreach (CTK_CONTAINER (widget), (GtkCallback) count_widget, &count);
+  ctk_container_foreach (CTK_CONTAINER (widget), (CtkCallback) count_widget, &count);
   return count;
 }
 
@@ -58,7 +58,7 @@ ctk_container_accessible_ref_child (AtkObject *obj,
 {
   GList *children, *tmp_list;
   AtkObject  *accessible;
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
@@ -80,11 +80,11 @@ ctk_container_accessible_ref_child (AtkObject *obj,
 }
 
 void
-_ctk_container_accessible_add (GtkWidget *parent,
-                               GtkWidget *child)
+_ctk_container_accessible_add (CtkWidget *parent,
+                               CtkWidget *child)
 {
-  GtkContainerAccessible *accessible;
-  GtkContainerAccessibleClass *klass;
+  CtkContainerAccessible *accessible;
+  CtkContainerAccessibleClass *klass;
   AtkObject *obj;
 
   obj = _ctk_widget_peek_accessible (CTK_WIDGET (parent));
@@ -99,11 +99,11 @@ _ctk_container_accessible_add (GtkWidget *parent,
 }
 
 void
-_ctk_container_accessible_remove (GtkWidget *parent,
-                                  GtkWidget *child)
+_ctk_container_accessible_remove (CtkWidget *parent,
+                                  CtkWidget *child)
 {
-  GtkContainerAccessible *accessible;
-  GtkContainerAccessibleClass *klass;
+  CtkContainerAccessible *accessible;
+  CtkContainerAccessibleClass *klass;
   AtkObject *obj;
 
   obj = _ctk_widget_peek_accessible (CTK_WIDGET (parent));
@@ -118,13 +118,13 @@ _ctk_container_accessible_remove (GtkWidget *parent,
 }
 
 static gint
-ctk_container_accessible_real_add_ctk (GtkContainer *container,
-                                       GtkWidget    *widget,
+ctk_container_accessible_real_add_ctk (CtkContainer *container,
+                                       CtkWidget    *widget,
                                        gpointer      data)
 {
   AtkObject *atk_parent;
   AtkObject *atk_child;
-  GtkContainerAccessible *accessible;
+  CtkContainerAccessible *accessible;
   gint index;
 
   atk_parent = ATK_OBJECT (data);
@@ -140,13 +140,13 @@ ctk_container_accessible_real_add_ctk (GtkContainer *container,
 }
 
 static gint
-ctk_container_accessible_real_remove_ctk (GtkContainer *container,
-                                          GtkWidget    *widget,
+ctk_container_accessible_real_remove_ctk (CtkContainer *container,
+                                          CtkWidget    *widget,
                                           gpointer      data)
 {
   AtkObject* atk_parent;
   AtkObject *atk_child;
-  GtkContainerAccessible *accessible;
+  CtkContainerAccessible *accessible;
   gint index;
 
   atk_parent = ATK_OBJECT (data);
@@ -168,7 +168,7 @@ static void
 ctk_container_accessible_real_initialize (AtkObject *obj,
                                           gpointer   data)
 {
-  GtkContainerAccessible *accessible = CTK_CONTAINER_ACCESSIBLE (obj);
+  CtkContainerAccessible *accessible = CTK_CONTAINER_ACCESSIBLE (obj);
 
   ATK_OBJECT_CLASS (ctk_container_accessible_parent_class)->initialize (obj, data);
 
@@ -180,7 +180,7 @@ ctk_container_accessible_real_initialize (AtkObject *obj,
 static void
 ctk_container_accessible_finalize (GObject *object)
 {
-  GtkContainerAccessible *accessible = CTK_CONTAINER_ACCESSIBLE (object);
+  CtkContainerAccessible *accessible = CTK_CONTAINER_ACCESSIBLE (object);
 
   g_list_free (accessible->priv->children);
 
@@ -188,7 +188,7 @@ ctk_container_accessible_finalize (GObject *object)
 }
 
 static void
-ctk_container_accessible_class_init (GtkContainerAccessibleClass *klass)
+ctk_container_accessible_class_init (CtkContainerAccessibleClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
@@ -204,13 +204,13 @@ ctk_container_accessible_class_init (GtkContainerAccessibleClass *klass)
 }
 
 static void
-ctk_container_accessible_init (GtkContainerAccessible *container)
+ctk_container_accessible_init (CtkContainerAccessible *container)
 {
   container->priv = ctk_container_accessible_get_instance_private (container);
 }
 
 void
-_ctk_container_accessible_add_child (GtkContainerAccessible *accessible,
+_ctk_container_accessible_add_child (CtkContainerAccessible *accessible,
                                      AtkObject              *child,
                                      gint                    index)
 {
@@ -219,7 +219,7 @@ _ctk_container_accessible_add_child (GtkContainerAccessible *accessible,
 }
 
 void
-_ctk_container_accessible_remove_child (GtkContainerAccessible *accessible,
+_ctk_container_accessible_remove_child (CtkContainerAccessible *accessible,
                                         AtkObject              *child,
                                         gint                    index)
 {

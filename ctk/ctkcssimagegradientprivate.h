@@ -27,32 +27,32 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CSS_IMAGE_GRADIENT           (_ctk_css_image_gradient_get_type ())
-#define CTK_CSS_IMAGE_GRADIENT(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_IMAGE_GRADIENT, GtkCssImageGradient))
-#define CTK_CSS_IMAGE_GRADIENT_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_IMAGE_GRADIENT, GtkCssImageGradientClass))
+#define CTK_CSS_IMAGE_GRADIENT(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_IMAGE_GRADIENT, CtkCssImageGradient))
+#define CTK_CSS_IMAGE_GRADIENT_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_IMAGE_GRADIENT, CtkCssImageGradientClass))
 #define CTK_IS_CSS_IMAGE_GRADIENT(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_IMAGE_GRADIENT))
 #define CTK_IS_CSS_IMAGE_GRADIENT_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_IMAGE_GRADIENT))
-#define CTK_CSS_IMAGE_GRADIENT_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_IMAGE_GRADIENT, GtkCssImageGradientClass))
+#define CTK_CSS_IMAGE_GRADIENT_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_IMAGE_GRADIENT, CtkCssImageGradientClass))
 
-typedef struct _GtkCssImageGradient           GtkCssImageGradient;
-typedef struct _GtkCssImageGradientClass      GtkCssImageGradientClass;
+typedef struct _CtkCssImageGradient           CtkCssImageGradient;
+typedef struct _CtkCssImageGradientClass      CtkCssImageGradientClass;
 
-struct _GtkCssImageGradient
+struct _CtkCssImageGradient
 {
-  GtkCssImage parent;
+  CtkCssImage parent;
 
-  GtkGradient *gradient;
+  CtkGradient *gradient;
   cairo_pattern_t *pattern;             /* the resolved gradient */
 };
 
-struct _GtkCssImageGradientClass
+struct _CtkCssImageGradientClass
 {
-  GtkCssImageClass parent_class;
+  CtkCssImageClass parent_class;
 };
 
 GType          _ctk_css_image_gradient_get_type             (void) G_GNUC_CONST;
 
 /* for lack of a better place to put it */
-GtkGradient *  _ctk_gradient_parse                          (GtkCssParser *parser);
+CtkGradient *  _ctk_gradient_parse                          (CtkCssParser *parser);
 
 G_END_DECLS
 

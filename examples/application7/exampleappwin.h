@@ -6,7 +6,7 @@
 
 
 #define EXAMPLE_APP_WINDOW_TYPE (example_app_window_get_type ())
-G_DECLARE_FINAL_TYPE (ExampleAppWindow, example_app_window, EXAMPLE, APP_WINDOW, GtkApplicationWindow)
+G_DECLARE_FINAL_TYPE (ExampleAppWindow, example_app_window, EXAMPLE, APP_WINDOW, CtkApplicationWindow)
 
 
 ExampleAppWindow       *example_app_window_new          (ExampleApp *app);

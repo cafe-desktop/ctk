@@ -1,5 +1,5 @@
 <node>
-<interface name="org.Gtk.MountOperationHandler">
+<interface name="org.Ctk.MountOperationHandler">
 
   <!--
     AskPassword:

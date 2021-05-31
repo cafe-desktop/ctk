@@ -20,19 +20,19 @@
 
 #include "ctkpagesetup.h"
 #include "ctkprintutils.h"
-#include "ctkprintoperation.h" /* for GtkPrintError */
+#include "ctkprintoperation.h" /* for CtkPrintError */
 #include "ctkintl.h"
 #include "ctktypebuiltins.h"
 
 /**
  * SECTION:ctkpagesetup
  * @Short_description: Stores page setup information
- * @Title: GtkPageSetup
+ * @Title: CtkPageSetup
  *
- * A GtkPageSetup object stores the page size, orientation and margins.
+ * A CtkPageSetup object stores the page size, orientation and margins.
  * The idea is that you can get one of these from the page setup dialog
- * and then pass it to the #GtkPrintOperation when printing.
- * The benefit of splitting this out of the #GtkPrintSettings is that
+ * and then pass it to the #CtkPrintOperation when printing.
+ * The benefit of splitting this out of the #CtkPrintSettings is that
  * these affect the actual layout of the page, and thus need to be set
  * long before user prints.
  *
@@ -43,20 +43,20 @@
  * used to determine the minimal size for the layout
  * margins.
  *
- * To obtain a #GtkPageSetup use ctk_page_setup_new() to get the defaults,
+ * To obtain a #CtkPageSetup use ctk_page_setup_new() to get the defaults,
  * or use ctk_print_run_page_setup_dialog() to show the page setup dialog
  * and receive the resulting page setup.
  *
  * ## A page setup dialog
  *
  * |[<!-- language="C" -->
- * static GtkPrintSettings *settings = NULL;
- * static GtkPageSetup *page_setup = NULL;
+ * static CtkPrintSettings *settings = NULL;
+ * static CtkPageSetup *page_setup = NULL;
  *
  * static void
  * do_page_setup (void)
  * {
- *   GtkPageSetup *new_page_setup;
+ *   CtkPageSetup *new_page_setup;
  *
  *   if (settings == NULL)
  *     settings = ctk_print_settings_new ();
@@ -76,33 +76,33 @@
 
 #define KEYFILE_GROUP_NAME "Page Setup"
 
-typedef struct _GtkPageSetupClass GtkPageSetupClass;
+typedef struct _CtkPageSetupClass CtkPageSetupClass;
 
 #define CTK_IS_PAGE_SETUP_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PAGE_SETUP))
-#define CTK_PAGE_SETUP_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PAGE_SETUP, GtkPageSetupClass))
-#define CTK_PAGE_SETUP_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PAGE_SETUP, GtkPageSetupClass))
+#define CTK_PAGE_SETUP_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PAGE_SETUP, CtkPageSetupClass))
+#define CTK_PAGE_SETUP_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PAGE_SETUP, CtkPageSetupClass))
 
-struct _GtkPageSetup
+struct _CtkPageSetup
 {
   GObject parent_instance;
 
-  GtkPageOrientation orientation;
-  GtkPaperSize *paper_size;
+  CtkPageOrientation orientation;
+  CtkPaperSize *paper_size;
   /* These are stored in mm */
   double top_margin, bottom_margin, left_margin, right_margin;
 };
 
-struct _GtkPageSetupClass
+struct _CtkPageSetupClass
 {
   GObjectClass parent_class;
 };
 
-G_DEFINE_TYPE (GtkPageSetup, ctk_page_setup, G_TYPE_OBJECT)
+G_DEFINE_TYPE (CtkPageSetup, ctk_page_setup, G_TYPE_OBJECT)
 
 static void
 ctk_page_setup_finalize (GObject *object)
 {
-  GtkPageSetup *setup = CTK_PAGE_SETUP (object);
+  CtkPageSetup *setup = CTK_PAGE_SETUP (object);
   
   ctk_paper_size_free (setup->paper_size);
   
@@ -110,7 +110,7 @@ ctk_page_setup_finalize (GObject *object)
 }
 
 static void
-ctk_page_setup_init (GtkPageSetup *setup)
+ctk_page_setup_init (CtkPageSetup *setup)
 {
   setup->paper_size = ctk_paper_size_new (NULL);
   setup->orientation = CTK_PAGE_ORIENTATION_PORTRAIT;
@@ -121,7 +121,7 @@ ctk_page_setup_init (GtkPageSetup *setup)
 }
 
 static void
-ctk_page_setup_class_init (GtkPageSetupClass *class)
+ctk_page_setup_class_init (CtkPageSetupClass *class)
 {
   GObjectClass *gobject_class = (GObjectClass *)class;
 
@@ -131,13 +131,13 @@ ctk_page_setup_class_init (GtkPageSetupClass *class)
 /**
  * ctk_page_setup_new:
  *
- * Creates a new #GtkPageSetup. 
+ * Creates a new #CtkPageSetup. 
  * 
- * Returns: a new #GtkPageSetup.
+ * Returns: a new #CtkPageSetup.
  *
  * Since: 2.10
  */
-GtkPageSetup *
+CtkPageSetup *
 ctk_page_setup_new (void)
 {
   return g_object_new (CTK_TYPE_PAGE_SETUP, NULL);
@@ -145,18 +145,18 @@ ctk_page_setup_new (void)
 
 /**
  * ctk_page_setup_copy:
- * @other: the #GtkPageSetup to copy
+ * @other: the #CtkPageSetup to copy
  *
- * Copies a #GtkPageSetup.
+ * Copies a #CtkPageSetup.
  *
  * Returns: (transfer full): a copy of @other
  *
  * Since: 2.10
  */
-GtkPageSetup *
-ctk_page_setup_copy (GtkPageSetup *other)
+CtkPageSetup *
+ctk_page_setup_copy (CtkPageSetup *other)
 {
-  GtkPageSetup *copy;
+  CtkPageSetup *copy;
 
   copy = ctk_page_setup_new ();
   copy->orientation = other->orientation;
@@ -172,48 +172,48 @@ ctk_page_setup_copy (GtkPageSetup *other)
 
 /**
  * ctk_page_setup_get_orientation:
- * @setup: a #GtkPageSetup
+ * @setup: a #CtkPageSetup
  * 
- * Gets the page orientation of the #GtkPageSetup.
+ * Gets the page orientation of the #CtkPageSetup.
  * 
  * Returns: the page orientation
  *
  * Since: 2.10
  */
-GtkPageOrientation
-ctk_page_setup_get_orientation (GtkPageSetup *setup)
+CtkPageOrientation
+ctk_page_setup_get_orientation (CtkPageSetup *setup)
 {
   return setup->orientation;
 }
 
 /**
  * ctk_page_setup_set_orientation:
- * @setup: a #GtkPageSetup
- * @orientation: a #GtkPageOrientation value
+ * @setup: a #CtkPageSetup
+ * @orientation: a #CtkPageOrientation value
  * 
- * Sets the page orientation of the #GtkPageSetup.
+ * Sets the page orientation of the #CtkPageSetup.
  *
  * Since: 2.10
  */
 void
-ctk_page_setup_set_orientation (GtkPageSetup       *setup,
-				GtkPageOrientation  orientation)
+ctk_page_setup_set_orientation (CtkPageSetup       *setup,
+				CtkPageOrientation  orientation)
 {
   setup->orientation = orientation;
 }
 
 /**
  * ctk_page_setup_get_paper_size:
- * @setup: a #GtkPageSetup
+ * @setup: a #CtkPageSetup
  * 
- * Gets the paper size of the #GtkPageSetup.
+ * Gets the paper size of the #CtkPageSetup.
  * 
  * Returns: (transfer none): the paper size
  *
  * Since: 2.10
  */
-GtkPaperSize *
-ctk_page_setup_get_paper_size (GtkPageSetup *setup)
+CtkPaperSize *
+ctk_page_setup_get_paper_size (CtkPageSetup *setup)
 {
   g_return_val_if_fail (CTK_IS_PAGE_SETUP (setup), NULL);
 
@@ -222,20 +222,20 @@ ctk_page_setup_get_paper_size (GtkPageSetup *setup)
 
 /**
  * ctk_page_setup_set_paper_size:
- * @setup: a #GtkPageSetup
- * @size: a #GtkPaperSize 
+ * @setup: a #CtkPageSetup
+ * @size: a #CtkPaperSize 
  * 
- * Sets the paper size of the #GtkPageSetup without
+ * Sets the paper size of the #CtkPageSetup without
  * changing the margins. See 
  * ctk_page_setup_set_paper_size_and_default_margins().
  *
  * Since: 2.10
  */
 void
-ctk_page_setup_set_paper_size (GtkPageSetup *setup,
-			       GtkPaperSize *size)
+ctk_page_setup_set_paper_size (CtkPageSetup *setup,
+			       CtkPaperSize *size)
 {
-  GtkPaperSize *old_size;
+  CtkPaperSize *old_size;
 
   g_return_if_fail (CTK_IS_PAGE_SETUP (setup));
   g_return_if_fail (size != NULL);
@@ -250,17 +250,17 @@ ctk_page_setup_set_paper_size (GtkPageSetup *setup,
 
 /**
  * ctk_page_setup_set_paper_size_and_default_margins:
- * @setup: a #GtkPageSetup
- * @size: a #GtkPaperSize 
+ * @setup: a #CtkPageSetup
+ * @size: a #CtkPaperSize 
  * 
- * Sets the paper size of the #GtkPageSetup and modifies
+ * Sets the paper size of the #CtkPageSetup and modifies
  * the margins according to the new paper size.
  *
  * Since: 2.10
  */
 void
-ctk_page_setup_set_paper_size_and_default_margins (GtkPageSetup *setup,
-						   GtkPaperSize *size)
+ctk_page_setup_set_paper_size_and_default_margins (CtkPageSetup *setup,
+						   CtkPaperSize *size)
 {
   ctk_page_setup_set_paper_size (setup, size);
   setup->top_margin = ctk_paper_size_get_default_top_margin (setup->paper_size, CTK_UNIT_MM);
@@ -271,7 +271,7 @@ ctk_page_setup_set_paper_size_and_default_margins (GtkPageSetup *setup,
 
 /**
  * ctk_page_setup_get_top_margin:
- * @setup: a #GtkPageSetup
+ * @setup: a #CtkPageSetup
  * @unit: the unit for the return value
  * 
  * Gets the top margin in units of @unit.
@@ -281,33 +281,33 @@ ctk_page_setup_set_paper_size_and_default_margins (GtkPageSetup *setup,
  * Since: 2.10
  */
 gdouble
-ctk_page_setup_get_top_margin (GtkPageSetup *setup,
-			       GtkUnit       unit)
+ctk_page_setup_get_top_margin (CtkPageSetup *setup,
+			       CtkUnit       unit)
 {
   return _ctk_print_convert_from_mm (setup->top_margin, unit);
 }
 
 /**
  * ctk_page_setup_set_top_margin:
- * @setup: a #GtkPageSetup
+ * @setup: a #CtkPageSetup
  * @margin: the new top margin in units of @unit
  * @unit: the units for @margin
  * 
- * Sets the top margin of the #GtkPageSetup.
+ * Sets the top margin of the #CtkPageSetup.
  *
  * Since: 2.10
  */
 void
-ctk_page_setup_set_top_margin (GtkPageSetup *setup,
+ctk_page_setup_set_top_margin (CtkPageSetup *setup,
 			       gdouble       margin,
-			       GtkUnit       unit)
+			       CtkUnit       unit)
 {
   setup->top_margin = _ctk_print_convert_to_mm (margin, unit);
 }
 
 /**
  * ctk_page_setup_get_bottom_margin:
- * @setup: a #GtkPageSetup
+ * @setup: a #CtkPageSetup
  * @unit: the unit for the return value
  * 
  * Gets the bottom margin in units of @unit.
@@ -317,33 +317,33 @@ ctk_page_setup_set_top_margin (GtkPageSetup *setup,
  * Since: 2.10
  */
 gdouble
-ctk_page_setup_get_bottom_margin (GtkPageSetup *setup,
-				  GtkUnit       unit)
+ctk_page_setup_get_bottom_margin (CtkPageSetup *setup,
+				  CtkUnit       unit)
 {
   return _ctk_print_convert_from_mm (setup->bottom_margin, unit);
 }
 
 /**
  * ctk_page_setup_set_bottom_margin:
- * @setup: a #GtkPageSetup
+ * @setup: a #CtkPageSetup
  * @margin: the new bottom margin in units of @unit
  * @unit: the units for @margin
  * 
- * Sets the bottom margin of the #GtkPageSetup.
+ * Sets the bottom margin of the #CtkPageSetup.
  *
  * Since: 2.10
  */
 void
-ctk_page_setup_set_bottom_margin (GtkPageSetup *setup,
+ctk_page_setup_set_bottom_margin (CtkPageSetup *setup,
 				  gdouble       margin,
-				  GtkUnit       unit)
+				  CtkUnit       unit)
 {
   setup->bottom_margin = _ctk_print_convert_to_mm (margin, unit);
 }
 
 /**
  * ctk_page_setup_get_left_margin:
- * @setup: a #GtkPageSetup
+ * @setup: a #CtkPageSetup
  * @unit: the unit for the return value
  * 
  * Gets the left margin in units of @unit.
@@ -353,33 +353,33 @@ ctk_page_setup_set_bottom_margin (GtkPageSetup *setup,
  * Since: 2.10
  */
 gdouble
-ctk_page_setup_get_left_margin (GtkPageSetup *setup,
-				GtkUnit       unit)
+ctk_page_setup_get_left_margin (CtkPageSetup *setup,
+				CtkUnit       unit)
 {
   return _ctk_print_convert_from_mm (setup->left_margin, unit);
 }
 
 /**
  * ctk_page_setup_set_left_margin:
- * @setup: a #GtkPageSetup
+ * @setup: a #CtkPageSetup
  * @margin: the new left margin in units of @unit
  * @unit: the units for @margin
  * 
- * Sets the left margin of the #GtkPageSetup.
+ * Sets the left margin of the #CtkPageSetup.
  *
  * Since: 2.10
  */
 void
-ctk_page_setup_set_left_margin (GtkPageSetup *setup,
+ctk_page_setup_set_left_margin (CtkPageSetup *setup,
 				gdouble       margin,
-				GtkUnit       unit)
+				CtkUnit       unit)
 {
   setup->left_margin = _ctk_print_convert_to_mm (margin, unit);
 }
 
 /**
  * ctk_page_setup_get_right_margin:
- * @setup: a #GtkPageSetup
+ * @setup: a #CtkPageSetup
  * @unit: the unit for the return value
  * 
  * Gets the right margin in units of @unit.
@@ -389,33 +389,33 @@ ctk_page_setup_set_left_margin (GtkPageSetup *setup,
  * Since: 2.10
  */
 gdouble
-ctk_page_setup_get_right_margin (GtkPageSetup *setup,
-				 GtkUnit       unit)
+ctk_page_setup_get_right_margin (CtkPageSetup *setup,
+				 CtkUnit       unit)
 {
   return _ctk_print_convert_from_mm (setup->right_margin, unit);
 }
 
 /**
  * ctk_page_setup_set_right_margin:
- * @setup: a #GtkPageSetup
+ * @setup: a #CtkPageSetup
  * @margin: the new right margin in units of @unit
  * @unit: the units for @margin
  * 
- * Sets the right margin of the #GtkPageSetup.
+ * Sets the right margin of the #CtkPageSetup.
  *
  * Since: 2.10
  */
 void
-ctk_page_setup_set_right_margin (GtkPageSetup *setup,
+ctk_page_setup_set_right_margin (CtkPageSetup *setup,
 				 gdouble       margin,
-				 GtkUnit       unit)
+				 CtkUnit       unit)
 {
   setup->right_margin = _ctk_print_convert_to_mm (margin, unit);
 }
 
 /**
  * ctk_page_setup_get_paper_width:
- * @setup: a #GtkPageSetup
+ * @setup: a #CtkPageSetup
  * @unit: the unit for the return value
  * 
  * Returns the paper width in units of @unit.
@@ -429,8 +429,8 @@ ctk_page_setup_set_right_margin (GtkPageSetup *setup,
  * Since: 2.10
  */
 gdouble
-ctk_page_setup_get_paper_width (GtkPageSetup *setup,
-				GtkUnit       unit)
+ctk_page_setup_get_paper_width (CtkPageSetup *setup,
+				CtkUnit       unit)
 {
   if (setup->orientation == CTK_PAGE_ORIENTATION_PORTRAIT ||
       setup->orientation == CTK_PAGE_ORIENTATION_REVERSE_PORTRAIT)
@@ -441,7 +441,7 @@ ctk_page_setup_get_paper_width (GtkPageSetup *setup,
 
 /**
  * ctk_page_setup_get_paper_height:
- * @setup: a #GtkPageSetup
+ * @setup: a #CtkPageSetup
  * @unit: the unit for the return value
  * 
  * Returns the paper height in units of @unit.
@@ -455,8 +455,8 @@ ctk_page_setup_get_paper_width (GtkPageSetup *setup,
  * Since: 2.10
  */
 gdouble
-ctk_page_setup_get_paper_height (GtkPageSetup *setup,
-				 GtkUnit       unit)
+ctk_page_setup_get_paper_height (CtkPageSetup *setup,
+				 CtkUnit       unit)
 {
   if (setup->orientation == CTK_PAGE_ORIENTATION_PORTRAIT ||
       setup->orientation == CTK_PAGE_ORIENTATION_REVERSE_PORTRAIT)
@@ -467,7 +467,7 @@ ctk_page_setup_get_paper_height (GtkPageSetup *setup,
 
 /**
  * ctk_page_setup_get_page_width:
- * @setup: a #GtkPageSetup
+ * @setup: a #CtkPageSetup
  * @unit: the unit for the return value
  * 
  * Returns the page width in units of @unit.
@@ -481,8 +481,8 @@ ctk_page_setup_get_paper_height (GtkPageSetup *setup,
  * Since: 2.10
  */
 gdouble
-ctk_page_setup_get_page_width (GtkPageSetup *setup,
-			       GtkUnit       unit)
+ctk_page_setup_get_page_width (CtkPageSetup *setup,
+			       CtkUnit       unit)
 {
   gdouble width;
 
@@ -498,7 +498,7 @@ ctk_page_setup_get_page_width (GtkPageSetup *setup,
 
 /**
  * ctk_page_setup_get_page_height:
- * @setup: a #GtkPageSetup
+ * @setup: a #CtkPageSetup
  * @unit: the unit for the return value
  * 
  * Returns the page height in units of @unit.
@@ -512,8 +512,8 @@ ctk_page_setup_get_page_width (GtkPageSetup *setup,
  * Since: 2.10
  */
 gdouble
-ctk_page_setup_get_page_height (GtkPageSetup *setup,
-				GtkUnit       unit)
+ctk_page_setup_get_page_height (CtkPageSetup *setup,
+				CtkUnit       unit)
 {
   gdouble height;
 
@@ -529,7 +529,7 @@ ctk_page_setup_get_page_height (GtkPageSetup *setup,
 
 /**
  * ctk_page_setup_load_file:
- * @setup: a #GtkPageSetup
+ * @setup: a #CtkPageSetup
  * @file_name: (type filename): the filename to read the page setup from
  * @error: (allow-none): return location for an error, or %NULL
  *
@@ -541,7 +541,7 @@ ctk_page_setup_get_page_height (GtkPageSetup *setup,
  * Since: 2.14
  */
 gboolean
-ctk_page_setup_load_file (GtkPageSetup *setup,
+ctk_page_setup_load_file (CtkPageSetup *setup,
                           const gchar  *file_name,
 			  GError      **error)
 {
@@ -568,18 +568,18 @@ ctk_page_setup_load_file (GtkPageSetup *setup,
  * @error: (allow-none): return location for an error, or %NULL
  * 
  * Reads the page setup from the file @file_name. Returns a 
- * new #GtkPageSetup object with the restored page setup, 
+ * new #CtkPageSetup object with the restored page setup, 
  * or %NULL if an error occurred. See ctk_page_setup_to_file().
  *
- * Returns: the restored #GtkPageSetup
+ * Returns: the restored #CtkPageSetup
  * 
  * Since: 2.12
  */
-GtkPageSetup *
+CtkPageSetup *
 ctk_page_setup_new_from_file (const gchar  *file_name,
 			      GError      **error)
 {
-  GtkPageSetup *setup = ctk_page_setup_new ();
+  CtkPageSetup *setup = ctk_page_setup_new ();
 
   if (!ctk_page_setup_load_file (setup, file_name, error))
     {
@@ -613,7 +613,7 @@ string_to_enum (GType type,
 
 /**
  * ctk_page_setup_load_key_file:
- * @setup: a #GtkPageSetup
+ * @setup: a #CtkPageSetup
  * @key_file: the #GKeyFile to retrieve the page_setup from
  * @group_name: (allow-none): the name of the group in the key_file to read, or %NULL
  *              to use the default name “Page Setup”
@@ -627,12 +627,12 @@ string_to_enum (GType type,
  * Since: 2.14
  */
 gboolean
-ctk_page_setup_load_key_file (GtkPageSetup *setup,
+ctk_page_setup_load_key_file (CtkPageSetup *setup,
                               GKeyFile     *key_file,
                               const gchar  *group_name,
                               GError      **error)
 {
-  GtkPaperSize *paper_size;
+  CtkPaperSize *paper_size;
   gdouble top, bottom, left, right;
   char *orientation = NULL, *freeme = NULL;
   gboolean retval = FALSE;
@@ -708,19 +708,19 @@ out:
  * @error: (allow-none): return location for an error, or %NULL
  *
  * Reads the page setup from the group @group_name in the key file
- * @key_file. Returns a new #GtkPageSetup object with the restored
+ * @key_file. Returns a new #CtkPageSetup object with the restored
  * page setup, or %NULL if an error occurred.
  *
- * Returns: the restored #GtkPageSetup
+ * Returns: the restored #CtkPageSetup
  *
  * Since: 2.12
  */
-GtkPageSetup *
+CtkPageSetup *
 ctk_page_setup_new_from_key_file (GKeyFile     *key_file,
 				  const gchar  *group_name,
 				  GError      **error)
 {
-  GtkPageSetup *setup = ctk_page_setup_new ();
+  CtkPageSetup *setup = ctk_page_setup_new ();
 
   if (!ctk_page_setup_load_key_file (setup, key_file, group_name, error))
     {
@@ -733,7 +733,7 @@ ctk_page_setup_new_from_key_file (GKeyFile     *key_file,
 
 /**
  * ctk_page_setup_to_file:
- * @setup: a #GtkPageSetup
+ * @setup: a #CtkPageSetup
  * @file_name: (type filename): the file to save to
  * @error: (allow-none): return location for errors, or %NULL
  * 
@@ -744,7 +744,7 @@ ctk_page_setup_new_from_key_file (GKeyFile     *key_file,
  * Since: 2.12
  */
 gboolean
-ctk_page_setup_to_file (GtkPageSetup  *setup,
+ctk_page_setup_to_file (CtkPageSetup  *setup,
 		        const char    *file_name,
 			GError       **error)
 {
@@ -794,7 +794,7 @@ enum_to_string (GType type,
 
 /**
  * ctk_page_setup_to_key_file:
- * @setup: a #GtkPageSetup
+ * @setup: a #CtkPageSetup
  * @key_file: the #GKeyFile to save the page setup to
  * @group_name: (nullable): the group to add the settings to in @key_file,
  *      or %NULL to use the default name “Page Setup”
@@ -804,11 +804,11 @@ enum_to_string (GType type,
  * Since: 2.12
  */
 void
-ctk_page_setup_to_key_file (GtkPageSetup *setup,
+ctk_page_setup_to_key_file (CtkPageSetup *setup,
 			    GKeyFile     *key_file,
 			    const gchar  *group_name)
 {
-  GtkPaperSize *paper_size;
+  CtkPaperSize *paper_size;
   char *orientation;
 
   g_return_if_fail (CTK_IS_PAGE_SETUP (setup));
@@ -840,7 +840,7 @@ ctk_page_setup_to_key_file (GtkPageSetup *setup,
 
 /**
  * ctk_page_setup_to_gvariant:
- * @setup: a #GtkPageSetup
+ * @setup: a #CtkPageSetup
  *
  * Serialize page setup to an a{sv} variant.
  *
@@ -849,9 +849,9 @@ ctk_page_setup_to_key_file (GtkPageSetup *setup,
  * Since: 3.22
  */
 GVariant *
-ctk_page_setup_to_gvariant (GtkPageSetup *setup)
+ctk_page_setup_to_gvariant (CtkPageSetup *setup)
 {
-  GtkPaperSize *paper_size;
+  CtkPaperSize *paper_size;
   GVariant *variant;
   int i;
   GVariantBuilder builder;
@@ -885,17 +885,17 @@ ctk_page_setup_to_gvariant (GtkPageSetup *setup)
  * Desrialize a page setup from an a{sv} variant in
  * the format produced by ctk_page_setup_to_gvariant().
  *
- * Returns: (transfer full): a new #GtkPageSetup object
+ * Returns: (transfer full): a new #CtkPageSetup object
  *
  * Since: 3.22
  */
-GtkPageSetup *
+CtkPageSetup *
 ctk_page_setup_new_from_gvariant (GVariant *variant)
 {
-  GtkPageSetup *setup;
+  CtkPageSetup *setup;
   const char *orientation;
   gdouble margin;
-  GtkPaperSize *paper_size;
+  CtkPaperSize *paper_size;
 
   g_return_val_if_fail (g_variant_is_of_type (variant, G_VARIANT_TYPE_VARDICT), NULL);
 

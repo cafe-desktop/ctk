@@ -2,26 +2,26 @@
 
 
 static void
-horizontal_policy_changed (GtkComboBox *combo_box,
-			   GtkViewport *viewport)
+horizontal_policy_changed (CtkComboBox *combo_box,
+			   CtkViewport *viewport)
 {
-  GtkScrollablePolicy policy = ctk_combo_box_get_active (combo_box);
+  CtkScrollablePolicy policy = ctk_combo_box_get_active (combo_box);
 
   ctk_scrollable_set_hscroll_policy (CTK_SCROLLABLE (viewport), policy);
 }
 
 static void
-vertical_policy_changed (GtkComboBox *combo_box,
-			 GtkViewport *viewport)
+vertical_policy_changed (CtkComboBox *combo_box,
+			 CtkViewport *viewport)
 {
-  GtkScrollablePolicy policy = ctk_combo_box_get_active (combo_box);
+  CtkScrollablePolicy policy = ctk_combo_box_get_active (combo_box);
 
   ctk_scrollable_set_vscroll_policy (CTK_SCROLLABLE (viewport), policy);
 }
 
 static void
-label_flip_changed (GtkComboBox *combo_box,
-		    GtkLabel    *label)
+label_flip_changed (CtkComboBox *combo_box,
+		    CtkLabel    *label)
 {
   gint active = ctk_combo_box_get_active (combo_box);
 
@@ -32,10 +32,10 @@ label_flip_changed (GtkComboBox *combo_box,
 }
 
 static void
-content_width_changed (GtkSpinButton *spin_button,
+content_width_changed (CtkSpinButton *spin_button,
                        gpointer       data)
 {
-  GtkScrolledWindow *swindow = data;
+  CtkScrolledWindow *swindow = data;
   gdouble value;
 
   value = ctk_spin_button_get_value (spin_button);
@@ -43,10 +43,10 @@ content_width_changed (GtkSpinButton *spin_button,
 }
 
 static void
-content_height_changed (GtkSpinButton *spin_button,
+content_height_changed (CtkSpinButton *spin_button,
                         gpointer       data)
 {
-  GtkScrolledWindow *swindow = data;
+  CtkScrolledWindow *swindow = data;
   gdouble value;
 
   value = ctk_spin_button_get_value (spin_button);
@@ -54,20 +54,20 @@ content_height_changed (GtkSpinButton *spin_button,
 }
 
 static void
-kinetic_scrolling_changed (GtkToggleButton *toggle_button,
+kinetic_scrolling_changed (CtkToggleButton *toggle_button,
                            gpointer         data)
 {
-  GtkScrolledWindow *swindow = data;
+  CtkScrolledWindow *swindow = data;
   gboolean enabled = ctk_toggle_button_get_active (toggle_button);
 
   ctk_scrolled_window_set_kinetic_scrolling (swindow, enabled);
 }
 
 static void
-add_row (GtkButton  *button,
-         GtkListBox *listbox)
+add_row (CtkButton  *button,
+         CtkListBox *listbox)
 {
-  GtkWidget *row;
+  CtkWidget *row;
 
   row = g_object_new (CTK_TYPE_LIST_BOX_ROW, "border-width", 12, NULL);
   ctk_container_add (CTK_CONTAINER (row), ctk_label_new ("test"));
@@ -77,8 +77,8 @@ add_row (GtkButton  *button,
 }
 
 static void
-remove_row (GtkButton  *button,
-            GtkListBox *listbox)
+remove_row (CtkButton  *button,
+            CtkListBox *listbox)
 {
   GList *children, *last;
 
@@ -94,8 +94,8 @@ remove_row (GtkButton  *button,
 static void
 scrollable_policy (void)
 {
-  GtkWidget *window, *swindow, *hbox, *vbox, *frame, *cntl, *listbox;
-  GtkWidget *viewport, *label, *expander, *widget, *popover;
+  CtkWidget *window, *swindow, *hbox, *vbox, *frame, *cntl, *listbox;
+  CtkWidget *viewport, *label, *expander, *widget, *popover;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   hbox   = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 2);

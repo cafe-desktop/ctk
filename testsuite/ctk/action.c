@@ -1,4 +1,4 @@
-/* GtkAction tests.
+/* CtkAction tests.
  *
  * Authors: Jan Arne Petersen <jpetersen@openismus.com>
  *
@@ -23,7 +23,7 @@
 
 typedef struct
 {
-  GtkAction *action;
+  CtkAction *action;
 } ActionTest;
 
 static void
@@ -53,7 +53,7 @@ static void
 menu_item_label_notify_count (ActionTest    *fixture,
                               gconstpointer  test_data)
 {
-  GtkWidget *item = ctk_menu_item_new ();
+  CtkWidget *item = ctk_menu_item_new ();
   unsigned int emmisions = 0;
 
   g_object_ref_sink (item);
@@ -96,9 +96,9 @@ g_strv_equal (const gchar * const *strv1,
 static void
 g_test_action_muxer (void)
 {
-  GtkWidget *window;
-  GtkWidget *box;
-  GtkWidget *button;
+  CtkWidget *window;
+  CtkWidget *box;
+  CtkWidget *button;
   const char **prefixes;
   const char * const expected[] = { "win", NULL };
   const char * const expected1[] = { "group1", "win", NULL };
@@ -217,7 +217,7 @@ g_test_action_muxer (void)
 static void
 test_reinsert (void)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   GActionGroup *group;
 
   widget = ctk_label_new ("");

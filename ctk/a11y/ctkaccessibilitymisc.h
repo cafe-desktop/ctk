@@ -24,15 +24,15 @@ G_BEGIN_DECLS
 
 #define CTK_TYPE_MISC_IMPL (_ctk_misc_impl_get_type ())
 
-typedef struct _GtkMiscImpl      GtkMiscImpl;
-typedef struct _GtkMiscImplClass GtkMiscImplClass;
+typedef struct _CtkMiscImpl      CtkMiscImpl;
+typedef struct _CtkMiscImplClass CtkMiscImplClass;
 
-struct _GtkMiscImpl
+struct _CtkMiscImpl
 {
   AtkMisc parent;
 };
 
-struct _GtkMiscImplClass
+struct _CtkMiscImplClass
 {
   AtkMiscClass parent_class;
 };

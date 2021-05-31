@@ -1,8 +1,8 @@
 <!-- test invalid id in container markup -->
 <interface>
-  <object class="GtkBox">
+  <object class="CtkBox">
     <child>
-      <object class="GtkLabel" id="widget1"/>
+      <object class="CtkLabel" id="widget1"/>
       <packing>
         <property name="expand" translatable="yes" comments="foo" context="bar">True</property>
       </packing>

@@ -29,20 +29,20 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_GESTURE_LONG_PRESS         (ctk_gesture_long_press_get_type ())
-#define CTK_GESTURE_LONG_PRESS(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_GESTURE_LONG_PRESS, GtkGestureLongPress))
-#define CTK_GESTURE_LONG_PRESS_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_GESTURE_LONG_PRESS, GtkGestureLongPressClass))
+#define CTK_GESTURE_LONG_PRESS(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_GESTURE_LONG_PRESS, CtkGestureLongPress))
+#define CTK_GESTURE_LONG_PRESS_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_GESTURE_LONG_PRESS, CtkGestureLongPressClass))
 #define CTK_IS_GESTURE_LONG_PRESS(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_GESTURE_LONG_PRESS))
 #define CTK_IS_GESTURE_LONG_PRESS_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), CTK_TYPE_GESTURE_LONG_PRESS))
-#define CTK_GESTURE_LONG_PRESS_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_GESTURE_LONG_PRESS, GtkGestureLongPressClass))
+#define CTK_GESTURE_LONG_PRESS_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_GESTURE_LONG_PRESS, CtkGestureLongPressClass))
 
-typedef struct _GtkGestureLongPress GtkGestureLongPress;
-typedef struct _GtkGestureLongPressClass GtkGestureLongPressClass;
+typedef struct _CtkGestureLongPress CtkGestureLongPress;
+typedef struct _CtkGestureLongPressClass CtkGestureLongPressClass;
 
 GDK_AVAILABLE_IN_3_14
 GType        ctk_gesture_long_press_get_type   (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_14
-GtkGesture * ctk_gesture_long_press_new        (GtkWidget *widget);
+CtkGesture * ctk_gesture_long_press_new        (CtkWidget *widget);
 
 G_END_DECLS
 

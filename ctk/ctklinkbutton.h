@@ -33,44 +33,44 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_LINK_BUTTON		(ctk_link_button_get_type ())
-#define CTK_LINK_BUTTON(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_LINK_BUTTON, GtkLinkButton))
+#define CTK_LINK_BUTTON(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_LINK_BUTTON, CtkLinkButton))
 #define CTK_IS_LINK_BUTTON(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_LINK_BUTTON))
-#define CTK_LINK_BUTTON_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_LINK_BUTTON, GtkLinkButtonClass))
+#define CTK_LINK_BUTTON_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_LINK_BUTTON, CtkLinkButtonClass))
 #define CTK_IS_LINK_BUTTON_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_LINK_BUTTON))
-#define CTK_LINK_BUTTON_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_LINK_BUTTON, GtkLinkButtonClass))
+#define CTK_LINK_BUTTON_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_LINK_BUTTON, CtkLinkButtonClass))
 
-typedef struct _GtkLinkButton		GtkLinkButton;
-typedef struct _GtkLinkButtonClass	GtkLinkButtonClass;
-typedef struct _GtkLinkButtonPrivate	GtkLinkButtonPrivate;
+typedef struct _CtkLinkButton		CtkLinkButton;
+typedef struct _CtkLinkButtonClass	CtkLinkButtonClass;
+typedef struct _CtkLinkButtonPrivate	CtkLinkButtonPrivate;
 
 /**
- * GtkLinkButton:
+ * CtkLinkButton:
  *
- * The #GtkLinkButton-struct contains only
+ * The #CtkLinkButton-struct contains only
  * private data and should be accessed using the provided API.
  */
-struct _GtkLinkButton
+struct _CtkLinkButton
 {
   /*< private >*/
-  GtkButton parent_instance;
+  CtkButton parent_instance;
 
-  GtkLinkButtonPrivate *priv;
+  CtkLinkButtonPrivate *priv;
 };
 
 /**
- * GtkLinkButtonClass:
- * @activate_link: class handler for the #GtkLinkButton::activate-link signal
+ * CtkLinkButtonClass:
+ * @activate_link: class handler for the #CtkLinkButton::activate-link signal
  *
- * The #GtkLinkButtonClass contains only
+ * The #CtkLinkButtonClass contains only
  * private data.
  */
-struct _GtkLinkButtonClass
+struct _CtkLinkButtonClass
 {
   /*< private >*/
-  GtkButtonClass parent_class;
+  CtkButtonClass parent_class;
 
   /*< public >*/
-  gboolean (* activate_link) (GtkLinkButton *button);
+  gboolean (* activate_link) (CtkLinkButton *button);
 
   /*< private >*/
   /* Padding for future expansion */
@@ -84,21 +84,21 @@ GDK_AVAILABLE_IN_ALL
 GType                 ctk_link_button_get_type          (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget *           ctk_link_button_new               (const gchar   *uri);
+CtkWidget *           ctk_link_button_new               (const gchar   *uri);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *           ctk_link_button_new_with_label    (const gchar   *uri,
+CtkWidget *           ctk_link_button_new_with_label    (const gchar   *uri,
 						         const gchar   *label);
 
 GDK_AVAILABLE_IN_ALL
-const gchar *         ctk_link_button_get_uri           (GtkLinkButton *link_button);
+const gchar *         ctk_link_button_get_uri           (CtkLinkButton *link_button);
 GDK_AVAILABLE_IN_ALL
-void                  ctk_link_button_set_uri           (GtkLinkButton *link_button,
+void                  ctk_link_button_set_uri           (CtkLinkButton *link_button,
 						         const gchar   *uri);
 
 GDK_AVAILABLE_IN_ALL
-gboolean              ctk_link_button_get_visited       (GtkLinkButton *link_button);
+gboolean              ctk_link_button_get_visited       (CtkLinkButton *link_button);
 GDK_AVAILABLE_IN_ALL
-void                  ctk_link_button_set_visited       (GtkLinkButton *link_button,
+void                  ctk_link_button_set_visited       (CtkLinkButton *link_button,
                                                          gboolean       visited);
 
 

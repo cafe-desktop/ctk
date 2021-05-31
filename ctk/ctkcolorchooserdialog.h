@@ -27,27 +27,27 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_COLOR_CHOOSER_DIALOG              (ctk_color_chooser_dialog_get_type ())
-#define CTK_COLOR_CHOOSER_DIALOG(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_COLOR_CHOOSER_DIALOG, GtkColorChooserDialog))
-#define CTK_COLOR_CHOOSER_DIALOG_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_COLOR_CHOOSER_DIALOG, GtkColorChooserDialogClass))
+#define CTK_COLOR_CHOOSER_DIALOG(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_COLOR_CHOOSER_DIALOG, CtkColorChooserDialog))
+#define CTK_COLOR_CHOOSER_DIALOG_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_COLOR_CHOOSER_DIALOG, CtkColorChooserDialogClass))
 #define CTK_IS_COLOR_CHOOSER_DIALOG(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_COLOR_CHOOSER_DIALOG))
 #define CTK_IS_COLOR_CHOOSER_DIALOG_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_COLOR_CHOOSER_DIALOG))
-#define CTK_COLOR_CHOOSER_DIALOG_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_COLOR_CHOOSER_DIALOG, GtkColorChooserDialogClass))
+#define CTK_COLOR_CHOOSER_DIALOG_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_COLOR_CHOOSER_DIALOG, CtkColorChooserDialogClass))
 
-typedef struct _GtkColorChooserDialog        GtkColorChooserDialog;
-typedef struct _GtkColorChooserDialogPrivate GtkColorChooserDialogPrivate;
-typedef struct _GtkColorChooserDialogClass   GtkColorChooserDialogClass;
+typedef struct _CtkColorChooserDialog        CtkColorChooserDialog;
+typedef struct _CtkColorChooserDialogPrivate CtkColorChooserDialogPrivate;
+typedef struct _CtkColorChooserDialogClass   CtkColorChooserDialogClass;
 
-struct _GtkColorChooserDialog
+struct _CtkColorChooserDialog
 {
-  GtkDialog parent_instance;
+  CtkDialog parent_instance;
 
   /*< private >*/
-  GtkColorChooserDialogPrivate *priv;
+  CtkColorChooserDialogPrivate *priv;
 };
 
-struct _GtkColorChooserDialogClass
+struct _CtkColorChooserDialogClass
 {
-  GtkDialogClass parent_class;
+  CtkDialogClass parent_class;
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -60,8 +60,8 @@ GDK_AVAILABLE_IN_3_4
 GType       ctk_color_chooser_dialog_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_4
-GtkWidget * ctk_color_chooser_dialog_new      (const gchar *title,
-                                               GtkWindow   *parent);
+CtkWidget * ctk_color_chooser_dialog_new      (const gchar *title,
+                                               CtkWindow   *parent);
 
 G_END_DECLS
 

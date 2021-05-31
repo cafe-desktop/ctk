@@ -21,7 +21,7 @@
 #include "ctkimcontextxim.h"
 #include <string.h>
 
-static const GtkIMContextInfo xim_ja_info = { 
+static const CtkIMContextInfo xim_ja_info = { 
   "xim",		           /* ID */
   NC_("input method menu", "X Input Method"), /* Human readable name */
   GETTEXT_PACKAGE,		   /* Translation domain */
@@ -29,7 +29,7 @@ static const GtkIMContextInfo xim_ja_info = {
   "ko:ja:th:zh"		           /* Languages for which this module is the default */
 };
 
-static const GtkIMContextInfo *info_list[] = {
+static const CtkIMContextInfo *info_list[] = {
   &xim_ja_info
 };
 
@@ -49,14 +49,14 @@ MODULE_ENTRY (void, exit) (void)
   ctk_im_context_xim_shutdown ();
 }
 
-MODULE_ENTRY (void, list) (const GtkIMContextInfo ***contexts,
+MODULE_ENTRY (void, list) (const CtkIMContextInfo ***contexts,
 			   int                      *n_contexts)
 {
   *contexts = info_list;
   *n_contexts = G_N_ELEMENTS (info_list);
 }
 
-MODULE_ENTRY (GtkIMContext *, create) (const gchar *context_id)
+MODULE_ENTRY (CtkIMContext *, create) (const gchar *context_id)
 {
   if (strcmp (context_id, "xim") == 0)
     return ctk_im_context_xim_new ();

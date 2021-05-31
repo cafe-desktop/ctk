@@ -140,7 +140,7 @@ static char *icon_names[] = {
 static void
 test_icon_existence (gconstpointer icon_name)
 {
-  GtkIconInfo *info;
+  CtkIconInfo *info;
 
   /* Not using generic fallback and builtins here, as we explicitly want to check the
    * icon theme.

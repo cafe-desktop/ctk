@@ -24,11 +24,11 @@
 
 G_BEGIN_DECLS
 
-GtkCssValue *   ctk_css_dimension_value_new         (double                  value,
-                                                     GtkCssUnit              unit);
+CtkCssValue *   ctk_css_dimension_value_new         (double                  value,
+                                                     CtkCssUnit              unit);
 /* This function implemented in ctkcssparser.c */
-GtkCssValue *   ctk_css_dimension_value_parse       (GtkCssParser           *parser,
-                                                     GtkCssNumberParseFlags  flags);
+CtkCssValue *   ctk_css_dimension_value_parse       (CtkCssParser           *parser,
+                                                     CtkCssNumberParseFlags  flags);
 
 G_END_DECLS
 

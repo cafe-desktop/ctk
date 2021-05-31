@@ -21,7 +21,7 @@
 #include "ctkscrolledwindowaccessible.h"
 
 
-G_DEFINE_TYPE (GtkScrolledWindowAccessible, ctk_scrolled_window_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)
+G_DEFINE_TYPE (CtkScrolledWindowAccessible, ctk_scrolled_window_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)
 
 static void
 visibility_changed (GObject    *object,
@@ -35,10 +35,10 @@ visibility_changed (GObject    *object,
       gboolean child_added = FALSE;
       GList *children;
       AtkObject *child;
-      GtkWidget *widget;
-      GtkScrolledWindow *scrolled_window;
-      GtkWidget *hscrollbar, *vscrollbar;
-      GtkAccessible *accessible = CTK_ACCESSIBLE (user_data);
+      CtkWidget *widget;
+      CtkScrolledWindow *scrolled_window;
+      CtkWidget *hscrollbar, *vscrollbar;
+      CtkAccessible *accessible = CTK_ACCESSIBLE (user_data);
 
       widget = ctk_accessible_get_widget (user_data);
       if (widget == NULL)
@@ -86,7 +86,7 @@ static void
 ctk_scrolled_window_accessible_initialize (AtkObject *obj,
                                            gpointer  data)
 {
-  GtkScrolledWindow *window;
+  CtkScrolledWindow *window;
 
   ATK_OBJECT_CLASS (ctk_scrolled_window_accessible_parent_class)->initialize (obj, data);
 
@@ -105,8 +105,8 @@ ctk_scrolled_window_accessible_initialize (AtkObject *obj,
 static gint
 ctk_scrolled_window_accessible_get_n_children (AtkObject *object)
 {
-  GtkWidget *widget;
-  GtkScrolledWindow *scrolled_window;
+  CtkWidget *widget;
+  CtkScrolledWindow *scrolled_window;
   GList *children;
   gint n_children;
 
@@ -132,9 +132,9 @@ static AtkObject *
 ctk_scrolled_window_accessible_ref_child (AtkObject *obj,
                                           gint       child)
 {
-  GtkWidget *widget;
-  GtkScrolledWindow *scrolled_window;
-  GtkWidget *hscrollbar, *vscrollbar;
+  CtkWidget *widget;
+  CtkScrolledWindow *scrolled_window;
+  CtkWidget *hscrollbar, *vscrollbar;
   GList *children, *tmp_list;
   gint n_children;
   AtkObject  *accessible = NULL;
@@ -178,7 +178,7 @@ ctk_scrolled_window_accessible_ref_child (AtkObject *obj,
 }
 
 static void
-ctk_scrolled_window_accessible_class_init (GtkScrolledWindowAccessibleClass *klass)
+ctk_scrolled_window_accessible_class_init (CtkScrolledWindowAccessibleClass *klass)
 {
   AtkObjectClass  *class = ATK_OBJECT_CLASS (klass);
 
@@ -188,6 +188,6 @@ ctk_scrolled_window_accessible_class_init (GtkScrolledWindowAccessibleClass *kla
 }
 
 static void
-ctk_scrolled_window_accessible_init (GtkScrolledWindowAccessible *window)
+ctk_scrolled_window_accessible_init (CtkScrolledWindowAccessible *window)
 {
 }

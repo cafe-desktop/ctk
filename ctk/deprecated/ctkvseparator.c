@@ -33,25 +33,25 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 /**
  * SECTION:ctkvseparator
  * @Short_description: A vertical separator
- * @Title: GtkVSeparator
- * @See_also: #GtkHSeparator
+ * @Title: CtkVSeparator
+ * @See_also: #CtkHSeparator
  *
- * The #GtkVSeparator widget is a vertical separator, used to group the
+ * The #CtkVSeparator widget is a vertical separator, used to group the
  * widgets within a window. It displays a vertical line with a shadow to
  * make it appear sunken into the interface.
  *
- * GtkVSeparator has been deprecated, use #GtkSeparator instead.
+ * CtkVSeparator has been deprecated, use #CtkSeparator instead.
  */
 
-G_DEFINE_TYPE (GtkVSeparator, ctk_vseparator, CTK_TYPE_SEPARATOR)
+G_DEFINE_TYPE (CtkVSeparator, ctk_vseparator, CTK_TYPE_SEPARATOR)
 
 static void
-ctk_vseparator_class_init (GtkVSeparatorClass *klass)
+ctk_vseparator_class_init (CtkVSeparatorClass *klass)
 {
 }
 
 static void
-ctk_vseparator_init (GtkVSeparator *vseparator)
+ctk_vseparator_init (CtkVSeparator *vseparator)
 {
   ctk_orientable_set_orientation (CTK_ORIENTABLE (vseparator),
                                   CTK_ORIENTATION_VERTICAL);
@@ -60,13 +60,13 @@ ctk_vseparator_init (GtkVSeparator *vseparator)
 /**
  * ctk_vseparator_new:
  *
- * Creates a new #GtkVSeparator.
+ * Creates a new #CtkVSeparator.
  *
- * Returns: a new #GtkVSeparator.
+ * Returns: a new #CtkVSeparator.
  *
  * Deprecated: 3.2: Use ctk_separator_new() with %CTK_ORIENTATION_VERTICAL instead
  */
-GtkWidget *
+CtkWidget *
 ctk_vseparator_new (void)
 {
   return g_object_new (CTK_TYPE_VSEPARATOR, NULL);

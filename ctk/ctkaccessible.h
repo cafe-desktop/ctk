@@ -28,32 +28,32 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_ACCESSIBLE                  (ctk_accessible_get_type ())
-#define CTK_ACCESSIBLE(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ACCESSIBLE, GtkAccessible))
-#define CTK_ACCESSIBLE_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ACCESSIBLE, GtkAccessibleClass))
+#define CTK_ACCESSIBLE(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ACCESSIBLE, CtkAccessible))
+#define CTK_ACCESSIBLE_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ACCESSIBLE, CtkAccessibleClass))
 #define CTK_IS_ACCESSIBLE(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_ACCESSIBLE))
 #define CTK_IS_ACCESSIBLE_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_ACCESSIBLE))
-#define CTK_ACCESSIBLE_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ACCESSIBLE, GtkAccessibleClass))
+#define CTK_ACCESSIBLE_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ACCESSIBLE, CtkAccessibleClass))
 
-typedef struct _GtkAccessible        GtkAccessible;
-typedef struct _GtkAccessiblePrivate GtkAccessiblePrivate;
-typedef struct _GtkAccessibleClass   GtkAccessibleClass;
+typedef struct _CtkAccessible        CtkAccessible;
+typedef struct _CtkAccessiblePrivate CtkAccessiblePrivate;
+typedef struct _CtkAccessibleClass   CtkAccessibleClass;
 
-struct _GtkAccessible
+struct _CtkAccessible
 {
   AtkObject parent;
 
   /*< private >*/
-  GtkAccessiblePrivate *priv;
+  CtkAccessiblePrivate *priv;
 };
 
-struct _GtkAccessibleClass
+struct _CtkAccessibleClass
 {
   AtkObjectClass parent_class;
 
-  void (*connect_widget_destroyed) (GtkAccessible *accessible);
+  void (*connect_widget_destroyed) (CtkAccessible *accessible);
 
-  void (*widget_set)               (GtkAccessible *accessible);
-  void (*widget_unset)             (GtkAccessible *accessible);
+  void (*widget_set)               (CtkAccessible *accessible);
+  void (*widget_unset)             (CtkAccessible *accessible);
   /* Padding for future expansion */
   void (*_ctk_reserved3) (void);
   void (*_ctk_reserved4) (void);
@@ -63,13 +63,13 @@ GDK_AVAILABLE_IN_ALL
 GType      ctk_accessible_get_type                 (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-void       ctk_accessible_set_widget               (GtkAccessible *accessible,
-                                                    GtkWidget     *widget);
+void       ctk_accessible_set_widget               (CtkAccessible *accessible,
+                                                    CtkWidget     *widget);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *ctk_accessible_get_widget               (GtkAccessible *accessible);
+CtkWidget *ctk_accessible_get_widget               (CtkAccessible *accessible);
 
 GDK_DEPRECATED_IN_3_4_FOR(ctk_accessible_set_widget)
-void       ctk_accessible_connect_widget_destroyed (GtkAccessible *accessible);
+void       ctk_accessible_connect_widget_destroyed (CtkAccessible *accessible);
 
 G_END_DECLS
 

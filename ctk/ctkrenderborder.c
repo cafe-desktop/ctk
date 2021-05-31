@@ -41,19 +41,19 @@
  */
 #include "fallback-c89.c"
 
-typedef struct _GtkBorderImage GtkBorderImage;
+typedef struct _CtkBorderImage CtkBorderImage;
 
-struct _GtkBorderImage {
-  GtkCssImage *source;
+struct _CtkBorderImage {
+  CtkCssImage *source;
 
-  GtkCssValue *slice;
-  GtkCssValue *width;
-  GtkCssValue *repeat;
+  CtkCssValue *slice;
+  CtkCssValue *width;
+  CtkCssValue *repeat;
 };
 
 static gboolean
-ctk_border_image_init (GtkBorderImage *image,
-                       GtkCssStyle    *style)
+ctk_border_image_init (CtkBorderImage *image,
+                       CtkCssStyle    *style)
 {
   image->source = _ctk_css_image_value_get_image (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_IMAGE_SOURCE));
   if (image->source == NULL)
@@ -66,20 +66,20 @@ ctk_border_image_init (GtkBorderImage *image,
   return TRUE;
 }
 
-typedef struct _GtkBorderImageSliceSize GtkBorderImageSliceSize;
-struct _GtkBorderImageSliceSize {
+typedef struct _CtkBorderImageSliceSize CtkBorderImageSliceSize;
+struct _CtkBorderImageSliceSize {
   double offset;
   double size;
 };
 
 static void
-ctk_border_image_compute_border_size (GtkBorderImageSliceSize  sizes[3],
+ctk_border_image_compute_border_size (CtkBorderImageSliceSize  sizes[3],
                                       double                   offset,
                                       double                   area_size,
                                       double                   start_border_width,
                                       double                   end_border_width,
-                                      const GtkCssValue       *start_border,
-                                      const GtkCssValue       *end_border)
+                                      const CtkCssValue       *start_border,
+                                      const CtkCssValue       *end_border)
 {
   double start, end;
 
@@ -116,8 +116,8 @@ ctk_border_image_render_slice (cairo_t           *cr,
                                double             y,
                                double             width,
                                double             height,
-                               GtkCssRepeatStyle  hrepeat,
-                               GtkCssRepeatStyle  vrepeat)
+                               CtkCssRepeatStyle  hrepeat,
+                               CtkCssRepeatStyle  vrepeat)
 {
   double hscale, vscale;
   double xstep, ystep;
@@ -232,7 +232,7 @@ ctk_border_image_render_slice (cairo_t           *cr,
 }
 
 static void
-ctk_border_image_compute_slice_size (GtkBorderImageSliceSize sizes[3],
+ctk_border_image_compute_slice_size (CtkBorderImageSliceSize sizes[3],
                                      int                     surface_size,
                                      int                     start_size,
                                      int                     end_size)
@@ -248,7 +248,7 @@ ctk_border_image_compute_slice_size (GtkBorderImageSliceSize sizes[3],
 }
 
 static void
-ctk_border_image_render (GtkBorderImage   *image,
+ctk_border_image_render (CtkBorderImage   *image,
                          const double      border_width[4],
                          cairo_t          *cr,
                          gdouble           x,
@@ -257,8 +257,8 @@ ctk_border_image_render (GtkBorderImage   *image,
                          gdouble           height)
 {
   cairo_surface_t *surface, *slice;
-  GtkBorderImageSliceSize vertical_slice[3], horizontal_slice[3];
-  GtkBorderImageSliceSize vertical_border[3], horizontal_border[3];
+  CtkBorderImageSliceSize vertical_slice[3], horizontal_slice[3];
+  CtkBorderImageSliceSize vertical_border[3], horizontal_border[3];
   double source_width, source_height;
   int h, v;
 
@@ -337,7 +337,7 @@ ctk_border_image_render (GtkBorderImage   *image,
 
 static void
 hide_border_sides (double         border[4],
-                   GtkBorderStyle border_style[4],
+                   CtkBorderStyle border_style[4],
                    guint          hidden_side)
 {
   guint i;
@@ -351,12 +351,12 @@ hide_border_sides (double         border[4],
 
 static void
 render_frame_fill (cairo_t       *cr,
-                   GtkRoundedBox *border_box,
+                   CtkRoundedBox *border_box,
                    const double   border_width[4],
                    GdkRGBA        colors[4],
                    guint          hidden_side)
 {
-  GtkRoundedBox padding_box;
+  CtkRoundedBox padding_box;
   guint i, j;
 
   padding_box = *border_box;
@@ -420,7 +420,7 @@ render_frame_fill (cairo_t       *cr,
 static void
 set_stroke_style (cairo_t        *cr,
                   double          line_width,
-                  GtkBorderStyle  style,
+                  CtkBorderStyle  style,
                   double          length)
 {
   double segments[2];
@@ -466,14 +466,14 @@ set_stroke_style (cairo_t        *cr,
 
 static void
 render_frame_stroke (cairo_t       *cr,
-                     GtkRoundedBox *border_box,
+                     CtkRoundedBox *border_box,
                      const double   border_width[4],
                      GdkRGBA        colors[4],
                      guint          hidden_side,
-                     GtkBorderStyle stroke_style)
+                     CtkBorderStyle stroke_style)
 {
   gboolean different_colors, different_borders;
-  GtkRoundedBox stroke_box;
+  CtkRoundedBox stroke_box;
   guint i;
 
   different_colors = !gdk_rgba_equal (&colors[0], &colors[1]) ||
@@ -508,7 +508,7 @@ render_frame_stroke (cairo_t       *cr,
     }
   else
     {
-      GtkRoundedBox padding_box;
+      CtkRoundedBox padding_box;
 
       padding_box = *border_box;
       _ctk_rounded_box_shrink (&padding_box,
@@ -556,7 +556,7 @@ color_shade (const GdkRGBA *color,
              gdouble        factor,
              GdkRGBA       *color_return)
 {
-  GtkHSLA hsla;
+  CtkHSLA hsla;
 
   _ctk_hsla_init_from_rgba (&hsla, color);
   _ctk_hsla_shade (&hsla, &hsla, factor);
@@ -565,11 +565,11 @@ color_shade (const GdkRGBA *color,
 
 static void
 render_border (cairo_t       *cr,
-               GtkRoundedBox *border_box,
+               CtkRoundedBox *border_box,
                const double   border_width[4],
                guint          hidden_side,
                GdkRGBA        colors[4],
-               GtkBorderStyle border_style[4])
+               CtkBorderStyle border_style[4])
 {
   guint i, j;
 
@@ -621,7 +621,7 @@ render_border (cairo_t       *cr,
           break;
         case CTK_BORDER_STYLE_DOUBLE:
           {
-            GtkRoundedBox other_box;
+            CtkRoundedBox other_box;
             double other_border[4];
             guint dont_draw = hidden_side;
 
@@ -649,7 +649,7 @@ render_border (cairo_t       *cr,
         case CTK_BORDER_STYLE_GROOVE:
         case CTK_BORDER_STYLE_RIDGE:
           {
-            GtkRoundedBox other_box;
+            CtkRoundedBox other_box;
             GdkRGBA other_colors[4];
             guint dont_draw = hidden_side;
             double other_border[4];
@@ -692,7 +692,7 @@ render_border (cairo_t       *cr,
 }
 
 gboolean
-ctk_css_style_render_has_border (GtkCssStyle *style)
+ctk_css_style_render_has_border (CtkCssStyle *style)
 {
   if (_ctk_css_image_value_get_image (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_IMAGE_SOURCE)))
     return TRUE;
@@ -704,16 +704,16 @@ ctk_css_style_render_has_border (GtkCssStyle *style)
 }
 
 void
-ctk_css_style_render_border (GtkCssStyle      *style,
+ctk_css_style_render_border (CtkCssStyle      *style,
                              cairo_t          *cr,
                              gdouble           x,
                              gdouble           y,
                              gdouble           width,
                              gdouble           height,
                              guint             hidden_side,
-                             GtkJunctionSides  junction)
+                             CtkJunctionSides  junction)
 {
-  GtkBorderImage border_image;
+  CtkBorderImage border_image;
   double border_width[4];
 
   border_width[0] = _ctk_css_number_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_TOP_WIDTH), 100);
@@ -727,8 +727,8 @@ ctk_css_style_render_border (GtkCssStyle      *style,
     }
   else
     {
-      GtkBorderStyle border_style[4];
-      GtkRoundedBox border_box;
+      CtkBorderStyle border_style[4];
+      CtkRoundedBox border_box;
       GdkRGBA colors[4];
 
       /* Optimize the most common case of "This widget has no border" */
@@ -758,7 +758,7 @@ ctk_css_style_render_border (GtkCssStyle      *style,
 }
 
 gboolean
-ctk_css_style_render_border_get_clip (GtkCssStyle  *style,
+ctk_css_style_render_border_get_clip (CtkCssStyle  *style,
                                       gdouble       x,
                                       gdouble       y,
                                       gdouble       width,
@@ -777,13 +777,13 @@ ctk_css_style_render_border_get_clip (GtkCssStyle  *style,
 }
 
 gboolean
-ctk_css_style_render_has_outline (GtkCssStyle *style)
+ctk_css_style_render_has_outline (CtkCssStyle *style)
 {
   return _ctk_css_number_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_OUTLINE_WIDTH), 100) > 0;
 }
 
 static void
-compute_outline_rect (GtkCssStyle       *style,
+compute_outline_rect (CtkCssStyle       *style,
                       gdouble            x,
                       gdouble            y,
                       gdouble            width,
@@ -822,15 +822,15 @@ compute_outline_rect (GtkCssStyle       *style,
 }
                       
 void
-ctk_css_style_render_outline (GtkCssStyle *style,
+ctk_css_style_render_outline (CtkCssStyle *style,
                               cairo_t     *cr,
                               gdouble      x,
                               gdouble      y,
                               gdouble      width,
                               gdouble      height)
 {
-  GtkBorderStyle border_style[4];
-  GtkRoundedBox border_box;
+  CtkBorderStyle border_style[4];
+  CtkRoundedBox border_box;
   double border_width[4];
   GdkRGBA colors[4];
 
@@ -855,7 +855,7 @@ ctk_css_style_render_outline (GtkCssStyle *style,
 }
 
 gboolean
-ctk_css_style_render_outline_get_clip (GtkCssStyle  *style,
+ctk_css_style_render_outline_get_clip (CtkCssStyle  *style,
                                        gdouble       x,
                                        gdouble       y,
                                        gdouble       width,

@@ -27,15 +27,15 @@
 /**
  * SECTION:ctkcolorchooser
  * @Short_description: Interface implemented by widgets for choosing colors
- * @Title: GtkColorChooser
- * @See_also: #GtkColorChooserDialog, #GtkColorChooserWidget, #GtkColorButton
+ * @Title: CtkColorChooser
+ * @See_also: #CtkColorChooserDialog, #CtkColorChooserWidget, #CtkColorButton
  *
- * #GtkColorChooser is an interface that is implemented by widgets
+ * #CtkColorChooser is an interface that is implemented by widgets
  * for choosing colors. Depending on the situation, colors may be
  * allowed to have alpha (translucency).
  *
  * In GTK+, the main widgets that implement this interface are
- * #GtkColorChooserWidget, #GtkColorChooserDialog and #GtkColorButton.
+ * #CtkColorChooserWidget, #CtkColorChooserDialog and #CtkColorButton.
  *
  * Since: 3.4
  */
@@ -48,13 +48,13 @@ enum
 
 static guint signals[LAST_SIGNAL];
 
-G_DEFINE_INTERFACE (GtkColorChooser, ctk_color_chooser, G_TYPE_OBJECT);
+G_DEFINE_INTERFACE (CtkColorChooser, ctk_color_chooser, G_TYPE_OBJECT);
 
 static void
-ctk_color_chooser_default_init (GtkColorChooserInterface *iface)
+ctk_color_chooser_default_init (CtkColorChooserInterface *iface)
 {
   /**
-   * GtkColorChooser:rgba:
+   * CtkColorChooser:rgba:
    *
    * The ::rgba property contains the currently selected color,
    * as a #GdkRGBA struct. The property can be set to change
@@ -70,11 +70,11 @@ ctk_color_chooser_default_init (GtkColorChooserInterface *iface)
                           CTK_PARAM_READWRITE));
 
   /**
-   * GtkColorChooser:use-alpha:
+   * CtkColorChooser:use-alpha:
    *
    * When ::use-alpha is %TRUE, colors may have alpha (translucency)
    * information. When it is %FALSE, the #GdkRGBA struct obtained
-   * via the #GtkColorChooser:rgba property will be forced to have
+   * via the #CtkColorChooser:rgba property will be forced to have
    * alpha == 1.
    *
    * Implementations are expected to show alpha by rendering the color
@@ -90,7 +90,7 @@ ctk_color_chooser_default_init (GtkColorChooserInterface *iface)
                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkColorChooser::color-activated:
+   * CtkColorChooser::color-activated:
    * @chooser: the object which received the signal
    * @color: the color
    *
@@ -105,7 +105,7 @@ ctk_color_chooser_default_init (GtkColorChooserInterface *iface)
     g_signal_new (I_("color-activated"),
                   CTK_TYPE_COLOR_CHOOSER,
                   G_SIGNAL_RUN_FIRST,
-                  G_STRUCT_OFFSET (GtkColorChooserInterface, color_activated),
+                  G_STRUCT_OFFSET (CtkColorChooserInterface, color_activated),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE,
@@ -113,7 +113,7 @@ ctk_color_chooser_default_init (GtkColorChooserInterface *iface)
 }
 
 void
-_ctk_color_chooser_color_activated (GtkColorChooser *chooser,
+_ctk_color_chooser_color_activated (CtkColorChooser *chooser,
                                     const GdkRGBA   *color)
 {
   g_signal_emit (chooser, signals[COLOR_ACTIVATED], 0, color);
@@ -121,7 +121,7 @@ _ctk_color_chooser_color_activated (GtkColorChooser *chooser,
 
 /**
  * ctk_color_chooser_get_rgba:
- * @chooser: a #GtkColorChooser
+ * @chooser: a #CtkColorChooser
  * @color: (out): a #GdkRGBA to fill in with the current color
  *
  * Gets the currently-selected color.
@@ -129,7 +129,7 @@ _ctk_color_chooser_color_activated (GtkColorChooser *chooser,
  * Since: 3.4
  */
 void
-ctk_color_chooser_get_rgba (GtkColorChooser *chooser,
+ctk_color_chooser_get_rgba (CtkColorChooser *chooser,
                             GdkRGBA         *color)
 {
   g_return_if_fail (CTK_IS_COLOR_CHOOSER (chooser));
@@ -139,7 +139,7 @@ ctk_color_chooser_get_rgba (GtkColorChooser *chooser,
 
 /**
  * ctk_color_chooser_set_rgba:
- * @chooser: a #GtkColorChooser
+ * @chooser: a #CtkColorChooser
  * @color: the new color
  *
  * Sets the color.
@@ -147,7 +147,7 @@ ctk_color_chooser_get_rgba (GtkColorChooser *chooser,
  * Since: 3.4
  */
 void
-ctk_color_chooser_set_rgba (GtkColorChooser *chooser,
+ctk_color_chooser_set_rgba (CtkColorChooser *chooser,
                             const GdkRGBA   *color)
 {
   g_return_if_fail (CTK_IS_COLOR_CHOOSER (chooser));
@@ -158,7 +158,7 @@ ctk_color_chooser_set_rgba (GtkColorChooser *chooser,
 
 /**
  * ctk_color_chooser_get_use_alpha:
- * @chooser: a #GtkColorChooser
+ * @chooser: a #CtkColorChooser
  *
  * Returns whether the color chooser shows the alpha channel.
  *
@@ -168,7 +168,7 @@ ctk_color_chooser_set_rgba (GtkColorChooser *chooser,
  * Since: 3.4
  */
 gboolean
-ctk_color_chooser_get_use_alpha (GtkColorChooser *chooser)
+ctk_color_chooser_get_use_alpha (CtkColorChooser *chooser)
 {
   gboolean use_alpha;
 
@@ -181,7 +181,7 @@ ctk_color_chooser_get_use_alpha (GtkColorChooser *chooser)
 
 /**
  * ctk_color_chooser_set_use_alpha:
- * @chooser: a #GtkColorChooser
+ * @chooser: a #CtkColorChooser
  * @use_alpha: %TRUE if color chooser should use alpha channel, %FALSE if not
  *
  * Sets whether or not the color chooser should use the alpha channel.
@@ -189,7 +189,7 @@ ctk_color_chooser_get_use_alpha (GtkColorChooser *chooser)
  * Since: 3.4
  */
 void
-ctk_color_chooser_set_use_alpha (GtkColorChooser *chooser,
+ctk_color_chooser_set_use_alpha (CtkColorChooser *chooser,
                                  gboolean         use_alpha)
 {
 
@@ -200,7 +200,7 @@ ctk_color_chooser_set_use_alpha (GtkColorChooser *chooser,
 
 /**
  * ctk_color_chooser_add_palette:
- * @chooser: a #GtkColorChooser
+ * @chooser: a #CtkColorChooser
  * @orientation: %CTK_ORIENTATION_HORIZONTAL if the palette should
  *     be displayed in rows, %CTK_ORIENTATION_VERTICAL for columns
  * @colors_per_line: the number of colors to show in each row/column
@@ -212,7 +212,7 @@ ctk_color_chooser_set_use_alpha (GtkColorChooser *chooser,
  * in each row. If @horizontal is %FALSE, the colors are grouped
  * in columns instead.
  *
- * The default color palette of #GtkColorChooserWidget has
+ * The default color palette of #CtkColorChooserWidget has
  * 27 colors, organized in columns of 3 colors. The default gray
  * palette has 9 grays in a single row.
  *
@@ -228,8 +228,8 @@ ctk_color_chooser_set_use_alpha (GtkColorChooser *chooser,
  * Since: 3.4
  */
 void
-ctk_color_chooser_add_palette (GtkColorChooser *chooser,
-                               GtkOrientation   orientation,
+ctk_color_chooser_add_palette (CtkColorChooser *chooser,
+                               CtkOrientation   orientation,
                                gint             colors_per_line,
                                gint             n_colors,
                                GdkRGBA         *colors)

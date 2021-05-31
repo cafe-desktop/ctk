@@ -20,7 +20,7 @@
 #define __GDK_QUARTZ_CTK_ONLY_H__
 
 #if !(defined (CTK_COMPILATION) || defined (GDK_COMPILATION))
-#error "This API is for use only in Gtk internal code."
+#error "This API is for use only in Ctk internal code."
 #endif
 
 #include <AppKit/AppKit.h>

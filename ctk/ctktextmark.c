@@ -3,7 +3,7 @@
  * Copyright (c) 1994 The Regents of the University of California.
  * Copyright (c) 1994-1997 Sun Microsystems, Inc.
  * Copyright (c) 2000      Red Hat, Inc.
- * Tk -> Gtk port by Havoc Pennington <hp@redhat.com>
+ * Tk -> Ctk port by Havoc Pennington <hp@redhat.com>
  *
  * This software is copyrighted by the Regents of the University of
  * California, Sun Microsystems, Inc., and other parties.  The
@@ -57,14 +57,14 @@
 /**
  * SECTION:ctktextmark
  * @Short_description: A position in the buffer preserved across buffer modifications
- * @Title: GtkTextMark
+ * @Title: CtkTextMark
  *
  * You may wish to begin by reading the
  * [text widget conceptual overview][TextWidget]
  * which gives an overview of all the objects and data
  * types related to the text widget and how they work together.
  *
- * A #GtkTextMark is like a bookmark in a text buffer; it preserves a position in
+ * A #CtkTextMark is like a bookmark in a text buffer; it preserves a position in
  * the text. You can convert the mark to an iterator using
  * ctk_text_buffer_get_iter_at_mark(). Unlike iterators, marks remain valid across
  * buffer mutations, because their behavior is defined when text is inserted or
@@ -85,7 +85,7 @@
  * essentially useless.
  *
  * Marks optionally have names; these can be convenient to avoid passing the
- * #GtkTextMark object around.
+ * #CtkTextMark object around.
  *
  * Marks are typically created using the ctk_text_buffer_create_mark() function.
  */
@@ -93,8 +93,8 @@
 /*
  * Macro that determines the size of a mark segment:
  */
-#define MSEG_SIZE ((unsigned) (G_STRUCT_OFFSET (GtkTextLineSegment, body) \
-        + sizeof (GtkTextMarkBody)))
+#define MSEG_SIZE ((unsigned) (G_STRUCT_OFFSET (CtkTextLineSegment, body) \
+        + sizeof (CtkTextMarkBody)))
 
 static void ctk_text_mark_set_property (GObject         *object,
 				        guint            prop_id,
@@ -106,9 +106,9 @@ static void ctk_text_mark_get_property (GObject         *object,
 					GParamSpec      *pspec);
 static void ctk_text_mark_finalize     (GObject         *object);
 
-static GtkTextLineSegment *ctk_mark_segment_new (GtkTextMark *mark_obj);
+static CtkTextLineSegment *ctk_mark_segment_new (CtkTextMark *mark_obj);
 
-G_DEFINE_TYPE (GtkTextMark, ctk_text_mark, G_TYPE_OBJECT)
+G_DEFINE_TYPE (CtkTextMark, ctk_text_mark, G_TYPE_OBJECT)
 
 enum {
   PROP_0,
@@ -117,7 +117,7 @@ enum {
 };
 
 static void
-ctk_text_mark_class_init (GtkTextMarkClass *klass)
+ctk_text_mark_class_init (CtkTextMarkClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -126,7 +126,7 @@ ctk_text_mark_class_init (GtkTextMarkClass *klass)
   object_class->get_property = ctk_text_mark_get_property;
 
   /**
-   * GtkTextMark:name:
+   * CtkTextMark:name:
    *
    * The name of the mark or %NULL if the mark is anonymous.
    */
@@ -139,7 +139,7 @@ ctk_text_mark_class_init (GtkTextMarkClass *klass)
                                                         CTK_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
   /**
-   * GtkTextMark:left-gravity:
+   * CtkTextMark:left-gravity:
    *
    * Whether the mark has left gravity. When text is inserted at the mark’s
    * current location, if the mark has left gravity it will be moved
@@ -155,7 +155,7 @@ ctk_text_mark_class_init (GtkTextMarkClass *klass)
 }
 
 static void
-ctk_text_mark_init (GtkTextMark *mark)
+ctk_text_mark_init (CtkTextMark *mark)
 {
   mark->segment = ctk_mark_segment_new (mark);
 }
@@ -163,8 +163,8 @@ ctk_text_mark_init (GtkTextMark *mark)
 static void
 ctk_text_mark_finalize (GObject *obj)
 {
-  GtkTextMark *mark;
-  GtkTextLineSegment *seg;
+  CtkTextMark *mark;
+  CtkTextLineSegment *seg;
 
   mark = CTK_TEXT_MARK (obj);
 
@@ -173,7 +173,7 @@ ctk_text_mark_finalize (GObject *obj)
   if (seg)
     {
       if (seg->body.mark.tree != NULL)
-        g_warning ("GtkTextMark being finalized while still in the buffer; "
+        g_warning ("CtkTextMark being finalized while still in the buffer; "
                    "someone removed a reference they didn't own! Crash "
                    "impending");
 
@@ -194,8 +194,8 @@ ctk_text_mark_set_property (GObject      *object,
 			    GParamSpec   *pspec)
 {
   gchar *tmp;
-  GtkTextMark *mark = CTK_TEXT_MARK (object);
-  GtkTextLineSegment *seg = mark->segment;
+  CtkTextMark *mark = CTK_TEXT_MARK (object);
+  CtkTextLineSegment *seg = mark->segment;
 
   switch (prop_id)
     {
@@ -223,7 +223,7 @@ ctk_text_mark_get_property (GObject    *object,
 			    GValue     *value,
 			    GParamSpec *pspec)
 {
-  GtkTextMark *mark = CTK_TEXT_MARK (object);
+  CtkTextMark *mark = CTK_TEXT_MARK (object);
 
   switch (prop_id)
     {
@@ -255,11 +255,11 @@ ctk_text_mark_get_property (GObject    *object,
  * mark with right gravity (when you type, the cursor stays on the right
  * side of the text you’re typing).
  *
- * Returns: new #GtkTextMark
+ * Returns: new #CtkTextMark
  *
  * Since: 2.12
  **/
-GtkTextMark *
+CtkTextMark *
 ctk_text_mark_new (const gchar *name,
 		   gboolean     left_gravity)
 {
@@ -271,7 +271,7 @@ ctk_text_mark_new (const gchar *name,
 
 /**
  * ctk_text_mark_get_visible:
- * @mark: a #GtkTextMark
+ * @mark: a #CtkTextMark
  * 
  * Returns %TRUE if the mark is visible (i.e. a cursor is displayed
  * for it).
@@ -279,9 +279,9 @@ ctk_text_mark_new (const gchar *name,
  * Returns: %TRUE if visible
  **/
 gboolean
-ctk_text_mark_get_visible (GtkTextMark *mark)
+ctk_text_mark_get_visible (CtkTextMark *mark)
 {
-  GtkTextLineSegment *seg;
+  CtkTextLineSegment *seg;
 
   seg = mark->segment;
 
@@ -290,16 +290,16 @@ ctk_text_mark_get_visible (GtkTextMark *mark)
 
 /**
  * ctk_text_mark_get_name:
- * @mark: a #GtkTextMark
+ * @mark: a #CtkTextMark
  * 
  * Returns the mark name; returns NULL for anonymous marks.
  * 
  * Returns: (nullable): mark name
  **/
 const char *
-ctk_text_mark_get_name (GtkTextMark *mark)
+ctk_text_mark_get_name (CtkTextMark *mark)
 {
-  GtkTextLineSegment *seg;
+  CtkTextLineSegment *seg;
 
   seg = mark->segment;
 
@@ -308,7 +308,7 @@ ctk_text_mark_get_name (GtkTextMark *mark)
 
 /**
  * ctk_text_mark_get_deleted:
- * @mark: a #GtkTextMark
+ * @mark: a #CtkTextMark
  * 
  * Returns %TRUE if the mark has been removed from its buffer
  * with ctk_text_buffer_delete_mark(). See ctk_text_buffer_add_mark()
@@ -317,9 +317,9 @@ ctk_text_mark_get_name (GtkTextMark *mark)
  * Returns: whether the mark is deleted
  **/
 gboolean
-ctk_text_mark_get_deleted (GtkTextMark *mark)
+ctk_text_mark_get_deleted (CtkTextMark *mark)
 {
-  GtkTextLineSegment *seg;
+  CtkTextLineSegment *seg;
 
   g_return_val_if_fail (CTK_IS_TEXT_MARK (mark), FALSE);
 
@@ -333,17 +333,17 @@ ctk_text_mark_get_deleted (GtkTextMark *mark)
 
 /**
  * ctk_text_mark_get_buffer:
- * @mark: a #GtkTextMark
+ * @mark: a #CtkTextMark
  * 
  * Gets the buffer this mark is located inside,
  * or %NULL if the mark is deleted.
  *
- * Returns: (transfer none): the mark’s #GtkTextBuffer
+ * Returns: (transfer none): the mark’s #CtkTextBuffer
  **/
-GtkTextBuffer*
-ctk_text_mark_get_buffer (GtkTextMark *mark)
+CtkTextBuffer*
+ctk_text_mark_get_buffer (CtkTextMark *mark)
 {
-  GtkTextLineSegment *seg;
+  CtkTextLineSegment *seg;
 
   g_return_val_if_fail (CTK_IS_TEXT_MARK (mark), NULL);
 
@@ -357,16 +357,16 @@ ctk_text_mark_get_buffer (GtkTextMark *mark)
 
 /**
  * ctk_text_mark_get_left_gravity:
- * @mark: a #GtkTextMark
+ * @mark: a #CtkTextMark
  * 
  * Determines whether the mark has left gravity.
  * 
  * Returns: %TRUE if the mark has left gravity, %FALSE otherwise
  **/
 gboolean
-ctk_text_mark_get_left_gravity (GtkTextMark *mark)
+ctk_text_mark_get_left_gravity (CtkTextMark *mark)
 {
-  GtkTextLineSegment *seg;
+  CtkTextLineSegment *seg;
 
   g_return_val_if_fail (CTK_IS_TEXT_MARK (mark), FALSE);
   
@@ -375,10 +375,10 @@ ctk_text_mark_get_left_gravity (GtkTextMark *mark)
   return seg->type == &ctk_text_left_mark_type;
 }
 
-static GtkTextLineSegment *
-ctk_mark_segment_new (GtkTextMark *mark_obj)
+static CtkTextLineSegment *
+ctk_mark_segment_new (CtkTextMark *mark_obj)
 {
-  GtkTextLineSegment *mark;
+  CtkTextLineSegment *mark;
 
   mark = g_slice_alloc0 (MSEG_SIZE);
   mark->body.mark.name = NULL;
@@ -401,8 +401,8 @@ ctk_mark_segment_new (GtkTextMark *mark_obj)
 }
 
 void
-_ctk_mark_segment_set_tree (GtkTextLineSegment *mark,
-			    GtkTextBTree       *tree)
+_ctk_mark_segment_set_tree (CtkTextLineSegment *mark,
+			    CtkTextBTree       *tree)
 {
   g_assert (mark->body.mark.tree == NULL);
   g_assert (mark->body.mark.obj != NULL);
@@ -417,13 +417,13 @@ _ctk_mark_segment_set_tree (GtkTextLineSegment *mark,
   mark->body.mark.not_deleteable = FALSE;
 }
 
-static int                 mark_segment_delete_func  (GtkTextLineSegment *segPtr,
-                                                      GtkTextLine        *line,
+static int                 mark_segment_delete_func  (CtkTextLineSegment *segPtr,
+                                                      CtkTextLine        *line,
                                                       int                 treeGone);
-static GtkTextLineSegment *mark_segment_cleanup_func (GtkTextLineSegment *segPtr,
-                                                      GtkTextLine        *line);
-static void                mark_segment_check_func   (GtkTextLineSegment *segPtr,
-                                                      GtkTextLine        *line);
+static CtkTextLineSegment *mark_segment_cleanup_func (CtkTextLineSegment *segPtr,
+                                                      CtkTextLine        *line);
+static void                mark_segment_check_func   (CtkTextLineSegment *segPtr,
+                                                      CtkTextLine        *line);
 
 
 /*
@@ -433,7 +433,7 @@ static void                mark_segment_check_func   (GtkTextLineSegment *segPtr
  * their gravity property.
  */
 
-const GtkTextLineSegmentClass ctk_text_right_mark_type = {
+const CtkTextLineSegmentClass ctk_text_right_mark_type = {
   "mark",                                               /* name */
   FALSE,                                                /* leftGravity */
   NULL,                                         /* splitFunc */
@@ -443,7 +443,7 @@ const GtkTextLineSegmentClass ctk_text_right_mark_type = {
   mark_segment_check_func                               /* checkFunc */
 };
 
-const GtkTextLineSegmentClass ctk_text_left_mark_type = {
+const CtkTextLineSegmentClass ctk_text_left_mark_type = {
   "mark",                                               /* name */
   TRUE,                                         /* leftGravity */
   NULL,                                         /* splitFunc */
@@ -472,8 +472,8 @@ const GtkTextLineSegmentClass ctk_text_left_mark_type = {
  */
 
 static gboolean
-mark_segment_delete_func (GtkTextLineSegment *seg,
-                          GtkTextLine        *line,
+mark_segment_delete_func (CtkTextLineSegment *seg,
+                          CtkTextLine        *line,
                           gboolean            tree_gone)
 {
   if (tree_gone)
@@ -502,9 +502,9 @@ mark_segment_delete_func (GtkTextLineSegment *seg,
  *--------------------------------------------------------------
  */
 
-static GtkTextLineSegment *
-mark_segment_cleanup_func (GtkTextLineSegment *seg,
-                           GtkTextLine        *line)
+static CtkTextLineSegment *
+mark_segment_cleanup_func (CtkTextLineSegment *seg,
+                           CtkTextLine        *line)
 {
   /* not sure why Tk did this here and not in LineChangeFunc */
   seg->body.mark.line = line;
@@ -530,8 +530,8 @@ mark_segment_cleanup_func (GtkTextLineSegment *seg,
  */
 
 static void
-mark_segment_check_func (GtkTextLineSegment *seg,
-                         GtkTextLine        *line)
+mark_segment_check_func (CtkTextLineSegment *seg,
+                         CtkTextLine        *line)
 {
   if (seg->body.mark.line != line)
     g_error ("mark_segment_check_func: seg->body.mark.line bogus");

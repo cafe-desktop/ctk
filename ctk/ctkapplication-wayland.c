@@ -24,23 +24,23 @@
 
 #include <gdk/wayland/gdkwayland.h>
 
-typedef GtkApplicationImplDBusClass GtkApplicationImplWaylandClass;
+typedef CtkApplicationImplDBusClass CtkApplicationImplWaylandClass;
 
 typedef struct
 {
-  GtkApplicationImplDBus dbus;
+  CtkApplicationImplDBus dbus;
 
-} GtkApplicationImplWayland;
+} CtkApplicationImplWayland;
 
-G_DEFINE_TYPE (GtkApplicationImplWayland, ctk_application_impl_wayland, CTK_TYPE_APPLICATION_IMPL_DBUS)
+G_DEFINE_TYPE (CtkApplicationImplWayland, ctk_application_impl_wayland, CTK_TYPE_APPLICATION_IMPL_DBUS)
 
 static void
-ctk_application_impl_wayland_handle_window_realize (GtkApplicationImpl *impl,
-                                                    GtkWindow          *window)
+ctk_application_impl_wayland_handle_window_realize (CtkApplicationImpl *impl,
+                                                    CtkWindow          *window)
 {
-  GtkApplicationImplClass *impl_class =
+  CtkApplicationImplClass *impl_class =
     CTK_APPLICATION_IMPL_CLASS (ctk_application_impl_wayland_parent_class);
-  GtkApplicationImplDBus *dbus = (GtkApplicationImplDBus *) impl;
+  CtkApplicationImplDBus *dbus = (CtkApplicationImplDBus *) impl;
   GdkWindow *gdk_window;
   gchar *window_path;
 
@@ -61,7 +61,7 @@ ctk_application_impl_wayland_handle_window_realize (GtkApplicationImpl *impl,
 }
 
 static void
-ctk_application_impl_wayland_before_emit (GtkApplicationImpl *impl,
+ctk_application_impl_wayland_before_emit (CtkApplicationImpl *impl,
                                           GVariant           *platform_data)
 {
   const char *startup_notification_id = NULL;
@@ -72,14 +72,14 @@ ctk_application_impl_wayland_before_emit (GtkApplicationImpl *impl,
 }
 
 static void
-ctk_application_impl_wayland_init (GtkApplicationImplWayland *wayland)
+ctk_application_impl_wayland_init (CtkApplicationImplWayland *wayland)
 {
 }
 
 static void
-ctk_application_impl_wayland_class_init (GtkApplicationImplWaylandClass *class)
+ctk_application_impl_wayland_class_init (CtkApplicationImplWaylandClass *class)
 {
-  GtkApplicationImplClass *impl_class = CTK_APPLICATION_IMPL_CLASS (class);
+  CtkApplicationImplClass *impl_class = CTK_APPLICATION_IMPL_CLASS (class);
 
   impl_class->handle_window_realize =
     ctk_application_impl_wayland_handle_window_realize;

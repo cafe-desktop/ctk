@@ -6,7 +6,7 @@
 
 struct _ExampleAppPrefs
 {
-  GtkDialog parent;
+  CtkDialog parent;
 };
 
 typedef struct _ExampleAppPrefsPrivate ExampleAppPrefsPrivate;
@@ -14,8 +14,8 @@ typedef struct _ExampleAppPrefsPrivate ExampleAppPrefsPrivate;
 struct _ExampleAppPrefsPrivate
 {
   GSettings *settings;
-  GtkWidget *font;
-  GtkWidget *transition;
+  CtkWidget *font;
+  CtkWidget *transition;
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE(ExampleAppPrefs, example_app_prefs, CTK_TYPE_DIALOG)

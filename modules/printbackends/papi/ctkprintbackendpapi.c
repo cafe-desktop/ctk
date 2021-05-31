@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * ctkprintbackendpapi.c: Default implementation of GtkPrintBackend 
+ * ctkprintbackendpapi.c: Default implementation of CtkPrintBackend 
  * for printing to papi 
  * Copyright (C) 2003, Red Hat, Inc.
  * Copyright (C) 2009, Sun Microsystems, Inc.
@@ -38,62 +38,62 @@
 #include "ctkprinterpapi.h"
 #include "ctkprinter-private.h"
 
-typedef struct _GtkPrintBackendPapiClass GtkPrintBackendPapiClass;
+typedef struct _CtkPrintBackendPapiClass CtkPrintBackendPapiClass;
 
-#define CTK_PRINT_BACKEND_PAPI_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PRINT_BACKEND_PAPI, GtkPrintBackendPapiClass))
+#define CTK_PRINT_BACKEND_PAPI_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PRINT_BACKEND_PAPI, CtkPrintBackendPapiClass))
 #define CTK_IS_PRINT_BACKEND_PAPI_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PRINT_BACKEND_PAPI))
-#define CTK_PRINT_BACKEND_PAPI_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PRINT_BACKEND_PAPI, GtkPrintBackendPapiClass))
+#define CTK_PRINT_BACKEND_PAPI_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PRINT_BACKEND_PAPI, CtkPrintBackendPapiClass))
 
 #define _PAPI_MAX_CHUNK_SIZE 8192
 
 static GType print_backend_papi_type = 0;
 
-struct _GtkPrintBackendPapiClass
+struct _CtkPrintBackendPapiClass
 {
-  GtkPrintBackendClass parent_class;
+  CtkPrintBackendClass parent_class;
 };
 
-struct _GtkPrintBackendPapi
+struct _CtkPrintBackendPapi
 {
-  GtkPrintBackend parent_instance;
+  CtkPrintBackend parent_instance;
 
   char *default_printer;  
 };
 
 typedef struct {
-  GtkPrinter *printer;
+  CtkPrinter *printer;
 } _PrinterStatus;
 
 static GObjectClass *backend_parent_class;
 
-static void                 ctk_print_backend_papi_class_init      (GtkPrintBackendPapiClass *class);
-static void                 ctk_print_backend_papi_init            (GtkPrintBackendPapi      *impl);
+static void                 ctk_print_backend_papi_class_init      (CtkPrintBackendPapiClass *class);
+static void                 ctk_print_backend_papi_init            (CtkPrintBackendPapi      *impl);
 static void                 ctk_print_backend_papi_finalize        (GObject                  *object);
 static void                 ctk_print_backend_papi_dispose         (GObject                  *object);
-static void                 papi_request_printer_list              (GtkPrintBackend          *print_backend);
-static gboolean 	    papi_get_printer_list 		   (GtkPrintBackendPapi      *papi_backend);
-static void                 papi_printer_request_details           (GtkPrinter               *printer);
-static GtkPrintCapabilities papi_printer_get_capabilities          (GtkPrinter               *printer);
-static void                 papi_printer_get_settings_from_options (GtkPrinter               *printer,
-								   GtkPrinterOptionSet       *options,
-								   GtkPrintSettings          *settings);
-static GtkPrinterOptionSet *papi_printer_get_options               (GtkPrinter               *printer,
-								   GtkPrintSettings          *settings,
-								   GtkPageSetup              *page_setup,
-								   GtkPrintCapabilities       capabilities);
-static void                 papi_printer_prepare_for_print         (GtkPrinter               *printer,
-								   GtkPrintJob               *print_job,
-								   GtkPrintSettings          *settings,
-								   GtkPageSetup              *page_setup);
-static cairo_surface_t *    papi_printer_create_cairo_surface      (GtkPrinter               *printer,
-								   GtkPrintSettings          *settings,
+static void                 papi_request_printer_list              (CtkPrintBackend          *print_backend);
+static gboolean 	    papi_get_printer_list 		   (CtkPrintBackendPapi      *papi_backend);
+static void                 papi_printer_request_details           (CtkPrinter               *printer);
+static CtkPrintCapabilities papi_printer_get_capabilities          (CtkPrinter               *printer);
+static void                 papi_printer_get_settings_from_options (CtkPrinter               *printer,
+								   CtkPrinterOptionSet       *options,
+								   CtkPrintSettings          *settings);
+static CtkPrinterOptionSet *papi_printer_get_options               (CtkPrinter               *printer,
+								   CtkPrintSettings          *settings,
+								   CtkPageSetup              *page_setup,
+								   CtkPrintCapabilities       capabilities);
+static void                 papi_printer_prepare_for_print         (CtkPrinter               *printer,
+								   CtkPrintJob               *print_job,
+								   CtkPrintSettings          *settings,
+								   CtkPageSetup              *page_setup);
+static cairo_surface_t *    papi_printer_create_cairo_surface      (CtkPrinter               *printer,
+								   CtkPrintSettings          *settings,
 								   gdouble                   width,
 								   gdouble                   height,
 								   GIOChannel                *cache_io);
-static void                 ctk_print_backend_papi_print_stream    (GtkPrintBackend          *print_backend,
-								   GtkPrintJob               *job,
+static void                 ctk_print_backend_papi_print_stream    (CtkPrintBackend          *print_backend,
+								   CtkPrintJob               *job,
 								   GIOChannel                *data_io,
-								   GtkPrintJobCompleteFunc   callback,
+								   CtkPrintJobCompleteFunc   callback,
 								   gpointer                  user_data,
 								   GDestroyNotify            dnotify);
 
@@ -105,20 +105,20 @@ ctk_print_backend_papi_register_type (GTypeModule *module)
 {
   const GTypeInfo print_backend_papi_info =
   {
-    sizeof (GtkPrintBackendPapiClass),
+    sizeof (CtkPrintBackendPapiClass),
     NULL,		/* base_init */
     NULL,		/* base_finalize */
     (GClassInitFunc) ctk_print_backend_papi_class_init,
     NULL,		/* class_finalize */
     NULL,		/* class_data */
-    sizeof (GtkPrintBackendPapi),
+    sizeof (CtkPrintBackendPapi),
     0,		/* n_preallocs */
     (GInstanceInitFunc) ctk_print_backend_papi_init,
   };
 
   print_backend_papi_type = g_type_module_register_type (module,
                                                         CTK_TYPE_PRINT_BACKEND,
-                                                        "GtkPrintBackendPapi",
+                                                        "CtkPrintBackendPapi",
                                                         &print_backend_papi_info, 0);
 }
 
@@ -135,14 +135,14 @@ pb_module_exit (void)
 
 }
   
-G_MODULE_EXPORT GtkPrintBackend * 
+G_MODULE_EXPORT CtkPrintBackend * 
 pb_module_create (void)
 {
   return ctk_print_backend_papi_new ();
 }
 
 /*
- * GtkPrintBackendPapi
+ * CtkPrintBackendPapi
  */
 GType
 ctk_print_backend_papi_get_type (void)
@@ -153,23 +153,23 @@ ctk_print_backend_papi_get_type (void)
 /**
  * ctk_print_backend_papi_new:
  *
- * Creates a new #GtkPrintBackendPapi object. #GtkPrintBackendPapi
- * implements the #GtkPrintBackend interface with direct access to
+ * Creates a new #CtkPrintBackendPapi object. #CtkPrintBackendPapi
+ * implements the #CtkPrintBackend interface with direct access to
  * the filesystem using Unix/Linux API calls
  *
- * Returns: the new #GtkPrintBackendPapi object
+ * Returns: the new #CtkPrintBackendPapi object
  **/
-GtkPrintBackend *
+CtkPrintBackend *
 ctk_print_backend_papi_new (void)
 {
   return g_object_new (CTK_TYPE_PRINT_BACKEND_PAPI, NULL);
 }
 
 static void
-ctk_print_backend_papi_class_init (GtkPrintBackendPapiClass *class)
+ctk_print_backend_papi_class_init (CtkPrintBackendPapiClass *class)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
-  GtkPrintBackendClass *backend_class = CTK_PRINT_BACKEND_CLASS (class);
+  CtkPrintBackendClass *backend_class = CTK_PRINT_BACKEND_CLASS (class);
   
   backend_parent_class = g_type_class_peek_parent (class);
 
@@ -222,8 +222,8 @@ _cairo_write (void                *closure,
 }
 
 static cairo_surface_t *
-papi_printer_create_cairo_surface (GtkPrinter       *printer,
-				  GtkPrintSettings *settings,
+papi_printer_create_cairo_surface (CtkPrinter       *printer,
+				  CtkPrintSettings *settings,
 				  gdouble           width, 
 				  gdouble           height,
 				  GIOChannel       *cache_io)
@@ -240,9 +240,9 @@ papi_printer_create_cairo_surface (GtkPrinter       *printer,
 }
 
 typedef struct {
-  GtkPrintBackend *backend;
-  GtkPrintJobCompleteFunc callback;
-  GtkPrintJob *job;
+  CtkPrintBackend *backend;
+  CtkPrintJobCompleteFunc callback;
+  CtkPrintJob *job;
   gpointer user_data;
   GDestroyNotify dnotify;
 
@@ -251,7 +251,7 @@ typedef struct {
 } _PrintStreamData;
 
 static void
-papi_print_cb (GtkPrintBackendPapi *print_backend,
+papi_print_cb (CtkPrintBackendPapi *print_backend,
               GError             *error,
               gpointer            user_data)
 {
@@ -333,20 +333,20 @@ papi_write (GIOChannel   *source,
 }
 
 static void
-ctk_print_backend_papi_print_stream (GtkPrintBackend        *print_backend,
-				    GtkPrintJob            *job,
+ctk_print_backend_papi_print_stream (CtkPrintBackend        *print_backend,
+				    CtkPrintJob            *job,
 				    GIOChannel             *data_io,
-				    GtkPrintJobCompleteFunc callback,
+				    CtkPrintJobCompleteFunc callback,
 				    gpointer                user_data,
 				    GDestroyNotify          dnotify)
 {
   GError *print_error = NULL;
-  GtkPrinterPapi *printer;
+  CtkPrinterPapi *printer;
   _PrintStreamData *ps;
-  GtkPrintSettings *settings;
+  CtkPrintSettings *settings;
   const gchar *title;
   char *prtnm = NULL;
-  GtkPrintDuplex val;
+  CtkPrintDuplex val;
   papi_status_t pstatus;
   papi_attribute_t **attrs = NULL;
   papi_job_ticket_t *ticket = NULL;
@@ -401,7 +401,7 @@ ctk_print_backend_papi_print_stream (GtkPrintBackend        *print_backend,
 
 
 static void
-_papi_set_default_printer (GtkPrintBackendPapi *backend)
+_papi_set_default_printer (CtkPrintBackendPapi *backend)
 {
   char *def_printer = NULL;
   char *_default_attr[] = { "printer-name", NULL };
@@ -434,7 +434,7 @@ _papi_set_default_printer (GtkPrintBackendPapi *backend)
 }
 
 static void
-ctk_print_backend_papi_init (GtkPrintBackendPapi *backend)
+ctk_print_backend_papi_init (CtkPrintBackendPapi *backend)
 {
   _papi_set_default_printer (backend);
 }
@@ -442,7 +442,7 @@ ctk_print_backend_papi_init (GtkPrintBackendPapi *backend)
 static void
 ctk_print_backend_papi_finalize (GObject *object)
 {
-  GtkPrintBackendPapi *backend_papi;
+  CtkPrintBackendPapi *backend_papi;
 
   CTK_NOTE (PRINTING,
             g_print ("PAPI Backend: finalizing PAPI backend module\n"));
@@ -459,7 +459,7 @@ ctk_print_backend_papi_finalize (GObject *object)
 static void
 ctk_print_backend_papi_dispose (GObject *object)
 {
-  GtkPrintBackendPapi *backend_papi;
+  CtkPrintBackendPapi *backend_papi;
 
   CTK_NOTE (PRINTING,
             g_print ("PAPI Backend: %s\n", G_STRFUNC));
@@ -527,9 +527,9 @@ get_printers_list(papi_service_t svc)
 }
 
 static void
-papi_request_printer_list (GtkPrintBackend *backend)
+papi_request_printer_list (CtkPrintBackend *backend)
 {
-  GtkPrintBackendPapi *papi_backend;
+  CtkPrintBackendPapi *papi_backend;
 
   papi_backend = CTK_PRINT_BACKEND_PAPI (backend);
 
@@ -538,14 +538,14 @@ papi_request_printer_list (GtkPrintBackend *backend)
 }
 
 static gboolean
-papi_get_printer_list (GtkPrintBackendPapi *papi_backend)
+papi_get_printer_list (CtkPrintBackendPapi *papi_backend)
 {
   int i;
   papi_status_t status;
   papi_service_t service = NULL;
   char **printers = NULL;
-  GtkPrinterPapi *papi_printer;
-  GtkPrintBackend *backend = CTK_PRINT_BACKEND (papi_backend);
+  CtkPrinterPapi *papi_printer;
+  CtkPrintBackend *backend = CTK_PRINT_BACKEND (papi_backend);
   
   if ((status = papiServiceCreate (&service, NULL, NULL, NULL, NULL,
 		PAPI_ENCRYPT_NEVER, NULL)) != PAPI_OK)
@@ -564,7 +564,7 @@ papi_get_printer_list (GtkPrintBackendPapi *papi_backend)
 
   for (i = 0; printers[i] != NULL; i++) 
     {
-      GtkPrinter *printer;
+      CtkPrinter *printer;
 
           printer = ctk_print_backend_find_printer (backend, printers[i]);
 
@@ -625,10 +625,10 @@ papi_get_printer_list (GtkPrintBackendPapi *papi_backend)
 }
 
 static void
-update_printer_status (GtkPrinter *printer)
+update_printer_status (CtkPrinter *printer)
 {
-  GtkPrintBackend *backend;
-  GtkPrinterPapi *papi_printer;
+  CtkPrintBackend *backend;
+  CtkPrinterPapi *papi_printer;
 
   backend = ctk_printer_get_backend (printer);
   papi_printer = CTK_PRINTER_PAPI (printer);
@@ -639,14 +639,14 @@ update_printer_status (GtkPrinter *printer)
 }
 
 
-static GtkPrinterOptionSet *
-papi_printer_get_options (GtkPrinter           *printer,
-			  GtkPrintSettings     *settings,
-			  GtkPageSetup         *page_setup,
-			  GtkPrintCapabilities  capabilities)
+static CtkPrinterOptionSet *
+papi_printer_get_options (CtkPrinter           *printer,
+			  CtkPrintSettings     *settings,
+			  CtkPageSetup         *page_setup,
+			  CtkPrintCapabilities  capabilities)
 {
-  GtkPrinterOptionSet *set;
-  GtkPrinterOption *option;
+  CtkPrinterOptionSet *set;
+  CtkPrinterOption *option;
   char *print_at[] = { "now", "on-hold" };
   char *n_up[] = {"1"};
 
@@ -684,11 +684,11 @@ papi_printer_get_options (GtkPrinter           *printer,
 }
 
 static void
-papi_printer_get_settings_from_options (GtkPrinter          *printer,
-				       GtkPrinterOptionSet *options,
-				       GtkPrintSettings    *settings)
+papi_printer_get_settings_from_options (CtkPrinter          *printer,
+				       CtkPrinterOptionSet *options,
+				       CtkPrintSettings    *settings)
 {
-  GtkPrinterOption *option;
+  CtkPrinterOption *option;
 
   option = ctk_printer_option_set_lookup (options, "ctk-n-up");
   if (option)
@@ -697,14 +697,14 @@ papi_printer_get_settings_from_options (GtkPrinter          *printer,
 }
 
 static void
-papi_printer_prepare_for_print (GtkPrinter       *printer,
-			       GtkPrintJob      *print_job,
-			       GtkPrintSettings *settings,
-			       GtkPageSetup     *page_setup)
+papi_printer_prepare_for_print (CtkPrinter       *printer,
+			       CtkPrintJob      *print_job,
+			       CtkPrintSettings *settings,
+			       CtkPageSetup     *page_setup)
 {
-  GtkPageSet page_set;
+  CtkPageSet page_set;
   double scale;
-  GtkPaperSize *papersize = NULL;
+  CtkPaperSize *papersize = NULL;
   char *ppd_paper_name;
 
   print_job->print_pages = ctk_print_settings_get_print_pages (settings);
@@ -751,8 +751,8 @@ is_local_printer (gchar *printer_uri)
 static void
 papi_display_printer_status_done (gpointer user_data)
 {
-  GtkPrinter *printer = (GtkPrinter *) user_data;
-  GtkPrinterPapi *papi_printer;
+  CtkPrinter *printer = (CtkPrinter *) user_data;
+  CtkPrinterPapi *papi_printer;
 
   g_signal_emit_by_name (printer, "details-acquired", TRUE); 
   papi_printer = CTK_PRINTER_PAPI (printer);
@@ -765,8 +765,8 @@ papi_display_printer_status_done (gpointer user_data)
 static gboolean
 papi_display_printer_status (gpointer user_data)
 {
-  GtkPrinter *printer = (GtkPrinter *) user_data;
-  GtkPrinterPapi *papi_printer;
+  CtkPrinter *printer = (CtkPrinter *) user_data;
+  CtkPrinterPapi *papi_printer;
   gchar *loc;
   int state;
   papi_service_t service;
@@ -824,14 +824,14 @@ papi_display_printer_status (gpointer user_data)
 }
 
 static void  
-papi_printer_request_details (GtkPrinter *printer)
+papi_printer_request_details (CtkPrinter *printer)
 {
   g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, papi_display_printer_status, printer, papi_display_printer_status_done); 
 }
 
 
-static GtkPrintCapabilities
-papi_printer_get_capabilities (GtkPrinter *printer)
+static CtkPrintCapabilities
+papi_printer_get_capabilities (CtkPrinter *printer)
 {
   return CTK_PRINT_CAPABILITY_COPIES | CTK_PRINT_CAPABILITY_PAGE_SET ; 
 }

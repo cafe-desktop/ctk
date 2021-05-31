@@ -1,40 +1,40 @@
 <?xml version="1.0"?>
 <interface>
-  <template class="DemoApplicationWindow" parent="GtkApplicationWindow">
+  <template class="DemoApplicationWindow" parent="CtkApplicationWindow">
     <property name="title" translatable="yes">Application Class</property>
     <property name="default-width">200</property>
     <property name="default-height">200</property>
     <property name="icon-name">document-open</property>
     <child>
-      <object class="GtkGrid">
+      <object class="CtkGrid">
         <property name="visible">1</property>
         <child>
-          <object class="GtkToolbar">
+          <object class="CtkToolbar">
             <property name="visible">1</property>
             <property name="hexpand">1</property>
             <style>
               <class name="primary-toolbar"/>
             </style>
             <child>
-              <object class="GtkMenuToolButton" id="menutool">
+              <object class="CtkMenuToolButton" id="menutool">
                 <property name="visible">1</property>
                 <property name="icon-name">document-open</property>
               </object>
             </child>
             <child>
-              <object class="GtkToolButton">
+              <object class="CtkToolButton">
                 <property name="visible">1</property>
                 <property name="icon-name">application-exit</property>
                 <property name="action-name">app.quit</property>
               </object>
             </child>
             <child>
-              <object class="GtkSeparatorToolItem">
+              <object class="CtkSeparatorToolItem">
                 <property name="visible">1</property>
               </object>
             </child>
             <child>
-              <object class="GtkToolButton">
+              <object class="CtkToolButton">
                 <property name="visible">1</property>
                 <property name="icon-name">applications-other</property>
                 <property name="action-name">win.logo</property>
@@ -47,13 +47,13 @@
           </packing>
         </child>
         <child>
-          <object class="GtkInfoBar" id="infobar">
+          <object class="CtkInfoBar" id="infobar">
             <property name="no-show-all">1</property>
             <property name="hexpand">1</property>
             <child internal-child="content_area">
-              <object class="GtkBox" id="content_area">
+              <object class="CtkBox" id="content_area">
                 <child>
-                  <object class="GtkLabel" id="message">
+                  <object class="CtkLabel" id="message">
                     <property name="visible">1</property>
                     <property name="hexpand">1</property>
                   </object>
@@ -61,9 +61,9 @@
               </object>
             </child>
             <child internal-child="action_area">
-              <object class="GtkBox">
+              <object class="CtkBox">
                 <child>
-                  <object class="GtkButton">
+                  <object class="CtkButton">
                     <property name="visible">1</property>
                     <property name="valign">center</property>
                     <property name="label" translatable="yes">_OK</property>
@@ -80,11 +80,11 @@
           </packing>
         </child>
         <child>
-          <object class="GtkScrolledWindow">
+          <object class="CtkScrolledWindow">
             <property name="visible">1</property>
             <property name="shadow-type">in</property>
             <child>
-              <object class="GtkTextView">
+              <object class="CtkTextView">
                 <property name="visible">1</property>
                 <property name="hexpand">1</property>
                 <property name="vexpand">1</property>
@@ -98,7 +98,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkStatusbar" id="status">
+          <object class="CtkStatusbar" id="status">
             <property name="hexpand">1</property>
             <property name="visible">1</property>
           </object>
@@ -116,7 +116,7 @@
       <attribute name="action">win.file1</attribute>
     </item>
   </menu>
-  <object class="GtkTextBuffer" id="buffer">
+  <object class="CtkTextBuffer" id="buffer">
     <signal name="changed" handler="update_statusbar"/>
     <signal name="mark-set" handler="mark_set_callback"/>
   </object>

@@ -28,10 +28,10 @@
 
 G_BEGIN_DECLS
 
-char ** _ctk_file_filter_get_as_patterns (GtkFileFilter      *filter);
+char ** _ctk_file_filter_get_as_patterns (CtkFileFilter      *filter);
 
 #ifdef GDK_WINDOWING_QUARTZ
-NSArray * _ctk_file_filter_get_as_pattern_nsstrings (GtkFileFilter *filter);
+NSArray * _ctk_file_filter_get_as_pattern_nsstrings (CtkFileFilter *filter);
 #endif
 
 

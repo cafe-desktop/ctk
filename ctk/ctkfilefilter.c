@@ -19,11 +19,11 @@
 /**
  * SECTION:ctkfilefilter
  * @Short_description: A filter for selecting a file subset
- * @Title: GtkFileFilter
- * @see_also: #GtkFileChooser
+ * @Title: CtkFileFilter
+ * @see_also: #CtkFileChooser
  *
- * A GtkFileFilter can be used to restrict the files being shown in a
- * #GtkFileChooser. Files can be filtered based on their name (with
+ * A CtkFileFilter can be used to restrict the files being shown in a
+ * #CtkFileChooser. Files can be filtered based on their name (with
  * ctk_file_filter_add_pattern()), on their mime type (with
  * ctk_file_filter_add_mime_type()), or by a custom filter function
  * (with ctk_file_filter_add_custom()).
@@ -31,25 +31,25 @@
  * Filtering by mime types handles aliasing and subclassing of mime
  * types; e.g. a filter for text/plain also matches a file with mime
  * type application/rtf, since application/rtf is a subclass of
- * text/plain. Note that #GtkFileFilter allows wildcards for the
+ * text/plain. Note that #CtkFileFilter allows wildcards for the
  * subtype of a mime type, so you can e.g. filter for image/\*.
  *
- * Normally, filters are used by adding them to a #GtkFileChooser,
+ * Normally, filters are used by adding them to a #CtkFileChooser,
  * see ctk_file_chooser_add_filter(), but it is also possible
  * to manually use a filter on a file with ctk_file_filter_filter().
  *
- * # GtkFileFilter as GtkBuildable
+ * # CtkFileFilter as CtkBuildable
  *
- * The GtkFileFilter implementation of the GtkBuildable interface
+ * The CtkFileFilter implementation of the CtkBuildable interface
  * supports adding rules using the <mime-types>, <patterns> and
  * <applications> elements and listing the rules within. Specifying
  * a <mime-type> or <pattern> has the same effect as as calling
  * ctk_file_filter_add_mime_type() or ctk_file_filter_add_pattern().
  *
- * An example of a UI definition fragment specifying GtkFileFilter
+ * An example of a UI definition fragment specifying CtkFileFilter
  * rules:
  * |[
- * <object class="GtkFileFilter">
+ * <object class="CtkFileFilter">
  *   <mime-types>
  *     <mime-type>text/plain</mime-type>
  *     <mime-type>image/ *</mime-type>
@@ -73,12 +73,12 @@
 #include "ctkintl.h"
 #include "ctkprivate.h"
 
-typedef struct _GtkFileFilterClass GtkFileFilterClass;
+typedef struct _CtkFileFilterClass CtkFileFilterClass;
 typedef struct _FilterRule FilterRule;
 
-#define CTK_FILE_FILTER_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_FILE_FILTER, GtkFileFilterClass))
+#define CTK_FILE_FILTER_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_FILE_FILTER, CtkFileFilterClass))
 #define CTK_IS_FILE_FILTER_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_FILE_FILTER))
-#define CTK_FILE_FILTER_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_FILE_FILTER, GtkFileFilterClass))
+#define CTK_FILE_FILTER_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_FILE_FILTER, CtkFileFilterClass))
 
 typedef enum {
   FILTER_RULE_PATTERN,
@@ -87,32 +87,32 @@ typedef enum {
   FILTER_RULE_CUSTOM
 } FilterRuleType;
 
-struct _GtkFileFilterClass
+struct _CtkFileFilterClass
 {
   GInitiallyUnownedClass parent_class;
 };
 
-struct _GtkFileFilter
+struct _CtkFileFilter
 {
   GInitiallyUnowned parent_instance;
 
   gchar *name;
   GSList *rules;
 
-  GtkFileFilterFlags needed;
+  CtkFileFilterFlags needed;
 };
 
 struct _FilterRule
 {
   FilterRuleType type;
-  GtkFileFilterFlags needed;
+  CtkFileFilterFlags needed;
   
   union {
     gchar *pattern;
     gchar *mime_type;
     GSList *pixbuf_formats;
     struct {
-      GtkFileFilterFunc func;
+      CtkFileFilterFunc func;
       gpointer data;
       GDestroyNotify notify;
     } custom;
@@ -122,35 +122,35 @@ struct _FilterRule
 static void ctk_file_filter_finalize   (GObject            *object);
 
 
-static void     ctk_file_filter_buildable_init                 (GtkBuildableIface *iface);
-static void     ctk_file_filter_buildable_set_name             (GtkBuildable *buildable,
+static void     ctk_file_filter_buildable_init                 (CtkBuildableIface *iface);
+static void     ctk_file_filter_buildable_set_name             (CtkBuildable *buildable,
                                                                 const gchar  *name);
-static const gchar* ctk_file_filter_buildable_get_name         (GtkBuildable *buildable);
+static const gchar* ctk_file_filter_buildable_get_name         (CtkBuildable *buildable);
 
 
-static gboolean ctk_file_filter_buildable_custom_tag_start     (GtkBuildable  *buildable,
-								GtkBuilder    *builder,
+static gboolean ctk_file_filter_buildable_custom_tag_start     (CtkBuildable  *buildable,
+								CtkBuilder    *builder,
 								GObject       *child,
 								const gchar   *tagname,
 								GMarkupParser *parser,
 								gpointer      *data);
-static void     ctk_file_filter_buildable_custom_tag_end       (GtkBuildable  *buildable,
-								GtkBuilder    *builder,
+static void     ctk_file_filter_buildable_custom_tag_end       (CtkBuildable  *buildable,
+								CtkBuilder    *builder,
 								GObject       *child,
 								const gchar   *tagname,
 								gpointer      *data);
 
-G_DEFINE_TYPE_WITH_CODE (GtkFileFilter, ctk_file_filter, G_TYPE_INITIALLY_UNOWNED,
+G_DEFINE_TYPE_WITH_CODE (CtkFileFilter, ctk_file_filter, G_TYPE_INITIALLY_UNOWNED,
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
                                                 ctk_file_filter_buildable_init))
 
 static void
-ctk_file_filter_init (GtkFileFilter *object)
+ctk_file_filter_init (CtkFileFilter *object)
 {
 }
 
 static void
-ctk_file_filter_class_init (GtkFileFilterClass *class)
+ctk_file_filter_class_init (CtkFileFilterClass *class)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
 
@@ -185,7 +185,7 @@ filter_rule_free (FilterRule *rule)
 static void
 ctk_file_filter_finalize (GObject  *object)
 {
-  GtkFileFilter *filter = CTK_FILE_FILTER (object);
+  CtkFileFilter *filter = CTK_FILE_FILTER (object);
 
   g_slist_free_full (filter->rules, (GDestroyNotify)filter_rule_free);
 
@@ -195,10 +195,10 @@ ctk_file_filter_finalize (GObject  *object)
 }
 
 /*
- * GtkBuildable implementation
+ * CtkBuildable implementation
  */
 static void
-ctk_file_filter_buildable_init (GtkBuildableIface *iface)
+ctk_file_filter_buildable_init (CtkBuildableIface *iface)
 {
   iface->custom_tag_start = ctk_file_filter_buildable_custom_tag_start;
   iface->custom_tag_end = ctk_file_filter_buildable_custom_tag_end;
@@ -207,14 +207,14 @@ ctk_file_filter_buildable_init (GtkBuildableIface *iface)
 }
 
 static void
-ctk_file_filter_buildable_set_name (GtkBuildable *buildable,
+ctk_file_filter_buildable_set_name (CtkBuildable *buildable,
                                     const gchar  *name)
 {
   ctk_file_filter_set_name (CTK_FILE_FILTER (buildable), name);
 }
 
 static const gchar *
-ctk_file_filter_buildable_get_name (GtkBuildable *buildable)
+ctk_file_filter_buildable_get_name (CtkBuildable *buildable)
 {
   return ctk_file_filter_get_name (CTK_FILE_FILTER (buildable));
 }
@@ -225,8 +225,8 @@ typedef enum {
 } ParserType;
 
 typedef struct {
-  GtkFileFilter *filter;
-  GtkBuilder    *builder;
+  CtkFileFilter *filter;
+  CtkBuilder    *builder;
   ParserType     type;
   GString       *string;
   gboolean       parsing;
@@ -273,7 +273,7 @@ parser_start_element (GMarkupParseContext  *context,
   else
     {
       _ctk_builder_error_unhandled_tag (data->builder, context,
-                                        "GtkFileFilter", element_name,
+                                        "CtkFileFilter", element_name,
                                         error);
     }
 }
@@ -326,8 +326,8 @@ static const GMarkupParser sub_parser =
   };
 
 static gboolean
-ctk_file_filter_buildable_custom_tag_start (GtkBuildable  *buildable,
-                                            GtkBuilder    *builder,
+ctk_file_filter_buildable_custom_tag_start (CtkBuildable  *buildable,
+                                            CtkBuilder    *builder,
                                             GObject       *child,
                                             const gchar   *tagname,
                                             GMarkupParser *parser,
@@ -362,8 +362,8 @@ ctk_file_filter_buildable_custom_tag_start (GtkBuildable  *buildable,
 }
 
 static void
-ctk_file_filter_buildable_custom_tag_end (GtkBuildable *buildable,
-                                          GtkBuilder   *builder,
+ctk_file_filter_buildable_custom_tag_end (CtkBuildable *buildable,
+                                          CtkBuilder   *builder,
                                           GObject      *child,
                                           const gchar  *tagname,
                                           gpointer     *user_data)
@@ -382,22 +382,22 @@ ctk_file_filter_buildable_custom_tag_end (GtkBuildable *buildable,
 /**
  * ctk_file_filter_new:
  * 
- * Creates a new #GtkFileFilter with no rules added to it.
+ * Creates a new #CtkFileFilter with no rules added to it.
  * Such a filter doesn’t accept any files, so is not
  * particularly useful until you add rules with
  * ctk_file_filter_add_mime_type(), ctk_file_filter_add_pattern(),
  * or ctk_file_filter_add_custom(). To create a filter
  * that accepts any file, use:
  * |[<!-- language="C" -->
- * GtkFileFilter *filter = ctk_file_filter_new ();
+ * CtkFileFilter *filter = ctk_file_filter_new ();
  * ctk_file_filter_add_pattern (filter, "*");
  * ]|
  * 
- * Returns: a new #GtkFileFilter
+ * Returns: a new #CtkFileFilter
  * 
  * Since: 2.4
  **/
-GtkFileFilter *
+CtkFileFilter *
 ctk_file_filter_new (void)
 {
   return g_object_new (CTK_TYPE_FILE_FILTER, NULL);
@@ -405,7 +405,7 @@ ctk_file_filter_new (void)
 
 /**
  * ctk_file_filter_set_name:
- * @filter: a #GtkFileFilter
+ * @filter: a #CtkFileFilter
  * @name: (allow-none): the human-readable-name for the filter, or %NULL
  *   to remove any existing name.
  * 
@@ -416,7 +416,7 @@ ctk_file_filter_new (void)
  * Since: 2.4
  **/
 void
-ctk_file_filter_set_name (GtkFileFilter *filter,
+ctk_file_filter_set_name (CtkFileFilter *filter,
 			  const gchar   *name)
 {
   g_return_if_fail (CTK_IS_FILE_FILTER (filter));
@@ -428,7 +428,7 @@ ctk_file_filter_set_name (GtkFileFilter *filter,
 
 /**
  * ctk_file_filter_get_name:
- * @filter: a #GtkFileFilter
+ * @filter: a #CtkFileFilter
  * 
  * Gets the human-readable name for the filter. See ctk_file_filter_set_name().
  * 
@@ -439,7 +439,7 @@ ctk_file_filter_set_name (GtkFileFilter *filter,
  * Since: 2.4
  **/
 const gchar *
-ctk_file_filter_get_name (GtkFileFilter *filter)
+ctk_file_filter_get_name (CtkFileFilter *filter)
 {
   g_return_val_if_fail (CTK_IS_FILE_FILTER (filter), NULL);
   
@@ -447,7 +447,7 @@ ctk_file_filter_get_name (GtkFileFilter *filter)
 }
 
 static void
-file_filter_add_rule (GtkFileFilter *filter,
+file_filter_add_rule (CtkFileFilter *filter,
 		      FilterRule    *rule)
 {
   filter->needed |= rule->needed;
@@ -456,7 +456,7 @@ file_filter_add_rule (GtkFileFilter *filter,
 
 /**
  * ctk_file_filter_add_mime_type:
- * @filter: A #GtkFileFilter
+ * @filter: A #CtkFileFilter
  * @mime_type: name of a MIME type
  * 
  * Adds a rule allowing a given mime type to @filter.
@@ -464,7 +464,7 @@ file_filter_add_rule (GtkFileFilter *filter,
  * Since: 2.4
  **/
 void
-ctk_file_filter_add_mime_type (GtkFileFilter *filter,
+ctk_file_filter_add_mime_type (CtkFileFilter *filter,
 			       const gchar   *mime_type)
 {
   FilterRule *rule;
@@ -482,7 +482,7 @@ ctk_file_filter_add_mime_type (GtkFileFilter *filter,
 
 /**
  * ctk_file_filter_add_pattern:
- * @filter: a #GtkFileFilter
+ * @filter: a #CtkFileFilter
  * @pattern: a shell style glob
  * 
  * Adds a rule allowing a shell style glob to a filter.
@@ -490,7 +490,7 @@ ctk_file_filter_add_mime_type (GtkFileFilter *filter,
  * Since: 2.4
  **/
 void
-ctk_file_filter_add_pattern (GtkFileFilter *filter,
+ctk_file_filter_add_pattern (CtkFileFilter *filter,
 			     const gchar   *pattern)
 {
   FilterRule *rule;
@@ -508,7 +508,7 @@ ctk_file_filter_add_pattern (GtkFileFilter *filter,
 
 /**
  * ctk_file_filter_add_pixbuf_formats:
- * @filter: a #GtkFileFilter
+ * @filter: a #CtkFileFilter
  * 
  * Adds a rule allowing image files in the formats supported
  * by GdkPixbuf.
@@ -516,7 +516,7 @@ ctk_file_filter_add_pattern (GtkFileFilter *filter,
  * Since: 2.6
  **/
 void
-ctk_file_filter_add_pixbuf_formats (GtkFileFilter *filter)
+ctk_file_filter_add_pixbuf_formats (CtkFileFilter *filter)
 {
   FilterRule *rule;
   
@@ -532,7 +532,7 @@ ctk_file_filter_add_pixbuf_formats (GtkFileFilter *filter)
 
 /**
  * ctk_file_filter_add_custom:
- * @filter: a #GtkFileFilter
+ * @filter: a #CtkFileFilter
  * @needed: bitfield of flags indicating the information that the custom
  *          filter function needs.
  * @func: callback function; if the function returns %TRUE, then
@@ -549,9 +549,9 @@ ctk_file_filter_add_pixbuf_formats (GtkFileFilter *filter)
  * Since: 2.4
  **/
 void
-ctk_file_filter_add_custom (GtkFileFilter         *filter,
-			    GtkFileFilterFlags     needed,
-			    GtkFileFilterFunc      func,
+ctk_file_filter_add_custom (CtkFileFilter         *filter,
+			    CtkFileFilterFlags     needed,
+			    CtkFileFilterFunc      func,
 			    gpointer               data,
 			    GDestroyNotify         notify)
 {
@@ -572,22 +572,22 @@ ctk_file_filter_add_custom (GtkFileFilter         *filter,
 
 /**
  * ctk_file_filter_get_needed:
- * @filter: a #GtkFileFilter
+ * @filter: a #CtkFileFilter
  * 
- * Gets the fields that need to be filled in for the #GtkFileFilterInfo
+ * Gets the fields that need to be filled in for the #CtkFileFilterInfo
  * passed to ctk_file_filter_filter()
  * 
  * This function will not typically be used by applications; it
  * is intended principally for use in the implementation of
- * #GtkFileChooser.
+ * #CtkFileChooser.
  * 
  * Returns: bitfield of flags indicating needed fields when
  *   calling ctk_file_filter_filter()
  * 
  * Since: 2.4
  **/
-GtkFileFilterFlags
-ctk_file_filter_get_needed (GtkFileFilter *filter)
+CtkFileFilterFlags
+ctk_file_filter_get_needed (CtkFileFilter *filter)
 {
   return filter->needed;
 }
@@ -596,7 +596,7 @@ ctk_file_filter_get_needed (GtkFileFilter *filter)
 
 #import <Foundation/Foundation.h>
 
-NSArray * _ctk_file_filter_get_as_pattern_nsstrings (GtkFileFilter *filter)
+NSArray * _ctk_file_filter_get_as_pattern_nsstrings (CtkFileFilter *filter)
 {
   NSMutableArray *array = [[NSMutableArray alloc] init];
   GSList *tmp_list;
@@ -671,7 +671,7 @@ NSArray * _ctk_file_filter_get_as_pattern_nsstrings (GtkFileFilter *filter)
 #endif
 
 char **
-_ctk_file_filter_get_as_patterns (GtkFileFilter      *filter)
+_ctk_file_filter_get_as_patterns (CtkFileFilter      *filter)
 {
   GPtrArray *array;
   GSList *tmp_list;
@@ -719,25 +719,25 @@ _ctk_file_filter_get_as_patterns (GtkFileFilter      *filter)
 
 /**
  * ctk_file_filter_filter:
- * @filter: a #GtkFileFilter
- * @filter_info: a #GtkFileFilterInfo containing information
+ * @filter: a #CtkFileFilter
+ * @filter_info: a #CtkFileFilterInfo containing information
  *  about a file.
  * 
  * Tests whether a file should be displayed according to @filter.
- * The #GtkFileFilterInfo @filter_info should include
+ * The #CtkFileFilterInfo @filter_info should include
  * the fields returned from ctk_file_filter_get_needed().
  *
  * This function will not typically be used by applications; it
  * is intended principally for use in the implementation of
- * #GtkFileChooser.
+ * #CtkFileChooser.
  * 
  * Returns: %TRUE if the file should be displayed
  * 
  * Since: 2.4
  **/
 gboolean
-ctk_file_filter_filter (GtkFileFilter           *filter,
-			const GtkFileFilterInfo *filter_info)
+ctk_file_filter_filter (CtkFileFilter           *filter,
+			const CtkFileFilterInfo *filter_info)
 {
   GSList *tmp_list;
 
@@ -812,7 +812,7 @@ ctk_file_filter_filter (GtkFileFilter           *filter,
 
 /**
  * ctk_file_filter_to_gvariant:
- * @filter: a #GtkFileFilter
+ * @filter: a #CtkFileFilter
  *
  * Serialize a file filter to an a{sv} variant.
  *
@@ -821,7 +821,7 @@ ctk_file_filter_filter (GtkFileFilter           *filter,
  * Since: 3.22
  */
 GVariant *
-ctk_file_filter_to_gvariant (GtkFileFilter *filter)
+ctk_file_filter_to_gvariant (CtkFileFilter *filter)
 {
   GVariantBuilder builder;
   GSList *l;
@@ -872,14 +872,14 @@ ctk_file_filter_to_gvariant (GtkFileFilter *filter)
  * Deserialize a file filter from an a{sv} variant in
  * the format produced by ctk_file_filter_to_gvariant().
  *
- * Returns: (transfer full): a new #GtkFileFilter object
+ * Returns: (transfer full): a new #CtkFileFilter object
  *
  * Since: 3.22
  */
-GtkFileFilter *
+CtkFileFilter *
 ctk_file_filter_new_from_gvariant (GVariant *variant)
 {
-  GtkFileFilter *filter;
+  CtkFileFilter *filter;
   GVariantIter *iter;
   const char *name;
   int type;

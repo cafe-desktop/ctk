@@ -1,8 +1,8 @@
 <!-- invalid attribute -->
 <interface>
-  <object class="GtkInfoBar">
+  <object class="CtkInfoBar">
     <child>
-      <object class="GtkButton" id="button_cancel"/>
+      <object class="CtkButton" id="button_cancel"/>
     </child>
     <action-widgets>
       <action-widget response="ok" food="egg">button_cancel</action-widget>

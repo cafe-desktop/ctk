@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkGrid" id="grid1">
+      <object class="CtkGrid" id="grid1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
-          <object class="GtkButton" id="button1">
+          <object class="CtkButton" id="button1">
             <property name="label" translatable="yes">A</property>
             <property name="use_action_appearance">False</property>
             <property name="width_request">40</property>
@@ -28,7 +28,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button2">
+          <object class="CtkButton" id="button2">
             <property name="label" translatable="yes">B</property>
             <property name="use_action_appearance">False</property>
             <property name="width_request">40</property>
@@ -47,7 +47,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button3">
+          <object class="CtkButton" id="button3">
             <property name="label" translatable="yes">C</property>
             <property name="use_action_appearance">False</property>
             <property name="width_request">40</property>
@@ -66,7 +66,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button4">
+          <object class="CtkButton" id="button4">
             <property name="label" translatable="yes">D</property>
             <property name="use_action_appearance">False</property>
             <property name="width_request">40</property>
@@ -85,7 +85,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button5">
+          <object class="CtkButton" id="button5">
             <property name="label" translatable="yes">E</property>
             <property name="use_action_appearance">False</property>
             <property name="width_request">40</property>
@@ -104,7 +104,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button6">
+          <object class="CtkButton" id="button6">
             <property name="label" translatable="yes">F</property>
             <property name="use_action_appearance">False</property>
             <property name="width_request">40</property>
@@ -123,7 +123,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button7">
+          <object class="CtkButton" id="button7">
             <property name="label" translatable="yes">G</property>
             <property name="use_action_appearance">False</property>
             <property name="width_request">40</property>
@@ -142,7 +142,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button8">
+          <object class="CtkButton" id="button8">
             <property name="label" translatable="yes">H</property>
             <property name="use_action_appearance">False</property>
             <property name="width_request">40</property>
@@ -161,7 +161,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button9">
+          <object class="CtkButton" id="button9">
             <property name="label" translatable="yes">I</property>
             <property name="use_action_appearance">False</property>
             <property name="width_request">40</property>
@@ -180,7 +180,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button10">
+          <object class="CtkButton" id="button10">
             <property name="label" translatable="yes">J</property>
             <property name="use_action_appearance">False</property>
             <property name="width_request">40</property>
@@ -199,7 +199,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button11">
+          <object class="CtkButton" id="button11">
             <property name="label" translatable="yes">K</property>
             <property name="use_action_appearance">False</property>
             <property name="width_request">40</property>
@@ -218,7 +218,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button12">
+          <object class="CtkButton" id="button12">
             <property name="label" translatable="yes">L</property>
             <property name="use_action_appearance">False</property>
             <property name="width_request">40</property>

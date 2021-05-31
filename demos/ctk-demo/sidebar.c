@@ -1,26 +1,26 @@
 /* Stack Sidebar
  *
- * GtkStackSidebar provides an automatic sidebar widget to control
- * navigation of a GtkStack object. This widget automatically updates it
- * content based on what is presently available in the GtkStack object,
+ * CtkStackSidebar provides an automatic sidebar widget to control
+ * navigation of a CtkStack object. This widget automatically updates it
+ * content based on what is presently available in the CtkStack object,
  * and using the "title" child property to set the display labels.
  */
 
 #include <glib/gi18n.h>
 #include <ctk/ctk.h>
 
-GtkWidget *
-do_sidebar (GtkWidget *do_widget)
+CtkWidget *
+do_sidebar (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *sidebar;
-  GtkWidget *stack;
-  GtkWidget *box;
-  GtkWidget *widget;
-  GtkWidget *header;
+  static CtkWidget *window = NULL;
+  CtkWidget *sidebar;
+  CtkWidget *stack;
+  CtkWidget *box;
+  CtkWidget *widget;
+  CtkWidget *header;
   const gchar* pages[] = {
     "Welcome to GTK+",
-    "GtkStackSidebar Widget",
+    "CtkStackSidebar Widget",
     "Automatic navigation",
     "Consistent appearance",
     "Scrolling",

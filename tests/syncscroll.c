@@ -1,7 +1,7 @@
 #include <ctk/ctk.h>
 
 static void
-fill_text_view (GtkWidget *tv, const gchar *text)
+fill_text_view (CtkWidget *tv, const gchar *text)
 {
   gint i;
   GString *s;
@@ -17,8 +17,8 @@ fill_text_view (GtkWidget *tv, const gchar *text)
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *win, *box, *tv, *sw, *sb;
-  GtkAdjustment *adj;
+  CtkWidget *win, *box, *tv, *sw, *sb;
+  CtkAdjustment *adj;
 
   ctk_init (NULL, NULL);
 

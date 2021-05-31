@@ -22,7 +22,7 @@
 #include <math.h>
 
 void
-_ctk_hsla_init (GtkHSLA *hsla,
+_ctk_hsla_init (CtkHSLA *hsla,
                 double   hue,
                 double   saturation,
                 double   lightness,
@@ -40,7 +40,7 @@ _ctk_hsla_init (GtkHSLA *hsla,
 }
 
 void
-_ctk_hsla_init_from_rgba (GtkHSLA       *hsla,
+_ctk_hsla_init_from_rgba (CtkHSLA       *hsla,
                           const GdkRGBA *rgba)
 {
   gdouble min;
@@ -110,7 +110,7 @@ _ctk_hsla_init_from_rgba (GtkHSLA       *hsla,
 
 void
 _gdk_rgba_init_from_hsla (GdkRGBA       *rgba,
-                          const GtkHSLA *hsla)
+                          const CtkHSLA *hsla)
 {
   gdouble hue;
   gdouble lightness;
@@ -184,8 +184,8 @@ _gdk_rgba_init_from_hsla (GdkRGBA       *rgba,
 }
 
 void
-_ctk_hsla_shade (GtkHSLA       *dest,
-                 const GtkHSLA *src,
+_ctk_hsla_shade (CtkHSLA       *dest,
+                 const CtkHSLA *src,
                  double         factor)
 {
   g_return_if_fail (dest != NULL);

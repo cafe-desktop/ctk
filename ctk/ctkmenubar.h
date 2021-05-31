@@ -37,27 +37,27 @@ G_BEGIN_DECLS
 
 
 #define	CTK_TYPE_MENU_BAR               (ctk_menu_bar_get_type ())
-#define CTK_MENU_BAR(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_MENU_BAR, GtkMenuBar))
-#define CTK_MENU_BAR_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_MENU_BAR, GtkMenuBarClass))
+#define CTK_MENU_BAR(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_MENU_BAR, CtkMenuBar))
+#define CTK_MENU_BAR_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_MENU_BAR, CtkMenuBarClass))
 #define CTK_IS_MENU_BAR(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_MENU_BAR))
 #define CTK_IS_MENU_BAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_MENU_BAR))
-#define CTK_MENU_BAR_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_MENU_BAR, GtkMenuBarClass))
+#define CTK_MENU_BAR_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_MENU_BAR, CtkMenuBarClass))
 
-typedef struct _GtkMenuBar         GtkMenuBar;
-typedef struct _GtkMenuBarPrivate  GtkMenuBarPrivate;
-typedef struct _GtkMenuBarClass    GtkMenuBarClass;
+typedef struct _CtkMenuBar         CtkMenuBar;
+typedef struct _CtkMenuBarPrivate  CtkMenuBarPrivate;
+typedef struct _CtkMenuBarClass    CtkMenuBarClass;
 
-struct _GtkMenuBar
+struct _CtkMenuBar
 {
-  GtkMenuShell menu_shell;
+  CtkMenuShell menu_shell;
 
   /*< private >*/
-  GtkMenuBarPrivate *priv;
+  CtkMenuBarPrivate *priv;
 };
 
-struct _GtkMenuBarClass
+struct _CtkMenuBarClass
 {
-  GtkMenuShellClass parent_class;
+  CtkMenuShellClass parent_class;
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -70,25 +70,25 @@ struct _GtkMenuBarClass
 GDK_AVAILABLE_IN_ALL
 GType      ctk_menu_bar_get_type        (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget* ctk_menu_bar_new             (void);
+CtkWidget* ctk_menu_bar_new             (void);
 GDK_AVAILABLE_IN_3_4
-GtkWidget* ctk_menu_bar_new_from_model  (GMenuModel *model);
+CtkWidget* ctk_menu_bar_new_from_model  (GMenuModel *model);
 
 GDK_AVAILABLE_IN_ALL
-GtkPackDirection ctk_menu_bar_get_pack_direction (GtkMenuBar       *menubar);
+CtkPackDirection ctk_menu_bar_get_pack_direction (CtkMenuBar       *menubar);
 GDK_AVAILABLE_IN_ALL
-void             ctk_menu_bar_set_pack_direction (GtkMenuBar       *menubar,
-						  GtkPackDirection  pack_dir);
+void             ctk_menu_bar_set_pack_direction (CtkMenuBar       *menubar,
+						  CtkPackDirection  pack_dir);
 GDK_AVAILABLE_IN_ALL
-GtkPackDirection ctk_menu_bar_get_child_pack_direction (GtkMenuBar       *menubar);
+CtkPackDirection ctk_menu_bar_get_child_pack_direction (CtkMenuBar       *menubar);
 GDK_AVAILABLE_IN_ALL
-void             ctk_menu_bar_set_child_pack_direction (GtkMenuBar       *menubar,
-							GtkPackDirection  child_pack_dir);
+void             ctk_menu_bar_set_child_pack_direction (CtkMenuBar       *menubar,
+							CtkPackDirection  child_pack_dir);
 
 /* Private functions */
-void _ctk_menu_bar_cycle_focus (GtkMenuBar       *menubar,
-				GtkDirectionType  dir);
-GList* _ctk_menu_bar_get_viewable_menu_bars (GtkWindow *window);
+void _ctk_menu_bar_cycle_focus (CtkMenuBar       *menubar,
+				CtkDirectionType  dir);
+GList* _ctk_menu_bar_get_viewable_menu_bars (CtkWindow *window);
 
 
 

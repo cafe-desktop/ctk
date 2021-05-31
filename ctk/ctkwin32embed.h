@@ -30,7 +30,7 @@ G_BEGIN_DECLS
  * simple protocol, more or less based on XEMBED. The protocol uses
  * registered window messages. The name passed to
  * RegisterWindowMessage() is ctk-win32-embed:%d, with %d being the
- * numeric value of an GtkWin32EmbedMessageType enum. Each message
+ * numeric value of an CtkWin32EmbedMessageType enum. Each message
  * carries the message type enum value and two integers, the “wparam”
  * and “lparam”, like all window messages.
  *
@@ -63,7 +63,7 @@ typedef enum {					/* send or post? */
   CTK_WIN32_EMBED_GRAB_KEY,			/* post */
   CTK_WIN32_EMBED_UNGRAB_KEY,			/* post */
   CTK_WIN32_EMBED_LAST
-} GtkWin32EmbedMessageType;
+} CtkWin32EmbedMessageType;
 
 /* wParam values for CTK_WIN32_EMBED_FOCUS_IN: */
 #define CTK_WIN32_EMBED_FOCUS_CURRENT 0
@@ -75,15 +75,15 @@ typedef enum {					/* send or post? */
  */
 #define CTK_WIN32_EMBED_FOCUS_WRAPAROUND         (1 << 0)
 
-guint _ctk_win32_embed_message_type (GtkWin32EmbedMessageType type);
+guint _ctk_win32_embed_message_type (CtkWin32EmbedMessageType type);
 void _ctk_win32_embed_push_message (MSG *msg);
 void _ctk_win32_embed_pop_message (void);
 void _ctk_win32_embed_send (GdkWindow		    *recipient,
-			    GtkWin32EmbedMessageType message,
+			    CtkWin32EmbedMessageType message,
 			    WPARAM		     wparam,
 			    LPARAM                   lparam);
 void _ctk_win32_embed_send_focus_message (GdkWindow		  *recipient,
-					  GtkWin32EmbedMessageType message,
+					  CtkWin32EmbedMessageType message,
 					  WPARAM	           wparam);
 void     _ctk_win32_embed_set_focus_wrapped  (void);
 gboolean _ctk_win32_embed_get_focus_wrapped  (void);

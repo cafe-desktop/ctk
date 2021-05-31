@@ -24,9 +24,9 @@ G_BEGIN_DECLS
 
 gchar *_ctk_get_theme_dir (void);
 
-const gchar *_ctk_css_provider_get_theme_dir (GtkCssProvider *provider);
+const gchar *_ctk_css_provider_get_theme_dir (CtkCssProvider *provider);
 
-void   _ctk_css_provider_load_named    (GtkCssProvider *provider,
+void   _ctk_css_provider_load_named    (CtkCssProvider *provider,
                                         const gchar    *name,
                                         const gchar    *variant);
 

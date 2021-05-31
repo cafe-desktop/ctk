@@ -35,41 +35,41 @@
 
 /**
  * SECTION:ctkprintoperation
- * @Title: GtkPrintOperation
+ * @Title: CtkPrintOperation
  * @Short_description: High-level Printing API
- * @See_also: #GtkPrintContext, #GtkPrintUnixDialog
+ * @See_also: #CtkPrintContext, #CtkPrintUnixDialog
  *
- * GtkPrintOperation is the high-level, portable printing API.
+ * CtkPrintOperation is the high-level, portable printing API.
  * It looks a bit different than other GTK+ dialogs such as the
- * #GtkFileChooser, since some platforms don’t expose enough
+ * #CtkFileChooser, since some platforms don’t expose enough
  * infrastructure to implement a good print dialog. On such
- * platforms, GtkPrintOperation uses the native print dialog.
+ * platforms, CtkPrintOperation uses the native print dialog.
  * On platforms which do not provide a native print dialog, GTK+
- * uses its own, see #GtkPrintUnixDialog.
+ * uses its own, see #CtkPrintUnixDialog.
  *
  * The typical way to use the high-level printing API is to create
- * a GtkPrintOperation object with ctk_print_operation_new() when
+ * a CtkPrintOperation object with ctk_print_operation_new() when
  * the user selects to print. Then you set some properties on it,
- * e.g. the page size, any #GtkPrintSettings from previous print
+ * e.g. the page size, any #CtkPrintSettings from previous print
  * operations, the number of pages, the current page, etc.
  *
  * Then you start the print operation by calling ctk_print_operation_run().
  * It will then show a dialog, let the user select a printer and
  * options. When the user finished the dialog various signals will
- * be emitted on the #GtkPrintOperation, the main one being
- * #GtkPrintOperation::draw-page, which you are supposed to catch
- * and render the page on the provided #GtkPrintContext using Cairo.
+ * be emitted on the #CtkPrintOperation, the main one being
+ * #CtkPrintOperation::draw-page, which you are supposed to catch
+ * and render the page on the provided #CtkPrintContext using Cairo.
  *
  * # The high-level printing API
  *
  * |[<!-- language="C" -->
- * static GtkPrintSettings *settings = NULL;
+ * static CtkPrintSettings *settings = NULL;
  *
  * static void
  * do_print (void)
  * {
- *   GtkPrintOperation *print;
- *   GtkPrintOperationResult res;
+ *   CtkPrintOperation *print;
+ *   CtkPrintOperationResult res;
  *
  *   print = ctk_print_operation_new ();
  *
@@ -93,7 +93,7 @@
  * }
  * ]|
  *
- * By default GtkPrintOperation uses an external application to do
+ * By default CtkPrintOperation uses an external application to do
  * print preview. To implement a custom print preview, an application
  * must connect to the preview signal. The functions
  * ctk_print_operation_preview_render_page(),
@@ -148,26 +148,26 @@ static guint signals[LAST_SIGNAL] = { 0 };
 static int job_nr = 0;
 typedef struct _PrintPagesData PrintPagesData;
 
-static void          preview_iface_init      (GtkPrintOperationPreviewIface *iface);
-static GtkPageSetup *create_page_setup       (GtkPrintOperation             *op);
-static void          common_render_page      (GtkPrintOperation             *op,
+static void          preview_iface_init      (CtkPrintOperationPreviewIface *iface);
+static CtkPageSetup *create_page_setup       (CtkPrintOperation             *op);
+static void          common_render_page      (CtkPrintOperation             *op,
 					      gint                           page_nr);
 static void          increment_page_sequence (PrintPagesData *data);
 static void          prepare_data            (PrintPagesData *data);
 static void          clamp_page_ranges       (PrintPagesData *data);
 
 
-G_DEFINE_TYPE_WITH_CODE (GtkPrintOperation, ctk_print_operation, G_TYPE_OBJECT,
-                         G_ADD_PRIVATE (GtkPrintOperation)
+G_DEFINE_TYPE_WITH_CODE (CtkPrintOperation, ctk_print_operation, G_TYPE_OBJECT,
+                         G_ADD_PRIVATE (CtkPrintOperation)
 			 G_IMPLEMENT_INTERFACE (CTK_TYPE_PRINT_OPERATION_PREVIEW,
 						preview_iface_init))
 
 /**
  * ctk_print_error_quark:
  *
- * Registers an error quark for #GtkPrintOperation if necessary.
+ * Registers an error quark for #CtkPrintOperation if necessary.
  * 
- * Returns: The error quark used for #GtkPrintOperation errors.
+ * Returns: The error quark used for #CtkPrintOperation errors.
  *
  * Since: 2.10
  **/
@@ -183,8 +183,8 @@ ctk_print_error_quark (void)
 static void
 ctk_print_operation_finalize (GObject *object)
 {
-  GtkPrintOperation *print_operation = CTK_PRINT_OPERATION (object);
-  GtkPrintOperationPrivate *priv = print_operation->priv;
+  CtkPrintOperation *print_operation = CTK_PRINT_OPERATION (object);
+  CtkPrintOperationPrivate *priv = print_operation->priv;
 
   if (priv->free_platform_data &&
       priv->platform_data)
@@ -220,9 +220,9 @@ ctk_print_operation_finalize (GObject *object)
 }
 
 static void
-ctk_print_operation_init (GtkPrintOperation *operation)
+ctk_print_operation_init (CtkPrintOperation *operation)
 {
-  GtkPrintOperationPrivate *priv;
+  CtkPrintOperationPrivate *priv;
   const char *appname;
 
   priv = operation->priv = ctk_print_operation_get_instance_private (operation);
@@ -260,21 +260,21 @@ ctk_print_operation_init (GtkPrintOperation *operation)
 }
 
 static void
-preview_iface_render_page (GtkPrintOperationPreview *preview,
+preview_iface_render_page (CtkPrintOperationPreview *preview,
 			   gint                      page_nr)
 {
 
-  GtkPrintOperation *op;
+  CtkPrintOperation *op;
 
   op = CTK_PRINT_OPERATION (preview);
   common_render_page (op, page_nr);
 }
 
 static void
-preview_iface_end_preview (GtkPrintOperationPreview *preview)
+preview_iface_end_preview (CtkPrintOperationPreview *preview)
 {
-  GtkPrintOperation *op;
-  GtkPrintOperationResult result;
+  CtkPrintOperation *op;
+  CtkPrintOperationResult result;
   
   op = CTK_PRINT_OPERATION (preview);
 
@@ -299,11 +299,11 @@ preview_iface_end_preview (GtkPrintOperationPreview *preview)
 }
 
 static gboolean
-preview_iface_is_selected (GtkPrintOperationPreview *preview,
+preview_iface_is_selected (CtkPrintOperationPreview *preview,
 			   gint                      page_nr)
 {
-  GtkPrintOperation *op;
-  GtkPrintOperationPrivate *priv;
+  CtkPrintOperation *op;
+  CtkPrintOperationPrivate *priv;
   int i;
   
   op = CTK_PRINT_OPERATION (preview);
@@ -329,7 +329,7 @@ preview_iface_is_selected (GtkPrintOperationPreview *preview,
 }
 
 static void
-preview_iface_init (GtkPrintOperationPreviewIface *iface)
+preview_iface_init (CtkPrintOperationPreviewIface *iface)
 {
   iface->render_page = preview_iface_render_page;
   iface->end_preview = preview_iface_end_preview;
@@ -337,9 +337,9 @@ preview_iface_init (GtkPrintOperationPreviewIface *iface)
 }
 
 static void
-preview_start_page (GtkPrintOperation *op,
-		    GtkPrintContext   *print_context,
-		    GtkPageSetup      *page_setup)
+preview_start_page (CtkPrintOperation *op,
+		    CtkPrintContext   *print_context,
+		    CtkPageSetup      *page_setup)
 {
   if ((op->priv->manual_number_up < 2) ||
       (op->priv->page_position % op->priv->manual_number_up == 0))
@@ -347,8 +347,8 @@ preview_start_page (GtkPrintOperation *op,
 }
 
 static void
-preview_end_page (GtkPrintOperation *op,
-		  GtkPrintContext   *print_context)
+preview_end_page (CtkPrintOperation *op,
+		  CtkPrintContext   *print_context)
 {
   cairo_t *cr;
 
@@ -361,7 +361,7 @@ preview_end_page (GtkPrintOperation *op,
 }
 
 static void
-preview_end_run (GtkPrintOperation *op,
+preview_end_run (CtkPrintOperation *op,
 		 gboolean           wait,
 		 gboolean           cancelled)
 {
@@ -376,7 +376,7 @@ ctk_print_operation_set_property (GObject      *object,
 				  const GValue *value,
 				  GParamSpec   *pspec)
 {
-  GtkPrintOperation *op = CTK_PRINT_OPERATION (object);
+  CtkPrintOperation *op = CTK_PRINT_OPERATION (object);
   
   switch (prop_id)
     {
@@ -437,8 +437,8 @@ ctk_print_operation_get_property (GObject    *object,
 				  GValue     *value,
 				  GParamSpec *pspec)
 {
-  GtkPrintOperation *op = CTK_PRINT_OPERATION (object);
-  GtkPrintOperationPrivate *priv = op->priv;
+  CtkPrintOperation *op = CTK_PRINT_OPERATION (object);
+  CtkPrintOperationPrivate *priv = op->priv;
 
   switch (prop_id)
     {
@@ -504,14 +504,14 @@ ctk_print_operation_get_property (GObject    *object,
 
 struct _PrintPagesData
 {
-  GtkPrintOperation *op;
+  CtkPrintOperation *op;
   gint uncollated_copies;
   gint collated_copies;
   gint uncollated, collated, total;
 
   gint range, num_ranges;
-  GtkPageRange *ranges;
-  GtkPageRange one_range;
+  CtkPageRange *ranges;
+  CtkPageRange one_range;
 
   gint page;
   gint sheet;
@@ -520,7 +520,7 @@ struct _PrintPagesData
   gint num_of_sheets;
   gint *pages;
 
-  GtkWidget *progress;
+  CtkWidget *progress;
  
   gboolean initialized;
   gboolean is_preview;
@@ -529,9 +529,9 @@ struct _PrintPagesData
 
 typedef struct
 {
-  GtkPrintOperationPreview *preview;
-  GtkPrintContext *print_context;
-  GtkWindow *parent;
+  CtkPrintOperationPreview *preview;
+  CtkPrintContext *print_context;
+  CtkWindow *parent;
   cairo_surface_t *surface;
   gchar *filename;
   gboolean wait;
@@ -541,7 +541,7 @@ typedef struct
 static void
 preview_print_idle_done (gpointer data)
 {
-  GtkPrintOperation *op;
+  CtkPrintOperation *op;
   PreviewOp *pop = (PreviewOp *) data;
 
   op = CTK_PRINT_OPERATION (pop->preview);
@@ -577,8 +577,8 @@ static gboolean
 preview_print_idle (gpointer data)
 {
   PreviewOp *pop;
-  GtkPrintOperation *op;
-  GtkPrintOperationPrivate *priv; 
+  CtkPrintOperation *op;
+  CtkPrintOperationPrivate *priv; 
   gboolean done = FALSE;
 
   pop = (PreviewOp *) data;
@@ -612,12 +612,12 @@ preview_print_idle (gpointer data)
 }
 
 static void
-preview_got_page_size (GtkPrintOperationPreview *preview, 
-		       GtkPrintContext          *context,
-		       GtkPageSetup             *page_setup,
+preview_got_page_size (CtkPrintOperationPreview *preview, 
+		       CtkPrintContext          *context,
+		       CtkPageSetup             *page_setup,
 		       PreviewOp                *pop)
 {
-  GtkPrintOperation *op = CTK_PRINT_OPERATION (preview);
+  CtkPrintOperation *op = CTK_PRINT_OPERATION (preview);
   cairo_t *cr;
 
   _ctk_print_operation_platform_backend_resize_preview_surface (op, page_setup, pop->surface);
@@ -628,8 +628,8 @@ preview_got_page_size (GtkPrintOperationPreview *preview,
 }
 
 static void
-preview_ready (GtkPrintOperationPreview *preview,
-               GtkPrintContext          *context,
+preview_ready (CtkPrintOperationPreview *preview,
+               CtkPrintContext          *context,
 	       PreviewOp                *pop)
 {
   guint id;
@@ -647,14 +647,14 @@ preview_ready (GtkPrintOperationPreview *preview,
 
 
 static gboolean
-ctk_print_operation_preview_handler (GtkPrintOperation        *op,
-                                     GtkPrintOperationPreview *preview, 
-				     GtkPrintContext          *context,
-				     GtkWindow                *parent)
+ctk_print_operation_preview_handler (CtkPrintOperation        *op,
+                                     CtkPrintOperationPreview *preview, 
+				     CtkPrintContext          *context,
+				     CtkWindow                *parent)
 {
   gdouble dpi_x, dpi_y;
   PreviewOp *pop;
-  GtkPageSetup *page_setup;
+  CtkPageSetup *page_setup;
   cairo_t *cr;
 
   pop = g_new0 (PreviewOp, 1);
@@ -690,25 +690,25 @@ ctk_print_operation_preview_handler (GtkPrintOperation        *op,
   return TRUE;
 }
 
-static GtkWidget *
-ctk_print_operation_create_custom_widget (GtkPrintOperation *operation)
+static CtkWidget *
+ctk_print_operation_create_custom_widget (CtkPrintOperation *operation)
 {
   return NULL;
 }
 
 static gboolean
-ctk_print_operation_paginate (GtkPrintOperation *operation,
-                              GtkPrintContext   *context)
+ctk_print_operation_paginate (CtkPrintOperation *operation,
+                              CtkPrintContext   *context)
 {
   /* assume the number of pages is already set and pagination is not needed */
   return TRUE;
 }
 
 static void
-ctk_print_operation_done (GtkPrintOperation       *operation,
-                          GtkPrintOperationResult  result)
+ctk_print_operation_done (CtkPrintOperation       *operation,
+                          CtkPrintOperationResult  result)
 {
-  GtkPrintOperationPrivate *priv = operation->priv;
+  CtkPrintOperationPrivate *priv = operation->priv;
 
   if (priv->print_context)
     {
@@ -724,7 +724,7 @@ custom_widget_accumulator (GSignalInvocationHint *ihint,
 			   gpointer               dummy)
 {
   gboolean continue_emission;
-  GtkWidget *widget;
+  CtkWidget *widget;
   
   widget = g_value_get_object (handler_return);
   if (widget != NULL)
@@ -748,7 +748,7 @@ paginate_accumulator (GSignalInvocationHint *ihint,
 }
 
 static void
-ctk_print_operation_class_init (GtkPrintOperationClass *class)
+ctk_print_operation_class_init (CtkPrintOperationClass *class)
 {
   GObjectClass *gobject_class = (GObjectClass *)class;
 
@@ -762,8 +762,8 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
   class->done = ctk_print_operation_done;
 
   /**
-   * GtkPrintOperation::done:
-   * @operation: the #GtkPrintOperation on which the signal was emitted
+   * CtkPrintOperation::done:
+   * @operation: the #CtkPrintOperation on which the signal was emitted
    * @result: the result of the print operation
    *
    * Emitted when the print operation run has finished doing
@@ -775,7 +775,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
    *
    * If you enabled print status tracking then 
    * ctk_print_operation_is_finished() may still return %FALSE 
-   * after #GtkPrintOperation::done was emitted.
+   * after #CtkPrintOperation::done was emitted.
    *
    * Since: 2.10
    */
@@ -783,21 +783,21 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
     g_signal_new (I_("done"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkPrintOperationClass, done),
+		  G_STRUCT_OFFSET (CtkPrintOperationClass, done),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1, CTK_TYPE_PRINT_OPERATION_RESULT);
 
   /**
-   * GtkPrintOperation::begin-print:
-   * @operation: the #GtkPrintOperation on which the signal was emitted
-   * @context: the #GtkPrintContext for the current operation
+   * CtkPrintOperation::begin-print:
+   * @operation: the #CtkPrintOperation on which the signal was emitted
+   * @context: the #CtkPrintContext for the current operation
    *
    * Emitted after the user has finished changing print settings
    * in the dialog, before the actual rendering starts. 
    *
    * A typical use for ::begin-print is to use the parameters from the
-   * #GtkPrintContext and paginate the document accordingly, and then
+   * #CtkPrintContext and paginate the document accordingly, and then
    * set the number of pages with ctk_print_operation_set_n_pages().
    *
    * Since: 2.10
@@ -806,17 +806,17 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
     g_signal_new (I_("begin-print"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkPrintOperationClass, begin_print),
+		  G_STRUCT_OFFSET (CtkPrintOperationClass, begin_print),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1, CTK_TYPE_PRINT_CONTEXT);
 
    /**
-   * GtkPrintOperation::paginate:
-   * @operation: the #GtkPrintOperation on which the signal was emitted
-   * @context: the #GtkPrintContext for the current operation
+   * CtkPrintOperation::paginate:
+   * @operation: the #CtkPrintOperation on which the signal was emitted
+   * @context: the #CtkPrintContext for the current operation
    *
-   * Emitted after the #GtkPrintOperation::begin-print signal, but before 
+   * Emitted after the #CtkPrintOperation::begin-print signal, but before 
    * the actual rendering starts. It keeps getting emitted until a connected 
    * signal handler returns %TRUE.
    *
@@ -838,18 +838,18 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
     g_signal_new (I_("paginate"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkPrintOperationClass, paginate),
+		  G_STRUCT_OFFSET (CtkPrintOperationClass, paginate),
 		  paginate_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__OBJECT,
 		  G_TYPE_BOOLEAN, 1, CTK_TYPE_PRINT_CONTEXT);
 
 
   /**
-   * GtkPrintOperation::request-page-setup:
-   * @operation: the #GtkPrintOperation on which the signal was emitted
-   * @context: the #GtkPrintContext for the current operation
+   * CtkPrintOperation::request-page-setup:
+   * @operation: the #CtkPrintOperation on which the signal was emitted
+   * @context: the #CtkPrintContext for the current operation
    * @page_nr: the number of the currently printed page (0-based)
-   * @setup: the #GtkPageSetup 
+   * @setup: the #CtkPageSetup 
    * 
    * Emitted once for every page that is printed, to give
    * the application a chance to modify the page setup. Any changes 
@@ -861,7 +861,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
     g_signal_new (I_("request-page-setup"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkPrintOperationClass, request_page_setup),
+		  G_STRUCT_OFFSET (CtkPrintOperationClass, request_page_setup),
 		  NULL, NULL,
 		  _ctk_marshal_VOID__OBJECT_INT_OBJECT,
 		  G_TYPE_NONE, 3,
@@ -870,9 +870,9 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 		  CTK_TYPE_PAGE_SETUP);
 
   /**
-   * GtkPrintOperation::draw-page:
-   * @operation: the #GtkPrintOperation on which the signal was emitted
-   * @context: the #GtkPrintContext for the current operation
+   * CtkPrintOperation::draw-page:
+   * @operation: the #CtkPrintOperation on which the signal was emitted
+   * @context: the #CtkPrintContext for the current operation
    * @page_nr: the number of the currently printed page (0-based)
    *
    * Emitted for every page that is printed. The signal handler
@@ -880,8 +880,8 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
    * from @context using ctk_print_context_get_cairo_context().
    * |[<!-- language="C" -->
    * static void
-   * draw_page (GtkPrintOperation *operation,
-   *            GtkPrintContext   *context,
+   * draw_page (CtkPrintOperation *operation,
+   *            CtkPrintContext   *context,
    *            gint               page_nr,
    *            gpointer           user_data)
    * {
@@ -930,7 +930,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
     g_signal_new (I_("draw-page"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkPrintOperationClass, draw_page),
+		  G_STRUCT_OFFSET (CtkPrintOperationClass, draw_page),
 		  NULL, NULL,
 		  _ctk_marshal_VOID__OBJECT_INT,
 		  G_TYPE_NONE, 2,
@@ -938,13 +938,13 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 		  G_TYPE_INT);
 
   /**
-   * GtkPrintOperation::end-print:
-   * @operation: the #GtkPrintOperation on which the signal was emitted
-   * @context: the #GtkPrintContext for the current operation
+   * CtkPrintOperation::end-print:
+   * @operation: the #CtkPrintOperation on which the signal was emitted
+   * @context: the #CtkPrintContext for the current operation
    *
    * Emitted after all pages have been rendered. 
    * A handler for this signal can clean up any resources that have
-   * been allocated in the #GtkPrintOperation::begin-print handler.
+   * been allocated in the #CtkPrintOperation::begin-print handler.
    * 
    * Since: 2.10
    */
@@ -952,17 +952,17 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
     g_signal_new (I_("end-print"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkPrintOperationClass, end_print),
+		  G_STRUCT_OFFSET (CtkPrintOperationClass, end_print),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1, CTK_TYPE_PRINT_CONTEXT);
 
   /**
-   * GtkPrintOperation::status-changed:
-   * @operation: the #GtkPrintOperation on which the signal was emitted
+   * CtkPrintOperation::status-changed:
+   * @operation: the #CtkPrintOperation on which the signal was emitted
    *
    * Emitted at between the various phases of the print operation.
-   * See #GtkPrintStatus for the phases that are being discriminated.
+   * See #CtkPrintStatus for the phases that are being discriminated.
    * Use ctk_print_operation_get_status() to find out the current
    * status.
    *
@@ -972,15 +972,15 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
     g_signal_new (I_("status-changed"),
 		  G_TYPE_FROM_CLASS (class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkPrintOperationClass, status_changed),
+		  G_STRUCT_OFFSET (CtkPrintOperationClass, status_changed),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
 
 
   /**
-   * GtkPrintOperation::create-custom-widget:
-   * @operation: the #GtkPrintOperation on which the signal was emitted
+   * CtkPrintOperation::create-custom-widget:
+   * @operation: the #CtkPrintOperation on which the signal was emitted
    *
    * Emitted when displaying the print dialog. If you return a
    * widget in a handler for this signal it will be added to a custom
@@ -989,7 +989,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
    *
    * The print dialog owns the returned widget, and its lifetime is not 
    * controlled by the application. However, the widget is guaranteed 
-   * to stay around until the #GtkPrintOperation::custom-widget-apply 
+   * to stay around until the #CtkPrintOperation::custom-widget-apply 
    * signal is emitted on the operation. Then you can read out any 
    * information you need from the widgets.
    *
@@ -1002,14 +1002,14 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
     g_signal_new (I_("create-custom-widget"),
 		  G_TYPE_FROM_CLASS (class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkPrintOperationClass, create_custom_widget),
+		  G_STRUCT_OFFSET (CtkPrintOperationClass, create_custom_widget),
 		  custom_widget_accumulator, NULL,
 		  _ctk_marshal_OBJECT__VOID,
 		  G_TYPE_OBJECT, 0);
 
   /**
-   * GtkPrintOperation::update-custom-widget:
-   * @operation: the #GtkPrintOperation on which the signal was emitted
+   * CtkPrintOperation::update-custom-widget:
+   * @operation: the #CtkPrintOperation on which the signal was emitted
    * @widget: the custom widget added in create-custom-widget
    * @setup: actual page setup
    * @settings: actual print settings
@@ -1024,18 +1024,18 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
     g_signal_new (I_("update-custom-widget"),
 		  G_TYPE_FROM_CLASS (class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkPrintOperationClass, update_custom_widget),
+		  G_STRUCT_OFFSET (CtkPrintOperationClass, update_custom_widget),
 		  NULL, NULL,
 		  _ctk_marshal_VOID__OBJECT_OBJECT_OBJECT,
 		  G_TYPE_NONE, 3, CTK_TYPE_WIDGET, CTK_TYPE_PAGE_SETUP, CTK_TYPE_PRINT_SETTINGS);
 
   /**
-   * GtkPrintOperation::custom-widget-apply:
-   * @operation: the #GtkPrintOperation on which the signal was emitted
+   * CtkPrintOperation::custom-widget-apply:
+   * @operation: the #CtkPrintOperation on which the signal was emitted
    * @widget: the custom widget added in create-custom-widget
    *
-   * Emitted right before #GtkPrintOperation::begin-print if you added
-   * a custom widget in the #GtkPrintOperation::create-custom-widget handler. 
+   * Emitted right before #CtkPrintOperation::begin-print if you added
+   * a custom widget in the #CtkPrintOperation::create-custom-widget handler. 
    * When you get this signal you should read the information from the 
    * custom widgets, as the widgets are not guaraneed to be around at a 
    * later time.
@@ -1046,17 +1046,17 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
     g_signal_new (I_("custom-widget-apply"),
 		  G_TYPE_FROM_CLASS (class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkPrintOperationClass, custom_widget_apply),
+		  G_STRUCT_OFFSET (CtkPrintOperationClass, custom_widget_apply),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1, CTK_TYPE_WIDGET);
 
    /**
-   * GtkPrintOperation::preview:
-   * @operation: the #GtkPrintOperation on which the signal was emitted
-   * @preview: the #GtkPrintOperationPreview for the current operation
-   * @context: the #GtkPrintContext that will be used
-   * @parent: (allow-none): the #GtkWindow to use as window parent, or %NULL
+   * CtkPrintOperation::preview:
+   * @operation: the #CtkPrintOperation on which the signal was emitted
+   * @preview: the #CtkPrintOperationPreview for the current operation
+   * @context: the #CtkPrintContext that will be used
+   * @parent: (allow-none): the #CtkWindow to use as window parent, or %NULL
    *
    * Gets emitted when a preview is requested from the native dialog.
    *
@@ -1083,7 +1083,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
     g_signal_new (I_("preview"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkPrintOperationClass, preview),
+		  G_STRUCT_OFFSET (CtkPrintOperationClass, preview),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__OBJECT_OBJECT_OBJECT,
 		  G_TYPE_BOOLEAN, 3,
@@ -1093,13 +1093,13 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 
   
   /**
-   * GtkPrintOperation:default-page-setup:
+   * CtkPrintOperation:default-page-setup:
    *
-   * The #GtkPageSetup used by default.
+   * The #CtkPageSetup used by default.
    * 
    * This page setup will be used by ctk_print_operation_run(),
    * but it can be overridden on a per-page basis by connecting
-   * to the #GtkPrintOperation::request-page-setup signal.
+   * to the #CtkPrintOperation::request-page-setup signal.
    *
    * Since: 2.10
    */
@@ -1107,14 +1107,14 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 				   PROP_DEFAULT_PAGE_SETUP,
 				   g_param_spec_object ("default-page-setup",
 							P_("Default Page Setup"),
-							P_("The GtkPageSetup used by default"),
+							P_("The CtkPageSetup used by default"),
 							CTK_TYPE_PAGE_SETUP,
 							CTK_PARAM_READWRITE));
 
   /**
-   * GtkPrintOperation:print-settings:
+   * CtkPrintOperation:print-settings:
    *
-   * The #GtkPrintSettings used for initializing the dialog.
+   * The #CtkPrintSettings used for initializing the dialog.
    *
    * Setting this property is typically used to re-establish 
    * print settings from a previous print operation, see 
@@ -1126,12 +1126,12 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 				   PROP_PRINT_SETTINGS,
 				   g_param_spec_object ("print-settings",
 							P_("Print Settings"),
-							P_("The GtkPrintSettings used for initializing the dialog"),
+							P_("The CtkPrintSettings used for initializing the dialog"),
 							CTK_TYPE_PRINT_SETTINGS,
 							CTK_PARAM_READWRITE));
   
   /**
-   * GtkPrintOperation:job-name:
+   * CtkPrintOperation:job-name:
    *
    * A string used to identify the job (e.g. in monitoring 
    * applications like eggcups). 
@@ -1150,17 +1150,17 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 							CTK_PARAM_READWRITE));
 
   /**
-   * GtkPrintOperation:n-pages:
+   * CtkPrintOperation:n-pages:
    *
    * The number of pages in the document. 
    *
    * This must be set to a positive number
    * before the rendering starts. It may be set in a 
-   * #GtkPrintOperation::begin-print signal hander.
+   * #CtkPrintOperation::begin-print signal hander.
    *
    * Note that the page numbers passed to the 
-   * #GtkPrintOperation::request-page-setup and 
-   * #GtkPrintOperation::draw-page signals are 0-based, i.e. if 
+   * #CtkPrintOperation::request-page-setup and 
+   * #CtkPrintOperation::draw-page signals are 0-based, i.e. if 
    * the user chooses to print all pages, the last ::draw-page signal 
    * will be for page @n_pages - 1.
    *
@@ -1177,7 +1177,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 						     CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkPrintOperation:current-page:
+   * CtkPrintOperation:current-page:
    *
    * The current page in the document.
    *
@@ -1199,10 +1199,10 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 						     CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
   
   /**
-   * GtkPrintOperation:use-full-page:
+   * CtkPrintOperation:use-full-page:
    *
    * If %TRUE, the transformation for the cairo context obtained 
-   * from #GtkPrintContext puts the origin at the top left corner 
+   * from #CtkPrintContext puts the origin at the top left corner 
    * of the page (which may not be the top left corner of the sheet, 
    * depending on page orientation and the number of pages per sheet). 
    * Otherwise, the origin is at the top left corner of the imageable 
@@ -1220,7 +1220,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
   
 
   /**
-   * GtkPrintOperation:track-print-status:
+   * CtkPrintOperation:track-print-status:
    *
    * If %TRUE, the print operation will try to continue report on 
    * the status of the print job in the printer queues and printer. 
@@ -1241,10 +1241,10 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
   
 
   /**
-   * GtkPrintOperation:unit:
+   * CtkPrintOperation:unit:
    *
    * The transformation for the cairo context obtained from
-   * #GtkPrintContext is set up in such a way that distances 
+   * #CtkPrintContext is set up in such a way that distances 
    * are measured in units of @unit.
    *
    * Since: 2.10
@@ -1260,7 +1260,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
   
   
   /**
-   * GtkPrintOperation:show-progress:
+   * CtkPrintOperation:show-progress:
    *
    * Determines whether to show a progress dialog during the 
    * print operation.
@@ -1276,13 +1276,13 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkPrintOperation:allow-async:
+   * CtkPrintOperation:allow-async:
    *
    * Determines whether the print operation may run asynchronously or not.
    *
    * Some systems don't support asynchronous printing, but those that do
    * will return %CTK_PRINT_OPERATION_RESULT_IN_PROGRESS as the status, and
-   * emit the #GtkPrintOperation::done signal when the operation is actually 
+   * emit the #CtkPrintOperation::done signal when the operation is actually 
    * done.
    *
    * The Windows port does not support asynchronous operation at all (this 
@@ -1300,7 +1300,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
   
   /**
-   * GtkPrintOperation:export-filename:
+   * CtkPrintOperation:export-filename:
    *
    * The name of a file to generate instead of showing the print dialog. 
    * Currently, PDF is the only supported format.
@@ -1323,7 +1323,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 							CTK_PARAM_READWRITE));
   
   /**
-   * GtkPrintOperation:status:
+   * CtkPrintOperation:status:
    *
    * The status of the print operation.
    * 
@@ -1339,13 +1339,13 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 						      CTK_PARAM_READABLE|G_PARAM_EXPLICIT_NOTIFY));
   
   /**
-   * GtkPrintOperation:status-string:
+   * CtkPrintOperation:status-string:
    *
    * A string representation of the status of the print operation. 
    * The string is translated and suitable for displaying the print 
-   * status e.g. in a #GtkStatusbar.
+   * status e.g. in a #CtkStatusbar.
    *
-   * See the #GtkPrintOperation:status property for a status value that 
+   * See the #CtkPrintOperation:status property for a status value that 
    * is suitable for programmatic use. 
    *
    * Since: 2.10
@@ -1360,7 +1360,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
   
 
   /**
-   * GtkPrintOperation:custom-tab-label:
+   * CtkPrintOperation:custom-tab-label:
    *
    * Used as the label of the tab containing custom widgets.
    * Note that this property may be ignored on some platforms.
@@ -1378,7 +1378,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 							CTK_PARAM_READWRITE));
 
   /**
-   * GtkPrintOperation:support-selection:
+   * CtkPrintOperation:support-selection:
    *
    * If %TRUE, the print operation will support print of selection.
    * This allows the print dialog to show a "Selection" button.
@@ -1394,7 +1394,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkPrintOperation:has-selection:
+   * CtkPrintOperation:has-selection:
    *
    * Determines whether there is a selection in your application.
    * This can allow your application to print the selection.
@@ -1412,7 +1412,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 
 
   /**
-   * GtkPrintOperation:embed-page-setup:
+   * CtkPrintOperation:embed-page-setup:
    *
    * If %TRUE, page size combo box and orientation combo box are embedded into page setup page.
    * 
@@ -1422,18 +1422,18 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 				   PROP_EMBED_PAGE_SETUP,
 				   g_param_spec_boolean ("embed-page-setup",
 							 P_("Embed Page Setup"),
-							 P_("TRUE if page setup combos are embedded in GtkPrintUnixDialog"),
+							 P_("TRUE if page setup combos are embedded in CtkPrintUnixDialog"),
 							 FALSE,
 							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
   /**
-   * GtkPrintOperation:n-pages-to-print:
+   * CtkPrintOperation:n-pages-to-print:
    *
    * The number of pages that will be printed.
    *
    * Note that this value is set during print preparation phase
    * (%CTK_PRINT_STATUS_PREPARING), so this value should never be
    * get before the data generation phase (%CTK_PRINT_STATUS_GENERATING_DATA).
-   * You can connect to the #GtkPrintOperation::status-changed signal
+   * You can connect to the #CtkPrintOperation::status-changed signal
    * and call ctk_print_operation_get_n_pages_to_print() when
    * print status is %CTK_PRINT_STATUS_GENERATING_DATA.
    * This is typically used to track the progress of print operation.
@@ -1454,16 +1454,16 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 /**
  * ctk_print_operation_new:
  *
- * Creates a new #GtkPrintOperation. 
+ * Creates a new #CtkPrintOperation. 
  *
- * Returns: a new #GtkPrintOperation
+ * Returns: a new #CtkPrintOperation
  *
  * Since: 2.10
  */
-GtkPrintOperation *
+CtkPrintOperation *
 ctk_print_operation_new (void)
 {
-  GtkPrintOperation *print_operation;
+  CtkPrintOperation *print_operation;
 
   print_operation = g_object_new (CTK_TYPE_PRINT_OPERATION, NULL);
   
@@ -1472,22 +1472,22 @@ ctk_print_operation_new (void)
 
 /**
  * ctk_print_operation_set_default_page_setup:
- * @op: a #GtkPrintOperation
- * @default_page_setup: (allow-none): a #GtkPageSetup, or %NULL
+ * @op: a #CtkPrintOperation
+ * @default_page_setup: (allow-none): a #CtkPageSetup, or %NULL
  *
  * Makes @default_page_setup the default page setup for @op.
  *
  * This page setup will be used by ctk_print_operation_run(),
  * but it can be overridden on a per-page basis by connecting
- * to the #GtkPrintOperation::request-page-setup signal.
+ * to the #CtkPrintOperation::request-page-setup signal.
  *
  * Since: 2.10
  **/
 void
-ctk_print_operation_set_default_page_setup (GtkPrintOperation *op,
-					    GtkPageSetup      *default_page_setup)
+ctk_print_operation_set_default_page_setup (CtkPrintOperation *op,
+					    CtkPageSetup      *default_page_setup)
 {
-  GtkPrintOperationPrivate *priv;
+  CtkPrintOperationPrivate *priv;
 
   g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
   g_return_if_fail (default_page_setup == NULL || 
@@ -1511,7 +1511,7 @@ ctk_print_operation_set_default_page_setup (GtkPrintOperation *op,
 
 /**
  * ctk_print_operation_get_default_page_setup:
- * @op: a #GtkPrintOperation
+ * @op: a #CtkPrintOperation
  *
  * Returns the default page setup, see
  * ctk_print_operation_set_default_page_setup().
@@ -1520,8 +1520,8 @@ ctk_print_operation_set_default_page_setup (GtkPrintOperation *op,
  *
  * Since: 2.10
  */
-GtkPageSetup *
-ctk_print_operation_get_default_page_setup (GtkPrintOperation *op)
+CtkPageSetup *
+ctk_print_operation_get_default_page_setup (CtkPrintOperation *op)
 {
   g_return_val_if_fail (CTK_IS_PRINT_OPERATION (op), NULL);
 
@@ -1531,8 +1531,8 @@ ctk_print_operation_get_default_page_setup (GtkPrintOperation *op)
 
 /**
  * ctk_print_operation_set_print_settings:
- * @op: a #GtkPrintOperation
- * @print_settings: (allow-none): #GtkPrintSettings
+ * @op: a #CtkPrintOperation
+ * @print_settings: (allow-none): #CtkPrintSettings
  *
  * Sets the print settings for @op. This is typically used to
  * re-establish print settings from a previous print operation,
@@ -1541,10 +1541,10 @@ ctk_print_operation_get_default_page_setup (GtkPrintOperation *op)
  * Since: 2.10
  **/
 void
-ctk_print_operation_set_print_settings (GtkPrintOperation *op,
-					GtkPrintSettings  *print_settings)
+ctk_print_operation_set_print_settings (CtkPrintOperation *op,
+					CtkPrintSettings  *print_settings)
 {
-  GtkPrintOperationPrivate *priv;
+  CtkPrintOperationPrivate *priv;
 
   g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
   g_return_if_fail (print_settings == NULL || 
@@ -1568,7 +1568,7 @@ ctk_print_operation_set_print_settings (GtkPrintOperation *op,
 
 /**
  * ctk_print_operation_get_print_settings:
- * @op: a #GtkPrintOperation
+ * @op: a #CtkPrintOperation
  *
  * Returns the current print settings.
  *
@@ -1580,8 +1580,8 @@ ctk_print_operation_set_print_settings (GtkPrintOperation *op,
  *
  * Since: 2.10
  **/
-GtkPrintSettings *
-ctk_print_operation_get_print_settings (GtkPrintOperation *op)
+CtkPrintSettings *
+ctk_print_operation_get_print_settings (CtkPrintOperation *op)
 {
   g_return_val_if_fail (CTK_IS_PRINT_OPERATION (op), NULL);
 
@@ -1590,7 +1590,7 @@ ctk_print_operation_get_print_settings (GtkPrintOperation *op)
 
 /**
  * ctk_print_operation_set_job_name:
- * @op: a #GtkPrintOperation
+ * @op: a #CtkPrintOperation
  * @job_name: a string that identifies the print job
  * 
  * Sets the name of the print job. The name is used to identify 
@@ -1602,10 +1602,10 @@ ctk_print_operation_get_print_settings (GtkPrintOperation *op)
  * Since: 2.10
  **/
 void
-ctk_print_operation_set_job_name (GtkPrintOperation *op,
+ctk_print_operation_set_job_name (CtkPrintOperation *op,
 				  const gchar       *job_name)
 {
-  GtkPrintOperationPrivate *priv;
+  CtkPrintOperationPrivate *priv;
 
   g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
   g_return_if_fail (job_name != NULL);
@@ -1623,28 +1623,28 @@ ctk_print_operation_set_job_name (GtkPrintOperation *op,
 
 /**
  * ctk_print_operation_set_n_pages:
- * @op: a #GtkPrintOperation
+ * @op: a #CtkPrintOperation
  * @n_pages: the number of pages
  * 
  * Sets the number of pages in the document. 
  *
  * This must be set to a positive number
  * before the rendering starts. It may be set in a 
- * #GtkPrintOperation::begin-print signal hander.
+ * #CtkPrintOperation::begin-print signal hander.
  *
  * Note that the page numbers passed to the 
- * #GtkPrintOperation::request-page-setup 
- * and #GtkPrintOperation::draw-page signals are 0-based, i.e. if 
+ * #CtkPrintOperation::request-page-setup 
+ * and #CtkPrintOperation::draw-page signals are 0-based, i.e. if 
  * the user chooses to print all pages, the last ::draw-page signal 
  * will be for page @n_pages - 1.
  *
  * Since: 2.10
  **/
 void
-ctk_print_operation_set_n_pages (GtkPrintOperation *op,
+ctk_print_operation_set_n_pages (CtkPrintOperation *op,
 				 gint               n_pages)
 {
-  GtkPrintOperationPrivate *priv;
+  CtkPrintOperationPrivate *priv;
 
   g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
   g_return_if_fail (n_pages > 0);
@@ -1663,7 +1663,7 @@ ctk_print_operation_set_n_pages (GtkPrintOperation *op,
 
 /**
  * ctk_print_operation_set_current_page:
- * @op: a #GtkPrintOperation
+ * @op: a #CtkPrintOperation
  * @current_page: the current page, 0-based
  *
  * Sets the current page.
@@ -1676,10 +1676,10 @@ ctk_print_operation_set_n_pages (GtkPrintOperation *op,
  * Since: 2.10
  **/
 void
-ctk_print_operation_set_current_page (GtkPrintOperation *op,
+ctk_print_operation_set_current_page (CtkPrintOperation *op,
 				      gint               current_page)
 {
-  GtkPrintOperationPrivate *priv;
+  CtkPrintOperationPrivate *priv;
 
   g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
   g_return_if_fail (current_page >= 0);
@@ -1698,11 +1698,11 @@ ctk_print_operation_set_current_page (GtkPrintOperation *op,
 
 /**
  * ctk_print_operation_set_use_full_page:
- * @op: a #GtkPrintOperation
- * @full_page: %TRUE to set up the #GtkPrintContext for the full page
+ * @op: a #CtkPrintOperation
+ * @full_page: %TRUE to set up the #CtkPrintContext for the full page
  * 
  * If @full_page is %TRUE, the transformation for the cairo context 
- * obtained from #GtkPrintContext puts the origin at the top left 
+ * obtained from #CtkPrintContext puts the origin at the top left 
  * corner of the page (which may not be the top left corner of the 
  * sheet, depending on page orientation and the number of pages per 
  * sheet). Otherwise, the origin is at the top left corner of the
@@ -1711,10 +1711,10 @@ ctk_print_operation_set_current_page (GtkPrintOperation *op,
  * Since: 2.10 
  */
 void
-ctk_print_operation_set_use_full_page (GtkPrintOperation *op,
+ctk_print_operation_set_use_full_page (CtkPrintOperation *op,
 				       gboolean           full_page)
 {
-  GtkPrintOperationPrivate *priv;
+  CtkPrintOperationPrivate *priv;
 
   g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
 
@@ -1732,20 +1732,20 @@ ctk_print_operation_set_use_full_page (GtkPrintOperation *op,
 
 /**
  * ctk_print_operation_set_unit:
- * @op: a #GtkPrintOperation
+ * @op: a #CtkPrintOperation
  * @unit: the unit to use
  * 
  * Sets up the transformation for the cairo context obtained from
- * #GtkPrintContext in such a way that distances are measured in 
+ * #CtkPrintContext in such a way that distances are measured in 
  * units of @unit.
  *
  * Since: 2.10
  */
 void
-ctk_print_operation_set_unit (GtkPrintOperation *op,
-			      GtkUnit            unit)
+ctk_print_operation_set_unit (CtkPrintOperation *op,
+			      CtkUnit            unit)
 {
-  GtkPrintOperationPrivate *priv;
+  CtkPrintOperationPrivate *priv;
 
   g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
 
@@ -1761,7 +1761,7 @@ ctk_print_operation_set_unit (GtkPrintOperation *op,
 
 /**
  * ctk_print_operation_set_track_print_status:
- * @op: a #GtkPrintOperation
+ * @op: a #CtkPrintOperation
  * @track_status: %TRUE to track status after printing
  * 
  * If track_status is %TRUE, the print operation will try to continue report
@@ -1775,10 +1775,10 @@ ctk_print_operation_set_unit (GtkPrintOperation *op,
  * Since: 2.10
  */
 void
-ctk_print_operation_set_track_print_status (GtkPrintOperation  *op,
+ctk_print_operation_set_track_print_status (CtkPrintOperation  *op,
 					    gboolean            track_status)
 {
-  GtkPrintOperationPrivate *priv;
+  CtkPrintOperationPrivate *priv;
 
   g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
 
@@ -1793,11 +1793,11 @@ ctk_print_operation_set_track_print_status (GtkPrintOperation  *op,
 }
 
 void
-_ctk_print_operation_set_status (GtkPrintOperation *op,
-				 GtkPrintStatus     status,
+_ctk_print_operation_set_status (CtkPrintOperation *op,
+				 CtkPrintStatus     status,
 				 const gchar       *string)
 {
-  GtkPrintOperationPrivate *priv = op->priv;
+  CtkPrintOperationPrivate *priv = op->priv;
   static const gchar *status_strs[] = {
     NC_("print operation status", "Initial state"),
     NC_("print operation status", "Preparing to print"),
@@ -1833,7 +1833,7 @@ _ctk_print_operation_set_status (GtkPrintOperation *op,
 
 /**
  * ctk_print_operation_get_status:
- * @op: a #GtkPrintOperation
+ * @op: a #CtkPrintOperation
  * 
  * Returns the status of the print operation. 
  * Also see ctk_print_operation_get_status_string().
@@ -1842,8 +1842,8 @@ _ctk_print_operation_set_status (GtkPrintOperation *op,
  *
  * Since: 2.10
  **/
-GtkPrintStatus
-ctk_print_operation_get_status (GtkPrintOperation *op)
+CtkPrintStatus
+ctk_print_operation_get_status (CtkPrintOperation *op)
 {
   g_return_val_if_fail (CTK_IS_PRINT_OPERATION (op), 
                         CTK_PRINT_STATUS_FINISHED_ABORTED);
@@ -1853,11 +1853,11 @@ ctk_print_operation_get_status (GtkPrintOperation *op)
 
 /**
  * ctk_print_operation_get_status_string:
- * @op: a #GtkPrintOperation
+ * @op: a #CtkPrintOperation
  * 
  * Returns a string representation of the status of the 
  * print operation. The string is translated and suitable
- * for displaying the print status e.g. in a #GtkStatusbar.
+ * for displaying the print status e.g. in a #CtkStatusbar.
  *
  * Use ctk_print_operation_get_status() to obtain a status
  * value that is suitable for programmatic use. 
@@ -1868,7 +1868,7 @@ ctk_print_operation_get_status (GtkPrintOperation *op)
  * Since: 2.10
  **/
 const gchar *
-ctk_print_operation_get_status_string (GtkPrintOperation *op)
+ctk_print_operation_get_status_string (CtkPrintOperation *op)
 {
   g_return_val_if_fail (CTK_IS_PRINT_OPERATION (op), "");
 
@@ -1877,7 +1877,7 @@ ctk_print_operation_get_status_string (GtkPrintOperation *op)
 
 /**
  * ctk_print_operation_is_finished:
- * @op: a #GtkPrintOperation
+ * @op: a #CtkPrintOperation
  * 
  * A convenience function to find out if the print operation
  * is finished, either successfully (%CTK_PRINT_STATUS_FINISHED)
@@ -1892,9 +1892,9 @@ ctk_print_operation_get_status_string (GtkPrintOperation *op)
  * Since: 2.10
  **/
 gboolean
-ctk_print_operation_is_finished (GtkPrintOperation *op)
+ctk_print_operation_is_finished (CtkPrintOperation *op)
 {
-  GtkPrintOperationPrivate *priv;
+  CtkPrintOperationPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_PRINT_OPERATION (op), TRUE);
 
@@ -1906,7 +1906,7 @@ ctk_print_operation_is_finished (GtkPrintOperation *op)
 
 /**
  * ctk_print_operation_set_show_progress:
- * @op: a #GtkPrintOperation
+ * @op: a #CtkPrintOperation
  * @show_progress: %TRUE to show a progress dialog
  * 
  * If @show_progress is %TRUE, the print operation will show a 
@@ -1915,10 +1915,10 @@ ctk_print_operation_is_finished (GtkPrintOperation *op)
  * Since: 2.10
  */
 void
-ctk_print_operation_set_show_progress (GtkPrintOperation  *op,
+ctk_print_operation_set_show_progress (CtkPrintOperation  *op,
 				       gboolean            show_progress)
 {
-  GtkPrintOperationPrivate *priv;
+  CtkPrintOperationPrivate *priv;
 
   g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
 
@@ -1936,7 +1936,7 @@ ctk_print_operation_set_show_progress (GtkPrintOperation  *op,
 
 /**
  * ctk_print_operation_set_allow_async:
- * @op: a #GtkPrintOperation
+ * @op: a #CtkPrintOperation
  * @allow_async: %TRUE to allow asynchronous operation
  *
  * Sets whether the ctk_print_operation_run() may return
@@ -1946,10 +1946,10 @@ ctk_print_operation_set_show_progress (GtkPrintOperation  *op,
  * Since: 2.10
  */
 void
-ctk_print_operation_set_allow_async (GtkPrintOperation  *op,
+ctk_print_operation_set_allow_async (CtkPrintOperation  *op,
 				     gboolean            allow_async)
 {
-  GtkPrintOperationPrivate *priv;
+  CtkPrintOperationPrivate *priv;
 
   g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
 
@@ -1968,7 +1968,7 @@ ctk_print_operation_set_allow_async (GtkPrintOperation  *op,
 
 /**
  * ctk_print_operation_set_custom_tab_label:
- * @op: a #GtkPrintOperation
+ * @op: a #CtkPrintOperation
  * @label: (allow-none): the label to use, or %NULL to use the default label
  *
  * Sets the label for the tab holding custom widgets.
@@ -1976,10 +1976,10 @@ ctk_print_operation_set_allow_async (GtkPrintOperation  *op,
  * Since: 2.10
  */
 void
-ctk_print_operation_set_custom_tab_label (GtkPrintOperation  *op,
+ctk_print_operation_set_custom_tab_label (CtkPrintOperation  *op,
 					  const gchar        *label)
 {
-  GtkPrintOperationPrivate *priv;
+  CtkPrintOperationPrivate *priv;
 
   g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
 
@@ -1994,10 +1994,10 @@ ctk_print_operation_set_custom_tab_label (GtkPrintOperation  *op,
 
 /**
  * ctk_print_operation_set_export_filename:
- * @op: a #GtkPrintOperation
+ * @op: a #CtkPrintOperation
  * @filename: (type filename): the filename for the exported file
  * 
- * Sets up the #GtkPrintOperation to generate a file instead
+ * Sets up the #CtkPrintOperation to generate a file instead
  * of showing the print dialog. The indended use of this function
  * is for implementing “Export to PDF” actions. Currently, PDF
  * is the only supported format.
@@ -2009,10 +2009,10 @@ ctk_print_operation_set_custom_tab_label (GtkPrintOperation  *op,
  * Since: 2.10
  */
 void
-ctk_print_operation_set_export_filename (GtkPrintOperation *op,
+ctk_print_operation_set_export_filename (CtkPrintOperation *op,
 					 const gchar       *filename)
 {
-  GtkPrintOperationPrivate *priv;
+  CtkPrintOperationPrivate *priv;
 
   g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
 
@@ -2035,12 +2035,12 @@ ctk_print_operation_set_export_filename (GtkPrintOperation *op,
  * default_page_setup
  * per-locale default setup
  */
-static GtkPageSetup *
-create_page_setup (GtkPrintOperation *op)
+static CtkPageSetup *
+create_page_setup (CtkPrintOperation *op)
 {
-  GtkPrintOperationPrivate *priv = op->priv;
-  GtkPageSetup *page_setup;
-  GtkPrintSettings *settings;
+  CtkPrintOperationPrivate *priv = op->priv;
+  CtkPageSetup *page_setup;
+  CtkPrintSettings *settings;
   
   if (priv->default_page_setup)
     page_setup = ctk_page_setup_copy (priv->default_page_setup);
@@ -2050,7 +2050,7 @@ create_page_setup (GtkPrintOperation *op)
   settings = priv->print_settings;
   if (settings)
     {
-      GtkPaperSize *paper_size;
+      CtkPaperSize *paper_size;
       
       if (ctk_print_settings_has_key (settings, CTK_PRINT_SETTINGS_ORIENTATION))
 	ctk_page_setup_set_orientation (page_setup,
@@ -2071,9 +2071,9 @@ create_page_setup (GtkPrintOperation *op)
 }
 
 static void 
-pdf_start_page (GtkPrintOperation *op,
-		GtkPrintContext   *print_context,
-		GtkPageSetup      *page_setup)
+pdf_start_page (CtkPrintOperation *op,
+		CtkPrintContext   *print_context,
+		CtkPageSetup      *page_setup)
 {
   cairo_surface_t *surface = op->priv->platform_data;
   gdouble w, h;
@@ -2085,8 +2085,8 @@ pdf_start_page (GtkPrintOperation *op,
 }
 
 static void
-pdf_end_page (GtkPrintOperation *op,
-	      GtkPrintContext   *print_context)
+pdf_end_page (CtkPrintOperation *op,
+	      CtkPrintContext   *print_context)
 {
   cairo_t *cr;
 
@@ -2099,11 +2099,11 @@ pdf_end_page (GtkPrintOperation *op,
 }
 
 static void
-pdf_end_run (GtkPrintOperation *op,
+pdf_end_run (CtkPrintOperation *op,
 	     gboolean           wait,
 	     gboolean           cancelled)
 {
-  GtkPrintOperationPrivate *priv = op->priv;
+  CtkPrintOperationPrivate *priv = op->priv;
   cairo_surface_t *surface = priv->platform_data;
 
   cairo_surface_finish (surface);
@@ -2113,13 +2113,13 @@ pdf_end_run (GtkPrintOperation *op,
   priv->free_platform_data = NULL;
 }
 
-static GtkPrintOperationResult
-run_pdf (GtkPrintOperation  *op,
-	 GtkWindow          *parent,
+static CtkPrintOperationResult
+run_pdf (CtkPrintOperation  *op,
+	 CtkWindow          *parent,
 	 gboolean           *do_print)
 {
-  GtkPrintOperationPrivate *priv = op->priv;
-  GtkPageSetup *page_setup;
+  CtkPrintOperationPrivate *priv = op->priv;
+  CtkPageSetup *page_setup;
   cairo_surface_t *surface;
   cairo_t *cr;
   gdouble width, height;
@@ -2185,7 +2185,7 @@ run_pdf (GtkPrintOperation  *op,
 static void
 clamp_page_ranges (PrintPagesData *data)
 {
-  GtkPrintOperationPrivate *priv; 
+  CtkPrintOperationPrivate *priv; 
   gint                      num_of_correct_ranges;
   gint                      i;
 
@@ -2225,7 +2225,7 @@ clamp_page_ranges (PrintPagesData *data)
 static void
 increment_page_sequence (PrintPagesData *data)
 {
-  GtkPrintOperationPrivate *priv = data->op->priv;
+  CtkPrintOperationPrivate *priv = data->op->priv;
   gint inc;
 
   if (data->total == -1)
@@ -2320,7 +2320,7 @@ static void
 print_pages_idle_done (gpointer user_data)
 {
   PrintPagesData *data;
-  GtkPrintOperationPrivate *priv;
+  CtkPrintOperationPrivate *priv;
 
   data = (PrintPagesData*)user_data;
   priv = data->op->priv;
@@ -2341,7 +2341,7 @@ print_pages_idle_done (gpointer user_data)
 
   if (!data->is_preview)
     {
-      GtkPrintOperationResult result;
+      CtkPrintOperationResult result;
 
       if (priv->error)
         result = CTK_PRINT_OPERATION_RESULT_ERROR;
@@ -2361,7 +2361,7 @@ print_pages_idle_done (gpointer user_data)
 static void
 update_progress (PrintPagesData *data)
 {
-  GtkPrintOperationPrivate *priv; 
+  CtkPrintOperationPrivate *priv; 
   gchar *text = NULL;
   
   priv = data->op->priv;
@@ -2388,9 +2388,9 @@ update_progress (PrintPagesData *data)
 
 /**
  * ctk_print_operation_set_defer_drawing:
- * @op: a #GtkPrintOperation
+ * @op: a #CtkPrintOperation
  * 
- * Sets up the #GtkPrintOperation to wait for calling of
+ * Sets up the #CtkPrintOperation to wait for calling of
  * ctk_print_operation_draw_page_finish() from application. It can
  * be used for drawing page in another thread.
  *
@@ -2399,9 +2399,9 @@ update_progress (PrintPagesData *data)
  * Since: 2.16
  **/
 void
-ctk_print_operation_set_defer_drawing (GtkPrintOperation *op)
+ctk_print_operation_set_defer_drawing (CtkPrintOperation *op)
 {
-  GtkPrintOperationPrivate *priv = op->priv;
+  CtkPrintOperationPrivate *priv = op->priv;
 
   g_return_if_fail (priv->page_drawing_state == CTK_PAGE_DRAWING_STATE_DRAWING);
 
@@ -2410,19 +2410,19 @@ ctk_print_operation_set_defer_drawing (GtkPrintOperation *op)
 
 /**
  * ctk_print_operation_set_embed_page_setup:
- * @op: a #GtkPrintOperation
- * @embed: %TRUE to embed page setup selection in the #GtkPrintUnixDialog
+ * @op: a #CtkPrintOperation
+ * @embed: %TRUE to embed page setup selection in the #CtkPrintUnixDialog
  *
  * Embed page size combo box and orientation combo box into page setup page.
- * Selected page setup is stored as default page setup in #GtkPrintOperation.
+ * Selected page setup is stored as default page setup in #CtkPrintOperation.
  *
  * Since: 2.18
  **/
 void
-ctk_print_operation_set_embed_page_setup (GtkPrintOperation  *op,
+ctk_print_operation_set_embed_page_setup (CtkPrintOperation  *op,
                                           gboolean            embed)
 {
-  GtkPrintOperationPrivate *priv;
+  CtkPrintOperationPrivate *priv;
 
   g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
 
@@ -2438,16 +2438,16 @@ ctk_print_operation_set_embed_page_setup (GtkPrintOperation  *op,
 
 /**
  * ctk_print_operation_get_embed_page_setup:
- * @op: a #GtkPrintOperation
+ * @op: a #CtkPrintOperation
  *
- * Gets the value of #GtkPrintOperation:embed-page-setup property.
+ * Gets the value of #CtkPrintOperation:embed-page-setup property.
  * 
  * Returns: whether page setup selection combos are embedded
  *
  * Since: 2.18
  */
 gboolean
-ctk_print_operation_get_embed_page_setup (GtkPrintOperation *op)
+ctk_print_operation_get_embed_page_setup (CtkPrintOperation *op)
 {
   g_return_val_if_fail (CTK_IS_PRINT_OPERATION (op), FALSE);
 
@@ -2456,7 +2456,7 @@ ctk_print_operation_get_embed_page_setup (GtkPrintOperation *op)
 
 /**
  * ctk_print_operation_draw_page_finish:
- * @op: a #GtkPrintOperation
+ * @op: a #CtkPrintOperation
  * 
  * Signalize that drawing of particular page is complete.
  *
@@ -2469,11 +2469,11 @@ ctk_print_operation_get_embed_page_setup (GtkPrintOperation *op)
  * Since: 2.16
  **/
 void
-ctk_print_operation_draw_page_finish (GtkPrintOperation *op)
+ctk_print_operation_draw_page_finish (CtkPrintOperation *op)
 {
-  GtkPrintOperationPrivate *priv = op->priv;
-  GtkPageSetup *page_setup;
-  GtkPrintContext *print_context;
+  CtkPrintOperationPrivate *priv = op->priv;
+  CtkPageSetup *page_setup;
+  CtkPrintContext *print_context;
   cairo_t *cr;
   
   print_context = priv->print_context;
@@ -2491,12 +2491,12 @@ ctk_print_operation_draw_page_finish (GtkPrintOperation *op)
 }
 
 static void
-common_render_page (GtkPrintOperation *op,
+common_render_page (CtkPrintOperation *op,
 		    gint               page_nr)
 {
-  GtkPrintOperationPrivate *priv = op->priv;
-  GtkPageSetup *page_setup;
-  GtkPrintContext *print_context;
+  CtkPrintOperationPrivate *priv = op->priv;
+  CtkPageSetup *page_setup;
+  CtkPrintContext *print_context;
   cairo_t *cr;
 
   print_context = priv->print_context;
@@ -2530,7 +2530,7 @@ common_render_page (GtkPrintOperation *op,
     }
   else
     {
-      GtkPageOrientation  orientation;
+      CtkPageOrientation  orientation;
       gdouble             paper_width, paper_height;
       gdouble             page_width, page_height;
       gdouble             context_width, context_height;
@@ -2720,8 +2720,8 @@ common_render_page (GtkPrintOperation *op,
 static void
 prepare_data (PrintPagesData *data)
 {
-  GtkPrintOperationPrivate *priv;
-  GtkPageSetup             *page_setup;
+  CtkPrintOperationPrivate *priv;
+  CtkPageSetup             *page_setup;
   gboolean                  paginated = FALSE;
   gint                      i, j, counter;
 
@@ -2890,7 +2890,7 @@ static gboolean
 print_pages_idle (gpointer user_data)
 {
   PrintPagesData *data; 
-  GtkPrintOperationPrivate *priv;
+  CtkPrintOperationPrivate *priv;
   gboolean done = FALSE;
 
   data = (PrintPagesData*)user_data;
@@ -2942,11 +2942,11 @@ print_pages_idle (gpointer user_data)
 }
   
 static void
-handle_progress_response (GtkWidget *dialog, 
+handle_progress_response (CtkWidget *dialog, 
 			  gint       response,
 			  gpointer   data)
 {
-  GtkPrintOperation *op = (GtkPrintOperation *)data;
+  CtkPrintOperation *op = (CtkPrintOperation *)data;
 
   ctk_widget_hide (dialog);
   ctk_print_operation_cancel (op);
@@ -2965,17 +2965,17 @@ show_progress_timeout (PrintPagesData *data)
 }
 
 static void
-print_pages (GtkPrintOperation       *op,
-	     GtkWindow               *parent,
+print_pages (CtkPrintOperation       *op,
+	     CtkWindow               *parent,
 	     gboolean                 do_print,
-	     GtkPrintOperationResult  result)
+	     CtkPrintOperationResult  result)
 {
-  GtkPrintOperationPrivate *priv = op->priv;
+  CtkPrintOperationPrivate *priv = op->priv;
   PrintPagesData *data;
  
   if (!do_print) 
     {
-      GtkPrintOperationResult tmp_result;
+      CtkPrintOperationResult tmp_result;
 
       _ctk_print_operation_set_status (op, CTK_PRINT_STATUS_FINISHED_ABORTED, NULL);
 
@@ -2999,7 +2999,7 @@ print_pages (GtkPrintOperation       *op,
 
   if (priv->show_progress)
     {
-      GtkWidget *progress;
+      CtkWidget *progress;
 
       progress = ctk_message_dialog_new (parent, 0, 
 					 CTK_MESSAGE_OTHER,
@@ -3029,7 +3029,7 @@ print_pages (GtkPrintOperation       *op,
 
       if (!handled)
         {
-          GtkWidget *error_dialog;
+          CtkWidget *error_dialog;
 
           error_dialog = ctk_message_dialog_new (parent,
                                                  CTK_DIALOG_MODAL | CTK_DIALOG_DESTROY_WITH_PARENT,
@@ -3101,18 +3101,18 @@ print_pages (GtkPrintOperation       *op,
 
 /**
  * ctk_print_operation_get_error:
- * @op: a #GtkPrintOperation
+ * @op: a #CtkPrintOperation
  * @error: return location for the error
  * 
  * Call this when the result of a print operation is
  * %CTK_PRINT_OPERATION_RESULT_ERROR, either as returned by 
- * ctk_print_operation_run(), or in the #GtkPrintOperation::done signal 
+ * ctk_print_operation_run(), or in the #CtkPrintOperation::done signal 
  * handler. The returned #GError will contain more details on what went wrong.
  *
  * Since: 2.10
  **/
 void
-ctk_print_operation_get_error (GtkPrintOperation  *op,
+ctk_print_operation_get_error (CtkPrintOperation  *op,
 			       GError            **error)
 {
   g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
@@ -3125,7 +3125,7 @@ ctk_print_operation_get_error (GtkPrintOperation  *op,
 
 /**
  * ctk_print_operation_run:
- * @op: a #GtkPrintOperation
+ * @op: a #CtkPrintOperation
  * @action: the action to start
  * @parent: (allow-none): Transient parent of the dialog
  * @error: (allow-none): Return location for errors, or %NULL
@@ -3135,14 +3135,14 @@ ctk_print_operation_get_error (GtkPrintOperation  *op,
  *
  * Normally that this function does not return until the rendering of all 
  * pages is complete. You can connect to the 
- * #GtkPrintOperation::status-changed signal on @op to obtain some 
+ * #CtkPrintOperation::status-changed signal on @op to obtain some 
  * information about the progress of the print operation. 
  * Furthermore, it may use a recursive mainloop to show the print dialog.
  *
  * If you call ctk_print_operation_set_allow_async() or set the 
- * #GtkPrintOperation:allow-async property the operation will run 
+ * #CtkPrintOperation:allow-async property the operation will run 
  * asynchronously if this is supported on the platform. The 
- * #GtkPrintOperation::done signal will be emitted with the result of the 
+ * #CtkPrintOperation::done signal will be emitted with the result of the 
  * operation when the it is done (i.e. when the dialog is canceled, or when 
  * the print succeeds or fails).
  * |[<!-- language="C" -->
@@ -3184,7 +3184,7 @@ ctk_print_operation_get_error (GtkPrintOperation  *op,
  * ]|
  *
  * Note that ctk_print_operation_run() can only be called once on a
- * given #GtkPrintOperation.
+ * given #CtkPrintOperation.
  *
  * Returns: the result of the print operation. A return value of 
  *   %CTK_PRINT_OPERATION_RESULT_APPLY indicates that the printing was
@@ -3192,20 +3192,20 @@ ctk_print_operation_get_error (GtkPrintOperation  *op,
  *   the used print settings with ctk_print_operation_get_print_settings() 
  *   and store them for reuse with the next print operation. A value of
  *   %CTK_PRINT_OPERATION_RESULT_IN_PROGRESS means the operation is running
- *   asynchronously, and will emit the #GtkPrintOperation::done signal when 
+ *   asynchronously, and will emit the #CtkPrintOperation::done signal when 
  *   done.
  *
  * Since: 2.10
  **/
-GtkPrintOperationResult
-ctk_print_operation_run (GtkPrintOperation        *op,
-			 GtkPrintOperationAction   action,
-			 GtkWindow                *parent,
+CtkPrintOperationResult
+ctk_print_operation_run (CtkPrintOperation        *op,
+			 CtkPrintOperationAction   action,
+			 CtkWindow                *parent,
 			 GError                  **error)
 {
-  GtkPrintOperationPrivate *priv;
-  GtkPrintOperationResult result;
-  GtkPageSetup *page_setup;
+  CtkPrintOperationPrivate *priv;
+  CtkPrintOperationResult result;
+  CtkPageSetup *page_setup;
   gboolean do_print;
   gboolean run_print_pages;
   
@@ -3284,18 +3284,18 @@ ctk_print_operation_run (GtkPrintOperation        *op,
 
 /**
  * ctk_print_operation_cancel:
- * @op: a #GtkPrintOperation
+ * @op: a #CtkPrintOperation
  *
  * Cancels a running print operation. This function may
- * be called from a #GtkPrintOperation::begin-print, 
- * #GtkPrintOperation::paginate or #GtkPrintOperation::draw-page
+ * be called from a #CtkPrintOperation::begin-print, 
+ * #CtkPrintOperation::paginate or #CtkPrintOperation::draw-page
  * signal handler to stop the currently running print 
  * operation.
  *
  * Since: 2.10
  */
 void
-ctk_print_operation_cancel (GtkPrintOperation *op)
+ctk_print_operation_cancel (CtkPrintOperation *op)
 {
   g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
   
@@ -3304,18 +3304,18 @@ ctk_print_operation_cancel (GtkPrintOperation *op)
 
 /**
  * ctk_print_operation_set_support_selection:
- * @op: a #GtkPrintOperation
+ * @op: a #CtkPrintOperation
  * @support_selection: %TRUE to support selection
  *
- * Sets whether selection is supported by #GtkPrintOperation.
+ * Sets whether selection is supported by #CtkPrintOperation.
  *
  * Since: 2.18
  */
 void
-ctk_print_operation_set_support_selection (GtkPrintOperation  *op,
+ctk_print_operation_set_support_selection (CtkPrintOperation  *op,
                                            gboolean            support_selection)
 {
-  GtkPrintOperationPrivate *priv;
+  CtkPrintOperationPrivate *priv;
 
   g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
 
@@ -3331,16 +3331,16 @@ ctk_print_operation_set_support_selection (GtkPrintOperation  *op,
 
 /**
  * ctk_print_operation_get_support_selection:
- * @op: a #GtkPrintOperation
+ * @op: a #CtkPrintOperation
  *
- * Gets the value of #GtkPrintOperation:support-selection property.
+ * Gets the value of #CtkPrintOperation:support-selection property.
  * 
  * Returns: whether the application supports print of selection
  *
  * Since: 2.18
  */
 gboolean
-ctk_print_operation_get_support_selection (GtkPrintOperation *op)
+ctk_print_operation_get_support_selection (CtkPrintOperation *op)
 {
   g_return_val_if_fail (CTK_IS_PRINT_OPERATION (op), FALSE);
 
@@ -3349,22 +3349,22 @@ ctk_print_operation_get_support_selection (GtkPrintOperation *op)
 
 /**
  * ctk_print_operation_set_has_selection:
- * @op: a #GtkPrintOperation
+ * @op: a #CtkPrintOperation
  * @has_selection: %TRUE indicates that a selection exists
  *
  * Sets whether there is a selection to print.
  *
  * Application has to set number of pages to which the selection
  * will draw by ctk_print_operation_set_n_pages() in a callback of
- * #GtkPrintOperation::begin-print.
+ * #CtkPrintOperation::begin-print.
  *
  * Since: 2.18
  */
 void
-ctk_print_operation_set_has_selection (GtkPrintOperation  *op,
+ctk_print_operation_set_has_selection (CtkPrintOperation  *op,
                                        gboolean            has_selection)
 {
-  GtkPrintOperationPrivate *priv;
+  CtkPrintOperationPrivate *priv;
 
   g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
 
@@ -3380,16 +3380,16 @@ ctk_print_operation_set_has_selection (GtkPrintOperation  *op,
 
 /**
  * ctk_print_operation_get_has_selection:
- * @op: a #GtkPrintOperation
+ * @op: a #CtkPrintOperation
  *
- * Gets the value of #GtkPrintOperation:has-selection property.
+ * Gets the value of #CtkPrintOperation:has-selection property.
  * 
  * Returns: whether there is a selection
  *
  * Since: 2.18
  */
 gboolean
-ctk_print_operation_get_has_selection (GtkPrintOperation *op)
+ctk_print_operation_get_has_selection (CtkPrintOperation *op)
 {
   g_return_val_if_fail (CTK_IS_PRINT_OPERATION (op), FALSE);
 
@@ -3398,14 +3398,14 @@ ctk_print_operation_get_has_selection (GtkPrintOperation *op)
 
 /**
  * ctk_print_operation_get_n_pages_to_print:
- * @op: a #GtkPrintOperation
+ * @op: a #CtkPrintOperation
  *
  * Returns the number of pages that will be printed.
  *
  * Note that this value is set during print preparation phase
  * (%CTK_PRINT_STATUS_PREPARING), so this function should never be
  * called before the data generation phase (%CTK_PRINT_STATUS_GENERATING_DATA).
- * You can connect to the #GtkPrintOperation::status-changed signal
+ * You can connect to the #CtkPrintOperation::status-changed signal
  * and call ctk_print_operation_get_n_pages_to_print() when
  * print status is %CTK_PRINT_STATUS_GENERATING_DATA.
  * This is typically used to track the progress of print operation.
@@ -3415,7 +3415,7 @@ ctk_print_operation_get_has_selection (GtkPrintOperation *op)
  * Since: 2.18
  **/
 gint
-ctk_print_operation_get_n_pages_to_print (GtkPrintOperation *op)
+ctk_print_operation_get_n_pages_to_print (CtkPrintOperation *op)
 {
   g_return_val_if_fail (CTK_IS_PRINT_OPERATION (op), -1);
 

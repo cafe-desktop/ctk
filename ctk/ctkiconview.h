@@ -32,31 +32,31 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_ICON_VIEW            (ctk_icon_view_get_type ())
-#define CTK_ICON_VIEW(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ICON_VIEW, GtkIconView))
-#define CTK_ICON_VIEW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ICON_VIEW, GtkIconViewClass))
+#define CTK_ICON_VIEW(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ICON_VIEW, CtkIconView))
+#define CTK_ICON_VIEW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ICON_VIEW, CtkIconViewClass))
 #define CTK_IS_ICON_VIEW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_ICON_VIEW))
 #define CTK_IS_ICON_VIEW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_ICON_VIEW))
-#define CTK_ICON_VIEW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ICON_VIEW, GtkIconViewClass))
+#define CTK_ICON_VIEW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ICON_VIEW, CtkIconViewClass))
 
-typedef struct _GtkIconView           GtkIconView;
-typedef struct _GtkIconViewClass      GtkIconViewClass;
-typedef struct _GtkIconViewPrivate    GtkIconViewPrivate;
+typedef struct _CtkIconView           CtkIconView;
+typedef struct _CtkIconViewClass      CtkIconViewClass;
+typedef struct _CtkIconViewPrivate    CtkIconViewPrivate;
 
 /**
- * GtkIconViewForeachFunc:
- * @icon_view: a #GtkIconView
- * @path: The #GtkTreePath of a selected row
+ * CtkIconViewForeachFunc:
+ * @icon_view: a #CtkIconView
+ * @path: The #CtkTreePath of a selected row
  * @data: (closure): user data
  *
  * A function used by ctk_icon_view_selected_foreach() to map all
  * selected rows.  It will be called on every selected row in the view.
  */
-typedef void (* GtkIconViewForeachFunc)     (GtkIconView      *icon_view,
-					     GtkTreePath      *path,
+typedef void (* CtkIconViewForeachFunc)     (CtkIconView      *icon_view,
+					     CtkTreePath      *path,
 					     gpointer          data);
 
 /**
- * GtkIconViewDropPosition:
+ * CtkIconViewDropPosition:
  * @CTK_ICON_VIEW_NO_DROP: no drop possible
  * @CTK_ICON_VIEW_DROP_INTO: dropped item replaces the item
  * @CTK_ICON_VIEW_DROP_LEFT: droppped item is inserted to the left
@@ -74,33 +74,33 @@ typedef enum
   CTK_ICON_VIEW_DROP_RIGHT,
   CTK_ICON_VIEW_DROP_ABOVE,
   CTK_ICON_VIEW_DROP_BELOW
-} GtkIconViewDropPosition;
+} CtkIconViewDropPosition;
 
-struct _GtkIconView
+struct _CtkIconView
 {
-  GtkContainer parent;
+  CtkContainer parent;
 
   /*< private >*/
-  GtkIconViewPrivate *priv;
+  CtkIconViewPrivate *priv;
 };
 
-struct _GtkIconViewClass
+struct _CtkIconViewClass
 {
-  GtkContainerClass parent_class;
+  CtkContainerClass parent_class;
 
-  void    (* item_activated)         (GtkIconView      *icon_view,
-				      GtkTreePath      *path);
-  void    (* selection_changed)      (GtkIconView      *icon_view);
+  void    (* item_activated)         (CtkIconView      *icon_view,
+				      CtkTreePath      *path);
+  void    (* selection_changed)      (CtkIconView      *icon_view);
 
   /* Key binding signals */
-  void    (* select_all)             (GtkIconView      *icon_view);
-  void    (* unselect_all)           (GtkIconView      *icon_view);
-  void    (* select_cursor_item)     (GtkIconView      *icon_view);
-  void    (* toggle_cursor_item)     (GtkIconView      *icon_view);
-  gboolean (* move_cursor)           (GtkIconView      *icon_view,
-				      GtkMovementStep   step,
+  void    (* select_all)             (CtkIconView      *icon_view);
+  void    (* unselect_all)           (CtkIconView      *icon_view);
+  void    (* select_cursor_item)     (CtkIconView      *icon_view);
+  void    (* toggle_cursor_item)     (CtkIconView      *icon_view);
+  gboolean (* move_cursor)           (CtkIconView      *icon_view,
+				      CtkMovementStep   step,
 				      gint              count);
-  gboolean (* activate_cursor_item)  (GtkIconView      *icon_view);
+  gboolean (* activate_cursor_item)  (CtkIconView      *icon_view);
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -112,220 +112,220 @@ struct _GtkIconViewClass
 GDK_AVAILABLE_IN_ALL
 GType          ctk_icon_view_get_type          (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget *    ctk_icon_view_new               (void);
+CtkWidget *    ctk_icon_view_new               (void);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *    ctk_icon_view_new_with_area     (GtkCellArea    *area);
+CtkWidget *    ctk_icon_view_new_with_area     (CtkCellArea    *area);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *    ctk_icon_view_new_with_model    (GtkTreeModel   *model);
+CtkWidget *    ctk_icon_view_new_with_model    (CtkTreeModel   *model);
 
 GDK_AVAILABLE_IN_ALL
-void           ctk_icon_view_set_model         (GtkIconView    *icon_view,
- 					        GtkTreeModel   *model);
+void           ctk_icon_view_set_model         (CtkIconView    *icon_view,
+ 					        CtkTreeModel   *model);
 GDK_AVAILABLE_IN_ALL
-GtkTreeModel * ctk_icon_view_get_model         (GtkIconView    *icon_view);
+CtkTreeModel * ctk_icon_view_get_model         (CtkIconView    *icon_view);
 GDK_AVAILABLE_IN_ALL
-void           ctk_icon_view_set_text_column   (GtkIconView    *icon_view,
+void           ctk_icon_view_set_text_column   (CtkIconView    *icon_view,
 	 	 			        gint            column);
 GDK_AVAILABLE_IN_ALL
-gint           ctk_icon_view_get_text_column   (GtkIconView    *icon_view);
+gint           ctk_icon_view_get_text_column   (CtkIconView    *icon_view);
 GDK_AVAILABLE_IN_ALL
-void           ctk_icon_view_set_markup_column (GtkIconView    *icon_view,
+void           ctk_icon_view_set_markup_column (CtkIconView    *icon_view,
 					        gint            column);
 GDK_AVAILABLE_IN_ALL
-gint           ctk_icon_view_get_markup_column (GtkIconView    *icon_view);
+gint           ctk_icon_view_get_markup_column (CtkIconView    *icon_view);
 GDK_AVAILABLE_IN_ALL
-void           ctk_icon_view_set_pixbuf_column (GtkIconView    *icon_view,
+void           ctk_icon_view_set_pixbuf_column (CtkIconView    *icon_view,
 					        gint            column);
 GDK_AVAILABLE_IN_ALL
-gint           ctk_icon_view_get_pixbuf_column (GtkIconView    *icon_view);
+gint           ctk_icon_view_get_pixbuf_column (CtkIconView    *icon_view);
 
 GDK_AVAILABLE_IN_ALL
-void           ctk_icon_view_set_item_orientation (GtkIconView    *icon_view,
-                                                   GtkOrientation  orientation);
+void           ctk_icon_view_set_item_orientation (CtkIconView    *icon_view,
+                                                   CtkOrientation  orientation);
 GDK_AVAILABLE_IN_ALL
-GtkOrientation ctk_icon_view_get_item_orientation (GtkIconView    *icon_view);
+CtkOrientation ctk_icon_view_get_item_orientation (CtkIconView    *icon_view);
 GDK_AVAILABLE_IN_ALL
-void           ctk_icon_view_set_columns       (GtkIconView    *icon_view,
+void           ctk_icon_view_set_columns       (CtkIconView    *icon_view,
 		 			        gint            columns);
 GDK_AVAILABLE_IN_ALL
-gint           ctk_icon_view_get_columns       (GtkIconView    *icon_view);
+gint           ctk_icon_view_get_columns       (CtkIconView    *icon_view);
 GDK_AVAILABLE_IN_ALL
-void           ctk_icon_view_set_item_width    (GtkIconView    *icon_view,
+void           ctk_icon_view_set_item_width    (CtkIconView    *icon_view,
 					        gint            item_width);
 GDK_AVAILABLE_IN_ALL
-gint           ctk_icon_view_get_item_width    (GtkIconView    *icon_view);
+gint           ctk_icon_view_get_item_width    (CtkIconView    *icon_view);
 GDK_AVAILABLE_IN_ALL
-void           ctk_icon_view_set_spacing       (GtkIconView    *icon_view, 
+void           ctk_icon_view_set_spacing       (CtkIconView    *icon_view, 
 		 			        gint            spacing);
 GDK_AVAILABLE_IN_ALL
-gint           ctk_icon_view_get_spacing       (GtkIconView    *icon_view);
+gint           ctk_icon_view_get_spacing       (CtkIconView    *icon_view);
 GDK_AVAILABLE_IN_ALL
-void           ctk_icon_view_set_row_spacing   (GtkIconView    *icon_view, 
+void           ctk_icon_view_set_row_spacing   (CtkIconView    *icon_view, 
 					        gint            row_spacing);
 GDK_AVAILABLE_IN_ALL
-gint           ctk_icon_view_get_row_spacing   (GtkIconView    *icon_view);
+gint           ctk_icon_view_get_row_spacing   (CtkIconView    *icon_view);
 GDK_AVAILABLE_IN_ALL
-void           ctk_icon_view_set_column_spacing (GtkIconView    *icon_view, 
+void           ctk_icon_view_set_column_spacing (CtkIconView    *icon_view, 
 					        gint            column_spacing);
 GDK_AVAILABLE_IN_ALL
-gint           ctk_icon_view_get_column_spacing (GtkIconView    *icon_view);
+gint           ctk_icon_view_get_column_spacing (CtkIconView    *icon_view);
 GDK_AVAILABLE_IN_ALL
-void           ctk_icon_view_set_margin        (GtkIconView    *icon_view, 
+void           ctk_icon_view_set_margin        (CtkIconView    *icon_view, 
 					        gint            margin);
 GDK_AVAILABLE_IN_ALL
-gint           ctk_icon_view_get_margin        (GtkIconView    *icon_view);
+gint           ctk_icon_view_get_margin        (CtkIconView    *icon_view);
 GDK_AVAILABLE_IN_ALL
-void           ctk_icon_view_set_item_padding  (GtkIconView    *icon_view, 
+void           ctk_icon_view_set_item_padding  (CtkIconView    *icon_view, 
 					        gint            item_padding);
 GDK_AVAILABLE_IN_ALL
-gint           ctk_icon_view_get_item_padding  (GtkIconView    *icon_view);
+gint           ctk_icon_view_get_item_padding  (CtkIconView    *icon_view);
 
 GDK_AVAILABLE_IN_ALL
-GtkTreePath *  ctk_icon_view_get_path_at_pos   (GtkIconView     *icon_view,
+CtkTreePath *  ctk_icon_view_get_path_at_pos   (CtkIconView     *icon_view,
 						gint             x,
 						gint             y);
 GDK_AVAILABLE_IN_ALL
-gboolean       ctk_icon_view_get_item_at_pos   (GtkIconView     *icon_view,
+gboolean       ctk_icon_view_get_item_at_pos   (CtkIconView     *icon_view,
 						gint              x,
 						gint              y,
-						GtkTreePath     **path,
-						GtkCellRenderer **cell);
+						CtkTreePath     **path,
+						CtkCellRenderer **cell);
 GDK_AVAILABLE_IN_ALL
-gboolean       ctk_icon_view_get_visible_range (GtkIconView      *icon_view,
-						GtkTreePath     **start_path,
-						GtkTreePath     **end_path);
+gboolean       ctk_icon_view_get_visible_range (CtkIconView      *icon_view,
+						CtkTreePath     **start_path,
+						CtkTreePath     **end_path);
 GDK_AVAILABLE_IN_3_8
-void           ctk_icon_view_set_activate_on_single_click (GtkIconView  *icon_view,
+void           ctk_icon_view_set_activate_on_single_click (CtkIconView  *icon_view,
                                                            gboolean      single);
 GDK_AVAILABLE_IN_3_8
-gboolean       ctk_icon_view_get_activate_on_single_click (GtkIconView  *icon_view);
+gboolean       ctk_icon_view_get_activate_on_single_click (CtkIconView  *icon_view);
 
 GDK_AVAILABLE_IN_ALL
-void           ctk_icon_view_selected_foreach   (GtkIconView            *icon_view,
-						 GtkIconViewForeachFunc  func,
+void           ctk_icon_view_selected_foreach   (CtkIconView            *icon_view,
+						 CtkIconViewForeachFunc  func,
 						 gpointer                data);
 GDK_AVAILABLE_IN_ALL
-void           ctk_icon_view_set_selection_mode (GtkIconView            *icon_view,
-						 GtkSelectionMode        mode);
+void           ctk_icon_view_set_selection_mode (CtkIconView            *icon_view,
+						 CtkSelectionMode        mode);
 GDK_AVAILABLE_IN_ALL
-GtkSelectionMode ctk_icon_view_get_selection_mode (GtkIconView            *icon_view);
+CtkSelectionMode ctk_icon_view_get_selection_mode (CtkIconView            *icon_view);
 GDK_AVAILABLE_IN_ALL
-void             ctk_icon_view_select_path        (GtkIconView            *icon_view,
-						   GtkTreePath            *path);
+void             ctk_icon_view_select_path        (CtkIconView            *icon_view,
+						   CtkTreePath            *path);
 GDK_AVAILABLE_IN_ALL
-void             ctk_icon_view_unselect_path      (GtkIconView            *icon_view,
-						   GtkTreePath            *path);
+void             ctk_icon_view_unselect_path      (CtkIconView            *icon_view,
+						   CtkTreePath            *path);
 GDK_AVAILABLE_IN_ALL
-gboolean         ctk_icon_view_path_is_selected   (GtkIconView            *icon_view,
-						   GtkTreePath            *path);
+gboolean         ctk_icon_view_path_is_selected   (CtkIconView            *icon_view,
+						   CtkTreePath            *path);
 GDK_AVAILABLE_IN_ALL
-gint             ctk_icon_view_get_item_row       (GtkIconView            *icon_view,
-                                                   GtkTreePath            *path);
+gint             ctk_icon_view_get_item_row       (CtkIconView            *icon_view,
+                                                   CtkTreePath            *path);
 GDK_AVAILABLE_IN_ALL
-gint             ctk_icon_view_get_item_column    (GtkIconView            *icon_view,
-                                                   GtkTreePath            *path);
+gint             ctk_icon_view_get_item_column    (CtkIconView            *icon_view,
+                                                   CtkTreePath            *path);
 GDK_AVAILABLE_IN_ALL
-GList           *ctk_icon_view_get_selected_items (GtkIconView            *icon_view);
+GList           *ctk_icon_view_get_selected_items (CtkIconView            *icon_view);
 GDK_AVAILABLE_IN_ALL
-void             ctk_icon_view_select_all         (GtkIconView            *icon_view);
+void             ctk_icon_view_select_all         (CtkIconView            *icon_view);
 GDK_AVAILABLE_IN_ALL
-void             ctk_icon_view_unselect_all       (GtkIconView            *icon_view);
+void             ctk_icon_view_unselect_all       (CtkIconView            *icon_view);
 GDK_AVAILABLE_IN_ALL
-void             ctk_icon_view_item_activated     (GtkIconView            *icon_view,
-						   GtkTreePath            *path);
+void             ctk_icon_view_item_activated     (CtkIconView            *icon_view,
+						   CtkTreePath            *path);
 GDK_AVAILABLE_IN_ALL
-void             ctk_icon_view_set_cursor         (GtkIconView            *icon_view,
-						   GtkTreePath            *path,
-						   GtkCellRenderer        *cell,
+void             ctk_icon_view_set_cursor         (CtkIconView            *icon_view,
+						   CtkTreePath            *path,
+						   CtkCellRenderer        *cell,
 						   gboolean                start_editing);
 GDK_AVAILABLE_IN_ALL
-gboolean         ctk_icon_view_get_cursor         (GtkIconView            *icon_view,
-						   GtkTreePath           **path,
-						   GtkCellRenderer       **cell);
+gboolean         ctk_icon_view_get_cursor         (CtkIconView            *icon_view,
+						   CtkTreePath           **path,
+						   CtkCellRenderer       **cell);
 GDK_AVAILABLE_IN_ALL
-void             ctk_icon_view_scroll_to_path     (GtkIconView            *icon_view,
-                                                   GtkTreePath            *path,
+void             ctk_icon_view_scroll_to_path     (CtkIconView            *icon_view,
+                                                   CtkTreePath            *path,
 						   gboolean                use_align,
 						   gfloat                  row_align,
                                                    gfloat                  col_align);
 
 /* Drag-and-Drop support */
 GDK_AVAILABLE_IN_ALL
-void                   ctk_icon_view_enable_model_drag_source (GtkIconView              *icon_view,
+void                   ctk_icon_view_enable_model_drag_source (CtkIconView              *icon_view,
 							       GdkModifierType           start_button_mask,
-							       const GtkTargetEntry     *targets,
+							       const CtkTargetEntry     *targets,
 							       gint                      n_targets,
 							       GdkDragAction             actions);
 GDK_AVAILABLE_IN_ALL
-void                   ctk_icon_view_enable_model_drag_dest   (GtkIconView              *icon_view,
-							       const GtkTargetEntry     *targets,
+void                   ctk_icon_view_enable_model_drag_dest   (CtkIconView              *icon_view,
+							       const CtkTargetEntry     *targets,
 							       gint                      n_targets,
 							       GdkDragAction             actions);
 GDK_AVAILABLE_IN_ALL
-void                   ctk_icon_view_unset_model_drag_source  (GtkIconView              *icon_view);
+void                   ctk_icon_view_unset_model_drag_source  (CtkIconView              *icon_view);
 GDK_AVAILABLE_IN_ALL
-void                   ctk_icon_view_unset_model_drag_dest    (GtkIconView              *icon_view);
+void                   ctk_icon_view_unset_model_drag_dest    (CtkIconView              *icon_view);
 GDK_AVAILABLE_IN_ALL
-void                   ctk_icon_view_set_reorderable          (GtkIconView              *icon_view,
+void                   ctk_icon_view_set_reorderable          (CtkIconView              *icon_view,
 							       gboolean                  reorderable);
 GDK_AVAILABLE_IN_ALL
-gboolean               ctk_icon_view_get_reorderable          (GtkIconView              *icon_view);
+gboolean               ctk_icon_view_get_reorderable          (CtkIconView              *icon_view);
 
 
 /* These are useful to implement your own custom stuff. */
 GDK_AVAILABLE_IN_ALL
-void                   ctk_icon_view_set_drag_dest_item       (GtkIconView              *icon_view,
-							       GtkTreePath              *path,
-							       GtkIconViewDropPosition   pos);
+void                   ctk_icon_view_set_drag_dest_item       (CtkIconView              *icon_view,
+							       CtkTreePath              *path,
+							       CtkIconViewDropPosition   pos);
 GDK_AVAILABLE_IN_ALL
-void                   ctk_icon_view_get_drag_dest_item       (GtkIconView              *icon_view,
-							       GtkTreePath             **path,
-							       GtkIconViewDropPosition  *pos);
+void                   ctk_icon_view_get_drag_dest_item       (CtkIconView              *icon_view,
+							       CtkTreePath             **path,
+							       CtkIconViewDropPosition  *pos);
 GDK_AVAILABLE_IN_ALL
-gboolean               ctk_icon_view_get_dest_item_at_pos     (GtkIconView              *icon_view,
+gboolean               ctk_icon_view_get_dest_item_at_pos     (CtkIconView              *icon_view,
 							       gint                      drag_x,
 							       gint                      drag_y,
-							       GtkTreePath             **path,
-							       GtkIconViewDropPosition  *pos);
+							       CtkTreePath             **path,
+							       CtkIconViewDropPosition  *pos);
 GDK_AVAILABLE_IN_ALL
-cairo_surface_t       *ctk_icon_view_create_drag_icon         (GtkIconView              *icon_view,
-							       GtkTreePath              *path);
+cairo_surface_t       *ctk_icon_view_create_drag_icon         (CtkIconView              *icon_view,
+							       CtkTreePath              *path);
 
 GDK_AVAILABLE_IN_ALL
-void    ctk_icon_view_convert_widget_to_bin_window_coords     (GtkIconView *icon_view,
+void    ctk_icon_view_convert_widget_to_bin_window_coords     (CtkIconView *icon_view,
                                                                gint         wx,
                                                                gint         wy,
                                                                gint        *bx,
                                                                gint        *by);
 GDK_AVAILABLE_IN_3_6
-gboolean ctk_icon_view_get_cell_rect                          (GtkIconView     *icon_view,
-							       GtkTreePath     *path,
-							       GtkCellRenderer *cell,
+gboolean ctk_icon_view_get_cell_rect                          (CtkIconView     *icon_view,
+							       CtkTreePath     *path,
+							       CtkCellRenderer *cell,
 							       GdkRectangle    *rect);
 
 
 GDK_AVAILABLE_IN_ALL
-void    ctk_icon_view_set_tooltip_item                        (GtkIconView     *icon_view,
-                                                               GtkTooltip      *tooltip,
-                                                               GtkTreePath     *path);
+void    ctk_icon_view_set_tooltip_item                        (CtkIconView     *icon_view,
+                                                               CtkTooltip      *tooltip,
+                                                               CtkTreePath     *path);
 GDK_AVAILABLE_IN_ALL
-void    ctk_icon_view_set_tooltip_cell                        (GtkIconView     *icon_view,
-                                                               GtkTooltip      *tooltip,
-                                                               GtkTreePath     *path,
-                                                               GtkCellRenderer *cell);
+void    ctk_icon_view_set_tooltip_cell                        (CtkIconView     *icon_view,
+                                                               CtkTooltip      *tooltip,
+                                                               CtkTreePath     *path,
+                                                               CtkCellRenderer *cell);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_icon_view_get_tooltip_context                    (GtkIconView       *icon_view,
+gboolean ctk_icon_view_get_tooltip_context                    (CtkIconView       *icon_view,
                                                                gint              *x,
                                                                gint              *y,
                                                                gboolean           keyboard_tip,
-                                                               GtkTreeModel     **model,
-                                                               GtkTreePath      **path,
-                                                               GtkTreeIter       *iter);
+                                                               CtkTreeModel     **model,
+                                                               CtkTreePath      **path,
+                                                               CtkTreeIter       *iter);
 GDK_AVAILABLE_IN_ALL
-void     ctk_icon_view_set_tooltip_column                     (GtkIconView       *icon_view,
+void     ctk_icon_view_set_tooltip_column                     (CtkIconView       *icon_view,
                                                                gint               column);
 GDK_AVAILABLE_IN_ALL
-gint     ctk_icon_view_get_tooltip_column                     (GtkIconView       *icon_view);
+gint     ctk_icon_view_get_tooltip_column                     (CtkIconView       *icon_view);
 
 
 G_END_DECLS

@@ -23,14 +23,14 @@
 #include "ctkcellaccessibleprivate.h"
 #include "ctkcellaccessibleparent.h"
 
-struct _GtkCellAccessiblePrivate
+struct _CtkCellAccessiblePrivate
 {
   AtkObject *parent;
 };
 
 static const struct {
   AtkState atk_state;
-  GtkCellRendererState renderer_state;
+  CtkCellRendererState renderer_state;
   gboolean invert;
 } state_map[] = {
   { ATK_STATE_SENSITIVE, CTK_CELL_RENDERER_INSENSITIVE, TRUE },
@@ -43,13 +43,13 @@ static const struct {
   { ATK_STATE_EXPANDED,  CTK_CELL_RENDERER_EXPANDED,    FALSE },
 };
 
-static GtkCellRendererState ctk_cell_accessible_get_state (GtkCellAccessible *cell);
+static CtkCellRendererState ctk_cell_accessible_get_state (CtkCellAccessible *cell);
 static void atk_action_interface_init    (AtkActionIface    *iface);
 static void atk_component_interface_init (AtkComponentIface *iface);
 static void atk_table_cell_interface_init    (AtkTableCellIface    *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkCellAccessible, ctk_cell_accessible, CTK_TYPE_ACCESSIBLE,
-                         G_ADD_PRIVATE (GtkCellAccessible)
+G_DEFINE_TYPE_WITH_CODE (CtkCellAccessible, ctk_cell_accessible, CTK_TYPE_ACCESSIBLE,
+                         G_ADD_PRIVATE (CtkCellAccessible)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_ACTION, atk_action_interface_init)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_COMPONENT, atk_component_interface_init)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_TABLE_CELL, atk_table_cell_interface_init))
@@ -57,7 +57,7 @@ G_DEFINE_TYPE_WITH_CODE (GtkCellAccessible, ctk_cell_accessible, CTK_TYPE_ACCESS
 static gint
 ctk_cell_accessible_get_index_in_parent (AtkObject *obj)
 {
-  GtkCellAccessible *cell;
+  CtkCellAccessible *cell;
   AtkObject *parent;
 
   cell = CTK_CELL_ACCESSIBLE (obj);
@@ -75,7 +75,7 @@ ctk_cell_accessible_get_index_in_parent (AtkObject *obj)
 static AtkRelationSet *
 ctk_cell_accessible_ref_relation_set (AtkObject *object)
 {
-  GtkCellAccessible *cell;
+  CtkCellAccessible *cell;
   AtkRelationSet *relationset;
   AtkObject *parent;
 
@@ -96,9 +96,9 @@ ctk_cell_accessible_ref_relation_set (AtkObject *object)
 static AtkStateSet *
 ctk_cell_accessible_ref_state_set (AtkObject *accessible)
 {
-  GtkCellAccessible *cell_accessible;
+  CtkCellAccessible *cell_accessible;
   AtkStateSet *state_set;
-  GtkCellRendererState flags;
+  CtkCellRendererState flags;
   guint i;
 
   cell_accessible = CTK_CELL_ACCESSIBLE (accessible);
@@ -141,13 +141,13 @@ ctk_cell_accessible_ref_state_set (AtkObject *accessible)
 static AtkObject *
 ctk_cell_accessible_get_parent (AtkObject *object)
 {
-  GtkCellAccessible *cell = CTK_CELL_ACCESSIBLE (object);
+  CtkCellAccessible *cell = CTK_CELL_ACCESSIBLE (object);
 
   return cell->priv->parent;
 }
 
 static void
-ctk_cell_accessible_class_init (GtkCellAccessibleClass *klass)
+ctk_cell_accessible_class_init (CtkCellAccessibleClass *klass)
 {
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
 
@@ -158,14 +158,14 @@ ctk_cell_accessible_class_init (GtkCellAccessibleClass *klass)
 }
 
 static void
-ctk_cell_accessible_init (GtkCellAccessible *cell)
+ctk_cell_accessible_init (CtkCellAccessible *cell)
 {
   cell->priv = ctk_cell_accessible_get_instance_private (cell);
 }
 
 void
-_ctk_cell_accessible_initialize (GtkCellAccessible *cell,
-                                 GtkWidget         *widget,
+_ctk_cell_accessible_initialize (CtkCellAccessible *cell,
+                                 CtkWidget         *widget,
                                  AtkObject         *parent)
 {
   ctk_accessible_set_widget (CTK_ACCESSIBLE (cell), widget);
@@ -173,7 +173,7 @@ _ctk_cell_accessible_initialize (GtkCellAccessible *cell,
 }
 
 gboolean
-_ctk_cell_accessible_add_state (GtkCellAccessible *cell,
+_ctk_cell_accessible_add_state (CtkCellAccessible *cell,
                                 AtkStateType       state_type,
                                 gboolean           emit_signal)
 {
@@ -199,7 +199,7 @@ _ctk_cell_accessible_add_state (GtkCellAccessible *cell,
 }
 
 gboolean
-_ctk_cell_accessible_remove_state (GtkCellAccessible *cell,
+_ctk_cell_accessible_remove_state (CtkCellAccessible *cell,
                                    AtkStateType       state_type,
                                    gboolean           emit_signal)
 {
@@ -292,8 +292,8 @@ static gboolean
 ctk_cell_accessible_action_do_action (AtkAction *action,
                                       gint       index)
 {
-  GtkCellAccessible *cell = CTK_CELL_ACCESSIBLE (action);
-  GtkCellAccessibleParent *parent;
+  CtkCellAccessible *cell = CTK_CELL_ACCESSIBLE (action);
+  CtkCellAccessibleParent *parent;
 
   cell = CTK_CELL_ACCESSIBLE (action);
   if (ctk_accessible_get_widget (CTK_ACCESSIBLE (cell)) == NULL)
@@ -338,7 +338,7 @@ ctk_cell_accessible_get_extents (AtkComponent *component,
                                  gint         *height,
                                  AtkCoordType  coord_type)
 {
-  GtkCellAccessible *cell;
+  CtkCellAccessible *cell;
   AtkObject *parent;
 
   cell = CTK_CELL_ACCESSIBLE (component);
@@ -352,7 +352,7 @@ ctk_cell_accessible_get_extents (AtkComponent *component,
 static gboolean
 ctk_cell_accessible_grab_focus (AtkComponent *component)
 {
-  GtkCellAccessible *cell;
+  CtkCellAccessible *cell;
   AtkObject *parent;
 
   cell = CTK_CELL_ACCESSIBLE (component);
@@ -377,7 +377,7 @@ ctk_cell_accessible_get_column_span (AtkTableCell *table_cell)
 static GPtrArray *
 ctk_cell_accessible_get_column_header_cells (AtkTableCell *table_cell)
 {
-  GtkCellAccessible *cell;
+  CtkCellAccessible *cell;
   AtkObject *parent;
 
   cell = CTK_CELL_ACCESSIBLE (table_cell);
@@ -392,7 +392,7 @@ ctk_cell_accessible_get_position (AtkTableCell *table_cell,
                                   gint         *row,
                                   gint         *column)
 {
-  GtkCellAccessible *cell;
+  CtkCellAccessible *cell;
   AtkObject *parent;
 
   cell = CTK_CELL_ACCESSIBLE (table_cell);
@@ -413,7 +413,7 @@ ctk_cell_accessible_get_row_span (AtkTableCell *table_cell)
 static GPtrArray *
 ctk_cell_accessible_get_row_header_cells (AtkTableCell *table_cell)
 {
-  GtkCellAccessible *cell;
+  CtkCellAccessible *cell;
   AtkObject *parent;
 
   cell = CTK_CELL_ACCESSIBLE (table_cell);
@@ -452,8 +452,8 @@ atk_table_cell_interface_init (AtkTableCellIface *iface)
   iface->get_table = ctk_cell_accessible_get_table;
 }
 
-static GtkCellRendererState
-ctk_cell_accessible_get_state (GtkCellAccessible *cell)
+static CtkCellRendererState
+ctk_cell_accessible_get_state (CtkCellAccessible *cell)
 {
   AtkObject *parent;
 
@@ -468,7 +468,7 @@ ctk_cell_accessible_get_state (GtkCellAccessible *cell)
 
 /*
  * ctk_cell_accessible_state_changed:
- * @cell: a #GtkCellAccessible
+ * @cell: a #CtkCellAccessible
  * @added: the flags that were added from @cell
  * @removed: the flags that were removed from @cell
  *
@@ -477,9 +477,9 @@ ctk_cell_accessible_get_state (GtkCellAccessible *cell)
  * @removed at the same time.
  **/
 void
-_ctk_cell_accessible_state_changed (GtkCellAccessible    *cell,
-                                    GtkCellRendererState  added,
-                                    GtkCellRendererState  removed)
+_ctk_cell_accessible_state_changed (CtkCellAccessible    *cell,
+                                    CtkCellRendererState  added,
+                                    CtkCellRendererState  removed)
 {
   AtkObject *object;
   guint i;
@@ -520,10 +520,10 @@ _ctk_cell_accessible_state_changed (GtkCellAccessible    *cell,
  * function.
  **/
 void
-_ctk_cell_accessible_update_cache (GtkCellAccessible *cell,
+_ctk_cell_accessible_update_cache (CtkCellAccessible *cell,
                                    gboolean           emit_signal)
 {
-  GtkCellAccessibleClass *klass;
+  CtkCellAccessibleClass *klass;
 
   g_return_if_fail (CTK_CELL_ACCESSIBLE (cell));
 

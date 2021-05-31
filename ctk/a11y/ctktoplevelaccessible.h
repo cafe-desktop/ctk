@@ -27,24 +27,24 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_TOPLEVEL_ACCESSIBLE               (ctk_toplevel_accessible_get_type ())
-#define CTK_TOPLEVEL_ACCESSIBLE(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TOPLEVEL_ACCESSIBLE, GtkToplevelAccessible))
-#define CTK_TOPLEVEL_ACCESSIBLE_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TOPLEVEL_ACCESSIBLE, GtkToplevelAccessibleClass))
+#define CTK_TOPLEVEL_ACCESSIBLE(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TOPLEVEL_ACCESSIBLE, CtkToplevelAccessible))
+#define CTK_TOPLEVEL_ACCESSIBLE_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TOPLEVEL_ACCESSIBLE, CtkToplevelAccessibleClass))
 #define CTK_IS_TOPLEVEL_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TOPLEVEL_ACCESSIBLE))
 #define CTK_IS_TOPLEVEL_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TOPLEVEL_ACCESSIBLE))
-#define CTK_TOPLEVEL_ACCESSIBLE_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TOPLEVEL_ACCESSIBLE, GtkToplevelAccessibleClass))
+#define CTK_TOPLEVEL_ACCESSIBLE_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TOPLEVEL_ACCESSIBLE, CtkToplevelAccessibleClass))
 
-typedef struct _GtkToplevelAccessible        GtkToplevelAccessible;
-typedef struct _GtkToplevelAccessibleClass   GtkToplevelAccessibleClass;
-typedef struct _GtkToplevelAccessiblePrivate GtkToplevelAccessiblePrivate;
+typedef struct _CtkToplevelAccessible        CtkToplevelAccessible;
+typedef struct _CtkToplevelAccessibleClass   CtkToplevelAccessibleClass;
+typedef struct _CtkToplevelAccessiblePrivate CtkToplevelAccessiblePrivate;
 
-struct _GtkToplevelAccessible
+struct _CtkToplevelAccessible
 {
   AtkObject parent;
 
-  GtkToplevelAccessiblePrivate *priv;
+  CtkToplevelAccessiblePrivate *priv;
 };
 
-struct _GtkToplevelAccessibleClass
+struct _CtkToplevelAccessibleClass
 {
   AtkObjectClass parent_class;
 };
@@ -52,7 +52,7 @@ struct _GtkToplevelAccessibleClass
 GDK_AVAILABLE_IN_ALL
 GType  ctk_toplevel_accessible_get_type     (void);
 GDK_AVAILABLE_IN_ALL
-GList *ctk_toplevel_accessible_get_children (GtkToplevelAccessible *accessible);
+GList *ctk_toplevel_accessible_get_children (CtkToplevelAccessible *accessible);
 
 G_END_DECLS
 

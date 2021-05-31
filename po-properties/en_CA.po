@@ -432,10 +432,10 @@ msgstr "Action Group"
 
 #: ctk/ctkaction.c:396
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 
 #: ctk/ctkaction.c:414 ctk/ctkimagemenuitem.c:172
@@ -828,10 +828,10 @@ msgstr "Pack type"
 
 #: ctk/ctkbox.c:287 ctk/ctknotebook.c:692
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
 msgstr ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
 
 #: ctk/ctkbox.c:293 ctk/ctknotebook.c:670 ctk/ctkpaned.c:270
@@ -1337,8 +1337,8 @@ msgid "Size"
 msgstr "Size"
 
 #: ctk/ctkcellrendererpixbuf.c:153
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
-msgstr "The GtkIconSize value that specifies the size of the rendered icon"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
+msgstr "The CtkIconSize value that specifies the size of the rendered icon"
 
 #: ctk/ctkcellrendererpixbuf.c:162
 msgid "Detail"
@@ -1461,8 +1461,8 @@ msgstr "Name of the printer"
 
 #: ctk/ctkcellrendererspinner.c:154
 #, fuzzy
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
-msgstr "The GtkIconSize value that specifies the size of the rendered icon"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
+msgstr "The CtkIconSize value that specifies the size of the rendered icon"
 
 #: ctk/ctkcellrenderertext.c:232
 msgid "Text to render"
@@ -3265,11 +3265,11 @@ msgstr "Justification"
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkMisc::xalign for that"
+"CtkMisc::xalign for that"
 msgstr ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkMisc::xalign for that"
+"CtkMisc::xalign for that"
 
 #: ctk/ctklabel.c:587
 msgid "Pattern"
@@ -3371,16 +3371,16 @@ msgid "Horizontal adjustment"
 msgstr "Horizontal adjustment"
 
 #: ctk/ctklayout.c:626 ctk/ctkscrolledwindow.c:244
-msgid "The GtkAdjustment for the horizontal position"
-msgstr "The GtkAdjustment for the horizontal position"
+msgid "The CtkAdjustment for the horizontal position"
+msgstr "The CtkAdjustment for the horizontal position"
 
 #: ctk/ctklayout.c:633 ctk/ctkviewport.c:150
 msgid "Vertical adjustment"
 msgstr "Vertical adjustment"
 
 #: ctk/ctklayout.c:634 ctk/ctkscrolledwindow.c:251
-msgid "The GtkAdjustment for the vertical position"
-msgstr "The GtkAdjustment for the vertical position"
+msgid "The CtkAdjustment for the vertical position"
+msgstr "The CtkAdjustment for the vertical position"
 
 #: ctk/ctklayout.c:641 ctk/ctktreeviewcolumn.c:211
 msgid "Width"
@@ -3757,7 +3757,7 @@ msgid "Message area"
 msgstr "Message Type"
 
 #: ctk/ctkmessagedialog.c:306
-msgid "GtkVBox that holds the dialog's primary and secondary labels"
+msgid "CtkVBox that holds the dialog's primary and secondary labels"
 msgstr ""
 
 #: ctk/ctkmisc.c:91
@@ -4207,16 +4207,16 @@ msgid "Default Page Setup"
 msgstr "Default Page Setup"
 
 #: ctk/ctkprintoperation.c:1006
-msgid "The GtkPageSetup used by default"
-msgstr "The GtkPageSetup used by default"
+msgid "The CtkPageSetup used by default"
+msgstr "The CtkPageSetup used by default"
 
 #: ctk/ctkprintoperation.c:1024 ctk/ctkprintunixdialog.c:316
 msgid "Print Settings"
 msgstr "Print Settings"
 
 #: ctk/ctkprintoperation.c:1025 ctk/ctkprintunixdialog.c:317
-msgid "The GtkPrintSettings used for initializing the dialog"
-msgstr "The GtkPrintSettings used for initializing the dialogue"
+msgid "The CtkPrintSettings used for initializing the dialog"
+msgstr "The CtkPrintSettings used for initializing the dialogue"
 
 #: ctk/ctkprintoperation.c:1043
 msgid "Job Name"
@@ -4338,7 +4338,7 @@ msgid "Embed Page Setup"
 msgstr "Page Setup"
 
 #: ctk/ctkprintoperation.c:1321
-msgid "TRUE if page setup combos are embedded in GtkPrintDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintDialog"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1342
@@ -4352,16 +4352,16 @@ msgid "The number of pages that will be printed."
 msgstr "The number of pages in the document."
 
 #: ctk/ctkprintunixdialog.c:299
-msgid "The GtkPageSetup to use"
-msgstr "The GtkPageSetup to use"
+msgid "The CtkPageSetup to use"
+msgstr "The CtkPageSetup to use"
 
 #: ctk/ctkprintunixdialog.c:324
 msgid "Selected Printer"
 msgstr "Selected Printer"
 
 #: ctk/ctkprintunixdialog.c:325
-msgid "The GtkPrinter which is selected"
-msgstr "The GtkPrinter which is selected"
+msgid "The CtkPrinter which is selected"
+msgstr "The CtkPrinter which is selected"
 
 #: ctk/ctkprintunixdialog.c:332
 msgid "Manual Capabilities"
@@ -4382,7 +4382,7 @@ msgid "Whether the application has a selection"
 msgstr "Whether the action is enabled."
 
 #: ctk/ctkprintunixdialog.c:358
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
 msgstr ""
 
 #: ctk/ctkprogressbar.c:134
@@ -4535,8 +4535,8 @@ msgid "How the range should be updated on the screen"
 msgstr "How the range should be updated on the screen"
 
 #: ctk/ctkrange.c:420
-msgid "The GtkAdjustment that contains the current value of this range object"
-msgstr "The GtkAdjustment that contains the current value of this range object"
+msgid "The CtkAdjustment that contains the current value of this range object"
+msgstr "The CtkAdjustment that contains the current value of this range object"
 
 #: ctk/ctkrange.c:428
 msgid "Invert direction slider moves to increase range value"
@@ -4798,9 +4798,9 @@ msgstr "The icon size"
 
 #: ctk/ctkscalebutton.c:240
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
+"The CtkAdjustment that contains the current value of this scale button object"
 msgstr ""
-"The GtkAdjustment that contains the current value of this scale button object"
+"The CtkAdjustment that contains the current value of this scale button object"
 
 #: ctk/ctkscalebutton.c:268
 msgid "Icons"
@@ -5309,16 +5309,16 @@ msgid "Default file chooser backend"
 msgstr "Default file chooser backend"
 
 #: ctk/ctksettings.c:743
-msgid "Name of the GtkFileChooser backend to use by default"
-msgstr "Name of the GtkFileChooser backend to use by default"
+msgid "Name of the CtkFileChooser backend to use by default"
+msgstr "Name of the CtkFileChooser backend to use by default"
 
 #: ctk/ctksettings.c:760
 msgid "Default print backend"
 msgstr "Default print backend"
 
 #: ctk/ctksettings.c:761
-msgid "List of the GtkPrintBackend backends to use by default"
-msgstr "List of the GtkPrintBackend backends to use by default"
+msgid "List of the CtkPrintBackend backends to use by default"
+msgstr "List of the CtkPrintBackend backends to use by default"
 
 #: ctk/ctksettings.c:784
 msgid "Default command to run when displaying a print preview"
@@ -5542,7 +5542,7 @@ msgstr "Number of Pages"
 #: ctk/ctkspinner.c:147
 msgid ""
 "The number of steps for the spinner to complete a full loop. The animation "
-"will complete a full cycle in one second by default (see #GtkSpinner:cycle-"
+"will complete a full cycle in one second by default (see #CtkSpinner:cycle-"
 "duration)."
 msgstr ""
 
@@ -6495,8 +6495,8 @@ msgid "Fixed Height Mode"
 msgstr "Fixed Height Mode"
 
 #: ctk/ctktreeview.c:657
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
-msgstr "Speeds up GtkTreeView by assuming that all rows have the same height"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
+msgstr "Speeds up CtkTreeView by assuming that all rows have the same height"
 
 #: ctk/ctktreeview.c:677
 msgid "Hover Selection"
@@ -6765,18 +6765,18 @@ msgstr "An XML string describing the merged UI"
 
 #: ctk/ctkviewport.c:143
 msgid ""
-"The GtkAdjustment that determines the values of the horizontal position for "
+"The CtkAdjustment that determines the values of the horizontal position for "
 "this viewport"
 msgstr ""
-"The GtkAdjustment that determines the values of the horizontal position for "
+"The CtkAdjustment that determines the values of the horizontal position for "
 "this viewport"
 
 #: ctk/ctkviewport.c:151
 msgid ""
-"The GtkAdjustment that determines the values of the vertical position for "
+"The CtkAdjustment that determines the values of the vertical position for "
 "this viewport"
 msgstr ""
-"The GtkAdjustment that determines the values of the vertical position for "
+"The CtkAdjustment that determines the values of the vertical position for "
 "this viewport"
 
 #: ctk/ctkviewport.c:159
@@ -7250,8 +7250,8 @@ msgid "Focus in Toplevel"
 msgstr "Focus in Toplevel"
 
 #: ctk/ctkwindow.c:710
-msgid "Whether the input focus is within this GtkWindow"
-msgstr "Whether the input focus is within this GtkWindow"
+msgid "Whether the input focus is within this CtkWindow"
+msgstr "Whether the input focus is within this CtkWindow"
 
 #: ctk/ctkwindow.c:717
 msgid "Type hint"
@@ -7474,12 +7474,12 @@ msgstr "How to draw the input method statusbar"
 #~ msgstr "Activity mode"
 
 #~ msgid ""
-#~ "If TRUE, the GtkProgress is in activity mode, meaning that it signals "
+#~ "If TRUE, the CtkProgress is in activity mode, meaning that it signals "
 #~ "something is happening, but not how much of the activity is finished. "
 #~ "This is used when you're doing something but don't know how long it will "
 #~ "take."
 #~ msgstr ""
-#~ "If TRUE, the GtkProgress is in activity mode, meaning that it signals "
+#~ "If TRUE, the CtkProgress is in activity mode, meaning that it signals "
 #~ "something is happening, but not how much of the activity is finished. "
 #~ "This is used when you're doing something but don't know how long it will "
 #~ "take."
@@ -7685,8 +7685,8 @@ msgstr "How to draw the input method statusbar"
 #~ msgstr ""
 #~ "Whether the preview widget should take up the entire space it is allocated"
 
-#~ msgid "The GtkAdjustment connected to the progress bar (Deprecated)"
-#~ msgstr "The GtkAdjustment connected to the progress bar (Deprecated)"
+#~ msgid "The CtkAdjustment connected to the progress bar (Deprecated)"
+#~ msgstr "The CtkAdjustment connected to the progress bar (Deprecated)"
 
 #~ msgid "Bar style"
 #~ msgstr "Bar style"

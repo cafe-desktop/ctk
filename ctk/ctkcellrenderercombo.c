@@ -1,4 +1,4 @@
-/* GtkCellRendererCombo
+/* CtkCellRendererCombo
  * Copyright (C) 2004 Lorenzo Gil Sanchez
  *
  * This library is free software; you can redistribute it and/or
@@ -32,28 +32,28 @@
 /**
  * SECTION:ctkcellrenderercombo
  * @Short_description: Renders a combobox in a cell
- * @Title: GtkCellRendererCombo
+ * @Title: CtkCellRendererCombo
  *
- * #GtkCellRendererCombo renders text in a cell like #GtkCellRendererText from
- * which it is derived. But while #GtkCellRendererText offers a simple entry to
- * edit the text, #GtkCellRendererCombo offers a #GtkComboBox
+ * #CtkCellRendererCombo renders text in a cell like #CtkCellRendererText from
+ * which it is derived. But while #CtkCellRendererText offers a simple entry to
+ * edit the text, #CtkCellRendererCombo offers a #CtkComboBox
  * widget to edit the text. The values to display in the combo box are taken from
- * the tree model specified in the #GtkCellRendererCombo:model property.
+ * the tree model specified in the #CtkCellRendererCombo:model property.
  *
  * The combo cell renderer takes care of adding a text cell renderer to the combo
  * box and sets it to display the column specified by its
- * #GtkCellRendererCombo:text-column property. Further properties of the combo box
- * can be set in a handler for the #GtkCellRenderer::editing-started signal.
+ * #CtkCellRendererCombo:text-column property. Further properties of the combo box
+ * can be set in a handler for the #CtkCellRenderer::editing-started signal.
  *
- * The #GtkCellRendererCombo cell renderer was added in GTK+ 2.6.
+ * The #CtkCellRendererCombo cell renderer was added in GTK+ 2.6.
  */
 
 
-struct _GtkCellRendererComboPrivate
+struct _CtkCellRendererComboPrivate
 {
-  GtkTreeModel *model;
+  CtkTreeModel *model;
 
-  GtkWidget *combo;
+  CtkWidget *combo;
 
   gboolean has_entry;
 
@@ -63,8 +63,8 @@ struct _GtkCellRendererComboPrivate
 };
 
 
-static void ctk_cell_renderer_combo_class_init (GtkCellRendererComboClass *klass);
-static void ctk_cell_renderer_combo_init       (GtkCellRendererCombo      *self);
+static void ctk_cell_renderer_combo_class_init (CtkCellRendererComboClass *klass);
+static void ctk_cell_renderer_combo_init       (CtkCellRendererCombo      *self);
 static void ctk_cell_renderer_combo_finalize     (GObject      *object);
 static void ctk_cell_renderer_combo_get_property (GObject      *object,
 						  guint         prop_id,
@@ -76,13 +76,13 @@ static void ctk_cell_renderer_combo_set_property (GObject      *object,
 						  const GValue *value,
 						  GParamSpec   *pspec);
 
-static GtkCellEditable *ctk_cell_renderer_combo_start_editing (GtkCellRenderer     *cell,
+static CtkCellEditable *ctk_cell_renderer_combo_start_editing (CtkCellRenderer     *cell,
                                                                GdkEvent            *event,
-                                                               GtkWidget           *widget,
+                                                               CtkWidget           *widget,
                                                                const gchar         *path,
                                                                const GdkRectangle  *background_area,
                                                                const GdkRectangle  *cell_area,
-                                                               GtkCellRendererState flags);
+                                                               CtkCellRendererState flags);
 
 enum {
   PROP_0,
@@ -100,13 +100,13 @@ static guint cell_renderer_combo_signals[LAST_SIGNAL] = { 0, };
 
 #define CTK_CELL_RENDERER_COMBO_PATH "ctk-cell-renderer-combo-path"
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkCellRendererCombo, ctk_cell_renderer_combo, CTK_TYPE_CELL_RENDERER_TEXT)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkCellRendererCombo, ctk_cell_renderer_combo, CTK_TYPE_CELL_RENDERER_TEXT)
 
 static void
-ctk_cell_renderer_combo_class_init (GtkCellRendererComboClass *klass)
+ctk_cell_renderer_combo_class_init (CtkCellRendererComboClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkCellRendererClass *cell_class = CTK_CELL_RENDERER_CLASS (klass);
+  CtkCellRendererClass *cell_class = CTK_CELL_RENDERER_CLASS (klass);
 
   object_class->finalize = ctk_cell_renderer_combo_finalize;
   object_class->get_property = ctk_cell_renderer_combo_get_property;
@@ -115,7 +115,7 @@ ctk_cell_renderer_combo_class_init (GtkCellRendererComboClass *klass)
   cell_class->start_editing = ctk_cell_renderer_combo_start_editing;
 
   /**
-   * GtkCellRendererCombo:model:
+   * CtkCellRendererCombo:model:
    *
    * Holds a tree model containing the possible values for the combo box. 
    * Use the text_column property to specify the column holding the values.
@@ -131,7 +131,7 @@ ctk_cell_renderer_combo_class_init (GtkCellRendererComboClass *klass)
 							CTK_PARAM_READWRITE));
 
   /**
-   * GtkCellRendererCombo:text-column:
+   * CtkCellRendererCombo:text-column:
    *
    * Specifies the model column which holds the possible values for the 
    * combo box. 
@@ -140,7 +140,7 @@ ctk_cell_renderer_combo_class_init (GtkCellRendererComboClass *klass)
    * not the model backing the tree view to which 
    * this cell renderer is attached.
    * 
-   * #GtkCellRendererCombo automatically adds a text cell renderer for 
+   * #CtkCellRendererCombo automatically adds a text cell renderer for 
    * this column to its combo box.
    *
    * Since: 2.6
@@ -156,7 +156,7 @@ ctk_cell_renderer_combo_class_init (GtkCellRendererComboClass *klass)
                                                      CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /** 
-   * GtkCellRendererCombo:has-entry:
+   * CtkCellRendererCombo:has-entry:
    *
    * If %TRUE, the cell renderer will include an entry and allow to enter 
    * values other than the ones in the popup list. 
@@ -173,7 +173,7 @@ ctk_cell_renderer_combo_class_init (GtkCellRendererComboClass *klass)
 
 
   /**
-   * GtkCellRendererCombo::changed:
+   * CtkCellRendererCombo::changed:
    * @combo: the object on which the signal is emitted
    * @path_string: a string of the path identifying the edited cell
    *               (relative to the tree view model)
@@ -182,10 +182,10 @@ ctk_cell_renderer_combo_class_init (GtkCellRendererComboClass *klass)
    *
    * This signal is emitted each time after the user selected an item in
    * the combo box, either by using the mouse or the arrow keys.  Contrary
-   * to GtkComboBox, GtkCellRendererCombo::changed is not emitted for
+   * to CtkComboBox, CtkCellRendererCombo::changed is not emitted for
    * changes made to a selected item in the entry.  The argument @new_iter
    * corresponds to the newly selected item in the combo box and it is relative
-   * to the GtkTreeModel set via the model property on GtkCellRendererCombo.
+   * to the CtkTreeModel set via the model property on CtkCellRendererCombo.
    *
    * Note that as soon as you change the model displayed in the tree view,
    * the tree view will immediately cease the editing operating.  This
@@ -210,9 +210,9 @@ ctk_cell_renderer_combo_class_init (GtkCellRendererComboClass *klass)
 }
 
 static void
-ctk_cell_renderer_combo_init (GtkCellRendererCombo *self)
+ctk_cell_renderer_combo_init (CtkCellRendererCombo *self)
 {
-  GtkCellRendererComboPrivate *priv;
+  CtkCellRendererComboPrivate *priv;
 
   self->priv = ctk_cell_renderer_combo_get_instance_private (self);
   priv = self->priv;
@@ -226,19 +226,19 @@ ctk_cell_renderer_combo_init (GtkCellRendererCombo *self)
 /**
  * ctk_cell_renderer_combo_new: 
  * 
- * Creates a new #GtkCellRendererCombo. 
+ * Creates a new #CtkCellRendererCombo. 
  * Adjust how text is drawn using object properties. 
  * Object properties can be set globally (with g_object_set()). 
- * Also, with #GtkTreeViewColumn, you can bind a property to a value 
- * in a #GtkTreeModel. For example, you can bind the “text” property 
+ * Also, with #CtkTreeViewColumn, you can bind a property to a value 
+ * in a #CtkTreeModel. For example, you can bind the “text” property 
  * on the cell renderer to a string value in the model, thus rendering 
- * a different string in each row of the #GtkTreeView.
+ * a different string in each row of the #CtkTreeView.
  * 
  * Returns: the new cell renderer
  *
  * Since: 2.6
  */
-GtkCellRenderer *
+CtkCellRenderer *
 ctk_cell_renderer_combo_new (void)
 {
   return g_object_new (CTK_TYPE_CELL_RENDERER_COMBO, NULL); 
@@ -247,8 +247,8 @@ ctk_cell_renderer_combo_new (void)
 static void
 ctk_cell_renderer_combo_finalize (GObject *object)
 {
-  GtkCellRendererCombo *cell = CTK_CELL_RENDERER_COMBO (object);
-  GtkCellRendererComboPrivate *priv = cell->priv;
+  CtkCellRendererCombo *cell = CTK_CELL_RENDERER_COMBO (object);
+  CtkCellRendererComboPrivate *priv = cell->priv;
   
   if (priv->model)
     {
@@ -265,8 +265,8 @@ ctk_cell_renderer_combo_get_property (GObject    *object,
 				      GValue     *value,
 				      GParamSpec *pspec)
 {
-  GtkCellRendererCombo *cell = CTK_CELL_RENDERER_COMBO (object);
-  GtkCellRendererComboPrivate *priv = cell->priv;
+  CtkCellRendererCombo *cell = CTK_CELL_RENDERER_COMBO (object);
+  CtkCellRendererComboPrivate *priv = cell->priv;
 
   switch (prop_id)
     {
@@ -291,8 +291,8 @@ ctk_cell_renderer_combo_set_property (GObject      *object,
 				      const GValue *value,
 				      GParamSpec   *pspec)
 {
-  GtkCellRendererCombo *cell = CTK_CELL_RENDERER_COMBO (object);
-  GtkCellRendererComboPrivate *priv = cell->priv;
+  CtkCellRendererCombo *cell = CTK_CELL_RENDERER_COMBO (object);
+  CtkCellRendererComboPrivate *priv = cell->priv;
 
   switch (prop_id)
     {
@@ -326,11 +326,11 @@ ctk_cell_renderer_combo_set_property (GObject      *object,
 }
 
 static void
-ctk_cell_renderer_combo_changed (GtkComboBox *combo,
+ctk_cell_renderer_combo_changed (CtkComboBox *combo,
 				 gpointer     data)
 {
-  GtkTreeIter iter;
-  GtkCellRendererCombo *cell;
+  CtkTreeIter iter;
+  CtkCellRendererCombo *cell;
 
   cell = CTK_CELL_RENDERER_COMBO (data);
 
@@ -345,17 +345,17 @@ ctk_cell_renderer_combo_changed (GtkComboBox *combo,
 }
 
 static void
-ctk_cell_renderer_combo_editing_done (GtkCellEditable *combo,
+ctk_cell_renderer_combo_editing_done (CtkCellEditable *combo,
 				      gpointer         data)
 {
   const gchar *path;
   gchar *new_text = NULL;
-  GtkTreeModel *model;
-  GtkTreeIter iter;
-  GtkCellRendererCombo *cell;
-  GtkEntry *entry;
+  CtkTreeModel *model;
+  CtkTreeIter iter;
+  CtkCellRendererCombo *cell;
+  CtkEntry *entry;
   gboolean canceled;
-  GtkCellRendererComboPrivate *priv;
+  CtkCellRendererComboPrivate *priv;
 
   cell = CTK_CELL_RENDERER_COMBO (data);
   priv = cell->priv;
@@ -399,7 +399,7 @@ ctk_cell_renderer_combo_editing_done (GtkCellEditable *combo,
 }
 
 static gboolean
-ctk_cell_renderer_combo_focus_out_event (GtkWidget *widget,
+ctk_cell_renderer_combo_focus_out_event (CtkWidget *widget,
 					 GdkEvent  *event,
 					 gpointer   data)
 {
@@ -411,18 +411,18 @@ ctk_cell_renderer_combo_focus_out_event (GtkWidget *widget,
 
 typedef struct 
 {
-  GtkCellRendererCombo *cell;
+  CtkCellRendererCombo *cell;
   gboolean found;
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 } SearchData;
 
 static gboolean 
-find_text (GtkTreeModel *model, 
-	   GtkTreePath  *path, 
-	   GtkTreeIter  *iter, 
+find_text (CtkTreeModel *model, 
+	   CtkTreePath  *path, 
+	   CtkTreeIter  *iter, 
 	   gpointer      data)
 {
-  GtkCellRendererComboPrivate *priv;
+  CtkCellRendererComboPrivate *priv;
   SearchData *search_data = (SearchData *)data;
   gchar *text, *cell_text;
 
@@ -444,20 +444,20 @@ find_text (GtkTreeModel *model,
   return search_data->found;
 }
 
-static GtkCellEditable *
-ctk_cell_renderer_combo_start_editing (GtkCellRenderer     *cell,
+static CtkCellEditable *
+ctk_cell_renderer_combo_start_editing (CtkCellRenderer     *cell,
                                        GdkEvent            *event,
-                                       GtkWidget           *widget,
+                                       CtkWidget           *widget,
                                        const gchar         *path,
                                        const GdkRectangle  *background_area,
                                        const GdkRectangle  *cell_area,
-                                       GtkCellRendererState flags)
+                                       CtkCellRendererState flags)
 {
-  GtkCellRendererCombo *cell_combo;
-  GtkCellRendererText *cell_text;
-  GtkWidget *combo;
+  CtkCellRendererCombo *cell_combo;
+  CtkCellRendererText *cell_text;
+  CtkWidget *combo;
   SearchData search_data;
-  GtkCellRendererComboPrivate *priv;
+  CtkCellRendererComboPrivate *priv;
   gboolean editable;
   gchar *text;
 

@@ -24,14 +24,14 @@
 #include "ctkgestureprivate.h"
 #include "ctkgesturesingle.h"
 
-struct _GtkGestureSingle
+struct _CtkGestureSingle
 {
-  GtkGesture parent_instance;
+  CtkGesture parent_instance;
 };
 
-struct _GtkGestureSingleClass
+struct _CtkGestureSingleClass
 {
-  GtkGestureClass parent_class;
+  CtkGestureClass parent_class;
 
   /*< private >*/
   gpointer padding[10];

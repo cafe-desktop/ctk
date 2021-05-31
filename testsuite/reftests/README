@@ -3,7 +3,7 @@ Run it like this:
 
 ./ctk-reftest [OPTIONS] TESTFILE [TESTFILES...]
 
-where FILE is a GtkBuilder ui file to run.
+where FILE is a CtkBuilder ui file to run.
 
 For a general test named "test", you want to have the following files:
 1) test.ui
@@ -15,7 +15,7 @@ identically with the provided css.
 In detail, for every provided TESTFILE the test runner will:
 1) Add the css to the default screen
 2) Load the test.ui file and the test.ref.ui file
-3) Grab the first GtkWindow subclass widget
+3) Grab the first CtkWindow subclass widget
 4) ctk_widget_show() it and take a snapshot image of its contents into
    a cairo surface.
 5) Compare the two images to be bitwise identical. If they are not, a

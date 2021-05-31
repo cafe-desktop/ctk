@@ -18,7 +18,7 @@
 #include <ctk/ctk.h>
 
 static void
-notify_font_cb (GtkFontChooser *fontchooser, GParamSpec *pspec, gpointer data)
+notify_font_cb (CtkFontChooser *fontchooser, GParamSpec *pspec, gpointer data)
 {
   PangoFontFamily *family;
   PangoFontFace *face;
@@ -49,7 +49,7 @@ notify_preview_text_cb (GObject *fontchooser, GParamSpec *pspec, gpointer data)
 }
 
 static void
-font_activated_cb (GtkFontChooser *chooser, const gchar *font_name, gpointer data)
+font_activated_cb (CtkFontChooser *chooser, const gchar *font_name, gpointer data)
 {
   g_debug ("font-activated: %s", font_name);
 }
@@ -57,9 +57,9 @@ font_activated_cb (GtkFontChooser *chooser, const gchar *font_name, gpointer dat
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window;
-  GtkWidget *box;
-  GtkWidget *fontchooser;
+  CtkWidget *window;
+  CtkWidget *box;
+  CtkWidget *fontchooser;
 
   ctk_init (NULL, NULL);
 

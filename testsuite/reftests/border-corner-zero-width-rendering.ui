@@ -2,15 +2,15 @@
 <!-- Generated with glade 3.18.3 -->
 <interface>
   <requires lib="ctk+" version="3.12"/>
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkGrid" id="grid1">
+      <object class="CtkGrid" id="grid1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
-          <object class="GtkButton" id="button1">
+          <object class="CtkButton" id="button1">
             <property name="label" translatable="yes">button</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -22,7 +22,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button2">
+          <object class="CtkButton" id="button2">
             <property name="label" translatable="yes">button</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -37,7 +37,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button3">
+          <object class="CtkButton" id="button3">
             <property name="label" translatable="yes">button</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -53,7 +53,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button4">
+          <object class="CtkButton" id="button4">
             <property name="label" translatable="yes">button</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -68,7 +68,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button5">
+          <object class="CtkButton" id="button5">
             <property name="label" translatable="yes">button</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -84,7 +84,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button6">
+          <object class="CtkButton" id="button6">
             <property name="label" translatable="yes">button</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -99,7 +99,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button7">
+          <object class="CtkButton" id="button7">
             <property name="label" translatable="yes">button</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -114,7 +114,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button8">
+          <object class="CtkButton" id="button8">
             <property name="label" translatable="yes">button</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -132,7 +132,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button9">
+          <object class="CtkButton" id="button9">
             <property name="label" translatable="yes">button</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -149,7 +149,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button10">
+          <object class="CtkButton" id="button10">
             <property name="label" translatable="yes">button</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -166,7 +166,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button11">
+          <object class="CtkButton" id="button11">
             <property name="label" translatable="yes">button</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -183,7 +183,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button12">
+          <object class="CtkButton" id="button12">
             <property name="label" translatable="yes">button</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -200,7 +200,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button13">
+          <object class="CtkButton" id="button13">
             <property name="label" translatable="yes">button</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -216,7 +216,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button14">
+          <object class="CtkButton" id="button14">
             <property name="label" translatable="yes">button</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -232,7 +232,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button15">
+          <object class="CtkButton" id="button15">
             <property name="label" translatable="yes">button</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -248,7 +248,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button16">
+          <object class="CtkButton" id="button16">
             <property name="label" translatable="yes">button</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>

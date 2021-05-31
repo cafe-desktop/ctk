@@ -18,11 +18,11 @@
 /**
  * SECTION:ctkcelleditable
  * @Short_description: Interface for widgets that can be used for editing cells
- * @Title: GtkCellEditable
- * @See_also: #GtkCellRenderer
+ * @Title: CtkCellEditable
+ * @See_also: #CtkCellRenderer
  *
- * The #GtkCellEditable interface must be implemented for widgets to be usable
- * to edit the contents of a #GtkTreeView cell. It provides a way to specify how
+ * The #CtkCellEditable interface must be implemented for widgets to be usable
+ * to edit the contents of a #CtkTreeView cell. It provides a way to specify how
  * temporary widgets should be configured for editing, get the new value, etc.
  */
 
@@ -33,14 +33,14 @@
 #include "ctkintl.h"
 
 
-typedef GtkCellEditableIface GtkCellEditableInterface;
-G_DEFINE_INTERFACE(GtkCellEditable, ctk_cell_editable, CTK_TYPE_WIDGET)
+typedef CtkCellEditableIface CtkCellEditableInterface;
+G_DEFINE_INTERFACE(CtkCellEditable, ctk_cell_editable, CTK_TYPE_WIDGET)
 
 static void
-ctk_cell_editable_default_init (GtkCellEditableInterface *iface)
+ctk_cell_editable_default_init (CtkCellEditableInterface *iface)
 {
   /**
-   * GtkCellEditable:editing-canceled:
+   * CtkCellEditable:editing-canceled:
    *
    * Indicates whether editing on the cell has been canceled.
    *
@@ -54,50 +54,50 @@ ctk_cell_editable_default_init (GtkCellEditableInterface *iface)
                                        CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkCellEditable::editing-done:
+   * CtkCellEditable::editing-done:
    * @cell_editable: the object on which the signal was emitted
    *
    * This signal is a sign for the cell renderer to update its
    * value from the @cell_editable.
    *
-   * Implementations of #GtkCellEditable are responsible for
+   * Implementations of #CtkCellEditable are responsible for
    * emitting this signal when they are done editing, e.g.
-   * #GtkEntry emits this signal when the user presses Enter. Typical things to
+   * #CtkEntry emits this signal when the user presses Enter. Typical things to
    * do in a handler for ::editing-done are to capture the edited value,
-   * disconnect the @cell_editable from signals on the #GtkCellRenderer, etc.
+   * disconnect the @cell_editable from signals on the #CtkCellRenderer, etc.
    *
    * ctk_cell_editable_editing_done() is a convenience method
-   * for emitting #GtkCellEditable::editing-done.
+   * for emitting #CtkCellEditable::editing-done.
    */
   g_signal_new (I_("editing-done"),
                 CTK_TYPE_CELL_EDITABLE,
                 G_SIGNAL_RUN_LAST,
-                G_STRUCT_OFFSET (GtkCellEditableIface, editing_done),
+                G_STRUCT_OFFSET (CtkCellEditableIface, editing_done),
                 NULL, NULL,
                 NULL,
                 G_TYPE_NONE, 0);
 
   /**
-   * GtkCellEditable::remove-widget:
+   * CtkCellEditable::remove-widget:
    * @cell_editable: the object on which the signal was emitted
    *
    * This signal is meant to indicate that the cell is finished
    * editing, and the @cell_editable widget is being removed and may
    * subsequently be destroyed.
    *
-   * Implementations of #GtkCellEditable are responsible for
+   * Implementations of #CtkCellEditable are responsible for
    * emitting this signal when they are done editing. It must
-   * be emitted after the #GtkCellEditable::editing-done signal,
+   * be emitted after the #CtkCellEditable::editing-done signal,
    * to give the cell renderer a chance to update the cell's value
    * before the widget is removed.
    *
    * ctk_cell_editable_remove_widget() is a convenience method
-   * for emitting #GtkCellEditable::remove-widget.
+   * for emitting #CtkCellEditable::remove-widget.
    */
   g_signal_new (I_("remove-widget"),
                 CTK_TYPE_CELL_EDITABLE,
                 G_SIGNAL_RUN_LAST,
-                G_STRUCT_OFFSET (GtkCellEditableIface, remove_widget),
+                G_STRUCT_OFFSET (CtkCellEditableIface, remove_widget),
                 NULL, NULL,
                 NULL,
                 G_TYPE_NONE, 0);
@@ -105,23 +105,23 @@ ctk_cell_editable_default_init (GtkCellEditableInterface *iface)
 
 /**
  * ctk_cell_editable_start_editing:
- * @cell_editable: A #GtkCellEditable
+ * @cell_editable: A #CtkCellEditable
  * @event: (nullable): The #GdkEvent that began the editing process, or
  *   %NULL if editing was initiated programmatically
  * 
  * Begins editing on a @cell_editable.
  *
- * The #GtkCellRenderer for the cell creates and returns a #GtkCellEditable from
- * ctk_cell_renderer_start_editing(), configured for the #GtkCellRenderer type.
+ * The #CtkCellRenderer for the cell creates and returns a #CtkCellEditable from
+ * ctk_cell_renderer_start_editing(), configured for the #CtkCellRenderer type.
  *
  * ctk_cell_editable_start_editing() can then set up @cell_editable suitably for
- * editing a cell, e.g. making the Esc key emit #GtkCellEditable::editing-done.
+ * editing a cell, e.g. making the Esc key emit #CtkCellEditable::editing-done.
  *
  * Note that the @cell_editable is created on-demand for the current edit; its
  * lifetime is temporary and does not persist across other edits and/or cells.
  **/
 void
-ctk_cell_editable_start_editing (GtkCellEditable *cell_editable,
+ctk_cell_editable_start_editing (CtkCellEditable *cell_editable,
 				 GdkEvent        *event)
 {
   g_return_if_fail (CTK_IS_CELL_EDITABLE (cell_editable));
@@ -131,12 +131,12 @@ ctk_cell_editable_start_editing (GtkCellEditable *cell_editable,
 
 /**
  * ctk_cell_editable_editing_done:
- * @cell_editable: A #GtkCellEditable
+ * @cell_editable: A #CtkCellEditable
  * 
- * Emits the #GtkCellEditable::editing-done signal. 
+ * Emits the #CtkCellEditable::editing-done signal. 
  **/
 void
-ctk_cell_editable_editing_done (GtkCellEditable *cell_editable)
+ctk_cell_editable_editing_done (CtkCellEditable *cell_editable)
 {
   g_return_if_fail (CTK_IS_CELL_EDITABLE (cell_editable));
 
@@ -145,12 +145,12 @@ ctk_cell_editable_editing_done (GtkCellEditable *cell_editable)
 
 /**
  * ctk_cell_editable_remove_widget:
- * @cell_editable: A #GtkCellEditable
+ * @cell_editable: A #CtkCellEditable
  * 
- * Emits the #GtkCellEditable::remove-widget signal.  
+ * Emits the #CtkCellEditable::remove-widget signal.  
  **/
 void
-ctk_cell_editable_remove_widget (GtkCellEditable *cell_editable)
+ctk_cell_editable_remove_widget (CtkCellEditable *cell_editable)
 {
   g_return_if_fail (CTK_IS_CELL_EDITABLE (cell_editable));
 

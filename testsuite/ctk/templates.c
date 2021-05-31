@@ -33,7 +33,7 @@ main_loop_quit_cb (gpointer data)
 static void
 test_dialog_basic (void)
 {
-  GtkWidget *dialog;
+  CtkWidget *dialog;
 
   dialog = ctk_dialog_new();
   g_assert (CTK_IS_DIALOG (dialog));
@@ -48,7 +48,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 static void
 test_dialog_override_property (void)
 {
-  GtkWidget *dialog;
+  CtkWidget *dialog;
 
   dialog = g_object_new (CTK_TYPE_DIALOG,
 			 "type-hint", GDK_WINDOW_TYPE_HINT_UTILITY,
@@ -62,7 +62,7 @@ test_dialog_override_property (void)
 static void
 test_message_dialog_basic (void)
 {
-  GtkWidget *dialog;
+  CtkWidget *dialog;
 
   dialog = ctk_message_dialog_new (NULL, 0,
 				   CTK_MESSAGE_INFO,
@@ -75,7 +75,7 @@ test_message_dialog_basic (void)
 static void
 test_about_dialog_basic (void)
 {
-  GtkWidget *dialog;
+  CtkWidget *dialog;
 
   dialog = ctk_about_dialog_new ();
   g_assert (CTK_IS_ABOUT_DIALOG (dialog));
@@ -85,7 +85,7 @@ test_about_dialog_basic (void)
 static void
 test_info_bar_basic (void)
 {
-  GtkWidget *infobar;
+  CtkWidget *infobar;
 
   infobar = ctk_info_bar_new ();
   g_assert (CTK_IS_INFO_BAR (infobar));
@@ -95,7 +95,7 @@ test_info_bar_basic (void)
 static void
 test_lock_button_basic (void)
 {
-  GtkWidget *button;
+  CtkWidget *button;
   GPermission *permission;
 
   permission = g_simple_permission_new (TRUE);
@@ -108,7 +108,7 @@ test_lock_button_basic (void)
 static void
 test_assistant_basic (void)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_assistant_new ();
   g_assert (CTK_IS_ASSISTANT (widget));
@@ -118,7 +118,7 @@ test_assistant_basic (void)
 static void
 test_scale_button_basic (void)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_scale_button_new (CTK_ICON_SIZE_MENU,
 				 0, 100, 10, NULL);
@@ -129,7 +129,7 @@ test_scale_button_basic (void)
 static void
 test_volume_button_basic (void)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_volume_button_new ();
   g_assert (CTK_IS_VOLUME_BUTTON (widget));
@@ -139,7 +139,7 @@ test_volume_button_basic (void)
 static void
 test_statusbar_basic (void)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_statusbar_new ();
   g_assert (CTK_IS_STATUSBAR (widget));
@@ -149,7 +149,7 @@ test_statusbar_basic (void)
 static void
 test_search_bar_basic (void)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_search_bar_new ();
   g_assert (CTK_IS_SEARCH_BAR (widget));
@@ -159,7 +159,7 @@ test_search_bar_basic (void)
 static void
 test_action_bar_basic (void)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_action_bar_new ();
   g_assert (CTK_IS_ACTION_BAR (widget));
@@ -169,7 +169,7 @@ test_action_bar_basic (void)
 static void
 test_app_chooser_widget_basic (void)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_app_chooser_widget_new (NULL);
   g_assert (CTK_IS_APP_CHOOSER_WIDGET (widget));
@@ -179,12 +179,12 @@ test_app_chooser_widget_basic (void)
 static void
 test_app_chooser_dialog_basic (void)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_app_chooser_dialog_new_for_content_type (NULL, 0, "text/plain");
   g_assert (CTK_IS_APP_CHOOSER_DIALOG (widget));
 
-  /* GtkAppChooserDialog bug, if destroyed before spinning 
+  /* CtkAppChooserDialog bug, if destroyed before spinning 
    * the main context then app_chooser_online_get_default_ready_cb()
    * will be eventually called and segfault.
    */
@@ -196,9 +196,9 @@ test_app_chooser_dialog_basic (void)
 static void
 test_color_chooser_dialog_basic (void)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
-  /* This test also tests the internal GtkColorEditor widget */
+  /* This test also tests the internal CtkColorEditor widget */
   widget = ctk_color_chooser_dialog_new (NULL, NULL);
   g_assert (CTK_IS_COLOR_CHOOSER_DIALOG (widget));
   ctk_widget_destroy (widget);
@@ -220,9 +220,9 @@ ignore_gvfs_warning (const gchar *log_domain,
 static void
 test_file_chooser_widget_basic (void)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
-  /* This test also tests the internal GtkPathBar widget */
+  /* This test also tests the internal CtkPathBar widget */
   g_test_log_set_fatal_handler (ignore_gvfs_warning, NULL);
 
   widget = ctk_file_chooser_widget_new (CTK_FILE_CHOOSER_ACTION_SELECT_FOLDER);
@@ -231,8 +231,8 @@ test_file_chooser_widget_basic (void)
   /* XXX BUG:
    *
    * Spin the mainloop for a bit, this allows the file operations
-   * to complete, GtkFileChooserWidget has a bug where it leaks
-   * GtkTreeRowReferences to the internal shortcuts_model
+   * to complete, CtkFileChooserWidget has a bug where it leaks
+   * CtkTreeRowReferences to the internal shortcuts_model
    *
    * Since we assert all automated children are finalized we
    * can catch this
@@ -246,7 +246,7 @@ test_file_chooser_widget_basic (void)
 static void
 test_file_chooser_dialog_basic (void)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   g_test_log_set_fatal_handler (ignore_gvfs_warning, NULL);
 
@@ -265,7 +265,7 @@ test_file_chooser_dialog_basic (void)
 static void
 test_file_chooser_button_basic (void)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   g_test_log_set_fatal_handler (ignore_gvfs_warning, NULL);
 
@@ -280,7 +280,7 @@ test_file_chooser_button_basic (void)
 static void
 test_font_button_basic (void)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_font_button_new ();
   g_assert (CTK_IS_FONT_BUTTON (widget));
@@ -290,7 +290,7 @@ test_font_button_basic (void)
 static void
 test_font_chooser_widget_basic (void)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_font_chooser_widget_new ();
   g_assert (CTK_IS_FONT_CHOOSER_WIDGET (widget));
@@ -300,7 +300,7 @@ test_font_chooser_widget_basic (void)
 static void
 test_font_chooser_dialog_basic (void)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_font_chooser_dialog_new ("Choose a font !", NULL);
   g_assert (CTK_IS_FONT_CHOOSER_DIALOG (widget));
@@ -310,7 +310,7 @@ test_font_chooser_dialog_basic (void)
 static void
 test_recent_chooser_widget_basic (void)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_recent_chooser_widget_new ();
   g_assert (CTK_IS_RECENT_CHOOSER_WIDGET (widget));
@@ -321,7 +321,7 @@ test_recent_chooser_widget_basic (void)
 static void
 test_page_setup_unix_dialog_basic (void)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_page_setup_unix_dialog_new ("Setup your Page !", NULL);
   g_assert (CTK_IS_PAGE_SETUP_UNIX_DIALOG (widget));
@@ -331,7 +331,7 @@ test_page_setup_unix_dialog_basic (void)
 static void
 test_print_unix_dialog_basic (void)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_print_unix_dialog_new ("Go Print !", NULL);
   g_assert (CTK_IS_PRINT_UNIX_DIALOG (widget));
@@ -362,32 +362,32 @@ main (int argc, char **argv)
    */
   g_assert (g_setenv ("CTK_WIDGET_ASSERT_COMPONENTS", "1", TRUE));
 
-  g_test_add_func ("/Template/GtkDialog/Basic", test_dialog_basic);
-  g_test_add_func ("/Template/GtkDialog/OverrideProperty", test_dialog_override_property);
-  g_test_add_func ("/Template/GtkMessageDialog/Basic", test_message_dialog_basic);
-  g_test_add_func ("/Template/GtkAboutDialog/Basic", test_about_dialog_basic);
-  g_test_add_func ("/Template/GtkInfoBar/Basic", test_info_bar_basic);
-  g_test_add_func ("/Template/GtkLockButton/Basic", test_lock_button_basic);
-  g_test_add_func ("/Template/GtkAssistant/Basic", test_assistant_basic);
-  g_test_add_func ("/Template/GtkScaleButton/Basic", test_scale_button_basic);
-  g_test_add_func ("/Template/GtkVolumeButton/Basic", test_volume_button_basic);
-  g_test_add_func ("/Template/GtkStatusBar/Basic", test_statusbar_basic);
-  g_test_add_func ("/Template/GtkSearchBar/Basic", test_search_bar_basic);
-  g_test_add_func ("/Template/GtkActionBar/Basic", test_action_bar_basic);
-  g_test_add_func ("/Template/GtkAppChooserWidget/Basic", test_app_chooser_widget_basic);
-  g_test_add_func ("/Template/GtkAppChooserDialog/Basic", test_app_chooser_dialog_basic);
-  g_test_add_func ("/Template/GtkColorChooserDialog/Basic", test_color_chooser_dialog_basic);
-  g_test_add_func ("/Template/GtkFileChooserWidget/Basic", test_file_chooser_widget_basic);
-  g_test_add_func ("/Template/GtkFileChooserDialog/Basic", test_file_chooser_dialog_basic);
-  g_test_add_func ("/Template/GtkFileChooserButton/Basic", test_file_chooser_button_basic);
-  g_test_add_func ("/Template/GtkFontButton/Basic", test_font_button_basic);
-  g_test_add_func ("/Template/GtkFontChooserWidget/Basic", test_font_chooser_widget_basic);
-  g_test_add_func ("/Template/GtkFontChooserDialog/Basic", test_font_chooser_dialog_basic);
-  g_test_add_func ("/Template/GtkRecentChooserWidget/Basic", test_recent_chooser_widget_basic);
+  g_test_add_func ("/Template/CtkDialog/Basic", test_dialog_basic);
+  g_test_add_func ("/Template/CtkDialog/OverrideProperty", test_dialog_override_property);
+  g_test_add_func ("/Template/CtkMessageDialog/Basic", test_message_dialog_basic);
+  g_test_add_func ("/Template/CtkAboutDialog/Basic", test_about_dialog_basic);
+  g_test_add_func ("/Template/CtkInfoBar/Basic", test_info_bar_basic);
+  g_test_add_func ("/Template/CtkLockButton/Basic", test_lock_button_basic);
+  g_test_add_func ("/Template/CtkAssistant/Basic", test_assistant_basic);
+  g_test_add_func ("/Template/CtkScaleButton/Basic", test_scale_button_basic);
+  g_test_add_func ("/Template/CtkVolumeButton/Basic", test_volume_button_basic);
+  g_test_add_func ("/Template/CtkStatusBar/Basic", test_statusbar_basic);
+  g_test_add_func ("/Template/CtkSearchBar/Basic", test_search_bar_basic);
+  g_test_add_func ("/Template/CtkActionBar/Basic", test_action_bar_basic);
+  g_test_add_func ("/Template/CtkAppChooserWidget/Basic", test_app_chooser_widget_basic);
+  g_test_add_func ("/Template/CtkAppChooserDialog/Basic", test_app_chooser_dialog_basic);
+  g_test_add_func ("/Template/CtkColorChooserDialog/Basic", test_color_chooser_dialog_basic);
+  g_test_add_func ("/Template/CtkFileChooserWidget/Basic", test_file_chooser_widget_basic);
+  g_test_add_func ("/Template/CtkFileChooserDialog/Basic", test_file_chooser_dialog_basic);
+  g_test_add_func ("/Template/CtkFileChooserButton/Basic", test_file_chooser_button_basic);
+  g_test_add_func ("/Template/CtkFontButton/Basic", test_font_button_basic);
+  g_test_add_func ("/Template/CtkFontChooserWidget/Basic", test_font_chooser_widget_basic);
+  g_test_add_func ("/Template/CtkFontChooserDialog/Basic", test_font_chooser_dialog_basic);
+  g_test_add_func ("/Template/CtkRecentChooserWidget/Basic", test_recent_chooser_widget_basic);
 
 #ifdef HAVE_UNIX_PRINT_WIDGETS
-  g_test_add_func ("/Template/UnixPrint/GtkPageSetupUnixDialog/Basic", test_page_setup_unix_dialog_basic);
-  g_test_add_func ("/Template/UnixPrint/GtkPrintUnixDialog/Basic", test_print_unix_dialog_basic);
+  g_test_add_func ("/Template/UnixPrint/CtkPageSetupUnixDialog/Basic", test_page_setup_unix_dialog_basic);
+  g_test_add_func ("/Template/UnixPrint/CtkPrintUnixDialog/Basic", test_print_unix_dialog_basic);
 #endif
 
   g_free (schema_dir);

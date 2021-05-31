@@ -36,7 +36,7 @@
 #endif
 
 static void
-print_current_item (GtkRecentChooser *chooser)
+print_current_item (CtkRecentChooser *chooser)
 {
   gchar *uri;
 
@@ -46,7 +46,7 @@ print_current_item (GtkRecentChooser *chooser)
 }
 
 static void
-print_selected (GtkRecentChooser *chooser)
+print_selected (CtkRecentChooser *chooser)
 {
   gsize uris_len, i;
   gchar **uris = ctk_recent_chooser_get_uris (chooser, &uris_len);
@@ -60,7 +60,7 @@ print_selected (GtkRecentChooser *chooser)
 }
 
 static void
-response_cb (GtkDialog *dialog,
+response_cb (CtkDialog *dialog,
 	     gint       response_id)
 {
   if (response_id == CTK_RESPONSE_OK)
@@ -73,16 +73,16 @@ response_cb (GtkDialog *dialog,
 }
 
 static void
-filter_changed (GtkRecentChooserDialog *dialog,
+filter_changed (CtkRecentChooserDialog *dialog,
 		gpointer                data)
 {
   g_print ("recent filter changed\n");
 }
 
 static void
-notify_multiple_cb (GtkWidget  *dialog,
+notify_multiple_cb (CtkWidget  *dialog,
 		    GParamSpec *pspec,
-		    GtkWidget  *button)
+		    CtkWidget  *button)
 {
   gboolean multiple;
 
@@ -92,8 +92,8 @@ notify_multiple_cb (GtkWidget  *dialog,
 }
 
 static void
-kill_dependent (GtkWindow *win,
-		GtkWidget *dep)
+kill_dependent (CtkWindow *win,
+		CtkWidget *dep)
 {
   ctk_widget_destroy (dep);
   g_object_unref (dep);
@@ -103,11 +103,11 @@ int
 main (int   argc,
       char *argv[])
 {
-  GtkWidget *control_window;
-  GtkWidget *vbbox;
-  GtkWidget *button;
-  GtkWidget *dialog;
-  GtkRecentFilter *filter;
+  CtkWidget *control_window;
+  CtkWidget *vbbox;
+  CtkWidget *button;
+  CtkWidget *dialog;
+  CtkRecentFilter *filter;
   gint i;
   gboolean multiple = FALSE;
   

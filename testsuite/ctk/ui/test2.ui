@@ -1,5 +1,5 @@
 <interface>
   <object get-type="ctk_window_get_type">
-    <object class="GtkBox"/>
+    <object class="CtkBox"/>
   </object>
 </interface>

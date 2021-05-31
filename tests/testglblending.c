@@ -6,7 +6,7 @@
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window, *fixed, *gears, *spinner;
+  CtkWidget *window, *fixed, *gears, *spinner;
 
   ctk_init (&argc, &argv);
 

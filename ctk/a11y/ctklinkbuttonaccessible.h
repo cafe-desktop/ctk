@@ -27,26 +27,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_LINK_BUTTON_ACCESSIBLE                (ctk_link_button_accessible_get_type ())
-#define CTK_LINK_BUTTON_ACCESSIBLE(obj)                (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_LINK_BUTTON_ACCESSIBLE, GtkLinkButtonAccessible))
-#define CTK_LINK_BUTTON_ACCESSIBLE_CLASS(klass)        (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_LINK_BUTTON_ACCESSIBLE, GtkLinkButtonAccessibleClass))
+#define CTK_LINK_BUTTON_ACCESSIBLE(obj)                (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_LINK_BUTTON_ACCESSIBLE, CtkLinkButtonAccessible))
+#define CTK_LINK_BUTTON_ACCESSIBLE_CLASS(klass)        (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_LINK_BUTTON_ACCESSIBLE, CtkLinkButtonAccessibleClass))
 #define CTK_IS_LINK_BUTTON_ACCESSIBLE(obj)             (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_LINK_BUTTON_ACCESSIBLE))
 #define CTK_IS_LINK_BUTTON_ACCESSIBLE_CLASS(klass)     (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_LINK_BUTTON_ACCESSIBLE))
-#define CTK_LINK_BUTTON_ACCESSIBLE_GET_CLASS(obj)      (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_LINK_BUTTON_ACCESSIBLE, GtkLinkButtonAccessibleClass))
+#define CTK_LINK_BUTTON_ACCESSIBLE_GET_CLASS(obj)      (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_LINK_BUTTON_ACCESSIBLE, CtkLinkButtonAccessibleClass))
 
-typedef struct _GtkLinkButtonAccessible        GtkLinkButtonAccessible;
-typedef struct _GtkLinkButtonAccessibleClass   GtkLinkButtonAccessibleClass;
-typedef struct _GtkLinkButtonAccessiblePrivate GtkLinkButtonAccessiblePrivate;
+typedef struct _CtkLinkButtonAccessible        CtkLinkButtonAccessible;
+typedef struct _CtkLinkButtonAccessibleClass   CtkLinkButtonAccessibleClass;
+typedef struct _CtkLinkButtonAccessiblePrivate CtkLinkButtonAccessiblePrivate;
 
-struct _GtkLinkButtonAccessible
+struct _CtkLinkButtonAccessible
 {
-  GtkButtonAccessible parent;
+  CtkButtonAccessible parent;
 
-  GtkLinkButtonAccessiblePrivate *priv;
+  CtkLinkButtonAccessiblePrivate *priv;
 };
 
-struct _GtkLinkButtonAccessibleClass
+struct _CtkLinkButtonAccessibleClass
 {
-  GtkButtonAccessibleClass parent_class;
+  CtkButtonAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

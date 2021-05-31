@@ -30,26 +30,26 @@
 #include <fcntl.h>
 #include <sys/socket.h>
 
-typedef void (*GtkCupsRequestStateFunc) (GtkCupsRequest *request);
+typedef void (*CtkCupsRequestStateFunc) (CtkCupsRequest *request);
 
-static void _connect            (GtkCupsRequest *request);
-static void _post_send          (GtkCupsRequest *request);
-static void _post_write_request (GtkCupsRequest *request);
-static void _post_write_data    (GtkCupsRequest *request);
-static void _post_check         (GtkCupsRequest *request);
-static void _post_auth          (GtkCupsRequest *request);
-static void _post_read_response (GtkCupsRequest *request);
+static void _connect            (CtkCupsRequest *request);
+static void _post_send          (CtkCupsRequest *request);
+static void _post_write_request (CtkCupsRequest *request);
+static void _post_write_data    (CtkCupsRequest *request);
+static void _post_check         (CtkCupsRequest *request);
+static void _post_auth          (CtkCupsRequest *request);
+static void _post_read_response (CtkCupsRequest *request);
 
-static void _get_send           (GtkCupsRequest *request);
-static void _get_check          (GtkCupsRequest *request);
-static void _get_auth           (GtkCupsRequest *request);
-static void _get_read_data      (GtkCupsRequest *request);
+static void _get_send           (CtkCupsRequest *request);
+static void _get_check          (CtkCupsRequest *request);
+static void _get_auth           (CtkCupsRequest *request);
+static void _get_read_data      (CtkCupsRequest *request);
 
-struct _GtkCupsResult
+struct _CtkCupsResult
 {
   gchar *error_msg;
   ipp_t *ipp_response;
-  GtkCupsErrorType error_type;
+  CtkCupsErrorType error_type;
 
   /* some error types like HTTP_ERROR have a status and a code */
   int error_status;            
@@ -63,7 +63,7 @@ struct _GtkCupsResult
 #define _CTK_CUPS_MAX_ATTEMPTS 10 
 #define _CTK_CUPS_MAX_CHUNK_SIZE 8192
 
-static GtkCupsRequestStateFunc post_states[] = {
+static CtkCupsRequestStateFunc post_states[] = {
   _connect,
   _post_send,
   _post_write_request,
@@ -73,7 +73,7 @@ static GtkCupsRequestStateFunc post_states[] = {
   _post_read_response
 };
 
-static GtkCupsRequestStateFunc get_states[] = {
+static CtkCupsRequestStateFunc get_states[] = {
   _connect,
   _get_send,
   _get_check,
@@ -82,8 +82,8 @@ static GtkCupsRequestStateFunc get_states[] = {
 };
 
 static void
-ctk_cups_result_set_error (GtkCupsResult    *result,
-                           GtkCupsErrorType  error_type,
+ctk_cups_result_set_error (CtkCupsResult    *result,
+                           CtkCupsErrorType  error_type,
                            int               error_status,
                            int               error_code, 
                            const char       *error_msg,
@@ -102,20 +102,20 @@ ctk_cups_result_set_error (GtkCupsResult    *result,
   va_end (args);
 }
 
-GtkCupsRequest *
+CtkCupsRequest *
 ctk_cups_request_new_with_username (http_t             *connection,
-                                    GtkCupsRequestType  req_type, 
+                                    CtkCupsRequestType  req_type, 
                                     gint                operation_id,
                                     GIOChannel         *data_io,
                                     const char         *server,
                                     const char         *resource,
                                     const char         *username)
 {
-  GtkCupsRequest *request;
+  CtkCupsRequest *request;
   cups_lang_t *language;
   
-  request = g_new0 (GtkCupsRequest, 1);
-  request->result = g_new0 (GtkCupsResult, 1);
+  request = g_new0 (CtkCupsRequest, 1);
+  request->result = g_new0 (CtkCupsResult, 1);
 
   request->result->error_msg = NULL;
   request->result->ipp_response = NULL;
@@ -194,9 +194,9 @@ ctk_cups_request_new_with_username (http_t             *connection,
   return request;
 }
 
-GtkCupsRequest *
+CtkCupsRequest *
 ctk_cups_request_new (http_t             *connection,
-                      GtkCupsRequestType  req_type, 
+                      CtkCupsRequestType  req_type, 
                       gint                operation_id,
                       GIOChannel         *data_io,
                       const char         *server,
@@ -212,7 +212,7 @@ ctk_cups_request_new (http_t             *connection,
 }
 
 static void
-ctk_cups_result_free (GtkCupsResult *result)
+ctk_cups_result_free (CtkCupsResult *result)
 {
   g_free (result->error_msg);
 
@@ -223,7 +223,7 @@ ctk_cups_result_free (GtkCupsResult *result)
 }
 
 void
-ctk_cups_request_free (GtkCupsRequest *request)
+ctk_cups_request_free (CtkCupsRequest *request)
 {
   if (request->own_http)
     {
@@ -251,7 +251,7 @@ ctk_cups_request_free (GtkCupsRequest *request)
 }
 
 gboolean 
-ctk_cups_request_read_write (GtkCupsRequest *request, gboolean connect_only)
+ctk_cups_request_read_write (CtkCupsRequest *request, gboolean connect_only)
 {
   if (connect_only && request->state != CTK_CUPS_REQUEST_START)
     return FALSE;
@@ -293,22 +293,22 @@ ctk_cups_request_read_write (GtkCupsRequest *request, gboolean connect_only)
   return FALSE;
 }
 
-GtkCupsPollState 
-ctk_cups_request_get_poll_state (GtkCupsRequest *request)
+CtkCupsPollState 
+ctk_cups_request_get_poll_state (CtkCupsRequest *request)
 {
   return request->poll_state;
 }
 
 
 
-GtkCupsResult *
-ctk_cups_request_get_result (GtkCupsRequest *request)
+CtkCupsResult *
+ctk_cups_request_get_result (CtkCupsRequest *request)
 {
   return request->result;
 }
 
 void            
-ctk_cups_request_ipp_add_string (GtkCupsRequest *request,
+ctk_cups_request_ipp_add_string (CtkCupsRequest *request,
                                  ipp_tag_t       group,
                                  ipp_tag_t       tag,
                                  const char     *name,
@@ -324,7 +324,7 @@ ctk_cups_request_ipp_add_string (GtkCupsRequest *request,
 }
 
 void            
-ctk_cups_request_ipp_add_strings (GtkCupsRequest    *request,
+ctk_cups_request_ipp_add_strings (CtkCupsRequest    *request,
 				  ipp_tag_t          group,
 				  ipp_tag_t          tag,
 				  const char        *name,
@@ -342,7 +342,7 @@ ctk_cups_request_ipp_add_strings (GtkCupsRequest    *request,
 }
 
 const char *
-ctk_cups_request_ipp_get_string (GtkCupsRequest *request,
+ctk_cups_request_ipp_get_string (CtkCupsRequest *request,
                                  ipp_tag_t       tag,
                                  const char     *name)
 {
@@ -455,7 +455,7 @@ _find_option_tag (const gchar *option)
  * See RFC 2911.
  */
 void
-ctk_cups_request_encode_option (GtkCupsRequest *request,
+ctk_cups_request_encode_option (CtkCupsRequest *request,
                                 const gchar    *option,
 			        const gchar    *value)
 {
@@ -649,7 +649,7 @@ ctk_cups_request_encode_option (GtkCupsRequest *request,
 }
 				
 void
-ctk_cups_request_set_ipp_version (GtkCupsRequest     *request,
+ctk_cups_request_set_ipp_version (CtkCupsRequest     *request,
 				  gint                major,
 				  gint                minor)
 {
@@ -657,7 +657,7 @@ ctk_cups_request_set_ipp_version (GtkCupsRequest     *request,
 }
 
 static void
-_connect (GtkCupsRequest *request)
+_connect (CtkCupsRequest *request)
 {
   request->poll_state = CTK_CUPS_HTTP_IDLE;
   request->bytes_received = 0;
@@ -688,7 +688,7 @@ _connect (GtkCupsRequest *request)
 }
 
 static void 
-_post_send (GtkCupsRequest *request)
+_post_send (CtkCupsRequest *request)
 {
   gchar length[255];
   struct stat data_info;
@@ -741,7 +741,7 @@ _post_send (GtkCupsRequest *request)
 }
 
 static void 
-_post_write_request (GtkCupsRequest *request)
+_post_write_request (CtkCupsRequest *request)
 {
   ipp_state_t ipp_status;
 
@@ -780,7 +780,7 @@ _post_write_request (GtkCupsRequest *request)
 }
 
 static void 
-_post_write_data (GtkCupsRequest *request)
+_post_write_data (CtkCupsRequest *request)
 {
   gsize bytes;
   char buffer[_CTK_CUPS_MAX_CHUNK_SIZE];
@@ -872,7 +872,7 @@ _post_write_data (GtkCupsRequest *request)
 }
 
 static void
-_post_auth (GtkCupsRequest *request)
+_post_auth (CtkCupsRequest *request)
 {
   if (request->password_state == CTK_CUPS_PASSWORD_HAS)
     {
@@ -893,7 +893,7 @@ _post_auth (GtkCupsRequest *request)
 }
 
 static void
-_get_auth (GtkCupsRequest *request)
+_get_auth (CtkCupsRequest *request)
 {
   if (request->password_state == CTK_CUPS_PASSWORD_HAS)
     {
@@ -935,7 +935,7 @@ passwordCB (const char *prompt)
 }
 
 static void 
-_post_check (GtkCupsRequest *request)
+_post_check (CtkCupsRequest *request)
 {
   http_status_t http_status;
 
@@ -1131,7 +1131,7 @@ _post_check (GtkCupsRequest *request)
 }
 
 static void 
-_post_read_response (GtkCupsRequest *request)
+_post_read_response (CtkCupsRequest *request)
 {
   ipp_state_t ipp_status;
 
@@ -1170,7 +1170,7 @@ _post_read_response (GtkCupsRequest *request)
 }
 
 static void 
-_get_send (GtkCupsRequest *request)
+_get_send (CtkCupsRequest *request)
 {
   CTK_NOTE (PRINTING,
             g_print ("CUPS Backend: %s\n", G_STRFUNC));
@@ -1228,7 +1228,7 @@ _get_send (GtkCupsRequest *request)
 }
 
 static void 
-_get_check (GtkCupsRequest *request)
+_get_check (CtkCupsRequest *request)
 {
   http_status_t http_status;
 
@@ -1398,7 +1398,7 @@ _get_check (GtkCupsRequest *request)
 }
 
 static void 
-_get_read_data (GtkCupsRequest *request)
+_get_read_data (CtkCupsRequest *request)
 {
   char buffer[_CTK_CUPS_MAX_CHUNK_SIZE];
   gsize bytes;
@@ -1450,58 +1450,58 @@ _get_read_data (GtkCupsRequest *request)
 }
 
 gboolean
-ctk_cups_request_is_done (GtkCupsRequest *request)
+ctk_cups_request_is_done (CtkCupsRequest *request)
 {
   return (request->state == CTK_CUPS_REQUEST_DONE);
 }
 
 gboolean
-ctk_cups_result_is_error (GtkCupsResult *result)
+ctk_cups_result_is_error (CtkCupsResult *result)
 {
   return result->is_error;
 }
 
 ipp_t *
-ctk_cups_result_get_response (GtkCupsResult *result)
+ctk_cups_result_get_response (CtkCupsResult *result)
 {
   return result->ipp_response;
 }
 
-GtkCupsErrorType
-ctk_cups_result_get_error_type (GtkCupsResult *result)
+CtkCupsErrorType
+ctk_cups_result_get_error_type (CtkCupsResult *result)
 {
   return result->error_type;
 }
 
 int
-ctk_cups_result_get_error_status (GtkCupsResult *result)
+ctk_cups_result_get_error_status (CtkCupsResult *result)
 {
   return result->error_status;
 }
 
 int
-ctk_cups_result_get_error_code (GtkCupsResult *result)
+ctk_cups_result_get_error_code (CtkCupsResult *result)
 {
   return result->error_code;
 }
 
 const char *
-ctk_cups_result_get_error_string (GtkCupsResult *result)
+ctk_cups_result_get_error_string (CtkCupsResult *result)
 {
   return result->error_msg; 
 }
 
-/* This function allocates new instance of GtkCupsConnectionTest() and creates
+/* This function allocates new instance of CtkCupsConnectionTest() and creates
  * a socket for communication with a CUPS server 'server'.
  */
-GtkCupsConnectionTest *
+CtkCupsConnectionTest *
 ctk_cups_connection_test_new (const char *server,
                               const int   port)
 {
-  GtkCupsConnectionTest *result = NULL;
+  CtkCupsConnectionTest *result = NULL;
   gchar                 *port_str = NULL;
 
-  result = g_new (GtkCupsConnectionTest, 1);
+  result = g_new (CtkCupsConnectionTest, 1);
 
   if (port >= 0)
     port_str = g_strdup_printf ("%d", port);
@@ -1527,14 +1527,14 @@ ctk_cups_connection_test_new (const char *server,
 
 
 /* A non-blocking test whether it is possible to connect to a CUPS server specified
- * inside of GtkCupsConnectionTest structure.
+ * inside of CtkCupsConnectionTest structure.
  *  - you need to check it more then once.
  * The connection is closed after a successful connection.
  */
-GtkCupsConnectionState 
-ctk_cups_connection_test_get_state (GtkCupsConnectionTest *test)
+CtkCupsConnectionState 
+ctk_cups_connection_test_get_state (CtkCupsConnectionTest *test)
 {
-  GtkCupsConnectionState result = CTK_CUPS_CONNECTION_NOT_AVAILABLE;
+  CtkCupsConnectionState result = CTK_CUPS_CONNECTION_NOT_AVAILABLE;
   http_addrlist_t       *iter;
   gint                   error_code;
   gint                   flags;
@@ -1616,10 +1616,10 @@ ctk_cups_connection_test_get_state (GtkCupsConnectionTest *test)
     }
 }
 
-/* This function frees memory used by the GtkCupsConnectionTest structure.
+/* This function frees memory used by the CtkCupsConnectionTest structure.
  */
 void 
-ctk_cups_connection_test_free (GtkCupsConnectionTest *test)
+ctk_cups_connection_test_free (CtkCupsConnectionTest *test)
 {
   if (test == NULL)
     return;

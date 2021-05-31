@@ -27,26 +27,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_SPINNER_ACCESSIBLE              (ctk_spinner_accessible_get_type ())
-#define CTK_SPINNER_ACCESSIBLE(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SPINNER_ACCESSIBLE, GtkSpinnerAccessible))
-#define CTK_SPINNER_ACCESSIBLE_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SPINNER_ACCESSIBLE, GtkSpinnerAccessibleClass))
+#define CTK_SPINNER_ACCESSIBLE(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SPINNER_ACCESSIBLE, CtkSpinnerAccessible))
+#define CTK_SPINNER_ACCESSIBLE_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SPINNER_ACCESSIBLE, CtkSpinnerAccessibleClass))
 #define CTK_IS_SPINNER_ACCESSIBLE(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SPINNER_ACCESSIBLE))
 #define CTK_IS_SPINNER_ACCESSIBLE_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SPINNER_ACCESSIBLE))
-#define CTK_SPINNER_ACCESSIBLE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SPINNER_ACCESSIBLE, GtkSpinnerAccessibleClass))
+#define CTK_SPINNER_ACCESSIBLE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SPINNER_ACCESSIBLE, CtkSpinnerAccessibleClass))
 
-typedef struct _GtkSpinnerAccessible        GtkSpinnerAccessible;
-typedef struct _GtkSpinnerAccessibleClass   GtkSpinnerAccessibleClass;
-typedef struct _GtkSpinnerAccessiblePrivate GtkSpinnerAccessiblePrivate;
+typedef struct _CtkSpinnerAccessible        CtkSpinnerAccessible;
+typedef struct _CtkSpinnerAccessibleClass   CtkSpinnerAccessibleClass;
+typedef struct _CtkSpinnerAccessiblePrivate CtkSpinnerAccessiblePrivate;
 
-struct _GtkSpinnerAccessible
+struct _CtkSpinnerAccessible
 {
-  GtkWidgetAccessible parent;
+  CtkWidgetAccessible parent;
 
-  GtkSpinnerAccessiblePrivate *priv;
+  CtkSpinnerAccessiblePrivate *priv;
 };
 
-struct _GtkSpinnerAccessibleClass
+struct _CtkSpinnerAccessibleClass
 {
-  GtkWidgetAccessibleClass parent_class;
+  CtkWidgetAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

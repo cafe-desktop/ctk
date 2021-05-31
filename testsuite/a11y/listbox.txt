@@ -26,7 +26,7 @@ window1
       layer: widget
       alpha: 1
       <AtkSelection>
-      unnamed-GtkListBoxRowAccessible-0
+      unnamed-CtkListBoxRowAccessible-0
         "list item"
         parent: listbox1
         index: 0
@@ -37,7 +37,7 @@ window1
         alpha: 1
         row1
           "label"
-          parent: unnamed-GtkListBoxRowAccessible-0
+          parent: unnamed-CtkListBoxRowAccessible-0
           index: 0
           name: Row One
           state: enabled multi-line sensitive showing visible
@@ -75,7 +75,7 @@ window1
                               weight: <omitted>
                               wrap-mode: word
           <AtkHypertext>
-      unnamed-GtkListBoxRowAccessible-1
+      unnamed-CtkListBoxRowAccessible-1
         "list item"
         parent: listbox1
         index: 1
@@ -86,7 +86,7 @@ window1
         alpha: 1
         row2
           "label"
-          parent: unnamed-GtkListBoxRowAccessible-1
+          parent: unnamed-CtkListBoxRowAccessible-1
           index: 0
           name: Row Two
           state: enabled multi-line sensitive showing visible
@@ -134,7 +134,7 @@ window1
       layer: widget
       alpha: 1
       <AtkSelection>
-      unnamed-GtkListBoxRowAccessible-2
+      unnamed-CtkListBoxRowAccessible-2
         "list item"
         parent: listbox2
         index: 0
@@ -145,7 +145,7 @@ window1
         alpha: 1
         row3
           "label"
-          parent: unnamed-GtkListBoxRowAccessible-2
+          parent: unnamed-CtkListBoxRowAccessible-2
           index: 0
           name: Row Tree
           state: enabled multi-line sensitive showing visible

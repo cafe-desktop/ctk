@@ -1,4 +1,4 @@
-/* GtkTrePath tests.
+/* CtkTrePath tests.
  *
  * Copyright (C) 2011, Red Hat, Inc.
  * Authors: Matthias Clasen <mclasen@redhat.com>
@@ -22,7 +22,7 @@
 static void
 test_append (void)
 {
-  GtkTreePath *p;
+  CtkTreePath *p;
   gint i;
   gint *indices;
 
@@ -43,7 +43,7 @@ test_append (void)
 static void
 test_prepend (void)
 {
-  GtkTreePath *p;
+  CtkTreePath *p;
   gint i;
   gint *indices;
 
@@ -65,7 +65,7 @@ static void
 test_to_string (void)
 {
   const gchar *str = "0:1:2:3:4:5:6:7:8:9:10";
-  GtkTreePath *p;
+  CtkTreePath *p;
   gint *indices;
   gchar *s;
   gint i;
@@ -84,7 +84,7 @@ test_to_string (void)
 static void
 test_from_indices (void)
 {
-  GtkTreePath *p;
+  CtkTreePath *p;
   gint *indices;
   gint i;
 
@@ -99,7 +99,7 @@ test_from_indices (void)
 static void
 test_first (void)
 {
-  GtkTreePath *p;
+  CtkTreePath *p;
   p = ctk_tree_path_new_first ();
   g_assert_cmpint (ctk_tree_path_get_depth (p), ==, 1);
   g_assert_cmpint (ctk_tree_path_get_indices (p)[0], ==, 0);
@@ -109,8 +109,8 @@ test_first (void)
 static void
 test_navigation (void)
 {
-  GtkTreePath *p;
-  GtkTreePath *q;
+  CtkTreePath *p;
+  CtkTreePath *q;
   gint *pi;
   gint *qi;
   gint i;

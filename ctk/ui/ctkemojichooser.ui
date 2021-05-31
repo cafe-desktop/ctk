@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="ctk30">
-  <template class="GtkEmojiChooser" parent="GtkPopover">
+  <template class="CtkEmojiChooser" parent="CtkPopover">
     <property name="modal">1</property>
     <style>
       <class name="emoji-picker"/>
     </style>
     <child>
-      <object class="GtkBox" id="box">
+      <object class="CtkBox" id="box">
         <property name="orientation">vertical</property>
         <property name="visible">1</property>
         <child>
-          <object class="GtkSearchEntry" id="search_entry">
+          <object class="CtkSearchEntry" id="search_entry">
             <property name="visible">1</property>
             <property name="input-hints">no-emoji</property>
             <signal name="search-changed" handler="search_changed"/>
           </object>
         </child>
         <child>
-          <object class="GtkStack" id="stack">
+          <object class="CtkStack" id="stack">
             <property name="visible">1</property>
             <child>
-              <object class="GtkBox">
+              <object class="CtkBox">
                 <property name="visible">1</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkScrolledWindow" id="scrolled_window">
+                  <object class="CtkScrolledWindow" id="scrolled_window">
                     <property name="visible">1</property>
                     <property name="vexpand">1</property>
                     <property name="hscrollbar-policy">never</property>
@@ -33,14 +33,14 @@
                       <class name="view"/>
                     </style>
                     <child>
-                      <object class="GtkBox" id="emoji_box">
+                      <object class="CtkBox" id="emoji_box">
                         <property name="visible">1</property>
                         <property name="orientation">vertical</property>
                         <property name="margin">6</property>
                         <property name="spacing">6</property>
                         <!-- Remember to keep headings here in sync with button tooltips below -->
                         <child>
-                          <object class="GtkFlowBox" id="recent.box">
+                          <object class="CtkFlowBox" id="recent.box">
                             <property name="visible">1</property>
                             <property name="homogeneous">1</property>
                             <property name="selection-mode">none</property>
@@ -48,14 +48,14 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="people.heading">
+                          <object class="CtkLabel" id="people.heading">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Smileys &amp; People</property>
                             <property name="xalign">0</property>
                           </object>
                         </child>
                         <child>
-                          <object class="GtkFlowBox" id="people.box">
+                          <object class="CtkFlowBox" id="people.box">
                             <property name="visible">1</property>
                             <property name="homogeneous">1</property>
                             <property name="selection-mode">none</property>
@@ -63,14 +63,14 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="body.heading">
+                          <object class="CtkLabel" id="body.heading">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Body &amp; Clothing</property>
                             <property name="xalign">0</property>
                           </object>
                         </child>
                         <child>
-                          <object class="GtkFlowBox" id="body.box">
+                          <object class="CtkFlowBox" id="body.box">
                             <property name="visible">1</property>
                             <property name="homogeneous">1</property>
                             <property name="selection-mode">none</property>
@@ -78,14 +78,14 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="nature.heading">
+                          <object class="CtkLabel" id="nature.heading">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Animals &amp; Nature</property>
                             <property name="xalign">0</property>
                           </object>
                         </child>
                         <child>
-                          <object class="GtkFlowBox" id="nature.box">
+                          <object class="CtkFlowBox" id="nature.box">
                             <property name="visible">1</property>
                             <property name="homogeneous">1</property>
                             <property name="selection-mode">none</property>
@@ -93,14 +93,14 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="food.heading">
+                          <object class="CtkLabel" id="food.heading">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Food &amp; Drink</property>
                             <property name="xalign">0</property>
                           </object>
                         </child>
                         <child>
-                          <object class="GtkFlowBox" id="food.box">
+                          <object class="CtkFlowBox" id="food.box">
                             <property name="visible">1</property>
                             <property name="homogeneous">1</property>
                             <property name="selection-mode">none</property>
@@ -108,14 +108,14 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="travel.heading">
+                          <object class="CtkLabel" id="travel.heading">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Travel &amp; Places</property>
                             <property name="xalign">0</property>
                           </object>
                         </child>
                         <child>
-                          <object class="GtkFlowBox" id="travel.box">
+                          <object class="CtkFlowBox" id="travel.box">
                             <property name="visible">1</property>
                             <property name="homogeneous">1</property>
                             <property name="selection-mode">none</property>
@@ -123,14 +123,14 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="activities.heading">
+                          <object class="CtkLabel" id="activities.heading">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Activities</property>
                             <property name="xalign">0</property>
                           </object>
                         </child>
                         <child>
-                          <object class="GtkFlowBox" id="activities.box">
+                          <object class="CtkFlowBox" id="activities.box">
                             <property name="visible">1</property>
                             <property name="homogeneous">1</property>
                             <property name="selection-mode">none</property>
@@ -138,14 +138,14 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="objects.heading">
+                          <object class="CtkLabel" id="objects.heading">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes" context="emoji category">Objects</property>
                             <property name="xalign">0</property>
                           </object>
                         </child>
                         <child>
-                          <object class="GtkFlowBox" id="objects.box">
+                          <object class="CtkFlowBox" id="objects.box">
                             <property name="visible">1</property>
                             <property name="homogeneous">1</property>
                             <property name="selection-mode">none</property>
@@ -153,14 +153,14 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="symbols.heading">
+                          <object class="CtkLabel" id="symbols.heading">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Symbols</property>
                             <property name="xalign">0</property>
                           </object>
                         </child>
                         <child>
-                          <object class="GtkFlowBox" id="symbols.box">
+                          <object class="CtkFlowBox" id="symbols.box">
                             <property name="visible">1</property>
                             <property name="homogeneous">1</property>
                             <property name="selection-mode">none</property>
@@ -168,14 +168,14 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="flags.heading">
+                          <object class="CtkLabel" id="flags.heading">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Flags</property>
                             <property name="xalign">0</property>
                           </object>
                         </child>
                         <child>
-                          <object class="GtkFlowBox" id="flags.box">
+                          <object class="CtkFlowBox" id="flags.box">
                             <property name="visible">1</property>
                             <property name="homogeneous">1</property>
                             <property name="selection-mode">none</property>
@@ -187,11 +187,11 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkBox">
+                  <object class="CtkBox">
                     <property name="visible">1</property>
                     <!-- Remember to keep tooltips here in sync with section headings above -->
                     <child>
-                      <object class="GtkButton" id="recent.button">
+                      <object class="CtkButton" id="recent.button">
                         <property name="visible">1</property>
                         <property name="relief">none</property>
                         <property name="tooltip-text" translatable="yes">Recent</property>
@@ -199,14 +199,14 @@
                           <class name="emoji-section"/>
                         </style>
                         <child>
-                          <object class="GtkImage" id="recent.icon">
+                          <object class="CtkImage" id="recent.icon">
                             <property name="visible">1</property>
                           </object>
                         </child>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkButton" id="people.button">
+                      <object class="CtkButton" id="people.button">
                         <property name="visible">1</property>
                         <property name="relief">none</property>
                         <property name="tooltip-text" translatable="yes">Smileys &amp; People</property>
@@ -214,14 +214,14 @@
                           <class name="emoji-section"/>
                         </style>
                         <child>
-                          <object class="GtkImage" id="people.icon">
+                          <object class="CtkImage" id="people.icon">
                             <property name="visible">1</property>
                           </object>
                         </child>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkButton" id="body.button">
+                      <object class="CtkButton" id="body.button">
                         <property name="visible">1</property>
                         <property name="relief">none</property>
                         <property name="tooltip-text" translatable="yes">Body &amp; Clothing</property>
@@ -229,14 +229,14 @@
                           <class name="emoji-section"/>
                         </style>
                         <child>
-                          <object class="GtkImage" id="body.icon">
+                          <object class="CtkImage" id="body.icon">
                             <property name="visible">1</property>
                           </object>
                         </child>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkButton" id="nature.button">
+                      <object class="CtkButton" id="nature.button">
                         <property name="visible">1</property>
                         <property name="relief">none</property>
                         <property name="tooltip-text" translatable="yes">Animals &amp; Nature</property>
@@ -244,14 +244,14 @@
                           <class name="emoji-section"/>
                         </style>
                         <child>
-                          <object class="GtkImage" id="nature.icon">
+                          <object class="CtkImage" id="nature.icon">
                             <property name="visible">1</property>
                           </object>
                         </child>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkButton" id="food.button">
+                      <object class="CtkButton" id="food.button">
                         <property name="visible">1</property>
                         <property name="relief">none</property>
                         <property name="tooltip-text" translatable="yes">Food &amp; Drink</property>
@@ -259,14 +259,14 @@
                           <class name="emoji-section"/>
                         </style>
                         <child>
-                          <object class="GtkImage" id="food.icon">
+                          <object class="CtkImage" id="food.icon">
                             <property name="visible">1</property>
                           </object>
                         </child>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkButton" id="travel.button">
+                      <object class="CtkButton" id="travel.button">
                         <property name="visible">1</property>
                         <property name="relief">none</property>
                         <property name="tooltip-text" translatable="yes">Travel &amp; Places</property>
@@ -274,14 +274,14 @@
                           <class name="emoji-section"/>
                         </style>
                         <child>
-                          <object class="GtkImage" id="travel.icon">
+                          <object class="CtkImage" id="travel.icon">
                             <property name="visible">1</property>
                           </object>
                         </child>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkButton" id="activities.button">
+                      <object class="CtkButton" id="activities.button">
                         <property name="visible">1</property>
                         <property name="relief">none</property>
                         <property name="tooltip-text" translatable="yes">Activities</property>
@@ -289,14 +289,14 @@
                           <class name="emoji-section"/>
                         </style>
                         <child>
-                          <object class="GtkImage" id="activities.icon">
+                          <object class="CtkImage" id="activities.icon">
                             <property name="visible">1</property>
                           </object>
                         </child>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkButton" id="objects.button">
+                      <object class="CtkButton" id="objects.button">
                         <property name="visible">1</property>
                         <property name="relief">none</property>
                          <property name="tooltip-text" translatable="yes" context="emoji category">Objects</property>
@@ -304,14 +304,14 @@
                           <class name="emoji-section"/>
                         </style>
                         <child>
-                          <object class="GtkImage" id="objects.icon">
+                          <object class="CtkImage" id="objects.icon">
                             <property name="visible">1</property>
                           </object>
                         </child>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkButton" id="symbols.button">
+                      <object class="CtkButton" id="symbols.button">
                         <property name="visible">1</property>
                         <property name="relief">none</property>
                         <property name="tooltip-text" translatable="yes">Symbols</property>
@@ -319,14 +319,14 @@
                           <class name="emoji-section"/>
                         </style>
                         <child>
-                          <object class="GtkImage" id="symbols.icon">
+                          <object class="CtkImage" id="symbols.icon">
                             <property name="visible">1</property>
                           </object>
                         </child>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkButton" id="flags.button">
+                      <object class="CtkButton" id="flags.button">
                         <property name="visible">1</property>
                         <property name="relief">none</property>
                         <property name="tooltip-text" translatable="yes">Flags</property>
@@ -334,7 +334,7 @@
                           <class name="emoji-section"/>
                         </style>
                         <child>
-                          <object class="GtkImage" id="flags.icon">
+                          <object class="CtkImage" id="flags.icon">
                             <property name="visible">1</property>
                           </object>
                         </child>
@@ -348,7 +348,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkGrid">
+              <object class="CtkGrid">
                 <property name="visible">1</property>
                 <property name="row-spacing">12</property>
                 <property name="halign">center</property>
@@ -357,7 +357,7 @@
                   <class name="dim-label"/>
                 </style>
                 <child>
-                  <object class="GtkImage">
+                  <object class="CtkImage">
                     <property name="visible">1</property>
                     <property name="icon-name">edit-find-symbolic</property>
                     <property name="pixel-size">72</property>
@@ -371,7 +371,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="CtkLabel">
                     <property name="visible">1</property>
                     <property name="label" translatable="yes">No Results Found</property>
                     <attributes>
@@ -385,7 +385,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="CtkLabel">
                     <property name="visible">1</property>
                     <property name="label" translatable="yes">Try a different search</property>
                     <style>

@@ -24,11 +24,11 @@
  */
 
 /*
-void          im_module_list   (const GtkIMContextInfo ***contexts,
+void          im_module_list   (const CtkIMContextInfo ***contexts,
 				guint                    *n_contexts);
-void          im_module_init   (GtkModule                *module);
+void          im_module_init   (CtkModule                *module);
 void          im_module_exit   (void);
-GtkIMContext *im_module_create (const gchar              *context_id);
+CtkIMContext *im_module_create (const gchar              *context_id);
 */
 
 #endif /* __CTK_IM_MODULE_H__ */

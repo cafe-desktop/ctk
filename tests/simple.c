@@ -28,7 +28,7 @@ hello (void)
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window;
+  CtkWidget *window;
 
   ctk_init (&argc, &argv);
 
@@ -41,9 +41,9 @@ main (int argc, char *argv[])
                              "signal::destroy", ctk_main_quit, NULL,
                              NULL);
   g_object_connect (g_object_new (ctk_button_get_type (),
-                                  "GtkButton::label", "hello world",
-                                  "GtkWidget::parent", window,
-                                  "GtkWidget::visible", TRUE,
+                                  "CtkButton::label", "hello world",
+                                  "CtkWidget::parent", window,
+                                  "CtkWidget::visible", TRUE,
                                   NULL),
                     "signal::clicked", hello, NULL,
                     NULL);

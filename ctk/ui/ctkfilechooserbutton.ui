@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="ctk30">
   <!-- interface-requires ctk+ 3.10 -->
-  <template class="GtkFileChooserButton" parent="GtkBox">
+  <template class="CtkFileChooserButton" parent="CtkBox">
     <child>
-      <object class="GtkButton" id="button">
+      <object class="CtkButton" id="button">
         <property name="visible">1</property>
         <property name="can-focus">1</property>
         <property name="receives-default">1</property>
@@ -12,11 +12,11 @@
           <class name="file"/>
         </style>
         <child>
-          <object class="GtkBox" id="box2">
+          <object class="CtkBox" id="box2">
             <property name="visible">1</property>
             <property name="spacing">4</property>
             <child>
-              <object class="GtkImage" id="image">
+              <object class="CtkImage" id="image">
                 <property name="visible">1</property>
                 <property name="icon-name">image-missing</property>
               </object>
@@ -25,7 +25,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="label">
+              <object class="CtkLabel" id="label">
                 <property name="visible">1</property>
                 <property name="halign">start</property>
                 <property name="valign">baseline</property>
@@ -39,7 +39,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkSeparator" id="separator1">
+              <object class="CtkSeparator" id="separator1">
                 <property name="visible">1</property>
                 <property name="orientation">vertical</property>
               </object>
@@ -49,7 +49,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkImage" id="open_file_icon">
+              <object class="CtkImage" id="open_file_icon">
                 <property name="visible">1</property>
                 <property name="icon-name">document-open-symbolic</property>
                 <property name="icon-size">1</property>
@@ -69,18 +69,18 @@
       </packing>
     </child>
     <child>
-      <object class="GtkComboBox" id="combo_box">
+      <object class="CtkComboBox" id="combo_box">
         <property name="visible">1</property>
         <signal name="changed" handler="combo_box_changed_cb" swapped="no"/>
         <signal name="notify::popup-shown" handler="combo_box_notify_popup_shown_cb" swapped="no"/>
         <child>
-          <object class="GtkCellRendererPixbuf" id="icon_cell"/>
+          <object class="CtkCellRendererPixbuf" id="icon_cell"/>
           <attributes>
             <attribute name="surface">0</attribute>
           </attributes>
         </child>
         <child>
-          <object class="GtkCellRendererText" id="name_cell">
+          <object class="CtkCellRendererText" id="name_cell">
             <property name="xpad">6</property>
           </object>
           <attributes>
@@ -94,7 +94,7 @@
       </packing>
     </child>
   </template>
-  <object class="GtkListStore" id="model">
+  <object class="CtkListStore" id="model">
     <columns>
       <!-- column-name icon -->
       <column type="CairoSurface"/>

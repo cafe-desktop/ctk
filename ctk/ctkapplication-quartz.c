@@ -27,51 +27,51 @@
 typedef struct
 {
   guint cookie;
-  GtkApplicationInhibitFlags flags;
+  CtkApplicationInhibitFlags flags;
   char *reason;
-  GtkWindow *window;
-} GtkApplicationQuartzInhibitor;
+  CtkWindow *window;
+} CtkApplicationQuartzInhibitor;
 
 static void
-ctk_application_quartz_inhibitor_free (GtkApplicationQuartzInhibitor *inhibitor)
+ctk_application_quartz_inhibitor_free (CtkApplicationQuartzInhibitor *inhibitor)
 {
   g_free (inhibitor->reason);
   g_clear_object (&inhibitor->window);
-  g_slice_free (GtkApplicationQuartzInhibitor, inhibitor);
+  g_slice_free (CtkApplicationQuartzInhibitor, inhibitor);
 }
 
-typedef GtkApplicationImplClass GtkApplicationImplQuartzClass;
+typedef CtkApplicationImplClass CtkApplicationImplQuartzClass;
 
 typedef struct
 {
-  GtkApplicationImpl impl;
+  CtkApplicationImpl impl;
 
-  GtkActionMuxer *muxer;
+  CtkActionMuxer *muxer;
   GMenu *combined;
 
   GSList *inhibitors;
   gint quit_inhibit;
   guint next_cookie;
   NSObject *delegate;
-} GtkApplicationImplQuartz;
+} CtkApplicationImplQuartz;
 
-G_DEFINE_TYPE (GtkApplicationImplQuartz, ctk_application_impl_quartz, CTK_TYPE_APPLICATION_IMPL)
+G_DEFINE_TYPE (CtkApplicationImplQuartz, ctk_application_impl_quartz, CTK_TYPE_APPLICATION_IMPL)
 #if MAC_OS_X_VERSION_MIN_REQUIRED >= 1060
-@interface GtkApplicationQuartzDelegate : NSObject <NSApplicationDelegate>
+@interface CtkApplicationQuartzDelegate : NSObject <NSApplicationDelegate>
 #else
-@interface GtkApplicationQuartzDelegate : NSObject
+@interface CtkApplicationQuartzDelegate : NSObject
 #endif
 {
-  GtkApplicationImplQuartz *quartz;
+  CtkApplicationImplQuartz *quartz;
 }
 
-- (id)initWithImpl:(GtkApplicationImplQuartz*)impl;
+- (id)initWithImpl:(CtkApplicationImplQuartz*)impl;
 - (NSApplicationTerminateReply) applicationShouldTerminate:(NSApplication *)sender;
 - (void)application:(NSApplication *)theApplication openFiles:(NSArray *)filenames;
 @end
 
-@implementation GtkApplicationQuartzDelegate
--(id)initWithImpl:(GtkApplicationImplQuartz*)impl
+@implementation CtkApplicationQuartzDelegate
+-(id)initWithImpl:(CtkApplicationImplQuartz*)impl
 {
   [super init];
   quartz = impl;
@@ -151,10 +151,10 @@ static GActionEntry ctk_application_impl_quartz_actions[] = {
 };
 
 static void
-ctk_application_impl_quartz_startup (GtkApplicationImpl *impl,
+ctk_application_impl_quartz_startup (CtkApplicationImpl *impl,
                                      gboolean            register_session)
 {
-  GtkApplicationImplQuartz *quartz = (GtkApplicationImplQuartz *) impl;
+  CtkApplicationImplQuartz *quartz = (CtkApplicationImplQuartz *) impl;
   GSimpleActionGroup *ctkinternal;
   GMenuModel *app_menu;
   const gchar *pref_accel[] = {"<Primary>comma", NULL};
@@ -164,7 +164,7 @@ ctk_application_impl_quartz_startup (GtkApplicationImpl *impl,
 
   if (register_session)
     {
-      quartz->delegate = [[GtkApplicationQuartzDelegate alloc] initWithImpl:quartz];
+      quartz->delegate = [[CtkApplicationQuartzDelegate alloc] initWithImpl:quartz];
       [NSApp setDelegate: (id)(quartz->delegate)];
     }
 
@@ -188,7 +188,7 @@ ctk_application_impl_quartz_startup (GtkApplicationImpl *impl,
   app_menu = ctk_application_get_app_menu (impl->application);
   if (app_menu == NULL)
     {
-      GtkBuilder *builder;
+      CtkBuilder *builder;
 
       /* If the user didn't fill in their own menu yet, add ours.
        *
@@ -212,9 +212,9 @@ ctk_application_impl_quartz_startup (GtkApplicationImpl *impl,
 }
 
 static void
-ctk_application_impl_quartz_shutdown (GtkApplicationImpl *impl)
+ctk_application_impl_quartz_shutdown (CtkApplicationImpl *impl)
 {
-  GtkApplicationImplQuartz *quartz = (GtkApplicationImplQuartz *) impl;
+  CtkApplicationImplQuartz *quartz = (CtkApplicationImplQuartz *) impl;
 
   /* destroy our custom menubar */
   [NSApp setMainMenu:[[[NSMenu alloc] init] autorelease]];
@@ -230,10 +230,10 @@ ctk_application_impl_quartz_shutdown (GtkApplicationImpl *impl)
 }
 
 static void
-ctk_application_impl_quartz_active_window_changed (GtkApplicationImpl *impl,
-                                                   GtkWindow          *window)
+ctk_application_impl_quartz_active_window_changed (CtkApplicationImpl *impl,
+                                                   CtkWindow          *window)
 {
-  GtkApplicationImplQuartz *quartz = (GtkApplicationImplQuartz *) impl;
+  CtkApplicationImplQuartz *quartz = (CtkApplicationImplQuartz *) impl;
 
   ctk_action_muxer_remove (quartz->muxer, "win");
 
@@ -242,10 +242,10 @@ ctk_application_impl_quartz_active_window_changed (GtkApplicationImpl *impl,
 }
 
 static void
-ctk_application_impl_quartz_set_app_menu (GtkApplicationImpl *impl,
+ctk_application_impl_quartz_set_app_menu (CtkApplicationImpl *impl,
                                           GMenuModel         *app_menu)
 {
-  GtkApplicationImplQuartz *quartz = (GtkApplicationImplQuartz *) impl;
+  CtkApplicationImplQuartz *quartz = (CtkApplicationImplQuartz *) impl;
 
   /* If there are any items at all, then the first one is the app menu */
   if (g_menu_model_get_n_items (G_MENU_MODEL (quartz->combined)))
@@ -265,10 +265,10 @@ ctk_application_impl_quartz_set_app_menu (GtkApplicationImpl *impl,
 }
 
 static void
-ctk_application_impl_quartz_set_menubar (GtkApplicationImpl *impl,
+ctk_application_impl_quartz_set_menubar (CtkApplicationImpl *impl,
                                          GMenuModel         *menubar)
 {
-  GtkApplicationImplQuartz *quartz = (GtkApplicationImplQuartz *) impl;
+  CtkApplicationImplQuartz *quartz = (CtkApplicationImplQuartz *) impl;
 
   /* If we have the menubar, it is a section at index '1' */
   if (g_menu_model_get_n_items (G_MENU_MODEL (quartz->combined)) > 1)
@@ -279,15 +279,15 @@ ctk_application_impl_quartz_set_menubar (GtkApplicationImpl *impl,
 }
 
 static guint
-ctk_application_impl_quartz_inhibit (GtkApplicationImpl         *impl,
-                                     GtkWindow                  *window,
-                                     GtkApplicationInhibitFlags  flags,
+ctk_application_impl_quartz_inhibit (CtkApplicationImpl         *impl,
+                                     CtkWindow                  *window,
+                                     CtkApplicationInhibitFlags  flags,
                                      const gchar                *reason)
 {
-  GtkApplicationImplQuartz *quartz = (GtkApplicationImplQuartz *) impl;
-  GtkApplicationQuartzInhibitor *inhibitor;
+  CtkApplicationImplQuartz *quartz = (CtkApplicationImplQuartz *) impl;
+  CtkApplicationQuartzInhibitor *inhibitor;
 
-  inhibitor = g_slice_new (GtkApplicationQuartzInhibitor);
+  inhibitor = g_slice_new (CtkApplicationQuartzInhibitor);
   inhibitor->cookie = ++quartz->next_cookie;
   inhibitor->flags = flags;
   inhibitor->reason = g_strdup (reason);
@@ -302,15 +302,15 @@ ctk_application_impl_quartz_inhibit (GtkApplicationImpl         *impl,
 }
 
 static void
-ctk_application_impl_quartz_uninhibit (GtkApplicationImpl *impl,
+ctk_application_impl_quartz_uninhibit (CtkApplicationImpl *impl,
                                        guint               cookie)
 {
-  GtkApplicationImplQuartz *quartz = (GtkApplicationImplQuartz *) impl;
+  CtkApplicationImplQuartz *quartz = (CtkApplicationImplQuartz *) impl;
   GSList *iter;
 
   for (iter = quartz->inhibitors; iter; iter = iter->next)
     {
-      GtkApplicationQuartzInhibitor *inhibitor = iter->data;
+      CtkApplicationQuartzInhibitor *inhibitor = iter->data;
 
       if (inhibitor->cookie == cookie)
         {
@@ -326,10 +326,10 @@ ctk_application_impl_quartz_uninhibit (GtkApplicationImpl *impl,
 }
 
 static gboolean
-ctk_application_impl_quartz_is_inhibited (GtkApplicationImpl         *impl,
-                                          GtkApplicationInhibitFlags  flags)
+ctk_application_impl_quartz_is_inhibited (CtkApplicationImpl         *impl,
+                                          CtkApplicationInhibitFlags  flags)
 {
-  GtkApplicationImplQuartz *quartz = (GtkApplicationImplQuartz *) impl;
+  CtkApplicationImplQuartz *quartz = (CtkApplicationImplQuartz *) impl;
 
   if (flags & CTK_APPLICATION_INHIBIT_LOGOUT)
     return quartz->quit_inhibit > 0;
@@ -338,7 +338,7 @@ ctk_application_impl_quartz_is_inhibited (GtkApplicationImpl         *impl,
 }
 
 static void
-ctk_application_impl_quartz_init (GtkApplicationImplQuartz *quartz)
+ctk_application_impl_quartz_init (CtkApplicationImplQuartz *quartz)
 {
   /* This is required so that Cocoa is not going to parse the
      command line arguments by itself and generate OpenFile events.
@@ -353,7 +353,7 @@ ctk_application_impl_quartz_init (GtkApplicationImplQuartz *quartz)
 static void
 ctk_application_impl_quartz_finalize (GObject *object)
 {
-  GtkApplicationImplQuartz *quartz = (GtkApplicationImplQuartz *) object;
+  CtkApplicationImplQuartz *quartz = (CtkApplicationImplQuartz *) object;
 
   g_clear_object (&quartz->combined);
 
@@ -361,7 +361,7 @@ ctk_application_impl_quartz_finalize (GObject *object)
 }
 
 static void
-ctk_application_impl_quartz_class_init (GtkApplicationImplClass *class)
+ctk_application_impl_quartz_class_init (CtkApplicationImplClass *class)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
 

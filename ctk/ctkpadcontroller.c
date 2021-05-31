@@ -20,10 +20,10 @@
 /**
  * SECTION:ctkpadcontroller
  * @Short_description: Controller for drawing tablet pads
- * @Title: GtkPadController
- * @See_also: #GtkEventController, #GdkDevicePad
+ * @Title: CtkPadController
+ * @See_also: #CtkEventController, #GdkDevicePad
  *
- * #GtkPadController is an event controller for the pads found in drawing
+ * #CtkPadController is an event controller for the pads found in drawing
  * tablets (The collection of buttons and tactile sensors often found around
  * the stylus-sensitive area).
  *
@@ -41,14 +41,14 @@
  * gdk_device_pad_get_group_n_modes().
  *
  * Each of the actions that a given button/strip/ring performs for a given
- * mode is defined by #GtkPadActionEntry, it contains an action name that
+ * mode is defined by #CtkPadActionEntry, it contains an action name that
  * will be looked up in the given #GActionGroup and activated whenever the
  * specified input element and mode are triggered.
  *
- * A simple example of #GtkPadController usage, assigning button 1 in all
+ * A simple example of #CtkPadController usage, assigning button 1 in all
  * modes and pad devices to an "invert-selection" action:
  * |[
- *   GtkPadActionEntry *pad_actions[] = {
+ *   CtkPadActionEntry *pad_actions[] = {
  *     { CTK_PAD_ACTION_BUTTON, 1, -1, "Invert selection", "pad-actions.invert-selection" },
  *     …
  *   };
@@ -79,16 +79,16 @@
 #include <gdk/wayland/gdkwayland.h>
 #endif
 
-struct _GtkPadController {
-  GtkEventController parent_instance;
+struct _CtkPadController {
+  CtkEventController parent_instance;
   GActionGroup *action_group;
   GdkDevice *pad;
 
   GList *entries;
 };
 
-struct _GtkPadControllerClass {
-  GtkEventControllerClass parent_class;
+struct _CtkPadControllerClass {
+  CtkEventControllerClass parent_class;
 };
 
 enum {
@@ -100,14 +100,14 @@ enum {
 
 static GParamSpec *pspecs[N_PROPS] = { NULL };
 
-G_DEFINE_TYPE (GtkPadController, ctk_pad_controller, CTK_TYPE_EVENT_CONTROLLER)
+G_DEFINE_TYPE (CtkPadController, ctk_pad_controller, CTK_TYPE_EVENT_CONTROLLER)
 
-static GtkPadActionEntry *
-ctk_pad_action_entry_copy (const GtkPadActionEntry *entry)
+static CtkPadActionEntry *
+ctk_pad_action_entry_copy (const CtkPadActionEntry *entry)
 {
-  GtkPadActionEntry *copy;
+  CtkPadActionEntry *copy;
 
-  copy = g_slice_new0 (GtkPadActionEntry);
+  copy = g_slice_new0 (CtkPadActionEntry);
   *copy = *entry;
   copy->label = g_strdup (entry->label);
   copy->action_name = g_strdup (entry->action_name);
@@ -116,16 +116,16 @@ ctk_pad_action_entry_copy (const GtkPadActionEntry *entry)
 }
 
 static void
-ctk_pad_action_entry_free (GtkPadActionEntry *entry)
+ctk_pad_action_entry_free (CtkPadActionEntry *entry)
 {
   g_free (entry->label);
   g_free (entry->action_name);
-  g_slice_free (GtkPadActionEntry, entry);
+  g_slice_free (CtkPadActionEntry, entry);
 }
 
-static const GtkPadActionEntry *
-ctk_pad_action_find_match (GtkPadController *controller,
-                           GtkPadActionType  type,
+static const CtkPadActionEntry *
+ctk_pad_action_find_match (CtkPadController *controller,
+                           CtkPadActionType  type,
                            gint              index,
                            gint              mode)
 {
@@ -133,7 +133,7 @@ ctk_pad_action_find_match (GtkPadController *controller,
 
   for (l = controller->entries; l; l = l->next)
     {
-      GtkPadActionEntry *entry = l->data;
+      CtkPadActionEntry *entry = l->data;
       gboolean match_index = FALSE, match_mode = FALSE;
 
       if (entry->type != type)
@@ -150,8 +150,8 @@ ctk_pad_action_find_match (GtkPadController *controller,
 }
 
 static void
-ctk_pad_controller_activate_action (GtkPadController        *controller,
-                                    const GtkPadActionEntry *entry)
+ctk_pad_controller_activate_action (CtkPadController        *controller,
+                                    const CtkPadActionEntry *entry)
 {
   g_action_group_activate_action (controller->action_group,
                                   entry->action_name,
@@ -159,8 +159,8 @@ ctk_pad_controller_activate_action (GtkPadController        *controller,
 }
 
 static void
-ctk_pad_controller_activate_action_with_axis (GtkPadController        *controller,
-                                              const GtkPadActionEntry *entry,
+ctk_pad_controller_activate_action_with_axis (CtkPadController        *controller,
+                                              const CtkPadActionEntry *entry,
                                               gdouble                  value)
 {
   g_action_group_activate_action (controller->action_group,
@@ -169,7 +169,7 @@ ctk_pad_controller_activate_action_with_axis (GtkPadController        *controlle
 }
 
 static void
-ctk_pad_controller_handle_mode_switch (GtkPadController *controller,
+ctk_pad_controller_handle_mode_switch (CtkPadController *controller,
                                        GdkDevice        *pad,
                                        guint             group,
                                        guint             mode)
@@ -177,7 +177,7 @@ ctk_pad_controller_handle_mode_switch (GtkPadController *controller,
 #ifdef GDK_WINDOWING_WAYLAND
   if (GDK_IS_WAYLAND_DISPLAY (gdk_device_get_display (pad)))
     {
-      const GtkPadActionEntry *entry;
+      const CtkPadActionEntry *entry;
       gint elem, idx, n_features;
 
       for (elem = CTK_PAD_ACTION_BUTTON; elem <= CTK_PAD_ACTION_STRIP; elem++)
@@ -207,10 +207,10 @@ ctk_pad_controller_handle_mode_switch (GtkPadController *controller,
 }
 
 static gboolean
-ctk_pad_controller_filter_event (GtkEventController *controller,
+ctk_pad_controller_filter_event (CtkEventController *controller,
                                  const GdkEvent     *event)
 {
-  GtkPadController *pad_controller = CTK_PAD_CONTROLLER (controller);
+  CtkPadController *pad_controller = CTK_PAD_CONTROLLER (controller);
 
   if (event->type != GDK_PAD_BUTTON_PRESS &&
       event->type != GDK_PAD_BUTTON_RELEASE &&
@@ -227,12 +227,12 @@ ctk_pad_controller_filter_event (GtkEventController *controller,
 }
 
 static gboolean
-ctk_pad_controller_handle_event (GtkEventController *controller,
+ctk_pad_controller_handle_event (CtkEventController *controller,
                                  const GdkEvent     *event)
 {
-  GtkPadController *pad_controller = CTK_PAD_CONTROLLER (controller);
-  const GtkPadActionEntry *entry;
-  GtkPadActionType type;
+  CtkPadController *pad_controller = CTK_PAD_CONTROLLER (controller);
+  const CtkPadActionEntry *entry;
+  CtkPadActionType type;
   gint index, mode;
 
   if (event->type == GDK_PAD_GROUP_MODE)
@@ -282,7 +282,7 @@ ctk_pad_controller_handle_event (GtkEventController *controller,
 }
 
 static void
-ctk_pad_controller_set_pad (GtkPadController *controller,
+ctk_pad_controller_set_pad (CtkPadController *controller,
                             GdkDevice        *pad)
 {
   g_return_if_fail (!pad || GDK_IS_DEVICE (pad));
@@ -297,7 +297,7 @@ ctk_pad_controller_set_property (GObject      *object,
                                  const GValue *value,
                                  GParamSpec   *pspec)
 {
-  GtkPadController *controller = CTK_PAD_CONTROLLER (object);
+  CtkPadController *controller = CTK_PAD_CONTROLLER (object);
 
   switch (prop_id)
     {
@@ -318,7 +318,7 @@ ctk_pad_controller_get_property (GObject    *object,
                                  GValue     *value,
                                  GParamSpec *pspec)
 {
-  GtkPadController *controller = CTK_PAD_CONTROLLER (object);
+  CtkPadController *controller = CTK_PAD_CONTROLLER (object);
 
   switch (prop_id)
     {
@@ -336,7 +336,7 @@ ctk_pad_controller_get_property (GObject    *object,
 static void
 ctk_pad_controller_dispose (GObject *object)
 {
-  GtkPadController *controller = CTK_PAD_CONTROLLER (object);
+  CtkPadController *controller = CTK_PAD_CONTROLLER (object);
 
   g_clear_object (&controller->action_group);
   g_clear_object (&controller->pad);
@@ -347,7 +347,7 @@ ctk_pad_controller_dispose (GObject *object)
 static void
 ctk_pad_controller_finalize (GObject *object)
 {
-  GtkPadController *controller = CTK_PAD_CONTROLLER (object);
+  CtkPadController *controller = CTK_PAD_CONTROLLER (object);
 
   g_list_free_full (controller->entries, (GDestroyNotify) ctk_pad_action_entry_free);
 
@@ -355,10 +355,10 @@ ctk_pad_controller_finalize (GObject *object)
 }
 
 static void
-ctk_pad_controller_class_init (GtkPadControllerClass *klass)
+ctk_pad_controller_class_init (CtkPadControllerClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkEventControllerClass *controller_class = CTK_EVENT_CONTROLLER_CLASS (klass);
+  CtkEventControllerClass *controller_class = CTK_EVENT_CONTROLLER_CLASS (klass);
 
   controller_class->filter_event = ctk_pad_controller_filter_event;
   controller_class->handle_event = ctk_pad_controller_handle_event;
@@ -385,32 +385,32 @@ ctk_pad_controller_class_init (GtkPadControllerClass *klass)
 }
 
 static void
-ctk_pad_controller_init (GtkPadController *controller)
+ctk_pad_controller_init (CtkPadController *controller)
 {
 }
 
 /**
  * ctk_pad_controller_new:
- * @window: a #GtkWindow
+ * @window: a #CtkWindow
  * @group: #GActionGroup to trigger actions from
  * @pad: (nullable): A %GDK_SOURCE_TABLET_PAD device, or %NULL to handle all pads
  *
- * Creates a new #GtkPadController that will associate events from @pad to
+ * Creates a new #CtkPadController that will associate events from @pad to
  * actions. A %NULL pad may be provided so the controller manages all pad devices
- * generically, it is discouraged to mix #GtkPadController objects with %NULL
+ * generically, it is discouraged to mix #CtkPadController objects with %NULL
  * and non-%NULL @pad argument on the same @window, as execution order is not
  * guaranteed.
  *
- * The #GtkPadController is created with no mapped actions. In order to map pad
+ * The #CtkPadController is created with no mapped actions. In order to map pad
  * events to actions, use ctk_pad_controller_set_action_entries() or
  * ctk_pad_controller_set_action().
  *
- * Returns: A newly created #GtkPadController
+ * Returns: A newly created #CtkPadController
  *
  * Since: 3.22
  **/
-GtkPadController *
-ctk_pad_controller_new (GtkWindow    *window,
+CtkPadController *
+ctk_pad_controller_new (CtkWindow    *window,
                         GActionGroup *group,
                         GdkDevice    *pad)
 {
@@ -431,7 +431,7 @@ static gint
 entry_compare_func (gconstpointer a,
                     gconstpointer b)
 {
-  const GtkPadActionEntry *entry1 = a, *entry2 = b;
+  const CtkPadActionEntry *entry1 = a, *entry2 = b;
 
   if (entry1->mode > entry2->mode)
     return -1;
@@ -446,10 +446,10 @@ entry_compare_func (gconstpointer a,
 }
 
 static void
-ctk_pad_controller_add_entry (GtkPadController        *controller,
-                              const GtkPadActionEntry *entry)
+ctk_pad_controller_add_entry (CtkPadController        *controller,
+                              const CtkPadActionEntry *entry)
 {
-  GtkPadActionEntry *copy;
+  CtkPadActionEntry *copy;
 
   copy = ctk_pad_action_entry_copy (entry);
   controller->entries = g_list_insert_sorted (controller->entries, copy,
@@ -458,18 +458,18 @@ ctk_pad_controller_add_entry (GtkPadController        *controller,
 
 /**
  * ctk_pad_controller_set_action_entries:
- * @controller: a #GtkPadController
+ * @controller: a #CtkPadController
  * @entries: (array length=n_entries): the action entries to set on @controller
  * @n_entries: the number of elements in @entries
  *
  * This is a convenience function to add a group of action entries on
- * @controller. See #GtkPadActionEntry and ctk_pad_controller_set_action().
+ * @controller. See #CtkPadActionEntry and ctk_pad_controller_set_action().
  *
  * Since: 3.22
  **/
 void
-ctk_pad_controller_set_action_entries (GtkPadController        *controller,
-                                       const GtkPadActionEntry *entries,
+ctk_pad_controller_set_action_entries (CtkPadController        *controller,
+                                       const CtkPadActionEntry *entries,
                                        gint                     n_entries)
 {
   gint i;
@@ -483,7 +483,7 @@ ctk_pad_controller_set_action_entries (GtkPadController        *controller,
 
 /**
  * ctk_pad_controller_set_action:
- * @controller: a #GtkPadController
+ * @controller: a #CtkPadController
  * @type: the type of pad feature that will trigger this action
  * @index: the 0-indexed button/ring/strip number that will trigger this action
  * @mode: the mode that will trigger this action, or -1 for all modes.
@@ -503,14 +503,14 @@ ctk_pad_controller_set_action_entries (GtkPadController        *controller,
  * Since: 3.22
  **/
 void
-ctk_pad_controller_set_action (GtkPadController *controller,
-                               GtkPadActionType  type,
+ctk_pad_controller_set_action (CtkPadController *controller,
+                               CtkPadActionType  type,
                                gint              index,
                                gint              mode,
                                const gchar      *label,
                                const gchar      *action_name)
 {
-  GtkPadActionEntry entry = { type, index, mode,
+  CtkPadActionEntry entry = { type, index, mode,
                               (gchar *) label, (gchar *) action_name };
 
   g_return_if_fail (CTK_IS_PAD_CONTROLLER (controller));

@@ -34,31 +34,31 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_HPANED		   (ctk_hpaned_get_type ())
-#define CTK_HPANED(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_HPANED, GtkHPaned))
-#define CTK_HPANED_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_HPANED, GtkHPanedClass))
+#define CTK_HPANED(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_HPANED, CtkHPaned))
+#define CTK_HPANED_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_HPANED, CtkHPanedClass))
 #define CTK_IS_HPANED(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_HPANED))
 #define CTK_IS_HPANED_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_HPANED))
-#define CTK_HPANED_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_HPANED, GtkHPanedClass))
+#define CTK_HPANED_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_HPANED, CtkHPanedClass))
 
 
-typedef struct _GtkHPaned      GtkHPaned;
-typedef struct _GtkHPanedClass GtkHPanedClass;
+typedef struct _CtkHPaned      CtkHPaned;
+typedef struct _CtkHPanedClass CtkHPanedClass;
 
-struct _GtkHPaned
+struct _CtkHPaned
 {
-  GtkPaned paned;
+  CtkPaned paned;
 };
 
-struct _GtkHPanedClass
+struct _CtkHPanedClass
 {
-  GtkPanedClass parent_class;
+  CtkPanedClass parent_class;
 };
 
 
 GDK_DEPRECATED_IN_3_2
 GType       ctk_hpaned_get_type (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_2_FOR(ctk_paned_new)
-GtkWidget * ctk_hpaned_new      (void);
+CtkWidget * ctk_hpaned_new      (void);
 
 G_END_DECLS
 

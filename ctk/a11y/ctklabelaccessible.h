@@ -27,26 +27,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_LABEL_ACCESSIBLE            (ctk_label_accessible_get_type ())
-#define CTK_LABEL_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_LABEL_ACCESSIBLE, GtkLabelAccessible))
-#define CTK_LABEL_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_LABEL_ACCESSIBLE, GtkLabelAccessibleClass))
+#define CTK_LABEL_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_LABEL_ACCESSIBLE, CtkLabelAccessible))
+#define CTK_LABEL_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_LABEL_ACCESSIBLE, CtkLabelAccessibleClass))
 #define CTK_IS_LABEL_ACCESSIBLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_LABEL_ACCESSIBLE))
 #define CTK_IS_LABEL_ACCESSIBLE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_LABEL_ACCESSIBLE))
-#define CTK_LABEL_ACCESSIBLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_LABEL_ACCESSIBLE, GtkLabelAccessibleClass))
+#define CTK_LABEL_ACCESSIBLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_LABEL_ACCESSIBLE, CtkLabelAccessibleClass))
 
-typedef struct _GtkLabelAccessible        GtkLabelAccessible;
-typedef struct _GtkLabelAccessibleClass   GtkLabelAccessibleClass;
-typedef struct _GtkLabelAccessiblePrivate GtkLabelAccessiblePrivate;
+typedef struct _CtkLabelAccessible        CtkLabelAccessible;
+typedef struct _CtkLabelAccessibleClass   CtkLabelAccessibleClass;
+typedef struct _CtkLabelAccessiblePrivate CtkLabelAccessiblePrivate;
 
-struct _GtkLabelAccessible
+struct _CtkLabelAccessible
 {
-  GtkWidgetAccessible parent;
+  CtkWidgetAccessible parent;
 
-  GtkLabelAccessiblePrivate *priv;
+  CtkLabelAccessiblePrivate *priv;
 };
 
-struct _GtkLabelAccessibleClass
+struct _CtkLabelAccessibleClass
 {
-  GtkWidgetAccessibleClass parent_class;
+  CtkWidgetAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

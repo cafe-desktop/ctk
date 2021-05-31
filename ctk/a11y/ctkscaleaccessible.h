@@ -27,26 +27,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_SCALE_ACCESSIBLE                         (ctk_scale_accessible_get_type ())
-#define CTK_SCALE_ACCESSIBLE(obj)                         (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SCALE_ACCESSIBLE, GtkScaleAccessible))
-#define CTK_SCALE_ACCESSIBLE_CLASS(klass)                       (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SCALE_ACCESSIBLE, GtkScaleAccessibleClass))
+#define CTK_SCALE_ACCESSIBLE(obj)                         (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SCALE_ACCESSIBLE, CtkScaleAccessible))
+#define CTK_SCALE_ACCESSIBLE_CLASS(klass)                       (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SCALE_ACCESSIBLE, CtkScaleAccessibleClass))
 #define CTK_IS_SCALE_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SCALE_ACCESSIBLE))
 #define CTK_IS_SCALE_ACCESSIBLE_CLASS(klass)              (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SCALE_ACCESSIBLE))
-#define CTK_SCALE_ACCESSIBLE_GET_CLASS(obj)             (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SCALE_ACCESSIBLE, GtkScaleAccessibleClass))
+#define CTK_SCALE_ACCESSIBLE_GET_CLASS(obj)             (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SCALE_ACCESSIBLE, CtkScaleAccessibleClass))
 
-typedef struct _GtkScaleAccessible        GtkScaleAccessible;
-typedef struct _GtkScaleAccessibleClass   GtkScaleAccessibleClass;
-typedef struct _GtkScaleAccessiblePrivate GtkScaleAccessiblePrivate;
+typedef struct _CtkScaleAccessible        CtkScaleAccessible;
+typedef struct _CtkScaleAccessibleClass   CtkScaleAccessibleClass;
+typedef struct _CtkScaleAccessiblePrivate CtkScaleAccessiblePrivate;
 
-struct _GtkScaleAccessible
+struct _CtkScaleAccessible
 {
-  GtkRangeAccessible parent;
+  CtkRangeAccessible parent;
 
-  GtkScaleAccessiblePrivate *priv;
+  CtkScaleAccessiblePrivate *priv;
 };
 
-struct _GtkScaleAccessibleClass
+struct _CtkScaleAccessibleClass
 {
-  GtkRangeAccessibleClass parent_class;
+  CtkRangeAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

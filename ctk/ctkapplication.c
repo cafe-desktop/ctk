@@ -47,39 +47,39 @@
 #include "ctkintl.h"
 
 /* NB: please do not add backend-specific GDK headers here.  This should
- * be abstracted via GtkApplicationImpl.
+ * be abstracted via CtkApplicationImpl.
  */
 
 /**
  * SECTION:ctkapplication
- * @title: GtkApplication
+ * @title: CtkApplication
  * @short_description: Application class
  *
- * #GtkApplication is a class that handles many important aspects
+ * #CtkApplication is a class that handles many important aspects
  * of a GTK+ application in a convenient fashion, without enforcing
  * a one-size-fits-all application model.
  *
- * Currently, GtkApplication handles GTK+ initialization, application
+ * Currently, CtkApplication handles GTK+ initialization, application
  * uniqueness, session management, provides some basic scriptability and
  * desktop shell integration by exporting actions and menus and manages a
  * list of toplevel windows whose life-cycle is automatically tied to the
  * life-cycle of your application.
  *
- * While GtkApplication works fine with plain #GtkWindows, it is recommended
- * to use it together with #GtkApplicationWindow.
+ * While CtkApplication works fine with plain #CtkWindows, it is recommended
+ * to use it together with #CtkApplicationWindow.
  *
- * When GDK threads are enabled, GtkApplication will acquire the GDK
+ * When GDK threads are enabled, CtkApplication will acquire the GDK
  * lock when invoking actions that arrive from other processes.  The GDK
  * lock is not touched for local action invocations.  In order to have
  * actions invoked in a predictable context it is therefore recommended
  * that the GDK lock be held while invoking actions locally with
  * g_action_group_activate_action().  The same applies to actions
- * associated with #GtkApplicationWindow and to the “activate” and
+ * associated with #CtkApplicationWindow and to the “activate” and
  * “open” #GApplication methods.
  *
  * ## Automatic resources ## {#automatic-resources}
  *
- * #GtkApplication will automatically load menus from the #GtkBuilder
+ * #CtkApplication will automatically load menus from the #CtkBuilder
  * resource located at "ctk/menus.ui", relative to the application's
  * resource base path (see g_application_set_resource_base_path()).  The
  * menu with the ID "app-menu" is taken as the application's app menu
@@ -98,16 +98,16 @@
  * It is also possible to provide the menus manually using
  * ctk_application_set_app_menu() and ctk_application_set_menubar().
  *
- * #GtkApplication will also automatically setup an icon search path for
+ * #CtkApplication will also automatically setup an icon search path for
  * the default icon theme by appending "icons" to the resource base
  * path.  This allows your application to easily store its icons as
  * resources.  See ctk_icon_theme_add_resource_path() for more
  * information.
  *
  * If there is a resource located at "ctk/help-overlay.ui" which
- * defines a #GtkShortcutsWindow with ID "help_overlay" then GtkApplication
+ * defines a #CtkShortcutsWindow with ID "help_overlay" then CtkApplication
  * associates an instance of this shortcuts window with each
- * #GtkApplicationWindow and sets up keyboard accelerators (Control-F1
+ * #CtkApplicationWindow and sets up keyboard accelerators (Control-F1
  * and Control-?) to open it. To create a menu item that displays the
  * shortcuts window, associate the item with the action win.show-help-overlay.
  *
@@ -115,8 +115,8 @@
  *
  * [A simple example](https://git.gnome.org/browse/ctk+/tree/examples/bp/bloatpad.c)
  *
- * GtkApplication optionally registers with a session manager
- * of the users session (if you set the #GtkApplication:register-session
+ * CtkApplication optionally registers with a session manager
+ * of the users session (if you set the #CtkApplication:register-session
  * property) and offers various functionality related to the session
  * life-cycle.
  *
@@ -129,7 +129,7 @@
  * session while inhibitors are present.
  *
  * ## See Also ## {#seealso}
- * [HowDoI: Using GtkApplication](https://wiki.gnome.org/HowDoI/GtkApplication),
+ * [HowDoI: Using CtkApplication](https://wiki.gnome.org/HowDoI/CtkApplication),
  * [Getting Started with GTK+: Basics](https://developer.gnome.org/ctk3/stable/ctk-getting-started.html#id-1.2.3.3)
  */
 
@@ -154,10 +154,10 @@ enum {
 
 static GParamSpec *ctk_application_props[NUM_PROPERTIES];
 
-struct _GtkApplicationPrivate
+struct _CtkApplicationPrivate
 {
-  GtkApplicationImpl *impl;
-  GtkApplicationAccels *accels;
+  CtkApplicationImpl *impl;
+  CtkApplicationAccels *accels;
 
   GList *windows;
 
@@ -167,20 +167,20 @@ struct _GtkApplicationPrivate
 
   gboolean         register_session;
   gboolean         screensaver_active;
-  GtkActionMuxer  *muxer;
-  GtkBuilder      *menus_builder;
+  CtkActionMuxer  *muxer;
+  CtkBuilder      *menus_builder;
   gchar           *help_overlay_path;
   guint            profiler_id;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkApplication, ctk_application, G_TYPE_APPLICATION)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkApplication, ctk_application, G_TYPE_APPLICATION)
 
 static gboolean
-ctk_application_focus_in_event_cb (GtkWindow      *window,
+ctk_application_focus_in_event_cb (CtkWindow      *window,
                                    GdkEventFocus  *event,
-                                   GtkApplication *application)
+                                   CtkApplication *application)
 {
-  GtkApplicationPrivate *priv = application->priv;
+  CtkApplicationPrivate *priv = application->priv;
   GList *link;
 
   /* Keep the window list sorted by most-recently-focused. */
@@ -200,7 +200,7 @@ ctk_application_focus_in_event_cb (GtkWindow      *window,
 }
 
 static void
-ctk_application_load_resources (GtkApplication *application)
+ctk_application_load_resources (CtkApplication *application)
 {
   const gchar *base_path;
 
@@ -211,7 +211,7 @@ ctk_application_load_resources (GtkApplication *application)
 
   /* Expand the icon search path */
   {
-    GtkIconTheme *default_theme;
+    CtkIconTheme *default_theme;
     gchar *iconspath;
 
     default_theme = ctk_icon_theme_get_default ();
@@ -295,7 +295,7 @@ ctk_application_load_resources (GtkApplication *application)
 static void
 ctk_application_startup (GApplication *g_application)
 {
-  GtkApplication *application = CTK_APPLICATION (g_application);
+  CtkApplication *application = CTK_APPLICATION (g_application);
 
   G_APPLICATION_CLASS (ctk_application_parent_class)->startup (g_application);
 
@@ -312,7 +312,7 @@ ctk_application_startup (GApplication *g_application)
 static void
 ctk_application_shutdown (GApplication *g_application)
 {
-  GtkApplication *application = CTK_APPLICATION (g_application);
+  CtkApplication *application = CTK_APPLICATION (g_application);
 
   if (application->priv->impl == NULL)
     return;
@@ -365,7 +365,7 @@ static void
 ctk_application_before_emit (GApplication *g_application,
                              GVariant     *platform_data)
 {
-  GtkApplication *application = CTK_APPLICATION (g_application);
+  CtkApplication *application = CTK_APPLICATION (g_application);
 
   gdk_threads_enter ();
 
@@ -392,7 +392,7 @@ ctk_application_after_emit (GApplication *application,
 }
 
 static void
-ctk_application_init (GtkApplication *application)
+ctk_application_init (CtkApplication *application)
 {
   application->priv = ctk_application_get_instance_private (application);
 
@@ -405,18 +405,18 @@ ctk_application_init (GtkApplication *application)
 }
 
 static void
-ctk_application_window_added (GtkApplication *application,
-                              GtkWindow      *window)
+ctk_application_window_added (CtkApplication *application,
+                              CtkWindow      *window)
 {
-  GtkApplicationPrivate *priv = application->priv;
+  CtkApplicationPrivate *priv = application->priv;
 
   if (CTK_IS_APPLICATION_WINDOW (window))
     {
       ctk_application_window_set_id (CTK_APPLICATION_WINDOW (window), ++priv->last_window_id);
       if (priv->help_overlay_path)
         {
-          GtkBuilder *builder;
-          GtkWidget *help_overlay;
+          CtkBuilder *builder;
+          CtkWidget *help_overlay;
 
           builder = ctk_builder_new_from_resource (priv->help_overlay_path);
           help_overlay = CTK_WIDGET (ctk_builder_get_object (builder, "help_overlay"));
@@ -443,10 +443,10 @@ ctk_application_window_added (GtkApplication *application,
 }
 
 static void
-ctk_application_window_removed (GtkApplication *application,
-                                GtkWindow      *window)
+ctk_application_window_removed (CtkApplication *application,
+                                CtkWindow      *window)
 {
-  GtkApplicationPrivate *priv = application->priv;
+  CtkApplicationPrivate *priv = application->priv;
   gpointer old_active;
 
   old_active = priv->windows;
@@ -472,7 +472,7 @@ ctk_application_window_removed (GtkApplication *application,
 static void
 extract_accel_from_menu_item (GMenuModel     *model,
                               gint            item,
-                              GtkApplication *app)
+                              CtkApplication *app)
 {
   GMenuAttributeIter *iter;
   const gchar *key;
@@ -510,7 +510,7 @@ extract_accel_from_menu_item (GMenuModel     *model,
 
 static void
 extract_accels_from_menu (GMenuModel     *model,
-                          GtkApplication *app)
+                          CtkApplication *app)
 {
   gint i;
 
@@ -537,7 +537,7 @@ ctk_application_get_property (GObject    *object,
                               GValue     *value,
                               GParamSpec *pspec)
 {
-  GtkApplication *application = CTK_APPLICATION (object);
+  CtkApplication *application = CTK_APPLICATION (object);
 
   switch (prop_id)
     {
@@ -573,7 +573,7 @@ ctk_application_set_property (GObject      *object,
                               const GValue *value,
                               GParamSpec   *pspec)
 {
-  GtkApplication *application = CTK_APPLICATION (object);
+  CtkApplication *application = CTK_APPLICATION (object);
 
   switch (prop_id)
     {
@@ -598,7 +598,7 @@ ctk_application_set_property (GObject      *object,
 static void
 ctk_application_finalize (GObject *object)
 {
-  GtkApplication *application = CTK_APPLICATION (object);
+  CtkApplication *application = CTK_APPLICATION (object);
 
   g_clear_object (&application->priv->menus_builder);
   g_clear_object (&application->priv->app_menu);
@@ -697,7 +697,7 @@ ctk_application_dbus_register (GApplication     *application,
                                const char       *obect_path,
                                GError          **error)
 {
-  GtkApplicationPrivate *priv = ctk_application_get_instance_private (CTK_APPLICATION (application));
+  CtkApplicationPrivate *priv = ctk_application_get_instance_private (CTK_APPLICATION (application));
   GDBusInterfaceVTable vtable = {
     sysprof_profiler_method_call,
     NULL,
@@ -733,7 +733,7 @@ ctk_application_dbus_unregister (GApplication     *application,
                                  GDBusConnection  *connection,
                                  const char       *obect_path)
 {
-  GtkApplicationPrivate *priv = ctk_application_get_instance_private (CTK_APPLICATION (application));
+  CtkApplicationPrivate *priv = ctk_application_get_instance_private (CTK_APPLICATION (application));
 
   g_dbus_connection_unregister_object (connection, priv->profiler_id);
 }
@@ -759,7 +759,7 @@ ctk_application_dbus_unregister (GApplication     *application,
 #endif
 
 static void
-ctk_application_class_init (GtkApplicationClass *class)
+ctk_application_class_init (CtkApplicationClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
   GApplicationClass *application_class = G_APPLICATION_CLASS (class);
@@ -781,28 +781,28 @@ ctk_application_class_init (GtkApplicationClass *class)
   class->window_removed = ctk_application_window_removed;
 
   /**
-   * GtkApplication::window-added:
-   * @application: the #GtkApplication which emitted the signal
-   * @window: the newly-added #GtkWindow
+   * CtkApplication::window-added:
+   * @application: the #CtkApplication which emitted the signal
+   * @window: the newly-added #CtkWindow
    *
-   * Emitted when a #GtkWindow is added to @application through
+   * Emitted when a #CtkWindow is added to @application through
    * ctk_application_add_window().
    *
    * Since: 3.2
    */
   ctk_application_signals[WINDOW_ADDED] =
     g_signal_new (I_("window-added"), CTK_TYPE_APPLICATION, G_SIGNAL_RUN_FIRST,
-                  G_STRUCT_OFFSET (GtkApplicationClass, window_added),
+                  G_STRUCT_OFFSET (CtkApplicationClass, window_added),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 1, CTK_TYPE_WINDOW);
 
   /**
-   * GtkApplication::window-removed:
-   * @application: the #GtkApplication which emitted the signal
-   * @window: the #GtkWindow that is being removed
+   * CtkApplication::window-removed:
+   * @application: the #CtkApplication which emitted the signal
+   * @window: the #CtkWindow that is being removed
    *
-   * Emitted when a #GtkWindow is removed from @application,
+   * Emitted when a #CtkWindow is removed from @application,
    * either as a side-effect of being destroyed or explicitly
    * through ctk_application_remove_window().
    *
@@ -810,17 +810,17 @@ ctk_application_class_init (GtkApplicationClass *class)
    */
   ctk_application_signals[WINDOW_REMOVED] =
     g_signal_new (I_("window-removed"), CTK_TYPE_APPLICATION, G_SIGNAL_RUN_FIRST,
-                  G_STRUCT_OFFSET (GtkApplicationClass, window_removed),
+                  G_STRUCT_OFFSET (CtkApplicationClass, window_removed),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 1, CTK_TYPE_WINDOW);
 
   /**
-   * GtkApplication::query-end:
-   * @application: the #GtkApplication which emitted the signal
+   * CtkApplication::query-end:
+   * @application: the #CtkApplication which emitted the signal
    *
    * Emitted when the session manager is about to end the session, only
-   * if #GtkApplication::register-session is %TRUE. Applications can
+   * if #CtkApplication::register-session is %TRUE. Applications can
    * connect to this signal and call ctk_application_inhibit() with
    * %CTK_APPLICATION_INHIBIT_LOGOUT to delay the end of the session
    * until state has been saved.
@@ -834,7 +834,7 @@ ctk_application_class_init (GtkApplicationClass *class)
                   NULL,
                   G_TYPE_NONE, 0);
   /**
-   * GtkApplication:register-session:
+   * CtkApplication:register-session:
    *
    * Set this property to %TRUE to register with the session manager.
    *
@@ -848,11 +848,11 @@ ctk_application_class_init (GtkApplicationClass *class)
                           G_PARAM_READWRITE|G_PARAM_STATIC_STRINGS);
 
   /**
-   * GtkApplication:screensaver-active:
+   * CtkApplication:screensaver-active:
    *
    * This property is %TRUE if GTK+ believes that the screensaver is
    * currently active. GTK+ only tracks session state (including this)
-   * when #GtkApplication::register-session is set to %TRUE.
+   * when #CtkApplication::register-session is set to %TRUE.
    *
    * Tracking the screensaver state is supported on Linux.
    *
@@ -894,14 +894,14 @@ ctk_application_class_init (GtkApplicationClass *class)
  * @application_id: (allow-none): The application ID.
  * @flags: the application flags
  *
- * Creates a new #GtkApplication instance.
+ * Creates a new #CtkApplication instance.
  *
- * When using #GtkApplication, it is not necessary to call ctk_init()
+ * When using #CtkApplication, it is not necessary to call ctk_init()
  * manually. It is called as soon as the application gets registered as
  * the primary instance.
  *
  * Concretely, ctk_init() is called in the default handler for the
- * #GApplication::startup signal. Therefore, #GtkApplication subclasses should
+ * #GApplication::startup signal. Therefore, #CtkApplication subclasses should
  * chain up in their #GApplication::startup handler before using any GTK+ API.
  *
  * Note that commandline arguments are not passed to ctk_init().
@@ -919,11 +919,11 @@ ctk_application_class_init (GtkApplicationClass *class)
  * uniqueness) will be disabled. A null application ID is only allowed with 
  * GTK+ 3.6 or later.
  *
- * Returns: a new #GtkApplication instance
+ * Returns: a new #CtkApplication instance
  *
  * Since: 3.0
  */
-GtkApplication *
+CtkApplication *
 ctk_application_new (const gchar       *application_id,
                      GApplicationFlags  flags)
 {
@@ -937,8 +937,8 @@ ctk_application_new (const gchar       *application_id,
 
 /**
  * ctk_application_add_window:
- * @application: a #GtkApplication
- * @window: a #GtkWindow
+ * @application: a #CtkApplication
+ * @window: a #CtkWindow
  *
  * Adds a window to @application.
  *
@@ -946,7 +946,7 @@ ctk_application_new (const gchar       *application_id,
  * typically, you should add new application windows in response
  * to the emission of the #GApplication::activate signal.
  *
- * This call is equivalent to setting the #GtkWindow:application
+ * This call is equivalent to setting the #CtkWindow:application
  * property of @window to @application.
  *
  * Normally, the connection between the application and the window
@@ -959,8 +959,8 @@ ctk_application_new (const gchar       *application_id,
  * Since: 3.0
  **/
 void
-ctk_application_add_window (GtkApplication *application,
-                            GtkWindow      *window)
+ctk_application_add_window (CtkApplication *application,
+                            CtkWindow      *window)
 {
   g_return_if_fail (CTK_IS_APPLICATION (application));
   g_return_if_fail (CTK_IS_WINDOW (window));
@@ -979,13 +979,13 @@ ctk_application_add_window (GtkApplication *application,
 
 /**
  * ctk_application_remove_window:
- * @application: a #GtkApplication
- * @window: a #GtkWindow
+ * @application: a #CtkApplication
+ * @window: a #CtkWindow
  *
  * Remove a window from @application.
  *
  * If @window belongs to @application then this call is equivalent to
- * setting the #GtkWindow:application property of @window to
+ * setting the #CtkWindow:application property of @window to
  * %NULL.
  *
  * The application may stop running as a result of a call to this
@@ -994,8 +994,8 @@ ctk_application_add_window (GtkApplication *application,
  * Since: 3.0
  **/
 void
-ctk_application_remove_window (GtkApplication *application,
-                               GtkWindow      *window)
+ctk_application_remove_window (CtkApplication *application,
+                               CtkWindow      *window)
 {
   g_return_if_fail (CTK_IS_APPLICATION (application));
   g_return_if_fail (CTK_IS_WINDOW (window));
@@ -1007,9 +1007,9 @@ ctk_application_remove_window (GtkApplication *application,
 
 /**
  * ctk_application_get_windows:
- * @application: a #GtkApplication
+ * @application: a #CtkApplication
  *
- * Gets a list of the #GtkWindows associated with @application.
+ * Gets a list of the #CtkWindows associated with @application.
  *
  * The list is sorted by most recently focused window, such that the first
  * element is the currently focused window. (Useful for choosing a parent
@@ -1019,12 +1019,12 @@ ctk_application_remove_window (GtkApplication *application,
  * only remain valid until the next focus change or window creation or
  * deletion.
  *
- * Returns: (element-type GtkWindow) (transfer none): a #GList of #GtkWindow
+ * Returns: (element-type CtkWindow) (transfer none): a #GList of #CtkWindow
  *
  * Since: 3.0
  **/
 GList *
-ctk_application_get_windows (GtkApplication *application)
+ctk_application_get_windows (CtkApplication *application)
 {
   g_return_val_if_fail (CTK_IS_APPLICATION (application), NULL);
 
@@ -1033,12 +1033,12 @@ ctk_application_get_windows (GtkApplication *application)
 
 /**
  * ctk_application_get_window_by_id:
- * @application: a #GtkApplication
+ * @application: a #CtkApplication
  * @id: an identifier number
  *
- * Returns the #GtkApplicationWindow with the given ID.
+ * Returns the #CtkApplicationWindow with the given ID.
  *
- * The ID of a #GtkApplicationWindow can be retrieved with
+ * The ID of a #CtkApplicationWindow can be retrieved with
  * ctk_application_window_get_id().
  *
  * Returns: (nullable) (transfer none): the window with ID @id, or
@@ -1046,8 +1046,8 @@ ctk_application_get_windows (GtkApplication *application)
  *
  * Since: 3.6
  */
-GtkWindow *
-ctk_application_get_window_by_id (GtkApplication *application,
+CtkWindow *
+ctk_application_get_window_by_id (CtkApplication *application,
                                   guint           id)
 {
   GList *l;
@@ -1066,7 +1066,7 @@ ctk_application_get_window_by_id (GtkApplication *application,
 
 /**
  * ctk_application_get_active_window:
- * @application: a #GtkApplication
+ * @application: a #CtkApplication
  *
  * Gets the “active” window for the application.
  *
@@ -1080,8 +1080,8 @@ ctk_application_get_window_by_id (GtkApplication *application,
  *
  * Since: 3.6
  **/
-GtkWindow *
-ctk_application_get_active_window (GtkApplication *application)
+CtkWindow *
+ctk_application_get_active_window (CtkApplication *application)
 {
   g_return_val_if_fail (CTK_IS_APPLICATION (application), NULL);
 
@@ -1089,7 +1089,7 @@ ctk_application_get_active_window (GtkApplication *application)
 }
 
 static void
-ctk_application_update_accels (GtkApplication *application)
+ctk_application_update_accels (CtkApplication *application)
 {
   GList *l;
 
@@ -1099,7 +1099,7 @@ ctk_application_update_accels (GtkApplication *application)
 
 /**
  * ctk_application_add_accelerator:
- * @application: a #GtkApplication
+ * @application: a #CtkApplication
  * @accelerator: accelerator string
  * @action_name: the name of the action to activate
  * @parameter: (allow-none): parameter to pass when activating the action,
@@ -1117,7 +1117,7 @@ ctk_application_update_accels (GtkApplication *application)
  * are referred to with an “app.” prefix, and window-specific actions
  * with a “win.” prefix.
  *
- * GtkApplication also extracts accelerators out of “accel” attributes
+ * CtkApplication also extracts accelerators out of “accel” attributes
  * in the #GMenuModels passed to ctk_application_set_app_menu() and
  * ctk_application_set_menubar(), which is usually more convenient
  * than calling this function for each accelerator.
@@ -1127,7 +1127,7 @@ ctk_application_update_accels (GtkApplication *application)
  * Deprecated: 3.14: Use ctk_application_set_accels_for_action() instead
  */
 void
-ctk_application_add_accelerator (GtkApplication *application,
+ctk_application_add_accelerator (CtkApplication *application,
                                  const gchar    *accelerator,
                                  const gchar    *action_name,
                                  GVariant       *parameter)
@@ -1146,7 +1146,7 @@ ctk_application_add_accelerator (GtkApplication *application,
 
 /**
  * ctk_application_remove_accelerator:
- * @application: a #GtkApplication
+ * @application: a #CtkApplication
  * @action_name: the name of the action to activate
  * @parameter: (allow-none): parameter to pass when activating the action,
  *   or %NULL if the action does not accept an activation parameter
@@ -1159,7 +1159,7 @@ ctk_application_add_accelerator (GtkApplication *application,
  * Deprecated: 3.14: Use ctk_application_set_accels_for_action() instead
  */
 void
-ctk_application_remove_accelerator (GtkApplication *application,
+ctk_application_remove_accelerator (CtkApplication *application,
                                     const gchar    *action_name,
                                     GVariant       *parameter)
 {
@@ -1176,7 +1176,7 @@ ctk_application_remove_accelerator (GtkApplication *application,
 
 /**
  * ctk_application_prefers_app_menu:
- * @application: a #GtkApplication
+ * @application: a #CtkApplication
  *
  * Determines if the desktop environment in which the application is
  * running would prefer an application menu be shown.
@@ -1218,7 +1218,7 @@ ctk_application_remove_accelerator (GtkApplication *application,
  * Since: 3.14
  **/
 gboolean
-ctk_application_prefers_app_menu (GtkApplication *application)
+ctk_application_prefers_app_menu (CtkApplication *application)
 {
   g_return_val_if_fail (CTK_IS_APPLICATION (application), FALSE);
   g_return_val_if_fail (application->priv->impl != NULL, FALSE);
@@ -1228,7 +1228,7 @@ ctk_application_prefers_app_menu (GtkApplication *application)
 
 /**
  * ctk_application_set_app_menu:
- * @application: a #GtkApplication
+ * @application: a #CtkApplication
  * @app_menu: (allow-none): a #GMenuModel, or %NULL
  *
  * Sets or unsets the application menu for @application.
@@ -1252,7 +1252,7 @@ ctk_application_prefers_app_menu (GtkApplication *application)
  * Since: 3.4
  */
 void
-ctk_application_set_app_menu (GtkApplication *application,
+ctk_application_set_app_menu (CtkApplication *application,
                               GMenuModel     *app_menu)
 {
   g_return_if_fail (CTK_IS_APPLICATION (application));
@@ -1273,7 +1273,7 @@ ctk_application_set_app_menu (GtkApplication *application,
 
 /**
  * ctk_application_get_app_menu:
- * @application: a #GtkApplication
+ * @application: a #CtkApplication
  *
  * Returns the menu model that has been set with
  * ctk_application_set_app_menu().
@@ -1284,7 +1284,7 @@ ctk_application_set_app_menu (GtkApplication *application,
  * Since: 3.4
  */
 GMenuModel *
-ctk_application_get_app_menu (GtkApplication *application)
+ctk_application_get_app_menu (CtkApplication *application)
 {
   g_return_val_if_fail (CTK_IS_APPLICATION (application), NULL);
 
@@ -1293,7 +1293,7 @@ ctk_application_get_app_menu (GtkApplication *application)
 
 /**
  * ctk_application_set_menubar:
- * @application: a #GtkApplication
+ * @application: a #CtkApplication
  * @menubar: (allow-none): a #GMenuModel, or %NULL
  *
  * Sets or unsets the menubar for windows of @application.
@@ -1318,7 +1318,7 @@ ctk_application_get_app_menu (GtkApplication *application)
  * Since: 3.4
  */
 void
-ctk_application_set_menubar (GtkApplication *application,
+ctk_application_set_menubar (CtkApplication *application,
                              GMenuModel     *menubar)
 {
   g_return_if_fail (CTK_IS_APPLICATION (application));
@@ -1339,7 +1339,7 @@ ctk_application_set_menubar (GtkApplication *application,
 
 /**
  * ctk_application_get_menubar:
- * @application: a #GtkApplication
+ * @application: a #CtkApplication
  *
  * Returns the menu model that has been set with
  * ctk_application_set_menubar().
@@ -1349,7 +1349,7 @@ ctk_application_set_menubar (GtkApplication *application,
  * Since: 3.4
  */
 GMenuModel *
-ctk_application_get_menubar (GtkApplication *application)
+ctk_application_get_menubar (CtkApplication *application)
 {
   g_return_val_if_fail (CTK_IS_APPLICATION (application), NULL);
 
@@ -1357,7 +1357,7 @@ ctk_application_get_menubar (GtkApplication *application)
 }
 
 /**
- * GtkApplicationInhibitFlags:
+ * CtkApplicationInhibitFlags:
  * @CTK_APPLICATION_INHIBIT_LOGOUT: Inhibit ending the user session
  *     by logging out or by shutting down the computer
  * @CTK_APPLICATION_INHIBIT_SWITCH: Inhibit user switching
@@ -1373,8 +1373,8 @@ ctk_application_get_menubar (GtkApplication *application)
 
 /**
  * ctk_application_inhibit:
- * @application: the #GtkApplication
- * @window: (allow-none): a #GtkWindow, or %NULL
+ * @application: the #CtkApplication
+ * @window: (allow-none): a #CtkWindow, or %NULL
  * @flags: what types of actions should be inhibited
  * @reason: (allow-none): a short, human-readable string that explains
  *     why these operations are inhibited
@@ -1409,9 +1409,9 @@ ctk_application_get_menubar (GtkApplication *application)
  * Since: 3.4
  */
 guint
-ctk_application_inhibit (GtkApplication             *application,
-                         GtkWindow                  *window,
-                         GtkApplicationInhibitFlags  flags,
+ctk_application_inhibit (CtkApplication             *application,
+                         CtkWindow                  *window,
+                         CtkApplicationInhibitFlags  flags,
                          const gchar                *reason)
 {
   g_return_val_if_fail (CTK_IS_APPLICATION (application), 0);
@@ -1423,7 +1423,7 @@ ctk_application_inhibit (GtkApplication             *application,
 
 /**
  * ctk_application_uninhibit:
- * @application: the #GtkApplication
+ * @application: the #CtkApplication
  * @cookie: a cookie that was returned by ctk_application_inhibit()
  *
  * Removes an inhibitor that has been established with ctk_application_inhibit().
@@ -1432,7 +1432,7 @@ ctk_application_inhibit (GtkApplication             *application,
  * Since: 3.4
  */
 void
-ctk_application_uninhibit (GtkApplication *application,
+ctk_application_uninhibit (CtkApplication *application,
                            guint           cookie)
 {
   g_return_if_fail (CTK_IS_APPLICATION (application));
@@ -1444,7 +1444,7 @@ ctk_application_uninhibit (GtkApplication *application,
 
 /**
  * ctk_application_is_inhibited:
- * @application: the #GtkApplication
+ * @application: the #CtkApplication
  * @flags: what types of actions should be queried
  *
  * Determines if any of the actions specified in @flags are
@@ -1458,8 +1458,8 @@ ctk_application_uninhibit (GtkApplication *application,
  * Since: 3.4
  */
 gboolean
-ctk_application_is_inhibited (GtkApplication             *application,
-                              GtkApplicationInhibitFlags  flags)
+ctk_application_is_inhibited (CtkApplication             *application,
+                              CtkApplicationInhibitFlags  flags)
 {
   g_return_val_if_fail (CTK_IS_APPLICATION (application), FALSE);
   g_return_val_if_fail (!g_application_get_is_remote (G_APPLICATION (application)), FALSE);
@@ -1467,10 +1467,10 @@ ctk_application_is_inhibited (GtkApplication             *application,
   return ctk_application_impl_is_inhibited (application->priv->impl, flags);
 }
 
-GtkActionMuxer *
-ctk_application_get_parent_muxer_for_window (GtkWindow *window)
+CtkActionMuxer *
+ctk_application_get_parent_muxer_for_window (CtkWindow *window)
 {
-  GtkApplication *application;
+  CtkApplication *application;
 
   application = ctk_window_get_application (window);
 
@@ -1480,15 +1480,15 @@ ctk_application_get_parent_muxer_for_window (GtkWindow *window)
   return application->priv->muxer;
 }
 
-GtkApplicationAccels *
-ctk_application_get_application_accels (GtkApplication *application)
+CtkApplicationAccels *
+ctk_application_get_application_accels (CtkApplication *application)
 {
   return application->priv->accels;
 }
 
 /**
  * ctk_application_list_action_descriptions:
- * @application: a #GtkApplication
+ * @application: a #CtkApplication
  *
  * Lists the detailed action names which have associated accelerators.
  * See ctk_application_set_accels_for_action().
@@ -1499,7 +1499,7 @@ ctk_application_get_application_accels (GtkApplication *application)
  * Since: 3.12
  */
 gchar **
-ctk_application_list_action_descriptions (GtkApplication *application)
+ctk_application_list_action_descriptions (CtkApplication *application)
 {
   g_return_val_if_fail (CTK_IS_APPLICATION (application), NULL);
 
@@ -1508,7 +1508,7 @@ ctk_application_list_action_descriptions (GtkApplication *application)
 
 /**
  * ctk_application_set_accels_for_action:
- * @application: a #GtkApplication
+ * @application: a #CtkApplication
  * @detailed_action_name: a detailed action name, specifying an action
  *     and target to associate accelerators with
  * @accels: (array zero-terminated=1): a list of accelerators in the format
@@ -1527,7 +1527,7 @@ ctk_application_list_action_descriptions (GtkApplication *application)
  * Since: 3.12
  */
 void
-ctk_application_set_accels_for_action (GtkApplication      *application,
+ctk_application_set_accels_for_action (CtkApplication      *application,
                                        const gchar         *detailed_action_name,
                                        const gchar * const *accels)
 {
@@ -1550,7 +1550,7 @@ ctk_application_set_accels_for_action (GtkApplication      *application,
 
 /**
  * ctk_application_get_accels_for_action:
- * @application: a #GtkApplication
+ * @application: a #CtkApplication
  * @detailed_action_name: a detailed action name, specifying an action
  *     and target to obtain accelerators for
  *
@@ -1563,7 +1563,7 @@ ctk_application_set_accels_for_action (GtkApplication      *application,
  * Since: 3.12
  */
 gchar **
-ctk_application_get_accels_for_action (GtkApplication *application,
+ctk_application_get_accels_for_action (CtkApplication *application,
                                        const gchar    *detailed_action_name)
 {
   g_return_val_if_fail (CTK_IS_APPLICATION (application), NULL);
@@ -1575,7 +1575,7 @@ ctk_application_get_accels_for_action (GtkApplication *application,
 
 /**
  * ctk_application_get_actions_for_accel:
- * @application: a #GtkApplication
+ * @application: a #CtkApplication
  * @accel: an accelerator that can be parsed by ctk_accelerator_parse()
  *
  * Returns the list of actions (possibly empty) that @accel maps to.
@@ -1599,7 +1599,7 @@ ctk_application_get_accels_for_action (GtkApplication *application,
  * Since: 3.14
  */
 gchar **
-ctk_application_get_actions_for_accel (GtkApplication *application,
+ctk_application_get_actions_for_accel (CtkApplication *application,
                                        const gchar    *accel)
 {
   g_return_val_if_fail (CTK_IS_APPLICATION (application), NULL);
@@ -1608,8 +1608,8 @@ ctk_application_get_actions_for_accel (GtkApplication *application,
   return ctk_application_accels_get_actions_for_accel (application->priv->accels, accel);
 }
 
-GtkActionMuxer *
-ctk_application_get_action_muxer (GtkApplication *application)
+CtkActionMuxer *
+ctk_application_get_action_muxer (CtkApplication *application)
 {
   g_assert (application->priv->muxer);
 
@@ -1617,7 +1617,7 @@ ctk_application_get_action_muxer (GtkApplication *application)
 }
 
 void
-ctk_application_insert_action_group (GtkApplication *application,
+ctk_application_insert_action_group (CtkApplication *application,
                                      const gchar    *name,
                                      GActionGroup   *action_group)
 {
@@ -1625,16 +1625,16 @@ ctk_application_insert_action_group (GtkApplication *application,
 }
 
 void
-ctk_application_handle_window_realize (GtkApplication *application,
-                                       GtkWindow      *window)
+ctk_application_handle_window_realize (CtkApplication *application,
+                                       CtkWindow      *window)
 {
   if (application->priv->impl)
     ctk_application_impl_handle_window_realize (application->priv->impl, window);
 }
 
 void
-ctk_application_handle_window_map (GtkApplication *application,
-                                   GtkWindow      *window)
+ctk_application_handle_window_map (CtkApplication *application,
+                                   CtkWindow      *window)
 {
   if (application->priv->impl)
     ctk_application_impl_handle_window_map (application->priv->impl, window);
@@ -1642,7 +1642,7 @@ ctk_application_handle_window_map (GtkApplication *application,
 
 /**
  * ctk_application_get_menu_by_id:
- * @application: a #GtkApplication
+ * @application: a #CtkApplication
  * @id: the id of the menu to look up
  *
  * Gets a menu from automatically loaded resources.
@@ -1655,7 +1655,7 @@ ctk_application_handle_window_map (GtkApplication *application,
  * Since: 3.14
  */
 GMenu *
-ctk_application_get_menu_by_id (GtkApplication *application,
+ctk_application_get_menu_by_id (CtkApplication *application,
                                 const gchar    *id)
 {
   GObject *object;
@@ -1675,10 +1675,10 @@ ctk_application_get_menu_by_id (GtkApplication *application,
 }
 
 void
-ctk_application_set_screensaver_active (GtkApplication *application,
+ctk_application_set_screensaver_active (CtkApplication *application,
                                         gboolean        active)
 {
-  GtkApplicationPrivate *priv = ctk_application_get_instance_private (application);
+  CtkApplicationPrivate *priv = ctk_application_get_instance_private (application);
 
   if (priv->screensaver_active != active)
     {

@@ -34,18 +34,18 @@
 
 /**
  * SECTION:ctkcellview
- * @Short_description: A widget displaying a single row of a GtkTreeModel
- * @Title: GtkCellView
+ * @Short_description: A widget displaying a single row of a CtkTreeModel
+ * @Title: CtkCellView
  *
- * A #GtkCellView displays a single row of a #GtkTreeModel using a #GtkCellArea
- * and #GtkCellAreaContext. A #GtkCellAreaContext can be provided to the 
- * #GtkCellView at construction time in order to keep the cellview in context
+ * A #CtkCellView displays a single row of a #CtkTreeModel using a #CtkCellArea
+ * and #CtkCellAreaContext. A #CtkCellAreaContext can be provided to the 
+ * #CtkCellView at construction time in order to keep the cellview in context
  * of a group of cell views, this ensures that the renderers displayed will
  * be properly aligned with eachother (like the aligned cells in the menus
- * of #GtkComboBox).
+ * of #CtkComboBox).
  *
- * #GtkCellView is #GtkOrientable in order to decide in which orientation
- * the underlying #GtkCellAreaContext should be allocated. Taking the #GtkComboBox
+ * #CtkCellView is #CtkOrientable in order to decide in which orientation
+ * the underlying #CtkCellAreaContext should be allocated. Taking the #CtkComboBox
  * menu as an example, cellviews should be oriented horizontally if the menus are
  * listed top-to-bottom and thus all share the same width but may have separate
  * individual heights (left-to-right menus should be allocated vertically since
@@ -53,7 +53,7 @@
  *
  * # CSS nodes
  *
- * GtkCellView has a single CSS node with name cellview.
+ * CtkCellView has a single CSS node with name cellview.
  */
 
 static void        ctk_cell_view_constructed              (GObject          *object);
@@ -67,73 +67,73 @@ static void        ctk_cell_view_set_property             (GObject          *obj
                                                            GParamSpec       *pspec);
 static void        ctk_cell_view_finalize                 (GObject          *object);
 static void        ctk_cell_view_dispose                  (GObject          *object);
-static void        ctk_cell_view_size_allocate            (GtkWidget        *widget,
-                                                           GtkAllocation    *allocation);
-static gboolean    ctk_cell_view_draw                     (GtkWidget        *widget,
+static void        ctk_cell_view_size_allocate            (CtkWidget        *widget,
+                                                           CtkAllocation    *allocation);
+static gboolean    ctk_cell_view_draw                     (CtkWidget        *widget,
                                                            cairo_t          *cr);
-static void        ctk_cell_view_set_value                (GtkCellView     *cell_view,
-                                                           GtkCellRenderer *renderer,
+static void        ctk_cell_view_set_value                (CtkCellView     *cell_view,
+                                                           CtkCellRenderer *renderer,
                                                            gchar           *property,
                                                            GValue          *value);
-static void        ctk_cell_view_set_cell_data            (GtkCellView      *cell_view);
+static void        ctk_cell_view_set_cell_data            (CtkCellView      *cell_view);
 
 /* celllayout */
-static void        ctk_cell_view_cell_layout_init         (GtkCellLayoutIface *iface);
-static GtkCellArea *ctk_cell_view_cell_layout_get_area         (GtkCellLayout         *layout);
+static void        ctk_cell_view_cell_layout_init         (CtkCellLayoutIface *iface);
+static CtkCellArea *ctk_cell_view_cell_layout_get_area         (CtkCellLayout         *layout);
 
 
 /* buildable */
-static void       ctk_cell_view_buildable_init                 (GtkBuildableIface     *iface);
-static gboolean   ctk_cell_view_buildable_custom_tag_start     (GtkBuildable  	      *buildable,
-								GtkBuilder    	      *builder,
+static void       ctk_cell_view_buildable_init                 (CtkBuildableIface     *iface);
+static gboolean   ctk_cell_view_buildable_custom_tag_start     (CtkBuildable  	      *buildable,
+								CtkBuilder    	      *builder,
 								GObject       	      *child,
 								const gchar   	      *tagname,
 								GMarkupParser 	      *parser,
 								gpointer      	      *data);
-static void       ctk_cell_view_buildable_custom_tag_end       (GtkBuildable  	      *buildable,
-								GtkBuilder    	      *builder,
+static void       ctk_cell_view_buildable_custom_tag_end       (CtkBuildable  	      *buildable,
+								CtkBuilder    	      *builder,
 								GObject       	      *child,
 								const gchar   	      *tagname,
 								gpointer      	      *data);
 
-static GtkSizeRequestMode ctk_cell_view_get_request_mode       (GtkWidget             *widget);
-static void       ctk_cell_view_get_preferred_width            (GtkWidget             *widget,
+static CtkSizeRequestMode ctk_cell_view_get_request_mode       (CtkWidget             *widget);
+static void       ctk_cell_view_get_preferred_width            (CtkWidget             *widget,
 								gint                  *minimum_size,
 								gint                  *natural_size);
-static void       ctk_cell_view_get_preferred_height           (GtkWidget             *widget,
+static void       ctk_cell_view_get_preferred_height           (CtkWidget             *widget,
 								gint                  *minimum_size,
 								gint                  *natural_size);
-static void       ctk_cell_view_get_preferred_width_for_height (GtkWidget             *widget,
+static void       ctk_cell_view_get_preferred_width_for_height (CtkWidget             *widget,
 								gint                   avail_size,
 								gint                  *minimum_size,
 								gint                  *natural_size);
-static void       ctk_cell_view_get_preferred_height_for_width (GtkWidget             *widget,
+static void       ctk_cell_view_get_preferred_height_for_width (CtkWidget             *widget,
 								gint                   avail_size,
 								gint                  *minimum_size,
 								gint                  *natural_size);
 
-static void       context_size_changed_cb                      (GtkCellAreaContext   *context,
+static void       context_size_changed_cb                      (CtkCellAreaContext   *context,
 								GParamSpec           *pspec,
-								GtkWidget            *view);
-static void       row_changed_cb                               (GtkTreeModel         *model,
-								GtkTreePath          *path,
-								GtkTreeIter          *iter,
-								GtkCellView          *view);
+								CtkWidget            *view);
+static void       row_changed_cb                               (CtkTreeModel         *model,
+								CtkTreePath          *path,
+								CtkTreeIter          *iter,
+								CtkCellView          *view);
 
-static void     ctk_cell_view_measure  (GtkCssGadget        *gadget,
-                                        GtkOrientation       orientation,
+static void     ctk_cell_view_measure  (CtkCssGadget        *gadget,
+                                        CtkOrientation       orientation,
                                         int                  for_size,
                                         int                 *minimum,
                                         int                 *natural,
                                         int                 *minimum_baseline,
                                         int                 *natural_baseline,
                                         gpointer             data);
-static void     ctk_cell_view_allocate (GtkCssGadget        *gadget,
-                                        const GtkAllocation *allocation,
+static void     ctk_cell_view_allocate (CtkCssGadget        *gadget,
+                                        const CtkAllocation *allocation,
                                         int                  baseline,
-                                        GtkAllocation       *out_clip,
+                                        CtkAllocation       *out_clip,
                                         gpointer             data);
-static gboolean ctk_cell_view_render   (GtkCssGadget        *gadget,
+static gboolean ctk_cell_view_render   (CtkCssGadget        *gadget,
                                         cairo_t             *cr,
                                         int                  x,
                                         int                  y,
@@ -141,29 +141,29 @@ static gboolean ctk_cell_view_render   (GtkCssGadget        *gadget,
                                         int                  height,
                                         gpointer             data);
 
-struct _GtkCellViewPrivate
+struct _CtkCellViewPrivate
 {
-  GtkTreeModel        *model;
-  GtkTreeRowReference *displayed_row;
+  CtkTreeModel        *model;
+  CtkTreeRowReference *displayed_row;
 
-  GtkCellArea         *area;
-  GtkCellAreaContext  *context;
+  CtkCellArea         *area;
+  CtkCellAreaContext  *context;
 
-  GtkCssGadget        *gadget;
+  CtkCssGadget        *gadget;
 
   GdkRGBA              background;
 
   gulong               size_changed_id;
   gulong               row_changed_id;
 
-  GtkOrientation       orientation;
+  CtkOrientation       orientation;
 
   guint                background_set : 1;
   guint                draw_sensitive : 1;
   guint                fit_model      : 1;
 };
 
-static GtkBuildableIface *parent_buildable_iface;
+static CtkBuildableIface *parent_buildable_iface;
 
 enum
 {
@@ -180,8 +180,8 @@ enum
   PROP_FIT_MODEL
 };
 
-G_DEFINE_TYPE_WITH_CODE (GtkCellView, ctk_cell_view, CTK_TYPE_WIDGET,
-                         G_ADD_PRIVATE (GtkCellView)
+G_DEFINE_TYPE_WITH_CODE (CtkCellView, ctk_cell_view, CTK_TYPE_WIDGET,
+                         G_ADD_PRIVATE (CtkCellView)
 			 G_IMPLEMENT_INTERFACE (CTK_TYPE_CELL_LAYOUT,
 						ctk_cell_view_cell_layout_init)
 			 G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
@@ -189,10 +189,10 @@ G_DEFINE_TYPE_WITH_CODE (GtkCellView, ctk_cell_view, CTK_TYPE_WIDGET,
 			 G_IMPLEMENT_INTERFACE (CTK_TYPE_ORIENTABLE, NULL))
 
 static void
-ctk_cell_view_class_init (GtkCellViewClass *klass)
+ctk_cell_view_class_init (CtkCellViewClass *klass)
 {
   GObjectClass   *gobject_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   gobject_class->constructed = ctk_cell_view_constructed;
   gobject_class->get_property = ctk_cell_view_get_property;
@@ -220,11 +220,11 @@ ctk_cell_view_class_init (GtkCellViewClass *klass)
                                                         CTK_PARAM_WRITABLE));
 
   /**
-   * GtkCellView:background-gdk:
+   * CtkCellView:background-gdk:
    *
    * The background color as a #GdkColor
    *
-   * Deprecated: 3.4: Use #GtkCellView:background-rgba instead.
+   * Deprecated: 3.4: Use #CtkCellView:background-rgba instead.
    */
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   g_object_class_install_property (gobject_class,
@@ -236,7 +236,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
                                                       CTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
 G_GNUC_END_IGNORE_DEPRECATIONS
   /**
-   * GtkCellView:background-rgba:
+   * CtkCellView:background-rgba:
    *
    * The background color as a #GdkRGBA
    *
@@ -251,7 +251,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                                                       CTK_PARAM_READWRITE));
 
   /**
-   * GtkCellView:model:
+   * CtkCellView:model:
    *
    * The model for cell view
    *
@@ -267,12 +267,12 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 
   /**
-   * GtkCellView:cell-area:
+   * CtkCellView:cell-area:
    *
-   * The #GtkCellArea rendering cells
+   * The #CtkCellArea rendering cells
    *
    * If no area is specified when creating the cell view with ctk_cell_view_new_with_context() 
-   * a horizontally oriented #GtkCellAreaBox will be used.
+   * a horizontally oriented #CtkCellAreaBox will be used.
    *
    * since 3.0
    */
@@ -280,20 +280,20 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                                     PROP_CELL_AREA,
                                     g_param_spec_object ("cell-area",
 							 P_("Cell Area"),
-							 P_("The GtkCellArea used to layout cells"),
+							 P_("The CtkCellArea used to layout cells"),
 							 CTK_TYPE_CELL_AREA,
 							 CTK_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
   /**
-   * GtkCellView:cell-area-context:
+   * CtkCellView:cell-area-context:
    *
-   * The #GtkCellAreaContext used to compute the geometry of the cell view.
+   * The #CtkCellAreaContext used to compute the geometry of the cell view.
    *
    * A group of cell views can be assigned the same context in order to
    * ensure the sizes and cell alignments match across all the views with
    * the same context.
    *
-   * #GtkComboBox menus uses this to assign the same context to all cell views
+   * #CtkComboBox menus uses this to assign the same context to all cell views
    * in the menu items for a single menu (each submenu creates its own
    * context since the size of each submenu does not depend on parent
    * or sibling menus).
@@ -304,13 +304,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                                     PROP_CELL_AREA_CONTEXT,
                                     g_param_spec_object ("cell-area-context",
 							 P_("Cell Area Context"),
-							 P_("The GtkCellAreaContext used to "
+							 P_("The CtkCellAreaContext used to "
 							    "compute the geometry of the cell view"),
 							 CTK_TYPE_CELL_AREA_CONTEXT,
 							 CTK_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
   /**
-   * GtkCellView:draw-sensitive:
+   * CtkCellView:draw-sensitive:
    *
    * Whether all cells should be draw as sensitive for this view regardless
    * of the actual cell properties (used to make menus with submenus appear
@@ -328,7 +328,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 							  CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkCellView:fit-model:
+   * CtkCellView:fit-model:
    *
    * Whether the view should request enough space to always fit
    * the size of every row in the model (used by the combo box to
@@ -357,7 +357,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-ctk_cell_view_buildable_init (GtkBuildableIface *iface)
+ctk_cell_view_buildable_init (CtkBuildableIface *iface)
 {
   parent_buildable_iface = g_type_interface_peek_parent (iface);
   iface->add_child = _ctk_cell_layout_buildable_add_child;
@@ -366,7 +366,7 @@ ctk_cell_view_buildable_init (GtkBuildableIface *iface)
 }
 
 static void
-ctk_cell_view_cell_layout_init (GtkCellLayoutIface *iface)
+ctk_cell_view_cell_layout_init (CtkCellLayoutIface *iface)
 {
   iface->get_area = ctk_cell_view_cell_layout_get_area;
 }
@@ -374,8 +374,8 @@ ctk_cell_view_cell_layout_init (GtkCellLayoutIface *iface)
 static void
 ctk_cell_view_constructed (GObject *object)
 {
-  GtkCellView *view = CTK_CELL_VIEW (object);
-  GtkCellViewPrivate *priv = view->priv;
+  CtkCellView *view = CTK_CELL_VIEW (object);
+  CtkCellViewPrivate *priv = view->priv;
 
   G_OBJECT_CLASS (ctk_cell_view_parent_class)->constructed (object);
 
@@ -399,7 +399,7 @@ ctk_cell_view_get_property (GObject    *object,
                             GValue     *value,
                             GParamSpec *pspec)
 {
-  GtkCellView *view = CTK_CELL_VIEW (object);
+  CtkCellView *view = CTK_CELL_VIEW (object);
 
   switch (param_id)
     {
@@ -451,10 +451,10 @@ ctk_cell_view_set_property (GObject      *object,
                             const GValue *value,
                             GParamSpec   *pspec)
 {
-  GtkCellView *view = CTK_CELL_VIEW (object);
-  GtkCellViewPrivate *priv = view->priv;
-  GtkCellArea *area;
-  GtkCellAreaContext *context;
+  CtkCellView *view = CTK_CELL_VIEW (object);
+  CtkCellViewPrivate *priv = view->priv;
+  CtkCellArea *area;
+  CtkCellAreaContext *context;
 
   switch (param_id)
     {
@@ -555,9 +555,9 @@ ctk_cell_view_set_property (GObject      *object,
 }
 
 static void
-ctk_cell_view_init (GtkCellView *cellview)
+ctk_cell_view_init (CtkCellView *cellview)
 {
-  GtkCssNode *widget_node;
+  CtkCssNode *widget_node;
 
   cellview->priv = ctk_cell_view_get_instance_private (cellview);
   cellview->priv->orientation = CTK_ORIENTATION_HORIZONTAL;
@@ -577,7 +577,7 @@ ctk_cell_view_init (GtkCellView *cellview)
 static void
 ctk_cell_view_finalize (GObject *object)
 {
-  GtkCellView *cellview = CTK_CELL_VIEW (object);
+  CtkCellView *cellview = CTK_CELL_VIEW (object);
 
   if (cellview->priv->displayed_row)
      ctk_tree_row_reference_free (cellview->priv->displayed_row);
@@ -590,7 +590,7 @@ ctk_cell_view_finalize (GObject *object)
 static void
 ctk_cell_view_dispose (GObject *object)
 {
-  GtkCellView *cellview = CTK_CELL_VIEW (object);
+  CtkCellView *cellview = CTK_CELL_VIEW (object);
 
   ctk_cell_view_set_model (cellview, NULL);
 
@@ -613,10 +613,10 @@ ctk_cell_view_dispose (GObject *object)
 }
 
 static void
-ctk_cell_view_size_allocate (GtkWidget     *widget,
-                             GtkAllocation *allocation)
+ctk_cell_view_size_allocate (CtkWidget     *widget,
+                             CtkAllocation *allocation)
 {
-  GtkAllocation clip;
+  CtkAllocation clip;
 
   ctk_widget_set_allocation (widget, allocation);
 
@@ -629,15 +629,15 @@ ctk_cell_view_size_allocate (GtkWidget     *widget,
 }
 
 static void
-ctk_cell_view_allocate (GtkCssGadget        *gadget,
-                        const GtkAllocation *allocation,
+ctk_cell_view_allocate (CtkCssGadget        *gadget,
+                        const CtkAllocation *allocation,
                         int                  baseline,
-                        GtkAllocation       *out_clip,
+                        CtkAllocation       *out_clip,
                         gpointer             data)
 {
-  GtkWidget *widget;
-  GtkCellView *cellview;
-  GtkCellViewPrivate *priv;
+  CtkWidget *widget;
+  CtkCellView *cellview;
+  CtkCellViewPrivate *priv;
   gint alloc_width, alloc_height, width, height;
 
   widget = ctk_css_gadget_get_owner (gadget);
@@ -667,15 +667,15 @@ ctk_cell_view_allocate (GtkCssGadget        *gadget,
 }
 
 static void
-ctk_cell_view_request_model (GtkCellView        *cellview,
-			     GtkTreeIter        *parent,
-			     GtkOrientation      orientation,
+ctk_cell_view_request_model (CtkCellView        *cellview,
+			     CtkTreeIter        *parent,
+			     CtkOrientation      orientation,
 			     gint                for_size,
 			     gint               *minimum_size,
 			     gint               *natural_size)
 {
-  GtkCellViewPrivate *priv = cellview->priv;
-  GtkTreeIter         iter;
+  CtkCellViewPrivate *priv = cellview->priv;
+  CtkTreeIter         iter;
   gboolean            valid;
 
   if (!priv->model)
@@ -717,17 +717,17 @@ ctk_cell_view_request_model (GtkCellView        *cellview,
     }
 }
 
-static GtkSizeRequestMode 
-ctk_cell_view_get_request_mode (GtkWidget *widget)
+static CtkSizeRequestMode 
+ctk_cell_view_get_request_mode (CtkWidget *widget)
 {
-  GtkCellView        *cellview = CTK_CELL_VIEW (widget);
-  GtkCellViewPrivate *priv = cellview->priv;
+  CtkCellView        *cellview = CTK_CELL_VIEW (widget);
+  CtkCellViewPrivate *priv = cellview->priv;
 
   return ctk_cell_area_get_request_mode (priv->area);
 }
 
 static void
-ctk_cell_view_get_preferred_width (GtkWidget *widget,
+ctk_cell_view_get_preferred_width (CtkWidget *widget,
                                    gint      *minimum,
                                    gint      *natural)
 {
@@ -739,7 +739,7 @@ ctk_cell_view_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-ctk_cell_view_get_preferred_width_for_height (GtkWidget *widget,
+ctk_cell_view_get_preferred_width_for_height (CtkWidget *widget,
                                               gint       height,
                                               gint      *minimum,
                                               gint      *natural)
@@ -752,7 +752,7 @@ ctk_cell_view_get_preferred_width_for_height (GtkWidget *widget,
 }
 
 static void
-ctk_cell_view_get_preferred_height (GtkWidget *widget,
+ctk_cell_view_get_preferred_height (CtkWidget *widget,
                                     gint      *minimum,
                                     gint      *natural)
 {
@@ -764,7 +764,7 @@ ctk_cell_view_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-ctk_cell_view_get_preferred_height_for_width (GtkWidget *widget,
+ctk_cell_view_get_preferred_height_for_width (CtkWidget *widget,
                                               gint       width,
                                               gint      *minimum,
                                               gint      *natural)
@@ -777,8 +777,8 @@ ctk_cell_view_get_preferred_height_for_width (GtkWidget *widget,
 }
 
 static void
-ctk_cell_view_measure (GtkCssGadget   *gadget,
-                       GtkOrientation  orientation,
+ctk_cell_view_measure (CtkCssGadget   *gadget,
+                       CtkOrientation  orientation,
                        int             for_size,
                        int            *minimum,
                        int            *natural,
@@ -786,9 +786,9 @@ ctk_cell_view_measure (GtkCssGadget   *gadget,
                        int            *natural_baseline,
                        gpointer        data)
 {
-  GtkWidget *widget;
-  GtkCellView *cellview;
-  GtkCellViewPrivate *priv;
+  CtkWidget *widget;
+  CtkCellView *cellview;
+  CtkCellViewPrivate *priv;
 
   widget = ctk_css_gadget_get_owner (gadget);
   cellview = CTK_CELL_VIEW (widget);
@@ -873,7 +873,7 @@ ctk_cell_view_measure (GtkCssGadget   *gadget,
 }
 
 static gboolean
-ctk_cell_view_draw (GtkWidget *widget,
+ctk_cell_view_draw (CtkWidget *widget,
                     cairo_t   *cr)
 {
   ctk_css_gadget_draw (CTK_CELL_VIEW (widget)->priv->gadget, cr);
@@ -882,7 +882,7 @@ ctk_cell_view_draw (GtkWidget *widget,
 }
 
 static gboolean
-ctk_cell_view_render (GtkCssGadget *gadget,
+ctk_cell_view_render (CtkCssGadget *gadget,
                       cairo_t      *cr,
                       int           x,
                       int           y,
@@ -890,10 +890,10 @@ ctk_cell_view_render (GtkCssGadget *gadget,
                       int           height,
                       gpointer      data)
 {
-  GtkWidget *widget;
-  GtkCellView *cellview;
+  CtkWidget *widget;
+  CtkCellView *cellview;
   GdkRectangle area;
-  GtkCellRendererState state;
+  CtkCellRendererState state;
 
   widget = ctk_css_gadget_get_owner (gadget);
   cellview = CTK_CELL_VIEW (widget);
@@ -931,10 +931,10 @@ ctk_cell_view_render (GtkCssGadget *gadget,
 }
 
 static void
-ctk_cell_view_set_cell_data (GtkCellView *cell_view)
+ctk_cell_view_set_cell_data (CtkCellView *cell_view)
 {
-  GtkTreeIter iter;
-  GtkTreePath *path;
+  CtkTreeIter iter;
+  CtkTreePath *path;
 
   g_return_if_fail (cell_view->priv->displayed_row != NULL);
 
@@ -964,12 +964,12 @@ ctk_cell_view_set_cell_data (GtkCellView *cell_view)
     }
 }
 
-/* GtkCellLayout implementation */
-static GtkCellArea *
-ctk_cell_view_cell_layout_get_area (GtkCellLayout   *layout)
+/* CtkCellLayout implementation */
+static CtkCellArea *
+ctk_cell_view_cell_layout_get_area (CtkCellLayout   *layout)
 {
-  GtkCellView *cellview = CTK_CELL_VIEW (layout);
-  GtkCellViewPrivate *priv = cellview->priv;
+  CtkCellView *cellview = CTK_CELL_VIEW (layout);
+  CtkCellViewPrivate *priv = cellview->priv;
 
   if (G_UNLIKELY (!priv->area))
     {
@@ -980,10 +980,10 @@ ctk_cell_view_cell_layout_get_area (GtkCellLayout   *layout)
   return priv->area;
 }
 
-/* GtkBuildable implementation */
+/* CtkBuildable implementation */
 static gboolean
-ctk_cell_view_buildable_custom_tag_start (GtkBuildable  *buildable,
-					  GtkBuilder    *builder,
+ctk_cell_view_buildable_custom_tag_start (CtkBuildable  *buildable,
+					  CtkBuilder    *builder,
 					  GObject       *child,
 					  const gchar   *tagname,
 					  GMarkupParser *parser,
@@ -999,8 +999,8 @@ ctk_cell_view_buildable_custom_tag_start (GtkBuildable  *buildable,
 }
 
 static void
-ctk_cell_view_buildable_custom_tag_end (GtkBuildable *buildable,
-					GtkBuilder   *builder,
+ctk_cell_view_buildable_custom_tag_end (CtkBuildable *buildable,
+					CtkBuilder   *builder,
 					GObject      *child,
 					const gchar  *tagname,
 					gpointer     *data)
@@ -1014,9 +1014,9 @@ ctk_cell_view_buildable_custom_tag_end (GtkBuildable *buildable,
 }
 
 static void
-context_size_changed_cb (GtkCellAreaContext  *context,
+context_size_changed_cb (CtkCellAreaContext  *context,
 			 GParamSpec          *pspec,
-			 GtkWidget           *view)
+			 CtkWidget           *view)
 {
   if (!strcmp (pspec->name, "minimum-width") ||
       !strcmp (pspec->name, "natural-width") ||
@@ -1026,12 +1026,12 @@ context_size_changed_cb (GtkCellAreaContext  *context,
 }
 
 static void
-row_changed_cb (GtkTreeModel         *model,
-		GtkTreePath          *path,
-		GtkTreeIter          *iter,
-		GtkCellView          *view)
+row_changed_cb (CtkTreeModel         *model,
+		CtkTreePath          *path,
+		CtkTreeIter          *iter,
+		CtkCellView          *view)
 {
-  GtkTreePath *row_path;
+  CtkTreePath *row_path;
 
   if (view->priv->displayed_row)
     {
@@ -1052,16 +1052,16 @@ row_changed_cb (GtkTreeModel         *model,
 /**
  * ctk_cell_view_new:
  *
- * Creates a new #GtkCellView widget.
+ * Creates a new #CtkCellView widget.
  *
- * Returns: A newly created #GtkCellView widget.
+ * Returns: A newly created #CtkCellView widget.
  *
  * Since: 2.6
  */
-GtkWidget *
+CtkWidget *
 ctk_cell_view_new (void)
 {
-  GtkCellView *cellview;
+  CtkCellView *cellview;
 
   cellview = g_object_new (ctk_cell_view_get_type (), NULL);
 
@@ -1071,29 +1071,29 @@ ctk_cell_view_new (void)
 
 /**
  * ctk_cell_view_new_with_context:
- * @area: the #GtkCellArea to layout cells
- * @context: the #GtkCellAreaContext in which to calculate cell geometry
+ * @area: the #CtkCellArea to layout cells
+ * @context: the #CtkCellAreaContext in which to calculate cell geometry
  *
- * Creates a new #GtkCellView widget with a specific #GtkCellArea
- * to layout cells and a specific #GtkCellAreaContext.
+ * Creates a new #CtkCellView widget with a specific #CtkCellArea
+ * to layout cells and a specific #CtkCellAreaContext.
  *
  * Specifying the same context for a handfull of cells lets
  * the underlying area synchronize the geometry for those cells,
  * in this way alignments with cellviews for other rows are
  * possible.
  *
- * Returns: A newly created #GtkCellView widget.
+ * Returns: A newly created #CtkCellView widget.
  *
  * Since: 2.6
  */
-GtkWidget *
-ctk_cell_view_new_with_context (GtkCellArea        *area,
-				GtkCellAreaContext *context)
+CtkWidget *
+ctk_cell_view_new_with_context (CtkCellArea        *area,
+				CtkCellAreaContext *context)
 {
   g_return_val_if_fail (CTK_IS_CELL_AREA (area), NULL);
   g_return_val_if_fail (context == NULL || CTK_IS_CELL_AREA_CONTEXT (context), NULL);
 
-  return (GtkWidget *)g_object_new (CTK_TYPE_CELL_VIEW, 
+  return (CtkWidget *)g_object_new (CTK_TYPE_CELL_VIEW, 
 				    "cell-area", area,
 				    "cell-area-context", context,
 				    NULL);
@@ -1103,18 +1103,18 @@ ctk_cell_view_new_with_context (GtkCellArea        *area,
  * ctk_cell_view_new_with_text:
  * @text: the text to display in the cell view
  *
- * Creates a new #GtkCellView widget, adds a #GtkCellRendererText 
+ * Creates a new #CtkCellView widget, adds a #CtkCellRendererText 
  * to it, and makes it show @text.
  *
- * Returns: A newly created #GtkCellView widget.
+ * Returns: A newly created #CtkCellView widget.
  *
  * Since: 2.6
  */
-GtkWidget *
+CtkWidget *
 ctk_cell_view_new_with_text (const gchar *text)
 {
-  GtkCellView *cellview;
-  GtkCellRenderer *renderer;
+  CtkCellView *cellview;
+  CtkCellRenderer *renderer;
   GValue value = G_VALUE_INIT;
 
   cellview = CTK_CELL_VIEW (ctk_cell_view_new ());
@@ -1135,19 +1135,19 @@ ctk_cell_view_new_with_text (const gchar *text)
  * ctk_cell_view_new_with_markup:
  * @markup: the text to display in the cell view
  *
- * Creates a new #GtkCellView widget, adds a #GtkCellRendererText 
+ * Creates a new #CtkCellView widget, adds a #CtkCellRendererText 
  * to it, and makes it show @markup. The text can be
  * marked up with the [Pango text markup language][PangoMarkupFormat].
  *
- * Returns: A newly created #GtkCellView widget.
+ * Returns: A newly created #CtkCellView widget.
  *
  * Since: 2.6
  */
-GtkWidget *
+CtkWidget *
 ctk_cell_view_new_with_markup (const gchar *markup)
 {
-  GtkCellView *cellview;
-  GtkCellRenderer *renderer;
+  CtkCellView *cellview;
+  CtkCellRenderer *renderer;
   GValue value = G_VALUE_INIT;
 
   cellview = CTK_CELL_VIEW (ctk_cell_view_new ());
@@ -1168,18 +1168,18 @@ ctk_cell_view_new_with_markup (const gchar *markup)
  * ctk_cell_view_new_with_pixbuf:
  * @pixbuf: the image to display in the cell view
  *
- * Creates a new #GtkCellView widget, adds a #GtkCellRendererPixbuf
+ * Creates a new #CtkCellView widget, adds a #CtkCellRendererPixbuf
  * to it, and makes it show @pixbuf.
  *
- * Returns: A newly created #GtkCellView widget.
+ * Returns: A newly created #CtkCellView widget.
  *
  * Since: 2.6
  */
-GtkWidget *
+CtkWidget *
 ctk_cell_view_new_with_pixbuf (GdkPixbuf *pixbuf)
 {
-  GtkCellView *cellview;
-  GtkCellRenderer *renderer;
+  CtkCellView *cellview;
+  CtkCellRenderer *renderer;
   GValue value = G_VALUE_INIT;
 
   cellview = CTK_CELL_VIEW (ctk_cell_view_new ());
@@ -1198,7 +1198,7 @@ ctk_cell_view_new_with_pixbuf (GdkPixbuf *pixbuf)
 
 /**
  * ctk_cell_view_set_value:
- * @cell_view: a #GtkCellView widget
+ * @cell_view: a #CtkCellView widget
  * @renderer: one of the renderers of @cell_view
  * @property: the name of the property of @renderer to set
  * @value: the new value to set the property to
@@ -1209,8 +1209,8 @@ ctk_cell_view_new_with_pixbuf (GdkPixbuf *pixbuf)
  * Since: 2.6
  */
 static void
-ctk_cell_view_set_value (GtkCellView     *cell_view,
-                         GtkCellRenderer *renderer,
+ctk_cell_view_set_value (CtkCellView     *cell_view,
+                         CtkCellRenderer *renderer,
                          gchar           *property,
                          GValue          *value)
 {
@@ -1223,8 +1223,8 @@ ctk_cell_view_set_value (GtkCellView     *cell_view,
 
 /**
  * ctk_cell_view_set_model:
- * @cell_view: a #GtkCellView
- * @model: (allow-none): a #GtkTreeModel
+ * @cell_view: a #CtkCellView
+ * @model: (allow-none): a #CtkTreeModel
  *
  * Sets the model for @cell_view.  If @cell_view already has a model
  * set, it will remove it before setting the new model.  If @model is
@@ -1233,8 +1233,8 @@ ctk_cell_view_set_value (GtkCellView     *cell_view,
  * Since: 2.6
  */
 void
-ctk_cell_view_set_model (GtkCellView  *cell_view,
-                         GtkTreeModel *model)
+ctk_cell_view_set_model (CtkCellView  *cell_view,
+                         CtkTreeModel *model)
 {
   g_return_if_fail (CTK_IS_CELL_VIEW (cell_view));
   g_return_if_fail (model == NULL || CTK_IS_TREE_MODEL (model));
@@ -1266,17 +1266,17 @@ ctk_cell_view_set_model (GtkCellView  *cell_view,
 
 /**
  * ctk_cell_view_get_model:
- * @cell_view: a #GtkCellView
+ * @cell_view: a #CtkCellView
  *
  * Returns the model for @cell_view. If no model is used %NULL is
  * returned.
  *
- * Returns: (nullable) (transfer none): a #GtkTreeModel used or %NULL
+ * Returns: (nullable) (transfer none): a #CtkTreeModel used or %NULL
  *
  * Since: 2.16
  **/
-GtkTreeModel *
-ctk_cell_view_get_model (GtkCellView *cell_view)
+CtkTreeModel *
+ctk_cell_view_get_model (CtkCellView *cell_view)
 {
   g_return_val_if_fail (CTK_IS_CELL_VIEW (cell_view), NULL);
 
@@ -1285,21 +1285,21 @@ ctk_cell_view_get_model (GtkCellView *cell_view)
 
 /**
  * ctk_cell_view_set_displayed_row:
- * @cell_view: a #GtkCellView
- * @path: (allow-none): a #GtkTreePath or %NULL to unset.
+ * @cell_view: a #CtkCellView
+ * @path: (allow-none): a #CtkTreePath or %NULL to unset.
  *
  * Sets the row of the model that is currently displayed
- * by the #GtkCellView. If the path is unset, then the
+ * by the #CtkCellView. If the path is unset, then the
  * contents of the cellview “stick” at their last value;
  * this is not normally a desired result, but may be
  * a needed intermediate state if say, the model for
- * the #GtkCellView becomes temporarily empty.
+ * the #CtkCellView becomes temporarily empty.
  *
  * Since: 2.6
  **/
 void
-ctk_cell_view_set_displayed_row (GtkCellView *cell_view,
-                                 GtkTreePath *path)
+ctk_cell_view_set_displayed_row (CtkCellView *cell_view,
+                                 CtkTreePath *path)
 {
   g_return_if_fail (CTK_IS_CELL_VIEW (cell_view));
   g_return_if_fail (CTK_IS_TREE_MODEL (cell_view->priv->model));
@@ -1322,9 +1322,9 @@ ctk_cell_view_set_displayed_row (GtkCellView *cell_view,
 
 /**
  * ctk_cell_view_get_displayed_row:
- * @cell_view: a #GtkCellView
+ * @cell_view: a #CtkCellView
  *
- * Returns a #GtkTreePath referring to the currently 
+ * Returns a #CtkTreePath referring to the currently 
  * displayed row. If no row is currently displayed, 
  * %NULL is returned.
  *
@@ -1332,8 +1332,8 @@ ctk_cell_view_set_displayed_row (GtkCellView *cell_view,
  *
  * Since: 2.6
  */
-GtkTreePath *
-ctk_cell_view_get_displayed_row (GtkCellView *cell_view)
+CtkTreePath *
+ctk_cell_view_get_displayed_row (CtkCellView *cell_view)
 {
   g_return_val_if_fail (CTK_IS_CELL_VIEW (cell_view), NULL);
 
@@ -1345,8 +1345,8 @@ ctk_cell_view_get_displayed_row (GtkCellView *cell_view)
 
 /**
  * ctk_cell_view_get_size_of_row:
- * @cell_view: a #GtkCellView
- * @path: a #GtkTreePath 
+ * @cell_view: a #CtkCellView
+ * @path: a #CtkTreePath 
  * @requisition: (out): return location for the size 
  *
  * Sets @requisition to the size needed by @cell_view to display 
@@ -1358,16 +1358,16 @@ ctk_cell_view_get_displayed_row (GtkCellView *cell_view)
  * 
  * Deprecated: 3.0: Combo box formerly used this to calculate the
  * sizes for cellviews, now you can achieve this by either using
- * the #GtkCellView:fit-model property or by setting the currently
- * displayed row of the #GtkCellView and using ctk_widget_get_preferred_size().
+ * the #CtkCellView:fit-model property or by setting the currently
+ * displayed row of the #CtkCellView and using ctk_widget_get_preferred_size().
  */
 gboolean
-ctk_cell_view_get_size_of_row (GtkCellView    *cell_view,
-                               GtkTreePath    *path,
-                               GtkRequisition *requisition)
+ctk_cell_view_get_size_of_row (CtkCellView    *cell_view,
+                               CtkTreePath    *path,
+                               CtkRequisition *requisition)
 {
-  GtkTreeRowReference *tmp;
-  GtkRequisition req;
+  CtkTreeRowReference *tmp;
+  CtkRequisition req;
 
   g_return_val_if_fail (CTK_IS_CELL_VIEW (cell_view), FALSE);
   g_return_val_if_fail (path != NULL, FALSE);
@@ -1390,7 +1390,7 @@ ctk_cell_view_get_size_of_row (GtkCellView    *cell_view,
 
 /**
  * ctk_cell_view_set_background_color:
- * @cell_view: a #GtkCellView
+ * @cell_view: a #CtkCellView
  * @color: the new background color
  *
  * Sets the background color of @view.
@@ -1400,7 +1400,7 @@ ctk_cell_view_get_size_of_row (GtkCellView    *cell_view,
  * Deprecated: 3.4: Use ctk_cell_view_set_background_rgba() instead.
  */
 void
-ctk_cell_view_set_background_color (GtkCellView    *cell_view,
+ctk_cell_view_set_background_color (CtkCellView    *cell_view,
                                     const GdkColor *color)
 {
   g_return_if_fail (CTK_IS_CELL_VIEW (cell_view));
@@ -1432,7 +1432,7 @@ ctk_cell_view_set_background_color (GtkCellView    *cell_view,
 
 /**
  * ctk_cell_view_set_background_rgba:
- * @cell_view: a #GtkCellView
+ * @cell_view: a #CtkCellView
  * @rgba: the new background color
  *
  * Sets the background color of @cell_view.
@@ -1440,7 +1440,7 @@ ctk_cell_view_set_background_color (GtkCellView    *cell_view,
  * Since: 3.0
  */
 void
-ctk_cell_view_set_background_rgba (GtkCellView   *cell_view,
+ctk_cell_view_set_background_rgba (CtkCellView   *cell_view,
                                    const GdkRGBA *rgba)
 {
   g_return_if_fail (CTK_IS_CELL_VIEW (cell_view));
@@ -1469,7 +1469,7 @@ ctk_cell_view_set_background_rgba (GtkCellView   *cell_view,
 
 /**
  * ctk_cell_view_get_draw_sensitive:
- * @cell_view: a #GtkCellView
+ * @cell_view: a #CtkCellView
  *
  * Gets whether @cell_view is configured to draw all of its
  * cells in a sensitive state.
@@ -1480,9 +1480,9 @@ ctk_cell_view_set_background_rgba (GtkCellView   *cell_view,
  * Since: 3.0
  */
 gboolean
-ctk_cell_view_get_draw_sensitive (GtkCellView     *cell_view)
+ctk_cell_view_get_draw_sensitive (CtkCellView     *cell_view)
 {
-  GtkCellViewPrivate *priv;
+  CtkCellViewPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_CELL_VIEW (cell_view), FALSE);
 
@@ -1493,21 +1493,21 @@ ctk_cell_view_get_draw_sensitive (GtkCellView     *cell_view)
 
 /**
  * ctk_cell_view_set_draw_sensitive:
- * @cell_view: a #GtkCellView
+ * @cell_view: a #CtkCellView
  * @draw_sensitive: whether to draw all cells in a sensitive state.
  *
  * Sets whether @cell_view should draw all of its
- * cells in a sensitive state, this is used by #GtkComboBox menus
+ * cells in a sensitive state, this is used by #CtkComboBox menus
  * to ensure that rows with insensitive cells that contain
  * children appear sensitive in the parent menu item.
  *
  * Since: 3.0
  */
 void
-ctk_cell_view_set_draw_sensitive (GtkCellView     *cell_view,
+ctk_cell_view_set_draw_sensitive (CtkCellView     *cell_view,
 				  gboolean         draw_sensitive)
 {
-  GtkCellViewPrivate *priv;
+  CtkCellViewPrivate *priv;
 
   g_return_if_fail (CTK_IS_CELL_VIEW (cell_view));
 
@@ -1523,20 +1523,20 @@ ctk_cell_view_set_draw_sensitive (GtkCellView     *cell_view,
 
 /**
  * ctk_cell_view_get_fit_model:
- * @cell_view: a #GtkCellView
+ * @cell_view: a #CtkCellView
  *
  * Gets whether @cell_view is configured to request space
- * to fit the entire #GtkTreeModel.
+ * to fit the entire #CtkTreeModel.
  *
  * Returns: whether @cell_view requests space to fit
- * the entire #GtkTreeModel.
+ * the entire #CtkTreeModel.
  *
  * Since: 3.0
  */
 gboolean
-ctk_cell_view_get_fit_model (GtkCellView     *cell_view)
+ctk_cell_view_get_fit_model (CtkCellView     *cell_view)
 {
-  GtkCellViewPrivate *priv;
+  CtkCellViewPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_CELL_VIEW (cell_view), FALSE);
 
@@ -1547,22 +1547,22 @@ ctk_cell_view_get_fit_model (GtkCellView     *cell_view)
 
 /**
  * ctk_cell_view_set_fit_model:
- * @cell_view: a #GtkCellView
+ * @cell_view: a #CtkCellView
  * @fit_model: whether @cell_view should request space for the whole model.
  *
- * Sets whether @cell_view should request space to fit the entire #GtkTreeModel.
+ * Sets whether @cell_view should request space to fit the entire #CtkTreeModel.
  *
- * This is used by #GtkComboBox to ensure that the cell view displayed on
+ * This is used by #CtkComboBox to ensure that the cell view displayed on
  * the combo box’s button always gets enough space and does not resize
  * when selection changes.
  *
  * Since: 3.0
  */
 void
-ctk_cell_view_set_fit_model (GtkCellView *cell_view,
+ctk_cell_view_set_fit_model (CtkCellView *cell_view,
                              gboolean     fit_model)
 {
-  GtkCellViewPrivate *priv;
+  CtkCellViewPrivate *priv;
 
   g_return_if_fail (CTK_IS_CELL_VIEW (cell_view));
 

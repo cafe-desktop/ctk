@@ -24,17 +24,17 @@
 
 /**
  * SECTION:ctkmenubar
- * @Title: GtkMenuBar
- * @Short_description: A subclass of GtkMenuShell which holds GtkMenuItem widgets
- * @See_also: #GtkMenuShell, #GtkMenu, #GtkMenuItem
+ * @Title: CtkMenuBar
+ * @Short_description: A subclass of CtkMenuShell which holds CtkMenuItem widgets
+ * @See_also: #CtkMenuShell, #CtkMenu, #CtkMenuItem
  *
- * The #GtkMenuBar is a subclass of #GtkMenuShell which contains one or
- * more #GtkMenuItems. The result is a standard menu bar which can hold
+ * The #CtkMenuBar is a subclass of #CtkMenuShell which contains one or
+ * more #CtkMenuItems. The result is a standard menu bar which can hold
  * many menu items.
  *
  * # CSS nodes
  *
- * GtkMenuBar has a single CSS node with name menubar.
+ * CtkMenuBar has a single CSS node with name menubar.
  */
 
 #include "config.h"
@@ -67,12 +67,12 @@ enum {
   PROP_CHILD_PACK_DIRECTION
 };
 
-struct _GtkMenuBarPrivate
+struct _CtkMenuBarPrivate
 {
-  GtkPackDirection pack_direction;
-  GtkPackDirection child_pack_direction;
+  CtkPackDirection pack_direction;
+  CtkPackDirection child_pack_direction;
 
-  GtkCssGadget *gadget;
+  CtkCssGadget *gadget;
 };
 
 
@@ -85,44 +85,44 @@ static void ctk_menu_bar_get_property      (GObject             *object,
 					    GValue              *value,
 					    GParamSpec          *pspec);
 static void ctk_menu_bar_finalize          (GObject             *object);
-static void ctk_menu_bar_get_preferred_width (GtkWidget     *widget,
+static void ctk_menu_bar_get_preferred_width (CtkWidget     *widget,
 					      gint          *minimum,
 					      gint          *natural);
-static void ctk_menu_bar_get_preferred_height (GtkWidget    *widget,
+static void ctk_menu_bar_get_preferred_height (CtkWidget    *widget,
 					       gint         *minimum,
 					       gint         *natural);
-static void ctk_menu_bar_get_preferred_width_for_height (GtkWidget    *widget,
+static void ctk_menu_bar_get_preferred_width_for_height (CtkWidget    *widget,
                                                          gint          height,
                                                          gint         *minimum,
                                                          gint         *natural);
-static void ctk_menu_bar_get_preferred_height_for_width (GtkWidget    *widget,
+static void ctk_menu_bar_get_preferred_height_for_width (CtkWidget    *widget,
                                                          gint          width,
                                                          gint         *minimum,
                                                          gint         *natural);
-static void ctk_menu_bar_size_allocate     (GtkWidget       *widget,
-					    GtkAllocation   *allocation);
-static gint ctk_menu_bar_draw              (GtkWidget       *widget,
+static void ctk_menu_bar_size_allocate     (CtkWidget       *widget,
+					    CtkAllocation   *allocation);
+static gint ctk_menu_bar_draw              (CtkWidget       *widget,
                                             cairo_t         *cr);
-static void ctk_menu_bar_hierarchy_changed (GtkWidget       *widget,
-					    GtkWidget       *old_toplevel);
-static gint ctk_menu_bar_get_popup_delay   (GtkMenuShell    *menu_shell);
-static void ctk_menu_bar_move_current      (GtkMenuShell     *menu_shell,
-                                            GtkMenuDirectionType direction);
+static void ctk_menu_bar_hierarchy_changed (CtkWidget       *widget,
+					    CtkWidget       *old_toplevel);
+static gint ctk_menu_bar_get_popup_delay   (CtkMenuShell    *menu_shell);
+static void ctk_menu_bar_move_current      (CtkMenuShell     *menu_shell,
+                                            CtkMenuDirectionType direction);
 
-static void ctk_menu_bar_measure (GtkCssGadget   *gadget,
-                                  GtkOrientation  orientation,
+static void ctk_menu_bar_measure (CtkCssGadget   *gadget,
+                                  CtkOrientation  orientation,
                                   int             for_size,
                                   int            *minimum,
                                   int            *natural,
                                   int            *minimum_baseline,
                                   int            *natural_baseline,
                                   gpointer        data);
-static void ctk_menu_bar_allocate (GtkCssGadget        *gadget,
-                                   const GtkAllocation *allocation,
+static void ctk_menu_bar_allocate (CtkCssGadget        *gadget,
+                                   const CtkAllocation *allocation,
                                    int                  baseline,
-                                   GtkAllocation       *out_clip,
+                                   CtkAllocation       *out_clip,
                                    gpointer             data);
-static gboolean ctk_menu_bar_render (GtkCssGadget *gadget,
+static gboolean ctk_menu_bar_render (CtkCssGadget *gadget,
                                      cairo_t      *cr,
                                      int           x,
                                      int           y,
@@ -130,22 +130,22 @@ static gboolean ctk_menu_bar_render (GtkCssGadget *gadget,
                                      int           height,
                                      gpointer      data);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkMenuBar, ctk_menu_bar, CTK_TYPE_MENU_SHELL)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkMenuBar, ctk_menu_bar, CTK_TYPE_MENU_SHELL)
 
 static void
-ctk_menu_bar_class_init (GtkMenuBarClass *class)
+ctk_menu_bar_class_init (CtkMenuBarClass *class)
 {
   GObjectClass *gobject_class;
-  GtkWidgetClass *widget_class;
-  GtkMenuShellClass *menu_shell_class;
-  GtkContainerClass *container_class;
+  CtkWidgetClass *widget_class;
+  CtkMenuShellClass *menu_shell_class;
+  CtkContainerClass *container_class;
 
-  GtkBindingSet *binding_set;
+  CtkBindingSet *binding_set;
 
   gobject_class = (GObjectClass*) class;
-  widget_class = (GtkWidgetClass*) class;
-  menu_shell_class = (GtkMenuShellClass*) class;
-  container_class = (GtkContainerClass*) class;
+  widget_class = (CtkWidgetClass*) class;
+  menu_shell_class = (CtkMenuShellClass*) class;
+  container_class = (CtkContainerClass*) class;
 
   gobject_class->get_property = ctk_menu_bar_get_property;
   gobject_class->set_property = ctk_menu_bar_set_property;
@@ -206,7 +206,7 @@ ctk_menu_bar_class_init (GtkMenuBarClass *class)
 				CTK_MENU_DIR_CHILD);
 
   /**
-   * GtkMenuBar:pack-direction:
+   * CtkMenuBar:pack-direction:
    *
    * The pack direction of the menubar. It determines how
    * menuitems are arranged in the menubar.
@@ -223,7 +223,7 @@ ctk_menu_bar_class_init (GtkMenuBarClass *class)
                                                       CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
   
   /**
-   * GtkMenuBar:child-pack-direction:
+   * CtkMenuBar:child-pack-direction:
    *
    * The child pack direction of the menubar. It determines how
    * the widgets contained in child menuitems are arranged.
@@ -241,7 +241,7 @@ ctk_menu_bar_class_init (GtkMenuBarClass *class)
   
 
   /**
-   * GtkMenuBar:shadow-type:
+   * CtkMenuBar:shadow-type:
    *
    * The style of the shadow around the menubar.
    *
@@ -257,12 +257,12 @@ ctk_menu_bar_class_init (GtkMenuBarClass *class)
                                                               CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
-   * GtkMenuBar:internal-padding:
+   * CtkMenuBar:internal-padding:
    *
    * Amount of border space between the menubar shadow and the menu items
    *
    * Deprecated: 3.8: use the standard padding CSS property (through objects
-   *   like #GtkStyleContext and #GtkCssProvider); the value of this style
+   *   like #CtkStyleContext and #CtkCssProvider); the value of this style
    *   property is ignored.
    */
   ctk_widget_class_install_style_property (widget_class,
@@ -280,11 +280,11 @@ ctk_menu_bar_class_init (GtkMenuBarClass *class)
 }
 
 static void
-ctk_menu_bar_init (GtkMenuBar *menu_bar)
+ctk_menu_bar_init (CtkMenuBar *menu_bar)
 {
-  GtkMenuBarPrivate *priv;
-  GtkWidget *widget;
-  GtkCssNode *widget_node;
+  CtkMenuBarPrivate *priv;
+  CtkWidget *widget;
+  CtkCssNode *widget_node;
 
   priv = menu_bar->priv = ctk_menu_bar_get_instance_private (menu_bar);
 
@@ -301,11 +301,11 @@ ctk_menu_bar_init (GtkMenuBar *menu_bar)
 /**
  * ctk_menu_bar_new:
  *
- * Creates a new #GtkMenuBar
+ * Creates a new #CtkMenuBar
  *
- * Returns: the new menu bar, as a #GtkWidget
+ * Returns: the new menu bar, as a #CtkWidget
  */
-GtkWidget*
+CtkWidget*
 ctk_menu_bar_new (void)
 {
   return g_object_new (CTK_TYPE_MENU_BAR, NULL);
@@ -314,7 +314,7 @@ ctk_menu_bar_new (void)
 static void
 ctk_menu_bar_finalize (GObject *object)
 {
-  GtkMenuBar *menu_bar = CTK_MENU_BAR (object);
+  CtkMenuBar *menu_bar = CTK_MENU_BAR (object);
 
   g_clear_object (&menu_bar->priv->gadget);
 
@@ -327,7 +327,7 @@ ctk_menu_bar_set_property (GObject      *object,
 			   const GValue *value,
 			   GParamSpec   *pspec)
 {
-  GtkMenuBar *menubar = CTK_MENU_BAR (object);
+  CtkMenuBar *menubar = CTK_MENU_BAR (object);
   
   switch (prop_id)
     {
@@ -349,7 +349,7 @@ ctk_menu_bar_get_property (GObject    *object,
 			   GValue     *value,
 			   GParamSpec *pspec)
 {
-  GtkMenuBar *menubar = CTK_MENU_BAR (object);
+  CtkMenuBar *menubar = CTK_MENU_BAR (object);
   
   switch (prop_id)
     {
@@ -366,8 +366,8 @@ ctk_menu_bar_get_property (GObject    *object,
 }
 
 static void
-ctk_menu_bar_measure (GtkCssGadget   *gadget,
-                      GtkOrientation  orientation,
+ctk_menu_bar_measure (CtkCssGadget   *gadget,
+                      CtkOrientation  orientation,
                       int             size,
                       int            *minimum,
                       int            *natural,
@@ -375,11 +375,11 @@ ctk_menu_bar_measure (GtkCssGadget   *gadget,
                       int            *natural_baseline,
                       gpointer        data)
 {
-  GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkMenuBar *menu_bar;
-  GtkMenuBarPrivate *priv;
-  GtkMenuShell *menu_shell;
-  GtkWidget *child;
+  CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
+  CtkMenuBar *menu_bar;
+  CtkMenuBarPrivate *priv;
+  CtkMenuShell *menu_shell;
+  CtkWidget *child;
   GList *children;
   gboolean use_toggle_size, use_maximize;
   gint child_minimum, child_natural;
@@ -440,7 +440,7 @@ ctk_menu_bar_measure (GtkCssGadget   *gadget,
 }
 
 static void
-ctk_menu_bar_get_preferred_width (GtkWidget *widget,
+ctk_menu_bar_get_preferred_width (CtkWidget *widget,
 				  gint      *minimum,
 				  gint      *natural)
 {
@@ -452,7 +452,7 @@ ctk_menu_bar_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-ctk_menu_bar_get_preferred_height (GtkWidget *widget,
+ctk_menu_bar_get_preferred_height (CtkWidget *widget,
 				   gint      *minimum,
 				   gint      *natural)
 {
@@ -464,7 +464,7 @@ ctk_menu_bar_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-ctk_menu_bar_get_preferred_width_for_height (GtkWidget *widget,
+ctk_menu_bar_get_preferred_width_for_height (CtkWidget *widget,
                                              gint       height,
                                              gint      *minimum,
                                              gint      *natural)
@@ -477,7 +477,7 @@ ctk_menu_bar_get_preferred_width_for_height (GtkWidget *widget,
 }
 
 static void
-ctk_menu_bar_get_preferred_height_for_width (GtkWidget *widget,
+ctk_menu_bar_get_preferred_height_for_width (CtkWidget *widget,
                                              gint       width,
                                              gint      *minimum,
                                              gint      *natural)
@@ -490,19 +490,19 @@ ctk_menu_bar_get_preferred_height_for_width (GtkWidget *widget,
 }
 
 static void
-ctk_menu_bar_allocate (GtkCssGadget        *gadget,
-                       const GtkAllocation *allocation,
+ctk_menu_bar_allocate (CtkCssGadget        *gadget,
+                       const CtkAllocation *allocation,
                        int                  baseline,
-                       GtkAllocation       *out_clip,
+                       CtkAllocation       *out_clip,
                        gpointer             data)
 {
-  GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkMenuBar *menu_bar;
-  GtkMenuShell *menu_shell;
-  GtkMenuBarPrivate *priv;
-  GtkWidget *child;
+  CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
+  CtkMenuBar *menu_bar;
+  CtkMenuShell *menu_shell;
+  CtkMenuBarPrivate *priv;
+  CtkWidget *child;
   GList *children;
-  GtkAllocation remaining_space;
+  CtkAllocation remaining_space;
   GArray *requested_sizes;
   gint toggle_size;
   guint i;
@@ -515,7 +515,7 @@ ctk_menu_bar_allocate (GtkCssGadget        *gadget,
     return;
 
   remaining_space = *allocation;
-  requested_sizes = g_array_new (FALSE, FALSE, sizeof (GtkRequestedSize));
+  requested_sizes = g_array_new (FALSE, FALSE, sizeof (CtkRequestedSize));
 
   if (priv->pack_direction == CTK_PACK_DIRECTION_LTR ||
       priv->pack_direction == CTK_PACK_DIRECTION_RTL)
@@ -525,7 +525,7 @@ ctk_menu_bar_allocate (GtkCssGadget        *gadget,
 
       for (children = menu_shell->priv->children; children; children = children->next)
         {
-          GtkRequestedSize request;
+          CtkRequestedSize request;
           child = children->data;
 
           if (!ctk_widget_get_visible (child))
@@ -550,12 +550,12 @@ ctk_menu_bar_allocate (GtkCssGadget        *gadget,
 
       size = ctk_distribute_natural_allocation (size,
                                                 requested_sizes->len,
-                                                (GtkRequestedSize *) requested_sizes->data);
+                                                (CtkRequestedSize *) requested_sizes->data);
 
       for (i = 0; i < requested_sizes->len; i++)
         {
-          GtkAllocation child_allocation = remaining_space;
-          GtkRequestedSize *request = &g_array_index (requested_sizes, GtkRequestedSize, i);
+          CtkAllocation child_allocation = remaining_space;
+          CtkRequestedSize *request = &g_array_index (requested_sizes, CtkRequestedSize, i);
 
           child_allocation.width = request->minimum_size;
           remaining_space.width -= request->minimum_size;
@@ -579,7 +579,7 @@ ctk_menu_bar_allocate (GtkCssGadget        *gadget,
 
       for (children = menu_shell->priv->children; children; children = children->next)
         {
-          GtkRequestedSize request;
+          CtkRequestedSize request;
           child = children->data;
 
           if (!ctk_widget_get_visible (child))
@@ -604,12 +604,12 @@ ctk_menu_bar_allocate (GtkCssGadget        *gadget,
 
       size = ctk_distribute_natural_allocation (size,
                                                 requested_sizes->len,
-                                                (GtkRequestedSize *) requested_sizes->data);
+                                                (CtkRequestedSize *) requested_sizes->data);
 
       for (i = 0; i < requested_sizes->len; i++)
         {
-          GtkAllocation child_allocation = remaining_space;
-          GtkRequestedSize *request = &g_array_index (requested_sizes, GtkRequestedSize, i);
+          CtkAllocation child_allocation = remaining_space;
+          CtkRequestedSize *request = &g_array_index (requested_sizes, CtkRequestedSize, i);
 
           child_allocation.height = request->minimum_size;
           remaining_space.height -= request->minimum_size;
@@ -631,11 +631,11 @@ ctk_menu_bar_allocate (GtkCssGadget        *gadget,
 }
 
 static void
-ctk_menu_bar_size_allocate (GtkWidget     *widget,
-			    GtkAllocation *allocation)
+ctk_menu_bar_size_allocate (CtkWidget     *widget,
+			    CtkAllocation *allocation)
 {
-  GtkMenuBar *menu_bar;
-  GtkAllocation clip, content_allocation;
+  CtkMenuBar *menu_bar;
+  CtkAllocation clip, content_allocation;
 
   menu_bar = CTK_MENU_BAR (widget);
   ctk_widget_set_allocation (widget, allocation);
@@ -658,7 +658,7 @@ ctk_menu_bar_size_allocate (GtkWidget     *widget,
 }
 
 static gboolean
-ctk_menu_bar_render (GtkCssGadget *gadget,
+ctk_menu_bar_render (CtkCssGadget *gadget,
                      cairo_t      *cr,
                      int           x,
                      int           y,
@@ -666,7 +666,7 @@ ctk_menu_bar_render (GtkCssGadget *gadget,
                      int           height,
                      gpointer      data)
 {
-  GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
+  CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
 
   CTK_WIDGET_CLASS (ctk_menu_bar_parent_class)->draw (widget, cr);
 
@@ -674,7 +674,7 @@ ctk_menu_bar_render (GtkCssGadget *gadget,
 }
 
 static gboolean
-ctk_menu_bar_draw (GtkWidget *widget,
+ctk_menu_bar_draw (CtkWidget *widget,
 		   cairo_t   *cr)
 {
   ctk_css_gadget_draw (CTK_MENU_BAR (widget)->priv->gadget, cr);
@@ -683,13 +683,13 @@ ctk_menu_bar_draw (GtkWidget *widget,
 }
 
 static GList *
-get_menu_bars (GtkWindow *window)
+get_menu_bars (CtkWindow *window)
 {
   return g_object_get_data (G_OBJECT (window), "ctk-menu-bar-list");
 }
 
 GList *
-_ctk_menu_bar_get_viewable_menu_bars (GtkWindow *window)
+_ctk_menu_bar_get_viewable_menu_bars (CtkWindow *window)
 {
   GList *menu_bars;
   GList *viewable_menu_bars = NULL;
@@ -698,7 +698,7 @@ _ctk_menu_bar_get_viewable_menu_bars (GtkWindow *window)
        menu_bars;
        menu_bars = menu_bars->next)
     {
-      GtkWidget *widget = menu_bars->data;
+      CtkWidget *widget = menu_bars->data;
       gboolean viewable = TRUE;
       
       while (widget)
@@ -717,15 +717,15 @@ _ctk_menu_bar_get_viewable_menu_bars (GtkWindow *window)
 }
 
 static void
-set_menu_bars (GtkWindow *window,
+set_menu_bars (CtkWindow *window,
 	       GList     *menubars)
 {
   g_object_set_data (G_OBJECT (window), I_("ctk-menu-bar-list"), menubars);
 }
 
 static void
-add_to_window (GtkWindow  *window,
-               GtkMenuBar *menubar)
+add_to_window (CtkWindow  *window,
+               CtkMenuBar *menubar)
 {
   GList *menubars = get_menu_bars (window);
 
@@ -733,8 +733,8 @@ add_to_window (GtkWindow  *window,
 }
 
 static void
-remove_from_window (GtkWindow  *window,
-                    GtkMenuBar *menubar)
+remove_from_window (CtkWindow  *window,
+                    CtkMenuBar *menubar)
 {
   GList *menubars = get_menu_bars (window);
 
@@ -743,11 +743,11 @@ remove_from_window (GtkWindow  *window,
 }
 
 static void
-ctk_menu_bar_hierarchy_changed (GtkWidget *widget,
-				GtkWidget *old_toplevel)
+ctk_menu_bar_hierarchy_changed (CtkWidget *widget,
+				CtkWidget *old_toplevel)
 {
-  GtkWidget *toplevel;  
-  GtkMenuBar *menubar;
+  CtkWidget *toplevel;  
+  CtkMenuBar *menubar;
 
   menubar = CTK_MENU_BAR (widget);
 
@@ -762,17 +762,17 @@ ctk_menu_bar_hierarchy_changed (GtkWidget *widget,
 
 /**
  * _ctk_menu_bar_cycle_focus:
- * @menubar: a #GtkMenuBar
+ * @menubar: a #CtkMenuBar
  * @dir: direction in which to cycle the focus
  * 
  * Move the focus between menubars in the toplevel.
  **/
 void
-_ctk_menu_bar_cycle_focus (GtkMenuBar       *menubar,
-			   GtkDirectionType  dir)
+_ctk_menu_bar_cycle_focus (CtkMenuBar       *menubar,
+			   CtkDirectionType  dir)
 {
-  GtkWidget *toplevel = ctk_widget_get_toplevel (CTK_WIDGET (menubar));
-  GtkMenuItem *to_activate = NULL;
+  CtkWidget *toplevel = ctk_widget_get_toplevel (CTK_WIDGET (menubar));
+  CtkMenuItem *to_activate = NULL;
 
   if (ctk_widget_is_toplevel (toplevel))
     {
@@ -790,7 +790,7 @@ _ctk_menu_bar_cycle_focus (GtkMenuBar       *menubar,
 
 	  if (current && current->next)
 	    {
-	      GtkMenuShell *new_menushell = CTK_MENU_SHELL (current->next->data);
+	      CtkMenuShell *new_menushell = CTK_MENU_SHELL (current->next->data);
 	      if (new_menushell->priv->children)
 		to_activate = new_menushell->priv->children->data;
 	    }
@@ -806,18 +806,18 @@ _ctk_menu_bar_cycle_focus (GtkMenuBar       *menubar,
 }
 
 static gint
-ctk_menu_bar_get_popup_delay (GtkMenuShell *menu_shell)
+ctk_menu_bar_get_popup_delay (CtkMenuShell *menu_shell)
 {
   return MENU_BAR_POPUP_DELAY;
 }
 
 static void
-ctk_menu_bar_move_current (GtkMenuShell         *menu_shell,
-			   GtkMenuDirectionType  direction)
+ctk_menu_bar_move_current (CtkMenuShell         *menu_shell,
+			   CtkMenuDirectionType  direction)
 {
-  GtkMenuBar *menubar = CTK_MENU_BAR (menu_shell);
-  GtkTextDirection text_dir;
-  GtkPackDirection pack_dir;
+  CtkMenuBar *menubar = CTK_MENU_BAR (menu_shell);
+  CtkTextDirection text_dir;
+  CtkPackDirection pack_dir;
 
   text_dir = ctk_widget_get_direction (CTK_WIDGET (menubar));
   pack_dir = ctk_menu_bar_get_pack_direction (menubar);
@@ -875,7 +875,7 @@ ctk_menu_bar_move_current (GtkMenuShell         *menu_shell,
 
 /**
  * ctk_menu_bar_get_pack_direction:
- * @menubar: a #GtkMenuBar
+ * @menubar: a #CtkMenuBar
  * 
  * Retrieves the current pack direction of the menubar. 
  * See ctk_menu_bar_set_pack_direction().
@@ -884,8 +884,8 @@ ctk_menu_bar_move_current (GtkMenuShell         *menu_shell,
  *
  * Since: 2.8
  */
-GtkPackDirection
-ctk_menu_bar_get_pack_direction (GtkMenuBar *menubar)
+CtkPackDirection
+ctk_menu_bar_get_pack_direction (CtkMenuBar *menubar)
 {
   g_return_val_if_fail (CTK_IS_MENU_BAR (menubar), 
 			CTK_PACK_DIRECTION_LTR);
@@ -895,18 +895,18 @@ ctk_menu_bar_get_pack_direction (GtkMenuBar *menubar)
 
 /**
  * ctk_menu_bar_set_pack_direction:
- * @menubar: a #GtkMenuBar
- * @pack_dir: a new #GtkPackDirection
+ * @menubar: a #CtkMenuBar
+ * @pack_dir: a new #CtkPackDirection
  * 
  * Sets how items should be packed inside a menubar.
  * 
  * Since: 2.8
  */
 void
-ctk_menu_bar_set_pack_direction (GtkMenuBar       *menubar,
-                                 GtkPackDirection  pack_dir)
+ctk_menu_bar_set_pack_direction (CtkMenuBar       *menubar,
+                                 CtkPackDirection  pack_dir)
 {
-  GtkMenuBarPrivate *priv;
+  CtkMenuBarPrivate *priv;
   GList *l;
 
   g_return_if_fail (CTK_IS_MENU_BAR (menubar));
@@ -928,7 +928,7 @@ ctk_menu_bar_set_pack_direction (GtkMenuBar       *menubar,
 
 /**
  * ctk_menu_bar_get_child_pack_direction:
- * @menubar: a #GtkMenuBar
+ * @menubar: a #CtkMenuBar
  * 
  * Retrieves the current child pack direction of the menubar.
  * See ctk_menu_bar_set_child_pack_direction().
@@ -937,8 +937,8 @@ ctk_menu_bar_set_pack_direction (GtkMenuBar       *menubar,
  *
  * Since: 2.8
  */
-GtkPackDirection
-ctk_menu_bar_get_child_pack_direction (GtkMenuBar *menubar)
+CtkPackDirection
+ctk_menu_bar_get_child_pack_direction (CtkMenuBar *menubar)
 {
   g_return_val_if_fail (CTK_IS_MENU_BAR (menubar), 
 			CTK_PACK_DIRECTION_LTR);
@@ -948,18 +948,18 @@ ctk_menu_bar_get_child_pack_direction (GtkMenuBar *menubar)
 
 /**
  * ctk_menu_bar_set_child_pack_direction:
- * @menubar: a #GtkMenuBar
- * @child_pack_dir: a new #GtkPackDirection
+ * @menubar: a #CtkMenuBar
+ * @child_pack_dir: a new #CtkPackDirection
  * 
  * Sets how widgets should be packed inside the children of a menubar.
  * 
  * Since: 2.8
  */
 void
-ctk_menu_bar_set_child_pack_direction (GtkMenuBar       *menubar,
-                                       GtkPackDirection  child_pack_dir)
+ctk_menu_bar_set_child_pack_direction (CtkMenuBar       *menubar,
+                                       CtkPackDirection  child_pack_dir)
 {
-  GtkMenuBarPrivate *priv;
+  CtkMenuBarPrivate *priv;
   GList *l;
 
   g_return_if_fail (CTK_IS_MENU_BAR (menubar));
@@ -983,22 +983,22 @@ ctk_menu_bar_set_child_pack_direction (GtkMenuBar       *menubar,
  * ctk_menu_bar_new_from_model:
  * @model: a #GMenuModel
  *
- * Creates a new #GtkMenuBar and populates it with menu items
+ * Creates a new #CtkMenuBar and populates it with menu items
  * and submenus according to @model.
  *
  * The created menu items are connected to actions found in the
- * #GtkApplicationWindow to which the menu bar belongs - typically
- * by means of being contained within the #GtkApplicationWindows
+ * #CtkApplicationWindow to which the menu bar belongs - typically
+ * by means of being contained within the #CtkApplicationWindows
  * widget hierarchy.
  *
- * Returns: a new #GtkMenuBar
+ * Returns: a new #CtkMenuBar
  *
  * Since: 3.4
  */
-GtkWidget *
+CtkWidget *
 ctk_menu_bar_new_from_model (GMenuModel *model)
 {
-  GtkWidget *menubar;
+  CtkWidget *menubar;
 
   g_return_val_if_fail (G_IS_MENU_MODEL (model), NULL);
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkListStore" id="liststore1">
+  <object class="CtkListStore" id="liststore1">
     <columns>
       <column type="gchararray"/>
       <column type="gchararray"/>
@@ -13,15 +13,15 @@
       <row><col id="0">Seven</col><col id="1">Eight</col></row>
     </data>
   </object>
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkIconView" id="iv1">
+      <object class="CtkIconView" id="iv1">
         <property name="visible">True</property>
         <property name="model">liststore1</property>
         <child>
-          <object class="GtkCellRendererText" id="renderer1">
+          <object class="CtkCellRendererText" id="renderer1">
           </object>
           <attributes>
             <attribute name="text">0</attribute>

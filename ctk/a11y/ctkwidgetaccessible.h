@@ -27,26 +27,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_WIDGET_ACCESSIBLE                     (ctk_widget_accessible_get_type ())
-#define CTK_WIDGET_ACCESSIBLE(obj)                     (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_WIDGET_ACCESSIBLE, GtkWidgetAccessible))
-#define CTK_WIDGET_ACCESSIBLE_CLASS(klass)             (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_WIDGET_ACCESSIBLE, GtkWidgetAccessibleClass))
+#define CTK_WIDGET_ACCESSIBLE(obj)                     (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_WIDGET_ACCESSIBLE, CtkWidgetAccessible))
+#define CTK_WIDGET_ACCESSIBLE_CLASS(klass)             (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_WIDGET_ACCESSIBLE, CtkWidgetAccessibleClass))
 #define CTK_IS_WIDGET_ACCESSIBLE(obj)                  (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_WIDGET_ACCESSIBLE))
 #define CTK_IS_WIDGET_ACCESSIBLE_CLASS(klass)          (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_WIDGET_ACCESSIBLE))
-#define CTK_WIDGET_ACCESSIBLE_GET_CLASS(obj)           (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_WIDGET_ACCESSIBLE, GtkWidgetAccessibleClass))
+#define CTK_WIDGET_ACCESSIBLE_GET_CLASS(obj)           (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_WIDGET_ACCESSIBLE, CtkWidgetAccessibleClass))
 
-typedef struct _GtkWidgetAccessible        GtkWidgetAccessible;
-typedef struct _GtkWidgetAccessibleClass   GtkWidgetAccessibleClass;
-typedef struct _GtkWidgetAccessiblePrivate GtkWidgetAccessiblePrivate;
+typedef struct _CtkWidgetAccessible        CtkWidgetAccessible;
+typedef struct _CtkWidgetAccessibleClass   CtkWidgetAccessibleClass;
+typedef struct _CtkWidgetAccessiblePrivate CtkWidgetAccessiblePrivate;
 
-struct _GtkWidgetAccessible
+struct _CtkWidgetAccessible
 {
-  GtkAccessible parent;
+  CtkAccessible parent;
 
-  GtkWidgetAccessiblePrivate *priv;
+  CtkWidgetAccessiblePrivate *priv;
 };
 
-struct _GtkWidgetAccessibleClass
+struct _CtkWidgetAccessibleClass
 {
-  GtkAccessibleClass parent_class;
+  CtkAccessibleClass parent_class;
 
   /*
    * Signal handler for notify signal on GTK widget

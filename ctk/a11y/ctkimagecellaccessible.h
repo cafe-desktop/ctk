@@ -28,26 +28,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_IMAGE_CELL_ACCESSIBLE            (ctk_image_cell_accessible_get_type ())
-#define CTK_IMAGE_CELL_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_IMAGE_CELL_ACCESSIBLE, GtkImageCellAccessible))
-#define CTK_IMAGE_CELL_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_IMAGE_CELL_ACCESSIBLE, GtkImageCellAccessibleClass))
+#define CTK_IMAGE_CELL_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_IMAGE_CELL_ACCESSIBLE, CtkImageCellAccessible))
+#define CTK_IMAGE_CELL_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_IMAGE_CELL_ACCESSIBLE, CtkImageCellAccessibleClass))
 #define CTK_IS_IMAGE_CELL_ACCESSIBLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_IMAGE_CELL_ACCESSIBLE))
 #define CTK_IS_IMAGE_CELL_ACCESSIBLE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_IMAGE_CELL_ACCESSIBLE))
-#define CTK_IMAGE_CELL_ACCESSIBLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_IMAGE_CELL_ACCESSIBLE, GtkImageCellAccessibleClass))
+#define CTK_IMAGE_CELL_ACCESSIBLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_IMAGE_CELL_ACCESSIBLE, CtkImageCellAccessibleClass))
 
-typedef struct _GtkImageCellAccessible        GtkImageCellAccessible;
-typedef struct _GtkImageCellAccessibleClass   GtkImageCellAccessibleClass;
-typedef struct _GtkImageCellAccessiblePrivate GtkImageCellAccessiblePrivate;
+typedef struct _CtkImageCellAccessible        CtkImageCellAccessible;
+typedef struct _CtkImageCellAccessibleClass   CtkImageCellAccessibleClass;
+typedef struct _CtkImageCellAccessiblePrivate CtkImageCellAccessiblePrivate;
 
-struct _GtkImageCellAccessible
+struct _CtkImageCellAccessible
 {
-  GtkRendererCellAccessible parent;
+  CtkRendererCellAccessible parent;
 
-  GtkImageCellAccessiblePrivate *priv;
+  CtkImageCellAccessiblePrivate *priv;
 };
 
-struct _GtkImageCellAccessibleClass
+struct _CtkImageCellAccessibleClass
 {
-  GtkRendererCellAccessibleClass parent_class;
+  CtkRendererCellAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

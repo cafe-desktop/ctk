@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="ctk30">
-  <template class="GtkEmojiCompletion" parent="GtkPopover">
+  <template class="CtkEmojiCompletion" parent="CtkPopover">
     <property name="modal">0</property>
     <style>
       <class name="emoji-completion"/>
     </style>
     <child>
-      <object class="GtkListBox" id="list">
+      <object class="CtkListBox" id="list">
         <property name="visible">1</property>
         <property name="selection-mode">none</property>
         <property name="activate-on-single-click">1</property>

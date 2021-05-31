@@ -35,7 +35,7 @@
 
 typedef struct
 {
-  GtkSearchEngineSimple *engine;
+  CtkSearchEngineSimple *engine;
   GCancellable *cancellable;
 
   GQueue *directories;
@@ -44,37 +44,37 @@ typedef struct
   gint n_processed_files;
   GList *hits;
 
-  GtkQuery *query;
+  CtkQuery *query;
   gboolean recursive;
 } SearchThreadData;
 
 
-struct _GtkSearchEngineSimple
+struct _CtkSearchEngineSimple
 {
-  GtkSearchEngine parent;
+  CtkSearchEngine parent;
 
-  GtkQuery *query;
+  CtkQuery *query;
 
   SearchThreadData *active_search;
 
   gboolean query_finished;
 
-  GtkSearchEngineSimpleIsIndexed is_indexed_callback;
+  CtkSearchEngineSimpleIsIndexed is_indexed_callback;
   gpointer                       is_indexed_data;
   GDestroyNotify                 is_indexed_data_destroy;
 };
 
-struct _GtkSearchEngineSimpleClass
+struct _CtkSearchEngineSimpleClass
 {
-  GtkSearchEngineClass parent_class;
+  CtkSearchEngineClass parent_class;
 };
 
-G_DEFINE_TYPE (GtkSearchEngineSimple, _ctk_search_engine_simple, CTK_TYPE_SEARCH_ENGINE)
+G_DEFINE_TYPE (CtkSearchEngineSimple, _ctk_search_engine_simple, CTK_TYPE_SEARCH_ENGINE)
 
 static void
 ctk_search_engine_simple_dispose (GObject *object)
 {
-  GtkSearchEngineSimple *simple = CTK_SEARCH_ENGINE_SIMPLE (object);
+  CtkSearchEngineSimple *simple = CTK_SEARCH_ENGINE_SIMPLE (object);
 
   g_clear_object (&simple->query);
 
@@ -100,8 +100,8 @@ queue_if_local (SearchThreadData *data,
 }
 
 static SearchThreadData *
-search_thread_data_new (GtkSearchEngineSimple *engine,
-			GtkQuery              *query)
+search_thread_data_new (CtkSearchEngineSimple *engine,
+			CtkQuery              *query)
 {
   SearchThreadData *data;
 
@@ -194,7 +194,7 @@ send_batch (SearchThreadData *data)
 }
 
 static gboolean
-is_indexed (GtkSearchEngineSimple *engine,
+is_indexed (CtkSearchEngineSimple *engine,
             GFile                 *location)
 {
   if (engine->is_indexed_callback)
@@ -253,9 +253,9 @@ visit_directory (GFile *dir, SearchThreadData *data)
 
       if (ctk_query_matches_string (data->query, display_name))
         {
-          GtkSearchHit *hit;
+          CtkSearchHit *hit;
 
-          hit = g_new (GtkSearchHit, 1);
+          hit = g_new (CtkSearchHit, 1);
           hit->file = g_object_ref (child);
           hit->info = g_object_ref (info);
           data->hits = g_list_prepend (data->hits, hit);
@@ -300,9 +300,9 @@ search_thread_func (gpointer user_data)
 }
 
 static void
-ctk_search_engine_simple_start (GtkSearchEngine *engine)
+ctk_search_engine_simple_start (CtkSearchEngine *engine)
 {
-  GtkSearchEngineSimple *simple;
+  CtkSearchEngineSimple *simple;
   SearchThreadData *data;
 
   simple = CTK_SEARCH_ENGINE_SIMPLE (engine);
@@ -321,9 +321,9 @@ ctk_search_engine_simple_start (GtkSearchEngine *engine)
 }
 
 static void
-ctk_search_engine_simple_stop (GtkSearchEngine *engine)
+ctk_search_engine_simple_stop (CtkSearchEngine *engine)
 {
-  GtkSearchEngineSimple *simple;
+  CtkSearchEngineSimple *simple;
 
   simple = CTK_SEARCH_ENGINE_SIMPLE (engine);
 
@@ -335,10 +335,10 @@ ctk_search_engine_simple_stop (GtkSearchEngine *engine)
 }
 
 static void
-ctk_search_engine_simple_set_query (GtkSearchEngine *engine,
-				    GtkQuery        *query)
+ctk_search_engine_simple_set_query (CtkSearchEngine *engine,
+				    CtkQuery        *query)
 {
-  GtkSearchEngineSimple *simple;
+  CtkSearchEngineSimple *simple;
 
   simple = CTK_SEARCH_ENGINE_SIMPLE (engine);
 
@@ -352,10 +352,10 @@ ctk_search_engine_simple_set_query (GtkSearchEngine *engine,
 }
 
 static void
-_ctk_search_engine_simple_class_init (GtkSearchEngineSimpleClass *class)
+_ctk_search_engine_simple_class_init (CtkSearchEngineSimpleClass *class)
 {
   GObjectClass *gobject_class;
-  GtkSearchEngineClass *engine_class;
+  CtkSearchEngineClass *engine_class;
 
   gobject_class = G_OBJECT_CLASS (class);
   gobject_class->dispose = ctk_search_engine_simple_dispose;
@@ -367,19 +367,19 @@ _ctk_search_engine_simple_class_init (GtkSearchEngineSimpleClass *class)
 }
 
 static void
-_ctk_search_engine_simple_init (GtkSearchEngineSimple *engine)
+_ctk_search_engine_simple_init (CtkSearchEngineSimple *engine)
 {
 }
 
-GtkSearchEngine *
+CtkSearchEngine *
 _ctk_search_engine_simple_new (void)
 {
   return g_object_new (CTK_TYPE_SEARCH_ENGINE_SIMPLE, NULL);
 }
 
 void
-_ctk_search_engine_simple_set_indexed_cb (GtkSearchEngineSimple          *engine,
-                                          GtkSearchEngineSimpleIsIndexed  callback,
+_ctk_search_engine_simple_set_indexed_cb (CtkSearchEngineSimple          *engine,
+                                          CtkSearchEngineSimpleIsIndexed  callback,
                                           gpointer                        data,
                                           GDestroyNotify                  destroy)
 {

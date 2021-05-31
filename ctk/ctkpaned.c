@@ -49,9 +49,9 @@
 /**
  * SECTION:ctkpaned
  * @Short_description: A widget with two adjustable panes
- * @Title: GtkPaned
+ * @Title: CtkPaned
  *
- * #GtkPaned has two panes, arranged either
+ * #CtkPaned has two panes, arranged either
  * horizontally or vertically. The division between
  * the two panes is adjustable by the user by dragging
  * a handle.
@@ -66,12 +66,12 @@
  * small handle that the user can drag to adjust the division. It does not
  * draw any relief around the children or around the separator. (The space
  * in which the separator is called the gutter.) Often, it is useful to put
- * each child inside a #GtkFrame with the shadow type set to %CTK_SHADOW_IN
+ * each child inside a #CtkFrame with the shadow type set to %CTK_SHADOW_IN
  * so that the gutter appears as a ridge. No separator is drawn if one of
  * the children is missing.
  *
  * Each child has two options that can be set, @resize and @shrink. If
- * @resize is true, then when the #GtkPaned is resized, that child will
+ * @resize is true, then when the #CtkPaned is resized, that child will
  * expand or shrink along with the paned widget. If @shrink is true, then
  * that child can be made smaller than its requisition by the user.
  * Setting @shrink to %FALSE allows the application to set a minimum size.
@@ -90,7 +90,7 @@
  * ╰── <child>
  * ]|
  *
- * GtkPaned has a main CSS node with name paned, and a subnode for
+ * CtkPaned has a main CSS node with name paned, and a subnode for
  * the separator with name separator. The subnode gets a .wide style
  * class when the paned is supposed to be wide.
  *
@@ -101,9 +101,9 @@
  * ## Creating a paned widget with minimum sizes.
  *
  * |[<!-- language="C" -->
- * GtkWidget *hpaned = ctk_paned_new (CTK_ORIENTATION_HORIZONTAL);
- * GtkWidget *frame1 = ctk_frame_new (NULL);
- * GtkWidget *frame2 = ctk_frame_new (NULL);
+ * CtkWidget *hpaned = ctk_paned_new (CTK_ORIENTATION_HORIZONTAL);
+ * CtkWidget *frame1 = ctk_frame_new (NULL);
+ * CtkWidget *frame2 = ctk_frame_new (NULL);
  * ctk_frame_set_shadow_type (CTK_FRAME (frame1), CTK_SHADOW_IN);
  * ctk_frame_set_shadow_type (CTK_FRAME (frame2), CTK_SHADOW_IN);
  *
@@ -122,26 +122,26 @@ enum {
   CHILD2
 };
 
-struct _GtkPanedPrivate
+struct _CtkPanedPrivate
 {
-  GtkPaned       *first_paned;
-  GtkWidget      *child1;
-  GtkWidget      *child2;
+  CtkPaned       *first_paned;
+  CtkWidget      *child1;
+  CtkWidget      *child2;
   GdkWindow      *child1_window;
   GdkWindow      *child2_window;
-  GtkWidget      *last_child1_focus;
-  GtkWidget      *last_child2_focus;
-  GtkWidget      *saved_focus;
-  GtkOrientation  orientation;
+  CtkWidget      *last_child1_focus;
+  CtkWidget      *last_child2_focus;
+  CtkWidget      *saved_focus;
+  CtkOrientation  orientation;
 
   GdkRectangle   handle_pos;
   GdkWindow     *handle;
 
-  GtkCssGadget  *gadget;
-  GtkCssGadget  *handle_gadget;
+  CtkCssGadget  *gadget;
+  CtkCssGadget  *handle_gadget;
 
-  GtkGesture    *pan_gesture;  /* Used for touch */
-  GtkGesture    *drag_gesture; /* Used for mice */
+  CtkGesture    *pan_gesture;  /* Used for touch */
+  CtkGesture    *drag_gesture; /* Used for mice */
 
   gint          child1_size;
   gint          drag_pos;
@@ -194,93 +194,93 @@ static void     ctk_paned_get_property          (GObject          *object,
 						 guint             prop_id,
 						 GValue           *value,
 						 GParamSpec       *pspec);
-static void     ctk_paned_set_child_property    (GtkContainer     *container,
-                                                 GtkWidget        *child,
+static void     ctk_paned_set_child_property    (CtkContainer     *container,
+                                                 CtkWidget        *child,
                                                  guint             property_id,
                                                  const GValue     *value,
                                                  GParamSpec       *pspec);
-static void     ctk_paned_get_child_property    (GtkContainer     *container,
-                                                 GtkWidget        *child,
+static void     ctk_paned_get_child_property    (CtkContainer     *container,
+                                                 CtkWidget        *child,
                                                  guint             property_id,
                                                  GValue           *value,
                                                  GParamSpec       *pspec);
 static void     ctk_paned_finalize              (GObject          *object);
 
-static void     ctk_paned_get_preferred_width   (GtkWidget        *widget,
+static void     ctk_paned_get_preferred_width   (CtkWidget        *widget,
                                                  gint             *minimum,
                                                  gint             *natural);
-static void     ctk_paned_get_preferred_height  (GtkWidget        *widget,
+static void     ctk_paned_get_preferred_height  (CtkWidget        *widget,
                                                  gint             *minimum,
                                                  gint             *natural);
 static void     ctk_paned_get_preferred_width_for_height
-                                                (GtkWidget        *widget,
+                                                (CtkWidget        *widget,
                                                  gint              height,
                                                  gint             *minimum,
                                                  gint             *natural);
 static void     ctk_paned_get_preferred_height_for_width
-                                                (GtkWidget        *widget,
+                                                (CtkWidget        *widget,
                                                  gint              width,
                                                  gint             *minimum,
                                                  gint              *natural);
 
-static void     ctk_paned_size_allocate         (GtkWidget        *widget,
-                                                 GtkAllocation    *allocation);
-static void     ctk_paned_realize               (GtkWidget        *widget);
-static void     ctk_paned_unrealize             (GtkWidget        *widget);
-static void     ctk_paned_map                   (GtkWidget        *widget);
-static void     ctk_paned_unmap                 (GtkWidget        *widget);
-static void     ctk_paned_state_flags_changed   (GtkWidget        *widget,
-                                                 GtkStateFlags     previous_state);
-static void     ctk_paned_direction_changed     (GtkWidget        *widget,
-                                                 GtkTextDirection  previous_direction);
-static gboolean ctk_paned_draw                  (GtkWidget        *widget,
+static void     ctk_paned_size_allocate         (CtkWidget        *widget,
+                                                 CtkAllocation    *allocation);
+static void     ctk_paned_realize               (CtkWidget        *widget);
+static void     ctk_paned_unrealize             (CtkWidget        *widget);
+static void     ctk_paned_map                   (CtkWidget        *widget);
+static void     ctk_paned_unmap                 (CtkWidget        *widget);
+static void     ctk_paned_state_flags_changed   (CtkWidget        *widget,
+                                                 CtkStateFlags     previous_state);
+static void     ctk_paned_direction_changed     (CtkWidget        *widget,
+                                                 CtkTextDirection  previous_direction);
+static gboolean ctk_paned_draw                  (CtkWidget        *widget,
 						 cairo_t          *cr);
-static gboolean ctk_paned_enter                 (GtkWidget        *widget,
+static gboolean ctk_paned_enter                 (CtkWidget        *widget,
 						 GdkEventCrossing *event);
-static gboolean ctk_paned_leave                 (GtkWidget        *widget,
+static gboolean ctk_paned_leave                 (CtkWidget        *widget,
 						 GdkEventCrossing *event);
-static gboolean ctk_paned_focus                 (GtkWidget        *widget,
-						 GtkDirectionType  direction);
-static void     ctk_paned_add                   (GtkContainer     *container,
-						 GtkWidget        *widget);
-static void     ctk_paned_remove                (GtkContainer     *container,
-						 GtkWidget        *widget);
-static void     ctk_paned_forall                (GtkContainer     *container,
+static gboolean ctk_paned_focus                 (CtkWidget        *widget,
+						 CtkDirectionType  direction);
+static void     ctk_paned_add                   (CtkContainer     *container,
+						 CtkWidget        *widget);
+static void     ctk_paned_remove                (CtkContainer     *container,
+						 CtkWidget        *widget);
+static void     ctk_paned_forall                (CtkContainer     *container,
 						 gboolean          include_internals,
-						 GtkCallback       callback,
+						 CtkCallback       callback,
 						 gpointer          callback_data);
-static void     ctk_paned_calc_position         (GtkPaned         *paned,
+static void     ctk_paned_calc_position         (CtkPaned         *paned,
                                                  gint              allocation,
                                                  gint              child1_req,
                                                  gint              child2_req);
-static void     ctk_paned_set_focus_child       (GtkContainer     *container,
-						 GtkWidget        *child);
-static void     ctk_paned_set_saved_focus       (GtkPaned         *paned,
-						 GtkWidget        *widget);
-static void     ctk_paned_set_first_paned       (GtkPaned         *paned,
-						 GtkPaned         *first_paned);
-static void     ctk_paned_set_last_child1_focus (GtkPaned         *paned,
-						 GtkWidget        *widget);
-static void     ctk_paned_set_last_child2_focus (GtkPaned         *paned,
-						 GtkWidget        *widget);
-static gboolean ctk_paned_cycle_child_focus     (GtkPaned         *paned,
+static void     ctk_paned_set_focus_child       (CtkContainer     *container,
+						 CtkWidget        *child);
+static void     ctk_paned_set_saved_focus       (CtkPaned         *paned,
+						 CtkWidget        *widget);
+static void     ctk_paned_set_first_paned       (CtkPaned         *paned,
+						 CtkPaned         *first_paned);
+static void     ctk_paned_set_last_child1_focus (CtkPaned         *paned,
+						 CtkWidget        *widget);
+static void     ctk_paned_set_last_child2_focus (CtkPaned         *paned,
+						 CtkWidget        *widget);
+static gboolean ctk_paned_cycle_child_focus     (CtkPaned         *paned,
 						 gboolean          reverse);
-static gboolean ctk_paned_cycle_handle_focus    (GtkPaned         *paned,
+static gboolean ctk_paned_cycle_handle_focus    (CtkPaned         *paned,
 						 gboolean          reverse);
-static gboolean ctk_paned_move_handle           (GtkPaned         *paned,
-						 GtkScrollType     scroll);
-static gboolean ctk_paned_accept_position       (GtkPaned         *paned);
-static gboolean ctk_paned_cancel_position       (GtkPaned         *paned);
-static gboolean ctk_paned_toggle_handle_focus   (GtkPaned         *paned);
+static gboolean ctk_paned_move_handle           (CtkPaned         *paned,
+						 CtkScrollType     scroll);
+static gboolean ctk_paned_accept_position       (CtkPaned         *paned);
+static gboolean ctk_paned_cancel_position       (CtkPaned         *paned);
+static gboolean ctk_paned_toggle_handle_focus   (CtkPaned         *paned);
 
-static GType    ctk_paned_child_type            (GtkContainer     *container);
+static GType    ctk_paned_child_type            (CtkContainer     *container);
 
-static void     update_drag                     (GtkPaned         *paned,
+static void     update_drag                     (CtkPaned         *paned,
                                                  int               xpos,
                                                  int               ypos);
 
-G_DEFINE_TYPE_WITH_CODE (GtkPaned, ctk_paned, CTK_TYPE_CONTAINER,
-                         G_ADD_PRIVATE (GtkPaned)
+G_DEFINE_TYPE_WITH_CODE (CtkPaned, ctk_paned, CTK_TYPE_CONTAINER,
+                         G_ADD_PRIVATE (CtkPaned)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_ORIENTABLE,
                                                 NULL))
 
@@ -288,7 +288,7 @@ static guint signals[LAST_SIGNAL] = { 0 };
 
 
 static void
-add_tab_bindings (GtkBindingSet    *binding_set,
+add_tab_bindings (CtkBindingSet    *binding_set,
 		  GdkModifierType   modifiers)
 {
   ctk_binding_entry_add_signal (binding_set, GDK_KEY_Tab, modifiers,
@@ -298,10 +298,10 @@ add_tab_bindings (GtkBindingSet    *binding_set,
 }
 
 static void
-add_move_binding (GtkBindingSet   *binding_set,
+add_move_binding (CtkBindingSet   *binding_set,
 		  guint            keyval,
 		  GdkModifierType  mask,
-		  GtkScrollType    scroll)
+		  CtkScrollType    scroll)
 {
   ctk_binding_entry_add_signal (binding_set, keyval, mask,
 				"move-handle", 1,
@@ -309,18 +309,18 @@ add_move_binding (GtkBindingSet   *binding_set,
 }
 
 static void
-ctk_paned_class_init (GtkPanedClass *class)
+ctk_paned_class_init (CtkPanedClass *class)
 {
   GObjectClass *object_class;
-  GtkWidgetClass *widget_class;
-  GtkContainerClass *container_class;
-  GtkPanedClass *paned_class;
-  GtkBindingSet *binding_set;
+  CtkWidgetClass *widget_class;
+  CtkContainerClass *container_class;
+  CtkPanedClass *paned_class;
+  CtkBindingSet *binding_set;
 
   object_class = (GObjectClass *) class;
-  widget_class = (GtkWidgetClass *) class;
-  container_class = (GtkContainerClass *) class;
-  paned_class = (GtkPanedClass *) class;
+  widget_class = (CtkWidgetClass *) class;
+  container_class = (CtkContainerClass *) class;
+  paned_class = (CtkPanedClass *) class;
 
   object_class->set_property = ctk_paned_set_property;
   object_class->get_property = ctk_paned_get_property;
@@ -379,7 +379,7 @@ ctk_paned_class_init (GtkPanedClass *class)
                                                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkPaned:min-position:
+   * CtkPaned:min-position:
    *
    * The smallest possible value for the position property.
    * This property is derived from the size and shrinkability
@@ -396,7 +396,7 @@ ctk_paned_class_init (GtkPanedClass *class)
                                                      CTK_PARAM_READABLE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkPaned:max-position:
+   * CtkPaned:max-position:
    *
    * The largest possible value for the position property.
    * This property is derived from the size and shrinkability
@@ -413,7 +413,7 @@ ctk_paned_class_init (GtkPanedClass *class)
                                                      CTK_PARAM_READABLE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkPaned:wide-handle:
+   * CtkPaned:wide-handle:
    *
    * Setting this property to %TRUE indicates that the paned needs
    * to provide stronger visual separation (e.g. because it separates
@@ -430,7 +430,7 @@ ctk_paned_class_init (GtkPanedClass *class)
                                                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkPaned::handle-size:
+   * CtkPaned::handle-size:
    *
    * The width of the handle.
    *
@@ -446,7 +446,7 @@ ctk_paned_class_init (GtkPanedClass *class)
 							     CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
-   * GtkPaned:resize:
+   * CtkPaned:resize:
    *
    * The "resize" child property determines whether the child expands and
    * shrinks along with the paned widget.
@@ -462,7 +462,7 @@ ctk_paned_class_init (GtkPanedClass *class)
 								    CTK_PARAM_READWRITE));
 
   /**
-   * GtkPaned:shrink:
+   * CtkPaned:shrink:
    *
    * The "shrink" child property determines whether the child can be made
    * smaller than its requisition.
@@ -478,12 +478,12 @@ ctk_paned_class_init (GtkPanedClass *class)
 								    CTK_PARAM_READWRITE));
 
   /**
-   * GtkPaned::cycle-child-focus:
+   * CtkPaned::cycle-child-focus:
    * @widget: the object that received the signal
    * @reversed: whether cycling backward or forward
    *
    * The ::cycle-child-focus signal is a 
-   * [keybinding signal][GtkBindingSignal]
+   * [keybinding signal][CtkBindingSignal]
    * which gets emitted to cycle the focus between the children of the paned.
    *
    * The default binding is f6.
@@ -494,18 +494,18 @@ ctk_paned_class_init (GtkPanedClass *class)
     g_signal_new (I_("cycle-child-focus"),
 		  G_TYPE_FROM_CLASS (object_class),
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		  G_STRUCT_OFFSET (GtkPanedClass, cycle_child_focus),
+		  G_STRUCT_OFFSET (CtkPanedClass, cycle_child_focus),
 		  NULL, NULL,
 		  _ctk_marshal_BOOLEAN__BOOLEAN,
 		  G_TYPE_BOOLEAN, 1,
 		  G_TYPE_BOOLEAN);
 
   /**
-   * GtkPaned::toggle-handle-focus:
+   * CtkPaned::toggle-handle-focus:
    * @widget: the object that received the signal
    *
    * The ::toggle-handle-focus is a 
-   * [keybinding signal][GtkBindingSignal]
+   * [keybinding signal][CtkBindingSignal]
    * which gets emitted to accept the current position of the handle and then 
    * move focus to the next widget in the focus chain.
    *
@@ -517,18 +517,18 @@ ctk_paned_class_init (GtkPanedClass *class)
     g_signal_new (I_("toggle-handle-focus"),
 		  G_TYPE_FROM_CLASS (object_class),
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		  G_STRUCT_OFFSET (GtkPanedClass, toggle_handle_focus),
+		  G_STRUCT_OFFSET (CtkPanedClass, toggle_handle_focus),
 		  NULL, NULL,
 		  _ctk_marshal_BOOLEAN__VOID,
 		  G_TYPE_BOOLEAN, 0);
 
   /**
-   * GtkPaned::move-handle:
+   * CtkPaned::move-handle:
    * @widget: the object that received the signal
-   * @scroll_type: a #GtkScrollType
+   * @scroll_type: a #CtkScrollType
    *
    * The ::move-handle signal is a 
-   * [keybinding signal][GtkBindingSignal]
+   * [keybinding signal][CtkBindingSignal]
    * which gets emitted to move the handle when the user is using key bindings 
    * to move it.
    *
@@ -538,19 +538,19 @@ ctk_paned_class_init (GtkPanedClass *class)
     g_signal_new (I_("move-handle"),
 		  G_TYPE_FROM_CLASS (object_class),
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-                  G_STRUCT_OFFSET (GtkPanedClass, move_handle),
+                  G_STRUCT_OFFSET (CtkPanedClass, move_handle),
                   NULL, NULL,
                   _ctk_marshal_BOOLEAN__ENUM,
                   G_TYPE_BOOLEAN, 1,
                   CTK_TYPE_SCROLL_TYPE);
 
   /**
-   * GtkPaned::cycle-handle-focus:
+   * CtkPaned::cycle-handle-focus:
    * @widget: the object that received the signal
    * @reversed: whether cycling backward or forward
    *
    * The ::cycle-handle-focus signal is a 
-   * [keybinding signal][GtkBindingSignal]
+   * [keybinding signal][CtkBindingSignal]
    * which gets emitted to cycle whether the paned should grab focus to allow
    * the user to change position of the handle by using key bindings.
    *
@@ -562,18 +562,18 @@ ctk_paned_class_init (GtkPanedClass *class)
     g_signal_new (I_("cycle-handle-focus"),
 		  G_TYPE_FROM_CLASS (object_class),
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		  G_STRUCT_OFFSET (GtkPanedClass, cycle_handle_focus),
+		  G_STRUCT_OFFSET (CtkPanedClass, cycle_handle_focus),
 		  NULL, NULL,
 		  _ctk_marshal_BOOLEAN__BOOLEAN,
 		  G_TYPE_BOOLEAN, 1,
 		  G_TYPE_BOOLEAN);
 
   /**
-   * GtkPaned::accept-position:
+   * CtkPaned::accept-position:
    * @widget: the object that received the signal
    *
    * The ::accept-position signal is a 
-   * [keybinding signal][GtkBindingSignal]
+   * [keybinding signal][CtkBindingSignal]
    * which gets emitted to accept the current position of the handle when 
    * moving it using key bindings.
    *
@@ -585,17 +585,17 @@ ctk_paned_class_init (GtkPanedClass *class)
     g_signal_new (I_("accept-position"),
 		  G_TYPE_FROM_CLASS (object_class),
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		  G_STRUCT_OFFSET (GtkPanedClass, accept_position),
+		  G_STRUCT_OFFSET (CtkPanedClass, accept_position),
 		  NULL, NULL,
 		  _ctk_marshal_BOOLEAN__VOID,
 		  G_TYPE_BOOLEAN, 0);
 
   /**
-   * GtkPaned::cancel-position:
+   * CtkPaned::cancel-position:
    * @widget: the object that received the signal
    *
    * The ::cancel-position signal is a 
-   * [keybinding signal][GtkBindingSignal]
+   * [keybinding signal][CtkBindingSignal]
    * which gets emitted to cancel moving the position of the handle using key 
    * bindings. The position of the handle will be reset to the value prior to 
    * moving it.
@@ -608,7 +608,7 @@ ctk_paned_class_init (GtkPanedClass *class)
     g_signal_new (I_("cancel-position"),
 		  G_TYPE_FROM_CLASS (object_class),
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		  G_STRUCT_OFFSET (GtkPanedClass, cancel_position),
+		  G_STRUCT_OFFSET (CtkPanedClass, cancel_position),
 		  NULL, NULL,
 		  _ctk_marshal_BOOLEAN__VOID,
 		  G_TYPE_BOOLEAN, 0);
@@ -697,10 +697,10 @@ ctk_paned_class_init (GtkPanedClass *class)
 }
 
 static GType
-ctk_paned_child_type (GtkContainer *container)
+ctk_paned_child_type (CtkContainer *container)
 {
-  GtkPaned *paned = CTK_PANED (container);
-  GtkPanedPrivate *priv = paned->priv;
+  CtkPaned *paned = CTK_PANED (container);
+  CtkPanedPrivate *priv = paned->priv;
 
   if (!priv->child1 || !priv->child2)
     return CTK_TYPE_WIDGET;
@@ -709,13 +709,13 @@ ctk_paned_child_type (GtkContainer *container)
 }
 
 static gboolean
-initiates_touch_drag (GtkPaned *paned,
+initiates_touch_drag (CtkPaned *paned,
                       gdouble   start_x,
                       gdouble   start_y)
 {
   gint handle_size, handle_pos, drag_pos;
-  GtkPanedPrivate *priv = paned->priv;
-  GtkAllocation allocation;
+  CtkPanedPrivate *priv = paned->priv;
+  CtkAllocation allocation;
 
 #define TOUCH_EXTRA_AREA_WIDTH 50
   ctk_css_gadget_get_content_allocation (priv->gadget, &allocation, NULL);
@@ -746,14 +746,14 @@ initiates_touch_drag (GtkPaned *paned,
 }
 
 static void
-gesture_drag_begin_cb (GtkGestureDrag *gesture,
+gesture_drag_begin_cb (CtkGestureDrag *gesture,
                        gdouble         start_x,
                        gdouble         start_y,
-                       GtkPaned       *paned)
+                       CtkPaned       *paned)
 {
-  GtkPanedPrivate *priv = paned->priv;
+  CtkPanedPrivate *priv = paned->priv;
   GdkEventSequence *sequence;
-  GtkAllocation allocation;
+  CtkAllocation allocation;
   const GdkEvent *event;
   GdkDevice *device;
   gboolean is_touch;
@@ -794,10 +794,10 @@ gesture_drag_begin_cb (GtkGestureDrag *gesture,
 }
 
 static void
-gesture_drag_update_cb (GtkGestureDrag   *gesture,
+gesture_drag_update_cb (CtkGestureDrag   *gesture,
                         gdouble           offset_x,
                         gdouble           offset_y,
-                        GtkPaned         *paned)
+                        CtkPaned         *paned)
 {
   gdouble start_x, start_y;
 
@@ -809,10 +809,10 @@ gesture_drag_update_cb (GtkGestureDrag   *gesture,
 }
 
 static void
-gesture_drag_end_cb (GtkGestureDrag *gesture,
+gesture_drag_end_cb (CtkGestureDrag *gesture,
                      gdouble         offset_x,
                      gdouble         offset_y,
-                     GtkPaned       *paned)
+                     CtkPaned       *paned)
 {
   if (!paned->priv->panning)
     ctk_gesture_set_state (CTK_GESTURE (gesture), CTK_EVENT_SEQUENCE_DENIED);
@@ -824,8 +824,8 @@ ctk_paned_set_property (GObject        *object,
 			const GValue   *value,
 			GParamSpec     *pspec)
 {
-  GtkPaned *paned = CTK_PANED (object);
-  GtkPanedPrivate *priv = paned->priv;
+  CtkPaned *paned = CTK_PANED (object);
+  CtkPanedPrivate *priv = paned->priv;
 
   switch (prop_id)
     {
@@ -874,8 +874,8 @@ ctk_paned_get_property (GObject        *object,
 			GValue         *value,
 			GParamSpec     *pspec)
 {
-  GtkPaned *paned = CTK_PANED (object);
-  GtkPanedPrivate *priv = paned->priv;
+  CtkPaned *paned = CTK_PANED (object);
+  CtkPanedPrivate *priv = paned->priv;
 
   switch (prop_id)
     {
@@ -904,14 +904,14 @@ ctk_paned_get_property (GObject        *object,
 }
 
 static void
-ctk_paned_set_child_property (GtkContainer    *container,
-			      GtkWidget       *child,
+ctk_paned_set_child_property (CtkContainer    *container,
+			      CtkWidget       *child,
 			      guint            property_id,
 			      const GValue    *value,
 			      GParamSpec      *pspec)
 {
-  GtkPaned *paned = CTK_PANED (container);
-  GtkPanedPrivate *priv = paned->priv;
+  CtkPaned *paned = CTK_PANED (container);
+  CtkPanedPrivate *priv = paned->priv;
   gboolean old_value, new_value;
 
   g_assert (child == priv->child1 || child == priv->child2);
@@ -953,14 +953,14 @@ ctk_paned_set_child_property (GtkContainer    *container,
 }
 
 static void
-ctk_paned_get_child_property (GtkContainer *container,
-			      GtkWidget    *child,
+ctk_paned_get_child_property (CtkContainer *container,
+			      CtkWidget    *child,
 			      guint         property_id,
 			      GValue       *value,
 			      GParamSpec   *pspec)
 {
-  GtkPaned *paned = CTK_PANED (container);
-  GtkPanedPrivate *priv = paned->priv;
+  CtkPaned *paned = CTK_PANED (container);
+  CtkPanedPrivate *priv = paned->priv;
 
   g_assert (child == priv->child1 || child == priv->child2);
   
@@ -987,7 +987,7 @@ ctk_paned_get_child_property (GtkContainer *container,
 static void
 ctk_paned_finalize (GObject *object)
 {
-  GtkPaned *paned = CTK_PANED (object);
+  CtkPaned *paned = CTK_PANED (object);
   
   ctk_paned_set_saved_focus (paned, NULL);
   ctk_paned_set_first_paned (paned, NULL);
@@ -1002,7 +1002,7 @@ ctk_paned_finalize (GObject *object)
 }
 
 static void
-ctk_paned_compute_position (GtkPaned *paned,
+ctk_paned_compute_position (CtkPaned *paned,
                             gint      allocation,
                             gint      child1_req,
                             gint      child2_req,
@@ -1010,7 +1010,7 @@ ctk_paned_compute_position (GtkPaned *paned,
                             gint     *max_pos,
                             gint     *out_pos)
 {
-  GtkPanedPrivate *priv = paned->priv;
+  CtkPanedPrivate *priv = paned->priv;
   gint min, max, pos;
 
   min = priv->child1_shrink ? 0 : child1_req;
@@ -1060,13 +1060,13 @@ ctk_paned_compute_position (GtkPaned *paned,
 }
 
 static void
-ctk_paned_get_preferred_size_for_orientation (GtkWidget      *widget,
+ctk_paned_get_preferred_size_for_orientation (CtkWidget      *widget,
                                               gint            size,
                                               gint           *minimum,
                                               gint           *natural)
 {
-  GtkPaned *paned = CTK_PANED (widget);
-  GtkPanedPrivate *priv = paned->priv;
+  CtkPaned *paned = CTK_PANED (widget);
+  CtkPanedPrivate *priv = paned->priv;
   gint child_min, child_nat;
 
   *minimum = *natural = 0;
@@ -1107,13 +1107,13 @@ ctk_paned_get_preferred_size_for_orientation (GtkWidget      *widget,
 }
 
 static void
-ctk_paned_get_preferred_size_for_opposite_orientation (GtkWidget      *widget,
+ctk_paned_get_preferred_size_for_opposite_orientation (CtkWidget      *widget,
                                                        gint            size,
                                                        gint           *minimum,
                                                        gint           *natural)
 {
-  GtkPaned *paned = CTK_PANED (widget);
-  GtkPanedPrivate *priv = paned->priv;
+  CtkPaned *paned = CTK_PANED (widget);
+  CtkPanedPrivate *priv = paned->priv;
   gint for_child1, for_child2;
   gint child_min, child_nat;
 
@@ -1173,7 +1173,7 @@ ctk_paned_get_preferred_size_for_opposite_orientation (GtkWidget      *widget,
 }
 
 static gint
-get_number (GtkCssStyle *style,
+get_number (CtkCssStyle *style,
             guint        property)
 {
   double d = _ctk_css_number_value_get (ctk_css_style_get_value (style, property), 100.0);
@@ -1185,8 +1185,8 @@ get_number (GtkCssStyle *style,
 }
 
 static void
-ctk_paned_measure_handle (GtkCssGadget   *gadget,
-                          GtkOrientation  orientation,
+ctk_paned_measure_handle (CtkCssGadget   *gadget,
+                          CtkOrientation  orientation,
                           int             size,
                           int            *minimum,
                           int            *natural,
@@ -1194,8 +1194,8 @@ ctk_paned_measure_handle (GtkCssGadget   *gadget,
                           int            *natural_baseline,
                           gpointer        data)
 {
-  GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkCssStyle *style;
+  CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
+  CtkCssStyle *style;
   gint min_size;
 
   style = ctk_css_gadget_get_style (gadget);
@@ -1208,7 +1208,7 @@ ctk_paned_measure_handle (GtkCssGadget   *gadget,
     *minimum = *natural = min_size;
   else
     {
-      GtkStyleContext *context;
+      CtkStyleContext *context;
 
       context = ctk_widget_get_style_context (widget);
       ctk_style_context_save_to_node (context, ctk_css_gadget_get_node (gadget));
@@ -1220,8 +1220,8 @@ ctk_paned_measure_handle (GtkCssGadget   *gadget,
 }
 
 static void
-ctk_paned_measure (GtkCssGadget   *gadget,
-                   GtkOrientation  orientation,
+ctk_paned_measure (CtkCssGadget   *gadget,
+                   CtkOrientation  orientation,
                    int             size,
                    int            *minimum,
                    int            *natural,
@@ -1229,9 +1229,9 @@ ctk_paned_measure (GtkCssGadget   *gadget,
                    int            *natural_baseline,
                    gpointer        data)
 {
-  GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkPaned *paned = CTK_PANED (widget);
-  GtkPanedPrivate *priv = paned->priv;
+  CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
+  CtkPaned *paned = CTK_PANED (widget);
+  CtkPanedPrivate *priv = paned->priv;
 
   if (orientation == priv->orientation)
     ctk_paned_get_preferred_size_for_orientation (widget, size, minimum, natural);
@@ -1240,7 +1240,7 @@ ctk_paned_measure (GtkCssGadget   *gadget,
 }
 
 static void
-ctk_paned_get_preferred_width (GtkWidget *widget,
+ctk_paned_get_preferred_width (CtkWidget *widget,
                                gint      *minimum,
                                gint      *natural)
 {
@@ -1252,7 +1252,7 @@ ctk_paned_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-ctk_paned_get_preferred_height (GtkWidget *widget,
+ctk_paned_get_preferred_height (CtkWidget *widget,
                                 gint      *minimum,
                                 gint      *natural)
 {
@@ -1264,7 +1264,7 @@ ctk_paned_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-ctk_paned_get_preferred_width_for_height (GtkWidget *widget,
+ctk_paned_get_preferred_width_for_height (CtkWidget *widget,
                                           gint       height,
                                           gint      *minimum,
                                           gint      *natural)
@@ -1277,7 +1277,7 @@ ctk_paned_get_preferred_width_for_height (GtkWidget *widget,
 }
 
 static void
-ctk_paned_get_preferred_height_for_width (GtkWidget *widget,
+ctk_paned_get_preferred_height_for_width (CtkWidget *widget,
                                           gint       width,
                                           gint      *minimum,
                                           gint      *natural)
@@ -1290,8 +1290,8 @@ ctk_paned_get_preferred_height_for_width (GtkWidget *widget,
 }
 
 static void
-flip_child (const GtkAllocation *allocation,
-            GtkAllocation       *child_pos)
+flip_child (const CtkAllocation *allocation,
+            CtkAllocation       *child_pos)
 {
   gint x, width;
 
@@ -1302,12 +1302,12 @@ flip_child (const GtkAllocation *allocation,
 }
 
 static void
-ctk_paned_set_child_visible (GtkPaned  *paned,
+ctk_paned_set_child_visible (CtkPaned  *paned,
                              guint      id,
                              gboolean   visible)
 {
-  GtkPanedPrivate *priv = paned->priv;
-  GtkWidget *child;
+  CtkPanedPrivate *priv = paned->priv;
+  CtkWidget *child;
 
   child = id == CHILD1 ? priv->child1 : priv->child2;
 
@@ -1331,10 +1331,10 @@ ctk_paned_set_child_visible (GtkPaned  *paned,
 }
 
 static void
-ctk_paned_child_allocate (GtkWidget           *child,
+ctk_paned_child_allocate (CtkWidget           *child,
                           GdkWindow           *child_window, /* can be NULL */
-                          const GtkAllocation *window_allocation,
-                          GtkAllocation       *child_allocation)
+                          const CtkAllocation *window_allocation,
+                          CtkAllocation       *child_allocation)
 {
   if (child_window)
     gdk_window_move_resize (child_window,
@@ -1345,12 +1345,12 @@ ctk_paned_child_allocate (GtkWidget           *child,
 }
 
 static void
-ctk_paned_size_allocate (GtkWidget     *widget,
-                         GtkAllocation *allocation)
+ctk_paned_size_allocate (CtkWidget     *widget,
+                         CtkAllocation *allocation)
 {
-  GtkPaned *paned = CTK_PANED (widget);
-  GtkPanedPrivate *priv = paned->priv;
-  GtkAllocation clip;
+  CtkPaned *paned = CTK_PANED (widget);
+  CtkPanedPrivate *priv = paned->priv;
+  CtkAllocation clip;
 
   ctk_widget_set_allocation (widget, allocation);
 
@@ -1363,23 +1363,23 @@ ctk_paned_size_allocate (GtkWidget     *widget,
 }
 
 static void
-ctk_paned_allocate (GtkCssGadget        *gadget,
-                    const GtkAllocation *allocation,
+ctk_paned_allocate (CtkCssGadget        *gadget,
+                    const CtkAllocation *allocation,
                     int                  baseline,
-                    GtkAllocation       *out_clip,
+                    CtkAllocation       *out_clip,
                     gpointer             data)
 {
-  GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkPaned *paned = CTK_PANED (widget);
-  GtkPanedPrivate *priv = paned->priv;
-  GtkAllocation clip = { 0 };
+  CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
+  CtkPaned *paned = CTK_PANED (widget);
+  CtkPanedPrivate *priv = paned->priv;
+  CtkAllocation clip = { 0 };
 
   if (priv->child1 && ctk_widget_get_visible (priv->child1) &&
       priv->child2 && ctk_widget_get_visible (priv->child2))
     {
-      GtkAllocation child1_allocation, window1_allocation;
-      GtkAllocation child2_allocation, window2_allocation;
-      GtkAllocation priv_child1_allocation;
+      CtkAllocation child1_allocation, window1_allocation;
+      CtkAllocation child2_allocation, window2_allocation;
+      CtkAllocation priv_child1_allocation;
       GdkRectangle old_handle_pos;
       gint handle_size;
 
@@ -1512,7 +1512,7 @@ ctk_paned_allocate (GtkCssGadget        *gadget,
 
       if (ctk_widget_get_realized (widget))
 	{
-          GtkAllocation border_alloc;
+          CtkAllocation border_alloc;
 
 	  if (ctk_widget_get_mapped (widget))
 	    gdk_window_show (priv->handle);
@@ -1557,7 +1557,7 @@ ctk_paned_allocate (GtkCssGadget        *gadget,
     }
   else
     {
-      GtkAllocation window_allocation, child_allocation;
+      CtkAllocation window_allocation, child_allocation;
 
       if (ctk_widget_get_realized (widget))
 	gdk_window_hide (priv->handle);
@@ -1602,11 +1602,11 @@ ctk_paned_allocate (GtkCssGadget        *gadget,
 }
 
 static GdkWindow *
-ctk_paned_create_child_window (GtkPaned  *paned,
-                               GtkWidget *child) /* may be NULL */
+ctk_paned_create_child_window (CtkPaned  *paned,
+                               CtkWidget *child) /* may be NULL */
 {
-  GtkWidget *widget = CTK_WIDGET (paned);
-  GtkPanedPrivate *priv = paned->priv;
+  CtkWidget *widget = CTK_WIDGET (paned);
+  CtkPanedPrivate *priv = paned->priv;
   GdkWindow *window;
   GdkWindowAttr attributes;
   gint attributes_mask;
@@ -1617,7 +1617,7 @@ ctk_paned_create_child_window (GtkPaned  *paned,
   attributes.visual = ctk_widget_get_visual (widget);
   if (child)
     {
-      GtkAllocation allocation;
+      CtkAllocation allocation;
       int handle_size;
 
       ctk_css_gadget_get_preferred_size (priv->handle_gadget,
@@ -1663,10 +1663,10 @@ ctk_paned_create_child_window (GtkPaned  *paned,
 }
 
 static void
-ctk_paned_realize (GtkWidget *widget)
+ctk_paned_realize (CtkWidget *widget)
 {
-  GtkPaned *paned = CTK_PANED (widget);
-  GtkPanedPrivate *priv = paned->priv;
+  CtkPaned *paned = CTK_PANED (widget);
+  CtkPanedPrivate *priv = paned->priv;
   GdkWindow *window;
   GdkWindowAttr attributes;
   gint attributes_mask;
@@ -1709,10 +1709,10 @@ ctk_paned_realize (GtkWidget *widget)
 }
 
 static void
-ctk_paned_unrealize (GtkWidget *widget)
+ctk_paned_unrealize (CtkWidget *widget)
 {
-  GtkPaned *paned = CTK_PANED (widget);
-  GtkPanedPrivate *priv = paned->priv;
+  CtkPaned *paned = CTK_PANED (widget);
+  CtkPanedPrivate *priv = paned->priv;
 
   if (priv->child2)
     ctk_widget_set_parent_window (priv->child2, NULL);
@@ -1742,10 +1742,10 @@ ctk_paned_unrealize (GtkWidget *widget)
 }
 
 static void
-ctk_paned_map (GtkWidget *widget)
+ctk_paned_map (CtkWidget *widget)
 {
-  GtkPaned *paned = CTK_PANED (widget);
-  GtkPanedPrivate *priv = paned->priv;
+  CtkPaned *paned = CTK_PANED (widget);
+  CtkPanedPrivate *priv = paned->priv;
 
   if (priv->child1 && ctk_widget_get_visible (priv->child1) && ctk_widget_get_child_visible (priv->child1))
     gdk_window_show (priv->child1_window);
@@ -1760,10 +1760,10 @@ ctk_paned_map (GtkWidget *widget)
 }
 
 static void
-ctk_paned_unmap (GtkWidget *widget)
+ctk_paned_unmap (CtkWidget *widget)
 {
-  GtkPaned *paned = CTK_PANED (widget);
-  GtkPanedPrivate *priv = paned->priv;
+  CtkPaned *paned = CTK_PANED (widget);
+  CtkPanedPrivate *priv = paned->priv;
 
   gdk_window_hide (priv->handle);
   
@@ -1776,7 +1776,7 @@ ctk_paned_unmap (GtkWidget *widget)
 }
 
 static gboolean
-ctk_paned_draw (GtkWidget *widget,
+ctk_paned_draw (CtkWidget *widget,
                 cairo_t   *cr)
 {
   ctk_css_gadget_draw (CTK_PANED (widget)->priv->gadget, cr);
@@ -1785,7 +1785,7 @@ ctk_paned_draw (GtkWidget *widget,
 }
 
 static gboolean
-ctk_paned_render (GtkCssGadget *gadget,
+ctk_paned_render (CtkCssGadget *gadget,
                   cairo_t      *cr,
                   int           x,
                   int           y,
@@ -1793,10 +1793,10 @@ ctk_paned_render (GtkCssGadget *gadget,
                   int           height,
                   gpointer      data)
 {
-  GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkPaned *paned = CTK_PANED (widget);
-  GtkPanedPrivate *priv = paned->priv;
-  GtkAllocation widget_allocation;
+  CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
+  CtkPaned *paned = CTK_PANED (widget);
+  CtkPanedPrivate *priv = paned->priv;
+  CtkAllocation widget_allocation;
   int window_x, window_y;
 
   ctk_widget_get_allocation (widget, &widget_allocation);
@@ -1837,7 +1837,7 @@ ctk_paned_render (GtkCssGadget *gadget,
 }
 
 static gboolean
-ctk_paned_render_handle (GtkCssGadget *gadget,
+ctk_paned_render_handle (CtkCssGadget *gadget,
                          cairo_t      *cr,
                          int           x,
                          int           y,
@@ -1845,10 +1845,10 @@ ctk_paned_render_handle (GtkCssGadget *gadget,
                          int           height,
                          gpointer      data)
 {
-  GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkPaned *paned = CTK_PANED (widget);
-  GtkPanedPrivate *priv = paned->priv;
-  GtkStyleContext *context = ctk_widget_get_style_context (widget);
+  CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
+  CtkPaned *paned = CTK_PANED (widget);
+  CtkPanedPrivate *priv = paned->priv;
+  CtkStyleContext *context = ctk_widget_get_style_context (widget);
 
   ctk_style_context_save_to_node (context, ctk_css_gadget_get_node (priv->handle_gadget));
   ctk_render_handle (context, cr, x, y, width, height);
@@ -1858,11 +1858,11 @@ ctk_paned_render_handle (GtkCssGadget *gadget,
 }
 
 static void
-update_node_state (GtkWidget *widget)
+update_node_state (CtkWidget *widget)
 {
-  GtkPaned *paned = CTK_PANED (widget);
-  GtkPanedPrivate *priv = paned->priv;
-  GtkStateFlags state;
+  CtkPaned *paned = CTK_PANED (widget);
+  CtkPanedPrivate *priv = paned->priv;
+  CtkStateFlags state;
 
   state = ctk_widget_get_state_flags (widget);
 
@@ -1875,8 +1875,8 @@ update_node_state (GtkWidget *widget)
 }
 
 static void
-connect_drag_gesture_signals (GtkPaned   *paned,
-                              GtkGesture *gesture)
+connect_drag_gesture_signals (CtkPaned   *paned,
+                              CtkGesture *gesture)
 {
   g_signal_connect (gesture, "drag-begin",
                     G_CALLBACK (gesture_drag_begin_cb), paned);
@@ -1887,11 +1887,11 @@ connect_drag_gesture_signals (GtkPaned   *paned,
 }
 
 static void
-ctk_paned_init (GtkPaned *paned)
+ctk_paned_init (CtkPaned *paned)
 {
-  GtkPanedPrivate *priv;
-  GtkGesture *gesture;
-  GtkCssNode *widget_node;
+  CtkPanedPrivate *priv;
+  CtkGesture *gesture;
+  CtkCssNode *widget_node;
 
   ctk_widget_set_has_window (CTK_WIDGET (paned), FALSE);
   ctk_widget_set_can_focus (CTK_WIDGET (paned), TRUE);
@@ -1957,9 +1957,9 @@ ctk_paned_init (GtkPaned *paned)
 }
 
 static gboolean
-is_rtl (GtkPaned *paned)
+is_rtl (CtkPaned *paned)
 {
-  GtkPanedPrivate *priv = paned->priv;
+  CtkPanedPrivate *priv = paned->priv;
 
   if (priv->orientation == CTK_ORIENTATION_HORIZONTAL &&
       ctk_widget_get_direction (CTK_WIDGET (paned)) == CTK_TEXT_DIR_RTL)
@@ -1971,12 +1971,12 @@ is_rtl (GtkPaned *paned)
 }
 
 static void
-update_drag (GtkPaned *paned,
+update_drag (CtkPaned *paned,
              int       xpos,
              int       ypos)
 {
-  GtkPanedPrivate *priv = paned->priv;
-  GtkAllocation allocation;
+  CtkPanedPrivate *priv = paned->priv;
+  CtkAllocation allocation;
   gint pos;
   gint handle_size;
   gint size;
@@ -2013,11 +2013,11 @@ update_drag (GtkPaned *paned,
 }
 
 static gboolean
-ctk_paned_enter (GtkWidget        *widget,
+ctk_paned_enter (CtkWidget        *widget,
 		 GdkEventCrossing *event)
 {
-  GtkPaned *paned = CTK_PANED (widget);
-  GtkPanedPrivate *priv = paned->priv;
+  CtkPaned *paned = CTK_PANED (widget);
+  CtkPanedPrivate *priv = paned->priv;
 
   if (!ctk_gesture_is_active (priv->pan_gesture))
     {
@@ -2034,11 +2034,11 @@ ctk_paned_enter (GtkWidget        *widget,
 }
 
 static gboolean
-ctk_paned_leave (GtkWidget        *widget,
+ctk_paned_leave (CtkWidget        *widget,
 		 GdkEventCrossing *event)
 {
-  GtkPaned *paned = CTK_PANED (widget);
-  GtkPanedPrivate *priv = paned->priv;
+  CtkPaned *paned = CTK_PANED (widget);
+  CtkPanedPrivate *priv = paned->priv;
 
   if (!ctk_gesture_is_active (priv->pan_gesture))
     {
@@ -2055,8 +2055,8 @@ ctk_paned_leave (GtkWidget        *widget,
 }
 
 static gboolean
-ctk_paned_focus (GtkWidget        *widget,
-		 GtkDirectionType  direction)
+ctk_paned_focus (CtkWidget        *widget,
+		 CtkDirectionType  direction)
 
 {
   gboolean retval;
@@ -2073,11 +2073,11 @@ ctk_paned_focus (GtkWidget        *widget,
 }
 
 static void
-ctk_paned_state_flags_changed (GtkWidget     *widget,
-                               GtkStateFlags  previous_state)
+ctk_paned_state_flags_changed (CtkWidget     *widget,
+                               CtkStateFlags  previous_state)
 {
-  GtkPaned *paned = CTK_PANED (widget);
-  GtkPanedPrivate *priv = paned->priv;
+  CtkPaned *paned = CTK_PANED (widget);
+  CtkPanedPrivate *priv = paned->priv;
   GdkCursor *cursor;
 
   if (ctk_widget_get_realized (widget))
@@ -2102,10 +2102,10 @@ ctk_paned_state_flags_changed (GtkWidget     *widget,
 }
 
 static void
-ctk_paned_direction_changed (GtkWidget        *widget,
-                             GtkTextDirection  previous_direction)
+ctk_paned_direction_changed (CtkWidget        *widget,
+                             CtkTextDirection  previous_direction)
 {
-  GtkPaned *paned = CTK_PANED (widget);
+  CtkPaned *paned = CTK_PANED (widget);
 
   if (paned->priv->orientation == CTK_ORIENTATION_HORIZONTAL)
     ctk_css_node_reverse_children (ctk_widget_get_css_node (widget));
@@ -2115,14 +2115,14 @@ ctk_paned_direction_changed (GtkWidget        *widget,
  * ctk_paned_new:
  * @orientation: the paned’s orientation.
  *
- * Creates a new #GtkPaned widget.
+ * Creates a new #CtkPaned widget.
  *
- * Returns: a new #GtkPaned.
+ * Returns: a new #CtkPaned.
  *
  * Since: 3.0
  **/
-GtkWidget *
-ctk_paned_new (GtkOrientation orientation)
+CtkWidget *
+ctk_paned_new (CtkOrientation orientation)
 {
   return g_object_new (CTK_TYPE_PANED,
                        "orientation", orientation,
@@ -2139,8 +2139,8 @@ ctk_paned_new (GtkOrientation orientation)
  * `ctk_paned_pack1 (paned, child, FALSE, TRUE)`.
  */
 void
-ctk_paned_add1 (GtkPaned  *paned,
-		GtkWidget *widget)
+ctk_paned_add1 (CtkPaned  *paned,
+		CtkWidget *widget)
 {
   ctk_paned_pack1 (paned, widget, FALSE, TRUE);
 }
@@ -2155,8 +2155,8 @@ ctk_paned_add1 (GtkPaned  *paned,
  * `ctk_paned_pack2 (paned, child, TRUE, TRUE)`.
  */
 void
-ctk_paned_add2 (GtkPaned  *paned,
-		GtkWidget *widget)
+ctk_paned_add2 (CtkPaned  *paned,
+		CtkWidget *widget)
 {
   ctk_paned_pack2 (paned, widget, TRUE, TRUE);
 }
@@ -2171,14 +2171,14 @@ ctk_paned_add2 (GtkPaned  *paned,
  * Adds a child to the top or left pane.
  */
 void
-ctk_paned_pack1 (GtkPaned  *paned,
-		 GtkWidget *child,
+ctk_paned_pack1 (CtkPaned  *paned,
+		 CtkWidget *child,
 		 gboolean   resize,
 		 gboolean   shrink)
 {
-  GtkPanedPrivate *priv;
-  GtkCssNode *widget_node;
-  GtkCssNode *child_node;
+  CtkPanedPrivate *priv;
+  CtkCssNode *widget_node;
+  CtkCssNode *child_node;
 
   g_return_if_fail (CTK_IS_PANED (paned));
   g_return_if_fail (CTK_IS_WIDGET (child));
@@ -2213,14 +2213,14 @@ ctk_paned_pack1 (GtkPaned  *paned,
  * Adds a child to the bottom or right pane.
  */
 void
-ctk_paned_pack2 (GtkPaned  *paned,
-		 GtkWidget *child,
+ctk_paned_pack2 (CtkPaned  *paned,
+		 CtkWidget *child,
 		 gboolean   resize,
 		 gboolean   shrink)
 {
-  GtkPanedPrivate *priv;
-  GtkCssNode *widget_node;
-  GtkCssNode *child_node;
+  CtkPanedPrivate *priv;
+  CtkCssNode *widget_node;
+  CtkCssNode *child_node;
 
   g_return_if_fail (CTK_IS_PANED (paned));
   g_return_if_fail (CTK_IS_WIDGET (child));
@@ -2247,11 +2247,11 @@ ctk_paned_pack2 (GtkPaned  *paned,
 
 
 static void
-ctk_paned_add (GtkContainer *container,
-	       GtkWidget    *widget)
+ctk_paned_add (CtkContainer *container,
+	       CtkWidget    *widget)
 {
-  GtkPanedPrivate *priv;
-  GtkPaned *paned;
+  CtkPanedPrivate *priv;
+  CtkPaned *paned;
 
   g_return_if_fail (CTK_IS_PANED (container));
 
@@ -2263,15 +2263,15 @@ ctk_paned_add (GtkContainer *container,
   else if (!priv->child2)
     ctk_paned_add2 (paned, widget);
   else
-    g_warning ("GtkPaned cannot have more than 2 children");
+    g_warning ("CtkPaned cannot have more than 2 children");
 }
 
 static void
-ctk_paned_remove (GtkContainer *container,
-		  GtkWidget    *widget)
+ctk_paned_remove (CtkContainer *container,
+		  CtkWidget    *widget)
 {
-  GtkPaned *paned = CTK_PANED (container);
-  GtkPanedPrivate *priv = paned->priv;
+  CtkPaned *paned = CTK_PANED (container);
+  CtkPanedPrivate *priv = paned->priv;
   gboolean was_visible;
 
   was_visible = ctk_widget_get_visible (widget);
@@ -2303,13 +2303,13 @@ ctk_paned_remove (GtkContainer *container,
 }
 
 static void
-ctk_paned_forall (GtkContainer *container,
+ctk_paned_forall (CtkContainer *container,
 		  gboolean      include_internals,
-		  GtkCallback   callback,
+		  CtkCallback   callback,
 		  gpointer      callback_data)
 {
-  GtkPanedPrivate *priv;
-  GtkPaned *paned;
+  CtkPanedPrivate *priv;
+  CtkPaned *paned;
 
   g_return_if_fail (callback != NULL);
 
@@ -2324,14 +2324,14 @@ ctk_paned_forall (GtkContainer *container,
 
 /**
  * ctk_paned_get_position:
- * @paned: a #GtkPaned widget
+ * @paned: a #CtkPaned widget
  * 
  * Obtains the position of the divider between the two panes.
  * 
  * Returns: position of the divider
  **/
 gint
-ctk_paned_get_position (GtkPaned  *paned)
+ctk_paned_get_position (CtkPaned  *paned)
 {
   g_return_val_if_fail (CTK_IS_PANED (paned), 0);
 
@@ -2340,17 +2340,17 @@ ctk_paned_get_position (GtkPaned  *paned)
 
 /**
  * ctk_paned_set_position:
- * @paned: a #GtkPaned widget
+ * @paned: a #CtkPaned widget
  * @position: pixel position of divider, a negative value means that the position
  *            is unset.
  * 
  * Sets the position of the divider between the two panes.
  **/
 void
-ctk_paned_set_position (GtkPaned *paned,
+ctk_paned_set_position (CtkPaned *paned,
 			gint      position)
 {
-  GtkPanedPrivate *priv;
+  CtkPanedPrivate *priv;
 
   g_return_if_fail (CTK_IS_PANED (paned));
 
@@ -2400,7 +2400,7 @@ ctk_paned_set_position (GtkPaned *paned,
 
 /**
  * ctk_paned_get_child1:
- * @paned: a #GtkPaned widget
+ * @paned: a #CtkPaned widget
  * 
  * Obtains the first child of the paned widget.
  * 
@@ -2408,8 +2408,8 @@ ctk_paned_set_position (GtkPaned *paned,
  *
  * Since: 2.4
  **/
-GtkWidget *
-ctk_paned_get_child1 (GtkPaned *paned)
+CtkWidget *
+ctk_paned_get_child1 (CtkPaned *paned)
 {
   g_return_val_if_fail (CTK_IS_PANED (paned), NULL);
 
@@ -2418,7 +2418,7 @@ ctk_paned_get_child1 (GtkPaned *paned)
 
 /**
  * ctk_paned_get_child2:
- * @paned: a #GtkPaned widget
+ * @paned: a #CtkPaned widget
  * 
  * Obtains the second child of the paned widget.
  * 
@@ -2426,8 +2426,8 @@ ctk_paned_get_child1 (GtkPaned *paned)
  *
  * Since: 2.4
  **/
-GtkWidget *
-ctk_paned_get_child2 (GtkPaned *paned)
+CtkWidget *
+ctk_paned_get_child2 (CtkPaned *paned)
 {
   g_return_val_if_fail (CTK_IS_PANED (paned), NULL);
 
@@ -2435,12 +2435,12 @@ ctk_paned_get_child2 (GtkPaned *paned)
 }
 
 static void
-ctk_paned_calc_position (GtkPaned *paned,
+ctk_paned_calc_position (CtkPaned *paned,
                          gint      allocation,
                          gint      child1_req,
                          gint      child2_req)
 {
-  GtkPanedPrivate *priv = paned->priv;
+  CtkPanedPrivate *priv = paned->priv;
   gint old_position;
   gint old_min_position;
   gint old_max_position;
@@ -2470,9 +2470,9 @@ ctk_paned_calc_position (GtkPaned *paned,
 }
 
 static void
-ctk_paned_set_saved_focus (GtkPaned *paned, GtkWidget *widget)
+ctk_paned_set_saved_focus (CtkPaned *paned, CtkWidget *widget)
 {
-  GtkPanedPrivate *priv = paned->priv;
+  CtkPanedPrivate *priv = paned->priv;
 
   if (priv->saved_focus)
     g_object_remove_weak_pointer (G_OBJECT (priv->saved_focus),
@@ -2486,9 +2486,9 @@ ctk_paned_set_saved_focus (GtkPaned *paned, GtkWidget *widget)
 }
 
 static void
-ctk_paned_set_first_paned (GtkPaned *paned, GtkPaned *first_paned)
+ctk_paned_set_first_paned (CtkPaned *paned, CtkPaned *first_paned)
 {
-  GtkPanedPrivate *priv = paned->priv;
+  CtkPanedPrivate *priv = paned->priv;
 
   if (priv->first_paned)
     g_object_remove_weak_pointer (G_OBJECT (priv->first_paned),
@@ -2502,9 +2502,9 @@ ctk_paned_set_first_paned (GtkPaned *paned, GtkPaned *first_paned)
 }
 
 static void
-ctk_paned_set_last_child1_focus (GtkPaned *paned, GtkWidget *widget)
+ctk_paned_set_last_child1_focus (CtkPaned *paned, CtkWidget *widget)
 {
-  GtkPanedPrivate *priv = paned->priv;
+  CtkPanedPrivate *priv = paned->priv;
 
   if (priv->last_child1_focus)
     g_object_remove_weak_pointer (G_OBJECT (priv->last_child1_focus),
@@ -2518,9 +2518,9 @@ ctk_paned_set_last_child1_focus (GtkPaned *paned, GtkWidget *widget)
 }
 
 static void
-ctk_paned_set_last_child2_focus (GtkPaned *paned, GtkWidget *widget)
+ctk_paned_set_last_child2_focus (CtkPaned *paned, CtkWidget *widget)
 {
-  GtkPanedPrivate *priv = paned->priv;
+  CtkPanedPrivate *priv = paned->priv;
 
   if (priv->last_child2_focus)
     g_object_remove_weak_pointer (G_OBJECT (priv->last_child2_focus),
@@ -2533,10 +2533,10 @@ ctk_paned_set_last_child2_focus (GtkPaned *paned, GtkWidget *widget)
 			       (gpointer *)&(priv->last_child2_focus));
 }
 
-static GtkWidget *
-paned_get_focus_widget (GtkPaned *paned)
+static CtkWidget *
+paned_get_focus_widget (CtkPaned *paned)
 {
-  GtkWidget *toplevel;
+  CtkWidget *toplevel;
 
   toplevel = ctk_widget_get_toplevel (CTK_WIDGET (paned));
   if (ctk_widget_is_toplevel (toplevel))
@@ -2546,12 +2546,12 @@ paned_get_focus_widget (GtkPaned *paned)
 }
 
 static void
-ctk_paned_set_focus_child (GtkContainer *container,
-			   GtkWidget    *focus_child)
+ctk_paned_set_focus_child (CtkContainer *container,
+			   CtkWidget    *focus_child)
 {
-  GtkPaned *paned;
-  GtkPanedPrivate *priv;
-  GtkWidget *container_focus_child;
+  CtkPaned *paned;
+  CtkPanedPrivate *priv;
+  CtkWidget *container_focus_child;
 
   g_return_if_fail (CTK_IS_PANED (container));
 
@@ -2560,8 +2560,8 @@ ctk_paned_set_focus_child (GtkContainer *container,
 
   if (focus_child == NULL)
     {
-      GtkWidget *last_focus;
-      GtkWidget *w;
+      CtkWidget *last_focus;
+      CtkWidget *w;
       
       last_focus = paned_get_focus_widget (paned);
 
@@ -2587,16 +2587,16 @@ ctk_paned_set_focus_child (GtkContainer *container,
 }
 
 static void
-ctk_paned_get_cycle_chain (GtkPaned          *paned,
-			   GtkDirectionType   direction,
+ctk_paned_get_cycle_chain (CtkPaned          *paned,
+			   CtkDirectionType   direction,
 			   GList            **widgets)
 {
-  GtkPanedPrivate *priv = paned->priv;
-  GtkContainer *container = CTK_CONTAINER (paned);
-  GtkWidget *ancestor = NULL;
-  GtkWidget *focus_child;
-  GtkWidget *parent;
-  GtkWidget *widget = CTK_WIDGET (paned);
+  CtkPanedPrivate *priv = paned->priv;
+  CtkContainer *container = CTK_CONTAINER (paned);
+  CtkWidget *ancestor = NULL;
+  CtkWidget *focus_child;
+  CtkWidget *parent;
+  CtkWidget *widget = CTK_WIDGET (paned);
   GList *temp_list = NULL;
   GList *list;
 
@@ -2701,13 +2701,13 @@ ctk_paned_get_cycle_chain (GtkPaned          *paned,
 }
 
 static gboolean
-ctk_paned_cycle_child_focus (GtkPaned *paned,
+ctk_paned_cycle_child_focus (CtkPaned *paned,
 			     gboolean  reversed)
 {
   GList *cycle_chain = NULL;
   GList *list;
   
-  GtkDirectionType direction = reversed? CTK_DIR_TAB_BACKWARD : CTK_DIR_TAB_FORWARD;
+  CtkDirectionType direction = reversed? CTK_DIR_TAB_BACKWARD : CTK_DIR_TAB_FORWARD;
 
   /* ignore f6 if the handle is focused */
   if (ctk_widget_is_focus (CTK_WIDGET (paned)))
@@ -2729,7 +2729,7 @@ ctk_paned_cycle_child_focus (GtkPaned *paned,
 }
 
 static void
-get_child_panes (GtkWidget  *widget,
+get_child_panes (CtkWidget  *widget,
 		 GList     **panes)
 {
   if (!widget || !ctk_widget_get_realized (widget))
@@ -2737,8 +2737,8 @@ get_child_panes (GtkWidget  *widget,
 
   if (CTK_IS_PANED (widget))
     {
-      GtkPaned *paned = CTK_PANED (widget);
-      GtkPanedPrivate *priv = paned->priv;
+      CtkPaned *paned = CTK_PANED (widget);
+      CtkPanedPrivate *priv = paned->priv;
 
       get_child_panes (priv->child1, panes);
       *panes = g_list_prepend (*panes, widget);
@@ -2747,16 +2747,16 @@ get_child_panes (GtkWidget  *widget,
   else if (CTK_IS_CONTAINER (widget))
     {
       ctk_container_forall (CTK_CONTAINER (widget),
-                            (GtkCallback)get_child_panes, panes);
+                            (CtkCallback)get_child_panes, panes);
     }
 }
 
 static GList *
-get_all_panes (GtkPaned *paned)
+get_all_panes (CtkPaned *paned)
 {
-  GtkPaned *topmost = NULL;
+  CtkPaned *topmost = NULL;
   GList *result = NULL;
-  GtkWidget *w;
+  CtkWidget *w;
 
   for (w = CTK_WIDGET (paned); w != NULL; w = ctk_widget_get_parent (w))
     {
@@ -2772,9 +2772,9 @@ get_all_panes (GtkPaned *paned)
 }
 
 static void
-ctk_paned_find_neighbours (GtkPaned  *paned,
-			   GtkPaned **next,
-			   GtkPaned **prev)
+ctk_paned_find_neighbours (CtkPaned  *paned,
+			   CtkPaned **next,
+			   CtkPaned **prev)
 {
   GList *all_panes;
   GList *this_link;
@@ -2800,10 +2800,10 @@ ctk_paned_find_neighbours (GtkPaned  *paned,
 }
 
 static gboolean
-ctk_paned_move_handle (GtkPaned      *paned,
-		       GtkScrollType  scroll)
+ctk_paned_move_handle (CtkPaned      *paned,
+		       CtkScrollType  scroll)
 {
-  GtkPanedPrivate *priv = paned->priv;
+  CtkPanedPrivate *priv = paned->priv;
 
   if (ctk_widget_is_focus (CTK_WIDGET (paned)))
     {
@@ -2877,9 +2877,9 @@ ctk_paned_move_handle (GtkPaned      *paned,
 }
 
 static void
-ctk_paned_restore_focus (GtkPaned *paned)
+ctk_paned_restore_focus (CtkPaned *paned)
 {
-  GtkPanedPrivate *priv = paned->priv;
+  CtkPanedPrivate *priv = paned->priv;
 
   if (ctk_widget_is_focus (CTK_WIDGET (paned)))
     {
@@ -2899,7 +2899,7 @@ ctk_paned_restore_focus (GtkPaned *paned)
 	  
 	  if (!ctk_widget_child_focus (CTK_WIDGET (paned), CTK_DIR_TAB_FORWARD))
 	    {
-	      GtkWidget *toplevel = ctk_widget_get_toplevel (CTK_WIDGET (paned));
+	      CtkWidget *toplevel = ctk_widget_get_toplevel (CTK_WIDGET (paned));
 	      
 	      if (CTK_IS_WINDOW (toplevel))
 		ctk_window_set_focus (CTK_WINDOW (toplevel), NULL);
@@ -2912,9 +2912,9 @@ ctk_paned_restore_focus (GtkPaned *paned)
 }
 
 static gboolean
-ctk_paned_accept_position (GtkPaned *paned)
+ctk_paned_accept_position (CtkPaned *paned)
 {
-  GtkPanedPrivate *priv = paned->priv;
+  CtkPanedPrivate *priv = paned->priv;
 
   if (ctk_widget_is_focus (CTK_WIDGET (paned)))
     {
@@ -2929,9 +2929,9 @@ ctk_paned_accept_position (GtkPaned *paned)
 
 
 static gboolean
-ctk_paned_cancel_position (GtkPaned *paned)
+ctk_paned_cancel_position (CtkPaned *paned)
 {
-  GtkPanedPrivate *priv = paned->priv;
+  CtkPanedPrivate *priv = paned->priv;
 
   if (ctk_widget_is_focus (CTK_WIDGET (paned)))
     {
@@ -2949,15 +2949,15 @@ ctk_paned_cancel_position (GtkPaned *paned)
 }
 
 static gboolean
-ctk_paned_cycle_handle_focus (GtkPaned *paned,
+ctk_paned_cycle_handle_focus (CtkPaned *paned,
 			      gboolean  reversed)
 {
-  GtkPanedPrivate *priv = paned->priv;
-  GtkPaned *next, *prev;
+  CtkPanedPrivate *priv = paned->priv;
+  CtkPaned *next, *prev;
 
   if (ctk_widget_is_focus (CTK_WIDGET (paned)))
     {
-      GtkPaned *focus = NULL;
+      CtkPaned *focus = NULL;
 
       if (!priv->first_paned)
 	{
@@ -3005,11 +3005,11 @@ ctk_paned_cycle_handle_focus (GtkPaned *paned,
     }
   else
     {
-      GtkContainer *container = CTK_CONTAINER (paned);
-      GtkPaned *focus;
-      GtkPaned *first;
-      GtkWidget *toplevel;
-      GtkWidget *focus_child;
+      CtkContainer *container = CTK_CONTAINER (paned);
+      CtkPaned *focus;
+      CtkPaned *first;
+      CtkWidget *toplevel;
+      CtkWidget *focus_child;
 
       ctk_paned_find_neighbours (paned, &next, &prev);
       focus_child = ctk_container_get_focus_child (container);
@@ -3068,7 +3068,7 @@ ctk_paned_cycle_handle_focus (GtkPaned *paned,
 }
 
 static gboolean
-ctk_paned_toggle_handle_focus (GtkPaned *paned)
+ctk_paned_toggle_handle_focus (CtkPaned *paned)
 {
   /* This function/signal has the wrong name. It is called when you
    * press Tab or Shift-Tab and what we do is act as if
@@ -3082,7 +3082,7 @@ ctk_paned_toggle_handle_focus (GtkPaned *paned)
 
 /**
  * ctk_paned_get_handle_window:
- * @paned: a #GtkPaned
+ * @paned: a #CtkPaned
  *
  * Returns the #GdkWindow of the handle. This function is
  * useful when handling button or motion events because it
@@ -3094,7 +3094,7 @@ ctk_paned_toggle_handle_focus (GtkPaned *paned)
  * Since: 2.20
  **/
 GdkWindow *
-ctk_paned_get_handle_window (GtkPaned *paned)
+ctk_paned_get_handle_window (CtkPaned *paned)
 {
   g_return_val_if_fail (CTK_IS_PANED (paned), NULL);
 
@@ -3103,15 +3103,15 @@ ctk_paned_get_handle_window (GtkPaned *paned)
 
 /**
  * ctk_paned_set_wide_handle:
- * @paned: a #GtkPaned
- * @wide: the new value for the #GtkPaned:wide-handle property
+ * @paned: a #CtkPaned
+ * @wide: the new value for the #CtkPaned:wide-handle property
  *
- * Sets the #GtkPaned:wide-handle property.
+ * Sets the #CtkPaned:wide-handle property.
  *
  * Since: 3.16
  */
 void
-ctk_paned_set_wide_handle (GtkPaned *paned,
+ctk_paned_set_wide_handle (CtkPaned *paned,
                            gboolean  wide)
 {
   gboolean old_wide;
@@ -3133,16 +3133,16 @@ ctk_paned_set_wide_handle (GtkPaned *paned,
 
 /**
  * ctk_paned_get_wide_handle:
- * @paned: a #GtkPaned
+ * @paned: a #CtkPaned
  *
- * Gets the #GtkPaned:wide-handle property.
+ * Gets the #CtkPaned:wide-handle property.
  *
  * Returns: %TRUE if the paned should have a wide handle
  *
  * Since: 3.16
  */
 gboolean
-ctk_paned_get_wide_handle (GtkPaned *paned)
+ctk_paned_get_wide_handle (CtkPaned *paned)
 {
   g_return_val_if_fail (CTK_IS_PANED (paned), FALSE);
 

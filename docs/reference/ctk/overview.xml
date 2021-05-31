@@ -53,7 +53,7 @@ output devices.
 <listitem><para>
 Pango is a library for internationalized text handling. It centers
 around the PangoLayout object, representing a paragraph of text.
-Pango provides the engine for GtkTextView, GtkLabel, GtkEntry, and
+Pango provides the engine for CtkTextView, CtkLabel, CtkEntry, and
 other widgets that display text.
 </para></listitem>
 </varlistentry>
@@ -75,7 +75,7 @@ framework.
 <listitem><para>
 This is a small library which allows you to create GdkPixbuf
 ("pixel buffer") objects from image data or image files.
-Use a GdkPixbuf in combination with GtkImage to display images.
+Use a GdkPixbuf in combination with CtkImage to display images.
 </para></listitem>
 </varlistentry>
 
@@ -92,7 +92,7 @@ and OS X.
 <term>GTK+</term>
 <listitem><para>
 The GTK+ library itself contains <firstterm>widgets</firstterm>,
-that is, GUI components such as GtkButton or GtkTextView.
+that is, GUI components such as CtkButton or CtkTextView.
 </para></listitem>
 </varlistentry>
 </variablelist>

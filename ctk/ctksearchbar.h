@@ -37,28 +37,28 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_SEARCH_BAR                 (ctk_search_bar_get_type ())
-#define CTK_SEARCH_BAR(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SEARCH_BAR, GtkSearchBar))
-#define CTK_SEARCH_BAR_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SEARCH_BAR, GtkSearchBarClass))
+#define CTK_SEARCH_BAR(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SEARCH_BAR, CtkSearchBar))
+#define CTK_SEARCH_BAR_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SEARCH_BAR, CtkSearchBarClass))
 #define CTK_IS_SEARCH_BAR(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SEARCH_BAR))
 #define CTK_IS_SEARCH_BAR_CLASS(klass)      (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SEARCH_BAR))
-#define CTK_SEARCH_BAR_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SEARCH_BAR, GtkSearchBarClass))
+#define CTK_SEARCH_BAR_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SEARCH_BAR, CtkSearchBarClass))
 
-typedef struct _GtkSearchBar        GtkSearchBar;
-typedef struct _GtkSearchBarClass   GtkSearchBarClass;
+typedef struct _CtkSearchBar        CtkSearchBar;
+typedef struct _CtkSearchBarClass   CtkSearchBarClass;
 
-struct _GtkSearchBar
+struct _CtkSearchBar
 {
   /*< private >*/
-  GtkBin parent;
+  CtkBin parent;
 };
 
 /**
- * GtkSearchBarClass:
+ * CtkSearchBarClass:
  * @parent_class: The parent class.
  */
-struct _GtkSearchBarClass
+struct _CtkSearchBarClass
 {
-  GtkBinClass parent_class;
+  CtkBinClass parent_class;
 
   /*< private >*/
 
@@ -73,26 +73,26 @@ GDK_AVAILABLE_IN_3_10
 GType       ctk_search_bar_get_type        (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_10
-GtkWidget*  ctk_search_bar_new             (void);
+CtkWidget*  ctk_search_bar_new             (void);
 
 GDK_AVAILABLE_IN_3_10
-void        ctk_search_bar_connect_entry   (GtkSearchBar *bar,
-                                            GtkEntry     *entry);
+void        ctk_search_bar_connect_entry   (CtkSearchBar *bar,
+                                            CtkEntry     *entry);
 
 GDK_AVAILABLE_IN_3_10
-gboolean    ctk_search_bar_get_search_mode (GtkSearchBar *bar);
+gboolean    ctk_search_bar_get_search_mode (CtkSearchBar *bar);
 GDK_AVAILABLE_IN_3_10
-void        ctk_search_bar_set_search_mode (GtkSearchBar *bar,
+void        ctk_search_bar_set_search_mode (CtkSearchBar *bar,
                                             gboolean      search_mode);
 
 GDK_AVAILABLE_IN_3_10
-gboolean    ctk_search_bar_get_show_close_button (GtkSearchBar *bar);
+gboolean    ctk_search_bar_get_show_close_button (CtkSearchBar *bar);
 GDK_AVAILABLE_IN_3_10
-void        ctk_search_bar_set_show_close_button (GtkSearchBar *bar,
+void        ctk_search_bar_set_show_close_button (CtkSearchBar *bar,
                                                   gboolean      visible);
 
 GDK_AVAILABLE_IN_3_10
-gboolean    ctk_search_bar_handle_event    (GtkSearchBar *bar,
+gboolean    ctk_search_bar_handle_event    (CtkSearchBar *bar,
                                             GdkEvent     *event);
 
 G_END_DECLS

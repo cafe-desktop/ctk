@@ -11,21 +11,21 @@
 
   <refnamediv>
     <refname>Tree and List Widget Overview</refname>
-    <refpurpose>Overview of GtkTreeModel, GtkTreeView, and friends</refpurpose>
+    <refpurpose>Overview of CtkTreeModel, CtkTreeView, and friends</refpurpose>
   </refnamediv>
 
   <refsect1>
     <title>Overview</title>
     <para>
-      To create a tree or list in GTK+, use the #GtkTreeModel interface in
-      conjunction with the #GtkTreeView widget.  This widget is
+      To create a tree or list in GTK+, use the #CtkTreeModel interface in
+      conjunction with the #CtkTreeView widget.  This widget is
       designed around a <firstterm>Model/View/Controller</firstterm>
       design and consists of four major parts:
       <simplelist>
-	<member>The tree view widget (<structname>GtkTreeView</structname>)</member>
-	<member>The view column (<structname>GtkTreeViewColumn</structname>)</member>
-	<member>The cell renderers (<structname>GtkCellRenderer</structname> etc.)</member>
-	<member>The model interface (<structname>GtkTreeModel</structname>)</member>
+	<member>The tree view widget (<structname>CtkTreeView</structname>)</member>
+	<member>The view column (<structname>CtkTreeViewColumn</structname>)</member>
+	<member>The cell renderers (<structname>CtkCellRenderer</structname> etc.)</member>
+	<member>The model interface (<structname>CtkTreeModel</structname>)</member>
       </simplelist>
       The <emphasis>View</emphasis> is composed of the first three
 	objects, while the last is the <emphasis>Model</emphasis>.  One
@@ -46,15 +46,15 @@
   <refsect1>
     <title>Creating a model</title>
     <para>
-      GTK+ provides two simple models that can be used: the #GtkListStore
-      and the #GtkTreeStore.  GtkListStore is used to model list widgets, 
-      while the GtkTreeStore models trees.  It is possible to develop a new 
+      GTK+ provides two simple models that can be used: the #CtkListStore
+      and the #CtkTreeStore.  CtkListStore is used to model list widgets, 
+      while the CtkTreeStore models trees.  It is possible to develop a new 
       type of model, but the existing models should be satisfactory for all 
       but the most specialized of situations.  Creating the model is quite 
       simple:
     </para>
       <informalexample><programlisting><![CDATA[
-GtkListStore *store = ctk_list_store_new (2, G_TYPE_STRING, G_TYPE_BOOLEAN);
+CtkListStore *store = ctk_list_store_new (2, G_TYPE_STRING, G_TYPE_BOOLEAN);
 ]]></programlisting></informalexample>
     <para>
       This creates a list store with two columns: a string column and a boolean
@@ -73,7 +73,7 @@ enum
    N_COLUMNS
 };
 
-GtkTreeStore *store = ctk_tree_store_new (N_COLUMNS,       /* Total number of columns */
+CtkTreeStore *store = ctk_tree_store_new (N_COLUMNS,       /* Total number of columns */
                                           G_TYPE_STRING,   /* Book title              */
                                           G_TYPE_STRING,   /* Author                  */
                                           G_TYPE_BOOLEAN); /* Is checked out?         */
@@ -81,7 +81,7 @@ GtkTreeStore *store = ctk_tree_store_new (N_COLUMNS,       /* Total number of co
     <para>
       Adding data to the model is done using ctk_tree_store_set() or 
       ctk_list_store_set(), depending upon which sort of model was
-      created.  To do this, a #GtkTreeIter must be acquired.  The iterator 
+      created.  To do this, a #CtkTreeIter must be acquired.  The iterator 
       points to the location where data will be added.
     </para>
     <para>
@@ -90,7 +90,7 @@ GtkTreeStore *store = ctk_tree_store_new (N_COLUMNS,       /* Total number of co
       Consider the following example:
     </para>
     <informalexample><programlisting><![CDATA[
-GtkTreeIter   iter;
+CtkTreeIter   iter;
 
 ctk_tree_store_append (store, &iter, NULL);  /* Acquire an iterator */
 
@@ -109,13 +109,13 @@ ctk_tree_store_set (store, &iter,
   </para>
   <para>
     The third argument to ctk_tree_store_append() is the parent iterator.  It
-    is used to add a row to a GtkTreeStore as a child of an existing row.  This
+    is used to add a row to a CtkTreeStore as a child of an existing row.  This
     means that the new row will only be visible when its parent is visible and
     in its expanded state.  Consider the following example:
   </para>
   <informalexample><programlisting><![CDATA[
-GtkTreeIter iter1;  /* Parent iter */
-GtkTreeIter iter2;  /* Child iter  */
+CtkTreeIter iter1;  /* Parent iter */
+CtkTreeIter iter2;  /* Child iter  */
 
 ctk_tree_store_append (store, &iter1, NULL);  /* Acquire a top-level iterator */
 ctk_tree_store_set (store, &iter1,
@@ -146,12 +146,12 @@ ctk_tree_store_set (store, &iter2,
     <para>
       While there are several different models to choose from, there is
       only one view widget to deal with.  It works with either the list
-      or the tree store.  Setting up a #GtkTreeView is not a difficult
-      matter.  It needs a #GtkTreeModel to know where to retrieve its data 
+      or the tree store.  Setting up a #CtkTreeView is not a difficult
+      matter.  It needs a #CtkTreeModel to know where to retrieve its data 
       from.
     </para>
     <informalexample><programlisting><![CDATA[
-GtkWidget *tree;
+CtkWidget *tree;
 
 tree = ctk_tree_view_new_with_model (CTK_TREE_MODEL (store));
 ]]></programlisting></informalexample>
@@ -159,25 +159,25 @@ tree = ctk_tree_view_new_with_model (CTK_TREE_MODEL (store));
     <refsect2>
       <title>Columns and cell renderers</title>
       <para>
-	Once the #GtkTreeView widget has a model, it will need to know how 
+	Once the #CtkTreeView widget has a model, it will need to know how 
         to display the model.  It does this with columns and cell renderers.
       </para>
       <para>
         Cell renderers are used to draw the data in the tree model in a
         way.  There are a number of cell renderers that come with GTK+,
-        including the #GtkCellRendererText, #GtkCellRendererPixbuf and
-        the #GtkCellRendererToggle.
+        including the #CtkCellRendererText, #CtkCellRendererPixbuf and
+        the #CtkCellRendererToggle.
         It is relatively easy to write a custom renderer.
       </para>
       <para>
-        A #GtkTreeViewColumn is the object that GtkTreeView uses to organize 
+        A #CtkTreeViewColumn is the object that CtkTreeView uses to organize 
         the vertical columns in the tree view.  It needs to know the name of 
         the column to label for the user, what type of cell renderer to use, 
         and which piece of data to retrieve from the model for a given row.
       </para>
       <informalexample><programlisting>
-GtkCellRenderer *renderer;
-GtkTreeViewColumn *column;
+CtkCellRenderer *renderer;
+CtkTreeViewColumn *column;
 
 renderer = ctk_cell_renderer_text_new (<!-- -->);
 column = ctk_tree_view_column_new_with_attributes ("Author",
@@ -199,14 +199,14 @@ ctk_tree_view_append_column (CTK_TREE_VIEW (tree), column);
         Most applications will need to not only deal with displaying data, but 
         also receiving input events from users.  To do this, simply get a 
         reference to a selection object and connect to the 
-        #GtkTreeSelection::changed signal.
+        #CtkTreeSelection::changed signal.
       </para>
       <informalexample><programlisting><![CDATA[
 /* Prototype for selection handler callback */
-static void tree_selection_changed_cb (GtkTreeSelection *selection, gpointer data);
+static void tree_selection_changed_cb (CtkTreeSelection *selection, gpointer data);
 
 /* Setup the selection handler */
-GtkTreeSelection *select;
+CtkTreeSelection *select;
 
 select = ctk_tree_view_get_selection (CTK_TREE_VIEW (tree));
 ctk_tree_selection_set_mode (select, CTK_SELECTION_SINGLE);
@@ -219,10 +219,10 @@ g_signal_connect (G_OBJECT (select), "changed",
         </para>
         <informalexample><programlisting><![CDATA[
 static void
-tree_selection_changed_cb (GtkTreeSelection *selection, gpointer data)
+tree_selection_changed_cb (CtkTreeSelection *selection, gpointer data)
 {
-        GtkTreeIter iter;
-        GtkTreeModel *model;
+        CtkTreeIter iter;
+        CtkTreeModel *model;
         gchar *author;
 
         if (ctk_tree_selection_get_selected (selection, &model, &iter))
@@ -241,11 +241,11 @@ tree_selection_changed_cb (GtkTreeSelection *selection, gpointer data)
   <refsect1>
     <title>Simple Example</title>
     <para>
-      Here is a simple example of using a #GtkTreeView widget in context 
+      Here is a simple example of using a #CtkTreeView widget in context 
       of the other widgets.  It simply creates a simple model and view, 
       and puts them together.  Note that the model is never populated 
       with data &mdash; that is left as an exercise for the reader.  
-      More information can be found on this in the #GtkTreeModel section.
+      More information can be found on this in the #CtkTreeModel section.
       <informalexample><programlisting>
 enum
 {
@@ -258,13 +258,13 @@ enum
 void
 setup_tree (void)
 {
-   GtkTreeStore *store;
-   GtkWidget *tree;
-   GtkTreeViewColumn *column;
-   GtkCellRenderer *renderer;
+   CtkTreeStore *store;
+   CtkWidget *tree;
+   CtkTreeViewColumn *column;
+   CtkCellRenderer *renderer;
 
    /* Create a model.  We are using the store model for now, though we
-    * could use any other GtkTreeModel */
+    * could use any other CtkTreeModel */
    store = ctk_tree_store_new (N_COLUMNS,
                                G_TYPE_STRING,
                                G_TYPE_STRING,

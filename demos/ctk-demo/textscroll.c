@@ -1,7 +1,7 @@
 /* Text View/Automatic Scrolling
  *
  * This example demonstrates how to use the gravity of
- * GtkTextMarks to keep a text view scrolled to the bottom
+ * CtkTextMarks to keep a text view scrolled to the bottom
  * while appending text.
  */
 
@@ -10,11 +10,11 @@
 /* Scroll to the end of the buffer.
  */
 static gboolean
-scroll_to_end (GtkTextView *textview)
+scroll_to_end (CtkTextView *textview)
 {
-  GtkTextBuffer *buffer;
-  GtkTextIter iter;
-  GtkTextMark *mark;
+  CtkTextBuffer *buffer;
+  CtkTextIter iter;
+  CtkTextMark *mark;
   char *spaces;
   char *text;
   static int count;
@@ -55,11 +55,11 @@ scroll_to_end (GtkTextView *textview)
 /* Scroll to the bottom of the buffer.
  */
 static gboolean
-scroll_to_bottom (GtkTextView *textview)
+scroll_to_bottom (CtkTextView *textview)
 {
-  GtkTextBuffer *buffer;
-  GtkTextIter iter;
-  GtkTextMark *mark;
+  CtkTextBuffer *buffer;
+  CtkTextIter iter;
+  CtkTextMark *mark;
   char *spaces;
   char *text;
   static int count;
@@ -105,11 +105,11 @@ scroll_to_bottom (GtkTextView *textview)
 }
 
 static guint
-setup_scroll (GtkTextView *textview,
+setup_scroll (CtkTextView *textview,
               gboolean     to_end)
 {
-  GtkTextBuffer *buffer;
-  GtkTextIter iter;
+  CtkTextBuffer *buffer;
+  CtkTextIter iter;
 
   buffer = ctk_text_view_get_buffer (textview);
   ctk_text_buffer_get_end_iter (buffer, &iter);
@@ -142,18 +142,18 @@ setup_scroll (GtkTextView *textview,
 }
 
 static void
-remove_timeout (GtkWidget *window,
+remove_timeout (CtkWidget *window,
                 gpointer   timeout)
 {
   g_source_remove (GPOINTER_TO_UINT (timeout));
 }
 
 static void
-create_text_view (GtkWidget *hbox,
+create_text_view (CtkWidget *hbox,
                   gboolean   to_end)
 {
-  GtkWidget *swindow;
-  GtkWidget *textview;
+  CtkWidget *swindow;
+  CtkWidget *textview;
   guint timeout;
 
   swindow = ctk_scrolled_window_new (NULL, NULL);
@@ -171,14 +171,14 @@ create_text_view (GtkWidget *hbox,
                     GUINT_TO_POINTER (timeout));
 }
 
-GtkWidget *
-do_textscroll (GtkWidget *do_widget)
+CtkWidget *
+do_textscroll (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkWidget *hbox;
+      CtkWidget *hbox;
 
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_title (CTK_WINDOW (window), "Automatic Scrolling");

@@ -1,6 +1,6 @@
 /* Expander
  *
- * GtkExpander allows to provide additional content that is initially hidden.
+ * CtkExpander allows to provide additional content that is initially hidden.
  * This is also known as "disclosure triangle".
  *
  * This example also shows how to make the window resizable only if the expander
@@ -10,38 +10,38 @@
 #include <glib/gi18n.h>
 #include <ctk/ctk.h>
 
-static GtkWidget *window = NULL;
+static CtkWidget *window = NULL;
 
 static void
-response_cb (GtkDialog *dialog, gint response_id)
+response_cb (CtkDialog *dialog, gint response_id)
 {
   ctk_widget_destroy (window);
   window = NULL;
 }
 
 static void
-expander_cb (GtkExpander *expander, GParamSpec *pspec, GtkWindow *dialog)
+expander_cb (CtkExpander *expander, GParamSpec *pspec, CtkWindow *dialog)
 {
   ctk_window_set_resizable (dialog, ctk_expander_get_expanded (expander));
 }
 
 static void
-do_not_expand (GtkWidget *child, gpointer data)
+do_not_expand (CtkWidget *child, gpointer data)
 {
   ctk_container_child_set (CTK_CONTAINER (ctk_widget_get_parent (child)), child,
                            "expand", FALSE, "fill", FALSE, NULL);
 }
 
-GtkWidget *
-do_expander (GtkWidget *do_widget)
+CtkWidget *
+do_expander (CtkWidget *do_widget)
 {
-  GtkWidget *toplevel;
-  GtkWidget *area;
-  GtkWidget *box;
-  GtkWidget *expander;
-  GtkWidget *sw;
-  GtkWidget *tv;
-  GtkTextBuffer *buffer;
+  CtkWidget *toplevel;
+  CtkWidget *area;
+  CtkWidget *box;
+  CtkWidget *expander;
+  CtkWidget *sw;
+  CtkWidget *tv;
+  CtkTextBuffer *buffer;
 
   if (!window)
     {

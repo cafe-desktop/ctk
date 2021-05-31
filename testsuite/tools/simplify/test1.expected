@@ -1,5 +1,5 @@
 <!-- default property gets stripped -->
 <interface>
-  <object class="GtkWindow">
+  <object class="CtkWindow">
   </object>
 </interface>

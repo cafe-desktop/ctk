@@ -13,7 +13,7 @@
 #define WINDOW_SIZE_JITTER 200
 #define CYCLE_TIME 5.
 
-static GtkWidget *window;
+static CtkWidget *window;
 static int window_width = WIDTH, window_height = HEIGHT;
 
 gint64 start_frame_time;
@@ -67,7 +67,7 @@ ensure_resources(cairo_surface_t *target)
 }
 
 static gboolean
-on_window_draw (GtkWidget *widget,
+on_window_draw (CtkWidget *widget,
                 cairo_t   *cr)
 
 {
@@ -133,7 +133,7 @@ on_frame (double progress)
 }
 
 static gboolean
-tick_callback (GtkWidget     *widget,
+tick_callback (CtkWidget     *widget,
                GdkFrameClock *frame_clock,
                gpointer       user_data)
 {
@@ -150,7 +150,7 @@ tick_callback (GtkWidget     *widget,
 }
 
 static gboolean
-on_map_event (GtkWidget	  *widget,
+on_map_event (CtkWidget	  *widget,
               GdkEventAny *event)
 {
   ctk_widget_add_tick_callback (window, tick_callback, NULL, NULL);

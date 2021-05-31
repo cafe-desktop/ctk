@@ -1766,7 +1766,7 @@ msgid ""
 "  --id=ID            Preview only the named object\n"
 "  --css=FILE         Use style from CSS file\n"
 "\n"
-"Perform various tasks on GtkBuilder .ui files.\n"
+"Perform various tasks on CtkBuilder .ui files.\n"
 msgstr "Erabilera:\n"
 "  ctk-builder-tool [KOMANDOA] FITXATEGIA\n"
 "\n"
@@ -1783,7 +1783,7 @@ msgstr "Erabilera:\n"
 "  --id=ID            Aurreikusi soilik izendatutako objektua\n"
 "  --css=FITXATEGIA     Erabili estiloa CSS fitxategitik\n"
 "\n"
-"Landu hainbat ataza GtkBuilder .ui fitxategietan.\n"
+"Landu hainbat ataza CtkBuilder .ui fitxategietan.\n"
 
 #. Translate to calendar:YM if you want years to be displayed
 #. * before months; otherwise translate to calendar:MY.
@@ -2670,7 +2670,7 @@ msgstr "Atzituta"
 msgid "Create Folder"
 msgstr "Sortu karpeta"
 
-#. The pointers we return for a GtkFileSystemVolume are opaque tokens; they are
+#. The pointers we return for a CtkFileSystemVolume are opaque tokens; they are
 #. * really pointers to GDrive, GVolume or GMount objects.  We need an extra
 #. * token for the fake “File System” volume.  So, we’ll return a pointer to
 #. * this particular string.
@@ -2917,12 +2917,12 @@ msgstr "Bihurtu abisu guztiak errore larri"
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:470
 msgid "GTK+ debugging flags to set"
-msgstr "Ezarri beharreko Gtk+ arazketa-banderak"
+msgstr "Ezarri beharreko Ctk+ arazketa-banderak"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:473
 msgid "GTK+ debugging flags to unset"
-msgstr "Ezarpenetik kendu beharreko Gtk+ arazketa-banderak"
+msgstr "Ezarpenetik kendu beharreko Ctk+ arazketa-banderak"
 
 #: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
 #, c-format

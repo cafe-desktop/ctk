@@ -27,41 +27,41 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_QUERY          (ctk_query_get_type ())
-#define CTK_QUERY(obj)          (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_QUERY, GtkQuery))
-#define CTK_QUERY_CLASS(klass)  (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_QUERY, GtkQueryClass))
+#define CTK_QUERY(obj)          (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_QUERY, CtkQuery))
+#define CTK_QUERY_CLASS(klass)  (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_QUERY, CtkQueryClass))
 #define CTK_IS_QUERY(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_QUERY))
 #define CTK_IS_QUERY_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_QUERY))
-#define CTK_QUERY_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_QUERY, GtkQueryClass))
+#define CTK_QUERY_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_QUERY, CtkQueryClass))
 
-typedef struct _GtkQuery GtkQuery;
-typedef struct _GtkQueryClass GtkQueryClass;
-typedef struct _GtkQueryPrivate GtkQueryPrivate;
+typedef struct _CtkQuery CtkQuery;
+typedef struct _CtkQueryClass CtkQueryClass;
+typedef struct _CtkQueryPrivate CtkQueryPrivate;
 
-struct _GtkQuery
+struct _CtkQuery
 {
   GObject parent;
 
-  GtkQueryPrivate *priv;
+  CtkQueryPrivate *priv;
 };
 
-struct _GtkQueryClass
+struct _CtkQueryClass
 {
   GObjectClass parent_class;
 };
 
 GType        ctk_query_get_type       (void);
 
-GtkQuery    *ctk_query_new            (void);
+CtkQuery    *ctk_query_new            (void);
 
-const gchar *ctk_query_get_text       (GtkQuery    *query);
-void         ctk_query_set_text       (GtkQuery    *query,
+const gchar *ctk_query_get_text       (CtkQuery    *query);
+void         ctk_query_set_text       (CtkQuery    *query,
                                        const gchar *text);
 
-GFile       *ctk_query_get_location   (GtkQuery    *query);
-void         ctk_query_set_location   (GtkQuery    *query,
+GFile       *ctk_query_get_location   (CtkQuery    *query);
+void         ctk_query_set_location   (CtkQuery    *query,
                                        GFile       *file);
 
-gboolean     ctk_query_matches_string (GtkQuery    *query,
+gboolean     ctk_query_matches_string (CtkQuery    *query,
                                        const gchar *string);
 
 G_END_DECLS

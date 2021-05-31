@@ -1,7 +1,7 @@
 /* Text View/Multiple Views
  *
- * The GtkTextView widget displays a GtkTextBuffer. One GtkTextBuffer
- * can be displayed by multiple GtkTextViews. This demo has two views
+ * The CtkTextView widget displays a CtkTextBuffer. One CtkTextBuffer
+ * can be displayed by multiple CtkTextViews. This demo has two views
  * displaying a single buffer, and shows off the widget's text
  * formatting features.
  *
@@ -10,10 +10,10 @@
 #include <ctk/ctk.h>
 #include <stdlib.h> /* for exit() */
 
-static void easter_egg_callback (GtkWidget *button, gpointer data);
+static void easter_egg_callback (CtkWidget *button, gpointer data);
 
 static void
-create_tags (GtkTextBuffer *buffer)
+create_tags (CtkTextBuffer *buffer)
 {
   /* Create a bunch of tags. Note that it's also possible to
    * create tags with ctk_text_tag_new() then add them to the
@@ -23,7 +23,7 @@ create_tags (GtkTextBuffer *buffer)
    * anonymous tag.
    *
    * In any real app, another useful optimization would be to create
-   * a GtkTextTagTable in advance, and reuse the same tag table for
+   * a CtkTextTagTable in advance, and reuse the same tag table for
    * all the buffers with the same tag set, instead of creating
    * new copies of the same tags for every buffer.
    *
@@ -124,12 +124,12 @@ create_tags (GtkTextBuffer *buffer)
 }
 
 static void
-insert_text (GtkTextBuffer *buffer)
+insert_text (CtkTextBuffer *buffer)
 {
-  GtkTextIter iter;
-  GtkTextIter start, end;
+  CtkTextIter iter;
+  CtkTextIter start, end;
   GdkPixbuf *pixbuf;
-  GtkIconTheme *icon_theme;
+  CtkIconTheme *icon_theme;
 
   icon_theme = ctk_icon_theme_get_default ();
   pixbuf = ctk_icon_theme_load_icon (icon_theme,
@@ -370,7 +370,7 @@ insert_text (GtkTextBuffer *buffer)
   ctk_text_buffer_insert (buffer, &iter, ".\n", -1);
 
   ctk_text_buffer_insert (buffer, &iter,
-      "\n\nThis demo doesn't demonstrate all the GtkTextBuffer features; "
+      "\n\nThis demo doesn't demonstrate all the CtkTextBuffer features; "
       "it leaves out, for example: invisible/hidden text, tab stops, "
       "application-drawn areas on the sides of the widget for displaying "
       "breakpoints and such...", -1);
@@ -383,7 +383,7 @@ insert_text (GtkTextBuffer *buffer)
 }
 
 static gboolean
-find_anchor (GtkTextIter *iter)
+find_anchor (CtkTextIter *iter)
 {
   while (ctk_text_iter_forward_char (iter))
     {
@@ -394,10 +394,10 @@ find_anchor (GtkTextIter *iter)
 }
 
 static void
-attach_widgets (GtkTextView *text_view)
+attach_widgets (CtkTextView *text_view)
 {
-  GtkTextIter iter;
-  GtkTextBuffer *buffer;
+  CtkTextIter iter;
+  CtkTextBuffer *buffer;
   int i;
 
   buffer = ctk_text_view_get_buffer (text_view);
@@ -407,8 +407,8 @@ attach_widgets (GtkTextView *text_view)
   i = 0;
   while (find_anchor (&iter))
     {
-      GtkTextChildAnchor *anchor;
-      GtkWidget *widget;
+      CtkTextChildAnchor *anchor;
+      CtkWidget *widget;
 
       anchor = ctk_text_iter_get_child_anchor (&iter);
 
@@ -458,18 +458,18 @@ attach_widgets (GtkTextView *text_view)
     }
 }
 
-GtkWidget *
-do_textview (GtkWidget *do_widget)
+CtkWidget *
+do_textview (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkWidget *vpaned;
-      GtkWidget *view1;
-      GtkWidget *view2;
-      GtkWidget *sw;
-      GtkTextBuffer *buffer;
+      CtkWidget *vpaned;
+      CtkWidget *view1;
+      CtkWidget *view2;
+      CtkWidget *sw;
+      CtkTextBuffer *buffer;
 
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window),
@@ -536,10 +536,10 @@ do_textview (GtkWidget *do_widget)
 
 static void
 recursive_attach_view (int                 depth,
-                       GtkTextView        *view,
-                       GtkTextChildAnchor *anchor)
+                       CtkTextView        *view,
+                       CtkTextChildAnchor *anchor)
 {
-  GtkWidget *child_view, *frame;
+  CtkWidget *child_view, *frame;
 
   if (depth > 4)
     return;
@@ -556,16 +556,16 @@ recursive_attach_view (int                 depth,
 }
 
 static void
-easter_egg_callback (GtkWidget *button,
+easter_egg_callback (CtkWidget *button,
                      gpointer   data)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
   gpointer window_ptr;
-  GtkTextBuffer *buffer;
-  GtkWidget     *view;
-  GtkTextIter    iter;
-  GtkTextChildAnchor *anchor;
-  GtkWidget *sw;
+  CtkTextBuffer *buffer;
+  CtkWidget     *view;
+  CtkTextIter    iter;
+  CtkTextChildAnchor *anchor;
+  CtkWidget *sw;
 
   if (window)
     {

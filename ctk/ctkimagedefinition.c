@@ -21,106 +21,106 @@
 
 #include "deprecated/ctkiconfactory.h"
 
-typedef struct _GtkImageDefinitionEmpty GtkImageDefinitionEmpty;
-typedef struct _GtkImageDefinitionPixbuf GtkImageDefinitionPixbuf;
-typedef struct _GtkImageDefinitionStock GtkImageDefinitionStock;
-typedef struct _GtkImageDefinitionIconSet GtkImageDefinitionIconSet;
-typedef struct _GtkImageDefinitionAnimation GtkImageDefinitionAnimation;
-typedef struct _GtkImageDefinitionIconName GtkImageDefinitionIconName;
-typedef struct _GtkImageDefinitionGIcon GtkImageDefinitionGIcon;
-typedef struct _GtkImageDefinitionSurface GtkImageDefinitionSurface;
+typedef struct _CtkImageDefinitionEmpty CtkImageDefinitionEmpty;
+typedef struct _CtkImageDefinitionPixbuf CtkImageDefinitionPixbuf;
+typedef struct _CtkImageDefinitionStock CtkImageDefinitionStock;
+typedef struct _CtkImageDefinitionIconSet CtkImageDefinitionIconSet;
+typedef struct _CtkImageDefinitionAnimation CtkImageDefinitionAnimation;
+typedef struct _CtkImageDefinitionIconName CtkImageDefinitionIconName;
+typedef struct _CtkImageDefinitionGIcon CtkImageDefinitionGIcon;
+typedef struct _CtkImageDefinitionSurface CtkImageDefinitionSurface;
 
-struct _GtkImageDefinitionEmpty {
-  GtkImageType type;
+struct _CtkImageDefinitionEmpty {
+  CtkImageType type;
   gint ref_count;
 };
 
-struct _GtkImageDefinitionPixbuf {
-  GtkImageType type;
+struct _CtkImageDefinitionPixbuf {
+  CtkImageType type;
   gint ref_count;
 
   GdkPixbuf *pixbuf;
   int scale;
 };
 
-struct _GtkImageDefinitionStock {
-  GtkImageType type;
+struct _CtkImageDefinitionStock {
+  CtkImageType type;
   gint ref_count;
 
   char *id;
 };
 
-struct _GtkImageDefinitionIconSet {
-  GtkImageType type;
+struct _CtkImageDefinitionIconSet {
+  CtkImageType type;
   gint ref_count;
 
-  GtkIconSet *icon_set;
+  CtkIconSet *icon_set;
 };
 
-struct _GtkImageDefinitionAnimation {
-  GtkImageType type;
+struct _CtkImageDefinitionAnimation {
+  CtkImageType type;
   gint ref_count;
 
   GdkPixbufAnimation *animation;
   int scale;
 };
 
-struct _GtkImageDefinitionIconName {
-  GtkImageType type;
+struct _CtkImageDefinitionIconName {
+  CtkImageType type;
   gint ref_count;
 
   char *icon_name;
 };
 
-struct _GtkImageDefinitionGIcon {
-  GtkImageType type;
+struct _CtkImageDefinitionGIcon {
+  CtkImageType type;
   gint ref_count;
 
   GIcon *gicon;
 };
 
-struct _GtkImageDefinitionSurface {
-  GtkImageType type;
+struct _CtkImageDefinitionSurface {
+  CtkImageType type;
   gint ref_count;
 
   cairo_surface_t *surface;
 };
 
-union _GtkImageDefinition
+union _CtkImageDefinition
 {
-  GtkImageType type;
-  GtkImageDefinitionEmpty empty;
-  GtkImageDefinitionPixbuf pixbuf;
-  GtkImageDefinitionStock stock;
-  GtkImageDefinitionIconSet icon_set;
-  GtkImageDefinitionAnimation animation;
-  GtkImageDefinitionIconName icon_name;
-  GtkImageDefinitionGIcon gicon;
-  GtkImageDefinitionSurface surface;
+  CtkImageType type;
+  CtkImageDefinitionEmpty empty;
+  CtkImageDefinitionPixbuf pixbuf;
+  CtkImageDefinitionStock stock;
+  CtkImageDefinitionIconSet icon_set;
+  CtkImageDefinitionAnimation animation;
+  CtkImageDefinitionIconName icon_name;
+  CtkImageDefinitionGIcon gicon;
+  CtkImageDefinitionSurface surface;
 };
 
-GtkImageDefinition *
+CtkImageDefinition *
 ctk_image_definition_new_empty (void)
 {
-  static GtkImageDefinitionEmpty empty = { CTK_IMAGE_EMPTY, 1 };
+  static CtkImageDefinitionEmpty empty = { CTK_IMAGE_EMPTY, 1 };
 
-  return ctk_image_definition_ref ((GtkImageDefinition *) &empty);
+  return ctk_image_definition_ref ((CtkImageDefinition *) &empty);
 }
 
-static inline GtkImageDefinition *
-ctk_image_definition_alloc (GtkImageType type)
+static inline CtkImageDefinition *
+ctk_image_definition_alloc (CtkImageType type)
 {
   static gsize sizes[] = {
-    sizeof (GtkImageDefinitionEmpty),
-    sizeof (GtkImageDefinitionPixbuf),
-    sizeof (GtkImageDefinitionStock),
-    sizeof (GtkImageDefinitionIconSet),
-    sizeof (GtkImageDefinitionAnimation),
-    sizeof (GtkImageDefinitionIconName),
-    sizeof (GtkImageDefinitionGIcon),
-    sizeof (GtkImageDefinitionSurface)
+    sizeof (CtkImageDefinitionEmpty),
+    sizeof (CtkImageDefinitionPixbuf),
+    sizeof (CtkImageDefinitionStock),
+    sizeof (CtkImageDefinitionIconSet),
+    sizeof (CtkImageDefinitionAnimation),
+    sizeof (CtkImageDefinitionIconName),
+    sizeof (CtkImageDefinitionGIcon),
+    sizeof (CtkImageDefinitionSurface)
   };
-  GtkImageDefinition *def;
+  CtkImageDefinition *def;
 
   g_assert (type < G_N_ELEMENTS (sizes));
 
@@ -131,11 +131,11 @@ ctk_image_definition_alloc (GtkImageType type)
   return def;
 }
 
-GtkImageDefinition *
+CtkImageDefinition *
 ctk_image_definition_new_pixbuf (GdkPixbuf *pixbuf,
                                  int        scale)
 {
-  GtkImageDefinition *def;
+  CtkImageDefinition *def;
 
   if (pixbuf == NULL || scale <= 0)
     return NULL;
@@ -147,10 +147,10 @@ ctk_image_definition_new_pixbuf (GdkPixbuf *pixbuf,
   return def;
 }
 
-GtkImageDefinition *
+CtkImageDefinition *
 ctk_image_definition_new_stock (const char *stock_id)
 {
-  GtkImageDefinition *def;
+  CtkImageDefinition *def;
 
   if (stock_id == NULL || stock_id[0] == '\0')
     return NULL;
@@ -161,10 +161,10 @@ ctk_image_definition_new_stock (const char *stock_id)
   return def;
 }
 
-GtkImageDefinition *
-ctk_image_definition_new_icon_set (GtkIconSet *icon_set)
+CtkImageDefinition *
+ctk_image_definition_new_icon_set (CtkIconSet *icon_set)
 {
-  GtkImageDefinition *def;
+  CtkImageDefinition *def;
 
   if (icon_set == NULL)
     return NULL;
@@ -177,11 +177,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
   return def;
 }
 
-GtkImageDefinition *
+CtkImageDefinition *
 ctk_image_definition_new_animation (GdkPixbufAnimation *animation,
                                     int                 scale)
 {
-  GtkImageDefinition *def;
+  CtkImageDefinition *def;
 
   if (animation == NULL || scale <= 0)
     return NULL;
@@ -193,10 +193,10 @@ ctk_image_definition_new_animation (GdkPixbufAnimation *animation,
   return def;
 }
 
-GtkImageDefinition *
+CtkImageDefinition *
 ctk_image_definition_new_icon_name (const char *icon_name)
 {
-  GtkImageDefinition *def;
+  CtkImageDefinition *def;
 
   if (icon_name == NULL || icon_name[0] == '\0')
     return NULL;
@@ -207,10 +207,10 @@ ctk_image_definition_new_icon_name (const char *icon_name)
   return def;
 }
 
-GtkImageDefinition *
+CtkImageDefinition *
 ctk_image_definition_new_gicon (GIcon *gicon)
 {
-  GtkImageDefinition *def;
+  CtkImageDefinition *def;
 
   if (gicon == NULL)
     return NULL;
@@ -221,10 +221,10 @@ ctk_image_definition_new_gicon (GIcon *gicon)
   return def;
 }
 
-GtkImageDefinition *
+CtkImageDefinition *
 ctk_image_definition_new_surface (cairo_surface_t *surface)
 {
-  GtkImageDefinition *def;
+  CtkImageDefinition *def;
 
   if (surface == NULL)
     return NULL;
@@ -235,8 +235,8 @@ ctk_image_definition_new_surface (cairo_surface_t *surface)
   return def;
 }
 
-GtkImageDefinition *
-ctk_image_definition_ref (GtkImageDefinition *def)
+CtkImageDefinition *
+ctk_image_definition_ref (CtkImageDefinition *def)
 {
   def->empty.ref_count++;
 
@@ -244,7 +244,7 @@ ctk_image_definition_ref (GtkImageDefinition *def)
 }
 
 void
-ctk_image_definition_unref (GtkImageDefinition *def)
+ctk_image_definition_unref (CtkImageDefinition *def)
 {
   def->empty.ref_count--;
 
@@ -285,14 +285,14 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
   g_free (def);
 }
 
-GtkImageType
-ctk_image_definition_get_storage_type (const GtkImageDefinition *def)
+CtkImageType
+ctk_image_definition_get_storage_type (const CtkImageDefinition *def)
 {
   return def->type;
 }
 
 gint
-ctk_image_definition_get_scale (const GtkImageDefinition *def)
+ctk_image_definition_get_scale (const CtkImageDefinition *def)
 {
   switch (def->type)
     {
@@ -313,7 +313,7 @@ ctk_image_definition_get_scale (const GtkImageDefinition *def)
 }
 
 GdkPixbuf *
-ctk_image_definition_get_pixbuf (const GtkImageDefinition *def)
+ctk_image_definition_get_pixbuf (const CtkImageDefinition *def)
 {
   if (def->type != CTK_IMAGE_PIXBUF)
     return NULL;
@@ -322,7 +322,7 @@ ctk_image_definition_get_pixbuf (const GtkImageDefinition *def)
 }
 
 const gchar *
-ctk_image_definition_get_stock (const GtkImageDefinition *def)
+ctk_image_definition_get_stock (const CtkImageDefinition *def)
 {
   if (def->type != CTK_IMAGE_STOCK)
     return NULL;
@@ -330,8 +330,8 @@ ctk_image_definition_get_stock (const GtkImageDefinition *def)
   return def->stock.id;
 }
 
-GtkIconSet *
-ctk_image_definition_get_icon_set (const GtkImageDefinition *def)
+CtkIconSet *
+ctk_image_definition_get_icon_set (const CtkImageDefinition *def)
 {
   if (def->type != CTK_IMAGE_ICON_SET)
     return NULL;
@@ -340,7 +340,7 @@ ctk_image_definition_get_icon_set (const GtkImageDefinition *def)
 }
 
 GdkPixbufAnimation *
-ctk_image_definition_get_animation (const GtkImageDefinition *def)
+ctk_image_definition_get_animation (const CtkImageDefinition *def)
 {
   if (def->type != CTK_IMAGE_ANIMATION)
     return NULL;
@@ -349,7 +349,7 @@ ctk_image_definition_get_animation (const GtkImageDefinition *def)
 }
 
 const gchar *
-ctk_image_definition_get_icon_name (const GtkImageDefinition *def)
+ctk_image_definition_get_icon_name (const CtkImageDefinition *def)
 {
   if (def->type != CTK_IMAGE_ICON_NAME)
     return NULL;
@@ -358,7 +358,7 @@ ctk_image_definition_get_icon_name (const GtkImageDefinition *def)
 }
 
 GIcon *
-ctk_image_definition_get_gicon (const GtkImageDefinition *def)
+ctk_image_definition_get_gicon (const CtkImageDefinition *def)
 {
   if (def->type != CTK_IMAGE_GICON)
     return NULL;
@@ -367,7 +367,7 @@ ctk_image_definition_get_gicon (const GtkImageDefinition *def)
 }
 
 cairo_surface_t *
-ctk_image_definition_get_surface (const GtkImageDefinition *def)
+ctk_image_definition_get_surface (const CtkImageDefinition *def)
 {
   if (def->type != CTK_IMAGE_SURFACE)
     return NULL;

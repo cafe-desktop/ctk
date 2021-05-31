@@ -1,16 +1,16 @@
 /* OpenGL Area
  *
- * GtkGLArea is a widget that allows custom drawing using OpenGL calls.
+ * CtkGLArea is a widget that allows custom drawing using OpenGL calls.
  */
 
 #include <math.h>
 #include <ctk/ctk.h>
 #include <epoxy/gl.h>
 
-static GtkWidget *demo_window = NULL;
+static CtkWidget *demo_window = NULL;
 
-/* the GtkGLArea widget */
-static GtkWidget *gl_area = NULL;
+/* the CtkGLArea widget */
+static CtkWidget *gl_area = NULL;
 
 enum {
   X_AXIS,
@@ -216,9 +216,9 @@ static GLuint position_buffer;
 static GLuint program;
 static GLuint mvp_location;
 
-/* We need to set up our state when we realize the GtkGLArea widget */
+/* We need to set up our state when we realize the CtkGLArea widget */
 static void
-realize (GtkWidget *widget)
+realize (CtkWidget *widget)
 {
   const char *vertex_path, *fragment_path;
   GdkGLContext *context;
@@ -247,7 +247,7 @@ realize (GtkWidget *widget)
 
 /* We should tear down the state when unrealizing */
 static void
-unrealize (GtkWidget *widget)
+unrealize (CtkWidget *widget)
 {
   ctk_gl_area_make_current (CTK_GL_AREA (widget));
 
@@ -264,7 +264,7 @@ draw_triangle (void)
   float mvp[16];
 
   /* Compute the model view projection matrix using the
-   * rotation angles specified through the GtkRange widgets
+   * rotation angles specified through the CtkRange widgets
    */
   compute_mvp (mvp,
                rotation_angles[X_AXIS],
@@ -292,7 +292,7 @@ draw_triangle (void)
 }
 
 static gboolean
-render (GtkGLArea    *area,
+render (CtkGLArea    *area,
         GdkGLContext *context)
 {
   if (ctk_gl_area_get_error (area) != NULL)
@@ -312,7 +312,7 @@ render (GtkGLArea    *area,
 }
 
 static void
-on_axis_value_change (GtkAdjustment *adjustment,
+on_axis_value_change (CtkAdjustment *adjustment,
                       gpointer       data)
 {
   int axis = GPOINTER_TO_INT (data);
@@ -326,11 +326,11 @@ on_axis_value_change (GtkAdjustment *adjustment,
   ctk_widget_queue_draw (gl_area);
 }
 
-static GtkWidget *
+static CtkWidget *
 create_axis_slider (int axis)
 {
-  GtkWidget *box, *label, *slider;
-  GtkAdjustment *adj;
+  CtkWidget *box, *label, *slider;
+  CtkAdjustment *adj;
   const char *text;
 
   box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
@@ -372,7 +372,7 @@ create_axis_slider (int axis)
 }
 
 static void
-close_window (GtkWidget *widget)
+close_window (CtkWidget *widget)
 {
   /* Reset the state */
   demo_window = NULL;
@@ -383,10 +383,10 @@ close_window (GtkWidget *widget)
   rotation_angles[Z_AXIS] = 0.0;
 }
 
-GtkWidget *
-create_glarea_window (GtkWidget *do_widget)
+CtkWidget *
+create_glarea_window (CtkWidget *do_widget)
 {
-  GtkWidget *window, *box, *button, *controls;
+  CtkWidget *window, *box, *button, *controls;
   int i;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -411,7 +411,7 @@ create_glarea_window (GtkWidget *do_widget)
   g_signal_connect (gl_area, "realize", G_CALLBACK (realize), NULL);
   g_signal_connect (gl_area, "unrealize", G_CALLBACK (unrealize), NULL);
 
-  /* The main "draw" call for GtkGLArea */
+  /* The main "draw" call for CtkGLArea */
   g_signal_connect (gl_area, "render", G_CALLBACK (render), NULL);
 
   controls = ctk_box_new (CTK_ORIENTATION_VERTICAL, FALSE);
@@ -429,8 +429,8 @@ create_glarea_window (GtkWidget *do_widget)
   return window;
 }
 
-GtkWidget*
-do_glarea (GtkWidget *do_widget)
+CtkWidget*
+do_glarea (CtkWidget *do_widget)
 {
   if (demo_window == NULL)
     demo_window = create_glarea_window (do_widget);

@@ -15,7 +15,7 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* A Red-Black Tree implementation used specifically by GtkTreeView.
+/* A Red-Black Tree implementation used specifically by CtkTreeView.
  */
 #ifndef __CTK_RBTREE_H__
 #define __CTK_RBTREE_H__
@@ -42,24 +42,24 @@ typedef enum
                           CTK_RBNODE_INVALID |
                           CTK_RBNODE_COLUMN_INVALID |
                           CTK_RBNODE_DESCENDANTS_INVALID
-} GtkRBNodeColor;
+} CtkRBNodeColor;
 
-typedef struct _GtkRBTree GtkRBTree;
-typedef struct _GtkRBNode GtkRBNode;
-typedef struct _GtkRBTreeView GtkRBTreeView;
+typedef struct _CtkRBTree CtkRBTree;
+typedef struct _CtkRBNode CtkRBNode;
+typedef struct _CtkRBTreeView CtkRBTreeView;
 
-typedef void (*GtkRBTreeTraverseFunc) (GtkRBTree  *tree,
-                                       GtkRBNode  *node,
+typedef void (*CtkRBTreeTraverseFunc) (CtkRBTree  *tree,
+                                       CtkRBNode  *node,
                                        gpointer  data);
 
-struct _GtkRBTree
+struct _CtkRBTree
 {
-  GtkRBNode *root;
-  GtkRBTree *parent_tree;
-  GtkRBNode *parent_node;
+  CtkRBNode *root;
+  CtkRBTree *parent_tree;
+  CtkRBNode *parent_node;
 };
 
-struct _GtkRBNode
+struct _CtkRBNode
 {
   guint flags : 14;
 
@@ -68,9 +68,9 @@ struct _GtkRBNode
    */
   gint count;
 
-  GtkRBNode *left;
-  GtkRBNode *right;
-  GtkRBNode *parent;
+  CtkRBNode *left;
+  CtkRBNode *right;
+  CtkRBNode *parent;
 
   /* count the number of total nodes beneath us, including nodes
    * of children trees.
@@ -86,7 +86,7 @@ struct _GtkRBNode
   gint offset;
 
   /* Child trees */
-  GtkRBTree *children;
+  CtkRBTree *children;
 };
 
 
@@ -98,72 +98,72 @@ struct _GtkRBNode
 #define CTK_RBNODE_FLAG_SET(node, flag) 	(node?(((node->flags&flag)==flag)?TRUE:FALSE):FALSE)
 
 
-GtkRBTree *_ctk_rbtree_new              (void);
-void       _ctk_rbtree_free             (GtkRBTree              *tree);
-void       _ctk_rbtree_remove           (GtkRBTree              *tree);
-void       _ctk_rbtree_destroy          (GtkRBTree              *tree);
-GtkRBNode *_ctk_rbtree_insert_before    (GtkRBTree              *tree,
-					 GtkRBNode              *node,
+CtkRBTree *_ctk_rbtree_new              (void);
+void       _ctk_rbtree_free             (CtkRBTree              *tree);
+void       _ctk_rbtree_remove           (CtkRBTree              *tree);
+void       _ctk_rbtree_destroy          (CtkRBTree              *tree);
+CtkRBNode *_ctk_rbtree_insert_before    (CtkRBTree              *tree,
+					 CtkRBNode              *node,
 					 gint                    height,
 					 gboolean                valid);
-GtkRBNode *_ctk_rbtree_insert_after     (GtkRBTree              *tree,
-					 GtkRBNode              *node,
+CtkRBNode *_ctk_rbtree_insert_after     (CtkRBTree              *tree,
+					 CtkRBNode              *node,
 					 gint                    height,
 					 gboolean                valid);
-void       _ctk_rbtree_remove_node      (GtkRBTree              *tree,
-					 GtkRBNode              *node);
-gboolean   _ctk_rbtree_is_nil           (GtkRBNode              *node);
-void       _ctk_rbtree_reorder          (GtkRBTree              *tree,
+void       _ctk_rbtree_remove_node      (CtkRBTree              *tree,
+					 CtkRBNode              *node);
+gboolean   _ctk_rbtree_is_nil           (CtkRBNode              *node);
+void       _ctk_rbtree_reorder          (CtkRBTree              *tree,
 					 gint                   *new_order,
 					 gint                    length);
-gboolean   _ctk_rbtree_contains         (GtkRBTree              *tree,
-                                         GtkRBTree              *potential_child);
-GtkRBNode *_ctk_rbtree_find_count       (GtkRBTree              *tree,
+gboolean   _ctk_rbtree_contains         (CtkRBTree              *tree,
+                                         CtkRBTree              *potential_child);
+CtkRBNode *_ctk_rbtree_find_count       (CtkRBTree              *tree,
 					 gint                    count);
-void       _ctk_rbtree_node_set_height  (GtkRBTree              *tree,
-					 GtkRBNode              *node,
+void       _ctk_rbtree_node_set_height  (CtkRBTree              *tree,
+					 CtkRBNode              *node,
 					 gint                    height);
-void       _ctk_rbtree_node_mark_invalid(GtkRBTree              *tree,
-					 GtkRBNode              *node);
-void       _ctk_rbtree_node_mark_valid  (GtkRBTree              *tree,
-					 GtkRBNode              *node);
-void       _ctk_rbtree_column_invalid   (GtkRBTree              *tree);
-void       _ctk_rbtree_mark_invalid     (GtkRBTree              *tree);
-void       _ctk_rbtree_set_fixed_height (GtkRBTree              *tree,
+void       _ctk_rbtree_node_mark_invalid(CtkRBTree              *tree,
+					 CtkRBNode              *node);
+void       _ctk_rbtree_node_mark_valid  (CtkRBTree              *tree,
+					 CtkRBNode              *node);
+void       _ctk_rbtree_column_invalid   (CtkRBTree              *tree);
+void       _ctk_rbtree_mark_invalid     (CtkRBTree              *tree);
+void       _ctk_rbtree_set_fixed_height (CtkRBTree              *tree,
 					 gint                    height,
 					 gboolean                mark_valid);
-gint       _ctk_rbtree_node_find_offset (GtkRBTree              *tree,
-					 GtkRBNode              *node);
-guint      _ctk_rbtree_node_get_index   (GtkRBTree              *tree,
-					 GtkRBNode              *node);
-gboolean   _ctk_rbtree_find_index       (GtkRBTree              *tree,
+gint       _ctk_rbtree_node_find_offset (CtkRBTree              *tree,
+					 CtkRBNode              *node);
+guint      _ctk_rbtree_node_get_index   (CtkRBTree              *tree,
+					 CtkRBNode              *node);
+gboolean   _ctk_rbtree_find_index       (CtkRBTree              *tree,
 					 guint                   index,
-					 GtkRBTree             **new_tree,
-					 GtkRBNode             **new_node);
-gint       _ctk_rbtree_find_offset      (GtkRBTree              *tree,
+					 CtkRBTree             **new_tree,
+					 CtkRBNode             **new_node);
+gint       _ctk_rbtree_find_offset      (CtkRBTree              *tree,
 					 gint                    offset,
-					 GtkRBTree             **new_tree,
-					 GtkRBNode             **new_node);
-void       _ctk_rbtree_traverse         (GtkRBTree              *tree,
-					 GtkRBNode              *node,
+					 CtkRBTree             **new_tree,
+					 CtkRBNode             **new_node);
+void       _ctk_rbtree_traverse         (CtkRBTree              *tree,
+					 CtkRBNode              *node,
 					 GTraverseType           order,
-					 GtkRBTreeTraverseFunc   func,
+					 CtkRBTreeTraverseFunc   func,
 					 gpointer                data);
-GtkRBNode *_ctk_rbtree_first            (GtkRBTree              *tree);
-GtkRBNode *_ctk_rbtree_next             (GtkRBTree              *tree,
-					 GtkRBNode              *node);
-GtkRBNode *_ctk_rbtree_prev             (GtkRBTree              *tree,
-					 GtkRBNode              *node);
-void       _ctk_rbtree_next_full        (GtkRBTree              *tree,
-					 GtkRBNode              *node,
-					 GtkRBTree             **new_tree,
-					 GtkRBNode             **new_node);
-void       _ctk_rbtree_prev_full        (GtkRBTree              *tree,
-					 GtkRBNode              *node,
-					 GtkRBTree             **new_tree,
-					 GtkRBNode             **new_node);
+CtkRBNode *_ctk_rbtree_first            (CtkRBTree              *tree);
+CtkRBNode *_ctk_rbtree_next             (CtkRBTree              *tree,
+					 CtkRBNode              *node);
+CtkRBNode *_ctk_rbtree_prev             (CtkRBTree              *tree,
+					 CtkRBNode              *node);
+void       _ctk_rbtree_next_full        (CtkRBTree              *tree,
+					 CtkRBNode              *node,
+					 CtkRBTree             **new_tree,
+					 CtkRBNode             **new_node);
+void       _ctk_rbtree_prev_full        (CtkRBTree              *tree,
+					 CtkRBNode              *node,
+					 CtkRBTree             **new_tree,
+					 CtkRBNode             **new_node);
 
-gint       _ctk_rbtree_get_depth        (GtkRBTree              *tree);
+gint       _ctk_rbtree_get_depth        (CtkRBTree              *tree);
 
 
 G_END_DECLS

@@ -23,19 +23,19 @@
 #include <string.h>
 
 static void
-set_value (GtkWidget   *widget,
+set_value (CtkWidget   *widget,
            gint value)
 {
   if (CTK_IS_LEVEL_BAR (widget))
     ctk_level_bar_set_value (CTK_LEVEL_BAR (widget), value);
   else if (CTK_IS_RANGE (widget))
     {
-      GtkAdjustment *adjustment = ctk_range_get_adjustment (CTK_RANGE (widget));
+      CtkAdjustment *adjustment = ctk_range_get_adjustment (CTK_RANGE (widget));
       ctk_adjustment_set_value (adjustment, value);
     }
   else if (CTK_IS_SPIN_BUTTON (widget))
     {
-      GtkAdjustment *adjustment = ctk_spin_button_get_adjustment (CTK_SPIN_BUTTON (widget));
+      CtkAdjustment *adjustment = ctk_spin_button_get_adjustment (CTK_SPIN_BUTTON (widget));
       ctk_adjustment_set_value (adjustment, value);
     }
 }
@@ -56,7 +56,7 @@ notify_cb (GObject    *obj,
 }
 
 static void
-test_basic (GtkWidget *widget)
+test_basic (CtkWidget *widget)
 {
   NotifyData notify_data;
   AtkObject *atk_object;
@@ -84,7 +84,7 @@ test_basic (GtkWidget *widget)
 }
 
 static void
-setup_test (GtkWidget *widget)
+setup_test (CtkWidget *widget)
 {
   set_value (widget, 0);
 }
@@ -92,7 +92,7 @@ setup_test (GtkWidget *widget)
 static void
 add_value_test (const gchar      *prefix,
                GTestFixtureFunc  test_func,
-               GtkWidget        *widget)
+               CtkWidget        *widget)
 {
   gchar *path;
 
@@ -107,7 +107,7 @@ add_value_test (const gchar      *prefix,
 }
 
 static void
-add_value_tests (GtkWidget *widget)
+add_value_tests (CtkWidget *widget)
 {
   g_object_ref_sink (widget);
   add_value_test ("/value/basic", (GTestFixtureFunc) test_basic, widget);

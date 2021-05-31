@@ -5,8 +5,8 @@
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *win;
-  GtkWidget *view;
+  CtkWidget *win;
+  CtkWidget *view;
 
   ctk_init (&argc, &argv);
 

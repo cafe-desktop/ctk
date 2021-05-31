@@ -20,7 +20,7 @@
 
 #include <ctk/ctk.h>
 
-static GtkWidget *test_window;
+static CtkWidget *test_window;
 
 enum {
   TEST_WIDGET_LABEL,
@@ -32,20 +32,20 @@ enum {
   TEST_WIDGET_LAST
 };
 
-static GtkWidget *test_widgets[TEST_WIDGET_LAST];
+static CtkWidget *test_widgets[TEST_WIDGET_LAST];
 
-static GtkWidget*
+static CtkWidget*
 create_image (void)
 {
   return ctk_image_new_from_icon_name ("document-open",
                                        CTK_ICON_SIZE_BUTTON);
 }
 
-static GtkWidget*
+static CtkWidget*
 create_label (gboolean vertical,
               gboolean wrap)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_label_new ("This is a label, label label label");
 
@@ -58,14 +58,14 @@ create_label (gboolean vertical,
   return widget;
 }
 
-static GtkWidget*
+static CtkWidget*
 create_button (void)
 {
   return ctk_button_new_with_label ("BUTTON!");
 }
 
 static gboolean
-on_draw_alignment (GtkWidget      *widget,
+on_draw_alignment (CtkWidget      *widget,
                    cairo_t        *cr,
                    void           *data)
 {
@@ -75,10 +75,10 @@ on_draw_alignment (GtkWidget      *widget,
   return FALSE;
 }
 
-static GtkWidget*
+static CtkWidget*
 create_alignment (void)
 {
-  GtkWidget *alignment;
+  CtkWidget *alignment;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   alignment = ctk_alignment_new (0.5, 0.5, 1.0, 1.0);
@@ -97,7 +97,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 static void
 open_test_window (void)
 {
-  GtkWidget *grid;
+  CtkWidget *grid;
   int i;
 
   test_window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -128,7 +128,7 @@ open_test_window (void)
 }
 
 static void
-on_toggle_border_widths (GtkToggleButton *button,
+on_toggle_border_widths (CtkToggleButton *button,
                          void            *data)
 {
   gboolean has_border;
@@ -147,7 +147,7 @@ on_toggle_border_widths (GtkToggleButton *button,
 }
 
 static void
-on_set_small_size_requests (GtkToggleButton *button,
+on_set_small_size_requests (CtkToggleButton *button,
                             void            *data)
 {
   gboolean has_small_size_requests;
@@ -164,7 +164,7 @@ on_set_small_size_requests (GtkToggleButton *button,
 }
 
 static void
-on_set_large_size_requests (GtkToggleButton *button,
+on_set_large_size_requests (CtkToggleButton *button,
                             void            *data)
 {
   gboolean has_large_size_requests;
@@ -183,9 +183,9 @@ on_set_large_size_requests (GtkToggleButton *button,
 static void
 open_control_window (void)
 {
-  GtkWidget *window;
-  GtkWidget *box;
-  GtkWidget *toggle;
+  CtkWidget *window;
+  CtkWidget *box;
+  CtkWidget *toggle;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_window_set_title (CTK_WINDOW (window), "Controls");
@@ -223,13 +223,13 @@ open_control_window (void)
 
 #define TEST_WIDGET(outer) (ctk_bin_get_child (CTK_BIN (ctk_bin_get_child (CTK_BIN(outer)))))
 
-static GtkWidget*
+static CtkWidget*
 create_widget_visible_border (const char *text)
 {
-  GtkWidget *outer_box;
-  GtkWidget *inner_box;
-  GtkWidget *test_widget;
-  GtkWidget *label;
+  CtkWidget *outer_box;
+  CtkWidget *inner_box;
+  CtkWidget *test_widget;
+  CtkWidget *label;
 
   outer_box = ctk_event_box_new ();
   ctk_style_context_add_class (ctk_widget_get_style_context (outer_box), "black-bg");
@@ -267,11 +267,11 @@ enum_to_string (GType enum_type,
   return v->value_nick;
 }
 
-static GtkWidget*
-create_aligned (GtkAlign halign,
-                GtkAlign valign)
+static CtkWidget*
+create_aligned (CtkAlign halign,
+                CtkAlign valign)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   char *label;
 
   label = g_strdup_printf ("h=%s v=%s",
@@ -293,7 +293,7 @@ create_aligned (GtkAlign halign,
 static void
 open_alignment_window (void)
 {
-  GtkWidget *grid;
+  CtkWidget *grid;
   int i;
   GEnumClass *align_class;
 
@@ -319,7 +319,7 @@ open_alignment_window (void)
       int j;
       for (j = 0; j < align_class->n_values; ++j)
         {
-          GtkWidget *child =
+          CtkWidget *child =
             create_aligned(align_class->values[i].value,
                            align_class->values[j].value);
 
@@ -330,10 +330,10 @@ open_alignment_window (void)
   ctk_widget_show_all (test_window);
 }
 
-static GtkWidget*
+static CtkWidget*
 create_margined (const char *propname)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = create_widget_visible_border (propname);
 
@@ -349,7 +349,7 @@ create_margined (const char *propname)
 static void
 open_margin_window (void)
 {
-  GtkWidget *box;
+  CtkWidget *box;
   int i;
   const char * margins[] = {
     "margin-start",
@@ -373,7 +373,7 @@ open_margin_window (void)
 
   for (i = 0; i < (int) G_N_ELEMENTS (margins); ++i)
     {
-      GtkWidget *child =
+      CtkWidget *child =
         create_margined(margins[i]);
 
       ctk_container_add (CTK_CONTAINER (box), child);
@@ -385,7 +385,7 @@ open_margin_window (void)
 static void
 open_valigned_label_window (void)
 {
-  GtkWidget *window, *box, *label, *frame;
+  CtkWidget *window, *box, *label, *frame;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
@@ -422,7 +422,7 @@ open_valigned_label_window (void)
 int
 main (int argc, char *argv[])
 {
-  GtkCssProvider *provider;
+  CtkCssProvider *provider;
 
   ctk_init (&argc, &argv);
 

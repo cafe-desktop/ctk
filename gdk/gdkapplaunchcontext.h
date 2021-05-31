@@ -1,4 +1,4 @@
-/* gdkapplaunchcontext.h - Gtk+ implementation for GAppLaunchContext
+/* gdkapplaunchcontext.h - Ctk+ implementation for GAppLaunchContext
  *
  * Copyright (C) 2007 Red Hat, Inc.
  *

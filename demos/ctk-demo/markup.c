@@ -1,26 +1,26 @@
 /* Text View/Markup
  *
- * GtkTextBuffer lets you define your own tags that can influence
+ * CtkTextBuffer lets you define your own tags that can influence
  * text formatting in a variety of ways. In this example, we show
- * that GtkTextBuffer can load Pango markup and automatically generate
+ * that CtkTextBuffer can load Pango markup and automatically generate
  * suitable tags.
  */
 
 #include <ctk/ctk.h>
 
-static GtkWidget *stack;
-static GtkWidget *view;
-static GtkWidget *view2;
+static CtkWidget *stack;
+static CtkWidget *view;
+static CtkWidget *view2;
 
 static void
-source_toggled (GtkToggleButton *button)
+source_toggled (CtkToggleButton *button)
 {
   if (ctk_toggle_button_get_active (button))
     ctk_stack_set_visible_child_name (CTK_STACK (stack), "source");
   else
     {
-      GtkTextBuffer *buffer;
-      GtkTextIter start, end;
+      CtkTextBuffer *buffer;
+      CtkTextIter start, end;
       gchar *markup;
 
       buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view2));
@@ -37,20 +37,20 @@ source_toggled (GtkToggleButton *button)
     }
 }
 
-GtkWidget *
-do_markup (GtkWidget *do_widget)
+CtkWidget *
+do_markup (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkWidget *sw;
-      GtkTextBuffer *buffer;
-      GtkTextIter iter;
+      CtkWidget *sw;
+      CtkTextBuffer *buffer;
+      CtkTextIter iter;
       GBytes *bytes;
       const gchar *markup;
-      GtkWidget *header;
-      GtkWidget *show_source;
+      CtkWidget *header;
+      CtkWidget *show_source;
 
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window),

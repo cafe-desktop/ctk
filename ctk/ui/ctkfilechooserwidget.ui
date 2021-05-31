@@ -2,17 +2,17 @@
 <interface domain="ctk30">
   <!-- interface-requires ctk+ 3.10 -->
   <!-- interface-requires ctkprivate 3.10 -->
-  <template class="GtkFileChooserWidget" parent="GtkBox">
+  <template class="CtkFileChooserWidget" parent="CtkBox">
     <property name="orientation">vertical</property>
     <child>
-      <object class="GtkBox" id="browse_widgets_box">
+      <object class="CtkBox" id="browse_widgets_box">
         <property name="visible">1</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkPaned" id="browse_widgets_hpaned">
+          <object class="CtkPaned" id="browse_widgets_hpaned">
             <property name="visible">1</property>
             <child>
-              <object class="GtkPlacesSidebar" id="places_sidebar">
+              <object class="CtkPlacesSidebar" id="places_sidebar">
                 <property name="visible">1</property>
                 <property name="hscrollbar-policy">never</property>
                 <property name="local-only">1</property>
@@ -30,15 +30,15 @@
               </packing>
             </child>
             <child>
-              <object class="GtkBox">
+              <object class="CtkBox">
                 <property name="visible">1</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkRevealer" id="browse_header_revealer">
+                  <object class="CtkRevealer" id="browse_header_revealer">
                     <property name="visible">1</property>
                     <property name="hexpand">1</property>
                     <child>
-                      <object class="GtkBox">
+                      <object class="CtkBox">
                         <property name="visible">1</property>
                         <property name="name">pathbarbox</property>
                         <property name="orientation">vertical</property>
@@ -47,16 +47,16 @@
                           <class name="view"/>
                         </style>
                         <child>
-                          <object class="GtkStack" id="browse_header_stack">
+                          <object class="CtkStack" id="browse_header_stack">
                             <property name="visible">1</property>
                             <property name="transition-type">crossfade</property>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <property name="spacing">6</property>
                                 <property name="border-width">6</property>
                                 <child>
-                                  <object class="GtkPathBar" id="browse_path_bar">
+                                  <object class="CtkPathBar" id="browse_path_bar">
                                     <property name="visible">True</property>
                                     <signal name="path-clicked" handler="path_bar_clicked" after="yes" swapped="no"/>
                                   </object>
@@ -65,14 +65,14 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkMenuButton" id="browse_new_folder_button">
+                                  <object class="CtkMenuButton" id="browse_new_folder_button">
                                     <property name="tooltip-text" translatable="yes">Create Folder</property>
                                     <property name="use-underline">1</property>
                                     <property name="focus-on-click">0</property>
                                     <property name="popover">new_folder_popover</property>
                                     <signal name="notify::active" handler="new_folder_popover_active"/>
                                     <child>
-                                      <object class="GtkImage">
+                                      <object class="CtkImage">
                                         <property name="visible">1</property>
                                         <property name="icon-name">folder-new-symbolic</property>
                                         <property name="icon-size">1</property>
@@ -91,7 +91,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkBox" id="location_entry_box">
+                              <object class="CtkBox" id="location_entry_box">
                                 <property name="visible">1</property>
                                 <property name="no-show-all">1</property>
                                 <property name="spacing">6</property>
@@ -102,13 +102,13 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkBox" id="search_entry_box">
+                              <object class="CtkBox" id="search_entry_box">
                                 <property name="visible">1</property>
                                 <property name="no-show-all">1</property>
                                 <property name="spacing">6</property>
                                 <property name="border-width">6</property>
                                 <child type="center">
-                                  <object class="GtkSearchEntry" id="search_entry">
+                                  <object class="CtkSearchEntry" id="search_entry">
                                     <property name="visible">1</property>
                                     <property name="width-chars">45</property>
                                     <signal name="search-changed" handler="search_entry_activate_cb" swapped="yes"/>
@@ -116,7 +116,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkSpinner" id="search_spinner">
+                                  <object class="CtkSpinner" id="search_spinner">
                                     <property name="active">1</property>
                                   </object>
                                   <packing>
@@ -141,26 +141,26 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="list_and_preview_box">
+                  <object class="CtkBox" id="list_and_preview_box">
                     <property name="visible">1</property>
                     <property name="spacing">12</property>
                     <child>
-                      <object class="GtkStack" id="browse_files_stack">
+                      <object class="CtkStack" id="browse_files_stack">
                         <property name="visible">1</property>
                         <property name="transition-type">crossfade</property>
                         <style>
                           <class name="view"/>
                         </style>
                         <child>
-                          <object class="GtkBox">
+                          <object class="CtkBox">
                             <property name="visible">1</property>
                             <property name="orientation">vertical</property>
                             <child>
-                              <object class="GtkScrolledWindow" id="browse_files_swin">
+                              <object class="CtkScrolledWindow" id="browse_files_swin">
                                 <property name="visible">1</property>
                                 <property name="hscrollbar-policy">never</property>
                                 <child>
-                                  <object class="GtkTreeView" id="browse_files_tree_view">
+                                  <object class="CtkTreeView" id="browse_files_tree_view">
                                     <property name="visible">1</property>
                                     <property name="has-tooltip">1</property>
                                     <property name="enable-search">0</property>
@@ -181,22 +181,22 @@
                                     <signal name="row-activated" handler="list_row_activated" swapped="no"/>
                                     <signal name="cursor-changed" handler="list_cursor_changed" swapped="no"/>
                                     <child internal-child="selection">
-                                      <object class="GtkTreeSelection" id="treeview-selection2">
+                                      <object class="CtkTreeSelection" id="treeview-selection2">
                                         <signal name="changed" handler="list_selection_changed" swapped="no"/>
                                       </object>
                                     </child>
                                     <child>
-                                      <object class="GtkTreeViewColumn" id="list_name_column">
+                                      <object class="CtkTreeViewColumn" id="list_name_column">
                                         <property name="title" translatable="yes">Name</property>
                                         <property name="resizable">1</property>
                                         <property name="expand">1</property>
                                         <child>
-                                          <object class="GtkCellRendererPixbuf" id="list_pixbuf_renderer">
+                                          <object class="CtkCellRendererPixbuf" id="list_pixbuf_renderer">
                                             <property name="xpad">6</property>
                                           </object>
                                         </child>
                                         <child>
-                                          <object class="GtkCellRendererText" id="list_name_renderer">
+                                          <object class="CtkCellRendererText" id="list_name_renderer">
                                             <property name="width-chars">10</property>
                                             <property name="ellipsize">end</property>
                                           </object>
@@ -204,13 +204,13 @@
                                       </object>
                                     </child>
                                     <child>
-                                      <object class="GtkTreeViewColumn" id="list_location_column">
+                                      <object class="CtkTreeViewColumn" id="list_location_column">
                                         <property name="title" translatable="yes">Location</property>
                                         <property name="resizable">1</property>
                                         <property name="visible">0</property>
                                         <property name="expand">1</property>
                                         <child>
-                                          <object class="GtkCellRendererText" id="list_location_renderer">
+                                          <object class="CtkCellRendererText" id="list_location_renderer">
                                             <property name="xalign">0</property>
                                             <property name="width-chars">10</property>
                                             <property name="ellipsize">start</property>
@@ -220,11 +220,11 @@
                                       </object>
                                     </child>
                                     <child>
-                                      <object class="GtkTreeViewColumn" id="list_size_column">
+                                      <object class="CtkTreeViewColumn" id="list_size_column">
                                         <property name="title" translatable="yes">Size</property>
                                         <property name="sizing">fixed</property>
                                         <child>
-                                          <object class="GtkCellRendererText" id="list_size_renderer">
+                                          <object class="CtkCellRendererText" id="list_size_renderer">
                                             <property name="xalign">0</property>
                                             <property name="xpad">6</property>
                                           </object>
@@ -232,11 +232,11 @@
                                       </object>
                                     </child>
                                     <child>
-                                      <object class="GtkTreeViewColumn" id="list_type_column">
+                                      <object class="CtkTreeViewColumn" id="list_type_column">
                                         <property name="title" translatable="yes">Type</property>
                                         <property name="resizable">1</property>
                                         <child>
-                                          <object class="GtkCellRendererText" id="list_type_renderer">
+                                          <object class="CtkCellRendererText" id="list_type_renderer">
                                             <property name="xalign">0</property>
                                             <property name="xpad">6</property>
                                           </object>
@@ -244,16 +244,16 @@
                                       </object>
                                     </child>
                                     <child>
-                                      <object class="GtkTreeViewColumn" id="list_time_column">
+                                      <object class="CtkTreeViewColumn" id="list_time_column">
                                         <property name="title" translatable="yes">Modified</property>
                                         <property name="sizing">fixed</property>
                                         <child>
-                                          <object class="GtkCellRendererText" id="list_date_renderer">
+                                          <object class="CtkCellRendererText" id="list_date_renderer">
                                             <property name="xpad">6</property>
                                           </object>
                                         </child>
                                         <child>
-                                          <object class="GtkCellRendererText" id="list_time_renderer">
+                                          <object class="CtkCellRendererText" id="list_time_renderer">
                                             <property name="xpad">6</property>
                                           </object>
                                         </child>
@@ -267,9 +267,9 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkActionBar" id="remote_warning_bar">
+                              <object class="CtkActionBar" id="remote_warning_bar">
                                 <child type="center">
-                                  <object class="GtkLabel">
+                                  <object class="CtkLabel">
                                     <property name="visible">1</property>
                                     <property name="label" translatable="yes">Remote location — only searching the current folder</property>
                                   </object>
@@ -282,9 +282,9 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkPlacesView" id="places_view">
+                          <object class="CtkPlacesView" id="places_view">
                             <property name="visible">True</property>
-                            <property name="local-only" bind-source="GtkFileChooserWidget" bind-property="local-only" bind-flags="default|sync-create"/>
+                            <property name="local-only" bind-source="CtkFileChooserWidget" bind-property="local-only" bind-flags="default|sync-create"/>
                             <signal name="open-location" handler="places_sidebar_open_location_cb" swapped="no"/>
                             <signal name="show-error-message" handler="places_sidebar_show_error_message_cb" swapped="no"/>
                           </object>
@@ -293,7 +293,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkGrid">
+                          <object class="CtkGrid">
                             <property name="visible">1</property>
                             <property name="row-spacing">12</property>
                             <property name="hexpand">1</property>
@@ -304,7 +304,7 @@
                               <class name="dim-label"/>
                             </style>
                             <child>
-                              <object class="GtkImage">
+                              <object class="CtkImage">
                                 <property name="visible">1</property>
                                 <property name="icon-name">edit-find-symbolic</property>
                                 <property name="pixel-size">72</property>
@@ -318,7 +318,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel">
+                              <object class="CtkLabel">
                                 <property name="visible">1</property>
                                 <property name="label" translatable="yes">No Results Found</property>
                                 <attributes>
@@ -332,7 +332,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel">
+                              <object class="CtkLabel">
                                 <property name="visible">1</property>
                                 <property name="label" translatable="yes">Try a different search</property>
                                 <style>
@@ -355,7 +355,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox" id="preview_box">
+                      <object class="CtkBox" id="preview_box">
                         <property name="orientation">vertical</property>
                         <property name="spacing">12</property>
                       </object>
@@ -387,20 +387,20 @@
       </packing>
     </child>
     <child>
-      <object class="GtkActionBar" id="extra_and_filters">
+      <object class="CtkActionBar" id="extra_and_filters">
         <property name="no-show-all">1</property>
         <child>
-          <object class="GtkBox" id="extra_align">
+          <object class="CtkBox" id="extra_align">
             <property name="visible">1</property>
             <property name="spacing">12</property>
           </object>
         </child>
         <child>
-          <object class="GtkBox" id="filter_combo_hbox">
+          <object class="CtkBox" id="filter_combo_hbox">
             <property name="visible">1</property>
             <property name="spacing">12</property>
             <child>
-              <object class="GtkComboBoxText" id="filter_combo">
+              <object class="CtkComboBoxText" id="filter_combo">
                 <property name="visible">1</property>
                 <property name="tooltip-text" translatable="yes">Select which types of files are shown</property>
                 <property name="focus-on-click">0</property>
@@ -426,22 +426,22 @@
       </packing>
     </child>
   </template>
-  <object class="GtkSizeGroup" id="browse_path_bar_size_group">
+  <object class="CtkSizeGroup" id="browse_path_bar_size_group">
     <property name="mode">vertical</property>
     <widgets>
       <widget name="browse_path_bar"/>
       <widget name="browse_new_folder_button"/>
     </widgets>
   </object>
-  <object class="GtkPopover" id="new_folder_popover">
+  <object class="CtkPopover" id="new_folder_popover">
     <child>
-      <object class="GtkGrid">
+      <object class="CtkGrid">
         <property name="visible">1</property>
         <property name="margin">10</property>
         <property name="column-spacing">6</property>
         <property name="row-spacing">6</property>
         <child>
-          <object class="GtkLabel">
+          <object class="CtkLabel">
             <property name="visible">1</property>
             <property name="label" translatable="yes">Folder Name</property>
             <property name="halign">start</property>
@@ -455,7 +455,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkEntry" id="new_folder_name_entry">
+          <object class="CtkEntry" id="new_folder_name_entry">
             <property name="visible">1</property>
             <property name="width-chars">25</property>
             <property name="activates-default">1</property>
@@ -468,7 +468,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="new_folder_create_button">
+          <object class="CtkButton" id="new_folder_create_button">
             <property name="visible">1</property>
             <property name="sensitive">0</property>
             <property name="label" translatable="yes">_Create</property>
@@ -485,7 +485,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="new_folder_error_label">
+          <object class="CtkLabel" id="new_folder_error_label">
             <property name="visible">1</property>
             <property name="halign">start</property>
           </object>
@@ -498,17 +498,17 @@
       </object>
     </child>
   </object>
-  <object class="GtkPopover" id="rename_file_popover">
+  <object class="CtkPopover" id="rename_file_popover">
     <property name="position">bottom</property>
     <signal name="closed" handler="rename_file_end"/>
     <child>
-      <object class="GtkGrid">
+      <object class="CtkGrid">
         <property name="visible">1</property>
         <property name="margin">10</property>
         <property name="row-spacing">6</property>
         <property name="column-spacing">6</property>
         <child>
-          <object class="GtkLabel">
+          <object class="CtkLabel">
             <property name="visible">1</property>
             <property name="label" translatable="yes">Name</property>
             <property name="halign">start</property>
@@ -522,7 +522,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkEntry" id="rename_file_name_entry">
+          <object class="CtkEntry" id="rename_file_name_entry">
             <property name="visible">1</property>
             <property name="activates-default">1</property>
             <signal name="changed" handler="rename_file_name_changed"/>
@@ -533,7 +533,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="rename_file_rename_button">
+          <object class="CtkButton" id="rename_file_rename_button">
             <property name="visible">1</property>
             <property name="sensitive">0</property>
             <property name="label" translatable="yes">_Rename</property>
@@ -550,7 +550,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="rename_file_error_label">
+          <object class="CtkLabel" id="rename_file_error_label">
             <property name="visible">1</property>
             <property name="halign">start</property>
           </object>

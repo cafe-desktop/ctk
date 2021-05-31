@@ -8,12 +8,12 @@ static void
 on_activate (GApplication *app,
              gpointer      data)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (window == NULL)
     {
-      GtkWidget *header, *sidebar_toggle, *animation_switch;
-      GtkWidget *hbox, *revealer, *sidebar, *img;
+      CtkWidget *header, *sidebar_toggle, *animation_switch;
+      CtkWidget *hbox, *revealer, *sidebar, *img;
 
       window = ctk_application_window_new (CTK_APPLICATION (app));
       ctk_window_set_default_size (CTK_WINDOW (window), 400, 300);
@@ -73,7 +73,7 @@ on_activate (GApplication *app,
 int
 main (int argc, char *argv[])
 {
-  GtkApplication *app = ctk_application_new ("org.ctk.fmuellner.Revealer", 0);
+  CtkApplication *app = ctk_application_new ("org.ctk.fmuellner.Revealer", 0);
 
   g_signal_connect (app, "activate", G_CALLBACK (on_activate), NULL);
 

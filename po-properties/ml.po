@@ -430,10 +430,10 @@ msgstr "ആക്ഷന്‍ ഗ്രൂപ്പ്"
 
 #: ctk/ctkaction.c:396
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
-"ഈ GtkAction-ന് സംബന്ധമുളള GtkActionGroup അല്ലേല്‍ NULL (ആന്തരികമായ ആവശ്യങ്ങള്‍ക്ക്)."
+"ഈ CtkAction-ന് സംബന്ധമുളള CtkActionGroup അല്ലേല്‍ NULL (ആന്തരികമായ ആവശ്യങ്ങള്‍ക്ക്)."
 
 #: ctk/ctkaction.c:414 ctk/ctkimagemenuitem.c:172
 msgid "Always show image"
@@ -819,11 +819,11 @@ msgstr "ഏത് തരം പാക്ക്"
 
 #: ctk/ctkbox.c:287 ctk/ctknotebook.c:692
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
 msgstr ""
 "ഒരു ചൈള്‍ഡ് പാക്ക് ചെയ്തിരിക്കുന്നത് പേരന്‍റിന്‍റെ ആരംഭത്തിലോ അവസാനത്തിലോ എന്ന് സൂചിപ്പിക്കുന്നതിനുളള "
-"ഒരു GtkPackType"
+"ഒരു CtkPackType"
 
 #: ctk/ctkbox.c:293 ctk/ctknotebook.c:670 ctk/ctkpaned.c:270
 #: ctk/ctkruler.c:158 ctk/ctktoolitemgroup.c:1652
@@ -1318,8 +1318,8 @@ msgid "Size"
 msgstr "വലിപ്പം"
 
 #: ctk/ctkcellrendererpixbuf.c:153
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
-msgstr "ചിട്ടപ്പെടുത്തിയ പ്രതിരൂപത്തിന്‍റെ വലിപ്പം വ്യക്തമാക്കുന്ന GtkIconSize മൂല്ല്യം"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
+msgstr "ചിട്ടപ്പെടുത്തിയ പ്രതിരൂപത്തിന്‍റെ വലിപ്പം വ്യക്തമാക്കുന്ന CtkIconSize മൂല്ല്യം"
 
 #: ctk/ctkcellrendererpixbuf.c:162
 msgid "Detail"
@@ -1439,8 +1439,8 @@ msgstr "പ്രിന്‍ററിന്‍റെ പേര്"
 
 #: ctk/ctkcellrendererspinner.c:154
 #, fuzzy
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
-msgstr "ചിട്ടപ്പെടുത്തിയ പ്രതിരൂപത്തിന്‍റെ വലിപ്പം വ്യക്തമാക്കുന്ന GtkIconSize മൂല്ല്യം"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
+msgstr "ചിട്ടപ്പെടുത്തിയ പ്രതിരൂപത്തിന്‍റെ വലിപ്പം വ്യക്തമാക്കുന്ന CtkIconSize മൂല്ല്യം"
 
 #: ctk/ctkcellrenderertext.c:232
 msgid "Text to render"
@@ -3176,10 +3176,10 @@ msgstr "ഖണ്ഡികയുടെ ഇടതും വലതും ക്ര
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkMisc::xalign for that"
+"CtkMisc::xalign for that"
 msgstr ""
 "ലേബലിലുള്ള വാചകത്തിന്റെ വരികളുടെ അലൈന്‍മെന്റ്. ഇതു് ലേബലിന്റെ അലൈന്‍മെന്റിനെ ബാധിക്കുന്നില്ല. "
-"ഇതിനായി GtkMisc::xalign കാണുക."
+"ഇതിനായി CtkMisc::xalign കാണുക."
 
 #: ctk/ctklabel.c:587
 msgid "Pattern"
@@ -3276,16 +3276,16 @@ msgid "Horizontal adjustment"
 msgstr "ഇടത്ത് നിന്നും വലത്തേക്കുളള ക്രമീകരണം"
 
 #: ctk/ctklayout.c:626 ctk/ctkscrolledwindow.c:244
-msgid "The GtkAdjustment for the horizontal position"
-msgstr "ഇടത്ത് നിന്നും വലത്തേക്കുളള സ്ഥാനത്തിന്‍റെ GtkAdjustment"
+msgid "The CtkAdjustment for the horizontal position"
+msgstr "ഇടത്ത് നിന്നും വലത്തേക്കുളള സ്ഥാനത്തിന്‍റെ CtkAdjustment"
 
 #: ctk/ctklayout.c:633 ctk/ctkviewport.c:150
 msgid "Vertical adjustment"
 msgstr "മുകളില്‍ നിന്നും താഴേക്കുളള ക്രമീകരണം"
 
 #: ctk/ctklayout.c:634 ctk/ctkscrolledwindow.c:251
-msgid "The GtkAdjustment for the vertical position"
-msgstr "മുകളില്‍ നിന്നും താഴേക്കുളള സ്ഥാനത്തിന്‍റെ GtkAdjustment"
+msgid "The CtkAdjustment for the vertical position"
+msgstr "മുകളില്‍ നിന്നും താഴേക്കുളള സ്ഥാനത്തിന്‍റെ CtkAdjustment"
 
 #: ctk/ctklayout.c:641 ctk/ctktreeviewcolumn.c:211
 msgid "Width"
@@ -3642,7 +3642,7 @@ msgid "Message area"
 msgstr "സന്ദേശ തരം"
 
 #: ctk/ctkmessagedialog.c:306
-msgid "GtkVBox that holds the dialog's primary and secondary labels"
+msgid "CtkVBox that holds the dialog's primary and secondary labels"
 msgstr ""
 
 #: ctk/ctkmisc.c:91
@@ -4075,16 +4075,16 @@ msgid "Default Page Setup"
 msgstr "ഡീഫോള്‍ട്ടായ പേജ് സെറ്റപ്പ്"
 
 #: ctk/ctkprintoperation.c:1006
-msgid "The GtkPageSetup used by default"
-msgstr "ഡീഫോള്‍ട്ടായി ഉപയോഗിക്കുന്ന GtkPageSetup"
+msgid "The CtkPageSetup used by default"
+msgstr "ഡീഫോള്‍ട്ടായി ഉപയോഗിക്കുന്ന CtkPageSetup"
 
 #: ctk/ctkprintoperation.c:1024 ctk/ctkprintunixdialog.c:316
 msgid "Print Settings"
 msgstr "പ്രിന്‍റ് ചെയ്യുന്നതിനുളള സജ്ജീകരണങ്ങള്‍"
 
 #: ctk/ctkprintoperation.c:1025 ctk/ctkprintunixdialog.c:317
-msgid "The GtkPrintSettings used for initializing the dialog"
-msgstr "ഡയലോഗ് ആരംഭിക്കുന്നതിനുളള GtkPrintSettings"
+msgid "The CtkPrintSettings used for initializing the dialog"
+msgstr "ഡയലോഗ് ആരംഭിക്കുന്നതിനുളള CtkPrintSettings"
 
 #: ctk/ctkprintoperation.c:1043
 msgid "Job Name"
@@ -4202,8 +4202,8 @@ msgid "Embed Page Setup"
 msgstr "താളിന്റെ ക്രമീകരണം ഉള്‍പ്പെടുത്തുക"
 
 #: ctk/ctkprintoperation.c:1321
-msgid "TRUE if page setup combos are embedded in GtkPrintDialog"
-msgstr "GtkPrintDialog-ല്‍ താള്‍ ക്രമീകരണ കോമ്പോകള്‍ ഉള്‍പ്പെടുത്തിയിട്ടുണ്ടെങ്കില്‍ TRUE"
+msgid "TRUE if page setup combos are embedded in CtkPrintDialog"
+msgstr "CtkPrintDialog-ല്‍ താള്‍ ക്രമീകരണ കോമ്പോകള്‍ ഉള്‍പ്പെടുത്തിയിട്ടുണ്ടെങ്കില്‍ TRUE"
 
 #: ctk/ctkprintoperation.c:1342
 msgid "Number of Pages To Print"
@@ -4214,16 +4214,16 @@ msgid "The number of pages that will be printed."
 msgstr "പ്രിന്റ് ചെയ്യുവാനുള്ള താളുകളുടെ എണ്ണം."
 
 #: ctk/ctkprintunixdialog.c:299
-msgid "The GtkPageSetup to use"
-msgstr "ഉപയോഗിക്കുന്നതിനുളള GtkPageSetup"
+msgid "The CtkPageSetup to use"
+msgstr "ഉപയോഗിക്കുന്നതിനുളള CtkPageSetup"
 
 #: ctk/ctkprintunixdialog.c:324
 msgid "Selected Printer"
 msgstr "തിരഞ്ഞെടുത്ത പ്രിന്‍റര്‍"
 
 #: ctk/ctkprintunixdialog.c:325
-msgid "The GtkPrinter which is selected"
-msgstr "തിരഞ്ഞടുത്ത GtkPrinter"
+msgid "The CtkPrinter which is selected"
+msgstr "തിരഞ്ഞടുത്ത CtkPrinter"
 
 #: ctk/ctkprintunixdialog.c:332
 #, fuzzy
@@ -4243,8 +4243,8 @@ msgid "Whether the application has a selection"
 msgstr "പ്രയോഗത്തിനു് ഒരു തെരഞ്ഞെടുക്കല്‍ ഉണ്ടോ എന്നു്"
 
 #: ctk/ctkprintunixdialog.c:358
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
-msgstr "GtkPrintUnixDialog-ല്‍ താള്‍ ക്രമീകരണ കോമ്പോകള്‍ ഉള്‍പ്പെടുത്തിയിട്ടുണ്ടെങ്കില്‍ TRUE"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
+msgstr "CtkPrintUnixDialog-ല്‍ താള്‍ ക്രമീകരണ കോമ്പോകള്‍ ഉള്‍പ്പെടുത്തിയിട്ടുണ്ടെങ്കില്‍ TRUE"
 
 #: ctk/ctkprogressbar.c:134
 msgid "Fraction"
@@ -4388,8 +4388,8 @@ msgid "How the range should be updated on the screen"
 msgstr "സ്ക്രീനില്‍ പരിധി എപ്രകാരം പരിഷ്കരിക്കണം"
 
 #: ctk/ctkrange.c:420
-msgid "The GtkAdjustment that contains the current value of this range object"
-msgstr "ഈ പരിധിയിലുള്ള ഒബ്ജക്ടിന്റെ നിലവിലുള്ള മൂല്ല്യം അടങ്ങുന്നു GtkAdjustment"
+msgid "The CtkAdjustment that contains the current value of this range object"
+msgstr "ഈ പരിധിയിലുള്ള ഒബ്ജക്ടിന്റെ നിലവിലുള്ള മൂല്ല്യം അടങ്ങുന്നു CtkAdjustment"
 
 #: ctk/ctkrange.c:428
 msgid "Invert direction slider moves to increase range value"
@@ -4643,8 +4643,8 @@ msgstr "ഐക്കണിന്റെ വലിപ്പം"
 
 #: ctk/ctkscalebutton.c:240
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
-msgstr "ഈ സ്കെയില്‍ ബട്ടണ്‍ വസ്തുവിന്റെ മൂല്ല്യം അടങ്ങുന്ന GtkAdjustment"
+"The CtkAdjustment that contains the current value of this scale button object"
+msgstr "ഈ സ്കെയില്‍ ബട്ടണ്‍ വസ്തുവിന്റെ മൂല്ല്യം അടങ്ങുന്ന CtkAdjustment"
 
 #: ctk/ctkscalebutton.c:268
 msgid "Icons"
@@ -5145,16 +5145,16 @@ msgid "Default file chooser backend"
 msgstr "ഡീഫോള്‍ട്ടായ ഫയല്‍ തിരഞ്ഞെടുക്കല്‍ ബാക്കെന്‍ഡ്"
 
 #: ctk/ctksettings.c:743
-msgid "Name of the GtkFileChooser backend to use by default"
-msgstr "ഡീഫോള്‍ട്ടായി ഉപയോഗിക്കുന്നതിനുളള GtkFileChooser ബാക്കെന്‍ഡിന്‍റെ പേര്"
+msgid "Name of the CtkFileChooser backend to use by default"
+msgstr "ഡീഫോള്‍ട്ടായി ഉപയോഗിക്കുന്നതിനുളള CtkFileChooser ബാക്കെന്‍ഡിന്‍റെ പേര്"
 
 #: ctk/ctksettings.c:760
 msgid "Default print backend"
 msgstr "ഡീഫോള്‍ട്ടായ പ്രിന്‍റ് ബാക്കെന്‍ഡ്"
 
 #: ctk/ctksettings.c:761
-msgid "List of the GtkPrintBackend backends to use by default"
-msgstr "ഡീഫോള്‍ട്ടായി ഉപയോഗിക്കേണ്ട GtkPrintBackend ബാക്കെന്‍ഡുകളുടെ ലിസ്റ്റ്"
+msgid "List of the CtkPrintBackend backends to use by default"
+msgstr "ഡീഫോള്‍ട്ടായി ഉപയോഗിക്കേണ്ട CtkPrintBackend ബാക്കെന്‍ഡുകളുടെ ലിസ്റ്റ്"
 
 #: ctk/ctksettings.c:784
 msgid "Default command to run when displaying a print preview"
@@ -5368,7 +5368,7 @@ msgstr "പേജുകളുടെ എണ്ണം"
 #: ctk/ctkspinner.c:147
 msgid ""
 "The number of steps for the spinner to complete a full loop. The animation "
-"will complete a full cycle in one second by default (see #GtkSpinner:cycle-"
+"will complete a full cycle in one second by default (see #CtkSpinner:cycle-"
 "duration)."
 msgstr ""
 
@@ -6309,8 +6309,8 @@ msgid "Fixed Height Mode"
 msgstr "സ്ഥിരമായ ഉയരം മോഡ്"
 
 #: ctk/ctktreeview.c:657
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
-msgstr "എല്ലാ വരികള്‍ക്കും ഒരേ ഉയരം എന്നു് കരുതി GtkTreeView-ന്റെ വേഗത കൂട്ടുന്നു"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
+msgstr "എല്ലാ വരികള്‍ക്കും ഒരേ ഉയരം എന്നു് കരുതി CtkTreeView-ന്റെ വേഗത കൂട്ടുന്നു"
 
 #: ctk/ctktreeview.c:677
 msgid "Hover Selection"
@@ -6576,15 +6576,15 @@ msgstr "കൂട്ടിചേര്‍ത്തിട്ടുള്ള യ�
 
 #: ctk/ctkviewport.c:143
 msgid ""
-"The GtkAdjustment that determines the values of the horizontal position for "
+"The CtkAdjustment that determines the values of the horizontal position for "
 "this viewport"
-msgstr "ഈ വ്യൂപോര്‍ട്ടിനു് കുറുകെയുള്ള സ്ഥാനത്തിനുള്ള മൂല്ല്യങ്ങള്‍ നിശ്ചയിക്കുന്ന GtkAdjustment "
+msgstr "ഈ വ്യൂപോര്‍ട്ടിനു് കുറുകെയുള്ള സ്ഥാനത്തിനുള്ള മൂല്ല്യങ്ങള്‍ നിശ്ചയിക്കുന്ന CtkAdjustment "
 
 #: ctk/ctkviewport.c:151
 msgid ""
-"The GtkAdjustment that determines the values of the vertical position for "
+"The CtkAdjustment that determines the values of the vertical position for "
 "this viewport"
-msgstr "ഈ വ്യൂപോര്‍ട്ടിനു് നേരെയുള്ള സ്ഥാനത്തിനുള്ള മൂല്ല്യങ്ങള്‍ നിശ്ചയിക്കുന്ന GtkAdjustment "
+msgstr "ഈ വ്യൂപോര്‍ട്ടിനു് നേരെയുള്ള സ്ഥാനത്തിനുള്ള മൂല്ല്യങ്ങള്‍ നിശ്ചയിക്കുന്ന CtkAdjustment "
 
 #: ctk/ctkviewport.c:159
 msgid "Determines how the shadowed box around the viewport is drawn"
@@ -7051,8 +7051,8 @@ msgid "Focus in Toplevel"
 msgstr "മുകളിലേക്ക് കേന്ദ്രീകരിക്കൂ"
 
 #: ctk/ctkwindow.c:710
-msgid "Whether the input focus is within this GtkWindow"
-msgstr "ഇന്‍പുട്ട് ചെയ്യേണ്ടത് GtkWindow-യില്‍ ആണോ എന്ന്"
+msgid "Whether the input focus is within this CtkWindow"
+msgstr "ഇന്‍പുട്ട് ചെയ്യേണ്ടത് CtkWindow-യില്‍ ആണോ എന്ന്"
 
 #: ctk/ctkwindow.c:717
 msgid "Type hint"
@@ -7267,12 +7267,12 @@ msgstr "സ്റ്റേറ്റസ് ബാറിനുളള ഇന്‍�
 #~ msgstr "പ്രവര്‍ത്തന രീതി"
 
 #~ msgid ""
-#~ "If TRUE, the GtkProgress is in activity mode, meaning that it signals "
+#~ "If TRUE, the CtkProgress is in activity mode, meaning that it signals "
 #~ "something is happening, but not how much of the activity is finished. "
 #~ "This is used when you're doing something but don't know how long it will "
 #~ "take."
 #~ msgstr ""
-#~ "TRUE എങ്കില്‍, GtkProgress ആക്ടിവിറ്റി മോഡിലാണു്. അതായതു്, പ്രവര്‍ത്തികള്‍ നടക്കുമ്പോള്‍ അതു് "
+#~ "TRUE എങ്കില്‍, CtkProgress ആക്ടിവിറ്റി മോഡിലാണു്. അതായതു്, പ്രവര്‍ത്തികള്‍ നടക്കുമ്പോള്‍ അതു് "
 #~ "സിഗ്നല്‍ നല്‍കുന്നു, പക്ഷേ എത്രമാത്രം പൂര്‍ത്തിയായി എന്നു് വ്യക്തമാക്കുന്നതല്ല. ഒരു കാര്യം "
 #~ "ചെയ്യുമ്പോള്‍, അതു് എത്ര സമയമെടുക്കുന്നു എന്ന വിവരം ലഭ്യമല്ലാത്തപ്പോള്‍ ഇതു് ഉപയോഗിക്കുന്നു."
 
@@ -7477,8 +7477,8 @@ msgstr "സ്റ്റേറ്റസ് ബാറിനുളള ഇന്‍�
 #~ "Whether the preview widget should take up the entire space it is allocated"
 #~ msgstr "കൊടുത്തിരിക്കുന്ന മുഴുവന്‍ സ്ഥലവും വിഡ്ജറ്റ് ഉപയോഗിക്കണമോ എന്ന്"
 
-#~ msgid "The GtkAdjustment connected to the progress bar (Deprecated)"
-#~ msgstr "പ്രോഗ്രസ്സ് ബാറിലേക്ക് ഘടിപ്പിച്ചിരിക്കുന്ന GtkAdjustment"
+#~ msgid "The CtkAdjustment connected to the progress bar (Deprecated)"
+#~ msgstr "പ്രോഗ്രസ്സ് ബാറിലേക്ക് ഘടിപ്പിച്ചിരിക്കുന്ന CtkAdjustment"
 
 #~ msgid "Bar style"
 #~ msgstr "ബാറിന്‍റെ ശൈലി"

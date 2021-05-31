@@ -50,15 +50,15 @@ static char  *book_closed_xpm[] = {
 "                "
 };
 
-static GtkWidget *window = NULL;
+static CtkWidget *window = NULL;
 
 
 /* Creates a tree model containing the completions */
-GtkTreeModel *
+CtkTreeModel *
 create_simple_completion_model (void)
 {
-  GtkListStore *store;
-  GtkTreeIter iter;
+  CtkListStore *store;
+  CtkTreeIter iter;
   
   store = ctk_list_store_new (1, G_TYPE_STRING);
 
@@ -120,11 +120,11 @@ create_simple_completion_model (void)
 }
 
 /* Creates a tree model containing the completions */
-GtkTreeModel *
+CtkTreeModel *
 create_completion_model (void)
 {
-  GtkListStore *store;
-  GtkTreeIter iter;
+  CtkListStore *store;
+  CtkTreeIter iter;
   GdkPixbuf *pixbuf;
 
   pixbuf = gdk_pixbuf_new_from_xpm_data ((const char **)book_closed_xpm);
@@ -156,13 +156,13 @@ create_completion_model (void)
 }
 
 static gboolean
-match_func (GtkEntryCompletion *completion,
+match_func (CtkEntryCompletion *completion,
 	    const gchar        *key,
-	    GtkTreeIter        *iter,
+	    CtkTreeIter        *iter,
 	    gpointer            user_data)
 {
   gchar *item = NULL;
-  GtkTreeModel *model;
+  CtkTreeModel *model;
 
   gboolean ret = FALSE;
 
@@ -183,7 +183,7 @@ match_func (GtkEntryCompletion *completion,
 }
 
 static void
-activated_cb (GtkEntryCompletion *completion, 
+activated_cb (CtkEntryCompletion *completion, 
 	      gint                index,
 	      gpointer            user_data)
 {
@@ -219,13 +219,13 @@ static gchar *dynamic_completions[] = {
 };
 
 static gint
-animation_timer (GtkEntryCompletion *completion)
+animation_timer (CtkEntryCompletion *completion)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   gint n_completions = G_N_ELEMENTS (dynamic_completions);
   gint n;
-  static GtkListStore *old_store = NULL;
-  GtkListStore *store = CTK_LIST_STORE (ctk_entry_completion_get_model (completion));
+  static CtkListStore *old_store = NULL;
+  CtkListStore *store = CTK_LIST_STORE (ctk_entry_completion_get_model (completion));
 
   if (timer_count % 10 == 0)
     {
@@ -270,12 +270,12 @@ animation_timer (GtkEntryCompletion *completion)
 }
 
 gboolean 
-match_selected_cb (GtkEntryCompletion *completion,
-		   GtkTreeModel       *model,
-		   GtkTreeIter        *iter)
+match_selected_cb (CtkEntryCompletion *completion,
+		   CtkTreeModel       *model,
+		   CtkTreeIter        *iter)
 {
   gchar *str;
-  GtkWidget *entry;
+  CtkWidget *entry;
 
   entry = ctk_entry_completion_get_entry (completion);
   ctk_tree_model_get (CTK_TREE_MODEL (model), iter, 1, &str, -1);
@@ -289,12 +289,12 @@ match_selected_cb (GtkEntryCompletion *completion,
 int 
 main (int argc, char *argv[])
 {
-  GtkWidget *vbox;
-  GtkWidget *label;
-  GtkWidget *entry;
-  GtkEntryCompletion *completion;
-  GtkTreeModel *completion_model;
-  GtkCellRenderer *cell;
+  CtkWidget *vbox;
+  CtkWidget *label;
+  CtkWidget *entry;
+  CtkEntryCompletion *completion;
+  CtkTreeModel *completion_model;
+  CtkCellRenderer *cell;
 
   ctk_init (&argc, &argv);
 

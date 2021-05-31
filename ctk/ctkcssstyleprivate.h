@@ -29,54 +29,54 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CSS_STYLE           (ctk_css_style_get_type ())
-#define CTK_CSS_STYLE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_STYLE, GtkCssStyle))
-#define CTK_CSS_STYLE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_STYLE, GtkCssStyleClass))
+#define CTK_CSS_STYLE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_STYLE, CtkCssStyle))
+#define CTK_CSS_STYLE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_STYLE, CtkCssStyleClass))
 #define CTK_IS_CSS_STYLE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_STYLE))
 #define CTK_IS_CSS_STYLE_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_STYLE))
-#define CTK_CSS_STYLE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_STYLE, GtkCssStyleClass))
+#define CTK_CSS_STYLE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_STYLE, CtkCssStyleClass))
 
-/* typedef struct _GtkCssStyle           GtkCssStyle; */
-typedef struct _GtkCssStyleClass      GtkCssStyleClass;
+/* typedef struct _CtkCssStyle           CtkCssStyle; */
+typedef struct _CtkCssStyleClass      CtkCssStyleClass;
 
-struct _GtkCssStyle
+struct _CtkCssStyle
 {
   GObject parent;
 };
 
-struct _GtkCssStyleClass
+struct _CtkCssStyleClass
 {
   GObjectClass parent_class;
 
   /* Get the value for the given property id. This needs to be FAST. */
-  GtkCssValue *         (* get_value)                           (GtkCssStyle            *style,
+  CtkCssValue *         (* get_value)                           (CtkCssStyle            *style,
                                                                  guint                   id);
   /* Get the section the value at the given id was declared at or NULL if unavailable.
    * Optional: default impl will just return NULL */
-  GtkCssSection *       (* get_section)                         (GtkCssStyle            *style,
+  CtkCssSection *       (* get_section)                         (CtkCssStyle            *style,
                                                                  guint                   id);
   /* TRUE if this style will require changes based on timestamp */
-  gboolean              (* is_static)                           (GtkCssStyle            *style);
+  gboolean              (* is_static)                           (CtkCssStyle            *style);
 };
 
 GType                   ctk_css_style_get_type                  (void) G_GNUC_CONST;
 
-GtkCssValue *           ctk_css_style_get_value                 (GtkCssStyle            *style,
+CtkCssValue *           ctk_css_style_get_value                 (CtkCssStyle            *style,
                                                                  guint                   id);
-GtkCssSection *         ctk_css_style_get_section               (GtkCssStyle            *style,
+CtkCssSection *         ctk_css_style_get_section               (CtkCssStyle            *style,
                                                                  guint                   id);
-GtkBitmask *            ctk_css_style_add_difference            (GtkBitmask             *accumulated,
-                                                                 GtkCssStyle            *style,
-                                                                 GtkCssStyle            *other);
-gboolean                ctk_css_style_is_static                 (GtkCssStyle            *style);
+CtkBitmask *            ctk_css_style_add_difference            (CtkBitmask             *accumulated,
+                                                                 CtkCssStyle            *style,
+                                                                 CtkCssStyle            *other);
+gboolean                ctk_css_style_is_static                 (CtkCssStyle            *style);
 
-char *                  ctk_css_style_to_string                 (GtkCssStyle            *style);
-gboolean                ctk_css_style_print                     (GtkCssStyle            *style,
+char *                  ctk_css_style_to_string                 (CtkCssStyle            *style);
+gboolean                ctk_css_style_print                     (CtkCssStyle            *style,
                                                                  GString                *string,
                                                                  guint                   indent,
                                                                  gboolean                skip_initial);
-PangoAttrList *         ctk_css_style_get_pango_attributes      (GtkCssStyle            *style);
+PangoAttrList *         ctk_css_style_get_pango_attributes      (CtkCssStyle            *style);
 
-PangoFontDescription *  ctk_css_style_get_pango_font            (GtkCssStyle            *style);
+PangoFontDescription *  ctk_css_style_get_pango_font            (CtkCssStyle            *style);
 
 G_END_DECLS
 

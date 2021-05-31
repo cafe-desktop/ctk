@@ -29,25 +29,25 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_PLACES_VIEW        (ctk_places_view_get_type ())
-#define CTK_PLACES_VIEW(obj)        (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PLACES_VIEW, GtkPlacesView))
-#define CTK_PLACES_VIEW_CLASS(klass)(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PLACES_VIEW, GtkPlacesViewClass))
+#define CTK_PLACES_VIEW(obj)        (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PLACES_VIEW, CtkPlacesView))
+#define CTK_PLACES_VIEW_CLASS(klass)(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PLACES_VIEW, CtkPlacesViewClass))
 #define CTK_IS_PLACES_VIEW(obj)     (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PLACES_VIEW))
 #define CTK_IS_PLACES_VIEW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PLACES_VIEW))
-#define CTK_PLACES_VIEW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PLACES_VIEW, GtkPlacesViewClass))
+#define CTK_PLACES_VIEW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PLACES_VIEW, CtkPlacesViewClass))
 
-typedef struct _GtkPlacesView GtkPlacesView;
-typedef struct _GtkPlacesViewClass GtkPlacesViewClass;
-typedef struct _GtkPlacesViewPrivate GtkPlacesViewPrivate;
+typedef struct _CtkPlacesView CtkPlacesView;
+typedef struct _CtkPlacesViewClass CtkPlacesViewClass;
+typedef struct _CtkPlacesViewPrivate CtkPlacesViewPrivate;
 
-struct _GtkPlacesViewClass
+struct _CtkPlacesViewClass
 {
-  GtkBoxClass parent_class;
+  CtkBoxClass parent_class;
 
-  void     (* open_location)        (GtkPlacesView          *view,
+  void     (* open_location)        (CtkPlacesView          *view,
                                      GFile                  *location,
-                                     GtkPlacesOpenFlags  open_flags);
+                                     CtkPlacesOpenFlags  open_flags);
 
-  void    (* show_error_message)     (GtkPlacesSidebar      *sidebar,
+  void    (* show_error_message)     (CtkPlacesSidebar      *sidebar,
                                       const gchar           *primary,
                                       const gchar           *secondary);
 
@@ -57,29 +57,29 @@ struct _GtkPlacesViewClass
   gpointer reserved[10];
 };
 
-struct _GtkPlacesView
+struct _CtkPlacesView
 {
-  GtkBox parent_instance;
+  CtkBox parent_instance;
 };
 
 GType              ctk_places_view_get_type                      (void) G_GNUC_CONST;
 
-GtkPlacesOpenFlags ctk_places_view_get_open_flags                (GtkPlacesView      *view);
-void               ctk_places_view_set_open_flags                (GtkPlacesView      *view,
-                                                                  GtkPlacesOpenFlags  flags);
+CtkPlacesOpenFlags ctk_places_view_get_open_flags                (CtkPlacesView      *view);
+void               ctk_places_view_set_open_flags                (CtkPlacesView      *view,
+                                                                  CtkPlacesOpenFlags  flags);
 
-const gchar*       ctk_places_view_get_search_query              (GtkPlacesView      *view);
-void               ctk_places_view_set_search_query              (GtkPlacesView      *view,
+const gchar*       ctk_places_view_get_search_query              (CtkPlacesView      *view);
+void               ctk_places_view_set_search_query              (CtkPlacesView      *view,
                                                                   const gchar        *query_text);
 
-gboolean           ctk_places_view_get_local_only                (GtkPlacesView         *view);
+gboolean           ctk_places_view_get_local_only                (CtkPlacesView         *view);
 
-void               ctk_places_view_set_local_only                (GtkPlacesView         *view,
+void               ctk_places_view_set_local_only                (CtkPlacesView         *view,
                                                                   gboolean               local_only);
 
-gboolean           ctk_places_view_get_loading                   (GtkPlacesView         *view);
+gboolean           ctk_places_view_get_loading                   (CtkPlacesView         *view);
 
-GtkWidget *        ctk_places_view_new                           (void);
+CtkWidget *        ctk_places_view_new                           (void);
 
 G_END_DECLS
 

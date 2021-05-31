@@ -1,6 +1,6 @@
 <!-- test invalid file filter markup element -->
 <interface>
-  <object class="GtkFileFilter">
+  <object class="CtkFileFilter">
     <patterns>
       <pattern><warbl/></pattern>
     </patterns>

@@ -1,16 +1,16 @@
 #include <ctk/ctk.h>
 
 static void
-split_decorations (GtkSettings *settings,
+split_decorations (CtkSettings *settings,
                    GParamSpec  *pspec,
-                   GtkBuilder  *builder)
+                   CtkBuilder  *builder)
 {
-  GtkWidget *sheader, *mheader;
+  CtkWidget *sheader, *mheader;
   gchar *layout, *p1, *p2;
   gchar **p;
 
-  sheader = (GtkWidget *)ctk_builder_get_object (builder, "sidebar-header");
-  mheader = (GtkWidget *)ctk_builder_get_object (builder, "main-header");
+  sheader = (CtkWidget *)ctk_builder_get_object (builder, "sidebar-header");
+  mheader = (CtkWidget *)ctk_builder_get_object (builder, "main-header");
 
   g_object_get (settings, "ctk-decoration-layout", &layout, NULL);
 
@@ -35,34 +35,34 @@ split_decorations (GtkSettings *settings,
 int
 main (int argc, char *argv[])
 {
-  GtkBuilder *builder;
-  GtkSettings *settings;
-  GtkWidget *win;
-  GtkWidget *entry;
-  GtkWidget *check;
-  GtkWidget *header;
+  CtkBuilder *builder;
+  CtkSettings *settings;
+  CtkWidget *win;
+  CtkWidget *entry;
+  CtkWidget *check;
+  CtkWidget *header;
 
   ctk_init (NULL, NULL);
 
   builder = ctk_builder_new_from_file ("testsplitheaders.ui");
 
-  win = (GtkWidget *)ctk_builder_get_object (builder, "window");
+  win = (CtkWidget *)ctk_builder_get_object (builder, "window");
   settings = ctk_widget_get_settings (win);
 
   g_signal_connect (settings, "notify::ctk-decoration-layout",
                     G_CALLBACK (split_decorations), builder);
   split_decorations (settings, NULL, builder);
   
-  entry = (GtkWidget *)ctk_builder_get_object (builder, "layout-entry");
+  entry = (CtkWidget *)ctk_builder_get_object (builder, "layout-entry");
   g_object_bind_property (settings, "ctk-decoration-layout",
                           entry, "text",
                           G_BINDING_BIDIRECTIONAL|G_BINDING_SYNC_CREATE);                      
-  check = (GtkWidget *)ctk_builder_get_object (builder, "decorations");
-  header = (GtkWidget *)ctk_builder_get_object (builder, "sidebar-header");
+  check = (CtkWidget *)ctk_builder_get_object (builder, "decorations");
+  header = (CtkWidget *)ctk_builder_get_object (builder, "sidebar-header");
   g_object_bind_property (check, "active", 
                           header, "show-close-button",
 			  G_BINDING_DEFAULT);                      
-  header = (GtkWidget *)ctk_builder_get_object (builder, "main-header");
+  header = (CtkWidget *)ctk_builder_get_object (builder, "main-header");
   g_object_bind_property (check, "active", 
                           header, "show-close-button",
 			  G_BINDING_DEFAULT);                      

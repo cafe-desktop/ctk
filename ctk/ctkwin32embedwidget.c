@@ -35,30 +35,30 @@
 #include "ctkcontainerprivate.h"
 
 
-static void            ctk_win32_embed_widget_realize               (GtkWidget        *widget);
-static void            ctk_win32_embed_widget_unrealize             (GtkWidget        *widget);
-static void            ctk_win32_embed_widget_show                  (GtkWidget        *widget);
-static void            ctk_win32_embed_widget_hide                  (GtkWidget        *widget);
-static void            ctk_win32_embed_widget_map                   (GtkWidget        *widget);
-static void            ctk_win32_embed_widget_unmap                 (GtkWidget        *widget);
-static void            ctk_win32_embed_widget_size_allocate         (GtkWidget        *widget,
-								     GtkAllocation    *allocation);
-static void            ctk_win32_embed_widget_set_focus             (GtkWindow        *window,
-								     GtkWidget        *focus);
-static gboolean        ctk_win32_embed_widget_focus                 (GtkWidget        *widget,
-								     GtkDirectionType  direction);
-static void            ctk_win32_embed_widget_check_resize          (GtkContainer     *container);
+static void            ctk_win32_embed_widget_realize               (CtkWidget        *widget);
+static void            ctk_win32_embed_widget_unrealize             (CtkWidget        *widget);
+static void            ctk_win32_embed_widget_show                  (CtkWidget        *widget);
+static void            ctk_win32_embed_widget_hide                  (CtkWidget        *widget);
+static void            ctk_win32_embed_widget_map                   (CtkWidget        *widget);
+static void            ctk_win32_embed_widget_unmap                 (CtkWidget        *widget);
+static void            ctk_win32_embed_widget_size_allocate         (CtkWidget        *widget,
+								     CtkAllocation    *allocation);
+static void            ctk_win32_embed_widget_set_focus             (CtkWindow        *window,
+								     CtkWidget        *focus);
+static gboolean        ctk_win32_embed_widget_focus                 (CtkWidget        *widget,
+								     CtkDirectionType  direction);
+static void            ctk_win32_embed_widget_check_resize          (CtkContainer     *container);
 
-static GtkBinClass *bin_class = NULL;
+static CtkBinClass *bin_class = NULL;
 
-G_DEFINE_TYPE (GtkWin32EmbedWidget, ctk_win32_embed_widget, CTK_TYPE_WINDOW)
+G_DEFINE_TYPE (CtkWin32EmbedWidget, ctk_win32_embed_widget, CTK_TYPE_WINDOW)
 
 static void
-ctk_win32_embed_widget_class_init (GtkWin32EmbedWidgetClass *class)
+ctk_win32_embed_widget_class_init (CtkWin32EmbedWidgetClass *class)
 {
-  GtkWidgetClass *widget_class = (GtkWidgetClass *)class;
-  GtkWindowClass *window_class = (GtkWindowClass *)class;
-  GtkContainerClass *container_class = (GtkContainerClass *)class;
+  CtkWidgetClass *widget_class = (CtkWidgetClass *)class;
+  CtkWindowClass *window_class = (CtkWindowClass *)class;
+  CtkContainerClass *container_class = (CtkContainerClass *)class;
 
   bin_class = g_type_class_peek (CTK_TYPE_BIN);
 
@@ -79,7 +79,7 @@ ctk_win32_embed_widget_class_init (GtkWin32EmbedWidgetClass *class)
 }
 
 static void
-ctk_win32_embed_widget_init (GtkWin32EmbedWidget *embed_widget)
+ctk_win32_embed_widget_init (CtkWin32EmbedWidget *embed_widget)
 {
   _ctk_widget_set_is_toplevel (CTK_WIDGET (embed_widget), TRUE);
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
@@ -87,10 +87,10 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
-GtkWidget*
+CtkWidget*
 _ctk_win32_embed_widget_new (HWND parent)
 {
-  GtkWin32EmbedWidget *embed_widget;
+  CtkWin32EmbedWidget *embed_widget;
 
   embed_widget = g_object_new (CTK_TYPE_WIN32_EMBED_WIDGET, NULL);
   
@@ -107,11 +107,11 @@ _ctk_win32_embed_widget_new (HWND parent)
 }
 
 BOOL
-_ctk_win32_embed_widget_dialog_procedure (GtkWin32EmbedWidget *embed_widget,
+_ctk_win32_embed_widget_dialog_procedure (CtkWin32EmbedWidget *embed_widget,
 					  HWND wnd, UINT message, WPARAM wparam, LPARAM lparam)
 {
-  GtkAllocation allocation;
-  GtkWidget *widget = CTK_WIDGET (embed_widget);
+  CtkAllocation allocation;
+  CtkWidget *widget = CTK_WIDGET (embed_widget);
   
  if (message == WM_SIZE)
    {
@@ -126,9 +126,9 @@ _ctk_win32_embed_widget_dialog_procedure (GtkWin32EmbedWidget *embed_widget,
 }
 
 static void
-ctk_win32_embed_widget_unrealize (GtkWidget *widget)
+ctk_win32_embed_widget_unrealize (CtkWidget *widget)
 {
-  GtkWin32EmbedWidget *embed_widget = CTK_WIN32_EMBED_WIDGET (widget);
+  CtkWin32EmbedWidget *embed_widget = CTK_WIN32_EMBED_WIDGET (widget);
 
   embed_widget->old_window_procedure = NULL;
   
@@ -141,7 +141,7 @@ static LRESULT CALLBACK
 ctk_win32_embed_widget_window_process (HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 {
   GdkWindow *window;
-  GtkWin32EmbedWidget *embed_widget;
+  CtkWin32EmbedWidget *embed_widget;
   gpointer user_data;
 
   window = gdk_win32_window_lookup_for_display (gdk_display_get_default (), hwnd);
@@ -164,11 +164,11 @@ ctk_win32_embed_widget_window_process (HWND hwnd, UINT msg, WPARAM wparam, LPARA
 }
 
 static void
-ctk_win32_embed_widget_realize (GtkWidget *widget)
+ctk_win32_embed_widget_realize (CtkWidget *widget)
 {
-  GtkWindow *window = CTK_WINDOW (widget);
-  GtkWin32EmbedWidget *embed_widget = CTK_WIN32_EMBED_WIDGET (widget);
-  GtkAllocation allocation;
+  CtkWindow *window = CTK_WINDOW (widget);
+  CtkWin32EmbedWidget *embed_widget = CTK_WIN32_EMBED_WIDGET (widget);
+  CtkAllocation allocation;
   GdkWindow *gdk_window;
   GdkWindowAttr attributes;
   gint attributes_mask;
@@ -180,8 +180,8 @@ ctk_win32_embed_widget_realize (GtkWidget *widget)
   if (allocation.x == -1 && allocation.y == -1 &&
       allocation.width == 1 && allocation.height == 1)
     {
-      GtkRequisition requisition;
-      GtkAllocation allocation = { 0, 0, 200, 200 };
+      CtkRequisition requisition;
+      CtkAllocation allocation = { 0, 0, 200, 200 };
 
       ctk_widget_get_preferred_size (widget, &requisition, NULL);
       if (requisition.width || requisition.height)
@@ -245,7 +245,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 static void
-ctk_win32_embed_widget_show (GtkWidget *widget)
+ctk_win32_embed_widget_show (CtkWidget *widget)
 {
   _ctk_widget_set_visible_flag (widget, TRUE);
   
@@ -255,17 +255,17 @@ ctk_win32_embed_widget_show (GtkWidget *widget)
 }
 
 static void
-ctk_win32_embed_widget_hide (GtkWidget *widget)
+ctk_win32_embed_widget_hide (CtkWidget *widget)
 {
   _ctk_widget_set_visible_flag (widget, FALSE);
   ctk_widget_unmap (widget);
 }
 
 static void
-ctk_win32_embed_widget_map (GtkWidget *widget)
+ctk_win32_embed_widget_map (CtkWidget *widget)
 {
-  GtkBin    *bin = CTK_BIN (widget);
-  GtkWidget *child;
+  CtkBin    *bin = CTK_BIN (widget);
+  CtkWidget *child;
 
   ctk_widget_set_mapped (widget, TRUE);
 
@@ -279,18 +279,18 @@ ctk_win32_embed_widget_map (GtkWidget *widget)
 }
 
 static void
-ctk_win32_embed_widget_unmap (GtkWidget *widget)
+ctk_win32_embed_widget_unmap (CtkWidget *widget)
 {
   ctk_widget_set_mapped (widget, FALSE);
   gdk_window_hide (ctk_widget_get_window (widget));
 }
 
 static void
-ctk_win32_embed_widget_size_allocate (GtkWidget     *widget,
-				      GtkAllocation *allocation)
+ctk_win32_embed_widget_size_allocate (CtkWidget     *widget,
+				      CtkAllocation *allocation)
 {
-  GtkBin    *bin = CTK_BIN (widget);
-  GtkWidget *child;
+  CtkBin    *bin = CTK_BIN (widget);
+  CtkWidget *child;
   
   ctk_widget_set_allocation (widget, allocation);
   
@@ -302,7 +302,7 @@ ctk_win32_embed_widget_size_allocate (GtkWidget     *widget,
   child = ctk_bin_get_child (bin);
   if (child && ctk_widget_get_visible (child))
     {
-      GtkAllocation child_allocation;
+      CtkAllocation child_allocation;
       
       child_allocation.x = ctk_container_get_border_width (CTK_CONTAINER (widget));
       child_allocation.y = child_allocation.x;
@@ -316,24 +316,24 @@ ctk_win32_embed_widget_size_allocate (GtkWidget     *widget,
 }
 
 static void
-ctk_win32_embed_widget_check_resize (GtkContainer *container)
+ctk_win32_embed_widget_check_resize (CtkContainer *container)
 {
   CTK_CONTAINER_CLASS (bin_class)->check_resize (container);
 }
 
 static gboolean
-ctk_win32_embed_widget_focus (GtkWidget        *widget,
-			      GtkDirectionType  direction)
+ctk_win32_embed_widget_focus (CtkWidget        *widget,
+			      CtkDirectionType  direction)
 {
-  GtkBin *bin = CTK_BIN (widget);
-  GtkWin32EmbedWidget *embed_widget = CTK_WIN32_EMBED_WIDGET (widget);
-  GtkWindow *window = CTK_WINDOW (widget);
-  GtkContainer *container = CTK_CONTAINER (widget);
-  GtkWidget *old_focus_child = ctk_container_get_focus_child (container);
-  GtkWidget *parent;
-  GtkWidget *child;
+  CtkBin *bin = CTK_BIN (widget);
+  CtkWin32EmbedWidget *embed_widget = CTK_WIN32_EMBED_WIDGET (widget);
+  CtkWindow *window = CTK_WINDOW (widget);
+  CtkContainer *container = CTK_CONTAINER (widget);
+  CtkWidget *old_focus_child = ctk_container_get_focus_child (container);
+  CtkWidget *parent;
+  CtkWidget *child;
 
-  /* We override GtkWindow's behavior, since we don't want wrapping here.
+  /* We override CtkWindow's behavior, since we don't want wrapping here.
    */
   if (old_focus_child)
     {
@@ -378,8 +378,8 @@ ctk_win32_embed_widget_focus (GtkWidget        *widget,
 }
 
 static void
-ctk_win32_embed_widget_set_focus (GtkWindow *window,
-				  GtkWidget *focus)
+ctk_win32_embed_widget_set_focus (CtkWindow *window,
+				  CtkWidget *focus)
 {
   CTK_WINDOW_CLASS (ctk_win32_embed_widget_parent_class)->set_focus (window, focus);
 

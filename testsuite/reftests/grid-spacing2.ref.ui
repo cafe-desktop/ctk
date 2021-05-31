@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkBox" id="box">
+      <object class="CtkBox" id="box">
         <property name="orientation">horizontal</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
           <!-- spacing -->
-          <object class="GtkBox" id="box0">
+          <object class="CtkBox" id="box0">
             <property name="orientation">vertical</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="spacing">20</property>
             <child>
-              <object class="GtkLabel" id="one">
+              <object class="CtkLabel" id="one">
                 <property name="visible">True</property>
                 <property name="label">One</property>
                 <property name="angle">90</property>
@@ -27,7 +27,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="two">
+              <object class="CtkLabel" id="two">
                 <property name="visible">True</property>
                 <property name="label">Two</property>
                 <property name="angle">90</property>
@@ -37,7 +37,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="three">
+              <object class="CtkLabel" id="three">
                 <property name="visible">True</property>
                 <property name="label">Three</property>
                 <property name="angle">90</property>
@@ -51,14 +51,14 @@
 
         <child>
           <!-- homogeneous -->
-          <object class="GtkBox" id="box1">
+          <object class="CtkBox" id="box1">
             <property name="orientation">vertical</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="spacing">0</property>
             <property name="homogeneous">True</property>
             <child>
-              <object class="GtkLabel" id="long">
+              <object class="CtkLabel" id="long">
                 <property name="visible">True</property>
                 <property name="label">Verylongtext</property>
                 <property name="angle">90</property>
@@ -68,7 +68,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="short">
+              <object class="CtkLabel" id="short">
                 <property name="visible">True</property>
                 <property name="label">Short</property>
                 <property name="angle">90</property>
@@ -82,12 +82,12 @@
 
        <child>
           <!-- expand -->
-          <object class="GtkBox" id="box2">
+          <object class="CtkBox" id="box2">
             <property name="orientation">vertical</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkLabel" id="a">
+              <object class="CtkLabel" id="a">
                 <property name="visible">True</property>
                 <property name="label">A</property>
                 <property name="angle">90</property>
@@ -97,7 +97,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="b">
+              <object class="CtkLabel" id="b">
                 <property name="visible">True</property>
                 <property name="label">B</property>
                 <property name="angle">90</property>
@@ -108,7 +108,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="c">
+              <object class="CtkLabel" id="c">
                 <property name="visible">True</property>
                 <property name="label">C</property>
                 <property name="angle">90</property>

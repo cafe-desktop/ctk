@@ -34,38 +34,38 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_PANED                  (ctk_paned_get_type ())
-#define CTK_PANED(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PANED, GtkPaned))
-#define CTK_PANED_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PANED, GtkPanedClass))
+#define CTK_PANED(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PANED, CtkPaned))
+#define CTK_PANED_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PANED, CtkPanedClass))
 #define CTK_IS_PANED(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PANED))
 #define CTK_IS_PANED_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PANED))
-#define CTK_PANED_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PANED, GtkPanedClass))
+#define CTK_PANED_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PANED, CtkPanedClass))
 
 
-typedef struct _GtkPaned        GtkPaned;
-typedef struct _GtkPanedClass   GtkPanedClass;
-typedef struct _GtkPanedPrivate GtkPanedPrivate;
+typedef struct _CtkPaned        CtkPaned;
+typedef struct _CtkPanedClass   CtkPanedClass;
+typedef struct _CtkPanedPrivate CtkPanedPrivate;
 
-struct _GtkPaned
+struct _CtkPaned
 {
-  GtkContainer container;
+  CtkContainer container;
 
   /*< private >*/
-  GtkPanedPrivate *priv;
+  CtkPanedPrivate *priv;
 };
 
-struct _GtkPanedClass
+struct _CtkPanedClass
 {
-  GtkContainerClass parent_class;
+  CtkContainerClass parent_class;
 
-  gboolean (* cycle_child_focus)   (GtkPaned      *paned,
+  gboolean (* cycle_child_focus)   (CtkPaned      *paned,
 				    gboolean       reverse);
-  gboolean (* toggle_handle_focus) (GtkPaned      *paned);
-  gboolean (* move_handle)         (GtkPaned      *paned,
-				    GtkScrollType  scroll);
-  gboolean (* cycle_handle_focus)  (GtkPaned      *paned,
+  gboolean (* toggle_handle_focus) (CtkPaned      *paned);
+  gboolean (* move_handle)         (CtkPaned      *paned,
+				    CtkScrollType  scroll);
+  gboolean (* cycle_handle_focus)  (CtkPaned      *paned,
 				    gboolean       reverse);
-  gboolean (* accept_position)     (GtkPaned	  *paned);
-  gboolean (* cancel_position)     (GtkPaned	  *paned);
+  gboolean (* accept_position)     (CtkPaned	  *paned);
+  gboolean (* cancel_position)     (CtkPaned	  *paned);
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -78,43 +78,43 @@ struct _GtkPanedClass
 GDK_AVAILABLE_IN_ALL
 GType       ctk_paned_get_type     (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget * ctk_paned_new          (GtkOrientation orientation);
+CtkWidget * ctk_paned_new          (CtkOrientation orientation);
 GDK_AVAILABLE_IN_ALL
-void        ctk_paned_add1         (GtkPaned       *paned,
-                                    GtkWidget      *child);
+void        ctk_paned_add1         (CtkPaned       *paned,
+                                    CtkWidget      *child);
 GDK_AVAILABLE_IN_ALL
-void        ctk_paned_add2         (GtkPaned       *paned,
-                                    GtkWidget      *child);
+void        ctk_paned_add2         (CtkPaned       *paned,
+                                    CtkWidget      *child);
 GDK_AVAILABLE_IN_ALL
-void        ctk_paned_pack1        (GtkPaned       *paned,
-                                    GtkWidget      *child,
+void        ctk_paned_pack1        (CtkPaned       *paned,
+                                    CtkWidget      *child,
                                     gboolean        resize,
                                     gboolean        shrink);
 GDK_AVAILABLE_IN_ALL
-void        ctk_paned_pack2        (GtkPaned       *paned,
-                                    GtkWidget      *child,
+void        ctk_paned_pack2        (CtkPaned       *paned,
+                                    CtkWidget      *child,
                                     gboolean        resize,
                                     gboolean        shrink);
 
 GDK_AVAILABLE_IN_ALL
-gint        ctk_paned_get_position (GtkPaned       *paned);
+gint        ctk_paned_get_position (CtkPaned       *paned);
 GDK_AVAILABLE_IN_ALL
-void        ctk_paned_set_position (GtkPaned       *paned,
+void        ctk_paned_set_position (CtkPaned       *paned,
                                     gint            position);
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget * ctk_paned_get_child1   (GtkPaned       *paned);
+CtkWidget * ctk_paned_get_child1   (CtkPaned       *paned);
 GDK_AVAILABLE_IN_ALL
-GtkWidget * ctk_paned_get_child2   (GtkPaned       *paned);
+CtkWidget * ctk_paned_get_child2   (CtkPaned       *paned);
 
 GDK_AVAILABLE_IN_ALL
-GdkWindow * ctk_paned_get_handle_window (GtkPaned  *paned);
+GdkWindow * ctk_paned_get_handle_window (CtkPaned  *paned);
 
 GDK_AVAILABLE_IN_3_16
-void        ctk_paned_set_wide_handle (GtkPaned    *paned,
+void        ctk_paned_set_wide_handle (CtkPaned    *paned,
                                        gboolean     wide);
 GDK_AVAILABLE_IN_3_16
-gboolean    ctk_paned_get_wide_handle (GtkPaned    *paned);
+gboolean    ctk_paned_get_wide_handle (CtkPaned    *paned);
 
 
 G_END_DECLS

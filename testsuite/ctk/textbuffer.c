@@ -24,7 +24,7 @@
 #include "ctk/ctktexttypes.h" /* Private header, for UNKNOWN_CHAR */
 
 static void
-ctk_text_iter_spew (const GtkTextIter *iter, const gchar *desc)
+ctk_text_iter_spew (const CtkTextIter *iter, const gchar *desc)
 {
   g_print (" %20s: line %d / char %d / line char %d / line byte %d\n",
            desc,
@@ -35,10 +35,10 @@ ctk_text_iter_spew (const GtkTextIter *iter, const gchar *desc)
 }
 
 static void
-check_get_set_text (GtkTextBuffer *buffer,
+check_get_set_text (CtkTextBuffer *buffer,
                     const char    *str)
 {
-  GtkTextIter start, end, iter;
+  CtkTextIter start, end, iter;
   char *text;
   int n;
   
@@ -91,8 +91,8 @@ check_get_set_text (GtkTextBuffer *buffer,
 }
 
 static gint
-count_toggles_at_iter (GtkTextIter *iter,
-                       GtkTextTag  *of_tag)
+count_toggles_at_iter (CtkTextIter *iter,
+                       CtkTextTag  *of_tag)
 {
   GSList *tags;
   GSList *tmp;
@@ -120,12 +120,12 @@ count_toggles_at_iter (GtkTextIter *iter,
 }
 
 static gint
-count_toggles_in_range_by_char (GtkTextBuffer     *buffer,
-                                GtkTextTag        *of_tag,
-                                const GtkTextIter *start,
-                                const GtkTextIter *end)
+count_toggles_in_range_by_char (CtkTextBuffer     *buffer,
+                                CtkTextTag        *of_tag,
+                                const CtkTextIter *start,
+                                const CtkTextIter *end)
 {
-  GtkTextIter iter;
+  CtkTextIter iter;
   gint count = 0;
   
   iter = *start;
@@ -145,10 +145,10 @@ count_toggles_in_range_by_char (GtkTextBuffer     *buffer,
 }
 
 static gint
-count_toggles_in_buffer (GtkTextBuffer *buffer,
-                         GtkTextTag    *of_tag)
+count_toggles_in_buffer (CtkTextBuffer *buffer,
+                         CtkTextTag    *of_tag)
 {
-  GtkTextIter start, end;
+  CtkTextIter start, end;
 
   ctk_text_buffer_get_bounds (buffer, &start, &end);
 
@@ -156,13 +156,13 @@ count_toggles_in_buffer (GtkTextBuffer *buffer,
 }
 
 static void
-check_specific_tag_in_range (GtkTextBuffer     *buffer,
+check_specific_tag_in_range (CtkTextBuffer     *buffer,
                              const gchar       *tag_name,
-                             const GtkTextIter *start,
-                             const GtkTextIter *end)
+                             const CtkTextIter *start,
+                             const CtkTextIter *end)
 {
-  GtkTextIter iter;
-  GtkTextTag *tag;
+  CtkTextIter iter;
+  CtkTextTag *tag;
   gboolean state;
   gint count;
   gint buffer_count;
@@ -269,10 +269,10 @@ check_specific_tag_in_range (GtkTextBuffer     *buffer,
 }
 
 static void
-check_specific_tag (GtkTextBuffer *buffer,
+check_specific_tag (CtkTextBuffer *buffer,
                     const gchar   *tag_name)
 {
-  GtkTextIter start, end;
+  CtkTextIter start, end;
 
   ctk_text_buffer_get_bounds (buffer, &start, &end);
   check_specific_tag_in_range (buffer, tag_name, &start, &end);
@@ -283,16 +283,16 @@ check_specific_tag (GtkTextBuffer *buffer,
 }
 
 static void
-run_tests (GtkTextBuffer *buffer)
+run_tests (CtkTextBuffer *buffer)
 {
-  GtkTextIter iter;
-  GtkTextIter start;
-  GtkTextIter end;
-  GtkTextIter mark;
+  CtkTextIter iter;
+  CtkTextIter start;
+  CtkTextIter end;
+  CtkTextIter mark;
   gint i, j;
   gint num_chars;
-  GtkTextMark *bar_mark;
-  GtkTextTag *tag;
+  CtkTextMark *bar_mark;
+  CtkTextTag *tag;
   GHashTable *tag_states;
   gint count;
   gint buffer_count;
@@ -308,8 +308,8 @@ run_tests (GtkTextBuffer *buffer)
   i = 0;
   while (i < num_chars)
     {
-      GtkTextIter current;
-      GtkTextMark *foo_mark;
+      CtkTextIter current;
+      CtkTextMark *foo_mark;
 
       ctk_text_buffer_get_iter_at_offset (buffer, &current, i);
 
@@ -374,8 +374,8 @@ run_tests (GtkTextBuffer *buffer)
 
   while (i >= 0)
     {
-      GtkTextIter current;
-      GtkTextMark *foo_mark;
+      CtkTextIter current;
+      CtkTextMark *foo_mark;
 
       ctk_text_buffer_get_iter_at_offset (buffer, &current, i);
 
@@ -630,13 +630,13 @@ static const char  *book_closed_xpm[] = {
 "                "};
 
 static void
-fill_buffer (GtkTextBuffer *buffer)
+fill_buffer (CtkTextBuffer *buffer)
 {
-  GtkTextTag *tag;
+  CtkTextTag *tag;
   GdkRGBA color;
   GdkRGBA color2;
-  GtkTextIter iter;
-  GtkTextIter iter2;
+  CtkTextIter iter;
+  CtkTextIter iter2;
   GdkPixbuf *pixbuf;
   int i;
 
@@ -802,8 +802,8 @@ test_line_separation (const char* str,
                       int         expected_line_break,
                       int         expected_next_line_start)
 {
-  GtkTextIter iter;
-  GtkTextBuffer* buffer;
+  CtkTextIter iter;
+  CtkTextBuffer* buffer;
   gboolean on_next_line;
   gboolean on_end_iter;
   gint new_pos;
@@ -859,8 +859,8 @@ test_line_separation (const char* str,
 static void
 split_r_n_separators_test (void)
 {
-  GtkTextBuffer *buffer;
-  GtkTextIter iter;
+  CtkTextBuffer *buffer;
+  CtkTextIter iter;
 
   buffer = ctk_text_buffer_new (NULL);
 
@@ -919,8 +919,8 @@ test_line_separator (void)
 static void
 test_backspace (void)
 {
-  GtkTextBuffer *buffer;
-  GtkTextIter iter;
+  CtkTextBuffer *buffer;
+  CtkTextIter iter;
   gboolean ret;
 
   buffer = ctk_text_buffer_new (NULL);
@@ -982,8 +982,8 @@ test_logical_motion (void)
   int expected[30];
   int expected_steps;
   int i;
-  GtkTextBuffer *buffer;
-  GtkTextIter iter;
+  CtkTextBuffer *buffer;
+  CtkTextIter iter;
   
   buffer = ctk_text_buffer_new (NULL);
   
@@ -1162,9 +1162,9 @@ test_logical_motion (void)
 static void
 test_marks (void)
 {
-  GtkTextBuffer *buf1, *buf2;
-  GtkTextMark *mark;
-  GtkTextIter iter;
+  CtkTextBuffer *buf1, *buf2;
+  CtkTextMark *mark;
+  CtkTextIter iter;
 
   buf1 = ctk_text_buffer_new (NULL);
   buf2 = ctk_text_buffer_new (NULL);
@@ -1244,9 +1244,9 @@ test_utf8 (void)
 static void
 test_empty_buffer (void)
 {
-  GtkTextBuffer *buffer;
+  CtkTextBuffer *buffer;
   int n;
-  GtkTextIter start;
+  CtkTextIter start;
 
   buffer = ctk_text_buffer_new (NULL);
 
@@ -1277,7 +1277,7 @@ test_empty_buffer (void)
 static void
 test_get_set(void)
 {
-  GtkTextBuffer *buffer;
+  CtkTextBuffer *buffer;
 
   buffer = ctk_text_buffer_new (NULL);
 
@@ -1294,9 +1294,9 @@ test_get_set(void)
 static void
 test_fill_empty (void)
 {
-  GtkTextBuffer *buffer;
+  CtkTextBuffer *buffer;
   int n;
-  GtkTextIter start, end;
+  CtkTextIter start, end;
   
   buffer = ctk_text_buffer_new (NULL);
 
@@ -1328,8 +1328,8 @@ test_fill_empty (void)
 static void
 test_tag (void)
 {
-  GtkTextBuffer *buffer;
-  GtkTextIter start, end;
+  CtkTextBuffer *buffer;
+  CtkTextIter start, end;
   
   buffer = ctk_text_buffer_new (NULL);
 
@@ -1346,11 +1346,11 @@ test_tag (void)
 }
 
 static void
-check_buffer_contents (GtkTextBuffer *buffer,
+check_buffer_contents (CtkTextBuffer *buffer,
                        const gchar   *contents)
 {
-  GtkTextIter start;
-  GtkTextIter end;
+  CtkTextIter start;
+  CtkTextIter end;
   gchar *buffer_contents;
 
   ctk_text_buffer_get_start_iter (buffer, &start);
@@ -1362,11 +1362,11 @@ check_buffer_contents (GtkTextBuffer *buffer,
 static void
 test_clipboard (void)
 {
-  GtkClipboard *clipboard;
-  GtkTextBuffer *buffer;
-  GtkTextIter start;
-  GtkTextIter end;
-  GtkTextTag *tag;
+  CtkClipboard *clipboard;
+  CtkTextBuffer *buffer;
+  CtkTextIter start;
+  CtkTextIter end;
+  CtkTextTag *tag;
 
   clipboard = ctk_clipboard_get (GDK_SELECTION_CLIPBOARD);
 
@@ -1437,8 +1437,8 @@ test_clipboard (void)
 static void
 test_get_iter (void)
 {
-  GtkTextBuffer *buffer;
-  GtkTextIter iter;
+  CtkTextBuffer *buffer;
+  CtkTextIter iter;
   gint offset;
 
   buffer = ctk_text_buffer_new (NULL);

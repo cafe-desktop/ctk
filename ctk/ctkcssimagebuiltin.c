@@ -32,19 +32,19 @@
 
 #include "fallback-c89.c"
 
-G_DEFINE_TYPE (GtkCssImageBuiltin, ctk_css_image_builtin, CTK_TYPE_CSS_IMAGE)
+G_DEFINE_TYPE (CtkCssImageBuiltin, ctk_css_image_builtin, CTK_TYPE_CSS_IMAGE)
 
-static GtkCssImage *the_one_true_image;
+static CtkCssImage *the_one_true_image;
 
 static void
-ctk_css_image_builtin_draw_check (GtkCssImage *image,
+ctk_css_image_builtin_draw_check (CtkCssImage *image,
                                   cairo_t     *cr,
                                   double       width,
                                   double       height,
                                   gboolean     checked,
                                   gboolean     inconsistent)
 {
-  GtkCssImageBuiltin *builtin = CTK_CSS_IMAGE_BUILTIN (image);
+  CtkCssImageBuiltin *builtin = CTK_CSS_IMAGE_BUILTIN (image);
   gint x, y, exterior_size, interior_size, pad;
 
   exterior_size = MIN (width, height);
@@ -113,14 +113,14 @@ ctk_css_image_builtin_draw_check (GtkCssImage *image,
 }
 
 static void
-ctk_css_image_builtin_draw_option (GtkCssImage *image,
+ctk_css_image_builtin_draw_option (CtkCssImage *image,
                                    cairo_t     *cr,
                                    double       width,
                                    double       height,
                                    gboolean     checked,
                                    gboolean     inconsistent)
 {
-  GtkCssImageBuiltin *builtin = CTK_CSS_IMAGE_BUILTIN (image);
+  CtkCssImageBuiltin *builtin = CTK_CSS_IMAGE_BUILTIN (image);
   gint x, y, exterior_size, interior_size, pad;
 
   exterior_size = MIN (width, height);
@@ -165,13 +165,13 @@ ctk_css_image_builtin_draw_option (GtkCssImage *image,
 }
 
 static void
-ctk_css_image_builtin_draw_arrow (GtkCssImage            *image,
+ctk_css_image_builtin_draw_arrow (CtkCssImage            *image,
                                   cairo_t                *cr,
                                   double                  width,
                                   double                  height,
-                                  GtkCssImageBuiltinType  image_type)
+                                  CtkCssImageBuiltinType  image_type)
 {
-  GtkCssImageBuiltin *builtin = CTK_CSS_IMAGE_BUILTIN (image);
+  CtkCssImageBuiltin *builtin = CTK_CSS_IMAGE_BUILTIN (image);
   double line_width;
   double size;
 
@@ -214,7 +214,7 @@ ctk_css_image_builtin_draw_arrow (GtkCssImage            *image,
 }
 
 static void
-ctk_css_image_builtin_draw_expander (GtkCssImage *image,
+ctk_css_image_builtin_draw_expander (CtkCssImage *image,
                                      cairo_t     *cr,
                                      double       width,
                                      double       height,
@@ -222,7 +222,7 @@ ctk_css_image_builtin_draw_expander (GtkCssImage *image,
                                      gboolean     is_rtl,
                                      gboolean     expanded)
 {
-  GtkCssImageBuiltin *builtin = CTK_CSS_IMAGE_BUILTIN (image);
+  CtkCssImageBuiltin *builtin = CTK_CSS_IMAGE_BUILTIN (image);
   double vertical_overshoot;
   int diameter;
   double radius;
@@ -313,7 +313,7 @@ color_shade (const GdkRGBA *color,
              gdouble        factor,
              GdkRGBA       *color_return)
 {
-  GtkHSLA hsla;
+  CtkHSLA hsla;
 
   _ctk_hsla_init_from_rgba (&hsla, color);
   _ctk_hsla_shade (&hsla, &hsla, factor);
@@ -377,13 +377,13 @@ add_path_line (cairo_t        *cr,
 }
 
 void
-ctk_css_image_builtin_draw_grip (GtkCssImage            *image,
+ctk_css_image_builtin_draw_grip (CtkCssImage            *image,
                                  cairo_t                *cr,
                                  double                  width,
                                  double                  height,
-                                 GtkCssImageBuiltinType  image_type)
+                                 CtkCssImageBuiltinType  image_type)
 {
-  GtkCssImageBuiltin *builtin = CTK_CSS_IMAGE_BUILTIN (image);
+  CtkCssImageBuiltin *builtin = CTK_CSS_IMAGE_BUILTIN (image);
   GdkRGBA lighter, darker;
 
   cairo_set_line_width (cr, 1.0);
@@ -628,12 +628,12 @@ ctk_css_image_builtin_draw_grip (GtkCssImage            *image,
 }
 
 void
-ctk_css_image_builtin_draw_pane_separator (GtkCssImage *image,
+ctk_css_image_builtin_draw_pane_separator (CtkCssImage *image,
                                            cairo_t     *cr,
                                            double       width,
                                            double       height)
 {
-  GtkCssImageBuiltin *builtin = CTK_CSS_IMAGE_BUILTIN (image);
+  CtkCssImageBuiltin *builtin = CTK_CSS_IMAGE_BUILTIN (image);
   GdkRGBA lighter, darker;
   gint xx, yy;
 
@@ -651,12 +651,12 @@ ctk_css_image_builtin_draw_pane_separator (GtkCssImage *image,
 }
 
 void
-ctk_css_image_builtin_draw_handle (GtkCssImage *image,
+ctk_css_image_builtin_draw_handle (CtkCssImage *image,
                                    cairo_t     *cr,
                                    double       width,
                                    double       height)
 {
-  GtkCssImageBuiltin *builtin = CTK_CSS_IMAGE_BUILTIN (image);
+  CtkCssImageBuiltin *builtin = CTK_CSS_IMAGE_BUILTIN (image);
   GdkRGBA lighter, darker;
   gint xx, yy;
 
@@ -674,12 +674,12 @@ ctk_css_image_builtin_draw_handle (GtkCssImage *image,
 }
 
 static void
-ctk_css_image_builtin_draw_spinner (GtkCssImage *image,
+ctk_css_image_builtin_draw_spinner (CtkCssImage *image,
                                     cairo_t     *cr,
                                     double       width,
                                     double       height)
 {
-  GtkCssImageBuiltin *builtin = CTK_CSS_IMAGE_BUILTIN (image);
+  CtkCssImageBuiltin *builtin = CTK_CSS_IMAGE_BUILTIN (image);
   guint num_steps;
   gdouble radius;
   gdouble half;
@@ -721,7 +721,7 @@ ctk_css_image_builtin_draw_spinner (GtkCssImage *image,
 }
 
 static void
-ctk_css_image_builtin_real_draw (GtkCssImage        *image,
+ctk_css_image_builtin_real_draw (CtkCssImage        *image,
                                  cairo_t            *cr,
                                  double              width,
                                  double              height)
@@ -731,8 +731,8 @@ ctk_css_image_builtin_real_draw (GtkCssImage        *image,
 
 
 static gboolean
-ctk_css_image_builtin_parse (GtkCssImage  *image,
-                             GtkCssParser *parser)
+ctk_css_image_builtin_parse (CtkCssImage  *image,
+                             CtkCssParser *parser)
 {
   if (!_ctk_css_parser_try (parser, "builtin", TRUE))
     {
@@ -744,20 +744,20 @@ ctk_css_image_builtin_parse (GtkCssImage  *image,
 }
 
 static void
-ctk_css_image_builtin_print (GtkCssImage *image,
+ctk_css_image_builtin_print (CtkCssImage *image,
                              GString     *string)
 {
   g_string_append (string, "builtin");
 }
 
-static GtkCssImage *
-ctk_css_image_builtin_compute (GtkCssImage             *image,
+static CtkCssImage *
+ctk_css_image_builtin_compute (CtkCssImage             *image,
                                guint                    property_id,
-                               GtkStyleProviderPrivate *provider,
-                               GtkCssStyle             *style,
-                               GtkCssStyle             *parent_style)
+                               CtkStyleProviderPrivate *provider,
+                               CtkCssStyle             *style,
+                               CtkCssStyle             *parent_style)
 {
-  GtkCssImageBuiltin *result;
+  CtkCssImageBuiltin *result;
 
   result = g_object_new (CTK_TYPE_CSS_IMAGE_BUILTIN, NULL);
 
@@ -768,11 +768,11 @@ ctk_css_image_builtin_compute (GtkCssImage             *image,
 }
 
 static gboolean
-ctk_css_image_builtin_equal (GtkCssImage *image1,
-                             GtkCssImage *image2)
+ctk_css_image_builtin_equal (CtkCssImage *image1,
+                             CtkCssImage *image2)
 {
-  GtkCssImageBuiltin *builtin1 = CTK_CSS_IMAGE_BUILTIN (image1);
-  GtkCssImageBuiltin *builtin2 = CTK_CSS_IMAGE_BUILTIN (image2);
+  CtkCssImageBuiltin *builtin1 = CTK_CSS_IMAGE_BUILTIN (image1);
+  CtkCssImageBuiltin *builtin2 = CTK_CSS_IMAGE_BUILTIN (image2);
 
   return gdk_rgba_equal (&builtin1->fg_color, &builtin2->fg_color)
       && gdk_rgba_equal (&builtin1->bg_color, &builtin2->bg_color);
@@ -788,9 +788,9 @@ ctk_css_image_builtin_dispose (GObject *object)
 }
 
 static void
-ctk_css_image_builtin_class_init (GtkCssImageBuiltinClass *klass)
+ctk_css_image_builtin_class_init (CtkCssImageBuiltinClass *klass)
 {
-  GtkCssImageClass *image_class = CTK_CSS_IMAGE_CLASS (klass);
+  CtkCssImageClass *image_class = CTK_CSS_IMAGE_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   image_class->draw = ctk_css_image_builtin_real_draw;
@@ -803,7 +803,7 @@ ctk_css_image_builtin_class_init (GtkCssImageBuiltinClass *klass)
 }
 
 static void
-ctk_css_image_builtin_init (GtkCssImageBuiltin *builtin)
+ctk_css_image_builtin_init (CtkCssImageBuiltin *builtin)
 {
   /* white background */
   builtin->bg_color.red = builtin->bg_color.green = builtin->bg_color.blue = builtin->bg_color.alpha = 1.0;
@@ -811,7 +811,7 @@ ctk_css_image_builtin_init (GtkCssImageBuiltin *builtin)
   builtin->fg_color.alpha = 1.0;
 }
 
-GtkCssImage *
+CtkCssImage *
 ctk_css_image_builtin_new (void)
 {
   if (the_one_true_image == NULL)
@@ -823,11 +823,11 @@ ctk_css_image_builtin_new (void)
 }
 
 void
-ctk_css_image_builtin_draw (GtkCssImage            *image,
+ctk_css_image_builtin_draw (CtkCssImage            *image,
                             cairo_t                *cr,
                             double                  width,
                             double                  height,
-                            GtkCssImageBuiltinType  image_type)
+                            CtkCssImageBuiltinType  image_type)
 {
   if (!CTK_IS_CSS_IMAGE_BUILTIN (image))
     {

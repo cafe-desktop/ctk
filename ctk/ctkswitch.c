@@ -26,15 +26,15 @@
 /**
  * SECTION:ctkswitch
  * @Short_Description: A “light switch” style toggle
- * @Title: GtkSwitch
- * @See_Also: #GtkToggleButton
+ * @Title: CtkSwitch
+ * @See_Also: #CtkToggleButton
  *
- * #GtkSwitch is a widget that has two states: on or off. The user can control
+ * #CtkSwitch is a widget that has two states: on or off. The user can control
  * which state should be active by clicking the empty area, or by dragging the
  * handle.
  *
- * GtkSwitch can also handle situations where the underlying state changes with
- * a delay. See #GtkSwitch::state-set for details.
+ * CtkSwitch can also handle situations where the underlying state changes with
+ * a delay. See #CtkSwitch::state-set for details.
  *
  * # CSS nodes
  *
@@ -43,7 +43,7 @@
  * ╰── slider
  * ]|
  *
- * GtkSwitch has two css nodes, the main node with the name switch and a subnode
+ * CtkSwitch has two css nodes, the main node with the name switch and a subnode
  * named slider. Neither of them is using any style classes.
  */
 
@@ -76,23 +76,23 @@
 #define DEFAULT_SLIDER_WIDTH    (36)
 #define DEFAULT_SLIDER_HEIGHT   (22)
 
-struct _GtkSwitchPrivate
+struct _CtkSwitchPrivate
 {
   GdkWindow *event_window;
-  GtkAction *action;
-  GtkActionHelper *action_helper;
+  CtkAction *action;
+  CtkActionHelper *action_helper;
 
-  GtkGesture *pan_gesture;
-  GtkGesture *multipress_gesture;
+  CtkGesture *pan_gesture;
+  CtkGesture *multipress_gesture;
 
-  GtkCssGadget *gadget;
-  GtkCssGadget *slider_gadget;
-  GtkCssGadget *on_gadget;
-  GtkCssGadget *off_gadget;
+  CtkCssGadget *gadget;
+  CtkCssGadget *slider_gadget;
+  CtkCssGadget *on_gadget;
+  CtkCssGadget *off_gadget;
 
   double handle_pos;
   guint tick_id;
-  GtkProgressTracker tracker;
+  CtkProgressTracker tracker;
 
   guint state                 : 1;
   guint is_active             : 1;
@@ -123,12 +123,12 @@ static guint signals[LAST_SIGNAL] = { 0 };
 
 static GParamSpec *switch_props[LAST_PROP] = { NULL, };
 
-static void ctk_switch_actionable_iface_init (GtkActionableInterface *iface);
-static void ctk_switch_activatable_interface_init (GtkActivatableIface *iface);
+static void ctk_switch_actionable_iface_init (CtkActionableInterface *iface);
+static void ctk_switch_activatable_interface_init (CtkActivatableIface *iface);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-G_DEFINE_TYPE_WITH_CODE (GtkSwitch, ctk_switch, CTK_TYPE_WIDGET,
-                         G_ADD_PRIVATE (GtkSwitch)
+G_DEFINE_TYPE_WITH_CODE (CtkSwitch, ctk_switch, CTK_TYPE_WIDGET,
+                         G_ADD_PRIVATE (CtkSwitch)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTIONABLE,
                                                 ctk_switch_actionable_iface_init)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTIVATABLE,
@@ -136,9 +136,9 @@ G_DEFINE_TYPE_WITH_CODE (GtkSwitch, ctk_switch, CTK_TYPE_WIDGET,
 G_GNUC_END_IGNORE_DEPRECATIONS;
 
 static void
-ctk_switch_end_toggle_animation (GtkSwitch *sw)
+ctk_switch_end_toggle_animation (CtkSwitch *sw)
 {
-  GtkSwitchPrivate *priv = sw->priv;
+  CtkSwitchPrivate *priv = sw->priv;
 
   if (priv->tick_id != 0)
     {
@@ -148,12 +148,12 @@ ctk_switch_end_toggle_animation (GtkSwitch *sw)
 }
 
 static gboolean
-ctk_switch_on_frame_clock_update (GtkWidget     *widget,
+ctk_switch_on_frame_clock_update (CtkWidget     *widget,
                                   GdkFrameClock *clock,
                                   gpointer       user_data)
 {
-  GtkSwitch *sw = CTK_SWITCH (widget);
-  GtkSwitchPrivate *priv = sw->priv;
+  CtkSwitch *sw = CTK_SWITCH (widget);
+  CtkSwitchPrivate *priv = sw->priv;
 
   ctk_progress_tracker_advance_frame (&priv->tracker,
                                       gdk_frame_clock_get_frame_time (clock));
@@ -178,9 +178,9 @@ ctk_switch_on_frame_clock_update (GtkWidget     *widget,
 #define ANIMATION_DURATION 100
 
 static void
-ctk_switch_begin_toggle_animation (GtkSwitch *sw)
+ctk_switch_begin_toggle_animation (CtkSwitch *sw)
 {
-  GtkSwitchPrivate *priv = sw->priv;
+  CtkSwitchPrivate *priv = sw->priv;
 
   if (ctk_settings_get_enable_animations (ctk_widget_get_settings (CTK_WIDGET (sw))))
     {
@@ -197,14 +197,14 @@ ctk_switch_begin_toggle_animation (GtkSwitch *sw)
 }
 
 static void
-ctk_switch_multipress_gesture_pressed (GtkGestureMultiPress *gesture,
+ctk_switch_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
                                        gint                  n_press,
                                        gdouble               x,
                                        gdouble               y,
-                                       GtkSwitch            *sw)
+                                       CtkSwitch            *sw)
 {
-  GtkSwitchPrivate *priv = sw->priv;
-  GtkAllocation allocation;
+  CtkSwitchPrivate *priv = sw->priv;
+  CtkAllocation allocation;
 
   ctk_widget_get_allocation (CTK_WIDGET (sw), &allocation);
   ctk_gesture_set_state (CTK_GESTURE (gesture), CTK_EVENT_SEQUENCE_CLAIMED);
@@ -219,13 +219,13 @@ ctk_switch_multipress_gesture_pressed (GtkGestureMultiPress *gesture,
 }
 
 static void
-ctk_switch_multipress_gesture_released (GtkGestureMultiPress *gesture,
+ctk_switch_multipress_gesture_released (CtkGestureMultiPress *gesture,
                                         gint                  n_press,
                                         gdouble               x,
                                         gdouble               y,
-                                        GtkSwitch            *sw)
+                                        CtkSwitch            *sw)
 {
-  GtkSwitchPrivate *priv = sw->priv;
+  CtkSwitchPrivate *priv = sw->priv;
   GdkEventSequence *sequence;
 
   sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
@@ -238,13 +238,13 @@ ctk_switch_multipress_gesture_released (GtkGestureMultiPress *gesture,
 }
 
 static void
-ctk_switch_pan_gesture_pan (GtkGesturePan   *gesture,
-                            GtkPanDirection  direction,
+ctk_switch_pan_gesture_pan (CtkGesturePan   *gesture,
+                            CtkPanDirection  direction,
                             gdouble          offset,
-                            GtkSwitch       *sw)
+                            CtkSwitch       *sw)
 {
-  GtkWidget *widget = CTK_WIDGET (sw);
-  GtkSwitchPrivate *priv = sw->priv;
+  CtkWidget *widget = CTK_WIDGET (sw);
+  CtkSwitchPrivate *priv = sw->priv;
   gint width;
 
   if (direction == CTK_PAN_DIRECTION_LEFT)
@@ -266,14 +266,14 @@ ctk_switch_pan_gesture_pan (GtkGesturePan   *gesture,
 }
 
 static void
-ctk_switch_pan_gesture_drag_end (GtkGestureDrag *gesture,
+ctk_switch_pan_gesture_drag_end (CtkGestureDrag *gesture,
                                  gdouble         x,
                                  gdouble         y,
-                                 GtkSwitch      *sw)
+                                 CtkSwitch      *sw)
 {
-  GtkSwitchPrivate *priv = sw->priv;
+  CtkSwitchPrivate *priv = sw->priv;
   GdkEventSequence *sequence;
-  GtkAllocation allocation;
+  CtkAllocation allocation;
   gboolean active;
 
   sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
@@ -298,10 +298,10 @@ ctk_switch_pan_gesture_drag_end (GtkGestureDrag *gesture,
 }
 
 static gboolean
-ctk_switch_enter (GtkWidget        *widget,
+ctk_switch_enter (CtkWidget        *widget,
                   GdkEventCrossing *event)
 {
-  GtkSwitchPrivate *priv = CTK_SWITCH (widget)->priv;
+  CtkSwitchPrivate *priv = CTK_SWITCH (widget)->priv;
 
   if (event->window == priv->event_window)
     {
@@ -313,10 +313,10 @@ ctk_switch_enter (GtkWidget        *widget,
 }
 
 static gboolean
-ctk_switch_leave (GtkWidget        *widget,
+ctk_switch_leave (CtkWidget        *widget,
                   GdkEventCrossing *event)
 {
-  GtkSwitchPrivate *priv = CTK_SWITCH (widget)->priv;
+  CtkSwitchPrivate *priv = CTK_SWITCH (widget)->priv;
 
   if (event->window == priv->event_window)
     {
@@ -328,14 +328,14 @@ ctk_switch_leave (GtkWidget        *widget,
 }
 
 static void
-ctk_switch_activate (GtkSwitch *sw)
+ctk_switch_activate (CtkSwitch *sw)
 {
   ctk_switch_begin_toggle_animation (sw);
 }
 
 static void
-ctk_switch_get_slider_size (GtkCssGadget   *gadget,
-                            GtkOrientation  orientation,
+ctk_switch_get_slider_size (CtkCssGadget   *gadget,
+                            CtkOrientation  orientation,
                             gint            for_size,
                             gint           *minimum,
                             gint           *natural,
@@ -343,7 +343,7 @@ ctk_switch_get_slider_size (GtkCssGadget   *gadget,
                             gint           *natural_baseline,
                             gpointer        unused)
 {
-  GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
+  CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   gdouble min_size;
 
   if (orientation == CTK_ORIENTATION_HORIZONTAL)
@@ -369,8 +369,8 @@ ctk_switch_get_slider_size (GtkCssGadget   *gadget,
 }
 
 static void
-ctk_switch_get_content_size (GtkCssGadget   *gadget,
-                             GtkOrientation  orientation,
+ctk_switch_get_content_size (CtkCssGadget   *gadget,
+                             CtkOrientation  orientation,
                              gint            for_size,
                              gint           *minimum,
                              gint           *natural,
@@ -378,9 +378,9 @@ ctk_switch_get_content_size (GtkCssGadget   *gadget,
                              gint           *natural_baseline,
                              gpointer        unused)
 {
-  GtkWidget *widget;
-  GtkSwitch *self;
-  GtkSwitchPrivate *priv;
+  CtkWidget *widget;
+  CtkSwitch *self;
+  CtkSwitchPrivate *priv;
   gint slider_minimum, slider_natural;
   gint on_minimum, on_natural;
   gint off_minimum, off_natural;
@@ -419,7 +419,7 @@ ctk_switch_get_content_size (GtkCssGadget   *gadget,
 }
 
 static void
-ctk_switch_get_preferred_width (GtkWidget *widget,
+ctk_switch_get_preferred_width (CtkWidget *widget,
                                 gint      *minimum,
                                 gint      *natural)
 {
@@ -431,7 +431,7 @@ ctk_switch_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-ctk_switch_get_preferred_height (GtkWidget *widget,
+ctk_switch_get_preferred_height (CtkWidget *widget,
                                  gint      *minimum,
                                  gint      *natural)
 {
@@ -443,16 +443,16 @@ ctk_switch_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-ctk_switch_allocate_contents (GtkCssGadget        *gadget,
-                              const GtkAllocation *allocation,
+ctk_switch_allocate_contents (CtkCssGadget        *gadget,
+                              const CtkAllocation *allocation,
                               int                  baseline,
-                              GtkAllocation       *out_clip,
+                              CtkAllocation       *out_clip,
                               gpointer             unused)
 {
-  GtkSwitch *self = CTK_SWITCH (ctk_css_gadget_get_owner (gadget));
-  GtkSwitchPrivate *priv = self->priv;
-  GtkAllocation child_alloc;
-  GtkAllocation on_clip, off_clip;
+  CtkSwitch *self = CTK_SWITCH (ctk_css_gadget_get_owner (gadget));
+  CtkSwitchPrivate *priv = self->priv;
+  CtkAllocation child_alloc;
+  CtkAllocation on_clip, off_clip;
 
   child_alloc.x = allocation->x + round (priv->handle_pos * (allocation->width - allocation->width / 2));
   child_alloc.y = allocation->y;
@@ -483,7 +483,7 @@ ctk_switch_allocate_contents (GtkCssGadget        *gadget,
 
   if (ctk_widget_get_realized (CTK_WIDGET (self)))
     {
-      GtkAllocation border_allocation;
+      CtkAllocation border_allocation;
       ctk_css_gadget_get_border_allocation (gadget, &border_allocation, NULL);
       gdk_window_move_resize (priv->event_window,
                               border_allocation.x,
@@ -494,11 +494,11 @@ ctk_switch_allocate_contents (GtkCssGadget        *gadget,
 }
 
 static void
-ctk_switch_size_allocate (GtkWidget     *widget,
-                          GtkAllocation *allocation)
+ctk_switch_size_allocate (CtkWidget     *widget,
+                          CtkAllocation *allocation)
 {
-  GtkSwitchPrivate *priv = CTK_SWITCH (widget)->priv;
-  GtkAllocation clip;
+  CtkSwitchPrivate *priv = CTK_SWITCH (widget)->priv;
+  CtkAllocation clip;
 
   ctk_widget_set_allocation (widget, allocation);
   ctk_css_gadget_allocate (priv->gadget,
@@ -510,13 +510,13 @@ ctk_switch_size_allocate (GtkWidget     *widget,
 }
 
 static void
-ctk_switch_realize (GtkWidget *widget)
+ctk_switch_realize (CtkWidget *widget)
 {
-  GtkSwitchPrivate *priv = CTK_SWITCH (widget)->priv;
+  CtkSwitchPrivate *priv = CTK_SWITCH (widget)->priv;
   GdkWindow *parent_window;
   GdkWindowAttr attributes;
   gint attributes_mask;
-  GtkAllocation allocation;
+  CtkAllocation allocation;
 
   ctk_widget_set_realized (widget, TRUE);
   parent_window = ctk_widget_get_parent_window (widget);
@@ -547,9 +547,9 @@ ctk_switch_realize (GtkWidget *widget)
 }
 
 static void
-ctk_switch_unrealize (GtkWidget *widget)
+ctk_switch_unrealize (CtkWidget *widget)
 {
-  GtkSwitchPrivate *priv = CTK_SWITCH (widget)->priv;
+  CtkSwitchPrivate *priv = CTK_SWITCH (widget)->priv;
 
   if (priv->event_window != NULL)
     {
@@ -562,9 +562,9 @@ ctk_switch_unrealize (GtkWidget *widget)
 }
 
 static void
-ctk_switch_map (GtkWidget *widget)
+ctk_switch_map (CtkWidget *widget)
 {
-  GtkSwitchPrivate *priv = CTK_SWITCH (widget)->priv;
+  CtkSwitchPrivate *priv = CTK_SWITCH (widget)->priv;
 
   CTK_WIDGET_CLASS (ctk_switch_parent_class)->map (widget);
 
@@ -573,9 +573,9 @@ ctk_switch_map (GtkWidget *widget)
 }
 
 static void
-ctk_switch_unmap (GtkWidget *widget)
+ctk_switch_unmap (CtkWidget *widget)
 {
-  GtkSwitchPrivate *priv = CTK_SWITCH (widget)->priv;
+  CtkSwitchPrivate *priv = CTK_SWITCH (widget)->priv;
 
   if (priv->event_window)
     gdk_window_hide (priv->event_window);
@@ -584,7 +584,7 @@ ctk_switch_unmap (GtkWidget *widget)
 }
 
 static gboolean
-ctk_switch_render_slider (GtkCssGadget *gadget,
+ctk_switch_render_slider (CtkCssGadget *gadget,
                           cairo_t      *cr,
                           int           x,
                           int           y,
@@ -596,7 +596,7 @@ ctk_switch_render_slider (GtkCssGadget *gadget,
 }
 
 static gboolean
-ctk_switch_render_trough (GtkCssGadget *gadget,
+ctk_switch_render_trough (CtkCssGadget *gadget,
                           cairo_t      *cr,
                           int           x,
                           int           y,
@@ -604,8 +604,8 @@ ctk_switch_render_trough (GtkCssGadget *gadget,
                           int           height,
                           gpointer      data)
 {
-  GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkSwitchPrivate *priv = CTK_SWITCH (widget)->priv;
+  CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
+  CtkSwitchPrivate *priv = CTK_SWITCH (widget)->priv;
 
   ctk_css_gadget_draw (priv->on_gadget, cr);
   ctk_css_gadget_draw (priv->off_gadget, cr);
@@ -615,7 +615,7 @@ ctk_switch_render_trough (GtkCssGadget *gadget,
 }
 
 static gboolean
-ctk_switch_draw (GtkWidget *widget,
+ctk_switch_draw (CtkWidget *widget,
                  cairo_t   *cr)
 {
   ctk_css_gadget_draw (CTK_SWITCH (widget)->priv->gadget, cr);
@@ -624,11 +624,11 @@ ctk_switch_draw (GtkWidget *widget,
 }
 
 static void
-ctk_switch_state_flags_changed (GtkWidget     *widget,
-                                GtkStateFlags  previous_state_flags)
+ctk_switch_state_flags_changed (CtkWidget     *widget,
+                                CtkStateFlags  previous_state_flags)
 {
-  GtkSwitchPrivate *priv = CTK_SWITCH (widget)->priv;
-  GtkStateFlags state = ctk_widget_get_state_flags (widget);
+  CtkSwitchPrivate *priv = CTK_SWITCH (widget)->priv;
+  CtkStateFlags state = ctk_widget_get_state_flags (widget);
 
   ctk_css_gadget_set_state (priv->gadget, state);
   ctk_css_gadget_set_state (priv->slider_gadget, state);
@@ -639,10 +639,10 @@ ctk_switch_state_flags_changed (GtkWidget     *widget,
 }
 
 static void
-ctk_switch_set_related_action (GtkSwitch *sw,
-                               GtkAction *action)
+ctk_switch_set_related_action (CtkSwitch *sw,
+                               CtkAction *action)
 {
-  GtkSwitchPrivate *priv = sw->priv;
+  CtkSwitchPrivate *priv = sw->priv;
 
   if (priv->action == action)
     return;
@@ -655,10 +655,10 @@ ctk_switch_set_related_action (GtkSwitch *sw,
 }
 
 static void
-ctk_switch_set_use_action_appearance (GtkSwitch *sw,
+ctk_switch_set_use_action_appearance (CtkSwitch *sw,
                                       gboolean   use_appearance)
 {
-  GtkSwitchPrivate *priv = sw->priv;
+  CtkSwitchPrivate *priv = sw->priv;
 
   if (priv->use_action_appearance != use_appearance)
     {
@@ -671,10 +671,10 @@ ctk_switch_set_use_action_appearance (GtkSwitch *sw,
 }
 
 static void
-ctk_switch_set_action_name (GtkActionable *actionable,
+ctk_switch_set_action_name (CtkActionable *actionable,
                             const gchar   *action_name)
 {
-  GtkSwitch *sw = CTK_SWITCH (actionable);
+  CtkSwitch *sw = CTK_SWITCH (actionable);
 
   if (!sw->priv->action_helper)
     sw->priv->action_helper = ctk_action_helper_new (actionable);
@@ -683,10 +683,10 @@ ctk_switch_set_action_name (GtkActionable *actionable,
 }
 
 static void
-ctk_switch_set_action_target_value (GtkActionable *actionable,
+ctk_switch_set_action_target_value (CtkActionable *actionable,
                                     GVariant      *action_target)
 {
-  GtkSwitch *sw = CTK_SWITCH (actionable);
+  CtkSwitch *sw = CTK_SWITCH (actionable);
 
   if (!sw->priv->action_helper)
     sw->priv->action_helper = ctk_action_helper_new (actionable);
@@ -695,23 +695,23 @@ ctk_switch_set_action_target_value (GtkActionable *actionable,
 }
 
 static const gchar *
-ctk_switch_get_action_name (GtkActionable *actionable)
+ctk_switch_get_action_name (CtkActionable *actionable)
 {
-  GtkSwitch *sw = CTK_SWITCH (actionable);
+  CtkSwitch *sw = CTK_SWITCH (actionable);
 
   return ctk_action_helper_get_action_name (sw->priv->action_helper);
 }
 
 static GVariant *
-ctk_switch_get_action_target_value (GtkActionable *actionable)
+ctk_switch_get_action_target_value (CtkActionable *actionable)
 {
-  GtkSwitch *sw = CTK_SWITCH (actionable);
+  CtkSwitch *sw = CTK_SWITCH (actionable);
 
   return ctk_action_helper_get_action_target_value (sw->priv->action_helper);
 }
 
 static void
-ctk_switch_actionable_iface_init (GtkActionableInterface *iface)
+ctk_switch_actionable_iface_init (CtkActionableInterface *iface)
 {
   iface->get_action_name = ctk_switch_get_action_name;
   iface->set_action_name = ctk_switch_set_action_name;
@@ -725,7 +725,7 @@ ctk_switch_set_property (GObject      *gobject,
                          const GValue *value,
                          GParamSpec   *pspec)
 {
-  GtkSwitch *sw = CTK_SWITCH (gobject);
+  CtkSwitch *sw = CTK_SWITCH (gobject);
 
   switch (prop_id)
     {
@@ -764,7 +764,7 @@ ctk_switch_get_property (GObject    *gobject,
                          GValue     *value,
                          GParamSpec *pspec)
 {
-  GtkSwitchPrivate *priv = CTK_SWITCH (gobject)->priv;
+  CtkSwitchPrivate *priv = CTK_SWITCH (gobject)->priv;
 
   switch (prop_id)
     {
@@ -800,7 +800,7 @@ ctk_switch_get_property (GObject    *gobject,
 static void
 ctk_switch_dispose (GObject *object)
 {
-  GtkSwitchPrivate *priv = CTK_SWITCH (object)->priv;
+  CtkSwitchPrivate *priv = CTK_SWITCH (object)->priv;
 
   g_clear_object (&priv->action_helper);
 
@@ -832,7 +832,7 @@ ctk_switch_finalize (GObject *object)
 }
 
 static gboolean
-state_set (GtkSwitch *sw, gboolean state)
+state_set (CtkSwitch *sw, gboolean state)
 {
   if (sw->priv->action_helper)
     ctk_action_helper_activate (sw->priv->action_helper);
@@ -848,9 +848,9 @@ state_set (GtkSwitch *sw, gboolean state)
 }
 
 static void
-ctk_switch_class_init (GtkSwitchClass *klass)
+ctk_switch_class_init (CtkSwitchClass *klass)
 {
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
   gpointer activatable_iface;
 
@@ -869,9 +869,9 @@ ctk_switch_class_init (GtkSwitchClass *klass)
                                                              "use-action-appearance"));
 
   /**
-   * GtkSwitch:active:
+   * CtkSwitch:active:
    *
-   * Whether the #GtkSwitch widget is in its on or off state.
+   * Whether the #CtkSwitch widget is in its on or off state.
    */
   switch_props[PROP_ACTIVE] =
     g_param_spec_boolean ("active",
@@ -881,10 +881,10 @@ ctk_switch_class_init (GtkSwitchClass *klass)
                           CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkSwitch:state:
+   * CtkSwitch:state:
    *
    * The backend state that is controlled by the switch. 
-   * See #GtkSwitch::state-set for details.
+   * See #CtkSwitch::state-set for details.
    *
    * Since: 3.14
    */
@@ -918,9 +918,9 @@ ctk_switch_class_init (GtkSwitchClass *klass)
   klass->state_set = state_set;
 
   /**
-   * GtkSwitch:slider-width:
+   * CtkSwitch:slider-width:
    *
-   * The minimum width of the #GtkSwitch handle, in pixels.
+   * The minimum width of the #CtkSwitch handle, in pixels.
    *
    * Deprecated: 3.20: Use the CSS min-width property instead.
    */
@@ -933,9 +933,9 @@ ctk_switch_class_init (GtkSwitchClass *klass)
                                                              CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
-   * GtkSwitch:slider-height:
+   * CtkSwitch:slider-height:
    *
-   * The minimum height of the #GtkSwitch handle, in pixels.
+   * The minimum height of the #CtkSwitch handle, in pixels.
    *
    * Since: 3.18
    *
@@ -950,10 +950,10 @@ ctk_switch_class_init (GtkSwitchClass *klass)
                                                              CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
-   * GtkSwitch::activate:
+   * CtkSwitch::activate:
    * @widget: the object which received the signal.
    *
-   * The ::activate signal on GtkSwitch is an action signal and
+   * The ::activate signal on CtkSwitch is an action signal and
    * emitting it causes the switch to animate.
    * Applications should never connect to this signal, but use the
    * notify::active signal.
@@ -962,20 +962,20 @@ ctk_switch_class_init (GtkSwitchClass *klass)
     g_signal_new (I_("activate"),
                   G_OBJECT_CLASS_TYPE (gobject_class),
                   G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
-                  G_STRUCT_OFFSET (GtkSwitchClass, activate),
+                  G_STRUCT_OFFSET (CtkSwitchClass, activate),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 0);
   widget_class->activate_signal = signals[ACTIVATE];
 
   /**
-   * GtkSwitch::state-set:
+   * CtkSwitch::state-set:
    * @widget: the object on which the signal was emitted
    * @state: the new state of the switch
    *
-   * The ::state-set signal on GtkSwitch is emitted to change the underlying
+   * The ::state-set signal on CtkSwitch is emitted to change the underlying
    * state. It is emitted when the user changes the switch position. The
-   * default handler keeps the state in sync with the #GtkSwitch:active
+   * default handler keeps the state in sync with the #CtkSwitch:active
    * property.
    *
    * To implement delayed state change, applications can connect to this signal,
@@ -984,7 +984,7 @@ ctk_switch_class_init (GtkSwitchClass *klass)
    * return %TRUE to prevent the default handler from running.
    *
    * Visually, the underlying state is represented by the trough color of
-   * the switch, while the #GtkSwitch:active property is represented by the
+   * the switch, while the #CtkSwitch:active property is represented by the
    * position of the switch.
    *
    * Returns: %TRUE to stop the signal emission
@@ -995,7 +995,7 @@ ctk_switch_class_init (GtkSwitchClass *klass)
     g_signal_new (I_("state-set"),
                   G_OBJECT_CLASS_TYPE (gobject_class),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkSwitchClass, state_set),
+                  G_STRUCT_OFFSET (CtkSwitchClass, state_set),
                   _ctk_boolean_handled_accumulator, NULL,
                   _ctk_marshal_BOOLEAN__BOOLEAN,
                   G_TYPE_BOOLEAN, 1,
@@ -1014,11 +1014,11 @@ ctk_switch_class_init (GtkSwitchClass *klass)
 }
 
 static void
-ctk_switch_init (GtkSwitch *self)
+ctk_switch_init (CtkSwitch *self)
 {
-  GtkSwitchPrivate *priv;
-  GtkGesture *gesture;
-  GtkCssNode *widget_node;
+  CtkSwitchPrivate *priv;
+  CtkGesture *gesture;
+  CtkCssNode *widget_node;
 
   priv = self->priv = ctk_switch_get_instance_private (self);
 
@@ -1082,13 +1082,13 @@ ctk_switch_init (GtkSwitch *self)
 /**
  * ctk_switch_new:
  *
- * Creates a new #GtkSwitch widget.
+ * Creates a new #CtkSwitch widget.
  *
- * Returns: the newly created #GtkSwitch instance
+ * Returns: the newly created #CtkSwitch instance
  *
  * Since: 3.0
  */
-GtkWidget *
+CtkWidget *
 ctk_switch_new (void)
 {
   return g_object_new (CTK_TYPE_SWITCH, NULL);
@@ -1096,7 +1096,7 @@ ctk_switch_new (void)
 
 /**
  * ctk_switch_set_active:
- * @sw: a #GtkSwitch
+ * @sw: a #CtkSwitch
  * @is_active: %TRUE if @sw should be active, and %FALSE otherwise
  *
  * Changes the state of @sw to the desired one.
@@ -1104,10 +1104,10 @@ ctk_switch_new (void)
  * Since: 3.0
  */
 void
-ctk_switch_set_active (GtkSwitch *sw,
+ctk_switch_set_active (CtkSwitch *sw,
                        gboolean   is_active)
 {
-  GtkSwitchPrivate *priv;
+  CtkSwitchPrivate *priv;
 
   g_return_if_fail (CTK_IS_SWITCH (sw));
 
@@ -1142,16 +1142,16 @@ ctk_switch_set_active (GtkSwitch *sw,
 
 /**
  * ctk_switch_get_active:
- * @sw: a #GtkSwitch
+ * @sw: a #CtkSwitch
  *
- * Gets whether the #GtkSwitch is in its “on” or “off” state.
+ * Gets whether the #CtkSwitch is in its “on” or “off” state.
  *
- * Returns: %TRUE if the #GtkSwitch is active, and %FALSE otherwise
+ * Returns: %TRUE if the #CtkSwitch is active, and %FALSE otherwise
  *
  * Since: 3.0
  */
 gboolean
-ctk_switch_get_active (GtkSwitch *sw)
+ctk_switch_get_active (CtkSwitch *sw)
 {
   g_return_val_if_fail (CTK_IS_SWITCH (sw), FALSE);
 
@@ -1160,21 +1160,21 @@ ctk_switch_get_active (GtkSwitch *sw)
 
 /**
  * ctk_switch_set_state:
- * @sw: a #GtkSwitch
+ * @sw: a #CtkSwitch
  * @state: the new state
  *
- * Sets the underlying state of the #GtkSwitch.
+ * Sets the underlying state of the #CtkSwitch.
  *
- * Normally, this is the same as #GtkSwitch:active, unless the switch
+ * Normally, this is the same as #CtkSwitch:active, unless the switch
  * is set up for delayed state changes. This function is typically
- * called from a #GtkSwitch::state-set signal handler.
+ * called from a #CtkSwitch::state-set signal handler.
  *
- * See #GtkSwitch::state-set for details.
+ * See #CtkSwitch::state-set for details.
  *
  * Since: 3.14
  */
 void
-ctk_switch_set_state (GtkSwitch *sw,
+ctk_switch_set_state (CtkSwitch *sw,
                       gboolean   state)
 {
   g_return_if_fail (CTK_IS_SWITCH (sw));
@@ -1202,16 +1202,16 @@ ctk_switch_set_state (GtkSwitch *sw,
 
 /**
  * ctk_switch_get_state:
- * @sw: a #GtkSwitch
+ * @sw: a #CtkSwitch
  *
- * Gets the underlying state of the #GtkSwitch.
+ * Gets the underlying state of the #CtkSwitch.
  *
  * Returns: the underlying state
  *
  * Since: 3.14
  */
 gboolean
-ctk_switch_get_state (GtkSwitch *sw)
+ctk_switch_get_state (CtkSwitch *sw)
 {
   g_return_val_if_fail (CTK_IS_SWITCH (sw), FALSE);
 
@@ -1219,8 +1219,8 @@ ctk_switch_get_state (GtkSwitch *sw)
 }
 
 static void
-ctk_switch_update (GtkActivatable *activatable,
-                   GtkAction      *action,
+ctk_switch_update (CtkActivatable *activatable,
+                   CtkAction      *action,
                    const gchar    *property_name)
 {
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
@@ -1247,8 +1247,8 @@ ctk_switch_update (GtkActivatable *activatable,
 }
 
 static void
-ctk_switch_sync_action_properties (GtkActivatable *activatable,
-                                   GtkAction      *action)
+ctk_switch_sync_action_properties (CtkActivatable *activatable,
+                                   CtkAction      *action)
 {
   if (!action)
     return;
@@ -1270,7 +1270,7 @@ ctk_switch_sync_action_properties (GtkActivatable *activatable,
 }
 
 static void
-ctk_switch_activatable_interface_init (GtkActivatableIface *iface)
+ctk_switch_activatable_interface_init (CtkActivatableIface *iface)
 {
   iface->update = ctk_switch_update;
   iface->sync_action_properties = ctk_switch_sync_action_properties;

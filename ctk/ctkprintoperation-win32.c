@@ -67,11 +67,11 @@ typedef struct {
   guint timeout_id;
 
   cairo_surface_t *surface;
-  GtkWidget *embed_widget;
-} GtkPrintOperationWin32;
+  CtkWidget *embed_widget;
+} CtkPrintOperationWin32;
 
-static void win32_poll_status (GtkPrintOperation *op);
-static GtkPageSetup *create_page_setup (GtkPrintOperation *op);
+static void win32_poll_status (CtkPrintOperation *op);
+static CtkPageSetup *create_page_setup (CtkPrintOperation *op);
 
 static const GUID myIID_IPrintDialogCallback  = {0x5852a2c3,0x6530,0x11d1,{0xb6,0xa3,0x0,0x0,0xf8,0x75,0x7b,0xf9}};
 
@@ -109,7 +109,7 @@ run_mainloop_hook (HWND hdlg, UINT uiMsg, WPARAM wParam, LPARAM lParam)
   return 0;
 }
 
-static GtkPageOrientation
+static CtkPageOrientation
 orientation_from_win32 (short orientation)
 {
   if (orientation == DMORIENT_LANDSCAPE)
@@ -118,7 +118,7 @@ orientation_from_win32 (short orientation)
 }
 
 static short
-orientation_to_win32 (GtkPageOrientation orientation)
+orientation_to_win32 (CtkPageOrientation orientation)
 {
   if (orientation == CTK_PAGE_ORIENTATION_LANDSCAPE ||
       orientation == CTK_PAGE_ORIENTATION_REVERSE_LANDSCAPE)
@@ -126,7 +126,7 @@ orientation_to_win32 (GtkPageOrientation orientation)
   return DMORIENT_PORTRAIT;
 }
 
-static GtkPaperSize *
+static CtkPaperSize *
 paper_size_from_win32 (short size)
 {
   const char *name;
@@ -312,7 +312,7 @@ paper_size_from_win32 (short size)
 }
 
 static short
-paper_size_to_win32 (GtkPaperSize *paper_size)
+paper_size_to_win32 (CtkPaperSize *paper_size)
 {
   const char *format;
 
@@ -420,8 +420,8 @@ paper_size_to_win32 (GtkPaperSize *paper_size)
 }
 
 static gboolean
-page_setup_is_equal (GtkPageSetup *a,
-                     GtkPageSetup *b)
+page_setup_is_equal (CtkPageSetup *a,
+                     CtkPageSetup *b)
 {
   return
     ctk_paper_size_is_equal (ctk_page_setup_get_paper_size (a),
@@ -453,10 +453,10 @@ get_default_printer (void)
 }
 
 static void
-set_hard_margins (GtkPrintOperation *op)
+set_hard_margins (CtkPrintOperation *op)
 {
   double top, bottom, left, right;
-  GtkPrintOperationWin32 *op_win32 = op->priv->platform_data;
+  CtkPrintOperationWin32 *op_win32 = op->priv->platform_data;
 
   top = GetDeviceCaps (op_win32->hdc, PHYSICALOFFSETY);
   bottom = GetDeviceCaps (op_win32->hdc, PHYSICALHEIGHT)
@@ -469,13 +469,13 @@ set_hard_margins (GtkPrintOperation *op)
 }
 
 void
-win32_start_page (GtkPrintOperation *op,
-		  GtkPrintContext *print_context,
-		  GtkPageSetup *page_setup)
+win32_start_page (CtkPrintOperation *op,
+		  CtkPrintContext *print_context,
+		  CtkPageSetup *page_setup)
 {
-  GtkPrintOperationWin32 *op_win32 = op->priv->platform_data;
+  CtkPrintOperationWin32 *op_win32 = op->priv->platform_data;
   LPDEVMODEW devmode;
-  GtkPaperSize *paper_size;
+  CtkPaperSize *paper_size;
   double x_off, y_off;
 
   devmode = GlobalLock (op_win32->devmode);
@@ -511,10 +511,10 @@ win32_start_page (GtkPrintOperation *op,
 }
 
 static void
-win32_end_page (GtkPrintOperation *op,
-		GtkPrintContext *print_context)
+win32_end_page (CtkPrintOperation *op,
+		CtkPrintContext *print_context)
 {
-  GtkPrintOperationWin32 *op_win32 = op->priv->platform_data;
+  CtkPrintOperationWin32 *op_win32 = op->priv->platform_data;
 
   cairo_surface_show_page (op_win32->surface);
 
@@ -522,9 +522,9 @@ win32_end_page (GtkPrintOperation *op,
 }
 
 static gboolean
-win32_poll_status_timeout (GtkPrintOperation *op)
+win32_poll_status_timeout (CtkPrintOperation *op)
 {
-  GtkPrintOperationWin32 *op_win32 = op->priv->platform_data;
+  CtkPrintOperationWin32 *op_win32 = op->priv->platform_data;
   
   op_win32->timeout_id = 0;
   /* We need to ref this, as setting the status to finished
@@ -544,11 +544,11 @@ win32_poll_status_timeout (GtkPrintOperation *op)
 
 
 static void
-win32_end_run (GtkPrintOperation *op,
+win32_end_run (CtkPrintOperation *op,
 	       gboolean           wait,
 	       gboolean           cancelled)
 {
-  GtkPrintOperationWin32 *op_win32 = op->priv->platform_data;
+  CtkPrintOperationWin32 *op_win32 = op->priv->platform_data;
   LPDEVNAMES devnames;
   HANDLE printerHandle = 0;
 
@@ -588,13 +588,13 @@ win32_end_run (GtkPrintOperation *op,
 }
 
 static void
-win32_poll_status (GtkPrintOperation *op)
+win32_poll_status (CtkPrintOperation *op)
 {
-  GtkPrintOperationWin32 *op_win32 = op->priv->platform_data;
+  CtkPrintOperationWin32 *op_win32 = op->priv->platform_data;
   guchar *data;
   DWORD needed;
   JOB_INFO_1W *job_info;
-  GtkPrintStatus status;
+  CtkPrintStatus status;
   char *status_str;
   BOOL ret;
 
@@ -662,7 +662,7 @@ win32_poll_status (GtkPrintOperation *op)
 }
 
 static void
-op_win32_free (GtkPrintOperationWin32 *op_win32)
+op_win32_free (CtkPrintOperationWin32 *op_win32)
 {
   if (op_win32->printerHandle)
     ClosePrinter (op_win32->printerHandle);
@@ -672,23 +672,23 @@ op_win32_free (GtkPrintOperationWin32 *op_win32)
 }
 
 static HWND
-get_parent_hwnd (GtkWidget *widget)
+get_parent_hwnd (CtkWidget *widget)
 {
   ctk_widget_realize (widget);
   return gdk_win32_window_get_handle (ctk_widget_get_window (widget));
 }
 
 static void
-devnames_to_settings (GtkPrintSettings *settings,
+devnames_to_settings (CtkPrintSettings *settings,
 		      HANDLE hDevNames)
 {
-  GtkPrintWin32Devnames *devnames = ctk_print_win32_devnames_from_win32 (hDevNames);
+  CtkPrintWin32Devnames *devnames = ctk_print_win32_devnames_from_win32 (hDevNames);
   ctk_print_settings_set_printer (settings, devnames->device);
   ctk_print_win32_devnames_free (devnames);
 }
 
 static void
-devmode_to_settings (GtkPrintSettings *settings,
+devmode_to_settings (CtkPrintSettings *settings,
 		     HANDLE hDevMode)
 {
   LPDEVMODEW devmode;
@@ -720,7 +720,7 @@ devmode_to_settings (GtkPrintSettings *settings,
   if (devmode->dmFields & DM_PAPERSIZE &&
       devmode->dmPaperSize != 0)
     {
-      GtkPaperSize *paper_size = paper_size_from_win32 (devmode->dmPaperSize);
+      CtkPaperSize *paper_size = paper_size_from_win32 (devmode->dmPaperSize);
       if (paper_size)
 	{
 	  ctk_print_settings_set_paper_size (settings, paper_size);
@@ -733,7 +733,7 @@ devmode_to_settings (GtkPrintSettings *settings,
 	   ((devmode->dmFields & DM_PAPERWIDTH) &&
 	    (devmode->dmFields & DM_PAPERLENGTH)))
     {
-      GtkPaperSize *paper_size;
+      CtkPaperSize *paper_size;
       char *form_name = NULL;
       if (devmode->dmFields & DM_FORMNAME)
 	form_name = g_utf16_to_utf8 (devmode->dmFormName, 
@@ -810,7 +810,7 @@ devmode_to_settings (GtkPrintSettings *settings,
   
   if (devmode->dmFields & DM_PRINTQUALITY)
     {
-      GtkPrintQuality quality;
+      CtkPrintQuality quality;
       switch (devmode->dmPrintQuality)
 	{
 	case DMRES_LOW:
@@ -836,7 +836,7 @@ devmode_to_settings (GtkPrintSettings *settings,
   
   if (devmode->dmFields & DM_DUPLEX)
     {
-      GtkPrintDuplex duplex;
+      CtkPrintDuplex duplex;
       switch (devmode->dmDuplex)
 	{
 	default:
@@ -911,13 +911,13 @@ devmode_to_settings (GtkPrintSettings *settings,
 }
 
 static void
-dialog_to_print_settings (GtkPrintOperation *op,
+dialog_to_print_settings (CtkPrintOperation *op,
 			  LPPRINTDLGEXW printdlgex)
 {
   guint i;
-  GtkPrintSettings *settings;
-  GtkPageSetup *default_page_setup;
-  GtkPageSetup *page_setup;
+  CtkPrintSettings *settings;
+  CtkPageSetup *default_page_setup;
+  CtkPageSetup *page_setup;
 
   settings = ctk_print_settings_new ();
 
@@ -932,8 +932,8 @@ dialog_to_print_settings (GtkPrintOperation *op,
 
   if (printdlgex->nPageRanges > 0)
     {
-      GtkPageRange *ranges;
-      ranges = g_new (GtkPageRange, printdlgex->nPageRanges);
+      CtkPageRange *ranges;
+      ranges = g_new (CtkPageRange, printdlgex->nPageRanges);
 
       for (i = 0; i < printdlgex->nPageRanges; i++)
 	{
@@ -966,14 +966,14 @@ dialog_to_print_settings (GtkPrintOperation *op,
 }
 
 static HANDLE
-devmode_from_settings (GtkPrintSettings *settings,
-		       GtkPageSetup *page_setup,
+devmode_from_settings (CtkPrintSettings *settings,
+		       CtkPageSetup *page_setup,
 		       HANDLE hDevModeParam)
 {
   HANDLE hDevMode = hDevModeParam;
   LPDEVMODEW devmode;
   guchar *extras;
-  GtkPaperSize *paper_size;
+  CtkPaperSize *paper_size;
   const char *extras_base64;
   gsize extras_len;
   const char *val;
@@ -1030,7 +1030,7 @@ devmode_from_settings (GtkPrintSettings *settings,
   if (page_setup ||
       ctk_print_settings_has_key (settings, CTK_PRINT_SETTINGS_ORIENTATION))
     {
-      GtkPageOrientation orientation = ctk_print_settings_get_orientation (settings);
+      CtkPageOrientation orientation = ctk_print_settings_get_orientation (settings);
       if (page_setup)
 	orientation = ctk_page_setup_get_orientation (page_setup);
       devmode->dmFields |= DM_ORIENTATION;
@@ -1234,10 +1234,10 @@ devmode_from_settings (GtkPrintSettings *settings,
 }
 
 static void
-dialog_from_print_settings (GtkPrintOperation *op,
+dialog_from_print_settings (CtkPrintOperation *op,
 			    LPPRINTDLGEXW printdlgex)
 {
-  GtkPrintSettings *settings = op->priv->print_settings;
+  CtkPrintSettings *settings = op->priv->print_settings;
   const char *printer;
 
   if (settings == NULL)
@@ -1245,7 +1245,7 @@ dialog_from_print_settings (GtkPrintOperation *op,
 
   if (ctk_print_settings_has_key (settings, CTK_PRINT_SETTINGS_PRINT_PAGES))
     {
-      GtkPrintPages print_pages = ctk_print_settings_get_print_pages (settings);
+      CtkPrintPages print_pages = ctk_print_settings_get_print_pages (settings);
 
       switch (print_pages)
 	{
@@ -1263,7 +1263,7 @@ dialog_from_print_settings (GtkPrintOperation *op,
     }
   if (ctk_print_settings_has_key (settings, CTK_PRINT_SETTINGS_PAGE_RANGES))
     {
-      GtkPageRange *ranges;
+      CtkPageRange *ranges;
       int num_ranges, i;
 
       ranges = ctk_print_settings_get_page_ranges (settings, &num_ranges);
@@ -1409,9 +1409,9 @@ print_callback_new  (void)
 }
 
 static  void
-plug_grab_notify (GtkWidget        *widget,
+plug_grab_notify (CtkWidget        *widget,
 		  gboolean          was_grabbed,
-		  GtkPrintOperation *op)
+		  CtkPrintOperation *op)
 {
   EnableWindow (GetAncestor (GDK_WINDOW_HWND (ctk_widget_get_window (widget)), GA_ROOT),
 		was_grabbed);
@@ -1421,13 +1421,13 @@ plug_grab_notify (GtkWidget        *widget,
 static INT_PTR CALLBACK
 pageDlgProc (HWND wnd, UINT message, WPARAM wparam, LPARAM lparam)
 {
-  GtkPrintOperation *op;
-  GtkPrintOperationWin32 *op_win32;
+  CtkPrintOperation *op;
+  CtkPrintOperationWin32 *op_win32;
   
   if (message == WM_INITDIALOG)
     {
       PROPSHEETPAGEW *page = (PROPSHEETPAGEW *)lparam;
-      GtkWidget *plug;
+      CtkWidget *plug;
 
       op = CTK_PRINT_OPERATION ((gpointer)page->lParam);
       op_win32 = op->priv->platform_data;
@@ -1472,7 +1472,7 @@ pageDlgProc (HWND wnd, UINT message, WPARAM wparam, LPARAM lparam)
 }
 
 static HPROPSHEETPAGE
-create_application_page (GtkPrintOperation *op)
+create_application_page (CtkPrintOperation *op)
 {
   HPROPSHEETPAGE hpage;
   PROPSHEETPAGEW page;
@@ -1481,7 +1481,7 @@ create_application_page (GtkPrintOperation *op)
   LONG base_units;
   WORD baseunitX, baseunitY;
   WORD *array;
-  GtkRequisition requisition;
+  CtkRequisition requisition;
   const char *tab_label;
 
   /* Make the template the size of the custom widget size request */
@@ -1533,12 +1533,12 @@ create_application_page (GtkPrintOperation *op)
   return hpage;
 }
 
-static GtkPageSetup *
-create_page_setup (GtkPrintOperation *op)
+static CtkPageSetup *
+create_page_setup (CtkPrintOperation *op)
 {
-  GtkPrintOperationPrivate *priv = op->priv;
-  GtkPageSetup *page_setup;
-  GtkPrintSettings *settings;
+  CtkPrintOperationPrivate *priv = op->priv;
+  CtkPageSetup *page_setup;
+  CtkPrintSettings *settings;
   
   if (priv->default_page_setup)
     page_setup = ctk_page_setup_copy (priv->default_page_setup);
@@ -1548,7 +1548,7 @@ create_page_setup (GtkPrintOperation *op)
   settings = priv->print_settings;
   if (settings)
     {
-      GtkPaperSize *paper_size;
+      CtkPaperSize *paper_size;
       
       if (ctk_print_settings_has_key (settings, CTK_PRINT_SETTINGS_ORIENTATION))
 	ctk_page_setup_set_orientation (page_setup,
@@ -1568,15 +1568,15 @@ create_page_setup (GtkPrintOperation *op)
   return page_setup;
 }
 
-GtkPrintOperationResult
-ctk_print_operation_run_without_dialog (GtkPrintOperation *op,
+CtkPrintOperationResult
+ctk_print_operation_run_without_dialog (CtkPrintOperation *op,
 					gboolean          *do_print)
 {
-  GtkPrintOperationResult result;
-  GtkPrintOperationWin32 *op_win32;
-  GtkPrintOperationPrivate *priv;
-  GtkPrintSettings *settings;
-  GtkPageSetup *page_setup;
+  CtkPrintOperationResult result;
+  CtkPrintOperationWin32 *op_win32;
+  CtkPrintOperationPrivate *priv;
+  CtkPrintSettings *settings;
+  CtkPageSetup *page_setup;
   DOCINFOW docinfo;
   HGLOBAL hDevMode = NULL;
   HGLOBAL hDevNames = NULL;
@@ -1593,7 +1593,7 @@ ctk_print_operation_run_without_dialog (GtkPrintOperation *op,
   priv = op->priv;
   settings = priv->print_settings;
   
-  op_win32 = g_new0 (GtkPrintOperationWin32, 1);
+  op_win32 = g_new0 (CtkPrintOperationWin32, 1);
   priv->platform_data = op_win32;
   priv->free_platform_data = (GDestroyNotify) op_win32_free;
   printer = ctk_print_settings_get_printer (settings);
@@ -1716,19 +1716,19 @@ ctk_print_operation_run_without_dialog (GtkPrintOperation *op,
   return result;
 }
 
-GtkPrintOperationResult
-ctk_print_operation_run_with_dialog (GtkPrintOperation *op,
-				     GtkWindow         *parent,
+CtkPrintOperationResult
+ctk_print_operation_run_with_dialog (CtkPrintOperation *op,
+				     CtkWindow         *parent,
 				     gboolean          *do_print)
 {
   HRESULT hResult;
   LPPRINTDLGEXW printdlgex = NULL;
   LPPRINTPAGERANGE page_ranges = NULL;
   HWND parentHWnd;
-  GtkWidget *invisible = NULL;
-  GtkPrintOperationResult result;
-  GtkPrintOperationWin32 *op_win32;
-  GtkPrintOperationPrivate *priv;
+  CtkWidget *invisible = NULL;
+  CtkPrintOperationResult result;
+  CtkPrintOperationWin32 *op_win32;
+  CtkPrintOperationPrivate *priv;
   IPrintDialogCallback *callback;
   HPROPSHEETPAGE prop_page;
   static volatile gsize common_controls_initialized = 0;
@@ -1755,7 +1755,7 @@ ctk_print_operation_run_with_dialog (GtkPrintOperation *op,
 
   priv = op->priv;
   
-  op_win32 = g_new0 (GtkPrintOperationWin32, 1);
+  op_win32 = g_new0 (CtkPrintOperationWin32, 1);
   priv->platform_data = op_win32;
   priv->free_platform_data = (GDestroyNotify) op_win32_free;
   
@@ -1884,7 +1884,7 @@ ctk_print_operation_run_with_dialog (GtkPrintOperation *op,
       int job_id;
       double dpi_x, dpi_y;
       cairo_t *cr;
-      GtkPageSetup *page_setup;
+      CtkPageSetup *page_setup;
 
       priv->print_context = _ctk_print_context_new (op);
       page_setup = create_page_setup (op);
@@ -1972,10 +1972,10 @@ ctk_print_operation_run_with_dialog (GtkPrintOperation *op,
   return result;
 }
 
-GtkPrintOperationResult
-_ctk_print_operation_platform_backend_run_dialog (GtkPrintOperation *op,
+CtkPrintOperationResult
+_ctk_print_operation_platform_backend_run_dialog (CtkPrintOperation *op,
 						  gboolean           show_dialog,
-						  GtkWindow         *parent,
+						  CtkWindow         *parent,
 						  gboolean          *do_print)
 {
   if (show_dialog)
@@ -1985,9 +1985,9 @@ _ctk_print_operation_platform_backend_run_dialog (GtkPrintOperation *op,
 }
 
 void
-_ctk_print_operation_platform_backend_launch_preview (GtkPrintOperation *op,
+_ctk_print_operation_platform_backend_launch_preview (CtkPrintOperation *op,
 						      cairo_surface_t   *surface,
-						      GtkWindow         *parent,
+						      CtkWindow         *parent,
 						      const gchar       *filename)
 {
   HDC dc;
@@ -2002,7 +2002,7 @@ _ctk_print_operation_platform_backend_launch_preview (GtkPrintOperation *op,
 }
 
 void
-_ctk_print_operation_platform_backend_preview_start_page (GtkPrintOperation *op,
+_ctk_print_operation_platform_backend_preview_start_page (CtkPrintOperation *op,
 							  cairo_surface_t *surface,
 							  cairo_t *cr)
 {
@@ -2011,7 +2011,7 @@ _ctk_print_operation_platform_backend_preview_start_page (GtkPrintOperation *op,
 }
 
 void
-_ctk_print_operation_platform_backend_preview_end_page (GtkPrintOperation *op,
+_ctk_print_operation_platform_backend_preview_end_page (CtkPrintOperation *op,
 							cairo_surface_t *surface,
 							cairo_t *cr)
 {
@@ -2026,13 +2026,13 @@ _ctk_print_operation_platform_backend_preview_end_page (GtkPrintOperation *op,
 }
 
 cairo_surface_t *
-_ctk_print_operation_platform_backend_create_preview_surface (GtkPrintOperation *op,
-							      GtkPageSetup      *page_setup,
+_ctk_print_operation_platform_backend_create_preview_surface (CtkPrintOperation *op,
+							      CtkPageSetup      *page_setup,
 							      gdouble           *dpi_x,
 							      gdouble           *dpi_y,
 							      gchar            **target)
 {
-  GtkPaperSize *paper_size;
+  CtkPaperSize *paper_size;
   HDC metafile_dc;
   RECT rect;
   char *template;
@@ -2059,7 +2059,7 @@ _ctk_print_operation_platform_backend_create_preview_surface (GtkPrintOperation 
   rect.bottom = 100.0 * ctk_paper_size_get_height (paper_size, CTK_UNIT_MM);
   
   metafile_dc = CreateEnhMetaFileW (NULL, filename_utf16,
-				    &rect, L"Gtk+\0Print Preview\0\0");
+				    &rect, L"Ctk+\0Print Preview\0\0");
   if (metafile_dc == NULL)
     {
       g_warning ("Can't create metafile");
@@ -2075,25 +2075,25 @@ _ctk_print_operation_platform_backend_create_preview_surface (GtkPrintOperation 
 }
 
 void
-_ctk_print_operation_platform_backend_resize_preview_surface (GtkPrintOperation *op,
-							      GtkPageSetup      *page_setup,
+_ctk_print_operation_platform_backend_resize_preview_surface (CtkPrintOperation *op,
+							      CtkPageSetup      *page_setup,
 							      cairo_surface_t   *surface)
 {
   /* TODO: Implement */
 }
 
-GtkPageSetup *
-ctk_print_run_page_setup_dialog (GtkWindow        *parent,
-				 GtkPageSetup     *page_setup,
-				 GtkPrintSettings *settings)
+CtkPageSetup *
+ctk_print_run_page_setup_dialog (CtkWindow        *parent,
+				 CtkPageSetup     *page_setup,
+				 CtkPrintSettings *settings)
 {
   LPPAGESETUPDLGW pagesetupdlg = NULL;
   BOOL res;
   gboolean free_settings;
   const char *printer;
-  GtkPaperSize *paper_size;
+  CtkPaperSize *paper_size;
   DWORD measure_system;
-  GtkUnit unit;
+  CtkUnit unit;
   double scale;
 
   pagesetupdlg = (LPPAGESETUPDLGW)GlobalAlloc (GPTR, sizeof (PAGESETUPDLGW));
@@ -2215,13 +2215,13 @@ ctk_print_run_page_setup_dialog (GtkWindow        *parent,
 }
 
 void
-ctk_print_run_page_setup_dialog_async (GtkWindow            *parent,
-				       GtkPageSetup         *page_setup,
-				       GtkPrintSettings     *settings,
-				       GtkPageSetupDoneFunc  done_cb,
+ctk_print_run_page_setup_dialog_async (CtkWindow            *parent,
+				       CtkPageSetup         *page_setup,
+				       CtkPrintSettings     *settings,
+				       CtkPageSetupDoneFunc  done_cb,
 				       gpointer              data)
 {
-  GtkPageSetup *new_page_setup;
+  CtkPageSetup *new_page_setup;
 
   new_page_setup = ctk_print_run_page_setup_dialog (parent, page_setup, settings);
   done_cb (new_page_setup, data);

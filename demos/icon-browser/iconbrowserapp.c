@@ -5,12 +5,12 @@
 
 struct _IconBrowserApp
 {
-  GtkApplication parent;
+  CtkApplication parent;
 };
 
 struct _IconBrowserAppClass
 {
-  GtkApplicationClass parent_class;
+  CtkApplicationClass parent_class;
 };
 
 G_DEFINE_TYPE(IconBrowserApp, icon_browser_app, CTK_TYPE_APPLICATION);

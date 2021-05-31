@@ -27,26 +27,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_ENTRY_ACCESSIBLE                      (ctk_entry_accessible_get_type ())
-#define CTK_ENTRY_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ENTRY_ACCESSIBLE, GtkEntryAccessible))
-#define CTK_ENTRY_ACCESSIBLE_CLASS(klass)              (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ENTRY_ACCESSIBLE, GtkEntryAccessibleClass))
+#define CTK_ENTRY_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ENTRY_ACCESSIBLE, CtkEntryAccessible))
+#define CTK_ENTRY_ACCESSIBLE_CLASS(klass)              (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ENTRY_ACCESSIBLE, CtkEntryAccessibleClass))
 #define CTK_IS_ENTRY_ACCESSIBLE(obj)                   (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_ENTRY_ACCESSIBLE))
 #define CTK_IS_ENTRY_ACCESSIBLE_CLASS(klass)           (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_ENTRY_ACCESSIBLE))
-#define CTK_ENTRY_ACCESSIBLE_GET_CLASS(obj)            (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ENTRY_ACCESSIBLE, GtkEntryAccessibleClass))
+#define CTK_ENTRY_ACCESSIBLE_GET_CLASS(obj)            (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ENTRY_ACCESSIBLE, CtkEntryAccessibleClass))
 
-typedef struct _GtkEntryAccessible        GtkEntryAccessible;
-typedef struct _GtkEntryAccessibleClass   GtkEntryAccessibleClass;
-typedef struct _GtkEntryAccessiblePrivate GtkEntryAccessiblePrivate;
+typedef struct _CtkEntryAccessible        CtkEntryAccessible;
+typedef struct _CtkEntryAccessibleClass   CtkEntryAccessibleClass;
+typedef struct _CtkEntryAccessiblePrivate CtkEntryAccessiblePrivate;
 
-struct _GtkEntryAccessible
+struct _CtkEntryAccessible
 {
-  GtkWidgetAccessible parent;
+  CtkWidgetAccessible parent;
 
-  GtkEntryAccessiblePrivate *priv;
+  CtkEntryAccessiblePrivate *priv;
 };
 
-struct _GtkEntryAccessibleClass
+struct _CtkEntryAccessibleClass
 {
-  GtkWidgetAccessibleClass parent_class;
+  CtkWidgetAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

@@ -1,11 +1,11 @@
 #include <ctk/ctk.h>
 
-static GtkWidget *antialias;
-static GtkWidget *subpixel;
-static GtkWidget *hintstyle;
+static CtkWidget *antialias;
+static CtkWidget *subpixel;
+static CtkWidget *hintstyle;
 
 static void
-set_font_options (GtkWidget *label)
+set_font_options (CtkWidget *label)
 {
   cairo_antialias_t aa;
   cairo_subpixel_order_t sp;
@@ -30,7 +30,7 @@ set_font_options (GtkWidget *label)
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window, *label, *grid, *demo;
+  CtkWidget *window, *label, *grid, *demo;
 
   ctk_init (NULL, NULL);
 

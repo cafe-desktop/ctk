@@ -23,9 +23,9 @@
 #include "ctkkeyhash.h"
 #include "ctkprivate.h"
 
-typedef struct _GtkKeyHashEntry GtkKeyHashEntry;
+typedef struct _CtkKeyHashEntry CtkKeyHashEntry;
 
-struct _GtkKeyHashEntry
+struct _CtkKeyHashEntry
 {
   guint keyval;
   GdkModifierType modifiers;
@@ -37,7 +37,7 @@ struct _GtkKeyHashEntry
   gint n_keys;
 };
 
-struct _GtkKeyHash
+struct _CtkKeyHash
 {
   GdkKeymap *keymap;
   GHashTable *keycode_hash;
@@ -56,8 +56,8 @@ key_hash_clear_keycode (gpointer key,
 }
 
 static void
-key_hash_insert_entry (GtkKeyHash      *key_hash,
-		       GtkKeyHashEntry *entry)
+key_hash_insert_entry (CtkKeyHash      *key_hash,
+		       CtkKeyHashEntry *entry)
 {
   gint i;
 
@@ -78,7 +78,7 @@ key_hash_insert_entry (GtkKeyHash      *key_hash,
 }
 
 static GHashTable *
-key_hash_get_keycode_hash (GtkKeyHash *key_hash)
+key_hash_get_keycode_hash (CtkKeyHash *key_hash)
 {
   if (!key_hash->keycode_hash)
     {
@@ -99,7 +99,7 @@ key_hash_get_keycode_hash (GtkKeyHash *key_hash)
 
 static void
 key_hash_keys_changed (GdkKeymap  *keymap,
-		       GtkKeyHash *key_hash)
+		       CtkKeyHash *key_hash)
 {
   /* The keymap changed, so we have to regenerate the keycode hash
    */
@@ -121,11 +121,11 @@ key_hash_keys_changed (GdkKeymap  *keymap,
  * 
  * Returns: the newly created object. Free with _ctk_key_hash_free().
  **/
-GtkKeyHash *
+CtkKeyHash *
 _ctk_key_hash_new (GdkKeymap      *keymap,
 		   GDestroyNotify  item_destroy_notify)
 {
-  GtkKeyHash *key_hash = g_new (GtkKeyHash, 1);
+  CtkKeyHash *key_hash = g_new (CtkKeyHash, 1);
 
   key_hash->keymap = keymap;
   g_signal_connect (keymap, "keys-changed",
@@ -140,34 +140,34 @@ _ctk_key_hash_new (GdkKeymap      *keymap,
 }
 
 static void
-key_hash_free_entry (GtkKeyHash      *key_hash,
-		     GtkKeyHashEntry *entry)
+key_hash_free_entry (CtkKeyHash      *key_hash,
+		     CtkKeyHashEntry *entry)
 {
   if (key_hash->destroy_notify)
     (*key_hash->destroy_notify) (entry->value);
   
   g_free (entry->keys);
-  g_slice_free (GtkKeyHashEntry, entry);
+  g_slice_free (CtkKeyHashEntry, entry);
 }
 
 static void
 key_hash_free_entry_foreach (gpointer value,
 			     gpointer data)
 {
-  GtkKeyHashEntry *entry = value;
-  GtkKeyHash *key_hash = data;
+  CtkKeyHashEntry *entry = value;
+  CtkKeyHash *key_hash = data;
 
   key_hash_free_entry (key_hash, entry);
 }
 
 /**
  * ctk_key_hash_free:
- * @key_hash: a #GtkKeyHash
+ * @key_hash: a #CtkKeyHash
  * 
  * Destroys a key hash created with ctk_key_hash_new()
  **/
 void
-_ctk_key_hash_free (GtkKeyHash *key_hash)
+_ctk_key_hash_free (CtkKeyHash *key_hash)
 {
   g_signal_handlers_disconnect_by_func (key_hash->keymap,
 					key_hash_keys_changed,
@@ -189,7 +189,7 @@ _ctk_key_hash_free (GtkKeyHash *key_hash)
 
 /**
  * _ctk_key_hash_add_entry:
- * @key_hash: a #GtkKeyHash
+ * @key_hash: a #CtkKeyHash
  * @keyval: key symbol for this binding
  * @modifiers: modifiers for this binding
  * @value: value to insert in the key hash
@@ -197,12 +197,12 @@ _ctk_key_hash_free (GtkKeyHash *key_hash)
  * Inserts a pair of key symbol and modifier mask into the key hash. 
  **/
 void
-_ctk_key_hash_add_entry (GtkKeyHash      *key_hash,
+_ctk_key_hash_add_entry (CtkKeyHash      *key_hash,
 			 guint            keyval,
 			 GdkModifierType  modifiers,
 			 gpointer         value)
 {
-  GtkKeyHashEntry *entry = g_slice_new (GtkKeyHashEntry);
+  CtkKeyHashEntry *entry = g_slice_new (CtkKeyHashEntry);
 
   entry->value = value;
   entry->keyval = keyval;
@@ -218,21 +218,21 @@ _ctk_key_hash_add_entry (GtkKeyHash      *key_hash,
 
 /**
  * _ctk_key_hash_remove_entry:
- * @key_hash: a #GtkKeyHash
+ * @key_hash: a #CtkKeyHash
  * @value: value previously added with _ctk_key_hash_add_entry()
  * 
  * Removes a value previously added to the key hash with
  * _ctk_key_hash_add_entry().
  **/
 void
-_ctk_key_hash_remove_entry (GtkKeyHash *key_hash,
+_ctk_key_hash_remove_entry (CtkKeyHash *key_hash,
 			    gpointer    value)
 {
   GList *entry_node = g_hash_table_lookup (key_hash->reverse_hash, value);
   
   if (entry_node)
     {
-      GtkKeyHashEntry *entry = entry_node->data;
+      CtkKeyHashEntry *entry = entry_node->data;
 
       if (key_hash->keycode_hash)
 	{
@@ -268,8 +268,8 @@ static gint
 lookup_result_compare (gconstpointer a,
 		       gconstpointer b)
 {
-  const GtkKeyHashEntry *entry_a = a;
-  const GtkKeyHashEntry *entry_b = b;
+  const CtkKeyHashEntry *entry_a = a;
+  const CtkKeyHashEntry *entry_b = b;
   guint modifiers;
 
   gint n_bits_a = 0;
@@ -308,8 +308,8 @@ static gint
 lookup_result_compare_by_keyval (gconstpointer a,
 		                 gconstpointer b)
 {
-  const GtkKeyHashEntry *entry_a = a;
-  const GtkKeyHashEntry *entry_b = b;
+  const CtkKeyHashEntry *entry_a = a;
+  const CtkKeyHashEntry *entry_b = b;
 
   if (entry_a->keyval < entry_b->keyval)
 	return -1;
@@ -332,7 +332,7 @@ keyval_in_group (GdkKeymap  *keymap,
                  guint      keyval,
                  gint       group)
 {                 
-  GtkKeyHashEntry entry;
+  CtkKeyHashEntry entry;
   gint i;
 
   gdk_keymap_get_entries_for_keyval (keymap,
@@ -354,7 +354,7 @@ keyval_in_group (GdkKeymap  *keymap,
 
 /**
  * _ctk_key_hash_lookup:
- * @key_hash: a #GtkKeyHash
+ * @key_hash: a #CtkKeyHash
  * @hardware_keycode: hardware keycode field from a #GdkEventKey
  * @state: state field from a #GdkEventKey
  * @mask: mask of modifiers to consider when matching against the
@@ -377,7 +377,7 @@ keyval_in_group (GdkKeymap  *keymap,
  *     Free with g_slist_free() when no longer needed.
  */
 GSList *
-_ctk_key_hash_lookup (GtkKeyHash      *key_hash,
+_ctk_key_hash_lookup (CtkKeyHash      *key_hash,
 		      guint16          hardware_keycode,
 		      GdkModifierType  state,
 		      GdkModifierType  mask,
@@ -428,7 +428,7 @@ _ctk_key_hash_lookup (GtkKeyHash      *key_hash,
       GSList *tmp_list = keys;
       while (tmp_list)
 	{
-	  GtkKeyHashEntry *entry = tmp_list->data;
+	  CtkKeyHashEntry *entry = tmp_list->data;
 
 	  /* If the virtual Super, Hyper or Meta modifiers are present,
 	   * they will also be mapped to some of the Mod2 - Mod5 modifiers,
@@ -498,7 +498,7 @@ _ctk_key_hash_lookup (GtkKeyHash      *key_hash,
        * the stack may have an exact match and we don't want to 'steal' it.
        */
       guint oldkeyval = 0;
-      GtkKeyHashEntry *keyhashentry;
+      CtkKeyHashEntry *keyhashentry;
 
       results = sort_lookup_results_by_keyval (results);
       for (l = results; l; l = l->next)
@@ -518,15 +518,15 @@ _ctk_key_hash_lookup (GtkKeyHash      *key_hash,
     
   results = sort_lookup_results (results);
   for (l = results; l; l = l->next)
-    l->data = ((GtkKeyHashEntry *)l->data)->value;
+    l->data = ((CtkKeyHashEntry *)l->data)->value;
 
   return results;
 }
 
 /**
  * _ctk_key_hash_lookup_keyval:
- * @key_hash: a #GtkKeyHash
- * @event: a #GtkEvent
+ * @key_hash: a #CtkKeyHash
+ * @event: a #CtkEvent
  * 
  * Looks up the best matching entry or entries in the hash table for a
  * given keyval/modifiers pair. It’s better to use
@@ -537,7 +537,7 @@ _ctk_key_hash_lookup (GtkKeyHash      *key_hash,
  * Returns: A #GSList of all matching entries.
  **/
 GSList *
-_ctk_key_hash_lookup_keyval (GtkKeyHash     *key_hash,
+_ctk_key_hash_lookup_keyval (CtkKeyHash     *key_hash,
 			     guint           keyval,
 			     GdkModifierType modifiers)
 {
@@ -561,7 +561,7 @@ _ctk_key_hash_lookup_keyval (GtkKeyHash     *key_hash,
 
       while (entries)
 	{
-	  GtkKeyHashEntry *entry = entries->data;
+	  CtkKeyHashEntry *entry = entries->data;
 
 	  if (entry->keyval == keyval && entry->modifiers == modifiers)
 	    results = g_slist_prepend (results, entry);
@@ -574,7 +574,7 @@ _ctk_key_hash_lookup_keyval (GtkKeyHash     *key_hash,
 	  
   results = sort_lookup_results (results);
   for (l = results; l; l = l->next)
-    l->data = ((GtkKeyHashEntry *)l->data)->value;
+    l->data = ((CtkKeyHashEntry *)l->data)->value;
 
   return results;
 }

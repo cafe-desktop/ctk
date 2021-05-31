@@ -63,13 +63,13 @@
  * The functions and objects described here make working with GTK+ and
  * GIO more convenient.
  *
- * #GtkMountOperation is needed when mounting volumes:
+ * #CtkMountOperation is needed when mounting volumes:
  * It is an implementation of #GMountOperation that can be used with
  * GIO functions for mounting volumes such as
  * g_file_mount_enclosing_volume(), g_file_mount_mountable(),
  * g_volume_mount(), g_mount_unmount_with_operation() and others.
  *
- * When necessary, #GtkMountOperation shows dialogs to ask for
+ * When necessary, #CtkMountOperation shows dialogs to ask for
  * passwords, questions or show processes blocking unmount.
  *
  * ctk_show_uri_on_window() is a convenient way to launch applications for URIs.
@@ -106,25 +106,25 @@ static void   ctk_mount_operation_show_processes (GMountOperation *op,
 
 static void   ctk_mount_operation_aborted      (GMountOperation *op);
 
-struct _GtkMountOperationPrivate {
-  GtkWindow *parent_window;
-  GtkDialog *dialog;
+struct _CtkMountOperationPrivate {
+  CtkWindow *parent_window;
+  CtkDialog *dialog;
   GdkScreen *screen;
 
   /* bus proxy */
-  _GtkMountOperationHandler *handler;
+  _CtkMountOperationHandler *handler;
   GCancellable *cancellable;
   gboolean handler_showing;
 
   /* for the ask-password dialog */
-  GtkWidget *grid;
-  GtkWidget *username_entry;
-  GtkWidget *domain_entry;
-  GtkWidget *password_entry;
-  GtkWidget *pim_entry;
-  GtkWidget *anonymous_toggle;
-  GtkWidget *tcrypt_hidden_toggle;
-  GtkWidget *tcrypt_system_toggle;
+  CtkWidget *grid;
+  CtkWidget *username_entry;
+  CtkWidget *domain_entry;
+  CtkWidget *password_entry;
+  CtkWidget *pim_entry;
+  CtkWidget *anonymous_toggle;
+  CtkWidget *tcrypt_hidden_toggle;
+  CtkWidget *tcrypt_system_toggle;
   GList *user_widgets;
 
   GAskPasswordFlags ask_flags;
@@ -132,8 +132,8 @@ struct _GtkMountOperationPrivate {
   gboolean          anonymous;
 
   /* for the show-processes dialog */
-  GtkWidget *process_tree_view;
-  GtkListStore *process_list_store;
+  CtkWidget *process_tree_view;
+  CtkListStore *process_list_store;
 };
 
 enum {
@@ -144,10 +144,10 @@ enum {
 
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkMountOperation, ctk_mount_operation, G_TYPE_MOUNT_OPERATION)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkMountOperation, ctk_mount_operation, G_TYPE_MOUNT_OPERATION)
 
 static void
-ctk_mount_operation_class_init (GtkMountOperationClass *klass)
+ctk_mount_operation_class_init (CtkMountOperationClass *klass)
 {
   GObjectClass         *object_class = G_OBJECT_CLASS (klass);
   GMountOperationClass *mount_op_class = G_MOUNT_OPERATION_CLASS (klass);
@@ -187,7 +187,7 @@ ctk_mount_operation_class_init (GtkMountOperationClass *klass)
 }
 
 static void
-ctk_mount_operation_init (GtkMountOperation *operation)
+ctk_mount_operation_init (CtkMountOperation *operation)
 {
   gchar *name_owner;
 
@@ -211,8 +211,8 @@ ctk_mount_operation_init (GtkMountOperation *operation)
 static void
 ctk_mount_operation_finalize (GObject *object)
 {
-  GtkMountOperation *operation = CTK_MOUNT_OPERATION (object);
-  GtkMountOperationPrivate *priv = operation->priv;
+  CtkMountOperation *operation = CTK_MOUNT_OPERATION (object);
+  CtkMountOperationPrivate *priv = operation->priv;
 
   if (priv->user_widgets)
     g_list_free (priv->user_widgets);
@@ -240,7 +240,7 @@ ctk_mount_operation_set_property (GObject      *object,
                                   const GValue *value,
                                   GParamSpec   *pspec)
 {
-  GtkMountOperation *operation = CTK_MOUNT_OPERATION (object);
+  CtkMountOperation *operation = CTK_MOUNT_OPERATION (object);
 
   switch (prop_id)
     {
@@ -265,8 +265,8 @@ ctk_mount_operation_get_property (GObject    *object,
                                   GValue     *value,
                                   GParamSpec *pspec)
 {
-  GtkMountOperation *operation = CTK_MOUNT_OPERATION (object);
-  GtkMountOperationPrivate *priv = operation->priv;
+  CtkMountOperation *operation = CTK_MOUNT_OPERATION (object);
+  CtkMountOperationPrivate *priv = operation->priv;
 
   switch (prop_id)
     {
@@ -289,7 +289,7 @@ ctk_mount_operation_get_property (GObject    *object,
 }
 
 static void
-ctk_mount_operation_proxy_finish (GtkMountOperation     *op,
+ctk_mount_operation_proxy_finish (CtkMountOperation     *op,
                                   GMountOperationResult  result)
 {
   _ctk_mount_operation_handler_call_close (op->priv->handler, NULL, NULL, NULL);
@@ -304,10 +304,10 @@ ctk_mount_operation_proxy_finish (GtkMountOperation     *op,
 }
 
 static void
-remember_button_toggled (GtkToggleButton   *button,
-                         GtkMountOperation *operation)
+remember_button_toggled (CtkToggleButton   *button,
+                         CtkMountOperation *operation)
 {
-  GtkMountOperationPrivate *priv = operation->priv;
+  CtkMountOperationPrivate *priv = operation->priv;
 
   if (ctk_toggle_button_get_active (button))
     {
@@ -319,11 +319,11 @@ remember_button_toggled (GtkToggleButton   *button,
 }
 
 static void
-pw_dialog_got_response (GtkDialog         *dialog,
+pw_dialog_got_response (CtkDialog         *dialog,
                         gint               response_id,
-                        GtkMountOperation *mount_op)
+                        CtkMountOperation *mount_op)
 {
-  GtkMountOperationPrivate *priv = mount_op->priv;
+  CtkMountOperationPrivate *priv = mount_op->priv;
   GMountOperation *op = G_MOUNT_OPERATION (mount_op);
 
   if (response_id == CTK_RESPONSE_OK)
@@ -387,7 +387,7 @@ pw_dialog_got_response (GtkDialog         *dialog,
 }
 
 static gboolean
-entry_has_input (GtkWidget *entry_widget)
+entry_has_input (CtkWidget *entry_widget)
 {
   const char *text;
 
@@ -400,7 +400,7 @@ entry_has_input (GtkWidget *entry_widget)
 }
 
 static gboolean
-pim_entry_is_valid (GtkWidget *entry_widget)
+pim_entry_is_valid (CtkWidget *entry_widget)
 {
   const char *text;
   gchar *end = NULL;
@@ -423,9 +423,9 @@ pim_entry_is_valid (GtkWidget *entry_widget)
 }
 
 static gboolean
-pw_dialog_input_is_valid (GtkMountOperation *operation)
+pw_dialog_input_is_valid (CtkMountOperation *operation)
 {
-  GtkMountOperationPrivate *priv = operation->priv;
+  CtkMountOperationPrivate *priv = operation->priv;
   gboolean is_valid = TRUE;
 
   /* We don't require password to be non-empty here
@@ -442,10 +442,10 @@ pw_dialog_input_is_valid (GtkMountOperation *operation)
 }
 
 static void
-pw_dialog_verify_input (GtkEditable       *editable,
-                        GtkMountOperation *operation)
+pw_dialog_verify_input (CtkEditable       *editable,
+                        CtkMountOperation *operation)
 {
-  GtkMountOperationPrivate *priv = operation->priv;
+  CtkMountOperationPrivate *priv = operation->priv;
   gboolean is_valid;
 
   is_valid = pw_dialog_input_is_valid (operation);
@@ -455,10 +455,10 @@ pw_dialog_verify_input (GtkEditable       *editable,
 }
 
 static void
-pw_dialog_anonymous_toggled (GtkWidget         *widget,
-                             GtkMountOperation *operation)
+pw_dialog_anonymous_toggled (CtkWidget         *widget,
+                             CtkMountOperation *operation)
 {
-  GtkMountOperationPrivate *priv = operation->priv;
+  CtkMountOperationPrivate *priv = operation->priv;
   gboolean is_valid;
   GList *l;
 
@@ -481,11 +481,11 @@ pw_dialog_anonymous_toggled (GtkWidget         *widget,
 
 
 static void
-pw_dialog_cycle_focus (GtkWidget         *widget,
-                       GtkMountOperation *operation)
+pw_dialog_cycle_focus (CtkWidget         *widget,
+                       CtkMountOperation *operation)
 {
-  GtkMountOperationPrivate *priv;
-  GtkWidget *next_widget = NULL;
+  CtkMountOperationPrivate *priv;
+  CtkWidget *next_widget = NULL;
 
   priv = operation->priv;
 
@@ -505,15 +505,15 @@ pw_dialog_cycle_focus (GtkWidget         *widget,
     ctk_window_activate_default (CTK_WINDOW (priv->dialog));
 }
 
-static GtkWidget *
-table_add_entry (GtkMountOperation *operation,
+static CtkWidget *
+table_add_entry (CtkMountOperation *operation,
                  int                row,
                  const char        *label_text,
                  const char        *value,
                  gpointer           user_data)
 {
-  GtkWidget *entry;
-  GtkWidget *label;
+  CtkWidget *entry;
+  CtkWidget *label;
 
   label = ctk_label_new_with_mnemonic (label_text);
   ctk_widget_set_halign (label, CTK_ALIGN_END);
@@ -542,19 +542,19 @@ table_add_entry (GtkMountOperation *operation,
 }
 
 static void
-ctk_mount_operation_ask_password_do_ctk (GtkMountOperation *operation,
+ctk_mount_operation_ask_password_do_ctk (CtkMountOperation *operation,
                                          const gchar       *message,
                                          const gchar       *default_user,
                                          const gchar       *default_domain)
 {
-  GtkMountOperationPrivate *priv;
-  GtkWidget *widget;
-  GtkDialog *dialog;
-  GtkWindow *window;
-  GtkWidget *hbox, *main_vbox, *icon;
-  GtkWidget *grid;
-  GtkWidget *label;
-  GtkWidget *content_area, *action_area;
+  CtkMountOperationPrivate *priv;
+  CtkWidget *widget;
+  CtkDialog *dialog;
+  CtkWindow *window;
+  CtkWidget *hbox, *main_vbox, *icon;
+  CtkWidget *grid;
+  CtkWidget *label;
+  CtkWidget *content_area, *action_area;
   gboolean   can_anonymous;
   guint      rows;
   gchar *primary;
@@ -661,8 +661,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   priv->anonymous_toggle = NULL;
   if (can_anonymous)
     {
-      GtkWidget *anon_box;
-      GtkWidget *choice;
+      CtkWidget *anon_box;
+      CtkWidget *choice;
       GSList    *group;
 
       label = ctk_label_new (_("Connect As"));
@@ -705,8 +705,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   priv->pim_entry = NULL;
   if (priv->ask_flags & G_ASK_PASSWORD_TCRYPT)
     {
-      GtkWidget *volume_type_label;
-      GtkWidget *volume_type_box;
+      CtkWidget *volume_type_label;
+      CtkWidget *volume_type_box;
 
       volume_type_label = ctk_label_new (_("Volume type"));
       ctk_widget_set_halign (volume_type_label, CTK_ALIGN_END);
@@ -737,8 +737,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
    if (priv->ask_flags & G_ASK_PASSWORD_SAVING_SUPPORTED)
     {
-      GtkWidget    *remember_box;
-      GtkWidget    *choice;
+      CtkWidget    *remember_box;
+      CtkWidget    *choice;
       GSList       *group;
       GPasswordSave password_save;
 
@@ -815,7 +815,7 @@ call_password_proxy_cb (GObject      *source,
                         GAsyncResult *res,
                         gpointer      user_data)
 {
-  _GtkMountOperationHandler *proxy = _CTK_MOUNT_OPERATION_HANDLER (source);
+  _CtkMountOperationHandler *proxy = _CTK_MOUNT_OPERATION_HANDLER (source);
   GMountOperation *op = user_data;
   GMountOperationResult result;
   GVariant *result_details;
@@ -856,13 +856,13 @@ call_password_proxy_cb (GObject      *source,
 }
 
 static void
-ctk_mount_operation_ask_password_do_proxy (GtkMountOperation *operation,
+ctk_mount_operation_ask_password_do_proxy (CtkMountOperation *operation,
                                            const char        *message,
                                            const char        *default_user,
                                            const char        *default_domain)
 {
   gchar id[255];
-  g_sprintf(id, "GtkMountOperation%p", operation);
+  g_sprintf(id, "CtkMountOperation%p", operation);
 
   operation->priv->handler_showing = TRUE;
   g_object_notify (G_OBJECT (operation), "is-showing");
@@ -884,8 +884,8 @@ ctk_mount_operation_ask_password (GMountOperation   *mount_op,
                                   const char        *default_domain,
                                   GAskPasswordFlags  flags)
 {
-  GtkMountOperation *operation;
-  GtkMountOperationPrivate *priv;
+  CtkMountOperation *operation;
+  CtkMountOperationPrivate *priv;
   gboolean use_ctk;
 
   operation = CTK_MOUNT_OPERATION (mount_op);
@@ -903,12 +903,12 @@ ctk_mount_operation_ask_password (GMountOperation   *mount_op,
 }
 
 static void
-question_dialog_button_clicked (GtkDialog       *dialog,
+question_dialog_button_clicked (CtkDialog       *dialog,
                                 gint             button_number,
                                 GMountOperation *op)
 {
-  GtkMountOperationPrivate *priv;
-  GtkMountOperation *operation;
+  CtkMountOperationPrivate *priv;
+  CtkMountOperation *operation;
 
   operation = CTK_MOUNT_OPERATION (op);
   priv = operation->priv;
@@ -928,12 +928,12 @@ question_dialog_button_clicked (GtkDialog       *dialog,
 }
 
 static void
-ctk_mount_operation_ask_question_do_ctk (GtkMountOperation *op,
+ctk_mount_operation_ask_question_do_ctk (CtkMountOperation *op,
                                          const char        *message,
                                          const char        *choices[])
 {
-  GtkMountOperationPrivate *priv;
-  GtkWidget  *dialog;
+  CtkMountOperationPrivate *priv;
+  CtkWidget  *dialog;
   const char *secondary = NULL;
   char       *primary;
   int        count, len = 0;
@@ -988,7 +988,7 @@ call_question_proxy_cb (GObject      *source,
                         GAsyncResult *res,
                         gpointer      user_data)
 {
-  _GtkMountOperationHandler *proxy = _CTK_MOUNT_OPERATION_HANDLER (source);
+  _CtkMountOperationHandler *proxy = _CTK_MOUNT_OPERATION_HANDLER (source);
   GMountOperation *op = user_data;
   GMountOperationResult result;
   GVariant *result_details;
@@ -1021,12 +1021,12 @@ call_question_proxy_cb (GObject      *source,
 }
 
 static void
-ctk_mount_operation_ask_question_do_proxy (GtkMountOperation *operation,
+ctk_mount_operation_ask_question_do_proxy (CtkMountOperation *operation,
                                            const char        *message,
                                            const char        *choices[])
 {
   gchar id[255];
-  g_sprintf(id, "GtkMountOperation%p", operation);
+  g_sprintf(id, "CtkMountOperation%p", operation);
 
   operation->priv->handler_showing = TRUE;
   g_object_notify (G_OBJECT (operation), "is-showing");
@@ -1045,7 +1045,7 @@ ctk_mount_operation_ask_question (GMountOperation *op,
                                   const char      *message,
                                   const char      *choices[])
 {
-  GtkMountOperation *operation;
+  CtkMountOperation *operation;
   gboolean use_ctk;
 
   operation = CTK_MOUNT_OPERATION (op);
@@ -1058,12 +1058,12 @@ ctk_mount_operation_ask_question (GMountOperation *op,
 }
 
 static void
-show_processes_button_clicked (GtkDialog       *dialog,
+show_processes_button_clicked (CtkDialog       *dialog,
                                gint             button_number,
                                GMountOperation *op)
 {
-  GtkMountOperationPrivate *priv;
-  GtkMountOperation *operation;
+  CtkMountOperationPrivate *priv;
+  CtkMountOperation *operation;
 
   operation = CTK_MOUNT_OPERATION (op);
   priv = operation->priv;
@@ -1145,16 +1145,16 @@ diff_sorted_arrays (GArray         *array1,
 
 
 static void
-add_pid_to_process_list_store (GtkMountOperation              *mount_operation,
-                               GtkMountOperationLookupContext *lookup_context,
-                               GtkListStore                   *list_store,
+add_pid_to_process_list_store (CtkMountOperation              *mount_operation,
+                               CtkMountOperationLookupContext *lookup_context,
+                               CtkListStore                   *list_store,
                                GPid                            pid)
 {
   gchar *command_line;
   gchar *name;
   GdkPixbuf *pixbuf;
   gchar *markup;
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
   name = NULL;
   pixbuf = NULL;
@@ -1174,7 +1174,7 @@ add_pid_to_process_list_store (GtkMountOperation              *mount_operation,
 
   if (pixbuf == NULL)
     {
-      GtkIconTheme *theme;
+      CtkIconTheme *theme;
       theme = ctk_css_icon_theme_value_get_icon_theme
         (_ctk_style_context_peek_property (ctk_widget_get_style_context (CTK_WIDGET (mount_operation->priv->dialog)),
                                            CTK_CSS_PROPERTY_ICON_THEME));
@@ -1205,11 +1205,11 @@ add_pid_to_process_list_store (GtkMountOperation              *mount_operation,
 }
 
 static void
-remove_pid_from_process_list_store (GtkMountOperation *mount_operation,
-                                    GtkListStore      *list_store,
+remove_pid_from_process_list_store (CtkMountOperation *mount_operation,
+                                    CtkListStore      *list_store,
                                     GPid               pid)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   GPid pid_of_item;
 
   if (ctk_tree_model_get_iter_first (CTK_TREE_MODEL (list_store), &iter))
@@ -1233,16 +1233,16 @@ remove_pid_from_process_list_store (GtkMountOperation *mount_operation,
 
 
 static void
-update_process_list_store (GtkMountOperation *mount_operation,
-                           GtkListStore      *list_store,
+update_process_list_store (CtkMountOperation *mount_operation,
+                           CtkListStore      *list_store,
                            GArray            *processes)
 {
   guint n;
-  GtkMountOperationLookupContext *lookup_context;
+  CtkMountOperationLookupContext *lookup_context;
   GArray *current_pids;
   GArray *pid_indices_to_add;
   GArray *pid_indices_to_remove;
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   GPid pid;
 
   /* Just removing all items and adding new ones will screw up the
@@ -1294,7 +1294,7 @@ update_process_list_store (GtkMountOperation *mount_operation,
     {
       if (ctk_tree_model_get_iter_first (CTK_TREE_MODEL (list_store), &iter))
         {
-          GtkTreeSelection *tree_selection;
+          CtkTreeSelection *tree_selection;
           tree_selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (mount_operation->priv->process_tree_view));
           ctk_tree_selection_select_iter (tree_selection, &iter);
         }
@@ -1306,12 +1306,12 @@ update_process_list_store (GtkMountOperation *mount_operation,
 }
 
 static void
-on_end_process_activated (GtkMenuItem *item,
+on_end_process_activated (CtkMenuItem *item,
                           gpointer user_data)
 {
-  GtkMountOperation *op = CTK_MOUNT_OPERATION (user_data);
-  GtkTreeSelection *selection;
-  GtkTreeIter iter;
+  CtkMountOperation *op = CTK_MOUNT_OPERATION (user_data);
+  CtkTreeSelection *selection;
+  CtkTreeIter iter;
   GPid pid_to_kill;
   GError *error;
 
@@ -1340,7 +1340,7 @@ on_end_process_activated (GtkMenuItem *item,
   error = NULL;
   if (!_ctk_mount_operation_kill_process (pid_to_kill, &error))
     {
-      GtkWidget *dialog;
+      CtkWidget *dialog;
       gint response;
 
       /* Use CTK_DIALOG_DESTROY_WITH_PARENT here since the parent dialog can be
@@ -1375,12 +1375,12 @@ on_end_process_activated (GtkMenuItem *item,
 }
 
 static gboolean
-do_popup_menu_for_process_tree_view (GtkWidget         *widget,
+do_popup_menu_for_process_tree_view (CtkWidget         *widget,
                                      const GdkEvent    *event,
-                                     GtkMountOperation *op)
+                                     CtkMountOperation *op)
 {
-  GtkWidget *menu;
-  GtkWidget *item;
+  CtkWidget *menu;
+  CtkWidget *item;
 
   menu = ctk_menu_new ();
   ctk_style_context_add_class (ctk_widget_get_style_context (menu),
@@ -1395,8 +1395,8 @@ do_popup_menu_for_process_tree_view (GtkWidget         *widget,
 
   if (event && gdk_event_triggers_context_menu (event))
     {
-      GtkTreePath *path;
-      GtkTreeSelection *selection;
+      CtkTreePath *path;
+      CtkTreeSelection *selection;
 
       if (ctk_tree_view_get_path_at_pos (CTK_TREE_VIEW (op->priv->process_tree_view),
                                          (gint) event->button.x,
@@ -1422,19 +1422,19 @@ do_popup_menu_for_process_tree_view (GtkWidget         *widget,
 }
 
 static gboolean
-on_popup_menu_for_process_tree_view (GtkWidget *widget,
+on_popup_menu_for_process_tree_view (CtkWidget *widget,
                                      gpointer   user_data)
 {
-  GtkMountOperation *op = CTK_MOUNT_OPERATION (user_data);
+  CtkMountOperation *op = CTK_MOUNT_OPERATION (user_data);
   return do_popup_menu_for_process_tree_view (widget, NULL, op);
 }
 
 static gboolean
-on_button_press_event_for_process_tree_view (GtkWidget      *widget,
+on_button_press_event_for_process_tree_view (CtkWidget      *widget,
                                              GdkEventButton *event,
                                              gpointer        user_data)
 {
-  GtkMountOperation *op = CTK_MOUNT_OPERATION (user_data);
+  CtkMountOperation *op = CTK_MOUNT_OPERATION (user_data);
   gboolean ret;
 
   ret = FALSE;
@@ -1447,24 +1447,24 @@ on_button_press_event_for_process_tree_view (GtkWidget      *widget,
   return ret;
 }
 
-static GtkWidget *
-create_show_processes_dialog (GtkMountOperation *op,
+static CtkWidget *
+create_show_processes_dialog (CtkMountOperation *op,
                               const char      *message,
                               const char      *choices[])
 {
-  GtkMountOperationPrivate *priv;
-  GtkWidget  *dialog;
+  CtkMountOperationPrivate *priv;
+  CtkWidget  *dialog;
   const char *secondary = NULL;
   char       *primary;
   int        count, len = 0;
-  GtkWidget *label;
-  GtkWidget *tree_view;
-  GtkWidget *scrolled_window;
-  GtkWidget *vbox;
-  GtkWidget *content_area;
-  GtkTreeViewColumn *column;
-  GtkCellRenderer *renderer;
-  GtkListStore *list_store;
+  CtkWidget *label;
+  CtkWidget *tree_view;
+  CtkWidget *scrolled_window;
+  CtkWidget *vbox;
+  CtkWidget *content_area;
+  CtkTreeViewColumn *column;
+  CtkCellRenderer *renderer;
+  CtkListStore *list_store;
   gchar *s;
   gboolean use_header;
 
@@ -1587,7 +1587,7 @@ call_processes_proxy_cb (GObject     *source,
                         GAsyncResult *res,
                         gpointer      user_data)
 {
-  _GtkMountOperationHandler *proxy = _CTK_MOUNT_OPERATION_HANDLER (source);
+  _CtkMountOperationHandler *proxy = _CTK_MOUNT_OPERATION_HANDLER (source);
   GMountOperation *op = user_data;
   GMountOperationResult result;
   GVariant *result_details;
@@ -1626,13 +1626,13 @@ call_processes_proxy_cb (GObject     *source,
 }
 
 static void
-ctk_mount_operation_show_processes_do_proxy (GtkMountOperation *operation,
+ctk_mount_operation_show_processes_do_proxy (CtkMountOperation *operation,
                                              const char        *message,
                                              GArray            *processes,
                                              const char        *choices[])
 {
   gchar id[255];
-  g_sprintf(id, "GtkMountOperation%p", operation);
+  g_sprintf(id, "CtkMountOperation%p", operation);
 
   operation->priv->handler_showing = TRUE;
   g_object_notify (G_OBJECT (operation), "is-showing");
@@ -1650,13 +1650,13 @@ ctk_mount_operation_show_processes_do_proxy (GtkMountOperation *operation,
 }
 
 static void
-ctk_mount_operation_show_processes_do_ctk (GtkMountOperation *op,
+ctk_mount_operation_show_processes_do_ctk (CtkMountOperation *op,
                                            const char        *message,
                                            GArray            *processes,
                                            const char        *choices[])
 {
-  GtkMountOperationPrivate *priv;
-  GtkWidget *dialog = NULL;
+  CtkMountOperationPrivate *priv;
+  CtkWidget *dialog = NULL;
 
   g_return_if_fail (CTK_IS_MOUNT_OPERATION (op));
   g_return_if_fail (message != NULL);
@@ -1691,7 +1691,7 @@ ctk_mount_operation_show_processes (GMountOperation *op,
                                     const char      *choices[])
 {
 
-  GtkMountOperation *operation;
+  CtkMountOperation *operation;
   gboolean use_ctk;
 
   operation = CTK_MOUNT_OPERATION (op);
@@ -1706,7 +1706,7 @@ ctk_mount_operation_show_processes (GMountOperation *op,
 static void
 ctk_mount_operation_aborted (GMountOperation *op)
 {
-  GtkMountOperationPrivate *priv;
+  CtkMountOperationPrivate *priv;
 
   priv = CTK_MOUNT_OPERATION (op)->priv;
 
@@ -1731,14 +1731,14 @@ ctk_mount_operation_aborted (GMountOperation *op)
  * ctk_mount_operation_new:
  * @parent: (allow-none): transient parent of the window, or %NULL
  *
- * Creates a new #GtkMountOperation
+ * Creates a new #CtkMountOperation
  *
- * Returns: a new #GtkMountOperation
+ * Returns: a new #CtkMountOperation
  *
  * Since: 2.14
  */
 GMountOperation *
-ctk_mount_operation_new (GtkWindow *parent)
+ctk_mount_operation_new (CtkWindow *parent)
 {
   GMountOperation *mount_operation;
 
@@ -1750,9 +1750,9 @@ ctk_mount_operation_new (GtkWindow *parent)
 
 /**
  * ctk_mount_operation_is_showing:
- * @op: a #GtkMountOperation
+ * @op: a #CtkMountOperation
  *
- * Returns whether the #GtkMountOperation is currently displaying
+ * Returns whether the #CtkMountOperation is currently displaying
  * a window.
  *
  * Returns: %TRUE if @op is currently displaying a window
@@ -1760,7 +1760,7 @@ ctk_mount_operation_new (GtkWindow *parent)
  * Since: 2.14
  */
 gboolean
-ctk_mount_operation_is_showing (GtkMountOperation *op)
+ctk_mount_operation_is_showing (CtkMountOperation *op)
 {
   g_return_val_if_fail (CTK_IS_MOUNT_OPERATION (op), FALSE);
 
@@ -1769,19 +1769,19 @@ ctk_mount_operation_is_showing (GtkMountOperation *op)
 
 /**
  * ctk_mount_operation_set_parent:
- * @op: a #GtkMountOperation
+ * @op: a #CtkMountOperation
  * @parent: (allow-none): transient parent of the window, or %NULL
  *
  * Sets the transient parent for windows shown by the
- * #GtkMountOperation.
+ * #CtkMountOperation.
  *
  * Since: 2.14
  */
 void
-ctk_mount_operation_set_parent (GtkMountOperation *op,
-                                GtkWindow         *parent)
+ctk_mount_operation_set_parent (CtkMountOperation *op,
+                                CtkWindow         *parent)
 {
-  GtkMountOperationPrivate *priv;
+  CtkMountOperationPrivate *priv;
 
   g_return_if_fail (CTK_IS_MOUNT_OPERATION (op));
   g_return_if_fail (parent == NULL || CTK_IS_WINDOW (parent));
@@ -1815,16 +1815,16 @@ ctk_mount_operation_set_parent (GtkMountOperation *op,
 
 /**
  * ctk_mount_operation_get_parent:
- * @op: a #GtkMountOperation
+ * @op: a #CtkMountOperation
  *
- * Gets the transient parent used by the #GtkMountOperation
+ * Gets the transient parent used by the #CtkMountOperation
  *
  * Returns: (transfer none): the transient parent for windows shown by @op
  *
  * Since: 2.14
  */
-GtkWindow *
-ctk_mount_operation_get_parent (GtkMountOperation *op)
+CtkWindow *
+ctk_mount_operation_get_parent (CtkMountOperation *op)
 {
   g_return_val_if_fail (CTK_IS_MOUNT_OPERATION (op), NULL);
 
@@ -1833,18 +1833,18 @@ ctk_mount_operation_get_parent (GtkMountOperation *op)
 
 /**
  * ctk_mount_operation_set_screen:
- * @op: a #GtkMountOperation
+ * @op: a #CtkMountOperation
  * @screen: a #GdkScreen
  *
- * Sets the screen to show windows of the #GtkMountOperation on.
+ * Sets the screen to show windows of the #CtkMountOperation on.
  *
  * Since: 2.14
  */
 void
-ctk_mount_operation_set_screen (GtkMountOperation *op,
+ctk_mount_operation_set_screen (CtkMountOperation *op,
                                 GdkScreen         *screen)
 {
-  GtkMountOperationPrivate *priv;
+  CtkMountOperationPrivate *priv;
 
   g_return_if_fail (CTK_IS_MOUNT_OPERATION (op));
   g_return_if_fail (GDK_IS_SCREEN (screen));
@@ -1867,9 +1867,9 @@ ctk_mount_operation_set_screen (GtkMountOperation *op,
 
 /**
  * ctk_mount_operation_get_screen:
- * @op: a #GtkMountOperation
+ * @op: a #CtkMountOperation
  *
- * Gets the screen on which windows of the #GtkMountOperation
+ * Gets the screen on which windows of the #CtkMountOperation
  * will be shown.
  *
  * Returns: (transfer none): the screen on which windows of @op are shown
@@ -1877,9 +1877,9 @@ ctk_mount_operation_set_screen (GtkMountOperation *op,
  * Since: 2.14
  */
 GdkScreen *
-ctk_mount_operation_get_screen (GtkMountOperation *op)
+ctk_mount_operation_get_screen (CtkMountOperation *op)
 {
-  GtkMountOperationPrivate *priv;
+  CtkMountOperationPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_MOUNT_OPERATION (op), NULL);
 

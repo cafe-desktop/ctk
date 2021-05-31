@@ -1,4 +1,4 @@
-/* GtkPrintJob
+/* CtkPrintJob
  * Copyright (C) 2006 John (J5) Palmieri  <johnp@redhat.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -17,18 +17,18 @@
 
 /**
  * SECTION:ctkprintjob
- * @Title: GtkPrintJob
+ * @Title: CtkPrintJob
  * @Short_description: Represents a print job
  * @Include: ctk/ctkunixprint.h
  *
- * A #GtkPrintJob object represents a job that is sent to a
+ * A #CtkPrintJob object represents a job that is sent to a
  * printer. You only need to deal directly with print jobs if
- * you use the non-portable #GtkPrintUnixDialog API.
+ * you use the non-portable #CtkPrintUnixDialog API.
  *
  * Use ctk_print_job_get_surface() to obtain the cairo surface
  * onto which the pages must be drawn. Use ctk_print_job_send()
  * to send the finished job to the printer. If you don’t use cairo
- * #GtkPrintJob also supports printing of manually generated postscript,
+ * #CtkPrintJob also supports printing of manually generated postscript,
  * via ctk_print_job_set_source_file().
  */
 #include "config.h"
@@ -56,27 +56,27 @@
 #define O_BINARY 0
 #endif
 
-struct _GtkPrintJobPrivate
+struct _CtkPrintJobPrivate
 {
   gchar *title;
 
   GIOChannel *spool_io;
   cairo_surface_t *surface;
 
-  GtkPrintStatus status;
-  GtkPrintBackend *backend;
-  GtkPrinter *printer;
-  GtkPrintSettings *settings;
-  GtkPageSetup *page_setup;
+  CtkPrintStatus status;
+  CtkPrintBackend *backend;
+  CtkPrinter *printer;
+  CtkPrintSettings *settings;
+  CtkPageSetup *page_setup;
 
-  GtkPrintPages print_pages;
-  GtkPageRange *page_ranges;
+  CtkPrintPages print_pages;
+  CtkPageRange *page_ranges;
   gint num_page_ranges;
-  GtkPageSet page_set;
+  CtkPageSet page_set;
   gint num_copies;
   gdouble scale;
   guint number_up;
-  GtkNumberUpLayout number_up_layout;
+  CtkNumberUpLayout number_up_layout;
 
   guint printer_set           : 1;
   guint page_setup_set        : 1;
@@ -114,10 +114,10 @@ enum {
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkPrintJob, ctk_print_job, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkPrintJob, ctk_print_job, G_TYPE_OBJECT)
 
 static void
-ctk_print_job_class_init (GtkPrintJobClass *class)
+ctk_print_job_class_init (CtkPrintJobClass *class)
 {
   GObjectClass *object_class;
   object_class = (GObjectClass *) class;
@@ -175,8 +175,8 @@ ctk_print_job_class_init (GtkPrintJobClass *class)
   
 
   /**
-   * GtkPrintJob::status-changed:
-   * @job: the #GtkPrintJob object on which the signal was emitted
+   * CtkPrintJob::status-changed:
+   * @job: the #CtkPrintJob object on which the signal was emitted
    *
    * Gets emitted when the status of a job changes. The signal handler
    * can use ctk_print_job_get_status() to obtain the new status.
@@ -187,16 +187,16 @@ ctk_print_job_class_init (GtkPrintJobClass *class)
     g_signal_new (I_("status-changed"),
 		  G_TYPE_FROM_CLASS (class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkPrintJobClass, status_changed),
+		  G_STRUCT_OFFSET (CtkPrintJobClass, status_changed),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
 }
 
 static void
-ctk_print_job_init (GtkPrintJob *job)
+ctk_print_job_init (CtkPrintJob *job)
 {
-  GtkPrintJobPrivate *priv;
+  CtkPrintJobPrivate *priv;
 
   priv = job->priv = ctk_print_job_get_instance_private (job);
 
@@ -230,8 +230,8 @@ ctk_print_job_init (GtkPrintJob *job)
 static void
 ctk_print_job_constructed (GObject *object)
 {
-  GtkPrintJob *job = CTK_PRINT_JOB (object);
-  GtkPrintJobPrivate *priv = job->priv;
+  CtkPrintJob *job = CTK_PRINT_JOB (object);
+  CtkPrintJobPrivate *priv = job->priv;
 
   G_OBJECT_CLASS (ctk_print_job_parent_class)->constructed (object);
 
@@ -249,8 +249,8 @@ ctk_print_job_constructed (GObject *object)
 static void
 ctk_print_job_finalize (GObject *object)
 {
-  GtkPrintJob *job = CTK_PRINT_JOB (object);
-  GtkPrintJobPrivate *priv = job->priv;
+  CtkPrintJob *job = CTK_PRINT_JOB (object);
+  CtkPrintJobPrivate *priv = job->priv;
 
   if (priv->surface)
     cairo_surface_destroy (priv->surface);
@@ -285,21 +285,21 @@ ctk_print_job_finalize (GObject *object)
 /**
  * ctk_print_job_new:
  * @title: the job title
- * @printer: a #GtkPrinter
- * @settings: a #GtkPrintSettings
- * @page_setup: a #GtkPageSetup
+ * @printer: a #CtkPrinter
+ * @settings: a #CtkPrintSettings
+ * @page_setup: a #CtkPageSetup
  *
- * Creates a new #GtkPrintJob.
+ * Creates a new #CtkPrintJob.
  *
- * Returns: a new #GtkPrintJob
+ * Returns: a new #CtkPrintJob
  *
  * Since: 2.10
  **/
-GtkPrintJob *
+CtkPrintJob *
 ctk_print_job_new (const gchar      *title,
-		   GtkPrinter       *printer,
-		   GtkPrintSettings *settings,
-		   GtkPageSetup     *page_setup)
+		   CtkPrinter       *printer,
+		   CtkPrintSettings *settings,
+		   CtkPageSetup     *page_setup)
 {
   GObject *result;
   result = g_object_new (CTK_TYPE_PRINT_JOB,
@@ -308,21 +308,21 @@ ctk_print_job_new (const gchar      *title,
 			 "settings", settings,
 			 "page-setup", page_setup,
 			 NULL);
-  return (GtkPrintJob *) result;
+  return (CtkPrintJob *) result;
 }
 
 /**
  * ctk_print_job_get_settings:
- * @job: a #GtkPrintJob
+ * @job: a #CtkPrintJob
  * 
- * Gets the #GtkPrintSettings of the print job.
+ * Gets the #CtkPrintSettings of the print job.
  * 
  * Returns: (transfer none): the settings of @job
  *
  * Since: 2.10
  */
-GtkPrintSettings *
-ctk_print_job_get_settings (GtkPrintJob *job)
+CtkPrintSettings *
+ctk_print_job_get_settings (CtkPrintJob *job)
 {
   g_return_val_if_fail (CTK_IS_PRINT_JOB (job), NULL);
   
@@ -331,16 +331,16 @@ ctk_print_job_get_settings (GtkPrintJob *job)
 
 /**
  * ctk_print_job_get_printer:
- * @job: a #GtkPrintJob
+ * @job: a #CtkPrintJob
  * 
- * Gets the #GtkPrinter of the print job.
+ * Gets the #CtkPrinter of the print job.
  * 
  * Returns: (transfer none): the printer of @job
  *
  * Since: 2.10
  */
-GtkPrinter *
-ctk_print_job_get_printer (GtkPrintJob *job)
+CtkPrinter *
+ctk_print_job_get_printer (CtkPrintJob *job)
 {
   g_return_val_if_fail (CTK_IS_PRINT_JOB (job), NULL);
   
@@ -349,7 +349,7 @@ ctk_print_job_get_printer (GtkPrintJob *job)
 
 /**
  * ctk_print_job_get_title:
- * @job: a #GtkPrintJob
+ * @job: a #CtkPrintJob
  * 
  * Gets the job title.
  * 
@@ -358,7 +358,7 @@ ctk_print_job_get_printer (GtkPrintJob *job)
  * Since: 2.10
  */
 const gchar *
-ctk_print_job_get_title (GtkPrintJob *job)
+ctk_print_job_get_title (CtkPrintJob *job)
 {
   g_return_val_if_fail (CTK_IS_PRINT_JOB (job), NULL);
   
@@ -367,7 +367,7 @@ ctk_print_job_get_title (GtkPrintJob *job)
 
 /**
  * ctk_print_job_get_status:
- * @job: a #GtkPrintJob
+ * @job: a #CtkPrintJob
  * 
  * Gets the status of the print job.
  * 
@@ -375,8 +375,8 @@ ctk_print_job_get_title (GtkPrintJob *job)
  *
  * Since: 2.10
  */
-GtkPrintStatus
-ctk_print_job_get_status (GtkPrintJob *job)
+CtkPrintStatus
+ctk_print_job_get_status (CtkPrintJob *job)
 {
   g_return_val_if_fail (CTK_IS_PRINT_JOB (job), CTK_PRINT_STATUS_FINISHED);
   
@@ -384,10 +384,10 @@ ctk_print_job_get_status (GtkPrintJob *job)
 }
 
 void
-ctk_print_job_set_status (GtkPrintJob   *job,
-			  GtkPrintStatus status)
+ctk_print_job_set_status (CtkPrintJob   *job,
+			  CtkPrintStatus status)
 {
-  GtkPrintJobPrivate *priv;
+  CtkPrintJobPrivate *priv;
 
   g_return_if_fail (CTK_IS_PRINT_JOB (job));
 
@@ -402,11 +402,11 @@ ctk_print_job_set_status (GtkPrintJob   *job,
 
 /**
  * ctk_print_job_set_source_file:
- * @job: a #GtkPrintJob
+ * @job: a #CtkPrintJob
  * @filename: (type filename): the file to be printed
  * @error: return location for errors
  * 
- * Make the #GtkPrintJob send an existing document to the 
+ * Make the #CtkPrintJob send an existing document to the 
  * printing system. The file can be in any format understood
  * by the platforms printing system (typically PostScript,
  * but on many platforms PDF may work too). See 
@@ -417,11 +417,11 @@ ctk_print_job_set_status (GtkPrintJob   *job,
  * Since: 2.10
  **/
 gboolean
-ctk_print_job_set_source_file (GtkPrintJob *job,
+ctk_print_job_set_source_file (CtkPrintJob *job,
 			       const gchar *filename,
 			       GError     **error)
 {
-  GtkPrintJobPrivate *priv;
+  CtkPrintJobPrivate *priv;
   GError *tmp_error;
 
   tmp_error = NULL;
@@ -446,11 +446,11 @@ ctk_print_job_set_source_file (GtkPrintJob *job,
 
 /**
  * ctk_print_job_set_source_fd:
- * @job: a #GtkPrintJob
+ * @job: a #CtkPrintJob
  * @fd: a file descriptor
  * @error: return location for errors
  *
- * Make the #GtkPrintJob send an existing document to the
+ * Make the #CtkPrintJob send an existing document to the
  * printing system. The file can be in any format understood
  * by the platforms printing system (typically PostScript,
  * but on many platforms PDF may work too). See
@@ -465,7 +465,7 @@ ctk_print_job_set_source_file (GtkPrintJob *job,
  * Since: 3.22
  */
 gboolean
-ctk_print_job_set_source_fd (GtkPrintJob  *job,
+ctk_print_job_set_source_fd (CtkPrintJob  *job,
                              int           fd,
                              GError      **error)
 {
@@ -481,7 +481,7 @@ ctk_print_job_set_source_fd (GtkPrintJob  *job,
 
 /**
  * ctk_print_job_get_surface:
- * @job: a #GtkPrintJob
+ * @job: a #CtkPrintJob
  * @error: (allow-none): return location for errors, or %NULL
  * 
  * Gets a cairo surface onto which the pages of
@@ -492,13 +492,13 @@ ctk_print_job_set_source_fd (GtkPrintJob  *job,
  * Since: 2.10
  **/
 cairo_surface_t *
-ctk_print_job_get_surface (GtkPrintJob  *job,
+ctk_print_job_get_surface (CtkPrintJob  *job,
 			   GError      **error)
 {
-  GtkPrintJobPrivate *priv;
+  CtkPrintJobPrivate *priv;
   gchar *filename = NULL;
   gdouble width, height;
-  GtkPaperSize *paper_size;
+  CtkPaperSize *paper_size;
   int fd;
   GError *tmp_error;
 
@@ -559,7 +559,7 @@ ctk_print_job_get_surface (GtkPrintJob  *job,
 
 /**
  * ctk_print_job_set_track_print_status:
- * @job: a #GtkPrintJob
+ * @job: a #CtkPrintJob
  * @track_status: %TRUE to track status after printing
  * 
  * If track_status is %TRUE, the print job will try to continue report
@@ -573,10 +573,10 @@ ctk_print_job_get_surface (GtkPrintJob  *job,
  * Since: 2.10
  */
 void
-ctk_print_job_set_track_print_status (GtkPrintJob *job,
+ctk_print_job_set_track_print_status (CtkPrintJob *job,
 				      gboolean     track_status)
 {
-  GtkPrintJobPrivate *priv;
+  CtkPrintJobPrivate *priv;
 
   g_return_if_fail (CTK_IS_PRINT_JOB (job));
 
@@ -594,7 +594,7 @@ ctk_print_job_set_track_print_status (GtkPrintJob *job,
 
 /**
  * ctk_print_job_get_track_print_status:
- * @job: a #GtkPrintJob
+ * @job: a #CtkPrintJob
  *
  * Returns wheter jobs will be tracked after printing.
  * For details, see ctk_print_job_set_track_print_status().
@@ -604,9 +604,9 @@ ctk_print_job_set_track_print_status (GtkPrintJob *job,
  * Since: 2.10
  */
 gboolean
-ctk_print_job_get_track_print_status (GtkPrintJob *job)
+ctk_print_job_get_track_print_status (CtkPrintJob *job)
 {
-  GtkPrintJobPrivate *priv;
+  CtkPrintJobPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_PRINT_JOB (job), FALSE);
 
@@ -622,9 +622,9 @@ ctk_print_job_set_property (GObject      *object,
                             GParamSpec   *pspec)
 
 {
-  GtkPrintJob *job = CTK_PRINT_JOB (object);
-  GtkPrintJobPrivate *priv = job->priv;
-  GtkPrintSettings *settings;
+  CtkPrintJob *job = CTK_PRINT_JOB (object);
+  CtkPrintJobPrivate *priv = job->priv;
+  CtkPrintSettings *settings;
 
   switch (prop_id)
     {
@@ -668,8 +668,8 @@ ctk_print_job_get_property (GObject    *object,
 			    GValue     *value,
 			    GParamSpec *pspec)
 {
-  GtkPrintJob *job = CTK_PRINT_JOB (object);
-  GtkPrintJobPrivate *priv = job->priv;
+  CtkPrintJob *job = CTK_PRINT_JOB (object);
+  CtkPrintJobPrivate *priv = job->priv;
 
   switch (prop_id)
     {
@@ -696,7 +696,7 @@ ctk_print_job_get_property (GObject    *object,
 
 /**
  * ctk_print_job_send:
- * @job: a GtkPrintJob
+ * @job: a CtkPrintJob
  * @callback: function to call when the job completes or an error occurs
  * @user_data: user data that gets passed to @callback
  * @dnotify: destroy notify for @user_data
@@ -706,12 +706,12 @@ ctk_print_job_get_property (GObject    *object,
  * Since: 2.10
  **/
 void
-ctk_print_job_send (GtkPrintJob             *job,
-                    GtkPrintJobCompleteFunc  callback,
+ctk_print_job_send (CtkPrintJob             *job,
+                    CtkPrintJobCompleteFunc  callback,
                     gpointer                 user_data,
 		    GDestroyNotify           dnotify)
 {
-  GtkPrintJobPrivate *priv;
+  CtkPrintJobPrivate *priv;
 
   g_return_if_fail (CTK_IS_PRINT_JOB (job));
 
@@ -729,50 +729,50 @@ ctk_print_job_send (GtkPrintJob             *job,
 
 /**
  * ctk_print_job_get_pages:
- * @job: a #GtkPrintJob
+ * @job: a #CtkPrintJob
  *
- * Gets the #GtkPrintPages setting for this job.
+ * Gets the #CtkPrintPages setting for this job.
  *
- * Returns: the #GtkPrintPages setting
+ * Returns: the #CtkPrintPages setting
  *
  * Since: 3.0
  */
-GtkPrintPages
-ctk_print_job_get_pages (GtkPrintJob *job)
+CtkPrintPages
+ctk_print_job_get_pages (CtkPrintJob *job)
 {
   return job->priv->print_pages;
 }
 
 /**
  * ctk_print_job_set_pages:
- * @job: a #GtkPrintJob
- * @pages: the #GtkPrintPages setting
+ * @job: a #CtkPrintJob
+ * @pages: the #CtkPrintPages setting
  *
- * Sets the #GtkPrintPages setting for this job.
+ * Sets the #CtkPrintPages setting for this job.
  *
  * Since: 3.0
  */
 void
-ctk_print_job_set_pages (GtkPrintJob   *job,
-                         GtkPrintPages  pages)
+ctk_print_job_set_pages (CtkPrintJob   *job,
+                         CtkPrintPages  pages)
 {
   job->priv->print_pages = pages;
 }
 
 /**
  * ctk_print_job_get_page_ranges:
- * @job: a #GtkPrintJob
+ * @job: a #CtkPrintJob
  * @n_ranges: (out): return location for the number of ranges
  *
  * Gets the page ranges for this job.
  *
  * Returns: (array length=n_ranges) (transfer none): a pointer to an
- * array of #GtkPageRange structs
+ * array of #CtkPageRange structs
  *
  * Since: 3.0
  */
-GtkPageRange *
-ctk_print_job_get_page_ranges (GtkPrintJob *job,
+CtkPageRange *
+ctk_print_job_get_page_ranges (CtkPrintJob *job,
                                gint        *n_ranges)
 {
   *n_ranges = job->priv->num_page_ranges;
@@ -781,9 +781,9 @@ ctk_print_job_get_page_ranges (GtkPrintJob *job,
 
 /**
  * ctk_print_job_set_page_ranges:
- * @job: a #GtkPrintJob
+ * @job: a #CtkPrintJob
  * @ranges: (array length=n_ranges) (transfer full): pointer to an array of
- *    #GtkPageRange structs
+ *    #CtkPageRange structs
  * @n_ranges: the length of the @ranges array
  *
  * Sets the page ranges for this job.
@@ -791,8 +791,8 @@ ctk_print_job_get_page_ranges (GtkPrintJob *job,
  * Since: 3.0
  */
 void
-ctk_print_job_set_page_ranges (GtkPrintJob  *job,
-                               GtkPageRange *ranges,
+ctk_print_job_set_page_ranges (CtkPrintJob  *job,
+                               CtkPageRange *ranges,
                                gint          n_ranges)
 {
   g_free (job->priv->page_ranges);
@@ -802,39 +802,39 @@ ctk_print_job_set_page_ranges (GtkPrintJob  *job,
 
 /**
  * ctk_print_job_get_page_set:
- * @job: a #GtkPrintJob
+ * @job: a #CtkPrintJob
  *
- * Gets the #GtkPageSet setting for this job.
+ * Gets the #CtkPageSet setting for this job.
  *
- * Returns: the #GtkPageSet setting
+ * Returns: the #CtkPageSet setting
  *
  * Since: 3.0
  */
-GtkPageSet
-ctk_print_job_get_page_set (GtkPrintJob *job)
+CtkPageSet
+ctk_print_job_get_page_set (CtkPrintJob *job)
 {
   return job->priv->page_set;
 }
 
 /**
  * ctk_print_job_set_page_set:
- * @job: a #GtkPrintJob
- * @page_set: a #GtkPageSet setting
+ * @job: a #CtkPrintJob
+ * @page_set: a #CtkPageSet setting
  *
- * Sets the #GtkPageSet setting for this job.
+ * Sets the #CtkPageSet setting for this job.
  *
  * Since: 3.0
  */
 void
-ctk_print_job_set_page_set (GtkPrintJob *job,
-                            GtkPageSet   page_set)
+ctk_print_job_set_page_set (CtkPrintJob *job,
+                            CtkPageSet   page_set)
 {
   job->priv->page_set = page_set;
 }
 
 /**
  * ctk_print_job_get_num_copies:
- * @job: a #GtkPrintJob
+ * @job: a #CtkPrintJob
  *
  * Gets the number of copies of this job.
  *
@@ -843,14 +843,14 @@ ctk_print_job_set_page_set (GtkPrintJob *job,
  * Since: 3.0
  */
 gint
-ctk_print_job_get_num_copies (GtkPrintJob *job)
+ctk_print_job_get_num_copies (CtkPrintJob *job)
 {
   return job->priv->num_copies;
 }
 
 /**
  * ctk_print_job_set_num_copies:
- * @job: a #GtkPrintJob
+ * @job: a #CtkPrintJob
  * @num_copies: the number of copies
  *
  * Sets the number of copies for this job.
@@ -858,7 +858,7 @@ ctk_print_job_get_num_copies (GtkPrintJob *job)
  * Since: 3.0
  */
 void
-ctk_print_job_set_num_copies (GtkPrintJob *job,
+ctk_print_job_set_num_copies (CtkPrintJob *job,
                               gint         num_copies)
 {
   job->priv->num_copies = num_copies;
@@ -866,7 +866,7 @@ ctk_print_job_set_num_copies (GtkPrintJob *job,
 
 /**
  * ctk_print_job_get_scale:
- * @job: a #GtkPrintJob
+ * @job: a #CtkPrintJob
  *
  * Gets the scale for this job (where 1.0 means unscaled).
  *
@@ -875,7 +875,7 @@ ctk_print_job_set_num_copies (GtkPrintJob *job,
  * Since: 3.0
  */
 gdouble
-ctk_print_job_get_scale (GtkPrintJob *job)
+ctk_print_job_get_scale (CtkPrintJob *job)
 
 {
   return job->priv->scale;
@@ -883,7 +883,7 @@ ctk_print_job_get_scale (GtkPrintJob *job)
 
 /**
  * ctk_print_job_set_scale:
- * @job: a #GtkPrintJob
+ * @job: a #CtkPrintJob
  * @scale: the scale
  *
  * Sets the scale for this job (where 1.0 means unscaled).
@@ -891,7 +891,7 @@ ctk_print_job_get_scale (GtkPrintJob *job)
  * Since: 3.0
  */
 void
-ctk_print_job_set_scale (GtkPrintJob *job,
+ctk_print_job_set_scale (CtkPrintJob *job,
                          gdouble      scale)
 {
   job->priv->scale = scale;
@@ -899,7 +899,7 @@ ctk_print_job_set_scale (GtkPrintJob *job,
 
 /**
  * ctk_print_job_get_n_up:
- * @job: a #GtkPrintJob
+ * @job: a #CtkPrintJob
  *
  * Gets the n-up setting for this job.
  *
@@ -908,14 +908,14 @@ ctk_print_job_set_scale (GtkPrintJob *job,
  * Since: 3.0
  */
 guint
-ctk_print_job_get_n_up (GtkPrintJob *job)
+ctk_print_job_get_n_up (CtkPrintJob *job)
 {
   return job->priv->number_up;
 }
 
 /**
  * ctk_print_job_set_n_up:
- * @job: a #GtkPrintJob
+ * @job: a #CtkPrintJob
  * @n_up: the n-up value
  *
  * Sets the n-up setting for this job.
@@ -923,7 +923,7 @@ ctk_print_job_get_n_up (GtkPrintJob *job)
  * Since: 3.0
  */
 void
-ctk_print_job_set_n_up (GtkPrintJob *job,
+ctk_print_job_set_n_up (CtkPrintJob *job,
                         guint        n_up)
 {
   job->priv->number_up = n_up;
@@ -931,7 +931,7 @@ ctk_print_job_set_n_up (GtkPrintJob *job,
 
 /**
  * ctk_print_job_get_n_up_layout:
- * @job: a #GtkPrintJob
+ * @job: a #CtkPrintJob
  *
  * Gets the n-up layout setting for this job.
  *
@@ -939,15 +939,15 @@ ctk_print_job_set_n_up (GtkPrintJob *job,
  *
  * Since: 3.0
  */
-GtkNumberUpLayout
-ctk_print_job_get_n_up_layout (GtkPrintJob *job)
+CtkNumberUpLayout
+ctk_print_job_get_n_up_layout (CtkPrintJob *job)
 {
   return job->priv->number_up_layout;
 }
 
 /**
  * ctk_print_job_set_n_up_layout:
- * @job: a #GtkPrintJob
+ * @job: a #CtkPrintJob
  * @layout: the n-up layout setting
  *
  * Sets the n-up layout setting for this job.
@@ -955,15 +955,15 @@ ctk_print_job_get_n_up_layout (GtkPrintJob *job)
  * Since: 3.0
  */
 void
-ctk_print_job_set_n_up_layout (GtkPrintJob       *job,
-                               GtkNumberUpLayout  layout)
+ctk_print_job_set_n_up_layout (CtkPrintJob       *job,
+                               CtkNumberUpLayout  layout)
 {
   job->priv->number_up_layout = layout;
 }
 
 /**
  * ctk_print_job_get_rotate:
- * @job: a #GtkPrintJob
+ * @job: a #CtkPrintJob
  *
  * Gets whether the job is printed rotated.
  *
@@ -972,14 +972,14 @@ ctk_print_job_set_n_up_layout (GtkPrintJob       *job,
  * Since: 3.0
  */
 gboolean
-ctk_print_job_get_rotate (GtkPrintJob *job)
+ctk_print_job_get_rotate (CtkPrintJob *job)
 {
   return job->priv->rotate_to_orientation;
 }
 
 /**
  * ctk_print_job_set_rotate:
- * @job: a #GtkPrintJob
+ * @job: a #CtkPrintJob
  * @rotate: whether to print rotated
  *
  * Sets whether this job is printed rotated.
@@ -987,7 +987,7 @@ ctk_print_job_get_rotate (GtkPrintJob *job)
  * Since: 3.0
  */
 void
-ctk_print_job_set_rotate (GtkPrintJob *job,
+ctk_print_job_set_rotate (CtkPrintJob *job,
                           gboolean     rotate)
 {
   job->priv->rotate_to_orientation = rotate;
@@ -995,7 +995,7 @@ ctk_print_job_set_rotate (GtkPrintJob *job,
 
 /**
  * ctk_print_job_get_collate:
- * @job: a #GtkPrintJob
+ * @job: a #CtkPrintJob
  *
  * Gets whether this job is printed collated.
  *
@@ -1004,14 +1004,14 @@ ctk_print_job_set_rotate (GtkPrintJob *job,
  * Since: 3.0
  */
 gboolean
-ctk_print_job_get_collate (GtkPrintJob *job)
+ctk_print_job_get_collate (CtkPrintJob *job)
 {
   return job->priv->collate;
 }
 
 /**
  * ctk_print_job_set_collate:
- * @job: a #GtkPrintJob
+ * @job: a #CtkPrintJob
  * @collate: whether the job is printed collated
  *
  * Sets whether this job is printed collated.
@@ -1019,7 +1019,7 @@ ctk_print_job_get_collate (GtkPrintJob *job)
  * Since: 3.0
  */
 void
-ctk_print_job_set_collate (GtkPrintJob *job,
+ctk_print_job_set_collate (CtkPrintJob *job,
                            gboolean     collate)
 {
   job->priv->collate = collate;
@@ -1027,7 +1027,7 @@ ctk_print_job_set_collate (GtkPrintJob *job,
 
 /**
  * ctk_print_job_get_reverse:
- * @job: a #GtkPrintJob
+ * @job: a #CtkPrintJob
  *
  * Gets whether this job is printed reversed.
  *
@@ -1036,14 +1036,14 @@ ctk_print_job_set_collate (GtkPrintJob *job,
  * Since: 3.0
  */
 gboolean
-ctk_print_job_get_reverse (GtkPrintJob *job)
+ctk_print_job_get_reverse (CtkPrintJob *job)
 {
   return job->priv->reverse;
 }
 
 /**
  * ctk_print_job_set_reverse:
- * @job: a #GtkPrintJob
+ * @job: a #CtkPrintJob
  * @reverse: whether the job is printed reversed
  *
  * Sets whether this job is printed reversed.
@@ -1051,7 +1051,7 @@ ctk_print_job_get_reverse (GtkPrintJob *job)
  * Since: 3.0
  */
 void
-ctk_print_job_set_reverse (GtkPrintJob *job,
+ctk_print_job_set_reverse (CtkPrintJob *job,
                            gboolean     reverse)
 {
   job->priv->reverse = reverse;

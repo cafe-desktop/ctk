@@ -33,28 +33,28 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_WIN32_EMBED_WIDGET            (ctk_win32_embed_widget_get_type ())
-#define CTK_WIN32_EMBED_WIDGET(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_WIN32_EMBED_WIDGET, GtkWin32EmbedWidget))
-#define CTK_WIN32_EMBED_WIDGET_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_WIN32_EMBED_WIDGET, GtkWin32EmbedWidgetClass))
+#define CTK_WIN32_EMBED_WIDGET(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_WIN32_EMBED_WIDGET, CtkWin32EmbedWidget))
+#define CTK_WIN32_EMBED_WIDGET_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_WIN32_EMBED_WIDGET, CtkWin32EmbedWidgetClass))
 #define CTK_IS_WIN32_EMBED_WIDGET(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_WIN32_EMBED_WIDGET))
 #define CTK_IS_WIN32_EMBED_WIDGET_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_WIN32_EMBED_WIDGET))
-#define CTK_WIN32_EMBED_WIDGET_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_WIN32_EMBED_WIDGET, GtkWin32EmbedWidgetClass))
+#define CTK_WIN32_EMBED_WIDGET_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_WIN32_EMBED_WIDGET, CtkWin32EmbedWidgetClass))
 
 
-typedef struct _GtkWin32EmbedWidget        GtkWin32EmbedWidget;
-typedef struct _GtkWin32EmbedWidgetClass   GtkWin32EmbedWidgetClass;
+typedef struct _CtkWin32EmbedWidget        CtkWin32EmbedWidget;
+typedef struct _CtkWin32EmbedWidgetClass   CtkWin32EmbedWidgetClass;
 
 
-struct _GtkWin32EmbedWidget
+struct _CtkWin32EmbedWidget
 {
-  GtkWindow window;
+  CtkWindow window;
 
   GdkWindow *parent_window;
   gpointer old_window_procedure;
 };
 
-struct _GtkWin32EmbedWidgetClass
+struct _CtkWin32EmbedWidgetClass
 {
-  GtkWindowClass parent_class;
+  CtkWindowClass parent_class;
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -65,8 +65,8 @@ struct _GtkWin32EmbedWidgetClass
 
 
 GType      ctk_win32_embed_widget_get_type (void) G_GNUC_CONST;
-GtkWidget* _ctk_win32_embed_widget_new              (HWND parent);
-BOOL       _ctk_win32_embed_widget_dialog_procedure (GtkWin32EmbedWidget *embed_widget,
+CtkWidget* _ctk_win32_embed_widget_new              (HWND parent);
+BOOL       _ctk_win32_embed_widget_dialog_procedure (CtkWin32EmbedWidget *embed_widget,
 						     HWND wnd, UINT message, WPARAM wparam, LPARAM lparam);
 
 

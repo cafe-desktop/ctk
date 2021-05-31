@@ -27,48 +27,48 @@ G_BEGIN_DECLS
 extern GType ctk_type_im_context_thai;
 
 #define CTK_TYPE_IM_CONTEXT_THAI            (ctk_type_im_context_thai)
-#define CTK_IM_CONTEXT_THAI(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_IM_CONTEXT_THAI, GtkIMContextThai))
-#define CTK_IM_CONTEXT_THAI_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_IM_CONTEXT_THAI, GtkIMContextThaiClass))
+#define CTK_IM_CONTEXT_THAI(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_IM_CONTEXT_THAI, CtkIMContextThai))
+#define CTK_IM_CONTEXT_THAI_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_IM_CONTEXT_THAI, CtkIMContextThaiClass))
 #define CTK_IS_IM_CONTEXT_THAI(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_IM_CONTEXT_THAI))
 #define CTK_IS_IM_CONTEXT_THAI_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_IM_CONTEXT_THAI))
-#define CTK_IM_CONTEXT_THAI_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_IM_CONTEXT_THAI, GtkIMContextThaiClass))
+#define CTK_IM_CONTEXT_THAI_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_IM_CONTEXT_THAI, CtkIMContextThaiClass))
 
 
-typedef struct _GtkIMContextThai       GtkIMContextThai;
-typedef struct _GtkIMContextThaiClass  GtkIMContextThaiClass;
+typedef struct _CtkIMContextThai       CtkIMContextThai;
+typedef struct _CtkIMContextThaiClass  CtkIMContextThaiClass;
 
 typedef enum
 {
   ISC_PASSTHROUGH,
   ISC_BASICCHECK,
   ISC_STRICT
-} GtkIMContextThaiISCMode;
+} CtkIMContextThaiISCMode;
 #define CTK_IM_CONTEXT_THAI_BUFF_SIZE 2
 
-struct _GtkIMContextThai
+struct _CtkIMContextThai
 {
-  GtkIMContext object;
+  CtkIMContext object;
 
 #ifndef CTK_IM_CONTEXT_THAI_NO_FALLBACK
   gunichar                char_buff[CTK_IM_CONTEXT_THAI_BUFF_SIZE];
 #endif /* !CTK_IM_CONTEXT_THAI_NO_FALLBACK */
-  GtkIMContextThaiISCMode isc_mode;
+  CtkIMContextThaiISCMode isc_mode;
 };
 
-struct _GtkIMContextThaiClass
+struct _CtkIMContextThaiClass
 {
-  GtkIMContextClass parent_class;
+  CtkIMContextClass parent_class;
 };
 
 void ctk_im_context_thai_register_type (GTypeModule *type_module);
-GtkIMContext *ctk_im_context_thai_new (void);
+CtkIMContext *ctk_im_context_thai_new (void);
 
-GtkIMContextThaiISCMode
-  ctk_im_context_thai_get_isc_mode (GtkIMContextThai *context_thai);
+CtkIMContextThaiISCMode
+  ctk_im_context_thai_get_isc_mode (CtkIMContextThai *context_thai);
 
-GtkIMContextThaiISCMode
-  ctk_im_context_thai_set_isc_mode (GtkIMContextThai *context_thai,
-                                    GtkIMContextThaiISCMode mode);
+CtkIMContextThaiISCMode
+  ctk_im_context_thai_set_isc_mode (CtkIMContextThai *context_thai,
+                                    CtkIMContextThaiISCMode mode);
 
 G_END_DECLS
 

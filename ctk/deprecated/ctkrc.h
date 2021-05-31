@@ -35,18 +35,18 @@
 G_BEGIN_DECLS
 
 /* Forward declarations */
-typedef struct _GtkRcContext    GtkRcContext;
-typedef struct _GtkRcStyleClass GtkRcStyleClass;
+typedef struct _CtkRcContext    CtkRcContext;
+typedef struct _CtkRcStyleClass CtkRcStyleClass;
 
 #define CTK_TYPE_RC_STYLE              (ctk_rc_style_get_type ())
-#define CTK_RC_STYLE(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CTK_TYPE_RC_STYLE, GtkRcStyle))
-#define CTK_RC_STYLE_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RC_STYLE, GtkRcStyleClass))
+#define CTK_RC_STYLE(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CTK_TYPE_RC_STYLE, CtkRcStyle))
+#define CTK_RC_STYLE_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RC_STYLE, CtkRcStyleClass))
 #define CTK_IS_RC_STYLE(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CTK_TYPE_RC_STYLE))
 #define CTK_IS_RC_STYLE_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_RC_STYLE))
-#define CTK_RC_STYLE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_RC_STYLE, GtkRcStyleClass))
+#define CTK_RC_STYLE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_RC_STYLE, CtkRcStyleClass))
 
 /**
- * GtkRcFlags:
+ * CtkRcFlags:
  * @CTK_RC_FG :Deprecated
  * @CTK_RC_BG: Deprecated
  * @CTK_RC_TEXT: Deprecated
@@ -60,14 +60,14 @@ typedef enum
   CTK_RC_BG             = 1 << 1,
   CTK_RC_TEXT           = 1 << 2,
   CTK_RC_BASE           = 1 << 3
-} GtkRcFlags;
+} CtkRcFlags;
 
 /**
- * GtkRcStyle:
+ * CtkRcStyle:
  * @name: Name
  * @bg_pixmap_name: Pixmap name
  * @font_desc: A #PangoFontDescription
- * @color_flags: #GtkRcFlags
+ * @color_flags: #CtkRcFlags
  * @fg: Foreground colors
  * @bg: Background colors
  * @text: Text colors
@@ -75,12 +75,12 @@ typedef enum
  * @xthickness: X thickness
  * @ythickness: Y thickness
  *
- * The #GtkRcStyle-struct is used to represent a set
+ * The #CtkRcStyle-struct is used to represent a set
  * of information about the appearance of a widget.
  * This can later be composited together with other
- * #GtkRcStyle-struct<!-- -->s to form a #GtkStyle.
+ * #CtkRcStyle-struct<!-- -->s to form a #CtkStyle.
  */
-struct _GtkRcStyle
+struct _CtkRcStyle
 {
   GObject parent_instance;
 
@@ -90,7 +90,7 @@ struct _GtkRcStyle
   gchar *bg_pixmap_name[5];
   PangoFontDescription *font_desc;
 
-  GtkRcFlags color_flags[5];
+  CtkRcFlags color_flags[5];
   GdkColor   fg[5];
   GdkColor   bg[5];
   GdkColor   text[5];
@@ -111,14 +111,14 @@ struct _GtkRcStyle
 };
 
 /**
- * GtkRcStyleClass:
+ * CtkRcStyleClass:
  * @parent_class: The parent class.
  * @create_rc_style: 
  * @parse: 
  * @merge: 
  * @create_style: 
  */
-struct _GtkRcStyleClass
+struct _CtkRcStyleClass
 {
   GObjectClass parent_class;
 
@@ -129,25 +129,25 @@ struct _GtkRcStyleClass
    * g_object_new (G_OBJECT_TYPE (style), NULL);
    * should work in most cases.
    */
-  GtkRcStyle * (*create_rc_style) (GtkRcStyle *rc_style);
+  CtkRcStyle * (*create_rc_style) (CtkRcStyle *rc_style);
 
-  /* Fill in engine specific parts of GtkRcStyle by parsing contents
+  /* Fill in engine specific parts of CtkRcStyle by parsing contents
    * of brackets. Returns G_TOKEN_NONE if successful, otherwise returns
    * the token it expected but didn't get.
    */
-  guint     (*parse)  (GtkRcStyle   *rc_style,
-                       GtkSettings  *settings,
+  guint     (*parse)  (CtkRcStyle   *rc_style,
+                       CtkSettings  *settings,
                        GScanner     *scanner);
 
   /* Combine RC style data from src into dest. If overridden, this
    * function should chain to the parent.
    */
-  void      (*merge)  (GtkRcStyle *dest,
-                       GtkRcStyle *src);
+  void      (*merge)  (CtkRcStyle *dest,
+                       CtkRcStyle *src);
 
   /* Create an empty style suitable to this RC style
    */
-  GtkStyle * (*create_style) (GtkRcStyle *rc_style);
+  CtkStyle * (*create_style) (CtkRcStyle *rc_style);
 
   /*< private >*/
 
@@ -165,60 +165,60 @@ gboolean  _ctk_rc_match_widget_class     (GSList       *list,
                                           gchar        *path,
                                           gchar        *path_reversed);
 
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
+GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 void      ctk_rc_add_default_file       (const gchar *filename);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
+GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 void      ctk_rc_set_default_files      (gchar **filenames);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
+GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 gchar**   ctk_rc_get_default_files      (void);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-GtkStyle* ctk_rc_get_style              (GtkWidget   *widget);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-GtkStyle* ctk_rc_get_style_by_paths     (GtkSettings *settings,
+GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CtkStyle* ctk_rc_get_style              (CtkWidget   *widget);
+GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CtkStyle* ctk_rc_get_style_by_paths     (CtkSettings *settings,
                                          const char  *widget_path,
                                          const char  *class_path,
                                          GType        type);
 
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-gboolean ctk_rc_reparse_all_for_settings (GtkSettings *settings,
+GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+gboolean ctk_rc_reparse_all_for_settings (CtkSettings *settings,
                                           gboolean     force_load);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-void     ctk_rc_reset_styles             (GtkSettings *settings);
+GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+void     ctk_rc_reset_styles             (CtkSettings *settings);
 
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-gchar*   ctk_rc_find_pixmap_in_path (GtkSettings  *settings,
+GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+gchar*   ctk_rc_find_pixmap_in_path (CtkSettings  *settings,
                                      GScanner     *scanner,
                                      const gchar  *pixmap_file);
 
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
+GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 void     ctk_rc_parse                   (const gchar *filename);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
+GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 void      ctk_rc_parse_string           (const gchar *rc_string);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
+GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 gboolean  ctk_rc_reparse_all            (void);
 
 GDK_DEPRECATED_IN_3_0
 GType       ctk_rc_style_get_type   (void) G_GNUC_CONST;
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-GtkRcStyle* ctk_rc_style_new        (void);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-GtkRcStyle* ctk_rc_style_copy       (GtkRcStyle *orig);
+GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CtkRcStyle* ctk_rc_style_new        (void);
+GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CtkRcStyle* ctk_rc_style_copy       (CtkRcStyle *orig);
 
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
+GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 gchar*      ctk_rc_find_module_in_path (const gchar *module_file);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
+GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 gchar*      ctk_rc_get_theme_dir       (void);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
+GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 gchar*      ctk_rc_get_module_dir      (void);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
+GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 gchar*      ctk_rc_get_im_module_path  (void);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
+GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 gchar*      ctk_rc_get_im_module_file  (void);
 
 /* private functions/definitions */
 
 /**
- * GtkRcTokenType:
+ * CtkRcTokenType:
  * @CTK_RC_TOKEN_INVALID: Deprecated
  * @CTK_RC_TOKEN_INCLUDE: Deprecated
  * @CTK_RC_TOKEN_NORMAL: Deprecated
@@ -260,12 +260,12 @@ gchar*      ctk_rc_get_im_module_file  (void);
  * @CTK_RC_TOKEN_UNBIND: Deprecated
  * @CTK_RC_TOKEN_LAST: Deprecated
  *
- * The #GtkRcTokenType enumeration represents the tokens
+ * The #CtkRcTokenType enumeration represents the tokens
  * in the RC file. It is exposed so that theme engines
  * can reuse these tokens when parsing the theme-engine
  * specific portions of a RC file.
  *
- * Deprecated: 3.0: Use #GtkCssProvider instead.
+ * Deprecated: 3.0: Use #CtkCssProvider instead.
  */
 typedef enum {
   CTK_RC_TOKEN_INVALID = G_TOKEN_LAST,
@@ -308,11 +308,11 @@ typedef enum {
   CTK_RC_TOKEN_COLOR,
   CTK_RC_TOKEN_UNBIND,
   CTK_RC_TOKEN_LAST
-} GtkRcTokenType;
+} CtkRcTokenType;
 
 
 /**
- * GtkPathPriorityType:
+ * CtkPathPriorityType:
  * @CTK_PATH_PRIO_LOWEST: Deprecated
  * @CTK_PATH_PRIO_CTK: Deprecated
  * @CTK_PATH_PRIO_APPLICATION: Deprecated
@@ -333,11 +333,11 @@ typedef enum
   CTK_PATH_PRIO_THEME       = 10,
   CTK_PATH_PRIO_RC          = 12,
   CTK_PATH_PRIO_HIGHEST     = 15
-} GtkPathPriorityType;
+} CtkPathPriorityType;
 #define CTK_PATH_PRIO_MASK 0x0f
 
 /**
- * GtkPathType:
+ * CtkPathType:
  * @CTK_PATH_WIDGET: Deprecated
  * @CTK_PATH_WIDGET_CLASS: Deprecated
  * @CTK_PATH_CLASS: Deprecated
@@ -352,53 +352,53 @@ typedef enum
   CTK_PATH_WIDGET,
   CTK_PATH_WIDGET_CLASS,
   CTK_PATH_CLASS
-} GtkPathType;
+} CtkPathType;
 
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
+GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 GScanner* ctk_rc_scanner_new    (void);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
+GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 guint     ctk_rc_parse_color    (GScanner            *scanner,
                                  GdkColor            *color);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
+GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 guint     ctk_rc_parse_color_full (GScanner          *scanner,
-                                   GtkRcStyle        *style,
+                                   CtkRcStyle        *style,
                                    GdkColor          *color);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
+GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 guint     ctk_rc_parse_state    (GScanner            *scanner,
-                                 GtkStateType        *state);
-GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
+                                 CtkStateType        *state);
+GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 guint     ctk_rc_parse_priority (GScanner            *scanner,
-                                 GtkPathPriorityType *priority);
+                                 CtkPathPriorityType *priority);
 
 /* rc properties
  * (structure forward declared in ctkstyle.h)
  */
 /**
- * GtkRcProperty:
+ * CtkRcProperty:
  * @type_name: quark-ified type identifier
  * @property_name: quark-ified property identifier like
- *   “GtkScrollbar::spacing”
- * @origin: field similar to one found in #GtkSettingsValue
- * @value:field similar to one found in #GtkSettingsValue
+ *   “CtkScrollbar::spacing”
+ * @origin: field similar to one found in #CtkSettingsValue
+ * @value:field similar to one found in #CtkSettingsValue
  *
  * Deprecated
  */
-struct _GtkRcProperty
+struct _CtkRcProperty
 {
-  /* quark-ified property identifier like “GtkScrollbar::spacing” */
+  /* quark-ified property identifier like “CtkScrollbar::spacing” */
   GQuark type_name;
   GQuark property_name;
 
-  /* fields similar to GtkSettingsValue */
+  /* fields similar to CtkSettingsValue */
   gchar *origin;
   GValue value;
 };
 
 GDK_DEPRECATED_IN_3_0
-void      ctk_binding_set_add_path (GtkBindingSet       *binding_set,
-                                    GtkPathType          path_type,
+void      ctk_binding_set_add_path (CtkBindingSet       *binding_set,
+                                    CtkPathType          path_type,
                                     const gchar         *path_pattern,
-                                    GtkPathPriorityType  priority);
+                                    CtkPathPriorityType  priority);
 
 G_END_DECLS
 

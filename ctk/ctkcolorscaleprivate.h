@@ -23,27 +23,27 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_COLOR_SCALE            (ctk_color_scale_get_type ())
-#define CTK_COLOR_SCALE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_COLOR_SCALE, GtkColorScale))
-#define CTK_COLOR_SCALE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_COLOR_SCALE, GtkColorScaleClass))
+#define CTK_COLOR_SCALE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_COLOR_SCALE, CtkColorScale))
+#define CTK_COLOR_SCALE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_COLOR_SCALE, CtkColorScaleClass))
 #define CTK_IS_COLOR_SCALE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_COLOR_SCALE))
 #define CTK_IS_COLOR_SCALE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_COLOR_SCALE))
-#define CTK_COLOR_SCALE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_COLOR_SCALE, GtkColorScaleClass))
+#define CTK_COLOR_SCALE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_COLOR_SCALE, CtkColorScaleClass))
 
 
-typedef struct _GtkColorScale         GtkColorScale;
-typedef struct _GtkColorScaleClass    GtkColorScaleClass;
-typedef struct _GtkColorScalePrivate  GtkColorScalePrivate;
+typedef struct _CtkColorScale         CtkColorScale;
+typedef struct _CtkColorScaleClass    CtkColorScaleClass;
+typedef struct _CtkColorScalePrivate  CtkColorScalePrivate;
 
-struct _GtkColorScale
+struct _CtkColorScale
 {
-  GtkScale parent_instance;
+  CtkScale parent_instance;
 
-  GtkColorScalePrivate *priv;
+  CtkColorScalePrivate *priv;
 };
 
-struct _GtkColorScaleClass
+struct _CtkColorScaleClass
 {
-  GtkScaleClass parent_class;
+  CtkScaleClass parent_class;
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -56,15 +56,15 @@ typedef enum
 {
   CTK_COLOR_SCALE_HUE,
   CTK_COLOR_SCALE_ALPHA
-} GtkColorScaleType;
+} CtkColorScaleType;
 
 GType       ctk_color_scale_get_type (void) G_GNUC_CONST;
-GtkWidget * ctk_color_scale_new      (GtkAdjustment     *adjustment,
-                                      GtkColorScaleType  type);
-void        ctk_color_scale_set_rgba (GtkColorScale     *scale,
+CtkWidget * ctk_color_scale_new      (CtkAdjustment     *adjustment,
+                                      CtkColorScaleType  type);
+void        ctk_color_scale_set_rgba (CtkColorScale     *scale,
                                       const GdkRGBA     *color);
 
-void        ctk_color_scale_draw_trough (GtkColorScale  *scale,
+void        ctk_color_scale_draw_trough (CtkColorScale  *scale,
                                          cairo_t        *cr,
                                          int             x,
                                          int             y,

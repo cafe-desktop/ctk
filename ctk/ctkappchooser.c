@@ -21,14 +21,14 @@
 
 /**
  * SECTION:ctkappchooser
- * @Title: GtkAppChooser
+ * @Title: CtkAppChooser
  * @Short_description: Interface implemented by widgets for choosing an application
  * @See_also: #GAppInfo
  *
- * #GtkAppChooser is an interface that can be implemented by widgets which
+ * #CtkAppChooser is an interface that can be implemented by widgets which
  * allow the user to choose an application (typically for the purpose of
  * opening a file). The main objects that implement this interface are
- * #GtkAppChooserWidget, #GtkAppChooserDialog and #GtkAppChooserButton.
+ * #CtkAppChooserWidget, #CtkAppChooserDialog and #CtkAppChooserButton.
  *
  * Applications are represented by GIO #GAppInfo objects here.
  * GIO has a concept of recommended and fallback applications for a
@@ -36,11 +36,11 @@
  * to handle the content type itself, while fallback also includes
  * applications that handle a more generic content type. GIO also
  * knows the default and last-used application for a given content
- * type. The #GtkAppChooserWidget provides detailed control over
+ * type. The #CtkAppChooserWidget provides detailed control over
  * whether the shown list of applications should include default,
  * recommended or fallback applications.
  *
- * To obtain the application that has been selected in a #GtkAppChooser,
+ * To obtain the application that has been selected in a #CtkAppChooser,
  * use ctk_app_chooser_get_app_info().
  */
 
@@ -54,17 +54,17 @@
 
 #include <glib.h>
 
-G_DEFINE_INTERFACE (GtkAppChooser, ctk_app_chooser, CTK_TYPE_WIDGET);
+G_DEFINE_INTERFACE (CtkAppChooser, ctk_app_chooser, CTK_TYPE_WIDGET);
 
 static void
-ctk_app_chooser_default_init (GtkAppChooserIface *iface)
+ctk_app_chooser_default_init (CtkAppChooserIface *iface)
 {
   GParamSpec *pspec;
 
   /**
-   * GtkAppChooser:content-type:
+   * CtkAppChooser:content-type:
    *
-   * The content type of the #GtkAppChooser object.
+   * The content type of the #CtkAppChooser object.
    *
    * See [GContentType][gio-GContentType]
    * for more information about content types.
@@ -81,16 +81,16 @@ ctk_app_chooser_default_init (GtkAppChooserIface *iface)
 
 /**
  * ctk_app_chooser_get_content_type:
- * @self: a #GtkAppChooser
+ * @self: a #CtkAppChooser
  *
- * Returns the current value of the #GtkAppChooser:content-type property.
+ * Returns the current value of the #CtkAppChooser:content-type property.
  *
  * Returns: the content type of @self. Free with g_free()
  *
  * Since: 3.0
  */
 gchar *
-ctk_app_chooser_get_content_type (GtkAppChooser *self)
+ctk_app_chooser_get_content_type (CtkAppChooser *self)
 {
   gchar *retval = NULL;
 
@@ -105,7 +105,7 @@ ctk_app_chooser_get_content_type (GtkAppChooser *self)
 
 /**
  * ctk_app_chooser_get_app_info:
- * @self: a #GtkAppChooser
+ * @self: a #CtkAppChooser
  *
  * Returns the currently selected application.
  *
@@ -115,21 +115,21 @@ ctk_app_chooser_get_content_type (GtkAppChooser *self)
  * Since: 3.0
  */
 GAppInfo *
-ctk_app_chooser_get_app_info (GtkAppChooser *self)
+ctk_app_chooser_get_app_info (CtkAppChooser *self)
 {
   return CTK_APP_CHOOSER_GET_IFACE (self)->get_app_info (self);
 }
 
 /**
  * ctk_app_chooser_refresh:
- * @self: a #GtkAppChooser
+ * @self: a #CtkAppChooser
  *
  * Reloads the list of applications.
  *
  * Since: 3.0
  */
 void
-ctk_app_chooser_refresh (GtkAppChooser *self)
+ctk_app_chooser_refresh (CtkAppChooser *self)
 {
   CTK_APP_CHOOSER_GET_IFACE (self)->refresh (self);
 }

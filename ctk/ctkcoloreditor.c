@@ -39,32 +39,32 @@
 
 #include <math.h>
 
-struct _GtkColorEditorPrivate
+struct _CtkColorEditorPrivate
 {
-  GtkWidget *overlay;
-  GtkWidget *grid;
-  GtkWidget *swatch;
-  GtkWidget *entry;
-  GtkWidget *h_slider;
-  GtkWidget *h_popup;
-  GtkWidget *h_entry;
-  GtkWidget *a_slider;
-  GtkWidget *a_popup;
-  GtkWidget *a_entry;
-  GtkWidget *sv_plane;
-  GtkWidget *sv_popup;
-  GtkWidget *s_entry;
-  GtkWidget *v_entry;
-  GtkWidget *current_popup;
-  GtkWidget *popdown_focus;
+  CtkWidget *overlay;
+  CtkWidget *grid;
+  CtkWidget *swatch;
+  CtkWidget *entry;
+  CtkWidget *h_slider;
+  CtkWidget *h_popup;
+  CtkWidget *h_entry;
+  CtkWidget *a_slider;
+  CtkWidget *a_popup;
+  CtkWidget *a_entry;
+  CtkWidget *sv_plane;
+  CtkWidget *sv_popup;
+  CtkWidget *s_entry;
+  CtkWidget *v_entry;
+  CtkWidget *current_popup;
+  CtkWidget *popdown_focus;
 
-  GtkAdjustment *h_adj;
-  GtkAdjustment *s_adj;
-  GtkAdjustment *v_adj;
-  GtkAdjustment *a_adj;
+  CtkAdjustment *h_adj;
+  CtkAdjustment *s_adj;
+  CtkAdjustment *v_adj;
+  CtkAdjustment *a_adj;
 
-  GtkWidget *picker_button;
-  GtkColorPicker *picker;
+  CtkWidget *picker_button;
+  CtkColorPicker *picker;
 
   gint popup_position;
 
@@ -79,10 +79,10 @@ enum
   PROP_USE_ALPHA
 };
 
-static void ctk_color_editor_iface_init (GtkColorChooserInterface *iface);
+static void ctk_color_editor_iface_init (CtkColorChooserInterface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkColorEditor, ctk_color_editor, CTK_TYPE_BOX,
-                         G_ADD_PRIVATE (GtkColorEditor)
+G_DEFINE_TYPE_WITH_CODE (CtkColorEditor, ctk_color_editor, CTK_TYPE_BOX,
+                         G_ADD_PRIVATE (CtkColorEditor)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_COLOR_CHOOSER,
                                                 ctk_color_editor_iface_init))
 
@@ -96,7 +96,7 @@ scale_round (gdouble value, gdouble scale)
 }
 
 static void
-entry_set_rgba (GtkColorEditor *editor,
+entry_set_rgba (CtkColorEditor *editor,
                 const GdkRGBA  *color)
 {
   gchar *text;
@@ -111,8 +111,8 @@ entry_set_rgba (GtkColorEditor *editor,
 }
 
 static void
-entry_apply (GtkWidget      *entry,
-             GtkColorEditor *editor)
+entry_apply (CtkWidget      *entry,
+             CtkColorEditor *editor)
 {
   GdkRGBA color;
   gchar *text;
@@ -133,24 +133,24 @@ entry_apply (GtkWidget      *entry,
 }
 
 static gboolean
-entry_focus_out (GtkWidget      *entry,
+entry_focus_out (CtkWidget      *entry,
                  GdkEventFocus  *event,
-                 GtkColorEditor *editor)
+                 CtkColorEditor *editor)
 {
   entry_apply (entry, editor);
   return FALSE;
 }
 
 static void
-entry_text_changed (GtkWidget      *entry,
+entry_text_changed (CtkWidget      *entry,
                     GParamSpec     *pspec,
-                    GtkColorEditor *editor)
+                    CtkColorEditor *editor)
 {
   editor->priv->text_changed = TRUE;
 }
 
 static void
-hsv_changed (GtkColorEditor *editor)
+hsv_changed (CtkColorEditor *editor)
 {
   GdkRGBA color;
   gdouble h, s, v, a;
@@ -171,7 +171,7 @@ hsv_changed (GtkColorEditor *editor)
 }
 
 static void
-dismiss_current_popup (GtkColorEditor *editor)
+dismiss_current_popup (CtkColorEditor *editor)
 {
   if (editor->priv->current_popup)
     {
@@ -188,12 +188,12 @@ dismiss_current_popup (GtkColorEditor *editor)
 }
 
 static void
-popup_edit (GtkWidget      *widget,
-            GtkColorEditor *editor)
+popup_edit (CtkWidget      *widget,
+            CtkColorEditor *editor)
 {
-  GtkWidget *popup = NULL;
-  GtkWidget *toplevel;
-  GtkWidget *focus;
+  CtkWidget *popup = NULL;
+  CtkWidget *toplevel;
+  CtkWidget *focus;
   gint position;
   gint s, e;
 
@@ -233,9 +233,9 @@ popup_edit (GtkWidget      *widget,
 }
 
 static gboolean
-popup_key_press (GtkWidget      *popup,
+popup_key_press (CtkWidget      *popup,
                  GdkEventKey    *event,
-                 GtkColorEditor *editor)
+                 CtkColorEditor *editor)
 {
   if (event->keyval == GDK_KEY_Escape)
     {
@@ -247,13 +247,13 @@ popup_key_press (GtkWidget      *popup,
 }
 
 static gboolean
-get_child_position (GtkOverlay     *overlay,
-                    GtkWidget      *widget,
-                    GtkAllocation  *allocation,
-                    GtkColorEditor *editor)
+get_child_position (CtkOverlay     *overlay,
+                    CtkWidget      *widget,
+                    CtkAllocation  *allocation,
+                    CtkColorEditor *editor)
 {
-  GtkRequisition req;
-  GtkAllocation alloc;
+  CtkRequisition req;
+  CtkAllocation alloc;
   gint s, e;
 
   ctk_widget_get_preferred_size (widget, &req, NULL);
@@ -310,8 +310,8 @@ get_child_position (GtkOverlay     *overlay,
 }
 
 static void
-value_changed (GtkAdjustment *a,
-               GtkAdjustment *as)
+value_changed (CtkAdjustment *a,
+               CtkAdjustment *as)
 {
   gdouble scale;
 
@@ -321,11 +321,11 @@ value_changed (GtkAdjustment *a,
   g_signal_handlers_unblock_by_func (as, value_changed, a);
 }
 
-static GtkAdjustment *
-scaled_adjustment (GtkAdjustment *a,
+static CtkAdjustment *
+scaled_adjustment (CtkAdjustment *a,
                    gdouble        scale)
 {
-  GtkAdjustment *as;
+  CtkAdjustment *as;
 
   as = ctk_adjustment_new (ctk_adjustment_get_value (a) * scale,
                            ctk_adjustment_get_lower (a) * scale,
@@ -341,11 +341,11 @@ scaled_adjustment (GtkAdjustment *a,
 }
 
 static gboolean
-popup_draw (GtkWidget      *popup,
+popup_draw (CtkWidget      *popup,
             cairo_t        *cr,
-            GtkColorEditor *editor)
+            CtkColorEditor *editor)
 {
-  GtkStyleContext *context;
+  CtkStyleContext *context;
   gint width, height;
 
   context = ctk_widget_get_style_context (popup);
@@ -363,8 +363,8 @@ color_picked (GObject      *source,
               GAsyncResult *res,
               gpointer      data)
 {
-  GtkColorPicker *picker = CTK_COLOR_PICKER (source);
-  GtkColorEditor *editor = data;
+  CtkColorPicker *picker = CTK_COLOR_PICKER (source);
+  CtkColorEditor *editor = data;
   GError *error = NULL;
   GdkRGBA *color;
 
@@ -381,14 +381,14 @@ color_picked (GObject      *source,
 }
 
 static void
-pick_color (GtkButton      *button,
-            GtkColorEditor *editor)
+pick_color (CtkButton      *button,
+            CtkColorEditor *editor)
 {
   ctk_color_picker_pick (editor->priv->picker, color_picked, editor);
 }
 
 static void
-ctk_color_editor_init (GtkColorEditor *editor)
+ctk_color_editor_init (CtkColorEditor *editor)
 {
   editor->priv = ctk_color_editor_get_instance_private (editor);
   editor->priv->use_alpha = TRUE;
@@ -414,7 +414,7 @@ ctk_color_editor_init (GtkColorEditor *editor)
                                  "marks-after");
 
   /* Create the scaled popup adjustments manually here because connecting user data is not
-   * supported by template GtkBuilder xml (it would be possible to set this up in the xml
+   * supported by template CtkBuilder xml (it would be possible to set this up in the xml
    * but require 4 separate callbacks and would be rather ugly).
    */
   ctk_spin_button_set_adjustment (CTK_SPIN_BUTTON (editor->priv->h_entry), scaled_adjustment (editor->priv->h_adj, 100));
@@ -437,7 +437,7 @@ ctk_color_editor_init (GtkColorEditor *editor)
 static void
 ctk_color_editor_dispose (GObject *object)
 {
-  GtkColorEditor *editor = CTK_COLOR_EDITOR (object);
+  CtkColorEditor *editor = CTK_COLOR_EDITOR (object);
 
   dismiss_current_popup (editor);
   g_clear_object (&editor->priv->picker);
@@ -451,8 +451,8 @@ ctk_color_editor_get_property (GObject    *object,
                                GValue     *value,
                                GParamSpec *pspec)
 {
-  GtkColorEditor *ce = CTK_COLOR_EDITOR (object);
-  GtkColorChooser *cc = CTK_COLOR_CHOOSER (object);
+  CtkColorEditor *ce = CTK_COLOR_EDITOR (object);
+  CtkColorChooser *cc = CTK_COLOR_CHOOSER (object);
 
   switch (prop_id)
     {
@@ -473,7 +473,7 @@ ctk_color_editor_get_property (GObject    *object,
 }
 
 static void
-ctk_color_editor_set_use_alpha (GtkColorEditor *editor,
+ctk_color_editor_set_use_alpha (CtkColorEditor *editor,
                                 gboolean        use_alpha)
 {
   if (editor->priv->use_alpha != use_alpha)
@@ -490,8 +490,8 @@ ctk_color_editor_set_property (GObject      *object,
                                const GValue *value,
                                GParamSpec   *pspec)
 {
-  GtkColorEditor *ce = CTK_COLOR_EDITOR (object);
-  GtkColorChooser *cc = CTK_COLOR_CHOOSER (object);
+  CtkColorEditor *ce = CTK_COLOR_EDITOR (object);
+  CtkColorChooser *cc = CTK_COLOR_CHOOSER (object);
 
   switch (prop_id)
     {
@@ -508,10 +508,10 @@ ctk_color_editor_set_property (GObject      *object,
 }
 
 static void
-ctk_color_editor_class_init (GtkColorEditorClass *class)
+ctk_color_editor_class_init (CtkColorEditorClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
   object_class->dispose = ctk_color_editor_dispose;
   object_class->get_property = ctk_color_editor_get_property;
@@ -525,25 +525,25 @@ ctk_color_editor_class_init (GtkColorEditorClass *class)
   ctk_widget_class_set_template_from_resource (widget_class,
 					       "/org/ctk/libctk/ui/ctkcoloreditor.ui");
 
-  ctk_widget_class_bind_template_child_private (widget_class, GtkColorEditor, overlay);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkColorEditor, grid);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkColorEditor, swatch);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkColorEditor, entry);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkColorEditor, h_slider);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkColorEditor, h_popup);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkColorEditor, h_entry);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkColorEditor, a_slider);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkColorEditor, a_popup);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkColorEditor, a_entry);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkColorEditor, sv_plane);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkColorEditor, sv_popup);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkColorEditor, s_entry);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkColorEditor, v_entry);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkColorEditor, h_adj);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkColorEditor, s_adj);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkColorEditor, v_adj);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkColorEditor, a_adj);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkColorEditor, picker_button);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkColorEditor, overlay);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkColorEditor, grid);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkColorEditor, swatch);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkColorEditor, entry);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkColorEditor, h_slider);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkColorEditor, h_popup);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkColorEditor, h_entry);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkColorEditor, a_slider);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkColorEditor, a_popup);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkColorEditor, a_entry);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkColorEditor, sv_plane);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkColorEditor, sv_popup);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkColorEditor, s_entry);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkColorEditor, v_entry);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkColorEditor, h_adj);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkColorEditor, s_adj);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkColorEditor, v_adj);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkColorEditor, a_adj);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkColorEditor, picker_button);
 
   ctk_widget_class_bind_template_callback (widget_class, hsv_changed);
   ctk_widget_class_bind_template_callback (widget_class, popup_draw);
@@ -558,10 +558,10 @@ ctk_color_editor_class_init (GtkColorEditorClass *class)
 }
 
 static void
-ctk_color_editor_get_rgba (GtkColorChooser *chooser,
+ctk_color_editor_get_rgba (CtkColorChooser *chooser,
                            GdkRGBA         *color)
 {
-  GtkColorEditor *editor = CTK_COLOR_EDITOR (chooser);
+  CtkColorEditor *editor = CTK_COLOR_EDITOR (chooser);
   gdouble h, s, v;
 
   h = ctk_adjustment_get_value (editor->priv->h_adj);
@@ -572,10 +572,10 @@ ctk_color_editor_get_rgba (GtkColorChooser *chooser,
 }
 
 static void
-ctk_color_editor_set_rgba (GtkColorChooser *chooser,
+ctk_color_editor_set_rgba (CtkColorChooser *chooser,
                            const GdkRGBA   *color)
 {
-  GtkColorEditor *editor = CTK_COLOR_EDITOR (chooser);
+  CtkColorEditor *editor = CTK_COLOR_EDITOR (chooser);
   gdouble h, s, v;
 
   ctk_rgb_to_hsv (color->red, color->green, color->blue, &h, &s, &v);
@@ -593,14 +593,14 @@ ctk_color_editor_set_rgba (GtkColorChooser *chooser,
 }
 
 static void
-ctk_color_editor_iface_init (GtkColorChooserInterface *iface)
+ctk_color_editor_iface_init (CtkColorChooserInterface *iface)
 {
   iface->get_rgba = ctk_color_editor_get_rgba;
   iface->set_rgba = ctk_color_editor_set_rgba;
 }
 
-GtkWidget *
+CtkWidget *
 ctk_color_editor_new (void)
 {
-  return (GtkWidget *) g_object_new (CTK_TYPE_COLOR_EDITOR, NULL);
+  return (CtkWidget *) g_object_new (CTK_TYPE_COLOR_EDITOR, NULL);
 }

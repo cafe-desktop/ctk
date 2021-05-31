@@ -3,14 +3,14 @@
 
 typedef struct
 {
-  GtkApplication parent_instance;
+  CtkApplication parent_instance;
 
   guint quit_inhibit;
   GMenu *time;
   guint timeout;
 } BloatPad;
 
-typedef GtkApplicationClass BloatPadClass;
+typedef CtkApplicationClass BloatPadClass;
 
 G_DEFINE_TYPE (BloatPad, bloat_pad, CTK_TYPE_APPLICATION)
 
@@ -52,7 +52,7 @@ change_busy_state (GSimpleAction *action,
                    GVariant      *state,
                    gpointer       user_data)
 {
-  GtkWindow *window = user_data;
+  CtkWindow *window = user_data;
   GApplication *application = G_APPLICATION (ctk_window_get_application (window));
 
   /* do this twice to test multiple busy counter increases */
@@ -75,7 +75,7 @@ change_justify_state (GSimpleAction *action,
                       GVariant      *state,
                       gpointer       user_data)
 {
-  GtkTextView *text = g_object_get_data (user_data, "bloatpad-text");
+  CtkTextView *text = g_object_get_data (user_data, "bloatpad-text");
   const gchar *str;
 
   str = g_variant_get_string (state, NULL);
@@ -93,8 +93,8 @@ change_justify_state (GSimpleAction *action,
   g_simple_action_set_state (action, state);
 }
 
-static GtkClipboard *
-get_clipboard (GtkWidget *widget)
+static CtkClipboard *
+get_clipboard (CtkWidget *widget)
 {
   return ctk_widget_get_clipboard (widget, gdk_atom_intern_static_string ("CLIPBOARD"));
 }
@@ -104,11 +104,11 @@ window_copy (GSimpleAction *action,
              GVariant      *parameter,
              gpointer       user_data)
 {
-  GtkWindow *window = CTK_WINDOW (user_data);
-  GtkTextView *text = g_object_get_data ((GObject*)window, "bloatpad-text");
+  CtkWindow *window = CTK_WINDOW (user_data);
+  CtkTextView *text = g_object_get_data ((GObject*)window, "bloatpad-text");
 
   ctk_text_buffer_copy_clipboard (ctk_text_view_get_buffer (text),
-                                  get_clipboard ((GtkWidget*) text));
+                                  get_clipboard ((CtkWidget*) text));
 }
 
 static void
@@ -116,11 +116,11 @@ window_paste (GSimpleAction *action,
               GVariant      *parameter,
               gpointer       user_data)
 {
-  GtkWindow *window = CTK_WINDOW (user_data);
-  GtkTextView *text = g_object_get_data ((GObject*)window, "bloatpad-text");
+  CtkWindow *window = CTK_WINDOW (user_data);
+  CtkTextView *text = g_object_get_data ((GObject*)window, "bloatpad-text");
   
   ctk_text_buffer_paste_clipboard (ctk_text_view_get_buffer (text),
-                                   get_clipboard ((GtkWidget*) text),
+                                   get_clipboard ((CtkWidget*) text),
                                    NULL,
                                    TRUE);
 
@@ -131,8 +131,8 @@ activate_clear (GSimpleAction *action,
                 GVariant      *parameter,
                 gpointer       user_data)
 {
-  GtkWindow *window = CTK_WINDOW (user_data);
-  GtkTextView *text = g_object_get_data ((GObject*)window, "bloatpad-text");
+  CtkWindow *window = CTK_WINDOW (user_data);
+  CtkTextView *text = g_object_get_data ((GObject*)window, "bloatpad-text");
 
   ctk_text_buffer_set_text (ctk_text_view_get_buffer (text), "", -1);
 }
@@ -142,7 +142,7 @@ activate_clear_all (GSimpleAction *action,
                     GVariant      *parameter,
                     gpointer       user_data)
 {
-  GtkApplication *app = CTK_APPLICATION (user_data);
+  CtkApplication *app = CTK_APPLICATION (user_data);
   GList *iter;
 
   for (iter = ctk_application_get_windows (app); iter; iter = iter->next)
@@ -150,10 +150,10 @@ activate_clear_all (GSimpleAction *action,
 }
 
 static void
-text_buffer_changed_cb (GtkTextBuffer *buffer,
+text_buffer_changed_cb (CtkTextBuffer *buffer,
                         gpointer       user_data)
 {
-  GtkWindow *window = user_data;
+  CtkWindow *window = user_data;
   BloatPad *app;
   gint old_n, n;
 
@@ -217,13 +217,13 @@ static void
 new_window (GApplication *app,
             GFile        *file)
 {
-  GtkWidget *window, *grid, *scrolled, *view;
-  GtkWidget *toolbar;
-  GtkToolItem *button;
-  GtkWidget *sw, *box, *label;
+  CtkWidget *window, *grid, *scrolled, *view;
+  CtkWidget *toolbar;
+  CtkToolItem *button;
+  CtkWidget *sw, *box, *label;
 
   window = ctk_application_window_new (CTK_APPLICATION (app));
-  ctk_window_set_default_size ((GtkWindow*)window, 640, 480);
+  ctk_window_set_default_size ((CtkWindow*)window, 640, 480);
   g_action_map_add_action_entries (G_ACTION_MAP (window), win_entries, G_N_ELEMENTS (win_entries), window);
   ctk_window_set_title (CTK_WINDOW (window), "Bloatpad");
 
@@ -282,7 +282,7 @@ new_window (GApplication *app,
 
       if (g_file_load_contents (file, NULL, &contents, &length, NULL, NULL))
         {
-          GtkTextBuffer *buffer;
+          CtkTextBuffer *buffer;
 
           buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
           ctk_text_buffer_set_text (buffer, contents, length);
@@ -353,10 +353,10 @@ quit_activated (GSimpleAction *action,
 }
 
 static void
-combo_changed (GtkComboBox *combo,
+combo_changed (CtkComboBox *combo,
                gpointer     user_data)
 {
-  GtkEntry *entry = g_object_get_data (user_data, "entry");
+  CtkEntry *entry = g_object_get_data (user_data, "entry");
   const gchar *action;
   gchar **accels;
   gchar *str;
@@ -374,12 +374,12 @@ combo_changed (GtkComboBox *combo,
 }
 
 static void
-response (GtkDialog *dialog,
+response (CtkDialog *dialog,
           guint      response_id,
           gpointer   user_data)
 {
-  GtkEntry *entry = g_object_get_data (user_data, "entry");
-  GtkComboBox *combo = g_object_get_data (user_data, "combo");
+  CtkEntry *entry = g_object_get_data (user_data, "entry");
+  CtkComboBox *combo = g_object_get_data (user_data, "combo");
   const gchar *action;
   const gchar *str;
   gchar **accels;
@@ -407,11 +407,11 @@ edit_accels (GSimpleAction *action,
              GVariant      *parameter,
              gpointer       user_data)
 {
-  GtkApplication *app = user_data;
-  GtkWidget *combo;
-  GtkWidget *entry;
+  CtkApplication *app = user_data;
+  CtkWidget *combo;
+  CtkWidget *entry;
   gchar **actions;
-  GtkWidget *dialog;
+  CtkWidget *dialog;
   gint i;
 
   dialog = ctk_dialog_new ();
@@ -491,7 +491,7 @@ static GActionEntry app_entries[] = {
 };
 
 static void
-dump_accels (GtkApplication *app)
+dump_accels (CtkApplication *app)
 {
   gchar **actions;
   gint i;
@@ -516,7 +516,7 @@ static void
 bloat_pad_startup (GApplication *application)
 {
   BloatPad *bloatpad = (BloatPad*) application;
-  GtkApplication *app = CTK_APPLICATION (application);
+  CtkApplication *app = CTK_APPLICATION (application);
   GMenu *menu;
   GMenuItem *item;
   GBytes *bytes;

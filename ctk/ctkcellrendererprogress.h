@@ -35,27 +35,27 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CELL_RENDERER_PROGRESS (ctk_cell_renderer_progress_get_type ())
-#define CTK_CELL_RENDERER_PROGRESS(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_RENDERER_PROGRESS, GtkCellRendererProgress))
-#define CTK_CELL_RENDERER_PROGRESS_CLASS(klass)	  (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CELL_RENDERER_PROGRESS, GtkCellRendererProgressClass))
+#define CTK_CELL_RENDERER_PROGRESS(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_RENDERER_PROGRESS, CtkCellRendererProgress))
+#define CTK_CELL_RENDERER_PROGRESS_CLASS(klass)	  (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CELL_RENDERER_PROGRESS, CtkCellRendererProgressClass))
 #define CTK_IS_CELL_RENDERER_PROGRESS(obj)	  (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CELL_RENDERER_PROGRESS))
 #define CTK_IS_CELL_RENDERER_PROGRESS_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_CELL_RENDERER_PROGRESS))
-#define CTK_CELL_RENDERER_PROGRESS_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CELL_RENDERER_PROGRESS, GtkCellRendererProgressClass))
+#define CTK_CELL_RENDERER_PROGRESS_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CELL_RENDERER_PROGRESS, CtkCellRendererProgressClass))
 
-typedef struct _GtkCellRendererProgress         GtkCellRendererProgress;
-typedef struct _GtkCellRendererProgressClass    GtkCellRendererProgressClass;
-typedef struct _GtkCellRendererProgressPrivate  GtkCellRendererProgressPrivate;
+typedef struct _CtkCellRendererProgress         CtkCellRendererProgress;
+typedef struct _CtkCellRendererProgressClass    CtkCellRendererProgressClass;
+typedef struct _CtkCellRendererProgressPrivate  CtkCellRendererProgressPrivate;
 
-struct _GtkCellRendererProgress
+struct _CtkCellRendererProgress
 {
-  GtkCellRenderer parent_instance;
+  CtkCellRenderer parent_instance;
 
   /*< private >*/
-  GtkCellRendererProgressPrivate *priv;
+  CtkCellRendererProgressPrivate *priv;
 };
 
-struct _GtkCellRendererProgressClass
+struct _CtkCellRendererProgressClass
 {
-  GtkCellRendererClass parent_class;
+  CtkCellRendererClass parent_class;
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -67,7 +67,7 @@ struct _GtkCellRendererProgressClass
 GDK_AVAILABLE_IN_ALL
 GType		 ctk_cell_renderer_progress_get_type (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkCellRenderer* ctk_cell_renderer_progress_new      (void);
+CtkCellRenderer* ctk_cell_renderer_progress_new      (void);
 
 G_END_DECLS
 

@@ -23,11 +23,11 @@
 
 G_BEGIN_DECLS
 
-typedef union _GtkCssMatcher GtkCssMatcher;
-typedef struct _GtkCssNode GtkCssNode;
-typedef struct _GtkCssNodeDeclaration GtkCssNodeDeclaration;
-typedef struct _GtkCssStyle GtkCssStyle;
-typedef struct _GtkStyleProviderPrivate GtkStyleProviderPrivate; /* dummy typedef */
+typedef union _CtkCssMatcher CtkCssMatcher;
+typedef struct _CtkCssNode CtkCssNode;
+typedef struct _CtkCssNodeDeclaration CtkCssNodeDeclaration;
+typedef struct _CtkCssStyle CtkCssStyle;
+typedef struct _CtkStyleProviderPrivate CtkStyleProviderPrivate; /* dummy typedef */
 
 #define CTK_CSS_CHANGE_CLASS                          (1ULL <<  0)
 #define CTK_CSS_CHANGE_NAME                           (1ULL <<  1)
@@ -70,7 +70,7 @@ typedef struct _GtkStyleProviderPrivate GtkStyleProviderPrivate; /* dummy typede
 
 #define CTK_CSS_CHANGE_RESERVED_BIT                   (1ULL << 62) /* Used internally in ctkcssselector.c */
 
-typedef guint64 GtkCssChange;
+typedef guint64 CtkCssChange;
 
 #define CTK_CSS_CHANGE_POSITION (CTK_CSS_CHANGE_FIRST_CHILD | CTK_CSS_CHANGE_LAST_CHILD | \
                                  CTK_CSS_CHANGE_NTH_CHILD | CTK_CSS_CHANGE_NTH_LAST_CHILD)
@@ -94,7 +94,7 @@ typedef guint64 GtkCssChange;
                                    CTK_CSS_CHANGE_PARENT_STATE | CTK_CSS_CHANGE_PARENT_SIBLING_STATE)
 
 /*
- * GtkCssAffects:
+ * CtkCssAffects:
  * @CTK_CSS_AFFECTS_FOREGROUND: The foreground rendering is affected.
  *   This does not include things that affect the font. For those,
  *   see @CTK_CSS_AFFECTS_FONT.
@@ -133,7 +133,7 @@ typedef enum {
   CTK_CSS_AFFECTS_OUTLINE = (1 << 8),
   CTK_CSS_AFFECTS_CLIP = (1 << 9),
   CTK_CSS_AFFECTS_SIZE = (1 << 10)
-} GtkCssAffects;
+} CtkCssAffects;
 
 #define CTK_CSS_AFFECTS_REDRAW (CTK_CSS_AFFECTS_FOREGROUND |    \
                                 CTK_CSS_AFFECTS_BACKGROUND |    \
@@ -249,7 +249,7 @@ typedef enum /*< skip >*/ {
   CTK_CSS_BLEND_MODE_SATURATE,
   CTK_CSS_BLEND_MODE_SCREEN,
   CTK_CSS_BLEND_MODE_SOFT_LIGHT
-} GtkCssBlendMode;
+} CtkCssBlendMode;
 
 typedef enum /*< skip >*/ {
   CTK_CSS_IMAGE_BUILTIN_NONE,
@@ -280,44 +280,44 @@ typedef enum /*< skip >*/ {
   CTK_CSS_IMAGE_BUILTIN_PANE_SEPARATOR,
   CTK_CSS_IMAGE_BUILTIN_HANDLE,
   CTK_CSS_IMAGE_BUILTIN_SPINNER
-} GtkCssImageBuiltinType;
+} CtkCssImageBuiltinType;
 
 typedef enum /*< skip >*/ {
   CTK_CSS_AREA_BORDER_BOX,
   CTK_CSS_AREA_PADDING_BOX,
   CTK_CSS_AREA_CONTENT_BOX
-} GtkCssArea;
+} CtkCssArea;
 
 typedef enum /*< skip >*/ {
   CTK_CSS_DIRECTION_NORMAL,
   CTK_CSS_DIRECTION_REVERSE,
   CTK_CSS_DIRECTION_ALTERNATE,
   CTK_CSS_DIRECTION_ALTERNATE_REVERSE
-} GtkCssDirection;
+} CtkCssDirection;
 
 typedef enum /*< skip >*/ {
   CTK_CSS_PLAY_STATE_RUNNING,
   CTK_CSS_PLAY_STATE_PAUSED
-} GtkCssPlayState;
+} CtkCssPlayState;
 
 typedef enum /*< skip >*/ {
   CTK_CSS_FILL_NONE,
   CTK_CSS_FILL_FORWARDS,
   CTK_CSS_FILL_BACKWARDS,
   CTK_CSS_FILL_BOTH
-} GtkCssFillMode;
+} CtkCssFillMode;
 
 typedef enum /*< skip >*/ {
   CTK_CSS_ICON_EFFECT_NONE,
   CTK_CSS_ICON_EFFECT_HIGHLIGHT,
   CTK_CSS_ICON_EFFECT_DIM
-} GtkCssIconEffect;
+} CtkCssIconEffect;
 
 typedef enum /*< skip >*/ {
   CTK_CSS_ICON_STYLE_REQUESTED,
   CTK_CSS_ICON_STYLE_REGULAR,
   CTK_CSS_ICON_STYLE_SYMBOLIC
-} GtkCssIconStyle;
+} CtkCssIconStyle;
 
 typedef enum /*< skip >*/ {
   /* relative font sizes */
@@ -331,19 +331,19 @@ typedef enum /*< skip >*/ {
   CTK_CSS_FONT_SIZE_LARGE,
   CTK_CSS_FONT_SIZE_X_LARGE,
   CTK_CSS_FONT_SIZE_XX_LARGE
-} GtkCssFontSize;
+} CtkCssFontSize;
 
 typedef enum /*< skip >*/ {
   CTK_CSS_TEXT_DECORATION_LINE_NONE,
   CTK_CSS_TEXT_DECORATION_LINE_UNDERLINE,
   CTK_CSS_TEXT_DECORATION_LINE_LINE_THROUGH
-} GtkTextDecorationLine;
+} CtkTextDecorationLine;
 
 typedef enum /*< skip >*/ {
   CTK_CSS_TEXT_DECORATION_STYLE_SOLID,
   CTK_CSS_TEXT_DECORATION_STYLE_DOUBLE,
   CTK_CSS_TEXT_DECORATION_STYLE_WAVY
-} GtkTextDecorationStyle;
+} CtkTextDecorationStyle;
 
 /* for the order in arrays */
 typedef enum /*< skip >*/ {
@@ -351,14 +351,14 @@ typedef enum /*< skip >*/ {
   CTK_CSS_RIGHT,
   CTK_CSS_BOTTOM,
   CTK_CSS_LEFT
-} GtkCssSide;
+} CtkCssSide;
 
 typedef enum /*< skip >*/ {
   CTK_CSS_TOP_LEFT,
   CTK_CSS_TOP_RIGHT,
   CTK_CSS_BOTTOM_RIGHT,
   CTK_CSS_BOTTOM_LEFT
-} GtkCssCorner;
+} CtkCssCorner;
 
 typedef enum /*< skip >*/ {
   CTK_CSS_DIMENSION_PERCENTAGE,
@@ -366,7 +366,7 @@ typedef enum /*< skip >*/ {
   CTK_CSS_DIMENSION_LENGTH,
   CTK_CSS_DIMENSION_ANGLE,
   CTK_CSS_DIMENSION_TIME
-} GtkCssDimension;
+} CtkCssDimension;
 
 typedef enum /*< skip >*/ {
   /* CSS term: <number> */
@@ -391,17 +391,17 @@ typedef enum /*< skip >*/ {
   /* CSS term: <time> */
   CTK_CSS_S,
   CTK_CSS_MS,
-} GtkCssUnit;
+} CtkCssUnit;
 
-cairo_operator_t        _ctk_css_blend_mode_get_operator         (GtkCssBlendMode    mode);
+cairo_operator_t        _ctk_css_blend_mode_get_operator         (CtkCssBlendMode    mode);
 
-GtkCssChange            _ctk_css_change_for_sibling              (GtkCssChange       match);
-GtkCssChange            _ctk_css_change_for_child                (GtkCssChange       match);
+CtkCssChange            _ctk_css_change_for_sibling              (CtkCssChange       match);
+CtkCssChange            _ctk_css_change_for_child                (CtkCssChange       match);
 
-GtkCssDimension         ctk_css_unit_get_dimension               (GtkCssUnit         unit);
+CtkCssDimension         ctk_css_unit_get_dimension               (CtkCssUnit         unit);
 
-char *                  ctk_css_change_to_string                 (GtkCssChange       change);
-void                    ctk_css_change_print                     (GtkCssChange       change,
+char *                  ctk_css_change_to_string                 (CtkCssChange       change);
+void                    ctk_css_change_print                     (CtkCssChange       change,
                                                                   GString           *string);
 
 /* for lack of better place to put it */

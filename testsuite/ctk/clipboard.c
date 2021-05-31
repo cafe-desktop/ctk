@@ -25,7 +25,7 @@
 static void
 test_text (void)
 {
-  GtkClipboard *clipboard = ctk_clipboard_get_for_display (gdk_display_get_default (), GDK_SELECTION_CLIPBOARD);
+  CtkClipboard *clipboard = ctk_clipboard_get_for_display (gdk_display_get_default (), GDK_SELECTION_CLIPBOARD);
   char *text;
 
   ctk_clipboard_set_text (clipboard, SOME_TEXT, -1);
@@ -40,8 +40,8 @@ test_text (void)
 }
 
 static void
-test_with_data_get (GtkClipboard *clipboard,
-                    GtkSelectionData *selection_data,
+test_with_data_get (CtkClipboard *clipboard,
+                    CtkSelectionData *selection_data,
                     guint info,
                     gpointer user_data_or_owner)
 {
@@ -54,8 +54,8 @@ test_with_data_get (GtkClipboard *clipboard,
 }
 
 static void
-test_with_data_got (GtkClipboard *clipboard,
-                    GtkSelectionData *selection_data,
+test_with_data_got (CtkClipboard *clipboard,
+                    CtkSelectionData *selection_data,
                     gpointer data)
 {
     guchar *text;
@@ -68,8 +68,8 @@ test_with_data_got (GtkClipboard *clipboard,
 static void
 test_with_data (void)
 {
-    GtkClipboard *clipboard = ctk_clipboard_get_for_display (gdk_display_get_default (), GDK_SELECTION_CLIPBOARD);
-    GtkTargetEntry entries[] = { { .target = TARGET_TEXT, .info = 42 } };
+    CtkClipboard *clipboard = ctk_clipboard_get_for_display (gdk_display_get_default (), GDK_SELECTION_CLIPBOARD);
+    CtkTargetEntry entries[] = { { .target = TARGET_TEXT, .info = 42 } };
 
     ctk_clipboard_set_with_data (clipboard, entries, G_N_ELEMENTS(entries), test_with_data_get, NULL, NULL);
     ctk_clipboard_request_contents (clipboard, gdk_atom_intern (TARGET_TEXT, FALSE), test_with_data_got, NULL);

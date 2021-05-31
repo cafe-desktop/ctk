@@ -99,9 +99,9 @@ done:
 static void
 load_ui_file (GFile *file, gboolean generate)
 {
-  GtkBuilder *builder;
-  GtkWidget *window;
-  GtkStyleContext *context;
+  CtkBuilder *builder;
+  CtkWidget *window;
+  CtkStyleContext *context;
   char *output, *diff;
   char *ui_file, *reference_file;
   GError *error = NULL;

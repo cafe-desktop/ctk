@@ -1,10 +1,10 @@
 #include <ctk/ctk.h>
 
 static void
-activate (GtkApplication* app,
+activate (CtkApplication* app,
           gpointer        user_data)
 {
-  GtkWidget *window;
+  CtkWidget *window;
 
   window = ctk_application_window_new (app);
   ctk_window_set_title (CTK_WINDOW (window), "Window");
@@ -16,7 +16,7 @@ int
 main (int    argc,
       char **argv)
 {
-  GtkApplication *app;
+  CtkApplication *app;
   int status;
 
   app = ctk_application_new ("org.ctk.example", G_APPLICATION_FLAGS_NONE);

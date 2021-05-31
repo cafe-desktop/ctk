@@ -32,7 +32,7 @@ typedef struct _LoadContext LoadContext;
 struct _LoadContext
 {
   gchar *filename;
-  GtkWidget *window;
+  CtkWidget *window;
   GdkPixbufLoader *pixbuf_loader;
   guint load_timeout;
   FILE* image_stream;
@@ -61,7 +61,7 @@ destroy_context (gpointer data)
 }
 
 static LoadContext*
-get_load_context (GtkWidget *image)
+get_load_context (CtkWidget *image)
 {
   LoadContext *lc;
 
@@ -85,7 +85,7 @@ progressive_prepared_callback (GdkPixbufLoader* loader,
                                gpointer         data)
 {
   GdkPixbuf* pixbuf;
-  GtkWidget* image;
+  CtkWidget* image;
 
   image = CTK_WIDGET (data);
     
@@ -108,14 +108,14 @@ progressive_updated_callback (GdkPixbufLoader* loader,
                               gint x, gint y, gint width, gint height,
                               gpointer data)
 {
-  GtkWidget* image;
+  CtkWidget* image;
   
   image = CTK_WIDGET (data);
 
-  /* We know the pixbuf inside the GtkImage has changed, but the image
+  /* We know the pixbuf inside the CtkImage has changed, but the image
    * itself doesn't know this; so queue a redraw.  If we wanted to be
    * really efficient, we could use a drawing area or something
-   * instead of a GtkImage, so we could control the exact position of
+   * instead of a CtkImage, so we could control the exact position of
    * the pixbuf on the display, then we could queue a draw for only
    * the updated area of the image.
    */
@@ -131,7 +131,7 @@ progressive_updated_callback (GdkPixbufLoader* loader,
 static gint
 progressive_timeout (gpointer data)
 {
-  GtkWidget *image;
+  CtkWidget *image;
   LoadContext *lc;
   
   image = CTK_WIDGET (data);
@@ -152,7 +152,7 @@ progressive_timeout (gpointer data)
 
       if (ferror (lc->image_stream))
         {
-          GtkWidget *dialog;
+          CtkWidget *dialog;
           
           dialog = ctk_message_dialog_new (CTK_WINDOW (lc->window),
                                            CTK_DIALOG_DESTROY_WITH_PARENT,
@@ -178,7 +178,7 @@ progressive_timeout (gpointer data)
                                     buf, bytes_read,
                                     &error))
         {
-          GtkWidget *dialog;
+          CtkWidget *dialog;
           
           dialog = ctk_message_dialog_new (CTK_WINDOW (lc->window),
                                            CTK_DIALOG_DESTROY_WITH_PARENT,
@@ -215,7 +215,7 @@ progressive_timeout (gpointer data)
           if (!gdk_pixbuf_loader_close (lc->pixbuf_loader,
                                         &error))
             {
-              GtkWidget *dialog;
+              CtkWidget *dialog;
               
               dialog = ctk_message_dialog_new (CTK_WINDOW (lc->window),
                                                CTK_DIALOG_DESTROY_WITH_PARENT,
@@ -249,7 +249,7 @@ progressive_timeout (gpointer data)
 
       if (lc->image_stream == NULL)
         {
-          GtkWidget *dialog;
+          CtkWidget *dialog;
           
           dialog = ctk_message_dialog_new (CTK_WINDOW (lc->window),
                                            CTK_DIALOG_DESTROY_WITH_PARENT,
@@ -289,7 +289,7 @@ progressive_timeout (gpointer data)
 }
 
 static void
-start_progressive_loading (GtkWidget *image)
+start_progressive_loading (CtkWidget *image)
 {
   LoadContext *lc;
 
@@ -307,14 +307,14 @@ start_progressive_loading (GtkWidget *image)
                                     image);
 }
 
-static GtkWidget *
+static CtkWidget *
 do_image (const char *filename)
 {
-  GtkWidget *frame;
-  GtkWidget *vbox;
-  GtkWidget *image;
-  GtkWidget *label;
-  GtkWidget *window;
+  CtkWidget *frame;
+  CtkWidget *vbox;
+  CtkWidget *image;
+  CtkWidget *label;
+  CtkWidget *window;
   gchar *str, *escaped;
   LoadContext *lc;
   
@@ -368,11 +368,11 @@ do_image (const char *filename)
 static void
 do_nonprogressive (const gchar *filename)
 {
-  GtkWidget *frame;
-  GtkWidget *vbox;
-  GtkWidget *image;
-  GtkWidget *label;
-  GtkWidget *window;
+  CtkWidget *frame;
+  CtkWidget *vbox;
+  CtkWidget *image;
+  CtkWidget *label;
+  CtkWidget *window;
   gchar *str, *escaped;
   
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);

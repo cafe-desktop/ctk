@@ -31,19 +31,19 @@ typedef enum {
   CTK_CSS_REPEAT_STYLE_REPEAT,
   CTK_CSS_REPEAT_STYLE_ROUND,
   CTK_CSS_REPEAT_STYLE_SPACE
-} GtkCssRepeatStyle;
+} CtkCssRepeatStyle;
 
-GtkCssValue *       _ctk_css_background_repeat_value_new        (GtkCssRepeatStyle       x,
-                                                                 GtkCssRepeatStyle       y);
-GtkCssValue *       _ctk_css_background_repeat_value_try_parse  (GtkCssParser           *parser);
-GtkCssRepeatStyle   _ctk_css_background_repeat_value_get_x      (const GtkCssValue      *repeat);
-GtkCssRepeatStyle   _ctk_css_background_repeat_value_get_y      (const GtkCssValue      *repeat);
+CtkCssValue *       _ctk_css_background_repeat_value_new        (CtkCssRepeatStyle       x,
+                                                                 CtkCssRepeatStyle       y);
+CtkCssValue *       _ctk_css_background_repeat_value_try_parse  (CtkCssParser           *parser);
+CtkCssRepeatStyle   _ctk_css_background_repeat_value_get_x      (const CtkCssValue      *repeat);
+CtkCssRepeatStyle   _ctk_css_background_repeat_value_get_y      (const CtkCssValue      *repeat);
 
-GtkCssValue *       _ctk_css_border_repeat_value_new            (GtkCssRepeatStyle       x,
-                                                                 GtkCssRepeatStyle       y);
-GtkCssValue *       _ctk_css_border_repeat_value_try_parse      (GtkCssParser           *parser);
-GtkCssRepeatStyle   _ctk_css_border_repeat_value_get_x          (const GtkCssValue      *repeat);
-GtkCssRepeatStyle   _ctk_css_border_repeat_value_get_y          (const GtkCssValue      *repeat);
+CtkCssValue *       _ctk_css_border_repeat_value_new            (CtkCssRepeatStyle       x,
+                                                                 CtkCssRepeatStyle       y);
+CtkCssValue *       _ctk_css_border_repeat_value_try_parse      (CtkCssParser           *parser);
+CtkCssRepeatStyle   _ctk_css_border_repeat_value_get_x          (const CtkCssValue      *repeat);
+CtkCssRepeatStyle   _ctk_css_border_repeat_value_get_y          (const CtkCssValue      *repeat);
 
 G_END_DECLS
 

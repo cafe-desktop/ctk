@@ -23,7 +23,7 @@
 static void
 ctk_css_provider_load_data_not_null_terminated (void)
 {
-  GtkCssProvider *p;
+  CtkCssProvider *p;
   const gchar data[3] = {'*', '{', '}'};
 
   p = ctk_css_provider_new();

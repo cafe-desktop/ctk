@@ -3,7 +3,7 @@
 static const gchar *
 get_name (gpointer obj)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   if (obj == NULL)
     return "(nil)";
   else if (CTK_IS_WIDGET (obj))
@@ -23,7 +23,7 @@ compare_focus (gpointer data)
 {
   AtkObject *atk_focus;
   AtkObject *ctk_focus;
-  GtkWidget *focus_widget;
+  CtkWidget *focus_widget;
   GList *list, *l;
 
   atk_focus = atk_get_focus_object ();
@@ -32,7 +32,7 @@ compare_focus (gpointer data)
   list = ctk_window_list_toplevels ();
   for (l = list; l; l = l->next)
     {
-      GtkWindow *w = l->data;
+      CtkWindow *w = l->data;
       if (ctk_window_is_active (w))
         {
           focus_widget = ctk_window_get_focus (w);
@@ -79,10 +79,10 @@ state_change_cb (AtkObject *obj, const gchar *name, gboolean state_set)
 int
 main (int argc, char *argv[])
 {
-  GtkBuilder *builder;
-  GtkWidget *window;
+  CtkBuilder *builder;
+  CtkWidget *window;
   GSList *o, *l;
-  GtkWidget *widget;
+  CtkWidget *widget;
   AtkObject *accessible;
 
   ctk_init (&argc, &argv);
@@ -90,7 +90,7 @@ main (int argc, char *argv[])
   builder = ctk_builder_new ();
   ctk_builder_add_from_file (builder, argv[1], NULL);
 
-  window = (GtkWidget *)ctk_builder_get_object (builder, "window1");
+  window = (CtkWidget *)ctk_builder_get_object (builder, "window1");
 
   o = ctk_builder_get_objects (builder);
   for (l = o; l;l = l->next)

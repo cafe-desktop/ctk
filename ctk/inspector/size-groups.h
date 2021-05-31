@@ -21,27 +21,27 @@
 #include <ctk/ctkbox.h>
 
 #define CTK_TYPE_INSPECTOR_SIZE_GROUPS            (ctk_inspector_size_groups_get_type())
-#define CTK_INSPECTOR_SIZE_GROUPS(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_SIZE_GROUPS, GtkInspectorSizeGroups))
-#define CTK_INSPECTOR_SIZE_GROUPS_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_SIZE_GROUPS, GtkInspectorSizeGroupsClass))
+#define CTK_INSPECTOR_SIZE_GROUPS(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_SIZE_GROUPS, CtkInspectorSizeGroups))
+#define CTK_INSPECTOR_SIZE_GROUPS_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_SIZE_GROUPS, CtkInspectorSizeGroupsClass))
 #define CTK_INSPECTOR_IS_SIZE_GROUPS(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), CTK_TYPE_INSPECTOR_SIZE_GROUPS))
 #define CTK_INSPECTOR_IS_SIZE_GROUPS_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), CTK_TYPE_INSPECTOR_SIZE_GROUPS))
-#define CTK_INSPECTOR_SIZE_GROUPS_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_SIZE_GROUPS, GtkInspectorSizeGroupsClass))
+#define CTK_INSPECTOR_SIZE_GROUPS_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_SIZE_GROUPS, CtkInspectorSizeGroupsClass))
 
 
-typedef struct _GtkInspectorSizeGroups
+typedef struct _CtkInspectorSizeGroups
 {
-  GtkBox parent;
-} GtkInspectorSizeGroups;
+  CtkBox parent;
+} CtkInspectorSizeGroups;
 
-typedef struct _GtkInspectorSizeGroupsClass
+typedef struct _CtkInspectorSizeGroupsClass
 {
-  GtkBoxClass parent;
-} GtkInspectorSizeGroupsClass;
+  CtkBoxClass parent;
+} CtkInspectorSizeGroupsClass;
 
 G_BEGIN_DECLS
 
 GType ctk_inspector_size_groups_get_type   (void);
-void  ctk_inspector_size_groups_set_object (GtkInspectorSizeGroups *sl,
+void  ctk_inspector_size_groups_set_object (CtkInspectorSizeGroups *sl,
                                             GObject                *object);
 
 G_END_DECLS

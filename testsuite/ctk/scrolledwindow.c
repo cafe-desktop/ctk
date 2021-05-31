@@ -12,11 +12,11 @@ typedef enum
 
 static void
 test_size (gboolean       overlay,
-           GtkPolicyType  policy,
-           GtkOrientation orientation,
+           CtkPolicyType  policy,
+           CtkOrientation orientation,
            TestProperty   prop)
 {
-  GtkWidget *scrolledwindow, *box;
+  CtkWidget *scrolledwindow, *box;
   int min_size, max_size, child_size;
   int scrollbar_size = 0;
 
@@ -60,7 +60,7 @@ test_size (gboolean       overlay,
        * to exclude that extra, as we are only interested in the content size */
       if (!overlay && policy == CTK_POLICY_ALWAYS)
         {
-          GtkWidget *scrollbar = ctk_scrolled_window_get_vscrollbar (CTK_SCROLLED_WINDOW (scrolledwindow));
+          CtkWidget *scrollbar = ctk_scrolled_window_get_vscrollbar (CTK_SCROLLED_WINDOW (scrolledwindow));
           ctk_widget_get_preferred_width (scrollbar, &scrollbar_size, NULL);
         }
     }
@@ -89,7 +89,7 @@ test_size (gboolean       overlay,
 
       if (!overlay && policy == CTK_POLICY_ALWAYS)
         {
-          GtkWidget *scrollbar = ctk_scrolled_window_get_hscrollbar (CTK_SCROLLED_WINDOW (scrolledwindow));
+          CtkWidget *scrollbar = ctk_scrolled_window_get_hscrollbar (CTK_SCROLLED_WINDOW (scrolledwindow));
           ctk_widget_get_preferred_height (scrollbar, &scrollbar_size, NULL);
         }
     }

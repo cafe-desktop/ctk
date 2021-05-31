@@ -1,4 +1,4 @@
-/* GtkPrinter
+/* CtkPrinter
  * Copyright (C) 2006 John (J5) Palmieri <johnp@redhat.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -33,7 +33,7 @@ G_BEGIN_DECLS
  * If you add any flags, update the registration as well!
  */
 /**
- * GtkPrintCapabilities:
+ * CtkPrintCapabilities:
  * @CTK_PRINT_CAPABILITY_PAGE_SET: Print dialog will offer printing even/odd pages.
  * @CTK_PRINT_CAPABILITY_COPIES: Print dialog will allow to print multiple copies.
  * @CTK_PRINT_CAPABILITY_COLLATE: Print dialog will allow to collate multiple copies.
@@ -66,38 +66,38 @@ typedef enum
   CTK_PRINT_CAPABILITY_PREVIEW          = 1 << 7,
   CTK_PRINT_CAPABILITY_NUMBER_UP        = 1 << 8,
   CTK_PRINT_CAPABILITY_NUMBER_UP_LAYOUT = 1 << 9
-} GtkPrintCapabilities;
+} CtkPrintCapabilities;
 
 GDK_AVAILABLE_IN_ALL
 GType ctk_print_capabilities_get_type (void) G_GNUC_CONST;
 
 #define CTK_TYPE_PRINTER                  (ctk_printer_get_type ())
-#define CTK_PRINTER(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINTER, GtkPrinter))
-#define CTK_PRINTER_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PRINTER, GtkPrinterClass))
+#define CTK_PRINTER(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINTER, CtkPrinter))
+#define CTK_PRINTER_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PRINTER, CtkPrinterClass))
 #define CTK_IS_PRINTER(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PRINTER))
 #define CTK_IS_PRINTER_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PRINTER))
-#define CTK_PRINTER_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PRINTER, GtkPrinterClass))
+#define CTK_PRINTER_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PRINTER, CtkPrinterClass))
 
-typedef struct _GtkPrinter          GtkPrinter;
-typedef struct _GtkPrinterClass     GtkPrinterClass;
-typedef struct _GtkPrinterPrivate   GtkPrinterPrivate;
-typedef struct _GtkPrintBackend     GtkPrintBackend;
+typedef struct _CtkPrinter          CtkPrinter;
+typedef struct _CtkPrinterClass     CtkPrinterClass;
+typedef struct _CtkPrinterPrivate   CtkPrinterPrivate;
+typedef struct _CtkPrintBackend     CtkPrintBackend;
 
-struct _GtkPrintBackend;
+struct _CtkPrintBackend;
 
-struct _GtkPrinter
+struct _CtkPrinter
 {
   GObject parent_instance;
 
   /*< private >*/
-  GtkPrinterPrivate *priv;
+  CtkPrinterPrivate *priv;
 };
 
-struct _GtkPrinterClass
+struct _CtkPrinterClass
 {
   GObjectClass parent_class;
 
-  void (*details_acquired) (GtkPrinter *printer,
+  void (*details_acquired) (CtkPrinter *printer,
                             gboolean    success);
 
   /* Padding for future expansion */
@@ -114,60 +114,60 @@ struct _GtkPrinterClass
 GDK_AVAILABLE_IN_ALL
 GType                    ctk_printer_get_type              (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkPrinter              *ctk_printer_new                   (const gchar     *name,
-							    GtkPrintBackend *backend,
+CtkPrinter              *ctk_printer_new                   (const gchar     *name,
+							    CtkPrintBackend *backend,
 							    gboolean         virtual_);
 GDK_AVAILABLE_IN_ALL
-GtkPrintBackend         *ctk_printer_get_backend           (GtkPrinter      *printer);
+CtkPrintBackend         *ctk_printer_get_backend           (CtkPrinter      *printer);
 GDK_AVAILABLE_IN_ALL
-const gchar *            ctk_printer_get_name              (GtkPrinter      *printer);
+const gchar *            ctk_printer_get_name              (CtkPrinter      *printer);
 GDK_AVAILABLE_IN_ALL
-const gchar *            ctk_printer_get_state_message     (GtkPrinter      *printer);
+const gchar *            ctk_printer_get_state_message     (CtkPrinter      *printer);
 GDK_AVAILABLE_IN_ALL
-const gchar *            ctk_printer_get_description       (GtkPrinter      *printer);
+const gchar *            ctk_printer_get_description       (CtkPrinter      *printer);
 GDK_AVAILABLE_IN_ALL
-const gchar *            ctk_printer_get_location          (GtkPrinter      *printer);
+const gchar *            ctk_printer_get_location          (CtkPrinter      *printer);
 GDK_AVAILABLE_IN_ALL
-const gchar *            ctk_printer_get_icon_name         (GtkPrinter      *printer);
+const gchar *            ctk_printer_get_icon_name         (CtkPrinter      *printer);
 GDK_AVAILABLE_IN_ALL
-gint                     ctk_printer_get_job_count         (GtkPrinter      *printer);
+gint                     ctk_printer_get_job_count         (CtkPrinter      *printer);
 GDK_AVAILABLE_IN_ALL
-gboolean                 ctk_printer_is_active             (GtkPrinter      *printer);
+gboolean                 ctk_printer_is_active             (CtkPrinter      *printer);
 GDK_AVAILABLE_IN_ALL
-gboolean                 ctk_printer_is_paused             (GtkPrinter      *printer);
+gboolean                 ctk_printer_is_paused             (CtkPrinter      *printer);
 GDK_AVAILABLE_IN_ALL
-gboolean                 ctk_printer_is_accepting_jobs     (GtkPrinter      *printer);
+gboolean                 ctk_printer_is_accepting_jobs     (CtkPrinter      *printer);
 GDK_AVAILABLE_IN_ALL
-gboolean                 ctk_printer_is_virtual            (GtkPrinter      *printer);
+gboolean                 ctk_printer_is_virtual            (CtkPrinter      *printer);
 GDK_AVAILABLE_IN_ALL
-gboolean                 ctk_printer_is_default            (GtkPrinter      *printer);
+gboolean                 ctk_printer_is_default            (CtkPrinter      *printer);
 GDK_AVAILABLE_IN_ALL
-gboolean                 ctk_printer_accepts_pdf           (GtkPrinter      *printer);
+gboolean                 ctk_printer_accepts_pdf           (CtkPrinter      *printer);
 GDK_AVAILABLE_IN_ALL
-gboolean                 ctk_printer_accepts_ps            (GtkPrinter      *printer);
+gboolean                 ctk_printer_accepts_ps            (CtkPrinter      *printer);
 GDK_AVAILABLE_IN_ALL
-GList                   *ctk_printer_list_papers           (GtkPrinter      *printer);
+GList                   *ctk_printer_list_papers           (CtkPrinter      *printer);
 GDK_AVAILABLE_IN_ALL
-GtkPageSetup            *ctk_printer_get_default_page_size (GtkPrinter      *printer);
+CtkPageSetup            *ctk_printer_get_default_page_size (CtkPrinter      *printer);
 GDK_AVAILABLE_IN_ALL
-gint                     ctk_printer_compare               (GtkPrinter *a,
-						    	    GtkPrinter *b);
+gint                     ctk_printer_compare               (CtkPrinter *a,
+						    	    CtkPrinter *b);
 GDK_AVAILABLE_IN_ALL
-gboolean                 ctk_printer_has_details           (GtkPrinter       *printer);
+gboolean                 ctk_printer_has_details           (CtkPrinter       *printer);
 GDK_AVAILABLE_IN_ALL
-void                     ctk_printer_request_details       (GtkPrinter       *printer);
+void                     ctk_printer_request_details       (CtkPrinter       *printer);
 GDK_AVAILABLE_IN_ALL
-GtkPrintCapabilities     ctk_printer_get_capabilities      (GtkPrinter       *printer);
+CtkPrintCapabilities     ctk_printer_get_capabilities      (CtkPrinter       *printer);
 GDK_AVAILABLE_IN_ALL
-gboolean                 ctk_printer_get_hard_margins      (GtkPrinter       *printer,
+gboolean                 ctk_printer_get_hard_margins      (CtkPrinter       *printer,
                                                             gdouble          *top,
                                                             gdouble          *bottom,
                                                             gdouble          *left,
                                                             gdouble          *right);
 
 /**
- * GtkPrinterFunc:
- * @printer: a #GtkPrinter
+ * CtkPrinterFunc:
+ * @printer: a #CtkPrinter
  * @data: (closure): user data passed to ctk_enumerate_printers()
  *
  * The type of function passed to ctk_enumerate_printers().
@@ -178,11 +178,11 @@ gboolean                 ctk_printer_get_hard_margins      (GtkPrinter       *pr
  *
  * Since: 2.10
  */
-typedef gboolean (*GtkPrinterFunc) (GtkPrinter *printer,
+typedef gboolean (*CtkPrinterFunc) (CtkPrinter *printer,
 				    gpointer    data);
 
 GDK_AVAILABLE_IN_ALL
-void                     ctk_enumerate_printers        (GtkPrinterFunc   func,
+void                     ctk_enumerate_printers        (CtkPrinterFunc   func,
 							gpointer         data,
 							GDestroyNotify   destroy,
 							gboolean         wait);

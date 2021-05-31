@@ -22,8 +22,8 @@
 
 G_BEGIN_DECLS
 
-void ctk_popover_update_position (GtkPopover *popover);
-GtkWidget *ctk_popover_get_prev_default (GtkPopover *popover);
+void ctk_popover_update_position (CtkPopover *popover);
+CtkWidget *ctk_popover_get_prev_default (CtkPopover *popover);
 
 G_END_DECLS
 

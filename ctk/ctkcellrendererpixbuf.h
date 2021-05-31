@@ -29,27 +29,27 @@ G_BEGIN_DECLS
 
 
 #define CTK_TYPE_CELL_RENDERER_PIXBUF			(ctk_cell_renderer_pixbuf_get_type ())
-#define CTK_CELL_RENDERER_PIXBUF(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_RENDERER_PIXBUF, GtkCellRendererPixbuf))
-#define CTK_CELL_RENDERER_PIXBUF_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CELL_RENDERER_PIXBUF, GtkCellRendererPixbufClass))
+#define CTK_CELL_RENDERER_PIXBUF(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_RENDERER_PIXBUF, CtkCellRendererPixbuf))
+#define CTK_CELL_RENDERER_PIXBUF_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CELL_RENDERER_PIXBUF, CtkCellRendererPixbufClass))
 #define CTK_IS_CELL_RENDERER_PIXBUF(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CELL_RENDERER_PIXBUF))
 #define CTK_IS_CELL_RENDERER_PIXBUF_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_CELL_RENDERER_PIXBUF))
-#define CTK_CELL_RENDERER_PIXBUF_GET_CLASS(obj)         (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CELL_RENDERER_PIXBUF, GtkCellRendererPixbufClass))
+#define CTK_CELL_RENDERER_PIXBUF_GET_CLASS(obj)         (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CELL_RENDERER_PIXBUF, CtkCellRendererPixbufClass))
 
-typedef struct _GtkCellRendererPixbuf              GtkCellRendererPixbuf;
-typedef struct _GtkCellRendererPixbufPrivate       GtkCellRendererPixbufPrivate;
-typedef struct _GtkCellRendererPixbufClass         GtkCellRendererPixbufClass;
+typedef struct _CtkCellRendererPixbuf              CtkCellRendererPixbuf;
+typedef struct _CtkCellRendererPixbufPrivate       CtkCellRendererPixbufPrivate;
+typedef struct _CtkCellRendererPixbufClass         CtkCellRendererPixbufClass;
 
-struct _GtkCellRendererPixbuf
+struct _CtkCellRendererPixbuf
 {
-  GtkCellRenderer parent;
+  CtkCellRenderer parent;
 
   /*< private >*/
-  GtkCellRendererPixbufPrivate *priv;
+  CtkCellRendererPixbufPrivate *priv;
 };
 
-struct _GtkCellRendererPixbufClass
+struct _CtkCellRendererPixbufClass
 {
-  GtkCellRendererClass parent_class;
+  CtkCellRendererClass parent_class;
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -61,7 +61,7 @@ struct _GtkCellRendererPixbufClass
 GDK_AVAILABLE_IN_ALL
 GType            ctk_cell_renderer_pixbuf_get_type (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkCellRenderer *ctk_cell_renderer_pixbuf_new      (void);
+CtkCellRenderer *ctk_cell_renderer_pixbuf_new      (void);
 
 
 G_END_DECLS

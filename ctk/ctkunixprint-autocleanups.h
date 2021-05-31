@@ -21,8 +21,8 @@
 
 #ifndef __GI_SCANNER__
 
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkPrintJob, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkPrinter, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkPrintUnixDialog, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CtkPrintJob, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CtkPrinter, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CtkPrintUnixDialog, g_object_unref)
 
 #endif

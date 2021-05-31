@@ -7,26 +7,26 @@ typedef struct _RowClass RowClass;
 
 struct _Row
 {
-  GtkListBoxRow parent_instance;
-  GtkWidget *label;
+  CtkListBoxRow parent_instance;
+  CtkWidget *label;
   gint sort_id;
 };
 
 struct _RowClass
 {
-  GtkListBoxRowClass parent_class;
+  CtkListBoxRowClass parent_class;
 };
 
 const char *css =
-  "GtkListBoxRow {"
+  "CtkListBoxRow {"
   " border-width: 1px;"
   " border-style: solid;"
   " border-color: blue;"
   "}"
-  "GtkListBoxRow:prelight {"
+  "CtkListBoxRow:prelight {"
   "background-color: green;"
   "}"
-  "GtkListBoxRow:active {"
+  "CtkListBoxRow:active {"
   "background-color: red;"
   "}";
 
@@ -42,7 +42,7 @@ row_class_init (RowClass *class)
 {
 }
 
-GtkWidget *
+CtkWidget *
 row_new (const gchar* text, gint sort_id) {
   Row *row;
 
@@ -62,7 +62,7 @@ row_new (const gchar* text, gint sort_id) {
 static void
 update_header_cb (Row *row, Row *before, gpointer data)
 {
-  GtkWidget *hbox, *l, *b;
+  CtkWidget *hbox, *l, *b;
   GList *children;
 
   if (before == NULL ||
@@ -122,57 +122,57 @@ filter_cb (Row *row, gpointer data)
 }
 
 static void
-row_activated_cb (GtkListBox *list_box,
-                  GtkListBoxRow *row)
+row_activated_cb (CtkListBox *list_box,
+                  CtkListBoxRow *row)
 {
   g_print ("activated row %p\n", row);
 }
 
 static void
-row_selected_cb (GtkListBox *list_box,
-                 GtkListBoxRow *row)
+row_selected_cb (CtkListBox *list_box,
+                 CtkListBoxRow *row)
 {
   g_print ("selected row %p\n", row);
 }
 
 static void
-sort_clicked_cb (GtkButton *button,
+sort_clicked_cb (CtkButton *button,
                  gpointer data)
 {
-  GtkListBox *list = data;
+  CtkListBox *list = data;
 
-  ctk_list_box_set_sort_func (list, (GtkListBoxSortFunc)sort_cb, NULL, NULL);
+  ctk_list_box_set_sort_func (list, (CtkListBoxSortFunc)sort_cb, NULL, NULL);
 }
 
 static void
-reverse_sort_clicked_cb (GtkButton *button,
+reverse_sort_clicked_cb (CtkButton *button,
                          gpointer data)
 {
-  GtkListBox *list = data;
+  CtkListBox *list = data;
 
-  ctk_list_box_set_sort_func (list, (GtkListBoxSortFunc)reverse_sort_cb, NULL, NULL);
+  ctk_list_box_set_sort_func (list, (CtkListBoxSortFunc)reverse_sort_cb, NULL, NULL);
 }
 
 static void
-filter_clicked_cb (GtkButton *button,
+filter_clicked_cb (CtkButton *button,
                    gpointer data)
 {
-  GtkListBox *list = data;
+  CtkListBox *list = data;
 
-  ctk_list_box_set_filter_func (list, (GtkListBoxFilterFunc)filter_cb, NULL, NULL);
+  ctk_list_box_set_filter_func (list, (CtkListBoxFilterFunc)filter_cb, NULL, NULL);
 }
 
 static void
-unfilter_clicked_cb (GtkButton *button,
+unfilter_clicked_cb (CtkButton *button,
                    gpointer data)
 {
-  GtkListBox *list = data;
+  CtkListBox *list = data;
 
   ctk_list_box_set_filter_func (list, NULL, NULL, NULL);
 }
 
 static void
-change_clicked_cb (GtkButton *button,
+change_clicked_cb (CtkButton *button,
                    gpointer data)
 {
   Row *row = data;
@@ -191,11 +191,11 @@ change_clicked_cb (GtkButton *button,
 }
 
 static void
-add_clicked_cb (GtkButton *button,
+add_clicked_cb (CtkButton *button,
                 gpointer data)
 {
-  GtkListBox *list = data;
-  GtkWidget *new_row;
+  CtkListBox *list = data;
+  CtkWidget *new_row;
   static int new_button_nr = 1;
 
   new_row = row_new( g_strdup_printf ("blah2 new %d", new_button_nr), new_button_nr);
@@ -205,44 +205,44 @@ add_clicked_cb (GtkButton *button,
 }
 
 static void
-separate_clicked_cb (GtkButton *button,
+separate_clicked_cb (CtkButton *button,
                      gpointer data)
 {
-  GtkListBox *list = data;
+  CtkListBox *list = data;
 
-  ctk_list_box_set_header_func (list, (GtkListBoxUpdateHeaderFunc)update_header_cb, NULL, NULL);
+  ctk_list_box_set_header_func (list, (CtkListBoxUpdateHeaderFunc)update_header_cb, NULL, NULL);
 }
 
 static void
-unseparate_clicked_cb (GtkButton *button,
+unseparate_clicked_cb (CtkButton *button,
                        gpointer data)
 {
-  GtkListBox *list = data;
+  CtkListBox *list = data;
 
   ctk_list_box_set_header_func (list, NULL, NULL, NULL);
 }
 
 static void
-visibility_clicked_cb (GtkButton *button,
+visibility_clicked_cb (CtkButton *button,
                        gpointer data)
 {
-  GtkWidget *row = data;
+  CtkWidget *row = data;
 
   ctk_widget_set_visible (row, !ctk_widget_get_visible (row));
 }
 
 static void
-selection_mode_changed (GtkComboBox *combo, gpointer data)
+selection_mode_changed (CtkComboBox *combo, gpointer data)
 {
-  GtkListBox *list = data;
+  CtkListBox *list = data;
 
   ctk_list_box_set_selection_mode (list, ctk_combo_box_get_active (combo));
 }
 
 static void
-single_click_clicked (GtkButton *check, gpointer data)
+single_click_clicked (CtkButton *check, gpointer data)
 {
-  GtkListBox *list = data;
+  CtkListBox *list = data;
 
   g_print ("single: %d\n", ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (check)));
   ctk_list_box_set_activate_on_single_click (list, ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (check)));
@@ -251,9 +251,9 @@ single_click_clicked (GtkButton *check, gpointer data)
 int
 main (int argc, char *argv[])
 {
-  GtkCssProvider *provider;
-  GtkWidget *window, *hbox, *vbox, *list, *row, *row3, *row_vbox, *row_hbox, *l;
-  GtkWidget *check, *button, *combo, *scrolled;
+  CtkCssProvider *provider;
+  CtkWidget *window, *hbox, *vbox, *list, *row, *row3, *row_vbox, *row_hbox, *l;
+  CtkWidget *check, *button, *combo, *scrolled;
 
   ctk_init (NULL, NULL);
 

@@ -2,7 +2,7 @@
   border-radius: 0;
 }
 
-GtkWidget {
+CtkWidget {
   border-right-width: 5px;
 }
 

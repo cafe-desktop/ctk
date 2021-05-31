@@ -31,8 +31,8 @@
  * #AtkText functions which get text for accessible objects which implement
  * #AtkText.
  *
- * In GAIL it is used by the accsesible objects for #GnomeCanvasText, #GtkEntry,
- * #GtkLabel, #GtkCellRendererText and #GtkTextView.
+ * In GAIL it is used by the accsesible objects for #GnomeCanvasText, #CtkEntry,
+ * #CtkLabel, #CtkCellRendererText and #CtkTextView.
  */
 
 static void gail_text_util_class_init      (GailTextUtilClass *klass);
@@ -42,14 +42,14 @@ static void gail_text_util_finalize        (GObject           *object);
 
 
 static void get_pango_text_offsets         (PangoLayout         *layout,
-                                            GtkTextBuffer       *buffer,
+                                            CtkTextBuffer       *buffer,
                                             GailOffsetType      function,
                                             AtkTextBoundary     boundary_type,
                                             gint                offset,
                                             gint                *start_offset,
                                             gint                *end_offset,
-                                            GtkTextIter         *start_iter,
-                                            GtkTextIter         *end_iter);
+                                            CtkTextIter         *start_iter,
+                                            CtkTextIter         *end_iter);
 static GObjectClass *parent_class = NULL;
 
 GType
@@ -151,13 +151,13 @@ gail_text_util_text_setup (GailTextUtil *textutil,
 /**
  * gail_text_util_buffer_setup:
  * @textutil: A #GailTextUtil to be initialized
- * @buffer: The #GtkTextBuffer which identifies the text to be stored in the GailUtil.
+ * @buffer: The #CtkTextBuffer which identifies the text to be stored in the GailUtil.
  *
- * This function initializes the GailTextUtil with the specified GtkTextBuffer
+ * This function initializes the GailTextUtil with the specified CtkTextBuffer
  **/
 void
 gail_text_util_buffer_setup  (GailTextUtil  *textutil,
-                              GtkTextBuffer   *buffer)
+                              CtkTextBuffer   *buffer)
 {
   g_return_if_fail (GAIL_IS_TEXT_UTIL (textutil));
 
@@ -167,7 +167,7 @@ gail_text_util_buffer_setup  (GailTextUtil  *textutil,
 /**
  * gail_text_util_get_text:
  * @textutil: A #GailTextUtil
- * @layout: A gpointer which is a PangoLayout, a GtkTreeView of NULL
+ * @layout: A gpointer which is a PangoLayout, a CtkTreeView of NULL
  * @function: An enumeration specifying whether to return the text before, at, or
  *   after the offset.
  * @boundary_type: The boundary type.
@@ -175,9 +175,9 @@ gail_text_util_buffer_setup  (GailTextUtil  *textutil,
  * @start_offset: Address of location in which the start offset is returned
  * @end_offset: Address of location in which the end offset is returned
  *
- * This function gets the requested substring from the text in the GtkTextUtil.
+ * This function gets the requested substring from the text in the CtkTextUtil.
  * The layout is used only for getting the text on a line. The value is NULL 
- * for a GtkTextView which is not wrapped, is a GtkTextView for a GtkTextView 
+ * for a CtkTextView which is not wrapped, is a CtkTextView for a CtkTextView 
  * which is wrapped and is a PangoLayout otherwise.
  *
  * Returns: the substring requested
@@ -191,9 +191,9 @@ gail_text_util_get_text (GailTextUtil    *textutil,
                          gint            *start_offset,
                          gint            *end_offset)
 {
-  GtkTextIter start, end;
+  CtkTextIter start, end;
   gint line_number;
-  GtkTextBuffer *buffer;
+  CtkTextBuffer *buffer;
 
   g_return_val_if_fail (GAIL_IS_TEXT_UTIL (textutil), NULL);
 
@@ -289,7 +289,7 @@ gail_text_util_get_text (GailTextUtil    *textutil,
             }
           else if CTK_IS_TEXT_VIEW (layout)
             {
-              GtkTextView *view = CTK_TEXT_VIEW (layout);
+              CtkTextView *view = CTK_TEXT_VIEW (layout);
 
               ctk_text_view_backward_display_line_start (view, &start);
               end = start;
@@ -330,7 +330,7 @@ gail_text_util_get_text (GailTextUtil    *textutil,
             }
           else if CTK_IS_TEXT_VIEW (layout)
             {
-              GtkTextView *view = CTK_TEXT_VIEW (layout);
+              CtkTextView *view = CTK_TEXT_VIEW (layout);
 
               ctk_text_view_backward_display_line_start (view, &start);
               if (!ctk_text_iter_is_start (&start))
@@ -431,7 +431,7 @@ gail_text_util_get_text (GailTextUtil    *textutil,
             }
           else if CTK_IS_TEXT_VIEW (layout)
             {
-              GtkTextView *view = CTK_TEXT_VIEW (layout);
+              CtkTextView *view = CTK_TEXT_VIEW (layout);
 
               ctk_text_view_backward_display_line_start (view, &start);
               /*
@@ -476,7 +476,7 @@ gail_text_util_get_text (GailTextUtil    *textutil,
             }
           else if CTK_IS_TEXT_VIEW (layout)
             {
-              GtkTextView *view = CTK_TEXT_VIEW (layout);
+              CtkTextView *view = CTK_TEXT_VIEW (layout);
 
               ctk_text_view_backward_display_line_start (view, &start);
               if (!ctk_text_iter_is_start (&start))
@@ -566,7 +566,7 @@ gail_text_util_get_text (GailTextUtil    *textutil,
             }
           else if CTK_IS_TEXT_VIEW (layout)
             {
-              GtkTextView *view = CTK_TEXT_VIEW (layout);
+              CtkTextView *view = CTK_TEXT_VIEW (layout);
 
               ctk_text_view_forward_display_line (view, &end);
               start = end; 
@@ -600,7 +600,7 @@ gail_text_util_get_text (GailTextUtil    *textutil,
             }
           else if CTK_IS_TEXT_VIEW (layout)
             {
-              GtkTextView *view = CTK_TEXT_VIEW (layout);
+              CtkTextView *view = CTK_TEXT_VIEW (layout);
 
               ctk_text_view_forward_display_line_end (view, &end);
               start = end; 
@@ -642,8 +642,8 @@ gail_text_util_get_substring (GailTextUtil *textutil,
                               gint         start_pos, 
                               gint         end_pos)
 {
-  GtkTextIter start, end;
-  GtkTextBuffer *buffer;
+  CtkTextIter start, end;
+  CtkTextBuffer *buffer;
 
   g_return_val_if_fail(GAIL_IS_TEXT_UTIL (textutil), NULL);
 
@@ -662,14 +662,14 @@ gail_text_util_get_substring (GailTextUtil *textutil,
 
 static void
 get_pango_text_offsets (PangoLayout         *layout,
-                        GtkTextBuffer       *buffer,
+                        CtkTextBuffer       *buffer,
                         GailOffsetType      function,
                         AtkTextBoundary     boundary_type,
                         gint                offset,
                         gint                *start_offset,
                         gint                *end_offset,
-                        GtkTextIter         *start_iter,
-                        GtkTextIter         *end_iter)
+                        CtkTextIter         *start_iter,
+                        CtkTextIter         *end_iter)
 {
   PangoLayoutIter *iter;
   PangoLayoutLine *line, *prev_line = NULL, *prev_prev_line = NULL;

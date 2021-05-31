@@ -1783,7 +1783,7 @@ msgid ""
 "  --id=ID            Preview only the named object\n"
 "  --css=FILE         Use style from CSS file\n"
 "\n"
-"Perform various tasks on GtkBuilder .ui files.\n"
+"Perform various tasks on CtkBuilder .ui files.\n"
 msgstr ""
 "Употреба:\n"
 "  ctk-builder-tool [НАРЕДБА] ДАТОТЕКА\n"
@@ -2590,7 +2590,7 @@ msgstr "Датум приступа"
 msgid "Create Folder"
 msgstr "Направи фасциклу"
 
-#. The pointers we return for a GtkFileSystemVolume are opaque tokens; they are
+#. The pointers we return for a CtkFileSystemVolume are opaque tokens; they are
 #. * really pointers to GDrive, GVolume or GMount objects.  We need an extra
 #. * token for the fake “File System” volume.  So, we’ll return a pointer to
 #. * this particular string.
@@ -8559,7 +8559,7 @@ msgstr "Штампај на пробном штампачу"
 #~ msgstr "Да ли је радња видљива."
 
 #~ msgid ""
-#~ "The GtkActionGroup this GtkAction is associated with, or NULL (for "
+#~ "The CtkActionGroup this CtkAction is associated with, or NULL (for "
 #~ "internal use)."
 #~ msgstr ""
 #~ "Група Гтк радње којој је ова Гтк радња придружена, или „NULL“ (за "
@@ -8872,7 +8872,7 @@ msgstr "Штампај на пробном штампачу"
 #~ msgid "The title of this tray icon"
 #~ msgstr "Наслов ове иконице фиоке"
 
-#~ msgid "GtkStyleContext to get style from"
+#~ msgid "CtkStyleContext to get style from"
 #~ msgstr "Из ког садржаја Гтк стила ће бити узет стил"
 
 #~ msgid "Rows"
@@ -9062,7 +9062,7 @@ msgstr "Штампај на пробном штампачу"
 #~ msgstr "Параметар за призивање радње"
 
 #~ msgid ""
-#~ "A GtkPackType indicating whether the child is packed with reference to "
+#~ "A CtkPackType indicating whether the child is packed with reference to "
 #~ "the start or end of the parent"
 #~ msgstr ""
 #~ "Одређује да ли је садржани елемент везан за почетак или крај садржаоца"
@@ -9099,7 +9099,7 @@ msgstr "Штампај на пробном штампачу"
 
 #~ msgid ""
 #~ "Whether the combobox should include an item that triggers a "
-#~ "GtkAppChooserDialog"
+#~ "CtkAppChooserDialog"
 #~ msgstr ""
 #~ "Да ли прозорче за избор треба да садржи ставку која покреће Гтк прозорче "
 #~ "за избор програма"
@@ -9454,7 +9454,7 @@ msgstr "Штампај на пробном штампачу"
 #~ msgstr "Да ли ћелије треба да буду исте величине у свим редовима"
 
 #~ msgid ""
-#~ "A GtkPackType indicating whether the cell is packed with reference to the "
+#~ "A CtkPackType indicating whether the cell is packed with reference to the "
 #~ "start or end of the cell area"
 #~ msgstr ""
 #~ "Врста Гтк паковања који означава да ли је ћелија упакована у односу на "
@@ -9625,7 +9625,7 @@ msgstr "Штампај на пробном штампачу"
 #~ msgid "The stock ID of the stock icon to render"
 #~ msgstr "ИД припремљене сличице која се исцртава"
 
-#~ msgid "The GtkIconSize value that specifies the size of the rendered icon"
+#~ msgid "The CtkIconSize value that specifies the size of the rendered icon"
 #~ msgstr ""
 #~ "Вредност величине Гтк иконице која одређује величину исцртане иконице"
 
@@ -9693,7 +9693,7 @@ msgstr "Штампај на пробном штампачу"
 #~ msgstr "Да ли се приказује вртешка унутар ћелије"
 
 #~ msgid ""
-#~ "The GtkIconSize value that specifies the size of the rendered spinner"
+#~ "The CtkIconSize value that specifies the size of the rendered spinner"
 #~ msgstr ""
 #~ "Вредност величине Гтк иконице која одређује величину исцртане вртешке"
 
@@ -9953,13 +9953,13 @@ msgstr "Штампај на пробном штампачу"
 #~ msgid "The model for cell view"
 #~ msgstr "Модел за приказ ћелије"
 
-#~ msgid "The GtkCellArea used to layout cells"
+#~ msgid "The CtkCellArea used to layout cells"
 #~ msgstr "Област Гтк ћелије коришћена за распоређивање ћелија"
 
 #~ msgid "Cell Area Context"
 #~ msgstr "Контекст области ћелије"
 
-#~ msgid "The GtkCellAreaContext used to compute the geometry of the cell view"
+#~ msgid "The CtkCellAreaContext used to compute the geometry of the cell view"
 #~ msgstr ""
 #~ "Контекст области Гтк ћелије коришћен за израчунавање геометрије приказа "
 #~ "ћелије"
@@ -10085,10 +10085,10 @@ msgstr "Штампај на пробном штампачу"
 
 #~ msgid ""
 #~ "The column in the combo box's model to associate with strings from the "
-#~ "entry if the combo was created with #GtkComboBox:has-entry = %TRUE"
+#~ "entry if the combo was created with #CtkComboBox:has-entry = %TRUE"
 #~ msgstr ""
 #~ "Колона у моделу прозорчета за избор за удруживање са нискама из уноса ако "
-#~ "је прозорче направљено са „#GtkComboBox:has-entry = %TRUE“"
+#~ "је прозорче направљено са „#CtkComboBox:has-entry = %TRUE“"
 
 #~ msgid ""
 #~ "The column in the combo box's model that provides string IDs for the "
@@ -10773,8 +10773,8 @@ msgstr "Штампај на пробном штампачу"
 #~ msgid "The GL context"
 #~ msgstr "ГЛ контекст"
 
-#~ msgid "Whether the GtkGLArea renders on each redraw"
-#~ msgstr "Да ли се приказ GtkGLArea виџета приказује при сваком прецртавању"
+#~ msgid "Whether the CtkGLArea renders on each redraw"
+#~ msgstr "Да ли се приказ CtkGLArea виџета приказује при сваком прецртавању"
 
 #~ msgid "Has alpha"
 #~ msgstr "Поседује провидност"
@@ -10973,11 +10973,11 @@ msgstr "Штампај на пробном штампачу"
 #~ msgid ""
 #~ "The alignment of the lines in the text of the label relative to each "
 #~ "other. This does NOT affect the alignment of the label within its "
-#~ "allocation. See GtkLabel:xalign for that"
+#~ "allocation. See CtkLabel:xalign for that"
 #~ msgstr ""
 #~ "Поравнање редова, релативних у односу један на другог, у тексту етикете. "
 #~ "Ово НЕ УТИЧЕ на поравнање етикете унутар свог обухваћеног простора. "
-#~ "Видети GtkLabel:xalign за тако нешто"
+#~ "Видети CtkLabel:xalign за тако нешто"
 
 #~ msgid ""
 #~ "A string with _ characters in positions correspond to characters in the "
@@ -11362,7 +11362,7 @@ msgstr "Штампај на пробном штампачу"
 #~ msgid "Message area"
 #~ msgstr "Област поруке"
 
-#~ msgid "GtkBox that holds the dialog's primary and secondary labels"
+#~ msgid "CtkBox that holds the dialog's primary and secondary labels"
 #~ msgstr "ГткБокс који садржи примарну и секундарну ознаку прозорчета"
 
 #~ msgid "Role"
@@ -11753,10 +11753,10 @@ msgstr "Штампај на пробном штампачу"
 #~ "Постављено ако посао за штампање наставља да емитује сигнале измењеног "
 #~ "стања пошто су подаци за штампу послати штампачу или серверу штампе."
 
-#~ msgid "The GtkPageSetup used by default"
+#~ msgid "The CtkPageSetup used by default"
 #~ msgstr "Гтк поставке стране које се користе као подразумеване"
 
-#~ msgid "The GtkPrintSettings used for initializing the dialog"
+#~ msgid "The CtkPrintSettings used for initializing the dialog"
 #~ msgstr "Гтк подешавања штампе која се користе приликом покретања прозорчета"
 
 #~ msgid "A string used for identifying the print job."
@@ -11815,7 +11815,7 @@ msgstr "Штампај на пробном штампачу"
 #~ msgid "TRUE if a selection exists."
 #~ msgstr "Постављено ако избор постоји."
 
-#~ msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
+#~ msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
 #~ msgstr ""
 #~ "Постављено ако су падајући изборници поставке стране угњеждени у Гтк "
 #~ "прозорчету за штампу"
@@ -11826,10 +11826,10 @@ msgstr "Штампај на пробном штампачу"
 #~ msgid "The number of pages that will be printed."
 #~ msgstr "Број страна који ће бити штампан."
 
-#~ msgid "The GtkPageSetup to use"
+#~ msgid "The CtkPageSetup to use"
 #~ msgstr "Гтк поставке стране које се користе"
 
-#~ msgid "The GtkPrinter which is selected"
+#~ msgid "The CtkPrinter which is selected"
 #~ msgstr "Гтк штампач који је изабран"
 
 #~ msgid "Manual Capabilities"
@@ -11915,7 +11915,7 @@ msgstr "Штампај на пробном штампачу"
 #~ msgstr "Радио дугме траке алата чијој групи ово дугме припада."
 
 #~ msgid ""
-#~ "The GtkAdjustment that contains the current value of this range object"
+#~ "The CtkAdjustment that contains the current value of this range object"
 #~ msgstr "Гтк поравнање које садржи текућу вредност овог опсега"
 
 # Sta ovo uopste znaci na engleskom?
@@ -12060,7 +12060,7 @@ msgstr "Штампај на пробном штампачу"
 #~ msgstr "Величина иконице"
 
 #~ msgid ""
-#~ "The GtkAdjustment that contains the current value of this scale button "
+#~ "The CtkAdjustment that contains the current value of this scale button "
 #~ "object"
 #~ msgstr "Гтк поравнање које садржи текућу вредност овог дугмета са скалом"
 
@@ -12141,13 +12141,13 @@ msgstr "Штампај на пробном штампачу"
 #~ "Display a second forward arrow button on the opposite end of the scrollbar"
 #~ msgstr "Прикажи другу стрелицу унапред на супротној страни клизача"
 
-#~ msgid "The GtkAdjustment for the horizontal position"
+#~ msgid "The CtkAdjustment for the horizontal position"
 #~ msgstr "Гтк поравнање за водоравни положај"
 
 #~ msgid "Vertical Adjustment"
 #~ msgstr "Усправна поправка"
 
-#~ msgid "The GtkAdjustment for the vertical position"
+#~ msgid "The CtkAdjustment for the vertical position"
 #~ msgstr "Гтк поравнање за усправни положај"
 
 #~ msgid "Horizontal Scrollbar Policy"
@@ -12469,10 +12469,10 @@ msgstr "Штампај на пробном штампачу"
 #~ msgid "Default file chooser backend"
 #~ msgstr "Подразумевана подршка за избор датотека"
 
-#~ msgid "Name of the GtkFileChooser backend to use by default"
+#~ msgid "Name of the CtkFileChooser backend to use by default"
 #~ msgstr "Назив подршке коју подразумевано користи Гтк избирач датотеке"
 
-#~ msgid "List of the GtkPrintBackend backends to use by default"
+#~ msgid "List of the CtkPrintBackend backends to use by default"
 #~ msgstr "Списак позадинских мотора за штампање који се подразумевано користе"
 
 #~ msgid "Default command to run when displaying a print preview"
@@ -12873,8 +12873,8 @@ msgstr "Штампај на пробном штампачу"
 #~ msgid "Whether this page needs attention"
 #~ msgstr "Да ли ова страница захтева пажњу"
 
-#~ msgid "Associated stack for this GtkStackSidebar"
-#~ msgstr "Припадајућа хрпа за овај GtkStackSidebar"
+#~ msgid "Associated stack for this CtkStackSidebar"
+#~ msgstr "Припадајућа хрпа за овај CtkStackSidebar"
 
 #~ msgid "Symbolic size to use for named icon"
 #~ msgstr "Симболичка величина која ће се користити за именоване иконице"
@@ -12891,7 +12891,7 @@ msgstr "Штампај на пробном штампачу"
 #~ msgid "The parent style context"
 #~ msgstr "Садржај родитељског стила"
 
-#~ msgid "The value type returned by GtkStyleContext"
+#~ msgid "The value type returned by CtkStyleContext"
 #~ msgstr "Врста вредности коју враћа садржај Гтк стила"
 
 #~ msgid "Whether the switch is on or off"
@@ -13440,7 +13440,7 @@ msgstr "Штампај на пробном штампачу"
 #~ msgid "Model column to search through during interactive search"
 #~ msgstr "Модел колоне за претраживање при интерактивној претрази"
 
-#~ msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
+#~ msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 #~ msgstr "Убрзава приказ претпостављањем да сви редови имају исту висину"
 
 #~ msgid "Whether the selection should follow the pointer"
@@ -13932,7 +13932,7 @@ msgstr "Штампај на пробном штампачу"
 #~ msgid "Whether the toplevel is the current active window"
 #~ msgstr "Да ли је први ниво тренутно активни прозор"
 
-#~ msgid "Whether the input focus is within this GtkWindow"
+#~ msgid "Whether the input focus is within this CtkWindow"
 #~ msgstr "Да ли је фокус за унос унутар овог Гтк прозора"
 
 #~ msgid ""
@@ -13993,7 +13993,7 @@ msgstr "Штампај на пробном штампачу"
 #~ msgid "Whether the window is maximized"
 #~ msgstr "Да ли ће прозор бити увећан"
 
-#~ msgid "The GtkApplication for the window"
+#~ msgid "The CtkApplication for the window"
 #~ msgstr "Гтк програм за прозор"
 
 #~ msgid "Decorated button layout"
@@ -14002,7 +14002,7 @@ msgstr "Штампај на пробном штампачу"
 #~ msgid "Decoration resize handle size"
 #~ msgstr "Величина ручке за промену величине украса"
 
-#~ msgid "GtkCloudprintAccount instance"
+#~ msgid "CtkCloudprintAccount instance"
 #~ msgstr "Примерак налога Гтк штампања у облаку"
 
 #~ msgid "Cloud Print printer ID"

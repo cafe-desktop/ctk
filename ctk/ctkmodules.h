@@ -28,18 +28,18 @@
 G_BEGIN_DECLS
 
 /**
- * GtkModuleInitFunc:
+ * CtkModuleInitFunc:
  * @argc: (allow-none): GTK+ always passes %NULL for this argument
  * @argv: (allow-none) (array length=argc): GTK+ always passes %NULL for this argument
  *
  * Each GTK+ module must have a function ctk_module_init() with this prototype.
  * This function is called after loading the module.
  */
-typedef void     (*GtkModuleInitFunc)        (gint        *argc,
+typedef void     (*CtkModuleInitFunc)        (gint        *argc,
                                               gchar      ***argv);
 
 /**
- * GtkModuleDisplayInitFunc:
+ * CtkModuleDisplayInitFunc:
  * @display: an open #GdkDisplay
  *
  * A multihead-aware GTK+ module may have a ctk_module_display_init() function
@@ -47,7 +47,7 @@ typedef void     (*GtkModuleInitFunc)        (gint        *argc,
  *
  * Since: 2.2
  */
-typedef void     (*GtkModuleDisplayInitFunc) (GdkDisplay   *display);
+typedef void     (*CtkModuleDisplayInitFunc) (GdkDisplay   *display);
 
 
 G_END_DECLS

@@ -1,6 +1,6 @@
 /* Drawing Area
  *
- * GtkDrawingArea is a blank area where you can draw custom displays
+ * CtkDrawingArea is a blank area where you can draw custom displays
  * of various kinds.
  *
  * This demo has two drawing areas. The checkerboard area shows
@@ -15,17 +15,17 @@
 
 #include <ctk/ctk.h>
 
-static GtkWidget *window = NULL;
+static CtkWidget *window = NULL;
 /* Pixmap for scribble area, to store current scribbles */
 static cairo_surface_t *surface = NULL;
 
 /* Create a new surface of the appropriate size to store our scribbles */
 static gboolean
-scribble_configure_event (GtkWidget         *widget,
+scribble_configure_event (CtkWidget         *widget,
                           GdkEventConfigure *event,
                           gpointer           data)
 {
-  GtkAllocation allocation;
+  CtkAllocation allocation;
   cairo_t *cr;
 
   if (surface)
@@ -51,7 +51,7 @@ scribble_configure_event (GtkWidget         *widget,
 
 /* Redraw the screen from the surface */
 static gboolean
-scribble_draw (GtkWidget *widget,
+scribble_draw (CtkWidget *widget,
                cairo_t   *cr,
                gpointer   data)
 {
@@ -63,7 +63,7 @@ scribble_draw (GtkWidget *widget,
 
 /* Draw a rectangle on the screen */
 static void
-draw_brush (GtkWidget *widget,
+draw_brush (CtkWidget *widget,
             gdouble    x,
             gdouble    y)
 {
@@ -90,7 +90,7 @@ draw_brush (GtkWidget *widget,
 }
 
 static gboolean
-scribble_button_press_event (GtkWidget      *widget,
+scribble_button_press_event (CtkWidget      *widget,
                              GdkEventButton *event,
                              gpointer        data)
 {
@@ -105,7 +105,7 @@ scribble_button_press_event (GtkWidget      *widget,
 }
 
 static gboolean
-scribble_motion_notify_event (GtkWidget      *widget,
+scribble_motion_notify_event (CtkWidget      *widget,
                               GdkEventMotion *event,
                               gpointer        data)
 {
@@ -137,7 +137,7 @@ scribble_motion_notify_event (GtkWidget      *widget,
 
 
 static gboolean
-checkerboard_draw (GtkWidget *da,
+checkerboard_draw (CtkWidget *da,
                    cairo_t   *cr,
                    gpointer   data)
 {
@@ -197,13 +197,13 @@ close_window (void)
   surface = NULL;
 }
 
-GtkWidget *
-do_drawingarea (GtkWidget *do_widget)
+CtkWidget *
+do_drawingarea (CtkWidget *do_widget)
 {
-  GtkWidget *frame;
-  GtkWidget *vbox;
-  GtkWidget *da;
-  GtkWidget *label;
+  CtkWidget *frame;
+  CtkWidget *vbox;
+  CtkWidget *da;
+  CtkWidget *label;
 
   if (!window)
     {

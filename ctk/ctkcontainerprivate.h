@@ -25,28 +25,28 @@
 G_BEGIN_DECLS
 
 
-void     ctk_container_queue_resize_handler    (GtkContainer *container);
-void     _ctk_container_queue_restyle          (GtkContainer *container);
-void     _ctk_container_clear_resize_widgets   (GtkContainer *container);
-gchar*   _ctk_container_child_composite_name   (GtkContainer *container,
-                                                GtkWidget    *child);
-void     _ctk_container_dequeue_resize_handler (GtkContainer *container);
-GList *  _ctk_container_focus_sort             (GtkContainer     *container,
+void     ctk_container_queue_resize_handler    (CtkContainer *container);
+void     _ctk_container_queue_restyle          (CtkContainer *container);
+void     _ctk_container_clear_resize_widgets   (CtkContainer *container);
+gchar*   _ctk_container_child_composite_name   (CtkContainer *container,
+                                                CtkWidget    *child);
+void     _ctk_container_dequeue_resize_handler (CtkContainer *container);
+GList *  _ctk_container_focus_sort             (CtkContainer     *container,
                                                 GList            *children,
-                                                GtkDirectionType  direction,
-                                                GtkWidget        *old_focus);
-gboolean _ctk_container_get_reallocate_redraws (GtkContainer *container);
+                                                CtkDirectionType  direction,
+                                                CtkWidget        *old_focus);
+gboolean _ctk_container_get_reallocate_redraws (CtkContainer *container);
 
-void      _ctk_container_stop_idle_sizer        (GtkContainer *container);
-void      _ctk_container_maybe_start_idle_sizer (GtkContainer *container);
-gboolean  _ctk_container_get_border_width_set   (GtkContainer *container);
-void      _ctk_container_set_border_width_set   (GtkContainer *container,
+void      _ctk_container_stop_idle_sizer        (CtkContainer *container);
+void      _ctk_container_maybe_start_idle_sizer (CtkContainer *container);
+gboolean  _ctk_container_get_border_width_set   (CtkContainer *container);
+void      _ctk_container_set_border_width_set   (CtkContainer *container,
                                                  gboolean      border_width_set);
-GList *   ctk_container_get_all_children        (GtkContainer  *container);
-void      ctk_container_get_children_clip       (GtkContainer  *container,
-                                                 GtkAllocation *out_clip);
-void      ctk_container_set_default_resize_mode (GtkContainer *container,
-                                                 GtkResizeMode resize_mode);
+GList *   ctk_container_get_all_children        (CtkContainer  *container);
+void      ctk_container_get_children_clip       (CtkContainer  *container,
+                                                 CtkAllocation *out_clip);
+void      ctk_container_set_default_resize_mode (CtkContainer *container,
+                                                 CtkResizeMode resize_mode);
 
 G_END_DECLS
 

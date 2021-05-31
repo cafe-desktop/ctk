@@ -32,7 +32,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\..\ctk;..\..\gdk;..\..\gdk\win32"
-				PreprocessorDefinitions="_DEBUG;G_ENABLE_DEBUG;$(GtkDefines)"
+				PreprocessorDefinitions="_DEBUG;G_ENABLE_DEBUG;$(CtkDefines)"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -42,8 +42,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(GtkAdditionalLibs)"
-				OutputFile="$(OutDir)\$(GtkDllPrefix)$(ProjectName)$(GtkDllSuffix).dll"
+				AdditionalDependencies="$(CtkAdditionalLibs)"
+				OutputFile="$(OutDir)\$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll"
 				LinkIncremental="1"
 				GenerateDebugInformation="true"
 				SubSystem="2"
@@ -64,7 +64,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="..\..\ctk;..\..\gdk;..\..\gdk\win32"
-				PreprocessorDefinitions="$(GtkDefines)"
+				PreprocessorDefinitions="$(CtkDefines)"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -72,8 +72,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(GtkAdditionalLibs)"
-				OutputFile="$(OutDir)\$(GtkDllPrefix)$(ProjectName)$(GtkDllSuffix).dll"
+				AdditionalDependencies="$(CtkAdditionalLibs)"
+				OutputFile="$(OutDir)\$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll"
 				LinkIncremental="1"
 				GenerateDebugInformation="true"
 				SubSystem="2"
@@ -96,7 +96,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\..\ctk;..\..\gdk;..\..\gdk\win32"
-				PreprocessorDefinitions="_DEBUG;G_ENABLE_DEBUG;$(GtkDefines)"
+				PreprocessorDefinitions="_DEBUG;G_ENABLE_DEBUG;$(CtkDefines)"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -106,8 +106,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(GtkAdditionalLibs)"
-				OutputFile="$(OutDir)\$(GtkDllPrefix)$(ProjectName)$(GtkDllSuffix).dll"
+				AdditionalDependencies="$(CtkAdditionalLibs)"
+				OutputFile="$(OutDir)\$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll"
 				LinkIncremental="1"
 				GenerateDebugInformation="true"
 				SubSystem="2"
@@ -128,7 +128,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="..\..\ctk;..\..\gdk;..\..\gdk\win32"
-				PreprocessorDefinitions="$(GtkDefines)"
+				PreprocessorDefinitions="$(CtkDefines)"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -136,8 +136,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(GtkAdditionalLibs)"
-				OutputFile="$(OutDir)\$(GtkDllPrefix)$(ProjectName)$(GtkDllSuffix).dll"
+				AdditionalDependencies="$(CtkAdditionalLibs)"
+				OutputFile="$(OutDir)\$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll"
 				LinkIncremental="1"
 				GenerateDebugInformation="true"
 				SubSystem="2"

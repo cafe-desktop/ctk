@@ -25,16 +25,16 @@
 
 #define CTK_TYPE_MODEL_MENU_ITEM                            (ctk_model_menu_item_get_type ())
 #define CTK_MODEL_MENU_ITEM(inst)                           (G_TYPE_CHECK_INSTANCE_CAST ((inst),                      \
-                                                             CTK_TYPE_MODEL_MENU_ITEM, GtkModelMenuItem))
+                                                             CTK_TYPE_MODEL_MENU_ITEM, CtkModelMenuItem))
 #define CTK_IS_MODEL_MENU_ITEM(inst)                        (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                      \
                                                              CTK_TYPE_MODEL_MENU_ITEM))
 
-typedef struct _GtkModelMenuItem                            GtkModelMenuItem;
+typedef struct _CtkModelMenuItem                            CtkModelMenuItem;
 
 G_GNUC_INTERNAL
 GType                   ctk_model_menu_item_get_type                    (void) G_GNUC_CONST;
 
 G_GNUC_INTERNAL
-GtkWidget *             ctk_model_menu_item_new                         (void);
+CtkWidget *             ctk_model_menu_item_new                         (void);
 
 #endif /* __CTK_MODEL_MENU_ITEM_H__ */

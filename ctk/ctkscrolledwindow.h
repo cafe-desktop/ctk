@@ -35,26 +35,26 @@ G_BEGIN_DECLS
 
 
 #define CTK_TYPE_SCROLLED_WINDOW            (ctk_scrolled_window_get_type ())
-#define CTK_SCROLLED_WINDOW(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SCROLLED_WINDOW, GtkScrolledWindow))
-#define CTK_SCROLLED_WINDOW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SCROLLED_WINDOW, GtkScrolledWindowClass))
+#define CTK_SCROLLED_WINDOW(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SCROLLED_WINDOW, CtkScrolledWindow))
+#define CTK_SCROLLED_WINDOW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SCROLLED_WINDOW, CtkScrolledWindowClass))
 #define CTK_IS_SCROLLED_WINDOW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SCROLLED_WINDOW))
 #define CTK_IS_SCROLLED_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SCROLLED_WINDOW))
-#define CTK_SCROLLED_WINDOW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SCROLLED_WINDOW, GtkScrolledWindowClass))
+#define CTK_SCROLLED_WINDOW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SCROLLED_WINDOW, CtkScrolledWindowClass))
 
 
-typedef struct _GtkScrolledWindow              GtkScrolledWindow;
-typedef struct _GtkScrolledWindowPrivate       GtkScrolledWindowPrivate;
-typedef struct _GtkScrolledWindowClass         GtkScrolledWindowClass;
+typedef struct _CtkScrolledWindow              CtkScrolledWindow;
+typedef struct _CtkScrolledWindowPrivate       CtkScrolledWindowPrivate;
+typedef struct _CtkScrolledWindowClass         CtkScrolledWindowClass;
 
-struct _GtkScrolledWindow
+struct _CtkScrolledWindow
 {
-  GtkBin container;
+  CtkBin container;
 
-  GtkScrolledWindowPrivate *priv;
+  CtkScrolledWindowPrivate *priv;
 };
 
 /**
- * GtkScrolledWindowClass:
+ * CtkScrolledWindowClass:
  * @parent_class: The parent class.
  * @scrollbar_spacing: 
  * @scroll_child: Keybinding signal which gets emitted when a
@@ -62,9 +62,9 @@ struct _GtkScrolledWindow
  * @move_focus_out: Keybinding signal which gets emitted when focus is
  *    moved away from the scrolled window by a keybinding.
  */
-struct _GtkScrolledWindowClass
+struct _CtkScrolledWindowClass
 {
-  GtkBinClass parent_class;
+  CtkBinClass parent_class;
 
   gint scrollbar_spacing;
 
@@ -73,16 +73,16 @@ struct _GtkScrolledWindowClass
   /* Action signals for keybindings. Do not connect to these signals
    */
 
-  /* Unfortunately, GtkScrollType is deficient in that there is
+  /* Unfortunately, CtkScrollType is deficient in that there is
    * no horizontal/vertical variants for CTK_SCROLL_START/END,
    * so we have to add an additional boolean flag.
    */
-  gboolean (*scroll_child) (GtkScrolledWindow *scrolled_window,
-	  		    GtkScrollType      scroll,
+  gboolean (*scroll_child) (CtkScrolledWindow *scrolled_window,
+	  		    CtkScrollType      scroll,
 			    gboolean           horizontal);
 
-  void (* move_focus_out) (GtkScrolledWindow *scrolled_window,
-			   GtkDirectionType   direction);
+  void (* move_focus_out) (CtkScrolledWindow *scrolled_window,
+			   CtkDirectionType   direction);
 
   /*< private >*/
 
@@ -95,7 +95,7 @@ struct _GtkScrolledWindowClass
 
 
 /**
- * GtkCornerType:
+ * CtkCornerType:
  * @CTK_CORNER_TOP_LEFT: Place the scrollbars on the right and bottom of the
  *  widget (default behaviour).
  * @CTK_CORNER_BOTTOM_LEFT: Place the scrollbars on the top and right of the
@@ -106,7 +106,7 @@ struct _GtkScrolledWindowClass
  *  widget.
  *
  * Specifies which corner a child widget should be placed in when packed into
- * a #GtkScrolledWindow. This is effectively the opposite of where the scroll
+ * a #CtkScrolledWindow. This is effectively the opposite of where the scroll
  * bars are placed.
  */
 typedef enum
@@ -115,15 +115,15 @@ typedef enum
   CTK_CORNER_BOTTOM_LEFT,
   CTK_CORNER_TOP_RIGHT,
   CTK_CORNER_BOTTOM_RIGHT
-} GtkCornerType;
+} CtkCornerType;
 
 
 /**
- * GtkPolicyType:
+ * CtkPolicyType:
  * @CTK_POLICY_ALWAYS: The scrollbar is always visible. The view size is
  *  independent of the content.
  * @CTK_POLICY_AUTOMATIC: The scrollbar will appear and disappear as necessary.
- *  For example, when all of a #GtkTreeView can not be seen.
+ *  For example, when all of a #CtkTreeView can not be seen.
  * @CTK_POLICY_NEVER: The scrollbar should never appear. In this mode the
  *  content determines the size.
  * @CTK_POLICY_EXTERNAL: Don't show a scrollbar, but don't force the
@@ -139,104 +139,104 @@ typedef enum
   CTK_POLICY_AUTOMATIC,
   CTK_POLICY_NEVER,
   CTK_POLICY_EXTERNAL
-} GtkPolicyType;
+} CtkPolicyType;
 
 
 GDK_AVAILABLE_IN_ALL
 GType          ctk_scrolled_window_get_type          (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget*     ctk_scrolled_window_new               (GtkAdjustment     *hadjustment,
-						      GtkAdjustment     *vadjustment);
+CtkWidget*     ctk_scrolled_window_new               (CtkAdjustment     *hadjustment,
+						      CtkAdjustment     *vadjustment);
 GDK_AVAILABLE_IN_ALL
-void           ctk_scrolled_window_set_hadjustment   (GtkScrolledWindow *scrolled_window,
-						      GtkAdjustment     *hadjustment);
+void           ctk_scrolled_window_set_hadjustment   (CtkScrolledWindow *scrolled_window,
+						      CtkAdjustment     *hadjustment);
 GDK_AVAILABLE_IN_ALL
-void           ctk_scrolled_window_set_vadjustment   (GtkScrolledWindow *scrolled_window,
-						      GtkAdjustment     *vadjustment);
+void           ctk_scrolled_window_set_vadjustment   (CtkScrolledWindow *scrolled_window,
+						      CtkAdjustment     *vadjustment);
 GDK_AVAILABLE_IN_ALL
-GtkAdjustment* ctk_scrolled_window_get_hadjustment   (GtkScrolledWindow *scrolled_window);
+CtkAdjustment* ctk_scrolled_window_get_hadjustment   (CtkScrolledWindow *scrolled_window);
 GDK_AVAILABLE_IN_ALL
-GtkAdjustment* ctk_scrolled_window_get_vadjustment   (GtkScrolledWindow *scrolled_window);
+CtkAdjustment* ctk_scrolled_window_get_vadjustment   (CtkScrolledWindow *scrolled_window);
 GDK_AVAILABLE_IN_ALL
-GtkWidget*     ctk_scrolled_window_get_hscrollbar    (GtkScrolledWindow *scrolled_window);
+CtkWidget*     ctk_scrolled_window_get_hscrollbar    (CtkScrolledWindow *scrolled_window);
 GDK_AVAILABLE_IN_ALL
-GtkWidget*     ctk_scrolled_window_get_vscrollbar    (GtkScrolledWindow *scrolled_window);
+CtkWidget*     ctk_scrolled_window_get_vscrollbar    (CtkScrolledWindow *scrolled_window);
 GDK_AVAILABLE_IN_ALL
-void           ctk_scrolled_window_set_policy        (GtkScrolledWindow *scrolled_window,
-						      GtkPolicyType      hscrollbar_policy,
-						      GtkPolicyType      vscrollbar_policy);
+void           ctk_scrolled_window_set_policy        (CtkScrolledWindow *scrolled_window,
+						      CtkPolicyType      hscrollbar_policy,
+						      CtkPolicyType      vscrollbar_policy);
 GDK_AVAILABLE_IN_ALL
-void           ctk_scrolled_window_get_policy        (GtkScrolledWindow *scrolled_window,
-						      GtkPolicyType     *hscrollbar_policy,
-						      GtkPolicyType     *vscrollbar_policy);
+void           ctk_scrolled_window_get_policy        (CtkScrolledWindow *scrolled_window,
+						      CtkPolicyType     *hscrollbar_policy,
+						      CtkPolicyType     *vscrollbar_policy);
 GDK_AVAILABLE_IN_ALL
-void           ctk_scrolled_window_set_placement     (GtkScrolledWindow *scrolled_window,
-						      GtkCornerType      window_placement);
+void           ctk_scrolled_window_set_placement     (CtkScrolledWindow *scrolled_window,
+						      CtkCornerType      window_placement);
 GDK_AVAILABLE_IN_ALL
-void           ctk_scrolled_window_unset_placement   (GtkScrolledWindow *scrolled_window);
+void           ctk_scrolled_window_unset_placement   (CtkScrolledWindow *scrolled_window);
 
 GDK_AVAILABLE_IN_ALL
-GtkCornerType  ctk_scrolled_window_get_placement     (GtkScrolledWindow *scrolled_window);
+CtkCornerType  ctk_scrolled_window_get_placement     (CtkScrolledWindow *scrolled_window);
 GDK_AVAILABLE_IN_ALL
-void           ctk_scrolled_window_set_shadow_type   (GtkScrolledWindow *scrolled_window,
-						      GtkShadowType      type);
+void           ctk_scrolled_window_set_shadow_type   (CtkScrolledWindow *scrolled_window,
+						      CtkShadowType      type);
 GDK_AVAILABLE_IN_ALL
-GtkShadowType  ctk_scrolled_window_get_shadow_type   (GtkScrolledWindow *scrolled_window);
+CtkShadowType  ctk_scrolled_window_get_shadow_type   (CtkScrolledWindow *scrolled_window);
 GDK_DEPRECATED_IN_3_8_FOR(ctk_container_add)
-void	       ctk_scrolled_window_add_with_viewport (GtkScrolledWindow *scrolled_window,
-						      GtkWidget		*child);
+void	       ctk_scrolled_window_add_with_viewport (CtkScrolledWindow *scrolled_window,
+						      CtkWidget		*child);
 
 GDK_AVAILABLE_IN_ALL
-gint           ctk_scrolled_window_get_min_content_width  (GtkScrolledWindow *scrolled_window);
+gint           ctk_scrolled_window_get_min_content_width  (CtkScrolledWindow *scrolled_window);
 GDK_AVAILABLE_IN_ALL
-void           ctk_scrolled_window_set_min_content_width  (GtkScrolledWindow *scrolled_window,
+void           ctk_scrolled_window_set_min_content_width  (CtkScrolledWindow *scrolled_window,
                                                            gint               width);
 GDK_AVAILABLE_IN_ALL
-gint           ctk_scrolled_window_get_min_content_height (GtkScrolledWindow *scrolled_window);
+gint           ctk_scrolled_window_get_min_content_height (CtkScrolledWindow *scrolled_window);
 GDK_AVAILABLE_IN_ALL
-void           ctk_scrolled_window_set_min_content_height (GtkScrolledWindow *scrolled_window,
+void           ctk_scrolled_window_set_min_content_height (CtkScrolledWindow *scrolled_window,
                                                            gint               height);
 GDK_AVAILABLE_IN_3_4
-void           ctk_scrolled_window_set_kinetic_scrolling  (GtkScrolledWindow *scrolled_window,
+void           ctk_scrolled_window_set_kinetic_scrolling  (CtkScrolledWindow *scrolled_window,
                                                            gboolean           kinetic_scrolling);
 GDK_AVAILABLE_IN_3_4
-gboolean       ctk_scrolled_window_get_kinetic_scrolling  (GtkScrolledWindow *scrolled_window);
+gboolean       ctk_scrolled_window_get_kinetic_scrolling  (CtkScrolledWindow *scrolled_window);
 
 GDK_AVAILABLE_IN_3_4
-void           ctk_scrolled_window_set_capture_button_press (GtkScrolledWindow *scrolled_window,
+void           ctk_scrolled_window_set_capture_button_press (CtkScrolledWindow *scrolled_window,
                                                              gboolean           capture_button_press);
 GDK_AVAILABLE_IN_3_4
-gboolean       ctk_scrolled_window_get_capture_button_press (GtkScrolledWindow *scrolled_window);
+gboolean       ctk_scrolled_window_get_capture_button_press (CtkScrolledWindow *scrolled_window);
 
 GDK_AVAILABLE_IN_3_16
-void           ctk_scrolled_window_set_overlay_scrolling  (GtkScrolledWindow *scrolled_window,
+void           ctk_scrolled_window_set_overlay_scrolling  (CtkScrolledWindow *scrolled_window,
                                                            gboolean           overlay_scrolling);
 GDK_AVAILABLE_IN_3_16
-gboolean       ctk_scrolled_window_get_overlay_scrolling (GtkScrolledWindow   *scrolled_window);
+gboolean       ctk_scrolled_window_get_overlay_scrolling (CtkScrolledWindow   *scrolled_window);
 
 GDK_AVAILABLE_IN_3_22
-void           ctk_scrolled_window_set_max_content_width  (GtkScrolledWindow *scrolled_window,
+void           ctk_scrolled_window_set_max_content_width  (CtkScrolledWindow *scrolled_window,
                                                            gint               width);
 GDK_AVAILABLE_IN_3_22
-gint           ctk_scrolled_window_get_max_content_width  (GtkScrolledWindow *scrolled_window);
+gint           ctk_scrolled_window_get_max_content_width  (CtkScrolledWindow *scrolled_window);
 
 GDK_AVAILABLE_IN_3_22
-void           ctk_scrolled_window_set_max_content_height (GtkScrolledWindow *scrolled_window,
+void           ctk_scrolled_window_set_max_content_height (CtkScrolledWindow *scrolled_window,
                                                            gint               height);
 GDK_AVAILABLE_IN_3_22
-gint           ctk_scrolled_window_get_max_content_height (GtkScrolledWindow *scrolled_window);
+gint           ctk_scrolled_window_get_max_content_height (CtkScrolledWindow *scrolled_window);
 
 GDK_AVAILABLE_IN_3_22
-void           ctk_scrolled_window_set_propagate_natural_width  (GtkScrolledWindow *scrolled_window,
+void           ctk_scrolled_window_set_propagate_natural_width  (CtkScrolledWindow *scrolled_window,
 								 gboolean           propagate);
 GDK_AVAILABLE_IN_3_22
-gboolean       ctk_scrolled_window_get_propagate_natural_width  (GtkScrolledWindow *scrolled_window);
+gboolean       ctk_scrolled_window_get_propagate_natural_width  (CtkScrolledWindow *scrolled_window);
 
 GDK_AVAILABLE_IN_3_22
-void           ctk_scrolled_window_set_propagate_natural_height (GtkScrolledWindow *scrolled_window,
+void           ctk_scrolled_window_set_propagate_natural_height (CtkScrolledWindow *scrolled_window,
 								 gboolean           propagate);
 GDK_AVAILABLE_IN_3_22
-gboolean       ctk_scrolled_window_get_propagate_natural_height (GtkScrolledWindow *scrolled_window);
+gboolean       ctk_scrolled_window_get_propagate_natural_height (CtkScrolledWindow *scrolled_window);
 
 G_END_DECLS
 

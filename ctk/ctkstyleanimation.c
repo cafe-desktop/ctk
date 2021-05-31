@@ -21,35 +21,35 @@
 
 #include "ctkstyleanimationprivate.h"
 
-G_DEFINE_ABSTRACT_TYPE (GtkStyleAnimation, _ctk_style_animation, G_TYPE_OBJECT)
+G_DEFINE_ABSTRACT_TYPE (CtkStyleAnimation, _ctk_style_animation, G_TYPE_OBJECT)
 
-static GtkStyleAnimation *
-ctk_style_animation_real_advance (GtkStyleAnimation    *animation,
+static CtkStyleAnimation *
+ctk_style_animation_real_advance (CtkStyleAnimation    *animation,
                                   gint64                timestamp)
 {
   return NULL;
 }
 
 static void
-ctk_style_animation_real_apply_values (GtkStyleAnimation    *animation,
-                                       GtkCssAnimatedStyle  *style)
+ctk_style_animation_real_apply_values (CtkStyleAnimation    *animation,
+                                       CtkCssAnimatedStyle  *style)
 {
 }
 
 static gboolean
-ctk_style_animation_real_is_finished (GtkStyleAnimation *animation)
+ctk_style_animation_real_is_finished (CtkStyleAnimation *animation)
 {
   return TRUE;
 }
 
 static gboolean
-ctk_style_animation_real_is_static (GtkStyleAnimation *animation)
+ctk_style_animation_real_is_static (CtkStyleAnimation *animation)
 {
   return FALSE;
 }
 
 static void
-_ctk_style_animation_class_init (GtkStyleAnimationClass *klass)
+_ctk_style_animation_class_init (CtkStyleAnimationClass *klass)
 {
   klass->advance = ctk_style_animation_real_advance;
   klass->apply_values = ctk_style_animation_real_apply_values;
@@ -58,15 +58,15 @@ _ctk_style_animation_class_init (GtkStyleAnimationClass *klass)
 }
 
 static void
-_ctk_style_animation_init (GtkStyleAnimation *animation)
+_ctk_style_animation_init (CtkStyleAnimation *animation)
 {
 }
 
-GtkStyleAnimation *
-_ctk_style_animation_advance (GtkStyleAnimation    *animation,
+CtkStyleAnimation *
+_ctk_style_animation_advance (CtkStyleAnimation    *animation,
                               gint64                timestamp)
 {
-  GtkStyleAnimationClass *klass;
+  CtkStyleAnimationClass *klass;
 
   g_return_val_if_fail (CTK_IS_STYLE_ANIMATION (animation), NULL);
 
@@ -76,10 +76,10 @@ _ctk_style_animation_advance (GtkStyleAnimation    *animation,
 }
 
 void
-_ctk_style_animation_apply_values (GtkStyleAnimation    *animation,
-                                   GtkCssAnimatedStyle  *style)
+_ctk_style_animation_apply_values (CtkStyleAnimation    *animation,
+                                   CtkCssAnimatedStyle  *style)
 {
-  GtkStyleAnimationClass *klass;
+  CtkStyleAnimationClass *klass;
 
   g_return_if_fail (CTK_IS_STYLE_ANIMATION (animation));
   g_return_if_fail (CTK_IS_CSS_ANIMATED_STYLE (style));
@@ -90,9 +90,9 @@ _ctk_style_animation_apply_values (GtkStyleAnimation    *animation,
 }
 
 gboolean
-_ctk_style_animation_is_finished (GtkStyleAnimation *animation)
+_ctk_style_animation_is_finished (CtkStyleAnimation *animation)
 {
-  GtkStyleAnimationClass *klass;
+  CtkStyleAnimationClass *klass;
 
   g_return_val_if_fail (CTK_IS_STYLE_ANIMATION (animation), TRUE);
 
@@ -113,9 +113,9 @@ _ctk_style_animation_is_finished (GtkStyleAnimation *animation)
  * Returns: %TRUE if @animation will not change anymore after @at_time_us
  **/
 gboolean
-_ctk_style_animation_is_static (GtkStyleAnimation *animation)
+_ctk_style_animation_is_static (CtkStyleAnimation *animation)
 {
-  GtkStyleAnimationClass *klass;
+  CtkStyleAnimationClass *klass;
 
   g_return_val_if_fail (CTK_IS_STYLE_ANIMATION (animation), TRUE);
 

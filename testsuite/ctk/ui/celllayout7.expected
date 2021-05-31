@@ -1,2 +1,2 @@
 ERROR: ctk-builder-error-quark 1
-.:8:17 Unsupported tag for GtkCellLayout: <warbl>
+.:8:17 Unsupported tag for CtkCellLayout: <warbl>

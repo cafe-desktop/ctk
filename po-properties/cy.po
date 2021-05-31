@@ -434,10 +434,10 @@ msgstr "Grŵp Gweithred"
 
 #: ctk/ctkaction.c:396
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
-"Y GtkActionGroup mae'r GtkAction hwn wedi ei gysylltu ag ef, neu NULL (ar "
+"Y CtkActionGroup mae'r CtkAction hwn wedi ei gysylltu ag ef, neu NULL (ar "
 "gyfer defnydd mewnol)."
 
 #: ctk/ctkaction.c:414 ctk/ctkimagemenuitem.c:172
@@ -831,10 +831,10 @@ msgstr "Math pacio"
 
 #: ctk/ctkbox.c:287 ctk/ctknotebook.c:692
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
 msgstr ""
-"Gwerth GtkPackType yn dynodi a ydi'r plentyn i'w bacio ar ddechrau neu ar "
+"Gwerth CtkPackType yn dynodi a ydi'r plentyn i'w bacio ar ddechrau neu ar "
 "ddiwedd ei rhiant"
 
 #: ctk/ctkbox.c:293 ctk/ctknotebook.c:670 ctk/ctkpaned.c:270
@@ -1340,8 +1340,8 @@ msgid "Size"
 msgstr "Maint"
 
 #: ctk/ctkcellrendererpixbuf.c:153
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
-msgstr "Y gwerth GtkIconSize sy'n penodi maint yr eicon lluniedig"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
+msgstr "Y gwerth CtkIconSize sy'n penodi maint yr eicon lluniedig"
 
 #: ctk/ctkcellrendererpixbuf.c:162
 msgid "Detail"
@@ -1464,8 +1464,8 @@ msgstr "Enw'r argraffydd"
 
 #: ctk/ctkcellrendererspinner.c:154
 #, fuzzy
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
-msgstr "Y gwerth GtkIconSize sy'n penodi maint yr eicon lluniedig"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
+msgstr "Y gwerth CtkIconSize sy'n penodi maint yr eicon lluniedig"
 
 #: ctk/ctkcellrenderertext.c:232
 msgid "Text to render"
@@ -3279,10 +3279,10 @@ msgstr "Unioni"
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkMisc::xalign for that"
+"CtkMisc::xalign for that"
 msgstr ""
 "Cyfuniad y llinellau yn nhestun y label yn gymharol i'w gilydd. NID yw hyn "
-"yn effeithio cyfuniad y label o fewn ei ddarpariad. Gweler GtkMisc::xalign "
+"yn effeithio cyfuniad y label o fewn ei ddarpariad. Gweler CtkMisc::xalign "
 "ar gyfer hynny"
 
 #: ctk/ctklabel.c:587
@@ -3390,16 +3390,16 @@ msgid "Horizontal adjustment"
 msgstr "Addasiad llorweddol"
 
 #: ctk/ctklayout.c:626 ctk/ctkscrolledwindow.c:244
-msgid "The GtkAdjustment for the horizontal position"
-msgstr "Y GtkAdjustment ar gyfer y safle llorweddol"
+msgid "The CtkAdjustment for the horizontal position"
+msgstr "Y CtkAdjustment ar gyfer y safle llorweddol"
 
 #: ctk/ctklayout.c:633 ctk/ctkviewport.c:150
 msgid "Vertical adjustment"
 msgstr "Addasiad fertigol"
 
 #: ctk/ctklayout.c:634 ctk/ctkscrolledwindow.c:251
-msgid "The GtkAdjustment for the vertical position"
-msgstr "Y GtkAdjustment ar gyfer y safle fertigol"
+msgid "The CtkAdjustment for the vertical position"
+msgstr "Y CtkAdjustment ar gyfer y safle fertigol"
 
 #: ctk/ctklayout.c:641 ctk/ctktreeviewcolumn.c:211
 msgid "Width"
@@ -3780,7 +3780,7 @@ msgid "Message area"
 msgstr "Math Neges"
 
 #: ctk/ctkmessagedialog.c:306
-msgid "GtkVBox that holds the dialog's primary and secondary labels"
+msgid "CtkVBox that holds the dialog's primary and secondary labels"
 msgstr ""
 
 #: ctk/ctkmisc.c:91
@@ -4228,16 +4228,16 @@ msgid "Default Page Setup"
 msgstr "Gosodiad Rhagosodedig Tudalen"
 
 #: ctk/ctkprintoperation.c:1006
-msgid "The GtkPageSetup used by default"
-msgstr "Y GtkPageSetup ddefnyddir yn rhagosodedig"
+msgid "The CtkPageSetup used by default"
+msgstr "Y CtkPageSetup ddefnyddir yn rhagosodedig"
 
 #: ctk/ctkprintoperation.c:1024 ctk/ctkprintunixdialog.c:316
 msgid "Print Settings"
 msgstr "Gosodiadau Argraffu"
 
 #: ctk/ctkprintoperation.c:1025 ctk/ctkprintunixdialog.c:317
-msgid "The GtkPrintSettings used for initializing the dialog"
-msgstr "Y GtkPrintSettings ddefnyddiwyd i ymgychwyn y ddeialog"
+msgid "The CtkPrintSettings used for initializing the dialog"
+msgstr "Y CtkPrintSettings ddefnyddiwyd i ymgychwyn y ddeialog"
 
 #: ctk/ctkprintoperation.c:1043
 msgid "Job Name"
@@ -4362,7 +4362,7 @@ msgid "Embed Page Setup"
 msgstr "Gosodiad Tudalen"
 
 #: ctk/ctkprintoperation.c:1321
-msgid "TRUE if page setup combos are embedded in GtkPrintDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintDialog"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1342
@@ -4376,16 +4376,16 @@ msgid "The number of pages that will be printed."
 msgstr "Nifer y tudalennau yn y ddogfen"
 
 #: ctk/ctkprintunixdialog.c:299
-msgid "The GtkPageSetup to use"
-msgstr "Y GtkPageSetup i'w ddefnyddio"
+msgid "The CtkPageSetup to use"
+msgstr "Y CtkPageSetup i'w ddefnyddio"
 
 #: ctk/ctkprintunixdialog.c:324
 msgid "Selected Printer"
 msgstr "Argraffydd sydd wedi'i Ddewis"
 
 #: ctk/ctkprintunixdialog.c:325
-msgid "The GtkPrinter which is selected"
-msgstr "Y GtkPrinter sydd wedi'i ddewis"
+msgid "The CtkPrinter which is selected"
+msgstr "Y CtkPrinter sydd wedi'i ddewis"
 
 #: ctk/ctkprintunixdialog.c:332
 msgid "Manual Capabilities"
@@ -4406,7 +4406,7 @@ msgid "Whether the application has a selection"
 msgstr "A ydy'r weithred wedi ei alluogi"
 
 #: ctk/ctkprintunixdialog.c:358
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
 msgstr ""
 
 #: ctk/ctkprogressbar.c:134
@@ -4560,8 +4560,8 @@ msgid "How the range should be updated on the screen"
 msgstr "Sut dylid diweddaru'r cyfwng ar y sgrin"
 
 #: ctk/ctkrange.c:420
-msgid "The GtkAdjustment that contains the current value of this range object"
-msgstr "Y GtkAdjustment sy'n cynnwys gwerth cyfredol y gwrthrych cyfwng hwn"
+msgid "The CtkAdjustment that contains the current value of this range object"
+msgstr "Y CtkAdjustment sy'n cynnwys gwerth cyfredol y gwrthrych cyfwng hwn"
 
 # EFALLAI
 #: ctk/ctkrange.c:428
@@ -4828,8 +4828,8 @@ msgstr "Maint eiconau bar offer"
 #: ctk/ctkscalebutton.c:240
 #, fuzzy
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
-msgstr "Y GtkAdjustment sy'n cynnwys gwerth cyfredol y gwrthrych cyfwng hwn"
+"The CtkAdjustment that contains the current value of this scale button object"
+msgstr "Y CtkAdjustment sy'n cynnwys gwerth cyfredol y gwrthrych cyfwng hwn"
 
 #: ctk/ctkscalebutton.c:268
 #, fuzzy
@@ -5356,16 +5356,16 @@ msgid "Default file chooser backend"
 msgstr "Ochr gefn rhagosod y dewisydd ffeil"
 
 #: ctk/ctksettings.c:743
-msgid "Name of the GtkFileChooser backend to use by default"
-msgstr "Enw'r ochr gefn GtkFileChooser i'w ddefnyddio'n rhagosod"
+msgid "Name of the CtkFileChooser backend to use by default"
+msgstr "Enw'r ochr gefn CtkFileChooser i'w ddefnyddio'n rhagosod"
 
 #: ctk/ctksettings.c:760
 msgid "Default print backend"
 msgstr "Ochr gefn rhagosod ar gyfer argraffu"
 
 #: ctk/ctksettings.c:761
-msgid "List of the GtkPrintBackend backends to use by default"
-msgstr "Rhestr yr ochrau cefn GtkPrintBackend i'w defnyddio'n rhagosod"
+msgid "List of the CtkPrintBackend backends to use by default"
+msgstr "Rhestr yr ochrau cefn CtkPrintBackend i'w defnyddio'n rhagosod"
 
 #: ctk/ctksettings.c:784
 msgid "Default command to run when displaying a print preview"
@@ -5600,7 +5600,7 @@ msgstr "Nifer y Tudalennau"
 #: ctk/ctkspinner.c:147
 msgid ""
 "The number of steps for the spinner to complete a full loop. The animation "
-"will complete a full cycle in one second by default (see #GtkSpinner:cycle-"
+"will complete a full cycle in one second by default (see #CtkSpinner:cycle-"
 "duration)."
 msgstr ""
 
@@ -6583,8 +6583,8 @@ msgid "Fixed Height Mode"
 msgstr "Modd Uchder Gosodedig"
 
 #: ctk/ctktreeview.c:657
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
-msgstr "Yn cyflymu GtkTreeView gan dybio fod gan bob rhes yr un uchder"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
+msgstr "Yn cyflymu CtkTreeView gan dybio fod gan bob rhes yr un uchder"
 
 #: ctk/ctktreeview.c:677
 msgid "Hover Selection"
@@ -6865,18 +6865,18 @@ msgstr "Llinyn XML yn disgrifio'r rhyngwyneb cyfunedig"
 
 #: ctk/ctkviewport.c:143
 msgid ""
-"The GtkAdjustment that determines the values of the horizontal position for "
+"The CtkAdjustment that determines the values of the horizontal position for "
 "this viewport"
 msgstr ""
-"Y GtkAdjustment sy'n penodi gwerthoedd y safle llorweddol ar gyfer y porth "
+"Y CtkAdjustment sy'n penodi gwerthoedd y safle llorweddol ar gyfer y porth "
 "golwg hwn"
 
 #: ctk/ctkviewport.c:151
 msgid ""
-"The GtkAdjustment that determines the values of the vertical position for "
+"The CtkAdjustment that determines the values of the vertical position for "
 "this viewport"
 msgstr ""
-"Y GtkAdjustment sy'n penodi gwerthoedd y safle fertigol ar gyfer y porth "
+"Y CtkAdjustment sy'n penodi gwerthoedd y safle fertigol ar gyfer y porth "
 "golwg hwn"
 
 #: ctk/ctkviewport.c:159
@@ -7363,8 +7363,8 @@ msgid "Focus in Toplevel"
 msgstr "Ffocws yn y Lefel Dop"
 
 #: ctk/ctkwindow.c:710
-msgid "Whether the input focus is within this GtkWindow"
-msgstr "A ydy'r ffocws mewnbwn o fewn y GtkWindow yma"
+msgid "Whether the input focus is within this CtkWindow"
+msgstr "A ydy'r ffocws mewnbwn o fewn y CtkWindow yma"
 
 #: ctk/ctkwindow.c:717
 msgid "Type hint"
@@ -7555,7 +7555,7 @@ msgstr "Sut i arlunio'r bar statws modd mewnbwn"
 #~ msgstr "Didfap i'w ddefnyddio fel masg wrth arlunio cefndir y testun"
 
 #~ msgid "The GdkFont that is currently selected"
-#~ msgstr "Y GtkFont sydd wedi ei ddewis yn gyfredol"
+#~ msgstr "Y CtkFont sydd wedi ei ddewis yn gyfredol"
 
 #~ msgid "Deprecated property, use shadow_type instead"
 #~ msgstr "Priodwedd a anghymeradwyir, defnyddiwch shadow_type yn lle"
@@ -7587,12 +7587,12 @@ msgstr "Sut i arlunio'r bar statws modd mewnbwn"
 #~ msgstr "Modd gweithredu"
 
 #~ msgid ""
-#~ "If TRUE, the GtkProgress is in activity mode, meaning that it signals "
+#~ "If TRUE, the CtkProgress is in activity mode, meaning that it signals "
 #~ "something is happening, but not how much of the activity is finished. "
 #~ "This is used when you're doing something but don't know how long it will "
 #~ "take."
 #~ msgstr ""
-#~ "Os TRUE mae'r GtkProgress mewn modd gweithred, sy'n golygu ei fod yn "
+#~ "Os TRUE mae'r CtkProgress mewn modd gweithred, sy'n golygu ei fod yn "
 #~ "dangos fod rhywbeth yn digwydd, ond nid faint o'r weithred sydd wedi "
 #~ "gorffen. Caiff hyn ei ddefnyddio pan ydych yn gwneud rhywbeth heb wybod "
 #~ "ei hyd amser."
@@ -7810,8 +7810,8 @@ msgstr "Sut i arlunio'r bar statws modd mewnbwn"
 #~ "Whether the preview widget should take up the entire space it is allocated"
 #~ msgstr "Dylai'r teclyn rhagolwg gymryd yr holl le a roddir iddo"
 
-#~ msgid "The GtkAdjustment connected to the progress bar (Deprecated)"
-#~ msgstr "Y GtkAdjustment wedi ei gysylltu i'r bar cynnydd (Anghymeradwyir)"
+#~ msgid "The CtkAdjustment connected to the progress bar (Deprecated)"
+#~ msgstr "Y CtkAdjustment wedi ei gysylltu i'r bar cynnydd (Anghymeradwyir)"
 
 #~ msgid "Bar style"
 #~ msgstr "Arddull bar"

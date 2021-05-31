@@ -9,12 +9,12 @@ CHECK_PACKAGE = gdk-pixbuf-2.0 atk pangocairo gio-2.0
 built_install_girs =	\
 	vs$(VSVER)\$(CFG)\$(PLAT)\bin\Gdk-$(APIVERSION).gir	\
 	vs$(VSVER)\$(CFG)\$(PLAT)\bin\GdkWin32-$(APIVERSION).gir	\
-	vs$(VSVER)\$(CFG)\$(PLAT)\bin\Gtk-$(APIVERSION).gir
+	vs$(VSVER)\$(CFG)\$(PLAT)\bin\Ctk-$(APIVERSION).gir
 
 built_install_typelibs =	\
 	vs$(VSVER)\$(CFG)\$(PLAT)\bin\Gdk-$(APIVERSION).typelib	\
 	vs$(VSVER)\$(CFG)\$(PLAT)\bin\GdkWin32-$(APIVERSION).typelib	\
-	vs$(VSVER)\$(CFG)\$(PLAT)\bin\Gtk-$(APIVERSION).typelib
+	vs$(VSVER)\$(CFG)\$(PLAT)\bin\Ctk-$(APIVERSION).typelib
 
 !include introspection-msvc.mak
 

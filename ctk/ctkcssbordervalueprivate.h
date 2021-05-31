@@ -26,19 +26,19 @@
 
 G_BEGIN_DECLS
 
-GtkCssValue *   _ctk_css_border_value_new           (GtkCssValue            *top,
-                                                     GtkCssValue            *right,
-                                                     GtkCssValue            *bottom,
-                                                     GtkCssValue            *left);
-GtkCssValue *   _ctk_css_border_value_parse         (GtkCssParser           *parser,
-                                                     GtkCssNumberParseFlags  flags,
+CtkCssValue *   _ctk_css_border_value_new           (CtkCssValue            *top,
+                                                     CtkCssValue            *right,
+                                                     CtkCssValue            *bottom,
+                                                     CtkCssValue            *left);
+CtkCssValue *   _ctk_css_border_value_parse         (CtkCssParser           *parser,
+                                                     CtkCssNumberParseFlags  flags,
                                                      gboolean                allow_auto,
                                                      gboolean                allow_fill);
 
-GtkCssValue *   _ctk_css_border_value_get_top       (const GtkCssValue      *value);
-GtkCssValue *   _ctk_css_border_value_get_right     (const GtkCssValue      *value);
-GtkCssValue *   _ctk_css_border_value_get_bottom    (const GtkCssValue      *value);
-GtkCssValue *   _ctk_css_border_value_get_left      (const GtkCssValue      *value);
+CtkCssValue *   _ctk_css_border_value_get_top       (const CtkCssValue      *value);
+CtkCssValue *   _ctk_css_border_value_get_right     (const CtkCssValue      *value);
+CtkCssValue *   _ctk_css_border_value_get_bottom    (const CtkCssValue      *value);
+CtkCssValue *   _ctk_css_border_value_get_left      (const CtkCssValue      *value);
 
 
 G_END_DECLS

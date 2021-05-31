@@ -1,4 +1,4 @@
-/* GtkCellRendererSpin
+/* CtkCellRendererSpin
  * Copyright (C) 2004 Lorenzo Gil Sanchez
  *
  * This library is free software; you can redistribute it and/or
@@ -31,28 +31,28 @@
 /**
  * SECTION:ctkcellrendererspin
  * @Short_description: Renders a spin button in a cell
- * @Title: GtkCellRendererSpin
- * @See_also: #GtkCellRendererText, #GtkSpinButton
+ * @Title: CtkCellRendererSpin
+ * @See_also: #CtkCellRendererText, #CtkSpinButton
  *
- * #GtkCellRendererSpin renders text in a cell like #GtkCellRendererText from
- * which it is derived. But while #GtkCellRendererText offers a simple entry to
- * edit the text, #GtkCellRendererSpin offers a #GtkSpinButton widget. Of course,
+ * #CtkCellRendererSpin renders text in a cell like #CtkCellRendererText from
+ * which it is derived. But while #CtkCellRendererText offers a simple entry to
+ * edit the text, #CtkCellRendererSpin offers a #CtkSpinButton widget. Of course,
  * that means that the text has to be parseable as a floating point number.
  *
  * The range of the spinbutton is taken from the adjustment property of the
  * cell renderer, which can be set explicitly or mapped to a column in the
- * tree model, like all properties of cell renders. #GtkCellRendererSpin
- * also has properties for the #GtkCellRendererSpin:climb-rate and the number
- * of #GtkCellRendererSpin:digits to display. Other #GtkSpinButton properties
- * can be set in a handler for the #GtkCellRenderer::editing-started signal.
+ * tree model, like all properties of cell renders. #CtkCellRendererSpin
+ * also has properties for the #CtkCellRendererSpin:climb-rate and the number
+ * of #CtkCellRendererSpin:digits to display. Other #CtkSpinButton properties
+ * can be set in a handler for the #CtkCellRenderer::editing-started signal.
  *
- * The #GtkCellRendererSpin cell renderer was added in GTK+ 2.10.
+ * The #CtkCellRendererSpin cell renderer was added in GTK+ 2.10.
  */
 
 
-struct _GtkCellRendererSpinPrivate
+struct _CtkCellRendererSpinPrivate
 {
-  GtkAdjustment *adjustment;
+  CtkAdjustment *adjustment;
   gdouble climb_rate;
   guint   digits;
 };
@@ -68,13 +68,13 @@ static void ctk_cell_renderer_spin_set_property (GObject      *object,
 						 const GValue *value,
 						 GParamSpec   *spec);
 
-static GtkCellEditable * ctk_cell_renderer_spin_start_editing (GtkCellRenderer     *cell,
+static CtkCellEditable * ctk_cell_renderer_spin_start_editing (CtkCellRenderer     *cell,
 							       GdkEvent            *event,
-							       GtkWidget           *widget,
+							       CtkWidget           *widget,
 							       const gchar         *path,
 							       const GdkRectangle  *background_area,
 							       const GdkRectangle  *cell_area,
-							       GtkCellRendererState flags);
+							       CtkCellRendererState flags);
 enum {
   PROP_0,
   PROP_ADJUSTMENT,
@@ -84,14 +84,14 @@ enum {
 
 #define CTK_CELL_RENDERER_SPIN_PATH "ctk-cell-renderer-spin-path"
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkCellRendererSpin, ctk_cell_renderer_spin, CTK_TYPE_CELL_RENDERER_TEXT)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkCellRendererSpin, ctk_cell_renderer_spin, CTK_TYPE_CELL_RENDERER_TEXT)
 
 
 static void
-ctk_cell_renderer_spin_class_init (GtkCellRendererSpinClass *klass)
+ctk_cell_renderer_spin_class_init (CtkCellRendererSpinClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkCellRendererClass *cell_class = CTK_CELL_RENDERER_CLASS (klass);
+  CtkCellRendererClass *cell_class = CTK_CELL_RENDERER_CLASS (klass);
 
   object_class->finalize     = ctk_cell_renderer_spin_finalize;
   object_class->get_property = ctk_cell_renderer_spin_get_property;
@@ -100,7 +100,7 @@ ctk_cell_renderer_spin_class_init (GtkCellRendererSpinClass *klass)
   cell_class->start_editing  = ctk_cell_renderer_spin_start_editing;
 
   /**
-   * GtkCellRendererSpin:adjustment:
+   * CtkCellRendererSpin:adjustment:
    *
    * The adjustment that holds the value of the spinbutton. 
    * This must be non-%NULL for the cell renderer to be editable.
@@ -117,7 +117,7 @@ ctk_cell_renderer_spin_class_init (GtkCellRendererSpinClass *klass)
 
 
   /**
-   * GtkCellRendererSpin:climb-rate:
+   * CtkCellRendererSpin:climb-rate:
    *
    * The acceleration rate when you hold down a button.
    *
@@ -131,7 +131,7 @@ ctk_cell_renderer_spin_class_init (GtkCellRendererSpinClass *klass)
 							0.0, G_MAXDOUBLE, 0.0,
 							CTK_PARAM_READWRITE));  
   /**
-   * GtkCellRendererSpin:digits:
+   * CtkCellRendererSpin:digits:
    *
    * The number of decimal places to display.
    *
@@ -147,9 +147,9 @@ ctk_cell_renderer_spin_class_init (GtkCellRendererSpinClass *klass)
 }
 
 static void
-ctk_cell_renderer_spin_init (GtkCellRendererSpin *self)
+ctk_cell_renderer_spin_init (CtkCellRendererSpin *self)
 {
-  GtkCellRendererSpinPrivate *priv;
+  CtkCellRendererSpinPrivate *priv;
 
   self->priv = ctk_cell_renderer_spin_get_instance_private (self);
   priv = self->priv;
@@ -162,7 +162,7 @@ ctk_cell_renderer_spin_init (GtkCellRendererSpin *self)
 static void
 ctk_cell_renderer_spin_finalize (GObject *object)
 {
-  GtkCellRendererSpinPrivate *priv;
+  CtkCellRendererSpinPrivate *priv;
 
   priv = CTK_CELL_RENDERER_SPIN (object)->priv;
 
@@ -178,8 +178,8 @@ ctk_cell_renderer_spin_get_property (GObject      *object,
 				     GValue       *value,
 				     GParamSpec   *pspec)
 {
-  GtkCellRendererSpin *renderer;
-  GtkCellRendererSpinPrivate *priv;
+  CtkCellRendererSpin *renderer;
+  CtkCellRendererSpinPrivate *priv;
 
   renderer = CTK_CELL_RENDERER_SPIN (object);
   priv = renderer->priv;
@@ -207,8 +207,8 @@ ctk_cell_renderer_spin_set_property (GObject      *object,
 				     const GValue *value,
 				     GParamSpec   *pspec)
 {
-  GtkCellRendererSpin *renderer;
-  GtkCellRendererSpinPrivate *priv;
+  CtkCellRendererSpin *renderer;
+  CtkCellRendererSpinPrivate *priv;
   GObject *obj;
 
   renderer = CTK_CELL_RENDERER_SPIN (object);
@@ -245,7 +245,7 @@ ctk_cell_renderer_spin_set_property (GObject      *object,
 }
 
 static gboolean
-ctk_cell_renderer_spin_focus_out_event (GtkWidget *widget,
+ctk_cell_renderer_spin_focus_out_event (CtkWidget *widget,
 					GdkEvent  *event,
 					gpointer   data)
 {
@@ -275,7 +275,7 @@ ctk_cell_renderer_spin_focus_out_event (GtkWidget *widget,
 }
 
 static gboolean
-ctk_cell_renderer_spin_key_press_event (GtkWidget   *widget,
+ctk_cell_renderer_spin_key_press_event (CtkWidget   *widget,
 					GdkEventKey *event,
 					gpointer     data)
 {
@@ -297,7 +297,7 @@ ctk_cell_renderer_spin_key_press_event (GtkWidget   *widget,
 }
 
 static gboolean
-ctk_cell_renderer_spin_button_press_event (GtkWidget      *widget,
+ctk_cell_renderer_spin_button_press_event (CtkWidget      *widget,
                                            GdkEventButton *event,
                                            gpointer        user_data)
 {
@@ -311,18 +311,18 @@ ctk_cell_renderer_spin_button_press_event (GtkWidget      *widget,
   return FALSE;
 }
 
-static GtkCellEditable *
-ctk_cell_renderer_spin_start_editing (GtkCellRenderer      *cell,
+static CtkCellEditable *
+ctk_cell_renderer_spin_start_editing (CtkCellRenderer      *cell,
 				      GdkEvent             *event,
-				      GtkWidget            *widget,
+				      CtkWidget            *widget,
 				      const gchar          *path,
 				      const GdkRectangle   *background_area,
 				      const GdkRectangle   *cell_area,
-				      GtkCellRendererState  flags)
+				      CtkCellRendererState  flags)
 {
-  GtkCellRendererSpinPrivate *priv;
-  GtkCellRendererText *cell_text;
-  GtkWidget *spin;
+  CtkCellRendererSpinPrivate *priv;
+  CtkCellRendererText *cell_text;
+  CtkWidget *spin;
   gboolean editable;
   gchar *text;
 
@@ -369,13 +369,13 @@ ctk_cell_renderer_spin_start_editing (GtkCellRenderer      *cell,
 /**
  * ctk_cell_renderer_spin_new:
  *
- * Creates a new #GtkCellRendererSpin. 
+ * Creates a new #CtkCellRendererSpin. 
  *
- * Returns: a new #GtkCellRendererSpin
+ * Returns: a new #CtkCellRendererSpin
  *
  * Since: 2.10
  */
-GtkCellRenderer *
+CtkCellRenderer *
 ctk_cell_renderer_spin_new (void)
 {
   return g_object_new (CTK_TYPE_CELL_RENDERER_SPIN, NULL);

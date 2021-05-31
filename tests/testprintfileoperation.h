@@ -15,7 +15,7 @@ typedef struct _TestPrintFileOperation        TestPrintFileOperation;
 
 struct _TestPrintFileOperation
 {
-  GtkPrintOperation parent_instance;
+  CtkPrintOperation parent_instance;
 
   /* < private > */
   char *filename;
@@ -30,7 +30,7 @@ struct _TestPrintFileOperation
 
 struct _TestPrintFileOperationClass
 {
-  GtkPrintOperationClass parent_class;
+  CtkPrintOperationClass parent_class;
 };
 
 GType                   test_print_file_operation_get_type      (void);

@@ -35,17 +35,17 @@ enum
   PROP_OBJECT_TREE
 };
 
-struct _GtkInspectorGesturesPrivate
+struct _CtkInspectorGesturesPrivate
 {
-  GtkSizeGroup *sizegroup;
+  CtkSizeGroup *sizegroup;
   GObject *object;
-  GtkInspectorObjectTree *object_tree;
+  CtkInspectorObjectTree *object_tree;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorGestures, ctk_inspector_gestures, CTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkInspectorGestures, ctk_inspector_gestures, CTK_TYPE_BOX)
 
 static void
-ctk_inspector_gestures_init (GtkInspectorGestures *sl)
+ctk_inspector_gestures_init (CtkInspectorGestures *sl)
 {
   sl->priv = ctk_inspector_gestures_get_instance_private (sl);
   sl->priv->sizegroup = ctk_size_group_new (CTK_SIZE_GROUP_HORIZONTAL);
@@ -60,10 +60,10 @@ ctk_inspector_gestures_init (GtkInspectorGestures *sl)
 }
 
 static void
-clear_all (GtkInspectorGestures *sl)
+clear_all (CtkInspectorGestures *sl)
 {
   GList *children, *l;
-  GtkWidget *child;
+  CtkWidget *child;
 
   children = ctk_container_get_children (CTK_CONTAINER (sl));
   for (l = children; l; l = l->next)
@@ -75,11 +75,11 @@ clear_all (GtkInspectorGestures *sl)
 }
 
 static void
-phase_changed_cb (GtkComboBox *combo, GtkInspectorGestures *sl)
+phase_changed_cb (CtkComboBox *combo, CtkInspectorGestures *sl)
 {
-  GtkWidget *row;
-  GtkPropagationPhase phase;
-  GtkGesture *gesture;
+  CtkWidget *row;
+  CtkPropagationPhase phase;
+  CtkGesture *gesture;
 
   phase = ctk_combo_box_get_active (combo);
   row = ctk_widget_get_ancestor (CTK_WIDGET (combo), CTK_TYPE_LIST_BOX_ROW);
@@ -88,9 +88,9 @@ phase_changed_cb (GtkComboBox *combo, GtkInspectorGestures *sl)
 }
 
 static void
-row_activated (GtkListBox           *box,
-               GtkListBoxRow        *row,
-               GtkInspectorGestures *sl)
+row_activated (CtkListBox           *box,
+               CtkListBoxRow        *row,
+               CtkInspectorGestures *sl)
 {
   GObject *gesture;
   
@@ -99,16 +99,16 @@ row_activated (GtkListBox           *box,
 }
 
 static void
-add_gesture (GtkInspectorGestures *sl,
+add_gesture (CtkInspectorGestures *sl,
              GObject              *object,
-             GtkWidget            *listbox,
-             GtkGesture           *gesture,
-             GtkPropagationPhase   phase)
+             CtkWidget            *listbox,
+             CtkGesture           *gesture,
+             CtkPropagationPhase   phase)
 {
-  GtkWidget *row;
-  GtkWidget *box;
-  GtkWidget *label;
-  GtkWidget *combo;
+  CtkWidget *row;
+  CtkWidget *box;
+  CtkWidget *label;
+  CtkWidget *combo;
 
   row = ctk_list_box_row_new ();
   ctk_container_add (CTK_CONTAINER (listbox), row);
@@ -141,16 +141,16 @@ add_gesture (GtkInspectorGestures *sl,
 }
 
 static void
-add_gesture_group (GtkInspectorGestures *sl,
+add_gesture_group (CtkInspectorGestures *sl,
                    GObject              *object,
-                   GtkGesture           *gesture,
+                   CtkGesture           *gesture,
                    GHashTable           *hash)
 {
-  GtkWidget *frame;
-  GtkWidget *listbox;
+  CtkWidget *frame;
+  CtkWidget *listbox;
   GList *list, *l;
-  GtkGesture *g;
-  GtkPropagationPhase phase;
+  CtkGesture *g;
+  CtkPropagationPhase phase;
 
   frame = ctk_frame_new (NULL);
   ctk_widget_show (frame);
@@ -176,7 +176,7 @@ add_gesture_group (GtkInspectorGestures *sl,
 }
 
 void
-ctk_inspector_gestures_set_object (GtkInspectorGestures *sl,
+ctk_inspector_gestures_set_object (CtkInspectorGestures *sl,
                                    GObject              *object)
 {
   GHashTable *hash;
@@ -196,7 +196,7 @@ ctk_inspector_gestures_set_object (GtkInspectorGestures *sl,
       list = _ctk_widget_list_controllers (CTK_WIDGET (object), phase);
       for (l = list; l; l = l->next)
         {
-          GtkEventController *controller = l->data;
+          CtkEventController *controller = l->data;
 
           if (CTK_IS_GESTURE (controller))
             g_hash_table_insert (hash, controller, GINT_TO_POINTER (phase));
@@ -210,7 +210,7 @@ ctk_inspector_gestures_set_object (GtkInspectorGestures *sl,
   while (g_hash_table_size (hash) > 0)
     {
       gpointer key, value;
-      GtkGesture *gesture;
+      CtkGesture *gesture;
       g_hash_table_iter_init (&iter, hash);
       (void)g_hash_table_iter_next (&iter, &key, &value);
       gesture = key;
@@ -226,7 +226,7 @@ get_property (GObject    *object,
               GValue     *value,
               GParamSpec *pspec)
 {
-  GtkInspectorGestures *sl = CTK_INSPECTOR_GESTURES (object);
+  CtkInspectorGestures *sl = CTK_INSPECTOR_GESTURES (object);
 
   switch (param_id)
     {
@@ -246,7 +246,7 @@ set_property (GObject      *object,
               const GValue *value,
               GParamSpec   *pspec)
 {
-  GtkInspectorGestures *sl = CTK_INSPECTOR_GESTURES (object);
+  CtkInspectorGestures *sl = CTK_INSPECTOR_GESTURES (object);
 
   switch (param_id)
     {
@@ -261,7 +261,7 @@ set_property (GObject      *object,
 }
 
 static void
-ctk_inspector_gestures_class_init (GtkInspectorGesturesClass *klass)
+ctk_inspector_gestures_class_init (CtkInspectorGesturesClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 

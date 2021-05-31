@@ -36,31 +36,31 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_RADIO_MENU_ITEM	      (ctk_radio_menu_item_get_type ())
-#define CTK_RADIO_MENU_ITEM(obj)	      (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RADIO_MENU_ITEM, GtkRadioMenuItem))
-#define CTK_RADIO_MENU_ITEM_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RADIO_MENU_ITEM, GtkRadioMenuItemClass))
+#define CTK_RADIO_MENU_ITEM(obj)	      (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RADIO_MENU_ITEM, CtkRadioMenuItem))
+#define CTK_RADIO_MENU_ITEM_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RADIO_MENU_ITEM, CtkRadioMenuItemClass))
 #define CTK_IS_RADIO_MENU_ITEM(obj)	      (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_RADIO_MENU_ITEM))
 #define CTK_IS_RADIO_MENU_ITEM_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_RADIO_MENU_ITEM))
-#define CTK_RADIO_MENU_ITEM_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_RADIO_MENU_ITEM, GtkRadioMenuItemClass))
+#define CTK_RADIO_MENU_ITEM_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_RADIO_MENU_ITEM, CtkRadioMenuItemClass))
 
 
-typedef struct _GtkRadioMenuItem              GtkRadioMenuItem;
-typedef struct _GtkRadioMenuItemPrivate       GtkRadioMenuItemPrivate;
-typedef struct _GtkRadioMenuItemClass         GtkRadioMenuItemClass;
+typedef struct _CtkRadioMenuItem              CtkRadioMenuItem;
+typedef struct _CtkRadioMenuItemPrivate       CtkRadioMenuItemPrivate;
+typedef struct _CtkRadioMenuItemClass         CtkRadioMenuItemClass;
 
-struct _GtkRadioMenuItem
+struct _CtkRadioMenuItem
 {
-  GtkCheckMenuItem check_menu_item;
+  CtkCheckMenuItem check_menu_item;
 
   /*< private >*/
-  GtkRadioMenuItemPrivate *priv;
+  CtkRadioMenuItemPrivate *priv;
 };
 
-struct _GtkRadioMenuItemClass
+struct _CtkRadioMenuItemClass
 {
-  GtkCheckMenuItemClass parent_class;
+  CtkCheckMenuItemClass parent_class;
 
   /* Signals */
-  void (*group_changed) (GtkRadioMenuItem *radio_menu_item);
+  void (*group_changed) (CtkRadioMenuItem *radio_menu_item);
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -74,30 +74,30 @@ GDK_AVAILABLE_IN_ALL
 GType      ctk_radio_menu_item_get_type	         (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget* ctk_radio_menu_item_new                           (GSList           *group);
+CtkWidget* ctk_radio_menu_item_new                           (GSList           *group);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* ctk_radio_menu_item_new_with_label                (GSList           *group,
+CtkWidget* ctk_radio_menu_item_new_with_label                (GSList           *group,
 							      const gchar      *label);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* ctk_radio_menu_item_new_with_mnemonic             (GSList           *group,
+CtkWidget* ctk_radio_menu_item_new_with_mnemonic             (GSList           *group,
 							      const gchar      *label);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* ctk_radio_menu_item_new_from_widget               (GtkRadioMenuItem *group);
+CtkWidget* ctk_radio_menu_item_new_from_widget               (CtkRadioMenuItem *group);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *ctk_radio_menu_item_new_with_mnemonic_from_widget (GtkRadioMenuItem *group,
+CtkWidget *ctk_radio_menu_item_new_with_mnemonic_from_widget (CtkRadioMenuItem *group,
 							      const gchar      *label);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *ctk_radio_menu_item_new_with_label_from_widget    (GtkRadioMenuItem *group,
+CtkWidget *ctk_radio_menu_item_new_with_label_from_widget    (CtkRadioMenuItem *group,
 							      const gchar      *label);
 GDK_AVAILABLE_IN_ALL
-GSList*    ctk_radio_menu_item_get_group                     (GtkRadioMenuItem *radio_menu_item);
+GSList*    ctk_radio_menu_item_get_group                     (CtkRadioMenuItem *radio_menu_item);
 GDK_AVAILABLE_IN_ALL
-void       ctk_radio_menu_item_set_group                     (GtkRadioMenuItem *radio_menu_item,
+void       ctk_radio_menu_item_set_group                     (CtkRadioMenuItem *radio_menu_item,
 							      GSList           *group);
 
 GDK_AVAILABLE_IN_3_18
-void       ctk_radio_menu_item_join_group                    (GtkRadioMenuItem *radio_menu_item,
-                                                              GtkRadioMenuItem *group_source);
+void       ctk_radio_menu_item_join_group                    (CtkRadioMenuItem *radio_menu_item,
+                                                              CtkRadioMenuItem *group_source);
 
 G_END_DECLS
 

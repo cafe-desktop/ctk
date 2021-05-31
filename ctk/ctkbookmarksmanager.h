@@ -26,63 +26,63 @@
 
 #include <gio/gio.h>
 
-typedef void (* GtkBookmarksChangedFunc) (gpointer data);
+typedef void (* CtkBookmarksChangedFunc) (gpointer data);
 
 typedef struct
 {
-  /* This list contains GtkBookmark structs */
+  /* This list contains CtkBookmark structs */
   GSList *bookmarks;
 
   GFileMonitor *bookmarks_monitor;
   gulong bookmarks_monitor_changed_id;
 
   gpointer changed_func_data;
-  GtkBookmarksChangedFunc changed_func;
-} GtkBookmarksManager;
+  CtkBookmarksChangedFunc changed_func;
+} CtkBookmarksManager;
 
 typedef struct
 {
   GFile *file;
   gchar *label;
-} GtkBookmark;
+} CtkBookmark;
 
-GtkBookmarksManager *_ctk_bookmarks_manager_new (GtkBookmarksChangedFunc changed_func,
+CtkBookmarksManager *_ctk_bookmarks_manager_new (CtkBookmarksChangedFunc changed_func,
 						 gpointer                changed_func_data);
 
 
-void _ctk_bookmarks_manager_free (GtkBookmarksManager *manager);
+void _ctk_bookmarks_manager_free (CtkBookmarksManager *manager);
 
-GSList *_ctk_bookmarks_manager_list_bookmarks (GtkBookmarksManager *manager);
+GSList *_ctk_bookmarks_manager_list_bookmarks (CtkBookmarksManager *manager);
 
-gboolean _ctk_bookmarks_manager_insert_bookmark (GtkBookmarksManager *manager,
+gboolean _ctk_bookmarks_manager_insert_bookmark (CtkBookmarksManager *manager,
 						 GFile               *file,
 						 gint                 position,
 						 GError             **error);
 
-gboolean _ctk_bookmarks_manager_remove_bookmark (GtkBookmarksManager *manager,
+gboolean _ctk_bookmarks_manager_remove_bookmark (CtkBookmarksManager *manager,
 						 GFile               *file,
 						 GError             **error);
 
-gboolean _ctk_bookmarks_manager_reorder_bookmark (GtkBookmarksManager *manager,
+gboolean _ctk_bookmarks_manager_reorder_bookmark (CtkBookmarksManager *manager,
 						  GFile               *file,
 						  gint                 new_position,
 						  GError             **error);
 
-gboolean _ctk_bookmarks_manager_has_bookmark (GtkBookmarksManager *manager,
+gboolean _ctk_bookmarks_manager_has_bookmark (CtkBookmarksManager *manager,
                                               GFile               *file);
 
-gchar * _ctk_bookmarks_manager_get_bookmark_label (GtkBookmarksManager *manager,
+gchar * _ctk_bookmarks_manager_get_bookmark_label (CtkBookmarksManager *manager,
 						   GFile               *file);
 
-gboolean _ctk_bookmarks_manager_set_bookmark_label (GtkBookmarksManager *manager,
+gboolean _ctk_bookmarks_manager_set_bookmark_label (CtkBookmarksManager *manager,
 						    GFile               *file,
 						    const gchar         *label,
 						    GError             **error);
 
-gboolean _ctk_bookmarks_manager_get_xdg_type (GtkBookmarksManager *manager,
+gboolean _ctk_bookmarks_manager_get_xdg_type (CtkBookmarksManager *manager,
                                               GFile               *file,
                                               GUserDirectory      *directory);
-gboolean _ctk_bookmarks_manager_get_is_builtin (GtkBookmarksManager *manager,
+gboolean _ctk_bookmarks_manager_get_is_builtin (CtkBookmarksManager *manager,
                                                 GFile               *file);
 
 gboolean _ctk_bookmarks_manager_get_is_xdg_dir_builtin (GUserDirectory xdg_type);

@@ -1,18 +1,18 @@
 #include <ctk/ctk.h>
 
-static GtkWidget *
+static CtkWidget *
 oriented_test_widget (const gchar *label, const gchar *color, gdouble angle)
 {
-  GtkWidget *box;
-  GtkWidget *widget;
-  GtkCssProvider *provider;
+  CtkWidget *box;
+  CtkWidget *widget;
+  CtkCssProvider *provider;
   gchar *data;
 
   widget = ctk_label_new (label);
   ctk_label_set_angle (CTK_LABEL (widget), angle);
   box = ctk_event_box_new ();
   provider = ctk_css_provider_new ();
-  data = g_strdup_printf ("GtkEventBox { background-color: %s; }", color);
+  data = g_strdup_printf ("CtkEventBox { background-color: %s; }", color);
   ctk_css_provider_load_from_data (provider, data, -1, NULL);
   ctk_style_context_add_provider (ctk_widget_get_style_context (box),
                                   CTK_STYLE_PROVIDER (provider),
@@ -24,16 +24,16 @@ oriented_test_widget (const gchar *label, const gchar *color, gdouble angle)
   return box;
 }
 
-static GtkWidget *
+static CtkWidget *
 test_widget (const gchar *label, const gchar *color)
 {
   return oriented_test_widget (label, color, 0.0);
 }
 
-static GtkOrientation o;
+static CtkOrientation o;
 
 static gboolean
-toggle_orientation (GtkWidget *window, GdkEventButton *event, GtkGrid *grid)
+toggle_orientation (CtkWidget *window, GdkEventButton *event, CtkGrid *grid)
 {
   o = 1 - o;
 
@@ -45,9 +45,9 @@ toggle_orientation (GtkWidget *window, GdkEventButton *event, GtkGrid *grid)
 static void
 simple_grid (void)
 {
-  GtkWidget *window;
-  GtkWidget *grid;
-  GtkWidget *test1, *test2, *test3, *test4, *test5, *test6;
+  CtkWidget *window;
+  CtkWidget *grid;
+  CtkWidget *test1, *test2, *test3, *test4, *test5, *test6;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_window_set_title (CTK_WINDOW (window), "Orientation");
@@ -85,11 +85,11 @@ simple_grid (void)
 static void
 text_grid (void)
 {
-  GtkWidget *window;
-  GtkWidget *grid;
-  GtkWidget *paned1;
-  GtkWidget *box;
-  GtkWidget *label;
+  CtkWidget *window;
+  CtkWidget *grid;
+  CtkWidget *paned1;
+  CtkWidget *box;
+  CtkWidget *label;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_window_set_title (CTK_WINDOW (window), "Height-for-Width");
@@ -127,11 +127,11 @@ text_grid (void)
 static void
 box_comparison (void)
 {
-  GtkWidget *window;
-  GtkWidget *vbox;
-  GtkWidget *box;
-  GtkWidget *label;
-  GtkWidget *grid;
+  CtkWidget *window;
+  CtkWidget *vbox;
+  CtkWidget *box;
+  CtkWidget *label;
+  CtkWidget *grid;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_window_set_title (CTK_WINDOW (window), "Grid vs. Box");
@@ -192,9 +192,9 @@ box_comparison (void)
 static void
 empty_line (void)
 {
-  GtkWidget *window;
-  GtkWidget *grid;
-  GtkWidget *child;
+  CtkWidget *window;
+  CtkWidget *grid;
+  CtkWidget *child;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_window_set_title (CTK_WINDOW (window), "Empty row");
@@ -220,9 +220,9 @@ empty_line (void)
 static void
 empty_grid (void)
 {
-  GtkWidget *window;
-  GtkWidget *grid;
-  GtkWidget *child;
+  CtkWidget *window;
+  CtkWidget *grid;
+  CtkWidget *child;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_window_set_title (CTK_WINDOW (window), "Empty grid");
@@ -245,11 +245,11 @@ empty_grid (void)
 static void
 scrolling (void)
 {
-  GtkWidget *window;
-  GtkWidget *sw;
-  GtkWidget *viewport;
-  GtkWidget *grid;
-  GtkWidget *child;
+  CtkWidget *window;
+  CtkWidget *sw;
+  CtkWidget *viewport;
+  CtkWidget *grid;
+  CtkWidget *child;
   gint i;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -291,10 +291,10 @@ scrolling (void)
 }
 
 static void
-insert_cb (GtkButton *button, GtkWidget *window)
+insert_cb (CtkButton *button, CtkWidget *window)
 {
-  GtkGrid *g, *g1, *g2, *g3, *g4;
-  GtkWidget *child;
+  CtkGrid *g, *g1, *g2, *g3, *g4;
+  CtkWidget *child;
   gboolean inserted;
 
   g = CTK_GRID (ctk_bin_get_child (CTK_BIN (window)));
@@ -342,11 +342,11 @@ insert_cb (GtkButton *button, GtkWidget *window)
 static void
 insert (void)
 {
-  GtkWidget *window;
-  GtkWidget *g;
-  GtkWidget *grid;
-  GtkWidget *child;
-  GtkWidget *button;
+  CtkWidget *window;
+  CtkWidget *g;
+  CtkWidget *grid;
+  CtkWidget *child;
+  CtkWidget *button;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_window_set_title (CTK_WINDOW (window), "Insertion / Removal");
@@ -404,9 +404,9 @@ insert (void)
 static void
 spanning_grid (void)
 {
-  GtkWidget *window;
-  GtkWidget *g;
-  GtkWidget *c;
+  CtkWidget *window;
+  CtkWidget *g;
+  CtkWidget *c;
 
   /* inspired by bug 698660
    * the row/column that are empty except for the spanning

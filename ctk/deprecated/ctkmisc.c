@@ -35,9 +35,9 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 /**
  * SECTION:ctkmisc
  * @Short_description: Base class for widgets with alignments and padding
- * @Title: GtkMisc
+ * @Title: CtkMisc
  *
- * The #GtkMisc widget is an abstract widget which is not useful itself, but
+ * The #CtkMisc widget is an abstract widget which is not useful itself, but
  * is used to derive subclasses which have alignment and padding attributes.
  *
  * The horizontal and vertical padding attributes allows extra space to be
@@ -49,12 +49,12 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  * allocated area, the alignment settings will not alter the widget's position.
  *
  * Note that the desired effect can in most cases be achieved by using the
- * #GtkWidget:halign, #GtkWidget:valign and #GtkWidget:margin properties
- * on the child widget, so GtkMisc should not be used in new code. To reflect
- * this fact, all #GtkMisc API has been deprecated.
+ * #CtkWidget:halign, #CtkWidget:valign and #CtkWidget:margin properties
+ * on the child widget, so CtkMisc should not be used in new code. To reflect
+ * this fact, all #CtkMisc API has been deprecated.
  */
 
-struct _GtkMiscPrivate
+struct _CtkMiscPrivate
 {
   gfloat        xalign;
   gfloat        yalign;
@@ -71,7 +71,7 @@ enum {
   PROP_YPAD
 };
 
-static void ctk_misc_realize      (GtkWidget    *widget);
+static void ctk_misc_realize      (CtkWidget    *widget);
 static void ctk_misc_set_property (GObject         *object,
 				   guint            prop_id,
 				   const GValue    *value,
@@ -82,16 +82,16 @@ static void ctk_misc_get_property (GObject         *object,
 				   GParamSpec      *pspec);
 
 
-G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (GtkMisc, ctk_misc, CTK_TYPE_WIDGET)
+G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (CtkMisc, ctk_misc, CTK_TYPE_WIDGET)
 
 static void
-ctk_misc_class_init (GtkMiscClass *class)
+ctk_misc_class_init (CtkMiscClass *class)
 {
   GObjectClass   *gobject_class;
-  GtkWidgetClass *widget_class;
+  CtkWidgetClass *widget_class;
 
   gobject_class = G_OBJECT_CLASS (class);
-  widget_class = (GtkWidgetClass*) class;
+  widget_class = (CtkWidgetClass*) class;
 
   gobject_class->set_property = ctk_misc_set_property;
   gobject_class->get_property = ctk_misc_get_property;
@@ -99,14 +99,14 @@ ctk_misc_class_init (GtkMiscClass *class)
   widget_class->realize = ctk_misc_realize;
 
   /**
-   * GtkMisc:xalign:
+   * CtkMisc:xalign:
    *
    * The horizontal alignment. A value of 0.0 means left alignment (or right
    * on RTL locales); a value of 1.0 means right alignment (or left on RTL
    * locales).
    *
    * Deprecated: 3.14: Use ctk_widget_set_halign() instead. If you are using
-   *   #GtkLabel, use #GtkLabel:xalign instead.
+   *   #CtkLabel, use #CtkLabel:xalign instead.
    */
   g_object_class_install_property (gobject_class,
                                    PROP_XALIGN,
@@ -119,13 +119,13 @@ ctk_misc_class_init (GtkMiscClass *class)
 						       CTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
 
   /**
-   * GtkMisc:yalign:
+   * CtkMisc:yalign:
    *
    * The vertical alignment. A value of 0.0 means top alignment;
    * a value of 1.0 means bottom alignment.
    *
    * Deprecated: 3.14: Use ctk_widget_set_valign() instead. If you are using
-   *   #GtkLabel, use #GtkLabel:yalign instead.
+   *   #CtkLabel, use #CtkLabel:yalign instead.
    */
   g_object_class_install_property (gobject_class,
                                    PROP_YALIGN,
@@ -138,7 +138,7 @@ ctk_misc_class_init (GtkMiscClass *class)
 						       CTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
 
   /**
-   * GtkMisc:xpad:
+   * CtkMisc:xpad:
    *
    * The amount of space to add on the left and right of the widget, in
    * pixels.
@@ -157,7 +157,7 @@ ctk_misc_class_init (GtkMiscClass *class)
 						     CTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
 
   /**
-   * GtkMisc:ypad:
+   * CtkMisc:ypad:
    *
    * The amount of space to add on the top and bottom of the widget, in
    * pixels.
@@ -177,9 +177,9 @@ ctk_misc_class_init (GtkMiscClass *class)
 }
 
 static void
-ctk_misc_init (GtkMisc *misc)
+ctk_misc_init (CtkMisc *misc)
 {
-  GtkMiscPrivate *priv;
+  CtkMiscPrivate *priv;
 
   misc->priv = ctk_misc_get_instance_private (misc); 
   priv = misc->priv;
@@ -196,8 +196,8 @@ ctk_misc_set_property (GObject      *object,
 		       const GValue *value,
 		       GParamSpec   *pspec)
 {
-  GtkMisc *misc = CTK_MISC (object);
-  GtkMiscPrivate *priv = misc->priv;
+  CtkMisc *misc = CTK_MISC (object);
+  CtkMiscPrivate *priv = misc->priv;
 
   switch (prop_id)
     {
@@ -225,8 +225,8 @@ ctk_misc_get_property (GObject      *object,
 		       GValue       *value,
 		       GParamSpec   *pspec)
 {
-  GtkMisc *misc = CTK_MISC (object);
-  GtkMiscPrivate *priv = misc->priv;
+  CtkMisc *misc = CTK_MISC (object);
+  CtkMiscPrivate *priv = misc->priv;
 
   switch (prop_id)
     {
@@ -250,21 +250,21 @@ ctk_misc_get_property (GObject      *object,
 
 /**
  * ctk_misc_set_alignment:
- * @misc: a #GtkMisc.
+ * @misc: a #CtkMisc.
  * @xalign: the horizontal alignment, from 0 (left) to 1 (right).
  * @yalign: the vertical alignment, from 0 (top) to 1 (bottom).
  *
  * Sets the alignment of the widget.
  *
- * Deprecated: 3.14: Use #GtkWidget's alignment (#GtkWidget:halign and #GtkWidget:valign) and margin properties or #GtkLabel's #GtkLabel:xalign and #GtkLabel:yalign properties.
+ * Deprecated: 3.14: Use #CtkWidget's alignment (#CtkWidget:halign and #CtkWidget:valign) and margin properties or #CtkLabel's #CtkLabel:xalign and #CtkLabel:yalign properties.
  */
 void
-ctk_misc_set_alignment (GtkMisc *misc,
+ctk_misc_set_alignment (CtkMisc *misc,
 			gfloat   xalign,
 			gfloat   yalign)
 {
-  GtkMiscPrivate *priv;
-  GtkWidget *widget;
+  CtkMiscPrivate *priv;
+  CtkWidget *widget;
 
   g_return_if_fail (CTK_IS_MISC (misc));
 
@@ -310,21 +310,21 @@ ctk_misc_set_alignment (GtkMisc *misc,
 
 /**
  * ctk_misc_get_alignment:
- * @misc: a #GtkMisc
+ * @misc: a #CtkMisc
  * @xalign: (out) (allow-none): location to store X alignment of @misc, or %NULL
  * @yalign: (out) (allow-none): location to store Y alignment of @misc, or %NULL
  *
  * Gets the X and Y alignment of the widget within its allocation. 
  * See ctk_misc_set_alignment().
  *
- * Deprecated: 3.14: Use #GtkWidget alignment and margin properties.
+ * Deprecated: 3.14: Use #CtkWidget alignment and margin properties.
  **/
 void
-ctk_misc_get_alignment (GtkMisc *misc,
+ctk_misc_get_alignment (CtkMisc *misc,
 		        gfloat  *xalign,
 			gfloat  *yalign)
 {
-  GtkMiscPrivate *priv;
+  CtkMiscPrivate *priv;
 
   g_return_if_fail (CTK_IS_MISC (misc));
 
@@ -338,7 +338,7 @@ ctk_misc_get_alignment (GtkMisc *misc,
 
 /**
  * ctk_misc_set_padding:
- * @misc: a #GtkMisc.
+ * @misc: a #CtkMisc.
  * @xpad: the amount of space to add on the left and right of the widget,
  *   in pixels.
  * @ypad: the amount of space to add on the top and bottom of the widget,
@@ -346,14 +346,14 @@ ctk_misc_get_alignment (GtkMisc *misc,
  *
  * Sets the amount of space to add around the widget.
  *
- * Deprecated: 3.14: Use #GtkWidget alignment and margin properties.
+ * Deprecated: 3.14: Use #CtkWidget alignment and margin properties.
  */
 void
-ctk_misc_set_padding (GtkMisc *misc,
+ctk_misc_set_padding (CtkMisc *misc,
 		      gint     xpad,
 		      gint     ypad)
 {
-  GtkMiscPrivate *priv;
+  CtkMiscPrivate *priv;
 
   g_return_if_fail (CTK_IS_MISC (misc));
 
@@ -385,7 +385,7 @@ ctk_misc_set_padding (GtkMisc *misc,
 
 /**
  * ctk_misc_get_padding:
- * @misc: a #GtkMisc
+ * @misc: a #CtkMisc
  * @xpad: (out) (allow-none): location to store padding in the X
  *        direction, or %NULL
  * @ypad: (out) (allow-none): location to store padding in the Y
@@ -394,14 +394,14 @@ ctk_misc_set_padding (GtkMisc *misc,
  * Gets the padding in the X and Y directions of the widget. 
  * See ctk_misc_set_padding().
  *
- * Deprecated: 3.14: Use #GtkWidget alignment and margin properties.
+ * Deprecated: 3.14: Use #CtkWidget alignment and margin properties.
  **/
 void
-ctk_misc_get_padding (GtkMisc *misc,
+ctk_misc_get_padding (CtkMisc *misc,
 		      gint    *xpad,
 		      gint    *ypad)
 {
-  GtkMiscPrivate *priv;
+  CtkMiscPrivate *priv;
 
   g_return_if_fail (CTK_IS_MISC (misc));
 
@@ -414,9 +414,9 @@ ctk_misc_get_padding (GtkMisc *misc,
 }
 
 static void
-ctk_misc_realize (GtkWidget *widget)
+ctk_misc_realize (CtkWidget *widget)
 {
-  GtkAllocation allocation;
+  CtkAllocation allocation;
   GdkWindow *window;
   GdkWindowAttr attributes;
   gint attributes_mask;
@@ -451,16 +451,16 @@ ctk_misc_realize (GtkWidget *widget)
 }
 
 /* Semi-private function used by ctk widgets inheriting from
- * GtkMisc that takes into account both css padding and border
- * and the padding specified with the GtkMisc properties.
+ * CtkMisc that takes into account both css padding and border
+ * and the padding specified with the CtkMisc properties.
  */
 void
-_ctk_misc_get_padding_and_border (GtkMisc   *misc,
-                                  GtkBorder *border)
+_ctk_misc_get_padding_and_border (CtkMisc   *misc,
+                                  CtkBorder *border)
 {
-  GtkStyleContext *context;
-  GtkStateFlags state;
-  GtkBorder tmp;
+  CtkStyleContext *context;
+  CtkStateFlags state;
+  CtkBorder tmp;
   gint xpad, ypad;
 
   g_return_if_fail (CTK_IS_MISC (misc));

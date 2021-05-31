@@ -6,23 +6,23 @@
 	InheritedPropertySheets=".\ctk3-build-defines.vsprops"
 	>
 	<UserMacro
-		Name="GtkDoInstallBin"
+		Name="CtkDoInstallBin"
 		Value="
 mkdir $(CopyDir)\bin&#x0D;&#x0A;
 mkdir $(CopyDir)\share\gir-1.0&#x0D;&#x0A;
 mkdir $(CopyDir)\lib\pkgconfig&#x0D;&#x0A;
 mkdir $(CopyDir)\lib\girepository-1.0&#x0D;&#x0A;
 
-copy $(ConfigurationName)\$(PlatformName)\bin\$(GtkDllPrefix)gdk-3$(GtkDllSuffix).dll $(CopyDir)\bin&#x0D;&#x0A;
-copy $(ConfigurationName)\$(PlatformName)\bin\$(GtkDllPrefix)gdk-3$(GtkDllSuffix).pdb $(CopyDir)\bin&#x0D;&#x0A;
+copy $(ConfigurationName)\$(PlatformName)\bin\$(CtkDllPrefix)gdk-3$(CtkDllSuffix).dll $(CopyDir)\bin&#x0D;&#x0A;
+copy $(ConfigurationName)\$(PlatformName)\bin\$(CtkDllPrefix)gdk-3$(CtkDllSuffix).pdb $(CopyDir)\bin&#x0D;&#x0A;
 copy $(ConfigurationName)\$(PlatformName)\bin\gdk-$(ApiVersion).lib $(CopyDir)\lib&#x0D;&#x0A;
 
 if &quot;$(ConfigurationName)&quot; == &quot;Release_Broadway&quot; goto DO_BROADWAY_BIN&#x0D;&#x0A;
 if &quot;$(ConfigurationName)&quot; == &quot;Debug_Broadway&quot; goto DO_BROADWAY_BIN&#x0D;&#x0A;
-copy $(ConfigurationName)\$(PlatformName)\bin\$(GtkDllPrefix)ctk-3$(GtkDllSuffix).dll $(CopyDir)\bin&#x0D;&#x0A;
-copy $(ConfigurationName)\$(PlatformName)\bin\$(GtkDllPrefix)ctk-3$(GtkDllSuffix).pdb $(CopyDir)\bin&#x0D;&#x0A;
-copy $(ConfigurationName)\$(PlatformName)\bin\$(GtkDllPrefix)gailutil-3$(GtkDllSuffix).dll $(CopyDir)\bin&#x0D;&#x0A;
-copy $(ConfigurationName)\$(PlatformName)\bin\$(GtkDllPrefix)gailutil-3$(GtkDllSuffix).pdb $(CopyDir)\bin&#x0D;&#x0A;
+copy $(ConfigurationName)\$(PlatformName)\bin\$(CtkDllPrefix)ctk-3$(CtkDllSuffix).dll $(CopyDir)\bin&#x0D;&#x0A;
+copy $(ConfigurationName)\$(PlatformName)\bin\$(CtkDllPrefix)ctk-3$(CtkDllSuffix).pdb $(CopyDir)\bin&#x0D;&#x0A;
+copy $(ConfigurationName)\$(PlatformName)\bin\$(CtkDllPrefix)gailutil-3$(CtkDllSuffix).dll $(CopyDir)\bin&#x0D;&#x0A;
+copy $(ConfigurationName)\$(PlatformName)\bin\$(CtkDllPrefix)gailutil-3$(CtkDllSuffix).pdb $(CopyDir)\bin&#x0D;&#x0A;
 copy $(ConfigurationName)\$(PlatformName)\bin\ctk-$(ApiVersion).lib $(CopyDir)\lib&#x0D;&#x0A;
 copy $(ConfigurationName)\$(PlatformName)\bin\gailutil-$(ApiVersion).lib $(CopyDir)\lib&#x0D;&#x0A;
 copy $(ConfigurationName)\$(PlatformName)\bin\ctk3-demo.exe $(CopyDir)\bin&#x0D;&#x0A;
@@ -41,10 +41,10 @@ copy $(ConfigurationName)\$(PlatformName)\bin\ctk-builder-tool.exe $(CopyDir)\bi
 copy $(ConfigurationName)\$(PlatformName)\bin\ctk-builder-tool.pdb $(CopyDir)\bin&#x0D;&#x0A;
 if exist $(ConfigurationName)\$(PlatformName)\bin\Gdk-3.0.gir copy $(ConfigurationName)\$(PlatformName)\bin\Gdk-3.0.gir $(CopyDir)\share\gir-1.0&#x0D;&#x0A;
 if exist $(ConfigurationName)\$(PlatformName)\bin\GdkWin32-3.0.gir copy $(ConfigurationName)\$(PlatformName)\bin\GdkWin32-3.0.gir $(CopyDir)\share\gir-1.0&#x0D;&#x0A;
-if exist $(ConfigurationName)\$(PlatformName)\bin\Gtk-3.0.gir copy $(ConfigurationName)\$(PlatformName)\bin\Gtk-3.0.gir $(CopyDir)\share\gir-1.0&#x0D;&#x0A;
+if exist $(ConfigurationName)\$(PlatformName)\bin\Ctk-3.0.gir copy $(ConfigurationName)\$(PlatformName)\bin\Ctk-3.0.gir $(CopyDir)\share\gir-1.0&#x0D;&#x0A;
 if exist $(ConfigurationName)\$(PlatformName)\bin\Gdk-3.0.typelib copy $(ConfigurationName)\$(PlatformName)\bin\Gdk-3.0.typelib $(CopyDir)\lib\girepository-1.0&#x0D;&#x0A;
 if exist $(ConfigurationName)\$(PlatformName)\bin\GdkWin32-3.0.typelib copy $(ConfigurationName)\$(PlatformName)\bin\GdkWin32-3.0.typelib $(CopyDir)\lib\girepository-1.0&#x0D;&#x0A;
-if exist $(ConfigurationName)\$(PlatformName)\bin\Gtk-3.0.typelib copy $(ConfigurationName)\$(PlatformName)\bin\Gtk-3.0.typelib $(CopyDir)\lib\girepository-1.0&#x0D;&#x0A;
+if exist $(ConfigurationName)\$(PlatformName)\bin\Ctk-3.0.typelib copy $(ConfigurationName)\$(PlatformName)\bin\Ctk-3.0.typelib $(CopyDir)\lib\girepository-1.0&#x0D;&#x0A;
 goto DONE_BIN&#x0D;&#x0A;
 
 :DO_BROADWAY_BIN&#x0D;&#x0A;
@@ -54,10 +54,10 @@ copy $(ConfigurationName)\$(PlatformName)\bin\broadwayd.pdb $(CopyDir)\bin&#x0D;
 if &quot;$(ConfigurationName)&quot; == &quot;Release_Broadway&quot; goto DO_BROADWAY_RELEASE&#x0D;&#x0A;
 if &quot;$(ConfigurationName)&quot; == &quot;Debug_Broadway&quot; goto DO_BROADWAY_DEBUG&#x0D;&#x0A;
 :DO_BROADWAY_RELEASE&#x0D;&#x0A;
-copy .\Release\$(PlatformName)\bin\$(GtkDllPrefix)ctk-3$(GtkDllSuffix).dll $(CopyDir)\bin&#x0D;&#x0A;
-copy .\Release\$(PlatformName)\bin\$(GtkDllPrefix)ctk-3$(GtkDllSuffix).pdb $(CopyDir)\bin&#x0D;&#x0A;
-copy .\Release\$(PlatformName)\bin\$(GtkDllPrefix)gailutil-3$(GtkDllSuffix).dll $(CopyDir)\bin&#x0D;&#x0A;
-copy .\Release\$(PlatformName)\bin\$(GtkDllPrefix)gailutil-3$(GtkDllSuffix).pdb $(CopyDir)\bin&#x0D;&#x0A;
+copy .\Release\$(PlatformName)\bin\$(CtkDllPrefix)ctk-3$(CtkDllSuffix).dll $(CopyDir)\bin&#x0D;&#x0A;
+copy .\Release\$(PlatformName)\bin\$(CtkDllPrefix)ctk-3$(CtkDllSuffix).pdb $(CopyDir)\bin&#x0D;&#x0A;
+copy .\Release\$(PlatformName)\bin\$(CtkDllPrefix)gailutil-3$(CtkDllSuffix).dll $(CopyDir)\bin&#x0D;&#x0A;
+copy .\Release\$(PlatformName)\bin\$(CtkDllPrefix)gailutil-3$(CtkDllSuffix).pdb $(CopyDir)\bin&#x0D;&#x0A;
 copy .\Release\$(PlatformName)\bin\ctk-$(ApiVersion).lib $(CopyDir)\lib&#x0D;&#x0A;
 copy .\Release\$(PlatformName)\bin\gailutil-$(ApiVersion).lib $(CopyDir)\lib&#x0D;&#x0A;
 copy .\Release\$(PlatformName)\bin\ctk3-demo.exe $(CopyDir)\bin&#x0D;&#x0A;
@@ -76,17 +76,17 @@ copy .\Release\$(PlatformName)\bin\ctk-builder-tool.exe $(CopyDir)\bin&#x0D;&#x0
 copy .\Release\$(PlatformName)\bin\ctk-builder-tool.pdb $(CopyDir)\bin&#x0D;&#x0A;
 if exist .\Release\$(PlatformName)\bin\Gdk-3.0.gir copy .\Release\$(PlatformName)\bin\Gdk-3.0.gir $(CopyDir)\share\gir-1.0&#x0D;&#x0A;
 if exist .\Release\$(PlatformName)\bin\GdkWin32-3.0.gir copy .\Release\$(PlatformName)\bin\GdkWin32-3.0.gir $(CopyDir)\share\gir-1.0&#x0D;&#x0A;
-if exist .\Release\$(PlatformName)\bin\Gtk-3.0.gir copy .\Release\$(PlatformName)\bin\Gtk-3.0.gir $(CopyDir)\share\gir-1.0&#x0D;&#x0A;
+if exist .\Release\$(PlatformName)\bin\Ctk-3.0.gir copy .\Release\$(PlatformName)\bin\Ctk-3.0.gir $(CopyDir)\share\gir-1.0&#x0D;&#x0A;
 if exist .\Release\$(PlatformName)\bin\Gdk-3.0.typelib copy .\Release\$(PlatformName)\bin\Gdk-3.0.typelib $(CopyDir)\lib\girepository-1.0&#x0D;&#x0A;
 if exist .\Release\$(PlatformName)\bin\GdkWin32-3.0.typelib copy .\Release\$(PlatformName)\bin\GdkWin32-3.0.typelib $(CopyDir)\lib\girepository-1.0&#x0D;&#x0A;
-if exist .\Release\$(PlatformName)\bin\Gtk-3.0.typelib copy .\Release\$(PlatformName)\bin\Gtk-3.0.typelib $(CopyDir)\lib\girepository-1.0&#x0D;&#x0A;
+if exist .\Release\$(PlatformName)\bin\Ctk-3.0.typelib copy .\Release\$(PlatformName)\bin\Ctk-3.0.typelib $(CopyDir)\lib\girepository-1.0&#x0D;&#x0A;
 goto DONE_BIN&#x0D;&#x0A;
 
 :DO_BROADWAY_DEBUG&#x0D;&#x0A;
-copy .\Debug\$(PlatformName)\bin\$(GtkDllPrefix)ctk-3$(GtkDllSuffix).dll $(CopyDir)\bin&#x0D;&#x0A;
-copy .\Debug\$(PlatformName)\bin\$(GtkDllPrefix)ctk-3$(GtkDllSuffix).pdb $(CopyDir)\bin&#x0D;&#x0A;
-copy .\Debug\$(PlatformName)\bin\$(GtkDllPrefix)gailutil-3$(GtkDllSuffix).dll $(CopyDir)\bin&#x0D;&#x0A;
-copy .\Debug\$(PlatformName)\bin\$(GtkDllPrefix)gailutil-3$(GtkDllSuffix).pdb $(CopyDir)\bin&#x0D;&#x0A;
+copy .\Debug\$(PlatformName)\bin\$(CtkDllPrefix)ctk-3$(CtkDllSuffix).dll $(CopyDir)\bin&#x0D;&#x0A;
+copy .\Debug\$(PlatformName)\bin\$(CtkDllPrefix)ctk-3$(CtkDllSuffix).pdb $(CopyDir)\bin&#x0D;&#x0A;
+copy .\Debug\$(PlatformName)\bin\$(CtkDllPrefix)gailutil-3$(CtkDllSuffix).dll $(CopyDir)\bin&#x0D;&#x0A;
+copy .\Debug\$(PlatformName)\bin\$(CtkDllPrefix)gailutil-3$(CtkDllSuffix).pdb $(CopyDir)\bin&#x0D;&#x0A;
 copy .\Debug\$(PlatformName)\bin\ctk-$(ApiVersion).lib $(CopyDir)\lib&#x0D;&#x0A;
 copy .\Debug\$(PlatformName)\bin\gailutil-$(ApiVersion).lib $(CopyDir)\lib&#x0D;&#x0A;
 copy .\Debug\$(PlatformName)\bin\ctk3-demo.exe $(CopyDir)\bin&#x0D;&#x0A;
@@ -105,10 +105,10 @@ copy .\Debug\$(PlatformName)\bin\ctk-builder-tool.exe $(CopyDir)\bin&#x0D;&#x0A;
 copy .\Debug\$(PlatformName)\bin\ctk-builder-tool.pdb $(CopyDir)\bin&#x0D;&#x0A;
 if exist .\Debug\$(PlatformName)\bin\Gdk-3.0.gir copy .\Debug\$(PlatformName)\bin\Gdk-3.0.gir $(CopyDir)\share\gir-1.0&#x0D;&#x0A;
 if exist .\Debug\$(PlatformName)\bin\GdkWin32-3.0.gir copy .\Debug\$(PlatformName)\bin\GdkWin32-3.0.gir $(CopyDir)\share\gir-1.0&#x0D;&#x0A;
-if exist .\Debug\$(PlatformName)\bin\Gtk-3.0.gir copy .\Debug\$(PlatformName)\bin\Gtk-3.0.gir $(CopyDir)\share\gir-1.0&#x0D;&#x0A;
+if exist .\Debug\$(PlatformName)\bin\Ctk-3.0.gir copy .\Debug\$(PlatformName)\bin\Ctk-3.0.gir $(CopyDir)\share\gir-1.0&#x0D;&#x0A;
 if exist .\Debug\$(PlatformName)\bin\Gdk-3.0.typelib copy .\Debug\$(PlatformName)\bin\Gdk-3.0.typelib $(CopyDir)\lib\girepository-1.0&#x0D;&#x0A;
 if exist .\Debug\$(PlatformName)\bin\GdkWin32-3.0.typelib copy .\Debug\$(PlatformName)\bin\GdkWin32-3.0.typelib $(CopyDir)\lib\girepository-1.0&#x0D;&#x0A;
-if exist .\Debug\$(PlatformName)\bin\Gtk-3.0.typelib copy .\Debug\$(PlatformName)\bin\Gtk-3.0.typelib $(CopyDir)\lib\girepository-1.0&#x0D;&#x0A;
+if exist .\Debug\$(PlatformName)\bin\Ctk-3.0.typelib copy .\Debug\$(PlatformName)\bin\Ctk-3.0.typelib $(CopyDir)\lib\girepository-1.0&#x0D;&#x0A;
 :DONE_BIN&#x0D;&#x0A;
 
 copy ..\gdk-3.0.pc $(CopyDir)\lib\pkgconfig&#x0D;&#x0A;
@@ -119,7 +119,7 @@ copy ..\gail-3.0.pc $(CopyDir)\lib\pkgconfig&#x0D;&#x0A;
 			  "
 	/>
 	<UserMacro
-		Name="GtkDoInstall"
+		Name="CtkDoInstall"
 		Value="
 echo off&#x0D;&#x0A;
 mkdir $(CopyDir)\include\ctk-$(ApiVersion)\gdk\win32&#x0D;&#x0A;
@@ -158,7 +158,7 @@ copy ..\..\demos\ctk-demo\org.ctk.Demo.gschema.xml $(CopyDir)\share\glib-2.0\sch
 		      "
 	/>
 	<UserMacro
-		Name="GtkPostInstall"
+		Name="CtkPostInstall"
 		Value="
 echo &quot;Compiling gsettings XML Files...&quot;&#x0D;&#x0A;
 $(GlibEtcInstallRoot)\bin\glib-compile-schemas.exe $(CopyDir)\share\glib-2.0\schemas&#x0D;&#x0A;
@@ -168,7 +168,7 @@ $(CopyDir)\bin\ctk-update-icon-cache.exe --ignore-theme-index --force &quot;$(Co
 		      "
 	/>
 	<UserMacro
-		Name="GtkDoInstallBroadwayHeaders"
+		Name="CtkDoInstallBroadwayHeaders"
 		Value="
 copy ..\..\gdk\broadway\gdkbroadway.h $(CopyDir)\include\ctk-$(ApiVersion)\gdk&#x0D;&#x0A;
 mkdir $(CopyDir)\include\ctk-$(ApiVersion)\gdk\broadway&#x0D;&#x0A;
@@ -176,11 +176,11 @@ mkdir $(CopyDir)\include\ctk-$(ApiVersion)\gdk\broadway&#x0D;&#x0A;
         "
 	/>
 	<UserMacro
-		Name="GenerateGtkPC"
-		Value="$(PythonDir)\python ..\ctkpc.py --prefix=$(CopyDir) --version=$(GtkVersion) --host=i686-pc-vs$(VSVer)"
+		Name="GenerateCtkPC"
+		Value="$(PythonDir)\python ..\ctkpc.py --prefix=$(CopyDir) --version=$(CtkVersion) --host=i686-pc-vs$(VSVer)"
 	/>
 	<UserMacro
-		Name="GenerateGtkPCX64"
-		Value="$(PythonDirX64)\python ..\ctkpc.py --prefix=$(CopyDir) --version=$(GtkVersion) --host=x86_64-pc-vs$(VSVer)"
+		Name="GenerateCtkPCX64"
+		Value="$(PythonDirX64)\python ..\ctkpc.py --prefix=$(CopyDir) --version=$(CtkVersion) --host=x86_64-pc-vs$(VSVer)"
 	/>
 </VisualStudioPropertySheet>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.6 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="title" translatable="yes">Stack</property>
     <child>
-      <object class="GtkGrid">
+      <object class="CtkGrid">
         <property name="visible">1</property>
         <child>
-          <object class="GtkStackSwitcher">
+          <object class="CtkStackSwitcher">
             <property name="visible">1</property>
             <property name="stack">stack</property>
             <property name="halign">center</property>
@@ -18,12 +18,12 @@
           </packing>
         </child>
         <child>
-          <object class="GtkStack" id="stack">
+          <object class="CtkStack" id="stack">
             <property name="visible">1</property>
             <property name="can_focus">1</property>
             <property name="transition-type">crossfade</property>
             <child>
-              <object class="GtkImage">
+              <object class="CtkImage">
                 <property name="visible">1</property>
                 <property name="margin-top">20</property>
                 <property name="margin-bottom">20</property>
@@ -35,7 +35,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkCheckButton">
+              <object class="CtkCheckButton">
                 <property name="label" translatable="yes">Page 2</property>
                 <property name="visible">1</property>
                 <property name="can_focus">1</property>
@@ -49,7 +49,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkSpinner">
+              <object class="CtkSpinner">
                 <property name="visible">1</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>

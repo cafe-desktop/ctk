@@ -33,14 +33,14 @@
  * SECTION:ctkrecentchooser
  * @Short_description: Interface implemented by widgets displaying recently
  *   used files
- * @Title: GtkRecentChooser
- * @See_also: #GtkRecentManager, #GtkRecentChooserDialog,
- *   #GtkRecentChooserWidget, #GtkRecentChooserMenu
+ * @Title: CtkRecentChooser
+ * @See_also: #CtkRecentManager, #CtkRecentChooserDialog,
+ *   #CtkRecentChooserWidget, #CtkRecentChooserMenu
  *
- * #GtkRecentChooser is an interface that can be implemented by widgets
+ * #CtkRecentChooser is an interface that can be implemented by widgets
  * displaying the list of recently used files.  In GTK+, the main objects
- * that implement this interface are #GtkRecentChooserWidget,
- * #GtkRecentChooserDialog and #GtkRecentChooserMenu.
+ * that implement this interface are #CtkRecentChooserWidget,
+ * #CtkRecentChooserDialog and #CtkRecentChooserMenu.
  *
  * Recently used files are supported since GTK+ 2.10.
  */
@@ -54,7 +54,7 @@ enum
   LAST_SIGNAL
 };
 
-static gboolean recent_chooser_has_show_numbers       (GtkRecentChooser *chooser);
+static gboolean recent_chooser_has_show_numbers       (CtkRecentChooser *chooser);
 
 static GQuark      quark_ctk_related_action               = 0;
 static GQuark      quark_ctk_use_action_appearance        = 0;
@@ -65,12 +65,12 @@ static const gchar ctk_use_action_appearance_key[]        = "ctk-use-action-appe
 static guint chooser_signals[LAST_SIGNAL] = { 0, };
 
 
-typedef GtkRecentChooserIface GtkRecentChooserInterface;
-G_DEFINE_INTERFACE (GtkRecentChooser, ctk_recent_chooser, G_TYPE_OBJECT);
+typedef CtkRecentChooserIface CtkRecentChooserInterface;
+G_DEFINE_INTERFACE (CtkRecentChooser, ctk_recent_chooser, G_TYPE_OBJECT);
 
 
 static void
-ctk_recent_chooser_default_init (GtkRecentChooserInterface *iface)
+ctk_recent_chooser_default_init (CtkRecentChooserInterface *iface)
 {
   GType iface_type = G_TYPE_FROM_INTERFACE (iface);
 
@@ -78,7 +78,7 @@ ctk_recent_chooser_default_init (GtkRecentChooserInterface *iface)
   quark_ctk_use_action_appearance = g_quark_from_static_string (ctk_use_action_appearance_key);
   
   /**
-   * GtkRecentChooser::selection-changed:
+   * CtkRecentChooser::selection-changed:
    * @chooser: the object which received the signal
    *
    * This signal is emitted when there is a change in the set of
@@ -92,13 +92,13 @@ ctk_recent_chooser_default_init (GtkRecentChooserInterface *iface)
     g_signal_new (I_("selection-changed"),
                   iface_type,
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkRecentChooserIface, selection_changed),
+                  G_STRUCT_OFFSET (CtkRecentChooserIface, selection_changed),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 0);
 
   /**
-   * GtkRecentChooser::item-activated:
+   * CtkRecentChooser::item-activated:
    * @chooser: the object which received the signal
    *
    * This signal is emitted when the user "activates" a recent item
@@ -112,15 +112,15 @@ ctk_recent_chooser_default_init (GtkRecentChooserInterface *iface)
     g_signal_new (I_("item-activated"),
                   iface_type,
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkRecentChooserIface, item_activated),
+		  G_STRUCT_OFFSET (CtkRecentChooserIface, item_activated),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
-   * GtkRecentChooser:recent-manager:
+   * CtkRecentChooser:recent-manager:
    *
-   * The #GtkRecentManager instance used by the #GtkRecentChooser to
+   * The #CtkRecentManager instance used by the #CtkRecentChooser to
    * display the list of recently used resources.
    *
    * Since: 2.10
@@ -133,9 +133,9 @@ ctk_recent_chooser_default_init (GtkRecentChooserInterface *iface)
                                                             CTK_PARAM_WRITABLE|G_PARAM_CONSTRUCT_ONLY));
 
   /**
-   * GtkRecentManager:show-private:
+   * CtkRecentManager:show-private:
    *
-   * Whether this #GtkRecentChooser should display recently used resources
+   * Whether this #CtkRecentChooser should display recently used resources
    * marked with the "private" flag. Such resources should be considered
    * private to the applications and groups that have added them.
    *
@@ -149,9 +149,9 @@ ctk_recent_chooser_default_init (GtkRecentChooserInterface *iface)
                                                              CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkRecentChooser:show-tips:
+   * CtkRecentChooser:show-tips:
    *
-   * Whether this #GtkRecentChooser should display a tooltip containing the
+   * Whether this #CtkRecentChooser should display a tooltip containing the
    * full path of the recently used resources.
    *
    * Since: 2.10
@@ -164,9 +164,9 @@ ctk_recent_chooser_default_init (GtkRecentChooserInterface *iface)
                                                              CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkRecentChooser:show-icons:
+   * CtkRecentChooser:show-icons:
    *
-   * Whether this #GtkRecentChooser should display an icon near the item.
+   * Whether this #CtkRecentChooser should display an icon near the item.
    *
    * Since: 2.10
    */
@@ -178,9 +178,9 @@ ctk_recent_chooser_default_init (GtkRecentChooserInterface *iface)
                                                              CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkRecentChooser:show-not-found:
+   * CtkRecentChooser:show-not-found:
    *
-   * Whether this #GtkRecentChooser should display the recently used resources
+   * Whether this #CtkRecentChooser should display the recently used resources
    * even if not present anymore. Setting this to %FALSE will perform a
    * potentially expensive check on every local resource (every remote
    * resource will always be displayed).
@@ -195,7 +195,7 @@ ctk_recent_chooser_default_init (GtkRecentChooserInterface *iface)
                                                              CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkRecentChooser:select-multiple:
+   * CtkRecentChooser:select-multiple:
    *
    * Allow the user to select multiple resources.
    *
@@ -209,9 +209,9 @@ ctk_recent_chooser_default_init (GtkRecentChooserInterface *iface)
                                                              CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkRecentChooser:local-only:
+   * CtkRecentChooser:local-only:
    *
-   * Whether this #GtkRecentChooser should display only local (file:)
+   * Whether this #CtkRecentChooser should display only local (file:)
    * resources.
    *
    * Since: 2.10
@@ -224,7 +224,7 @@ ctk_recent_chooser_default_init (GtkRecentChooserInterface *iface)
                                                              CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkRecentChooser:limit:
+   * CtkRecentChooser:limit:
    *
    * The maximum number of recently used resources to be displayed,
    * or -1 to display all items.
@@ -239,7 +239,7 @@ ctk_recent_chooser_default_init (GtkRecentChooserInterface *iface)
                                                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkRecentChooser:sort-type:
+   * CtkRecentChooser:sort-type:
    *
    * Sorting order to be used when displaying the recently used resources.
    *
@@ -254,9 +254,9 @@ ctk_recent_chooser_default_init (GtkRecentChooserInterface *iface)
                                                           CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkRecentChooser:filter:
+   * CtkRecentChooser:filter:
    *
-   * The #GtkRecentFilter object to be used when displaying
+   * The #CtkRecentFilter object to be used when displaying
    * the recently used resources.
    *
    * Since: 2.10
@@ -277,16 +277,16 @@ ctk_recent_chooser_error_quark (void)
 
 /**
  * _ctk_recent_chooser_get_recent_manager:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  *
- * Gets the #GtkRecentManager used by @chooser.
+ * Gets the #CtkRecentManager used by @chooser.
  *
  * Returns: the recent manager for @chooser.
  *
  * Since: 2.10
  */
-GtkRecentManager *
-_ctk_recent_chooser_get_recent_manager (GtkRecentChooser *chooser)
+CtkRecentManager *
+_ctk_recent_chooser_get_recent_manager (CtkRecentChooser *chooser)
 {
   g_return_val_if_fail (CTK_IS_RECENT_CHOOSER (chooser), NULL);
   
@@ -295,7 +295,7 @@ _ctk_recent_chooser_get_recent_manager (GtkRecentChooser *chooser)
 
 /**
  * ctk_recent_chooser_set_show_private:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  * @show_private: %TRUE to show private items, %FALSE otherwise
  *
  * Whether to show recently used resources marked registered as private.
@@ -303,7 +303,7 @@ _ctk_recent_chooser_get_recent_manager (GtkRecentChooser *chooser)
  * Since: 2.10
  */
 void
-ctk_recent_chooser_set_show_private (GtkRecentChooser *chooser,
+ctk_recent_chooser_set_show_private (CtkRecentChooser *chooser,
 				     gboolean          show_private)
 {
   g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
@@ -313,7 +313,7 @@ ctk_recent_chooser_set_show_private (GtkRecentChooser *chooser,
 
 /**
  * ctk_recent_chooser_get_show_private:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  *
  * Returns whether @chooser should display recently used resources
  * registered as private.
@@ -324,7 +324,7 @@ ctk_recent_chooser_set_show_private (GtkRecentChooser *chooser,
  * Since: 2.10
  */
 gboolean
-ctk_recent_chooser_get_show_private (GtkRecentChooser *chooser)
+ctk_recent_chooser_get_show_private (CtkRecentChooser *chooser)
 {
   gboolean show_private;
   
@@ -337,7 +337,7 @@ ctk_recent_chooser_get_show_private (GtkRecentChooser *chooser)
 
 /**
  * ctk_recent_chooser_set_show_not_found:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  * @show_not_found: whether to show the local items we didn’t find
  *
  * Sets whether @chooser should display the recently used resources that
@@ -346,7 +346,7 @@ ctk_recent_chooser_get_show_private (GtkRecentChooser *chooser)
  * Since: 2.10
  */
 void
-ctk_recent_chooser_set_show_not_found (GtkRecentChooser *chooser,
+ctk_recent_chooser_set_show_not_found (CtkRecentChooser *chooser,
 				       gboolean          show_not_found)
 {
   g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
@@ -356,7 +356,7 @@ ctk_recent_chooser_set_show_not_found (GtkRecentChooser *chooser,
 
 /**
  * ctk_recent_chooser_get_show_not_found:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  *
  * Retrieves whether @chooser should show the recently used resources that
  * were not found.
@@ -367,7 +367,7 @@ ctk_recent_chooser_set_show_not_found (GtkRecentChooser *chooser,
  * Since: 2.10
  */
 gboolean
-ctk_recent_chooser_get_show_not_found (GtkRecentChooser *chooser)
+ctk_recent_chooser_get_show_not_found (CtkRecentChooser *chooser)
 {
   gboolean show_not_found;
   
@@ -380,7 +380,7 @@ ctk_recent_chooser_get_show_not_found (GtkRecentChooser *chooser)
 
 /**
  * ctk_recent_chooser_set_show_icons:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  * @show_icons: whether to show an icon near the resource
  *
  * Sets whether @chooser should show an icon near the resource when
@@ -389,7 +389,7 @@ ctk_recent_chooser_get_show_not_found (GtkRecentChooser *chooser)
  * Since: 2.10
  */
 void
-ctk_recent_chooser_set_show_icons (GtkRecentChooser *chooser,
+ctk_recent_chooser_set_show_icons (CtkRecentChooser *chooser,
 				   gboolean          show_icons)
 {
   g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
@@ -399,7 +399,7 @@ ctk_recent_chooser_set_show_icons (GtkRecentChooser *chooser,
 
 /**
  * ctk_recent_chooser_get_show_icons:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  *
  * Retrieves whether @chooser should show an icon near the resource.
  *
@@ -408,7 +408,7 @@ ctk_recent_chooser_set_show_icons (GtkRecentChooser *chooser,
  * Since: 2.10
  */
 gboolean
-ctk_recent_chooser_get_show_icons (GtkRecentChooser *chooser)
+ctk_recent_chooser_get_show_icons (CtkRecentChooser *chooser)
 {
   gboolean show_icons;
   
@@ -421,7 +421,7 @@ ctk_recent_chooser_get_show_icons (GtkRecentChooser *chooser)
 
 /**
  * ctk_recent_chooser_set_select_multiple:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  * @select_multiple: %TRUE if @chooser can select more than one item
  *
  * Sets whether @chooser can select multiple items.
@@ -429,7 +429,7 @@ ctk_recent_chooser_get_show_icons (GtkRecentChooser *chooser)
  * Since: 2.10
  */
 void
-ctk_recent_chooser_set_select_multiple (GtkRecentChooser *chooser,
+ctk_recent_chooser_set_select_multiple (CtkRecentChooser *chooser,
 					gboolean          select_multiple)
 {
   g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
@@ -439,7 +439,7 @@ ctk_recent_chooser_set_select_multiple (GtkRecentChooser *chooser,
 
 /**
  * ctk_recent_chooser_get_select_multiple:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  *
  * Gets whether @chooser can select multiple items.
  *
@@ -448,7 +448,7 @@ ctk_recent_chooser_set_select_multiple (GtkRecentChooser *chooser,
  * Since: 2.10
  */
 gboolean
-ctk_recent_chooser_get_select_multiple (GtkRecentChooser *chooser)
+ctk_recent_chooser_get_select_multiple (CtkRecentChooser *chooser)
 {
   gboolean select_multiple;
   
@@ -461,7 +461,7 @@ ctk_recent_chooser_get_select_multiple (GtkRecentChooser *chooser)
 
 /**
  * ctk_recent_chooser_set_local_only:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  * @local_only: %TRUE if only local files can be shown
  * 
  * Sets whether only local resources, that is resources using the file:// URI
@@ -472,7 +472,7 @@ ctk_recent_chooser_get_select_multiple (GtkRecentChooser *chooser)
  * Since: 2.10
  */
 void
-ctk_recent_chooser_set_local_only (GtkRecentChooser *chooser,
+ctk_recent_chooser_set_local_only (CtkRecentChooser *chooser,
 				   gboolean          local_only)
 {
   g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
@@ -482,7 +482,7 @@ ctk_recent_chooser_set_local_only (GtkRecentChooser *chooser,
 
 /**
  * ctk_recent_chooser_get_local_only:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  *
  * Gets whether only local resources should be shown in the recently used
  * resources selector.  See ctk_recent_chooser_set_local_only()
@@ -492,7 +492,7 @@ ctk_recent_chooser_set_local_only (GtkRecentChooser *chooser,
  * Since: 2.10
  */
 gboolean
-ctk_recent_chooser_get_local_only (GtkRecentChooser *chooser)
+ctk_recent_chooser_get_local_only (CtkRecentChooser *chooser)
 {
   gboolean local_only;
 
@@ -505,7 +505,7 @@ ctk_recent_chooser_get_local_only (GtkRecentChooser *chooser)
 
 /**
  * ctk_recent_chooser_set_limit:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  * @limit: a positive integer, or -1 for all items
  *
  * Sets the number of items that should be returned by
@@ -514,7 +514,7 @@ ctk_recent_chooser_get_local_only (GtkRecentChooser *chooser)
  * Since: 2.10
  */
 void
-ctk_recent_chooser_set_limit (GtkRecentChooser *chooser,
+ctk_recent_chooser_set_limit (CtkRecentChooser *chooser,
 			      gint              limit)
 {
   g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
@@ -524,7 +524,7 @@ ctk_recent_chooser_set_limit (GtkRecentChooser *chooser,
 
 /**
  * ctk_recent_chooser_get_limit:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  *
  * Gets the number of items returned by ctk_recent_chooser_get_items()
  * and ctk_recent_chooser_get_uris().
@@ -535,7 +535,7 @@ ctk_recent_chooser_set_limit (GtkRecentChooser *chooser,
  * Since: 2.10
  */
 gint
-ctk_recent_chooser_get_limit (GtkRecentChooser *chooser)
+ctk_recent_chooser_get_limit (CtkRecentChooser *chooser)
 {
   gint limit;
   
@@ -548,16 +548,16 @@ ctk_recent_chooser_get_limit (GtkRecentChooser *chooser)
 
 /**
  * ctk_recent_chooser_set_show_tips:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  * @show_tips: %TRUE if tooltips should be shown
  *
  * Sets whether to show a tooltips containing the full path of each
- * recently used resource in a #GtkRecentChooser widget.
+ * recently used resource in a #CtkRecentChooser widget.
  *
  * Since: 2.10
  */
 void
-ctk_recent_chooser_set_show_tips (GtkRecentChooser *chooser,
+ctk_recent_chooser_set_show_tips (CtkRecentChooser *chooser,
 				  gboolean          show_tips)
 {
   g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
@@ -567,7 +567,7 @@ ctk_recent_chooser_set_show_tips (GtkRecentChooser *chooser,
 
 /**
  * ctk_recent_chooser_get_show_tips:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  *
  * Gets whether @chooser should display tooltips containing the full path
  * of a recently user resource.
@@ -578,7 +578,7 @@ ctk_recent_chooser_set_show_tips (GtkRecentChooser *chooser,
  * Since: 2.10
  */
 gboolean
-ctk_recent_chooser_get_show_tips (GtkRecentChooser *chooser)
+ctk_recent_chooser_get_show_tips (CtkRecentChooser *chooser)
 {
   gboolean show_tips;
   
@@ -590,12 +590,12 @@ ctk_recent_chooser_get_show_tips (GtkRecentChooser *chooser)
 }
 
 static gboolean
-recent_chooser_has_show_numbers (GtkRecentChooser *chooser)
+recent_chooser_has_show_numbers (CtkRecentChooser *chooser)
 {
   GParamSpec *pspec;
   
   /* This is the result of a minor screw up: the "show-numbers" property
-   * was removed from the GtkRecentChooser interface, but the accessors
+   * was removed from the CtkRecentChooser interface, but the accessors
    * remained in the interface API; now we need to check whether the
    * implementation of the RecentChooser interface has a "show-numbers"
    * boolean property installed before accessing it, and avoid an
@@ -610,7 +610,7 @@ recent_chooser_has_show_numbers (GtkRecentChooser *chooser)
 
 /**
  * ctk_recent_chooser_set_sort_type:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  * @sort_type: sort order that the chooser should use
  *
  * Changes the sorting order of the recently used resources list displayed by
@@ -619,8 +619,8 @@ recent_chooser_has_show_numbers (GtkRecentChooser *chooser)
  * Since: 2.10
  */
 void
-ctk_recent_chooser_set_sort_type (GtkRecentChooser  *chooser,
-				  GtkRecentSortType  sort_type)
+ctk_recent_chooser_set_sort_type (CtkRecentChooser  *chooser,
+				  CtkRecentSortType  sort_type)
 {  
   g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
   
@@ -629,7 +629,7 @@ ctk_recent_chooser_set_sort_type (GtkRecentChooser  *chooser,
 
 /**
  * ctk_recent_chooser_get_sort_type:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  *
  * Gets the value set by ctk_recent_chooser_set_sort_type().
  *
@@ -637,10 +637,10 @@ ctk_recent_chooser_set_sort_type (GtkRecentChooser  *chooser,
  *
  * Since: 2.10
  */
-GtkRecentSortType
-ctk_recent_chooser_get_sort_type (GtkRecentChooser *chooser)
+CtkRecentSortType
+ctk_recent_chooser_get_sort_type (CtkRecentChooser *chooser)
 {
-  GtkRecentSortType sort_type;
+  CtkRecentSortType sort_type;
   
   g_return_val_if_fail (CTK_IS_RECENT_CHOOSER (chooser), CTK_RECENT_SORT_NONE);
   
@@ -651,7 +651,7 @@ ctk_recent_chooser_get_sort_type (GtkRecentChooser *chooser)
 
 /**
  * ctk_recent_chooser_set_sort_func:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  * @sort_func: the comparison function
  * @sort_data: (allow-none): user data to pass to @sort_func, or %NULL
  * @data_destroy: (allow-none): destroy notifier for @sort_data, or %NULL
@@ -660,7 +660,7 @@ ctk_recent_chooser_get_sort_type (GtkRecentChooser *chooser)
  * the @chooser has the sort type set to #CTK_RECENT_SORT_CUSTOM then
  * the chooser will sort using this function.
  *
- * To the comparison function will be passed two #GtkRecentInfo structs and
+ * To the comparison function will be passed two #CtkRecentInfo structs and
  * @sort_data;  @sort_func should return a positive integer if the first
  * item comes before the second, zero if the two items are equal and
  * a negative integer if the first item comes after the second.
@@ -668,8 +668,8 @@ ctk_recent_chooser_get_sort_type (GtkRecentChooser *chooser)
  * Since: 2.10
  */
 void
-ctk_recent_chooser_set_sort_func  (GtkRecentChooser  *chooser,
-				   GtkRecentSortFunc  sort_func,
+ctk_recent_chooser_set_sort_func  (CtkRecentChooser  *chooser,
+				   CtkRecentSortFunc  sort_func,
 				   gpointer           sort_data,
 				   GDestroyNotify     data_destroy)
 {
@@ -683,7 +683,7 @@ ctk_recent_chooser_set_sort_func  (GtkRecentChooser  *chooser,
 
 /**
  * ctk_recent_chooser_set_current_uri:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  * @uri: a URI
  * @error: (allow-none): return location for a #GError, or %NULL
  *
@@ -694,7 +694,7 @@ ctk_recent_chooser_set_sort_func  (GtkRecentChooser  *chooser,
  * Since: 2.10
  */
 gboolean
-ctk_recent_chooser_set_current_uri (GtkRecentChooser  *chooser,
+ctk_recent_chooser_set_current_uri (CtkRecentChooser  *chooser,
 				    const gchar       *uri,
 				    GError           **error)
 {
@@ -705,7 +705,7 @@ ctk_recent_chooser_set_current_uri (GtkRecentChooser  *chooser,
 
 /**
  * ctk_recent_chooser_get_current_uri:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  *
  * Gets the URI currently selected by @chooser.
  *
@@ -714,7 +714,7 @@ ctk_recent_chooser_set_current_uri (GtkRecentChooser  *chooser,
  * Since: 2.10
  */
 gchar *
-ctk_recent_chooser_get_current_uri (GtkRecentChooser *chooser)
+ctk_recent_chooser_get_current_uri (CtkRecentChooser *chooser)
 {
   g_return_val_if_fail (CTK_IS_RECENT_CHOOSER (chooser), NULL);
   
@@ -723,20 +723,20 @@ ctk_recent_chooser_get_current_uri (GtkRecentChooser *chooser)
 
 /**
  * ctk_recent_chooser_get_current_item:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  * 
- * Gets the #GtkRecentInfo currently selected by @chooser.
+ * Gets the #CtkRecentInfo currently selected by @chooser.
  *
- * Returns: a #GtkRecentInfo.  Use ctk_recent_info_unref() when
+ * Returns: a #CtkRecentInfo.  Use ctk_recent_info_unref() when
  *   when you have finished using it.
  *
  * Since: 2.10
  */
-GtkRecentInfo *
-ctk_recent_chooser_get_current_item (GtkRecentChooser *chooser)
+CtkRecentInfo *
+ctk_recent_chooser_get_current_item (CtkRecentChooser *chooser)
 {
-  GtkRecentManager *manager;
-  GtkRecentInfo *retval;
+  CtkRecentManager *manager;
+  CtkRecentInfo *retval;
   gchar *uri;
   
   g_return_val_if_fail (CTK_IS_RECENT_CHOOSER (chooser), NULL);
@@ -754,7 +754,7 @@ ctk_recent_chooser_get_current_item (GtkRecentChooser *chooser)
 
 /**
  * ctk_recent_chooser_select_uri:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  * @uri: a URI
  * @error: (allow-none): return location for a #GError, or %NULL
  *
@@ -765,7 +765,7 @@ ctk_recent_chooser_get_current_item (GtkRecentChooser *chooser)
  * Since: 2.10
  */
 gboolean
-ctk_recent_chooser_select_uri (GtkRecentChooser  *chooser,
+ctk_recent_chooser_select_uri (CtkRecentChooser  *chooser,
 			       const gchar       *uri,
 			       GError           **error)
 {
@@ -776,7 +776,7 @@ ctk_recent_chooser_select_uri (GtkRecentChooser  *chooser,
 
 /**
  * ctk_recent_chooser_unselect_uri:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  * @uri: a URI
  *
  * Unselects @uri inside @chooser.
@@ -784,7 +784,7 @@ ctk_recent_chooser_select_uri (GtkRecentChooser  *chooser,
  * Since: 2.10
  */
 void
-ctk_recent_chooser_unselect_uri (GtkRecentChooser *chooser,
+ctk_recent_chooser_unselect_uri (CtkRecentChooser *chooser,
 				 const gchar      *uri)
 {
   g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
@@ -794,7 +794,7 @@ ctk_recent_chooser_unselect_uri (GtkRecentChooser *chooser,
 
 /**
  * ctk_recent_chooser_select_all:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  *
  * Selects all the items inside @chooser, if the @chooser supports
  * multiple selection.
@@ -802,7 +802,7 @@ ctk_recent_chooser_unselect_uri (GtkRecentChooser *chooser,
  * Since: 2.10
  */
 void
-ctk_recent_chooser_select_all (GtkRecentChooser *chooser)
+ctk_recent_chooser_select_all (CtkRecentChooser *chooser)
 {
   g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
   
@@ -811,14 +811,14 @@ ctk_recent_chooser_select_all (GtkRecentChooser *chooser)
 
 /**
  * ctk_recent_chooser_unselect_all:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  *
  * Unselects all the items inside @chooser.
  * 
  * Since: 2.10
  */
 void
-ctk_recent_chooser_unselect_all (GtkRecentChooser *chooser)
+ctk_recent_chooser_unselect_all (CtkRecentChooser *chooser)
 {
   g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
   
@@ -827,22 +827,22 @@ ctk_recent_chooser_unselect_all (GtkRecentChooser *chooser)
 
 /**
  * ctk_recent_chooser_get_items:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  *
- * Gets the list of recently used resources in form of #GtkRecentInfo objects.
+ * Gets the list of recently used resources in form of #CtkRecentInfo objects.
  *
  * The return value of this function is affected by the “sort-type” and
  * “limit” properties of @chooser.
  *
- * Returns:  (element-type GtkRecentInfo) (transfer full): A newly allocated
- *   list of #GtkRecentInfo objects.  You should
+ * Returns:  (element-type CtkRecentInfo) (transfer full): A newly allocated
+ *   list of #CtkRecentInfo objects.  You should
  *   use ctk_recent_info_unref() on every item of the list, and then free
  *   the list itself using g_list_free().
  *
  * Since: 2.10
  */
 GList *
-ctk_recent_chooser_get_items (GtkRecentChooser *chooser)
+ctk_recent_chooser_get_items (CtkRecentChooser *chooser)
 {
   g_return_val_if_fail (CTK_IS_RECENT_CHOOSER (chooser), NULL);
   
@@ -851,7 +851,7 @@ ctk_recent_chooser_get_items (GtkRecentChooser *chooser)
 
 /**
  * ctk_recent_chooser_get_uris:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  * @length: (out) (allow-none): return location for a the length of the
  *     URI list, or %NULL
  *
@@ -869,7 +869,7 @@ ctk_recent_chooser_get_items (GtkRecentChooser *chooser)
  * Since: 2.10
  */
 gchar **
-ctk_recent_chooser_get_uris (GtkRecentChooser *chooser,
+ctk_recent_chooser_get_uris (CtkRecentChooser *chooser,
                              gsize            *length)
 {
   GList *items, *l;
@@ -883,7 +883,7 @@ ctk_recent_chooser_get_uris (GtkRecentChooser *chooser,
   
   for (l = items, i = 0; l != NULL; l = l->next)
     {
-      GtkRecentInfo *info = (GtkRecentInfo *) l->data;
+      CtkRecentInfo *info = (CtkRecentInfo *) l->data;
       const gchar *uri;
       
       g_assert (info != NULL);
@@ -905,10 +905,10 @@ ctk_recent_chooser_get_uris (GtkRecentChooser *chooser,
 
 /**
  * ctk_recent_chooser_add_filter:
- * @chooser: a #GtkRecentChooser
- * @filter: a #GtkRecentFilter
+ * @chooser: a #CtkRecentChooser
+ * @filter: a #CtkRecentFilter
  *
- * Adds @filter to the list of #GtkRecentFilter objects held by @chooser.
+ * Adds @filter to the list of #CtkRecentFilter objects held by @chooser.
  *
  * If no previous filter objects were defined, this function will call
  * ctk_recent_chooser_set_filter().
@@ -916,8 +916,8 @@ ctk_recent_chooser_get_uris (GtkRecentChooser *chooser,
  * Since: 2.10
  */
 void
-ctk_recent_chooser_add_filter (GtkRecentChooser *chooser,
-			       GtkRecentFilter  *filter)
+ctk_recent_chooser_add_filter (CtkRecentChooser *chooser,
+			       CtkRecentFilter  *filter)
 {
   g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
   g_return_if_fail (CTK_IS_RECENT_FILTER (filter));
@@ -927,16 +927,16 @@ ctk_recent_chooser_add_filter (GtkRecentChooser *chooser,
 
 /**
  * ctk_recent_chooser_remove_filter:
- * @chooser: a #GtkRecentChooser
- * @filter: a #GtkRecentFilter
+ * @chooser: a #CtkRecentChooser
+ * @filter: a #CtkRecentFilter
  *
- * Removes @filter from the list of #GtkRecentFilter objects held by @chooser.
+ * Removes @filter from the list of #CtkRecentFilter objects held by @chooser.
  *
  * Since: 2.10
  */
 void
-ctk_recent_chooser_remove_filter (GtkRecentChooser *chooser,
-				  GtkRecentFilter  *filter)
+ctk_recent_chooser_remove_filter (CtkRecentChooser *chooser,
+				  CtkRecentFilter  *filter)
 {
   g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
   g_return_if_fail (CTK_IS_RECENT_FILTER (filter));
@@ -946,18 +946,18 @@ ctk_recent_chooser_remove_filter (GtkRecentChooser *chooser,
 
 /**
  * ctk_recent_chooser_list_filters:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  *
- * Gets the #GtkRecentFilter objects held by @chooser.
+ * Gets the #CtkRecentFilter objects held by @chooser.
  *
- * Returns: (element-type GtkRecentFilter) (transfer container): A singly linked list
- *   of #GtkRecentFilter objects.  You
+ * Returns: (element-type CtkRecentFilter) (transfer container): A singly linked list
+ *   of #CtkRecentFilter objects.  You
  *   should just free the returned list using g_slist_free().
  *
  * Since: 2.10
  */
 GSList *
-ctk_recent_chooser_list_filters (GtkRecentChooser *chooser)
+ctk_recent_chooser_list_filters (CtkRecentChooser *chooser)
 {
   g_return_val_if_fail (CTK_IS_RECENT_CHOOSER (chooser), NULL);
   
@@ -966,17 +966,17 @@ ctk_recent_chooser_list_filters (GtkRecentChooser *chooser)
 
 /**
  * ctk_recent_chooser_set_filter:
- * @chooser: a #GtkRecentChooser
- * @filter: (allow-none): a #GtkRecentFilter
+ * @chooser: a #CtkRecentChooser
+ * @filter: (allow-none): a #CtkRecentFilter
  *
- * Sets @filter as the current #GtkRecentFilter object used by @chooser
+ * Sets @filter as the current #CtkRecentFilter object used by @chooser
  * to affect the displayed recently used resources.
  *
  * Since: 2.10
  */
 void
-ctk_recent_chooser_set_filter (GtkRecentChooser *chooser,
-			       GtkRecentFilter  *filter)
+ctk_recent_chooser_set_filter (CtkRecentChooser *chooser,
+			       CtkRecentFilter  *filter)
 {
   g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
   g_return_if_fail (filter == NULL || CTK_IS_RECENT_FILTER (filter));
@@ -986,19 +986,19 @@ ctk_recent_chooser_set_filter (GtkRecentChooser *chooser,
 
 /**
  * ctk_recent_chooser_get_filter:
- * @chooser: a #GtkRecentChooser
+ * @chooser: a #CtkRecentChooser
  *
- * Gets the #GtkRecentFilter object currently used by @chooser to affect
+ * Gets the #CtkRecentFilter object currently used by @chooser to affect
  * the display of the recently used resources.
  *
- * Returns: (transfer none): a #GtkRecentFilter object.
+ * Returns: (transfer none): a #CtkRecentFilter object.
  *
  * Since: 2.10
  */
-GtkRecentFilter *
-ctk_recent_chooser_get_filter (GtkRecentChooser *chooser)
+CtkRecentFilter *
+ctk_recent_chooser_get_filter (CtkRecentChooser *chooser)
 {
-  GtkRecentFilter *filter;
+  CtkRecentFilter *filter;
   
   g_return_val_if_fail (CTK_IS_RECENT_CHOOSER (chooser), NULL);
   
@@ -1015,7 +1015,7 @@ ctk_recent_chooser_get_filter (GtkRecentChooser *chooser)
 }
 
 void
-_ctk_recent_chooser_item_activated (GtkRecentChooser *chooser)
+_ctk_recent_chooser_item_activated (CtkRecentChooser *chooser)
 {
   g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
   
@@ -1023,7 +1023,7 @@ _ctk_recent_chooser_item_activated (GtkRecentChooser *chooser)
 }
 
 void
-_ctk_recent_chooser_selection_changed (GtkRecentChooser *chooser)
+_ctk_recent_chooser_selection_changed (CtkRecentChooser *chooser)
 {
   g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
 
@@ -1031,13 +1031,13 @@ _ctk_recent_chooser_selection_changed (GtkRecentChooser *chooser)
 }
 
 void
-_ctk_recent_chooser_update (GtkActivatable *activatable,
-			    GtkAction      *action,
+_ctk_recent_chooser_update (CtkActivatable *activatable,
+			    CtkAction      *action,
 			    const gchar    *property_name)
 {
-  GtkRecentChooser *recent_chooser;
-  GtkRecentChooser *action_chooser;
-  GtkRecentAction  *recent_action;
+  CtkRecentChooser *recent_chooser;
+  CtkRecentChooser *action_chooser;
+  CtkRecentAction  *recent_action;
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   recent_chooser = CTK_RECENT_CHOOSER (activatable);
@@ -1071,11 +1071,11 @@ _ctk_recent_chooser_update (GtkActivatable *activatable,
 }
 
 void
-_ctk_recent_chooser_sync_action_properties (GtkActivatable *activatable,
-			                    GtkAction      *action)
+_ctk_recent_chooser_sync_action_properties (CtkActivatable *activatable,
+			                    CtkAction      *action)
 {
-  GtkRecentChooser *recent_chooser;
-  GtkRecentChooser *action_chooser;
+  CtkRecentChooser *recent_chooser;
+  CtkRecentChooser *action_chooser;
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   recent_chooser = CTK_RECENT_CHOOSER (activatable);
@@ -1104,10 +1104,10 @@ _ctk_recent_chooser_sync_action_properties (GtkActivatable *activatable,
 }
 
 void
-_ctk_recent_chooser_set_related_action (GtkRecentChooser *recent_chooser,
-					GtkAction        *action)
+_ctk_recent_chooser_set_related_action (CtkRecentChooser *recent_chooser,
+					CtkAction        *action)
 {
-  GtkAction *prev_action;
+  CtkAction *prev_action;
 
   prev_action = g_object_get_qdata (G_OBJECT (recent_chooser), quark_ctk_related_action);
 
@@ -1120,8 +1120,8 @@ _ctk_recent_chooser_set_related_action (GtkRecentChooser *recent_chooser,
   g_object_set_qdata (G_OBJECT (recent_chooser), quark_ctk_related_action, action);
 }
 
-GtkAction *
-_ctk_recent_chooser_get_related_action (GtkRecentChooser *recent_chooser)
+CtkAction *
+_ctk_recent_chooser_get_related_action (CtkRecentChooser *recent_chooser)
 {
   return g_object_get_qdata (G_OBJECT (recent_chooser), quark_ctk_related_action);
 }
@@ -1130,10 +1130,10 @@ _ctk_recent_chooser_get_related_action (GtkRecentChooser *recent_chooser)
  * qdata backwards for this case.
  */
 void
-_ctk_recent_chooser_set_use_action_appearance (GtkRecentChooser *recent_chooser, 
+_ctk_recent_chooser_set_use_action_appearance (CtkRecentChooser *recent_chooser, 
 					       gboolean          use_appearance)
 {
-  GtkAction *action;
+  CtkAction *action;
   gboolean   use_action_appearance;
 
   action                = g_object_get_qdata (G_OBJECT (recent_chooser), quark_ctk_related_action);
@@ -1151,7 +1151,7 @@ _ctk_recent_chooser_set_use_action_appearance (GtkRecentChooser *recent_chooser,
 }
 
 gboolean
-_ctk_recent_chooser_get_use_action_appearance (GtkRecentChooser *recent_chooser)
+_ctk_recent_chooser_get_use_action_appearance (CtkRecentChooser *recent_chooser)
 {
   return !GPOINTER_TO_INT (g_object_get_qdata (G_OBJECT (recent_chooser), quark_ctk_use_action_appearance));
 }

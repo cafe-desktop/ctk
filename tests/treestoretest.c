@@ -20,12 +20,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-GtkTreeStore *base_model;
+CtkTreeStore *base_model;
 static gint node_count = 0;
 
 static void
-selection_changed (GtkTreeSelection *selection,
-		   GtkWidget        *button)
+selection_changed (CtkTreeSelection *selection,
+		   CtkWidget        *button)
 {
   if (ctk_tree_selection_get_selected (selection, NULL, NULL))
     ctk_widget_set_sensitive (button, TRUE);
@@ -34,7 +34,7 @@ selection_changed (GtkTreeSelection *selection,
 }
 
 static void
-node_set (GtkTreeIter *iter)
+node_set (CtkTreeIter *iter)
 {
   gint n;
   gchar *str;
@@ -53,10 +53,10 @@ node_set (GtkTreeIter *iter)
 }
 
 static void
-iter_remove (GtkWidget *button, GtkTreeView *tree_view)
+iter_remove (CtkWidget *button, CtkTreeView *tree_view)
 {
-  GtkTreeIter selected;
-  GtkTreeModel *model;
+  CtkTreeIter selected;
+  CtkTreeModel *model;
 
   model = ctk_tree_view_get_model (tree_view);
 
@@ -72,12 +72,12 @@ iter_remove (GtkWidget *button, GtkTreeView *tree_view)
 }
 
 static void
-iter_insert (GtkWidget *button, GtkTreeView *tree_view)
+iter_insert (CtkWidget *button, CtkTreeView *tree_view)
 {
-  GtkWidget *entry;
-  GtkTreeIter iter;
-  GtkTreeIter selected;
-  GtkTreeModel *model = ctk_tree_view_get_model (tree_view);
+  CtkWidget *entry;
+  CtkTreeIter iter;
+  CtkTreeIter selected;
+  CtkTreeModel *model = ctk_tree_view_get_model (tree_view);
 
   entry = g_object_get_data (G_OBJECT (button), "user_data");
   if (ctk_tree_selection_get_selected (ctk_tree_view_get_selection (CTK_TREE_VIEW (tree_view)),
@@ -101,11 +101,11 @@ iter_insert (GtkWidget *button, GtkTreeView *tree_view)
 }
 
 static void
-iter_change (GtkWidget *button, GtkTreeView *tree_view)
+iter_change (CtkWidget *button, CtkTreeView *tree_view)
 {
-  GtkWidget *entry;
-  GtkTreeIter selected;
-  GtkTreeModel *model = ctk_tree_view_get_model (tree_view);
+  CtkWidget *entry;
+  CtkTreeIter selected;
+  CtkTreeModel *model = ctk_tree_view_get_model (tree_view);
 
   entry = g_object_get_data (G_OBJECT (button), "user_data");
   if (ctk_tree_selection_get_selected (ctk_tree_view_get_selection (CTK_TREE_VIEW (tree_view)),
@@ -120,12 +120,12 @@ iter_change (GtkWidget *button, GtkTreeView *tree_view)
 }
 
 static void
-iter_insert_with_values (GtkWidget *button, GtkTreeView *tree_view)
+iter_insert_with_values (CtkWidget *button, CtkTreeView *tree_view)
 {
-  GtkWidget *entry;
-  GtkTreeIter iter;
-  GtkTreeIter selected;
-  GtkTreeModel *model = ctk_tree_view_get_model (tree_view);
+  CtkWidget *entry;
+  CtkTreeIter iter;
+  CtkTreeIter selected;
+  CtkTreeModel *model = ctk_tree_view_get_model (tree_view);
   gchar *str1, *str2;
 
   entry = g_object_get_data (G_OBJECT (button), "user_data");
@@ -160,11 +160,11 @@ iter_insert_with_values (GtkWidget *button, GtkTreeView *tree_view)
 }
 
 static void
-iter_insert_before  (GtkWidget *button, GtkTreeView *tree_view)
+iter_insert_before  (CtkWidget *button, CtkTreeView *tree_view)
 {
-  GtkTreeIter iter;
-  GtkTreeIter selected;
-  GtkTreeModel *model = ctk_tree_view_get_model (tree_view);
+  CtkTreeIter iter;
+  CtkTreeIter selected;
+  CtkTreeModel *model = ctk_tree_view_get_model (tree_view);
 
   if (ctk_tree_selection_get_selected (ctk_tree_view_get_selection (CTK_TREE_VIEW (tree_view)),
 				       NULL,
@@ -187,11 +187,11 @@ iter_insert_before  (GtkWidget *button, GtkTreeView *tree_view)
 }
 
 static void
-iter_insert_after (GtkWidget *button, GtkTreeView *tree_view)
+iter_insert_after (CtkWidget *button, CtkTreeView *tree_view)
 {
-  GtkTreeIter iter;
-  GtkTreeIter selected;
-  GtkTreeModel *model = ctk_tree_view_get_model (tree_view);
+  CtkTreeIter iter;
+  CtkTreeIter selected;
+  CtkTreeModel *model = ctk_tree_view_get_model (tree_view);
 
   if (ctk_tree_selection_get_selected (ctk_tree_view_get_selection (CTK_TREE_VIEW (tree_view)),
 				       NULL,
@@ -220,12 +220,12 @@ iter_insert_after (GtkWidget *button, GtkTreeView *tree_view)
 }
 
 static void
-iter_prepend (GtkWidget *button, GtkTreeView *tree_view)
+iter_prepend (CtkWidget *button, CtkTreeView *tree_view)
 {
-  GtkTreeIter iter;
-  GtkTreeIter selected;
-  GtkTreeModel *model = ctk_tree_view_get_model (tree_view);
-  GtkTreeSelection *selection = ctk_tree_view_get_selection (tree_view);
+  CtkTreeIter iter;
+  CtkTreeIter selected;
+  CtkTreeModel *model = ctk_tree_view_get_model (tree_view);
+  CtkTreeSelection *selection = ctk_tree_view_get_selection (tree_view);
 
   if (ctk_tree_selection_get_selected (selection, NULL, &selected))
     {
@@ -250,11 +250,11 @@ iter_prepend (GtkWidget *button, GtkTreeView *tree_view)
 }
 
 static void
-iter_append (GtkWidget *button, GtkTreeView *tree_view)
+iter_append (CtkWidget *button, CtkTreeView *tree_view)
 {
-  GtkTreeIter iter;
-  GtkTreeIter selected;
-  GtkTreeModel *model = ctk_tree_view_get_model (tree_view);
+  CtkTreeIter iter;
+  CtkTreeIter selected;
+  CtkTreeModel *model = ctk_tree_view_get_model (tree_view);
 
   if (ctk_tree_selection_get_selected (ctk_tree_view_get_selection (CTK_TREE_VIEW (tree_view)),
 				       NULL,
@@ -279,14 +279,14 @@ iter_append (GtkWidget *button, GtkTreeView *tree_view)
 static void
 make_window (gint view_type)
 {
-  GtkWidget *window;
-  GtkWidget *vbox;
-  GtkWidget *hbox, *entry;
-  GtkWidget *button;
-  GtkWidget *scrolled_window;
-  GtkWidget *tree_view;
-  GtkTreeViewColumn *column;
-  GtkCellRenderer *cell;
+  CtkWidget *window;
+  CtkWidget *vbox;
+  CtkWidget *hbox, *entry;
+  CtkWidget *button;
+  CtkWidget *scrolled_window;
+  CtkWidget *tree_view;
+  CtkTreeViewColumn *column;
+  CtkCellRenderer *cell;
   GObject *selection;
 
   /* Make the Widgets/Objects */
@@ -312,7 +312,7 @@ make_window (gint view_type)
       break;
     case 1:
       {
-	GtkTreeModel *sort_model;
+	CtkTreeModel *sort_model;
 	
 	sort_model = ctk_tree_model_sort_new_with_model (CTK_TREE_MODEL (base_model));
 	tree_view = ctk_tree_view_new_with_model (CTK_TREE_MODEL (sort_model));

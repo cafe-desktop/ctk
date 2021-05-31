@@ -36,9 +36,9 @@ notify_preview_text_cb (GObject *fontsel, GParamSpec *pspec, gpointer data)
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window;
-  GtkWidget *hbox;
-  GtkWidget *fontsel;
+  CtkWidget *window;
+  CtkWidget *hbox;
+  CtkWidget *fontsel;
   
   ctk_init (NULL, NULL);
     

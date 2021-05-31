@@ -38,9 +38,9 @@
 /**
  * SECTION:ctksearchbar
  * @Short_description: A toolbar to integrate a search entry with
- * @Title: GtkSearchBar
+ * @Title: CtkSearchBar
  *
- * #GtkSearchBar is a container made to have a search entry (possibly
+ * #CtkSearchBar is a container made to have a search entry (possibly
  * with additional connex widgets, such as drop-down menus, or buttons)
  * built-in. The search bar would appear when a search is started through
  * typing on the keyboard, or the application’s search mode is toggled on.
@@ -58,7 +58,7 @@
  *
  * # CSS nodes
  *
- * GtkSearchBar has a single CSS node with name searchbar.
+ * CtkSearchBar has a single CSS node with name searchbar.
  *
  * ## Creating a search bar
  *
@@ -69,16 +69,16 @@
 
 typedef struct {
   /* Template widgets */
-  GtkWidget   *revealer;
-  GtkWidget   *tool_box;
-  GtkWidget   *box_center;
-  GtkWidget   *close_button;
+  CtkWidget   *revealer;
+  CtkWidget   *tool_box;
+  CtkWidget   *box_center;
+  CtkWidget   *close_button;
 
-  GtkWidget   *entry;
+  CtkWidget   *entry;
   gboolean     reveal_child;
-} GtkSearchBarPrivate;
+} CtkSearchBarPrivate;
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkSearchBar, ctk_search_bar, CTK_TYPE_BIN)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkSearchBar, ctk_search_bar, CTK_TYPE_BIN)
 
 enum {
   PROP_0,
@@ -90,17 +90,17 @@ enum {
 static GParamSpec *widget_props[LAST_PROPERTY] = { NULL, };
 
 static void
-stop_search_cb (GtkWidget    *entry,
-                GtkSearchBar *bar)
+stop_search_cb (CtkWidget    *entry,
+                CtkSearchBar *bar)
 {
-  GtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
+  CtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
   ctk_revealer_set_reveal_child (CTK_REVEALER (priv->revealer), FALSE);
 }
 
 static gboolean
-entry_key_pressed_event_cb (GtkWidget    *widget,
+entry_key_pressed_event_cb (CtkWidget    *widget,
                             GdkEvent     *event,
-                            GtkSearchBar *bar)
+                            CtkSearchBar *bar)
 {
   if (event->key.keyval == GDK_KEY_Escape)
     {
@@ -112,18 +112,18 @@ entry_key_pressed_event_cb (GtkWidget    *widget,
 }
 
 static void
-preedit_changed_cb (GtkEntry  *entry,
-                    GtkWidget *popup,
+preedit_changed_cb (CtkEntry  *entry,
+                    CtkWidget *popup,
                     gboolean  *preedit_changed)
 {
   *preedit_changed = TRUE;
 }
 
 static gboolean
-ctk_search_bar_handle_event_for_entry (GtkSearchBar *bar,
+ctk_search_bar_handle_event_for_entry (CtkSearchBar *bar,
                                        GdkEvent     *event)
 {
-  GtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
+  CtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
   gboolean handled;
   gboolean preedit_changed;
   guint preedit_change_id;
@@ -160,7 +160,7 @@ ctk_search_bar_handle_event_for_entry (GtkSearchBar *bar,
 
 /**
  * ctk_search_bar_handle_event:
- * @bar: a #GtkSearchBar
+ * @bar: a #CtkSearchBar
  * @event: a #GdkEvent containing key press events
  *
  * This function should be called when the top-level
@@ -179,19 +179,19 @@ ctk_search_bar_handle_event_for_entry (GtkSearchBar *bar,
  *
  * |[<!-- language="C" -->
  * static gboolean
- * on_key_press_event (GtkWidget *widget,
+ * on_key_press_event (CtkWidget *widget,
  *                     GdkEvent  *event,
  *                     gpointer   user_data)
  * {
- *   GtkSearchBar *bar = CTK_SEARCH_BAR (user_data);
+ *   CtkSearchBar *bar = CTK_SEARCH_BAR (user_data);
  *   return ctk_search_bar_handle_event (bar, event);
  * }
  *
  * static void
  * create_toplevel (void)
  * {
- *   GtkWidget *window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
- *   GtkWindow *search_bar = ctk_search_bar_new ();
+ *   CtkWidget *window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+ *   CtkWindow *search_bar = ctk_search_bar_new ();
  *
  *  // Add more widgets to the window...
  *
@@ -209,10 +209,10 @@ ctk_search_bar_handle_event_for_entry (GtkSearchBar *bar,
  * Since: 3.10
  */
 gboolean
-ctk_search_bar_handle_event (GtkSearchBar *bar,
+ctk_search_bar_handle_event (CtkSearchBar *bar,
                              GdkEvent     *event)
 {
-  GtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
+  CtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
   gboolean handled;
 
   if (priv->reveal_child)
@@ -238,9 +238,9 @@ ctk_search_bar_handle_event (GtkSearchBar *bar,
 static void
 reveal_child_changed_cb (GObject      *object,
                          GParamSpec   *pspec,
-                         GtkSearchBar *bar)
+                         CtkSearchBar *bar)
 {
-  GtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
+  CtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
   gboolean reveal_child;
 
   g_object_get (object, "reveal-child", &reveal_child, NULL);
@@ -266,9 +266,9 @@ reveal_child_changed_cb (GObject      *object,
 static void
 child_revealed_changed_cb (GObject      *object,
                            GParamSpec   *pspec,
-                           GtkSearchBar *bar)
+                           CtkSearchBar *bar)
 {
-  GtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
+  CtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
   gboolean val;
 
   g_object_get (object, "child-revealed", &val, NULL);
@@ -277,20 +277,20 @@ child_revealed_changed_cb (GObject      *object,
 }
 
 static void
-close_button_clicked_cb (GtkWidget    *button,
-                         GtkSearchBar *bar)
+close_button_clicked_cb (CtkWidget    *button,
+                         CtkSearchBar *bar)
 {
-  GtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
+  CtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
 
   ctk_revealer_set_reveal_child (CTK_REVEALER (priv->revealer), FALSE);
 }
 
 static void
-ctk_search_bar_add (GtkContainer *container,
-                    GtkWidget    *child)
+ctk_search_bar_add (CtkContainer *container,
+                    CtkWidget    *child)
 {
-  GtkSearchBar *bar = CTK_SEARCH_BAR (container);
-  GtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
+  CtkSearchBar *bar = CTK_SEARCH_BAR (container);
+  CtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
 
   /* When constructing the widget, we want the revealer to be added
    * as the first child of the search bar, as an implementation detail.
@@ -318,7 +318,7 @@ ctk_search_bar_set_property (GObject      *object,
                              const GValue *value,
                              GParamSpec   *pspec)
 {
-  GtkSearchBar *bar = CTK_SEARCH_BAR (object);
+  CtkSearchBar *bar = CTK_SEARCH_BAR (object);
 
   switch (prop_id)
     {
@@ -340,8 +340,8 @@ ctk_search_bar_get_property (GObject    *object,
                              GValue     *value,
                              GParamSpec *pspec)
 {
-  GtkSearchBar *bar = CTK_SEARCH_BAR (object);
-  GtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
+  CtkSearchBar *bar = CTK_SEARCH_BAR (object);
+  CtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
 
   switch (prop_id)
     {
@@ -357,13 +357,13 @@ ctk_search_bar_get_property (GObject    *object,
     }
 }
 
-static void ctk_search_bar_set_entry (GtkSearchBar *bar,
-                                      GtkEntry     *entry);
+static void ctk_search_bar_set_entry (CtkSearchBar *bar,
+                                      CtkEntry     *entry);
 
 static void
 ctk_search_bar_dispose (GObject *object)
 {
-  GtkSearchBar *bar = CTK_SEARCH_BAR (object);
+  CtkSearchBar *bar = CTK_SEARCH_BAR (object);
 
   ctk_search_bar_set_entry (bar, NULL);
 
@@ -371,11 +371,11 @@ ctk_search_bar_dispose (GObject *object)
 }
 
 static gboolean
-ctk_search_bar_draw (GtkWidget *widget,
+ctk_search_bar_draw (CtkWidget *widget,
                      cairo_t *cr)
 {
   gint width, height;
-  GtkStyleContext *context;
+  CtkStyleContext *context;
 
   width = ctk_widget_get_allocated_width (widget);
   height = ctk_widget_get_allocated_height (widget);
@@ -390,11 +390,11 @@ ctk_search_bar_draw (GtkWidget *widget,
 }
 
 static void
-ctk_search_bar_class_init (GtkSearchBarClass *klass)
+ctk_search_bar_class_init (CtkSearchBarClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
-  GtkContainerClass *container_class = CTK_CONTAINER_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkContainerClass *container_class = CTK_CONTAINER_CLASS (klass);
 
   object_class->dispose = ctk_search_bar_dispose;
   object_class->set_property = ctk_search_bar_set_property;
@@ -404,7 +404,7 @@ ctk_search_bar_class_init (GtkSearchBarClass *klass)
   container_class->add = ctk_search_bar_add;
 
   /**
-   * GtkEntry:search-mode-enabled:
+   * CtkEntry:search-mode-enabled:
    *
    * Whether the search mode is on and the search bar shown.
    *
@@ -417,7 +417,7 @@ ctk_search_bar_class_init (GtkSearchBarClass *klass)
                                                                  CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry:show-close-button:
+   * CtkEntry:show-close-button:
    *
    * Whether to show the close button in the toolbar.
    */
@@ -430,18 +430,18 @@ ctk_search_bar_class_init (GtkSearchBarClass *klass)
   g_object_class_install_properties (object_class, LAST_PROPERTY, widget_props);
 
   ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/ui/ctksearchbar.ui");
-  ctk_widget_class_bind_template_child_private (widget_class, GtkSearchBar, tool_box);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkSearchBar, revealer);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkSearchBar, box_center);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkSearchBar, close_button);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkSearchBar, tool_box);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkSearchBar, revealer);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkSearchBar, box_center);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkSearchBar, close_button);
 
   ctk_widget_class_set_css_name (widget_class, "searchbar");
 }
 
 static void
-ctk_search_bar_init (GtkSearchBar *bar)
+ctk_search_bar_init (CtkSearchBar *bar)
 {
-  GtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
+  CtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
 
   ctk_widget_init_template (CTK_WIDGET (bar));
 
@@ -463,25 +463,25 @@ ctk_search_bar_init (GtkSearchBar *bar)
 /**
  * ctk_search_bar_new:
  *
- * Creates a #GtkSearchBar. You will need to tell it about
+ * Creates a #CtkSearchBar. You will need to tell it about
  * which widget is going to be your text entry using
  * ctk_search_bar_connect_entry().
  *
- * Returns: a new #GtkSearchBar
+ * Returns: a new #CtkSearchBar
  *
  * Since: 3.10
  */
-GtkWidget *
+CtkWidget *
 ctk_search_bar_new (void)
 {
   return g_object_new (CTK_TYPE_SEARCH_BAR, NULL);
 }
 
 static void
-ctk_search_bar_set_entry (GtkSearchBar *bar,
-                          GtkEntry     *entry)
+ctk_search_bar_set_entry (CtkSearchBar *bar,
+                          CtkEntry     *entry)
 {
-  GtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
+  CtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
 
   if (priv->entry != NULL)
     {
@@ -508,10 +508,10 @@ ctk_search_bar_set_entry (GtkSearchBar *bar,
 
 /**
  * ctk_search_bar_connect_entry:
- * @bar: a #GtkSearchBar
- * @entry: a #GtkEntry
+ * @bar: a #CtkSearchBar
+ * @entry: a #CtkEntry
  *
- * Connects the #GtkEntry widget passed as the one to be used in
+ * Connects the #CtkEntry widget passed as the one to be used in
  * this search bar. The entry should be a descendant of the search bar.
  * This is only required if the entry isn’t the direct child of the
  * search bar (as in our main example).
@@ -519,8 +519,8 @@ ctk_search_bar_set_entry (GtkSearchBar *bar,
  * Since: 3.10
  */
 void
-ctk_search_bar_connect_entry (GtkSearchBar *bar,
-                              GtkEntry     *entry)
+ctk_search_bar_connect_entry (CtkSearchBar *bar,
+                              CtkEntry     *entry)
 {
   g_return_if_fail (CTK_IS_SEARCH_BAR (bar));
   g_return_if_fail (entry == NULL || CTK_IS_ENTRY (entry));
@@ -530,7 +530,7 @@ ctk_search_bar_connect_entry (GtkSearchBar *bar,
 
 /**
  * ctk_search_bar_get_search_mode:
- * @bar: a #GtkSearchBar
+ * @bar: a #CtkSearchBar
  *
  * Returns whether the search mode is on or off.
  *
@@ -539,9 +539,9 @@ ctk_search_bar_connect_entry (GtkSearchBar *bar,
  * Since: 3.10
  */
 gboolean
-ctk_search_bar_get_search_mode (GtkSearchBar *bar)
+ctk_search_bar_get_search_mode (CtkSearchBar *bar)
 {
-  GtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
+  CtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
 
   g_return_val_if_fail (CTK_IS_SEARCH_BAR (bar), FALSE);
 
@@ -550,7 +550,7 @@ ctk_search_bar_get_search_mode (GtkSearchBar *bar)
 
 /**
  * ctk_search_bar_set_search_mode:
- * @bar: a #GtkSearchBar
+ * @bar: a #CtkSearchBar
  * @search_mode: the new state of the search mode
  *
  * Switches the search mode on or off.
@@ -558,10 +558,10 @@ ctk_search_bar_get_search_mode (GtkSearchBar *bar)
  * Since: 3.10
  */
 void
-ctk_search_bar_set_search_mode (GtkSearchBar *bar,
+ctk_search_bar_set_search_mode (CtkSearchBar *bar,
                                 gboolean      search_mode)
 {
-  GtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
+  CtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
 
   g_return_if_fail (CTK_IS_SEARCH_BAR (bar));
 
@@ -570,7 +570,7 @@ ctk_search_bar_set_search_mode (GtkSearchBar *bar,
 
 /**
  * ctk_search_bar_get_show_close_button:
- * @bar: a #GtkSearchBar
+ * @bar: a #CtkSearchBar
  *
  * Returns whether the close button is shown.
  *
@@ -579,9 +579,9 @@ ctk_search_bar_set_search_mode (GtkSearchBar *bar,
  * Since: 3.10
  */
 gboolean
-ctk_search_bar_get_show_close_button (GtkSearchBar *bar)
+ctk_search_bar_get_show_close_button (CtkSearchBar *bar)
 {
-  GtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
+  CtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
 
   g_return_val_if_fail (CTK_IS_SEARCH_BAR (bar), FALSE);
 
@@ -590,7 +590,7 @@ ctk_search_bar_get_show_close_button (GtkSearchBar *bar)
 
 /**
  * ctk_search_bar_set_show_close_button:
- * @bar: a #GtkSearchBar
+ * @bar: a #CtkSearchBar
  * @visible: whether the close button will be shown or not
  *
  * Shows or hides the close button. Applications that
@@ -601,10 +601,10 @@ ctk_search_bar_get_show_close_button (GtkSearchBar *bar)
  * Since: 3.10
  */
 void
-ctk_search_bar_set_show_close_button (GtkSearchBar *bar,
+ctk_search_bar_set_show_close_button (CtkSearchBar *bar,
                                       gboolean      visible)
 {
-  GtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
+  CtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
 
   g_return_if_fail (CTK_IS_SEARCH_BAR (bar));
 

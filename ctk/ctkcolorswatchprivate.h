@@ -23,31 +23,31 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_COLOR_SWATCH                  (ctk_color_swatch_get_type ())
-#define CTK_COLOR_SWATCH(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_COLOR_SWATCH, GtkColorSwatch))
-#define CTK_COLOR_SWATCH_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_COLOR_SWATCH, GtkColorSwatchClass))
+#define CTK_COLOR_SWATCH(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_COLOR_SWATCH, CtkColorSwatch))
+#define CTK_COLOR_SWATCH_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_COLOR_SWATCH, CtkColorSwatchClass))
 #define CTK_IS_COLOR_SWATCH(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_COLOR_SWATCH))
 #define CTK_IS_COLOR_SWATCH_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_COLOR_SWATCH))
-#define CTK_COLOR_SWATCH_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_COLOR_SWATCH, GtkColorSwatchClass))
+#define CTK_COLOR_SWATCH_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_COLOR_SWATCH, CtkColorSwatchClass))
 
 
-typedef struct _GtkColorSwatch        GtkColorSwatch;
-typedef struct _GtkColorSwatchClass   GtkColorSwatchClass;
-typedef struct _GtkColorSwatchPrivate GtkColorSwatchPrivate;
+typedef struct _CtkColorSwatch        CtkColorSwatch;
+typedef struct _CtkColorSwatchClass   CtkColorSwatchClass;
+typedef struct _CtkColorSwatchPrivate CtkColorSwatchPrivate;
 
-struct _GtkColorSwatch
+struct _CtkColorSwatch
 {
-  GtkWidget parent;
+  CtkWidget parent;
 
   /*< private >*/
-  GtkColorSwatchPrivate *priv;
+  CtkColorSwatchPrivate *priv;
 };
 
-struct _GtkColorSwatchClass
+struct _CtkColorSwatchClass
 {
-  GtkWidgetClass parent_class;
+  CtkWidgetClass parent_class;
 
-  void ( * activate)  (GtkColorSwatch *swatch);
-  void ( * customize) (GtkColorSwatch *swatch);
+  void ( * activate)  (CtkColorSwatch *swatch);
+  void ( * customize) (CtkColorSwatch *swatch);
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -58,25 +58,25 @@ struct _GtkColorSwatchClass
 
 
 GType       ctk_color_swatch_get_type         (void) G_GNUC_CONST;
-GtkWidget * ctk_color_swatch_new              (void);
-void        ctk_color_swatch_set_rgba         (GtkColorSwatch *swatch,
+CtkWidget * ctk_color_swatch_new              (void);
+void        ctk_color_swatch_set_rgba         (CtkColorSwatch *swatch,
                                                const GdkRGBA  *color);
-gboolean    ctk_color_swatch_get_rgba         (GtkColorSwatch *swatch,
+gboolean    ctk_color_swatch_get_rgba         (CtkColorSwatch *swatch,
                                                GdkRGBA        *color);
-void        ctk_color_swatch_set_hsva         (GtkColorSwatch *swatch,
+void        ctk_color_swatch_set_hsva         (CtkColorSwatch *swatch,
                                                gdouble         h,
                                                gdouble         s,
                                                gdouble         v,
                                                gdouble         a);
-void        ctk_color_swatch_set_can_drop     (GtkColorSwatch *swatch,
+void        ctk_color_swatch_set_can_drop     (CtkColorSwatch *swatch,
                                                gboolean        can_drop);
-void        ctk_color_swatch_set_icon         (GtkColorSwatch *swatch,
+void        ctk_color_swatch_set_icon         (CtkColorSwatch *swatch,
                                                const gchar    *icon);
-void        ctk_color_swatch_set_use_alpha    (GtkColorSwatch *swatch,
+void        ctk_color_swatch_set_use_alpha    (CtkColorSwatch *swatch,
                                                gboolean        use_alpha);
-void        ctk_color_swatch_set_selectable   (GtkColorSwatch *swatch,
+void        ctk_color_swatch_set_selectable   (CtkColorSwatch *swatch,
                                                gboolean        selectable);
-gboolean    ctk_color_swatch_get_selectable   (GtkColorSwatch *swatch);
+gboolean    ctk_color_swatch_get_selectable   (CtkColorSwatch *swatch);
 
 G_END_DECLS
 

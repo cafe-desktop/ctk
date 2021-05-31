@@ -27,12 +27,12 @@
 
 #include <ctk/ctk.h>
 
-typedef struct _GtkTextBTreeNode GtkTextBTreeNode;
+typedef struct _CtkTextBTreeNode CtkTextBTreeNode;
 
 
-struct _GtkTextTagPrivate
+struct _CtkTextTagPrivate
 {
-  GtkTextTagTable *table;
+  CtkTextTagTable *table;
 
   char *name;           /* Name of this tag.  This field is actually
                          * a pointer to the key from the entry in
@@ -50,7 +50,7 @@ struct _GtkTextTagPrivate
    * defaults if no tag specifies an override.
    */
 
-  GtkTextAttributes *values;
+  CtkTextAttributes *values;
 
   /* Flags for whether a given value is set; if a value is unset, then
    * this tag does not affect it.
@@ -88,13 +88,13 @@ struct _GtkTextTagPrivate
  * the defaults with settings in the given tags, which should be sorted in
  * ascending order of priority
 */
-void _ctk_text_attributes_fill_from_tags   (GtkTextAttributes   *values,
-                                            GtkTextTag         **tags,
+void _ctk_text_attributes_fill_from_tags   (CtkTextAttributes   *values,
+                                            CtkTextTag         **tags,
                                             guint                n_tags);
-void _ctk_text_tag_array_sort              (GtkTextTag         **tag_array_p,
+void _ctk_text_tag_array_sort              (CtkTextTag         **tag_array_p,
                                             guint                len);
 
-gboolean _ctk_text_tag_affects_size               (GtkTextTag *tag);
-gboolean _ctk_text_tag_affects_nonsize_appearance (GtkTextTag *tag);
+gboolean _ctk_text_tag_affects_size               (CtkTextTag *tag);
+gboolean _ctk_text_tag_affects_nonsize_appearance (CtkTextTag *tag);
 
 #endif

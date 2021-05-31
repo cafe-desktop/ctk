@@ -30,26 +30,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_EVENT_CONTROLLER_SCROLL         (ctk_event_controller_scroll_get_type ())
-#define CTK_EVENT_CONTROLLER_SCROLL(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_EVENT_CONTROLLER_SCROLL, GtkEventControllerScroll))
-#define CTK_EVENT_CONTROLLER_SCROLL_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_EVENT_CONTROLLER_SCROLL, GtkEventControllerScrollClass))
+#define CTK_EVENT_CONTROLLER_SCROLL(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_EVENT_CONTROLLER_SCROLL, CtkEventControllerScroll))
+#define CTK_EVENT_CONTROLLER_SCROLL_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_EVENT_CONTROLLER_SCROLL, CtkEventControllerScrollClass))
 #define CTK_IS_EVENT_CONTROLLER_SCROLL(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_EVENT_CONTROLLER_SCROLL))
 #define CTK_IS_EVENT_CONTROLLER_SCROLL_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), CTK_TYPE_EVENT_CONTROLLER_SCROLL))
-#define CTK_EVENT_CONTROLLER_SCROLL_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_EVENT_CONTROLLER_SCROLL, GtkEventControllerScrollClass))
+#define CTK_EVENT_CONTROLLER_SCROLL_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_EVENT_CONTROLLER_SCROLL, CtkEventControllerScrollClass))
 
-typedef struct _GtkEventControllerScroll GtkEventControllerScroll;
-typedef struct _GtkEventControllerScrollClass GtkEventControllerScrollClass;
+typedef struct _CtkEventControllerScroll CtkEventControllerScroll;
+typedef struct _CtkEventControllerScrollClass CtkEventControllerScrollClass;
 
 /**
- * GtkEventControllerScrollFlags:
+ * CtkEventControllerScrollFlags:
  * @CTK_EVENT_CONTROLLER_SCROLL_NONE: Don't emit scroll.
  * @CTK_EVENT_CONTROLLER_SCROLL_VERTICAL: Emit scroll with vertical deltas.
  * @CTK_EVENT_CONTROLLER_SCROLL_HORIZONTAL: Emit scroll with horizontal deltas.
  * @CTK_EVENT_CONTROLLER_SCROLL_DISCRETE: Only emit deltas that are multiples of 1.
- * @CTK_EVENT_CONTROLLER_SCROLL_KINETIC: Emit #GtkEventControllerScroll::decelerate
+ * @CTK_EVENT_CONTROLLER_SCROLL_KINETIC: Emit #CtkEventControllerScroll::decelerate
  *   after continuous scroll finishes.
  * @CTK_EVENT_CONTROLLER_SCROLL_BOTH_AXES: Emit scroll on both axes.
  *
- * Describes the behavior of a #GtkEventControllerScroll.
+ * Describes the behavior of a #CtkEventControllerScroll.
  *
  * Since: 3.24
  **/
@@ -60,20 +60,20 @@ typedef enum {
   CTK_EVENT_CONTROLLER_SCROLL_DISCRETE   = 1 << 2,
   CTK_EVENT_CONTROLLER_SCROLL_KINETIC    = 1 << 3,
   CTK_EVENT_CONTROLLER_SCROLL_BOTH_AXES  = (CTK_EVENT_CONTROLLER_SCROLL_VERTICAL | CTK_EVENT_CONTROLLER_SCROLL_HORIZONTAL),
-} GtkEventControllerScrollFlags;
+} CtkEventControllerScrollFlags;
 
 GDK_AVAILABLE_IN_3_24
 GType               ctk_event_controller_scroll_get_type  (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_24
-GtkEventController *ctk_event_controller_scroll_new (GtkWidget                     *widget,
-                                                     GtkEventControllerScrollFlags  flags);
+CtkEventController *ctk_event_controller_scroll_new (CtkWidget                     *widget,
+                                                     CtkEventControllerScrollFlags  flags);
 GDK_AVAILABLE_IN_3_24
-void                ctk_event_controller_scroll_set_flags (GtkEventControllerScroll      *controller,
-                                                           GtkEventControllerScrollFlags  flags);
+void                ctk_event_controller_scroll_set_flags (CtkEventControllerScroll      *controller,
+                                                           CtkEventControllerScrollFlags  flags);
 GDK_AVAILABLE_IN_3_24
-GtkEventControllerScrollFlags
-                    ctk_event_controller_scroll_get_flags (GtkEventControllerScroll      *controller);
+CtkEventControllerScrollFlags
+                    ctk_event_controller_scroll_get_flags (CtkEventControllerScroll      *controller);
 
 G_END_DECLS
 

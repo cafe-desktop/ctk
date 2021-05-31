@@ -28,31 +28,31 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_APPLICATION_ACCELS (ctk_application_accels_get_type ())
-G_DECLARE_FINAL_TYPE (GtkApplicationAccels, ctk_application_accels,
+G_DECLARE_FINAL_TYPE (CtkApplicationAccels, ctk_application_accels,
                       GTK, APPLICATION_ACCELS,
                       GObject)
 
-GtkApplicationAccels *
+CtkApplicationAccels *
                 ctk_application_accels_new                          (void);
 
-void            ctk_application_accels_set_accels_for_action        (GtkApplicationAccels *accels,
+void            ctk_application_accels_set_accels_for_action        (CtkApplicationAccels *accels,
                                                                      const gchar          *detailed_action_name,
                                                                      const gchar * const  *accelerators);
 
-gchar **        ctk_application_accels_get_accels_for_action        (GtkApplicationAccels *accels,
+gchar **        ctk_application_accels_get_accels_for_action        (CtkApplicationAccels *accels,
                                                                      const gchar          *detailed_action_name);
 
-gchar **        ctk_application_accels_get_actions_for_accel        (GtkApplicationAccels *accels,
+gchar **        ctk_application_accels_get_actions_for_accel        (CtkApplicationAccels *accels,
                                                                      const gchar          *accel);
 
-gchar **        ctk_application_accels_list_action_descriptions     (GtkApplicationAccels *accels);
+gchar **        ctk_application_accels_list_action_descriptions     (CtkApplicationAccels *accels);
 
-void            ctk_application_accels_foreach_key                  (GtkApplicationAccels     *accels,
-                                                                     GtkWindow                *window,
-                                                                     GtkWindowKeysForeachFunc  callback,
+void            ctk_application_accels_foreach_key                  (CtkApplicationAccels     *accels,
+                                                                     CtkWindow                *window,
+                                                                     CtkWindowKeysForeachFunc  callback,
                                                                      gpointer                  user_data);
 
-gboolean        ctk_application_accels_activate                     (GtkApplicationAccels *accels,
+gboolean        ctk_application_accels_activate                     (CtkApplicationAccels *accels,
                                                                      GActionGroup         *action_group,
                                                                      guint                 key,
                                                                      GdkModifierType       modifier);

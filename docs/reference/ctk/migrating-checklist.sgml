@@ -14,7 +14,7 @@
   </para>
 
   <section id="checklist-popup-menu">
-    <title>Implement GtkWidget::popup_menu</title>
+    <title>Implement CtkWidget::popup_menu</title>
 
     <formalpara>
       <title>Why</title>
@@ -26,7 +26,7 @@
     </formalpara>
 
     <para>
-      The #GtkWidget::popup-menu signal instructs the widget for which
+      The #CtkWidget::popup-menu signal instructs the widget for which
       it is emitted to create a context-sensitive popup menu. By default,
       the <link linkend="ctk-bindings-install">key binding mechanism</link> is set to
       emit this signal when the
@@ -48,9 +48,9 @@
 
         <programlisting id="do_popup_menu">
 static void
-do_popup_menu (GtkWidget *my_widget, GdkEventButton *event)
+do_popup_menu (CtkWidget *my_widget, GdkEventButton *event)
 {
-  GtkWidget *menu;
+  CtkWidget *menu;
   int button, event_time;
 
   menu = ctk_menu_new (<!-- -->);
@@ -79,13 +79,13 @@ do_popup_menu (GtkWidget *my_widget, GdkEventButton *event)
 
       <listitem>
         <para>
-          In your #GtkWidget::button-press-event handler, call this function
+          In your #CtkWidget::button-press-event handler, call this function
           when you need to pop up a menu:
         </para>
 
         <programlisting>
 static gboolean
-my_widget_button_press_event_handler (GtkWidget *widget, GdkEventButton *event)
+my_widget_button_press_event_handler (CtkWidget *widget, GdkEventButton *event)
 {
   /* Ignore double-clicks and triple-clicks */
   if (gdk_event_triggers_context_menu ((GdkEvent *) event) &amp;&amp;
@@ -102,12 +102,12 @@ my_widget_button_press_event_handler (GtkWidget *widget, GdkEventButton *event)
 
       <listitem>
         <para>
-          Implement a handler for the #GtkWidget::popup-menu signal:
+          Implement a handler for the #CtkWidget::popup-menu signal:
         </para>
 
         <programlisting>
 static gboolean
-my_widget_popup_menu_handler (GtkWidget *widget)
+my_widget_popup_menu_handler (CtkWidget *widget)
 {
   do_popup_menu (widget, NULL);
   return TRUE;
@@ -127,11 +127,11 @@ my_widget_popup_menu_handler (GtkWidget *widget)
         mouse cursor may not be near the widget at all.  In the <link
         linkend="do_popup_menu">example above</link>, you may want to
         provide your own <link
-        linkend="GtkMenuPositionFunc">menu-positioning function</link>
+        linkend="CtkMenuPositionFunc">menu-positioning function</link>
         in the case where the <parameter>event</parameter> is
         %NULL.  This function should compute the desired position for
         a menu when it is invoked through the keyboard.  For example,
-        #GtkEntry aligns the top edge of its popup menu with the bottom
+        #CtkEntry aligns the top edge of its popup menu with the bottom
         edge of the entry.
       </para>
     </note>
@@ -189,7 +189,7 @@ my_widget_popup_menu_handler (GtkWidget *widget)
 
     <programlisting id="gdkregion-get-rectangles">
 static gboolean
-my_widget_expose_event_handler (GtkWidget *widget, GdkEventExpose *event)
+my_widget_expose_event_handler (CtkWidget *widget, GdkEventExpose *event)
 {
   GdkRectangle *rects;
   int n_rects;
@@ -230,7 +230,7 @@ my_widget_expose_event_handler (GtkWidget *widget, GdkEventExpose *event)
       indicates the modifier state at the time the key was pressed.
       Modifiers are keys like <keycap>Control</keycap> and
       <keycap>NumLock</keycap>.  When implementing a
-      #GtkWidget::key-press-event handler, you should use
+      #CtkWidget::key-press-event handler, you should use
       ctk_accelerator_get_default_mod_mask() to
       test against modifier keys.  This function returns a bit mask
       which encompasses all the modifiers which the user may be
@@ -264,7 +264,7 @@ my_widget_expose_event_handler (GtkWidget *widget, GdkEventExpose *event)
 
     <programlisting id="default-mod-mask">
 static gboolean
-my_widget_key_press_event_handler (GtkWidget *widget, GdkEventKey *event)
+my_widget_key_press_event_handler (CtkWidget *widget, GdkEventKey *event)
 {
   GdkModifierType modifiers;
 
@@ -297,7 +297,7 @@ my_widget_key_press_event_handler (GtkWidget *widget, GdkEventKey *event)
       Named icons can be used for window icons (see ctk_window_set_icon_name())
       and images (see ctk_image_set_from_icon_name()). You can also use named icons
       for drag-and-drop (see ctk_drag_source_set_icon_name()) and in treeview
-      cells (see the #GtkCellRendererPixbuf:icon-name property).
+      cells (see the #CtkCellRendererPixbuf:icon-name property).
     </para>
   </section>
 </chapter>

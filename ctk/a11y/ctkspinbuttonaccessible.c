@@ -21,30 +21,30 @@
 #include <ctk/ctk.h>
 #include "ctkspinbuttonaccessible.h"
 
-struct _GtkSpinButtonAccessiblePrivate
+struct _CtkSpinButtonAccessiblePrivate
 {
-  GtkAdjustment *adjustment;
+  CtkAdjustment *adjustment;
 };
 
 static void atk_value_interface_init (AtkValueIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkSpinButtonAccessible, ctk_spin_button_accessible, CTK_TYPE_ENTRY_ACCESSIBLE,
-                         G_ADD_PRIVATE (GtkSpinButtonAccessible)
+G_DEFINE_TYPE_WITH_CODE (CtkSpinButtonAccessible, ctk_spin_button_accessible, CTK_TYPE_ENTRY_ACCESSIBLE,
+                         G_ADD_PRIVATE (CtkSpinButtonAccessible)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_VALUE, atk_value_interface_init))
 
 static void
-ctk_spin_button_accessible_value_changed (GtkAdjustment *adjustment,
+ctk_spin_button_accessible_value_changed (CtkAdjustment *adjustment,
                                           gpointer       data)
 {
   g_object_notify (G_OBJECT (data), "accessible-value");
 }
 
 static void
-ctk_spin_button_accessible_widget_set (GtkAccessible *accessible)
+ctk_spin_button_accessible_widget_set (CtkAccessible *accessible)
 {
-  GtkSpinButtonAccessiblePrivate *priv = CTK_SPIN_BUTTON_ACCESSIBLE (accessible)->priv;
-  GtkWidget *spin;
-  GtkAdjustment *adj;
+  CtkSpinButtonAccessiblePrivate *priv = CTK_SPIN_BUTTON_ACCESSIBLE (accessible)->priv;
+  CtkWidget *spin;
+  CtkAdjustment *adj;
 
   spin = ctk_accessible_get_widget (accessible);
   adj = ctk_spin_button_get_adjustment (CTK_SPIN_BUTTON (spin));
@@ -59,9 +59,9 @@ ctk_spin_button_accessible_widget_set (GtkAccessible *accessible)
 }
 
 static void
-ctk_spin_button_accessible_widget_unset (GtkAccessible *accessible)
+ctk_spin_button_accessible_widget_unset (CtkAccessible *accessible)
 {
-  GtkSpinButtonAccessiblePrivate *priv = CTK_SPIN_BUTTON_ACCESSIBLE (accessible)->priv;
+  CtkSpinButtonAccessiblePrivate *priv = CTK_SPIN_BUTTON_ACCESSIBLE (accessible)->priv;
 
   if (priv->adjustment)
     {
@@ -85,7 +85,7 @@ static void
 ctk_spin_button_accessible_notify_ctk (GObject    *obj,
                                        GParamSpec *pspec)
 {
-  GtkWidget *widget = CTK_WIDGET (obj);
+  CtkWidget *widget = CTK_WIDGET (obj);
   AtkObject *spin;
 
   if (strcmp (pspec->name, "adjustment") == 0)
@@ -100,11 +100,11 @@ ctk_spin_button_accessible_notify_ctk (GObject    *obj,
 }
 
 static void
-ctk_spin_button_accessible_class_init (GtkSpinButtonAccessibleClass *klass)
+ctk_spin_button_accessible_class_init (CtkSpinButtonAccessibleClass *klass)
 {
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
-  GtkAccessibleClass *accessible_class = (GtkAccessibleClass*)klass;
-  GtkWidgetAccessibleClass *widget_class = (GtkWidgetAccessibleClass*)klass;
+  CtkAccessibleClass *accessible_class = (CtkAccessibleClass*)klass;
+  CtkWidgetAccessibleClass *widget_class = (CtkWidgetAccessibleClass*)klass;
 
   class->initialize = ctk_spin_button_accessible_initialize;
 
@@ -115,7 +115,7 @@ ctk_spin_button_accessible_class_init (GtkSpinButtonAccessibleClass *klass)
 }
 
 static void
-ctk_spin_button_accessible_init (GtkSpinButtonAccessible *button)
+ctk_spin_button_accessible_init (CtkSpinButtonAccessible *button)
 {
   button->priv = ctk_spin_button_accessible_get_instance_private (button);
 }
@@ -124,8 +124,8 @@ static void
 ctk_spin_button_accessible_get_current_value (AtkValue *obj,
                                               GValue   *value)
 {
-  GtkWidget *widget;
-  GtkAdjustment *adjustment;
+  CtkWidget *widget;
+  CtkAdjustment *adjustment;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   adjustment = ctk_spin_button_get_adjustment (CTK_SPIN_BUTTON (widget));
@@ -141,8 +141,8 @@ static void
 ctk_spin_button_accessible_get_maximum_value (AtkValue *obj,
                                               GValue   *value)
 {
-  GtkWidget *widget;
-  GtkAdjustment *adjustment;
+  CtkWidget *widget;
+  CtkAdjustment *adjustment;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   adjustment = ctk_spin_button_get_adjustment (CTK_SPIN_BUTTON (widget));
@@ -158,8 +158,8 @@ static void
 ctk_spin_button_accessible_get_minimum_value (AtkValue *obj,
                                               GValue   *value)
 {
-  GtkWidget *widget;
-  GtkAdjustment *adjustment;
+  CtkWidget *widget;
+  CtkAdjustment *adjustment;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   adjustment = ctk_spin_button_get_adjustment (CTK_SPIN_BUTTON (widget));
@@ -175,8 +175,8 @@ static void
 ctk_spin_button_accessible_get_minimum_increment (AtkValue *obj,
                                                   GValue   *value)
 {
-  GtkWidget *widget;
-  GtkAdjustment *adjustment;
+  CtkWidget *widget;
+  CtkAdjustment *adjustment;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   adjustment = ctk_spin_button_get_adjustment (CTK_SPIN_BUTTON (widget));
@@ -192,8 +192,8 @@ static gboolean
 ctk_spin_button_accessible_set_current_value (AtkValue     *obj,
                                               const GValue *value)
 {
-  GtkWidget *widget;
-  GtkAdjustment *adjustment;
+  CtkWidget *widget;
+  CtkAdjustment *adjustment;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   adjustment = ctk_spin_button_get_adjustment (CTK_SPIN_BUTTON (widget));
@@ -210,8 +210,8 @@ ctk_spin_button_accessible_get_value_and_text (AtkValue  *obj,
                                          gdouble   *value,
                                          gchar    **text)
 {
-  GtkWidget *widget;
-  GtkAdjustment *adjustment;
+  CtkWidget *widget;
+  CtkAdjustment *adjustment;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   adjustment = ctk_spin_button_get_adjustment (CTK_SPIN_BUTTON (widget));
@@ -225,8 +225,8 @@ ctk_spin_button_accessible_get_value_and_text (AtkValue  *obj,
 static AtkRange *
 ctk_spin_button_accessible_get_range (AtkValue *obj)
 {
-  GtkWidget *widget;
-  GtkAdjustment *adjustment;
+  CtkWidget *widget;
+  CtkAdjustment *adjustment;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   adjustment = ctk_spin_button_get_adjustment (CTK_SPIN_BUTTON (widget));
@@ -242,8 +242,8 @@ static void
 ctk_spin_button_accessible_set_value (AtkValue      *obj,
                                 const gdouble  value)
 {
-  GtkWidget *widget;
-  GtkAdjustment *adjustment;
+  CtkWidget *widget;
+  CtkAdjustment *adjustment;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   adjustment = ctk_spin_button_get_adjustment (CTK_SPIN_BUTTON (widget));
@@ -256,8 +256,8 @@ ctk_spin_button_accessible_set_value (AtkValue      *obj,
 static gdouble
 ctk_spin_button_accessible_get_increment (AtkValue *obj)
 {
-  GtkWidget *widget;
-  GtkAdjustment *adjustment;
+  CtkWidget *widget;
+  CtkAdjustment *adjustment;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   adjustment = ctk_spin_button_get_adjustment (CTK_SPIN_BUTTON (widget));

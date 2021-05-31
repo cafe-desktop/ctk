@@ -19,11 +19,11 @@
 #include <gio/gio.h>
 
 static void
-drag_begin (GtkWidget      *widget,
+drag_begin (CtkWidget      *widget,
 	    GdkDragContext *context,
 	    gpointer        data)
 {
-  GtkWidget *image = CTK_WIDGET (data);
+  CtkWidget *image = CTK_WIDGET (data);
 
   GdkPixbuf *pixbuf = ctk_image_get_pixbuf (CTK_IMAGE (image));
 
@@ -31,14 +31,14 @@ drag_begin (GtkWidget      *widget,
 }
 
 void  
-drag_data_get  (GtkWidget        *widget,
+drag_data_get  (CtkWidget        *widget,
 		GdkDragContext   *context,
-		GtkSelectionData *selection_data,
+		CtkSelectionData *selection_data,
 		guint             info,
 		guint             time,
 		gpointer          data)
 {
-  GtkWidget *image = CTK_WIDGET (data);
+  CtkWidget *image = CTK_WIDGET (data);
 
   GdkPixbuf *pixbuf = ctk_image_get_pixbuf (CTK_IMAGE (image));
 
@@ -46,16 +46,16 @@ drag_data_get  (GtkWidget        *widget,
 }
 
 static void
-drag_data_received (GtkWidget        *widget,
+drag_data_received (CtkWidget        *widget,
 		    GdkDragContext   *context,
 		    gint              x,
 		    gint              y,
-		    GtkSelectionData *selection_data,
+		    CtkSelectionData *selection_data,
 		    guint             info,
 		    guint32           time,
 		    gpointer          data)
 {
-  GtkWidget *image = CTK_WIDGET (data);
+  CtkWidget *image = CTK_WIDGET (data);
 
   GdkPixbuf *pixbuf;
 
@@ -76,7 +76,7 @@ idle_func (gpointer data)
 }
 
 static gboolean
-anim_image_draw (GtkWidget *widget,
+anim_image_draw (CtkWidget *widget,
                  cairo_t   *cr,
                  gpointer   data)
 {
@@ -94,12 +94,12 @@ anim_image_draw (GtkWidget *widget,
 int
 main (int argc, char **argv)
 {
-  GtkWidget *window, *grid;
-  GtkWidget *label, *image, *box;
-  GtkIconTheme *theme;
+  CtkWidget *window, *grid;
+  CtkWidget *label, *image, *box;
+  CtkIconTheme *theme;
   GdkPixbuf *pixbuf;
-  GtkIconSet *iconset;
-  GtkIconSource *iconsource;
+  CtkIconSet *iconset;
+  CtkIconSource *iconsource;
   gchar *icon_name = "gnome-terminal";
   gchar *anim_filename = NULL;
   GIcon *icon;

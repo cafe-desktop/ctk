@@ -23,19 +23,19 @@
 
 #include <ctk/ctk.h>
 
-static GtkWidget*
+static CtkWidget*
 get_test_page (const gchar *text)
 {
   return ctk_label_new (text);
 }
 
 typedef struct {
-  GtkAssistant *assistant;
-  GtkWidget    *page;
+  CtkAssistant *assistant;
+  CtkWidget    *page;
 } PageData;
 
 static void
-complete_cb (GtkWidget *check, 
+complete_cb (CtkWidget *check, 
 	     gpointer   data)
 {
   PageData *pdata = data;
@@ -48,14 +48,14 @@ complete_cb (GtkWidget *check,
 				   complete);
 }
 	     
-static GtkWidget *
-add_completion_test_page (GtkWidget   *assistant,
+static CtkWidget *
+add_completion_test_page (CtkWidget   *assistant,
 			  const gchar *text, 
 			  gboolean     visible,
 			  gboolean     complete)
 {
-  GtkWidget *page;
-  GtkWidget *check;
+  CtkWidget *page;
+  CtkWidget *check;
   PageData *pdata;
 
   page = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
@@ -84,7 +84,7 @@ add_completion_test_page (GtkWidget   *assistant,
 }
 
 static void
-cancel_callback (GtkWidget *widget)
+cancel_callback (CtkWidget *widget)
 {
   g_print ("cancel\n");
 
@@ -92,7 +92,7 @@ cancel_callback (GtkWidget *widget)
 }
 
 static void
-close_callback (GtkWidget *widget)
+close_callback (CtkWidget *widget)
 {
   g_print ("close\n");
 
@@ -100,15 +100,15 @@ close_callback (GtkWidget *widget)
 }
 
 static void
-apply_callback (GtkWidget *widget)
+apply_callback (CtkWidget *widget)
 {
   g_print ("apply\n");
 }
 
 static gboolean
-progress_timeout (GtkWidget *assistant)
+progress_timeout (CtkWidget *assistant)
 {
-  GtkWidget *progress;
+  CtkWidget *progress;
   gint current_page;
   gdouble value;
 
@@ -129,7 +129,7 @@ progress_timeout (GtkWidget *assistant)
 }
 
 static void
-prepare_callback (GtkWidget *widget, GtkWidget *page)
+prepare_callback (CtkWidget *widget, CtkWidget *page)
 {
   if (CTK_IS_LABEL (page))
     g_print ("prepare: %s\n", ctk_label_get_text (CTK_LABEL (page)));
@@ -144,13 +144,13 @@ prepare_callback (GtkWidget *widget, GtkWidget *page)
 }
 
 static void
-create_simple_assistant (GtkWidget *widget)
+create_simple_assistant (CtkWidget *widget)
 {
-  static GtkWidget *assistant = NULL;
+  static CtkWidget *assistant = NULL;
 
   if (!assistant)
     {
-      GtkWidget *page;
+      CtkWidget *page;
 
       assistant = ctk_assistant_new ();
       ctk_window_set_default_size (CTK_WINDOW (assistant), 400, 300);
@@ -188,13 +188,13 @@ create_simple_assistant (GtkWidget *widget)
 }
 
 static void
-create_anonymous_assistant (GtkWidget *widget)
+create_anonymous_assistant (CtkWidget *widget)
 {
-  static GtkWidget *assistant = NULL;
+  static CtkWidget *assistant = NULL;
 
   if (!assistant)
     {
-      GtkWidget *page;
+      CtkWidget *page;
 
       assistant = ctk_assistant_new ();
       ctk_window_set_default_size (CTK_WINDOW (assistant), 400, 300);
@@ -230,10 +230,10 @@ create_anonymous_assistant (GtkWidget *widget)
 }
 
 static void
-visible_cb (GtkWidget *check, 
+visible_cb (CtkWidget *check, 
 	    gpointer   data)
 {
-  GtkWidget *page = data;
+  CtkWidget *page = data;
   gboolean visible;
 
   visible = ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (check));
@@ -242,13 +242,13 @@ visible_cb (GtkWidget *check,
 }
 
 static void
-create_generous_assistant (GtkWidget *widget)
+create_generous_assistant (CtkWidget *widget)
 {
-  static GtkWidget *assistant = NULL;
+  static CtkWidget *assistant = NULL;
 
   if (!assistant)
     {
-      GtkWidget *page, *next, *check;
+      CtkWidget *page, *next, *check;
       PageData  *pdata;
 
       assistant = ctk_assistant_new ();
@@ -328,7 +328,7 @@ create_generous_assistant (GtkWidget *widget)
 static gchar selected_branch = 'A';
 
 static void
-select_branch (GtkWidget *widget, gchar branch)
+select_branch (CtkWidget *widget, gchar branch)
 {
   selected_branch = branch;
 }
@@ -352,13 +352,13 @@ nonlinear_assistant_forward_page (gint current_page, gpointer data)
 }
 
 static void
-create_nonlinear_assistant (GtkWidget *widget)
+create_nonlinear_assistant (CtkWidget *widget)
 {
-  static GtkWidget *assistant = NULL;
+  static CtkWidget *assistant = NULL;
 
   if (!assistant)
     {
-      GtkWidget *page, *button;
+      CtkWidget *page, *button;
 
       assistant = ctk_assistant_new ();
       ctk_window_set_default_size (CTK_WINDOW (assistant), 400, 300);
@@ -435,10 +435,10 @@ looping_assistant_forward_page (gint current_page, gpointer data)
       return 3;
     case 3:
       {
-	GtkAssistant *assistant;
-	GtkWidget *page;
+	CtkAssistant *assistant;
+	CtkWidget *page;
 
-	assistant = (GtkAssistant*) data;
+	assistant = (CtkAssistant*) data;
 	page = ctk_assistant_get_nth_page (assistant, current_page);
 
 	if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (page)))
@@ -453,13 +453,13 @@ looping_assistant_forward_page (gint current_page, gpointer data)
 }
 
 static void
-create_looping_assistant (GtkWidget *widget)
+create_looping_assistant (CtkWidget *widget)
 {
-  static GtkWidget *assistant = NULL;
+  static CtkWidget *assistant = NULL;
 
   if (!assistant)
     {
-      GtkWidget *page;
+      CtkWidget *page;
 
       assistant = ctk_assistant_new ();
       ctk_window_set_default_size (CTK_WINDOW (assistant), 400, 300);
@@ -520,9 +520,9 @@ create_looping_assistant (GtkWidget *widget)
 }
 
 static void
-toggle_invisible (GtkButton *button, GtkAssistant *assistant)
+toggle_invisible (CtkButton *button, CtkAssistant *assistant)
 {
-  GtkWidget *page;
+  CtkWidget *page;
 
   page = ctk_assistant_get_nth_page (assistant, 1);
 
@@ -530,13 +530,13 @@ toggle_invisible (GtkButton *button, GtkAssistant *assistant)
 }
 
 static void
-create_full_featured_assistant (GtkWidget *widget)
+create_full_featured_assistant (CtkWidget *widget)
 {
-  static GtkWidget *assistant = NULL;
+  static CtkWidget *assistant = NULL;
 
   if (!assistant)
     {
-      GtkWidget *page, *button;
+      CtkWidget *page, *button;
 
       assistant = ctk_assistant_new ();
       ctk_window_set_default_size (CTK_WINDOW (assistant), 400, 300);
@@ -593,9 +593,9 @@ create_full_featured_assistant (GtkWidget *widget)
 }
 
 static void
-flip_pages (GtkButton *button, GtkAssistant *assistant)
+flip_pages (CtkButton *button, CtkAssistant *assistant)
 {
-  GtkWidget *page;
+  CtkWidget *page;
   gchar *title;
 
   page = ctk_assistant_get_nth_page (assistant, 1);
@@ -617,13 +617,13 @@ flip_pages (GtkButton *button, GtkAssistant *assistant)
 
 
 static void
-create_page_flipping_assistant (GtkWidget *widget)
+create_page_flipping_assistant (CtkWidget *widget)
 {
-  static GtkWidget *assistant = NULL;
+  static CtkWidget *assistant = NULL;
 
   if (!assistant)
     {
-      GtkWidget *page, *button;
+      CtkWidget *page, *button;
 
       assistant = ctk_assistant_new ();
       ctk_window_set_default_size (CTK_WINDOW (assistant), 400, 300);
@@ -686,7 +686,7 @@ create_page_flipping_assistant (GtkWidget *widget)
 
 struct {
   gchar *text;
-  void  (*func) (GtkWidget *widget);
+  void  (*func) (CtkWidget *widget);
 } buttons[] =
   {
     { "simple assistant",        create_simple_assistant },
@@ -701,7 +701,7 @@ struct {
 int
 main (int argc, gchar *argv[])
 {
-  GtkWidget *window, *box, *button;
+  CtkWidget *window, *box, *button;
   gint i;
 
   ctk_init (&argc, &argv);

@@ -21,25 +21,25 @@
 #include <ctk/ctkscrolledwindow.h>
 
 #define CTK_TYPE_INSPECTOR_GENERAL            (ctk_inspector_general_get_type())
-#define CTK_INSPECTOR_GENERAL(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_GENERAL, GtkInspectorGeneral))
-#define CTK_INSPECTOR_GENERAL_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_GENERAL, GtkInspectorGeneralClass))
+#define CTK_INSPECTOR_GENERAL(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_GENERAL, CtkInspectorGeneral))
+#define CTK_INSPECTOR_GENERAL_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_GENERAL, CtkInspectorGeneralClass))
 #define CTK_INSPECTOR_IS_GENERAL(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), CTK_TYPE_INSPECTOR_GENERAL))
 #define CTK_INSPECTOR_IS_GENERAL_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), CTK_TYPE_INSPECTOR_GENERAL))
-#define CTK_INSPECTOR_GENERAL_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_GENERAL, GtkInspectorGeneralClass))
+#define CTK_INSPECTOR_GENERAL_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_GENERAL, CtkInspectorGeneralClass))
 
 
-typedef struct _GtkInspectorGeneralPrivate GtkInspectorGeneralPrivate;
+typedef struct _CtkInspectorGeneralPrivate CtkInspectorGeneralPrivate;
 
-typedef struct _GtkInspectorGeneral
+typedef struct _CtkInspectorGeneral
 {
-  GtkScrolledWindow parent;
-  GtkInspectorGeneralPrivate *priv;
-} GtkInspectorGeneral;
+  CtkScrolledWindow parent;
+  CtkInspectorGeneralPrivate *priv;
+} CtkInspectorGeneral;
 
-typedef struct _GtkInspectorGeneralClass
+typedef struct _CtkInspectorGeneralClass
 {
-  GtkScrolledWindowClass parent;
-} GtkInspectorGeneralClass;
+  CtkScrolledWindowClass parent;
+} CtkInspectorGeneralClass;
 
 G_BEGIN_DECLS
 

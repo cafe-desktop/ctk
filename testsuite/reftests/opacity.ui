@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkBox" id="box1">
+      <object class="CtkBox" id="box1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="name">alpha</property>
         <child>
-          <object class="GtkBox" id="box2">
+          <object class="CtkBox" id="box2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
             <property name="name">alpha</property>
             <child>
-              <object class="GtkBox" id="box3">
+              <object class="CtkBox" id="box3">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
 		<property name="name">alpha</property>
                 <child>
-                  <object class="GtkButton" id="button1">
+                  <object class="CtkButton" id="button1">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
@@ -49,18 +49,18 @@
           </packing>
         </child>
         <child>
-          <object class="GtkEventBox" id="box4">
+          <object class="CtkEventBox" id="box4">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="name">alpha</property>
             <child>
-              <object class="GtkBox" id="box5">
+              <object class="CtkBox" id="box5">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
 		<property name="name">alpha</property>
                 <child>
-                  <object class="GtkButton" id="button2">
+                  <object class="CtkButton" id="button2">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>

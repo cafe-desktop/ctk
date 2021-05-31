@@ -21,7 +21,7 @@
 static gint num_windows = 0;
 
 static gboolean
-on_delete_event (GtkWidget *w,
+on_delete_event (CtkWidget *w,
                  GdkEvent *event,
                  gpointer user_data)
 {
@@ -33,9 +33,9 @@ on_delete_event (GtkWidget *w,
 }
 
 static void
-prepare_window_for_orientation (GtkOrientation orientation)
+prepare_window_for_orientation (CtkOrientation orientation)
 {
-  GtkWidget *window, *mainbox, *wrap_button;
+  CtkWidget *window, *mainbox, *wrap_button;
   int max;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -49,14 +49,14 @@ prepare_window_for_orientation (GtkOrientation orientation)
 
   for (max = 9; max <= 999999999; max = max * 10 + 9)
     {
-      GtkAdjustment *adj = ctk_adjustment_new (max,
+      CtkAdjustment *adj = ctk_adjustment_new (max,
                                                1, max,
                                                1,
                                                (max + 1) / 10,
                                                0.0);
 
-      GtkWidget *spin = ctk_spin_button_new (adj, 1.0, 0);
-      GtkWidget *hbox;
+      CtkWidget *spin = ctk_spin_button_new (adj, 1.0, 0);
+      CtkWidget *hbox;
       ctk_orientable_set_orientation (CTK_ORIENTABLE (spin), orientation);
       ctk_widget_set_halign (CTK_WIDGET (spin), CTK_ALIGN_CENTER);
 

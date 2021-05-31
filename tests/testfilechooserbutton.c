@@ -42,7 +42,7 @@ static GOptionEntry entries[] = {
 static gchar *ctk_src_dir = NULL;
 
 static gboolean
-delete_event_cb (GtkWidget *editor,
+delete_event_cb (CtkWidget *editor,
 		 gint       response,
 		 gpointer   user_data)
 {
@@ -53,7 +53,7 @@ delete_event_cb (GtkWidget *editor,
 
 
 static void
-print_selected_path_clicked_cb (GtkWidget *button,
+print_selected_path_clicked_cb (CtkWidget *button,
 				gpointer   user_data)
 {
   gchar *folder, *filename;
@@ -67,7 +67,7 @@ print_selected_path_clicked_cb (GtkWidget *button,
 }
 
 static void
-add_pwds_parent_as_shortcut_clicked_cb (GtkWidget *button,
+add_pwds_parent_as_shortcut_clicked_cb (CtkWidget *button,
 					gpointer   user_data)
 {
   GError *err = NULL;
@@ -85,7 +85,7 @@ add_pwds_parent_as_shortcut_clicked_cb (GtkWidget *button,
 }
 
 static void
-del_pwds_parent_as_shortcut_clicked_cb (GtkWidget *button,
+del_pwds_parent_as_shortcut_clicked_cb (CtkWidget *button,
 					gpointer   user_data)
 {
   GError *err = NULL;
@@ -103,23 +103,23 @@ del_pwds_parent_as_shortcut_clicked_cb (GtkWidget *button,
 }
 
 static void
-unselect_all_clicked_cb (GtkWidget *button,
+unselect_all_clicked_cb (CtkWidget *button,
                          gpointer   user_data)
 {
   ctk_file_chooser_unselect_all (user_data);
 }
 
 static void
-tests_button_clicked_cb (GtkButton *real_button,
+tests_button_clicked_cb (CtkButton *real_button,
 			 gpointer   user_data)
 {
-  GtkWidget *tests;
+  CtkWidget *tests;
 
   tests = g_object_get_data (user_data, "tests-dialog");
 
   if (tests == NULL)
     {
-      GtkWidget *box, *button;
+      CtkWidget *box, *button;
 
       tests = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_title (CTK_WINDOW (tests),
@@ -164,7 +164,7 @@ tests_button_clicked_cb (GtkButton *real_button,
 }
 
 static void
-chooser_current_folder_changed_cb (GtkFileChooser *chooser,
+chooser_current_folder_changed_cb (CtkFileChooser *chooser,
 				   gpointer        user_data)
 {
   gchar *folder, *filename;
@@ -178,7 +178,7 @@ chooser_current_folder_changed_cb (GtkFileChooser *chooser,
 }
 
 static void
-chooser_selection_changed_cb (GtkFileChooser *chooser,
+chooser_selection_changed_cb (CtkFileChooser *chooser,
 			      gpointer        user_data)
 {
   gchar *filename;
@@ -190,7 +190,7 @@ chooser_selection_changed_cb (GtkFileChooser *chooser,
 }
 
 static void
-chooser_file_activated_cb (GtkFileChooser *chooser,
+chooser_file_activated_cb (CtkFileChooser *chooser,
 			   gpointer        user_data)
 {
   gchar *folder, *filename;
@@ -204,7 +204,7 @@ chooser_file_activated_cb (GtkFileChooser *chooser,
 }
 
 static void
-chooser_update_preview_cb (GtkFileChooser *chooser,
+chooser_update_preview_cb (CtkFileChooser *chooser,
 			   gpointer        user_data)
 {
   gchar *filename;
@@ -223,13 +223,13 @@ int
 main (int   argc,
       char *argv[])
 {
-  GtkWidget *win, *vbox, *frame, *group_box;
-  GtkWidget *hbox, *label, *chooser, *button;
-  GtkSizeGroup *label_group;
+  CtkWidget *win, *vbox, *frame, *group_box;
+  CtkWidget *hbox, *label, *chooser, *button;
+  CtkSizeGroup *label_group;
   GOptionContext *context;
   gchar *cwd;
 
-  context = g_option_context_new ("- test GtkFileChooserButton widget");
+  context = g_option_context_new ("- test CtkFileChooserButton widget");
   g_option_context_add_main_entries (context, entries, GETTEXT_PACKAGE);
   g_option_context_add_group (context, ctk_get_option_group (TRUE));
   g_option_context_parse (context, &argc, &argv, NULL);
@@ -253,7 +253,7 @@ main (int   argc,
   g_object_set (vbox, "margin", 6, NULL);
   ctk_container_add (CTK_CONTAINER (ctk_dialog_get_content_area (CTK_DIALOG (win))), vbox);
 
-  frame = ctk_frame_new ("<b>GtkFileChooserButton</b>");
+  frame = ctk_frame_new ("<b>CtkFileChooserButton</b>");
   ctk_frame_set_shadow_type (CTK_FRAME (frame), CTK_SHADOW_NONE);
   ctk_label_set_use_markup (CTK_LABEL (ctk_frame_get_label_widget (CTK_FRAME (frame))), TRUE);
   ctk_box_pack_start (CTK_BOX (vbox), frame, FALSE, FALSE, 0);

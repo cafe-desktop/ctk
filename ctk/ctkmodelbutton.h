@@ -30,31 +30,31 @@ G_BEGIN_DECLS
 
 #define CTK_TYPE_MODEL_BUTTON         (ctk_model_button_get_type ())
 #define CTK_MODEL_BUTTON(inst)        (G_TYPE_CHECK_INSTANCE_CAST ((inst),                      \
-                                      CTK_TYPE_MODEL_BUTTON, GtkModelButton))
+                                      CTK_TYPE_MODEL_BUTTON, CtkModelButton))
 #define CTK_IS_MODEL_BUTTON(inst)     (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                      \
                                       CTK_TYPE_MODEL_BUTTON))
 
-typedef struct _GtkModelButton        GtkModelButton;
+typedef struct _CtkModelButton        CtkModelButton;
 
 /**
- * GtkButtonRole:
+ * CtkButtonRole:
  * @CTK_BUTTON_ROLE_NORMAL: A plain button
  * @CTK_BUTTON_ROLE_CHECK: A check button
  * @CTK_BUTTON_ROLE_RADIO: A radio button
  *
- * The role specifies the desired appearance of a #GtkModelButton.
+ * The role specifies the desired appearance of a #CtkModelButton.
  */
 typedef enum {
   CTK_BUTTON_ROLE_NORMAL,
   CTK_BUTTON_ROLE_CHECK,
   CTK_BUTTON_ROLE_RADIO
-} GtkButtonRole;
+} CtkButtonRole;
 
 GDK_AVAILABLE_IN_3_16
 GType       ctk_model_button_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_16
-GtkWidget * ctk_model_button_new      (void);
+CtkWidget * ctk_model_button_new      (void);
 
 G_END_DECLS
 

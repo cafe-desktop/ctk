@@ -37,30 +37,30 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 /**
  * SECTION:ctkhscale
  * @Short_description: A horizontal slider widget for selecting a value from a range
- * @Title: GtkHScale
+ * @Title: CtkHScale
  *
- * The #GtkHScale widget is used to allow the user to select a value using
+ * The #CtkHScale widget is used to allow the user to select a value using
  * a horizontal slider. To create one, use ctk_hscale_new_with_range().
  *
  * The position to show the current value, and the number of decimal places
- * shown can be set using the parent #GtkScale class’s functions.
+ * shown can be set using the parent #CtkScale class’s functions.
  *
- * GtkHScale has been deprecated, use #GtkScale instead.
+ * CtkHScale has been deprecated, use #CtkScale instead.
  */
 
 
-G_DEFINE_TYPE (GtkHScale, ctk_hscale, CTK_TYPE_SCALE)
+G_DEFINE_TYPE (CtkHScale, ctk_hscale, CTK_TYPE_SCALE)
 
 static void
-ctk_hscale_class_init (GtkHScaleClass *class)
+ctk_hscale_class_init (CtkHScaleClass *class)
 {
-  GtkRangeClass *range_class = CTK_RANGE_CLASS (class);
+  CtkRangeClass *range_class = CTK_RANGE_CLASS (class);
 
   range_class->slider_detail = "hscale";
 }
 
 static void
-ctk_hscale_init (GtkHScale *hscale)
+ctk_hscale_init (CtkHScale *hscale)
 {
   ctk_orientable_set_orientation (CTK_ORIENTABLE (hscale),
                                   CTK_ORIENTATION_HORIZONTAL);
@@ -68,17 +68,17 @@ ctk_hscale_init (GtkHScale *hscale)
 
 /**
  * ctk_hscale_new:
- * @adjustment: (nullable): the #GtkAdjustment which sets the range of
+ * @adjustment: (nullable): the #CtkAdjustment which sets the range of
  * the scale.
  *
- * Creates a new #GtkHScale.
+ * Creates a new #CtkHScale.
  *
- * Returns: a new #GtkHScale.
+ * Returns: a new #CtkHScale.
  *
  * Deprecated: 3.2: Use ctk_scale_new() with %CTK_ORIENTATION_HORIZONTAL instead
  */
-GtkWidget *
-ctk_hscale_new (GtkAdjustment *adjustment)
+CtkWidget *
+ctk_hscale_new (CtkAdjustment *adjustment)
 {
   g_return_val_if_fail (adjustment == NULL || CTK_IS_ADJUSTMENT (adjustment),
                         NULL);
@@ -103,17 +103,17 @@ ctk_hscale_new (GtkAdjustment *adjustment)
  * is a power of ten. If the resulting precision is not suitable for your
  * needs, use ctk_scale_set_digits() to correct it.
  *
- * Returns: a new #GtkHScale
+ * Returns: a new #CtkHScale
  *
  * Deprecated: 3.2: Use ctk_scale_new_with_range() with %CTK_ORIENTATION_HORIZONTAL instead
  **/
-GtkWidget *
+CtkWidget *
 ctk_hscale_new_with_range (gdouble min,
                            gdouble max,
                            gdouble step)
 {
-  GtkAdjustment *adj;
-  GtkScale *scale;
+  CtkAdjustment *adj;
+  CtkScale *scale;
   gint digits;
 
   g_return_val_if_fail (min < max, NULL);

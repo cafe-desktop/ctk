@@ -38,52 +38,52 @@
 
 /**
  * SECTION:ctkshortcutssection
- * @Title: GtkShortcutsSection
- * @Short_description: Represents an application mode in a GtkShortcutsWindow
+ * @Title: CtkShortcutsSection
+ * @Short_description: Represents an application mode in a CtkShortcutsWindow
  *
- * A GtkShortcutsSection collects all the keyboard shortcuts and gestures
+ * A CtkShortcutsSection collects all the keyboard shortcuts and gestures
  * for a major application mode. If your application needs multiple sections,
- * you should give each section a unique #GtkShortcutsSection:section-name and
- * a #GtkShortcutsSection:title that can be shown in the section selector of
- * the GtkShortcutsWindow.
+ * you should give each section a unique #CtkShortcutsSection:section-name and
+ * a #CtkShortcutsSection:title that can be shown in the section selector of
+ * the CtkShortcutsWindow.
  *
- * The #GtkShortcutsSection:max-height property can be used to influence how
+ * The #CtkShortcutsSection:max-height property can be used to influence how
  * the groups in the section are distributed over pages and columns.
  *
- * This widget is only meant to be used with #GtkShortcutsWindow.
+ * This widget is only meant to be used with #CtkShortcutsWindow.
  */
 
-struct _GtkShortcutsSection
+struct _CtkShortcutsSection
 {
-  GtkBox            parent_instance;
+  CtkBox            parent_instance;
 
   gchar            *name;
   gchar            *title;
   gchar            *view_name;
   guint             max_height;
 
-  GtkStack         *stack;
-  GtkStackSwitcher *switcher;
-  GtkWidget        *show_all;
-  GtkWidget        *footer;
+  CtkStack         *stack;
+  CtkStackSwitcher *switcher;
+  CtkWidget        *show_all;
+  CtkWidget        *footer;
   GList            *groups;
 
   gboolean          has_filtered_group;
   gboolean          need_reflow;
 
-  GtkGesture       *pan_gesture;
+  CtkGesture       *pan_gesture;
 };
 
-struct _GtkShortcutsSectionClass
+struct _CtkShortcutsSectionClass
 {
-  GtkBoxClass parent_class;
+  CtkBoxClass parent_class;
 
-  gboolean (* change_current_page) (GtkShortcutsSection *self,
+  gboolean (* change_current_page) (CtkShortcutsSection *self,
                                     gint                 offset);
 
 };
 
-G_DEFINE_TYPE (GtkShortcutsSection, ctk_shortcuts_section, CTK_TYPE_BOX)
+G_DEFINE_TYPE (CtkShortcutsSection, ctk_shortcuts_section, CTK_TYPE_BOX)
 
 enum {
   PROP_0,
@@ -102,31 +102,31 @@ enum {
 static GParamSpec *properties[LAST_PROP];
 static guint signals[LAST_SIGNAL];
 
-static void ctk_shortcuts_section_set_view_name    (GtkShortcutsSection *self,
+static void ctk_shortcuts_section_set_view_name    (CtkShortcutsSection *self,
                                                     const gchar         *view_name);
-static void ctk_shortcuts_section_set_max_height   (GtkShortcutsSection *self,
+static void ctk_shortcuts_section_set_max_height   (CtkShortcutsSection *self,
                                                     guint                max_height);
-static void ctk_shortcuts_section_add_group        (GtkShortcutsSection *self,
-                                                    GtkShortcutsGroup   *group);
+static void ctk_shortcuts_section_add_group        (CtkShortcutsSection *self,
+                                                    CtkShortcutsGroup   *group);
 
-static void ctk_shortcuts_section_show_all         (GtkShortcutsSection *self);
-static void ctk_shortcuts_section_filter_groups    (GtkShortcutsSection *self);
-static void ctk_shortcuts_section_reflow_groups    (GtkShortcutsSection *self);
-static void ctk_shortcuts_section_maybe_reflow     (GtkShortcutsSection *self);
+static void ctk_shortcuts_section_show_all         (CtkShortcutsSection *self);
+static void ctk_shortcuts_section_filter_groups    (CtkShortcutsSection *self);
+static void ctk_shortcuts_section_reflow_groups    (CtkShortcutsSection *self);
+static void ctk_shortcuts_section_maybe_reflow     (CtkShortcutsSection *self);
 
-static gboolean ctk_shortcuts_section_change_current_page (GtkShortcutsSection *self,
+static gboolean ctk_shortcuts_section_change_current_page (CtkShortcutsSection *self,
                                                            gint                 offset);
 
-static void ctk_shortcuts_section_pan_gesture_pan (GtkGesturePan       *gesture,
-                                                   GtkPanDirection      direction,
+static void ctk_shortcuts_section_pan_gesture_pan (CtkGesturePan       *gesture,
+                                                   CtkPanDirection      direction,
                                                    gdouble              offset,
-                                                   GtkShortcutsSection *self);
+                                                   CtkShortcutsSection *self);
 
 static void
-ctk_shortcuts_section_add (GtkContainer *container,
-                           GtkWidget    *child)
+ctk_shortcuts_section_add (CtkContainer *container,
+                           CtkWidget    *child)
 {
-  GtkShortcutsSection *self = CTK_SHORTCUTS_SECTION (container);
+  CtkShortcutsSection *self = CTK_SHORTCUTS_SECTION (container);
 
   if (CTK_IS_SHORTCUTS_GROUP (child))
     ctk_shortcuts_section_add_group (self, CTK_SHORTCUTS_GROUP (child));
@@ -137,10 +137,10 @@ ctk_shortcuts_section_add (GtkContainer *container,
 }
 
 static void
-ctk_shortcuts_section_remove (GtkContainer *container,
-                              GtkWidget    *child)
+ctk_shortcuts_section_remove (CtkContainer *container,
+                              CtkWidget    *child)
 {
-  GtkShortcutsSection *self = (GtkShortcutsSection *)container;
+  CtkShortcutsSection *self = (CtkShortcutsSection *)container;
 
   if (CTK_IS_SHORTCUTS_GROUP (child) &&
       ctk_widget_is_ancestor (child, CTK_WIDGET (container)))
@@ -153,12 +153,12 @@ ctk_shortcuts_section_remove (GtkContainer *container,
 }
 
 static void
-ctk_shortcuts_section_forall (GtkContainer *container,
+ctk_shortcuts_section_forall (CtkContainer *container,
                               gboolean      include_internal,
-                              GtkCallback   callback,
+                              CtkCallback   callback,
                               gpointer      callback_data)
 {
-  GtkShortcutsSection *self = (GtkShortcutsSection *)container;
+  CtkShortcutsSection *self = (CtkShortcutsSection *)container;
   GList *l;
 
   if (include_internal)
@@ -169,14 +169,14 @@ ctk_shortcuts_section_forall (GtkContainer *container,
     {
       for (l = self->groups; l; l = l->next)
         {
-          GtkWidget *group = l->data;
+          CtkWidget *group = l->data;
           callback (group, callback_data);
         }
     }
 }
 
 static void
-map_child (GtkWidget *child)
+map_child (CtkWidget *child)
 {
   if (_ctk_widget_get_visible (child) &&
       _ctk_widget_get_child_visible (child) &&
@@ -185,9 +185,9 @@ map_child (GtkWidget *child)
 }
 
 static void
-ctk_shortcuts_section_map (GtkWidget *widget)
+ctk_shortcuts_section_map (CtkWidget *widget)
 {
-  GtkShortcutsSection *self = CTK_SHORTCUTS_SECTION (widget);
+  CtkShortcutsSection *self = CTK_SHORTCUTS_SECTION (widget);
 
   if (self->need_reflow)
     ctk_shortcuts_section_reflow_groups (self);
@@ -199,9 +199,9 @@ ctk_shortcuts_section_map (GtkWidget *widget)
 }
 
 static void
-ctk_shortcuts_section_unmap (GtkWidget *widget)
+ctk_shortcuts_section_unmap (CtkWidget *widget)
 {
-  GtkShortcutsSection *self = CTK_SHORTCUTS_SECTION (widget);
+  CtkShortcutsSection *self = CTK_SHORTCUTS_SECTION (widget);
 
   ctk_widget_set_mapped (widget, FALSE);
 
@@ -210,9 +210,9 @@ ctk_shortcuts_section_unmap (GtkWidget *widget)
 }
 
 static void
-ctk_shortcuts_section_destroy (GtkWidget *widget)
+ctk_shortcuts_section_destroy (CtkWidget *widget)
 {
-  GtkShortcutsSection *self = CTK_SHORTCUTS_SECTION (widget);
+  CtkShortcutsSection *self = CTK_SHORTCUTS_SECTION (widget);
 
   if (self->stack)
     {
@@ -235,7 +235,7 @@ ctk_shortcuts_section_destroy (GtkWidget *widget)
 static void
 ctk_shortcuts_section_finalize (GObject *object)
 {
-  GtkShortcutsSection *self = (GtkShortcutsSection *)object;
+  CtkShortcutsSection *self = (CtkShortcutsSection *)object;
 
   g_clear_pointer (&self->name, g_free);
   g_clear_pointer (&self->title, g_free);
@@ -251,7 +251,7 @@ ctk_shortcuts_section_get_property (GObject    *object,
                                     GValue     *value,
                                     GParamSpec *pspec)
 {
-  GtkShortcutsSection *self = (GtkShortcutsSection *)object;
+  CtkShortcutsSection *self = (CtkShortcutsSection *)object;
 
   switch (prop_id)
     {
@@ -282,7 +282,7 @@ ctk_shortcuts_section_set_property (GObject      *object,
                                     const GValue *value,
                                     GParamSpec   *pspec)
 {
-  GtkShortcutsSection *self = (GtkShortcutsSection *)object;
+  CtkShortcutsSection *self = (CtkShortcutsSection *)object;
 
   switch (prop_id)
     {
@@ -310,18 +310,18 @@ ctk_shortcuts_section_set_property (GObject      *object,
 }
 
 static GType
-ctk_shortcuts_section_child_type (GtkContainer *container)
+ctk_shortcuts_section_child_type (CtkContainer *container)
 {
   return CTK_TYPE_SHORTCUTS_GROUP;
 }
 
 static void
-ctk_shortcuts_section_class_init (GtkShortcutsSectionClass *klass)
+ctk_shortcuts_section_class_init (CtkShortcutsSectionClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
-  GtkContainerClass *container_class = CTK_CONTAINER_CLASS (klass);
-  GtkBindingSet *binding_set;
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkContainerClass *container_class = CTK_CONTAINER_CLASS (klass);
+  CtkBindingSet *binding_set;
 
   object_class->finalize = ctk_shortcuts_section_finalize;
   object_class->get_property = ctk_shortcuts_section_get_property;
@@ -339,12 +339,12 @@ ctk_shortcuts_section_class_init (GtkShortcutsSectionClass *klass)
   klass->change_current_page = ctk_shortcuts_section_change_current_page;
 
   /**
-   * GtkShortcutsSection:section-name:
+   * CtkShortcutsSection:section-name:
    *
    * A unique name to identify this section among the sections
-   * added to the GtkShortcutsWindow. Setting the #GtkShortcutsWindow:section-name
+   * added to the CtkShortcutsWindow. Setting the #CtkShortcutsWindow:section-name
    * property to this string will make this section shown in the
-   * GtkShortcutsWindow.
+   * CtkShortcutsWindow.
    */
   properties[PROP_SECTION_NAME] =
     g_param_spec_string ("section-name", P_("Section Name"), P_("Section Name"),
@@ -352,12 +352,12 @@ ctk_shortcuts_section_class_init (GtkShortcutsSectionClass *klass)
                          (G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
   /**
-   * GtkShortcutsSection:view-name:
+   * CtkShortcutsSection:view-name:
    *
    * A view name to filter the groups in this section by.
-   * See #GtkShortcutsGroup:view.
+   * See #CtkShortcutsGroup:view.
    *
-   * Applications are expected to use the #GtkShortcutsWindow:view-name
+   * Applications are expected to use the #CtkShortcutsWindow:view-name
    * property for this purpose.
    */
   properties[PROP_VIEW_NAME] =
@@ -366,9 +366,9 @@ ctk_shortcuts_section_class_init (GtkShortcutsSectionClass *klass)
                          (G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS | G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkShortcutsSection:title:
+   * CtkShortcutsSection:title:
    *
-   * The string to show in the section selector of the GtkShortcutsWindow
+   * The string to show in the section selector of the CtkShortcutsWindow
    * for this section. If there is only one section, you don't need to
    * set a title, since the section selector will not be shown in this case.
    */
@@ -378,7 +378,7 @@ ctk_shortcuts_section_class_init (GtkShortcutsSectionClass *klass)
                          (G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
   /**
-   * GtkShortcutsSection:max-height:
+   * CtkShortcutsSection:max-height:
    *
    * The maximum number of lines to allow per column. This property can
    * be used to influence how the groups in this section are distributed
@@ -396,7 +396,7 @@ ctk_shortcuts_section_class_init (GtkShortcutsSectionClass *klass)
     g_signal_new (I_("change-current-page"),
                   G_TYPE_FROM_CLASS (object_class),
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-                  G_STRUCT_OFFSET (GtkShortcutsSectionClass, change_current_page),
+                  G_STRUCT_OFFSET (CtkShortcutsSectionClass, change_current_page),
                   NULL, NULL,
                   _ctk_marshal_BOOLEAN__INT,
                   G_TYPE_BOOLEAN, 1,
@@ -422,7 +422,7 @@ ctk_shortcuts_section_class_init (GtkShortcutsSectionClass *klass)
 }
 
 static void
-ctk_shortcuts_section_init (GtkShortcutsSection *self)
+ctk_shortcuts_section_init (CtkShortcutsSection *self)
 {
   self->max_height = 15;
 
@@ -466,7 +466,7 @@ ctk_shortcuts_section_init (GtkShortcutsSection *self)
 }
 
 static void
-ctk_shortcuts_section_set_view_name (GtkShortcutsSection *self,
+ctk_shortcuts_section_set_view_name (CtkShortcutsSection *self,
                                      const gchar         *view_name)
 {
   if (g_strcmp0 (self->view_name, view_name) == 0)
@@ -482,7 +482,7 @@ ctk_shortcuts_section_set_view_name (GtkShortcutsSection *self,
 }
 
 static void
-ctk_shortcuts_section_set_max_height (GtkShortcutsSection *self,
+ctk_shortcuts_section_set_max_height (CtkShortcutsSection *self,
                                       guint                max_height)
 {
   if (self->max_height == max_height)
@@ -496,11 +496,11 @@ ctk_shortcuts_section_set_max_height (GtkShortcutsSection *self,
 }
 
 static void
-ctk_shortcuts_section_add_group (GtkShortcutsSection *self,
-                                 GtkShortcutsGroup   *group)
+ctk_shortcuts_section_add_group (CtkShortcutsSection *self,
+                                 CtkShortcutsGroup   *group)
 {
   GList *children;
-  GtkWidget *page, *column;
+  CtkWidget *page, *column;
 
   children = ctk_container_get_children (CTK_CONTAINER (self->stack));
   if (children)
@@ -529,15 +529,15 @@ ctk_shortcuts_section_add_group (GtkShortcutsSection *self,
 }
 
 static void
-ctk_shortcuts_section_show_all (GtkShortcutsSection *self)
+ctk_shortcuts_section_show_all (CtkShortcutsSection *self)
 {
   ctk_shortcuts_section_set_view_name (self, NULL);
 }
 
 static void
-update_group_visibility (GtkWidget *child, gpointer data)
+update_group_visibility (CtkWidget *child, gpointer data)
 {
-  GtkShortcutsSection *self = data;
+  CtkShortcutsSection *self = data;
 
   if (CTK_IS_SHORTCUTS_GROUP (child))
     {
@@ -561,7 +561,7 @@ update_group_visibility (GtkWidget *child, gpointer data)
 }
 
 static void
-ctk_shortcuts_section_filter_groups (GtkShortcutsSection *self)
+ctk_shortcuts_section_filter_groups (CtkShortcutsSection *self)
 {
   self->has_filtered_group = FALSE;
 
@@ -574,7 +574,7 @@ ctk_shortcuts_section_filter_groups (GtkShortcutsSection *self)
 }
 
 static void
-ctk_shortcuts_section_maybe_reflow (GtkShortcutsSection *self)
+ctk_shortcuts_section_maybe_reflow (CtkShortcutsSection *self)
 {
   if (ctk_widget_get_mapped (CTK_WIDGET (self)))
     ctk_shortcuts_section_reflow_groups (self);
@@ -583,10 +583,10 @@ ctk_shortcuts_section_maybe_reflow (GtkShortcutsSection *self)
 }
 
 static void
-adjust_page_buttons (GtkWidget *widget,
+adjust_page_buttons (CtkWidget *widget,
                      gpointer   data)
 {
-  GtkWidget *label;
+  CtkWidget *label;
 
   ctk_style_context_add_class (ctk_widget_get_style_context (widget), "circular");
 
@@ -595,7 +595,7 @@ adjust_page_buttons (GtkWidget *widget,
 }
 
 static void
-ctk_shortcuts_section_reflow_groups (GtkShortcutsSection *self)
+ctk_shortcuts_section_reflow_groups (CtkShortcutsSection *self)
 {
   GList *pages, *p;
   GList *columns, *c;
@@ -604,7 +604,7 @@ ctk_shortcuts_section_reflow_groups (GtkShortcutsSection *self)
   guint n_rows;
   guint n_columns;
   guint n_pages;
-  GtkWidget *current_page, *current_column;
+  CtkWidget *current_page, *current_column;
 
   /* collect all groups from the current pages */
   groups = NULL;
@@ -630,7 +630,7 @@ ctk_shortcuts_section_reflow_groups (GtkShortcutsSection *self)
   n_pages = 0;
   for (g = groups; g; g = g->next)
     {
-      GtkShortcutsGroup *group = g->data;
+      CtkShortcutsGroup *group = g->data;
       guint height;
       gboolean visible;
 
@@ -643,8 +643,8 @@ ctk_shortcuts_section_reflow_groups (GtkShortcutsSection *self)
 
       if (current_column == NULL || n_rows + height > self->max_height)
         {
-          GtkWidget *column;
-          GtkSizeGroup *group;
+          CtkWidget *column;
+          CtkSizeGroup *group;
 
           column = ctk_box_new (CTK_ORIENTATION_VERTICAL, 22);
           ctk_widget_show (column);
@@ -663,7 +663,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
           if (n_columns % 2 == 0)
             {
-              GtkWidget *page;
+              CtkWidget *page;
 
               page = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 22);
               ctk_widget_show (page);
@@ -694,8 +694,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /* balance the last page */
   if (n_columns % 2 == 1)
     {
-      GtkWidget *column;
-      GtkSizeGroup *group;
+      CtkWidget *column;
+      CtkSizeGroup *group;
       GList *content;
       guint n;
 
@@ -720,7 +720,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
       for (g = g_list_last (content); g; g = g->prev)
         {
-          GtkShortcutsGroup *group = g->data;
+          CtkShortcutsGroup *group = g->data;
           guint height;
           gboolean visible;
 
@@ -742,7 +742,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
       for (g = g->next; g; g = g->next)
         {
-          GtkShortcutsGroup *group = g->data;
+          CtkShortcutsGroup *group = g->data;
 
           g_object_set (group,
                         "accel-size-group", g_object_get_data (G_OBJECT (column), "accel-size-group"),
@@ -764,7 +764,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
   for (p = pages, n_pages = 0; p; p = p->next, n_pages++)
     {
-      GtkWidget *page = p->data;
+      CtkWidget *page = p->data;
       gchar *title;
 
       title = g_strdup_printf ("_%u", n_pages + 1);
@@ -787,10 +787,10 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static gboolean
-ctk_shortcuts_section_change_current_page (GtkShortcutsSection *self,
+ctk_shortcuts_section_change_current_page (CtkShortcutsSection *self,
                                            gint                 offset)
 {
-  GtkWidget *child;
+  CtkWidget *child;
   GList *children, *l;
 
   child = ctk_stack_get_visible_child (self->stack);
@@ -815,10 +815,10 @@ ctk_shortcuts_section_change_current_page (GtkShortcutsSection *self,
 }
 
 static void
-ctk_shortcuts_section_pan_gesture_pan (GtkGesturePan       *gesture,
-                                       GtkPanDirection      direction,
+ctk_shortcuts_section_pan_gesture_pan (CtkGesturePan       *gesture,
+                                       CtkPanDirection      direction,
                                        gdouble              offset,
-                                       GtkShortcutsSection *self)
+                                       CtkShortcutsSection *self)
 {
   if (offset < 50)
     return;

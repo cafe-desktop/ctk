@@ -26,20 +26,20 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CSS_IMAGE_ICON_THEME           (_ctk_css_image_icon_theme_get_type ())
-#define CTK_CSS_IMAGE_ICON_THEME(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_IMAGE_ICON_THEME, GtkCssImageIconTheme))
-#define CTK_CSS_IMAGE_ICON_THEME_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_IMAGE_ICON_THEME, GtkCssImageIconThemeClass))
+#define CTK_CSS_IMAGE_ICON_THEME(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_IMAGE_ICON_THEME, CtkCssImageIconTheme))
+#define CTK_CSS_IMAGE_ICON_THEME_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_IMAGE_ICON_THEME, CtkCssImageIconThemeClass))
 #define CTK_IS_CSS_IMAGE_ICON_THEME(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_IMAGE_ICON_THEME))
 #define CTK_IS_CSS_IMAGE_ICON_THEME_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_IMAGE_ICON_THEME))
-#define CTK_CSS_IMAGE_ICON_THEME_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_IMAGE_ICON_THEME, GtkCssImageIconThemeClass))
+#define CTK_CSS_IMAGE_ICON_THEME_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_IMAGE_ICON_THEME, CtkCssImageIconThemeClass))
 
-typedef struct _GtkCssImageIconTheme           GtkCssImageIconTheme;
-typedef struct _GtkCssImageIconThemeClass      GtkCssImageIconThemeClass;
+typedef struct _CtkCssImageIconTheme           CtkCssImageIconTheme;
+typedef struct _CtkCssImageIconThemeClass      CtkCssImageIconThemeClass;
 
-struct _GtkCssImageIconTheme
+struct _CtkCssImageIconTheme
 {
-  GtkCssImage parent;
+  CtkCssImage parent;
 
-  GtkIconTheme *icon_theme;
+  CtkIconTheme *icon_theme;
   GdkRGBA color;
   GdkRGBA success;
   GdkRGBA warning;
@@ -48,9 +48,9 @@ struct _GtkCssImageIconTheme
   char *name;
 };
 
-struct _GtkCssImageIconThemeClass
+struct _CtkCssImageIconThemeClass
 {
-  GtkCssImageClass parent_class;
+  CtkCssImageClass parent_class;
 };
 
 GType          _ctk_css_image_icon_theme_get_type             (void) G_GNUC_CONST;

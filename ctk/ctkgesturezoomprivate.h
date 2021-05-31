@@ -23,16 +23,16 @@
 #include "ctkgestureprivate.h"
 #include "ctkgesturezoom.h"
 
-struct _GtkGestureZoom
+struct _CtkGestureZoom
 {
-  GtkGesture parent_instance;
+  CtkGesture parent_instance;
 };
 
-struct _GtkGestureZoomClass
+struct _CtkGestureZoomClass
 {
-  GtkGestureClass parent_class;
+  CtkGestureClass parent_class;
 
-  void (* scale_changed) (GtkGestureZoom *gesture,
+  void (* scale_changed) (CtkGestureZoom *gesture,
                           gdouble         scale);
   /*< private >*/
   gpointer padding[10];

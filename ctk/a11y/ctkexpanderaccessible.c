@@ -23,13 +23,13 @@
 
 static void atk_action_interface_init (AtkActionIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkExpanderAccessible, ctk_expander_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (CtkExpanderAccessible, ctk_expander_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_ACTION, atk_action_interface_init))
 
 static const gchar *
-ctk_expander_accessible_get_full_text (GtkExpander *widget)
+ctk_expander_accessible_get_full_text (CtkExpander *widget)
 {
-  GtkWidget *label_widget;
+  CtkWidget *label_widget;
 
   label_widget = ctk_expander_get_label_widget (widget);
 
@@ -42,7 +42,7 @@ ctk_expander_accessible_get_full_text (GtkExpander *widget)
 static const gchar *
 ctk_expander_accessible_get_name (AtkObject *obj)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   const gchar *name;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
@@ -59,7 +59,7 @@ ctk_expander_accessible_get_name (AtkObject *obj)
 static gint
 ctk_expander_accessible_get_n_children (AtkObject *obj)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   GList *children;
   gint count = 0;
 
@@ -86,8 +86,8 @@ ctk_expander_accessible_ref_child (AtkObject *obj,
 {
   GList *children, *tmp_list;
   AtkObject *accessible;
-  GtkWidget *widget;
-  GtkWidget *label;
+  CtkWidget *widget;
+  CtkWidget *label;
   gint index;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
@@ -140,7 +140,7 @@ ctk_expander_accessible_notify_ctk (GObject    *obj,
                                     GParamSpec *pspec)
 {
   AtkObject* atk_obj;
-  GtkExpander *expander;
+  CtkExpander *expander;
 
   expander = CTK_EXPANDER (obj);
   atk_obj = ctk_widget_get_accessible (CTK_WIDGET (expander));
@@ -167,8 +167,8 @@ static AtkStateSet *
 ctk_expander_accessible_ref_state_set (AtkObject *obj)
 {
   AtkStateSet *state_set;
-  GtkWidget *widget;
-  GtkExpander *expander;
+  CtkWidget *widget;
+  CtkExpander *expander;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
@@ -190,10 +190,10 @@ ctk_expander_accessible_ref_state_set (AtkObject *obj)
 }
 
 static void
-ctk_expander_accessible_class_init (GtkExpanderAccessibleClass *klass)
+ctk_expander_accessible_class_init (CtkExpanderAccessibleClass *klass)
 {
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
-  GtkWidgetAccessibleClass *widget_class = (GtkWidgetAccessibleClass*)klass;
+  CtkWidgetAccessibleClass *widget_class = (CtkWidgetAccessibleClass*)klass;
 
   widget_class->notify_ctk = ctk_expander_accessible_notify_ctk;
 
@@ -206,7 +206,7 @@ ctk_expander_accessible_class_init (GtkExpanderAccessibleClass *klass)
 }
 
 static void
-ctk_expander_accessible_init (GtkExpanderAccessible *expander)
+ctk_expander_accessible_init (CtkExpanderAccessible *expander)
 {
 }
 
@@ -214,7 +214,7 @@ static gboolean
 ctk_expander_accessible_do_action (AtkAction *action,
                                    gint       i)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (action));
   if (widget == NULL)
@@ -241,8 +241,8 @@ ctk_expander_accessible_get_keybinding (AtkAction *action,
                                         gint       i)
 {
   gchar *return_value = NULL;
-  GtkWidget *widget;
-  GtkWidget *label;
+  CtkWidget *widget;
+  CtkWidget *label;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (action));
   if (widget == NULL)

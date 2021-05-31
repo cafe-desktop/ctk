@@ -22,10 +22,10 @@
 
 G_BEGIN_DECLS
 
-gboolean ctk_font_chooser_widget_handle_event (GtkWidget   *widget,
+gboolean ctk_font_chooser_widget_handle_event (CtkWidget   *widget,
                                                GdkEventKey *event);
 
-GAction *ctk_font_chooser_widget_get_tweak_action (GtkWidget *fontchooser);
+GAction *ctk_font_chooser_widget_get_tweak_action (CtkWidget *fontchooser);
 
 G_END_DECLS
 

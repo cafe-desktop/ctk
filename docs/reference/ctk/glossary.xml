@@ -28,7 +28,7 @@
       <para>
 	A <glossterm linkend="container">container</glossterm> that
 	can hold at most one child widget.  The base class for bins is
-	#GtkBin.
+	#CtkBin.
       </para>
       <glossseealso>
 	<glossterm linkend="container">container</glossterm>
@@ -52,9 +52,9 @@
     <glossdef>
       <para>
 	GTK+ contains several widgets which display data in columns,
-        e.g. the #GtkTreeView. 
+        e.g. the #CtkTreeView. 
         These <glossterm linkend="view-column">view columns</glossterm> in 
-        the tree view are represented by #GtkTreeViewColumn
+        the tree view are represented by #CtkTreeViewColumn
         objects inside GTK+. They should not be confused with 
         <glossterm linkend="model-column">model columns</glossterm> which
         are used to organize the data in tree models.
@@ -72,11 +72,11 @@
 	<emphasis>parent</emphasis> of the <emphasis>child</emphasis>
 	widgets.  Some containers don't draw anything on their own,
 	but rather just organize their children's <glossterm
-	linkend="geometry">geometry</glossterm>; for example, #GtkVBox lays out 
+	linkend="geometry">geometry</glossterm>; for example, #CtkVBox lays out 
         its children vertically without painting anything on its own.  Other
-	containers include decorative elements; for example, #GtkFrame contains 
+	containers include decorative elements; for example, #CtkFrame contains 
         the frame's child and a label in addition to the shaded frame it draws.  
-        The base class for containers is #GtkContainer.
+        The base class for containers is #CtkContainer.
       </para>
       <glossseealso>
 	<glossterm linkend="container">widget</glossterm>
@@ -140,7 +140,7 @@
 	actually shows the GdkWindows it created when it was
 	<glossterm linkend="realization">realized</glossterm>.  When a
 	widget is mapped, it must turn on its
-	%CTK_MAPPED <link linkend="GtkWidgetFlags">flag</link>.
+	%CTK_MAPPED <link linkend="CtkWidgetFlags">flag</link>.
       </para>
 
       <para>
@@ -150,7 +150,7 @@
 	you must wait for the corresponding map <glossterm
 	linkend="event">event</glossterm> to be received.  You can do
 	this with the <link
-	linkend="GtkWidget-map-event"><methodname>GtkWidget::map-event</methodname>
+	linkend="CtkWidget-map-event"><methodname>CtkWidget::map-event</methodname>
 	signal</link>.
       </para>
     </glossdef>
@@ -178,13 +178,13 @@
         These widgets follow the well-known model-view pattern, which separates
         the data (the model) to be displayed from the component which does the 
         actual visualization (the view). Examples of this pattern in GTK+ are 
-        the #GtkTreeView/#GtkTreeModel and #GtkTextView/#GtkTextBuffer
+        the #CtkTreeView/#CtkTreeModel and #CtkTextView/#CtkTextBuffer
       </para>
       <para>
         One important advantage of this pattern is that it is possible to 
         display the same model in multiple views; another one that the 
         separation of the model allows a great deal of flexibility, as 
-        demonstrated by e.g. #GtkTreeModelSort or #GtkTreeModelFilter.
+        demonstrated by e.g. #CtkTreeModelSort or #CtkTreeModelFilter.
       </para>
     </glossdef>
   </glossentry>
@@ -224,7 +224,7 @@
 	also attach a <glossterm linkend="style">style</glossterm> to
 	it.  A widget becomes unrealized by destroying its associated
 	GdkWindow.  When a widget is realized, it must turn on its
-	%CTK_REALIZED <link linkend="GtkWidgetFlags">flag</link>.
+	%CTK_REALIZED <link linkend="CtkWidgetFlags">flag</link>.
       </para>
 
       <para>
@@ -235,7 +235,7 @@
       </para>
 
       <para>
-	Note that when a #GtkWidget creates a window in its #GtkWidget::realize
+	Note that when a #CtkWidget creates a window in its #CtkWidget::realize
 	handler, it does not actually show the window.  That is, the
 	window's structure is just created in memory.  The widget
 	actually shows the window when it gets <glossterm
@@ -294,7 +294,7 @@
       <para>
 	A <glossterm linkend="widget">widget</glossterm> that does not
 	require a <glossterm linkend="parent">parent</glossterm> container.  
-        The only toplevel widgets in GTK+ are #GtkWindow and widgets derived from it.
+        The only toplevel widgets in GTK+ are #CtkWindow and widgets derived from it.
       </para>
       <glossseealso>
 	<glossterm linkend="container">container</glossterm>
@@ -317,7 +317,7 @@
     <glossdef>
       <para>
         A displayed column in a tree view, represented by a
-        #GtkTreeViewColumn object.
+        #CtkTreeViewColumn object.
       </para>
       <glossseealso>
 	<glossterm linkend="model-column">model column</glossterm>
@@ -356,7 +356,7 @@
 	linkend="geometry">geometry</glossterm> of the widgets:  every
 	widget thus has a parent except those widgets which are
 	<glossterm linkend="toplevel">toplevels</glossterm>.  The base
-	class for widgets is #GtkWidget.
+	class for widgets is #CtkWidget.
       </para>
       <glossseealso>
 	<glossterm linkend="container">container</glossterm>

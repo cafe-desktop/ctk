@@ -1778,7 +1778,7 @@ msgid ""
 "  --id=ID            Preview only the named object\n"
 "  --css=FILE         Use style from CSS file\n"
 "\n"
-"Perform various tasks on GtkBuilder .ui files.\n"
+"Perform various tasks on CtkBuilder .ui files.\n"
 msgstr ""
 "Қолданылуы:\n"
 "  ctk-builder-tool [КОМАНДА] ФАЙЛ\n"
@@ -1796,7 +1796,7 @@ msgstr ""
 "  --id=ID            Тек аталған объектті қарау\n"
 "  --css=FILE         Стильді CSS файлынан алу\n"
 "\n"
-"GtkBuilder .ui файлдарына түрлі әрекеттерді орындау.\n"
+"CtkBuilder .ui файлдарына түрлі әрекеттерді орындау.\n"
 
 #. Translate to calendar:YM if you want years to be displayed
 #. * before months; otherwise translate to calendar:MY.
@@ -2523,7 +2523,7 @@ msgstr "Қатынаған"
 msgid "Create Folder"
 msgstr "Буманы жасау"
 
-#. The pointers we return for a GtkFileSystemVolume are opaque tokens; they are
+#. The pointers we return for a CtkFileSystemVolume are opaque tokens; they are
 #. * really pointers to GDrive, GVolume or GMount objects.  We need an extra
 #. * token for the fake “File System” volume.  So, we’ll return a pointer to
 #. * this particular string.

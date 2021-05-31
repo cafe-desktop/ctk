@@ -23,11 +23,11 @@
 static void
 test_attach (void)
 {
-  GtkGrid *g;
-  GtkWidget *child, *sibling, *z, *A, *B;
+  CtkGrid *g;
+  CtkWidget *child, *sibling, *z, *A, *B;
   gint left, top, width, height;
 
-  g = (GtkGrid *)ctk_grid_new ();
+  g = (CtkGrid *)ctk_grid_new ();
 
   child = ctk_label_new ("a");
   ctk_grid_attach_next_to (g, child, NULL, CTK_POS_LEFT, 1, 1);
@@ -160,11 +160,11 @@ test_attach (void)
 static void
 test_add (void)
 {
-  GtkGrid *g;
-  GtkWidget *child;
+  CtkGrid *g;
+  CtkWidget *child;
   gint left, top, width, height;
 
-  g = (GtkGrid *)ctk_grid_new ();
+  g = (CtkGrid *)ctk_grid_new ();
 
   ctk_orientable_set_orientation (CTK_ORIENTABLE (g), CTK_ORIENTATION_HORIZONTAL);
 

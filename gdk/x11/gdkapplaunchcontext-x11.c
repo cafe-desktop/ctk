@@ -1,4 +1,4 @@
-/* gdkapplaunchcontext-x11.c - Gtk+ implementation for GAppLaunchContext
+/* gdkapplaunchcontext-x11.c - Ctk+ implementation for GAppLaunchContext
 
    Copyright (C) 2007 Red Hat, Inc.
 

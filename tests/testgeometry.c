@@ -27,7 +27,7 @@ static int window_count = 0;
 const char *geometry_string;
 
 static void
-on_window_destroy (GtkWidget *widget)
+on_window_destroy (CtkWidget *widget)
 {
   window_count--;
   if (window_count == 0)
@@ -35,7 +35,7 @@ on_window_destroy (GtkWidget *widget)
 }
 
 static gboolean
-on_drawing_area_draw (GtkWidget *drawing_area,
+on_drawing_area_draw (CtkWidget *drawing_area,
 		      cairo_t   *cr,
 		      gpointer   data)
 {
@@ -74,10 +74,10 @@ on_drawing_area_draw (GtkWidget *drawing_area,
 }
 
 static void
-on_resize_clicked (GtkWidget *button,
+on_resize_clicked (CtkWidget *button,
 		   gpointer   data)
 {
-  GtkWidget *window = ctk_widget_get_toplevel (button);
+  CtkWidget *window = ctk_widget_get_toplevel (button);
   GdkWindowHints mask = GPOINTER_TO_UINT(data);
 
   if ((mask & GDK_HINT_RESIZE_INC) != 0)
@@ -89,11 +89,11 @@ on_resize_clicked (GtkWidget *button,
 static void
 create_window (GdkWindowHints  mask)
 {
-  GtkWidget *window;
-  GtkWidget *drawing_area;
-  GtkWidget *grid;
-  GtkWidget *label;
-  GtkWidget *button;
+  CtkWidget *window;
+  CtkWidget *drawing_area;
+  CtkWidget *grid;
+  CtkWidget *label;
+  CtkWidget *button;
   GdkGeometry geometry;
   GString *label_text = g_string_new (NULL);
   int border = 0;

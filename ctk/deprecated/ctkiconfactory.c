@@ -53,11 +53,11 @@
  * @Short_description: Manipulating stock icons
  * @Title: Themeable Stock Images
  *
- * An icon factory manages a collection of #GtkIconSet; a #GtkIconSet manages a
- * set of variants of a particular icon (i.e. a #GtkIconSet contains variants for
+ * An icon factory manages a collection of #CtkIconSet; a #CtkIconSet manages a
+ * set of variants of a particular icon (i.e. a #CtkIconSet contains variants for
  * different sizes and widget states). Icons in an icon factory are named by a
- * stock ID, which is a simple string identifying the icon. Each #GtkStyle has a
- * list of #GtkIconFactory derived from the current theme; those icon factories
+ * stock ID, which is a simple string identifying the icon. Each #CtkStyle has a
+ * list of #CtkIconFactory derived from the current theme; those icon factories
  * are consulted first when searching for an icon. If the theme doesn’t set a
  * particular icon, GTK+ looks for the icon in a list of default icon factories,
  * maintained by ctk_icon_factory_add_default() and
@@ -70,9 +70,9 @@
  * ctk_widget_render_icon(). These functions take the theme into account when
  * looking up the icon to use for a given stock ID.
  *
- * # GtkIconFactory as GtkBuildable # {#GtkIconFactory-BUILDER-UI}
+ * # CtkIconFactory as CtkBuildable # {#CtkIconFactory-BUILDER-UI}
  *
- * GtkIconFactory supports a custom <sources> element, which can contain
+ * CtkIconFactory supports a custom <sources> element, which can contain
  * multiple <source> elements. The following attributes are allowed:
  *
  * - stock-id
@@ -92,31 +92,31 @@
  *
  * - size
  *
- *     Size of the icon, a #GtkIconSize enum value.  This attribute is
+ *     Size of the icon, a #CtkIconSize enum value.  This attribute is
  *     optional.
  *
  * - direction
  *
- *     Direction of the source, a #GtkTextDirection enum value.  This
+ *     Direction of the source, a #CtkTextDirection enum value.  This
  *     attribute is optional.
  *
  * - state
  *
- *     State of the source, a #GtkStateType enum value.  This
+ *     State of the source, a #CtkStateType enum value.  This
  *     attribute is optional.
  *
  *
- * ## A #GtkIconFactory UI definition fragment. ##
+ * ## A #CtkIconFactory UI definition fragment. ##
  *
  * |[
- * <object class="GtkIconFactory" id="iconfactory1">
+ * <object class="CtkIconFactory" id="iconfactory1">
  *   <sources>
  *     <source stock-id="apple-red" filename="apple-red.png"/>
  *   </sources>
  * </object>
- * <object class="GtkWindow" id="window1">
+ * <object class="CtkWindow" id="window1">
  *   <child>
- *     <object class="GtkButton" id="apple_button">
+ *     <object class="CtkButton" id="apple_button">
  *       <property name="label">apple-red</property>
  *       <property name="use-stock">True</property>
  *     </object>
@@ -128,7 +128,7 @@
 
 static GSList *all_icon_factories = NULL;
 
-struct _GtkIconFactoryPrivate
+struct _CtkIconFactoryPrivate
 {
   GHashTable *icons;
 };
@@ -139,11 +139,11 @@ typedef enum {
   CTK_ICON_SOURCE_STATIC_ICON_NAME,
   CTK_ICON_SOURCE_FILENAME,
   CTK_ICON_SOURCE_PIXBUF
-} GtkIconSourceType;
+} CtkIconSourceType;
 
-struct _GtkIconSource
+struct _CtkIconSource
 {
-  GtkIconSourceType type;
+  CtkIconSourceType type;
 
   union {
     gchar *icon_name;
@@ -153,9 +153,9 @@ struct _GtkIconSource
 
   GdkPixbuf *filename_pixbuf;
 
-  GtkTextDirection direction;
-  GtkStateType state;
-  GtkIconSize size;
+  CtkTextDirection direction;
+  CtkStateType state;
+  CtkIconSize size;
 
   /* If TRUE, then the parameter is wildcarded, and the above
    * fields should be ignored. If FALSE, the parameter is
@@ -168,24 +168,24 @@ struct _GtkIconSource
 
 
 static void
-ctk_icon_factory_buildable_init  (GtkBuildableIface      *iface);
+ctk_icon_factory_buildable_init  (CtkBuildableIface      *iface);
 
-static gboolean ctk_icon_factory_buildable_custom_tag_start (GtkBuildable     *buildable,
-							     GtkBuilder       *builder,
+static gboolean ctk_icon_factory_buildable_custom_tag_start (CtkBuildable     *buildable,
+							     CtkBuilder       *builder,
 							     GObject          *child,
 							     const gchar      *tagname,
 							     GMarkupParser    *parser,
 							     gpointer         *data);
-static void ctk_icon_factory_buildable_custom_tag_end (GtkBuildable *buildable,
-						       GtkBuilder   *builder,
+static void ctk_icon_factory_buildable_custom_tag_end (CtkBuildable *buildable,
+						       CtkBuilder   *builder,
 						       GObject      *child,
 						       const gchar  *tagname,
 						       gpointer     *user_data);
 static void ctk_icon_factory_finalize   (GObject             *object);
-static void get_default_icons           (GtkIconFactory      *icon_factory);
-static void icon_source_clear           (GtkIconSource       *source);
+static void get_default_icons           (CtkIconFactory      *icon_factory);
+static void icon_source_clear           (CtkIconSource       *source);
 
-static GtkIconSize icon_size_register_intern (const gchar *name,
+static CtkIconSize icon_size_register_intern (const gchar *name,
 					      gint         width,
 					      gint         height);
 
@@ -194,15 +194,15 @@ static GtkIconSize icon_size_register_intern (const gchar *name,
    0, 0, 0,								\
    any_direction, any_state, any_size }
 
-G_DEFINE_TYPE_WITH_CODE (GtkIconFactory, ctk_icon_factory, G_TYPE_OBJECT,
-                         G_ADD_PRIVATE (GtkIconFactory)
+G_DEFINE_TYPE_WITH_CODE (CtkIconFactory, ctk_icon_factory, G_TYPE_OBJECT,
+                         G_ADD_PRIVATE (CtkIconFactory)
 			 G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
 						ctk_icon_factory_buildable_init))
 
 static void
-ctk_icon_factory_init (GtkIconFactory *factory)
+ctk_icon_factory_init (CtkIconFactory *factory)
 {
-  GtkIconFactoryPrivate *priv;
+  CtkIconFactoryPrivate *priv;
 
   factory->priv = ctk_icon_factory_get_instance_private (factory);
   priv = factory->priv;
@@ -212,7 +212,7 @@ ctk_icon_factory_init (GtkIconFactory *factory)
 }
 
 static void
-ctk_icon_factory_class_init (GtkIconFactoryClass *klass)
+ctk_icon_factory_class_init (CtkIconFactoryClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -220,7 +220,7 @@ ctk_icon_factory_class_init (GtkIconFactoryClass *klass)
 }
 
 static void
-ctk_icon_factory_buildable_init (GtkBuildableIface *iface)
+ctk_icon_factory_buildable_init (CtkBuildableIface *iface)
 {
   iface->custom_tag_start = ctk_icon_factory_buildable_custom_tag_start;
   iface->custom_tag_end = ctk_icon_factory_buildable_custom_tag_end;
@@ -236,8 +236,8 @@ free_icon_set (gpointer key, gpointer value, gpointer data)
 static void
 ctk_icon_factory_finalize (GObject *object)
 {
-  GtkIconFactory *factory = CTK_ICON_FACTORY (object);
-  GtkIconFactoryPrivate *priv = factory->priv;
+  CtkIconFactory *factory = CTK_ICON_FACTORY (object);
+  CtkIconFactoryPrivate *priv = factory->priv;
 
   all_icon_factories = g_slist_remove (all_icon_factories, factory);
 
@@ -251,12 +251,12 @@ ctk_icon_factory_finalize (GObject *object)
 /**
  * ctk_icon_factory_new:
  *
- * Creates a new #GtkIconFactory. An icon factory manages a collection
- * of #GtkIconSets; a #GtkIconSet manages a set of variants of a
- * particular icon (i.e. a #GtkIconSet contains variants for different
+ * Creates a new #CtkIconFactory. An icon factory manages a collection
+ * of #CtkIconSets; a #CtkIconSet manages a set of variants of a
+ * particular icon (i.e. a #CtkIconSet contains variants for different
  * sizes and widget states). Icons in an icon factory are named by a
  * stock ID, which is a simple string identifying the icon. Each
- * #GtkStyle has a list of #GtkIconFactorys derived from the current
+ * #CtkStyle has a list of #CtkIconFactorys derived from the current
  * theme; those icon factories are consulted first when searching for
  * an icon. If the theme doesn’t set a particular icon, GTK+ looks for
  * the icon in a list of default icon factories, maintained by
@@ -265,11 +265,11 @@ ctk_icon_factory_finalize (GObject *object)
  * add a default icon factory with their icons, which will allow
  * themes to override the icons for the application.
  *
- * Returns: a new #GtkIconFactory
+ * Returns: a new #CtkIconFactory
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
-GtkIconFactory*
+CtkIconFactory*
 ctk_icon_factory_new (void)
 {
   return g_object_new (CTK_TYPE_ICON_FACTORY, NULL);
@@ -277,29 +277,29 @@ ctk_icon_factory_new (void)
 
 /**
  * ctk_icon_factory_add:
- * @factory: a #GtkIconFactory
+ * @factory: a #CtkIconFactory
  * @stock_id: icon name
  * @icon_set: icon set
  *
  * Adds the given @icon_set to the icon factory, under the name
  * @stock_id.  @stock_id should be namespaced for your application,
  * e.g. “myapp-whatever-icon”.  Normally applications create a
- * #GtkIconFactory, then add it to the list of default factories with
+ * #CtkIconFactory, then add it to the list of default factories with
  * ctk_icon_factory_add_default(). Then they pass the @stock_id to
- * widgets such as #GtkImage to display the icon. Themes can provide
+ * widgets such as #CtkImage to display the icon. Themes can provide
  * an icon with the same name (such as "myapp-whatever-icon") to
  * override your application’s default icons. If an icon already
  * existed in @factory for @stock_id, it is unreferenced and replaced
  * with the new @icon_set.
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
 void
-ctk_icon_factory_add (GtkIconFactory *factory,
+ctk_icon_factory_add (CtkIconFactory *factory,
                       const gchar    *stock_id,
-                      GtkIconSet     *icon_set)
+                      CtkIconSet     *icon_set)
 {
-  GtkIconFactoryPrivate *priv = factory->priv;
+  CtkIconFactoryPrivate *priv = factory->priv;
   gpointer old_key = NULL;
   gpointer old_value = NULL;
 
@@ -327,24 +327,24 @@ ctk_icon_factory_add (GtkIconFactory *factory,
 
 /**
  * ctk_icon_factory_lookup:
- * @factory: a #GtkIconFactory
+ * @factory: a #CtkIconFactory
  * @stock_id: an icon name
  *
  * Looks up @stock_id in the icon factory, returning an icon set
  * if found, otherwise %NULL. For display to the user, you should
- * use ctk_style_lookup_icon_set() on the #GtkStyle for the
+ * use ctk_style_lookup_icon_set() on the #CtkStyle for the
  * widget that will display the icon, instead of using this
  * function directly, so that themes are taken into account.
  *
  * Returns: (transfer none): icon set of @stock_id.
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
-GtkIconSet *
-ctk_icon_factory_lookup (GtkIconFactory *factory,
+CtkIconSet *
+ctk_icon_factory_lookup (CtkIconFactory *factory,
                          const gchar    *stock_id)
 {
-  GtkIconFactoryPrivate *priv;
+  CtkIconFactoryPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_ICON_FACTORY (factory), NULL);
   g_return_val_if_fail (stock_id != NULL, NULL);
@@ -358,7 +358,7 @@ static GSList *default_factories = NULL;
 
 /**
  * ctk_icon_factory_add_default:
- * @factory: a #GtkIconFactory
+ * @factory: a #CtkIconFactory
  *
  * Adds an icon factory to the list of icon factories searched by
  * ctk_style_lookup_icon_set(). This means that, for example,
@@ -367,10 +367,10 @@ static GSList *default_factories = NULL;
  * application that comes with icons. The default icon factories
  * can be overridden by themes.
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
 void
-ctk_icon_factory_add_default (GtkIconFactory *factory)
+ctk_icon_factory_add_default (CtkIconFactory *factory)
 {
   g_return_if_fail (CTK_IS_ICON_FACTORY (factory));
 
@@ -381,16 +381,16 @@ ctk_icon_factory_add_default (GtkIconFactory *factory)
 
 /**
  * ctk_icon_factory_remove_default:
- * @factory: a #GtkIconFactory previously added with ctk_icon_factory_add_default()
+ * @factory: a #CtkIconFactory previously added with ctk_icon_factory_add_default()
  *
  * Removes an icon factory from the list of default icon
  * factories. Not normally used; you might use it for a library that
  * can be unloaded or shut down.
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
 void
-ctk_icon_factory_remove_default (GtkIconFactory  *factory)
+ctk_icon_factory_remove_default (CtkIconFactory  *factory)
 {
   g_return_if_fail (CTK_IS_ICON_FACTORY (factory));
 
@@ -399,11 +399,11 @@ ctk_icon_factory_remove_default (GtkIconFactory  *factory)
   g_object_unref (factory);
 }
 
-static GtkIconFactory *
+static CtkIconFactory *
 _ctk_icon_factory_get_default_icons (void)
 {
-  static GtkIconFactory *default_icons = NULL;
-  GtkIconFactory *icons = NULL;
+  static CtkIconFactory *default_icons = NULL;
+  CtkIconFactory *icons = NULL;
   GdkScreen *screen = gdk_screen_get_default ();
 
   if (screen)
@@ -433,26 +433,26 @@ _ctk_icon_factory_get_default_icons (void)
  *
  * Looks for an icon in the list of default icon factories.  For
  * display to the user, you should use ctk_style_lookup_icon_set() on
- * the #GtkStyle for the widget that will display the icon, instead of
+ * the #CtkStyle for the widget that will display the icon, instead of
  * using this function directly, so that themes are taken into
  * account.
  *
- * Returns: (transfer none): a #GtkIconSet, or %NULL
+ * Returns: (transfer none): a #CtkIconSet, or %NULL
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
-GtkIconSet *
+CtkIconSet *
 ctk_icon_factory_lookup_default (const gchar *stock_id)
 {
   GSList *tmp_list;
-  GtkIconFactory *default_icons;
+  CtkIconFactory *default_icons;
 
   g_return_val_if_fail (stock_id != NULL, NULL);
 
   tmp_list = default_factories;
   while (tmp_list != NULL)
     {
-      GtkIconSet *icon_set =
+      CtkIconSet *icon_set =
         ctk_icon_factory_lookup (CTK_ICON_FACTORY (tmp_list->data),
                                  stock_id);
 
@@ -470,12 +470,12 @@ ctk_icon_factory_lookup_default (const gchar *stock_id)
 }
 
 static void
-register_stock_icon (GtkIconFactory *factory,
+register_stock_icon (CtkIconFactory *factory,
 		     const gchar    *stock_id,
                      const gchar    *icon_name)
 {
-  GtkIconSet *set = ctk_icon_set_new ();
-  GtkIconSource source = CTK_ICON_SOURCE_INIT (TRUE, TRUE, TRUE);
+  CtkIconSet *set = ctk_icon_set_new ();
+  CtkIconSource source = CTK_ICON_SOURCE_INIT (TRUE, TRUE, TRUE);
 
   source.type = CTK_ICON_SOURCE_STATIC_ICON_NAME;
   source.source.icon_name = (gchar *)icon_name;
@@ -487,12 +487,12 @@ register_stock_icon (GtkIconFactory *factory,
 }
 
 static void
-register_bidi_stock_icon (GtkIconFactory *factory,
+register_bidi_stock_icon (CtkIconFactory *factory,
 			  const gchar    *stock_id,
                           const gchar    *icon_name)
 {
-  GtkIconSet *set = ctk_icon_set_new ();
-  GtkIconSource source = CTK_ICON_SOURCE_INIT (FALSE, TRUE, TRUE);
+  CtkIconSet *set = ctk_icon_set_new ();
+  CtkIconSource source = CTK_ICON_SOURCE_INIT (FALSE, TRUE, TRUE);
 
   source.type = CTK_ICON_SOURCE_STATIC_ICON_NAME;
   source.source.icon_name = (gchar *)icon_name;
@@ -509,7 +509,7 @@ register_bidi_stock_icon (GtkIconFactory *factory,
 }
 
 static void
-get_default_icons (GtkIconFactory *factory)
+get_default_icons (CtkIconFactory *factory)
 {
   /* KEEP IN SYNC with ctkstock.c */
 
@@ -718,13 +718,13 @@ init_icon_sizes (void)
 }
 
 static gboolean
-icon_size_lookup_intern (GtkIconSize  size,
+icon_size_lookup_intern (CtkIconSize  size,
 			 gint        *widthp,
 			 gint        *heightp)
 {
   init_icon_sizes ();
 
-  if (size == (GtkIconSize)-1)
+  if (size == (CtkIconSize)-1)
     return FALSE;
 
   if (size >= icon_sizes_used)
@@ -744,15 +744,15 @@ icon_size_lookup_intern (GtkIconSize  size,
 
 /**
  * ctk_icon_size_lookup_for_settings:
- * @settings: a #GtkSettings object, used to determine
+ * @settings: a #CtkSettings object, used to determine
  *   which set of user preferences to used.
- * @size: (type int): an icon size (#GtkIconSize)
+ * @size: (type int): an icon size (#CtkIconSize)
  * @width: (out) (allow-none): location to store icon width
  * @height: (out) (allow-none): location to store icon height
  *
  * Obtains the pixel size of a semantic icon size, possibly
  * modified by user preferences for a particular
- * #GtkSettings. Normally @size would be
+ * #CtkSettings. Normally @size would be
  * #CTK_ICON_SIZE_MENU, #CTK_ICON_SIZE_BUTTON, etc.  This function
  * isn’t normally needed, ctk_widget_render_icon_pixbuf() is the usual
  * way to get an icon for rendering, then just look at the size of
@@ -768,8 +768,8 @@ icon_size_lookup_intern (GtkIconSize  size,
  * Deprecated: 3.10: Use ctk_icon_size_lookup() instead.
  */
 gboolean
-ctk_icon_size_lookup_for_settings (GtkSettings *settings,
-				   GtkIconSize  size,
+ctk_icon_size_lookup_for_settings (CtkSettings *settings,
+				   CtkIconSize  size,
 				   gint        *width,
 				   gint        *height)
 {
@@ -780,7 +780,7 @@ ctk_icon_size_lookup_for_settings (GtkSettings *settings,
 
 /**
  * ctk_icon_size_lookup:
- * @size: (type int): an icon size (#GtkIconSize)
+ * @size: (type int): an icon size (#CtkIconSize)
  * @width: (out) (allow-none): location to store icon width
  * @height: (out) (allow-none): location to store icon height
  *
@@ -796,7 +796,7 @@ ctk_icon_size_lookup_for_settings (GtkSettings *settings,
  * Returns: %TRUE if @size was a valid size
  */
 gboolean
-ctk_icon_size_lookup (GtkIconSize  size,
+ctk_icon_size_lookup (CtkIconSize  size,
                       gint        *widthp,
                       gint        *heightp)
 {
@@ -806,13 +806,13 @@ ctk_icon_size_lookup (GtkIconSize  size,
   return icon_size_lookup_intern (size, widthp, heightp);
 }
 
-static GtkIconSize
+static CtkIconSize
 icon_size_register_intern (const gchar *name,
 			   gint         width,
 			   gint         height)
 {
   IconAlias *old_alias;
-  GtkIconSize size;
+  CtkIconSize size;
 
   init_icon_sizes ();
 
@@ -859,11 +859,11 @@ icon_size_register_intern (const gchar *name,
  * Registers a new icon size, along the same lines as #CTK_ICON_SIZE_MENU,
  * etc. Returns the integer value for the size.
  *
- * Returns: (type int): integer value representing the size (#GtkIconSize)
+ * Returns: (type int): integer value representing the size (#CtkIconSize)
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
-GtkIconSize
+CtkIconSize
 ctk_icon_size_register (const gchar *name,
                         gint         width,
                         gint         height)
@@ -878,17 +878,17 @@ ctk_icon_size_register (const gchar *name,
 /**
  * ctk_icon_size_register_alias:
  * @alias: an alias for @target
- * @target: (type int): an existing icon size (#GtkIconSize)
+ * @target: (type int): an existing icon size (#CtkIconSize)
  *
  * Registers @alias as another name for @target.
  * So calling ctk_icon_size_from_name() with @alias as argument
  * will return @target.
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
 void
 ctk_icon_size_register_alias (const gchar *alias,
-                              GtkIconSize  target)
+                              CtkIconSize  target)
 {
   IconAlias *ia;
 
@@ -927,11 +927,11 @@ ctk_icon_size_register_alias (const gchar *alias,
  *
  * Looks up the icon size associated with @name.
  *
- * Returns: (type int): the icon size (#GtkIconSize)
+ * Returns: (type int): the icon size (#CtkIconSize)
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
-GtkIconSize
+CtkIconSize
 ctk_icon_size_from_name (const gchar *name)
 {
   IconAlias *ia;
@@ -948,17 +948,17 @@ ctk_icon_size_from_name (const gchar *name)
 
 /**
  * ctk_icon_size_get_name:
- * @size: (type int): a #GtkIconSize.
+ * @size: (type int): a #CtkIconSize.
  *
  * Gets the canonical name of the given icon size. The returned string
  * is statically allocated and should not be freed.
  *
  * Returns: the name of the given icon size.
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
 const gchar*
-ctk_icon_size_get_name (GtkIconSize  size)
+ctk_icon_size_get_name (CtkIconSize  size)
 {
   if (size >= icon_sizes_used)
     return NULL;
@@ -970,7 +970,7 @@ ctk_icon_size_get_name (GtkIconSize  size)
 
 /* Icon Set */
 
-struct _GtkIconSet
+struct _CtkIconSet
 {
   guint ref_count;
 
@@ -980,26 +980,26 @@ struct _GtkIconSet
 /**
  * ctk_icon_set_new:
  *
- * Creates a new #GtkIconSet. A #GtkIconSet represents a single icon
+ * Creates a new #CtkIconSet. A #CtkIconSet represents a single icon
  * in various sizes and widget states. It can provide a #GdkPixbuf
  * for a given size and state on request, and automatically caches
  * some of the rendered #GdkPixbuf objects.
  *
  * Normally you would use ctk_widget_render_icon_pixbuf() instead of
- * using #GtkIconSet directly. The one case where you’d use
- * #GtkIconSet is to create application-specific icon sets to place in
- * a #GtkIconFactory.
+ * using #CtkIconSet directly. The one case where you’d use
+ * #CtkIconSet is to create application-specific icon sets to place in
+ * a #CtkIconFactory.
  *
- * Returns: a new #GtkIconSet
+ * Returns: a new #CtkIconSet
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
-GtkIconSet*
+CtkIconSet*
 ctk_icon_set_new (void)
 {
-  GtkIconSet *icon_set;
+  CtkIconSet *icon_set;
 
-  icon_set = g_new (GtkIconSet, 1);
+  icon_set = g_new (CtkIconSet, 1);
 
   icon_set->ref_count = 1;
   icon_set->sources = NULL;
@@ -1011,22 +1011,22 @@ ctk_icon_set_new (void)
  * ctk_icon_set_new_from_pixbuf:
  * @pixbuf: a #GdkPixbuf
  *
- * Creates a new #GtkIconSet with @pixbuf as the default/fallback
- * source image. If you don’t add any additional #GtkIconSource to the
+ * Creates a new #CtkIconSet with @pixbuf as the default/fallback
+ * source image. If you don’t add any additional #CtkIconSource to the
  * icon set, all variants of the icon will be created from @pixbuf,
  * using scaling, pixelation, etc. as required to adjust the icon size
  * or make the icon look insensitive/prelighted.
  *
- * Returns: a new #GtkIconSet
+ * Returns: a new #CtkIconSet
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
-GtkIconSet *
+CtkIconSet *
 ctk_icon_set_new_from_pixbuf (GdkPixbuf *pixbuf)
 {
-  GtkIconSet *set;
+  CtkIconSet *set;
 
-  GtkIconSource source = CTK_ICON_SOURCE_INIT (TRUE, TRUE, TRUE);
+  CtkIconSource source = CTK_ICON_SOURCE_INIT (TRUE, TRUE, TRUE);
 
   g_return_val_if_fail (pixbuf != NULL, NULL);
 
@@ -1042,16 +1042,16 @@ ctk_icon_set_new_from_pixbuf (GdkPixbuf *pixbuf)
 
 /**
  * ctk_icon_set_ref:
- * @icon_set: a #GtkIconSet.
+ * @icon_set: a #CtkIconSet.
  *
  * Increments the reference count on @icon_set.
  *
  * Returns: @icon_set.
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
-GtkIconSet*
-ctk_icon_set_ref (GtkIconSet *icon_set)
+CtkIconSet*
+ctk_icon_set_ref (CtkIconSet *icon_set)
 {
   g_return_val_if_fail (icon_set != NULL, NULL);
   g_return_val_if_fail (icon_set->ref_count > 0, NULL);
@@ -1063,15 +1063,15 @@ ctk_icon_set_ref (GtkIconSet *icon_set)
 
 /**
  * ctk_icon_set_unref:
- * @icon_set: a #GtkIconSet
+ * @icon_set: a #CtkIconSet
  *
  * Decrements the reference count on @icon_set, and frees memory
  * if the reference count reaches 0.
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
 void
-ctk_icon_set_unref (GtkIconSet *icon_set)
+ctk_icon_set_unref (CtkIconSet *icon_set)
 {
   g_return_if_fail (icon_set != NULL);
   g_return_if_fail (icon_set->ref_count > 0);
@@ -1093,24 +1093,24 @@ ctk_icon_set_unref (GtkIconSet *icon_set)
     }
 }
 
-G_DEFINE_BOXED_TYPE (GtkIconSet, ctk_icon_set,
+G_DEFINE_BOXED_TYPE (CtkIconSet, ctk_icon_set,
                      ctk_icon_set_ref,
                      ctk_icon_set_unref)
 
 /**
  * ctk_icon_set_copy:
- * @icon_set: a #GtkIconSet
+ * @icon_set: a #CtkIconSet
  *
  * Copies @icon_set by value.
  *
- * Returns: a new #GtkIconSet identical to the first.
+ * Returns: a new #CtkIconSet identical to the first.
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  **/
-GtkIconSet*
-ctk_icon_set_copy (GtkIconSet *icon_set)
+CtkIconSet*
+ctk_icon_set_copy (CtkIconSet *icon_set)
 {
-  GtkIconSet *copy;
+  CtkIconSet *copy;
   GSList *tmp_list;
 
   copy = ctk_icon_set_new ();
@@ -1130,11 +1130,11 @@ ctk_icon_set_copy (GtkIconSet *icon_set)
 }
 
 static gboolean
-sizes_equivalent (GtkIconSize lhs,
-                  GtkIconSize rhs)
+sizes_equivalent (CtkIconSize lhs,
+                  CtkIconSize rhs)
 {
   /* We used to consider sizes equivalent if they were
-   * the same pixel size, but we don't have the GtkSettings
+   * the same pixel size, but we don't have the CtkSettings
    * here, so we can't do that. Plus, it's not clear that
    * it is right... it was just a workaround for the fact
    * that we register icons by logical size, not pixel size.
@@ -1152,14 +1152,14 @@ sizes_equivalent (GtkIconSize lhs,
 #endif
 }
 
-static GtkIconSource *
-find_best_matching_source (GtkIconSet       *icon_set,
-			   GtkTextDirection  direction,
-			   GtkStateType      state,
-			   GtkIconSize       size,
+static CtkIconSource *
+find_best_matching_source (CtkIconSet       *icon_set,
+			   CtkTextDirection  direction,
+			   CtkStateType      state,
+			   CtkIconSize       size,
 			   GSList           *failed)
 {
-  GtkIconSource *source;
+  CtkIconSource *source;
   GSList *tmp_list;
 
   /* We need to find the best icon source.  Direction matters more
@@ -1174,11 +1174,11 @@ find_best_matching_source (GtkIconSet       *icon_set,
   tmp_list = icon_set->sources;
   while (tmp_list != NULL)
     {
-      GtkIconSource *s = tmp_list->data;
+      CtkIconSource *s = tmp_list->data;
 
       if ((s->any_direction || (s->direction == direction)) &&
           (s->any_state || (s->state == state)) &&
-          (s->any_size || size == (GtkIconSize)-1 || (sizes_equivalent (size, s->size))))
+          (s->any_size || size == (CtkIconSize)-1 || (sizes_equivalent (size, s->size))))
         {
 	  if (!g_slist_find (failed, s))
 	    {
@@ -1194,8 +1194,8 @@ find_best_matching_source (GtkIconSet       *icon_set,
 }
 
 static gboolean
-ensure_filename_pixbuf (GtkIconSet    *icon_set,
-			GtkIconSource *source)
+ensure_filename_pixbuf (CtkIconSet    *icon_set,
+			CtkIconSource *source)
 {
   if (source->filename_pixbuf == NULL)
     {
@@ -1223,14 +1223,14 @@ ensure_filename_pixbuf (GtkIconSet    *icon_set,
 }
 
 static GdkPixbuf *
-render_icon_name_pixbuf (GtkIconSource *icon_source,
-			 GtkCssStyle   *style,
-			 GtkIconSize    size,
+render_icon_name_pixbuf (CtkIconSource *icon_source,
+			 CtkCssStyle   *style,
+			 CtkIconSize    size,
                          gint           scale)
 {
   GdkPixbuf *pixbuf;
   GdkPixbuf *tmp_pixbuf;
-  GtkIconTheme *icon_theme;
+  CtkIconTheme *icon_theme;
   gint width, height, pixel_size;
   gint *sizes, *s, dist;
   GError *error = NULL;
@@ -1240,7 +1240,7 @@ render_icon_name_pixbuf (GtkIconSource *icon_source,
 
   if (!ctk_icon_size_lookup (size, &width, &height))
     {
-      if (size == (GtkIconSize)-1)
+      if (size == (CtkIconSize)-1)
 	{
 	  /* Find an available size close to 48 */
 	  sizes = ctk_icon_theme_get_icon_sizes (icon_theme, icon_source->source.icon_name);
@@ -1286,7 +1286,7 @@ render_icon_name_pixbuf (GtkIconSource *icon_source,
     {
       gchar *suffix[3] = { NULL, "-ltr", "-rtl" };
       gchar *names[3];
-      GtkIconInfo *info;
+      CtkIconInfo *info;
 
       names[0] = g_strconcat (icon_source->source.icon_name, suffix[icon_source->direction], NULL);
       names[1] = icon_source->source.icon_name;
@@ -1337,11 +1337,11 @@ render_icon_name_pixbuf (GtkIconSource *icon_source,
 }
 
 static GdkPixbuf *
-find_and_render_icon_source (GtkIconSet       *icon_set,
-			     GtkCssStyle      *style,
-			     GtkTextDirection  direction,
-			     GtkStateType      state,
-			     GtkIconSize       size,
+find_and_render_icon_source (CtkIconSet       *icon_set,
+			     CtkCssStyle      *style,
+			     CtkTextDirection  direction,
+			     CtkStateType      state,
+			     CtkIconSize       size,
 			     gint              scale)
 {
   GSList *failed = NULL;
@@ -1351,7 +1351,7 @@ find_and_render_icon_source (GtkIconSet       *icon_set,
    *
    *  A) If loading a source that specifies a filename fails,
    *     we treat that as permanent, and remove the source
-   *     from the GtkIconSet. (in ensure_filename_pixbuf ()
+   *     from the CtkIconSet. (in ensure_filename_pixbuf ()
    *  B) If loading a themed icon fails, or scaling an icon
    *     fails, we treat that as transient and will try
    *     again next time the icon falls out of the cache
@@ -1359,7 +1359,7 @@ find_and_render_icon_source (GtkIconSet       *icon_set,
    */
   while (pixbuf == NULL)
     {
-      GtkIconSource *source = find_best_matching_source (icon_set, direction, state, size, failed);
+      CtkIconSource *source = find_best_matching_source (icon_set, direction, state, size, failed);
 
       if (source == NULL)
 	break;
@@ -1413,13 +1413,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 static GdkPixbuf*
-render_fallback_image (GtkCssStyle       *style,
-                       GtkTextDirection   direction,
-                       GtkStateType       state,
-                       GtkIconSize        size)
+render_fallback_image (CtkCssStyle       *style,
+                       CtkTextDirection   direction,
+                       CtkStateType       state,
+                       CtkIconSize        size)
 {
   /* This icon can be used for any direction/state/size */
-  static GtkIconSource fallback_source = CTK_ICON_SOURCE_INIT (TRUE, TRUE, TRUE);
+  static CtkIconSource fallback_source = CTK_ICON_SOURCE_INIT (TRUE, TRUE, TRUE);
 
   if (fallback_source.type == CTK_ICON_SOURCE_EMPTY)
     {
@@ -1432,15 +1432,15 @@ render_fallback_image (GtkCssStyle       *style,
 }
 
 GdkPixbuf*
-ctk_icon_set_render_icon_pixbuf_for_scale (GtkIconSet       *icon_set,
-					   GtkCssStyle      *style,
-                                           GtkTextDirection  direction,
-					   GtkIconSize       size,
+ctk_icon_set_render_icon_pixbuf_for_scale (CtkIconSet       *icon_set,
+					   CtkCssStyle      *style,
+                                           CtkTextDirection  direction,
+					   CtkIconSize       size,
 					   gint              scale)
 {
   GdkPixbuf *icon = NULL;
-  GtkStateType state;
-  GtkCssIconEffect effect;
+  CtkStateType state;
+  CtkCssIconEffect effect;
 
   g_return_val_if_fail (icon_set != NULL, NULL);
   g_return_val_if_fail (CTK_IS_CSS_STYLE (style), NULL);
@@ -1475,9 +1475,9 @@ ctk_icon_set_render_icon_pixbuf_for_scale (GtkIconSet       *icon_set,
 
 /**
  * ctk_icon_set_render_icon_pixbuf:
- * @icon_set: a #GtkIconSet
- * @context: a #GtkStyleContext
- * @size: (type int): icon size (#GtkIconSize). A size of `(GtkIconSize)-1`
+ * @icon_set: a #CtkIconSet
+ * @context: a #CtkStyleContext
+ * @size: (type int): icon size (#CtkIconSize). A size of `(CtkIconSize)-1`
  *        means render at the size of the source and don’t scale.
  *
  * Renders an icon using ctk_render_icon_pixbuf(). In most cases,
@@ -1491,12 +1491,12 @@ ctk_icon_set_render_icon_pixbuf_for_scale (GtkIconSet       *icon_set,
  *
  * Since: 3.0
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
 GdkPixbuf *
-ctk_icon_set_render_icon_pixbuf (GtkIconSet        *icon_set,
-                                 GtkStyleContext   *context,
-                                 GtkIconSize        size)
+ctk_icon_set_render_icon_pixbuf (CtkIconSet        *icon_set,
+                                 CtkStyleContext   *context,
+                                 CtkIconSize        size)
 {
   g_return_val_if_fail (icon_set != NULL, NULL);
   g_return_val_if_fail (CTK_IS_STYLE_CONTEXT (context), NULL);
@@ -1512,9 +1512,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 
 /**
  * ctk_icon_set_render_icon_surface:
- * @icon_set: a #GtkIconSet
- * @context: a #GtkStyleContext
- * @size: (type int): icon size (#GtkIconSize). A size of `(GtkIconSize)-1`
+ * @icon_set: a #CtkIconSet
+ * @context: a #CtkStyleContext
+ * @size: (type int): icon size (#CtkIconSize). A size of `(CtkIconSize)-1`
  *        means render at the size of the source and don’t scale.
  * @scale: the window scale to render for
  * @for_window: (allow-none): #GdkWindow to optimize drawing for, or %NULL
@@ -1530,12 +1530,12 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
  *
  * Since: 3.10
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
 cairo_surface_t *
-ctk_icon_set_render_icon_surface  (GtkIconSet      *icon_set,
-				   GtkStyleContext *context,
-				   GtkIconSize      size,
+ctk_icon_set_render_icon_surface  (CtkIconSet      *icon_set,
+				   CtkStyleContext *context,
+				   CtkIconSize      size,
 				   gint             scale,
 				   GdkWindow       *for_window)
 {
@@ -1558,11 +1558,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 
 /**
  * ctk_icon_set_render_icon:
- * @icon_set: a #GtkIconSet
- * @style: (allow-none): a #GtkStyle associated with @widget, or %NULL
+ * @icon_set: a #CtkIconSet
+ * @style: (allow-none): a #CtkStyle associated with @widget, or %NULL
  * @direction: text direction
  * @state: widget state
- * @size: (type int): icon size (#GtkIconSize). A size of `(GtkIconSize)-1`
+ * @size: (type int): icon size (#CtkIconSize). A size of `(CtkIconSize)-1`
  *        means render at the size of the source and don’t scale.
  * @widget: (allow-none): widget that will display the icon, or %NULL.
  *          The only use that is typically made of this
@@ -1583,17 +1583,17 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
  * Deprecated: 3.0: Use ctk_icon_set_render_icon_pixbuf() instead
  */
 GdkPixbuf*
-ctk_icon_set_render_icon (GtkIconSet        *icon_set,
-                          GtkStyle          *style,
-                          GtkTextDirection   direction,
-                          GtkStateType       state,
-                          GtkIconSize        size,
-                          GtkWidget         *widget,
+ctk_icon_set_render_icon (CtkIconSet        *icon_set,
+                          CtkStyle          *style,
+                          CtkTextDirection   direction,
+                          CtkStateType       state,
+                          CtkIconSize        size,
+                          CtkWidget         *widget,
                           const char        *detail)
 {
   GdkPixbuf *icon;
-  GtkStyleContext *context = NULL;
-  GtkStateFlags flags = 0;
+  CtkStyleContext *context = NULL;
+  CtkStateFlags flags = 0;
 
   g_return_val_if_fail (icon_set != NULL, NULL);
 
@@ -1650,8 +1650,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 static int
 icon_source_compare (gconstpointer ap, gconstpointer bp)
 {
-  const GtkIconSource *a = ap;
-  const GtkIconSource *b = bp;
+  const CtkIconSource *a = ap;
+  const CtkIconSource *b = bp;
 
   if (!a->any_direction && b->any_direction)
     return -1;
@@ -1671,15 +1671,15 @@ icon_source_compare (gconstpointer ap, gconstpointer bp)
 
 /**
  * ctk_icon_set_add_source:
- * @icon_set: a #GtkIconSet
- * @source: a #GtkIconSource
+ * @icon_set: a #CtkIconSet
+ * @source: a #CtkIconSource
  *
- * Icon sets have a list of #GtkIconSource, which they use as base
+ * Icon sets have a list of #CtkIconSource, which they use as base
  * icons for rendering icons in different states and sizes. Icons are
  * scaled, made to look insensitive, etc. in
- * ctk_icon_set_render_icon(), but #GtkIconSet needs base images to
+ * ctk_icon_set_render_icon(), but #CtkIconSet needs base images to
  * work with. The base images and when to use them are described by
- * a #GtkIconSource.
+ * a #CtkIconSource.
  *
  * This function copies @source, so you can reuse the same source immediately
  * without affecting the icon set.
@@ -1693,25 +1693,25 @@ icon_source_compare (gconstpointer ap, gconstpointer bp)
  *
  * You should nearly always add a “default” icon source with all
  * fields wildcarded, which will be used as a fallback if no more
- * specific source matches. #GtkIconSet always prefers more specific
+ * specific source matches. #CtkIconSet always prefers more specific
  * icon sources to more generic icon sources. The order in which you
  * add the sources to the icon set does not matter.
  *
  * ctk_icon_set_new_from_pixbuf() creates a new icon set with a
  * default icon source based on the given pixbuf.
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
 void
-ctk_icon_set_add_source (GtkIconSet          *icon_set,
-                         const GtkIconSource *source)
+ctk_icon_set_add_source (CtkIconSet          *icon_set,
+                         const CtkIconSource *source)
 {
   g_return_if_fail (icon_set != NULL);
   g_return_if_fail (source != NULL);
 
   if (source->type == CTK_ICON_SOURCE_EMPTY)
     {
-      g_warning ("Useless empty GtkIconSource");
+      g_warning ("Useless empty CtkIconSource");
       return;
     }
 
@@ -1722,19 +1722,19 @@ ctk_icon_set_add_source (GtkIconSet          *icon_set,
 
 /**
  * ctk_icon_set_get_sizes:
- * @icon_set: a #GtkIconSet
+ * @icon_set: a #CtkIconSet
  * @sizes: (array length=n_sizes) (out) (type int): return location
- *     for array of sizes (#GtkIconSize)
+ *     for array of sizes (#CtkIconSize)
  * @n_sizes: location to store number of elements in returned array
  *
  * Obtains a list of icon sizes this icon set can render. The returned
  * array must be freed with g_free().
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
 void
-ctk_icon_set_get_sizes (GtkIconSet   *icon_set,
-                        GtkIconSize **sizes,
+ctk_icon_set_get_sizes (CtkIconSet   *icon_set,
+                        CtkIconSize **sizes,
                         gint         *n_sizes)
 {
   GSList *tmp_list;
@@ -1748,7 +1748,7 @@ ctk_icon_set_get_sizes (GtkIconSet   *icon_set,
   tmp_list = icon_set->sources;
   while (tmp_list != NULL)
     {
-      GtkIconSource *source;
+      CtkIconSource *source;
 
       source = tmp_list->data;
 
@@ -1770,7 +1770,7 @@ ctk_icon_set_get_sizes (GtkIconSet   *icon_set,
 
       init_icon_sizes ();
 
-      *sizes = g_new (GtkIconSize, icon_sizes_used);
+      *sizes = g_new (CtkIconSize, icon_sizes_used);
       *n_sizes = icon_sizes_used - 1;
 
       i = 1;
@@ -1785,7 +1785,7 @@ ctk_icon_set_get_sizes (GtkIconSet   *icon_set,
       gint i;
 
       *n_sizes = g_slist_length (specifics);
-      *sizes = g_new (GtkIconSize, *n_sizes);
+      *sizes = g_new (CtkIconSize, *n_sizes);
 
       i = 0;
       tmp_list = specifics;
@@ -1805,9 +1805,9 @@ ctk_icon_set_get_sizes (GtkIconSet   *icon_set,
 /**
  * ctk_icon_source_new:
  *
- * Creates a new #GtkIconSource. A #GtkIconSource contains a #GdkPixbuf (or
+ * Creates a new #CtkIconSource. A #CtkIconSource contains a #GdkPixbuf (or
  * image filename) that serves as the base image for one or more of the
- * icons in a #GtkIconSet, along with a specification for which icons in the
+ * icons in a #CtkIconSet, along with a specification for which icons in the
  * icon set will be based on that pixbuf or image file. An icon set contains
  * a set of icons that represent “the same” logical concept in different states,
  * different global text directions, and different sizes.
@@ -1816,11 +1816,11 @@ ctk_icon_set_get_sizes (GtkIconSet   *icon_set,
  * point in a different direction in Hebrew and in English; it might
  * look different when insensitive; and it might change size depending
  * on toolbar mode (small/large icons). So a single icon set would
- * contain all those variants of the icon. #GtkIconSet contains a list
- * of #GtkIconSource from which it can derive specific icon variants in
+ * contain all those variants of the icon. #CtkIconSet contains a list
+ * of #CtkIconSource from which it can derive specific icon variants in
  * the set.
  *
- * In the simplest case, #GtkIconSet contains one source pixbuf from
+ * In the simplest case, #CtkIconSet contains one source pixbuf from
  * which it derives all variants. The convenience function
  * ctk_icon_set_new_from_pixbuf() handles this case; if you only have
  * one source pixbuf, just use that function.
@@ -1834,16 +1834,16 @@ ctk_icon_set_get_sizes (GtkIconSet   *icon_set,
  * the icon source will be used as the base icon for any desired text
  * direction, widget state, or icon size.
  *
- * Returns: a new #GtkIconSource
+ * Returns: a new #CtkIconSource
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
-GtkIconSource*
+CtkIconSource*
 ctk_icon_source_new (void)
 {
-  GtkIconSource *src;
+  CtkIconSource *src;
 
-  src = g_new0 (GtkIconSource, 1);
+  src = g_new0 (CtkIconSource, 1);
 
   src->direction = CTK_TEXT_DIR_NONE;
   src->size = CTK_ICON_SIZE_INVALID;
@@ -1858,22 +1858,22 @@ ctk_icon_source_new (void)
 
 /**
  * ctk_icon_source_copy:
- * @source: a #GtkIconSource
+ * @source: a #CtkIconSource
  *
  * Creates a copy of @source; mostly useful for language bindings.
  *
- * Returns: a new #GtkIconSource
+ * Returns: a new #CtkIconSource
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
-GtkIconSource*
-ctk_icon_source_copy (const GtkIconSource *source)
+CtkIconSource*
+ctk_icon_source_copy (const CtkIconSource *source)
 {
-  GtkIconSource *copy;
+  CtkIconSource *copy;
 
   g_return_val_if_fail (source != NULL, NULL);
 
-  copy = g_new (GtkIconSource, 1);
+  copy = g_new (CtkIconSource, 1);
 
   *copy = *source;
 
@@ -1902,15 +1902,15 @@ ctk_icon_source_copy (const GtkIconSource *source)
 
 /**
  * ctk_icon_source_free:
- * @source: a #GtkIconSource
+ * @source: a #CtkIconSource
  *
  * Frees a dynamically-allocated icon source, along with its
  * filename, size, and pixbuf fields if those are not %NULL.
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
 void
-ctk_icon_source_free (GtkIconSource *source)
+ctk_icon_source_free (CtkIconSource *source)
 {
   g_return_if_fail (source != NULL);
 
@@ -1918,12 +1918,12 @@ ctk_icon_source_free (GtkIconSource *source)
   g_free (source);
 }
 
-G_DEFINE_BOXED_TYPE (GtkIconSource, ctk_icon_source,
+G_DEFINE_BOXED_TYPE (CtkIconSource, ctk_icon_source,
                      ctk_icon_source_copy,
                      ctk_icon_source_free)
 
 static void
-icon_source_clear (GtkIconSource *source)
+icon_source_clear (CtkIconSource *source)
 {
   switch (source->type)
     {
@@ -1955,16 +1955,16 @@ icon_source_clear (GtkIconSource *source)
 
 /**
  * ctk_icon_source_set_filename:
- * @source: a #GtkIconSource
+ * @source: a #CtkIconSource
  * @filename: (type filename): image file to use
  *
  * Sets the name of an image file to use as a base image when creating
- * icon variants for #GtkIconSet. The filename must be absolute.
+ * icon variants for #CtkIconSet. The filename must be absolute.
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
 void
-ctk_icon_source_set_filename (GtkIconSource *source,
+ctk_icon_source_set_filename (CtkIconSource *source,
 			      const gchar   *filename)
 {
   g_return_if_fail (source != NULL);
@@ -1985,16 +1985,16 @@ ctk_icon_source_set_filename (GtkIconSource *source,
 
 /**
  * ctk_icon_source_set_icon_name:
- * @source: a #GtkIconSource
+ * @source: a #CtkIconSource
  * @icon_name: (allow-none): name of icon to use
  *
  * Sets the name of an icon to look up in the current icon theme
- * to use as a base image when creating icon variants for #GtkIconSet.
+ * to use as a base image when creating icon variants for #CtkIconSet.
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
 void
-ctk_icon_source_set_icon_name (GtkIconSource *source,
+ctk_icon_source_set_icon_name (CtkIconSource *source,
 			       const gchar   *icon_name)
 {
   g_return_if_fail (source != NULL);
@@ -2014,16 +2014,16 @@ ctk_icon_source_set_icon_name (GtkIconSource *source,
 
 /**
  * ctk_icon_source_set_pixbuf:
- * @source: a #GtkIconSource
+ * @source: a #CtkIconSource
  * @pixbuf: pixbuf to use as a source
  *
  * Sets a pixbuf to use as a base image when creating icon variants
- * for #GtkIconSet.
+ * for #CtkIconSet.
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
 void
-ctk_icon_source_set_pixbuf (GtkIconSource *source,
+ctk_icon_source_set_pixbuf (CtkIconSource *source,
                             GdkPixbuf     *pixbuf)
 {
   g_return_if_fail (source != NULL);
@@ -2044,7 +2044,7 @@ ctk_icon_source_set_pixbuf (GtkIconSource *source,
 
 /**
  * ctk_icon_source_get_filename:
- * @source: a #GtkIconSource
+ * @source: a #CtkIconSource
  *
  * Retrieves the source filename, or %NULL if none is set. The
  * filename is not a copy, and should not be modified or expected to
@@ -2053,10 +2053,10 @@ ctk_icon_source_set_pixbuf (GtkIconSource *source,
  * Returns: (type filename): image filename. This string must not
  * be modified or freed.
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
 const gchar*
-ctk_icon_source_get_filename (const GtkIconSource *source)
+ctk_icon_source_get_filename (const CtkIconSource *source)
 {
   g_return_val_if_fail (source != NULL, NULL);
 
@@ -2068,7 +2068,7 @@ ctk_icon_source_get_filename (const GtkIconSource *source)
 
 /**
  * ctk_icon_source_get_icon_name:
- * @source: a #GtkIconSource
+ * @source: a #CtkIconSource
  *
  * Retrieves the source icon name, or %NULL if none is set. The
  * icon_name is not a copy, and should not be modified or expected to
@@ -2076,10 +2076,10 @@ ctk_icon_source_get_filename (const GtkIconSource *source)
  *
  * Returns: icon name. This string must not be modified or freed.
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
 const gchar*
-ctk_icon_source_get_icon_name (const GtkIconSource *source)
+ctk_icon_source_get_icon_name (const CtkIconSource *source)
 {
   g_return_val_if_fail (source != NULL, NULL);
 
@@ -2092,22 +2092,22 @@ ctk_icon_source_get_icon_name (const GtkIconSource *source)
 
 /**
  * ctk_icon_source_get_pixbuf:
- * @source: a #GtkIconSource
+ * @source: a #CtkIconSource
  *
  * Retrieves the source pixbuf, or %NULL if none is set.
  * In addition, if a filename source is in use, this
  * function in some cases will return the pixbuf from
  * loaded from the filename. This is, for example, true
- * for the GtkIconSource passed to the #GtkStyle render_icon()
+ * for the CtkIconSource passed to the #CtkStyle render_icon()
  * virtual function. The reference count on the pixbuf is
  * not incremented.
  *
  * Returns: (transfer none): source pixbuf
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
 GdkPixbuf*
-ctk_icon_source_get_pixbuf (const GtkIconSource *source)
+ctk_icon_source_get_pixbuf (const CtkIconSource *source)
 {
   g_return_val_if_fail (source != NULL, NULL);
 
@@ -2121,23 +2121,23 @@ ctk_icon_source_get_pixbuf (const GtkIconSource *source)
 
 /**
  * ctk_icon_source_set_direction_wildcarded:
- * @source: a #GtkIconSource
+ * @source: a #CtkIconSource
  * @setting: %TRUE to wildcard the text direction
  *
  * If the text direction is wildcarded, this source can be used
- * as the base image for an icon in any #GtkTextDirection.
+ * as the base image for an icon in any #CtkTextDirection.
  * If the text direction is not wildcarded, then the
  * text direction the icon source applies to should be set
  * with ctk_icon_source_set_direction(), and the icon source
  * will only be used with that text direction.
  *
- * #GtkIconSet prefers non-wildcarded sources (exact matches) over
+ * #CtkIconSet prefers non-wildcarded sources (exact matches) over
  * wildcarded sources, and will use an exact match when possible.
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
 void
-ctk_icon_source_set_direction_wildcarded (GtkIconSource *source,
+ctk_icon_source_set_direction_wildcarded (CtkIconSource *source,
                                           gboolean       setting)
 {
   g_return_if_fail (source != NULL);
@@ -2147,27 +2147,27 @@ ctk_icon_source_set_direction_wildcarded (GtkIconSource *source,
 
 /**
  * ctk_icon_source_set_state_wildcarded:
- * @source: a #GtkIconSource
+ * @source: a #CtkIconSource
  * @setting: %TRUE to wildcard the widget state
  *
  * If the widget state is wildcarded, this source can be used as the
- * base image for an icon in any #GtkStateType.  If the widget state
+ * base image for an icon in any #CtkStateType.  If the widget state
  * is not wildcarded, then the state the source applies to should be
  * set with ctk_icon_source_set_state() and the icon source will
  * only be used with that specific state.
  *
- * #GtkIconSet prefers non-wildcarded sources (exact matches) over
+ * #CtkIconSet prefers non-wildcarded sources (exact matches) over
  * wildcarded sources, and will use an exact match when possible.
  *
- * #GtkIconSet will normally transform wildcarded source images to
+ * #CtkIconSet will normally transform wildcarded source images to
  * produce an appropriate icon for a given state, for example
  * lightening an image on prelight, but will not modify source images
  * that match exactly.
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
 void
-ctk_icon_source_set_state_wildcarded (GtkIconSource *source,
+ctk_icon_source_set_state_wildcarded (CtkIconSource *source,
                                       gboolean       setting)
 {
   g_return_if_fail (source != NULL);
@@ -2178,7 +2178,7 @@ ctk_icon_source_set_state_wildcarded (GtkIconSource *source,
 
 /**
  * ctk_icon_source_set_size_wildcarded:
- * @source: a #GtkIconSource
+ * @source: a #CtkIconSource
  * @setting: %TRUE to wildcard the widget state
  *
  * If the icon size is wildcarded, this source can be used as the base
@@ -2187,17 +2187,17 @@ ctk_icon_source_set_state_wildcarded (GtkIconSource *source,
  * ctk_icon_source_set_size() and the icon source will only be used
  * with that specific size.
  *
- * #GtkIconSet prefers non-wildcarded sources (exact matches) over
+ * #CtkIconSet prefers non-wildcarded sources (exact matches) over
  * wildcarded sources, and will use an exact match when possible.
  *
- * #GtkIconSet will normally scale wildcarded source images to produce
+ * #CtkIconSet will normally scale wildcarded source images to produce
  * an appropriate icon at a given size, but will not change the size
  * of source images that match exactly.
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
 void
-ctk_icon_source_set_size_wildcarded (GtkIconSource *source,
+ctk_icon_source_set_size_wildcarded (CtkIconSource *source,
                                      gboolean       setting)
 {
   g_return_if_fail (source != NULL);
@@ -2207,16 +2207,16 @@ ctk_icon_source_set_size_wildcarded (GtkIconSource *source,
 
 /**
  * ctk_icon_source_get_size_wildcarded:
- * @source: a #GtkIconSource
+ * @source: a #CtkIconSource
  *
  * Gets the value set by ctk_icon_source_set_size_wildcarded().
  *
  * Returns: %TRUE if this icon source is a base for any icon size variant
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
 gboolean
-ctk_icon_source_get_size_wildcarded (const GtkIconSource *source)
+ctk_icon_source_get_size_wildcarded (const CtkIconSource *source)
 {
   g_return_val_if_fail (source != NULL, TRUE);
 
@@ -2225,16 +2225,16 @@ ctk_icon_source_get_size_wildcarded (const GtkIconSource *source)
 
 /**
  * ctk_icon_source_get_state_wildcarded:
- * @source: a #GtkIconSource
+ * @source: a #CtkIconSource
  *
  * Gets the value set by ctk_icon_source_set_state_wildcarded().
  *
  * Returns: %TRUE if this icon source is a base for any widget state variant
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
 gboolean
-ctk_icon_source_get_state_wildcarded (const GtkIconSource *source)
+ctk_icon_source_get_state_wildcarded (const CtkIconSource *source)
 {
   g_return_val_if_fail (source != NULL, TRUE);
 
@@ -2243,16 +2243,16 @@ ctk_icon_source_get_state_wildcarded (const GtkIconSource *source)
 
 /**
  * ctk_icon_source_get_direction_wildcarded:
- * @source: a #GtkIconSource
+ * @source: a #CtkIconSource
  *
  * Gets the value set by ctk_icon_source_set_direction_wildcarded().
  *
  * Returns: %TRUE if this icon source is a base for any text direction variant
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
 gboolean
-ctk_icon_source_get_direction_wildcarded (const GtkIconSource *source)
+ctk_icon_source_get_direction_wildcarded (const CtkIconSource *source)
 {
   g_return_val_if_fail (source != NULL, TRUE);
 
@@ -2261,7 +2261,7 @@ ctk_icon_source_get_direction_wildcarded (const GtkIconSource *source)
 
 /**
  * ctk_icon_source_set_direction:
- * @source: a #GtkIconSource
+ * @source: a #CtkIconSource
  * @direction: text direction this source applies to
  *
  * Sets the text direction this icon source is intended to be used
@@ -2272,11 +2272,11 @@ ctk_icon_source_get_direction_wildcarded (const GtkIconSource *source)
  * call ctk_icon_source_set_direction_wildcarded() to un-wildcard it
  * in addition to calling this function.
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
 void
-ctk_icon_source_set_direction (GtkIconSource   *source,
-                               GtkTextDirection direction)
+ctk_icon_source_set_direction (CtkIconSource   *source,
+                               CtkTextDirection direction)
 {
   g_return_if_fail (source != NULL);
 
@@ -2285,7 +2285,7 @@ ctk_icon_source_set_direction (GtkIconSource   *source,
 
 /**
  * ctk_icon_source_set_state:
- * @source: a #GtkIconSource
+ * @source: a #CtkIconSource
  * @state: widget state this source applies to
  *
  * Sets the widget state this icon source is intended to be used
@@ -2296,11 +2296,11 @@ ctk_icon_source_set_direction (GtkIconSource   *source,
  * call ctk_icon_source_set_state_wildcarded() to un-wildcard it
  * in addition to calling this function.
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
 void
-ctk_icon_source_set_state (GtkIconSource *source,
-                           GtkStateType   state)
+ctk_icon_source_set_state (CtkIconSource *source,
+                           CtkStateType   state)
 {
   g_return_if_fail (source != NULL);
 
@@ -2309,8 +2309,8 @@ ctk_icon_source_set_state (GtkIconSource *source,
 
 /**
  * ctk_icon_source_set_size:
- * @source: a #GtkIconSource
- * @size: (type int): icon size (#GtkIconSize) this source applies to
+ * @source: a #CtkIconSource
+ * @size: (type int): icon size (#CtkIconSize) this source applies to
  *
  * Sets the icon size this icon source is intended to be used
  * with.
@@ -2320,11 +2320,11 @@ ctk_icon_source_set_state (GtkIconSource *source,
  * call ctk_icon_source_set_size_wildcarded() to un-wildcard it
  * in addition to calling this function.
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
 void
-ctk_icon_source_set_size (GtkIconSource *source,
-                          GtkIconSize    size)
+ctk_icon_source_set_size (CtkIconSource *source,
+                          CtkIconSize    size)
 {
   g_return_if_fail (source != NULL);
 
@@ -2333,7 +2333,7 @@ ctk_icon_source_set_size (GtkIconSource *source,
 
 /**
  * ctk_icon_source_get_direction:
- * @source: a #GtkIconSource
+ * @source: a #CtkIconSource
  *
  * Obtains the text direction this icon source applies to. The return
  * value is only useful/meaningful if the text direction is not
@@ -2341,10 +2341,10 @@ ctk_icon_source_set_size (GtkIconSource *source,
  *
  * Returns: text direction this source matches
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
-GtkTextDirection
-ctk_icon_source_get_direction (const GtkIconSource *source)
+CtkTextDirection
+ctk_icon_source_get_direction (const CtkIconSource *source)
 {
   g_return_val_if_fail (source != NULL, 0);
 
@@ -2353,7 +2353,7 @@ ctk_icon_source_get_direction (const GtkIconSource *source)
 
 /**
  * ctk_icon_source_get_state:
- * @source: a #GtkIconSource
+ * @source: a #CtkIconSource
  *
  * Obtains the widget state this icon source applies to. The return
  * value is only useful/meaningful if the widget state is not
@@ -2361,10 +2361,10 @@ ctk_icon_source_get_direction (const GtkIconSource *source)
  *
  * Returns: widget state this source matches
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
-GtkStateType
-ctk_icon_source_get_state (const GtkIconSource *source)
+CtkStateType
+ctk_icon_source_get_state (const CtkIconSource *source)
 {
   g_return_val_if_fail (source != NULL, 0);
 
@@ -2373,17 +2373,17 @@ ctk_icon_source_get_state (const GtkIconSource *source)
 
 /**
  * ctk_icon_source_get_size:
- * @source: a #GtkIconSource
+ * @source: a #CtkIconSource
  *
  * Obtains the icon size this source applies to. The return value
  * is only useful/meaningful if the icon size is not wildcarded.
  *
- * Returns: (type int): icon size (#GtkIconSize) this source matches.
+ * Returns: (type int): icon size (#CtkIconSize) this source matches.
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
-GtkIconSize
-ctk_icon_source_get_size (const GtkIconSource *source)
+CtkIconSize
+ctk_icon_source_get_size (const CtkIconSource *source)
 {
   g_return_val_if_fail (source != NULL, 0);
 
@@ -2399,7 +2399,7 @@ ctk_icon_source_get_size (const GtkIconSource *source)
  *
  * Returns: List of ids in icon factories
  *
- * Deprecated: 3.10: Use #GtkIconTheme instead.
+ * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
 GList*
 _ctk_icon_factory_list_ids (void)
@@ -2415,8 +2415,8 @@ _ctk_icon_factory_list_ids (void)
   while (tmp_list != NULL)
     {
       GList *these_ids;
-      GtkIconFactory *factory = CTK_ICON_FACTORY (tmp_list->data);
-      GtkIconFactoryPrivate *priv = factory->priv;
+      CtkIconFactory *factory = CTK_ICON_FACTORY (tmp_list->data);
+      CtkIconFactoryPrivate *priv = factory->priv;
 
       these_ids = g_hash_table_get_keys (priv->icons);
 
@@ -2438,9 +2438,9 @@ typedef struct {
   gchar            *stock_id;
   gchar            *filename;
   gchar            *icon_name;
-  GtkTextDirection  direction;
-  GtkIconSize       size;
-  GtkStateType      state;
+  CtkTextDirection  direction;
+  CtkIconSize       size;
+  CtkStateType      state;
 } IconSourceParserData;
 
 static void
@@ -2569,8 +2569,8 @@ static const GMarkupParser icon_source_parser =
   };
 
 static gboolean
-ctk_icon_factory_buildable_custom_tag_start (GtkBuildable     *buildable,
-					     GtkBuilder       *builder,
+ctk_icon_factory_buildable_custom_tag_start (CtkBuildable     *buildable,
+					     CtkBuilder       *builder,
 					     GObject          *child,
 					     const gchar      *tagname,
 					     GMarkupParser    *parser,
@@ -2591,21 +2591,21 @@ ctk_icon_factory_buildable_custom_tag_start (GtkBuildable     *buildable,
 }
 
 static void
-ctk_icon_factory_buildable_custom_tag_end (GtkBuildable *buildable,
-					   GtkBuilder   *builder,
+ctk_icon_factory_buildable_custom_tag_end (CtkBuildable *buildable,
+					   CtkBuilder   *builder,
 					   GObject      *child,
 					   const gchar  *tagname,
 					   gpointer     *user_data)
 {
-  GtkIconFactory *icon_factory;
+  CtkIconFactory *icon_factory;
 
   icon_factory = CTK_ICON_FACTORY (buildable);
 
   if (strcmp (tagname, "sources") == 0)
     {
       IconFactoryParserData *parser_data;
-      GtkIconSource *icon_source;
-      GtkIconSet *icon_set;
+      CtkIconSource *icon_source;
+      CtkIconSet *icon_set;
       GSList *l;
 
       parser_data = (IconFactoryParserData*)user_data;

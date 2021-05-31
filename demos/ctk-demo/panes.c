@@ -1,12 +1,12 @@
 /* Paned Widgets
  *
- * The GtkPaned Widget divides its content area into two panes
+ * The CtkPaned Widget divides its content area into two panes
  * with a divider in between that the user can adjust. A separate
- * child is placed into each pane. GtkPaned widgets can be split
+ * child is placed into each pane. CtkPaned widgets can be split
  * horizontally or vertially.
  *
  * There are a number of options that can be set for each pane.
- * This test contains both a horizontal and a vertical GtkPaned
+ * This test contains both a horizontal and a vertical CtkPaned
  * widget, and allows you to adjust the options for each side of
  * each widget.
  */
@@ -14,11 +14,11 @@
 #include <ctk/ctk.h>
 
 void
-toggle_resize (GtkWidget *widget,
-               GtkWidget *child)
+toggle_resize (CtkWidget *widget,
+               CtkWidget *child)
 {
-  GtkWidget *parent;
-  GtkPaned *paned;
+  CtkWidget *parent;
+  CtkPaned *paned;
   gboolean is_child1;
   gboolean resize, shrink;
 
@@ -42,11 +42,11 @@ toggle_resize (GtkWidget *widget,
 }
 
 void
-toggle_shrink (GtkWidget *widget,
-               GtkWidget *child)
+toggle_shrink (CtkWidget *widget,
+               CtkWidget *child)
 {
-  GtkWidget *parent;
-  GtkPaned *paned;
+  CtkWidget *parent;
+  CtkPaned *paned;
   gboolean is_child1;
   gboolean resize, shrink;
 
@@ -69,17 +69,17 @@ toggle_shrink (GtkWidget *widget,
   g_object_unref (child);
 }
 
-GtkWidget *
-create_pane_options (GtkPaned    *paned,
+CtkWidget *
+create_pane_options (CtkPaned    *paned,
                      const gchar *frame_label,
                      const gchar *label1,
                      const gchar *label2)
 {
-  GtkWidget *child1, *child2;
-  GtkWidget *frame;
-  GtkWidget *table;
-  GtkWidget *label;
-  GtkWidget *check_button;
+  CtkWidget *child1, *child2;
+  CtkWidget *frame;
+  CtkWidget *table;
+  CtkWidget *label;
+  CtkWidget *check_button;
 
   child1 = ctk_paned_get_child1 (paned);
   child2 = ctk_paned_get_child2 (paned);
@@ -122,15 +122,15 @@ create_pane_options (GtkPaned    *paned,
   return frame;
 }
 
-GtkWidget *
-do_panes (GtkWidget *do_widget)
+CtkWidget *
+do_panes (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *frame;
-  GtkWidget *hpaned;
-  GtkWidget *vpaned;
-  GtkWidget *button;
-  GtkWidget *vbox;
+  static CtkWidget *window = NULL;
+  CtkWidget *frame;
+  CtkWidget *hpaned;
+  CtkWidget *vpaned;
+  CtkWidget *button;
+  CtkWidget *vbox;
 
   if (!window)
     {

@@ -29,31 +29,31 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_SEPARATOR_TOOL_ITEM            (ctk_separator_tool_item_get_type ())
-#define CTK_SEPARATOR_TOOL_ITEM(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SEPARATOR_TOOL_ITEM, GtkSeparatorToolItem))
-#define CTK_SEPARATOR_TOOL_ITEM_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SEPARATOR_TOOL_ITEM, GtkSeparatorToolItemClass))
+#define CTK_SEPARATOR_TOOL_ITEM(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SEPARATOR_TOOL_ITEM, CtkSeparatorToolItem))
+#define CTK_SEPARATOR_TOOL_ITEM_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SEPARATOR_TOOL_ITEM, CtkSeparatorToolItemClass))
 #define CTK_IS_SEPARATOR_TOOL_ITEM(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SEPARATOR_TOOL_ITEM))
 #define CTK_IS_SEPARATOR_TOOL_ITEM_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SEPARATOR_TOOL_ITEM))
-#define CTK_SEPARATOR_TOOL_ITEM_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_SEPARATOR_TOOL_ITEM, GtkSeparatorToolItemClass))
+#define CTK_SEPARATOR_TOOL_ITEM_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_SEPARATOR_TOOL_ITEM, CtkSeparatorToolItemClass))
 
-typedef struct _GtkSeparatorToolItem        GtkSeparatorToolItem;
-typedef struct _GtkSeparatorToolItemClass   GtkSeparatorToolItemClass;
-typedef struct _GtkSeparatorToolItemPrivate GtkSeparatorToolItemPrivate;
+typedef struct _CtkSeparatorToolItem        CtkSeparatorToolItem;
+typedef struct _CtkSeparatorToolItemClass   CtkSeparatorToolItemClass;
+typedef struct _CtkSeparatorToolItemPrivate CtkSeparatorToolItemPrivate;
 
-struct _GtkSeparatorToolItem
+struct _CtkSeparatorToolItem
 {
-  GtkToolItem parent;
+  CtkToolItem parent;
 
   /*< private >*/
-  GtkSeparatorToolItemPrivate *priv;
+  CtkSeparatorToolItemPrivate *priv;
 };
 
 /**
- * GtkSeparatorToolItemClass:
+ * CtkSeparatorToolItemClass:
  * @parent_class: The parent class.
  */
-struct _GtkSeparatorToolItemClass
+struct _CtkSeparatorToolItemClass
 {
-  GtkToolItemClass parent_class;
+  CtkToolItemClass parent_class;
 
   /*< private >*/
 
@@ -67,12 +67,12 @@ struct _GtkSeparatorToolItemClass
 GDK_AVAILABLE_IN_ALL
 GType        ctk_separator_tool_item_get_type (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkToolItem *ctk_separator_tool_item_new      (void);
+CtkToolItem *ctk_separator_tool_item_new      (void);
 
 GDK_AVAILABLE_IN_ALL
-gboolean     ctk_separator_tool_item_get_draw (GtkSeparatorToolItem *item);
+gboolean     ctk_separator_tool_item_get_draw (CtkSeparatorToolItem *item);
 GDK_AVAILABLE_IN_ALL
-void         ctk_separator_tool_item_set_draw (GtkSeparatorToolItem *item,
+void         ctk_separator_tool_item_set_draw (CtkSeparatorToolItem *item,
 					       gboolean              draw);
 
 G_END_DECLS

@@ -32,44 +32,44 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_STATUS_ICON         (ctk_status_icon_get_type ())
-#define CTK_STATUS_ICON(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_STATUS_ICON, GtkStatusIcon))
-#define CTK_STATUS_ICON_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_STATUS_ICON, GtkStatusIconClass))
+#define CTK_STATUS_ICON(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_STATUS_ICON, CtkStatusIcon))
+#define CTK_STATUS_ICON_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_STATUS_ICON, CtkStatusIconClass))
 #define CTK_IS_STATUS_ICON(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_STATUS_ICON))
 #define CTK_IS_STATUS_ICON_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), CTK_TYPE_STATUS_ICON))
-#define CTK_STATUS_ICON_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_STATUS_ICON, GtkStatusIconClass))
+#define CTK_STATUS_ICON_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_STATUS_ICON, CtkStatusIconClass))
 
-typedef struct _GtkStatusIcon	     GtkStatusIcon;
-typedef struct _GtkStatusIconClass   GtkStatusIconClass;
-typedef struct _GtkStatusIconPrivate GtkStatusIconPrivate;
+typedef struct _CtkStatusIcon	     CtkStatusIcon;
+typedef struct _CtkStatusIconClass   CtkStatusIconClass;
+typedef struct _CtkStatusIconPrivate CtkStatusIconPrivate;
 
-struct _GtkStatusIcon
+struct _CtkStatusIcon
 {
   GObject               parent_instance;
 
-  GtkStatusIconPrivate *priv;
+  CtkStatusIconPrivate *priv;
 };
 
-struct _GtkStatusIconClass
+struct _CtkStatusIconClass
 {
   GObjectClass parent_class;
 
-  void     (* activate)             (GtkStatusIcon  *status_icon);
-  void     (* popup_menu)           (GtkStatusIcon  *status_icon,
+  void     (* activate)             (CtkStatusIcon  *status_icon);
+  void     (* popup_menu)           (CtkStatusIcon  *status_icon,
                                      guint           button,
                                      guint32         activate_time);
-  gboolean (* size_changed)         (GtkStatusIcon  *status_icon,
+  gboolean (* size_changed)         (CtkStatusIcon  *status_icon,
                                      gint            size);
-  gboolean (* button_press_event)   (GtkStatusIcon  *status_icon,
+  gboolean (* button_press_event)   (CtkStatusIcon  *status_icon,
                                      GdkEventButton *event);
-  gboolean (* button_release_event) (GtkStatusIcon  *status_icon,
+  gboolean (* button_release_event) (CtkStatusIcon  *status_icon,
                                      GdkEventButton *event);
-  gboolean (* scroll_event)         (GtkStatusIcon  *status_icon,
+  gboolean (* scroll_event)         (CtkStatusIcon  *status_icon,
                                      GdkEventScroll *event);
-  gboolean (* query_tooltip)        (GtkStatusIcon  *status_icon,
+  gboolean (* query_tooltip)        (CtkStatusIcon  *status_icon,
                                      gint            x,
                                      gint            y,
                                      gboolean        keyboard_mode,
-                                     GtkTooltip     *tooltip);
+                                     CtkTooltip     *tooltip);
 
   void (*__ctk_reserved1) (void);
   void (*__ctk_reserved2) (void);
@@ -81,101 +81,101 @@ GDK_AVAILABLE_IN_ALL
 GType                 ctk_status_icon_get_type           (void) G_GNUC_CONST;
 
 GDK_DEPRECATED_IN_3_14
-GtkStatusIcon        *ctk_status_icon_new                (void);
+CtkStatusIcon        *ctk_status_icon_new                (void);
 GDK_DEPRECATED_IN_3_14
-GtkStatusIcon        *ctk_status_icon_new_from_pixbuf    (GdkPixbuf          *pixbuf);
+CtkStatusIcon        *ctk_status_icon_new_from_pixbuf    (GdkPixbuf          *pixbuf);
 GDK_DEPRECATED_IN_3_14
-GtkStatusIcon        *ctk_status_icon_new_from_file      (const gchar        *filename);
+CtkStatusIcon        *ctk_status_icon_new_from_file      (const gchar        *filename);
 GDK_DEPRECATED_IN_3_10_FOR(ctk_status_icon_new_from_icon_name)
-GtkStatusIcon        *ctk_status_icon_new_from_stock     (const gchar        *stock_id);
+CtkStatusIcon        *ctk_status_icon_new_from_stock     (const gchar        *stock_id);
 GDK_DEPRECATED_IN_3_14
-GtkStatusIcon        *ctk_status_icon_new_from_icon_name (const gchar        *icon_name);
+CtkStatusIcon        *ctk_status_icon_new_from_icon_name (const gchar        *icon_name);
 GDK_DEPRECATED_IN_3_14
-GtkStatusIcon        *ctk_status_icon_new_from_gicon     (GIcon              *icon);
+CtkStatusIcon        *ctk_status_icon_new_from_gicon     (GIcon              *icon);
 
 GDK_DEPRECATED_IN_3_14
-void                  ctk_status_icon_set_from_pixbuf    (GtkStatusIcon      *status_icon,
+void                  ctk_status_icon_set_from_pixbuf    (CtkStatusIcon      *status_icon,
 							  GdkPixbuf          *pixbuf);
 GDK_DEPRECATED_IN_3_14
-void                  ctk_status_icon_set_from_file      (GtkStatusIcon      *status_icon,
+void                  ctk_status_icon_set_from_file      (CtkStatusIcon      *status_icon,
 							  const gchar        *filename);
 GDK_DEPRECATED_IN_3_10_FOR(ctk_status_icon_set_from_icon_name)
-void                  ctk_status_icon_set_from_stock     (GtkStatusIcon      *status_icon,
+void                  ctk_status_icon_set_from_stock     (CtkStatusIcon      *status_icon,
 							  const gchar        *stock_id);
 GDK_DEPRECATED_IN_3_14
-void                  ctk_status_icon_set_from_icon_name (GtkStatusIcon      *status_icon,
+void                  ctk_status_icon_set_from_icon_name (CtkStatusIcon      *status_icon,
 							  const gchar        *icon_name);
 GDK_DEPRECATED_IN_3_14
-void                  ctk_status_icon_set_from_gicon     (GtkStatusIcon      *status_icon,
+void                  ctk_status_icon_set_from_gicon     (CtkStatusIcon      *status_icon,
                                                           GIcon              *icon);
 
 GDK_DEPRECATED_IN_3_14
-GtkImageType          ctk_status_icon_get_storage_type   (GtkStatusIcon      *status_icon);
+CtkImageType          ctk_status_icon_get_storage_type   (CtkStatusIcon      *status_icon);
 
 GDK_DEPRECATED_IN_3_14
-GdkPixbuf            *ctk_status_icon_get_pixbuf         (GtkStatusIcon      *status_icon);
+GdkPixbuf            *ctk_status_icon_get_pixbuf         (CtkStatusIcon      *status_icon);
 GDK_DEPRECATED_IN_3_10_FOR(ctk_status_icon_get_icon_name)
-const gchar *         ctk_status_icon_get_stock          (GtkStatusIcon      *status_icon);
+const gchar *         ctk_status_icon_get_stock          (CtkStatusIcon      *status_icon);
 GDK_DEPRECATED_IN_3_14
-const gchar *         ctk_status_icon_get_icon_name      (GtkStatusIcon      *status_icon);
+const gchar *         ctk_status_icon_get_icon_name      (CtkStatusIcon      *status_icon);
 GDK_DEPRECATED_IN_3_14
-GIcon                *ctk_status_icon_get_gicon          (GtkStatusIcon      *status_icon);
+GIcon                *ctk_status_icon_get_gicon          (CtkStatusIcon      *status_icon);
 
 GDK_DEPRECATED_IN_3_14
-gint                  ctk_status_icon_get_size           (GtkStatusIcon      *status_icon);
+gint                  ctk_status_icon_get_size           (CtkStatusIcon      *status_icon);
 
 GDK_DEPRECATED_IN_3_14
-void                  ctk_status_icon_set_screen         (GtkStatusIcon      *status_icon,
+void                  ctk_status_icon_set_screen         (CtkStatusIcon      *status_icon,
                                                           GdkScreen          *screen);
 GDK_DEPRECATED_IN_3_14
-GdkScreen            *ctk_status_icon_get_screen         (GtkStatusIcon      *status_icon);
+GdkScreen            *ctk_status_icon_get_screen         (CtkStatusIcon      *status_icon);
 
 GDK_DEPRECATED_IN_3_14
-void                  ctk_status_icon_set_has_tooltip    (GtkStatusIcon      *status_icon,
+void                  ctk_status_icon_set_has_tooltip    (CtkStatusIcon      *status_icon,
                                                           gboolean            has_tooltip);
 GDK_DEPRECATED_IN_3_14
-void                  ctk_status_icon_set_tooltip_text   (GtkStatusIcon      *status_icon,
+void                  ctk_status_icon_set_tooltip_text   (CtkStatusIcon      *status_icon,
                                                           const gchar        *text);
 GDK_DEPRECATED_IN_3_14
-void                  ctk_status_icon_set_tooltip_markup (GtkStatusIcon      *status_icon,
+void                  ctk_status_icon_set_tooltip_markup (CtkStatusIcon      *status_icon,
                                                           const gchar        *markup);
 GDK_DEPRECATED_IN_3_14
-void                  ctk_status_icon_set_title          (GtkStatusIcon      *status_icon,
+void                  ctk_status_icon_set_title          (CtkStatusIcon      *status_icon,
                                                           const gchar        *title);
 GDK_DEPRECATED_IN_3_14
-const gchar *         ctk_status_icon_get_title          (GtkStatusIcon      *status_icon);
+const gchar *         ctk_status_icon_get_title          (CtkStatusIcon      *status_icon);
 GDK_DEPRECATED_IN_3_14
-void                  ctk_status_icon_set_name           (GtkStatusIcon      *status_icon,
+void                  ctk_status_icon_set_name           (CtkStatusIcon      *status_icon,
                                                           const gchar        *name);
 GDK_DEPRECATED_IN_3_14
-void                  ctk_status_icon_set_visible        (GtkStatusIcon      *status_icon,
+void                  ctk_status_icon_set_visible        (CtkStatusIcon      *status_icon,
 							  gboolean            visible);
 GDK_DEPRECATED_IN_3_14
-gboolean              ctk_status_icon_get_visible        (GtkStatusIcon      *status_icon);
+gboolean              ctk_status_icon_get_visible        (CtkStatusIcon      *status_icon);
 
 GDK_DEPRECATED_IN_3_14
-gboolean              ctk_status_icon_is_embedded        (GtkStatusIcon      *status_icon);
+gboolean              ctk_status_icon_is_embedded        (CtkStatusIcon      *status_icon);
 
 GDK_DEPRECATED_IN_3_14
-void                  ctk_status_icon_position_menu      (GtkMenu            *menu,
+void                  ctk_status_icon_position_menu      (CtkMenu            *menu,
 							  gint               *x,
 							  gint               *y,
 							  gboolean           *push_in,
 							  gpointer            user_data);
 GDK_DEPRECATED_IN_3_14
-gboolean              ctk_status_icon_get_geometry       (GtkStatusIcon      *status_icon,
+gboolean              ctk_status_icon_get_geometry       (CtkStatusIcon      *status_icon,
 							  GdkScreen         **screen,
 							  GdkRectangle       *area,
-							  GtkOrientation     *orientation);
+							  CtkOrientation     *orientation);
 GDK_DEPRECATED_IN_3_14
-gboolean              ctk_status_icon_get_has_tooltip    (GtkStatusIcon      *status_icon);
+gboolean              ctk_status_icon_get_has_tooltip    (CtkStatusIcon      *status_icon);
 GDK_DEPRECATED_IN_3_14
-gchar                *ctk_status_icon_get_tooltip_text   (GtkStatusIcon      *status_icon);
+gchar                *ctk_status_icon_get_tooltip_text   (CtkStatusIcon      *status_icon);
 GDK_DEPRECATED_IN_3_14
-gchar                *ctk_status_icon_get_tooltip_markup (GtkStatusIcon      *status_icon);
+gchar                *ctk_status_icon_get_tooltip_markup (CtkStatusIcon      *status_icon);
 
 GDK_DEPRECATED_IN_3_14
-guint32               ctk_status_icon_get_x11_window_id  (GtkStatusIcon      *status_icon);
+guint32               ctk_status_icon_get_x11_window_id  (CtkStatusIcon      *status_icon);
 
 G_END_DECLS
 

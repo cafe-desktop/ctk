@@ -24,28 +24,28 @@
 #include "ctkwidgetaccessibleprivate.h"
 #include "ctknotebookpageaccessible.h"
 
-struct _GtkWidgetAccessiblePrivate
+struct _CtkWidgetAccessiblePrivate
 {
   AtkLayer layer;
 };
 
 #define TOOLTIP_KEY "tooltip"
 
-extern GtkWidget *_focus_widget;
+extern CtkWidget *_focus_widget;
 
 
-static gboolean ctk_widget_accessible_on_screen           (GtkWidget *widget);
-static gboolean ctk_widget_accessible_all_parents_visible (GtkWidget *widget);
+static gboolean ctk_widget_accessible_on_screen           (CtkWidget *widget);
+static gboolean ctk_widget_accessible_all_parents_visible (CtkWidget *widget);
 
 static void atk_component_interface_init (AtkComponentIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkWidgetAccessible, ctk_widget_accessible, CTK_TYPE_ACCESSIBLE,
-                         G_ADD_PRIVATE (GtkWidgetAccessible)
+G_DEFINE_TYPE_WITH_CODE (CtkWidgetAccessible, ctk_widget_accessible, CTK_TYPE_ACCESSIBLE,
+                         G_ADD_PRIVATE (CtkWidgetAccessible)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_COMPONENT, atk_component_interface_init))
 
-/* Translate GtkWidget::focus-in/out-event to AtkObject::focus-event */
+/* Translate CtkWidget::focus-in/out-event to AtkObject::focus-event */
 static gboolean
-focus_cb (GtkWidget     *widget,
+focus_cb (CtkWidget     *widget,
           GdkEventFocus *event)
 {
   AtkObject *obj;
@@ -57,13 +57,13 @@ focus_cb (GtkWidget     *widget,
   return FALSE;
 }
 
-/* Translate GtkWidget property change notification to the notify_ctk vfunc */
+/* Translate CtkWidget property change notification to the notify_ctk vfunc */
 static void
 notify_cb (GObject    *obj,
            GParamSpec *pspec)
 {
-  GtkWidgetAccessible *widget;
-  GtkWidgetAccessibleClass *klass;
+  CtkWidgetAccessible *widget;
+  CtkWidgetAccessibleClass *klass;
 
   widget = CTK_WIDGET_ACCESSIBLE (ctk_widget_get_accessible (CTK_WIDGET (obj)));
   klass = CTK_WIDGET_ACCESSIBLE_GET_CLASS (widget);
@@ -71,10 +71,10 @@ notify_cb (GObject    *obj,
     klass->notify_ctk (obj, pspec);
 }
 
-/* Translate GtkWidget::size-allocate to AtkComponent::bounds-changed */
+/* Translate CtkWidget::size-allocate to AtkComponent::bounds-changed */
 static void
-size_allocate_cb (GtkWidget     *widget,
-                  GtkAllocation *allocation)
+size_allocate_cb (CtkWidget     *widget,
+                  CtkAllocation *allocation)
 {
   AtkObject* accessible;
   AtkRectangle rect;
@@ -90,9 +90,9 @@ size_allocate_cb (GtkWidget     *widget,
     }
 }
 
-/* Translate GtkWidget mapped state into AtkObject showing */
+/* Translate CtkWidget mapped state into AtkObject showing */
 static gint
-map_cb (GtkWidget *widget)
+map_cb (CtkWidget *widget)
 {
   AtkObject *accessible;
 
@@ -115,8 +115,8 @@ ctk_widget_accessible_focus_event (AtkObject *obj,
 }
 
 static void
-ctk_widget_accessible_update_tooltip (GtkWidgetAccessible *accessible,
-                                      GtkWidget *widget)
+ctk_widget_accessible_update_tooltip (CtkWidgetAccessible *accessible,
+                                      CtkWidget *widget)
 {
   g_object_set_data_full (G_OBJECT (accessible),
                           TOOLTIP_KEY,
@@ -128,7 +128,7 @@ static void
 ctk_widget_accessible_initialize (AtkObject *obj,
                                   gpointer   data)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = CTK_WIDGET (data);
 
@@ -148,7 +148,7 @@ ctk_widget_accessible_initialize (AtkObject *obj,
 static const gchar *
 ctk_widget_accessible_get_description (AtkObject *accessible)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (accessible));
   if (widget == NULL)
@@ -164,7 +164,7 @@ static AtkObject *
 ctk_widget_accessible_get_parent (AtkObject *accessible)
 {
   AtkObject *parent;
-  GtkWidget *widget, *parent_widget;
+  CtkWidget *widget, *parent_widget;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (accessible));
   if (widget == NULL)
@@ -178,15 +178,15 @@ ctk_widget_accessible_get_parent (AtkObject *accessible)
   if (parent_widget == NULL)
     return NULL;
 
-  /* For a widget whose parent is a GtkNoteBook, we return the
-   * accessible object corresponding the GtkNotebookPage containing
+  /* For a widget whose parent is a CtkNoteBook, we return the
+   * accessible object corresponding the CtkNotebookPage containing
    * the widget as the accessible parent.
    */
   if (CTK_IS_NOTEBOOK (parent_widget))
     {
       gint page_num;
-      GtkWidget *child;
-      GtkNotebook *notebook;
+      CtkWidget *child;
+      CtkNotebook *notebook;
 
       page_num = 0;
       notebook = CTK_NOTEBOOK (parent_widget);
@@ -209,12 +209,12 @@ ctk_widget_accessible_get_parent (AtkObject *accessible)
   return parent;
 }
 
-static GtkWidget *
-find_label (GtkWidget *widget)
+static CtkWidget *
+find_label (CtkWidget *widget)
 {
   GList *labels;
-  GtkWidget *label;
-  GtkWidget *temp_widget;
+  CtkWidget *label;
+  CtkWidget *temp_widget;
   GList *ptr;
 
   labels = ctk_widget_list_mnemonic_labels (widget);
@@ -251,9 +251,9 @@ find_label (GtkWidget *widget)
 static AtkRelationSet *
 ctk_widget_accessible_ref_relation_set (AtkObject *obj)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   AtkRelationSet *relation_set;
-  GtkWidget *label;
+  CtkWidget *label;
   AtkObject *array[1];
   AtkRelation* relation;
 
@@ -274,11 +274,11 @@ ctk_widget_accessible_ref_relation_set (AtkObject *obj)
           if (CTK_IS_BUTTON (widget) && ctk_widget_get_mapped (widget))
             /*
              * Handle the case where GnomeIconEntry is the mnemonic widget.
-             * The GtkButton which is a grandchild of the GnomeIconEntry
+             * The CtkButton which is a grandchild of the GnomeIconEntry
              * should really be the mnemonic widget. See bug #133967.
              */
             {
-              GtkWidget *temp_widget;
+              CtkWidget *temp_widget;
 
               temp_widget = ctk_widget_get_parent (widget);
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
@@ -296,13 +296,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
             }
           else if (CTK_IS_COMBO_BOX (widget))
             /*
-             * Handle the case when GtkFileChooserButton is the mnemonic
-             * widget.  The GtkComboBox which is a child of the
-             * GtkFileChooserButton should be the mnemonic widget.
+             * Handle the case when CtkFileChooserButton is the mnemonic
+             * widget.  The CtkComboBox which is a child of the
+             * CtkFileChooserButton should be the mnemonic widget.
              * See bug #359843.
              */
             {
-              GtkWidget *temp_widget;
+              CtkWidget *temp_widget;
 
               temp_widget = ctk_widget_get_parent (widget);
               if (CTK_IS_BOX (temp_widget))
@@ -328,7 +328,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 static AtkStateSet *
 ctk_widget_accessible_ref_state_set (AtkObject *accessible)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   AtkStateSet *state_set;
 
   state_set = ATK_OBJECT_CLASS (ctk_widget_accessible_parent_class)->ref_state_set (accessible);
@@ -350,13 +350,13 @@ ctk_widget_accessible_ref_state_set (AtkObject *accessible)
         }
       /*
        * We do not currently generate notifications when an ATK object
-       * corresponding to a GtkWidget changes visibility by being scrolled
+       * corresponding to a CtkWidget changes visibility by being scrolled
        * on or off the screen.  The testcase for this is the main window
-       * of the testctk application in which a set of buttons in a GtkVBox
+       * of the testctk application in which a set of buttons in a CtkVBox
        * is in a scrolled window with a viewport.
        *
        * To generate the notifications we would need to do the following:
-       * 1) Find the GtkViewport among the ancestors of the objects
+       * 1) Find the CtkViewport among the ancestors of the objects
        * 2) Create an accessible for the viewport
        * 3) Connect to the value-changed signal on the viewport
        * 4) When the signal is received we need to traverse the children
@@ -364,7 +364,7 @@ ctk_widget_accessible_ref_state_set (AtkObject *accessible)
        *    visible; we may want to restrict this to the widgets for which
        *    accessible objects have been created.
        * 5) We probably need to store a variable on_screen in the
-       *    GtkWidgetAccessible data structure so we can determine whether
+       *    CtkWidgetAccessible data structure so we can determine whether
        *    the value has changed.
        */
       if (ctk_widget_get_visible (widget))
@@ -405,8 +405,8 @@ ctk_widget_accessible_ref_state_set (AtkObject *accessible)
 static gint
 ctk_widget_accessible_get_index_in_parent (AtkObject *accessible)
 {
-  GtkWidget *widget;
-  GtkWidget *parent_widget;
+  CtkWidget *widget;
+  CtkWidget *parent_widget;
   gint index;
   GList *children;
 
@@ -459,7 +459,7 @@ ctk_widget_accessible_get_index_in_parent (AtkObject *accessible)
 
 /* This function is the default implementation for the notify_ctk
  * vfunc which gets called when a property changes value on the
- * GtkWidget associated with a GtkWidgetAccessible. It constructs
+ * CtkWidget associated with a CtkWidgetAccessible. It constructs
  * an AtkPropertyValues structure and emits a “property_changed”
  * signal which causes the user specified AtkPropertyChangeHandler
  * to be called.
@@ -468,7 +468,7 @@ static void
 ctk_widget_accessible_notify_ctk (GObject    *obj,
                                   GParamSpec *pspec)
 {
-  GtkWidget* widget = CTK_WIDGET (obj);
+  CtkWidget* widget = CTK_WIDGET (obj);
   AtkObject* atk_obj = ctk_widget_get_accessible (widget);
   AtkState state;
   gboolean value;
@@ -501,7 +501,7 @@ ctk_widget_accessible_notify_ctk (GObject    *obj,
   else if (g_strcmp0 (pspec->name, "orientation") == 0 &&
            CTK_IS_ORIENTABLE (widget))
     {
-      GtkOrientable *orientable;
+      CtkOrientable *orientable;
 
       orientable = CTK_ORIENTABLE (widget);
 
@@ -540,7 +540,7 @@ ctk_widget_accessible_get_attributes (AtkObject *obj)
 }
 
 static void
-ctk_widget_accessible_class_init (GtkWidgetAccessibleClass *klass)
+ctk_widget_accessible_class_init (CtkWidgetAccessibleClass *klass)
 {
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
 
@@ -557,7 +557,7 @@ ctk_widget_accessible_class_init (GtkWidgetAccessibleClass *klass)
 }
 
 static void
-ctk_widget_accessible_init (GtkWidgetAccessible *accessible)
+ctk_widget_accessible_init (CtkWidgetAccessible *accessible)
 {
   accessible->priv = ctk_widget_accessible_get_instance_private (accessible);
 }
@@ -573,8 +573,8 @@ ctk_widget_accessible_get_extents (AtkComponent   *component,
   GdkWindow *window;
   gint x_window, y_window;
   gint x_toplevel, y_toplevel;
-  GtkWidget *widget;
-  GtkAllocation allocation;
+  CtkWidget *widget;
+  CtkAllocation allocation;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (component));
   if (widget == NULL)
@@ -619,7 +619,7 @@ ctk_widget_accessible_get_extents (AtkComponent   *component,
 static AtkLayer
 ctk_widget_accessible_get_layer (AtkComponent *component)
 {
-  GtkWidgetAccessible *accessible = CTK_WIDGET_ACCESSIBLE (component);
+  CtkWidgetAccessible *accessible = CTK_WIDGET_ACCESSIBLE (component);
 
   return accessible->priv->layer;
 }
@@ -627,8 +627,8 @@ ctk_widget_accessible_get_layer (AtkComponent *component)
 static gboolean
 ctk_widget_accessible_grab_focus (AtkComponent *component)
 {
-  GtkWidget *widget;
-  GtkWidget *toplevel;
+  CtkWidget *widget;
+  CtkWidget *toplevel;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (component));
   if (!widget)
@@ -665,7 +665,7 @@ ctk_widget_accessible_set_extents (AtkComponent *component,
                                    gint          height,
                                    AtkCoordType  coord_type)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (component));
   if (widget == NULL)
@@ -706,7 +706,7 @@ ctk_widget_accessible_set_position (AtkComponent *component,
                                     gint          y,
                                     AtkCoordType  coord_type)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (component));
   if (widget == NULL)
@@ -744,7 +744,7 @@ ctk_widget_accessible_set_size (AtkComponent *component,
                                 gint          width,
                                 gint          height)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (component));
   if (widget == NULL)
@@ -771,14 +771,14 @@ atk_component_interface_init (AtkComponentIface *iface)
 }
 
 /* This function checks whether the widget has an ancestor which is
- * a GtkViewport and, if so, whether any part of the widget intersects
- * the visible rectangle of the GtkViewport.
+ * a CtkViewport and, if so, whether any part of the widget intersects
+ * the visible rectangle of the CtkViewport.
  */
 static gboolean
-ctk_widget_accessible_on_screen (GtkWidget *widget)
+ctk_widget_accessible_on_screen (CtkWidget *widget)
 {
-  GtkAllocation allocation;
-  GtkWidget *viewport;
+  CtkAllocation allocation;
+  CtkWidget *viewport;
   gboolean return_value;
 
   ctk_widget_get_allocation (widget, &allocation);
@@ -789,8 +789,8 @@ ctk_widget_accessible_on_screen (GtkWidget *widget)
   viewport = ctk_widget_get_ancestor (widget, CTK_TYPE_VIEWPORT);
   if (viewport)
     {
-      GtkAllocation viewport_allocation;
-      GtkAdjustment *adjustment;
+      CtkAllocation viewport_allocation;
+      CtkAdjustment *adjustment;
       GdkRectangle visible_rect;
 
       ctk_widget_get_allocation (viewport, &viewport_allocation);
@@ -830,9 +830,9 @@ ctk_widget_accessible_on_screen (GtkWidget *widget)
  * are visible Used to check properly the SHOWING state.
  */
 static gboolean
-ctk_widget_accessible_all_parents_visible (GtkWidget *widget)
+ctk_widget_accessible_all_parents_visible (CtkWidget *widget)
 {
-  GtkWidget *iter_parent = NULL;
+  CtkWidget *iter_parent = NULL;
   gboolean result = TRUE;
 
   for (iter_parent = ctk_widget_get_parent (widget); iter_parent;
@@ -849,7 +849,7 @@ ctk_widget_accessible_all_parents_visible (GtkWidget *widget)
 }
 
 void
-_ctk_widget_accessible_set_layer (GtkWidgetAccessible *accessible,
+_ctk_widget_accessible_set_layer (CtkWidgetAccessible *accessible,
                                   AtkLayer             layer)
 {
   accessible->priv->layer = layer;

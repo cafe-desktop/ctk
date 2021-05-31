@@ -45,24 +45,24 @@
  */
 #include "fallback-c89.c"
 
-typedef struct _GtkThemingBackground GtkThemingBackground;
+typedef struct _CtkThemingBackground CtkThemingBackground;
 
 #define N_BOXES (3)
 
-struct _GtkThemingBackground {
-  GtkCssStyle *style;
+struct _CtkThemingBackground {
+  CtkCssStyle *style;
 
-  GtkRoundedBox boxes[N_BOXES];
+  CtkRoundedBox boxes[N_BOXES];
 };
 
 static void
-_ctk_theming_background_paint_color (GtkThemingBackground *bg,
+_ctk_theming_background_paint_color (CtkThemingBackground *bg,
                                      cairo_t              *cr,
                                      const GdkRGBA        *bg_color,
-                                     GtkCssValue          *background_image)
+                                     CtkCssValue          *background_image)
 {
   gint n_values = _ctk_css_array_value_get_n_values (background_image);
-  GtkCssArea clip = _ctk_css_area_value_get 
+  CtkCssArea clip = _ctk_css_area_value_get 
     (_ctk_css_array_value_get_nth 
      (ctk_css_style_get_value (bg->style, CTK_CSS_PROPERTY_BACKGROUND_CLIP), 
       n_values - 1));
@@ -73,9 +73,9 @@ _ctk_theming_background_paint_color (GtkThemingBackground *bg,
 }
 
 static gboolean
-_ctk_theming_background_needs_push_group (GtkCssStyle *style)
+_ctk_theming_background_needs_push_group (CtkCssStyle *style)
 {
-  GtkCssValue *blend_modes;
+  CtkCssValue *blend_modes;
   gint i;
 
   blend_modes = ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BACKGROUND_BLEND_MODE);
@@ -86,7 +86,7 @@ _ctk_theming_background_needs_push_group (GtkCssStyle *style)
    */
   for (i = _ctk_css_array_value_get_n_values (blend_modes); i > 0; i--)
     {
-      GtkCssBlendMode blend_mode;
+      CtkCssBlendMode blend_mode;
 
       blend_mode = _ctk_css_blend_mode_value_get (_ctk_css_array_value_get_nth (blend_modes, i - 1));
 
@@ -98,15 +98,15 @@ _ctk_theming_background_needs_push_group (GtkCssStyle *style)
 }
 
 static void
-_ctk_theming_background_paint_layer (GtkThemingBackground *bg,
+_ctk_theming_background_paint_layer (CtkThemingBackground *bg,
                                      guint                 idx,
                                      cairo_t              *cr,
-                                     GtkCssBlendMode       blend_mode)
+                                     CtkCssBlendMode       blend_mode)
 {
-  GtkCssRepeatStyle hrepeat, vrepeat;
-  const GtkCssValue *pos, *repeat;
-  GtkCssImage *image;
-  const GtkRoundedBox *origin;
+  CtkCssRepeatStyle hrepeat, vrepeat;
+  const CtkCssValue *pos, *repeat;
+  CtkCssImage *image;
+  const CtkRoundedBox *origin;
   double image_width, image_height;
   double width, height;
 
@@ -293,12 +293,12 @@ _ctk_theming_background_paint_layer (GtkThemingBackground *bg,
 }
 
 static void
-_ctk_theming_background_init_style (GtkThemingBackground *bg,
+_ctk_theming_background_init_style (CtkThemingBackground *bg,
                                     double                width,
                                     double                height,
-                                    GtkJunctionSides      junction)
+                                    CtkJunctionSides      junction)
 {
-  GtkBorder border, padding;
+  CtkBorder border, padding;
 
   border.top = _ctk_css_number_value_get (ctk_css_style_get_value (bg->style, CTK_CSS_PROPERTY_BORDER_TOP_WIDTH), 100);
   border.right = _ctk_css_number_value_get (ctk_css_style_get_value (bg->style, CTK_CSS_PROPERTY_BORDER_RIGHT_WIDTH), 100);
@@ -332,19 +332,19 @@ _ctk_theming_background_init_style (GtkThemingBackground *bg,
 }
 
 void
-ctk_css_style_render_background (GtkCssStyle      *style,
+ctk_css_style_render_background (CtkCssStyle      *style,
                                  cairo_t          *cr,
                                  gdouble           x,
                                  gdouble           y,
                                  gdouble           width,
                                  gdouble           height,
-                                 GtkJunctionSides  junction)
+                                 CtkJunctionSides  junction)
 {
-  GtkThemingBackground bg;
+  CtkThemingBackground bg;
   gint idx;
-  GtkCssValue *background_image;
-  GtkCssValue *blend_modes;
-  GtkCssValue *box_shadow;
+  CtkCssValue *background_image;
+  CtkCssValue *blend_modes;
+  CtkCssValue *box_shadow;
   const GdkRGBA *bg_color;
   gboolean needs_push_group;
   gint number_of_layers;
@@ -395,7 +395,7 @@ ctk_css_style_render_background (GtkCssStyle      *style,
 
   for (idx = number_of_layers - 1; idx >= 0; idx--)
     {
-      GtkCssBlendMode blend_mode;
+      CtkCssBlendMode blend_mode;
 
       blend_mode = _ctk_css_blend_mode_value_get (_ctk_css_array_value_get_nth (blend_modes, idx));
 
@@ -420,14 +420,14 @@ ctk_css_style_render_background (GtkCssStyle      *style,
 }
 
 static gboolean
-corner_value_is_right_angle (GtkCssValue *value)
+corner_value_is_right_angle (CtkCssValue *value)
 {
   return _ctk_css_corner_value_get_x (value, 100) <= 0.0 &&
          _ctk_css_corner_value_get_y (value, 100) <= 0.0;
 }
 
 gboolean
-ctk_css_style_render_background_is_opaque (GtkCssStyle *style)
+ctk_css_style_render_background_is_opaque (CtkCssStyle *style)
 {
   const GdkRGBA *color;
 

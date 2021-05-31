@@ -18,7 +18,7 @@ CTK_LIBS = ../ctk/ctk-win32-$(CTK_VER).lib
 INCLUDES = -I . -I .. -I ../gdk -I ../ctk $(GDK_PIXBUF_CFLAGS)
 DEPCFLAGS = $(PANGO_CFLAGS) $(GLIB_CFLAGS) $(LIBICONV_CFLAGS) $(INTL_CFLAGS) $(ATK_CFLAGS) $(CAIRO_CFLAGS)
 LDFLAGS = /link /machine:ix86 $(LINKDEBUG)
-DEFINES = -DG_LOG_DOMAIN=\"GtkTest\" -DCTK_VERSION=\"$(CTK_VER)\"
+DEFINES = -DG_LOG_DOMAIN=\"CtkTest\" -DCTK_VERSION=\"$(CTK_VER)\"
 
 TOUCH = copy makefile.msc+nul
 

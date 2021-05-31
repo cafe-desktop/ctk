@@ -30,16 +30,16 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_LEVEL_BAR            (ctk_level_bar_get_type ())
-#define CTK_LEVEL_BAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_LEVEL_BAR, GtkLevelBar))
-#define CTK_LEVEL_BAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_LEVEL_BAR, GtkLevelBarClass))
+#define CTK_LEVEL_BAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_LEVEL_BAR, CtkLevelBar))
+#define CTK_LEVEL_BAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_LEVEL_BAR, CtkLevelBarClass))
 #define CTK_IS_LEVEL_BAR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_LEVEL_BAR))
 #define CTK_IS_LEVEL_BAR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_LEVEL_BAR))
-#define CTK_LEVEL_BAR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_LEVEL_BAR, GtkLevelBarClass))
+#define CTK_LEVEL_BAR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_LEVEL_BAR, CtkLevelBarClass))
 
 /**
  * CTK_LEVEL_BAR_OFFSET_LOW:
  *
- * The name used for the stock low offset included by #GtkLevelBar.
+ * The name used for the stock low offset included by #CtkLevelBar.
  *
  * Since: 3.6
  */
@@ -48,7 +48,7 @@ G_BEGIN_DECLS
 /**
  * CTK_LEVEL_BAR_OFFSET_HIGH:
  *
- * The name used for the stock high offset included by #GtkLevelBar.
+ * The name used for the stock high offset included by #CtkLevelBar.
  *
  * Since: 3.6
  */
@@ -57,28 +57,28 @@ G_BEGIN_DECLS
 /**
  * CTK_LEVEL_BAR_OFFSET_FULL:
  *
- * The name used for the stock full offset included by #GtkLevelBar.
+ * The name used for the stock full offset included by #CtkLevelBar.
  *
  * Since: 3.20
  */
 #define CTK_LEVEL_BAR_OFFSET_FULL "full"
 
-typedef struct _GtkLevelBarClass   GtkLevelBarClass;
-typedef struct _GtkLevelBar        GtkLevelBar;
-typedef struct _GtkLevelBarPrivate GtkLevelBarPrivate;
+typedef struct _CtkLevelBarClass   CtkLevelBarClass;
+typedef struct _CtkLevelBar        CtkLevelBar;
+typedef struct _CtkLevelBarPrivate CtkLevelBarPrivate;
 
-struct _GtkLevelBar {
+struct _CtkLevelBar {
   /*< private >*/
-  GtkWidget parent;
+  CtkWidget parent;
 
-  GtkLevelBarPrivate *priv;
+  CtkLevelBarPrivate *priv;
 };
 
-struct _GtkLevelBarClass {
+struct _CtkLevelBarClass {
   /*< private >*/
-  GtkWidgetClass parent_class;
+  CtkWidgetClass parent_class;
 
-  void (* offset_changed) (GtkLevelBar *self,
+  void (* offset_changed) (CtkLevelBar *self,
                            const gchar *name);
 
   /* padding for future class expansion */
@@ -89,52 +89,52 @@ GDK_AVAILABLE_IN_3_6
 GType      ctk_level_bar_get_type           (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_6
-GtkWidget *ctk_level_bar_new                (void);
+CtkWidget *ctk_level_bar_new                (void);
 
 GDK_AVAILABLE_IN_3_6
-GtkWidget *ctk_level_bar_new_for_interval   (gdouble      min_value,
+CtkWidget *ctk_level_bar_new_for_interval   (gdouble      min_value,
                                              gdouble      max_value);
 
 GDK_AVAILABLE_IN_3_6
-void       ctk_level_bar_set_mode           (GtkLevelBar *self,
-                                             GtkLevelBarMode mode);
+void       ctk_level_bar_set_mode           (CtkLevelBar *self,
+                                             CtkLevelBarMode mode);
 GDK_AVAILABLE_IN_3_6
-GtkLevelBarMode ctk_level_bar_get_mode      (GtkLevelBar *self);
+CtkLevelBarMode ctk_level_bar_get_mode      (CtkLevelBar *self);
 
 GDK_AVAILABLE_IN_3_6
-void       ctk_level_bar_set_value          (GtkLevelBar *self,
+void       ctk_level_bar_set_value          (CtkLevelBar *self,
                                              gdouble      value);
 GDK_AVAILABLE_IN_3_6
-gdouble    ctk_level_bar_get_value          (GtkLevelBar *self);
+gdouble    ctk_level_bar_get_value          (CtkLevelBar *self);
 
 GDK_AVAILABLE_IN_3_6
-void       ctk_level_bar_set_min_value      (GtkLevelBar *self,
+void       ctk_level_bar_set_min_value      (CtkLevelBar *self,
                                              gdouble      value);
 GDK_AVAILABLE_IN_3_6
-gdouble    ctk_level_bar_get_min_value      (GtkLevelBar *self);
+gdouble    ctk_level_bar_get_min_value      (CtkLevelBar *self);
 
 GDK_AVAILABLE_IN_3_6
-void       ctk_level_bar_set_max_value      (GtkLevelBar *self,
+void       ctk_level_bar_set_max_value      (CtkLevelBar *self,
                                              gdouble      value);
 GDK_AVAILABLE_IN_3_6
-gdouble    ctk_level_bar_get_max_value      (GtkLevelBar *self);
+gdouble    ctk_level_bar_get_max_value      (CtkLevelBar *self);
 
 GDK_AVAILABLE_IN_3_8
-void       ctk_level_bar_set_inverted       (GtkLevelBar *self,
+void       ctk_level_bar_set_inverted       (CtkLevelBar *self,
                                              gboolean     inverted);
 
 GDK_AVAILABLE_IN_3_8
-gboolean   ctk_level_bar_get_inverted       (GtkLevelBar *self);
+gboolean   ctk_level_bar_get_inverted       (CtkLevelBar *self);
 
 GDK_AVAILABLE_IN_3_6
-void       ctk_level_bar_add_offset_value   (GtkLevelBar *self,
+void       ctk_level_bar_add_offset_value   (CtkLevelBar *self,
                                              const gchar *name,
                                              gdouble      value);
 GDK_AVAILABLE_IN_3_6
-void       ctk_level_bar_remove_offset_value (GtkLevelBar *self,
+void       ctk_level_bar_remove_offset_value (CtkLevelBar *self,
                                               const gchar *name);
 GDK_AVAILABLE_IN_3_6
-gboolean   ctk_level_bar_get_offset_value   (GtkLevelBar *self,
+gboolean   ctk_level_bar_get_offset_value   (CtkLevelBar *self,
                                              const gchar *name,
                                              gdouble     *value);
 

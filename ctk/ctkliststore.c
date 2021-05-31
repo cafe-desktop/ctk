@@ -31,26 +31,26 @@
 
 /**
  * SECTION:ctkliststore
- * @Short_description: A list-like data structure that can be used with the GtkTreeView
- * @Title: GtkListStore
- * @See_also:#GtkTreeModel, #GtkTreeStore
+ * @Short_description: A list-like data structure that can be used with the CtkTreeView
+ * @Title: CtkListStore
+ * @See_also:#CtkTreeModel, #CtkTreeStore
  *
- * The #GtkListStore object is a list model for use with a #GtkTreeView
- * widget.  It implements the #GtkTreeModel interface, and consequentialy,
+ * The #CtkListStore object is a list model for use with a #CtkTreeView
+ * widget.  It implements the #CtkTreeModel interface, and consequentialy,
  * can use all of the methods available there.  It also implements the
- * #GtkTreeSortable interface so it can be sorted by the view.
+ * #CtkTreeSortable interface so it can be sorted by the view.
  * Finally, it also implements the tree
- * [drag and drop][ctk3-GtkTreeView-drag-and-drop]
+ * [drag and drop][ctk3-CtkTreeView-drag-and-drop]
  * interfaces.
  *
- * The #GtkListStore can accept most GObject types as a column type, though
+ * The #CtkListStore can accept most GObject types as a column type, though
  * it can’t accept all custom types.  Internally, it will keep a copy of
  * data passed in (such as a string or a boxed pointer).  Columns that
  * accept #GObjects are handled a little differently.  The
- * #GtkListStore will keep a reference to the object instead of copying the
+ * #CtkListStore will keep a reference to the object instead of copying the
  * value.  As a result, if the object is modified, it is up to the
  * application writer to call ctk_tree_model_row_changed() to emit the
- * #GtkTreeModel::row_changed signal.  This most commonly affects lists with
+ * #CtkTreeModel::row_changed signal.  This most commonly affects lists with
  * #GdkPixbufs stored.
  *
  * An example for creating a simple list store:
@@ -63,9 +63,9 @@
  * };
  *
  * {
- *   GtkListStore *list_store;
- *   GtkTreePath *path;
- *   GtkTreeIter iter;
+ *   CtkListStore *list_store;
+ *   CtkTreePath *path;
+ *   CtkTreeIter iter;
  *   gint i;
  *
  *   list_store = ctk_list_store_new (N_COLUMNS,
@@ -106,11 +106,11 @@
  *
  * # Performance Considerations
  *
- * Internally, the #GtkListStore was implemented with a linked list with
+ * Internally, the #CtkListStore was implemented with a linked list with
  * a tail pointer prior to GTK+ 2.6.  As a result, it was fast at data
  * insertion and deletion, and not fast at random data access.  The
- * #GtkListStore sets the #CTK_TREE_MODEL_ITERS_PERSIST flag, which means
- * that #GtkTreeIters can be cached while the row exists.  Thus, if
+ * #CtkListStore sets the #CTK_TREE_MODEL_ITERS_PERSIST flag, which means
+ * that #CtkTreeIters can be cached while the row exists.  Thus, if
  * access to a particular row is needed often and your code is expected to
  * run on older versions of GTK+, it is worth keeping the iter around.
  *
@@ -119,21 +119,21 @@
  * It is important to note that only the methods
  * ctk_list_store_insert_with_values() and ctk_list_store_insert_with_valuesv()
  * are atomic, in the sense that the row is being appended to the store and the
- * values filled in in a single operation with regard to #GtkTreeModel signaling.
+ * values filled in in a single operation with regard to #CtkTreeModel signaling.
  * In contrast, using e.g. ctk_list_store_append() and then ctk_list_store_set()
- * will first create a row, which triggers the #GtkTreeModel::row-inserted signal
- * on #GtkListStore. The row, however, is still empty, and any signal handler
- * connecting to #GtkTreeModel::row-inserted on this particular store should be prepared
+ * will first create a row, which triggers the #CtkTreeModel::row-inserted signal
+ * on #CtkListStore. The row, however, is still empty, and any signal handler
+ * connecting to #CtkTreeModel::row-inserted on this particular store should be prepared
  * for the situation that the row might be empty. This is especially important
- * if you are wrapping the #GtkListStore inside a #GtkTreeModelFilter and are
- * using a #GtkTreeModelFilterVisibleFunc. Using any of the non-atomic operations
- * to append rows to the #GtkListStore will cause the
- * #GtkTreeModelFilterVisibleFunc to be visited with an empty row first; the
+ * if you are wrapping the #CtkListStore inside a #CtkTreeModelFilter and are
+ * using a #CtkTreeModelFilterVisibleFunc. Using any of the non-atomic operations
+ * to append rows to the #CtkListStore will cause the
+ * #CtkTreeModelFilterVisibleFunc to be visited with an empty row first; the
  * function must be prepared for that.
  *
- * # GtkListStore as GtkBuildable
+ * # CtkListStore as CtkBuildable
  *
- * The GtkListStore implementation of the GtkBuildable interface allows
+ * The CtkListStore implementation of the CtkBuildable interface allows
  * to specify the model columns with a <columns> element that may contain
  * multiple <column> elements, each specifying one model column. The “type”
  * attribute specifies the data type for the column.
@@ -150,7 +150,7 @@
  *
  * An example of a UI Definition fragment for a list store:
  * |[<!-- language="C" -->
- * <object class="GtkListStore">
+ * <object class="CtkListStore">
  *   <columns>
  *     <column type="gchararray"/>
  *     <column type="gchararray"/>
@@ -173,9 +173,9 @@
  */
 
 
-struct _GtkListStorePrivate
+struct _CtkListStorePrivate
 {
-  GtkTreeIterCompareFunc default_sort_func;
+  CtkTreeIterCompareFunc default_sort_func;
 
   GDestroyNotify default_sort_destroy;
   GList *sort_list;
@@ -186,7 +186,7 @@ struct _GtkListStorePrivate
   gint sort_column_id;
   gint length;
 
-  GtkSortType order;
+  CtkSortType order;
 
   guint columns_dirty : 1;
 
@@ -194,109 +194,109 @@ struct _GtkListStorePrivate
   gpointer seq;         /* head of the list */
 };
 
-#define CTK_LIST_STORE_IS_SORTED(list) (((GtkListStore*)(list))->priv->sort_column_id != CTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID)
-static void         ctk_list_store_tree_model_init (GtkTreeModelIface *iface);
-static void         ctk_list_store_drag_source_init(GtkTreeDragSourceIface *iface);
-static void         ctk_list_store_drag_dest_init  (GtkTreeDragDestIface   *iface);
-static void         ctk_list_store_sortable_init   (GtkTreeSortableIface   *iface);
-static void         ctk_list_store_buildable_init  (GtkBuildableIface      *iface);
+#define CTK_LIST_STORE_IS_SORTED(list) (((CtkListStore*)(list))->priv->sort_column_id != CTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID)
+static void         ctk_list_store_tree_model_init (CtkTreeModelIface *iface);
+static void         ctk_list_store_drag_source_init(CtkTreeDragSourceIface *iface);
+static void         ctk_list_store_drag_dest_init  (CtkTreeDragDestIface   *iface);
+static void         ctk_list_store_sortable_init   (CtkTreeSortableIface   *iface);
+static void         ctk_list_store_buildable_init  (CtkBuildableIface      *iface);
 static void         ctk_list_store_finalize        (GObject           *object);
-static GtkTreeModelFlags ctk_list_store_get_flags  (GtkTreeModel      *tree_model);
-static gint         ctk_list_store_get_n_columns   (GtkTreeModel      *tree_model);
-static GType        ctk_list_store_get_column_type (GtkTreeModel      *tree_model,
+static CtkTreeModelFlags ctk_list_store_get_flags  (CtkTreeModel      *tree_model);
+static gint         ctk_list_store_get_n_columns   (CtkTreeModel      *tree_model);
+static GType        ctk_list_store_get_column_type (CtkTreeModel      *tree_model,
 						    gint               index);
-static gboolean     ctk_list_store_get_iter        (GtkTreeModel      *tree_model,
-						    GtkTreeIter       *iter,
-						    GtkTreePath       *path);
-static GtkTreePath *ctk_list_store_get_path        (GtkTreeModel      *tree_model,
-						    GtkTreeIter       *iter);
-static void         ctk_list_store_get_value       (GtkTreeModel      *tree_model,
-						    GtkTreeIter       *iter,
+static gboolean     ctk_list_store_get_iter        (CtkTreeModel      *tree_model,
+						    CtkTreeIter       *iter,
+						    CtkTreePath       *path);
+static CtkTreePath *ctk_list_store_get_path        (CtkTreeModel      *tree_model,
+						    CtkTreeIter       *iter);
+static void         ctk_list_store_get_value       (CtkTreeModel      *tree_model,
+						    CtkTreeIter       *iter,
 						    gint               column,
 						    GValue            *value);
-static gboolean     ctk_list_store_iter_next       (GtkTreeModel      *tree_model,
-						    GtkTreeIter       *iter);
-static gboolean     ctk_list_store_iter_previous   (GtkTreeModel      *tree_model,
-						    GtkTreeIter       *iter);
-static gboolean     ctk_list_store_iter_children   (GtkTreeModel      *tree_model,
-						    GtkTreeIter       *iter,
-						    GtkTreeIter       *parent);
-static gboolean     ctk_list_store_iter_has_child  (GtkTreeModel      *tree_model,
-						    GtkTreeIter       *iter);
-static gint         ctk_list_store_iter_n_children (GtkTreeModel      *tree_model,
-						    GtkTreeIter       *iter);
-static gboolean     ctk_list_store_iter_nth_child  (GtkTreeModel      *tree_model,
-						    GtkTreeIter       *iter,
-						    GtkTreeIter       *parent,
+static gboolean     ctk_list_store_iter_next       (CtkTreeModel      *tree_model,
+						    CtkTreeIter       *iter);
+static gboolean     ctk_list_store_iter_previous   (CtkTreeModel      *tree_model,
+						    CtkTreeIter       *iter);
+static gboolean     ctk_list_store_iter_children   (CtkTreeModel      *tree_model,
+						    CtkTreeIter       *iter,
+						    CtkTreeIter       *parent);
+static gboolean     ctk_list_store_iter_has_child  (CtkTreeModel      *tree_model,
+						    CtkTreeIter       *iter);
+static gint         ctk_list_store_iter_n_children (CtkTreeModel      *tree_model,
+						    CtkTreeIter       *iter);
+static gboolean     ctk_list_store_iter_nth_child  (CtkTreeModel      *tree_model,
+						    CtkTreeIter       *iter,
+						    CtkTreeIter       *parent,
 						    gint               n);
-static gboolean     ctk_list_store_iter_parent     (GtkTreeModel      *tree_model,
-						    GtkTreeIter       *iter,
-						    GtkTreeIter       *child);
+static gboolean     ctk_list_store_iter_parent     (CtkTreeModel      *tree_model,
+						    CtkTreeIter       *iter,
+						    CtkTreeIter       *child);
 
 
-static void ctk_list_store_set_n_columns   (GtkListStore *list_store,
+static void ctk_list_store_set_n_columns   (CtkListStore *list_store,
 					    gint          n_columns);
-static void ctk_list_store_set_column_type (GtkListStore *list_store,
+static void ctk_list_store_set_column_type (CtkListStore *list_store,
 					    gint          column,
 					    GType         type);
 
-static void ctk_list_store_increment_stamp (GtkListStore *list_store);
+static void ctk_list_store_increment_stamp (CtkListStore *list_store);
 
 
 /* Drag and Drop */
-static gboolean real_ctk_list_store_row_draggable (GtkTreeDragSource *drag_source,
-                                                   GtkTreePath       *path);
-static gboolean ctk_list_store_drag_data_delete   (GtkTreeDragSource *drag_source,
-                                                   GtkTreePath       *path);
-static gboolean ctk_list_store_drag_data_get      (GtkTreeDragSource *drag_source,
-                                                   GtkTreePath       *path,
-                                                   GtkSelectionData  *selection_data);
-static gboolean ctk_list_store_drag_data_received (GtkTreeDragDest   *drag_dest,
-                                                   GtkTreePath       *dest,
-                                                   GtkSelectionData  *selection_data);
-static gboolean ctk_list_store_row_drop_possible  (GtkTreeDragDest   *drag_dest,
-                                                   GtkTreePath       *dest_path,
-						   GtkSelectionData  *selection_data);
+static gboolean real_ctk_list_store_row_draggable (CtkTreeDragSource *drag_source,
+                                                   CtkTreePath       *path);
+static gboolean ctk_list_store_drag_data_delete   (CtkTreeDragSource *drag_source,
+                                                   CtkTreePath       *path);
+static gboolean ctk_list_store_drag_data_get      (CtkTreeDragSource *drag_source,
+                                                   CtkTreePath       *path,
+                                                   CtkSelectionData  *selection_data);
+static gboolean ctk_list_store_drag_data_received (CtkTreeDragDest   *drag_dest,
+                                                   CtkTreePath       *dest,
+                                                   CtkSelectionData  *selection_data);
+static gboolean ctk_list_store_row_drop_possible  (CtkTreeDragDest   *drag_dest,
+                                                   CtkTreePath       *dest_path,
+						   CtkSelectionData  *selection_data);
 
 
 /* sortable */
-static void     ctk_list_store_sort                  (GtkListStore           *list_store);
-static void     ctk_list_store_sort_iter_changed     (GtkListStore           *list_store,
-						      GtkTreeIter            *iter,
+static void     ctk_list_store_sort                  (CtkListStore           *list_store);
+static void     ctk_list_store_sort_iter_changed     (CtkListStore           *list_store,
+						      CtkTreeIter            *iter,
 						      gint                    column);
-static gboolean ctk_list_store_get_sort_column_id    (GtkTreeSortable        *sortable,
+static gboolean ctk_list_store_get_sort_column_id    (CtkTreeSortable        *sortable,
 						      gint                   *sort_column_id,
-						      GtkSortType            *order);
-static void     ctk_list_store_set_sort_column_id    (GtkTreeSortable        *sortable,
+						      CtkSortType            *order);
+static void     ctk_list_store_set_sort_column_id    (CtkTreeSortable        *sortable,
 						      gint                    sort_column_id,
-						      GtkSortType             order);
-static void     ctk_list_store_set_sort_func         (GtkTreeSortable        *sortable,
+						      CtkSortType             order);
+static void     ctk_list_store_set_sort_func         (CtkTreeSortable        *sortable,
 						      gint                    sort_column_id,
-						      GtkTreeIterCompareFunc  func,
+						      CtkTreeIterCompareFunc  func,
 						      gpointer                data,
 						      GDestroyNotify          destroy);
-static void     ctk_list_store_set_default_sort_func (GtkTreeSortable        *sortable,
-						      GtkTreeIterCompareFunc  func,
+static void     ctk_list_store_set_default_sort_func (CtkTreeSortable        *sortable,
+						      CtkTreeIterCompareFunc  func,
 						      gpointer                data,
 						      GDestroyNotify          destroy);
-static gboolean ctk_list_store_has_default_sort_func (GtkTreeSortable        *sortable);
+static gboolean ctk_list_store_has_default_sort_func (CtkTreeSortable        *sortable);
 
 
 /* buildable */
-static gboolean ctk_list_store_buildable_custom_tag_start (GtkBuildable  *buildable,
-							   GtkBuilder    *builder,
+static gboolean ctk_list_store_buildable_custom_tag_start (CtkBuildable  *buildable,
+							   CtkBuilder    *builder,
 							   GObject       *child,
 							   const gchar   *tagname,
 							   GMarkupParser *parser,
 							   gpointer      *data);
-static void     ctk_list_store_buildable_custom_tag_end (GtkBuildable *buildable,
-							 GtkBuilder   *builder,
+static void     ctk_list_store_buildable_custom_tag_end (CtkBuildable *buildable,
+							 CtkBuilder   *builder,
 							 GObject      *child,
 							 const gchar  *tagname,
 							 gpointer     *data);
 
-G_DEFINE_TYPE_WITH_CODE (GtkListStore, ctk_list_store, G_TYPE_OBJECT,
-                         G_ADD_PRIVATE (GtkListStore)
+G_DEFINE_TYPE_WITH_CODE (CtkListStore, ctk_list_store, G_TYPE_OBJECT,
+                         G_ADD_PRIVATE (CtkListStore)
 			 G_IMPLEMENT_INTERFACE (CTK_TYPE_TREE_MODEL,
 						ctk_list_store_tree_model_init)
 			 G_IMPLEMENT_INTERFACE (CTK_TYPE_TREE_DRAG_SOURCE,
@@ -310,7 +310,7 @@ G_DEFINE_TYPE_WITH_CODE (GtkListStore, ctk_list_store, G_TYPE_OBJECT,
 
 
 static void
-ctk_list_store_class_init (GtkListStoreClass *class)
+ctk_list_store_class_init (CtkListStoreClass *class)
 {
   GObjectClass *object_class;
 
@@ -320,7 +320,7 @@ ctk_list_store_class_init (GtkListStoreClass *class)
 }
 
 static void
-ctk_list_store_tree_model_init (GtkTreeModelIface *iface)
+ctk_list_store_tree_model_init (CtkTreeModelIface *iface)
 {
   iface->get_flags = ctk_list_store_get_flags;
   iface->get_n_columns = ctk_list_store_get_n_columns;
@@ -338,7 +338,7 @@ ctk_list_store_tree_model_init (GtkTreeModelIface *iface)
 }
 
 static void
-ctk_list_store_drag_source_init (GtkTreeDragSourceIface *iface)
+ctk_list_store_drag_source_init (CtkTreeDragSourceIface *iface)
 {
   iface->row_draggable = real_ctk_list_store_row_draggable;
   iface->drag_data_delete = ctk_list_store_drag_data_delete;
@@ -346,14 +346,14 @@ ctk_list_store_drag_source_init (GtkTreeDragSourceIface *iface)
 }
 
 static void
-ctk_list_store_drag_dest_init (GtkTreeDragDestIface *iface)
+ctk_list_store_drag_dest_init (CtkTreeDragDestIface *iface)
 {
   iface->drag_data_received = ctk_list_store_drag_data_received;
   iface->row_drop_possible = ctk_list_store_row_drop_possible;
 }
 
 static void
-ctk_list_store_sortable_init (GtkTreeSortableIface *iface)
+ctk_list_store_sortable_init (CtkTreeSortableIface *iface)
 {
   iface->get_sort_column_id = ctk_list_store_get_sort_column_id;
   iface->set_sort_column_id = ctk_list_store_set_sort_column_id;
@@ -363,16 +363,16 @@ ctk_list_store_sortable_init (GtkTreeSortableIface *iface)
 }
 
 void
-ctk_list_store_buildable_init (GtkBuildableIface *iface)
+ctk_list_store_buildable_init (CtkBuildableIface *iface)
 {
   iface->custom_tag_start = ctk_list_store_buildable_custom_tag_start;
   iface->custom_tag_end = ctk_list_store_buildable_custom_tag_end;
 }
 
 static void
-ctk_list_store_init (GtkListStore *list_store)
+ctk_list_store_init (CtkListStore *list_store)
 {
-  GtkListStorePrivate *priv;
+  CtkListStorePrivate *priv;
 
   list_store->priv = ctk_list_store_get_instance_private (list_store);
   priv = list_store->priv;
@@ -386,8 +386,8 @@ ctk_list_store_init (GtkListStore *list_store)
 }
 
 static gboolean
-iter_is_valid (GtkTreeIter  *iter,
-               GtkListStore *list_store)
+iter_is_valid (CtkTreeIter  *iter,
+               CtkListStore *list_store)
 {
   return iter != NULL && 
          iter->user_data != NULL &&
@@ -406,16 +406,16 @@ iter_is_valid (GtkTreeIter  *iter,
  * are supported.
  *
  * As an example, `ctk_list_store_new (3, G_TYPE_INT, G_TYPE_STRING,
- * GDK_TYPE_PIXBUF);` will create a new #GtkListStore with three columns, of type
+ * GDK_TYPE_PIXBUF);` will create a new #CtkListStore with three columns, of type
  * int, string and #GdkPixbuf respectively.
  *
- * Returns: a new #GtkListStore
+ * Returns: a new #CtkListStore
  */
-GtkListStore *
+CtkListStore *
 ctk_list_store_new (gint n_columns,
 		    ...)
 {
-  GtkListStore *retval;
+  CtkListStore *retval;
   va_list args;
   gint i;
 
@@ -454,13 +454,13 @@ ctk_list_store_new (gint n_columns,
  *
  * Non-vararg creation function.  Used primarily by language bindings.
  *
- * Returns: (transfer full): a new #GtkListStore
+ * Returns: (transfer full): a new #CtkListStore
  **/
-GtkListStore *
+CtkListStore *
 ctk_list_store_newv (gint   n_columns,
 		     GType *types)
 {
-  GtkListStore *retval;
+  CtkListStore *retval;
   gint i;
 
   g_return_val_if_fail (n_columns > 0, NULL);
@@ -485,21 +485,21 @@ ctk_list_store_newv (gint   n_columns,
 
 /**
  * ctk_list_store_set_column_types:
- * @list_store: A #GtkListStore
+ * @list_store: A #CtkListStore
  * @n_columns: Number of columns for the list store
  * @types: (array length=n_columns): An array length n of #GTypes
  *
- * This function is meant primarily for #GObjects that inherit from #GtkListStore,
- * and should only be used when constructing a new #GtkListStore.  It will not
- * function after a row has been added, or a method on the #GtkTreeModel
+ * This function is meant primarily for #GObjects that inherit from #CtkListStore,
+ * and should only be used when constructing a new #CtkListStore.  It will not
+ * function after a row has been added, or a method on the #CtkTreeModel
  * interface is called.
  **/
 void
-ctk_list_store_set_column_types (GtkListStore *list_store,
+ctk_list_store_set_column_types (CtkListStore *list_store,
 				 gint          n_columns,
 				 GType        *types)
 {
-  GtkListStorePrivate *priv;
+  CtkListStorePrivate *priv;
   gint i;
 
   g_return_if_fail (CTK_IS_LIST_STORE (list_store));
@@ -521,10 +521,10 @@ ctk_list_store_set_column_types (GtkListStore *list_store,
 }
 
 static void
-ctk_list_store_set_n_columns (GtkListStore *list_store,
+ctk_list_store_set_n_columns (CtkListStore *list_store,
 			      gint          n_columns)
 {
-  GtkListStorePrivate *priv = list_store->priv;
+  CtkListStorePrivate *priv = list_store->priv;
   int i;
 
   if (priv->n_columns == n_columns)
@@ -541,11 +541,11 @@ ctk_list_store_set_n_columns (GtkListStore *list_store,
 }
 
 static void
-ctk_list_store_set_column_type (GtkListStore *list_store,
+ctk_list_store_set_column_type (CtkListStore *list_store,
 				gint          column,
 				GType         type)
 {
-  GtkListStorePrivate *priv = list_store->priv;
+  CtkListStorePrivate *priv = list_store->priv;
 
   if (!_ctk_tree_data_list_check_type (type))
     {
@@ -559,8 +559,8 @@ ctk_list_store_set_column_type (GtkListStore *list_store,
 static void
 ctk_list_store_finalize (GObject *object)
 {
-  GtkListStore *list_store = CTK_LIST_STORE (object);
-  GtkListStorePrivate *priv = list_store->priv;
+  CtkListStore *list_store = CTK_LIST_STORE (object);
+  CtkListStorePrivate *priv = list_store->priv;
 
   g_sequence_foreach (priv->seq,
 		      (GFunc) _ctk_tree_data_list_free, priv->column_headers);
@@ -582,18 +582,18 @@ ctk_list_store_finalize (GObject *object)
   G_OBJECT_CLASS (ctk_list_store_parent_class)->finalize (object);
 }
 
-/* Fulfill the GtkTreeModel requirements */
-static GtkTreeModelFlags
-ctk_list_store_get_flags (GtkTreeModel *tree_model)
+/* Fulfill the CtkTreeModel requirements */
+static CtkTreeModelFlags
+ctk_list_store_get_flags (CtkTreeModel *tree_model)
 {
   return CTK_TREE_MODEL_ITERS_PERSIST | CTK_TREE_MODEL_LIST_ONLY;
 }
 
 static gint
-ctk_list_store_get_n_columns (GtkTreeModel *tree_model)
+ctk_list_store_get_n_columns (CtkTreeModel *tree_model)
 {
-  GtkListStore *list_store = CTK_LIST_STORE (tree_model);
-  GtkListStorePrivate *priv = list_store->priv;
+  CtkListStore *list_store = CTK_LIST_STORE (tree_model);
+  CtkListStorePrivate *priv = list_store->priv;
 
   priv->columns_dirty = TRUE;
 
@@ -601,11 +601,11 @@ ctk_list_store_get_n_columns (GtkTreeModel *tree_model)
 }
 
 static GType
-ctk_list_store_get_column_type (GtkTreeModel *tree_model,
+ctk_list_store_get_column_type (CtkTreeModel *tree_model,
 				gint          index)
 {
-  GtkListStore *list_store = CTK_LIST_STORE (tree_model);
-  GtkListStorePrivate *priv = list_store->priv;
+  CtkListStore *list_store = CTK_LIST_STORE (tree_model);
+  CtkListStorePrivate *priv = list_store->priv;
 
   g_return_val_if_fail (index < priv->n_columns, G_TYPE_INVALID);
 
@@ -615,12 +615,12 @@ ctk_list_store_get_column_type (GtkTreeModel *tree_model,
 }
 
 static gboolean
-ctk_list_store_get_iter (GtkTreeModel *tree_model,
-			 GtkTreeIter  *iter,
-			 GtkTreePath  *path)
+ctk_list_store_get_iter (CtkTreeModel *tree_model,
+			 CtkTreeIter  *iter,
+			 CtkTreePath  *path)
 {
-  GtkListStore *list_store = CTK_LIST_STORE (tree_model);
-  GtkListStorePrivate *priv = list_store->priv;
+  CtkListStore *list_store = CTK_LIST_STORE (tree_model);
+  CtkListStorePrivate *priv = list_store->priv;
   GSequence *seq;
   gint i;
 
@@ -642,13 +642,13 @@ ctk_list_store_get_iter (GtkTreeModel *tree_model,
   return TRUE;
 }
 
-static GtkTreePath *
-ctk_list_store_get_path (GtkTreeModel *tree_model,
-			 GtkTreeIter  *iter)
+static CtkTreePath *
+ctk_list_store_get_path (CtkTreeModel *tree_model,
+			 CtkTreeIter  *iter)
 {
-  GtkListStore *list_store = CTK_LIST_STORE (tree_model);
-  GtkListStorePrivate *priv = list_store->priv;
-  GtkTreePath *path;
+  CtkListStore *list_store = CTK_LIST_STORE (tree_model);
+  CtkListStorePrivate *priv = list_store->priv;
+  CtkTreePath *path;
 
   g_return_val_if_fail (iter->stamp == priv->stamp, NULL);
 
@@ -662,14 +662,14 @@ ctk_list_store_get_path (GtkTreeModel *tree_model,
 }
 
 static void
-ctk_list_store_get_value (GtkTreeModel *tree_model,
-			  GtkTreeIter  *iter,
+ctk_list_store_get_value (CtkTreeModel *tree_model,
+			  CtkTreeIter  *iter,
 			  gint          column,
 			  GValue       *value)
 {
-  GtkListStore *list_store = CTK_LIST_STORE (tree_model);
-  GtkListStorePrivate *priv = list_store->priv;
-  GtkTreeDataList *list;
+  CtkListStore *list_store = CTK_LIST_STORE (tree_model);
+  CtkListStorePrivate *priv = list_store->priv;
+  CtkTreeDataList *list;
   gint tmp_column = column;
 
   g_return_if_fail (column < priv->n_columns);
@@ -689,11 +689,11 @@ ctk_list_store_get_value (GtkTreeModel *tree_model,
 }
 
 static gboolean
-ctk_list_store_iter_next (GtkTreeModel  *tree_model,
-			  GtkTreeIter   *iter)
+ctk_list_store_iter_next (CtkTreeModel  *tree_model,
+			  CtkTreeIter   *iter)
 {
-  GtkListStore *list_store = CTK_LIST_STORE (tree_model);
-  GtkListStorePrivate *priv = list_store->priv;
+  CtkListStore *list_store = CTK_LIST_STORE (tree_model);
+  CtkListStorePrivate *priv = list_store->priv;
   gboolean retval;
 
   g_return_val_if_fail (priv->stamp == iter->stamp, FALSE);
@@ -707,11 +707,11 @@ ctk_list_store_iter_next (GtkTreeModel  *tree_model,
 }
 
 static gboolean
-ctk_list_store_iter_previous (GtkTreeModel *tree_model,
-                              GtkTreeIter  *iter)
+ctk_list_store_iter_previous (CtkTreeModel *tree_model,
+                              CtkTreeIter  *iter)
 {
-  GtkListStore *list_store = CTK_LIST_STORE (tree_model);
-  GtkListStorePrivate *priv = list_store->priv;
+  CtkListStore *list_store = CTK_LIST_STORE (tree_model);
+  CtkListStorePrivate *priv = list_store->priv;
 
   g_return_val_if_fail (priv->stamp == iter->stamp, FALSE);
 
@@ -727,12 +727,12 @@ ctk_list_store_iter_previous (GtkTreeModel *tree_model,
 }
 
 static gboolean
-ctk_list_store_iter_children (GtkTreeModel *tree_model,
-			      GtkTreeIter  *iter,
-			      GtkTreeIter  *parent)
+ctk_list_store_iter_children (CtkTreeModel *tree_model,
+			      CtkTreeIter  *iter,
+			      CtkTreeIter  *parent)
 {
-  GtkListStore *list_store = (GtkListStore *) tree_model;
-  GtkListStorePrivate *priv = list_store->priv;
+  CtkListStore *list_store = (CtkListStore *) tree_model;
+  CtkListStorePrivate *priv = list_store->priv;
 
   /* this is a list, nodes have no children */
   if (parent)
@@ -755,18 +755,18 @@ ctk_list_store_iter_children (GtkTreeModel *tree_model,
 }
 
 static gboolean
-ctk_list_store_iter_has_child (GtkTreeModel *tree_model,
-			       GtkTreeIter  *iter)
+ctk_list_store_iter_has_child (CtkTreeModel *tree_model,
+			       CtkTreeIter  *iter)
 {
   return FALSE;
 }
 
 static gint
-ctk_list_store_iter_n_children (GtkTreeModel *tree_model,
-				GtkTreeIter  *iter)
+ctk_list_store_iter_n_children (CtkTreeModel *tree_model,
+				CtkTreeIter  *iter)
 {
-  GtkListStore *list_store = CTK_LIST_STORE (tree_model);
-  GtkListStorePrivate *priv = list_store->priv;
+  CtkListStore *list_store = CTK_LIST_STORE (tree_model);
+  CtkListStorePrivate *priv = list_store->priv;
 
   if (iter == NULL)
     return g_sequence_get_length (priv->seq);
@@ -777,13 +777,13 @@ ctk_list_store_iter_n_children (GtkTreeModel *tree_model,
 }
 
 static gboolean
-ctk_list_store_iter_nth_child (GtkTreeModel *tree_model,
-			       GtkTreeIter  *iter,
-			       GtkTreeIter  *parent,
+ctk_list_store_iter_nth_child (CtkTreeModel *tree_model,
+			       CtkTreeIter  *iter,
+			       CtkTreeIter  *parent,
 			       gint          n)
 {
-  GtkListStore *list_store = CTK_LIST_STORE (tree_model);
-  GtkListStorePrivate *priv = list_store->priv;
+  CtkListStore *list_store = CTK_LIST_STORE (tree_model);
+  CtkListStorePrivate *priv = list_store->priv;
   GSequenceIter *child;
 
   iter->stamp = 0;
@@ -803,24 +803,24 @@ ctk_list_store_iter_nth_child (GtkTreeModel *tree_model,
 }
 
 static gboolean
-ctk_list_store_iter_parent (GtkTreeModel *tree_model,
-			    GtkTreeIter  *iter,
-			    GtkTreeIter  *child)
+ctk_list_store_iter_parent (CtkTreeModel *tree_model,
+			    CtkTreeIter  *iter,
+			    CtkTreeIter  *child)
 {
   iter->stamp = 0;
   return FALSE;
 }
 
 static gboolean
-ctk_list_store_real_set_value (GtkListStore *list_store,
-			       GtkTreeIter  *iter,
+ctk_list_store_real_set_value (CtkListStore *list_store,
+			       CtkTreeIter  *iter,
 			       gint          column,
 			       GValue       *value,
 			       gboolean      sort)
 {
-  GtkListStorePrivate *priv = list_store->priv;
-  GtkTreeDataList *list;
-  GtkTreeDataList *prev;
+  CtkListStorePrivate *priv = list_store->priv;
+  CtkTreeDataList *list;
+  CtkTreeDataList *prev;
   gint old_column = column;
   GValue real_value = G_VALUE_INIT;
   gboolean converted = FALSE;
@@ -911,8 +911,8 @@ ctk_list_store_real_set_value (GtkListStore *list_store,
 
 /**
  * ctk_list_store_set_value:
- * @list_store: A #GtkListStore
- * @iter: A valid #GtkTreeIter for the row being modified
+ * @list_store: A #CtkListStore
+ * @iter: A valid #CtkTreeIter for the row being modified
  * @column: column number to modify
  * @value: new value for the cell
  *
@@ -922,12 +922,12 @@ ctk_list_store_real_set_value (GtkListStore *list_store,
  *
  **/
 void
-ctk_list_store_set_value (GtkListStore *list_store,
-			  GtkTreeIter  *iter,
+ctk_list_store_set_value (CtkListStore *list_store,
+			  CtkTreeIter  *iter,
 			  gint          column,
 			  GValue       *value)
 {
-  GtkListStorePrivate *priv;
+  CtkListStorePrivate *priv;
 
   g_return_if_fail (CTK_IS_LIST_STORE (list_store));
   g_return_if_fail (iter_is_valid (iter, list_store));
@@ -937,7 +937,7 @@ ctk_list_store_set_value (GtkListStore *list_store,
 
   if (ctk_list_store_real_set_value (list_store, iter, column, value, TRUE))
     {
-      GtkTreePath *path;
+      CtkTreePath *path;
 
       path = ctk_list_store_get_path (CTK_TREE_MODEL (list_store), iter);
       ctk_tree_model_row_changed (CTK_TREE_MODEL (list_store), path, iter);
@@ -945,17 +945,17 @@ ctk_list_store_set_value (GtkListStore *list_store,
     }
 }
 
-static GtkTreeIterCompareFunc
-ctk_list_store_get_compare_func (GtkListStore *list_store)
+static CtkTreeIterCompareFunc
+ctk_list_store_get_compare_func (CtkListStore *list_store)
 {
-  GtkListStorePrivate *priv = list_store->priv;
-  GtkTreeIterCompareFunc func = NULL;
+  CtkListStorePrivate *priv = list_store->priv;
+  CtkTreeIterCompareFunc func = NULL;
 
   if (CTK_LIST_STORE_IS_SORTED (list_store))
     {
       if (priv->sort_column_id != -1)
 	{
-	  GtkTreeDataSortHeader *header;
+	  CtkTreeDataSortHeader *header;
 	  header = _ctk_tree_data_list_get_header (priv->sort_list,
 						   priv->sort_column_id);
 	  g_return_val_if_fail (header != NULL, NULL);
@@ -972,17 +972,17 @@ ctk_list_store_get_compare_func (GtkListStore *list_store)
 }
 
 static void
-ctk_list_store_set_vector_internal (GtkListStore *list_store,
-				    GtkTreeIter  *iter,
+ctk_list_store_set_vector_internal (CtkListStore *list_store,
+				    CtkTreeIter  *iter,
 				    gboolean     *emit_signal,
 				    gboolean     *maybe_need_sort,
 				    gint         *columns,
 				    GValue       *values,
 				    gint          n_values)
 {
-  GtkListStorePrivate *priv = list_store->priv;
+  CtkListStorePrivate *priv = list_store->priv;
   gint i;
-  GtkTreeIterCompareFunc func = NULL;
+  CtkTreeIterCompareFunc func = NULL;
 
   func = ctk_list_store_get_compare_func (list_store);
   if (func != _ctk_tree_data_list_compare_func)
@@ -1003,15 +1003,15 @@ ctk_list_store_set_vector_internal (GtkListStore *list_store,
 }
 
 static void
-ctk_list_store_set_valist_internal (GtkListStore *list_store,
-				    GtkTreeIter  *iter,
+ctk_list_store_set_valist_internal (CtkListStore *list_store,
+				    CtkTreeIter  *iter,
 				    gboolean     *emit_signal,
 				    gboolean     *maybe_need_sort,
 				    va_list	  var_args)
 {
-  GtkListStorePrivate *priv = list_store->priv;
+  CtkListStorePrivate *priv = list_store->priv;
   gint column;
-  GtkTreeIterCompareFunc func = NULL;
+  CtkTreeIterCompareFunc func = NULL;
 
   column = va_arg (var_args, gint);
 
@@ -1062,8 +1062,8 @@ ctk_list_store_set_valist_internal (GtkListStore *list_store,
 
 /**
  * ctk_list_store_set_valuesv: (rename-to ctk_list_store_set)
- * @list_store: A #GtkListStore
- * @iter: A valid #GtkTreeIter for the row being modified
+ * @list_store: A #CtkListStore
+ * @iter: A valid #CtkTreeIter for the row being modified
  * @columns: (array length=n_values): an array of column numbers
  * @values: (array length=n_values): an array of GValues
  * @n_values: the length of the @columns and @values arrays
@@ -1077,13 +1077,13 @@ ctk_list_store_set_valist_internal (GtkListStore *list_store,
  * Since: 2.12
  */
 void
-ctk_list_store_set_valuesv (GtkListStore *list_store,
-			    GtkTreeIter  *iter,
+ctk_list_store_set_valuesv (CtkListStore *list_store,
+			    CtkTreeIter  *iter,
 			    gint         *columns,
 			    GValue       *values,
 			    gint          n_values)
 {
-  GtkListStorePrivate *priv;
+  CtkListStorePrivate *priv;
   gboolean emit_signal = FALSE;
   gboolean maybe_need_sort = FALSE;
 
@@ -1102,7 +1102,7 @@ ctk_list_store_set_valuesv (GtkListStore *list_store,
 
   if (emit_signal)
     {
-      GtkTreePath *path;
+      CtkTreePath *path;
 
       path = ctk_list_store_get_path (CTK_TREE_MODEL (list_store), iter);
       ctk_tree_model_row_changed (CTK_TREE_MODEL (list_store), path, iter);
@@ -1112,8 +1112,8 @@ ctk_list_store_set_valuesv (GtkListStore *list_store,
 
 /**
  * ctk_list_store_set_valist:
- * @list_store: A #GtkListStore
- * @iter: A valid #GtkTreeIter for the row being modified
+ * @list_store: A #CtkListStore
+ * @iter: A valid #CtkTreeIter for the row being modified
  * @var_args: va_list of column/value pairs
  *
  * See ctk_list_store_set(); this version takes a va_list for use by language
@@ -1121,11 +1121,11 @@ ctk_list_store_set_valuesv (GtkListStore *list_store,
  *
  **/
 void
-ctk_list_store_set_valist (GtkListStore *list_store,
-                           GtkTreeIter  *iter,
+ctk_list_store_set_valist (CtkListStore *list_store,
+                           CtkTreeIter  *iter,
                            va_list	 var_args)
 {
-  GtkListStorePrivate *priv;
+  CtkListStorePrivate *priv;
   gboolean emit_signal = FALSE;
   gboolean maybe_need_sort = FALSE;
 
@@ -1144,7 +1144,7 @@ ctk_list_store_set_valist (GtkListStore *list_store,
 
   if (emit_signal)
     {
-      GtkTreePath *path;
+      CtkTreePath *path;
 
       path = ctk_list_store_get_path (CTK_TREE_MODEL (list_store), iter);
       ctk_tree_model_row_changed (CTK_TREE_MODEL (list_store), path, iter);
@@ -1154,7 +1154,7 @@ ctk_list_store_set_valist (GtkListStore *list_store,
 
 /**
  * ctk_list_store_set:
- * @list_store: a #GtkListStore
+ * @list_store: a #CtkListStore
  * @iter: row iterator
  * @...: pairs of column number and value, terminated with -1
  *
@@ -1169,8 +1169,8 @@ ctk_list_store_set_valist (GtkListStore *list_store,
  * will be copied if it is a %G_TYPE_STRING or %G_TYPE_BOXED.
  */
 void
-ctk_list_store_set (GtkListStore *list_store,
-		    GtkTreeIter  *iter,
+ctk_list_store_set (CtkListStore *list_store,
+		    CtkTreeIter  *iter,
 		    ...)
 {
   va_list var_args;
@@ -1182,8 +1182,8 @@ ctk_list_store_set (GtkListStore *list_store,
 
 /**
  * ctk_list_store_remove:
- * @list_store: A #GtkListStore
- * @iter: A valid #GtkTreeIter
+ * @list_store: A #CtkListStore
+ * @iter: A valid #CtkTreeIter
  *
  * Removes the given row from the list store.  After being removed, 
  * @iter is set to be the next valid row, or invalidated if it pointed 
@@ -1192,11 +1192,11 @@ ctk_list_store_set (GtkListStore *list_store,
  * Returns: %TRUE if @iter is valid, %FALSE if not.
  **/
 gboolean
-ctk_list_store_remove (GtkListStore *list_store,
-		       GtkTreeIter  *iter)
+ctk_list_store_remove (CtkListStore *list_store,
+		       CtkTreeIter  *iter)
 {
-  GtkListStorePrivate *priv;
-  GtkTreePath *path;
+  CtkListStorePrivate *priv;
+  CtkTreePath *path;
   GSequenceIter *ptr, *next;
 
   g_return_val_if_fail (CTK_IS_LIST_STORE (list_store), FALSE);
@@ -1232,8 +1232,8 @@ ctk_list_store_remove (GtkListStore *list_store,
 
 /**
  * ctk_list_store_insert:
- * @list_store: A #GtkListStore
- * @iter: (out): An unset #GtkTreeIter to set to the new row
+ * @list_store: A #CtkListStore
+ * @iter: (out): An unset #CtkTreeIter to set to the new row
  * @position: position to insert the new row, or -1 for last
  *
  * Creates a new row at @position.  @iter will be changed to point to this new
@@ -1244,12 +1244,12 @@ ctk_list_store_remove (GtkListStore *list_store,
  *
  **/
 void
-ctk_list_store_insert (GtkListStore *list_store,
-		       GtkTreeIter  *iter,
+ctk_list_store_insert (CtkListStore *list_store,
+		       CtkTreeIter  *iter,
 		       gint          position)
 {
-  GtkListStorePrivate *priv;
-  GtkTreePath *path;
+  CtkListStorePrivate *priv;
+  CtkTreePath *path;
   GSequence *seq;
   GSequenceIter *ptr;
   gint length;
@@ -1285,9 +1285,9 @@ ctk_list_store_insert (GtkListStore *list_store,
 
 /**
  * ctk_list_store_insert_before:
- * @list_store: A #GtkListStore
- * @iter: (out): An unset #GtkTreeIter to set to the new row
- * @sibling: (allow-none): A valid #GtkTreeIter, or %NULL
+ * @list_store: A #CtkListStore
+ * @iter: (out): An unset #CtkTreeIter to set to the new row
+ * @sibling: (allow-none): A valid #CtkTreeIter, or %NULL
  *
  * Inserts a new row before @sibling. If @sibling is %NULL, then the row will 
  * be appended to the end of the list. @iter will be changed to point to this 
@@ -1296,11 +1296,11 @@ ctk_list_store_insert (GtkListStore *list_store,
  *
  **/
 void
-ctk_list_store_insert_before (GtkListStore *list_store,
-			      GtkTreeIter  *iter,
-			      GtkTreeIter  *sibling)
+ctk_list_store_insert_before (CtkListStore *list_store,
+			      CtkTreeIter  *iter,
+			      CtkTreeIter  *sibling)
 {
-  GtkListStorePrivate *priv;
+  CtkListStorePrivate *priv;
   GSequenceIter *after;
   
   g_return_if_fail (CTK_IS_LIST_STORE (list_store));
@@ -1321,9 +1321,9 @@ ctk_list_store_insert_before (GtkListStore *list_store,
 
 /**
  * ctk_list_store_insert_after:
- * @list_store: A #GtkListStore
- * @iter: (out): An unset #GtkTreeIter to set to the new row
- * @sibling: (allow-none): A valid #GtkTreeIter, or %NULL
+ * @list_store: A #CtkListStore
+ * @iter: (out): An unset #CtkTreeIter to set to the new row
+ * @sibling: (allow-none): A valid #CtkTreeIter, or %NULL
  *
  * Inserts a new row after @sibling. If @sibling is %NULL, then the row will be
  * prepended to the beginning of the list. @iter will be changed to point to
@@ -1332,11 +1332,11 @@ ctk_list_store_insert_before (GtkListStore *list_store,
  *
  **/
 void
-ctk_list_store_insert_after (GtkListStore *list_store,
-			     GtkTreeIter  *iter,
-			     GtkTreeIter  *sibling)
+ctk_list_store_insert_after (CtkListStore *list_store,
+			     CtkTreeIter  *iter,
+			     CtkTreeIter  *sibling)
 {
-  GtkListStorePrivate *priv;
+  CtkListStorePrivate *priv;
   GSequenceIter *after;
 
   g_return_if_fail (CTK_IS_LIST_STORE (list_store));
@@ -1357,8 +1357,8 @@ ctk_list_store_insert_after (GtkListStore *list_store,
 
 /**
  * ctk_list_store_prepend:
- * @list_store: A #GtkListStore
- * @iter: (out): An unset #GtkTreeIter to set to the prepend row
+ * @list_store: A #CtkListStore
+ * @iter: (out): An unset #CtkTreeIter to set to the prepend row
  *
  * Prepends a new row to @list_store. @iter will be changed to point to this new
  * row. The row will be empty after this function is called. To fill in
@@ -1366,8 +1366,8 @@ ctk_list_store_insert_after (GtkListStore *list_store,
  *
  **/
 void
-ctk_list_store_prepend (GtkListStore *list_store,
-			GtkTreeIter  *iter)
+ctk_list_store_prepend (CtkListStore *list_store,
+			CtkTreeIter  *iter)
 {
   g_return_if_fail (CTK_IS_LIST_STORE (list_store));
   g_return_if_fail (iter != NULL);
@@ -1377,8 +1377,8 @@ ctk_list_store_prepend (GtkListStore *list_store,
 
 /**
  * ctk_list_store_append:
- * @list_store: A #GtkListStore
- * @iter: (out): An unset #GtkTreeIter to set to the appended row
+ * @list_store: A #CtkListStore
+ * @iter: (out): An unset #CtkTreeIter to set to the appended row
  *
  * Appends a new row to @list_store.  @iter will be changed to point to this new
  * row.  The row will be empty after this function is called.  To fill in
@@ -1386,8 +1386,8 @@ ctk_list_store_prepend (GtkListStore *list_store,
  *
  **/
 void
-ctk_list_store_append (GtkListStore *list_store,
-		       GtkTreeIter  *iter)
+ctk_list_store_append (CtkListStore *list_store,
+		       CtkTreeIter  *iter)
 {
   g_return_if_fail (CTK_IS_LIST_STORE (list_store));
   g_return_if_fail (iter != NULL);
@@ -1396,9 +1396,9 @@ ctk_list_store_append (GtkListStore *list_store,
 }
 
 static void
-ctk_list_store_increment_stamp (GtkListStore *list_store)
+ctk_list_store_increment_stamp (CtkListStore *list_store)
 {
-  GtkListStorePrivate *priv = list_store->priv;
+  CtkListStorePrivate *priv = list_store->priv;
 
   do
     {
@@ -1409,16 +1409,16 @@ ctk_list_store_increment_stamp (GtkListStore *list_store)
 
 /**
  * ctk_list_store_clear:
- * @list_store: a #GtkListStore.
+ * @list_store: a #CtkListStore.
  *
  * Removes all rows from the list store.  
  *
  **/
 void
-ctk_list_store_clear (GtkListStore *list_store)
+ctk_list_store_clear (CtkListStore *list_store)
 {
-  GtkListStorePrivate *priv;
-  GtkTreeIter iter;
+  CtkListStorePrivate *priv;
+  CtkTreeIter iter;
 
   g_return_if_fail (CTK_IS_LIST_STORE (list_store));
 
@@ -1436,21 +1436,21 @@ ctk_list_store_clear (GtkListStore *list_store)
 
 /**
  * ctk_list_store_iter_is_valid:
- * @list_store: A #GtkListStore.
- * @iter: A #GtkTreeIter.
+ * @list_store: A #CtkListStore.
+ * @iter: A #CtkTreeIter.
  *
  * > This function is slow. Only use it for debugging and/or testing
  * > purposes.
  *
- * Checks if the given iter is a valid iter for this #GtkListStore.
+ * Checks if the given iter is a valid iter for this #CtkListStore.
  *
  * Returns: %TRUE if the iter is valid, %FALSE if the iter is invalid.
  *
  * Since: 2.2
  **/
 gboolean
-ctk_list_store_iter_is_valid (GtkListStore *list_store,
-                              GtkTreeIter  *iter)
+ctk_list_store_iter_is_valid (CtkListStore *list_store,
+                              CtkTreeIter  *iter)
 {
   g_return_val_if_fail (CTK_IS_LIST_STORE (list_store), FALSE);
   g_return_val_if_fail (iter != NULL, FALSE);
@@ -1458,17 +1458,17 @@ ctk_list_store_iter_is_valid (GtkListStore *list_store,
   return iter_is_valid (iter, list_store);
 }
 
-static gboolean real_ctk_list_store_row_draggable (GtkTreeDragSource *drag_source,
-                                                   GtkTreePath       *path)
+static gboolean real_ctk_list_store_row_draggable (CtkTreeDragSource *drag_source,
+                                                   CtkTreePath       *path)
 {
   return TRUE;
 }
   
 static gboolean
-ctk_list_store_drag_data_delete (GtkTreeDragSource *drag_source,
-                                 GtkTreePath       *path)
+ctk_list_store_drag_data_delete (CtkTreeDragSource *drag_source,
+                                 CtkTreePath       *path)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
   if (ctk_list_store_get_iter (CTK_TREE_MODEL (drag_source),
                                &iter,
@@ -1481,9 +1481,9 @@ ctk_list_store_drag_data_delete (GtkTreeDragSource *drag_source,
 }
 
 static gboolean
-ctk_list_store_drag_data_get (GtkTreeDragSource *drag_source,
-                              GtkTreePath       *path,
-                              GtkSelectionData  *selection_data)
+ctk_list_store_drag_data_get (CtkTreeDragSource *drag_source,
+                              CtkTreePath       *path,
+                              CtkSelectionData  *selection_data)
 {
   /* Note that we don't need to handle the CTK_TREE_MODEL_ROW
    * target, because the default handler does it for us, but
@@ -1506,15 +1506,15 @@ ctk_list_store_drag_data_get (GtkTreeDragSource *drag_source,
 }
 
 static gboolean
-ctk_list_store_drag_data_received (GtkTreeDragDest   *drag_dest,
-                                   GtkTreePath       *dest,
-                                   GtkSelectionData  *selection_data)
+ctk_list_store_drag_data_received (CtkTreeDragDest   *drag_dest,
+                                   CtkTreePath       *dest,
+                                   CtkSelectionData  *selection_data)
 {
-  GtkTreeModel *tree_model = CTK_TREE_MODEL (drag_dest);
-  GtkListStore *list_store = CTK_LIST_STORE (tree_model);
-  GtkListStorePrivate *priv = list_store->priv;
-  GtkTreeModel *src_model = NULL;
-  GtkTreePath *src_path = NULL;
+  CtkTreeModel *tree_model = CTK_TREE_MODEL (drag_dest);
+  CtkListStore *list_store = CTK_LIST_STORE (tree_model);
+  CtkListStorePrivate *priv = list_store->priv;
+  CtkTreeModel *src_model = NULL;
+  CtkTreePath *src_path = NULL;
   gboolean retval = FALSE;
 
   if (ctk_tree_get_row_drag_data (selection_data,
@@ -1523,9 +1523,9 @@ ctk_list_store_drag_data_received (GtkTreeDragDest   *drag_dest,
       src_model == tree_model)
     {
       /* Copy the given row to a new position */
-      GtkTreeIter src_iter;
-      GtkTreeIter dest_iter;
-      GtkTreePath *prev;
+      CtkTreeIter src_iter;
+      CtkTreeIter dest_iter;
+      CtkTreePath *prev;
 
       if (!ctk_list_store_get_iter (src_model,
                                     &src_iter,
@@ -1550,7 +1550,7 @@ ctk_list_store_drag_data_received (GtkTreeDragDest   *drag_dest,
         {
           if (ctk_list_store_get_iter (tree_model, &dest_iter, prev))
             {
-              GtkTreeIter tmp_iter = dest_iter;
+              CtkTreeIter tmp_iter = dest_iter;
 
               ctk_list_store_insert_after (list_store, &dest_iter, &tmp_iter);
 
@@ -1564,11 +1564,11 @@ ctk_list_store_drag_data_received (GtkTreeDragDest   *drag_dest,
        */
       if (retval)
         {
-          GtkTreeDataList *dl = g_sequence_get (src_iter.user_data);
-          GtkTreeDataList *copy_head = NULL;
-          GtkTreeDataList *copy_prev = NULL;
-          GtkTreeDataList *copy_iter = NULL;
-	  GtkTreePath *path;
+          CtkTreeDataList *dl = g_sequence_get (src_iter.user_data);
+          CtkTreeDataList *copy_head = NULL;
+          CtkTreeDataList *copy_prev = NULL;
+          CtkTreeDataList *copy_iter = NULL;
+	  CtkTreePath *path;
           gint col;
 
           col = 0;
@@ -1613,13 +1613,13 @@ ctk_list_store_drag_data_received (GtkTreeDragDest   *drag_dest,
 }
 
 static gboolean
-ctk_list_store_row_drop_possible (GtkTreeDragDest  *drag_dest,
-                                  GtkTreePath      *dest_path,
-				  GtkSelectionData *selection_data)
+ctk_list_store_row_drop_possible (CtkTreeDragDest  *drag_dest,
+                                  CtkTreePath      *dest_path,
+				  CtkSelectionData *selection_data)
 {
   gint *indices;
-  GtkTreeModel *src_model = NULL;
-  GtkTreePath *src_path = NULL;
+  CtkTreeModel *src_model = NULL;
+  CtkTreePath *src_path = NULL;
   gboolean retval = FALSE;
 
   /* don't accept drops if the list has been sorted */
@@ -1672,7 +1672,7 @@ ctk_list_store_reorder_func (GSequenceIter *a,
   
 /**
  * ctk_list_store_reorder:
- * @store: A #GtkListStore.
+ * @store: A #CtkListStore.
  * @new_order: (array zero-terminated=1): an array of integers mapping the new
  *      position of each child to its old position before the re-ordering,
  *      i.e. @new_order`[newpos] = oldpos`. It must have
@@ -1684,12 +1684,12 @@ ctk_list_store_reorder_func (GSequenceIter *a,
  * Since: 2.2
  **/
 void
-ctk_list_store_reorder (GtkListStore *store,
+ctk_list_store_reorder (CtkListStore *store,
 			gint         *new_order)
 {
-  GtkListStorePrivate *priv;
+  CtkListStorePrivate *priv;
   gint i;
-  GtkTreePath *path;
+  CtkTreePath *path;
   GHashTable *new_positions;
   GSequenceIter *ptr;
   gint *order;
@@ -1768,9 +1768,9 @@ generate_order (GSequence *seq,
 
 /**
  * ctk_list_store_swap:
- * @store: A #GtkListStore.
- * @a: A #GtkTreeIter.
- * @b: Another #GtkTreeIter.
+ * @store: A #CtkListStore.
+ * @a: A #CtkTreeIter.
+ * @b: Another #CtkTreeIter.
  *
  * Swaps @a and @b in @store. Note that this function only works with
  * unsorted stores.
@@ -1778,14 +1778,14 @@ generate_order (GSequence *seq,
  * Since: 2.2
  **/
 void
-ctk_list_store_swap (GtkListStore *store,
-		     GtkTreeIter  *a,
-		     GtkTreeIter  *b)
+ctk_list_store_swap (CtkListStore *store,
+		     CtkTreeIter  *a,
+		     CtkTreeIter  *b)
 {
-  GtkListStorePrivate *priv;
+  CtkListStorePrivate *priv;
   GHashTable *old_positions;
   gint *order;
-  GtkTreePath *path;
+  CtkTreePath *path;
 
   g_return_if_fail (CTK_IS_LIST_STORE (store));
   g_return_if_fail (!CTK_LIST_STORE_IS_SORTED (store));
@@ -1812,13 +1812,13 @@ ctk_list_store_swap (GtkListStore *store,
 }
 
 static void
-ctk_list_store_move_to (GtkListStore *store,
-			GtkTreeIter  *iter,
+ctk_list_store_move_to (CtkListStore *store,
+			CtkTreeIter  *iter,
 			gint	      new_pos)
 {
-  GtkListStorePrivate *priv = store->priv;
+  CtkListStorePrivate *priv = store->priv;
   GHashTable *old_positions;
-  GtkTreePath *path;
+  CtkTreePath *path;
   gint *order;
 
   old_positions = save_positions (priv->seq);
@@ -1836,9 +1836,9 @@ ctk_list_store_move_to (GtkListStore *store,
 
 /**
  * ctk_list_store_move_before:
- * @store: A #GtkListStore.
- * @iter: A #GtkTreeIter.
- * @position: (allow-none): A #GtkTreeIter, or %NULL.
+ * @store: A #CtkListStore.
+ * @iter: A #CtkTreeIter.
+ * @position: (allow-none): A #CtkTreeIter, or %NULL.
  *
  * Moves @iter in @store to the position before @position. Note that this
  * function only works with unsorted stores. If @position is %NULL, @iter
@@ -1847,9 +1847,9 @@ ctk_list_store_move_to (GtkListStore *store,
  * Since: 2.2
  **/
 void
-ctk_list_store_move_before (GtkListStore *store,
-                            GtkTreeIter  *iter,
-			    GtkTreeIter  *position)
+ctk_list_store_move_before (CtkListStore *store,
+                            CtkTreeIter  *iter,
+			    CtkTreeIter  *position)
 {
   gint pos;
   
@@ -1869,9 +1869,9 @@ ctk_list_store_move_before (GtkListStore *store,
 
 /**
  * ctk_list_store_move_after:
- * @store: A #GtkListStore.
- * @iter: A #GtkTreeIter.
- * @position: (allow-none): A #GtkTreeIter or %NULL.
+ * @store: A #CtkListStore.
+ * @iter: A #CtkTreeIter.
+ * @position: (allow-none): A #CtkTreeIter or %NULL.
  *
  * Moves @iter in @store to the position after @position. Note that this
  * function only works with unsorted stores. If @position is %NULL, @iter
@@ -1880,9 +1880,9 @@ ctk_list_store_move_before (GtkListStore *store,
  * Since: 2.2
  **/
 void
-ctk_list_store_move_after (GtkListStore *store,
-			   GtkTreeIter  *iter,
-			   GtkTreeIter  *position)
+ctk_list_store_move_after (CtkListStore *store,
+			   CtkTreeIter  *iter,
+			   CtkTreeIter  *position)
 {
   gint pos;
   
@@ -1906,17 +1906,17 @@ ctk_list_store_compare_func (GSequenceIter *a,
 			     GSequenceIter *b,
 			     gpointer      user_data)
 {
-  GtkListStore *list_store = user_data;
-  GtkListStorePrivate *priv = list_store->priv;
-  GtkTreeIter iter_a;
-  GtkTreeIter iter_b;
+  CtkListStore *list_store = user_data;
+  CtkListStorePrivate *priv = list_store->priv;
+  CtkTreeIter iter_a;
+  CtkTreeIter iter_b;
   gint retval;
-  GtkTreeIterCompareFunc func;
+  CtkTreeIterCompareFunc func;
   gpointer data;
 
   if (priv->sort_column_id != -1)
     {
-      GtkTreeDataSortHeader *header;
+      CtkTreeDataSortHeader *header;
 
       header = _ctk_tree_data_list_get_header (priv->sort_list,
 					       priv->sort_column_id);
@@ -1955,11 +1955,11 @@ ctk_list_store_compare_func (GSequenceIter *a,
 }
 
 static void
-ctk_list_store_sort (GtkListStore *list_store)
+ctk_list_store_sort (CtkListStore *list_store)
 {
-  GtkListStorePrivate *priv = list_store->priv;
+  CtkListStorePrivate *priv = list_store->priv;
   gint *new_order;
-  GtkTreePath *path;
+  CtkTreePath *path;
   GHashTable *old_positions;
 
   if (!CTK_LIST_STORE_IS_SORTED (list_store) ||
@@ -1981,8 +1981,8 @@ ctk_list_store_sort (GtkListStore *list_store)
 }
 
 static gboolean
-iter_is_sorted (GtkListStore *list_store,
-                GtkTreeIter  *iter)
+iter_is_sorted (CtkListStore *list_store,
+                CtkTreeIter  *iter)
 {
   GSequenceIter *cmp;
 
@@ -2004,13 +2004,13 @@ iter_is_sorted (GtkListStore *list_store,
 }
 
 static void
-ctk_list_store_sort_iter_changed (GtkListStore *list_store,
-				  GtkTreeIter  *iter,
+ctk_list_store_sort_iter_changed (CtkListStore *list_store,
+				  CtkTreeIter  *iter,
 				  gint          column)
 
 {
-  GtkListStorePrivate *priv = list_store->priv;
-  GtkTreePath *path;
+  CtkListStorePrivate *priv = list_store->priv;
+  CtkTreePath *path;
 
   path = ctk_list_store_get_path (CTK_TREE_MODEL (list_store), iter);
   ctk_tree_model_row_changed (CTK_TREE_MODEL (list_store), path, iter);
@@ -2035,12 +2035,12 @@ ctk_list_store_sort_iter_changed (GtkListStore *list_store,
 }
 
 static gboolean
-ctk_list_store_get_sort_column_id (GtkTreeSortable  *sortable,
+ctk_list_store_get_sort_column_id (CtkTreeSortable  *sortable,
 				   gint             *sort_column_id,
-				   GtkSortType      *order)
+				   CtkSortType      *order)
 {
-  GtkListStore *list_store = CTK_LIST_STORE (sortable);
-  GtkListStorePrivate *priv = list_store->priv;
+  CtkListStore *list_store = CTK_LIST_STORE (sortable);
+  CtkListStorePrivate *priv = list_store->priv;
 
   if (sort_column_id)
     * sort_column_id = priv->sort_column_id;
@@ -2055,12 +2055,12 @@ ctk_list_store_get_sort_column_id (GtkTreeSortable  *sortable,
 }
 
 static void
-ctk_list_store_set_sort_column_id (GtkTreeSortable  *sortable,
+ctk_list_store_set_sort_column_id (CtkTreeSortable  *sortable,
 				   gint              sort_column_id,
-				   GtkSortType       order)
+				   CtkSortType       order)
 {
-  GtkListStore *list_store = CTK_LIST_STORE (sortable);
-  GtkListStorePrivate *priv = list_store->priv;
+  CtkListStore *list_store = CTK_LIST_STORE (sortable);
+  CtkListStorePrivate *priv = list_store->priv;
 
   if ((priv->sort_column_id == sort_column_id) &&
       (priv->order == order))
@@ -2070,7 +2070,7 @@ ctk_list_store_set_sort_column_id (GtkTreeSortable  *sortable,
     {
       if (sort_column_id != CTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID)
 	{
-	  GtkTreeDataSortHeader *header = NULL;
+	  CtkTreeDataSortHeader *header = NULL;
 
 	  header = _ctk_tree_data_list_get_header (priv->sort_list, 
 						   sort_column_id);
@@ -2095,14 +2095,14 @@ ctk_list_store_set_sort_column_id (GtkTreeSortable  *sortable,
 }
 
 static void
-ctk_list_store_set_sort_func (GtkTreeSortable        *sortable,
+ctk_list_store_set_sort_func (CtkTreeSortable        *sortable,
 			      gint                    sort_column_id,
-			      GtkTreeIterCompareFunc  func,
+			      CtkTreeIterCompareFunc  func,
 			      gpointer                data,
 			      GDestroyNotify          destroy)
 {
-  GtkListStore *list_store = CTK_LIST_STORE (sortable);
-  GtkListStorePrivate *priv = list_store->priv;
+  CtkListStore *list_store = CTK_LIST_STORE (sortable);
+  CtkListStorePrivate *priv = list_store->priv;
 
   priv->sort_list = _ctk_tree_data_list_set_header (priv->sort_list, 
 							  sort_column_id, 
@@ -2113,13 +2113,13 @@ ctk_list_store_set_sort_func (GtkTreeSortable        *sortable,
 }
 
 static void
-ctk_list_store_set_default_sort_func (GtkTreeSortable        *sortable,
-				      GtkTreeIterCompareFunc  func,
+ctk_list_store_set_default_sort_func (CtkTreeSortable        *sortable,
+				      CtkTreeIterCompareFunc  func,
 				      gpointer                data,
 				      GDestroyNotify          destroy)
 {
-  GtkListStore *list_store = CTK_LIST_STORE (sortable);
-  GtkListStorePrivate *priv = list_store->priv;
+  CtkListStore *list_store = CTK_LIST_STORE (sortable);
+  CtkListStorePrivate *priv = list_store->priv;
 
   if (priv->default_sort_destroy)
     {
@@ -2138,10 +2138,10 @@ ctk_list_store_set_default_sort_func (GtkTreeSortable        *sortable,
 }
 
 static gboolean
-ctk_list_store_has_default_sort_func (GtkTreeSortable *sortable)
+ctk_list_store_has_default_sort_func (CtkTreeSortable *sortable)
 {
-  GtkListStore *list_store = CTK_LIST_STORE (sortable);
-  GtkListStorePrivate *priv = list_store->priv;
+  CtkListStore *list_store = CTK_LIST_STORE (sortable);
+  CtkListStorePrivate *priv = list_store->priv;
 
   return (priv->default_sort_func != NULL);
 }
@@ -2149,8 +2149,8 @@ ctk_list_store_has_default_sort_func (GtkTreeSortable *sortable)
 
 /**
  * ctk_list_store_insert_with_values:
- * @list_store: A #GtkListStore
- * @iter: (out) (allow-none): An unset #GtkTreeIter to set to the new row, or %NULL
+ * @list_store: A #CtkListStore
+ * @iter: (out) (allow-none): An unset #CtkTreeIter to set to the new row, or %NULL
  * @position: position to insert the new row, or -1 to append after existing
  *     rows
  * @...: pairs of column number and value, terminated with -1
@@ -2165,8 +2165,8 @@ ctk_list_store_has_default_sort_func (GtkTreeSortable *sortable)
  * has the same effect as calling
  * |[<!-- language="C" -->
  * static void
- * insert_value (GtkListStore *list_store,
- *               GtkTreeIter  *iter,
+ * insert_value (CtkListStore *list_store,
+ *               CtkTreeIter  *iter,
  *               int           position)
  * {
  *   ctk_list_store_insert (list_store, iter, position);
@@ -2186,16 +2186,16 @@ ctk_list_store_has_default_sort_func (GtkTreeSortable *sortable)
  * Since: 2.6
  */
 void
-ctk_list_store_insert_with_values (GtkListStore *list_store,
-				   GtkTreeIter  *iter,
+ctk_list_store_insert_with_values (CtkListStore *list_store,
+				   CtkTreeIter  *iter,
 				   gint          position,
 				   ...)
 {
-  GtkListStorePrivate *priv;
-  GtkTreePath *path;
+  CtkListStorePrivate *priv;
+  CtkTreePath *path;
   GSequence *seq;
   GSequenceIter *ptr;
-  GtkTreeIter tmp_iter;
+  CtkTreeIter tmp_iter;
   gint length;
   gboolean changed = FALSE;
   gboolean maybe_need_sort = FALSE;
@@ -2248,8 +2248,8 @@ ctk_list_store_insert_with_values (GtkListStore *list_store,
 
 /**
  * ctk_list_store_insert_with_valuesv:
- * @list_store: A #GtkListStore
- * @iter: (out) (allow-none): An unset #GtkTreeIter to set to the new row, or %NULL.
+ * @list_store: A #CtkListStore
+ * @iter: (out) (allow-none): An unset #CtkTreeIter to set to the new row, or %NULL.
  * @position: position to insert the new row, or -1 for last
  * @columns: (array length=n_values): an array of column numbers
  * @values: (array length=n_values): an array of GValues 
@@ -2263,18 +2263,18 @@ ctk_list_store_insert_with_values (GtkListStore *list_store,
  * Since: 2.6
  */
 void
-ctk_list_store_insert_with_valuesv (GtkListStore *list_store,
-				    GtkTreeIter  *iter,
+ctk_list_store_insert_with_valuesv (CtkListStore *list_store,
+				    CtkTreeIter  *iter,
 				    gint          position,
 				    gint         *columns, 
 				    GValue       *values,
 				    gint          n_values)
 {
-  GtkListStorePrivate *priv;
-  GtkTreePath *path;
+  CtkListStorePrivate *priv;
+  CtkTreePath *path;
   GSequence *seq;
   GSequenceIter *ptr;
-  GtkTreeIter tmp_iter;
+  CtkTreeIter tmp_iter;
   gint length;
   gboolean changed = FALSE;
   gboolean maybe_need_sort = FALSE;
@@ -2323,7 +2323,7 @@ ctk_list_store_insert_with_valuesv (GtkListStore *list_store,
   ctk_tree_path_free (path);
 }
 
-/* GtkBuildable custom tag implementation
+/* CtkBuildable custom tag implementation
  *
  * <columns>
  *   <column type="..."/>
@@ -2337,7 +2337,7 @@ typedef struct {
 } ColInfo;
 
 typedef struct {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GObject *object;
   GSList *column_type_names;
   GType *column_types;
@@ -2460,7 +2460,7 @@ list_store_start_element (GMarkupParseContext  *context,
   else
     {
       _ctk_builder_error_unhandled_tag (data->builder, context,
-                                        "GtkListStore", element_name,
+                                        "CtkListStore", element_name,
                                         error);
     }
 }
@@ -2477,7 +2477,7 @@ list_store_end_element (GMarkupParseContext  *context,
 
   if (strcmp (element_name, "row") == 0)
     {
-      GtkTreeIter iter;
+      CtkTreeIter iter;
       int i;
 
       ctk_list_store_insert_with_valuesv (CTK_LIST_STORE (data->object),
@@ -2587,8 +2587,8 @@ static const GMarkupParser list_store_parser =
   };
 
 static gboolean
-ctk_list_store_buildable_custom_tag_start (GtkBuildable  *buildable,
-                                           GtkBuilder    *builder,
+ctk_list_store_buildable_custom_tag_start (CtkBuildable  *buildable,
+                                           CtkBuilder    *builder,
                                            GObject       *child,
                                            const gchar   *tagname,
                                            GMarkupParser *parser,
@@ -2638,8 +2638,8 @@ ctk_list_store_buildable_custom_tag_start (GtkBuildable  *buildable,
 }
 
 static void
-ctk_list_store_buildable_custom_tag_end (GtkBuildable *buildable,
-                                         GtkBuilder   *builder,
+ctk_list_store_buildable_custom_tag_end (CtkBuildable *buildable,
+                                         CtkBuilder   *builder,
                                          GObject      *child,
                                          const gchar  *tagname,
                                          gpointer     *parser_data)

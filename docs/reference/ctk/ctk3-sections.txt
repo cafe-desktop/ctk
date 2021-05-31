@@ -1,8 +1,8 @@
 <SECTION>
 <FILE>ctkaboutdialog</FILE>
-<TITLE>GtkAboutDialog</TITLE>
-GtkAboutDialog
-GtkLicense
+<TITLE>CtkAboutDialog</TITLE>
+CtkAboutDialog
+CtkLicense
 ctk_about_dialog_new
 ctk_about_dialog_get_program_name
 ctk_about_dialog_set_program_name
@@ -44,21 +44,21 @@ CTK_ABOUT_DIALOG_CLASS
 CTK_IS_ABOUT_DIALOG_CLASS
 CTK_ABOUT_DIALOG_GET_CLASS
 <SUBSECTION Private>
-GtkAboutDialogPrivate
+CtkAboutDialogPrivate
 ctk_about_dialog_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkaccelgroup</FILE>
 <TITLE>Keyboard Accelerators</TITLE>
-GtkAccelGroup
-GtkAccelGroupClass
+CtkAccelGroup
+CtkAccelGroupClass
 ctk_accel_group_new
-GtkAccelFlags
+CtkAccelFlags
 ctk_accel_group_connect
 ctk_accel_group_connect_by_path
-GtkAccelGroupActivate
-GtkAccelGroupFindFunc
+CtkAccelGroupActivate
+CtkAccelGroupFindFunc
 ctk_accel_group_disconnect
 ctk_accel_group_disconnect_key
 ctk_accel_group_activate
@@ -70,7 +70,7 @@ ctk_accel_group_get_modifier_mask
 ctk_accel_groups_activate
 ctk_accel_groups_from_object
 ctk_accel_group_find
-GtkAccelKey
+CtkAccelKey
 ctk_accelerator_valid
 ctk_accelerator_parse
 ctk_accelerator_name
@@ -91,8 +91,8 @@ CTK_ACCEL_GROUP_GET_CLASS
 
 <SUBSECTION Private>
 CTK_ACCEL_GROUP_GET_PRIVATE
-GtkAccelGroupPrivate
-GtkAccelGroupEntry
+CtkAccelGroupPrivate
+CtkAccelGroupEntry
 ctk_accel_group_query
 ctk_accel_group_get_type
 </SECTION>
@@ -100,8 +100,8 @@ ctk_accel_group_get_type
 <SECTION>
 <FILE>ctkaccelmap</FILE>
 <TITLE>Accelerator Maps</TITLE>
-GtkAccelMap
-GtkAccelMapForeach
+CtkAccelMap
+CtkAccelMapForeach
 ctk_accel_map_add_entry
 ctk_accel_map_lookup_entry
 ctk_accel_map_change_entry
@@ -123,15 +123,15 @@ CTK_IS_ACCEL_MAP
 CTK_ACCEL_MAP_CLASS
 CTK_IS_ACCEL_MAP_CLASS
 CTK_ACCEL_MAP_GET_CLASS
-GtkAccelMapClass
+CtkAccelMapClass
 <SUBSECTION Private>
 ctk_accel_map_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkaccellabel</FILE>
-<TITLE>GtkAccelLabel</TITLE>
-GtkAccelLabel
+<TITLE>CtkAccelLabel</TITLE>
+CtkAccelLabel
 ctk_accel_label_new
 ctk_accel_label_set_accel_closure
 ctk_accel_label_get_accel_widget
@@ -148,14 +148,14 @@ CTK_ACCEL_LABEL_CLASS
 CTK_IS_ACCEL_LABEL_CLASS
 CTK_ACCEL_LABEL_GET_CLASS
 <SUBSECTION Private>
-GtkAccelLabelPrivate
+CtkAccelLabelPrivate
 ctk_accel_label_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkaccessible</FILE>
-<TITLE>GtkAccessible</TITLE>
-GtkAccessible
+<TITLE>CtkAccessible</TITLE>
+CtkAccessible
 ctk_accessible_connect_widget_destroyed
 ctk_accessible_get_widget
 ctk_accessible_set_widget
@@ -168,15 +168,15 @@ CTK_ACCESSIBLE_GET_CLASS
 CTK_IS_ACCESSIBLE
 CTK_IS_ACCESSIBLE_CLASS
 <SUBSECTION Private>
-GtkAccessiblePrivate
+CtkAccessiblePrivate
 ctk_accessible_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkaction</FILE>
-<TITLE>GtkAction</TITLE>
-GtkAction
-GtkActionClass
+<TITLE>CtkAction</TITLE>
+CtkAction
+CtkActionClass
 ctk_action_new
 ctk_action_get_name
 ctk_action_is_sensitive
@@ -229,14 +229,14 @@ CTK_IS_ACTION_CLASS
 CTK_ACTION_GET_CLASS
 <SUBSECTION Private>
 ctk_action_get_type
-GtkActionPrivate
+CtkActionPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkactivatable</FILE>
-<TITLE>GtkActivatable</TITLE>
-GtkActivatable
-GtkActivatableIface
+<TITLE>CtkActivatable</TITLE>
+CtkActivatable
+CtkActivatableIface
 ctk_activatable_do_set_related_action
 ctk_activatable_get_related_action
 ctk_activatable_get_use_action_appearance
@@ -255,9 +255,9 @@ ctk_activatable_get_type
 
 <SECTION>
 <FILE>ctkactiongroup</FILE>
-<TITLE>GtkActionGroup</TITLE>
-GtkActionGroup
-GtkActionGroupClass
+<TITLE>CtkActionGroup</TITLE>
+CtkActionGroup
+CtkActionGroupClass
 ctk_action_group_new
 ctk_action_group_get_name
 ctk_action_group_get_sensitive
@@ -271,16 +271,16 @@ ctk_action_group_list_actions
 ctk_action_group_add_action
 ctk_action_group_add_action_with_accel
 ctk_action_group_remove_action
-GtkActionEntry
+CtkActionEntry
 ctk_action_group_add_actions
 ctk_action_group_add_actions_full
-GtkToggleActionEntry
+CtkToggleActionEntry
 ctk_action_group_add_toggle_actions
 ctk_action_group_add_toggle_actions_full
-GtkRadioActionEntry
+CtkRadioActionEntry
 ctk_action_group_add_radio_actions
 ctk_action_group_add_radio_actions_full
-GtkTranslateFunc
+CtkTranslateFunc
 ctk_action_group_set_translate_func
 ctk_action_group_set_translation_domain
 ctk_action_group_translate_string
@@ -293,13 +293,13 @@ CTK_IS_ACTION_GROUP_CLASS
 CTK_ACTION_GROUP_GET_CLASS
 <SUBSECTION Private>
 ctk_action_group_get_type
-GtkActionGroupPrivate
+CtkActionGroupPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkadjustment</FILE>
-<TITLE>GtkAdjustment</TITLE>
-GtkAdjustment
+<TITLE>CtkAdjustment</TITLE>
+CtkAdjustment
 ctk_adjustment_new
 ctk_adjustment_get_value
 ctk_adjustment_set_value
@@ -326,15 +326,15 @@ CTK_ADJUSTMENT_CLASS
 CTK_IS_ADJUSTMENT_CLASS
 CTK_ADJUSTMENT_GET_CLASS
 <SUBSECTION Private>
-GtkAdjustmentPrivate
+CtkAdjustmentPrivate
 ctk_adjustment_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkalignment</FILE>
-<TITLE>GtkAlignment</TITLE>
-GtkAlignment
-GtkAlignmentClass
+<TITLE>CtkAlignment</TITLE>
+CtkAlignment
+CtkAlignmentClass
 ctk_alignment_new
 ctk_alignment_set
 ctk_alignment_get_padding
@@ -348,14 +348,14 @@ CTK_IS_ALIGNMENT_CLASS
 CTK_ALIGNMENT_GET_CLASS
 <SUBSECTION Private>
 ctk_alignment_get_type
-GtkAlignmentPrivate
+CtkAlignmentPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkassistant</FILE>
-<TITLE>GtkAssistant</TITLE>
-GtkAssistant
-GtkAssistantClass
+<TITLE>CtkAssistant</TITLE>
+CtkAssistant
+CtkAssistantClass
 ctk_assistant_new
 ctk_assistant_get_current_page
 ctk_assistant_set_current_page
@@ -365,9 +365,9 @@ ctk_assistant_prepend_page
 ctk_assistant_append_page
 ctk_assistant_insert_page
 ctk_assistant_remove_page
-GtkAssistantPageFunc
+CtkAssistantPageFunc
 ctk_assistant_set_forward_page_func
-GtkAssistantPageType
+CtkAssistantPageType
 ctk_assistant_set_page_type
 ctk_assistant_get_page_type
 ctk_assistant_set_page_title
@@ -395,14 +395,14 @@ CTK_IS_ASSISTANT
 CTK_IS_ASSISTANT_CLASS
 CTK_ASSISTANT_GET_CLASS
 <SUBSECTION Private>
-GtkAssistantPrivate
+CtkAssistantPrivate
 ctk_assistant_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkarrow</FILE>
-<TITLE>GtkArrow</TITLE>
-GtkArrow
+<TITLE>CtkArrow</TITLE>
+CtkArrow
 ctk_arrow_new
 ctk_arrow_set
 <SUBSECTION Standard>
@@ -413,15 +413,15 @@ CTK_ARROW_CLASS
 CTK_IS_ARROW_CLASS
 CTK_ARROW_GET_CLASS
 <SUBSECTION Private>
-GtkArrowPrivate
+CtkArrowPrivate
 ctk_arrow_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkaspectframe</FILE>
-<TITLE>GtkAspectFrame</TITLE>
-GtkAspectFrame
-GtkAspectFrameClass
+<TITLE>CtkAspectFrame</TITLE>
+CtkAspectFrame
+CtkAspectFrameClass
 ctk_aspect_frame_new
 ctk_aspect_frame_set
 <SUBSECTION Standard>
@@ -432,20 +432,20 @@ CTK_ASPECT_FRAME_CLASS
 CTK_IS_ASPECT_FRAME_CLASS
 CTK_ASPECT_FRAME_GET_CLASS
 <SUBSECTION Private>
-GtkAspectFramePrivate
+CtkAspectFramePrivate
 ctk_aspect_frame_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkbbox</FILE>
-<TITLE>GtkButtonBox</TITLE>
-GtkButtonBox
-GtkButtonBoxClass
+<TITLE>CtkButtonBox</TITLE>
+CtkButtonBox
+CtkButtonBoxClass
 ctk_button_box_new
 ctk_button_box_get_layout
 ctk_button_box_get_child_secondary
 ctk_button_box_get_child_non_homogeneous
-GtkButtonBoxStyle
+CtkButtonBoxStyle
 ctk_button_box_set_layout
 ctk_button_box_set_child_secondary
 ctk_button_box_set_child_non_homogeneous
@@ -457,15 +457,15 @@ CTK_BUTTON_BOX_CLASS
 CTK_IS_BUTTON_BOX_CLASS
 CTK_BUTTON_BOX_GET_CLASS
 <SUBSECTION Private>
-GtkButtonBoxPrivate
+CtkButtonBoxPrivate
 ctk_button_box_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkbin</FILE>
-<TITLE>GtkBin</TITLE>
-GtkBin
-GtkBinClass
+<TITLE>CtkBin</TITLE>
+CtkBin
+CtkBinClass
 ctk_bin_get_child
 <SUBSECTION Standard>
 CTK_BIN
@@ -475,15 +475,15 @@ CTK_BIN_CLASS
 CTK_IS_BIN_CLASS
 CTK_BIN_GET_CLASS
 <SUBSECTION Private>
-GtkBinPrivate
+CtkBinPrivate
 ctk_bin_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkbox</FILE>
-<TITLE>GtkBox</TITLE>
-GtkBox
-GtkBoxClass
+<TITLE>CtkBox</TITLE>
+CtkBox
+CtkBoxClass
 ctk_box_new
 ctk_box_pack_start
 ctk_box_pack_end
@@ -506,20 +506,20 @@ CTK_BOX_CLASS
 CTK_IS_BOX_CLASS
 CTK_BOX_GET_CLASS
 <SUBSECTION Private>
-GtkBoxPrivate
+CtkBoxPrivate
 ctk_box_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctklistbox</FILE>
-<TITLE>GtkListBox</TITLE>
-GtkListBox
-GtkListBoxClass
-GtkListBoxRow
-GtkListBoxRowClass
-GtkListBoxFilterFunc
-GtkListBoxSortFunc
-GtkListBoxUpdateHeaderFunc
+<TITLE>CtkListBox</TITLE>
+CtkListBox
+CtkListBoxClass
+CtkListBoxRow
+CtkListBoxRowClass
+CtkListBoxFilterFunc
+CtkListBoxSortFunc
+CtkListBoxUpdateHeaderFunc
 
 ctk_list_box_new
 ctk_list_box_prepend
@@ -529,7 +529,7 @@ ctk_list_box_unselect_row
 ctk_list_box_select_all
 ctk_list_box_unselect_all
 ctk_list_box_get_selected_row
-GtkListBoxForeachFunc
+CtkListBoxForeachFunc
 ctk_list_box_selected_foreach
 ctk_list_box_get_selected_rows
 
@@ -550,7 +550,7 @@ ctk_list_box_set_header_func
 ctk_list_box_set_sort_func
 ctk_list_box_drag_highlight_row
 ctk_list_box_drag_unhighlight_row
-GtkListBoxCreateWidgetFunc
+CtkListBoxCreateWidgetFunc
 ctk_list_box_bind_model
 
 ctk_list_box_row_new
@@ -585,8 +585,8 @@ ctk_list_box_row_get_type
 
 <SECTION>
 <FILE>ctkbuildable</FILE>
-GtkBuildable
-GtkBuildableIface
+CtkBuildable
+CtkBuildableIface
 ctk_buildable_set_name
 ctk_buildable_get_name
 ctk_buildable_add_child
@@ -608,10 +608,10 @@ CTK_BUILDABLE_GET_IFACE
 
 <SECTION>
 <FILE>ctkbuilder</FILE>
-<TITLE>GtkBuilder</TITLE>
-GtkBuilder
-GtkBuilderConnectFunc
-GtkBuilderError
+<TITLE>CtkBuilder</TITLE>
+CtkBuilder
+CtkBuilderConnectFunc
+CtkBuilderError
 ctk_builder_new
 ctk_builder_new_from_file
 ctk_builder_new_from_resource
@@ -651,14 +651,14 @@ CTK_BUILDER_GET_CLASS
 <SUBSECTION Private>
 ctk_builder_get_type
 ctk_builder_error_quark
-GtkBuilderPrivate
+CtkBuilderPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkbutton</FILE>
-<TITLE>GtkButton</TITLE>
-GtkButton
-GtkButtonClass
+<TITLE>CtkButton</TITLE>
+CtkButton
+CtkButtonClass
 ctk_button_new
 ctk_button_new_with_label
 ctk_button_new_with_mnemonic
@@ -697,16 +697,16 @@ CTK_BUTTON_CLASS
 CTK_IS_BUTTON_CLASS
 CTK_BUTTON_GET_CLASS
 <SUBSECTION Private>
-GtkButtonPrivate
+CtkButtonPrivate
 ctk_button_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkcalendar</FILE>
-<TITLE>GtkCalendar</TITLE>
-GtkCalendar
-GtkCalendarDetailFunc
-GtkCalendarDisplayOptions
+<TITLE>CtkCalendar</TITLE>
+CtkCalendar
+CtkCalendarDetailFunc
+CtkCalendarDisplayOptions
 
 <SUBSECTION>
 ctk_calendar_new
@@ -737,14 +737,14 @@ CTK_CALENDAR_CLASS
 CTK_IS_CALENDAR_CLASS
 CTK_CALENDAR_GET_CLASS
 <SUBSECTION Private>
-GtkCalendarPrivate
+CtkCalendarPrivate
 ctk_calendar_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkcheckbutton</FILE>
-<TITLE>GtkCheckButton</TITLE>
-GtkCheckButton
+<TITLE>CtkCheckButton</TITLE>
+CtkCheckButton
 ctk_check_button_new
 ctk_check_button_new_with_label
 ctk_check_button_new_with_mnemonic
@@ -761,9 +761,9 @@ ctk_check_button_get_type
 
 <SECTION>
 <FILE>ctkcheckmenuitem</FILE>
-GtkCheckMenuItem
-GtkCheckMenuItemClass
-<TITLE>GtkCheckMenuItem</TITLE>
+CtkCheckMenuItem
+CtkCheckMenuItemClass
+<TITLE>CtkCheckMenuItem</TITLE>
 ctk_check_menu_item_new
 ctk_check_menu_item_new_with_label
 ctk_check_menu_item_new_with_mnemonic
@@ -783,14 +783,14 @@ CTK_CHECK_MENU_ITEM_CLASS
 CTK_IS_CHECK_MENU_ITEM_CLASS
 CTK_CHECK_MENU_ITEM_GET_CLASS
 <SUBSECTION Private>
-GtkCheckMenuItemPrivate
+CtkCheckMenuItemPrivate
 ctk_check_menu_item_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkcolorbutton</FILE>
-<TITLE>GtkColorButton</TITLE>
-GtkColorButton
+<TITLE>CtkColorButton</TITLE>
+CtkColorButton
 ctk_color_button_new
 ctk_color_button_new_with_color
 ctk_color_button_new_with_rgba
@@ -813,13 +813,13 @@ CTK_IS_COLOR_BUTTON_CLASS
 CTK_COLOR_BUTTON_GET_CLASS
 <SUBSECTION Private>
 ctk_color_button_get_type
-GtkColorButtonPrivate
+CtkColorButtonPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkhsv</FILE>
-<TITLE>GtkHSV</TITLE>
-GtkHSV
+<TITLE>CtkHSV</TITLE>
+CtkHSV
 ctk_hsv_new
 ctk_hsv_set_color
 ctk_hsv_get_color
@@ -836,15 +836,15 @@ CTK_IS_HSV
 CTK_IS_HSV_CLASS
 CTK_HSV_GET_CLASS
 <SUBSECTION Private>
-GtkHSVPrivate
+CtkHSVPrivate
 ctk_hsv_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkcolorsel</FILE>
-<TITLE>GtkColorSelection</TITLE>
-GtkColorSelection
-GtkColorSelectionClass
+<TITLE>CtkColorSelection</TITLE>
+CtkColorSelection
+CtkColorSelectionClass
 ctk_color_selection_new
 ctk_color_selection_set_has_opacity_control
 ctk_color_selection_get_has_opacity_control
@@ -865,9 +865,9 @@ ctk_color_selection_set_previous_rgba
 ctk_color_selection_is_adjusting
 ctk_color_selection_palette_from_string
 ctk_color_selection_palette_to_string
-GtkColorSelectionChangePaletteFunc
+CtkColorSelectionChangePaletteFunc
 ctk_color_selection_set_change_palette_with_screen_hook
-GtkColorSelectionChangePaletteWithScreenFunc
+CtkColorSelectionChangePaletteWithScreenFunc
 <SUBSECTION Standard>
 CTK_COLOR_SELECTION
 CTK_IS_COLOR_SELECTION
@@ -876,14 +876,14 @@ CTK_COLOR_SELECTION_CLASS
 CTK_IS_COLOR_SELECTION_CLASS
 CTK_COLOR_SELECTION_GET_CLASS
 <SUBSECTION Private>
-GtkColorSelectionPrivate
+CtkColorSelectionPrivate
 ctk_color_selection_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkcolorseldlg</FILE>
-<TITLE>GtkColorSelectionDialog</TITLE>
-GtkColorSelectionDialog
+<TITLE>CtkColorSelectionDialog</TITLE>
+CtkColorSelectionDialog
 ctk_color_selection_dialog_new
 ctk_color_selection_dialog_get_color_selection
 <SUBSECTION Standard>
@@ -894,15 +894,15 @@ CTK_COLOR_SELECTION_DIALOG_CLASS
 CTK_IS_COLOR_SELECTION_DIALOG_CLASS
 CTK_COLOR_SELECTION_DIALOG_GET_CLASS
 <SUBSECTION Private>
-GtkColorSelectionDialogPrivate
+CtkColorSelectionDialogPrivate
 ctk_color_selection_dialog_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkcombobox</FILE>
-<TITLE>GtkComboBox</TITLE>
-GtkComboBox
-GtkComboBoxClass
+<TITLE>CtkComboBox</TITLE>
+CtkComboBox
+CtkComboBoxClass
 ctk_combo_box_new
 ctk_combo_box_new_with_entry
 ctk_combo_box_new_with_model
@@ -952,14 +952,14 @@ CTK_IS_COMBO_BOX
 CTK_IS_COMBO_BOX_CLASS
 CTK_COMBO_BOX_GET_CLASS
 <SUBSECTION Private>
-GtkComboBoxPrivate
+CtkComboBoxPrivate
 ctk_combo_box_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkcomboboxtext</FILE>
-<TITLE>GtkComboBoxText</TITLE>
-GtkComboBoxText
+<TITLE>CtkComboBoxText</TITLE>
+CtkComboBoxText
 ctk_combo_box_text_new
 ctk_combo_box_text_new_with_entry
 ctk_combo_box_text_append
@@ -981,21 +981,21 @@ CTK_IS_COMBO_BOX_TEXT_CLASS
 CTK_COMBO_BOX_TEXT_GET_CLASS
 
 <SUBSECTION Private>
-GtkComboBoxTextPrivate
+CtkComboBoxTextPrivate
 ctk_combo_box_text_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkcontainer</FILE>
-<TITLE>GtkContainer</TITLE>
-GtkContainer
-GtkContainerClass
+<TITLE>CtkContainer</TITLE>
+CtkContainer
+CtkContainerClass
 CTK_IS_RESIZE_CONTAINER
 CTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID
 ctk_container_add
 ctk_container_remove
 ctk_container_add_with_properties
-GtkResizeMode
+CtkResizeMode
 ctk_container_get_resize_mode
 ctk_container_set_resize_mode
 ctk_container_check_resize
@@ -1040,17 +1040,17 @@ CTK_CONTAINER_CLASS
 CTK_IS_CONTAINER_CLASS
 CTK_CONTAINER_GET_CLASS
 <SUBSECTION Private>
-GtkContainerPrivate
+CtkContainerPrivate
 ctk_container_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkdialog</FILE>
-<TITLE>GtkDialog</TITLE>
-GtkDialog
-GtkDialogClass
-GtkDialogFlags
-GtkResponseType
+<TITLE>CtkDialog</TITLE>
+CtkDialog
+CtkDialogClass
+CtkDialogFlags
+CtkResponseType
 ctk_dialog_new
 ctk_dialog_new_with_buttons
 ctk_dialog_run
@@ -1078,14 +1078,14 @@ CTK_DIALOG_CLASS
 CTK_IS_DIALOG_CLASS
 CTK_DIALOG_GET_CLASS
 <SUBSECTION Private>
-GtkDialogPrivate
+CtkDialogPrivate
 ctk_dialog_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkdrawingarea</FILE>
-<TITLE>GtkDrawingArea</TITLE>
-GtkDrawingArea
+<TITLE>CtkDrawingArea</TITLE>
+CtkDrawingArea
 ctk_drawing_area_new
 <SUBSECTION Standard>
 CTK_DRAWING_AREA
@@ -1100,8 +1100,8 @@ ctk_drawing_area_get_type
 
 <SECTION>
 <FILE>ctkeditable</FILE>
-<TITLE>GtkEditable</TITLE>
-GtkEditable
+<TITLE>CtkEditable</TITLE>
+CtkEditable
 ctk_editable_select_region
 ctk_editable_get_selection_bounds
 ctk_editable_insert_text
@@ -1126,9 +1126,9 @@ ctk_editable_get_type
 
 <SECTION>
 <FILE>ctkentry</FILE>
-<TITLE>GtkEntry</TITLE>
-GtkEntry
-GtkEntryClass
+<TITLE>CtkEntry</TITLE>
+CtkEntry
+CtkEntryClass
 ctk_entry_new
 ctk_entry_new_with_buffer
 ctk_entry_get_buffer
@@ -1179,7 +1179,7 @@ ctk_entry_im_context_filter_keypress
 ctk_entry_reset_im_context
 ctk_entry_get_tabs
 ctk_entry_set_tabs
-GtkEntryIconPosition
+CtkEntryIconPosition
 ctk_entry_set_icon_from_pixbuf
 ctk_entry_set_icon_from_stock
 ctk_entry_set_icon_from_icon_name
@@ -1201,10 +1201,10 @@ ctk_entry_get_icon_tooltip_markup
 ctk_entry_set_icon_drag_source
 ctk_entry_get_current_icon_drag_source
 ctk_entry_get_icon_area
-GtkInputPurpose
+CtkInputPurpose
 ctk_entry_set_input_purpose
 ctk_entry_get_input_purpose
-GtkInputHints
+CtkInputHints
 ctk_entry_set_input_hints
 ctk_entry_get_input_hints
 ctk_entry_grab_focus_without_selecting
@@ -1219,14 +1219,14 @@ CTK_ENTRY_GET_CLASS
 <SUBSECTION Private>
 CTK_TYPE_TEXT_HANDLE_POSITION
 CTK_TYPE_TEXT_HANDLE_MODE
-GtkEntryPrivate
+CtkEntryPrivate
 ctk_entry_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkentrybuffer</FILE>
-<TITLE>GtkEntryBuffer</TITLE>
-GtkEntryBuffer
+<TITLE>CtkEntryBuffer</TITLE>
+CtkEntryBuffer
 ctk_entry_buffer_new
 ctk_entry_buffer_get_text
 ctk_entry_buffer_set_text
@@ -1249,15 +1249,15 @@ CTK_ENTRY_BUFFER_GET_CLASS
 CTK_ENTRY_BUFFER_MAX_SIZE
 
 <SUBSECTION Private>
-GtkEntryBufferPrivate
+CtkEntryBufferPrivate
 ctk_entry_buffer_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkentrycompletion</FILE>
-<TITLE>GtkEntryCompletion</TITLE>
-GtkEntryCompletion
-GtkEntryCompletionMatchFunc
+<TITLE>CtkEntryCompletion</TITLE>
+CtkEntryCompletion
+CtkEntryCompletionMatchFunc
 ctk_entry_completion_new
 ctk_entry_completion_new_with_area
 ctk_entry_completion_get_entry
@@ -1293,15 +1293,15 @@ CTK_IS_ENTRY_COMPLETION
 CTK_IS_ENTRY_COMPLETION_CLASS
 CTK_ENTRY_COMPLETION_GET_CLASS
 <SUBSECTION Private>
-GtkEntryCompletionPrivate
+CtkEntryCompletionPrivate
 ctk_entry_completion_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkeventbox</FILE>
-<TITLE>GtkEventBox</TITLE>
-GtkEventBox
-GtkEventBoxClass
+<TITLE>CtkEventBox</TITLE>
+CtkEventBox
+CtkEventBoxClass
 ctk_event_box_new
 ctk_event_box_set_above_child
 ctk_event_box_get_above_child
@@ -1315,15 +1315,15 @@ CTK_EVENT_BOX_CLASS
 CTK_IS_EVENT_BOX_CLASS
 CTK_EVENT_BOX_GET_CLASS
 <SUBSECTION Private>
-GtkEventBoxPrivate
+CtkEventBoxPrivate
 ctk_event_box_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkexpander</FILE>
-<TITLE>GtkExpander</TITLE>
-GtkExpander
-GtkExpanderClass
+<TITLE>CtkExpander</TITLE>
+CtkExpander
+CtkExpanderClass
 ctk_expander_new
 ctk_expander_new_with_mnemonic
 ctk_expander_set_expanded
@@ -1351,17 +1351,17 @@ CTK_IS_EXPANDER_CLASS
 CTK_EXPANDER_GET_CLASS
 <SUBSECTION Private>
 ctk_expander_get_type
-GtkExpanderPrivate
+CtkExpanderPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkfilechooser</FILE>
-<TITLE>GtkFileChooser</TITLE>
-GtkFileChooser
-GtkFileChooserAction
-GtkFileChooserConfirmation
+<TITLE>CtkFileChooser</TITLE>
+CtkFileChooser
+CtkFileChooserAction
+CtkFileChooserConfirmation
 CTK_FILE_CHOOSER_ERROR
-GtkFileChooserError
+CtkFileChooserError
 ctk_file_chooser_set_action
 ctk_file_chooser_get_action
 ctk_file_chooser_set_local_only
@@ -1436,7 +1436,7 @@ ctk_file_chooser_get_type
 
 <SECTION>
 <FILE>ctkfilechoosernative</FILE>
-<TITLE>GtkFileChooserNative</TITLE>
+<TITLE>CtkFileChooserNative</TITLE>
 ctk_file_chooser_native_new
 ctk_file_chooser_native_get_accept_label
 ctk_file_chooser_native_set_accept_label
@@ -1455,8 +1455,8 @@ ctk_file_chooser_native_get_type
 
 <SECTION>
 <FILE>ctkfilechooserdialog</FILE>
-<TITLE>GtkFileChooserDialog</TITLE>
-GtkFileChooserDialog
+<TITLE>CtkFileChooserDialog</TITLE>
+CtkFileChooserDialog
 ctk_file_chooser_dialog_new
 <SUBSECTION Standard>
 CTK_FILE_CHOOSER_DIALOG
@@ -1467,14 +1467,14 @@ CTK_IS_FILE_CHOOSER_DIALOG_CLASS
 CTK_FILE_CHOOSER_DIALOG_GET_CLASS
 <SUBSECTION Private>
 ctk_file_chooser_dialog_get_type
-GtkFileChooserDialogPrivate
+CtkFileChooserDialogPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkfilechooserwidget</FILE>
-<TITLE>GtkFileChooserWidget</TITLE>
-GtkFileChooserWidget
-GtkFileChooserWidgetClass
+<TITLE>CtkFileChooserWidget</TITLE>
+CtkFileChooserWidget
+CtkFileChooserWidgetClass
 ctk_file_chooser_widget_new
 <SUBSECTION Standard>
 CTK_FILE_CHOOSER_WIDGET
@@ -1485,14 +1485,14 @@ CTK_IS_FILE_CHOOSER_WIDGET_CLASS
 CTK_FILE_CHOOSER_WIDGET_GET_CLASS
 <SUBSECTION Private>
 ctk_file_chooser_widget_get_type
-GtkFileChooserWidgetPrivate
+CtkFileChooserWidgetPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkfilechooserbutton</FILE>
-<TITLE>GtkFileChooserButton</TITLE>
-GtkFileChooserButton
-GtkFileChooserButtonClass
+<TITLE>CtkFileChooserButton</TITLE>
+CtkFileChooserButton
+CtkFileChooserButtonClass
 ctk_file_chooser_button_new
 ctk_file_chooser_button_new_with_dialog
 ctk_file_chooser_button_get_title
@@ -1511,15 +1511,15 @@ CTK_IS_FILE_CHOOSER_BUTTON_CLASS
 CTK_FILE_CHOOSER_BUTTON_GET_CLASS
 <SUBSECTION Private>
 ctk_file_chooser_button_get_type
-GtkFileChooserButtonPrivate
+CtkFileChooserButtonPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkfilefilter</FILE>
-GtkFileFilter
-GtkFileFilterInfo
-GtkFileFilterFlags
-GtkFileFilterFunc
+CtkFileFilter
+CtkFileFilterInfo
+CtkFileFilterFlags
+CtkFileFilterFunc
 ctk_file_filter_new
 ctk_file_filter_set_name
 ctk_file_filter_get_name
@@ -1544,8 +1544,8 @@ ctk_file_filter_get_type
 
 <SECTION>
 <FILE>ctkfixed</FILE>
-<TITLE>GtkFixed</TITLE>
-GtkFixed
+<TITLE>CtkFixed</TITLE>
+CtkFixed
 ctk_fixed_new
 ctk_fixed_put
 ctk_fixed_move
@@ -1557,15 +1557,15 @@ CTK_FIXED_CLASS
 CTK_IS_FIXED_CLASS
 CTK_FIXED_GET_CLASS
 <SUBSECTION Private>
-GtkFixedPrivate
-GtkFixedChild
+CtkFixedPrivate
+CtkFixedChild
 ctk_fixed_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkfontbutton</FILE>
-<TITLE>GtkFontButton</TITLE>
-GtkFontButton
+<TITLE>CtkFontButton</TITLE>
+CtkFontButton
 ctk_font_button_new
 ctk_font_button_new_with_font
 ctk_font_button_set_font_name
@@ -1588,14 +1588,14 @@ CTK_FONT_BUTTON_CLASS
 CTK_IS_FONT_BUTTON_CLASS
 CTK_FONT_BUTTON_GET_CLASS
 <SUBSECTION Private>
-GtkFontButtonPrivate
+CtkFontButtonPrivate
 ctk_font_button_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkfontsel</FILE>
-<TITLE>GtkFontSelection</TITLE>
-GtkFontSelection
+<TITLE>CtkFontSelection</TITLE>
+CtkFontSelection
 ctk_font_selection_new
 ctk_font_selection_get_font_name
 ctk_font_selection_set_font_name
@@ -1618,14 +1618,14 @@ CTK_FONT_SELECTION_CLASS
 CTK_IS_FONT_SELECTION_CLASS
 CTK_FONT_SELECTION_GET_CLASS
 <SUBSECTION Private>
-GtkFontSelectionPrivate
+CtkFontSelectionPrivate
 ctk_font_selection_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkfontseldlg</FILE>
-<TITLE>GtkFontSelectionDialog</TITLE>
-GtkFontSelectionDialog
+<TITLE>CtkFontSelectionDialog</TITLE>
+CtkFontSelectionDialog
 ctk_font_selection_dialog_new
 ctk_font_selection_dialog_get_font_name
 ctk_font_selection_dialog_set_font_name
@@ -1643,14 +1643,14 @@ CTK_FONT_SELECTION_DIALOG_CLASS
 CTK_IS_FONT_SELECTION_DIALOG_CLASS
 CTK_FONT_SELECTION_DIALOG_GET_CLASS
 <SUBSECTION Private>
-GtkFontSelectionDialogPrivate
+CtkFontSelectionDialogPrivate
 ctk_font_selection_dialog_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkfontchooser</FILE>
-<TITLE>GtkFontChooser</TITLE>
-GtkFontChooser
+<TITLE>CtkFontChooser</TITLE>
+CtkFontChooser
 ctk_font_chooser_get_font_family
 ctk_font_chooser_get_font_face
 ctk_font_chooser_get_font_size
@@ -1662,7 +1662,7 @@ ctk_font_chooser_get_preview_text
 ctk_font_chooser_set_preview_text
 ctk_font_chooser_get_show_preview_entry
 ctk_font_chooser_set_show_preview_entry
-GtkFontFilterFunc
+CtkFontFilterFunc
 ctk_font_chooser_set_filter_func
 ctk_font_chooser_set_font_map
 ctk_font_chooser_get_font_map
@@ -1673,7 +1673,7 @@ ctk_font_chooser_set_language
 ctk_font_chooser_get_language
 
 <SUBSECTION Standard>
-GtkFontChooserIface
+CtkFontChooserIface
 CTK_TYPE_FONT_CHOOSER
 CTK_FONT_CHOOSER
 CTK_FONT_CHOOSER_IFACE
@@ -1688,9 +1688,9 @@ ctk_font_chooser_get_type
 
 <SECTION>
 <FILE>ctkfontchooserwidget</FILE>
-<TITLE>GtkFontChooserWidget</TITLE>
-GtkFontChooserWidget
-GtkFontChooserWidgetClass
+<TITLE>CtkFontChooserWidget</TITLE>
+CtkFontChooserWidget
+CtkFontChooserWidgetClass
 ctk_font_chooser_widget_new
 
 <SUBSECTION Standard>
@@ -1702,15 +1702,15 @@ CTK_IS_FONT_CHOOSER_WIDGET_CLASS
 CTK_FONT_CHOOSER_WIDGET_GET_CLASS
 
 <SUBSECTION Private>
-GtkFontChooserWidgetPrivate
+CtkFontChooserWidgetPrivate
 ctk_font_chooser_widget_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkfontchooserdialog</FILE>
-<TITLE>GtkFontChooserDialog</TITLE>
-GtkFontChooserDialog
-GtkFontChooserDialogClass
+<TITLE>CtkFontChooserDialog</TITLE>
+CtkFontChooserDialog
+CtkFontChooserDialogClass
 ctk_font_chooser_dialog_new
 
 <SUBSECTION Standard>
@@ -1722,15 +1722,15 @@ CTK_IS_FONT_CHOOSER_DIALOG_CLASS
 CTK_FONT_CHOOSER_DIALOG_GET_CLASS
 
 <SUBSECTION Private>
-GtkFontChooserDialogPrivate
+CtkFontChooserDialogPrivate
 ctk_font_chooser_dialog_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkframe</FILE>
-<TITLE>GtkFrame</TITLE>
-GtkFrame
-GtkFrameClass
+<TITLE>CtkFrame</TITLE>
+CtkFrame
+CtkFrameClass
 ctk_frame_new
 ctk_frame_set_label
 ctk_frame_set_label_widget
@@ -1748,15 +1748,15 @@ CTK_FRAME_CLASS
 CTK_IS_FRAME_CLASS
 CTK_FRAME_GET_CLASS
 <SUBSECTION Private>
-GtkFramePrivate
+CtkFramePrivate
 ctk_frame_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkhandlebox</FILE>
-<TITLE>GtkHandleBox</TITLE>
-GtkHandleBox
-GtkHandleBoxClass
+<TITLE>CtkHandleBox</TITLE>
+CtkHandleBox
+CtkHandleBoxClass
 ctk_handle_box_new
 ctk_handle_box_set_shadow_type
 ctk_handle_box_set_handle_position
@@ -1773,14 +1773,14 @@ CTK_HANDLE_BOX_CLASS
 CTK_IS_HANDLE_BOX_CLASS
 CTK_HANDLE_BOX_GET_CLASS
 <SUBSECTION Private>
-GtkHandleBoxPrivate
+CtkHandleBoxPrivate
 ctk_handle_box_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkhbbox</FILE>
-<TITLE>GtkHButtonBox</TITLE>
-GtkHButtonBox
+<TITLE>CtkHButtonBox</TITLE>
+CtkHButtonBox
 ctk_hbutton_box_new
 <SUBSECTION Standard>
 CTK_HBUTTON_BOX
@@ -1795,8 +1795,8 @@ ctk_hbutton_box_get_type
 
 <SECTION>
 <FILE>ctkhbox</FILE>
-<TITLE>GtkHBox</TITLE>
-GtkHBox
+<TITLE>CtkHBox</TITLE>
+CtkHBox
 ctk_hbox_new
 <SUBSECTION Standard>
 CTK_HBOX
@@ -1811,8 +1811,8 @@ ctk_hbox_get_type
 
 <SECTION>
 <FILE>ctkhpaned</FILE>
-<TITLE>GtkHPaned</TITLE>
-GtkHPaned
+<TITLE>CtkHPaned</TITLE>
+CtkHPaned
 ctk_hpaned_new
 <SUBSECTION Standard>
 CTK_HPANED
@@ -1827,8 +1827,8 @@ ctk_hpaned_get_type
 
 <SECTION>
 <FILE>ctkhscale</FILE>
-<TITLE>GtkHScale</TITLE>
-GtkHScale
+<TITLE>CtkHScale</TITLE>
+CtkHScale
 ctk_hscale_new
 ctk_hscale_new_with_range
 <SUBSECTION Standard>
@@ -1844,8 +1844,8 @@ ctk_hscale_get_type
 
 <SECTION>
 <FILE>ctkhscrollbar</FILE>
-<TITLE>GtkHScrollbar</TITLE>
-GtkHScrollbar
+<TITLE>CtkHScrollbar</TITLE>
+CtkHScrollbar
 ctk_hscrollbar_new
 <SUBSECTION Standard>
 CTK_HSCROLLBAR
@@ -1860,8 +1860,8 @@ ctk_hscrollbar_get_type
 
 <SECTION>
 <FILE>ctkhseparator</FILE>
-<TITLE>GtkHSeparator</TITLE>
-GtkHSeparator
+<TITLE>CtkHSeparator</TITLE>
+CtkHSeparator
 ctk_hseparator_new
 <SUBSECTION Standard>
 CTK_HSEPARATOR
@@ -1876,9 +1876,9 @@ ctk_hseparator_get_type
 
 <SECTION>
 <FILE>ctkiconview</FILE>
-<TITLE>GtkIconView</TITLE>
-GtkIconView
-GtkIconViewForeachFunc
+<TITLE>CtkIconView</TITLE>
+CtkIconView
+CtkIconViewForeachFunc
 ctk_icon_view_new
 ctk_icon_view_new_with_area
 ctk_icon_view_new_with_model
@@ -1934,7 +1934,7 @@ ctk_icon_view_get_tooltip_column
 ctk_icon_view_get_item_row
 ctk_icon_view_get_item_column
 <SUBSECTION Dnd>
-GtkIconViewDropPosition
+CtkIconViewDropPosition
 ctk_icon_view_enable_model_drag_source
 ctk_icon_view_enable_model_drag_dest
 ctk_icon_view_unset_model_drag_source
@@ -1955,14 +1955,14 @@ CTK_TYPE_ICON_VIEW
 CTK_ICON_VIEW
 <SUBSECTION Private>
 ctk_icon_view_get_type
-GtkIconViewPrivate
+CtkIconViewPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkimage</FILE>
-<TITLE>GtkImage</TITLE>
-GtkImage
-GtkImageType
+<TITLE>CtkImage</TITLE>
+CtkImage
+CtkImageType
 ctk_image_get_icon_set
 ctk_image_get_pixbuf
 ctk_image_get_stock
@@ -2000,21 +2000,21 @@ CTK_IMAGE_CLASS
 CTK_IS_IMAGE_CLASS
 CTK_IMAGE_GET_CLASS
 <SUBSECTION Private>
-GtkImagePrivate
+CtkImagePrivate
 ctk_image_get_type
-GtkImageIconSetData
-GtkImagePixbufData
-GtkImageStockData
-GtkImageAnimationData
-GtkImageIconNameData
-GtkImageGIconData
+CtkImageIconSetData
+CtkImagePixbufData
+CtkImageStockData
+CtkImageAnimationData
+CtkImageIconNameData
+CtkImageGIconData
 </SECTION>
 
 <SECTION>
 <FILE>ctkimagemenuitem</FILE>
-<TITLE>GtkImageMenuItem</TITLE>
-GtkImageMenuItem
-GtkImageMenuItemClass
+<TITLE>CtkImageMenuItem</TITLE>
+CtkImageMenuItem
+CtkImageMenuItemClass
 ctk_image_menu_item_set_image
 ctk_image_menu_item_get_image
 ctk_image_menu_item_new
@@ -2034,16 +2034,16 @@ CTK_IS_IMAGE_MENU_ITEM
 CTK_IS_IMAGE_MENU_ITEM_CLASS
 CTK_TYPE_IMAGE_MENU_ITEM
 <SUBSECTION Private>
-GtkImageMenuItemPrivate
+CtkImageMenuItemPrivate
 ctk_image_menu_item_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkimcontext</FILE>
-<TITLE>GtkIMContext</TITLE>
-GtkIMContext
-GtkIMContextClass
-GtkIMContextInfo
+<TITLE>CtkIMContext</TITLE>
+CtkIMContext
+CtkIMContextClass
+CtkIMContextInfo
 ctk_im_context_set_client_window
 ctk_im_context_get_preedit_string
 ctk_im_context_filter_keypress
@@ -2068,8 +2068,8 @@ ctk_im_context_get_type
 
 <SECTION>
 <FILE>ctkimcontextsimple</FILE>
-<TITLE>GtkIMContextSimple</TITLE>
-GtkIMContextSimple
+<TITLE>CtkIMContextSimple</TITLE>
+CtkIMContextSimple
 ctk_im_context_simple_new
 ctk_im_context_simple_add_table
 CTK_MAX_COMPOSE_LEN
@@ -2081,14 +2081,14 @@ CTK_IM_CONTEXT_SIMPLE_CLASS
 CTK_IS_IM_CONTEXT_SIMPLE_CLASS
 CTK_IM_CONTEXT_SIMPLE_GET_CLASS
 <SUBSECTION Private>
-GtkIMContextSimplePrivate
+CtkIMContextSimplePrivate
 ctk_im_context_simple_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkimmulticontext</FILE>
-<TITLE>GtkIMMulticontext</TITLE>
-GtkIMMulticontext
+<TITLE>CtkIMMulticontext</TITLE>
+CtkIMMulticontext
 ctk_im_multicontext_new
 ctk_im_multicontext_append_menuitems
 ctk_im_multicontext_get_context_id
@@ -2102,13 +2102,13 @@ CTK_IS_IM_MULTICONTEXT_CLASS
 CTK_IM_MULTICONTEXT_GET_CLASS
 <SUBSECTION Private>
 ctk_im_multicontext_get_type
-GtkIMMulticontextPrivate
+CtkIMMulticontextPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkinvisible</FILE>
-<TITLE>GtkInvisible</TITLE>
-GtkInvisible
+<TITLE>CtkInvisible</TITLE>
+CtkInvisible
 ctk_invisible_new
 ctk_invisible_new_for_screen
 ctk_invisible_set_screen
@@ -2122,13 +2122,13 @@ CTK_IS_INVISIBLE_CLASS
 CTK_INVISIBLE_GET_CLASS
 <SUBSECTION Private>
 ctk_invisible_get_type
-GtkInvisiblePrivate
+CtkInvisiblePrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctklabel</FILE>
-<TITLE>GtkLabel</TITLE>
-GtkLabel
+<TITLE>CtkLabel</TITLE>
+CtkLabel
 ctk_label_new
 ctk_label_set_text
 ctk_label_set_attributes
@@ -2188,14 +2188,14 @@ CTK_IS_LABEL_CLASS
 CTK_LABEL_GET_CLASS
 <SUBSECTION Private>
 ctk_label_get_type
-GtkLabelPrivate
-GtkLabelSelectionInfo
+CtkLabelPrivate
+CtkLabelSelectionInfo
 </SECTION>
 
 <SECTION>
 <FILE>ctklayout</FILE>
-<TITLE>GtkLayout</TITLE>
-GtkLayout
+<TITLE>CtkLayout</TITLE>
+CtkLayout
 ctk_layout_new
 ctk_layout_put
 ctk_layout_move
@@ -2214,15 +2214,15 @@ CTK_LAYOUT_CLASS
 CTK_IS_LAYOUT_CLASS
 CTK_LAYOUT_GET_CLASS
 <SUBSECTION Private>
-GtkLayoutPrivate
+CtkLayoutPrivate
 ctk_layout_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctklinkbutton</FILE>
-<TITLE>GtkLinkButton</TITLE>
-GtkLinkButton
-GtkLinkButtonClass
+<TITLE>CtkLinkButton</TITLE>
+CtkLinkButton
+CtkLinkButtonClass
 ctk_link_button_new
 ctk_link_button_new_with_label
 ctk_link_button_get_uri
@@ -2238,15 +2238,15 @@ CTK_LINK_BUTTON_CLASS
 CTK_IS_LINK_BUTTON_CLASS
 CTK_LINK_BUTTON_GET_CLASS
 <SUBSECTION Private>
-GtkLinkButtonPrivate
+CtkLinkButtonPrivate
 ctk_link_button_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkmenu</FILE>
-<TITLE>GtkMenu</TITLE>
-GtkMenu
-GtkArrowPlacement
+<TITLE>CtkMenu</TITLE>
+CtkMenu
+CtkArrowPlacement
 ctk_menu_new
 ctk_menu_new_from_model
 ctk_menu_set_screen
@@ -2279,8 +2279,8 @@ ctk_menu_attach_to_widget
 ctk_menu_detach
 ctk_menu_get_attach_widget
 ctk_menu_get_for_attach_widget
-GtkMenuPositionFunc
-GtkMenuDetachFunc
+CtkMenuPositionFunc
+CtkMenuDetachFunc
 <SUBSECTION Standard>
 CTK_MENU
 CTK_IS_MENU
@@ -2289,17 +2289,17 @@ CTK_MENU_CLASS
 CTK_IS_MENU_CLASS
 CTK_MENU_GET_CLASS
 <SUBSECTION Private>
-GtkMenuPrivate
+CtkMenuPrivate
 ctk_menu_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkmenubar</FILE>
-<TITLE>GtkMenuBar</TITLE>
-GtkMenuBar
+<TITLE>CtkMenuBar</TITLE>
+CtkMenuBar
 ctk_menu_bar_new
 ctk_menu_bar_new_from_model
-GtkPackDirection
+CtkPackDirection
 ctk_menu_bar_set_pack_direction
 ctk_menu_bar_get_pack_direction
 ctk_menu_bar_set_child_pack_direction
@@ -2312,14 +2312,14 @@ CTK_MENU_BAR_CLASS
 CTK_IS_MENU_BAR_CLASS
 CTK_MENU_BAR_GET_CLASS
 <SUBSECTION Private>
-GtkMenuBarPrivate
+CtkMenuBarPrivate
 ctk_menu_bar_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkmenubutton</FILE>
-<TITLE>GtkMenuButton</TITLE>
-GtkMenuButton
+<TITLE>CtkMenuButton</TITLE>
+CtkMenuButton
 ctk_menu_button_new
 ctk_menu_button_set_popup
 ctk_menu_button_get_popup
@@ -2329,7 +2329,7 @@ ctk_menu_button_set_menu_model
 ctk_menu_button_get_menu_model
 ctk_menu_button_set_use_popover
 ctk_menu_button_get_use_popover
-GtkArrowType
+CtkArrowType
 ctk_menu_button_set_direction
 ctk_menu_button_get_direction
 ctk_menu_button_set_align_widget
@@ -2342,15 +2342,15 @@ CTK_IS_MENU_BUTTON
 CTK_IS_MENU_BUTTON_CLASS
 CTK_MENU_BUTTON_GET_CLASS
 <SUBSECTION Private>
-GtkMenuButtonPrivate
+CtkMenuButtonPrivate
 ctk_menu_button_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkmenuitem</FILE>
-<TITLE>GtkMenuItem</TITLE>
-GtkMenuItem
-GtkMenuItemClass
+<TITLE>CtkMenuItem</TITLE>
+CtkMenuItem
+CtkMenuItemClass
 ctk_menu_item_new
 ctk_menu_item_new_with_label
 ctk_menu_item_new_with_mnemonic
@@ -2379,14 +2379,14 @@ CTK_MENU_ITEM_CLASS
 CTK_IS_MENU_ITEM_CLASS
 CTK_MENU_ITEM_GET_CLASS
 <SUBSECTION Private>
-GtkMenuItemPrivate
+CtkMenuItemPrivate
 ctk_menu_item_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkuimanager</FILE>
-<TITLE>GtkUIManager</TITLE>
-GtkUIManager
+<TITLE>CtkUIManager</TITLE>
+CtkUIManager
 ctk_ui_manager_new
 ctk_ui_manager_set_add_tearoffs
 ctk_ui_manager_get_add_tearoffs
@@ -2401,7 +2401,7 @@ ctk_ui_manager_add_ui_from_resource
 ctk_ui_manager_add_ui_from_string
 ctk_ui_manager_add_ui_from_file
 ctk_ui_manager_new_merge_id
-GtkUIManagerItemType
+CtkUIManagerItemType
 ctk_ui_manager_add_ui
 ctk_ui_manager_remove_ui
 ctk_ui_manager_get_ui
@@ -2413,16 +2413,16 @@ CTK_UI_MANAGER_CLASS
 CTK_IS_UI_MANAGER
 CTK_IS_UI_MANAGER_CLASS
 CTK_UI_MANAGER_GET_CLASS
-GtkUIManagerClass
+CtkUIManagerClass
 <SUBSECTION Private>
 ctk_ui_manager_get_type
-GtkUIManagerPrivate
+CtkUIManagerPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkmenushell</FILE>
-<TITLE>GtkMenuShell</TITLE>
-GtkMenuShell
+<TITLE>CtkMenuShell</TITLE>
+CtkMenuShell
 ctk_menu_shell_append
 ctk_menu_shell_prepend
 ctk_menu_shell_insert
@@ -2437,7 +2437,7 @@ ctk_menu_shell_get_take_focus
 ctk_menu_shell_get_selected_item
 ctk_menu_shell_get_parent_shell
 ctk_menu_shell_bind_model
-GtkMenuDirectionType
+CtkMenuDirectionType
 <SUBSECTION Standard>
 CTK_MENU_SHELL
 CTK_IS_MENU_SHELL
@@ -2446,16 +2446,16 @@ CTK_MENU_SHELL_CLASS
 CTK_IS_MENU_SHELL_CLASS
 CTK_MENU_SHELL_GET_CLASS
 <SUBSECTION Private>
-GtkMenuShellPrivate
+CtkMenuShellPrivate
 ctk_menu_shell_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkmessagedialog</FILE>
-<TITLE>GtkMessageDialog</TITLE>
-GtkMessageDialog
-GtkMessageType
-GtkButtonsType
+<TITLE>CtkMessageDialog</TITLE>
+CtkMessageDialog
+CtkMessageType
+CtkButtonsType
 ctk_message_dialog_new
 ctk_message_dialog_new_with_markup
 ctk_message_dialog_set_markup
@@ -2472,14 +2472,14 @@ CTK_MESSAGE_DIALOG_CLASS
 CTK_IS_MESSAGE_DIALOG_CLASS
 CTK_MESSAGE_DIALOG_GET_CLASS
 <SUBSECTION Private>
-GtkMessageDialogPrivate
+CtkMessageDialogPrivate
 ctk_message_dialog_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkinfobar</FILE>
-<TITLE>GtkInfoBar</TITLE>
-GtkInfoBar
+<TITLE>CtkInfoBar</TITLE>
+CtkInfoBar
 ctk_info_bar_new
 ctk_info_bar_new_with_buttons
 ctk_info_bar_add_action_widget
@@ -2506,14 +2506,14 @@ CTK_IS_INFO_BAR_CLASS
 CTK_INFO_BAR_GET_CLASS
 
 <SUBSECTION Private>
-GtkInfoBarPrivate
+CtkInfoBarPrivate
 ctk_info_bar_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkmisc</FILE>
-<TITLE>GtkMisc</TITLE>
-GtkMisc
+<TITLE>CtkMisc</TITLE>
+CtkMisc
 ctk_misc_set_alignment
 ctk_misc_set_padding
 ctk_misc_get_alignment
@@ -2526,15 +2526,15 @@ CTK_MISC_CLASS
 CTK_IS_MISC_CLASS
 CTK_MISC_GET_CLASS
 <SUBSECTION Private>
-GtkMiscPrivate
+CtkMiscPrivate
 ctk_misc_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctknativedialog</FILE>
-<TITLE>GtkNativeDialog</TITLE>
+<TITLE>CtkNativeDialog</TITLE>
 CTK_TYPE_NATIVE_DIALOG
-GtkNativeDialogClass
+CtkNativeDialogClass
 ctk_native_dialog_show
 ctk_native_dialog_hide
 ctk_native_dialog_destroy
@@ -2547,15 +2547,15 @@ ctk_native_dialog_set_transient_for
 ctk_native_dialog_get_transient_for
 ctk_native_dialog_run
 <SUBSECTION Standard>
-GtkNativeDialog
+CtkNativeDialog
 <SUBSECTION Private>
 ctk_native_dialog_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctknotebook</FILE>
-<TITLE>GtkNotebook</TITLE>
-GtkNotebook
+<TITLE>CtkNotebook</TITLE>
+CtkNotebook
 ctk_notebook_new
 ctk_notebook_append_page
 ctk_notebook_append_page_menu
@@ -2610,14 +2610,14 @@ CTK_IS_NOTEBOOK_CLASS
 CTK_NOTEBOOK_GET_CLASS
 <SUBSECTION Private>
 ctk_notebook_get_type
-GtkNotebookTab
-GtkNotebookPrivate
+CtkNotebookTab
+CtkNotebookPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctknumerableicon</FILE>
-<TITLE>GtkNumerableIcon</TITLE>
-GtkNumerableIcon
+<TITLE>CtkNumerableIcon</TITLE>
+CtkNumerableIcon
 ctk_numerable_icon_new
 ctk_numerable_icon_new_with_style_context
 ctk_numerable_icon_get_background_gicon
@@ -2639,15 +2639,15 @@ CTK_IS_NUMERABLE_ICON_CLASS
 CTK_NUMERABLE_ICON_GET_CLASS
 
 <SUBSECTION Private>
-GtkNumerableIconPrivate
+CtkNumerableIconPrivate
 ctk_numerable_icon_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkoffscreenwindow</FILE>
-<TITLE>GtkOffscreenWindow</TITLE>
-GtkOffscreenWindow
-GtkOffscreenWindowClass
+<TITLE>CtkOffscreenWindow</TITLE>
+CtkOffscreenWindow
+CtkOffscreenWindowClass
 ctk_offscreen_window_new
 ctk_offscreen_window_get_surface
 ctk_offscreen_window_get_pixbuf
@@ -2665,8 +2665,8 @@ ctk_offscreen_window_get_type
 
 <SECTION>
 <FILE>ctkpaned</FILE>
-<TITLE>GtkPaned</TITLE>
-GtkPaned
+<TITLE>CtkPaned</TITLE>
+CtkPaned
 ctk_paned_new
 ctk_paned_add1
 ctk_paned_add2
@@ -2693,9 +2693,9 @@ ctk_paned_get_type
 
 <SECTION>
 <FILE>ctkplacessidebar</FILE>
-<TITLE>GtkPlacesSidebar</TITLE>
-GtkPlacesSidebar
-GtkPlacesOpenFlags
+<TITLE>CtkPlacesSidebar</TITLE>
+CtkPlacesSidebar
+CtkPlacesOpenFlags
 ctk_places_sidebar_new
 ctk_places_sidebar_set_open_flags
 ctk_places_sidebar_get_open_flags
@@ -2733,8 +2733,8 @@ ctk_places_sidebar_get_type
 
 <SECTION>
 <FILE>ctkplug</FILE>
-<TITLE>GtkPlug</TITLE>
-GtkPlug
+<TITLE>CtkPlug</TITLE>
+CtkPlug
 ctk_plug_construct
 ctk_plug_construct_for_display
 ctk_plug_new
@@ -2750,14 +2750,14 @@ CTK_PLUG_CLASS
 CTK_IS_PLUG_CLASS
 CTK_PLUG_GET_CLASS
 <SUBSECTION Private>
-GtkPlugPrivate
+CtkPlugPrivate
 ctk_plug_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkprogressbar</FILE>
-<TITLE>GtkProgressBar</TITLE>
-GtkProgressBar
+<TITLE>CtkProgressBar</TITLE>
+CtkProgressBar
 ctk_progress_bar_new
 ctk_progress_bar_pulse
 ctk_progress_bar_set_fraction
@@ -2780,14 +2780,14 @@ CTK_PROGRESS_BAR_CLASS
 CTK_IS_PROGRESS_BAR_CLASS
 CTK_PROGRESS_BAR_GET_CLASS
 <SUBSECTION Private>
-GtkProgressBarPrivate
+CtkProgressBarPrivate
 ctk_progress_bar_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkradioaction</FILE>
-<TITLE>GtkRadioAction</TITLE>
-GtkRadioAction
+<TITLE>CtkRadioAction</TITLE>
+CtkRadioAction
 ctk_radio_action_new
 ctk_radio_action_get_group
 ctk_radio_action_set_group
@@ -2803,13 +2803,13 @@ CTK_IS_RADIO_ACTION_CLASS
 CTK_RADIO_ACTION_GET_CLASS
 <SUBSECTION Private>
 ctk_radio_action_get_type
-GtkRadioActionPrivate
+CtkRadioActionPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkradiobutton</FILE>
-<TITLE>GtkRadioButton</TITLE>
-GtkRadioButton
+<TITLE>CtkRadioButton</TITLE>
+CtkRadioButton
 ctk_radio_button_new
 ctk_radio_button_new_from_widget
 ctk_radio_button_new_with_label
@@ -2827,14 +2827,14 @@ CTK_RADIO_BUTTON_CLASS
 CTK_IS_RADIO_BUTTON_CLASS
 CTK_RADIO_BUTTON_GET_CLASS
 <SUBSECTION Private>
-GtkRadioButtonPrivate
+CtkRadioButtonPrivate
 ctk_radio_button_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkradiomenuitem</FILE>
-<TITLE>GtkRadioMenuItem</TITLE>
-GtkRadioMenuItem
+<TITLE>CtkRadioMenuItem</TITLE>
+CtkRadioMenuItem
 ctk_radio_menu_item_new
 ctk_radio_menu_item_new_with_label
 ctk_radio_menu_item_new_with_mnemonic
@@ -2852,14 +2852,14 @@ CTK_RADIO_MENU_ITEM_CLASS
 CTK_IS_RADIO_MENU_ITEM_CLASS
 CTK_RADIO_MENU_ITEM_GET_CLASS
 <SUBSECTION Private>
-GtkRadioMenuItemPrivate
+CtkRadioMenuItemPrivate
 ctk_radio_menu_item_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkrange</FILE>
-<TITLE>GtkRange</TITLE>
-GtkRange
+<TITLE>CtkRange</TITLE>
+CtkRange
 ctk_range_get_fill_level
 ctk_range_get_restrict_to_fill_level
 ctk_range_get_show_fill_level
@@ -2876,7 +2876,7 @@ ctk_range_set_increments
 ctk_range_set_range
 ctk_range_get_round_digits
 ctk_range_set_round_digits
-GtkSensitivityType
+CtkSensitivityType
 ctk_range_set_lower_stepper_sensitivity
 ctk_range_get_lower_stepper_sensitivity
 ctk_range_set_upper_stepper_sensitivity
@@ -2899,16 +2899,16 @@ CTK_IS_RANGE_CLASS
 CTK_RANGE_GET_CLASS
 <SUBSECTION Private>
 ctk_range_get_type
-GtkRangePrivate
+CtkRangePrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkrecentchooser</FILE>
-<TITLE>GtkRecentChooser</TITLE>
-GtkRecentChooser
-GtkRecentChooserIface
+<TITLE>CtkRecentChooser</TITLE>
+CtkRecentChooser
+CtkRecentChooserIface
 CTK_RECENT_CHOOSER_ERROR
-GtkRecentChooserError
+CtkRecentChooserError
 ctk_recent_chooser_set_show_private
 ctk_recent_chooser_get_show_private
 ctk_recent_chooser_set_show_not_found
@@ -2923,10 +2923,10 @@ ctk_recent_chooser_set_limit
 ctk_recent_chooser_get_limit
 ctk_recent_chooser_set_show_tips
 ctk_recent_chooser_get_show_tips
-GtkRecentSortType
+CtkRecentSortType
 ctk_recent_chooser_set_sort_type
 ctk_recent_chooser_get_sort_type
-GtkRecentSortFunc
+CtkRecentSortFunc
 ctk_recent_chooser_set_sort_func
 ctk_recent_chooser_set_current_uri
 ctk_recent_chooser_get_current_uri
@@ -2954,8 +2954,8 @@ ctk_recent_chooser_error_quark
 
 <SECTION>
 <FILE>ctkrecentchooserdialog</FILE>
-<TITLE>GtkRecentChooserDialog</TITLE>
-GtkRecentChooserDialog
+<TITLE>CtkRecentChooserDialog</TITLE>
+CtkRecentChooserDialog
 ctk_recent_chooser_dialog_new
 ctk_recent_chooser_dialog_new_for_manager
 <SUBSECTION Standard>
@@ -2968,13 +2968,13 @@ CTK_RECENT_CHOOSER_DIALOG_GET_CLASS
 
 <SUBSECTION Private>
 ctk_recent_chooser_dialog_get_type
-GtkRecentChooserDialogPrivate
+CtkRecentChooserDialogPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkrecentchoosermenu</FILE>
-<TITLE>GtkRecentChooserMenu</TITLE>
-GtkRecentChooserMenu
+<TITLE>CtkRecentChooserMenu</TITLE>
+CtkRecentChooserMenu
 ctk_recent_chooser_menu_new
 ctk_recent_chooser_menu_new_for_manager
 ctk_recent_chooser_menu_get_show_numbers
@@ -2989,13 +2989,13 @@ CTK_RECENT_CHOOSER_MENU_GET_CLASS
 
 <SUBSECTION Private>
 ctk_recent_chooser_menu_get_type
-GtkRecentChooserMenuPrivate
+CtkRecentChooserMenuPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkrecentchooserwidget</FILE>
-<TITLE>GtkRecentChooserWidget</TITLE>
-GtkRecentChooserWidget
+<TITLE>CtkRecentChooserWidget</TITLE>
+CtkRecentChooserWidget
 ctk_recent_chooser_widget_new
 ctk_recent_chooser_widget_new_for_manager
 <SUBSECTION Standard>
@@ -3008,16 +3008,16 @@ CTK_RECENT_CHOOSER_WIDGET_GET_CLASS
 
 <SUBSECTION Private>
 ctk_recent_chooser_widget_get_type
-GtkRecentChooserWidgetPrivate
+CtkRecentChooserWidgetPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkrecentfilter</FILE>
-<TITLE>GtkRecentFilter</TITLE>
-GtkRecentFilter
-GtkRecentFilterInfo
-GtkRecentFilterFlags
-GtkRecentFilterFunc
+<TITLE>CtkRecentFilter</TITLE>
+CtkRecentFilter
+CtkRecentFilterInfo
+CtkRecentFilterFlags
+CtkRecentFilterFunc
 ctk_recent_filter_new
 ctk_recent_filter_get_name
 ctk_recent_filter_set_name
@@ -3041,12 +3041,12 @@ ctk_recent_filter_get_type
 
 <SECTION>
 <FILE>ctkrecentmanager</FILE>
-<TITLE>GtkRecentManager</TITLE>
-GtkRecentManager
-GtkRecentInfo
-GtkRecentData
+<TITLE>CtkRecentManager</TITLE>
+CtkRecentManager
+CtkRecentInfo
+CtkRecentData
 CTK_RECENT_MANAGER_ERROR
-GtkRecentManagerError
+CtkRecentManagerError
 ctk_recent_manager_new
 ctk_recent_manager_get_default
 ctk_recent_manager_add_item
@@ -3095,14 +3095,14 @@ CTK_TYPE_RECENT_INFO
 <SUBSECTION Private>
 ctk_recent_manager_get_type
 ctk_recent_info_get_type
-GtkRecentManagerPrivate
+CtkRecentManagerPrivate
 ctk_recent_manager_error_quark
 </SECTION>
 
 <SECTION>
 <FILE>ctkrecentaction</FILE>
-<TITLE>GtkRecentAction</TITLE>
-GtkRecentAction
+<TITLE>CtkRecentAction</TITLE>
+CtkRecentAction
 ctk_recent_action_new
 ctk_recent_action_new_for_manager
 ctk_recent_action_get_show_numbers
@@ -3115,14 +3115,14 @@ CTK_RECENT_ACTION_CLASS
 CTK_IS_RECENT_ACTION_CLASS
 CTK_RECENT_ACTION_GET_CLASS
 <SUBSECTION Private>
-GtkRecentActionPrivate
+CtkRecentActionPrivate
 ctk_recent_action_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkscale</FILE>
-<TITLE>GtkScale</TITLE>
-GtkScale
+<TITLE>CtkScale</TITLE>
+CtkScale
 ctk_scale_new
 ctk_scale_new_with_range
 ctk_scale_set_digits
@@ -3145,14 +3145,14 @@ CTK_SCALE_CLASS
 CTK_IS_SCALE_CLASS
 CTK_SCALE_GET_CLASS
 <SUBSECTION Private>
-GtkScalePrivate
+CtkScalePrivate
 ctk_scale_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkscalebutton</FILE>
-<TITLE>GtkScaleButton</TITLE>
-GtkScaleButton
+<TITLE>CtkScaleButton</TITLE>
+CtkScaleButton
 ctk_scale_button_new
 ctk_scale_button_set_adjustment
 ctk_scale_button_set_icons
@@ -3170,19 +3170,19 @@ CTK_SCALE_BUTTON_CLASS
 CTK_IS_SCALE_BUTTON_CLASS
 CTK_SCALE_BUTTON_GET_CLASS
 <SUBSECTION Private>
-GtkScaleButtonPrivate
+CtkScaleButtonPrivate
 ctk_scale_button_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkscrollable</FILE>
-<TITLE>GtkScrollable</TITLE>
-GtkScrollable
+<TITLE>CtkScrollable</TITLE>
+CtkScrollable
 ctk_scrollable_get_hadjustment
 ctk_scrollable_set_hadjustment
 ctk_scrollable_get_vadjustment
 ctk_scrollable_set_vadjustment
-GtkScrollablePolicy
+CtkScrollablePolicy
 ctk_scrollable_get_hscroll_policy
 ctk_scrollable_set_hscroll_policy
 ctk_scrollable_get_vscroll_policy
@@ -3190,7 +3190,7 @@ ctk_scrollable_set_vscroll_policy
 ctk_scrollable_get_border
 
 <SUBSECTION Standard>
-GtkScrollableInterface
+CtkScrollableInterface
 CTK_TYPE_SCROLLABLE
 CTK_SCROLLABLE
 CTK_IS_SCROLLABLE
@@ -3202,8 +3202,8 @@ ctk_scrollable_get_type
 
 <SECTION>
 <FILE>ctkscrollbar</FILE>
-<TITLE>GtkScrollbar</TITLE>
-GtkScrollbar
+<TITLE>CtkScrollbar</TITLE>
+CtkScrollbar
 ctk_scrollbar_new
 <SUBSECTION Standard>
 CTK_SCROLLBAR
@@ -3218,9 +3218,9 @@ ctk_scrollbar_get_type
 
 <SECTION>
 <FILE>ctkscrolledwindow</FILE>
-<TITLE>GtkScrolledWindow</TITLE>
-GtkScrolledWindow
-GtkScrolledWindowClass
+<TITLE>CtkScrolledWindow</TITLE>
+CtkScrolledWindow
+CtkScrolledWindowClass
 ctk_scrolled_window_new
 ctk_scrolled_window_get_hadjustment
 ctk_scrolled_window_set_hadjustment
@@ -3228,11 +3228,11 @@ ctk_scrolled_window_get_vadjustment
 ctk_scrolled_window_set_vadjustment
 ctk_scrolled_window_get_hscrollbar
 ctk_scrolled_window_get_vscrollbar
-GtkPolicyType
+CtkPolicyType
 ctk_scrolled_window_get_policy
 ctk_scrolled_window_set_policy
 ctk_scrolled_window_add_with_viewport
-GtkCornerType
+CtkCornerType
 ctk_scrolled_window_get_placement
 ctk_scrolled_window_set_placement
 ctk_scrolled_window_unset_placement
@@ -3266,14 +3266,14 @@ CTK_IS_SCROLLED_WINDOW_CLASS
 CTK_SCROLLED_WINDOW_GET_CLASS
 <SUBSECTION Private>
 ctk_scrolled_window_get_type
-GtkScrolledWindowPrivate
+CtkScrolledWindowPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctksearchbar</FILE>
-<TITLE>GtkSearchBar</TITLE>
-GtkSearchBar
-GtkSearchBarClass
+<TITLE>CtkSearchBar</TITLE>
+CtkSearchBar
+CtkSearchBarClass
 ctk_search_bar_new
 ctk_search_bar_connect_entry
 ctk_search_bar_get_search_mode
@@ -3294,8 +3294,8 @@ ctk_search_bar_get_type
 
 <SECTION>
 <FILE>ctksearchentry</FILE>
-<TITLE>GtkSearchEntry</TITLE>
-GtkSearchEntry
+<TITLE>CtkSearchEntry</TITLE>
+CtkSearchEntry
 ctk_search_entry_new
 ctk_search_entry_handle_event
 <SUBSECTION Standard>
@@ -3311,8 +3311,8 @@ ctk_search_entry_get_type
 
 <SECTION>
 <FILE>ctkseparator</FILE>
-<TITLE>GtkSeparator</TITLE>
-GtkSeparator
+<TITLE>CtkSeparator</TITLE>
+CtkSeparator
 ctk_separator_new
 <SUBSECTION Standard>
 CTK_SEPARATOR
@@ -3323,14 +3323,14 @@ CTK_IS_SEPARATOR_CLASS
 CTK_SEPARATOR_GET_CLASS
 <SUBSECTION Private>
 ctk_separator_get_type
-GtkSeparatorPrivate
+CtkSeparatorPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkseparatormenuitem</FILE>
-<TITLE>GtkSeparatorMenuItem</TITLE>
-GtkSeparatorMenuItem
-GtkSeparatorMenuItemClass
+<TITLE>CtkSeparatorMenuItem</TITLE>
+CtkSeparatorMenuItem
+CtkSeparatorMenuItemClass
 ctk_separator_menu_item_new
 <SUBSECTION Standard>
 CTK_SEPARATOR_MENU_ITEM
@@ -3345,9 +3345,9 @@ ctk_separator_menu_item_get_type
 
 <SECTION>
 <FILE>ctksettings</FILE>
-<TITLE>GtkSettings</TITLE>
-GtkSettings
-GtkSettingsValue
+<TITLE>CtkSettings</TITLE>
+CtkSettings
+CtkSettingsValue
 ctk_settings_get_default
 ctk_settings_get_for_screen
 ctk_settings_install_property
@@ -3362,10 +3362,10 @@ ctk_settings_set_string_property
 ctk_settings_set_long_property
 ctk_settings_set_double_property
 ctk_settings_reset_property
-GtkIMPreeditStyle
-GtkIMStatusStyle
+CtkIMPreeditStyle
+CtkIMStatusStyle
 <SUBSECTION Standard>
-GtkSettingsClass
+CtkSettingsClass
 CTK_IS_SETTINGS
 CTK_IS_SETTINGS_CLASS
 CTK_SETTINGS
@@ -3373,16 +3373,16 @@ CTK_SETTINGS_CLASS
 CTK_SETTINGS_GET_CLASS
 CTK_TYPE_SETTINGS
 <SUBSECTION Private>
-GtkSettingsPrivate
+CtkSettingsPrivate
 ctk_settings_get_type
-GtkSettingsPropertyValue
+CtkSettingsPropertyValue
 </SECTION>
 
 <SECTION>
 <FILE>ctksizegroup</FILE>
-<TITLE>GtkSizeGroup</TITLE>
-GtkSizeGroup
-GtkSizeGroupMode
+<TITLE>CtkSizeGroup</TITLE>
+CtkSizeGroup
+CtkSizeGroupMode
 ctk_size_group_new
 ctk_size_group_set_mode
 ctk_size_group_get_mode
@@ -3399,14 +3399,14 @@ CTK_SIZE_GROUP_CLASS
 CTK_IS_SIZE_GROUP_CLASS
 CTK_SIZE_GROUP_GET_CLASS
 <SUBSECTION Private>
-GtkSizeGroupPrivate
+CtkSizeGroupPrivate
 ctk_size_group_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctksocket</FILE>
-<TITLE>GtkSocket</TITLE>
-GtkSocket
+<TITLE>CtkSocket</TITLE>
+CtkSocket
 ctk_socket_new
 ctk_socket_add_id
 ctk_socket_get_id
@@ -3419,16 +3419,16 @@ CTK_SOCKET_CLASS
 CTK_IS_SOCKET_CLASS
 CTK_SOCKET_GET_CLASS
 <SUBSECTION Private>
-GtkSocketPrivate
+CtkSocketPrivate
 ctk_socket_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkspinbutton</FILE>
-<TITLE>GtkSpinButton</TITLE>
-GtkSpinButton
-GtkSpinButtonUpdatePolicy
-GtkSpinType
+<TITLE>CtkSpinButton</TITLE>
+CtkSpinButton
+CtkSpinButtonUpdatePolicy
+CtkSpinType
 ctk_spin_button_configure
 ctk_spin_button_new
 ctk_spin_button_new_with_range
@@ -3462,14 +3462,14 @@ CTK_SPIN_BUTTON_CLASS
 CTK_IS_SPIN_BUTTON_CLASS
 CTK_SPIN_BUTTON_GET_CLASS
 <SUBSECTION Private>
-GtkSpinButtonPrivate
+CtkSpinButtonPrivate
 ctk_spin_button_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkspinner</FILE>
-<TITLE>GtkSpinner</TITLE>
-GtkSpinner
+<TITLE>CtkSpinner</TITLE>
+CtkSpinner
 ctk_spinner_new
 ctk_spinner_start
 ctk_spinner_stop
@@ -3483,14 +3483,14 @@ CTK_IS_SPINNER_CLASS
 CTK_SPINNER_GET_CLASS
 
 <SUBSECTION Private>
-GtkSpinnerPrivate
+CtkSpinnerPrivate
 ctk_spinner_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkstatusbar</FILE>
-<TITLE>GtkStatusbar</TITLE>
-GtkStatusbar
+<TITLE>CtkStatusbar</TITLE>
+CtkStatusbar
 ctk_statusbar_new
 ctk_statusbar_get_context_id
 ctk_statusbar_push
@@ -3506,14 +3506,14 @@ CTK_STATUSBAR_CLASS
 CTK_IS_STATUSBAR_CLASS
 CTK_STATUSBAR_GET_CLASS
 <SUBSECTION Private>
-GtkStatusbarPrivate
+CtkStatusbarPrivate
 ctk_statusbar_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkstatusicon</FILE>
-<TITLE>GtkStatusIcon</TITLE>
-GtkStatusIcon
+<TITLE>CtkStatusIcon</TITLE>
+CtkStatusIcon
 ctk_status_icon_new
 ctk_status_icon_new_from_pixbuf
 ctk_status_icon_new_from_file
@@ -3557,18 +3557,18 @@ CTK_IS_STATUS_ICON
 CTK_IS_STATUS_ICON_CLASS
 CTK_STATUS_ICON_GET_CLASS
 <SUBSECTION Private>
-GtkStatusIconPrivate
+CtkStatusIconPrivate
 ctk_status_icon_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctklevelbar</FILE>
-<TITLE>GtkLevelBar</TITLE>
+<TITLE>CtkLevelBar</TITLE>
 CTK_LEVEL_BAR_OFFSET_LOW
 CTK_LEVEL_BAR_OFFSET_HIGH
 CTK_LEVEL_BAR_OFFSET_FULL
-GtkLevelBarMode
-GtkLevelBar
+CtkLevelBarMode
+CtkLevelBar
 ctk_level_bar_new
 ctk_level_bar_new_for_interval
 ctk_level_bar_set_mode
@@ -3592,18 +3592,18 @@ CTK_LEVEL_BAR_CLASS
 CTK_IS_LEVEL_BAR_CLASS
 CTK_LEVEL_BAR_GET_CLASS
 <SUBSECTION Private>
-GtkLevelBarPrivate
+CtkLevelBarPrivate
 ctk_level_bar_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctktable</FILE>
-<TITLE>GtkTable</TITLE>
-GtkTable
+<TITLE>CtkTable</TITLE>
+CtkTable
 ctk_table_new
 ctk_table_resize
 ctk_table_get_size
-GtkAttachOptions
+CtkAttachOptions
 ctk_table_attach
 ctk_table_attach_defaults
 ctk_table_set_row_spacing
@@ -3624,17 +3624,17 @@ CTK_TABLE_CLASS
 CTK_IS_TABLE_CLASS
 CTK_TABLE_GET_CLASS
 <SUBSECTION Private>
-GtkTablePrivate
-GtkTableChild
-GtkTableRowCol
+CtkTablePrivate
+CtkTableChild
+CtkTableRowCol
 ctk_table_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctktearoffmenuitem</FILE>
-<TITLE>GtkTearoffMenuItem</TITLE>
-GtkTearoffMenuItem
-GtkTearoffMenuItemClass
+<TITLE>CtkTearoffMenuItem</TITLE>
+CtkTearoffMenuItem
+CtkTearoffMenuItemClass
 ctk_tearoff_menu_item_new
 <SUBSECTION Standard>
 CTK_TEAROFF_MENU_ITEM
@@ -3644,15 +3644,15 @@ CTK_TEAROFF_MENU_ITEM_CLASS
 CTK_IS_TEAROFF_MENU_ITEM_CLASS
 CTK_TEAROFF_MENU_ITEM_GET_CLASS
 <SUBSECTION Private>
-GtkTearoffMenuItemPrivate
+CtkTearoffMenuItemPrivate
 ctk_tearoff_menu_item_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctktextbuffer</FILE>
-<TITLE>GtkTextBuffer</TITLE>
-GtkTextBuffer
-GtkTextBufferClass
+<TITLE>CtkTextBuffer</TITLE>
+CtkTextBuffer
+CtkTextBufferClass
 ctk_text_buffer_new
 ctk_text_buffer_get_line_count
 ctk_text_buffer_get_char_count
@@ -3715,8 +3715,8 @@ ctk_text_buffer_add_selection_clipboard
 ctk_text_buffer_remove_selection_clipboard
 
 <SUBSECTION Serialization>
-GtkTextBufferTargetInfo
-GtkTextBufferDeserializeFunc
+CtkTextBufferTargetInfo
+CtkTextBufferDeserializeFunc
 ctk_text_buffer_deserialize
 ctk_text_buffer_deserialize_get_can_create_tags
 ctk_text_buffer_deserialize_set_can_create_tags
@@ -3728,7 +3728,7 @@ ctk_text_buffer_register_deserialize_format
 ctk_text_buffer_register_deserialize_tagset
 ctk_text_buffer_register_serialize_format
 ctk_text_buffer_register_serialize_tagset
-GtkTextBufferSerializeFunc
+CtkTextBufferSerializeFunc
 ctk_text_buffer_serialize
 ctk_text_buffer_unregister_deserialize_format
 ctk_text_buffer_unregister_serialize_format
@@ -3742,13 +3742,13 @@ CTK_IS_TEXT_BUFFER_CLASS
 CTK_TEXT_BUFFER_GET_CLASS
 ctk_text_buffer_get_type
 <SUBSECTION Private>
-GtkTextBufferPrivate
+CtkTextBufferPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctktextiter</FILE>
-<TITLE>GtkTextIter</TITLE>
-GtkTextIter
+<TITLE>CtkTextIter</TITLE>
+CtkTextIter
 ctk_text_iter_get_buffer
 ctk_text_iter_copy
 ctk_text_iter_assign
@@ -3833,10 +3833,10 @@ ctk_text_iter_forward_to_end
 ctk_text_iter_forward_to_line_end
 ctk_text_iter_forward_to_tag_toggle
 ctk_text_iter_backward_to_tag_toggle
-GtkTextCharPredicate
+CtkTextCharPredicate
 ctk_text_iter_forward_find_char
 ctk_text_iter_backward_find_char
-GtkTextSearchFlags
+CtkTextSearchFlags
 ctk_text_iter_forward_search
 ctk_text_iter_backward_search
 ctk_text_iter_equal
@@ -3851,8 +3851,8 @@ ctk_text_iter_get_type
 
 <SECTION>
 <FILE>ctktextmark</FILE>
-<TITLE>GtkTextMark</TITLE>
-GtkTextMark
+<TITLE>CtkTextMark</TITLE>
+CtkTextMark
 ctk_text_mark_new
 ctk_text_mark_set_visible
 ctk_text_mark_get_visible
@@ -3873,15 +3873,15 @@ ctk_text_mark_get_type
 
 <SECTION>
 <FILE>ctktexttag</FILE>
-<TITLE>GtkTextTag</TITLE>
-GtkTextTag
+<TITLE>CtkTextTag</TITLE>
+CtkTextTag
 ctk_text_tag_new
 ctk_text_tag_get_priority
 ctk_text_tag_set_priority
 ctk_text_tag_event
 ctk_text_tag_changed
-GtkTextAttributes
-GtkTextAppearance
+CtkTextAttributes
+CtkTextAppearance
 ctk_text_attributes_new
 ctk_text_attributes_copy
 ctk_text_attributes_copy_values
@@ -3896,16 +3896,16 @@ CTK_IS_TEXT_TAG_CLASS
 CTK_TEXT_TAG_GET_CLASS
 CTK_TYPE_TEXT_ATTRIBUTES
 <SUBSECTION Private>
-GtkTextTagPrivate
+CtkTextTagPrivate
 ctk_text_tag_get_type
 ctk_text_attributes_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctktexttagtable</FILE>
-<TITLE>GtkTextTagTable</TITLE>
-GtkTextTagTable
-GtkTextTagTableForeach
+<TITLE>CtkTextTagTable</TITLE>
+CtkTextTagTable
+CtkTextTagTableForeach
 ctk_text_tag_table_new
 ctk_text_tag_table_add
 ctk_text_tag_table_remove
@@ -3920,19 +3920,19 @@ CTK_TEXT_TAG_TABLE_CLASS
 CTK_IS_TEXT_TAG_TABLE_CLASS
 CTK_TEXT_TAG_TABLE_GET_CLASS
 <SUBSECTION Private>
-GtkTextTagTablePrivate
+CtkTextTagTablePrivate
 ctk_text_tag_table_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctktextview</FILE>
-<TITLE>GtkTextView</TITLE>
-GtkTextView
-GtkTextViewClass
-GtkTextViewLayer
-GtkTextWindowType
-GtkTextExtendSelection
-GtkWrapMode
+<TITLE>CtkTextView</TITLE>
+CtkTextView
+CtkTextViewClass
+CtkTextViewLayer
+CtkTextWindowType
+CtkTextExtendSelection
+CtkWrapMode
 ctk_text_view_new
 ctk_text_view_new_with_buffer
 ctk_text_view_set_buffer
@@ -3964,7 +3964,7 @@ ctk_text_view_backward_display_line_start
 ctk_text_view_starts_display_line
 ctk_text_view_move_visually
 ctk_text_view_add_child_at_anchor
-GtkTextChildAnchor
+CtkTextChildAnchor
 ctk_text_child_anchor_new
 ctk_text_child_anchor_get_widgets
 ctk_text_child_anchor_get_deleted
@@ -4018,7 +4018,7 @@ CTK_TYPE_TEXT_VIEW
 CTK_TEXT_VIEW_CLASS
 CTK_IS_TEXT_VIEW_CLASS
 CTK_TEXT_VIEW_GET_CLASS
-GtkTextChildAnchorClass
+CtkTextChildAnchorClass
 CTK_TEXT_CHILD_ANCHOR
 CTK_IS_TEXT_CHILD_ANCHOR
 CTK_TYPE_TEXT_CHILD_ANCHOR
@@ -4026,16 +4026,16 @@ CTK_TEXT_CHILD_ANCHOR_CLASS
 CTK_IS_TEXT_CHILD_ANCHOR_CLASS
 CTK_TEXT_CHILD_ANCHOR_GET_CLASS
 <SUBSECTION Private>
-GtkTextViewPrivate
+CtkTextViewPrivate
 ctk_text_view_get_type
 ctk_text_child_anchor_get_type
-GtkTextBTree
+CtkTextBTree
 </SECTION>
 
 <SECTION>
 <FILE>ctktoggleaction</FILE>
-<TITLE>GtkToggleAction</TITLE>
-GtkToggleAction
+<TITLE>CtkToggleAction</TITLE>
+CtkToggleAction
 ctk_toggle_action_new
 ctk_toggle_action_toggled
 ctk_toggle_action_set_active
@@ -4050,16 +4050,16 @@ CTK_TOGGLE_ACTION_CLASS
 CTK_IS_TOGGLE_ACTION
 CTK_IS_TOGGLE_ACTION_CLASS
 CTK_TOGGLE_ACTION_GET_CLASS
-GtkToggleActionClass
+CtkToggleActionClass
 <SUBSECTION Private>
 ctk_toggle_action_get_type
-GtkToggleActionPrivate
+CtkToggleActionPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctktogglebutton</FILE>
-<TITLE>GtkToggleButton</TITLE>
-GtkToggleButton
+<TITLE>CtkToggleButton</TITLE>
+CtkToggleButton
 ctk_toggle_button_new
 ctk_toggle_button_new_with_label
 ctk_toggle_button_new_with_mnemonic
@@ -4080,14 +4080,14 @@ CTK_IS_TOGGLE_BUTTON_CLASS
 CTK_TOGGLE_BUTTON_GET_CLASS
 <SUBSECTION Private>
 ctk_toggle_button_get_type
-GtkToggleButtonPrivate
+CtkToggleButtonPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctktoolshell</FILE>
-<TITLE>GtkToolShell</TITLE>
-GtkToolShell
-GtkToolShellIface
+<TITLE>CtkToolShell</TITLE>
+CtkToolShell
+CtkToolShellIface
 ctk_tool_shell_get_ellipsize_mode
 ctk_tool_shell_get_icon_size
 ctk_tool_shell_get_orientation
@@ -4110,9 +4110,9 @@ ctk_tool_shell_get_type
 
 <SECTION>
 <FILE>ctktoolbar</FILE>
-<TITLE>GtkToolbar</TITLE>
-GtkToolbar
-GtkToolbarSpaceStyle
+<TITLE>CtkToolbar</TITLE>
+CtkToolbar
+CtkToolbarSpaceStyle
 ctk_toolbar_new
 ctk_toolbar_insert
 ctk_toolbar_get_item_index
@@ -4140,14 +4140,14 @@ CTK_IS_TOOLBAR_CLASS
 CTK_TOOLBAR_GET_CLASS
 <SUBSECTION Private>
 ctk_toolbar_get_type
-GtkToolbarPrivate
+CtkToolbarPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctktoolitem</FILE>
-<TITLE>GtkToolItem</TITLE>
-GtkToolItem
-GtkToolItemClass
+<TITLE>CtkToolItem</TITLE>
+CtkToolItem
+CtkToolItemClass
 ctk_tool_item_new
 ctk_tool_item_set_homogeneous
 ctk_tool_item_get_homogeneous
@@ -4187,14 +4187,14 @@ CTK_TOOL_ITEM_GET_CLASS
 
 <SUBSECTION Private>
 ctk_tool_item_get_type
-GtkToolItemPrivate
+CtkToolItemPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkseparatortoolitem</FILE>
-<TITLE>GtkSeparatorToolItem</TITLE>
-GtkSeparatorToolItem
-GtkSeparatorToolItemClass
+<TITLE>CtkSeparatorToolItem</TITLE>
+CtkSeparatorToolItem
+CtkSeparatorToolItemClass
 ctk_separator_tool_item_new
 ctk_separator_tool_item_set_draw
 ctk_separator_tool_item_get_draw
@@ -4209,14 +4209,14 @@ CTK_SEPARATOR_TOOL_ITEM_GET_CLASS
 
 <SUBSECTION Private>
 ctk_separator_tool_item_get_type
-GtkSeparatorToolItemPrivate
+CtkSeparatorToolItemPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctktoolbutton</FILE>
-<TITLE>GtkToolButton</TITLE>
-GtkToolButton
-GtkToolButtonClass
+<TITLE>CtkToolButton</TITLE>
+CtkToolButton
+CtkToolButtonClass
 ctk_tool_button_new
 ctk_tool_button_new_from_stock
 ctk_tool_button_set_label
@@ -4242,14 +4242,14 @@ CTK_TOOL_BUTTON_GET_CLASS
 
 <SUBSECTION Private>
 ctk_tool_button_get_type
-GtkToolButtonPrivate
+CtkToolButtonPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkmenutoolbutton</FILE>
-<TITLE>GtkMenuToolButton</TITLE>
-GtkMenuToolButton
-GtkMenuToolButtonClass
+<TITLE>CtkMenuToolButton</TITLE>
+CtkMenuToolButton
+CtkMenuToolButtonClass
 ctk_menu_tool_button_new
 ctk_menu_tool_button_new_from_stock
 ctk_menu_tool_button_set_menu
@@ -4267,13 +4267,13 @@ CTK_MENU_TOOL_BUTTON_GET_CLASS
 
 <SUBSECTION Private>
 ctk_menu_tool_button_get_type
-GtkMenuToolButtonPrivate
+CtkMenuToolButtonPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkradiotoolbutton</FILE>
-<TITLE>GtkRadioToolButton</TITLE>
-GtkRadioToolButton
+<TITLE>CtkRadioToolButton</TITLE>
+CtkRadioToolButton
 ctk_radio_tool_button_new
 ctk_radio_tool_button_new_from_stock
 ctk_radio_tool_button_new_from_widget
@@ -4295,9 +4295,9 @@ ctk_radio_tool_button_get_type
 
 <SECTION>
 <FILE>ctktoggletoolbutton</FILE>
-<TITLE>GtkToggleToolButton</TITLE>
-GtkToggleToolButton
-GtkToggleToolButtonClass
+<TITLE>CtkToggleToolButton</TITLE>
+CtkToggleToolButton
+CtkToggleToolButtonClass
 ctk_toggle_tool_button_new
 ctk_toggle_tool_button_new_from_stock
 ctk_toggle_tool_button_set_active
@@ -4313,14 +4313,14 @@ CTK_TOGGLE_TOOL_BUTTON_GET_CLASS
 
 <SUBSECTION Private>
 ctk_toggle_tool_button_get_type
-GtkToggleToolButtonPrivate
+CtkToggleToolButtonPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctktoolitemgroup</FILE>
-<TITLE>GtkToolItemGroup</TITLE>
-GtkToolItemGroup
-GtkToolItemGroupClass
+<TITLE>CtkToolItemGroup</TITLE>
+CtkToolItemGroup
+CtkToolItemGroupClass
 ctk_tool_item_group_get_collapsed
 ctk_tool_item_group_get_drop_item
 ctk_tool_item_group_get_ellipsize
@@ -4348,15 +4348,15 @@ CTK_IS_TOOL_ITEM_GROUP_CLASS
 CTK_TOOL_ITEM_GROUP_GET_CLASS
 
 <SUBSECTION Private>
-GtkToolItemGroupPrivate
+CtkToolItemGroupPrivate
 ctk_tool_item_group_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctktoolpalette</FILE>
-<TITLE>GtkToolPalette</TITLE>
-GtkToolPalette
-GtkToolPaletteClass
+<TITLE>CtkToolPalette</TITLE>
+CtkToolPalette
+CtkToolPaletteClass
 ctk_tool_palette_new
 ctk_tool_palette_get_exclusive
 ctk_tool_palette_set_exclusive
@@ -4376,7 +4376,7 @@ ctk_tool_palette_get_drag_target_group
 ctk_tool_palette_get_drag_target_item
 ctk_tool_palette_get_drop_group
 ctk_tool_palette_get_drop_item
-GtkToolPaletteDragTargets
+CtkToolPaletteDragTargets
 ctk_tool_palette_set_drag_source
 ctk_tool_palette_get_hadjustment
 ctk_tool_palette_get_vadjustment
@@ -4390,13 +4390,13 @@ CTK_IS_TOOL_PALETTE_CLASS
 CTK_TOOL_PALETTE_GET_CLASS
 <SUBSECTION Private>
 ctk_tool_palette_get_type
-GtkToolPalettePrivate
+CtkToolPalettePrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctktooltip</FILE>
-<TITLE>GtkTooltip</TITLE>
-GtkTooltip
+<TITLE>CtkTooltip</TITLE>
+CtkTooltip
 ctk_tooltip_set_markup
 ctk_tooltip_set_text
 ctk_tooltip_set_icon
@@ -4416,14 +4416,14 @@ ctk_tooltip_get_type
 
 <SECTION>
 <FILE>ctktreemodel</FILE>
-<TITLE>GtkTreeModel</TITLE>
-GtkTreeModel
-GtkTreeIter
-GtkTreePath
-GtkTreeRowReference
-GtkTreeModelIface
-GtkTreeModelForeachFunc
-GtkTreeModelFlags
+<TITLE>CtkTreeModel</TITLE>
+CtkTreeModel
+CtkTreeIter
+CtkTreePath
+CtkTreeRowReference
+CtkTreeModelIface
+CtkTreeModelForeachFunc
+CtkTreeModelFlags
 ctk_tree_path_new
 ctk_tree_path_new_from_string
 ctk_tree_path_new_from_indices
@@ -4500,8 +4500,8 @@ ctk_tree_path_get_type
 
 <SECTION>
 <FILE>ctktreemodelsort</FILE>
-<TITLE>GtkTreeModelSort</TITLE>
-GtkTreeModelSort
+<TITLE>CtkTreeModelSort</TITLE>
+CtkTreeModelSort
 ctk_tree_model_sort_new_with_model
 ctk_tree_model_sort_get_model
 ctk_tree_model_sort_convert_child_path_to_path
@@ -4519,16 +4519,16 @@ CTK_TREE_MODEL_SORT_CLASS
 CTK_IS_TREE_MODEL_SORT_CLASS
 CTK_TREE_MODEL_SORT_GET_CLASS
 <SUBSECTION Private>
-GtkTreeModelSortPrivate
+CtkTreeModelSortPrivate
 ctk_tree_model_sort_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctktreemodelfilter</FILE>
-<TITLE>GtkTreeModelFilter</TITLE>
-GtkTreeModelFilter
-GtkTreeModelFilterVisibleFunc
-GtkTreeModelFilterModifyFunc
+<TITLE>CtkTreeModelFilter</TITLE>
+CtkTreeModelFilter
+CtkTreeModelFilterVisibleFunc
+CtkTreeModelFilterModifyFunc
 ctk_tree_model_filter_new
 ctk_tree_model_filter_set_visible_func
 ctk_tree_model_filter_set_modify_func
@@ -4548,17 +4548,17 @@ CTK_IS_TREE_MODEL_FILTER
 CTK_IS_TREE_MODEL_FILTER_CLASS
 CTK_TREE_MODEL_FILTER_GET_CLASS
 <SUBSECTION Private>
-GtkTreeModelFilterPrivate
+CtkTreeModelFilterPrivate
 ctk_tree_model_filter_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctktreeselection</FILE>
-<TITLE>GtkTreeSelection</TITLE>
-GtkTreeSelection
-GtkTreeSelectionClass
-GtkTreeSelectionFunc
-GtkTreeSelectionForeachFunc
+<TITLE>CtkTreeSelection</TITLE>
+CtkTreeSelection
+CtkTreeSelectionClass
+CtkTreeSelectionFunc
+CtkTreeSelectionForeachFunc
 ctk_tree_selection_set_mode
 ctk_tree_selection_get_mode
 ctk_tree_selection_set_select_function
@@ -4587,16 +4587,16 @@ CTK_TREE_SELECTION_CLASS
 CTK_TREE_SELECTION_GET_CLASS
 CTK_IS_TREE_SELECTION_CLASS
 <SUBSECTION Private>
-GtkTreeSelectionPrivate
+CtkTreeSelectionPrivate
 ctk_tree_selection_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctktreesortable</FILE>
-<TITLE>GtkTreeSortable</TITLE>
-GtkTreeSortable
-GtkTreeSortableIface
-GtkTreeIterCompareFunc
+<TITLE>CtkTreeSortable</TITLE>
+CtkTreeSortable
+CtkTreeSortableIface
+CtkTreeIterCompareFunc
 CTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID
 CTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID
 ctk_tree_sortable_sort_column_changed
@@ -4617,14 +4617,14 @@ ctk_tree_sortable_get_type
 
 <SECTION>
 <FILE>ctktreednd</FILE>
-<TITLE>GtkTreeView drag-and-drop</TITLE>
-GtkTreeDragSource
-GtkTreeDragSourceIface
+<TITLE>CtkTreeView drag-and-drop</TITLE>
+CtkTreeDragSource
+CtkTreeDragSourceIface
 ctk_tree_drag_source_drag_data_delete
 ctk_tree_drag_source_drag_data_get
 ctk_tree_drag_source_row_draggable
-GtkTreeDragDest
-GtkTreeDragDestIface
+CtkTreeDragDest
+CtkTreeDragDestIface
 ctk_tree_drag_dest_drag_data_received
 ctk_tree_drag_dest_row_drop_possible
 ctk_tree_set_row_drag_data
@@ -4645,8 +4645,8 @@ ctk_tree_drag_dest_get_type
 
 <SECTION>
 <FILE>ctktreestore</FILE>
-<TITLE>GtkTreeStore</TITLE>
-GtkTreeStore
+<TITLE>CtkTreeStore</TITLE>
+CtkTreeStore
 ctk_tree_store_new
 ctk_tree_store_newv
 ctk_tree_store_set_column_types
@@ -4678,16 +4678,16 @@ CTK_TREE_STORE_CLASS
 CTK_IS_TREE_STORE_CLASS
 CTK_TREE_STORE_GET_CLASS
 <SUBSECTION Private>
-GtkTreeStorePrivate
+CtkTreeStorePrivate
 ctk_tree_store_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctktreeviewcolumn</FILE>
-<TITLE>GtkTreeViewColumn</TITLE>
-GtkTreeViewColumnSizing
-GtkTreeCellDataFunc
-GtkTreeViewColumn
+<TITLE>CtkTreeViewColumn</TITLE>
+CtkTreeViewColumnSizing
+CtkTreeCellDataFunc
+CtkTreeViewColumn
 ctk_tree_view_column_new
 ctk_tree_view_column_new_with_area
 ctk_tree_view_column_new_with_attributes
@@ -4749,19 +4749,19 @@ CTK_TREE_VIEW_COLUMN_CLASS
 CTK_IS_TREE_VIEW_COLUMN_CLASS
 CTK_TREE_VIEW_COLUMN_GET_CLASS
 <SUBSECTION Private>
-GtkTreeViewColumnPrivate
+CtkTreeViewColumnPrivate
 ctk_tree_view_column_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctktreeview</FILE>
-<TITLE>GtkTreeView</TITLE>
-GtkTreeView
-GtkTreeViewDropPosition
-GtkTreeViewPrivate
-GtkTreeViewColumnDropFunc
-GtkTreeViewMappingFunc
-GtkTreeViewSearchEqualFunc
+<TITLE>CtkTreeView</TITLE>
+CtkTreeView
+CtkTreeViewDropPosition
+CtkTreeViewPrivate
+CtkTreeViewColumnDropFunc
+CtkTreeViewMappingFunc
+CtkTreeViewSearchEqualFunc
 ctk_tree_view_new
 ctk_tree_view_get_level_indentation
 ctk_tree_view_get_show_expanders
@@ -4840,7 +4840,7 @@ ctk_tree_view_get_search_equal_func
 ctk_tree_view_set_search_equal_func
 ctk_tree_view_get_search_entry
 ctk_tree_view_set_search_entry
-GtkTreeViewSearchPositionFunc
+CtkTreeViewSearchPositionFunc
 ctk_tree_view_get_search_position_func
 ctk_tree_view_set_search_position_func
 ctk_tree_view_get_fixed_height_mode
@@ -4849,9 +4849,9 @@ ctk_tree_view_get_hover_selection
 ctk_tree_view_set_hover_selection
 ctk_tree_view_get_hover_expand
 ctk_tree_view_set_hover_expand
-GtkTreeDestroyCountFunc
+CtkTreeDestroyCountFunc
 ctk_tree_view_set_destroy_count_func
-GtkTreeViewRowSeparatorFunc
+CtkTreeViewRowSeparatorFunc
 ctk_tree_view_get_row_separator_func
 ctk_tree_view_set_row_separator_func
 ctk_tree_view_get_rubber_banding
@@ -4859,7 +4859,7 @@ ctk_tree_view_set_rubber_banding
 ctk_tree_view_is_rubber_banding_active
 ctk_tree_view_get_enable_tree_lines
 ctk_tree_view_set_enable_tree_lines
-GtkTreeViewGridLines
+CtkTreeViewGridLines
 ctk_tree_view_get_grid_lines
 ctk_tree_view_set_grid_lines
 ctk_tree_view_set_tooltip_row
@@ -4881,9 +4881,9 @@ ctk_tree_view_get_type
 
 <SECTION>
 <FILE>ctkcellview</FILE>
-<TITLE>GtkCellView</TITLE>
-GtkCellView
-GtkCellViewClass
+<TITLE>CtkCellView</TITLE>
+CtkCellView
+CtkCellViewClass
 ctk_cell_view_new
 ctk_cell_view_new_with_context
 ctk_cell_view_new_with_text
@@ -4908,16 +4908,16 @@ CTK_IS_CELL_VIEW
 CTK_IS_CELL_VIEW_CLASS
 CTK_CELL_VIEW_GET_CLASS
 <SUBSECTION Private>
-GtkCellViewPrivate
+CtkCellViewPrivate
 ctk_cell_view_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkcelllayout</FILE>
-<TITLE>GtkCellLayout</TITLE>
-GtkCellLayout
-GtkCellLayoutIface
-GtkCellLayoutDataFunc
+<TITLE>CtkCellLayout</TITLE>
+CtkCellLayout
+CtkCellLayoutIface
+CtkCellLayoutDataFunc
 ctk_cell_layout_pack_start
 ctk_cell_layout_pack_end
 ctk_cell_layout_get_area
@@ -4939,11 +4939,11 @@ ctk_cell_layout_get_type
 
 <SECTION>
 <FILE>ctkcellarea</FILE>
-<TITLE>GtkCellArea</TITLE>
-GtkCellArea
-GtkCellAreaClass
-GtkCellCallback
-GtkCellAllocCallback
+<TITLE>CtkCellArea</TITLE>
+CtkCellArea
+CtkCellAreaClass
+CtkCellCallback
+CtkCellAllocCallback
 CTK_CELL_AREA_WARN_INVALID_CELL_PROPERTY_ID
 ctk_cell_area_add
 ctk_cell_area_remove
@@ -5000,14 +5000,14 @@ ctk_cell_area_get_type
 CTK_CELL_AREA_CLASS
 CTK_IS_CELL_AREA_CLASS
 CTK_CELL_AREA_GET_CLASS
-GtkCellAreaPrivate
+CtkCellAreaPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkcellareacontext</FILE>
-<TITLE>GtkCellAreaContext</TITLE>
-GtkCellAreaContextClass
-GtkCellAreaContext
+<TITLE>CtkCellAreaContext</TITLE>
+CtkCellAreaContextClass
+CtkCellAreaContext
 ctk_cell_area_context_get_area
 ctk_cell_area_context_allocate
 ctk_cell_area_context_reset
@@ -5027,14 +5027,14 @@ ctk_cell_area_context_get_type
 CTK_CELL_AREA_CONTEXT_CLASS
 CTK_IS_CELL_AREA_CONTEXT_CLASS
 CTK_CELL_AREA_CONTEXT_GET_CLASS
-GtkCellAreaContextPrivate
+CtkCellAreaContextPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkcellareabox</FILE>
-<TITLE>GtkCellAreaBox</TITLE>
-GtkCellAreaBox
-GtkCellAreaBoxClass
+<TITLE>CtkCellAreaBox</TITLE>
+CtkCellAreaBox
+CtkCellAreaBoxClass
 ctk_cell_area_box_new
 ctk_cell_area_box_pack_start
 ctk_cell_area_box_pack_end
@@ -5056,16 +5056,16 @@ CTK_IS_CELL_AREA_BOX_CONTEXT_CLASS
 
 <SUBSECTION Private>
 ctk_cell_area_box_get_type
-GtkCellAreaBoxPrivate
+CtkCellAreaBoxPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkcellrenderer</FILE>
-<TITLE>GtkCellRenderer</TITLE>
-GtkCellRendererState
-GtkCellRendererMode
-GtkCellRenderer
-GtkCellRendererClass
+<TITLE>CtkCellRenderer</TITLE>
+CtkCellRendererState
+CtkCellRendererMode
+CtkCellRenderer
+CtkCellRendererClass
 ctk_cell_renderer_class_set_accessible_type
 ctk_cell_renderer_get_aligned_area
 ctk_cell_renderer_get_size
@@ -5102,8 +5102,8 @@ CTK_CELL_RENDERER_CLASS
 CTK_IS_CELL_RENDERER_CLASS
 CTK_CELL_RENDERER_GET_CLASS
 <SUBSECTION Private>
-GtkCellRendererPrivate
-GtkCellRendererClassPrivate
+CtkCellRendererPrivate
+CtkCellRendererClassPrivate
 ctk_cell_renderer_get_type
 ctk_cell_renderer_mode_get_type
 ctk_cell_renderer_state_get_type
@@ -5111,9 +5111,9 @@ ctk_cell_renderer_state_get_type
 
 <SECTION>
 <FILE>ctkcelleditable</FILE>
-<TITLE>GtkCellEditable</TITLE>
-GtkCellEditable
-GtkCellEditableIface
+<TITLE>CtkCellEditable</TITLE>
+CtkCellEditable
+CtkCellEditableIface
 ctk_cell_editable_start_editing
 ctk_cell_editable_editing_done
 ctk_cell_editable_remove_widget
@@ -5129,8 +5129,8 @@ ctk_cell_editable_get_type
 
 <SECTION>
 <FILE>ctkcellrenderercombo</FILE>
-<TITLE>GtkCellRendererCombo</TITLE>
-GtkCellRendererCombo
+<TITLE>CtkCellRendererCombo</TITLE>
+CtkCellRendererCombo
 ctk_cell_renderer_combo_new
 <SUBSECTION Standard>
 CTK_TYPE_CELL_RENDERER_COMBO
@@ -5141,13 +5141,13 @@ CTK_IS_CELL_RENDERER_COMBO_CLASS
 CTK_CELL_RENDERER_COMBO_GET_CLASS
 <SUBSECTION Private>
 ctk_cell_renderer_combo_get_type
-GtkCellRendererComboPrivate
+CtkCellRendererComboPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkcellrendererspin</FILE>
-<TITLE>GtkCellRendererSpin</TITLE>
-GtkCellRendererSpin
+<TITLE>CtkCellRendererSpin</TITLE>
+CtkCellRendererSpin
 ctk_cell_renderer_spin_new
 <SUBSECTION Standard>
 CTK_TYPE_CELL_RENDERER_SPIN
@@ -5157,14 +5157,14 @@ CTK_IS_CELL_RENDERER_SPIN
 CTK_IS_CELL_RENDERER_SPIN_CLASS
 CTK_CELL_RENDERER_SPIN_GET_CLASS
 <SUBSECTION Private>
-GtkCellRendererSpinPrivate
+CtkCellRendererSpinPrivate
 ctk_cell_renderer_spin_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkcellrendererspinner</FILE>
-<TITLE>GtkCellRendererSpinner</TITLE>
-GtkCellRendererSpinner
+<TITLE>CtkCellRendererSpinner</TITLE>
+CtkCellRendererSpinner
 ctk_cell_renderer_spinner_new
 <SUBSECTION Standard>
 CTK_TYPE_CELL_RENDERER_SPINNER
@@ -5174,14 +5174,14 @@ CTK_IS_CELL_RENDERER_SPINNER
 CTK_IS_CELL_RENDERER_SPINNER_CLASS
 CTK_CELL_RENDERER_SPINNER_GET_CLASS
 <SUBSECTION Private>
-GtkCellRendererSpinnerPrivate
+CtkCellRendererSpinnerPrivate
 ctk_cell_renderer_spinner_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkcellrendererpixbuf</FILE>
-<TITLE>GtkCellRendererPixbuf</TITLE>
-GtkCellRendererPixbuf
+<TITLE>CtkCellRendererPixbuf</TITLE>
+CtkCellRendererPixbuf
 ctk_cell_renderer_pixbuf_new
 <SUBSECTION Standard>
 CTK_CELL_RENDERER_PIXBUF
@@ -5192,13 +5192,13 @@ CTK_IS_CELL_RENDERER_PIXBUF_CLASS
 CTK_CELL_RENDERER_PIXBUF_GET_CLASS
 <SUBSECTION Private>
 ctk_cell_renderer_pixbuf_get_type
-GtkCellRendererPixbufPrivate
+CtkCellRendererPixbufPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkcellrenderertext</FILE>
-<TITLE>GtkCellRendererText</TITLE>
-GtkCellRendererText
+<TITLE>CtkCellRendererText</TITLE>
+CtkCellRendererText
 ctk_cell_renderer_text_new
 ctk_cell_renderer_text_set_fixed_height_from_font
 <SUBSECTION Standard>
@@ -5210,13 +5210,13 @@ CTK_IS_CELL_RENDERER_TEXT_CLASS
 CTK_CELL_RENDERER_TEXT_GET_CLASS
 <SUBSECTION Private>
 ctk_cell_renderer_text_get_type
-GtkCellRendererTextPrivate
+CtkCellRendererTextPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkcellrenderertoggle</FILE>
-<TITLE>GtkCellRendererToggle</TITLE>
-GtkCellRendererToggle
+<TITLE>CtkCellRendererToggle</TITLE>
+CtkCellRendererToggle
 ctk_cell_renderer_toggle_new
 ctk_cell_renderer_toggle_get_radio
 ctk_cell_renderer_toggle_set_radio
@@ -5234,13 +5234,13 @@ CTK_IS_CELL_RENDERER_TOGGLE_CLASS
 CTK_CELL_RENDERER_TOGGLE_GET_CLASS
 <SUBSECTION Private>
 ctk_cell_renderer_toggle_get_type
-GtkCellRendererTogglePrivate
+CtkCellRendererTogglePrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkcellrendererprogress</FILE>
-<TITLE>GtkCellRendererProgress</TITLE>
-GtkCellRendererProgress
+<TITLE>CtkCellRendererProgress</TITLE>
+CtkCellRendererProgress
 ctk_cell_renderer_progress_new
 <SUBSECTION Standard>
 CTK_CELL_RENDERER_PROGRESS
@@ -5251,14 +5251,14 @@ CTK_IS_CELL_RENDERER_PROGRESS_CLASS
 CTK_CELL_RENDERER_PROGRESS_GET_CLASS
 <SUBSECTION Private>
 ctk_cell_renderer_progress_get_type
-GtkCellRendererProgressPrivate
+CtkCellRendererProgressPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkcellrendereraccel</FILE>
-<TITLE>GtkCellRendererAccel</TITLE>
-GtkCellRendererAccel
-GtkCellRendererAccelMode
+<TITLE>CtkCellRendererAccel</TITLE>
+CtkCellRendererAccel
+CtkCellRendererAccelMode
 ctk_cell_renderer_accel_new
 
 <SUBSECTION Standard>
@@ -5271,13 +5271,13 @@ CTK_CELL_RENDERER_ACCEL_GET_CLASS
 <SUBSECTION Private>
 ctk_cell_renderer_accel_get_type
 ctk_cell_renderer_accel_mode_get_type
-GtkCellRendererAccelPrivate
+CtkCellRendererAccelPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkliststore</FILE>
-<TITLE>GtkListStore</TITLE>
-GtkListStore
+<TITLE>CtkListStore</TITLE>
+CtkListStore
 ctk_list_store_new
 ctk_list_store_newv
 ctk_list_store_set_column_types
@@ -5307,14 +5307,14 @@ CTK_LIST_STORE_CLASS
 CTK_IS_LIST_STORE_CLASS
 CTK_LIST_STORE_GET_CLASS
 <SUBSECTION Private>
-GtkListStorePrivate
+CtkListStorePrivate
 ctk_list_store_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkvbbox</FILE>
-<TITLE>GtkVButtonBox</TITLE>
-GtkVButtonBox
+<TITLE>CtkVButtonBox</TITLE>
+CtkVButtonBox
 ctk_vbutton_box_new
 <SUBSECTION Standard>
 CTK_VBUTTON_BOX
@@ -5329,8 +5329,8 @@ ctk_vbutton_box_get_type
 
 <SECTION>
 <FILE>ctkvbox</FILE>
-<TITLE>GtkVBox</TITLE>
-GtkVBox
+<TITLE>CtkVBox</TITLE>
+CtkVBox
 ctk_vbox_new
 <SUBSECTION Standard>
 CTK_VBOX
@@ -5345,9 +5345,9 @@ ctk_vbox_get_type
 
 <SECTION>
 <FILE>ctkviewport</FILE>
-<TITLE>GtkViewport</TITLE>
-GtkViewport
-GtkViewportClass
+<TITLE>CtkViewport</TITLE>
+CtkViewport
+CtkViewportClass
 ctk_viewport_new
 ctk_viewport_get_hadjustment
 ctk_viewport_get_vadjustment
@@ -5365,14 +5365,14 @@ CTK_VIEWPORT_CLASS
 CTK_IS_VIEWPORT_CLASS
 CTK_VIEWPORT_GET_CLASS
 <SUBSECTION Private>
-GtkViewportPrivate
+CtkViewportPrivate
 ctk_viewport_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkvolumebutton</FILE>
-<TITLE>GtkVolumeButton</TITLE>
-GtkVolumeButton
+<TITLE>CtkVolumeButton</TITLE>
+CtkVolumeButton
 ctk_volume_button_new
 <SUBSECTION Standard>
 CTK_VOLUME_BUTTON
@@ -5387,8 +5387,8 @@ ctk_volume_button_get_type
 
 <SECTION>
 <FILE>ctkvpaned</FILE>
-<TITLE>GtkVPaned</TITLE>
-GtkVPaned
+<TITLE>CtkVPaned</TITLE>
+CtkVPaned
 ctk_vpaned_new
 <SUBSECTION Standard>
 CTK_VPANED
@@ -5399,13 +5399,13 @@ CTK_IS_VPANED_CLASS
 CTK_VPANED_GET_CLASS
 <SUBSECTION Private>
 ctk_vpaned_get_type
-GtkPanedPrivate
+CtkPanedPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkvscale</FILE>
-<TITLE>GtkVScale</TITLE>
-GtkVScale
+<TITLE>CtkVScale</TITLE>
+CtkVScale
 ctk_vscale_new
 ctk_vscale_new_with_range
 <SUBSECTION Standard>
@@ -5421,8 +5421,8 @@ ctk_vscale_get_type
 
 <SECTION>
 <FILE>ctkvscrollbar</FILE>
-<TITLE>GtkVScrollbar</TITLE>
-GtkVScrollbar
+<TITLE>CtkVScrollbar</TITLE>
+CtkVScrollbar
 ctk_vscrollbar_new
 <SUBSECTION Standard>
 CTK_VSCROLLBAR
@@ -5437,8 +5437,8 @@ ctk_vscrollbar_get_type
 
 <SECTION>
 <FILE>ctkvseparator</FILE>
-<TITLE>GtkVSeparator</TITLE>
-GtkVSeparator
+<TITLE>CtkVSeparator</TITLE>
+CtkVSeparator
 ctk_vseparator_new
 <SUBSECTION Standard>
 CTK_VSEPARATOR
@@ -5453,13 +5453,13 @@ ctk_vseparator_get_type
 
 <SECTION>
 <FILE>ctkwidget</FILE>
-<TITLE>GtkWidget</TITLE>
-GtkWidget
-GtkWidgetClass
-GtkCallback
-GtkRequisition
-GtkAllocation
-GtkWidgetHelpType
+<TITLE>CtkWidget</TITLE>
+CtkWidget
+CtkWidgetClass
+CtkCallback
+CtkRequisition
+CtkAllocation
+CtkWidgetHelpType
 ctk_widget_new
 ctk_widget_destroy
 ctk_widget_in_destruction
@@ -5480,7 +5480,7 @@ ctk_widget_queue_resize_no_redraw
 ctk_widget_queue_allocate
 ctk_widget_get_frame_clock
 ctk_widget_get_scale_factor
-GtkTickCallback
+CtkTickCallback
 ctk_widget_add_tick_callback
 ctk_widget_remove_tick_callback
 ctk_widget_size_request
@@ -5528,7 +5528,7 @@ ctk_widget_get_style
 ctk_widget_reset_rc_styles
 ctk_widget_get_default_style
 ctk_widget_set_direction
-GtkTextDirection
+CtkTextDirection
 ctk_widget_get_direction
 ctk_widget_set_default_direction
 ctk_widget_get_default_direction
@@ -5639,7 +5639,7 @@ ctk_widget_get_has_window
 ctk_widget_set_has_window
 ctk_widget_get_sensitive
 ctk_widget_is_sensitive
-GtkStateType
+CtkStateType
 ctk_widget_get_state
 ctk_widget_get_visible
 ctk_widget_is_visible
@@ -5685,8 +5685,8 @@ ctk_requisition_copy
 ctk_requisition_free
 
 <SUBSECTION Width-for-Height>
-GtkSizeRequestMode
-GtkRequestedSize
+CtkSizeRequestMode
+CtkRequestedSize
 ctk_widget_get_preferred_height
 ctk_widget_get_preferred_width
 ctk_widget_get_preferred_height_for_width
@@ -5697,7 +5697,7 @@ ctk_widget_get_preferred_size
 ctk_distribute_natural_allocation
 
 <SUBSECTION Alignment and Margins>
-GtkAlign
+CtkAlign
 ctk_widget_get_halign
 ctk_widget_set_halign
 ctk_widget_get_valign
@@ -5751,18 +5751,18 @@ CTK_IS_WIDGET_CLASS
 CTK_WIDGET_GET_CLASS
 CTK_TYPE_REQUISITION
 <SUBSECTION Private>
-GtkWidgetClassPrivate
-GtkWidgetPrivate
+CtkWidgetClassPrivate
+CtkWidgetPrivate
 ctk_widget_get_type
 ctk_requisition_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkwindow</FILE>
-<TITLE>GtkWindow</TITLE>
-GtkWindow
-GtkWindowClass
-GtkWindowType
+<TITLE>CtkWindow</TITLE>
+CtkWindow
+CtkWindowClass
+CtkWindowType
 ctk_window_new
 ctk_window_set_title
 ctk_window_set_wmclass
@@ -5778,7 +5778,7 @@ ctk_window_set_default_geometry
 ctk_window_set_geometry_hints
 ctk_window_set_gravity
 ctk_window_get_gravity
-GtkWindowPosition
+CtkWindowPosition
 ctk_window_set_position
 ctk_window_set_transient_for
 ctk_window_set_attached_to
@@ -5893,19 +5893,19 @@ CTK_IS_WINDOW_CLASS
 CTK_WINDOW_GET_CLASS
 
 <SUBSECTION Private>
-GtkWindowPrivate
+CtkWindowPrivate
 ctk_window_get_type
-GtkWindowGeometryInfo
+CtkWindowGeometryInfo
 ctk_window_remove_embedded_xid
 ctk_window_add_embedded_xid
-GtkWindowKeysForeachFunc
+CtkWindowKeysForeachFunc
 </SECTION>
 
 
 <SECTION>
 <FILE>ctkwindowgroup</FILE>
-<TITLE>GtkWindowGroup</TITLE>
-GtkWindowGroup
+<TITLE>CtkWindowGroup</TITLE>
+CtkWindowGroup
 ctk_window_group_new
 ctk_window_group_add_window
 ctk_window_group_remove_window
@@ -5920,7 +5920,7 @@ CTK_WINDOW_GROUP
 CTK_WINDOW_GROUP_CLASS
 CTK_WINDOW_GROUP_GET_CLASS
 <SUBSECTION Private>
-GtkWindowGroupPrivate
+CtkWindowGroupPrivate
 ctk_window_group_get_type
 </SECTION>
 
@@ -5943,8 +5943,8 @@ ctk_main_iteration
 ctk_main_iteration_do
 ctk_main_do_event
 
-GtkModuleInitFunc
-GtkModuleDisplayInitFunc
+CtkModuleInitFunc
+CtkModuleDisplayInitFunc
 
 <SUBSECTION>
 ctk_true
@@ -5962,7 +5962,7 @@ CTK_PRIORITY_RESIZE
 
 <SUBSECTION>
 ctk_key_snooper_install
-GtkKeySnoopFunc
+CtkKeySnoopFunc
 ctk_key_snooper_remove
 
 <SUBSECTION>
@@ -6006,8 +6006,8 @@ CTK_CHECK_VERSION
 
 <SECTION>
 <FILE>ctkwidgetpath</FILE>
-<TITLE>GtkWidgetPath</TITLE>
-GtkWidgetPath
+<TITLE>CtkWidgetPath</TITLE>
+CtkWidgetPath
 ctk_widget_path_append_type
 ctk_widget_path_append_with_siblings
 ctk_widget_path_append_for_widget
@@ -6056,9 +6056,9 @@ ctk_widget_path_get_type
 
 <SECTION>
 <FILE>ctkstyleprovider</FILE>
-<TITLE>GtkStyleProvider</TITLE>
-GtkStyleProviderIface
-GtkStyleProvider
+<TITLE>CtkStyleProvider</TITLE>
+CtkStyleProviderIface
+CtkStyleProvider
 CTK_STYLE_PROVIDER_PRIORITY_FALLBACK
 CTK_STYLE_PROVIDER_PRIORITY_THEME
 CTK_STYLE_PROVIDER_PRIORITY_SETTINGS
@@ -6078,8 +6078,8 @@ ctk_style_provider_get_type
 
 <SECTION>
 <FILE>ctkstyleproperties</FILE>
-<TITLE>GtkStyleProperties</TITLE>
-GtkStyleProperties
+<TITLE>CtkStyleProperties</TITLE>
+CtkStyleProperties
 ctk_style_properties_clear
 ctk_style_properties_get
 ctk_style_properties_get_property
@@ -6089,7 +6089,7 @@ ctk_style_properties_lookup_property
 ctk_style_properties_map_color
 ctk_style_properties_merge
 ctk_style_properties_new
-GtkStylePropertyParser
+CtkStylePropertyParser
 ctk_style_properties_register_property
 ctk_style_properties_set
 ctk_style_properties_set_property
@@ -6103,13 +6103,13 @@ CTK_STYLE_PROPERTIES
 CTK_STYLE_PROPERTIES_CLASS
 CTK_STYLE_PROPERTIES_GET_CLASS
 <SUBSECTION Private>
-GtkStylePropertiesPrivate
+CtkStylePropertiesPrivate
 ctk_style_properties_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkstylecontext</FILE>
-<TITLE>GtkStyleContext</TITLE>
+<TITLE>CtkStyleContext</TITLE>
 <SUBSECTION>
 CTK_STYLE_PROPERTY_BACKGROUND_COLOR
 CTK_STYLE_PROPERTY_COLOR
@@ -6121,7 +6121,7 @@ CTK_STYLE_PROPERTY_BORDER_RADIUS
 CTK_STYLE_PROPERTY_BORDER_STYLE
 CTK_STYLE_PROPERTY_BORDER_COLOR
 CTK_STYLE_PROPERTY_BACKGROUND_IMAGE
-GtkBorderStyle
+CtkBorderStyle
 <SUBSECTION>
 CTK_STYLE_CLASS_ACCELERATOR
 CTK_STYLE_CLASS_ARROW
@@ -6213,13 +6213,13 @@ CTK_STYLE_REGION_COLUMN_HEADER
 CTK_STYLE_REGION_ROW
 CTK_STYLE_REGION_TAB
 <SUBSECTION>
-GtkStyleContext
+CtkStyleContext
 ctk_style_context_new
 ctk_style_context_add_provider
 ctk_style_context_add_provider_for_screen
 ctk_style_context_get
 ctk_style_context_get_direction
-GtkJunctionSides
+CtkJunctionSides
 ctk_style_context_get_junction_sides
 ctk_style_context_get_parent
 ctk_style_context_get_path
@@ -6262,7 +6262,7 @@ ctk_style_context_add_class
 ctk_style_context_remove_class
 ctk_style_context_has_class
 ctk_style_context_list_classes
-GtkRegionFlags
+CtkRegionFlags
 ctk_style_context_add_region
 ctk_style_context_remove_region
 ctk_style_context_has_region
@@ -6272,11 +6272,11 @@ ctk_style_context_set_frame_clock
 ctk_style_context_set_state
 ctk_style_context_set_scale
 ctk_style_context_get_scale
-GtkStyleContextPrintFlags
+CtkStyleContextPrintFlags
 ctk_style_context_to_string
 
 <SUBSECTION>
-GtkBorder
+CtkBorder
 ctk_border_new
 ctk_border_copy
 ctk_border_free
@@ -6312,15 +6312,15 @@ CTK_IS_STYLE_CONTEXT_CLASS
 CTK_TYPE_BORDER
 
 <SUBSECTION Private>
-GtkStyleContextPrivate
+CtkStyleContextPrivate
 ctk_style_context_get_type
 ctk_border_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkcssprovider</FILE>
-<TITLE>GtkCssProvider</TITLE>
-GtkCssProvider
+<TITLE>CtkCssProvider</TITLE>
+CtkCssProvider
 ctk_css_provider_get_default
 ctk_css_provider_get_named
 ctk_css_provider_load_from_data
@@ -6330,10 +6330,10 @@ ctk_css_provider_load_from_resource
 ctk_css_provider_new
 ctk_css_provider_to_string
 CTK_CSS_PROVIDER_ERROR
-GtkCssProviderError
+CtkCssProviderError
 <SUBSECTION>
-GtkCssSection
-GtkCssSectionType
+CtkCssSection
+CtkCssSectionType
 ctk_css_section_get_end_line
 ctk_css_section_get_end_position
 ctk_css_section_get_file
@@ -6352,7 +6352,7 @@ CTK_IS_CSS_PROVIDER
 CTK_IS_CSS_PROVIDER_CLASS
 <SUBSECTION Private>
 CTK_TYPE_CSS_SECTION
-GtkCssProviderPrivate
+CtkCssProviderPrivate
 ctk_css_provider_get_type
 ctk_css_provider_error_quark
 ctk_css_section_get_type
@@ -6360,9 +6360,9 @@ ctk_css_section_get_type
 
 <SECTION>
 <FILE>ctkthemingengine</FILE>
-<TITLE>GtkThemingEngine</TITLE>
-GtkThemingEngineClass
-GtkThemingEngine
+<TITLE>CtkThemingEngine</TITLE>
+CtkThemingEngineClass
+CtkThemingEngine
 ctk_theming_engine_get
 ctk_theming_engine_get_direction
 ctk_theming_engine_get_junction_sides
@@ -6394,15 +6394,15 @@ CTK_THEMING_ENGINE_GET_CLASS
 CTK_IS_THEMING_ENGINE
 CTK_IS_THEMING_ENGINE_CLASS
 <SUBSECTION Private>
-GtkThemingEnginePrivate
+CtkThemingEnginePrivate
 CTK_TYPE_THEMING_ENGINE
 ctk_theming_engine_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctksymboliccolor</FILE>
-<TITLE>GtkSymbolicColor</TITLE>
-GtkSymbolicColor
+<TITLE>CtkSymbolicColor</TITLE>
+CtkSymbolicColor
 ctk_symbolic_color_new_literal
 ctk_symbolic_color_new_name
 ctk_symbolic_color_new_shade
@@ -6423,8 +6423,8 @@ ctk_symbolic_color_get_type
 
 <SECTION>
 <FILE>ctkgradient</FILE>
-<TITLE>GtkGradient</TITLE>
-GtkGradient
+<TITLE>CtkGradient</TITLE>
+CtkGradient
 ctk_gradient_new_linear
 ctk_gradient_new_radial
 ctk_gradient_add_color_stop
@@ -6442,11 +6442,11 @@ ctk_gradient_get_type
 
 <SECTION>
 <FILE>ctkstyle</FILE>
-<TITLE>GtkStyle</TITLE>
+<TITLE>CtkStyle</TITLE>
 CTK_STYLE_ATTACHED
-GtkStyle
-GtkStyleClass
-GtkExpanderStyle
+CtkStyle
+CtkStyleClass
+CtkExpanderStyle
 ctk_style_new
 ctk_style_copy
 ctk_style_attach
@@ -6483,8 +6483,8 @@ ctk_paint_resize_grip
 ctk_draw_insertion_cursor
 
 <SUBSECTION>
-GtkRcProperty
-GtkRcPropertyParser
+CtkRcProperty
+CtkRcPropertyParser
 
 <SUBSECTION Standard>
 CTK_STYLE
@@ -6495,18 +6495,18 @@ CTK_IS_STYLE_CLASS
 CTK_STYLE_GET_CLASS
 
 ctk_style_get_type
-GtkThemeEngine
+CtkThemeEngine
 </SECTION>
 
 <SECTION>
 <FILE>ctkrc</FILE>
 <TITLE>Resource Files</TITLE>
-GtkRcStyle
-GtkRcStyleClass
-GtkRcFlags
-GtkRcTokenType
-GtkPathPriorityType
-GtkPathType
+CtkRcStyle
+CtkRcStyleClass
+CtkRcFlags
+CtkRcTokenType
+CtkPathPriorityType
+CtkPathType
 ctk_rc_scanner_new
 ctk_rc_get_style
 ctk_rc_get_style_by_paths
@@ -6540,17 +6540,17 @@ CTK_IS_RC_STYLE_CLASS
 CTK_RC_STYLE_GET_CLASS
 <SUBSECTION Private>
 ctk_rc_style_get_type
-GtkRcContext
+CtkRcContext
 CTK_PATH_PRIO_MASK
 </SECTION>
 
 <SECTION>
 <FILE>ctkselection</FILE>
 <TITLE>Selections</TITLE>
-GtkSelectionData
-GtkTargetEntry
-GtkTargetList
-GtkTargetPair
+CtkSelectionData
+CtkTargetEntry
+CtkTargetList
+CtkTargetPair
 ctk_target_entry_new
 ctk_target_entry_copy
 ctk_target_entry_free
@@ -6612,15 +6612,15 @@ ctk_target_entry_get_type
 <SECTION>
 <FILE>ctkclipboard</FILE>
 <TITLE>Clipboards</TITLE>
-GtkClipboard
-GtkClipboardReceivedFunc
-GtkClipboardTextReceivedFunc
-GtkClipboardImageReceivedFunc
-GtkClipboardTargetsReceivedFunc
-GtkClipboardRichTextReceivedFunc
-GtkClipboardURIReceivedFunc
-GtkClipboardGetFunc
-GtkClipboardClearFunc
+CtkClipboard
+CtkClipboardReceivedFunc
+CtkClipboardTextReceivedFunc
+CtkClipboardImageReceivedFunc
+CtkClipboardTargetsReceivedFunc
+CtkClipboardRichTextReceivedFunc
+CtkClipboardURIReceivedFunc
+CtkClipboardGetFunc
+CtkClipboardClearFunc
 ctk_clipboard_get
 ctk_clipboard_get_for_display
 ctk_clipboard_get_display
@@ -6662,9 +6662,9 @@ ctk_clipboard_get_type
 <SECTION>
 <FILE>ctkdnd</FILE>
 <TITLE>Drag and Drop</TITLE>
-GtkDestDefaults
-GtkTargetFlags
-GtkDragResult
+CtkDestDefaults
+CtkTargetFlags
+CtkDragResult
 <SUBSECTION Destination Side>
 ctk_drag_dest_set
 ctk_drag_dest_set_proxy
@@ -6710,10 +6710,10 @@ ctk_drag_source_add_uri_targets
 <SECTION>
 <FILE>ctkbindings</FILE>
 <TITLE>Bindings</TITLE>
-GtkBindingSet
-GtkBindingEntry
-GtkBindingSignal
-GtkBindingArg
+CtkBindingSet
+CtkBindingEntry
+CtkBindingSignal
+CtkBindingArg
 ctk_binding_entry_add_signall
 ctk_binding_set_new
 ctk_binding_set_by_class
@@ -6731,29 +6731,29 @@ ctk_binding_set_add_path
 <SECTION>
 <FILE>ctkenums</FILE>
 <TITLE>Standard Enumerations</TITLE>
-GtkBaselinePosition
-GtkDeleteType
-GtkDirectionType
-GtkJustification
-GtkMovementStep
-GtkOrientation
-GtkPackType
-GtkPositionType
-GtkReliefStyle
-GtkScrollStep
-GtkScrollType
-GtkSelectionMode
-GtkShadowType
-GtkStateFlags
-GtkToolbarStyle
-GtkSortType
+CtkBaselinePosition
+CtkDeleteType
+CtkDirectionType
+CtkJustification
+CtkMovementStep
+CtkOrientation
+CtkPackType
+CtkPositionType
+CtkReliefStyle
+CtkScrollStep
+CtkScrollType
+CtkSelectionMode
+CtkShadowType
+CtkStateFlags
+CtkToolbarStyle
+CtkSortType
 
 </SECTION>
 
 <SECTION>
 <FILE>ctkstock</FILE>
 <TITLE>Stock Items</TITLE>
-GtkStockItem
+CtkStockItem
 ctk_stock_add
 ctk_stock_add_static
 ctk_stock_item_copy
@@ -6868,18 +6868,18 @@ CTK_STOCK_ZOOM_FIT
 CTK_STOCK_ZOOM_IN
 CTK_STOCK_ZOOM_OUT
 <SUBSECTION Private>
-GtkStock
+CtkStock
 </SECTION>
 
 <SECTION>
 <FILE>ctkicontheme</FILE>
-<TITLE>GtkIconTheme</TITLE>
-GtkIconInfo
-GtkIconTheme
-GtkIconThemeClass
-GtkIconLookupFlags
+<TITLE>CtkIconTheme</TITLE>
+CtkIconInfo
+CtkIconTheme
+CtkIconThemeClass
+CtkIconLookupFlags
 CTK_ICON_THEME_ERROR
-GtkIconThemeError
+CtkIconThemeError
 ctk_icon_theme_new
 ctk_icon_theme_get_default
 ctk_icon_theme_get_for_screen
@@ -6930,7 +6930,7 @@ ctk_icon_info_get_attach_points
 ctk_icon_info_get_display_name
 ctk_icon_info_is_symbolic
 <SUBSECTION Standard>
-GtkIconInfoClass
+CtkIconInfoClass
 CTK_ICON_THEME
 CTK_IS_ICON_THEME
 CTK_TYPE_ICON_THEME
@@ -6946,18 +6946,18 @@ CTK_ICON_INFO_GET_CLASS
 CTK_IS_ICON_INFO
 CTK_IS_ICON_INFO_CLASS
 <SUBSECTION Private>
-GtkIconThemePrivate
+CtkIconThemePrivate
 ctk_icon_theme_error_quark
 </SECTION>
 
 <SECTION>
 <FILE>ctkiconfactory</FILE>
 <TITLE>Themeable Stock Images</TITLE>
-GtkIconSource
-GtkIconFactory
-GtkIconFactoryClass
-GtkIconSet
-GtkIconSize
+CtkIconSource
+CtkIconFactory
+CtkIconFactoryClass
+CtkIconSet
+CtkIconSize
 ctk_icon_source_copy
 ctk_icon_source_free
 ctk_icon_factory_add
@@ -7011,7 +7011,7 @@ CTK_IS_ICON_FACTORY_CLASS
 CTK_TYPE_ICON_SET
 CTK_TYPE_ICON_SOURCE
 <SUBSECTION Private>
-GtkIconFactoryPrivate
+CtkIconFactoryPrivate
 ctk_icon_factory_get_type
 ctk_icon_set_get_type
 ctk_icon_source_get_type
@@ -7021,12 +7021,12 @@ ctk_icon_source_get_type
 <SECTION>
 <FILE>ctkprintoperation</FILE>
 <TITLE>High-level Printing API</TITLE>
-GtkPrintOperation
-GtkPrintOperationClass
-GtkPrintStatus
-GtkPrintOperationAction
-GtkPrintOperationResult
-GtkPrintError
+CtkPrintOperation
+CtkPrintOperationClass
+CtkPrintStatus
+CtkPrintOperationAction
+CtkPrintOperationResult
+CtkPrintError
 CTK_PRINT_ERROR
 ctk_print_operation_new
 ctk_print_operation_set_allow_async
@@ -7059,11 +7059,11 @@ ctk_print_operation_get_has_selection
 ctk_print_operation_set_embed_page_setup
 ctk_print_operation_get_embed_page_setup
 ctk_print_run_page_setup_dialog
-GtkPageSetupDoneFunc
+CtkPageSetupDoneFunc
 ctk_print_run_page_setup_dialog_async
 
 <SUBSECTION Preview>
-GtkPrintOperationPreview
+CtkPrintOperationPreview
 ctk_print_operation_preview_end_preview
 ctk_print_operation_preview_is_selected
 ctk_print_operation_preview_render_page
@@ -7079,20 +7079,20 @@ CTK_IS_PRINT_OPERATION_PREVIEW
 CTK_PRINT_OPERATION_PREVIEW
 CTK_PRINT_OPERATION_PREVIEW_GET_IFACE
 CTK_TYPE_PRINT_OPERATION_PREVIEW
-GtkPrintOperationPreviewIface
+CtkPrintOperationPreviewIface
 
 <SUBSECTION Private>
 ctk_print_error_quark
 ctk_print_operation_get_type
 ctk_print_operation_preview_get_type
-GtkPrintOperationPrivate
+CtkPrintOperationPrivate
 </SECTION>
 
 
 <SECTION>
 <FILE>ctkprintunixdialog</FILE>
-<TITLE>GtkPrintUnixDialog</TITLE>
-GtkPrintUnixDialog
+<TITLE>CtkPrintUnixDialog</TITLE>
+CtkPrintUnixDialog
 ctk_print_unix_dialog_new
 ctk_print_unix_dialog_set_page_setup
 ctk_print_unix_dialog_get_page_setup
@@ -7109,7 +7109,7 @@ ctk_print_unix_dialog_get_has_selection
 ctk_print_unix_dialog_set_embed_page_setup
 ctk_print_unix_dialog_get_embed_page_setup
 ctk_print_unix_dialog_get_page_setup_set
-GtkPrintCapabilities
+CtkPrintCapabilities
 ctk_print_unix_dialog_set_manual_capabilities
 ctk_print_unix_dialog_get_manual_capabilities
 
@@ -7122,7 +7122,7 @@ CTK_IS_PRINT_UNIX_DIALOG_CLASS
 CTK_PRINT_UNIX_DIALOG_GET_CLASS
 CTK_TYPE_PRINT_CAPABILITIES
 <SUBSECTION Private>
-GtkPrintUnixDialogPrivate
+CtkPrintUnixDialogPrivate
 ctk_print_unix_dialog_get_type
 ctk_print_capabilities_get_type
 </SECTION>
@@ -7130,9 +7130,9 @@ ctk_print_capabilities_get_type
 
 <SECTION>
 <FILE>ctkprinter</FILE>
-<TITLE>GtkPrinter</TITLE>
-GtkPrinter
-GtkPrintBackend
+<TITLE>CtkPrinter</TITLE>
+CtkPrinter
+CtkPrintBackend
 ctk_printer_new
 ctk_printer_get_backend
 ctk_printer_get_name
@@ -7155,7 +7155,7 @@ ctk_printer_request_details
 ctk_printer_get_capabilities
 ctk_printer_get_default_page_size
 ctk_printer_get_hard_margins
-GtkPrinterFunc
+CtkPrinterFunc
 ctk_enumerate_printers
 
 <SUBSECTION Standard>
@@ -7167,16 +7167,16 @@ CTK_IS_PRINTER_CLASS
 CTK_PRINTER_GET_CLASS
 
 <SUBSECTION Private>
-GtkPrinterPrivate
+CtkPrinterPrivate
 ctk_printer_get_type 
 </SECTION>
 
 
 <SECTION>
 <FILE>ctkprintsettings</FILE>
-<TITLE>GtkPrintSettings</TITLE>
-GtkPrintSettings
-GtkPrintSettingsFunc
+<TITLE>CtkPrintSettings</TITLE>
+CtkPrintSettings
+CtkPrintSettingsFunc
 ctk_print_settings_new
 ctk_print_settings_copy
 ctk_print_settings_has_key
@@ -7197,7 +7197,7 @@ ctk_print_settings_set_int
 CTK_PRINT_SETTINGS_PRINTER
 ctk_print_settings_get_printer
 ctk_print_settings_set_printer
-GtkPageOrientation
+CtkPageOrientation
 CTK_PRINT_SETTINGS_ORIENTATION
 ctk_print_settings_get_orientation
 ctk_print_settings_set_orientation
@@ -7219,11 +7219,11 @@ ctk_print_settings_set_collate
 CTK_PRINT_SETTINGS_REVERSE
 ctk_print_settings_get_reverse
 ctk_print_settings_set_reverse
-GtkPrintDuplex
+CtkPrintDuplex
 CTK_PRINT_SETTINGS_DUPLEX
 ctk_print_settings_get_duplex
 ctk_print_settings_set_duplex
-GtkPrintQuality
+CtkPrintQuality
 CTK_PRINT_SETTINGS_QUALITY
 ctk_print_settings_get_quality
 ctk_print_settings_set_quality
@@ -7233,7 +7233,7 @@ ctk_print_settings_set_n_copies
 CTK_PRINT_SETTINGS_NUMBER_UP
 ctk_print_settings_get_number_up
 ctk_print_settings_set_number_up
-GtkNumberUpLayout
+CtkNumberUpLayout
 CTK_PRINT_SETTINGS_NUMBER_UP_LAYOUT
 ctk_print_settings_get_number_up_layout
 ctk_print_settings_set_number_up_layout
@@ -7251,15 +7251,15 @@ ctk_print_settings_set_printer_lpi
 CTK_PRINT_SETTINGS_SCALE
 ctk_print_settings_get_scale
 ctk_print_settings_set_scale
-GtkPrintPages
+CtkPrintPages
 CTK_PRINT_SETTINGS_PRINT_PAGES
 ctk_print_settings_get_print_pages
 ctk_print_settings_set_print_pages
-GtkPageRange
+CtkPageRange
 CTK_PRINT_SETTINGS_PAGE_RANGES
 ctk_print_settings_get_page_ranges
 ctk_print_settings_set_page_ranges
-GtkPageSet
+CtkPageSet
 CTK_PRINT_SETTINGS_PAGE_SET
 ctk_print_settings_get_page_set
 ctk_print_settings_set_page_set
@@ -7307,9 +7307,9 @@ ctk_print_settings_get_type
 
 <SECTION>
 <FILE>ctkpapersize</FILE>
-<TITLE>GtkPaperSize</TITLE>
-GtkPaperSize
-GtkUnit
+<TITLE>CtkPaperSize</TITLE>
+CtkPaperSize
+CtkUnit
 CTK_UNIT_PIXEL
 CTK_PAPER_NAME_A3
 CTK_PAPER_NAME_A4
@@ -7354,21 +7354,21 @@ CTK_CUSTOM_PAPER_UNIX_DIALOG_GET_CLASS
 CTK_IS_CUSTOM_PAPER_UNIX_DIALOG
 CTK_IS_CUSTOM_PAPER_UNIX_DIALOG_CLASS
 CTK_TYPE_CUSTOM_PAPER_UNIX_DIALOG
-GtkCustomPaperUnixDialog
-GtkCustomPaperUnixDialogClass
+CtkCustomPaperUnixDialog
+CtkCustomPaperUnixDialogClass
 
 
 <SUBSECTION Private>
 ctk_paper_size_get_type
 ctk_custom_paper_unix_dialog_get_type
-GtkCustomPaperUnixDialogPrivate
+CtkCustomPaperUnixDialogPrivate
 </SECTION>
 
 
 <SECTION>
 <FILE>ctkpagesetup</FILE>
-<TITLE>GtkPageSetup</TITLE>
-GtkPageSetup
+<TITLE>CtkPageSetup</TITLE>
+CtkPageSetup
 ctk_page_setup_new
 ctk_page_setup_copy
 ctk_page_setup_get_orientation
@@ -7411,8 +7411,8 @@ ctk_page_setup_get_type
 
 <SECTION>
 <FILE>ctkprintcontext</FILE>
-<TITLE>GtkPrintContext</TITLE>
-GtkPrintContext
+<TITLE>CtkPrintContext</TITLE>
+CtkPrintContext
 ctk_print_context_get_cairo_context
 ctk_print_context_set_cairo_context
 ctk_print_context_get_page_setup
@@ -7437,9 +7437,9 @@ ctk_print_context_get_type
 
 <SECTION>
 <FILE>ctkprintjob</FILE>
-<TITLE>GtkPrintJob</TITLE>
-GtkPrintJob
-GtkPrintJobCompleteFunc
+<TITLE>CtkPrintJob</TITLE>
+CtkPrintJob
+CtkPrintJobCompleteFunc
 ctk_print_job_new
 ctk_print_job_get_settings
 ctk_print_job_get_printer
@@ -7481,16 +7481,16 @@ CTK_IS_PRINT_JOB_CLASS
 CTK_PRINT_JOB_GET_CLASS
 
 <SUBSECTION Private>
-GtkPrintJobPrivate
+CtkPrintJobPrivate
 ctk_print_job_get_type
 </SECTION>
 
 
 <SECTION>
 <FILE>ctkpagesetupunixdialog</FILE>
-<TITLE>GtkPageSetupUnixDialog</TITLE>
-GtkPageSetupUnixDialog
-GtkPageSetupUnixDialogClass
+<TITLE>CtkPageSetupUnixDialog</TITLE>
+CtkPageSetupUnixDialog
+CtkPageSetupUnixDialogClass
 ctk_page_setup_unix_dialog_new
 ctk_page_setup_unix_dialog_set_page_setup
 ctk_page_setup_unix_dialog_get_page_setup
@@ -7506,7 +7506,7 @@ CTK_IS_PAGE_SETUP_UNIX_DIALOG_CLASS
 CTK_PAGE_SETUP_UNIX_DIALOG_GET_CLASS
 
 <SUBSECTION Private>
-GtkPageSetupUnixDialogPrivate
+CtkPageSetupUnixDialogPrivate
 ctk_page_setup_unix_dialog_get_type
 </SECTION>
 
@@ -7535,8 +7535,8 @@ ctk_test_widget_wait_for_draw
 <SECTION>
 <FILE>filesystem</FILE>
 <TITLE>Filesystem utilities</TITLE>
-GtkMountOperation
-GtkMountOperationClass
+CtkMountOperation
+CtkMountOperationClass
 ctk_mount_operation_new
 ctk_mount_operation_is_showing
 ctk_mount_operation_set_parent
@@ -7553,20 +7553,20 @@ CTK_MOUNT_OPERATION_CLASS
 CTK_MOUNT_OPERATION_GET_CLASS
 CTK_TYPE_MOUNT_OPERATION
 <SUBSECTION Private>
-GtkMountOperationLookupContext
+CtkMountOperationLookupContext
 ctk_mount_operation_get_type
-GtkMountOperationPrivate
+CtkMountOperationPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkorientable</FILE>
 <TITLE>Orientable</TITLE>
-GtkOrientable
+CtkOrientable
 ctk_orientable_get_orientation
 ctk_orientable_set_orientation
 
 <SUBSECTION Standard>
-GtkOrientableIface
+CtkOrientableIface
 CTK_IS_ORIENTABLE
 CTK_IS_ORIENTABLE_CLASS
 CTK_ORIENTABLE
@@ -7580,9 +7580,9 @@ ctk_orientable_get_type
 
 <SECTION>
 <FILE>ctkapplication</FILE>
-<TITLE>GtkApplication</TITLE>
-GtkApplication
-GtkApplicationClass
+<TITLE>CtkApplication</TITLE>
+CtkApplication
+CtkApplicationClass
 
 ctk_application_new
 ctk_application_add_window
@@ -7592,7 +7592,7 @@ ctk_application_get_window_by_id
 ctk_application_get_active_window
 
 <SUBSECTION>
-GtkApplicationInhibitFlags
+CtkApplicationInhibitFlags
 ctk_application_inhibit
 ctk_application_uninhibit
 ctk_application_is_inhibited
@@ -7622,14 +7622,14 @@ CTK_IS_APPLICATION_CLASS
 CTK_APPLICATION_GET_CLASS
 <SUBSECTION Private>
 ctk_application_get_type
-GtkApplicationPrivate
+CtkApplicationPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkapplicationwindow</FILE>
-<TITLE>GtkApplicationWindow</TITLE>
-GtkApplicationWindow
-GtkApplicationWindowClass
+<TITLE>CtkApplicationWindow</TITLE>
+CtkApplicationWindow
+CtkApplicationWindowClass
 ctk_application_window_new
 ctk_application_window_set_show_menubar
 ctk_application_window_get_show_menubar
@@ -7647,14 +7647,14 @@ CTK_APPLICATION_WINDOW_GET_CLASS
 
 <SUBSECTION Private>
 ctk_application_window_get_type
-GtkApplicationWindowPrivate
+CtkApplicationWindowPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkactionable</FILE>
-<TITLE>GtkActionable</TITLE>
-GtkActionable
-GtkActionableInterface
+<TITLE>CtkActionable</TITLE>
+CtkActionable
+CtkActionableInterface
 
 <SUBSECTION>
 ctk_actionable_get_action_name
@@ -7678,9 +7678,9 @@ CTK_TYPE_ACTIONABLE
 
 <SECTION>
 <FILE>ctkgrid</FILE>
-<TITLE>GtkGrid</TITLE>
-GtkGrid
-GtkGridClass
+<TITLE>CtkGrid</TITLE>
+CtkGrid
+CtkGridClass
 ctk_grid_new
 ctk_grid_attach
 ctk_grid_attach_next_to
@@ -7712,14 +7712,14 @@ CTK_IS_GRID_CLASS
 CTK_GRID_GET_CLASS
 
 <SUBSECTION Private>
-GtkGridPrivate
+CtkGridPrivate
 ctk_grid_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkswitch</FILE>
-GtkSwitch
-GtkSwitchClass
+CtkSwitch
+CtkSwitchClass
 ctk_switch_new
 ctk_switch_set_active
 ctk_switch_get_active
@@ -7735,14 +7735,14 @@ CTK_IS_SWITCH_CLASS
 CTK_SWITCH_GET_CLASS
 
 <SUBSECTION Private>
-GtkSwitchPrivate
+CtkSwitchPrivate
 ctk_switch_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkappchooser</FILE>
-<TITLE>GtkAppChooser</TITLE>
-GtkAppChooser
+<TITLE>CtkAppChooser</TITLE>
+CtkAppChooser
 ctk_app_chooser_get_app_info
 ctk_app_chooser_get_content_type
 ctk_app_chooser_refresh
@@ -7767,9 +7767,9 @@ CTK_IS_APP_CHOOSER_ONLINE_PK_CLASS
 
 <SECTION>
 <FILE>ctkappchooserbutton</FILE>
-<TITLE>GtkAppChooserButton</TITLE>
-GtkAppChooserButton
-GtkAppChooserButtonClass
+<TITLE>CtkAppChooserButton</TITLE>
+CtkAppChooserButton
+CtkAppChooserButtonClass
 ctk_app_chooser_button_new
 ctk_app_chooser_button_append_custom_item
 ctk_app_chooser_button_append_separator
@@ -7790,15 +7790,15 @@ CTK_IS_APP_CHOOSER_BUTTON_CLASS
 CTK_APP_CHOOSER_BUTTON_GET_CLASS
 
 <SUBSECTION Private>
-GtkAppChooserButtonPrivate
+CtkAppChooserButtonPrivate
 ctk_app_chooser_button_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkappchooserdialog</FILE>
-<TITLE>GtkAppChooserDialog</TITLE>
-GtkAppChooserDialog
-GtkAppChooserDialogClass
+<TITLE>CtkAppChooserDialog</TITLE>
+CtkAppChooserDialog
+CtkAppChooserDialogClass
 ctk_app_chooser_dialog_new
 ctk_app_chooser_dialog_new_for_content_type
 ctk_app_chooser_dialog_get_widget
@@ -7814,15 +7814,15 @@ CTK_IS_APP_CHOOSER_DIALOG_CLASS
 CTK_APP_CHOOSER_DIALOG_GET_CLASS
 
 <SUBSECTION Private>
-GtkAppChooserDialogPrivate
+CtkAppChooserDialogPrivate
 ctk_app_chooser_dialog_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkappchooserwidget</FILE>
-<TITLE>GtkAppChooserWidget</TITLE>
-GtkAppChooserWidget
-GtkAppChooserWidgetClass
+<TITLE>CtkAppChooserWidget</TITLE>
+CtkAppChooserWidget
+CtkAppChooserWidgetClass
 ctk_app_chooser_widget_new
 ctk_app_chooser_widget_set_show_default
 ctk_app_chooser_widget_get_show_default
@@ -7846,15 +7846,15 @@ CTK_IS_APP_CHOOSER_WIDGET_CLASS
 CTK_APP_CHOOSER_WIDGET_GET_CLASS
 
 <SUBSECTION Private>
-GtkAppChooserWidgetPrivate
+CtkAppChooserWidgetPrivate
 ctk_app_chooser_widget_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctklockbutton</FILE>
-<TITLE>GtkLockButton</TITLE>
-GtkLockButton
-GtkLockButtonClass
+<TITLE>CtkLockButton</TITLE>
+CtkLockButton
+CtkLockButtonClass
 
 ctk_lock_button_new
 ctk_lock_button_get_permission
@@ -7869,14 +7869,14 @@ CTK_IS_LOCK_BUTTON_CLASS
 CTK_LOCK_BUTTON_GET_CLASS
 <SUBSECTION Private>
 ctk_lock_button_get_type
-GtkLockButtonPrivate
+CtkLockButtonPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkoverlay</FILE>
-<TITLE>GtkOverlay</TITLE>
-GtkOverlay
-GtkOverlayClass
+<TITLE>CtkOverlay</TITLE>
+CtkOverlay
+CtkOverlayClass
 
 ctk_overlay_new
 ctk_overlay_add_overlay
@@ -7894,13 +7894,13 @@ CTK_OVERLAY_GET_CLASS
 
 <SUBSECTION Private>
 ctk_overlay_get_type
-GtkOverlayPrivate
+CtkOverlayPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkcolorchooser</FILE>
-<TITLE>GtkColorChooser</TITLE>
-GtkColorChooser
+<TITLE>CtkColorChooser</TITLE>
+CtkColorChooser
 ctk_color_chooser_get_rgba
 ctk_color_chooser_set_rgba
 ctk_color_chooser_get_use_alpha
@@ -7919,9 +7919,9 @@ ctk_color_chooser_get_type
 
 <SECTION>
 <FILE>ctkcolorchooserwidget</FILE>
-<TITLE>GtkColorChooserWidget</TITLE>
-GtkColorChooserWidget
-GtkColorChooserWidgetClass
+<TITLE>CtkColorChooserWidget</TITLE>
+CtkColorChooserWidget
+CtkColorChooserWidgetClass
 ctk_color_chooser_widget_new
 
 <SUBSECTION Standard>
@@ -7934,13 +7934,13 @@ CTK_COLOR_CHOOSER_WIDGET_GET_CLASS
 
 <SUBSECTION Private>
 ctk_color_chooser_widget_get_type
-GtkColorChooserWidgetPrivate
+CtkColorChooserWidgetPrivate
 </SECTION>
 
 <SECTION>
 <FILE>ctkcolorchooserdialog</FILE>
-<TITLE>GtkColorChooserDialog</TITLE>
-GtkColorChooserDialog
+<TITLE>CtkColorChooserDialog</TITLE>
+CtkColorChooserDialog
 ctk_color_chooser_dialog_new
 
 <SUBSECTION Standard>
@@ -7952,14 +7952,14 @@ CTK_IS_COLOR_CHOOSER_DIALOG_CLASS
 CTK_COLOR_CHOOSER_DIALOG_GET_CLASS
 
 <SUBSECTION Private>
-GtkColorChooserDialogPrivate
+CtkColorChooserDialogPrivate
 ctk_color_chooser_dialog_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkactionbar</FILE>
-<TITLE>GtkActionBar</TITLE>
-GtkActionBar
+<TITLE>CtkActionBar</TITLE>
+CtkActionBar
 ctk_action_bar_new
 ctk_action_bar_pack_start
 ctk_action_bar_pack_end
@@ -7975,14 +7975,14 @@ CTK_IS_ACTION_BAR_CLASS
 CTK_ACTION_BAR_GET_CLASS
 
 <SUBSECTION Private>
-GtkActionBarPrivate
+CtkActionBarPrivate
 ctk_action_bar_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkheaderbar</FILE>
-<TITLE>GtkHeaderBar</TITLE>
-GtkHeaderBar
+<TITLE>CtkHeaderBar</TITLE>
+CtkHeaderBar
 ctk_header_bar_new
 ctk_header_bar_set_title
 ctk_header_bar_get_title
@@ -8008,14 +8008,14 @@ CTK_IS_HEADER_BAR_CLASS
 CTK_HEADER_BAR_GET_CLASS
 
 <SUBSECTION Private>
-GtkHeaderBarPrivate
+CtkHeaderBarPrivate
 ctk_header_bar_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkstack</FILE>
-<TITLE>GtkStack</TITLE>
-GtkStack
+<TITLE>CtkStack</TITLE>
+CtkStack
 ctk_stack_new
 ctk_stack_add_named
 ctk_stack_add_titled
@@ -8033,7 +8033,7 @@ ctk_stack_set_vhomogeneous
 ctk_stack_get_vhomogeneous
 ctk_stack_set_transition_duration
 ctk_stack_get_transition_duration
-GtkStackTransitionType
+CtkStackTransitionType
 ctk_stack_set_transition_type
 ctk_stack_get_transition_type
 ctk_stack_get_transition_running
@@ -8053,8 +8053,8 @@ ctk_stack_get_type
 
 <SECTION>
 <FILE>ctkstackswitcher</FILE>
-<TITLE>GtkStackSwitcher</TITLE>
-GtkStackSwitcher
+<TITLE>CtkStackSwitcher</TITLE>
+CtkStackSwitcher
 ctk_stack_switcher_new
 ctk_stack_switcher_set_stack
 ctk_stack_switcher_get_stack
@@ -8072,16 +8072,16 @@ ctk_stack_switcher_get_type
 
 <SECTION>
 <FILE>ctkrevealer</FILE>
-<TITLE>GtkRevealer</TITLE>
-GtkRevealer
-GtkRevealerClass
+<TITLE>CtkRevealer</TITLE>
+CtkRevealer
+CtkRevealerClass
 ctk_revealer_new
 ctk_revealer_get_reveal_child
 ctk_revealer_set_reveal_child
 ctk_revealer_get_child_revealed
 ctk_revealer_get_transition_duration
 ctk_revealer_set_transition_duration
-GtkRevealerTransitionType
+CtkRevealerTransitionType
 ctk_revealer_get_transition_type
 ctk_revealer_set_transition_type
 
@@ -8099,8 +8099,8 @@ ctk_revealer_get_type
 
 <SECTION>
 <FILE>ctkflowbox</FILE>
-<TITLE>GtkFlowBox</TITLE>
-GtkFlowBox
+<TITLE>CtkFlowBox</TITLE>
+CtkFlowBox
 ctk_flow_box_new
 ctk_flow_box_insert
 ctk_flow_box_get_child_at_index
@@ -8121,7 +8121,7 @@ ctk_flow_box_get_max_children_per_line
 ctk_flow_box_set_activate_on_single_click
 ctk_flow_box_get_activate_on_single_click
 
-GtkFlowBoxForeachFunc
+CtkFlowBoxForeachFunc
 ctk_flow_box_selected_foreach
 ctk_flow_box_get_selected_children
 ctk_flow_box_select_child
@@ -8131,26 +8131,26 @@ ctk_flow_box_unselect_all
 ctk_flow_box_set_selection_mode
 ctk_flow_box_get_selection_mode
 
-GtkFlowBoxFilterFunc
+CtkFlowBoxFilterFunc
 ctk_flow_box_set_filter_func
 ctk_flow_box_invalidate_filter
 
-GtkFlowBoxSortFunc
+CtkFlowBoxSortFunc
 ctk_flow_box_set_sort_func
 ctk_flow_box_invalidate_sort
 
-GtkFlowBoxCreateWidgetFunc
+CtkFlowBoxCreateWidgetFunc
 ctk_flow_box_bind_model
 
-<SUBSECTION GtkFlowBoxChild>
-GtkFlowBoxChild
+<SUBSECTION CtkFlowBoxChild>
+CtkFlowBoxChild
 ctk_flow_box_child_new
 ctk_flow_box_child_get_index
 ctk_flow_box_child_is_selected
 ctk_flow_box_child_changed
 
 <SUBSECTION Standard>
-GtkFlowBoxChildClass
+CtkFlowBoxChildClass
 CTK_TYPE_FLOW_BOX
 CTK_TYPE_FLOW_BOX_CHILD
 CTK_FLOW_BOX
@@ -8170,8 +8170,8 @@ ctk_flow_box_child_get_type
 
 <SECTION>
 <FILE>ctkpopover</FILE>
-<TITLE>GtkPopover</TITLE>
-GtkPopover
+<TITLE>CtkPopover</TITLE>
+CtkPopover
 ctk_popover_new
 ctk_popover_new_from_model
 ctk_popover_bind_model
@@ -8183,7 +8183,7 @@ ctk_popover_set_pointing_to
 ctk_popover_get_pointing_to
 ctk_popover_set_position
 ctk_popover_get_position
-GtkPopoverConstraint
+CtkPopoverConstraint
 ctk_popover_set_constrain_to
 ctk_popover_get_constrain_to
 ctk_popover_set_modal
@@ -8203,14 +8203,14 @@ CTK_POPOVER_CLASS
 CTK_POPOVER_GET_CLASS
 
 <SUBSECTION Private>
-GtkPopoverPrivate
+CtkPopoverPrivate
 ctk_popover_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkpopovermenu</FILE>
-<TITLE>GtkPopoverMenu</TITLE>
-GtkPopoverMenu
+<TITLE>CtkPopoverMenu</TITLE>
+CtkPopoverMenu
 ctk_popover_menu_new
 ctk_popover_menu_open_submenu
 
@@ -8228,9 +8228,9 @@ ctk_popover_menu_get_type
 
 <SECTION>
 <FILE>ctkmodelbutton</FILE>
-<TITLE>GtkModelButton</TITLE>
-GtkModelButton
-GtkButtonRole
+<TITLE>CtkModelButton</TITLE>
+CtkModelButton
+CtkButtonRole
 ctk_model_button_new
 <SUBSECTION Standard>
 CTK_TYPE_MODEL_BUTTON
@@ -8242,9 +8242,9 @@ ctk_model_button_get_type
 
 <SECTION>
 <FILE>ctkeventcontroller</FILE>
-<TITLE>GtkEventController</TITLE>
-GtkEventController
-GtkPropagationPhase
+<TITLE>CtkEventController</TITLE>
+CtkEventController
+CtkPropagationPhase
 ctk_event_controller_get_propagation_phase
 ctk_event_controller_set_propagation_phase
 ctk_event_controller_handle_event
@@ -8260,15 +8260,15 @@ CTK_EVENT_CONTROLLER_GET_CLASS
 CTK_IS_EVENT_CONTROLLER_CLASS
 
 <SUBSECTION Private>
-GtkEventControllerPriv
+CtkEventControllerPriv
 ctk_event_controller_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkeventcontrollerscroll</FILE>
-<TITLE>GtkEventControllerScroll</TITLE>
-GtkEventControllerScroll
-GtkEventControllerScrollFlags
+<TITLE>CtkEventControllerScroll</TITLE>
+CtkEventControllerScroll
+CtkEventControllerScrollFlags
 ctk_event_controller_scroll_new
 ctk_event_controller_scroll_set_flags
 ctk_event_controller_scroll_get_flags
@@ -8287,8 +8287,8 @@ ctk_event_controller_scroll_get_type
 
 <SECTION>
 <FILE>ctkeventcontrollermotion</FILE>
-<TITLE>GtkEventControllerMotion</TITLE>
-GtkEventControllerMotion
+<TITLE>CtkEventControllerMotion</TITLE>
+CtkEventControllerMotion
 ctk_event_controller_motion_new
 
 <SUBSECTION Standard>
@@ -8305,8 +8305,8 @@ ctk_event_controller_motion_get_type
 
 <SECTION>
 <FILE>ctkeventcontrollerkey</FILE>
-<TITLE>GtkEventControllerKey</TITLE>
-GtkEventControllerKey
+<TITLE>CtkEventControllerKey</TITLE>
+CtkEventControllerKey
 ctk_event_controller_key_new
 
 <SUBSECTION Standard>
@@ -8323,14 +8323,14 @@ ctk_event_controller_key_get_type
 
 <SECTION>
 <FILE>ctkgesture</FILE>
-<TITLE>GtkGesture</TITLE>
-GtkGesture
+<TITLE>CtkGesture</TITLE>
+CtkGesture
 ctk_gesture_get_device
 ctk_gesture_get_window
 ctk_gesture_set_window
 ctk_gesture_is_active
 ctk_gesture_is_recognized
-GtkEventSequenceState
+CtkEventSequenceState
 ctk_gesture_get_sequence_state
 ctk_gesture_set_sequence_state
 ctk_gesture_set_state
@@ -8364,8 +8364,8 @@ ctk_gesture_get_type
 
 <SECTION>
 <FILE>ctkgesturesingle</FILE>
-<TITLE>GtkGestureSingle</TITLE>
-GtkGestureSingle
+<TITLE>CtkGestureSingle</TITLE>
+CtkGestureSingle
 ctk_gesture_single_get_exclusive
 ctk_gesture_single_set_exclusive
 ctk_gesture_single_get_touch_only
@@ -8389,8 +8389,8 @@ ctk_gesture_single_get_type
 
 <SECTION>
 <FILE>ctkgesturedrag</FILE>
-<TITLE>GtkGestureDrag</TITLE>
-GtkGestureDrag
+<TITLE>CtkGestureDrag</TITLE>
+CtkGestureDrag
 ctk_gesture_drag_new
 ctk_gesture_drag_get_start_point
 ctk_gesture_drag_get_offset
@@ -8409,8 +8409,8 @@ ctk_gesture_drag_get_type
 
 <SECTION>
 <FILE>ctkgesturelongpress</FILE>
-<TITLE>GtkGestureLongPress</TITLE>
-GtkGestureLongPress
+<TITLE>CtkGestureLongPress</TITLE>
+CtkGestureLongPress
 ctk_gesture_long_press_new
 
 <SUBSECTION Standard>
@@ -8427,8 +8427,8 @@ ctk_gesture_long_press_get_type
 
 <SECTION>
 <FILE>ctkgesturemultipress</FILE>
-<TITLE>GtkGestureMultiPress</TITLE>
-GtkGestureMultiPress
+<TITLE>CtkGestureMultiPress</TITLE>
+CtkGestureMultiPress
 ctk_gesture_multi_press_new
 ctk_gesture_multi_press_set_area
 ctk_gesture_multi_press_get_area
@@ -8447,9 +8447,9 @@ ctk_gesture_multi_press_get_type
 
 <SECTION>
 <FILE>ctkgesturepan</FILE>
-<TITLE>GtkGesturePan</TITLE>
-GtkGesturePan
-GtkPanDirection
+<TITLE>CtkGesturePan</TITLE>
+CtkGesturePan
+CtkPanDirection
 ctk_gesture_pan_new
 ctk_gesture_pan_get_orientation
 ctk_gesture_pan_set_orientation
@@ -8468,8 +8468,8 @@ ctk_gesture_pan_get_type
 
 <SECTION>
 <FILE>ctkgestureswipe</FILE>
-<TITLE>GtkGestureSwipe</TITLE>
-GtkGestureSwipe
+<TITLE>CtkGestureSwipe</TITLE>
+CtkGestureSwipe
 ctk_gesture_swipe_new
 ctk_gesture_swipe_get_velocity
 
@@ -8487,8 +8487,8 @@ ctk_gesture_swipe_get_type
 
 <SECTION>
 <FILE>ctkgesturerotate</FILE>
-<TITLE>GtkGestureRotate</TITLE>
-GtkGestureRotate
+<TITLE>CtkGestureRotate</TITLE>
+CtkGestureRotate
 ctk_gesture_rotate_new
 ctk_gesture_rotate_get_angle_delta
 
@@ -8506,8 +8506,8 @@ ctk_gesture_rotate_get_type
 
 <SECTION>
 <FILE>ctkgesturezoom</FILE>
-<TITLE>GtkGestureZoom</TITLE>
-GtkGestureZoom
+<TITLE>CtkGestureZoom</TITLE>
+CtkGestureZoom
 ctk_gesture_zoom_new
 ctk_gesture_zoom_get_scale_delta
 
@@ -8525,13 +8525,13 @@ ctk_gesture_zoom_get_type
 
 <SECTION>
 <FILE>ctkpadcontroller</FILE>
-<TITLE>GtkPadController</TITLE>
-GtkPadController
+<TITLE>CtkPadController</TITLE>
+CtkPadController
 ctk_pad_controller_new
 ctk_pad_controller_set_action_entries
 ctk_pad_controller_set_action
-GtkPadActionType
-GtkPadActionEntry
+CtkPadActionType
+CtkPadActionEntry
 
 <SUBSECTION Standard>
 CTK_TYPE_PAD_CONTROLLER
@@ -8547,8 +8547,8 @@ ctk_pad_controller_get_type
 
 <SECTION>
 <FILE>ctkgesturestylus</FILE>
-<TITLE>GtkGestureStylus</TITLE>
-GtkGestureStylus
+<TITLE>CtkGestureStylus</TITLE>
+CtkGestureStylus
 
 ctk_gesture_stylus_new
 ctk_gesture_stylus_get_axis
@@ -8563,7 +8563,7 @@ CTK_GESTURE_STYLUS_CLASS
 CTK_IS_GESTURE_STYLUS
 CTK_IS_GESTURE_STYLUS_CLASS
 CTK_GESTURE_STYLUS_GET_CLASS
-GtkGestureStylusClass
+CtkGestureStylusClass
 
 <SUBSECTION Private>
 ctk_gesture_stylus_get_type
@@ -8571,8 +8571,8 @@ ctk_gesture_stylus_get_type
 
 <SECTION>
 <FILE>ctkstacksidebar</FILE>
-GtkStackSidebar
-GtkStackSidebarClass
+CtkStackSidebar
+CtkStackSidebarClass
 ctk_stack_sidebar_new
 ctk_stack_sidebar_set_stack
 ctk_stack_sidebar_get_stack
@@ -8586,14 +8586,14 @@ CTK_IS_STACK_SIDEBAR_CLASS
 CTK_STACK_SIDEBAR_GET_CLASS
 
 <SUBSECTION Private>
-GtkStackSidebarPrivate
+CtkStackSidebarPrivate
 ctk_stack_sidebar_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkglarea</FILE>
-GtkGLArea
-GtkGLAreaClass
+CtkGLArea
+CtkGLAreaClass
 ctk_gl_area_new
 ctk_gl_area_get_context
 ctk_gl_area_make_current
@@ -8627,7 +8627,7 @@ ctk_gl_area_get_type
 
 <SECTION>
 <FILE>ctkshortcutswindow</FILE>
-GtkShortcutsWindow
+CtkShortcutsWindow
 <SUBSECTION Standard>
 CTK_TYPE_SHORTCUTS_WINDOW
 CTK_SHORTCUTS_WINDOW
@@ -8636,13 +8636,13 @@ CTK_SHORTCUTS_WINDOW_CLASS
 CTK_IS_SHORTCUTS_WINDOW_CLASS
 CTK_GET_SHORTCUTS_WINDOW_CLASS
 <SUBSECTION Private>
-GtkShortcutsWindowClass
+CtkShortcutsWindowClass
 ctk_shortcuts_window_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkshortcutssection</FILE>
-GtkShortcutsSection
+CtkShortcutsSection
 <SUBSECTION Standard>
 CTK_TYPE_SHORTCUTS_SECTION
 CTK_SHORTCUTS_SECTION
@@ -8651,13 +8651,13 @@ CTK_SHORTCUTS_SECTION_CLASS
 CTK_IS_SHORTCUTS_SECTION_CLASS
 CTK_GET_SHORTCUTS_SECTION_CLASS
 <SUBSECTION Private>
-GtkShortcutsSectionClass
+CtkShortcutsSectionClass
 ctk_shortcuts_section_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkshortcutsgroup</FILE>
-GtkShortcutsGroup
+CtkShortcutsGroup
 <SUBSECTION Standard>
 CTK_TYPE_SHORTCUTS_GROUP
 CTK_SHORTCUTS_GROUP
@@ -8666,14 +8666,14 @@ CTK_SHORTCUTS_GROUP_CLASS
 CTK_IS_SHORTCUTS_GROUP_CLASS
 CTK_GET_SHORTCUTS_GROUP_CLASS
 <SUBSECTION Private>
-GtkShortcutsGroupClass
+CtkShortcutsGroupClass
 ctk_shortcuts_group_get_type
 </SECTION>
 
 <SECTION>
 <FILE>ctkshortcutsshortcut</FILE>
-GtkShortcutsShortcut
-GtkShortcutType
+CtkShortcutsShortcut
+CtkShortcutType
 <SUBSECTION Standard>
 CTK_TYPE_SHORTCUTS_SHORTCUT
 CTK_SHORTCUTS_SHORTCUT
@@ -8682,6 +8682,6 @@ CTK_SHORTCUTS_SHORTCUT_CLASS
 CTK_IS_SHORTCUTS_SHORTCUT_CLASS
 CTK_GET_SHORTCUTS_SHORTCUT_CLASS
 <SUBSECTION Private>
-GtkShortcutsShortcutClass
+CtkShortcutsShortcutClass
 ctk_shortcuts_shortcut_get_type
 </SECTION>

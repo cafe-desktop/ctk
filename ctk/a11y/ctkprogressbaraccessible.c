@@ -26,7 +26,7 @@
 
 static void atk_value_interface_init (AtkValueIface  *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkProgressBarAccessible, ctk_progress_bar_accessible, CTK_TYPE_WIDGET_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (CtkProgressBarAccessible, ctk_progress_bar_accessible, CTK_TYPE_WIDGET_ACCESSIBLE,
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_VALUE, atk_value_interface_init))
 
 static void
@@ -42,7 +42,7 @@ static void
 ctk_progress_bar_accessible_notify_ctk (GObject    *obj,
                                         GParamSpec *pspec)
 {
-  GtkWidget *widget = CTK_WIDGET (obj);
+  CtkWidget *widget = CTK_WIDGET (obj);
   AtkObject *accessible;
 
   accessible = ctk_widget_get_accessible (widget);
@@ -54,10 +54,10 @@ ctk_progress_bar_accessible_notify_ctk (GObject    *obj,
 }
 
 static void
-ctk_progress_bar_accessible_class_init (GtkProgressBarAccessibleClass *klass)
+ctk_progress_bar_accessible_class_init (CtkProgressBarAccessibleClass *klass)
 {
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
-  GtkWidgetAccessibleClass *widget_class = (GtkWidgetAccessibleClass*)klass;
+  CtkWidgetAccessibleClass *widget_class = (CtkWidgetAccessibleClass*)klass;
 
   widget_class->notify_ctk = ctk_progress_bar_accessible_notify_ctk;
 
@@ -65,7 +65,7 @@ ctk_progress_bar_accessible_class_init (GtkProgressBarAccessibleClass *klass)
 }
 
 static void
-ctk_progress_bar_accessible_init (GtkProgressBarAccessible *bar)
+ctk_progress_bar_accessible_init (CtkProgressBarAccessible *bar)
 {
 }
 
@@ -73,7 +73,7 @@ static void
 ctk_progress_bar_accessible_get_current_value (AtkValue *obj,
                                                GValue   *value)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
 
@@ -105,7 +105,7 @@ ctk_progress_bar_accessible_get_value_and_text (AtkValue  *obj,
                                                 gdouble   *value,
                                                 gchar    **text)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
 

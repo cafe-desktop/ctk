@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="ctk30">
-  <object class="GtkListStore" id="model">
+  <object class="CtkListStore" id="model">
     <columns>
       <column type="gchararray"/>
       <column type="gchararray"/>
@@ -11,17 +11,17 @@
       <column type="gchararray"/>
     </columns>
   </object>
-  <template class="GtkInspectorPropList" parent="GtkBox">
+  <template class="CtkInspectorPropList" parent="CtkBox">
     <property name="orientation">vertical</property>
     <signal name="hierarchy-changed" handler="hierarchy_changed"/>
     <child>
-      <object class="GtkScrolledWindow">
+      <object class="CtkScrolledWindow">
         <property name="visible">True</property>
         <property name="expand">True</property>
         <property name="hscrollbar-policy">never</property>
         <property name="vscrollbar-policy">automatic</property>
         <child>
-          <object class="GtkTreeView" id="tree">
+          <object class="CtkTreeView" id="tree">
             <property name="visible">True</property>
             <property name="model">model</property>
             <property name="tooltip-column">4</property>
@@ -30,12 +30,12 @@
             <property name="enable-grid-lines">vertical</property>
             <signal name="row-activated" handler="row_activated"/>
             <child>
-              <object class="GtkTreeViewColumn">
+              <object class="CtkTreeViewColumn">
                 <property name="title" translatable="yes">Property</property>
                 <property name="resizable">True</property>
                 <property name="sort-column-id">0</property>
                 <child>
-                  <object class="GtkCellRendererText">
+                  <object class="CtkCellRendererText">
                     <property name="scale">0.8</property>
                   </object>
                   <attributes>
@@ -46,11 +46,11 @@
               </object>
             </child>
             <child>
-              <object class="GtkTreeViewColumn">
+              <object class="CtkTreeViewColumn">
                 <property name="title" translatable="yes">Value</property>
                 <property name="resizable">True</property>
                 <child>
-                  <object class="GtkCellRendererText">
+                  <object class="CtkCellRendererText">
                     <property name="scale">0.8</property>
                     <property name="editable">False</property>
                     <property name="width-chars">20</property>
@@ -64,11 +64,11 @@
               </object>
             </child>
             <child>
-              <object class="GtkTreeViewColumn">
+              <object class="CtkTreeViewColumn">
                 <property name="title" translatable="yes">Type</property>
                 <property name="resizable">True</property>
                 <child>
-                  <object class="GtkCellRendererText">
+                  <object class="CtkCellRendererText">
                     <property name="scale">0.8</property>
                     <property name="editable">False</property>
                     <property name="width-chars">20</property>
@@ -82,11 +82,11 @@
               </object>
             </child>
             <child>
-              <object class="GtkTreeViewColumn" id="attribute_column">
+              <object class="CtkTreeViewColumn" id="attribute_column">
                 <property name="title" translatable="yes">Attribute</property>
                 <property name="resizable">True</property>
                 <child>
-                  <object class="GtkCellRendererText">
+                  <object class="CtkCellRendererText">
                     <property name="scale">0.8</property>
                     <property name="editable">False</property>
                   </object>
@@ -98,11 +98,11 @@
               </object>
             </child>
             <child>
-              <object class="GtkTreeViewColumn">
+              <object class="CtkTreeViewColumn">
                 <property name="title" translatable="yes">Defined At</property>
                 <property name="sort-column-id">2</property>
                 <child>
-                  <object class="GtkCellRendererText">
+                  <object class="CtkCellRendererText">
                     <property name="scale">0.8</property>
                   </object>
                   <attributes>

@@ -21,7 +21,7 @@
 #include <glib/gi18n-lib.h>
 #include "ctkbooleancellaccessible.h"
 
-struct _GtkBooleanCellAccessiblePrivate
+struct _CtkBooleanCellAccessiblePrivate
 {
   gboolean cell_value;
   gboolean cell_sensitive;
@@ -88,15 +88,15 @@ ctk_boolean_cell_accessible_action_interface_init (AtkActionIface *iface)
 }
 
 
-G_DEFINE_TYPE_WITH_CODE (GtkBooleanCellAccessible, ctk_boolean_cell_accessible, CTK_TYPE_RENDERER_CELL_ACCESSIBLE,
-                         G_ADD_PRIVATE (GtkBooleanCellAccessible)
+G_DEFINE_TYPE_WITH_CODE (CtkBooleanCellAccessible, ctk_boolean_cell_accessible, CTK_TYPE_RENDERER_CELL_ACCESSIBLE,
+                         G_ADD_PRIVATE (CtkBooleanCellAccessible)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_ACTION, ctk_boolean_cell_accessible_action_interface_init))
 
 
 static AtkStateSet *
 ctk_boolean_cell_accessible_ref_state_set (AtkObject *accessible)
 {
-  GtkBooleanCellAccessible *cell = CTK_BOOLEAN_CELL_ACCESSIBLE (accessible);
+  CtkBooleanCellAccessible *cell = CTK_BOOLEAN_CELL_ACCESSIBLE (accessible);
   AtkStateSet *state_set;
 
   state_set = ATK_OBJECT_CLASS (ctk_boolean_cell_accessible_parent_class)->ref_state_set (accessible);
@@ -113,13 +113,13 @@ ctk_boolean_cell_accessible_ref_state_set (AtkObject *accessible)
 }
 
 static void
-ctk_boolean_cell_accessible_update_cache (GtkCellAccessible *cell,
+ctk_boolean_cell_accessible_update_cache (CtkCellAccessible *cell,
                                           gboolean            emit_signal)
 {
-  GtkBooleanCellAccessible *boolean_cell = CTK_BOOLEAN_CELL_ACCESSIBLE (cell);
+  CtkBooleanCellAccessible *boolean_cell = CTK_BOOLEAN_CELL_ACCESSIBLE (cell);
   gboolean active;
   gboolean sensitive;
-  GtkCellRenderer *renderer;
+  CtkCellRenderer *renderer;
 
   g_object_get (cell, "renderer", &renderer, NULL);
   g_object_get (renderer,
@@ -146,9 +146,9 @@ ctk_boolean_cell_accessible_update_cache (GtkCellAccessible *cell,
 }
 
 static void
-ctk_boolean_cell_accessible_class_init (GtkBooleanCellAccessibleClass *klass)
+ctk_boolean_cell_accessible_class_init (CtkBooleanCellAccessibleClass *klass)
 {
-  GtkCellAccessibleClass *cell_class = CTK_CELL_ACCESSIBLE_CLASS (klass);
+  CtkCellAccessibleClass *cell_class = CTK_CELL_ACCESSIBLE_CLASS (klass);
   AtkObjectClass *atkobject_class = ATK_OBJECT_CLASS (klass);
 
   atkobject_class->ref_state_set = ctk_boolean_cell_accessible_ref_state_set;
@@ -157,7 +157,7 @@ ctk_boolean_cell_accessible_class_init (GtkBooleanCellAccessibleClass *klass)
 }
 
 static void
-ctk_boolean_cell_accessible_init (GtkBooleanCellAccessible *cell)
+ctk_boolean_cell_accessible_init (CtkBooleanCellAccessible *cell)
 {
   cell->priv = ctk_boolean_cell_accessible_get_instance_private (cell);
 }

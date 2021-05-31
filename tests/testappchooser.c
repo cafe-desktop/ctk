@@ -21,15 +21,15 @@
 #include <stdlib.h>
 #include <ctk/ctk.h>
 
-static GtkWidget *toplevel;
+static CtkWidget *toplevel;
 static GFile *file;
-static GtkWidget *grid, *file_l, *open;
-static GtkWidget *radio_file, *radio_content, *dialog;
-static GtkWidget *app_chooser_widget;
-static GtkWidget *def, *recommended, *fallback, *other, *all;
+static CtkWidget *grid, *file_l, *open;
+static CtkWidget *radio_file, *radio_content, *dialog;
+static CtkWidget *app_chooser_widget;
+static CtkWidget *def, *recommended, *fallback, *other, *all;
 
 static void
-dialog_response (GtkDialog *d,
+dialog_response (CtkDialog *d,
                  gint       response_id,
                  gpointer   user_data)
 {
@@ -126,10 +126,10 @@ display_dialog (void)
 }
 
 static void
-button_clicked (GtkButton *b,
+button_clicked (CtkButton *b,
                 gpointer   user_data)
 {
-  GtkWidget *w;
+  CtkWidget *w;
   gchar *path;
 
   w = ctk_file_chooser_dialog_new ("Select file",
@@ -154,7 +154,7 @@ button_clicked (GtkButton *b,
 int
 main (int argc, char **argv)
 {
-  GtkWidget *w1;
+  CtkWidget *w1;
   gchar *path;
 
   ctk_init (&argc, &argv);

@@ -2103,7 +2103,7 @@ gdk_display_get_maximal_cursor_size (GdkDisplay *display,
  * Note that the pointer should normally be under the
  * control of the user. This function was added to cover
  * some rare use cases like keyboard navigation support
- * for the color picker in the #GtkColorSelectionDialog.
+ * for the color picker in the #CtkColorSelectionDialog.
  *
  * Since: 2.8
  *
@@ -2139,7 +2139,7 @@ _gdk_display_get_next_serial (GdkDisplay *display)
  * windows.
  *
  * GTK+ will call this function automatically after opening the first
- * #GtkWindow unless ctk_window_set_auto_startup_notification() is called
+ * #CtkWindow unless ctk_window_set_auto_startup_notification() is called
  * to disable that feature.
  *
  * Since: 2.2
@@ -2158,7 +2158,7 @@ gdk_notify_startup_complete (void)
  * Indicates to the GUI environment that the application has
  * finished loading, using a given identifier.
  *
- * GTK+ will call this function automatically for #GtkWindow
+ * GTK+ will call this function automatically for #CtkWindow
  * with custom startup-notification identifier unless
  * ctk_window_set_auto_startup_notification() is called to
  * disable that feature.
@@ -2184,7 +2184,7 @@ gdk_notify_startup_complete_with_id (const gchar* startup_id)
  * Indicates to the GUI environment that the application has
  * finished loading, using a given identifier.
  *
- * GTK+ will call this function automatically for #GtkWindow
+ * GTK+ will call this function automatically for #CtkWindow
  * with custom startup-notification identifier unless
  * ctk_window_set_auto_startup_notification() is called to
  * disable that feature.

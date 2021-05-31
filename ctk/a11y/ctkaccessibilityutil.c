@@ -136,7 +136,7 @@ atk_key_event_from_gdk_event_key (GdkEventKey       *key,
 }
 
 gboolean
-_ctk_accessibility_key_snooper (GtkWidget   *widget,
+_ctk_accessibility_key_snooper (CtkWidget   *widget,
                                 GdkEventKey *event)
 {
   GSList *l;

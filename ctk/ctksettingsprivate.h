@@ -26,19 +26,19 @@ G_BEGIN_DECLS
 #define DEFAULT_THEME_NAME      "Adwaita"
 #define DEFAULT_ICON_THEME      "Adwaita"
 
-void                _ctk_settings_set_property_value_from_rc (GtkSettings            *settings,
+void                _ctk_settings_set_property_value_from_rc (CtkSettings            *settings,
                                                               const gchar            *name,
-                                                              const GtkSettingsValue *svalue);
-void                _ctk_settings_reset_rc_values            (GtkSettings            *settings);
+                                                              const CtkSettingsValue *svalue);
+void                _ctk_settings_reset_rc_values            (CtkSettings            *settings);
 
 void                _ctk_settings_handle_event               (GdkEventSetting        *event);
-GtkRcPropertyParser _ctk_rc_property_parser_from_type        (GType                   type);
-gboolean            _ctk_settings_parse_convert              (GtkRcPropertyParser     parser,
+CtkRcPropertyParser _ctk_rc_property_parser_from_type        (GType                   type);
+gboolean            _ctk_settings_parse_convert              (CtkRcPropertyParser     parser,
                                                               const GValue           *src_value,
                                                               GParamSpec             *pspec,
                                                               GValue                 *dest_value);
-GdkScreen          *_ctk_settings_get_screen                 (GtkSettings            *settings);
-GtkStyleCascade    *_ctk_settings_get_style_cascade          (GtkSettings            *settings,
+GdkScreen          *_ctk_settings_get_screen                 (CtkSettings            *settings);
+CtkStyleCascade    *_ctk_settings_get_style_cascade          (CtkSettings            *settings,
                                                               gint                    scale);
 
 typedef enum
@@ -47,16 +47,16 @@ typedef enum
   CTK_SETTINGS_SOURCE_THEME,
   CTK_SETTINGS_SOURCE_XSETTING,
   CTK_SETTINGS_SOURCE_APPLICATION
-} GtkSettingsSource;
+} CtkSettingsSource;
 
-GtkSettingsSource  _ctk_settings_get_setting_source (GtkSettings *settings,
+CtkSettingsSource  _ctk_settings_get_setting_source (CtkSettings *settings,
                                                      const gchar *name);
 
-gboolean ctk_settings_get_enable_animations  (GtkSettings *settings);
-gint     ctk_settings_get_dnd_drag_threshold (GtkSettings *settings);
-const gchar *ctk_settings_get_font_family    (GtkSettings *settings);
-gint         ctk_settings_get_font_size      (GtkSettings *settings);
-gboolean     ctk_settings_get_font_size_is_absolute (GtkSettings *settings);
+gboolean ctk_settings_get_enable_animations  (CtkSettings *settings);
+gint     ctk_settings_get_dnd_drag_threshold (CtkSettings *settings);
+const gchar *ctk_settings_get_font_family    (CtkSettings *settings);
+gint         ctk_settings_get_font_size      (CtkSettings *settings);
+gboolean     ctk_settings_get_font_size_is_absolute (CtkSettings *settings);
 
 G_END_DECLS
 

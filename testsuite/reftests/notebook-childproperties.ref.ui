@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkNotebook" id="notebook1">
+      <object class="CtkNotebook" id="notebook1">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <child>
-          <object class="GtkLabel" id="label4">
+          <object class="CtkLabel" id="label4">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">page 1</property>
           </object>
         </child>
         <child type="tab">
-          <object class="GtkLabel" id="label1">
+          <object class="CtkLabel" id="label1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">page 1</property>
           </object>
         </child>
         <child>
-          <object class="GtkLabel" id="label5">
+          <object class="CtkLabel" id="label5">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">page 2</property>
@@ -33,7 +33,7 @@
           </packing>
         </child>
         <child type="tab">
-          <object class="GtkLabel" id="label2">
+          <object class="CtkLabel" id="label2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">page 2</property>
@@ -43,7 +43,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label6">
+          <object class="CtkLabel" id="label6">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">page 3</property>
@@ -53,7 +53,7 @@
           </packing>
         </child>
         <child type="tab">
-          <object class="GtkLabel" id="label3">
+          <object class="CtkLabel" id="label3">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">page 3</property>

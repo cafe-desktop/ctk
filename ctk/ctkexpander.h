@@ -31,38 +31,38 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_EXPANDER            (ctk_expander_get_type ())
-#define CTK_EXPANDER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_EXPANDER, GtkExpander))
-#define CTK_EXPANDER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_EXPANDER, GtkExpanderClass))
+#define CTK_EXPANDER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_EXPANDER, CtkExpander))
+#define CTK_EXPANDER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_EXPANDER, CtkExpanderClass))
 #define CTK_IS_EXPANDER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_EXPANDER))
 #define CTK_IS_EXPANDER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_EXPANDER))
-#define CTK_EXPANDER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_EXPANDER, GtkExpanderClass))
+#define CTK_EXPANDER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_EXPANDER, CtkExpanderClass))
 
-typedef struct _GtkExpander        GtkExpander;
-typedef struct _GtkExpanderClass   GtkExpanderClass;
-typedef struct _GtkExpanderPrivate GtkExpanderPrivate;
+typedef struct _CtkExpander        CtkExpander;
+typedef struct _CtkExpanderClass   CtkExpanderClass;
+typedef struct _CtkExpanderPrivate CtkExpanderPrivate;
 
-struct _GtkExpander
+struct _CtkExpander
 {
-  GtkBin              bin;
+  CtkBin              bin;
 
-  GtkExpanderPrivate *priv;
+  CtkExpanderPrivate *priv;
 };
 
 /**
- * GtkExpanderClass:
+ * CtkExpanderClass:
  * @parent_class: The parent class.
  * @activate: Keybinding signal is emitted when the user hits the Enter key.
  */
-struct _GtkExpanderClass
+struct _CtkExpanderClass
 {
-  GtkBinClass    parent_class;
+  CtkBinClass    parent_class;
 
   /*< public >*/
 
   /* Key binding signal; to get notification on the expansion
    * state connect to notify:expanded.
    */
-  void        (* activate) (GtkExpander *expander);
+  void        (* activate) (CtkExpander *expander);
 
   /*< private >*/
 
@@ -77,56 +77,56 @@ GDK_AVAILABLE_IN_ALL
 GType                 ctk_expander_get_type            (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget            *ctk_expander_new                 (const gchar *label);
+CtkWidget            *ctk_expander_new                 (const gchar *label);
 GDK_AVAILABLE_IN_ALL
-GtkWidget            *ctk_expander_new_with_mnemonic   (const gchar *label);
+CtkWidget            *ctk_expander_new_with_mnemonic   (const gchar *label);
 
 GDK_AVAILABLE_IN_ALL
-void                  ctk_expander_set_expanded        (GtkExpander *expander,
+void                  ctk_expander_set_expanded        (CtkExpander *expander,
                                                         gboolean     expanded);
 GDK_AVAILABLE_IN_ALL
-gboolean              ctk_expander_get_expanded        (GtkExpander *expander);
+gboolean              ctk_expander_get_expanded        (CtkExpander *expander);
 
 /* Spacing between the expander/label and the child */
 GDK_AVAILABLE_IN_ALL
-void                  ctk_expander_set_spacing         (GtkExpander *expander,
+void                  ctk_expander_set_spacing         (CtkExpander *expander,
                                                         gint         spacing);
 GDK_AVAILABLE_IN_ALL
-gint                  ctk_expander_get_spacing         (GtkExpander *expander);
+gint                  ctk_expander_get_spacing         (CtkExpander *expander);
 
 GDK_AVAILABLE_IN_ALL
-void                  ctk_expander_set_label           (GtkExpander *expander,
+void                  ctk_expander_set_label           (CtkExpander *expander,
                                                         const gchar *label);
 GDK_AVAILABLE_IN_ALL
-const gchar *         ctk_expander_get_label           (GtkExpander *expander);
+const gchar *         ctk_expander_get_label           (CtkExpander *expander);
 
 GDK_AVAILABLE_IN_ALL
-void                  ctk_expander_set_use_underline   (GtkExpander *expander,
+void                  ctk_expander_set_use_underline   (CtkExpander *expander,
                                                         gboolean     use_underline);
 GDK_AVAILABLE_IN_ALL
-gboolean              ctk_expander_get_use_underline   (GtkExpander *expander);
+gboolean              ctk_expander_get_use_underline   (CtkExpander *expander);
 
 GDK_AVAILABLE_IN_ALL
-void                  ctk_expander_set_use_markup      (GtkExpander *expander,
+void                  ctk_expander_set_use_markup      (CtkExpander *expander,
                                                         gboolean    use_markup);
 GDK_AVAILABLE_IN_ALL
-gboolean              ctk_expander_get_use_markup      (GtkExpander *expander);
+gboolean              ctk_expander_get_use_markup      (CtkExpander *expander);
 
 GDK_AVAILABLE_IN_ALL
-void                  ctk_expander_set_label_widget    (GtkExpander *expander,
-						        GtkWidget   *label_widget);
+void                  ctk_expander_set_label_widget    (CtkExpander *expander,
+						        CtkWidget   *label_widget);
 GDK_AVAILABLE_IN_ALL
-GtkWidget            *ctk_expander_get_label_widget    (GtkExpander *expander);
+CtkWidget            *ctk_expander_get_label_widget    (CtkExpander *expander);
 GDK_AVAILABLE_IN_ALL
-void                  ctk_expander_set_label_fill      (GtkExpander *expander,
+void                  ctk_expander_set_label_fill      (CtkExpander *expander,
 						        gboolean     label_fill);
 GDK_AVAILABLE_IN_ALL
-gboolean              ctk_expander_get_label_fill      (GtkExpander *expander);
+gboolean              ctk_expander_get_label_fill      (CtkExpander *expander);
 GDK_AVAILABLE_IN_3_2
-void                  ctk_expander_set_resize_toplevel (GtkExpander *expander,
+void                  ctk_expander_set_resize_toplevel (CtkExpander *expander,
                                                         gboolean     resize_toplevel);
 GDK_AVAILABLE_IN_3_2
-gboolean              ctk_expander_get_resize_toplevel (GtkExpander *expander);
+gboolean              ctk_expander_get_resize_toplevel (CtkExpander *expander);
 
 G_END_DECLS
 

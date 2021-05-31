@@ -26,40 +26,40 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CSS_TRANSITION           (_ctk_css_transition_get_type ())
-#define CTK_CSS_TRANSITION(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_TRANSITION, GtkCssTransition))
-#define CTK_CSS_TRANSITION_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_TRANSITION, GtkCssTransitionClass))
+#define CTK_CSS_TRANSITION(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_TRANSITION, CtkCssTransition))
+#define CTK_CSS_TRANSITION_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_TRANSITION, CtkCssTransitionClass))
 #define CTK_IS_CSS_TRANSITION(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_TRANSITION))
 #define CTK_IS_CSS_TRANSITION_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_TRANSITION))
-#define CTK_CSS_TRANSITION_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_TRANSITION, GtkCssTransitionClass))
+#define CTK_CSS_TRANSITION_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_TRANSITION, CtkCssTransitionClass))
 
-typedef struct _GtkCssTransition           GtkCssTransition;
-typedef struct _GtkCssTransitionClass      GtkCssTransitionClass;
+typedef struct _CtkCssTransition           CtkCssTransition;
+typedef struct _CtkCssTransitionClass      CtkCssTransitionClass;
 
-struct _GtkCssTransition
+struct _CtkCssTransition
 {
-  GtkStyleAnimation parent;
+  CtkStyleAnimation parent;
 
   guint               property;
-  GtkCssValue        *start;
-  GtkCssValue        *ease;
-  GtkProgressTracker  tracker;
+  CtkCssValue        *start;
+  CtkCssValue        *ease;
+  CtkProgressTracker  tracker;
 };
 
-struct _GtkCssTransitionClass
+struct _CtkCssTransitionClass
 {
-  GtkStyleAnimationClass parent_class;
+  CtkStyleAnimationClass parent_class;
 };
 
 GType                   _ctk_css_transition_get_type        (void) G_GNUC_CONST;
 
-GtkStyleAnimation *     _ctk_css_transition_new             (guint               property,
-                                                             GtkCssValue        *start,
-                                                             GtkCssValue        *ease,
+CtkStyleAnimation *     _ctk_css_transition_new             (guint               property,
+                                                             CtkCssValue        *start,
+                                                             CtkCssValue        *ease,
                                                              gint64              timestamp,
                                                              gint64              duration_us,
                                                              gint64              delay_us);
 
-guint                   _ctk_css_transition_get_property    (GtkCssTransition   *transition);
+guint                   _ctk_css_transition_get_property    (CtkCssTransition   *transition);
 
 G_END_DECLS
 

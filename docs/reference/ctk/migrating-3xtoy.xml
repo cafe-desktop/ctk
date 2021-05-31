@@ -59,14 +59,14 @@
     </para>
 
     <para>
-      GtkNotebook has been changed to destroy its action widgets when
+      CtkNotebook has been changed to destroy its action widgets when
       it gets destroyed itself. If your application is using action
       widgets in notebooks, you may have to adjust your code to take
       this into account.
     </para>
 
     <para>
-      GtkApplication no longer uses the ctk_ mainloop wrappers, so
+      CtkApplication no longer uses the ctk_ mainloop wrappers, so
       it is no longer possible to use ctk_main_quit() to stop it.
     </para>
 
@@ -123,10 +123,10 @@
     <title>Changes in GTK+ 3.8</title>
 
     <para>
-      GtkIconInfo has changed from being a boxed type to a GObject.
+      CtkIconInfo has changed from being a boxed type to a GObject.
       This is technically an ABI change, but basically all existing code
       will keep working if its used as a boxed type, and it is not
-      possible to instantiate GtkIconInfos outside GTK+, so this is
+      possible to instantiate CtkIconInfos outside GTK+, so this is
       not expected to be a big problem.
     </para>
   </section>
@@ -142,15 +142,15 @@
     </para>
 
     <para>
-      The behavior of GtkBox::expand has been changed to never propagate
+      The behavior of CtkBox::expand has been changed to never propagate
       up. Previously, this was happening inconsistently. If you want the
-      expand to propagate, use the GtkWidget h/v expand properties.
+      expand to propagate, use the CtkWidget h/v expand properties.
       If you experience sizing problems with widgets in ported code,
       carefully check the expand and fill flags of your boxes.
     </para>
 
     <para>
-      GtkBin no longer provides default implementations for
+      CtkBin no longer provides default implementations for
       get_height_for_width, subclasses now have to provide their own
       implementation if they need height-for-width functionality.
     </para>
@@ -168,7 +168,7 @@
       one expose event per GdkWindow, each with a separate cairo_t. Now we
       only handle the expose event on the toplevel and reuse the same
       cairo_t (with the right translation and clipping) for the entire
-      widget hierarchy, recursing down via the GtkWidget::draw signal.
+      widget hierarchy, recursing down via the CtkWidget::draw signal.
       Having all rendering in the same call tree allows effects like
       opacity and offscreen rendering of entire widget sub-hierarchies.
       Generally this should not require any changes in widgets, but
@@ -177,12 +177,12 @@
     </para>
 
     <para>
-      The Gtk+ scrolling implementation has changed. gdk_window_scroll()
+      The Ctk+ scrolling implementation has changed. gdk_window_scroll()
       and gdk_window_move_region() no longer copy the region on the
       window, but rather invalidate the entire scrolled region. This is
       slightly slower, but allowed us to implement a offscreen surface
       scrolling method which better fits modern hardware. Most scrolling
-      widgets in Gtk+ have been converted to use this model for scrolling,
+      widgets in Ctk+ have been converted to use this model for scrolling,
       but external widgets implementing scrolling using GdkWindow may see
       some slowdown.
     </para>
@@ -192,15 +192,15 @@
     <title>Changes in GTK+ 3.12</title>
 
     <para>
-      GtkWidget had a hack where if opacity is 0.999 we set up an opacity
+      CtkWidget had a hack where if opacity is 0.999 we set up an opacity
       group when rendering the widget. This is no longer needed in 3.10,
-      and GtkStack doesn't use it anymore. It has been removed in 3.12.
+      and CtkStack doesn't use it anymore. It has been removed in 3.12.
       GdStack is using it, so applications should be ported from GdStack
-      to GtkStack in 3.12.
+      to CtkStack in 3.12.
     </para>
 
     <para>
-      GtkHeaderBar in 3.10 was not ordering its pack-end children in
+      CtkHeaderBar in 3.10 was not ordering its pack-end children in
       the right way. This has been fixed in 3.12. Applications which
       pack multiple widgets at the end of a headerbar will have to
       be updated.
@@ -260,10 +260,10 @@
     </para>
 
     <para>
-      GtkTextView is now using a pixel-cache internally, and is drawing
+      CtkTextView is now using a pixel-cache internally, and is drawing
       a background underneath the text. This can cause problems for applications
       which assumed that they could draw things below and above the text
-      by chaining up in the ::draw implementation of their GtkTextView subclass.
+      by chaining up in the ::draw implementation of their CtkTextView subclass.
       As a short-term workaround, you can make the application apply a
       custom theme to the text view with a transparent background. For
       a proper fix, use the new ::draw_layer vfunc.
@@ -285,7 +285,7 @@
 
     <para>
       The introspection annotations for the x and y parameters of
-      GtkMenuPositionFunc have been corrected from 'out' to 'inout'.
+      CtkMenuPositionFunc have been corrected from 'out' to 'inout'.
       If you are using such a function from language-bindings, this
       may require adjustments.
     </para>
@@ -299,15 +299,15 @@
     </para>
 
     <para>
-      The GtkScrollable interface has gained a new vfunc, get_border,
+      The CtkScrollable interface has gained a new vfunc, get_border,
       that is used to position overshoot and undershoot indications that
-      are drawn over the content by GtkScrolledWindow. Unless your scrollable
+      are drawn over the content by CtkScrolledWindow. Unless your scrollable
       has non-scrolling parts similar to treeview headers, there is no need
       to implement this vfunc.
     </para>
 
     <para>
-      The GtkSearchEntry widget has gained a number of new signals that
+      The CtkSearchEntry widget has gained a number of new signals that
       are emitted when certain key sequences are seen. In particular, it
       now handles the Escape key and emits ::stop-search. Applications that
       expect to handle Escape themselves will need to be updated.
@@ -318,7 +318,7 @@
     <title>Changes in GTK+ 3.18</title>
 
     <para>
-      The GtkListBox model support that was introduced in 3.16 has been
+      The CtkListBox model support that was introduced in 3.16 has been
       changed to no longer call ctk_widget_show_all on rows created by
       the create_widget_func. You need to manage the visibility of child
       widgets yourself in your create_widget_func.
@@ -326,7 +326,7 @@
 
     <para>
       The alpha component of foreground colors that are applied to
-      GtkCellRendererText is no longer ignored. If you don't want your
+      CtkCellRendererText is no longer ignored. If you don't want your
       text to be translucent, use opaque colors.
     </para>
   </section>
@@ -364,30 +364,30 @@
     </para>
 
     <para>
-      Geometry handling in GtkWindow has been removed. If you are using the
+      Geometry handling in CtkWindow has been removed. If you are using the
       functions ctk_window_resize_to_geometry, ctk_window_set_default_geometry,
       ctk_window_parse_geometry or ctk_window_set_geometry_hints, you may need
       to make some changes to your code.
     </para>
 
     <para>
-      GtkDrawingArea used to implicitly render the theme background before
+      CtkDrawingArea used to implicitly render the theme background before
       calling the ::draw handler. This is no longer the case. If you rely
       on having a theme-provided background, call ctk_render_background()
       from your ::draw handler.
     </para>
 
     <para>
-      The GtkFileChooser interface prerequisite changed from GtkWidget
+      The CtkFileChooser interface prerequisite changed from CtkWidget
       to GObject, allowing non-widget implementations of this interface.
       This is a minor change in ABI, as applications are no longer guaranteed
-      that a GtkFileChooser also supports all GtkWidget methods. However, all
-      previously existing implementations still derive from GtkWidget, so no
+      that a CtkFileChooser also supports all CtkWidget methods. However, all
+      previously existing implementations still derive from CtkWidget, so no
       existing code should break.
     </para>
 
     <para>
-      The way in which GtkLevelBar determines the offset to apply was a bit
+      The way in which CtkLevelBar determines the offset to apply was a bit
       inconsistent in the past; this has been fixed. Applications that are using
       custom offsets should double-check that their levels look as expected.
     </para>
@@ -411,32 +411,32 @@
     </para>
 
     <para>
-      The #GtkSizeGroup:ignore-hidden property has not been working properly
+      The #CtkSizeGroup:ignore-hidden property has not been working properly
       for a long time, and we've not documented it as broken and deprecated.
       The recommended alternative for reserving space of widgets that are not
-      currently shown in the UI is to use a #GtkStack (with some 'filler'
-      widget, e.g. an empty #GtkBox, in another page).
+      currently shown in the UI is to use a #CtkStack (with some 'filler'
+      widget, e.g. an empty #CtkBox, in another page).
     </para>
 
     <para>
-      GtkHeaderBar now respects the hexpand property for its custom title
+      CtkHeaderBar now respects the hexpand property for its custom title
       widget and its packed children. This change may inadvertently cause the
       layout of those children to change, if they unintentionally had hexpand
       set before.
     </para>
 
     <para>
-      The behavior of the expand flag in #GtkTables #GtkAttachOptions has been
-       changed to (again) match the behavior in #GtkBox and in GTK+ 2.x. These
+      The behavior of the expand flag in #CtkTables #CtkAttachOptions has been
+       changed to (again) match the behavior in #CtkBox and in GTK+ 2.x. These
        options don't cause the table itself to expand.
      </para>
 
      <para>
-       The way GtkPopover behaved during a call to ctk_widget_hide() violated
+       The way CtkPopover behaved during a call to ctk_widget_hide() violated
        some of the internal assumptions GTK+ makes about widget visibility.
        ctk_popover_popup() and ctk_popover_popdown() have been introduced to
        show or hide the popover with a transition, while ctk_widget_show()
-       and ctk_widget_hide() on a GtkPopover now work the same way they do
+       and ctk_widget_hide() on a CtkPopover now work the same way they do
        on any other widget and immediately hide (or show) the popover.
      </para>
   </section>

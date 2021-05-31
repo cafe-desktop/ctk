@@ -11,7 +11,7 @@
 
 <refnamediv>
 <refname>Text Widget Overview</refname>
-<refpurpose>Overview of GtkTextBuffer, GtkTextView, and friends</refpurpose>
+<refpurpose>Overview of CtkTextBuffer, CtkTextView, and friends</refpurpose>
 </refnamediv>
 
 <refsect1>
@@ -19,8 +19,8 @@
 
 <para>
 GTK+ has an extremely powerful framework for multiline text editing.  The
-primary objects involved in the process are #GtkTextBuffer, which represents the 
-text being edited, and #GtkTextView, a widget which can display a #GtkTextBuffer. 
+primary objects involved in the process are #CtkTextBuffer, which represents the 
+text being edited, and #CtkTextView, a widget which can display a #CtkTextBuffer. 
 Each buffer can be displayed by any number of views.
 </para>
 
@@ -41,12 +41,12 @@ be called "bold" and make the text inside the tag bold. However, the tag
 concept is more general than that; tags don't have to affect appearance. They 
 can instead affect the behavior of mouse and key presses, "lock" a range of 
 text so the user can't edit it, or countless other things. A tag is 
-represented by a #GtkTextTag object. One #GtkTextTag can be applied to any 
+represented by a #CtkTextTag object. One #CtkTextTag can be applied to any 
 number of text ranges in any number of buffers.
 </para>
 
 <para>
-Each tag is stored in a #GtkTextTagTable. A tag table defines a set of
+Each tag is stored in a #CtkTextTagTable. A tag table defines a set of
 tags that can be used together. Each buffer has one tag table associated with
 it; only tags from that tag table can be used with the buffer. A single tag
 table can be shared between multiple buffers, however.
@@ -60,8 +60,8 @@ is convenient if you're creating tags on-the-fly).
 
 <para>
 Most text manipulation is accomplished with <firstterm>iterators</firstterm>,
-represented by a #GtkTextIter. An iterator represents a position between two 
-characters in the text buffer. #GtkTextIter is a struct designed to be 
+represented by a #CtkTextIter. An iterator represents a position between two 
+characters in the text buffer. #CtkTextIter is a struct designed to be 
 allocated on the stack; it's guaranteed to be copiable by value and never 
 contain any heap-allocated data. Iterators are not valid indefinitely; 
 whenever the buffer is modified in a way that affects the number of characters 
@@ -73,7 +73,7 @@ different number).
 
 <para>
 Because of this, iterators can't be used to preserve positions across buffer
-modifications. To preserve a position, the #GtkTextMark object is ideal. You
+modifications. To preserve a position, the #CtkTextMark object is ideal. You
 can think of a mark as an invisible cursor or insertion point; it floats in 
 the buffer, saving a position. If the text surrounding the mark is deleted, 
 the mark remains in the position the text once occupied; if text is inserted 
@@ -85,7 +85,7 @@ stays to the right of inserted text.
 
 <para>
 Like tags, marks can be either named or anonymous. There are two marks built-in
-to #GtkTextBuffer; these are named <literal>"insert"</literal> and 
+to #CtkTextBuffer; these are named <literal>"insert"</literal> and 
 <literal>"selection_bound"</literal> and refer to the insertion point and the 
 boundary of the selection which is not the insertion point, respectively. If 
 no text is selected, these two marks will be in the same position. You can 
@@ -119,10 +119,10 @@ considered a line separator.
 <title>Simple Example</title>
 
 <para>
-The simplest usage of #GtkTextView  might look like this:
+The simplest usage of #CtkTextView  might look like this:
 <informalexample><programlisting>
-  GtkWidget *view;
-  GtkTextBuffer *buffer;
+  CtkWidget *view;
+  CtkTextBuffer *buffer;
 
   view = ctk_text_view_new (<!-- -->);
 
@@ -148,20 +148,20 @@ displays after the widget is created with ctk_text_view_set_buffer().
 
 <para>
 
-The way to affect text attributes in #GtkTextView is to
+The way to affect text attributes in #CtkTextView is to
 apply tags that change the attributes for a region of text.
 For text features that come from the theme &mdash; such as font and
 foreground color &mdash; use CSS to override their default values.
 
 <informalexample><programlisting>
-  GtkWidget *view;
-  GtkTextBuffer *buffer;
-  GtkTextIter start, end;
+  CtkWidget *view;
+  CtkTextBuffer *buffer;
+  CtkTextIter start, end;
   PangoFontDescription *font_desc;
   GdkRGBA rgba;
-  GtkTextTag *tag;
-  GtkCssProvider *provider;
-  GtkStyleContext *context;
+  CtkTextTag *tag;
+  CtkCssProvider *provider;
+  CtkStyleContext *context;
 
   view = ctk_text_view_new (<!-- -->);
 
@@ -198,7 +198,7 @@ foreground color &mdash; use CSS to override their default values.
 
 <para>
 The <application>ctk-demo</application> application that comes with
-GTK+ contains more example code for #GtkTextView.
+GTK+ contains more example code for #CtkTextView.
 </para>
 
 </refsect1>

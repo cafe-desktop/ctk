@@ -1,7 +1,7 @@
 /* Pango/Rotated Text
  *
  * This demo shows how to use PangoCairo to draw rotated and transformed
- * text.  The right pane shows a rotated GtkLabel widget.
+ * text.  The right pane shows a rotated CtkLabel widget.
  *
  * In both cases, a custom PangoCairo shape renderer is installed to draw
  * a red heard using cairo drawing operations instead of the Unicode heart
@@ -89,7 +89,7 @@ create_fancy_attr_list_for_layout (PangoLayout *layout)
 }
 
 static gboolean
-rotated_text_draw (GtkWidget *widget,
+rotated_text_draw (CtkWidget *widget,
                    cairo_t   *cr,
                    gpointer   data)
 {
@@ -168,16 +168,16 @@ rotated_text_draw (GtkWidget *widget,
   return FALSE;
 }
 
-GtkWidget *
-do_rotated_text (GtkWidget *do_widget)
+CtkWidget *
+do_rotated_text (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkWidget *box;
-      GtkWidget *drawing_area;
-      GtkWidget *label;
+      CtkWidget *box;
+      CtkWidget *drawing_area;
+      CtkWidget *label;
       PangoLayout *layout;
       PangoAttrList *attrs;
 

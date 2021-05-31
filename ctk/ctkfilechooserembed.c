@@ -22,33 +22,33 @@
 #include "ctkintl.h"
 
 static void ctk_file_chooser_embed_class_init (gpointer g_iface);
-static void delegate_get_default_size         (GtkFileChooserEmbed *chooser_embed,
+static void delegate_get_default_size         (CtkFileChooserEmbed *chooser_embed,
 					       gint                *default_width,
 					       gint                *default_height);
-static gboolean delegate_should_respond       (GtkFileChooserEmbed *chooser_embed);
-static void delegate_initial_focus            (GtkFileChooserEmbed *chooser_embed);
-static void delegate_default_size_changed     (GtkFileChooserEmbed *chooser_embed,
+static gboolean delegate_should_respond       (CtkFileChooserEmbed *chooser_embed);
+static void delegate_initial_focus            (CtkFileChooserEmbed *chooser_embed);
+static void delegate_default_size_changed     (CtkFileChooserEmbed *chooser_embed,
 					       gpointer             data);
-static void delegate_response_requested       (GtkFileChooserEmbed *chooser_embed,
+static void delegate_response_requested       (CtkFileChooserEmbed *chooser_embed,
 					       gpointer             data);
 
-static GtkFileChooserEmbed *
-get_delegate (GtkFileChooserEmbed *receiver)
+static CtkFileChooserEmbed *
+get_delegate (CtkFileChooserEmbed *receiver)
 {
   return g_object_get_data (G_OBJECT (receiver), "ctk-file-chooser-embed-delegate");
 }
 
 /**
  * _ctk_file_chooser_embed_delegate_iface_init:
- * @iface: a #GtkFileChoserEmbedIface structure
+ * @iface: a #CtkFileChoserEmbedIface structure
  * 
  * An interface-initialization function for use in cases where an object is
- * simply delegating the methods, signals of the #GtkFileChooserEmbed interface
+ * simply delegating the methods, signals of the #CtkFileChooserEmbed interface
  * to another object.  _ctk_file_chooser_embed_set_delegate() must be called on
  * each instance of the object so that the delegate object can be found.
  **/
 void
-_ctk_file_chooser_embed_delegate_iface_init (GtkFileChooserEmbedIface *iface)
+_ctk_file_chooser_embed_delegate_iface_init (CtkFileChooserEmbedIface *iface)
 {
   iface->get_default_size = delegate_get_default_size;
   iface->should_respond = delegate_should_respond;
@@ -57,17 +57,17 @@ _ctk_file_chooser_embed_delegate_iface_init (GtkFileChooserEmbedIface *iface)
 
 /**
  * _ctk_file_chooser_embed_set_delegate:
- * @receiver: a GOobject implementing #GtkFileChooserEmbed
- * @delegate: another GObject implementing #GtkFileChooserEmbed
+ * @receiver: a GOobject implementing #CtkFileChooserEmbed
+ * @delegate: another GObject implementing #CtkFileChooserEmbed
  *
- * Establishes that calls on @receiver for #GtkFileChooser methods should be
- * delegated to @delegate, and that #GtkFileChooser signals emitted on @delegate
+ * Establishes that calls on @receiver for #CtkFileChooser methods should be
+ * delegated to @delegate, and that #CtkFileChooser signals emitted on @delegate
  * should be forwarded to @receiver. Must be used in conjunction with
  * _ctk_file_chooser_embed_delegate_iface_init().
  **/
 void
-_ctk_file_chooser_embed_set_delegate (GtkFileChooserEmbed *receiver,
-				      GtkFileChooserEmbed *delegate)
+_ctk_file_chooser_embed_set_delegate (CtkFileChooserEmbed *receiver,
+				      CtkFileChooserEmbed *delegate)
 {
   g_return_if_fail (CTK_IS_FILE_CHOOSER_EMBED (receiver));
   g_return_if_fail (CTK_IS_FILE_CHOOSER_EMBED (delegate));
@@ -83,7 +83,7 @@ _ctk_file_chooser_embed_set_delegate (GtkFileChooserEmbed *receiver,
 
 
 static void
-delegate_get_default_size (GtkFileChooserEmbed *chooser_embed,
+delegate_get_default_size (CtkFileChooserEmbed *chooser_embed,
 			   gint                *default_width,
 			   gint                *default_height)
 {
@@ -91,26 +91,26 @@ delegate_get_default_size (GtkFileChooserEmbed *chooser_embed,
 }
 
 static gboolean
-delegate_should_respond (GtkFileChooserEmbed *chooser_embed)
+delegate_should_respond (CtkFileChooserEmbed *chooser_embed)
 {
   return _ctk_file_chooser_embed_should_respond (get_delegate (chooser_embed));
 }
 
 static void
-delegate_initial_focus (GtkFileChooserEmbed *chooser_embed)
+delegate_initial_focus (CtkFileChooserEmbed *chooser_embed)
 {
   _ctk_file_chooser_embed_initial_focus (get_delegate (chooser_embed));
 }
 
 static void
-delegate_default_size_changed (GtkFileChooserEmbed *chooser_embed,
+delegate_default_size_changed (CtkFileChooserEmbed *chooser_embed,
 			       gpointer             data)
 {
   g_signal_emit_by_name (data, "default-size-changed");
 }
 
 static void
-delegate_response_requested (GtkFileChooserEmbed *chooser_embed,
+delegate_response_requested (CtkFileChooserEmbed *chooser_embed,
 			     gpointer             data)
 {
   g_signal_emit_by_name (data, "response-requested");
@@ -128,14 +128,14 @@ _ctk_file_chooser_embed_get_type (void)
     {
       const GTypeInfo file_chooser_embed_info =
       {
-	sizeof (GtkFileChooserEmbedIface),  /* class_size */
+	sizeof (CtkFileChooserEmbedIface),  /* class_size */
 	NULL,                          /* base_init */
 	NULL,			       /* base_finalize */
 	(GClassInitFunc)ctk_file_chooser_embed_class_init, /* class_init */
       };
 
       file_chooser_embed_type = g_type_register_static (G_TYPE_INTERFACE,
-							I_("GtkFileChooserEmbed"),
+							I_("CtkFileChooserEmbed"),
 							&file_chooser_embed_info, 0);
 
       g_type_interface_add_prerequisite (file_chooser_embed_type, CTK_TYPE_WIDGET);
@@ -152,21 +152,21 @@ ctk_file_chooser_embed_class_init (gpointer g_iface)
   g_signal_new (I_("default-size-changed"),
 		iface_type,
 		G_SIGNAL_RUN_LAST,
-		G_STRUCT_OFFSET (GtkFileChooserEmbedIface, default_size_changed),
+		G_STRUCT_OFFSET (CtkFileChooserEmbedIface, default_size_changed),
 		NULL, NULL,
 		NULL,
 		G_TYPE_NONE, 0);
   g_signal_new (I_("response-requested"),
 		iface_type,
 		G_SIGNAL_RUN_LAST,
-		G_STRUCT_OFFSET (GtkFileChooserEmbedIface, response_requested),
+		G_STRUCT_OFFSET (CtkFileChooserEmbedIface, response_requested),
 		NULL, NULL,
 		NULL,
 		G_TYPE_NONE, 0);
 }
 
 void
-_ctk_file_chooser_embed_get_default_size (GtkFileChooserEmbed *chooser_embed,
+_ctk_file_chooser_embed_get_default_size (CtkFileChooserEmbed *chooser_embed,
 					 gint                *default_width,
 					 gint                *default_height)
 {
@@ -178,7 +178,7 @@ _ctk_file_chooser_embed_get_default_size (GtkFileChooserEmbed *chooser_embed,
 }
 
 gboolean
-_ctk_file_chooser_embed_should_respond (GtkFileChooserEmbed *chooser_embed)
+_ctk_file_chooser_embed_should_respond (CtkFileChooserEmbed *chooser_embed)
 {
   g_return_val_if_fail (CTK_IS_FILE_CHOOSER_EMBED (chooser_embed), FALSE);
 
@@ -186,7 +186,7 @@ _ctk_file_chooser_embed_should_respond (GtkFileChooserEmbed *chooser_embed)
 }
 
 void
-_ctk_file_chooser_embed_initial_focus (GtkFileChooserEmbed *chooser_embed)
+_ctk_file_chooser_embed_initial_focus (CtkFileChooserEmbed *chooser_embed)
 {
   g_return_if_fail (CTK_IS_FILE_CHOOSER_EMBED (chooser_embed));
 

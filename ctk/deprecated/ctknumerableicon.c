@@ -21,15 +21,15 @@
 
 /**
  * SECTION:ctknumerableicon
- * @Title: GtkNumerableIcon
+ * @Title: CtkNumerableIcon
  * @Short_description: A GIcon that allows numbered emblems
  *
- * GtkNumerableIcon is a subclass of #GEmblemedIcon that can
+ * CtkNumerableIcon is a subclass of #GEmblemedIcon that can
  * show a number or short string as an emblem. The number can
  * be overlayed on top of another emblem, if desired.
  *
  * It supports theming by taking font and color information
- * from a provided #GtkStyleContext; see
+ * from a provided #CtkStyleContext; see
  * ctk_numerable_icon_set_style_context().
  *
  * Typical numerable icons:
@@ -55,7 +55,7 @@
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
-struct _GtkNumerableIconPrivate {
+struct _CtkNumerableIconPrivate {
   gint count;
   gint icon_size;
 
@@ -71,7 +71,7 @@ struct _GtkNumerableIconPrivate {
   cairo_pattern_t *background_image;
   gint border_size;
 
-  GtkStyleContext *style;
+  CtkStyleContext *style;
   gulong style_changed_id;
 
   gchar *rendered_string;
@@ -95,7 +95,7 @@ enum {
 
 static GParamSpec *properties[NUM_PROPERTIES] = { NULL, };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkNumerableIcon, ctk_numerable_icon, G_TYPE_EMBLEMED_ICON)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkNumerableIcon, ctk_numerable_icon, G_TYPE_EMBLEMED_ICON)
 
 static gint
 get_surface_size (cairo_surface_t *surface)
@@ -104,13 +104,13 @@ get_surface_size (cairo_surface_t *surface)
 }
 
 static gdouble
-get_border_size (GtkNumerableIcon *self)
+get_border_size (CtkNumerableIcon *self)
 {
   return self->priv->border_size;
 }
 
 static cairo_surface_t *
-draw_default_surface (GtkNumerableIcon *self)
+draw_default_surface (CtkNumerableIcon *self)
 {
   cairo_surface_t *surface;
   cairo_t *cr;
@@ -191,10 +191,10 @@ draw_from_image (cairo_surface_t *image)
 }
 
 static cairo_surface_t *
-draw_from_gicon (GtkNumerableIcon *self)
+draw_from_gicon (CtkNumerableIcon *self)
 {
-  GtkIconTheme *theme;
-  GtkIconInfo *info;
+  CtkIconTheme *theme;
+  CtkIconInfo *info;
   GdkPixbuf *pixbuf;
   cairo_surface_t *surface;
 
@@ -227,7 +227,7 @@ draw_from_gicon (GtkNumerableIcon *self)
 }
 
 static cairo_surface_t *
-get_image_surface (GtkNumerableIcon *self)
+get_image_surface (CtkNumerableIcon *self)
 {
   cairo_surface_t *retval = NULL, *image;
 
@@ -256,7 +256,7 @@ get_image_surface (GtkNumerableIcon *self)
 }
 
 static PangoLayout *
-get_pango_layout (GtkNumerableIcon *self)
+get_pango_layout (CtkNumerableIcon *self)
 {
   PangoContext *context;
   GdkScreen *screen;
@@ -277,7 +277,7 @@ get_pango_layout (GtkNumerableIcon *self)
     }
   else
     {
-      GtkWidget *fake;
+      CtkWidget *fake;
 
       /* steal ctk text settings from the window */
       fake = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -289,7 +289,7 @@ get_pango_layout (GtkNumerableIcon *self)
 }
 
 static void
-ctk_numerable_icon_ensure_emblem (GtkNumerableIcon *self)
+ctk_numerable_icon_ensure_emblem (CtkNumerableIcon *self)
 {
   cairo_t *cr;
   cairo_surface_t *surface;
@@ -356,10 +356,10 @@ ctk_numerable_icon_ensure_emblem (GtkNumerableIcon *self)
 }
 
 static void
-ctk_numerable_icon_update_properties_from_style (GtkNumerableIcon *self)
+ctk_numerable_icon_update_properties_from_style (CtkNumerableIcon *self)
 {
-  GtkStyleContext *style = self->priv->style;
-  GtkWidgetPath *path, *saved;
+  CtkStyleContext *style = self->priv->style;
+  CtkWidgetPath *path, *saved;
   cairo_pattern_t *pattern = NULL;
   GdkRGBA background, foreground;
   PangoFontDescription *font = NULL;
@@ -425,9 +425,9 @@ ctk_numerable_icon_update_properties_from_style (GtkNumerableIcon *self)
 }
 
 static void
-ctk_numerable_icon_init_style (GtkNumerableIcon *self)
+ctk_numerable_icon_init_style (CtkNumerableIcon *self)
 {
-  GtkStyleContext *style = self->priv->style;
+  CtkStyleContext *style = self->priv->style;
 
   if (style == NULL)
     return;
@@ -440,7 +440,7 @@ ctk_numerable_icon_init_style (GtkNumerableIcon *self)
 }
 
 static void
-ctk_numerable_icon_ensure_and_replace_label (GtkNumerableIcon *self,
+ctk_numerable_icon_ensure_and_replace_label (CtkNumerableIcon *self,
                                              gint              count,
                                              const gchar      *label)
 {
@@ -498,7 +498,7 @@ ctk_numerable_icon_ensure_and_replace_label (GtkNumerableIcon *self,
 }
 
 static gboolean
-real_set_background_icon (GtkNumerableIcon *self,
+real_set_background_icon (CtkNumerableIcon *self,
                           GIcon            *icon)
 {
   if (!g_icon_equal (self->priv->background_icon, icon))
@@ -519,7 +519,7 @@ real_set_background_icon (GtkNumerableIcon *self,
 static void
 ctk_numerable_icon_constructed (GObject *object)
 {
-  GtkNumerableIcon *self = CTK_NUMERABLE_ICON (object);
+  CtkNumerableIcon *self = CTK_NUMERABLE_ICON (object);
 
   if (G_OBJECT_CLASS (ctk_numerable_icon_parent_class)->constructed != NULL)
     G_OBJECT_CLASS (ctk_numerable_icon_parent_class)->constructed (object);
@@ -530,7 +530,7 @@ ctk_numerable_icon_constructed (GObject *object)
 static void
 ctk_numerable_icon_finalize (GObject *object)
 {
-  GtkNumerableIcon *self = CTK_NUMERABLE_ICON (object);
+  CtkNumerableIcon *self = CTK_NUMERABLE_ICON (object);
 
   g_free (self->priv->label);
   g_free (self->priv->rendered_string);
@@ -548,7 +548,7 @@ ctk_numerable_icon_finalize (GObject *object)
 static void
 ctk_numerable_icon_dispose (GObject *object)
 {
-  GtkNumerableIcon *self = CTK_NUMERABLE_ICON (object);
+  CtkNumerableIcon *self = CTK_NUMERABLE_ICON (object);
 
   if (self->priv->style_changed_id != 0)
     {
@@ -569,7 +569,7 @@ ctk_numerable_icon_set_property (GObject      *object,
                                  const GValue *value,
                                  GParamSpec   *pspec)
 {
-  GtkNumerableIcon *self = CTK_NUMERABLE_ICON (object);
+  CtkNumerableIcon *self = CTK_NUMERABLE_ICON (object);
 
   switch (property_id)
     {
@@ -600,7 +600,7 @@ ctk_numerable_icon_get_property (GObject    *object,
                                  GValue     *value,
                                  GParamSpec *pspec)
 {
-  GtkNumerableIcon *self = CTK_NUMERABLE_ICON (object);
+  CtkNumerableIcon *self = CTK_NUMERABLE_ICON (object);
 
   switch (property_id)
     {
@@ -627,7 +627,7 @@ ctk_numerable_icon_get_property (GObject    *object,
 }
 
 static void
-ctk_numerable_icon_class_init (GtkNumerableIconClass *klass)
+ctk_numerable_icon_class_init (CtkNumerableIconClass *klass)
 {
   GObjectClass *oclass = G_OBJECT_CLASS (klass);
 
@@ -676,7 +676,7 @@ ctk_numerable_icon_class_init (GtkNumerableIconClass *klass)
 }
 
 static void
-ctk_numerable_icon_init (GtkNumerableIcon *self)
+ctk_numerable_icon_init (CtkNumerableIcon *self)
 {
   GdkRGBA bg;
   GdkRGBA fg;
@@ -694,7 +694,7 @@ ctk_numerable_icon_init (GtkNumerableIcon *self)
 
 /* private */
 void
-_ctk_numerable_icon_set_background_icon_size (GtkNumerableIcon *self,
+_ctk_numerable_icon_set_background_icon_size (CtkNumerableIcon *self,
                                               gint              icon_size)
 {
   if (self->priv->background_icon == NULL)
@@ -709,7 +709,7 @@ _ctk_numerable_icon_set_background_icon_size (GtkNumerableIcon *self,
 
 /**
  * ctk_numerable_icon_get_label:
- * @self: a #GtkNumerableIcon
+ * @self: a #CtkNumerableIcon
  *
  * Returns the currently displayed label of the icon, or %NULL.
  *
@@ -720,7 +720,7 @@ _ctk_numerable_icon_set_background_icon_size (GtkNumerableIcon *self,
  * Deprecated: 3.14
  */
 const gchar *
-ctk_numerable_icon_get_label (GtkNumerableIcon *self)
+ctk_numerable_icon_get_label (CtkNumerableIcon *self)
 {
   g_return_val_if_fail (CTK_IS_NUMERABLE_ICON (self), NULL);
 
@@ -729,7 +729,7 @@ ctk_numerable_icon_get_label (GtkNumerableIcon *self)
 
 /**
  * ctk_numerable_icon_set_label:
- * @self: a #GtkNumerableIcon
+ * @self: a #CtkNumerableIcon
  * @label: (allow-none): a short label, or %NULL
  *
  * Sets the currently displayed value of @self to the string
@@ -751,7 +751,7 @@ ctk_numerable_icon_get_label (GtkNumerableIcon *self)
  * Deprecated: 3.14
  */
 void
-ctk_numerable_icon_set_label (GtkNumerableIcon *self,
+ctk_numerable_icon_set_label (CtkNumerableIcon *self,
                               const gchar      *label)
 {
   g_return_if_fail (CTK_IS_NUMERABLE_ICON (self));
@@ -767,7 +767,7 @@ ctk_numerable_icon_set_label (GtkNumerableIcon *self,
 
 /**
  * ctk_numerable_icon_get_count:
- * @self: a #GtkNumerableIcon
+ * @self: a #CtkNumerableIcon
  *
  * Returns the value currently displayed by @self.
  *
@@ -778,7 +778,7 @@ ctk_numerable_icon_set_label (GtkNumerableIcon *self,
  * Deprecated: 3.14
  */
 gint
-ctk_numerable_icon_get_count (GtkNumerableIcon *self)
+ctk_numerable_icon_get_count (CtkNumerableIcon *self)
 {
   g_return_val_if_fail (CTK_IS_NUMERABLE_ICON (self), 0);
 
@@ -787,7 +787,7 @@ ctk_numerable_icon_get_count (GtkNumerableIcon *self)
 
 /**
  * ctk_numerable_icon_set_count:
- * @self: a #GtkNumerableIcon
+ * @self: a #CtkNumerableIcon
  * @count: a number between -99 and 99
  *
  * Sets the currently displayed value of @self to @count.
@@ -804,7 +804,7 @@ ctk_numerable_icon_get_count (GtkNumerableIcon *self)
  * Deprecated: 3.14
  */
 void
-ctk_numerable_icon_set_count (GtkNumerableIcon *self,
+ctk_numerable_icon_set_count (CtkNumerableIcon *self,
                               gint              count)
 {
   g_return_if_fail (CTK_IS_NUMERABLE_ICON (self));
@@ -820,12 +820,12 @@ ctk_numerable_icon_set_count (GtkNumerableIcon *self,
 
 /**
  * ctk_numerable_icon_get_style_context:
- * @self: a #GtkNumerableIcon
+ * @self: a #CtkNumerableIcon
  *
- * Returns the #GtkStyleContext used by the icon for theming,
+ * Returns the #CtkStyleContext used by the icon for theming,
  * or %NULL if there’s none.
  *
- * Returns: (nullable) (transfer none): a #GtkStyleContext, or %NULL.
+ * Returns: (nullable) (transfer none): a #CtkStyleContext, or %NULL.
  *     This object is internal to GTK+ and should not be unreffed.
  *     Use g_object_ref() if you want to keep it around
  *
@@ -833,8 +833,8 @@ ctk_numerable_icon_set_count (GtkNumerableIcon *self,
  *
  * Deprecated: 3.14
  */
-GtkStyleContext *
-ctk_numerable_icon_get_style_context (GtkNumerableIcon *self)
+CtkStyleContext *
+ctk_numerable_icon_get_style_context (CtkNumerableIcon *self)
 {
   g_return_val_if_fail (CTK_IS_NUMERABLE_ICON (self), NULL);
 
@@ -843,19 +843,19 @@ ctk_numerable_icon_get_style_context (GtkNumerableIcon *self)
 
 /**
  * ctk_numerable_icon_set_style_context:
- * @self: a #GtkNumerableIcon
- * @style: a #GtkStyleContext
+ * @self: a #CtkNumerableIcon
+ * @style: a #CtkStyleContext
  *
  * Updates the icon to fetch theme information from the
- * given #GtkStyleContext.
+ * given #CtkStyleContext.
  *
  * Since: 3.0
  *
  * Deprecated: 3.14
  */
 void
-ctk_numerable_icon_set_style_context (GtkNumerableIcon *self,
-                                      GtkStyleContext  *style)
+ctk_numerable_icon_set_style_context (CtkNumerableIcon *self,
+                                      CtkStyleContext  *style)
 {
   g_return_if_fail (CTK_IS_NUMERABLE_ICON (self));
   g_return_if_fail (CTK_IS_STYLE_CONTEXT (style));
@@ -879,7 +879,7 @@ ctk_numerable_icon_set_style_context (GtkNumerableIcon *self,
 
 /**
  * ctk_numerable_icon_set_background_gicon:
- * @self: a #GtkNumerableIcon
+ * @self: a #CtkNumerableIcon
  * @icon: (allow-none): a #GIcon, or %NULL
  *
  * Updates the icon to use @icon as the base background image.
@@ -896,7 +896,7 @@ ctk_numerable_icon_set_style_context (GtkNumerableIcon *self,
  * Deprecated: 3.14
  */
 void
-ctk_numerable_icon_set_background_gicon (GtkNumerableIcon *self,
+ctk_numerable_icon_set_background_gicon (CtkNumerableIcon *self,
                                          GIcon            *icon)
 {
   gboolean res;
@@ -913,7 +913,7 @@ ctk_numerable_icon_set_background_gicon (GtkNumerableIcon *self,
 
 /**
  * ctk_numerable_icon_get_background_gicon:
- * @self: a #GtkNumerableIcon
+ * @self: a #CtkNumerableIcon
  *
  * Returns the #GIcon that was set as the base background image, or
  * %NULL if there’s none. The caller of this function does not own
@@ -926,7 +926,7 @@ ctk_numerable_icon_set_background_gicon (GtkNumerableIcon *self,
  * Deprecated: 3.14
  */
 GIcon *
-ctk_numerable_icon_get_background_gicon (GtkNumerableIcon *self)
+ctk_numerable_icon_get_background_gicon (CtkNumerableIcon *self)
 {
   GIcon *retval = NULL;
 
@@ -941,7 +941,7 @@ ctk_numerable_icon_get_background_gicon (GtkNumerableIcon *self)
 
 /**
  * ctk_numerable_icon_set_background_icon_name:
- * @self: a #GtkNumerableIcon
+ * @self: a #CtkNumerableIcon
  * @icon_name: (allow-none): an icon name, or %NULL
  *
  * Updates the icon to use the icon named @icon_name from the
@@ -959,7 +959,7 @@ ctk_numerable_icon_get_background_gicon (GtkNumerableIcon *self)
  * Deprecated: 3.14
  */
 void
-ctk_numerable_icon_set_background_icon_name (GtkNumerableIcon *self,
+ctk_numerable_icon_set_background_icon_name (CtkNumerableIcon *self,
                                              const gchar      *icon_name)
 {
   GIcon *icon = NULL;
@@ -987,7 +987,7 @@ ctk_numerable_icon_set_background_icon_name (GtkNumerableIcon *self,
 
 /**
  * ctk_numerable_icon_get_background_icon_name:
- * @self: a #GtkNumerableIcon
+ * @self: a #CtkNumerableIcon
  *
  * Returns the icon name used as the base background image,
  * or %NULL if there’s none.
@@ -999,7 +999,7 @@ ctk_numerable_icon_set_background_icon_name (GtkNumerableIcon *self,
  * Deprecated: 3.14
  */
 const gchar *
-ctk_numerable_icon_get_background_icon_name (GtkNumerableIcon *self)
+ctk_numerable_icon_get_background_icon_name (CtkNumerableIcon *self)
 {
   g_return_val_if_fail (CTK_IS_NUMERABLE_ICON (self), NULL);
 
@@ -1010,7 +1010,7 @@ ctk_numerable_icon_get_background_icon_name (GtkNumerableIcon *self)
  * ctk_numerable_icon_new:
  * @base_icon: a #GIcon to overlay on
  *
- * Creates a new unthemed #GtkNumerableIcon.
+ * Creates a new unthemed #CtkNumerableIcon.
  *
  * Returns: (transfer full): a new #GIcon
  *
@@ -1031,10 +1031,10 @@ ctk_numerable_icon_new (GIcon *base_icon)
 /**
  * ctk_numerable_icon_new_with_style_context:
  * @base_icon: a #GIcon to overlay on
- * @context: a #GtkStyleContext
+ * @context: a #CtkStyleContext
  *
- * Creates a new #GtkNumerableIcon which will themed according
- * to the passed #GtkStyleContext. This is a convenience constructor
+ * Creates a new #CtkNumerableIcon which will themed according
+ * to the passed #CtkStyleContext. This is a convenience constructor
  * that calls ctk_numerable_icon_set_style_context() internally.
  *
  * Returns: (transfer full): a new #GIcon
@@ -1045,7 +1045,7 @@ ctk_numerable_icon_new (GIcon *base_icon)
  */
 GIcon *
 ctk_numerable_icon_new_with_style_context (GIcon           *base_icon,
-                                           GtkStyleContext *context)
+                                           CtkStyleContext *context)
 {
   g_return_val_if_fail (G_IS_ICON (base_icon), NULL);
 

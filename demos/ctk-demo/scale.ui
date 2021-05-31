@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.6 -->
-  <object class="GtkAdjustment" id="adjustment1">
+  <object class="CtkAdjustment" id="adjustment1">
     <property name="upper">4</property>
     <property name="value">2</property>
     <property name="step-increment">0.1</property>
     <property name="page-increment">1</property>
   </object>
-  <object class="GtkAdjustment" id="adjustment2">
+  <object class="CtkAdjustment" id="adjustment2">
     <property name="upper">4</property>
     <property name="value">2</property>
     <property name="step-increment">0.1</property>
     <property name="page-increment">1</property>
   </object>
-  <object class="GtkAdjustment" id="adjustment3">
+  <object class="CtkAdjustment" id="adjustment3">
     <property name="upper">4</property>
     <property name="value">2</property>
     <property name="step-increment">0.1</property>
     <property name="page-increment">1</property>
   </object>
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="title" translatable="yes">Scales</property>
     <property name="border-width" translatable="yes">20</property>
     <child>
-      <object class="GtkGrid" id="grid1">
+      <object class="CtkGrid" id="grid1">
         <property name="visible">1</property>
         <property name="row-spacing">10</property>
         <property name="column-spacing">10</property>
         <child>
-          <object class="GtkLabel">
+          <object class="CtkLabel">
             <property name="visible">1</property>
             <property name="label">Plain</property>
             <property name="xalign">0</property>
@@ -39,7 +39,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkScale">
+          <object class="CtkScale">
             <property name="visible">1</property>
             <property name="can_focus">1</property>
             <property name="width-request">200</property>
@@ -53,7 +53,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel">
+          <object class="CtkLabel">
             <property name="visible">1</property>
             <property name="label">Marks</property>
             <property name="xalign">0</property>
@@ -64,7 +64,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkScale">
+          <object class="CtkScale">
             <property name="visible">1</property>
             <property name="can_focus">1</property>
             <property name="width-request">200</property>
@@ -85,7 +85,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel">
+          <object class="CtkLabel">
             <property name="visible">1</property>
             <property name="label">Discrete</property>
             <property name="xalign">0</property>
@@ -96,7 +96,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkScale">
+          <object class="CtkScale">
             <property name="visible">1</property>
             <property name="can_focus">1</property>
             <property name="width-request">200</property>

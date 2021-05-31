@@ -36,13 +36,13 @@
 #endif
 
 #if 0
-static GtkWidget *preview_label;
-static GtkWidget *preview_image;
+static CtkWidget *preview_label;
+static CtkWidget *preview_image;
 #endif
-static GtkFileChooserAction action;
+static CtkFileChooserAction action;
 
 static void
-print_current_folder (GtkFileChooser *chooser)
+print_current_folder (CtkFileChooser *chooser)
 {
   gchar *uri;
 
@@ -52,7 +52,7 @@ print_current_folder (GtkFileChooser *chooser)
 }
 
 static void
-print_selected (GtkFileChooser *chooser)
+print_selected (CtkFileChooser *chooser)
 {
   GSList *uris = ctk_file_chooser_get_uris (chooser);
   GSList *tmp_list;
@@ -69,7 +69,7 @@ print_selected (GtkFileChooser *chooser)
 }
 
 static void
-response_cb (GtkDialog *dialog,
+response_cb (CtkDialog *dialog,
 	     gint       response_id)
 {
   if (response_id == CTK_RESPONSE_OK)
@@ -102,7 +102,7 @@ response_cb (GtkDialog *dialog,
 }
 
 static gboolean
-no_backup_files_filter (const GtkFileFilterInfo *filter_info,
+no_backup_files_filter (const CtkFileFilterInfo *filter_info,
 			gpointer                 data)
 {
   gsize len = filter_info->display_name ? strlen (filter_info->display_name) : 0;
@@ -113,7 +113,7 @@ no_backup_files_filter (const GtkFileFilterInfo *filter_info,
 }
 
 static void
-filter_changed (GtkFileChooserDialog *dialog,
+filter_changed (CtkFileChooserDialog *dialog,
 		gpointer              data)
 {
   g_print ("file filter changed\n");
@@ -276,7 +276,7 @@ format_size (gint64 size)
 }
 
 static void
-update_preview_cb (GtkFileChooser *chooser)
+update_preview_cb (CtkFileChooser *chooser)
 {
   gchar *filename = ctk_file_chooser_get_preview_filename (chooser);
   gboolean have_preview = FALSE;
@@ -333,12 +333,12 @@ update_preview_cb (GtkFileChooser *chooser)
 #endif
 
 static void
-set_current_folder (GtkFileChooser *chooser,
+set_current_folder (CtkFileChooser *chooser,
 		    const char     *name)
 {
   if (!ctk_file_chooser_set_current_folder (chooser, name))
     {
-      GtkWidget *dialog;
+      CtkWidget *dialog;
 
       dialog = ctk_message_dialog_new (CTK_WINDOW (chooser),
 				       CTK_DIALOG_MODAL | CTK_DIALOG_DESTROY_WITH_PARENT,
@@ -352,26 +352,26 @@ set_current_folder (GtkFileChooser *chooser,
 }
 
 static void
-set_folder_nonexistent_cb (GtkButton      *button,
-			   GtkFileChooser *chooser)
+set_folder_nonexistent_cb (CtkButton      *button,
+			   CtkFileChooser *chooser)
 {
   set_current_folder (chooser, "/nonexistent");
 }
 
 static void
-set_folder_existing_nonexistent_cb (GtkButton      *button,
-				    GtkFileChooser *chooser)
+set_folder_existing_nonexistent_cb (CtkButton      *button,
+				    CtkFileChooser *chooser)
 {
   set_current_folder (chooser, "/usr/nonexistent");
 }
 
 static void
-set_filename (GtkFileChooser *chooser,
+set_filename (CtkFileChooser *chooser,
 	      const char     *name)
 {
   if (!ctk_file_chooser_set_filename (chooser, name))
     {
-      GtkWidget *dialog;
+      CtkWidget *dialog;
 
       dialog = ctk_message_dialog_new (CTK_WINDOW (chooser),
 				       CTK_DIALOG_MODAL | CTK_DIALOG_DESTROY_WITH_PARENT,
@@ -385,22 +385,22 @@ set_filename (GtkFileChooser *chooser,
 }
 
 static void
-set_filename_nonexistent_cb (GtkButton      *button,
-			     GtkFileChooser *chooser)
+set_filename_nonexistent_cb (CtkButton      *button,
+			     CtkFileChooser *chooser)
 {
   set_filename (chooser, "/nonexistent");
 }
 
 static void
-set_filename_existing_nonexistent_cb (GtkButton      *button,
-				      GtkFileChooser *chooser)
+set_filename_existing_nonexistent_cb (CtkButton      *button,
+				      CtkFileChooser *chooser)
 {
   set_filename (chooser, "/usr/nonexistent");
 }
 
 static void
-get_selection_cb (GtkButton      *button,
-		  GtkFileChooser *chooser)
+get_selection_cb (CtkButton      *button,
+		  CtkFileChooser *chooser)
 {
   GSList *selection;
 
@@ -429,8 +429,8 @@ get_selection_cb (GtkButton      *button,
 }
 
 static void
-get_current_name_cb (GtkButton      *button,
-		     GtkFileChooser *chooser)
+get_current_name_cb (CtkButton      *button,
+		     CtkFileChooser *chooser)
 {
   char *name;
 
@@ -440,24 +440,24 @@ get_current_name_cb (GtkButton      *button,
 }
 
 static void
-unmap_and_remap_cb (GtkButton *button,
-		    GtkFileChooser *chooser)
+unmap_and_remap_cb (CtkButton *button,
+		    CtkFileChooser *chooser)
 {
   ctk_widget_hide (CTK_WIDGET (chooser));
   ctk_widget_show (CTK_WIDGET (chooser));
 }
 
 static void
-kill_dependent (GtkWindow *win, GtkWidget *dep)
+kill_dependent (CtkWindow *win, CtkWidget *dep)
 {
   ctk_widget_destroy (dep);
   g_object_unref (dep);
 }
 
 static void
-notify_multiple_cb (GtkWidget  *dialog,
+notify_multiple_cb (CtkWidget  *dialog,
 		    GParamSpec *pspec,
-		    GtkWidget  *button)
+		    CtkWidget  *button)
 {
   gboolean multiple;
 
@@ -466,14 +466,14 @@ notify_multiple_cb (GtkWidget  *dialog,
   ctk_widget_set_sensitive (button, multiple);
 }
 
-static GtkFileChooserConfirmation
-confirm_overwrite_cb (GtkFileChooser *chooser,
+static CtkFileChooserConfirmation
+confirm_overwrite_cb (CtkFileChooser *chooser,
 		      gpointer        data)
 {
-  GtkWidget *dialog;
-  GtkWidget *button;
+  CtkWidget *dialog;
+  CtkWidget *button;
   int response;
-  GtkFileChooserConfirmation conf;
+  CtkFileChooserConfirmation conf;
 
   dialog = ctk_message_dialog_new (CTK_WINDOW (ctk_widget_get_toplevel (CTK_WIDGET (chooser))),
 				   CTK_DIALOG_MODAL | CTK_DIALOG_DESTROY_WITH_PARENT,
@@ -518,12 +518,12 @@ confirm_overwrite_cb (GtkFileChooser *chooser,
 int
 main (int argc, char **argv)
 {
-  GtkWidget *control_window;
-  GtkWidget *vbbox;
-  GtkWidget *button;
-  GtkWidget *dialog;
-  GtkWidget *extra;
-  GtkFileFilter *filter;
+  CtkWidget *control_window;
+  CtkWidget *vbbox;
+  CtkWidget *button;
+  CtkWidget *dialog;
+  CtkWidget *extra;
+  CtkFileFilter *filter;
   gboolean force_rtl = FALSE;
   gboolean multiple = FALSE;
   gboolean local_only = FALSE;

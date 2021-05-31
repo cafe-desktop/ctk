@@ -1,8 +1,8 @@
 <!-- test invalid cell layout custom attribute value -->
 <interface>
-  <object class="GtkIconView">
+  <object class="CtkIconView">
     <child>
-      <object class="GtkCellRendererText">
+      <object class="CtkCellRendererText">
       </object>
       <cell-packing>
         <property name="name" food="food">1</property>

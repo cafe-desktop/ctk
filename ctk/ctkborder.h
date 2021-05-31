@@ -34,12 +34,12 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GtkBorder GtkBorder;
+typedef struct _CtkBorder CtkBorder;
 
 #define CTK_TYPE_BORDER (ctk_border_get_type ())
 
 /**
- * GtkBorder:
+ * CtkBorder:
  * @left: The width of the left border
  * @right: The width of the right border
  * @top: The width of the top border
@@ -48,7 +48,7 @@ typedef struct _GtkBorder GtkBorder;
  * A struct that specifies a border around a rectangular area
  * that can be of different width on each side.
  */
-struct _GtkBorder
+struct _CtkBorder
 {
   gint16 left;
   gint16 right;
@@ -59,13 +59,13 @@ struct _GtkBorder
 GDK_AVAILABLE_IN_ALL
 GType      ctk_border_get_type (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkBorder *ctk_border_new      (void) G_GNUC_MALLOC;
+CtkBorder *ctk_border_new      (void) G_GNUC_MALLOC;
 GDK_AVAILABLE_IN_ALL
-GtkBorder *ctk_border_copy     (const GtkBorder *border_);
+CtkBorder *ctk_border_copy     (const CtkBorder *border_);
 GDK_AVAILABLE_IN_ALL
-void       ctk_border_free     (GtkBorder       *border_);
+void       ctk_border_free     (CtkBorder       *border_);
 
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkBorder, ctk_border_free)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CtkBorder, ctk_border_free)
 
 G_END_DECLS
 

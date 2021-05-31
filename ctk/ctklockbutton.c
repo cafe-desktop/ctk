@@ -28,10 +28,10 @@
 
 /**
  * SECTION:ctklockbutton
- * @title: GtkLockButton
+ * @title: CtkLockButton
  * @short_description: A widget to unlock or lock privileged operations
  *
- * GtkLockButton is a widget that can be used in control panels or
+ * CtkLockButton is a widget that can be used in control panels or
  * preference dialogs to allow users to obtain and revoke authorizations
  * needed to operate the controls. The required authorization is represented
  * by a #GPermission object. Concrete implementations of #GPermission may use
@@ -58,12 +58,12 @@
  * If the user has the permission and cannot drop it, the button is hidden.
  *
  * The text (and tooltips) that are shown in the various cases can be adjusted
- * with the #GtkLockButton:text-lock, #GtkLockButton:text-unlock,
- * #GtkLockButton:tooltip-lock, #GtkLockButton:tooltip-unlock and
- * #GtkLockButton:tooltip-not-authorized properties.
+ * with the #CtkLockButton:text-lock, #CtkLockButton:text-unlock,
+ * #CtkLockButton:tooltip-lock, #CtkLockButton:tooltip-unlock and
+ * #CtkLockButton:tooltip-not-authorized properties.
  */
 
-struct _GtkLockButtonPrivate
+struct _CtkLockButtonPrivate
 {
   GPermission *permission;
   GCancellable *cancellable;
@@ -74,11 +74,11 @@ struct _GtkLockButtonPrivate
   GIcon *icon_lock;
   GIcon *icon_unlock;
 
-  GtkWidget *box;
-  GtkWidget *image;
-  GtkWidget *stack;
-  GtkWidget *label_lock;
-  GtkWidget *label_unlock;
+  CtkWidget *box;
+  CtkWidget *image;
+  CtkWidget *stack;
+  CtkWidget *label_lock;
+  CtkWidget *label_unlock;
 };
 
 enum
@@ -92,20 +92,20 @@ enum
   PROP_TOOLTIP_NOT_AUTHORIZED
 };
 
-static void update_state (GtkLockButton *button);
-static void ctk_lock_button_clicked (GtkButton *button);
+static void update_state (CtkLockButton *button);
+static void ctk_lock_button_clicked (CtkButton *button);
 
 static void on_permission_changed (GPermission *permission,
                                    GParamSpec  *pspec,
                                    gpointer     user_data);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkLockButton, ctk_lock_button, CTK_TYPE_BUTTON)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkLockButton, ctk_lock_button, CTK_TYPE_BUTTON)
 
 static void
 ctk_lock_button_finalize (GObject *object)
 {
-  GtkLockButton *button = CTK_LOCK_BUTTON (object);
-  GtkLockButtonPrivate *priv = button->priv;
+  CtkLockButton *button = CTK_LOCK_BUTTON (object);
+  CtkLockButtonPrivate *priv = button->priv;
 
   g_free (priv->tooltip_lock);
   g_free (priv->tooltip_unlock);
@@ -137,8 +137,8 @@ ctk_lock_button_get_property (GObject    *object,
                               GValue     *value,
                               GParamSpec *pspec)
 {
-  GtkLockButton *button = CTK_LOCK_BUTTON (object);
-  GtkLockButtonPrivate *priv = button->priv;
+  CtkLockButton *button = CTK_LOCK_BUTTON (object);
+  CtkLockButtonPrivate *priv = button->priv;
 
   switch (property_id)
     {
@@ -178,8 +178,8 @@ ctk_lock_button_set_property (GObject      *object,
                               const GValue *value,
                               GParamSpec   *pspec)
 {
-  GtkLockButton *button = CTK_LOCK_BUTTON (object);
-  GtkLockButtonPrivate *priv = button->priv;
+  CtkLockButton *button = CTK_LOCK_BUTTON (object);
+  CtkLockButtonPrivate *priv = button->priv;
 
   switch (property_id)
     {
@@ -221,11 +221,11 @@ ctk_lock_button_set_property (GObject      *object,
 }
 
 static void
-ctk_lock_button_init (GtkLockButton *button)
+ctk_lock_button_init (CtkLockButton *button)
 {
-  GtkLockButtonPrivate *priv;
+  CtkLockButtonPrivate *priv;
   gchar *names[3];
-  GtkStyleContext *context;
+  CtkStyleContext *context;
 
   button->priv = priv = ctk_lock_button_get_instance_private (button);
 
@@ -248,11 +248,11 @@ ctk_lock_button_init (GtkLockButton *button)
 }
 
 static void
-ctk_lock_button_class_init (GtkLockButtonClass *klass)
+ctk_lock_button_class_init (CtkLockButtonClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
-  GtkButtonClass *button_class = CTK_BUTTON_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkButtonClass *button_class = CTK_BUTTON_CLASS (klass);
 
   gobject_class->finalize     = ctk_lock_button_finalize;
   gobject_class->get_property = ctk_lock_button_get_property;
@@ -316,20 +316,20 @@ ctk_lock_button_class_init (GtkLockButtonClass *klass)
   /* Bind class to template
    */
   ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/ui/ctklockbutton.ui");
-  ctk_widget_class_bind_template_child_private (widget_class, GtkLockButton, box);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkLockButton, image);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkLockButton, label_lock);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkLockButton, label_unlock);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkLockButton, stack);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkLockButton, box);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkLockButton, image);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkLockButton, label_lock);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkLockButton, label_unlock);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkLockButton, stack);
 
   ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_LOCK_BUTTON_ACCESSIBLE);
   ctk_widget_class_set_css_name (widget_class, "button");
 }
 
 static void
-update_state (GtkLockButton *button)
+update_state (CtkLockButton *button)
 {
-  GtkLockButtonPrivate *priv = button->priv;
+  CtkLockButtonPrivate *priv = button->priv;
   gboolean allowed;
   gboolean can_acquire;
   gboolean can_release;
@@ -398,7 +398,7 @@ on_permission_changed (GPermission *permission,
                        GParamSpec  *pspec,
                        gpointer     user_data)
 {
-  GtkLockButton *button = CTK_LOCK_BUTTON (user_data);
+  CtkLockButton *button = CTK_LOCK_BUTTON (user_data);
 
   update_state (button);
 }
@@ -408,8 +408,8 @@ acquire_cb (GObject      *source,
             GAsyncResult *result,
             gpointer      user_data)
 {
-  GtkLockButton *button = CTK_LOCK_BUTTON (user_data);
-  GtkLockButtonPrivate *priv = button->priv;
+  CtkLockButton *button = CTK_LOCK_BUTTON (user_data);
+  CtkLockButtonPrivate *priv = button->priv;
   GError *error;
 
   error = NULL;
@@ -430,8 +430,8 @@ release_cb (GObject      *source,
             GAsyncResult *result,
             gpointer      user_data)
 {
-  GtkLockButton *button = CTK_LOCK_BUTTON (user_data);
-  GtkLockButtonPrivate *priv = button->priv;
+  CtkLockButton *button = CTK_LOCK_BUTTON (user_data);
+  CtkLockButtonPrivate *priv = button->priv;
   GError *error;
 
   error = NULL;
@@ -448,9 +448,9 @@ release_cb (GObject      *source,
 }
 
 static void
-ctk_lock_button_clicked (GtkButton *button)
+ctk_lock_button_clicked (CtkButton *button)
 {
-  GtkLockButtonPrivate *priv = CTK_LOCK_BUTTON (button)->priv;
+  CtkLockButtonPrivate *priv = CTK_LOCK_BUTTON (button)->priv;
 
   /* if we already have a pending interactive check or permission is not set,
    * then do nothing
@@ -490,11 +490,11 @@ ctk_lock_button_clicked (GtkButton *button)
  *
  * Creates a new lock button which reflects the @permission.
  *
- * Returns: a new #GtkLockButton
+ * Returns: a new #CtkLockButton
  *
  * Since: 3.2
  */
-GtkWidget *
+CtkWidget *
 ctk_lock_button_new (GPermission *permission)
 {
   return CTK_WIDGET (g_object_new (CTK_TYPE_LOCK_BUTTON,
@@ -504,7 +504,7 @@ ctk_lock_button_new (GPermission *permission)
 
 /**
  * ctk_lock_button_get_permission:
- * @button: a #GtkLockButton
+ * @button: a #CtkLockButton
  *
  * Obtains the #GPermission object that controls @button.
  *
@@ -513,7 +513,7 @@ ctk_lock_button_new (GPermission *permission)
  * Since: 3.2
  */
 GPermission *
-ctk_lock_button_get_permission (GtkLockButton *button)
+ctk_lock_button_get_permission (CtkLockButton *button)
 {
   g_return_val_if_fail (CTK_IS_LOCK_BUTTON (button), NULL);
 
@@ -522,7 +522,7 @@ ctk_lock_button_get_permission (GtkLockButton *button)
 
 /**
  * ctk_lock_button_set_permission:
- * @button: a #GtkLockButton
+ * @button: a #CtkLockButton
  * @permission: (allow-none): a #GPermission object, or %NULL
  *
  * Sets the #GPermission object that controls @button.
@@ -530,10 +530,10 @@ ctk_lock_button_get_permission (GtkLockButton *button)
  * Since: 3.2
  */
 void
-ctk_lock_button_set_permission (GtkLockButton *button,
+ctk_lock_button_set_permission (CtkLockButton *button,
                                 GPermission   *permission)
 {
-  GtkLockButtonPrivate *priv;
+  CtkLockButtonPrivate *priv;
 
   g_return_if_fail (CTK_IS_LOCK_BUTTON (button));
   g_return_if_fail (permission == NULL || G_IS_PERMISSION (permission));
@@ -566,9 +566,9 @@ ctk_lock_button_set_permission (GtkLockButton *button,
 }
 
 const char *
-_ctk_lock_button_get_current_text (GtkLockButton *button)
+_ctk_lock_button_get_current_text (CtkLockButton *button)
 {
-  GtkWidget *label;
+  CtkWidget *label;
 
   g_return_val_if_fail (CTK_IS_LOCK_BUTTON (button), NULL);
 

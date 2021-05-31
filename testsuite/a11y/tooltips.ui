@@ -1,28 +1,28 @@
 <interface>
-  <object class='GtkWindow' id='window1'>
+  <object class='CtkWindow' id='window1'>
     <property name='visible'>True</property>
     <child>
-      <object class='GtkBox' id='box1'>
+      <object class='CtkBox' id='box1'>
         <property name='visible'>True</property>
         <child>
-          <object class='GtkButton' id='button-with-tooltip-text'>
+          <object class='CtkButton' id='button-with-tooltip-text'>
             <property name='visible'>True</property>
             <property name="tooltip_text">Tooltip1</property>
           </object>
         </child>
         <child>
-          <object class='GtkButton' id='button-with-has-tooltip-true'>
+          <object class='CtkButton' id='button-with-has-tooltip-true'>
             <property name='visible'>True</property>
             <property name="has_tooltip">True</property>
           </object>
          </child>
         <child>
-          <object class='GtkButton' id='button-without-tooltip'>
+          <object class='CtkButton' id='button-without-tooltip'>
             <property name='visible'>True</property>
           </object>
          </child>
         <child>
-          <object class='GtkButton' id='button-with-has-tooltip-false'>
+          <object class='CtkButton' id='button-with-has-tooltip-false'>
             <property name='visible'>True</property>
             <property name="has_tooltip">False</property>
           </object>

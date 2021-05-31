@@ -165,7 +165,7 @@ void                    ctk_win32_get_theme_part_size           (const char     
 void                    ctk_win32_get_theme_margins             (const char     *class_name,
                                                                  int             part,
                                                                  int             state,
-                                                                 GtkBorder      *out_margins);
+                                                                 CtkBorder      *out_margins);
 
 const char *            ctk_win32_get_sys_metric_name_for_id    (gint            id);
 int                     ctk_win32_get_sys_metric_id_for_name    (const char     *name);

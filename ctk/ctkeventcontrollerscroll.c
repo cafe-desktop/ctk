@@ -20,18 +20,18 @@
 /**
  * SECTION:ctkeventcontrollerscroll
  * @Short_description: Event controller for scroll events
- * @Title: GtkEventControllerScroll
- * @See_also: #GtkEventController
+ * @Title: CtkEventControllerScroll
+ * @See_also: #CtkEventController
  *
- * #GtkEventControllerScroll is an event controller meant to handle
+ * #CtkEventControllerScroll is an event controller meant to handle
  * scroll events from mice and touchpads. It is capable of handling
  * both discrete and continuous scroll events, abstracting them both
- * on the #GtkEventControllerScroll::scroll signal (deltas in the
+ * on the #CtkEventControllerScroll::scroll signal (deltas in the
  * discrete case are multiples of 1).
  *
- * In the case of continuous scroll events, #GtkEventControllerScroll
- * encloses all #GtkEventControllerScroll::scroll events between two
- * #GtkEventControllerScroll::scroll-begin and #GtkEventControllerScroll::scroll-end
+ * In the case of continuous scroll events, #CtkEventControllerScroll
+ * encloses all #CtkEventControllerScroll::scroll events between two
+ * #CtkEventControllerScroll::scroll-begin and #CtkEventControllerScroll::scroll-end
  * signals.
  *
  * The behavior of the event controller can be modified by the
@@ -42,7 +42,7 @@
  * The controller can be set up to emit motion for either/both vertical
  * and horizontal scroll events through #CTK_EVENT_CONTROLLER_SCROLL_VERTICAL,
  * #CTK_EVENT_CONTROLLER_SCROLL_HORIZONTAL and #CTK_EVENT_CONTROLLER_SCROLL_BOTH.
- * If any axis is disabled, the respective #GtkEventControllerScroll::scroll
+ * If any axis is disabled, the respective #CtkEventControllerScroll::scroll
  * delta will be 0. Vertical scroll events will be translated to horizontal
  * motion for the devices incapable of horizontal scrolling.
  *
@@ -52,7 +52,7 @@
  * combobox options).
  *
  * The #CTK_EVENT_CONTROLLER_SCROLL_KINETIC flag toggles the emission of the
- * #GtkEventControllerScroll::decelerate signal, emitted at the end of scrolling
+ * #CtkEventControllerScroll::decelerate signal, emitted at the end of scrolling
  * with two X/Y velocity arguments that are consistent with the motion that
  * was received.
  *
@@ -79,10 +79,10 @@ typedef struct
   guint32 evtime;
 } ScrollHistoryElem;
 
-struct _GtkEventControllerScroll
+struct _CtkEventControllerScroll
 {
-  GtkEventController parent_instance;
-  GtkEventControllerScrollFlags flags;
+  CtkEventController parent_instance;
+  CtkEventControllerScrollFlags flags;
   GArray *scroll_history;
 
   /* For discrete event coalescing */
@@ -92,9 +92,9 @@ struct _GtkEventControllerScroll
   guint active : 1;
 };
 
-struct _GtkEventControllerScrollClass
+struct _CtkEventControllerScrollClass
 {
-  GtkEventControllerClass parent_class;
+  CtkEventControllerClass parent_class;
 };
 
 enum {
@@ -114,11 +114,11 @@ enum {
 static GParamSpec *pspecs[N_PROPS] = { NULL };
 static guint signals[N_SIGNALS] = { 0 };
 
-G_DEFINE_TYPE (GtkEventControllerScroll, ctk_event_controller_scroll,
+G_DEFINE_TYPE (CtkEventControllerScroll, ctk_event_controller_scroll,
                CTK_TYPE_EVENT_CONTROLLER)
 
 static void
-scroll_history_push (GtkEventControllerScroll *scroll,
+scroll_history_push (CtkEventControllerScroll *scroll,
                      gdouble                   delta_x,
                      gdouble                   delta_y,
                      guint32                   evtime)
@@ -146,7 +146,7 @@ scroll_history_push (GtkEventControllerScroll *scroll,
 }
 
 static void
-scroll_history_reset (GtkEventControllerScroll *scroll)
+scroll_history_reset (CtkEventControllerScroll *scroll)
 {
   if (scroll->scroll_history->len == 0)
     return;
@@ -156,7 +156,7 @@ scroll_history_reset (GtkEventControllerScroll *scroll)
 }
 
 static void
-scroll_history_finish (GtkEventControllerScroll *scroll,
+scroll_history_finish (CtkEventControllerScroll *scroll,
                        gdouble                  *velocity_x,
                        gdouble                  *velocity_y)
 {
@@ -195,7 +195,7 @@ scroll_history_finish (GtkEventControllerScroll *scroll,
 static void
 ctk_event_controller_scroll_finalize (GObject *object)
 {
-  GtkEventControllerScroll *scroll = CTK_EVENT_CONTROLLER_SCROLL (object);
+  CtkEventControllerScroll *scroll = CTK_EVENT_CONTROLLER_SCROLL (object);
 
   g_array_unref (scroll->scroll_history);
 
@@ -208,7 +208,7 @@ ctk_event_controller_scroll_set_property (GObject      *object,
                                           const GValue *value,
                                           GParamSpec   *pspec)
 {
-  GtkEventControllerScroll *scroll = CTK_EVENT_CONTROLLER_SCROLL (object);
+  CtkEventControllerScroll *scroll = CTK_EVENT_CONTROLLER_SCROLL (object);
 
   switch (prop_id)
     {
@@ -227,7 +227,7 @@ ctk_event_controller_scroll_get_property (GObject    *object,
                                           GValue     *value,
                                           GParamSpec *pspec)
 {
-  GtkEventControllerScroll *scroll = CTK_EVENT_CONTROLLER_SCROLL (object);
+  CtkEventControllerScroll *scroll = CTK_EVENT_CONTROLLER_SCROLL (object);
 
   switch (prop_id)
     {
@@ -241,10 +241,10 @@ ctk_event_controller_scroll_get_property (GObject    *object,
 }
 
 static gboolean
-ctk_event_controller_scroll_handle_event (GtkEventController *controller,
+ctk_event_controller_scroll_handle_event (CtkEventController *controller,
                                           const GdkEvent     *event)
 {
-  GtkEventControllerScroll *scroll = CTK_EVENT_CONTROLLER_SCROLL (controller);
+  CtkEventControllerScroll *scroll = CTK_EVENT_CONTROLLER_SCROLL (controller);
   GdkScrollDirection direction = GDK_SCROLL_SMOOTH;
   gdouble dx = 0, dy = 0;
 
@@ -350,9 +350,9 @@ ctk_event_controller_scroll_handle_event (GtkEventController *controller,
 }
 
 static void
-ctk_event_controller_scroll_class_init (GtkEventControllerScrollClass *klass)
+ctk_event_controller_scroll_class_init (CtkEventControllerScrollClass *klass)
 {
-  GtkEventControllerClass *controller_class = CTK_EVENT_CONTROLLER_CLASS (klass);
+  CtkEventControllerClass *controller_class = CTK_EVENT_CONTROLLER_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->finalize = ctk_event_controller_scroll_finalize;
@@ -362,7 +362,7 @@ ctk_event_controller_scroll_class_init (GtkEventControllerScrollClass *klass)
   controller_class->handle_event = ctk_event_controller_scroll_handle_event;
 
   /**
-   * GtkEventControllerScroll:flags:
+   * CtkEventControllerScroll:flags:
    *
    * The flags affecting event controller behavior
    *
@@ -377,7 +377,7 @@ ctk_event_controller_scroll_class_init (GtkEventControllerScrollClass *klass)
                         CTK_PARAM_READWRITE | G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEventControllerScroll::scroll-begin:
+   * CtkEventControllerScroll::scroll-begin:
    * @controller: The object that received the signal
    *
    * Signals that a new scrolling operation has begun. It will
@@ -391,7 +391,7 @@ ctk_event_controller_scroll_class_init (GtkEventControllerScrollClass *klass)
                   NULL,
                   G_TYPE_NONE, 0);
   /**
-   * GtkEventControllerScroll::scroll:
+   * CtkEventControllerScroll::scroll:
    * @controller: The object that received the signal
    * @dx: X delta
    * @dy: Y delta
@@ -410,7 +410,7 @@ ctk_event_controller_scroll_class_init (GtkEventControllerScrollClass *klass)
                               G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_VOID__DOUBLE_DOUBLEv);
   /**
-   * GtkEventControllerScroll::scroll-end:
+   * CtkEventControllerScroll::scroll-end:
    * @controller: The object that received the signal
    *
    * Signals that a new scrolling operation has finished. It will
@@ -425,7 +425,7 @@ ctk_event_controller_scroll_class_init (GtkEventControllerScrollClass *klass)
                   G_TYPE_NONE, 0);
 
   /**
-   * GtkEventControllerScroll::decelerate:
+   * CtkEventControllerScroll::decelerate:
    * @controller: The object that received the signal
    * @vel_x: X velocity
    * @vel_y: Y velocity
@@ -450,7 +450,7 @@ ctk_event_controller_scroll_class_init (GtkEventControllerScrollClass *klass)
 }
 
 static void
-ctk_event_controller_scroll_init (GtkEventControllerScroll *scroll)
+ctk_event_controller_scroll_init (CtkEventControllerScroll *scroll)
 {
   scroll->scroll_history = g_array_new (FALSE, FALSE,
                                         sizeof (ScrollHistoryElem));
@@ -461,19 +461,19 @@ ctk_event_controller_scroll_init (GtkEventControllerScroll *scroll)
 
 /**
  * ctk_event_controller_scroll_new:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @flags: behavior flags
  *
  * Creates a new event controller that will handle scroll events
  * for the given @widget.
  *
- * Returns: a new #GtkEventControllerScroll
+ * Returns: a new #CtkEventControllerScroll
  *
  * Since: 3.24
  **/
-GtkEventController *
-ctk_event_controller_scroll_new (GtkWidget                     *widget,
-                                 GtkEventControllerScrollFlags  flags)
+CtkEventController *
+ctk_event_controller_scroll_new (CtkWidget                     *widget,
+                                 CtkEventControllerScrollFlags  flags)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
@@ -485,7 +485,7 @@ ctk_event_controller_scroll_new (GtkWidget                     *widget,
 
 /**
  * ctk_event_controller_scroll_set_flags:
- * @scroll: a #GtkEventControllerScroll
+ * @scroll: a #CtkEventControllerScroll
  * @flags: behavior flags
  *
  * Sets the flags conditioning scroll controller behavior.
@@ -493,8 +493,8 @@ ctk_event_controller_scroll_new (GtkWidget                     *widget,
  * Since: 3.24
  **/
 void
-ctk_event_controller_scroll_set_flags (GtkEventControllerScroll      *scroll,
-                                       GtkEventControllerScrollFlags  flags)
+ctk_event_controller_scroll_set_flags (CtkEventControllerScroll      *scroll,
+                                       CtkEventControllerScrollFlags  flags)
 {
   g_return_if_fail (CTK_IS_EVENT_CONTROLLER_SCROLL (scroll));
 
@@ -507,7 +507,7 @@ ctk_event_controller_scroll_set_flags (GtkEventControllerScroll      *scroll,
 
 /**
  * ctk_event_controller_scroll_get_flags:
- * @scroll: a #GtkEventControllerScroll
+ * @scroll: a #CtkEventControllerScroll
  *
  * Gets the flags conditioning the scroll controller behavior.
  *
@@ -515,8 +515,8 @@ ctk_event_controller_scroll_set_flags (GtkEventControllerScroll      *scroll,
  *
  * Since: 3.24
  **/
-GtkEventControllerScrollFlags
-ctk_event_controller_scroll_get_flags (GtkEventControllerScroll *scroll)
+CtkEventControllerScrollFlags
+ctk_event_controller_scroll_get_flags (CtkEventControllerScroll *scroll)
 {
   g_return_val_if_fail (CTK_IS_EVENT_CONTROLLER_SCROLL (scroll),
                         CTK_EVENT_CONTROLLER_SCROLL_NONE);

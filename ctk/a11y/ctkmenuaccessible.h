@@ -28,26 +28,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_MENU_ACCESSIBLE                          (ctk_menu_accessible_get_type ())
-#define CTK_MENU_ACCESSIBLE(obj)                          (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_MENU_ACCESSIBLE, GtkMenuAccessible))
-#define CTK_MENU_ACCESSIBLE_CLASS(klass)                  (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_MENU_ACCESSIBLE, GtkMenuAccessibleClass))
+#define CTK_MENU_ACCESSIBLE(obj)                          (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_MENU_ACCESSIBLE, CtkMenuAccessible))
+#define CTK_MENU_ACCESSIBLE_CLASS(klass)                  (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_MENU_ACCESSIBLE, CtkMenuAccessibleClass))
 #define CTK_IS_MENU_ACCESSIBLE(obj)                       (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_MENU_ACCESSIBLE))
 #define CTK_IS_MENU_ACCESSIBLE_CLASS(klass)               (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_MENU_ACCESSIBLE))
-#define CTK_MENU_ACCESSIBLE_GET_CLASS(obj)                (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_MENU_ACCESSIBLE, GtkMenuAccessibleClass))
+#define CTK_MENU_ACCESSIBLE_GET_CLASS(obj)                (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_MENU_ACCESSIBLE, CtkMenuAccessibleClass))
 
-typedef struct _GtkMenuAccessible        GtkMenuAccessible;
-typedef struct _GtkMenuAccessibleClass   GtkMenuAccessibleClass;
-typedef struct _GtkMenuAccessiblePrivate GtkMenuAccessiblePrivate;
+typedef struct _CtkMenuAccessible        CtkMenuAccessible;
+typedef struct _CtkMenuAccessibleClass   CtkMenuAccessibleClass;
+typedef struct _CtkMenuAccessiblePrivate CtkMenuAccessiblePrivate;
 
-struct _GtkMenuAccessible
+struct _CtkMenuAccessible
 {
-  GtkMenuShellAccessible parent;
+  CtkMenuShellAccessible parent;
 
-  GtkMenuAccessiblePrivate *priv;
+  CtkMenuAccessiblePrivate *priv;
 };
 
-struct _GtkMenuAccessibleClass
+struct _CtkMenuAccessibleClass
 {
-  GtkMenuShellAccessibleClass parent_class;
+  CtkMenuShellAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

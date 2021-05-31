@@ -31,7 +31,7 @@ typedef struct {
 } EntryData;
 
 static void
-notify (GtkEditable *editable, GParamSpec *pspec, EntryData *data)
+notify (CtkEditable *editable, GParamSpec *pspec, EntryData *data)
 {
   data->serial = serial++;
   data->count++;
@@ -47,7 +47,7 @@ notify (GtkEditable *editable, GParamSpec *pspec, EntryData *data)
 }
 
 static void
-insert_text (GtkEditable *editable,
+insert_text (CtkEditable *editable,
              const gchar *new_text,
              gint         new_text_length,
              gint        *position,
@@ -70,7 +70,7 @@ insert_text (GtkEditable *editable,
 }
 
 static void
-delete_text (GtkEditable *editable,
+delete_text (CtkEditable *editable,
              gint         start_pos,
              gint         end_pos,
              EntryData   *data)
@@ -91,7 +91,7 @@ delete_text (GtkEditable *editable,
 }
 
 static void
-changed (GtkEditable *editable,
+changed (CtkEditable *editable,
          EntryData   *data)
 {
   data->serial = serial++;
@@ -110,7 +110,7 @@ changed (GtkEditable *editable,
 static void
 test_insert (void)
 {
-  GtkWidget *entry;
+  CtkWidget *entry;
   gint pos;
   EntryData data1;
   EntryData data2;
@@ -212,7 +212,7 @@ test_insert (void)
 static void
 test_delete (void)
 {
-  GtkWidget *entry;
+  CtkWidget *entry;
   gint pos;
   EntryData data1;
   EntryData data2;

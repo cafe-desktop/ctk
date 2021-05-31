@@ -38,30 +38,30 @@
 /**
  * SECTION:ctktexttagtable
  * @Short_description: Collection of tags that can be used together
- * @Title: GtkTextTagTable
+ * @Title: CtkTextTagTable
  *
  * You may wish to begin by reading the
  * [text widget conceptual overview][TextWidget]
  * which gives an overview of all the objects and
  * data types related to the text widget and how they work together.
  *
- * # GtkTextTagTables as GtkBuildable
+ * # CtkTextTagTables as CtkBuildable
  *
- * The GtkTextTagTable implementation of the GtkBuildable interface
+ * The CtkTextTagTable implementation of the CtkBuildable interface
  * supports adding tags by specifying “tag” as the “type” attribute
  * of a <child> element.
  *
  * An example of a UI definition fragment specifying tags:
  * |[
- * <object class="GtkTextTagTable">
+ * <object class="CtkTextTagTable">
  *  <child type="tag">
- *    <object class="GtkTextTag"/>
+ *    <object class="CtkTextTag"/>
  *  </child>
  * </object>
  * ]|
  */
 
-struct _GtkTextTagTablePrivate
+struct _CtkTextTagTablePrivate
 {
   GHashTable *hash;
   GSList     *anonymous;
@@ -81,37 +81,37 @@ enum {
 
 static void ctk_text_tag_table_finalize                 (GObject             *object);
 
-static void ctk_text_tag_table_buildable_interface_init (GtkBuildableIface   *iface);
-static void ctk_text_tag_table_buildable_add_child      (GtkBuildable        *buildable,
-							 GtkBuilder          *builder,
+static void ctk_text_tag_table_buildable_interface_init (CtkBuildableIface   *iface);
+static void ctk_text_tag_table_buildable_add_child      (CtkBuildable        *buildable,
+							 CtkBuilder          *builder,
 							 GObject             *child,
 							 const gchar         *type);
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE_WITH_CODE (GtkTextTagTable, ctk_text_tag_table, G_TYPE_OBJECT,
-                         G_ADD_PRIVATE (GtkTextTagTable)
+G_DEFINE_TYPE_WITH_CODE (CtkTextTagTable, ctk_text_tag_table, G_TYPE_OBJECT,
+                         G_ADD_PRIVATE (CtkTextTagTable)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
                                                 ctk_text_tag_table_buildable_interface_init))
 
 static void
-ctk_text_tag_table_class_init (GtkTextTagTableClass *klass)
+ctk_text_tag_table_class_init (CtkTextTagTableClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->finalize = ctk_text_tag_table_finalize;
 
   /**
-   * GtkTextTagTable::tag-changed:
+   * CtkTextTagTable::tag-changed:
    * @texttagtable: the object which received the signal.
    * @tag: the changed tag.
-   * @size_changed: whether the change affects the #GtkTextView layout.
+   * @size_changed: whether the change affects the #CtkTextView layout.
    */
   signals[TAG_CHANGED] =
     g_signal_new (I_("tag-changed"),
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkTextTagTableClass, tag_changed),
+                  G_STRUCT_OFFSET (CtkTextTagTableClass, tag_changed),
                   NULL, NULL,
                   _ctk_marshal_VOID__OBJECT_BOOLEAN,
                   G_TYPE_NONE,
@@ -123,7 +123,7 @@ ctk_text_tag_table_class_init (GtkTextTagTableClass *klass)
                               _ctk_marshal_VOID__OBJECT_BOOLEANv);
 
   /**
-   * GtkTextTagTable::tag-added:
+   * CtkTextTagTable::tag-added:
    * @texttagtable: the object which received the signal.
    * @tag: the added tag.
    */
@@ -131,7 +131,7 @@ ctk_text_tag_table_class_init (GtkTextTagTableClass *klass)
     g_signal_new (I_("tag-added"),
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkTextTagTableClass, tag_added),
+                  G_STRUCT_OFFSET (CtkTextTagTableClass, tag_added),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE,
@@ -139,7 +139,7 @@ ctk_text_tag_table_class_init (GtkTextTagTableClass *klass)
                   CTK_TYPE_TEXT_TAG);
 
   /**
-   * GtkTextTagTable::tag-removed:
+   * CtkTextTagTable::tag-removed:
    * @texttagtable: the object which received the signal.
    * @tag: the removed tag.
    */
@@ -147,7 +147,7 @@ ctk_text_tag_table_class_init (GtkTextTagTableClass *klass)
     g_signal_new (I_("tag-removed"),  
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkTextTagTableClass, tag_removed),
+                  G_STRUCT_OFFSET (CtkTextTagTableClass, tag_removed),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE,
@@ -156,15 +156,15 @@ ctk_text_tag_table_class_init (GtkTextTagTableClass *klass)
 }
 
 static void
-ctk_text_tag_table_init (GtkTextTagTable *table)
+ctk_text_tag_table_init (CtkTextTagTable *table)
 {
   table->priv = ctk_text_tag_table_get_instance_private (table);
   table->priv->hash = g_hash_table_new (g_str_hash, g_str_equal);
 }
 
 static void
-check_visible (GtkTextTagTable *table,
-               GtkTextTag      *tag)
+check_visible (CtkTextTagTable *table,
+               CtkTextTag      *tag)
 {
   if (table->priv->seen_invisible)
     return;
@@ -181,15 +181,15 @@ check_visible (GtkTextTagTable *table,
 /**
  * ctk_text_tag_table_new:
  * 
- * Creates a new #GtkTextTagTable. The table contains no tags by
+ * Creates a new #CtkTextTagTable. The table contains no tags by
  * default.
  * 
- * Returns: a new #GtkTextTagTable
+ * Returns: a new #CtkTextTagTable
  **/
-GtkTextTagTable*
+CtkTextTagTable*
 ctk_text_tag_table_new (void)
 {
-  GtkTextTagTable *table;
+  CtkTextTagTable *table;
 
   table = g_object_new (CTK_TYPE_TEXT_TAG_TABLE, NULL);
 
@@ -197,10 +197,10 @@ ctk_text_tag_table_new (void)
 }
 
 static void
-foreach_unref (GtkTextTag *tag, gpointer data)
+foreach_unref (CtkTextTag *tag, gpointer data)
 {
-  GtkTextTagTable *table = CTK_TEXT_TAG_TABLE (tag->priv->table);
-  GtkTextTagTablePrivate *priv = table->priv;
+  CtkTextTagTable *table = CTK_TEXT_TAG_TABLE (tag->priv->table);
+  CtkTextTagTablePrivate *priv = table->priv;
   GSList *l;
 
   /* We don't want to emit the remove signal here; so we just unparent
@@ -218,8 +218,8 @@ foreach_unref (GtkTextTag *tag, gpointer data)
 static void
 ctk_text_tag_table_finalize (GObject *object)
 {
-  GtkTextTagTable *table = CTK_TEXT_TAG_TABLE (object);
-  GtkTextTagTablePrivate *priv = table->priv;
+  CtkTextTagTable *table = CTK_TEXT_TAG_TABLE (object);
+  CtkTextTagTablePrivate *priv = table->priv;
 
   ctk_text_tag_table_foreach (table, foreach_unref, NULL);
 
@@ -231,14 +231,14 @@ ctk_text_tag_table_finalize (GObject *object)
 }
 
 static void
-ctk_text_tag_table_buildable_interface_init (GtkBuildableIface   *iface)
+ctk_text_tag_table_buildable_interface_init (CtkBuildableIface   *iface)
 {
   iface->add_child = ctk_text_tag_table_buildable_add_child;
 }
 
 static void
-ctk_text_tag_table_buildable_add_child (GtkBuildable        *buildable,
-					GtkBuilder          *builder,
+ctk_text_tag_table_buildable_add_child (CtkBuildable        *buildable,
+					CtkBuilder          *builder,
 					GObject             *child,
 					const gchar         *type)
 {
@@ -249,8 +249,8 @@ ctk_text_tag_table_buildable_add_child (GtkBuildable        *buildable,
 
 /**
  * ctk_text_tag_table_add:
- * @table: a #GtkTextTagTable
- * @tag: a #GtkTextTag
+ * @table: a #CtkTextTagTable
+ * @tag: a #CtkTextTag
  *
  * Add a tag to the table. The tag is assigned the highest priority
  * in the table.
@@ -261,10 +261,10 @@ ctk_text_tag_table_buildable_add_child (GtkBuildable        *buildable,
  * Returns: %TRUE on success.
  **/
 gboolean
-ctk_text_tag_table_add (GtkTextTagTable *table,
-                        GtkTextTag      *tag)
+ctk_text_tag_table_add (CtkTextTagTable *table,
+                        CtkTextTag      *tag)
 {
-  GtkTextTagTablePrivate *priv;
+  CtkTextTagTablePrivate *priv;
   guint size;
 
   g_return_val_if_fail (CTK_IS_TEXT_TAG_TABLE (table), FALSE);
@@ -307,7 +307,7 @@ ctk_text_tag_table_add (GtkTextTagTable *table,
 
 /**
  * ctk_text_tag_table_lookup:
- * @table: a #GtkTextTagTable 
+ * @table: a #CtkTextTagTable 
  * @name: name of a tag
  * 
  * Look up a named tag.
@@ -315,11 +315,11 @@ ctk_text_tag_table_add (GtkTextTagTable *table,
  * Returns: (nullable) (transfer none): The tag, or %NULL if none by that
  * name is in the table.
  **/
-GtkTextTag*
-ctk_text_tag_table_lookup (GtkTextTagTable *table,
+CtkTextTag*
+ctk_text_tag_table_lookup (CtkTextTagTable *table,
                            const gchar     *name)
 {
-  GtkTextTagTablePrivate *priv;
+  CtkTextTagTablePrivate *priv;
 
   g_return_val_if_fail (CTK_IS_TEXT_TAG_TABLE (table), NULL);
   g_return_val_if_fail (name != NULL, NULL);
@@ -331,19 +331,19 @@ ctk_text_tag_table_lookup (GtkTextTagTable *table,
 
 /**
  * ctk_text_tag_table_remove:
- * @table: a #GtkTextTagTable
- * @tag: a #GtkTextTag
+ * @table: a #CtkTextTagTable
+ * @tag: a #CtkTextTag
  *
- * Remove a tag from the table. If a #GtkTextBuffer has @table as its tag table,
+ * Remove a tag from the table. If a #CtkTextBuffer has @table as its tag table,
  * the tag is removed from the buffer. The table’s reference to the tag is
  * removed, so the tag will end up destroyed if you don’t have a reference to
  * it.
  **/
 void
-ctk_text_tag_table_remove (GtkTextTagTable *table,
-                           GtkTextTag      *tag)
+ctk_text_tag_table_remove (CtkTextTagTable *table,
+                           CtkTextTag      *tag)
 {
-  GtkTextTagTablePrivate *priv;
+  CtkTextTagTablePrivate *priv;
   GSList *l;
 
   g_return_if_fail (CTK_IS_TEXT_TAG_TABLE (table));
@@ -381,7 +381,7 @@ ctk_text_tag_table_remove (GtkTextTagTable *table,
 
 struct ForeachData
 {
-  GtkTextTagTableForeach func;
+  CtkTextTagTableForeach func;
   gpointer data;
 };
 
@@ -407,7 +407,7 @@ list_foreach (gpointer data, gpointer user_data)
 
 /**
  * ctk_text_tag_table_foreach:
- * @table: a #GtkTextTagTable
+ * @table: a #CtkTextTagTable
  * @func: (scope call): a function to call on each tag
  * @data: user data
  *
@@ -416,11 +416,11 @@ list_foreach (gpointer data, gpointer user_data)
  * over it (you can’t add/remove tags).
  **/
 void
-ctk_text_tag_table_foreach (GtkTextTagTable       *table,
-                            GtkTextTagTableForeach func,
+ctk_text_tag_table_foreach (CtkTextTagTable       *table,
+                            CtkTextTagTableForeach func,
                             gpointer               data)
 {
-  GtkTextTagTablePrivate *priv;
+  CtkTextTagTablePrivate *priv;
   struct ForeachData d;
 
   g_return_if_fail (CTK_IS_TEXT_TAG_TABLE (table));
@@ -437,16 +437,16 @@ ctk_text_tag_table_foreach (GtkTextTagTable       *table,
 
 /**
  * ctk_text_tag_table_get_size:
- * @table: a #GtkTextTagTable
+ * @table: a #CtkTextTagTable
  * 
  * Returns the size of the table (number of tags)
  * 
  * Returns: number of tags in @table
  **/
 gint
-ctk_text_tag_table_get_size (GtkTextTagTable *table)
+ctk_text_tag_table_get_size (CtkTextTagTable *table)
 {
-  GtkTextTagTablePrivate *priv;
+  CtkTextTagTablePrivate *priv;
 
   g_return_val_if_fail (CTK_IS_TEXT_TAG_TABLE (table), 0);
 
@@ -456,18 +456,18 @@ ctk_text_tag_table_get_size (GtkTextTagTable *table)
 }
 
 void
-_ctk_text_tag_table_add_buffer (GtkTextTagTable *table,
+_ctk_text_tag_table_add_buffer (CtkTextTagTable *table,
                                 gpointer         buffer)
 {
-  GtkTextTagTablePrivate *priv = table->priv;
+  CtkTextTagTablePrivate *priv = table->priv;
 
   priv->buffers = g_slist_prepend (priv->buffers, buffer);
 }
 
 static void
-foreach_remove_tag (GtkTextTag *tag, gpointer data)
+foreach_remove_tag (CtkTextTag *tag, gpointer data)
 {
-  GtkTextBuffer *buffer;
+  CtkTextBuffer *buffer;
 
   buffer = CTK_TEXT_BUFFER (data);
 
@@ -475,10 +475,10 @@ foreach_remove_tag (GtkTextTag *tag, gpointer data)
 }
 
 void
-_ctk_text_tag_table_remove_buffer (GtkTextTagTable *table,
+_ctk_text_tag_table_remove_buffer (CtkTextTagTable *table,
                                    gpointer         buffer)
 {
-  GtkTextTagTablePrivate *priv = table->priv;
+  CtkTextTagTablePrivate *priv = table->priv;
 
   ctk_text_tag_table_foreach (table, foreach_remove_tag, buffer);
 
@@ -486,8 +486,8 @@ _ctk_text_tag_table_remove_buffer (GtkTextTagTable *table,
 }
 
 void
-_ctk_text_tag_table_tag_changed (GtkTextTagTable *table,
-                                 GtkTextTag      *tag,
+_ctk_text_tag_table_tag_changed (CtkTextTagTable *table,
+                                 CtkTextTag      *tag,
                                  gboolean         size_changed)
 {
   check_visible (table, tag);
@@ -495,7 +495,7 @@ _ctk_text_tag_table_tag_changed (GtkTextTagTable *table,
 }
 
 gboolean
-_ctk_text_tag_table_affects_visibility (GtkTextTagTable *table)
+_ctk_text_tag_table_affects_visibility (CtkTextTagTable *table)
 {
   return table->priv->seen_invisible;
 }

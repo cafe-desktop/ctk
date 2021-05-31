@@ -23,16 +23,16 @@
 #include "ctkgesturesingleprivate.h"
 #include "ctkgestureswipe.h"
 
-struct _GtkGestureSwipe
+struct _CtkGestureSwipe
 {
-  GtkGestureSingle parent_instance;
+  CtkGestureSingle parent_instance;
 };
 
-struct _GtkGestureSwipeClass
+struct _CtkGestureSwipeClass
 {
-  GtkGestureSingleClass parent_class;
+  CtkGestureSingleClass parent_class;
 
-  void (* swipe) (GtkGestureSwipe *gesture,
+  void (* swipe) (CtkGestureSwipe *gesture,
                   gdouble          velocity_x,
                   gdouble          velocity_y);
 

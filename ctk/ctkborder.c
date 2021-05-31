@@ -29,47 +29,47 @@
 /**
  * ctk_border_new:
  *
- * Allocates a new #GtkBorder-struct and initializes its elements to zero.
+ * Allocates a new #CtkBorder-struct and initializes its elements to zero.
  *
- * Returns: (transfer full): a newly allocated #GtkBorder-struct.
+ * Returns: (transfer full): a newly allocated #CtkBorder-struct.
  *  Free with ctk_border_free()
  *
  * Since: 2.14
  */
-GtkBorder *
+CtkBorder *
 ctk_border_new (void)
 {
-  return g_slice_new0 (GtkBorder);
+  return g_slice_new0 (CtkBorder);
 }
 
 /**
  * ctk_border_copy:
- * @border_: a #GtkBorder-struct
+ * @border_: a #CtkBorder-struct
  *
- * Copies a #GtkBorder-struct.
+ * Copies a #CtkBorder-struct.
  *
  * Returns: (transfer full): a copy of @border_.
  */
-GtkBorder *
-ctk_border_copy (const GtkBorder *border_)
+CtkBorder *
+ctk_border_copy (const CtkBorder *border_)
 {
   g_return_val_if_fail (border_ != NULL, NULL);
 
-  return g_slice_dup (GtkBorder, border_);
+  return g_slice_dup (CtkBorder, border_);
 }
 
 /**
  * ctk_border_free:
- * @border_: a #GtkBorder-struct
+ * @border_: a #CtkBorder-struct
  *
- * Frees a #GtkBorder-struct.
+ * Frees a #CtkBorder-struct.
  */
 void
-ctk_border_free (GtkBorder *border_)
+ctk_border_free (CtkBorder *border_)
 {
-  g_slice_free (GtkBorder, border_);
+  g_slice_free (CtkBorder, border_);
 }
 
-G_DEFINE_BOXED_TYPE (GtkBorder, ctk_border,
+G_DEFINE_BOXED_TYPE (CtkBorder, ctk_border,
                      ctk_border_copy,
                      ctk_border_free)

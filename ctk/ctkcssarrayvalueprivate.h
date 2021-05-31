@@ -26,15 +26,15 @@
 
 G_BEGIN_DECLS
 
-GtkCssValue *       _ctk_css_array_value_new            (GtkCssValue           *content);
-GtkCssValue *       _ctk_css_array_value_new_from_array (GtkCssValue          **values,
+CtkCssValue *       _ctk_css_array_value_new            (CtkCssValue           *content);
+CtkCssValue *       _ctk_css_array_value_new_from_array (CtkCssValue          **values,
                                                          guint                  n_values);
-GtkCssValue *       _ctk_css_array_value_parse          (GtkCssParser          *parser,
-                                                         GtkCssValue *          (* parse_func) (GtkCssParser *));
+CtkCssValue *       _ctk_css_array_value_parse          (CtkCssParser          *parser,
+                                                         CtkCssValue *          (* parse_func) (CtkCssParser *));
 
-GtkCssValue *       _ctk_css_array_value_get_nth        (const GtkCssValue     *value,
+CtkCssValue *       _ctk_css_array_value_get_nth        (const CtkCssValue     *value,
                                                          guint                  i);
-guint               _ctk_css_array_value_get_n_values   (const GtkCssValue     *value);
+guint               _ctk_css_array_value_get_n_values   (const CtkCssValue     *value);
 
 
 G_END_DECLS

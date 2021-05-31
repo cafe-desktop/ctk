@@ -21,30 +21,30 @@
 #include <ctk/ctkpaned.h>
 
 #define CTK_TYPE_INSPECTOR_SIGNALS_LIST            (ctk_inspector_signals_list_get_type())
-#define CTK_INSPECTOR_SIGNALS_LIST(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_SIGNALS_LIST, GtkInspectorSignalsList))
-#define CTK_INSPECTOR_SIGNALS_LIST_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_SIGNALS_LIST, GtkInspectorSignalsListClass))
+#define CTK_INSPECTOR_SIGNALS_LIST(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_SIGNALS_LIST, CtkInspectorSignalsList))
+#define CTK_INSPECTOR_SIGNALS_LIST_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_SIGNALS_LIST, CtkInspectorSignalsListClass))
 #define CTK_INSPECTOR_IS_SIGNALS_LIST(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), CTK_TYPE_INSPECTOR_SIGNALS_LIST))
 #define CTK_INSPECTOR_IS_SIGNALS_LIST_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), CTK_TYPE_INSPECTOR_SIGNALS_LIST))
-#define CTK_INSPECTOR_SIGNALS_LIST_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_SIGNALS_LIST, GtkInspectorSignalsListClass))
+#define CTK_INSPECTOR_SIGNALS_LIST_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_SIGNALS_LIST, CtkInspectorSignalsListClass))
 
 
-typedef struct _GtkInspectorSignalsListPrivate GtkInspectorSignalsListPrivate;
+typedef struct _CtkInspectorSignalsListPrivate CtkInspectorSignalsListPrivate;
 
-typedef struct _GtkInspectorSignalsList
+typedef struct _CtkInspectorSignalsList
 {
-  GtkPaned parent;
-  GtkInspectorSignalsListPrivate *priv;
-} GtkInspectorSignalsList;
+  CtkPaned parent;
+  CtkInspectorSignalsListPrivate *priv;
+} CtkInspectorSignalsList;
 
-typedef struct _GtkInspectorSignalsListClass
+typedef struct _CtkInspectorSignalsListClass
 {
-  GtkPanedClass parent;
-} GtkInspectorSignalsListClass;
+  CtkPanedClass parent;
+} CtkInspectorSignalsListClass;
 
 G_BEGIN_DECLS
 
 GType      ctk_inspector_signals_list_get_type   (void);
-void       ctk_inspector_signals_list_set_object (GtkInspectorSignalsList *sl,
+void       ctk_inspector_signals_list_set_object (CtkInspectorSignalsList *sl,
                                                   GObject                 *object);
 
 G_END_DECLS

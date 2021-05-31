@@ -24,9 +24,9 @@
 #include "ctkdebug.h"
 
 
-typedef struct _GtkXEmbedMessage GtkXEmbedMessage;
+typedef struct _CtkXEmbedMessage CtkXEmbedMessage;
 
-struct _GtkXEmbedMessage
+struct _CtkXEmbedMessage
 {
   glong      message;
   glong      detail;
@@ -47,7 +47,7 @@ static GSList *current_messages;
 void
 _ctk_xembed_push_message (XEvent *xevent)
 {
-  GtkXEmbedMessage *message = g_slice_new (GtkXEmbedMessage);
+  CtkXEmbedMessage *message = g_slice_new (CtkXEmbedMessage);
   
   message->time = xevent->xclient.data.l[0];
   message->message = xevent->xclient.data.l[1];
@@ -66,9 +66,9 @@ _ctk_xembed_push_message (XEvent *xevent)
 void
 _ctk_xembed_pop_message (void)
 {
-  GtkXEmbedMessage *message = current_messages->data;
+  CtkXEmbedMessage *message = current_messages->data;
   current_messages = g_slist_delete_link (current_messages, current_messages);
-  g_slice_free (GtkXEmbedMessage, message);
+  g_slice_free (CtkXEmbedMessage, message);
 }
 
 /**
@@ -80,7 +80,7 @@ _ctk_xembed_pop_message (void)
 void
 _ctk_xembed_set_focus_wrapped (void)
 {
-  GtkXEmbedMessage *message;
+  CtkXEmbedMessage *message;
   
   g_return_if_fail (current_messages != NULL);
   message = current_messages->data;
@@ -100,7 +100,7 @@ _ctk_xembed_set_focus_wrapped (void)
 gboolean
 _ctk_xembed_get_focus_wrapped (void)
 {
-  GtkXEmbedMessage *message;
+  CtkXEmbedMessage *message;
   
   g_return_val_if_fail (current_messages != NULL, FALSE);
   message = current_messages->data;
@@ -113,7 +113,7 @@ ctk_xembed_get_time (void)
 {
   if (current_messages)
     {
-      GtkXEmbedMessage *message = current_messages->data;
+      CtkXEmbedMessage *message = current_messages->data;
       return message->time;
     }
   else
@@ -196,7 +196,7 @@ _ctk_xembed_send_focus_message (GdkWindow        *recipient,
 
   if (current_messages)
     {
-      GtkXEmbedMessage *message = current_messages->data;
+      CtkXEmbedMessage *message = current_messages->data;
       switch (message->message)
 	{
 	case XEMBED_FOCUS_IN:

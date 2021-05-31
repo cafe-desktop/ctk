@@ -28,26 +28,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_LIST_BOX_ACCESSIBLE                   (ctk_list_box_accessible_get_type ())
-#define CTK_LIST_BOX_ACCESSIBLE(obj)                   (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_LIST_BOX_ACCESSIBLE, GtkListBoxAccessible))
-#define CTK_LIST_BOX_ACCESSIBLE_CLASS(klass)           (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_LIST_BOX_ACCESSIBLE, GtkListBoxAccessibleClass))
+#define CTK_LIST_BOX_ACCESSIBLE(obj)                   (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_LIST_BOX_ACCESSIBLE, CtkListBoxAccessible))
+#define CTK_LIST_BOX_ACCESSIBLE_CLASS(klass)           (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_LIST_BOX_ACCESSIBLE, CtkListBoxAccessibleClass))
 #define CTK_IS_LIST_BOX_ACCESSIBLE(obj)                (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_LIST_BOX_ACCESSIBLE))
 #define CTK_IS_LIST_BOX_ACCESSIBLE_CLASS(klass)        (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_LIST_BOX_ACCESSIBLE))
-#define CTK_LIST_BOX_ACCESSIBLE_GET_CLASS(obj)         (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_LIST_BOX_ACCESSIBLE, GtkListBoxAccessibleClass))
+#define CTK_LIST_BOX_ACCESSIBLE_GET_CLASS(obj)         (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_LIST_BOX_ACCESSIBLE, CtkListBoxAccessibleClass))
 
-typedef struct _GtkListBoxAccessible        GtkListBoxAccessible;
-typedef struct _GtkListBoxAccessibleClass   GtkListBoxAccessibleClass;
-typedef struct _GtkListBoxAccessiblePrivate GtkListBoxAccessiblePrivate;
+typedef struct _CtkListBoxAccessible        CtkListBoxAccessible;
+typedef struct _CtkListBoxAccessibleClass   CtkListBoxAccessibleClass;
+typedef struct _CtkListBoxAccessiblePrivate CtkListBoxAccessiblePrivate;
 
-struct _GtkListBoxAccessible
+struct _CtkListBoxAccessible
 {
-  GtkContainerAccessible parent;
+  CtkContainerAccessible parent;
 
-  GtkListBoxAccessiblePrivate *priv;
+  CtkListBoxAccessiblePrivate *priv;
 };
 
-struct _GtkListBoxAccessibleClass
+struct _CtkListBoxAccessibleClass
 {
-  GtkContainerAccessibleClass parent_class;
+  CtkContainerAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

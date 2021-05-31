@@ -1,7 +1,7 @@
 #!@PERL@ -w
 
 print <<EOT;
-typedef	GtkWidget *(*GDoDemoFunc) (GtkWidget *do_widget);
+typedef	CtkWidget *(*GDoDemoFunc) (CtkWidget *do_widget);
 
 typedef struct _Demo Demo;
 
@@ -28,7 +28,7 @@ for $file (@ARGV) {
 
     close INFO_FILE;
 
-    print "GtkWidget *do_$basename (GtkWidget *do_widget);\n";
+    print "CtkWidget *do_$basename (CtkWidget *do_widget);\n";
 
     push @demos, {"name" => $basename, "title" => $title, "file" => $file,
 		  "func"  => "do_$basename"};

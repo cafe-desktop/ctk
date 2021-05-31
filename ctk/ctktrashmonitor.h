@@ -26,21 +26,21 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_TRASH_MONITOR			(_ctk_trash_monitor_get_type ())
-#define CTK_TRASH_MONITOR(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TRASH_MONITOR, GtkTrashMonitor))
-#define CTK_TRASH_MONITOR_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TRASH_MONITOR, GtkTrashMonitorClass))
+#define CTK_TRASH_MONITOR(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TRASH_MONITOR, CtkTrashMonitor))
+#define CTK_TRASH_MONITOR_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TRASH_MONITOR, CtkTrashMonitorClass))
 #define CTK_IS_TRASH_MONITOR(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TRASH_MONITOR))
 #define CTK_IS_TRASH_MONITOR_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TRASH_MONITOR))
-#define CTK_TRASH_MONITOR_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TRASH_MONITOR, GtkTrashMonitorClass))
+#define CTK_TRASH_MONITOR_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TRASH_MONITOR, CtkTrashMonitorClass))
 
-typedef struct _GtkTrashMonitor GtkTrashMonitor;
-typedef struct _GtkTrashMonitorClass GtkTrashMonitorClass;
+typedef struct _CtkTrashMonitor CtkTrashMonitor;
+typedef struct _CtkTrashMonitorClass CtkTrashMonitorClass;
 
 GType _ctk_trash_monitor_get_type (void);
-GtkTrashMonitor *_ctk_trash_monitor_get (void);
+CtkTrashMonitor *_ctk_trash_monitor_get (void);
 
-GIcon *_ctk_trash_monitor_get_icon (GtkTrashMonitor *monitor);
+GIcon *_ctk_trash_monitor_get_icon (CtkTrashMonitor *monitor);
 
-gboolean _ctk_trash_monitor_get_has_trash (GtkTrashMonitor *monitor);
+gboolean _ctk_trash_monitor_get_has_trash (CtkTrashMonitor *monitor);
 
 G_END_DECLS
 

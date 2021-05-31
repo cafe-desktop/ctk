@@ -476,7 +476,7 @@ read_settings (GdkX11Screen *x11_screen,
        * gdk_x11_display_set_window_scale() is called, and not wait for events
        * to be processed, so we can't always handling it in ctksettings.c.
        * But we can't always handle it here because the DPI can be set through
-       * GtkSettings, which we don't have access to.
+       * CtkSettings, which we don't have access to.
        */
       int dpi_int = 0;
       double dpi;

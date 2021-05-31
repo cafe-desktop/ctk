@@ -24,56 +24,56 @@
 
 G_BEGIN_DECLS
 
-GtkCssNodeDeclaration * ctk_css_node_declaration_new                    (void);
-GtkCssNodeDeclaration * ctk_css_node_declaration_ref                    (GtkCssNodeDeclaration         *decl);
-void                    ctk_css_node_declaration_unref                  (GtkCssNodeDeclaration         *decl);
+CtkCssNodeDeclaration * ctk_css_node_declaration_new                    (void);
+CtkCssNodeDeclaration * ctk_css_node_declaration_ref                    (CtkCssNodeDeclaration         *decl);
+void                    ctk_css_node_declaration_unref                  (CtkCssNodeDeclaration         *decl);
 
-gboolean                ctk_css_node_declaration_set_junction_sides     (GtkCssNodeDeclaration        **decl,
-                                                                         GtkJunctionSides               junction_sides);
-GtkJunctionSides        ctk_css_node_declaration_get_junction_sides     (const GtkCssNodeDeclaration   *decl);
-gboolean                ctk_css_node_declaration_set_type               (GtkCssNodeDeclaration        **decl,
+gboolean                ctk_css_node_declaration_set_junction_sides     (CtkCssNodeDeclaration        **decl,
+                                                                         CtkJunctionSides               junction_sides);
+CtkJunctionSides        ctk_css_node_declaration_get_junction_sides     (const CtkCssNodeDeclaration   *decl);
+gboolean                ctk_css_node_declaration_set_type               (CtkCssNodeDeclaration        **decl,
                                                                          GType                          type);
-GType                   ctk_css_node_declaration_get_type               (const GtkCssNodeDeclaration   *decl);
-gboolean                ctk_css_node_declaration_set_name               (GtkCssNodeDeclaration        **decl,
+GType                   ctk_css_node_declaration_get_type               (const CtkCssNodeDeclaration   *decl);
+gboolean                ctk_css_node_declaration_set_name               (CtkCssNodeDeclaration        **decl,
                                                                          /*interned*/ const char       *name);
-/*interned*/ const char*ctk_css_node_declaration_get_name               (const GtkCssNodeDeclaration   *decl);
-gboolean                ctk_css_node_declaration_set_id                 (GtkCssNodeDeclaration        **decl,
+/*interned*/ const char*ctk_css_node_declaration_get_name               (const CtkCssNodeDeclaration   *decl);
+gboolean                ctk_css_node_declaration_set_id                 (CtkCssNodeDeclaration        **decl,
                                                                          const char                    *id);
-const char *            ctk_css_node_declaration_get_id                 (const GtkCssNodeDeclaration   *decl);
-gboolean                ctk_css_node_declaration_set_state              (GtkCssNodeDeclaration        **decl,
-                                                                         GtkStateFlags                  flags);
-GtkStateFlags           ctk_css_node_declaration_get_state              (const GtkCssNodeDeclaration   *decl);
+const char *            ctk_css_node_declaration_get_id                 (const CtkCssNodeDeclaration   *decl);
+gboolean                ctk_css_node_declaration_set_state              (CtkCssNodeDeclaration        **decl,
+                                                                         CtkStateFlags                  flags);
+CtkStateFlags           ctk_css_node_declaration_get_state              (const CtkCssNodeDeclaration   *decl);
 
-gboolean                ctk_css_node_declaration_add_class              (GtkCssNodeDeclaration        **decl,
+gboolean                ctk_css_node_declaration_add_class              (CtkCssNodeDeclaration        **decl,
                                                                          GQuark                         class_quark);
-gboolean                ctk_css_node_declaration_remove_class           (GtkCssNodeDeclaration        **decl,
+gboolean                ctk_css_node_declaration_remove_class           (CtkCssNodeDeclaration        **decl,
                                                                          GQuark                         class_quark);
-gboolean                ctk_css_node_declaration_clear_classes          (GtkCssNodeDeclaration        **decl);
-gboolean                ctk_css_node_declaration_has_class              (const GtkCssNodeDeclaration   *decl,
+gboolean                ctk_css_node_declaration_clear_classes          (CtkCssNodeDeclaration        **decl);
+gboolean                ctk_css_node_declaration_has_class              (const CtkCssNodeDeclaration   *decl,
                                                                          GQuark                         class_quark);
-const GQuark *          ctk_css_node_declaration_get_classes            (const GtkCssNodeDeclaration   *decl,
+const GQuark *          ctk_css_node_declaration_get_classes            (const CtkCssNodeDeclaration   *decl,
                                                                          guint                         *n_classes);
 
-gboolean                ctk_css_node_declaration_add_region             (GtkCssNodeDeclaration        **decl,
+gboolean                ctk_css_node_declaration_add_region             (CtkCssNodeDeclaration        **decl,
                                                                          GQuark                         region_quark,
-                                                                         GtkRegionFlags                 flags);
-gboolean                ctk_css_node_declaration_remove_region          (GtkCssNodeDeclaration        **decl,
+                                                                         CtkRegionFlags                 flags);
+gboolean                ctk_css_node_declaration_remove_region          (CtkCssNodeDeclaration        **decl,
                                                                          GQuark                         region_quark);
-gboolean                ctk_css_node_declaration_clear_regions          (GtkCssNodeDeclaration        **decl);
-gboolean                ctk_css_node_declaration_has_region             (const GtkCssNodeDeclaration   *decl,
+gboolean                ctk_css_node_declaration_clear_regions          (CtkCssNodeDeclaration        **decl);
+gboolean                ctk_css_node_declaration_has_region             (const CtkCssNodeDeclaration   *decl,
                                                                          GQuark                         region_quark,
-                                                                         GtkRegionFlags                *flags_return);
-GList *                 ctk_css_node_declaration_list_regions           (const GtkCssNodeDeclaration   *decl);
+                                                                         CtkRegionFlags                *flags_return);
+GList *                 ctk_css_node_declaration_list_regions           (const CtkCssNodeDeclaration   *decl);
 
 guint                   ctk_css_node_declaration_hash                   (gconstpointer                  elem);
 gboolean                ctk_css_node_declaration_equal                  (gconstpointer                  elem1,
                                                                          gconstpointer                  elem2);
 
-void                    ctk_css_node_declaration_add_to_widget_path     (const GtkCssNodeDeclaration   *decl,
-                                                                         GtkWidgetPath                 *path,
+void                    ctk_css_node_declaration_add_to_widget_path     (const CtkCssNodeDeclaration   *decl,
+                                                                         CtkWidgetPath                 *path,
                                                                          guint                          pos);
 
-void                    ctk_css_node_declaration_print                  (const GtkCssNodeDeclaration   *decl,
+void                    ctk_css_node_declaration_print                  (const CtkCssNodeDeclaration   *decl,
                                                                          GString                       *string);
 
 G_END_DECLS

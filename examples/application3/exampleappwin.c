@@ -5,14 +5,14 @@
 
 struct _ExampleAppWindow
 {
-  GtkApplicationWindow parent;
+  CtkApplicationWindow parent;
 };
 
 typedef struct _ExampleAppWindowPrivate ExampleAppWindowPrivate;
 
 struct _ExampleAppWindowPrivate
 {
-  GtkWidget *stack;
+  CtkWidget *stack;
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE(ExampleAppWindow, example_app_window, CTK_TYPE_APPLICATION_WINDOW);
@@ -43,7 +43,7 @@ example_app_window_open (ExampleAppWindow *win,
 {
   ExampleAppWindowPrivate *priv;
   gchar *basename;
-  GtkWidget *scrolled, *view;
+  CtkWidget *scrolled, *view;
   gchar *contents;
   gsize length;
 
@@ -63,7 +63,7 @@ example_app_window_open (ExampleAppWindow *win,
 
   if (g_file_load_contents (file, NULL, &contents, &length, NULL, NULL))
     {
-      GtkTextBuffer *buffer;
+      CtkTextBuffer *buffer;
 
       buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
       ctk_text_buffer_set_text (buffer, contents, length);

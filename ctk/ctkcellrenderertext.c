@@ -34,14 +34,14 @@
 /**
  * SECTION:ctkcellrenderertext
  * @Short_description: Renders text in a cell
- * @Title: GtkCellRendererText
+ * @Title: CtkCellRendererText
  *
- * A #GtkCellRendererText renders a given text in its cell, using the font, color and
+ * A #CtkCellRendererText renders a given text in its cell, using the font, color and
  * style information provided by its properties. The text will be ellipsized if it is
- * too long and the #GtkCellRendererText:ellipsize property allows it.
+ * too long and the #CtkCellRendererText:ellipsize property allows it.
  *
- * If the #GtkCellRenderer:mode is %CTK_CELL_RENDERER_MODE_EDITABLE,
- * the #GtkCellRendererText allows to edit its text using an entry.
+ * If the #CtkCellRenderer:mode is %CTK_CELL_RENDERER_MODE_EDITABLE,
+ * the #CtkCellRendererText allows to edit its text using an entry.
  */
 
 
@@ -55,37 +55,37 @@ static void ctk_cell_renderer_text_set_property  (GObject                  *obje
 						  guint                     param_id,
 						  const GValue             *value,
 						  GParamSpec               *pspec);
-static void ctk_cell_renderer_text_render     (GtkCellRenderer          *cell,
+static void ctk_cell_renderer_text_render     (CtkCellRenderer          *cell,
 					       cairo_t                  *cr,
-					       GtkWidget                *widget,
+					       CtkWidget                *widget,
 					       const GdkRectangle       *background_area,
 					       const GdkRectangle       *cell_area,
-					       GtkCellRendererState      flags);
+					       CtkCellRendererState      flags);
 
-static GtkCellEditable *ctk_cell_renderer_text_start_editing (GtkCellRenderer      *cell,
+static CtkCellEditable *ctk_cell_renderer_text_start_editing (CtkCellRenderer      *cell,
 							      GdkEvent             *event,
-							      GtkWidget            *widget,
+							      CtkWidget            *widget,
 							      const gchar          *path,
 							      const GdkRectangle   *background_area,
 							      const GdkRectangle   *cell_area,
-							      GtkCellRendererState  flags);
+							      CtkCellRendererState  flags);
 
-static void       ctk_cell_renderer_text_get_preferred_width            (GtkCellRenderer       *cell,
-                                                                         GtkWidget             *widget,
+static void       ctk_cell_renderer_text_get_preferred_width            (CtkCellRenderer       *cell,
+                                                                         CtkWidget             *widget,
                                                                          gint                  *minimal_size,
                                                                          gint                  *natural_size);
-static void       ctk_cell_renderer_text_get_preferred_height           (GtkCellRenderer       *cell,
-                                                                         GtkWidget             *widget,
+static void       ctk_cell_renderer_text_get_preferred_height           (CtkCellRenderer       *cell,
+                                                                         CtkWidget             *widget,
                                                                          gint                  *minimal_size,
                                                                          gint                  *natural_size);
-static void       ctk_cell_renderer_text_get_preferred_height_for_width (GtkCellRenderer       *cell,
-                                                                         GtkWidget             *widget,
+static void       ctk_cell_renderer_text_get_preferred_height_for_width (CtkCellRenderer       *cell,
+                                                                         CtkWidget             *widget,
                                                                          gint                   width,
                                                                          gint                  *minimum_height,
                                                                          gint                  *natural_height);
-static void       ctk_cell_renderer_text_get_aligned_area               (GtkCellRenderer       *cell,
-									 GtkWidget             *widget,
-									 GtkCellRendererState   flags,
+static void       ctk_cell_renderer_text_get_aligned_area               (CtkCellRenderer       *cell,
+									 CtkWidget             *widget,
+									 CtkCellRendererState   flags,
 									 const GdkRectangle    *cell_area,
 									 GdkRectangle          *aligned_area);
 
@@ -160,9 +160,9 @@ static GParamSpec *text_cell_renderer_props [LAST_PROP];
 
 #define CTK_CELL_RENDERER_TEXT_PATH "ctk-cell-renderer-text-path"
 
-struct _GtkCellRendererTextPrivate
+struct _CtkCellRendererTextPrivate
 {
-  GtkWidget *entry;
+  CtkWidget *entry;
 
   PangoAttrList        *extra_attrs;
   GdkRGBA               foreground;
@@ -207,13 +207,13 @@ struct _GtkCellRendererTextPrivate
   gulong entry_menu_popdown_timeout;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkCellRendererText, ctk_cell_renderer_text, CTK_TYPE_CELL_RENDERER)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkCellRendererText, ctk_cell_renderer_text, CTK_TYPE_CELL_RENDERER)
 
 static void
-ctk_cell_renderer_text_init (GtkCellRendererText *celltext)
+ctk_cell_renderer_text_init (CtkCellRendererText *celltext)
 {
-  GtkCellRendererTextPrivate *priv;
-  GtkCellRenderer *cell = CTK_CELL_RENDERER (celltext);
+  CtkCellRendererTextPrivate *priv;
+  CtkCellRenderer *cell = CTK_CELL_RENDERER (celltext);
 
   celltext->priv = ctk_cell_renderer_text_get_instance_private (celltext);
   priv = celltext->priv;
@@ -233,10 +233,10 @@ ctk_cell_renderer_text_init (GtkCellRendererText *celltext)
 }
 
 static void
-ctk_cell_renderer_text_class_init (GtkCellRendererTextClass *class)
+ctk_cell_renderer_text_class_init (CtkCellRendererTextClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
-  GtkCellRendererClass *cell_class = CTK_CELL_RENDERER_CLASS (class);
+  CtkCellRendererClass *cell_class = CTK_CELL_RENDERER_CLASS (class);
 
   object_class->finalize = ctk_cell_renderer_text_finalize;
   
@@ -286,11 +286,11 @@ ctk_cell_renderer_text_class_init (GtkCellRendererTextClass *class)
                            CTK_PARAM_WRITABLE);
 
   /**
-   * GtkCellRendererText:background-gdk:
+   * CtkCellRendererText:background-gdk:
    *
    * Background color as a #GdkColor
    *
-   * Deprecated: 3.4: Use #GtkCellRendererText:background-rgba instead.
+   * Deprecated: 3.4: Use #CtkCellRendererText:background-rgba instead.
    */
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   text_cell_renderer_props[PROP_BACKGROUND_GDK] =
@@ -302,7 +302,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 G_GNUC_END_IGNORE_DEPRECATIONS
 
   /**
-   * GtkCellRendererText:background-rgba:
+   * CtkCellRendererText:background-rgba:
    *
    * Background color as a #GdkRGBA
    *
@@ -322,11 +322,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                            CTK_PARAM_WRITABLE);
 
   /**
-   * GtkCellRendererText:foreground-gdk:
+   * CtkCellRendererText:foreground-gdk:
    *
    * Foreground color as a #GdkColor
    *
-   * Deprecated: 3.4: Use #GtkCellRendererText:foreground-rgba instead.
+   * Deprecated: 3.4: Use #CtkCellRendererText:foreground-rgba instead.
    */
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   text_cell_renderer_props[PROP_FOREGROUND_GDK] =
@@ -338,7 +338,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 G_GNUC_END_IGNORE_DEPRECATIONS
 
   /**
-   * GtkCellRendererText:foreground-rgba:
+   * CtkCellRendererText:foreground-rgba:
    *
    * Foreground color as a #GdkRGBA
    *
@@ -470,7 +470,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                            CTK_PARAM_READWRITE);
 
   /**
-   * GtkCellRendererText:ellipsize:
+   * CtkCellRendererText:ellipsize:
    *
    * Specifies the preferred place to ellipsize the string, if the cell renderer
    * does not have enough room to display the entire string. Setting it to
@@ -490,7 +490,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkCellRendererText:width-chars:
+   * CtkCellRendererText:width-chars:
    *
    * The desired width of the cell, in characters. If this property is set to
    * -1, the width will be calculated automatically, otherwise the cell will
@@ -507,7 +507,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkCellRendererText:max-width-chars:
+   * CtkCellRendererText:max-width-chars:
    *
    * The desired maximum width of the cell, in characters. If this property
    * is set to -1, the width will be calculated automatically.
@@ -515,7 +515,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * For cell renderers that ellipsize or wrap text; this property
    * controls the maximum reported width of the cell. The
    * cell should not receive any greater allocation unless it is
-   * set to expand in its #GtkCellLayout and all of the cell's siblings
+   * set to expand in its #CtkCellLayout and all of the cell's siblings
    * have received their natural width.
    *
    * Since: 3.0
@@ -529,7 +529,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkCellRendererText:wrap-mode:
+   * CtkCellRendererText:wrap-mode:
    *
    * Specifies how to break the string into multiple lines, if the cell
    * renderer does not have enough room to display the entire string.
@@ -548,7 +548,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkCellRendererText:wrap-width:
+   * CtkCellRendererText:wrap-width:
    *
    * Specifies the minimum width at which the text is wrapped. The wrap-mode property can
    * be used to influence at what character positions the line breaks can be placed.
@@ -565,12 +565,12 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkCellRendererText:alignment:
+   * CtkCellRendererText:alignment:
    *
    * Specifies how to align the lines of text with respect to each other.
    *
    * Note that this property describes how to align the lines of text in
-   * case there are several of them. The "xalign" property of #GtkCellRenderer,
+   * case there are several of them. The "xalign" property of #CtkCellRenderer,
    * on the other hand, sets the horizontal alignment of the whole text.
    *
    * Since: 2.10
@@ -584,10 +584,10 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkCellRendererText:placeholder-text:
+   * CtkCellRendererText:placeholder-text:
    *
-   * The text that will be displayed in the #GtkCellRenderer if
-   * #GtkCellRendererText:editable is %TRUE and the cell is empty.
+   * The text that will be displayed in the #CtkCellRenderer if
+   * #CtkCellRendererText:editable is %TRUE and the cell is empty.
    *
    * Since 3.6
    */
@@ -669,7 +669,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   g_object_class_install_properties (object_class, LAST_PROP, text_cell_renderer_props);
 
   /**
-   * GtkCellRendererText::edited:
+   * CtkCellRendererText::edited:
    * @renderer: the object which received the signal
    * @path: the path identifying the edited cell
    * @new_text: the new text
@@ -683,7 +683,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("edited"),
 		  G_OBJECT_CLASS_TYPE (object_class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkCellRendererTextClass, edited),
+		  G_STRUCT_OFFSET (CtkCellRendererTextClass, edited),
 		  NULL, NULL,
 		  _ctk_marshal_VOID__STRING_STRING,
 		  G_TYPE_NONE, 2,
@@ -699,8 +699,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 static void
 ctk_cell_renderer_text_finalize (GObject *object)
 {
-  GtkCellRendererText *celltext = CTK_CELL_RENDERER_TEXT (object);
-  GtkCellRendererTextPrivate *priv = celltext->priv;
+  CtkCellRendererText *celltext = CTK_CELL_RENDERER_TEXT (object);
+  CtkCellRendererTextPrivate *priv = celltext->priv;
 
   pango_font_description_free (priv->font);
 
@@ -746,8 +746,8 @@ ctk_cell_renderer_text_get_property (GObject        *object,
 				     GValue         *value,
 				     GParamSpec     *pspec)
 {
-  GtkCellRendererText *celltext = CTK_CELL_RENDERER_TEXT (object);
-  GtkCellRendererTextPrivate *priv = celltext->priv;
+  CtkCellRendererText *celltext = CTK_CELL_RENDERER_TEXT (object);
+  CtkCellRendererTextPrivate *priv = celltext->priv;
 
   switch (param_id)
     {
@@ -947,10 +947,10 @@ ctk_cell_renderer_text_get_property (GObject        *object,
 
 
 static void
-set_bg_color (GtkCellRendererText *celltext,
+set_bg_color (CtkCellRendererText *celltext,
               GdkRGBA             *rgba)
 {
-  GtkCellRendererTextPrivate *priv = celltext->priv;
+  CtkCellRendererTextPrivate *priv = celltext->priv;
 
   if (rgba)
     {
@@ -974,10 +974,10 @@ set_bg_color (GtkCellRendererText *celltext,
 
 
 static void
-set_fg_color (GtkCellRendererText *celltext,
+set_fg_color (CtkCellRendererText *celltext,
               GdkRGBA             *rgba)
 {
-  GtkCellRendererTextPrivate *priv = celltext->priv;
+  CtkCellRendererTextPrivate *priv = celltext->priv;
 
   if (rgba)
     {
@@ -1079,10 +1079,10 @@ notify_fields_changed (GObject       *object,
 }
 
 static void
-set_font_description (GtkCellRendererText  *celltext,
+set_font_description (CtkCellRendererText  *celltext,
                       PangoFontDescription *font_desc)
 {
-  GtkCellRendererTextPrivate *priv = celltext->priv;
+  CtkCellRendererTextPrivate *priv = celltext->priv;
   GObject *object = G_OBJECT (celltext);
   PangoFontDescription *new_font_desc;
   PangoFontMask old_mask, new_mask, changed_mask, set_changed_mask;
@@ -1118,8 +1118,8 @@ ctk_cell_renderer_text_set_property (GObject      *object,
 				     const GValue *value,
 				     GParamSpec   *pspec)
 {
-  GtkCellRendererText *celltext = CTK_CELL_RENDERER_TEXT (object);
-  GtkCellRendererTextPrivate *priv = celltext->priv;
+  CtkCellRendererText *celltext = CTK_CELL_RENDERER_TEXT (object);
+  CtkCellRendererTextPrivate *priv = celltext->priv;
 
   switch (param_id)
     {
@@ -1515,26 +1515,26 @@ ctk_cell_renderer_text_set_property (GObject      *object,
 /**
  * ctk_cell_renderer_text_new:
  * 
- * Creates a new #GtkCellRendererText. Adjust how text is drawn using
+ * Creates a new #CtkCellRendererText. Adjust how text is drawn using
  * object properties. Object properties can be
- * set globally (with g_object_set()). Also, with #GtkTreeViewColumn,
- * you can bind a property to a value in a #GtkTreeModel. For example,
+ * set globally (with g_object_set()). Also, with #CtkTreeViewColumn,
+ * you can bind a property to a value in a #CtkTreeModel. For example,
  * you can bind the “text” property on the cell renderer to a string
  * value in the model, thus rendering a different string in each row
- * of the #GtkTreeView
+ * of the #CtkTreeView
  * 
  * Returns: the new cell renderer
  **/
-GtkCellRenderer *
+CtkCellRenderer *
 ctk_cell_renderer_text_new (void)
 {
   return g_object_new (CTK_TYPE_CELL_RENDERER_TEXT, NULL);
 }
 
 static inline gboolean
-show_placeholder_text (GtkCellRendererText *celltext)
+show_placeholder_text (CtkCellRendererText *celltext)
 {
-  GtkCellRendererTextPrivate *priv = celltext->priv;
+  CtkCellRendererTextPrivate *priv = celltext->priv;
 
   return priv->editable && priv->placeholder_text &&
     (!priv->text || !priv->text[0]);
@@ -1551,12 +1551,12 @@ add_attr (PangoAttrList  *attr_list,
 }
 
 static PangoLayout*
-get_layout (GtkCellRendererText *celltext,
-            GtkWidget           *widget,
+get_layout (CtkCellRendererText *celltext,
+            CtkWidget           *widget,
             const GdkRectangle  *cell_area,
-            GtkCellRendererState flags)
+            CtkCellRendererState flags)
 {
-  GtkCellRendererTextPrivate *priv = celltext->priv;
+  CtkCellRendererTextPrivate *priv = celltext->priv;
   PangoAttrList *attr_list;
   PangoLayout *layout;
   PangoUnderline uline;
@@ -1607,7 +1607,7 @@ get_layout (GtkCellRendererText *celltext,
     {
       PangoColor color;
       guint16 alpha;
-      GtkStyleContext *context;
+      CtkStyleContext *context;
       GdkRGBA fg = { 0.5, 0.5, 0.5, 1.0 };
 
       context = ctk_widget_get_style_context (widget);
@@ -1714,8 +1714,8 @@ get_layout (GtkCellRendererText *celltext,
 
 
 static void
-get_size (GtkCellRenderer    *cell,
-	  GtkWidget          *widget,
+get_size (CtkCellRenderer    *cell,
+	  CtkWidget          *widget,
 	  const GdkRectangle *cell_area,
 	  PangoLayout        *layout,
 	  gint               *x_offset,
@@ -1723,8 +1723,8 @@ get_size (GtkCellRenderer    *cell,
 	  gint               *width,
 	  gint               *height)
 {
-  GtkCellRendererText *celltext = CTK_CELL_RENDERER_TEXT (cell);
-  GtkCellRendererTextPrivate *priv = celltext->priv;
+  CtkCellRendererText *celltext = CTK_CELL_RENDERER_TEXT (cell);
+  CtkCellRendererTextPrivate *priv = celltext->priv;
   PangoRectangle rect;
   gint xpad, ypad;
   gint cell_width, cell_height;
@@ -1733,8 +1733,8 @@ get_size (GtkCellRenderer    *cell,
 
   if (priv->calc_fixed_height)
     {
-      GtkStyleContext *style_context;
-      GtkStateFlags state;
+      CtkStyleContext *style_context;
+      CtkStateFlags state;
       PangoContext *context;
       PangoFontMetrics *metrics;
       PangoFontDescription *font_desc;
@@ -1825,17 +1825,17 @@ get_size (GtkCellRenderer    *cell,
 }
 
 static void
-ctk_cell_renderer_text_render (GtkCellRenderer      *cell,
+ctk_cell_renderer_text_render (CtkCellRenderer      *cell,
 			       cairo_t              *cr,
-			       GtkWidget            *widget,
+			       CtkWidget            *widget,
 			       const GdkRectangle   *background_area,
 			       const GdkRectangle   *cell_area,
-			       GtkCellRendererState  flags)
+			       CtkCellRendererState  flags)
 
 {
-  GtkCellRendererText *celltext = CTK_CELL_RENDERER_TEXT (cell);
-  GtkCellRendererTextPrivate *priv = celltext->priv;
-  GtkStyleContext *context;
+  CtkCellRendererText *celltext = CTK_CELL_RENDERER_TEXT (cell);
+  CtkCellRendererTextPrivate *priv = celltext->priv;
+  CtkStyleContext *context;
   PangoLayout *layout;
   gint x_offset = 0;
   gint y_offset = 0;
@@ -1880,10 +1880,10 @@ ctk_cell_renderer_text_render (GtkCellRenderer      *cell,
 }
 
 static void
-ctk_cell_renderer_text_editing_done (GtkCellEditable *entry,
+ctk_cell_renderer_text_editing_done (CtkCellEditable *entry,
 				     gpointer         data)
 {
-  GtkCellRendererTextPrivate *priv;
+  CtkCellRendererTextPrivate *priv;
   const gchar *path;
   const gchar *new_text;
   gboolean canceled;
@@ -1927,7 +1927,7 @@ ctk_cell_renderer_text_editing_done (GtkCellEditable *entry,
 static gboolean
 popdown_timeout (gpointer data)
 {
-  GtkCellRendererTextPrivate *priv;
+  CtkCellRendererTextPrivate *priv;
 
   priv = CTK_CELL_RENDERER_TEXT (data)->priv;
 
@@ -1940,10 +1940,10 @@ popdown_timeout (gpointer data)
 }
 
 static void
-ctk_cell_renderer_text_popup_unmap (GtkMenu *menu,
+ctk_cell_renderer_text_popup_unmap (CtkMenu *menu,
                                     gpointer data)
 {
-  GtkCellRendererTextPrivate *priv;
+  CtkCellRendererTextPrivate *priv;
 
   priv = CTK_CELL_RENDERER_TEXT (data)->priv;
 
@@ -1958,11 +1958,11 @@ ctk_cell_renderer_text_popup_unmap (GtkMenu *menu,
 }
 
 static void
-ctk_cell_renderer_text_populate_popup (GtkEntry *entry,
-                                       GtkMenu  *menu,
+ctk_cell_renderer_text_populate_popup (CtkEntry *entry,
+                                       CtkMenu  *menu,
                                        gpointer  data)
 {
-  GtkCellRendererTextPrivate *priv;
+  CtkCellRendererTextPrivate *priv;
 
   priv = CTK_CELL_RENDERER_TEXT (data)->priv;
 
@@ -1979,11 +1979,11 @@ ctk_cell_renderer_text_populate_popup (GtkEntry *entry,
 }
 
 static gboolean
-ctk_cell_renderer_text_focus_out_event (GtkWidget *entry,
+ctk_cell_renderer_text_focus_out_event (CtkWidget *entry,
 		                        GdkEvent  *event,
 					gpointer   data)
 {
-  GtkCellRendererTextPrivate *priv;
+  CtkCellRendererTextPrivate *priv;
 
   priv = CTK_CELL_RENDERER_TEXT (data)->priv;
 
@@ -2000,17 +2000,17 @@ ctk_cell_renderer_text_focus_out_event (GtkWidget *entry,
   return FALSE;
 }
 
-static GtkCellEditable *
-ctk_cell_renderer_text_start_editing (GtkCellRenderer      *cell,
+static CtkCellEditable *
+ctk_cell_renderer_text_start_editing (CtkCellRenderer      *cell,
 				      GdkEvent             *event,
-				      GtkWidget            *widget,
+				      CtkWidget            *widget,
 				      const gchar          *path,
 				      const GdkRectangle   *background_area,
 				      const GdkRectangle   *cell_area,
-				      GtkCellRendererState  flags)
+				      CtkCellRendererState  flags)
 {
-  GtkCellRendererText *celltext;
-  GtkCellRendererTextPrivate *priv;
+  CtkCellRendererText *celltext;
+  CtkCellRendererTextPrivate *priv;
   gfloat xalign, yalign;
 
   celltext = CTK_CELL_RENDERER_TEXT (cell);
@@ -2061,7 +2061,7 @@ ctk_cell_renderer_text_start_editing (GtkCellRenderer      *cell,
 
 /**
  * ctk_cell_renderer_text_set_fixed_height_from_font:
- * @renderer: A #GtkCellRendererText
+ * @renderer: A #CtkCellRendererText
  * @number_of_rows: Number of rows of text each cell renderer is allocated, or -1
  * 
  * Sets the height of a renderer to explicitly be determined by the “font” and
@@ -2073,11 +2073,11 @@ ctk_cell_renderer_text_start_editing (GtkCellRenderer      *cell,
  * the height is determined by the properties again.
  **/
 void
-ctk_cell_renderer_text_set_fixed_height_from_font (GtkCellRendererText *renderer,
+ctk_cell_renderer_text_set_fixed_height_from_font (CtkCellRendererText *renderer,
 						   gint                 number_of_rows)
 {
-  GtkCellRendererTextPrivate *priv;
-  GtkCellRenderer *cell;
+  CtkCellRendererTextPrivate *priv;
+  CtkCellRenderer *cell;
 
   g_return_if_fail (CTK_IS_CELL_RENDERER_TEXT (renderer));
   g_return_if_fail (number_of_rows == -1 || number_of_rows > 0);
@@ -2100,13 +2100,13 @@ ctk_cell_renderer_text_set_fixed_height_from_font (GtkCellRendererText *renderer
 }
 
 static void
-ctk_cell_renderer_text_get_preferred_width (GtkCellRenderer *cell,
-                                            GtkWidget       *widget,
+ctk_cell_renderer_text_get_preferred_width (CtkCellRenderer *cell,
+                                            CtkWidget       *widget,
                                             gint            *minimum_size,
                                             gint            *natural_size)
 {
-  GtkCellRendererTextPrivate *priv;
-  GtkCellRendererText        *celltext;
+  CtkCellRendererTextPrivate *priv;
+  CtkCellRendererText        *celltext;
   PangoLayout                *layout;
   PangoContext               *context;
   PangoFontMetrics           *metrics;
@@ -2186,13 +2186,13 @@ ctk_cell_renderer_text_get_preferred_width (GtkCellRenderer *cell,
 }
 
 static void
-ctk_cell_renderer_text_get_preferred_height_for_width (GtkCellRenderer *cell,
-                                                       GtkWidget       *widget,
+ctk_cell_renderer_text_get_preferred_height_for_width (CtkCellRenderer *cell,
+                                                       CtkWidget       *widget,
                                                        gint             width,
                                                        gint            *minimum_height,
                                                        gint            *natural_height)
 {
-  GtkCellRendererText *celltext;
+  CtkCellRendererText *celltext;
   PangoLayout         *layout;
   gint                 text_height, xpad, ypad;
 
@@ -2216,8 +2216,8 @@ ctk_cell_renderer_text_get_preferred_height_for_width (GtkCellRenderer *cell,
 }
 
 static void
-ctk_cell_renderer_text_get_preferred_height (GtkCellRenderer *cell,
-                                             GtkWidget       *widget,
+ctk_cell_renderer_text_get_preferred_height (CtkCellRenderer *cell,
+                                             CtkWidget       *widget,
                                              gint            *minimum_size,
                                              gint            *natural_size)
 {
@@ -2227,7 +2227,7 @@ ctk_cell_renderer_text_get_preferred_height (GtkCellRenderer *cell,
    * height-for-width and not the opposite. Here we have only to return
    * the height for the base minimum width of the renderer.
    *
-   * Note this code path wont be followed by GtkTreeView which is
+   * Note this code path wont be followed by CtkTreeView which is
    * height-for-width specifically.
    */
   ctk_cell_renderer_get_preferred_width (cell, widget, &min_width, NULL);
@@ -2236,13 +2236,13 @@ ctk_cell_renderer_text_get_preferred_height (GtkCellRenderer *cell,
 }
 
 static void
-ctk_cell_renderer_text_get_aligned_area (GtkCellRenderer       *cell,
-					 GtkWidget             *widget,
-					 GtkCellRendererState   flags,
+ctk_cell_renderer_text_get_aligned_area (CtkCellRenderer       *cell,
+					 CtkWidget             *widget,
+					 CtkCellRendererState   flags,
 					 const GdkRectangle    *cell_area,
 					 GdkRectangle          *aligned_area)
 {
-  GtkCellRendererText *celltext = CTK_CELL_RENDERER_TEXT (cell);
+  CtkCellRendererText *celltext = CTK_CELL_RENDERER_TEXT (cell);
   PangoLayout *layout;
   gint x_offset = 0;
   gint y_offset = 0;

@@ -1,5 +1,5 @@
 /* ctkfontchooserutils.h - Private utility functions for implementing a
- *                           GtkFontChooser interface
+ *                           CtkFontChooser interface
  *
  * Copyright (C) 2006 Emmanuele Bassi
  *
@@ -26,34 +26,34 @@
 
 #include "ctkfontchooserutils.h"
 
-static GtkFontChooser *
-get_delegate (GtkFontChooser *receiver)
+static CtkFontChooser *
+get_delegate (CtkFontChooser *receiver)
 {
   return g_object_get_qdata (G_OBJECT (receiver),
                              CTK_FONT_CHOOSER_DELEGATE_QUARK);
 }
 
 static PangoFontFamily *
-delegate_get_font_family (GtkFontChooser *chooser)
+delegate_get_font_family (CtkFontChooser *chooser)
 {
   return ctk_font_chooser_get_font_family (get_delegate (chooser));
 }
 
 static PangoFontFace *
-delegate_get_font_face (GtkFontChooser *chooser)
+delegate_get_font_face (CtkFontChooser *chooser)
 {
   return ctk_font_chooser_get_font_face (get_delegate (chooser));
 }
 
 static int
-delegate_get_font_size (GtkFontChooser *chooser)
+delegate_get_font_size (CtkFontChooser *chooser)
 {
   return ctk_font_chooser_get_font_size (get_delegate (chooser));
 }
 
 static void
-delegate_set_filter_func (GtkFontChooser    *chooser,
-                          GtkFontFilterFunc  filter_func,
+delegate_set_filter_func (CtkFontChooser    *chooser,
+                          CtkFontFilterFunc  filter_func,
                           gpointer           filter_data,
                           GDestroyNotify     data_destroy)
 {
@@ -64,14 +64,14 @@ delegate_set_filter_func (GtkFontChooser    *chooser,
 }
 
 static void
-delegate_set_font_map (GtkFontChooser *chooser,
+delegate_set_font_map (CtkFontChooser *chooser,
                        PangoFontMap   *map)
 {
   ctk_font_chooser_set_font_map (get_delegate (chooser), map);
 }
 
 static PangoFontMap *
-delegate_get_font_map (GtkFontChooser *chooser)
+delegate_get_font_map (CtkFontChooser *chooser)
 {
   return ctk_font_chooser_get_font_map (get_delegate (chooser));
 }
@@ -90,9 +90,9 @@ delegate_notify (GObject    *object,
 }
 
 static void
-delegate_font_activated (GtkFontChooser *receiver,
+delegate_font_activated (CtkFontChooser *receiver,
                          const gchar    *fontname,
-                         GtkFontChooser *delegate)
+                         CtkFontChooser *delegate)
 {
   _ctk_font_chooser_font_activated (delegate, fontname);
 }
@@ -113,8 +113,8 @@ _ctk_font_chooser_delegate_get_quark (void)
  * @klass: the class structure for a type deriving from #GObject
  *
  * Installs the necessary properties for a class implementing
- * #GtkFontChooser. A #GtkParamSpecOverride property is installed
- * for each property, using the values from the #GtkFontChooserProp
+ * #CtkFontChooser. A #CtkParamSpecOverride property is installed
+ * for each property, using the values from the #CtkFontChooserProp
  * enumeration. The caller must make sure itself that the enumeration
  * values don’t collide with some other property values they
  * are using.
@@ -147,17 +147,17 @@ _ctk_font_chooser_install_properties (GObjectClass *klass)
 
 /**
  * _ctk_font_chooser_delegate_iface_init:
- * @iface: a #GtkFontChooserIface
+ * @iface: a #CtkFontChooserIface
  *
  * An interface-initialization function for use in cases where
  * an object is simply delegating the methods, signals of
- * the #GtkFontChooser interface to another object.
+ * the #CtkFontChooser interface to another object.
  * _ctk_font_chooser_set_delegate() must be called on each
  * instance of the object so that the delegate object can
  * be found.
  */
 void
-_ctk_font_chooser_delegate_iface_init (GtkFontChooserIface *iface)
+_ctk_font_chooser_delegate_iface_init (CtkFontChooserIface *iface)
 {
   iface->get_font_family = delegate_get_font_family;
   iface->get_font_face = delegate_get_font_face;
@@ -169,18 +169,18 @@ _ctk_font_chooser_delegate_iface_init (GtkFontChooserIface *iface)
 
 /**
  * _ctk_font_chooser_set_delegate:
- * @receiver: a #GObject implementing #GtkFontChooser
- * @delegate: another #GObject implementing #GtkFontChooser
+ * @receiver: a #GObject implementing #CtkFontChooser
+ * @delegate: another #GObject implementing #CtkFontChooser
  *
- * Establishes that calls on @receiver for #GtkFontChooser
+ * Establishes that calls on @receiver for #CtkFontChooser
  * methods should be delegated to @delegate, and that
- * #GtkFontChooser signals emitted on @delegate should be
+ * #CtkFontChooser signals emitted on @delegate should be
  * forwarded to @receiver. Must be used in conjunction with
  * _ctk_font_chooser_delegate_iface_init().
  */
 void
-_ctk_font_chooser_set_delegate (GtkFontChooser *receiver,
-                                GtkFontChooser *delegate)
+_ctk_font_chooser_set_delegate (CtkFontChooser *receiver,
+                                CtkFontChooser *delegate)
 {
   g_return_if_fail (CTK_IS_FONT_CHOOSER (receiver));
   g_return_if_fail (CTK_IS_FONT_CHOOSER (delegate));

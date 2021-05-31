@@ -22,23 +22,23 @@
 
 #ifdef CTK_HAVE_ATK_PLUG_SET_CHILD
 
-/* We can not make GtkPlugAccessible inherit both from GtkContainerAccessible
- * and GtkPlug, so we make it the atk child of an AtkPlug */
+/* We can not make CtkPlugAccessible inherit both from CtkContainerAccessible
+ * and CtkPlug, so we make it the atk child of an AtkPlug */
 
-struct _GtkPlugAccessiblePrivate
+struct _CtkPlugAccessiblePrivate
 {
   AtkObject *accessible_plug;
 };
 
-G_DEFINE_TYPE_WITH_CODE (GtkPlugAccessible, ctk_plug_accessible, CTK_TYPE_WINDOW_ACCESSIBLE,
-                         G_ADD_PRIVATE (GtkPlugAccessible))
+G_DEFINE_TYPE_WITH_CODE (CtkPlugAccessible, ctk_plug_accessible, CTK_TYPE_WINDOW_ACCESSIBLE,
+                         G_ADD_PRIVATE (CtkPlugAccessible))
 
 
 static void
 ctk_plug_accessible_finalize (GObject *object)
 {
-  GtkPlugAccessible *plug = CTK_PLUG_ACCESSIBLE (object);
-  GtkPlugAccessiblePrivate *priv = plug->priv;
+  CtkPlugAccessible *plug = CTK_PLUG_ACCESSIBLE (object);
+  CtkPlugAccessiblePrivate *priv = plug->priv;
 
   g_clear_object (&priv->accessible_plug);
 
@@ -58,7 +58,7 @@ ctk_plug_accessible_initialize (AtkObject *plug, gpointer data)
 }
 
 static void
-ctk_plug_accessible_class_init (GtkPlugAccessibleClass *klass) {
+ctk_plug_accessible_class_init (CtkPlugAccessibleClass *klass) {
   AtkObjectClass *atk_class     = ATK_OBJECT_CLASS (klass);
   GObjectClass   *gobject_class = G_OBJECT_CLASS (klass);
 
@@ -67,13 +67,13 @@ ctk_plug_accessible_class_init (GtkPlugAccessibleClass *klass) {
 }
 
 static void
-ctk_plug_accessible_init (GtkPlugAccessible *plug)
+ctk_plug_accessible_init (CtkPlugAccessible *plug)
 {
   plug->priv = ctk_plug_accessible_get_instance_private (plug);
 }
 
 gchar *
-ctk_plug_accessible_get_id (GtkPlugAccessible *plug)
+ctk_plug_accessible_get_id (CtkPlugAccessible *plug)
 {
   return atk_plug_get_id (ATK_PLUG (plug->priv->accessible_plug));
 }

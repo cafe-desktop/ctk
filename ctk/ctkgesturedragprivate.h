@@ -22,22 +22,22 @@
 #include "ctkgesturesingleprivate.h"
 #include "ctkgesturedrag.h"
 
-struct _GtkGestureDrag
+struct _CtkGestureDrag
 {
-  GtkGestureSingle parent_instance;
+  CtkGestureSingle parent_instance;
 };
 
-struct _GtkGestureDragClass
+struct _CtkGestureDragClass
 {
-  GtkGestureSingleClass parent_class;
+  CtkGestureSingleClass parent_class;
 
-  void (* drag_begin)  (GtkGestureDrag *gesture,
+  void (* drag_begin)  (CtkGestureDrag *gesture,
                         gdouble         start_x,
                         gdouble         start_y);
-  void (* drag_update) (GtkGestureDrag *gesture,
+  void (* drag_update) (CtkGestureDrag *gesture,
                         gdouble         offset_x,
                         gdouble         offset_y);
-  void (* drag_end)    (GtkGestureDrag *gesture,
+  void (* drag_end)    (CtkGestureDrag *gesture,
                         gdouble         offset_x,
                         gdouble         offset_y);
   /*<private>*/

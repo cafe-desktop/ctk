@@ -388,7 +388,7 @@ parse_template (GMarkupParseContext  *context,
                    CTK_BUILDER_ERROR,
                    CTK_BUILDER_ERROR_UNHANDLED_TAG,
                    "Not expecting to handle a template (class '%s', parent '%s')",
-                   object_class, parent_class ? parent_class : "GtkWidget");
+                   object_class, parent_class ? parent_class : "CtkWidget");
       _ctk_builder_prefix_error (data->builder, context, error);
       return;
     }
@@ -464,7 +464,7 @@ parse_template (GMarkupParseContext  *context,
 static void
 free_object_info (ObjectInfo *info)
 {
-  /* Do not free the signal items, which GtkBuilder takes ownership of */
+  /* Do not free the signal items, which CtkBuilder takes ownership of */
   g_type_class_unref (info->oclass);
   g_slist_free (info->signals);
   g_slist_free_full (info->properties, (GDestroyNotify)free_property_info);
@@ -713,7 +713,7 @@ parse_signal (ParserData   *data,
   info->tag.name = element_name;
 }
 
-/* Called by GtkBuilder */
+/* Called by CtkBuilder */
 void
 _free_signal_info (SignalInfo *info,
                    gpointer    user_data)
@@ -1212,7 +1212,7 @@ static const GMarkupParser parser = {
 };
 
 void
-_ctk_builder_parser_parse_buffer (GtkBuilder   *builder,
+_ctk_builder_parser_parse_buffer (CtkBuilder   *builder,
                                   const gchar  *filename,
                                   const gchar  *buffer,
                                   gsize         length,
@@ -1285,7 +1285,7 @@ _ctk_builder_parser_parse_buffer (GtkBuilder   *builder,
   data->finalizers = g_slist_reverse (data->finalizers);
   for (l = data->finalizers; l; l = l->next)
     {
-      GtkBuildable *buildable = (GtkBuildable*)l->data;
+      CtkBuildable *buildable = (CtkBuildable*)l->data;
 
       ctk_buildable_parser_finished (CTK_BUILDABLE (buildable), builder);
       if (_ctk_builder_lookup_failed (builder, error))

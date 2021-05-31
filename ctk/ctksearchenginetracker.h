@@ -27,18 +27,18 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_SEARCH_ENGINE_TRACKER		(_ctk_search_engine_tracker_get_type ())
-#define CTK_SEARCH_ENGINE_TRACKER(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SEARCH_ENGINE_TRACKER, GtkSearchEngineTracker))
-#define CTK_SEARCH_ENGINE_TRACKER_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SEARCH_ENGINE_TRACKER, GtkSearchEngineTrackerClass))
+#define CTK_SEARCH_ENGINE_TRACKER(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SEARCH_ENGINE_TRACKER, CtkSearchEngineTracker))
+#define CTK_SEARCH_ENGINE_TRACKER_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SEARCH_ENGINE_TRACKER, CtkSearchEngineTrackerClass))
 #define CTK_IS_SEARCH_ENGINE_TRACKER(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SEARCH_ENGINE_TRACKER))
 #define CTK_IS_SEARCH_ENGINE_TRACKER_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SEARCH_ENGINE_TRACKER))
-#define CTK_SEARCH_ENGINE_TRACKER_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SEARCH_ENGINE_TRACKER, GtkSearchEngineTrackerClass))
+#define CTK_SEARCH_ENGINE_TRACKER_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SEARCH_ENGINE_TRACKER, CtkSearchEngineTrackerClass))
 
-typedef struct _GtkSearchEngineTracker GtkSearchEngineTracker;
-typedef struct _GtkSearchEngineTrackerClass GtkSearchEngineTrackerClass;
+typedef struct _CtkSearchEngineTracker CtkSearchEngineTracker;
+typedef struct _CtkSearchEngineTrackerClass CtkSearchEngineTrackerClass;
 
 GType            _ctk_search_engine_tracker_get_type (void);
 
-GtkSearchEngine* _ctk_search_engine_tracker_new      (void);
+CtkSearchEngine* _ctk_search_engine_tracker_new      (void);
 
 gboolean         _ctk_search_engine_tracker_is_indexed (GFile    *file,
                                                         gpointer  data);

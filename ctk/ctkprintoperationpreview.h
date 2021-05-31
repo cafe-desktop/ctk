@@ -29,31 +29,31 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_PRINT_OPERATION_PREVIEW                  (ctk_print_operation_preview_get_type ())
-#define CTK_PRINT_OPERATION_PREVIEW(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINT_OPERATION_PREVIEW, GtkPrintOperationPreview))
+#define CTK_PRINT_OPERATION_PREVIEW(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINT_OPERATION_PREVIEW, CtkPrintOperationPreview))
 #define CTK_IS_PRINT_OPERATION_PREVIEW(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PRINT_OPERATION_PREVIEW))
-#define CTK_PRINT_OPERATION_PREVIEW_GET_IFACE(obj)        (G_TYPE_INSTANCE_GET_INTERFACE ((obj), CTK_TYPE_PRINT_OPERATION_PREVIEW, GtkPrintOperationPreviewIface))
+#define CTK_PRINT_OPERATION_PREVIEW_GET_IFACE(obj)        (G_TYPE_INSTANCE_GET_INTERFACE ((obj), CTK_TYPE_PRINT_OPERATION_PREVIEW, CtkPrintOperationPreviewIface))
 
-typedef struct _GtkPrintOperationPreview      GtkPrintOperationPreview;      /*dummy typedef */
-typedef struct _GtkPrintOperationPreviewIface GtkPrintOperationPreviewIface;
+typedef struct _CtkPrintOperationPreview      CtkPrintOperationPreview;      /*dummy typedef */
+typedef struct _CtkPrintOperationPreviewIface CtkPrintOperationPreviewIface;
 
 
-struct _GtkPrintOperationPreviewIface
+struct _CtkPrintOperationPreviewIface
 {
   GTypeInterface g_iface;
 
   /* signals */
-  void              (*ready)          (GtkPrintOperationPreview *preview,
-				       GtkPrintContext          *context);
-  void              (*got_page_size)  (GtkPrintOperationPreview *preview,
-				       GtkPrintContext          *context,
-				       GtkPageSetup             *page_setup);
+  void              (*ready)          (CtkPrintOperationPreview *preview,
+				       CtkPrintContext          *context);
+  void              (*got_page_size)  (CtkPrintOperationPreview *preview,
+				       CtkPrintContext          *context,
+				       CtkPageSetup             *page_setup);
 
   /* methods */
-  void              (*render_page)    (GtkPrintOperationPreview *preview,
+  void              (*render_page)    (CtkPrintOperationPreview *preview,
 				       gint                      page_nr);
-  gboolean          (*is_selected)    (GtkPrintOperationPreview *preview,
+  gboolean          (*is_selected)    (CtkPrintOperationPreview *preview,
 				       gint                      page_nr);
-  void              (*end_preview)    (GtkPrintOperationPreview *preview);
+  void              (*end_preview)    (CtkPrintOperationPreview *preview);
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -70,12 +70,12 @@ GDK_AVAILABLE_IN_ALL
 GType   ctk_print_operation_preview_get_type       (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-void     ctk_print_operation_preview_render_page (GtkPrintOperationPreview *preview,
+void     ctk_print_operation_preview_render_page (CtkPrintOperationPreview *preview,
 						  gint                      page_nr);
 GDK_AVAILABLE_IN_ALL
-void     ctk_print_operation_preview_end_preview (GtkPrintOperationPreview *preview);
+void     ctk_print_operation_preview_end_preview (CtkPrintOperationPreview *preview);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_print_operation_preview_is_selected (GtkPrintOperationPreview *preview,
+gboolean ctk_print_operation_preview_is_selected (CtkPrintOperationPreview *preview,
 						  gint                      page_nr);
 
 G_END_DECLS

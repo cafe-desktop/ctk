@@ -1,4 +1,4 @@
-/* Basic GtkTreeView unit tests.
+/* Basic CtkTreeView unit tests.
  * Copyright (C) 2009  Kristian Rietveld  <kris@ctk.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -20,11 +20,11 @@
 static void
 test_bug_546005 (void)
 {
-  GtkTreeIter iter;
-  GtkTreePath *path;
-  GtkTreePath *cursor_path;
-  GtkListStore *list_store;
-  GtkWidget *view;
+  CtkTreeIter iter;
+  CtkTreePath *path;
+  CtkTreePath *cursor_path;
+  CtkListStore *list_store;
+  CtkWidget *view;
 
   g_test_bug ("546005");
 
@@ -74,9 +74,9 @@ test_bug_546005 (void)
 static void
 test_bug_539377 (void)
 {
-  GtkWidget *view;
-  GtkTreePath *path;
-  GtkListStore *list_store;
+  CtkWidget *view;
+  CtkTreePath *path;
+  CtkListStore *list_store;
 
   g_test_bug ("539377");
 
@@ -105,11 +105,11 @@ test_bug_539377 (void)
 static void
 test_select_collapsed_row (void)
 {
-  GtkTreeIter child, parent;
-  GtkTreePath *path;
-  GtkTreeStore *tree_store;
-  GtkTreeSelection *selection;
-  GtkWidget *view;
+  CtkTreeIter child, parent;
+  CtkTreePath *path;
+  CtkTreeStore *tree_store;
+  CtkTreeSelection *selection;
+  CtkWidget *view;
 
   /* Reported by Michael Natterer */
   tree_store = ctk_tree_store_new (1, G_TYPE_STRING);
@@ -159,12 +159,12 @@ test_select_collapsed_row (void)
 }
 
 static gboolean
-test_row_separator_height_func (GtkTreeModel *model,
-                                GtkTreeIter  *iter,
+test_row_separator_height_func (CtkTreeModel *model,
+                                CtkTreeIter  *iter,
                                 gpointer      data)
 {
   gboolean ret = FALSE;
-  GtkTreePath *path;
+  CtkTreePath *path;
 
   path = ctk_tree_model_get_path (model, iter);
   if (ctk_tree_path_get_indices (path)[0] == 2)
@@ -179,11 +179,11 @@ test_row_separator_height (void)
 {
   int focus_pad, separator_height, height;
   gboolean wide_separators;
-  GtkTreeIter iter;
-  GtkTreePath *path;
-  GtkListStore *store;
-  GtkWidget *window;
-  GtkWidget *tree_view;
+  CtkTreeIter iter;
+  CtkTreePath *path;
+  CtkListStore *store;
+  CtkWidget *window;
+  CtkWidget *tree_view;
   GdkRectangle rect = { 0, }, cell_rect = { 0, };
 
   store = ctk_list_store_new (1, G_TYPE_STRING);
@@ -240,10 +240,10 @@ test_row_separator_height (void)
 static void
 test_selection_count (void)
 {
-  GtkTreePath *path;
-  GtkListStore *list_store;
-  GtkTreeSelection *selection;
-  GtkWidget *view;
+  CtkTreePath *path;
+  CtkListStore *list_store;
+  CtkTreeSelection *selection;
+  CtkWidget *view;
 
   g_test_bug ("702957");
 
@@ -291,9 +291,9 @@ test_selection_count (void)
 }
 
 static void
-abort_cb (GtkTreeModel *model,
-          GtkTreePath  *path,
-          GtkTreeIter  *iter,
+abort_cb (CtkTreeModel *model,
+          CtkTreePath  *path,
+          CtkTreeIter  *iter,
           gpointer      data)
 {
   g_assert_not_reached ();
@@ -302,11 +302,11 @@ abort_cb (GtkTreeModel *model,
 static void
 test_selection_empty (void)
 {
-  GtkTreePath *path;
-  GtkListStore *list_store;
-  GtkTreeSelection *selection;
-  GtkWidget *view;
-  GtkTreeIter iter;
+  CtkTreePath *path;
+  CtkListStore *list_store;
+  CtkTreeSelection *selection;
+  CtkWidget *view;
+  CtkTreeIter iter;
 
   g_test_bug ("712760");
 

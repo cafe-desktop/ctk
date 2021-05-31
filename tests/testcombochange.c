@@ -20,8 +20,8 @@
 #include <ctk/ctk.h>
 #include <stdarg.h>
 
-GtkWidget *text_view;
-GtkListStore *model;
+CtkWidget *text_view;
+CtkListStore *model;
 GArray *contents;
 
 static char next_value = 'A';
@@ -37,12 +37,12 @@ static void
 combochange_log (const char *fmt,
      ...)
 {
-  GtkTextBuffer *buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (text_view));
-  GtkTextIter iter;
+  CtkTextBuffer *buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (text_view));
+  CtkTextIter iter;
   va_list vap;
   char *msg;
   GString *order_string;
-  GtkTextMark *tmp_mark;
+  CtkTextMark *tmp_mark;
   int i;
 
   va_start (vap, fmt);
@@ -70,14 +70,14 @@ combochange_log (const char *fmt,
   g_free (msg);
 }
 
-static GtkWidget *
+static CtkWidget *
 create_combo (const char *name,
 	      gboolean is_list)
 {
-  GtkCellRenderer *cell_renderer;
-  GtkWidget *combo;
-  GtkCssProvider *provider;
-  GtkStyleContext *context;
+  CtkCellRenderer *cell_renderer;
+  CtkWidget *combo;
+  CtkCssProvider *provider;
+  CtkStyleContext *context;
   gchar *css_data;
 
   combo = ctk_combo_box_new_with_model (CTK_TREE_MODEL (model));
@@ -91,7 +91,7 @@ create_combo (const char *name,
   context = ctk_widget_get_style_context (combo);
 
   provider = ctk_css_provider_new ();
-  css_data = g_strdup_printf ("#%s { -GtkComboBox-appears-as-list: %s }",
+  css_data = g_strdup_printf ("#%s { -CtkComboBox-appears-as-list: %s }",
                               name, is_list ? "true" : "false");
   ctk_css_provider_load_from_data (provider, css_data, -1, NULL);
   g_free (css_data);
@@ -106,7 +106,7 @@ create_combo (const char *name,
 static void
 on_insert (void)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   
   int insert_pos;
   char new_value[2];
@@ -133,7 +133,7 @@ on_insert (void)
 static void
 on_delete (void)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   
   int delete_pos;
   char old_val;
@@ -221,16 +221,16 @@ on_animate (void)
 int
 main (int argc, char **argv)
 {
-  GtkWidget *content_area;
-  GtkWidget *dialog;
-  GtkWidget *scrolled_window;
-  GtkWidget *hbox;
-  GtkWidget *button_vbox;
-  GtkWidget *combo_vbox;
-  GtkWidget *button;
-  GtkWidget *menu_combo;
-  GtkWidget *label;
-  GtkWidget *list_combo;
+  CtkWidget *content_area;
+  CtkWidget *dialog;
+  CtkWidget *scrolled_window;
+  CtkWidget *hbox;
+  CtkWidget *button_vbox;
+  CtkWidget *combo_vbox;
+  CtkWidget *button;
+  CtkWidget *menu_combo;
+  CtkWidget *label;
+  CtkWidget *list_combo;
   
   test_init ();
 
@@ -239,7 +239,7 @@ main (int argc, char **argv)
   model = ctk_list_store_new (1, G_TYPE_STRING);
   contents = g_array_new (FALSE, FALSE, sizeof (char));
   
-  dialog = ctk_dialog_new_with_buttons ("GtkComboBox model changes",
+  dialog = ctk_dialog_new_with_buttons ("CtkComboBox model changes",
 					NULL, 0,
 					"_Close", CTK_RESPONSE_CLOSE,
 					NULL);

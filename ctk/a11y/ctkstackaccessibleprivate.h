@@ -22,9 +22,9 @@
 
 G_BEGIN_DECLS
 
-void ctk_stack_accessible_update_visible_child (GtkStack  *stack,
-                                                GtkWidget *old_visible_child,
-                                                GtkWidget *new_visible_child);
+void ctk_stack_accessible_update_visible_child (CtkStack  *stack,
+                                                CtkWidget *old_visible_child,
+                                                CtkWidget *new_visible_child);
 
 
 G_END_DECLS

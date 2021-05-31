@@ -32,26 +32,26 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 /**
  * SECTION:ctkhpaned
  * @Short_description: A container with two panes arranged horizontally
- * @Title: GtkHPaned
+ * @Title: CtkHPaned
  *
  * The HPaned widget is a container widget with two
  * children arranged horizontally. The division between
  * the two panes is adjustable by the user by dragging
- * a handle. See #GtkPaned for details.
+ * a handle. See #CtkPaned for details.
  *
- * GtkHPaned has been deprecated, use #GtkPaned instead.
+ * CtkHPaned has been deprecated, use #CtkPaned instead.
  */
 
 
-G_DEFINE_TYPE (GtkHPaned, ctk_hpaned, CTK_TYPE_PANED)
+G_DEFINE_TYPE (CtkHPaned, ctk_hpaned, CTK_TYPE_PANED)
 
 static void
-ctk_hpaned_class_init (GtkHPanedClass *class)
+ctk_hpaned_class_init (CtkHPanedClass *class)
 {
 }
 
 static void
-ctk_hpaned_init (GtkHPaned *hpaned)
+ctk_hpaned_init (CtkHPaned *hpaned)
 {
   ctk_orientable_set_orientation (CTK_ORIENTABLE (hpaned),
                                   CTK_ORIENTATION_HORIZONTAL);
@@ -60,13 +60,13 @@ ctk_hpaned_init (GtkHPaned *hpaned)
 /**
  * ctk_hpaned_new:
  *
- * Create a new #GtkHPaned
+ * Create a new #CtkHPaned
  *
- * Returns: the new #GtkHPaned
+ * Returns: the new #CtkHPaned
  *
  * Deprecated: 3.2: Use ctk_paned_new() with %CTK_ORIENTATION_HORIZONTAL instead
  */
-GtkWidget *
+CtkWidget *
 ctk_hpaned_new (void)
 {
   return g_object_new (CTK_TYPE_HPANED, NULL);

@@ -30,19 +30,19 @@
 
 #include "ctkmountoperationprivate.h"
 
-GtkMountOperationLookupContext *
+CtkMountOperationLookupContext *
 _ctk_mount_operation_lookup_context_get (GdkDisplay *display)
 {
   return NULL;
 }
 
 void
-_ctk_mount_operation_lookup_context_free (GtkMountOperationLookupContext *context)
+_ctk_mount_operation_lookup_context_free (CtkMountOperationLookupContext *context)
 {
 }
 
 gboolean
-_ctk_mount_operation_lookup_info (GtkMountOperationLookupContext *context,
+_ctk_mount_operation_lookup_info (CtkMountOperationLookupContext *context,
                                   GPid                            pid,
                                   gint                            size_pixels,
                                   gchar                         **out_name,

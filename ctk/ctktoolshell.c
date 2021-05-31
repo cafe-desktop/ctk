@@ -26,31 +26,31 @@
 
 /**
  * SECTION:ctktoolshell
- * @Short_description: Interface for containers containing GtkToolItem widgets
- * @Title: GtkToolShell
- * @see_also: #GtkToolbar, #GtkToolItem
+ * @Short_description: Interface for containers containing CtkToolItem widgets
+ * @Title: CtkToolShell
+ * @see_also: #CtkToolbar, #CtkToolItem
  *
- * The #GtkToolShell interface allows container widgets to provide additional
- * information when embedding #GtkToolItem widgets.
+ * The #CtkToolShell interface allows container widgets to provide additional
+ * information when embedding #CtkToolItem widgets.
  */
 
 /**
- * GtkToolShell:
+ * CtkToolShell:
  *
- * Dummy structure for accessing instances of #GtkToolShellIface.
+ * Dummy structure for accessing instances of #CtkToolShellIface.
  */
 
 
-typedef GtkToolShellIface GtkToolShellInterface;
-G_DEFINE_INTERFACE (GtkToolShell, ctk_tool_shell, CTK_TYPE_WIDGET);
+typedef CtkToolShellIface CtkToolShellInterface;
+G_DEFINE_INTERFACE (CtkToolShell, ctk_tool_shell, CTK_TYPE_WIDGET);
 
-static GtkReliefStyle ctk_tool_shell_real_get_relief_style (GtkToolShell *shell);
-static GtkOrientation ctk_tool_shell_real_get_text_orientation (GtkToolShell *shell);
-static gfloat ctk_tool_shell_real_get_text_alignment (GtkToolShell *shell);
-static PangoEllipsizeMode ctk_tool_shell_real_get_ellipsize_mode (GtkToolShell *shell);
+static CtkReliefStyle ctk_tool_shell_real_get_relief_style (CtkToolShell *shell);
+static CtkOrientation ctk_tool_shell_real_get_text_orientation (CtkToolShell *shell);
+static gfloat ctk_tool_shell_real_get_text_alignment (CtkToolShell *shell);
+static PangoEllipsizeMode ctk_tool_shell_real_get_ellipsize_mode (CtkToolShell *shell);
 
 static void
-ctk_tool_shell_default_init (GtkToolShellInterface *iface)
+ctk_tool_shell_default_init (CtkToolShellInterface *iface)
 {
   iface->get_relief_style = ctk_tool_shell_real_get_relief_style;
   iface->get_text_orientation = ctk_tool_shell_real_get_text_orientation;
@@ -58,26 +58,26 @@ ctk_tool_shell_default_init (GtkToolShellInterface *iface)
   iface->get_ellipsize_mode = ctk_tool_shell_real_get_ellipsize_mode;
 }
 
-static GtkReliefStyle
-ctk_tool_shell_real_get_relief_style (GtkToolShell *shell)
+static CtkReliefStyle
+ctk_tool_shell_real_get_relief_style (CtkToolShell *shell)
 {
   return CTK_RELIEF_NONE;
 }
 
-static GtkOrientation
-ctk_tool_shell_real_get_text_orientation (GtkToolShell *shell)
+static CtkOrientation
+ctk_tool_shell_real_get_text_orientation (CtkToolShell *shell)
 {
   return CTK_ORIENTATION_HORIZONTAL;
 }
 
 static gfloat
-ctk_tool_shell_real_get_text_alignment (GtkToolShell *shell)
+ctk_tool_shell_real_get_text_alignment (CtkToolShell *shell)
 {
   return 0.5f;
 }
 
 static PangoEllipsizeMode
-ctk_tool_shell_real_get_ellipsize_mode (GtkToolShell *shell)
+ctk_tool_shell_real_get_ellipsize_mode (CtkToolShell *shell)
 {
   return PANGO_ELLIPSIZE_NONE;
 }
@@ -85,24 +85,24 @@ ctk_tool_shell_real_get_ellipsize_mode (GtkToolShell *shell)
 
 /**
  * ctk_tool_shell_get_icon_size:
- * @shell: a #GtkToolShell
+ * @shell: a #CtkToolShell
  *
  * Retrieves the icon size for the tool shell. Tool items must not call this
  * function directly, but rely on ctk_tool_item_get_icon_size() instead.
  *
- * Returns: (type int): the current size (#GtkIconSize) for icons of @shell
+ * Returns: (type int): the current size (#CtkIconSize) for icons of @shell
  *
  * Since: 2.14
  **/
-GtkIconSize
-ctk_tool_shell_get_icon_size (GtkToolShell *shell)
+CtkIconSize
+ctk_tool_shell_get_icon_size (CtkToolShell *shell)
 {
   return CTK_TOOL_SHELL_GET_IFACE (shell)->get_icon_size (shell);
 }
 
 /**
  * ctk_tool_shell_get_orientation:
- * @shell: a #GtkToolShell
+ * @shell: a #CtkToolShell
  *
  * Retrieves the current orientation for the tool shell. Tool items must not
  * call this function directly, but rely on ctk_tool_item_get_orientation()
@@ -112,15 +112,15 @@ ctk_tool_shell_get_icon_size (GtkToolShell *shell)
  *
  * Since: 2.14
  **/
-GtkOrientation
-ctk_tool_shell_get_orientation (GtkToolShell *shell)
+CtkOrientation
+ctk_tool_shell_get_orientation (CtkToolShell *shell)
 {
   return CTK_TOOL_SHELL_GET_IFACE (shell)->get_orientation (shell);
 }
 
 /**
  * ctk_tool_shell_get_style:
- * @shell: a #GtkToolShell
+ * @shell: a #CtkToolShell
  *
  * Retrieves whether the tool shell has text, icons, or both. Tool items must
  * not call this function directly, but rely on ctk_tool_item_get_toolbar_style()
@@ -130,15 +130,15 @@ ctk_tool_shell_get_orientation (GtkToolShell *shell)
  *
  * Since: 2.14
  **/
-GtkToolbarStyle
-ctk_tool_shell_get_style (GtkToolShell *shell)
+CtkToolbarStyle
+ctk_tool_shell_get_style (CtkToolShell *shell)
 {
   return CTK_TOOL_SHELL_GET_IFACE (shell)->get_style (shell);
 }
 
 /**
  * ctk_tool_shell_get_relief_style:
- * @shell: a #GtkToolShell
+ * @shell: a #CtkToolShell
  *
  * Returns the relief style of buttons on @shell. Tool items must not call this
  * function directly, but rely on ctk_tool_item_get_relief_style() instead.
@@ -147,17 +147,17 @@ ctk_tool_shell_get_style (GtkToolShell *shell)
  *
  * Since: 2.14
  **/
-GtkReliefStyle
-ctk_tool_shell_get_relief_style (GtkToolShell *shell)
+CtkReliefStyle
+ctk_tool_shell_get_relief_style (CtkToolShell *shell)
 {
-  GtkToolShellIface *iface = CTK_TOOL_SHELL_GET_IFACE (shell);
+  CtkToolShellIface *iface = CTK_TOOL_SHELL_GET_IFACE (shell);
 
   return iface->get_relief_style (shell);
 }
 
 /**
  * ctk_tool_shell_rebuild_menu:
- * @shell: a #GtkToolShell
+ * @shell: a #CtkToolShell
  *
  * Calling this function signals the tool shell that the overflow menu item for
  * tool items have changed. If there is an overflow menu and if it is visible
@@ -169,9 +169,9 @@ ctk_tool_shell_get_relief_style (GtkToolShell *shell)
  * Since: 2.14
  **/
 void
-ctk_tool_shell_rebuild_menu (GtkToolShell *shell)
+ctk_tool_shell_rebuild_menu (CtkToolShell *shell)
 {
-  GtkToolShellIface *iface = CTK_TOOL_SHELL_GET_IFACE (shell);
+  CtkToolShellIface *iface = CTK_TOOL_SHELL_GET_IFACE (shell);
 
   if (iface->rebuild_menu)
     iface->rebuild_menu (shell);
@@ -179,7 +179,7 @@ ctk_tool_shell_rebuild_menu (GtkToolShell *shell)
 
 /**
  * ctk_tool_shell_get_text_orientation:
- * @shell: a #GtkToolShell
+ * @shell: a #CtkToolShell
  *
  * Retrieves the current text orientation for the tool shell. Tool items must not
  * call this function directly, but rely on ctk_tool_item_get_text_orientation()
@@ -189,17 +189,17 @@ ctk_tool_shell_rebuild_menu (GtkToolShell *shell)
  *
  * Since: 2.20
  **/
-GtkOrientation
-ctk_tool_shell_get_text_orientation (GtkToolShell *shell)
+CtkOrientation
+ctk_tool_shell_get_text_orientation (CtkToolShell *shell)
 {
-  GtkToolShellIface *iface = CTK_TOOL_SHELL_GET_IFACE (shell);
+  CtkToolShellIface *iface = CTK_TOOL_SHELL_GET_IFACE (shell);
 
   return iface->get_text_orientation (shell);
 }
 
 /**
  * ctk_tool_shell_get_text_alignment:
- * @shell: a #GtkToolShell
+ * @shell: a #CtkToolShell
  *
  * Retrieves the current text alignment for the tool shell. Tool items must not
  * call this function directly, but rely on ctk_tool_item_get_text_alignment()
@@ -210,16 +210,16 @@ ctk_tool_shell_get_text_orientation (GtkToolShell *shell)
  * Since: 2.20
  **/
 gfloat
-ctk_tool_shell_get_text_alignment (GtkToolShell *shell)
+ctk_tool_shell_get_text_alignment (CtkToolShell *shell)
 {
-  GtkToolShellIface *iface = CTK_TOOL_SHELL_GET_IFACE (shell);
+  CtkToolShellIface *iface = CTK_TOOL_SHELL_GET_IFACE (shell);
 
   return iface->get_text_alignment (shell);
 }
 
 /**
  * ctk_tool_shell_get_ellipsize_mode:
- * @shell: a #GtkToolShell
+ * @shell: a #CtkToolShell
  *
  * Retrieves the current ellipsize mode for the tool shell. Tool items must not
  * call this function directly, but rely on ctk_tool_item_get_ellipsize_mode()
@@ -230,16 +230,16 @@ ctk_tool_shell_get_text_alignment (GtkToolShell *shell)
  * Since: 2.20
  **/
 PangoEllipsizeMode
-ctk_tool_shell_get_ellipsize_mode (GtkToolShell *shell)
+ctk_tool_shell_get_ellipsize_mode (CtkToolShell *shell)
 {
-  GtkToolShellIface *iface = CTK_TOOL_SHELL_GET_IFACE (shell);
+  CtkToolShellIface *iface = CTK_TOOL_SHELL_GET_IFACE (shell);
 
   return iface->get_ellipsize_mode (shell);
 }
 
 /**
  * ctk_tool_shell_get_text_size_group:
- * @shell: a #GtkToolShell
+ * @shell: a #CtkToolShell
  *
  * Retrieves the current text size group for the tool shell. Tool items must not
  * call this function directly, but rely on ctk_tool_item_get_text_size_group()
@@ -249,10 +249,10 @@ ctk_tool_shell_get_ellipsize_mode (GtkToolShell *shell)
  *
  * Since: 2.20
  **/
-GtkSizeGroup *
-ctk_tool_shell_get_text_size_group (GtkToolShell *shell)
+CtkSizeGroup *
+ctk_tool_shell_get_text_size_group (CtkToolShell *shell)
 {
-  GtkToolShellIface *iface = CTK_TOOL_SHELL_GET_IFACE (shell);
+  CtkToolShellIface *iface = CTK_TOOL_SHELL_GET_IFACE (shell);
 
   if (iface->get_text_size_group)
     return CTK_TOOL_SHELL_GET_IFACE (shell)->get_text_size_group (shell);

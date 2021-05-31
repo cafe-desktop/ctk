@@ -37,23 +37,23 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_VOLUME_BUTTON                 (ctk_volume_button_get_type ())
-#define CTK_VOLUME_BUTTON(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_VOLUME_BUTTON, GtkVolumeButton))
-#define CTK_VOLUME_BUTTON_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_VOLUME_BUTTON, GtkVolumeButtonClass))
+#define CTK_VOLUME_BUTTON(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_VOLUME_BUTTON, CtkVolumeButton))
+#define CTK_VOLUME_BUTTON_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_VOLUME_BUTTON, CtkVolumeButtonClass))
 #define CTK_IS_VOLUME_BUTTON(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_VOLUME_BUTTON))
 #define CTK_IS_VOLUME_BUTTON_CLASS(klass)      (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_VOLUME_BUTTON))
-#define CTK_VOLUME_BUTTON_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_VOLUME_BUTTON, GtkVolumeButtonClass))
+#define CTK_VOLUME_BUTTON_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_VOLUME_BUTTON, CtkVolumeButtonClass))
 
-typedef struct _GtkVolumeButton       GtkVolumeButton;
-typedef struct _GtkVolumeButtonClass  GtkVolumeButtonClass;
+typedef struct _CtkVolumeButton       CtkVolumeButton;
+typedef struct _CtkVolumeButtonClass  CtkVolumeButtonClass;
 
-struct _GtkVolumeButton
+struct _CtkVolumeButton
 {
-  GtkScaleButton  parent;
+  CtkScaleButton  parent;
 };
 
-struct _GtkVolumeButtonClass
+struct _CtkVolumeButtonClass
 {
-  GtkScaleButtonClass parent_class;
+  CtkScaleButtonClass parent_class;
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -65,7 +65,7 @@ struct _GtkVolumeButtonClass
 GDK_AVAILABLE_IN_ALL
 GType		ctk_volume_button_get_type	(void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget*	ctk_volume_button_new		(void);
+CtkWidget*	ctk_volume_button_new		(void);
 
 G_END_DECLS
 

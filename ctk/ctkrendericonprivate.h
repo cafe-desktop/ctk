@@ -28,21 +28,21 @@
 
 G_BEGIN_DECLS
 
-void    ctk_css_style_render_icon               (GtkCssStyle            *style,
+void    ctk_css_style_render_icon               (CtkCssStyle            *style,
                                                  cairo_t                *cr,
                                                  double                  x,
                                                  double                  y,
                                                  double                  width,
                                                  double                  height,
-                                                 GtkCssImageBuiltinType  builtin_type);
+                                                 CtkCssImageBuiltinType  builtin_type);
 
-void    ctk_css_style_render_icon_surface       (GtkCssStyle            *style,
+void    ctk_css_style_render_icon_surface       (CtkCssStyle            *style,
                                                  cairo_t                *cr,
                                                  cairo_surface_t        *surface,
                                                  double                  x,
                                                  double                  y);
 
-void    ctk_css_style_render_icon_get_extents   (GtkCssStyle            *style,
+void    ctk_css_style_render_icon_get_extents   (CtkCssStyle            *style,
                                                  GdkRectangle           *extents,
                                                  gint                    x,
                                                  gint                    y,

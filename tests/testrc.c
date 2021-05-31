@@ -29,12 +29,12 @@ struct {
   gboolean  match;
 } tests[] = {
   { "", "", TRUE },
-  { "<GtkCheckButton>", "GtkToggleButton", FALSE },
-  { "<GtkCheckButton>", "GtkCheckButton", TRUE },
-  { "<GtkCheckButton>", "GtkRadioButton", TRUE },
-  { "abc*.<GtkButton>.<GtkLabel>.*foo", "abcx.GtkToggleButton.GtkLabel.foo", TRUE },
-  { "*abc.<GtkButton>.foo*", "abc.GtkToggleButton.bar", FALSE },
-  { "*abc.<GtkButton>.foo*", "xabc.GtkToggleButton.fox", FALSE },
+  { "<CtkCheckButton>", "CtkToggleButton", FALSE },
+  { "<CtkCheckButton>", "CtkCheckButton", TRUE },
+  { "<CtkCheckButton>", "CtkRadioButton", TRUE },
+  { "abc*.<CtkButton>.<CtkLabel>.*foo", "abcx.CtkToggleButton.CtkLabel.foo", TRUE },
+  { "*abc.<CtkButton>.foo*", "abc.CtkToggleButton.bar", FALSE },
+  { "*abc.<CtkButton>.foo*", "xabc.CtkToggleButton.fox", FALSE },
   { NULL, NULL, FALSE }
 };
 

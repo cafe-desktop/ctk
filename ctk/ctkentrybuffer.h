@@ -31,52 +31,52 @@ G_BEGIN_DECLS
 #define CTK_ENTRY_BUFFER_MAX_SIZE        G_MAXUSHORT
 
 #define CTK_TYPE_ENTRY_BUFFER            (ctk_entry_buffer_get_type ())
-#define CTK_ENTRY_BUFFER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ENTRY_BUFFER, GtkEntryBuffer))
-#define CTK_ENTRY_BUFFER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ENTRY_BUFFER, GtkEntryBufferClass))
+#define CTK_ENTRY_BUFFER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ENTRY_BUFFER, CtkEntryBuffer))
+#define CTK_ENTRY_BUFFER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ENTRY_BUFFER, CtkEntryBufferClass))
 #define CTK_IS_ENTRY_BUFFER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_ENTRY_BUFFER))
 #define CTK_IS_ENTRY_BUFFER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_ENTRY_BUFFER))
-#define CTK_ENTRY_BUFFER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ENTRY_BUFFER, GtkEntryBufferClass))
+#define CTK_ENTRY_BUFFER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ENTRY_BUFFER, CtkEntryBufferClass))
 
-typedef struct _GtkEntryBuffer            GtkEntryBuffer;
-typedef struct _GtkEntryBufferClass       GtkEntryBufferClass;
-typedef struct _GtkEntryBufferPrivate     GtkEntryBufferPrivate;
+typedef struct _CtkEntryBuffer            CtkEntryBuffer;
+typedef struct _CtkEntryBufferClass       CtkEntryBufferClass;
+typedef struct _CtkEntryBufferPrivate     CtkEntryBufferPrivate;
 
-struct _GtkEntryBuffer
+struct _CtkEntryBuffer
 {
   GObject parent_instance;
 
   /*< private >*/
-  GtkEntryBufferPrivate *priv;
+  CtkEntryBufferPrivate *priv;
 };
 
-struct _GtkEntryBufferClass
+struct _CtkEntryBufferClass
 {
   GObjectClass parent_class;
 
   /* Signals */
 
-  void         (*inserted_text)          (GtkEntryBuffer *buffer,
+  void         (*inserted_text)          (CtkEntryBuffer *buffer,
                                           guint           position,
                                           const gchar    *chars,
                                           guint           n_chars);
 
-  void         (*deleted_text)           (GtkEntryBuffer *buffer,
+  void         (*deleted_text)           (CtkEntryBuffer *buffer,
                                           guint           position,
                                           guint           n_chars);
 
   /* Virtual Methods */
 
-  const gchar* (*get_text)               (GtkEntryBuffer *buffer,
+  const gchar* (*get_text)               (CtkEntryBuffer *buffer,
                                           gsize          *n_bytes);
 
-  guint        (*get_length)             (GtkEntryBuffer *buffer);
+  guint        (*get_length)             (CtkEntryBuffer *buffer);
 
-  guint        (*insert_text)            (GtkEntryBuffer *buffer,
+  guint        (*insert_text)            (CtkEntryBuffer *buffer,
                                           guint           position,
                                           const gchar    *chars,
                                           guint           n_chars);
 
-  guint        (*delete_text)            (GtkEntryBuffer *buffer,
+  guint        (*delete_text)            (CtkEntryBuffer *buffer,
                                           guint           position,
                                           guint           n_chars);
 
@@ -95,49 +95,49 @@ GDK_AVAILABLE_IN_ALL
 GType                     ctk_entry_buffer_get_type               (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkEntryBuffer*           ctk_entry_buffer_new                    (const gchar     *initial_chars,
+CtkEntryBuffer*           ctk_entry_buffer_new                    (const gchar     *initial_chars,
                                                                    gint             n_initial_chars);
 
 GDK_AVAILABLE_IN_ALL
-gsize                     ctk_entry_buffer_get_bytes              (GtkEntryBuffer  *buffer);
+gsize                     ctk_entry_buffer_get_bytes              (CtkEntryBuffer  *buffer);
 
 GDK_AVAILABLE_IN_ALL
-guint                     ctk_entry_buffer_get_length             (GtkEntryBuffer  *buffer);
+guint                     ctk_entry_buffer_get_length             (CtkEntryBuffer  *buffer);
 
 GDK_AVAILABLE_IN_ALL
-const gchar*              ctk_entry_buffer_get_text               (GtkEntryBuffer  *buffer);
+const gchar*              ctk_entry_buffer_get_text               (CtkEntryBuffer  *buffer);
 
 GDK_AVAILABLE_IN_ALL
-void                      ctk_entry_buffer_set_text               (GtkEntryBuffer  *buffer,
+void                      ctk_entry_buffer_set_text               (CtkEntryBuffer  *buffer,
                                                                    const gchar     *chars,
                                                                    gint             n_chars);
 
 GDK_AVAILABLE_IN_ALL
-void                      ctk_entry_buffer_set_max_length         (GtkEntryBuffer  *buffer,
+void                      ctk_entry_buffer_set_max_length         (CtkEntryBuffer  *buffer,
                                                                    gint             max_length);
 
 GDK_AVAILABLE_IN_ALL
-gint                      ctk_entry_buffer_get_max_length         (GtkEntryBuffer  *buffer);
+gint                      ctk_entry_buffer_get_max_length         (CtkEntryBuffer  *buffer);
 
 GDK_AVAILABLE_IN_ALL
-guint                     ctk_entry_buffer_insert_text            (GtkEntryBuffer  *buffer,
+guint                     ctk_entry_buffer_insert_text            (CtkEntryBuffer  *buffer,
                                                                    guint            position,
                                                                    const gchar     *chars,
                                                                    gint             n_chars);
 
 GDK_AVAILABLE_IN_ALL
-guint                     ctk_entry_buffer_delete_text            (GtkEntryBuffer  *buffer,
+guint                     ctk_entry_buffer_delete_text            (CtkEntryBuffer  *buffer,
                                                                    guint            position,
                                                                    gint             n_chars);
 
 GDK_AVAILABLE_IN_ALL
-void                      ctk_entry_buffer_emit_inserted_text     (GtkEntryBuffer  *buffer,
+void                      ctk_entry_buffer_emit_inserted_text     (CtkEntryBuffer  *buffer,
                                                                    guint            position,
                                                                    const gchar     *chars,
                                                                    guint            n_chars);
 
 GDK_AVAILABLE_IN_ALL
-void                      ctk_entry_buffer_emit_deleted_text      (GtkEntryBuffer  *buffer,
+void                      ctk_entry_buffer_emit_deleted_text      (CtkEntryBuffer  *buffer,
                                                                    guint            position,
                                                                    guint            n_chars);
 

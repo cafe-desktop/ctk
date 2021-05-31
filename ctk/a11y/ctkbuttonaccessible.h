@@ -27,26 +27,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_BUTTON_ACCESSIBLE                     (ctk_button_accessible_get_type ())
-#define CTK_BUTTON_ACCESSIBLE(obj)                     (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_BUTTON_ACCESSIBLE, GtkButtonAccessible))
-#define CTK_BUTTON_ACCESSIBLE_CLASS(klass)             (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_BUTTON_ACCESSIBLE, GtkButtonAccessibleClass))
+#define CTK_BUTTON_ACCESSIBLE(obj)                     (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_BUTTON_ACCESSIBLE, CtkButtonAccessible))
+#define CTK_BUTTON_ACCESSIBLE_CLASS(klass)             (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_BUTTON_ACCESSIBLE, CtkButtonAccessibleClass))
 #define CTK_IS_BUTTON_ACCESSIBLE(obj)                  (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_BUTTON_ACCESSIBLE))
 #define CTK_IS_BUTTON_ACCESSIBLE_CLASS(klass)          (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_BUTTON_ACCESSIBLE))
-#define CTK_BUTTON_ACCESSIBLE_GET_CLASS(obj)           (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_BUTTON_ACCESSIBLE, GtkButtonAccessibleClass))
+#define CTK_BUTTON_ACCESSIBLE_GET_CLASS(obj)           (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_BUTTON_ACCESSIBLE, CtkButtonAccessibleClass))
 
-typedef struct _GtkButtonAccessible        GtkButtonAccessible;
-typedef struct _GtkButtonAccessibleClass   GtkButtonAccessibleClass;
-typedef struct _GtkButtonAccessiblePrivate GtkButtonAccessiblePrivate;
+typedef struct _CtkButtonAccessible        CtkButtonAccessible;
+typedef struct _CtkButtonAccessibleClass   CtkButtonAccessibleClass;
+typedef struct _CtkButtonAccessiblePrivate CtkButtonAccessiblePrivate;
 
-struct _GtkButtonAccessible
+struct _CtkButtonAccessible
 {
-  GtkContainerAccessible parent;
+  CtkContainerAccessible parent;
 
-  GtkButtonAccessiblePrivate *priv;
+  CtkButtonAccessiblePrivate *priv;
 };
 
-struct _GtkButtonAccessibleClass
+struct _CtkButtonAccessibleClass
 {
-  GtkContainerAccessibleClass parent_class;
+  CtkContainerAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

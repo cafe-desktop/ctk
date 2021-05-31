@@ -71,7 +71,7 @@ signal_name_to_string (SignalName signal)
 typedef struct
 {
   SignalName signal;
-  GtkTreePath *path;
+  CtkTreePath *path;
 
   /* For rows-reordered */
   int *new_order;
@@ -81,7 +81,7 @@ Signal;
 
 
 static Signal *
-signal_new (SignalName signal, GtkTreePath *path)
+signal_new (SignalName signal, CtkTreePath *path)
 {
   Signal *s;
 
@@ -94,7 +94,7 @@ signal_new (SignalName signal, GtkTreePath *path)
 }
 
 static Signal *
-signal_new_with_order (SignalName signal, GtkTreePath *path,
+signal_new_with_order (SignalName signal, CtkTreePath *path,
                        int *new_order, int len)
 {
   Signal *s = signal_new (signal, path);
@@ -118,7 +118,7 @@ signal_free (Signal *s)
 struct _SignalMonitor
 {
   GQueue *queue;
-  GtkTreeModel *client;
+  CtkTreeModel *client;
   gulong signal_ids[LAST_SIGNAL];
 };
 
@@ -126,9 +126,9 @@ struct _SignalMonitor
 static void
 signal_monitor_generic_handler (SignalMonitor *m,
                                 SignalName     signal,
-                                GtkTreeModel  *model,
-                                GtkTreeIter   *iter,
-                                GtkTreePath   *path,
+                                CtkTreeModel  *model,
+                                CtkTreeIter   *iter,
+                                CtkTreePath   *path,
                                 int           *new_order)
 {
   Signal *s;
@@ -200,9 +200,9 @@ signal_monitor_generic_handler (SignalMonitor *m,
 }
 
 static void
-signal_monitor_row_inserted (GtkTreeModel *model,
-                             GtkTreePath  *path,
-                             GtkTreeIter  *iter,
+signal_monitor_row_inserted (CtkTreeModel *model,
+                             CtkTreePath  *path,
+                             CtkTreeIter  *iter,
                              gpointer      data)
 {
   signal_monitor_generic_handler (data, ROW_INSERTED,
@@ -210,8 +210,8 @@ signal_monitor_row_inserted (GtkTreeModel *model,
 }
 
 static void
-signal_monitor_row_deleted (GtkTreeModel *model,
-                            GtkTreePath  *path,
+signal_monitor_row_deleted (CtkTreeModel *model,
+                            CtkTreePath  *path,
                             gpointer      data)
 {
   signal_monitor_generic_handler (data, ROW_DELETED,
@@ -219,9 +219,9 @@ signal_monitor_row_deleted (GtkTreeModel *model,
 }
 
 static void
-signal_monitor_row_changed (GtkTreeModel *model,
-                            GtkTreePath  *path,
-                            GtkTreeIter  *iter,
+signal_monitor_row_changed (CtkTreeModel *model,
+                            CtkTreePath  *path,
+                            CtkTreeIter  *iter,
                             gpointer      data)
 {
   signal_monitor_generic_handler (data, ROW_CHANGED,
@@ -229,9 +229,9 @@ signal_monitor_row_changed (GtkTreeModel *model,
 }
 
 static void
-signal_monitor_row_has_child_toggled (GtkTreeModel *model,
-                                      GtkTreePath  *path,
-                                      GtkTreeIter  *iter,
+signal_monitor_row_has_child_toggled (CtkTreeModel *model,
+                                      CtkTreePath  *path,
+                                      CtkTreeIter  *iter,
                                       gpointer      data)
 {
   signal_monitor_generic_handler (data, ROW_HAS_CHILD_TOGGLED,
@@ -239,9 +239,9 @@ signal_monitor_row_has_child_toggled (GtkTreeModel *model,
 }
 
 static void
-signal_monitor_rows_reordered (GtkTreeModel *model,
-                               GtkTreePath  *path,
-                               GtkTreeIter  *iter,
+signal_monitor_rows_reordered (CtkTreeModel *model,
+                               CtkTreePath  *path,
+                               CtkTreeIter  *iter,
                                gint         *new_order,
                                gpointer      data)
 {
@@ -250,7 +250,7 @@ signal_monitor_rows_reordered (GtkTreeModel *model,
 }
 
 SignalMonitor *
-signal_monitor_new (GtkTreeModel *client)
+signal_monitor_new (CtkTreeModel *client)
 {
   SignalMonitor *m;
 
@@ -307,7 +307,7 @@ signal_monitor_assert_is_empty (SignalMonitor *m)
 void
 signal_monitor_append_signal_path (SignalMonitor *m,
                                    SignalName     signal,
-                                   GtkTreePath   *path)
+                                   CtkTreePath   *path)
 {
   Signal *s;
 
@@ -318,7 +318,7 @@ signal_monitor_append_signal_path (SignalMonitor *m,
 void
 signal_monitor_append_signal_reordered (SignalMonitor *m,
                                         SignalName     signal,
-                                        GtkTreePath   *path,
+                                        CtkTreePath   *path,
                                         int           *new_order,
                                         int            len)
 {
@@ -334,7 +334,7 @@ signal_monitor_append_signal (SignalMonitor *m,
                               const gchar   *path_string)
 {
   Signal *s;
-  GtkTreePath *path;
+  CtkTreePath *path;
 
   path = ctk_tree_path_new_from_string (path_string);
 

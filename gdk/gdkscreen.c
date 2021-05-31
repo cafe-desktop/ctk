@@ -438,7 +438,7 @@ gdk_screen_set_resolution (GdkScreen *screen,
  * screen->resolution. This is us to allow us to distinguish
  * resolution changes that the backend picks up from resolution
  * changes made through the public API - perhaps using
- * g_object_set(<GtkSetting>, "ctk-xft-dpi", ...);
+ * g_object_set(<CtkSetting>, "ctk-xft-dpi", ...);
  */
 void
 _gdk_screen_set_resolution (GdkScreen *screen,

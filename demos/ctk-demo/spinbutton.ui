@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <object class="GtkAdjustment" id="basic_adjustment">
+  <object class="CtkAdjustment" id="basic_adjustment">
     <property name="lower">-10000</property>
     <property name="upper">10000</property>
     <property name="step_increment">0.5</property>
     <property name="page_increment">100</property>
   </object>
-  <object class="GtkAdjustment" id="hex_adjustment">
+  <object class="CtkAdjustment" id="hex_adjustment">
     <property name="upper">255</property>
     <property name="step_increment">1</property>
     <property name="page_increment">16</property>
   </object>
-  <object class="GtkAdjustment" id="time_adjustment">
+  <object class="CtkAdjustment" id="time_adjustment">
     <property name="upper">1410</property>
     <property name="step_increment">30</property>
     <property name="page_increment">60</property>
   </object>
-  <object class="GtkAdjustment" id="month_adjustment">
+  <object class="CtkAdjustment" id="month_adjustment">
     <property name="lower">1</property>
     <property name="upper">12</property>
     <property name="value">1</property>
     <property name="step_increment">1</property>
     <property name="page_increment">5</property>
   </object>
-  <object class="GtkWindow" id="window">
+  <object class="CtkWindow" id="window">
     <property name="title" translatable="yes">Spin Button</property>
     <child>
-      <object class="GtkGrid">
+      <object class="CtkGrid">
         <property name="visible">1</property>
         <property name="margin">20</property>
         <property name="row-spacing">10</property>
         <property name="column-spacing">10</property>
         <child>
-          <object class="GtkLabel">
+          <object class="CtkLabel">
             <property name="visible">1</property>
             <property name="label">_Numeric</property>
             <property name="use_underline">1</property>
@@ -45,7 +45,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkSpinButton" id="basic_spin">
+          <object class="CtkSpinButton" id="basic_spin">
             <property name="visible">1</property>
             <property name="halign">start</property>
             <property name="width_chars">5</property>
@@ -60,7 +60,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="basic_label">
+          <object class="CtkLabel" id="basic_label">
             <property name="visible">1</property>
             <property name="width_chars">10</property>
             <property name="xalign">1</property>
@@ -71,7 +71,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel">
+          <object class="CtkLabel">
             <property name="visible">1</property>
             <property name="label">_Hexadecimal</property>
             <property name="use_underline">1</property>
@@ -84,7 +84,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkSpinButton" id="hex_spin">
+          <object class="CtkSpinButton" id="hex_spin">
             <property name="visible">1</property>
             <property name="halign">start</property>
             <property name="width_chars">4</property>
@@ -99,7 +99,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="hex_label">
+          <object class="CtkLabel" id="hex_label">
             <property name="visible">1</property>
             <property name="width_chars">10</property>
             <property name="xalign">1</property>
@@ -110,7 +110,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel">
+          <object class="CtkLabel">
             <property name="visible">1</property>
             <property name="label">_Time</property>
             <property name="use_underline">1</property>
@@ -123,7 +123,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkSpinButton" id="time_spin">
+          <object class="CtkSpinButton" id="time_spin">
             <property name="visible">1</property>
             <property name="halign">start</property>
             <property name="width_chars">5</property>
@@ -138,7 +138,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="time_label">
+          <object class="CtkLabel" id="time_label">
             <property name="visible">1</property>
             <property name="width_chars">10</property>
             <property name="xalign">1</property>
@@ -149,7 +149,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel">
+          <object class="CtkLabel">
             <property name="visible">1</property>
             <property name="label">_Month</property>
             <property name="use_underline">1</property>
@@ -162,7 +162,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkSpinButton" id="month_spin">
+          <object class="CtkSpinButton" id="month_spin">
             <property name="visible">1</property>
             <property name="halign">start</property>
             <property name="width_chars">9</property>
@@ -178,7 +178,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="month_label">
+          <object class="CtkLabel" id="month_label">
             <property name="visible">1</property>
             <property name="width_chars">10</property>
             <property name="xalign">1</property>

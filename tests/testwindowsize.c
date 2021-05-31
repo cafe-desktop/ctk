@@ -1,15 +1,15 @@
 /*  gcc -g -Wall -O2 -o dialog-test dialog-test.c `pkg-config --cflags --libs ctk+-3.0` */
 #include <ctk/ctk.h>
 
-static GtkWidget *window;
-static GtkWidget *width_chars_spin;
-static GtkWidget *max_width_chars_spin;
-static GtkWidget *default_width_spin;
-static GtkWidget *default_height_spin;
-static GtkWidget *resizable_check;
+static CtkWidget *window;
+static CtkWidget *width_chars_spin;
+static CtkWidget *max_width_chars_spin;
+static CtkWidget *default_width_spin;
+static CtkWidget *default_height_spin;
+static CtkWidget *resizable_check;
 
 static gboolean
-configure_event_cb (GtkWidget *window, GdkEventConfigure *event, GtkLabel *label)
+configure_event_cb (CtkWidget *window, GdkEventConfigure *event, CtkLabel *label)
 {
   gchar *str;
   gint width, height;
@@ -25,8 +25,8 @@ configure_event_cb (GtkWidget *window, GdkEventConfigure *event, GtkLabel *label
 static void
 show_dialog (void)
 {
-  GtkWidget *dialog;
-  GtkWidget *label;
+  CtkWidget *dialog;
+  CtkWidget *label;
   gint width_chars, max_width_chars, default_width, default_height;
   gboolean resizable;
 
@@ -78,9 +78,9 @@ show_dialog (void)
 static void
 create_window (void)
 {
-  GtkWidget *grid;
-  GtkWidget *label;
-  GtkWidget *button;
+  CtkWidget *grid;
+  CtkWidget *label;
+  CtkWidget *button;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_window_set_title (CTK_WINDOW (window), "Window size");

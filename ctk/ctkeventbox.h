@@ -36,31 +36,31 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_EVENT_BOX              (ctk_event_box_get_type ())
-#define CTK_EVENT_BOX(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_EVENT_BOX, GtkEventBox))
-#define CTK_EVENT_BOX_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_EVENT_BOX, GtkEventBoxClass))
+#define CTK_EVENT_BOX(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_EVENT_BOX, CtkEventBox))
+#define CTK_EVENT_BOX_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_EVENT_BOX, CtkEventBoxClass))
 #define CTK_IS_EVENT_BOX(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_EVENT_BOX))
 #define CTK_IS_EVENT_BOX_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_EVENT_BOX))
-#define CTK_EVENT_BOX_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_EVENT_BOX, GtkEventBoxClass))
+#define CTK_EVENT_BOX_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_EVENT_BOX, CtkEventBoxClass))
 
-typedef struct _GtkEventBox        GtkEventBox;
-typedef struct _GtkEventBoxClass   GtkEventBoxClass;
-typedef struct _GtkEventBoxPrivate GtkEventBoxPrivate;
+typedef struct _CtkEventBox        CtkEventBox;
+typedef struct _CtkEventBoxClass   CtkEventBoxClass;
+typedef struct _CtkEventBoxPrivate CtkEventBoxPrivate;
 
-struct _GtkEventBox
+struct _CtkEventBox
 {
-  GtkBin bin;
+  CtkBin bin;
 
   /*< private >*/
-  GtkEventBoxPrivate *priv;
+  CtkEventBoxPrivate *priv;
 };
 
 /**
- * GtkEventBoxClass:
+ * CtkEventBoxClass:
  * @parent_class: The parent class.
  */
-struct _GtkEventBoxClass
+struct _CtkEventBoxClass
 {
-  GtkBinClass parent_class;
+  CtkBinClass parent_class;
 
   /*< private >*/
 
@@ -74,16 +74,16 @@ struct _GtkEventBoxClass
 GDK_AVAILABLE_IN_ALL
 GType      ctk_event_box_get_type           (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget* ctk_event_box_new                (void);
+CtkWidget* ctk_event_box_new                (void);
 GDK_AVAILABLE_IN_ALL
-gboolean   ctk_event_box_get_visible_window (GtkEventBox *event_box);
+gboolean   ctk_event_box_get_visible_window (CtkEventBox *event_box);
 GDK_AVAILABLE_IN_ALL
-void       ctk_event_box_set_visible_window (GtkEventBox *event_box,
+void       ctk_event_box_set_visible_window (CtkEventBox *event_box,
                                              gboolean     visible_window);
 GDK_AVAILABLE_IN_ALL
-gboolean   ctk_event_box_get_above_child    (GtkEventBox *event_box);
+gboolean   ctk_event_box_get_above_child    (CtkEventBox *event_box);
 GDK_AVAILABLE_IN_ALL
-void       ctk_event_box_set_above_child    (GtkEventBox *event_box,
+void       ctk_event_box_set_above_child    (CtkEventBox *event_box,
                                              gboolean     above_child);
 
 G_END_DECLS

@@ -51,7 +51,7 @@ G_BEGIN_DECLS
 #define CTK_PRIORITY_RESIZE (G_PRIORITY_HIGH_IDLE + 10)
 
 /**
- * GtkKeySnoopFunc:
+ * CtkKeySnoopFunc:
  * @grab_widget: the widget to which the event will be delivered
  * @event: the key event
  * @func_data: (closure): data supplied to ctk_key_snooper_install()
@@ -61,7 +61,7 @@ G_BEGIN_DECLS
  *
  * Returns: %TRUE to stop further processing of @event, %FALSE to continue.
  */
-typedef gint (*GtkKeySnoopFunc) (GtkWidget   *grab_widget,
+typedef gint (*CtkKeySnoopFunc) (CtkWidget   *grab_widget,
                                  GdkEventKey *event,
                                  gpointer     func_data);
 
@@ -125,17 +125,17 @@ GDK_AVAILABLE_IN_ALL
 void     ctk_init_abi_check       (int    *argc,
                                    char ***argv,
                                    int     num_checks,
-                                   size_t  sizeof_GtkWindow,
-                                   size_t  sizeof_GtkBox);
+                                   size_t  sizeof_CtkWindow,
+                                   size_t  sizeof_CtkBox);
 GDK_AVAILABLE_IN_ALL
 gboolean ctk_init_check_abi_check (int    *argc,
                                    char ***argv,
                                    int     num_checks,
-                                   size_t  sizeof_GtkWindow,
-                                   size_t  sizeof_GtkBox);
+                                   size_t  sizeof_CtkWindow,
+                                   size_t  sizeof_CtkBox);
 
-#define ctk_init(argc, argv) ctk_init_abi_check (argc, argv, 2, sizeof (GtkWindow), sizeof (GtkBox))
-#define ctk_init_check(argc, argv) ctk_init_check_abi_check (argc, argv, 2, sizeof (GtkWindow), sizeof (GtkBox))
+#define ctk_init(argc, argv) ctk_init_abi_check (argc, argv, 2, sizeof (CtkWindow), sizeof (CtkBox))
+#define ctk_init_check(argc, argv) ctk_init_check_abi_check (argc, argv, 2, sizeof (CtkWindow), sizeof (CtkBox))
 
 #endif
 
@@ -144,7 +144,7 @@ void           ctk_disable_setlocale    (void);
 GDK_AVAILABLE_IN_ALL
 PangoLanguage *ctk_get_default_language (void);
 GDK_AVAILABLE_IN_3_12
-GtkTextDirection ctk_get_locale_direction (void);
+CtkTextDirection ctk_get_locale_direction (void);
 GDK_AVAILABLE_IN_ALL
 gboolean       ctk_events_pending       (void);
 
@@ -167,22 +167,22 @@ GDK_AVAILABLE_IN_ALL
 gboolean   ctk_false               (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-void       ctk_grab_add            (GtkWidget          *widget);
+void       ctk_grab_add            (CtkWidget          *widget);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* ctk_grab_get_current    (void);
+CtkWidget* ctk_grab_get_current    (void);
 GDK_AVAILABLE_IN_ALL
-void       ctk_grab_remove         (GtkWidget          *widget);
+void       ctk_grab_remove         (CtkWidget          *widget);
 
 GDK_AVAILABLE_IN_ALL
-void       ctk_device_grab_add     (GtkWidget          *widget,
+void       ctk_device_grab_add     (CtkWidget          *widget,
                                     GdkDevice          *device,
                                     gboolean            block_others);
 GDK_AVAILABLE_IN_ALL
-void       ctk_device_grab_remove  (GtkWidget          *widget,
+void       ctk_device_grab_remove  (CtkWidget          *widget,
                                     GdkDevice          *device);
 
 GDK_DEPRECATED_IN_3_4
-guint      ctk_key_snooper_install (GtkKeySnoopFunc snooper,
+guint      ctk_key_snooper_install (CtkKeySnoopFunc snooper,
                                     gpointer        func_data);
 GDK_DEPRECATED_IN_3_4
 void       ctk_key_snooper_remove  (guint           snooper_handler_id);
@@ -197,10 +197,10 @@ GDK_AVAILABLE_IN_ALL
 GdkDevice *ctk_get_current_event_device (void);
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget *ctk_get_event_widget         (GdkEvent        *event);
+CtkWidget *ctk_get_event_widget         (GdkEvent        *event);
 
 GDK_AVAILABLE_IN_ALL
-void       ctk_propagate_event          (GtkWidget       *widget,
+void       ctk_propagate_event          (CtkWidget       *widget,
                                          GdkEvent        *event);
 
 

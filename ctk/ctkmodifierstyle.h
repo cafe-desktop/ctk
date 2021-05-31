@@ -25,23 +25,23 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_MODIFIER_STYLE         (_ctk_modifier_style_get_type ())
-#define CTK_MODIFIER_STYLE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_MODIFIER_STYLE, GtkModifierStyle))
-#define CTK_MODIFIER_STYLE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST    ((c), CTK_TYPE_MODIFIER_STYLE, GtkModifierStyleClass))
+#define CTK_MODIFIER_STYLE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_MODIFIER_STYLE, CtkModifierStyle))
+#define CTK_MODIFIER_STYLE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST    ((c), CTK_TYPE_MODIFIER_STYLE, CtkModifierStyleClass))
 #define CTK_IS_MODIFIER_STYLE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_MODIFIER_STYLE))
 #define CTK_IS_MODIFIER_STYLE_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE    ((c), CTK_TYPE_MODIFIER_STYLE))
-#define CTK_MODIFIER_STYLE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS  ((o), CTK_TYPE_MODIFIER_STYLE, GtkModifierStyleClass))
+#define CTK_MODIFIER_STYLE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS  ((o), CTK_TYPE_MODIFIER_STYLE, CtkModifierStyleClass))
 
-typedef struct _GtkModifierStyle GtkModifierStyle;
-typedef struct _GtkModifierStyleClass GtkModifierStyleClass;
-typedef struct _GtkModifierStylePrivate GtkModifierStylePrivate;
+typedef struct _CtkModifierStyle CtkModifierStyle;
+typedef struct _CtkModifierStyleClass CtkModifierStyleClass;
+typedef struct _CtkModifierStylePrivate CtkModifierStylePrivate;
 
-struct _GtkModifierStyle
+struct _CtkModifierStyle
 {
   GObject parent_object;
-  GtkModifierStylePrivate *priv;
+  CtkModifierStylePrivate *priv;
 };
 
-struct _GtkModifierStyleClass
+struct _CtkModifierStyleClass
 {
   GObjectClass parent_class;
 
@@ -54,22 +54,22 @@ struct _GtkModifierStyleClass
 
 GType _ctk_modifier_style_get_type (void) G_GNUC_CONST;
 
-GtkModifierStyle * _ctk_modifier_style_new (void);
+CtkModifierStyle * _ctk_modifier_style_new (void);
 
-void _ctk_modifier_style_set_background_color (GtkModifierStyle *style,
-                                               GtkStateFlags     state,
+void _ctk_modifier_style_set_background_color (CtkModifierStyle *style,
+                                               CtkStateFlags     state,
                                                const GdkRGBA    *color);
-void _ctk_modifier_style_set_color            (GtkModifierStyle *style,
-                                               GtkStateFlags     state,
+void _ctk_modifier_style_set_color            (CtkModifierStyle *style,
+                                               CtkStateFlags     state,
                                                const GdkRGBA    *color);
-void _ctk_modifier_style_set_font             (GtkModifierStyle           *style,
+void _ctk_modifier_style_set_font             (CtkModifierStyle           *style,
                                                const PangoFontDescription *font_desc);
 
-void _ctk_modifier_style_map_color            (GtkModifierStyle *style,
+void _ctk_modifier_style_map_color            (CtkModifierStyle *style,
                                                const gchar      *name,
                                                const GdkRGBA    *color);
 
-void _ctk_modifier_style_set_color_property   (GtkModifierStyle *style,
+void _ctk_modifier_style_set_color_property   (CtkModifierStyle *style,
                                                GType             widget_type,
                                                const gchar      *prop_name,
                                                const GdkRGBA    *color);

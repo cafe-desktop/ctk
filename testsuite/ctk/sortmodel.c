@@ -1,4 +1,4 @@
-/* Extensive GtkTreeModelSort tests.
+/* Extensive CtkTreeModelSort tests.
  * Copyright (C) 2009,2011  Kristian Rietveld  <kris@ctk.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -24,11 +24,11 @@
 static void
 ref_count_single_level (void)
 {
-  GtkTreeIter iter;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *sort_model;
-  GtkWidget *tree_view;
+  CtkTreeIter iter;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *sort_model;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -57,11 +57,11 @@ ref_count_single_level (void)
 static void
 ref_count_two_levels (void)
 {
-  GtkTreeIter parent1, parent2, iter;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *sort_model;
-  GtkWidget *tree_view;
+  CtkTreeIter parent1, parent2, iter;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *sort_model;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -108,13 +108,13 @@ ref_count_two_levels (void)
 static void
 ref_count_three_levels (void)
 {
-  GtkTreeIter grandparent1, grandparent2, parent1, parent2;
-  GtkTreeIter iter_parent1, iter_parent2;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *sort_model;
-  GtkTreePath *path;
-  GtkWidget *tree_view;
+  CtkTreeIter grandparent1, grandparent2, parent1, parent2;
+  CtkTreeIter iter_parent1, iter_parent2;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *sort_model;
+  CtkTreePath *path;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -249,13 +249,13 @@ ref_count_three_levels (void)
 static void
 ref_count_delete_row (void)
 {
-  GtkTreeIter grandparent1, grandparent2, parent1, parent2;
-  GtkTreeIter iter_parent1, iter_parent2;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *sort_model;
-  GtkTreePath *path;
-  GtkWidget *tree_view;
+  CtkTreeIter grandparent1, grandparent2, parent1, parent2;
+  CtkTreeIter iter_parent1, iter_parent2;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *sort_model;
+  CtkTreePath *path;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -334,12 +334,12 @@ ref_count_delete_row (void)
 static void
 ref_count_cleanup (void)
 {
-  GtkTreeIter grandparent1, grandparent2, parent1, parent2;
-  GtkTreeIter iter_parent1, iter_parent2;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *sort_model;
-  GtkWidget *tree_view;
+  CtkTreeIter grandparent1, grandparent2, parent1, parent2;
+  CtkTreeIter iter_parent1, iter_parent2;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *sort_model;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -386,14 +386,14 @@ ref_count_cleanup (void)
 static void
 ref_count_row_ref (void)
 {
-  GtkTreeIter grandparent1, grandparent2, parent1, parent2;
-  GtkTreeIter iter_parent1, iter_parent2;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *sort_model;
-  GtkWidget *tree_view;
-  GtkTreePath *path;
-  GtkTreeRowReference *row_ref;
+  CtkTreeIter grandparent1, grandparent2, parent1, parent2;
+  CtkTreeIter iter_parent1, iter_parent2;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *sort_model;
+  CtkWidget *tree_view;
+  CtkTreePath *path;
+  CtkTreeRowReference *row_ref;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -482,12 +482,12 @@ ref_count_row_ref (void)
 static void
 ref_count_reorder_single (void)
 {
-  GtkTreeIter iter1, iter2, iter3, iter4, iter5;
-  GtkTreeIter siter1, siter2, siter3, siter4, siter5;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *sort_model;
-  GtkWidget *tree_view;
+  CtkTreeIter iter1, iter2, iter3, iter4, iter5;
+  CtkTreeIter siter1, siter2, siter3, siter4, siter5;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *sort_model;
+  CtkWidget *tree_view;
   GType column_types[] = { G_TYPE_INT };
 
   model = ctk_tree_model_ref_count_new ();
@@ -574,14 +574,14 @@ ref_count_reorder_single (void)
 static void
 ref_count_reorder_two (void)
 {
-  GtkTreeIter iter1, iter2, iter3, iter4, iter5;
-  GtkTreeIter citer1, citer2, citer3, citer4, citer5;
-  GtkTreeIter siter1, siter2, siter3, siter4, siter5;
-  GtkTreeIter sciter1, sciter2, sciter3, sciter4, sciter5;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *sort_model;
-  GtkWidget *tree_view;
+  CtkTreeIter iter1, iter2, iter3, iter4, iter5;
+  CtkTreeIter citer1, citer2, citer3, citer4, citer5;
+  CtkTreeIter siter1, siter2, siter3, siter4, siter5;
+  CtkTreeIter sciter1, sciter2, sciter3, sciter4, sciter5;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *sort_model;
+  CtkWidget *tree_view;
   GType column_types[] = { G_TYPE_INT };
 
   model = ctk_tree_model_ref_count_new ();
@@ -733,18 +733,18 @@ ref_count_reorder_two (void)
 }
 
 static void
-check_sort_order (GtkTreeModel *sort_model,
-                  GtkSortType   sort_order,
+check_sort_order (CtkTreeModel *sort_model,
+                  CtkSortType   sort_order,
                   const char   *parent_path)
 {
   int prev_value;
-  GtkTreeIter siter;
+  CtkTreeIter siter;
 
   if (!parent_path)
     ctk_tree_model_get_iter_first (sort_model, &siter);
   else
     {
-      GtkTreePath *path;
+      CtkTreePath *path;
 
       path = ctk_tree_path_new_from_string (parent_path);
       ctk_tree_path_append_index (path, 0);
@@ -777,13 +777,13 @@ check_sort_order (GtkTreeModel *sort_model,
 static void
 rows_reordered_single_level (void)
 {
-  GtkTreeIter iter1, iter2, iter3, iter4, iter5;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *sort_model;
-  GtkWidget *tree_view;
+  CtkTreeIter iter1, iter2, iter3, iter4, iter5;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *sort_model;
+  CtkWidget *tree_view;
   SignalMonitor *monitor;
-  GtkTreePath *path;
+  CtkTreePath *path;
   GType column_types[] = { G_TYPE_INT };
   int order[][5] =
     {
@@ -854,14 +854,14 @@ rows_reordered_single_level (void)
 static void
 rows_reordered_two_levels (void)
 {
-  GtkTreeIter iter1, iter2, iter3, iter4, iter5;
-  GtkTreeIter citer1, citer2, citer3, citer4, citer5;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *sort_model;
-  GtkWidget *tree_view;
+  CtkTreeIter iter1, iter2, iter3, iter4, iter5;
+  CtkTreeIter citer1, citer2, citer3, citer4, citer5;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *sort_model;
+  CtkWidget *tree_view;
   SignalMonitor *monitor;
-  GtkTreePath *path, *child_path;
+  CtkTreePath *path, *child_path;
   GType column_types[] = { G_TYPE_INT };
   int order[][5] =
     {
@@ -960,13 +960,13 @@ rows_reordered_two_levels (void)
 static void
 sorted_insert (void)
 {
-  GtkTreeIter iter1, iter2, iter3, iter4, iter5, new_iter;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *sort_model;
-  GtkWidget *tree_view;
+  CtkTreeIter iter1, iter2, iter3, iter4, iter5, new_iter;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *sort_model;
+  CtkWidget *tree_view;
   SignalMonitor *monitor;
-  GtkTreePath *path;
+  CtkTreePath *path;
   GType column_types[] = { G_TYPE_INT };
   int order0[] = { 1, 2, 3, 0, 4, 5, 6 };
 
@@ -1036,9 +1036,9 @@ specific_bug_300089 (void)
   /* Test case for GNOME Bugzilla bug 300089.  Written by
    * Matthias Clasen.
    */
-  GtkTreeModel *sort_model, *child_model;
-  GtkTreePath *path;
-  GtkTreeIter iter, iter2, sort_iter;
+  CtkTreeModel *sort_model, *child_model;
+  CtkTreePath *path;
+  CtkTreeIter iter, iter2, sort_iter;
 
   g_test_bug ("300089");
 
@@ -1080,9 +1080,9 @@ specific_bug_364946 (void)
   /* This is a test case for GNOME Bugzilla bug 364946.  It was written
    * by Andreas Koehler.
    */
-  GtkTreeStore *store;
-  GtkTreeIter a, aa, aaa, aab, iter;
-  GtkTreeModel *s_model;
+  CtkTreeStore *store;
+  CtkTreeIter a, aa, aaa, aab, iter;
+  CtkTreeModel *s_model;
 
   g_test_bug ("364946");
 
@@ -1114,9 +1114,9 @@ specific_bug_364946 (void)
 }
 
 static void
-iter_test (GtkTreeModel *model)
+iter_test (CtkTreeModel *model)
 {
-  GtkTreeIter a, b;
+  CtkTreeIter a, b;
 
   g_assert (ctk_tree_model_get_iter_first (model, &a));
 
@@ -1134,10 +1134,10 @@ iter_test (GtkTreeModel *model)
 static void
 specific_bug_674587 (void)
 {
-  GtkListStore *l;
-  GtkTreeStore *t;
-  GtkTreeModel *m;
-  GtkTreeIter a;
+  CtkListStore *l;
+  CtkTreeStore *t;
+  CtkTreeModel *m;
+  CtkTreeIter a;
 
   l = ctk_list_store_new (1, G_TYPE_STRING);
 
@@ -1172,8 +1172,8 @@ specific_bug_674587 (void)
 }
 
 static void
-row_deleted_cb (GtkTreeModel *tree_model,
-    GtkTreePath  *path,
+row_deleted_cb (CtkTreeModel *tree_model,
+    CtkTreePath  *path,
     guint *count)
 {
   *count = *count + 1;
@@ -1182,9 +1182,9 @@ row_deleted_cb (GtkTreeModel *tree_model,
 static void
 specific_bug_698846 (void)
 {
-  GtkListStore *store;
-  GtkTreeModel *sorted;
-  GtkTreeIter iter;
+  CtkListStore *store;
+  CtkTreeModel *sorted;
+  CtkTreeIter iter;
   guint count = 0;
 
   g_test_bug ("698846");
@@ -1203,9 +1203,9 @@ specific_bug_698846 (void)
 }
 
 static int
-sort_func (GtkTreeModel *model,
-           GtkTreeIter  *a,
-           GtkTreeIter  *b,
+sort_func (CtkTreeModel *model,
+           CtkTreeIter  *a,
+           CtkTreeIter  *b,
            gpointer      data)
 {
   return 0;
@@ -1214,7 +1214,7 @@ sort_func (GtkTreeModel *model,
 static int column_changed;
 
 static void
-sort_column_changed (GtkTreeSortable *sortable)
+sort_column_changed (CtkTreeSortable *sortable)
 {
   column_changed++;
 }
@@ -1222,10 +1222,10 @@ sort_column_changed (GtkTreeSortable *sortable)
 static void
 sort_column_change (void)
 {
-  GtkListStore *store;
-  GtkTreeModel *sorted;
+  CtkListStore *store;
+  CtkTreeModel *sorted;
   int col;
-  GtkSortType order;
+  CtkSortType order;
   gboolean ret;
 
   g_test_bug ("792459");

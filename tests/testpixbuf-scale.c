@@ -7,10 +7,10 @@
 GdkInterpType interp_type = GDK_INTERP_BILINEAR;
 int overall_alpha = 255;
 GdkPixbuf *pixbuf;
-GtkWidget *darea;
+CtkWidget *darea;
   
 void
-set_interp_type (GtkWidget *widget, gpointer data)
+set_interp_type (CtkWidget *widget, gpointer data)
 {
   guint types[] = { GDK_INTERP_NEAREST,
                     GDK_INTERP_BILINEAR,
@@ -22,7 +22,7 @@ set_interp_type (GtkWidget *widget, gpointer data)
 }
 
 void
-overall_changed_cb (GtkAdjustment *adjustment, gpointer data)
+overall_changed_cb (CtkAdjustment *adjustment, gpointer data)
 {
   if (ctk_adjustment_get_value (adjustment) != overall_alpha)
     {
@@ -32,7 +32,7 @@ overall_changed_cb (GtkAdjustment *adjustment, gpointer data)
 }
 
 gboolean
-draw_cb (GtkWidget *widget, cairo_t *cr, gpointer data)
+draw_cb (CtkWidget *widget, cairo_t *cr, gpointer data)
 {
   GdkPixbuf *dest;
   int width, height;
@@ -61,11 +61,11 @@ draw_cb (GtkWidget *widget, cairo_t *cr, gpointer data)
 int
 main(int argc, char **argv)
 {
-	GtkWidget *window, *vbox;
-        GtkWidget *combo_box;
-	GtkWidget *hbox, *label, *hscale;
-	GtkAdjustment *adjustment;
-	GtkRequisition scratch_requisition;
+	CtkWidget *window, *vbox;
+        CtkWidget *combo_box;
+	CtkWidget *hbox, *label, *hscale;
+	CtkAdjustment *adjustment;
+	CtkRequisition scratch_requisition;
         const gchar *creator;
         GError *error;
 

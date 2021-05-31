@@ -29,14 +29,14 @@
 
 G_BEGIN_DECLS
 
-void     _ctk_text_tag_table_add_buffer         (GtkTextTagTable *table,
+void     _ctk_text_tag_table_add_buffer         (CtkTextTagTable *table,
                                                  gpointer         buffer);
-void     _ctk_text_tag_table_remove_buffer      (GtkTextTagTable *table,
+void     _ctk_text_tag_table_remove_buffer      (CtkTextTagTable *table,
                                                  gpointer         buffer);
-void     _ctk_text_tag_table_tag_changed        (GtkTextTagTable *table,
-                                                 GtkTextTag      *tag,
+void     _ctk_text_tag_table_tag_changed        (CtkTextTagTable *table,
+                                                 CtkTextTag      *tag,
                                                  gboolean         size_changed);
-gboolean _ctk_text_tag_table_affects_visibility (GtkTextTagTable *table);
+gboolean _ctk_text_tag_table_affects_visibility (CtkTextTagTable *table);
 
 G_END_DECLS
 

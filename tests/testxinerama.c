@@ -24,7 +24,7 @@ static gint num_monitors;
 static gint primary_monitor;
 
 static void
-request (GtkWidget      *widget,
+request (CtkWidget      *widget,
 	 gpointer        user_data)
 {
   gchar *str;
@@ -61,7 +61,7 @@ static void
 monitors_changed_cb (GdkScreen *screen,
                      gpointer   data)
 {
-  GtkWidget *label = (GtkWidget *)data;
+  CtkWidget *label = (CtkWidget *)data;
 
   request (label, label);
 }
@@ -69,7 +69,7 @@ monitors_changed_cb (GdkScreen *screen,
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window, *label, *vbox, *button;
+  CtkWidget *window, *label, *vbox, *button;
   GdkScreen *screen;
   gint i;
 

@@ -20,11 +20,11 @@
 #define __CTK_PRINTER_OPTION_H__
 
 /* This is a "semi-private" header; it is meant only for
- * alternate GtkPrintDialog backend modules; no stability guarantees 
+ * alternate CtkPrintDialog backend modules; no stability guarantees 
  * are made at this point
  */
 #ifndef CTK_PRINT_BACKEND_ENABLE_UNSUPPORTED
-#error "GtkPrintBackend is not supported API for general use"
+#error "CtkPrintBackend is not supported API for general use"
 #endif
 
 #include <glib-object.h>
@@ -32,11 +32,11 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_PRINTER_OPTION             (ctk_printer_option_get_type ())
-#define CTK_PRINTER_OPTION(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINTER_OPTION, GtkPrinterOption))
+#define CTK_PRINTER_OPTION(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINTER_OPTION, CtkPrinterOption))
 #define CTK_IS_PRINTER_OPTION(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PRINTER_OPTION))
 
-typedef struct _GtkPrinterOption       GtkPrinterOption;
-typedef struct _GtkPrinterOptionClass  GtkPrinterOptionClass;
+typedef struct _CtkPrinterOption       CtkPrinterOption;
+typedef struct _CtkPrinterOptionClass  CtkPrinterOptionClass;
 
 #define CTK_PRINTER_OPTION_GROUP_IMAGE_QUALITY "ImageQuality"
 #define CTK_PRINTER_OPTION_GROUP_FINISHING "Finishing"
@@ -53,15 +53,15 @@ typedef enum {
   CTK_PRINTER_OPTION_TYPE_STRING,
   CTK_PRINTER_OPTION_TYPE_FILESAVE,
   CTK_PRINTER_OPTION_TYPE_INFO
-} GtkPrinterOptionType;
+} CtkPrinterOptionType;
 
-struct _GtkPrinterOption
+struct _CtkPrinterOption
 {
   GObject parent_instance;
 
   char *name;
   char *display_text;
-  GtkPrinterOptionType type;
+  CtkPrinterOptionType type;
 
   char *value;
   
@@ -75,11 +75,11 @@ struct _GtkPrinterOption
   char *group;
 };
 
-struct _GtkPrinterOptionClass
+struct _CtkPrinterOptionClass
 {
   GObjectClass parent_class;
 
-  void (*changed) (GtkPrinterOption *option);
+  void (*changed) (CtkPrinterOption *option);
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -92,36 +92,36 @@ GDK_AVAILABLE_IN_ALL
 GType   ctk_printer_option_get_type       (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkPrinterOption *ctk_printer_option_new                    (const char           *name,
+CtkPrinterOption *ctk_printer_option_new                    (const char           *name,
 							     const char           *display_text,
-							     GtkPrinterOptionType  type);
+							     CtkPrinterOptionType  type);
 GDK_AVAILABLE_IN_ALL
-void              ctk_printer_option_set                    (GtkPrinterOption     *option,
+void              ctk_printer_option_set                    (CtkPrinterOption     *option,
 							     const char           *value);
 GDK_AVAILABLE_IN_ALL
-void              ctk_printer_option_set_has_conflict       (GtkPrinterOption     *option,
+void              ctk_printer_option_set_has_conflict       (CtkPrinterOption     *option,
 							     gboolean              has_conflict);
 GDK_AVAILABLE_IN_ALL
-void              ctk_printer_option_clear_has_conflict     (GtkPrinterOption     *option);
+void              ctk_printer_option_clear_has_conflict     (CtkPrinterOption     *option);
 GDK_AVAILABLE_IN_ALL
-void              ctk_printer_option_set_boolean            (GtkPrinterOption     *option,
+void              ctk_printer_option_set_boolean            (CtkPrinterOption     *option,
 							     gboolean              value);
 GDK_AVAILABLE_IN_ALL
-void              ctk_printer_option_allocate_choices       (GtkPrinterOption     *option,
+void              ctk_printer_option_allocate_choices       (CtkPrinterOption     *option,
 							     int                   num);
 GDK_AVAILABLE_IN_ALL
-void              ctk_printer_option_choices_from_array     (GtkPrinterOption     *option,
+void              ctk_printer_option_choices_from_array     (CtkPrinterOption     *option,
 							     int                   num_choices,
 							     char                 *choices[],
 							     char                 *choices_display[]);
 GDK_AVAILABLE_IN_ALL
-gboolean          ctk_printer_option_has_choice             (GtkPrinterOption     *option,
+gboolean          ctk_printer_option_has_choice             (CtkPrinterOption     *option,
 							    const char           *choice);
 GDK_AVAILABLE_IN_ALL
-void              ctk_printer_option_set_activates_default (GtkPrinterOption     *option,
+void              ctk_printer_option_set_activates_default (CtkPrinterOption     *option,
 							    gboolean              activates);
 GDK_AVAILABLE_IN_ALL
-gboolean          ctk_printer_option_get_activates_default (GtkPrinterOption     *option);
+gboolean          ctk_printer_option_get_activates_default (CtkPrinterOption     *option);
 
 
 G_END_DECLS

@@ -1298,7 +1298,7 @@ synthesize_crossing_event (GdkWindow *window,
     case GDK_QUARTZ_MOUSE_ENTERED:
       /* Enter events are considered always to be from another toplevel
        * window, this shouldn't negatively affect any app or ctk code,
-       * and is the only way to make GtkMenu work. EEK EEK EEK.
+       * and is the only way to make CtkMenu work. EEK EEK EEK.
        */
       if (!(window->event_mask & GDK_ENTER_NOTIFY_MASK))
         return FALSE;

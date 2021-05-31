@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="default_width">600</property>
     <child>
-      <object class="GtkGrid" id="grid">
+      <object class="CtkGrid" id="grid">
         <property name="row-spacing">6</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkToolbar" id="toolbar1">
+          <object class="CtkToolbar" id="toolbar1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="hexpand">True</property>
@@ -18,7 +18,7 @@
               <class name="inline-toolbar"/>
             </style>
             <child>
-              <object class="GtkToggleToolButton" id="toolbutton1">
+              <object class="CtkToggleToolButton" id="toolbutton1">
                 <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
@@ -33,7 +33,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleToolButton" id="toolbutton2">
+              <object class="CtkToggleToolButton" id="toolbutton2">
                 <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
@@ -48,7 +48,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleToolButton" id="toolbutton3">
+              <object class="CtkToggleToolButton" id="toolbutton3">
                 <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
@@ -64,7 +64,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleToolButton" id="toolbutton4">
+              <object class="CtkToggleToolButton" id="toolbutton4">
                 <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
@@ -80,7 +80,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleToolButton" id="toolbutton5">
+              <object class="CtkToggleToolButton" id="toolbutton5">
                 <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
@@ -96,7 +96,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleToolButton" id="toolbutton6">
+              <object class="CtkToggleToolButton" id="toolbutton6">
                 <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>

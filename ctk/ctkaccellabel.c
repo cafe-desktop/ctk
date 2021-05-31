@@ -1,7 +1,7 @@
 /* GTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
- * GtkAccelLabel: GtkLabel with accelerator monitoring facilities.
+ * CtkAccelLabel: CtkLabel with accelerator monitoring facilities.
  * Copyright (C) 1998 Tim Janik
  *
  * This library is free software; you can redistribute it and/or
@@ -43,43 +43,43 @@
 /**
  * SECTION:ctkaccellabel
  * @Short_description: A label which displays an accelerator key on the right of the text
- * @Title: GtkAccelLabel
- * @See_also: #GtkAccelGroup
+ * @Title: CtkAccelLabel
+ * @See_also: #CtkAccelGroup
  *
- * The #GtkAccelLabel widget is a subclass of #GtkLabel that also displays an
+ * The #CtkAccelLabel widget is a subclass of #CtkLabel that also displays an
  * accelerator key on the right of the label text, e.g. “Ctrl+S”.
  * It is commonly used in menus to show the keyboard short-cuts for commands.
  *
  * The accelerator key to display is typically not set explicitly (although it
- * can be, with ctk_accel_label_set_accel()). Instead, the #GtkAccelLabel displays
+ * can be, with ctk_accel_label_set_accel()). Instead, the #CtkAccelLabel displays
  * the accelerators which have been added to a particular widget. This widget is
  * set by calling ctk_accel_label_set_accel_widget().
  *
- * For example, a #GtkMenuItem widget may have an accelerator added to emit
+ * For example, a #CtkMenuItem widget may have an accelerator added to emit
  * the “activate” signal when the “Ctrl+S” key combination is pressed.
- * A #GtkAccelLabel is created and added to the #GtkMenuItem, and
- * ctk_accel_label_set_accel_widget() is called with the #GtkMenuItem as the
- * second argument. The #GtkAccelLabel will now display “Ctrl+S” after its label.
+ * A #CtkAccelLabel is created and added to the #CtkMenuItem, and
+ * ctk_accel_label_set_accel_widget() is called with the #CtkMenuItem as the
+ * second argument. The #CtkAccelLabel will now display “Ctrl+S” after its label.
  *
- * Note that creating a #GtkMenuItem with ctk_menu_item_new_with_label() (or
- * one of the similar functions for #GtkCheckMenuItem and #GtkRadioMenuItem)
- * automatically adds a #GtkAccelLabel to the #GtkMenuItem and calls
+ * Note that creating a #CtkMenuItem with ctk_menu_item_new_with_label() (or
+ * one of the similar functions for #CtkCheckMenuItem and #CtkRadioMenuItem)
+ * automatically adds a #CtkAccelLabel to the #CtkMenuItem and calls
  * ctk_accel_label_set_accel_widget() to set it up for you.
  *
- * A #GtkAccelLabel will only display accelerators which have %CTK_ACCEL_VISIBLE
- * set (see #GtkAccelFlags).
- * A #GtkAccelLabel can display multiple accelerators and even signal names,
+ * A #CtkAccelLabel will only display accelerators which have %CTK_ACCEL_VISIBLE
+ * set (see #CtkAccelFlags).
+ * A #CtkAccelLabel can display multiple accelerators and even signal names,
  * though it is almost always used to display just one accelerator key.
  *
  * ## Creating a simple menu item with an accelerator key.
  *
  * |[<!-- language="C" -->
- *   GtkWidget *window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
- *   GtkWidget *menu = ctk_menu_new ();
- *   GtkWidget *save_item;
- *   GtkAccelGroup *accel_group;
+ *   CtkWidget *window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+ *   CtkWidget *menu = ctk_menu_new ();
+ *   CtkWidget *save_item;
+ *   CtkAccelGroup *accel_group;
  *
- *   // Create a GtkAccelGroup and add it to the window.
+ *   // Create a CtkAccelGroup and add it to the window.
  *   accel_group = ctk_accel_group_new ();
  *   ctk_window_add_accel_group (CTK_WINDOW (window), accel_group);
  *
@@ -88,10 +88,10 @@
  *   ctk_widget_show (save_item);
  *   ctk_container_add (CTK_CONTAINER (menu), save_item);
  *
- *   // Now add the accelerator to the GtkMenuItem. Note that since we
- *   // called ctk_menu_item_new_with_label() to create the GtkMenuItem
- *   // the GtkAccelLabel is automatically set up to display the
- *   // GtkMenuItem accelerators. We just need to make sure we use
+ *   // Now add the accelerator to the CtkMenuItem. Note that since we
+ *   // called ctk_menu_item_new_with_label() to create the CtkMenuItem
+ *   // the CtkAccelLabel is automatically set up to display the
+ *   // CtkMenuItem accelerators. We just need to make sure we use
  *   // CTK_ACCEL_VISIBLE here.
  *   ctk_widget_add_accelerator (save_item, "activate", accel_group,
  *                               GDK_KEY_s, GDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
@@ -104,7 +104,7 @@
  * ╰── accelerator
  * ]|
  *
- * Like #GtkLabel, GtkAccelLabel has a main CSS node with the name label.
+ * Like #CtkLabel, CtkAccelLabel has a main CSS node with the name label.
  * It adds a subnode with name accelerator.
  */
 
@@ -115,13 +115,13 @@ enum {
   LAST_PROP
 };
 
-struct _GtkAccelLabelPrivate
+struct _CtkAccelLabelPrivate
 {
-  GtkWidget     *accel_widget;       /* done */
+  CtkWidget     *accel_widget;       /* done */
   GClosure      *accel_closure;      /* has set function */
-  GtkAccelGroup *accel_group;        /* set by set_accel_closure() */
+  CtkAccelGroup *accel_group;        /* set by set_accel_closure() */
   gchar         *accel_string;       /* has set function */
-  GtkCssNode    *accel_node;
+  CtkCssNode    *accel_node;
   guint          accel_padding;      /* should be style property? */
   guint16        accel_string_width; /* seems to be private */
 
@@ -139,25 +139,25 @@ static void         ctk_accel_label_get_property (GObject            *object,
 						  guint               prop_id,
 						  GValue             *value,
 						  GParamSpec         *pspec);
-static void         ctk_accel_label_destroy      (GtkWidget          *widget);
+static void         ctk_accel_label_destroy      (CtkWidget          *widget);
 static void         ctk_accel_label_finalize     (GObject            *object);
-static gboolean     ctk_accel_label_draw         (GtkWidget          *widget,
+static gboolean     ctk_accel_label_draw         (CtkWidget          *widget,
                                                   cairo_t            *cr);
-static const gchar *ctk_accel_label_get_string   (GtkAccelLabel      *accel_label);
+static const gchar *ctk_accel_label_get_string   (CtkAccelLabel      *accel_label);
 
 
-static void         ctk_accel_label_get_preferred_width (GtkWidget           *widget,
+static void         ctk_accel_label_get_preferred_width (CtkWidget           *widget,
                                                          gint                *min_width,
                                                          gint                *nat_width);
 
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkAccelLabel, ctk_accel_label, CTK_TYPE_LABEL)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkAccelLabel, ctk_accel_label, CTK_TYPE_LABEL)
 
 static void
-ctk_accel_label_class_init (GtkAccelLabelClass *class)
+ctk_accel_label_class_init (CtkAccelLabelClass *class)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
   
   gobject_class->finalize = ctk_accel_label_finalize;
   gobject_class->set_property = ctk_accel_label_set_property;
@@ -227,7 +227,7 @@ ctk_accel_label_set_property (GObject      *object,
 			      const GValue *value,
 			      GParamSpec   *pspec)
 {
-  GtkAccelLabel  *accel_label;
+  CtkAccelLabel  *accel_label;
 
   accel_label = CTK_ACCEL_LABEL (object);
 
@@ -251,7 +251,7 @@ ctk_accel_label_get_property (GObject    *object,
 			      GValue     *value,
 			      GParamSpec *pspec)
 {
-  GtkAccelLabel  *accel_label;
+  CtkAccelLabel  *accel_label;
 
   accel_label = CTK_ACCEL_LABEL (object);
 
@@ -270,9 +270,9 @@ ctk_accel_label_get_property (GObject    *object,
 }
 
 static void
-node_style_changed_cb (GtkCssNode        *node,
-                       GtkCssStyleChange *change,
-                       GtkWidget         *widget)
+node_style_changed_cb (CtkCssNode        *node,
+                       CtkCssStyleChange *change,
+                       CtkWidget         *widget)
 {
   if (ctk_css_style_change_affects (change, CTK_CSS_AFFECTS_SIZE | CTK_CSS_AFFECTS_CLIP))
     ctk_widget_queue_resize (widget);
@@ -281,10 +281,10 @@ node_style_changed_cb (GtkCssNode        *node,
 }
 
 static void
-ctk_accel_label_init (GtkAccelLabel *accel_label)
+ctk_accel_label_init (CtkAccelLabel *accel_label)
 {
-  GtkAccelLabelPrivate *priv;
-  GtkCssNode *widget_node;
+  CtkAccelLabelPrivate *priv;
+  CtkCssNode *widget_node;
 
   accel_label->priv = ctk_accel_label_get_instance_private (accel_label);
   priv = accel_label->priv;
@@ -308,14 +308,14 @@ ctk_accel_label_init (GtkAccelLabel *accel_label)
  * ctk_accel_label_new:
  * @string: the label string. Must be non-%NULL.
  *
- * Creates a new #GtkAccelLabel.
+ * Creates a new #CtkAccelLabel.
  *
- * Returns: a new #GtkAccelLabel.
+ * Returns: a new #CtkAccelLabel.
  */
-GtkWidget*
+CtkWidget*
 ctk_accel_label_new (const gchar *string)
 {
-  GtkAccelLabel *accel_label;
+  CtkAccelLabel *accel_label;
   
   g_return_val_if_fail (string != NULL, NULL);
   
@@ -327,9 +327,9 @@ ctk_accel_label_new (const gchar *string)
 }
 
 static void
-ctk_accel_label_destroy (GtkWidget *widget)
+ctk_accel_label_destroy (CtkWidget *widget)
 {
-  GtkAccelLabel *accel_label = CTK_ACCEL_LABEL (widget);
+  CtkAccelLabel *accel_label = CTK_ACCEL_LABEL (widget);
 
   ctk_accel_label_set_accel_widget (accel_label, NULL);
   ctk_accel_label_set_accel_closure (accel_label, NULL);
@@ -340,7 +340,7 @@ ctk_accel_label_destroy (GtkWidget *widget)
 static void
 ctk_accel_label_finalize (GObject *object)
 {
-  GtkAccelLabel *accel_label = CTK_ACCEL_LABEL (object);
+  CtkAccelLabel *accel_label = CTK_ACCEL_LABEL (object);
 
   g_free (accel_label->priv->accel_string);
 
@@ -349,15 +349,15 @@ ctk_accel_label_finalize (GObject *object)
 
 /**
  * ctk_accel_label_get_accel_widget:
- * @accel_label: a #GtkAccelLabel
+ * @accel_label: a #CtkAccelLabel
  *
  * Fetches the widget monitored by this accelerator label. See
  * ctk_accel_label_set_accel_widget().
  *
  * Returns: (nullable) (transfer none): the object monitored by the accelerator label, or %NULL.
  **/
-GtkWidget*
-ctk_accel_label_get_accel_widget (GtkAccelLabel *accel_label)
+CtkWidget*
+ctk_accel_label_get_accel_widget (CtkAccelLabel *accel_label)
 {
   g_return_val_if_fail (CTK_IS_ACCEL_LABEL (accel_label), NULL);
 
@@ -366,16 +366,16 @@ ctk_accel_label_get_accel_widget (GtkAccelLabel *accel_label)
 
 /**
  * ctk_accel_label_get_accel_width:
- * @accel_label: a #GtkAccelLabel.
+ * @accel_label: a #CtkAccelLabel.
  *
  * Returns the width needed to display the accelerator key(s).
- * This is used by menus to align all of the #GtkMenuItem widgets, and shouldn't
+ * This is used by menus to align all of the #CtkMenuItem widgets, and shouldn't
  * be needed by applications.
  *
  * Returns: the width needed to display the accelerator key(s).
  */
 guint
-ctk_accel_label_get_accel_width (GtkAccelLabel *accel_label)
+ctk_accel_label_get_accel_width (CtkAccelLabel *accel_label)
 {
   g_return_val_if_fail (CTK_IS_ACCEL_LABEL (accel_label), 0);
 
@@ -384,10 +384,10 @@ ctk_accel_label_get_accel_width (GtkAccelLabel *accel_label)
 }
 
 static PangoLayout *
-ctk_accel_label_get_accel_layout (GtkAccelLabel *accel_label)
+ctk_accel_label_get_accel_layout (CtkAccelLabel *accel_label)
 {
-  GtkWidget *widget = CTK_WIDGET (accel_label);
-  GtkStyleContext *context;
+  CtkWidget *widget = CTK_WIDGET (accel_label);
+  CtkStyleContext *context;
   PangoAttrList *attrs;
   PangoLayout *layout;
   PangoFontDescription *font_desc;
@@ -416,11 +416,11 @@ ctk_accel_label_get_accel_layout (GtkAccelLabel *accel_label)
 }
 
 static void
-ctk_accel_label_get_preferred_width (GtkWidget *widget,
+ctk_accel_label_get_preferred_width (CtkWidget *widget,
                                      gint      *min_width,
                                      gint      *nat_width)
 {
-  GtkAccelLabel *accel_label = CTK_ACCEL_LABEL (widget);
+  CtkAccelLabel *accel_label = CTK_ACCEL_LABEL (widget);
   PangoLayout   *layout;
   gint           width;
 
@@ -447,13 +447,13 @@ get_first_baseline (PangoLayout *layout)
 }
 
 static gboolean 
-ctk_accel_label_draw (GtkWidget *widget,
+ctk_accel_label_draw (CtkWidget *widget,
                       cairo_t   *cr)
 {
-  GtkAccelLabel *accel_label = CTK_ACCEL_LABEL (widget);
+  CtkAccelLabel *accel_label = CTK_ACCEL_LABEL (widget);
   guint ac_width;
-  GtkAllocation allocation;
-  GtkRequisition requisition;
+  CtkAllocation allocation;
+  CtkRequisition requisition;
 
   CTK_WIDGET_CLASS (ctk_accel_label_parent_class)->draw (widget, cr);
 
@@ -463,7 +463,7 @@ ctk_accel_label_draw (GtkWidget *widget,
 
   if (allocation.width >= requisition.width + ac_width)
     {
-      GtkStyleContext *context;
+      CtkStyleContext *context;
       PangoLayout *label_layout;
       PangoLayout *accel_layout;
       gint x;
@@ -494,7 +494,7 @@ ctk_accel_label_draw (GtkWidget *widget,
 }
 
 static void
-refetch_widget_accel_closure (GtkAccelLabel *accel_label)
+refetch_widget_accel_closure (CtkAccelLabel *accel_label)
 {
   GClosure *closure = NULL;
   GList *clist, *list;
@@ -514,8 +514,8 @@ refetch_widget_accel_closure (GtkAccelLabel *accel_label)
 }
 
 static void
-accel_widget_weak_ref_cb (GtkAccelLabel *accel_label,
-                          GtkWidget     *old_accel_widget)
+accel_widget_weak_ref_cb (CtkAccelLabel *accel_label,
+                          CtkWidget     *old_accel_widget)
 {
   g_return_if_fail (CTK_IS_ACCEL_LABEL (accel_label));
   g_return_if_fail (CTK_IS_WIDGET (accel_label->priv->accel_widget));
@@ -529,15 +529,15 @@ accel_widget_weak_ref_cb (GtkAccelLabel *accel_label,
 
 /**
  * ctk_accel_label_set_accel_widget:
- * @accel_label: a #GtkAccelLabel
+ * @accel_label: a #CtkAccelLabel
  * @accel_widget: (nullable): the widget to be monitored, or %NULL
  *
  * Sets the widget to be monitored by this accelerator label. Passing %NULL for
  * @accel_widget will dissociate @accel_label from its current widget, if any.
  */
 void
-ctk_accel_label_set_accel_widget (GtkAccelLabel *accel_label,
-                                  GtkWidget     *accel_widget)
+ctk_accel_label_set_accel_widget (CtkAccelLabel *accel_label,
+                                  CtkWidget     *accel_widget)
 {
   g_return_if_fail (CTK_IS_ACCEL_LABEL (accel_label));
 
@@ -573,7 +573,7 @@ ctk_accel_label_set_accel_widget (GtkAccelLabel *accel_label,
 }
 
 static void
-ctk_accel_label_reset (GtkAccelLabel *accel_label)
+ctk_accel_label_reset (CtkAccelLabel *accel_label)
 {
   g_clear_pointer (&accel_label->priv->accel_string, g_free);
   
@@ -581,11 +581,11 @@ ctk_accel_label_reset (GtkAccelLabel *accel_label)
 }
 
 static void
-check_accel_changed (GtkAccelGroup  *accel_group,
+check_accel_changed (CtkAccelGroup  *accel_group,
 		     guint           keyval,
 		     GdkModifierType modifier,
 		     GClosure       *accel_closure,
-		     GtkAccelLabel  *accel_label)
+		     CtkAccelLabel  *accel_label)
 {
   if (accel_closure == accel_label->priv->accel_closure)
     ctk_accel_label_reset (accel_label);
@@ -593,7 +593,7 @@ check_accel_changed (GtkAccelGroup  *accel_group,
 
 /**
  * ctk_accel_label_set_accel_closure:
- * @accel_label: a #GtkAccelLabel
+ * @accel_label: a #CtkAccelLabel
  * @accel_closure: (nullable): the closure to monitor for accelerator changes,
  * or %NULL
  *
@@ -603,7 +603,7 @@ check_accel_changed (GtkAccelGroup  *accel_group,
  * current closure, if any.
  **/
 void
-ctk_accel_label_set_accel_closure (GtkAccelLabel *accel_label,
+ctk_accel_label_set_accel_closure (CtkAccelLabel *accel_label,
 				   GClosure      *accel_closure)
 {
   g_return_if_fail (CTK_IS_ACCEL_LABEL (accel_label));
@@ -639,7 +639,7 @@ ctk_accel_label_set_accel_closure (GtkAccelLabel *accel_label,
 }
 
 static gboolean
-find_accel (GtkAccelKey *key,
+find_accel (CtkAccelKey *key,
 	    GClosure    *closure,
 	    gpointer     data)
 {
@@ -647,7 +647,7 @@ find_accel (GtkAccelKey *key,
 }
 
 static const gchar *
-ctk_accel_label_get_string (GtkAccelLabel *accel_label)
+ctk_accel_label_get_string (CtkAccelLabel *accel_label)
 {
   if (!accel_label->priv->accel_string)
     ctk_accel_label_refetch (accel_label);
@@ -771,7 +771,7 @@ append_keyval_symbol (guint    accelerator_key,
 }
 
 gchar *
-_ctk_accel_label_class_get_accelerator_label (GtkAccelLabelClass *klass,
+_ctk_accel_label_class_get_accelerator_label (CtkAccelLabelClass *klass,
 					      guint               accelerator_key,
 					      GdkModifierType     accelerator_mods)
 {
@@ -925,7 +925,7 @@ _ctk_accel_label_class_get_accelerator_label (GtkAccelLabelClass *klass,
 
 /**
  * ctk_accel_label_refetch:
- * @accel_label: a #GtkAccelLabel.
+ * @accel_label: a #CtkAccelLabel.
  *
  * Recreates the string representing the accelerator keys.
  * This should not be needed since the string is automatically updated whenever
@@ -934,7 +934,7 @@ _ctk_accel_label_class_get_accelerator_label (GtkAccelLabelClass *klass,
  * Returns: always returns %FALSE.
  */
 gboolean
-ctk_accel_label_refetch (GtkAccelLabel *accel_label)
+ctk_accel_label_refetch (CtkAccelLabel *accel_label)
 {
   gboolean enable_accels;
 
@@ -963,7 +963,7 @@ ctk_accel_label_refetch (GtkAccelLabel *accel_label)
       /* If we don't have a hardcoded value, check the accel group */
       if (!have_accel)
         {
-          GtkAccelKey *key;
+          CtkAccelKey *key;
 
           key = ctk_accel_group_find (accel_label->priv->accel_group, find_accel, accel_label->priv->accel_closure);
 
@@ -978,7 +978,7 @@ ctk_accel_label_refetch (GtkAccelLabel *accel_label)
       /* If we found a key using either method, set it */
       if (have_accel)
 	{
-	  GtkAccelLabelClass *klass;
+	  CtkAccelLabelClass *klass;
 
 	  klass = CTK_ACCEL_LABEL_GET_CLASS (accel_label);
 	  accel_label->priv->accel_string =
@@ -1000,7 +1000,7 @@ ctk_accel_label_refetch (GtkAccelLabel *accel_label)
 
 /**
  * ctk_accel_label_set_accel:
- * @accel_label: a #GtkAccelLabel
+ * @accel_label: a #CtkAccelLabel
  * @accelerator_key: a keyval, or 0
  * @accelerator_mods: the modifier mask for the accel
  *
@@ -1015,7 +1015,7 @@ ctk_accel_label_refetch (GtkAccelLabel *accel_label)
  * Since: 3.6
  */
 void
-ctk_accel_label_set_accel (GtkAccelLabel   *accel_label,
+ctk_accel_label_set_accel (CtkAccelLabel   *accel_label,
                            guint            accelerator_key,
                            GdkModifierType  accelerator_mods)
 {
@@ -1029,7 +1029,7 @@ ctk_accel_label_set_accel (GtkAccelLabel   *accel_label,
 
 /**
  * ctk_accel_label_get_accel:
- * @accel_label: a #GtkAccelLabel
+ * @accel_label: a #CtkAccelLabel
  * @accelerator_key: (out): return location for the keyval
  * @accelerator_mods: (out): return location for the modifier mask
  *
@@ -1039,7 +1039,7 @@ ctk_accel_label_set_accel (GtkAccelLabel   *accel_label,
  * Since: 3.12
  */
 void
-ctk_accel_label_get_accel (GtkAccelLabel   *accel_label,
+ctk_accel_label_get_accel (CtkAccelLabel   *accel_label,
                            guint           *accelerator_key,
                            GdkModifierType *accelerator_mods)
 {

@@ -28,7 +28,7 @@
  */
 
 /*
- * Bindings for GtkTextView and GtkEntry
+ * Bindings for CtkTextView and CtkEntry
  */
 @binding-set ctk-emacs-text-entry
 {
@@ -70,7 +70,7 @@
 }
 
 /*
- * Bindings for GtkTextView
+ * Bindings for CtkTextView
  */
 @binding-set ctk-emacs-text-view
 {
@@ -84,7 +84,7 @@
 }
 
 /*
- * Bindings for GtkTreeView
+ * Bindings for CtkTreeView
  */
 @binding-set ctk-emacs-tree-view
 {
@@ -116,6 +116,6 @@ treeview {
   -ctk-key-bindings: ctk-emacs-tree-view;
 }
 
-GtkMenuShell {
+CtkMenuShell {
   -ctk-key-bindings: ctk-emacs-menu;
 }

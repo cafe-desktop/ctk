@@ -25,13 +25,13 @@
 /**
  * SECTION:ctkalignment
  * @Short_description: A widget which controls the alignment and size of its child
- * @Title: GtkAlignment
+ * @Title: CtkAlignment
  *
- * The #GtkAlignment widget controls the alignment and size of its child widget.
+ * The #CtkAlignment widget controls the alignment and size of its child widget.
  * It has four settings: xscale, yscale, xalign, and yalign.
  *
  * The scale settings are used to specify how much the child widget should
- * expand to fill the space allocated to the #GtkAlignment.
+ * expand to fill the space allocated to the #CtkAlignment.
  * The values can range from 0 (meaning the child doesn’t expand at all) to
  * 1 (meaning the child expands to fill all of the available space).
  *
@@ -40,9 +40,9 @@
  * Of course, if the scale settings are both set to 1, the alignment settings
  * have no effect.
  *
- * GtkAlignment has been deprecated in 3.14 and should not be used in
+ * CtkAlignment has been deprecated in 3.14 and should not be used in
  * newly-written code. The desired effect can be achieved by using the
- * #GtkWidget:halign, #GtkWidget:valign and #GtkWidget:margin properties on the
+ * #CtkWidget:halign, #CtkWidget:valign and #CtkWidget:margin properties on the
  * child widget.
  */
 
@@ -56,7 +56,7 @@
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
 
-struct _GtkAlignmentPrivate
+struct _CtkAlignmentPrivate
 {
   gfloat        xalign;
   gfloat        yalign;
@@ -83,8 +83,8 @@ enum {
   PROP_RIGHT_PADDING
 };
 
-static void ctk_alignment_size_allocate (GtkWidget         *widget,
-					 GtkAllocation     *allocation);
+static void ctk_alignment_size_allocate (CtkWidget         *widget,
+					 CtkAllocation     *allocation);
 static void ctk_alignment_set_property (GObject         *object,
                                         guint            prop_id,
                                         const GValue    *value,
@@ -94,37 +94,37 @@ static void ctk_alignment_get_property (GObject         *object,
                                         GValue          *value,
                                         GParamSpec      *pspec);
 
-static void ctk_alignment_get_preferred_width          (GtkWidget           *widget,
+static void ctk_alignment_get_preferred_width          (CtkWidget           *widget,
                                                         gint                *minimum_size,
                                                         gint                *natural_size);
-static void ctk_alignment_get_preferred_height         (GtkWidget           *widget,
+static void ctk_alignment_get_preferred_height         (CtkWidget           *widget,
                                                         gint                *minimum_size,
                                                         gint                *natural_size);
-static void ctk_alignment_get_preferred_width_for_height (GtkWidget           *widget,
+static void ctk_alignment_get_preferred_width_for_height (CtkWidget           *widget,
 							  gint                 for_size,
 							  gint                *minimum_size,
 							  gint                *natural_size);
-static void ctk_alignment_get_preferred_height_for_width (GtkWidget           *widget,
+static void ctk_alignment_get_preferred_height_for_width (CtkWidget           *widget,
 							  gint                 for_size,
 							  gint                *minimum_size,
 							  gint                *natural_size);
-static void ctk_alignment_get_preferred_height_and_baseline_for_width (GtkWidget           *widget,
+static void ctk_alignment_get_preferred_height_and_baseline_for_width (CtkWidget           *widget,
 								       gint                 for_size,
 								       gint                *minimum_size,
 								       gint                *natural_size,
 								       gint                *minimum_baseline,
 								       gint                *natural_baseline);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkAlignment, ctk_alignment, CTK_TYPE_BIN)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkAlignment, ctk_alignment, CTK_TYPE_BIN)
 
 static void
-ctk_alignment_class_init (GtkAlignmentClass *class)
+ctk_alignment_class_init (CtkAlignmentClass *class)
 {
   GObjectClass *gobject_class;
-  GtkWidgetClass *widget_class;
+  CtkWidgetClass *widget_class;
 
   gobject_class = (GObjectClass*) class;
-  widget_class = (GtkWidgetClass*) class;
+  widget_class = (CtkWidgetClass*) class;
   
   gobject_class->set_property = ctk_alignment_set_property;
   gobject_class->get_property = ctk_alignment_get_property;
@@ -137,7 +137,7 @@ ctk_alignment_class_init (GtkAlignmentClass *class)
   widget_class->get_preferred_height_and_baseline_for_width = ctk_alignment_get_preferred_height_and_baseline_for_width;
 
   /**
-   * GtkAlignment:xalign:
+   * CtkAlignment:xalign:
    *
    * Horizontal position of child in available space. A value of 0.0
    * will flush the child left (or right, in RTL locales); a value
@@ -156,7 +156,7 @@ ctk_alignment_class_init (GtkAlignmentClass *class)
                                                       CTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
    
   /**
-   * GtkAlignment:yalign:
+   * CtkAlignment:yalign:
    *
    * Vertical position of child in available space. A value of 0.0
    * will flush the child to the top; a value of 1.0 will flush the
@@ -174,7 +174,7 @@ ctk_alignment_class_init (GtkAlignmentClass *class)
 						      0.5,
                                                       CTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
   /**
-   * GtkAlignment:xscale:
+   * CtkAlignment:xscale:
    *
    * If available horizontal space is bigger than needed, how much
    * of it to use for the child. A value of 0.0 means none; a value
@@ -192,7 +192,7 @@ ctk_alignment_class_init (GtkAlignmentClass *class)
                                                       1.0,
                                                       CTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
   /**
-   * GtkAlignment:yscale:
+   * CtkAlignment:yscale:
    *
    * If available vertical space is bigger than needed, how much
    * of it to use for the child. A value of 0.0 means none; a value
@@ -212,7 +212,7 @@ ctk_alignment_class_init (GtkAlignmentClass *class)
 
 
 /**
- * GtkAlignment:top-padding:
+ * CtkAlignment:top-padding:
  *
  * The padding to insert at the top of the widget.
  *
@@ -231,7 +231,7 @@ ctk_alignment_class_init (GtkAlignmentClass *class)
                                                       CTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
 
 /**
- * GtkAlignment:bottom-padding:
+ * CtkAlignment:bottom-padding:
  *
  * The padding to insert at the bottom of the widget.
  *
@@ -250,7 +250,7 @@ ctk_alignment_class_init (GtkAlignmentClass *class)
                                                       CTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
 
 /**
- * GtkAlignment:left-padding:
+ * CtkAlignment:left-padding:
  *
  * The padding to insert at the left of the widget.
  *
@@ -269,7 +269,7 @@ ctk_alignment_class_init (GtkAlignmentClass *class)
                                                       CTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
 
 /**
- * GtkAlignment:right-padding:
+ * CtkAlignment:right-padding:
  *
  * The padding to insert at the right of the widget.
  *
@@ -289,9 +289,9 @@ ctk_alignment_class_init (GtkAlignmentClass *class)
 }
 
 static void
-ctk_alignment_init (GtkAlignment *alignment)
+ctk_alignment_init (CtkAlignment *alignment)
 {
-  GtkAlignmentPrivate *priv;
+  CtkAlignmentPrivate *priv;
 
   alignment->priv = ctk_alignment_get_instance_private (alignment);
   priv = alignment->priv;
@@ -320,24 +320,24 @@ ctk_alignment_init (GtkAlignment *alignment)
  *  unused space, from 0 to 1.
  *  A value of 0 indicates that the child widget should never expand.
  *  A value of 1 indicates that the child widget will expand to fill all of the
- *  space allocated for the #GtkAlignment.
+ *  space allocated for the #CtkAlignment.
  * @yscale: the amount that the child widget expands vertically to fill up
  *  unused space, from 0 to 1. The values are similar to @xscale.
  *
- * Creates a new #GtkAlignment.
+ * Creates a new #CtkAlignment.
  *
- * Returns: the new #GtkAlignment
+ * Returns: the new #CtkAlignment
  *
- * Deprecated: 3.14: Use #GtkWidget alignment and margin properties
+ * Deprecated: 3.14: Use #CtkWidget alignment and margin properties
  */
-GtkWidget*
+CtkWidget*
 ctk_alignment_new (gfloat xalign,
 		   gfloat yalign,
 		   gfloat xscale,
 		   gfloat yscale)
 {
-  GtkAlignment *alignment;
-  GtkAlignmentPrivate *priv;
+  CtkAlignment *alignment;
+  CtkAlignmentPrivate *priv;
 
   alignment = g_object_new (CTK_TYPE_ALIGNMENT, NULL);
 
@@ -357,8 +357,8 @@ ctk_alignment_set_property (GObject         *object,
 			    const GValue    *value,
 			    GParamSpec      *pspec)
 {
-  GtkAlignment *alignment = CTK_ALIGNMENT (object);
-  GtkAlignmentPrivate *priv = alignment->priv;
+  CtkAlignment *alignment = CTK_ALIGNMENT (object);
+  CtkAlignmentPrivate *priv = alignment->priv;
 
   switch (prop_id)
     {
@@ -433,8 +433,8 @@ ctk_alignment_get_property (GObject         *object,
 			    GValue          *value,
 			    GParamSpec      *pspec)
 {
-  GtkAlignment *alignment = CTK_ALIGNMENT (object);
-  GtkAlignmentPrivate *priv = alignment->priv;
+  CtkAlignment *alignment = CTK_ALIGNMENT (object);
+  CtkAlignmentPrivate *priv = alignment->priv;
 
   switch (prop_id)
     {
@@ -473,7 +473,7 @@ ctk_alignment_get_property (GObject         *object,
 
 /**
  * ctk_alignment_set:
- * @alignment: a #GtkAlignment.
+ * @alignment: a #CtkAlignment.
  * @xalign: the horizontal alignment of the child widget, from 0 (left) to 1
  *  (right).
  * @yalign: the vertical alignment of the child widget, from 0 (top) to 1
@@ -482,23 +482,23 @@ ctk_alignment_get_property (GObject         *object,
  *  unused space, from 0 to 1.
  *  A value of 0 indicates that the child widget should never expand.
  *  A value of 1 indicates that the child widget will expand to fill all of the
- *  space allocated for the #GtkAlignment.
+ *  space allocated for the #CtkAlignment.
  * @yscale: the amount that the child widget expands vertically to fill up
  *  unused space, from 0 to 1. The values are similar to @xscale.
  *
- * Sets the #GtkAlignment values.
+ * Sets the #CtkAlignment values.
  *
- * Deprecated: 3.14: Use #GtkWidget alignment and margin properties
+ * Deprecated: 3.14: Use #CtkWidget alignment and margin properties
  */
 void
-ctk_alignment_set (GtkAlignment *alignment,
+ctk_alignment_set (CtkAlignment *alignment,
 		   gfloat        xalign,
 		   gfloat        yalign,
 		   gfloat        xscale,
 		   gfloat        yscale)
 {
-  GtkAlignmentPrivate *priv;
-  GtkWidget *child;
+  CtkAlignmentPrivate *priv;
+  CtkWidget *child;
 
   g_return_if_fail (CTK_IS_ALIGNMENT (alignment));
 
@@ -546,14 +546,14 @@ ctk_alignment_set (GtkAlignment *alignment,
 
 
 static void
-ctk_alignment_size_allocate (GtkWidget     *widget,
-			     GtkAllocation *allocation)
+ctk_alignment_size_allocate (CtkWidget     *widget,
+			     CtkAllocation *allocation)
 {
-  GtkAlignment *alignment = CTK_ALIGNMENT (widget);
-  GtkAlignmentPrivate *priv = alignment->priv;
-  GtkBin *bin;
-  GtkAllocation child_allocation;
-  GtkWidget *child;
+  CtkAlignment *alignment = CTK_ALIGNMENT (widget);
+  CtkAlignmentPrivate *priv = alignment->priv;
+  CtkBin *bin;
+  CtkAllocation child_allocation;
+  CtkWidget *child;
   gint width, height;
   gint border_width;
   gint baseline;
@@ -645,17 +645,17 @@ ctk_alignment_size_allocate (GtkWidget     *widget,
 
 
 static void
-ctk_alignment_get_preferred_size (GtkWidget      *widget,
-                                  GtkOrientation  orientation,
+ctk_alignment_get_preferred_size (CtkWidget      *widget,
+                                  CtkOrientation  orientation,
 				  gint            for_size,
                                   gint           *minimum_size,
                                   gint           *natural_size,
                                   gint           *minimum_baseline,
                                   gint           *natural_baseline)
 {
-  GtkAlignment *alignment = CTK_ALIGNMENT (widget);
-  GtkAlignmentPrivate *priv = alignment->priv;
-  GtkWidget *child;
+  CtkAlignment *alignment = CTK_ALIGNMENT (widget);
+  CtkAlignmentPrivate *priv = alignment->priv;
+  CtkWidget *child;
   guint minimum, natural;
   guint top_offset;
   guint border;
@@ -735,7 +735,7 @@ ctk_alignment_get_preferred_size (GtkWidget      *widget,
 }
 
 static void
-ctk_alignment_get_preferred_width (GtkWidget      *widget,
+ctk_alignment_get_preferred_width (CtkWidget      *widget,
                                    gint           *minimum_size,
                                    gint           *natural_size)
 {
@@ -743,7 +743,7 @@ ctk_alignment_get_preferred_width (GtkWidget      *widget,
 }
 
 static void
-ctk_alignment_get_preferred_height (GtkWidget      *widget,
+ctk_alignment_get_preferred_height (CtkWidget      *widget,
                                     gint           *minimum_size,
                                     gint           *natural_size)
 {
@@ -752,7 +752,7 @@ ctk_alignment_get_preferred_height (GtkWidget      *widget,
 
 
 static void 
-ctk_alignment_get_preferred_width_for_height (GtkWidget           *widget,
+ctk_alignment_get_preferred_width_for_height (CtkWidget           *widget,
 					      gint                 for_size,
 					      gint                *minimum_size,
 					      gint                *natural_size)
@@ -761,7 +761,7 @@ ctk_alignment_get_preferred_width_for_height (GtkWidget           *widget,
 }
 
 static void
-ctk_alignment_get_preferred_height_for_width (GtkWidget           *widget,
+ctk_alignment_get_preferred_height_for_width (CtkWidget           *widget,
 					      gint                 for_size,
 					      gint                *minimum_size,
 					      gint                *natural_size)
@@ -770,7 +770,7 @@ ctk_alignment_get_preferred_height_for_width (GtkWidget           *widget,
 }
 
 static void
-ctk_alignment_get_preferred_height_and_baseline_for_width (GtkWidget           *widget,
+ctk_alignment_get_preferred_height_and_baseline_for_width (CtkWidget           *widget,
 							   gint                 for_size,
 							   gint                *minimum_size,
 							   gint                *natural_size,
@@ -783,7 +783,7 @@ ctk_alignment_get_preferred_height_and_baseline_for_width (GtkWidget           *
 
 /**
  * ctk_alignment_set_padding:
- * @alignment: a #GtkAlignment
+ * @alignment: a #CtkAlignment
  * @padding_top: the padding at the top of the widget
  * @padding_bottom: the padding at the bottom of the widget
  * @padding_left: the padding at the left of the widget
@@ -796,17 +796,17 @@ ctk_alignment_get_preferred_height_and_baseline_for_width (GtkWidget           *
  *
  * Since: 2.4
  *
- * Deprecated: 3.14: Use #GtkWidget alignment and margin properties
+ * Deprecated: 3.14: Use #CtkWidget alignment and margin properties
  */
 void
-ctk_alignment_set_padding (GtkAlignment    *alignment,
+ctk_alignment_set_padding (CtkAlignment    *alignment,
 			   guint            padding_top,
 			   guint            padding_bottom,
 			   guint            padding_left,
 			   guint            padding_right)
 {
-  GtkAlignmentPrivate *priv;
-  GtkWidget *child;
+  CtkAlignmentPrivate *priv;
+  CtkWidget *child;
   
   g_return_if_fail (CTK_IS_ALIGNMENT (alignment));
 
@@ -847,7 +847,7 @@ ctk_alignment_set_padding (GtkAlignment    *alignment,
 
 /**
  * ctk_alignment_get_padding:
- * @alignment: a #GtkAlignment
+ * @alignment: a #CtkAlignment
  * @padding_top: (out) (allow-none): location to store the padding for
  *     the top of the widget, or %NULL
  * @padding_bottom: (out) (allow-none): location to store the padding
@@ -862,16 +862,16 @@ ctk_alignment_set_padding (GtkAlignment    *alignment,
  *
  * Since: 2.4
  *
- * Deprecated: 3.14: Use #GtkWidget alignment and margin properties
+ * Deprecated: 3.14: Use #CtkWidget alignment and margin properties
  */
 void
-ctk_alignment_get_padding (GtkAlignment    *alignment,
+ctk_alignment_get_padding (CtkAlignment    *alignment,
 			   guint           *padding_top,
 			   guint           *padding_bottom,
 			   guint           *padding_left,
 			   guint           *padding_right)
 {
-  GtkAlignmentPrivate *priv;
+  CtkAlignmentPrivate *priv;
 
   g_return_if_fail (CTK_IS_ALIGNMENT (alignment));
 

@@ -7,11 +7,11 @@
 #include <string.h>
 #include <ctk/ctk.h>
 
-static GtkWidget *window = NULL;
+static CtkWidget *window = NULL;
 
-static void load_icon_items (GtkToolPalette *palette);
-static void load_toggle_items (GtkToolPalette *palette);
-static void load_special_items (GtkToolPalette *palette);
+static void load_icon_items (CtkToolPalette *palette);
+static void load_toggle_items (CtkToolPalette *palette);
+static void load_special_items (CtkToolPalette *palette);
 
 typedef struct _CanvasItem CanvasItem;
 
@@ -30,15 +30,15 @@ static GList *canvas_items = NULL;
 /********************************/
 
 static CanvasItem*
-canvas_item_new (GtkWidget     *widget,
-                 GtkToolButton *button,
+canvas_item_new (CtkWidget     *widget,
+                 CtkToolButton *button,
                  gdouble        x,
                  gdouble        y)
 {
   CanvasItem *item = NULL;
   const gchar *icon_name;
   GdkPixbuf *pixbuf;
-  GtkIconTheme *icon_theme;
+  CtkIconTheme *icon_theme;
   int width;
 
   icon_name = ctk_tool_button_get_icon_name (button);
@@ -88,7 +88,7 @@ canvas_item_draw (const CanvasItem *item,
 }
 
 static gboolean
-canvas_draw (GtkWidget *widget,
+canvas_draw (CtkWidget *widget,
              cairo_t   *cr)
 {
   GList *iter;
@@ -110,13 +110,13 @@ canvas_draw (GtkWidget *widget,
 /*****************************/
 
 static void
-palette_drop_item (GtkToolItem      *drag_item,
-                   GtkToolItemGroup *drop_group,
+palette_drop_item (CtkToolItem      *drag_item,
+                   CtkToolItemGroup *drop_group,
                    gint              x,
                    gint              y)
 {
-  GtkWidget *drag_group = ctk_widget_get_parent (CTK_WIDGET (drag_item));
-  GtkToolItem *drop_item = ctk_tool_item_group_get_drop_item (drop_group, x, y);
+  CtkWidget *drag_group = ctk_widget_get_parent (CTK_WIDGET (drag_item));
+  CtkToolItem *drop_item = ctk_tool_item_group_get_drop_item (drop_group, x, y);
   gint drop_position = -1;
 
   if (drop_item)
@@ -150,9 +150,9 @@ palette_drop_item (GtkToolItem      *drag_item,
 }
 
 static void
-palette_drop_group (GtkToolPalette   *palette,
-                    GtkToolItemGroup *drag_group,
-                    GtkToolItemGroup *drop_group)
+palette_drop_group (CtkToolPalette   *palette,
+                    CtkToolItemGroup *drag_group,
+                    CtkToolItemGroup *drop_group)
 {
   gint drop_position = -1;
 
@@ -163,19 +163,19 @@ palette_drop_group (GtkToolPalette   *palette,
 }
 
 static void
-palette_drag_data_received (GtkWidget        *widget,
+palette_drag_data_received (CtkWidget        *widget,
                             GdkDragContext   *context,
                             gint              x,
                             gint              y,
-                            GtkSelectionData *selection,
+                            CtkSelectionData *selection,
                             guint             info,
                             guint             time,
                             gpointer          data)
 {
-  GtkAllocation     allocation;
-  GtkToolItemGroup *drop_group = NULL;
-  GtkWidget        *drag_palette = ctk_drag_get_source_widget (context);
-  GtkWidget        *drag_item = NULL;
+  CtkAllocation     allocation;
+  CtkToolItemGroup *drop_group = NULL;
+  CtkWidget        *drag_palette = ctk_drag_get_source_widget (context);
+  CtkWidget        *drag_item = NULL;
 
   while (drag_palette && !CTK_IS_TOOL_PALETTE (drag_palette))
     drag_palette = ctk_widget_get_parent (drag_palette);
@@ -207,20 +207,20 @@ palette_drag_data_received (GtkWidget        *widget,
 /********************************/
 
 static void
-passive_canvas_drag_data_received (GtkWidget        *widget,
+passive_canvas_drag_data_received (CtkWidget        *widget,
                                    GdkDragContext   *context,
                                    gint              x,
                                    gint              y,
-                                   GtkSelectionData *selection,
+                                   CtkSelectionData *selection,
                                    guint             info,
                                    guint             time,
                                    gpointer          data)
 {
   /* find the tool button, which is the source of this DnD operation */
 
-  GtkWidget *palette = ctk_drag_get_source_widget (context);
+  CtkWidget *palette = ctk_drag_get_source_widget (context);
   CanvasItem *canvas_item = NULL;
-  GtkWidget *tool_item = NULL;
+  CtkWidget *tool_item = NULL;
 
   while (palette && !CTK_IS_TOOL_PALETTE (palette))
     palette = ctk_widget_get_parent (palette);
@@ -248,7 +248,7 @@ passive_canvas_drag_data_received (GtkWidget        *widget,
 /************************************/
 
 static gboolean
-interactive_canvas_drag_motion (GtkWidget      *widget,
+interactive_canvas_drag_motion (CtkWidget      *widget,
                                 GdkDragContext *context,
                                 gint            x,
                                 gint            y,
@@ -282,11 +282,11 @@ interactive_canvas_drag_motion (GtkWidget      *widget,
 }
 
 static void
-interactive_canvas_drag_data_received (GtkWidget        *widget,
+interactive_canvas_drag_data_received (CtkWidget        *widget,
                                        GdkDragContext   *context,
                                        gint              x,
                                        gint              y,
-                                       GtkSelectionData *selection,
+                                       CtkSelectionData *selection,
                                        guint             info,
                                        guint             time,
                                        gpointer          data)
@@ -294,8 +294,8 @@ interactive_canvas_drag_data_received (GtkWidget        *widget,
 {
   /* find the tool button which is the source of this DnD operation */
 
-  GtkWidget *palette = ctk_drag_get_source_widget (context);
-  GtkWidget *tool_item = NULL;
+  CtkWidget *palette = ctk_drag_get_source_widget (context);
+  CtkWidget *tool_item = NULL;
   CanvasItem *item;
 
   while (palette && !CTK_IS_TOOL_PALETTE (palette))
@@ -338,7 +338,7 @@ interactive_canvas_drag_data_received (GtkWidget        *widget,
 }
 
 static gboolean
-interactive_canvas_drag_drop (GtkWidget      *widget,
+interactive_canvas_drag_drop (CtkWidget      *widget,
                               GdkDragContext *context,
                               gint            x,
                               gint            y,
@@ -361,7 +361,7 @@ interactive_canvas_drag_leave (gpointer data)
 {
   if (drop_item)
     {
-      GtkWidget *widget = CTK_WIDGET (data);
+      CtkWidget *widget = CTK_WIDGET (data);
 
       canvas_item_free (drop_item);
       drop_item = NULL;
@@ -372,13 +372,13 @@ interactive_canvas_drag_leave (gpointer data)
 }
 
 static void
-on_combo_orientation_changed (GtkComboBox *combo_box,
+on_combo_orientation_changed (CtkComboBox *combo_box,
                               gpointer     user_data)
 {
-  GtkToolPalette *palette = CTK_TOOL_PALETTE (user_data);
-  GtkScrolledWindow *sw;
-  GtkTreeModel *model = ctk_combo_box_get_model (combo_box);
-  GtkTreeIter iter;
+  CtkToolPalette *palette = CTK_TOOL_PALETTE (user_data);
+  CtkScrolledWindow *sw;
+  CtkTreeModel *model = ctk_combo_box_get_model (combo_box);
+  CtkTreeIter iter;
   gint val = 0;
 
   sw = CTK_SCROLLED_WINDOW (ctk_widget_get_parent (CTK_WIDGET (palette)));
@@ -397,12 +397,12 @@ on_combo_orientation_changed (GtkComboBox *combo_box,
 }
 
 static void
-on_combo_style_changed (GtkComboBox *combo_box,
+on_combo_style_changed (CtkComboBox *combo_box,
                         gpointer     user_data)
 {
-  GtkToolPalette *palette = CTK_TOOL_PALETTE (user_data);
-  GtkTreeModel *model = ctk_combo_box_get_model (combo_box);
-  GtkTreeIter iter;
+  CtkToolPalette *palette = CTK_TOOL_PALETTE (user_data);
+  CtkTreeModel *model = ctk_combo_box_get_model (combo_box);
+  CtkTreeIter iter;
   gint val = 0;
 
   if (!ctk_combo_box_get_active_iter (combo_box, &iter))
@@ -416,22 +416,22 @@ on_combo_style_changed (GtkComboBox *combo_box,
     ctk_tool_palette_set_style (palette, val);
 }
 
-GtkWidget *
-do_toolpalette (GtkWidget *do_widget)
+CtkWidget *
+do_toolpalette (CtkWidget *do_widget)
 {
-  GtkWidget *box = NULL;
-  GtkWidget *hbox = NULL;
-  GtkWidget *combo_orientation = NULL;
-  GtkListStore *orientation_model = NULL;
-  GtkWidget *combo_style = NULL;
-  GtkListStore *style_model = NULL;
-  GtkCellRenderer *cell_renderer = NULL;
-  GtkTreeIter iter;
-  GtkWidget *palette = NULL;
-  GtkWidget *palette_scroller = NULL;
-  GtkWidget *notebook = NULL;
-  GtkWidget *contents = NULL;
-  GtkWidget *contents_scroller = NULL;
+  CtkWidget *box = NULL;
+  CtkWidget *hbox = NULL;
+  CtkWidget *combo_orientation = NULL;
+  CtkListStore *orientation_model = NULL;
+  CtkWidget *combo_style = NULL;
+  CtkListStore *style_model = NULL;
+  CtkCellRenderer *cell_renderer = NULL;
+  CtkTreeIter iter;
+  CtkWidget *palette = NULL;
+  CtkWidget *palette_scroller = NULL;
+  CtkWidget *notebook = NULL;
+  CtkWidget *contents = NULL;
+  CtkWidget *contents_scroller = NULL;
 
   if (!window)
     {
@@ -636,11 +636,11 @@ do_toolpalette (GtkWidget *do_widget)
 
 
 static void
-load_icon_items (GtkToolPalette *palette)
+load_icon_items (CtkToolPalette *palette)
 {
   GList *contexts;
   GList *l;
-  GtkIconTheme *icon_theme;
+  CtkIconTheme *icon_theme;
 
   icon_theme = ctk_icon_theme_get_for_screen (ctk_widget_get_screen (CTK_WIDGET (palette)));
 
@@ -653,7 +653,7 @@ load_icon_items (GtkToolPalette *palette)
       const guint max_icons = 10;
       guint icons_count = 0;
 
-      GtkWidget *group = ctk_tool_item_group_new (context);
+      CtkWidget *group = ctk_tool_item_group_new (context);
       ctk_container_add (CTK_CONTAINER (palette), group);
 
       if (g_strcmp0 (context, "Animations") == 0)
@@ -665,7 +665,7 @@ load_icon_items (GtkToolPalette *palette)
 
       for (ll = icon_names; ll; ll = ll->next)
         {
-          GtkToolItem *item;
+          CtkToolItem *item;
           gchar *id = ll->data;
 
           if (g_str_equal (id, "emblem-desktop"))
@@ -694,11 +694,11 @@ load_icon_items (GtkToolPalette *palette)
 }
 
 static void
-load_toggle_items (GtkToolPalette *palette)
+load_toggle_items (CtkToolPalette *palette)
 {
   GSList *toggle_group = NULL;
-  GtkToolItem *item;
-  GtkWidget *group;
+  CtkToolItem *item;
+  CtkWidget *group;
   char *label;
   int i;
 
@@ -717,11 +717,11 @@ load_toggle_items (GtkToolPalette *palette)
     }
 }
 
-static GtkToolItem *
+static CtkToolItem *
 create_entry_item (const char *text)
 {
-  GtkToolItem *item;
-  GtkWidget *entry;
+  CtkToolItem *item;
+  CtkWidget *entry;
 
   entry = ctk_entry_new ();
   ctk_entry_set_text (CTK_ENTRY (entry), text);
@@ -734,11 +734,11 @@ create_entry_item (const char *text)
 }
 
 static void
-load_special_items (GtkToolPalette *palette)
+load_special_items (CtkToolPalette *palette)
 {
-  GtkToolItem *item;
-  GtkWidget *group;
-  GtkWidget *label_button;
+  CtkToolItem *item;
+  CtkWidget *group;
+  CtkWidget *label_button;
 
   group = ctk_tool_item_group_new (NULL);
   label_button = ctk_button_new_with_label ("Advanced Features");

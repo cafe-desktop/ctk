@@ -49,20 +49,20 @@
 /**
  * SECTION:ctkfontbutton
  * @Short_description: A button to launch a font chooser dialog
- * @Title: GtkFontButton
- * @See_also: #GtkFontChooserDialog, #GtkColorButton.
+ * @Title: CtkFontButton
+ * @See_also: #CtkFontChooserDialog, #CtkColorButton.
  *
- * The #GtkFontButton is a button which displays the currently selected
+ * The #CtkFontButton is a button which displays the currently selected
  * font an allows to open a font chooser dialog to change the font.
  * It is suitable widget for selecting a font in a preference dialog.
  *
  * # CSS nodes
  *
- * GtkFontButton has a single CSS node with name button and style class .font.
+ * CtkFontButton has a single CSS node with name button and style class .font.
  */
 
 
-struct _GtkFontButtonPrivate
+struct _CtkFontButtonPrivate
 {
   gchar         *title;
 
@@ -74,10 +74,10 @@ struct _GtkFontButtonPrivate
   guint         show_size : 1;
   guint         show_preview_entry : 1;
 
-  GtkWidget     *font_dialog;
-  GtkWidget     *font_label;
-  GtkWidget     *size_label;
-  GtkWidget     *font_size_box;
+  CtkWidget     *font_dialog;
+  CtkWidget     *font_label;
+  CtkWidget     *size_label;
+  CtkWidget     *font_size_box;
 
   PangoFontDescription *font_desc;
   PangoFontFamily      *font_family;
@@ -87,12 +87,12 @@ struct _GtkFontButtonPrivate
   char                 *font_features;
   PangoLanguage        *language;
   gchar                *preview_text;
-  GtkFontFilterFunc     font_filter;
+  CtkFontFilterFunc     font_filter;
   gpointer              font_filter_data;
   GDestroyNotify        font_filter_data_destroy;
-  GtkCssProvider       *provider;
+  CtkCssProvider       *provider;
 
-  GtkFontChooserLevel   level;
+  CtkFontChooserLevel   level;
 };
 
 /* Signals */
@@ -124,32 +124,32 @@ static void ctk_font_button_set_property           (GObject            *object,
                                                     const GValue       *value,
                                                     GParamSpec         *pspec);
 
-static void ctk_font_button_clicked                 (GtkButton         *button);
+static void ctk_font_button_clicked                 (CtkButton         *button);
 
 /* Dialog response functions */
-static void response_cb                             (GtkDialog         *dialog,
+static void response_cb                             (CtkDialog         *dialog,
                                                      gint               response_id,
                                                      gpointer           data);
-static void dialog_destroy                          (GtkWidget         *widget,
+static void dialog_destroy                          (CtkWidget         *widget,
                                                      gpointer           data);
 
 /* Auxiliary functions */
-static void ctk_font_button_label_use_font          (GtkFontButton     *gfs);
-static void ctk_font_button_update_font_info        (GtkFontButton     *gfs);
+static void ctk_font_button_label_use_font          (CtkFontButton     *gfs);
+static void ctk_font_button_update_font_info        (CtkFontButton     *gfs);
 
-static void        font_button_set_font_name (GtkFontButton *button,
+static void        font_button_set_font_name (CtkFontButton *button,
                                               const char    *fontname);
-static void        ctk_font_button_set_level     (GtkFontButton       *font_button,
-                                                  GtkFontChooserLevel  level);
-static void        ctk_font_button_set_language  (GtkFontButton *button,
+static void        ctk_font_button_set_level     (CtkFontButton       *font_button,
+                                                  CtkFontChooserLevel  level);
+static void        ctk_font_button_set_language  (CtkFontButton *button,
                                                   const char    *language);
 
 static guint font_button_signals[LAST_SIGNAL] = { 0 };
 
 static void
-clear_font_data (GtkFontButton *font_button)
+clear_font_data (CtkFontButton *font_button)
 {
-  GtkFontButtonPrivate *priv = font_button->priv;
+  CtkFontButtonPrivate *priv = font_button->priv;
 
   if (priv->font_family)
     g_object_unref (priv->font_family);
@@ -171,9 +171,9 @@ clear_font_data (GtkFontButton *font_button)
 }
 
 static void
-clear_font_filter_data (GtkFontButton *font_button)
+clear_font_filter_data (CtkFontButton *font_button)
 {
-  GtkFontButtonPrivate *priv = font_button->priv;
+  CtkFontButtonPrivate *priv = font_button->priv;
 
   if (priv->font_filter_data_destroy)
     priv->font_filter_data_destroy (priv->font_filter_data);
@@ -193,9 +193,9 @@ font_description_style_equal (const PangoFontDescription *a,
 }
 
 static void
-ctk_font_button_update_font_data (GtkFontButton *font_button)
+ctk_font_button_update_font_data (CtkFontButton *font_button)
 {
-  GtkFontButtonPrivate *priv = font_button->priv;
+  CtkFontButtonPrivate *priv = font_button->priv;
   PangoFontFamily **families;
   PangoFontFace **faces;
   gint n_families, n_faces, i;
@@ -248,9 +248,9 @@ ctk_font_button_update_font_data (GtkFontButton *font_button)
 }
 
 static gchar *
-ctk_font_button_get_preview_text (GtkFontButton *font_button)
+ctk_font_button_get_preview_text (CtkFontButton *font_button)
 {
-  GtkFontButtonPrivate *priv = font_button->priv;
+  CtkFontButtonPrivate *priv = font_button->priv;
 
   if (priv->font_dialog)
     return ctk_font_chooser_get_preview_text (CTK_FONT_CHOOSER (priv->font_dialog));
@@ -259,10 +259,10 @@ ctk_font_button_get_preview_text (GtkFontButton *font_button)
 }
 
 static void
-ctk_font_button_set_preview_text (GtkFontButton *font_button,
+ctk_font_button_set_preview_text (CtkFontButton *font_button,
                                   const gchar   *preview_text)
 {
-  GtkFontButtonPrivate *priv = font_button->priv;
+  CtkFontButtonPrivate *priv = font_button->priv;
 
   if (priv->font_dialog)
     {
@@ -277,9 +277,9 @@ ctk_font_button_set_preview_text (GtkFontButton *font_button,
 
 
 static gboolean
-ctk_font_button_get_show_preview_entry (GtkFontButton *font_button)
+ctk_font_button_get_show_preview_entry (CtkFontButton *font_button)
 {
-  GtkFontButtonPrivate *priv = font_button->priv;
+  CtkFontButtonPrivate *priv = font_button->priv;
 
   if (priv->font_dialog)
     return ctk_font_chooser_get_show_preview_entry (CTK_FONT_CHOOSER (priv->font_dialog));
@@ -288,10 +288,10 @@ ctk_font_button_get_show_preview_entry (GtkFontButton *font_button)
 }
 
 static void
-ctk_font_button_set_show_preview_entry (GtkFontButton *font_button,
+ctk_font_button_set_show_preview_entry (CtkFontButton *font_button,
                                         gboolean       show)
 {
-  GtkFontButtonPrivate *priv = font_button->priv;
+  CtkFontButtonPrivate *priv = font_button->priv;
 
   show = show != FALSE;
 
@@ -305,40 +305,40 @@ ctk_font_button_set_show_preview_entry (GtkFontButton *font_button,
 }
 
 static PangoFontFamily *
-ctk_font_button_font_chooser_get_font_family (GtkFontChooser *chooser)
+ctk_font_button_font_chooser_get_font_family (CtkFontChooser *chooser)
 {
-  GtkFontButton *font_button = CTK_FONT_BUTTON (chooser);
-  GtkFontButtonPrivate *priv = font_button->priv;
+  CtkFontButton *font_button = CTK_FONT_BUTTON (chooser);
+  CtkFontButtonPrivate *priv = font_button->priv;
 
   return priv->font_family;
 }
 
 static PangoFontFace *
-ctk_font_button_font_chooser_get_font_face (GtkFontChooser *chooser)
+ctk_font_button_font_chooser_get_font_face (CtkFontChooser *chooser)
 {
-  GtkFontButton *font_button = CTK_FONT_BUTTON (chooser);
-  GtkFontButtonPrivate *priv = font_button->priv;
+  CtkFontButton *font_button = CTK_FONT_BUTTON (chooser);
+  CtkFontButtonPrivate *priv = font_button->priv;
 
   return priv->font_face;
 }
 
 static int
-ctk_font_button_font_chooser_get_font_size (GtkFontChooser *chooser)
+ctk_font_button_font_chooser_get_font_size (CtkFontChooser *chooser)
 {
-  GtkFontButton *font_button = CTK_FONT_BUTTON (chooser);
-  GtkFontButtonPrivate *priv = font_button->priv;
+  CtkFontButton *font_button = CTK_FONT_BUTTON (chooser);
+  CtkFontButtonPrivate *priv = font_button->priv;
 
   return priv->font_size;
 }
 
 static void
-ctk_font_button_font_chooser_set_filter_func (GtkFontChooser    *chooser,
-                                              GtkFontFilterFunc  filter_func,
+ctk_font_button_font_chooser_set_filter_func (CtkFontChooser    *chooser,
+                                              CtkFontFilterFunc  filter_func,
                                               gpointer           filter_data,
                                               GDestroyNotify     data_destroy)
 {
-  GtkFontButton *font_button = CTK_FONT_BUTTON (chooser);
-  GtkFontButtonPrivate *priv = font_button->priv;
+  CtkFontButton *font_button = CTK_FONT_BUTTON (chooser);
+  CtkFontButtonPrivate *priv = font_button->priv;
 
   if (priv->font_dialog)
     {
@@ -356,10 +356,10 @@ ctk_font_button_font_chooser_set_filter_func (GtkFontChooser    *chooser,
 }
 
 static void
-ctk_font_button_take_font_desc (GtkFontButton        *font_button,
+ctk_font_button_take_font_desc (CtkFontButton        *font_button,
                                 PangoFontDescription *font_desc)
 {
-  GtkFontButtonPrivate *priv = font_button->priv;
+  CtkFontButtonPrivate *priv = font_button->priv;
   GObject *object = G_OBJECT (font_button);
 
   if (priv->font_desc && font_desc &&
@@ -398,16 +398,16 @@ ctk_font_button_take_font_desc (GtkFontButton        *font_button,
 }
 
 static const PangoFontDescription *
-ctk_font_button_get_font_desc (GtkFontButton *font_button)
+ctk_font_button_get_font_desc (CtkFontButton *font_button)
 {
   return font_button->priv->font_desc;
 }
 
 static void
-ctk_font_button_font_chooser_set_font_map (GtkFontChooser *chooser,
+ctk_font_button_font_chooser_set_font_map (CtkFontChooser *chooser,
                                            PangoFontMap   *font_map)
 {
-  GtkFontButton *font_button = CTK_FONT_BUTTON (chooser);
+  CtkFontButton *font_button = CTK_FONT_BUTTON (chooser);
 
   if (g_set_object (&font_button->priv->font_map, font_map))
     {
@@ -422,9 +422,9 @@ ctk_font_button_font_chooser_set_font_map (GtkFontChooser *chooser,
 }
 
 static PangoFontMap *
-ctk_font_button_font_chooser_get_font_map (GtkFontChooser *chooser)
+ctk_font_button_font_chooser_get_font_map (CtkFontChooser *chooser)
 {
-  GtkFontButton *font_button = CTK_FONT_BUTTON (chooser);
+  CtkFontButton *font_button = CTK_FONT_BUTTON (chooser);
 
   return font_button->priv->font_map;
 }
@@ -441,7 +441,7 @@ ctk_font_button_font_chooser_notify (GObject    *object,
 }
 
 static void
-ctk_font_button_font_chooser_iface_init (GtkFontChooserIface *iface)
+ctk_font_button_font_chooser_iface_init (CtkFontChooserIface *iface)
 {
   iface->get_font_family = ctk_font_button_font_chooser_get_font_family;
   iface->get_font_face = ctk_font_button_font_chooser_get_font_face;
@@ -451,21 +451,21 @@ ctk_font_button_font_chooser_iface_init (GtkFontChooserIface *iface)
   iface->get_font_map = ctk_font_button_font_chooser_get_font_map;
 }
 
-G_DEFINE_TYPE_WITH_CODE (GtkFontButton, ctk_font_button, CTK_TYPE_BUTTON,
-                         G_ADD_PRIVATE (GtkFontButton)
+G_DEFINE_TYPE_WITH_CODE (CtkFontButton, ctk_font_button, CTK_TYPE_BUTTON,
+                         G_ADD_PRIVATE (CtkFontButton)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_FONT_CHOOSER,
                                                 ctk_font_button_font_chooser_iface_init))
 
 static void
-ctk_font_button_class_init (GtkFontButtonClass *klass)
+ctk_font_button_class_init (CtkFontButtonClass *klass)
 {
   GObjectClass *gobject_class;
-  GtkWidgetClass *widget_class;
-  GtkButtonClass *button_class;
+  CtkWidgetClass *widget_class;
+  CtkButtonClass *button_class;
   
   gobject_class = (GObjectClass *) klass;
-  widget_class = (GtkWidgetClass *) klass;
-  button_class = (GtkButtonClass *) klass;
+  widget_class = (CtkWidgetClass *) klass;
+  button_class = (CtkButtonClass *) klass;
 
   gobject_class->finalize = ctk_font_button_finalize;
   gobject_class->set_property = ctk_font_button_set_property;
@@ -478,7 +478,7 @@ ctk_font_button_class_init (GtkFontButtonClass *klass)
   _ctk_font_chooser_install_properties (gobject_class);
 
   /**
-   * GtkFontButton:title:
+   * CtkFontButton:title:
    * 
    * The title of the font chooser dialog.
    *
@@ -493,13 +493,13 @@ ctk_font_button_class_init (GtkFontButtonClass *klass)
                                                         CTK_PARAM_READWRITE));
 
   /**
-   * GtkFontButton:font-name:
+   * CtkFontButton:font-name:
    * 
    * The name of the currently selected font.
    *
    * Since: 2.4
    *
-   * Deprecated: 3.22: Use the #GtkFontChooser::font property instead
+   * Deprecated: 3.22: Use the #CtkFontChooser::font property instead
    */
   g_object_class_install_property (gobject_class,
                                    PROP_FONT_NAME,
@@ -510,7 +510,7 @@ ctk_font_button_class_init (GtkFontButtonClass *klass)
                                                         CTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
 
   /**
-   * GtkFontButton:use-font:
+   * CtkFontButton:use-font:
    * 
    * If this property is set to %TRUE, the label will be drawn 
    * in the selected font.
@@ -526,7 +526,7 @@ ctk_font_button_class_init (GtkFontButtonClass *klass)
                                                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkFontButton:use-size:
+   * CtkFontButton:use-size:
    * 
    * If this property is set to %TRUE, the label will be drawn 
    * with the selected font size.
@@ -542,7 +542,7 @@ ctk_font_button_class_init (GtkFontButtonClass *klass)
                                                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkFontButton:show-style:
+   * CtkFontButton:show-style:
    * 
    * If this property is set to %TRUE, the name of the selected font style 
    * will be shown in the label. For a more WYSIWYG way to show the selected 
@@ -558,7 +558,7 @@ ctk_font_button_class_init (GtkFontButtonClass *klass)
                                                          TRUE,
                                                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
   /**
-   * GtkFontButton:show-size:
+   * CtkFontButton:show-size:
    * 
    * If this property is set to %TRUE, the selected font size will be shown 
    * in the label. For a more WYSIWYG way to show the selected size, see the 
@@ -575,7 +575,7 @@ ctk_font_button_class_init (GtkFontButtonClass *klass)
                                                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkFontButton::font-set:
+   * CtkFontButton::font-set:
    * @widget: the object which received the signal.
    * 
    * The ::font-set signal is emitted when the user selects a font. 
@@ -591,7 +591,7 @@ ctk_font_button_class_init (GtkFontButtonClass *klass)
   font_button_signals[FONT_SET] = g_signal_new (I_("font-set"),
                                                 G_TYPE_FROM_CLASS (gobject_class),
                                                 G_SIGNAL_RUN_FIRST,
-                                                G_STRUCT_OFFSET (GtkFontButtonClass, font_set),
+                                                G_STRUCT_OFFSET (CtkFontButtonClass, font_set),
                                                 NULL, NULL,
                                                 NULL,
                                                 G_TYPE_NONE, 0);
@@ -599,17 +599,17 @@ ctk_font_button_class_init (GtkFontButtonClass *klass)
   /* Bind class to template
    */
   ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/ui/ctkfontbutton.ui");
-  ctk_widget_class_bind_template_child_private (widget_class, GtkFontButton, font_label);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkFontButton, size_label);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkFontButton, font_size_box);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkFontButton, font_label);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkFontButton, size_label);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkFontButton, font_size_box);
 
   ctk_widget_class_set_css_name (widget_class, "button");
 }
 
 static void
-ctk_font_button_init (GtkFontButton *font_button)
+ctk_font_button_init (CtkFontButton *font_button)
 {
-  GtkStyleContext *context;
+  CtkStyleContext *context;
 
   font_button->priv = ctk_font_button_get_instance_private (font_button);
 
@@ -640,8 +640,8 @@ ctk_font_button_init (GtkFontButton *font_button)
 static void
 ctk_font_button_finalize (GObject *object)
 {
-  GtkFontButton *font_button = CTK_FONT_BUTTON (object);
-  GtkFontButtonPrivate *priv = font_button->priv;
+  CtkFontButton *font_button = CTK_FONT_BUTTON (object);
+  CtkFontButtonPrivate *priv = font_button->priv;
 
   if (priv->font_dialog != NULL) 
     ctk_widget_destroy (priv->font_dialog);
@@ -664,7 +664,7 @@ ctk_font_button_set_property (GObject      *object,
                               const GValue *value,
                               GParamSpec   *pspec)
 {
-  GtkFontButton *font_button = CTK_FONT_BUTTON (object);
+  CtkFontButton *font_button = CTK_FONT_BUTTON (object);
 
   switch (param_id) 
     {
@@ -714,8 +714,8 @@ ctk_font_button_get_property (GObject    *object,
                               GValue     *value,
                               GParamSpec *pspec)
 {
-  GtkFontButton *font_button = CTK_FONT_BUTTON (object);
-  GtkFontButtonPrivate *priv = font_button->priv;
+  CtkFontButton *font_button = CTK_FONT_BUTTON (object);
+  CtkFontButtonPrivate *priv = font_button->priv;
   
   switch (param_id) 
     {
@@ -772,7 +772,7 @@ ctk_font_button_get_property (GObject    *object,
  *
  * Since: 2.4
  */
-GtkWidget *
+CtkWidget *
 ctk_font_button_new (void)
 {
   return g_object_new (CTK_TYPE_FONT_BUTTON, NULL);
@@ -788,7 +788,7 @@ ctk_font_button_new (void)
  *
  * Since: 2.4
  */
-GtkWidget *
+CtkWidget *
 ctk_font_button_new_with_font (const gchar *fontname)
 {
   return g_object_new (CTK_TYPE_FONT_BUTTON, "font", fontname, NULL);
@@ -796,7 +796,7 @@ ctk_font_button_new_with_font (const gchar *fontname)
 
 /**
  * ctk_font_button_set_title:
- * @font_button: a #GtkFontButton
+ * @font_button: a #CtkFontButton
  * @title: a string containing the font chooser dialog title
  *
  * Sets the title for the font chooser dialog.  
@@ -804,7 +804,7 @@ ctk_font_button_new_with_font (const gchar *fontname)
  * Since: 2.4
  */
 void
-ctk_font_button_set_title (GtkFontButton *font_button, 
+ctk_font_button_set_title (CtkFontButton *font_button, 
                            const gchar   *title)
 {
   gchar *old_title;
@@ -823,7 +823,7 @@ ctk_font_button_set_title (GtkFontButton *font_button,
 
 /**
  * ctk_font_button_get_title:
- * @font_button: a #GtkFontButton
+ * @font_button: a #CtkFontButton
  *
  * Retrieves the title of the font chooser dialog.
  *
@@ -832,7 +832,7 @@ ctk_font_button_set_title (GtkFontButton *font_button,
  * Since: 2.4
  */
 const gchar*
-ctk_font_button_get_title (GtkFontButton *font_button)
+ctk_font_button_get_title (CtkFontButton *font_button)
 {
   g_return_val_if_fail (CTK_IS_FONT_BUTTON (font_button), NULL);
 
@@ -841,7 +841,7 @@ ctk_font_button_get_title (GtkFontButton *font_button)
 
 /**
  * ctk_font_button_get_use_font:
- * @font_button: a #GtkFontButton
+ * @font_button: a #CtkFontButton
  *
  * Returns whether the selected font is used in the label.
  *
@@ -850,7 +850,7 @@ ctk_font_button_get_title (GtkFontButton *font_button)
  * Since: 2.4
  */
 gboolean
-ctk_font_button_get_use_font (GtkFontButton *font_button)
+ctk_font_button_get_use_font (CtkFontButton *font_button)
 {
   g_return_val_if_fail (CTK_IS_FONT_BUTTON (font_button), FALSE);
 
@@ -859,7 +859,7 @@ ctk_font_button_get_use_font (GtkFontButton *font_button)
 
 /**
  * ctk_font_button_set_use_font:
- * @font_button: a #GtkFontButton
+ * @font_button: a #CtkFontButton
  * @use_font: If %TRUE, font name will be written using font chosen.
  *
  * If @use_font is %TRUE, the font name will be written using the selected font.  
@@ -867,7 +867,7 @@ ctk_font_button_get_use_font (GtkFontButton *font_button)
  * Since: 2.4
  */
 void  
-ctk_font_button_set_use_font (GtkFontButton *font_button,
+ctk_font_button_set_use_font (CtkFontButton *font_button,
 			      gboolean       use_font)
 {
   g_return_if_fail (CTK_IS_FONT_BUTTON (font_button));
@@ -887,7 +887,7 @@ ctk_font_button_set_use_font (GtkFontButton *font_button,
 
 /**
  * ctk_font_button_get_use_size:
- * @font_button: a #GtkFontButton
+ * @font_button: a #CtkFontButton
  *
  * Returns whether the selected size is used in the label.
  *
@@ -896,7 +896,7 @@ ctk_font_button_set_use_font (GtkFontButton *font_button,
  * Since: 2.4
  */
 gboolean
-ctk_font_button_get_use_size (GtkFontButton *font_button)
+ctk_font_button_get_use_size (CtkFontButton *font_button)
 {
   g_return_val_if_fail (CTK_IS_FONT_BUTTON (font_button), FALSE);
 
@@ -905,7 +905,7 @@ ctk_font_button_get_use_size (GtkFontButton *font_button)
 
 /**
  * ctk_font_button_set_use_size:
- * @font_button: a #GtkFontButton
+ * @font_button: a #CtkFontButton
  * @use_size: If %TRUE, font name will be written using the selected size.
  *
  * If @use_size is %TRUE, the font name will be written using the selected size.
@@ -913,7 +913,7 @@ ctk_font_button_get_use_size (GtkFontButton *font_button)
  * Since: 2.4
  */
 void  
-ctk_font_button_set_use_size (GtkFontButton *font_button,
+ctk_font_button_set_use_size (CtkFontButton *font_button,
                               gboolean       use_size)
 {
   g_return_if_fail (CTK_IS_FONT_BUTTON (font_button));
@@ -931,7 +931,7 @@ ctk_font_button_set_use_size (GtkFontButton *font_button,
 
 /**
  * ctk_font_button_get_show_style:
- * @font_button: a #GtkFontButton
+ * @font_button: a #CtkFontButton
  * 
  * Returns whether the name of the font style will be shown in the label.
  * 
@@ -940,7 +940,7 @@ ctk_font_button_set_use_size (GtkFontButton *font_button,
  * Since: 2.4
  **/
 gboolean 
-ctk_font_button_get_show_style (GtkFontButton *font_button)
+ctk_font_button_get_show_style (CtkFontButton *font_button)
 {
   g_return_val_if_fail (CTK_IS_FONT_BUTTON (font_button), FALSE);
 
@@ -949,7 +949,7 @@ ctk_font_button_get_show_style (GtkFontButton *font_button)
 
 /**
  * ctk_font_button_set_show_style:
- * @font_button: a #GtkFontButton
+ * @font_button: a #CtkFontButton
  * @show_style: %TRUE if font style should be displayed in label.
  *
  * If @show_style is %TRUE, the font style will be displayed along with name of the selected font.
@@ -957,7 +957,7 @@ ctk_font_button_get_show_style (GtkFontButton *font_button)
  * Since: 2.4
  */
 void
-ctk_font_button_set_show_style (GtkFontButton *font_button,
+ctk_font_button_set_show_style (CtkFontButton *font_button,
                                 gboolean       show_style)
 {
   g_return_if_fail (CTK_IS_FONT_BUTTON (font_button));
@@ -976,7 +976,7 @@ ctk_font_button_set_show_style (GtkFontButton *font_button,
 
 /**
  * ctk_font_button_get_show_size:
- * @font_button: a #GtkFontButton
+ * @font_button: a #CtkFontButton
  * 
  * Returns whether the font size will be shown in the label.
  * 
@@ -985,7 +985,7 @@ ctk_font_button_set_show_style (GtkFontButton *font_button,
  * Since: 2.4
  **/
 gboolean 
-ctk_font_button_get_show_size (GtkFontButton *font_button)
+ctk_font_button_get_show_size (CtkFontButton *font_button)
 {
   g_return_val_if_fail (CTK_IS_FONT_BUTTON (font_button), FALSE);
 
@@ -994,7 +994,7 @@ ctk_font_button_get_show_size (GtkFontButton *font_button)
 
 /**
  * ctk_font_button_set_show_size:
- * @font_button: a #GtkFontButton
+ * @font_button: a #CtkFontButton
  * @show_size: %TRUE if font size should be displayed in dialog.
  *
  * If @show_size is %TRUE, the font size will be displayed along with the name of the selected font.
@@ -1002,7 +1002,7 @@ ctk_font_button_get_show_size (GtkFontButton *font_button)
  * Since: 2.4
  */
 void
-ctk_font_button_set_show_size (GtkFontButton *font_button,
+ctk_font_button_set_show_size (CtkFontButton *font_button,
                                gboolean       show_size)
 {
   g_return_if_fail (CTK_IS_FONT_BUTTON (font_button));
@@ -1027,7 +1027,7 @@ ctk_font_button_set_show_size (GtkFontButton *font_button,
 
 /**
  * ctk_font_button_get_font_name:
- * @font_button: a #GtkFontButton
+ * @font_button: a #CtkFontButton
  *
  * Retrieves the name of the currently selected font. This name includes
  * style and size information as well. If you want to render something
@@ -1042,7 +1042,7 @@ ctk_font_button_set_show_size (GtkFontButton *font_button,
  * Deprecated: 3.22: Use ctk_font_chooser_get_font() instead
  */
 const gchar *
-ctk_font_button_get_font_name (GtkFontButton *font_button)
+ctk_font_button_get_font_name (CtkFontButton *font_button)
 {
   g_return_val_if_fail (CTK_IS_FONT_BUTTON (font_button), NULL);
 
@@ -1050,7 +1050,7 @@ ctk_font_button_get_font_name (GtkFontButton *font_button)
 }
 
 static void
-font_button_set_font_name (GtkFontButton *font_button,
+font_button_set_font_name (CtkFontButton *font_button,
                            const char    *fontname)
 {
   PangoFontDescription *font_desc;
@@ -1061,7 +1061,7 @@ font_button_set_font_name (GtkFontButton *font_button,
 
 /**
  * ctk_font_button_set_font_name:
- * @font_button: a #GtkFontButton
+ * @font_button: a #CtkFontButton
  * @fontname: Name of font to display in font chooser dialog
  *
  * Sets or updates the currently-displayed font in font picker dialog.
@@ -1072,7 +1072,7 @@ font_button_set_font_name (GtkFontButton *font_button,
  * Deprecated: 3.22: Use ctk_font_chooser_set_font() instead
  */
 gboolean 
-ctk_font_button_set_font_name (GtkFontButton *font_button,
+ctk_font_button_set_font_name (CtkFontButton *font_button,
                                const gchar    *fontname)
 {
   g_return_val_if_fail (CTK_IS_FONT_BUTTON (font_button), FALSE);
@@ -1084,15 +1084,15 @@ ctk_font_button_set_font_name (GtkFontButton *font_button,
 }
 
 static void
-ctk_font_button_clicked (GtkButton *button)
+ctk_font_button_clicked (CtkButton *button)
 {
-  GtkFontChooser *font_dialog;
-  GtkFontButton  *font_button = CTK_FONT_BUTTON (button);
-  GtkFontButtonPrivate *priv = font_button->priv;
+  CtkFontChooser *font_dialog;
+  CtkFontButton  *font_button = CTK_FONT_BUTTON (button);
+  CtkFontButtonPrivate *priv = font_button->priv;
   
   if (!font_button->priv->font_dialog) 
     {
-      GtkWidget *parent;
+      CtkWidget *parent;
       
       parent = ctk_widget_get_toplevel (CTK_WIDGET (font_button));
 
@@ -1159,13 +1159,13 @@ ctk_font_button_clicked (GtkButton *button)
 
 
 static void
-response_cb (GtkDialog *dialog,
+response_cb (CtkDialog *dialog,
              gint       response_id,
              gpointer   data)
 {
-  GtkFontButton *font_button = CTK_FONT_BUTTON (data);
-  GtkFontButtonPrivate *priv = font_button->priv;
-  GtkFontChooser *font_chooser;
+  CtkFontButton *font_button = CTK_FONT_BUTTON (data);
+  CtkFontButtonPrivate *priv = font_button->priv;
+  CtkFontChooser *font_chooser;
   GObject *object;
 
   ctk_widget_hide (font_button->priv->font_dialog);
@@ -1209,10 +1209,10 @@ response_cb (GtkDialog *dialog,
 }
 
 static void
-dialog_destroy (GtkWidget *widget,
+dialog_destroy (CtkWidget *widget,
                 gpointer   data)
 {
-  GtkFontButton *font_button = CTK_FONT_BUTTON (data);
+  CtkFontButton *font_button = CTK_FONT_BUTTON (data);
     
   /* Dialog will get destroyed so reference is not valid now */
   font_button->priv->font_dialog = NULL;
@@ -1340,10 +1340,10 @@ pango_font_description_to_css (PangoFontDescription *desc)
 }
 
 static void
-ctk_font_button_label_use_font (GtkFontButton *font_button)
+ctk_font_button_label_use_font (CtkFontButton *font_button)
 {
-  GtkFontButtonPrivate *priv = font_button->priv;
-  GtkStyleContext *context;
+  CtkFontButtonPrivate *priv = font_button->priv;
+  CtkStyleContext *context;
 
   context = ctk_widget_get_style_context (priv->font_label);
 
@@ -1382,9 +1382,9 @@ ctk_font_button_label_use_font (GtkFontButton *font_button)
 }
 
 static void
-ctk_font_button_update_font_info (GtkFontButton *font_button)
+ctk_font_button_update_font_info (CtkFontButton *font_button)
 {
-  GtkFontButtonPrivate *priv = font_button->priv;
+  CtkFontButtonPrivate *priv = font_button->priv;
   const gchar *fam_name;
   const gchar *face_name;
   gchar *family_style;
@@ -1422,10 +1422,10 @@ ctk_font_button_update_font_info (GtkFontButton *font_button)
 } 
 
 static void
-ctk_font_button_set_level (GtkFontButton       *button,
-                           GtkFontChooserLevel  level)
+ctk_font_button_set_level (CtkFontButton       *button,
+                           CtkFontChooserLevel  level)
 {
-  GtkFontButtonPrivate *priv = button->priv;
+  CtkFontButtonPrivate *priv = button->priv;
 
   if (priv->level == level)
     return;
@@ -1444,10 +1444,10 @@ ctk_font_button_set_level (GtkFontButton       *button,
 }
 
 static void
-ctk_font_button_set_language (GtkFontButton *button,
+ctk_font_button_set_language (CtkFontButton *button,
                               const char    *language)
 {
-  GtkFontButtonPrivate *priv = button->priv;
+  CtkFontButtonPrivate *priv = button->priv;
 
   priv->language = pango_language_from_string (language);
 

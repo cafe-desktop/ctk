@@ -31,17 +31,17 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_ORIENTABLE             (ctk_orientable_get_type ())
-#define CTK_ORIENTABLE(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ORIENTABLE, GtkOrientable))
-#define CTK_ORIENTABLE_CLASS(vtable)    (G_TYPE_CHECK_CLASS_CAST ((vtable), CTK_TYPE_ORIENTABLE, GtkOrientableIface))
+#define CTK_ORIENTABLE(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ORIENTABLE, CtkOrientable))
+#define CTK_ORIENTABLE_CLASS(vtable)    (G_TYPE_CHECK_CLASS_CAST ((vtable), CTK_TYPE_ORIENTABLE, CtkOrientableIface))
 #define CTK_IS_ORIENTABLE(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_ORIENTABLE))
 #define CTK_IS_ORIENTABLE_CLASS(vtable) (G_TYPE_CHECK_CLASS_TYPE ((vtable), CTK_TYPE_ORIENTABLE))
-#define CTK_ORIENTABLE_GET_IFACE(inst)  (G_TYPE_INSTANCE_GET_INTERFACE ((inst), CTK_TYPE_ORIENTABLE, GtkOrientableIface))
+#define CTK_ORIENTABLE_GET_IFACE(inst)  (G_TYPE_INSTANCE_GET_INTERFACE ((inst), CTK_TYPE_ORIENTABLE, CtkOrientableIface))
 
 
-typedef struct _GtkOrientable       GtkOrientable;         /* Dummy typedef */
-typedef struct _GtkOrientableIface  GtkOrientableIface;
+typedef struct _CtkOrientable       CtkOrientable;         /* Dummy typedef */
+typedef struct _CtkOrientableIface  CtkOrientableIface;
 
-struct _GtkOrientableIface
+struct _CtkOrientableIface
 {
   GTypeInterface base_iface;
 };
@@ -51,10 +51,10 @@ GDK_AVAILABLE_IN_ALL
 GType          ctk_orientable_get_type        (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-void           ctk_orientable_set_orientation (GtkOrientable  *orientable,
-                                               GtkOrientation  orientation);
+void           ctk_orientable_set_orientation (CtkOrientable  *orientable,
+                                               CtkOrientation  orientation);
 GDK_AVAILABLE_IN_ALL
-GtkOrientation ctk_orientable_get_orientation (GtkOrientable  *orientable);
+CtkOrientation ctk_orientable_get_orientation (CtkOrientable  *orientable);
 
 G_END_DECLS
 

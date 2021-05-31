@@ -23,7 +23,7 @@
 #include "ctkstylecontextprivate.h"
 
 cairo_operator_t
-_ctk_css_blend_mode_get_operator (GtkCssBlendMode mode)
+_ctk_css_blend_mode_get_operator (CtkCssBlendMode mode)
 {
   switch (mode)
     {
@@ -62,8 +62,8 @@ _ctk_css_blend_mode_get_operator (GtkCssBlendMode mode)
     }
 }
 
-GtkCssChange
-_ctk_css_change_for_sibling (GtkCssChange match)
+CtkCssChange
+_ctk_css_change_for_sibling (CtkCssChange match)
 {
 #define BASE_STATES ( CTK_CSS_CHANGE_CLASS \
                     | CTK_CSS_CHANGE_NAME \
@@ -87,8 +87,8 @@ _ctk_css_change_for_sibling (GtkCssChange match)
 #undef SIBLING_SHIFT
 }
 
-GtkCssChange
-_ctk_css_change_for_child (GtkCssChange match)
+CtkCssChange
+_ctk_css_change_for_child (CtkCssChange match)
 {
 #define BASE_STATES ( CTK_CSS_CHANGE_CLASS \
                     | CTK_CSS_CHANGE_NAME \
@@ -116,11 +116,11 @@ _ctk_css_change_for_child (GtkCssChange match)
 }
 
 void
-ctk_css_change_print (GtkCssChange  change,
+ctk_css_change_print (CtkCssChange  change,
                       GString      *string)
 {
   const struct {
-    GtkCssChange flags;
+    CtkCssChange flags;
     const char *name;
   } names[] = {
     { CTK_CSS_CHANGE_CLASS, "class" },
@@ -178,8 +178,8 @@ ctk_css_change_print (GtkCssChange  change,
     }
 }
 
-GtkCssDimension
-ctk_css_unit_get_dimension (GtkCssUnit unit)
+CtkCssDimension
+ctk_css_unit_get_dimension (CtkCssUnit unit)
 {
   switch (unit)
     {
@@ -217,7 +217,7 @@ ctk_css_unit_get_dimension (GtkCssUnit unit)
 }
 
 char *
-ctk_css_change_to_string (GtkCssChange change)
+ctk_css_change_to_string (CtkCssChange change)
 {
   GString *string = g_string_new (NULL);
 

@@ -47,22 +47,22 @@
 /**
  * SECTION:ctktooltip
  * @Short_description: Add tips to your widgets
- * @Title: GtkTooltip
+ * @Title: CtkTooltip
  *
  * Basic tooltips can be realized simply by using ctk_widget_set_tooltip_text()
  * or ctk_widget_set_tooltip_markup() without any explicit tooltip object.
  *
  * When you need a tooltip with a little more fancy contents, like adding an
- * image, or you want the tooltip to have different contents per #GtkTreeView
+ * image, or you want the tooltip to have different contents per #CtkTreeView
  * row or cell, you will have to do a little more work:
  * 
- * - Set the #GtkWidget:has-tooltip property to %TRUE, this will make GTK+
+ * - Set the #CtkWidget:has-tooltip property to %TRUE, this will make GTK+
  *   monitor the widget for motion and related events which are needed to
  *   determine when and where to show a tooltip.
  *
- * - Connect to the #GtkWidget::query-tooltip signal.  This signal will be
+ * - Connect to the #CtkWidget::query-tooltip signal.  This signal will be
  *   emitted when a tooltip is supposed to be shown. One of the arguments passed
- *   to the signal handler is a GtkTooltip object. This is the object that we
+ *   to the signal handler is a CtkTooltip object. This is the object that we
  *   are about to display as a tooltip, and can be manipulated in your callback
  *   using functions like ctk_tooltip_set_icon(). There are functions for setting
  *   the tooltip’s markup, setting an image from a named icon, or even putting in
@@ -72,14 +72,14 @@
  *   show. If you return %FALSE, it will not be shown.
  *
  * In the probably rare case where you want to have even more control over the
- * tooltip that is about to be shown, you can set your own #GtkWindow which
+ * tooltip that is about to be shown, you can set your own #CtkWindow which
  * will be used as tooltip window.  This works as follows:
  * 
- * - Set #GtkWidget:has-tooltip and connect to #GtkWidget::query-tooltip as before.
- *   Use ctk_widget_set_tooltip_window() to set a #GtkWindow created by you as
+ * - Set #CtkWidget:has-tooltip and connect to #CtkWidget::query-tooltip as before.
+ *   Use ctk_widget_set_tooltip_window() to set a #CtkWindow created by you as
  *   tooltip window.
  *
- * - In the #GtkWidget::query-tooltip callback you can access your window using
+ * - In the #CtkWidget::query-tooltip callback you can access your window using
  *   ctk_widget_get_tooltip_window() and manipulate as you wish. The semantics of
  *   the return value are exactly as before, return %TRUE to show the window,
  *   %FALSE to not show it.
@@ -90,26 +90,26 @@
 #define BROWSE_TIMEOUT         60
 #define BROWSE_DISABLE_TIMEOUT 500
 
-#define CTK_TOOLTIP_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TOOLTIP, GtkTooltipClass))
+#define CTK_TOOLTIP_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TOOLTIP, CtkTooltipClass))
 #define CTK_IS_TOOLTIP_CLASS(klass)      (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TOOLTIP))
-#define CTK_TOOLTIP_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TOOLTIP, GtkTooltipClass))
+#define CTK_TOOLTIP_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TOOLTIP, CtkTooltipClass))
 
-typedef struct _GtkTooltipClass   GtkTooltipClass;
+typedef struct _CtkTooltipClass   CtkTooltipClass;
 
-struct _GtkTooltip
+struct _CtkTooltip
 {
   GObject parent_instance;
 
-  GtkWidget *window;
-  GtkWidget *box;
-  GtkWidget *image;
-  GtkWidget *label;
-  GtkWidget *custom_widget;
+  CtkWidget *window;
+  CtkWidget *box;
+  CtkWidget *image;
+  CtkWidget *label;
+  CtkWidget *custom_widget;
 
-  GtkWindow *current_window;
-  GtkWidget *keyboard_widget;
+  CtkWindow *current_window;
+  CtkWidget *keyboard_widget;
 
-  GtkWidget *tooltip_widget;
+  CtkWidget *tooltip_widget;
 
   GdkWindow *last_window;
 
@@ -124,7 +124,7 @@ struct _GtkTooltip
   guint custom_was_reset : 1;
 };
 
-struct _GtkTooltipClass
+struct _CtkTooltipClass
 {
   GObjectClass parent_class;
 };
@@ -132,16 +132,16 @@ struct _GtkTooltipClass
 #define CTK_TOOLTIP_VISIBLE(tooltip) ((tooltip)->current_window && ctk_widget_get_visible (CTK_WIDGET((tooltip)->current_window)))
 
 
-static void       ctk_tooltip_class_init           (GtkTooltipClass *klass);
-static void       ctk_tooltip_init                 (GtkTooltip      *tooltip);
+static void       ctk_tooltip_class_init           (CtkTooltipClass *klass);
+static void       ctk_tooltip_init                 (CtkTooltip      *tooltip);
 static void       ctk_tooltip_dispose              (GObject         *object);
 
-static void       ctk_tooltip_window_hide          (GtkWidget       *widget,
+static void       ctk_tooltip_window_hide          (CtkWidget       *widget,
 						    gpointer         user_data);
 static void       ctk_tooltip_display_closed       (GdkDisplay      *display,
 						    gboolean         was_error,
-						    GtkTooltip      *tooltip);
-static void       ctk_tooltip_set_last_window      (GtkTooltip      *tooltip,
+						    CtkTooltip      *tooltip);
+static void       ctk_tooltip_set_last_window      (CtkTooltip      *tooltip,
 						    GdkWindow       *window);
 
 static void       ctk_tooltip_handle_event_internal (GdkEvent        *event);
@@ -157,10 +157,10 @@ static inline GQuark tooltip_quark (void)
 
 #define quark_current_tooltip tooltip_quark()
 
-G_DEFINE_TYPE (GtkTooltip, ctk_tooltip, G_TYPE_OBJECT);
+G_DEFINE_TYPE (CtkTooltip, ctk_tooltip, G_TYPE_OBJECT);
 
 static void
-ctk_tooltip_class_init (GtkTooltipClass *klass)
+ctk_tooltip_class_init (CtkTooltipClass *klass)
 {
   GObjectClass *object_class;
 
@@ -170,7 +170,7 @@ ctk_tooltip_class_init (GtkTooltipClass *klass)
 }
 
 static void
-ctk_tooltip_init (GtkTooltip *tooltip)
+ctk_tooltip_init (CtkTooltip *tooltip)
 {
   tooltip->timeout_id = 0;
   tooltip->browse_mode_timeout_id = 0;
@@ -194,7 +194,7 @@ ctk_tooltip_init (GtkTooltip *tooltip)
 static void
 ctk_tooltip_dispose (GObject *object)
 {
-  GtkTooltip *tooltip = CTK_TOOLTIP (object);
+  CtkTooltip *tooltip = CTK_TOOLTIP (object);
 
   if (tooltip->timeout_id)
     {
@@ -230,7 +230,7 @@ ctk_tooltip_dispose (GObject *object)
 
 /**
  * ctk_tooltip_set_markup:
- * @tooltip: a #GtkTooltip
+ * @tooltip: a #CtkTooltip
  * @markup: (allow-none): a markup string (see [Pango markup format][PangoMarkupFormat]) or %NULL
  *
  * Sets the text of the tooltip to be @markup, which is marked up
@@ -240,7 +240,7 @@ ctk_tooltip_dispose (GObject *object)
  * Since: 2.12
  */
 void
-ctk_tooltip_set_markup (GtkTooltip  *tooltip,
+ctk_tooltip_set_markup (CtkTooltip  *tooltip,
 			const gchar *markup)
 {
   g_return_if_fail (CTK_IS_TOOLTIP (tooltip));
@@ -250,7 +250,7 @@ ctk_tooltip_set_markup (GtkTooltip  *tooltip,
 
 /**
  * ctk_tooltip_set_text:
- * @tooltip: a #GtkTooltip
+ * @tooltip: a #CtkTooltip
  * @text: (allow-none): a text string or %NULL
  *
  * Sets the text of the tooltip to be @text. If @text is %NULL, the label
@@ -259,7 +259,7 @@ ctk_tooltip_set_markup (GtkTooltip  *tooltip,
  * Since: 2.12
  */
 void
-ctk_tooltip_set_text (GtkTooltip  *tooltip,
+ctk_tooltip_set_text (CtkTooltip  *tooltip,
                       const gchar *text)
 {
   g_return_if_fail (CTK_IS_TOOLTIP (tooltip));
@@ -269,7 +269,7 @@ ctk_tooltip_set_text (GtkTooltip  *tooltip,
 
 /**
  * ctk_tooltip_set_icon:
- * @tooltip: a #GtkTooltip
+ * @tooltip: a #CtkTooltip
  * @pixbuf: (allow-none): a #GdkPixbuf, or %NULL
  *
  * Sets the icon of the tooltip (which is in front of the text) to be
@@ -278,7 +278,7 @@ ctk_tooltip_set_text (GtkTooltip  *tooltip,
  * Since: 2.12
  */
 void
-ctk_tooltip_set_icon (GtkTooltip *tooltip,
+ctk_tooltip_set_icon (CtkTooltip *tooltip,
 		      GdkPixbuf  *pixbuf)
 {
   g_return_if_fail (CTK_IS_TOOLTIP (tooltip));
@@ -289,9 +289,9 @@ ctk_tooltip_set_icon (GtkTooltip *tooltip,
 
 /**
  * ctk_tooltip_set_icon_from_stock:
- * @tooltip: a #GtkTooltip
+ * @tooltip: a #CtkTooltip
  * @stock_id: (allow-none): a stock id, or %NULL
- * @size: (type int): a stock icon size (#GtkIconSize)
+ * @size: (type int): a stock icon size (#CtkIconSize)
  *
  * Sets the icon of the tooltip (which is in front of the text) to be
  * the stock item indicated by @stock_id with the size indicated
@@ -302,9 +302,9 @@ ctk_tooltip_set_icon (GtkTooltip *tooltip,
  * Deprecated: 3.10: Use ctk_tooltip_set_icon_from_icon_name() instead.
  */
 void
-ctk_tooltip_set_icon_from_stock (GtkTooltip  *tooltip,
+ctk_tooltip_set_icon_from_stock (CtkTooltip  *tooltip,
 				 const gchar *stock_id,
-				 GtkIconSize  size)
+				 CtkIconSize  size)
 {
   g_return_if_fail (CTK_IS_TOOLTIP (tooltip));
 
@@ -315,9 +315,9 @@ ctk_tooltip_set_icon_from_stock (GtkTooltip  *tooltip,
 
 /**
  * ctk_tooltip_set_icon_from_icon_name:
- * @tooltip: a #GtkTooltip
+ * @tooltip: a #CtkTooltip
  * @icon_name: (allow-none): an icon name, or %NULL
- * @size: (type int): a stock icon size (#GtkIconSize)
+ * @size: (type int): a stock icon size (#CtkIconSize)
  *
  * Sets the icon of the tooltip (which is in front of the text) to be
  * the icon indicated by @icon_name with the size indicated
@@ -326,9 +326,9 @@ ctk_tooltip_set_icon_from_stock (GtkTooltip  *tooltip,
  * Since: 2.14
  */
 void
-ctk_tooltip_set_icon_from_icon_name (GtkTooltip  *tooltip,
+ctk_tooltip_set_icon_from_icon_name (CtkTooltip  *tooltip,
 				     const gchar *icon_name,
-				     GtkIconSize  size)
+				     CtkIconSize  size)
 {
   g_return_if_fail (CTK_IS_TOOLTIP (tooltip));
 
@@ -339,9 +339,9 @@ ctk_tooltip_set_icon_from_icon_name (GtkTooltip  *tooltip,
 
 /**
  * ctk_tooltip_set_icon_from_gicon:
- * @tooltip: a #GtkTooltip
+ * @tooltip: a #CtkTooltip
  * @gicon: (allow-none): a #GIcon representing the icon, or %NULL
- * @size: (type int): a stock icon size (#GtkIconSize)
+ * @size: (type int): a stock icon size (#CtkIconSize)
  *
  * Sets the icon of the tooltip (which is in front of the text)
  * to be the icon indicated by @gicon with the size indicated
@@ -350,9 +350,9 @@ ctk_tooltip_set_icon_from_icon_name (GtkTooltip  *tooltip,
  * Since: 2.20
  */
 void
-ctk_tooltip_set_icon_from_gicon (GtkTooltip  *tooltip,
+ctk_tooltip_set_icon_from_gicon (CtkTooltip  *tooltip,
 				 GIcon       *gicon,
-				 GtkIconSize  size)
+				 CtkIconSize  size)
 {
   g_return_if_fail (CTK_IS_TOOLTIP (tooltip));
 
@@ -363,13 +363,13 @@ ctk_tooltip_set_icon_from_gicon (GtkTooltip  *tooltip,
 
 /**
  * ctk_tooltip_set_custom:
- * @tooltip: a #GtkTooltip
- * @custom_widget: (allow-none): a #GtkWidget, or %NULL to unset the old custom widget.
+ * @tooltip: a #CtkTooltip
+ * @custom_widget: (allow-none): a #CtkWidget, or %NULL to unset the old custom widget.
  *
  * Replaces the widget packed into the tooltip with
  * @custom_widget. @custom_widget does not get destroyed when the tooltip goes
  * away.
- * By default a box with a #GtkImage and #GtkLabel is embedded in 
+ * By default a box with a #CtkImage and #CtkLabel is embedded in 
  * the tooltip, which can be configured using ctk_tooltip_set_markup() 
  * and ctk_tooltip_set_icon().
 
@@ -377,8 +377,8 @@ ctk_tooltip_set_icon_from_gicon (GtkTooltip  *tooltip,
  * Since: 2.12
  */
 void
-ctk_tooltip_set_custom (GtkTooltip *tooltip,
-			GtkWidget  *custom_widget)
+ctk_tooltip_set_custom (CtkTooltip *tooltip,
+			CtkWidget  *custom_widget)
 {
   g_return_if_fail (CTK_IS_TOOLTIP (tooltip));
   g_return_if_fail (custom_widget == NULL || CTK_IS_WIDGET (custom_widget));
@@ -393,22 +393,22 @@ ctk_tooltip_set_custom (GtkTooltip *tooltip,
 
 /**
  * ctk_tooltip_set_tip_area:
- * @tooltip: a #GtkTooltip
+ * @tooltip: a #CtkTooltip
  * @rect: a #GdkRectangle
  *
  * Sets the area of the widget, where the contents of this tooltip apply,
  * to be @rect (in widget coordinates).  This is especially useful for
- * properly setting tooltips on #GtkTreeView rows and cells, #GtkIconViews,
+ * properly setting tooltips on #CtkTreeView rows and cells, #CtkIconViews,
  * etc.
  *
- * For setting tooltips on #GtkTreeView, please refer to the convenience
+ * For setting tooltips on #CtkTreeView, please refer to the convenience
  * functions for this: ctk_tree_view_set_tooltip_row() and
  * ctk_tree_view_set_tooltip_cell().
  *
  * Since: 2.12
  */
 void
-ctk_tooltip_set_tip_area (GtkTooltip         *tooltip,
+ctk_tooltip_set_tip_area (CtkTooltip         *tooltip,
 			  const GdkRectangle *rect)
 {
   g_return_if_fail (CTK_IS_TOOLTIP (tooltip));
@@ -463,7 +463,7 @@ ctk_tooltip_trigger_tooltip_query (GdkDisplay *display)
 /* private functions */
 
 static void
-ctk_tooltip_reset (GtkTooltip *tooltip)
+ctk_tooltip_reset (CtkTooltip *tooltip)
 {
   ctk_tooltip_set_markup (tooltip, NULL);
   ctk_tooltip_set_icon (tooltip, NULL);
@@ -476,10 +476,10 @@ ctk_tooltip_reset (GtkTooltip *tooltip)
 }
 
 static void
-ctk_tooltip_window_hide (GtkWidget *widget,
+ctk_tooltip_window_hide (CtkWidget *widget,
 			 gpointer   user_data)
 {
-  GtkTooltip *tooltip = CTK_TOOLTIP (user_data);
+  CtkTooltip *tooltip = CTK_TOOLTIP (user_data);
 
   ctk_tooltip_set_custom (tooltip, NULL);
 }
@@ -488,15 +488,15 @@ ctk_tooltip_window_hide (GtkWidget *widget,
 
 struct ChildLocation
 {
-  GtkWidget *child;
-  GtkWidget *container;
+  CtkWidget *child;
+  CtkWidget *container;
 
   gint x;
   gint y;
 };
 
 static void
-prepend_and_ref_widget (GtkWidget *widget,
+prepend_and_ref_widget (CtkWidget *widget,
                         gpointer   data)
 {
   GSList **slist_p = data;
@@ -505,10 +505,10 @@ prepend_and_ref_widget (GtkWidget *widget,
 }
 
 static void
-child_location_foreach (GtkWidget *child,
+child_location_foreach (CtkWidget *child,
 			gpointer   data)
 {
-  GtkAllocation child_allocation;
+  CtkAllocation child_allocation;
   gint x, y;
   struct ChildLocation *child_loc = data;
 
@@ -572,13 +572,13 @@ child_location_foreach (GtkWidget *child,
  * to allocation relative (dest_x, dest_y) of dest_widget.
  */
 static void
-window_to_alloc (GtkWidget *dest_widget,
+window_to_alloc (CtkWidget *dest_widget,
 		 gint       src_x,
 		 gint       src_y,
 		 gint      *dest_x,
 		 gint      *dest_y)
 {
-  GtkAllocation allocation;
+  CtkAllocation allocation;
 
   ctk_widget_get_allocation (dest_widget, &allocation);
 
@@ -611,14 +611,14 @@ window_to_alloc (GtkWidget *dest_widget,
 /* Translates coordinates from window relative (x, y) to
  * allocation relative (x, y) of the returned widget.
  */
-GtkWidget *
+CtkWidget *
 _ctk_widget_find_at_coords (GdkWindow *window,
                             gint       window_x,
                             gint       window_y,
                             gint      *widget_x,
                             gint      *widget_y)
 {
-  GtkWidget *event_widget;
+  CtkWidget *event_widget;
   struct ChildLocation child_loc = { NULL, NULL, 0, 0 };
 
   g_return_val_if_fail (GDK_IS_WINDOW (window), NULL);
@@ -666,7 +666,7 @@ _ctk_widget_find_at_coords (GdkWindow *window,
 
   if (CTK_IS_CONTAINER (event_widget))
     {
-      GtkWidget *container = event_widget;
+      CtkWidget *container = event_widget;
 
       child_loc.container = event_widget;
       child_loc.child = NULL;
@@ -701,15 +701,15 @@ _ctk_widget_find_at_coords (GdkWindow *window,
 /* Ignores (x, y) on input, translates event coordinates to
  * allocation relative (x, y) of the returned widget.
  */
-static GtkWidget *
+static CtkWidget *
 find_topmost_widget_coords_from_event (GdkEvent *event,
 				       gint     *x,
 				       gint     *y)
 {
-  GtkAllocation allocation;
+  CtkAllocation allocation;
   gint tx, ty;
   gdouble dx, dy;
-  GtkWidget *tmp;
+  CtkWidget *tmp;
 
   gdk_event_get_coords (event, &dx, &dy);
 
@@ -725,7 +725,7 @@ find_topmost_widget_coords_from_event (GdkEvent *event,
   allocation.y = 0;
   if (CTK_IS_WINDOW (tmp))
     {
-      GtkBorder border;
+      CtkBorder border;
       _ctk_window_get_shadow_width (CTK_WINDOW (tmp), &border);
       allocation.x = border.left;
       allocation.y = border.top;
@@ -748,7 +748,7 @@ find_topmost_widget_coords_from_event (GdkEvent *event,
 static gint
 tooltip_browse_mode_expired (gpointer data)
 {
-  GtkTooltip *tooltip;
+  CtkTooltip *tooltip;
   GdkDisplay *display;
 
   tooltip = CTK_TOOLTIP (data);
@@ -772,7 +772,7 @@ tooltip_browse_mode_expired (gpointer data)
 static void
 ctk_tooltip_display_closed (GdkDisplay *display,
 			    gboolean    was_error,
-			    GtkTooltip *tooltip)
+			    CtkTooltip *tooltip)
 {
   if (tooltip->timeout_id)
     {
@@ -784,10 +784,10 @@ ctk_tooltip_display_closed (GdkDisplay *display,
 }
 
 static void
-ctk_tooltip_set_last_window (GtkTooltip *tooltip,
+ctk_tooltip_set_last_window (CtkTooltip *tooltip,
 			     GdkWindow  *window)
 {
-  GtkWidget *window_widget = NULL;
+  CtkWidget *window_widget = NULL;
 
   if (tooltip->last_window == window)
     return;
@@ -819,8 +819,8 @@ ctk_tooltip_set_last_window (GtkTooltip *tooltip,
 }
 
 static gboolean
-ctk_tooltip_run_requery (GtkWidget  **widget,
-			 GtkTooltip  *tooltip,
+ctk_tooltip_run_requery (CtkWidget  **widget,
+			 CtkTooltip  *tooltip,
 			 gint        *x,
 			 gint        *y)
 {
@@ -838,7 +838,7 @@ ctk_tooltip_run_requery (GtkWidget  **widget,
 
       if (!return_value)
         {
-	  GtkWidget *parent = ctk_widget_get_parent (*widget);
+	  CtkWidget *parent = ctk_widget_get_parent (*widget);
 
 	  if (parent)
 	    ctk_widget_translate_coordinates (*widget, parent, *x, *y, x, y);
@@ -860,18 +860,18 @@ ctk_tooltip_run_requery (GtkWidget  **widget,
 }
 
 static void
-ctk_tooltip_position (GtkTooltip *tooltip,
+ctk_tooltip_position (CtkTooltip *tooltip,
 		      GdkDisplay *display,
-		      GtkWidget  *new_tooltip_widget,
+		      CtkWidget  *new_tooltip_widget,
                       GdkDevice  *device)
 {
   GdkScreen *screen;
-  GtkSettings *settings;
+  CtkSettings *settings;
   GdkRectangle anchor_rect;
   GdkWindow *window;
   GdkWindow *widget_window;
   GdkWindow *effective_toplevel;
-  GtkWidget *toplevel;
+  CtkWidget *toplevel;
   int rect_anchor_dx = 0;
   int cursor_size;
   int anchor_rect_padding;
@@ -974,8 +974,8 @@ ctk_tooltip_show_tooltip (GdkDisplay *display)
   GdkScreen *screen;
   GdkDevice *device;
   GdkWindow *window;
-  GtkWidget *tooltip_widget;
-  GtkTooltip *tooltip;
+  CtkWidget *tooltip_widget;
+  CtkTooltip *tooltip;
   gboolean return_value = FALSE;
 
   tooltip = g_object_get_qdata (G_OBJECT (display), quark_current_tooltip);
@@ -1048,7 +1048,7 @@ ctk_tooltip_show_tooltip (GdkDisplay *display)
 }
 
 static void
-ctk_tooltip_hide_tooltip (GtkTooltip *tooltip)
+ctk_tooltip_hide_tooltip (CtkTooltip *tooltip)
 {
   if (!tooltip)
     return;
@@ -1101,7 +1101,7 @@ static gint
 tooltip_popup_timeout (gpointer data)
 {
   GdkDisplay *display;
-  GtkTooltip *tooltip;
+  CtkTooltip *tooltip;
 
   display = GDK_DISPLAY (data);
   tooltip = g_object_get_qdata (G_OBJECT (display), quark_current_tooltip);
@@ -1123,7 +1123,7 @@ static void
 ctk_tooltip_start_delay (GdkDisplay *display)
 {
   guint timeout;
-  GtkTooltip *tooltip;
+  CtkTooltip *tooltip;
 
   tooltip = g_object_get_qdata (G_OBJECT (display), quark_current_tooltip);
 
@@ -1146,12 +1146,12 @@ ctk_tooltip_start_delay (GdkDisplay *display)
 }
 
 void
-_ctk_tooltip_focus_in (GtkWidget *widget)
+_ctk_tooltip_focus_in (CtkWidget *widget)
 {
   gint x, y;
   gboolean return_value = FALSE;
   GdkDisplay *display;
-  GtkTooltip *tooltip;
+  CtkTooltip *tooltip;
   GdkDevice *device;
 
   /* Get current tooltip for this display */
@@ -1200,10 +1200,10 @@ _ctk_tooltip_focus_in (GtkWidget *widget)
 }
 
 void
-_ctk_tooltip_focus_out (GtkWidget *widget)
+_ctk_tooltip_focus_out (CtkWidget *widget)
 {
   GdkDisplay *display;
-  GtkTooltip *tooltip;
+  CtkTooltip *tooltip;
 
   /* Get current tooltip for this display */
   display = ctk_widget_get_display (widget);
@@ -1222,10 +1222,10 @@ _ctk_tooltip_focus_out (GtkWidget *widget)
 }
 
 void
-_ctk_tooltip_toggle_keyboard_mode (GtkWidget *widget)
+_ctk_tooltip_toggle_keyboard_mode (CtkWidget *widget)
 {
   GdkDisplay *display;
-  GtkTooltip *tooltip;
+  CtkTooltip *tooltip;
 
   display = ctk_widget_get_display (widget);
   tooltip = g_object_get_qdata (G_OBJECT (display), quark_current_tooltip);
@@ -1262,10 +1262,10 @@ _ctk_tooltip_toggle_keyboard_mode (GtkWidget *widget)
 }
 
 void
-_ctk_tooltip_hide (GtkWidget *widget)
+_ctk_tooltip_hide (CtkWidget *widget)
 {
   GdkDisplay *display;
-  GtkTooltip *tooltip;
+  CtkTooltip *tooltip;
 
   display = ctk_widget_get_display (widget);
   tooltip = g_object_get_qdata (G_OBJECT (display), quark_current_tooltip);
@@ -1280,7 +1280,7 @@ _ctk_tooltip_hide (GtkWidget *widget)
 void
 _ctk_tooltip_hide_in_display (GdkDisplay *display)
 {
-  GtkTooltip *tooltip;
+  CtkTooltip *tooltip;
 
   if (!display)
     return;
@@ -1325,9 +1325,9 @@ static void
 ctk_tooltip_handle_event_internal (GdkEvent *event)
 {
   gint x, y;
-  GtkWidget *has_tooltip_widget;
+  CtkWidget *has_tooltip_widget;
   GdkDisplay *display;
-  GtkTooltip *current_tooltip;
+  CtkTooltip *current_tooltip;
 
   /* Returns coordinates relative to has_tooltip_widget's allocation. */
   has_tooltip_widget = find_topmost_widget_coords_from_event (event, &x, &y);

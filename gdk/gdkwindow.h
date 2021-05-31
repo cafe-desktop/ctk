@@ -62,10 +62,10 @@ typedef enum
  * GdkWindowType:
  * @GDK_WINDOW_ROOT: root window; this window has no parent, covers the entire
  *  screen, and is created by the window system
- * @GDK_WINDOW_TOPLEVEL: toplevel window (used to implement #GtkWindow)
- * @GDK_WINDOW_CHILD: child window (used to implement e.g. #GtkEntry)
+ * @GDK_WINDOW_TOPLEVEL: toplevel window (used to implement #CtkWindow)
+ * @GDK_WINDOW_CHILD: child window (used to implement e.g. #CtkEntry)
  * @GDK_WINDOW_TEMP: override redirect temporary window (used to implement
- *  #GtkMenu)
+ *  #CtkMenu)
  * @GDK_WINDOW_FOREIGN: foreign window (see gdk_window_foreign_new())
  * @GDK_WINDOW_OFFSCREEN: offscreen window (see
  *  [Offscreen Windows][OFFSCREEN-WINDOWS]). Since 2.18
@@ -136,7 +136,7 @@ typedef enum
  * attention to. Also, the presence/absence of @GDK_HINT_POS,
  * @GDK_HINT_USER_POS, and @GDK_HINT_USER_SIZE is significant, though they don't
  * directly refer to #GdkGeometry fields. @GDK_HINT_USER_POS will be set
- * automatically by #GtkWindow if you call ctk_window_move().
+ * automatically by #CtkWindow if you call ctk_window_move().
  * @GDK_HINT_USER_POS and @GDK_HINT_USER_SIZE should be set if the user
  * specified a size/position using a --geometry command-line argument;
  * ctk_window_parse_geometry() automatically sets these flags.
@@ -370,17 +370,17 @@ struct _GdkWindowAttr
 /**
  * GdkGeometry:
  * @min_width: minimum width of window (or -1 to use requisition, with
- *  #GtkWindow only)
+ *  #CtkWindow only)
  * @min_height: minimum height of window (or -1 to use requisition, with
- *  #GtkWindow only)
+ *  #CtkWindow only)
  * @max_width: maximum width of window (or -1 to use requisition, with
- *  #GtkWindow only)
+ *  #CtkWindow only)
  * @max_height: maximum height of window (or -1 to use requisition, with
- *  #GtkWindow only)
+ *  #CtkWindow only)
  * @base_width: allowed window widths are @base_width + @width_inc * N where N
- *  is any integer (-1 allowed with #GtkWindow)
+ *  is any integer (-1 allowed with #CtkWindow)
  * @base_height: allowed window widths are @base_height + @height_inc * N where
- *  N is any integer (-1 allowed with #GtkWindow)
+ *  N is any integer (-1 allowed with #CtkWindow)
  * @width_inc: width resize increment
  * @height_inc: height resize increment
  * @min_aspect: minimum width/height ratio
@@ -389,25 +389,25 @@ struct _GdkWindowAttr
  *
  * The #GdkGeometry struct gives the window manager information about
  * a window’s geometry constraints. Normally you would set these on
- * the GTK+ level using ctk_window_set_geometry_hints(). #GtkWindow
+ * the GTK+ level using ctk_window_set_geometry_hints(). #CtkWindow
  * then sets the hints on the #GdkWindow it creates.
  *
  * gdk_window_set_geometry_hints() expects the hints to be fully valid already
  * and simply passes them to the window manager; in contrast,
  * ctk_window_set_geometry_hints() performs some interpretation. For example,
- * #GtkWindow will apply the hints to the geometry widget instead of the
+ * #CtkWindow will apply the hints to the geometry widget instead of the
  * toplevel window, if you set a geometry widget. Also, the
  * @min_width/@min_height/@max_width/@max_height fields may be set to -1, and
- * #GtkWindow will substitute the size request of the window or geometry widget.
- * If the minimum size hint is not provided, #GtkWindow will use its requisition
+ * #CtkWindow will substitute the size request of the window or geometry widget.
+ * If the minimum size hint is not provided, #CtkWindow will use its requisition
  * as the minimum size. If the minimum size is provided and a geometry widget is
- * set, #GtkWindow will take the minimum size as the minimum size of the
+ * set, #CtkWindow will take the minimum size as the minimum size of the
  * geometry widget rather than the entire window. The base size is treated
  * similarly.
  *
  * The canonical use-case for ctk_window_set_geometry_hints() is to get a
  * terminal widget to resize properly. Here, the terminal text area should be
- * the geometry widget; #GtkWindow will then automatically set the base size to
+ * the geometry widget; #CtkWindow will then automatically set the base size to
  * the size of other widgets in the terminal window, such as the menubar and
  * scrollbar. Then, the @width_inc and @height_inc fields should be set to the
  * size of one character in the terminal. Finally, the base size should be set

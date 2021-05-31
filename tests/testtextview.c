@@ -4,24 +4,24 @@
 #include <ctk/ctk.h>
 
 typedef struct {
-  GtkTextView parent;
+  CtkTextView parent;
 } MyTextView;
 
 typedef struct {
-  GtkTextViewClass parent_class;
+  CtkTextViewClass parent_class;
 } MyTextViewClass;
 
 G_DEFINE_TYPE (MyTextView, my_text_view, CTK_TYPE_TEXT_VIEW);
 
-static void draw_background (GtkWidget *widget, cairo_t *cr);
+static void draw_background (CtkWidget *widget, cairo_t *cr);
 
 static void
 my_text_view_init (MyTextView *text_view)
 {
 }
 
-static void my_text_view_draw_layer (GtkTextView       *textview,
-				     GtkTextViewLayer   layer,
+static void my_text_view_draw_layer (CtkTextView       *textview,
+				     CtkTextViewLayer   layer,
 				     cairo_t           *cr)
 {
   if (layer == CTK_TEXT_VIEW_LAYER_BELOW)
@@ -35,7 +35,7 @@ my_text_view_class_init (MyTextViewClass *klass)
 }
 
 static void
-create_tags (GtkTextBuffer *buffer)
+create_tags (CtkTextBuffer *buffer)
 {
 
   ctk_text_buffer_create_tag (buffer, "italic",
@@ -61,13 +61,13 @@ create_tags (GtkTextBuffer *buffer)
 }
 
 
-static GtkTextChildAnchor *
-insert_text (GtkTextBuffer *buffer)
+static CtkTextChildAnchor *
+insert_text (CtkTextBuffer *buffer)
 {
-  GtkTextIter  iter;
-  GtkTextIter  start, end;
-  GtkTextMark *para_start;
-  GtkTextChildAnchor *anchor;
+  CtkTextIter  iter;
+  CtkTextIter  start, end;
+  CtkTextMark *para_start;
+  CtkTextChildAnchor *anchor;
 
   /* get start of buffer; each insertion will revalidate the
    * iterator to point to just after the inserted text.
@@ -166,7 +166,7 @@ get_checkered (void)
 }
 
 static void
-draw_background (GtkWidget *widget, cairo_t *cr)
+draw_background (CtkWidget *widget, cairo_t *cr)
 {
   GdkRectangle visible_rect;
   cairo_pattern_t *pat;
@@ -192,9 +192,9 @@ draw_background (GtkWidget *widget, cairo_t *cr)
 int
 main (int argc, char **argv)
 {
-  GtkWidget *window, *textview, *sw, *button, *button2;
-  GtkTextBuffer *buffer;
-  GtkTextChildAnchor *anchor;
+  CtkWidget *window, *textview, *sw, *button, *button2;
+  CtkTextBuffer *buffer;
+  CtkTextChildAnchor *anchor;
 
   ctk_init (&argc, &argv);
 

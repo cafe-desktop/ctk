@@ -27,7 +27,7 @@
 #define TIC_INSERT_TEXT_REPLACE_LEN "tic-insert-text-replace-len"
 #define TIC_IN_KEY_DOWN "tic-in-key-down"
 
-/* GtkIMContext */
+/* CtkIMContext */
 #define GIC_CURSOR_RECT  "gic-cursor-rect"
 #define GIC_FILTER_KEY   "gic-filter-key"
 #define GIC_FILTER_PASSTHRU	0

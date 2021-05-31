@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkGrid" id="grid1">
+      <object class="CtkGrid" id="grid1">
         <property name="visible">True</property>
         <child>
-          <object class="GtkAppChooserButton" id="button1">
+          <object class="CtkAppChooserButton" id="button1">
             <property name="visible">True</property>
           </object>
           <packing>
@@ -17,7 +17,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkColorButton" id="button2">
+          <object class="CtkColorButton" id="button2">
             <property name="visible">True</property>
           </object>
           <packing>
@@ -26,7 +26,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkFontButton" id="button3">
+          <object class="CtkFontButton" id="button3">
             <property name="visible">True</property>
           </object>
           <packing>
@@ -36,7 +36,7 @@
         </child>
 <!--
         <child>
-          <object class="GtkFileChooserButton" id="button4">
+          <object class="CtkFileChooserButton" id="button4">
             <property name="visible">True</property>
           </object>
           <packing>

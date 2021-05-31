@@ -44,7 +44,7 @@
 
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
 typedef struct {
-  GtkFileChooserNative *self;
+  CtkFileChooserNative *self;
 
   NSSavePanel *panel;
   NSWindow *parent;
@@ -347,7 +347,7 @@ filechooser_quartz_launch (FileChooserQuartzData *data)
 	data->files = chooser_get_files (data);
       }
 
-    GtkFileChooserNative *self = data->self;
+    CtkFileChooserNative *self = data->self;
 
     self->mode_data = NULL;
 
@@ -409,7 +409,7 @@ strip_mnemonic (const gchar *s)
 } 
 
 static gboolean
-file_filter_to_quartz (GtkFileFilter *file_filter,
+file_filter_to_quartz (CtkFileFilter *file_filter,
                        NSMutableArray *filters,
 		       NSMutableArray *filter_names)
 {
@@ -439,16 +439,16 @@ file_filter_to_quartz (GtkFileFilter *file_filter,
 }
 
 gboolean
-ctk_file_chooser_native_quartz_show (GtkFileChooserNative *self)
+ctk_file_chooser_native_quartz_show (CtkFileChooserNative *self)
 {
   FileChooserQuartzData *data;
-  GtkWindow *transient_for;
-  GtkFileChooserAction action;
+  CtkWindow *transient_for;
+  CtkFileChooserAction action;
 
   guint update_preview_signal;
   GSList *filters, *l;
   int n_filters, i;
-  GtkWidget *extra_widget = NULL;
+  CtkWidget *extra_widget = NULL;
   char *message = NULL;
 
   /* Not supported before MacOS X 10.6 */
@@ -456,7 +456,7 @@ ctk_file_chooser_native_quartz_show (GtkFileChooserNative *self)
     return FALSE;
 
   extra_widget = ctk_file_chooser_get_extra_widget (CTK_FILE_CHOOSER (self));
-  // if the extra_widget is a GtkLabel, then use its text to set the dialog message
+  // if the extra_widget is a CtkLabel, then use its text to set the dialog message
   if (extra_widget != NULL)
     {
       if (!CTK_IS_LABEL (extra_widget))
@@ -562,7 +562,7 @@ ctk_file_chooser_native_quartz_show (GtkFileChooserNative *self)
 }
 
 void
-ctk_file_chooser_native_quartz_hide (GtkFileChooserNative *self)
+ctk_file_chooser_native_quartz_hide (CtkFileChooserNative *self)
 {
   FileChooserQuartzData *data = self->mode_data;
 

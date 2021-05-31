@@ -30,13 +30,13 @@
 
 #include <gmodule.h>
 
-typedef struct _GtkModuleInfo GtkModuleInfo;
-struct _GtkModuleInfo
+typedef struct _CtkModuleInfo CtkModuleInfo;
+struct _CtkModuleInfo
 {
   GModule                 *module;
   gint                     ref_count;
-  GtkModuleInitFunc        init_func;
-  GtkModuleDisplayInitFunc display_init_func;
+  CtkModuleInitFunc        init_func;
+  CtkModuleDisplayInitFunc display_init_func;
   GSList                  *names;
 };
 
@@ -238,7 +238,7 @@ find_module (const gchar *name)
 }
 
 static gint
-cmp_module (GtkModuleInfo *info,
+cmp_module (CtkModuleInfo *info,
 	    GModule       *module)
 {
   return info->module != module;
@@ -264,9 +264,9 @@ static GSList *
 load_module (GSList      *module_list,
 	     const gchar *name)
 {
-  GtkModuleInitFunc modinit_func;
+  CtkModuleInitFunc modinit_func;
   gpointer modinit_func_ptr;
-  GtkModuleInfo *info = NULL;
+  CtkModuleInfo *info = NULL;
   GModule *module = NULL;
   GSList *l;
   gboolean success = FALSE;
@@ -321,7 +321,7 @@ load_module (GSList      *module_list,
 
 		  if (!info)
 		    {
-		      info = g_new0 (GtkModuleInfo, 1);
+		      info = g_new0 (CtkModuleInfo, 1);
 		      
 		      info->names = g_slist_prepend (info->names, g_strdup (name));
 		      info->module = module;
@@ -389,7 +389,7 @@ load_module (GSList      *module_list,
 
 
 static void
-ctk_module_info_unref (GtkModuleInfo *info)
+ctk_module_info_unref (CtkModuleInfo *info)
 {
   GSList *l;
 
@@ -446,7 +446,7 @@ default_display_notify_cb (GdkDisplayManager *display_manager)
     {
       if (slist->data)
 	{
-	  GtkModuleInfo *info = slist->data;
+	  CtkModuleInfo *info = slist->data;
 
 	  if (!info->display_init_func)
 	    (* info->init_func) (&ctk_argc, &ctk_argv);
@@ -459,7 +459,7 @@ display_closed_cb (GdkDisplay *display,
 		   gboolean    is_error)
 {
   GdkScreen *screen;
-  GtkSettings *settings;
+  CtkSettings *settings;
 
   screen = gdk_display_get_default_screen (display);
   settings = ctk_settings_get_for_screen (screen);
@@ -477,13 +477,13 @@ display_opened_cb (GdkDisplayManager *display_manager,
   GValue value = G_VALUE_INIT;
   GSList *slist;
   GdkScreen *screen;
-  GtkSettings *settings;
+  CtkSettings *settings;
 
   for (slist = ctk_modules; slist; slist = slist->next)
     {
       if (slist->data)
 	{
-	  GtkModuleInfo *info = slist->data;
+	  CtkModuleInfo *info = slist->data;
 
 	  if (info->display_init_func)
 	    (* info->display_init_func) (display);
@@ -552,14 +552,14 @@ settings_destroy_notify (gpointer data)
 
   for (iter = modules; iter; iter = iter->next) 
     {
-      GtkModuleInfo *info = iter->data;
+      CtkModuleInfo *info = iter->data;
       ctk_module_info_unref (info);
     }
   g_slist_free (modules);
 }
 
 void
-_ctk_modules_settings_changed (GtkSettings *settings, 
+_ctk_modules_settings_changed (CtkSettings *settings, 
 			       const gchar *modules)
 {
   GSList *new_modules = NULL;

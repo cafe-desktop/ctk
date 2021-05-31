@@ -294,7 +294,7 @@ enum {
   TARGET_ROOTWIN
 };
 
-static GtkTargetEntry target_table[] = {
+static CtkTargetEntry target_table[] = {
   { "STRING",     0, TARGET_STRING },
   { "text/plain", 0, TARGET_STRING },
   { "application/x-rootwindow-drop", 0, TARGET_ROOTWIN }
@@ -303,7 +303,7 @@ static GtkTargetEntry target_table[] = {
 static guint n_targets = sizeof(target_table) / sizeof(target_table[0]);
 
 void  
-target_drag_leave	   (GtkWidget	       *widget,
+target_drag_leave	   (CtkWidget	       *widget,
 			    GdkDragContext     *context,
 			    guint               time)
 {
@@ -313,13 +313,13 @@ target_drag_leave	   (GtkWidget	       *widget,
 }
 
 gboolean
-target_drag_motion	   (GtkWidget	       *widget,
+target_drag_motion	   (CtkWidget	       *widget,
 			    GdkDragContext     *context,
 			    gint                x,
 			    gint                y,
 			    guint               time)
 {
-  GtkWidget *source_widget;
+  CtkWidget *source_widget;
   GList *tmp_list;
 
   if (!have_drag)
@@ -349,7 +349,7 @@ target_drag_motion	   (GtkWidget	       *widget,
 }
 
 gboolean
-target_drag_drop	   (GtkWidget	       *widget,
+target_drag_drop	   (CtkWidget	       *widget,
 			    GdkDragContext     *context,
 			    gint                x,
 			    gint                y,
@@ -372,11 +372,11 @@ target_drag_drop	   (GtkWidget	       *widget,
 }
 
 void  
-target_drag_data_received  (GtkWidget          *widget,
+target_drag_data_received  (CtkWidget          *widget,
 			    GdkDragContext     *context,
 			    gint                x,
 			    gint                y,
-			    GtkSelectionData   *selection_data,
+			    CtkSelectionData   *selection_data,
 			    guint               info,
 			    guint               time)
 {
@@ -392,11 +392,11 @@ target_drag_data_received  (GtkWidget          *widget,
 }
   
 void  
-label_drag_data_received  (GtkWidget          *widget,
+label_drag_data_received  (CtkWidget          *widget,
 			    GdkDragContext     *context,
 			    gint                x,
 			    gint                y,
-			    GtkSelectionData   *selection_data,
+			    CtkSelectionData   *selection_data,
 			    guint               info,
 			    guint               time)
 {
@@ -412,9 +412,9 @@ label_drag_data_received  (GtkWidget          *widget,
 }
 
 void  
-source_drag_data_get  (GtkWidget          *widget,
+source_drag_data_get  (CtkWidget          *widget,
 		       GdkDragContext     *context,
-		       GtkSelectionData   *selection_data,
+		       CtkSelectionData   *selection_data,
 		       guint               info,
 		       guint               time,
 		       gpointer            data)
@@ -431,7 +431,7 @@ source_drag_data_get  (GtkWidget          *widget,
  * changing of the window hierarchy during a drag - in this case,
  * via a "spring-loaded" popup window.
  */
-static GtkWidget *popup_window = NULL;
+static CtkWidget *popup_window = NULL;
 
 static gboolean popped_up = FALSE;
 static gboolean in_popup = FALSE;
@@ -450,7 +450,7 @@ popdown_cb (gpointer data)
 }
 
 gboolean
-popup_motion	   (GtkWidget	       *widget,
+popup_motion	   (CtkWidget	       *widget,
 		    GdkDragContext     *context,
 		    gint                x,
 		    gint                y,
@@ -471,7 +471,7 @@ popup_motion	   (GtkWidget	       *widget,
 }
 
 void  
-popup_leave	   (GtkWidget	       *widget,
+popup_leave	   (CtkWidget	       *widget,
 		    GdkDragContext     *context,
 		    guint               time)
 {
@@ -493,8 +493,8 @@ popup_cb (gpointer data)
     {
       if (!popup_window)
 	{
-	  GtkWidget *button;
-	  GtkWidget *grid;
+	  CtkWidget *button;
+	  CtkWidget *grid;
 	  int i, j;
 	  
 	  popup_window = ctk_window_new (CTK_WINDOW_POPUP);
@@ -539,7 +539,7 @@ popup_cb (gpointer data)
 }
 
 gboolean
-popsite_motion	   (GtkWidget	       *widget,
+popsite_motion	   (CtkWidget	       *widget,
 		    GdkDragContext     *context,
 		    gint                x,
 		    gint                y,
@@ -552,7 +552,7 @@ popsite_motion	   (GtkWidget	       *widget,
 }
 
 void  
-popsite_leave	   (GtkWidget	       *widget,
+popsite_leave	   (CtkWidget	       *widget,
 		    GdkDragContext     *context,
 		    guint               time)
 {
@@ -564,7 +564,7 @@ popsite_leave	   (GtkWidget	       *widget,
 }
 
 void  
-source_drag_data_delete  (GtkWidget          *widget,
+source_drag_data_delete  (CtkWidget          *widget,
 			  GdkDragContext     *context,
 			  gpointer            data)
 {
@@ -581,11 +581,11 @@ test_init (void)
 int 
 main (int argc, char **argv)
 {
-  GtkWidget *window;
-  GtkWidget *grid;
-  GtkWidget *label;
-  GtkWidget *pixmap;
-  GtkWidget *button;
+  CtkWidget *window;
+  CtkWidget *grid;
+  CtkWidget *label;
+  CtkWidget *pixmap;
+  CtkWidget *button;
   GdkPixbuf *drag_icon;
 
   test_init ();

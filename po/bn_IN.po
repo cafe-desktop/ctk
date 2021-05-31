@@ -1500,21 +1500,21 @@ msgstr "ক্যাপ্স-লক কি সক্রিয় আছে"
 #. *
 #. * SECTION:ctkfilechooserbutton
 #. * @Short_description: A button to launch a file selection dialog
-#. * @Title: GtkFileChooserButton
-#. * @See_also:#GtkFileChooserDialog
+#. * @Title: CtkFileChooserButton
+#. * @See_also:#CtkFileChooserDialog
 #. *
-#. * The #GtkFileChooserButton is a widget that lets the user select a
-#. * file.  It implements the #GtkFileChooser interface.  Visually, it is a
-#. * file name with a button to bring up a #GtkFileChooserDialog.
+#. * The #CtkFileChooserButton is a widget that lets the user select a
+#. * file.  It implements the #CtkFileChooser interface.  Visually, it is a
+#. * file name with a button to bring up a #CtkFileChooserDialog.
 #. * The user can then use that dialog to change the file associated with
 #. * that button.  This widget does not support setting the
-#. * #GtkFileChooser:select-multiple property to %TRUE.
+#. * #CtkFileChooser:select-multiple property to %TRUE.
 #. *
 #. * <example>
 #. * <title>Create a button to let the user select a file in /etc</title>
 #. * <programlisting>
 #. * {
-#. *   GtkWidget *button;
+#. *   CtkWidget *button;
 #. *
 #. *   button = ctk_file_chooser_button_new (_("Select a file"),
 #. *                                         CTK_FILE_CHOOSER_ACTION_OPEN);
@@ -1524,11 +1524,11 @@ msgstr "ক্যাপ্স-লক কি সক্রিয় আছে"
 #. * </programlisting>
 #. * </example>
 #. *
-#. * The #GtkFileChooserButton supports the #GtkFileChooserAction<!-- -->s
+#. * The #CtkFileChooserButton supports the #CtkFileChooserAction<!-- -->s
 #. * %CTK_FILE_CHOOSER_ACTION_OPEN and %CTK_FILE_CHOOSER_ACTION_SELECT_FOLDER.
 #. *
 #. * <important>
-#. * The #GtkFileChooserButton will ellipsize the label,
+#. * The #CtkFileChooserButton will ellipsize the label,
 #. * and thus will thus request little horizontal space.  To give the button
 #. * more space, you should call ctk_widget_get_preferred_size(),
 #. * ctk_file_chooser_button_set_width_chars(), or pack the button in
@@ -1840,7 +1840,7 @@ msgstr "অনুসন্ধানের অনুরোধ পাঠাতে 
 msgid "Could not mount %s"
 msgstr "%s মাউন্ট করতে ব্যর্থ"
 
-#. The pointers we return for a GtkFileSystemVolume are opaque tokens; they are
+#. The pointers we return for a CtkFileSystemVolume are opaque tokens; they are
 #. * really pointers to GDrive, GVolume or GMount objects.  We need an extra
 #. * token for the fake "File System" volume.  So, we'll return a pointer to
 #. * this particular string.

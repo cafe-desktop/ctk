@@ -1,4 +1,4 @@
-/* GtkPageSetupUnixDialog
+/* CtkPageSetupUnixDialog
  * Copyright (C) 2006 Alexander Larsson <alexl@redhat.com>
  * Copyright © 2006, 2007, 2008 Christian Persch
  *
@@ -48,10 +48,10 @@
 /**
  * SECTION:ctkpagesetupunixdialog
  * @Short_description: A page setup dialog
- * @Title: GtkPageSetupUnixDialog
+ * @Title: CtkPageSetupUnixDialog
  * @Include: ctk/ctkunixprint.h
  *
- * #GtkPageSetupUnixDialog implements a page setup dialog for platforms
+ * #CtkPageSetupUnixDialog implements a page setup dialog for platforms
  * which don’t provide a native page setup dialog, like Unix. It can
  * be used very much like any other GTK+ dialog, at the cost of
  * the portability offered by the
@@ -61,36 +61,36 @@
  */
 
 
-struct _GtkPageSetupUnixDialogPrivate
+struct _CtkPageSetupUnixDialogPrivate
 {
-  GtkListStore *printer_list;
-  GtkListStore *page_setup_list;
-  GtkListStore *custom_paper_list;
+  CtkListStore *printer_list;
+  CtkListStore *page_setup_list;
+  CtkListStore *custom_paper_list;
 
   GList *print_backends;
 
-  GtkWidget *printer_combo;
-  GtkWidget *paper_size_combo;
-  GtkWidget *paper_size_label;
-  GtkCellRenderer *paper_size_cell;
+  CtkWidget *printer_combo;
+  CtkWidget *paper_size_combo;
+  CtkWidget *paper_size_label;
+  CtkCellRenderer *paper_size_cell;
 
-  GtkWidget *portrait_radio;
-  GtkWidget *reverse_portrait_radio;
-  GtkWidget *landscape_radio;
-  GtkWidget *reverse_landscape_radio;
+  CtkWidget *portrait_radio;
+  CtkWidget *reverse_portrait_radio;
+  CtkWidget *landscape_radio;
+  CtkWidget *reverse_landscape_radio;
 
   gulong request_details_tag;
-  GtkPrinter *request_details_printer;
+  CtkPrinter *request_details_printer;
 
-  GtkPrintSettings *print_settings;
+  CtkPrintSettings *print_settings;
 
   /* Save last setup so we can re-set it after selecting manage custom sizes */
-  GtkPageSetup *last_setup;
+  CtkPageSetup *last_setup;
 
   gchar *waiting_for_printer;
 };
 
-/* Keep these in line with GtkListStores defined in ctkpagesetupunixprintdialog.ui */
+/* Keep these in line with CtkListStores defined in ctkpagesetupunixprintdialog.ui */
 enum {
   PRINTER_LIST_COL_NAME,
   PRINTER_LIST_COL_PRINTER,
@@ -103,32 +103,32 @@ enum {
   PAGE_SETUP_LIST_N_COLS
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkPageSetupUnixDialog, ctk_page_setup_unix_dialog, CTK_TYPE_DIALOG)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkPageSetupUnixDialog, ctk_page_setup_unix_dialog, CTK_TYPE_DIALOG)
 
 static void ctk_page_setup_unix_dialog_finalize  (GObject                *object);
-static void fill_paper_sizes_from_printer        (GtkPageSetupUnixDialog *dialog,
-                                                  GtkPrinter             *printer);
-static void printer_added_cb                     (GtkPrintBackend        *backend,
-                                                  GtkPrinter             *printer,
-                                                  GtkPageSetupUnixDialog *dialog);
-static void printer_removed_cb                   (GtkPrintBackend        *backend,
-                                                  GtkPrinter             *printer,
-                                                  GtkPageSetupUnixDialog *dialog);
-static void printer_status_cb                    (GtkPrintBackend        *backend,
-                                                  GtkPrinter             *printer,
-                                                  GtkPageSetupUnixDialog *dialog);
-static void printer_changed_callback             (GtkComboBox            *combo_box,
-						  GtkPageSetupUnixDialog *dialog);
-static void paper_size_changed                   (GtkComboBox            *combo_box,
-						  GtkPageSetupUnixDialog *dialog);
-static void page_name_func                       (GtkCellLayout          *cell_layout,
-						  GtkCellRenderer        *cell,
-						  GtkTreeModel           *tree_model,
-						  GtkTreeIter            *iter,
+static void fill_paper_sizes_from_printer        (CtkPageSetupUnixDialog *dialog,
+                                                  CtkPrinter             *printer);
+static void printer_added_cb                     (CtkPrintBackend        *backend,
+                                                  CtkPrinter             *printer,
+                                                  CtkPageSetupUnixDialog *dialog);
+static void printer_removed_cb                   (CtkPrintBackend        *backend,
+                                                  CtkPrinter             *printer,
+                                                  CtkPageSetupUnixDialog *dialog);
+static void printer_status_cb                    (CtkPrintBackend        *backend,
+                                                  CtkPrinter             *printer,
+                                                  CtkPageSetupUnixDialog *dialog);
+static void printer_changed_callback             (CtkComboBox            *combo_box,
+						  CtkPageSetupUnixDialog *dialog);
+static void paper_size_changed                   (CtkComboBox            *combo_box,
+						  CtkPageSetupUnixDialog *dialog);
+static void page_name_func                       (CtkCellLayout          *cell_layout,
+						  CtkCellRenderer        *cell,
+						  CtkTreeModel           *tree_model,
+						  CtkTreeIter            *iter,
 						  gpointer                data);
-static void load_print_backends                  (GtkPageSetupUnixDialog *dialog);
-static gboolean paper_size_row_is_separator      (GtkTreeModel           *model,
-						  GtkTreeIter            *iter,
+static void load_print_backends                  (CtkPageSetupUnixDialog *dialog);
+static gboolean paper_size_row_is_separator      (CtkTreeModel           *model,
+						  CtkTreeIter            *iter,
 						  gpointer                data);
 
 
@@ -149,10 +149,10 @@ static const gchar common_paper_sizes[][16] = {
 
 
 static void
-ctk_page_setup_unix_dialog_class_init (GtkPageSetupUnixDialogClass *class)
+ctk_page_setup_unix_dialog_class_init (CtkPageSetupUnixDialogClass *class)
 {
   GObjectClass *object_class;
-  GtkWidgetClass *widget_class;
+  CtkWidgetClass *widget_class;
 
   object_class = G_OBJECT_CLASS (class);
   widget_class = CTK_WIDGET_CLASS (class);
@@ -164,27 +164,27 @@ ctk_page_setup_unix_dialog_class_init (GtkPageSetupUnixDialogClass *class)
   ctk_widget_class_set_template_from_resource (widget_class,
 					       "/org/ctk/libctk/ui/ctkpagesetupunixdialog.ui");
 
-  ctk_widget_class_bind_template_child_private (widget_class, GtkPageSetupUnixDialog, printer_list);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkPageSetupUnixDialog, page_setup_list);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkPageSetupUnixDialog, custom_paper_list);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkPageSetupUnixDialog, printer_combo);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkPageSetupUnixDialog, paper_size_combo);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkPageSetupUnixDialog, paper_size_label);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkPageSetupUnixDialog, paper_size_cell);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkPageSetupUnixDialog, portrait_radio);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkPageSetupUnixDialog, reverse_portrait_radio);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkPageSetupUnixDialog, landscape_radio);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkPageSetupUnixDialog, reverse_landscape_radio);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkPageSetupUnixDialog, printer_list);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkPageSetupUnixDialog, page_setup_list);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkPageSetupUnixDialog, custom_paper_list);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkPageSetupUnixDialog, printer_combo);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkPageSetupUnixDialog, paper_size_combo);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkPageSetupUnixDialog, paper_size_label);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkPageSetupUnixDialog, paper_size_cell);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkPageSetupUnixDialog, portrait_radio);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkPageSetupUnixDialog, reverse_portrait_radio);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkPageSetupUnixDialog, landscape_radio);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkPageSetupUnixDialog, reverse_landscape_radio);
 
   ctk_widget_class_bind_template_callback (widget_class, printer_changed_callback);
   ctk_widget_class_bind_template_callback (widget_class, paper_size_changed);
 }
 
 static void
-ctk_page_setup_unix_dialog_init (GtkPageSetupUnixDialog *dialog)
+ctk_page_setup_unix_dialog_init (CtkPageSetupUnixDialog *dialog)
 {
-  GtkPageSetupUnixDialogPrivate *priv;
-  GtkTreeIter iter;
+  CtkPageSetupUnixDialogPrivate *priv;
+  CtkTreeIter iter;
   gchar *tmp;
 
   priv = dialog->priv = ctk_page_setup_unix_dialog_get_instance_private (dialog);
@@ -233,9 +233,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 static void
 ctk_page_setup_unix_dialog_finalize (GObject *object)
 {
-  GtkPageSetupUnixDialog *dialog = CTK_PAGE_SETUP_UNIX_DIALOG (object);
-  GtkPageSetupUnixDialogPrivate *priv = dialog->priv;
-  GtkPrintBackend *backend;
+  CtkPageSetupUnixDialog *dialog = CTK_PAGE_SETUP_UNIX_DIALOG (object);
+  CtkPageSetupUnixDialogPrivate *priv = dialog->priv;
+  CtkPrintBackend *backend;
   GList *node;
 
   if (priv->request_details_tag)
@@ -293,12 +293,12 @@ ctk_page_setup_unix_dialog_finalize (GObject *object)
 }
 
 static void
-printer_added_cb (GtkPrintBackend        *backend,
-                  GtkPrinter             *printer,
-                  GtkPageSetupUnixDialog *dialog)
+printer_added_cb (CtkPrintBackend        *backend,
+                  CtkPrinter             *printer,
+                  CtkPageSetupUnixDialog *dialog)
 {
-  GtkPageSetupUnixDialogPrivate *priv = dialog->priv;
-  GtkTreeIter iter;
+  CtkPageSetupUnixDialogPrivate *priv = dialog->priv;
+  CtkTreeIter iter;
   gchar *str;
   const gchar *location;
 
@@ -335,12 +335,12 @@ printer_added_cb (GtkPrintBackend        *backend,
 }
 
 static void
-printer_removed_cb (GtkPrintBackend        *backend,
-                    GtkPrinter             *printer,
-                    GtkPageSetupUnixDialog *dialog)
+printer_removed_cb (CtkPrintBackend        *backend,
+                    CtkPrinter             *printer,
+                    CtkPageSetupUnixDialog *dialog)
 {
-  GtkPageSetupUnixDialogPrivate *priv = dialog->priv;
-  GtkTreeIter *iter;
+  CtkPageSetupUnixDialogPrivate *priv = dialog->priv;
+  CtkTreeIter *iter;
 
   iter = g_object_get_data (G_OBJECT (printer), "ctk-print-tree-iter");
   ctk_list_store_remove (CTK_LIST_STORE (priv->printer_list), iter);
@@ -348,12 +348,12 @@ printer_removed_cb (GtkPrintBackend        *backend,
 
 
 static void
-printer_status_cb (GtkPrintBackend        *backend,
-                   GtkPrinter             *printer,
-                   GtkPageSetupUnixDialog *dialog)
+printer_status_cb (CtkPrintBackend        *backend,
+                   CtkPrinter             *printer,
+                   CtkPageSetupUnixDialog *dialog)
 {
-  GtkPageSetupUnixDialogPrivate *priv = dialog->priv;
-  GtkTreeIter *iter;
+  CtkPageSetupUnixDialogPrivate *priv = dialog->priv;
+  CtkTreeIter *iter;
   gchar *str;
   const gchar *location;
 
@@ -372,8 +372,8 @@ printer_status_cb (GtkPrintBackend        *backend,
 }
 
 static void
-printer_list_initialize (GtkPageSetupUnixDialog *dialog,
-                         GtkPrintBackend        *print_backend)
+printer_list_initialize (CtkPageSetupUnixDialog *dialog,
+                         CtkPrintBackend        *print_backend)
 {
   GList *list, *node;
 
@@ -408,9 +408,9 @@ printer_list_initialize (GtkPageSetupUnixDialog *dialog,
 }
 
 static void
-load_print_backends (GtkPageSetupUnixDialog *dialog)
+load_print_backends (CtkPageSetupUnixDialog *dialog)
 {
-  GtkPageSetupUnixDialogPrivate *priv = dialog->priv;
+  CtkPageSetupUnixDialogPrivate *priv = dialog->priv;
   GList *node;
 
   if (g_module_supported ())
@@ -421,8 +421,8 @@ load_print_backends (GtkPageSetupUnixDialog *dialog)
 }
 
 static gboolean
-paper_size_row_is_separator (GtkTreeModel *model,
-                             GtkTreeIter  *iter,
+paper_size_row_is_separator (CtkTreeModel *model,
+                             CtkTreeIter  *iter,
                              gpointer      data)
 {
   gboolean separator;
@@ -431,13 +431,13 @@ paper_size_row_is_separator (GtkTreeModel *model,
   return separator;
 }
 
-static GtkPageSetup *
-get_current_page_setup (GtkPageSetupUnixDialog *dialog)
+static CtkPageSetup *
+get_current_page_setup (CtkPageSetupUnixDialog *dialog)
 {
-  GtkPageSetupUnixDialogPrivate *priv = dialog->priv;
-  GtkPageSetup *current_page_setup;
-  GtkComboBox *combo_box;
-  GtkTreeIter iter;
+  CtkPageSetupUnixDialogPrivate *priv = dialog->priv;
+  CtkPageSetup *current_page_setup;
+  CtkComboBox *combo_box;
+  CtkTreeIter iter;
 
   current_page_setup = NULL;
 
@@ -457,8 +457,8 @@ get_current_page_setup (GtkPageSetupUnixDialog *dialog)
 }
 
 static gboolean
-page_setup_is_equal (GtkPageSetup *a,
-                     GtkPageSetup *b)
+page_setup_is_equal (CtkPageSetup *a,
+                     CtkPageSetup *b)
 {
   return
     ctk_paper_size_is_equal (ctk_page_setup_get_paper_size (a),
@@ -470,23 +470,23 @@ page_setup_is_equal (GtkPageSetup *a,
 }
 
 static gboolean
-page_setup_is_same_size (GtkPageSetup *a,
-                         GtkPageSetup *b)
+page_setup_is_same_size (CtkPageSetup *a,
+                         CtkPageSetup *b)
 {
   return ctk_paper_size_is_equal (ctk_page_setup_get_paper_size (a),
                                   ctk_page_setup_get_paper_size (b));
 }
 
 static gboolean
-set_paper_size (GtkPageSetupUnixDialog *dialog,
-                GtkPageSetup           *page_setup,
+set_paper_size (CtkPageSetupUnixDialog *dialog,
+                CtkPageSetup           *page_setup,
                 gboolean                size_only,
                 gboolean                add_item)
 {
-  GtkPageSetupUnixDialogPrivate *priv = dialog->priv;
-  GtkTreeModel *model;
-  GtkTreeIter iter;
-  GtkPageSetup *list_page_setup;
+  CtkPageSetupUnixDialogPrivate *priv = dialog->priv;
+  CtkTreeModel *model;
+  CtkTreeIter iter;
+  CtkPageSetup *list_page_setup;
 
   model = CTK_TREE_MODEL (priv->page_setup_list);
 
@@ -532,11 +532,11 @@ set_paper_size (GtkPageSetupUnixDialog *dialog,
 }
 
 static void
-fill_custom_paper_sizes (GtkPageSetupUnixDialog *dialog)
+fill_custom_paper_sizes (CtkPageSetupUnixDialog *dialog)
 {
-  GtkPageSetupUnixDialogPrivate *priv = dialog->priv;
-  GtkTreeIter iter, paper_iter;
-  GtkTreeModel *model;
+  CtkPageSetupUnixDialogPrivate *priv = dialog->priv;
+  CtkTreeIter iter, paper_iter;
+  CtkTreeModel *model;
 
   model = CTK_TREE_MODEL (priv->custom_paper_list);
   if (ctk_tree_model_get_iter_first (model, &iter))
@@ -547,7 +547,7 @@ fill_custom_paper_sizes (GtkPageSetupUnixDialog *dialog)
                           -1);
       do
         {
-          GtkPageSetup *page_setup;
+          CtkPageSetup *page_setup;
           ctk_tree_model_get (model, &iter, 0, &page_setup, -1);
 
           ctk_list_store_append (priv->page_setup_list, &paper_iter);
@@ -570,14 +570,14 @@ fill_custom_paper_sizes (GtkPageSetupUnixDialog *dialog)
 }
 
 static void
-fill_paper_sizes_from_printer (GtkPageSetupUnixDialog *dialog,
-                               GtkPrinter             *printer)
+fill_paper_sizes_from_printer (CtkPageSetupUnixDialog *dialog,
+                               CtkPrinter             *printer)
 {
-  GtkPageSetupUnixDialogPrivate *priv = dialog->priv;
+  CtkPageSetupUnixDialogPrivate *priv = dialog->priv;
   GList *list, *l;
-  GtkPageSetup *current_page_setup, *page_setup;
-  GtkPaperSize *paper_size;
-  GtkTreeIter iter;
+  CtkPageSetup *current_page_setup, *page_setup;
+  CtkPaperSize *paper_size;
+  CtkTreeIter iter;
   gint i;
 
   ctk_list_store_clear (priv->page_setup_list);
@@ -634,11 +634,11 @@ fill_paper_sizes_from_printer (GtkPageSetupUnixDialog *dialog,
 }
 
 static void
-printer_changed_finished_callback (GtkPrinter             *printer,
+printer_changed_finished_callback (CtkPrinter             *printer,
                                    gboolean                success,
-                                   GtkPageSetupUnixDialog *dialog)
+                                   CtkPageSetupUnixDialog *dialog)
 {
-  GtkPageSetupUnixDialogPrivate *priv = dialog->priv;
+  CtkPageSetupUnixDialogPrivate *priv = dialog->priv;
 
   g_signal_handler_disconnect (priv->request_details_printer,
                                priv->request_details_tag);
@@ -652,12 +652,12 @@ printer_changed_finished_callback (GtkPrinter             *printer,
 }
 
 static void
-printer_changed_callback (GtkComboBox            *combo_box,
-                          GtkPageSetupUnixDialog *dialog)
+printer_changed_callback (CtkComboBox            *combo_box,
+                          CtkPageSetupUnixDialog *dialog)
 {
-  GtkPageSetupUnixDialogPrivate *priv = dialog->priv;
-  GtkPrinter *printer;
-  GtkTreeIter iter;
+  CtkPageSetupUnixDialogPrivate *priv = dialog->priv;
+  CtkPrinter *printer;
+  CtkTreeIter iter;
 
   /* If we're waiting for a specific printer but the user changed
    * to another printer, cancel that wait.
@@ -711,7 +711,7 @@ printer_changed_callback (GtkComboBox            *combo_box,
    are nonzero. I wish printf let you specify max precision for %f... */
 static gchar *
 double_to_string (gdouble d,
-                  GtkUnit unit)
+                  CtkUnit unit)
 {
   gchar *val, *p;
   struct lconv *locale_data;
@@ -744,12 +744,12 @@ double_to_string (gdouble d,
 
 
 static void
-custom_paper_dialog_response_cb (GtkDialog *custom_paper_dialog,
+custom_paper_dialog_response_cb (CtkDialog *custom_paper_dialog,
                                  gint       response_id,
                                  gpointer   user_data)
 {
-  GtkPageSetupUnixDialog *page_setup_dialog = CTK_PAGE_SETUP_UNIX_DIALOG (user_data);
-  GtkPageSetupUnixDialogPrivate *priv = page_setup_dialog->priv;
+  CtkPageSetupUnixDialog *page_setup_dialog = CTK_PAGE_SETUP_UNIX_DIALOG (user_data);
+  CtkPageSetupUnixDialogPrivate *priv = page_setup_dialog->priv;
 
   _ctk_print_load_custom_papers (priv->custom_paper_list);
 
@@ -760,16 +760,16 @@ custom_paper_dialog_response_cb (GtkDialog *custom_paper_dialog,
 }
 
 static void
-paper_size_changed (GtkComboBox            *combo_box,
-                    GtkPageSetupUnixDialog *dialog)
+paper_size_changed (CtkComboBox            *combo_box,
+                    CtkPageSetupUnixDialog *dialog)
 {
-  GtkPageSetupUnixDialogPrivate *priv = dialog->priv;
-  GtkTreeIter iter;
-  GtkPageSetup *page_setup, *last_page_setup;
-  GtkUnit unit;
+  CtkPageSetupUnixDialogPrivate *priv = dialog->priv;
+  CtkTreeIter iter;
+  CtkPageSetup *page_setup, *last_page_setup;
+  CtkUnit unit;
   gchar *str, *w, *h;
   gchar *top, *bottom, *left, *right;
-  GtkLabel *label;
+  CtkLabel *label;
   const gchar *unit_str;
 
   label = CTK_LABEL (priv->paper_size_label);
@@ -781,7 +781,7 @@ paper_size_changed (GtkComboBox            *combo_box,
 
       if (page_setup == NULL)
         {
-          GtkWidget *custom_paper_dialog;
+          CtkWidget *custom_paper_dialog;
 
           /* Change from "manage" menu item to last value */
           if (priv->last_setup)
@@ -860,14 +860,14 @@ paper_size_changed (GtkComboBox            *combo_box,
 }
 
 static void
-page_name_func (GtkCellLayout   *cell_layout,
-                GtkCellRenderer *cell,
-                GtkTreeModel    *tree_model,
-                GtkTreeIter     *iter,
+page_name_func (CtkCellLayout   *cell_layout,
+                CtkCellRenderer *cell,
+                CtkTreeModel    *tree_model,
+                CtkTreeIter     *iter,
                 gpointer         data)
 {
-  GtkPageSetup *page_setup;
-  GtkPaperSize *paper_size;
+  CtkPageSetup *page_setup;
+  CtkPaperSize *paper_size;
 
   ctk_tree_model_get (tree_model, iter,
                       PAGE_SETUP_LIST_COL_PAGE_SETUP, &page_setup, -1);
@@ -889,15 +889,15 @@ page_name_func (GtkCellLayout   *cell_layout,
  *
  * Creates a new page setup dialog.
  *
- * Returns: the new #GtkPageSetupUnixDialog
+ * Returns: the new #CtkPageSetupUnixDialog
  *
  * Since: 2.10
  */
-GtkWidget *
+CtkWidget *
 ctk_page_setup_unix_dialog_new (const gchar *title,
-                                GtkWindow   *parent)
+                                CtkWindow   *parent)
 {
-  GtkWidget *result;
+  CtkWidget *result;
 
   if (title == NULL)
     title = _("Page Setup");
@@ -912,10 +912,10 @@ ctk_page_setup_unix_dialog_new (const gchar *title,
   return result;
 }
 
-static GtkPageOrientation
-get_orientation (GtkPageSetupUnixDialog *dialog)
+static CtkPageOrientation
+get_orientation (CtkPageSetupUnixDialog *dialog)
 {
-  GtkPageSetupUnixDialogPrivate *priv = dialog->priv;
+  CtkPageSetupUnixDialogPrivate *priv = dialog->priv;
 
   if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (priv->portrait_radio)))
     return CTK_PAGE_ORIENTATION_PORTRAIT;
@@ -927,10 +927,10 @@ get_orientation (GtkPageSetupUnixDialog *dialog)
 }
 
 static void
-set_orientation (GtkPageSetupUnixDialog *dialog,
-                 GtkPageOrientation      orientation)
+set_orientation (CtkPageSetupUnixDialog *dialog,
+                 CtkPageOrientation      orientation)
 {
-  GtkPageSetupUnixDialogPrivate *priv = dialog->priv;
+  CtkPageSetupUnixDialogPrivate *priv = dialog->priv;
 
   switch (orientation)
     {
@@ -951,17 +951,17 @@ set_orientation (GtkPageSetupUnixDialog *dialog,
 
 /**
  * ctk_page_setup_unix_dialog_set_page_setup:
- * @dialog: a #GtkPageSetupUnixDialog
- * @page_setup: a #GtkPageSetup
+ * @dialog: a #CtkPageSetupUnixDialog
+ * @page_setup: a #CtkPageSetup
  *
- * Sets the #GtkPageSetup from which the page setup
+ * Sets the #CtkPageSetup from which the page setup
  * dialog takes its values.
  *
  * Since: 2.10
  **/
 void
-ctk_page_setup_unix_dialog_set_page_setup (GtkPageSetupUnixDialog *dialog,
-                                           GtkPageSetup           *page_setup)
+ctk_page_setup_unix_dialog_set_page_setup (CtkPageSetupUnixDialog *dialog,
+                                           CtkPageSetup           *page_setup)
 {
   if (page_setup)
     {
@@ -972,7 +972,7 @@ ctk_page_setup_unix_dialog_set_page_setup (GtkPageSetupUnixDialog *dialog,
 
 /**
  * ctk_page_setup_unix_dialog_get_page_setup:
- * @dialog: a #GtkPageSetupUnixDialog
+ * @dialog: a #CtkPageSetupUnixDialog
  *
  * Gets the currently selected page setup from the dialog.
  *
@@ -980,10 +980,10 @@ ctk_page_setup_unix_dialog_set_page_setup (GtkPageSetupUnixDialog *dialog,
  *
  * Since: 2.10
  **/
-GtkPageSetup *
-ctk_page_setup_unix_dialog_get_page_setup (GtkPageSetupUnixDialog *dialog)
+CtkPageSetup *
+ctk_page_setup_unix_dialog_get_page_setup (CtkPageSetupUnixDialog *dialog)
 {
-  GtkPageSetup *page_setup;
+  CtkPageSetup *page_setup;
 
   page_setup = get_current_page_setup (dialog);
 
@@ -993,13 +993,13 @@ ctk_page_setup_unix_dialog_get_page_setup (GtkPageSetupUnixDialog *dialog)
 }
 
 static gboolean
-set_active_printer (GtkPageSetupUnixDialog *dialog,
+set_active_printer (CtkPageSetupUnixDialog *dialog,
                     const gchar            *printer_name)
 {
-  GtkPageSetupUnixDialogPrivate *priv = dialog->priv;
-  GtkTreeModel *model;
-  GtkTreeIter iter;
-  GtkPrinter *printer;
+  CtkPageSetupUnixDialogPrivate *priv = dialog->priv;
+  CtkTreeModel *model;
+  CtkTreeIter iter;
+  CtkPrinter *printer;
 
   model = CTK_TREE_MODEL (priv->printer_list);
 
@@ -1030,19 +1030,19 @@ set_active_printer (GtkPageSetupUnixDialog *dialog,
 
 /**
  * ctk_page_setup_unix_dialog_set_print_settings:
- * @dialog: a #GtkPageSetupUnixDialog
- * @print_settings: a #GtkPrintSettings
+ * @dialog: a #CtkPageSetupUnixDialog
+ * @print_settings: a #CtkPrintSettings
  *
- * Sets the #GtkPrintSettings from which the page setup dialog
+ * Sets the #CtkPrintSettings from which the page setup dialog
  * takes its values.
  *
  * Since: 2.10
  **/
 void
-ctk_page_setup_unix_dialog_set_print_settings (GtkPageSetupUnixDialog *dialog,
-                                               GtkPrintSettings       *print_settings)
+ctk_page_setup_unix_dialog_set_print_settings (CtkPageSetupUnixDialog *dialog,
+                                               CtkPrintSettings       *print_settings)
 {
-  GtkPageSetupUnixDialogPrivate *priv = dialog->priv;
+  CtkPageSetupUnixDialogPrivate *priv = dialog->priv;
   const gchar *format_for_printer;
 
   if (priv->print_settings == print_settings) return;
@@ -1069,7 +1069,7 @@ ctk_page_setup_unix_dialog_set_print_settings (GtkPageSetupUnixDialog *dialog,
 
 /**
  * ctk_page_setup_unix_dialog_get_print_settings:
- * @dialog: a #GtkPageSetupUnixDialog
+ * @dialog: a #CtkPageSetupUnixDialog
  *
  * Gets the current print settings from the dialog.
  *
@@ -1077,10 +1077,10 @@ ctk_page_setup_unix_dialog_set_print_settings (GtkPageSetupUnixDialog *dialog,
  *
  * Since: 2.10
  **/
-GtkPrintSettings *
-ctk_page_setup_unix_dialog_get_print_settings (GtkPageSetupUnixDialog *dialog)
+CtkPrintSettings *
+ctk_page_setup_unix_dialog_get_print_settings (CtkPageSetupUnixDialog *dialog)
 {
-  GtkPageSetupUnixDialogPrivate *priv = dialog->priv;
+  CtkPageSetupUnixDialogPrivate *priv = dialog->priv;
 
   return priv->print_settings;
 }

@@ -25,26 +25,26 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GtkMnemnonicHash GtkMnemonicHash;
+typedef struct _CtkMnemnonicHash CtkMnemonicHash;
 
-typedef void (*GtkMnemonicHashForeach) (guint      keyval,
+typedef void (*CtkMnemonicHashForeach) (guint      keyval,
 					GSList    *targets,
 					gpointer   data);
 
-GtkMnemonicHash *_ctk_mnemonic_hash_new      (void);
-void             _ctk_mnemonic_hash_free     (GtkMnemonicHash        *mnemonic_hash);
-void             _ctk_mnemonic_hash_add      (GtkMnemonicHash        *mnemonic_hash,
+CtkMnemonicHash *_ctk_mnemonic_hash_new      (void);
+void             _ctk_mnemonic_hash_free     (CtkMnemonicHash        *mnemonic_hash);
+void             _ctk_mnemonic_hash_add      (CtkMnemonicHash        *mnemonic_hash,
 					      guint                   keyval,
-					      GtkWidget              *target);
-void             _ctk_mnemonic_hash_remove   (GtkMnemonicHash        *mnemonic_hash,
+					      CtkWidget              *target);
+void             _ctk_mnemonic_hash_remove   (CtkMnemonicHash        *mnemonic_hash,
 					      guint                   keyval,
-					      GtkWidget              *target);
-gboolean         _ctk_mnemonic_hash_activate (GtkMnemonicHash        *mnemonic_hash,
+					      CtkWidget              *target);
+gboolean         _ctk_mnemonic_hash_activate (CtkMnemonicHash        *mnemonic_hash,
 					      guint                   keyval);
-GSList *         _ctk_mnemonic_hash_lookup   (GtkMnemonicHash        *mnemonic_hash,
+GSList *         _ctk_mnemonic_hash_lookup   (CtkMnemonicHash        *mnemonic_hash,
 					      guint                   keyval);
-void             _ctk_mnemonic_hash_foreach  (GtkMnemonicHash        *mnemonic_hash,
-					      GtkMnemonicHashForeach  func,
+void             _ctk_mnemonic_hash_foreach  (CtkMnemonicHash        *mnemonic_hash,
+					      CtkMnemonicHashForeach  func,
 					      gpointer                func_data);
 
 G_END_DECLS

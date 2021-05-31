@@ -16,31 +16,31 @@ enum {
 #define CTK_TYPE_GEARS      (ctk_gears_get_type ())
 #define CTK_GEARS(inst)     (G_TYPE_CHECK_INSTANCE_CAST ((inst), \
                              CTK_TYPE_GEARS,             \
-                             GtkGears))
+                             CtkGears))
 #define CTK_IS_GEARS(inst)  (G_TYPE_CHECK_INSTANCE_TYPE ((inst), \
                              CTK_TYPE_GEARS))
 
-typedef struct _GtkGears GtkGears;
-typedef struct _GtkGearsClass GtkGearsClass;
+typedef struct _CtkGears CtkGears;
+typedef struct _CtkGearsClass CtkGearsClass;
 
-struct _GtkGears {
-  GtkGLArea parent;
+struct _CtkGears {
+  CtkGLArea parent;
 };
 
-struct _GtkGearsClass {
-  GtkGLAreaClass parent_class;
+struct _CtkGearsClass {
+  CtkGLAreaClass parent_class;
 };
 
 GType      ctk_gears_get_type      (void) G_GNUC_CONST;
 
-GtkWidget *ctk_gears_new           (void);
-void       ctk_gears_set_axis      (GtkGears *gears,
+CtkWidget *ctk_gears_new           (void);
+void       ctk_gears_set_axis      (CtkGears *gears,
                                     int       axis,
                                     double    value);
-double     ctk_gears_get_axis      (GtkGears *gears,
+double     ctk_gears_get_axis      (CtkGears *gears,
                                     int       axis);
-void       ctk_gears_set_fps_label (GtkGears *gears,
-                                    GtkLabel *label);
+void       ctk_gears_set_fps_label (CtkGears *gears,
+                                    CtkLabel *label);
 
 
 G_END_DECLS

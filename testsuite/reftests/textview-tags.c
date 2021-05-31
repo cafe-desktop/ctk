@@ -20,11 +20,11 @@
 
 
 G_MODULE_EXPORT void
-apply_tags_blue (GtkTextView *text_view)
+apply_tags_blue (CtkTextView *text_view)
 {
-  GtkTextBuffer *buffer;
-  GtkTextIter start, end;
-  GtkTextIter four, eight;
+  CtkTextBuffer *buffer;
+  CtkTextIter start, end;
+  CtkTextIter four, eight;
 
   buffer = ctk_text_view_get_buffer (text_view);
   ctk_text_buffer_get_bounds (buffer, &start, &end);
@@ -38,11 +38,11 @@ apply_tags_blue (GtkTextView *text_view)
 }
 
 G_MODULE_EXPORT void
-apply_tags_red_blue (GtkTextView *text_view)
+apply_tags_red_blue (CtkTextView *text_view)
 {
-  GtkTextBuffer *buffer;
-  GtkTextIter start, end;
-  GtkTextIter four, eight;
+  CtkTextBuffer *buffer;
+  CtkTextIter start, end;
+  CtkTextIter four, eight;
 
   buffer = ctk_text_view_get_buffer (text_view);
   ctk_text_buffer_get_bounds (buffer, &start, &end);

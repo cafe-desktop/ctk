@@ -27,26 +27,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_SCROLLED_WINDOW_ACCESSIBLE            (ctk_scrolled_window_accessible_get_type ())
-#define CTK_SCROLLED_WINDOW_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SCROLLED_WINDOW_ACCESSIBLE, GtkScrolledWindowAccessible))
-#define CTK_SCROLLED_WINDOW_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SCROLLED_WINDOW_ACCESSIBLE, GtkScrolledWindowAccessibleClass))
+#define CTK_SCROLLED_WINDOW_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SCROLLED_WINDOW_ACCESSIBLE, CtkScrolledWindowAccessible))
+#define CTK_SCROLLED_WINDOW_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SCROLLED_WINDOW_ACCESSIBLE, CtkScrolledWindowAccessibleClass))
 #define CTK_IS_SCROLLED_WINDOW_ACCESSIBLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SCROLLED_WINDOW_ACCESSIBLE))
 #define CTK_IS_SCROLLED_WINDOW_ACCESSIBLE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SCROLLED_WINDOW_ACCESSIBLE))
-#define CTK_SCROLLED_WINDOW_ACCESSIBLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SCROLLED_WINDOW_ACCESSIBLE, GtkScrolledWindowAccessibleClass))
+#define CTK_SCROLLED_WINDOW_ACCESSIBLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SCROLLED_WINDOW_ACCESSIBLE, CtkScrolledWindowAccessibleClass))
 
-typedef struct _GtkScrolledWindowAccessible        GtkScrolledWindowAccessible;
-typedef struct _GtkScrolledWindowAccessibleClass   GtkScrolledWindowAccessibleClass;
-typedef struct _GtkScrolledWindowAccessiblePrivate GtkScrolledWindowAccessiblePrivate;
+typedef struct _CtkScrolledWindowAccessible        CtkScrolledWindowAccessible;
+typedef struct _CtkScrolledWindowAccessibleClass   CtkScrolledWindowAccessibleClass;
+typedef struct _CtkScrolledWindowAccessiblePrivate CtkScrolledWindowAccessiblePrivate;
 
-struct _GtkScrolledWindowAccessible
+struct _CtkScrolledWindowAccessible
 {
-  GtkContainerAccessible parent;
+  CtkContainerAccessible parent;
 
-  GtkScrolledWindowAccessiblePrivate *priv;
+  CtkScrolledWindowAccessiblePrivate *priv;
 };
 
-struct _GtkScrolledWindowAccessibleClass
+struct _CtkScrolledWindowAccessibleClass
 {
-  GtkContainerAccessibleClass parent_class;
+  CtkContainerAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

@@ -31,10 +31,10 @@
 /**
  * SECTION:ctkdrawingarea
  * @Short_description: A widget for custom user interface elements
- * @Title: GtkDrawingArea
- * @See_also: #GtkImage
+ * @Title: CtkDrawingArea
+ * @See_also: #CtkImage
  *
- * The #GtkDrawingArea widget is used for creating custom user interface
+ * The #CtkDrawingArea widget is used for creating custom user interface
  * elements. It’s essentially a blank widget; you can draw on it. After
  * creating a drawing area, the application may want to connect to:
  *
@@ -42,14 +42,14 @@
  *   the user. (Use ctk_widget_add_events() to enable events
  *   you wish to receive.)
  *
- * - The #GtkWidget::realize signal to take any necessary actions
+ * - The #CtkWidget::realize signal to take any necessary actions
  *   when the widget is instantiated on a particular display.
  *   (Create GDK resources in response to this signal.)
  *
- * - The #GtkWidget::size-allocate signal to take any necessary
+ * - The #CtkWidget::size-allocate signal to take any necessary
  *   actions when the widget changes size.
  *
- * - The #GtkWidget::draw signal to handle redrawing the
+ * - The #CtkWidget::draw signal to handle redrawing the
  *   contents of the widget.
  *
  * The following code portion demonstrates using a drawing
@@ -61,15 +61,15 @@
  * area. If you want to have a theme-provided background, you need
  * to call ctk_render_background() in your ::draw method.
  *
- * ## Simple GtkDrawingArea usage
+ * ## Simple CtkDrawingArea usage
  *
  * |[<!-- language="C" -->
  * gboolean
- * draw_callback (GtkWidget *widget, cairo_t *cr, gpointer data)
+ * draw_callback (CtkWidget *widget, cairo_t *cr, gpointer data)
  * {
  *   guint width, height;
  *   GdkRGBA color;
- *   GtkStyleContext *context;
+ *   CtkStyleContext *context;
  *
  *   context = ctk_widget_get_style_context (widget);
  *
@@ -93,7 +93,7 @@
  *  return FALSE;
  * }
  * [...]
- *   GtkWidget *drawing_area = ctk_drawing_area_new ();
+ *   CtkWidget *drawing_area = ctk_drawing_area_new ();
  *   ctk_widget_set_size_request (drawing_area, 100, 100);
  *   g_signal_connect (G_OBJECT (drawing_area), "draw",
  *                     G_CALLBACK (draw_callback), NULL);
@@ -119,18 +119,18 @@
  * ctk_render_focus() for one way to draw focus.
  */
 
-static void ctk_drawing_area_realize       (GtkWidget           *widget);
-static void ctk_drawing_area_style_updated (GtkWidget           *widget);
-static void ctk_drawing_area_size_allocate (GtkWidget           *widget,
-                                            GtkAllocation       *allocation);
-static void ctk_drawing_area_send_configure (GtkDrawingArea     *darea);
+static void ctk_drawing_area_realize       (CtkWidget           *widget);
+static void ctk_drawing_area_style_updated (CtkWidget           *widget);
+static void ctk_drawing_area_size_allocate (CtkWidget           *widget,
+                                            CtkAllocation       *allocation);
+static void ctk_drawing_area_send_configure (CtkDrawingArea     *darea);
 
-G_DEFINE_TYPE (GtkDrawingArea, ctk_drawing_area, CTK_TYPE_WIDGET)
+G_DEFINE_TYPE (CtkDrawingArea, ctk_drawing_area, CTK_TYPE_WIDGET)
 
 static void
-ctk_drawing_area_class_init (GtkDrawingAreaClass *class)
+ctk_drawing_area_class_init (CtkDrawingAreaClass *class)
 {
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
   widget_class->realize = ctk_drawing_area_realize;
   widget_class->size_allocate = ctk_drawing_area_size_allocate;
@@ -140,7 +140,7 @@ ctk_drawing_area_class_init (GtkDrawingAreaClass *class)
 }
 
 static void
-ctk_drawing_area_init (GtkDrawingArea *darea)
+ctk_drawing_area_init (CtkDrawingArea *darea)
 {
 }
 
@@ -149,22 +149,22 @@ ctk_drawing_area_init (GtkDrawingArea *darea)
  *
  * Creates a new drawing area.
  *
- * Returns: a new #GtkDrawingArea
+ * Returns: a new #CtkDrawingArea
  */
-GtkWidget*
+CtkWidget*
 ctk_drawing_area_new (void)
 {
   return g_object_new (CTK_TYPE_DRAWING_AREA, NULL);
 }
 
 static void
-set_background (GtkWidget *widget)
+set_background (CtkWidget *widget)
 {
   if (ctk_widget_get_realized (widget) &&
       ctk_widget_get_has_window (widget))
     {
       /* We still need to call ctk_style_context_set_background() here for
-       * GtkDrawingArea, since clients expect backgrounds set on it (e.g. through
+       * CtkDrawingArea, since clients expect backgrounds set on it (e.g. through
        * ctk_widget_override_background_color) to be available even when they
        * don't chain up from draw().
        * This should be revisited next time we have a major API break.
@@ -177,7 +177,7 @@ set_background (GtkWidget *widget)
 }
 
 static void
-ctk_drawing_area_style_updated (GtkWidget *widget)
+ctk_drawing_area_style_updated (CtkWidget *widget)
 {
   CTK_WIDGET_CLASS (ctk_drawing_area_parent_class)->style_updated (widget);
 
@@ -185,9 +185,9 @@ ctk_drawing_area_style_updated (GtkWidget *widget)
 }
 
 static void
-ctk_drawing_area_realize (GtkWidget *widget)
+ctk_drawing_area_realize (CtkWidget *widget)
 {
-  GtkAllocation allocation;
+  CtkAllocation allocation;
   GdkWindow *window;
   GdkWindowAttr attributes;
   gint attributes_mask;
@@ -225,8 +225,8 @@ ctk_drawing_area_realize (GtkWidget *widget)
 }
 
 static void
-ctk_drawing_area_size_allocate (GtkWidget     *widget,
-                                GtkAllocation *allocation)
+ctk_drawing_area_size_allocate (CtkWidget     *widget,
+                                CtkAllocation *allocation)
 {
   g_return_if_fail (CTK_IS_DRAWING_AREA (widget));
   g_return_if_fail (allocation != NULL);
@@ -245,10 +245,10 @@ ctk_drawing_area_size_allocate (GtkWidget     *widget,
 }
 
 static void
-ctk_drawing_area_send_configure (GtkDrawingArea *darea)
+ctk_drawing_area_send_configure (CtkDrawingArea *darea)
 {
-  GtkAllocation allocation;
-  GtkWidget *widget;
+  CtkAllocation allocation;
+  CtkWidget *widget;
   GdkEvent *event = gdk_event_new (GDK_CONFIGURE);
 
   widget = CTK_WIDGET (darea);

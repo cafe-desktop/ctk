@@ -12,10 +12,10 @@
  */
 typedef struct
 {
-  GtkTextView tv;
+  CtkTextView tv;
 } MyTextView;
 
-typedef GtkTextViewClass MyTextViewClass;
+typedef CtkTextViewClass MyTextViewClass;
 
 G_DEFINE_TYPE (MyTextView, my_text_view, CTK_TYPE_TEXT_VIEW)
 
@@ -27,12 +27,12 @@ my_text_view_class_init (MyTextViewClass *tv_class) {}
 
 
 
-GtkWidget *
+CtkWidget *
 create_widget_factory_content (void)
 {
   GError *error = NULL;
-  GtkBuilder *builder;
-  GtkWidget *result;
+  CtkBuilder *builder;
+  CtkWidget *result;
 
   g_type_ensure (my_text_view_get_type ());
   builder = ctk_builder_new ();
@@ -52,7 +52,7 @@ create_widget_factory_content (void)
 }
 
 static void
-set_adjustment_to_fraction (GtkAdjustment *adjustment,
+set_adjustment_to_fraction (CtkAdjustment *adjustment,
                             gdouble        fraction)
 {
   gdouble upper = ctk_adjustment_get_upper (adjustment);
@@ -65,14 +65,14 @@ set_adjustment_to_fraction (GtkAdjustment *adjustment,
 }
 
 gboolean
-scroll_viewport (GtkWidget     *viewport,
+scroll_viewport (CtkWidget     *viewport,
                  GdkFrameClock *frame_clock,
                  gpointer       user_data)
 {
   static gint64 start_time;
   gint64 now = gdk_frame_clock_get_frame_time (frame_clock);
   gdouble elapsed;
-  GtkAdjustment *hadjustment, *vadjustment;
+  CtkAdjustment *hadjustment, *vadjustment;
 
   if (start_time == 0)
     start_time = now;
@@ -95,10 +95,10 @@ static GOptionEntry options[] = {
 int
 main (int argc, char **argv)
 {
-  GtkWidget *window;
-  GtkWidget *scrolled_window;
-  GtkWidget *viewport;
-  GtkWidget *grid;
+  CtkWidget *window;
+  CtkWidget *scrolled_window;
+  CtkWidget *viewport;
+  CtkWidget *grid;
   GError *error = NULL;
   int i;
 
@@ -129,7 +129,7 @@ main (int argc, char **argv)
 
   for (i = 0; i < 4; i++)
     {
-      GtkWidget *content = create_widget_factory_content ();
+      CtkWidget *content = create_widget_factory_content ();
       ctk_grid_attach (CTK_GRID (grid), content,
                        i % 2, i / 2, 1, 1);
       g_object_unref (content);

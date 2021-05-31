@@ -2,9 +2,9 @@
 #include <ctk/ctk.h>
 
 static gboolean
-draw_cb_checks (GtkWidget *widget, cairo_t *cr)
+draw_cb_checks (CtkWidget *widget, cairo_t *cr)
 {
-  GtkStyleContext *context;
+  CtkStyleContext *context;
 
   context = ctk_widget_get_style_context (widget);
 
@@ -27,9 +27,9 @@ draw_cb_checks (GtkWidget *widget, cairo_t *cr)
 
 
 static gboolean
-draw_cb_options (GtkWidget *widget, cairo_t *cr)
+draw_cb_options (CtkWidget *widget, cairo_t *cr)
 {
-  GtkStyleContext *context;
+  CtkStyleContext *context;
 
   context = ctk_widget_get_style_context (widget);
 
@@ -51,9 +51,9 @@ draw_cb_options (GtkWidget *widget, cairo_t *cr)
 }
 
 static gboolean
-draw_cb_arrows (GtkWidget *widget, cairo_t *cr)
+draw_cb_arrows (CtkWidget *widget, cairo_t *cr)
 {
-  GtkStyleContext *context;
+  CtkStyleContext *context;
 
   context = ctk_widget_get_style_context (widget);
 
@@ -71,9 +71,9 @@ draw_cb_arrows (GtkWidget *widget, cairo_t *cr)
 }
 
 static gboolean
-draw_cb_expanders (GtkWidget *widget, cairo_t *cr)
+draw_cb_expanders (CtkWidget *widget, cairo_t *cr)
 {
-  GtkStyleContext *context;
+  CtkStyleContext *context;
 
   context = ctk_widget_get_style_context (widget);
 
@@ -95,9 +95,9 @@ draw_cb_expanders (GtkWidget *widget, cairo_t *cr)
 }
 
 static gboolean
-draw_cb_background (GtkWidget *widget, cairo_t *cr)
+draw_cb_background (CtkWidget *widget, cairo_t *cr)
 {
-  GtkStyleContext *context;
+  CtkStyleContext *context;
 
   context = ctk_widget_get_style_context (widget);
 
@@ -114,9 +114,9 @@ draw_cb_background (GtkWidget *widget, cairo_t *cr)
 }
 
 static gboolean
-draw_cb_frame (GtkWidget *widget, cairo_t *cr)
+draw_cb_frame (CtkWidget *widget, cairo_t *cr)
 {
-  GtkStyleContext *context;
+  CtkStyleContext *context;
 
   context = ctk_widget_get_style_context (widget);
 
@@ -145,10 +145,10 @@ draw_cb_frame (GtkWidget *widget, cairo_t *cr)
 
 /* FIXME: this doesn't work */
 static gboolean
-draw_cb_activity (GtkWidget *widget, cairo_t *cr)
+draw_cb_activity (CtkWidget *widget, cairo_t *cr)
 {
-  GtkStyleContext *context;
-  GtkWidgetPath *path;
+  CtkStyleContext *context;
+  CtkWidgetPath *path;
 
   context = ctk_widget_get_style_context (widget);
   ctk_style_context_save (context);
@@ -168,10 +168,10 @@ draw_cb_activity (GtkWidget *widget, cairo_t *cr)
 }
 
 static gboolean
-draw_cb_slider (GtkWidget *widget, cairo_t *cr)
+draw_cb_slider (CtkWidget *widget, cairo_t *cr)
 {
-  GtkStyleContext *context;
-  GtkWidgetPath *path;
+  CtkStyleContext *context;
+  CtkWidgetPath *path;
 
   context = ctk_widget_get_style_context (widget);
   ctk_style_context_save (context);
@@ -192,9 +192,9 @@ draw_cb_slider (GtkWidget *widget, cairo_t *cr)
 }
 
 static gboolean
-draw_cb_focus (GtkWidget *widget, cairo_t *cr)
+draw_cb_focus (CtkWidget *widget, cairo_t *cr)
 {
-  GtkStyleContext *context;
+  CtkStyleContext *context;
 
   context = ctk_widget_get_style_context (widget);
 
@@ -208,9 +208,9 @@ draw_cb_focus (GtkWidget *widget, cairo_t *cr)
 }
 
 static gboolean
-draw_cb_extension (GtkWidget *widget, cairo_t *cr)
+draw_cb_extension (CtkWidget *widget, cairo_t *cr)
 {
-  GtkStyleContext *context;
+  CtkStyleContext *context;
 
   context = ctk_widget_get_style_context (widget);
 
@@ -233,9 +233,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static gboolean
-draw_cb_frame_gap (GtkWidget *widget, cairo_t *cr)
+draw_cb_frame_gap (CtkWidget *widget, cairo_t *cr)
 {
-  GtkStyleContext *context;
+  CtkStyleContext *context;
 
   context = ctk_widget_get_style_context (widget);
 
@@ -252,9 +252,9 @@ draw_cb_frame_gap (GtkWidget *widget, cairo_t *cr)
 }
 
 static gboolean
-draw_cb_handles (GtkWidget *widget, cairo_t *cr)
+draw_cb_handles (CtkWidget *widget, cairo_t *cr)
 {
-  GtkStyleContext *context;
+  CtkStyleContext *context;
 
   context = ctk_widget_get_style_context (widget);
   ctk_style_context_save (context);
@@ -279,7 +279,7 @@ draw_cb_handles (GtkWidget *widget, cairo_t *cr)
 static char *what;
 
 static gboolean
-draw_cb (GtkWidget *widget, cairo_t *cr)
+draw_cb (CtkWidget *widget, cairo_t *cr)
 {
   if (strcmp (what, "check") == 0)
     return draw_cb_checks (widget, cr);
@@ -311,10 +311,10 @@ draw_cb (GtkWidget *widget, cairo_t *cr)
 
 int main (int argc, char *argv[])
 {
-  GtkWidget *window;
-  GtkWidget *ebox;
-  GtkStyleContext *context;
-  GtkStyleProvider *provider;
+  CtkWidget *window;
+  CtkWidget *ebox;
+  CtkStyleContext *context;
+  CtkStyleProvider *provider;
 
   ctk_init (&argc, &argv);
 
@@ -330,7 +330,7 @@ int main (int argc, char *argv[])
   ctk_widget_set_name (ebox, "ebox");
 
   context = ctk_widget_get_style_context (ebox);
-  provider = (GtkStyleProvider *)ctk_css_provider_new ();
+  provider = (CtkStyleProvider *)ctk_css_provider_new ();
   ctk_css_provider_load_from_data (CTK_CSS_PROVIDER (provider),
                                    ".frame1 {\n"
                                    "   border-image: url('gradient1.png') 10 10 10 10 stretch;\n"

@@ -2987,7 +2987,7 @@ msgid "Pointer: %p"
 msgstr "Δείκτης: %p"
 
 #. Translators: %s is a type name, for example
-#. * GtkPropertyExpression with value \"2.5\"
+#. * CtkPropertyExpression with value \"2.5\"
 #.
 #: ctk/inspector/prop-editor.c:788
 #, c-format
@@ -2995,7 +2995,7 @@ msgid "%s with value \"%s\""
 msgstr "%s με τιμή «%s»"
 
 #. Translators: Both %s are type names, for example
-#. * GtkPropertyExpression with type GObject
+#. * CtkPropertyExpression with type GObject
 #.
 #: ctk/inspector/prop-editor.c:799
 #, c-format
@@ -3003,7 +3003,7 @@ msgid "%s with type %s"
 msgstr "%s με τύπο %s"
 
 #. Translators: Both %s are type names, for example
-#. * GtkObjectExpression for GtkStringObject 0x23456789
+#. * CtkObjectExpression for CtkStringObject 0x23456789
 #.
 #: ctk/inspector/prop-editor.c:812
 #, c-format
@@ -3011,7 +3011,7 @@ msgid "%s for %s %p"
 msgstr "%s για %s %p"
 
 #. Translators: Both %s are type names, for example
-#. * GtkPropertyExpression with value type: gchararray
+#. * CtkPropertyExpression with value type: gchararray
 #.
 #: ctk/inspector/prop-editor.c:842
 #, c-format
@@ -3043,7 +3043,7 @@ msgid "Column:"
 msgstr "Στήλη:"
 
 #. Translators: %s is a type name, for example
-#. * Action from 0x2345678 (GtkApplicationWindow)
+#. * Action from 0x2345678 (CtkApplicationWindow)
 #.
 #: ctk/inspector/prop-editor.c:1410
 #, fuzzy, c-format
@@ -3056,27 +3056,27 @@ msgid "Reset"
 msgstr "Επαναφορά"
 
 #: ctk/inspector/prop-editor.c:1473
-msgctxt "GtkSettings source"
+msgctxt "CtkSettings source"
 msgid "Default"
 msgstr "Προεπιλογή"
 
 #: ctk/inspector/prop-editor.c:1476
-msgctxt "GtkSettings source"
+msgctxt "CtkSettings source"
 msgid "Theme"
 msgstr "Θέμα"
 
 #: ctk/inspector/prop-editor.c:1479
-msgctxt "GtkSettings source"
+msgctxt "CtkSettings source"
 msgid "XSettings"
 msgstr "XSettings"
 
 #: ctk/inspector/prop-editor.c:1483
-msgctxt "GtkSettings source"
+msgctxt "CtkSettings source"
 msgid "Application"
 msgstr "Εφαρμογή"
 
 #: ctk/inspector/prop-editor.c:1486
-msgctxt "GtkSettings source"
+msgctxt "CtkSettings source"
 msgid "Unknown"
 msgstr "Άγνωστο"
 
@@ -5834,7 +5834,7 @@ msgid ""
 "  --id=ID      Preview only the named object\n"
 "  --css=FILE   Use style from CSS file\n"
 "\n"
-"Perform various tasks on GtkBuilder .ui files.\n"
+"Perform various tasks on CtkBuilder .ui files.\n"
 msgstr ""
 "Χρήση:\n"
 "  ctk-builder-tool [COMMAND] [OPTION…] FILE\n"
@@ -5853,7 +5853,7 @@ msgstr ""
 "  --id=ID            Προεπισκόπηση μόνο των ονομαζόμενου αρχείου\n"
 "  --css=FILE         Χρήση στυλ από το αρχείο CSS\n"
 "\n"
-"Εκτέλεση διαφόρων εργασιών σε αρχεία .ui του GtkBuilder.\n"
+"Εκτέλεση διαφόρων εργασιών σε αρχεία .ui του CtkBuilder.\n"
 
 #: ctk/tools/ctk-builder-tool-simplify.c:488
 #, c-format
@@ -8582,7 +8582,7 @@ msgstr "Ακαθόριστο προφίλ"
 #~ "  simplify    Simplify the file\n"
 #~ "  enumerate   List all named objects\n"
 #~ "\n"
-#~ "Perform various tasks on GtkBuilder .ui files.\n"
+#~ "Perform various tasks on CtkBuilder .ui files.\n"
 #~ msgstr ""
 #~ "Χρήση:\n"
 #~ "  ctk-builder-tool [COMMAND] FILE\n"
@@ -8592,7 +8592,7 @@ msgstr "Ακαθόριστο προφίλ"
 #~ "  simplify    Απλοποίηση του αρχείου\n"
 #~ "  enumerate   Απαρίθμηση όλων των επώνυμων αντικειμένων\n"
 #~ "\n"
-#~ "Εκτέλεση των διάφορων εργασιών στα αρχεία GtkBuilder .ui.\n"
+#~ "Εκτέλεση των διάφορων εργασιών στα αρχεία CtkBuilder .ui.\n"
 
 #~ msgid "APPLICATION [URI…] — launch an APPLICATION with URI."
 #~ msgstr "ΕΦΑΡΜΟΓΗ [URI...] - εκτελέστε μια ΕΦΑΡΜΟΓΗ με URI."

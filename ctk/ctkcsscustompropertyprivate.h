@@ -25,26 +25,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CSS_CUSTOM_PROPERTY           (_ctk_css_custom_property_get_type ())
-#define CTK_CSS_CUSTOM_PROPERTY(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_CUSTOM_PROPERTY, GtkCssCustomProperty))
-#define CTK_CSS_CUSTOM_PROPERTY_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_CUSTOM_PROPERTY, GtkCssCustomPropertyClass))
+#define CTK_CSS_CUSTOM_PROPERTY(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_CUSTOM_PROPERTY, CtkCssCustomProperty))
+#define CTK_CSS_CUSTOM_PROPERTY_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_CUSTOM_PROPERTY, CtkCssCustomPropertyClass))
 #define CTK_IS_CSS_CUSTOM_PROPERTY(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_CUSTOM_PROPERTY))
 #define CTK_IS_CSS_CUSTOM_PROPERTY_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_CUSTOM_PROPERTY))
-#define CTK_CSS_CUSTOM_PROPERTY_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_CUSTOM_PROPERTY, GtkCssCustomPropertyClass))
+#define CTK_CSS_CUSTOM_PROPERTY_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_CUSTOM_PROPERTY, CtkCssCustomPropertyClass))
 
-typedef struct _GtkCssCustomProperty           GtkCssCustomProperty;
-typedef struct _GtkCssCustomPropertyClass      GtkCssCustomPropertyClass;
+typedef struct _CtkCssCustomProperty           CtkCssCustomProperty;
+typedef struct _CtkCssCustomPropertyClass      CtkCssCustomPropertyClass;
 
-struct _GtkCssCustomProperty
+struct _CtkCssCustomProperty
 {
-  GtkCssStyleProperty parent;
+  CtkCssStyleProperty parent;
 
   GParamSpec *pspec;
-  GtkStylePropertyParser property_parse_func;
+  CtkStylePropertyParser property_parse_func;
 };
 
-struct _GtkCssCustomPropertyClass
+struct _CtkCssCustomPropertyClass
 {
-  GtkCssStylePropertyClass parent_class;
+  CtkCssStylePropertyClass parent_class;
 };
 
 GType                   _ctk_css_custom_property_get_type        (void) G_GNUC_CONST;

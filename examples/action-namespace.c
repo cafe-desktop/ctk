@@ -5,8 +5,8 @@ action_activated (GSimpleAction *action,
                   GVariant      *parameter,
                   gpointer       user_data)
 {
-  GtkWindow *parent = user_data;
-  GtkWidget *dialog;
+  CtkWindow *parent = user_data;
+  CtkWidget *dialog;
 
   dialog = ctk_message_dialog_new (parent,
                                    CTK_DIALOG_DESTROY_WITH_PARENT,
@@ -68,10 +68,10 @@ static void
 activate (GApplication *app,
           gpointer      user_data)
 {
-  GtkWidget *win;
-  GtkWidget *button;
+  CtkWidget *win;
+  CtkWidget *button;
   GSimpleActionGroup *doc_actions;
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GMenuModel *doc_menu;
   GMenuModel *win_menu;
   GMenu *button_menu;
@@ -126,7 +126,7 @@ int
 main(int    argc,
      char **argv)
 {
-  GtkApplication *app;
+  CtkApplication *app;
 
   app = ctk_application_new ("org.ctk.Example", 0);
   g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);

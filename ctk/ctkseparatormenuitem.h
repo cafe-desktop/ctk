@@ -36,28 +36,28 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_SEPARATOR_MENU_ITEM            (ctk_separator_menu_item_get_type ())
-#define CTK_SEPARATOR_MENU_ITEM(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SEPARATOR_MENU_ITEM, GtkSeparatorMenuItem))
-#define CTK_SEPARATOR_MENU_ITEM_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SEPARATOR_MENU_ITEM, GtkSeparatorMenuItemClass))
+#define CTK_SEPARATOR_MENU_ITEM(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SEPARATOR_MENU_ITEM, CtkSeparatorMenuItem))
+#define CTK_SEPARATOR_MENU_ITEM_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SEPARATOR_MENU_ITEM, CtkSeparatorMenuItemClass))
 #define CTK_IS_SEPARATOR_MENU_ITEM(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SEPARATOR_MENU_ITEM))
 #define CTK_IS_SEPARATOR_MENU_ITEM_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SEPARATOR_MENU_ITEM))
-#define CTK_SEPARATOR_MENU_ITEM_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SEPARATOR_MENU_ITEM, GtkSeparatorMenuItemClass))
+#define CTK_SEPARATOR_MENU_ITEM_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SEPARATOR_MENU_ITEM, CtkSeparatorMenuItemClass))
 
 
-typedef struct _GtkSeparatorMenuItem       GtkSeparatorMenuItem;
-typedef struct _GtkSeparatorMenuItemClass  GtkSeparatorMenuItemClass;
+typedef struct _CtkSeparatorMenuItem       CtkSeparatorMenuItem;
+typedef struct _CtkSeparatorMenuItemClass  CtkSeparatorMenuItemClass;
 
-struct _GtkSeparatorMenuItem
+struct _CtkSeparatorMenuItem
 {
-  GtkMenuItem menu_item;
+  CtkMenuItem menu_item;
 };
 
 /**
- * GtkSeparatorMenuItemClass:
+ * CtkSeparatorMenuItemClass:
  * @parent_class: The parent class.
  */
-struct _GtkSeparatorMenuItemClass
+struct _CtkSeparatorMenuItemClass
 {
-  GtkMenuItemClass parent_class;
+  CtkMenuItemClass parent_class;
 
   /*< private >*/
 
@@ -72,7 +72,7 @@ struct _GtkSeparatorMenuItemClass
 GDK_AVAILABLE_IN_ALL
 GType	   ctk_separator_menu_item_get_type	   (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget* ctk_separator_menu_item_new	           (void);
+CtkWidget* ctk_separator_menu_item_new	           (void);
 
 
 G_END_DECLS

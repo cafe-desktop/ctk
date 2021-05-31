@@ -1,9 +1,9 @@
 /* Flow Box
  *
- * GtkFlowBox allows flexible and responsive grids which reflow
+ * CtkFlowBox allows flexible and responsive grids which reflow
  * as needed and support sorting and filtering.
  *
- * The children of a GtkFlowBox are regular widgets
+ * The children of a CtkFlowBox are regular widgets
  */
 
 #include <ctk/ctk.h>
@@ -11,7 +11,7 @@
 #include <string.h>
 
 static gboolean
-draw_color (GtkWidget  *drawingarea,
+draw_color (CtkWidget  *drawingarea,
             cairo_t    *cr,
             const char *color_name)
 {
@@ -26,10 +26,10 @@ draw_color (GtkWidget  *drawingarea,
   return FALSE;
 }
 
-static GtkWidget *
+static CtkWidget *
 color_swatch_new (const gchar *color)
 {
-  GtkWidget *button, *area;
+  CtkWidget *button, *area;
 
   button = ctk_button_new ();
   area = ctk_drawing_area_new ();
@@ -41,11 +41,11 @@ color_swatch_new (const gchar *color)
   return button;
 }
 
-GtkWidget *
-do_flowbox (GtkWidget *do_widget)
+CtkWidget *
+do_flowbox (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *scrolled, *flowbox;
+  static CtkWidget *window = NULL;
+  CtkWidget *scrolled, *flowbox;
   const gchar *colors[] = {
     "AliceBlue",
     "AntiqueWhite",

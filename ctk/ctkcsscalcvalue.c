@@ -21,10 +21,10 @@
 
 #include <string.h>
 
-struct _GtkCssValue {
+struct _CtkCssValue {
   CTK_CSS_VALUE_BASE
   gsize                 n_terms;
-  GtkCssValue *         terms[1];
+  CtkCssValue *         terms[1];
 };
 
 static gsize
@@ -32,10 +32,10 @@ ctk_css_value_calc_get_size (gsize n_terms)
 {
   g_assert (n_terms > 0);
 
-  return sizeof (GtkCssValue) + sizeof (GtkCssValue *) * (n_terms - 1);
+  return sizeof (CtkCssValue) + sizeof (CtkCssValue *) * (n_terms - 1);
 }
 static void
-ctk_css_value_calc_free (GtkCssValue *value)
+ctk_css_value_calc_free (CtkCssValue *value)
 {
   gsize i;
 
@@ -47,17 +47,17 @@ ctk_css_value_calc_free (GtkCssValue *value)
   g_slice_free1 (ctk_css_value_calc_get_size (value->n_terms), value);
 }
 
-static GtkCssValue *ctk_css_calc_value_new (gsize n_terms);
+static CtkCssValue *ctk_css_calc_value_new (gsize n_terms);
 
-static GtkCssValue *
+static CtkCssValue *
 ctk_css_value_new_from_array (GPtrArray *array)
 {
-  GtkCssValue *result;
+  CtkCssValue *result;
   
   if (array->len > 1)
     {
       result = ctk_css_calc_value_new (array->len);
-      memcpy (result->terms, array->pdata, array->len * sizeof (GtkCssValue *));
+      memcpy (result->terms, array->pdata, array->len * sizeof (CtkCssValue *));
     }
   else
     {
@@ -70,7 +70,7 @@ ctk_css_value_new_from_array (GPtrArray *array)
 }
 
 static void
-ctk_css_calc_array_add (GPtrArray *array, GtkCssValue *value)
+ctk_css_calc_array_add (GPtrArray *array, CtkCssValue *value)
 {
   gsize i;
   gint calc_term_order;
@@ -79,7 +79,7 @@ ctk_css_calc_array_add (GPtrArray *array, GtkCssValue *value)
 
   for (i = 0; i < array->len; i++)
     {
-      GtkCssValue *sum = ctk_css_number_value_try_add (g_ptr_array_index (array, i), value);
+      CtkCssValue *sum = ctk_css_number_value_try_add (g_ptr_array_index (array, i), value);
 
       if (sum)
         {
@@ -97,14 +97,14 @@ ctk_css_calc_array_add (GPtrArray *array, GtkCssValue *value)
   g_ptr_array_add (array, value);
 }
 
-static GtkCssValue *
-ctk_css_value_calc_compute (GtkCssValue             *value,
+static CtkCssValue *
+ctk_css_value_calc_compute (CtkCssValue             *value,
                             guint                    property_id,
-                            GtkStyleProviderPrivate *provider,
-                            GtkCssStyle             *style,
-                            GtkCssStyle             *parent_style)
+                            CtkStyleProviderPrivate *provider,
+                            CtkCssStyle             *style,
+                            CtkCssStyle             *parent_style)
 {
-  GtkCssValue *result;
+  CtkCssValue *result;
   GPtrArray *array;
   gboolean changed = FALSE;
   gsize i;
@@ -112,7 +112,7 @@ ctk_css_value_calc_compute (GtkCssValue             *value,
   array = g_ptr_array_new ();
   for (i = 0; i < value->n_terms; i++)
     {
-      GtkCssValue *computed = _ctk_css_value_compute (value->terms[i], property_id, provider, style, parent_style);
+      CtkCssValue *computed = _ctk_css_value_compute (value->terms[i], property_id, provider, style, parent_style);
       changed |= computed != value->terms[i];
       ctk_css_calc_array_add (array, computed);
     }
@@ -133,8 +133,8 @@ ctk_css_value_calc_compute (GtkCssValue             *value,
 
 
 static gboolean
-ctk_css_value_calc_equal (const GtkCssValue *value1,
-                          const GtkCssValue *value2)
+ctk_css_value_calc_equal (const CtkCssValue *value1,
+                          const CtkCssValue *value2)
 {
   gsize i;
 
@@ -151,7 +151,7 @@ ctk_css_value_calc_equal (const GtkCssValue *value1,
 }
 
 static void
-ctk_css_value_calc_print (const GtkCssValue *value,
+ctk_css_value_calc_print (const CtkCssValue *value,
                           GString           *string)
 {
   gsize i;
@@ -168,7 +168,7 @@ ctk_css_value_calc_print (const GtkCssValue *value,
 }
 
 static double
-ctk_css_value_calc_get (const GtkCssValue *value,
+ctk_css_value_calc_get (const CtkCssValue *value,
                         double             one_hundred_percent)
 {
   double result = 0.0;
@@ -182,10 +182,10 @@ ctk_css_value_calc_get (const GtkCssValue *value,
   return result;
 }
 
-static GtkCssDimension
-ctk_css_value_calc_get_dimension (const GtkCssValue *value)
+static CtkCssDimension
+ctk_css_value_calc_get_dimension (const CtkCssValue *value)
 {
-  GtkCssDimension dimension = CTK_CSS_DIMENSION_PERCENTAGE;
+  CtkCssDimension dimension = CTK_CSS_DIMENSION_PERCENTAGE;
   gsize i;
 
   for (i = 0; i < value->n_terms && dimension == CTK_CSS_DIMENSION_PERCENTAGE; i++)
@@ -197,7 +197,7 @@ ctk_css_value_calc_get_dimension (const GtkCssValue *value)
 }
 
 static gboolean
-ctk_css_value_calc_has_percent (const GtkCssValue *value)
+ctk_css_value_calc_has_percent (const CtkCssValue *value)
 {
   gsize i;
 
@@ -210,11 +210,11 @@ ctk_css_value_calc_has_percent (const GtkCssValue *value)
   return FALSE;
 }
 
-static GtkCssValue *
-ctk_css_value_calc_multiply (const GtkCssValue *value,
+static CtkCssValue *
+ctk_css_value_calc_multiply (const CtkCssValue *value,
                              double             factor)
 {
-  GtkCssValue *result;
+  CtkCssValue *result;
   gsize i;
 
   result = ctk_css_calc_value_new (value->n_terms);
@@ -227,15 +227,15 @@ ctk_css_value_calc_multiply (const GtkCssValue *value,
   return result;
 }
 
-static GtkCssValue *
-ctk_css_value_calc_try_add (const GtkCssValue *value1,
-                            const GtkCssValue *value2)
+static CtkCssValue *
+ctk_css_value_calc_try_add (const CtkCssValue *value1,
+                            const CtkCssValue *value2)
 {
   return NULL;
 }
 
 static gint
-ctk_css_value_calc_get_calc_term_order (const GtkCssValue *value)
+ctk_css_value_calc_get_calc_term_order (const CtkCssValue *value)
 {
   /* This should never be needed because calc() can't contain calc(),
    * but eh...
@@ -243,7 +243,7 @@ ctk_css_value_calc_get_calc_term_order (const GtkCssValue *value)
   return 0;
 }
 
-static const GtkCssNumberValueClass CTK_CSS_VALUE_CALC = {
+static const CtkCssNumberValueClass CTK_CSS_VALUE_CALC = {
   {
     ctk_css_value_calc_free,
     ctk_css_value_calc_compute,
@@ -259,10 +259,10 @@ static const GtkCssNumberValueClass CTK_CSS_VALUE_CALC = {
   ctk_css_value_calc_get_calc_term_order
 };
 
-static GtkCssValue *
+static CtkCssValue *
 ctk_css_calc_value_new (gsize n_terms)
 {
-  GtkCssValue *result;
+  CtkCssValue *result;
 
   result = _ctk_css_value_alloc (&CTK_CSS_VALUE_CALC.value_class,
                                  ctk_css_value_calc_get_size (n_terms));
@@ -271,9 +271,9 @@ ctk_css_calc_value_new (gsize n_terms)
   return result;
 }
 
-GtkCssValue *
-ctk_css_calc_value_new_sum (GtkCssValue *value1,
-                            GtkCssValue *value2)
+CtkCssValue *
+ctk_css_calc_value_new_sum (CtkCssValue *value1,
+                            CtkCssValue *value2)
 {
   GPtrArray *array;
   gsize i;
@@ -307,12 +307,12 @@ ctk_css_calc_value_new_sum (GtkCssValue *value1,
   return ctk_css_value_new_from_array (array);
 }
 
-GtkCssValue *   ctk_css_calc_value_parse_sum (GtkCssParser           *parser,
-                                              GtkCssNumberParseFlags  flags);
+CtkCssValue *   ctk_css_calc_value_parse_sum (CtkCssParser           *parser,
+                                              CtkCssNumberParseFlags  flags);
 
-GtkCssValue *
-ctk_css_calc_value_parse_value (GtkCssParser           *parser,
-                                GtkCssNumberParseFlags  flags)
+CtkCssValue *
+ctk_css_calc_value_parse_value (CtkCssParser           *parser,
+                                CtkCssNumberParseFlags  flags)
 {
   if (_ctk_css_parser_has_prefix (parser, "calc"))
     {
@@ -322,7 +322,7 @@ ctk_css_calc_value_parse_value (GtkCssParser           *parser,
 
   if (_ctk_css_parser_try (parser, "(", TRUE))
     {
-      GtkCssValue *result = ctk_css_calc_value_parse_sum (parser, flags);
+      CtkCssValue *result = ctk_css_calc_value_parse_sum (parser, flags);
       if (result == NULL)
         return NULL;
 
@@ -340,18 +340,18 @@ ctk_css_calc_value_parse_value (GtkCssParser           *parser,
 }
 
 static gboolean
-is_number (GtkCssValue *value)
+is_number (CtkCssValue *value)
 {
   return ctk_css_number_value_get_dimension (value) == CTK_CSS_DIMENSION_NUMBER
       && !ctk_css_number_value_has_percent (value);
 }
 
-GtkCssValue *
-ctk_css_calc_value_parse_product (GtkCssParser           *parser,
-                                  GtkCssNumberParseFlags  flags)
+CtkCssValue *
+ctk_css_calc_value_parse_product (CtkCssParser           *parser,
+                                  CtkCssNumberParseFlags  flags)
 {
-  GtkCssValue *result, *value, *temp;
-  GtkCssNumberParseFlags actual_flags;
+  CtkCssValue *result, *value, *temp;
+  CtkCssNumberParseFlags actual_flags;
 
   actual_flags = flags | CTK_CSS_PARSE_NUMBER;
 
@@ -407,11 +407,11 @@ fail:
   return NULL;
 }
 
-GtkCssValue *
-ctk_css_calc_value_parse_sum (GtkCssParser           *parser,
-                              GtkCssNumberParseFlags  flags)
+CtkCssValue *
+ctk_css_calc_value_parse_sum (CtkCssParser           *parser,
+                              CtkCssNumberParseFlags  flags)
 {
-  GtkCssValue *result;
+  CtkCssValue *result;
 
   result = ctk_css_calc_value_parse_product (parser, flags);
   if (result == NULL)
@@ -419,7 +419,7 @@ ctk_css_calc_value_parse_sum (GtkCssParser           *parser,
 
   while (_ctk_css_parser_begins_with (parser, '+') || _ctk_css_parser_begins_with (parser, '-'))
     {
-      GtkCssValue *next, *temp;
+      CtkCssValue *next, *temp;
 
       if (_ctk_css_parser_try (parser, "+", TRUE))
         {
@@ -454,11 +454,11 @@ fail:
   return NULL;
 }
 
-GtkCssValue *
-ctk_css_calc_value_parse (GtkCssParser           *parser,
-                          GtkCssNumberParseFlags  flags)
+CtkCssValue *
+ctk_css_calc_value_parse (CtkCssParser           *parser,
+                          CtkCssNumberParseFlags  flags)
 {
-  GtkCssValue *value;
+  CtkCssValue *value;
 
   /* This confuses '*' and '/' so we disallow backwards compat. */
   flags &= ~CTK_CSS_NUMBER_AS_PIXELS;

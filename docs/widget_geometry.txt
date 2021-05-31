@@ -2,7 +2,7 @@ This file is some notes about how different widgets are drawn.
 
 =============
 
-GtkMenu
+CtkMenu
 
 =============
 +----------------------------------------------------------------------------+
@@ -50,14 +50,14 @@ GtkMenu
 |                                A                                           |
 +----------------------------------------------------------------------------+
 
-A: GtkContainer::border_width
+A: CtkContainer::border_width
 B: xthickness
 C: ythickness
 D: vertical_padding
 
 =============
 
-GtkMenuItem
+CtkMenuItem
 
 =============
 
@@ -85,7 +85,7 @@ GtkMenuItem
 |                                A                                           |
 +----------------------------------------------------------------------------+
 
-A: GtkContainer:border_width
+A: CtkContainer:border_width
 B: xthickness
 C: ythickness
 D: horizontal_padding
@@ -97,7 +97,7 @@ H: arrow_spacing spacing (when the item has a non-vertical submenu)
 
 =============
 
-GtkOptionMenu:
+CtkOptionMenu:
 
 =============
 
@@ -105,15 +105,15 @@ Geometry parameters
 
  Style properties
 
-   GtkWidget::interior_focus = TRUE
-   GtkWidget::focus_width = 1
-   GtkWidget::focus_padding = 0
-   GtkOptionMenu::indicator_size = { 7, 13 }
-   GtkOptionMenu::indicator_spacing = { 7, 5, 2, 2 }
+   CtkWidget::interior_focus = TRUE
+   CtkWidget::focus_width = 1
+   CtkWidget::focus_padding = 0
+   CtkOptionMenu::indicator_size = { 7, 13 }
+   CtkOptionMenu::indicator_spacing = { 7, 5, 2, 2 }
 
  Properties
 
-   GtkContainer::border_width = 0
+   CtkContainer::border_width = 0
 
  #defines
 
@@ -153,21 +153,21 @@ I) interior_focus = TRUE
 |                      	A 		      	   |
 +--------------------------------------------------+
 
-  A: GtkContainer::border_width
+  A: CtkContainer::border_width
   B: xthickness
-  C: GtkWidget::focus_pad
-  D: GtkWidget::focus_width
+  C: CtkWidget::focus_pad
+  D: CtkWidget::focus_width
   E: CHILD_LEFT_SPACING
   F: CHILD_RIGHT_SPACING
-  G: GtkOptionMenu::indicator_spacing::left
+  G: CtkOptionMenu::indicator_spacing::left
   H: ythickness
-  I: GtkOptionMenu::indicator_size::width
-  J: GtkOptionMenu::indicator_size::height
+  I: CtkOptionMenu::indicator_size::width
+  J: CtkOptionMenu::indicator_size::height
   K: CHILD_TOP_SPACING
-  L: GtkOptionMenu::indicator_spacing::top + GtkWidget::focus_width + GtkWidget::focus_pad + CHILD_TOP_SPACING
+  L: CtkOptionMenu::indicator_spacing::top + CtkWidget::focus_width + CtkWidget::focus_pad + CHILD_TOP_SPACING
   M: CHILD_BOTTOM_SPACING
-  N: GtkOptionMenu::indicator_spacing::bottom + GtkWidget::focus_width + GtkWidget::focus_pad + CHILD_BOTTOM_SPACING
-  O: GtkOptionMenu::indicator_spacing::right
+  N: CtkOptionMenu::indicator_spacing::bottom + CtkWidget::focus_width + CtkWidget::focus_pad + CHILD_BOTTOM_SPACING
+  O: CtkOptionMenu::indicator_spacing::right
 
 
 II) interior_focus = FALSE
@@ -201,20 +201,20 @@ II) interior_focus = FALSE
 +--------------------------------------------------+
 
 
- A: GtkContainer::border_width
- B: GtkWidget::focus_width
- C: GtkWidget::focus_padding
+ A: CtkContainer::border_width
+ B: CtkWidget::focus_width
+ C: CtkWidget::focus_padding
  D: xthickness
  E: CHILD_LEFT_SPACING
- F: CHILD_RIGHT_SPACING + GtkOptionMenu::indicator_spacing::left
- G: GtkOptionMenu::indicator_spacing::right
+ F: CHILD_RIGHT_SPACING + CtkOptionMenu::indicator_spacing::left
+ G: CtkOptionMenu::indicator_spacing::right
  H: ythickness
- I: GtkOptionMenu::indicator_size::width
- J: GtkOptionMenu::indicator_size::height
+ I: CtkOptionMenu::indicator_size::width
+ J: CtkOptionMenu::indicator_size::height
  K: CHILD_TOP_SPACING
- L: CHILD_TOP_SPACING + GtkOptionMenu::indicator_spacing::top
+ L: CHILD_TOP_SPACING + CtkOptionMenu::indicator_spacing::top
  M: CHILD_BOTTOM_SPACING
- N: CHILD_BOTTOM_SPACING + GtkOptionMenu::indicator_spacing::bottom
+ N: CHILD_BOTTOM_SPACING + CtkOptionMenu::indicator_spacing::bottom
 
 
 III) interior_focus = FALSE, !HAVE_FOCUS
@@ -248,26 +248,26 @@ III) interior_focus = FALSE, !HAVE_FOCUS
 +--------------------------------------------------+
 
 
- A: GtkContainer::border_width
- B: GtkWidget::focus_width
- C: GtkWidget::focus_padding
+ A: CtkContainer::border_width
+ B: CtkWidget::focus_width
+ C: CtkWidget::focus_padding
  D: xthickness
- E: CHILD_LEFT_SPACING + GtkWidget::focus_width + GtkWidget::focus_padding
- F: CHILD_RIGHT_SPACING + GtkOptionMenu::in+icator_spacing::left
- G: GtkOptionMenu::indicator_spacing::right + GtkWidget::focus_width + GtkWidget::focus_padding
+ E: CHILD_LEFT_SPACING + CtkWidget::focus_width + CtkWidget::focus_padding
+ F: CHILD_RIGHT_SPACING + CtkOptionMenu::in+icator_spacing::left
+ G: CtkOptionMenu::indicator_spacing::right + CtkWidget::focus_width + CtkWidget::focus_padding
  H: ythickness
- I: GtkOptionMenu::indicator_size::width
- J: GtkOptionMenu::indicator_size::height
- K: CHILD_TOP_SPACING + GtkWidget::focus_width + GtkWidget::focus_padding
- L: CHILD_TOP_SPACING + GtkOptionMenu::indicator_spacing::top + GtkWidget::focus_width + GtkWidget::focus_padding
- M: CHILD_BOTTOM_SPACING + GtkWidget::focus_width + GtkWidget::focus_padding
- N: CHILD_BOTTOM_SPACING + GtkOptionMenu::indicator_spacing::bottom + GtkWidget::focus_width + GtkWidget::focus_padding
+ I: CtkOptionMenu::indicator_size::width
+ J: CtkOptionMenu::indicator_size::height
+ K: CHILD_TOP_SPACING + CtkWidget::focus_width + CtkWidget::focus_padding
+ L: CHILD_TOP_SPACING + CtkOptionMenu::indicator_spacing::top + CtkWidget::focus_width + CtkWidget::focus_padding
+ M: CHILD_BOTTOM_SPACING + CtkWidget::focus_width + CtkWidget::focus_padding
+ N: CHILD_BOTTOM_SPACING + CtkOptionMenu::indicator_spacing::bottom + CtkWidget::focus_width + CtkWidget::focus_padding
 
 
 
 =====================
 
-GtkButton
+CtkButton
 
 =====================
 
@@ -278,23 +278,23 @@ NOTE: the child), if the button is !CAN_FOCUS.
 
  Style properties
 
-   GtkWidget::interior_focus = TRUE
-   GtkWidget::focus_width = 1
-   GtkWidget::focus_padding = 0
-   GtkButton::default_border = { 1, 1, 1, 1 };
-   GtkButton::default_outside_border = { 0, 0, 0, 0 };
-   GtkButton::child_displacement_x = 0;
-   GtkButton::child_displacement_y = 0;
+   CtkWidget::interior_focus = TRUE
+   CtkWidget::focus_width = 1
+   CtkWidget::focus_padding = 0
+   CtkButton::default_border = { 1, 1, 1, 1 };
+   CtkButton::default_outside_border = { 0, 0, 0, 0 };
+   CtkButton::child_displacement_x = 0;
+   CtkButton::child_displacement_y = 0;
 
  Properties
 
-   GtkContainer::border_width = 0
+   CtkContainer::border_width = 0
 
  #defines
 
    CHILD_SPACING 1
 
-I) HAS_DEFAULT && (!GtkWidget::interior-focus || !HAVE_FOCUS)
+I) HAS_DEFAULT && (!CtkWidget::interior-focus || !HAVE_FOCUS)
 
 +----------------------------------------------+
 |    		       A 		       |
@@ -328,22 +328,22 @@ I) HAS_DEFAULT && (!GtkWidget::interior-focus || !HAVE_FOCUS)
 |                      A                       |
 +----------------------------------------------+
 
-A: GtkContainer::border-width
-B: GtkButton::default-border::left
-C: GtkButton::default-border::right
+A: CtkContainer::border-width
+B: CtkButton::default-border::left
+C: CtkButton::default-border::right
 D: xthickness
-E: GtkWidget::focus-padding
-F: GtkWidget::focus-line-width
-G: CHILD_SPACING + (depressed ? GtkButton::child-displacement-x : 0)
-I: GtkButton::default-border::top
+E: CtkWidget::focus-padding
+F: CtkWidget::focus-line-width
+G: CHILD_SPACING + (depressed ? CtkButton::child-displacement-x : 0)
+I: CtkButton::default-border::top
 J: ythickness
-K: GtkButton::default-border::bottom
-L: CHILD_SPACING + (depressed ? GtkButton::child-displacement-y : 0)
-M: CHILD_SPACING - (depressed ? GtkButton::child-displacement-x : 0)
-N: CHILD_SPACING - (depressed ? GtkButton::child-displacement-y : 0)
+K: CtkButton::default-border::bottom
+L: CHILD_SPACING + (depressed ? CtkButton::child-displacement-y : 0)
+M: CHILD_SPACING - (depressed ? CtkButton::child-displacement-x : 0)
+N: CHILD_SPACING - (depressed ? CtkButton::child-displacement-y : 0)
 
 
-II) !HAS_DEFAULT && (!GtkWidget::interior-focus || !HAVE_FOCUS)
+II) !HAS_DEFAULT && (!CtkWidget::interior-focus || !HAVE_FOCUS)
 
 +----------------------------------------------+
 |    		         		       |
@@ -380,43 +380,43 @@ II) !HAS_DEFAULT && (!GtkWidget::interior-focus || !HAVE_FOCUS)
 
 a) CAN_DEFAULT
 
-B: GtkContainer::border-width + GtkButton::default-outside-border::left
-C: GtkContainer::border-width + GtkButton::default-outside-border::right
+B: CtkContainer::border-width + CtkButton::default-outside-border::left
+C: CtkContainer::border-width + CtkButton::default-outside-border::right
 D: xthickness
-E: GtkWidget::focus-padding
-F: GtkWidget::focus-line-width
-G: CHILD_SPACING + (depressed ? GtkButton::child-displacement-x : 0) +
-   (GtkButton::default-outside-border - GtkButton::default-outside-border)::left
-I: GtkContainer::border-width + GtkButton::default-outside-border::top
+E: CtkWidget::focus-padding
+F: CtkWidget::focus-line-width
+G: CHILD_SPACING + (depressed ? CtkButton::child-displacement-x : 0) +
+   (CtkButton::default-outside-border - CtkButton::default-outside-border)::left
+I: CtkContainer::border-width + CtkButton::default-outside-border::top
 J: ythickness
-K: GtkContainer::border-width + GtkButton::default-outside-border::bottom
-L: CHILD_SPACING + (depressed ? GtkButton::child-displacement-y : 0) +
-   (GtkButton::default-outside-border - GtkButton::default-outside-border)::top
-M: CHILD_SPACING - (depressed ? GtkButton::child-displacement-x : 0) +
-   (GtkButton::default-outside-border - GtkButton::default-outside-border)::right
-N: CHILD_SPACING - (depressed ? GtkButton::child-displacement-y : 0) +
-   (GtkButton::default-outside-border - GtkButton::default-outside-border)::bottom
+K: CtkContainer::border-width + CtkButton::default-outside-border::bottom
+L: CHILD_SPACING + (depressed ? CtkButton::child-displacement-y : 0) +
+   (CtkButton::default-outside-border - CtkButton::default-outside-border)::top
+M: CHILD_SPACING - (depressed ? CtkButton::child-displacement-x : 0) +
+   (CtkButton::default-outside-border - CtkButton::default-outside-border)::right
+N: CHILD_SPACING - (depressed ? CtkButton::child-displacement-y : 0) +
+   (CtkButton::default-outside-border - CtkButton::default-outside-border)::bottom
 
 
 b) !CAN_DEFAULT
 
-B: GtkContainer::border-width
-C: GtkContainer::border-width
+B: CtkContainer::border-width
+C: CtkContainer::border-width
 D: xthickness
-E: GtkWidget::focus-padding
-F: GtkWidget::focus-line-width
-G: CHILD_SPACING + (depressed ? GtkButton::child-displacement-x : 0)
-I: GtkContainer::border-width
+E: CtkWidget::focus-padding
+F: CtkWidget::focus-line-width
+G: CHILD_SPACING + (depressed ? CtkButton::child-displacement-x : 0)
+I: CtkContainer::border-width
 J: ythickness
-K: GtkContainer::border-width
-L: CHILD_SPACING + (depressed ? GtkButton::child-displacement-y : 0)
-M: CHILD_SPACING - (depressed ? GtkButton::child-displacement-x : 0)
-N: CHILD_SPACING - (depressed ? GtkButton::child-displacement-y : 0)
+K: CtkContainer::border-width
+L: CHILD_SPACING + (depressed ? CtkButton::child-displacement-y : 0)
+M: CHILD_SPACING - (depressed ? CtkButton::child-displacement-x : 0)
+N: CHILD_SPACING - (depressed ? CtkButton::child-displacement-y : 0)
 
 
 
 
-III) HAS_DEFAULT && (GtkWidget::interior-focus && HAVE_FOCUS)
+III) HAS_DEFAULT && (CtkWidget::interior-focus && HAVE_FOCUS)
 
 +----------------------------------------------+
 |    		       A 		       |
@@ -450,22 +450,22 @@ III) HAS_DEFAULT && (GtkWidget::interior-focus && HAVE_FOCUS)
 |                      A                       |
 +----------------------------------------------+
 
-A: GtkContainer::border-width
-B: GtkButton::default-border::left
-C: GtkButton::default-border::right
+A: CtkContainer::border-width
+B: CtkButton::default-border::left
+C: CtkButton::default-border::right
 D: xthickness
-E: GtkWidget::focus-padding
-F: GtkWidget::focus-line-width
-G: CHILD_SPACING + (depressed ? GtkButton::child-displacement-x : 0)
-I: GtkButton::default-border::top
+E: CtkWidget::focus-padding
+F: CtkWidget::focus-line-width
+G: CHILD_SPACING + (depressed ? CtkButton::child-displacement-x : 0)
+I: CtkButton::default-border::top
 J: ythickness
-K: GtkButton::default-border::bottom
-L: CHILD_SPACING + (depressed ? GtkButton::child-displacement-y : 0)
-M: CHILD_SPACING - (depressed ? GtkButton::child-displacement-x : 0)
-N: CHILD_SPACING - (depressed ? GtkButton::child-displacement-y : 0)
+K: CtkButton::default-border::bottom
+L: CHILD_SPACING + (depressed ? CtkButton::child-displacement-y : 0)
+M: CHILD_SPACING - (depressed ? CtkButton::child-displacement-x : 0)
+N: CHILD_SPACING - (depressed ? CtkButton::child-displacement-y : 0)
 
 
-IV) !HAS_DEFAULT && (GtkWidget::interior-focus && HAVE_FOCUS)
+IV) !HAS_DEFAULT && (CtkWidget::interior-focus && HAVE_FOCUS)
 
 +----------------------------------------------+
 |    		         		       |
@@ -502,60 +502,60 @@ IV) !HAS_DEFAULT && (GtkWidget::interior-focus && HAVE_FOCUS)
 
 a) CAN_DEFAULT
 
-B: GtkContainer::border-width + GtkButton::default-outside-border::left
-C: GtkContainer::border-width + GtkButton::default-outside-border::right
+B: CtkContainer::border-width + CtkButton::default-outside-border::left
+C: CtkContainer::border-width + CtkButton::default-outside-border::right
 D: xthickness
-E: GtkWidget::focus-padding
-F: GtkWidget::focus-line-width
-G: CHILD_SPACING + (depressed ? GtkButton::child-displacement-x : 0) +
-   (GtkButton::default-outside-border - GtkButton::default-outside-border)::left
-I: GtkContainer::border-width + GtkButton::default-outside-border::top
+E: CtkWidget::focus-padding
+F: CtkWidget::focus-line-width
+G: CHILD_SPACING + (depressed ? CtkButton::child-displacement-x : 0) +
+   (CtkButton::default-outside-border - CtkButton::default-outside-border)::left
+I: CtkContainer::border-width + CtkButton::default-outside-border::top
 J: ythickness
-K: GtkContainer::border-width + GtkButton::default-outside-border::bottom
-L: CHILD_SPACING + (depressed ? GtkButton::child-displacement-y : 0) +
-   (GtkButton::default-outside-border - GtkButton::default-outside-border)::top
-M: CHILD_SPACING - (depressed ? GtkButton::child-displacement-x : 0) +
-   (GtkButton::default-outside-border - GtkButton::default-outside-border)::right
-N: CHILD_SPACING - (depressed ? GtkButton::child-displacement-y : 0) +
-   (GtkButton::default-outside-border - GtkButton::default-outside-border)::bottom
+K: CtkContainer::border-width + CtkButton::default-outside-border::bottom
+L: CHILD_SPACING + (depressed ? CtkButton::child-displacement-y : 0) +
+   (CtkButton::default-outside-border - CtkButton::default-outside-border)::top
+M: CHILD_SPACING - (depressed ? CtkButton::child-displacement-x : 0) +
+   (CtkButton::default-outside-border - CtkButton::default-outside-border)::right
+N: CHILD_SPACING - (depressed ? CtkButton::child-displacement-y : 0) +
+   (CtkButton::default-outside-border - CtkButton::default-outside-border)::bottom
 
 
 b) !CAN_DEFAULT
 
-B: GtkContainer::border-width
-C: GtkContainer::border-width
+B: CtkContainer::border-width
+C: CtkContainer::border-width
 D: xthickness
-E: GtkWidget::focus-padding
-F: GtkWidget::focus-line-width
-G: CHILD_SPACING + (depressed ? GtkButton::child-displacement-x : 0)
-I: GtkContainer::border-width
+E: CtkWidget::focus-padding
+F: CtkWidget::focus-line-width
+G: CHILD_SPACING + (depressed ? CtkButton::child-displacement-x : 0)
+I: CtkContainer::border-width
 J: ythickness
-K: GtkContainer::border-width
-L: CHILD_SPACING + (depressed ? GtkButton::child-displacement-y : 0)
-M: CHILD_SPACING - (depressed ? GtkButton::child-displacement-x : 0)
-N: CHILD_SPACING - (depressed ? GtkButton::child-displacement-y : 0)
+K: CtkContainer::border-width
+L: CHILD_SPACING + (depressed ? CtkButton::child-displacement-y : 0)
+M: CHILD_SPACING - (depressed ? CtkButton::child-displacement-x : 0)
+N: CHILD_SPACING - (depressed ? CtkButton::child-displacement-y : 0)
 
 
 ======================
 
-GtkCheckButton
+CtkCheckButton
 
 ======================
 
 Note: This is the draw_indicator=TRUE case; draw_indicator=FALSE
-      is like GtkButton)
+      is like CtkButton)
 
  Style properties
 
-   GtkWidget::interior_focus = TRUE
-   GtkWidget::focus_width = 1
-   GtkWidget::focus_padding = 0
-   GtkButton::indicator-size = 13
-   GtkButton::indicator-spacing = 2
+   CtkWidget::interior_focus = TRUE
+   CtkWidget::focus_width = 1
+   CtkWidget::focus_padding = 0
+   CtkButton::indicator-size = 13
+   CtkButton::indicator-spacing = 2
 
  Properties
 
-   GtkContainer::border_width = 0
+   CtkContainer::border_width = 0
 
  #defines
 
@@ -581,13 +581,13 @@ interior_focus
  |		               F             |
  +-------------------------------------------+
 
-A: GtkContainer::border-width + GtkCheckButton::indicator-spacing
-B: GtkCheckButton::indicator-size
-C: 2 * GtkCheckButton::indicator-spacing
-D: GtkWidget::focus-line-width
-E: GtkWidget::focus-padding
-F: GtkContainer::border-width
-G: GtkConainer::border-width + GtkCheckButton::indicator-spacing
+A: CtkContainer::border-width + CtkCheckButton::indicator-spacing
+B: CtkCheckButton::indicator-size
+C: 2 * CtkCheckButton::indicator-spacing
+D: CtkWidget::focus-line-width
+E: CtkWidget::focus-padding
+F: CtkContainer::border-width
+G: CtkConainer::border-width + CtkCheckButton::indicator-spacing
 
 !interior_focus
 
@@ -611,29 +611,29 @@ G: GtkConainer::border-width + GtkCheckButton::indicator-spacing
  |		     A                       |
  +-------------------------------------------+
 
-A: GtkContainer::border-width
-B: GtkCheckButton::indicator-size
-C: 2 * GtkCheckButton::indicator-spacing
-D: GtkWidget::focus-line-width
-E: GtkWidget::focus-padding
-F: GtkWidget::focus-padding + GtkCheckButton::indicator-spacing
-G: GtkWidget::focus-padding + GtkCheckButton::indicator-spacing
+A: CtkContainer::border-width
+B: CtkCheckButton::indicator-size
+C: 2 * CtkCheckButton::indicator-spacing
+D: CtkWidget::focus-line-width
+E: CtkWidget::focus-padding
+F: CtkWidget::focus-padding + CtkCheckButton::indicator-spacing
+G: CtkWidget::focus-padding + CtkCheckButton::indicator-spacing
 
 ===============
 
-GtkEntry
+CtkEntry
 
 ===============
 
  Style properties
 
-   GtkWidget::interior_focus = TRUE
-   GtkWidget::focus_width = 1
-   GtkWidget::focus_padding = 0
+   CtkWidget::interior_focus = TRUE
+   CtkWidget::focus_width = 1
+   CtkWidget::focus_padding = 0
 
  Properties
 
-   GtkContainer::border_width = 0
+   CtkContainer::border_width = 0
 
  #defines
 
@@ -687,27 +687,27 @@ D: INNER_BORDER
 
 A: xthickness
 B: ythickness
-C: GtkWidget::focus-line-width
-D: INNER_BORDER + (HAVE_FOCUS ? 0 : GtkWidget::focus-line-width
+C: CtkWidget::focus-line-width
+D: INNER_BORDER + (HAVE_FOCUS ? 0 : CtkWidget::focus-line-width
 
 Note - effect here for !interior_focus is that bevel moves in
 by focus-line-width when entry gains focus
 
 ===============
 
-GtkExpander
+CtkExpander
 
 ===============
 
  Style properties
-  GtkWidget::focus_line_width
-  GtkWidget::focus_padding
-  GtkExpander::expander_size
-  GtkExpander::expander_spacing
+  CtkWidget::focus_line_width
+  CtkWidget::focus_padding
+  CtkExpander::expander_size
+  CtkExpander::expander_spacing
 
  Properties
-  GtkContainer::border_width
-  GtkExpander::spacing
+  CtkContainer::border_width
+  CtkExpander::spacing
 
 if (CTK_WIDGET_VISIBLE (bin->child) && interior_focus)
 
@@ -737,12 +737,12 @@ if (CTK_WIDGET_VISIBLE (bin->child) && interior_focus)
 |                  A                  |
 +-------------------------------------+
 
- A: GtkContainer::border_width
- B: GtkExpander::expander_size
- C: GtkExpander::expander_spacing
- D: GtkExpander::spacing
- E: GtkWidget::focus_line_width
- F: GtkWidget::focus_padding
+ A: CtkContainer::border_width
+ B: CtkExpander::expander_size
+ C: CtkExpander::expander_spacing
+ D: CtkExpander::spacing
+ E: CtkWidget::focus_line_width
+ F: CtkWidget::focus_padding
 
 if (CTK_WIDGET_VISIBLE (bin->child) && !interior_focus)
 
@@ -776,12 +776,12 @@ if (CTK_WIDGET_VISIBLE (bin->child) && !interior_focus)
 |                     A                     |
 +-------------------------------------------+
 
- A: GtkContainer::border_width
- B: GtkExpander::expander_size
- C: GtkExpander::expander_spacing
- D: GtkExpander::spacing
- E: GtkWidget::focus_line_width
- F: GtkWidget::focus_padding
+ A: CtkContainer::border_width
+ B: CtkExpander::expander_size
+ C: CtkExpander::expander_spacing
+ D: CtkExpander::spacing
+ E: CtkWidget::focus_line_width
+ F: CtkWidget::focus_padding
 
 if (!CTK_WIDGET_VISIBLE (bin->child) && interior_focus)
 
@@ -801,11 +801,11 @@ if (!CTK_WIDGET_VISIBLE (bin->child) && interior_focus)
 |                  A                  |
 +-------------------------------------+
 
- A: GtkContainer::border_width
- B: GtkExpander::expander_size
- C: GtkExpander::expander_spacing
- E: GtkWidget::focus_line_width
- F: GtkWidget::focus_padding
+ A: CtkContainer::border_width
+ B: CtkExpander::expander_size
+ C: CtkExpander::expander_spacing
+ E: CtkWidget::focus_line_width
+ F: CtkWidget::focus_padding
 
 if (!CTK_WIDGET_VISIBLE (bin->child) && !interior_focus)
 
@@ -829,8 +829,8 @@ if (!CTK_WIDGET_VISIBLE (bin->child) && !interior_focus)
 |                    A                      |
 +-------------------------------------------+
 
- A: GtkContainer::border_width
- B: GtkExpander::expander_size
- C: GtkExpander::expander_spacing
- E: GtkWidget::focus_line_width
- F: GtkWidget::focus_padding
+ A: CtkContainer::border_width
+ B: CtkExpander::expander_size
+ C: CtkExpander::expander_spacing
+ E: CtkWidget::focus_line_width
+ F: CtkWidget::focus_padding

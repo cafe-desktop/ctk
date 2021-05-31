@@ -19,11 +19,11 @@
 
 /**
  * SECTION:ctkrecentmanager
- * @Title: GtkRecentManager
+ * @Title: CtkRecentManager
  * @short_description: Managing recently used files
- * @See_Also: #GBookmarkFile, #GtkSettings, #GtkRecentChooser
+ * @See_Also: #GBookmarkFile, #CtkSettings, #CtkRecentChooser
  *
- * #GtkRecentManager provides a facility for adding, removing and
+ * #CtkRecentManager provides a facility for adding, removing and
  * looking up recently used files. Each recently used file is
  * identified by its URI, and has meta-data associated to it, like
  * the names and command lines of the applications that have
@@ -34,28 +34,28 @@
  *
  * The recently used files list is per user.
  *
- * The #GtkRecentManager acts like a database of all the recently
- * used files. You can create new #GtkRecentManager objects, but
+ * The #CtkRecentManager acts like a database of all the recently
+ * used files. You can create new #CtkRecentManager objects, but
  * it is more efficient to use the default manager created by GTK+.
  *
  * Adding a new recently used file is as simple as:
  *
  * |[<!-- language="C" -->
- * GtkRecentManager *manager;
+ * CtkRecentManager *manager;
  *
  * manager = ctk_recent_manager_get_default ();
  * ctk_recent_manager_add_item (manager, file_uri);
  * ]|
  *
- * The #GtkRecentManager will try to gather all the needed information
+ * The #CtkRecentManager will try to gather all the needed information
  * from the file itself through GIO.
  *
  * Looking up the meta-data associated with a recently used file
  * given its URI requires calling ctk_recent_manager_lookup_item():
  *
  * |[<!-- language="C" -->
- * GtkRecentManager *manager;
- * GtkRecentInfo *info;
+ * CtkRecentManager *manager;
+ * CtkRecentInfo *info;
  * GError *error = NULL;
  *
  * manager = ctk_recent_manager_get_default ();
@@ -73,13 +73,13 @@
  * ]|
  *
  * In order to retrieve the list of recently used files, you can use
- * ctk_recent_manager_get_items(), which returns a list of #GtkRecentInfo-structs.
+ * ctk_recent_manager_get_items(), which returns a list of #CtkRecentInfo-structs.
  *
- * A #GtkRecentManager is the model used to populate the contents of
- * one, or more #GtkRecentChooser implementations.
+ * A #CtkRecentManager is the model used to populate the contents of
+ * one, or more #CtkRecentChooser implementations.
  *
  * Note that the maximum age of the recently used files list is
- * controllable through the #GtkSettings:ctk-recent-files-max-age
+ * controllable through the #CtkSettings:ctk-recent-files-max-age
  * property.
  *
  * Recently used files are supported since GTK+ 2.10.
@@ -130,17 +130,17 @@ typedef struct
 } RecentAppInfo;
 
 /**
- * GtkRecentInfo:
+ * CtkRecentInfo:
  *
- * #GtkRecentInfo-struct contains private data only, and should
+ * #CtkRecentInfo-struct contains private data only, and should
  * be accessed using the provided API.
  *
- * #GtkRecentInfo constains all the meta-data
+ * #CtkRecentInfo constains all the meta-data
  * associated with an entry in the recently used files list.
  *
  * Since: 2.10
  */
-struct _GtkRecentInfo
+struct _CtkRecentInfo
 {
   gchar *uri;
 
@@ -165,7 +165,7 @@ struct _GtkRecentInfo
   gint ref_count;
 };
 
-struct _GtkRecentManagerPrivate
+struct _CtkRecentManagerPrivate
 {
   gchar *filename;
 
@@ -208,33 +208,33 @@ static void     ctk_recent_manager_monitor_changed     (GFileMonitor      *monit
                                                         GFile             *other_file,
                                                         GFileMonitorEvent  event_type,
                                                         gpointer           user_data);
-static void     ctk_recent_manager_changed             (GtkRecentManager  *manager);
-static void     ctk_recent_manager_real_changed        (GtkRecentManager  *manager);
-static void     ctk_recent_manager_set_filename        (GtkRecentManager  *manager,
+static void     ctk_recent_manager_changed             (CtkRecentManager  *manager);
+static void     ctk_recent_manager_real_changed        (CtkRecentManager  *manager);
+static void     ctk_recent_manager_set_filename        (CtkRecentManager  *manager,
                                                         const gchar       *filename);
-static void     ctk_recent_manager_clamp_to_age        (GtkRecentManager  *manager,
+static void     ctk_recent_manager_clamp_to_age        (CtkRecentManager  *manager,
                                                         gint               age);
-static void     ctk_recent_manager_clamp_to_size       (GtkRecentManager  *manager,
+static void     ctk_recent_manager_clamp_to_size       (CtkRecentManager  *manager,
                                                         const gint         size);
 
-static void     ctk_recent_manager_enabled_changed     (GtkRecentManager  *manager);
+static void     ctk_recent_manager_enabled_changed     (CtkRecentManager  *manager);
 
 
-static void     build_recent_items_list                (GtkRecentManager  *manager);
-static void     purge_recent_items_list                (GtkRecentManager  *manager,
+static void     build_recent_items_list                (CtkRecentManager  *manager);
+static void     purge_recent_items_list                (CtkRecentManager  *manager,
                                                         GError           **error);
 
 static RecentAppInfo *recent_app_info_new  (const gchar   *app_name);
 static void           recent_app_info_free (RecentAppInfo *app_info);
 
-static GtkRecentInfo *ctk_recent_info_new  (const gchar   *uri);
-static void           ctk_recent_info_free (GtkRecentInfo *recent_info);
+static CtkRecentInfo *ctk_recent_info_new  (const gchar   *uri);
+static void           ctk_recent_info_free (CtkRecentInfo *recent_info);
 
 static guint signal_changed = 0;
 
-static GtkRecentManager *recent_manager_singleton = NULL;
+static CtkRecentManager *recent_manager_singleton = NULL;
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkRecentManager, ctk_recent_manager, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkRecentManager, ctk_recent_manager, G_TYPE_OBJECT)
 
 /* Test of haystack has the needle prefix, comparing case
  * insensitive. haystack may be UTF-8, but needle must
@@ -266,7 +266,7 @@ ctk_recent_manager_error_quark (void)
 }
 
 static void
-ctk_recent_manager_class_init (GtkRecentManagerClass *klass)
+ctk_recent_manager_class_init (CtkRecentManagerClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 
@@ -276,7 +276,7 @@ ctk_recent_manager_class_init (GtkRecentManagerClass *klass)
   gobject_class->finalize = ctk_recent_manager_finalize;
 
   /**
-   * GtkRecentManager:filename:
+   * CtkRecentManager:filename:
    *
    * The full path to the file to be used to store and read the
    * recently used resources list
@@ -292,7 +292,7 @@ ctk_recent_manager_class_init (GtkRecentManagerClass *klass)
                                                         (G_PARAM_CONSTRUCT_ONLY | G_PARAM_READWRITE)));
 
   /**
-   * GtkRecentManager:size:
+   * CtkRecentManager:size:
    *
    * The size of the recently used resources list.
    *
@@ -309,7 +309,7 @@ ctk_recent_manager_class_init (GtkRecentManagerClass *klass)
                                                      G_PARAM_READABLE));
 
   /**
-   * GtkRecentManager::changed:
+   * CtkRecentManager::changed:
    * @recent_manager: the recent manager
    *
    * Emitted when the current recently used resources manager changes
@@ -322,7 +322,7 @@ ctk_recent_manager_class_init (GtkRecentManagerClass *klass)
     g_signal_new (I_("changed"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_FIRST,
-                  G_STRUCT_OFFSET (GtkRecentManagerClass, changed),
+                  G_STRUCT_OFFSET (CtkRecentManagerClass, changed),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 0);
@@ -331,10 +331,10 @@ ctk_recent_manager_class_init (GtkRecentManagerClass *klass)
 }
 
 static void
-ctk_recent_manager_init (GtkRecentManager *manager)
+ctk_recent_manager_init (CtkRecentManager *manager)
 {
-  GtkRecentManagerPrivate *priv;
-  GtkSettings *settings;
+  CtkRecentManagerPrivate *priv;
+  CtkSettings *settings;
 
   manager->priv = ctk_recent_manager_get_instance_private (manager);
   priv = manager->priv;
@@ -354,7 +354,7 @@ ctk_recent_manager_set_property (GObject      *object,
                                  const GValue *value,
                                  GParamSpec   *pspec)
 {
-  GtkRecentManager *recent_manager = CTK_RECENT_MANAGER (object);
+  CtkRecentManager *recent_manager = CTK_RECENT_MANAGER (object);
 
   switch (prop_id)
     {
@@ -373,7 +373,7 @@ ctk_recent_manager_get_property (GObject    *object,
                                  GValue     *value,
                                  GParamSpec *pspec)
 {
-  GtkRecentManager *recent_manager = CTK_RECENT_MANAGER (object);
+  CtkRecentManager *recent_manager = CTK_RECENT_MANAGER (object);
 
   switch (prop_id)
     {
@@ -392,8 +392,8 @@ ctk_recent_manager_get_property (GObject    *object,
 static void
 ctk_recent_manager_finalize (GObject *object)
 {
-  GtkRecentManager *manager = CTK_RECENT_MANAGER (object);
-  GtkRecentManagerPrivate *priv = manager->priv;
+  CtkRecentManager *manager = CTK_RECENT_MANAGER (object);
+  CtkRecentManagerPrivate *priv = manager->priv;
 
   g_free (priv->filename);
 
@@ -406,8 +406,8 @@ ctk_recent_manager_finalize (GObject *object)
 static void
 ctk_recent_manager_dispose (GObject *gobject)
 {
-  GtkRecentManager *manager = CTK_RECENT_MANAGER (gobject);
-  GtkRecentManagerPrivate *priv = manager->priv;
+  CtkRecentManager *manager = CTK_RECENT_MANAGER (gobject);
+  CtkRecentManagerPrivate *priv = manager->priv;
 
   if (priv->monitor != NULL)
     {
@@ -436,16 +436,16 @@ ctk_recent_manager_dispose (GObject *gobject)
 }
 
 static void
-ctk_recent_manager_enabled_changed (GtkRecentManager *manager)
+ctk_recent_manager_enabled_changed (CtkRecentManager *manager)
 {
   manager->priv->is_dirty = TRUE;
   ctk_recent_manager_changed (manager);
 }
 
 static void
-ctk_recent_manager_real_changed (GtkRecentManager *manager)
+ctk_recent_manager_real_changed (CtkRecentManager *manager)
 {
-  GtkRecentManagerPrivate *priv = manager->priv;
+  CtkRecentManagerPrivate *priv = manager->priv;
 
   g_object_freeze_notify (G_OBJECT (manager));
 
@@ -466,7 +466,7 @@ ctk_recent_manager_real_changed (GtkRecentManager *manager)
         }
       else
         {
-          GtkSettings *settings;
+          CtkSettings *settings;
           gint age;
           gint max_size = MAX_LIST_SIZE;
           gboolean enabled;
@@ -544,7 +544,7 @@ ctk_recent_manager_monitor_changed (GFileMonitor      *monitor,
                                     GFileMonitorEvent  event_type,
                                     gpointer           user_data)
 {
-  GtkRecentManager *manager = user_data;
+  CtkRecentManager *manager = user_data;
 
   switch (event_type)
     {
@@ -582,10 +582,10 @@ get_default_filename (void)
 }
 
 static void
-ctk_recent_manager_set_filename (GtkRecentManager *manager,
+ctk_recent_manager_set_filename (CtkRecentManager *manager,
                                  const gchar      *filename)
 {
-  GtkRecentManagerPrivate *priv;
+  CtkRecentManagerPrivate *priv;
   GFile *file;
   GError *error;
 
@@ -636,7 +636,7 @@ ctk_recent_manager_set_filename (GtkRecentManager *manager,
         {
           gchar *utf8 = g_filename_to_utf8 (priv->filename, -1, NULL, NULL, NULL);
           g_warning ("Unable to monitor '%s': %s\n"
-                     "The GtkRecentManager will not update its contents "
+                     "The CtkRecentManager will not update its contents "
                      "if the file is changed from other instances",
                      utf8 ? utf8 : "(invalid filename)",
                      error->message);
@@ -660,9 +660,9 @@ ctk_recent_manager_set_filename (GtkRecentManager *manager,
  * this function resets the dirty bit of the manager.
  */
 static void
-build_recent_items_list (GtkRecentManager *manager)
+build_recent_items_list (CtkRecentManager *manager)
 {
-  GtkRecentManagerPrivate *priv = manager->priv;
+  CtkRecentManagerPrivate *priv = manager->priv;
   GError *read_error;
   gint size;
 
@@ -720,7 +720,7 @@ build_recent_items_list (GtkRecentManager *manager)
 
 
 /********************
- * GtkRecentManager *
+ * CtkRecentManager *
  ********************/
 
 
@@ -728,18 +728,18 @@ build_recent_items_list (GtkRecentManager *manager)
  * ctk_recent_manager_new:
  *
  * Creates a new recent manager object. Recent manager objects are used to
- * handle the list of recently used resources. A #GtkRecentManager object
+ * handle the list of recently used resources. A #CtkRecentManager object
  * monitors the recently used resources list, and emits the “changed” signal
  * each time something inside the list changes.
  *
- * #GtkRecentManager objects are expensive: be sure to create them only when
+ * #CtkRecentManager objects are expensive: be sure to create them only when
  * needed. You should use ctk_recent_manager_get_default() instead.
  *
- * Returns: A newly created #GtkRecentManager object
+ * Returns: A newly created #CtkRecentManager object
  *
  * Since: 2.10
  */
-GtkRecentManager *
+CtkRecentManager *
 ctk_recent_manager_new (void)
 {
   return g_object_new (CTK_TYPE_RECENT_MANAGER, NULL);
@@ -748,15 +748,15 @@ ctk_recent_manager_new (void)
 /**
  * ctk_recent_manager_get_default:
  *
- * Gets a unique instance of #GtkRecentManager, that you can share
+ * Gets a unique instance of #CtkRecentManager, that you can share
  * in your application without caring about memory management.
  *
- * Returns: (transfer none): A unique #GtkRecentManager. Do not ref or
+ * Returns: (transfer none): A unique #CtkRecentManager. Do not ref or
  *   unref it.
  *
  * Since: 2.10
  */
-GtkRecentManager *
+CtkRecentManager *
 ctk_recent_manager_get_default (void)
 {
   if (G_UNLIKELY (!recent_manager_singleton))
@@ -772,8 +772,8 @@ ctk_recent_manager_add_item_query_info (GObject      *source_object,
                                         gpointer      user_data)
 {
   GFile *file = G_FILE (source_object);
-  GtkRecentManager *manager = user_data;
-  GtkRecentData recent_data;
+  CtkRecentManager *manager = user_data;
+  CtkRecentData recent_data;
   GFileInfo *file_info;
   gchar *uri, *basename, *content_type;
 
@@ -832,7 +832,7 @@ ctk_recent_manager_add_item_query_info (GObject      *source_object,
 
 /**
  * ctk_recent_manager_add_item:
- * @manager: a #GtkRecentManager
+ * @manager: a #CtkRecentManager
  * @uri: a valid URI
  *
  * Adds a new resource, pointed by @uri, into the recently used
@@ -851,7 +851,7 @@ ctk_recent_manager_add_item_query_info (GObject      *source_object,
  * Since: 2.10
  */
 gboolean
-ctk_recent_manager_add_item (GtkRecentManager *manager,
+ctk_recent_manager_add_item (CtkRecentManager *manager,
                              const gchar      *uri)
 {
   GFile* file;
@@ -876,25 +876,25 @@ ctk_recent_manager_add_item (GtkRecentManager *manager,
 
 /**
  * ctk_recent_manager_add_full:
- * @manager: a #GtkRecentManager
+ * @manager: a #CtkRecentManager
  * @uri: a valid URI
  * @recent_data: metadata of the resource
  *
  * Adds a new resource, pointed by @uri, into the recently used
  * resources list, using the metadata specified inside the
- * #GtkRecentData-struct passed in @recent_data.
+ * #CtkRecentData-struct passed in @recent_data.
  *
  * The passed URI will be used to identify this resource inside the
  * list.
  *
  * In order to register the new recently used resource, metadata about
  * the resource must be passed as well as the URI; the metadata is
- * stored in a #GtkRecentData-struct, which must contain the MIME
+ * stored in a #CtkRecentData-struct, which must contain the MIME
  * type of the resource pointed by the URI; the name of the application
  * that is registering the item, and a command line to be used when
  * launching the item.
  *
- * Optionally, a #GtkRecentData-struct might contain a UTF-8 string
+ * Optionally, a #CtkRecentData-struct might contain a UTF-8 string
  * to be used when viewing the item instead of the last component of
  * the URI; a short description of the item; whether the item should
  * be considered private - that is, should be displayed only by the
@@ -906,12 +906,12 @@ ctk_recent_manager_add_item (GtkRecentManager *manager,
  * Since: 2.10
  */
 gboolean
-ctk_recent_manager_add_full (GtkRecentManager    *manager,
+ctk_recent_manager_add_full (CtkRecentManager    *manager,
                              const gchar         *uri,
-                             const GtkRecentData *data)
+                             const CtkRecentData *data)
 {
-  GtkRecentManagerPrivate *priv;
-  GtkSettings *settings;
+  CtkRecentManagerPrivate *priv;
+  CtkSettings *settings;
   gboolean enabled;
 
   g_return_val_if_fail (CTK_IS_RECENT_MANAGER (manager), FALSE);
@@ -1017,7 +1017,7 @@ ctk_recent_manager_add_full (GtkRecentManager    *manager,
 
 /**
  * ctk_recent_manager_remove_item:
- * @manager: a #GtkRecentManager
+ * @manager: a #CtkRecentManager
  * @uri: the URI of the item you wish to remove
  * @error: (allow-none): return location for a #GError, or %NULL
  *
@@ -1030,11 +1030,11 @@ ctk_recent_manager_add_full (GtkRecentManager    *manager,
  * Since: 2.10
  */
 gboolean
-ctk_recent_manager_remove_item (GtkRecentManager  *manager,
+ctk_recent_manager_remove_item (CtkRecentManager  *manager,
                                 const gchar       *uri,
                                 GError           **error)
 {
-  GtkRecentManagerPrivate *priv;
+  CtkRecentManagerPrivate *priv;
   GError *remove_error = NULL;
 
   g_return_val_if_fail (CTK_IS_RECENT_MANAGER (manager), FALSE);
@@ -1077,7 +1077,7 @@ ctk_recent_manager_remove_item (GtkRecentManager  *manager,
 
 /**
  * ctk_recent_manager_has_item:
- * @manager: a #GtkRecentManager
+ * @manager: a #CtkRecentManager
  * @uri: a URI
  *
  * Checks whether there is a recently used resource registered
@@ -1088,10 +1088,10 @@ ctk_recent_manager_remove_item (GtkRecentManager  *manager,
  * Since: 2.10
  */
 gboolean
-ctk_recent_manager_has_item (GtkRecentManager *manager,
+ctk_recent_manager_has_item (CtkRecentManager *manager,
                              const gchar      *uri)
 {
-  GtkRecentManagerPrivate *priv;
+  CtkRecentManagerPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_RECENT_MANAGER (manager), FALSE);
   g_return_val_if_fail (uri != NULL, FALSE);
@@ -1104,7 +1104,7 @@ ctk_recent_manager_has_item (GtkRecentManager *manager,
 
 static void
 build_recent_info (GBookmarkFile *bookmarks,
-                   GtkRecentInfo *info)
+                   CtkRecentInfo *info)
 {
   gchar **apps, **groups;
   gsize apps_len, groups_len, i;
@@ -1165,28 +1165,28 @@ build_recent_info (GBookmarkFile *bookmarks,
 
 /**
  * ctk_recent_manager_lookup_item:
- * @manager: a #GtkRecentManager
+ * @manager: a #CtkRecentManager
  * @uri: a URI
  * @error: (allow-none): a return location for a #GError, or %NULL
  *
  * Searches for a URI inside the recently used resources list, and
- * returns a #GtkRecentInfo-struct containing informations about the resource
+ * returns a #CtkRecentInfo-struct containing informations about the resource
  * like its MIME type, or its display name.
  *
- * Returns: (nullable): a #GtkRecentInfo-struct containing information
+ * Returns: (nullable): a #CtkRecentInfo-struct containing information
  *   about the resource pointed by @uri, or %NULL if the URI was
  *   not registered in the recently used resources list. Free with
  *   ctk_recent_info_unref().
  *
  * Since: 2.10
  */
-GtkRecentInfo *
-ctk_recent_manager_lookup_item (GtkRecentManager  *manager,
+CtkRecentInfo *
+ctk_recent_manager_lookup_item (CtkRecentManager  *manager,
                                 const gchar       *uri,
                                 GError           **error)
 {
-  GtkRecentManagerPrivate *priv;
-  GtkRecentInfo *info = NULL;
+  CtkRecentManagerPrivate *priv;
+  CtkRecentInfo *info = NULL;
 
   g_return_val_if_fail (CTK_IS_RECENT_MANAGER (manager), NULL);
   g_return_val_if_fail (uri != NULL, NULL);
@@ -1228,7 +1228,7 @@ ctk_recent_manager_lookup_item (GtkRecentManager  *manager,
 
 /**
  * ctk_recent_manager_move_item:
- * @manager: a #GtkRecentManager
+ * @manager: a #CtkRecentManager
  * @uri: the URI of a recently used resource
  * @new_uri: (allow-none): the new URI of the recently used resource, or
  *    %NULL to remove the item pointed by @uri in the list
@@ -1244,12 +1244,12 @@ ctk_recent_manager_lookup_item (GtkRecentManager  *manager,
  * Since: 2.10
  */
 gboolean
-ctk_recent_manager_move_item (GtkRecentManager  *recent_manager,
+ctk_recent_manager_move_item (CtkRecentManager  *recent_manager,
                               const gchar       *uri,
                               const gchar       *new_uri,
                               GError           **error)
 {
-  GtkRecentManagerPrivate *priv;
+  CtkRecentManagerPrivate *priv;
   GError *move_error;
 
   g_return_val_if_fail (CTK_IS_RECENT_MANAGER (recent_manager), FALSE);
@@ -1299,21 +1299,21 @@ ctk_recent_manager_move_item (GtkRecentManager  *recent_manager,
 
 /**
  * ctk_recent_manager_get_items:
- * @manager: a #GtkRecentManager
+ * @manager: a #CtkRecentManager
  *
  * Gets the list of recently used resources.
  *
- * Returns: (element-type GtkRecentInfo) (transfer full): a list of
- *   newly allocated #GtkRecentInfo objects. Use
+ * Returns: (element-type CtkRecentInfo) (transfer full): a list of
+ *   newly allocated #CtkRecentInfo objects. Use
  *   ctk_recent_info_unref() on each item inside the list, and then
  *   free the list itself using g_list_free().
  *
  * Since: 2.10
  */
 GList *
-ctk_recent_manager_get_items (GtkRecentManager *manager)
+ctk_recent_manager_get_items (CtkRecentManager *manager)
 {
-  GtkRecentManagerPrivate *priv;
+  CtkRecentManagerPrivate *priv;
   GList *retval = NULL;
   gchar **uris;
   gsize uris_len, i;
@@ -1327,7 +1327,7 @@ ctk_recent_manager_get_items (GtkRecentManager *manager)
   uris = g_bookmark_file_get_uris (priv->recent_items, &uris_len);
   for (i = 0; i < uris_len; i++)
     {
-      GtkRecentInfo *info;
+      CtkRecentInfo *info;
 
       info = ctk_recent_info_new (uris[i]);
       build_recent_info (priv->recent_items, info);
@@ -1341,10 +1341,10 @@ ctk_recent_manager_get_items (GtkRecentManager *manager)
 }
 
 static void
-purge_recent_items_list (GtkRecentManager  *manager,
+purge_recent_items_list (CtkRecentManager  *manager,
                          GError           **error)
 {
-  GtkRecentManagerPrivate *priv = manager->priv;
+  CtkRecentManagerPrivate *priv = manager->priv;
 
   if (priv->recent_items == NULL)
     return;
@@ -1360,7 +1360,7 @@ purge_recent_items_list (GtkRecentManager  *manager,
 
 /**
  * ctk_recent_manager_purge_items:
- * @manager: a #GtkRecentManager
+ * @manager: a #CtkRecentManager
  * @error: (allow-none): a return location for a #GError, or %NULL
  *
  * Purges every item from the recently used resources list.
@@ -1371,10 +1371,10 @@ purge_recent_items_list (GtkRecentManager  *manager,
  * Since: 2.10
  */
 gint
-ctk_recent_manager_purge_items (GtkRecentManager  *manager,
+ctk_recent_manager_purge_items (CtkRecentManager  *manager,
                                 GError           **error)
 {
-  GtkRecentManagerPrivate *priv;
+  CtkRecentManagerPrivate *priv;
   gint count, purged;
 
   g_return_val_if_fail (CTK_IS_RECENT_MANAGER (manager), -1);
@@ -1397,7 +1397,7 @@ ctk_recent_manager_purge_items (GtkRecentManager  *manager,
 static gboolean
 emit_manager_changed (gpointer data)
 {
-  GtkRecentManager *manager = data;
+  CtkRecentManager *manager = data;
 
   manager->priv->changed_age = 0;
   manager->priv->changed_timeout = 0;
@@ -1408,7 +1408,7 @@ emit_manager_changed (gpointer data)
 }
 
 static void
-ctk_recent_manager_changed (GtkRecentManager *manager)
+ctk_recent_manager_changed (CtkRecentManager *manager)
 {
   /* coalesce consecutive changes
    *
@@ -1437,10 +1437,10 @@ ctk_recent_manager_changed (GtkRecentManager *manager)
 }
 
 static void
-ctk_recent_manager_clamp_to_age (GtkRecentManager *manager,
+ctk_recent_manager_clamp_to_age (CtkRecentManager *manager,
                                  gint              age)
 {
-  GtkRecentManagerPrivate *priv = manager->priv;
+  CtkRecentManagerPrivate *priv = manager->priv;
   gchar **uris;
   gsize n_uris, i;
   time_t now;
@@ -1468,10 +1468,10 @@ ctk_recent_manager_clamp_to_age (GtkRecentManager *manager,
 }
 
 static void
-ctk_recent_manager_clamp_to_size (GtkRecentManager *manager,
+ctk_recent_manager_clamp_to_size (CtkRecentManager *manager,
                                   const gint        size)
 {
-  GtkRecentManagerPrivate *priv = manager->priv;
+  CtkRecentManagerPrivate *priv = manager->priv;
   gchar **uris;
   gsize n_uris, i;
 
@@ -1496,21 +1496,21 @@ ctk_recent_manager_clamp_to_size (GtkRecentManager *manager,
 }
 
 /*****************
- * GtkRecentInfo *
+ * CtkRecentInfo *
  *****************/
 
-G_DEFINE_BOXED_TYPE (GtkRecentInfo, ctk_recent_info,
+G_DEFINE_BOXED_TYPE (CtkRecentInfo, ctk_recent_info,
                      ctk_recent_info_ref,
                      ctk_recent_info_unref)
 
-static GtkRecentInfo *
+static CtkRecentInfo *
 ctk_recent_info_new (const gchar *uri)
 {
-  GtkRecentInfo *info;
+  CtkRecentInfo *info;
 
   g_assert (uri != NULL);
 
-  info = g_new0 (GtkRecentInfo, 1);
+  info = g_new0 (CtkRecentInfo, 1);
   info->uri = g_strdup (uri);
 
   info->applications = NULL;
@@ -1524,7 +1524,7 @@ ctk_recent_info_new (const gchar *uri)
 }
 
 static void
-ctk_recent_info_free (GtkRecentInfo *recent_info)
+ctk_recent_info_free (CtkRecentInfo *recent_info)
 {
   if (!recent_info)
     return;
@@ -1549,7 +1549,7 @@ ctk_recent_info_free (GtkRecentInfo *recent_info)
 
 /**
  * ctk_recent_info_ref:
- * @info: a #GtkRecentInfo
+ * @info: a #CtkRecentInfo
  *
  * Increases the reference count of @recent_info by one.
  *
@@ -1558,8 +1558,8 @@ ctk_recent_info_free (GtkRecentInfo *recent_info)
  *
  * Since: 2.10
  */
-GtkRecentInfo *
-ctk_recent_info_ref (GtkRecentInfo *info)
+CtkRecentInfo *
+ctk_recent_info_ref (CtkRecentInfo *info)
 {
   g_return_val_if_fail (info != NULL, NULL);
   g_return_val_if_fail (info->ref_count > 0, NULL);
@@ -1571,7 +1571,7 @@ ctk_recent_info_ref (GtkRecentInfo *info)
 
 /**
  * ctk_recent_info_unref:
- * @info: a #GtkRecentInfo
+ * @info: a #CtkRecentInfo
  *
  * Decreases the reference count of @info by one. If the reference
  * count reaches zero, @info is deallocated, and the memory freed.
@@ -1579,7 +1579,7 @@ ctk_recent_info_ref (GtkRecentInfo *info)
  * Since: 2.10
  */
 void
-ctk_recent_info_unref (GtkRecentInfo *info)
+ctk_recent_info_unref (CtkRecentInfo *info)
 {
   g_return_if_fail (info != NULL);
   g_return_if_fail (info->ref_count > 0);
@@ -1592,7 +1592,7 @@ ctk_recent_info_unref (GtkRecentInfo *info)
 
 /**
  * ctk_recent_info_get_uri:
- * @info: a #GtkRecentInfo
+ * @info: a #CtkRecentInfo
  *
  * Gets the URI of the resource.
  *
@@ -1602,7 +1602,7 @@ ctk_recent_info_unref (GtkRecentInfo *info)
  * Since: 2.10
  */
 const gchar *
-ctk_recent_info_get_uri (GtkRecentInfo *info)
+ctk_recent_info_get_uri (CtkRecentInfo *info)
 {
   g_return_val_if_fail (info != NULL, NULL);
 
@@ -1611,7 +1611,7 @@ ctk_recent_info_get_uri (GtkRecentInfo *info)
 
 /**
  * ctk_recent_info_get_display_name:
- * @info: a #GtkRecentInfo
+ * @info: a #CtkRecentInfo
  *
  * Gets the name of the resource. If none has been defined, the basename
  * of the resource is obtained.
@@ -1622,7 +1622,7 @@ ctk_recent_info_get_uri (GtkRecentInfo *info)
  * Since: 2.10
  */
 const gchar *
-ctk_recent_info_get_display_name (GtkRecentInfo *info)
+ctk_recent_info_get_display_name (CtkRecentInfo *info)
 {
   g_return_val_if_fail (info != NULL, NULL);
 
@@ -1634,7 +1634,7 @@ ctk_recent_info_get_display_name (GtkRecentInfo *info)
 
 /**
  * ctk_recent_info_get_description:
- * @info: a #GtkRecentInfo
+ * @info: a #CtkRecentInfo
  *
  * Gets the (short) description of the resource.
  *
@@ -1644,7 +1644,7 @@ ctk_recent_info_get_display_name (GtkRecentInfo *info)
  * Since: 2.10
  **/
 const gchar *
-ctk_recent_info_get_description (GtkRecentInfo *info)
+ctk_recent_info_get_description (CtkRecentInfo *info)
 {
   g_return_val_if_fail (info != NULL, NULL);
 
@@ -1653,7 +1653,7 @@ ctk_recent_info_get_description (GtkRecentInfo *info)
 
 /**
  * ctk_recent_info_get_mime_type:
- * @info: a #GtkRecentInfo
+ * @info: a #CtkRecentInfo
  *
  * Gets the MIME type of the resource.
  *
@@ -1663,7 +1663,7 @@ ctk_recent_info_get_description (GtkRecentInfo *info)
  * Since: 2.10
  */
 const gchar *
-ctk_recent_info_get_mime_type (GtkRecentInfo *info)
+ctk_recent_info_get_mime_type (CtkRecentInfo *info)
 {
   g_return_val_if_fail (info != NULL, NULL);
 
@@ -1675,7 +1675,7 @@ ctk_recent_info_get_mime_type (GtkRecentInfo *info)
 
 /**
  * ctk_recent_info_get_added:
- * @info: a #GtkRecentInfo
+ * @info: a #CtkRecentInfo
  *
  * Gets the timestamp (seconds from system’s Epoch) when the resource
  * was added to the recently used resources list.
@@ -1686,7 +1686,7 @@ ctk_recent_info_get_mime_type (GtkRecentInfo *info)
  * Since: 2.10
  */
 time_t
-ctk_recent_info_get_added (GtkRecentInfo *info)
+ctk_recent_info_get_added (CtkRecentInfo *info)
 {
   g_return_val_if_fail (info != NULL, (time_t) -1);
 
@@ -1695,7 +1695,7 @@ ctk_recent_info_get_added (GtkRecentInfo *info)
 
 /**
  * ctk_recent_info_get_modified:
- * @info: a #GtkRecentInfo
+ * @info: a #CtkRecentInfo
  *
  * Gets the timestamp (seconds from system’s Epoch) when the meta-data
  * for the resource was last modified.
@@ -1706,7 +1706,7 @@ ctk_recent_info_get_added (GtkRecentInfo *info)
  * Since: 2.10
  */
 time_t
-ctk_recent_info_get_modified (GtkRecentInfo *info)
+ctk_recent_info_get_modified (CtkRecentInfo *info)
 {
   g_return_val_if_fail (info != NULL, (time_t) -1);
 
@@ -1715,7 +1715,7 @@ ctk_recent_info_get_modified (GtkRecentInfo *info)
 
 /**
  * ctk_recent_info_get_visited:
- * @info: a #GtkRecentInfo
+ * @info: a #CtkRecentInfo
  *
  * Gets the timestamp (seconds from system’s Epoch) when the meta-data
  * for the resource was last visited.
@@ -1726,7 +1726,7 @@ ctk_recent_info_get_modified (GtkRecentInfo *info)
  * Since: 2.10
  */
 time_t
-ctk_recent_info_get_visited (GtkRecentInfo *info)
+ctk_recent_info_get_visited (CtkRecentInfo *info)
 {
   g_return_val_if_fail (info != NULL, (time_t) -1);
 
@@ -1735,7 +1735,7 @@ ctk_recent_info_get_visited (GtkRecentInfo *info)
 
 /**
  * ctk_recent_info_get_private_hint:
- * @info: a #GtkRecentInfo
+ * @info: a #CtkRecentInfo
  *
  * Gets the value of the “private” flag. Resources in the recently used
  * list that have this flag set to %TRUE should only be displayed by the
@@ -1746,7 +1746,7 @@ ctk_recent_info_get_visited (GtkRecentInfo *info)
  * Since: 2.10
  */
 gboolean
-ctk_recent_info_get_private_hint (GtkRecentInfo *info)
+ctk_recent_info_get_private_hint (CtkRecentInfo *info)
 {
   g_return_val_if_fail (info != NULL, FALSE);
 
@@ -1784,7 +1784,7 @@ recent_app_info_free (RecentAppInfo *app_info)
 
 /**
  * ctk_recent_info_get_application_info:
- * @info: a #GtkRecentInfo
+ * @info: a #CtkRecentInfo
  * @app_name: the name of the application that has registered this item
  * @app_exec: (transfer none) (out): return location for the string containing
  *    the command line
@@ -1800,13 +1800,13 @@ recent_app_info_free (RecentAppInfo *app_info)
  *
  * Returns: %TRUE if an application with @app_name has registered this
  *   resource inside the recently used list, or %FALSE otherwise. The
- *   @app_exec string is owned by the #GtkRecentInfo and should not be
+ *   @app_exec string is owned by the #CtkRecentInfo and should not be
  *   modified or freed
  *
  * Since: 2.10
  */
 gboolean
-ctk_recent_info_get_application_info (GtkRecentInfo  *info,
+ctk_recent_info_get_application_info (CtkRecentInfo  *info,
                                       const gchar    *app_name,
                                       const gchar   **app_exec,
                                       guint          *count,
@@ -1842,7 +1842,7 @@ ctk_recent_info_get_application_info (GtkRecentInfo  *info,
 
 /**
  * ctk_recent_info_get_applications:
- * @info: a #GtkRecentInfo
+ * @info: a #CtkRecentInfo
  * @length: (out) (allow-none): return location for the length of the returned list
  *
  * Retrieves the list of applications that have registered this resource.
@@ -1854,7 +1854,7 @@ ctk_recent_info_get_application_info (GtkRecentInfo  *info,
  * Since: 2.10
  */
 gchar **
-ctk_recent_info_get_applications (GtkRecentInfo *info,
+ctk_recent_info_get_applications (CtkRecentInfo *info,
                                   gsize         *length)
 {
   GSList *l;
@@ -1895,7 +1895,7 @@ ctk_recent_info_get_applications (GtkRecentInfo *info,
 
 /**
  * ctk_recent_info_has_application:
- * @info: a #GtkRecentInfo
+ * @info: a #CtkRecentInfo
  * @app_name: a string containing an application name
  *
  * Checks whether an application registered this resource using @app_name.
@@ -1906,7 +1906,7 @@ ctk_recent_info_get_applications (GtkRecentInfo *info,
  * Since: 2.10
  */
 gboolean
-ctk_recent_info_has_application (GtkRecentInfo *info,
+ctk_recent_info_has_application (CtkRecentInfo *info,
                                  const gchar   *app_name)
 {
   g_return_val_if_fail (info != NULL, FALSE);
@@ -1917,7 +1917,7 @@ ctk_recent_info_has_application (GtkRecentInfo *info,
 
 /**
  * ctk_recent_info_last_application:
- * @info: a #GtkRecentInfo
+ * @info: a #CtkRecentInfo
  *
  * Gets the name of the last application that have registered the
  * recently used resource represented by @info.
@@ -1927,7 +1927,7 @@ ctk_recent_info_has_application (GtkRecentInfo *info,
  * Since: 2.10
  */
 gchar *
-ctk_recent_info_last_application (GtkRecentInfo *info)
+ctk_recent_info_last_application (CtkRecentInfo *info)
 {
   GSList *l;
   time_t last_stamp = (time_t) -1;
@@ -1953,10 +1953,10 @@ static GdkPixbuf *
 get_icon_for_mime_type (const gchar *mime_type,
                         gint         pixel_size)
 {
-  GtkIconTheme *icon_theme;
+  CtkIconTheme *icon_theme;
   char *content_type;
   GIcon *icon;
-  GtkIconInfo *info;
+  CtkIconInfo *info;
   GdkPixbuf *pixbuf;
 
   icon_theme = ctk_icon_theme_get_default ();
@@ -1987,7 +1987,7 @@ static GdkPixbuf *
 get_icon_fallback (const gchar *icon_name,
                    gint         size)
 {
-  GtkIconTheme *icon_theme;
+  CtkIconTheme *icon_theme;
   GdkPixbuf *retval;
 
   icon_theme = ctk_icon_theme_get_default ();
@@ -2003,7 +2003,7 @@ get_icon_fallback (const gchar *icon_name,
 
 /**
  * ctk_recent_info_get_icon:
- * @info: a #GtkRecentInfo
+ * @info: a #CtkRecentInfo
  * @size: the size of the icon in pixels
  *
  * Retrieves the icon of size @size associated to the resource MIME type.
@@ -2014,7 +2014,7 @@ get_icon_fallback (const gchar *icon_name,
  * Since: 2.10
  */
 GdkPixbuf *
-ctk_recent_info_get_icon (GtkRecentInfo *info,
+ctk_recent_info_get_icon (CtkRecentInfo *info,
                           gint           size)
 {
   GdkPixbuf *retval = NULL;
@@ -2039,7 +2039,7 @@ ctk_recent_info_get_icon (GtkRecentInfo *info,
 
 /**
  * ctk_recent_info_get_gicon:
- * @info: a #GtkRecentInfo
+ * @info: a #CtkRecentInfo
  *
  * Retrieves the icon associated to the resource MIME type.
  *
@@ -2049,7 +2049,7 @@ ctk_recent_info_get_icon (GtkRecentInfo *info,
  * Since: 2.22
  */
 GIcon *
-ctk_recent_info_get_gicon (GtkRecentInfo *info)
+ctk_recent_info_get_gicon (CtkRecentInfo *info)
 {
   GIcon *icon = NULL;
   gchar *content_type;
@@ -2068,7 +2068,7 @@ ctk_recent_info_get_gicon (GtkRecentInfo *info)
 
 /**
  * ctk_recent_info_is_local:
- * @info: a #GtkRecentInfo
+ * @info: a #CtkRecentInfo
  *
  * Checks whether the resource is local or not by looking at the
  * scheme of its URI.
@@ -2078,7 +2078,7 @@ ctk_recent_info_get_gicon (GtkRecentInfo *info)
  * Since: 2.10
  */
 gboolean
-ctk_recent_info_is_local (GtkRecentInfo *info)
+ctk_recent_info_is_local (CtkRecentInfo *info)
 {
   g_return_val_if_fail (info != NULL, FALSE);
 
@@ -2087,7 +2087,7 @@ ctk_recent_info_is_local (GtkRecentInfo *info)
 
 /**
  * ctk_recent_info_exists:
- * @info: a #GtkRecentInfo
+ * @info: a #CtkRecentInfo
  *
  * Checks whether the resource pointed by @info still exists.
  * At the moment this check is done only on resources pointing
@@ -2098,7 +2098,7 @@ ctk_recent_info_is_local (GtkRecentInfo *info)
  * Since: 2.10
  */
 gboolean
-ctk_recent_info_exists (GtkRecentInfo *info)
+ctk_recent_info_exists (CtkRecentInfo *info)
 {
   gchar *filename;
   GStatBuf stat_buf;
@@ -2124,20 +2124,20 @@ ctk_recent_info_exists (GtkRecentInfo *info)
 
 /**
  * ctk_recent_info_match:
- * @info_a: a #GtkRecentInfo
- * @info_b: a #GtkRecentInfo
+ * @info_a: a #CtkRecentInfo
+ * @info_b: a #CtkRecentInfo
  *
- * Checks whether two #GtkRecentInfo-struct point to the same
+ * Checks whether two #CtkRecentInfo-struct point to the same
  * resource.
  *
- * Returns: %TRUE if both #GtkRecentInfo-struct point to the same
+ * Returns: %TRUE if both #CtkRecentInfo-struct point to the same
  *   resource, %FALSE otherwise
  *
  * Since: 2.10
  */
 gboolean
-ctk_recent_info_match (GtkRecentInfo *info_a,
-                       GtkRecentInfo *info_b)
+ctk_recent_info_match (CtkRecentInfo *info_a,
+                       CtkRecentInfo *info_b)
 {
   g_return_val_if_fail (info_a != NULL, FALSE);
   g_return_val_if_fail (info_b != NULL, FALSE);
@@ -2271,7 +2271,7 @@ get_uri_shortname_for_display (const gchar *uri)
 
 /**
  * ctk_recent_info_get_short_name:
- * @info: an #GtkRecentInfo
+ * @info: an #CtkRecentInfo
  *
  * Computes a valid UTF-8 string that can be used as the
  * name of the item in a menu or list. For example, calling
@@ -2284,7 +2284,7 @@ get_uri_shortname_for_display (const gchar *uri)
  * Since: 2.10
  */
 gchar *
-ctk_recent_info_get_short_name (GtkRecentInfo *info)
+ctk_recent_info_get_short_name (CtkRecentInfo *info)
 {
   gchar *short_name;
 
@@ -2300,7 +2300,7 @@ ctk_recent_info_get_short_name (GtkRecentInfo *info)
 
 /**
  * ctk_recent_info_get_uri_display:
- * @info: a #GtkRecentInfo
+ * @info: a #CtkRecentInfo
  *
  * Gets a displayable version of the resource’s URI. If the resource
  * is local, it returns a local path; if the resource is not local,
@@ -2312,7 +2312,7 @@ ctk_recent_info_get_short_name (GtkRecentInfo *info)
  * Since: 2.10
  */
 gchar *
-ctk_recent_info_get_uri_display (GtkRecentInfo *info)
+ctk_recent_info_get_uri_display (CtkRecentInfo *info)
 {
   gchar *retval;
 
@@ -2340,7 +2340,7 @@ ctk_recent_info_get_uri_display (GtkRecentInfo *info)
 
 /**
  * ctk_recent_info_get_age:
- * @info: a #GtkRecentInfo
+ * @info: a #CtkRecentInfo
  *
  * Gets the number of days elapsed since the last update
  * of the resource pointed by @info.
@@ -2351,7 +2351,7 @@ ctk_recent_info_get_uri_display (GtkRecentInfo *info)
  * Since: 2.10
  */
 gint
-ctk_recent_info_get_age (GtkRecentInfo *info)
+ctk_recent_info_get_age (CtkRecentInfo *info)
 {
   time_t now, delta;
   gint retval;
@@ -2369,7 +2369,7 @@ ctk_recent_info_get_age (GtkRecentInfo *info)
 
 /**
  * ctk_recent_info_get_groups:
- * @info: a #GtkRecentInfo
+ * @info: a #CtkRecentInfo
  * @length: (out) (allow-none): return location for the number of groups returned
  *
  * Returns all groups registered for the recently used item @info.
@@ -2383,7 +2383,7 @@ ctk_recent_info_get_age (GtkRecentInfo *info)
  * Since: 2.10
  */
 gchar **
-ctk_recent_info_get_groups (GtkRecentInfo *info,
+ctk_recent_info_get_groups (CtkRecentInfo *info,
                             gsize         *length)
 {
   GSList *l;
@@ -2424,7 +2424,7 @@ ctk_recent_info_get_groups (GtkRecentInfo *info,
 
 /**
  * ctk_recent_info_has_group:
- * @info: a #GtkRecentInfo
+ * @info: a #CtkRecentInfo
  * @group_name: name of a group
  *
  * Checks whether @group_name appears inside the groups
@@ -2435,7 +2435,7 @@ ctk_recent_info_get_groups (GtkRecentInfo *info,
  * Since: 2.10
  */
 gboolean
-ctk_recent_info_has_group (GtkRecentInfo *info,
+ctk_recent_info_has_group (CtkRecentInfo *info,
                            const gchar   *group_name)
 {
   GSList *l;
@@ -2459,20 +2459,20 @@ ctk_recent_info_has_group (GtkRecentInfo *info,
 
 /**
  * ctk_recent_info_create_app_info:
- * @info: a #GtkRecentInfo
+ * @info: a #CtkRecentInfo
  * @app_name: (allow-none): the name of the application that should
  *   be mapped to a #GAppInfo; if %NULL is used then the default
  *   application for the MIME type is used
  * @error: (allow-none): return location for a #GError, or %NULL
  *
- * Creates a #GAppInfo for the specified #GtkRecentInfo
+ * Creates a #GAppInfo for the specified #CtkRecentInfo
  *
  * Returns: (nullable) (transfer full): the newly created #GAppInfo, or %NULL.
  *   In case of error, @error will be set either with a
  *   %CTK_RECENT_MANAGER_ERROR or a %G_IO_ERROR
  */
 GAppInfo *
-ctk_recent_info_create_app_info (GtkRecentInfo  *info,
+ctk_recent_info_create_app_info (CtkRecentInfo  *info,
                                  const gchar    *app_name,
                                  GError        **error)
 {

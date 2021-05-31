@@ -30,7 +30,7 @@ behaviour can be turned off for individual widgets, like so:
 
 For a C++ ctkmm project, you could make a convenience function to do this. For instance:
 
-  void multipress_deactivate(Gtk::Widget& widget)
+  void multipress_deactivate(Ctk::Widget& widget)
   {
     static const Glib::Quark quark ("multipress-passthrough-flag");
     widget.set_data(quark, GINT_TO_POINTER(1));

@@ -28,27 +28,27 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CELL_ACCESSIBLE                           (ctk_cell_accessible_get_type ())
-#define CTK_CELL_ACCESSIBLE(obj)                           (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_ACCESSIBLE, GtkCellAccessible))
-#define CTK_CELL_ACCESSIBLE_CLASS(klass)                   (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CELL_ACCESSIBLE, GtkCellAccessibleClass))
+#define CTK_CELL_ACCESSIBLE(obj)                           (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_ACCESSIBLE, CtkCellAccessible))
+#define CTK_CELL_ACCESSIBLE_CLASS(klass)                   (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CELL_ACCESSIBLE, CtkCellAccessibleClass))
 #define CTK_IS_CELL_ACCESSIBLE(obj)                        (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CELL_ACCESSIBLE))
 #define CTK_IS_CELL_ACCESSIBLE_CLASS(klass)                (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_CELL_ACCESSIBLE))
-#define CTK_CELL_ACCESSIBLE_GET_CLASS(obj)                 (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CELL_ACCESSIBLE, GtkCellAccessibleClass))
+#define CTK_CELL_ACCESSIBLE_GET_CLASS(obj)                 (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CELL_ACCESSIBLE, CtkCellAccessibleClass))
 
-typedef struct _GtkCellAccessible        GtkCellAccessible;
-typedef struct _GtkCellAccessibleClass   GtkCellAccessibleClass;
-typedef struct _GtkCellAccessiblePrivate GtkCellAccessiblePrivate;
+typedef struct _CtkCellAccessible        CtkCellAccessible;
+typedef struct _CtkCellAccessibleClass   CtkCellAccessibleClass;
+typedef struct _CtkCellAccessiblePrivate CtkCellAccessiblePrivate;
 
-struct _GtkCellAccessible
+struct _CtkCellAccessible
 {
-  GtkAccessible parent;
+  CtkAccessible parent;
 
-  GtkCellAccessiblePrivate *priv;
+  CtkCellAccessiblePrivate *priv;
 };
 
-struct _GtkCellAccessibleClass
+struct _CtkCellAccessibleClass
 {
-  GtkAccessibleClass parent_class;
-  void (*update_cache) (GtkCellAccessible *cell,
+  CtkAccessibleClass parent_class;
+  void (*update_cache) (CtkCellAccessible *cell,
                         gboolean           emit_signal);
 };
 

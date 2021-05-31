@@ -213,11 +213,11 @@ get_reference_image (const char *ui_file)
   return reference_image;
 }
 
-static GtkStyleProvider *
+static CtkStyleProvider *
 add_extra_css (const char *testname,
                const char *extension)
 {
-  GtkStyleProvider *provider = NULL;
+  CtkStyleProvider *provider = NULL;
   char *css_file;
   
   css_file = get_test_file (testname, extension, TRUE);
@@ -238,7 +238,7 @@ add_extra_css (const char *testname,
 }
 
 static void
-remove_extra_css (GtkStyleProvider *provider)
+remove_extra_css (CtkStyleProvider *provider)
 {
   if (provider == NULL)
     return;
@@ -279,7 +279,7 @@ test_ui_file (GFile *file)
 {
   char *ui_file, *reference_file;
   cairo_surface_t *ui_image, *reference_image, *diff_image;
-  GtkStyleProvider *provider;
+  CtkStyleProvider *provider;
 
   ui_file = g_file_get_path (file);
 
@@ -433,7 +433,7 @@ main (int argc, char **argv)
 
   /* We need to ensure the process' current working directory
    * is the same as the reftest data, because we're using the
-   * "file" property of GtkImage as a relative path in builder files.
+   * "file" property of CtkImage as a relative path in builder files.
    */
   chdir (basedir);
 

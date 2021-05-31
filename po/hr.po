@@ -1782,7 +1782,7 @@ msgid ""
 "  --id=ID            Preview only the named object\n"
 "  --css=FILE         Use style from CSS file\n"
 "\n"
-"Perform various tasks on GtkBuilder .ui files.\n"
+"Perform various tasks on CtkBuilder .ui files.\n"
 msgstr ""
 "Upotreba:\n"
 "  ctk-builder-tool [NAREDBA] DATOTEKA\n"
@@ -1800,7 +1800,7 @@ msgstr ""
 "  --id=ID            Prikaži samo imenovane datoteke\n"
 "  --css=DATOTEKA         Koristi stil CSS datoteke\n"
 "\n"
-"Izvedite razne zadatke na GtkBuilder .ui datotekama.\n"
+"Izvedite razne zadatke na CtkBuilder .ui datotekama.\n"
 
 #. Translate to calendar:YM if you want years to be displayed
 #. * before months; otherwise translate to calendar:MY.
@@ -2689,7 +2689,7 @@ msgstr "Pristupljeno"
 msgid "Create Folder"
 msgstr "Stvori mapu"
 
-#. The pointers we return for a GtkFileSystemVolume are opaque tokens; they are
+#. The pointers we return for a CtkFileSystemVolume are opaque tokens; they are
 #. * really pointers to GDrive, GVolume or GMount objects.  We need an extra
 #. * token for the fake “File System” volume.  So, we’ll return a pointer to
 #. * this particular string.
@@ -8783,15 +8783,15 @@ msgstr "Ispiši na testnom pisaču"
 #~ msgid "Action from: %p (%s)"
 #~ msgstr "Radnja iz : %p (%s)"
 
-#~ msgctxt "GtkSettings source"
+#~ msgctxt "CtkSettings source"
 #~ msgid "Default"
 #~ msgstr "Zadano"
 
-#~ msgctxt "GtkSettings source"
+#~ msgctxt "CtkSettings source"
 #~ msgid "Application"
 #~ msgstr "Aplikacija"
 
-#~ msgctxt "GtkSettings source"
+#~ msgctxt "CtkSettings source"
 #~ msgid "Unknown"
 #~ msgstr "Napoznato"
 
@@ -8885,7 +8885,7 @@ msgstr "Ispiši na testnom pisaču"
 #~ "  --id=ID      Preview only the named object\n"
 #~ "  --css=FILE   Use style from CSS file\n"
 #~ "\n"
-#~ "Perform various tasks on GtkBuilder .ui files.\n"
+#~ "Perform various tasks on CtkBuilder .ui files.\n"
 #~ msgstr ""
 #~ "Upotreba:\n"
 #~ "  ctk-builder-tool [NAREDBA] DATOTEKA\n"
@@ -8904,7 +8904,7 @@ msgstr "Ispiši na testnom pisaču"
 #~ "  --id=ID      Prikaži samo imenovane datoteke\n"
 #~ "  --css=DATOTEKA   Koristi stil CSS datoteke\n"
 #~ "\n"
-#~ "Izvedite razne zadatke na GtkBuilder .ui datotekama.\n"
+#~ "Izvedite razne zadatke na CtkBuilder .ui datotekama.\n"
 
 #~ msgid "%s:%d: %sproperty %s::%s not found\n"
 #~ msgstr "%s:%d: %s svojstvo %s::%s nije pronađeno\n"

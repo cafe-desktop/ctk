@@ -37,49 +37,49 @@ G_BEGIN_DECLS
 
 
 #define CTK_TYPE_RANGE            (ctk_range_get_type ())
-#define CTK_RANGE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RANGE, GtkRange))
-#define CTK_RANGE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RANGE, GtkRangeClass))
+#define CTK_RANGE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RANGE, CtkRange))
+#define CTK_RANGE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RANGE, CtkRangeClass))
 #define CTK_IS_RANGE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_RANGE))
 #define CTK_IS_RANGE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_RANGE))
-#define CTK_RANGE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_RANGE, GtkRangeClass))
+#define CTK_RANGE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_RANGE, CtkRangeClass))
 
-typedef struct _GtkRange              GtkRange;
-typedef struct _GtkRangePrivate       GtkRangePrivate;
-typedef struct _GtkRangeClass         GtkRangeClass;
+typedef struct _CtkRange              CtkRange;
+typedef struct _CtkRangePrivate       CtkRangePrivate;
+typedef struct _CtkRangeClass         CtkRangeClass;
 
-struct _GtkRange
+struct _CtkRange
 {
-  GtkWidget widget;
+  CtkWidget widget;
 
-  GtkRangePrivate *priv;
+  CtkRangePrivate *priv;
 };
 
-struct _GtkRangeClass
+struct _CtkRangeClass
 {
-  GtkWidgetClass parent_class;
+  CtkWidgetClass parent_class;
 
   /* what detail to pass to GTK drawing functions */
   G_GNUC_DEPRECATED gchar *slider_detail;
   G_GNUC_DEPRECATED gchar *stepper_detail;
 
-  void (* value_changed)    (GtkRange     *range);
-  void (* adjust_bounds)    (GtkRange     *range,
+  void (* value_changed)    (CtkRange     *range);
+  void (* adjust_bounds)    (CtkRange     *range,
                              gdouble	   new_value);
 
   /* action signals for keybindings */
-  void (* move_slider)      (GtkRange     *range,
-                             GtkScrollType scroll);
+  void (* move_slider)      (CtkRange     *range,
+                             CtkScrollType scroll);
 
   /* Virtual functions */
-  void (* get_range_border) (GtkRange     *range,
-                             GtkBorder    *border_);
+  void (* get_range_border) (CtkRange     *range,
+                             CtkBorder    *border_);
 
-  gboolean (* change_value) (GtkRange     *range,
-                             GtkScrollType scroll,
+  gboolean (* change_value) (CtkRange     *range,
+                             CtkScrollType scroll,
                              gdouble       new_value);
 
-   void (* get_range_size_request) (GtkRange       *range,
-                                    GtkOrientation  orientation,
+   void (* get_range_size_request) (CtkRange       *range,
+                                    CtkOrientation  orientation,
                                     gint           *minimum,
                                     gint           *natural);
 
@@ -94,88 +94,88 @@ GDK_AVAILABLE_IN_ALL
 GType              ctk_range_get_type                      (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-void               ctk_range_set_adjustment                (GtkRange      *range,
-                                                            GtkAdjustment *adjustment);
+void               ctk_range_set_adjustment                (CtkRange      *range,
+                                                            CtkAdjustment *adjustment);
 GDK_AVAILABLE_IN_ALL
-GtkAdjustment*     ctk_range_get_adjustment                (GtkRange      *range);
+CtkAdjustment*     ctk_range_get_adjustment                (CtkRange      *range);
 
 GDK_AVAILABLE_IN_ALL
-void               ctk_range_set_inverted                  (GtkRange      *range,
+void               ctk_range_set_inverted                  (CtkRange      *range,
                                                             gboolean       setting);
 GDK_AVAILABLE_IN_ALL
-gboolean           ctk_range_get_inverted                  (GtkRange      *range);
+gboolean           ctk_range_get_inverted                  (CtkRange      *range);
 
 GDK_AVAILABLE_IN_ALL
-void               ctk_range_set_flippable                 (GtkRange      *range,
+void               ctk_range_set_flippable                 (CtkRange      *range,
                                                             gboolean       flippable);
 GDK_AVAILABLE_IN_ALL
-gboolean           ctk_range_get_flippable                 (GtkRange      *range);
+gboolean           ctk_range_get_flippable                 (CtkRange      *range);
 
 GDK_AVAILABLE_IN_ALL
-void               ctk_range_set_slider_size_fixed         (GtkRange      *range,
+void               ctk_range_set_slider_size_fixed         (CtkRange      *range,
                                                             gboolean       size_fixed);
 GDK_AVAILABLE_IN_ALL
-gboolean           ctk_range_get_slider_size_fixed         (GtkRange      *range);
+gboolean           ctk_range_get_slider_size_fixed         (CtkRange      *range);
 
 GDK_DEPRECATED_IN_3_20
-void               ctk_range_set_min_slider_size           (GtkRange      *range,
+void               ctk_range_set_min_slider_size           (CtkRange      *range,
                                                             gint           min_size);
 GDK_DEPRECATED_IN_3_20
-gint               ctk_range_get_min_slider_size           (GtkRange      *range);
+gint               ctk_range_get_min_slider_size           (CtkRange      *range);
 
 GDK_AVAILABLE_IN_ALL
-void               ctk_range_get_range_rect                (GtkRange      *range,
+void               ctk_range_get_range_rect                (CtkRange      *range,
                                                             GdkRectangle  *range_rect);
 GDK_AVAILABLE_IN_ALL
-void               ctk_range_get_slider_range              (GtkRange      *range,
+void               ctk_range_get_slider_range              (CtkRange      *range,
                                                             gint          *slider_start,
                                                             gint          *slider_end);
 
 GDK_AVAILABLE_IN_ALL
-void               ctk_range_set_lower_stepper_sensitivity (GtkRange      *range,
-                                                            GtkSensitivityType sensitivity);
+void               ctk_range_set_lower_stepper_sensitivity (CtkRange      *range,
+                                                            CtkSensitivityType sensitivity);
 GDK_AVAILABLE_IN_ALL
-GtkSensitivityType ctk_range_get_lower_stepper_sensitivity (GtkRange      *range);
+CtkSensitivityType ctk_range_get_lower_stepper_sensitivity (CtkRange      *range);
 GDK_AVAILABLE_IN_ALL
-void               ctk_range_set_upper_stepper_sensitivity (GtkRange      *range,
-                                                            GtkSensitivityType sensitivity);
+void               ctk_range_set_upper_stepper_sensitivity (CtkRange      *range,
+                                                            CtkSensitivityType sensitivity);
 GDK_AVAILABLE_IN_ALL
-GtkSensitivityType ctk_range_get_upper_stepper_sensitivity (GtkRange      *range);
+CtkSensitivityType ctk_range_get_upper_stepper_sensitivity (CtkRange      *range);
 
 GDK_AVAILABLE_IN_ALL
-void               ctk_range_set_increments                (GtkRange      *range,
+void               ctk_range_set_increments                (CtkRange      *range,
                                                             gdouble        step,
                                                             gdouble        page);
 GDK_AVAILABLE_IN_ALL
-void               ctk_range_set_range                     (GtkRange      *range,
+void               ctk_range_set_range                     (CtkRange      *range,
                                                             gdouble        min,
                                                             gdouble        max);
 GDK_AVAILABLE_IN_ALL
-void               ctk_range_set_value                     (GtkRange      *range,
+void               ctk_range_set_value                     (CtkRange      *range,
                                                             gdouble        value);
 GDK_AVAILABLE_IN_ALL
-gdouble            ctk_range_get_value                     (GtkRange      *range);
+gdouble            ctk_range_get_value                     (CtkRange      *range);
 
 GDK_AVAILABLE_IN_ALL
-void               ctk_range_set_show_fill_level           (GtkRange      *range,
+void               ctk_range_set_show_fill_level           (CtkRange      *range,
                                                             gboolean       show_fill_level);
 GDK_AVAILABLE_IN_ALL
-gboolean           ctk_range_get_show_fill_level           (GtkRange      *range);
+gboolean           ctk_range_get_show_fill_level           (CtkRange      *range);
 GDK_AVAILABLE_IN_ALL
-void               ctk_range_set_restrict_to_fill_level    (GtkRange      *range,
+void               ctk_range_set_restrict_to_fill_level    (CtkRange      *range,
                                                             gboolean       restrict_to_fill_level);
 GDK_AVAILABLE_IN_ALL
-gboolean           ctk_range_get_restrict_to_fill_level    (GtkRange      *range);
+gboolean           ctk_range_get_restrict_to_fill_level    (CtkRange      *range);
 GDK_AVAILABLE_IN_ALL
-void               ctk_range_set_fill_level                (GtkRange      *range,
+void               ctk_range_set_fill_level                (CtkRange      *range,
                                                             gdouble        fill_level);
 GDK_AVAILABLE_IN_ALL
-gdouble            ctk_range_get_fill_level                (GtkRange      *range);
+gdouble            ctk_range_get_fill_level                (CtkRange      *range);
 GDK_AVAILABLE_IN_ALL
-void               ctk_range_set_round_digits              (GtkRange      *range,
+void               ctk_range_set_round_digits              (CtkRange      *range,
                                                             gint           round_digits);
 GDK_AVAILABLE_IN_ALL
-gint                ctk_range_get_round_digits              (GtkRange      *range);
+gint                ctk_range_get_round_digits              (CtkRange      *range);
 
 
 G_END_DECLS

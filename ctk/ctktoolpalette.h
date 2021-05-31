@@ -1,4 +1,4 @@
-/* GtkToolPalette -- A tool palette with categories and DnD support
+/* CtkToolPalette -- A tool palette with categories and DnD support
  * Copyright (C) 2008  Openismus GmbH
  *
  * This library is free software; you can redistribute it and/or
@@ -32,18 +32,18 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_TOOL_PALETTE           (ctk_tool_palette_get_type ())
-#define CTK_TOOL_PALETTE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_TOOL_PALETTE, GtkToolPalette))
-#define CTK_TOOL_PALETTE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_TOOL_PALETTE, GtkToolPaletteClass))
+#define CTK_TOOL_PALETTE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_TOOL_PALETTE, CtkToolPalette))
+#define CTK_TOOL_PALETTE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_TOOL_PALETTE, CtkToolPaletteClass))
 #define CTK_IS_TOOL_PALETTE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_TOOL_PALETTE))
 #define CTK_IS_TOOL_PALETTE_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_TOOL_PALETTE))
-#define CTK_TOOL_PALETTE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TOOL_PALETTE, GtkToolPaletteClass))
+#define CTK_TOOL_PALETTE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TOOL_PALETTE, CtkToolPaletteClass))
 
-typedef struct _GtkToolPalette           GtkToolPalette;
-typedef struct _GtkToolPaletteClass      GtkToolPaletteClass;
-typedef struct _GtkToolPalettePrivate    GtkToolPalettePrivate;
+typedef struct _CtkToolPalette           CtkToolPalette;
+typedef struct _CtkToolPaletteClass      CtkToolPaletteClass;
+typedef struct _CtkToolPalettePrivate    CtkToolPalettePrivate;
 
 /**
- * GtkToolPaletteDragTargets:
+ * CtkToolPaletteDragTargets:
  * @CTK_TOOL_PALETTE_DRAG_ITEMS: Support drag of items.
  * @CTK_TOOL_PALETTE_DRAG_GROUPS: Support drag of groups.
  *
@@ -54,26 +54,26 @@ typedef enum /*< flags >*/
   CTK_TOOL_PALETTE_DRAG_ITEMS = (1 << 0),
   CTK_TOOL_PALETTE_DRAG_GROUPS = (1 << 1)
 }
-GtkToolPaletteDragTargets;
+CtkToolPaletteDragTargets;
 
 /**
- * GtkToolPalette:
+ * CtkToolPalette:
  *
  * This should not be accessed directly. Use the accessor functions below.
  */
-struct _GtkToolPalette
+struct _CtkToolPalette
 {
-  GtkContainer parent_instance;
-  GtkToolPalettePrivate *priv;
+  CtkContainer parent_instance;
+  CtkToolPalettePrivate *priv;
 };
 
 /**
- * GtkToolPaletteClass:
+ * CtkToolPaletteClass:
  * @parent_class: The parent class.
  */
-struct _GtkToolPaletteClass
+struct _CtkToolPaletteClass
 {
-  GtkContainerClass parent_class;
+  CtkContainerClass parent_class;
 
   /*< private >*/
 
@@ -87,79 +87,79 @@ struct _GtkToolPaletteClass
 GDK_AVAILABLE_IN_ALL
 GType                          ctk_tool_palette_get_type              (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget*                     ctk_tool_palette_new                   (void);
+CtkWidget*                     ctk_tool_palette_new                   (void);
 
 GDK_AVAILABLE_IN_ALL
-void                           ctk_tool_palette_set_group_position    (GtkToolPalette            *palette,
-                                                                       GtkToolItemGroup          *group,
+void                           ctk_tool_palette_set_group_position    (CtkToolPalette            *palette,
+                                                                       CtkToolItemGroup          *group,
                                                                        gint                       position);
 GDK_AVAILABLE_IN_ALL
-void                           ctk_tool_palette_set_exclusive         (GtkToolPalette            *palette,
-                                                                       GtkToolItemGroup          *group,
+void                           ctk_tool_palette_set_exclusive         (CtkToolPalette            *palette,
+                                                                       CtkToolItemGroup          *group,
                                                                        gboolean                   exclusive);
 GDK_AVAILABLE_IN_ALL
-void                           ctk_tool_palette_set_expand            (GtkToolPalette            *palette,
-                                                                       GtkToolItemGroup          *group,
+void                           ctk_tool_palette_set_expand            (CtkToolPalette            *palette,
+                                                                       CtkToolItemGroup          *group,
                                                                        gboolean                   expand);
 
 GDK_AVAILABLE_IN_ALL
-gint                           ctk_tool_palette_get_group_position    (GtkToolPalette            *palette,
-                                                                       GtkToolItemGroup          *group);
+gint                           ctk_tool_palette_get_group_position    (CtkToolPalette            *palette,
+                                                                       CtkToolItemGroup          *group);
 GDK_AVAILABLE_IN_ALL
-gboolean                       ctk_tool_palette_get_exclusive         (GtkToolPalette            *palette,
-                                                                       GtkToolItemGroup          *group);
+gboolean                       ctk_tool_palette_get_exclusive         (CtkToolPalette            *palette,
+                                                                       CtkToolItemGroup          *group);
 GDK_AVAILABLE_IN_ALL
-gboolean                       ctk_tool_palette_get_expand            (GtkToolPalette            *palette,
-                                                                       GtkToolItemGroup          *group);
+gboolean                       ctk_tool_palette_get_expand            (CtkToolPalette            *palette,
+                                                                       CtkToolItemGroup          *group);
 
 GDK_AVAILABLE_IN_ALL
-void                           ctk_tool_palette_set_icon_size         (GtkToolPalette            *palette,
-                                                                       GtkIconSize                icon_size);
+void                           ctk_tool_palette_set_icon_size         (CtkToolPalette            *palette,
+                                                                       CtkIconSize                icon_size);
 GDK_AVAILABLE_IN_ALL
-void                           ctk_tool_palette_unset_icon_size       (GtkToolPalette            *palette);
+void                           ctk_tool_palette_unset_icon_size       (CtkToolPalette            *palette);
 GDK_AVAILABLE_IN_ALL
-void                           ctk_tool_palette_set_style             (GtkToolPalette            *palette,
-                                                                       GtkToolbarStyle            style);
+void                           ctk_tool_palette_set_style             (CtkToolPalette            *palette,
+                                                                       CtkToolbarStyle            style);
 GDK_AVAILABLE_IN_ALL
-void                           ctk_tool_palette_unset_style           (GtkToolPalette            *palette);
+void                           ctk_tool_palette_unset_style           (CtkToolPalette            *palette);
 
 GDK_AVAILABLE_IN_ALL
-GtkIconSize                    ctk_tool_palette_get_icon_size         (GtkToolPalette            *palette);
+CtkIconSize                    ctk_tool_palette_get_icon_size         (CtkToolPalette            *palette);
 GDK_AVAILABLE_IN_ALL
-GtkToolbarStyle                ctk_tool_palette_get_style             (GtkToolPalette            *palette);
+CtkToolbarStyle                ctk_tool_palette_get_style             (CtkToolPalette            *palette);
 
 GDK_AVAILABLE_IN_ALL
-GtkToolItem*                   ctk_tool_palette_get_drop_item         (GtkToolPalette            *palette,
+CtkToolItem*                   ctk_tool_palette_get_drop_item         (CtkToolPalette            *palette,
                                                                        gint                       x,
                                                                        gint                       y);
 GDK_AVAILABLE_IN_ALL
-GtkToolItemGroup*              ctk_tool_palette_get_drop_group        (GtkToolPalette            *palette,
+CtkToolItemGroup*              ctk_tool_palette_get_drop_group        (CtkToolPalette            *palette,
                                                                        gint                       x,
                                                                        gint                       y);
 GDK_AVAILABLE_IN_ALL
-GtkWidget*                     ctk_tool_palette_get_drag_item         (GtkToolPalette            *palette,
-                                                                       const GtkSelectionData    *selection);
+CtkWidget*                     ctk_tool_palette_get_drag_item         (CtkToolPalette            *palette,
+                                                                       const CtkSelectionData    *selection);
 
 GDK_AVAILABLE_IN_ALL
-void                           ctk_tool_palette_set_drag_source       (GtkToolPalette            *palette,
-                                                                       GtkToolPaletteDragTargets  targets);
+void                           ctk_tool_palette_set_drag_source       (CtkToolPalette            *palette,
+                                                                       CtkToolPaletteDragTargets  targets);
 GDK_AVAILABLE_IN_ALL
-void                           ctk_tool_palette_add_drag_dest         (GtkToolPalette            *palette,
-                                                                       GtkWidget                 *widget,
-                                                                       GtkDestDefaults            flags,
-                                                                       GtkToolPaletteDragTargets  targets,
+void                           ctk_tool_palette_add_drag_dest         (CtkToolPalette            *palette,
+                                                                       CtkWidget                 *widget,
+                                                                       CtkDestDefaults            flags,
+                                                                       CtkToolPaletteDragTargets  targets,
                                                                        GdkDragAction              actions);
 
 
 GDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_get_hadjustment)
-GtkAdjustment*                 ctk_tool_palette_get_hadjustment       (GtkToolPalette            *palette);
+CtkAdjustment*                 ctk_tool_palette_get_hadjustment       (CtkToolPalette            *palette);
 GDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_get_vadjustment)
-GtkAdjustment*                 ctk_tool_palette_get_vadjustment       (GtkToolPalette            *palette);
+CtkAdjustment*                 ctk_tool_palette_get_vadjustment       (CtkToolPalette            *palette);
 
 GDK_AVAILABLE_IN_ALL
-const GtkTargetEntry*          ctk_tool_palette_get_drag_target_item  (void) G_GNUC_CONST;
+const CtkTargetEntry*          ctk_tool_palette_get_drag_target_item  (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-const GtkTargetEntry*          ctk_tool_palette_get_drag_target_group (void) G_GNUC_CONST;
+const CtkTargetEntry*          ctk_tool_palette_get_drag_target_group (void) G_GNUC_CONST;
 
 
 G_END_DECLS

@@ -86,7 +86,7 @@
 #define NONE_ID   "ctk-im-context-none"
 
 /**
- * GtkIMContextInfo:
+ * CtkIMContextInfo:
  * @context_id: The unique identification string of the input method.
  * @context_name: The human-readable name of the input method.
  * @domain: Translation domain to be used with dgettext()
@@ -97,14 +97,14 @@
  * Bookkeeping information about a loadable input method.
  */
 
-typedef struct _GtkIMModule      GtkIMModule;
-typedef struct _GtkIMModuleClass GtkIMModuleClass;
+typedef struct _CtkIMModule      CtkIMModule;
+typedef struct _CtkIMModuleClass CtkIMModuleClass;
 
 #define CTK_TYPE_IM_MODULE          (ctk_im_module_get_type ())
-#define CTK_IM_MODULE(im_module)    (G_TYPE_CHECK_INSTANCE_CAST ((im_module), CTK_TYPE_IM_MODULE, GtkIMModule))
+#define CTK_IM_MODULE(im_module)    (G_TYPE_CHECK_INSTANCE_CAST ((im_module), CTK_TYPE_IM_MODULE, CtkIMModule))
 #define CTK_IS_IM_MODULE(im_module) (G_TYPE_CHECK_INSTANCE_TYPE ((im_module), CTK_TYPE_IM_MODULE))
 
-struct _GtkIMModule
+struct _CtkIMModule
 {
   GTypeModule parent_instance;
   
@@ -112,19 +112,19 @@ struct _GtkIMModule
 
   GModule *library;
 
-  void          (*list)   (const GtkIMContextInfo ***contexts,
+  void          (*list)   (const CtkIMContextInfo ***contexts,
  		           guint                    *n_contexts);
   void          (*init)   (GTypeModule              *module);
   void          (*exit)   (void);
-  GtkIMContext *(*create) (const gchar              *context_id);
+  CtkIMContext *(*create) (const gchar              *context_id);
 
-  GtkIMContextInfo **contexts;
+  CtkIMContextInfo **contexts;
   guint n_contexts;
 
   gchar *path;
 };
 
-struct _GtkIMModuleClass 
+struct _CtkIMModuleClass 
 {
   GTypeModuleClass parent_class;
 };
@@ -138,7 +138,7 @@ static GSList *modules_list = NULL;
 static gboolean
 ctk_im_module_load (GTypeModule *module)
 {
-  GtkIMModule *im_module = CTK_IM_MODULE (module);
+  CtkIMModule *im_module = CTK_IM_MODULE (module);
   
   if (!im_module->builtin)
     {
@@ -176,7 +176,7 @@ ctk_im_module_load (GTypeModule *module)
 static void
 ctk_im_module_unload (GTypeModule *module)
 {
-  GtkIMModule *im_module = CTK_IM_MODULE (module);
+  CtkIMModule *im_module = CTK_IM_MODULE (module);
   
   im_module->exit();
 
@@ -192,7 +192,7 @@ ctk_im_module_unload (GTypeModule *module)
     }
 }
 
-G_DEFINE_TYPE (GtkIMModule, ctk_im_module, G_TYPE_TYPE_MODULE)
+G_DEFINE_TYPE (CtkIMModule, ctk_im_module, G_TYPE_TYPE_MODULE)
 
 /* This only will ever be called if an error occurs during
  * initialization
@@ -200,7 +200,7 @@ G_DEFINE_TYPE (GtkIMModule, ctk_im_module, G_TYPE_TYPE_MODULE)
 static void
 ctk_im_module_finalize (GObject *object)
 {
-  GtkIMModule *module = CTK_IM_MODULE (object);
+  CtkIMModule *module = CTK_IM_MODULE (object);
 
   g_free (module->path);
 
@@ -208,7 +208,7 @@ ctk_im_module_finalize (GObject *object)
 }
 
 static void
-ctk_im_module_class_init (GtkIMModuleClass *class)
+ctk_im_module_class_init (CtkIMModuleClass *class)
 {
   GTypeModuleClass *module_class = G_TYPE_MODULE_CLASS (class);
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
@@ -220,12 +220,12 @@ ctk_im_module_class_init (GtkIMModuleClass *class)
 }
 
 static void 
-ctk_im_module_init (GtkIMModule* object)
+ctk_im_module_init (CtkIMModule* object)
 {
 }
 
 static void
-free_info (GtkIMContextInfo *info)
+free_info (CtkIMContextInfo *info)
 {
   g_free ((char *)info->context_id);
   g_free ((char *)info->context_name);
@@ -236,16 +236,16 @@ free_info (GtkIMContextInfo *info)
 }
 
 static void
-add_module (GtkIMModule *module, GSList *infos)
+add_module (CtkIMModule *module, GSList *infos)
 {
   GSList *tmp_list = infos;
   gint i = 0;
   gint n = g_slist_length (infos);
-  module->contexts = g_new (GtkIMContextInfo *, n);
+  module->contexts = g_new (CtkIMContextInfo *, n);
 
   while (tmp_list)
     {
-      GtkIMContextInfo *info = tmp_list->data;
+      CtkIMContextInfo *info = tmp_list->data;
   
       if (g_hash_table_lookup (contexts_hash, info->context_id))
 	{
@@ -302,18 +302,18 @@ correct_localedir_prefix (gchar **path)
 #endif
 
 
-G_GNUC_UNUSED static GtkIMModule *
+G_GNUC_UNUSED static CtkIMModule *
 add_builtin_module (const gchar             *module_name,
-		    const GtkIMContextInfo **contexts,
+		    const CtkIMContextInfo **contexts,
 		    int                      n_contexts)
 {
-  GtkIMModule *module = g_object_new (CTK_TYPE_IM_MODULE, NULL);
+  CtkIMModule *module = g_object_new (CTK_TYPE_IM_MODULE, NULL);
   GSList *infos = NULL;
   int i;
 
   for (i = 0; i < n_contexts; i++)
     {
-      GtkIMContextInfo *info = g_new (GtkIMContextInfo, 1);
+      CtkIMContextInfo *info = g_new (CtkIMContextInfo, 1);
       info->context_id = g_strdup (contexts[i]->context_id);
       info->context_name = g_strdup (contexts[i]->context_name);
       info->domain = g_strdup (contexts[i]->domain);
@@ -341,20 +341,20 @@ ctk_im_module_initialize (void)
   FILE *file;
   gboolean have_error = FALSE;
 
-  GtkIMModule *module = NULL;
+  CtkIMModule *module = NULL;
   GSList *infos = NULL;
 
   contexts_hash = g_hash_table_new (g_str_hash, g_str_equal);
 
 #define do_builtin(m)							\
   {									\
-    const GtkIMContextInfo **contexts;					\
+    const CtkIMContextInfo **contexts;					\
     int n_contexts;							\
-    extern void _ctk_immodule_ ## m ## _list (const GtkIMContextInfo ***contexts, \
+    extern void _ctk_immodule_ ## m ## _list (const CtkIMContextInfo ***contexts, \
 					      int                      *n_contexts); \
     extern void _ctk_immodule_ ## m ## _init (GTypeModule *module);	\
     extern void _ctk_immodule_ ## m ## _exit (void);			\
-    extern GtkIMContext *_ctk_immodule_ ## m ## _create (const gchar *context_id); \
+    extern CtkIMContext *_ctk_immodule_ ## m ## _create (const gchar *context_id); \
 									\
     _ctk_immodule_ ## m ## _list (&contexts, &n_contexts);		\
     module = add_builtin_module (#m, contexts, n_contexts);		\
@@ -461,7 +461,7 @@ ctk_im_module_initialize (void)
 	}
       else
 	{
-	  GtkIMContextInfo *info = g_new0 (GtkIMContextInfo, 1);
+	  CtkIMContextInfo *info = g_new0 (CtkIMContextInfo, 1);
 
 	  /* Read information about a context type
 	   */
@@ -516,15 +516,15 @@ ctk_im_module_initialize (void)
 }
 
 static gint
-compare_ctkimcontextinfo_name (const GtkIMContextInfo **a,
-                               const GtkIMContextInfo **b)
+compare_ctkimcontextinfo_name (const CtkIMContextInfo **a,
+                               const CtkIMContextInfo **b)
 {
   return g_utf8_collate ((*a)->context_name, (*b)->context_name);
 }
 
 /**
  * _ctk_im_module_list:
- * @contexts: location to store an array of pointers to #GtkIMContextInfo
+ * @contexts: location to store an array of pointers to #CtkIMContextInfo
  *            this array should be freed with g_free() when you are finished.
  *            The structures it points are statically allocated and should
  *            not be modified or freed.
@@ -533,7 +533,7 @@ compare_ctkimcontextinfo_name (const GtkIMContextInfo **a,
  * List all available types of input method context
  */
 void
-_ctk_im_module_list (const GtkIMContextInfo ***contexts,
+_ctk_im_module_list (const CtkIMContextInfo ***contexts,
 		     guint                    *n_contexts)
 {
   int n = 0;
@@ -542,7 +542,7 @@ _ctk_im_module_list (const GtkIMContextInfo ***contexts,
 #ifndef G_OS_WIN32
 	  const
 #endif
-		GtkIMContextInfo simple_context_info = {
+		CtkIMContextInfo simple_context_info = {
     SIMPLE_ID,
     NC_("input method menu", "Simple"),
     GETTEXT_PACKAGE,
@@ -558,7 +558,7 @@ _ctk_im_module_list (const GtkIMContextInfo ***contexts,
 #ifndef G_OS_WIN32
 	  const
 #endif
-		GtkIMContextInfo none_context_info = {
+		CtkIMContextInfo none_context_info = {
     NONE_ID,
     NC_("input method menu", "None"),
     GETTEXT_PACKAGE,
@@ -599,7 +599,7 @@ _ctk_im_module_list (const GtkIMContextInfo ***contexts,
       GSList *tmp_list;
       int i;
 
-      *contexts = g_new (const GtkIMContextInfo *, n_loaded_contexts + 2);
+      *contexts = g_new (const CtkIMContextInfo *, n_loaded_contexts + 2);
 
       (*contexts)[n++] = &none_context_info;
       (*contexts)[n++] = &simple_context_info;
@@ -607,7 +607,7 @@ _ctk_im_module_list (const GtkIMContextInfo ***contexts,
       tmp_list = modules_list;
       while (tmp_list)
 	{
-	  GtkIMModule *module = tmp_list->data;
+	  CtkIMModule *module = tmp_list->data;
 
 	  for (i=0; i<module->n_contexts; i++)
 	    (*contexts)[n++] = module->contexts[i];
@@ -616,7 +616,7 @@ _ctk_im_module_list (const GtkIMContextInfo ***contexts,
 	}
 
       /* first elements (Simple and None) should always be at top */
-      qsort ((*contexts)+2, n-2, sizeof (GtkIMContextInfo *), (GCompareFunc)compare_ctkimcontextinfo_name);
+      qsort ((*contexts)+2, n-2, sizeof (CtkIMContextInfo *), (GCompareFunc)compare_ctkimcontextinfo_name);
     }
 }
 
@@ -628,13 +628,13 @@ _ctk_im_module_list (const GtkIMContextInfo ***contexts,
  * ID @context_id.
  * 
  * Returns: a newly created input context of or @context_id, or
- *     if that could not be created, a newly created GtkIMContextSimple.
+ *     if that could not be created, a newly created CtkIMContextSimple.
  */
-GtkIMContext *
+CtkIMContext *
 _ctk_im_module_create (const gchar *context_id)
 {
-  GtkIMModule *im_module;
-  GtkIMContext *context = NULL;
+  CtkIMModule *im_module;
+  CtkIMContext *context = NULL;
 
   if (strcmp (context_id, NONE_ID) == 0)
     return NULL;
@@ -693,7 +693,7 @@ match_locale (const gchar *locale,
 }
 
 static gboolean
-match_backend (GtkIMContextInfo *context)
+match_backend (CtkIMContextInfo *context)
 {
 #ifdef GDK_WINDOWING_WAYLAND
   if (g_strcmp0 (context->context_id, "wayland") == 0)
@@ -835,7 +835,7 @@ _ctk_im_module_get_default_context_id (void)
   gchar *tmp_locale, *tmp, **immodules;
   const gchar *envvar;
   GdkScreen *screen;
-  GtkSettings *settings;
+  CtkSettings *settings;
 
   if (!contexts_hash)
     ctk_im_module_initialize ();
@@ -889,7 +889,7 @@ _ctk_im_module_get_default_context_id (void)
   tmp_list = modules_list;
   while (tmp_list)
     {
-      GtkIMModule *module = tmp_list->data;
+      CtkIMModule *module = tmp_list->data;
 
       for (i = 0; i < module->n_contexts; i++)
 	{

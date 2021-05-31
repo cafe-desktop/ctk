@@ -28,17 +28,17 @@
 #include "deprecated/ctkgradientprivate.h"
 #include "deprecated/ctksymboliccolorprivate.h"
 
-G_DEFINE_TYPE (GtkCssImageGradient, _ctk_css_image_gradient, CTK_TYPE_CSS_IMAGE)
+G_DEFINE_TYPE (CtkCssImageGradient, _ctk_css_image_gradient, CTK_TYPE_CSS_IMAGE)
 
-static GtkCssImage *
-ctk_css_image_gradient_compute (GtkCssImage             *image,
+static CtkCssImage *
+ctk_css_image_gradient_compute (CtkCssImage             *image,
                                 guint                    property_id,
-                                GtkStyleProviderPrivate *provider,
-                                GtkCssStyle             *style,
-                                GtkCssStyle             *parent_style)
+                                CtkStyleProviderPrivate *provider,
+                                CtkCssStyle             *style,
+                                CtkCssStyle             *parent_style)
 {
-  GtkCssImageGradient *gradient = CTK_CSS_IMAGE_GRADIENT (image);
-  GtkCssImageGradient *copy;
+  CtkCssImageGradient *gradient = CTK_CSS_IMAGE_GRADIENT (image);
+  CtkCssImageGradient *copy;
 
   if (gradient->pattern)
     return CTK_CSS_IMAGE (g_object_ref (gradient));
@@ -143,15 +143,15 @@ transition_pattern (cairo_pattern_t *start,
   return result;
 }
 
-static GtkCssImage *
-ctk_css_image_gradient_transition (GtkCssImage *start_image,
-                                   GtkCssImage *end_image,
+static CtkCssImage *
+ctk_css_image_gradient_transition (CtkCssImage *start_image,
+                                   CtkCssImage *end_image,
                                    guint        property_id,
                                    double       progress)
 {
-  GtkGradient *start_gradient, *end_gradient, *gradient;
+  CtkGradient *start_gradient, *end_gradient, *gradient;
   cairo_pattern_t *start_pattern, *end_pattern;
-  GtkCssImageGradient *result;
+  CtkCssImageGradient *result;
 
   start_gradient = CTK_CSS_IMAGE_GRADIENT (start_image)->gradient;
   start_pattern = CTK_CSS_IMAGE_GRADIENT (start_image)->pattern;
@@ -181,7 +181,7 @@ ctk_css_image_gradient_transition (GtkCssImage *start_image,
 }
 
 static gboolean
-ctk_css_image_gradient_draw_circle (GtkCssImageGradient *image,
+ctk_css_image_gradient_draw_circle (CtkCssImageGradient *image,
                                     cairo_t              *cr,
                                     double               width,
                                     double               height)
@@ -229,12 +229,12 @@ ctk_css_image_gradient_draw_circle (GtkCssImageGradient *image,
 }
 
 static void
-ctk_css_image_gradient_draw (GtkCssImage        *image,
+ctk_css_image_gradient_draw (CtkCssImage        *image,
                              cairo_t            *cr,
                              double              width,
                              double              height)
 {
-  GtkCssImageGradient *gradient = CTK_CSS_IMAGE_GRADIENT (image);
+  CtkCssImageGradient *gradient = CTK_CSS_IMAGE_GRADIENT (image);
 
   if (!gradient->pattern)
     {
@@ -253,10 +253,10 @@ ctk_css_image_gradient_draw (GtkCssImage        *image,
 }
 
 static gboolean
-ctk_css_image_gradient_parse (GtkCssImage  *image,
-                              GtkCssParser *parser)
+ctk_css_image_gradient_parse (CtkCssImage  *image,
+                              CtkCssParser *parser)
 {
-  GtkCssImageGradient *gradient = CTK_CSS_IMAGE_GRADIENT (image);
+  CtkCssImageGradient *gradient = CTK_CSS_IMAGE_GRADIENT (image);
 
   gradient->gradient = _ctk_gradient_parse (parser);
 
@@ -264,10 +264,10 @@ ctk_css_image_gradient_parse (GtkCssImage  *image,
 }
 
 static void
-ctk_css_image_gradient_print (GtkCssImage *image,
+ctk_css_image_gradient_print (CtkCssImage *image,
                               GString     *string)
 {
-  GtkCssImageGradient *gradient = CTK_CSS_IMAGE_GRADIENT (image);
+  CtkCssImageGradient *gradient = CTK_CSS_IMAGE_GRADIENT (image);
   char *s;
 
   s = ctk_gradient_to_string (gradient->gradient);
@@ -278,7 +278,7 @@ ctk_css_image_gradient_print (GtkCssImage *image,
 static void
 ctk_css_image_gradient_dispose (GObject *object)
 {
-  GtkCssImageGradient *gradient = CTK_CSS_IMAGE_GRADIENT (object);
+  CtkCssImageGradient *gradient = CTK_CSS_IMAGE_GRADIENT (object);
 
   if (gradient->gradient)
     {
@@ -295,9 +295,9 @@ ctk_css_image_gradient_dispose (GObject *object)
 }
 
 static void
-_ctk_css_image_gradient_class_init (GtkCssImageGradientClass *klass)
+_ctk_css_image_gradient_class_init (CtkCssImageGradientClass *klass)
 {
-  GtkCssImageClass *image_class = CTK_CSS_IMAGE_CLASS (klass);
+  CtkCssImageClass *image_class = CTK_CSS_IMAGE_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   image_class->compute = ctk_css_image_gradient_compute;
@@ -310,14 +310,14 @@ _ctk_css_image_gradient_class_init (GtkCssImageGradientClass *klass)
 }
 
 static void
-_ctk_css_image_gradient_init (GtkCssImageGradient *image_gradient)
+_ctk_css_image_gradient_init (CtkCssImageGradient *image_gradient)
 {
 }
 
-GtkGradient *
-_ctk_gradient_parse (GtkCssParser *parser)
+CtkGradient *
+_ctk_gradient_parse (CtkCssParser *parser)
 {
-  GtkGradient *gradient;
+  CtkGradient *gradient;
   cairo_pattern_type_t type;
   gdouble coords[6];
   guint i;
@@ -413,7 +413,7 @@ _ctk_gradient_parse (GtkCssParser *parser)
 
   while (_ctk_css_parser_try (parser, ",", TRUE))
     {
-      GtkSymbolicColor *color;
+      CtkSymbolicColor *color;
       gdouble position;
 
       if (_ctk_css_parser_try (parser, "from", TRUE))

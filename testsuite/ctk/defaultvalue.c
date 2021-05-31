@@ -1,4 +1,4 @@
-/* Gtk+ default value tests
+/* Ctk+ default value tests
  * Copyright (C) 2007 Christian Persch
  *               2007 Johan Dahlin
  *

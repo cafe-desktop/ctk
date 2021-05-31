@@ -25,26 +25,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CSS_IMAGE_URL           (_ctk_css_image_url_get_type ())
-#define CTK_CSS_IMAGE_URL(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_IMAGE_URL, GtkCssImageUrl))
-#define CTK_CSS_IMAGE_URL_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_IMAGE_URL, GtkCssImageUrlClass))
+#define CTK_CSS_IMAGE_URL(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_IMAGE_URL, CtkCssImageUrl))
+#define CTK_CSS_IMAGE_URL_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_IMAGE_URL, CtkCssImageUrlClass))
 #define CTK_IS_CSS_IMAGE_URL(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_IMAGE_URL))
 #define CTK_IS_CSS_IMAGE_URL_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_IMAGE_URL))
-#define CTK_CSS_IMAGE_URL_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_IMAGE_URL, GtkCssImageUrlClass))
+#define CTK_CSS_IMAGE_URL_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_IMAGE_URL, CtkCssImageUrlClass))
 
-typedef struct _GtkCssImageUrl           GtkCssImageUrl;
-typedef struct _GtkCssImageUrlClass      GtkCssImageUrlClass;
+typedef struct _CtkCssImageUrl           CtkCssImageUrl;
+typedef struct _CtkCssImageUrlClass      CtkCssImageUrlClass;
 
-struct _GtkCssImageUrl
+struct _CtkCssImageUrl
 {
-  GtkCssImage parent;
+  CtkCssImage parent;
 
   GFile           *file;                /* the file we're loading from */
-  GtkCssImage     *loaded_image;        /* the actual image we render */
+  CtkCssImage     *loaded_image;        /* the actual image we render */
 };
 
-struct _GtkCssImageUrlClass
+struct _CtkCssImageUrlClass
 {
-  GtkCssImageClass parent_class;
+  CtkCssImageClass parent_class;
 };
 
 GType          _ctk_css_image_url_get_type             (void) G_GNUC_CONST;

@@ -26,35 +26,35 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GtkCssLookup GtkCssLookup;
+typedef struct _CtkCssLookup CtkCssLookup;
 
 typedef struct {
-  GtkCssSection     *section;
-  GtkCssValue       *value;
-} GtkCssLookupValue;
+  CtkCssSection     *section;
+  CtkCssValue       *value;
+} CtkCssLookupValue;
 
-struct _GtkCssLookup {
-  GtkBitmask        *missing;
-  GtkCssLookupValue  values[CTK_CSS_PROPERTY_N_PROPERTIES];
+struct _CtkCssLookup {
+  CtkBitmask        *missing;
+  CtkCssLookupValue  values[CTK_CSS_PROPERTY_N_PROPERTIES];
 };
 
-GtkCssLookup *          _ctk_css_lookup_new                     (const GtkBitmask           *relevant);
-void                    _ctk_css_lookup_free                    (GtkCssLookup               *lookup);
+CtkCssLookup *          _ctk_css_lookup_new                     (const CtkBitmask           *relevant);
+void                    _ctk_css_lookup_free                    (CtkCssLookup               *lookup);
 
-static inline const GtkBitmask *_ctk_css_lookup_get_missing     (const GtkCssLookup         *lookup);
-gboolean                _ctk_css_lookup_is_missing              (const GtkCssLookup         *lookup,
+static inline const CtkBitmask *_ctk_css_lookup_get_missing     (const CtkCssLookup         *lookup);
+gboolean                _ctk_css_lookup_is_missing              (const CtkCssLookup         *lookup,
                                                                  guint                       id);
-void                    _ctk_css_lookup_set                     (GtkCssLookup               *lookup,
+void                    _ctk_css_lookup_set                     (CtkCssLookup               *lookup,
                                                                  guint                       id,
-                                                                 GtkCssSection              *section,
-                                                                 GtkCssValue                *value);
-void                    _ctk_css_lookup_resolve                 (GtkCssLookup               *lookup,
-                                                                 GtkStyleProviderPrivate    *provider,
-                                                                 GtkCssStaticStyle          *style,
-                                                                 GtkCssStyle                *parent_style);
+                                                                 CtkCssSection              *section,
+                                                                 CtkCssValue                *value);
+void                    _ctk_css_lookup_resolve                 (CtkCssLookup               *lookup,
+                                                                 CtkStyleProviderPrivate    *provider,
+                                                                 CtkCssStaticStyle          *style,
+                                                                 CtkCssStyle                *parent_style);
 
-static inline const GtkBitmask *
-_ctk_css_lookup_get_missing (const GtkCssLookup *lookup)
+static inline const CtkBitmask *
+_ctk_css_lookup_get_missing (const CtkCssLookup *lookup)
 {
   return lookup->missing;
 }

@@ -1,6 +1,6 @@
 <!-- test invalid id in dialog markup -->
 <interface>
-  <object class="GtkDialog">
+  <object class="CtkDialog">
     <action-widgets>
       <action-widget response="ok">xyzzy</action-widget>
     </action-widgets>

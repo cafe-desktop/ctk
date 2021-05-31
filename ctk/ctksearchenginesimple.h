@@ -27,23 +27,23 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_SEARCH_ENGINE_SIMPLE		(_ctk_search_engine_simple_get_type ())
-#define CTK_SEARCH_ENGINE_SIMPLE(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SEARCH_ENGINE_SIMPLE, GtkSearchEngineSimple))
-#define CTK_SEARCH_ENGINE_SIMPLE_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SEARCH_ENGINE_SIMPLE, GtkSearchEngineSimpleClass))
+#define CTK_SEARCH_ENGINE_SIMPLE(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SEARCH_ENGINE_SIMPLE, CtkSearchEngineSimple))
+#define CTK_SEARCH_ENGINE_SIMPLE_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SEARCH_ENGINE_SIMPLE, CtkSearchEngineSimpleClass))
 #define CTK_IS_SEARCH_ENGINE_SIMPLE(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SEARCH_ENGINE_SIMPLE))
 #define CTK_IS_SEARCH_ENGINE_SIMPLE_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SEARCH_ENGINE_SIMPLE))
-#define CTK_SEARCH_ENGINE_SIMPLE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SEARCH_ENGINE_SIMPLE, GtkSearchEngineSimpleClass))
+#define CTK_SEARCH_ENGINE_SIMPLE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SEARCH_ENGINE_SIMPLE, CtkSearchEngineSimpleClass))
 
-typedef struct _GtkSearchEngineSimple GtkSearchEngineSimple;
-typedef struct _GtkSearchEngineSimpleClass GtkSearchEngineSimpleClass;
+typedef struct _CtkSearchEngineSimple CtkSearchEngineSimple;
+typedef struct _CtkSearchEngineSimpleClass CtkSearchEngineSimpleClass;
 
 GType            _ctk_search_engine_simple_get_type (void);
 
-GtkSearchEngine* _ctk_search_engine_simple_new      (void);
+CtkSearchEngine* _ctk_search_engine_simple_new      (void);
 
-typedef gboolean (*GtkSearchEngineSimpleIsIndexed) (GFile *location, gpointer data);
+typedef gboolean (*CtkSearchEngineSimpleIsIndexed) (GFile *location, gpointer data);
 
-void             _ctk_search_engine_simple_set_indexed_cb (GtkSearchEngineSimple *engine,
-                                                           GtkSearchEngineSimpleIsIndexed callback,
+void             _ctk_search_engine_simple_set_indexed_cb (CtkSearchEngineSimple *engine,
+                                                           CtkSearchEngineSimpleIsIndexed callback,
                                                            gpointer                       data,
                                                            GDestroyNotify                 destroy);
 

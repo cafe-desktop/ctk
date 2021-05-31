@@ -26,16 +26,16 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_EMOJI_COMPLETION                 (ctk_emoji_completion_get_type ())
-#define CTK_EMOJI_COMPLETION(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_EMOJI_COMPLETION, GtkEmojiCompletion))
-#define CTK_EMOJI_COMPLETION_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_EMOJI_COMPLETION, GtkEmojiCompletionClass))
+#define CTK_EMOJI_COMPLETION(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_EMOJI_COMPLETION, CtkEmojiCompletion))
+#define CTK_EMOJI_COMPLETION_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_EMOJI_COMPLETION, CtkEmojiCompletionClass))
 #define CTK_IS_EMOJI_COMPLETION(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_EMOJI_COMPLETION))
 #define CTK_IS_EMOJI_COMPLETION_CLASS(klass)      (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_EMOJI_COMPLETION))
-#define CTK_EMOJI_COMPLETION_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_EMOJI_COMPLETION, GtkEmojiCompletionClass))
+#define CTK_EMOJI_COMPLETION_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_EMOJI_COMPLETION, CtkEmojiCompletionClass))
 
-typedef struct _GtkEmojiCompletion      GtkEmojiCompletion;
-typedef struct _GtkEmojiCompletionClass GtkEmojiCompletionClass;
+typedef struct _CtkEmojiCompletion      CtkEmojiCompletion;
+typedef struct _CtkEmojiCompletionClass CtkEmojiCompletionClass;
 
 GType      ctk_emoji_completion_get_type (void) G_GNUC_CONST;
-GtkWidget *ctk_emoji_completion_new      (GtkEntry *entry);
+CtkWidget *ctk_emoji_completion_new      (CtkEntry *entry);
 
 G_END_DECLS

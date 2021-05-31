@@ -28,17 +28,17 @@
 
 G_BEGIN_DECLS
 
-struct _GtkEntryCompletionPrivate
+struct _CtkEntryCompletionPrivate
 {
-  GtkWidget *entry;
+  CtkWidget *entry;
 
-  GtkWidget *tree_view;
-  GtkTreeViewColumn *column;
-  GtkTreeModelFilter *filter_model;
-  GtkListStore *actions;
-  GtkCellArea *cell_area;
+  CtkWidget *tree_view;
+  CtkTreeViewColumn *column;
+  CtkTreeModelFilter *filter_model;
+  CtkListStore *actions;
+  CtkCellArea *cell_area;
 
-  GtkEntryCompletionMatchFunc match_func;
+  CtkEntryCompletionMatchFunc match_func;
   gpointer match_data;
   GDestroyNotify match_notify;
 
@@ -47,11 +47,11 @@ struct _GtkEntryCompletionPrivate
 
   gchar *case_normalized_key;
 
-  /* only used by GtkEntry when attached: */
-  GtkWidget *popup_window;
-  GtkWidget *vbox;
-  GtkWidget *scrolled_window;
-  GtkWidget *action_view;
+  /* only used by CtkEntry when attached: */
+  CtkWidget *popup_window;
+  CtkWidget *vbox;
+  CtkWidget *scrolled_window;
+  CtkWidget *action_view;
 
   gulong completion_timeout;
   gulong changed_id;
@@ -76,28 +76,28 @@ struct _GtkEntryCompletionPrivate
   GdkDevice *device;
 };
 
-void     _ctk_entry_completion_resize_popup (GtkEntryCompletion *completion);
-void     _ctk_entry_completion_popdown      (GtkEntryCompletion *completion);
-void     _ctk_entry_completion_connect      (GtkEntryCompletion *completion,
-                                             GtkEntry           *entry);
-void     _ctk_entry_completion_disconnect   (GtkEntryCompletion *completion);
+void     _ctk_entry_completion_resize_popup (CtkEntryCompletion *completion);
+void     _ctk_entry_completion_popdown      (CtkEntryCompletion *completion);
+void     _ctk_entry_completion_connect      (CtkEntryCompletion *completion,
+                                             CtkEntry           *entry);
+void     _ctk_entry_completion_disconnect   (CtkEntryCompletion *completion);
 
-gchar*   _ctk_entry_get_display_text       (GtkEntry *entry,
+gchar*   _ctk_entry_get_display_text       (CtkEntry *entry,
                                             gint      start_pos,
                                             gint      end_pos);
-void     _ctk_entry_get_borders            (GtkEntry  *entry,
-                                            GtkBorder *borders);
-GtkIMContext* _ctk_entry_get_im_context    (GtkEntry  *entry);
-GtkCssGadget* ctk_entry_get_gadget         (GtkEntry  *entry);
-void     _ctk_entry_grab_focus             (GtkEntry  *entry,
+void     _ctk_entry_get_borders            (CtkEntry  *entry,
+                                            CtkBorder *borders);
+CtkIMContext* _ctk_entry_get_im_context    (CtkEntry  *entry);
+CtkCssGadget* ctk_entry_get_gadget         (CtkEntry  *entry);
+void     _ctk_entry_grab_focus             (CtkEntry  *entry,
                                             gboolean   select_all);
 
 /* in ctkspinbutton.c (because I'm too lazy to create ctkspinbuttonprivate.h) */
-gint     ctk_spin_button_get_text_width    (GtkSpinButton *spin_button);
+gint     ctk_spin_button_get_text_width    (CtkSpinButton *spin_button);
 
-void     ctk_entry_enter_text              (GtkEntry   *entry,
+void     ctk_entry_enter_text              (CtkEntry   *entry,
                                             const char *text);
-void     ctk_entry_set_positions           (GtkEntry   *entry,
+void     ctk_entry_set_positions           (CtkEntry   *entry,
                                             int         current_pos,
                                             int         selection_bound);
 

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.8 -->
-  <template class="ExampleAppWindow" parent="GtkApplicationWindow">
+  <template class="ExampleAppWindow" parent="CtkApplicationWindow">
     <property name="title" translatable="yes">Example Application</property>
     <property name="default-width">600</property>
     <property name="default-height">400</property>
     <child>
-      <object class="GtkBox" id="content_box">
+      <object class="CtkBox" id="content_box">
         <property name="visible">True</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkHeaderBar" id="header">
+          <object class="CtkHeaderBar" id="header">
             <property name="visible">True</property>
             <child type="title">
-              <object class="GtkStackSwitcher" id="tabs">
+              <object class="CtkStackSwitcher" id="tabs">
                 <property name="visible">True</property>
                 <property name="stack">stack</property>
               </object>
@@ -21,7 +21,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkStack" id="stack">
+          <object class="CtkStack" id="stack">
             <property name="visible">True</property>
           </object>
         </child>

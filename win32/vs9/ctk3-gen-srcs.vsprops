@@ -14,7 +14,7 @@
 		Value="..\config.h;..\gdk\gdkconfig.h;..\gdk\gdkversionmacros.h;..\gdk\gdkmarshalers.h;..\gdk\gdkmarshalers.c;..\gdk\gdkresources.h;..\gdk\gdkresources.c"
 	/>
 	<UserMacro
-		Name="GeneratedGtkSources"
+		Name="GeneratedCtkSources"
 		Value="..\ctk\ctk-win32.rc;..\ctk\libctk3.manifest;..\ctk\ctkdbusgenerated.h;..\ctk\ctkdbusgenerated.c"
 	/>
 	<UserMacro

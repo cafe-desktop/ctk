@@ -87,9 +87,9 @@ gboolean _ctk_translate_keyboard_accel_state   (GdkKeymap       *keymap,
                                                 gint            *level,
                                                 GdkModifierType *consumed_modifiers);
 
-gboolean        _ctk_propagate_captured_event  (GtkWidget       *widget,
+gboolean        _ctk_propagate_captured_event  (CtkWidget       *widget,
                                                 GdkEvent        *event,
-                                                GtkWidget       *topmost);
+                                                CtkWidget       *topmost);
 
 
 gdouble _ctk_get_slowdown ();

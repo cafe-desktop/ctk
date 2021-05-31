@@ -480,7 +480,7 @@ msgstr ""
 #: ctk/ctkaction.c:396
 #, fuzzy
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr "iyi ni Na: Cyangwa kugirango By'imbere Gukoresha"
 
@@ -924,7 +924,7 @@ msgstr "Ubwoko"
 #: ctk/ctkbox.c:287 ctk/ctknotebook.c:692
 #, fuzzy
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
 msgstr "A i ni Na: Indango Kuri i Gutangira Cyangwa Impera Bya i"
 
@@ -1479,7 +1479,7 @@ msgstr "Ingano"
 
 #: ctk/ctkcellrendererpixbuf.c:153
 #, fuzzy
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
 msgstr "Agaciro i Ingano Bya i Agashushondanga"
 
 #: ctk/ctkcellrendererpixbuf.c:162
@@ -1610,7 +1610,7 @@ msgstr "Bya Agashushondanga Kuri Gukoresha"
 
 #: ctk/ctkcellrendererspinner.c:154
 #, fuzzy
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
 msgstr "Agaciro i Ingano Bya i Agashushondanga"
 
 #: ctk/ctkcellrenderertext.c:232
@@ -3661,7 +3661,7 @@ msgstr ""
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkMisc::xalign for that"
+"CtkMisc::xalign for that"
 msgstr ""
 "Itunganya Bya i Imirongo in i Umwandiko Bya i Akarango Bifitanye isano Kuri "
 "Ikindi i Itunganya Bya i Akarango muri kugirango"
@@ -3780,7 +3780,7 @@ msgstr ""
 
 #: ctk/ctklayout.c:626 ctk/ctkscrolledwindow.c:244
 #, fuzzy
-msgid "The GtkAdjustment for the horizontal position"
+msgid "The CtkAdjustment for the horizontal position"
 msgstr "kugirango i Gitambitse Ibirindiro"
 
 #: ctk/ctklayout.c:633 ctk/ctkviewport.c:150
@@ -3789,7 +3789,7 @@ msgstr ""
 
 #: ctk/ctklayout.c:634 ctk/ctkscrolledwindow.c:251
 #, fuzzy
-msgid "The GtkAdjustment for the vertical position"
+msgid "The CtkAdjustment for the vertical position"
 msgstr "kugirango i Bihagaritse Ibirindiro"
 
 #: ctk/ctklayout.c:641 ctk/ctktreeviewcolumn.c:211
@@ -4198,7 +4198,7 @@ msgid "Message area"
 msgstr ""
 
 #: ctk/ctkmessagedialog.c:306
-msgid "GtkVBox that holds the dialog's primary and secondary labels"
+msgid "CtkVBox that holds the dialog's primary and secondary labels"
 msgstr ""
 
 #: ctk/ctkmisc.c:91
@@ -4691,7 +4691,7 @@ msgid "Default Page Setup"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1006
-msgid "The GtkPageSetup used by default"
+msgid "The CtkPageSetup used by default"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1024 ctk/ctkprintunixdialog.c:316
@@ -4699,7 +4699,7 @@ msgid "Print Settings"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1025 ctk/ctkprintunixdialog.c:317
-msgid "The GtkPrintSettings used for initializing the dialog"
+msgid "The CtkPrintSettings used for initializing the dialog"
 msgstr ""
 
 # svx/sdi\svxslots.src:SID_ATTR_CHAR_FONT.text
@@ -4829,7 +4829,7 @@ msgid "Embed Page Setup"
 msgstr "ingono y'urupapuro"
 
 #: ctk/ctkprintoperation.c:1321
-msgid "TRUE if page setup combos are embedded in GtkPrintDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintDialog"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1342
@@ -4843,7 +4843,7 @@ msgid "The number of pages that will be printed."
 msgstr "Umubare Bya Imbariro in i imbonerahamwe#"
 
 #: ctk/ctkprintunixdialog.c:299
-msgid "The GtkPageSetup to use"
+msgid "The CtkPageSetup to use"
 msgstr ""
 
 #: ctk/ctkprintunixdialog.c:324
@@ -4853,7 +4853,7 @@ msgstr "Byahiswemo Umwaka"
 
 #: ctk/ctkprintunixdialog.c:325
 #, fuzzy
-msgid "The GtkPrinter which is selected"
+msgid "The CtkPrinter which is selected"
 msgstr "Ikintu ni Gikora"
 
 #: ctk/ctkprintunixdialog.c:332
@@ -4875,7 +4875,7 @@ msgid "Whether the application has a selection"
 msgstr "i Igikorwa ni Bikora"
 
 #: ctk/ctkprintunixdialog.c:358
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
 msgstr ""
 
 # #-#-#-#-#  scaddins.pot (PACKAGE VERSION)  #-#-#-#-#
@@ -5043,7 +5043,7 @@ msgstr "i Urutonde ku i Mugaragaza"
 
 #: ctk/ctkrange.c:420
 #, fuzzy
-msgid "The GtkAdjustment that contains the current value of this range object"
+msgid "The CtkAdjustment that contains the current value of this range object"
 msgstr "Kirimo i KIGEZWEHO Agaciro Bya iyi Urutonde Igikoresho"
 
 #: ctk/ctkrange.c:428
@@ -5328,7 +5328,7 @@ msgstr "Ingano y'agashushondanga k'umwanyabikoresho"
 #: ctk/ctkscalebutton.c:240
 #, fuzzy
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
+"The CtkAdjustment that contains the current value of this scale button object"
 msgstr "Kirimo i KIGEZWEHO Agaciro Bya iyi Urutonde Igikoresho"
 
 #: ctk/ctkscalebutton.c:268
@@ -5877,7 +5877,7 @@ msgstr "IDOSIYE"
 
 #: ctk/ctksettings.c:743
 #, fuzzy
-msgid "Name of the GtkFileChooser backend to use by default"
+msgid "Name of the CtkFileChooser backend to use by default"
 msgstr "Bya i Kuri Gukoresha ku Mburabuzi"
 
 #: ctk/ctksettings.c:760
@@ -5887,7 +5887,7 @@ msgstr "IDOSIYE"
 
 #: ctk/ctksettings.c:761
 #, fuzzy
-msgid "List of the GtkPrintBackend backends to use by default"
+msgid "List of the CtkPrintBackend backends to use by default"
 msgstr "Bya i Kuri Gukoresha ku Mburabuzi"
 
 #: ctk/ctksettings.c:784
@@ -6126,7 +6126,7 @@ msgstr "Bya"
 #: ctk/ctkspinner.c:147
 msgid ""
 "The number of steps for the spinner to complete a full loop. The animation "
-"will complete a full cycle in one second by default (see #GtkSpinner:cycle-"
+"will complete a full cycle in one second by default (see #CtkSpinner:cycle-"
 "duration)."
 msgstr ""
 
@@ -7207,7 +7207,7 @@ msgstr ""
 
 #: ctk/ctktreeview.c:657
 #, fuzzy
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 msgstr "Hejuru ku Byose Imbariro i Ubuhagarike"
 
 #: ctk/ctktreeview.c:677
@@ -7518,14 +7518,14 @@ msgstr "Ikurikiranyanyuguti i"
 #: ctk/ctkviewport.c:143
 #, fuzzy
 msgid ""
-"The GtkAdjustment that determines the values of the horizontal position for "
+"The CtkAdjustment that determines the values of the horizontal position for "
 "this viewport"
 msgstr "i Uduciro Bya i Gitambitse Ibirindiro kugirango iyi"
 
 #: ctk/ctkviewport.c:151
 #, fuzzy
 msgid ""
-"The GtkAdjustment that determines the values of the vertical position for "
+"The CtkAdjustment that determines the values of the vertical position for "
 "this viewport"
 msgstr "i Uduciro Bya i Bihagaritse Ibirindiro kugirango iyi"
 
@@ -8051,7 +8051,7 @@ msgstr "in"
 
 #: ctk/ctkwindow.c:710
 #, fuzzy
-msgid "Whether the input focus is within this GtkWindow"
+msgid "Whether the input focus is within this CtkWindow"
 msgstr "i Iyinjiza ni muri iyi"
 
 #: ctk/ctkwindow.c:717
@@ -8289,7 +8289,7 @@ msgstr "Kuri Gushushanya i Iyinjiza Uburyo"
 
 #, fuzzy
 #~ msgid ""
-#~ "If TRUE, the GtkProgress is in activity mode, meaning that it signals "
+#~ "If TRUE, the CtkProgress is in activity mode, meaning that it signals "
 #~ "something is happening, but not how much of the activity is finished. "
 #~ "This is used when you're doing something but don't know how long it will "
 #~ "take."
@@ -8452,7 +8452,7 @@ msgstr "Kuri Gushushanya i Iyinjiza Uburyo"
 #~ msgstr "i Igaragazambere Hejuru i Umwanya ni"
 
 #, fuzzy
-#~ msgid "The GtkAdjustment connected to the progress bar (Deprecated)"
+#~ msgid "The CtkAdjustment connected to the progress bar (Deprecated)"
 #~ msgstr "Kuri i Aho bigeze"
 
 #, fuzzy

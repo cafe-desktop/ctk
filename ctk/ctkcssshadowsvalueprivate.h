@@ -30,26 +30,26 @@
 
 G_BEGIN_DECLS
 
-GtkCssValue *   _ctk_css_shadows_value_new_none       (void);
-GtkCssValue *   _ctk_css_shadows_value_parse          (GtkCssParser             *parser,
+CtkCssValue *   _ctk_css_shadows_value_new_none       (void);
+CtkCssValue *   _ctk_css_shadows_value_parse          (CtkCssParser             *parser,
                                                        gboolean                  box_shadow_mode);
 
-gboolean        _ctk_css_shadows_value_is_none        (const GtkCssValue        *shadows);
+gboolean        _ctk_css_shadows_value_is_none        (const CtkCssValue        *shadows);
 
-void            _ctk_css_shadows_value_paint_layout   (const GtkCssValue        *shadows,
+void            _ctk_css_shadows_value_paint_layout   (const CtkCssValue        *shadows,
                                                        cairo_t                  *cr,
                                                        PangoLayout              *layout);
 
-void            _ctk_css_shadows_value_paint_icon     (const GtkCssValue        *shadows,
+void            _ctk_css_shadows_value_paint_icon     (const CtkCssValue        *shadows,
 					               cairo_t                  *cr);
 
-void            _ctk_css_shadows_value_paint_box      (const GtkCssValue        *shadows,
+void            _ctk_css_shadows_value_paint_box      (const CtkCssValue        *shadows,
                                                        cairo_t                  *cr,
-                                                       const GtkRoundedBox      *padding_box,
+                                                       const CtkRoundedBox      *padding_box,
                                                        gboolean                  inset);
 
-void            _ctk_css_shadows_value_get_extents    (const GtkCssValue        *shadows,
-                                                       GtkBorder                *border);
+void            _ctk_css_shadows_value_get_extents    (const CtkCssValue        *shadows,
+                                                       CtkBorder                *border);
 
 G_END_DECLS
 

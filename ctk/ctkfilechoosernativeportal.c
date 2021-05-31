@@ -45,9 +45,9 @@
 #include "ctkwindowprivate.h"
 
 typedef struct {
-  GtkFileChooserNative *self;
+  CtkFileChooserNative *self;
 
-  GtkWidget *grab_widget;
+  CtkWidget *grab_widget;
 
   GDBusConnection *connection;
   char *portal_handle;
@@ -58,7 +58,7 @@ typedef struct {
 
   const char *method_name;
 
-  GtkWindow *exported_window;
+  CtkWindow *exported_window;
 } FilechooserPortalData;
 
 
@@ -96,7 +96,7 @@ response_cb (GDBusConnection  *connection,
              GVariant         *parameters,
              gpointer          user_data)
 {
-  GtkFileChooserNative *self = user_data;
+  CtkFileChooserNative *self = user_data;
   FilechooserPortalData *data = self->mode_data;
   guint32 portal_response;
   int ctk_response;
@@ -125,7 +125,7 @@ response_cb (GDBusConnection  *connection,
   current_filter = g_variant_lookup_value (response_data, "current_filter", G_VARIANT_TYPE ("(sa(us))"));
   if (current_filter)
     {
-      GtkFileFilter *filter = ctk_file_filter_new_from_gvariant (current_filter);
+      CtkFileFilter *filter = ctk_file_filter_new_from_gvariant (current_filter);
       const gchar *current_filter_name = ctk_file_filter_get_name (filter);
 
       /* Try to find  the given filter in the list of filters.
@@ -136,13 +136,13 @@ response_cb (GDBusConnection  *connection,
        * they must be the same.
        * If there is no match, just set the filter as it was retrieved.
        */
-      GtkFileFilter *filter_to_select = filter;
+      CtkFileFilter *filter_to_select = filter;
       GSList *filters = ctk_file_chooser_list_filters (CTK_FILE_CHOOSER (self));
       GSList *l;
 
       for (l = filters; l; l = l->next)
         {
-          GtkFileFilter *f = l->data;
+          CtkFileFilter *f = l->data;
           if (g_strcmp0 (ctk_file_filter_get_name (f), current_filter_name) == 0)
             {
               filter_to_select = f;
@@ -209,7 +209,7 @@ open_file_msg_cb (GObject *source_object,
                   gpointer user_data)
 {
   FilechooserPortalData *data = user_data;
-  GtkFileChooserNative *self = data->self;
+  CtkFileChooserNative *self = data->self;
   GDBusMessage *reply;
   GError *error = NULL;
   char *handle = NULL;
@@ -263,7 +263,7 @@ open_file_msg_cb (GObject *source_object,
 }
 
 static GVariant *
-get_filters (GtkFileChooser *self)
+get_filters (CtkFileChooser *self)
 {
   GSList *list, *l;
   GVariantBuilder builder;
@@ -272,7 +272,7 @@ get_filters (GtkFileChooser *self)
   list = ctk_file_chooser_list_filters (self);
   for (l = list; l; l = l->next)
     {
-      GtkFileFilter *filter = l->data;
+      CtkFileFilter *filter = l->data;
       g_variant_builder_add (&builder, "@(sa(us))", ctk_file_filter_to_gvariant (filter));
     }
   g_slist_free (list);
@@ -281,7 +281,7 @@ get_filters (GtkFileChooser *self)
 }
 
 static GVariant *
-ctk_file_chooser_native_choice_to_variant (GtkFileChooserNativeChoice *choice)
+ctk_file_chooser_native_choice_to_variant (CtkFileChooserNativeChoice *choice)
 {
   GVariantBuilder choices;
   int i;
@@ -301,7 +301,7 @@ ctk_file_chooser_native_choice_to_variant (GtkFileChooserNativeChoice *choice)
 }
 
 static GVariant *
-serialize_choices (GtkFileChooserNative *self)
+serialize_choices (CtkFileChooserNative *self)
 {
   GVariantBuilder builder;
   GSList *l;
@@ -309,7 +309,7 @@ serialize_choices (GtkFileChooserNative *self)
   g_variant_builder_init (&builder, G_VARIANT_TYPE ("a(ssa(ss)s)"));
   for (l = self->choices; l; l = l->next)
     {
-      GtkFileChooserNativeChoice *choice = l->data;
+      CtkFileChooserNativeChoice *choice = l->data;
 
       g_variant_builder_add (&builder, "@(ssa(ss)s)",
                              ctk_file_chooser_native_choice_to_variant (choice));
@@ -319,7 +319,7 @@ serialize_choices (GtkFileChooserNative *self)
 }
 
 static void
-show_portal_file_chooser (GtkFileChooserNative *self,
+show_portal_file_chooser (CtkFileChooserNative *self,
                           const char           *parent_window_str)
 {
   FilechooserPortalData *data = self->mode_data;
@@ -418,11 +418,11 @@ show_portal_file_chooser (GtkFileChooserNative *self,
 }
 
 static void
-window_handle_exported (GtkWindow  *window,
+window_handle_exported (CtkWindow  *window,
                         const char *handle_str,
                         gpointer    user_data)
 {
-  GtkFileChooserNative *self = user_data;
+  CtkFileChooserNative *self = user_data;
   FilechooserPortalData *data = self->mode_data;
 
   if (data->modal)
@@ -437,12 +437,12 @@ window_handle_exported (GtkWindow  *window,
 }
 
 gboolean
-ctk_file_chooser_native_portal_show (GtkFileChooserNative *self)
+ctk_file_chooser_native_portal_show (CtkFileChooserNative *self)
 {
   FilechooserPortalData *data;
-  GtkWindow *transient_for;
+  CtkWindow *transient_for;
   GDBusConnection *connection;
-  GtkFileChooserAction action;
+  CtkFileChooserAction action;
   const char *method_name;
 
   if (!ctk_should_use_portal ())
@@ -462,14 +462,14 @@ ctk_file_chooser_native_portal_show (GtkFileChooserNative *self)
     {
       if (ctk_get_portal_interface_version (connection, "org.freedesktop.portal.FileChooser") < 3)
         {
-          g_warning ("CTK_FILE_CHOOSER_ACTION_SELECT_FOLDER is not supported by GtkFileChooserNativePortal because portal is too old");
+          g_warning ("CTK_FILE_CHOOSER_ACTION_SELECT_FOLDER is not supported by CtkFileChooserNativePortal because portal is too old");
           return FALSE;
         }
       method_name = "OpenFile";
     }
   else
     {
-      g_warning ("CTK_FILE_CHOOSER_ACTION_CREATE_FOLDER is not supported by GtkFileChooserNativePortal");
+      g_warning ("CTK_FILE_CHOOSER_ACTION_CREATE_FOLDER is not supported by CtkFileChooserNativePortal");
       return FALSE;
     }
 
@@ -508,7 +508,7 @@ ctk_file_chooser_native_portal_show (GtkFileChooserNative *self)
 }
 
 void
-ctk_file_chooser_native_portal_hide (GtkFileChooserNative *self)
+ctk_file_chooser_native_portal_hide (CtkFileChooserNative *self)
 {
   FilechooserPortalData *data = self->mode_data;
 

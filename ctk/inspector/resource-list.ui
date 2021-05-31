@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="ctk30">
-  <object class="GtkTreeStore" id="model">
+  <object class="CtkTreeStore" id="model">
     <columns>
       <column type="gchararray"/>
       <column type="gchararray"/>
@@ -8,47 +8,47 @@
       <column type="guint64"/>
     </columns>
   </object>
-  <object class="GtkTextBuffer" id="buffer">
+  <object class="CtkTextBuffer" id="buffer">
     <property name="text"/>
   </object>
-  <template class="GtkInspectorResourceList" parent="GtkBox">
+  <template class="CtkInspectorResourceList" parent="CtkBox">
     <property name="orientation">horizontal</property>
     <signal name="hierarchy-changed" handler="on_hierarchy_changed"/>
     <child>
-      <object class="GtkStack" id="stack">
+      <object class="CtkStack" id="stack">
         <property name="visible">True</property>
         <property name="transition-type">none</property>
         <child>
-          <object class="GtkBox">
+          <object class="CtkBox">
             <property name="visible">True</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkSearchBar" id="search_bar">
+              <object class="CtkSearchBar" id="search_bar">
                 <property name="visible">True</property>
                 <property name="show-close-button">True</property>
                 <child>
-                  <object class="GtkBox">
+                  <object class="CtkBox">
                     <property name="visible">True</property>
                     <property name="orientation">horizontal</property>
                     <style>
                       <class name="linked"/>
                     </style>
                     <child>
-                      <object class="GtkSearchEntry" id="search_entry">
+                      <object class="CtkSearchEntry" id="search_entry">
                         <property name="visible">True</property>
                         <property name="max-width-chars">40</property>
                         <signal name="search-changed" handler="on_search_changed"/>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkButton">
+                      <object class="CtkButton">
                         <property name="visible">True</property>
                         <signal name="clicked" handler="next_match"/>
                         <style>
                           <class name="image-button"/>
                         </style>
                         <child>
-                          <object class="GtkImage">
+                          <object class="CtkImage">
                             <property name="visible">True</property>
                             <property name="icon-name">go-down-symbolic</property>
                             <property name="icon-size">1</property>
@@ -57,14 +57,14 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkButton">
+                      <object class="CtkButton">
                         <property name="visible">True</property>
                         <signal name="clicked" handler="previous_match"/>
                         <style>
                           <class name="image-button"/>
                         </style>
                         <child>
-                          <object class="GtkImage">
+                          <object class="CtkImage">
                             <property name="visible">True</property>
                             <property name="icon-name">go-up-symbolic</property>
                             <property name="icon-size">1</property>
@@ -77,31 +77,31 @@
               </object>
             </child>
             <child>
-              <object class="GtkScrolledWindow">
+              <object class="CtkScrolledWindow">
                 <property name="visible">True</property>
                 <property name="expand">True</property>
                 <property name="hscrollbar-policy">never</property>
                 <property name="vscrollbar-policy">automatic</property>
                 <child>
-                  <object class="GtkTreeView" id="tree">
+                  <object class="CtkTreeView" id="tree">
                     <property name="visible">True</property>
                     <property name="model">model</property>
                     <property name="enable-search">False</property>
                     <property name="enable-grid-lines">vertical</property>
                     <signal name="row-activated" handler="row_activated"/>
                     <child internal-child="selection">
-                      <object class="GtkTreeSelection">
+                      <object class="CtkTreeSelection">
                         <property name="mode">single</property>
                         <signal name="changed" handler="on_selection_changed"/>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkTreeViewColumn" id="path_column">
+                      <object class="CtkTreeViewColumn" id="path_column">
                         <property name="title" translatable="yes">Path</property>
                         <property name="resizable">True</property>
                         <property name="sort-column-id">0</property>
                         <child>
-                          <object class="GtkCellRendererText">
+                          <object class="CtkCellRendererText">
                             <property name="scale">0.8</property>
                             <property name="ellipsize">end</property>
                             <property name="width-chars">10</property>
@@ -114,24 +114,24 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkTreeViewColumn" id="count_column">
+                      <object class="CtkTreeViewColumn" id="count_column">
                         <property name="title" translatable="yes">Count</property>
                         <property name="resizable">True</property>
                         <property name="sort-column-id">1</property>
                         <child>
-                          <object class="GtkCellRendererText" id="count_renderer">
+                          <object class="CtkCellRendererText" id="count_renderer">
                             <property name="scale">0.8</property>
                           </object>
                         </child>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkTreeViewColumn" id="size_column">
+                      <object class="CtkTreeViewColumn" id="size_column">
                         <property name="title" translatable="yes">Size</property>
                         <property name="resizable">True</property>
                         <property name="sort-column-id">2</property>
                         <child>
-                          <object class="GtkCellRendererText" id="size_renderer">
+                          <object class="CtkCellRendererText" id="size_renderer">
                             <property name="scale">0.8</property>
                           </object>
                         </child>
@@ -147,18 +147,18 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox">
+          <object class="CtkBox">
             <property name="visible">True</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkGrid" id="info_grid">
+              <object class="CtkGrid" id="info_grid">
                 <property name="visible">True</property>
                 <property name="row-spacing">10</property>
                 <property name="column-spacing">10</property>
                 <property name="margin">10</property>
                 <property name="halign">center</property>
                 <child>
-                  <object class="GtkLabel" id="name">
+                  <object class="CtkLabel" id="name">
                     <property name="visible">True</property>
                     <property name="label" translatable="yes">Name:</property>
                     <property name="halign">end</property>
@@ -170,7 +170,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="name_label">
+                  <object class="CtkLabel" id="name_label">
                     <property name="visible">True</property>
                     <property name="halign">start</property>
                     <property name="valign">baseline</property>
@@ -182,7 +182,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="type">
+                  <object class="CtkLabel" id="type">
                     <property name="visible">True</property>
                     <property name="label" translatable="yes">Type:</property>
                     <property name="halign">end</property>
@@ -194,7 +194,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="type_label">
+                  <object class="CtkLabel" id="type_label">
                     <property name="visible">True</property>
                     <property name="halign">start</property>
                     <property name="valign">baseline</property>
@@ -205,7 +205,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="CtkLabel">
                     <property name="visible">True</property>
                     <property name="label" translatable="yes">Size:</property>
                     <property name="halign">end</property>
@@ -217,7 +217,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="size_label">
+                  <object class="CtkLabel" id="size_label">
                     <property name="visible">True</property>
                     <property name="halign">start</property>
                     <property name="valign">baseline</property>
@@ -230,10 +230,10 @@
               </object>
             </child>
             <child>
-              <object class="GtkStack" id="content">
+              <object class="CtkStack" id="content">
                 <property name="visible">True</property>
                 <child>
-                  <object class="GtkScrolledWindow">
+                  <object class="CtkScrolledWindow">
                     <property name="visible">True</property>
                     <property name="expand">True</property>
                     <property name="hscrollbar-policy">automatic</property>
@@ -243,7 +243,7 @@
                       <class name="view"/>
                     </style>
                     <child>
-                      <object class="GtkTextView">
+                      <object class="CtkTextView">
                         <property name="visible">True</property>
                         <property name="editable">False</property>
                         <property name="buffer">buffer</property>
@@ -255,7 +255,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkScrolledWindow">
+                  <object class="CtkScrolledWindow">
                     <property name="visible">True</property>
                     <property name="expand">True</property>
                     <property name="hscrollbar-policy">automatic</property>
@@ -265,7 +265,7 @@
                       <class name="view"/>
                     </style>
                     <child>
-                      <object class="GtkImage" id="image">
+                      <object class="CtkImage" id="image">
                         <property name="visible">True</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>

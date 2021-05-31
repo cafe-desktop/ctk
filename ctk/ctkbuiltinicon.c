@@ -25,9 +25,9 @@
 #include "ctkcssnumbervalueprivate.h"
 #include "ctkrendericonprivate.h"
 
-/* GtkBuiltinIcon is a gadget implementation that is meant to replace
+/* CtkBuiltinIcon is a gadget implementation that is meant to replace
  * all calls to ctk_render_ functions to render arrows, expanders, checks
- * radios, handles, separators, etc. See the GtkCssImageBuiltinType
+ * radios, handles, separators, etc. See the CtkCssImageBuiltinType
  * enumeration for the full set of builtin icons that this gadget can
  * render.
  *
@@ -43,28 +43,28 @@
  * fallback is used.
  */
 
-typedef struct _GtkBuiltinIconPrivate GtkBuiltinIconPrivate;
-struct _GtkBuiltinIconPrivate {
-  GtkCssImageBuiltinType        image_type;
+typedef struct _CtkBuiltinIconPrivate CtkBuiltinIconPrivate;
+struct _CtkBuiltinIconPrivate {
+  CtkCssImageBuiltinType        image_type;
   int                           default_size;
   int                           strikethrough;
   gboolean                      strikethrough_valid;
   char *                        default_size_property;
 };
 
-G_DEFINE_TYPE_WITH_CODE (GtkBuiltinIcon, ctk_builtin_icon, CTK_TYPE_CSS_GADGET,
-                         G_ADD_PRIVATE (GtkBuiltinIcon))
+G_DEFINE_TYPE_WITH_CODE (CtkBuiltinIcon, ctk_builtin_icon, CTK_TYPE_CSS_GADGET,
+                         G_ADD_PRIVATE (CtkBuiltinIcon))
 
 static void
-ctk_builtin_icon_get_preferred_size (GtkCssGadget   *gadget,
-                                     GtkOrientation  orientation,
+ctk_builtin_icon_get_preferred_size (CtkCssGadget   *gadget,
+                                     CtkOrientation  orientation,
                                      gint            for_size,
                                      gint           *minimum,
                                      gint           *natural,
                                      gint           *minimum_baseline,
                                      gint           *natural_baseline)
 {
-  GtkBuiltinIconPrivate *priv = ctk_builtin_icon_get_instance_private (CTK_BUILTIN_ICON (gadget));
+  CtkBuiltinIconPrivate *priv = ctk_builtin_icon_get_instance_private (CTK_BUILTIN_ICON (gadget));
   double min_size;
   guint property;
 
@@ -100,7 +100,7 @@ ctk_builtin_icon_get_preferred_size (GtkCssGadget   *gadget,
     {
       if (!priv->strikethrough_valid)
         {
-          GtkWidget *widget;
+          CtkWidget *widget;
           PangoContext *pango_context;
           const PangoFontDescription *font_desc;
           PangoFontMetrics *metrics;
@@ -126,10 +126,10 @@ ctk_builtin_icon_get_preferred_size (GtkCssGadget   *gadget,
 }
 
 static void
-ctk_builtin_icon_allocate (GtkCssGadget        *gadget,
-                           const GtkAllocation *allocation,
+ctk_builtin_icon_allocate (CtkCssGadget        *gadget,
+                           const CtkAllocation *allocation,
                            int                  baseline,
-                           GtkAllocation       *out_clip)
+                           CtkAllocation       *out_clip)
 {
   GdkRectangle icon_clip;
 
@@ -143,14 +143,14 @@ ctk_builtin_icon_allocate (GtkCssGadget        *gadget,
 }
 
 static gboolean
-ctk_builtin_icon_draw (GtkCssGadget *gadget,
+ctk_builtin_icon_draw (CtkCssGadget *gadget,
                        cairo_t      *cr,
                        int           x,
                        int           y,
                        int           width,
                        int           height)
 {
-  GtkBuiltinIconPrivate *priv = ctk_builtin_icon_get_instance_private (CTK_BUILTIN_ICON (gadget));
+  CtkBuiltinIconPrivate *priv = ctk_builtin_icon_get_instance_private (CTK_BUILTIN_ICON (gadget));
 
   ctk_css_style_render_icon (ctk_css_gadget_get_style (gadget),
                              cr,
@@ -162,10 +162,10 @@ ctk_builtin_icon_draw (GtkCssGadget *gadget,
 }
 
 static void
-ctk_builtin_icon_style_changed (GtkCssGadget      *gadget,
-                                GtkCssStyleChange *change)
+ctk_builtin_icon_style_changed (CtkCssGadget      *gadget,
+                                CtkCssStyleChange *change)
 {
-  GtkBuiltinIconPrivate *priv = ctk_builtin_icon_get_instance_private (CTK_BUILTIN_ICON (gadget));
+  CtkBuiltinIconPrivate *priv = ctk_builtin_icon_get_instance_private (CTK_BUILTIN_ICON (gadget));
 
   if (ctk_css_style_change_affects (change, CTK_CSS_AFFECTS_FONT))
     priv->strikethrough_valid = FALSE;
@@ -176,7 +176,7 @@ ctk_builtin_icon_style_changed (GtkCssGadget      *gadget,
 static void
 ctk_builtin_icon_finalize (GObject *object)
 {
-  GtkBuiltinIconPrivate *priv = ctk_builtin_icon_get_instance_private (CTK_BUILTIN_ICON (object));
+  CtkBuiltinIconPrivate *priv = ctk_builtin_icon_get_instance_private (CTK_BUILTIN_ICON (object));
 
   g_free (priv->default_size_property);
 
@@ -184,9 +184,9 @@ ctk_builtin_icon_finalize (GObject *object)
 }
 
 static void
-ctk_builtin_icon_class_init (GtkBuiltinIconClass *klass)
+ctk_builtin_icon_class_init (CtkBuiltinIconClass *klass)
 {
-  GtkCssGadgetClass *gadget_class = CTK_CSS_GADGET_CLASS (klass);
+  CtkCssGadgetClass *gadget_class = CTK_CSS_GADGET_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->finalize = ctk_builtin_icon_finalize;
@@ -198,13 +198,13 @@ ctk_builtin_icon_class_init (GtkBuiltinIconClass *klass)
 }
 
 static void
-ctk_builtin_icon_init (GtkBuiltinIcon *custom_gadget)
+ctk_builtin_icon_init (CtkBuiltinIcon *custom_gadget)
 {
 }
 
-GtkCssGadget *
-ctk_builtin_icon_new_for_node (GtkCssNode *node,
-                               GtkWidget  *owner)
+CtkCssGadget *
+ctk_builtin_icon_new_for_node (CtkCssNode *node,
+                               CtkWidget  *owner)
 {
   return g_object_new (CTK_TYPE_BUILTIN_ICON,
                        "node", node,
@@ -212,14 +212,14 @@ ctk_builtin_icon_new_for_node (GtkCssNode *node,
                        NULL);
 }
 
-GtkCssGadget *
+CtkCssGadget *
 ctk_builtin_icon_new (const char   *name,
-                      GtkWidget    *owner,
-                      GtkCssGadget *parent,
-                      GtkCssGadget *next_sibling)
+                      CtkWidget    *owner,
+                      CtkCssGadget *parent,
+                      CtkCssGadget *next_sibling)
 {
-  GtkCssNode *node;
-  GtkCssGadget *result;
+  CtkCssNode *node;
+  CtkCssGadget *result;
 
   node = ctk_css_node_new ();
   ctk_css_node_set_name (node, g_intern_string (name));
@@ -236,10 +236,10 @@ ctk_builtin_icon_new (const char   *name,
 }
 
 void
-ctk_builtin_icon_set_image (GtkBuiltinIcon         *icon,
-                            GtkCssImageBuiltinType  image)
+ctk_builtin_icon_set_image (CtkBuiltinIcon         *icon,
+                            CtkCssImageBuiltinType  image)
 {
-  GtkBuiltinIconPrivate *priv;
+  CtkBuiltinIconPrivate *priv;
   
   g_return_if_fail (CTK_IS_BUILTIN_ICON (icon));
 
@@ -252,10 +252,10 @@ ctk_builtin_icon_set_image (GtkBuiltinIcon         *icon,
     }
 }
 
-GtkCssImageBuiltinType
-ctk_builtin_icon_get_image (GtkBuiltinIcon *icon)
+CtkCssImageBuiltinType
+ctk_builtin_icon_get_image (CtkBuiltinIcon *icon)
 {
-  GtkBuiltinIconPrivate *priv;
+  CtkBuiltinIconPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_BUILTIN_ICON (icon), CTK_CSS_IMAGE_BUILTIN_NONE);
 
@@ -265,10 +265,10 @@ ctk_builtin_icon_get_image (GtkBuiltinIcon *icon)
 }
 
 void
-ctk_builtin_icon_set_default_size (GtkBuiltinIcon *icon,
+ctk_builtin_icon_set_default_size (CtkBuiltinIcon *icon,
                                    int             default_size)
 {
-  GtkBuiltinIconPrivate *priv;
+  CtkBuiltinIconPrivate *priv;
   
   g_return_if_fail (CTK_IS_BUILTIN_ICON (icon));
 
@@ -282,9 +282,9 @@ ctk_builtin_icon_set_default_size (GtkBuiltinIcon *icon,
 }
 
 int
-ctk_builtin_icon_get_default_size (GtkBuiltinIcon *icon)
+ctk_builtin_icon_get_default_size (CtkBuiltinIcon *icon)
 {
-  GtkBuiltinIconPrivate *priv;
+  CtkBuiltinIconPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_BUILTIN_ICON (icon), CTK_CSS_IMAGE_BUILTIN_NONE);
 
@@ -308,10 +308,10 @@ ctk_builtin_icon_get_default_size (GtkBuiltinIcon *icon)
  * This function is intended strictly for backwards compatibility reasons.
  */
 void
-ctk_builtin_icon_set_default_size_property (GtkBuiltinIcon *icon,
+ctk_builtin_icon_set_default_size_property (CtkBuiltinIcon *icon,
                                             const char     *property_name)
 {
-  GtkBuiltinIconPrivate *priv;
+  CtkBuiltinIconPrivate *priv;
   
   g_return_if_fail (CTK_IS_BUILTIN_ICON (icon));
 
@@ -325,9 +325,9 @@ ctk_builtin_icon_set_default_size_property (GtkBuiltinIcon *icon,
 }
 
 const char *
-ctk_builtin_icon_get_default_size_property (GtkBuiltinIcon *icon)
+ctk_builtin_icon_get_default_size_property (CtkBuiltinIcon *icon)
 {
-  GtkBuiltinIconPrivate *priv;
+  CtkBuiltinIconPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_BUILTIN_ICON (icon), NULL);
 

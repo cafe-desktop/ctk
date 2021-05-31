@@ -35,42 +35,42 @@ G_BEGIN_DECLS
 #define CTK_MAX_COMPOSE_LEN 7
 
 #define CTK_TYPE_IM_CONTEXT_SIMPLE              (ctk_im_context_simple_get_type ())
-#define CTK_IM_CONTEXT_SIMPLE(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_IM_CONTEXT_SIMPLE, GtkIMContextSimple))
-#define CTK_IM_CONTEXT_SIMPLE_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_IM_CONTEXT_SIMPLE, GtkIMContextSimpleClass))
+#define CTK_IM_CONTEXT_SIMPLE(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_IM_CONTEXT_SIMPLE, CtkIMContextSimple))
+#define CTK_IM_CONTEXT_SIMPLE_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_IM_CONTEXT_SIMPLE, CtkIMContextSimpleClass))
 #define CTK_IS_IM_CONTEXT_SIMPLE(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_IM_CONTEXT_SIMPLE))
 #define CTK_IS_IM_CONTEXT_SIMPLE_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_IM_CONTEXT_SIMPLE))
-#define CTK_IM_CONTEXT_SIMPLE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_IM_CONTEXT_SIMPLE, GtkIMContextSimpleClass))
+#define CTK_IM_CONTEXT_SIMPLE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_IM_CONTEXT_SIMPLE, CtkIMContextSimpleClass))
 
 
-typedef struct _GtkIMContextSimple              GtkIMContextSimple;
-typedef struct _GtkIMContextSimplePrivate       GtkIMContextSimplePrivate;
-typedef struct _GtkIMContextSimpleClass         GtkIMContextSimpleClass;
+typedef struct _CtkIMContextSimple              CtkIMContextSimple;
+typedef struct _CtkIMContextSimplePrivate       CtkIMContextSimplePrivate;
+typedef struct _CtkIMContextSimpleClass         CtkIMContextSimpleClass;
 
-struct _GtkIMContextSimple
+struct _CtkIMContextSimple
 {
-  GtkIMContext object;
+  CtkIMContext object;
 
   /*< private >*/
-  GtkIMContextSimplePrivate *priv;
+  CtkIMContextSimplePrivate *priv;
 };
 
-struct _GtkIMContextSimpleClass
+struct _CtkIMContextSimpleClass
 {
-  GtkIMContextClass parent_class;
+  CtkIMContextClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL
 GType         ctk_im_context_simple_get_type  (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkIMContext *ctk_im_context_simple_new       (void);
+CtkIMContext *ctk_im_context_simple_new       (void);
 
 GDK_AVAILABLE_IN_ALL
-void          ctk_im_context_simple_add_table (GtkIMContextSimple *context_simple,
+void          ctk_im_context_simple_add_table (CtkIMContextSimple *context_simple,
 					       guint16            *data,
 					       gint                max_seq_len,
 					       gint                n_seqs);
 GDK_AVAILABLE_IN_3_20
-void          ctk_im_context_simple_add_compose_file (GtkIMContextSimple *context_simple,
+void          ctk_im_context_simple_add_compose_file (CtkIMContextSimple *context_simple,
                                                       const gchar        *compose_file);
 
 

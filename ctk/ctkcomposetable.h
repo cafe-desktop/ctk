@@ -23,10 +23,10 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GtkComposeTable GtkComposeTable;
-typedef struct _GtkComposeTableCompact GtkComposeTableCompact;
+typedef struct _CtkComposeTable CtkComposeTable;
+typedef struct _CtkComposeTableCompact CtkComposeTableCompact;
 
-struct _GtkComposeTable
+struct _CtkComposeTable
 {
   guint16 *data;
   gint max_seq_len;
@@ -34,7 +34,7 @@ struct _GtkComposeTable
   guint32 id;
 };
 
-struct _GtkComposeTableCompact
+struct _CtkComposeTableCompact
 {
   const guint16 *data;
   gint max_seq_len;
@@ -42,7 +42,7 @@ struct _GtkComposeTableCompact
   gint n_index_stride;
 };
 
-GtkComposeTable * ctk_compose_table_new_with_file (const gchar   *compose_file);
+CtkComposeTable * ctk_compose_table_new_with_file (const gchar   *compose_file);
 GSList *ctk_compose_table_list_add_array          (GSList        *compose_tables,
                                                    const guint16 *data,
                                                    gint           max_seq_len,

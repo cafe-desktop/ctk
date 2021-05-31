@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.6 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <child type="titlebar">
-      <object class="GtkHeaderBar">
+      <object class="CtkHeaderBar">
         <property name="visible">1</property>
         <property name="show-close-button">1</property>
         <property name="title" translatable="yes">Model Button</property>
       </object>
     </child>
     <child>
-      <object class="GtkBox">
+      <object class="CtkBox">
         <property name="visible">1</property>
         <property name="orientation">vertical</property>
         <property name="margin">80</property>
         <child>
-          <object class="GtkMenuButton">
+          <object class="CtkMenuButton">
             <property name="visible">1</property>
             <property name="popover">thing_a</property>
             <child>
-              <object class="GtkLabel">
+              <object class="CtkLabel">
                 <property name="visible">1</property>
                 <property name="label">Color</property>
                 <property name="hexpand">1</property>
@@ -28,11 +28,11 @@
           </object>
         </child>
         <child>
-          <object class="GtkMenuButton">
+          <object class="CtkMenuButton">
             <property name="visible">1</property>
             <property name="popover">thing_b</property>
             <child>
-              <object class="GtkLabel">
+              <object class="CtkLabel">
                 <property name="visible">1</property>
                 <property name="label">Flavors</property>
                 <property name="hexpand">1</property>
@@ -41,11 +41,11 @@
           </object>
         </child>
         <child>
-          <object class="GtkMenuButton">
+          <object class="CtkMenuButton">
             <property name="visible">1</property>
             <property name="popover">thing_c</property>
             <child>
-              <object class="GtkLabel">
+              <object class="CtkLabel">
                 <property name="visible">1</property>
                 <property name="label">Tools</property>
                 <property name="hexpand">1</property>
@@ -56,14 +56,14 @@
       </object>
     </child>
   </object>
-  <object class="GtkPopover" id="thing_a">
+  <object class="CtkPopover" id="thing_a">
     <child>
-      <object class="GtkBox">
+      <object class="CtkBox">
         <property name="visible">1</property>
         <property name="margin">10</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">1</property>
             <property name="action-name">win.color</property>
             <property name="action-target">'red'</property>
@@ -72,7 +72,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">1</property>
             <property name="action-name">win.color</property>
             <property name="action-target">'green'</property>
@@ -81,7 +81,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">1</property>
             <property name="action-name">win.color</property>
             <property name="action-target">'blue'</property>
@@ -92,34 +92,34 @@
       </object>
     </child>
   </object>
-  <object class="GtkPopover" id="thing_b">
+  <object class="CtkPopover" id="thing_b">
     <child>
-      <object class="GtkBox">
+      <object class="CtkBox">
         <property name="visible">1</property>
         <property name="margin">10</property>
         <property name="orientation">vertical</property>
         <property name="spacing">10</property>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">1</property>
             <property name="action-name">win.chocolate</property>
             <property name="text">Chocolate</property>
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">1</property>
             <property name="action-name">win.vanilla</property>
             <property name="text">Vanilla</property>
           </object>
         </child>
         <child>
-          <object class="GtkSeparator">
+          <object class="CtkSeparator">
             <property name="visible">1</property>
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">1</property>
             <property name="action-name">win.sprinkles</property>
             <property name="text">Add Sprinkles</property>
@@ -128,15 +128,15 @@
       </object>
     </child>
   </object>
-  <object class="GtkPopover" id="thing_c">
+  <object class="CtkPopover" id="thing_c">
     <child>
-      <object class="GtkBox">
+      <object class="CtkBox">
         <property name="visible">1</property>
         <property name="margin">10</property>
         <property name="orientation">vertical</property>
         <property name="spacing">10</property>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">1</property>
             <property name="text">Hammer</property>
             <property name="role">check</property>
@@ -144,7 +144,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">1</property>
             <property name="text">Screwdriver</property>
             <property name="role">check</property>
@@ -152,7 +152,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">1</property>
             <property name="text">Drill</property>
             <property name="role">check</property>

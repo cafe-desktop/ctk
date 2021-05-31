@@ -29,27 +29,27 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_GESTURE_DRAG         (ctk_gesture_drag_get_type ())
-#define CTK_GESTURE_DRAG(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_GESTURE_DRAG, GtkGestureDrag))
-#define CTK_GESTURE_DRAG_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_GESTURE_DRAG, GtkGestureDragClass))
+#define CTK_GESTURE_DRAG(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_GESTURE_DRAG, CtkGestureDrag))
+#define CTK_GESTURE_DRAG_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_GESTURE_DRAG, CtkGestureDragClass))
 #define CTK_IS_GESTURE_DRAG(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_GESTURE_DRAG))
 #define CTK_IS_GESTURE_DRAG_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), CTK_TYPE_GESTURE_DRAG))
-#define CTK_GESTURE_DRAG_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_GESTURE_DRAG, GtkGestureDragClass))
+#define CTK_GESTURE_DRAG_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_GESTURE_DRAG, CtkGestureDragClass))
 
-typedef struct _GtkGestureDrag GtkGestureDrag;
-typedef struct _GtkGestureDragClass GtkGestureDragClass;
+typedef struct _CtkGestureDrag CtkGestureDrag;
+typedef struct _CtkGestureDragClass CtkGestureDragClass;
 
 GDK_AVAILABLE_IN_3_14
 GType        ctk_gesture_drag_get_type          (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_14
-GtkGesture * ctk_gesture_drag_new               (GtkWidget      *widget);
+CtkGesture * ctk_gesture_drag_new               (CtkWidget      *widget);
 
 GDK_AVAILABLE_IN_3_14
-gboolean     ctk_gesture_drag_get_start_point   (GtkGestureDrag *gesture,
+gboolean     ctk_gesture_drag_get_start_point   (CtkGestureDrag *gesture,
                                                  gdouble        *x,
                                                  gdouble        *y);
 GDK_AVAILABLE_IN_3_14
-gboolean     ctk_gesture_drag_get_offset        (GtkGestureDrag *gesture,
+gboolean     ctk_gesture_drag_get_offset        (CtkGestureDrag *gesture,
                                                  gdouble        *x,
                                                  gdouble        *y);
 

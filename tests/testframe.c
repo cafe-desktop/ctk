@@ -21,11 +21,11 @@
 static gint hpadding = 0, vpadding = 0;
 
 static void
-spin_hpadding_cb (GtkSpinButton *spin, gpointer user_data)
+spin_hpadding_cb (CtkSpinButton *spin, gpointer user_data)
 {
-  GtkWidget *frame = user_data;
-  GtkCssProvider *provider;
-  GtkStyleContext *context;
+  CtkWidget *frame = user_data;
+  CtkCssProvider *provider;
+  CtkStyleContext *context;
   gchar *data;
 
   context = ctk_widget_get_style_context (frame);
@@ -50,11 +50,11 @@ spin_hpadding_cb (GtkSpinButton *spin, gpointer user_data)
 }
 
 static void
-spin_vpadding_cb (GtkSpinButton *spin, gpointer user_data)
+spin_vpadding_cb (CtkSpinButton *spin, gpointer user_data)
 {
-  GtkWidget *frame = user_data;
-  GtkCssProvider *provider;
-  GtkStyleContext *context;
+  CtkWidget *frame = user_data;
+  CtkCssProvider *provider;
+  CtkStyleContext *context;
   gchar *data;
 
   context = ctk_widget_get_style_context (frame);
@@ -95,7 +95,7 @@ double_normalize (gdouble n)
 }
 
 static void
-spin_xalign_cb (GtkSpinButton *spin, GtkFrame *frame)
+spin_xalign_cb (CtkSpinButton *spin, CtkFrame *frame)
 {
   gdouble xalign;
   gfloat yalign;
@@ -106,7 +106,7 @@ spin_xalign_cb (GtkSpinButton *spin, GtkFrame *frame)
 }
 
 static void
-spin_yalign_cb (GtkSpinButton *spin, GtkFrame *frame)
+spin_yalign_cb (CtkSpinButton *spin, CtkFrame *frame)
 {
   gdouble yalign;
   gfloat xalign;
@@ -117,9 +117,9 @@ spin_yalign_cb (GtkSpinButton *spin, GtkFrame *frame)
 }
 
 static void
-draw_border_cb (GtkToggleButton *toggle_button, GtkFrame *frame)
+draw_border_cb (CtkToggleButton *toggle_button, CtkFrame *frame)
 {
-  GtkShadowType shadow_type = ctk_toggle_button_get_active (toggle_button)
+  CtkShadowType shadow_type = ctk_toggle_button_get_active (toggle_button)
                               ? CTK_SHADOW_IN : CTK_SHADOW_NONE;
 
   ctk_frame_set_shadow_type (frame, shadow_type);
@@ -127,10 +127,10 @@ draw_border_cb (GtkToggleButton *toggle_button, GtkFrame *frame)
 
 int main (int argc, char **argv)
 {
-  GtkWidget *window, *widget;
-  GtkBox *vbox;
-  GtkFrame *frame;
-  GtkGrid *grid;
+  CtkWidget *window, *widget;
+  CtkBox *vbox;
+  CtkFrame *frame;
+  CtkGrid *grid;
   gfloat xalign, yalign;
   gboolean draw_border;
 
@@ -146,7 +146,7 @@ int main (int argc, char **argv)
   g_object_set (vbox, "margin", 12, NULL);
   ctk_container_add (CTK_CONTAINER (window), CTK_WIDGET (vbox));
 
-  frame = CTK_FRAME (ctk_frame_new ("Test GtkFrame"));
+  frame = CTK_FRAME (ctk_frame_new ("Test CtkFrame"));
   ctk_box_pack_start (vbox, CTK_WIDGET (frame), TRUE, TRUE, 0);
 
   widget = ctk_button_new_with_label ("Hello!");

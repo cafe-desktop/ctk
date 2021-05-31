@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkMenuBar" id="menubar1">
+      <object class="CtkMenuBar" id="menubar1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
-          <object class="GtkMenuItem" id="menuitem1">
+          <object class="CtkMenuItem" id="menuitem1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="use_action_appearance">False</property>
             <property name="label" translatable="yes">_File</property>
             <property name="use_underline">True</property>
             <child type="submenu">
-              <object class="GtkMenu" id="menu1">
+              <object class="CtkMenu" id="menu1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
-                  <object class="GtkMenuItem" id="menuitema1">
+                  <object class="CtkMenuItem" id="menuitema1">
                     <property name="label" translatable="yes">_New</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
@@ -28,7 +28,7 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkMenuItem" id="menuitema2">
+                  <object class="CtkMenuItem" id="menuitema2">
                     <property name="label" translatable="yes">bla</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
@@ -36,14 +36,14 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkSeparatorMenuItem" id="separatormenuitem1">
+                  <object class="CtkSeparatorMenuItem" id="separatormenuitem1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="use_action_appearance">False</property>
                   </object>
                 </child>
                 <child>
-                  <object class="GtkCheckMenuItem" id="menuitem3">
+                  <object class="CtkCheckMenuItem" id="menuitem3">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="use_action_appearance">False</property>
@@ -56,18 +56,18 @@
           </object>
         </child>
         <child>
-          <object class="GtkMenuItem" id="menuitem2">
+          <object class="CtkMenuItem" id="menuitem2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="use_action_appearance">False</property>
             <property name="label" translatable="yes">_Edit</property>
             <property name="use_underline">True</property>
             <child type="submenu">
-              <object class="GtkMenu" id="menu2">
+              <object class="CtkMenu" id="menu2">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
-                  <object class="GtkRadioMenuItem" id="menuitem4">
+                  <object class="CtkRadioMenuItem" id="menuitem4">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="use_action_appearance">False</property>
@@ -77,7 +77,7 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkRadioMenuItem" id="menuitem5">
+                  <object class="CtkRadioMenuItem" id="menuitem5">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="use_action_appearance">False</property>

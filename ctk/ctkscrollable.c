@@ -18,13 +18,13 @@
 /**
  * SECTION:ctkscrollable
  * @Short_Description: An interface for scrollable widgets
- * @Title: GtkScrollable
+ * @Title: CtkScrollable
  *
- * #GtkScrollable is an interface that is implemented by widgets with native
+ * #CtkScrollable is an interface that is implemented by widgets with native
  * scrolling ability.
  *
  * To implement this interface you should override the
- * #GtkScrollable:hadjustment and #GtkScrollable:vadjustment properties.
+ * #CtkScrollable:hadjustment and #CtkScrollable:vadjustment properties.
  *
  * ## Creating a scrollable widget
  *
@@ -32,20 +32,20 @@
  *
  * - When a parent widget sets the scrollable child widget’s adjustments,
  *   the widget should populate the adjustments’
- *   #GtkAdjustment:lower, #GtkAdjustment:upper,
- *   #GtkAdjustment:step-increment, #GtkAdjustment:page-increment and
- *   #GtkAdjustment:page-size properties and connect to the
- *   #GtkAdjustment::value-changed signal.
+ *   #CtkAdjustment:lower, #CtkAdjustment:upper,
+ *   #CtkAdjustment:step-increment, #CtkAdjustment:page-increment and
+ *   #CtkAdjustment:page-size properties and connect to the
+ *   #CtkAdjustment::value-changed signal.
  *
  * - Because its preferred size is the size for a fully expanded widget,
  *   the scrollable widget must be able to cope with underallocations.
  *   This means that it must accept any value passed to its
- *   #GtkWidgetClass.size_allocate() function.
+ *   #CtkWidgetClass.size_allocate() function.
  *
  * - When the parent allocates space to the scrollable child widget,
  *   the widget should update the adjustments’ properties with new values.
  *
- * - When any of the adjustments emits the #GtkAdjustment::value-changed signal,
+ * - When any of the adjustments emits the #CtkAdjustment::value-changed signal,
  *   the scrollable widget should scroll its contents.
  */
 
@@ -58,17 +58,17 @@
 #include "ctktypebuiltins.h"
 #include "ctkintl.h"
 
-G_DEFINE_INTERFACE (GtkScrollable, ctk_scrollable, G_TYPE_OBJECT)
+G_DEFINE_INTERFACE (CtkScrollable, ctk_scrollable, G_TYPE_OBJECT)
 
 static void
-ctk_scrollable_default_init (GtkScrollableInterface *iface)
+ctk_scrollable_default_init (CtkScrollableInterface *iface)
 {
   GParamSpec *pspec;
 
   /**
-   * GtkScrollable:hadjustment:
+   * CtkScrollable:hadjustment:
    *
-   * Horizontal #GtkAdjustment of the scrollable widget. This adjustment is
+   * Horizontal #CtkAdjustment of the scrollable widget. This adjustment is
    * shared between the scrollable widget and its parent.
    *
    * Since: 3.0
@@ -83,9 +83,9 @@ ctk_scrollable_default_init (GtkScrollableInterface *iface)
   g_object_interface_install_property (iface, pspec);
 
   /**
-   * GtkScrollable:vadjustment:
+   * CtkScrollable:vadjustment:
    *
-   * Verical #GtkAdjustment of the scrollable widget. This adjustment is shared
+   * Verical #CtkAdjustment of the scrollable widget. This adjustment is shared
    * between the scrollable widget and its parent.
    *
    * Since: 3.0
@@ -100,7 +100,7 @@ ctk_scrollable_default_init (GtkScrollableInterface *iface)
   g_object_interface_install_property (iface, pspec);
 
   /**
-   * GtkScrollable:hscroll-policy:
+   * CtkScrollable:hscroll-policy:
    *
    * Determines whether horizontal scrolling should start once the scrollable
    * widget is allocated less than its minimum width or less than its natural width.
@@ -116,7 +116,7 @@ ctk_scrollable_default_init (GtkScrollableInterface *iface)
   g_object_interface_install_property (iface, pspec);
 
   /**
-   * GtkScrollable:vscroll-policy:
+   * CtkScrollable:vscroll-policy:
    *
    * Determines whether vertical scrolling should start once the scrollable
    * widget is allocated less than its minimum height or less than its natural height.
@@ -134,18 +134,18 @@ ctk_scrollable_default_init (GtkScrollableInterface *iface)
 
 /**
  * ctk_scrollable_get_hadjustment:
- * @scrollable: a #GtkScrollable
+ * @scrollable: a #CtkScrollable
  *
- * Retrieves the #GtkAdjustment used for horizontal scrolling.
+ * Retrieves the #CtkAdjustment used for horizontal scrolling.
  *
- * Returns: (transfer none): horizontal #GtkAdjustment.
+ * Returns: (transfer none): horizontal #CtkAdjustment.
  *
  * Since: 3.0
  **/
-GtkAdjustment *
-ctk_scrollable_get_hadjustment (GtkScrollable *scrollable)
+CtkAdjustment *
+ctk_scrollable_get_hadjustment (CtkScrollable *scrollable)
 {
-  GtkAdjustment *adj = NULL;
+  CtkAdjustment *adj = NULL;
 
   g_return_val_if_fail (CTK_IS_SCROLLABLE (scrollable), NULL);
 
@@ -163,16 +163,16 @@ ctk_scrollable_get_hadjustment (GtkScrollable *scrollable)
 
 /**
  * ctk_scrollable_set_hadjustment:
- * @scrollable: a #GtkScrollable
- * @hadjustment: (allow-none): a #GtkAdjustment
+ * @scrollable: a #CtkScrollable
+ * @hadjustment: (allow-none): a #CtkAdjustment
  *
- * Sets the horizontal adjustment of the #GtkScrollable.
+ * Sets the horizontal adjustment of the #CtkScrollable.
  *
  * Since: 3.0
  **/
 void
-ctk_scrollable_set_hadjustment (GtkScrollable *scrollable,
-                                GtkAdjustment *hadjustment)
+ctk_scrollable_set_hadjustment (CtkScrollable *scrollable,
+                                CtkAdjustment *hadjustment)
 {
   g_return_if_fail (CTK_IS_SCROLLABLE (scrollable));
   g_return_if_fail (hadjustment == NULL || CTK_IS_ADJUSTMENT (hadjustment));
@@ -182,18 +182,18 @@ ctk_scrollable_set_hadjustment (GtkScrollable *scrollable,
 
 /**
  * ctk_scrollable_get_vadjustment:
- * @scrollable: a #GtkScrollable
+ * @scrollable: a #CtkScrollable
  *
- * Retrieves the #GtkAdjustment used for vertical scrolling.
+ * Retrieves the #CtkAdjustment used for vertical scrolling.
  *
- * Returns: (transfer none): vertical #GtkAdjustment.
+ * Returns: (transfer none): vertical #CtkAdjustment.
  *
  * Since: 3.0
  **/
-GtkAdjustment *
-ctk_scrollable_get_vadjustment (GtkScrollable *scrollable)
+CtkAdjustment *
+ctk_scrollable_get_vadjustment (CtkScrollable *scrollable)
 {
-  GtkAdjustment *adj = NULL;
+  CtkAdjustment *adj = NULL;
 
   g_return_val_if_fail (CTK_IS_SCROLLABLE (scrollable), NULL);
 
@@ -211,16 +211,16 @@ ctk_scrollable_get_vadjustment (GtkScrollable *scrollable)
 
 /**
  * ctk_scrollable_set_vadjustment:
- * @scrollable: a #GtkScrollable
- * @vadjustment: (allow-none): a #GtkAdjustment
+ * @scrollable: a #CtkScrollable
+ * @vadjustment: (allow-none): a #CtkAdjustment
  *
- * Sets the vertical adjustment of the #GtkScrollable.
+ * Sets the vertical adjustment of the #CtkScrollable.
  *
  * Since: 3.0
  **/
 void
-ctk_scrollable_set_vadjustment (GtkScrollable *scrollable,
-                                GtkAdjustment *vadjustment)
+ctk_scrollable_set_vadjustment (CtkScrollable *scrollable,
+                                CtkAdjustment *vadjustment)
 {
   g_return_if_fail (CTK_IS_SCROLLABLE (scrollable));
   g_return_if_fail (vadjustment == NULL || CTK_IS_ADJUSTMENT (vadjustment));
@@ -231,18 +231,18 @@ ctk_scrollable_set_vadjustment (GtkScrollable *scrollable,
 
 /**
  * ctk_scrollable_get_hscroll_policy:
- * @scrollable: a #GtkScrollable
+ * @scrollable: a #CtkScrollable
  *
- * Gets the horizontal #GtkScrollablePolicy.
+ * Gets the horizontal #CtkScrollablePolicy.
  *
- * Returns: The horizontal #GtkScrollablePolicy.
+ * Returns: The horizontal #CtkScrollablePolicy.
  *
  * Since: 3.0
  **/
-GtkScrollablePolicy
-ctk_scrollable_get_hscroll_policy (GtkScrollable *scrollable)
+CtkScrollablePolicy
+ctk_scrollable_get_hscroll_policy (CtkScrollable *scrollable)
 {
-  GtkScrollablePolicy policy;
+  CtkScrollablePolicy policy;
 
   g_return_val_if_fail (CTK_IS_SCROLLABLE (scrollable), CTK_SCROLL_MINIMUM);
 
@@ -253,18 +253,18 @@ ctk_scrollable_get_hscroll_policy (GtkScrollable *scrollable)
 
 /**
  * ctk_scrollable_set_hscroll_policy:
- * @scrollable: a #GtkScrollable
- * @policy: the horizontal #GtkScrollablePolicy
+ * @scrollable: a #CtkScrollable
+ * @policy: the horizontal #CtkScrollablePolicy
  *
- * Sets the #GtkScrollablePolicy to determine whether
+ * Sets the #CtkScrollablePolicy to determine whether
  * horizontal scrolling should start below the minimum width or
  * below the natural width.
  *
  * Since: 3.0
  **/
 void
-ctk_scrollable_set_hscroll_policy (GtkScrollable       *scrollable,
-				   GtkScrollablePolicy  policy)
+ctk_scrollable_set_hscroll_policy (CtkScrollable       *scrollable,
+				   CtkScrollablePolicy  policy)
 {
   g_return_if_fail (CTK_IS_SCROLLABLE (scrollable));
 
@@ -273,18 +273,18 @@ ctk_scrollable_set_hscroll_policy (GtkScrollable       *scrollable,
 
 /**
  * ctk_scrollable_get_vscroll_policy:
- * @scrollable: a #GtkScrollable
+ * @scrollable: a #CtkScrollable
  *
- * Gets the vertical #GtkScrollablePolicy.
+ * Gets the vertical #CtkScrollablePolicy.
  *
- * Returns: The vertical #GtkScrollablePolicy.
+ * Returns: The vertical #CtkScrollablePolicy.
  *
  * Since: 3.0
  **/
-GtkScrollablePolicy
-ctk_scrollable_get_vscroll_policy (GtkScrollable *scrollable)
+CtkScrollablePolicy
+ctk_scrollable_get_vscroll_policy (CtkScrollable *scrollable)
 {
-  GtkScrollablePolicy policy;
+  CtkScrollablePolicy policy;
 
   g_return_val_if_fail (CTK_IS_SCROLLABLE (scrollable), CTK_SCROLL_MINIMUM);
 
@@ -295,18 +295,18 @@ ctk_scrollable_get_vscroll_policy (GtkScrollable *scrollable)
 
 /**
  * ctk_scrollable_set_vscroll_policy:
- * @scrollable: a #GtkScrollable
- * @policy: the vertical #GtkScrollablePolicy
+ * @scrollable: a #CtkScrollable
+ * @policy: the vertical #CtkScrollablePolicy
  *
- * Sets the #GtkScrollablePolicy to determine whether
+ * Sets the #CtkScrollablePolicy to determine whether
  * vertical scrolling should start below the minimum height or
  * below the natural height.
  *
  * Since: 3.0
  **/
 void
-ctk_scrollable_set_vscroll_policy (GtkScrollable       *scrollable,
-				   GtkScrollablePolicy  policy)
+ctk_scrollable_set_vscroll_policy (CtkScrollable       *scrollable,
+				   CtkScrollablePolicy  policy)
 {
   g_return_if_fail (CTK_IS_SCROLLABLE (scrollable));
 
@@ -315,7 +315,7 @@ ctk_scrollable_set_vscroll_policy (GtkScrollable       *scrollable,
 
 /**
  * ctk_scrollable_get_border:
- * @scrollable: a #GtkScrollable
+ * @scrollable: a #CtkScrollable
  * @border: (out caller-allocates): return location for the results
  *
  * Returns the size of a non-scrolling border around the
@@ -329,8 +329,8 @@ ctk_scrollable_set_vscroll_policy (GtkScrollable       *scrollable,
  * Since: 3.16
  */
 gboolean
-ctk_scrollable_get_border (GtkScrollable *scrollable,
-                           GtkBorder     *border)
+ctk_scrollable_get_border (CtkScrollable *scrollable,
+                           CtkBorder     *border)
 {
   g_return_val_if_fail (CTK_IS_SCROLLABLE (scrollable), FALSE);
   g_return_val_if_fail (border != NULL, FALSE);

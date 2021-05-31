@@ -3,9 +3,9 @@
 static void
 test_init_of_theme (void)
 {
-  GtkStyleContext *context;
-  GtkCssProvider *provider;
-  GtkWidgetPath *path;
+  CtkStyleContext *context;
+  CtkCssProvider *provider;
+  CtkWidgetPath *path;
   GdkRGBA before, after;
   char *css;
 

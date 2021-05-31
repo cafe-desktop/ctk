@@ -29,7 +29,7 @@
 			>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="$(GtkDoInstallBin)$(GtkDoInstall)$(GtkPostInstall)"
+				CommandLine="$(CtkDoInstallBin)$(CtkDoInstall)$(CtkPostInstall)"
 			/>
 		</Configuration>
 		<Configuration
@@ -42,7 +42,7 @@
 			>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="$(GtkDoInstallBin)$(GtkDoInstall)$(GtkPostInstall)"
+				CommandLine="$(CtkDoInstallBin)$(CtkDoInstall)$(CtkPostInstall)"
 			/>
 		</Configuration>
 		<Configuration
@@ -56,7 +56,7 @@
 			>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="$(GtkDoInstallBin)$(GtkDoInstall)$(GtkDoInstallBroadwayHeaders)$(GtkPostInstall)"
+				CommandLine="$(CtkDoInstallBin)$(CtkDoInstall)$(CtkDoInstallBroadwayHeaders)$(CtkPostInstall)"
 			/>
 		</Configuration>
 		<Configuration
@@ -69,7 +69,7 @@
 			>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="$(GtkDoInstallBin)$(GtkDoInstall)$(GtkDoInstallBroadwayHeaders)$(GtkPostInstall)"
+				CommandLine="$(CtkDoInstallBin)$(CtkDoInstall)$(CtkDoInstallBroadwayHeaders)$(CtkPostInstall)"
 			/>
 		</Configuration>
 		<Configuration
@@ -84,7 +84,7 @@
 			>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="$(GtkDoInstallBin)$(GtkDoInstall)$(GtkPostInstall)"
+				CommandLine="$(CtkDoInstallBin)$(CtkDoInstall)$(CtkPostInstall)"
 			/>
 		</Configuration>
 		<Configuration
@@ -98,7 +98,7 @@
 			>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="$(GtkDoInstallBin)$(GtkDoInstall)$(GtkPostInstall)"
+				CommandLine="$(CtkDoInstallBin)$(CtkDoInstall)$(CtkPostInstall)"
 			/>
 		</Configuration>
 		<Configuration
@@ -113,7 +113,7 @@
 			>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="$(GtkDoInstallBin)$(GtkDoInstall)$(GtkDoInstallBroadwayHeaders)$(GtkPostInstall)"
+				CommandLine="$(CtkDoInstallBin)$(CtkDoInstall)$(CtkDoInstallBroadwayHeaders)$(CtkPostInstall)"
 			/>
 		</Configuration>
 		<Configuration
@@ -127,7 +127,7 @@
 			>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="$(GtkDoInstallBin)$(GtkDoInstall)$(GtkDoInstallBroadwayHeaders)$(GtkPostInstall)"
+				CommandLine="$(CtkDoInstallBin)$(CtkDoInstall)$(CtkDoInstallBroadwayHeaders)$(CtkPostInstall)"
 			/>
 		</Configuration>
 	</Configurations>
@@ -143,56 +143,56 @@
 				<FileConfiguration Name="Debug|Win32">
 					<Tool Name="VCCustomBuildTool"
 						Description="Generating .pc files..."
-						CommandLine="$(GenerateGtkPC)"
+						CommandLine="$(GenerateCtkPC)"
 						Outputs="..\gdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration Name="Release|Win32">
 					<Tool Name="VCCustomBuildTool"
 						Description="Generating .pc files..."
-						CommandLine="$(GenerateGtkPC)"
+						CommandLine="$(GenerateCtkPC)"
 						Outputs="..\gdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration Name="Debug|x64">
 					<Tool Name="VCCustomBuildTool"
 						Description="Generating .pc files..."
-						CommandLine="$(GenerateGtkPCX64)"
+						CommandLine="$(GenerateCtkPCX64)"
 						Outputs="..\gdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration Name="Release|x64">
 					<Tool Name="VCCustomBuildTool"
 						Description="Generating .pc files..."
-						CommandLine="$(GenerateGtkPCX64)"
+						CommandLine="$(GenerateCtkPCX64)"
 						Outputs="..\gdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration Name="Debug_Broadway|Win32">
 					<Tool Name="VCCustomBuildTool"
 						Description="Generating .pc files..."
-						CommandLine="$(GenerateGtkPC) --broadway"
+						CommandLine="$(GenerateCtkPC) --broadway"
 						Outputs="..\gdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration Name="Release_Broadway|Win32">
 					<Tool Name="VCCustomBuildTool"
 						Description="Generating .pc files..."
-						CommandLine="$(GenerateGtkPC) --broadway"
+						CommandLine="$(GenerateCtkPC) --broadway"
 						Outputs="..\gdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration Name="Debug_Broadway|x64">
 					<Tool Name="VCCustomBuildTool"
 						Description="Generating .pc files..."
-						CommandLine="$(GenerateGtkPCX64) --broadway"
+						CommandLine="$(GenerateCtkPCX64) --broadway"
 						Outputs="..\gdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration Name="Release_Broadway|x64">
 					<Tool Name="VCCustomBuildTool"
 						Description="Generating .pc files..."
-						CommandLine="$(GenerateGtkPCX64) --broadway"
+						CommandLine="$(GenerateCtkPCX64) --broadway"
 						Outputs="..\gdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
 					/>
 				</FileConfiguration>

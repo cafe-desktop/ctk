@@ -29,14 +29,14 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_RECENT_FILTER		(ctk_recent_filter_get_type ())
-#define CTK_RECENT_FILTER(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RECENT_FILTER, GtkRecentFilter))
+#define CTK_RECENT_FILTER(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RECENT_FILTER, CtkRecentFilter))
 #define CTK_IS_RECENT_FILTER(obj)	(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_RECENT_FILTER))
 
-typedef struct _GtkRecentFilter		GtkRecentFilter;
-typedef struct _GtkRecentFilterInfo	GtkRecentFilterInfo;
+typedef struct _CtkRecentFilter		CtkRecentFilter;
+typedef struct _CtkRecentFilterInfo	CtkRecentFilterInfo;
 
 /**
- * GtkRecentFilterFlags:
+ * CtkRecentFilterFlags:
  * @CTK_RECENT_FILTER_URI: the URI of the file being tested
  * @CTK_RECENT_FILTER_DISPLAY_NAME: the string that will be used to
  *  display the file in the recent chooser
@@ -47,7 +47,7 @@ typedef struct _GtkRecentFilterInfo	GtkRecentFilterInfo;
  * @CTK_RECENT_FILTER_AGE: the number of days elapsed since the file
  *  has been registered
  *
- * These flags indicate what parts of a #GtkRecentFilterInfo struct
+ * These flags indicate what parts of a #CtkRecentFilterInfo struct
  * are filled or need to be filled.
  */
 typedef enum {
@@ -57,11 +57,11 @@ typedef enum {
   CTK_RECENT_FILTER_APPLICATION  = 1 << 3,
   CTK_RECENT_FILTER_GROUP        = 1 << 4,
   CTK_RECENT_FILTER_AGE          = 1 << 5
-} GtkRecentFilterFlags;
+} CtkRecentFilterFlags;
 
 /**
- * GtkRecentFilterFunc:
- * @filter_info: a #GtkRecentFilterInfo that is filled according
+ * CtkRecentFilterFunc:
+ * @filter_info: a #CtkRecentFilterInfo that is filled according
  *  to the @needed flags passed to ctk_recent_filter_add_custom()
  * @user_data: user data passed to ctk_recent_filter_add_custom()
  *
@@ -70,13 +70,13 @@ typedef enum {
  *
  * Returns: %TRUE if the file should be displayed
  */
-typedef gboolean (*GtkRecentFilterFunc) (const GtkRecentFilterInfo *filter_info,
+typedef gboolean (*CtkRecentFilterFunc) (const CtkRecentFilterInfo *filter_info,
 					 gpointer                   user_data);
 
 
 /**
- * GtkRecentFilterInfo:
- * @contains: #GtkRecentFilterFlags to indicate which fields are set.
+ * CtkRecentFilterInfo:
+ * @contains: #CtkRecentFilterFlags to indicate which fields are set.
  * @uri: (nullable): The URI of the file being tested.
  * @display_name: (nullable): The string that will be used to display
  *    the file in the recent chooser.
@@ -88,12 +88,12 @@ typedef gboolean (*GtkRecentFilterFunc) (const GtkRecentFilterInfo *filter_info,
  * @age: The number of days elapsed since the file has been
  *    registered.
  *
- * A GtkRecentFilterInfo struct is used
+ * A CtkRecentFilterInfo struct is used
  * to pass information about the tested file to ctk_recent_filter_filter().
  */
-struct _GtkRecentFilterInfo
+struct _CtkRecentFilterInfo
 {
-  GtkRecentFilterFlags contains;
+  CtkRecentFilterFlags contains;
 
   const gchar *uri;
   const gchar *display_name;
@@ -108,42 +108,42 @@ GDK_AVAILABLE_IN_ALL
 GType                 ctk_recent_filter_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkRecentFilter *     ctk_recent_filter_new      (void);
+CtkRecentFilter *     ctk_recent_filter_new      (void);
 GDK_AVAILABLE_IN_ALL
-void                  ctk_recent_filter_set_name (GtkRecentFilter *filter,
+void                  ctk_recent_filter_set_name (CtkRecentFilter *filter,
 						  const gchar     *name);
 GDK_AVAILABLE_IN_ALL
-const gchar *         ctk_recent_filter_get_name (GtkRecentFilter *filter);
+const gchar *         ctk_recent_filter_get_name (CtkRecentFilter *filter);
 
 GDK_AVAILABLE_IN_ALL
-void ctk_recent_filter_add_mime_type      (GtkRecentFilter      *filter,
+void ctk_recent_filter_add_mime_type      (CtkRecentFilter      *filter,
 					   const gchar          *mime_type);
 GDK_AVAILABLE_IN_ALL
-void ctk_recent_filter_add_pattern        (GtkRecentFilter      *filter,
+void ctk_recent_filter_add_pattern        (CtkRecentFilter      *filter,
 					   const gchar          *pattern);
 GDK_AVAILABLE_IN_ALL
-void ctk_recent_filter_add_pixbuf_formats (GtkRecentFilter      *filter);
+void ctk_recent_filter_add_pixbuf_formats (CtkRecentFilter      *filter);
 GDK_AVAILABLE_IN_ALL
-void ctk_recent_filter_add_application    (GtkRecentFilter      *filter,
+void ctk_recent_filter_add_application    (CtkRecentFilter      *filter,
 					   const gchar          *application);
 GDK_AVAILABLE_IN_ALL
-void ctk_recent_filter_add_group          (GtkRecentFilter      *filter,
+void ctk_recent_filter_add_group          (CtkRecentFilter      *filter,
 					   const gchar          *group);
 GDK_AVAILABLE_IN_ALL
-void ctk_recent_filter_add_age            (GtkRecentFilter      *filter,
+void ctk_recent_filter_add_age            (CtkRecentFilter      *filter,
 					   gint                  days);
 GDK_AVAILABLE_IN_ALL
-void ctk_recent_filter_add_custom         (GtkRecentFilter      *filter,
-					   GtkRecentFilterFlags  needed,
-					   GtkRecentFilterFunc   func,
+void ctk_recent_filter_add_custom         (CtkRecentFilter      *filter,
+					   CtkRecentFilterFlags  needed,
+					   CtkRecentFilterFunc   func,
 					   gpointer              data,
 					   GDestroyNotify        data_destroy);
 
 GDK_AVAILABLE_IN_ALL
-GtkRecentFilterFlags ctk_recent_filter_get_needed (GtkRecentFilter           *filter);
+CtkRecentFilterFlags ctk_recent_filter_get_needed (CtkRecentFilter           *filter);
 GDK_AVAILABLE_IN_ALL
-gboolean             ctk_recent_filter_filter     (GtkRecentFilter           *filter,
-						   const GtkRecentFilterInfo *filter_info);
+gboolean             ctk_recent_filter_filter     (CtkRecentFilter           *filter,
+						   const CtkRecentFilterInfo *filter_info);
 
 G_END_DECLS
 

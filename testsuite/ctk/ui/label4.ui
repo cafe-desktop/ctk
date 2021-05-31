@@ -1,6 +1,6 @@
-<!-- test invalid tag in GtkLabel attributes -->
+<!-- test invalid tag in CtkLabel attributes -->
 <interface>
-  <object class="GtkLabel">
+  <object class="CtkLabel">
     <attributes>
       <blarg/>
     </attributes>

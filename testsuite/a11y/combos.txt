@@ -72,7 +72,7 @@ window1
       action 0 description: Presses the combobox
       action 0 keybinding: <Alt>c
       <AtkSelection>
-      unnamed-GtkMenuAccessible-0
+      unnamed-CtkMenuAccessible-0
         "menu"
         parent: combo1
         index: 0
@@ -95,7 +95,7 @@ window1
       action 0 name: press
       action 0 description: Presses the combobox
       <AtkSelection>
-      unnamed-GtkMenuAccessible-1
+      unnamed-CtkMenuAccessible-1
         "menu"
         parent: combo2
         index: 0
@@ -159,7 +159,7 @@ window1
       action 0 name: press
       action 0 description: Presses the combobox
       <AtkSelection>
-      unnamed-GtkMenuAccessible-2
+      unnamed-CtkMenuAccessible-2
         "menu"
         parent: combo3
         index: 0
@@ -182,7 +182,7 @@ window1
       action 0 name: press
       action 0 description: Presses the combobox
       <AtkSelection>
-      unnamed-GtkMenuAccessible-3
+      unnamed-CtkMenuAccessible-3
         "menu"
         parent: combo4
         index: 0

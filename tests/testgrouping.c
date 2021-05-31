@@ -1,12 +1,12 @@
 #include <ctk/ctk.h>
 
 
-static GtkTreeModel *
+static CtkTreeModel *
 create_model (void)
 {
-  GtkTreeStore *store;
-  GtkTreeIter iter;
-  GtkTreeIter parent;
+  CtkTreeStore *store;
+  CtkTreeIter iter;
+  CtkTreeIter parent;
 
   store = ctk_tree_store_new (1, G_TYPE_STRING);
 
@@ -58,10 +58,10 @@ create_model (void)
 }
 
 static void
-set_color_func (GtkTreeViewColumn *column,
-		GtkCellRenderer   *cell,
-		GtkTreeModel      *model,
-		GtkTreeIter       *iter,
+set_color_func (CtkTreeViewColumn *column,
+		CtkCellRenderer   *cell,
+		CtkTreeModel      *model,
+		CtkTreeIter       *iter,
 		gpointer           data)
 {
   if (ctk_tree_model_iter_has_child (model, iter))
@@ -71,9 +71,9 @@ set_color_func (GtkTreeViewColumn *column,
 }
 
 static void
-tree_view_row_activated (GtkTreeView       *tree_view,
-			 GtkTreePath       *path,
-			 GtkTreeViewColumn *column)
+tree_view_row_activated (CtkTreeView       *tree_view,
+			 CtkTreePath       *path,
+			 CtkTreeViewColumn *column)
 {
   if (ctk_tree_path_get_depth (path) > 1)
     return;
@@ -85,9 +85,9 @@ tree_view_row_activated (GtkTreeView       *tree_view,
 }
 
 static gboolean
-tree_view_select_func (GtkTreeSelection *selection,
-		       GtkTreeModel     *model,
-		       GtkTreePath      *path,
+tree_view_select_func (CtkTreeSelection *selection,
+		       CtkTreeModel     *model,
+		       CtkTreePath      *path,
 		       gboolean          path_currently_selected,
 		       gpointer          data)
 {
@@ -100,10 +100,10 @@ tree_view_select_func (GtkTreeSelection *selection,
 int
 main (int argc, char **argv)
 {
-  GtkWidget *window, *sw, *tv;
-  GtkTreeModel *model;
-  GtkCellRenderer *renderer;
-  GtkTreeViewColumn *column;
+  CtkWidget *window, *sw, *tv;
+  CtkTreeModel *model;
+  CtkCellRenderer *renderer;
+  CtkTreeViewColumn *column;
 
   ctk_init (&argc, &argv);
 

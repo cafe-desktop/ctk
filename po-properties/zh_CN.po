@@ -369,9 +369,9 @@ msgstr "操作组"
 
 #: ctk/deprecated/ctkaction.c:498
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
-msgstr "此 GtkAction 所关联的 GtkActionGroup，或者为 NULL（仅为内部使用）。"
+msgstr "此 CtkAction 所关联的 CtkActionGroup，或者为 NULL（仅为内部使用）。"
 
 #: ctk/deprecated/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
 #: ctk/ctkbutton.c:393
@@ -909,8 +909,8 @@ msgid "Style context"
 msgstr "风格上下文"
 
 #: ctk/deprecated/ctkstyle.c:472
-msgid "GtkStyleContext to get style from"
-msgstr "获得 GtkStyleContext 的风格"
+msgid "CtkStyleContext to get style from"
+msgstr "获得 CtkStyleContext 的风格"
 
 #: ctk/deprecated/ctktable.c:185
 msgid "Rows"
@@ -1282,9 +1282,9 @@ msgstr "包裹类型"
 
 #: ctk/ctkactionbar.c:339 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
-msgstr "表明子部件是否要包裹于父部件的开始或结束内的 GtkPackType 值"
+msgstr "表明子部件是否要包裹于父部件的开始或结束内的 CtkPackType 值"
 
 #: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
 #: ctk/ctknotebook.c:840 ctk/ctkpaned.c:368 ctk/ctkpopover.c:1767
@@ -1353,8 +1353,8 @@ msgstr "包含“其他...”项目"
 #: ctk/ctkappchooserbutton.c:619
 msgid ""
 "Whether the combobox should include an item that triggers a "
-"GtkAppChooserDialog"
-msgstr "组合框是否应该包括一个项目，触发 GtkAppChooserDialog"
+"CtkAppChooserDialog"
+msgstr "组合框是否应该包括一个项目，触发 CtkAppChooserDialog"
 
 #: ctk/ctkappchooserbutton.c:634
 msgid "Show default item"
@@ -1951,9 +1951,9 @@ msgstr "包裹类型"
 
 #: ctk/ctkcellareabox.c:381
 msgid ""
-"A GtkPackType indicating whether the cell is packed with reference to the "
+"A CtkPackType indicating whether the cell is packed with reference to the "
 "start or end of the cell area"
-msgstr "表明单元格是否要包裹于父部件的开始或结束内的 GtkPackType 值"
+msgstr "表明单元格是否要包裹于父部件的开始或结束内的 CtkPackType 值"
 
 #: ctk/ctkcellarea.c:790
 msgid "Focus Cell"
@@ -2229,8 +2229,8 @@ msgid "The stock ID of the stock icon to render"
 msgstr "要渲染的后备图标的后备 ID"
 
 #: ctk/ctkcellrendererpixbuf.c:211
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
-msgstr "指定渲染图标大小的 GtkIconSize 值"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
+msgstr "指定渲染图标大小的 CtkIconSize 值"
 
 #: ctk/ctkcellrendererpixbuf.c:227
 msgid "Detail"
@@ -2339,8 +2339,8 @@ msgid "Pulse of the spinner"
 msgstr "微调按钮跳变量"
 
 #: ctk/ctkcellrendererspinner.c:160
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
-msgstr "指定微调按钮渲染尺寸的 GtkIconSize 值"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
+msgstr "指定微调按钮渲染尺寸的 CtkIconSize 值"
 
 #: ctk/ctkcellrenderertext.c:256
 msgid "Text to render"
@@ -2776,16 +2776,16 @@ msgstr "单元格大小"
 
 #: ctk/ctkcellview.c:283 ctk/ctkcombobox.c:1183 ctk/ctkentrycompletion.c:468
 #: ctk/ctkiconview.c:650 ctk/ctktreemenu.c:308 ctk/ctktreeviewcolumn.c:400
-msgid "The GtkCellArea used to layout cells"
-msgstr "用 GtkCellArea 设计单元格"
+msgid "The CtkCellArea used to layout cells"
+msgstr "用 CtkCellArea 设计单元格"
 
 #: ctk/ctkcellview.c:306
 msgid "Cell Area Context"
 msgstr "单元格区域上下文"
 
 #: ctk/ctkcellview.c:307
-msgid "The GtkCellAreaContext used to compute the geometry of the cell view"
-msgstr "用于计算单元格的视图几何的 GtkCellAreaContext"
+msgid "The CtkCellAreaContext used to compute the geometry of the cell view"
+msgstr "用于计算单元格的视图几何的 CtkCellAreaContext"
 
 #: ctk/ctkcellview.c:324
 msgid "Draw Sensitive"
@@ -3000,9 +3000,9 @@ msgstr "输入文本列"
 #: ctk/ctkcombobox.c:1112
 msgid ""
 "The column in the combo box's model to associate with strings from the entry "
-"if the combo was created with #GtkComboBox:has-entry = %TRUE"
+"if the combo was created with #CtkComboBox:has-entry = %TRUE"
 msgstr ""
-"若组合框是通过 #GtkComboBox:has-entry = %TRUE 创建的，组合框模型中的这个列将"
+"若组合框是通过 #CtkComboBox:has-entry = %TRUE 创建的，组合框模型中的这个列将"
 "关联到输入控件中的字符串"
 
 #: ctk/ctkcombobox.c:1129
@@ -4134,8 +4134,8 @@ msgid "Auto render"
 msgstr "自动渲染"
 
 #: ctk/ctkglarea.c:808
-msgid "Whether the GtkGLArea renders on each redraw"
-msgstr "GtkGLArea 是否在每次重绘时渲染"
+msgid "Whether the CtkGLArea renders on each redraw"
+msgstr "CtkGLArea 是否在每次重绘时渲染"
 
 #: ctk/ctkglarea.c:828
 msgid "Has alpha"
@@ -4492,10 +4492,10 @@ msgstr "对齐"
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkLabel:xalign for that"
+"CtkLabel:xalign for that"
 msgstr ""
 "标签文本中每一行文本相对的排列方式。此设置并不会影响该文本标签的配置位置。详"
-"见 GtkLabel:xalign "
+"见 CtkLabel:xalign "
 
 #: ctk/ctklabel.c:877
 msgid "Pattern"
@@ -5090,8 +5090,8 @@ msgid "Message area"
 msgstr "消息区域"
 
 #: ctk/ctkmessagedialog.c:295
-msgid "GtkBox that holds the dialog's primary and secondary labels"
-msgstr "保持对话框主要标签和次要标签的 GtkBox"
+msgid "CtkBox that holds the dialog's primary and secondary labels"
+msgstr "保持对话框主要标签和次要标签的 CtkBox"
 
 #: ctk/ctkmodelbutton.c:1150
 msgid "Role"
@@ -5823,16 +5823,16 @@ msgid "Default Page Setup"
 msgstr "默认页面高度"
 
 #: ctk/ctkprintoperation.c:1110
-msgid "The GtkPageSetup used by default"
-msgstr "默认使用的 GtkPageSetup"
+msgid "The CtkPageSetup used by default"
+msgstr "默认使用的 CtkPageSetup"
 
 #: ctk/ctkprintoperation.c:1128 ctk/ctkprintunixdialog.c:431
 msgid "Print Settings"
 msgstr "打印设置"
 
 #: ctk/ctkprintoperation.c:1129 ctk/ctkprintunixdialog.c:432
-msgid "The GtkPrintSettings used for initializing the dialog"
-msgstr "初始化对话框的 GtkPrintSettings"
+msgid "The CtkPrintSettings used for initializing the dialog"
+msgstr "初始化对话框的 CtkPrintSettings"
 
 #: ctk/ctkprintoperation.c:1147
 msgid "Job Name"
@@ -5949,8 +5949,8 @@ msgid "Embed Page Setup"
 msgstr "嵌入页面设置"
 
 #: ctk/ctkprintoperation.c:1425 ctk/ctkprintunixdialog.c:473
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
-msgstr "如果页面设置组合嵌入 GtkPrintUnixDialog 则为 TRUE"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
+msgstr "如果页面设置组合嵌入 CtkPrintUnixDialog 则为 TRUE"
 
 #: ctk/ctkprintoperation.c:1446
 msgid "Number of Pages To Print"
@@ -5961,16 +5961,16 @@ msgid "The number of pages that will be printed."
 msgstr "将要打印的页数。"
 
 #: ctk/ctkprintunixdialog.c:414
-msgid "The GtkPageSetup to use"
-msgstr "要使用的 GtkPageSetup"
+msgid "The CtkPageSetup to use"
+msgstr "要使用的 CtkPageSetup"
 
 #: ctk/ctkprintunixdialog.c:439
 msgid "Selected Printer"
 msgstr "选中的打印机"
 
 #: ctk/ctkprintunixdialog.c:440
-msgid "The GtkPrinter which is selected"
-msgstr "目前选中的 GtkPrinter"
+msgid "The CtkPrinter which is selected"
+msgstr "目前选中的 CtkPrinter"
 
 #: ctk/ctkprintunixdialog.c:447
 msgid "Manual Capabilities"
@@ -6085,8 +6085,8 @@ msgid "The radio tool button whose group this button belongs to."
 msgstr "单选工具按钮所在的组。"
 
 #: ctk/ctkrange.c:435
-msgid "The GtkAdjustment that contains the current value of this range object"
-msgstr "包含此范围对象当前值的 GtkAdjustment"
+msgid "The CtkAdjustment that contains the current value of this range object"
+msgstr "包含此范围对象当前值的 CtkAdjustment"
 
 #: ctk/ctkrange.c:442
 msgid "Invert direction slider moves to increase range value"
@@ -6334,8 +6334,8 @@ msgstr "图标大小"
 
 #: ctk/ctkscalebutton.c:218
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
-msgstr "包含此比例的按钮对象的当前值的 GtkAdjustment"
+"The CtkAdjustment that contains the current value of this scale button object"
+msgstr "包含此比例的按钮对象的当前值的 CtkAdjustment"
 
 #: ctk/ctkscalebutton.c:246
 msgid "Icons"
@@ -6452,16 +6452,16 @@ msgid "Horizontal Adjustment"
 msgstr "水平调整"
 
 #: ctk/ctkscrolledwindow.c:570
-msgid "The GtkAdjustment for the horizontal position"
-msgstr "用于水平位置的 GtkAdjustment"
+msgid "The CtkAdjustment for the horizontal position"
+msgstr "用于水平位置的 CtkAdjustment"
 
 #: ctk/ctkscrolledwindow.c:576
 msgid "Vertical Adjustment"
 msgstr "竖直调整"
 
 #: ctk/ctkscrolledwindow.c:577
-msgid "The GtkAdjustment for the vertical position"
-msgstr "用于竖直位置的 GtkAdjustment"
+msgid "The CtkAdjustment for the vertical position"
+msgstr "用于竖直位置的 CtkAdjustment"
 
 #: ctk/ctkscrolledwindow.c:583
 msgid "Horizontal Scrollbar Policy"
@@ -6939,16 +6939,16 @@ msgid "Default file chooser backend"
 msgstr "默认文件选择器后端"
 
 #: ctk/ctksettings.c:990
-msgid "Name of the GtkFileChooser backend to use by default"
-msgstr "默认要使用的 GtkFileChooser 后端名称"
+msgid "Name of the CtkFileChooser backend to use by default"
+msgstr "默认要使用的 CtkFileChooser 后端名称"
 
 #: ctk/ctksettings.c:1007
 msgid "Default print backend"
 msgstr "默认打印后端"
 
 #: ctk/ctksettings.c:1008
-msgid "List of the GtkPrintBackend backends to use by default"
-msgstr "默认要使用的 GtkPrintBackend 后端名称"
+msgid "List of the CtkPrintBackend backends to use by default"
+msgstr "默认要使用的 CtkPrintBackend 后端名称"
 
 #: ctk/ctksettings.c:1031
 msgid "Default command to run when displaying a print preview"
@@ -7543,8 +7543,8 @@ msgid "Stack"
 msgstr "栈"
 
 #: ctk/ctkstacksidebar.c:450
-msgid "Associated stack for this GtkStackSidebar"
-msgstr "与这个 GtkStackSidebar 关联的栈"
+msgid "Associated stack for this CtkStackSidebar"
+msgstr "与这个 CtkStackSidebar 关联的栈"
 
 #: ctk/ctkstackswitcher.c:687
 msgid "Symbolic size to use for named icon"
@@ -7587,8 +7587,8 @@ msgid "Value type"
 msgstr "值类型"
 
 #: ctk/ctkstyleproperty.c:117
-msgid "The value type returned by GtkStyleContext"
-msgstr "GtkStyleContext 返回的值类型"
+msgid "The value type returned by CtkStyleContext"
+msgstr "CtkStyleContext 返回的值类型"
 
 #: ctk/ctkswitch.c:879
 msgid "Whether the switch is on or off"
@@ -8447,8 +8447,8 @@ msgid "Fixed Height Mode"
 msgstr "固定高度模式"
 
 #: ctk/ctktreeview.c:1108
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
-msgstr "加速 GtkTreeView，假定全部行的高度都相同"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
+msgstr "加速 CtkTreeView，假定全部行的高度都相同"
 
 #: ctk/ctktreeview.c:1127
 msgid "Hover Selection"
@@ -9232,8 +9232,8 @@ msgid "Focus in Toplevel"
 msgstr "聚焦顶级窗口"
 
 #: ctk/ctkwindow.c:912
-msgid "Whether the input focus is within this GtkWindow"
-msgstr "输入焦点是否位于此 GtkWindow"
+msgid "Whether the input focus is within this CtkWindow"
+msgstr "输入焦点是否位于此 CtkWindow"
 
 #: ctk/ctkwindow.c:918
 msgid "Type hint"
@@ -9342,12 +9342,12 @@ msgid "Whether the window is maximized"
 msgstr "窗口是否已最大化"
 
 #: ctk/ctkwindow.c:1113
-msgid "GtkApplication"
-msgstr "GtkApplication"
+msgid "CtkApplication"
+msgstr "CtkApplication"
 
 #: ctk/ctkwindow.c:1114
-msgid "The GtkApplication for the window"
-msgstr "窗口的 GtkApplication 属性"
+msgid "The CtkApplication for the window"
+msgstr "窗口的 CtkApplication 属性"
 
 #: ctk/ctkwindow.c:1124 ctk/ctkwindow.c:1125
 msgid "Decorated button layout"
@@ -9362,8 +9362,8 @@ msgid "Cloud Print account"
 msgstr "云打印帐号"
 
 #: modules/printbackends/cloudprint/ctkprintercloudprint.c:138
-msgid "GtkCloudprintAccount instance"
-msgstr "GtkCloudprintAccount 实例"
+msgid "CtkCloudprintAccount instance"
+msgstr "CtkCloudprintAccount 实例"
 
 #: modules/printbackends/cloudprint/ctkprintercloudprint.c:147
 msgid "Printer ID"
@@ -9514,8 +9514,8 @@ msgstr "要使用的颜色配置的标题"
 #~ msgid "The type of values after style lookup"
 #~ msgstr "风格查询后的类型值"
 
-#~ msgid "TRUE if page setup combos are embedded in GtkPrintDialog"
-#~ msgstr "如果页面设置组合嵌入 GtkPrintDialog 则为 TRUE"
+#~ msgid "TRUE if page setup combos are embedded in CtkPrintDialog"
+#~ msgstr "如果页面设置组合嵌入 CtkPrintDialog 则为 TRUE"
 
 #~ msgid "Event base"
 #~ msgstr "事件基"
@@ -9573,10 +9573,10 @@ msgstr "要使用的颜色配置的标题"
 #~ msgid ""
 #~ "The number of steps for the spinner to complete a full loop. The "
 #~ "animation will complete a full cycle in one second by default (see "
-#~ "#GtkSpinner:cycle-duration)."
+#~ "#CtkSpinner:cycle-duration)."
 #~ msgstr ""
 #~ "微调按钮(Spinner)完成一周所需要的步数。默认动画会在一秒内完成一圈(参看 "
-#~ "#GtkSpinner:cycle-duration)。"
+#~ "#CtkSpinner:cycle-duration)。"
 
 #~ msgid ""
 #~ "The length of time in milliseconds for the spinner to complete a full loop"
@@ -9598,14 +9598,14 @@ msgstr "要使用的颜色配置的标题"
 #~ msgstr "部件的竖直调整"
 
 #~ msgid ""
-#~ "The GtkAdjustment that determines the values of the horizontal position "
+#~ "The CtkAdjustment that determines the values of the horizontal position "
 #~ "for this viewport"
-#~ msgstr "决定此视区水平位置值的 GtkAdjustment"
+#~ msgstr "决定此视区水平位置值的 CtkAdjustment"
 
 #~ msgid ""
-#~ "The GtkAdjustment that determines the values of the vertical position for "
+#~ "The CtkAdjustment that determines the values of the vertical position for "
 #~ "this viewport"
-#~ msgstr "决定此时区竖直位置值的 GtkAdjustment"
+#~ msgstr "决定此时区竖直位置值的 CtkAdjustment"
 
 #~ msgid "Pixmap"
 #~ msgstr "像素图"
@@ -9762,16 +9762,16 @@ msgstr "要使用的颜色配置的标题"
 #~ msgstr "活动模式"
 
 #~ msgid ""
-#~ "If TRUE, the GtkProgress is in activity mode, meaning that it signals "
+#~ "If TRUE, the CtkProgress is in activity mode, meaning that it signals "
 #~ "something is happening, but not how much of the activity is finished. "
 #~ "This is used when you're doing something but don't know how long it will "
 #~ "take."
 #~ msgstr ""
-#~ "如果为 TRUE ，则 GtkProgress 处于活动模式，这表示某项操作正在进行，但不显"
+#~ "如果为 TRUE ，则 CtkProgress 处于活动模式，这表示某项操作正在进行，但不显"
 #~ "示操作的进展状况。当你不知道某项操作需要花多长时间时，可以用它。"
 
-#~ msgid "The GtkAdjustment connected to the progress bar (Deprecated)"
-#~ msgstr "连接到进度条的 GtkAdjustment 部件(不赞成使用)"
+#~ msgid "The CtkAdjustment connected to the progress bar (Deprecated)"
+#~ msgstr "连接到进度条的 CtkAdjustment 部件(不赞成使用)"
 
 #~ msgid "Bar style"
 #~ msgstr "进度条风格"

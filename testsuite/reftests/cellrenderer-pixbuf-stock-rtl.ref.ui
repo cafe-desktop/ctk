@@ -2,17 +2,17 @@
 <!-- Generated with glade 3.15.2 on Thu Sep  5 15:55:06 2013 -->
 <interface>
   <!-- interface-requires ctk+ 3.10 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkBox" id="box1">
+      <object class="CtkBox" id="box1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <property name="spacing">6</property>
         <child>
-          <object class="GtkImage" id="image1">
+          <object class="CtkImage" id="image1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="icon-size">1</property>
@@ -25,7 +25,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkImage" id="image2">
+          <object class="CtkImage" id="image2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="icon-size">1</property>

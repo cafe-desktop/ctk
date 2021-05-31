@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * ctkprintbackendlpr.c: LPR implementation of GtkPrintBackend 
+ * ctkprintbackendlpr.c: LPR implementation of CtkPrintBackend 
  * for printing to lpr 
  * Copyright (C) 2006, 2007 Red Hat, Inc.
  *
@@ -36,50 +36,50 @@
 
 #include "ctkprintbackendlpr.h"
 
-typedef struct _GtkPrintBackendLprClass GtkPrintBackendLprClass;
+typedef struct _CtkPrintBackendLprClass CtkPrintBackendLprClass;
 
-#define CTK_PRINT_BACKEND_LPR_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PRINT_BACKEND_LPR, GtkPrintBackendLprClass))
+#define CTK_PRINT_BACKEND_LPR_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PRINT_BACKEND_LPR, CtkPrintBackendLprClass))
 #define CTK_IS_PRINT_BACKEND_LPR_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PRINT_BACKEND_LPR))
-#define CTK_PRINT_BACKEND_LPR_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PRINT_BACKEND_LPR, GtkPrintBackendLprClass))
+#define CTK_PRINT_BACKEND_LPR_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PRINT_BACKEND_LPR, CtkPrintBackendLprClass))
 
 #define _LPR_MAX_CHUNK_SIZE 8192
 
 static GType print_backend_lpr_type = 0;
 
-struct _GtkPrintBackendLprClass
+struct _CtkPrintBackendLprClass
 {
-  GtkPrintBackendClass parent_class;
+  CtkPrintBackendClass parent_class;
 };
 
-struct _GtkPrintBackendLpr
+struct _CtkPrintBackendLpr
 {
-  GtkPrintBackend parent_instance;
+  CtkPrintBackend parent_instance;
 };
 
 static GObjectClass *backend_parent_class;
 
-static void                 ctk_print_backend_lpr_class_init      (GtkPrintBackendLprClass *class);
-static void                 ctk_print_backend_lpr_init            (GtkPrintBackendLpr      *impl);
-static void                 lpr_printer_get_settings_from_options (GtkPrinter              *printer,
-								   GtkPrinterOptionSet     *options,
-								   GtkPrintSettings        *settings);
-static GtkPrinterOptionSet *lpr_printer_get_options               (GtkPrinter              *printer,
-								   GtkPrintSettings        *settings,
-								   GtkPageSetup            *page_setup,
-								   GtkPrintCapabilities     capabilities);
-static void                 lpr_printer_prepare_for_print         (GtkPrinter              *printer,
-								   GtkPrintJob             *print_job,
-								   GtkPrintSettings        *settings,
-								   GtkPageSetup            *page_setup);
-static cairo_surface_t *    lpr_printer_create_cairo_surface      (GtkPrinter              *printer,
-								   GtkPrintSettings        *settings,
+static void                 ctk_print_backend_lpr_class_init      (CtkPrintBackendLprClass *class);
+static void                 ctk_print_backend_lpr_init            (CtkPrintBackendLpr      *impl);
+static void                 lpr_printer_get_settings_from_options (CtkPrinter              *printer,
+								   CtkPrinterOptionSet     *options,
+								   CtkPrintSettings        *settings);
+static CtkPrinterOptionSet *lpr_printer_get_options               (CtkPrinter              *printer,
+								   CtkPrintSettings        *settings,
+								   CtkPageSetup            *page_setup,
+								   CtkPrintCapabilities     capabilities);
+static void                 lpr_printer_prepare_for_print         (CtkPrinter              *printer,
+								   CtkPrintJob             *print_job,
+								   CtkPrintSettings        *settings,
+								   CtkPageSetup            *page_setup);
+static cairo_surface_t *    lpr_printer_create_cairo_surface      (CtkPrinter              *printer,
+								   CtkPrintSettings        *settings,
 								   gdouble                  width,
 								   gdouble                  height,
 								   GIOChannel              *cache_io);
-static void                 ctk_print_backend_lpr_print_stream    (GtkPrintBackend         *print_backend,
-								   GtkPrintJob             *job,
+static void                 ctk_print_backend_lpr_print_stream    (CtkPrintBackend         *print_backend,
+								   CtkPrintJob             *job,
 								   GIOChannel              *data_io,
-								   GtkPrintJobCompleteFunc  callback,
+								   CtkPrintJobCompleteFunc  callback,
 								   gpointer                 user_data,
 								   GDestroyNotify           dnotify);
 
@@ -88,20 +88,20 @@ ctk_print_backend_lpr_register_type (GTypeModule *module)
 {
   const GTypeInfo print_backend_lpr_info =
   {
-    sizeof (GtkPrintBackendLprClass),
+    sizeof (CtkPrintBackendLprClass),
     NULL,		/* base_init */
     NULL,		/* base_finalize */
     (GClassInitFunc) ctk_print_backend_lpr_class_init,
     NULL,		/* class_finalize */
     NULL,		/* class_data */
-    sizeof (GtkPrintBackendLpr),
+    sizeof (CtkPrintBackendLpr),
     0,		/* n_preallocs */
     (GInstanceInitFunc) ctk_print_backend_lpr_init,
   };
 
   print_backend_lpr_type = g_type_module_register_type (module,
                                                         CTK_TYPE_PRINT_BACKEND,
-                                                        "GtkPrintBackendLpr",
+                                                        "CtkPrintBackendLpr",
                                                         &print_backend_lpr_info, 0);
 }
 
@@ -117,14 +117,14 @@ pb_module_exit (void)
 
 }
   
-G_MODULE_EXPORT GtkPrintBackend * 
+G_MODULE_EXPORT CtkPrintBackend * 
 pb_module_create (void)
 {
   return ctk_print_backend_lpr_new ();
 }
 
 /*
- * GtkPrintBackendLpr
+ * CtkPrintBackendLpr
  */
 GType
 ctk_print_backend_lpr_get_type (void)
@@ -135,22 +135,22 @@ ctk_print_backend_lpr_get_type (void)
 /**
  * ctk_print_backend_lpr_new:
  *
- * Creates a new #GtkPrintBackendLpr object. #GtkPrintBackendLpr
- * implements the #GtkPrintBackend interface with direct access to
+ * Creates a new #CtkPrintBackendLpr object. #CtkPrintBackendLpr
+ * implements the #CtkPrintBackend interface with direct access to
  * the filesystem using Unix/Linux API calls
  *
- * Returns: the new #GtkPrintBackendLpr object
+ * Returns: the new #CtkPrintBackendLpr object
  **/
-GtkPrintBackend *
+CtkPrintBackend *
 ctk_print_backend_lpr_new (void)
 {
   return g_object_new (CTK_TYPE_PRINT_BACKEND_LPR, NULL);
 }
 
 static void
-ctk_print_backend_lpr_class_init (GtkPrintBackendLprClass *class)
+ctk_print_backend_lpr_class_init (CtkPrintBackendLprClass *class)
 {
-  GtkPrintBackendClass *backend_class = CTK_PRINT_BACKEND_CLASS (class);
+  CtkPrintBackendClass *backend_class = CTK_PRINT_BACKEND_CLASS (class);
   
   backend_parent_class = g_type_class_peek_parent (class);
 
@@ -199,8 +199,8 @@ _cairo_write (void                *closure,
 }
 
 static cairo_surface_t *
-lpr_printer_create_cairo_surface (GtkPrinter       *printer,
-				  GtkPrintSettings *settings,
+lpr_printer_create_cairo_surface (CtkPrinter       *printer,
+				  CtkPrintSettings *settings,
 				  gdouble           width, 
 				  gdouble           height,
 				  GIOChannel       *cache_io)
@@ -217,9 +217,9 @@ lpr_printer_create_cairo_surface (GtkPrinter       *printer,
 }
 
 typedef struct {
-  GtkPrintBackend *backend;
-  GtkPrintJobCompleteFunc callback;
-  GtkPrintJob *job;
+  CtkPrintBackend *backend;
+  CtkPrintJobCompleteFunc callback;
+  CtkPrintJob *job;
   gpointer user_data;
   GDestroyNotify dnotify;
 
@@ -227,7 +227,7 @@ typedef struct {
 } _PrintStreamData;
 
 static void
-lpr_print_cb (GtkPrintBackendLpr *print_backend,
+lpr_print_cb (CtkPrintBackendLpr *print_backend,
               GError             *error,
               gpointer            user_data)
 {
@@ -310,16 +310,16 @@ lpr_write (GIOChannel   *source,
 #define LPR_COMMAND "lpr"
 
 static void
-ctk_print_backend_lpr_print_stream (GtkPrintBackend        *print_backend,
-				    GtkPrintJob            *job,
+ctk_print_backend_lpr_print_stream (CtkPrintBackend        *print_backend,
+				    CtkPrintJob            *job,
 				    GIOChannel             *data_io,
-				    GtkPrintJobCompleteFunc callback,
+				    CtkPrintJobCompleteFunc callback,
 				    gpointer                user_data,
 				    GDestroyNotify          dnotify)
 {
   GError *print_error = NULL;
   _PrintStreamData *ps;
-  GtkPrintSettings *settings;
+  CtkPrintSettings *settings;
   gint argc;
   gint in_fd;
   gchar **argv = NULL;
@@ -386,9 +386,9 @@ ctk_print_backend_lpr_print_stream (GtkPrintBackend        *print_backend,
 }
 
 static void
-ctk_print_backend_lpr_init (GtkPrintBackendLpr *backend)
+ctk_print_backend_lpr_init (CtkPrintBackendLpr *backend)
 {
-  GtkPrinter *printer;
+  CtkPrinter *printer;
 
   printer = g_object_new (CTK_TYPE_PRINTER,
 			  "name", _("Print to LPR"),
@@ -407,14 +407,14 @@ ctk_print_backend_lpr_init (GtkPrintBackendLpr *backend)
   ctk_print_backend_set_list_done (CTK_PRINT_BACKEND (backend));
 }
 
-static GtkPrinterOptionSet *
-lpr_printer_get_options (GtkPrinter           *printer,
-			 GtkPrintSettings     *settings,
-			 GtkPageSetup         *page_setup,
-			 GtkPrintCapabilities  capabilities)
+static CtkPrinterOptionSet *
+lpr_printer_get_options (CtkPrinter           *printer,
+			 CtkPrintSettings     *settings,
+			 CtkPageSetup         *page_setup,
+			 CtkPrintCapabilities  capabilities)
 {
-  GtkPrinterOptionSet *set;
-  GtkPrinterOption *option;
+  CtkPrinterOptionSet *set;
+  CtkPrinterOption *option;
   const char *command;
   char *n_up[] = {"1", "2", "4", "6", "9", "16" };
 
@@ -429,7 +429,7 @@ lpr_printer_get_options (GtkPrinter           *printer,
 
   option = ctk_printer_option_new ("ctk-main-page-custom-input", _("Command Line"), CTK_PRINTER_OPTION_TYPE_STRING);
   ctk_printer_option_set_activates_default (option, TRUE);
-  option->group = g_strdup ("GtkPrintDialogExtension");
+  option->group = g_strdup ("CtkPrintDialogExtension");
   if (settings != NULL &&
       (command = ctk_print_settings_get (settings, "lpr-commandline"))!= NULL)
     ctk_printer_option_set (option, command);
@@ -441,11 +441,11 @@ lpr_printer_get_options (GtkPrinter           *printer,
 }
 
 static void
-lpr_printer_get_settings_from_options (GtkPrinter          *printer,
-				       GtkPrinterOptionSet *options,
-				       GtkPrintSettings    *settings)
+lpr_printer_get_settings_from_options (CtkPrinter          *printer,
+				       CtkPrinterOptionSet *options,
+				       CtkPrintSettings    *settings)
 {
-  GtkPrinterOption *option;
+  CtkPrinterOption *option;
 
   option = ctk_printer_option_set_lookup (options, "ctk-main-page-custom-input");
   if (option)
@@ -461,14 +461,14 @@ lpr_printer_get_settings_from_options (GtkPrinter          *printer,
 }
 
 static void
-lpr_printer_prepare_for_print (GtkPrinter       *printer,
-			       GtkPrintJob      *print_job,
-			       GtkPrintSettings *settings,
-			       GtkPageSetup     *page_setup)
+lpr_printer_prepare_for_print (CtkPrinter       *printer,
+			       CtkPrintJob      *print_job,
+			       CtkPrintSettings *settings,
+			       CtkPageSetup     *page_setup)
 {
   double scale;
-  GtkPrintPages pages;
-  GtkPageRange *ranges;
+  CtkPrintPages pages;
+  CtkPageRange *ranges;
   gint n_ranges;
 
   pages = ctk_print_settings_get_print_pages (settings);

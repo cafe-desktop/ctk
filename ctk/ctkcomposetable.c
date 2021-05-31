@@ -29,26 +29,26 @@
 #include "ctkimcontextsimpleprivate.h"
 
 
-#define CTK_COMPOSE_TABLE_MAGIC "GtkComposeTable"
+#define CTK_COMPOSE_TABLE_MAGIC "CtkComposeTable"
 #define CTK_COMPOSE_TABLE_VERSION (1)
 
 typedef struct {
   gunichar     *sequence;
   gunichar      value[2];
   gchar        *comment;
-} GtkComposeData;
+} CtkComposeData;
 
 
 static void
-ctk_compose_data_free (GtkComposeData *compose_data)
+ctk_compose_data_free (CtkComposeData *compose_data)
 {
   g_free (compose_data->sequence);
   g_free (compose_data->comment);
-  g_slice_free (GtkComposeData, compose_data);
+  g_slice_free (CtkComposeData, compose_data);
 }
 
 static void
-ctk_compose_list_element_free (GtkComposeData *compose_data, gpointer data)
+ctk_compose_list_element_free (CtkComposeData *compose_data, gpointer data)
 {
   ctk_compose_data_free (compose_data);
 }
@@ -72,7 +72,7 @@ is_codepoint (const gchar *str)
 }
 
 static gboolean
-parse_compose_value (GtkComposeData *compose_data,
+parse_compose_value (CtkComposeData *compose_data,
                      const gchar    *val,
                      const gchar    *line)
 {
@@ -132,7 +132,7 @@ fail:
 }
 
 static gboolean
-parse_compose_sequence (GtkComposeData *compose_data,
+parse_compose_sequence (CtkComposeData *compose_data,
                         const gchar    *seq,
                         const gchar    *line)
 {
@@ -208,7 +208,7 @@ parse_compose_line (GList       **compose_list,
                     const gchar  *line)
 {
   gchar **components = NULL;
-  GtkComposeData *compose_data = NULL;
+  CtkComposeData *compose_data = NULL;
 
   if (line[0] == '\0' || line[0] == '#')
     return;
@@ -224,7 +224,7 @@ parse_compose_line (GList       **compose_list,
       goto fail;
     }
 
-  compose_data = g_slice_new0 (GtkComposeData);
+  compose_data = g_slice_new0 (CtkComposeData);
 
   if (!parse_compose_sequence (compose_data, g_strstrip (components[0]), line))
     goto fail;
@@ -275,7 +275,7 @@ ctk_compose_list_check_duplicated (GList *compose_list)
 {
   GList *list;
   GList *removed_list = NULL;
-  GtkComposeData *compose_data;
+  CtkComposeData *compose_data;
 
   for (list = compose_list; list != NULL; list = list->next)
     {
@@ -336,7 +336,7 @@ ctk_compose_list_check_uint16 (GList *compose_list)
 {
   GList *list;
   GList *removed_list = NULL;
-  GtkComposeData *compose_data;
+  CtkComposeData *compose_data;
 
   for (list = compose_list; list != NULL; list = list->next)
     {
@@ -376,7 +376,7 @@ ctk_compose_list_format_for_ctk (GList *compose_list,
                                  int   *p_n_index_stride)
 {
   GList *list;
-  GtkComposeData *compose_data;
+  CtkComposeData *compose_data;
   int max_compose_len = 0;
   int i;
   gunichar codepoint;
@@ -420,8 +420,8 @@ ctk_compose_data_compare (gpointer a,
                           gpointer b,
                           gpointer data)
 {
-  GtkComposeData *compose_data_a = a;
-  GtkComposeData *compose_data_b = b;
+  CtkComposeData *compose_data_a = a;
+  CtkComposeData *compose_data_b = b;
   int max_compose_len = GPOINTER_TO_INT (data);
   int i;
   for (i = 0; i < max_compose_len; i++)
@@ -443,7 +443,7 @@ ctk_compose_list_print (GList *compose_list,
 {
   GList *list;
   int i, j;
-  GtkComposeData *compose_data;
+  CtkComposeData *compose_data;
   int total_size = 0;
   gunichar upper;
   gunichar lower;
@@ -535,7 +535,7 @@ ctk_compose_hash_get_cache_path (guint32 hash)
 }
 
 static gchar *
-ctk_compose_table_serialize (GtkComposeTable *compose_table,
+ctk_compose_table_serialize (CtkComposeTable *compose_table,
                              gsize           *count)
 {
   gchar *p, *contents;
@@ -599,12 +599,12 @@ static gint
 ctk_compose_table_find (gconstpointer data1,
                         gconstpointer data2)
 {
-  const GtkComposeTable *compose_table = (const GtkComposeTable *) data1;
+  const CtkComposeTable *compose_table = (const CtkComposeTable *) data1;
   guint32 hash = (guint32) GPOINTER_TO_INT (data2);
   return compose_table->id != hash;
 }
 
-static GtkComposeTable *
+static CtkComposeTable *
 ctk_compose_table_load_cache (const gchar *compose_file)
 {
   guint32 hash;
@@ -623,7 +623,7 @@ ctk_compose_table_load_cache (const gchar *compose_file)
   guint16 n_seqs;
   guint32 i;
   guint16 *ctk_compose_seqs = NULL;
-  GtkComposeTable *retval;
+  CtkComposeTable *retval;
 
   hash = g_str_hash (compose_file);
   if ((path = ctk_compose_hash_get_cache_path (hash)) == NULL)
@@ -657,7 +657,7 @@ ctk_compose_table_load_cache (const gchar *compose_file)
   if (g_ascii_strncasecmp (p, CTK_COMPOSE_TABLE_MAGIC,
                            strlen (CTK_COMPOSE_TABLE_MAGIC)) != 0)
     {
-      g_warning ("The file is not a GtkComposeTable cache file %s", path);
+      g_warning ("The file is not a CtkComposeTable cache file %s", path);
       goto out_load_cache;
     }
   p += strlen (CTK_COMPOSE_TABLE_MAGIC);
@@ -694,7 +694,7 @@ ctk_compose_table_load_cache (const gchar *compose_file)
       BYTE_COPY_TO_BUF (ctk_compose_seqs[i]);
     }
 
-  retval = g_new0 (GtkComposeTable, 1);
+  retval = g_new0 (CtkComposeTable, 1);
   retval->data = ctk_compose_seqs;
   retval->max_seq_len = max_seq_len;
   retval->n_seqs = n_seqs;
@@ -715,7 +715,7 @@ out_load_cache:
 }
 
 static void
-ctk_compose_table_save_cache (GtkComposeTable *compose_table)
+ctk_compose_table_save_cache (CtkComposeTable *compose_table)
 {
   gchar *path = NULL;
   gchar *contents = NULL;
@@ -743,7 +743,7 @@ out_save_cache:
   g_free (path);
 }
 
-static GtkComposeTable *
+static CtkComposeTable *
 ctk_compose_table_new_with_list (GList   *compose_list,
                                  int      max_compose_len,
                                  int      n_index_stride,
@@ -754,8 +754,8 @@ ctk_compose_table_new_with_list (GList   *compose_list,
   int i, j;
   guint16 *ctk_compose_seqs = NULL;
   GList *list;
-  GtkComposeData *compose_data;
-  GtkComposeTable *retval = NULL;
+  CtkComposeData *compose_data;
+  CtkComposeTable *retval = NULL;
 
   g_return_val_if_fail (compose_list != NULL, NULL);
 
@@ -780,7 +780,7 @@ ctk_compose_table_new_with_list (GList   *compose_list,
       ctk_compose_seqs[n++] = (guint16) compose_data->value[1];
     }
 
-  retval = g_new0 (GtkComposeTable, 1);
+  retval = g_new0 (CtkComposeTable, 1);
   retval->data = ctk_compose_seqs;
   retval->max_seq_len = max_compose_len;
   retval->n_seqs = length;
@@ -789,11 +789,11 @@ ctk_compose_table_new_with_list (GList   *compose_list,
   return retval;
 }
 
-GtkComposeTable *
+CtkComposeTable *
 ctk_compose_table_new_with_file (const gchar *compose_file)
 {
   GList *compose_list = NULL;
-  GtkComposeTable *compose_table;
+  CtkComposeTable *compose_table;
   int max_compose_len = 0;
   int n_index_stride = 0;
 
@@ -834,7 +834,7 @@ ctk_compose_table_list_add_array (GSList        *compose_tables,
                                   gint           n_seqs)
 {
   guint32 hash;
-  GtkComposeTable *compose_table;
+  CtkComposeTable *compose_table;
   int n_index_stride = max_seq_len + 2;
   int length = n_index_stride * n_seqs;
   int i;
@@ -852,7 +852,7 @@ ctk_compose_table_list_add_array (GSList        *compose_tables,
   for (i = 0; i < length; i++)
     ctk_compose_seqs[i] = data[i];
 
-  compose_table = g_new (GtkComposeTable, 1);
+  compose_table = g_new (CtkComposeTable, 1);
   compose_table->data = ctk_compose_seqs;
   compose_table->max_seq_len = max_seq_len;
   compose_table->n_seqs = n_seqs;
@@ -866,7 +866,7 @@ ctk_compose_table_list_add_file (GSList      *compose_tables,
                                  const gchar *compose_file)
 {
   guint32 hash;
-  GtkComposeTable *compose_table;
+  CtkComposeTable *compose_table;
 
   g_return_val_if_fail (compose_file != NULL, compose_tables);
 

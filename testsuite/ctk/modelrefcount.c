@@ -1,4 +1,4 @@
-/* GtkTreeModel ref counting tests
+/* CtkTreeModel ref counting tests
  * Copyright (C) 2011  Kristian Rietveld  <kris@ctk.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -23,9 +23,9 @@
 static void
 test_list_no_reference (void)
 {
-  GtkTreeIter iter;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
+  CtkTreeIter iter;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -44,10 +44,10 @@ test_list_no_reference (void)
 static void
 test_list_reference_during_creation (void)
 {
-  GtkTreeIter iter;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkWidget *tree_view;
+  CtkTreeIter iter;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -71,10 +71,10 @@ test_list_reference_during_creation (void)
 static void
 test_list_reference_after_creation (void)
 {
-  GtkTreeIter iter;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkWidget *tree_view;
+  CtkTreeIter iter;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -106,10 +106,10 @@ test_list_reference_after_creation (void)
 static void
 test_list_reference_reordered (void)
 {
-  GtkTreeIter iter1, iter2, iter3, iter4, iter5;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkWidget *tree_view;
+  CtkTreeIter iter1, iter2, iter3, iter4, iter5;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -147,9 +147,9 @@ test_list_reference_reordered (void)
 static void
 test_tree_no_reference (void)
 {
-  GtkTreeIter iter, child;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
+  CtkTreeIter iter, child;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -174,10 +174,10 @@ test_tree_no_reference (void)
 static void
 test_tree_reference_during_creation (void)
 {
-  GtkTreeIter iter, child;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkWidget *tree_view;
+  CtkTreeIter iter, child;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -209,10 +209,10 @@ test_tree_reference_during_creation (void)
 static void
 test_tree_reference_after_creation (void)
 {
-  GtkTreeIter iter, child;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkWidget *tree_view;
+  CtkTreeIter iter, child;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -247,11 +247,11 @@ test_tree_reference_after_creation (void)
 static void
 test_tree_reference_reordered (void)
 {
-  GtkTreeIter parent;
-  GtkTreeIter iter1, iter2, iter3, iter4, iter5;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkWidget *tree_view;
+  CtkTreeIter parent;
+  CtkTreeIter iter1, iter2, iter3, iter4, iter5;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -290,10 +290,10 @@ test_tree_reference_reordered (void)
 static void
 test_tree_reference_expand_all (void)
 {
-  GtkTreeIter iter, child;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkWidget *tree_view;
+  CtkTreeIter iter, child;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -340,10 +340,10 @@ test_tree_reference_expand_all (void)
 static void
 test_tree_reference_collapse_all (void)
 {
-  GtkTreeIter iter, child;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkWidget *tree_view;
+  CtkTreeIter iter, child;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -383,11 +383,11 @@ test_tree_reference_collapse_all (void)
 static void
 test_tree_reference_expand_collapse (void)
 {
-  GtkTreeIter parent1, parent2, child;
-  GtkTreePath *path1, *path2;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkWidget *tree_view;
+  CtkTreeIter parent1, parent2, child;
+  CtkTreePath *path1, *path2;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -447,12 +447,12 @@ test_tree_reference_expand_collapse (void)
 static void
 test_row_reference_list (void)
 {
-  GtkTreeIter iter0, iter1, iter2;
-  GtkTreePath *path;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeRowReference *row_ref;
-  GtkWidget *tree_view;
+  CtkTreeIter iter0, iter1, iter2;
+  CtkTreePath *path;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeRowReference *row_ref;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -504,11 +504,11 @@ test_row_reference_list (void)
 static void
 test_row_reference_list_remove (void)
 {
-  GtkTreeIter iter0, iter1, iter2;
-  GtkTreePath *path;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeRowReference *row_ref;
+  CtkTreeIter iter0, iter1, iter2;
+  CtkTreePath *path;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeRowReference *row_ref;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -561,14 +561,14 @@ test_row_reference_list_remove (void)
 static void
 test_row_reference_tree (void)
 {
-  GtkTreeIter iter0, iter1, iter2;
-  GtkTreeIter child0, child1, child2;
-  GtkTreeIter grandchild0, grandchild1, grandchild2;
-  GtkTreePath *path;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeRowReference *row_ref, *row_ref1;
-  GtkWidget *tree_view;
+  CtkTreeIter iter0, iter1, iter2;
+  CtkTreeIter child0, child1, child2;
+  CtkTreeIter grandchild0, grandchild1, grandchild2;
+  CtkTreePath *path;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeRowReference *row_ref, *row_ref1;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -692,13 +692,13 @@ test_row_reference_tree (void)
 static void
 test_row_reference_tree_remove (void)
 {
-  GtkTreeIter iter0, iter1, iter2;
-  GtkTreeIter child0, child1, child2;
-  GtkTreeIter grandchild0, grandchild1, grandchild2;
-  GtkTreePath *path;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeRowReference *row_ref, *row_ref1, *row_ref2;
+  CtkTreeIter iter0, iter1, iter2;
+  CtkTreeIter child0, child1, child2;
+  CtkTreeIter grandchild0, grandchild1, grandchild2;
+  CtkTreePath *path;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeRowReference *row_ref, *row_ref1, *row_ref2;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -771,13 +771,13 @@ test_row_reference_tree_remove (void)
 static void
 test_row_reference_tree_remove_ancestor (void)
 {
-  GtkTreeIter iter0, iter1, iter2;
-  GtkTreeIter child0, child1, child2;
-  GtkTreeIter grandchild0, grandchild1, grandchild2;
-  GtkTreePath *path;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeRowReference *row_ref, *row_ref1;
+  CtkTreeIter iter0, iter1, iter2;
+  CtkTreeIter child0, child1, child2;
+  CtkTreeIter grandchild0, grandchild1, grandchild2;
+  CtkTreePath *path;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeRowReference *row_ref, *row_ref1;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -835,14 +835,14 @@ test_row_reference_tree_remove_ancestor (void)
 static void
 test_row_reference_tree_expand (void)
 {
-  GtkTreeIter iter0, iter1, iter2;
-  GtkTreeIter child0, child1, child2;
-  GtkTreeIter grandchild0, grandchild1, grandchild2;
-  GtkTreePath *path;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeRowReference *row_ref, *row_ref1, *row_ref2;
-  GtkWidget *tree_view;
+  CtkTreeIter iter0, iter1, iter2;
+  CtkTreeIter child0, child1, child2;
+  CtkTreeIter grandchild0, grandchild1, grandchild2;
+  CtkTreePath *path;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeRowReference *row_ref, *row_ref1, *row_ref2;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -934,7 +934,7 @@ test_row_reference_tree_expand (void)
 void
 register_model_ref_count_tests (void)
 {
-  /* lists (though based on GtkTreeStore) */
+  /* lists (though based on CtkTreeStore) */
   g_test_add_func ("/TreeModel/ref-count/list/no-reference",
                    test_list_no_reference);
   g_test_add_func ("/TreeModel/ref-count/list/reference-during-creation",

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window">
+  <object class="CtkWindow" id="window">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkGrid" id="grid">
+      <object class="CtkGrid" id="grid">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="row_spacing">5</property>
         <property name="column_spacing">5</property>
         <child>
-          <object class="GtkImage" id="image-0-0">
+          <object class="CtkImage" id="image-0-0">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
@@ -28,7 +28,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkImage" id="image-1-0">
+          <object class="CtkImage" id="image-1-0">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
@@ -45,7 +45,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkImage" id="image-2-0">
+          <object class="CtkImage" id="image-2-0">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
@@ -62,7 +62,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkImage" id="image-3-0">
+          <object class="CtkImage" id="image-3-0">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
@@ -79,7 +79,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkImage" id="image-0-1">
+          <object class="CtkImage" id="image-0-1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
@@ -96,7 +96,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkImage" id="image-1-1">
+          <object class="CtkImage" id="image-1-1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
@@ -113,7 +113,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkImage" id="image-2-1">
+          <object class="CtkImage" id="image-2-1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
@@ -130,7 +130,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkImage" id="image-3-1">
+          <object class="CtkImage" id="image-3-1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
@@ -147,7 +147,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkImage" id="image-0-2">
+          <object class="CtkImage" id="image-0-2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
@@ -164,7 +164,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkImage" id="image-1-2">
+          <object class="CtkImage" id="image-1-2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
@@ -181,7 +181,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkImage" id="image-2-2">
+          <object class="CtkImage" id="image-2-2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
@@ -198,7 +198,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkImage" id="image-3-2">
+          <object class="CtkImage" id="image-3-2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
@@ -215,7 +215,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkImage" id="image-0-3">
+          <object class="CtkImage" id="image-0-3">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
@@ -232,7 +232,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkImage" id="image-1-3">
+          <object class="CtkImage" id="image-1-3">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
@@ -249,7 +249,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkImage" id="image-2-3">
+          <object class="CtkImage" id="image-2-3">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
@@ -266,7 +266,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkImage" id="image-3-3">
+          <object class="CtkImage" id="image-3-3">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>

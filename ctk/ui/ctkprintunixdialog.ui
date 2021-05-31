@@ -2,19 +2,19 @@
 <interface domain="ctk30">
   <!-- interface-requires ctk+ 3.6 -->
   <!-- interface-requires ctkprivate 3.10 -->
-  <object class="GtkAdjustment" id="copies_spin_adjustment">
+  <object class="CtkAdjustment" id="copies_spin_adjustment">
     <property name="lower">1</property>
     <property name="upper">999</property>
     <property name="value">1</property>
     <property name="step-increment">1</property>
   </object>
-  <object class="GtkListStore" id="custom_paper_list">
+  <object class="CtkListStore" id="custom_paper_list">
     <columns>
       <!-- column-name custom -->
       <column type="GObject"/>
     </columns>
   </object>
-  <object class="GtkListStore" id="page_setup_list">
+  <object class="CtkListStore" id="page_setup_list">
     <columns>
       <!-- column-name page-setup -->
       <column type="GObject"/>
@@ -22,7 +22,7 @@
       <column type="gboolean"/>
     </columns>
   </object>
-  <object class="GtkListStore" id="printer_list">
+  <object class="CtkListStore" id="printer_list">
     <columns>
       <!-- column-name icon -->
       <column type="GIcon"/>
@@ -38,22 +38,22 @@
       <column type="GObject"/>
     </columns>
   </object>
-  <object class="GtkTreeModelFilter" id="printer_list_filter">
+  <object class="CtkTreeModelFilter" id="printer_list_filter">
     <property name="child-model">printer_list</property>
   </object>
-  <object class="GtkAdjustment" id="scale_spin_adjustment">
+  <object class="CtkAdjustment" id="scale_spin_adjustment">
     <property name="lower">1</property>
     <property name="upper">1000</property>
     <property name="value">100</property>
     <property name="step-increment">1</property>
   </object>
-  <template class="GtkPrintUnixDialog" parent="GtkDialog">
+  <template class="CtkPrintUnixDialog" parent="CtkDialog">
     <property name="can-focus">False</property>
     <property name="type-hint">dialog</property>
     <signal name="notify::page-setup" handler="redraw_page_layout_preview" swapped="no"/>
     <signal name="response" handler="error_dialogs" swapped="no"/>
     <child internal-child="vbox">
-      <object class="GtkBox" id="dialog-vbox1">
+      <object class="CtkBox" id="dialog-vbox1">
         <property name="orientation">vertical</property>
         <property name="spacing">2</property>
         <property name="border-width">0</property>
@@ -61,46 +61,46 @@
           <class name="view"/>
         </style>
         <child>
-          <object class="GtkBox" id="box1">
+          <object class="CtkBox" id="box1">
             <property name="visible">1</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkNotebook" id="notebook">
+              <object class="CtkNotebook" id="notebook">
                 <property name="visible">1</property>
                 <property name="can-focus">1</property>
                 <property name="show-border">0</property>
                 <child>
-                  <object class="GtkBox" id="general_main_box">
+                  <object class="CtkBox" id="general_main_box">
                     <property name="visible">1</property>
                     <property name="border-width">12</property>
                     <property name="orientation">vertical</property>
                     <property name="spacing">18</property>
                     <child>
-                      <object class="GtkBox" id="box2">
+                      <object class="CtkBox" id="box2">
                         <property name="visible">1</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">6</property>
                         <child>
-                          <object class="GtkScrolledWindow" id="printer_swin">
+                          <object class="CtkScrolledWindow" id="printer_swin">
                             <property name="visible">1</property>
                             <property name="can-focus">1</property>
                             <property name="shadow-type">in</property>
                             <child>
-                              <object class="GtkTreeView" id="printer_treeview">
+                              <object class="CtkTreeView" id="printer_treeview">
                                 <property name="visible">1</property>
                                 <property name="can-focus">1</property>
                                 <property name="model">printer_list_filter</property>
                                 <signal name="row-activated" handler="emit_ok_response" swapped="no"/>
                                 <child internal-child="selection">
-                                  <object class="GtkTreeSelection" id="treeview-selection1">
+                                  <object class="CtkTreeSelection" id="treeview-selection1">
                                     <property name="mode">browse</property>
                                     <signal name="changed" handler="selected_printer_changed" swapped="no"/>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkTreeViewColumn" id="printer_icon_column">
+                                  <object class="CtkTreeViewColumn" id="printer_icon_column">
                                     <child>
-                                      <object class="GtkCellRendererPixbuf" id="printer_icon_renderer"/>
+                                      <object class="CtkCellRendererPixbuf" id="printer_icon_renderer"/>
                                       <attributes>
                                         <attribute name="gicon">0</attribute>
                                       </attributes>
@@ -108,10 +108,10 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkTreeViewColumn" id="printer_name_column">
+                                  <object class="CtkTreeViewColumn" id="printer_name_column">
                                     <property name="title" translatable="yes">Printer</property>
                                     <child>
-                                      <object class="GtkCellRendererText" id="printer_name_renderer"/>
+                                      <object class="CtkCellRendererText" id="printer_name_renderer"/>
                                       <attributes>
                                         <attribute name="text">1</attribute>
                                       </attributes>
@@ -119,10 +119,10 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkTreeViewColumn" id="printer_location_column">
+                                  <object class="CtkTreeViewColumn" id="printer_location_column">
                                     <property name="title" translatable="yes" comments="this is the header for the location column in the print dialog">Location</property>
                                     <child>
-                                      <object class="GtkCellRendererText" id="printer_location_renderer"/>
+                                      <object class="CtkCellRendererText" id="printer_location_renderer"/>
                                       <attributes>
                                         <attribute name="text">4</attribute>
                                       </attributes>
@@ -130,10 +130,10 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkTreeViewColumn" id="printer_status_column">
+                                  <object class="CtkTreeViewColumn" id="printer_status_column">
                                     <property name="title" translatable="yes" comments="this is the header for the printer status column in the print dialog">Status</property>
                                     <child>
-                                      <object class="GtkCellRendererText" id="printer_status_renderer">
+                                      <object class="CtkCellRendererText" id="printer_status_renderer">
                                         <property name="ellipsize">end</property>
                                       </object>
                                       <attributes>
@@ -150,7 +150,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkBox" id="extension_point">
+                          <object class="CtkBox" id="extension_point">
                             <property name="visible">1</property>
                             <property name="spacing">18</property>
                           </object>
@@ -165,16 +165,16 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox" id="box3">
+                      <object class="CtkBox" id="box3">
                         <property name="visible">1</property>
                         <property name="spacing">18</property>
                         <child>
-                          <object class="GtkBox" id="frame_template1">
+                          <object class="CtkBox" id="frame_template1">
                             <property name="visible">1</property>
                             <property name="orientation">vertical</property>
                             <property name="spacing">6</property>
                             <child>
-                              <object class="GtkLabel" id="label_widget1">
+                              <object class="CtkLabel" id="label_widget1">
                                 <property name="visible">1</property>
                                 <property name="halign">start</property>
                                 <property name="valign">center</property>
@@ -191,13 +191,13 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkGrid" id="range_table">
+                              <object class="CtkGrid" id="range_table">
                                 <property name="visible">1</property>
                                 <property name="margin-start">12</property>
                                 <property name="row-spacing">6</property>
                                 <property name="column-spacing">12</property>
                                 <child>
-                                  <object class="GtkRadioButton" id="all_pages_radio">
+                                  <object class="CtkRadioButton" id="all_pages_radio">
                                     <property name="label" translatable="yes">_All Pages</property>
                                     <property name="visible">1</property>
                                     <property name="can-focus">1</property>
@@ -212,7 +212,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkRadioButton" id="current_page_radio">
+                                  <object class="CtkRadioButton" id="current_page_radio">
                                     <property name="label" translatable="yes">C_urrent Page</property>
                                     <property name="visible">1</property>
                                     <property name="sensitive">0</property>
@@ -229,7 +229,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkRadioButton" id="selection_radio">
+                                  <object class="CtkRadioButton" id="selection_radio">
                                     <property name="label" translatable="yes">Se_lection</property>
                                     <property name="sensitive">0</property>
                                     <property name="can-focus">1</property>
@@ -245,7 +245,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkRadioButton" id="page_range_radio">
+                                  <object class="CtkRadioButton" id="page_range_radio">
                                     <property name="label" translatable="yes">Pag_es:</property>
                                     <property name="visible">1</property>
                                     <property name="can-focus">1</property>
@@ -263,7 +263,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkEntry" id="page_range_entry">
+                                  <object class="CtkEntry" id="page_range_entry">
                                     <property name="visible">1</property>
                                     <property name="sensitive">0</property>
                                     <property name="can-focus">1</property>
@@ -299,12 +299,12 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkBox" id="frame_template2">
+                          <object class="CtkBox" id="frame_template2">
                             <property name="visible">1</property>
                             <property name="orientation">vertical</property>
                             <property name="spacing">6</property>
                             <child>
-                              <object class="GtkLabel" id="label_widget2">
+                              <object class="CtkLabel" id="label_widget2">
                                 <property name="visible">1</property>
                                 <property name="halign">start</property>
                                 <property name="valign">center</property>
@@ -321,13 +321,13 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkGrid" id="grid1">
+                              <object class="CtkGrid" id="grid1">
                                 <property name="visible">1</property>
                                 <property name="margin-start">12</property>
                                 <property name="row-spacing">6</property>
                                 <property name="column-spacing">12</property>
                                 <child>
-                                  <object class="GtkLabel" id="label4">
+                                  <object class="CtkLabel" id="label4">
                                     <property name="visible">1</property>
                                     <property name="halign">start</property>
                                     <property name="valign">baseline</property>
@@ -341,15 +341,15 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkSpinButton" id="copies_spin">
+                                  <object class="CtkSpinButton" id="copies_spin">
                                     <property name="visible">1</property>
                                     <property name="can-focus">1</property>
                                     <property name="valign">baseline</property>
                                     <property name="invisible-char">•</property>
                                     <property name="activates-default">1</property>
                                     <property name="adjustment">copies_spin_adjustment</property>
-                                    <signal name="changed" handler="update_dialog_from_capabilities" object="GtkPrintUnixDialog" swapped="yes"/>
-                                    <signal name="value-changed" handler="update_dialog_from_capabilities" object="GtkPrintUnixDialog" swapped="yes"/>
+                                    <signal name="changed" handler="update_dialog_from_capabilities" object="CtkPrintUnixDialog" swapped="yes"/>
+                                    <signal name="value-changed" handler="update_dialog_from_capabilities" object="CtkPrintUnixDialog" swapped="yes"/>
                                   </object>
                                   <packing>
                                     <property name="left-attach">1</property>
@@ -357,7 +357,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="collate_check">
+                                  <object class="CtkCheckButton" id="collate_check">
                                     <property name="label" translatable="yes">C_ollate</property>
                                     <property name="visible">1</property>
                                     <property name="can-focus">1</property>
@@ -371,7 +371,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="reverse_check">
+                                  <object class="CtkCheckButton" id="reverse_check">
                                     <property name="label" translatable="yes">_Reverse</property>
                                     <property name="visible">1</property>
                                     <property name="can-focus">1</property>
@@ -385,7 +385,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkDrawingArea" id="collate_image">
+                                  <object class="CtkDrawingArea" id="collate_image">
                                     <property name="width-request">70</property>
                                     <property name="height-request">90</property>
                                     <property name="visible">1</property>
@@ -421,7 +421,7 @@
                   </object>
                 </child>
                 <child type="tab">
-                  <object class="GtkLabel" id="label1">
+                  <object class="CtkLabel" id="label1">
                     <property name="visible">1</property>
                     <property name="label" translatable="yes">General</property>
                   </object>
@@ -430,22 +430,22 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="page_setup_main_box">
+                  <object class="CtkBox" id="page_setup_main_box">
                     <property name="visible">1</property>
                     <property name="border-width">12</property>
                     <property name="orientation">vertical</property>
                     <property name="spacing">18</property>
                     <child>
-                      <object class="GtkBox" id="box4">
+                      <object class="CtkBox" id="box4">
                         <property name="visible">1</property>
                         <property name="spacing">18</property>
                         <child>
-                          <object class="GtkBox" id="frame_template3">
+                          <object class="CtkBox" id="frame_template3">
                             <property name="visible">1</property>
                             <property name="orientation">vertical</property>
                             <property name="spacing">6</property>
                             <child>
-                              <object class="GtkLabel" id="label_widget3">
+                              <object class="CtkLabel" id="label_widget3">
                                 <property name="visible">1</property>
                                 <property name="halign">start</property>
                                 <property name="valign">center</property>
@@ -462,13 +462,13 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkGrid" id="grid2">
+                              <object class="CtkGrid" id="grid2">
                                 <property name="visible">1</property>
                                 <property name="margin-start">12</property>
                                 <property name="row-spacing">6</property>
                                 <property name="column-spacing">12</property>
                                 <child>
-                                  <object class="GtkLabel" id="label5">
+                                  <object class="CtkLabel" id="label5">
                                     <property name="visible">1</property>
                                     <property name="halign">start</property>
                                     <property name="valign">baseline</property>
@@ -482,7 +482,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkPrinterOptionWidget" id="duplex">
+                                  <object class="CtkPrinterOptionWidget" id="duplex">
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
                                     <property name="valign">baseline</property>
@@ -493,7 +493,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkLabel" id="label6">
+                                  <object class="CtkLabel" id="label6">
                                     <property name="visible">1</property>
                                     <property name="halign">start</property>
                                     <property name="valign">baseline</property>
@@ -507,12 +507,12 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkPrinterOptionWidget" id="pages_per_sheet">
+                                  <object class="CtkPrinterOptionWidget" id="pages_per_sheet">
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
                                     <property name="valign">baseline</property>
-                                    <signal name="changed" handler="redraw_page_layout_preview" object="GtkPrintUnixDialog" swapped="yes"/>
-                                    <signal name="changed" handler="update_number_up_layout" object="GtkPrintUnixDialog" swapped="yes"/>
+                                    <signal name="changed" handler="redraw_page_layout_preview" object="CtkPrintUnixDialog" swapped="yes"/>
+                                    <signal name="changed" handler="update_number_up_layout" object="CtkPrintUnixDialog" swapped="yes"/>
                                   </object>
                                   <packing>
                                     <property name="left-attach">1</property>
@@ -520,7 +520,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkLabel" id="label7">
+                                  <object class="CtkLabel" id="label7">
                                     <property name="visible">1</property>
                                     <property name="halign">start</property>
                                     <property name="valign">baseline</property>
@@ -534,11 +534,11 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkPrinterOptionWidget" id="number_up_layout">
+                                  <object class="CtkPrinterOptionWidget" id="number_up_layout">
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
                                     <property name="valign">baseline</property>
-                                    <signal name="changed" handler="redraw_page_layout_preview" object="GtkPrintUnixDialog" swapped="yes"/>
+                                    <signal name="changed" handler="redraw_page_layout_preview" object="CtkPrintUnixDialog" swapped="yes"/>
                                   </object>
                                   <packing>
                                     <property name="left-attach">1</property>
@@ -546,7 +546,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkLabel" id="label8">
+                                  <object class="CtkLabel" id="label8">
                                     <property name="visible">1</property>
                                     <property name="halign">start</property>
                                     <property name="valign">baseline</property>
@@ -560,7 +560,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkComboBoxText" id="page_set_combo">
+                                  <object class="CtkComboBoxText" id="page_set_combo">
                                     <property name="visible">1</property>
                                     <property name="valign">baseline</property>
                                     <property name="active">0</property>
@@ -578,7 +578,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkLabel" id="label9">
+                                  <object class="CtkLabel" id="label9">
                                     <property name="visible">1</property>
                                     <property name="halign">start</property>
                                     <property name="valign">baseline</property>
@@ -592,12 +592,12 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkBox" id="box5">
+                                  <object class="CtkBox" id="box5">
                                     <property name="visible">1</property>
                                     <property name="spacing">6</property>
                                     <property name="valign">baseline</property>
                                     <child>
-                                      <object class="GtkSpinButton" id="scale_spin">
+                                      <object class="CtkSpinButton" id="scale_spin">
                                         <property name="visible">1</property>
                                         <property name="valign">baseline</property>
                                         <property name="can-focus">1</property>
@@ -607,7 +607,7 @@
                                       </object>
                                     </child>
                                     <child>
-                                      <object class="GtkLabel" id="label10">
+                                      <object class="CtkLabel" id="label10">
                                         <property name="visible">1</property>
                                         <property name="valign">baseline</property>
                                         <property name="label">%</property>
@@ -637,12 +637,12 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkBox" id="frame_template4">
+                          <object class="CtkBox" id="frame_template4">
                             <property name="visible">1</property>
                             <property name="orientation">vertical</property>
                             <property name="spacing">6</property>
                             <child>
-                              <object class="GtkLabel" id="label_widget4">
+                              <object class="CtkLabel" id="label_widget4">
                                 <property name="visible">1</property>
                                 <property name="halign">start</property>
                                 <property name="valign">center</property>
@@ -659,13 +659,13 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkGrid" id="grid3">
+                              <object class="CtkGrid" id="grid3">
                                 <property name="visible">1</property>
                                 <property name="margin-start">12</property>
                                 <property name="row-spacing">6</property>
                                 <property name="column-spacing">12</property>
                                 <child>
-                                  <object class="GtkLabel" id="label11">
+                                  <object class="CtkLabel" id="label11">
                                     <property name="visible">1</property>
                                     <property name="halign">start</property>
                                     <property name="valign">baseline</property>
@@ -679,7 +679,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkPrinterOptionWidget" id="paper_type">
+                                  <object class="CtkPrinterOptionWidget" id="paper_type">
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
                                     <property name="valign">baseline</property>
@@ -690,7 +690,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkLabel" id="label12">
+                                  <object class="CtkLabel" id="label12">
                                     <property name="visible">1</property>
                                     <property name="halign">start</property>
                                     <property name="valign">baseline</property>
@@ -704,7 +704,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkPrinterOptionWidget" id="paper_source">
+                                  <object class="CtkPrinterOptionWidget" id="paper_source">
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
                                     <property name="valign">baseline</property>
@@ -715,7 +715,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkLabel" id="label13">
+                                  <object class="CtkLabel" id="label13">
                                     <property name="visible">1</property>
                                     <property name="halign">start</property>
                                     <property name="valign">baseline</property>
@@ -729,7 +729,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkPrinterOptionWidget" id="output_tray">
+                                  <object class="CtkPrinterOptionWidget" id="output_tray">
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
                                     <property name="valign">baseline</property>
@@ -740,7 +740,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkLabel" id="paper_size_combo_label">
+                                  <object class="CtkLabel" id="paper_size_combo_label">
                                     <property name="visible">1</property>
                                     <property name="halign">start</property>
                                     <property name="valign">baseline</property>
@@ -754,13 +754,13 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkComboBox" id="paper_size_combo">
+                                  <object class="CtkComboBox" id="paper_size_combo">
                                     <property name="visible">1</property>
                                     <property name="sensitive">0</property>
                                     <property name="model">page_setup_list</property>
                                     <property name="valign">baseline</property>
                                     <child>
-                                      <object class="GtkCellRendererText" id="paper_size_renderer"/>
+                                      <object class="CtkCellRendererText" id="paper_size_renderer"/>
                                     </child>
                                   </object>
                                   <packing>
@@ -769,7 +769,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkLabel" id="orientation_combo_label">
+                                  <object class="CtkLabel" id="orientation_combo_label">
                                     <property name="visible">1</property>
                                     <property name="halign">start</property>
                                     <property name="valign">baseline</property>
@@ -783,7 +783,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkComboBoxText" id="orientation_combo">
+                                  <object class="CtkComboBoxText" id="orientation_combo">
                                     <property name="visible">1</property>
                                     <property name="sensitive">0</property>
                                     <property name="active">0</property>
@@ -824,10 +824,10 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox" id="box6">
+                      <object class="CtkBox" id="box6">
                         <property name="visible">1</property>
                         <child>
-                          <object class="GtkDrawingArea" id="page_layout_preview">
+                          <object class="CtkDrawingArea" id="page_layout_preview">
                             <property name="width-request">320</property>
                             <property name="height-request">160</property>
                             <property name="visible">1</property>
@@ -849,7 +849,7 @@
                   </packing>
                 </child>
                 <child type="tab">
-                  <object class="GtkLabel" id="label2">
+                  <object class="CtkLabel" id="label2">
                     <property name="visible">1</property>
                     <property name="label" translatable="yes">Page Setup</property>
                   </object>
@@ -859,17 +859,17 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkGrid" id="job_page">
+                  <object class="CtkGrid" id="job_page">
                     <property name="border-width">12</property>
                     <property name="row-spacing">18</property>
                     <property name="column-spacing">18</property>
                     <child>
-                      <object class="GtkBox" id="frame_template5">
+                      <object class="CtkBox" id="frame_template5">
                         <property name="visible">1</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">6</property>
                         <child>
-                          <object class="GtkLabel" id="label_widget5">
+                          <object class="CtkLabel" id="label_widget5">
                             <property name="visible">1</property>
                             <property name="halign">start</property>
                             <property name="valign">center</property>
@@ -886,13 +886,13 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkGrid" id="grid5">
+                          <object class="CtkGrid" id="grid5">
                             <property name="visible">1</property>
                             <property name="margin-start">12</property>
                             <property name="row-spacing">6</property>
                             <property name="column-spacing">12</property>
                             <child>
-                              <object class="GtkLabel" id="label16">
+                              <object class="CtkLabel" id="label16">
                                 <property name="visible">1</property>
                                 <property name="halign">start</property>
                                 <property name="valign">center</property>
@@ -906,7 +906,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkPrinterOptionWidget" id="job_prio">
+                              <object class="CtkPrinterOptionWidget" id="job_prio">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                               </object>
@@ -916,7 +916,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel" id="label17">
+                              <object class="CtkLabel" id="label17">
                                 <property name="visible">1</property>
                                 <property name="halign">start</property>
                                 <property name="valign">center</property>
@@ -930,7 +930,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkPrinterOptionWidget" id="billing_info">
+                              <object class="CtkPrinterOptionWidget" id="billing_info">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                               </object>
@@ -955,12 +955,12 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox" id="frame_template6">
+                      <object class="CtkBox" id="frame_template6">
                         <property name="visible">1</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">6</property>
                         <child>
-                          <object class="GtkLabel" id="label_widget6">
+                          <object class="CtkLabel" id="label_widget6">
                             <property name="visible">1</property>
                             <property name="halign">start</property>
                             <property name="valign">center</property>
@@ -977,20 +977,20 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkGrid" id="grid6">
+                          <object class="CtkGrid" id="grid6">
                             <property name="visible">1</property>
                             <property name="margin-start">12</property>
                             <property name="row-spacing">6</property>
                             <property name="column-spacing">12</property>
                             <child>
-                              <object class="GtkRadioButton" id="print_now_radio">
+                              <object class="CtkRadioButton" id="print_now_radio">
                                 <property name="label" translatable="yes" comments="this is one of the choices for the print at option in the print dialog">_Now</property>
                                 <property name="visible">1</property>
                                 <property name="can-focus">1</property>
                                 <property name="use-underline">1</property>
                                 <property name="active">1</property>
                                 <property name="draw-indicator">1</property>
-                                <signal name="toggled" handler="update_print_at_option" object="GtkPrintUnixDialog" swapped="yes"/>
+                                <signal name="toggled" handler="update_print_at_option" object="CtkPrintUnixDialog" swapped="yes"/>
                               </object>
                               <packing>
                                 <property name="left-attach">0</property>
@@ -999,7 +999,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkRadioButton" id="print_at_radio">
+                              <object class="CtkRadioButton" id="print_at_radio">
                                 <property name="label" translatable="yes" comments="this is one of the choices for the print at option in the print dialog. It also serves as the label for an entry that allows the user to enter a time.">A_t:</property>
                                 <property name="visible">1</property>
                                 <property name="can-focus">1</property>
@@ -1012,7 +1012,7 @@
                                 <property name="draw-indicator">1</property>
                                 <property name="group">print_now_radio</property>
                                 <signal name="toggled" handler="update_print_at_entry_sensitivity" swapped="no"/>
-                                <signal name="toggled" handler="update_print_at_option" object="GtkPrintUnixDialog" swapped="yes"/>
+                                <signal name="toggled" handler="update_print_at_option" object="CtkPrintUnixDialog" swapped="yes"/>
                               </object>
                               <packing>
                                 <property name="left-attach">0</property>
@@ -1020,7 +1020,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry" id="print_at_entry">
+                              <object class="CtkEntry" id="print_at_entry">
                                 <property name="visible">1</property>
                                 <property name="sensitive">0</property>
                                 <property name="can-focus">1</property>
@@ -1038,7 +1038,7 @@
  e.g. 15∶30, 2∶35 pm, 14∶15∶20, 11∶46∶30 am, 4 pm</property>
                                   </object>
                                 </child>
-                                <signal name="changed" handler="update_print_at_option" object="GtkPrintUnixDialog" swapped="yes"/>
+                                <signal name="changed" handler="update_print_at_option" object="CtkPrintUnixDialog" swapped="yes"/>
                               </object>
                               <packing>
                                 <property name="left-attach">1</property>
@@ -1046,7 +1046,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkRadioButton" id="print_hold_radio">
+                              <object class="CtkRadioButton" id="print_hold_radio">
                                 <property name="label" translatable="yes" comments="this is one of the choices for the print at option in the print dialog. It means that the print job will not be printed until it explicitly gets &apos;released&apos;.">On _hold</property>
                                 <property name="visible">1</property>
                                 <property name="can-focus">1</property>
@@ -1056,7 +1056,7 @@
                                 <property name="use-underline">1</property>
                                 <property name="draw-indicator">1</property>
                                 <property name="group">print_now_radio</property>
-                                <signal name="toggled" handler="update_print_at_option" object="GtkPrintUnixDialog" swapped="yes"/>
+                                <signal name="toggled" handler="update_print_at_option" object="CtkPrintUnixDialog" swapped="yes"/>
                               </object>
                               <packing>
                                 <property name="left-attach">0</property>
@@ -1080,12 +1080,12 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox" id="frame_template7">
+                      <object class="CtkBox" id="frame_template7">
                         <property name="visible">1</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">6</property>
                         <child>
-                          <object class="GtkLabel" id="label_widget7">
+                          <object class="CtkLabel" id="label_widget7">
                             <property name="visible">1</property>
                             <property name="halign">start</property>
                             <property name="valign">center</property>
@@ -1102,13 +1102,13 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkGrid" id="grid7">
+                          <object class="CtkGrid" id="grid7">
                             <property name="visible">1</property>
                             <property name="margin-start">12</property>
                             <property name="row-spacing">6</property>
                             <property name="column-spacing">12</property>
                             <child>
-                              <object class="GtkLabel" id="label18">
+                              <object class="CtkLabel" id="label18">
                                 <property name="visible">1</property>
                                 <property name="halign">start</property>
                                 <property name="valign">center</property>
@@ -1122,7 +1122,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkPrinterOptionWidget" id="cover_before">
+                              <object class="CtkPrinterOptionWidget" id="cover_before">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                               </object>
@@ -1132,7 +1132,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel" id="label19">
+                              <object class="CtkLabel" id="label19">
                                 <property name="visible">1</property>
                                 <property name="halign">start</property>
                                 <property name="valign">center</property>
@@ -1146,7 +1146,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkPrinterOptionWidget" id="cover_after">
+                              <object class="CtkPrinterOptionWidget" id="cover_after">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                               </object>
@@ -1176,7 +1176,7 @@
                   </packing>
                 </child>
                 <child type="tab">
-                  <object class="GtkLabel" id="label3">
+                  <object class="CtkLabel" id="label3">
                     <property name="visible">1</property>
                     <property name="label" translatable="yes">Job</property>
                   </object>
@@ -1186,15 +1186,15 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkScrolledWindow" id="image_quality_page">
+                  <object class="CtkScrolledWindow" id="image_quality_page">
                     <property name="can-focus">1</property>
                     <property name="hscrollbar-policy">never</property>
                     <child>
-                      <object class="GtkViewport" id="viewport1">
+                      <object class="CtkViewport" id="viewport1">
                         <property name="visible">1</property>
                         <property name="shadow-type">none</property>
                         <child>
-                          <object class="GtkGrid" id="image_quality_table">
+                          <object class="CtkGrid" id="image_quality_table">
                             <property name="visible">1</property>
                             <property name="border-width">12</property>
                             <property name="row-spacing">6</property>
@@ -1209,7 +1209,7 @@
                   </packing>
                 </child>
                 <child type="tab">
-                  <object class="GtkLabel" id="label20">
+                  <object class="CtkLabel" id="label20">
                     <property name="visible">1</property>
                     <property name="label" translatable="yes" comments="This will appear as a tab label in the print dialog.">Image Quality</property>
                   </object>
@@ -1219,15 +1219,15 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkScrolledWindow" id="color_page">
+                  <object class="CtkScrolledWindow" id="color_page">
                     <property name="can-focus">1</property>
                     <property name="hscrollbar-policy">never</property>
                     <child>
-                      <object class="GtkViewport" id="viewport2">
+                      <object class="CtkViewport" id="viewport2">
                         <property name="visible">1</property>
                         <property name="shadow-type">none</property>
                         <child>
-                          <object class="GtkGrid" id="color_table">
+                          <object class="CtkGrid" id="color_table">
                             <property name="visible">1</property>
                             <property name="border-width">12</property>
                             <property name="row-spacing">6</property>
@@ -1242,7 +1242,7 @@
                   </packing>
                 </child>
                 <child type="tab">
-                  <object class="GtkLabel" id="label21">
+                  <object class="CtkLabel" id="label21">
                     <property name="visible">1</property>
                     <property name="label" translatable="yes" comments="This will appear as a tab label in the print dialog.">Color</property>
                   </object>
@@ -1252,15 +1252,15 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkScrolledWindow" id="finishing_page">
+                  <object class="CtkScrolledWindow" id="finishing_page">
                     <property name="can-focus">1</property>
                     <property name="hscrollbar-policy">never</property>
                     <child>
-                      <object class="GtkViewport" id="viewport3">
+                      <object class="CtkViewport" id="viewport3">
                         <property name="visible">1</property>
                         <property name="shadow-type">none</property>
                         <child>
-                          <object class="GtkGrid" id="finishing_table">
+                          <object class="CtkGrid" id="finishing_table">
                             <property name="visible">1</property>
                             <property name="border-width">12</property>
                             <property name="row-spacing">6</property>
@@ -1275,7 +1275,7 @@
                   </packing>
                 </child>
                 <child type="tab">
-                  <object class="GtkLabel" id="label22">
+                  <object class="CtkLabel" id="label22">
                     <property name="visible">1</property>
                     <property name="label" translatable="yes" comments="This will appear as a tab label in the print dialog. It&apos;s a typographical term, as in &quot;Binding and finishing&quot;">Finishing</property>
                   </object>
@@ -1285,15 +1285,15 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkScrolledWindow" id="advanced_page">
+                  <object class="CtkScrolledWindow" id="advanced_page">
                     <property name="can-focus">1</property>
                     <property name="hscrollbar-policy">never</property>
                     <child>
-                      <object class="GtkViewport" id="viewport4">
+                      <object class="CtkViewport" id="viewport4">
                         <property name="visible">1</property>
                         <property name="shadow-type">none</property>
                         <child>
-                          <object class="GtkBox" id="advanced_vbox">
+                          <object class="CtkBox" id="advanced_vbox">
                             <property name="visible">1</property>
                             <property name="border-width">12</property>
                             <property name="orientation">vertical</property>
@@ -1308,7 +1308,7 @@
                   </packing>
                 </child>
                 <child type="tab">
-                  <object class="GtkLabel" id="label23">
+                  <object class="CtkLabel" id="label23">
                     <property name="visible">1</property>
                     <property name="label" translatable="yes">Advanced</property>
                   </object>
@@ -1323,16 +1323,16 @@
               </packing>
             </child>
             <child>
-              <object class="GtkActionBar" id="conflicts_widget">
+              <object class="CtkActionBar" id="conflicts_widget">
                 <child>
-                  <object class="GtkImage" id="image1">
+                  <object class="CtkImage" id="image1">
                     <property name="visible">1</property>
                     <property name="icon-name">dialog-warning-symbolic</property>
                     <property name="icon-size">1</property>
                   </object>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="label24">
+                  <object class="CtkLabel" id="label24">
                     <property name="visible">1</property>
                     <property name="label" translatable="yes">Some of the settings in the dialog conflict</property>
                   </object>

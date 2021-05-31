@@ -30,23 +30,23 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_GESTURE_ROTATE         (ctk_gesture_rotate_get_type ())
-#define CTK_GESTURE_ROTATE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_GESTURE_ROTATE, GtkGestureRotate))
-#define CTK_GESTURE_ROTATE_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_GESTURE_ROTATE, GtkGestureRotateClass))
+#define CTK_GESTURE_ROTATE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_GESTURE_ROTATE, CtkGestureRotate))
+#define CTK_GESTURE_ROTATE_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_GESTURE_ROTATE, CtkGestureRotateClass))
 #define CTK_IS_GESTURE_ROTATE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_GESTURE_ROTATE))
 #define CTK_IS_GESTURE_ROTATE_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), CTK_TYPE_GESTURE_ROTATE))
-#define CTK_GESTURE_ROTATE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_GESTURE_ROTATE, GtkGestureRotateClass))
+#define CTK_GESTURE_ROTATE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_GESTURE_ROTATE, CtkGestureRotateClass))
 
-typedef struct _GtkGestureRotate GtkGestureRotate;
-typedef struct _GtkGestureRotateClass GtkGestureRotateClass;
+typedef struct _CtkGestureRotate CtkGestureRotate;
+typedef struct _CtkGestureRotateClass CtkGestureRotateClass;
 
 GDK_AVAILABLE_IN_3_14
 GType        ctk_gesture_rotate_get_type        (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_14
-GtkGesture * ctk_gesture_rotate_new             (GtkWidget        *widget);
+CtkGesture * ctk_gesture_rotate_new             (CtkWidget        *widget);
 
 GDK_AVAILABLE_IN_3_14
-gdouble      ctk_gesture_rotate_get_angle_delta (GtkGestureRotate *gesture);
+gdouble      ctk_gesture_rotate_get_angle_delta (CtkGestureRotate *gesture);
 
 G_END_DECLS
 

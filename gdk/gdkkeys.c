@@ -38,7 +38,7 @@
  * Key values are the codes which are sent whenever a key is pressed or released.
  * They appear in the #GdkEventKey.keyval field of the
  * #GdkEventKey structure, which is passed to signal handlers for the
- * #GtkWidget::key-press-event and #GtkWidget::key-release-event signals.
+ * #CtkWidget::key-press-event and #CtkWidget::key-release-event signals.
  * The complete list of key values can be found in the
  * `gdk/gdkkeysyms.h` header file.
  *

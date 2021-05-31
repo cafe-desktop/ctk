@@ -3,10 +3,10 @@
 static void
 test_window_focus (void)
 {
-  GtkWidget *window;
-  GtkWidget *box;
-  GtkWidget *entry1;
-  GtkWidget *entry2;
+  CtkWidget *window;
+  CtkWidget *box;
+  CtkWidget *entry1;
+  CtkWidget *entry2;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);

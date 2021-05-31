@@ -22,7 +22,7 @@
 
 #include <ctk/ctk.h>
 
-G_DEFINE_TYPE (GtkMenuAccessible, ctk_menu_accessible, CTK_TYPE_MENU_SHELL_ACCESSIBLE)
+G_DEFINE_TYPE (CtkMenuAccessible, ctk_menu_accessible, CTK_TYPE_MENU_SHELL_ACCESSIBLE)
 
 static void
 ctk_menu_accessible_initialize (AtkObject *obj,
@@ -39,7 +39,7 @@ static AtkObject *
 ctk_menu_accessible_get_parent (AtkObject *accessible)
 {
   AtkObject *parent;
-  GtkWidget *widget, *parent_widget;
+  CtkWidget *widget, *parent_widget;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (accessible));
   if (widget == NULL)
@@ -71,7 +71,7 @@ ctk_menu_accessible_get_parent (AtkObject *accessible)
 static gint
 ctk_menu_accessible_get_index_in_parent (AtkObject *accessible)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (accessible));
   if (widget == NULL)
@@ -84,7 +84,7 @@ ctk_menu_accessible_get_index_in_parent (AtkObject *accessible)
 }
 
 static void
-ctk_menu_accessible_class_init (GtkMenuAccessibleClass *klass)
+ctk_menu_accessible_class_init (CtkMenuAccessibleClass *klass)
 {
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
 
@@ -94,6 +94,6 @@ ctk_menu_accessible_class_init (GtkMenuAccessibleClass *klass)
 }
 
 static void
-ctk_menu_accessible_init (GtkMenuAccessible *accessible)
+ctk_menu_accessible_init (CtkMenuAccessible *accessible)
 {
 }

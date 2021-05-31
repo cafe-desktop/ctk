@@ -20,31 +20,31 @@
 		AdditionalLibraryDirectories="$(GlibEtcInstallRoot)\lib"
 	/>
 	<UserMacro
-		Name="GtkBinaryVersion"
+		Name="CtkBinaryVersion"
 		Value="3.0.0"
 	/>
 	<UserMacro
-		Name="GtkDummyPrefix"
+		Name="CtkDummyPrefix"
 		Value="/dummy"
 	/>
 	<UserMacro
-		Name="GtkPrefixDefine"
-		Value="CTK_PREFIX=\&quot;$(GtkDummyPrefix)\&quot;"
+		Name="CtkPrefixDefine"
+		Value="CTK_PREFIX=\&quot;$(CtkDummyPrefix)\&quot;"
 	/>
 	<UserMacro
 		Name="GdkDefines"
 		Value="GDK_COMPILATION;G_LOG_DOMAIN=\&quot;Gdk\&quot;"
 	/>
 	<UserMacro
-		Name="GtkIncludedImmodulesDefines"
+		Name="CtkIncludedImmodulesDefines"
 		Value="INCLUDE_IM_am_et;INCLUDE_IM_cedilla;INCLUDE_IM_cyrillic_translit;INCLUDE_IM_ime;INCLUDE_IM_inuktitut;INCLUDE_IM_ipa;INCLUDE_IM_multipress;INCLUDE_IM_thai;INCLUDE_IM_ti_er;INCLUDE_IM_ti_et;INCLUDE_IM_viqr"
 	/>
 	<UserMacro
-		Name="GtkDefines"
-		Value="CTK_COMPILATION;G_LOG_DOMAIN=\&quot;Gtk\&quot;;CTK_HOST=\&quot;i686-pc-vs$(VSVer)\&quot;;CTK_PRINT_BACKENDS=\&quot;file\&quot;;CTK_PRINT_BACKEND_ENABLE_UNSUPPORTED;$(GtkIncludedImmodulesDefines);CTK_LIBDIR=\&quot;$(GtkDummyPrefix)/lib\&quot;;CTK_DATADIR=\&quot;$(GtkDummyPrefix)/share\&quot;CTK_DATA_PREFIX=\&quot;$(GtkDummyPrefix)\&quot;;CTK_SYSCONFDIR=\&quot;$(GtkDummyPrefix)/etc\&quot;;MULTIPRESS_CONFDIR=\&quot;$(GtkDummyPrefix)/etc/ctk-$(ApiVersion)\&quot;;MULTIPRESS_LOCALEDIR=\&quot;$(GtkDummyPrefix)/share/locale\&quot;;CTK_VERSION=\&quot;$(GtkVersion)/etc\&quot;;CTK_BINARY_VERSION=\&quot;$(GtkBinaryVersion)/etc\&quot;;GDK_DISABLE_DEPRECATED;ISOLATION_AWARE_ENABLED"
+		Name="CtkDefines"
+		Value="CTK_COMPILATION;G_LOG_DOMAIN=\&quot;Ctk\&quot;;CTK_HOST=\&quot;i686-pc-vs$(VSVer)\&quot;;CTK_PRINT_BACKENDS=\&quot;file\&quot;;CTK_PRINT_BACKEND_ENABLE_UNSUPPORTED;$(CtkIncludedImmodulesDefines);CTK_LIBDIR=\&quot;$(CtkDummyPrefix)/lib\&quot;;CTK_DATADIR=\&quot;$(CtkDummyPrefix)/share\&quot;CTK_DATA_PREFIX=\&quot;$(CtkDummyPrefix)\&quot;;CTK_SYSCONFDIR=\&quot;$(CtkDummyPrefix)/etc\&quot;;MULTIPRESS_CONFDIR=\&quot;$(CtkDummyPrefix)/etc/ctk-$(ApiVersion)\&quot;;MULTIPRESS_LOCALEDIR=\&quot;$(CtkDummyPrefix)/share/locale\&quot;;CTK_VERSION=\&quot;$(CtkVersion)/etc\&quot;;CTK_BINARY_VERSION=\&quot;$(CtkBinaryVersion)/etc\&quot;;GDK_DISABLE_DEPRECATED;ISOLATION_AWARE_ENABLED"
 	/>
 	<UserMacro
-		Name="GtkGdkCommonLibs"
+		Name="CtkGdkCommonLibs"
 		Value="pangowin32-1.0.lib fribidi.lib imm32.lib"
 	/>
 	<UserMacro
@@ -53,18 +53,18 @@
 	/>
 	<UserMacro
 		Name="GdkAdditionalLibs"
-		Value="winmm.lib dwmapi.lib setupapi.lib $(GtkGdkCommonLibs)"
+		Value="winmm.lib dwmapi.lib setupapi.lib $(CtkGdkCommonLibs)"
 	/>
 	<UserMacro
-		Name="GtkAdditionalLibs"
-		Value="atk-1.0.lib winspool.lib comctl32.lib $(GtkGdkCommonLibs)"
+		Name="CtkAdditionalLibs"
+		Value="atk-1.0.lib winspool.lib comctl32.lib $(CtkGdkCommonLibs)"
 	/>
 	<UserMacro
-		Name="GtkIntrospectNMakeCmd"
+		Name="CtkIntrospectNMakeCmd"
 		Value="cd ..&#x0D;&#x0A;set VCInstallDir=$(VCInstallDir)&#x0D;&#x0A;nmake -f ctk-introspection-msvc.mak CFG=$(ConfigurationName) PREFIX=$(GlibEtcInstallRoot)"
 	/>
 	<UserMacro
-		Name="GtkIntrospectBuiltFiles"
-		Value="$(SolutionDir)\$(ConfigurationName)\$(PlatformName)\bin\Gtk-3.0.gir;$(SolutionDir)\$(ConfigurationName)\$(PlatformName)\bin\Gtk-3.0.typelib;$(SolutionDir)\$(ConfigurationName)\$(PlatformName)\bin\GdkWin32-3.0.gir;$(SolutionDir)\$(ConfigurationName)\$(PlatformName)\bin\GdkWin32-3.0.typelib;$(SolutionDir)\$(ConfigurationName)\$(PlatformName)\bin\Gdk-3.0.gir;$(SolutionDir)\$(ConfigurationName)\$(PlatformName)\bin\Gdk-3.0.typelib"
+		Name="CtkIntrospectBuiltFiles"
+		Value="$(SolutionDir)\$(ConfigurationName)\$(PlatformName)\bin\Ctk-3.0.gir;$(SolutionDir)\$(ConfigurationName)\$(PlatformName)\bin\Ctk-3.0.typelib;$(SolutionDir)\$(ConfigurationName)\$(PlatformName)\bin\GdkWin32-3.0.gir;$(SolutionDir)\$(ConfigurationName)\$(PlatformName)\bin\GdkWin32-3.0.typelib;$(SolutionDir)\$(ConfigurationName)\$(PlatformName)\bin\Gdk-3.0.gir;$(SolutionDir)\$(ConfigurationName)\$(PlatformName)\bin\Gdk-3.0.typelib"
 	/>
 </VisualStudioPropertySheet>

@@ -26,7 +26,7 @@
 #include "ctkbin.h"
 #include "ctklabel.h"
 
-struct _GtkInspectorActionEditorPrivate
+struct _CtkInspectorActionEditorPrivate
 {
   GActionGroup *group;
   gchar *prefix;
@@ -34,10 +34,10 @@ struct _GtkInspectorActionEditorPrivate
   gboolean enabled;
   const GVariantType *parameter_type;
   GVariantType *state_type;
-  GtkWidget *activate_button;
-  GtkWidget *parameter_entry;
-  GtkWidget *state_entry;
-  GtkSizeGroup *sg;
+  CtkWidget *activate_button;
+  CtkWidget *parameter_entry;
+  CtkWidget *state_entry;
+  CtkSizeGroup *sg;
 };
 
 enum
@@ -48,10 +48,10 @@ enum
   PROP_NAME
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorActionEditor, ctk_inspector_action_editor, CTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkInspectorActionEditor, ctk_inspector_action_editor, CTK_TYPE_BOX)
 
 static void
-ctk_inspector_action_editor_init (GtkInspectorActionEditor *editor)
+ctk_inspector_action_editor_init (CtkInspectorActionEditor *editor)
 {
   editor->priv = ctk_inspector_action_editor_get_instance_private (editor);
   g_object_set (editor,
@@ -61,10 +61,10 @@ ctk_inspector_action_editor_init (GtkInspectorActionEditor *editor)
                 NULL);
 }
 
-typedef void (*VariantEditorChanged) (GtkWidget *editor, gpointer data);
+typedef void (*VariantEditorChanged) (CtkWidget *editor, gpointer data);
 
 typedef struct {
-  GtkWidget *editor;
+  CtkWidget *editor;
   VariantEditorChanged callback;
   gpointer   data;
 } VariantEditorData;
@@ -77,14 +77,14 @@ variant_editor_changed_cb (GObject           *obj,
   data->callback (data->editor, data->data);
 }
 
-static GtkWidget *
+static CtkWidget *
 variant_editor_new (const GVariantType   *type,
                     VariantEditorChanged  callback,
                     gpointer              data)
 {
-  GtkWidget *editor;
-  GtkWidget *label;
-  GtkWidget *entry;
+  CtkWidget *editor;
+  CtkWidget *label;
+  CtkWidget *entry;
   VariantEditorData *d;
 
   d = g_new (VariantEditorData, 1);
@@ -121,7 +121,7 @@ variant_editor_new (const GVariantType   *type,
 }
 
 static void
-variant_editor_set_value (GtkWidget *editor,
+variant_editor_set_value (CtkWidget *editor,
                           GVariant  *value)
 {
   const GVariantType *type;
@@ -133,8 +133,8 @@ variant_editor_set_value (GtkWidget *editor,
   type = g_variant_get_type (value);
   if (g_variant_type_equal (type, G_VARIANT_TYPE_BOOLEAN))
     {
-      GtkToggleButton *tb = CTK_TOGGLE_BUTTON (editor);
-      GtkWidget *child;
+      CtkToggleButton *tb = CTK_TOGGLE_BUTTON (editor);
+      CtkWidget *child;
 
       ctk_toggle_button_set_active (tb, g_variant_get_boolean (value));
       child = ctk_bin_get_child (CTK_BIN (tb));
@@ -143,13 +143,13 @@ variant_editor_set_value (GtkWidget *editor,
     }   
   else if (g_variant_type_equal (type, G_VARIANT_TYPE_STRING))
     {
-      GtkEntry *entry = CTK_ENTRY (editor);
+      CtkEntry *entry = CTK_ENTRY (editor);
       ctk_entry_set_text (entry, g_variant_get_string (value, NULL));
     }
   else
     {
       GList *children;
-      GtkEntry *entry;
+      CtkEntry *entry;
       gchar *text;
 
       children = ctk_container_get_children (CTK_CONTAINER (editor));
@@ -165,7 +165,7 @@ variant_editor_set_value (GtkWidget *editor,
 }
 
 static GVariant *
-variant_editor_get_value (GtkWidget *editor)
+variant_editor_get_value (CtkWidget *editor)
 {
   const GVariantType *type;
   GVariant *value;
@@ -173,18 +173,18 @@ variant_editor_get_value (GtkWidget *editor)
   type = (const GVariantType *) g_object_get_data (G_OBJECT (editor), "type");
   if (g_variant_type_equal (type, G_VARIANT_TYPE_BOOLEAN))
     {
-      GtkToggleButton *tb = CTK_TOGGLE_BUTTON (editor);
+      CtkToggleButton *tb = CTK_TOGGLE_BUTTON (editor);
       value = g_variant_new_boolean (ctk_toggle_button_get_active (tb));
     }
   else if (g_variant_type_equal (type, G_VARIANT_TYPE_STRING))
     {
-      GtkEntry *entry = CTK_ENTRY (editor);
+      CtkEntry *entry = CTK_ENTRY (editor);
       value = g_variant_new_string (ctk_entry_get_text (entry));
     }
   else
     {
       GList *children;
-      GtkEntry *entry;
+      CtkEntry *entry;
       const gchar *text;
 
       children = ctk_container_get_children (CTK_CONTAINER (editor));
@@ -199,8 +199,8 @@ variant_editor_get_value (GtkWidget *editor)
 }
 
 static void
-activate_action (GtkWidget                *button,
-                 GtkInspectorActionEditor *r)
+activate_action (CtkWidget                *button,
+                 CtkInspectorActionEditor *r)
 {
   GVariant *parameter = NULL;
 
@@ -210,10 +210,10 @@ activate_action (GtkWidget                *button,
 }
 
 static void
-parameter_changed (GtkWidget *editor,
+parameter_changed (CtkWidget *editor,
                    gpointer   data)
 {
-  GtkInspectorActionEditor *r = data;
+  CtkInspectorActionEditor *r = data;
   GVariant *value;
 
   value = variant_editor_get_value (editor);
@@ -223,10 +223,10 @@ parameter_changed (GtkWidget *editor,
 }
 
 static void
-state_changed (GtkWidget *editor,
+state_changed (CtkWidget *editor,
                gpointer   data)
 {
-  GtkInspectorActionEditor *r = data;
+  CtkInspectorActionEditor *r = data;
   GVariant *value;
 
   value = variant_editor_get_value (editor);
@@ -238,7 +238,7 @@ static void
 action_enabled_changed_cb (GActionGroup             *group,
                            const gchar              *action_name,
                            gboolean                  enabled,
-                           GtkInspectorActionEditor *r)
+                           CtkInspectorActionEditor *r)
 {
   r->priv->enabled = enabled;
   if (r->priv->parameter_entry)
@@ -252,7 +252,7 @@ static void
 action_state_changed_cb (GActionGroup             *group,
                          const gchar              *action_name,
                          GVariant                 *state,
-                         GtkInspectorActionEditor *r)
+                         CtkInspectorActionEditor *r)
 {
   if (r->priv->state_entry)
     variant_editor_set_value (r->priv->state_entry, state);
@@ -261,11 +261,11 @@ action_state_changed_cb (GActionGroup             *group,
 static void
 constructed (GObject *object)
 {
-  GtkInspectorActionEditor *r = CTK_INSPECTOR_ACTION_EDITOR (object);
+  CtkInspectorActionEditor *r = CTK_INSPECTOR_ACTION_EDITOR (object);
   GVariant *state;
   gchar *fullname;
-  GtkWidget *row;
-  GtkWidget *label;
+  CtkWidget *row;
+  CtkWidget *label;
 
   r->priv->enabled = g_action_group_get_action_enabled (r->priv->group, r->priv->name);
   state = g_action_group_get_action_state (r->priv->group, r->priv->name);
@@ -319,7 +319,7 @@ constructed (GObject *object)
 static void
 finalize (GObject *object)
 {
-  GtkInspectorActionEditor *r = CTK_INSPECTOR_ACTION_EDITOR (object);
+  CtkInspectorActionEditor *r = CTK_INSPECTOR_ACTION_EDITOR (object);
 
   g_free (r->priv->prefix);
   g_free (r->priv->name);
@@ -338,7 +338,7 @@ get_property (GObject    *object,
               GValue     *value,
               GParamSpec *pspec)
 {
-  GtkInspectorActionEditor *r = CTK_INSPECTOR_ACTION_EDITOR (object);
+  CtkInspectorActionEditor *r = CTK_INSPECTOR_ACTION_EDITOR (object);
 
   switch (param_id)
     {
@@ -366,7 +366,7 @@ set_property (GObject      *object,
               const GValue *value,
               GParamSpec   *pspec)
 {
-  GtkInspectorActionEditor *r = CTK_INSPECTOR_ACTION_EDITOR (object);
+  CtkInspectorActionEditor *r = CTK_INSPECTOR_ACTION_EDITOR (object);
 
   switch (param_id)
     {
@@ -391,7 +391,7 @@ set_property (GObject      *object,
 }
 
 static void
-ctk_inspector_action_editor_class_init (GtkInspectorActionEditorClass *klass)
+ctk_inspector_action_editor_class_init (CtkInspectorActionEditorClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -413,7 +413,7 @@ ctk_inspector_action_editor_class_init (GtkInspectorActionEditorClass *klass)
                            NULL, G_PARAM_READWRITE|G_PARAM_CONSTRUCT));
 }
 
-GtkWidget *
+CtkWidget *
 ctk_inspector_action_editor_new (GActionGroup *group,
                                  const gchar  *prefix,
                                  const gchar  *name)

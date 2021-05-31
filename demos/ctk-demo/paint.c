@@ -7,17 +7,17 @@
 
 typedef struct
 {
-  GtkEventBox parent_instance;
+  CtkEventBox parent_instance;
   cairo_surface_t *surface;
   cairo_t *cr;
   GdkRGBA draw_color;
 
-  GtkGesture *stylus_gesture;
+  CtkGesture *stylus_gesture;
 } DrawingArea;
 
 typedef struct
 {
-  GtkEventBoxClass parent_class;
+  CtkEventBoxClass parent_class;
 } DrawingAreaClass;
 
 G_DEFINE_TYPE (DrawingArea, drawing_area, CTK_TYPE_EVENT_BOX)
@@ -54,8 +54,8 @@ drawing_area_ensure_surface (DrawingArea *area,
 }
 
 static void
-drawing_area_size_allocate (GtkWidget     *widget,
-                            GtkAllocation *allocation)
+drawing_area_size_allocate (CtkWidget     *widget,
+                            CtkAllocation *allocation)
 {
   DrawingArea *area = (DrawingArea *) widget;
 
@@ -65,9 +65,9 @@ drawing_area_size_allocate (GtkWidget     *widget,
 }
 
 static void
-drawing_area_map (GtkWidget *widget)
+drawing_area_map (CtkWidget *widget)
 {
-  GtkAllocation allocation;
+  CtkAllocation allocation;
 
   CTK_WIDGET_CLASS (drawing_area_parent_class)->map (widget);
 
@@ -79,7 +79,7 @@ drawing_area_map (GtkWidget *widget)
 }
 
 static void
-drawing_area_unmap (GtkWidget *widget)
+drawing_area_unmap (CtkWidget *widget)
 {
   DrawingArea *area = (DrawingArea *) widget;
 
@@ -90,11 +90,11 @@ drawing_area_unmap (GtkWidget *widget)
 }
 
 static gboolean
-drawing_area_draw (GtkWidget *widget,
+drawing_area_draw (CtkWidget *widget,
 		   cairo_t   *cr)
 {
   DrawingArea *area = (DrawingArea *) widget;
-  GtkAllocation allocation;
+  CtkAllocation allocation;
 
   ctk_widget_get_allocation (widget, &allocation);
 
@@ -114,7 +114,7 @@ drawing_area_draw (GtkWidget *widget,
 static void
 drawing_area_class_init (DrawingAreaClass *klass)
 {
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   widget_class->size_allocate = drawing_area_size_allocate;
   widget_class->draw = drawing_area_draw;
@@ -152,7 +152,7 @@ drawing_area_apply_stroke (DrawingArea   *area,
 }
 
 static void
-stylus_gesture_down (GtkGestureStylus *gesture,
+stylus_gesture_down (CtkGestureStylus *gesture,
                      gdouble           x,
                      gdouble           y,
                      DrawingArea      *area)
@@ -161,7 +161,7 @@ stylus_gesture_down (GtkGestureStylus *gesture,
 }
 
 static void
-stylus_gesture_motion (GtkGestureStylus *gesture,
+stylus_gesture_motion (CtkGestureStylus *gesture,
                        gdouble           x,
                        gdouble           y,
                        DrawingArea      *area)
@@ -193,7 +193,7 @@ drawing_area_init (DrawingArea *area)
   area->draw_color = draw_rgba;
 }
 
-GtkWidget *
+CtkWidget *
 drawing_area_new (void)
 {
   return g_object_new (drawing_area_get_type (), NULL);
@@ -207,7 +207,7 @@ drawing_area_set_color (DrawingArea *area,
 }
 
 static void
-color_button_color_set (GtkColorButton *button,
+color_button_color_set (CtkColorButton *button,
                         DrawingArea    *draw_area)
 {
   GdkRGBA color;
@@ -216,14 +216,14 @@ color_button_color_set (GtkColorButton *button,
   drawing_area_set_color (draw_area, &color);
 }
 
-GtkWidget *
-do_paint (GtkWidget *toplevel)
+CtkWidget *
+do_paint (CtkWidget *toplevel)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkWidget *draw_area, *headerbar, *colorbutton;
+      CtkWidget *draw_area, *headerbar, *colorbutton;
       const GdkRGBA draw_rgba = { 0, 0, 0, 1 };
 
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);

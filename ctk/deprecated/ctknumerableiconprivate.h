@@ -1,5 +1,5 @@
 /*
- * ctknumerableiconprivate.h: private methods for GtkNumerableIcon
+ * ctknumerableiconprivate.h: private methods for CtkNumerableIcon
  *
  * Copyright (C) 2010 Red Hat, Inc.
  *
@@ -26,7 +26,7 @@
 
 G_BEGIN_DECLS
 
-void _ctk_numerable_icon_set_background_icon_size (GtkNumerableIcon *self,
+void _ctk_numerable_icon_set_background_icon_size (CtkNumerableIcon *self,
                                                    gint icon_size);
 
 G_END_DECLS

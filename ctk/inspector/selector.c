@@ -32,38 +32,38 @@ enum
   COLUMN_SELECTOR
 };
 
-struct _GtkInspectorSelectorPrivate
+struct _CtkInspectorSelectorPrivate
 {
-  GtkTreeStore *model;
-  GtkTreeView *tree;
+  CtkTreeStore *model;
+  CtkTreeView *tree;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorSelector, ctk_inspector_selector, CTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkInspectorSelector, ctk_inspector_selector, CTK_TYPE_BOX)
 
 static void
-ctk_inspector_selector_init (GtkInspectorSelector *oh)
+ctk_inspector_selector_init (CtkInspectorSelector *oh)
 {
   oh->priv = ctk_inspector_selector_get_instance_private (oh);
   ctk_widget_init_template (CTK_WIDGET (oh));
 }
 
 static void
-ctk_inspector_selector_class_init (GtkInspectorSelectorClass *klass)
+ctk_inspector_selector_class_init (CtkInspectorSelectorClass *klass)
 {
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/selector.ui");
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorSelector, model);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorSelector, tree);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorSelector, model);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorSelector, tree);
 }
 
 void
-ctk_inspector_selector_set_object (GtkInspectorSelector *oh,
+ctk_inspector_selector_set_object (CtkInspectorSelector *oh,
                                    GObject              *object)
 {
-  GtkTreeIter iter, parent;
+  CtkTreeIter iter, parent;
   gint i;
-  GtkWidget *widget;
+  CtkWidget *widget;
   gchar *path, **words;
 
   ctk_tree_store_clear (oh->priv->model);

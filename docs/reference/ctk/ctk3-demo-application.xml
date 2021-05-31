@@ -24,7 +24,7 @@
 
 <refnamediv>
   <refname>ctk3-demo-application</refname>
-  <refpurpose>Demonstrate GtkApplication</refpurpose>
+  <refpurpose>Demonstrate CtkApplication</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

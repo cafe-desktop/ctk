@@ -25,18 +25,18 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CSS_IMAGE_SURFACE           (_ctk_css_image_surface_get_type ())
-#define CTK_CSS_IMAGE_SURFACE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_IMAGE_SURFACE, GtkCssImageSurface))
-#define CTK_CSS_IMAGE_SURFACE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_IMAGE_SURFACE, GtkCssImageSurfaceClass))
+#define CTK_CSS_IMAGE_SURFACE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_IMAGE_SURFACE, CtkCssImageSurface))
+#define CTK_CSS_IMAGE_SURFACE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_IMAGE_SURFACE, CtkCssImageSurfaceClass))
 #define CTK_IS_CSS_IMAGE_SURFACE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_IMAGE_SURFACE))
 #define CTK_IS_CSS_IMAGE_SURFACE_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_IMAGE_SURFACE))
-#define CTK_CSS_IMAGE_SURFACE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_IMAGE_SURFACE, GtkCssImageSurfaceClass))
+#define CTK_CSS_IMAGE_SURFACE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_IMAGE_SURFACE, CtkCssImageSurfaceClass))
 
-typedef struct _GtkCssImageSurface           GtkCssImageSurface;
-typedef struct _GtkCssImageSurfaceClass      GtkCssImageSurfaceClass;
+typedef struct _CtkCssImageSurface           CtkCssImageSurface;
+typedef struct _CtkCssImageSurfaceClass      CtkCssImageSurfaceClass;
 
-struct _GtkCssImageSurface
+struct _CtkCssImageSurface
 {
-  GtkCssImage parent;
+  CtkCssImage parent;
 
   cairo_surface_t *surface;             /* the surface we render - guaranteed to be an image surface */
   cairo_surface_t *cache;               /* the scaled surface - to avoid scaling every time we need to draw */
@@ -44,15 +44,15 @@ struct _GtkCssImageSurface
   double height;                        /* original cache height */
 };
 
-struct _GtkCssImageSurfaceClass
+struct _CtkCssImageSurfaceClass
 {
-  GtkCssImageClass parent_class;
+  CtkCssImageClass parent_class;
 };
 
 GType          _ctk_css_image_surface_get_type             (void) G_GNUC_CONST;
 
-GtkCssImage *  _ctk_css_image_surface_new                  (cairo_surface_t *surface);
-GtkCssImage *  _ctk_css_image_surface_new_for_pixbuf       (GdkPixbuf       *pixbuf);
+CtkCssImage *  _ctk_css_image_surface_new                  (cairo_surface_t *surface);
+CtkCssImage *  _ctk_css_image_surface_new_for_pixbuf       (GdkPixbuf       *pixbuf);
 
 G_END_DECLS
 

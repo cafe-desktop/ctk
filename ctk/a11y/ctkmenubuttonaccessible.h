@@ -27,26 +27,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_MENU_BUTTON_ACCESSIBLE               (ctk_menu_button_accessible_get_type ())
-#define CTK_MENU_BUTTON_ACCESSIBLE(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_MENU_BUTTON_ACCESSIBLE, GtkMenuButtonAccessible))
-#define CTK_MENU_BUTTON_ACCESSIBLE_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_MENU_BUTTON_ACCESSIBLE, GtkMenuButtonAccessibleClass))
+#define CTK_MENU_BUTTON_ACCESSIBLE(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_MENU_BUTTON_ACCESSIBLE, CtkMenuButtonAccessible))
+#define CTK_MENU_BUTTON_ACCESSIBLE_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_MENU_BUTTON_ACCESSIBLE, CtkMenuButtonAccessibleClass))
 #define CTK_IS_MENU_BUTTON_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_MENU_BUTTON_ACCESSIBLE))
 #define CTK_IS_MENU_BUTTON_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_MENU_BUTTON_ACCESSIBLE))
-#define CTK_MENU_BUTTON_ACCESSIBLE_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_MENU_BUTTON_ACCESSIBLE, GtkMenuButtonAccessibleClass))
+#define CTK_MENU_BUTTON_ACCESSIBLE_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_MENU_BUTTON_ACCESSIBLE, CtkMenuButtonAccessibleClass))
 
-typedef struct _GtkMenuButtonAccessible        GtkMenuButtonAccessible;
-typedef struct _GtkMenuButtonAccessibleClass   GtkMenuButtonAccessibleClass;
-typedef struct _GtkMenuButtonAccessiblePrivate GtkMenuButtonAccessiblePrivate;
+typedef struct _CtkMenuButtonAccessible        CtkMenuButtonAccessible;
+typedef struct _CtkMenuButtonAccessibleClass   CtkMenuButtonAccessibleClass;
+typedef struct _CtkMenuButtonAccessiblePrivate CtkMenuButtonAccessiblePrivate;
 
-struct _GtkMenuButtonAccessible
+struct _CtkMenuButtonAccessible
 {
-  GtkToggleButtonAccessible parent;
+  CtkToggleButtonAccessible parent;
 
-  GtkMenuButtonAccessiblePrivate *priv;
+  CtkMenuButtonAccessiblePrivate *priv;
 };
 
-struct _GtkMenuButtonAccessibleClass
+struct _CtkMenuButtonAccessibleClass
 {
-  GtkToggleButtonAccessibleClass parent_class;
+  CtkToggleButtonAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

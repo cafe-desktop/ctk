@@ -1,58 +1,58 @@
 #include <ctk/ctk.h>
 
-GtkWidget*
+CtkWidget*
 create_flicker (void)
 {
-  GtkWidget *window1;
-  GtkWidget *hpaned1;
-  GtkWidget *vpaned2;
-  GtkWidget *hbox2;
-  GtkAdjustment *spinbutton7_adj;
-  GtkWidget *spinbutton7;
-  GtkAdjustment *spinbutton8_adj;
-  GtkWidget *spinbutton8;
-  GtkWidget *vbox1;
-  GtkAdjustment *spinbutton9_adj;
-  GtkWidget *spinbutton9;
-  GtkAdjustment *spinbutton10_adj;
-  GtkWidget *spinbutton10;
-  GtkAdjustment *spinbutton11_adj;
-  GtkWidget *spinbutton11;
-  GtkAdjustment *spinbutton12_adj;
-  GtkWidget *spinbutton12;
-  GtkAdjustment *spinbutton13_adj;
-  GtkWidget *spinbutton13;
-  GtkAdjustment *spinbutton14_adj;
-  GtkWidget *spinbutton14;
-  GtkAdjustment *spinbutton15_adj;
-  GtkWidget *spinbutton15;
-  GtkAdjustment *spinbutton16_adj;
-  GtkWidget *spinbutton16;
-  GtkWidget *vpaned1;
-  GtkWidget *hbox1;
-  GtkAdjustment *spinbutton17_adj;
-  GtkWidget *spinbutton17;
-  GtkAdjustment *spinbutton18_adj;
-  GtkWidget *spinbutton18;
-  GtkAdjustment *spinbutton19_adj;
-  GtkWidget *spinbutton19;
-  GtkWidget *vbox2;
-  GtkAdjustment *spinbutton20_adj;
-  GtkWidget *spinbutton20;
-  GtkAdjustment *spinbutton21_adj;
-  GtkWidget *spinbutton21;
-  GtkAdjustment *spinbutton22_adj;
-  GtkWidget *spinbutton22;
-  GtkAdjustment *spinbutton23_adj;
-  GtkWidget *spinbutton23;
-  GtkAdjustment *spinbutton24_adj;
-  GtkWidget *spinbutton24;
-  GtkAdjustment *spinbutton25_adj;
-  GtkWidget *spinbutton25;
-  GtkAdjustment *spinbutton26_adj;
-  GtkWidget *spinbutton26;
-  GtkAdjustment *spinbutton27_adj;
-  GtkWidget *spinbutton27;
+  CtkWidget *window1;
+  CtkWidget *hpaned1;
+  CtkWidget *vpaned2;
+  CtkWidget *hbox2;
+  CtkAdjustment *spinbutton7_adj;
+  CtkWidget *spinbutton7;
+  CtkAdjustment *spinbutton8_adj;
+  CtkWidget *spinbutton8;
+  CtkWidget *vbox1;
+  CtkAdjustment *spinbutton9_adj;
+  CtkWidget *spinbutton9;
+  CtkAdjustment *spinbutton10_adj;
+  CtkWidget *spinbutton10;
+  CtkAdjustment *spinbutton11_adj;
+  CtkWidget *spinbutton11;
+  CtkAdjustment *spinbutton12_adj;
+  CtkWidget *spinbutton12;
+  CtkAdjustment *spinbutton13_adj;
+  CtkWidget *spinbutton13;
+  CtkAdjustment *spinbutton14_adj;
+  CtkWidget *spinbutton14;
+  CtkAdjustment *spinbutton15_adj;
+  CtkWidget *spinbutton15;
+  CtkAdjustment *spinbutton16_adj;
+  CtkWidget *spinbutton16;
+  CtkWidget *vpaned1;
+  CtkWidget *hbox1;
+  CtkAdjustment *spinbutton17_adj;
+  CtkWidget *spinbutton17;
+  CtkAdjustment *spinbutton18_adj;
+  CtkWidget *spinbutton18;
+  CtkAdjustment *spinbutton19_adj;
+  CtkWidget *spinbutton19;
+  CtkWidget *vbox2;
+  CtkAdjustment *spinbutton20_adj;
+  CtkWidget *spinbutton20;
+  CtkAdjustment *spinbutton21_adj;
+  CtkWidget *spinbutton21;
+  CtkAdjustment *spinbutton22_adj;
+  CtkWidget *spinbutton22;
+  CtkAdjustment *spinbutton23_adj;
+  CtkWidget *spinbutton23;
+  CtkAdjustment *spinbutton24_adj;
+  CtkWidget *spinbutton24;
+  CtkAdjustment *spinbutton25_adj;
+  CtkWidget *spinbutton25;
+  CtkAdjustment *spinbutton26_adj;
+  CtkWidget *spinbutton26;
+  CtkAdjustment *spinbutton27_adj;
+  CtkWidget *spinbutton27;
 
   window1 = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_window_set_default_size (CTK_WINDOW (window1), 500, 400);
@@ -202,7 +202,7 @@ create_flicker (void)
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window1;
+  CtkWidget *window1;
 
   ctk_init (&argc, &argv);
 

@@ -31,19 +31,19 @@ typedef enum
 {
   CTK_TOP_BOTTOM,
   CTK_LEFT_RIGHT
-} GtkSubmenuPlacement;
+} CtkSubmenuPlacement;
 
-struct _GtkMenuShellPrivate
+struct _CtkMenuShellPrivate
 {
   GList *children;
 
-  GtkWidget *active_menu_item; /* This is not an "active" menu item
+  CtkWidget *active_menu_item; /* This is not an "active" menu item
                                 * (there is no such thing) but rather,
                                 * the selected menu item in that MenuShell,
                                 * if there is one.
                                 */
-  GtkWidget *parent_menu_shell;
-  GtkMenuTracker *tracker;    // if bound to a GMenuModel
+  CtkWidget *parent_menu_shell;
+  CtkMenuTracker *tracker;    // if bound to a GMenuModel
 
   guint button;
   guint32 activate_time;
@@ -66,30 +66,30 @@ struct _GtkMenuShellPrivate
                                          * signal is coming soon (when checked
                                          * from inside of a "hide" handler).
                                          */
-  GtkMnemonicHash *mnemonic_hash;
-  GtkKeyHash *key_hash;
+  CtkMnemonicHash *mnemonic_hash;
+  CtkKeyHash *key_hash;
 
   GdkDevice *grab_pointer;
 };
 
-void        _ctk_menu_shell_select_last      (GtkMenuShell *menu_shell,
+void        _ctk_menu_shell_select_last      (CtkMenuShell *menu_shell,
                                               gboolean      search_sensitive);
-gint        _ctk_menu_shell_get_popup_delay  (GtkMenuShell *menu_shell);
-void        _ctk_menu_shell_set_grab_device  (GtkMenuShell *menu_shell,
+gint        _ctk_menu_shell_get_popup_delay  (CtkMenuShell *menu_shell);
+void        _ctk_menu_shell_set_grab_device  (CtkMenuShell *menu_shell,
                                               GdkDevice    *device);
-GdkDevice *_ctk_menu_shell_get_grab_device   (GtkMenuShell *menu_shell);
+GdkDevice *_ctk_menu_shell_get_grab_device   (CtkMenuShell *menu_shell);
 
-void       _ctk_menu_shell_add_mnemonic      (GtkMenuShell *menu_shell,
+void       _ctk_menu_shell_add_mnemonic      (CtkMenuShell *menu_shell,
                                               guint         keyval,
-                                              GtkWidget    *target);
-void       _ctk_menu_shell_remove_mnemonic   (GtkMenuShell *menu_shell,
+                                              CtkWidget    *target);
+void       _ctk_menu_shell_remove_mnemonic   (CtkMenuShell *menu_shell,
                                               guint         keyval,
-                                              GtkWidget    *target);
+                                              CtkWidget    *target);
 
-void       _ctk_menu_shell_update_mnemonics  (GtkMenuShell *menu_shell);
-void       _ctk_menu_shell_set_keyboard_mode (GtkMenuShell *menu_shell,
+void       _ctk_menu_shell_update_mnemonics  (CtkMenuShell *menu_shell);
+void       _ctk_menu_shell_set_keyboard_mode (CtkMenuShell *menu_shell,
                                               gboolean      keyboard_mode);
-gboolean   _ctk_menu_shell_get_keyboard_mode (GtkMenuShell *menu_shell);
+gboolean   _ctk_menu_shell_get_keyboard_mode (CtkMenuShell *menu_shell);
 
 
 G_END_DECLS

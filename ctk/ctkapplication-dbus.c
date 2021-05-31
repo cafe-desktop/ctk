@@ -28,7 +28,7 @@
 
 #include "gdk/gdk-private.h"
 
-G_DEFINE_TYPE (GtkApplicationImplDBus, ctk_application_impl_dbus, CTK_TYPE_APPLICATION_IMPL)
+G_DEFINE_TYPE (CtkApplicationImplDBus, ctk_application_impl_dbus, CTK_TYPE_APPLICATION_IMPL)
 
 #define GNOME_DBUS_NAME             "org.gnome.SessionManager"
 #define GNOME_DBUS_OBJECT_PATH      "/org/gnome/SessionManager"
@@ -43,7 +43,7 @@ G_DEFINE_TYPE (GtkApplicationImplDBus, ctk_application_impl_dbus, CTK_TYPE_APPLI
 #define GNOME_SCREENSAVER_DBUS_INTERFACE        "org.gnome.ScreenSaver"
 
 static void
-unregister_client (GtkApplicationImplDBus *dbus)
+unregister_client (CtkApplicationImplDBus *dbus)
 {
   GError *error = NULL;
 
@@ -70,7 +70,7 @@ unregister_client (GtkApplicationImplDBus *dbus)
 }
 
 static void
-send_quit_response (GtkApplicationImplDBus *dbus,
+send_quit_response (CtkApplicationImplDBus *dbus,
                     gboolean                will_quit,
                     const gchar            *reason)
 {
@@ -91,7 +91,7 @@ client_proxy_signal (GDBusProxy  *proxy,
                      GVariant    *parameters,
                      gpointer     user_data)
 {
-  GtkApplicationImplDBus *dbus = user_data;
+  CtkApplicationImplDBus *dbus = user_data;
 
   if (g_str_equal (signal_name, "QueryEndSession"))
     {
@@ -160,7 +160,7 @@ screensaver_signal_session (GDBusProxy     *proxy,
                             const char     *sender_name,
                             const char     *signal_name,
                             GVariant       *parameters,
-                            GtkApplication *application)
+                            CtkApplication *application)
 {
   gboolean active;
 
@@ -187,8 +187,8 @@ screensaver_signal_portal (GDBusConnection *connection,
                            GVariant         *parameters,
                            gpointer          data)
 {
-  GtkApplicationImplDBus *dbus = (GtkApplicationImplDBus *)data;
-  GtkApplication *application = data;
+  CtkApplicationImplDBus *dbus = (CtkApplicationImplDBus *)data;
+  CtkApplication *application = data;
   gboolean active;
   GVariant *state;
   guint32 session_state = UNKNOWN;
@@ -248,10 +248,10 @@ create_monitor_cb (GObject      *source,
 }
 
 static void
-ctk_application_impl_dbus_startup (GtkApplicationImpl *impl,
+ctk_application_impl_dbus_startup (CtkApplicationImpl *impl,
                                    gboolean            register_session)
 {
-  GtkApplicationImplDBus *dbus = (GtkApplicationImplDBus *) impl;
+  CtkApplicationImplDBus *dbus = (CtkApplicationImplDBus *) impl;
   GError *error = NULL;
   GVariant *res;
   gboolean same_bus;
@@ -508,19 +508,19 @@ end:;
 }
 
 static void
-ctk_application_impl_dbus_shutdown (GtkApplicationImpl *impl)
+ctk_application_impl_dbus_shutdown (CtkApplicationImpl *impl)
 {
 }
 
 GQuark ctk_application_impl_dbus_export_id_quark (void);
 
-G_DEFINE_QUARK (GtkApplicationImplDBus export id, ctk_application_impl_dbus_export_id)
+G_DEFINE_QUARK (CtkApplicationImplDBus export id, ctk_application_impl_dbus_export_id)
 
 static void
-ctk_application_impl_dbus_window_added (GtkApplicationImpl *impl,
-                                        GtkWindow          *window)
+ctk_application_impl_dbus_window_added (CtkApplicationImpl *impl,
+                                        CtkWindow          *window)
 {
-  GtkApplicationImplDBus *dbus = (GtkApplicationImplDBus *) impl;
+  CtkApplicationImplDBus *dbus = (CtkApplicationImplDBus *) impl;
   GActionGroup *actions;
   gchar *path;
   guint id;
@@ -539,10 +539,10 @@ ctk_application_impl_dbus_window_added (GtkApplicationImpl *impl,
 }
 
 static void
-ctk_application_impl_dbus_window_removed (GtkApplicationImpl *impl,
-                                          GtkWindow          *window)
+ctk_application_impl_dbus_window_removed (CtkApplicationImpl *impl,
+                                          CtkWindow          *window)
 {
-  GtkApplicationImplDBus *dbus = (GtkApplicationImplDBus *) impl;
+  CtkApplicationImplDBus *dbus = (CtkApplicationImplDBus *) impl;
   guint id;
 
   id = GPOINTER_TO_UINT (g_object_get_qdata (G_OBJECT (window), ctk_application_impl_dbus_export_id_quark ()));
@@ -554,13 +554,13 @@ ctk_application_impl_dbus_window_removed (GtkApplicationImpl *impl,
 }
 
 static void
-ctk_application_impl_dbus_active_window_changed (GtkApplicationImpl *impl,
-                                                 GtkWindow          *window)
+ctk_application_impl_dbus_active_window_changed (CtkApplicationImpl *impl,
+                                                 CtkWindow          *window)
 {
 }
 
 static void
-ctk_application_impl_dbus_publish_menu (GtkApplicationImplDBus  *dbus,
+ctk_application_impl_dbus_publish_menu (CtkApplicationImplDBus  *dbus,
                                         const gchar             *type,
                                         GMenuModel              *model,
                                         guint                   *id,
@@ -598,34 +598,34 @@ ctk_application_impl_dbus_publish_menu (GtkApplicationImplDBus  *dbus,
 }
 
 static void
-ctk_application_impl_dbus_set_app_menu (GtkApplicationImpl *impl,
+ctk_application_impl_dbus_set_app_menu (CtkApplicationImpl *impl,
                                         GMenuModel         *app_menu)
 {
-  GtkApplicationImplDBus *dbus = (GtkApplicationImplDBus *) impl;
+  CtkApplicationImplDBus *dbus = (CtkApplicationImplDBus *) impl;
 
   ctk_application_impl_dbus_publish_menu (dbus, "appmenu", app_menu, &dbus->app_menu_id, &dbus->app_menu_path);
 }
 
 static void
-ctk_application_impl_dbus_set_menubar (GtkApplicationImpl *impl,
+ctk_application_impl_dbus_set_menubar (CtkApplicationImpl *impl,
                                        GMenuModel         *menubar)
 {
-  GtkApplicationImplDBus *dbus = (GtkApplicationImplDBus *) impl;
+  CtkApplicationImplDBus *dbus = (CtkApplicationImplDBus *) impl;
 
   ctk_application_impl_dbus_publish_menu (dbus, "menubar", menubar, &dbus->menubar_id, &dbus->menubar_path);
 }
 
 static GVariant *
-ctk_application_impl_dbus_real_get_window_system_id (GtkApplicationImplDBus *dbus,
-                                                     GtkWindow              *window)
+ctk_application_impl_dbus_real_get_window_system_id (CtkApplicationImplDBus *dbus,
+                                                     CtkWindow              *window)
 {
   return g_variant_new_uint32 (0);
 }
 
 /* returns floating */
 static GVariant *
-ctk_application_impl_dbus_get_window_system_id (GtkApplicationImplDBus *dbus,
-                                                GtkWindow              *window)
+ctk_application_impl_dbus_get_window_system_id (CtkApplicationImplDBus *dbus,
+                                                CtkWindow              *window)
 {
   return CTK_APPLICATION_IMPL_DBUS_GET_CLASS (dbus)->get_window_system_id (dbus, window);
 }
@@ -647,12 +647,12 @@ inhibit_handle_free (gpointer data)
 }
 
 static guint
-ctk_application_impl_dbus_inhibit (GtkApplicationImpl         *impl,
-                                   GtkWindow                  *window,
-                                   GtkApplicationInhibitFlags  flags,
+ctk_application_impl_dbus_inhibit (CtkApplicationImpl         *impl,
+                                   CtkWindow                  *window,
+                                   CtkApplicationInhibitFlags  flags,
                                    const gchar                *reason)
 {
-  GtkApplicationImplDBus *dbus = (GtkApplicationImplDBus *) impl;
+  CtkApplicationImplDBus *dbus = (CtkApplicationImplDBus *) impl;
   GVariant *res;
   GError *error = NULL;
   guint cookie;
@@ -739,10 +739,10 @@ ctk_application_impl_dbus_inhibit (GtkApplicationImpl         *impl,
 }
 
 static void
-ctk_application_impl_dbus_uninhibit (GtkApplicationImpl *impl,
+ctk_application_impl_dbus_uninhibit (CtkApplicationImpl *impl,
                                      guint               cookie)
 {
-  GtkApplicationImplDBus *dbus = (GtkApplicationImplDBus *) impl;
+  CtkApplicationImplDBus *dbus = (CtkApplicationImplDBus *) impl;
 
   if (dbus->sm_proxy)
     {
@@ -781,10 +781,10 @@ ctk_application_impl_dbus_uninhibit (GtkApplicationImpl *impl,
 }
 
 static gboolean
-ctk_application_impl_dbus_is_inhibited (GtkApplicationImpl         *impl,
-                                        GtkApplicationInhibitFlags  flags)
+ctk_application_impl_dbus_is_inhibited (CtkApplicationImpl         *impl,
+                                        CtkApplicationInhibitFlags  flags)
 {
-  GtkApplicationImplDBus *dbus = (GtkApplicationImplDBus *) impl;
+  CtkApplicationImplDBus *dbus = (CtkApplicationImplDBus *) impl;
   GVariant *res;
   GError *error = NULL;
   gboolean inhibited;
@@ -820,7 +820,7 @@ ctk_application_impl_dbus_is_inhibited (GtkApplicationImpl         *impl,
 }
 
 static gboolean
-ctk_application_impl_dbus_prefers_app_menu (GtkApplicationImpl *impl)
+ctk_application_impl_dbus_prefers_app_menu (CtkApplicationImpl *impl)
 {
   static gboolean decided;
   static gboolean result;
@@ -830,7 +830,7 @@ ctk_application_impl_dbus_prefers_app_menu (GtkApplicationImpl *impl)
    */
   if (!decided)
     {
-      GtkSettings *ctk_settings;
+      CtkSettings *ctk_settings;
       gboolean show_app_menu;
       gboolean show_menubar;
 
@@ -852,14 +852,14 @@ ctk_application_impl_dbus_prefers_app_menu (GtkApplicationImpl *impl)
 }
 
 static void
-ctk_application_impl_dbus_init (GtkApplicationImplDBus *dbus)
+ctk_application_impl_dbus_init (CtkApplicationImplDBus *dbus)
 {
 }
 
 static void
 ctk_application_impl_dbus_finalize (GObject *object)
 {
-  GtkApplicationImplDBus *dbus = (GtkApplicationImplDBus *) object;
+  CtkApplicationImplDBus *dbus = (CtkApplicationImplDBus *) object;
 
   if (dbus->session_id)
     {
@@ -888,9 +888,9 @@ ctk_application_impl_dbus_finalize (GObject *object)
 }
 
 static void
-ctk_application_impl_dbus_class_init (GtkApplicationImplDBusClass *class)
+ctk_application_impl_dbus_class_init (CtkApplicationImplDBusClass *class)
 {
-  GtkApplicationImplClass *impl_class = CTK_APPLICATION_IMPL_CLASS (class);
+  CtkApplicationImplClass *impl_class = CTK_APPLICATION_IMPL_CLASS (class);
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
 
   class->get_window_system_id = ctk_application_impl_dbus_real_get_window_system_id;
@@ -911,8 +911,8 @@ ctk_application_impl_dbus_class_init (GtkApplicationImplDBusClass *class)
 }
 
 gchar *
-ctk_application_impl_dbus_get_window_path (GtkApplicationImplDBus *dbus,
-                                           GtkWindow *window)
+ctk_application_impl_dbus_get_window_path (CtkApplicationImplDBus *dbus,
+                                           CtkWindow *window)
 {
   if (dbus->session && CTK_IS_APPLICATION_WINDOW (window))
     return g_strdup_printf ("%s/window/%d",

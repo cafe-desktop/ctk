@@ -33,38 +33,38 @@
 
 /**
  * SECTION:ctkstacksidebar
- * @Title: GtkStackSidebar
+ * @Title: CtkStackSidebar
  * @Short_description: An automatic sidebar widget
  *
- * A GtkStackSidebar enables you to quickly and easily provide a
+ * A CtkStackSidebar enables you to quickly and easily provide a
  * consistent "sidebar" object for your user interface.
  *
- * In order to use a GtkStackSidebar, you simply use a GtkStack to
+ * In order to use a CtkStackSidebar, you simply use a CtkStack to
  * organize your UI flow, and add the sidebar to your sidebar area. You
- * can use ctk_stack_sidebar_set_stack() to connect the #GtkStackSidebar
- * to the #GtkStack.
+ * can use ctk_stack_sidebar_set_stack() to connect the #CtkStackSidebar
+ * to the #CtkStack.
  *
  * # CSS nodes
  *
- * GtkStackSidebar has a single CSS node with name stacksidebar and
+ * CtkStackSidebar has a single CSS node with name stacksidebar and
  * style class .sidebar.
  *
- * When circumstances require it, GtkStackSidebar adds the
+ * When circumstances require it, CtkStackSidebar adds the
  * .needs-attention style class to the widgets representing the stack
  * pages.
  *
  * Since: 3.16
  */
 
-struct _GtkStackSidebarPrivate
+struct _CtkStackSidebarPrivate
 {
-  GtkListBox *list;
-  GtkStack *stack;
+  CtkListBox *list;
+  CtkStack *stack;
   GHashTable *rows;
   gboolean in_child_changed;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkStackSidebar, ctk_stack_sidebar, CTK_TYPE_BIN)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkStackSidebar, ctk_stack_sidebar, CTK_TYPE_BIN)
 
 enum
 {
@@ -98,7 +98,7 @@ ctk_stack_sidebar_get_property (GObject    *object,
                                 GValue     *value,
                                 GParamSpec *pspec)
 {
-  GtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (CTK_STACK_SIDEBAR (object));
+  CtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (CTK_STACK_SIDEBAR (object));
 
   switch (prop_id)
     {
@@ -113,11 +113,11 @@ ctk_stack_sidebar_get_property (GObject    *object,
 }
 
 static void
-update_header (GtkListBoxRow *row,
-               GtkListBoxRow *before,
+update_header (CtkListBoxRow *row,
+               CtkListBoxRow *before,
                gpointer       userdata)
 {
-  GtkWidget *ret = NULL;
+  CtkWidget *ret = NULL;
 
   if (before && !ctk_list_box_row_get_header (row))
     {
@@ -127,14 +127,14 @@ update_header (GtkListBoxRow *row,
 }
 
 static gint
-sort_list (GtkListBoxRow *row1,
-           GtkListBoxRow *row2,
+sort_list (CtkListBoxRow *row1,
+           CtkListBoxRow *row2,
            gpointer       userdata)
 {
-  GtkStackSidebar *sidebar = CTK_STACK_SIDEBAR (userdata);
-  GtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
-  GtkWidget *item;
-  GtkWidget *widget;
+  CtkStackSidebar *sidebar = CTK_STACK_SIDEBAR (userdata);
+  CtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
+  CtkWidget *item;
+  CtkWidget *widget;
   gint left = 0; gint right = 0;
 
 
@@ -166,14 +166,14 @@ sort_list (GtkListBoxRow *row1,
 }
 
 static void
-ctk_stack_sidebar_row_selected (GtkListBox    *box,
-                                GtkListBoxRow *row,
+ctk_stack_sidebar_row_selected (CtkListBox    *box,
+                                CtkListBoxRow *row,
                                 gpointer       userdata)
 {
-  GtkStackSidebar *sidebar = CTK_STACK_SIDEBAR (userdata);
-  GtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
-  GtkWidget *item;
-  GtkWidget *widget;
+  CtkStackSidebar *sidebar = CTK_STACK_SIDEBAR (userdata);
+  CtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
+  CtkWidget *item;
+  CtkWidget *widget;
 
   if (priv->in_child_changed)
     return;
@@ -187,11 +187,11 @@ ctk_stack_sidebar_row_selected (GtkListBox    *box,
 }
 
 static void
-ctk_stack_sidebar_init (GtkStackSidebar *sidebar)
+ctk_stack_sidebar_init (CtkStackSidebar *sidebar)
 {
-  GtkStyleContext *style;
-  GtkStackSidebarPrivate *priv;
-  GtkWidget *sw;
+  CtkStyleContext *style;
+  CtkStackSidebarPrivate *priv;
+  CtkWidget *sw;
 
   priv = ctk_stack_sidebar_get_instance_private (sidebar);
 
@@ -222,15 +222,15 @@ ctk_stack_sidebar_init (GtkStackSidebar *sidebar)
 }
 
 static void
-update_row (GtkStackSidebar *sidebar,
-            GtkWidget       *widget,
-            GtkWidget       *row)
+update_row (CtkStackSidebar *sidebar,
+            CtkWidget       *widget,
+            CtkWidget       *row)
 {
-  GtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
-  GtkWidget *item;
+  CtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
+  CtkWidget *item;
   gchar *title;
   gboolean needs_attention;
-  GtkStyleContext *context;
+  CtkStyleContext *context;
 
   ctk_container_child_get (CTK_CONTAINER (priv->stack), widget,
                            "title", &title,
@@ -252,34 +252,34 @@ update_row (GtkStackSidebar *sidebar,
 }
 
 static void
-on_position_updated (GtkWidget       *widget,
+on_position_updated (CtkWidget       *widget,
                      GParamSpec      *pspec,
-                     GtkStackSidebar *sidebar)
+                     CtkStackSidebar *sidebar)
 {
-  GtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
+  CtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
 
   ctk_list_box_invalidate_sort (priv->list);
 }
 
 static void
-on_child_updated (GtkWidget       *widget,
+on_child_updated (CtkWidget       *widget,
                   GParamSpec      *pspec,
-                  GtkStackSidebar *sidebar)
+                  CtkStackSidebar *sidebar)
 {
-  GtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
-  GtkWidget *row;
+  CtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
+  CtkWidget *row;
 
   row = g_hash_table_lookup (priv->rows, widget);
   update_row (sidebar, widget, row);
 }
 
 static void
-add_child (GtkWidget       *widget,
-           GtkStackSidebar *sidebar)
+add_child (CtkWidget       *widget,
+           CtkStackSidebar *sidebar)
 {
-  GtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
-  GtkWidget *item;
-  GtkWidget *row;
+  CtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
+  CtkWidget *item;
+  CtkWidget *row;
 
   /* Check we don't actually already know about this widget */
   if (g_hash_table_lookup (priv->rows, widget))
@@ -311,11 +311,11 @@ add_child (GtkWidget       *widget,
 }
 
 static void
-remove_child (GtkWidget       *widget,
-              GtkStackSidebar *sidebar)
+remove_child (CtkWidget       *widget,
+              CtkStackSidebar *sidebar)
 {
-  GtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
-  GtkWidget *row;
+  CtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
+  CtkWidget *row;
 
   row = g_hash_table_lookup (priv->rows, widget);
   if (!row)
@@ -329,12 +329,12 @@ remove_child (GtkWidget       *widget,
 }
 
 static void
-populate_sidebar (GtkStackSidebar *sidebar)
+populate_sidebar (CtkStackSidebar *sidebar)
 {
-  GtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
-  GtkWidget *widget, *row;
+  CtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
+  CtkWidget *widget, *row;
 
-  ctk_container_foreach (CTK_CONTAINER (priv->stack), (GtkCallback)add_child, sidebar);
+  ctk_container_foreach (CTK_CONTAINER (priv->stack), (CtkCallback)add_child, sidebar);
 
   widget = ctk_stack_get_visible_child (priv->stack);
   if (widget)
@@ -345,21 +345,21 @@ populate_sidebar (GtkStackSidebar *sidebar)
 }
 
 static void
-clear_sidebar (GtkStackSidebar *sidebar)
+clear_sidebar (CtkStackSidebar *sidebar)
 {
-  GtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
+  CtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
 
-  ctk_container_foreach (CTK_CONTAINER (priv->stack), (GtkCallback)remove_child, sidebar);
+  ctk_container_foreach (CTK_CONTAINER (priv->stack), (CtkCallback)remove_child, sidebar);
 }
 
 static void
-on_child_changed (GtkWidget       *widget,
+on_child_changed (CtkWidget       *widget,
                   GParamSpec      *pspec,
-                  GtkStackSidebar *sidebar)
+                  CtkStackSidebar *sidebar)
 {
-  GtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
-  GtkWidget *child;
-  GtkWidget *row;
+  CtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
+  CtkWidget *child;
+  CtkWidget *row;
 
   child = ctk_stack_get_visible_child (CTK_STACK (widget));
   row = g_hash_table_lookup (priv->rows, child);
@@ -372,25 +372,25 @@ on_child_changed (GtkWidget       *widget,
 }
 
 static void
-on_stack_child_added (GtkContainer    *container,
-                      GtkWidget       *widget,
-                      GtkStackSidebar *sidebar)
+on_stack_child_added (CtkContainer    *container,
+                      CtkWidget       *widget,
+                      CtkStackSidebar *sidebar)
 {
   add_child (widget, sidebar);
 }
 
 static void
-on_stack_child_removed (GtkContainer    *container,
-                        GtkWidget       *widget,
-                        GtkStackSidebar *sidebar)
+on_stack_child_removed (CtkContainer    *container,
+                        CtkWidget       *widget,
+                        CtkStackSidebar *sidebar)
 {
   remove_child (widget, sidebar);
 }
 
 static void
-disconnect_stack_signals (GtkStackSidebar *sidebar)
+disconnect_stack_signals (CtkStackSidebar *sidebar)
 {
-  GtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
+  CtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
 
   g_signal_handlers_disconnect_by_func (priv->stack, on_stack_child_added, sidebar);
   g_signal_handlers_disconnect_by_func (priv->stack, on_stack_child_removed, sidebar);
@@ -399,9 +399,9 @@ disconnect_stack_signals (GtkStackSidebar *sidebar)
 }
 
 static void
-connect_stack_signals (GtkStackSidebar *sidebar)
+connect_stack_signals (CtkStackSidebar *sidebar)
 {
-  GtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
+  CtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
 
   g_signal_connect_after (priv->stack, "add",
                           G_CALLBACK (on_stack_child_added), sidebar);
@@ -416,7 +416,7 @@ connect_stack_signals (GtkStackSidebar *sidebar)
 static void
 ctk_stack_sidebar_dispose (GObject *object)
 {
-  GtkStackSidebar *sidebar = CTK_STACK_SIDEBAR (object);
+  CtkStackSidebar *sidebar = CTK_STACK_SIDEBAR (object);
 
   ctk_stack_sidebar_set_stack (sidebar, NULL);
 
@@ -426,8 +426,8 @@ ctk_stack_sidebar_dispose (GObject *object)
 static void
 ctk_stack_sidebar_finalize (GObject *object)
 {
-  GtkStackSidebar *sidebar = CTK_STACK_SIDEBAR (object);
-  GtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
+  CtkStackSidebar *sidebar = CTK_STACK_SIDEBAR (object);
+  CtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
 
   g_hash_table_destroy (priv->rows);
 
@@ -435,10 +435,10 @@ ctk_stack_sidebar_finalize (GObject *object)
 }
 
 static void
-ctk_stack_sidebar_class_init (GtkStackSidebarClass *klass)
+ctk_stack_sidebar_class_init (CtkStackSidebarClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   object_class->dispose = ctk_stack_sidebar_dispose;
   object_class->finalize = ctk_stack_sidebar_finalize;
@@ -447,7 +447,7 @@ ctk_stack_sidebar_class_init (GtkStackSidebarClass *klass)
 
   obj_properties[PROP_STACK] =
       g_param_spec_object (I_("stack"), P_("Stack"),
-                           P_("Associated stack for this GtkStackSidebar"),
+                           P_("Associated stack for this CtkStackSidebar"),
                            CTK_TYPE_STACK,
                            G_PARAM_READWRITE|G_PARAM_STATIC_STRINGS|G_PARAM_EXPLICIT_NOTIFY);
 
@@ -461,11 +461,11 @@ ctk_stack_sidebar_class_init (GtkStackSidebarClass *klass)
  *
  * Creates a new sidebar.
  *
- * Returns: the new #GtkStackSidebar
+ * Returns: the new #CtkStackSidebar
  *
  * Since: 3.16
  */
-GtkWidget *
+CtkWidget *
 ctk_stack_sidebar_new (void)
 {
   return CTK_WIDGET (g_object_new (CTK_TYPE_STACK_SIDEBAR, NULL));
@@ -473,21 +473,21 @@ ctk_stack_sidebar_new (void)
 
 /**
  * ctk_stack_sidebar_set_stack:
- * @sidebar: a #GtkStackSidebar
- * @stack: a #GtkStack
+ * @sidebar: a #CtkStackSidebar
+ * @stack: a #CtkStack
  *
- * Set the #GtkStack associated with this #GtkStackSidebar.
+ * Set the #CtkStack associated with this #CtkStackSidebar.
  *
  * The sidebar widget will automatically update according to the order
- * (packing) and items within the given #GtkStack.
+ * (packing) and items within the given #CtkStack.
  *
  * Since: 3.16
  */
 void
-ctk_stack_sidebar_set_stack (GtkStackSidebar *sidebar,
-                             GtkStack        *stack)
+ctk_stack_sidebar_set_stack (CtkStackSidebar *sidebar,
+                             CtkStack        *stack)
 {
-  GtkStackSidebarPrivate *priv;
+  CtkStackSidebarPrivate *priv;
 
   g_return_if_fail (CTK_IS_STACK_SIDEBAR (sidebar));
   g_return_if_fail (CTK_IS_STACK (stack) || stack == NULL);
@@ -517,20 +517,20 @@ ctk_stack_sidebar_set_stack (GtkStackSidebar *sidebar,
 
 /**
  * ctk_stack_sidebar_get_stack:
- * @sidebar: a #GtkStackSidebar
+ * @sidebar: a #CtkStackSidebar
  *
  * Retrieves the stack.
  * See ctk_stack_sidebar_set_stack().
  *
- * Returns: (nullable) (transfer none): the associated #GtkStack or
+ * Returns: (nullable) (transfer none): the associated #CtkStack or
  *     %NULL if none has been set explicitly
  *
  * Since: 3.16
  */
-GtkStack *
-ctk_stack_sidebar_get_stack (GtkStackSidebar *sidebar)
+CtkStack *
+ctk_stack_sidebar_get_stack (CtkStackSidebar *sidebar)
 {
-  GtkStackSidebarPrivate *priv;
+  CtkStackSidebarPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_STACK_SIDEBAR (sidebar), NULL);
 

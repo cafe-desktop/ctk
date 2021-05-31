@@ -1,8 +1,8 @@
 <!-- test invalid cell layout attribute -->
 <interface>
-  <object class="GtkIconView">
+  <object class="CtkIconView">
     <child>
-      <object class="GtkCellRendererText">
+      <object class="CtkCellRendererText">
       </object>
       <attributes>
         <warbl/>

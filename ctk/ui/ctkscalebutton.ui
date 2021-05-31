@@ -2,32 +2,32 @@
 <interface domain="ctk30">
   <!-- interface-requires ctk+ 3.10 -->
   <!-- interface-requires ctkprivate 3.10 -->
-  <template class="GtkScaleButton" parent="GtkButton">
+  <template class="CtkScaleButton" parent="CtkButton">
     <property name="can-focus">1</property>
     <property name="receives-default">1</property>
     <property name="relief">none</property>
     <property name="focus-on-click">0</property>
     <child>
-      <object class="GtkImage" id="image">
+      <object class="CtkImage" id="image">
         <property name="visible">1</property>
         <property name="icon-name">image-missing</property>
         <property name="use-fallback">1</property>
       </object>
     </child>
   </template>
-  <object class="GtkPopover" id="dock">
+  <object class="CtkPopover" id="dock">
     <signal name="map" handler="cb_popup_mapped" swapped="no"/>
     <style>
       <class name="scale-popup"/>
     </style>
     <child>
-      <object class="GtkBox" id="box">
+      <object class="CtkBox" id="box">
         <property name="visible">1</property>
         <property name="orientation">vertical</property>
         <property name="margin">4</property>
         <property name="spacing">4</property>
         <child>
-          <object class="GtkButton" id="plus_button">
+          <object class="CtkButton" id="plus_button">
             <property name="visible">1</property>
             <property name="can-focus">1</property>
             <property name="receives-default">1</property>
@@ -38,7 +38,7 @@
               <class name="image-button"/>
             </style>
             <child>
-              <object class="GtkImage">
+              <object class="CtkImage">
                 <property name="visible">1</property>
                 <property name="icon-name">list-add-symbolic</property>
                 <property name="use-fallback">1</property>
@@ -53,7 +53,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkScale" id="scale">
+          <object class="CtkScale" id="scale">
             <property name="height-request">100</property>
             <property name="visible">1</property>
             <property name="can-focus">1</property>
@@ -68,7 +68,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="minus_button">
+          <object class="CtkButton" id="minus_button">
             <property name="visible">1</property>
             <property name="can-focus">1</property>
             <property name="receives-default">1</property>
@@ -79,7 +79,7 @@
               <class name="image-button"/>
             </style>
             <child>
-              <object class="GtkImage">
+              <object class="CtkImage">
                 <property name="visible">1</property>
                 <property name="icon-name">list-remove-symbolic</property>
                 <property name="use-fallback">1</property>

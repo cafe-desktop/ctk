@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="ctk30">
   <requires lib="ctk+" version="3.16"/>
-  <template class="GtkPlacesViewRow" parent="GtkListBoxRow">
+  <template class="CtkPlacesViewRow" parent="CtkListBoxRow">
     <property name="width-request">100</property>
     <property name="visible">True</property>
     <property name="can-focus">True</property>
     <child>
-      <object class="GtkEventBox" id="event_box">
+      <object class="CtkEventBox" id="event_box">
         <property name="visible">1</property>
         <child>
-          <object class="GtkBox" id="box">
+          <object class="CtkBox" id="box">
             <property name="visible">1</property>
             <property name="margin-start">12</property>
             <property name="margin-end">12</property>
@@ -17,13 +17,13 @@
             <property name="margin-bottom">6</property>
             <property name="spacing">18</property>
             <child>
-              <object class="GtkImage" id="icon_image">
+              <object class="CtkImage" id="icon_image">
                 <property name="visible">1</property>
                 <property name="pixel-size">32</property>
               </object>
             </child>
             <child>
-              <object class="GtkLabel" id="name_label">
+              <object class="CtkLabel" id="name_label">
                 <property name="visible">1</property>
                 <property name="hexpand">1</property>
                 <property name="xalign">0</property>
@@ -34,7 +34,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="available_space_label">
+              <object class="CtkLabel" id="available_space_label">
                 <property name="xalign">1</property>
                 <style>
                   <class name="dim-label"/>
@@ -45,7 +45,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="path_label">
+              <object class="CtkLabel" id="path_label">
                 <property name="visible">1</property>
                 <property name="justify">right</property>
                 <property name="ellipsize">middle</property>
@@ -60,18 +60,18 @@
               </packing>
             </child>
             <child>
-              <object class="GtkStack" id="mount_stack">
+              <object class="CtkStack" id="mount_stack">
                 <property name="visible">1</property>
                 <property name="hhomogeneous">1</property>
                 <property name="vhomogeneous">1</property>
                 <child>
-                  <object class="GtkButton" id="eject_button">
+                  <object class="CtkButton" id="eject_button">
                     <property name="visible">1</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
                     <property name="tooltip-text" translatable="yes">Unmount</property>
                     <child>
-                      <object class="GtkImage" id="eject_icon">
+                      <object class="CtkImage" id="eject_icon">
                         <property name="visible">1</property>
                         <property name="icon-name">media-eject-symbolic</property>
                         <property name="icon-size">1</property>
@@ -84,7 +84,7 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkSpinner" id="busy_spinner">
+                  <object class="CtkSpinner" id="busy_spinner">
                     <property name="visible">1</property>
                     <property name="active">1</property>
                     <property name="halign">center</property>

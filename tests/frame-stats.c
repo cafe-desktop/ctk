@@ -130,7 +130,7 @@ on_frame_clock_after_paint (GdkFrameClock *frame_clock,
 }
 
 void
-on_window_realize (GtkWidget  *window,
+on_window_realize (CtkWidget  *window,
                    FrameStats *frame_stats)
 {
   frame_stats->frame_clock = ctk_widget_get_frame_clock (CTK_WIDGET (window));
@@ -139,7 +139,7 @@ on_window_realize (GtkWidget  *window,
 }
 
 void
-on_window_unrealize (GtkWidget  *window,
+on_window_unrealize (CtkWidget  *window,
                      FrameStats *frame_stats)
 {
   g_signal_handlers_disconnect_by_func (frame_stats->frame_clock,
@@ -149,14 +149,14 @@ on_window_unrealize (GtkWidget  *window,
 }
 
 void
-on_window_destroy (GtkWidget  *window,
+on_window_destroy (CtkWidget  *window,
                    FrameStats *stats)
 {
   g_free (stats);
 }
 
 void
-frame_stats_ensure (GtkWindow *window)
+frame_stats_ensure (CtkWindow *window)
 {
   FrameStats *frame_stats;
 

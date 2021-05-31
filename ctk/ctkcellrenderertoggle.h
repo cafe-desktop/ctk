@@ -29,29 +29,29 @@ G_BEGIN_DECLS
 
 
 #define CTK_TYPE_CELL_RENDERER_TOGGLE			(ctk_cell_renderer_toggle_get_type ())
-#define CTK_CELL_RENDERER_TOGGLE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_RENDERER_TOGGLE, GtkCellRendererToggle))
-#define CTK_CELL_RENDERER_TOGGLE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CELL_RENDERER_TOGGLE, GtkCellRendererToggleClass))
+#define CTK_CELL_RENDERER_TOGGLE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_RENDERER_TOGGLE, CtkCellRendererToggle))
+#define CTK_CELL_RENDERER_TOGGLE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CELL_RENDERER_TOGGLE, CtkCellRendererToggleClass))
 #define CTK_IS_CELL_RENDERER_TOGGLE(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CELL_RENDERER_TOGGLE))
 #define CTK_IS_CELL_RENDERER_TOGGLE_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_CELL_RENDERER_TOGGLE))
-#define CTK_CELL_RENDERER_TOGGLE_GET_CLASS(obj)         (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CELL_RENDERER_TOGGLE, GtkCellRendererToggleClass))
+#define CTK_CELL_RENDERER_TOGGLE_GET_CLASS(obj)         (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CELL_RENDERER_TOGGLE, CtkCellRendererToggleClass))
 
-typedef struct _GtkCellRendererToggle              GtkCellRendererToggle;
-typedef struct _GtkCellRendererTogglePrivate       GtkCellRendererTogglePrivate;
-typedef struct _GtkCellRendererToggleClass         GtkCellRendererToggleClass;
+typedef struct _CtkCellRendererToggle              CtkCellRendererToggle;
+typedef struct _CtkCellRendererTogglePrivate       CtkCellRendererTogglePrivate;
+typedef struct _CtkCellRendererToggleClass         CtkCellRendererToggleClass;
 
-struct _GtkCellRendererToggle
+struct _CtkCellRendererToggle
 {
-  GtkCellRenderer parent;
+  CtkCellRenderer parent;
 
   /*< private >*/
-  GtkCellRendererTogglePrivate *priv;
+  CtkCellRendererTogglePrivate *priv;
 };
 
-struct _GtkCellRendererToggleClass
+struct _CtkCellRendererToggleClass
 {
-  GtkCellRendererClass parent_class;
+  CtkCellRendererClass parent_class;
 
-  void (* toggled) (GtkCellRendererToggle *cell_renderer_toggle,
+  void (* toggled) (CtkCellRendererToggle *cell_renderer_toggle,
 		    const gchar                 *path);
 
   /* Padding for future expansion */
@@ -64,24 +64,24 @@ struct _GtkCellRendererToggleClass
 GDK_AVAILABLE_IN_ALL
 GType            ctk_cell_renderer_toggle_get_type       (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkCellRenderer *ctk_cell_renderer_toggle_new            (void);
+CtkCellRenderer *ctk_cell_renderer_toggle_new            (void);
 
 GDK_AVAILABLE_IN_ALL
-gboolean         ctk_cell_renderer_toggle_get_radio      (GtkCellRendererToggle *toggle);
+gboolean         ctk_cell_renderer_toggle_get_radio      (CtkCellRendererToggle *toggle);
 GDK_AVAILABLE_IN_ALL
-void             ctk_cell_renderer_toggle_set_radio      (GtkCellRendererToggle *toggle,
+void             ctk_cell_renderer_toggle_set_radio      (CtkCellRendererToggle *toggle,
                                                           gboolean               radio);
 
 GDK_AVAILABLE_IN_ALL
-gboolean        ctk_cell_renderer_toggle_get_active      (GtkCellRendererToggle *toggle);
+gboolean        ctk_cell_renderer_toggle_get_active      (CtkCellRendererToggle *toggle);
 GDK_AVAILABLE_IN_ALL
-void            ctk_cell_renderer_toggle_set_active      (GtkCellRendererToggle *toggle,
+void            ctk_cell_renderer_toggle_set_active      (CtkCellRendererToggle *toggle,
                                                           gboolean               setting);
 
 GDK_AVAILABLE_IN_ALL
-gboolean        ctk_cell_renderer_toggle_get_activatable (GtkCellRendererToggle *toggle);
+gboolean        ctk_cell_renderer_toggle_get_activatable (CtkCellRendererToggle *toggle);
 GDK_AVAILABLE_IN_ALL
-void            ctk_cell_renderer_toggle_set_activatable (GtkCellRendererToggle *toggle,
+void            ctk_cell_renderer_toggle_set_activatable (CtkCellRendererToggle *toggle,
                                                           gboolean               setting);
 
 

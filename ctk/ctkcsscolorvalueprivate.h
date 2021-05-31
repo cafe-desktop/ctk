@@ -24,28 +24,28 @@
 G_BEGIN_DECLS
 
 
-GtkCssValue *   _ctk_css_color_value_new_literal        (const GdkRGBA  *color);
-GtkCssValue *   _ctk_css_color_value_new_rgba           (double          red,
+CtkCssValue *   _ctk_css_color_value_new_literal        (const GdkRGBA  *color);
+CtkCssValue *   _ctk_css_color_value_new_rgba           (double          red,
                                                          double          green,
                                                          double          blue,
                                                          double          alpha);
-GtkCssValue *   _ctk_css_color_value_new_name           (const gchar    *name);
-GtkCssValue *   _ctk_css_color_value_new_shade          (GtkCssValue    *color,
+CtkCssValue *   _ctk_css_color_value_new_name           (const gchar    *name);
+CtkCssValue *   _ctk_css_color_value_new_shade          (CtkCssValue    *color,
                                                          gdouble         factor);
-GtkCssValue *   _ctk_css_color_value_new_alpha          (GtkCssValue    *color,
+CtkCssValue *   _ctk_css_color_value_new_alpha          (CtkCssValue    *color,
                                                          gdouble         factor);
-GtkCssValue *   _ctk_css_color_value_new_mix            (GtkCssValue    *color1,
-                                                         GtkCssValue    *color2,
+CtkCssValue *   _ctk_css_color_value_new_mix            (CtkCssValue    *color1,
+                                                         CtkCssValue    *color2,
                                                          gdouble         factor);
-GtkCssValue *   _ctk_css_color_value_new_win32          (const gchar    *theme_class,
+CtkCssValue *   _ctk_css_color_value_new_win32          (const gchar    *theme_class,
                                                          gint            id);
-GtkCssValue *   _ctk_css_color_value_new_current_color  (void);
+CtkCssValue *   _ctk_css_color_value_new_current_color  (void);
 
-GtkCssValue *   _ctk_css_color_value_parse              (GtkCssParser   *parser);
+CtkCssValue *   _ctk_css_color_value_parse              (CtkCssParser   *parser);
 
-GtkCssValue *   _ctk_css_color_value_resolve            (GtkCssValue             *color,
-                                                         GtkStyleProviderPrivate *provider,
-                                                         GtkCssValue             *current,
+CtkCssValue *   _ctk_css_color_value_resolve            (CtkCssValue             *color,
+                                                         CtkStyleProviderPrivate *provider,
+                                                         CtkCssValue             *current,
                                                          GSList                  *cycle_list);
 
 

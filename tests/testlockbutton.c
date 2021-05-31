@@ -165,13 +165,13 @@ g_test_permission_set_success (GTestPermission *permission,
   permission->success = success;
 }
 
-static GtkWidget *allowed_button;
-static GtkWidget *can_acquire_button;
-static GtkWidget *can_release_button;
-static GtkWidget *success_button;
+static CtkWidget *allowed_button;
+static CtkWidget *can_acquire_button;
+static CtkWidget *can_release_button;
+static CtkWidget *success_button;
 
 static void
-update_clicked (GtkButton *button, GtkLockButton *lockbutton)
+update_clicked (CtkButton *button, CtkLockButton *lockbutton)
 {
   GPermission *permission;
   gboolean allowed, can_acquire, can_release;
@@ -187,7 +187,7 @@ update_clicked (GtkButton *button, GtkLockButton *lockbutton)
   g_test_permission_set_success (G_TEST_PERMISSION (permission), success);
 }
 
-static GtkWidget *content;
+static CtkWidget *content;
 
 static void
 permission_changed (GPermission *permission,
@@ -211,11 +211,11 @@ permission_changed (GPermission *permission,
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window;
-  GtkWidget *dialog;
-  GtkWidget *button;
-  GtkWidget *box;
-  GtkWidget *update;
+  CtkWidget *window;
+  CtkWidget *dialog;
+  CtkWidget *button;
+  CtkWidget *box;
+  CtkWidget *update;
   GPermission *permission;
 
   ctk_init (&argc, &argv);

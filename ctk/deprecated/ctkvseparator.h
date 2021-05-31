@@ -34,37 +34,37 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_VSEPARATOR                  (ctk_vseparator_get_type ())
-#define CTK_VSEPARATOR(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_VSEPARATOR, GtkVSeparator))
-#define CTK_VSEPARATOR_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_VSEPARATOR, GtkVSeparatorClass))
+#define CTK_VSEPARATOR(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_VSEPARATOR, CtkVSeparator))
+#define CTK_VSEPARATOR_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_VSEPARATOR, CtkVSeparatorClass))
 #define CTK_IS_VSEPARATOR(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_VSEPARATOR))
 #define CTK_IS_VSEPARATOR_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_VSEPARATOR))
-#define CTK_VSEPARATOR_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_VSEPARATOR, GtkVSeparatorClass))
+#define CTK_VSEPARATOR_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_VSEPARATOR, CtkVSeparatorClass))
 
 
-typedef struct _GtkVSeparator       GtkVSeparator;
-typedef struct _GtkVSeparatorClass  GtkVSeparatorClass;
+typedef struct _CtkVSeparator       CtkVSeparator;
+typedef struct _CtkVSeparatorClass  CtkVSeparatorClass;
 
 /**
- * GtkVSeparator:
+ * CtkVSeparator:
  *
- * The #GtkVSeparator struct contains private data only, and
+ * The #CtkVSeparator struct contains private data only, and
  * should be accessed using the functions below.
  */
-struct _GtkVSeparator
+struct _CtkVSeparator
 {
-  GtkSeparator separator;
+  CtkSeparator separator;
 };
 
-struct _GtkVSeparatorClass
+struct _CtkVSeparatorClass
 {
-  GtkSeparatorClass parent_class;
+  CtkSeparatorClass parent_class;
 };
 
 
 GDK_DEPRECATED_IN_3_2
 GType      ctk_vseparator_get_type (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_2_FOR(ctk_separator_new)
-GtkWidget* ctk_vseparator_new      (void);
+CtkWidget* ctk_vseparator_new      (void);
 
 G_END_DECLS
 

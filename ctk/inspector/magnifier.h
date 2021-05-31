@@ -21,30 +21,30 @@
 #include <ctk/ctkbox.h>
 
 #define CTK_TYPE_INSPECTOR_MAGNIFIER            (ctk_inspector_magnifier_get_type())
-#define CTK_INSPECTOR_MAGNIFIER(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_MAGNIFIER, GtkInspectorMagnifier))
-#define CTK_INSPECTOR_MAGNIFIER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_MAGNIFIER, GtkInspectorMagnifierClass))
+#define CTK_INSPECTOR_MAGNIFIER(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_MAGNIFIER, CtkInspectorMagnifier))
+#define CTK_INSPECTOR_MAGNIFIER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_MAGNIFIER, CtkInspectorMagnifierClass))
 #define CTK_INSPECTOR_IS_MAGNIFIER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), CTK_TYPE_INSPECTOR_MAGNIFIER))
 #define CTK_INSPECTOR_IS_MAGNIFIER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), CTK_TYPE_INSPECTOR_MAGNIFIER))
-#define CTK_INSPECTOR_MAGNIFIER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_MAGNIFIER, GtkInspectorMagnifierClass))
+#define CTK_INSPECTOR_MAGNIFIER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_MAGNIFIER, CtkInspectorMagnifierClass))
 
 
-typedef struct _GtkInspectorMagnifierPrivate GtkInspectorMagnifierPrivate;
+typedef struct _CtkInspectorMagnifierPrivate CtkInspectorMagnifierPrivate;
 
-typedef struct _GtkInspectorMagnifier
+typedef struct _CtkInspectorMagnifier
 {
-  GtkBox parent;
-  GtkInspectorMagnifierPrivate *priv;
-} GtkInspectorMagnifier;
+  CtkBox parent;
+  CtkInspectorMagnifierPrivate *priv;
+} CtkInspectorMagnifier;
 
-typedef struct _GtkInspectorMagnifierClass
+typedef struct _CtkInspectorMagnifierClass
 {
-  GtkBoxClass parent;
-} GtkInspectorMagnifierClass;
+  CtkBoxClass parent;
+} CtkInspectorMagnifierClass;
 
 G_BEGIN_DECLS
 
 GType      ctk_inspector_magnifier_get_type   (void);
-void       ctk_inspector_magnifier_set_object (GtkInspectorMagnifier *sl,
+void       ctk_inspector_magnifier_set_object (CtkInspectorMagnifier *sl,
                                                GObject               *object);
 
 G_END_DECLS

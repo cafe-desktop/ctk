@@ -41,15 +41,15 @@
 /**
  * SECTION:ctkmessagedialog
  * @Short_description: A convenient message window
- * @Title: GtkMessageDialog
- * @See_also:#GtkDialog
+ * @Title: CtkMessageDialog
+ * @See_also:#CtkDialog
  *
- * #GtkMessageDialog presents a dialog with some message text. It’s simply a
- * convenience widget; you could construct the equivalent of #GtkMessageDialog
- * from #GtkDialog without too much effort, but #GtkMessageDialog saves typing.
+ * #CtkMessageDialog presents a dialog with some message text. It’s simply a
+ * convenience widget; you could construct the equivalent of #CtkMessageDialog
+ * from #CtkDialog without too much effort, but #CtkMessageDialog saves typing.
  *
- * One difference from #GtkDialog is that #GtkMessageDialog sets the
- * #GtkWindow:skip-taskbar-hint property to %TRUE, so that the dialog is hidden
+ * One difference from #CtkDialog is that #CtkMessageDialog sets the
+ * #CtkWindow:skip-taskbar-hint property to %TRUE, so that the dialog is hidden
  * from the taskbar by default.
  *
  * The easiest way to do a modal message dialog is to use ctk_dialog_run(), though
@@ -59,7 +59,7 @@
  *
  * An example for using a modal dialog:
  * |[<!-- language="C" -->
- *  GtkDialogFlags flags = CTK_DIALOG_DESTROY_WITH_PARENT;
+ *  CtkDialogFlags flags = CTK_DIALOG_DESTROY_WITH_PARENT;
  *  dialog = ctk_message_dialog_new (parent_window,
  *                                   flags,
  *                                   CTK_MESSAGE_ERROR,
@@ -71,11 +71,11 @@
  *  ctk_widget_destroy (dialog);
  * ]|
  *
- * You might do a non-modal #GtkMessageDialog as follows:
+ * You might do a non-modal #CtkMessageDialog as follows:
  *
  * An example for a non-modal dialog:
  * |[<!-- language="C" -->
- *  GtkDialogFlags flags = CTK_DIALOG_DESTROY_WITH_PARENT;
+ *  CtkDialogFlags flags = CTK_DIALOG_DESTROY_WITH_PARENT;
  *  dialog = ctk_message_dialog_new (parent_window,
  *                                   flags,
  *                                   CTK_MESSAGE_ERROR,
@@ -92,25 +92,25 @@
  *                            dialog);
  * ]|
  *
- * # GtkMessageDialog as GtkBuildable
+ * # CtkMessageDialog as CtkBuildable
  *
- * The GtkMessageDialog implementation of the GtkBuildable interface exposes
+ * The CtkMessageDialog implementation of the CtkBuildable interface exposes
  * the message area as an internal child with the name “message_area”.
  */
 
-struct _GtkMessageDialogPrivate
+struct _CtkMessageDialogPrivate
 {
-  GtkWidget     *image;
-  GtkWidget     *label;
-  GtkWidget     *message_area; /* vbox for the primary and secondary labels, and any extra content from the caller */
-  GtkWidget     *secondary_label;
+  CtkWidget     *image;
+  CtkWidget     *label;
+  CtkWidget     *message_area; /* vbox for the primary and secondary labels, and any extra content from the caller */
+  CtkWidget     *secondary_label;
 
   guint          has_primary_markup : 1;
   guint          has_secondary_text : 1;
   guint          message_type       : 3;
 };
 
-static void ctk_message_dialog_style_updated (GtkWidget       *widget);
+static void ctk_message_dialog_style_updated (CtkWidget       *widget);
 
 static void ctk_message_dialog_constructed  (GObject          *object);
 static void ctk_message_dialog_set_property (GObject          *object,
@@ -121,9 +121,9 @@ static void ctk_message_dialog_get_property (GObject          *object,
 					     guint             prop_id,
 					     GValue           *value,
 					     GParamSpec       *pspec);
-static void ctk_message_dialog_add_buttons  (GtkMessageDialog *message_dialog,
-					     GtkButtonsType    buttons);
-static void      ctk_message_dialog_buildable_interface_init     (GtkBuildableIface *iface);
+static void ctk_message_dialog_add_buttons  (CtkMessageDialog *message_dialog,
+					     CtkButtonsType    buttons);
+static void      ctk_message_dialog_buildable_interface_init     (CtkBuildableIface *iface);
 
 enum {
   PROP_0,
@@ -137,15 +137,15 @@ enum {
   PROP_MESSAGE_AREA
 };
 
-G_DEFINE_TYPE_WITH_CODE (GtkMessageDialog, ctk_message_dialog, CTK_TYPE_DIALOG,
-                         G_ADD_PRIVATE (GtkMessageDialog)
+G_DEFINE_TYPE_WITH_CODE (CtkMessageDialog, ctk_message_dialog, CTK_TYPE_DIALOG,
+                         G_ADD_PRIVATE (CtkMessageDialog)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
                                                 ctk_message_dialog_buildable_interface_init))
 
-static GtkBuildableIface *parent_buildable_iface;
+static CtkBuildableIface *parent_buildable_iface;
 
 static void
-ctk_message_dialog_buildable_interface_init (GtkBuildableIface *iface)
+ctk_message_dialog_buildable_interface_init (CtkBuildableIface *iface)
 {
   parent_buildable_iface = g_type_interface_peek_parent (iface);
   iface->custom_tag_start = parent_buildable_iface->custom_tag_start;
@@ -153,9 +153,9 @@ ctk_message_dialog_buildable_interface_init (GtkBuildableIface *iface)
 }
 
 static void
-ctk_message_dialog_class_init (GtkMessageDialogClass *class)
+ctk_message_dialog_class_init (CtkMessageDialogClass *class)
 {
-  GtkWidgetClass *widget_class;
+  CtkWidgetClass *widget_class;
   GObjectClass *gobject_class;
 
   widget_class = CTK_WIDGET_CLASS (class);
@@ -179,7 +179,7 @@ ctk_message_dialog_class_init (GtkMessageDialogClass *class)
                                                              CTK_PARAM_READABLE));
 
   /**
-   * GtkMessageDialog:message-type:
+   * CtkMessageDialog:message-type:
    *
    * The type of the message.
    */
@@ -201,7 +201,7 @@ ctk_message_dialog_class_init (GtkMessageDialogClass *class)
                                                       CTK_PARAM_WRITABLE|G_PARAM_CONSTRUCT_ONLY));
 
   /**
-   * GtkMessageDialog:text:
+   * CtkMessageDialog:text:
    * 
    * The primary text of the message dialog. If the dialog has 
    * a secondary text, this will appear as the title.
@@ -217,7 +217,7 @@ ctk_message_dialog_class_init (GtkMessageDialogClass *class)
                                                         CTK_PARAM_READWRITE));
 
   /**
-   * GtkMessageDialog:use-markup:
+   * CtkMessageDialog:use-markup:
    * 
    * %TRUE if the primary text of the dialog includes Pango markup. 
    * See pango_parse_markup(). 
@@ -233,7 +233,7 @@ ctk_message_dialog_class_init (GtkMessageDialogClass *class)
 							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
   
   /**
-   * GtkMessageDialog:secondary-text:
+   * CtkMessageDialog:secondary-text:
    * 
    * The secondary text of the message dialog. 
    *
@@ -248,7 +248,7 @@ ctk_message_dialog_class_init (GtkMessageDialogClass *class)
                                                         CTK_PARAM_READWRITE));
 
   /**
-   * GtkMessageDialog:secondary-use-markup:
+   * CtkMessageDialog:secondary-use-markup:
    * 
    * %TRUE if the secondary text of the dialog includes Pango markup. 
    * See pango_parse_markup(). 
@@ -264,12 +264,12 @@ ctk_message_dialog_class_init (GtkMessageDialogClass *class)
 							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkMessageDialog:image:
+   * CtkMessageDialog:image:
    *
    * The image for this dialog.
    *
    * Since: 2.10
-   * Deprecated: 3.12: Use #GtkDialog to create dialogs with images
+   * Deprecated: 3.12: Use #CtkDialog to create dialogs with images
    */
   g_object_class_install_property (gobject_class,
                                    PROP_IMAGE,
@@ -280,9 +280,9 @@ ctk_message_dialog_class_init (GtkMessageDialogClass *class)
                                                         CTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
 
   /**
-   * GtkMessageDialog:message-area:
+   * CtkMessageDialog:message-area:
    *
-   * The #GtkBox that corresponds to the message area of this dialog.  See
+   * The #CtkBox that corresponds to the message area of this dialog.  See
    * ctk_message_dialog_get_message_area() for a detailed description of this
    * area.
    *
@@ -292,25 +292,25 @@ ctk_message_dialog_class_init (GtkMessageDialogClass *class)
 				   PROP_MESSAGE_AREA,
 				   g_param_spec_object ("message-area",
 							P_("Message area"),
-							P_("GtkBox that holds the dialog's primary and secondary labels"),
+							P_("CtkBox that holds the dialog's primary and secondary labels"),
 							CTK_TYPE_WIDGET,
 							CTK_PARAM_READABLE));
 
   /* Setup Composite data */
   ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/ui/ctkmessagedialog.ui");
-  ctk_widget_class_bind_template_child_private (widget_class, GtkMessageDialog, label);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkMessageDialog, secondary_label);
-  ctk_widget_class_bind_template_child_internal_private (widget_class, GtkMessageDialog, message_area);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkMessageDialog, label);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkMessageDialog, secondary_label);
+  ctk_widget_class_bind_template_child_internal_private (widget_class, CtkMessageDialog, message_area);
 
   ctk_widget_class_set_css_name (widget_class, "messagedialog");
 }
 
 static void
-ctk_message_dialog_init (GtkMessageDialog *dialog)
+ctk_message_dialog_init (CtkMessageDialog *dialog)
 {
-  GtkMessageDialogPrivate *priv;
-  GtkWidget *action_area;
-  GtkSettings *settings;
+  CtkMessageDialogPrivate *priv;
+  CtkWidget *action_area;
+  CtkSettings *settings;
   gboolean use_caret;
 
   dialog->priv = ctk_message_dialog_get_instance_private (dialog);
@@ -336,9 +336,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-setup_primary_label_font (GtkMessageDialog *dialog)
+setup_primary_label_font (CtkMessageDialog *dialog)
 {
-  GtkMessageDialogPrivate *priv = dialog->priv;
+  CtkMessageDialogPrivate *priv = dialog->priv;
 
   if (!priv->has_primary_markup)
     {
@@ -367,10 +367,10 @@ setup_primary_label_font (GtkMessageDialog *dialog)
 }
 
 static void
-setup_type (GtkMessageDialog *dialog,
-	    GtkMessageType    type)
+setup_type (CtkMessageDialog *dialog,
+	    CtkMessageType    type)
 {
-  GtkMessageDialogPrivate *priv = dialog->priv;
+  CtkMessageDialogPrivate *priv = dialog->priv;
   const gchar *name = NULL;
   AtkObject *atk_obj;
 
@@ -401,7 +401,7 @@ setup_type (GtkMessageDialog *dialog,
       break;
 
     default:
-      g_warning ("Unknown GtkMessageType %u", type);
+      g_warning ("Unknown CtkMessageType %u", type);
       break;
     }
 
@@ -419,7 +419,7 @@ setup_type (GtkMessageDialog *dialog,
 static void
 update_title (GObject    *dialog,
               GParamSpec *pspec,
-              GtkWidget  *label)
+              CtkWidget  *label)
 {
   const gchar *title;
 
@@ -431,7 +431,7 @@ update_title (GObject    *dialog,
 static void
 ctk_message_dialog_constructed (GObject *object)
 {
-  GtkMessageDialog *dialog = CTK_MESSAGE_DIALOG (object);
+  CtkMessageDialog *dialog = CTK_MESSAGE_DIALOG (object);
   gboolean use_header;
 
   G_OBJECT_CLASS (ctk_message_dialog_parent_class)->constructed (object);
@@ -442,8 +442,8 @@ ctk_message_dialog_constructed (GObject *object)
 
   if (use_header)
     {
-      GtkWidget *box;
-      GtkWidget *label;
+      CtkWidget *box;
+      CtkWidget *label;
 
       box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
       ctk_widget_show (box);
@@ -466,8 +466,8 @@ ctk_message_dialog_set_property (GObject      *object,
 				 const GValue *value,
 				 GParamSpec   *pspec)
 {
-  GtkMessageDialog *dialog = CTK_MESSAGE_DIALOG (object);
-  GtkMessageDialogPrivate *priv = dialog->priv;
+  CtkMessageDialog *dialog = CTK_MESSAGE_DIALOG (object);
+  CtkMessageDialogPrivate *priv = dialog->priv;
 
   switch (prop_id)
     {
@@ -541,13 +541,13 @@ ctk_message_dialog_get_property (GObject     *object,
 				 GValue      *value,
 				 GParamSpec  *pspec)
 {
-  GtkMessageDialog *dialog = CTK_MESSAGE_DIALOG (object);
-  GtkMessageDialogPrivate *priv = dialog->priv;
+  CtkMessageDialog *dialog = CTK_MESSAGE_DIALOG (object);
+  CtkMessageDialogPrivate *priv = dialog->priv;
 
   switch (prop_id)
     {
     case PROP_MESSAGE_TYPE:
-      g_value_set_enum (value, (GtkMessageType) priv->message_type);
+      g_value_set_enum (value, (CtkMessageType) priv->message_type);
       break;
     case PROP_TEXT:
       g_value_set_string (value, ctk_label_get_label (CTK_LABEL (priv->label)));
@@ -592,21 +592,21 @@ ctk_message_dialog_get_property (GObject     *object,
  *
  * Creates a new message dialog, which is a simple dialog with some text
  * the user may want to see. When the user clicks a button a “response”
- * signal is emitted with response IDs from #GtkResponseType. See
- * #GtkDialog for more details.
+ * signal is emitted with response IDs from #CtkResponseType. See
+ * #CtkDialog for more details.
  *
- * Returns: (transfer none): a new #GtkMessageDialog
+ * Returns: (transfer none): a new #CtkMessageDialog
  */
-GtkWidget*
-ctk_message_dialog_new (GtkWindow     *parent,
-                        GtkDialogFlags flags,
-                        GtkMessageType type,
-                        GtkButtonsType buttons,
+CtkWidget*
+ctk_message_dialog_new (CtkWindow     *parent,
+                        CtkDialogFlags flags,
+                        CtkMessageType type,
+                        CtkButtonsType buttons,
                         const gchar   *message_format,
                         ...)
 {
-  GtkWidget *widget;
-  GtkDialog *dialog;
+  CtkWidget *widget;
+  CtkDialog *dialog;
   gchar* msg = NULL;
   va_list args;
 
@@ -654,7 +654,7 @@ ctk_message_dialog_new (GtkWindow     *parent,
  * Creates a new message dialog, which is a simple dialog with some text that
  * is marked up with the [Pango text markup language][PangoMarkupFormat].
  * When the user clicks a button a “response” signal is emitted with
- * response IDs from #GtkResponseType. See #GtkDialog for more details.
+ * response IDs from #CtkResponseType. See #CtkDialog for more details.
  *
  * Special XML characters in the printf() arguments passed to this
  * function will automatically be escaped as necessary.
@@ -666,8 +666,8 @@ ctk_message_dialog_new (GtkWindow     *parent,
  * as the format (it might contain “%” characters) or as a string
  * argument.
  * |[<!-- language="C" -->
- *  GtkWidget *dialog;
- *  GtkDialogFlags flags = CTK_DIALOG_DESTROY_WITH_PARENT;
+ *  CtkWidget *dialog;
+ *  CtkDialogFlags flags = CTK_DIALOG_DESTROY_WITH_PARENT;
  *  dialog = ctk_message_dialog_new (parent_window,
  *                                   flags,
  *                                   CTK_MESSAGE_ERROR,
@@ -677,19 +677,19 @@ ctk_message_dialog_new (GtkWindow     *parent,
  *                                 markup);
  * ]|
  * 
- * Returns: a new #GtkMessageDialog
+ * Returns: a new #CtkMessageDialog
  *
  * Since: 2.4
  **/
-GtkWidget*
-ctk_message_dialog_new_with_markup (GtkWindow     *parent,
-                                    GtkDialogFlags flags,
-                                    GtkMessageType type,
-                                    GtkButtonsType buttons,
+CtkWidget*
+ctk_message_dialog_new_with_markup (CtkWindow     *parent,
+                                    CtkDialogFlags flags,
+                                    CtkMessageType type,
+                                    CtkButtonsType buttons,
                                     const gchar   *message_format,
                                     ...)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   va_list args;
   gchar *msg = NULL;
 
@@ -713,20 +713,20 @@ ctk_message_dialog_new_with_markup (GtkWindow     *parent,
 
 /**
  * ctk_message_dialog_set_image:
- * @dialog: a #GtkMessageDialog
+ * @dialog: a #CtkMessageDialog
  * @image: the image
  * 
  * Sets the dialog’s image to @image.
  *
  * Since: 2.10
- * Deprecated: 3.12: Use #GtkDialog to create dialogs with images
+ * Deprecated: 3.12: Use #CtkDialog to create dialogs with images
  **/
 void
-ctk_message_dialog_set_image (GtkMessageDialog *dialog,
-			      GtkWidget        *image)
+ctk_message_dialog_set_image (CtkMessageDialog *dialog,
+			      CtkWidget        *image)
 {
-  GtkMessageDialogPrivate *priv;
-  GtkWidget *parent;
+  CtkMessageDialogPrivate *priv;
+  CtkWidget *parent;
 
   g_return_if_fail (CTK_IS_MESSAGE_DIALOG (dialog));
   g_return_if_fail (image == NULL || CTK_IS_WIDGET (image));
@@ -755,17 +755,17 @@ ctk_message_dialog_set_image (GtkMessageDialog *dialog,
 
 /**
  * ctk_message_dialog_get_image:
- * @dialog: a #GtkMessageDialog
+ * @dialog: a #CtkMessageDialog
  *
  * Gets the dialog’s image.
  *
  * Returns: (transfer none): the dialog’s image
  *
  * Since: 2.14
- * Deprecated: 3.12: Use #GtkDialog for dialogs with images
+ * Deprecated: 3.12: Use #CtkDialog for dialogs with images
  **/
-GtkWidget *
-ctk_message_dialog_get_image (GtkMessageDialog *dialog)
+CtkWidget *
+ctk_message_dialog_get_image (CtkMessageDialog *dialog)
 {
   g_return_val_if_fail (CTK_IS_MESSAGE_DIALOG (dialog), NULL);
 
@@ -774,7 +774,7 @@ ctk_message_dialog_get_image (GtkMessageDialog *dialog)
 
 /**
  * ctk_message_dialog_set_markup:
- * @message_dialog: a #GtkMessageDialog
+ * @message_dialog: a #CtkMessageDialog
  * @str: markup string (see [Pango markup format][PangoMarkupFormat])
  * 
  * Sets the text of the message dialog to be @str, which is marked
@@ -783,10 +783,10 @@ ctk_message_dialog_get_image (GtkMessageDialog *dialog)
  * Since: 2.4
  **/
 void
-ctk_message_dialog_set_markup (GtkMessageDialog *message_dialog,
+ctk_message_dialog_set_markup (CtkMessageDialog *message_dialog,
                                const gchar      *str)
 {
-  GtkMessageDialogPrivate *priv;
+  CtkMessageDialogPrivate *priv;
 
   g_return_if_fail (CTK_IS_MESSAGE_DIALOG (message_dialog));
 
@@ -798,7 +798,7 @@ ctk_message_dialog_set_markup (GtkMessageDialog *message_dialog,
 
 /**
  * ctk_message_dialog_format_secondary_text:
- * @message_dialog: a #GtkMessageDialog
+ * @message_dialog: a #CtkMessageDialog
  * @message_format: (allow-none): printf()-style format string, or %NULL
  * @...: arguments for @message_format
  *
@@ -808,13 +808,13 @@ ctk_message_dialog_set_markup (GtkMessageDialog *message_dialog,
  * Since: 2.6
  */
 void
-ctk_message_dialog_format_secondary_text (GtkMessageDialog *message_dialog,
+ctk_message_dialog_format_secondary_text (CtkMessageDialog *message_dialog,
                                           const gchar      *message_format,
                                           ...)
 {
   va_list args;
   gchar *msg = NULL;
-  GtkMessageDialogPrivate *priv;
+  CtkMessageDialogPrivate *priv;
 
   g_return_if_fail (CTK_IS_MESSAGE_DIALOG (message_dialog));
 
@@ -844,7 +844,7 @@ ctk_message_dialog_format_secondary_text (GtkMessageDialog *message_dialog,
 
 /**
  * ctk_message_dialog_format_secondary_markup:
- * @message_dialog: a #GtkMessageDialog
+ * @message_dialog: a #CtkMessageDialog
  * @message_format: printf()-style markup string (see
      [Pango markup format][PangoMarkupFormat]), or %NULL
  * @...: arguments for @message_format
@@ -870,13 +870,13 @@ ctk_message_dialog_format_secondary_text (GtkMessageDialog *message_dialog,
  * Since: 2.6
  */
 void
-ctk_message_dialog_format_secondary_markup (GtkMessageDialog *message_dialog,
+ctk_message_dialog_format_secondary_markup (CtkMessageDialog *message_dialog,
                                             const gchar      *message_format,
                                             ...)
 {
   va_list args;
   gchar *msg = NULL;
-  GtkMessageDialogPrivate *priv;
+  CtkMessageDialogPrivate *priv;
 
   g_return_if_fail (CTK_IS_MESSAGE_DIALOG (message_dialog));
 
@@ -906,21 +906,21 @@ ctk_message_dialog_format_secondary_markup (GtkMessageDialog *message_dialog,
 
 /**
  * ctk_message_dialog_get_message_area:
- * @message_dialog: a #GtkMessageDialog
+ * @message_dialog: a #CtkMessageDialog
  *
  * Returns the message area of the dialog. This is the box where the
  * dialog’s primary and secondary labels are packed. You can add your
  * own extra content to that box and it will appear below those labels.
  * See ctk_dialog_get_content_area() for the corresponding
- * function in the parent #GtkDialog.
+ * function in the parent #CtkDialog.
  *
- * Returns: (transfer none): A #GtkBox corresponding to the
+ * Returns: (transfer none): A #CtkBox corresponding to the
  *     “message area” in the @message_dialog.
  *
  * Since: 2.22
  **/
-GtkWidget *
-ctk_message_dialog_get_message_area (GtkMessageDialog *message_dialog)
+CtkWidget *
+ctk_message_dialog_get_message_area (CtkMessageDialog *message_dialog)
 {
   g_return_val_if_fail (CTK_IS_MESSAGE_DIALOG (message_dialog), NULL);
 
@@ -928,10 +928,10 @@ ctk_message_dialog_get_message_area (GtkMessageDialog *message_dialog)
 }
 
 static void
-ctk_message_dialog_add_buttons (GtkMessageDialog* message_dialog,
-				GtkButtonsType buttons)
+ctk_message_dialog_add_buttons (CtkMessageDialog* message_dialog,
+				CtkButtonsType buttons)
 {
-  GtkDialog* dialog = CTK_DIALOG (message_dialog);
+  CtkDialog* dialog = CTK_DIALOG (message_dialog);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   switch (buttons)
@@ -971,7 +971,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       break;
       
     default:
-      g_warning ("Unknown GtkButtonsType");
+      g_warning ("Unknown CtkButtonsType");
       break;
     } 
 G_GNUC_END_IGNORE_DEPRECATIONS
@@ -980,10 +980,10 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-ctk_message_dialog_style_updated (GtkWidget *widget)
+ctk_message_dialog_style_updated (CtkWidget *widget)
 {
-  GtkMessageDialog *dialog = CTK_MESSAGE_DIALOG (widget);
-  GtkWidget *parent;
+  CtkMessageDialog *dialog = CTK_MESSAGE_DIALOG (widget);
+  CtkWidget *parent;
   gint border_width;
 
   parent = ctk_widget_get_parent (dialog->priv->message_area);

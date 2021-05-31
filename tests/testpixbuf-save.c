@@ -105,10 +105,10 @@ do_compare (GdkPixbuf *pixbuf, GdkPixbuf *compare, GError *err)
 }
 
 static void
-keypress_check (GtkWidget *widget, GdkEventKey *evt, gpointer data)
+keypress_check (CtkWidget *widget, GdkEventKey *evt, gpointer data)
 {
         GdkPixbuf *pixbuf;
-        GtkDrawingArea *da = (GtkDrawingArea*)data;
+        CtkDrawingArea *da = (CtkDrawingArea*)data;
         GError *err = NULL;
         gchar *buffer;
         gsize count;
@@ -301,14 +301,14 @@ keypress_check (GtkWidget *widget, GdkEventKey *evt, gpointer data)
 
 
 static int
-close_app (GtkWidget *widget, gpointer data)
+close_app (CtkWidget *widget, gpointer data)
 {
         ctk_main_quit ();
         return TRUE;
 }
 
 static gboolean
-draw_cb (GtkWidget *drawing_area, cairo_t *cr, gpointer data)
+draw_cb (CtkWidget *drawing_area, cairo_t *cr, gpointer data)
 {
         GdkPixbuf *pixbuf;
          
@@ -322,7 +322,7 @@ draw_cb (GtkWidget *drawing_area, cairo_t *cr, gpointer data)
 }
 
 static int
-configure_cb (GtkWidget *drawing_area, GdkEventConfigure *evt, gpointer data)
+configure_cb (CtkWidget *drawing_area, GdkEventConfigure *evt, gpointer data)
 {
         GdkPixbuf *pixbuf;
                            
@@ -348,9 +348,9 @@ int
 main (int argc, char **argv)
 {   
         GdkWindow     *root;
-        GtkWidget     *window;
-        GtkWidget     *vbox;
-        GtkWidget     *drawing_area;
+        CtkWidget     *window;
+        CtkWidget     *vbox;
+        CtkWidget     *drawing_area;
         GdkPixbuf     *pixbuf;    
    
         ctk_init (&argc, &argv);   

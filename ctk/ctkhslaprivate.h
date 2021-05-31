@@ -22,28 +22,28 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GtkHSLA GtkHSLA;
+typedef struct _CtkHSLA CtkHSLA;
 
-struct _GtkHSLA {
+struct _CtkHSLA {
   double hue;
   double saturation;
   double lightness;
   double alpha;
 };
 
-void            _ctk_hsla_init              (GtkHSLA          *hsla,
+void            _ctk_hsla_init              (CtkHSLA          *hsla,
                                              double            hue,
                                              double            saturation,
                                              double            lightness,
                                              double            alpha);
-void            _ctk_hsla_init_from_rgba    (GtkHSLA          *hsla,
+void            _ctk_hsla_init_from_rgba    (CtkHSLA          *hsla,
                                              const GdkRGBA    *rgba);
 /* Yes, I can name that function like this! */
 void            _gdk_rgba_init_from_hsla    (GdkRGBA          *rgba,
-                                             const GtkHSLA    *hsla);
+                                             const CtkHSLA    *hsla);
 
-void            _ctk_hsla_shade             (GtkHSLA          *dest,
-                                             const GtkHSLA    *src,
+void            _ctk_hsla_shade             (CtkHSLA          *dest,
+                                             const CtkHSLA    *src,
                                              double            factor);
 
 G_END_DECLS

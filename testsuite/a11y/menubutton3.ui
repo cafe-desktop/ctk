@@ -8,10 +8,10 @@
       </item>
     </section>
   </menu>
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkMenuButton" id="menubutton">
+      <object class="CtkMenuButton" id="menubutton">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="menu-model">menu</property>

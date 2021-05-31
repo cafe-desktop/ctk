@@ -24,8 +24,8 @@
 
 G_BEGIN_DECLS
 
-GtkCssValue *   ctk_css_win32_size_value_parse      (GtkCssParser           *parser,
-                                                     GtkCssNumberParseFlags  flags);
+CtkCssValue *   ctk_css_win32_size_value_parse      (CtkCssParser           *parser,
+                                                     CtkCssNumberParseFlags  flags);
 
 G_END_DECLS
 

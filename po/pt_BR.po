@@ -1814,7 +1814,7 @@ msgid ""
 "  --id=ID            Preview only the named object\n"
 "  --css=FILE         Use style from CSS file\n"
 "\n"
-"Perform various tasks on GtkBuilder .ui files.\n"
+"Perform various tasks on CtkBuilder .ui files.\n"
 msgstr ""
 "Uso:\n"
 "  ctk-builder-tool [COMANDO] ARQUIVO\n"
@@ -1832,7 +1832,7 @@ msgstr ""
 "  --id=ID            Visualiza apenas o objeto indicado\n"
 "  --css=ARQUIVO      Usa o estilo de um arquivo CSS\n"
 "\n"
-"Efetua várias tarefas em arquivos .ui do GtkBuilder.\n"
+"Efetua várias tarefas em arquivos .ui do CtkBuilder.\n"
 
 #. Translate to calendar:YM if you want years to be displayed
 #. * before months; otherwise translate to calendar:MY.
@@ -2726,7 +2726,7 @@ msgstr "Acessado"
 msgid "Create Folder"
 msgstr "Criar pasta"
 
-#. The pointers we return for a GtkFileSystemVolume are opaque tokens; they are
+#. The pointers we return for a CtkFileSystemVolume are opaque tokens; they are
 #. * really pointers to GDrive, GVolume or GMount objects.  We need an extra
 #. * token for the fake “File System” volume.  So, we’ll return a pointer to
 #. * this particular string.
@@ -3918,7 +3918,7 @@ msgstr "Resultados da pesquisa"
 
 #  Texto exibido na caixa de pesquisa quando nada foi digitado (placeholder).
 #  Source code using placeholder: https://goo.gl/ItWsmZ
-#  GtkEntry placeholder reference: https://goo.gl/e5Ehwr
+#  CtkEntry placeholder reference: https://goo.gl/e5Ehwr
 #: ctk/ctkshortcutswindow.c:988
 msgid "Search Shortcuts"
 msgstr "Pesquisar atalhos"
@@ -4323,7 +4323,7 @@ msgstr "Número de referências"
 
 #: ctk/inspector/misc-info.ui:136
 msgid "Buildable ID"
-msgstr "GtkBuild ID"
+msgstr "CtkBuild ID"
 
 #: ctk/inspector/misc-info.ui:170
 msgid "Default Widget"

@@ -19,7 +19,7 @@ char **icon_names = NULL;
 gsize n_icon_names = 0;
 
 static void
-init_icon_names (GtkIconTheme *theme)
+init_icon_names (CtkIconTheme *theme)
 {
   GPtrArray *icons;
   GList *l, *icon_list;
@@ -47,49 +47,49 @@ init_icon_names (GtkIconTheme *theme)
 }
 
 static const char *
-get_random_icon_name (GtkIconTheme *theme)
+get_random_icon_name (CtkIconTheme *theme)
 {
   init_icon_names (theme);
 
   return icon_names[g_random_int_range(0, n_icon_names)];
 }
 
-GtkWidget *
+CtkWidget *
 create_icon (void)
 {
-  GtkWidget *image;
+  CtkWidget *image;
 
   image = ctk_image_new_from_icon_name (get_random_icon_name (ctk_icon_theme_get_default ()), CTK_ICON_SIZE_DND);
 
   return image;
 }
 
-static GtkWidget *
+static CtkWidget *
 create_button (void)
 {
   return ctk_button_new_with_label ("Button");
 }
 
-static GtkWidget *
+static CtkWidget *
 create_blurred_button (void)
 {
-  GtkWidget *w = ctk_button_new ();
+  CtkWidget *w = ctk_button_new ();
 
   ctk_style_context_add_class (ctk_widget_get_style_context (w), "blurred-button");
 
   return w;
 }
 
-static GtkWidget *
+static CtkWidget *
 create_font_button (void)
 {
   return ctk_font_button_new ();
 }
 
-static GtkWidget *
+static CtkWidget *
 create_level_bar (void)
 {
-  GtkWidget *w = ctk_level_bar_new_for_interval (0, 100);
+  CtkWidget *w = ctk_level_bar_new_for_interval (0, 100);
 
   ctk_level_bar_set_value (CTK_LEVEL_BAR (w), 50);
 
@@ -99,28 +99,28 @@ create_level_bar (void)
   return w;
 }
 
-static GtkWidget *
+static CtkWidget *
 create_spinner (void)
 {
-  GtkWidget *w = ctk_spinner_new ();
+  CtkWidget *w = ctk_spinner_new ();
 
   ctk_spinner_start (CTK_SPINNER (w));
 
   return w;
 }
 
-static GtkWidget *
+static CtkWidget *
 create_spinbutton (void)
 {
-  GtkWidget *w = ctk_spin_button_new_with_range (0, 10, 1);
+  CtkWidget *w = ctk_spin_button_new_with_range (0, 10, 1);
 
   return w;
 }
 
-static GtkWidget *
+static CtkWidget *
 create_label (void)
 {
-  GtkWidget *w = ctk_label_new ("pLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.");
+  CtkWidget *w = ctk_label_new ("pLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.");
 
   ctk_label_set_line_wrap (CTK_LABEL (w), TRUE);
   ctk_label_set_max_width_chars (CTK_LABEL (w), 100);
@@ -129,10 +129,10 @@ create_label (void)
 }
 
 #if 0
-static GtkWidget *
+static CtkWidget *
 create_gears (void)
 {
-  GtkWidget *w = ctk_gears_new ();
+  CtkWidget *w = ctk_gears_new ();
 
   ctk_widget_set_size_request (w, 100, 100);
 
@@ -140,10 +140,10 @@ create_gears (void)
 }
 #endif
 
-static GtkWidget *
+static CtkWidget *
 create_switch (void)
 {
-  GtkWidget *w = ctk_switch_new ();
+  CtkWidget *w = ctk_switch_new ();
 
   ctk_switch_set_state (CTK_SWITCH (w), TRUE);
 
@@ -152,7 +152,7 @@ create_switch (void)
 
 static const struct {
   const char *name;
-  GtkWidget * (*create_func) (void);
+  CtkWidget * (*create_func) (void);
 } widget_types[] = {
   { "Icon",       create_icon           },
   { "Button",     create_button         },
@@ -170,10 +170,10 @@ static int selected_widget_type = -1;
 static const int N_WIDGET_TYPES = G_N_ELEMENTS (widget_types);
 
 static void
-set_widget_type (GtkFishbowl *fishbowl,
+set_widget_type (CtkFishbowl *fishbowl,
                  int          widget_type_index)
 {
-  GtkWidget *window, *headerbar;
+  CtkWidget *window, *headerbar;
 
   if (widget_type_index == selected_widget_type)
     return;
@@ -190,10 +190,10 @@ set_widget_type (GtkFishbowl *fishbowl,
 }
 
 void
-next_button_clicked_cb (GtkButton *source,
+next_button_clicked_cb (CtkButton *source,
                         gpointer   user_data)
 {
-  GtkFishbowl *fishbowl = user_data;
+  CtkFishbowl *fishbowl = user_data;
   int new_index;
 
   if (selected_widget_type + 1 >= N_WIDGET_TYPES)
@@ -205,10 +205,10 @@ next_button_clicked_cb (GtkButton *source,
 }
 
 void
-prev_button_clicked_cb (GtkButton *source,
+prev_button_clicked_cb (CtkButton *source,
                         gpointer   user_data)
 {
-  GtkFishbowl *fishbowl = user_data;
+  CtkFishbowl *fishbowl = user_data;
   int new_index;
 
   if (selected_widget_type - 1 < 0)
@@ -220,11 +220,11 @@ prev_button_clicked_cb (GtkButton *source,
 }
 
 
-GtkWidget *
-do_fishbowl (GtkWidget *do_widget)
+CtkWidget *
+do_fishbowl (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
-  static GtkCssProvider *provider = NULL;
+  static CtkWidget *window = NULL;
+  static CtkCssProvider *provider = NULL;
 
   if (provider == NULL)
     {
@@ -237,8 +237,8 @@ do_fishbowl (GtkWidget *do_widget)
 
   if (!window)
     {
-      GtkBuilder *builder;
-      GtkWidget *bowl;
+      CtkBuilder *builder;
+      CtkWidget *bowl;
 
       g_type_ensure (CTK_TYPE_FISHBOWL);
 

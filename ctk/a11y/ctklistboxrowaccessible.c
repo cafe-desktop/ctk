@@ -22,10 +22,10 @@
 #include "ctk/ctklistbox.h"
 
 
-G_DEFINE_TYPE (GtkListBoxRowAccessible, ctk_list_box_row_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)
+G_DEFINE_TYPE (CtkListBoxRowAccessible, ctk_list_box_row_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)
 
 static void
-ctk_list_box_row_accessible_init (GtkListBoxRowAccessible *accessible)
+ctk_list_box_row_accessible_init (CtkListBoxRowAccessible *accessible)
 {
 }
 
@@ -42,7 +42,7 @@ static AtkStateSet*
 ctk_list_box_row_accessible_ref_state_set (AtkObject *obj)
 {
   AtkStateSet *state_set;
-  GtkWidget *widget, *parent;
+  CtkWidget *widget, *parent;
 
   state_set = ATK_OBJECT_CLASS (ctk_list_box_row_accessible_parent_class)->ref_state_set (obj);
 
@@ -63,7 +63,7 @@ ctk_list_box_row_accessible_ref_state_set (AtkObject *obj)
 }
 
 static void
-ctk_list_box_row_accessible_class_init (GtkListBoxRowAccessibleClass *klass)
+ctk_list_box_row_accessible_class_init (CtkListBoxRowAccessibleClass *klass)
 {
   AtkObjectClass *object_class = ATK_OBJECT_CLASS (klass);
 

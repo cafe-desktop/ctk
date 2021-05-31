@@ -29,92 +29,92 @@
 
 G_BEGIN_DECLS
 
-void                    ctk_application_window_set_id                   (GtkApplicationWindow     *window,
+void                    ctk_application_window_set_id                   (CtkApplicationWindow     *window,
                                                                          guint                     id);
-GActionGroup *          ctk_application_window_get_action_group         (GtkApplicationWindow     *window);
-void                    ctk_application_handle_window_realize           (GtkApplication           *application,
-                                                                         GtkWindow                *window);
-void                    ctk_application_handle_window_map               (GtkApplication           *application,
-                                                                         GtkWindow                *window);
-GtkActionMuxer *        ctk_application_get_parent_muxer_for_window     (GtkWindow                *window);
+GActionGroup *          ctk_application_window_get_action_group         (CtkApplicationWindow     *window);
+void                    ctk_application_handle_window_realize           (CtkApplication           *application,
+                                                                         CtkWindow                *window);
+void                    ctk_application_handle_window_map               (CtkApplication           *application,
+                                                                         CtkWindow                *window);
+CtkActionMuxer *        ctk_application_get_parent_muxer_for_window     (CtkWindow                *window);
 
-GtkActionMuxer *        ctk_application_get_action_muxer                (GtkApplication           *application);
-void                    ctk_application_insert_action_group             (GtkApplication           *application,
+CtkActionMuxer *        ctk_application_get_action_muxer                (CtkApplication           *application);
+void                    ctk_application_insert_action_group             (CtkApplication           *application,
                                                                          const gchar              *name,
                                                                          GActionGroup             *action_group);
 
-GtkApplicationAccels *  ctk_application_get_application_accels          (GtkApplication           *application);
+CtkApplicationAccels *  ctk_application_get_application_accels          (CtkApplication           *application);
 
-void                    ctk_application_set_screensaver_active          (GtkApplication           *application,
+void                    ctk_application_set_screensaver_active          (CtkApplication           *application,
                                                                          gboolean                  active);
 
 #define CTK_TYPE_APPLICATION_IMPL                           (ctk_application_impl_get_type ())
 #define CTK_APPLICATION_IMPL_CLASS(class)                   (G_TYPE_CHECK_CLASS_CAST ((class),                     \
                                                              CTK_TYPE_APPLICATION_IMPL,                            \
-                                                             GtkApplicationImplClass))
+                                                             CtkApplicationImplClass))
 #define CTK_APPLICATION_IMPL_GET_CLASS(obj)                 (G_TYPE_INSTANCE_GET_CLASS ((obj),                     \
                                                              CTK_TYPE_APPLICATION_IMPL,                            \
-                                                             GtkApplicationImplClass))
+                                                             CtkApplicationImplClass))
 
 typedef struct
 {
   GObject parent_instance;
-  GtkApplication *application;
+  CtkApplication *application;
   GdkDisplay *display;
-} GtkApplicationImpl;
+} CtkApplicationImpl;
 
 typedef struct
 {
   GObjectClass parent_class;
 
-  void        (* startup)                   (GtkApplicationImpl          *impl,
+  void        (* startup)                   (CtkApplicationImpl          *impl,
                                              gboolean                     register_session);
-  void        (* shutdown)                  (GtkApplicationImpl          *impl);
+  void        (* shutdown)                  (CtkApplicationImpl          *impl);
 
-  void        (* before_emit)               (GtkApplicationImpl          *impl,
+  void        (* before_emit)               (CtkApplicationImpl          *impl,
                                              GVariant                    *platform_data);
 
-  void        (* window_added)              (GtkApplicationImpl          *impl,
-                                             GtkWindow                   *window);
-  void        (* window_removed)            (GtkApplicationImpl          *impl,
-                                             GtkWindow                   *window);
-  void        (* active_window_changed)     (GtkApplicationImpl          *impl,
-                                             GtkWindow                   *window);
-  void        (* handle_window_realize)     (GtkApplicationImpl          *impl,
-                                             GtkWindow                   *window);
-  void        (* handle_window_map)         (GtkApplicationImpl          *impl,
-                                             GtkWindow                   *window);
+  void        (* window_added)              (CtkApplicationImpl          *impl,
+                                             CtkWindow                   *window);
+  void        (* window_removed)            (CtkApplicationImpl          *impl,
+                                             CtkWindow                   *window);
+  void        (* active_window_changed)     (CtkApplicationImpl          *impl,
+                                             CtkWindow                   *window);
+  void        (* handle_window_realize)     (CtkApplicationImpl          *impl,
+                                             CtkWindow                   *window);
+  void        (* handle_window_map)         (CtkApplicationImpl          *impl,
+                                             CtkWindow                   *window);
 
-  void        (* set_app_menu)              (GtkApplicationImpl          *impl,
+  void        (* set_app_menu)              (CtkApplicationImpl          *impl,
                                              GMenuModel                  *app_menu);
-  void        (* set_menubar)               (GtkApplicationImpl          *impl,
+  void        (* set_menubar)               (CtkApplicationImpl          *impl,
                                              GMenuModel                  *menubar);
 
-  guint       (* inhibit)                   (GtkApplicationImpl          *impl,
-                                             GtkWindow                   *window,
-                                             GtkApplicationInhibitFlags   flags,
+  guint       (* inhibit)                   (CtkApplicationImpl          *impl,
+                                             CtkWindow                   *window,
+                                             CtkApplicationInhibitFlags   flags,
                                              const gchar                 *reason);
-  void        (* uninhibit)                 (GtkApplicationImpl          *impl,
+  void        (* uninhibit)                 (CtkApplicationImpl          *impl,
                                              guint                        cookie);
-  gboolean    (* is_inhibited)              (GtkApplicationImpl          *impl,
-                                             GtkApplicationInhibitFlags   flags);
+  gboolean    (* is_inhibited)              (CtkApplicationImpl          *impl,
+                                             CtkApplicationInhibitFlags   flags);
 
-  gboolean    (* prefers_app_menu)          (GtkApplicationImpl          *impl);
+  gboolean    (* prefers_app_menu)          (CtkApplicationImpl          *impl);
 
 
-} GtkApplicationImplClass;
+} CtkApplicationImplClass;
 
 #define CTK_TYPE_APPLICATION_IMPL_DBUS                      (ctk_application_impl_dbus_get_type ())
 #define CTK_APPLICATION_IMPL_DBUS_CLASS(class)              (G_TYPE_CHECK_CLASS_CAST ((class),                     \
                                                              CTK_TYPE_APPLICATION_IMPL_DBUS,                       \
-                                                             GtkApplicationImplDBusClass))
+                                                             CtkApplicationImplDBusClass))
 #define CTK_APPLICATION_IMPL_DBUS_GET_CLASS(obj)            (G_TYPE_INSTANCE_GET_CLASS ((obj),                     \
                                                              CTK_TYPE_APPLICATION_IMPL_DBUS,                       \
-                                                             GtkApplicationImplDBusClass))
+                                                             CtkApplicationImplDBusClass))
 
 typedef struct
 {
-  GtkApplicationImpl impl;
+  CtkApplicationImpl impl;
 
   GDBusConnection *session;
 
@@ -140,16 +140,16 @@ typedef struct
   guint            state_changed_handler;
   char *           session_id;
   guint            session_state;
-} GtkApplicationImplDBus;
+} CtkApplicationImplDBus;
 
 typedef struct
 {
-  GtkApplicationImplClass parent_class;
+  CtkApplicationImplClass parent_class;
 
   /* returns floating */
-  GVariant *  (* get_window_system_id)      (GtkApplicationImplDBus      *dbus,
-                                             GtkWindow                   *window);
-} GtkApplicationImplDBusClass;
+  GVariant *  (* get_window_system_id)      (CtkApplicationImplDBus      *dbus,
+                                             CtkWindow                   *window);
+} CtkApplicationImplDBusClass;
 
 GType                   ctk_application_impl_get_type                   (void);
 GType                   ctk_application_impl_dbus_get_type              (void);
@@ -157,43 +157,43 @@ GType                   ctk_application_impl_x11_get_type               (void);
 GType                   ctk_application_impl_wayland_get_type           (void);
 GType                   ctk_application_impl_quartz_get_type            (void);
 
-GtkApplicationImpl *    ctk_application_impl_new                        (GtkApplication              *application,
+CtkApplicationImpl *    ctk_application_impl_new                        (CtkApplication              *application,
                                                                          GdkDisplay                  *display);
-void                    ctk_application_impl_startup                    (GtkApplicationImpl          *impl,
+void                    ctk_application_impl_startup                    (CtkApplicationImpl          *impl,
                                                                          gboolean                     register_sesion);
-void                    ctk_application_impl_shutdown                   (GtkApplicationImpl          *impl);
-void                    ctk_application_impl_before_emit                (GtkApplicationImpl          *impl,
+void                    ctk_application_impl_shutdown                   (CtkApplicationImpl          *impl);
+void                    ctk_application_impl_before_emit                (CtkApplicationImpl          *impl,
                                                                          GVariant                    *platform_data);
-void                    ctk_application_impl_window_added               (GtkApplicationImpl          *impl,
-                                                                         GtkWindow                   *window);
-void                    ctk_application_impl_window_removed             (GtkApplicationImpl          *impl,
-                                                                         GtkWindow                   *window);
-void                    ctk_application_impl_active_window_changed      (GtkApplicationImpl          *impl,
-                                                                         GtkWindow                   *window);
-void                    ctk_application_impl_handle_window_realize      (GtkApplicationImpl          *impl,
-                                                                         GtkWindow                   *window);
-void                    ctk_application_impl_handle_window_map          (GtkApplicationImpl          *impl,
-                                                                         GtkWindow                   *window);
-void                    ctk_application_impl_set_app_menu               (GtkApplicationImpl          *impl,
+void                    ctk_application_impl_window_added               (CtkApplicationImpl          *impl,
+                                                                         CtkWindow                   *window);
+void                    ctk_application_impl_window_removed             (CtkApplicationImpl          *impl,
+                                                                         CtkWindow                   *window);
+void                    ctk_application_impl_active_window_changed      (CtkApplicationImpl          *impl,
+                                                                         CtkWindow                   *window);
+void                    ctk_application_impl_handle_window_realize      (CtkApplicationImpl          *impl,
+                                                                         CtkWindow                   *window);
+void                    ctk_application_impl_handle_window_map          (CtkApplicationImpl          *impl,
+                                                                         CtkWindow                   *window);
+void                    ctk_application_impl_set_app_menu               (CtkApplicationImpl          *impl,
                                                                          GMenuModel                  *app_menu);
-void                    ctk_application_impl_set_menubar                (GtkApplicationImpl          *impl,
+void                    ctk_application_impl_set_menubar                (CtkApplicationImpl          *impl,
                                                                          GMenuModel                  *menubar);
-guint                   ctk_application_impl_inhibit                    (GtkApplicationImpl          *impl,
-                                                                         GtkWindow                   *window,
-                                                                         GtkApplicationInhibitFlags   flags,
+guint                   ctk_application_impl_inhibit                    (CtkApplicationImpl          *impl,
+                                                                         CtkWindow                   *window,
+                                                                         CtkApplicationInhibitFlags   flags,
                                                                          const gchar                 *reason);
-void                    ctk_application_impl_uninhibit                  (GtkApplicationImpl          *impl,
+void                    ctk_application_impl_uninhibit                  (CtkApplicationImpl          *impl,
                                                                          guint                        cookie);
-gboolean                ctk_application_impl_is_inhibited               (GtkApplicationImpl          *impl,
-                                                                         GtkApplicationInhibitFlags   flags);
+gboolean                ctk_application_impl_is_inhibited               (CtkApplicationImpl          *impl,
+                                                                         CtkApplicationInhibitFlags   flags);
 
-gchar *                 ctk_application_impl_dbus_get_window_path       (GtkApplicationImplDBus      *dbus,
-                                                                         GtkWindow                   *window);
-gboolean                ctk_application_impl_prefers_app_menu           (GtkApplicationImpl          *impl);
+gchar *                 ctk_application_impl_dbus_get_window_path       (CtkApplicationImplDBus      *dbus,
+                                                                         CtkWindow                   *window);
+gboolean                ctk_application_impl_prefers_app_menu           (CtkApplicationImpl          *impl);
 
 
 void                    ctk_application_impl_quartz_setup_menu          (GMenuModel                  *model,
-                                                                         GtkActionMuxer              *muxer);
+                                                                         CtkActionMuxer              *muxer);
 
 G_END_DECLS
 

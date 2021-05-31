@@ -2,9 +2,9 @@
 
 int main (int argc, char **argv)
 {
-	GtkWidget *window;
-	GtkWidget *button;
-	GtkWidget *grid;
+	CtkWidget *window;
+	CtkWidget *button;
+	CtkWidget *grid;
         GIcon *icon;
         GIcon *icon2;
 

@@ -31,12 +31,12 @@
 
 #include "ctktoplevelaccessible.h"
 
-struct _GtkToplevelAccessiblePrivate
+struct _CtkToplevelAccessiblePrivate
 {
   GList *window_list;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkToplevelAccessible, ctk_toplevel_accessible, ATK_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkToplevelAccessible, ctk_toplevel_accessible, ATK_TYPE_OBJECT)
 
 static void
 ctk_toplevel_accessible_initialize (AtkObject *accessible,
@@ -51,7 +51,7 @@ ctk_toplevel_accessible_initialize (AtkObject *accessible,
 static void
 ctk_toplevel_accessible_object_finalize (GObject *obj)
 {
-  GtkToplevelAccessible *toplevel = CTK_TOPLEVEL_ACCESSIBLE (obj);
+  CtkToplevelAccessible *toplevel = CTK_TOPLEVEL_ACCESSIBLE (obj);
 
   if (toplevel->priv->window_list)
     g_list_free (toplevel->priv->window_list);
@@ -62,7 +62,7 @@ ctk_toplevel_accessible_object_finalize (GObject *obj)
 static gint
 ctk_toplevel_accessible_get_n_children (AtkObject *obj)
 {
-  GtkToplevelAccessible *toplevel = CTK_TOPLEVEL_ACCESSIBLE (obj);
+  CtkToplevelAccessible *toplevel = CTK_TOPLEVEL_ACCESSIBLE (obj);
 
   return g_list_length (toplevel->priv->window_list);
 }
@@ -71,8 +71,8 @@ static AtkObject *
 ctk_toplevel_accessible_ref_child (AtkObject *obj,
                                    gint       i)
 {
-  GtkToplevelAccessible *toplevel;
-  GtkWidget *widget;
+  CtkToplevelAccessible *toplevel;
+  CtkWidget *widget;
   AtkObject *atk_obj;
 
   toplevel = CTK_TOPLEVEL_ACCESSIBLE (obj);
@@ -94,9 +94,9 @@ ctk_toplevel_accessible_get_name (AtkObject *obj)
 }
 
 static gboolean
-is_combo_window (GtkWidget *widget)
+is_combo_window (CtkWidget *widget)
 {
-  GtkWidget *child;
+  CtkWidget *child;
   AtkObject *obj;
 
   child = ctk_bin_get_child (CTK_BIN (widget));
@@ -121,17 +121,17 @@ is_combo_window (GtkWidget *widget)
 }
 
 static gboolean
-is_attached_menu_window (GtkWidget *widget)
+is_attached_menu_window (CtkWidget *widget)
 {
-  GtkWidget *child;
+  CtkWidget *child;
 
   child = ctk_bin_get_child (CTK_BIN (widget));
   if (CTK_IS_MENU (child))
     {
-      GtkWidget *attach;
+      CtkWidget *attach;
 
       attach = ctk_menu_get_attach_widget (CTK_MENU (child));
-      /* Allow for menu belonging to the Panel Menu, which is a GtkButton */
+      /* Allow for menu belonging to the Panel Menu, which is a CtkButton */
       if (CTK_IS_MENU_ITEM (attach) || CTK_IS_BUTTON (attach))
         return TRUE;
     }
@@ -140,7 +140,7 @@ is_attached_menu_window (GtkWidget *widget)
 }
 
 static void
-ctk_toplevel_accessible_class_init (GtkToplevelAccessibleClass *klass)
+ctk_toplevel_accessible_class_init (CtkToplevelAccessibleClass *klass)
 {
   AtkObjectClass *class = ATK_OBJECT_CLASS(klass);
   GObjectClass *g_object_class = G_OBJECT_CLASS(klass);
@@ -155,8 +155,8 @@ ctk_toplevel_accessible_class_init (GtkToplevelAccessibleClass *klass)
 }
 
 static void
-remove_child (GtkToplevelAccessible *toplevel,
-              GtkWindow             *window)
+remove_child (CtkToplevelAccessible *toplevel,
+              CtkWindow             *window)
 {
   AtkObject *atk_obj = ATK_OBJECT (toplevel);
   GList *l;
@@ -165,7 +165,7 @@ remove_child (GtkToplevelAccessible *toplevel,
 
   if (toplevel->priv->window_list)
     {
-      GtkWindow *tmp_window;
+      CtkWindow *tmp_window;
 
       for (l = toplevel->priv->window_list; l; l = l->next)
         {
@@ -193,10 +193,10 @@ show_event_watcher (GSignalInvocationHint *ihint,
                     const GValue          *param_values,
                     gpointer               data)
 {
-  GtkToplevelAccessible *toplevel = CTK_TOPLEVEL_ACCESSIBLE (data);
+  CtkToplevelAccessible *toplevel = CTK_TOPLEVEL_ACCESSIBLE (data);
   AtkObject *atk_obj = ATK_OBJECT (toplevel);
   GObject *object;
-  GtkWidget *widget;
+  CtkWidget *widget;
   gint n_children;
   AtkObject *child;
 
@@ -239,7 +239,7 @@ hide_event_watcher (GSignalInvocationHint *ihint,
                     const GValue          *param_values,
                     gpointer               data)
 {
-  GtkToplevelAccessible *toplevel = CTK_TOPLEVEL_ACCESSIBLE (data);
+  CtkToplevelAccessible *toplevel = CTK_TOPLEVEL_ACCESSIBLE (data);
   GObject *object;
 
   object = g_value_get_object (param_values + 0);
@@ -252,10 +252,10 @@ hide_event_watcher (GSignalInvocationHint *ihint,
 }
 
 static void
-ctk_toplevel_accessible_init (GtkToplevelAccessible *toplevel)
+ctk_toplevel_accessible_init (CtkToplevelAccessible *toplevel)
 {
-  GtkWindow *window;
-  GtkWidget *widget;
+  CtkWindow *window;
+  CtkWidget *widget;
   GList *l;
   guint signal_id;
 
@@ -302,11 +302,11 @@ ctk_toplevel_accessible_init (GtkToplevelAccessible *toplevel)
 /**
  * ctk_toplevel_accessible_get_children:
  *
- * Returns: (transfer none) (element-type Gtk.Window): List of
+ * Returns: (transfer none) (element-type Ctk.Window): List of
  *   children.
  */
 GList *
-ctk_toplevel_accessible_get_children (GtkToplevelAccessible *accessible)
+ctk_toplevel_accessible_get_children (CtkToplevelAccessible *accessible)
 {
   return accessible->priv->window_list;
 }

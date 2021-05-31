@@ -122,7 +122,7 @@ after creating it ?
 
 <answer>
 <para>
-If <structname>GtkFoo</structname> isn't a toplevel window, then
+If <structname>CtkFoo</structname> isn't a toplevel window, then
 <informalexample><programlisting>
  foo = ctk_foo_new (<!-- -->);
  ctk_widget_destroy (foo);
@@ -225,8 +225,8 @@ Code using these macros ends up looking like this:
  static void
  make_widgets (void)
  {
-    GtkWidget *label1;
-    GtkWidget *label2;
+    CtkWidget *label1;
+    CtkWidget *label2;
 
     label1 = ctk_label_new (_("Another string to translate"));
     label2 = ctk_label_new (_(global_variable));
@@ -588,7 +588,7 @@ channel will be respected.
 <answer>
 <para>
 See <link linkend="TreeWidget">tree widget overview</link> &mdash; you
-should use the #GtkTreeView widget. (A list is just a tree with no branches,
+should use the #CtkTreeView widget. (A list is just a tree with no branches,
 so the tree widget is used for lists as well).
 </para>
 </answer>
@@ -602,12 +602,12 @@ so the tree widget is used for lists as well).
 <answer>
 <para>
 See <link linkend="TextWidget">text widget overview</link> &mdash; you
-should use the #GtkTextView widget.
+should use the #CtkTextView widget.
 </para>
 <para>
-If you only have a small amount of text, #GtkLabel may also be appropriate
+If you only have a small amount of text, #CtkLabel may also be appropriate
 of course. It can be made selectable with ctk_label_set_selectable(). For a
-single-line text entry, see #GtkEntry.
+single-line text entry, see #CtkEntry.
 </para>
 </answer>
 </qandaentry>
@@ -620,8 +620,8 @@ single-line text entry, see #GtkEntry.
 
 <answer>
 <para>
-#GtkImage can display images in just about any format GTK+ understands.
-You can also use #GtkDrawingArea if you need to do something more complex,
+#CtkImage can display images in just about any format GTK+ understands.
+You can also use #CtkDrawingArea if you need to do something more complex,
 such as draw text or graphics over the top of the image.
 </para>
 </answer>
@@ -635,17 +635,17 @@ would use a combo box?
 
 <answer>
 <para>
-With GTK+, a #GtkComboBox is the recommended widget to use for this use case.
+With GTK+, a #CtkComboBox is the recommended widget to use for this use case.
 This widget looks like either a combo box or the current option menu, depending
 on the current theme. If you need an editable text entry, use the
-#GtkComboBox:has-entry property.
+#CtkComboBox:has-entry property.
 </para>
 </answer>
 </qandaentry>
 
 </qandadiv>
 
-<qandadiv><title>GtkWidget</title>
+<qandadiv><title>CtkWidget</title>
 
 <qandaentry>
 <question><para>
@@ -658,8 +658,8 @@ You can also change the appearance of a widget by installing a
 custom style provider, see ctk_style_context_add_provider().
 </para>
 
-<para>To change the background color for widgets such as #GtkLabel that
-have no background, place them in a #GtkEventBox and set the background
+<para>To change the background color for widgets such as #CtkLabel that
+have no background, place them in a #CtkEventBox and set the background
 of the event box.
 </para></answer>
 </qandaentry>
@@ -699,9 +699,9 @@ You can also change the font of a widget by putting
 in a CSS file, loading it with ctk_css_provider_load_from_file(), and
 adding the provider with ctk_style_context_add_provider_for_screen().
 To associate this style information with your widget, set a style class
-on its #GtkStyleContext using ctk_style_context_add_class().
+on its #CtkStyleContext using ctk_style_context_add_class().
 The advantage of this approach is that users can then override the font
-you have chosen. See the #GtkStyleContext documentation for more discussion.
+you have chosen. See the #CtkStyleContext documentation for more discussion.
 </para>
 </answer>
 </qandaentry>
@@ -720,7 +720,7 @@ See ctk_widget_set_sensitive().
 </qandadiv>
 
 
-<qandadiv><title>GtkTextView</title>
+<qandadiv><title>CtkTextView</title>
 
 <qandaentry>
 <question><para>
@@ -733,8 +733,8 @@ or ctk_text_iter_get_text().
 </para>
 <para>
 <informalexample><programlisting>
-  GtkTextIter start, end;
-  GtkTextBuffer *buffer;
+  CtkTextIter start, end;
+  CtkTextBuffer *buffer;
   char *text;
 
   buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (text_view));
@@ -773,7 +773,7 @@ How do I make a text view scroll to the end of the buffer automatically ?
 <answer>
 <para>
 A good way to keep a text buffer scrolled to the end is to place a
-<link linkend="GtkTextMark">mark</link> at the end of the buffer, and
+<link linkend="CtkTextMark">mark</link> at the end of the buffer, and
 give it right gravity. The gravity has the effect that text inserted
 at the mark gets inserted <emphasis>before</emphasis>, keeping the mark
 at the end.
@@ -794,7 +794,7 @@ The ctk-demo application contains an example of this technique.
 
 
 
-<qandadiv><title>#GtkTreeView</title>
+<qandadiv><title>#CtkTreeView</title>
 
 <qandaentry>
 <question><para>
@@ -803,7 +803,7 @@ How do I associate some data with a row in the tree?
 
 <answer>
 <para>
-Remember that the #GtkTreeModel columns don't necessarily have to be
+Remember that the #CtkTreeModel columns don't necessarily have to be
 displayed. So you can put non-user-visible data in your model just
 like any other data, and retrieve it with ctk_tree_model_get().
 See the <link linkend="TreeWidget">tree widget overview</link>.
@@ -818,9 +818,9 @@ How do I put an image and some text in the same column?
 
 <answer>
 <para>
-You can pack more than one #GtkCellRenderer into a single #GtkTreeViewColumn
+You can pack more than one #CtkCellRenderer into a single #CtkTreeViewColumn
 using ctk_tree_view_column_pack_start() or ctk_tree_view_column_pack_end().
-So pack both a #GtkCellRendererPixbuf and a #GtkCellRendererText into the
+So pack both a #CtkCellRendererPixbuf and a #CtkCellRendererText into the
 column.
 </para>
 </answer>
@@ -828,13 +828,13 @@ column.
 
 <qandaentry>
 <question><para>
-I can set data easily on my #GtkTreeStore/#GtkListStore models using
+I can set data easily on my #CtkTreeStore/#CtkListStore models using
 ctk_list_store_set() and ctk_tree_store_set(), but can't read it back?
 </para></question>
 
 <answer>
 <para>
-Both the #GtkTreeStore and the #GtkListStore implement the #GtkTreeModel
+Both the #CtkTreeStore and the #CtkListStore implement the #CtkTreeModel
 interface. Consequentially, you can use any function this interface
 implements. The easiest way to read a set of data back is to use
 ctk_tree_model_get().
@@ -844,7 +844,7 @@ ctk_tree_model_get().
 
 <qandaentry>
 <question><para>
-How do I change the way that numbers are formatted by #GtkTreeView?
+How do I change the way that numbers are formatted by #CtkTreeView?
 </para></question>
 <answer><para>
 Use ctk_tree_view_insert_column_with_data_func()
@@ -861,17 +861,17 @@ enum
   N_COLUMNS
 };
 
-GtkListStore *mycolumns;
-GtkTreeView *treeview;
+CtkListStore *mycolumns;
+CtkTreeView *treeview;
 
 void
-my_cell_double_to_text (GtkTreeViewColumn *tree_column,
-	                GtkCellRenderer   *cell,
-                        GtkTreeModel      *tree_model,
-	                GtkTreeIter       *iter,
+my_cell_double_to_text (CtkTreeViewColumn *tree_column,
+	                CtkCellRenderer   *cell,
+                        CtkTreeModel      *tree_model,
+	                CtkTreeIter       *iter,
                         gpointer           data)
 {
-  GtkCellRendererText *cell_text = (GtkCellRendererText *)cell;
+  CtkCellRendererText *cell_text = (CtkCellRendererText *)cell;
   gdouble d;
   gchar *text;
 
@@ -884,17 +884,17 @@ my_cell_double_to_text (GtkTreeViewColumn *tree_column,
 }
 
 void
-set_up_new_columns (GtkTreeView *myview)
+set_up_new_columns (CtkTreeView *myview)
 {
-  GtkCellRendererText *renderer;
-  GtkTreeViewColumn *column;
-  GtkListStore *mycolumns;
+  CtkCellRendererText *renderer;
+  CtkTreeViewColumn *column;
+  CtkListStore *mycolumns;
 
   /* Create the data model and associate it with the given TreeView */
   mycolumns = ctk_list_store_new (N_COLUMNS, G_TYPE_DOUBLE);
   ctk_tree_view_set_model (myview, CTK_TREE_MODEL (mycolumns));
 
-  /* Create a GtkCellRendererText */
+  /* Create a CtkCellRendererText */
   renderer = ctk_cell_renderer_text_new (<!-- -->);
 
   /* Create a new column that has a title ("Example column"),
@@ -906,7 +906,7 @@ set_up_new_columns (GtkTreeView *myview)
   renderer = ctk_cell_renderer_text_new (<!-- -->);
   ctk_tree_view_column_pack_start (column, renderer, TRUE);
 
-  /* Append the new column after the GtkTreeView's previous columns. */
+  /* Append the new column after the CtkTreeView's previous columns. */
   ctk_tree_view_append_column (CTK_TREE_VIEW (myview), column);
   /* Since we created the column by hand, we can set it up for our
    * needs, e.g. set its minimum and maximum width, etc.
@@ -944,7 +944,7 @@ How do I use cairo to draw in GTK+ applications ?
 </para></question>
 
 <answer><para>
-The #GtkWidget::draw signal gets a ready-to-use cairo context
+The #CtkWidget::draw signal gets a ready-to-use cairo context
 as parameter that you should use.
 </para>
 <para>

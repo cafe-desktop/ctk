@@ -21,7 +21,7 @@
 
 gdouble
 _ctk_print_convert_to_mm (gdouble len, 
-			  GtkUnit unit)
+			  CtkUnit unit)
 {
   switch (unit)
     {
@@ -40,7 +40,7 @@ _ctk_print_convert_to_mm (gdouble len,
 
 gdouble
 _ctk_print_convert_from_mm (gdouble len, 
-			    GtkUnit unit)
+			    CtkUnit unit)
 {
   switch (unit)
     {

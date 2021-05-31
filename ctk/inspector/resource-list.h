@@ -21,25 +21,25 @@
 #include <ctk/ctkbox.h>
 
 #define CTK_TYPE_INSPECTOR_RESOURCE_LIST            (ctk_inspector_resource_list_get_type())
-#define CTK_INSPECTOR_RESOURCE_LIST(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_RESOURCE_LIST, GtkInspectorResourceList))
-#define CTK_INSPECTOR_RESOURCE_LIST_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_RESOURCE_LIST, GtkInspectorResourceListClass))
+#define CTK_INSPECTOR_RESOURCE_LIST(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_RESOURCE_LIST, CtkInspectorResourceList))
+#define CTK_INSPECTOR_RESOURCE_LIST_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_RESOURCE_LIST, CtkInspectorResourceListClass))
 #define CTK_INSPECTOR_IS_RESOURCE_LIST(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), CTK_TYPE_INSPECTOR_RESOURCE_LIST))
 #define CTK_INSPECTOR_IS_RESOURCE_LIST_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), CTK_TYPE_INSPECTOR_RESOURCE_LIST))
-#define CTK_INSPECTOR_RESOURCE_LIST_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_RESOURCE_LIST, GtkInspectorResourceListClass))
+#define CTK_INSPECTOR_RESOURCE_LIST_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_RESOURCE_LIST, CtkInspectorResourceListClass))
 
 
-typedef struct _GtkInspectorResourceListPrivate GtkInspectorResourceListPrivate;
+typedef struct _CtkInspectorResourceListPrivate CtkInspectorResourceListPrivate;
 
-typedef struct _GtkInspectorResourceList
+typedef struct _CtkInspectorResourceList
 {
-  GtkBox parent;
-  GtkInspectorResourceListPrivate *priv;
-} GtkInspectorResourceList;
+  CtkBox parent;
+  CtkInspectorResourceListPrivate *priv;
+} CtkInspectorResourceList;
 
-typedef struct _GtkInspectorResourceListClass
+typedef struct _CtkInspectorResourceListClass
 {
-  GtkBoxClass parent;
-} GtkInspectorResourceListClass;
+  CtkBoxClass parent;
+} CtkInspectorResourceListClass;
 
 G_BEGIN_DECLS
 

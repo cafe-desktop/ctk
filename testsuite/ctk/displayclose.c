@@ -5,7 +5,7 @@ main (int argc, char **argv)
 {
   const gchar *display_name;
   GdkDisplay *display;
-  GtkWidget *win, *but;
+  CtkWidget *win, *but;
 
   g_log_set_always_fatal (G_LOG_LEVEL_WARNING | G_LOG_LEVEL_CRITICAL);
 

@@ -2,14 +2,14 @@
 
 typedef struct
 {
-  GtkApplication parent_instance;
+  CtkApplication parent_instance;
 } TestApp;
 
-typedef GtkApplicationClass TestAppClass;
+typedef CtkApplicationClass TestAppClass;
 
 G_DEFINE_TYPE (TestApp, test_app, CTK_TYPE_APPLICATION)
 
-static GtkWidget *create_row (const gchar *label);
+static CtkWidget *create_row (const gchar *label);
 
 static void
 activate_first_row (GSimpleAction *simple,
@@ -48,8 +48,8 @@ activate_print_int (GSimpleAction *simple,
 }
 
 static void
-row_without_gaction_activated_cb (GtkListBox    *list,
-                                  GtkListBoxRow *row,
+row_without_gaction_activated_cb (CtkListBox    *list,
+                                  CtkListBoxRow *row,
                                   gpointer       user_data)
 {
   int index = ctk_list_box_row_get_index (row);
@@ -62,7 +62,7 @@ row_without_gaction_activated_cb (GtkListBox    *list,
 }
 
 static void
-add_separator (GtkListBoxRow *row, GtkListBoxRow *before, gpointer data)
+add_separator (CtkListBoxRow *row, CtkListBoxRow *before, gpointer data)
 {
   if (!before)
     return;
@@ -70,10 +70,10 @@ add_separator (GtkListBoxRow *row, GtkListBoxRow *before, gpointer data)
   ctk_list_box_row_set_header (row, ctk_separator_new (CTK_ORIENTATION_HORIZONTAL));
 }
 
-static GtkWidget *
+static CtkWidget *
 create_row (const gchar *text)
 {
-  GtkWidget *row_content, *label;
+  CtkWidget *row_content, *label;
 
   row_content = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 10);
 
@@ -86,11 +86,11 @@ create_row (const gchar *text)
 static void
 new_window (GApplication *app)
 {
-  GtkWidget *window, *grid, *sw, *list, *label;
+  CtkWidget *window, *grid, *sw, *list, *label;
   GSimpleAction *action;
 
-  GtkWidget *row_content;
-  GtkListBoxRow *row;
+  CtkWidget *row_content;
+  CtkListBoxRow *row;
 
   gint i;
   gchar *text, *text2;

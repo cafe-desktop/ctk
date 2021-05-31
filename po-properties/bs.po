@@ -311,8 +311,8 @@ msgid "Style context"
 msgstr "Kontekst stila"
 
 #: ../ctk/deprecated/ctkstyle.c:475
-msgid "GtkStyleContext to get style from"
-msgstr "Iz kog konteksta Gtk stila će biti uzet stil"
+msgid "CtkStyleContext to get style from"
+msgstr "Iz kog konteksta Ctk stila će biti uzet stil"
 
 #: ../ctk/deprecated/ctktable.c:191
 msgid "Rows"
@@ -737,10 +737,10 @@ msgstr "Grupa akcije"
 
 #: ../ctk/ctkaction.c:394
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
-"GTkActionGroup sa kojim je združen GtkAction, ili NULL (za interno "
+"GTkActionGroup sa kojim je združen CtkAction, ili NULL (za interno "
 "korištenje)."
 
 #: ../ctk/ctkaction.c:412 ../ctk/ctkbutton.c:353 ../ctk/ctkimagemenuitem.c:192
@@ -926,10 +926,10 @@ msgstr "Uključivanje stavke „Ostalo…“"
 #: ../ctk/ctkappchooserbutton.c:615
 msgid ""
 "Whether the combobox should include an item that triggers a "
-"GtkAppChooserDialog"
+"CtkAppChooserDialog"
 msgstr ""
 "Da li kombinovana lista treba da sadrži stavku koja pokreće "
-"GtkAppChooserDialog"
+"CtkAppChooserDialog"
 
 #: ../ctk/ctkappchooserbutton.c:631
 msgid "Show default item"
@@ -1282,10 +1282,10 @@ msgstr "Tip pakovanja"
 
 #: ../ctk/ctkbox.c:304
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
 msgstr ""
-"GtkPackType ukazuje da li je podređeni element pakiran sa referencom do "
+"CtkPackType ukazuje da li je podređeni element pakiran sa referencom do "
 "početka i kraja nadređenog elementa"
 
 #: ../ctk/ctkbox.c:310 ../ctk/ctknotebook.c:768 ../ctk/ctkpaned.c:348
@@ -1586,10 +1586,10 @@ msgstr "Tip pakovanja"
 
 #: ../ctk/ctkcellareabox.c:386
 msgid ""
-"A GtkPackType indicating whether the cell is packed with reference to the "
+"A CtkPackType indicating whether the cell is packed with reference to the "
 "start or end of the cell area"
 msgstr ""
-"GtkPackType označava da li jse ćelija pakuje u odnosu na početak ili kraj "
+"CtkPackType označava da li jse ćelija pakuje u odnosu na početak ili kraj "
 "područja ćelije"
 
 #: ../ctk/ctkcellarea.c:803
@@ -1868,8 +1868,8 @@ msgid "Size"
 msgstr "Veličina"
 
 #: ../ctk/ctkcellrendererpixbuf.c:184
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
-msgstr "Vrijednost GtkIconSize koja navodi veličinu iscrtane ikone"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
+msgstr "Vrijednost CtkIconSize koja navodi veličinu iscrtane ikone"
 
 #: ../ctk/ctkcellrendererpixbuf.c:193
 msgid "Detail"
@@ -1991,8 +1991,8 @@ msgid "Pulse of the spinner"
 msgstr "Treptanje ili vrteška"
 
 #: ../ctk/ctkcellrendererspinner.c:158
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
-msgstr "GtkIconSize vrijednost koja određuje veličinu iscrtane vrteške"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
+msgstr "CtkIconSize vrijednost koja određuje veličinu iscrtane vrteške"
 
 #: ../ctk/ctkcellrenderertext.c:256
 msgid "Text to render"
@@ -2450,17 +2450,17 @@ msgstr "Područje ćelije"
 #: ../ctk/ctkcellview.c:253 ../ctk/ctkcombobox.c:1008
 #: ../ctk/ctkentrycompletion.c:452 ../ctk/ctkiconview.c:637
 #: ../ctk/ctktreemenu.c:333 ../ctk/ctktreeviewcolumn.c:425
-msgid "The GtkCellArea used to layout cells"
-msgstr "Oblast Gtk ćelije korišćena za raspoređivanje ćelija"
+msgid "The CtkCellArea used to layout cells"
+msgstr "Oblast Ctk ćelije korišćena za raspoređivanje ćelija"
 
 #: ../ctk/ctkcellview.c:276
 msgid "Cell Area Context"
 msgstr "Kontekst oblasti ćelije"
 
 #: ../ctk/ctkcellview.c:277
-msgid "The GtkCellAreaContext used to compute the geometry of the cell view"
+msgid "The CtkCellAreaContext used to compute the geometry of the cell view"
 msgstr ""
-"Kontekst oblasti Gtk ćelije korišten za izračunavanje geometrije prikaza "
+"Kontekst oblasti Ctk ćelije korišten za izračunavanje geometrije prikaza "
 "ćelije"
 
 #: ../ctk/ctkcellview.c:294
@@ -2676,10 +2676,10 @@ msgstr "Kolona za unos teksta"
 #: ../ctk/ctkcombobox.c:938
 msgid ""
 "The column in the combo box's model to associate with strings from the entry "
-"if the combo was created with #GtkComboBox:has-entry = %TRUE"
+"if the combo was created with #CtkComboBox:has-entry = %TRUE"
 msgstr ""
 "Kolona u modelu kombiniranog unosa koji će se povezivati s tekstovima s "
-"ulaza ako je je kombinirani ulaz kreiran s #GtkComboBox:has-entry = %TRUE"
+"ulaza ako je je kombinirani ulaz kreiran s #CtkComboBox:has-entry = %TRUE"
 
 #: ../ctk/ctkcombobox.c:955
 msgid "ID Column"
@@ -3929,10 +3929,10 @@ msgstr "Ravnanje"
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkMisc::xalign for that"
+"CtkMisc::xalign for that"
 msgstr ""
 "Međusobno ravnanje linija teksta oznake. Ovo NE utječe na ravnanje unutar "
-"lokacije. Pogledajte GtkMisc::xalign za to"
+"lokacije. Pogledajte CtkMisc::xalign za to"
 
 #: ../ctk/ctklabel.c:759
 msgid "Pattern"
@@ -4467,8 +4467,8 @@ msgid "Message area"
 msgstr "Područje za poruke"
 
 #: ../ctk/ctkmessagedialog.c:310
-msgid "GtkVBox that holds the dialog's primary and secondary labels"
-msgstr "GtkVBox koji čuva dijalošku primarnu i sekundarnu labelu"
+msgid "CtkVBox that holds the dialog's primary and secondary labels"
+msgstr "CtkVBox koji čuva dijalošku primarnu i sekundarnu labelu"
 
 #: ../ctk/ctkmisc.c:113
 msgid "Y align"
@@ -4975,16 +4975,16 @@ msgid "Default Page Setup"
 msgstr "Podrazumijevane postavke strane"
 
 #: ../ctk/ctkprintoperation.c:1088
-msgid "The GtkPageSetup used by default"
-msgstr "Gtk postavke strane koje se koriste kao podrazumijevane"
+msgid "The CtkPageSetup used by default"
+msgstr "Ctk postavke strane koje se koriste kao podrazumijevane"
 
 #: ../ctk/ctkprintoperation.c:1106 ../ctk/ctkprintunixdialog.c:384
 msgid "Print Settings"
 msgstr "Postavke štampanja"
 
 #: ../ctk/ctkprintoperation.c:1107 ../ctk/ctkprintunixdialog.c:385
-msgid "The GtkPrintSettings used for initializing the dialog"
-msgstr "Gtk podešavanja štampe koja se koriste prilikom pokretanja dijaloga"
+msgid "The CtkPrintSettings used for initializing the dialog"
+msgstr "Ctk podešavanja štampe koja se koriste prilikom pokretanja dijaloga"
 
 #: ../ctk/ctkprintoperation.c:1125
 msgid "Job Name"
@@ -5103,9 +5103,9 @@ msgid "Embed Page Setup"
 msgstr "Ugnježdene postavke strane"
 
 #: ../ctk/ctkprintoperation.c:1403 ../ctk/ctkprintunixdialog.c:426
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
 msgstr ""
-"Postavljeno ako su padajući meniji postavke strane ugnježdeni u Gtk dijalog "
+"Postavljeno ako su padajući meniji postavke strane ugnježdeni u Ctk dijalog "
 "za štampu"
 
 #: ../ctk/ctkprintoperation.c:1424
@@ -5117,16 +5117,16 @@ msgid "The number of pages that will be printed."
 msgstr "Broj strana koji će biti štampan."
 
 #: ../ctk/ctkprintunixdialog.c:367
-msgid "The GtkPageSetup to use"
-msgstr "Gtk postavke strane koje se koriste"
+msgid "The CtkPageSetup to use"
+msgstr "Ctk postavke strane koje se koriste"
 
 #: ../ctk/ctkprintunixdialog.c:392
 msgid "Selected Printer"
 msgstr "Izabrani štampač"
 
 #: ../ctk/ctkprintunixdialog.c:393
-msgid "The GtkPrinter which is selected"
-msgstr "Gtk štampač koji je izabran"
+msgid "The CtkPrinter which is selected"
+msgstr "Ctk štampač koji je izabran"
 
 #: ../ctk/ctkprintunixdialog.c:400
 msgid "Manual Capabilities"
@@ -5275,8 +5275,8 @@ msgstr "Radio dugme trake alata čijoj grupi ovo dugme pripada."
 
 #: ../ctk/ctkrange.c:425
 msgid ""
-"The GtkAdjustment that contains the current value of this range object"
-msgstr "GtkAdjustment koji sadrži trenutnu vrijednost ovog objekta opsega"
+"The CtkAdjustment that contains the current value of this range object"
+msgstr "CtkAdjustment koji sadrži trenutnu vrijednost ovog objekta opsega"
 
 #: ../ctk/ctkrange.c:433
 msgid "Invert direction slider moves to increase range value"
@@ -5506,8 +5506,8 @@ msgstr "Veličina ikonice"
 
 #: ../ctk/ctkscalebutton.c:238
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
-msgstr "GtkAdjustment koji sadrži tekuću vrijednost ovog dugmeta sa sklaom"
+"The CtkAdjustment that contains the current value of this scale button object"
+msgstr "CtkAdjustment koji sadrži tekuću vrijednost ovog dugmeta sa sklaom"
 
 #: ../ctk/ctkscalebutton.c:266
 msgid "Icons"
@@ -5629,16 +5629,16 @@ msgid "Horizontal Adjustment"
 msgstr "Vodoravno podešavanje"
 
 #: ../ctk/ctkscrolledwindow.c:368
-msgid "The GtkAdjustment for the horizontal position"
-msgstr "GtkAdjustment za vodoravnu poziciju"
+msgid "The CtkAdjustment for the horizontal position"
+msgstr "CtkAdjustment za vodoravnu poziciju"
 
 #: ../ctk/ctkscrolledwindow.c:374
 msgid "Vertical Adjustment"
 msgstr "Uspravno podešavanje"
 
 #: ../ctk/ctkscrolledwindow.c:375
-msgid "The GtkAdjustment for the vertical position"
-msgstr "GtkAdjustment za uspravnu poziciju"
+msgid "The CtkAdjustment for the vertical position"
+msgstr "CtkAdjustment za uspravnu poziciju"
 
 #: ../ctk/ctkscrolledwindow.c:381
 msgid "Horizontal Scrollbar Policy"
@@ -5864,11 +5864,11 @@ msgstr "Spisak veličina ikona (ctk-menu=16,16;ctk-button=20,20...)..."
 
 #: ../ctk/ctksettings.c:513
 msgid "GTK Modules"
-msgstr "Gtk dodaci"
+msgstr "Ctk dodaci"
 
 #: ../ctk/ctksettings.c:514
 msgid "List of currently active GTK modules"
-msgstr "Spisak trenutno pokrenutih Gtk dodataka"
+msgstr "Spisak trenutno pokrenutih Ctk dodataka"
 
 #: ../ctk/ctksettings.c:522
 msgid "Xft Antialias"
@@ -6013,7 +6013,7 @@ msgstr "Omogući animacije"
 
 #: ../ctk/ctksettings.c:706
 msgid "Whether to enable toolkit-wide animations."
-msgstr "Da li omogućiti animacije u cijelom Gtk-u."
+msgstr "Da li omogućiti animacije u cijelom Ctk-u."
 
 #: ../ctk/ctksettings.c:727
 msgid "Enable Touchscreen Mode"
@@ -6091,15 +6091,15 @@ msgid "Default file chooser backend"
 msgstr "Podrška za uobičajeni iybornik datoteka"
 
 #: ../ctk/ctksettings.c:882
-msgid "Name of the GtkFileChooser backend to use by default"
-msgstr "Ime GtkFileChooser podrške koja će se koristiti uobičajeno"
+msgid "Name of the CtkFileChooser backend to use by default"
+msgstr "Ime CtkFileChooser podrške koja će se koristiti uobičajeno"
 
 #: ../ctk/ctksettings.c:899
 msgid "Default print backend"
 msgstr "Podrazumijevani pozadinski motor za štampanje"
 
 #: ../ctk/ctksettings.c:900
-msgid "List of the GtkPrintBackend backends to use by default"
+msgid "List of the CtkPrintBackend backends to use by default"
 msgstr ""
 "Spisak pozadinskih motora za štampanje koji se podrazumijevano koriste"
 
@@ -6563,8 +6563,8 @@ msgid "Value type"
 msgstr "Vrsta vrijednosti"
 
 #: ../ctk/ctkstyleproperty.c:118
-msgid "The value type returned by GtkStyleContext"
-msgstr "Vrsta vrijednosti koju vraća sadržaj Gtk stila"
+msgid "The value type returned by CtkStyleContext"
+msgstr "Vrsta vrijednosti koju vraća sadržaj Ctk stila"
 
 #: ../ctk/ctkswitch.c:815
 msgid "Whether the switch is on or off"
@@ -7385,8 +7385,8 @@ msgid "Fixed Height Mode"
 msgstr "Mod stalne visine"
 
 #: ../ctk/ctktreeview.c:1068
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
-msgstr "Ubrzava GtkTreeView pretpostavljajući da su svi redovi iste visine"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
+msgstr "Ubrzava CtkTreeView pretpostavljajući da su svi redovi iste visine"
 
 #: ../ctk/ctktreeview.c:1088
 msgid "Hover Selection"
@@ -8170,8 +8170,8 @@ msgid "Focus in Toplevel"
 msgstr "Fokus u glavnom nivou"
 
 #: ../ctk/ctkwindow.c:798
-msgid "Whether the input focus is within this GtkWindow"
-msgstr "Da li je fokus unosa unutar ovog GtkWindow"
+msgid "Whether the input focus is within this CtkWindow"
+msgstr "Da li je fokus unosa unutar ovog CtkWindow"
 
 #: ../ctk/ctkwindow.c:805
 msgid "Type hint"
@@ -8298,12 +8298,12 @@ msgid "Height of resize grip"
 msgstr "Visina hvataljke za promjenu veličine"
 
 #: ../ctk/ctkwindow.c:1037
-msgid "GtkApplication"
-msgstr "GtkApplication"
+msgid "CtkApplication"
+msgstr "CtkApplication"
 
 #: ../ctk/ctkwindow.c:1038
-msgid "The GtkApplication for the window"
-msgstr "GtkApplication za prozor"
+msgid "The CtkApplication for the window"
+msgstr "CtkApplication za prozor"
 
 #: ../modules/printbackends/cups/ctkprintercups.c:93
 msgid "Color Profile Title"

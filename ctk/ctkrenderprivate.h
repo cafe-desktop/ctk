@@ -24,7 +24,7 @@
 
 #include "ctkcssenumvalueprivate.h"
 
-void        ctk_render_content_path             (GtkStyleContext        *context,
+void        ctk_render_content_path             (CtkStyleContext        *context,
                                                  cairo_t                *cr,
                                                  double                  x,
                                                  double                  y,
@@ -32,7 +32,7 @@ void        ctk_render_content_path             (GtkStyleContext        *context
                                                  double                  height);
 
 GdkPixbuf * ctk_render_icon_pixbuf_unpacked     (GdkPixbuf              *base_pixbuf,
-                                                 GtkIconSize             size,
-                                                 GtkCssIconEffect        icon_effect);
+                                                 CtkIconSize             size,
+                                                 CtkCssIconEffect        icon_effect);
 
 #endif /* __CTK_RENDER_PRIVATE_H__ */

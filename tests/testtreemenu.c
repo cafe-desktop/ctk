@@ -40,14 +40,14 @@ create_color_pixbuf (const char *color)
   return pixbuf;
 }
 
-static GtkWidget *
+static CtkWidget *
 create_menu_grid_demo (void)
 {
-  GtkWidget *menu;
-  GtkTreeIter iter;
+  CtkWidget *menu;
+  CtkTreeIter iter;
   GdkPixbuf *pixbuf;
-  GtkCellRenderer *cell = ctk_cell_renderer_pixbuf_new ();
-  GtkListStore *store;
+  CtkCellRenderer *cell = ctk_cell_renderer_pixbuf_new ();
+  CtkListStore *store;
   
   store = ctk_list_store_new (1, GDK_TYPE_PIXBUF);
 
@@ -139,13 +139,13 @@ enum {
   N_SIMPLE_COLUMNS
 };
 
-static GtkCellRenderer *cell_1 = NULL, *cell_2 = NULL, *cell_3 = NULL;
+static CtkCellRenderer *cell_1 = NULL, *cell_2 = NULL, *cell_3 = NULL;
 
-static GtkTreeModel *
+static CtkTreeModel *
 simple_tree_model (void)
 {
-  GtkTreeIter   iter, parent, child;
-  GtkTreeStore *store = 
+  CtkTreeIter   iter, parent, child;
+  CtkTreeStore *store = 
     ctk_tree_store_new (N_SIMPLE_COLUMNS,
 			G_TYPE_STRING,  /* name text */
 			G_TYPE_STRING,  /* icon name */
@@ -272,14 +272,14 @@ simple_tree_model (void)
 		      -1);
 
 
-  return (GtkTreeModel *)store;
+  return (CtkTreeModel *)store;
 }
 
-static GtkCellArea *
+static CtkCellArea *
 create_cell_area (void)
 {
-  GtkCellArea *area;
-  GtkCellRenderer *renderer;
+  CtkCellArea *area;
+  CtkCellRenderer *renderer;
 
   area = ctk_cell_area_box_new ();
 
@@ -304,11 +304,11 @@ create_cell_area (void)
 }
 
 #if _CTK_TREE_MENU_WAS_A_PUBLIC_CLASS_
-static GtkWidget *
-simple_tree_menu (GtkCellArea *area)
+static CtkWidget *
+simple_tree_menu (CtkCellArea *area)
 {
-  GtkTreeModel *model;
-  GtkWidget *menu;
+  CtkTreeModel *model;
+  CtkWidget *menu;
 
   model = simple_tree_model ();
 
@@ -320,17 +320,17 @@ simple_tree_menu (GtkCellArea *area)
 #endif
 
 static void
-orientation_changed (GtkComboBox  *combo,
-		     GtkCellArea  *area)
+orientation_changed (CtkComboBox  *combo,
+		     CtkCellArea  *area)
 {
-  GtkOrientation orientation = ctk_combo_box_get_active (combo);
+  CtkOrientation orientation = ctk_combo_box_get_active (combo);
 
   ctk_orientable_set_orientation (CTK_ORIENTABLE (area), orientation);
 }
 
 static void
-align_cell_2_toggled (GtkToggleButton  *toggle,
-		      GtkCellArea      *area)
+align_cell_2_toggled (CtkToggleButton  *toggle,
+		      CtkCellArea      *area)
 {
   gboolean align = ctk_toggle_button_get_active (toggle);
 
@@ -338,8 +338,8 @@ align_cell_2_toggled (GtkToggleButton  *toggle,
 }
 
 static void
-align_cell_3_toggled (GtkToggleButton  *toggle,
-		      GtkCellArea      *area)
+align_cell_3_toggled (CtkToggleButton  *toggle,
+		      CtkCellArea      *area)
 {
   gboolean align = ctk_toggle_button_get_active (toggle);
 
@@ -347,8 +347,8 @@ align_cell_3_toggled (GtkToggleButton  *toggle,
 }
 
 static void
-expand_cell_1_toggled (GtkToggleButton  *toggle,
-		       GtkCellArea      *area)
+expand_cell_1_toggled (CtkToggleButton  *toggle,
+		       CtkCellArea      *area)
 {
   gboolean expand = ctk_toggle_button_get_active (toggle);
 
@@ -356,8 +356,8 @@ expand_cell_1_toggled (GtkToggleButton  *toggle,
 }
 
 static void
-expand_cell_2_toggled (GtkToggleButton  *toggle,
-		       GtkCellArea      *area)
+expand_cell_2_toggled (CtkToggleButton  *toggle,
+		       CtkCellArea      *area)
 {
   gboolean expand = ctk_toggle_button_get_active (toggle);
 
@@ -365,8 +365,8 @@ expand_cell_2_toggled (GtkToggleButton  *toggle,
 }
 
 static void
-expand_cell_3_toggled (GtkToggleButton  *toggle,
-		       GtkCellArea      *area)
+expand_cell_3_toggled (CtkToggleButton  *toggle,
+		       CtkCellArea      *area)
 {
   gboolean expand = ctk_toggle_button_get_active (toggle);
 
@@ -374,8 +374,8 @@ expand_cell_3_toggled (GtkToggleButton  *toggle,
 }
 
 gboolean 
-enable_submenu_headers (GtkTreeModel      *model,
-			GtkTreeIter       *iter,
+enable_submenu_headers (CtkTreeModel      *model,
+			CtkTreeIter       *iter,
 			gpointer           data)
 {
   return TRUE;
@@ -384,12 +384,12 @@ enable_submenu_headers (GtkTreeModel      *model,
 
 #if _CTK_TREE_MENU_WAS_A_PUBLIC_CLASS_
 static void
-menu_activated_cb (GtkTreeMenu *menu,
+menu_activated_cb (CtkTreeMenu *menu,
 		   const gchar *path,
 		   gpointer     unused)
 {
-  GtkTreeModel *model = ctk_tree_menu_get_model (menu);
-  GtkTreeIter   iter;
+  CtkTreeModel *model = ctk_tree_menu_get_model (menu);
+  CtkTreeIter   iter;
   gchar        *row_name;
 
   if (!ctk_tree_model_get_iter_from_string (model, &iter, path))
@@ -403,8 +403,8 @@ menu_activated_cb (GtkTreeMenu *menu,
 }
 
 static void
-submenu_headers_toggled (GtkToggleButton  *toggle,
-			 GtkTreeMenu      *menu)
+submenu_headers_toggled (CtkToggleButton  *toggle,
+			 CtkTreeMenu      *menu)
 {
   if (ctk_toggle_button_get_active (toggle))
     ctk_tree_menu_set_header_func (menu, enable_submenu_headers, NULL, NULL);
@@ -413,8 +413,8 @@ submenu_headers_toggled (GtkToggleButton  *toggle,
 }
 
 static void
-tearoff_toggled (GtkToggleButton *toggle,
-		 GtkTreeMenu     *menu)
+tearoff_toggled (CtkToggleButton *toggle,
+		 CtkTreeMenu     *menu)
 {
   ctk_tree_menu_set_tearoff (menu, ctk_toggle_button_get_active (toggle));
 }
@@ -423,14 +423,14 @@ tearoff_toggled (GtkToggleButton *toggle,
 static void
 tree_menu (void)
 {
-  GtkWidget *window, *widget;
-  GtkWidget *menubar, *vbox;
-  GtkCellArea *area;
-  GtkTreeModel *store;
+  CtkWidget *window, *widget;
+  CtkWidget *menubar, *vbox;
+  CtkCellArea *area;
+  CtkTreeModel *store;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
-  ctk_window_set_title (CTK_WINDOW (window), "GtkTreeMenu");
+  ctk_window_set_title (CTK_WINDOW (window), "CtkTreeMenu");
 
   vbox  = ctk_box_new (CTK_ORIENTATION_VERTICAL, 4);
   ctk_widget_show (vbox);

@@ -25,36 +25,36 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GtkPixelCache           GtkPixelCache;
+typedef struct _CtkPixelCache           CtkPixelCache;
 
-typedef void (*GtkPixelCacheDrawFunc) (cairo_t *cr,
+typedef void (*CtkPixelCacheDrawFunc) (cairo_t *cr,
 				       gpointer user_data);
 
-GtkPixelCache *_ctk_pixel_cache_new              (void);
-void           _ctk_pixel_cache_free             (GtkPixelCache         *cache);
-void           _ctk_pixel_cache_map              (GtkPixelCache         *cache);
-void           _ctk_pixel_cache_unmap            (GtkPixelCache         *cache);
-void           _ctk_pixel_cache_invalidate       (GtkPixelCache         *cache,
+CtkPixelCache *_ctk_pixel_cache_new              (void);
+void           _ctk_pixel_cache_free             (CtkPixelCache         *cache);
+void           _ctk_pixel_cache_map              (CtkPixelCache         *cache);
+void           _ctk_pixel_cache_unmap            (CtkPixelCache         *cache);
+void           _ctk_pixel_cache_invalidate       (CtkPixelCache         *cache,
                                                   cairo_region_t        *region);
-void           _ctk_pixel_cache_draw             (GtkPixelCache         *cache,
+void           _ctk_pixel_cache_draw             (CtkPixelCache         *cache,
                                                   cairo_t               *cr,
                                                   GdkWindow             *window,
                                                   cairo_rectangle_int_t *view_rect,
                                                   cairo_rectangle_int_t *canvas_rect,
-                                                  GtkPixelCacheDrawFunc  draw,
+                                                  CtkPixelCacheDrawFunc  draw,
                                                   gpointer               user_data);
-void           _ctk_pixel_cache_get_extra_size   (GtkPixelCache         *cache,
+void           _ctk_pixel_cache_get_extra_size   (CtkPixelCache         *cache,
                                                   guint                 *extra_width,
                                                   guint                 *extra_height);
-void           _ctk_pixel_cache_set_extra_size   (GtkPixelCache         *cache,
+void           _ctk_pixel_cache_set_extra_size   (CtkPixelCache         *cache,
                                                   guint                  extra_width,
                                                   guint                  extra_height);
-void           _ctk_pixel_cache_set_content      (GtkPixelCache         *cache,
+void           _ctk_pixel_cache_set_content      (CtkPixelCache         *cache,
                                                   cairo_content_t        content);
-gboolean       _ctk_pixel_cache_get_always_cache (GtkPixelCache         *cache);
-void           _ctk_pixel_cache_set_always_cache (GtkPixelCache         *cache,
+gboolean       _ctk_pixel_cache_get_always_cache (CtkPixelCache         *cache);
+void           _ctk_pixel_cache_set_always_cache (CtkPixelCache         *cache,
                                                   gboolean               always_cache);
-void           ctk_pixel_cache_set_is_opaque     (GtkPixelCache         *cache,
+void           ctk_pixel_cache_set_is_opaque     (CtkPixelCache         *cache,
                                                   gboolean               is_opaque);
 
 

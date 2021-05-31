@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * Recent chooser action for GtkUIManager
+ * Recent chooser action for CtkUIManager
  *
  * Copyright (C) 2007, Emmanuele Bassi
  *
@@ -30,27 +30,27 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_RECENT_ACTION                  (ctk_recent_action_get_type ())
-#define CTK_RECENT_ACTION(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RECENT_ACTION, GtkRecentAction))
+#define CTK_RECENT_ACTION(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RECENT_ACTION, CtkRecentAction))
 #define CTK_IS_RECENT_ACTION(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_RECENT_ACTION))
-#define CTK_RECENT_ACTION_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RECENT_ACTION, GtkRecentActionClass))
+#define CTK_RECENT_ACTION_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RECENT_ACTION, CtkRecentActionClass))
 #define CTK_IS_RECENT_ACTION_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_RECENT_ACTION))
-#define CTK_RECENT_ACTION_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_RECENT_ACTION, GtkRecentActionClass))
+#define CTK_RECENT_ACTION_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_RECENT_ACTION, CtkRecentActionClass))
 
-typedef struct _GtkRecentAction         GtkRecentAction;
-typedef struct _GtkRecentActionPrivate  GtkRecentActionPrivate;
-typedef struct _GtkRecentActionClass    GtkRecentActionClass;
+typedef struct _CtkRecentAction         CtkRecentAction;
+typedef struct _CtkRecentActionPrivate  CtkRecentActionPrivate;
+typedef struct _CtkRecentActionClass    CtkRecentActionClass;
 
-struct _GtkRecentAction
+struct _CtkRecentAction
 {
-  GtkAction parent_instance;
+  CtkAction parent_instance;
 
   /*< private >*/
-  GtkRecentActionPrivate *priv;
+  CtkRecentActionPrivate *priv;
 };
 
-struct _GtkRecentActionClass
+struct _CtkRecentActionClass
 {
-  GtkActionClass parent_class;
+  CtkActionClass parent_class;
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -62,20 +62,20 @@ struct _GtkRecentActionClass
 GDK_DEPRECATED_IN_3_10
 GType      ctk_recent_action_get_type         (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_10
-GtkAction *ctk_recent_action_new              (const gchar      *name,
+CtkAction *ctk_recent_action_new              (const gchar      *name,
                                                const gchar      *label,
                                                const gchar      *tooltip,
                                                const gchar      *stock_id);
 GDK_DEPRECATED_IN_3_10
-GtkAction *ctk_recent_action_new_for_manager  (const gchar      *name,
+CtkAction *ctk_recent_action_new_for_manager  (const gchar      *name,
                                                const gchar      *label,
                                                const gchar      *tooltip,
                                                const gchar      *stock_id,
-                                               GtkRecentManager *manager);
+                                               CtkRecentManager *manager);
 GDK_DEPRECATED_IN_3_10
-gboolean   ctk_recent_action_get_show_numbers (GtkRecentAction  *action);
+gboolean   ctk_recent_action_get_show_numbers (CtkRecentAction  *action);
 GDK_DEPRECATED_IN_3_10
-void       ctk_recent_action_set_show_numbers (GtkRecentAction  *action,
+void       ctk_recent_action_set_show_numbers (CtkRecentAction  *action,
                                                gboolean          show_numbers);
 
 G_END_DECLS

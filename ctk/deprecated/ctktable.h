@@ -34,30 +34,30 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_TABLE			(ctk_table_get_type ())
-#define CTK_TABLE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TABLE, GtkTable))
-#define CTK_TABLE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TABLE, GtkTableClass))
+#define CTK_TABLE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TABLE, CtkTable))
+#define CTK_TABLE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TABLE, CtkTableClass))
 #define CTK_IS_TABLE(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TABLE))
 #define CTK_IS_TABLE_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TABLE))
-#define CTK_TABLE_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TABLE, GtkTableClass))
+#define CTK_TABLE_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TABLE, CtkTableClass))
 
 
-typedef struct _GtkTable              GtkTable;
-typedef struct _GtkTablePrivate       GtkTablePrivate;
-typedef struct _GtkTableClass         GtkTableClass;
-typedef struct _GtkTableChild         GtkTableChild;
-typedef struct _GtkTableRowCol        GtkTableRowCol;
+typedef struct _CtkTable              CtkTable;
+typedef struct _CtkTablePrivate       CtkTablePrivate;
+typedef struct _CtkTableClass         CtkTableClass;
+typedef struct _CtkTableChild         CtkTableChild;
+typedef struct _CtkTableRowCol        CtkTableRowCol;
 
-struct _GtkTable
+struct _CtkTable
 {
-  GtkContainer container;
+  CtkContainer container;
 
   /*< private >*/
-  GtkTablePrivate *priv;
+  CtkTablePrivate *priv;
 };
 
-struct _GtkTableClass
+struct _CtkTableClass
 {
-  GtkContainerClass parent_class;
+  CtkContainerClass parent_class;
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -66,9 +66,9 @@ struct _GtkTableClass
   void (*_ctk_reserved4) (void);
 };
 
-struct _GtkTableChild
+struct _CtkTableChild
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   guint16 left_attach;
   guint16 right_attach;
   guint16 top_attach;
@@ -83,7 +83,7 @@ struct _GtkTableChild
   guint yfill : 1;
 };
 
-struct _GtkTableRowCol
+struct _CtkTableRowCol
 {
   guint16 requisition;
   guint16 allocation;
@@ -96,7 +96,7 @@ struct _GtkTableRowCol
 };
 
 /**
- * GtkAttachOptions:
+ * CtkAttachOptions:
  * @CTK_EXPAND: the widget should expand to take up any extra space in its
  * container that has been allocated.
  * @CTK_SHRINK: the widget should shrink as and when possible.
@@ -110,68 +110,68 @@ typedef enum
   CTK_EXPAND = 1 << 0,
   CTK_SHRINK = 1 << 1,
   CTK_FILL   = 1 << 2
-} GtkAttachOptions;
+} CtkAttachOptions;
 
 
 GDK_DEPRECATED_IN_3_4
 GType	   ctk_table_get_type	      (void) G_GNUC_CONST;
-GDK_DEPRECATED_IN_3_4_FOR(GtkGrid)
-GtkWidget* ctk_table_new	      (guint		rows,
+GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+CtkWidget* ctk_table_new	      (guint		rows,
 				       guint		columns,
 				       gboolean		homogeneous);
-GDK_DEPRECATED_IN_3_4_FOR(GtkGrid)
-void	   ctk_table_resize	      (GtkTable	       *table,
+GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+void	   ctk_table_resize	      (CtkTable	       *table,
 				       guint            rows,
 				       guint            columns);
-GDK_DEPRECATED_IN_3_4_FOR(GtkGrid)
-void	   ctk_table_attach	      (GtkTable	       *table,
-				       GtkWidget       *child,
+GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+void	   ctk_table_attach	      (CtkTable	       *table,
+				       CtkWidget       *child,
 				       guint		left_attach,
 				       guint		right_attach,
 				       guint		top_attach,
 				       guint		bottom_attach,
-				       GtkAttachOptions xoptions,
-				       GtkAttachOptions yoptions,
+				       CtkAttachOptions xoptions,
+				       CtkAttachOptions yoptions,
 				       guint		xpadding,
 				       guint		ypadding);
-GDK_DEPRECATED_IN_3_4_FOR(GtkGrid)
-void	   ctk_table_attach_defaults  (GtkTable	       *table,
-				       GtkWidget       *widget,
+GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+void	   ctk_table_attach_defaults  (CtkTable	       *table,
+				       CtkWidget       *widget,
 				       guint		left_attach,
 				       guint		right_attach,
 				       guint		top_attach,
 				       guint		bottom_attach);
-GDK_DEPRECATED_IN_3_4_FOR(GtkGrid)
-void	   ctk_table_set_row_spacing  (GtkTable	       *table,
+GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+void	   ctk_table_set_row_spacing  (CtkTable	       *table,
 				       guint		row,
 				       guint		spacing);
-GDK_DEPRECATED_IN_3_4_FOR(GtkGrid)
-guint      ctk_table_get_row_spacing  (GtkTable        *table,
+GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+guint      ctk_table_get_row_spacing  (CtkTable        *table,
 				       guint            row);
-GDK_DEPRECATED_IN_3_4_FOR(GtkGrid)
-void	   ctk_table_set_col_spacing  (GtkTable	       *table,
+GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+void	   ctk_table_set_col_spacing  (CtkTable	       *table,
 				       guint		column,
 				       guint		spacing);
-GDK_DEPRECATED_IN_3_4_FOR(GtkGrid)
-guint      ctk_table_get_col_spacing  (GtkTable        *table,
+GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+guint      ctk_table_get_col_spacing  (CtkTable        *table,
 				       guint            column);
-GDK_DEPRECATED_IN_3_4_FOR(GtkGrid)
-void	   ctk_table_set_row_spacings (GtkTable	       *table,
+GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+void	   ctk_table_set_row_spacings (CtkTable	       *table,
 				       guint		spacing);
-GDK_DEPRECATED_IN_3_4_FOR(GtkGrid)
-guint      ctk_table_get_default_row_spacing (GtkTable        *table);
-GDK_DEPRECATED_IN_3_4_FOR(GtkGrid)
-void	   ctk_table_set_col_spacings (GtkTable	       *table,
+GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+guint      ctk_table_get_default_row_spacing (CtkTable        *table);
+GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+void	   ctk_table_set_col_spacings (CtkTable	       *table,
 				       guint		spacing);
-GDK_DEPRECATED_IN_3_4_FOR(GtkGrid)
-guint      ctk_table_get_default_col_spacing (GtkTable        *table);
-GDK_DEPRECATED_IN_3_4_FOR(GtkGrid)
-void	   ctk_table_set_homogeneous  (GtkTable	       *table,
+GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+guint      ctk_table_get_default_col_spacing (CtkTable        *table);
+GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+void	   ctk_table_set_homogeneous  (CtkTable	       *table,
 				       gboolean		homogeneous);
-GDK_DEPRECATED_IN_3_4_FOR(GtkGrid)
-gboolean   ctk_table_get_homogeneous  (GtkTable        *table);
-GDK_DEPRECATED_IN_3_4_FOR(GtkGrid)
-void       ctk_table_get_size         (GtkTable        *table,
+GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+gboolean   ctk_table_get_homogeneous  (CtkTable        *table);
+GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+void       ctk_table_get_size         (CtkTable        *table,
                                        guint           *rows,
                                        guint           *columns);
 

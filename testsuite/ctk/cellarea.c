@@ -23,15 +23,15 @@
 #include <math.h>
 
 /* tests related to handling of the cell-area property in
- * GtkCellLayout implementations
+ * CtkCellLayout implementations
  */
 
 /* test that we have a cell area after new() */
 static void
 test_iconview_new (void)
 {
-  GtkWidget *view;
-  GtkCellArea *area;
+  CtkWidget *view;
+  CtkCellArea *area;
 
   view = ctk_icon_view_new ();
 
@@ -47,8 +47,8 @@ test_iconview_new (void)
 static void
 test_iconview_new_with_area (void)
 {
-  GtkWidget *view;
-  GtkCellArea *area;
+  CtkWidget *view;
+  CtkCellArea *area;
 
   area = ctk_cell_area_box_new ();
   view = ctk_icon_view_new_with_area (area);
@@ -62,8 +62,8 @@ test_iconview_new_with_area (void)
 static void
 test_iconview_object_new (void)
 {
-  GtkWidget *view;
-  GtkCellArea *area;
+  CtkWidget *view;
+  CtkCellArea *area;
 
   area = ctk_cell_area_box_new ();
   ctk_orientable_set_orientation (CTK_ORIENTABLE (area), CTK_ORIENTATION_HORIZONTAL);
@@ -75,8 +75,8 @@ test_iconview_object_new (void)
   g_object_unref (view);
 }
 
-typedef GtkIconView MyIconView;
-typedef GtkIconViewClass MyIconViewClass;
+typedef CtkIconView MyIconView;
+typedef CtkIconViewClass MyIconViewClass;
 
 GType my_icon_view_get_type (void);
 
@@ -92,7 +92,7 @@ static gint subclass_init;
 static void
 my_icon_view_init (MyIconView *view)
 {
-  GtkCellArea *area;
+  CtkCellArea *area;
 
   if (subclass_init == 0)
     {
@@ -111,8 +111,8 @@ my_icon_view_init (MyIconView *view)
 static void
 test_iconview_subclass0 (void)
 {
-  GtkWidget *view;
-  GtkCellArea *area;
+  CtkWidget *view;
+  CtkCellArea *area;
 
   subclass_init = 0;
 
@@ -129,8 +129,8 @@ test_iconview_subclass0 (void)
 static void
 test_iconview_subclass1 (void)
 {
-  GtkWidget *view;
-  GtkCellArea *area;
+  CtkWidget *view;
+  CtkCellArea *area;
 
   subclass_init = 0;
 
@@ -147,8 +147,8 @@ test_iconview_subclass1 (void)
 static void
 test_iconview_subclass2 (void)
 {
-  GtkWidget *view;
-  GtkCellArea *area;
+  CtkWidget *view;
+  CtkCellArea *area;
 
   subclass_init = 1;
 
@@ -164,8 +164,8 @@ test_iconview_subclass2 (void)
 static void
 test_iconview_subclass3_subprocess (void)
 {
-  GtkWidget *view;
-  GtkCellArea *area;
+  CtkWidget *view;
+  CtkCellArea *area;
 
   subclass_init = 1;
 
@@ -190,8 +190,8 @@ test_iconview_subclass3 (void)
 static void
 test_combobox_new (void)
 {
-  GtkWidget *view;
-  GtkCellArea *area;
+  CtkWidget *view;
+  CtkCellArea *area;
 
   view = ctk_combo_box_new ();
 
@@ -206,8 +206,8 @@ test_combobox_new (void)
 static void
 test_combobox_new_with_area (void)
 {
-  GtkWidget *view;
-  GtkCellArea *area;
+  CtkWidget *view;
+  CtkCellArea *area;
 
   area = ctk_cell_area_box_new ();
   view = ctk_combo_box_new_with_area (area);
@@ -221,8 +221,8 @@ test_combobox_new_with_area (void)
 static void
 test_combobox_object_new (void)
 {
-  GtkWidget *view;
-  GtkCellArea *area;
+  CtkWidget *view;
+  CtkCellArea *area;
 
   area = ctk_cell_area_box_new ();
   ctk_orientable_set_orientation (CTK_ORIENTABLE (area), CTK_ORIENTATION_HORIZONTAL);
@@ -233,8 +233,8 @@ test_combobox_object_new (void)
   g_object_unref (view);
 }
 
-typedef GtkComboBox MyComboBox;
-typedef GtkComboBoxClass MyComboBoxClass;
+typedef CtkComboBox MyComboBox;
+typedef CtkComboBoxClass MyComboBoxClass;
 
 GType my_combo_box_get_type (void);
 
@@ -248,7 +248,7 @@ my_combo_box_class_init (MyComboBoxClass *klass)
 static void
 my_combo_box_init (MyComboBox *view)
 {
-  GtkCellArea *area;
+  CtkCellArea *area;
 
   if (subclass_init == 0)
     {
@@ -267,8 +267,8 @@ my_combo_box_init (MyComboBox *view)
 static void
 test_combobox_subclass0 (void)
 {
-  GtkWidget *view;
-  GtkCellArea *area;
+  CtkWidget *view;
+  CtkCellArea *area;
 
   subclass_init = 0;
 
@@ -285,8 +285,8 @@ test_combobox_subclass0 (void)
 static void
 test_combobox_subclass1 (void)
 {
-  GtkWidget *view;
-  GtkCellArea *area;
+  CtkWidget *view;
+  CtkCellArea *area;
 
   subclass_init = 0;
 
@@ -303,8 +303,8 @@ test_combobox_subclass1 (void)
 static void
 test_combobox_subclass2 (void)
 {
-  GtkWidget *view;
-  GtkCellArea *area;
+  CtkWidget *view;
+  CtkCellArea *area;
 
   subclass_init = 1;
 
@@ -320,8 +320,8 @@ test_combobox_subclass2 (void)
 static void
 test_combobox_subclass3_subprocess (void)
 {
-  GtkWidget *view;
-  GtkCellArea *area;
+  CtkWidget *view;
+  CtkCellArea *area;
 
   subclass_init = 1;
 
@@ -347,8 +347,8 @@ test_combobox_subclass3 (void)
 static void
 test_cellview_new (void)
 {
-  GtkWidget *view;
-  GtkCellArea *area;
+  CtkWidget *view;
+  CtkCellArea *area;
 
   view = ctk_cell_view_new ();
 
@@ -363,9 +363,9 @@ test_cellview_new (void)
 static void
 test_cellview_new_with_context (void)
 {
-  GtkWidget *view;
-  GtkCellArea *area;
-  GtkCellAreaContext *context;
+  CtkWidget *view;
+  CtkCellArea *area;
+  CtkCellAreaContext *context;
 
   area = ctk_cell_area_box_new ();
   context = ctk_cell_area_create_context (area);
@@ -380,8 +380,8 @@ test_cellview_new_with_context (void)
 static void
 test_cellview_object_new (void)
 {
-  GtkWidget *view;
-  GtkCellArea *area;
+  CtkWidget *view;
+  CtkCellArea *area;
 
   area = ctk_cell_area_box_new ();
   ctk_orientable_set_orientation (CTK_ORIENTABLE (area), CTK_ORIENTATION_HORIZONTAL);
@@ -392,8 +392,8 @@ test_cellview_object_new (void)
   g_object_unref (view);
 }
 
-typedef GtkCellView MyCellView;
-typedef GtkCellViewClass MyCellViewClass;
+typedef CtkCellView MyCellView;
+typedef CtkCellViewClass MyCellViewClass;
 
 GType my_cell_view_get_type (void);
 
@@ -407,7 +407,7 @@ my_cell_view_class_init (MyCellViewClass *klass)
 static void
 my_cell_view_init (MyCellView *view)
 {
-  GtkCellArea *area;
+  CtkCellArea *area;
 
   if (subclass_init == 0)
     {
@@ -426,8 +426,8 @@ my_cell_view_init (MyCellView *view)
 static void
 test_cellview_subclass0 (void)
 {
-  GtkWidget *view;
-  GtkCellArea *area;
+  CtkWidget *view;
+  CtkCellArea *area;
 
   subclass_init = 0;
 
@@ -444,8 +444,8 @@ test_cellview_subclass0 (void)
 static void
 test_cellview_subclass1 (void)
 {
-  GtkWidget *view;
-  GtkCellArea *area;
+  CtkWidget *view;
+  CtkCellArea *area;
 
   subclass_init = 0;
 
@@ -462,8 +462,8 @@ test_cellview_subclass1 (void)
 static void
 test_cellview_subclass2 (void)
 {
-  GtkWidget *view;
-  GtkCellArea *area;
+  CtkWidget *view;
+  CtkCellArea *area;
 
   subclass_init = 1;
 
@@ -479,8 +479,8 @@ test_cellview_subclass2 (void)
 static void
 test_cellview_subclass3_subprocess (void)
 {
-  GtkWidget *view;
-  GtkCellArea *area;
+  CtkWidget *view;
+  CtkCellArea *area;
 
   subclass_init = 1;
 
@@ -506,8 +506,8 @@ test_cellview_subclass3 (void)
 static void
 test_column_new (void)
 {
-  GtkTreeViewColumn *col;
-  GtkCellArea *area;
+  CtkTreeViewColumn *col;
+  CtkCellArea *area;
 
   col = ctk_tree_view_column_new ();
 
@@ -522,8 +522,8 @@ test_column_new (void)
 static void
 test_column_new_with_area (void)
 {
-  GtkTreeViewColumn *col;
-  GtkCellArea *area;
+  CtkTreeViewColumn *col;
+  CtkCellArea *area;
 
   area = ctk_cell_area_box_new ();
   col = ctk_tree_view_column_new_with_area (area);
@@ -537,8 +537,8 @@ test_column_new_with_area (void)
 static void
 test_column_object_new (void)
 {
-  GtkTreeViewColumn *col;
-  GtkCellArea *area;
+  CtkTreeViewColumn *col;
+  CtkCellArea *area;
 
   area = ctk_cell_area_box_new ();
   ctk_orientable_set_orientation (CTK_ORIENTABLE (area), CTK_ORIENTATION_HORIZONTAL);
@@ -549,8 +549,8 @@ test_column_object_new (void)
   g_object_unref (col);
 }
 
-typedef GtkTreeViewColumn MyTreeViewColumn;
-typedef GtkTreeViewColumnClass MyTreeViewColumnClass;
+typedef CtkTreeViewColumn MyTreeViewColumn;
+typedef CtkTreeViewColumnClass MyTreeViewColumnClass;
 
 GType my_tree_view_column_get_type (void);
 
@@ -564,7 +564,7 @@ my_tree_view_column_class_init (MyTreeViewColumnClass *klass)
 static void
 my_tree_view_column_init (MyTreeViewColumn *col)
 {
-  GtkCellArea *area;
+  CtkCellArea *area;
 
   if (subclass_init == 0)
     {
@@ -583,8 +583,8 @@ my_tree_view_column_init (MyTreeViewColumn *col)
 static void
 test_column_subclass0 (void)
 {
-  GtkTreeViewColumn *col;
-  GtkCellArea *area;
+  CtkTreeViewColumn *col;
+  CtkCellArea *area;
 
   subclass_init = 0;
 
@@ -601,8 +601,8 @@ test_column_subclass0 (void)
 static void
 test_column_subclass1 (void)
 {
-  GtkTreeViewColumn *col;
-  GtkCellArea *area;
+  CtkTreeViewColumn *col;
+  CtkCellArea *area;
 
   subclass_init = 0;
 
@@ -619,8 +619,8 @@ test_column_subclass1 (void)
 static void
 test_column_subclass2 (void)
 {
-  GtkTreeViewColumn *col;
-  GtkCellArea *area;
+  CtkTreeViewColumn *col;
+  CtkCellArea *area;
 
   subclass_init = 1;
 
@@ -636,8 +636,8 @@ test_column_subclass2 (void)
 static void
 test_column_subclass3_subprocess (void)
 {
-  GtkTreeViewColumn *col;
-  GtkCellArea *area;
+  CtkTreeViewColumn *col;
+  CtkCellArea *area;
 
   subclass_init = 1;
 
@@ -663,8 +663,8 @@ test_column_subclass3 (void)
 static void
 test_completion_new (void)
 {
-  GtkEntryCompletion *c;
-  GtkCellArea *area;
+  CtkEntryCompletion *c;
+  CtkCellArea *area;
 
   c = ctk_entry_completion_new ();
 
@@ -679,8 +679,8 @@ test_completion_new (void)
 static void
 test_completion_new_with_area (void)
 {
-  GtkEntryCompletion *c;
-  GtkCellArea *area;
+  CtkEntryCompletion *c;
+  CtkCellArea *area;
 
   area = ctk_cell_area_box_new ();
   c = ctk_entry_completion_new_with_area (area);
@@ -694,8 +694,8 @@ test_completion_new_with_area (void)
 static void
 test_completion_object_new (void)
 {
-  GtkEntryCompletion *c;
-  GtkCellArea *area;
+  CtkEntryCompletion *c;
+  CtkCellArea *area;
 
   area = ctk_cell_area_box_new ();
   ctk_orientable_set_orientation (CTK_ORIENTABLE (area), CTK_ORIENTATION_HORIZONTAL);
@@ -706,8 +706,8 @@ test_completion_object_new (void)
   g_object_unref (c);
 }
 
-typedef GtkEntryCompletion MyEntryCompletion;
-typedef GtkEntryCompletionClass MyEntryCompletionClass;
+typedef CtkEntryCompletion MyEntryCompletion;
+typedef CtkEntryCompletionClass MyEntryCompletionClass;
 
 GType my_entry_completion_get_type (void);
 
@@ -721,7 +721,7 @@ my_entry_completion_class_init (MyEntryCompletionClass *klass)
 static void
 my_entry_completion_init (MyEntryCompletion *c)
 {
-  GtkCellArea *area;
+  CtkCellArea *area;
 
   if (subclass_init == 0)
     {
@@ -740,8 +740,8 @@ my_entry_completion_init (MyEntryCompletion *c)
 static void
 test_completion_subclass0 (void)
 {
-  GtkEntryCompletion *c;
-  GtkCellArea *area;
+  CtkEntryCompletion *c;
+  CtkCellArea *area;
 
   subclass_init = 0;
 
@@ -758,8 +758,8 @@ test_completion_subclass0 (void)
 static void
 test_completion_subclass1 (void)
 {
-  GtkEntryCompletion *c;
-  GtkCellArea *area;
+  CtkEntryCompletion *c;
+  CtkCellArea *area;
 
   subclass_init = 0;
 
@@ -776,8 +776,8 @@ test_completion_subclass1 (void)
 static void
 test_completion_subclass2 (void)
 {
-  GtkEntryCompletion *c;
-  GtkCellArea *area;
+  CtkEntryCompletion *c;
+  CtkCellArea *area;
 
   subclass_init = 1;
 
@@ -793,8 +793,8 @@ test_completion_subclass2 (void)
 static void
 test_completion_subclass3_subprocess (void)
 {
-  GtkEntryCompletion *c;
-  GtkCellArea *area;
+  CtkEntryCompletion *c;
+  CtkCellArea *area;
 
   subclass_init = 1;
 

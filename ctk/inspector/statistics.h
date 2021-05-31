@@ -21,25 +21,25 @@
 #include <ctk/ctkbox.h>
 
 #define CTK_TYPE_INSPECTOR_STATISTICS            (ctk_inspector_statistics_get_type())
-#define CTK_INSPECTOR_STATISTICS(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_STATISTICS, GtkInspectorStatistics))
-#define CTK_INSPECTOR_STATISTICS_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_STATISTICS, GtkInspectorStatisticsClass))
+#define CTK_INSPECTOR_STATISTICS(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_STATISTICS, CtkInspectorStatistics))
+#define CTK_INSPECTOR_STATISTICS_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_STATISTICS, CtkInspectorStatisticsClass))
 #define CTK_INSPECTOR_IS_STATISTICS(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), CTK_TYPE_INSPECTOR_STATISTICS))
 #define CTK_INSPECTOR_IS_STATISTICS_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), CTK_TYPE_INSPECTOR_STATISTICS))
-#define CTK_INSPECTOR_STATISTICS_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_STATISTICS, GtkInspectorStatisticsClass))
+#define CTK_INSPECTOR_STATISTICS_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_STATISTICS, CtkInspectorStatisticsClass))
 
 
-typedef struct _GtkInspectorStatisticsPrivate GtkInspectorStatisticsPrivate;
+typedef struct _CtkInspectorStatisticsPrivate CtkInspectorStatisticsPrivate;
 
-typedef struct _GtkInspectorStatistics
+typedef struct _CtkInspectorStatistics
 {
-  GtkBox parent;
-  GtkInspectorStatisticsPrivate *priv;
-} GtkInspectorStatistics;
+  CtkBox parent;
+  CtkInspectorStatisticsPrivate *priv;
+} CtkInspectorStatistics;
 
-typedef struct _GtkInspectorStatisticsClass
+typedef struct _CtkInspectorStatisticsClass
 {
-  GtkBoxClass parent;
-} GtkInspectorStatisticsClass;
+  CtkBoxClass parent;
+} CtkInspectorStatisticsClass;
 
 G_BEGIN_DECLS
 

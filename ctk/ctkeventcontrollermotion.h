@@ -30,20 +30,20 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_EVENT_CONTROLLER_MOTION         (ctk_event_controller_motion_get_type ())
-#define CTK_EVENT_CONTROLLER_MOTION(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_EVENT_CONTROLLER_MOTION, GtkEventControllerMotion))
-#define CTK_EVENT_CONTROLLER_MOTION_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_EVENT_CONTROLLER_MOTION, GtkEventControllerMotionClass))
+#define CTK_EVENT_CONTROLLER_MOTION(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_EVENT_CONTROLLER_MOTION, CtkEventControllerMotion))
+#define CTK_EVENT_CONTROLLER_MOTION_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_EVENT_CONTROLLER_MOTION, CtkEventControllerMotionClass))
 #define CTK_IS_EVENT_CONTROLLER_MOTION(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_EVENT_CONTROLLER_MOTION))
 #define CTK_IS_EVENT_CONTROLLER_MOTION_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), CTK_TYPE_EVENT_CONTROLLER_MOTION))
-#define CTK_EVENT_CONTROLLER_MOTION_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_EVENT_CONTROLLER_MOTION, GtkEventControllerMotionClass))
+#define CTK_EVENT_CONTROLLER_MOTION_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_EVENT_CONTROLLER_MOTION, CtkEventControllerMotionClass))
 
-typedef struct _GtkEventControllerMotion GtkEventControllerMotion;
-typedef struct _GtkEventControllerMotionClass GtkEventControllerMotionClass;
+typedef struct _CtkEventControllerMotion CtkEventControllerMotion;
+typedef struct _CtkEventControllerMotionClass CtkEventControllerMotionClass;
 
 GDK_AVAILABLE_IN_3_24
 GType               ctk_event_controller_motion_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_24
-GtkEventController *ctk_event_controller_motion_new      (GtkWidget *widget);
+CtkEventController *ctk_event_controller_motion_new      (CtkWidget *widget);
 
 G_END_DECLS
 

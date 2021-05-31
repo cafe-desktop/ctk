@@ -32,18 +32,18 @@
 
 /**
  * SECTION:ctktoggletoolbutton
- * @Short_description: A GtkToolItem containing a toggle button
- * @Title: GtkToggleToolButton
- * @See_also: #GtkToolbar, #GtkToolButton, #GtkSeparatorToolItem
+ * @Short_description: A CtkToolItem containing a toggle button
+ * @Title: CtkToggleToolButton
+ * @See_also: #CtkToolbar, #CtkToolButton, #CtkSeparatorToolItem
  *
- * A #GtkToggleToolButton is a #GtkToolItem that contains a toggle
+ * A #CtkToggleToolButton is a #CtkToolItem that contains a toggle
  * button.
  *
- * Use ctk_toggle_tool_button_new() to create a new GtkToggleToolButton.
+ * Use ctk_toggle_tool_button_new() to create a new CtkToggleToolButton.
  *
  * # CSS nodes
  *
- * GtkToggleToolButton has a single CSS node with name togglebutton.
+ * CtkToggleToolButton has a single CSS node with name togglebutton.
  */
 
 
@@ -60,7 +60,7 @@ enum {
 };
 
 
-struct _GtkToggleToolButtonPrivate
+struct _CtkToggleToolButtonPrivate
 {
   guint active : 1;
 };
@@ -75,41 +75,41 @@ static void     ctk_toggle_tool_button_get_property        (GObject      *object
 							    GValue       *value,
 							    GParamSpec   *pspec);
 
-static gboolean ctk_toggle_tool_button_create_menu_proxy (GtkToolItem *button);
+static gboolean ctk_toggle_tool_button_create_menu_proxy (CtkToolItem *button);
 
-static void button_toggled      (GtkWidget           *widget,
-				 GtkToggleToolButton *button);
-static void menu_item_activated (GtkWidget           *widget,
-				 GtkToggleToolButton *button);
+static void button_toggled      (CtkWidget           *widget,
+				 CtkToggleToolButton *button);
+static void menu_item_activated (CtkWidget           *widget,
+				 CtkToggleToolButton *button);
 
 
-static void ctk_toggle_tool_button_activatable_interface_init (GtkActivatableIface  *iface);
-static void ctk_toggle_tool_button_update                     (GtkActivatable       *activatable,
-							       GtkAction            *action,
+static void ctk_toggle_tool_button_activatable_interface_init (CtkActivatableIface  *iface);
+static void ctk_toggle_tool_button_update                     (CtkActivatable       *activatable,
+							       CtkAction            *action,
 							       const gchar          *property_name);
-static void ctk_toggle_tool_button_sync_action_properties     (GtkActivatable       *activatable,
-							       GtkAction            *action);
+static void ctk_toggle_tool_button_sync_action_properties     (CtkActivatable       *activatable,
+							       CtkAction            *action);
 
-static GtkActivatableIface *parent_activatable_iface;
+static CtkActivatableIface *parent_activatable_iface;
 static guint                toggle_signals[LAST_SIGNAL] = { 0 };
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-G_DEFINE_TYPE_WITH_CODE (GtkToggleToolButton, ctk_toggle_tool_button, CTK_TYPE_TOOL_BUTTON,
-                         G_ADD_PRIVATE (GtkToggleToolButton)
+G_DEFINE_TYPE_WITH_CODE (CtkToggleToolButton, ctk_toggle_tool_button, CTK_TYPE_TOOL_BUTTON,
+                         G_ADD_PRIVATE (CtkToggleToolButton)
 			 G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTIVATABLE,
 						ctk_toggle_tool_button_activatable_interface_init))
 G_GNUC_END_IGNORE_DEPRECATIONS;
 
 static void
-ctk_toggle_tool_button_class_init (GtkToggleToolButtonClass *klass)
+ctk_toggle_tool_button_class_init (CtkToggleToolButtonClass *klass)
 {
   GObjectClass *object_class;
-  GtkToolItemClass *toolitem_class;
-  GtkToolButtonClass *toolbutton_class;
+  CtkToolItemClass *toolitem_class;
+  CtkToolButtonClass *toolbutton_class;
 
   object_class = (GObjectClass *)klass;
-  toolitem_class = (GtkToolItemClass *)klass;
-  toolbutton_class = (GtkToolButtonClass *)klass;
+  toolitem_class = (CtkToolItemClass *)klass;
+  toolbutton_class = (CtkToolButtonClass *)klass;
 
   object_class->set_property = ctk_toggle_tool_button_set_property;
   object_class->get_property = ctk_toggle_tool_button_get_property;
@@ -118,7 +118,7 @@ ctk_toggle_tool_button_class_init (GtkToggleToolButtonClass *klass)
   toolbutton_class->button_type = CTK_TYPE_TOGGLE_BUTTON;
 
   /**
-   * GtkToggleToolButton:active:
+   * CtkToggleToolButton:active:
    *
    * If the toggle tool button should be pressed in.
    *
@@ -133,7 +133,7 @@ ctk_toggle_tool_button_class_init (GtkToggleToolButtonClass *klass)
                                                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
 /**
- * GtkToggleToolButton::toggled:
+ * CtkToggleToolButton::toggled:
  * @toggle_tool_button: the object that emitted the signal
  *
  * Emitted whenever the toggle tool button changes state.
@@ -142,17 +142,17 @@ ctk_toggle_tool_button_class_init (GtkToggleToolButtonClass *klass)
     g_signal_new (I_("toggled"),
 		  G_OBJECT_CLASS_TYPE (klass),
 		  G_SIGNAL_RUN_FIRST,
-		  G_STRUCT_OFFSET (GtkToggleToolButtonClass, toggled),
+		  G_STRUCT_OFFSET (CtkToggleToolButtonClass, toggled),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
 }
 
 static void
-ctk_toggle_tool_button_init (GtkToggleToolButton *button)
+ctk_toggle_tool_button_init (CtkToggleToolButton *button)
 {
-  GtkToolButton *tool_button = CTK_TOOL_BUTTON (button);
-  GtkToggleButton *toggle_button = CTK_TOGGLE_BUTTON (_ctk_tool_button_get_button (tool_button));
+  CtkToolButton *tool_button = CTK_TOOL_BUTTON (button);
+  CtkToggleButton *toggle_button = CTK_TOGGLE_BUTTON (_ctk_tool_button_get_button (tool_button));
 
   button->priv = ctk_toggle_tool_button_get_instance_private (button);
 
@@ -171,7 +171,7 @@ ctk_toggle_tool_button_set_property (GObject      *object,
 				     const GValue *value,
 				     GParamSpec   *pspec)
 {
-  GtkToggleToolButton *button = CTK_TOGGLE_TOOL_BUTTON (object);
+  CtkToggleToolButton *button = CTK_TOGGLE_TOOL_BUTTON (object);
 
   switch (prop_id)
     {
@@ -192,7 +192,7 @@ ctk_toggle_tool_button_get_property (GObject    *object,
 				     GValue     *value,
 				     GParamSpec *pspec)
 {
-  GtkToggleToolButton *button = CTK_TOGGLE_TOOL_BUTTON (object);
+  CtkToggleToolButton *button = CTK_TOGGLE_TOOL_BUTTON (object);
 
   switch (prop_id)
     {
@@ -207,15 +207,15 @@ ctk_toggle_tool_button_get_property (GObject    *object,
 }
 
 static gboolean
-ctk_toggle_tool_button_create_menu_proxy (GtkToolItem *item)
+ctk_toggle_tool_button_create_menu_proxy (CtkToolItem *item)
 {
-  GtkToolButton *tool_button = CTK_TOOL_BUTTON (item);
-  GtkToggleToolButton *toggle_tool_button = CTK_TOGGLE_TOOL_BUTTON (item);
-  GtkWidget *menu_item = NULL;
-  GtkStockItem stock_item;
+  CtkToolButton *tool_button = CTK_TOOL_BUTTON (item);
+  CtkToggleToolButton *toggle_tool_button = CTK_TOGGLE_TOOL_BUTTON (item);
+  CtkWidget *menu_item = NULL;
+  CtkStockItem stock_item;
   gboolean use_mnemonic = TRUE;
   const char *label;
-  GtkWidget *label_widget;
+  CtkWidget *label_widget;
   const gchar *label_text;
   const gchar *stock_id;
 
@@ -286,10 +286,10 @@ ctk_toggle_tool_button_create_menu_proxy (GtkToolItem *item)
  * in a state that matches its own new state.
  */
 static void
-menu_item_activated (GtkWidget           *menu_item,
-		     GtkToggleToolButton *toggle_tool_button)
+menu_item_activated (CtkWidget           *menu_item,
+		     CtkToggleToolButton *toggle_tool_button)
 {
-  GtkToolButton *tool_button = CTK_TOOL_BUTTON (toggle_tool_button);
+  CtkToolButton *tool_button = CTK_TOOL_BUTTON (toggle_tool_button);
   gboolean menu_active = ctk_check_menu_item_get_active (CTK_CHECK_MENU_ITEM (menu_item));
 
   if (toggle_tool_button->priv->active != menu_active)
@@ -305,8 +305,8 @@ menu_item_activated (GtkWidget           *menu_item,
 }
 
 static void
-button_toggled (GtkWidget           *widget,
-		GtkToggleToolButton *toggle_tool_button)
+button_toggled (CtkWidget           *widget,
+		CtkToggleToolButton *toggle_tool_button)
 {
   gboolean toggle_active;
 
@@ -314,7 +314,7 @@ button_toggled (GtkWidget           *widget,
 
   if (toggle_tool_button->priv->active != toggle_active)
     {
-      GtkWidget *menu_item;
+      CtkWidget *menu_item;
       
       toggle_tool_button->priv->active = toggle_active;
        
@@ -331,7 +331,7 @@ button_toggled (GtkWidget           *widget,
 }
 
 static void
-ctk_toggle_tool_button_activatable_interface_init (GtkActivatableIface *iface)
+ctk_toggle_tool_button_activatable_interface_init (CtkActivatableIface *iface)
 {
   parent_activatable_iface = g_type_interface_peek_parent (iface);
   iface->update = ctk_toggle_tool_button_update;
@@ -339,11 +339,11 @@ ctk_toggle_tool_button_activatable_interface_init (GtkActivatableIface *iface)
 }
 
 static void
-ctk_toggle_tool_button_update (GtkActivatable *activatable,
-			       GtkAction      *action,
+ctk_toggle_tool_button_update (CtkActivatable *activatable,
+			       CtkAction      *action,
 			       const gchar    *property_name)
 {
-  GtkToggleToolButton *button;
+  CtkToggleToolButton *button;
 
   parent_activatable_iface->update (activatable, action, property_name);
 
@@ -360,10 +360,10 @@ ctk_toggle_tool_button_update (GtkActivatable *activatable,
 }
 
 static void
-ctk_toggle_tool_button_sync_action_properties (GtkActivatable *activatable,
-					       GtkAction      *action)
+ctk_toggle_tool_button_sync_action_properties (CtkActivatable *activatable,
+					       CtkAction      *action)
 {
-  GtkToggleToolButton *button;
+  CtkToggleToolButton *button;
   gboolean is_toggle_action;
 
   parent_activatable_iface->sync_action_properties (activatable, action);
@@ -388,16 +388,16 @@ ctk_toggle_tool_button_sync_action_properties (GtkActivatable *activatable,
 /**
  * ctk_toggle_tool_button_new:
  * 
- * Returns a new #GtkToggleToolButton
+ * Returns a new #CtkToggleToolButton
  * 
- * Returns: a newly created #GtkToggleToolButton
+ * Returns: a newly created #CtkToggleToolButton
  * 
  * Since: 2.4
  **/
-GtkToolItem *
+CtkToolItem *
 ctk_toggle_tool_button_new (void)
 {
-  GtkToolButton *button;
+  CtkToolButton *button;
 
   button = g_object_new (CTK_TYPE_TOGGLE_TOOL_BUTTON,
 			 NULL);
@@ -409,22 +409,22 @@ ctk_toggle_tool_button_new (void)
  * ctk_toggle_tool_button_new_from_stock:
  * @stock_id: the name of the stock item 
  *
- * Creates a new #GtkToggleToolButton containing the image and text from a
+ * Creates a new #CtkToggleToolButton containing the image and text from a
  * stock item. Some stock ids have preprocessor macros like #CTK_STOCK_OK
  * and #CTK_STOCK_APPLY.
  *
  * It is an error if @stock_id is not a name of a stock item.
  * 
- * Returns: A new #GtkToggleToolButton
+ * Returns: A new #CtkToggleToolButton
  * 
  * Since: 2.4
  *
  * Deprecated: 3.10: Use ctk_toggle_tool_button_new() instead.
  **/
-GtkToolItem *
+CtkToolItem *
 ctk_toggle_tool_button_new_from_stock (const gchar *stock_id)
 {
-  GtkToolButton *button;
+  CtkToolButton *button;
 
   g_return_val_if_fail (stock_id != NULL, NULL);
   
@@ -437,17 +437,17 @@ ctk_toggle_tool_button_new_from_stock (const gchar *stock_id)
 
 /**
  * ctk_toggle_tool_button_set_active:
- * @button: a #GtkToggleToolButton
+ * @button: a #CtkToggleToolButton
  * @is_active: whether @button should be active
  * 
  * Sets the status of the toggle tool button. Set to %TRUE if you
- * want the GtkToggleButton to be “pressed in”, and %FALSE to raise it.
+ * want the CtkToggleButton to be “pressed in”, and %FALSE to raise it.
  * This action causes the toggled signal to be emitted.
  * 
  * Since: 2.4
  **/
 void
-ctk_toggle_tool_button_set_active (GtkToggleToolButton *button,
+ctk_toggle_tool_button_set_active (CtkToggleToolButton *button,
                                    gboolean             is_active)
 {
   g_return_if_fail (CTK_IS_TOGGLE_TOOL_BUTTON (button));
@@ -463,9 +463,9 @@ ctk_toggle_tool_button_set_active (GtkToggleToolButton *button,
 
 /**
  * ctk_toggle_tool_button_get_active:
- * @button: a #GtkToggleToolButton
+ * @button: a #CtkToggleToolButton
  * 
- * Queries a #GtkToggleToolButton and returns its current state.
+ * Queries a #CtkToggleToolButton and returns its current state.
  * Returns %TRUE if the toggle button is pressed in and %FALSE if it is raised.
  * 
  * Returns: %TRUE if the toggle tool button is pressed in, %FALSE if not
@@ -473,7 +473,7 @@ ctk_toggle_tool_button_set_active (GtkToggleToolButton *button,
  * Since: 2.4
  **/
 gboolean
-ctk_toggle_tool_button_get_active (GtkToggleToolButton *button)
+ctk_toggle_tool_button_get_active (CtkToggleToolButton *button)
 {
   g_return_val_if_fail (CTK_IS_TOGGLE_TOOL_BUTTON (button), FALSE);
 

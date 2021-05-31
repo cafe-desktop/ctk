@@ -22,12 +22,12 @@
 #include "ctk/ctklockbuttonprivate.h"
 #include "ctk/ctkwidgetprivate.h"
 
-G_DEFINE_TYPE (GtkLockButtonAccessible, ctk_lock_button_accessible, CTK_TYPE_BUTTON_ACCESSIBLE)
+G_DEFINE_TYPE (CtkLockButtonAccessible, ctk_lock_button_accessible, CTK_TYPE_BUTTON_ACCESSIBLE)
 
 static const gchar *
 ctk_lock_button_accessible_get_name (AtkObject *obj)
 {
-  GtkLockButton *lockbutton;
+  CtkLockButton *lockbutton;
 
   lockbutton = CTK_LOCK_BUTTON (ctk_accessible_get_widget (CTK_ACCESSIBLE (obj)));
   if (lockbutton == NULL)
@@ -37,7 +37,7 @@ ctk_lock_button_accessible_get_name (AtkObject *obj)
 }
 
 static void
-ctk_lock_button_accessible_class_init (GtkLockButtonAccessibleClass *klass)
+ctk_lock_button_accessible_class_init (CtkLockButtonAccessibleClass *klass)
 {
   AtkObjectClass *atk_object_class = ATK_OBJECT_CLASS (klass);
 
@@ -45,12 +45,12 @@ ctk_lock_button_accessible_class_init (GtkLockButtonAccessibleClass *klass)
 }
 
 static void
-ctk_lock_button_accessible_init (GtkLockButtonAccessible *lockbutton)
+ctk_lock_button_accessible_init (CtkLockButtonAccessible *lockbutton)
 {
 }
 
 void
-_ctk_lock_button_accessible_name_changed (GtkLockButton *lockbutton)
+_ctk_lock_button_accessible_name_changed (CtkLockButton *lockbutton)
 {
   AtkObject *obj;
 

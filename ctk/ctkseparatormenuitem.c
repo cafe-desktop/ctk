@@ -31,28 +31,28 @@
 /**
  * SECTION:ctkseparatormenuitem
  * @Short_description: A separator used in menus
- * @Title: GtkSeparatorMenuItem
+ * @Title: CtkSeparatorMenuItem
  *
- * The #GtkSeparatorMenuItem is a separator used to group
+ * The #CtkSeparatorMenuItem is a separator used to group
  * items within a menu. It displays a horizontal line with a shadow to
  * make it appear sunken into the interface.
  *
  * # CSS nodes
  *
- * GtkSeparatorMenuItem has a single CSS node with name separator.
+ * CtkSeparatorMenuItem has a single CSS node with name separator.
  */
 
-G_DEFINE_TYPE (GtkSeparatorMenuItem, ctk_separator_menu_item, CTK_TYPE_MENU_ITEM)
+G_DEFINE_TYPE (CtkSeparatorMenuItem, ctk_separator_menu_item, CTK_TYPE_MENU_ITEM)
 
 
 static const char *
-ctk_separator_menu_item_get_label (GtkMenuItem *item)
+ctk_separator_menu_item_get_label (CtkMenuItem *item)
 {
   return "";
 }
 
 static void
-ctk_separator_menu_item_class_init (GtkSeparatorMenuItemClass *class)
+ctk_separator_menu_item_class_init (CtkSeparatorMenuItemClass *class)
 {
   CTK_CONTAINER_CLASS (class)->child_type = NULL;
 
@@ -63,18 +63,18 @@ ctk_separator_menu_item_class_init (GtkSeparatorMenuItemClass *class)
 }
 
 static void
-ctk_separator_menu_item_init (GtkSeparatorMenuItem *item)
+ctk_separator_menu_item_init (CtkSeparatorMenuItem *item)
 {
 }
 
 /**
  * ctk_separator_menu_item_new:
  *
- * Creates a new #GtkSeparatorMenuItem.
+ * Creates a new #CtkSeparatorMenuItem.
  *
- * Returns: a new #GtkSeparatorMenuItem.
+ * Returns: a new #CtkSeparatorMenuItem.
  */
-GtkWidget *
+CtkWidget *
 ctk_separator_menu_item_new (void)
 {
   return g_object_new (CTK_TYPE_SEPARATOR_MENU_ITEM, NULL);

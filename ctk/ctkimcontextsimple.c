@@ -47,25 +47,25 @@
 /**
  * SECTION:ctkimcontextsimple
  * @Short_description: An input method context supporting table-based input methods
- * @Title: GtkIMContextSimple
+ * @Title: CtkIMContextSimple
  *
- * GtkIMContextSimple is a simple input method context supporting table-based
+ * CtkIMContextSimple is a simple input method context supporting table-based
  * input methods. It has a built-in table of compose sequences that is derived
  * from the X11 Compose files.
  *
- * GtkIMContextSimple reads additional compose sequences from the first of the
+ * CtkIMContextSimple reads additional compose sequences from the first of the
  * following files that is found: ~/.config/ctk-3.0/Compose, ~/.XCompose,
  * /usr/share/X11/locale/$locale/Compose (for locales that have a nontrivial
  * Compose file). The syntax of these files is described in the Compose(5)
  * manual page.
  *
- * GtkIMContextSimple also supports numeric entry of Unicode characters
+ * CtkIMContextSimple also supports numeric entry of Unicode characters
  * by typing Ctrl-Shift-u, followed by a hexadecimal Unicode codepoint.
  * For example, Ctrl-Shift-u 1 2 3 Enter yields U+0123 LATIN SMALL LETTER
  * G WITH CEDILLA, i.e. ģ.
  */
 
-struct _GtkIMContextSimplePrivate
+struct _CtkIMContextSimplePrivate
 {
   guint16        compose_buffer[CTK_MAX_COMPOSE_LEN + 1];
   gunichar       tentative_match;
@@ -80,7 +80,7 @@ struct _GtkIMContextSimplePrivate
  * parameters, you get the count that you can put here. Needed when updating the
  * ctkimcontextsimpleseqs.h header file (contains the compose sequences).
  */
-const GtkComposeTableCompact ctk_compose_table_compact = {
+const CtkComposeTableCompact ctk_compose_table_compact = {
   ctk_compose_seqs_compact,
   5,
   30,
@@ -110,22 +110,22 @@ static const guint16 ctk_compose_ignore[] = {
 };
 
 static void     ctk_im_context_simple_finalize           (GObject                  *obj);
-static gboolean ctk_im_context_simple_filter_keypress    (GtkIMContext             *context,
+static gboolean ctk_im_context_simple_filter_keypress    (CtkIMContext             *context,
 							  GdkEventKey              *key);
-static void     ctk_im_context_simple_reset              (GtkIMContext             *context);
-static void     ctk_im_context_simple_get_preedit_string (GtkIMContext             *context,
+static void     ctk_im_context_simple_reset              (CtkIMContext             *context);
+static void     ctk_im_context_simple_get_preedit_string (CtkIMContext             *context,
 							  gchar                   **str,
 							  PangoAttrList           **attrs,
 							  gint                     *cursor_pos);
-static void     ctk_im_context_simple_set_client_window  (GtkIMContext             *context,
+static void     ctk_im_context_simple_set_client_window  (CtkIMContext             *context,
                                                           GdkWindow                *window);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkIMContextSimple, ctk_im_context_simple, CTK_TYPE_IM_CONTEXT)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkIMContextSimple, ctk_im_context_simple, CTK_TYPE_IM_CONTEXT)
 
 static void
-ctk_im_context_simple_class_init (GtkIMContextSimpleClass *class)
+ctk_im_context_simple_class_init (CtkIMContextSimpleClass *class)
 {
-  GtkIMContextClass *im_context_class = CTK_IM_CONTEXT_CLASS (class);
+  CtkIMContextClass *im_context_class = CTK_IM_CONTEXT_CLASS (class);
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
 
   im_context_class->filter_keypress = ctk_im_context_simple_filter_keypress;
@@ -150,7 +150,7 @@ get_x11_compose_file_dir (void)
 }
 
 static void
-ctk_im_context_simple_init_compose_table (GtkIMContextSimple *im_context_simple)
+ctk_im_context_simple_init_compose_table (CtkIMContextSimple *im_context_simple)
 {
   gchar *path = NULL;
   const gchar *home;
@@ -244,7 +244,7 @@ init_compose_table_thread_cb (GTask            *task,
 }
 
 void
-init_compose_table_async (GtkIMContextSimple   *im_context_simple,
+init_compose_table_async (CtkIMContextSimple   *im_context_simple,
                           GCancellable         *cancellable,
                           GAsyncReadyCallback   callback,
                           gpointer              user_data)
@@ -257,7 +257,7 @@ init_compose_table_async (GtkIMContextSimple   *im_context_simple,
 }
 
 static void
-ctk_im_context_simple_init (GtkIMContextSimple *im_context_simple)
+ctk_im_context_simple_init (CtkIMContextSimple *im_context_simple)
 {
   im_context_simple->priv = ctk_im_context_simple_get_instance_private (im_context_simple); 
 }
@@ -271,22 +271,22 @@ ctk_im_context_simple_finalize (GObject *obj)
 /**
  * ctk_im_context_simple_new:
  * 
- * Creates a new #GtkIMContextSimple.
+ * Creates a new #CtkIMContextSimple.
  *
- * Returns: a new #GtkIMContextSimple.
+ * Returns: a new #CtkIMContextSimple.
  **/
-GtkIMContext *
+CtkIMContext *
 ctk_im_context_simple_new (void)
 {
   return g_object_new (CTK_TYPE_IM_CONTEXT_SIMPLE, NULL);
 }
 
 static void
-ctk_im_context_simple_commit_char (GtkIMContext *context,
+ctk_im_context_simple_commit_char (CtkIMContext *context,
 				   gunichar ch)
 {
-  GtkIMContextSimple *context_simple = CTK_IM_CONTEXT_SIMPLE (context);
-  GtkIMContextSimplePrivate *priv = context_simple->priv;
+  CtkIMContextSimple *context_simple = CTK_IM_CONTEXT_SIMPLE (context);
+  CtkIMContextSimplePrivate *priv = context_simple->priv;
   gchar buf[10];
   gint len;
 
@@ -342,11 +342,11 @@ compare_seq (const void *key, const void *value)
 }
 
 static gboolean
-check_table (GtkIMContextSimple    *context_simple,
-	     const GtkComposeTable *table,
+check_table (CtkIMContextSimple    *context_simple,
+	     const CtkComposeTable *table,
 	     gint                   n_compose)
 {
-  GtkIMContextSimplePrivate *priv = context_simple->priv;
+  CtkIMContextSimplePrivate *priv = context_simple->priv;
   gint row_stride = table->max_seq_len + 2; 
   guint16 *seq; 
   
@@ -430,10 +430,10 @@ check_table (GtkIMContextSimple    *context_simple,
  */
 
 static gboolean
-check_win32_special_cases (GtkIMContextSimple    *context_simple,
+check_win32_special_cases (CtkIMContextSimple    *context_simple,
 			   gint                   n_compose)
 {
-  GtkIMContextSimplePrivate *priv = context_simple->priv;
+  CtkIMContextSimplePrivate *priv = context_simple->priv;
   if (n_compose == 2 &&
       priv->compose_buffer[1] == GDK_KEY_space)
     {
@@ -458,11 +458,11 @@ check_win32_special_cases (GtkIMContextSimple    *context_simple,
 }
 
 static void
-check_win32_special_case_after_compact_match (GtkIMContextSimple    *context_simple,
+check_win32_special_case_after_compact_match (CtkIMContextSimple    *context_simple,
 					      gint                   n_compose,
 					      guint                  value)
 {
-  GtkIMContextSimplePrivate *priv = context_simple->priv;
+  CtkIMContextSimplePrivate *priv = context_simple->priv;
 
   /* On Windows user expectation is that typing two dead accents will input
    * two corresponding spacing accents.
@@ -480,10 +480,10 @@ check_win32_special_case_after_compact_match (GtkIMContextSimple    *context_sim
 #ifdef GDK_WINDOWING_QUARTZ
 
 static gboolean
-check_quartz_special_cases (GtkIMContextSimple *context_simple,
+check_quartz_special_cases (CtkIMContextSimple *context_simple,
                             gint                n_compose)
 {
-  GtkIMContextSimplePrivate *priv = context_simple->priv;
+  CtkIMContextSimplePrivate *priv = context_simple->priv;
   guint value = 0;
 
   if (n_compose == 2)
@@ -537,7 +537,7 @@ check_quartz_special_cases (GtkIMContextSimple *context_simple,
 #endif
 
 gboolean
-ctk_check_compact_table (const GtkComposeTableCompact  *table,
+ctk_check_compact_table (const CtkComposeTableCompact  *table,
                          guint16                       *compose_buffer,
                          gint                           n_compose,
                          gboolean                      *compose_finish,
@@ -807,10 +807,10 @@ ctk_check_algorithmically (const guint16       *compose_buffer,
  */
 
 static gboolean
-check_hex (GtkIMContextSimple *context_simple,
+check_hex (CtkIMContextSimple *context_simple,
            gint                n_compose)
 {
-  GtkIMContextSimplePrivate *priv = context_simple->priv;
+  CtkIMContextSimplePrivate *priv = context_simple->priv;
   /* See if this is a hex sequence, return TRUE if so */
   gint i;
   GString *str;
@@ -880,12 +880,12 @@ beep_window (GdkWindow *window)
 }
 
 static gboolean
-no_sequence_matches (GtkIMContextSimple *context_simple,
+no_sequence_matches (CtkIMContextSimple *context_simple,
                      gint                n_compose,
                      GdkEventKey        *event)
 {
-  GtkIMContextSimplePrivate *priv = context_simple->priv;
-  GtkIMContext *context;
+  CtkIMContextSimplePrivate *priv = context_simple->priv;
+  CtkIMContext *context;
   gunichar ch;
   
   context = CTK_IM_CONTEXT (context_simple);
@@ -985,11 +985,11 @@ canonical_hex_keyval (GdkEventKey *event)
 }
 
 static gboolean
-ctk_im_context_simple_filter_keypress (GtkIMContext *context,
+ctk_im_context_simple_filter_keypress (CtkIMContext *context,
 				       GdkEventKey  *event)
 {
-  GtkIMContextSimple *context_simple = CTK_IM_CONTEXT_SIMPLE (context);
-  GtkIMContextSimplePrivate *priv = context_simple->priv;
+  CtkIMContextSimple *context_simple = CTK_IM_CONTEXT_SIMPLE (context);
+  CtkIMContextSimplePrivate *priv = context_simple->priv;
   GdkDisplay *display = gdk_window_get_display (event->window);
   GSList *tmp_list;  
   int n_compose = 0;
@@ -1323,10 +1323,10 @@ ctk_im_context_simple_filter_keypress (GtkIMContext *context,
 }
 
 static void
-ctk_im_context_simple_reset (GtkIMContext *context)
+ctk_im_context_simple_reset (CtkIMContext *context)
 {
-  GtkIMContextSimple *context_simple = CTK_IM_CONTEXT_SIMPLE (context);
-  GtkIMContextSimplePrivate *priv = context_simple->priv;
+  CtkIMContextSimple *context_simple = CTK_IM_CONTEXT_SIMPLE (context);
+  CtkIMContextSimplePrivate *priv = context_simple->priv;
 
   priv->compose_buffer[0] = 0;
 
@@ -1341,13 +1341,13 @@ ctk_im_context_simple_reset (GtkIMContext *context)
 }
 
 static void     
-ctk_im_context_simple_get_preedit_string (GtkIMContext   *context,
+ctk_im_context_simple_get_preedit_string (CtkIMContext   *context,
 					  gchar         **str,
 					  PangoAttrList **attrs,
 					  gint           *cursor_pos)
 {
-  GtkIMContextSimple *context_simple = CTK_IM_CONTEXT_SIMPLE (context);
-  GtkIMContextSimplePrivate *priv = context_simple->priv;
+  CtkIMContextSimple *context_simple = CTK_IM_CONTEXT_SIMPLE (context);
+  CtkIMContextSimplePrivate *priv = context_simple->priv;
   char outbuf[37]; /* up to 6 hex digits */
   int len = 0;
 
@@ -1393,10 +1393,10 @@ ctk_im_context_simple_get_preedit_string (GtkIMContext   *context,
 }
 
 static void
-ctk_im_context_simple_set_client_window  (GtkIMContext *context,
+ctk_im_context_simple_set_client_window  (CtkIMContext *context,
                                           GdkWindow    *window)
 {
-  GtkIMContextSimple *im_context_simple = CTK_IM_CONTEXT_SIMPLE (context);
+  CtkIMContextSimple *im_context_simple = CTK_IM_CONTEXT_SIMPLE (context);
   gboolean run_compose_table = FALSE;
 
   if (!window)
@@ -1418,7 +1418,7 @@ ctk_im_context_simple_set_client_window  (GtkIMContext *context,
 
 /**
  * ctk_im_context_simple_add_table: (skip)
- * @context_simple: A #GtkIMContextSimple
+ * @context_simple: A #CtkIMContextSimple
  * @data: (array): the table
  * @max_seq_len: Maximum length of a sequence in the table
  *               (cannot be greater than #CTK_MAX_COMPOSE_LEN)
@@ -1435,7 +1435,7 @@ ctk_im_context_simple_set_client_window  (GtkIMContext *context,
  * the length of the sequence should be zero.)
  **/
 void
-ctk_im_context_simple_add_table (GtkIMContextSimple *context_simple,
+ctk_im_context_simple_add_table (CtkIMContextSimple *context_simple,
 				 guint16            *data,
 				 gint                max_seq_len,
 				 gint                n_seqs)
@@ -1452,7 +1452,7 @@ ctk_im_context_simple_add_table (GtkIMContextSimple *context_simple,
 
 /*
  * ctk_im_context_simple_add_compose_file:
- * @context_simple: A #GtkIMContextSimple
+ * @context_simple: A #CtkIMContextSimple
  * @compose_file: The path of compose file
  *
  * Adds an additional table from the X11 compose file.
@@ -1460,7 +1460,7 @@ ctk_im_context_simple_add_table (GtkIMContextSimple *context_simple,
  * Since: 3.20
  */
 void
-ctk_im_context_simple_add_compose_file (GtkIMContextSimple *context_simple,
+ctk_im_context_simple_add_compose_file (CtkIMContextSimple *context_simple,
                                         const gchar        *compose_file)
 {
   g_return_if_fail (CTK_IS_IM_CONTEXT_SIMPLE (context_simple));

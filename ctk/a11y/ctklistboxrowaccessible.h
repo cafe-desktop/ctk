@@ -28,23 +28,23 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_LIST_BOX_ROW_ACCESSIBLE               (ctk_list_box_row_accessible_get_type ())
-#define CTK_LIST_BOX_ROW_ACCESSIBLE(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_LIST_BOX_ROW_ACCESSIBLE, GtkListBoxRowAccessible))
-#define CTK_LIST_BOX_ROW_ACCESSIBLE_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_LIST_BOX_ROW_ACCESSIBLE, GtkListBoxRowAccessibleClass))
+#define CTK_LIST_BOX_ROW_ACCESSIBLE(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_LIST_BOX_ROW_ACCESSIBLE, CtkListBoxRowAccessible))
+#define CTK_LIST_BOX_ROW_ACCESSIBLE_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_LIST_BOX_ROW_ACCESSIBLE, CtkListBoxRowAccessibleClass))
 #define CTK_IS_LIST_BOX_ROW_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_LIST_BOX_ROW_ACCESSIBLE))
 #define CTK_IS_LIST_BOX_ROW_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_LIST_BOX_ROW_ACCESSIBLE))
-#define CTK_LIST_BOX_ROW_ACCESSIBLE_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_LIST_BOX_ROW_ACCESSIBLE, GtkListBoxRowAccessibleClass))
+#define CTK_LIST_BOX_ROW_ACCESSIBLE_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_LIST_BOX_ROW_ACCESSIBLE, CtkListBoxRowAccessibleClass))
 
-typedef struct _GtkListBoxRowAccessible        GtkListBoxRowAccessible;
-typedef struct _GtkListBoxRowAccessibleClass   GtkListBoxRowAccessibleClass;
+typedef struct _CtkListBoxRowAccessible        CtkListBoxRowAccessible;
+typedef struct _CtkListBoxRowAccessibleClass   CtkListBoxRowAccessibleClass;
 
-struct _GtkListBoxRowAccessible
+struct _CtkListBoxRowAccessible
 {
-  GtkContainerAccessible parent;
+  CtkContainerAccessible parent;
 };
 
-struct _GtkListBoxRowAccessibleClass
+struct _CtkListBoxRowAccessibleClass
 {
-  GtkContainerAccessibleClass parent_class;
+  CtkContainerAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_3_10

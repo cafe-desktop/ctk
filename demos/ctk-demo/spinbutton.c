@@ -1,6 +1,6 @@
 /* Spin Button
  *
- * GtkSpinButton provides convenient ways to input data
+ * CtkSpinButton provides convenient ways to input data
  * that can be seen as a value in a range. The examples
  * here show that this does not necessarily mean numeric
  * values, and it can include custom formatting.
@@ -12,7 +12,7 @@
 #include <stdlib.h>
 
 static gint
-hex_spin_input (GtkSpinButton *spin_button,
+hex_spin_input (CtkSpinButton *spin_button,
                 gdouble       *new_val)
 {
   const gchar *buf;
@@ -29,9 +29,9 @@ hex_spin_input (GtkSpinButton *spin_button,
 }
 
 static gint
-hex_spin_output (GtkSpinButton *spin_button)
+hex_spin_output (CtkSpinButton *spin_button)
 {
-  GtkAdjustment *adjustment;
+  CtkAdjustment *adjustment;
   gchar *buf;
   gint val;
 
@@ -49,7 +49,7 @@ hex_spin_output (GtkSpinButton *spin_button)
 }
 
 static gint
-time_spin_input (GtkSpinButton *spin_button,
+time_spin_input (CtkSpinButton *spin_button,
                  gdouble       *new_val)
 {
   const gchar *text;
@@ -88,9 +88,9 @@ time_spin_input (GtkSpinButton *spin_button,
 }
 
 static gint
-time_spin_output (GtkSpinButton *spin_button)
+time_spin_output (CtkSpinButton *spin_button)
 {
-  GtkAdjustment *adjustment;
+  CtkAdjustment *adjustment;
   gchar *buf;
   gdouble hours;
   gdouble minutes;
@@ -122,7 +122,7 @@ static gchar *month[12] = {
 };
 
 static gint
-month_spin_input (GtkSpinButton *spin_button,
+month_spin_input (CtkSpinButton *spin_button,
                   gdouble       *new_val)
 {
   gint i;
@@ -151,9 +151,9 @@ month_spin_input (GtkSpinButton *spin_button,
 }
 
 static gint
-month_spin_output (GtkSpinButton *spin_button)
+month_spin_output (CtkSpinButton *spin_button)
 {
-  GtkAdjustment *adjustment;
+  CtkAdjustment *adjustment;
   gdouble value;
   gint i;
 
@@ -179,16 +179,16 @@ value_to_label (GBinding     *binding,
   return TRUE;
 }
 
-GtkWidget *
-do_spinbutton (GtkWidget *do_widget)
+CtkWidget *
+do_spinbutton (CtkWidget *do_widget)
 {
-  static GtkWidget *window;
+  static CtkWidget *window;
 
   if (!window)
   {
-    GtkBuilder *builder;
-    GtkAdjustment *adj;
-    GtkWidget *label;
+    CtkBuilder *builder;
+    CtkAdjustment *adj;
+    CtkWidget *label;
 
     builder = ctk_builder_new_from_resource ("/spinbutton/spinbutton.ui");
     ctk_builder_add_callback_symbols (builder,

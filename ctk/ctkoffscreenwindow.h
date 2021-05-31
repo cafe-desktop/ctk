@@ -28,27 +28,27 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_OFFSCREEN_WINDOW         (ctk_offscreen_window_get_type ())
-#define CTK_OFFSCREEN_WINDOW(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_OFFSCREEN_WINDOW, GtkOffscreenWindow))
-#define CTK_OFFSCREEN_WINDOW_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_OFFSCREEN_WINDOW, GtkOffscreenWindowClass))
+#define CTK_OFFSCREEN_WINDOW(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_OFFSCREEN_WINDOW, CtkOffscreenWindow))
+#define CTK_OFFSCREEN_WINDOW_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_OFFSCREEN_WINDOW, CtkOffscreenWindowClass))
 #define CTK_IS_OFFSCREEN_WINDOW(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_OFFSCREEN_WINDOW))
 #define CTK_IS_OFFSCREEN_WINDOW_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), CTK_TYPE_OFFSCREEN_WINDOW))
-#define CTK_OFFSCREEN_WINDOW_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_OFFSCREEN_WINDOW, GtkOffscreenWindowClass))
+#define CTK_OFFSCREEN_WINDOW_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_OFFSCREEN_WINDOW, CtkOffscreenWindowClass))
 
-typedef struct _GtkOffscreenWindow      GtkOffscreenWindow;
-typedef struct _GtkOffscreenWindowClass GtkOffscreenWindowClass;
+typedef struct _CtkOffscreenWindow      CtkOffscreenWindow;
+typedef struct _CtkOffscreenWindowClass CtkOffscreenWindowClass;
 
-struct _GtkOffscreenWindow
+struct _CtkOffscreenWindow
 {
-  GtkWindow parent_object;
+  CtkWindow parent_object;
 };
 
 /**
- * GtkOffscreenWindowClass:
+ * CtkOffscreenWindowClass:
  * @parent_class: The parent class.
  */
-struct _GtkOffscreenWindowClass
+struct _CtkOffscreenWindowClass
 {
-  GtkWindowClass parent_class;
+  CtkWindowClass parent_class;
 
   /*< private >*/
 
@@ -63,11 +63,11 @@ GDK_AVAILABLE_IN_ALL
 GType            ctk_offscreen_window_get_type    (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget       *ctk_offscreen_window_new         (void);
+CtkWidget       *ctk_offscreen_window_new         (void);
 GDK_AVAILABLE_IN_ALL
-cairo_surface_t *ctk_offscreen_window_get_surface (GtkOffscreenWindow *offscreen);
+cairo_surface_t *ctk_offscreen_window_get_surface (CtkOffscreenWindow *offscreen);
 GDK_AVAILABLE_IN_ALL
-GdkPixbuf       *ctk_offscreen_window_get_pixbuf  (GtkOffscreenWindow *offscreen);
+GdkPixbuf       *ctk_offscreen_window_get_pixbuf  (CtkOffscreenWindow *offscreen);
 
 G_END_DECLS
 

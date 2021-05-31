@@ -25,29 +25,29 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_FILE_CHOOSER_ENTRY    (_ctk_file_chooser_entry_get_type ())
-#define CTK_FILE_CHOOSER_ENTRY(obj)    (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FILE_CHOOSER_ENTRY, GtkFileChooserEntry))
+#define CTK_FILE_CHOOSER_ENTRY(obj)    (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FILE_CHOOSER_ENTRY, CtkFileChooserEntry))
 #define CTK_IS_FILE_CHOOSER_ENTRY(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_FILE_CHOOSER_ENTRY))
 
-typedef struct _GtkFileChooserEntry      GtkFileChooserEntry;
+typedef struct _CtkFileChooserEntry      CtkFileChooserEntry;
 
 GType              _ctk_file_chooser_entry_get_type           (void) G_GNUC_CONST;
-GtkWidget *        _ctk_file_chooser_entry_new                (gboolean             eat_tab,
+CtkWidget *        _ctk_file_chooser_entry_new                (gboolean             eat_tab,
                                                                gboolean             eat_escape);
-void               _ctk_file_chooser_entry_set_action         (GtkFileChooserEntry *chooser_entry,
-							       GtkFileChooserAction action);
-GtkFileChooserAction _ctk_file_chooser_entry_get_action       (GtkFileChooserEntry *chooser_entry);
-void               _ctk_file_chooser_entry_set_base_folder    (GtkFileChooserEntry *chooser_entry,
+void               _ctk_file_chooser_entry_set_action         (CtkFileChooserEntry *chooser_entry,
+							       CtkFileChooserAction action);
+CtkFileChooserAction _ctk_file_chooser_entry_get_action       (CtkFileChooserEntry *chooser_entry);
+void               _ctk_file_chooser_entry_set_base_folder    (CtkFileChooserEntry *chooser_entry,
 							       GFile               *folder);
-GFile *            _ctk_file_chooser_entry_get_current_folder (GtkFileChooserEntry *chooser_entry);
-const gchar *      _ctk_file_chooser_entry_get_file_part      (GtkFileChooserEntry *chooser_entry);
-gboolean           _ctk_file_chooser_entry_get_is_folder      (GtkFileChooserEntry *chooser_entry,
+GFile *            _ctk_file_chooser_entry_get_current_folder (CtkFileChooserEntry *chooser_entry);
+const gchar *      _ctk_file_chooser_entry_get_file_part      (CtkFileChooserEntry *chooser_entry);
+gboolean           _ctk_file_chooser_entry_get_is_folder      (CtkFileChooserEntry *chooser_entry,
 							       GFile               *file);
-void               _ctk_file_chooser_entry_select_filename    (GtkFileChooserEntry *chooser_entry);
-void               _ctk_file_chooser_entry_set_local_only     (GtkFileChooserEntry *chooser_entry,
+void               _ctk_file_chooser_entry_select_filename    (CtkFileChooserEntry *chooser_entry);
+void               _ctk_file_chooser_entry_set_local_only     (CtkFileChooserEntry *chooser_entry,
                                                                gboolean             local_only);
-gboolean           _ctk_file_chooser_entry_get_local_only     (GtkFileChooserEntry *chooser_entry);
-void               _ctk_file_chooser_entry_set_file_filter    (GtkFileChooserEntry *chooser_entry,
-                                                               GtkFileFilter       *filter);
+gboolean           _ctk_file_chooser_entry_get_local_only     (CtkFileChooserEntry *chooser_entry);
+void               _ctk_file_chooser_entry_set_file_filter    (CtkFileChooserEntry *chooser_entry,
+                                                               CtkFileFilter       *filter);
 
 G_END_DECLS
 

@@ -27,26 +27,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_ARROW_ACCESSIBLE                      (ctk_arrow_accessible_get_type ())
-#define CTK_ARROW_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ARROW_ACCESSIBLE, GtkArrowAccessible))
-#define CTK_ARROW_ACCESSIBLE_CLASS(klass)              (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ARROW_ACCESSIBLE, GtkArrowAccessibleClass))
+#define CTK_ARROW_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ARROW_ACCESSIBLE, CtkArrowAccessible))
+#define CTK_ARROW_ACCESSIBLE_CLASS(klass)              (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ARROW_ACCESSIBLE, CtkArrowAccessibleClass))
 #define CTK_IS_ARROW_ACCESSIBLE(obj)                   (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_ARROW_ACCESSIBLE))
 #define CTK_IS_ARROW_ACCESSIBLE_CLASS(klass)           (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_ARROW_ACCESSIBLE))
-#define CTK_ARROW_ACCESSIBLE_GET_CLASS(obj)            (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ARROW_ACCESSIBLE, GtkArrowAccessibleClass))
+#define CTK_ARROW_ACCESSIBLE_GET_CLASS(obj)            (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ARROW_ACCESSIBLE, CtkArrowAccessibleClass))
 
-typedef struct _GtkArrowAccessible        GtkArrowAccessible;
-typedef struct _GtkArrowAccessibleClass   GtkArrowAccessibleClass;
-typedef struct _GtkArrowAccessiblePrivate GtkArrowAccessiblePrivate;
+typedef struct _CtkArrowAccessible        CtkArrowAccessible;
+typedef struct _CtkArrowAccessibleClass   CtkArrowAccessibleClass;
+typedef struct _CtkArrowAccessiblePrivate CtkArrowAccessiblePrivate;
 
-struct _GtkArrowAccessible
+struct _CtkArrowAccessible
 {
-  GtkWidgetAccessible parent;
+  CtkWidgetAccessible parent;
 
-  GtkArrowAccessiblePrivate *priv;
+  CtkArrowAccessiblePrivate *priv;
 };
 
-struct _GtkArrowAccessibleClass
+struct _CtkArrowAccessibleClass
 {
-  GtkWidgetAccessibleClass parent_class;
+  CtkWidgetAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

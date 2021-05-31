@@ -61,11 +61,11 @@
  * on the widget side.
  */
 
-typedef struct _GtkCssGadgetPrivate GtkCssGadgetPrivate;
-struct _GtkCssGadgetPrivate {
-  GtkCssNode    *node;
-  GtkWidget     *owner;
-  GtkAllocation  allocated_size;
+typedef struct _CtkCssGadgetPrivate CtkCssGadgetPrivate;
+struct _CtkCssGadgetPrivate {
+  CtkCssNode    *node;
+  CtkWidget     *owner;
+  CtkAllocation  allocated_size;
   gint           allocated_baseline;
 };
 
@@ -79,12 +79,12 @@ enum {
 
 static GParamSpec *properties[NUM_PROPERTIES];
 
-G_DEFINE_ABSTRACT_TYPE_WITH_CODE (GtkCssGadget, ctk_css_gadget, G_TYPE_OBJECT,
-                                  G_ADD_PRIVATE (GtkCssGadget))
+G_DEFINE_ABSTRACT_TYPE_WITH_CODE (CtkCssGadget, ctk_css_gadget, G_TYPE_OBJECT,
+                                  G_ADD_PRIVATE (CtkCssGadget))
 
 static void
-ctk_css_gadget_real_get_preferred_size (GtkCssGadget   *gadget,
-                                        GtkOrientation  orientation,
+ctk_css_gadget_real_get_preferred_size (CtkCssGadget   *gadget,
+                                        CtkOrientation  orientation,
                                         gint            for_size,
                                         gint           *minimum,
                                         gint           *natural,
@@ -101,16 +101,16 @@ ctk_css_gadget_real_get_preferred_size (GtkCssGadget   *gadget,
 }
 
 static void
-ctk_css_gadget_real_allocate (GtkCssGadget        *gadget,
-                              const GtkAllocation *allocation,
+ctk_css_gadget_real_allocate (CtkCssGadget        *gadget,
+                              const CtkAllocation *allocation,
                               int                  baseline,
-                              GtkAllocation       *out_clip)
+                              CtkAllocation       *out_clip)
 {
   *out_clip = *allocation;
 }
 
 static gboolean
-ctk_css_gadget_real_draw (GtkCssGadget *gadget,
+ctk_css_gadget_real_draw (CtkCssGadget *gadget,
                           cairo_t      *cr,
                           int           x,
                           int           y,
@@ -121,8 +121,8 @@ ctk_css_gadget_real_draw (GtkCssGadget *gadget,
 }
 
 static void
-ctk_css_gadget_real_style_changed (GtkCssGadget      *gadget,
-                                   GtkCssStyleChange *change)
+ctk_css_gadget_real_style_changed (CtkCssGadget      *gadget,
+                                   CtkCssStyleChange *change)
 {
   if (ctk_css_style_change_affects (change, CTK_CSS_AFFECTS_SIZE))
     ctk_css_gadget_queue_resize (gadget);
@@ -138,7 +138,7 @@ ctk_css_gadget_get_property (GObject    *object,
                              GValue     *value,
                              GParamSpec *pspec)
 {
-  GtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (CTK_CSS_GADGET (object));
+  CtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (CTK_CSS_GADGET (object));
 
   switch (property_id)
   {
@@ -157,17 +157,17 @@ ctk_css_gadget_get_property (GObject    *object,
 }
 
 static void
-ctk_css_gadget_node_style_changed_cb (GtkCssNode        *node,
-                                      GtkCssStyleChange *change,
-                                      GtkCssGadget      *gadget)
+ctk_css_gadget_node_style_changed_cb (CtkCssNode        *node,
+                                      CtkCssStyleChange *change,
+                                      CtkCssGadget      *gadget)
 {
-  GtkCssGadgetClass *klass = CTK_CSS_GADGET_GET_CLASS (gadget);
+  CtkCssGadgetClass *klass = CTK_CSS_GADGET_GET_CLASS (gadget);
 
   klass->style_changed (gadget, change);
 }
 
 static gboolean
-ctk_css_gadget_should_connect_style_changed (GtkCssNode *node)
+ctk_css_gadget_should_connect_style_changed (CtkCssNode *node)
 {
   /* Delegate to WidgetClass->style_changed */
   if (CTK_IS_CSS_WIDGET_NODE (node))
@@ -177,9 +177,9 @@ ctk_css_gadget_should_connect_style_changed (GtkCssNode *node)
 }
 
 static void
-ctk_css_gadget_unset_node (GtkCssGadget *gadget)
+ctk_css_gadget_unset_node (CtkCssGadget *gadget)
 {
-  GtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
+  CtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
 
   if (priv->node)
     {
@@ -196,10 +196,10 @@ ctk_css_gadget_unset_node (GtkCssGadget *gadget)
 }
 
 void
-ctk_css_gadget_set_node (GtkCssGadget *gadget,
-                         GtkCssNode   *node)
+ctk_css_gadget_set_node (CtkCssGadget *gadget,
+                         CtkCssNode   *node)
 {
-  GtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
+  CtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
 
   ctk_css_gadget_unset_node (gadget);
 
@@ -223,8 +223,8 @@ ctk_css_gadget_set_property (GObject      *object,
                              const GValue *value,
                              GParamSpec   *pspec)
 {
-  GtkCssGadget *gadget = CTK_CSS_GADGET (object);
-  GtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
+  CtkCssGadget *gadget = CTK_CSS_GADGET (object);
+  CtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
 
   switch (property_id)
   {
@@ -246,7 +246,7 @@ ctk_css_gadget_set_property (GObject      *object,
 static void
 ctk_css_gadget_finalize (GObject *object)
 {
-  GtkCssGadget *gadget = CTK_CSS_GADGET (object);
+  CtkCssGadget *gadget = CTK_CSS_GADGET (object);
 
   ctk_css_gadget_unset_node (gadget);
 
@@ -254,7 +254,7 @@ ctk_css_gadget_finalize (GObject *object)
 }
 
 static void
-ctk_css_gadget_class_init (GtkCssGadgetClass *klass)
+ctk_css_gadget_class_init (CtkCssGadgetClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -283,9 +283,9 @@ ctk_css_gadget_class_init (GtkCssGadgetClass *klass)
 }
 
 static void
-ctk_css_gadget_init (GtkCssGadget *gadget)
+ctk_css_gadget_init (CtkCssGadget *gadget)
 {
-  GtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
+  CtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
 
   priv->allocated_size.width = -1;
   priv->allocated_size.height = -1;
@@ -294,81 +294,81 @@ ctk_css_gadget_init (GtkCssGadget *gadget)
 
 /**
  * ctk_css_gadget_get_node:
- * @gadget: a #GtkCssGadget
+ * @gadget: a #CtkCssGadget
  *
  * Get the CSS node for this gadget.
  *
   * Returns: (transfer none):  the CSS node
  */
-GtkCssNode *
-ctk_css_gadget_get_node (GtkCssGadget *gadget)
+CtkCssNode *
+ctk_css_gadget_get_node (CtkCssGadget *gadget)
 {
-  GtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
+  CtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
 
   return priv->node;
 }
 
 /**
  * ctk_css_gadget_get_style:
- * @gadget: a #GtkCssGadget
+ * @gadget: a #CtkCssGadget
  *
  * Get the CSS style for this gadget.
  *
  * Returns: (transfer none):  the CSS style
  */
-GtkCssStyle *
-ctk_css_gadget_get_style (GtkCssGadget *gadget)
+CtkCssStyle *
+ctk_css_gadget_get_style (CtkCssGadget *gadget)
 {
-  GtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
+  CtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
 
   return ctk_css_node_get_style (priv->node);
 }
 
 /**
  * ctk_css_gadget_get_owner:
- * @gadget: a #GtkCssGadget
+ * @gadget: a #CtkCssGadget
  *
  * Get the widget to which this gadget belongs.
  *
  * Returns: (transfer none):  the widget to which @gadget belongs
  */
-GtkWidget *
-ctk_css_gadget_get_owner (GtkCssGadget *gadget)
+CtkWidget *
+ctk_css_gadget_get_owner (CtkCssGadget *gadget)
 {
-  GtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
+  CtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
 
   return priv->owner;
 }
 
 void
-ctk_css_gadget_set_visible (GtkCssGadget *gadget,
+ctk_css_gadget_set_visible (CtkCssGadget *gadget,
                             gboolean      visible)
 {
-  GtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
+  CtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
 
   ctk_css_node_set_visible (priv->node, visible);
 }
 
 gboolean
-ctk_css_gadget_get_visible (GtkCssGadget *gadget)
+ctk_css_gadget_get_visible (CtkCssGadget *gadget)
 {
-  GtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
+  CtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
 
   return ctk_css_node_get_visible (priv->node);
 }
 
 /**
  * ctk_css_gadget_add_class:
- * @gadget: a #GtkCssGadget
+ * @gadget: a #CtkCssGadget
  * @name: class name to use in CSS matching
  *
  * Adds a style class to the gadgets CSS node.
  */
 void
-ctk_css_gadget_add_class (GtkCssGadget *gadget,
+ctk_css_gadget_add_class (CtkCssGadget *gadget,
                           const char   *name)
 {
-  GtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
+  CtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
   GQuark quark;
 
   quark = g_quark_from_string (name);
@@ -378,16 +378,16 @@ ctk_css_gadget_add_class (GtkCssGadget *gadget,
 
 /**
  * ctk_css_gadget_remove_class:
- * @gadget: a #GtkCssGadget
+ * @gadget: a #CtkCssGadget
  * @name: class name
  *
  * Removes a style class from the gadgets CSS node.
  */
 void
-ctk_css_gadget_remove_class (GtkCssGadget *gadget,
+ctk_css_gadget_remove_class (CtkCssGadget *gadget,
                              const char   *name)
 {
-  GtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
+  CtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
   GQuark quark;
 
   quark = g_quark_try_string (name);
@@ -399,56 +399,56 @@ ctk_css_gadget_remove_class (GtkCssGadget *gadget,
 
 /**
  * ctk_css_gadget_set_state:
- * @gadget: a #GtkCssGadget
+ * @gadget: a #CtkCssGadget
  * @state: The new state
  *
  * Sets the state of the gadget's CSS node.
  */
 void
-ctk_css_gadget_set_state (GtkCssGadget  *gadget,
-                          GtkStateFlags  state)
+ctk_css_gadget_set_state (CtkCssGadget  *gadget,
+                          CtkStateFlags  state)
 {
-  GtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
+  CtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
 
   ctk_css_node_set_state (priv->node, state);
 }
 
 /**
  * ctk_css_gadget_add_state:
- * @gadget: a #GtkCssGadget
+ * @gadget: a #CtkCssGadget
  * @state: The state to add
  *
  * Adds the given states to the states of gadget's CSS node. Other states
  * will be kept as they are.
  */
 void
-ctk_css_gadget_add_state (GtkCssGadget  *gadget,
-                          GtkStateFlags  state)
+ctk_css_gadget_add_state (CtkCssGadget  *gadget,
+                          CtkStateFlags  state)
 {
-  GtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
+  CtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
 
   ctk_css_node_set_state (priv->node, ctk_css_node_get_state (priv->node) | state);
 }
 
 /**
  * ctk_css_gadget_remove_state:
- * @gadget: a #GtkCssGadget
+ * @gadget: a #CtkCssGadget
  * @state: The state to remove
  *
  * Adds the given states to the states of gadget's CSS node. Other states
  * will be kept as they are.
  */
 void
-ctk_css_gadget_remove_state (GtkCssGadget  *gadget,
-                             GtkStateFlags  state)
+ctk_css_gadget_remove_state (CtkCssGadget  *gadget,
+                             CtkStateFlags  state)
 {
-  GtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
+  CtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
 
   ctk_css_node_set_state (priv->node, ctk_css_node_get_state (priv->node) & ~state);
 }
 
 static gint
-get_number (GtkCssStyle *style,
+get_number (CtkCssStyle *style,
             guint        property)
 {
   double d = _ctk_css_number_value_get (ctk_css_style_get_value (style, property), 100);
@@ -461,15 +461,15 @@ get_number (GtkCssStyle *style,
 
 /* Special-case min-width|height to round upwards, to avoid underalloc by 1px */
 static int
-get_number_ceil (GtkCssStyle *style,
+get_number_ceil (CtkCssStyle *style,
                  guint        property)
 {
   return ceil (_ctk_css_number_value_get (ctk_css_style_get_value (style, property), 100));
 }
 
 static void
-get_box_margin (GtkCssStyle *style,
-                GtkBorder   *margin)
+get_box_margin (CtkCssStyle *style,
+                CtkBorder   *margin)
 {
   margin->top = get_number (style, CTK_CSS_PROPERTY_MARGIN_TOP);
   margin->left = get_number (style, CTK_CSS_PROPERTY_MARGIN_LEFT);
@@ -478,8 +478,8 @@ get_box_margin (GtkCssStyle *style,
 }
 
 static void
-get_box_border (GtkCssStyle *style,
-                GtkBorder   *border)
+get_box_border (CtkCssStyle *style,
+                CtkBorder   *border)
 {
   border->top = get_number (style, CTK_CSS_PROPERTY_BORDER_TOP_WIDTH);
   border->left = get_number (style, CTK_CSS_PROPERTY_BORDER_LEFT_WIDTH);
@@ -488,8 +488,8 @@ get_box_border (GtkCssStyle *style,
 }
 
 static void
-get_box_padding (GtkCssStyle *style,
-                 GtkBorder   *border)
+get_box_padding (CtkCssStyle *style,
+                 CtkBorder   *border)
 {
   border->top = get_number (style, CTK_CSS_PROPERTY_PADDING_TOP);
   border->left = get_number (style, CTK_CSS_PROPERTY_PADDING_LEFT);
@@ -498,7 +498,7 @@ get_box_padding (GtkCssStyle *style,
 }
 
 static gboolean
-allocation_contains_point (GtkAllocation *allocation,
+allocation_contains_point (CtkAllocation *allocation,
                            gint           x,
                            gint           y)
 {
@@ -509,14 +509,14 @@ allocation_contains_point (GtkAllocation *allocation,
 }
 
 static void
-shift_allocation (GtkCssGadget  *gadget,
-                  GtkAllocation *allocation)
+shift_allocation (CtkCssGadget  *gadget,
+                  CtkAllocation *allocation)
 {
-  GtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
+  CtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
 
   if (priv->owner && !ctk_widget_get_has_window (priv->owner))
     {
-      GtkAllocation widget_alloc;
+      CtkAllocation widget_alloc;
       ctk_widget_get_allocation (priv->owner, &widget_alloc);
       allocation->x -= widget_alloc.x;
       allocation->y -= widget_alloc.y;
@@ -525,7 +525,7 @@ shift_allocation (GtkCssGadget  *gadget,
 
 /**
  * ctk_css_gadget_margin_box_contains_point:
- * @gadget: the #GtkCssGadget being tested
+ * @gadget: the #CtkCssGadget being tested
  * @x: X coordinate of the testing point
  * @y: Y coordinate of the testing point
  *
@@ -537,18 +537,18 @@ shift_allocation (GtkCssGadget  *gadget,
  *   box of the @gadget.
  */
 gboolean
-ctk_css_gadget_margin_box_contains_point (GtkCssGadget *gadget,
+ctk_css_gadget_margin_box_contains_point (CtkCssGadget *gadget,
                                           int           x,
                                           int           y)
 {
-  GtkAllocation margin_box = { 0, };
+  CtkAllocation margin_box = { 0, };
   ctk_css_gadget_get_margin_box (gadget, &margin_box);
   return allocation_contains_point (&margin_box, x, y);
 }
 
 /**
  * ctk_css_gadget_border_box_contains_point:
- * @gadget: the #GtkCssGadget being tested
+ * @gadget: the #CtkCssGadget being tested
  * @x: X coordinate of the testing point
  * @y: Y coordinate of the testing point
  *
@@ -560,18 +560,18 @@ ctk_css_gadget_margin_box_contains_point (GtkCssGadget *gadget,
  *   box of the @gadget.
  */
 gboolean
-ctk_css_gadget_border_box_contains_point (GtkCssGadget *gadget,
+ctk_css_gadget_border_box_contains_point (CtkCssGadget *gadget,
                                           int           x,
                                           int           y)
 {
-  GtkAllocation border_box;
+  CtkAllocation border_box;
   ctk_css_gadget_get_border_box (gadget, &border_box);
   return allocation_contains_point (&border_box, x, y);
 }
 
 /**
  * ctk_css_gadget_content_box_contains_point:
- * @gadget: the #GtkCssGadget being tested
+ * @gadget: the #CtkCssGadget being tested
  * @x: X coordinate of the testing point
  * @y: Y coordinate of the testing point
  *
@@ -583,18 +583,18 @@ ctk_css_gadget_border_box_contains_point (GtkCssGadget *gadget,
  *   box of the @gadget.
  */
 gboolean
-ctk_css_gadget_content_box_contains_point (GtkCssGadget *gadget,
+ctk_css_gadget_content_box_contains_point (CtkCssGadget *gadget,
                                            int           x,
                                            int           y)
 {
-  GtkAllocation content_box;
+  CtkAllocation content_box;
   ctk_css_gadget_get_content_box (gadget, &content_box);
   return allocation_contains_point (&content_box, x, y);
 }
 
 /**
  * ctk_css_gadget_get_preferred_size:
- * @gadget: the #GtkCssGadget whose size is requested
+ * @gadget: the #CtkCssGadget whose size is requested
  * @orientation: whether a width (ie horizontal) or height (ie vertical) size is requested
  * @for_size: the available size in the opposite direction, or -1
  * @minimum: (nullable): return location for the minimum size
@@ -611,16 +611,16 @@ ctk_css_gadget_content_box_contains_point (GtkCssGadget *gadget,
  * The @for_size is assumed to include CSS padding, border and margins as well.
  */
 void
-ctk_css_gadget_get_preferred_size (GtkCssGadget   *gadget,
-                                   GtkOrientation  orientation,
+ctk_css_gadget_get_preferred_size (CtkCssGadget   *gadget,
+                                   CtkOrientation  orientation,
                                    gint            for_size,
                                    gint           *minimum,
                                    gint           *natural,
                                    gint           *minimum_baseline,
                                    gint           *natural_baseline)
 {
-  GtkCssStyle *style;
-  GtkBorder margin, border, padding;
+  CtkCssStyle *style;
+  CtkBorder margin, border, padding;
   int min_size, extra_size, extra_opposite, extra_baseline;
   int unused_minimum, unused_natural;
   int forced_minimum, forced_natural;
@@ -709,7 +709,7 @@ ctk_css_gadget_get_preferred_size (GtkCssGadget   *gadget,
 
 /**
  * ctk_css_gadget_allocate:
- * @gadget: the #GtkCssGadget to allocate
+ * @gadget: the #CtkCssGadget to allocate
  * @allocation: the allocation
  * @baseline: the baseline for the allocation
  * @out_clip: (out): return location for the gadgets clip region
@@ -722,17 +722,17 @@ ctk_css_gadget_get_preferred_size (GtkCssGadget   *gadget,
  * any content clip.
  */
 void
-ctk_css_gadget_allocate (GtkCssGadget        *gadget,
-                         const GtkAllocation *allocation,
+ctk_css_gadget_allocate (CtkCssGadget        *gadget,
+                         const CtkAllocation *allocation,
                          int                  baseline,
-                         GtkAllocation       *out_clip)
+                         CtkAllocation       *out_clip)
 {
-  GtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
-  GtkAllocation content_allocation;
-  GtkAllocation tmp_clip;
-  GtkAllocation content_clip = { 0, 0, 0, 0 };
-  GtkBorder margin, border, padding, shadow, extents;
-  GtkCssStyle *style;
+  CtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
+  CtkAllocation content_allocation;
+  CtkAllocation tmp_clip;
+  CtkAllocation content_clip = { 0, 0, 0, 0 };
+  CtkBorder margin, border, padding, shadow, extents;
+  CtkCssStyle *style;
 
   g_return_if_fail (out_clip != NULL);
 
@@ -822,16 +822,16 @@ ctk_css_gadget_allocate (GtkCssGadget        *gadget,
  * ctk_container_propagate_draw() depend on that.
  */
 void
-ctk_css_gadget_draw (GtkCssGadget *gadget,
+ctk_css_gadget_draw (CtkCssGadget *gadget,
                      cairo_t      *cr)
 {
-  GtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
-  GtkBorder margin, border, padding;
+  CtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
+  CtkBorder margin, border, padding;
   gboolean draw_focus = FALSE;
-  GtkCssStyle *style;
+  CtkCssStyle *style;
   int x, y, width, height;
   int contents_x, contents_y, contents_width, contents_height;
-  GtkAllocation margin_box;
+  CtkAllocation margin_box;
 
   if (!ctk_css_gadget_get_visible (gadget))
     return;
@@ -898,7 +898,7 @@ ctk_css_gadget_draw (GtkCssGadget *gadget,
 #ifdef G_ENABLE_DEBUG
   {
     GdkDisplay *display = ctk_widget_get_display (ctk_css_gadget_get_owner (gadget));
-    GtkDebugFlag flags = ctk_get_display_debug_flags (display);
+    CtkDebugFlag flags = ctk_get_display_debug_flags (display);
     if G_UNLIKELY (flags & CTK_DEBUG_LAYOUT)
       {
         cairo_save (cr);
@@ -929,7 +929,7 @@ ctk_css_gadget_draw (GtkCssGadget *gadget,
           {
             if (priv->owner && !ctk_widget_get_has_window (priv->owner))
               {
-                GtkAllocation widget_alloc;
+                CtkAllocation widget_alloc;
                 ctk_widget_get_allocation (priv->owner, &widget_alloc);
                 baseline -= widget_alloc.y;
               }
@@ -948,7 +948,7 @@ ctk_css_gadget_draw (GtkCssGadget *gadget,
 }
 
 void
-ctk_css_gadget_queue_resize (GtkCssGadget *gadget)
+ctk_css_gadget_queue_resize (CtkCssGadget *gadget)
 {
   g_return_if_fail (CTK_IS_CSS_GADGET (gadget));
 
@@ -956,7 +956,7 @@ ctk_css_gadget_queue_resize (GtkCssGadget *gadget)
 }
 
 void
-ctk_css_gadget_queue_allocate (GtkCssGadget *gadget)
+ctk_css_gadget_queue_allocate (CtkCssGadget *gadget)
 {
   g_return_if_fail (CTK_IS_CSS_GADGET (gadget));
 
@@ -964,7 +964,7 @@ ctk_css_gadget_queue_allocate (GtkCssGadget *gadget)
 }
 
 void
-ctk_css_gadget_queue_draw (GtkCssGadget *gadget)
+ctk_css_gadget_queue_draw (CtkCssGadget *gadget)
 {
   g_return_if_fail (CTK_IS_CSS_GADGET (gadget));
   
@@ -974,7 +974,7 @@ ctk_css_gadget_queue_draw (GtkCssGadget *gadget)
 
 /**
  * ctk_css_gadget_get_margin_box:
- * @gadget: a #GtkCssGadget
+ * @gadget: a #CtkCssGadget
  * @box: (out): Return location for gadget's the margin box
  *
  * Returns the margin box of the gadget. The box coordinates are relative to
@@ -982,8 +982,8 @@ ctk_css_gadget_queue_draw (GtkCssGadget *gadget)
  *   which returns the margin box in the widget allocation coordinates.
  */
 void
-ctk_css_gadget_get_margin_box (GtkCssGadget  *gadget,
-                               GtkAllocation *box)
+ctk_css_gadget_get_margin_box (CtkCssGadget  *gadget,
+                               CtkAllocation *box)
 {
   ctk_css_gadget_get_margin_allocation (gadget, box, NULL);
   shift_allocation (gadget, box);
@@ -991,7 +991,7 @@ ctk_css_gadget_get_margin_box (GtkCssGadget  *gadget,
 
 /**
  * ctk_css_gadget_get_border_box:
- * @gadget: a #GtkCssGadget
+ * @gadget: a #CtkCssGadget
  * @box: (out): Return location for gadget's the border box
  *
  * Returns the border box of the gadget. The box coordinates are relative to
@@ -999,8 +999,8 @@ ctk_css_gadget_get_margin_box (GtkCssGadget  *gadget,
  *   which returns the border box in the widget allocation coordinates.
  */
 void
-ctk_css_gadget_get_border_box (GtkCssGadget  *gadget,
-                               GtkAllocation *box)
+ctk_css_gadget_get_border_box (CtkCssGadget  *gadget,
+                               CtkAllocation *box)
 {
   ctk_css_gadget_get_border_allocation (gadget, box, NULL);
   shift_allocation (gadget, box);
@@ -1008,7 +1008,7 @@ ctk_css_gadget_get_border_box (GtkCssGadget  *gadget,
 
 /**
  * ctk_css_gadget_get_content_box:
- * @gadget: a #GtkCssGadget
+ * @gadget: a #CtkCssGadget
  * @box: (out): Return location for gadget's the content box
  *
  * Returns the content box of the gadget. The box coordinates are relative to
@@ -1016,19 +1016,19 @@ ctk_css_gadget_get_border_box (GtkCssGadget  *gadget,
  *   which returns the content box in the widget allocation coordinates.
  */
 void
-ctk_css_gadget_get_content_box (GtkCssGadget  *gadget,
-                                GtkAllocation *box)
+ctk_css_gadget_get_content_box (CtkCssGadget  *gadget,
+                                CtkAllocation *box)
 {
   ctk_css_gadget_get_content_allocation (gadget, box, NULL);
   shift_allocation (gadget, box);
 }
 
 void
-ctk_css_gadget_get_margin_allocation (GtkCssGadget  *gadget,
-                                      GtkAllocation *allocation,
+ctk_css_gadget_get_margin_allocation (CtkCssGadget  *gadget,
+                                      CtkAllocation *allocation,
                                       int           *baseline)
 {
-  GtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
+  CtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
 
   g_return_if_fail (CTK_IS_CSS_GADGET (gadget));
 
@@ -1048,12 +1048,12 @@ ctk_css_gadget_get_margin_allocation (GtkCssGadget  *gadget,
 }
 
 void
-ctk_css_gadget_get_border_allocation (GtkCssGadget  *gadget,
-                                      GtkAllocation *allocation,
+ctk_css_gadget_get_border_allocation (CtkCssGadget  *gadget,
+                                      CtkAllocation *allocation,
                                       int           *baseline)
 {
-  GtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
-  GtkBorder margin;
+  CtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
+  CtkBorder margin;
 
   g_return_if_fail (CTK_IS_CSS_GADGET (gadget));
 
@@ -1085,13 +1085,13 @@ ctk_css_gadget_get_border_allocation (GtkCssGadget  *gadget,
 }
 
 void
-ctk_css_gadget_get_content_allocation (GtkCssGadget  *gadget,
-                                       GtkAllocation *allocation,
+ctk_css_gadget_get_content_allocation (CtkCssGadget  *gadget,
+                                       CtkAllocation *allocation,
                                        int           *baseline)
 {
-  GtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
-  GtkBorder margin, border, padding, extents;
-  GtkCssStyle *style;
+  CtkCssGadgetPrivate *priv = ctk_css_gadget_get_instance_private (gadget);
+  CtkBorder margin, border, padding, extents;
+  CtkCssStyle *style;
 
   g_return_if_fail (CTK_IS_CSS_GADGET (gadget));
 

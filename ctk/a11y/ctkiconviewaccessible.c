@@ -29,44 +29,44 @@
 #include "ctk/ctkwidgetprivate.h"
 
 #define CTK_TYPE_ICON_VIEW_ITEM_ACCESSIBLE      (_ctk_icon_view_item_accessible_get_type ())
-#define CTK_ICON_VIEW_ITEM_ACCESSIBLE(obj)      (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ICON_VIEW_ITEM_ACCESSIBLE, GtkIconViewItemAccessible))
+#define CTK_ICON_VIEW_ITEM_ACCESSIBLE(obj)      (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ICON_VIEW_ITEM_ACCESSIBLE, CtkIconViewItemAccessible))
 #define CTK_IS_ICON_VIEW_ITEM_ACCESSIBLE(obj)   (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_ICON_VIEW_ITEM_ACCESSIBLE))
 
-struct _GtkIconViewAccessiblePrivate
+struct _CtkIconViewAccessiblePrivate
 {
   GList *items;
-  GtkTreeModel *model;
+  CtkTreeModel *model;
 };
 
 typedef struct
 {
   AtkObject parent;
 
-  GtkIconViewItem *item;
-  GtkWidget *widget;
+  CtkIconViewItem *item;
+  CtkWidget *widget;
   AtkStateSet *state_set;
   gchar *text;
   gchar *action_description;
   gchar *image_description;
   guint action_idle_handler;
-} GtkIconViewItemAccessible;
+} CtkIconViewItemAccessible;
 
 typedef struct
 {
   AtkObjectClass parent_class;
 
-} GtkIconViewItemAccessibleClass;
+} CtkIconViewItemAccessibleClass;
 
 GType _ctk_icon_view_item_accessible_get_type (void);
 
-static gboolean ctk_icon_view_item_accessible_is_showing (GtkIconViewItemAccessible *item);
+static gboolean ctk_icon_view_item_accessible_is_showing (CtkIconViewItemAccessible *item);
 
 static void atk_component_item_interface_init (AtkComponentIface *iface);
 static void atk_action_item_interface_init    (AtkActionIface    *iface);
 static void atk_text_item_interface_init      (AtkTextIface      *iface);
 static void atk_image_item_interface_init     (AtkImageIface     *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkIconViewItemAccessible, _ctk_icon_view_item_accessible, ATK_TYPE_OBJECT,
+G_DEFINE_TYPE_WITH_CODE (CtkIconViewItemAccessible, _ctk_icon_view_item_accessible, ATK_TYPE_OBJECT,
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_COMPONENT, atk_component_item_interface_init)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_ACTION, atk_action_item_interface_init)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_TEXT, atk_text_item_interface_init)
@@ -76,9 +76,9 @@ G_DEFINE_TYPE_WITH_CODE (GtkIconViewItemAccessible, _ctk_icon_view_item_accessib
 static gboolean
 idle_do_action (gpointer data)
 {
-  GtkIconViewItemAccessible *item;
-  GtkIconView *icon_view;
-  GtkTreePath *path;
+  CtkIconViewItemAccessible *item;
+  CtkIconView *icon_view;
+  CtkTreePath *path;
 
   item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (data);
   item->action_idle_handler = 0;
@@ -98,7 +98,7 @@ static gboolean
 ctk_icon_view_item_accessible_do_action (AtkAction *action,
                                          gint       i)
 {
-  GtkIconViewItemAccessible *item;
+  CtkIconViewItemAccessible *item;
 
   if (i != 0)
     return FALSE;
@@ -130,7 +130,7 @@ static const gchar *
 ctk_icon_view_item_accessible_get_description (AtkAction *action,
                                                gint       i)
 {
-  GtkIconViewItemAccessible *item;
+  CtkIconViewItemAccessible *item;
 
   if (i != 0)
     return NULL;
@@ -158,7 +158,7 @@ ctk_icon_view_item_accessible_set_description (AtkAction   *action,
                                                gint         i,
                                                const gchar *description)
 {
-  GtkIconViewItemAccessible *item;
+  CtkIconViewItemAccessible *item;
 
   if (i != 0)
     return FALSE;
@@ -184,7 +184,7 @@ atk_action_item_interface_init (AtkActionIface *iface)
 static const gchar *
 ctk_icon_view_item_accessible_get_image_description (AtkImage *image)
 {
-  GtkIconViewItemAccessible *item;
+  CtkIconViewItemAccessible *item;
 
   item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (image);
 
@@ -195,7 +195,7 @@ static gboolean
 ctk_icon_view_item_accessible_set_image_description (AtkImage    *image,
                                                      const gchar *description)
 {
-  GtkIconViewItemAccessible *item;
+  CtkIconViewItemAccessible *item;
 
   item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (image);
 
@@ -211,7 +211,7 @@ typedef struct {
 } GetPixbufBoxData;
 
 static gboolean
-get_pixbuf_foreach (GtkCellRenderer    *renderer,
+get_pixbuf_foreach (CtkCellRenderer    *renderer,
                     const GdkRectangle *cell_area,
                     const GdkRectangle *cell_background,
                     GetPixbufBoxData   *data)
@@ -225,12 +225,12 @@ get_pixbuf_foreach (GtkCellRenderer    *renderer,
 }
 
 static gboolean
-get_pixbuf_box (GtkIconView     *icon_view,
-                GtkIconViewItem *item,
+get_pixbuf_box (CtkIconView     *icon_view,
+                CtkIconViewItem *item,
                 GdkRectangle    *box)
 {
   GetPixbufBoxData data = { { 0, }, FALSE };
-  GtkCellAreaContext *context;
+  CtkCellAreaContext *context;
 
   context = g_ptr_array_index (icon_view->priv->row_contexts, item->row);
 
@@ -238,7 +238,7 @@ get_pixbuf_box (GtkIconView     *icon_view,
   ctk_cell_area_foreach_alloc (icon_view->priv->cell_area, context,
                                CTK_WIDGET (icon_view),
                                &item->cell_area, &item->cell_area,
-                               (GtkCellAllocCallback)get_pixbuf_foreach, &data);
+                               (CtkCellAllocCallback)get_pixbuf_foreach, &data);
 
   *box = data.box;
 
@@ -246,7 +246,7 @@ get_pixbuf_box (GtkIconView     *icon_view,
 }
 
 static gboolean
-get_text_foreach (GtkCellRenderer  *renderer,
+get_text_foreach (CtkCellRenderer  *renderer,
                   gchar           **text)
 {
   if (CTK_IS_CELL_RENDERER_TEXT (renderer))
@@ -258,14 +258,14 @@ get_text_foreach (GtkCellRenderer  *renderer,
 }
 
 static gchar *
-get_text (GtkIconView     *icon_view,
-          GtkIconViewItem *item)
+get_text (CtkIconView     *icon_view,
+          CtkIconViewItem *item)
 {
   gchar *text = NULL;
 
   _ctk_icon_view_set_cell_data (icon_view, item);
   ctk_cell_area_foreach (icon_view->priv->cell_area,
-                         (GtkCellCallback)get_text_foreach, &text);
+                         (CtkCellCallback)get_text_foreach, &text);
 
   return text;
 }
@@ -275,7 +275,7 @@ ctk_icon_view_item_accessible_get_image_size (AtkImage *image,
                                               gint     *width,
                                               gint     *height)
 {
-  GtkIconViewItemAccessible *item;
+  CtkIconViewItemAccessible *item;
   GdkRectangle box;
 
   item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (image);
@@ -302,7 +302,7 @@ ctk_icon_view_item_accessible_get_image_position (AtkImage    *image,
                                                   gint        *y,
                                                   AtkCoordType coord_type)
 {
-  GtkIconViewItemAccessible *item;
+  CtkIconViewItemAccessible *item;
   GdkRectangle box;
 
   item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (image);
@@ -338,7 +338,7 @@ ctk_icon_view_item_accessible_get_text (AtkText *text,
                                         gint     start_pos,
                                         gint     end_pos)
 {
-  GtkIconViewItemAccessible *item;
+  CtkIconViewItemAccessible *item;
 
   item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (text);
   if (atk_state_set_contains_state (item->state_set, ATK_STATE_DEFUNCT))
@@ -354,7 +354,7 @@ static gunichar
 ctk_icon_view_item_accessible_get_character_at_offset (AtkText *text,
                                                        gint     offset)
 {
-  GtkIconViewItemAccessible *item;
+  CtkIconViewItemAccessible *item;
   gchar *string;
   gchar *index;
 
@@ -376,7 +376,7 @@ ctk_icon_view_item_accessible_get_character_at_offset (AtkText *text,
 }
 
 static PangoLayout *
-create_pango_layout (GtkIconViewItemAccessible *item)
+create_pango_layout (CtkIconViewItemAccessible *item)
 {
   PangoLayout *layout;
 
@@ -392,7 +392,7 @@ ctk_icon_view_item_accessible_get_text_before_offset (AtkText         *atk_text,
                                                       gint            *start_offset,
                                                       gint            *end_offset)
 {
-  GtkIconViewItemAccessible *item;
+  CtkIconViewItemAccessible *item;
   PangoLayout *layout;
   gchar *text;
 
@@ -414,7 +414,7 @@ ctk_icon_view_item_accessible_get_text_at_offset (AtkText         *atk_text,
                                                   gint            *start_offset,
                                                   gint            *end_offset)
 {
-  GtkIconViewItemAccessible *item;
+  CtkIconViewItemAccessible *item;
   PangoLayout *layout;
   gchar *text;
 
@@ -436,7 +436,7 @@ ctk_icon_view_item_accessible_get_text_after_offset (AtkText         *atk_text,
                                                      gint            *start_offset,
                                                      gint            *end_offset)
 {
-  GtkIconViewItemAccessible *item;
+  CtkIconViewItemAccessible *item;
   PangoLayout *layout;
   gchar *text;
 
@@ -454,7 +454,7 @@ ctk_icon_view_item_accessible_get_text_after_offset (AtkText         *atk_text,
 static gint
 ctk_icon_view_item_accessible_get_character_count (AtkText *text)
 {
-  GtkIconViewItemAccessible *item;
+  CtkIconViewItemAccessible *item;
 
   item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (text);
   if (atk_state_set_contains_state (item->state_set, ATK_STATE_DEFUNCT))
@@ -475,9 +475,9 @@ ctk_icon_view_item_accessible_get_character_extents (AtkText      *text,
                                                      gint         *height,
                                                      AtkCoordType coord_type)
 {
-  GtkIconViewItemAccessible *item;
+  CtkIconViewItemAccessible *item;
 #if 0
-  GtkIconView *icon_view;
+  CtkIconView *icon_view;
   PangoRectangle char_rect;
   const gchar *item_text;
   gint index;
@@ -515,10 +515,10 @@ ctk_icon_view_item_accessible_get_offset_at_point (AtkText      *text,
                                                    gint          y,
                                                    AtkCoordType coord_type)
 {
-  GtkIconViewItemAccessible *item;
+  CtkIconViewItemAccessible *item;
   gint offset = 0;
 #if 0
-  GtkIconView *icon_view;
+  CtkIconView *icon_view;
   const gchar *item_text;
   gint index;
   gint l_x, l_y;
@@ -580,7 +580,7 @@ ctk_icon_view_item_accessible_get_extents (AtkComponent *component,
                                            gint         *height,
                                            AtkCoordType  coord_type)
 {
-  GtkIconViewItemAccessible *item;
+  CtkIconViewItemAccessible *item;
   AtkObject *parent_obj;
   gint l_x, l_y;
 
@@ -613,8 +613,8 @@ ctk_icon_view_item_accessible_get_extents (AtkComponent *component,
 static gboolean
 ctk_icon_view_item_accessible_grab_focus (AtkComponent *component)
 {
-  GtkIconViewItemAccessible *item;
-  GtkWidget *toplevel;
+  CtkIconViewItemAccessible *item;
+  CtkWidget *toplevel;
 
   g_return_val_if_fail (CTK_IS_ICON_VIEW_ITEM_ACCESSIBLE (component), FALSE);
 
@@ -643,7 +643,7 @@ atk_component_item_interface_init (AtkComponentIface *iface)
 }
 
 static gboolean
-ctk_icon_view_item_accessible_add_state (GtkIconViewItemAccessible *item,
+ctk_icon_view_item_accessible_add_state (CtkIconViewItemAccessible *item,
                                          AtkStateType               state_type,
                                          gboolean                   emit_signal)
 {
@@ -667,7 +667,7 @@ ctk_icon_view_item_accessible_add_state (GtkIconViewItemAccessible *item,
 }
 
 static gboolean
-ctk_icon_view_item_accessible_remove_state (GtkIconViewItemAccessible *item,
+ctk_icon_view_item_accessible_remove_state (CtkIconViewItemAccessible *item,
                                             AtkStateType               state_type,
                                             gboolean                   emit_signal)
 {
@@ -696,10 +696,10 @@ ctk_icon_view_item_accessible_remove_state (GtkIconViewItemAccessible *item,
 }
 
 static gboolean
-ctk_icon_view_item_accessible_is_showing (GtkIconViewItemAccessible *item)
+ctk_icon_view_item_accessible_is_showing (CtkIconViewItemAccessible *item)
 {
-  GtkAllocation allocation;
-  GtkIconView *icon_view;
+  CtkAllocation allocation;
+  CtkIconView *icon_view;
   GdkRectangle visible_rect;
   gboolean is_showing;
 
@@ -736,7 +736,7 @@ ctk_icon_view_item_accessible_is_showing (GtkIconViewItemAccessible *item)
 }
 
 static gboolean
-ctk_icon_view_item_accessible_set_visibility (GtkIconViewItemAccessible *item,
+ctk_icon_view_item_accessible_set_visibility (CtkIconViewItemAccessible *item,
                                               gboolean                   emit_signal)
 {
   if (ctk_icon_view_item_accessible_is_showing (item))
@@ -748,7 +748,7 @@ ctk_icon_view_item_accessible_set_visibility (GtkIconViewItemAccessible *item,
 }
 
 static void
-_ctk_icon_view_item_accessible_init (GtkIconViewItemAccessible *item)
+_ctk_icon_view_item_accessible_init (CtkIconViewItemAccessible *item)
 {
   item->state_set = atk_state_set_new ();
 
@@ -767,7 +767,7 @@ _ctk_icon_view_item_accessible_init (GtkIconViewItemAccessible *item)
 static void
 _ctk_icon_view_item_accessible_finalize (GObject *object)
 {
-  GtkIconViewItemAccessible *item;
+  CtkIconViewItemAccessible *item;
 
   item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (object);
 
@@ -794,7 +794,7 @@ _ctk_icon_view_item_accessible_finalize (GObject *object)
 static AtkObject*
 _ctk_icon_view_item_accessible_get_parent (AtkObject *obj)
 {
-  GtkIconViewItemAccessible *item;
+  CtkIconViewItemAccessible *item;
 
   g_return_val_if_fail (CTK_IS_ICON_VIEW_ITEM_ACCESSIBLE (obj), NULL);
   item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (obj);
@@ -808,7 +808,7 @@ _ctk_icon_view_item_accessible_get_parent (AtkObject *obj)
 static gint
 _ctk_icon_view_item_accessible_get_index_in_parent (AtkObject *obj)
 {
-  GtkIconViewItemAccessible *item;
+  CtkIconViewItemAccessible *item;
 
   g_return_val_if_fail (CTK_IS_ICON_VIEW_ITEM_ACCESSIBLE (obj), 0);
   item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (obj);
@@ -819,8 +819,8 @@ _ctk_icon_view_item_accessible_get_index_in_parent (AtkObject *obj)
 static AtkStateSet *
 _ctk_icon_view_item_accessible_ref_state_set (AtkObject *obj)
 {
-  GtkIconViewItemAccessible *item;
-  GtkIconView *icon_view;
+  CtkIconViewItemAccessible *item;
+  CtkIconView *icon_view;
 
   item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (obj);
   g_return_val_if_fail (item->state_set, NULL);
@@ -842,7 +842,7 @@ _ctk_icon_view_item_accessible_ref_state_set (AtkObject *obj)
 }
 
 static void
-_ctk_icon_view_item_accessible_class_init (GtkIconViewItemAccessibleClass *klass)
+_ctk_icon_view_item_accessible_class_init (CtkIconViewItemAccessibleClass *klass)
 {
   GObjectClass *gobject_class;
   AtkObjectClass *atk_class;
@@ -860,8 +860,8 @@ _ctk_icon_view_item_accessible_class_init (GtkIconViewItemAccessibleClass *klass
 static void atk_component_interface_init (AtkComponentIface *iface);
 static void atk_selection_interface_init (AtkSelectionIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkIconViewAccessible, ctk_icon_view_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
-                         G_ADD_PRIVATE (GtkIconViewAccessible)
+G_DEFINE_TYPE_WITH_CODE (CtkIconViewAccessible, ctk_icon_view_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
+                         G_ADD_PRIVATE (CtkIconViewAccessible)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_COMPONENT, atk_component_interface_init)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_SELECTION, atk_selection_interface_init))
 
@@ -869,7 +869,7 @@ typedef struct
 {
   AtkObject *item;
   gint       index;
-} GtkIconViewItemAccessibleInfo;
+} CtkIconViewItemAccessibleInfo;
 
 
 static void
@@ -877,12 +877,12 @@ ctk_icon_view_item_accessible_info_new (AtkObject *accessible,
                                         AtkObject *item,
                                         gint       index)
 {
-  GtkIconViewAccessible *view = (GtkIconViewAccessible *)accessible;
-  GtkIconViewItemAccessibleInfo *info;
-  GtkIconViewItemAccessibleInfo *tmp_info;
+  CtkIconViewAccessible *view = (CtkIconViewAccessible *)accessible;
+  CtkIconViewItemAccessibleInfo *info;
+  CtkIconViewItemAccessibleInfo *tmp_info;
   GList *items;
 
-  info = g_new (GtkIconViewItemAccessibleInfo, 1);
+  info = g_new (CtkIconViewItemAccessibleInfo, 1);
   info->item = item;
   info->index = index;
 
@@ -900,8 +900,8 @@ ctk_icon_view_item_accessible_info_new (AtkObject *accessible,
 static gint
 ctk_icon_view_accessible_get_n_children (AtkObject *accessible)
 {
-  GtkIconView *icon_view;
-  GtkWidget *widget;
+  CtkIconView *icon_view;
+  CtkWidget *widget;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (accessible));
   if (!widget)
@@ -916,8 +916,8 @@ static AtkObject *
 ctk_icon_view_accessible_find_child (AtkObject *accessible,
                                      gint       index)
 {
-  GtkIconViewAccessible *view = (GtkIconViewAccessible*)accessible;
-  GtkIconViewItemAccessibleInfo *info;
+  CtkIconViewAccessible *view = (CtkIconViewAccessible*)accessible;
+  CtkIconViewItemAccessibleInfo *info;
   GList *items;
 
   items = view->priv->items;
@@ -937,11 +937,11 @@ static AtkObject *
 ctk_icon_view_accessible_ref_child (AtkObject *accessible,
                                     gint       index)
 {
-  GtkIconView *icon_view;
-  GtkWidget *widget;
+  CtkIconView *icon_view;
+  CtkWidget *widget;
   GList *icons;
   AtkObject *obj;
-  GtkIconViewItemAccessible *a11y_item;
+  CtkIconViewItemAccessible *a11y_item;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (accessible));
   if (!widget)
@@ -952,7 +952,7 @@ ctk_icon_view_accessible_ref_child (AtkObject *accessible,
   obj = NULL;
   if (icons)
     {
-      GtkIconViewItem *item = icons->data;
+      CtkIconViewItem *item = icons->data;
 
       g_return_val_if_fail (item->index == index, NULL);
       obj = ctk_icon_view_accessible_find_child (accessible, index);
@@ -977,16 +977,16 @@ ctk_icon_view_accessible_ref_child (AtkObject *accessible,
 }
 
 static void
-ctk_icon_view_accessible_traverse_items (GtkIconViewAccessible *view,
+ctk_icon_view_accessible_traverse_items (CtkIconViewAccessible *view,
                                          GList                 *list)
 {
-  GtkIconViewItemAccessibleInfo *info;
-  GtkIconViewItemAccessible *item;
+  CtkIconViewItemAccessibleInfo *info;
+  CtkIconViewItemAccessible *item;
   GList *items;
 
   if (view->priv->items)
     {
-      GtkWidget *widget;
+      CtkWidget *widget;
       gboolean act_on_item;
 
       widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (view));
@@ -1000,7 +1000,7 @@ ctk_icon_view_accessible_traverse_items (GtkIconViewAccessible *view,
       while (items)
         {
 
-          info = (GtkIconViewItemAccessibleInfo *)items->data;
+          info = (CtkIconViewItemAccessibleInfo *)items->data;
           item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (info->item);
 
           if (act_on_item == FALSE && list == items)
@@ -1015,9 +1015,9 @@ ctk_icon_view_accessible_traverse_items (GtkIconViewAccessible *view,
 }
 
 void
-_ctk_icon_view_accessible_adjustment_changed (GtkIconView *icon_view)
+_ctk_icon_view_accessible_adjustment_changed (CtkIconView *icon_view)
 {
-  GtkIconViewAccessible *view;
+  CtkIconViewAccessible *view;
 
   view = CTK_ICON_VIEW_ACCESSIBLE (_ctk_widget_peek_accessible (CTK_WIDGET (icon_view)));
   if (view == NULL)
@@ -1027,17 +1027,17 @@ _ctk_icon_view_accessible_adjustment_changed (GtkIconView *icon_view)
 }
 
 static void
-ctk_icon_view_accessible_model_row_changed (GtkTreeModel *tree_model,
-                                            GtkTreePath  *path,
-                                            GtkTreeIter  *iter,
+ctk_icon_view_accessible_model_row_changed (CtkTreeModel *tree_model,
+                                            CtkTreePath  *path,
+                                            CtkTreeIter  *iter,
                                             gpointer      user_data)
 {
   AtkObject *atk_obj;
   gint index;
-  GtkWidget *widget;
-  GtkIconView *icon_view;
-  GtkIconViewItem *item;
-  GtkIconViewItemAccessible *a11y_item;
+  CtkWidget *widget;
+  CtkIconView *icon_view;
+  CtkIconViewItem *item;
+  CtkIconViewItemAccessible *a11y_item;
   const gchar *name;
 
   atk_obj = ctk_widget_get_accessible (CTK_WIDGET (user_data));
@@ -1065,14 +1065,14 @@ ctk_icon_view_accessible_model_row_changed (GtkTreeModel *tree_model,
 }
 
 static void
-ctk_icon_view_accessible_model_row_inserted (GtkTreeModel *tree_model,
-                                             GtkTreePath  *path,
-                                             GtkTreeIter  *iter,
+ctk_icon_view_accessible_model_row_inserted (CtkTreeModel *tree_model,
+                                             CtkTreePath  *path,
+                                             CtkTreeIter  *iter,
                                              gpointer     user_data)
 {
-  GtkIconViewItemAccessibleInfo *info;
-  GtkIconViewAccessible *view;
-  GtkIconViewItemAccessible *item;
+  CtkIconViewItemAccessibleInfo *info;
+  CtkIconViewAccessible *view;
+  CtkIconViewItemAccessible *item;
   GList *items;
   GList *tmp_list;
   AtkObject *atk_obj;
@@ -1108,13 +1108,13 @@ ctk_icon_view_accessible_model_row_inserted (GtkTreeModel *tree_model,
 }
 
 static void
-ctk_icon_view_accessible_model_row_deleted (GtkTreeModel *tree_model,
-                                            GtkTreePath  *path,
+ctk_icon_view_accessible_model_row_deleted (CtkTreeModel *tree_model,
+                                            CtkTreePath  *path,
                                             gpointer     user_data)
 {
-  GtkIconViewItemAccessibleInfo *info;
-  GtkIconViewAccessible *view;
-  GtkIconViewItemAccessible *item;
+  CtkIconViewItemAccessibleInfo *info;
+  CtkIconViewAccessible *view;
+  CtkIconViewItemAccessible *item;
   GList *items;
   GList *tmp_list;
   GList *deleted_item;
@@ -1163,23 +1163,23 @@ ctk_icon_view_accessible_model_row_deleted (GtkTreeModel *tree_model,
 }
 
 static gint
-ctk_icon_view_accessible_item_compare (GtkIconViewItemAccessibleInfo *i1,
-                                       GtkIconViewItemAccessibleInfo *i2)
+ctk_icon_view_accessible_item_compare (CtkIconViewItemAccessibleInfo *i1,
+                                       CtkIconViewItemAccessibleInfo *i2)
 {
   return i1->index - i2->index;
 }
 
 static void
-ctk_icon_view_accessible_model_rows_reordered (GtkTreeModel *tree_model,
-                                               GtkTreePath  *path,
-                                               GtkTreeIter  *iter,
+ctk_icon_view_accessible_model_rows_reordered (CtkTreeModel *tree_model,
+                                               CtkTreePath  *path,
+                                               CtkTreeIter  *iter,
                                                gint         *new_order,
                                                gpointer     user_data)
 {
-  GtkIconViewAccessible *view;
-  GtkIconViewItemAccessibleInfo *info;
-  GtkIconView *icon_view;
-  GtkIconViewItemAccessible *item;
+  CtkIconViewAccessible *view;
+  CtkIconViewItemAccessibleInfo *info;
+  CtkIconView *icon_view;
+  CtkIconViewItemAccessible *item;
   GList *items;
   AtkObject *atk_obj;
   gint *order;
@@ -1187,7 +1187,7 @@ ctk_icon_view_accessible_model_rows_reordered (GtkTreeModel *tree_model,
 
   atk_obj = ctk_widget_get_accessible (CTK_WIDGET (user_data));
   icon_view = CTK_ICON_VIEW (user_data);
-  view = (GtkIconViewAccessible*)atk_obj;
+  view = (CtkIconViewAccessible*)atk_obj;
 
   length = ctk_tree_model_iter_n_children (tree_model, NULL);
 
@@ -1212,8 +1212,8 @@ ctk_icon_view_accessible_model_rows_reordered (GtkTreeModel *tree_model,
 }
 
 static void
-ctk_icon_view_accessible_disconnect_model_signals (GtkTreeModel *model,
-                                                   GtkWidget *widget)
+ctk_icon_view_accessible_disconnect_model_signals (CtkTreeModel *model,
+                                                   CtkWidget *widget)
 {
   GObject *obj;
 
@@ -1225,7 +1225,7 @@ ctk_icon_view_accessible_disconnect_model_signals (GtkTreeModel *model,
 }
 
 static void
-ctk_icon_view_accessible_connect_model_signals (GtkIconView *icon_view)
+ctk_icon_view_accessible_connect_model_signals (CtkIconView *icon_view)
 {
   GObject *obj;
 
@@ -1245,15 +1245,15 @@ ctk_icon_view_accessible_connect_model_signals (GtkIconView *icon_view)
 }
 
 static void
-ctk_icon_view_accessible_clear_cache (GtkIconViewAccessible *view)
+ctk_icon_view_accessible_clear_cache (CtkIconViewAccessible *view)
 {
-  GtkIconViewItemAccessibleInfo *info;
+  CtkIconViewItemAccessibleInfo *info;
   GList *items;
 
   items = view->priv->items;
   while (items)
     {
-      info = (GtkIconViewItemAccessibleInfo *) items->data;
+      info = (CtkIconViewItemAccessibleInfo *) items->data;
       ctk_icon_view_item_accessible_add_state (CTK_ICON_VIEW_ITEM_ACCESSIBLE (info->item), ATK_STATE_DEFUNCT, TRUE);
       g_object_unref (info->item);
       g_free (items->data);
@@ -1267,16 +1267,16 @@ static void
 ctk_icon_view_accessible_notify_ctk (GObject    *obj,
                                      GParamSpec *pspec)
 {
-  GtkIconView *icon_view;
-  GtkWidget *widget;
+  CtkIconView *icon_view;
+  CtkWidget *widget;
   AtkObject *atk_obj;
-  GtkIconViewAccessible *view;
+  CtkIconViewAccessible *view;
 
   if (strcmp (pspec->name, "model") == 0)
     {
       widget = CTK_WIDGET (obj);
       atk_obj = ctk_widget_get_accessible (widget);
-      view = (GtkIconViewAccessible*)atk_obj;
+      view = (CtkIconViewAccessible*)atk_obj;
       if (view->priv->model)
         {
           g_object_remove_weak_pointer (G_OBJECT (view->priv->model),
@@ -1287,7 +1287,7 @@ ctk_icon_view_accessible_notify_ctk (GObject    *obj,
 
       icon_view = CTK_ICON_VIEW (obj);
       view->priv->model = icon_view->priv->model;
-      /* If there is no model the GtkIconView is probably being destroyed */
+      /* If there is no model the CtkIconView is probably being destroyed */
       if (view->priv->model)
         {
           g_object_add_weak_pointer (G_OBJECT (view->priv->model), (gpointer *)&view->priv->model);
@@ -1302,14 +1302,14 @@ static void
 ctk_icon_view_accessible_initialize (AtkObject *accessible,
                                      gpointer   data)
 {
-  GtkIconViewAccessible *view;
-  GtkIconView *icon_view;
+  CtkIconViewAccessible *view;
+  CtkIconView *icon_view;
 
   if (ATK_OBJECT_CLASS (ctk_icon_view_accessible_parent_class)->initialize)
     ATK_OBJECT_CLASS (ctk_icon_view_accessible_parent_class)->initialize (accessible, data);
 
-  icon_view = (GtkIconView*)data;
-  view = (GtkIconViewAccessible*)accessible;
+  icon_view = (CtkIconView*)data;
+  view = (CtkIconViewAccessible*)accessible;
 
   g_signal_connect (data, "notify",
                     G_CALLBACK (ctk_icon_view_accessible_notify_ctk), NULL);
@@ -1327,7 +1327,7 @@ ctk_icon_view_accessible_initialize (AtkObject *accessible,
 static void
 ctk_icon_view_accessible_finalize (GObject *object)
 {
-  GtkIconViewAccessible *view = (GtkIconViewAccessible*)object;
+  CtkIconViewAccessible *view = (CtkIconViewAccessible*)object;
 
   ctk_icon_view_accessible_clear_cache (view);
 
@@ -1335,7 +1335,7 @@ ctk_icon_view_accessible_finalize (GObject *object)
 }
 
 static void
-ctk_icon_view_accessible_class_init (GtkIconViewAccessibleClass *klass)
+ctk_icon_view_accessible_class_init (CtkIconViewAccessibleClass *klass)
 {
   GObjectClass *gobject_class;
   AtkObjectClass *atk_class;
@@ -1351,7 +1351,7 @@ ctk_icon_view_accessible_class_init (GtkIconViewAccessibleClass *klass)
 }
 
 static void
-ctk_icon_view_accessible_init (GtkIconViewAccessible *accessible)
+ctk_icon_view_accessible_init (CtkIconViewAccessible *accessible)
 {
   accessible->priv = ctk_icon_view_accessible_get_instance_private (accessible);
 }
@@ -1362,9 +1362,9 @@ ctk_icon_view_accessible_ref_accessible_at_point (AtkComponent *component,
                                                   gint          y,
                                                   AtkCoordType  coord_type)
 {
-  GtkWidget *widget;
-  GtkIconView *icon_view;
-  GtkIconViewItem *item;
+  CtkWidget *widget;
+  CtkIconView *icon_view;
+  CtkIconViewItem *item;
   gint x_pos, y_pos;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (component));
@@ -1390,9 +1390,9 @@ static gboolean
 ctk_icon_view_accessible_add_selection (AtkSelection *selection,
                                         gint          i)
 {
-  GtkWidget *widget;
-  GtkIconView *icon_view;
-  GtkIconViewItem *item;
+  CtkWidget *widget;
+  CtkIconView *icon_view;
+  CtkIconViewItem *item;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (widget == NULL)
@@ -1412,8 +1412,8 @@ ctk_icon_view_accessible_add_selection (AtkSelection *selection,
 static gboolean
 ctk_icon_view_accessible_clear_selection (AtkSelection *selection)
 {
-  GtkWidget *widget;
-  GtkIconView *icon_view;
+  CtkWidget *widget;
+  CtkIconView *icon_view;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (widget == NULL)
@@ -1430,9 +1430,9 @@ ctk_icon_view_accessible_ref_selection (AtkSelection *selection,
                                         gint          i)
 {
   GList *l;
-  GtkWidget *widget;
-  GtkIconView *icon_view;
-  GtkIconViewItem *item;
+  CtkWidget *widget;
+  CtkIconView *icon_view;
+  CtkIconViewItem *item;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (widget == NULL)
@@ -1460,9 +1460,9 @@ ctk_icon_view_accessible_ref_selection (AtkSelection *selection,
 static gint
 ctk_icon_view_accessible_get_selection_count (AtkSelection *selection)
 {
-  GtkWidget *widget;
-  GtkIconView *icon_view;
-  GtkIconViewItem *item;
+  CtkWidget *widget;
+  CtkIconView *icon_view;
+  CtkIconViewItem *item;
   GList *l;
   gint count;
 
@@ -1491,9 +1491,9 @@ static gboolean
 ctk_icon_view_accessible_is_child_selected (AtkSelection *selection,
                                             gint          i)
 {
-  GtkWidget *widget;
-  GtkIconView *icon_view;
-  GtkIconViewItem *item;
+  CtkWidget *widget;
+  CtkIconView *icon_view;
+  CtkIconViewItem *item;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (widget == NULL)
@@ -1512,9 +1512,9 @@ static gboolean
 ctk_icon_view_accessible_remove_selection (AtkSelection *selection,
                                            gint          i)
 {
-  GtkWidget *widget;
-  GtkIconView *icon_view;
-  GtkIconViewItem *item;
+  CtkWidget *widget;
+  CtkIconView *icon_view;
+  CtkIconViewItem *item;
   GList *l;
   gint count;
 
@@ -1546,8 +1546,8 @@ ctk_icon_view_accessible_remove_selection (AtkSelection *selection,
 static gboolean
 ctk_icon_view_accessible_select_all_selection (AtkSelection *selection)
 {
-  GtkWidget *widget;
-  GtkIconView *icon_view;
+  CtkWidget *widget;
+  CtkIconView *icon_view;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (widget == NULL)

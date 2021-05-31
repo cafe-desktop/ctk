@@ -27,26 +27,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_MENU_ITEM_ACCESSIBLE                     (ctk_menu_item_accessible_get_type ())
-#define CTK_MENU_ITEM_ACCESSIBLE(obj)                     (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_MENU_ITEM_ACCESSIBLE, GtkMenuItemAccessible))
-#define CTK_MENU_ITEM_ACCESSIBLE_CLASS(klass)             (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_MENU_ITEM_ACCESSIBLE, GtkMenuItemAccessibleClass))
+#define CTK_MENU_ITEM_ACCESSIBLE(obj)                     (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_MENU_ITEM_ACCESSIBLE, CtkMenuItemAccessible))
+#define CTK_MENU_ITEM_ACCESSIBLE_CLASS(klass)             (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_MENU_ITEM_ACCESSIBLE, CtkMenuItemAccessibleClass))
 #define CTK_IS_MENU_ITEM_ACCESSIBLE(obj)                  (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_MENU_ITEM_ACCESSIBLE))
 #define CTK_IS_MENU_ITEM_ACCESSIBLE_CLASS(klass)          (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_MENU_ITEM_ACCESSIBLE))
-#define CTK_MENU_ITEM_ACCESSIBLE_GET_CLASS(obj)           (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_MENU_ITEM_ACCESSIBLE, GtkMenuItemAccessibleClass))
+#define CTK_MENU_ITEM_ACCESSIBLE_GET_CLASS(obj)           (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_MENU_ITEM_ACCESSIBLE, CtkMenuItemAccessibleClass))
 
-typedef struct _GtkMenuItemAccessible        GtkMenuItemAccessible;
-typedef struct _GtkMenuItemAccessibleClass   GtkMenuItemAccessibleClass;
-typedef struct _GtkMenuItemAccessiblePrivate GtkMenuItemAccessiblePrivate;
+typedef struct _CtkMenuItemAccessible        CtkMenuItemAccessible;
+typedef struct _CtkMenuItemAccessibleClass   CtkMenuItemAccessibleClass;
+typedef struct _CtkMenuItemAccessiblePrivate CtkMenuItemAccessiblePrivate;
 
-struct _GtkMenuItemAccessible
+struct _CtkMenuItemAccessible
 {
-  GtkContainerAccessible parent;
+  CtkContainerAccessible parent;
 
-  GtkMenuItemAccessiblePrivate *priv;
+  CtkMenuItemAccessiblePrivate *priv;
 };
 
-struct _GtkMenuItemAccessibleClass
+struct _CtkMenuItemAccessibleClass
 {
-  GtkContainerAccessibleClass parent_class;
+  CtkContainerAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

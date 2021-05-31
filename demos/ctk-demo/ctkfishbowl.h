@@ -23,46 +23,46 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_FISHBOWL                  (ctk_fishbowl_get_type ())
-#define CTK_FISHBOWL(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FISHBOWL, GtkFishbowl))
-#define CTK_FISHBOWL_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_FISHBOWL, GtkFishbowlClass))
+#define CTK_FISHBOWL(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FISHBOWL, CtkFishbowl))
+#define CTK_FISHBOWL_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_FISHBOWL, CtkFishbowlClass))
 #define CTK_IS_FISHBOWL(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_FISHBOWL))
 #define CTK_IS_FISHBOWL_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_FISHBOWL))
-#define CTK_FISHBOWL_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_FISHBOWL, GtkFishbowlClass))
+#define CTK_FISHBOWL_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_FISHBOWL, CtkFishbowlClass))
 
-typedef struct _GtkFishbowl              GtkFishbowl;
-typedef struct _GtkFishbowlClass         GtkFishbowlClass;
+typedef struct _CtkFishbowl              CtkFishbowl;
+typedef struct _CtkFishbowlClass         CtkFishbowlClass;
 
-typedef GtkWidget * (* GtkFishCreationFunc) (void);
+typedef CtkWidget * (* CtkFishCreationFunc) (void);
 
-struct _GtkFishbowl
+struct _CtkFishbowl
 {
-  GtkContainer parent;
+  CtkContainer parent;
 };
 
-struct _GtkFishbowlClass
+struct _CtkFishbowlClass
 {
-  GtkContainerClass parent_class;
+  CtkContainerClass parent_class;
 };
 
 GType      ctk_fishbowl_get_type          (void) G_GNUC_CONST;
 
-GtkWidget* ctk_fishbowl_new               (void);
+CtkWidget* ctk_fishbowl_new               (void);
 
-guint      ctk_fishbowl_get_count         (GtkFishbowl       *fishbowl);
-void       ctk_fishbowl_set_count         (GtkFishbowl       *fishbowl,
+guint      ctk_fishbowl_get_count         (CtkFishbowl       *fishbowl);
+void       ctk_fishbowl_set_count         (CtkFishbowl       *fishbowl,
                                            guint              count);
-gboolean   ctk_fishbowl_get_animating     (GtkFishbowl       *fishbowl);
-void       ctk_fishbowl_set_animating     (GtkFishbowl       *fishbowl,
+gboolean   ctk_fishbowl_get_animating     (CtkFishbowl       *fishbowl);
+void       ctk_fishbowl_set_animating     (CtkFishbowl       *fishbowl,
                                            gboolean           animating);
-gboolean   ctk_fishbowl_get_benchmark     (GtkFishbowl       *fishbowl);
-void       ctk_fishbowl_set_benchmark     (GtkFishbowl       *fishbowl,
+gboolean   ctk_fishbowl_get_benchmark     (CtkFishbowl       *fishbowl);
+void       ctk_fishbowl_set_benchmark     (CtkFishbowl       *fishbowl,
                                            gboolean           animating);
-double     ctk_fishbowl_get_framerate     (GtkFishbowl       *fishbowl);
-gint64     ctk_fishbowl_get_update_delay  (GtkFishbowl       *fishbowl);
-void       ctk_fishbowl_set_update_delay  (GtkFishbowl       *fishbowl,
+double     ctk_fishbowl_get_framerate     (CtkFishbowl       *fishbowl);
+gint64     ctk_fishbowl_get_update_delay  (CtkFishbowl       *fishbowl);
+void       ctk_fishbowl_set_update_delay  (CtkFishbowl       *fishbowl,
                                            gint64             update_delay);
-void       ctk_fishbowl_set_creation_func (GtkFishbowl       *fishbowl,
-                                           GtkFishCreationFunc creation_func);
+void       ctk_fishbowl_set_creation_func (CtkFishbowl       *fishbowl,
+                                           CtkFishCreationFunc creation_func);
 
 G_END_DECLS
 

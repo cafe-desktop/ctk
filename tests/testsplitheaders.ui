@@ -1,17 +1,17 @@
 <interface>
-  <object class="GtkWindow" id="window">
+  <object class="CtkWindow" id="window">
     <property name="default-width">600</property>
     <property name="default-height">400</property>
     <property name="icon-name">preferences-desktop-font</property>
     <child type="titlebar">
-      <object class="GtkBox">
+      <object class="CtkBox">
         <property name="visible">True</property>
         <property name="orientation">horizontal</property>
         <child>
-          <object class="GtkHeaderBar" id="sidebar-header">
+          <object class="CtkHeaderBar" id="sidebar-header">
             <property name="visible">True</property>
             <child>
-              <object class="GtkCheckButton">
+              <object class="CtkCheckButton">
                 <property name="visible">True</property>
                 <property name="valign">center</property>
               </object>
@@ -22,31 +22,31 @@
           </object>
         </child>
         <child>
-          <object class="GtkSeparator">
+          <object class="CtkSeparator">
             <property name="visible">True</property>
             <property name="orientation">vertical</property>
           </object>
         </child>
         <child>
-          <object class="GtkHeaderBar" id="main-header">
+          <object class="CtkHeaderBar" id="main-header">
             <property name="visible">True</property>
             <property name="hexpand">True</property>
             <child>
-              <object class="GtkBox">
+              <object class="CtkBox">
                 <property name="visible">True</property>
                 <property name="orientation">horizontal</property>
                 <style>
                   <class name="linked"/>
                 </style>
                 <child>
-                  <object class="GtkButton">
+                  <object class="CtkButton">
                     <property name="visible">True</property>
                     <property name="label">&lt;</property>
                     <property name="valign">center</property>
                   </object>
                 </child>
                 <child>
-                  <object class="GtkButton">
+                  <object class="CtkButton">
                     <property name="visible">True</property>
                     <property name="label">&gt;</property>
                     <property name="valign">center</property>
@@ -62,36 +62,36 @@
       </object>
     </child>
     <child>
-      <object class="GtkBox">
+      <object class="CtkBox">
         <property name="visible">True</property>
         <property name="orientation">horizontal</property>
         <child>
-          <object class="GtkListBox" id="sidebar-content">
+          <object class="CtkListBox" id="sidebar-content">
             <property name="visible">True</property>
             <property name="selection-mode">none</property>
             <child>
-              <object class="GtkLabel">
+              <object class="CtkLabel">
                 <property name="visible">True</property>
                 <property name="label">Bla</property>
                 <property name="xalign">0</property>
               </object>
             </child>
             <child>
-              <object class="GtkLabel">
+              <object class="CtkLabel">
                 <property name="visible">True</property>
                 <property name="label">Bla bla</property>
                 <property name="xalign">0</property>
               </object>
             </child>
             <child>
-              <object class="GtkLabel">
+              <object class="CtkLabel">
                 <property name="visible">True</property>
                 <property name="label">Bla bla bla</property>
                 <property name="xalign">0</property>
               </object>
             </child>
             <child>
-              <object class="GtkLabel">
+              <object class="CtkLabel">
                 <property name="visible">True</property>
                 <property name="label">Bla bla bla bla</property>
                 <property name="xalign">0</property>
@@ -100,20 +100,20 @@
           </object>
         </child>
         <child>
-          <object class="GtkScrolledWindow" id="main-content">
+          <object class="CtkScrolledWindow" id="main-content">
             <property name="visible">True</property>
             <property name="hexpand">True</property>
             <property name="vexpand">True</property>
             <property name="hscrollbar-policy">always</property>
             <property name="vscrollbar-policy">always</property>
             <child>
-              <object class="GtkGrid">
+              <object class="CtkGrid">
                 <property name="visible">True</property>
                 <property name="margin">20</property>
                 <property name="row-spacing">10</property>
                 <property name="column-spacing">10</property>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="CtkLabel">
                     <property name="visible">True</property>
                     <property name="label">Layout</property>
                   </object>
@@ -123,7 +123,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="layout-entry">
+                  <object class="CtkEntry" id="layout-entry">
                     <property name="visible">True</property>
                     <property name="width-chars">25</property>
                   </object>
@@ -133,7 +133,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="CtkLabel">
                     <property name="visible">True</property>
                     <property name="label">Decorations</property>
                   </object>
@@ -143,7 +143,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkCheckButton" id="decorations">
+                  <object class="CtkCheckButton" id="decorations">
                     <property name="visible">True</property>
                   </object>
                   <packing>
@@ -158,14 +158,14 @@
       </object>
     </child>
   </object>
-  <object class="GtkSizeGroup">
+  <object class="CtkSizeGroup">
     <property name="mode">horizontal</property>
     <widgets>
       <widget name="sidebar-header"/>
       <widget name="sidebar-content"/>
     </widgets>
   </object>
-  <object class="GtkSizeGroup">
+  <object class="CtkSizeGroup">
     <property name="mode">horizontal</property>
     <widgets>
       <widget name="main-header"/>

@@ -34,37 +34,37 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_VSCROLLBAR            (ctk_vscrollbar_get_type ())
-#define CTK_VSCROLLBAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_VSCROLLBAR, GtkVScrollbar))
-#define CTK_VSCROLLBAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_VSCROLLBAR, GtkVScrollbarClass))
+#define CTK_VSCROLLBAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_VSCROLLBAR, CtkVScrollbar))
+#define CTK_VSCROLLBAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_VSCROLLBAR, CtkVScrollbarClass))
 #define CTK_IS_VSCROLLBAR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_VSCROLLBAR))
 #define CTK_IS_VSCROLLBAR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_VSCROLLBAR))
-#define CTK_VSCROLLBAR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_VSCROLLBAR, GtkVScrollbarClass))
+#define CTK_VSCROLLBAR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_VSCROLLBAR, CtkVScrollbarClass))
 
 
-typedef struct _GtkVScrollbar       GtkVScrollbar;
-typedef struct _GtkVScrollbarClass  GtkVScrollbarClass;
+typedef struct _CtkVScrollbar       CtkVScrollbar;
+typedef struct _CtkVScrollbarClass  CtkVScrollbarClass;
 
 /**
- * GtkVScrollbar:
+ * CtkVScrollbar:
  *
- * The #GtkVScrollbar struct contains private data and should be accessed
+ * The #CtkVScrollbar struct contains private data and should be accessed
  * using the functions below.
  */
-struct _GtkVScrollbar
+struct _CtkVScrollbar
 {
-  GtkScrollbar scrollbar;
+  CtkScrollbar scrollbar;
 };
 
-struct _GtkVScrollbarClass
+struct _CtkVScrollbarClass
 {
-  GtkScrollbarClass parent_class;
+  CtkScrollbarClass parent_class;
 };
 
 
 GDK_DEPRECATED_IN_3_2
 GType      ctk_vscrollbar_get_type (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_2_FOR(ctk_scrollbar_new)
-GtkWidget* ctk_vscrollbar_new      (GtkAdjustment *adjustment);
+CtkWidget* ctk_vscrollbar_new      (CtkAdjustment *adjustment);
 
 G_END_DECLS
 

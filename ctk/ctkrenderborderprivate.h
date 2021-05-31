@@ -28,30 +28,30 @@
 
 G_BEGIN_DECLS
 
-gboolean        ctk_css_style_render_has_border         (GtkCssStyle            *style);
-void            ctk_css_style_render_border             (GtkCssStyle            *style,
+gboolean        ctk_css_style_render_has_border         (CtkCssStyle            *style);
+void            ctk_css_style_render_border             (CtkCssStyle            *style,
                                                          cairo_t                *cr,
                                                          gdouble                 x,
                                                          gdouble                 y,
                                                          gdouble                 width,
                                                          gdouble                 height,
                                                          guint                   hidden_side,
-                                                         GtkJunctionSides        junction);
-gboolean        ctk_css_style_render_border_get_clip    (GtkCssStyle            *style,
+                                                         CtkJunctionSides        junction);
+gboolean        ctk_css_style_render_border_get_clip    (CtkCssStyle            *style,
                                                          gdouble                 x,
                                                          gdouble                 y,
                                                          gdouble                 width,
                                                          gdouble                 height,
                                                          GdkRectangle           *out_clip) G_GNUC_WARN_UNUSED_RESULT;
 
-gboolean        ctk_css_style_render_has_outline        (GtkCssStyle            *style);
-void            ctk_css_style_render_outline            (GtkCssStyle            *style,
+gboolean        ctk_css_style_render_has_outline        (CtkCssStyle            *style);
+void            ctk_css_style_render_outline            (CtkCssStyle            *style,
                                                          cairo_t                *cr,
                                                          gdouble                 x,
                                                          gdouble                 y,
                                                          gdouble                 width,
                                                          gdouble                 height);
-gboolean        ctk_css_style_render_outline_get_clip   (GtkCssStyle            *style,
+gboolean        ctk_css_style_render_outline_get_clip   (CtkCssStyle            *style,
                                                          gdouble                 x,
                                                          gdouble                 y,
                                                          gdouble                 width,

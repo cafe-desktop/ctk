@@ -1,5 +1,5 @@
 /* ctkprintercloudprint.c: Google Cloud Print -specific Printer class,
- * GtkPrinterCloudprint
+ * CtkPrinterCloudprint
  * Copyright (C) 2014, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -24,25 +24,25 @@
 #include "ctkprintercloudprint.h"
 #include "ctkcloudprintaccount.h"
 
-typedef struct _GtkPrinterCloudprintClass GtkPrinterCloudprintClass;
+typedef struct _CtkPrinterCloudprintClass CtkPrinterCloudprintClass;
 
-#define CTK_PRINTER_CLOUDPRINT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PRINTER_CLOUDPRINT, GtkPrinterCloudprintClass))
+#define CTK_PRINTER_CLOUDPRINT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PRINTER_CLOUDPRINT, CtkPrinterCloudprintClass))
 #define CTK_IS_PRINTER_CLOUDPRINT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PRINTER_CLOUDPRINT))
-#define CTK_PRINTER_CLOUDPRINT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PRINTER_CLOUDPRINT, GtkPrinterCloudprintClass))
+#define CTK_PRINTER_CLOUDPRINT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PRINTER_CLOUDPRINT, CtkPrinterCloudprintClass))
 
-static GtkPrinterClass *ctk_printer_cloudprint_parent_class;
+static CtkPrinterClass *ctk_printer_cloudprint_parent_class;
 static GType printer_cloudprint_type = 0;
 
-struct _GtkPrinterCloudprintClass
+struct _CtkPrinterCloudprintClass
 {
-  GtkPrinterClass parent_class;
+  CtkPrinterClass parent_class;
 };
 
-struct _GtkPrinterCloudprint
+struct _CtkPrinterCloudprint
 {
-  GtkPrinter parent_instance;
+  CtkPrinter parent_instance;
 
-  GtkCloudprintAccount *account;
+  CtkCloudprintAccount *account;
   gchar *id;
 };
 
@@ -52,8 +52,8 @@ enum {
   PROP_PRINTER_ID
 };
 
-static void ctk_printer_cloudprint_class_init	(GtkPrinterCloudprintClass *class);
-static void ctk_printer_cloudprint_init		(GtkPrinterCloudprint *impl);
+static void ctk_printer_cloudprint_class_init	(CtkPrinterCloudprintClass *class);
+static void ctk_printer_cloudprint_init		(CtkPrinterCloudprint *impl);
 static void ctk_printer_cloudprint_finalize	(GObject *object);
 static void ctk_printer_cloudprint_set_property	(GObject *object,
 						 guint prop_id,
@@ -69,25 +69,25 @@ ctk_printer_cloudprint_register_type (GTypeModule *module)
 {
   const GTypeInfo printer_cloudprint_info =
   {
-    sizeof (GtkPrinterCloudprintClass),
+    sizeof (CtkPrinterCloudprintClass),
     NULL,		/* base_init */
     NULL,		/* base_finalize */
     (GClassInitFunc) ctk_printer_cloudprint_class_init,
     NULL,		/* class_finalize */
     NULL,		/* class_data */
-    sizeof (GtkPrinterCloudprint),
+    sizeof (CtkPrinterCloudprint),
     0,		/* n_preallocs */
     (GInstanceInitFunc) ctk_printer_cloudprint_init,
   };
 
   printer_cloudprint_type = g_type_module_register_type (module,
 							 CTK_TYPE_PRINTER,
-							 "GtkPrinterCloudprint",
+							 "CtkPrinterCloudprint",
 							 &printer_cloudprint_info, 0);
 }
 
 /*
- * GtkPrinterCloudprint
+ * CtkPrinterCloudprint
  */
 GType
 ctk_printer_cloudprint_get_type (void)
@@ -98,17 +98,17 @@ ctk_printer_cloudprint_get_type (void)
 /**
  * ctk_printer_cloudprint_new:
  *
- * Creates a new #GtkPrinterCloudprint object. #GtkPrinterCloudprint
- * implements the #GtkPrinter interface and stores a reference to the
- * #GtkCloudprintAccount object and the printer-id to use
+ * Creates a new #CtkPrinterCloudprint object. #CtkPrinterCloudprint
+ * implements the #CtkPrinter interface and stores a reference to the
+ * #CtkCloudprintAccount object and the printer-id to use
  *
- * Returns: the new #GtkPrinterCloudprint object
+ * Returns: the new #CtkPrinterCloudprint object
  **/
-GtkPrinterCloudprint *
+CtkPrinterCloudprint *
 ctk_printer_cloudprint_new (const char *name,
 			    gboolean is_virtual,
-			    GtkPrintBackend *backend,
-			    GtkCloudprintAccount *account,
+			    CtkPrintBackend *backend,
+			    CtkCloudprintAccount *account,
 			    const gchar *id)
 {
   return g_object_new (CTK_TYPE_PRINTER_CLOUDPRINT,
@@ -122,7 +122,7 @@ ctk_printer_cloudprint_new (const char *name,
 }
 
 static void
-ctk_printer_cloudprint_class_init (GtkPrinterCloudprintClass *klass)
+ctk_printer_cloudprint_class_init (CtkPrinterCloudprintClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 
@@ -135,7 +135,7 @@ ctk_printer_cloudprint_class_init (GtkPrinterCloudprintClass *klass)
 				   PROP_CLOUDPRINT_ACCOUNT,
 				   g_param_spec_object ("cloudprint-account",
 							P_("Cloud Print account"),
-							P_("GtkCloudprintAccount instance"),
+							P_("CtkCloudprintAccount instance"),
 							CTK_TYPE_CLOUDPRINT_ACCOUNT,
 							G_PARAM_READWRITE |
 							G_PARAM_STATIC_STRINGS |
@@ -153,25 +153,25 @@ ctk_printer_cloudprint_class_init (GtkPrinterCloudprintClass *klass)
 }
 
 static void
-ctk_printer_cloudprint_init (GtkPrinterCloudprint *printer)
+ctk_printer_cloudprint_init (CtkPrinterCloudprint *printer)
 {
   printer->account = NULL;
   printer->id = NULL;
 
   CTK_NOTE (PRINTING,
-	    g_print ("Cloud Print Backend: +GtkPrinterCloudprint(%p)\n",
+	    g_print ("Cloud Print Backend: +CtkPrinterCloudprint(%p)\n",
 		     printer));
 }
 
 static void
 ctk_printer_cloudprint_finalize (GObject *object)
 {
-  GtkPrinterCloudprint *printer;
+  CtkPrinterCloudprint *printer;
 
   printer = CTK_PRINTER_CLOUDPRINT (object);
 
   CTK_NOTE (PRINTING,
-	    g_print ("Cloud Print Backend: -GtkPrinterCloudprint(%p)\n",
+	    g_print ("Cloud Print Backend: -CtkPrinterCloudprint(%p)\n",
 		     printer));
 
   if (printer->account != NULL)
@@ -188,7 +188,7 @@ ctk_printer_cloudprint_set_property (GObject *object,
 				     const GValue *value,
 				     GParamSpec *pspec)
 {
-  GtkPrinterCloudprint *printer = CTK_PRINTER_CLOUDPRINT (object);
+  CtkPrinterCloudprint *printer = CTK_PRINTER_CLOUDPRINT (object);
 
   switch (prop_id)
     {
@@ -212,7 +212,7 @@ ctk_printer_cloudprint_get_property (GObject *object,
 				     GValue *value,
 				     GParamSpec *pspec)
 {
-  GtkPrinterCloudprint *printer = CTK_PRINTER_CLOUDPRINT (object);
+  CtkPrinterCloudprint *printer = CTK_PRINTER_CLOUDPRINT (object);
 
   switch (prop_id)
     {

@@ -1,15 +1,15 @@
 /* Tree View/List Store
  *
- * The GtkListStore is used to store data in list form, to be used
- * later on by a GtkTreeView to display it. This demo builds a
- * simple GtkListStore and displays it.
+ * The CtkListStore is used to store data in list form, to be used
+ * later on by a CtkTreeView to display it. This demo builds a
+ * simple CtkListStore and displays it.
  *
  */
 
 #include <ctk/ctk.h>
 
-static GtkWidget *window = NULL;
-static GtkTreeModel *model = NULL;
+static CtkWidget *window = NULL;
+static CtkTreeModel *model = NULL;
 static guint timeout = 0;
 
 typedef struct
@@ -39,15 +39,15 @@ static Bug data[] =
   { FALSE, 60482, "Normal",     "scrollable notebooks and hidden tabs" },
   { FALSE, 60620, "Critical",   "gdk_window_clear_area (gdkwindow-win32.c) is not thread-safe" },
   { FALSE, 50214, "Major",      "Xft support does not clean up correctly" },
-  { TRUE,  52877, "Major",      "GtkFileSelection needs a refresh method. " },
+  { TRUE,  52877, "Major",      "CtkFileSelection needs a refresh method. " },
   { FALSE, 56070, "Normal",     "Can't click button after setting in sensitive" },
-  { TRUE,  56355, "Normal",     "GtkLabel - Not all changes propagate correctly" },
+  { TRUE,  56355, "Normal",     "CtkLabel - Not all changes propagate correctly" },
   { FALSE, 50055, "Normal",     "Rework width/height computations for TreeView" },
   { FALSE, 58278, "Normal",     "ctk_dialog_set_response_sensitive () doesn't work" },
   { FALSE, 55767, "Normal",     "Getters for all setters" },
-  { FALSE, 56925, "Normal",     "Gtkcalender size" },
+  { FALSE, 56925, "Normal",     "Ctkcalender size" },
   { FALSE, 56221, "Normal",     "Selectable label needs right-click copy menu" },
-  { TRUE,  50939, "Normal",     "Add shift clicking to GtkTextView" },
+  { TRUE,  50939, "Normal",     "Add shift clicking to CtkTextView" },
   { FALSE, 6112,  "Enhancement","netscape-like collapsable toolbars" },
   { FALSE, 1,     "Normal",     "First bug :=)" },
 };
@@ -55,7 +55,7 @@ static Bug data[] =
 static gboolean
 spinner_timeout (gpointer data)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   guint pulse;
 
   if (model == NULL)
@@ -79,12 +79,12 @@ spinner_timeout (gpointer data)
   return G_SOURCE_CONTINUE;
 }
 
-static GtkTreeModel *
+static CtkTreeModel *
 create_model (void)
 {
   gint i = 0;
-  GtkListStore *store;
-  GtkTreeIter iter;
+  CtkListStore *store;
+  CtkTreeIter iter;
 
   /* create list store */
   store = ctk_list_store_new (NUM_COLUMNS,
@@ -128,13 +128,13 @@ create_model (void)
 }
 
 static void
-fixed_toggled (GtkCellRendererToggle *cell,
+fixed_toggled (CtkCellRendererToggle *cell,
                gchar                 *path_str,
                gpointer               data)
 {
-  GtkTreeModel *model = (GtkTreeModel *)data;
-  GtkTreeIter  iter;
-  GtkTreePath *path = ctk_tree_path_new_from_string (path_str);
+  CtkTreeModel *model = (CtkTreeModel *)data;
+  CtkTreeIter  iter;
+  CtkTreePath *path = ctk_tree_path_new_from_string (path_str);
   gboolean fixed;
 
   /* get toggled iter */
@@ -152,11 +152,11 @@ fixed_toggled (GtkCellRendererToggle *cell,
 }
 
 static void
-add_columns (GtkTreeView *treeview)
+add_columns (CtkTreeView *treeview)
 {
-  GtkCellRenderer *renderer;
-  GtkTreeViewColumn *column;
-  GtkTreeModel *model = ctk_tree_view_get_model (treeview);
+  CtkCellRenderer *renderer;
+  CtkTreeViewColumn *column;
+  CtkTreeModel *model = ctk_tree_view_get_model (treeview);
 
   /* column for fixed toggles */
   renderer = ctk_cell_renderer_toggle_new ();
@@ -230,7 +230,7 @@ add_columns (GtkTreeView *treeview)
 }
 
 static gboolean
-window_closed (GtkWidget *widget,
+window_closed (CtkWidget *widget,
                GdkEvent  *event,
                gpointer   user_data)
 {
@@ -244,15 +244,15 @@ window_closed (GtkWidget *widget,
   return FALSE;
 }
 
-GtkWidget *
-do_list_store (GtkWidget *do_widget)
+CtkWidget *
+do_list_store (CtkWidget *do_widget)
 {
   if (!window)
     {
-      GtkWidget *vbox;
-      GtkWidget *label;
-      GtkWidget *sw;
-      GtkWidget *treeview;
+      CtkWidget *vbox;
+      CtkWidget *label;
+      CtkWidget *sw;
+      CtkWidget *treeview;
 
       /* create window, etc */
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);

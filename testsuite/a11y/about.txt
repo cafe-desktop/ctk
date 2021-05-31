@@ -17,7 +17,7 @@ window1
     <AtkComponent>
     layer: widget
     alpha: 1
-    unnamed-GtkContainerAccessible-0
+    unnamed-CtkContainerAccessible-0
       "filler"
       parent: headerbar1
       state: enabled horizontal sensitive visible
@@ -25,18 +25,18 @@ window1
       <AtkComponent>
       layer: widget
       alpha: 1
-      unnamed-GtkWidgetAccessible-1
+      unnamed-CtkWidgetAccessible-1
         "separator"
-        parent: unnamed-GtkContainerAccessible-0
+        parent: unnamed-CtkContainerAccessible-0
         index: 0
         state: enabled sensitive vertical
         toolkit: ctk
         <AtkComponent>
         layer: widget
         alpha: 1
-      unnamed-GtkButtonAccessible-2
+      unnamed-CtkButtonAccessible-2
         "push button"
-        parent: unnamed-GtkContainerAccessible-0
+        parent: unnamed-CtkContainerAccessible-0
         index: 1
         name: Close
         state: enabled sensitive visible
@@ -59,14 +59,14 @@ window1
       <AtkComponent>
       layer: widget
       alpha: 1
-      unnamed-GtkRadioButtonAccessible-3
+      unnamed-CtkRadioButtonAccessible-3
         "radio button"
         parent: stack_switcher
         index: 0
         name: About
-        member-of: unnamed-GtkRadioButtonAccessible-4
-                   unnamed-GtkRadioButtonAccessible-5
-                   unnamed-GtkRadioButtonAccessible-3
+        member-of: unnamed-CtkRadioButtonAccessible-4
+                   unnamed-CtkRadioButtonAccessible-5
+                   unnamed-CtkRadioButtonAccessible-3
         state: checked enabled focusable sensitive visible
         toolkit: ctk
         <AtkComponent>
@@ -78,14 +78,14 @@ window1
         <AtkAction>
         action 0 name: click
         action 0 description: Clicks the button
-      unnamed-GtkRadioButtonAccessible-5
+      unnamed-CtkRadioButtonAccessible-5
         "radio button"
         parent: stack_switcher
         index: 1
         name: Credits
-        member-of: unnamed-GtkRadioButtonAccessible-4
-                   unnamed-GtkRadioButtonAccessible-5
-                   unnamed-GtkRadioButtonAccessible-3
+        member-of: unnamed-CtkRadioButtonAccessible-4
+                   unnamed-CtkRadioButtonAccessible-5
+                   unnamed-CtkRadioButtonAccessible-3
         state: enabled focusable sensitive
         toolkit: ctk
         <AtkComponent>
@@ -97,14 +97,14 @@ window1
         <AtkAction>
         action 0 name: click
         action 0 description: Clicks the button
-      unnamed-GtkRadioButtonAccessible-4
+      unnamed-CtkRadioButtonAccessible-4
         "radio button"
         parent: stack_switcher
         index: 2
         name: License
-        member-of: unnamed-GtkRadioButtonAccessible-4
-                   unnamed-GtkRadioButtonAccessible-5
-                   unnamed-GtkRadioButtonAccessible-3
+        member-of: unnamed-CtkRadioButtonAccessible-4
+                   unnamed-CtkRadioButtonAccessible-5
+                   unnamed-CtkRadioButtonAccessible-3
         state: enabled focusable sensitive
         toolkit: ctk
         <AtkComponent>
@@ -328,7 +328,7 @@ window1
               start index: 0
               end index: 7
               anchors: http://www.ctk.org
-            unnamed-GtkLabelAccessibleLinkImpl-6
+            unnamed-CtkLabelAccessibleLinkImpl-6
               "link"
               parent: website_label
               state: enabled focusable focused multi-line sensitive showing visible
@@ -423,7 +423,7 @@ See the GNU General Public License, version 3 or later for details.
               start index: 56
               end index: 102
               anchors: https://www.gnu.org/licenses/gpl-3.0.html
-            unnamed-GtkLabelAccessibleLinkImpl-7
+            unnamed-CtkLabelAccessibleLinkImpl-7
               "link"
               parent: license_label
               state: enabled focusable focused multi-line sensitive showing visible

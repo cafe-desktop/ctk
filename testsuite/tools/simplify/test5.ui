@@ -1,8 +1,8 @@
 <!-- placeholders are stripped -->
 <interface>
-  <object class="GtkWindow">
+  <object class="CtkWindow">
     <child>
-      <object class="GtkBox">
+      <object class="CtkBox">
         <child>
           <placeholder/>
         </child>

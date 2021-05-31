@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkAdjustment" id="adjustment1">
+  <object class="CtkAdjustment" id="adjustment1">
     <property name="lower">0.5</property>
     <property name="upper">99.5</property>
     <property name="page-size">0</property>
@@ -9,14 +9,14 @@
     <property name="step-increment">0.5</property>
     <property name="page-increment">5.0</property>
   </object>
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkGrid" id="grid1">
+      <object class="CtkGrid" id="grid1">
         <property name="visible">True</property>
         <child>
-          <object class="GtkScale" id="scale1">
+          <object class="CtkScale" id="scale1">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="adjustment">adjustment1</property>
@@ -27,7 +27,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkScrollbar" id="scrollbar1">
+          <object class="CtkScrollbar" id="scrollbar1">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="adjustment">adjustment1</property>

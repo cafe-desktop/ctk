@@ -37,38 +37,38 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_SEARCH_ENTRY                 (ctk_search_entry_get_type ())
-#define CTK_SEARCH_ENTRY(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SEARCH_ENTRY, GtkSearchEntry))
-#define CTK_SEARCH_ENTRY_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SEARCH_ENTRY, GtkSearchEntryClass))
+#define CTK_SEARCH_ENTRY(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SEARCH_ENTRY, CtkSearchEntry))
+#define CTK_SEARCH_ENTRY_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SEARCH_ENTRY, CtkSearchEntryClass))
 #define CTK_IS_SEARCH_ENTRY(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SEARCH_ENTRY))
 #define CTK_IS_SEARCH_ENTRY_CLASS(klass)      (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SEARCH_ENTRY))
-#define CTK_SEARCH_ENTRY_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SEARCH_ENTRY, GtkSearchEntryClass))
+#define CTK_SEARCH_ENTRY_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SEARCH_ENTRY, CtkSearchEntryClass))
 
-typedef struct _GtkSearchEntry       GtkSearchEntry;
-typedef struct _GtkSearchEntryClass  GtkSearchEntryClass;
+typedef struct _CtkSearchEntry       CtkSearchEntry;
+typedef struct _CtkSearchEntryClass  CtkSearchEntryClass;
 
-struct _GtkSearchEntry
+struct _CtkSearchEntry
 {
-  GtkEntry parent;
+  CtkEntry parent;
 };
 
-struct _GtkSearchEntryClass
+struct _CtkSearchEntryClass
 {
-  GtkEntryClass parent_class;
+  CtkEntryClass parent_class;
 
-  void (*search_changed) (GtkSearchEntry *entry);
-  void (*next_match)     (GtkSearchEntry *entry);
-  void (*previous_match) (GtkSearchEntry *entry);
-  void (*stop_search)    (GtkSearchEntry *entry);
+  void (*search_changed) (CtkSearchEntry *entry);
+  void (*next_match)     (CtkSearchEntry *entry);
+  void (*previous_match) (CtkSearchEntry *entry);
+  void (*stop_search)    (CtkSearchEntry *entry);
 };
 
 GDK_AVAILABLE_IN_3_6
 GType           ctk_search_entry_get_type       (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_6
-GtkWidget*      ctk_search_entry_new            (void);
+CtkWidget*      ctk_search_entry_new            (void);
 
 GDK_AVAILABLE_IN_3_16
-gboolean        ctk_search_entry_handle_event   (GtkSearchEntry *entry,
+gboolean        ctk_search_entry_handle_event   (CtkSearchEntry *entry,
                                                  GdkEvent       *event);
 
 G_END_DECLS

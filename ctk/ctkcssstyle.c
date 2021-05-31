@@ -38,35 +38,35 @@
 #include "ctkstylepropertyprivate.h"
 #include "ctkstyleproviderprivate.h"
 
-G_DEFINE_ABSTRACT_TYPE (GtkCssStyle, ctk_css_style, G_TYPE_OBJECT)
+G_DEFINE_ABSTRACT_TYPE (CtkCssStyle, ctk_css_style, G_TYPE_OBJECT)
 
-static GtkCssSection *
-ctk_css_style_real_get_section (GtkCssStyle *style,
+static CtkCssSection *
+ctk_css_style_real_get_section (CtkCssStyle *style,
                                 guint        id)
 {
   return NULL;
 }
 
 static gboolean
-ctk_css_style_real_is_static (GtkCssStyle *style)
+ctk_css_style_real_is_static (CtkCssStyle *style)
 {
   return TRUE;
 }
 
 static void
-ctk_css_style_class_init (GtkCssStyleClass *klass)
+ctk_css_style_class_init (CtkCssStyleClass *klass)
 {
   klass->get_section = ctk_css_style_real_get_section;
   klass->is_static = ctk_css_style_real_is_static;
 }
 
 static void
-ctk_css_style_init (GtkCssStyle *style)
+ctk_css_style_init (CtkCssStyle *style)
 {
 }
 
-GtkCssValue *
-ctk_css_style_get_value (GtkCssStyle *style,
+CtkCssValue *
+ctk_css_style_get_value (CtkCssStyle *style,
                           guint        id)
 {
   ctk_internal_return_val_if_fail (CTK_IS_CSS_STYLE (style), NULL);
@@ -74,8 +74,8 @@ ctk_css_style_get_value (GtkCssStyle *style,
   return CTK_CSS_STYLE_GET_CLASS (style)->get_value (style, id);
 }
 
-GtkCssSection *
-ctk_css_style_get_section (GtkCssStyle *style,
+CtkCssSection *
+ctk_css_style_get_section (CtkCssStyle *style,
                            guint        id)
 {
   ctk_internal_return_val_if_fail (CTK_IS_CSS_STYLE (style), NULL);
@@ -83,10 +83,10 @@ ctk_css_style_get_section (GtkCssStyle *style,
   return CTK_CSS_STYLE_GET_CLASS (style)->get_section (style, id);
 }
 
-GtkBitmask *
-ctk_css_style_add_difference (GtkBitmask  *accumulated,
-                              GtkCssStyle *style,
-                              GtkCssStyle *other)
+CtkBitmask *
+ctk_css_style_add_difference (CtkBitmask  *accumulated,
+                              CtkCssStyle *style,
+                              CtkCssStyle *other)
 {
   gint len, i;
 
@@ -108,7 +108,7 @@ ctk_css_style_add_difference (GtkBitmask  *accumulated,
 }
 
 gboolean
-ctk_css_style_is_static (GtkCssStyle *style)
+ctk_css_style_is_static (CtkCssStyle *style)
 {
   ctk_internal_return_val_if_fail (CTK_IS_CSS_STYLE (style), TRUE);
 
@@ -117,7 +117,7 @@ ctk_css_style_is_static (GtkCssStyle *style)
 
 /*
  * ctk_css_style_print:
- * @style: a #GtkCssStyle
+ * @style: a #CtkCssStyle
  * @string: the #GString to print to
  * @indent: level of indentation to use
  * @skip_initial: %TRUE to skip properties that have their initial value
@@ -130,7 +130,7 @@ ctk_css_style_is_static (GtkCssStyle *style)
  * Returns: %TRUE is any properties have been printed
  */
 gboolean
-ctk_css_style_print (GtkCssStyle *style,
+ctk_css_style_print (CtkCssStyle *style,
                      GString     *string,
                      guint        indent,
                      gboolean     skip_initial)
@@ -143,9 +143,9 @@ ctk_css_style_print (GtkCssStyle *style,
 
   for (i = 0; i < _ctk_css_style_property_get_n_properties (); i++)
     {
-      GtkCssSection *section;
-      GtkCssStyleProperty *prop;
-      GtkCssValue *value;
+      CtkCssSection *section;
+      CtkCssStyleProperty *prop;
+      CtkCssValue *value;
       const char *name;
 
       section = ctk_css_style_get_section (style, i);
@@ -176,7 +176,7 @@ ctk_css_style_print (GtkCssStyle *style,
 }
 
 char *
-ctk_css_style_to_string (GtkCssStyle *style)
+ctk_css_style_to_string (CtkCssStyle *style)
 {
   GString *string;
 
@@ -190,7 +190,7 @@ ctk_css_style_to_string (GtkCssStyle *style)
 }
 
 static PangoUnderline
-get_pango_underline_from_style (GtkTextDecorationStyle style)
+get_pango_underline_from_style (CtkTextDecorationStyle style)
 {
   switch (style)
     {
@@ -219,11 +219,11 @@ add_pango_attr (PangoAttrList  *attrs,
 }
 
 PangoAttrList *
-ctk_css_style_get_pango_attributes (GtkCssStyle *style)
+ctk_css_style_get_pango_attributes (CtkCssStyle *style)
 {
   PangoAttrList *attrs = NULL;
-  GtkTextDecorationLine decoration_line;
-  GtkTextDecorationStyle decoration_style;
+  CtkTextDecorationLine decoration_line;
+  CtkTextDecorationStyle decoration_style;
   const GdkRGBA *color;
   const GdkRGBA *decoration_color;
   gint letter_spacing;
@@ -273,7 +273,7 @@ ctk_css_style_get_pango_attributes (GtkCssStyle *style)
   return attrs;
 }
 
-static GtkCssValue *
+static CtkCssValue *
 query_func (guint    id,
             gpointer values)
 {
@@ -281,9 +281,9 @@ query_func (guint    id,
 }
 
 PangoFontDescription *
-ctk_css_style_get_pango_font (GtkCssStyle *style)
+ctk_css_style_get_pango_font (CtkCssStyle *style)
 {
-  GtkStyleProperty *prop;
+  CtkStyleProperty *prop;
   GValue value = { 0, };
 
   prop = _ctk_style_property_lookup ("font");

@@ -29,15 +29,15 @@
 #define QUARTZ_POOL_ALLOC NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init]
 #define QUARTZ_POOL_RELEASE [pool release]
 
-@interface GtkQuartzStatusIcon : NSObject 
+@interface CtkQuartzStatusIcon : NSObject 
 {
-  GtkStatusIcon *status_icon;
+  CtkStatusIcon *status_icon;
   NSStatusBar   *ns_bar;
   NSStatusItem  *ns_item;
   NSImage       *current_image;
   NSString      *ns_tooltip;
 }
-- (id) initWithStatusIcon:(GtkStatusIcon *)status_icon;
+- (id) initWithStatusIcon:(CtkStatusIcon *)status_icon;
 - (void) ensureItem;
 - (void) actionCb:(NSObject *)button;
 - (void) setImage:(GdkPixbuf *)pixbuf;
@@ -47,8 +47,8 @@
 - (float) getHeight;
 @end
 
-@implementation GtkQuartzStatusIcon : NSObject
-- (id) initWithStatusIcon:(GtkStatusIcon *)icon
+@implementation CtkQuartzStatusIcon : NSObject
+- (id) initWithStatusIcon:(CtkStatusIcon *)icon
 {
   [super init];
   status_icon = icon;

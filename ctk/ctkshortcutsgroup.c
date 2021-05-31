@@ -29,35 +29,35 @@
 
 /**
  * SECTION:ctkshortcutsgroup
- * @Title: GtkShortcutsGroup
- * @Short_description: Represents a group of shortcuts in a GtkShortcutsWindow
+ * @Title: CtkShortcutsGroup
+ * @Short_description: Represents a group of shortcuts in a CtkShortcutsWindow
  *
- * A GtkShortcutsGroup represents a group of related keyboard shortcuts
+ * A CtkShortcutsGroup represents a group of related keyboard shortcuts
  * or gestures. The group has a title. It may optionally be associated with
  * a view of the application, which can be used to show only relevant shortcuts
  * depending on the application context.
  *
- * This widget is only meant to be used with #GtkShortcutsWindow.
+ * This widget is only meant to be used with #CtkShortcutsWindow.
  */
 
-struct _GtkShortcutsGroup
+struct _CtkShortcutsGroup
 {
-  GtkBox    parent_instance;
+  CtkBox    parent_instance;
 
-  GtkLabel *title;
+  CtkLabel *title;
   gchar    *view;
   guint     height;
 
-  GtkSizeGroup *accel_size_group;
-  GtkSizeGroup *title_size_group;
+  CtkSizeGroup *accel_size_group;
+  CtkSizeGroup *title_size_group;
 };
 
-struct _GtkShortcutsGroupClass
+struct _CtkShortcutsGroupClass
 {
-  GtkBoxClass parent_class;
+  CtkBoxClass parent_class;
 };
 
-G_DEFINE_TYPE (GtkShortcutsGroup, ctk_shortcuts_group, CTK_TYPE_BOX)
+G_DEFINE_TYPE (CtkShortcutsGroup, ctk_shortcuts_group, CTK_TYPE_BOX)
 
 enum {
   PROP_0,
@@ -72,24 +72,24 @@ enum {
 static GParamSpec *properties[LAST_PROP];
 
 static void
-ctk_shortcuts_group_apply_accel_size_group (GtkShortcutsGroup *group,
-                                            GtkWidget         *child)
+ctk_shortcuts_group_apply_accel_size_group (CtkShortcutsGroup *group,
+                                            CtkWidget         *child)
 {
   if (CTK_IS_SHORTCUTS_SHORTCUT (child))
     g_object_set (child, "accel-size-group", group->accel_size_group, NULL);
 }
 
 static void
-ctk_shortcuts_group_apply_title_size_group (GtkShortcutsGroup *group,
-                                            GtkWidget         *child)
+ctk_shortcuts_group_apply_title_size_group (CtkShortcutsGroup *group,
+                                            CtkWidget         *child)
 {
   if (CTK_IS_SHORTCUTS_SHORTCUT (child))
     g_object_set (child, "title-size-group", group->title_size_group, NULL);
 }
 
 static void
-ctk_shortcuts_group_set_accel_size_group (GtkShortcutsGroup *group,
-                                          GtkSizeGroup      *size_group)
+ctk_shortcuts_group_set_accel_size_group (CtkShortcutsGroup *group,
+                                          CtkSizeGroup      *size_group)
 {
   GList *children, *l;
 
@@ -102,8 +102,8 @@ ctk_shortcuts_group_set_accel_size_group (GtkShortcutsGroup *group,
 }
 
 static void
-ctk_shortcuts_group_set_title_size_group (GtkShortcutsGroup *group,
-                                          GtkSizeGroup      *size_group)
+ctk_shortcuts_group_set_title_size_group (CtkShortcutsGroup *group,
+                                          CtkSizeGroup      *size_group)
 {
   GList *children, *l;
 
@@ -116,7 +116,7 @@ ctk_shortcuts_group_set_title_size_group (GtkShortcutsGroup *group,
 }
 
 static guint
-ctk_shortcuts_group_get_height (GtkShortcutsGroup *group)
+ctk_shortcuts_group_get_height (CtkShortcutsGroup *group)
 {
   GList *children, *l;
   guint height;
@@ -126,7 +126,7 @@ ctk_shortcuts_group_get_height (GtkShortcutsGroup *group)
   children = ctk_container_get_children (CTK_CONTAINER (group));
   for (l = children; l; l = l->next)
     {
-      GtkWidget *child = l->data;
+      CtkWidget *child = l->data;
 
       if (!ctk_widget_get_visible (child))
         continue;
@@ -139,8 +139,8 @@ ctk_shortcuts_group_get_height (GtkShortcutsGroup *group)
 }
 
 static void
-ctk_shortcuts_group_add (GtkContainer *container,
-                         GtkWidget    *widget)
+ctk_shortcuts_group_add (CtkContainer *container,
+                         CtkWidget    *widget)
 {
   if (CTK_IS_SHORTCUTS_SHORTCUT (widget))
     {
@@ -155,26 +155,26 @@ ctk_shortcuts_group_add (GtkContainer *container,
 }
 
 typedef struct {
-  GtkCallback callback;
+  CtkCallback callback;
   gpointer data;
   gboolean include_internal;
 } CallbackData;
 
 static void
-forall_cb (GtkWidget *widget, gpointer data)
+forall_cb (CtkWidget *widget, gpointer data)
 {
-  GtkShortcutsGroup *self;
+  CtkShortcutsGroup *self;
   CallbackData *cbdata = data;
 
   self = CTK_SHORTCUTS_GROUP (ctk_widget_get_parent (widget));
-  if (cbdata->include_internal || widget != (GtkWidget*)self->title)
+  if (cbdata->include_internal || widget != (CtkWidget*)self->title)
     cbdata->callback (widget, cbdata->data);
 }
 
 static void
-ctk_shortcuts_group_forall (GtkContainer *container,
+ctk_shortcuts_group_forall (CtkContainer *container,
                             gboolean      include_internal,
-                            GtkCallback   callback,
+                            CtkCallback   callback,
                             gpointer      callback_data)
 {
   CallbackData cbdata;
@@ -192,7 +192,7 @@ ctk_shortcuts_group_get_property (GObject    *object,
                                   GValue     *value,
                                   GParamSpec *pspec)
 {
-  GtkShortcutsGroup *self = CTK_SHORTCUTS_GROUP (object);
+  CtkShortcutsGroup *self = CTK_SHORTCUTS_GROUP (object);
 
   switch (prop_id)
     {
@@ -214,8 +214,8 @@ ctk_shortcuts_group_get_property (GObject    *object,
 }
 
 static void
-ctk_shortcuts_group_direction_changed (GtkWidget        *widget,
-                                       GtkTextDirection  previous_dir)
+ctk_shortcuts_group_direction_changed (CtkWidget        *widget,
+                                       CtkTextDirection  previous_dir)
 {
   CTK_WIDGET_CLASS (ctk_shortcuts_group_parent_class)->direction_changed (widget, previous_dir);
   g_object_notify (G_OBJECT (widget), "height");
@@ -227,7 +227,7 @@ ctk_shortcuts_group_set_property (GObject      *object,
                                   const GValue *value,
                                   GParamSpec   *pspec)
 {
-  GtkShortcutsGroup *self = CTK_SHORTCUTS_GROUP (object);
+  CtkShortcutsGroup *self = CTK_SHORTCUTS_GROUP (object);
 
   switch (prop_id)
     {
@@ -256,7 +256,7 @@ ctk_shortcuts_group_set_property (GObject      *object,
 static void
 ctk_shortcuts_group_finalize (GObject *object)
 {
-  GtkShortcutsGroup *self = CTK_SHORTCUTS_GROUP (object);
+  CtkShortcutsGroup *self = CTK_SHORTCUTS_GROUP (object);
 
   g_free (self->view);
   g_set_object (&self->accel_size_group, NULL);
@@ -268,7 +268,7 @@ ctk_shortcuts_group_finalize (GObject *object)
 static void
 ctk_shortcuts_group_dispose (GObject *object)
 {
-  GtkShortcutsGroup *self = CTK_SHORTCUTS_GROUP (object);
+  CtkShortcutsGroup *self = CTK_SHORTCUTS_GROUP (object);
 
   /*
    * Since we overload forall(), the inherited destroy() won't work as normal.
@@ -284,11 +284,11 @@ ctk_shortcuts_group_dispose (GObject *object)
 }
 
 static void
-ctk_shortcuts_group_class_init (GtkShortcutsGroupClass *klass)
+ctk_shortcuts_group_class_init (CtkShortcutsGroupClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
-  GtkContainerClass *container_class = CTK_CONTAINER_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkContainerClass *container_class = CTK_CONTAINER_CLASS (klass);
 
   object_class->finalize = ctk_shortcuts_group_finalize;
   object_class->get_property = ctk_shortcuts_group_get_property;
@@ -300,7 +300,7 @@ ctk_shortcuts_group_class_init (GtkShortcutsGroupClass *klass)
   container_class->forall = ctk_shortcuts_group_forall;
 
   /**
-   * GtkShortcutsGroup:title:
+   * CtkShortcutsGroup:title:
    *
    * The title for this group of shortcuts.
    */
@@ -310,10 +310,10 @@ ctk_shortcuts_group_class_init (GtkShortcutsGroupClass *klass)
                          (G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
   /**
-   * GtkShortcutsGroup:view:
+   * CtkShortcutsGroup:view:
    *
    * An optional view that the shortcuts in this group are relevant for.
-   * The group will be hidden if the #GtkShortcutsWindow:view-name property
+   * The group will be hidden if the #CtkShortcutsWindow:view-name property
    * does not match the view of this group.
    *
    * Set this to %NULL to make the group always visible.
@@ -324,7 +324,7 @@ ctk_shortcuts_group_class_init (GtkShortcutsGroupClass *klass)
                          (G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
   /**
-   * GtkShortcutsGroup:accel-size-group:
+   * CtkShortcutsGroup:accel-size-group:
    *
    * The size group for the accelerator portion of shortcuts in this group.
    *
@@ -338,7 +338,7 @@ ctk_shortcuts_group_class_init (GtkShortcutsGroupClass *klass)
                          (G_PARAM_WRITABLE | G_PARAM_STATIC_STRINGS));
 
   /**
-   * GtkShortcutsGroup:title-size-group:
+   * CtkShortcutsGroup:title-size-group:
    *
    * The size group for the textual portion of shortcuts in this group.
    *
@@ -352,7 +352,7 @@ ctk_shortcuts_group_class_init (GtkShortcutsGroupClass *klass)
                          (G_PARAM_WRITABLE | G_PARAM_STATIC_STRINGS));
 
   /**
-   * GtkShortcutsGroup:height:
+   * CtkShortcutsGroup:height:
    *
    * A rough measure for the number of lines in this group.
    *
@@ -367,7 +367,7 @@ ctk_shortcuts_group_class_init (GtkShortcutsGroupClass *klass)
 }
 
 static void
-ctk_shortcuts_group_init (GtkShortcutsGroup *self)
+ctk_shortcuts_group_init (CtkShortcutsGroup *self)
 {
   PangoAttrList *attrs;
 

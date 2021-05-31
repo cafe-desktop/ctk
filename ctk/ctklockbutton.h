@@ -25,30 +25,30 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_LOCK_BUTTON         (ctk_lock_button_get_type ())
-#define CTK_LOCK_BUTTON(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_LOCK_BUTTON, GtkLockButton))
-#define CTK_LOCK_BUTTON_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_LOCK_BUTTON,  GtkLockButtonClass))
+#define CTK_LOCK_BUTTON(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_LOCK_BUTTON, CtkLockButton))
+#define CTK_LOCK_BUTTON_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_LOCK_BUTTON,  CtkLockButtonClass))
 #define CTK_IS_LOCK_BUTTON(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_LOCK_BUTTON))
 #define CTK_IS_LOCK_BUTTON_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), CTK_TYPE_LOCK_BUTTON))
-#define CTK_LOCK_BUTTON_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_LOCK_BUTTON, GtkLockButtonClass))
+#define CTK_LOCK_BUTTON_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_LOCK_BUTTON, CtkLockButtonClass))
 
-typedef struct _GtkLockButton        GtkLockButton;
-typedef struct _GtkLockButtonClass   GtkLockButtonClass;
-typedef struct _GtkLockButtonPrivate GtkLockButtonPrivate;
+typedef struct _CtkLockButton        CtkLockButton;
+typedef struct _CtkLockButtonClass   CtkLockButtonClass;
+typedef struct _CtkLockButtonPrivate CtkLockButtonPrivate;
 
-struct _GtkLockButton
+struct _CtkLockButton
 {
-  GtkButton parent;
+  CtkButton parent;
 
-  GtkLockButtonPrivate *priv;
+  CtkLockButtonPrivate *priv;
 };
 
 /**
- * GtkLockButtonClass:
+ * CtkLockButtonClass:
  * @parent_class: The parent class.
  */
-struct _GtkLockButtonClass
+struct _CtkLockButtonClass
 {
-  GtkButtonClass parent_class;
+  CtkButtonClass parent_class;
 
   /*< private >*/
 
@@ -65,11 +65,11 @@ struct _GtkLockButtonClass
 GDK_AVAILABLE_IN_3_2
 GType        ctk_lock_button_get_type       (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_3_2
-GtkWidget   *ctk_lock_button_new            (GPermission   *permission);
+CtkWidget   *ctk_lock_button_new            (GPermission   *permission);
 GDK_AVAILABLE_IN_3_2
-GPermission *ctk_lock_button_get_permission (GtkLockButton *button);
+GPermission *ctk_lock_button_get_permission (CtkLockButton *button);
 GDK_AVAILABLE_IN_3_2
-void         ctk_lock_button_set_permission (GtkLockButton *button,
+void         ctk_lock_button_set_permission (CtkLockButton *button,
                                              GPermission   *permission);
 
 

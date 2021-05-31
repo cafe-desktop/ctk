@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkBox" id="box1">
+      <object class="CtkBox" id="box1">
         <child>
-          <object class="GtkLabel" id="label1">
+          <object class="CtkLabel" id="label1">
             <property name="label" translatable="yes">_Entry:</property>
             <property name="visible">True</property>
             <property name="use_underline">True</property>
@@ -15,7 +15,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkEntry" id="entry1">
+          <object class="CtkEntry" id="entry1">
             <property name="text" translatable="yes">text</property>
             <property name="visible">True</property>
           </object>

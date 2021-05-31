@@ -34,31 +34,31 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_HSEPARATOR                  (ctk_hseparator_get_type ())
-#define CTK_HSEPARATOR(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_HSEPARATOR, GtkHSeparator))
-#define CTK_HSEPARATOR_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_HSEPARATOR, GtkHSeparatorClass))
+#define CTK_HSEPARATOR(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_HSEPARATOR, CtkHSeparator))
+#define CTK_HSEPARATOR_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_HSEPARATOR, CtkHSeparatorClass))
 #define CTK_IS_HSEPARATOR(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_HSEPARATOR))
 #define CTK_IS_HSEPARATOR_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_HSEPARATOR))
-#define CTK_HSEPARATOR_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_HSEPARATOR, GtkHSeparatorClass))
+#define CTK_HSEPARATOR_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_HSEPARATOR, CtkHSeparatorClass))
 
 
-typedef struct _GtkHSeparator       GtkHSeparator;
-typedef struct _GtkHSeparatorClass  GtkHSeparatorClass;
+typedef struct _CtkHSeparator       CtkHSeparator;
+typedef struct _CtkHSeparatorClass  CtkHSeparatorClass;
 
-struct _GtkHSeparator
+struct _CtkHSeparator
 {
-  GtkSeparator separator;
+  CtkSeparator separator;
 };
 
-struct _GtkHSeparatorClass
+struct _CtkHSeparatorClass
 {
-  GtkSeparatorClass parent_class;
+  CtkSeparatorClass parent_class;
 };
 
 
 GDK_DEPRECATED_IN_3_2
 GType      ctk_hseparator_get_type (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_2_FOR(ctk_separator_new)
-GtkWidget* ctk_hseparator_new      (void);
+CtkWidget* ctk_hseparator_new      (void);
 
 G_END_DECLS
 

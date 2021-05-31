@@ -27,26 +27,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_RADIO_BUTTON_ACCESSIBLE               (ctk_radio_button_accessible_get_type ())
-#define CTK_RADIO_BUTTON_ACCESSIBLE(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RADIO_BUTTON_ACCESSIBLE, GtkRadioButtonAccessible))
-#define CTK_RADIO_BUTTON_ACCESSIBLE_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RADIO_BUTTON_ACCESSIBLE, GtkRadioButtonAccessibleClass))
+#define CTK_RADIO_BUTTON_ACCESSIBLE(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RADIO_BUTTON_ACCESSIBLE, CtkRadioButtonAccessible))
+#define CTK_RADIO_BUTTON_ACCESSIBLE_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RADIO_BUTTON_ACCESSIBLE, CtkRadioButtonAccessibleClass))
 #define CTK_IS_RADIO_BUTTON_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_RADIO_BUTTON_ACCESSIBLE))
 #define CTK_IS_RADIO_BUTTON_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_RADIO_BUTTON_ACCESSIBLE))
-#define CTK_RADIO_BUTTON_ACCESSIBLE_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_RADIO_BUTTON_ACCESSIBLE, GtkRadioButtonAccessibleClass))
+#define CTK_RADIO_BUTTON_ACCESSIBLE_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_RADIO_BUTTON_ACCESSIBLE, CtkRadioButtonAccessibleClass))
 
-typedef struct _GtkRadioButtonAccessible        GtkRadioButtonAccessible;
-typedef struct _GtkRadioButtonAccessibleClass   GtkRadioButtonAccessibleClass;
-typedef struct _GtkRadioButtonAccessiblePrivate GtkRadioButtonAccessiblePrivate;
+typedef struct _CtkRadioButtonAccessible        CtkRadioButtonAccessible;
+typedef struct _CtkRadioButtonAccessibleClass   CtkRadioButtonAccessibleClass;
+typedef struct _CtkRadioButtonAccessiblePrivate CtkRadioButtonAccessiblePrivate;
 
-struct _GtkRadioButtonAccessible
+struct _CtkRadioButtonAccessible
 {
-  GtkToggleButtonAccessible parent;
+  CtkToggleButtonAccessible parent;
 
-  GtkRadioButtonAccessiblePrivate *priv;
+  CtkRadioButtonAccessiblePrivate *priv;
 };
 
-struct _GtkRadioButtonAccessibleClass
+struct _CtkRadioButtonAccessibleClass
 {
-  GtkToggleButtonAccessibleClass parent_class;
+  CtkToggleButtonAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

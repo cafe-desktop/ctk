@@ -26,16 +26,16 @@
  * SECTION:ctkfixed
  * @Short_description: A container which allows you to position
  * widgets at fixed coordinates
- * @Title: GtkFixed
- * @See_also: #GtkLayout
+ * @Title: CtkFixed
+ * @See_also: #CtkLayout
  *
- * The #GtkFixed widget is a container which can place child widgets
- * at fixed positions and with fixed sizes, given in pixels. #GtkFixed
+ * The #CtkFixed widget is a container which can place child widgets
+ * at fixed positions and with fixed sizes, given in pixels. #CtkFixed
  * performs no automatic layout management.
  *
  * For most applications, you should not use this container! It keeps
  * you from having to learn about the other GTK+ containers, but it
- * results in broken applications.  With #GtkFixed, the following
+ * results in broken applications.  With #CtkFixed, the following
  * things will result in truncated text, overlapping widgets, and
  * other display bugs:
  *
@@ -50,12 +50,12 @@
  *   display of non-English text will use a different font in many
  *   cases.
  *
- * In addition, #GtkFixed does not pay attention to text direction and thus may
+ * In addition, #CtkFixed does not pay attention to text direction and thus may
  * produce unwanted results if your app is run under right-to-left languages
  * such as Hebrew or Arabic. That is: normally GTK+ will order containers
  * appropriately for the text direction, e.g. to put labels to the right of the
  * thing they label when using an RTL language, but it can’t do that with
- * #GtkFixed. So if you need to reorder widgets depending on the text direction,
+ * #CtkFixed. So if you need to reorder widgets depending on the text direction,
  * you would need to manually detect it and adjust child positions accordingly.
  *
  * Finally, fixed positioning makes it kind of annoying to add/remove
@@ -64,10 +64,10 @@
  * application.
  *
  * If you know none of these things are an issue for your application,
- * and prefer the simplicity of #GtkFixed, by all means use the
+ * and prefer the simplicity of #CtkFixed, by all means use the
  * widget. But you should be aware of the tradeoffs.
  *
- * See also #GtkLayout, which shares the ability to perform fixed positioning
+ * See also #CtkLayout, which shares the ability to perform fixed positioning
  * of child widgets and additionally adds custom drawing and scrollability.
  */
 
@@ -80,7 +80,7 @@
 #include "ctkintl.h"
 
 
-struct _GtkFixedPrivate
+struct _CtkFixedPrivate
 {
   GList *children;
 };
@@ -91,49 +91,49 @@ enum {
   CHILD_PROP_Y
 };
 
-static void ctk_fixed_realize       (GtkWidget        *widget);
-static void ctk_fixed_get_preferred_width  (GtkWidget *widget,
+static void ctk_fixed_realize       (CtkWidget        *widget);
+static void ctk_fixed_get_preferred_width  (CtkWidget *widget,
                                             gint      *minimum,
                                             gint      *natural);
-static void ctk_fixed_get_preferred_height (GtkWidget *widget,
+static void ctk_fixed_get_preferred_height (CtkWidget *widget,
                                             gint      *minimum,
                                             gint      *natural);
-static void ctk_fixed_size_allocate (GtkWidget        *widget,
-                                     GtkAllocation    *allocation);
-static void ctk_fixed_style_updated (GtkWidget        *widget);
-static gboolean ctk_fixed_draw      (GtkWidget        *widget,
+static void ctk_fixed_size_allocate (CtkWidget        *widget,
+                                     CtkAllocation    *allocation);
+static void ctk_fixed_style_updated (CtkWidget        *widget);
+static gboolean ctk_fixed_draw      (CtkWidget        *widget,
                                      cairo_t          *cr);
-static void ctk_fixed_add           (GtkContainer     *container,
-                                     GtkWidget        *widget);
-static void ctk_fixed_remove        (GtkContainer     *container,
-                                     GtkWidget        *widget);
-static void ctk_fixed_forall        (GtkContainer     *container,
+static void ctk_fixed_add           (CtkContainer     *container,
+                                     CtkWidget        *widget);
+static void ctk_fixed_remove        (CtkContainer     *container,
+                                     CtkWidget        *widget);
+static void ctk_fixed_forall        (CtkContainer     *container,
                                      gboolean          include_internals,
-                                     GtkCallback       callback,
+                                     CtkCallback       callback,
                                      gpointer          callback_data);
-static GType ctk_fixed_child_type   (GtkContainer     *container);
+static GType ctk_fixed_child_type   (CtkContainer     *container);
 
-static void ctk_fixed_set_child_property (GtkContainer *container,
-                                          GtkWidget    *child,
+static void ctk_fixed_set_child_property (CtkContainer *container,
+                                          CtkWidget    *child,
                                           guint         property_id,
                                           const GValue *value,
                                           GParamSpec   *pspec);
-static void ctk_fixed_get_child_property (GtkContainer *container,
-                                          GtkWidget    *child,
+static void ctk_fixed_get_child_property (CtkContainer *container,
+                                          CtkWidget    *child,
                                           guint         property_id,
                                           GValue       *value,
                                           GParamSpec   *pspec);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkFixed, ctk_fixed, CTK_TYPE_CONTAINER)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkFixed, ctk_fixed, CTK_TYPE_CONTAINER)
 
 static void
-ctk_fixed_class_init (GtkFixedClass *class)
+ctk_fixed_class_init (CtkFixedClass *class)
 {
-  GtkWidgetClass *widget_class;
-  GtkContainerClass *container_class;
+  CtkWidgetClass *widget_class;
+  CtkContainerClass *container_class;
 
-  widget_class = (GtkWidgetClass*) class;
-  container_class = (GtkContainerClass*) class;
+  widget_class = (CtkWidgetClass*) class;
+  container_class = (CtkContainerClass*) class;
 
   widget_class->realize = ctk_fixed_realize;
   widget_class->get_preferred_width = ctk_fixed_get_preferred_width;
@@ -168,13 +168,13 @@ ctk_fixed_class_init (GtkFixedClass *class)
 }
 
 static GType
-ctk_fixed_child_type (GtkContainer *container)
+ctk_fixed_child_type (CtkContainer *container)
 {
   return CTK_TYPE_WIDGET;
 }
 
 static void
-ctk_fixed_init (GtkFixed *fixed)
+ctk_fixed_init (CtkFixed *fixed)
 {
   fixed->priv = ctk_fixed_get_instance_private (fixed);
 
@@ -186,26 +186,26 @@ ctk_fixed_init (GtkFixed *fixed)
 /**
  * ctk_fixed_new:
  *
- * Creates a new #GtkFixed.
+ * Creates a new #CtkFixed.
  *
- * Returns: a new #GtkFixed.
+ * Returns: a new #CtkFixed.
  */
-GtkWidget*
+CtkWidget*
 ctk_fixed_new (void)
 {
   return g_object_new (CTK_TYPE_FIXED, NULL);
 }
 
-static GtkFixedChild*
-get_child (GtkFixed  *fixed,
-           GtkWidget *widget)
+static CtkFixedChild*
+get_child (CtkFixed  *fixed,
+           CtkWidget *widget)
 {
-  GtkFixedPrivate *priv = fixed->priv;
+  CtkFixedPrivate *priv = fixed->priv;
   GList *children;
 
   for (children = priv->children; children; children = children->next)
     {
-      GtkFixedChild *child;
+      CtkFixedChild *child;
 
       child = children->data;
 
@@ -218,21 +218,21 @@ get_child (GtkFixed  *fixed,
 
 /**
  * ctk_fixed_put:
- * @fixed: a #GtkFixed.
+ * @fixed: a #CtkFixed.
  * @widget: the widget to add.
  * @x: the horizontal position to place the widget at.
  * @y: the vertical position to place the widget at.
  *
- * Adds a widget to a #GtkFixed container at the given position.
+ * Adds a widget to a #CtkFixed container at the given position.
  */
 void
-ctk_fixed_put (GtkFixed  *fixed,
-               GtkWidget *widget,
+ctk_fixed_put (CtkFixed  *fixed,
+               CtkWidget *widget,
                gint       x,
                gint       y)
 {
-  GtkFixedPrivate *priv;
-  GtkFixedChild *child_info;
+  CtkFixedPrivate *priv;
+  CtkFixedChild *child_info;
 
   g_return_if_fail (CTK_IS_FIXED (fixed));
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -240,7 +240,7 @@ ctk_fixed_put (GtkFixed  *fixed,
 
   priv = fixed->priv;
 
-  child_info = g_new (GtkFixedChild, 1);
+  child_info = g_new (CtkFixedChild, 1);
   child_info->widget = widget;
   child_info->x = x;
   child_info->y = y;
@@ -251,8 +251,8 @@ ctk_fixed_put (GtkFixed  *fixed,
 }
 
 static void
-ctk_fixed_move_internal (GtkFixed      *fixed,
-                         GtkFixedChild *child,
+ctk_fixed_move_internal (CtkFixed      *fixed,
+                         CtkFixedChild *child,
                          gint           x,
                          gint           y)
 {
@@ -282,16 +282,16 @@ ctk_fixed_move_internal (GtkFixed      *fixed,
 
 /**
  * ctk_fixed_move:
- * @fixed: a #GtkFixed.
+ * @fixed: a #CtkFixed.
  * @widget: the child widget.
  * @x: the horizontal position to move the widget to.
  * @y: the vertical position to move the widget to.
  *
- * Moves a child of a #GtkFixed container to the given position.
+ * Moves a child of a #CtkFixed container to the given position.
  */
 void
-ctk_fixed_move (GtkFixed  *fixed,
-                GtkWidget *widget,
+ctk_fixed_move (CtkFixed  *fixed,
+                CtkWidget *widget,
                 gint       x,
                 gint       y)
 {
@@ -299,14 +299,14 @@ ctk_fixed_move (GtkFixed  *fixed,
 }
 
 static void
-ctk_fixed_set_child_property (GtkContainer *container,
-                              GtkWidget    *child,
+ctk_fixed_set_child_property (CtkContainer *container,
+                              CtkWidget    *child,
                               guint         property_id,
                               const GValue *value,
                               GParamSpec   *pspec)
 {
-  GtkFixed *fixed = CTK_FIXED (container);
-  GtkFixedChild *fixed_child;
+  CtkFixed *fixed = CTK_FIXED (container);
+  CtkFixedChild *fixed_child;
 
   fixed_child = get_child (fixed, child);
 
@@ -331,13 +331,13 @@ ctk_fixed_set_child_property (GtkContainer *container,
 }
 
 static void
-ctk_fixed_get_child_property (GtkContainer *container,
-                              GtkWidget    *child,
+ctk_fixed_get_child_property (CtkContainer *container,
+                              CtkWidget    *child,
                               guint         property_id,
                               GValue       *value,
                               GParamSpec   *pspec)
 {
-  GtkFixedChild *fixed_child;
+  CtkFixedChild *fixed_child;
 
   fixed_child = get_child (CTK_FIXED (container), child);
   
@@ -356,12 +356,12 @@ ctk_fixed_get_child_property (GtkContainer *container,
 }
 
 static void
-set_background (GtkWidget *widget)
+set_background (CtkWidget *widget)
 {
   if (ctk_widget_get_realized (widget))
     {
       /* We still need to call ctk_style_context_set_background() here for
-       * GtkFixed, since subclasses like EmacsFixed depend on the X window
+       * CtkFixed, since subclasses like EmacsFixed depend on the X window
        * background to be set.
        * This should be revisited next time we have a major API break.
        */
@@ -373,7 +373,7 @@ set_background (GtkWidget *widget)
 }
 
 static void
-ctk_fixed_style_updated (GtkWidget *widget)
+ctk_fixed_style_updated (CtkWidget *widget)
 {
   CTK_WIDGET_CLASS (ctk_fixed_parent_class)->style_updated (widget);
 
@@ -381,9 +381,9 @@ ctk_fixed_style_updated (GtkWidget *widget)
 }
 
 static void
-ctk_fixed_realize (GtkWidget *widget)
+ctk_fixed_realize (CtkWidget *widget)
 {
-  GtkAllocation allocation;
+  CtkAllocation allocation;
   GdkWindow *window;
   GdkWindowAttr attributes;
   gint attributes_mask;
@@ -418,13 +418,13 @@ ctk_fixed_realize (GtkWidget *widget)
 }
 
 static void
-ctk_fixed_get_preferred_width (GtkWidget *widget,
+ctk_fixed_get_preferred_width (CtkWidget *widget,
                                gint      *minimum,
                                gint      *natural)
 {
-  GtkFixed *fixed = CTK_FIXED (widget);
-  GtkFixedPrivate *priv = fixed->priv;
-  GtkFixedChild *child;
+  CtkFixed *fixed = CTK_FIXED (widget);
+  CtkFixedPrivate *priv = fixed->priv;
+  CtkFixedChild *child;
   GList *children;
   gint child_min, child_nat;
 
@@ -446,13 +446,13 @@ ctk_fixed_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-ctk_fixed_get_preferred_height (GtkWidget *widget,
+ctk_fixed_get_preferred_height (CtkWidget *widget,
                                 gint      *minimum,
                                 gint      *natural)
 {
-  GtkFixed *fixed = CTK_FIXED (widget);
-  GtkFixedPrivate *priv = fixed->priv;
-  GtkFixedChild *child;
+  CtkFixed *fixed = CTK_FIXED (widget);
+  CtkFixedPrivate *priv = fixed->priv;
+  CtkFixedChild *child;
   GList *children;
   gint child_min, child_nat;
 
@@ -474,14 +474,14 @@ ctk_fixed_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-ctk_fixed_size_allocate (GtkWidget     *widget,
-                         GtkAllocation *allocation)
+ctk_fixed_size_allocate (CtkWidget     *widget,
+                         CtkAllocation *allocation)
 {
-  GtkFixed *fixed = CTK_FIXED (widget);
-  GtkFixedPrivate *priv = fixed->priv;
-  GtkFixedChild *child;
-  GtkAllocation child_allocation;
-  GtkRequisition child_requisition;
+  CtkFixed *fixed = CTK_FIXED (widget);
+  CtkFixedPrivate *priv = fixed->priv;
+  CtkFixedChild *child;
+  CtkAllocation child_allocation;
+  CtkRequisition child_requisition;
   GList *children;
 
   ctk_widget_set_allocation (widget, allocation);
@@ -520,20 +520,20 @@ ctk_fixed_size_allocate (GtkWidget     *widget,
 }
 
 static void
-ctk_fixed_add (GtkContainer *container,
-               GtkWidget    *widget)
+ctk_fixed_add (CtkContainer *container,
+               CtkWidget    *widget)
 {
   ctk_fixed_put (CTK_FIXED (container), widget, 0, 0);
 }
 
 static void
-ctk_fixed_remove (GtkContainer *container,
-                  GtkWidget    *widget)
+ctk_fixed_remove (CtkContainer *container,
+                  CtkWidget    *widget)
 {
-  GtkFixed *fixed = CTK_FIXED (container);
-  GtkFixedPrivate *priv = fixed->priv;
-  GtkFixedChild *child;
-  GtkWidget *widget_container = CTK_WIDGET (container);
+  CtkFixed *fixed = CTK_FIXED (container);
+  CtkFixedPrivate *priv = fixed->priv;
+  CtkFixedChild *child;
+  CtkWidget *widget_container = CTK_WIDGET (container);
   GList *children;
 
   for (children = priv->children; children; children = children->next)
@@ -559,14 +559,14 @@ ctk_fixed_remove (GtkContainer *container,
 }
 
 static void
-ctk_fixed_forall (GtkContainer *container,
+ctk_fixed_forall (CtkContainer *container,
                   gboolean      include_internals,
-                  GtkCallback   callback,
+                  CtkCallback   callback,
                   gpointer      callback_data)
 {
-  GtkFixed *fixed = CTK_FIXED (container);
-  GtkFixedPrivate *priv = fixed->priv;
-  GtkFixedChild *child;
+  CtkFixed *fixed = CTK_FIXED (container);
+  CtkFixedPrivate *priv = fixed->priv;
+  CtkFixedChild *child;
   GList *children;
 
   children = priv->children;
@@ -580,12 +580,12 @@ ctk_fixed_forall (GtkContainer *container,
 }
 
 static gboolean
-ctk_fixed_draw (GtkWidget *widget,
+ctk_fixed_draw (CtkWidget *widget,
                 cairo_t   *cr)
 {
-  GtkFixed *fixed = CTK_FIXED (widget);
-  GtkFixedPrivate *priv = fixed->priv;
-  GtkFixedChild *child;
+  CtkFixed *fixed = CTK_FIXED (widget);
+  CtkFixedPrivate *priv = fixed->priv;
+  CtkFixedChild *child;
   GList *list;
 
   for (list = priv->children;

@@ -25,14 +25,14 @@ G_BEGIN_DECLS
 
 
 #define CTK_TYPE_RECENT_CHOOSER_DEFAULT    (_ctk_recent_chooser_default_get_type ())
-#define CTK_RECENT_CHOOSER_DEFAULT(obj)    (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RECENT_CHOOSER_DEFAULT, GtkRecentChooserDefault))
+#define CTK_RECENT_CHOOSER_DEFAULT(obj)    (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RECENT_CHOOSER_DEFAULT, CtkRecentChooserDefault))
 #define CTK_IS_RECENT_CHOOSER_DEFAULT(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_RECENT_CHOOSER_DEFAULT))
 
 
-typedef struct _GtkRecentChooserDefault GtkRecentChooserDefault;
+typedef struct _CtkRecentChooserDefault CtkRecentChooserDefault;
 
 GType      _ctk_recent_chooser_default_get_type (void) G_GNUC_CONST;
-GtkWidget *_ctk_recent_chooser_default_new      (GtkRecentManager *recent_manager);
+CtkWidget *_ctk_recent_chooser_default_new      (CtkRecentManager *recent_manager);
 
 
 G_END_DECLS

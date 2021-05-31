@@ -21,16 +21,16 @@
 /**
  * SECTION:ctkgestureswipe
  * @Short_description: Swipe gesture
- * @Title: GtkGestureSwipe
+ * @Title: CtkGestureSwipe
  *
- * #GtkGestureSwipe is a #GtkGesture implementation able to recognize
+ * #CtkGestureSwipe is a #CtkGesture implementation able to recognize
  * swipes, after a press/move/.../move/release sequence happens, the
- * #GtkGestureSwipe::swipe signal will be emitted, providing the velocity
+ * #CtkGestureSwipe::swipe signal will be emitted, providing the velocity
  * and directionality of the sequence at the time it was lifted.
  *
  * If the velocity is desired in intermediate points,
  * ctk_gesture_swipe_get_velocity() can be called on eg. a
- * #GtkGesture::update handler.
+ * #CtkGesture::update handler.
  *
  * All velocities are reported in pixels/sec units.
  */
@@ -45,7 +45,7 @@
 
 #define CAPTURE_THRESHOLD_MS 150
 
-typedef struct _GtkGestureSwipePrivate GtkGestureSwipePrivate;
+typedef struct _CtkGestureSwipePrivate CtkGestureSwipePrivate;
 typedef struct _EventData EventData;
 
 struct _EventData
@@ -54,7 +54,7 @@ struct _EventData
   GdkPoint point;
 };
 
-struct _GtkGestureSwipePrivate
+struct _CtkGestureSwipePrivate
 {
   GArray *events;
 };
@@ -66,12 +66,12 @@ enum {
 
 static guint signals[N_SIGNALS] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkGestureSwipe, ctk_gesture_swipe, CTK_TYPE_GESTURE_SINGLE)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkGestureSwipe, ctk_gesture_swipe, CTK_TYPE_GESTURE_SINGLE)
 
 static void
 ctk_gesture_swipe_finalize (GObject *object)
 {
-  GtkGestureSwipePrivate *priv;
+  CtkGestureSwipePrivate *priv;
 
   priv = ctk_gesture_swipe_get_instance_private (CTK_GESTURE_SWIPE (object));
   g_array_free (priv->events, TRUE);
@@ -80,7 +80,7 @@ ctk_gesture_swipe_finalize (GObject *object)
 }
 
 static gboolean
-ctk_gesture_swipe_filter_event (GtkEventController *controller,
+ctk_gesture_swipe_filter_event (CtkEventController *controller,
                                 const GdkEvent     *event)
 {
   /* Let touchpad swipe events go through, only if they match n-points  */
@@ -100,10 +100,10 @@ ctk_gesture_swipe_filter_event (GtkEventController *controller,
 }
 
 static void
-_ctk_gesture_swipe_clear_backlog (GtkGestureSwipe *gesture,
+_ctk_gesture_swipe_clear_backlog (CtkGestureSwipe *gesture,
                                   guint32          evtime)
 {
-  GtkGestureSwipePrivate *priv;
+  CtkGestureSwipePrivate *priv;
   gint i, length = 0;
 
   priv = ctk_gesture_swipe_get_instance_private (gesture);
@@ -126,10 +126,10 @@ _ctk_gesture_swipe_clear_backlog (GtkGestureSwipe *gesture,
 }
 
 static void
-ctk_gesture_swipe_append_event (GtkGestureSwipe  *swipe,
+ctk_gesture_swipe_append_event (CtkGestureSwipe  *swipe,
                                 GdkEventSequence *sequence)
 {
-  GtkGestureSwipePrivate *priv;
+  CtkGestureSwipePrivate *priv;
   EventData new;
   gdouble x, y;
 
@@ -145,20 +145,20 @@ ctk_gesture_swipe_append_event (GtkGestureSwipe  *swipe,
 }
 
 static void
-ctk_gesture_swipe_update (GtkGesture       *gesture,
+ctk_gesture_swipe_update (CtkGesture       *gesture,
                           GdkEventSequence *sequence)
 {
-  GtkGestureSwipe *swipe = CTK_GESTURE_SWIPE (gesture);
+  CtkGestureSwipe *swipe = CTK_GESTURE_SWIPE (gesture);
 
   ctk_gesture_swipe_append_event (swipe, sequence);
 }
 
 static void
-_ctk_gesture_swipe_calculate_velocity (GtkGestureSwipe *gesture,
+_ctk_gesture_swipe_calculate_velocity (CtkGestureSwipe *gesture,
                                        gdouble         *velocity_x,
                                        gdouble         *velocity_y)
 {
-  GtkGestureSwipePrivate *priv;
+  CtkGestureSwipePrivate *priv;
   GdkEventSequence *sequence;
   guint32 evtime, diff_time;
   EventData *start, *end;
@@ -190,11 +190,11 @@ _ctk_gesture_swipe_calculate_velocity (GtkGestureSwipe *gesture,
 }
 
 static void
-ctk_gesture_swipe_end (GtkGesture       *gesture,
+ctk_gesture_swipe_end (CtkGesture       *gesture,
                        GdkEventSequence *sequence)
 {
-  GtkGestureSwipe *swipe = CTK_GESTURE_SWIPE (gesture);
-  GtkGestureSwipePrivate *priv;
+  CtkGestureSwipe *swipe = CTK_GESTURE_SWIPE (gesture);
+  CtkGestureSwipePrivate *priv;
   gdouble velocity_x, velocity_y;
   GdkEventSequence *seq;
 
@@ -217,10 +217,10 @@ ctk_gesture_swipe_end (GtkGesture       *gesture,
 }
 
 static void
-ctk_gesture_swipe_class_init (GtkGestureSwipeClass *klass)
+ctk_gesture_swipe_class_init (CtkGestureSwipeClass *klass)
 {
-  GtkGestureClass *gesture_class = CTK_GESTURE_CLASS (klass);
-  GtkEventControllerClass *event_controller_class = CTK_EVENT_CONTROLLER_CLASS (klass);
+  CtkGestureClass *gesture_class = CTK_GESTURE_CLASS (klass);
+  CtkEventControllerClass *event_controller_class = CTK_EVENT_CONTROLLER_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->finalize = ctk_gesture_swipe_finalize;
@@ -231,7 +231,7 @@ ctk_gesture_swipe_class_init (GtkGestureSwipeClass *klass)
   gesture_class->end = ctk_gesture_swipe_end;
 
   /**
-   * GtkGestureSwipe::swipe:
+   * CtkGestureSwipe::swipe:
    * @gesture: object which received the signal
    * @velocity_x: velocity in the X axis, in pixels/sec
    * @velocity_y: velocity in the Y axis, in pixels/sec
@@ -245,7 +245,7 @@ ctk_gesture_swipe_class_init (GtkGestureSwipeClass *klass)
     g_signal_new (I_("swipe"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkGestureSwipeClass, swipe),
+                  G_STRUCT_OFFSET (CtkGestureSwipeClass, swipe),
                   NULL, NULL,
                   _ctk_marshal_VOID__DOUBLE_DOUBLE,
                   G_TYPE_NONE, 2, G_TYPE_DOUBLE, G_TYPE_DOUBLE);
@@ -255,9 +255,9 @@ ctk_gesture_swipe_class_init (GtkGestureSwipeClass *klass)
 }
 
 static void
-ctk_gesture_swipe_init (GtkGestureSwipe *gesture)
+ctk_gesture_swipe_init (CtkGestureSwipe *gesture)
 {
-  GtkGestureSwipePrivate *priv;
+  CtkGestureSwipePrivate *priv;
 
   priv = ctk_gesture_swipe_get_instance_private (gesture);
   priv->events = g_array_new (FALSE, FALSE, sizeof (EventData));
@@ -265,16 +265,16 @@ ctk_gesture_swipe_init (GtkGestureSwipe *gesture)
 
 /**
  * ctk_gesture_swipe_new:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
- * Returns a newly created #GtkGesture that recognizes swipes.
+ * Returns a newly created #CtkGesture that recognizes swipes.
  *
- * Returns: a newly created #GtkGestureSwipe
+ * Returns: a newly created #CtkGestureSwipe
  *
  * Since: 3.14
  **/
-GtkGesture *
-ctk_gesture_swipe_new (GtkWidget *widget)
+CtkGesture *
+ctk_gesture_swipe_new (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
@@ -285,7 +285,7 @@ ctk_gesture_swipe_new (GtkWidget *widget)
 
 /**
  * ctk_gesture_swipe_get_velocity:
- * @gesture: a #GtkGestureSwipe
+ * @gesture: a #CtkGestureSwipe
  * @velocity_x: (out): return value for the velocity in the X axis, in pixels/sec
  * @velocity_y: (out): return value for the velocity in the Y axis, in pixels/sec
  *
@@ -298,7 +298,7 @@ ctk_gesture_swipe_new (GtkWidget *widget)
  * Since: 3.14
  **/
 gboolean
-ctk_gesture_swipe_get_velocity (GtkGestureSwipe *gesture,
+ctk_gesture_swipe_get_velocity (CtkGestureSwipe *gesture,
                                 gdouble         *velocity_x,
                                 gdouble         *velocity_y)
 {

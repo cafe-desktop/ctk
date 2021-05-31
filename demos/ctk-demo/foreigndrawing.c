@@ -3,7 +3,7 @@
  * Many applications can't use GTK+ widgets, for a variety of reasons,
  * but still want their user interface to appear integrated with the
  * rest of the desktop, and follow GTK+ themes. This demo shows how to
- * use GtkStyleContext and the ctk_render_ APIs to achieve this.
+ * use CtkStyleContext and the ctk_render_ APIs to achieve this.
  *
  * Note that this is a very simple, non-interactive example.
  */
@@ -12,12 +12,12 @@
 #include <string.h>
 
 static void
-append_element (GtkWidgetPath *path,
+append_element (CtkWidgetPath *path,
                 const char    *selector)
 {
   static const struct {
     const char    *name;
-    GtkStateFlags  state_flag;
+    CtkStateFlags  state_flag;
   } pseudo_classes[] = {
     { "active",        CTK_STATE_FLAG_ACTIVE },
     { "hover",         CTK_STATE_FLAG_PRELIGHT },
@@ -107,11 +107,11 @@ append_element (GtkWidgetPath *path,
     }
 }
 
-static GtkStyleContext *
-create_context_for_path (GtkWidgetPath   *path,
-                         GtkStyleContext *parent)
+static CtkStyleContext *
+create_context_for_path (CtkWidgetPath   *path,
+                         CtkStyleContext *parent)
 {
-  GtkStyleContext *context;
+  CtkStyleContext *context;
 
   context = ctk_style_context_new ();
   ctk_style_context_set_path (context, path);
@@ -125,11 +125,11 @@ create_context_for_path (GtkWidgetPath   *path,
   return context;
 }
 
-static GtkStyleContext *
-get_style (GtkStyleContext *parent,
+static CtkStyleContext *
+get_style (CtkStyleContext *parent,
            const char      *selector)
 {
-  GtkWidgetPath *path;
+  CtkWidgetPath *path;
 
   if (parent)
     path = ctk_widget_path_copy (ctk_style_context_get_path (parent));
@@ -141,13 +141,13 @@ get_style (GtkStyleContext *parent,
   return create_context_for_path (path, parent);
 }
 
-static GtkStyleContext *
-get_style_with_siblings (GtkStyleContext *parent,
+static CtkStyleContext *
+get_style_with_siblings (CtkStyleContext *parent,
                          const char      *selector,
                          const char     **siblings,
                          gint             position)
 {
-  GtkWidgetPath *path, *siblings_path;
+  CtkWidgetPath *path, *siblings_path;
   guint i;
 
   if (parent)
@@ -166,7 +166,7 @@ get_style_with_siblings (GtkStyleContext *parent,
 }
 
 static void
-draw_style_common (GtkStyleContext *context,
+draw_style_common (CtkStyleContext *context,
                    cairo_t         *cr,
                    gint             x,
                    gint             y,
@@ -177,7 +177,7 @@ draw_style_common (GtkStyleContext *context,
                    gint            *contents_width,
                    gint            *contents_height)
 {
-  GtkBorder margin, border, padding;
+  CtkBorder margin, border, padding;
   int min_width, min_height;
 
   ctk_style_context_get_margin (context, ctk_style_context_get_state (context), &margin);
@@ -210,11 +210,11 @@ draw_style_common (GtkStyleContext *context,
 }
 
 static void
-query_size (GtkStyleContext *context,
+query_size (CtkStyleContext *context,
             gint            *width,
             gint            *height)
 {
-  GtkBorder margin, border, padding;
+  CtkBorder margin, border, padding;
   int min_width, min_height;
 
   ctk_style_context_get_margin (context, ctk_style_context_get_state (context), &margin);
@@ -236,32 +236,32 @@ query_size (GtkStyleContext *context,
 }
 
 static void
-draw_menu (GtkWidget *widget,
+draw_menu (CtkWidget *widget,
            cairo_t   *cr,
            gint       x,
            gint       y,
            gint       width,
            gint      *height)
 {
-  GtkStyleContext *menu_context;
-  GtkStyleContext *menuitem_context;
-  GtkStyleContext *hovermenuitem_context;
-  GtkStyleContext *hoveredarrowmenuitem_context;
-  GtkStyleContext *arrowmenuitem_context;
-  GtkStyleContext *checkmenuitem_context;
-  GtkStyleContext *disabledarrowmenuitem_context;
-  GtkStyleContext *disabledcheckmenuitem_context;
-  GtkStyleContext *radiomenuitem_context;
-  GtkStyleContext *disablemenuitem_context;
-  GtkStyleContext *disabledradiomenuitem_context;
-  GtkStyleContext *separatormenuitem_context;
+  CtkStyleContext *menu_context;
+  CtkStyleContext *menuitem_context;
+  CtkStyleContext *hovermenuitem_context;
+  CtkStyleContext *hoveredarrowmenuitem_context;
+  CtkStyleContext *arrowmenuitem_context;
+  CtkStyleContext *checkmenuitem_context;
+  CtkStyleContext *disabledarrowmenuitem_context;
+  CtkStyleContext *disabledcheckmenuitem_context;
+  CtkStyleContext *radiomenuitem_context;
+  CtkStyleContext *disablemenuitem_context;
+  CtkStyleContext *disabledradiomenuitem_context;
+  CtkStyleContext *separatormenuitem_context;
   gint menuitem1_height, menuitem2_height, menuitem3_height, menuitem4_height, menuitem5_height;
   gint contents_x, contents_y, contents_width, contents_height;
   gint menu_x, menu_y, menu_width, menu_height;
   gint arrow_width, arrow_height, arrow_size;
   gint toggle_x, toggle_y, toggle_width, toggle_height;
 
-  /* This information is taken from the GtkMenu docs, see "CSS nodes" */
+  /* This information is taken from the CtkMenu docs, see "CSS nodes" */
   menu_context = get_style (ctk_widget_get_style_context(widget), "menu");
   hovermenuitem_context = get_style (menu_context, "menuitem:hover");
   hoveredarrowmenuitem_context = get_style (hovermenuitem_context, "arrow.right:dir(ltr)");
@@ -395,18 +395,18 @@ draw_menu (GtkWidget *widget,
 }
 
 static void
-draw_menubar (GtkWidget     *widget,
+draw_menubar (CtkWidget     *widget,
               cairo_t       *cr,
               gint           x,
               gint           y,
               gint           width,
               gint          *height)
 {
-  GtkStyleContext *frame_context;
-  GtkStyleContext *border_context;
-  GtkStyleContext *menubar_context;
-  GtkStyleContext *hovered_menuitem_context;
-  GtkStyleContext *menuitem_context;
+  CtkStyleContext *frame_context;
+  CtkStyleContext *border_context;
+  CtkStyleContext *menubar_context;
+  CtkStyleContext *hovered_menuitem_context;
+  CtkStyleContext *menuitem_context;
   gint contents_x, contents_y, contents_width, contents_height;
   gint item_width;
 
@@ -414,7 +414,7 @@ draw_menubar (GtkWidget     *widget,
   frame_context = get_style (NULL, "frame");
   border_context = get_style (frame_context, "border");
 
-  /* This information is taken from the GtkMenuBar docs, see "CSS nodes" */
+  /* This information is taken from the CtkMenuBar docs, see "CSS nodes" */
   menubar_context = get_style (NULL, "menubar");
   hovered_menuitem_context = get_style (menubar_context, "menuitem:hover");
   menuitem_context = get_style (menubar_context, "menuitem");
@@ -446,22 +446,22 @@ draw_menubar (GtkWidget     *widget,
 }
 
 static void
-draw_notebook (GtkWidget     *widget,
+draw_notebook (CtkWidget     *widget,
                cairo_t       *cr,
                gint           x,
                gint           y,
                gint           width,
                gint           height)
 {
-  GtkStyleContext *notebook_context;
-  GtkStyleContext *header_context;
-  GtkStyleContext *tabs_context;
-  GtkStyleContext *tab1_context, *tab2_context;
-  GtkStyleContext *stack_context;
+  CtkStyleContext *notebook_context;
+  CtkStyleContext *header_context;
+  CtkStyleContext *tabs_context;
+  CtkStyleContext *tab1_context, *tab2_context;
+  CtkStyleContext *stack_context;
   gint header_height;
   gint contents_x, contents_y, contents_width, contents_height;
 
-  /* This information is taken from the GtkNotebook docs, see "CSS nodes" */
+  /* This information is taken from the CtkNotebook docs, see "CSS nodes" */
   notebook_context = get_style (NULL, "notebook.frame");
   header_context = get_style (notebook_context, "header.top");
   tabs_context = get_style (header_context, "tabs");
@@ -495,22 +495,22 @@ draw_notebook (GtkWidget     *widget,
 }
 
 static void
-draw_horizontal_scrollbar (GtkWidget     *widget,
+draw_horizontal_scrollbar (CtkWidget     *widget,
                            cairo_t       *cr,
                            gint           x,
                            gint           y,
                            gint           width,
                            gint           position,
-                           GtkStateFlags  state,
+                           CtkStateFlags  state,
                            gint          *height)
 {
-  GtkStyleContext *scrollbar_context;
-  GtkStyleContext *contents_context;
-  GtkStyleContext *trough_context;
-  GtkStyleContext *slider_context;
+  CtkStyleContext *scrollbar_context;
+  CtkStyleContext *contents_context;
+  CtkStyleContext *trough_context;
+  CtkStyleContext *slider_context;
   gint slider_width;
 
-  /* This information is taken from the GtkScrollbar docs, see "CSS nodes" */
+  /* This information is taken from the CtkScrollbar docs, see "CSS nodes" */
   scrollbar_context = get_style (NULL, "scrollbar.horizontal.bottom");
   contents_context = get_style (scrollbar_context, "contents");
   trough_context = get_style (contents_context, "trough");
@@ -542,21 +542,21 @@ draw_horizontal_scrollbar (GtkWidget     *widget,
 }
 
 static void
-draw_text (GtkWidget     *widget,
+draw_text (CtkWidget     *widget,
            cairo_t       *cr,
            gint           x,
            gint           y,
            gint           width,
            gint           height,
            const gchar   *text,
-           GtkStateFlags  state)
+           CtkStateFlags  state)
 {
-  GtkStyleContext *label_context;
-  GtkStyleContext *selection_context;
-  GtkStyleContext *context;
+  CtkStyleContext *label_context;
+  CtkStyleContext *selection_context;
+  CtkStyleContext *context;
   PangoLayout *layout;
 
-  /* This information is taken from the GtkLabel docs, see "CSS nodes" */
+  /* This information is taken from the CtkLabel docs, see "CSS nodes" */
   label_context = get_style (NULL, "label.view");
   selection_context = get_style (label_context, "selection");
 
@@ -580,19 +580,19 @@ draw_text (GtkWidget     *widget,
 }
 
 static void
-draw_check (GtkWidget     *widget,
+draw_check (CtkWidget     *widget,
             cairo_t       *cr,
             gint           x,
             gint           y,
-            GtkStateFlags  state,
+            CtkStateFlags  state,
             gint          *width,
             gint          *height)
 {
-  GtkStyleContext *button_context;
-  GtkStyleContext *check_context;
+  CtkStyleContext *button_context;
+  CtkStyleContext *check_context;
   gint contents_x, contents_y, contents_width, contents_height;
 
-  /* This information is taken from the GtkCheckButton docs, see "CSS nodes" */
+  /* This information is taken from the CtkCheckButton docs, see "CSS nodes" */
   button_context = get_style (NULL, "checkbutton");
   check_context = get_style (button_context, "check");
 
@@ -613,19 +613,19 @@ draw_check (GtkWidget     *widget,
 }
 
 static void
-draw_radio (GtkWidget     *widget,
+draw_radio (CtkWidget     *widget,
             cairo_t       *cr,
             gint           x,
             gint           y,
-            GtkStateFlags  state,
+            CtkStateFlags  state,
             gint          *width,
             gint          *height)
 {
-  GtkStyleContext *button_context;
-  GtkStyleContext *check_context;
+  CtkStyleContext *button_context;
+  CtkStyleContext *check_context;
   gint contents_x, contents_y, contents_width, contents_height;
 
-  /* This information is taken from the GtkRadioButton docs, see "CSS nodes" */
+  /* This information is taken from the CtkRadioButton docs, see "CSS nodes" */
   button_context = get_style (NULL, "radiobutton");
   check_context = get_style (button_context, "radio");
 
@@ -646,7 +646,7 @@ draw_radio (GtkWidget     *widget,
 }
 
 static void
-draw_progress (GtkWidget *widget,
+draw_progress (CtkWidget *widget,
                cairo_t   *cr,
                gint       x,
                gint       y,
@@ -654,11 +654,11 @@ draw_progress (GtkWidget *widget,
                gint       position,
                gint      *height)
 {
-  GtkStyleContext *bar_context;
-  GtkStyleContext *trough_context;
-  GtkStyleContext *progress_context;
+  CtkStyleContext *bar_context;
+  CtkStyleContext *trough_context;
+  CtkStyleContext *progress_context;
 
-  /* This information is taken from the GtkProgressBar docs, see "CSS nodes" */
+  /* This information is taken from the CtkProgressBar docs, see "CSS nodes" */
   bar_context = get_style (NULL, "progressbar.horizontal");
   trough_context = get_style (bar_context, "trough");
   progress_context = get_style (trough_context, "progress.left");
@@ -678,7 +678,7 @@ draw_progress (GtkWidget *widget,
 }
 
 static void
-draw_scale (GtkWidget *widget,
+draw_scale (CtkWidget *widget,
             cairo_t   *cr,
             gint       x,
             gint       y,
@@ -686,11 +686,11 @@ draw_scale (GtkWidget *widget,
             gint       position,
             gint      *height)
 {
-  GtkStyleContext *scale_context;
-  GtkStyleContext *contents_context;
-  GtkStyleContext *trough_context;
-  GtkStyleContext *slider_context;
-  GtkStyleContext *highlight_context;
+  CtkStyleContext *scale_context;
+  CtkStyleContext *contents_context;
+  CtkStyleContext *trough_context;
+  CtkStyleContext *slider_context;
+  CtkStyleContext *highlight_context;
   gint contents_x, contents_y, contents_width, contents_height;
   gint trough_height, slider_height;
 
@@ -734,7 +734,7 @@ draw_scale (GtkWidget *widget,
 }
 
 static void
-draw_combobox (GtkWidget *widget,
+draw_combobox (CtkWidget *widget,
                cairo_t   *cr,
                gint       x,
                gint       y,
@@ -742,17 +742,17 @@ draw_combobox (GtkWidget *widget,
                gboolean   has_entry,
                gint      *height)
 {
-  GtkStyleContext *combo_context;
-  GtkStyleContext *box_context;
-  GtkStyleContext *button_context;
-  GtkStyleContext *button_box_context;
-  GtkStyleContext *entry_context;
-  GtkStyleContext *arrow_context;
+  CtkStyleContext *combo_context;
+  CtkStyleContext *box_context;
+  CtkStyleContext *button_context;
+  CtkStyleContext *button_box_context;
+  CtkStyleContext *entry_context;
+  CtkStyleContext *arrow_context;
   gint contents_x, contents_y, contents_width, contents_height;
   gint button_width;
   gint arrow_width, arrow_height, arrow_size;
 
-  /* This information is taken from the GtkComboBox docs, see "CSS nodes" */
+  /* This information is taken from the CtkComboBox docs, see "CSS nodes" */
   combo_context = get_style (NULL, "combobox:focus");
   box_context = get_style (combo_context, "box.horizontal.linked");
   if (has_entry)
@@ -816,25 +816,25 @@ draw_combobox (GtkWidget *widget,
 }
 
 static void
-draw_spinbutton (GtkWidget *widget,
+draw_spinbutton (CtkWidget *widget,
                  cairo_t   *cr,
                  gint       x,
                  gint       y,
                  gint       width,
                  gint      *height)
 {
-  GtkStyleContext *spin_context;
-  GtkStyleContext *entry_context;
-  GtkStyleContext *up_context;
-  GtkStyleContext *down_context;
-  GtkIconTheme *icon_theme;
-  GtkIconInfo *icon_info;
+  CtkStyleContext *spin_context;
+  CtkStyleContext *entry_context;
+  CtkStyleContext *up_context;
+  CtkStyleContext *down_context;
+  CtkIconTheme *icon_theme;
+  CtkIconInfo *icon_info;
   GdkPixbuf *pixbuf;
   gint icon_width, icon_height, icon_size;
   gint button_width;
   gint contents_x, contents_y, contents_width, contents_height;
 
-  /* This information is taken from the GtkSpinButton docs, see "CSS nodes" */
+  /* This information is taken from the CtkSpinButton docs, see "CSS nodes" */
   spin_context = get_style (NULL, "spinbutton.horizontal:focus");
   entry_context = get_style (spin_context, "entry:focus");
   up_context = get_style (spin_context, "button.up:focus:active");
@@ -882,7 +882,7 @@ draw_spinbutton (GtkWidget *widget,
 }
 
 static gboolean
-draw_cb (GtkWidget *widget,
+draw_cb (CtkWidget *widget,
          cairo_t   *cr)
 {
   gint panewidth, width, height;
@@ -948,15 +948,15 @@ draw_cb (GtkWidget *widget,
   return FALSE;
 }
 
-GtkWidget *
-do_foreigndrawing (GtkWidget *do_widget)
+CtkWidget *
+do_foreigndrawing (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkWidget *box;
-      GtkWidget *da;
+      CtkWidget *box;
+      CtkWidget *da;
 
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_title (CTK_WINDOW (window), "Foreign drawing");

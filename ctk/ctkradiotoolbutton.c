@@ -28,20 +28,20 @@
 /**
  * SECTION:ctkradiotoolbutton
  * @Short_description: A toolbar item that contains a radio button
- * @Title: GtkRadioToolButton
- * @See_also: #GtkToolbar, #GtkToolButton
+ * @Title: CtkRadioToolButton
+ * @See_also: #CtkToolbar, #CtkToolButton
  *
- * A #GtkRadioToolButton is a #GtkToolItem that contains a radio button,
+ * A #CtkRadioToolButton is a #CtkToolItem that contains a radio button,
  * that is, a button that is part of a group of toggle buttons where only
  * one button can be active at a time.
  *
- * Use ctk_radio_tool_button_new() to create a new GtkRadioToolButton. Use
- * ctk_radio_tool_button_new_from_widget() to create a new GtkRadioToolButton
- * that is part of the same group as an existing GtkRadioToolButton.
+ * Use ctk_radio_tool_button_new() to create a new CtkRadioToolButton. Use
+ * ctk_radio_tool_button_new_from_widget() to create a new CtkRadioToolButton
+ * that is part of the same group as an existing CtkRadioToolButton.
  *
  * # CSS nodes
  *
- * GtkRadioToolButton has a single CSS node with name toolbutton.
+ * CtkRadioToolButton has a single CSS node with name toolbutton.
  */
 
 
@@ -55,23 +55,23 @@ static void ctk_radio_tool_button_set_property (GObject         *object,
 						const GValue    *value,
 						GParamSpec      *pspec);
 
-G_DEFINE_TYPE (GtkRadioToolButton, ctk_radio_tool_button, CTK_TYPE_TOGGLE_TOOL_BUTTON)
+G_DEFINE_TYPE (CtkRadioToolButton, ctk_radio_tool_button, CTK_TYPE_TOGGLE_TOOL_BUTTON)
 
 static void
-ctk_radio_tool_button_class_init (GtkRadioToolButtonClass *klass)
+ctk_radio_tool_button_class_init (CtkRadioToolButtonClass *klass)
 {
   GObjectClass *object_class;
-  GtkToolButtonClass *toolbutton_class;
+  CtkToolButtonClass *toolbutton_class;
 
   object_class = (GObjectClass *)klass;
-  toolbutton_class = (GtkToolButtonClass *)klass;
+  toolbutton_class = (CtkToolButtonClass *)klass;
 
   object_class->set_property = ctk_radio_tool_button_set_property;
   
   toolbutton_class->button_type = CTK_TYPE_RADIO_BUTTON;  
 
   /**
-   * GtkRadioToolButton:group:
+   * CtkRadioToolButton:group:
    *
    * Sets a new group for a radio tool button.
    *
@@ -88,9 +88,9 @@ ctk_radio_tool_button_class_init (GtkRadioToolButtonClass *klass)
 }
 
 static void
-ctk_radio_tool_button_init (GtkRadioToolButton *button)
+ctk_radio_tool_button_init (CtkRadioToolButton *button)
 {
-  GtkToolButton *tool_button = CTK_TOOL_BUTTON (button);
+  CtkToolButton *tool_button = CTK_TOOL_BUTTON (button);
   ctk_toggle_button_set_mode (CTK_TOGGLE_BUTTON (_ctk_tool_button_get_button (tool_button)), FALSE);
 }
 
@@ -100,7 +100,7 @@ ctk_radio_tool_button_set_property (GObject         *object,
 				    const GValue    *value,
 				    GParamSpec      *pspec)
 {
-  GtkRadioToolButton *button;
+  CtkRadioToolButton *button;
 
   button = CTK_RADIO_TOOL_BUTTON (object);
 
@@ -108,7 +108,7 @@ ctk_radio_tool_button_set_property (GObject         *object,
     {
     case PROP_GROUP:
       {
-	GtkRadioToolButton *arg;
+	CtkRadioToolButton *arg;
 	GSList *slist = NULL;
 	if (G_VALUE_HOLDS_OBJECT (value)) 
 	  {
@@ -127,19 +127,19 @@ ctk_radio_tool_button_set_property (GObject         *object,
 
 /**
  * ctk_radio_tool_button_new:
- * @group: (allow-none) (element-type GtkRadioButton): An
+ * @group: (allow-none) (element-type CtkRadioButton): An
  *   existing radio button group, or %NULL if you are creating a new group
  * 
- * Creates a new #GtkRadioToolButton, adding it to @group.
+ * Creates a new #CtkRadioToolButton, adding it to @group.
  * 
- * Returns: The new #GtkRadioToolButton
+ * Returns: The new #CtkRadioToolButton
  * 
  * Since: 2.4
  **/
-GtkToolItem *
+CtkToolItem *
 ctk_radio_tool_button_new (GSList *group)
 {
-  GtkRadioToolButton *button;
+  CtkRadioToolButton *button;
   
   button = g_object_new (CTK_TYPE_RADIO_TOOL_BUTTON,
 			 NULL);
@@ -151,25 +151,25 @@ ctk_radio_tool_button_new (GSList *group)
 
 /**
  * ctk_radio_tool_button_new_from_stock:
- * @group: (allow-none) (element-type GtkRadioButton): an existing radio button
+ * @group: (allow-none) (element-type CtkRadioButton): an existing radio button
  *   group, or %NULL if you are creating a new group
  * @stock_id: the name of a stock item
  * 
- * Creates a new #GtkRadioToolButton, adding it to @group. 
- * The new #GtkRadioToolButton will contain an icon and label from the
+ * Creates a new #CtkRadioToolButton, adding it to @group. 
+ * The new #CtkRadioToolButton will contain an icon and label from the
  * stock item indicated by @stock_id.
  * 
- * Returns: The new #GtkRadioToolButton
+ * Returns: The new #CtkRadioToolButton
  * 
  * Since: 2.4
  *
  * Deprecated: 3.10: Use ctk_radio_tool_button_new() instead.
  **/
-GtkToolItem *
+CtkToolItem *
 ctk_radio_tool_button_new_from_stock (GSList      *group,
 				      const gchar *stock_id)
 {
-  GtkRadioToolButton *button;
+  CtkRadioToolButton *button;
 
   g_return_val_if_fail (stock_id != NULL, NULL);
   
@@ -185,16 +185,16 @@ ctk_radio_tool_button_new_from_stock (GSList      *group,
 
 /**
  * ctk_radio_tool_button_new_from_widget: (constructor)
- * @group: (allow-none): An existing #GtkRadioToolButton, or %NULL
+ * @group: (allow-none): An existing #CtkRadioToolButton, or %NULL
  *
- * Creates a new #GtkRadioToolButton adding it to the same group as @gruup
+ * Creates a new #CtkRadioToolButton adding it to the same group as @gruup
  *
- * Returns: (transfer none): The new #GtkRadioToolButton
+ * Returns: (transfer none): The new #CtkRadioToolButton
  *
  * Since: 2.4
  **/
-GtkToolItem *
-ctk_radio_tool_button_new_from_widget (GtkRadioToolButton *group)
+CtkToolItem *
+ctk_radio_tool_button_new_from_widget (CtkRadioToolButton *group)
 {
   GSList *list = NULL;
   
@@ -208,25 +208,25 @@ ctk_radio_tool_button_new_from_widget (GtkRadioToolButton *group)
 
 /**
  * ctk_radio_tool_button_new_with_stock_from_widget: (constructor)
- * @group: (allow-none): An existing #GtkRadioToolButton.
+ * @group: (allow-none): An existing #CtkRadioToolButton.
  * @stock_id: the name of a stock item
  *
- * Creates a new #GtkRadioToolButton adding it to the same group as @group.
- * The new #GtkRadioToolButton will contain an icon and label from the
+ * Creates a new #CtkRadioToolButton adding it to the same group as @group.
+ * The new #CtkRadioToolButton will contain an icon and label from the
  * stock item indicated by @stock_id.
  *
- * Returns: (transfer none): A new #GtkRadioToolButton
+ * Returns: (transfer none): A new #CtkRadioToolButton
  *
  * Since: 2.4
  *
  * Deprecated: 3.10: ctk_radio_tool_button_new_from_widget
  **/
-GtkToolItem *
-ctk_radio_tool_button_new_with_stock_from_widget (GtkRadioToolButton *group,
+CtkToolItem *
+ctk_radio_tool_button_new_with_stock_from_widget (CtkRadioToolButton *group,
 						  const gchar        *stock_id)
 {
   GSList *list = NULL;
-  GtkToolItem *item;
+  CtkToolItem *item;
 
   g_return_val_if_fail (group == NULL || CTK_IS_RADIO_TOOL_BUTTON (group), NULL);
 
@@ -240,24 +240,24 @@ ctk_radio_tool_button_new_with_stock_from_widget (GtkRadioToolButton *group,
   return item;
 }
 
-static GtkRadioButton *
-get_radio_button (GtkRadioToolButton *button)
+static CtkRadioButton *
+get_radio_button (CtkRadioToolButton *button)
 {
   return CTK_RADIO_BUTTON (_ctk_tool_button_get_button (CTK_TOOL_BUTTON (button)));
 }
 
 /**
  * ctk_radio_tool_button_get_group:
- * @button: a #GtkRadioToolButton
+ * @button: a #CtkRadioToolButton
  *
  * Returns the radio button group @button belongs to.
  *
- * Returns: (transfer none) (element-type GtkRadioButton): The group @button belongs to.
+ * Returns: (transfer none) (element-type CtkRadioButton): The group @button belongs to.
  *
  * Since: 2.4
  */
 GSList *
-ctk_radio_tool_button_get_group (GtkRadioToolButton *button)
+ctk_radio_tool_button_get_group (CtkRadioToolButton *button)
 {
   g_return_val_if_fail (CTK_IS_RADIO_TOOL_BUTTON (button), NULL);
 
@@ -266,15 +266,15 @@ ctk_radio_tool_button_get_group (GtkRadioToolButton *button)
 
 /**
  * ctk_radio_tool_button_set_group:
- * @button: a #GtkRadioToolButton
- * @group: (element-type GtkRadioButton) (allow-none): an existing radio button group, or %NULL
+ * @button: a #CtkRadioToolButton
+ * @group: (element-type CtkRadioButton) (allow-none): an existing radio button group, or %NULL
  * 
  * Adds @button to @group, removing it from the group it belonged to before.
  * 
  * Since: 2.4
  **/
 void
-ctk_radio_tool_button_set_group (GtkRadioToolButton *button,
+ctk_radio_tool_button_set_group (CtkRadioToolButton *button,
 				 GSList             *group)
 {
   g_return_if_fail (CTK_IS_RADIO_TOOL_BUTTON (button));

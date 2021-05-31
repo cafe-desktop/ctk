@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkMessageDialog" id="window1">
+  <object class="CtkMessageDialog" id="window1">
     <property name="visible">True</property>
     <property name="message-type">info</property>
     <property name="text" translatable="yes">Information</property>

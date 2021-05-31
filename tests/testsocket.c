@@ -29,14 +29,14 @@ int n_children = 0;
 
 GSList *sockets = NULL;
 
-GtkWidget *window;
-GtkWidget *box;
+CtkWidget *window;
+CtkWidget *box;
 
 typedef struct 
 {
-  GtkWidget *box;
-  GtkWidget *frame;
-  GtkWidget *socket;
+  CtkWidget *box;
+  CtkWidget *frame;
+  CtkWidget *socket;
 } Socket;
 
 extern guint32 create_child_plug (guint32  xid,
@@ -45,9 +45,9 @@ extern guint32 create_child_plug (guint32  xid,
 static void
 quit_cb (gpointer        callback_data,
 	 guint           callback_action,
-	 GtkWidget      *widget)
+	 CtkWidget      *widget)
 {
-  GtkWidget *message_dialog = ctk_message_dialog_new (CTK_WINDOW (window), 0,
+  CtkWidget *message_dialog = ctk_message_dialog_new (CTK_WINDOW (window), 0,
 						      CTK_MESSAGE_QUESTION,
 						      CTK_BUTTONS_YES_NO,
 						      "Really Quit?");
@@ -60,7 +60,7 @@ quit_cb (gpointer        callback_data,
 }
 
 static void
-socket_destroyed (GtkWidget *widget,
+socket_destroyed (CtkWidget *widget,
 		  Socket    *socket)
 {
   sockets = g_slist_remove (sockets, socket);
@@ -68,7 +68,7 @@ socket_destroyed (GtkWidget *widget,
 }
 
 static void
-plug_added (GtkWidget *widget,
+plug_added (CtkWidget *widget,
 	    Socket    *socket)
 {
   g_print ("Plug added to socket\n");
@@ -78,7 +78,7 @@ plug_added (GtkWidget *widget,
 }
 
 static gboolean
-plug_removed (GtkWidget *widget,
+plug_removed (CtkWidget *widget,
 	      Socket    *socket)
 {
   g_print ("Plug removed from socket\n");
@@ -92,7 +92,7 @@ plug_removed (GtkWidget *widget,
 static Socket *
 create_socket (void)
 {
-  GtkWidget *label;
+  CtkWidget *label;
   
   Socket *socket = g_new (Socket, 1);
   
@@ -126,7 +126,7 @@ create_socket (void)
 }
 
 void
-remove_child (GtkWidget *window)
+remove_child (CtkWidget *window)
 {
   if (sockets)
     {
@@ -181,7 +181,7 @@ child_read_watch (GIOChannel *channel, GIOCondition cond, gpointer data)
 }
 
 void
-add_child (GtkWidget *window,
+add_child (CtkWidget *window,
 	   gboolean   active)
 {
   Socket *socket;
@@ -221,19 +221,19 @@ add_child (GtkWidget *window,
 }
 
 void
-add_active_child (GtkWidget *window)
+add_active_child (CtkWidget *window)
 {
   add_child (window, TRUE);
 }
 
 void
-add_passive_child (GtkWidget *window)
+add_passive_child (CtkWidget *window)
 {
   add_child (window, FALSE);
 }
 
 void
-add_local_active_child (GtkWidget *window)
+add_local_active_child (CtkWidget *window)
 {
   Socket *socket;
 
@@ -245,7 +245,7 @@ add_local_active_child (GtkWidget *window)
 }
 
 void
-add_local_passive_child (GtkWidget *window)
+add_local_passive_child (CtkWidget *window)
 {
   Socket *socket;
   Window xid;
@@ -277,8 +277,8 @@ grab_string (int status)
 }
 
 static void
-grab_window_toggled (GtkToggleButton *button,
-		     GtkWidget       *widget)
+grab_window_toggled (CtkToggleButton *button,
+		     CtkWidget       *widget)
 {
   GdkDevice *device = ctk_get_current_event_device ();
   GdkSeat *seat = gdk_device_get_seat (device);
@@ -304,15 +304,15 @@ grab_window_toggled (GtkToggleButton *button,
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *button;
-  GtkWidget *hbox;
-  GtkWidget *vbox;
-  GtkWidget *menubar;
-  GtkWidget *menuitem;
-  GtkWidget *menu;
-  GtkWidget *entry;
-  GtkWidget *checkbutton;
-  GtkAccelGroup *accel_group;
+  CtkWidget *button;
+  CtkWidget *hbox;
+  CtkWidget *vbox;
+  CtkWidget *menubar;
+  CtkWidget *menuitem;
+  CtkWidget *menu;
+  CtkWidget *entry;
+  CtkWidget *checkbutton;
+  CtkAccelGroup *accel_group;
 
   ctk_init (&argc, &argv);
 

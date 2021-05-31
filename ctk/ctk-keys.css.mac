@@ -130,7 +130,7 @@ label {
   -ctk-key-bindings: ctk-mac-alt-arrows, ctk-mac-cmd-arrows, ctk-mac-emacs-like, ctk-mac-label;
 }
 
-GtkFileChooserWidget {
+CtkFileChooserWidget {
   -ctk-key-bindings: ctk-mac-file-chooser;
 }
 

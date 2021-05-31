@@ -32,24 +32,24 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_STACK_SIDEBAR           (ctk_stack_sidebar_get_type ())
-#define CTK_STACK_SIDEBAR(obj)           (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_STACK_SIDEBAR, GtkStackSidebar))
+#define CTK_STACK_SIDEBAR(obj)           (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_STACK_SIDEBAR, CtkStackSidebar))
 #define CTK_IS_STACK_SIDEBAR(obj)        (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_STACK_SIDEBAR))
-#define CTK_STACK_SIDEBAR_CLASS(klass)   (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_STACK_SIDEBAR, GtkStackSidebarClass))
+#define CTK_STACK_SIDEBAR_CLASS(klass)   (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_STACK_SIDEBAR, CtkStackSidebarClass))
 #define CTK_IS_STACK_SIDEBAR_CLASS(klass)(G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_STACK_SIDEBAR))
-#define CTK_STACK_SIDEBAR_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_STACK_SIDEBAR, GtkStackSidebarClass))
+#define CTK_STACK_SIDEBAR_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_STACK_SIDEBAR, CtkStackSidebarClass))
 
-typedef struct _GtkStackSidebar        GtkStackSidebar;
-typedef struct _GtkStackSidebarPrivate GtkStackSidebarPrivate;
-typedef struct _GtkStackSidebarClass   GtkStackSidebarClass;
+typedef struct _CtkStackSidebar        CtkStackSidebar;
+typedef struct _CtkStackSidebarPrivate CtkStackSidebarPrivate;
+typedef struct _CtkStackSidebarClass   CtkStackSidebarClass;
 
-struct _GtkStackSidebar
+struct _CtkStackSidebar
 {
-  GtkBin parent;
+  CtkBin parent;
 };
 
-struct _GtkStackSidebarClass
+struct _CtkStackSidebarClass
 {
-  GtkBinClass parent_class;
+  CtkBinClass parent_class;
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -61,12 +61,12 @@ struct _GtkStackSidebarClass
 GDK_AVAILABLE_IN_3_16
 GType       ctk_stack_sidebar_get_type  (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_3_16
-GtkWidget * ctk_stack_sidebar_new       (void);
+CtkWidget * ctk_stack_sidebar_new       (void);
 GDK_AVAILABLE_IN_3_16
-void        ctk_stack_sidebar_set_stack (GtkStackSidebar *sidebar,
-                                         GtkStack        *stack);
+void        ctk_stack_sidebar_set_stack (CtkStackSidebar *sidebar,
+                                         CtkStack        *stack);
 GDK_AVAILABLE_IN_3_16
-GtkStack *  ctk_stack_sidebar_get_stack (GtkStackSidebar *sidebar);
+CtkStack *  ctk_stack_sidebar_get_stack (CtkStackSidebar *sidebar);
 
 G_END_DECLS
 

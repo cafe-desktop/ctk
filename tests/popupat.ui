@@ -2,13 +2,13 @@
 <!-- Generated with glade 3.18.3 -->
 <interface>
   <requires lib="ctk+" version="3.12"/>
-  <object class="GtkMenu" id="menu25">
+  <object class="CtkMenu" id="menu25">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="halign">start</property>
     <property name="valign">start</property>
     <child>
-      <object class="GtkMenuItem" id="menuitem63">
+      <object class="CtkMenuItem" id="menuitem63">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Start-Aligned Item A</property>
@@ -16,7 +16,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkMenuItem" id="menuitem64">
+      <object class="CtkMenuItem" id="menuitem64">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Start-Aligned Item B</property>
@@ -24,7 +24,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkMenuItem" id="menuitem65">
+      <object class="CtkMenuItem" id="menuitem65">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Start-Aligned Item C</property>
@@ -32,13 +32,13 @@
       </object>
     </child>
   </object>
-  <object class="GtkMenu" id="menu26">
+  <object class="CtkMenu" id="menu26">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="halign">center</property>
     <property name="valign">center</property>
     <child>
-      <object class="GtkMenuItem" id="menuitem66">
+      <object class="CtkMenuItem" id="menuitem66">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Center-Aligned Item D</property>
@@ -46,7 +46,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkMenuItem" id="menuitem67">
+      <object class="CtkMenuItem" id="menuitem67">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Center-Aligned Item E</property>
@@ -54,7 +54,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkMenuItem" id="menuitem68">
+      <object class="CtkMenuItem" id="menuitem68">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Center-Aligned Item F</property>
@@ -62,13 +62,13 @@
       </object>
     </child>
   </object>
-  <object class="GtkMenu" id="menu27">
+  <object class="CtkMenu" id="menu27">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="halign">end</property>
     <property name="valign">end</property>
     <child>
-      <object class="GtkMenuItem" id="menuitem69">
+      <object class="CtkMenuItem" id="menuitem69">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">End-Aligned Item G</property>
@@ -76,7 +76,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkMenuItem" id="menuitem70">
+      <object class="CtkMenuItem" id="menuitem70">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">End-Aligned Item H</property>
@@ -84,7 +84,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkMenuItem" id="menuitem71">
+      <object class="CtkMenuItem" id="menuitem71">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">End-Aligned Item I</property>
@@ -92,13 +92,13 @@
       </object>
     </child>
   </object>
-  <object class="GtkMenu" id="menu30">
+  <object class="CtkMenu" id="menu30">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="halign">start</property>
     <property name="valign">start</property>
     <child>
-      <object class="GtkMenuItem" id="menuitem126">
+      <object class="CtkMenuItem" id="menuitem126">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Start-Aligned Item A</property>
@@ -106,7 +106,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkMenuItem" id="menuitem127">
+      <object class="CtkMenuItem" id="menuitem127">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Start-Aligned Item B</property>
@@ -114,7 +114,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkMenuItem" id="menuitem128">
+      <object class="CtkMenuItem" id="menuitem128">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Start-Aligned Item C</property>
@@ -122,13 +122,13 @@
       </object>
     </child>
   </object>
-  <object class="GtkMenu" id="menu31">
+  <object class="CtkMenu" id="menu31">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="halign">center</property>
     <property name="valign">center</property>
     <child>
-      <object class="GtkMenuItem" id="menuitem129">
+      <object class="CtkMenuItem" id="menuitem129">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Center-Aligned Item D</property>
@@ -136,7 +136,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkMenuItem" id="menuitem130">
+      <object class="CtkMenuItem" id="menuitem130">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Center-Aligned Item E</property>
@@ -144,7 +144,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkMenuItem" id="menuitem131">
+      <object class="CtkMenuItem" id="menuitem131">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Center-Aligned Item F</property>
@@ -152,13 +152,13 @@
       </object>
     </child>
   </object>
-  <object class="GtkMenu" id="menu32">
+  <object class="CtkMenu" id="menu32">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="halign">end</property>
     <property name="valign">end</property>
     <child>
-      <object class="GtkMenuItem" id="menuitem132">
+      <object class="CtkMenuItem" id="menuitem132">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">End-Aligned Item G</property>
@@ -166,7 +166,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkMenuItem" id="menuitem133">
+      <object class="CtkMenuItem" id="menuitem133">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">End-Aligned Item H</property>
@@ -174,7 +174,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkMenuItem" id="menuitem134">
+      <object class="CtkMenuItem" id="menuitem134">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">End-Aligned Item I</property>
@@ -182,13 +182,13 @@
       </object>
     </child>
   </object>
-  <object class="GtkMenu" id="menu33">
+  <object class="CtkMenu" id="menu33">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="halign">start</property>
     <property name="valign">start</property>
     <child>
-      <object class="GtkMenuItem" id="menuitem135">
+      <object class="CtkMenuItem" id="menuitem135">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Start-Aligned Item A</property>
@@ -196,7 +196,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkMenuItem" id="menuitem136">
+      <object class="CtkMenuItem" id="menuitem136">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Start-Aligned Item B</property>
@@ -204,7 +204,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkMenuItem" id="menuitem137">
+      <object class="CtkMenuItem" id="menuitem137">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Start-Aligned Item C</property>
@@ -212,13 +212,13 @@
       </object>
     </child>
   </object>
-  <object class="GtkMenu" id="menu34">
+  <object class="CtkMenu" id="menu34">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="halign">center</property>
     <property name="valign">center</property>
     <child>
-      <object class="GtkMenuItem" id="menuitem138">
+      <object class="CtkMenuItem" id="menuitem138">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Center-Aligned Item D</property>
@@ -226,7 +226,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkMenuItem" id="menuitem139">
+      <object class="CtkMenuItem" id="menuitem139">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Center-Aligned Item E</property>
@@ -234,7 +234,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkMenuItem" id="menuitem140">
+      <object class="CtkMenuItem" id="menuitem140">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Center-Aligned Item F</property>
@@ -242,13 +242,13 @@
       </object>
     </child>
   </object>
-  <object class="GtkMenu" id="menu35">
+  <object class="CtkMenu" id="menu35">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="halign">end</property>
     <property name="valign">end</property>
     <child>
-      <object class="GtkMenuItem" id="menuitem141">
+      <object class="CtkMenuItem" id="menuitem141">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">End-Aligned Item G</property>
@@ -256,7 +256,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkMenuItem" id="menuitem142">
+      <object class="CtkMenuItem" id="menuitem142">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">End-Aligned Item H</property>
@@ -264,7 +264,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkMenuItem" id="menuitem143">
+      <object class="CtkMenuItem" id="menuitem143">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">End-Aligned Item I</property>
@@ -272,13 +272,13 @@
       </object>
     </child>
   </object>
-  <object class="GtkMenu" id="menu36">
+  <object class="CtkMenu" id="menu36">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="halign">start</property>
     <property name="valign">start</property>
     <child>
-      <object class="GtkMenuItem" id="menuitem144">
+      <object class="CtkMenuItem" id="menuitem144">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Start-Aligned Item A</property>
@@ -286,7 +286,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkMenuItem" id="menuitem145">
+      <object class="CtkMenuItem" id="menuitem145">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Start-Aligned Item B</property>
@@ -294,7 +294,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkMenuItem" id="menuitem146">
+      <object class="CtkMenuItem" id="menuitem146">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Start-Aligned Item C</property>
@@ -302,13 +302,13 @@
       </object>
     </child>
   </object>
-  <object class="GtkMenu" id="menu37">
+  <object class="CtkMenu" id="menu37">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="halign">center</property>
     <property name="valign">center</property>
     <child>
-      <object class="GtkMenuItem" id="menuitem147">
+      <object class="CtkMenuItem" id="menuitem147">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Center-Aligned Item D</property>
@@ -316,7 +316,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkMenuItem" id="menuitem148">
+      <object class="CtkMenuItem" id="menuitem148">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Center-Aligned Item E</property>
@@ -324,7 +324,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkMenuItem" id="menuitem149">
+      <object class="CtkMenuItem" id="menuitem149">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Center-Aligned Item F</property>
@@ -332,13 +332,13 @@
       </object>
     </child>
   </object>
-  <object class="GtkMenu" id="menu38">
+  <object class="CtkMenu" id="menu38">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="halign">end</property>
     <property name="valign">end</property>
     <child>
-      <object class="GtkMenuItem" id="menuitem150">
+      <object class="CtkMenuItem" id="menuitem150">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">End-Aligned Item G</property>
@@ -346,7 +346,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkMenuItem" id="menuitem151">
+      <object class="CtkMenuItem" id="menuitem151">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">End-Aligned Item H</property>
@@ -354,7 +354,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkMenuItem" id="menuitem152">
+      <object class="CtkMenuItem" id="menuitem152">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">End-Aligned Item I</property>
@@ -362,13 +362,13 @@
       </object>
     </child>
   </object>
-  <object class="GtkMenu" id="menu39">
+  <object class="CtkMenu" id="menu39">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="halign">start</property>
     <property name="valign">start</property>
     <child>
-      <object class="GtkMenuItem" id="menuitem153">
+      <object class="CtkMenuItem" id="menuitem153">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Start-Aligned Item A</property>
@@ -376,7 +376,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkMenuItem" id="menuitem154">
+      <object class="CtkMenuItem" id="menuitem154">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Start-Aligned Item B</property>
@@ -384,7 +384,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkMenuItem" id="menuitem155">
+      <object class="CtkMenuItem" id="menuitem155">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Start-Aligned Item C</property>
@@ -392,38 +392,38 @@
       </object>
     </child>
   </object>
-  <object class="GtkTextBuffer" id="textbuffer1">
+  <object class="CtkTextBuffer" id="textbuffer1">
     <property name="text" translatable="yes">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</property>
   </object>
-  <object class="GtkWindow" id="window">
+  <object class="CtkWindow" id="window">
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkNotebook" id="notebook1">
+      <object class="CtkNotebook" id="notebook1">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="scrollable">True</property>
         <property name="enable_popup">True</property>
         <child>
-          <object class="GtkGrid" id="grid1">
+          <object class="CtkGrid" id="grid1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkMenuBar" id="menubar1">
+              <object class="CtkMenuBar" id="menubar1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">start</property>
                 <child>
-                  <object class="GtkMenuItem" id="menuitem1">
+                  <object class="CtkMenuItem" id="menuitem1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">_File</property>
                     <property name="use_underline">True</property>
                     <child type="submenu">
-                      <object class="GtkMenu" id="menu1">
+                      <object class="CtkMenu" id="menu1">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
-                          <object class="GtkImageMenuItem" id="imagemenuitem1">
+                          <object class="CtkImageMenuItem" id="imagemenuitem1">
                             <property name="label">ctk-new</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
@@ -432,7 +432,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkImageMenuItem" id="imagemenuitem2">
+                          <object class="CtkImageMenuItem" id="imagemenuitem2">
                             <property name="label">ctk-open</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
@@ -441,7 +441,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkImageMenuItem" id="imagemenuitem3">
+                          <object class="CtkImageMenuItem" id="imagemenuitem3">
                             <property name="label">ctk-save</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
@@ -450,7 +450,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkImageMenuItem" id="imagemenuitem4">
+                          <object class="CtkImageMenuItem" id="imagemenuitem4">
                             <property name="label">ctk-save-as</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
@@ -459,13 +459,13 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkSeparatorMenuItem" id="separatormenuitem1">
+                          <object class="CtkSeparatorMenuItem" id="separatormenuitem1">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                           </object>
                         </child>
                         <child>
-                          <object class="GtkImageMenuItem" id="imagemenuitem5">
+                          <object class="CtkImageMenuItem" id="imagemenuitem5">
                             <property name="label">ctk-quit</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
@@ -478,17 +478,17 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkMenuItem" id="menuitem2">
+                  <object class="CtkMenuItem" id="menuitem2">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">_Edit</property>
                     <property name="use_underline">True</property>
                     <child type="submenu">
-                      <object class="GtkMenu" id="menu2">
+                      <object class="CtkMenu" id="menu2">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
-                          <object class="GtkImageMenuItem" id="imagemenuitem6">
+                          <object class="CtkImageMenuItem" id="imagemenuitem6">
                             <property name="label">ctk-cut</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
@@ -497,7 +497,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkImageMenuItem" id="imagemenuitem7">
+                          <object class="CtkImageMenuItem" id="imagemenuitem7">
                             <property name="label">ctk-copy</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
@@ -506,7 +506,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkImageMenuItem" id="imagemenuitem8">
+                          <object class="CtkImageMenuItem" id="imagemenuitem8">
                             <property name="label">ctk-paste</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
@@ -515,7 +515,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkImageMenuItem" id="imagemenuitem9">
+                          <object class="CtkImageMenuItem" id="imagemenuitem9">
                             <property name="label">ctk-delete</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
@@ -528,7 +528,7 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkMenuItem" id="menuitem3">
+                  <object class="CtkMenuItem" id="menuitem3">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">_View</property>
@@ -536,17 +536,17 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkMenuItem" id="menuitem4">
+                  <object class="CtkMenuItem" id="menuitem4">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">_Help</property>
                     <property name="use_underline">True</property>
                     <child type="submenu">
-                      <object class="GtkMenu" id="menu3">
+                      <object class="CtkMenu" id="menu3">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
-                          <object class="GtkImageMenuItem" id="imagemenuitem10">
+                          <object class="CtkImageMenuItem" id="imagemenuitem10">
                             <property name="label">ctk-about</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
@@ -559,17 +559,17 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkMenuItem" id="menuitem72">
+                  <object class="CtkMenuItem" id="menuitem72">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Really _Tall Menu</property>
                     <property name="use_underline">True</property>
                     <child type="submenu">
-                      <object class="GtkMenu" id="menu28">
+                      <object class="CtkMenu" id="menu28">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem73">
+                          <object class="CtkMenuItem" id="menuitem73">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _A</property>
@@ -577,7 +577,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem74">
+                          <object class="CtkMenuItem" id="menuitem74">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _B</property>
@@ -585,7 +585,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem75">
+                          <object class="CtkMenuItem" id="menuitem75">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _C</property>
@@ -593,7 +593,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem76">
+                          <object class="CtkMenuItem" id="menuitem76">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _D</property>
@@ -601,7 +601,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem77">
+                          <object class="CtkMenuItem" id="menuitem77">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _E</property>
@@ -609,7 +609,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem78">
+                          <object class="CtkMenuItem" id="menuitem78">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _F</property>
@@ -617,7 +617,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem79">
+                          <object class="CtkMenuItem" id="menuitem79">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _G</property>
@@ -625,7 +625,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem80">
+                          <object class="CtkMenuItem" id="menuitem80">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _H</property>
@@ -633,7 +633,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem81">
+                          <object class="CtkMenuItem" id="menuitem81">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _I</property>
@@ -641,7 +641,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem82">
+                          <object class="CtkMenuItem" id="menuitem82">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _J</property>
@@ -649,7 +649,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem83">
+                          <object class="CtkMenuItem" id="menuitem83">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _K</property>
@@ -657,7 +657,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem84">
+                          <object class="CtkMenuItem" id="menuitem84">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _L</property>
@@ -665,7 +665,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem85">
+                          <object class="CtkMenuItem" id="menuitem85">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _M</property>
@@ -673,7 +673,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem86">
+                          <object class="CtkMenuItem" id="menuitem86">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _N</property>
@@ -681,7 +681,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem87">
+                          <object class="CtkMenuItem" id="menuitem87">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _O</property>
@@ -689,7 +689,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem88">
+                          <object class="CtkMenuItem" id="menuitem88">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _P</property>
@@ -697,7 +697,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem89">
+                          <object class="CtkMenuItem" id="menuitem89">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _Q</property>
@@ -705,7 +705,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem90">
+                          <object class="CtkMenuItem" id="menuitem90">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _R</property>
@@ -713,7 +713,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem91">
+                          <object class="CtkMenuItem" id="menuitem91">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _S</property>
@@ -721,7 +721,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem92">
+                          <object class="CtkMenuItem" id="menuitem92">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _T</property>
@@ -729,7 +729,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem93">
+                          <object class="CtkMenuItem" id="menuitem93">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _U</property>
@@ -737,7 +737,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem94">
+                          <object class="CtkMenuItem" id="menuitem94">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _V</property>
@@ -745,7 +745,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem95">
+                          <object class="CtkMenuItem" id="menuitem95">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _W</property>
@@ -753,7 +753,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem96">
+                          <object class="CtkMenuItem" id="menuitem96">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _X</property>
@@ -761,7 +761,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem97">
+                          <object class="CtkMenuItem" id="menuitem97">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _Y</property>
@@ -769,7 +769,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem98">
+                          <object class="CtkMenuItem" id="menuitem98">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _Z</property>
@@ -777,7 +777,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem156">
+                          <object class="CtkMenuItem" id="menuitem156">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item a</property>
@@ -785,7 +785,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem157">
+                          <object class="CtkMenuItem" id="menuitem157">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item b</property>
@@ -793,7 +793,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem158">
+                          <object class="CtkMenuItem" id="menuitem158">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item c</property>
@@ -801,7 +801,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem159">
+                          <object class="CtkMenuItem" id="menuitem159">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item d</property>
@@ -809,7 +809,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem160">
+                          <object class="CtkMenuItem" id="menuitem160">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item e</property>
@@ -817,7 +817,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem161">
+                          <object class="CtkMenuItem" id="menuitem161">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item f</property>
@@ -825,7 +825,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem162">
+                          <object class="CtkMenuItem" id="menuitem162">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item g</property>
@@ -833,7 +833,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem163">
+                          <object class="CtkMenuItem" id="menuitem163">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item h</property>
@@ -841,7 +841,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem164">
+                          <object class="CtkMenuItem" id="menuitem164">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item i</property>
@@ -849,7 +849,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem165">
+                          <object class="CtkMenuItem" id="menuitem165">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item j</property>
@@ -857,7 +857,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem166">
+                          <object class="CtkMenuItem" id="menuitem166">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item k</property>
@@ -865,7 +865,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem167">
+                          <object class="CtkMenuItem" id="menuitem167">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item l</property>
@@ -873,7 +873,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem168">
+                          <object class="CtkMenuItem" id="menuitem168">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item m</property>
@@ -881,7 +881,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem169">
+                          <object class="CtkMenuItem" id="menuitem169">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item n</property>
@@ -889,7 +889,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem170">
+                          <object class="CtkMenuItem" id="menuitem170">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item o</property>
@@ -897,7 +897,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem171">
+                          <object class="CtkMenuItem" id="menuitem171">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item p</property>
@@ -905,7 +905,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem172">
+                          <object class="CtkMenuItem" id="menuitem172">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item q</property>
@@ -913,7 +913,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem173">
+                          <object class="CtkMenuItem" id="menuitem173">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item r</property>
@@ -921,7 +921,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem174">
+                          <object class="CtkMenuItem" id="menuitem174">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item s</property>
@@ -929,7 +929,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem175">
+                          <object class="CtkMenuItem" id="menuitem175">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item t</property>
@@ -937,7 +937,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem176">
+                          <object class="CtkMenuItem" id="menuitem176">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item u</property>
@@ -945,7 +945,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem177">
+                          <object class="CtkMenuItem" id="menuitem177">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item v</property>
@@ -953,7 +953,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem178">
+                          <object class="CtkMenuItem" id="menuitem178">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item w</property>
@@ -961,7 +961,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem179">
+                          <object class="CtkMenuItem" id="menuitem179">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item x</property>
@@ -969,7 +969,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem180">
+                          <object class="CtkMenuItem" id="menuitem180">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item y</property>
@@ -977,7 +977,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem181">
+                          <object class="CtkMenuItem" id="menuitem181">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item z</property>
@@ -989,17 +989,17 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkMenuItem" id="menuitem5">
+                  <object class="CtkMenuItem" id="menuitem5">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Really _Deep Menu</property>
                     <property name="use_underline">True</property>
                     <child type="submenu">
-                      <object class="GtkMenu" id="menu4">
+                      <object class="CtkMenu" id="menu4">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem6">
+                          <object class="CtkMenuItem" id="menuitem6">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _A</property>
@@ -1007,7 +1007,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem7">
+                          <object class="CtkMenuItem" id="menuitem7">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _B</property>
@@ -1015,17 +1015,17 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem8">
+                          <object class="CtkMenuItem" id="menuitem8">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _C</property>
                             <property name="use_underline">True</property>
                             <child type="submenu">
-                              <object class="GtkMenu" id="menu5">
+                              <object class="CtkMenu" id="menu5">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <child>
-                                  <object class="GtkMenuItem" id="menuitem9">
+                                  <object class="CtkMenuItem" id="menuitem9">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
                                     <property name="label" translatable="yes">Item _D</property>
@@ -1033,7 +1033,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkMenuItem" id="menuitem10">
+                                  <object class="CtkMenuItem" id="menuitem10">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
                                     <property name="label" translatable="yes">Item _E</property>
@@ -1041,17 +1041,17 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkMenuItem" id="menuitem11">
+                                  <object class="CtkMenuItem" id="menuitem11">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
                                     <property name="label" translatable="yes">Item _F</property>
                                     <property name="use_underline">True</property>
                                     <child type="submenu">
-                                      <object class="GtkMenu" id="menu6">
+                                      <object class="CtkMenu" id="menu6">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
                                         <child>
-                                          <object class="GtkMenuItem" id="menuitem12">
+                                          <object class="CtkMenuItem" id="menuitem12">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
                                             <property name="label" translatable="yes">Item _G</property>
@@ -1059,7 +1059,7 @@
                                           </object>
                                         </child>
                                         <child>
-                                          <object class="GtkMenuItem" id="menuitem13">
+                                          <object class="CtkMenuItem" id="menuitem13">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
                                             <property name="label" translatable="yes">Item _H</property>
@@ -1067,17 +1067,17 @@
                                           </object>
                                         </child>
                                         <child>
-                                          <object class="GtkMenuItem" id="menuitem14">
+                                          <object class="CtkMenuItem" id="menuitem14">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
                                             <property name="label" translatable="yes">Item _I</property>
                                             <property name="use_underline">True</property>
                                             <child type="submenu">
-                                              <object class="GtkMenu" id="menu7">
+                                              <object class="CtkMenu" id="menu7">
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">False</property>
                                                 <child>
-                                                  <object class="GtkMenuItem" id="menuitem15">
+                                                  <object class="CtkMenuItem" id="menuitem15">
                                                     <property name="visible">True</property>
                                                     <property name="can_focus">False</property>
                                                     <property name="label" translatable="yes">Item _J</property>
@@ -1085,7 +1085,7 @@
                                                   </object>
                                                 </child>
                                                 <child>
-                                                  <object class="GtkMenuItem" id="menuitem16">
+                                                  <object class="CtkMenuItem" id="menuitem16">
                                                     <property name="visible">True</property>
                                                     <property name="can_focus">False</property>
                                                     <property name="label" translatable="yes">Item _K</property>
@@ -1093,17 +1093,17 @@
                                                   </object>
                                                 </child>
                                                 <child>
-                                                  <object class="GtkMenuItem" id="menuitem17">
+                                                  <object class="CtkMenuItem" id="menuitem17">
                                                     <property name="visible">True</property>
                                                     <property name="can_focus">False</property>
                                                     <property name="label" translatable="yes">Item _L</property>
                                                     <property name="use_underline">True</property>
                                                     <child type="submenu">
-                                                      <object class="GtkMenu" id="menu8">
+                                                      <object class="CtkMenu" id="menu8">
                                                         <property name="visible">True</property>
                                                         <property name="can_focus">False</property>
                                                         <child>
-                                                          <object class="GtkMenuItem" id="menuitem18">
+                                                          <object class="CtkMenuItem" id="menuitem18">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="label" translatable="yes">Item _M</property>
@@ -1111,7 +1111,7 @@
                                                           </object>
                                                         </child>
                                                         <child>
-                                                          <object class="GtkMenuItem" id="menuitem19">
+                                                          <object class="CtkMenuItem" id="menuitem19">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="label" translatable="yes">Item _N</property>
@@ -1119,17 +1119,17 @@
                                                           </object>
                                                         </child>
                                                         <child>
-                                                          <object class="GtkMenuItem" id="menuitem20">
+                                                          <object class="CtkMenuItem" id="menuitem20">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="label" translatable="yes">Item _O</property>
                                                             <property name="use_underline">True</property>
                                                             <child type="submenu">
-                                                            <object class="GtkMenu" id="menu9">
+                                                            <object class="CtkMenu" id="menu9">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <child>
-                                                            <object class="GtkMenuItem" id="menuitem21">
+                                                            <object class="CtkMenuItem" id="menuitem21">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="label" translatable="yes">Item _P</property>
@@ -1137,7 +1137,7 @@
                                                             </object>
                                                             </child>
                                                             <child>
-                                                            <object class="GtkMenuItem" id="menuitem22">
+                                                            <object class="CtkMenuItem" id="menuitem22">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="label" translatable="yes">Item _Q</property>
@@ -1145,17 +1145,17 @@
                                                             </object>
                                                             </child>
                                                             <child>
-                                                            <object class="GtkMenuItem" id="menuitem23">
+                                                            <object class="CtkMenuItem" id="menuitem23">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="label" translatable="yes">Item _R</property>
                                                             <property name="use_underline">True</property>
                                                             <child type="submenu">
-                                                            <object class="GtkMenu" id="menu10">
+                                                            <object class="CtkMenu" id="menu10">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <child>
-                                                            <object class="GtkMenuItem" id="menuitem24">
+                                                            <object class="CtkMenuItem" id="menuitem24">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="label" translatable="yes">Item _S</property>
@@ -1163,7 +1163,7 @@
                                                             </object>
                                                             </child>
                                                             <child>
-                                                            <object class="GtkMenuItem" id="menuitem25">
+                                                            <object class="CtkMenuItem" id="menuitem25">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="label" translatable="yes">Item _T</property>
@@ -1171,17 +1171,17 @@
                                                             </object>
                                                             </child>
                                                             <child>
-                                                            <object class="GtkMenuItem" id="menuitem26">
+                                                            <object class="CtkMenuItem" id="menuitem26">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="label" translatable="yes">Item _U</property>
                                                             <property name="use_underline">True</property>
                                                             <child type="submenu">
-                                                            <object class="GtkMenu" id="menu11">
+                                                            <object class="CtkMenu" id="menu11">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <child>
-                                                            <object class="GtkMenuItem" id="menuitem27">
+                                                            <object class="CtkMenuItem" id="menuitem27">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="label" translatable="yes">Item _V</property>
@@ -1189,7 +1189,7 @@
                                                             </object>
                                                             </child>
                                                             <child>
-                                                            <object class="GtkMenuItem" id="menuitem28">
+                                                            <object class="CtkMenuItem" id="menuitem28">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="label" translatable="yes">Item _W</property>
@@ -1197,17 +1197,17 @@
                                                             </object>
                                                             </child>
                                                             <child>
-                                                            <object class="GtkMenuItem" id="menuitem29">
+                                                            <object class="CtkMenuItem" id="menuitem29">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="label" translatable="yes">Item _X</property>
                                                             <property name="use_underline">True</property>
                                                             <child type="submenu">
-                                                            <object class="GtkMenu" id="menu12">
+                                                            <object class="CtkMenu" id="menu12">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <child>
-                                                            <object class="GtkMenuItem" id="menuitem30">
+                                                            <object class="CtkMenuItem" id="menuitem30">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="label" translatable="yes">Item _Y</property>
@@ -1215,7 +1215,7 @@
                                                             </object>
                                                             </child>
                                                             <child>
-                                                            <object class="GtkMenuItem" id="menuitem31">
+                                                            <object class="CtkMenuItem" id="menuitem31">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="label" translatable="yes">Item _Z</property>
@@ -1265,23 +1265,23 @@
               </packing>
             </child>
             <child>
-              <object class="GtkMenuBar" id="menubar2">
+              <object class="CtkMenuBar" id="menubar2">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="pack_direction">ttb</property>
                 <child>
-                  <object class="GtkMenuItem" id="menuitem32">
+                  <object class="CtkMenuItem" id="menuitem32">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">_File</property>
                     <property name="use_underline">True</property>
                     <child type="submenu">
-                      <object class="GtkMenu" id="menu13">
+                      <object class="CtkMenu" id="menu13">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
-                          <object class="GtkImageMenuItem" id="imagemenuitem11">
+                          <object class="CtkImageMenuItem" id="imagemenuitem11">
                             <property name="label">ctk-new</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
@@ -1290,7 +1290,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkImageMenuItem" id="imagemenuitem12">
+                          <object class="CtkImageMenuItem" id="imagemenuitem12">
                             <property name="label">ctk-open</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
@@ -1299,7 +1299,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkImageMenuItem" id="imagemenuitem13">
+                          <object class="CtkImageMenuItem" id="imagemenuitem13">
                             <property name="label">ctk-save</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
@@ -1308,7 +1308,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkImageMenuItem" id="imagemenuitem14">
+                          <object class="CtkImageMenuItem" id="imagemenuitem14">
                             <property name="label">ctk-save-as</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
@@ -1317,13 +1317,13 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkSeparatorMenuItem" id="separatormenuitem2">
+                          <object class="CtkSeparatorMenuItem" id="separatormenuitem2">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                           </object>
                         </child>
                         <child>
-                          <object class="GtkImageMenuItem" id="imagemenuitem15">
+                          <object class="CtkImageMenuItem" id="imagemenuitem15">
                             <property name="label">ctk-quit</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
@@ -1336,17 +1336,17 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkMenuItem" id="menuitem33">
+                  <object class="CtkMenuItem" id="menuitem33">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">_Edit</property>
                     <property name="use_underline">True</property>
                     <child type="submenu">
-                      <object class="GtkMenu" id="menu14">
+                      <object class="CtkMenu" id="menu14">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
-                          <object class="GtkImageMenuItem" id="imagemenuitem16">
+                          <object class="CtkImageMenuItem" id="imagemenuitem16">
                             <property name="label">ctk-cut</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
@@ -1355,7 +1355,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkImageMenuItem" id="imagemenuitem17">
+                          <object class="CtkImageMenuItem" id="imagemenuitem17">
                             <property name="label">ctk-copy</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
@@ -1364,7 +1364,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkImageMenuItem" id="imagemenuitem18">
+                          <object class="CtkImageMenuItem" id="imagemenuitem18">
                             <property name="label">ctk-paste</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
@@ -1373,7 +1373,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkImageMenuItem" id="imagemenuitem19">
+                          <object class="CtkImageMenuItem" id="imagemenuitem19">
                             <property name="label">ctk-delete</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
@@ -1386,7 +1386,7 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkMenuItem" id="menuitem34">
+                  <object class="CtkMenuItem" id="menuitem34">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">_View</property>
@@ -1394,17 +1394,17 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkMenuItem" id="menuitem35">
+                  <object class="CtkMenuItem" id="menuitem35">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">_Help</property>
                     <property name="use_underline">True</property>
                     <child type="submenu">
-                      <object class="GtkMenu" id="menu15">
+                      <object class="CtkMenu" id="menu15">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
-                          <object class="GtkImageMenuItem" id="imagemenuitem20">
+                          <object class="CtkImageMenuItem" id="imagemenuitem20">
                             <property name="label">ctk-about</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
@@ -1417,17 +1417,17 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkMenuItem" id="menuitem99">
+                  <object class="CtkMenuItem" id="menuitem99">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Really _Tall Menu</property>
                     <property name="use_underline">True</property>
                     <child type="submenu">
-                      <object class="GtkMenu" id="menu29">
+                      <object class="CtkMenu" id="menu29">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem100">
+                          <object class="CtkMenuItem" id="menuitem100">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _A</property>
@@ -1435,7 +1435,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem101">
+                          <object class="CtkMenuItem" id="menuitem101">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _B</property>
@@ -1443,7 +1443,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem102">
+                          <object class="CtkMenuItem" id="menuitem102">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _C</property>
@@ -1451,7 +1451,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem103">
+                          <object class="CtkMenuItem" id="menuitem103">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _D</property>
@@ -1459,7 +1459,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem104">
+                          <object class="CtkMenuItem" id="menuitem104">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _E</property>
@@ -1467,7 +1467,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem105">
+                          <object class="CtkMenuItem" id="menuitem105">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _F</property>
@@ -1475,7 +1475,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem106">
+                          <object class="CtkMenuItem" id="menuitem106">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _G</property>
@@ -1483,7 +1483,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem107">
+                          <object class="CtkMenuItem" id="menuitem107">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _H</property>
@@ -1491,7 +1491,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem108">
+                          <object class="CtkMenuItem" id="menuitem108">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _I</property>
@@ -1499,7 +1499,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem109">
+                          <object class="CtkMenuItem" id="menuitem109">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _J</property>
@@ -1507,7 +1507,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem110">
+                          <object class="CtkMenuItem" id="menuitem110">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _K</property>
@@ -1515,7 +1515,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem111">
+                          <object class="CtkMenuItem" id="menuitem111">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _L</property>
@@ -1523,7 +1523,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem112">
+                          <object class="CtkMenuItem" id="menuitem112">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _M</property>
@@ -1531,7 +1531,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem113">
+                          <object class="CtkMenuItem" id="menuitem113">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _N</property>
@@ -1539,7 +1539,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem114">
+                          <object class="CtkMenuItem" id="menuitem114">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _O</property>
@@ -1547,7 +1547,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem115">
+                          <object class="CtkMenuItem" id="menuitem115">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _P</property>
@@ -1555,7 +1555,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem116">
+                          <object class="CtkMenuItem" id="menuitem116">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _Q</property>
@@ -1563,7 +1563,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem117">
+                          <object class="CtkMenuItem" id="menuitem117">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _R</property>
@@ -1571,7 +1571,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem118">
+                          <object class="CtkMenuItem" id="menuitem118">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _S</property>
@@ -1579,7 +1579,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem119">
+                          <object class="CtkMenuItem" id="menuitem119">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _T</property>
@@ -1587,7 +1587,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem120">
+                          <object class="CtkMenuItem" id="menuitem120">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _U</property>
@@ -1595,7 +1595,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem121">
+                          <object class="CtkMenuItem" id="menuitem121">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _V</property>
@@ -1603,7 +1603,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem122">
+                          <object class="CtkMenuItem" id="menuitem122">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _W</property>
@@ -1611,7 +1611,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem123">
+                          <object class="CtkMenuItem" id="menuitem123">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _X</property>
@@ -1619,7 +1619,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem124">
+                          <object class="CtkMenuItem" id="menuitem124">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _Y</property>
@@ -1627,7 +1627,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem125">
+                          <object class="CtkMenuItem" id="menuitem125">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _Z</property>
@@ -1635,7 +1635,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem182">
+                          <object class="CtkMenuItem" id="menuitem182">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item a</property>
@@ -1643,7 +1643,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem183">
+                          <object class="CtkMenuItem" id="menuitem183">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item b</property>
@@ -1651,7 +1651,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem184">
+                          <object class="CtkMenuItem" id="menuitem184">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item c</property>
@@ -1659,7 +1659,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem185">
+                          <object class="CtkMenuItem" id="menuitem185">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item d</property>
@@ -1667,7 +1667,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem186">
+                          <object class="CtkMenuItem" id="menuitem186">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item e</property>
@@ -1675,7 +1675,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem187">
+                          <object class="CtkMenuItem" id="menuitem187">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item f</property>
@@ -1683,7 +1683,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem188">
+                          <object class="CtkMenuItem" id="menuitem188">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item g</property>
@@ -1691,7 +1691,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem189">
+                          <object class="CtkMenuItem" id="menuitem189">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item h</property>
@@ -1699,7 +1699,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem190">
+                          <object class="CtkMenuItem" id="menuitem190">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item i</property>
@@ -1707,7 +1707,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem191">
+                          <object class="CtkMenuItem" id="menuitem191">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item j</property>
@@ -1715,7 +1715,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem192">
+                          <object class="CtkMenuItem" id="menuitem192">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item k</property>
@@ -1723,7 +1723,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem193">
+                          <object class="CtkMenuItem" id="menuitem193">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item l</property>
@@ -1731,7 +1731,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem194">
+                          <object class="CtkMenuItem" id="menuitem194">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item m</property>
@@ -1739,7 +1739,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem195">
+                          <object class="CtkMenuItem" id="menuitem195">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item n</property>
@@ -1747,7 +1747,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem196">
+                          <object class="CtkMenuItem" id="menuitem196">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item o</property>
@@ -1755,7 +1755,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem197">
+                          <object class="CtkMenuItem" id="menuitem197">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item p</property>
@@ -1763,7 +1763,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem198">
+                          <object class="CtkMenuItem" id="menuitem198">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item q</property>
@@ -1771,7 +1771,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem199">
+                          <object class="CtkMenuItem" id="menuitem199">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item r</property>
@@ -1779,7 +1779,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem200">
+                          <object class="CtkMenuItem" id="menuitem200">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item s</property>
@@ -1787,7 +1787,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem201">
+                          <object class="CtkMenuItem" id="menuitem201">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item t</property>
@@ -1795,7 +1795,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem202">
+                          <object class="CtkMenuItem" id="menuitem202">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item u</property>
@@ -1803,7 +1803,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem203">
+                          <object class="CtkMenuItem" id="menuitem203">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item v</property>
@@ -1811,7 +1811,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem204">
+                          <object class="CtkMenuItem" id="menuitem204">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item w</property>
@@ -1819,7 +1819,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem205">
+                          <object class="CtkMenuItem" id="menuitem205">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item x</property>
@@ -1827,7 +1827,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem206">
+                          <object class="CtkMenuItem" id="menuitem206">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item y</property>
@@ -1835,7 +1835,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem207">
+                          <object class="CtkMenuItem" id="menuitem207">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item z</property>
@@ -1847,17 +1847,17 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkMenuItem" id="menuitem36">
+                  <object class="CtkMenuItem" id="menuitem36">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Really _Deep Menu</property>
                     <property name="use_underline">True</property>
                     <child type="submenu">
-                      <object class="GtkMenu" id="menu16">
+                      <object class="CtkMenu" id="menu16">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem37">
+                          <object class="CtkMenuItem" id="menuitem37">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _A</property>
@@ -1865,7 +1865,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem38">
+                          <object class="CtkMenuItem" id="menuitem38">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _B</property>
@@ -1873,17 +1873,17 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkMenuItem" id="menuitem39">
+                          <object class="CtkMenuItem" id="menuitem39">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Item _C</property>
                             <property name="use_underline">True</property>
                             <child type="submenu">
-                              <object class="GtkMenu" id="menu17">
+                              <object class="CtkMenu" id="menu17">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <child>
-                                  <object class="GtkMenuItem" id="menuitem40">
+                                  <object class="CtkMenuItem" id="menuitem40">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
                                     <property name="label" translatable="yes">Item _D</property>
@@ -1891,7 +1891,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkMenuItem" id="menuitem41">
+                                  <object class="CtkMenuItem" id="menuitem41">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
                                     <property name="label" translatable="yes">Item _E</property>
@@ -1899,17 +1899,17 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkMenuItem" id="menuitem42">
+                                  <object class="CtkMenuItem" id="menuitem42">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
                                     <property name="label" translatable="yes">Item _F</property>
                                     <property name="use_underline">True</property>
                                     <child type="submenu">
-                                      <object class="GtkMenu" id="menu18">
+                                      <object class="CtkMenu" id="menu18">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
                                         <child>
-                                          <object class="GtkMenuItem" id="menuitem43">
+                                          <object class="CtkMenuItem" id="menuitem43">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
                                             <property name="label" translatable="yes">Item _G</property>
@@ -1917,7 +1917,7 @@
                                           </object>
                                         </child>
                                         <child>
-                                          <object class="GtkMenuItem" id="menuitem44">
+                                          <object class="CtkMenuItem" id="menuitem44">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
                                             <property name="label" translatable="yes">Item _H</property>
@@ -1925,17 +1925,17 @@
                                           </object>
                                         </child>
                                         <child>
-                                          <object class="GtkMenuItem" id="menuitem45">
+                                          <object class="CtkMenuItem" id="menuitem45">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
                                             <property name="label" translatable="yes">Item _I</property>
                                             <property name="use_underline">True</property>
                                             <child type="submenu">
-                                              <object class="GtkMenu" id="menu19">
+                                              <object class="CtkMenu" id="menu19">
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">False</property>
                                                 <child>
-                                                  <object class="GtkMenuItem" id="menuitem46">
+                                                  <object class="CtkMenuItem" id="menuitem46">
                                                     <property name="visible">True</property>
                                                     <property name="can_focus">False</property>
                                                     <property name="label" translatable="yes">Item _J</property>
@@ -1943,7 +1943,7 @@
                                                   </object>
                                                 </child>
                                                 <child>
-                                                  <object class="GtkMenuItem" id="menuitem47">
+                                                  <object class="CtkMenuItem" id="menuitem47">
                                                     <property name="visible">True</property>
                                                     <property name="can_focus">False</property>
                                                     <property name="label" translatable="yes">Item _K</property>
@@ -1951,17 +1951,17 @@
                                                   </object>
                                                 </child>
                                                 <child>
-                                                  <object class="GtkMenuItem" id="menuitem48">
+                                                  <object class="CtkMenuItem" id="menuitem48">
                                                     <property name="visible">True</property>
                                                     <property name="can_focus">False</property>
                                                     <property name="label" translatable="yes">Item _L</property>
                                                     <property name="use_underline">True</property>
                                                     <child type="submenu">
-                                                      <object class="GtkMenu" id="menu20">
+                                                      <object class="CtkMenu" id="menu20">
                                                         <property name="visible">True</property>
                                                         <property name="can_focus">False</property>
                                                         <child>
-                                                          <object class="GtkMenuItem" id="menuitem49">
+                                                          <object class="CtkMenuItem" id="menuitem49">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="label" translatable="yes">Item _M</property>
@@ -1969,7 +1969,7 @@
                                                           </object>
                                                         </child>
                                                         <child>
-                                                          <object class="GtkMenuItem" id="menuitem50">
+                                                          <object class="CtkMenuItem" id="menuitem50">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="label" translatable="yes">Item _N</property>
@@ -1977,17 +1977,17 @@
                                                           </object>
                                                         </child>
                                                         <child>
-                                                          <object class="GtkMenuItem" id="menuitem51">
+                                                          <object class="CtkMenuItem" id="menuitem51">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="label" translatable="yes">Item _O</property>
                                                             <property name="use_underline">True</property>
                                                             <child type="submenu">
-                                                            <object class="GtkMenu" id="menu21">
+                                                            <object class="CtkMenu" id="menu21">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <child>
-                                                            <object class="GtkMenuItem" id="menuitem52">
+                                                            <object class="CtkMenuItem" id="menuitem52">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="label" translatable="yes">Item _P</property>
@@ -1995,7 +1995,7 @@
                                                             </object>
                                                             </child>
                                                             <child>
-                                                            <object class="GtkMenuItem" id="menuitem53">
+                                                            <object class="CtkMenuItem" id="menuitem53">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="label" translatable="yes">Item _Q</property>
@@ -2003,17 +2003,17 @@
                                                             </object>
                                                             </child>
                                                             <child>
-                                                            <object class="GtkMenuItem" id="menuitem54">
+                                                            <object class="CtkMenuItem" id="menuitem54">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="label" translatable="yes">Item _R</property>
                                                             <property name="use_underline">True</property>
                                                             <child type="submenu">
-                                                            <object class="GtkMenu" id="menu22">
+                                                            <object class="CtkMenu" id="menu22">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <child>
-                                                            <object class="GtkMenuItem" id="menuitem55">
+                                                            <object class="CtkMenuItem" id="menuitem55">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="label" translatable="yes">Item _S</property>
@@ -2021,7 +2021,7 @@
                                                             </object>
                                                             </child>
                                                             <child>
-                                                            <object class="GtkMenuItem" id="menuitem56">
+                                                            <object class="CtkMenuItem" id="menuitem56">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="label" translatable="yes">Item _T</property>
@@ -2029,17 +2029,17 @@
                                                             </object>
                                                             </child>
                                                             <child>
-                                                            <object class="GtkMenuItem" id="menuitem57">
+                                                            <object class="CtkMenuItem" id="menuitem57">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="label" translatable="yes">Item _U</property>
                                                             <property name="use_underline">True</property>
                                                             <child type="submenu">
-                                                            <object class="GtkMenu" id="menu23">
+                                                            <object class="CtkMenu" id="menu23">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <child>
-                                                            <object class="GtkMenuItem" id="menuitem58">
+                                                            <object class="CtkMenuItem" id="menuitem58">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="label" translatable="yes">Item _V</property>
@@ -2047,7 +2047,7 @@
                                                             </object>
                                                             </child>
                                                             <child>
-                                                            <object class="GtkMenuItem" id="menuitem59">
+                                                            <object class="CtkMenuItem" id="menuitem59">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="label" translatable="yes">Item _W</property>
@@ -2055,17 +2055,17 @@
                                                             </object>
                                                             </child>
                                                             <child>
-                                                            <object class="GtkMenuItem" id="menuitem60">
+                                                            <object class="CtkMenuItem" id="menuitem60">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="label" translatable="yes">Item _X</property>
                                                             <property name="use_underline">True</property>
                                                             <child type="submenu">
-                                                            <object class="GtkMenu" id="menu24">
+                                                            <object class="CtkMenu" id="menu24">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <child>
-                                                            <object class="GtkMenuItem" id="menuitem61">
+                                                            <object class="CtkMenuItem" id="menuitem61">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="label" translatable="yes">Item _Y</property>
@@ -2073,7 +2073,7 @@
                                                             </object>
                                                             </child>
                                                             <child>
-                                                            <object class="GtkMenuItem" id="menuitem62">
+                                                            <object class="CtkMenuItem" id="menuitem62">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="label" translatable="yes">Item _Z</property>
@@ -2125,21 +2125,21 @@
           </object>
         </child>
         <child type="tab">
-          <object class="GtkLabel" id="label1">
+          <object class="CtkLabel" id="label1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">GtkMenu</property>
+            <property name="label" translatable="yes">CtkMenu</property>
           </object>
           <packing>
             <property name="tab_fill">False</property>
           </packing>
         </child>
         <child>
-          <object class="GtkGrid" id="grid2">
+          <object class="CtkGrid" id="grid2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkMenuButton" id="menubutton1">
+              <object class="CtkMenuButton" id="menubutton1">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -2157,7 +2157,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkMenuButton" id="menubutton2">
+              <object class="CtkMenuButton" id="menubutton2">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -2176,7 +2176,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkMenuButton" id="menubutton3">
+              <object class="CtkMenuButton" id="menubutton3">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -2195,7 +2195,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkMenuButton" id="menubutton4">
+              <object class="CtkMenuButton" id="menubutton4">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -2214,7 +2214,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkMenuButton" id="menubutton5">
+              <object class="CtkMenuButton" id="menubutton5">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -2233,7 +2233,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkMenuButton" id="menubutton6">
+              <object class="CtkMenuButton" id="menubutton6">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -2252,7 +2252,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkMenuButton" id="menubutton7">
+              <object class="CtkMenuButton" id="menubutton7">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -2271,7 +2271,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkMenuButton" id="menubutton8">
+              <object class="CtkMenuButton" id="menubutton8">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -2289,7 +2289,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkMenuButton" id="menubutton9">
+              <object class="CtkMenuButton" id="menubutton9">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -2307,7 +2307,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkMenuButton" id="menubutton10">
+              <object class="CtkMenuButton" id="menubutton10">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -2325,7 +2325,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkMenuButton" id="menubutton11">
+              <object class="CtkMenuButton" id="menubutton11">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -2344,7 +2344,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkMenuButton" id="menubutton12">
+              <object class="CtkMenuButton" id="menubutton12">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -2363,7 +2363,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkMenuButton" id="menubutton13">
+              <object class="CtkMenuButton" id="menubutton13">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -2423,10 +2423,10 @@
           </packing>
         </child>
         <child type="tab">
-          <object class="GtkLabel" id="label2">
+          <object class="CtkLabel" id="label2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">GtkMenuButton</property>
+            <property name="label" translatable="yes">CtkMenuButton</property>
           </object>
           <packing>
             <property name="position">1</property>
@@ -2434,7 +2434,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label4">
+          <object class="CtkLabel" id="label4">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
@@ -2447,10 +2447,10 @@
           </packing>
         </child>
         <child type="tab">
-          <object class="GtkLabel" id="label3">
+          <object class="CtkLabel" id="label3">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">GtkLabel</property>
+            <property name="label" translatable="yes">CtkLabel</property>
           </object>
           <packing>
             <property name="position">2</property>
@@ -2458,7 +2458,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLinkButton" id="linkbutton1">
+          <object class="CtkLinkButton" id="linkbutton1">
             <property name="label" translatable="yes">https://planet.gnome.org</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -2473,10 +2473,10 @@
           </packing>
         </child>
         <child type="tab">
-          <object class="GtkLabel" id="label5">
+          <object class="CtkLabel" id="label5">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">GtkLinkButton</property>
+            <property name="label" translatable="yes">CtkLinkButton</property>
           </object>
           <packing>
             <property name="position">3</property>
@@ -2484,16 +2484,16 @@
           </packing>
         </child>
         <child>
-          <object class="GtkGrid" id="grid3">
+          <object class="CtkGrid" id="grid3">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkToolbar" id="toolbar1">
+              <object class="CtkToolbar" id="toolbar1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">start</property>
                 <child>
-                  <object class="GtkToolButton" id="toolbutton1">
+                  <object class="CtkToolButton" id="toolbutton1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Tool Button A</property>
@@ -2505,7 +2505,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkToolButton" id="toolbutton2">
+                  <object class="CtkToolButton" id="toolbutton2">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Tool Button B</property>
@@ -2517,7 +2517,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkToolButton" id="toolbutton3">
+                  <object class="CtkToolButton" id="toolbutton3">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Tool Button C</property>
@@ -2529,7 +2529,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkToolButton" id="toolbutton4">
+                  <object class="CtkToolButton" id="toolbutton4">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Tool Button D</property>
@@ -2541,7 +2541,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkToolButton" id="toolbutton5">
+                  <object class="CtkToolButton" id="toolbutton5">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Tool Button E</property>
@@ -2559,13 +2559,13 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToolbar" id="toolbar2">
+              <object class="CtkToolbar" id="toolbar2">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkToolButton" id="toolbutton6">
+                  <object class="CtkToolButton" id="toolbutton6">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Tool Button F</property>
@@ -2577,7 +2577,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkToolButton" id="toolbutton7">
+                  <object class="CtkToolButton" id="toolbutton7">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Tool Button G</property>
@@ -2589,7 +2589,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkToolButton" id="toolbutton8">
+                  <object class="CtkToolButton" id="toolbutton8">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Tool Button H</property>
@@ -2601,7 +2601,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkToolButton" id="toolbutton9">
+                  <object class="CtkToolButton" id="toolbutton9">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Tool Button I</property>
@@ -2613,7 +2613,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkToolButton" id="toolbutton10">
+                  <object class="CtkToolButton" id="toolbutton10">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Tool Button J</property>
@@ -2625,7 +2625,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkToolButton" id="toolbutton11">
+                  <object class="CtkToolButton" id="toolbutton11">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Tool Button K</property>
@@ -2637,7 +2637,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkToolButton" id="toolbutton12">
+                  <object class="CtkToolButton" id="toolbutton12">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Tool Button L</property>
@@ -2649,7 +2649,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkToolButton" id="toolbutton13">
+                  <object class="CtkToolButton" id="toolbutton13">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Tool Button M</property>
@@ -2661,7 +2661,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkToolButton" id="toolbutton14">
+                  <object class="CtkToolButton" id="toolbutton14">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Tool Button N</property>
@@ -2673,7 +2673,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkToolButton" id="toolbutton15">
+                  <object class="CtkToolButton" id="toolbutton15">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Tool Button O</property>
@@ -2685,7 +2685,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkToolButton" id="toolbutton16">
+                  <object class="CtkToolButton" id="toolbutton16">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Tool Button P</property>
@@ -2697,7 +2697,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkToolButton" id="toolbutton17">
+                  <object class="CtkToolButton" id="toolbutton17">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Tool Button Q</property>
@@ -2720,10 +2720,10 @@
           </packing>
         </child>
         <child type="tab">
-          <object class="GtkLabel" id="label6">
+          <object class="CtkLabel" id="label6">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">GtkToolbar</property>
+            <property name="label" translatable="yes">CtkToolbar</property>
           </object>
           <packing>
             <property name="position">4</property>
@@ -2731,7 +2731,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkEntry" id="entry1">
+          <object class="CtkEntry" id="entry1">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="halign">center</property>
@@ -2743,10 +2743,10 @@
           </packing>
         </child>
         <child type="tab">
-          <object class="GtkLabel" id="label7">
+          <object class="CtkLabel" id="label7">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">GtkEntry</property>
+            <property name="label" translatable="yes">CtkEntry</property>
           </object>
           <packing>
             <property name="position">5</property>
@@ -2754,7 +2754,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkTextView" id="textview1">
+          <object class="CtkTextView" id="textview1">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="wrap_mode">word</property>
@@ -2765,10 +2765,10 @@
           </packing>
         </child>
         <child type="tab">
-          <object class="GtkLabel" id="label8">
+          <object class="CtkLabel" id="label8">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">GtkTextView</property>
+            <property name="label" translatable="yes">CtkTextView</property>
           </object>
           <packing>
             <property name="position">6</property>
@@ -2776,11 +2776,11 @@
           </packing>
         </child>
         <child>
-          <object class="GtkGrid" id="grid4">
+          <object class="CtkGrid" id="grid4">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkComboBoxText" id="comboboxtext1">
+              <object class="CtkComboBoxText" id="comboboxtext1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
@@ -2796,7 +2796,7 @@
                   <item translatable="yes">Combo Box Item E</item>
                 </items>
                 <child internal-child="entry">
-                  <object class="GtkEntry" id="comboboxtext-entry">
+                  <object class="CtkEntry" id="comboboxtext-entry">
                     <property name="can_focus">False</property>
                   </object>
                 </child>
@@ -2807,7 +2807,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkComboBoxText" id="comboboxtext2">
+              <object class="CtkComboBoxText" id="comboboxtext2">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
@@ -2833,10 +2833,10 @@
           </packing>
         </child>
         <child type="tab">
-          <object class="GtkLabel" id="label9">
+          <object class="CtkLabel" id="label9">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">GtkComboBox</property>
+            <property name="label" translatable="yes">CtkComboBox</property>
           </object>
           <packing>
             <property name="position">7</property>
@@ -2844,7 +2844,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkAppChooserWidget" id="appchooserwidget">
+          <object class="CtkAppChooserWidget" id="appchooserwidget">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="content_type">text/plain</property>
@@ -2854,10 +2854,10 @@
           </packing>
         </child>
         <child type="tab">
-          <object class="GtkLabel" id="label10">
+          <object class="CtkLabel" id="label10">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">GtkAppChooserWidget</property>
+            <property name="label" translatable="yes">CtkAppChooserWidget</property>
           </object>
           <packing>
             <property name="position">8</property>
@@ -2865,7 +2865,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkFileChooserWidget" id="filechooserwidget1">
+          <object class="CtkFileChooserWidget" id="filechooserwidget1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
           </object>
@@ -2874,10 +2874,10 @@
           </packing>
         </child>
         <child type="tab">
-          <object class="GtkLabel" id="label11">
+          <object class="CtkLabel" id="label11">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">GtkMountOperation/GtkPlacesView</property>
+            <property name="label" translatable="yes">CtkMountOperation/CtkPlacesView</property>
           </object>
           <packing>
             <property name="position">9</property>
@@ -2885,7 +2885,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkRecentChooserWidget" id="recentchooser1">
+          <object class="CtkRecentChooserWidget" id="recentchooser1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="limit">20</property>
@@ -2895,10 +2895,10 @@
           </packing>
         </child>
         <child type="tab">
-          <object class="GtkLabel" id="label12">
+          <object class="CtkLabel" id="label12">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">GtkRecentChooserDefault</property>
+            <property name="label" translatable="yes">CtkRecentChooserDefault</property>
           </object>
           <packing>
             <property name="position">10</property>
@@ -2906,7 +2906,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkColorSelection" id="colorselection1">
+          <object class="CtkColorSelection" id="colorselection1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
@@ -2917,10 +2917,10 @@
           </packing>
         </child>
         <child type="tab">
-          <object class="GtkLabel" id="label13">
+          <object class="CtkLabel" id="label13">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">GtkColorSelection</property>
+            <property name="label" translatable="yes">CtkColorSelection</property>
           </object>
           <packing>
             <property name="position">11</property>

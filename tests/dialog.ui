@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.10 -->
-  <object class="GtkListStore" id="liststore1">
+  <object class="CtkListStore" id="liststore1">
     <columns>
       <!-- column-name name -->
       <column type="gchararray"/>
     </columns>
   </object>
-  <object class="GtkEntryCompletion" id="name_completion">
+  <object class="CtkEntryCompletion" id="name_completion">
     <property name="model">liststore1</property>
     <property name="text_column">0</property>
     <property name="inline_completion">True</property>
   </object>
-  <object class="GtkDialog" id="dialog">
+  <object class="CtkDialog" id="dialog">
     <property name="can_focus">False</property>
     <property name="modal">True</property>
     <property name="destroy_with_parent">True</property>
@@ -20,11 +20,11 @@
     <property name="default_width">500</property>
     <property name="use_header_bar">1</property>
     <child type="titlebar">
-      <object class="GtkHeaderBar" id="titlebar">
+      <object class="CtkHeaderBar" id="titlebar">
         <property name="visible">True</property>
         <property name="title" translatable="yes">Join Chat Room</property>
         <child>
-          <object class="GtkButton" id="back_button">
+          <object class="CtkButton" id="back_button">
             <property name="visible">False</property>
             <property name="can_focus">True</property>
             <property name="valign">center</property>
@@ -32,7 +32,7 @@
               <class name="image-button"/>
             </style>
             <child>
-              <object class="GtkImage" id="back_icon">
+              <object class="CtkImage" id="back_icon">
                 <property name="visible">True</property>
                 <property name="icon_size">1</property>
               </object>
@@ -40,7 +40,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkButton" id="cancel_button">
+          <object class="CtkButton" id="cancel_button">
             <property name="label" translatable="yes">_Cancel</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -49,7 +49,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkButton" id="confirm_button">
+          <object class="CtkButton" id="confirm_button">
             <property name="label" translatable="yes">_Join</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -65,16 +65,16 @@
       </object>
     </child>
     <child internal-child="vbox">
-      <object class="GtkBox" id="dialog-vbox1">
+      <object class="CtkBox" id="dialog-vbox1">
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <property name="spacing">2</property>
         <child>
-          <object class="GtkStack" id="stack">
+          <object class="CtkStack" id="stack">
             <property name="visible">True</property>
             <property name="transition_type">slide-left-right</property>
             <child>
-              <object class="GtkGrid" id="grid1">
+              <object class="CtkGrid" id="grid1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="margin_left">24</property>
@@ -84,7 +84,7 @@
                 <property name="row_spacing">12</property>
                 <property name="column_spacing">12</property>
                 <child>
-                  <object class="GtkLabel" id="margin">
+                  <object class="CtkLabel" id="margin">
                     <property name="visible">True</property>
                     <property name="width_request">24</property>
                   </object>
@@ -96,7 +96,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="password_entry">
+                  <object class="CtkEntry" id="password_entry">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="hexpand">True</property>
@@ -113,7 +113,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="name_entry">
+                  <object class="CtkEntry" id="name_entry">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="hexpand">True</property>
@@ -129,17 +129,17 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="add_connection_button">
+                  <object class="CtkButton" id="add_connection_button">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <child>
-                      <object class="GtkBox" id="box1">
+                      <object class="CtkBox" id="box1">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="spacing">6</property>
                         <child>
-                          <object class="GtkImage" id="image1">
+                          <object class="CtkImage" id="image1">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="icon_name">list-add-symbolic</property>
@@ -151,7 +151,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="label1">
+                          <object class="CtkLabel" id="label1">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">_Add Connection</property>
@@ -175,7 +175,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkComboBoxText" id="connection_combo">
+                  <object class="CtkComboBoxText" id="connection_combo">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="hexpand">True</property>
@@ -188,7 +188,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="connection_label">
+                  <object class="CtkLabel" id="connection_label">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">end</property>
@@ -204,7 +204,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="name_label">
+                  <object class="CtkLabel" id="name_label">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">end</property>
@@ -221,7 +221,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="password_label">
+                  <object class="CtkLabel" id="password_label">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">end</property>

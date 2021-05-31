@@ -24,11 +24,11 @@
 typedef enum {
   CTK_CSS_EASE_CUBIC_BEZIER,
   CTK_CSS_EASE_STEPS
-} GtkCssEaseType;
+} CtkCssEaseType;
 
-struct _GtkCssValue {
+struct _CtkCssValue {
   CTK_CSS_VALUE_BASE
-  GtkCssEaseType type;
+  CtkCssEaseType type;
   union {
     struct {
       double x1;
@@ -44,24 +44,24 @@ struct _GtkCssValue {
 };
 
 static void
-ctk_css_value_ease_free (GtkCssValue *value)
+ctk_css_value_ease_free (CtkCssValue *value)
 {
-  g_slice_free (GtkCssValue, value);
+  g_slice_free (CtkCssValue, value);
 }
 
-static GtkCssValue *
-ctk_css_value_ease_compute (GtkCssValue             *value,
+static CtkCssValue *
+ctk_css_value_ease_compute (CtkCssValue             *value,
                             guint                    property_id,
-                            GtkStyleProviderPrivate *provider,
-                            GtkCssStyle             *style,
-                            GtkCssStyle             *parent_style)
+                            CtkStyleProviderPrivate *provider,
+                            CtkCssStyle             *style,
+                            CtkCssStyle             *parent_style)
 {
   return _ctk_css_value_ref (value);
 }
 
 static gboolean
-ctk_css_value_ease_equal (const GtkCssValue *ease1,
-                          const GtkCssValue *ease2)
+ctk_css_value_ease_equal (const CtkCssValue *ease1,
+                          const CtkCssValue *ease2)
 {
   if (ease1->type != ease2->type)
     return FALSE;
@@ -82,9 +82,9 @@ ctk_css_value_ease_equal (const GtkCssValue *ease1,
     }
 }
 
-static GtkCssValue *
-ctk_css_value_ease_transition (GtkCssValue *start,
-                               GtkCssValue *end,
+static CtkCssValue *
+ctk_css_value_ease_transition (CtkCssValue *start,
+                               CtkCssValue *end,
                                guint        property_id,
                                double       progress)
 {
@@ -92,7 +92,7 @@ ctk_css_value_ease_transition (GtkCssValue *start,
 }
 
 static void
-ctk_css_value_ease_print (const GtkCssValue *ease,
+ctk_css_value_ease_print (const CtkCssValue *ease,
                           GString           *string)
 {
   switch (ease->type)
@@ -134,7 +134,7 @@ ctk_css_value_ease_print (const GtkCssValue *ease,
     }
 }
 
-static const GtkCssValueClass CTK_CSS_VALUE_EASE = {
+static const CtkCssValueClass CTK_CSS_VALUE_EASE = {
   ctk_css_value_ease_free,
   ctk_css_value_ease_compute,
   ctk_css_value_ease_equal,
@@ -142,20 +142,20 @@ static const GtkCssValueClass CTK_CSS_VALUE_EASE = {
   ctk_css_value_ease_print
 };
 
-GtkCssValue *
+CtkCssValue *
 _ctk_css_ease_value_new_cubic_bezier (double x1,
                                       double y1,
                                       double x2,
                                       double y2)
 {
-  GtkCssValue *value;
+  CtkCssValue *value;
 
   g_return_val_if_fail (x1 >= 0.0, NULL);
   g_return_val_if_fail (x1 <= 1.0, NULL);
   g_return_val_if_fail (x2 >= 0.0, NULL);
   g_return_val_if_fail (x2 <= 1.0, NULL);
 
-  value = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_EASE);
+  value = _ctk_css_value_new (CtkCssValue, &CTK_CSS_VALUE_EASE);
   
   value->type = CTK_CSS_EASE_CUBIC_BEZIER;
   value->u.cubic.x1 = x1;
@@ -166,15 +166,15 @@ _ctk_css_ease_value_new_cubic_bezier (double x1,
   return value;
 }
 
-static GtkCssValue *
+static CtkCssValue *
 _ctk_css_ease_value_new_steps (guint n_steps,
                                gboolean start)
 {
-  GtkCssValue *value;
+  CtkCssValue *value;
 
   g_return_val_if_fail (n_steps > 0, NULL);
 
-  value = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_EASE);
+  value = _ctk_css_value_new (CtkCssValue, &CTK_CSS_VALUE_EASE);
   
   value->type = CTK_CSS_EASE_STEPS;
   value->u.steps.steps = n_steps;
@@ -201,7 +201,7 @@ static const struct {
 };
 
 gboolean
-_ctk_css_ease_value_can_parse (GtkCssParser *parser)
+_ctk_css_ease_value_can_parse (CtkCssParser *parser)
 {
   guint i;
 
@@ -214,8 +214,8 @@ _ctk_css_ease_value_can_parse (GtkCssParser *parser)
   return FALSE;
 }
 
-static GtkCssValue *
-ctk_css_ease_value_parse_cubic_bezier (GtkCssParser *parser)
+static CtkCssValue *
+ctk_css_ease_value_parse_cubic_bezier (CtkCssParser *parser)
 {
   double values[4];
   guint i;
@@ -249,8 +249,8 @@ ctk_css_ease_value_parse_cubic_bezier (GtkCssParser *parser)
   return _ctk_css_ease_value_new_cubic_bezier (values[0], values[1], values[2], values[3]);
 }
 
-static GtkCssValue *
-ctk_css_ease_value_parse_steps (GtkCssParser *parser)
+static CtkCssValue *
+ctk_css_ease_value_parse_steps (CtkCssParser *parser)
 {
   guint n_steps;
   gboolean start;
@@ -291,8 +291,8 @@ ctk_css_ease_value_parse_steps (GtkCssParser *parser)
   return _ctk_css_ease_value_new_steps (n_steps, start);
 }
 
-GtkCssValue *
-_ctk_css_ease_value_parse (GtkCssParser *parser)
+CtkCssValue *
+_ctk_css_ease_value_parse (CtkCssParser *parser)
 {
   guint i;
 
@@ -328,7 +328,7 @@ _ctk_css_ease_value_parse (GtkCssParser *parser)
 }
 
 double
-_ctk_css_ease_value_transform (const GtkCssValue *ease,
+_ctk_css_ease_value_transform (const CtkCssValue *ease,
                                double             progress)
 {
   g_return_val_if_fail (ease->class == &CTK_CSS_VALUE_EASE, 1.0);

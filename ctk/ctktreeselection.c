@@ -29,22 +29,22 @@
 
 /**
  * SECTION:ctktreeselection
- * @Short_description: The selection object for GtkTreeView
- * @Title: GtkTreeSelection
- * @See_also: #GtkTreeView, #GtkTreeViewColumn, #GtkTreeModel,
- *   #GtkTreeSortable, #GtkTreeModelSort, #GtkListStore, #GtkTreeStore,
- *   #GtkCellRenderer, #GtkCellEditable, #GtkCellRendererPixbuf,
- *   #GtkCellRendererText, #GtkCellRendererToggle, [GtkTreeView drag-and-drop][ctk3-GtkTreeView-drag-and-drop]
+ * @Short_description: The selection object for CtkTreeView
+ * @Title: CtkTreeSelection
+ * @See_also: #CtkTreeView, #CtkTreeViewColumn, #CtkTreeModel,
+ *   #CtkTreeSortable, #CtkTreeModelSort, #CtkListStore, #CtkTreeStore,
+ *   #CtkCellRenderer, #CtkCellEditable, #CtkCellRendererPixbuf,
+ *   #CtkCellRendererText, #CtkCellRendererToggle, [CtkTreeView drag-and-drop][ctk3-CtkTreeView-drag-and-drop]
  *
- * The #GtkTreeSelection object is a helper object to manage the selection
- * for a #GtkTreeView widget.  The #GtkTreeSelection object is
- * automatically created when a new #GtkTreeView widget is created, and
+ * The #CtkTreeSelection object is a helper object to manage the selection
+ * for a #CtkTreeView widget.  The #CtkTreeSelection object is
+ * automatically created when a new #CtkTreeView widget is created, and
  * cannot exist independently of this widget.  The primary reason the
- * #GtkTreeSelection objects exists is for cleanliness of code and API.
+ * #CtkTreeSelection objects exists is for cleanliness of code and API.
  * That is, there is no conceptual reason all these functions could not be
- * methods on the #GtkTreeView widget instead of a separate function.
+ * methods on the #CtkTreeView widget instead of a separate function.
  *
- * The #GtkTreeSelection object is gotten from a #GtkTreeView by calling
+ * The #CtkTreeSelection object is gotten from a #CtkTreeView by calling
  * ctk_tree_view_get_selection().  It can be manipulated to check the
  * selection status of the tree, as well as select and deselect individual
  * rows.  Selection is done completely view side.  As a result, multiple
@@ -54,28 +54,28 @@
  * first.
  *
  * One of the important things to remember when monitoring the selection of
- * a view is that the #GtkTreeSelection::changed signal is mostly a hint.
+ * a view is that the #CtkTreeSelection::changed signal is mostly a hint.
  * That is, it may only emit one signal when a range of rows is selected.
- * Additionally, it may on occasion emit a #GtkTreeSelection::changed signal
+ * Additionally, it may on occasion emit a #CtkTreeSelection::changed signal
  * when nothing has happened (mostly as a result of programmers calling
  * select_row on an already selected row).
  */
 
-struct _GtkTreeSelectionPrivate
+struct _CtkTreeSelectionPrivate
 {
-  GtkTreeView *tree_view;
-  GtkSelectionMode type;
-  GtkTreeSelectionFunc user_func;
+  CtkTreeView *tree_view;
+  CtkSelectionMode type;
+  CtkTreeSelectionFunc user_func;
   gpointer user_data;
   GDestroyNotify destroy;
 };
 
 static void ctk_tree_selection_finalize          (GObject               *object);
-static gint ctk_tree_selection_real_select_all   (GtkTreeSelection      *selection);
-static gint ctk_tree_selection_real_unselect_all (GtkTreeSelection      *selection);
-static gint ctk_tree_selection_real_select_node  (GtkTreeSelection      *selection,
-						  GtkRBTree             *tree,
-						  GtkRBNode             *node,
+static gint ctk_tree_selection_real_select_all   (CtkTreeSelection      *selection);
+static gint ctk_tree_selection_real_unselect_all (CtkTreeSelection      *selection);
+static gint ctk_tree_selection_real_select_node  (CtkTreeSelection      *selection,
+						  CtkRBTree             *tree,
+						  CtkRBNode             *node,
 						  gboolean               select);
 static void ctk_tree_selection_set_property      (GObject               *object,
                                                   guint                  prop_id,
@@ -102,10 +102,10 @@ enum
 static GParamSpec *properties[N_PROPERTIES];
 static guint tree_selection_signals [LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkTreeSelection, ctk_tree_selection, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkTreeSelection, ctk_tree_selection, G_TYPE_OBJECT)
 
 static void
-ctk_tree_selection_class_init (GtkTreeSelectionClass *class)
+ctk_tree_selection_class_init (CtkTreeSelectionClass *class)
 {
   GObjectClass *object_class;
 
@@ -119,7 +119,7 @@ ctk_tree_selection_class_init (GtkTreeSelectionClass *class)
   /* Properties */
   
   /**
-   * GtkTreeSelection:mode:
+   * CtkTreeSelection:mode:
    *
    * Selection mode.
    * See ctk_tree_selection_set_mode() for more information on this property.
@@ -139,7 +139,7 @@ ctk_tree_selection_class_init (GtkTreeSelectionClass *class)
   /* Signals */
   
   /**
-   * GtkTreeSelection::changed:
+   * CtkTreeSelection::changed:
    * @treeselection: the object which received the signal.
    *
    * Emitted whenever the selection has (possibly) changed. Please note that
@@ -151,14 +151,14 @@ ctk_tree_selection_class_init (GtkTreeSelectionClass *class)
     g_signal_new (I_("changed"),
 		  G_OBJECT_CLASS_TYPE (object_class),
 		  G_SIGNAL_RUN_FIRST,
-		  G_STRUCT_OFFSET (GtkTreeSelectionClass, changed),
+		  G_STRUCT_OFFSET (CtkTreeSelectionClass, changed),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
 }
 
 static void
-ctk_tree_selection_init (GtkTreeSelection *selection)
+ctk_tree_selection_init (CtkTreeSelection *selection)
 {
   selection->priv = ctk_tree_selection_get_instance_private (selection);
   selection->priv->type = CTK_SELECTION_SINGLE;
@@ -167,8 +167,8 @@ ctk_tree_selection_init (GtkTreeSelection *selection)
 static void
 ctk_tree_selection_finalize (GObject *object)
 {
-  GtkTreeSelection *selection = CTK_TREE_SELECTION (object);
-  GtkTreeSelectionPrivate *priv = selection->priv;
+  CtkTreeSelection *selection = CTK_TREE_SELECTION (object);
+  CtkTreeSelectionPrivate *priv = selection->priv;
 
   if (priv->destroy)
     priv->destroy (priv->user_data);
@@ -218,15 +218,15 @@ ctk_tree_selection_get_property (GObject *object,
 /**
  * _ctk_tree_selection_new:
  *
- * Creates a new #GtkTreeSelection object.  This function should not be invoked,
- * as each #GtkTreeView will create its own #GtkTreeSelection.
+ * Creates a new #CtkTreeSelection object.  This function should not be invoked,
+ * as each #CtkTreeView will create its own #CtkTreeSelection.
  *
- * Returns: A newly created #GtkTreeSelection object.
+ * Returns: A newly created #CtkTreeSelection object.
  **/
-GtkTreeSelection*
+CtkTreeSelection*
 _ctk_tree_selection_new (void)
 {
-  GtkTreeSelection *selection;
+  CtkTreeSelection *selection;
 
   selection = g_object_new (CTK_TYPE_TREE_SELECTION, NULL);
 
@@ -235,17 +235,17 @@ _ctk_tree_selection_new (void)
 
 /**
  * _ctk_tree_selection_new_with_tree_view:
- * @tree_view: The #GtkTreeView.
+ * @tree_view: The #CtkTreeView.
  *
- * Creates a new #GtkTreeSelection object.  This function should not be invoked,
- * as each #GtkTreeView will create its own #GtkTreeSelection.
+ * Creates a new #CtkTreeSelection object.  This function should not be invoked,
+ * as each #CtkTreeView will create its own #CtkTreeSelection.
  *
- * Returns: A newly created #GtkTreeSelection object.
+ * Returns: A newly created #CtkTreeSelection object.
  **/
-GtkTreeSelection*
-_ctk_tree_selection_new_with_tree_view (GtkTreeView *tree_view)
+CtkTreeSelection*
+_ctk_tree_selection_new_with_tree_view (CtkTreeView *tree_view)
 {
-  GtkTreeSelection *selection;
+  CtkTreeSelection *selection;
 
   g_return_val_if_fail (CTK_IS_TREE_VIEW (tree_view), NULL);
 
@@ -257,17 +257,17 @@ _ctk_tree_selection_new_with_tree_view (GtkTreeView *tree_view)
 
 /**
  * _ctk_tree_selection_set_tree_view:
- * @selection: A #GtkTreeSelection.
- * @tree_view: The #GtkTreeView.
+ * @selection: A #CtkTreeSelection.
+ * @tree_view: The #CtkTreeView.
  *
- * Sets the #GtkTreeView of @selection.  This function should not be invoked, as
- * it is used internally by #GtkTreeView.
+ * Sets the #CtkTreeView of @selection.  This function should not be invoked, as
+ * it is used internally by #CtkTreeView.
  **/
 void
-_ctk_tree_selection_set_tree_view (GtkTreeSelection *selection,
-                                   GtkTreeView      *tree_view)
+_ctk_tree_selection_set_tree_view (CtkTreeSelection *selection,
+                                   CtkTreeView      *tree_view)
 {
-  GtkTreeSelectionPrivate *priv;
+  CtkTreeSelectionPrivate *priv;
 
   g_return_if_fail (CTK_IS_TREE_SELECTION (selection));
   if (tree_view != NULL)
@@ -280,7 +280,7 @@ _ctk_tree_selection_set_tree_view (GtkTreeSelection *selection,
 
 /**
  * ctk_tree_selection_set_mode:
- * @selection: A #GtkTreeSelection.
+ * @selection: A #CtkTreeSelection.
  * @type: The selection mode
  *
  * Sets the selection mode of the @selection.  If the previous type was
@@ -288,11 +288,11 @@ _ctk_tree_selection_set_tree_view (GtkTreeSelection *selection,
  * previously selected.
  **/
 void
-ctk_tree_selection_set_mode (GtkTreeSelection *selection,
-			     GtkSelectionMode  type)
+ctk_tree_selection_set_mode (CtkTreeSelection *selection,
+			     CtkSelectionMode  type)
 {
-  GtkTreeSelectionPrivate *priv;
-  GtkTreeSelectionFunc tmp_func;
+  CtkTreeSelectionPrivate *priv;
+  CtkTreeSelectionFunc tmp_func;
 
   g_return_if_fail (CTK_IS_TREE_SELECTION (selection));
 
@@ -315,10 +315,10 @@ ctk_tree_selection_set_mode (GtkTreeSelection *selection,
   else if (type == CTK_SELECTION_SINGLE ||
 	   type == CTK_SELECTION_BROWSE)
     {
-      GtkRBTree *tree = NULL;
-      GtkRBNode *node = NULL;
+      CtkRBTree *tree = NULL;
+      CtkRBNode *node = NULL;
       gint selected = FALSE;
-      GtkTreePath *anchor_path = NULL;
+      CtkTreePath *anchor_path = NULL;
 
       anchor_path = _ctk_tree_view_get_anchor_path (priv->tree_view);
 
@@ -358,15 +358,15 @@ ctk_tree_selection_set_mode (GtkTreeSelection *selection,
 
 /**
  * ctk_tree_selection_get_mode:
- * @selection: a #GtkTreeSelection
+ * @selection: a #CtkTreeSelection
  *
  * Gets the selection mode for @selection. See
  * ctk_tree_selection_set_mode().
  *
  * Returns: the current selection mode
  **/
-GtkSelectionMode
-ctk_tree_selection_get_mode (GtkTreeSelection *selection)
+CtkSelectionMode
+ctk_tree_selection_get_mode (CtkTreeSelection *selection)
 {
   g_return_val_if_fail (CTK_IS_TREE_SELECTION (selection), CTK_SELECTION_SINGLE);
 
@@ -375,7 +375,7 @@ ctk_tree_selection_get_mode (GtkTreeSelection *selection)
 
 /**
  * ctk_tree_selection_set_select_function:
- * @selection: A #GtkTreeSelection.
+ * @selection: A #CtkTreeSelection.
  * @func: (nullable): The selection function. May be %NULL
  * @data: The selection function’s data. May be %NULL
  * @destroy: The destroy function for user data.  May be %NULL
@@ -388,12 +388,12 @@ ctk_tree_selection_get_mode (GtkTreeSelection *selection)
  * if the state of the node should be left unchanged.
  */
 void
-ctk_tree_selection_set_select_function (GtkTreeSelection     *selection,
-					GtkTreeSelectionFunc  func,
+ctk_tree_selection_set_select_function (CtkTreeSelection     *selection,
+					CtkTreeSelectionFunc  func,
 					gpointer              data,
 					GDestroyNotify        destroy)
 {
-  GtkTreeSelectionPrivate *priv;
+  CtkTreeSelectionPrivate *priv;
 
   g_return_if_fail (CTK_IS_TREE_SELECTION (selection));
 
@@ -409,7 +409,7 @@ ctk_tree_selection_set_select_function (GtkTreeSelection     *selection,
 
 /**
  * ctk_tree_selection_get_select_function: (skip)
- * @selection: A #GtkTreeSelection.
+ * @selection: A #CtkTreeSelection.
  *
  * Returns the current selection function.
  *
@@ -417,8 +417,8 @@ ctk_tree_selection_set_select_function (GtkTreeSelection     *selection,
  *
  * Since: 2.14
  **/
-GtkTreeSelectionFunc
-ctk_tree_selection_get_select_function (GtkTreeSelection *selection)
+CtkTreeSelectionFunc
+ctk_tree_selection_get_select_function (CtkTreeSelection *selection)
 {
   g_return_val_if_fail (CTK_IS_TREE_SELECTION (selection), NULL);
 
@@ -427,14 +427,14 @@ ctk_tree_selection_get_select_function (GtkTreeSelection *selection)
 
 /**
  * ctk_tree_selection_get_user_data: (skip)
- * @selection: A #GtkTreeSelection.
+ * @selection: A #CtkTreeSelection.
  *
  * Returns the user data for the selection function.
  *
  * Returns: The user data.
  **/
 gpointer
-ctk_tree_selection_get_user_data (GtkTreeSelection *selection)
+ctk_tree_selection_get_user_data (CtkTreeSelection *selection)
 {
   g_return_val_if_fail (CTK_IS_TREE_SELECTION (selection), NULL);
 
@@ -443,14 +443,14 @@ ctk_tree_selection_get_user_data (GtkTreeSelection *selection)
 
 /**
  * ctk_tree_selection_get_tree_view:
- * @selection: A #GtkTreeSelection
+ * @selection: A #CtkTreeSelection
  * 
  * Returns the tree view associated with @selection.
  * 
- * Returns: (transfer none): A #GtkTreeView
+ * Returns: (transfer none): A #CtkTreeView
  **/
-GtkTreeView *
-ctk_tree_selection_get_tree_view (GtkTreeSelection *selection)
+CtkTreeView *
+ctk_tree_selection_get_tree_view (CtkTreeSelection *selection)
 {
   g_return_val_if_fail (CTK_IS_TREE_SELECTION (selection), NULL);
 
@@ -459,9 +459,9 @@ ctk_tree_selection_get_tree_view (GtkTreeSelection *selection)
 
 /**
  * ctk_tree_selection_get_selected:
- * @selection: A #GtkTreeSelection.
- * @model: (out) (allow-none) (transfer none): A pointer to set to the #GtkTreeModel, or NULL.
- * @iter: (out) (allow-none): The #GtkTreeIter, or NULL.
+ * @selection: A #CtkTreeSelection.
+ * @model: (out) (allow-none) (transfer none): A pointer to set to the #CtkTreeModel, or NULL.
+ * @iter: (out) (allow-none): The #CtkTreeIter, or NULL.
  *
  * Sets @iter to the currently selected node if @selection is set to
  * #CTK_SELECTION_SINGLE or #CTK_SELECTION_BROWSE.  @iter may be NULL if you
@@ -472,14 +472,14 @@ ctk_tree_selection_get_tree_view (GtkTreeSelection *selection)
  * Returns: TRUE, if there is a selected node.
  **/
 gboolean
-ctk_tree_selection_get_selected (GtkTreeSelection  *selection,
-				 GtkTreeModel     **model,
-				 GtkTreeIter       *iter)
+ctk_tree_selection_get_selected (CtkTreeSelection  *selection,
+				 CtkTreeModel     **model,
+				 CtkTreeIter       *iter)
 {
-  GtkTreeSelectionPrivate *priv;
-  GtkRBTree *tree;
-  GtkRBNode *node;
-  GtkTreePath *anchor_path;
+  CtkTreeSelectionPrivate *priv;
+  CtkRBTree *tree;
+  CtkRBNode *node;
+  CtkTreePath *anchor_path;
   gboolean retval = FALSE;
   gboolean found_node;
 
@@ -492,7 +492,7 @@ ctk_tree_selection_get_selected (GtkTreeSelection  *selection,
 
   /* Clear the iter */
   if (iter)
-    memset (iter, 0, sizeof (GtkTreeIter));
+    memset (iter, 0, sizeof (CtkTreeIter));
 
   if (model)
     *model = ctk_tree_view_get_model (priv->tree_view);
@@ -533,12 +533,12 @@ ctk_tree_selection_get_selected (GtkTreeSelection  *selection,
 
 /**
  * ctk_tree_selection_get_selected_rows:
- * @selection: A #GtkTreeSelection.
- * @model: (out) (allow-none) (transfer none): A pointer to set to the #GtkTreeModel, or %NULL.
+ * @selection: A #CtkTreeSelection.
+ * @model: (out) (allow-none) (transfer none): A pointer to set to the #CtkTreeModel, or %NULL.
  *
  * Creates a list of path of all selected rows. Additionally, if you are
  * planning on modifying the model after calling this function, you may
- * want to convert the returned list into a list of #GtkTreeRowReferences.
+ * want to convert the returned list into a list of #CtkTreeRowReferences.
  * To do this, you can use ctk_tree_row_reference_new().
  *
  * To free the return value, use:
@@ -546,19 +546,19 @@ ctk_tree_selection_get_selected (GtkTreeSelection  *selection,
  * g_list_free_full (list, (GDestroyNotify) ctk_tree_path_free);
  * ]|
  *
- * Returns: (element-type GtkTreePath) (transfer full): A #GList containing a #GtkTreePath for each selected row.
+ * Returns: (element-type CtkTreePath) (transfer full): A #GList containing a #CtkTreePath for each selected row.
  *
  * Since: 2.2
  **/
 GList *
-ctk_tree_selection_get_selected_rows (GtkTreeSelection   *selection,
-                                      GtkTreeModel      **model)
+ctk_tree_selection_get_selected_rows (CtkTreeSelection   *selection,
+                                      CtkTreeModel      **model)
 {
-  GtkTreeSelectionPrivate *priv;
+  CtkTreeSelectionPrivate *priv;
   GList *list = NULL;
-  GtkRBTree *tree = NULL;
-  GtkRBNode *node = NULL;
-  GtkTreePath *path;
+  CtkRBTree *tree = NULL;
+  CtkRBNode *node = NULL;
+  CtkTreePath *path;
 
   g_return_val_if_fail (CTK_IS_TREE_SELECTION (selection), NULL);
 
@@ -578,7 +578,7 @@ ctk_tree_selection_get_selected_rows (GtkTreeSelection   *selection,
     return NULL;
   else if (priv->type != CTK_SELECTION_MULTIPLE)
     {
-      GtkTreeIter iter;
+      CtkTreeIter iter;
 
       if (ctk_tree_selection_get_selected (selection, NULL, &iter))
         {
@@ -644,8 +644,8 @@ ctk_tree_selection_get_selected_rows (GtkTreeSelection   *selection,
 }
 
 static void
-ctk_tree_selection_count_selected_rows_helper (GtkRBTree *tree,
-					       GtkRBNode *node,
+ctk_tree_selection_count_selected_rows_helper (CtkRBTree *tree,
+					       CtkRBNode *node,
 					       gpointer   data)
 {
   gint *count = (gint *)data;
@@ -663,7 +663,7 @@ ctk_tree_selection_count_selected_rows_helper (GtkRBTree *tree,
 
 /**
  * ctk_tree_selection_count_selected_rows:
- * @selection: A #GtkTreeSelection.
+ * @selection: A #CtkTreeSelection.
  *
  * Returns the number of rows that have been selected in @tree.
  *
@@ -672,11 +672,11 @@ ctk_tree_selection_count_selected_rows_helper (GtkRBTree *tree,
  * Since: 2.2
  **/
 gint
-ctk_tree_selection_count_selected_rows (GtkTreeSelection *selection)
+ctk_tree_selection_count_selected_rows (CtkTreeSelection *selection)
 {
-  GtkTreeSelectionPrivate *priv;
+  CtkTreeSelectionPrivate *priv;
   gint count = 0;
-  GtkRBTree *tree;
+  CtkRBTree *tree;
 
   g_return_val_if_fail (CTK_IS_TREE_SELECTION (selection), 0);
 
@@ -717,7 +717,7 @@ model_changed (gpointer data)
 
 /**
  * ctk_tree_selection_selected_foreach:
- * @selection: A #GtkTreeSelection.
+ * @selection: A #CtkTreeSelection.
  * @func: (scope call): The function to call for each selected node.
  * @data: user data to pass to the function.
  *
@@ -726,16 +726,16 @@ model_changed (gpointer data)
  * ctk_tree_selection_get_selected_rows() might be more useful.
  **/
 void
-ctk_tree_selection_selected_foreach (GtkTreeSelection            *selection,
-				     GtkTreeSelectionForeachFunc  func,
+ctk_tree_selection_selected_foreach (CtkTreeSelection            *selection,
+				     CtkTreeSelectionForeachFunc  func,
 				     gpointer                     data)
 {
-  GtkTreeSelectionPrivate *priv;
-  GtkTreePath *path;
-  GtkRBTree *tree;
-  GtkRBNode *node;
-  GtkTreeIter iter;
-  GtkTreeModel *model;
+  CtkTreeSelectionPrivate *priv;
+  CtkTreePath *path;
+  CtkRBTree *tree;
+  CtkRBNode *node;
+  CtkTreeIter iter;
+  CtkTreeModel *model;
 
   gulong inserted_id, deleted_id, reordered_id, changed_id;
   gboolean stop = FALSE;
@@ -858,20 +858,20 @@ out:
 
 /**
  * ctk_tree_selection_select_path:
- * @selection: A #GtkTreeSelection.
- * @path: The #GtkTreePath to be selected.
+ * @selection: A #CtkTreeSelection.
+ * @path: The #CtkTreePath to be selected.
  *
  * Select the row at @path.
  **/
 void
-ctk_tree_selection_select_path (GtkTreeSelection *selection,
-				GtkTreePath      *path)
+ctk_tree_selection_select_path (CtkTreeSelection *selection,
+				CtkTreePath      *path)
 {
-  GtkTreeSelectionPrivate *priv;
-  GtkRBNode *node;
-  GtkRBTree *tree;
+  CtkTreeSelectionPrivate *priv;
+  CtkRBNode *node;
+  CtkRBTree *tree;
   gboolean ret;
-  GtkTreeSelectMode mode = 0;
+  CtkTreeSelectMode mode = 0;
 
   g_return_if_fail (CTK_IS_TREE_SELECTION (selection));
 
@@ -902,18 +902,18 @@ ctk_tree_selection_select_path (GtkTreeSelection *selection,
 
 /**
  * ctk_tree_selection_unselect_path:
- * @selection: A #GtkTreeSelection.
- * @path: The #GtkTreePath to be unselected.
+ * @selection: A #CtkTreeSelection.
+ * @path: The #CtkTreePath to be unselected.
  *
  * Unselects the row at @path.
  **/
 void
-ctk_tree_selection_unselect_path (GtkTreeSelection *selection,
-				  GtkTreePath      *path)
+ctk_tree_selection_unselect_path (CtkTreeSelection *selection,
+				  CtkTreePath      *path)
 {
-  GtkTreeSelectionPrivate *priv;
-  GtkRBNode *node;
-  GtkRBTree *tree;
+  CtkTreeSelectionPrivate *priv;
+  CtkRBNode *node;
+  CtkRBTree *tree;
   gboolean ret;
 
   g_return_if_fail (CTK_IS_TREE_SELECTION (selection));
@@ -942,18 +942,18 @@ ctk_tree_selection_unselect_path (GtkTreeSelection *selection,
 
 /**
  * ctk_tree_selection_select_iter:
- * @selection: A #GtkTreeSelection.
- * @iter: The #GtkTreeIter to be selected.
+ * @selection: A #CtkTreeSelection.
+ * @iter: The #CtkTreeIter to be selected.
  *
  * Selects the specified iterator.
  **/
 void
-ctk_tree_selection_select_iter (GtkTreeSelection *selection,
-				GtkTreeIter      *iter)
+ctk_tree_selection_select_iter (CtkTreeSelection *selection,
+				CtkTreeIter      *iter)
 {
-  GtkTreeSelectionPrivate *priv;
-  GtkTreePath *path;
-  GtkTreeModel *model;
+  CtkTreeSelectionPrivate *priv;
+  CtkTreePath *path;
+  CtkTreeModel *model;
 
   g_return_if_fail (CTK_IS_TREE_SELECTION (selection));
 
@@ -977,18 +977,18 @@ ctk_tree_selection_select_iter (GtkTreeSelection *selection,
 
 /**
  * ctk_tree_selection_unselect_iter:
- * @selection: A #GtkTreeSelection.
- * @iter: The #GtkTreeIter to be unselected.
+ * @selection: A #CtkTreeSelection.
+ * @iter: The #CtkTreeIter to be unselected.
  *
  * Unselects the specified iterator.
  **/
 void
-ctk_tree_selection_unselect_iter (GtkTreeSelection *selection,
-				  GtkTreeIter      *iter)
+ctk_tree_selection_unselect_iter (CtkTreeSelection *selection,
+				  CtkTreeIter      *iter)
 {
-  GtkTreeSelectionPrivate *priv;
-  GtkTreePath *path;
-  GtkTreeModel *model;
+  CtkTreeSelectionPrivate *priv;
+  CtkTreePath *path;
+  CtkTreeModel *model;
 
   g_return_if_fail (CTK_IS_TREE_SELECTION (selection));
 
@@ -1011,8 +1011,8 @@ ctk_tree_selection_unselect_iter (GtkTreeSelection *selection,
 
 /**
  * ctk_tree_selection_path_is_selected:
- * @selection: A #GtkTreeSelection.
- * @path: A #GtkTreePath to check selection on.
+ * @selection: A #CtkTreeSelection.
+ * @path: A #CtkTreePath to check selection on.
  * 
  * Returns %TRUE if the row pointed to by @path is currently selected.  If @path
  * does not point to a valid location, %FALSE is returned
@@ -1020,12 +1020,12 @@ ctk_tree_selection_unselect_iter (GtkTreeSelection *selection,
  * Returns: %TRUE if @path is selected.
  **/
 gboolean
-ctk_tree_selection_path_is_selected (GtkTreeSelection *selection,
-				     GtkTreePath      *path)
+ctk_tree_selection_path_is_selected (CtkTreeSelection *selection,
+				     CtkTreePath      *path)
 {
-  GtkTreeSelectionPrivate *priv;
-  GtkRBNode *node;
-  GtkRBTree *tree;
+  CtkTreeSelectionPrivate *priv;
+  CtkRBNode *node;
+  CtkRBTree *tree;
   gboolean ret;
 
   g_return_val_if_fail (CTK_IS_TREE_SELECTION (selection), FALSE);
@@ -1052,20 +1052,20 @@ ctk_tree_selection_path_is_selected (GtkTreeSelection *selection,
 
 /**
  * ctk_tree_selection_iter_is_selected:
- * @selection: A #GtkTreeSelection
- * @iter: A valid #GtkTreeIter
+ * @selection: A #CtkTreeSelection
+ * @iter: A valid #CtkTreeIter
  * 
  * Returns %TRUE if the row at @iter is currently selected.
  * 
  * Returns: %TRUE, if @iter is selected
  **/
 gboolean
-ctk_tree_selection_iter_is_selected (GtkTreeSelection *selection,
-				     GtkTreeIter      *iter)
+ctk_tree_selection_iter_is_selected (CtkTreeSelection *selection,
+				     CtkTreeIter      *iter)
 {
-  GtkTreeSelectionPrivate *priv;
-  GtkTreePath *path;
-  GtkTreeModel *model;
+  CtkTreeSelectionPrivate *priv;
+  CtkTreePath *path;
+  CtkTreeModel *model;
   gboolean retval;
 
   g_return_val_if_fail (CTK_IS_TREE_SELECTION (selection), FALSE);
@@ -1091,13 +1091,13 @@ ctk_tree_selection_iter_is_selected (GtkTreeSelection *selection,
 
 /* Wish I was in python, right now... */
 struct _TempTuple {
-  GtkTreeSelection *selection;
+  CtkTreeSelection *selection;
   gint dirty;
 };
 
 static void
-select_all_helper (GtkRBTree  *tree,
-		   GtkRBNode  *node,
+select_all_helper (CtkRBTree  *tree,
+		   CtkRBNode  *node,
 		   gpointer    data)
 {
   struct _TempTuple *tuple = data;
@@ -1119,11 +1119,11 @@ select_all_helper (GtkRBTree  *tree,
  * can use it in other places without fear of the signal being emitted.
  */
 static gint
-ctk_tree_selection_real_select_all (GtkTreeSelection *selection)
+ctk_tree_selection_real_select_all (CtkTreeSelection *selection)
 {
-  GtkTreeSelectionPrivate *priv = selection->priv;
+  CtkTreeSelectionPrivate *priv = selection->priv;
   struct _TempTuple *tuple;
-  GtkRBTree *tree;
+  CtkRBTree *tree;
 
   tree = _ctk_tree_view_get_rbtree (priv->tree_view);
 
@@ -1150,15 +1150,15 @@ ctk_tree_selection_real_select_all (GtkTreeSelection *selection)
 
 /**
  * ctk_tree_selection_select_all:
- * @selection: A #GtkTreeSelection.
+ * @selection: A #CtkTreeSelection.
  *
  * Selects all the nodes. @selection must be set to #CTK_SELECTION_MULTIPLE
  * mode.
  **/
 void
-ctk_tree_selection_select_all (GtkTreeSelection *selection)
+ctk_tree_selection_select_all (CtkTreeSelection *selection)
 {
-  GtkTreeSelectionPrivate *priv;
+  CtkTreeSelectionPrivate *priv;
 
   g_return_if_fail (CTK_IS_TREE_SELECTION (selection));
 
@@ -1177,8 +1177,8 @@ ctk_tree_selection_select_all (GtkTreeSelection *selection)
 }
 
 static void
-unselect_all_helper (GtkRBTree  *tree,
-		     GtkRBNode  *node,
+unselect_all_helper (CtkRBTree  *tree,
+		     CtkRBNode  *node,
 		     gpointer    data)
 {
   struct _TempTuple *tuple = data;
@@ -1196,17 +1196,17 @@ unselect_all_helper (GtkRBTree  *tree,
 }
 
 static gboolean
-ctk_tree_selection_real_unselect_all (GtkTreeSelection *selection)
+ctk_tree_selection_real_unselect_all (CtkTreeSelection *selection)
 {
-  GtkTreeSelectionPrivate *priv = selection->priv;
+  CtkTreeSelectionPrivate *priv = selection->priv;
   struct _TempTuple *tuple;
 
   if (priv->type == CTK_SELECTION_SINGLE ||
       priv->type == CTK_SELECTION_BROWSE)
     {
-      GtkRBTree *tree = NULL;
-      GtkRBNode *node = NULL;
-      GtkTreePath *anchor_path;
+      CtkRBTree *tree = NULL;
+      CtkRBNode *node = NULL;
+      CtkTreePath *anchor_path;
 
       anchor_path = _ctk_tree_view_get_anchor_path (priv->tree_view);
 
@@ -1235,7 +1235,7 @@ ctk_tree_selection_real_unselect_all (GtkTreeSelection *selection)
     }
   else
     {
-      GtkRBTree *tree;
+      CtkRBTree *tree;
 
       tuple = g_new (struct _TempTuple, 1);
       tuple->selection = selection;
@@ -1259,14 +1259,14 @@ ctk_tree_selection_real_unselect_all (GtkTreeSelection *selection)
 
 /**
  * ctk_tree_selection_unselect_all:
- * @selection: A #GtkTreeSelection.
+ * @selection: A #CtkTreeSelection.
  *
  * Unselects all the nodes.
  **/
 void
-ctk_tree_selection_unselect_all (GtkTreeSelection *selection)
+ctk_tree_selection_unselect_all (CtkTreeSelection *selection)
 {
-  GtkTreeSelectionPrivate *priv;
+  CtkTreeSelectionPrivate *priv;
 
   g_return_if_fail (CTK_IS_TREE_SELECTION (selection));
 
@@ -1289,15 +1289,15 @@ enum
 };
 
 static gint
-ctk_tree_selection_real_modify_range (GtkTreeSelection *selection,
+ctk_tree_selection_real_modify_range (CtkTreeSelection *selection,
                                       gint              mode,
-				      GtkTreePath      *start_path,
-				      GtkTreePath      *end_path)
+				      CtkTreePath      *start_path,
+				      CtkTreePath      *end_path)
 {
-  GtkTreeSelectionPrivate *priv = selection->priv;
-  GtkRBNode *start_node = NULL, *end_node = NULL;
-  GtkRBTree *start_tree, *end_tree;
-  GtkTreePath *anchor_path = NULL;
+  CtkTreeSelectionPrivate *priv = selection->priv;
+  CtkRBNode *start_node = NULL, *end_node = NULL;
+  CtkRBTree *start_tree, *end_tree;
+  CtkTreePath *anchor_path = NULL;
   gboolean dirty = FALSE;
 
   switch (ctk_tree_path_compare (start_path, end_path))
@@ -1372,7 +1372,7 @@ ctk_tree_selection_real_modify_range (GtkTreeSelection *selection,
 
 /**
  * ctk_tree_selection_select_range:
- * @selection: A #GtkTreeSelection.
+ * @selection: A #CtkTreeSelection.
  * @start_path: The initial node of the range.
  * @end_path: The final node of the range.
  *
@@ -1380,11 +1380,11 @@ ctk_tree_selection_real_modify_range (GtkTreeSelection *selection,
  * @selection must be set to #CTK_SELECTION_MULTIPLE mode. 
  **/
 void
-ctk_tree_selection_select_range (GtkTreeSelection *selection,
-				 GtkTreePath      *start_path,
-				 GtkTreePath      *end_path)
+ctk_tree_selection_select_range (CtkTreeSelection *selection,
+				 CtkTreePath      *start_path,
+				 CtkTreePath      *end_path)
 {
-  GtkTreeSelectionPrivate *priv;
+  CtkTreeSelectionPrivate *priv;
 
   g_return_if_fail (CTK_IS_TREE_SELECTION (selection));
 
@@ -1400,7 +1400,7 @@ ctk_tree_selection_select_range (GtkTreeSelection *selection,
 
 /**
  * ctk_tree_selection_unselect_range:
- * @selection: A #GtkTreeSelection.
+ * @selection: A #CtkTreeSelection.
  * @start_path: The initial node of the range.
  * @end_path: The initial node of the range.
  *
@@ -1410,11 +1410,11 @@ ctk_tree_selection_select_range (GtkTreeSelection *selection,
  * Since: 2.2
  **/
 void
-ctk_tree_selection_unselect_range (GtkTreeSelection *selection,
-                                   GtkTreePath      *start_path,
-				   GtkTreePath      *end_path)
+ctk_tree_selection_unselect_range (CtkTreeSelection *selection,
+                                   CtkTreePath      *start_path,
+				   CtkTreePath      *end_path)
 {
-  GtkTreeSelectionPrivate *priv;
+  CtkTreeSelectionPrivate *priv;
 
   g_return_if_fail (CTK_IS_TREE_SELECTION (selection));
 
@@ -1428,14 +1428,14 @@ ctk_tree_selection_unselect_range (GtkTreeSelection *selection,
 }
 
 gboolean
-_ctk_tree_selection_row_is_selectable (GtkTreeSelection *selection,
-				       GtkRBNode        *node,
-				       GtkTreePath      *path)
+_ctk_tree_selection_row_is_selectable (CtkTreeSelection *selection,
+				       CtkRBNode        *node,
+				       CtkTreePath      *path)
 {
-  GtkTreeSelectionPrivate *priv = selection->priv;
-  GtkTreeIter iter;
-  GtkTreeModel *model;
-  GtkTreeViewRowSeparatorFunc separator_func;
+  CtkTreeSelectionPrivate *priv = selection->priv;
+  CtkTreeIter iter;
+  CtkTreeModel *model;
+  CtkTreeViewRowSeparatorFunc separator_func;
   gpointer separator_data;
   gboolean sensitive = FALSE;
 
@@ -1472,17 +1472,17 @@ _ctk_tree_selection_row_is_selectable (GtkTreeSelection *selection,
  * 'one node should *always* be selected').
  */
 void
-_ctk_tree_selection_internal_select_node (GtkTreeSelection *selection,
-					  GtkRBNode        *node,
-					  GtkRBTree        *tree,
-					  GtkTreePath      *path,
-                                          GtkTreeSelectMode mode,
+_ctk_tree_selection_internal_select_node (CtkTreeSelection *selection,
+					  CtkRBNode        *node,
+					  CtkRBTree        *tree,
+					  CtkTreePath      *path,
+                                          CtkTreeSelectMode mode,
 					  gboolean          override_browse_mode)
 {
-  GtkTreeSelectionPrivate *priv = selection->priv;
+  CtkTreeSelectionPrivate *priv = selection->priv;
   gint flags;
   gint dirty = FALSE;
-  GtkTreePath *anchor_path = NULL;
+  CtkTreePath *anchor_path = NULL;
 
   if (priv->type == CTK_SELECTION_NONE)
     return;
@@ -1595,7 +1595,7 @@ _ctk_tree_selection_internal_select_node (GtkTreeSelection *selection,
 
 
 void 
-_ctk_tree_selection_emit_changed (GtkTreeSelection *selection)
+_ctk_tree_selection_emit_changed (CtkTreeSelection *selection)
 {
   g_signal_emit (selection, tree_selection_signals[CHANGED], 0);  
 }
@@ -1604,14 +1604,14 @@ _ctk_tree_selection_emit_changed (GtkTreeSelection *selection)
  */
 
 static gint
-ctk_tree_selection_real_select_node (GtkTreeSelection *selection,
-				     GtkRBTree        *tree,
-				     GtkRBNode        *node,
+ctk_tree_selection_real_select_node (CtkTreeSelection *selection,
+				     CtkRBTree        *tree,
+				     CtkRBNode        *node,
 				     gboolean          select)
 {
-  GtkTreeSelectionPrivate *priv = selection->priv;
+  CtkTreeSelectionPrivate *priv = selection->priv;
   gboolean toggle = FALSE;
-  GtkTreePath *path = NULL;
+  CtkTreePath *path = NULL;
 
   g_return_val_if_fail (node != NULL, FALSE);
 

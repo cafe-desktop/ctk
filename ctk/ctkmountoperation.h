@@ -32,33 +32,33 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_MOUNT_OPERATION         (ctk_mount_operation_get_type ())
-#define CTK_MOUNT_OPERATION(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_MOUNT_OPERATION, GtkMountOperation))
-#define CTK_MOUNT_OPERATION_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST((k), CTK_TYPE_MOUNT_OPERATION, GtkMountOperationClass))
+#define CTK_MOUNT_OPERATION(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_MOUNT_OPERATION, CtkMountOperation))
+#define CTK_MOUNT_OPERATION_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST((k), CTK_TYPE_MOUNT_OPERATION, CtkMountOperationClass))
 #define CTK_IS_MOUNT_OPERATION(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_MOUNT_OPERATION))
 #define CTK_IS_MOUNT_OPERATION_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), CTK_TYPE_MOUNT_OPERATION))
-#define CTK_MOUNT_OPERATION_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_MOUNT_OPERATION, GtkMountOperationClass))
+#define CTK_MOUNT_OPERATION_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_MOUNT_OPERATION, CtkMountOperationClass))
 
-typedef struct _GtkMountOperation         GtkMountOperation;
-typedef struct _GtkMountOperationClass    GtkMountOperationClass;
-typedef struct _GtkMountOperationPrivate  GtkMountOperationPrivate;
+typedef struct _CtkMountOperation         CtkMountOperation;
+typedef struct _CtkMountOperationClass    CtkMountOperationClass;
+typedef struct _CtkMountOperationPrivate  CtkMountOperationPrivate;
 
 /**
- * GtkMountOperation:
+ * CtkMountOperation:
  *
  * This should not be accessed directly. Use the accessor functions below.
  */
-struct _GtkMountOperation
+struct _CtkMountOperation
 {
   GMountOperation parent_instance;
 
-  GtkMountOperationPrivate *priv;
+  CtkMountOperationPrivate *priv;
 };
 
 /**
- * GtkMountOperationClass:
+ * CtkMountOperationClass:
  * @parent_class: The parent class.
  */
-struct _GtkMountOperationClass
+struct _CtkMountOperationClass
 {
   GMountOperationClass parent_class;
 
@@ -75,19 +75,19 @@ struct _GtkMountOperationClass
 GDK_AVAILABLE_IN_ALL
 GType            ctk_mount_operation_get_type   (void);
 GDK_AVAILABLE_IN_ALL
-GMountOperation *ctk_mount_operation_new        (GtkWindow         *parent);
+GMountOperation *ctk_mount_operation_new        (CtkWindow         *parent);
 GDK_AVAILABLE_IN_ALL
-gboolean         ctk_mount_operation_is_showing (GtkMountOperation *op);
+gboolean         ctk_mount_operation_is_showing (CtkMountOperation *op);
 GDK_AVAILABLE_IN_ALL
-void             ctk_mount_operation_set_parent (GtkMountOperation *op,
-                                                 GtkWindow         *parent);
+void             ctk_mount_operation_set_parent (CtkMountOperation *op,
+                                                 CtkWindow         *parent);
 GDK_AVAILABLE_IN_ALL
-GtkWindow *      ctk_mount_operation_get_parent (GtkMountOperation *op);
+CtkWindow *      ctk_mount_operation_get_parent (CtkMountOperation *op);
 GDK_AVAILABLE_IN_ALL
-void             ctk_mount_operation_set_screen (GtkMountOperation *op,
+void             ctk_mount_operation_set_screen (CtkMountOperation *op,
                                                  GdkScreen         *screen);
 GDK_AVAILABLE_IN_ALL
-GdkScreen       *ctk_mount_operation_get_screen (GtkMountOperation *op);
+GdkScreen       *ctk_mount_operation_get_screen (CtkMountOperation *op);
 
 G_END_DECLS
 

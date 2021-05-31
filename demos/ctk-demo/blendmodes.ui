@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="ctk+" version="3.20"/>
-  <object class="GtkWindow" id="window">
+  <object class="CtkWindow" id="window">
     <property name="can_focus">False</property>
     <property name="resizable">False</property>
     <property name="title">CSS Blend Modes</property>
     <property name="default_width">400</property>
     <property name="default_height">300</property>
     <child>
-      <object class="GtkGrid">
+      <object class="CtkGrid">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="border_width">12</property>
         <property name="row_spacing">12</property>
         <property name="column_spacing">12</property>
         <child>
-          <object class="GtkLabel">
+          <object class="CtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Blend mode:</property>
@@ -30,7 +30,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkScrolledWindow" id="scrolledwindow">
+          <object class="CtkScrolledWindow" id="scrolledwindow">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="vexpand">True</property>
@@ -43,7 +43,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkStackSwitcher">
+          <object class="CtkStackSwitcher">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
@@ -56,7 +56,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkStack" id="stack">
+          <object class="CtkStack" id="stack">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="hexpand">True</property>
@@ -65,7 +65,7 @@
             <property name="vhomogeneous">False</property>
             <property name="transition_type">crossfade</property>
             <child>
-              <object class="GtkGrid">
+              <object class="CtkGrid">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
@@ -75,7 +75,7 @@
                 <property name="row_spacing">12</property>
                 <property name="column_spacing">12</property>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="CtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Duck</property>
@@ -86,7 +86,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="CtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Background</property>
@@ -97,7 +97,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkImage">
+                  <object class="CtkImage">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <style>
@@ -110,7 +110,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkImage">
+                  <object class="CtkImage">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <style>
@@ -123,7 +123,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="CtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">
@@ -136,7 +136,7 @@ Blended picture</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkImage">
+                  <object class="CtkImage">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
@@ -157,7 +157,7 @@ Blended picture</property>
               </packing>
             </child>
             <child>
-              <object class="GtkGrid">
+              <object class="CtkGrid">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
@@ -167,7 +167,7 @@ Blended picture</property>
                 <property name="row_spacing">12</property>
                 <property name="column_spacing">12</property>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="CtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Red</property>
@@ -178,7 +178,7 @@ Blended picture</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="CtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Blue</property>
@@ -189,7 +189,7 @@ Blended picture</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkImage">
+                  <object class="CtkImage">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <style>
@@ -202,7 +202,7 @@ Blended picture</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkImage">
+                  <object class="CtkImage">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <style>
@@ -215,7 +215,7 @@ Blended picture</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="CtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">
@@ -228,7 +228,7 @@ Blended picture</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkImage">
+                  <object class="CtkImage">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
@@ -249,7 +249,7 @@ Blended picture</property>
               </packing>
             </child>
             <child>
-              <object class="GtkGrid">
+              <object class="CtkGrid">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
@@ -259,7 +259,7 @@ Blended picture</property>
                 <property name="row_spacing">6</property>
                 <property name="column_spacing">12</property>
                 <child>
-                  <object class="GtkImage">
+                  <object class="CtkImage">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <style>
@@ -272,7 +272,7 @@ Blended picture</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkImage">
+                  <object class="CtkImage">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <style>
@@ -285,7 +285,7 @@ Blended picture</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkImage">
+                  <object class="CtkImage">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <style>
@@ -298,7 +298,7 @@ Blended picture</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkImage">
+                  <object class="CtkImage">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
@@ -312,7 +312,7 @@ Blended picture</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="CtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Cyan</property>
@@ -327,7 +327,7 @@ Blended picture</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="CtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Magenta</property>
@@ -342,7 +342,7 @@ Blended picture</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="CtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Yellow</property>
@@ -357,7 +357,7 @@ Blended picture</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="CtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Blended picture</property>

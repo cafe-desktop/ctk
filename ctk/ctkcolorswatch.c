@@ -38,7 +38,7 @@
 
 
 /*
- * GtkColorSwatch has two CSS nodes, the main one named colorswatch
+ * CtkColorSwatch has two CSS nodes, the main one named colorswatch
  * and a subnode named overlay. The main node gets the .light or .dark
  * style classes added depending on the brightness of the color that
  * the swatch is showing.
@@ -47,7 +47,7 @@
  * be removed for non-activatable swatches.
  */
 
-struct _GtkColorSwatchPrivate
+struct _CtkColorSwatchPrivate
 {
   GdkRGBA color;
   gdouble radius[4];
@@ -59,12 +59,12 @@ struct _GtkColorSwatchPrivate
 
   GdkWindow *event_window;
 
-  GtkGesture *long_press_gesture;
-  GtkGesture *multipress_gesture;
-  GtkCssGadget *gadget;
-  GtkCssGadget *overlay_gadget;
+  CtkGesture *long_press_gesture;
+  CtkGesture *multipress_gesture;
+  CtkCssGadget *gadget;
+  CtkCssGadget *overlay_gadget;
 
-  GtkWidget *popover;
+  CtkWidget *popover;
 };
 
 enum
@@ -85,10 +85,10 @@ enum
 static guint signals[LAST_SIGNAL];
 
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkColorSwatch, ctk_color_swatch, CTK_TYPE_WIDGET)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkColorSwatch, ctk_color_swatch, CTK_TYPE_WIDGET)
 
 static gboolean
-swatch_draw (GtkWidget *widget,
+swatch_draw (CtkWidget *widget,
              cairo_t   *cr)
 {
   ctk_css_gadget_draw (CTK_COLOR_SWATCH (widget)->priv->gadget, cr);
@@ -99,7 +99,7 @@ swatch_draw (GtkWidget *widget,
 #define INTENSITY(r, g, b) ((r) * 0.30 + (g) * 0.59 + (b) * 0.11)
 
 static gboolean
-ctk_color_swatch_render (GtkCssGadget *gadget,
+ctk_color_swatch_render (CtkCssGadget *gadget,
                          cairo_t      *cr,
                          int           x,
                          int           y,
@@ -107,9 +107,9 @@ ctk_color_swatch_render (GtkCssGadget *gadget,
                          int           height,
                          gpointer      data)
 {
-  GtkWidget *widget;
-  GtkColorSwatch *swatch;
-  GtkStyleContext *context;
+  CtkWidget *widget;
+  CtkColorSwatch *swatch;
+  CtkStyleContext *context;
 
   widget = ctk_css_gadget_get_owner (gadget);
   swatch = CTK_COLOR_SWATCH (widget);
@@ -119,7 +119,7 @@ ctk_color_swatch_render (GtkCssGadget *gadget,
     {
       cairo_pattern_t *pattern;
       cairo_matrix_t matrix;
-      GtkAllocation allocation, border_allocation;
+      CtkAllocation allocation, border_allocation;
 
       ctk_widget_get_allocation (widget, &allocation);
       ctk_css_gadget_get_border_allocation (gadget, &border_allocation, NULL);
@@ -190,10 +190,10 @@ drag_set_color_icon (GdkDragContext *context,
 }
 
 static void
-swatch_drag_begin (GtkWidget      *widget,
+swatch_drag_begin (CtkWidget      *widget,
                    GdkDragContext *context)
 {
-  GtkColorSwatch *swatch = CTK_COLOR_SWATCH (widget);
+  CtkColorSwatch *swatch = CTK_COLOR_SWATCH (widget);
   GdkRGBA color;
 
   ctk_color_swatch_get_rgba (swatch, &color);
@@ -201,13 +201,13 @@ swatch_drag_begin (GtkWidget      *widget,
 }
 
 static void
-swatch_drag_data_get (GtkWidget        *widget,
+swatch_drag_data_get (CtkWidget        *widget,
                       GdkDragContext   *context,
-                      GtkSelectionData *selection_data,
+                      CtkSelectionData *selection_data,
                       guint             info,
                       guint             time)
 {
-  GtkColorSwatch *swatch = CTK_COLOR_SWATCH (widget);
+  CtkColorSwatch *swatch = CTK_COLOR_SWATCH (widget);
   guint16 vals[4];
   GdkRGBA color;
 
@@ -224,11 +224,11 @@ swatch_drag_data_get (GtkWidget        *widget,
 }
 
 static void
-swatch_drag_data_received (GtkWidget        *widget,
+swatch_drag_data_received (CtkWidget        *widget,
                            GdkDragContext   *context,
                            gint              x,
                            gint              y,
-                           GtkSelectionData *selection_data,
+                           CtkSelectionData *selection_data,
                            guint             info,
                            guint             time)
 {
@@ -261,8 +261,8 @@ swatch_drag_data_received (GtkWidget        *widget,
 }
 
 static void
-ctk_color_swatch_measure (GtkCssGadget   *gadget,
-                          GtkOrientation  orientation,
+ctk_color_swatch_measure (CtkCssGadget   *gadget,
+                          CtkOrientation  orientation,
                           int             for_size,
                           int            *minimum,
                           int            *natural,
@@ -270,8 +270,8 @@ ctk_color_swatch_measure (GtkCssGadget   *gadget,
                           int            *natural_baseline,
                           gpointer        unused)
 {
-  GtkWidget *widget;
-  GtkColorSwatch *swatch;
+  CtkWidget *widget;
+  CtkColorSwatch *swatch;
   gint w, h, min;
 
   widget = ctk_css_gadget_get_owner (gadget);
@@ -294,10 +294,10 @@ ctk_color_swatch_measure (GtkCssGadget   *gadget,
 }
 
 static gboolean
-swatch_key_press (GtkWidget   *widget,
+swatch_key_press (CtkWidget   *widget,
                   GdkEventKey *event)
 {
-  GtkColorSwatch *swatch = CTK_COLOR_SWATCH (widget);
+  CtkColorSwatch *swatch = CTK_COLOR_SWATCH (widget);
 
   if (event->keyval == GDK_KEY_space ||
       event->keyval == GDK_KEY_Return ||
@@ -321,7 +321,7 @@ swatch_key_press (GtkWidget   *widget,
 }
 
 static gboolean
-swatch_enter_notify (GtkWidget        *widget,
+swatch_enter_notify (CtkWidget        *widget,
                      GdkEventCrossing *event)
 {
   ctk_widget_set_state_flags (widget, CTK_STATE_FLAG_PRELIGHT, FALSE);
@@ -330,7 +330,7 @@ swatch_enter_notify (GtkWidget        *widget,
 }
 
 static gboolean
-swatch_leave_notify (GtkWidget        *widget,
+swatch_leave_notify (CtkWidget        *widget,
                      GdkEventCrossing *event)
 {
   ctk_widget_unset_state_flags (widget, CTK_STATE_FLAG_PRELIGHT);
@@ -339,18 +339,18 @@ swatch_leave_notify (GtkWidget        *widget,
 }
 
 static void
-emit_customize (GtkColorSwatch *swatch)
+emit_customize (CtkColorSwatch *swatch)
 {
   g_signal_emit (swatch, signals[CUSTOMIZE], 0);
 }
 
 static void
-do_popup (GtkColorSwatch *swatch)
+do_popup (CtkColorSwatch *swatch)
 {
   if (swatch->priv->popover == NULL)
     {
-      GtkWidget *box;
-      GtkWidget *item;
+      CtkWidget *box;
+      CtkWidget *item;
 
       swatch->priv->popover = ctk_popover_new (CTK_WIDGET (swatch));
       box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
@@ -369,10 +369,10 @@ do_popup (GtkColorSwatch *swatch)
 }
 
 static gboolean
-swatch_primary_action (GtkColorSwatch *swatch)
+swatch_primary_action (CtkColorSwatch *swatch)
 {
-  GtkWidget *widget = (GtkWidget *)swatch;
-  GtkStateFlags flags;
+  CtkWidget *widget = (CtkWidget *)swatch;
+  CtkStateFlags flags;
 
   flags = ctk_widget_get_state_flags (widget);
   if (!swatch->priv->has_color)
@@ -391,21 +391,21 @@ swatch_primary_action (GtkColorSwatch *swatch)
 }
 
 static void
-hold_action (GtkGestureLongPress *gesture,
+hold_action (CtkGestureLongPress *gesture,
              gdouble              x,
              gdouble              y,
-             GtkColorSwatch      *swatch)
+             CtkColorSwatch      *swatch)
 {
   do_popup (swatch);
   ctk_gesture_set_state (CTK_GESTURE (gesture), CTK_EVENT_SEQUENCE_CLAIMED);
 }
 
 static void
-tap_action (GtkGestureMultiPress *gesture,
+tap_action (CtkGestureMultiPress *gesture,
             gint                  n_press,
             gdouble               x,
             gdouble               y,
-            GtkColorSwatch       *swatch)
+            CtkColorSwatch       *swatch)
 {
   guint button;
 
@@ -426,9 +426,9 @@ tap_action (GtkGestureMultiPress *gesture,
 }
 
 static void
-swatch_map (GtkWidget *widget)
+swatch_map (CtkWidget *widget)
 {
-  GtkColorSwatch *swatch = CTK_COLOR_SWATCH (widget);
+  CtkColorSwatch *swatch = CTK_COLOR_SWATCH (widget);
 
   CTK_WIDGET_CLASS (ctk_color_swatch_parent_class)->map (widget);
 
@@ -437,9 +437,9 @@ swatch_map (GtkWidget *widget)
 }
 
 static void
-swatch_unmap (GtkWidget *widget)
+swatch_unmap (CtkWidget *widget)
 {
-  GtkColorSwatch *swatch = CTK_COLOR_SWATCH (widget);
+  CtkColorSwatch *swatch = CTK_COLOR_SWATCH (widget);
 
   if (swatch->priv->event_window)
     gdk_window_hide (swatch->priv->event_window);
@@ -448,10 +448,10 @@ swatch_unmap (GtkWidget *widget)
 }
 
 static void
-swatch_realize (GtkWidget *widget)
+swatch_realize (CtkWidget *widget)
 {
-  GtkColorSwatch *swatch = CTK_COLOR_SWATCH (widget);
-  GtkAllocation allocation;
+  CtkColorSwatch *swatch = CTK_COLOR_SWATCH (widget);
+  CtkAllocation allocation;
   GdkWindow *window;
   GdkWindowAttr attributes;
   gint attributes_mask;
@@ -483,9 +483,9 @@ swatch_realize (GtkWidget *widget)
 }
 
 static void
-swatch_unrealize (GtkWidget *widget)
+swatch_unrealize (CtkWidget *widget)
 {
-  GtkColorSwatch *swatch = CTK_COLOR_SWATCH (widget);
+  CtkColorSwatch *swatch = CTK_COLOR_SWATCH (widget);
 
   if (swatch->priv->event_window)
     {
@@ -498,11 +498,11 @@ swatch_unrealize (GtkWidget *widget)
 }
 
 static void
-swatch_size_allocate (GtkWidget     *widget,
-                      GtkAllocation *allocation)
+swatch_size_allocate (CtkWidget     *widget,
+                      CtkAllocation *allocation)
 {
-  GtkColorSwatch *swatch = CTK_COLOR_SWATCH (widget);
-  GtkAllocation clip, clip2;
+  CtkColorSwatch *swatch = CTK_COLOR_SWATCH (widget);
+  CtkAllocation clip, clip2;
 
   ctk_widget_set_allocation (widget, allocation);
 
@@ -521,7 +521,7 @@ swatch_size_allocate (GtkWidget     *widget,
 
   if (ctk_widget_get_realized (widget))
     {
-      GtkAllocation border_allocation;
+      CtkAllocation border_allocation;
       ctk_css_gadget_get_border_allocation(swatch->priv->gadget, &border_allocation, NULL);
       gdk_window_move_resize (swatch->priv->event_window,
                               border_allocation.x,
@@ -533,7 +533,7 @@ swatch_size_allocate (GtkWidget     *widget,
 }
 
 static void
-swatch_get_preferred_width (GtkWidget *widget,
+swatch_get_preferred_width (CtkWidget *widget,
                             gint      *minimum,
                             gint      *natural)
 {
@@ -545,7 +545,7 @@ swatch_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-swatch_get_preferred_height (GtkWidget *widget,
+swatch_get_preferred_height (CtkWidget *widget,
                              gint      *minimum,
                              gint      *natural)
 {
@@ -557,16 +557,16 @@ swatch_get_preferred_height (GtkWidget *widget,
 }
 
 static gboolean
-swatch_popup_menu (GtkWidget *widget)
+swatch_popup_menu (CtkWidget *widget)
 {
   do_popup (CTK_COLOR_SWATCH (widget));
   return TRUE;
 }
 
 static void
-update_icon (GtkColorSwatch *swatch)
+update_icon (CtkColorSwatch *swatch)
 {
-  GtkIconHelper *icon_helper = CTK_ICON_HELPER (swatch->priv->overlay_gadget);
+  CtkIconHelper *icon_helper = CTK_ICON_HELPER (swatch->priv->overlay_gadget);
 
   if (swatch->priv->icon)
     _ctk_icon_helper_set_icon_name (icon_helper, swatch->priv->icon, CTK_ICON_SIZE_BUTTON);
@@ -577,10 +577,10 @@ update_icon (GtkColorSwatch *swatch)
 }
 
 static void
-swatch_state_flags_changed (GtkWidget     *widget,
-                            GtkStateFlags  previous_state)
+swatch_state_flags_changed (CtkWidget     *widget,
+                            CtkStateFlags  previous_state)
 {
-  GtkColorSwatch *swatch = CTK_COLOR_SWATCH (widget);
+  CtkColorSwatch *swatch = CTK_COLOR_SWATCH (widget);
 
   ctk_css_gadget_set_state (swatch->priv->gadget, ctk_widget_get_state_flags (widget));
   ctk_css_gadget_set_state (swatch->priv->overlay_gadget, ctk_widget_get_state_flags (widget));
@@ -598,7 +598,7 @@ swatch_get_property (GObject    *object,
                      GValue     *value,
                      GParamSpec *pspec)
 {
-  GtkColorSwatch *swatch = CTK_COLOR_SWATCH (object);
+  CtkColorSwatch *swatch = CTK_COLOR_SWATCH (object);
   GdkRGBA color;
 
   switch (prop_id)
@@ -625,7 +625,7 @@ swatch_set_property (GObject      *object,
                      const GValue *value,
                      GParamSpec   *pspec)
 {
-  GtkColorSwatch *swatch = CTK_COLOR_SWATCH (object);
+  CtkColorSwatch *swatch = CTK_COLOR_SWATCH (object);
 
   switch (prop_id)
     {
@@ -647,7 +647,7 @@ swatch_set_property (GObject      *object,
 static void
 swatch_finalize (GObject *object)
 {
-  GtkColorSwatch *swatch = CTK_COLOR_SWATCH (object);
+  CtkColorSwatch *swatch = CTK_COLOR_SWATCH (object);
 
   g_free (swatch->priv->icon);
   g_clear_object (&swatch->priv->gadget);
@@ -659,7 +659,7 @@ swatch_finalize (GObject *object)
 static void
 swatch_dispose (GObject *object)
 {
-  GtkColorSwatch *swatch = CTK_COLOR_SWATCH (object);
+  CtkColorSwatch *swatch = CTK_COLOR_SWATCH (object);
 
   if (swatch->priv->popover)
     {
@@ -674,9 +674,9 @@ swatch_dispose (GObject *object)
 }
 
 static void
-ctk_color_swatch_class_init (GtkColorSwatchClass *class)
+ctk_color_swatch_class_init (CtkColorSwatchClass *class)
 {
-  GtkWidgetClass *widget_class = (GtkWidgetClass *)class;
+  CtkWidgetClass *widget_class = (CtkWidgetClass *)class;
   GObjectClass *object_class = (GObjectClass *)class;
 
   object_class->get_property = swatch_get_property;
@@ -705,14 +705,14 @@ ctk_color_swatch_class_init (GtkColorSwatchClass *class)
     g_signal_new (I_("activate"),
                   CTK_TYPE_COLOR_SWATCH,
                   G_SIGNAL_RUN_FIRST,
-                  G_STRUCT_OFFSET (GtkColorSwatchClass, activate),
+                  G_STRUCT_OFFSET (CtkColorSwatchClass, activate),
                   NULL, NULL, NULL, G_TYPE_NONE, 0);
 
   signals[CUSTOMIZE] =
     g_signal_new (I_("customize"),
                   CTK_TYPE_COLOR_SWATCH,
                   G_SIGNAL_RUN_FIRST,
-                  G_STRUCT_OFFSET (GtkColorSwatchClass, customize),
+                  G_STRUCT_OFFSET (CtkColorSwatchClass, customize),
                   NULL, NULL, NULL, G_TYPE_NONE, 0);
 
   g_object_class_install_property (object_class, PROP_RGBA,
@@ -730,9 +730,9 @@ ctk_color_swatch_class_init (GtkColorSwatchClass *class)
 }
 
 static void
-ctk_color_swatch_init (GtkColorSwatch *swatch)
+ctk_color_swatch_init (CtkColorSwatch *swatch)
 {
-  GtkCssNode *widget_node;
+  CtkCssNode *widget_node;
 
   swatch->priv = ctk_color_swatch_get_instance_private (swatch);
   swatch->priv->use_alpha = TRUE;
@@ -771,21 +771,21 @@ ctk_color_swatch_init (GtkColorSwatch *swatch)
 
 /* Public API {{{1 */
 
-GtkWidget *
+CtkWidget *
 ctk_color_swatch_new (void)
 {
-  return (GtkWidget *) g_object_new (CTK_TYPE_COLOR_SWATCH, NULL);
+  return (CtkWidget *) g_object_new (CTK_TYPE_COLOR_SWATCH, NULL);
 }
 
-static const GtkTargetEntry dnd_targets[] = {
+static const CtkTargetEntry dnd_targets[] = {
   { "application/x-color", 0 }
 };
 
 void
-ctk_color_swatch_set_rgba (GtkColorSwatch *swatch,
+ctk_color_swatch_set_rgba (CtkColorSwatch *swatch,
                            const GdkRGBA  *color)
 {
-  GtkStyleContext *context;
+  CtkStyleContext *context;
 
   context = ctk_widget_get_style_context (CTK_WIDGET (swatch));
 
@@ -816,7 +816,7 @@ ctk_color_swatch_set_rgba (GtkColorSwatch *swatch,
 }
 
 gboolean
-ctk_color_swatch_get_rgba (GtkColorSwatch *swatch,
+ctk_color_swatch_get_rgba (CtkColorSwatch *swatch,
                            GdkRGBA        *color)
 {
   if (swatch->priv->has_color)
@@ -838,7 +838,7 @@ ctk_color_swatch_get_rgba (GtkColorSwatch *swatch,
 }
 
 void
-ctk_color_swatch_set_icon (GtkColorSwatch *swatch,
+ctk_color_swatch_set_icon (CtkColorSwatch *swatch,
                            const gchar    *icon)
 {
   swatch->priv->icon = g_strdup (icon);
@@ -847,7 +847,7 @@ ctk_color_swatch_set_icon (GtkColorSwatch *swatch,
 }
 
 void
-ctk_color_swatch_set_can_drop (GtkColorSwatch *swatch,
+ctk_color_swatch_set_can_drop (CtkColorSwatch *swatch,
                                gboolean        can_drop)
 {
   if (can_drop)
@@ -866,7 +866,7 @@ ctk_color_swatch_set_can_drop (GtkColorSwatch *swatch,
 }
 
 void
-ctk_color_swatch_set_use_alpha (GtkColorSwatch *swatch,
+ctk_color_swatch_set_use_alpha (CtkColorSwatch *swatch,
                                 gboolean        use_alpha)
 {
   swatch->priv->use_alpha = use_alpha;
@@ -874,7 +874,7 @@ ctk_color_swatch_set_use_alpha (GtkColorSwatch *swatch,
 }
 
 void
-ctk_color_swatch_set_selectable (GtkColorSwatch *swatch,
+ctk_color_swatch_set_selectable (CtkColorSwatch *swatch,
                                  gboolean selectable)
 {
   if (selectable == swatch->priv->selectable)
@@ -885,7 +885,7 @@ ctk_color_swatch_set_selectable (GtkColorSwatch *swatch,
 }
 
 gboolean
-ctk_color_swatch_get_selectable (GtkColorSwatch *swatch)
+ctk_color_swatch_get_selectable (CtkColorSwatch *swatch)
 {
   return swatch->priv->selectable;
 }

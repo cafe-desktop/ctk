@@ -39,7 +39,7 @@ typedef struct
   GString *tag_table_str;
   GString *text_str;
   GHashTable *tags;
-  GtkTextIter start, end;
+  CtkTextIter start, end;
 
   gint n_pixbufs;
   GList *pixbufs;
@@ -285,7 +285,7 @@ serialize_tag (gpointer key,
                gpointer user_data)
 {
   SerializationContext *context = user_data;
-  GtkTextTag *tag = data;
+  CtkTextTag *tag = data;
   gchar *tag_name;
   gint tag_id;
   GParamSpec **pspecs;
@@ -413,10 +413,10 @@ serialize_section_header (GString     *str,
 }
 
 static void
-serialize_text (GtkTextBuffer        *buffer,
+serialize_text (CtkTextBuffer        *buffer,
                 SerializationContext *context)
 {
-  GtkTextIter iter, old_iter;
+  CtkTextIter iter, old_iter;
   GSList *tag_list, *new_tag_list;
   GSList *active_tags;
 
@@ -438,7 +438,7 @@ serialize_text (GtkTextBuffer        *buffer,
       /* Handle removed tags */
       for (tmp = removed; tmp; tmp = tmp->next)
 	{
-	  GtkTextTag *tag = tmp->data;
+	  CtkTextTag *tag = tmp->data;
 
           /* Only close the tag if we didn't close it before (by using
            * the stack logic in the while() loop below)
@@ -464,7 +464,7 @@ serialize_text (GtkTextBuffer        *buffer,
       /* Handle added tags */
       for (tmp = added; tmp; tmp = tmp->next)
 	{
-	  GtkTextTag *tag = tmp->data;
+	  CtkTextTag *tag = tmp->data;
 	  gchar *tag_name;
 
 	  /* Add it to the tag hash table */
@@ -593,10 +593,10 @@ serialize_pixbufs (SerializationContext *context,
 G_GNUC_END_IGNORE_DEPRECATIONS
 
 guint8 *
-_ctk_text_buffer_serialize_rich_text (GtkTextBuffer     *register_buffer,
-                                      GtkTextBuffer     *content_buffer,
-                                      const GtkTextIter *start,
-                                      const GtkTextIter *end,
+_ctk_text_buffer_serialize_rich_text (CtkTextBuffer     *register_buffer,
+                                      CtkTextBuffer     *content_buffer,
+                                      const CtkTextIter *start,
+                                      const CtkTextIter *end,
                                       gsize             *length,
                                       gpointer           user_data)
 {
@@ -660,7 +660,7 @@ typedef struct
 
 typedef struct
 {
-  GtkTextTag *tag;
+  CtkTextTag *tag;
   gint prio;
 } TextTagPrio;
 
@@ -670,7 +670,7 @@ typedef struct
 
   GList *headers;
 
-  GtkTextBuffer *buffer;
+  CtkTextBuffer *buffer;
 
   /* Tags that are defined in <tag> elements */
   GHashTable *defined_tags;
@@ -682,7 +682,7 @@ typedef struct
   GHashTable *substitutions;
 
   /* Current tag */
-  GtkTextTag *current_tag;
+  CtkTextTag *current_tag;
 
   /* Priority of current tag */
   gint current_tag_prio;
@@ -990,14 +990,14 @@ check_no_attributes (GMarkupParseContext  *context,
   return TRUE;
 }
 
-static GtkTextTag *
+static CtkTextTag *
 tag_exists (GMarkupParseContext *context,
 	    const gchar         *name,
 	    gint                 id,
 	    ParseInfo           *info,
 	    GError             **error)
 {
-  GtkTextTagTable *tag_table;
+  CtkTextTagTable *tag_table;
   const gchar *real_name;
 
   tag_table = ctk_text_buffer_get_tag_table (info->buffer);
@@ -1027,7 +1027,7 @@ tag_exists (GMarkupParseContext *context,
     }
   else
     {
-      GtkTextTag *tag;
+      CtkTextTag *tag;
 
       if (!name)
 	{
@@ -1092,7 +1092,7 @@ parse_apply_tag_element (GMarkupParseContext  *context,
 {
   const gchar *name, *priority;
   gint id;
-  GtkTextTag *tag;
+  CtkTextTag *tag;
 
   g_assert (peek_state (info) == STATE_TEXT ||
 	    peek_state (info) == STATE_APPLY_TAG);
@@ -1230,7 +1230,7 @@ static gchar *
 get_tag_name (ParseInfo   *info,
 	      const gchar *tag_name)
 {
-  GtkTextTagTable *tag_table;
+  CtkTextTagTable *tag_table;
   gchar *name;
   gint i;
 
@@ -1601,7 +1601,7 @@ text_handler (GMarkupParseContext  *context,
 
 static void
 parse_info_init (ParseInfo     *info,
-		 GtkTextBuffer *buffer,
+		 CtkTextBuffer *buffer,
 		 gboolean       create_tags,
 		 GList         *headers)
 {
@@ -1671,10 +1671,10 @@ parse_info_free (ParseInfo *info)
 
 static void
 insert_text (ParseInfo   *info,
-	     GtkTextIter *iter)
+	     CtkTextIter *iter)
 {
-  GtkTextIter start_iter;
-  GtkTextMark *mark;
+  CtkTextIter start_iter;
+  CtkTextMark *mark;
   GList *tmp;
   GSList *tags;
 
@@ -1701,7 +1701,7 @@ insert_text (ParseInfo   *info,
       tags = span->tags;
       while (tags)
 	{
-	  GtkTextTag *tag = tags->data;
+	  CtkTextTag *tag = tags->data;
 
 	  ctk_text_buffer_apply_tag (info->buffer, tag,
 				     &start_iter, iter);
@@ -1797,8 +1797,8 @@ read_headers (const gchar *start,
 }
 
 static gboolean
-deserialize_text (GtkTextBuffer *buffer,
-		  GtkTextIter   *iter,
+deserialize_text (CtkTextBuffer *buffer,
+		  CtkTextIter   *iter,
 		  const gchar   *text,
 		  gint           len,
 		  gboolean       create_tags,
@@ -1845,9 +1845,9 @@ deserialize_text (GtkTextBuffer *buffer,
 }
 
 gboolean
-_ctk_text_buffer_deserialize_rich_text (GtkTextBuffer *register_buffer,
-                                        GtkTextBuffer *content_buffer,
-                                        GtkTextIter   *iter,
+_ctk_text_buffer_deserialize_rich_text (CtkTextBuffer *register_buffer,
+                                        CtkTextBuffer *content_buffer,
+                                        CtkTextIter   *iter,
                                         const guint8  *text,
                                         gsize          length,
                                         gboolean       create_tags,

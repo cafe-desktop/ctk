@@ -27,26 +27,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_NOTEBOOK_ACCESSIBLE                   (ctk_notebook_accessible_get_type ())
-#define CTK_NOTEBOOK_ACCESSIBLE(obj)                   (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_NOTEBOOK_ACCESSIBLE, GtkNotebookAccessible))
-#define CTK_NOTEBOOK_ACCESSIBLE_CLASS(klass)           (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_NOTEBOOK_ACCESSIBLE, GtkNotebookAccessibleClass))
+#define CTK_NOTEBOOK_ACCESSIBLE(obj)                   (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_NOTEBOOK_ACCESSIBLE, CtkNotebookAccessible))
+#define CTK_NOTEBOOK_ACCESSIBLE_CLASS(klass)           (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_NOTEBOOK_ACCESSIBLE, CtkNotebookAccessibleClass))
 #define CTK_IS_NOTEBOOK_ACCESSIBLE(obj)                (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_NOTEBOOK_ACCESSIBLE))
 #define CTK_IS_NOTEBOOK_ACCESSIBLE_CLASS(klass)        (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_NOTEBOOK_ACCESSIBLE))
-#define CTK_NOTEBOOK_ACCESSIBLE_GET_CLASS(obj)         (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_NOTEBOOK_ACCESSIBLE, GtkNotebookAccessibleClass))
+#define CTK_NOTEBOOK_ACCESSIBLE_GET_CLASS(obj)         (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_NOTEBOOK_ACCESSIBLE, CtkNotebookAccessibleClass))
 
-typedef struct _GtkNotebookAccessible        GtkNotebookAccessible;
-typedef struct _GtkNotebookAccessibleClass   GtkNotebookAccessibleClass;
-typedef struct _GtkNotebookAccessiblePrivate GtkNotebookAccessiblePrivate;
+typedef struct _CtkNotebookAccessible        CtkNotebookAccessible;
+typedef struct _CtkNotebookAccessibleClass   CtkNotebookAccessibleClass;
+typedef struct _CtkNotebookAccessiblePrivate CtkNotebookAccessiblePrivate;
 
-struct _GtkNotebookAccessible
+struct _CtkNotebookAccessible
 {
-  GtkContainerAccessible parent;
+  CtkContainerAccessible parent;
 
-  GtkNotebookAccessiblePrivate *priv;
+  CtkNotebookAccessiblePrivate *priv;
 };
 
-struct _GtkNotebookAccessibleClass
+struct _CtkNotebookAccessibleClass
 {
-  GtkContainerAccessibleClass parent_class;
+  CtkContainerAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

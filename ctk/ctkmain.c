@@ -50,7 +50,7 @@
  *
  * When your callbacks are invoked, you would typically take some action - for
  * example, when an Open button is clicked you might display a
- * #GtkFileChooserDialog. After a callback finishes, GTK+ will return to the
+ * #CtkFileChooserDialog. After a callback finishes, GTK+ will return to the
  * main loop and await more user input.
  *
  * ## Typical main() function for a GTK+ application
@@ -59,7 +59,7 @@
  * int
  * main (int argc, char **argv)
  * {
- *  GtkWidget *mainwin;
+ *  CtkWidget *mainwin;
  *   // Initialize i18n support with bindtextdomain(), etc.
  *
  *   // ...
@@ -135,19 +135,19 @@
 
 /* Private type definitions
  */
-typedef struct _GtkKeySnooperData        GtkKeySnooperData;
+typedef struct _CtkKeySnooperData        CtkKeySnooperData;
 
-struct _GtkKeySnooperData
+struct _CtkKeySnooperData
 {
-  GtkKeySnoopFunc func;
+  CtkKeySnoopFunc func;
   gpointer func_data;
   guint id;
 };
 
-static gint  ctk_invoke_key_snoopers     (GtkWidget          *grab_widget,
+static gint  ctk_invoke_key_snoopers     (CtkWidget          *grab_widget,
                                           GdkEvent           *event);
 
-static GtkWindowGroup *ctk_main_get_window_group (GtkWidget   *widget);
+static CtkWindowGroup *ctk_main_get_window_group (CtkWidget   *widget);
 
 static guint ctk_main_loop_level = 0;
 static gint pre_initialized = FALSE;
@@ -1144,8 +1144,8 @@ ctk_init_check (int    *argc,
  * the option group returned by ctk_get_option_group(),
  * you don’t have to call ctk_init().
  *
- * And if you are using #GtkApplication, you don't have to call any of the
- * initialization functions either; the #GtkApplication::startup handler
+ * And if you are using #CtkApplication, you don't have to call any of the
+ * initialization functions either; the #CtkApplication::startup handler
  * does it for you.
  *
  * This function will terminate your program if it was unable to
@@ -1183,29 +1183,29 @@ ctk_init (int *argc, char ***argv)
  */
 
 static void
-check_sizeof_GtkWindow (size_t sizeof_GtkWindow)
+check_sizeof_CtkWindow (size_t sizeof_CtkWindow)
 {
-  if (sizeof_GtkWindow != sizeof (GtkWindow))
+  if (sizeof_CtkWindow != sizeof (CtkWindow))
     g_error ("Incompatible build!\n"
-             "The code using GTK+ thinks GtkWindow is of different\n"
+             "The code using GTK+ thinks CtkWindow is of different\n"
              "size than it actually is in this build of GTK+.\n"
              "On Windows, this probably means that you have compiled\n"
              "your code with gcc without the -mms-bitfields switch,\n"
              "or that you are using an unsupported compiler.");
 }
 
-/* In GTK+ 2.0 the GtkWindow struct actually is the same size in
+/* In GTK+ 2.0 the CtkWindow struct actually is the same size in
  * gcc-compiled code on Win32 whether compiled with -fnative-struct or
  * not. Unfortunately this wan’t noticed until after GTK+ 2.0.1. So,
  * from GTK+ 2.0.2 on, check some other struct, too, where the use of
- * -fnative-struct still matters. GtkBox is one such.
+ * -fnative-struct still matters. CtkBox is one such.
  */
 static void
-check_sizeof_GtkBox (size_t sizeof_GtkBox)
+check_sizeof_CtkBox (size_t sizeof_CtkBox)
 {
-  if (sizeof_GtkBox != sizeof (GtkBox))
+  if (sizeof_CtkBox != sizeof (CtkBox))
     g_error ("Incompatible build!\n"
-             "The code using GTK+ thinks GtkBox is of different\n"
+             "The code using GTK+ thinks CtkBox is of different\n"
              "size than it actually is in this build of GTK+.\n"
              "On Windows, this probably means that you have compiled\n"
              "your code with gcc without the -mms-bitfields switch,\n"
@@ -1216,20 +1216,20 @@ check_sizeof_GtkBox (size_t sizeof_GtkBox)
  * in the number of extra args.
  */
 void
-ctk_init_abi_check (int *argc, char ***argv, int num_checks, size_t sizeof_GtkWindow, size_t sizeof_GtkBox)
+ctk_init_abi_check (int *argc, char ***argv, int num_checks, size_t sizeof_CtkWindow, size_t sizeof_CtkBox)
 {
-  check_sizeof_GtkWindow (sizeof_GtkWindow);
+  check_sizeof_CtkWindow (sizeof_CtkWindow);
   if (num_checks >= 2)
-    check_sizeof_GtkBox (sizeof_GtkBox);
+    check_sizeof_CtkBox (sizeof_CtkBox);
   ctk_init (argc, argv);
 }
 
 gboolean
-ctk_init_check_abi_check (int *argc, char ***argv, int num_checks, size_t sizeof_GtkWindow, size_t sizeof_GtkBox)
+ctk_init_check_abi_check (int *argc, char ***argv, int num_checks, size_t sizeof_CtkWindow, size_t sizeof_CtkBox)
 {
-  check_sizeof_GtkWindow (sizeof_GtkWindow);
+  check_sizeof_CtkWindow (sizeof_CtkWindow);
   if (num_checks >= 2)
-    check_sizeof_GtkBox (sizeof_GtkBox);
+    check_sizeof_CtkBox (sizeof_CtkBox);
   return ctk_init_check (argc, argv);
 }
 
@@ -1260,11 +1260,11 @@ ctk_init_check_abi_check (int *argc, char ***argv, int num_checks, size_t sizeof
  * ctk_widget_set_default_direction (direction);
  * ]|
  *
- * Returns: the #GtkTextDirection of the current locale
+ * Returns: the #CtkTextDirection of the current locale
  *
  * Since: 3.12
  */
-GtkTextDirection
+CtkTextDirection
 ctk_get_locale_direction (void)
 {
   /* Translate to default:RTL if you want your widgets
@@ -1273,7 +1273,7 @@ ctk_get_locale_direction (void)
    * it isn't default:LTR or default:RTL it will not work
    */
   gchar            *e   = _("default:LTR");
-  GtkTextDirection  dir = CTK_TEXT_DIR_LTR;
+  CtkTextDirection  dir = CTK_TEXT_DIR_LTR;
 
   if (g_strcmp0 (e, "default:RTL") == 0)
     dir = CTK_TEXT_DIR_RTL;
@@ -1551,7 +1551,7 @@ static GdkEvent *
 rewrite_event_for_grabs (GdkEvent *event)
 {
   GdkWindow *grab_window;
-  GtkWidget *event_widget, *grab_widget;
+  CtkWidget *event_widget, *grab_widget;
   gpointer grab_widget_ptr;
   gboolean owner_events;
   GdkDisplay *display;
@@ -1597,11 +1597,11 @@ rewrite_event_for_grabs (GdkEvent *event)
     return NULL;
 }
 
-static GtkWidget *
-widget_get_popover_ancestor (GtkWidget *widget,
-                             GtkWindow *window)
+static CtkWidget *
+widget_get_popover_ancestor (CtkWidget *widget,
+                             CtkWindow *window)
 {
-  GtkWidget *parent = ctk_widget_get_parent (widget);
+  CtkWidget *parent = ctk_widget_get_parent (widget);
 
   while (parent && parent != CTK_WIDGET (window))
     {
@@ -1619,10 +1619,10 @@ widget_get_popover_ancestor (GtkWidget *widget,
 }
 
 static gboolean
-check_event_in_child_popover (GtkWidget *event_widget,
-                              GtkWidget *grab_widget)
+check_event_in_child_popover (CtkWidget *event_widget,
+                              CtkWidget *grab_widget)
 {
-  GtkWidget *window, *popover = NULL, *popover_parent = NULL;
+  CtkWidget *window, *popover = NULL, *popover_parent = NULL;
 
   if (grab_widget == event_widget)
     return FALSE;
@@ -1689,10 +1689,10 @@ check_event_in_child_popover (GtkWidget *event_widget,
 void
 ctk_main_do_event (GdkEvent *event)
 {
-  GtkWidget *event_widget;
-  GtkWidget *grab_widget = NULL;
-  GtkWidget *topmost_widget = NULL;
-  GtkWindowGroup *window_group;
+  CtkWidget *event_widget;
+  CtkWidget *grab_widget = NULL;
+  CtkWidget *topmost_widget = NULL;
+  CtkWindowGroup *window_group;
   GdkEvent *rewritten_event = NULL;
   GdkDevice *device;
   GList *tmp_list;
@@ -1867,7 +1867,7 @@ ctk_main_do_event (GdkEvent *event)
 
       /* make focus visible in a window that receives a key event */
       {
-        GtkWidget *window;
+        CtkWidget *window;
 
         window = ctk_widget_get_toplevel (grab_widget);
         if (CTK_IS_WINDOW (window))
@@ -1883,7 +1883,7 @@ ctk_main_do_event (GdkEvent *event)
           !CTK_IS_MENU_SHELL (grab_widget))
         {
           gboolean mnemonics_visible;
-          GtkWidget *window;
+          CtkWidget *window;
 
           mnemonics_visible = (event->type == GDK_KEY_PRESS);
 
@@ -1983,7 +1983,7 @@ ctk_main_do_event (GdkEvent *event)
  * int
  * main (int argc, char **argv)
  * {
- *   GtkWidget *win, *but;
+ *   CtkWidget *win, *but;
  *   const char *text = "Close yourself. I mean it!";
  *
  *   ctk_init (&argc, &argv);
@@ -2033,10 +2033,10 @@ ctk_false (void)
   return FALSE;
 }
 
-static GtkWindowGroup *
-ctk_main_get_window_group (GtkWidget *widget)
+static CtkWindowGroup *
+ctk_main_get_window_group (CtkWidget *widget)
 {
-  GtkWidget *toplevel = NULL;
+  CtkWidget *toplevel = NULL;
 
   if (widget)
     toplevel = ctk_widget_get_toplevel (widget);
@@ -2049,8 +2049,8 @@ ctk_main_get_window_group (GtkWidget *widget)
 
 typedef struct
 {
-  GtkWidget *old_grab_widget;
-  GtkWidget *new_grab_widget;
+  CtkWidget *old_grab_widget;
+  CtkWidget *new_grab_widget;
   gboolean   was_grabbed;
   gboolean   is_grabbed;
   gboolean   from_grab;
@@ -2059,8 +2059,8 @@ typedef struct
 } GrabNotifyInfo;
 
 static void
-synth_crossing_for_grab_notify (GtkWidget       *from,
-                                GtkWidget       *to,
+synth_crossing_for_grab_notify (CtkWidget       *from,
+                                CtkWidget       *to,
                                 GrabNotifyInfo  *info,
                                 GList           *devices,
                                 GdkCrossingMode  mode)
@@ -2115,7 +2115,7 @@ synth_crossing_for_grab_notify (GtkWidget       *from,
 }
 
 static void
-ctk_grab_notify_foreach (GtkWidget *child,
+ctk_grab_notify_foreach (CtkWidget *child,
                          gpointer   data)
 {
   GrabNotifyInfo *info = data;
@@ -2176,10 +2176,10 @@ ctk_grab_notify_foreach (GtkWidget *child,
 }
 
 static void
-ctk_grab_notify (GtkWindowGroup *group,
+ctk_grab_notify (CtkWindowGroup *group,
                  GdkDevice      *device,
-                 GtkWidget      *old_grab_widget,
-                 GtkWidget      *new_grab_widget,
+                 CtkWidget      *old_grab_widget,
+                 CtkWidget      *new_grab_widget,
                  gboolean        from_grab)
 {
   GList *toplevels;
@@ -2200,7 +2200,7 @@ ctk_grab_notify (GtkWindowGroup *group,
 
   while (toplevels)
     {
-      GtkWindow *toplevel = toplevels->data;
+      CtkWindow *toplevel = toplevels->data;
       toplevels = g_list_delete_link (toplevels, toplevels);
 
       info.was_grabbed = FALSE;
@@ -2229,10 +2229,10 @@ ctk_grab_notify (GtkWindowGroup *group,
  * grabbed widget and this function does nothing.
  */
 void
-ctk_grab_add (GtkWidget *widget)
+ctk_grab_add (CtkWidget *widget)
 {
-  GtkWindowGroup *group;
-  GtkWidget *old_grab_widget;
+  CtkWindowGroup *group;
+  CtkWidget *old_grab_widget;
 
   g_return_if_fail (widget != NULL);
 
@@ -2259,10 +2259,10 @@ ctk_grab_add (GtkWidget *widget)
  * Returns: (transfer none) (nullable): The widget which currently
  *     has the grab or %NULL if no grab is active
  */
-GtkWidget*
+CtkWidget*
 ctk_grab_get_current (void)
 {
-  GtkWindowGroup *group;
+  CtkWindowGroup *group;
 
   group = ctk_main_get_window_group (NULL);
 
@@ -2280,10 +2280,10 @@ ctk_grab_get_current (void)
  * If @widget does not have the grab, this function does nothing.
  */
 void
-ctk_grab_remove (GtkWidget *widget)
+ctk_grab_remove (CtkWidget *widget)
 {
-  GtkWindowGroup *group;
-  GtkWidget *new_grab_widget;
+  CtkWindowGroup *group;
+  CtkWidget *new_grab_widget;
 
   g_return_if_fail (widget != NULL);
 
@@ -2303,7 +2303,7 @@ ctk_grab_remove (GtkWidget *widget)
 
 /**
  * ctk_device_grab_add:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @device: a #GdkDevice to grab on.
  * @block_others: %TRUE to prevent other devices to interact with @widget.
  *
@@ -2315,12 +2315,12 @@ ctk_grab_remove (GtkWidget *widget)
  * Since: 3.0
  */
 void
-ctk_device_grab_add (GtkWidget *widget,
+ctk_device_grab_add (CtkWidget *widget,
                      GdkDevice *device,
                      gboolean   block_others)
 {
-  GtkWindowGroup *group;
-  GtkWidget *old_grab_widget;
+  CtkWindowGroup *group;
+  CtkWidget *old_grab_widget;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (GDK_IS_DEVICE (device));
@@ -2336,7 +2336,7 @@ ctk_device_grab_add (GtkWidget *widget,
 
 /**
  * ctk_device_grab_remove:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @device: a #GdkDevice
  *
  * Removes a device grab from the given widget.
@@ -2347,11 +2347,11 @@ ctk_device_grab_add (GtkWidget *widget,
  * Since: 3.0
  */
 void
-ctk_device_grab_remove (GtkWidget *widget,
+ctk_device_grab_remove (CtkWidget *widget,
                         GdkDevice *device)
 {
-  GtkWindowGroup *group;
-  GtkWidget *new_grab_widget;
+  CtkWindowGroup *group;
+  CtkWidget *new_grab_widget;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (GDK_IS_DEVICE (device));
@@ -2365,7 +2365,7 @@ ctk_device_grab_remove (GtkWidget *widget,
 
 /**
  * ctk_key_snooper_install: (skip)
- * @snooper: a #GtkKeySnoopFunc
+ * @snooper: a #CtkKeySnoopFunc
  * @func_data: (closure): data to pass to @snooper
  *
  * Installs a key snooper function, which will get called on all
@@ -2378,15 +2378,15 @@ ctk_device_grab_remove (GtkWidget *widget,
  *     be handled by widgets.
  */
 guint
-ctk_key_snooper_install (GtkKeySnoopFunc snooper,
+ctk_key_snooper_install (CtkKeySnoopFunc snooper,
                          gpointer        func_data)
 {
-  GtkKeySnooperData *data;
+  CtkKeySnooperData *data;
   static guint snooper_id = 1;
 
   g_return_val_if_fail (snooper != NULL, 0);
 
-  data = g_new (GtkKeySnooperData, 1);
+  data = g_new (CtkKeySnooperData, 1);
   data->func = snooper;
   data->func_data = func_data;
   data->id = snooper_id++;
@@ -2407,7 +2407,7 @@ ctk_key_snooper_install (GtkKeySnoopFunc snooper,
 void
 ctk_key_snooper_remove (guint snooper_id)
 {
-  GtkKeySnooperData *data = NULL;
+  CtkKeySnooperData *data = NULL;
   GSList *slist;
 
   slist = key_snoopers;
@@ -2428,7 +2428,7 @@ ctk_key_snooper_remove (guint snooper_id)
 }
 
 static gint
-ctk_invoke_key_snoopers (GtkWidget *grab_widget,
+ctk_invoke_key_snoopers (CtkWidget *grab_widget,
                          GdkEvent  *event)
 {
   GSList *slist;
@@ -2439,7 +2439,7 @@ ctk_invoke_key_snoopers (GtkWidget *grab_widget,
   slist = key_snoopers;
   while (slist && !return_val)
     {
-      GtkKeySnooperData *data;
+      CtkKeySnooperData *data;
 
       data = slist->data;
       slist = slist->next;
@@ -2454,7 +2454,7 @@ ctk_invoke_key_snoopers (GtkWidget *grab_widget,
  *
  * Obtains a copy of the event currently being processed by GTK+.
  *
- * For example, if you are handling a #GtkButton::clicked signal,
+ * For example, if you are handling a #CtkButton::clicked signal,
  * the current event will be the #GdkEventButton that triggered
  * the ::clicked signal.
  *
@@ -2542,10 +2542,10 @@ ctk_get_current_event_device (void)
  * Returns: (transfer none) (nullable): the widget that originally
  *     received @event, or %NULL
  */
-GtkWidget*
+CtkWidget*
 ctk_get_event_widget (GdkEvent *event)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   gpointer widget_ptr;
 
   widget = NULL;
@@ -2560,9 +2560,9 @@ ctk_get_event_widget (GdkEvent *event)
 }
 
 static gboolean
-propagate_event_up (GtkWidget *widget,
+propagate_event_up (CtkWidget *widget,
                     GdkEvent  *event,
-                    GtkWidget *topmost)
+                    CtkWidget *topmost)
 {
   gboolean handled_event = FALSE;
 
@@ -2572,12 +2572,12 @@ propagate_event_up (GtkWidget *widget,
    */
   while (TRUE)
     {
-      GtkWidget *tmp;
+      CtkWidget *tmp;
 
       g_object_ref (widget);
 
       /* Scroll events are special cased here because it
-       * feels wrong when scrolling a GtkViewport, say,
+       * feels wrong when scrolling a CtkViewport, say,
        * to have children of the viewport eat the scroll
        * event
        */
@@ -2602,9 +2602,9 @@ propagate_event_up (GtkWidget *widget,
 }
 
 static gboolean
-propagate_event_down (GtkWidget *widget,
+propagate_event_down (CtkWidget *widget,
                       GdkEvent  *event,
-                      GtkWidget *topmost)
+                      CtkWidget *topmost)
 {
   gint handled_event = FALSE;
   GList *widgets = NULL;
@@ -2625,7 +2625,7 @@ propagate_event_down (GtkWidget *widget,
 
   for (l = widgets; l && !handled_event; l = l->next)
     {
-      widget = (GtkWidget *)l->data;
+      widget = (CtkWidget *)l->data;
 
       if (!ctk_widget_is_sensitive (widget))
         {
@@ -2646,13 +2646,13 @@ propagate_event_down (GtkWidget *widget,
 }
 
 static gboolean
-propagate_event (GtkWidget *widget,
+propagate_event (CtkWidget *widget,
                  GdkEvent  *event,
                  gboolean   captured,
-                 GtkWidget *topmost)
+                 CtkWidget *topmost)
 {
   gboolean handled_event = FALSE;
-  gboolean (* propagate_func) (GtkWidget *widget, GdkEvent  *event);
+  gboolean (* propagate_func) (CtkWidget *widget, GdkEvent  *event);
 
   propagate_func = captured ? _ctk_widget_captured_event : ctk_widget_event;
 
@@ -2663,7 +2663,7 @@ propagate_event (GtkWidget *widget,
        * key event on to the currently focused widget
        * for that window.
        */
-      GtkWidget *window;
+      CtkWidget *window;
 
       window = ctk_widget_get_toplevel (widget);
       if (CTK_IS_WINDOW (window))
@@ -2692,7 +2692,7 @@ propagate_event (GtkWidget *widget,
 
 /**
  * ctk_propagate_event:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @event: an event
  *
  * Sends an event to a widget, propagating the event to parent widgets
@@ -2704,7 +2704,7 @@ propagate_event (GtkWidget *widget,
  *
  * ctk_propagate_event() calls ctk_widget_event() on each widget it
  * decides to send the event to. So ctk_widget_event() is the lowest-level
- * function; it simply emits the #GtkWidget::event and possibly an
+ * function; it simply emits the #CtkWidget::event and possibly an
  * event-specific signal on a widget. ctk_propagate_event() is a bit
  * higher-level, and ctk_main_do_event() is the highest level.
  *
@@ -2715,7 +2715,7 @@ propagate_event (GtkWidget *widget,
  * of making up expose events.
  */
 void
-ctk_propagate_event (GtkWidget *widget,
+ctk_propagate_event (CtkWidget *widget,
                      GdkEvent  *event)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -2725,9 +2725,9 @@ ctk_propagate_event (GtkWidget *widget,
 }
 
 gboolean
-_ctk_propagate_captured_event (GtkWidget *widget,
+_ctk_propagate_captured_event (CtkWidget *widget,
                                GdkEvent  *event,
-                               GtkWidget *topmost)
+                               CtkWidget *topmost)
 {
   return propagate_event (widget, event, TRUE, topmost);
 }

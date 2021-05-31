@@ -23,12 +23,12 @@
 
 static void atk_value_interface_init (AtkValueIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkPanedAccessible, ctk_paned_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (CtkPanedAccessible, ctk_paned_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_VALUE, atk_value_interface_init))
 
 static void
-ctk_paned_accessible_size_allocate_ctk (GtkWidget     *widget,
-                                        GtkAllocation *allocation)
+ctk_paned_accessible_size_allocate_ctk (CtkWidget     *widget,
+                                        CtkAllocation *allocation)
 {
   AtkObject *obj = ctk_widget_get_accessible (widget);
 
@@ -48,7 +48,7 @@ ctk_paned_accessible_initialize (AtkObject *obj,
 }
 
 static void
-ctk_paned_accessible_class_init (GtkPanedAccessibleClass *klass)
+ctk_paned_accessible_class_init (CtkPanedAccessibleClass *klass)
 {
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
 
@@ -56,7 +56,7 @@ ctk_paned_accessible_class_init (GtkPanedAccessibleClass *klass)
 }
 
 static void
-ctk_paned_accessible_init (GtkPanedAccessible *paned)
+ctk_paned_accessible_init (CtkPanedAccessible *paned)
 {
 }
 
@@ -64,7 +64,7 @@ static void
 ctk_paned_accessible_get_current_value (AtkValue *obj,
                                         GValue   *value)
 {
-  GtkWidget* widget;
+  CtkWidget* widget;
   gint current_value;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
@@ -81,7 +81,7 @@ static void
 ctk_paned_accessible_get_maximum_value (AtkValue *obj,
                                         GValue   *value)
 {
-  GtkWidget* widget;
+  CtkWidget* widget;
   gint maximum_value;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
@@ -100,7 +100,7 @@ static void
 ctk_paned_accessible_get_minimum_value (AtkValue *obj,
                                         GValue   *value)
 {
-  GtkWidget* widget;
+  CtkWidget* widget;
   gint minimum_value;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
@@ -124,7 +124,7 @@ static gboolean
 ctk_paned_accessible_set_current_value (AtkValue     *obj,
                                         const GValue *value)
 {
-  GtkWidget* widget;
+  CtkWidget* widget;
   gint new_value;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
@@ -147,8 +147,8 @@ ctk_paned_accessible_get_value_and_text (AtkValue  *obj,
                                          gdouble   *value,
                                          gchar    **text)
 {
-  GtkWidget *widget;
-  GtkPaned *paned;
+  CtkWidget *widget;
+  CtkPaned *paned;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   paned = CTK_PANED (widget);
@@ -160,7 +160,7 @@ ctk_paned_accessible_get_value_and_text (AtkValue  *obj,
 static AtkRange *
 ctk_paned_accessible_get_range (AtkValue *obj)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   gint minimum_value;
   gint maximum_value;
 
@@ -178,8 +178,8 @@ static void
 ctk_paned_accessible_set_value (AtkValue      *obj,
                                 const gdouble  value)
 {
-  GtkWidget *widget;
-  GtkPaned *paned;
+  CtkWidget *widget;
+  CtkPaned *paned;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   paned = CTK_PANED (widget);

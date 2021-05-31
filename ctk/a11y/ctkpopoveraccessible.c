@@ -23,23 +23,23 @@
 #include <ctk/ctk.h>
 #include "ctkpopoveraccessible.h"
 
-typedef struct _GtkPopoverAccessiblePrivate GtkPopoverAccessiblePrivate;
+typedef struct _CtkPopoverAccessiblePrivate CtkPopoverAccessiblePrivate;
 
-struct _GtkPopoverAccessiblePrivate
+struct _CtkPopoverAccessiblePrivate
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 };
 
-G_DEFINE_TYPE_WITH_CODE (GtkPopoverAccessible, ctk_popover_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
-                         G_ADD_PRIVATE (GtkPopoverAccessible))
+G_DEFINE_TYPE_WITH_CODE (CtkPopoverAccessible, ctk_popover_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
+                         G_ADD_PRIVATE (CtkPopoverAccessible))
 
 static void
 popover_update_relative_to (AtkObject  *obj,
-                            GtkPopover *popover)
+                            CtkPopover *popover)
 {
-  GtkPopoverAccessiblePrivate *priv;
+  CtkPopoverAccessiblePrivate *priv;
   AtkObject *widget_accessible;
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   priv = ctk_popover_accessible_get_instance_private (CTK_POPOVER_ACCESSIBLE (obj));
   widget = ctk_popover_get_relative_to (popover);
@@ -79,14 +79,14 @@ popover_update_relative_to (AtkObject  *obj,
 
 static void
 popover_update_modality (AtkObject  *object,
-                         GtkPopover *popover)
+                         CtkPopover *popover)
 {
   atk_object_notify_state_change (object, ATK_STATE_MODAL,
                                   ctk_popover_get_modal (popover));
 }
 
 static void
-popover_notify_cb (GtkPopover *popover,
+popover_notify_cb (CtkPopover *popover,
                    GParamSpec *pspec,
                    AtkObject  *object)
 {
@@ -104,7 +104,7 @@ static void
 ctk_popover_accessible_initialize (AtkObject *obj,
                                    gpointer   data)
 {
-  GtkPopover *popover = CTK_POPOVER (data);
+  CtkPopover *popover = CTK_POPOVER (data);
 
   ATK_OBJECT_CLASS (ctk_popover_accessible_parent_class)->initialize (obj, data);
 
@@ -120,7 +120,7 @@ static AtkStateSet *
 ctk_popover_accessible_ref_state_set (AtkObject *obj)
 {
   AtkStateSet *state_set;
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   state_set = ATK_OBJECT_CLASS (ctk_popover_accessible_parent_class)->ref_state_set (obj);
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
@@ -134,7 +134,7 @@ ctk_popover_accessible_ref_state_set (AtkObject *obj)
 static void
 ctk_popover_accessible_finalize (GObject *object)
 {
-  GtkPopoverAccessiblePrivate *priv;
+  CtkPopoverAccessiblePrivate *priv;
 
   priv = ctk_popover_accessible_get_instance_private (CTK_POPOVER_ACCESSIBLE (object));
 
@@ -145,7 +145,7 @@ ctk_popover_accessible_finalize (GObject *object)
 }
 
 static void
-ctk_popover_accessible_class_init (GtkPopoverAccessibleClass *klass)
+ctk_popover_accessible_class_init (CtkPopoverAccessibleClass *klass)
 {
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
@@ -156,6 +156,6 @@ ctk_popover_accessible_class_init (GtkPopoverAccessibleClass *klass)
 }
 
 static void
-ctk_popover_accessible_init (GtkPopoverAccessible *popover)
+ctk_popover_accessible_init (CtkPopoverAccessible *popover)
 {
 }

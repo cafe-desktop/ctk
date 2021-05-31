@@ -30,36 +30,36 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_MENU_TOOL_BUTTON         (ctk_menu_tool_button_get_type ())
-#define CTK_MENU_TOOL_BUTTON(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_MENU_TOOL_BUTTON, GtkMenuToolButton))
-#define CTK_MENU_TOOL_BUTTON_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST((k), CTK_TYPE_MENU_TOOL_BUTTON, GtkMenuToolButtonClass))
+#define CTK_MENU_TOOL_BUTTON(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_MENU_TOOL_BUTTON, CtkMenuToolButton))
+#define CTK_MENU_TOOL_BUTTON_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST((k), CTK_TYPE_MENU_TOOL_BUTTON, CtkMenuToolButtonClass))
 #define CTK_IS_MENU_TOOL_BUTTON(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_MENU_TOOL_BUTTON))
 #define CTK_IS_MENU_TOOL_BUTTON_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), CTK_TYPE_MENU_TOOL_BUTTON))
-#define CTK_MENU_TOOL_BUTTON_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_MENU_TOOL_BUTTON, GtkMenuToolButtonClass))
+#define CTK_MENU_TOOL_BUTTON_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_MENU_TOOL_BUTTON, CtkMenuToolButtonClass))
 
-typedef struct _GtkMenuToolButtonClass   GtkMenuToolButtonClass;
-typedef struct _GtkMenuToolButton        GtkMenuToolButton;
-typedef struct _GtkMenuToolButtonPrivate GtkMenuToolButtonPrivate;
+typedef struct _CtkMenuToolButtonClass   CtkMenuToolButtonClass;
+typedef struct _CtkMenuToolButton        CtkMenuToolButton;
+typedef struct _CtkMenuToolButtonPrivate CtkMenuToolButtonPrivate;
 
-struct _GtkMenuToolButton
+struct _CtkMenuToolButton
 {
-  GtkToolButton parent;
+  CtkToolButton parent;
 
   /*< private >*/
-  GtkMenuToolButtonPrivate *priv;
+  CtkMenuToolButtonPrivate *priv;
 };
 
 /**
- * GtkMenuToolButtonClass:
+ * CtkMenuToolButtonClass:
  * @parent_class: The parent class.
  * @show_menu: Signal emitted before the menu is shown.
  */
-struct _GtkMenuToolButtonClass
+struct _CtkMenuToolButtonClass
 {
-  GtkToolButtonClass parent_class;
+  CtkToolButtonClass parent_class;
 
   /*< public >*/
 
-  void (*show_menu) (GtkMenuToolButton *button);
+  void (*show_menu) (CtkMenuToolButton *button);
 
   /*< private >*/
 
@@ -73,21 +73,21 @@ struct _GtkMenuToolButtonClass
 GDK_AVAILABLE_IN_ALL
 GType         ctk_menu_tool_button_get_type       (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkToolItem  *ctk_menu_tool_button_new            (GtkWidget   *icon_widget,
+CtkToolItem  *ctk_menu_tool_button_new            (CtkWidget   *icon_widget,
                                                    const gchar *label);
 GDK_DEPRECATED_IN_3_10_FOR(ctk_menu_tool_button_new)
-GtkToolItem  *ctk_menu_tool_button_new_from_stock (const gchar *stock_id);
+CtkToolItem  *ctk_menu_tool_button_new_from_stock (const gchar *stock_id);
 
 GDK_AVAILABLE_IN_ALL
-void          ctk_menu_tool_button_set_menu       (GtkMenuToolButton *button,
-                                                   GtkWidget         *menu);
+void          ctk_menu_tool_button_set_menu       (CtkMenuToolButton *button,
+                                                   CtkWidget         *menu);
 GDK_AVAILABLE_IN_ALL
-GtkWidget    *ctk_menu_tool_button_get_menu       (GtkMenuToolButton *button);
+CtkWidget    *ctk_menu_tool_button_get_menu       (CtkMenuToolButton *button);
 GDK_AVAILABLE_IN_ALL
-void          ctk_menu_tool_button_set_arrow_tooltip_text   (GtkMenuToolButton *button,
+void          ctk_menu_tool_button_set_arrow_tooltip_text   (CtkMenuToolButton *button,
 							     const gchar       *text);
 GDK_AVAILABLE_IN_ALL
-void          ctk_menu_tool_button_set_arrow_tooltip_markup (GtkMenuToolButton *button,
+void          ctk_menu_tool_button_set_arrow_tooltip_markup (CtkMenuToolButton *button,
 							     const gchar       *markup);
 
 G_END_DECLS

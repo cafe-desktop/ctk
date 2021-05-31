@@ -31,57 +31,57 @@
 #include "ctkwidgetprivate.h"
 
 
-struct _GtkInspectorMiscInfoPrivate {
-  GtkInspectorObjectTree *object_tree;
+struct _CtkInspectorMiscInfoPrivate {
+  CtkInspectorObjectTree *object_tree;
 
   GObject *object;
 
-  GtkWidget *address;
-  GtkWidget *refcount_row;
-  GtkWidget *refcount;
-  GtkWidget *state_row;
-  GtkWidget *state;
-  GtkWidget *buildable_id_row;
-  GtkWidget *buildable_id;
-  GtkWidget *default_widget_row;
-  GtkWidget *default_widget;
-  GtkWidget *default_widget_button;
-  GtkWidget *focus_widget_row;
-  GtkWidget *focus_widget;
-  GtkWidget *focus_widget_button;
-  GtkWidget *mnemonic_label_row;
-  GtkWidget *mnemonic_label;
-  GtkWidget *request_mode_row;
-  GtkWidget *request_mode;
-  GtkWidget *allocated_size_row;
-  GtkWidget *allocated_size;
-  GtkWidget *baseline_row;
-  GtkWidget *baseline;
-  GtkWidget *clip_area_row;
-  GtkWidget *clip_area;
-  GtkWidget *frame_clock_row;
-  GtkWidget *frame_clock;
-  GtkWidget *frame_clock_button;
-  GtkWidget *tick_callback_row;
-  GtkWidget *tick_callback;
-  GtkWidget *framerate_row;
-  GtkWidget *framerate;
-  GtkWidget *framecount_row;
-  GtkWidget *framecount;
-  GtkWidget *accessible_role_row;
-  GtkWidget *accessible_role;
-  GtkWidget *accessible_name_row;
-  GtkWidget *accessible_name;
-  GtkWidget *accessible_description_row;
-  GtkWidget *accessible_description;
-  GtkWidget *mapped_row;
-  GtkWidget *mapped;
-  GtkWidget *realized_row;
-  GtkWidget *realized;
-  GtkWidget *is_toplevel_row;
-  GtkWidget *is_toplevel;
-  GtkWidget *child_visible_row;
-  GtkWidget *child_visible;
+  CtkWidget *address;
+  CtkWidget *refcount_row;
+  CtkWidget *refcount;
+  CtkWidget *state_row;
+  CtkWidget *state;
+  CtkWidget *buildable_id_row;
+  CtkWidget *buildable_id;
+  CtkWidget *default_widget_row;
+  CtkWidget *default_widget;
+  CtkWidget *default_widget_button;
+  CtkWidget *focus_widget_row;
+  CtkWidget *focus_widget;
+  CtkWidget *focus_widget_button;
+  CtkWidget *mnemonic_label_row;
+  CtkWidget *mnemonic_label;
+  CtkWidget *request_mode_row;
+  CtkWidget *request_mode;
+  CtkWidget *allocated_size_row;
+  CtkWidget *allocated_size;
+  CtkWidget *baseline_row;
+  CtkWidget *baseline;
+  CtkWidget *clip_area_row;
+  CtkWidget *clip_area;
+  CtkWidget *frame_clock_row;
+  CtkWidget *frame_clock;
+  CtkWidget *frame_clock_button;
+  CtkWidget *tick_callback_row;
+  CtkWidget *tick_callback;
+  CtkWidget *framerate_row;
+  CtkWidget *framerate;
+  CtkWidget *framecount_row;
+  CtkWidget *framecount;
+  CtkWidget *accessible_role_row;
+  CtkWidget *accessible_role;
+  CtkWidget *accessible_name_row;
+  CtkWidget *accessible_name;
+  CtkWidget *accessible_description_row;
+  CtkWidget *accessible_description;
+  CtkWidget *mapped_row;
+  CtkWidget *mapped;
+  CtkWidget *realized_row;
+  CtkWidget *realized;
+  CtkWidget *is_toplevel_row;
+  CtkWidget *is_toplevel;
+  CtkWidget *child_visible_row;
+  CtkWidget *child_visible;
 
   guint update_source_id;
   gint64 last_frame;
@@ -93,10 +93,10 @@ enum
   PROP_OBJECT_TREE
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorMiscInfo, ctk_inspector_misc_info, CTK_TYPE_SCROLLED_WINDOW)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkInspectorMiscInfo, ctk_inspector_misc_info, CTK_TYPE_SCROLLED_WINDOW)
 
 static gchar *
-format_state_flags (GtkStateFlags state)
+format_state_flags (CtkStateFlags state)
 {
   GFlagsClass *fclass;
   GString *str;
@@ -125,7 +125,7 @@ format_state_flags (GtkStateFlags state)
 }
 
 static void
-state_flags_changed (GtkWidget *w, GtkStateFlags old_flags, GtkInspectorMiscInfo *sl)
+state_flags_changed (CtkWidget *w, CtkStateFlags old_flags, CtkInspectorMiscInfo *sl)
 {
   gchar *s;
 
@@ -135,10 +135,10 @@ state_flags_changed (GtkWidget *w, GtkStateFlags old_flags, GtkInspectorMiscInfo
 }
 
 static void
-allocation_changed (GtkWidget *w, GdkRectangle *allocation, GtkInspectorMiscInfo *sl)
+allocation_changed (CtkWidget *w, GdkRectangle *allocation, CtkInspectorMiscInfo *sl)
 {
-  GtkAllocation alloc;
-  GtkAllocation clip;
+  CtkAllocation alloc;
+  CtkAllocation clip;
   gchar *size_label;
   GEnumClass *class;
   GEnumValue *value;
@@ -175,7 +175,7 @@ disconnect_each_other (gpointer  still_alive,
 {
   if (CTK_INSPECTOR_IS_MISC_INFO (still_alive))
     {
-      GtkInspectorMiscInfo *self = CTK_INSPECTOR_MISC_INFO (still_alive);
+      CtkInspectorMiscInfo *self = CTK_INSPECTOR_MISC_INFO (still_alive);
       self->priv->object = NULL;
     }
 
@@ -184,11 +184,11 @@ disconnect_each_other (gpointer  still_alive,
 }
 
 static void
-show_object (GtkInspectorMiscInfo *sl,
+show_object (CtkInspectorMiscInfo *sl,
              GObject              *object,
              const gchar          *tab)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
   g_object_set_data (G_OBJECT (sl->priv->object_tree), "next-tab", (gpointer)tab);
   if (ctk_inspector_object_tree_find_object (sl->priv->object_tree, object, &iter))
@@ -204,14 +204,14 @@ show_object (GtkInspectorMiscInfo *sl,
     }
   else
     {
-      g_warning ("GtkInspector: couldn't find the object in the tree");
+      g_warning ("CtkInspector: couldn't find the object in the tree");
     }
 }
 
 static void
-update_default_widget (GtkInspectorMiscInfo *sl)
+update_default_widget (CtkInspectorMiscInfo *sl)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_window_get_default_widget (CTK_WINDOW (sl->priv->object));
   if (widget)
@@ -230,9 +230,9 @@ update_default_widget (GtkInspectorMiscInfo *sl)
 }
 
 static void
-show_default_widget (GtkWidget *button, GtkInspectorMiscInfo *sl)
+show_default_widget (CtkWidget *button, CtkInspectorMiscInfo *sl)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   update_default_widget (sl);
   widget = ctk_window_get_default_widget (CTK_WINDOW (sl->priv->object));
@@ -241,9 +241,9 @@ show_default_widget (GtkWidget *button, GtkInspectorMiscInfo *sl)
 }
 
 static void
-update_focus_widget (GtkInspectorMiscInfo *sl)
+update_focus_widget (CtkInspectorMiscInfo *sl)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_window_get_focus (CTK_WINDOW (sl->priv->object));
   if (widget)
@@ -262,15 +262,15 @@ update_focus_widget (GtkInspectorMiscInfo *sl)
 }
 
 static void
-set_focus_cb (GtkWindow *window, GtkWidget *focus, GtkInspectorMiscInfo *sl)
+set_focus_cb (CtkWindow *window, CtkWidget *focus, CtkInspectorMiscInfo *sl)
 {
   update_focus_widget (sl);
 }
 
 static void
-show_focus_widget (GtkWidget *button, GtkInspectorMiscInfo *sl)
+show_focus_widget (CtkWidget *button, CtkInspectorMiscInfo *sl)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_window_get_focus (CTK_WINDOW (sl->priv->object));
   if (widget)
@@ -278,9 +278,9 @@ show_focus_widget (GtkWidget *button, GtkInspectorMiscInfo *sl)
 }
 
 static void
-show_mnemonic_label (GtkWidget *button, GtkInspectorMiscInfo *sl)
+show_mnemonic_label (CtkWidget *button, CtkInspectorMiscInfo *sl)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = g_object_get_data (G_OBJECT (button), "mnemonic-label");
   if (widget)
@@ -288,7 +288,7 @@ show_mnemonic_label (GtkWidget *button, GtkInspectorMiscInfo *sl)
 }
 
 static void
-show_frame_clock (GtkWidget *button, GtkInspectorMiscInfo *sl)
+show_frame_clock (CtkWidget *button, CtkInspectorMiscInfo *sl)
 {
   GObject *clock;
 
@@ -298,7 +298,7 @@ show_frame_clock (GtkWidget *button, GtkInspectorMiscInfo *sl)
 }
 
 static void
-update_frame_clock (GtkInspectorMiscInfo *sl)
+update_frame_clock (CtkInspectorMiscInfo *sl)
 {
   GObject *clock;
 
@@ -321,7 +321,7 @@ update_frame_clock (GtkInspectorMiscInfo *sl)
 static gboolean
 update_info (gpointer data)
 {
-  GtkInspectorMiscInfo *sl = data;
+  CtkInspectorMiscInfo *sl = data;
   gchar *tmp;
 
   tmp = g_strdup_printf ("%p", sl->priv->object);
@@ -341,11 +341,11 @@ update_info (gpointer data)
       AtkRole role;
       GList *list, *l;
 
-      ctk_container_forall (CTK_CONTAINER (sl->priv->mnemonic_label), (GtkCallback)ctk_widget_destroy, NULL);
+      ctk_container_forall (CTK_CONTAINER (sl->priv->mnemonic_label), (CtkCallback)ctk_widget_destroy, NULL);
       list = ctk_widget_list_mnemonic_labels (CTK_WIDGET (sl->priv->object));
       for (l = list; l; l = l->next)
         {
-          GtkWidget *button;
+          CtkWidget *button;
 
           tmp = g_strdup_printf ("%p (%s)", l->data, g_type_name_from_instance ((GTypeInstance*)l->data));
           button = ctk_button_new_with_label (tmp);
@@ -425,7 +425,7 @@ update_info (gpointer data)
 }
 
 void
-ctk_inspector_misc_info_set_object (GtkInspectorMiscInfo *sl,
+ctk_inspector_misc_info_set_object (CtkInspectorMiscInfo *sl,
                                     GObject              *object)
 {
   if (sl->priv->object)
@@ -525,16 +525,16 @@ ctk_inspector_misc_info_set_object (GtkInspectorMiscInfo *sl,
 }
 
 static void
-ctk_inspector_misc_info_init (GtkInspectorMiscInfo *sl)
+ctk_inspector_misc_info_init (CtkInspectorMiscInfo *sl)
 {
   sl->priv = ctk_inspector_misc_info_get_instance_private (sl);
   ctk_widget_init_template (CTK_WIDGET (sl));
 }
 
 static void
-map (GtkWidget *widget)
+map (CtkWidget *widget)
 {
-  GtkInspectorMiscInfo *sl = CTK_INSPECTOR_MISC_INFO (widget);
+  CtkInspectorMiscInfo *sl = CTK_INSPECTOR_MISC_INFO (widget);
 
   CTK_WIDGET_CLASS (ctk_inspector_misc_info_parent_class)->map (widget);
 
@@ -543,9 +543,9 @@ map (GtkWidget *widget)
 }
 
 static void
-unmap (GtkWidget *widget)
+unmap (CtkWidget *widget)
 {
-  GtkInspectorMiscInfo *sl = CTK_INSPECTOR_MISC_INFO (widget);
+  CtkInspectorMiscInfo *sl = CTK_INSPECTOR_MISC_INFO (widget);
 
   g_source_remove (sl->priv->update_source_id);
   sl->priv->update_source_id = 0;
@@ -559,7 +559,7 @@ get_property (GObject    *object,
               GValue     *value,
               GParamSpec *pspec)
 {
-  GtkInspectorMiscInfo *sl = CTK_INSPECTOR_MISC_INFO (object);
+  CtkInspectorMiscInfo *sl = CTK_INSPECTOR_MISC_INFO (object);
 
   switch (param_id)
     {
@@ -579,7 +579,7 @@ set_property (GObject      *object,
               const GValue *value,
               GParamSpec   *pspec)
 {
-  GtkInspectorMiscInfo *sl = CTK_INSPECTOR_MISC_INFO (object);
+  CtkInspectorMiscInfo *sl = CTK_INSPECTOR_MISC_INFO (object);
 
   switch (param_id)
     {
@@ -594,10 +594,10 @@ set_property (GObject      *object,
 }
 
 static void
-ctk_inspector_misc_info_class_init (GtkInspectorMiscInfoClass *klass)
+ctk_inspector_misc_info_class_init (CtkInspectorMiscInfoClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   object_class->get_property = get_property;
   object_class->set_property = set_property;
@@ -610,52 +610,52 @@ ctk_inspector_misc_info_class_init (GtkInspectorMiscInfoClass *klass)
                            CTK_TYPE_WIDGET, G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
   ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/misc-info.ui");
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, address);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, refcount_row);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, refcount);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, state_row);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, state);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, buildable_id_row);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, buildable_id);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, default_widget_row);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, default_widget);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, default_widget_button);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, focus_widget_row);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, focus_widget);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, focus_widget_button);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, mnemonic_label_row);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, mnemonic_label);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, request_mode_row);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, request_mode);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, allocated_size_row);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, allocated_size);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, baseline_row);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, baseline);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, clip_area_row);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, clip_area);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, frame_clock_row);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, frame_clock);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, frame_clock_button);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, tick_callback_row);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, tick_callback);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, framecount_row);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, framecount);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, framerate_row);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, framerate);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, accessible_role_row);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, accessible_role);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, accessible_name_row);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, accessible_name);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, accessible_description_row);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, accessible_description);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, mapped_row);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, mapped);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, realized_row);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, realized);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, is_toplevel_row);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, is_toplevel);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, child_visible_row);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, child_visible);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, address);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, refcount_row);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, refcount);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, state_row);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, state);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, buildable_id_row);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, buildable_id);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, default_widget_row);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, default_widget);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, default_widget_button);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, focus_widget_row);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, focus_widget);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, focus_widget_button);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, mnemonic_label_row);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, mnemonic_label);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, request_mode_row);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, request_mode);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, allocated_size_row);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, allocated_size);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, baseline_row);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, baseline);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, clip_area_row);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, clip_area);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, frame_clock_row);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, frame_clock);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, frame_clock_button);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, tick_callback_row);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, tick_callback);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, framecount_row);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, framecount);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, framerate_row);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, framerate);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, accessible_role_row);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, accessible_role);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, accessible_name_row);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, accessible_name);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, accessible_description_row);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, accessible_description);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, mapped_row);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, mapped);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, realized_row);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, realized);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, is_toplevel_row);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, is_toplevel);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, child_visible_row);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMiscInfo, child_visible);
 
   ctk_widget_class_bind_template_callback (widget_class, show_default_widget);
   ctk_widget_class_bind_template_callback (widget_class, show_focus_widget);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="ctk30">
   <requires lib="ctk+" version="3.16"/>
-  <object class="GtkListStore" id="completion_store">
+  <object class="CtkListStore" id="completion_store">
     <columns>
       <!-- column-name name -->
       <column type="gchararray"/>
@@ -9,22 +9,22 @@
       <column type="gchararray"/>
     </columns>
   </object>
-  <object class="GtkEntryCompletion" id="address_entry_completion">
+  <object class="CtkEntryCompletion" id="address_entry_completion">
     <property name="model">completion_store</property>
     <property name="text-column">1</property>
     <property name="inline-completion">1</property>
     <property name="popup-completion">0</property>
   </object>
-  <object class="GtkPopover" id="server_adresses_popover">
+  <object class="CtkPopover" id="server_adresses_popover">
     <property name="relative-to">address_entry</property>
     <child>
-      <object class="GtkBox">
+      <object class="CtkBox">
         <property name="visible">1</property>
         <property name="border-width">18</property>
         <property name="orientation">vertical</property>
         <property name="spacing">6</property>
         <child>
-          <object class="GtkLabel">
+          <object class="CtkLabel">
             <property name="visible">1</property>
             <property name="hexpand">1</property>
             <property name="label" translatable="yes">Server Addresses</property>
@@ -37,7 +37,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkLabel">
+          <object class="CtkLabel">
             <property name="visible">1</property>
             <property name="hexpand">1</property>
             <property name="label" translatable="yes">Server addresses are made up of a protocol prefix and an address. Examples:</property>
@@ -51,7 +51,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel">
+          <object class="CtkLabel">
             <property name="visible">1</property>
             <property name="hexpand">1</property>
             <property name="label">smb://gnome.org, ssh://192.168.0.1, ftp://[2001:db8::1]</property>
@@ -65,14 +65,14 @@
           </packing>
         </child>
         <child>
-          <object class="GtkGrid" id="available_protocols_grid">
+          <object class="CtkGrid" id="available_protocols_grid">
             <property name="visible">1</property>
             <property name="margin-top">12</property>
             <property name="hexpand">1</property>
             <property name="row-spacing">6</property>
             <property name="column-spacing">12</property>
             <child>
-              <object class="GtkLabel">
+              <object class="CtkLabel">
                 <property name="visible">1</property>
                 <property name="hexpand">1</property>
                 <property name="label" translatable="yes">Available Protocols</property>
@@ -87,7 +87,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel">
+              <object class="CtkLabel">
                 <property name="visible">1</property>
                 <property name="label" translatable="yes">Prefix</property>
                 <property name="xalign">0</property>
@@ -108,19 +108,19 @@
       </object>
     </child>
   </object>
-  <object class="GtkPopover" id="recent_servers_popover">
+  <object class="CtkPopover" id="recent_servers_popover">
     <child>
-      <object class="GtkStack" id="recent_servers_stack">
+      <object class="CtkStack" id="recent_servers_stack">
         <property name="visible">1</property>
         <child>
-          <object class="GtkBox">
+          <object class="CtkBox">
             <property name="visible">1</property>
             <property name="vexpand">1</property>
             <property name="valign">center</property>
             <property name="orientation">vertical</property>
             <property name="spacing">18</property>
             <child>
-              <object class="GtkImage">
+              <object class="CtkImage">
                 <property name="visible">1</property>
                 <property name="pixel-size">48</property>
                 <property name="icon-name">network-server-symbolic</property>
@@ -130,7 +130,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkLabel">
+              <object class="CtkLabel">
                 <property name="visible">1</property>
                 <property name="label" translatable="yes" comments="Translators: Server as any successfully connected network address">No recent servers found</property>
                 <style>
@@ -147,13 +147,13 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox">
+          <object class="CtkBox">
             <property name="visible">1</property>
             <property name="border-width">12</property>
             <property name="orientation">vertical</property>
             <property name="spacing">12</property>
             <child>
-              <object class="GtkLabel">
+              <object class="CtkLabel">
                 <property name="visible">1</property>
                 <property name="label" translatable="yes">Recent Servers</property>
                 <attributes>
@@ -162,7 +162,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkScrolledWindow">
+              <object class="CtkScrolledWindow">
                 <property name="visible">1</property>
                 <property name="can-focus">1</property>
                 <property name="vexpand">1</property>
@@ -170,15 +170,15 @@
                 <property name="min-content-width">250</property>
                 <property name="min-content-height">200</property>
                 <child>
-                  <object class="GtkViewport">
+                  <object class="CtkViewport">
                     <property name="visible">1</property>
                     <property name="shadow-type">none</property>
                     <child>
-                      <object class="GtkListBox" id="recent_servers_listbox">
+                      <object class="CtkListBox" id="recent_servers_listbox">
                         <property name="visible">1</property>
                         <property name="can-focus">1</property>
                         <property name="selection-mode">none</property>
-                        <signal name="row-activated" handler="on_recent_servers_listbox_row_activated" object="GtkPlacesView" swapped="yes"/>
+                        <signal name="row-activated" handler="on_recent_servers_listbox_row_activated" object="CtkPlacesView" swapped="yes"/>
                       </object>
                     </child>
                   </object>
@@ -196,35 +196,35 @@
       </object>
     </child>
   </object>
-  <template class="GtkPlacesView" parent="GtkBox">
+  <template class="CtkPlacesView" parent="CtkBox">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
     <property name="orientation">vertical</property>
-    <signal name="key-press-event" handler="on_key_press_event" object="GtkPlacesView" swapped="no"/>
+    <signal name="key-press-event" handler="on_key_press_event" object="CtkPlacesView" swapped="no"/>
     <child>
-      <object class="GtkStack" id="stack">
+      <object class="CtkStack" id="stack">
         <property name="visible">1</property>
         <property name="vhomogeneous">0</property>
         <property name="transition-type">crossfade</property>
         <child>
-          <object class="GtkFrame">
+          <object class="CtkFrame">
             <property name="visible">1</property>
             <property name="shadow-type">none</property>
             <child>
-              <object class="GtkScrolledWindow">
+              <object class="CtkScrolledWindow">
                 <property name="visible">1</property>
                 <property name="hexpand">1</property>
                 <property name="vexpand">1</property>
                 <child>
-                  <object class="GtkViewport">
+                  <object class="CtkViewport">
                     <property name="visible">1</property>
                     <property name="shadow-type">none</property>
                     <child>
-                      <object class="GtkListBox" id="listbox">
+                      <object class="CtkListBox" id="listbox">
                         <property name="visible">1</property>
                         <property name="can-focus">1</property>
                         <property name="selection-mode">none</property>
-                        <signal name="row-activated" handler="on_listbox_row_activated" object="GtkPlacesView" swapped="yes"/>
+                        <signal name="row-activated" handler="on_listbox_row_activated" object="CtkPlacesView" swapped="yes"/>
                       </object>
                     </child>
                   </object>
@@ -237,7 +237,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox">
+          <object class="CtkBox">
             <property name="visible">1</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
@@ -246,7 +246,7 @@
             <property name="orientation">vertical</property>
             <property name="spacing">12</property>
             <child>
-              <object class="GtkImage">
+              <object class="CtkImage">
                 <property name="visible">1</property>
                 <property name="pixel-size">72</property>
                 <property name="icon-name">edit-find-symbolic</property>
@@ -256,7 +256,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkLabel">
+              <object class="CtkLabel">
                 <property name="visible">1</property>
                 <property name="label" translatable="yes">No results found</property>
                 <attributes>
@@ -269,7 +269,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel">
+              <object class="CtkLabel">
                 <property name="visible">1</property>
                 <property name="label" translatable="yes">Try a different search</property>
                 <style>
@@ -293,14 +293,14 @@
       </packing>
     </child>
     <child>
-      <object class="GtkActionBar" id="actionbar">
+      <object class="CtkActionBar" id="actionbar">
         <property name="visible">1</property>
         <property name="hexpand">1</property>
         <style>
           <class name="background"/>
         </style>
         <child>
-          <object class="GtkLabel">
+          <object class="CtkLabel">
             <property name="visible">1</property>
             <property name="hexpand">1</property>
             <property name="xalign">0</property>
@@ -313,7 +313,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkButton" id="connect_button">
+          <object class="CtkButton" id="connect_button">
             <property name="label" translatable="yes">Con_nect</property>
             <property name="use-underline">1</property>
             <property name="visible">1</property>
@@ -321,18 +321,18 @@
             <property name="sensitive">0</property>
             <property name="receives-default">1</property>
             <property name="valign">center</property>
-            <signal name="clicked" handler="on_connect_button_clicked" object="GtkPlacesView" swapped="yes"/>
+            <signal name="clicked" handler="on_connect_button_clicked" object="CtkPlacesView" swapped="yes"/>
           </object>
           <packing>
             <property name="pack-type">end</property>
           </packing>
         </child>
         <child>
-          <object class="GtkBox">
+          <object class="CtkBox">
             <property name="visible">1</property>
             <property name="hexpand">1</property>
             <child>
-              <object class="GtkEntry" id="address_entry">
+              <object class="CtkEntry" id="address_entry">
                 <property name="visible">1</property>
                 <property name="can-focus">1</property>
                 <property name="hexpand">1</property>
@@ -340,13 +340,13 @@
                 <property name="placeholder-text" translatable="yes">Enter server address…</property>
                 <property name="secondary-icon-name">dialog-question-symbolic</property>
                 <property name="completion">address_entry_completion</property>
-                <signal name="notify::text" handler="on_address_entry_text_changed" object="GtkPlacesView" swapped="yes"/>
-                <signal name="activate" handler="on_connect_button_clicked" object="GtkPlacesView" swapped="yes"/>
-                <signal name="icon-press" handler="on_address_entry_show_help_pressed" object="GtkPlacesView" swapped="yes"/>
+                <signal name="notify::text" handler="on_address_entry_text_changed" object="CtkPlacesView" swapped="yes"/>
+                <signal name="activate" handler="on_connect_button_clicked" object="CtkPlacesView" swapped="yes"/>
+                <signal name="icon-press" handler="on_address_entry_show_help_pressed" object="CtkPlacesView" swapped="yes"/>
               </object>
             </child>
             <child>
-              <object class="GtkMenuButton" id="server_list_button">
+              <object class="CtkMenuButton" id="server_list_button">
                 <property name="visible">1</property>
                 <property name="can-focus">1</property>
                 <property name="receives-default">1</property>
@@ -356,7 +356,7 @@
                   <class name="server-list-button"/>
                 </style>
                 <child>
-                  <object class="GtkImage">
+                  <object class="CtkImage">
                     <property name="visible">1</property>
                     <property name="icon-name">pan-down-symbolic</property>
                   </object>

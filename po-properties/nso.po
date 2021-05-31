@@ -447,10 +447,10 @@ msgstr "Sehlopha sa Mogato"
 
 #: ctk/ctkaction.c:396
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
-"Sehlopha sa Mogato sa Gtk seo Mogato wo wa Gtk o tswalanego le sona, goba "
+"Sehlopha sa Mogato sa Ctk seo Mogato wo wa Ctk o tswalanego le sona, goba "
 "NULL (bakeng sa tirišo ya ka gare)."
 
 #: ctk/ctkaction.c:414 ctk/ctkimagemenuitem.c:172
@@ -862,10 +862,10 @@ msgstr "Mohuta wa ngatana"
 
 #: ctk/ctkbox.c:287 ctk/ctknotebook.c:692
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
 msgstr ""
-"Mohuta wa Ngatana wa Gtk o bontšhago ge eba ngwana a pakilwe ka tšhupetšo go "
+"Mohuta wa Ngatana wa Ctk o bontšhago ge eba ngwana a pakilwe ka tšhupetšo go "
 "mathomo goba mafelelo a motswadi"
 
 #: ctk/ctkbox.c:293 ctk/ctknotebook.c:670 ctk/ctkpaned.c:270
@@ -1400,9 +1400,9 @@ msgid "Size"
 msgstr "Bogolo"
 
 #: ctk/ctkcellrendererpixbuf.c:153
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
 msgstr ""
-"Boleng bja Bogolo bja Leswao bja Gtk bjo bo laetšago bogolo bja leswao leo "
+"Boleng bja Bogolo bja Leswao bja Ctk bjo bo laetšago bogolo bja leswao leo "
 "le neilwego"
 
 #: ctk/ctkcellrendererpixbuf.c:162
@@ -1530,9 +1530,9 @@ msgstr "Leina la sehlogo sa leswao leo le swanetšego go dirišwa"
 
 #: ctk/ctkcellrendererspinner.c:154
 #, fuzzy
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
 msgstr ""
-"Boleng bja Bogolo bja Leswao bja Gtk bjo bo laetšago bogolo bja leswao leo "
+"Boleng bja Bogolo bja Leswao bja Ctk bjo bo laetšago bogolo bja leswao leo "
 "le neilwego"
 
 #: ctk/ctkcellrenderertext.c:232
@@ -3440,11 +3440,11 @@ msgstr "Tokafatšo"
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkMisc::xalign for that"
+"CtkMisc::xalign for that"
 msgstr ""
 "Teka-tekanyo ya methaladi yeo e lego sengwalweng sa leswao leo le tswalanago "
 "le le lengwe. Se GA SE kgome teka-tekanyo ya leswao ka gare ga lefelo la "
-"lona. Bona GtkMisc::xalign bakeng sa seo"
+"lona. Bona CtkMisc::xalign bakeng sa seo"
 
 #: ctk/ctklabel.c:587
 msgid "Pattern"
@@ -3551,16 +3551,16 @@ msgid "Horizontal adjustment"
 msgstr "Tokišo e rapamego"
 
 #: ctk/ctklayout.c:626 ctk/ctkscrolledwindow.c:244
-msgid "The GtkAdjustment for the horizontal position"
-msgstr "GtkAdjustment bakeng sa boemo bjo rapamego"
+msgid "The CtkAdjustment for the horizontal position"
+msgstr "CtkAdjustment bakeng sa boemo bjo rapamego"
 
 #: ctk/ctklayout.c:633 ctk/ctkviewport.c:150
 msgid "Vertical adjustment"
 msgstr "Tokišo e tsepamego"
 
 #: ctk/ctklayout.c:634 ctk/ctkscrolledwindow.c:251
-msgid "The GtkAdjustment for the vertical position"
-msgstr "GtkAdjustment bakeng sa boemo bjo tsepamego"
+msgid "The CtkAdjustment for the vertical position"
+msgstr "CtkAdjustment bakeng sa boemo bjo tsepamego"
 
 #: ctk/ctklayout.c:641 ctk/ctktreeviewcolumn.c:211
 msgid "Width"
@@ -3977,7 +3977,7 @@ msgid "Message area"
 msgstr "Mohuta wa Molaetša"
 
 #: ctk/ctkmessagedialog.c:306
-msgid "GtkVBox that holds the dialog's primary and secondary labels"
+msgid "CtkVBox that holds the dialog's primary and secondary labels"
 msgstr ""
 
 #: ctk/ctkmisc.c:91
@@ -4457,7 +4457,7 @@ msgid "Default Page Setup"
 msgstr "Bophagamo bja Tlhaelelo"
 
 #: ctk/ctkprintoperation.c:1006
-msgid "The GtkPageSetup used by default"
+msgid "The CtkPageSetup used by default"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1024 ctk/ctkprintunixdialog.c:316
@@ -4465,7 +4465,7 @@ msgid "Print Settings"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1025 ctk/ctkprintunixdialog.c:317
-msgid "The GtkPrintSettings used for initializing the dialog"
+msgid "The CtkPrintSettings used for initializing the dialog"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1043
@@ -4595,7 +4595,7 @@ msgid "Embed Page Setup"
 msgstr "Bogolo bja Letlakala"
 
 #: ctk/ctkprintoperation.c:1321
-msgid "TRUE if page setup combos are embedded in GtkPrintDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintDialog"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1342
@@ -4609,7 +4609,7 @@ msgid "The number of pages that will be printed."
 msgstr "Palo ya methalo lenaneong"
 
 #: ctk/ctkprintunixdialog.c:299
-msgid "The GtkPageSetup to use"
+msgid "The CtkPageSetup to use"
 msgstr ""
 
 #: ctk/ctkprintunixdialog.c:324
@@ -4619,7 +4619,7 @@ msgstr "Ngwaga o kgethilwego"
 
 #: ctk/ctkprintunixdialog.c:325
 #, fuzzy
-msgid "The GtkPrinter which is selected"
+msgid "The CtkPrinter which is selected"
 msgstr "Selo seo gona bjale se šomago"
 
 #: ctk/ctkprintunixdialog.c:332
@@ -4641,7 +4641,7 @@ msgid "Whether the application has a selection"
 msgstr "Ge eba mogato o kgontšhitšwe."
 
 #: ctk/ctkprintunixdialog.c:358
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
 msgstr ""
 
 #: ctk/ctkprogressbar.c:134
@@ -4794,9 +4794,9 @@ msgid "How the range should be updated on the screen"
 msgstr "Kamoo mehuta e swanetšego go dirwa gore e be nakong sekirining"
 
 #: ctk/ctkrange.c:420
-msgid "The GtkAdjustment that contains the current value of this range object"
+msgid "The CtkAdjustment that contains the current value of this range object"
 msgstr ""
-"GtkAdjustment yeo e nago le boleng bja gona bjale bja sedirišwa se sa mohuta"
+"CtkAdjustment yeo e nago le boleng bja gona bjale bja sedirišwa se sa mohuta"
 
 #: ctk/ctkrange.c:428
 msgid "Invert direction slider moves to increase range value"
@@ -5085,9 +5085,9 @@ msgstr "Bogolo bja leswao la bara ya sedirišwa"
 #: ctk/ctkscalebutton.c:240
 #, fuzzy
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
+"The CtkAdjustment that contains the current value of this scale button object"
 msgstr ""
-"GtkAdjustment yeo e nago le boleng bja gona bjale bja sedirišwa se sa mohuta"
+"CtkAdjustment yeo e nago le boleng bja gona bjale bja sedirišwa se sa mohuta"
 
 #: ctk/ctkscalebutton.c:268
 #, fuzzy
@@ -5643,8 +5643,8 @@ msgid "Default file chooser backend"
 msgstr "Dira gore mafelelo a sekgethi sa faele a hlaelele"
 
 #: ctk/ctksettings.c:743
-msgid "Name of the GtkFileChooser backend to use by default"
-msgstr "Leina la mafelelo la GtkFileChooser leo le tla dirišwago ke tlhaelelo"
+msgid "Name of the CtkFileChooser backend to use by default"
+msgstr "Leina la mafelelo la CtkFileChooser leo le tla dirišwago ke tlhaelelo"
 
 #: ctk/ctksettings.c:760
 #, fuzzy
@@ -5653,8 +5653,8 @@ msgstr "Dira gore mafelelo a sekgethi sa faele a hlaelele"
 
 #: ctk/ctksettings.c:761
 #, fuzzy
-msgid "List of the GtkPrintBackend backends to use by default"
-msgstr "Leina la mafelelo la GtkFileChooser leo le tla dirišwago ke tlhaelelo"
+msgid "List of the CtkPrintBackend backends to use by default"
+msgstr "Leina la mafelelo la CtkFileChooser leo le tla dirišwago ke tlhaelelo"
 
 #: ctk/ctksettings.c:784
 msgid "Default command to run when displaying a print preview"
@@ -5892,7 +5892,7 @@ msgstr "Palo ya Dikanale"
 #: ctk/ctkspinner.c:147
 msgid ""
 "The number of steps for the spinner to complete a full loop. The animation "
-"will complete a full cycle in one second by default (see #GtkSpinner:cycle-"
+"will complete a full cycle in one second by default (see #CtkSpinner:cycle-"
 "duration)."
 msgstr ""
 
@@ -6942,9 +6942,9 @@ msgid "Fixed Height Mode"
 msgstr "Mokgwa wa Bophagamo bjo Beilwego"
 
 #: ctk/ctktreeview.c:657
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 msgstr ""
-"E akgofiša GtkTreeView ka go gopola gore methalo ka moka e na le bophagamo "
+"E akgofiša CtkTreeView ka go gopola gore methalo ka moka e na le bophagamo "
 "bjo swanago"
 
 #: ctk/ctktreeview.c:677
@@ -7253,18 +7253,18 @@ msgstr "Mothaladi wa XML o hlalosago UI e kopantšwego"
 
 #: ctk/ctkviewport.c:143
 msgid ""
-"The GtkAdjustment that determines the values of the horizontal position for "
+"The CtkAdjustment that determines the values of the horizontal position for "
 "this viewport"
 msgstr ""
-"GtkAdjustment yeo e hwetšago boleng bja boemo bjo rapamego bakeng sa lefelo "
+"CtkAdjustment yeo e hwetšago boleng bja boemo bjo rapamego bakeng sa lefelo "
 "le la go lebelela"
 
 #: ctk/ctkviewport.c:151
 msgid ""
-"The GtkAdjustment that determines the values of the vertical position for "
+"The CtkAdjustment that determines the values of the vertical position for "
 "this viewport"
 msgstr ""
-"GtkAdjustment yeo e hwetšago boleng bja boemo bjo tsepamego bakeng sa lefelo "
+"CtkAdjustment yeo e hwetšago boleng bja boemo bjo tsepamego bakeng sa lefelo "
 "le la go lebelela"
 
 #: ctk/ctkviewport.c:159
@@ -7785,9 +7785,9 @@ msgid "Focus in Toplevel"
 msgstr "Lebiša hlokomelo Mogatong o Phagamego"
 
 #: ctk/ctkwindow.c:710
-msgid "Whether the input focus is within this GtkWindow"
+msgid "Whether the input focus is within this CtkWindow"
 msgstr ""
-"Ge eba go lebiša hlokomelo ga tsebišo go ka gare ga Lefesetere le la Gtk"
+"Ge eba go lebiša hlokomelo ga tsebišo go ka gare ga Lefesetere le la Ctk"
 
 #: ctk/ctkwindow.c:717
 msgid "Type hint"
@@ -8025,12 +8025,12 @@ msgstr "Kamoo o ka thalago bara e bontšhago boemo ya mokgwa wa tsebišo"
 
 #, fuzzy
 #~ msgid ""
-#~ "If TRUE, the GtkProgress is in activity mode, meaning that it signals "
+#~ "If TRUE, the CtkProgress is in activity mode, meaning that it signals "
 #~ "something is happening, but not how much of the activity is finished. "
 #~ "This is used when you're doing something but don't know how long it will "
 #~ "take."
 #~ msgstr ""
-#~ "Ge eba e le THEREŠO GtkProgress e mokgweng wa go diragatša, e lego seo se "
+#~ "Ge eba e le THEREŠO CtkProgress e mokgweng wa go diragatša, e lego seo se "
 #~ "bolelago gore e bontšha selo seo se diregago, eupša e sego bogolo bja "
 #~ "tiragalo yeo e fedilego. Se se dirišwa ge o dira selo seo o sa tsebego "
 #~ "gore se tla tšea nako e kaakang"
@@ -8209,8 +8209,8 @@ msgstr "Kamoo o ka thalago bara e bontšhago boemo ya mokgwa wa tsebišo"
 #~ "Ge eba sedirišwa sa ponelopele se swanetše go tšea sekgoba ka moka seo se "
 #~ "se abetšwego"
 
-#~ msgid "The GtkAdjustment connected to the progress bar (Deprecated)"
-#~ msgstr "GtkAdjustment e kgokagantšwego le bara ya tšwelopele (Kgaoditšwe)"
+#~ msgid "The CtkAdjustment connected to the progress bar (Deprecated)"
+#~ msgstr "CtkAdjustment e kgokagantšwego le bara ya tšwelopele (Kgaoditšwe)"
 
 #~ msgid "Bar style"
 #~ msgstr "Setaele sa bara"

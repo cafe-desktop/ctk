@@ -23,26 +23,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_COLOR_SWATCH_ACCESSIBLE                         (_ctk_color_swatch_accessible_get_type ())
-#define CTK_COLOR_SWATCH_ACCESSIBLE(obj)                         (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_COLOR_SWATCH_ACCESSIBLE, GtkColorSwatchAccessible))
-#define CTK_COLOR_SWATCH_ACCESSIBLE_CLASS(klass)                       (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_COLOR_SWATCH_ACCESSIBLE, GtkColorSwatchAccessibleClass))
+#define CTK_COLOR_SWATCH_ACCESSIBLE(obj)                         (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_COLOR_SWATCH_ACCESSIBLE, CtkColorSwatchAccessible))
+#define CTK_COLOR_SWATCH_ACCESSIBLE_CLASS(klass)                       (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_COLOR_SWATCH_ACCESSIBLE, CtkColorSwatchAccessibleClass))
 #define CTK_IS_COLOR_SWATCH_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_COLOR_SWATCH_ACCESSIBLE))
 #define CTK_IS_COLOR_SWATCH_ACCESSIBLE_CLASS(klass)              (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_COLOR_SWATCH_ACCESSIBLE))
-#define CTK_COLOR_SWATCH_ACCESSIBLE_GET_CLASS(obj)             (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_COLOR_SWATCH_ACCESSIBLE, GtkColorSwatchAccessibleClass))
+#define CTK_COLOR_SWATCH_ACCESSIBLE_GET_CLASS(obj)             (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_COLOR_SWATCH_ACCESSIBLE, CtkColorSwatchAccessibleClass))
 
-typedef struct _GtkColorSwatchAccessible        GtkColorSwatchAccessible;
-typedef struct _GtkColorSwatchAccessibleClass   GtkColorSwatchAccessibleClass;
-typedef struct _GtkColorSwatchAccessiblePrivate GtkColorSwatchAccessiblePrivate;
+typedef struct _CtkColorSwatchAccessible        CtkColorSwatchAccessible;
+typedef struct _CtkColorSwatchAccessibleClass   CtkColorSwatchAccessibleClass;
+typedef struct _CtkColorSwatchAccessiblePrivate CtkColorSwatchAccessiblePrivate;
 
-struct _GtkColorSwatchAccessible
+struct _CtkColorSwatchAccessible
 {
-  GtkWidgetAccessible parent;
+  CtkWidgetAccessible parent;
 
-  GtkColorSwatchAccessiblePrivate *priv;
+  CtkColorSwatchAccessiblePrivate *priv;
 };
 
-struct _GtkColorSwatchAccessibleClass
+struct _CtkColorSwatchAccessibleClass
 {
-  GtkWidgetAccessibleClass parent_class;
+  CtkWidgetAccessibleClass parent_class;
 };
 
 GType _ctk_color_swatch_accessible_get_type (void);

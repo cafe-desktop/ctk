@@ -36,39 +36,39 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CHECK_MENU_ITEM            (ctk_check_menu_item_get_type ())
-#define CTK_CHECK_MENU_ITEM(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CHECK_MENU_ITEM, GtkCheckMenuItem))
-#define CTK_CHECK_MENU_ITEM_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CHECK_MENU_ITEM, GtkCheckMenuItemClass))
+#define CTK_CHECK_MENU_ITEM(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CHECK_MENU_ITEM, CtkCheckMenuItem))
+#define CTK_CHECK_MENU_ITEM_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CHECK_MENU_ITEM, CtkCheckMenuItemClass))
 #define CTK_IS_CHECK_MENU_ITEM(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CHECK_MENU_ITEM))
 #define CTK_IS_CHECK_MENU_ITEM_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_CHECK_MENU_ITEM))
-#define CTK_CHECK_MENU_ITEM_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CHECK_MENU_ITEM, GtkCheckMenuItemClass))
+#define CTK_CHECK_MENU_ITEM_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CHECK_MENU_ITEM, CtkCheckMenuItemClass))
 
 
-typedef struct _GtkCheckMenuItem              GtkCheckMenuItem;
-typedef struct _GtkCheckMenuItemPrivate       GtkCheckMenuItemPrivate;
-typedef struct _GtkCheckMenuItemClass         GtkCheckMenuItemClass;
+typedef struct _CtkCheckMenuItem              CtkCheckMenuItem;
+typedef struct _CtkCheckMenuItemPrivate       CtkCheckMenuItemPrivate;
+typedef struct _CtkCheckMenuItemClass         CtkCheckMenuItemClass;
 
-struct _GtkCheckMenuItem
+struct _CtkCheckMenuItem
 {
-  GtkMenuItem menu_item;
+  CtkMenuItem menu_item;
 
   /*< private >*/
-  GtkCheckMenuItemPrivate *priv;
+  CtkCheckMenuItemPrivate *priv;
 };
 
 /**
- * GtkCheckMenuItemClass:
+ * CtkCheckMenuItemClass:
  * @parent_class: The parent class.
  * @toggled: Signal emitted when the state of the check box is changed.
  * @draw_indicator: Called to draw the check indicator.
  */
-struct _GtkCheckMenuItemClass
+struct _CtkCheckMenuItemClass
 {
-  GtkMenuItemClass parent_class;
+  CtkMenuItemClass parent_class;
 
   /*< public >*/
 
-  void (* toggled)	  (GtkCheckMenuItem *check_menu_item);
-  void (* draw_indicator) (GtkCheckMenuItem *check_menu_item,
+  void (* toggled)	  (CtkCheckMenuItem *check_menu_item);
+  void (* draw_indicator) (CtkCheckMenuItem *check_menu_item,
 			   cairo_t          *cr);
 
   /*< private >*/
@@ -85,28 +85,28 @@ GDK_AVAILABLE_IN_ALL
 GType	   ctk_check_menu_item_get_type	         (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget* ctk_check_menu_item_new               (void);
+CtkWidget* ctk_check_menu_item_new               (void);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* ctk_check_menu_item_new_with_label    (const gchar      *label);
+CtkWidget* ctk_check_menu_item_new_with_label    (const gchar      *label);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* ctk_check_menu_item_new_with_mnemonic (const gchar      *label);
+CtkWidget* ctk_check_menu_item_new_with_mnemonic (const gchar      *label);
 GDK_AVAILABLE_IN_ALL
-void       ctk_check_menu_item_set_active        (GtkCheckMenuItem *check_menu_item,
+void       ctk_check_menu_item_set_active        (CtkCheckMenuItem *check_menu_item,
 						  gboolean          is_active);
 GDK_AVAILABLE_IN_ALL
-gboolean   ctk_check_menu_item_get_active        (GtkCheckMenuItem *check_menu_item);
+gboolean   ctk_check_menu_item_get_active        (CtkCheckMenuItem *check_menu_item);
 GDK_AVAILABLE_IN_ALL
-void       ctk_check_menu_item_toggled           (GtkCheckMenuItem *check_menu_item);
+void       ctk_check_menu_item_toggled           (CtkCheckMenuItem *check_menu_item);
 GDK_AVAILABLE_IN_ALL
-void       ctk_check_menu_item_set_inconsistent  (GtkCheckMenuItem *check_menu_item,
+void       ctk_check_menu_item_set_inconsistent  (CtkCheckMenuItem *check_menu_item,
 						  gboolean          setting);
 GDK_AVAILABLE_IN_ALL
-gboolean   ctk_check_menu_item_get_inconsistent  (GtkCheckMenuItem *check_menu_item);
+gboolean   ctk_check_menu_item_get_inconsistent  (CtkCheckMenuItem *check_menu_item);
 GDK_AVAILABLE_IN_ALL
-void       ctk_check_menu_item_set_draw_as_radio (GtkCheckMenuItem *check_menu_item,
+void       ctk_check_menu_item_set_draw_as_radio (CtkCheckMenuItem *check_menu_item,
 						  gboolean          draw_as_radio);
 GDK_AVAILABLE_IN_ALL
-gboolean   ctk_check_menu_item_get_draw_as_radio (GtkCheckMenuItem *check_menu_item);
+gboolean   ctk_check_menu_item_get_draw_as_radio (CtkCheckMenuItem *check_menu_item);
 
 G_END_DECLS
 

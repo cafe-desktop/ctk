@@ -32,7 +32,7 @@ counting_destroy (gpointer data)
 static void
 test_basic (void)
 {
-  GtkKeyHash *hash;
+  CtkKeyHash *hash;
   GSList *keys;
 
   count = 0;
@@ -61,7 +61,7 @@ typedef struct
 } Entry;
 
 static void
-test_lookup (GtkKeyHash      *hash,
+test_lookup (CtkKeyHash      *hash,
              guint            keyval,
              GdkModifierType  modifiers,
              GdkModifierType  mask,
@@ -96,7 +96,7 @@ test_lookup (GtkKeyHash      *hash,
 }
 
 static void
-add_entries (GtkKeyHash *hash,
+add_entries (CtkKeyHash *hash,
              Entry      *entries)
 {
   gint i;
@@ -115,7 +115,7 @@ add_entries (GtkKeyHash *hash,
 static void
 test_match (void)
 {
-  GtkKeyHash *hash;
+  CtkKeyHash *hash;
   static Entry entries[] = {
     { GDK_KEY_a, GDK_CONTROL_MASK },
     { GDK_KEY_a, GDK_CONTROL_MASK|GDK_SHIFT_MASK } ,
@@ -154,7 +154,7 @@ hyper_equals_super (void)
 static void
 test_virtual (void)
 {
-  GtkKeyHash *hash;
+  CtkKeyHash *hash;
   static Entry entries[] = {
     { GDK_KEY_a, GDK_SUPER_MASK },
     { GDK_KEY_b, GDK_HYPER_MASK } ,

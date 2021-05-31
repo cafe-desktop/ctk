@@ -32,12 +32,12 @@
 
 #include <math.h>
 
-struct _GtkColorScalePrivate
+struct _CtkColorScalePrivate
 {
   GdkRGBA color;
-  GtkColorScaleType type;
+  CtkColorScaleType type;
 
-  GtkGesture *long_press_gesture;
+  CtkGesture *long_press_gesture;
 };
 
 enum
@@ -46,22 +46,22 @@ enum
   PROP_SCALE_TYPE
 };
 
-static void hold_action (GtkGestureLongPress *gesture,
+static void hold_action (CtkGestureLongPress *gesture,
                          gdouble              x,
                          gdouble              y,
-                         GtkColorScale       *scale);
+                         CtkColorScale       *scale);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkColorScale, ctk_color_scale, CTK_TYPE_SCALE)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkColorScale, ctk_color_scale, CTK_TYPE_SCALE)
 
 void
-ctk_color_scale_draw_trough (GtkColorScale  *scale,
+ctk_color_scale_draw_trough (CtkColorScale  *scale,
                              cairo_t        *cr,
                              int             x,
                              int             y,
                              int             width,
                              int             height)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   if (width <= 1 || height <= 1)
     return;
@@ -149,9 +149,9 @@ ctk_color_scale_draw_trough (GtkColorScale  *scale,
 }
 
 static void
-ctk_color_scale_init (GtkColorScale *scale)
+ctk_color_scale_init (CtkColorScale *scale)
 {
-  GtkStyleContext *context;
+  CtkStyleContext *context;
 
   scale->priv = ctk_color_scale_get_instance_private (scale);
 
@@ -170,7 +170,7 @@ ctk_color_scale_init (GtkColorScale *scale)
 static void
 scale_finalize (GObject *object)
 {
-  GtkColorScale *scale = CTK_COLOR_SCALE (object);
+  CtkColorScale *scale = CTK_COLOR_SCALE (object);
 
   g_clear_object (&scale->priv->long_press_gesture);
 
@@ -183,7 +183,7 @@ scale_get_property (GObject    *object,
                     GValue     *value,
                     GParamSpec *pspec)
 {
-  GtkColorScale *scale = CTK_COLOR_SCALE (object);
+  CtkColorScale *scale = CTK_COLOR_SCALE (object);
 
   switch (prop_id)
     {
@@ -197,8 +197,8 @@ scale_get_property (GObject    *object,
 }
 
 static void
-scale_set_type (GtkColorScale     *scale,
-                GtkColorScaleType  type)
+scale_set_type (CtkColorScale     *scale,
+                CtkColorScaleType  type)
 {
   AtkObject *atk_obj;
 
@@ -221,12 +221,12 @@ scale_set_property (GObject      *object,
                     const GValue *value,
                     GParamSpec   *pspec)
 {
-  GtkColorScale *scale = CTK_COLOR_SCALE (object);
+  CtkColorScale *scale = CTK_COLOR_SCALE (object);
 
   switch (prop_id)
     {
     case PROP_SCALE_TYPE:
-      scale_set_type (scale, (GtkColorScaleType)g_value_get_int (value));
+      scale_set_type (scale, (CtkColorScaleType)g_value_get_int (value));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -235,10 +235,10 @@ scale_set_property (GObject      *object,
 }
 
 static void
-hold_action (GtkGestureLongPress *gesture,
+hold_action (CtkGestureLongPress *gesture,
              gdouble              x,
              gdouble              y,
-             GtkColorScale       *scale)
+             CtkColorScale       *scale)
 {
   gboolean handled;
 
@@ -246,7 +246,7 @@ hold_action (GtkGestureLongPress *gesture,
 }
 
 static void
-ctk_color_scale_class_init (GtkColorScaleClass *class)
+ctk_color_scale_class_init (CtkColorScaleClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
 
@@ -261,16 +261,16 @@ ctk_color_scale_class_init (GtkColorScaleClass *class)
 }
 
 void
-ctk_color_scale_set_rgba (GtkColorScale *scale,
+ctk_color_scale_set_rgba (CtkColorScale *scale,
                           const GdkRGBA *color)
 {
   scale->priv->color = *color;
   ctk_widget_queue_draw (CTK_WIDGET (scale));
 }
 
-GtkWidget *
-ctk_color_scale_new (GtkAdjustment     *adjustment,
-                     GtkColorScaleType  type)
+CtkWidget *
+ctk_color_scale_new (CtkAdjustment     *adjustment,
+                     CtkColorScaleType  type)
 {
   return g_object_new (CTK_TYPE_COLOR_SCALE,
                        "adjustment", adjustment,

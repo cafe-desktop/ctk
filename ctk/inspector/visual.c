@@ -45,48 +45,48 @@
 
 #define EPSILON               1e-10
 
-struct _GtkInspectorVisualPrivate
+struct _CtkInspectorVisualPrivate
 {
-  GtkWidget *visual_box;
-  GtkWidget *theme_combo;
-  GtkWidget *dark_switch;
-  GtkWidget *icon_combo;
-  GtkWidget *cursor_combo;
-  GtkWidget *cursor_size_spin;
-  GtkWidget *direction_combo;
-  GtkWidget *font_button;
-  GtkWidget *hidpi_spin;
-  GtkWidget *animation_switch;
-  GtkWidget *font_scale_entry;
-  GtkAdjustment *font_scale_adjustment;
-  GtkAdjustment *scale_adjustment;
-  GtkAdjustment *slowdown_adjustment;
-  GtkWidget *slowdown_entry;
-  GtkAdjustment *cursor_size_adjustment;
+  CtkWidget *visual_box;
+  CtkWidget *theme_combo;
+  CtkWidget *dark_switch;
+  CtkWidget *icon_combo;
+  CtkWidget *cursor_combo;
+  CtkWidget *cursor_size_spin;
+  CtkWidget *direction_combo;
+  CtkWidget *font_button;
+  CtkWidget *hidpi_spin;
+  CtkWidget *animation_switch;
+  CtkWidget *font_scale_entry;
+  CtkAdjustment *font_scale_adjustment;
+  CtkAdjustment *scale_adjustment;
+  CtkAdjustment *slowdown_adjustment;
+  CtkWidget *slowdown_entry;
+  CtkAdjustment *cursor_size_adjustment;
 
-  GtkWidget *debug_box;
-  GtkWidget *rendering_mode_combo;
-  GtkWidget *updates_switch;
-  GtkWidget *baselines_switch;
-  GtkWidget *layout_switch;
-  GtkWidget *touchscreen_switch;
+  CtkWidget *debug_box;
+  CtkWidget *rendering_mode_combo;
+  CtkWidget *updates_switch;
+  CtkWidget *baselines_switch;
+  CtkWidget *layout_switch;
+  CtkWidget *touchscreen_switch;
 
-  GtkWidget *gl_box;
-  GtkWidget *gl_combo;
-  GtkWidget *software_gl_switch;
-  GtkWidget *software_surface_switch;
-  GtkWidget *texture_rectangle_switch;
+  CtkWidget *gl_box;
+  CtkWidget *gl_combo;
+  CtkWidget *software_gl_switch;
+  CtkWidget *software_surface_switch;
+  CtkWidget *texture_rectangle_switch;
 
-  GtkAdjustment *focus_adjustment;
+  CtkAdjustment *focus_adjustment;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorVisual, ctk_inspector_visual, CTK_TYPE_SCROLLED_WINDOW)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkInspectorVisual, ctk_inspector_visual, CTK_TYPE_SCROLLED_WINDOW)
 
 static void
-fix_direction_recurse (GtkWidget *widget,
+fix_direction_recurse (CtkWidget *widget,
                        gpointer   data)
 {
-  GtkTextDirection dir = GPOINTER_TO_INT (data);
+  CtkTextDirection dir = GPOINTER_TO_INT (data);
 
   g_object_ref (widget);
 
@@ -97,18 +97,18 @@ fix_direction_recurse (GtkWidget *widget,
   g_object_unref (widget);
 }
 
-static GtkTextDirection initial_direction;
+static CtkTextDirection initial_direction;
 
 static void
-fix_direction (GtkWidget *iw)
+fix_direction (CtkWidget *iw)
 {
   fix_direction_recurse (iw, GINT_TO_POINTER (initial_direction));
 }
 
 static void
-direction_changed (GtkComboBox *combo)
+direction_changed (CtkComboBox *combo)
 {
-  GtkWidget *iw;
+  CtkWidget *iw;
   const gchar *direction;
 
   iw = ctk_widget_get_toplevel (CTK_WIDGET (combo));
@@ -122,7 +122,7 @@ direction_changed (GtkComboBox *combo)
 }
 
 static void
-init_direction (GtkInspectorVisual *vis)
+init_direction (CtkInspectorVisual *vis)
 {
   const gchar *direction;
 
@@ -144,7 +144,7 @@ redraw_everything (void)
 }
 
 static double
-get_font_scale (GtkInspectorVisual *vis)
+get_font_scale (CtkInspectorVisual *vis)
 {
 #ifdef GDK_WINDOWING_X11
   if (GDK_IS_X11_DISPLAY (gdk_display_get_default ()))
@@ -175,7 +175,7 @@ get_font_scale (GtkInspectorVisual *vis)
 }
 
 static void
-update_font_scale (GtkInspectorVisual *vis,
+update_font_scale (CtkInspectorVisual *vis,
                    gdouble             factor,
                    gboolean            update_adjustment,
                    gboolean            update_entry)
@@ -197,8 +197,8 @@ update_font_scale (GtkInspectorVisual *vis,
 }
 
 static void
-font_scale_adjustment_changed (GtkAdjustment      *adjustment,
-                               GtkInspectorVisual *vis)
+font_scale_adjustment_changed (CtkAdjustment      *adjustment,
+                               CtkInspectorVisual *vis)
 {
   gdouble factor;
 
@@ -207,8 +207,8 @@ font_scale_adjustment_changed (GtkAdjustment      *adjustment,
 }
 
 static void
-font_scale_entry_activated (GtkEntry           *entry,
-                            GtkInspectorVisual *vis)
+font_scale_entry_activated (CtkEntry           *entry,
+                            CtkInspectorVisual *vis)
 {
   gdouble factor;
   gchar *err = NULL;
@@ -219,7 +219,7 @@ font_scale_entry_activated (GtkEntry           *entry,
 }
 
 static void
-updates_activate (GtkSwitch *sw)
+updates_activate (CtkSwitch *sw)
 {
   gboolean updates;
 
@@ -229,7 +229,7 @@ updates_activate (GtkSwitch *sw)
 }
 
 static void
-init_updates (GtkInspectorVisual *vis)
+init_updates (CtkInspectorVisual *vis)
 {
   gboolean updates;
 
@@ -238,7 +238,7 @@ init_updates (GtkInspectorVisual *vis)
 }
 
 static void
-baselines_activate (GtkSwitch *sw)
+baselines_activate (CtkSwitch *sw)
 {
   guint flags;
 
@@ -254,7 +254,7 @@ baselines_activate (GtkSwitch *sw)
 }
 
 static void
-layout_activate (GtkSwitch *sw)
+layout_activate (CtkSwitch *sw)
 {
   guint flags;
 
@@ -270,7 +270,7 @@ layout_activate (GtkSwitch *sw)
 }
 
 static void
-pixelcache_activate (GtkSwitch *sw)
+pixelcache_activate (CtkSwitch *sw)
 {
   guint flags;
 
@@ -291,7 +291,7 @@ pixelcache_activate (GtkSwitch *sw)
 }
 
 static void
-widget_resize_activate (GtkSwitch *sw)
+widget_resize_activate (CtkSwitch *sw)
 {
   guint flags = ctk_get_debug_flags ();
 
@@ -367,7 +367,7 @@ get_data_path (const gchar *subdir)
 }
 
 static void
-init_theme (GtkInspectorVisual *vis)
+init_theme (CtkInspectorVisual *vis)
 {
   GHashTable *t;
   GHashTableIter iter;
@@ -434,7 +434,7 @@ init_theme (GtkInspectorVisual *vis)
 }
 
 static void
-init_dark (GtkInspectorVisual *vis)
+init_dark (CtkInspectorVisual *vis)
 {
   g_object_bind_property (ctk_settings_get_default (), "ctk-application-prefer-dark-theme",
                           vis->priv->dark_switch, "active",
@@ -475,7 +475,7 @@ fill_icons (const gchar *path,
 }
 
 static void
-init_icons (GtkInspectorVisual *vis)
+init_icons (CtkInspectorVisual *vis)
 {
   GHashTable *t;
   GHashTableIter iter;
@@ -537,7 +537,7 @@ fill_cursors (const gchar *path,
 }
 
 static void
-init_cursors (GtkInspectorVisual *vis)
+init_cursors (CtkInspectorVisual *vis)
 {
   GHashTable *t;
   GHashTableIter iter;
@@ -574,7 +574,7 @@ init_cursors (GtkInspectorVisual *vis)
 }
 
 static void
-cursor_size_changed (GtkAdjustment *adjustment, GtkInspectorVisual *vis)
+cursor_size_changed (CtkAdjustment *adjustment, CtkInspectorVisual *vis)
 {
   gint size;
 
@@ -583,7 +583,7 @@ cursor_size_changed (GtkAdjustment *adjustment, GtkInspectorVisual *vis)
 }
 
 static void
-init_cursor_size (GtkInspectorVisual *vis)
+init_cursor_size (CtkInspectorVisual *vis)
 {
   gint size;
 
@@ -597,7 +597,7 @@ init_cursor_size (GtkInspectorVisual *vis)
 }
 
 static void
-init_font (GtkInspectorVisual *vis)
+init_font (CtkInspectorVisual *vis)
 {
   g_object_bind_property (ctk_settings_get_default (), "ctk-font-name",
                           vis->priv->font_button, "font-name",
@@ -605,7 +605,7 @@ init_font (GtkInspectorVisual *vis)
 }
 
 static void
-init_font_scale (GtkInspectorVisual *vis)
+init_font_scale (CtkInspectorVisual *vis)
 {
   double scale;
 
@@ -619,7 +619,7 @@ init_font_scale (GtkInspectorVisual *vis)
 
 #if defined (GDK_WINDOWING_X11)
 static void
-scale_changed (GtkAdjustment *adjustment, GtkInspectorVisual *vis)
+scale_changed (CtkAdjustment *adjustment, CtkInspectorVisual *vis)
 {
   GdkDisplay *display;
   gint scale;
@@ -631,7 +631,7 @@ scale_changed (GtkAdjustment *adjustment, GtkInspectorVisual *vis)
 #endif
 
 static void
-init_scale (GtkInspectorVisual *vis)
+init_scale (CtkInspectorVisual *vis)
 {
 #if defined (GDK_WINDOWING_X11)
   GdkScreen *screen;
@@ -659,7 +659,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-init_animation (GtkInspectorVisual *vis)
+init_animation (CtkInspectorVisual *vis)
 {
   g_object_bind_property (ctk_settings_get_default (), "ctk-enable-animations",
                           vis->priv->animation_switch, "active",
@@ -667,7 +667,7 @@ init_animation (GtkInspectorVisual *vis)
 }
 
 static void
-update_slowdown (GtkInspectorVisual *vis,
+update_slowdown (CtkInspectorVisual *vis,
                  gdouble slowdown,
                  gboolean update_adjustment,
                  gboolean update_entry)
@@ -688,8 +688,8 @@ update_slowdown (GtkInspectorVisual *vis,
 }
 
 static void
-slowdown_adjustment_changed (GtkAdjustment *adjustment,
-                             GtkInspectorVisual *vis)
+slowdown_adjustment_changed (CtkAdjustment *adjustment,
+                             CtkInspectorVisual *vis)
 {
   gdouble value = ctk_adjustment_get_value (adjustment);
   gdouble previous = CLAMP (log2 (_ctk_get_slowdown ()),
@@ -701,8 +701,8 @@ slowdown_adjustment_changed (GtkAdjustment *adjustment,
 }
 
 static void
-slowdown_entry_activated (GtkEntry *entry,
-                          GtkInspectorVisual *vis)
+slowdown_entry_activated (CtkEntry *entry,
+                          CtkInspectorVisual *vis)
 {
   gdouble slowdown;
   gchar *err = NULL;
@@ -713,7 +713,7 @@ slowdown_entry_activated (GtkEntry *entry,
 }
 
 static void
-init_slowdown (GtkInspectorVisual *vis)
+init_slowdown (CtkInspectorVisual *vis)
 {
   update_slowdown (vis, _ctk_get_slowdown (), TRUE, TRUE);
   g_signal_connect (vis->priv->slowdown_adjustment, "value-changed",
@@ -723,9 +723,9 @@ init_slowdown (GtkInspectorVisual *vis)
 }
 
 static void
-update_touchscreen (GtkSwitch *sw)
+update_touchscreen (CtkSwitch *sw)
 {
-  GtkDebugFlag flags;
+  CtkDebugFlag flags;
 
   flags = ctk_get_debug_flags ();
 
@@ -738,7 +738,7 @@ update_touchscreen (GtkSwitch *sw)
 }
 
 static void
-init_touchscreen (GtkInspectorVisual *vis)
+init_touchscreen (CtkInspectorVisual *vis)
 {
   ctk_switch_set_active (CTK_SWITCH (vis->priv->touchscreen_switch), (ctk_get_debug_flags () & CTK_DEBUG_TOUCHSCREEN) != 0);
   g_signal_connect (vis->priv->touchscreen_switch, "notify::active",
@@ -754,9 +754,9 @@ init_touchscreen (GtkInspectorVisual *vis)
 }
 
 static gboolean
-keynav_failed (GtkWidget *widget, GtkDirectionType direction, GtkInspectorVisual *vis)
+keynav_failed (CtkWidget *widget, CtkDirectionType direction, CtkInspectorVisual *vis)
 {
-  GtkWidget *next;
+  CtkWidget *next;
   gdouble value, lower, upper, page;
 
   if (direction == CTK_DIR_DOWN &&
@@ -800,7 +800,7 @@ keynav_failed (GtkWidget *widget, GtkDirectionType direction, GtkInspectorVisual
 }
 
 static void
-init_gl (GtkInspectorVisual *vis)
+init_gl (CtkInspectorVisual *vis)
 {
   GdkGLFlags flags;
 
@@ -835,7 +835,7 @@ init_gl (GtkInspectorVisual *vis)
 }
 
 static void
-init_rendering_mode (GtkInspectorVisual *vis)
+init_rendering_mode (CtkInspectorVisual *vis)
 {
   GdkRenderingMode mode;
 
@@ -844,8 +844,8 @@ init_rendering_mode (GtkInspectorVisual *vis)
 }
 
 static void
-rendering_mode_changed (GtkComboBox        *c,
-                        GtkInspectorVisual *vis)
+rendering_mode_changed (CtkComboBox        *c,
+                        CtkInspectorVisual *vis)
 {
   GdkRenderingMode mode;
 
@@ -854,7 +854,7 @@ rendering_mode_changed (GtkComboBox        *c,
 }
 
 static void
-update_gl_flag (GtkSwitch  *sw,
+update_gl_flag (CtkSwitch  *sw,
                 GdkGLFlags  flag)
 {
   GdkGLFlags flags;
@@ -870,25 +870,25 @@ update_gl_flag (GtkSwitch  *sw,
 }
 
 static void
-software_gl_activate (GtkSwitch *sw)
+software_gl_activate (CtkSwitch *sw)
 {
   update_gl_flag (sw, GDK_GL_SOFTWARE_DRAW_GL);
 }
 
 static void
-software_surface_activate (GtkSwitch *sw)
+software_surface_activate (CtkSwitch *sw)
 {
   update_gl_flag (sw, GDK_GL_SOFTWARE_DRAW_SURFACE);
 }
 
 static void
-texture_rectangle_activate (GtkSwitch *sw)
+texture_rectangle_activate (CtkSwitch *sw)
 {
   update_gl_flag (sw, GDK_GL_TEXTURE_RECTANGLE);
 }
 
 static void
-ctk_inspector_visual_init (GtkInspectorVisual *vis)
+ctk_inspector_visual_init (CtkInspectorVisual *vis)
 {
   vis->priv = ctk_inspector_visual_get_instance_private (vis);
   ctk_widget_init_template (CTK_WIDGET (vis));
@@ -912,7 +912,7 @@ ctk_inspector_visual_init (GtkInspectorVisual *vis)
 static void
 ctk_inspector_visual_constructed (GObject *object)
 {
-  GtkInspectorVisual *vis = CTK_INSPECTOR_VISUAL (object);
+  CtkInspectorVisual *vis = CTK_INSPECTOR_VISUAL (object);
 
   G_OBJECT_CLASS (ctk_inspector_visual_parent_class)->constructed (object);
 
@@ -926,41 +926,41 @@ ctk_inspector_visual_constructed (GObject *object)
 }
 
 static void
-ctk_inspector_visual_class_init (GtkInspectorVisualClass *klass)
+ctk_inspector_visual_class_init (CtkInspectorVisualClass *klass)
 {
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->constructed = ctk_inspector_visual_constructed;
 
   ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/visual.ui");
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, rendering_mode_combo);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, updates_switch);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, direction_combo);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, baselines_switch);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, layout_switch);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, theme_combo);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, dark_switch);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, cursor_combo);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, cursor_size_spin);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, cursor_size_adjustment);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, icon_combo);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, hidpi_spin);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, scale_adjustment);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, animation_switch);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, slowdown_adjustment);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, slowdown_entry);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, touchscreen_switch);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, visual_box);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, debug_box);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, font_button);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, gl_box);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, gl_combo);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, software_gl_switch);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, software_surface_switch);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, texture_rectangle_switch);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, font_scale_entry);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, font_scale_adjustment);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorVisual, rendering_mode_combo);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorVisual, updates_switch);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorVisual, direction_combo);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorVisual, baselines_switch);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorVisual, layout_switch);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorVisual, theme_combo);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorVisual, dark_switch);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorVisual, cursor_combo);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorVisual, cursor_size_spin);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorVisual, cursor_size_adjustment);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorVisual, icon_combo);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorVisual, hidpi_spin);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorVisual, scale_adjustment);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorVisual, animation_switch);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorVisual, slowdown_adjustment);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorVisual, slowdown_entry);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorVisual, touchscreen_switch);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorVisual, visual_box);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorVisual, debug_box);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorVisual, font_button);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorVisual, gl_box);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorVisual, gl_combo);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorVisual, software_gl_switch);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorVisual, software_surface_switch);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorVisual, texture_rectangle_switch);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorVisual, font_scale_entry);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorVisual, font_scale_adjustment);
 
   ctk_widget_class_bind_template_callback (widget_class, updates_activate);
   ctk_widget_class_bind_template_callback (widget_class, direction_changed);

@@ -1,14 +1,14 @@
 #include <ctk/ctk.h>
 
 typedef struct {
-  GtkListBoxRow parent;
-  GtkWidget *box;
-  GtkWidget *revealer;
-  GtkWidget *check;
+  CtkListBoxRow parent;
+  CtkWidget *box;
+  CtkWidget *revealer;
+  CtkWidget *check;
 } SelectableRow;
 
 typedef struct {
-  GtkListBoxRowClass parent_class;
+  CtkListBoxRowClass parent_class;
 } SelectableRowClass;
 
 G_DEFINE_TYPE (SelectableRow, selectable_row, CTK_TYPE_LIST_BOX_ROW)
@@ -31,16 +31,16 @@ selectable_row_init (SelectableRow *row)
 }
 
 void
-selectable_row_add (SelectableRow *row, GtkWidget *child)
+selectable_row_add (SelectableRow *row, CtkWidget *child)
 {
   ctk_container_add (CTK_CONTAINER (row->box), child);
 }
 
 static void
-update_selectable (GtkWidget *widget, gpointer data)
+update_selectable (CtkWidget *widget, gpointer data)
 {
   SelectableRow *row = (SelectableRow *)widget;
-  GtkListBox *list;
+  CtkListBox *list;
 
   list = CTK_LIST_BOX (ctk_widget_get_parent (widget));
 
@@ -51,7 +51,7 @@ update_selectable (GtkWidget *widget, gpointer data)
 }
 
 static void
-update_selected (GtkWidget *widget, gpointer data)
+update_selected (CtkWidget *widget, gpointer data)
 {
   SelectableRow *row = (SelectableRow *)widget;
 
@@ -69,17 +69,17 @@ selectable_row_class_init (SelectableRowClass *class)
 {
 }
 
-GtkWidget *
+CtkWidget *
 selectable_row_new (void)
 {
   return CTK_WIDGET (g_object_new (selectable_row_get_type (), NULL));
 }
 
 static void
-add_row (GtkWidget *list, gint i)
+add_row (CtkWidget *list, gint i)
 {
-  GtkWidget *row;
-  GtkWidget *label;
+  CtkWidget *row;
+  CtkWidget *label;
   gchar *text;
 
   row = selectable_row_new ();
@@ -93,14 +93,14 @@ add_row (GtkWidget *list, gint i)
 }
 
 static void
-selection_mode_enter (GtkButton *button, GtkBuilder *builder)
+selection_mode_enter (CtkButton *button, CtkBuilder *builder)
 {
-  GtkWidget *header;
-  GtkWidget *list;
-  GtkWidget *headerbutton;
-  GtkWidget *cancelbutton;
-  GtkWidget *selectbutton;
-  GtkWidget *titlestack;
+  CtkWidget *header;
+  CtkWidget *list;
+  CtkWidget *headerbutton;
+  CtkWidget *cancelbutton;
+  CtkWidget *selectbutton;
+  CtkWidget *titlestack;
 
   header = CTK_WIDGET (ctk_builder_get_object (builder, "header"));
   list = CTK_WIDGET (ctk_builder_get_object (builder, "list"));
@@ -122,14 +122,14 @@ selection_mode_enter (GtkButton *button, GtkBuilder *builder)
 }
 
 static void
-selection_mode_leave (GtkButton *button, GtkBuilder *builder)
+selection_mode_leave (CtkButton *button, CtkBuilder *builder)
 {
-  GtkWidget *header;
-  GtkWidget *list;
-  GtkWidget *headerbutton;
-  GtkWidget *cancelbutton;
-  GtkWidget *selectbutton;
-  GtkWidget *titlestack;
+  CtkWidget *header;
+  CtkWidget *list;
+  CtkWidget *headerbutton;
+  CtkWidget *cancelbutton;
+  CtkWidget *selectbutton;
+  CtkWidget *titlestack;
 
   header = CTK_WIDGET (ctk_builder_get_object (builder, "header"));
   list = CTK_WIDGET (ctk_builder_get_object (builder, "list"));
@@ -151,19 +151,19 @@ selection_mode_leave (GtkButton *button, GtkBuilder *builder)
 }
 
 static void
-select_all (GAction *action, GVariant *param, GtkWidget *list)
+select_all (GAction *action, GVariant *param, CtkWidget *list)
 {
   ctk_list_box_select_all (CTK_LIST_BOX (list));
 }
 
 static void
-select_none (GAction *action, GVariant *param, GtkWidget *list)
+select_none (GAction *action, GVariant *param, CtkWidget *list)
 {
   ctk_list_box_unselect_all (CTK_LIST_BOX (list));
 }
 
 static void
-selected_rows_changed (GtkListBox *list)
+selected_rows_changed (CtkListBox *list)
 {
   ctk_container_forall (CTK_CONTAINER (list), update_selected, NULL);
 }
@@ -171,10 +171,10 @@ selected_rows_changed (GtkListBox *list)
 int
 main (int argc, char *argv[])
 {
-  GtkBuilder *builder;
-  GtkWidget *window;
-  GtkWidget *list;
-  GtkWidget *button;
+  CtkBuilder *builder;
+  CtkWidget *window;
+  CtkWidget *list;
+  CtkWidget *button;
   gint i;
   GSimpleActionGroup *group;
   GSimpleAction *action;

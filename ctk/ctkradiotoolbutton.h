@@ -30,23 +30,23 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_RADIO_TOOL_BUTTON            (ctk_radio_tool_button_get_type ())
-#define CTK_RADIO_TOOL_BUTTON(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RADIO_TOOL_BUTTON, GtkRadioToolButton))
-#define CTK_RADIO_TOOL_BUTTON_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RADIO_TOOL_BUTTON, GtkRadioToolButtonClass))
+#define CTK_RADIO_TOOL_BUTTON(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RADIO_TOOL_BUTTON, CtkRadioToolButton))
+#define CTK_RADIO_TOOL_BUTTON_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RADIO_TOOL_BUTTON, CtkRadioToolButtonClass))
 #define CTK_IS_RADIO_TOOL_BUTTON(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_RADIO_TOOL_BUTTON))
 #define CTK_IS_RADIO_TOOL_BUTTON_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_RADIO_TOOL_BUTTON))
-#define CTK_RADIO_TOOL_BUTTON_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_RADIO_TOOL_BUTTON, GtkRadioToolButtonClass))
+#define CTK_RADIO_TOOL_BUTTON_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_RADIO_TOOL_BUTTON, CtkRadioToolButtonClass))
 
-typedef struct _GtkRadioToolButton      GtkRadioToolButton;
-typedef struct _GtkRadioToolButtonClass GtkRadioToolButtonClass;
+typedef struct _CtkRadioToolButton      CtkRadioToolButton;
+typedef struct _CtkRadioToolButtonClass CtkRadioToolButtonClass;
 
-struct _GtkRadioToolButton
+struct _CtkRadioToolButton
 {
-  GtkToggleToolButton parent;
+  CtkToggleToolButton parent;
 };
 
-struct _GtkRadioToolButtonClass
+struct _CtkRadioToolButtonClass
 {
-  GtkToggleToolButtonClass parent_class;
+  CtkToggleToolButtonClass parent_class;
 
   /* Padding for future expansion */
   void (* _ctk_reserved1) (void);
@@ -59,19 +59,19 @@ GDK_AVAILABLE_IN_ALL
 GType        ctk_radio_tool_button_get_type       (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkToolItem *ctk_radio_tool_button_new                        (GSList             *group);
+CtkToolItem *ctk_radio_tool_button_new                        (GSList             *group);
 GDK_DEPRECATED_IN_3_10_FOR(ctk_radio_tool_button_new)
-GtkToolItem *ctk_radio_tool_button_new_from_stock             (GSList             *group,
+CtkToolItem *ctk_radio_tool_button_new_from_stock             (GSList             *group,
 							       const gchar        *stock_id);
 GDK_AVAILABLE_IN_ALL
-GtkToolItem *ctk_radio_tool_button_new_from_widget            (GtkRadioToolButton *group);
+CtkToolItem *ctk_radio_tool_button_new_from_widget            (CtkRadioToolButton *group);
 GDK_DEPRECATED_IN_3_10_FOR(ctk_radio_tool_button_new_from_widget)
-GtkToolItem *ctk_radio_tool_button_new_with_stock_from_widget (GtkRadioToolButton *group,
+CtkToolItem *ctk_radio_tool_button_new_with_stock_from_widget (CtkRadioToolButton *group,
 							       const gchar        *stock_id);
 GDK_AVAILABLE_IN_ALL
-GSList *     ctk_radio_tool_button_get_group                  (GtkRadioToolButton *button);
+GSList *     ctk_radio_tool_button_get_group                  (CtkRadioToolButton *button);
 GDK_AVAILABLE_IN_ALL
-void         ctk_radio_tool_button_set_group                  (GtkRadioToolButton *button,
+void         ctk_radio_tool_button_set_group                  (CtkRadioToolButton *button,
 							       GSList             *group);
 
 G_END_DECLS

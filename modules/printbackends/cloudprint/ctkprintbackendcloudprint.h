@@ -1,5 +1,5 @@
 /* ctkprintbackendcloudprint.h: Google Cloud Print implementation of
- * GtkPrintBackend
+ * CtkPrintBackend
  * Copyright (C) 2014, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -25,14 +25,14 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_PRINT_BACKEND_CLOUDPRINT    (ctk_print_backend_cloudprint_get_type ())
-#define CTK_PRINT_BACKEND_CLOUDPRINT(obj)    (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINT_BACKEND_CLOUDPRINT, GtkPrintBackendCloudprint))
+#define CTK_PRINT_BACKEND_CLOUDPRINT(obj)    (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINT_BACKEND_CLOUDPRINT, CtkPrintBackendCloudprint))
 #define CTK_IS_PRINT_BACKEND_CLOUDPRINT(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PRINT_BACKEND_CLOUDPRINT))
 
 #define ONLINE_ACCOUNTS_BUS  "org.gnome.OnlineAccounts"
 
-typedef struct _GtkPrintBackendCloudprint    GtkPrintBackendCloudprint;
+typedef struct _CtkPrintBackendCloudprint    CtkPrintBackendCloudprint;
 
-GtkPrintBackend *ctk_print_backend_cloudprint_new      (void);
+CtkPrintBackend *ctk_print_backend_cloudprint_new      (void);
 GType            ctk_print_backend_cloudprint_get_type (void) G_GNUC_CONST;
 
 G_END_DECLS

@@ -28,31 +28,31 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_COLOR_CHOOSER                  (ctk_color_chooser_get_type ())
-#define CTK_COLOR_CHOOSER(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_COLOR_CHOOSER, GtkColorChooser))
+#define CTK_COLOR_CHOOSER(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_COLOR_CHOOSER, CtkColorChooser))
 #define CTK_IS_COLOR_CHOOSER(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_COLOR_CHOOSER))
-#define CTK_COLOR_CHOOSER_GET_IFACE(inst)       (G_TYPE_INSTANCE_GET_INTERFACE ((inst), CTK_TYPE_COLOR_CHOOSER, GtkColorChooserInterface))
+#define CTK_COLOR_CHOOSER_GET_IFACE(inst)       (G_TYPE_INSTANCE_GET_INTERFACE ((inst), CTK_TYPE_COLOR_CHOOSER, CtkColorChooserInterface))
 
-typedef struct _GtkColorChooser          GtkColorChooser;
-typedef struct _GtkColorChooserInterface GtkColorChooserInterface;
+typedef struct _CtkColorChooser          CtkColorChooser;
+typedef struct _CtkColorChooserInterface CtkColorChooserInterface;
 
-struct _GtkColorChooserInterface
+struct _CtkColorChooserInterface
 {
   GTypeInterface base_interface;
 
   /* Methods */
-  void (* get_rgba)    (GtkColorChooser *chooser,
+  void (* get_rgba)    (CtkColorChooser *chooser,
                         GdkRGBA         *color);
-  void (* set_rgba)    (GtkColorChooser *chooser,
+  void (* set_rgba)    (CtkColorChooser *chooser,
                         const GdkRGBA   *color);
 
-  void (* add_palette) (GtkColorChooser *chooser,
-                        GtkOrientation   orientation,
+  void (* add_palette) (CtkColorChooser *chooser,
+                        CtkOrientation   orientation,
                         gint             colors_per_line,
                         gint             n_colors,
                         GdkRGBA         *colors);
 
   /* Signals */
-  void (* color_activated) (GtkColorChooser *chooser,
+  void (* color_activated) (CtkColorChooser *chooser,
                             const GdkRGBA   *color);
 
   /* Padding */
@@ -63,21 +63,21 @@ GDK_AVAILABLE_IN_3_4
 GType    ctk_color_chooser_get_type        (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_4
-void     ctk_color_chooser_get_rgba       (GtkColorChooser *chooser,
+void     ctk_color_chooser_get_rgba       (CtkColorChooser *chooser,
                                            GdkRGBA         *color);
 GDK_AVAILABLE_IN_3_4
-void     ctk_color_chooser_set_rgba       (GtkColorChooser *chooser,
+void     ctk_color_chooser_set_rgba       (CtkColorChooser *chooser,
                                            const GdkRGBA   *color);
 GDK_AVAILABLE_IN_3_4
-gboolean ctk_color_chooser_get_use_alpha  (GtkColorChooser *chooser);
+gboolean ctk_color_chooser_get_use_alpha  (CtkColorChooser *chooser);
 
 GDK_AVAILABLE_IN_3_4
-void     ctk_color_chooser_set_use_alpha  (GtkColorChooser *chooser,
+void     ctk_color_chooser_set_use_alpha  (CtkColorChooser *chooser,
                                            gboolean         use_alpha);
 
 GDK_AVAILABLE_IN_3_4
-void     ctk_color_chooser_add_palette    (GtkColorChooser *chooser,
-                                           GtkOrientation   orientation,
+void     ctk_color_chooser_add_palette    (CtkColorChooser *chooser,
+                                           CtkOrientation   orientation,
                                            gint             colors_per_line,
                                            gint             n_colors,
                                            GdkRGBA         *colors);

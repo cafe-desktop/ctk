@@ -6,15 +6,15 @@
 #include <glib/gi18n.h>
 #include <ctk/ctk.h>
 
-static GtkWidget *
+static CtkWidget *
 create_bbox (gint  horizontal,
              char *title,
              gint  spacing,
              gint  layout)
 {
-  GtkWidget *frame;
-  GtkWidget *bbox;
-  GtkWidget *button;
+  CtkWidget *frame;
+  CtkWidget *bbox;
+  CtkWidget *button;
 
   frame = ctk_frame_new (title);
 
@@ -41,15 +41,15 @@ create_bbox (gint  horizontal,
   return frame;
 }
 
-GtkWidget *
-do_button_box (GtkWidget *do_widget)
+CtkWidget *
+do_button_box (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *main_vbox;
-  GtkWidget *vbox;
-  GtkWidget *hbox;
-  GtkWidget *frame_horz;
-  GtkWidget *frame_vert;
+  static CtkWidget *window = NULL;
+  CtkWidget *main_vbox;
+  CtkWidget *vbox;
+  CtkWidget *hbox;
+  CtkWidget *frame_horz;
+  CtkWidget *frame_vert;
 
   if (!window)
   {

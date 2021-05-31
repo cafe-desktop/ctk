@@ -100,20 +100,20 @@ General behavior
 Properties
 ===
 
-GtkWindow::default_width, GtkWindow::default_height:
+CtkWindow::default_width, CtkWindow::default_height:
  - default_width is -1 if unset, or >= 0 if 
    a default width is set
  - default_height is -1 if unset, or >= 0 if
    a default height is set
 
-GtkWindow::resizable:
+CtkWindow::resizable:
  - if FALSE, we set the min size to the max size in the geometry 
    hints. 
  - If the app programmer has called ctk_window_set_geometry_hints()
    however and set min or max size, we don't replace the hint they
    set.
 
-GtkWidget::width_request, GtkWidget::height_request:
+CtkWidget::width_request, CtkWidget::height_request:
  - if -1, default requisition of widget is used
  - otherwise, override default requisition
 

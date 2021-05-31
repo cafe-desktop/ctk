@@ -2,7 +2,7 @@
 <!-- Generated with glade 3.18.1 -->
 <interface>
   <requires lib="ctk+" version="3.16"/>
-  <object class="GtkListStore" id="liststore1">
+  <object class="CtkListStore" id="liststore1">
     <columns>
       <!-- column-name width -->
       <column type="gint"/>
@@ -24,16 +24,16 @@
       </row>
     </data>
   </object>
-  <object class="GtkAdjustment" id="adj">
+  <object class="CtkAdjustment" id="adj">
     <property name="lower">5</property>
     <property name="upper">50</property>
     <property name="step-increment">1</property>
     <property name="page-increment">5</property>
   </object>
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="title" translatable="yes">Filter Model</property>
     <child>
-      <object class="GtkGrid" id="grid1">
+      <object class="CtkGrid" id="grid1">
         <property name="visible">1</property>
         <property name="margin_left">10</property>
         <property name="margin_right">10</property>
@@ -43,7 +43,7 @@
         <property name="column_spacing">10</property>
         <property name="column_homogeneous">1</property>
         <child>
-          <object class="GtkLabel" id="label1">
+          <object class="CtkLabel" id="label1">
             <property name="visible">1</property>
             <property name="label" translatable="yes">Original</property>
             <property name="xalign">0</property>
@@ -57,19 +57,19 @@
           </packing>
         </child>
         <child>
-          <object class="GtkTreeView" id="treeview1">
+          <object class="CtkTreeView" id="treeview1">
             <property name="visible">1</property>
             <property name="can_focus">1</property>
             <property name="model">liststore1</property>
             <property name="headers_clickable">0</property>
             <child internal-child="selection">
-              <object class="GtkTreeSelection" id="treeview-selection1"/>
+              <object class="CtkTreeSelection" id="treeview-selection1"/>
             </child>
             <child>
-              <object class="GtkTreeViewColumn" id="treeviewcolumn1">
+              <object class="CtkTreeViewColumn" id="treeviewcolumn1">
                 <property name="title" translatable="yes">Width</property>
                 <child>
-                  <object class="GtkCellRendererSpin" id="cellrenderertext1">
+                  <object class="CtkCellRendererSpin" id="cellrenderertext1">
                     <property name="editable">1</property>
                     <property name="adjustment">adj</property>
                   </object>
@@ -77,10 +77,10 @@
               </object>
             </child>
             <child>
-              <object class="GtkTreeViewColumn" id="treeviewcolumn2">
+              <object class="CtkTreeViewColumn" id="treeviewcolumn2">
                 <property name="title" translatable="yes">Height</property>
                 <child>
-                  <object class="GtkCellRendererSpin" id="cellrenderertext2">
+                  <object class="CtkCellRendererSpin" id="cellrenderertext2">
                     <property name="editable">1</property>
                     <property name="adjustment">adj</property>
                   </object>
@@ -94,43 +94,43 @@
           </packing>
         </child>
         <child>
-          <object class="GtkTreeView" id="treeview2">
+          <object class="CtkTreeView" id="treeview2">
             <property name="visible">1</property>
             <property name="can_focus">1</property>
             <property name="headers_clickable">0</property>
             <property name="search_column">0</property>
             <child internal-child="selection">
-              <object class="GtkTreeSelection" id="treeview-selection3"/>
+              <object class="CtkTreeSelection" id="treeview-selection3"/>
             </child>
             <child>
-              <object class="GtkTreeViewColumn" id="treeviewcolumn3">
+              <object class="CtkTreeViewColumn" id="treeviewcolumn3">
                 <property name="title" translatable="yes">Width</property>
                 <child>
-                  <object class="GtkCellRendererText" id="cellrenderertext3"/>
+                  <object class="CtkCellRendererText" id="cellrenderertext3"/>
                 </child>
               </object>
             </child>
             <child>
-              <object class="GtkTreeViewColumn" id="treeviewcolumn4">
+              <object class="CtkTreeViewColumn" id="treeviewcolumn4">
                 <property name="title" translatable="yes">Height</property>
                 <child>
-                  <object class="GtkCellRendererText" id="cellrenderertext4"/>
+                  <object class="CtkCellRendererText" id="cellrenderertext4"/>
                 </child>
               </object>
             </child>
             <child>
-              <object class="GtkTreeViewColumn" id="treeviewcolumn5">
+              <object class="CtkTreeViewColumn" id="treeviewcolumn5">
                 <property name="title" translatable="yes">Area</property>
                 <child>
-                  <object class="GtkCellRendererText" id="cellrenderertext5"/>
+                  <object class="CtkCellRendererText" id="cellrenderertext5"/>
                 </child>
               </object>
             </child>
             <child>
-              <object class="GtkTreeViewColumn" id="treeviewcolumn6">
+              <object class="CtkTreeViewColumn" id="treeviewcolumn6">
                 <property name="title" translatable="yes">Square</property>
                 <child>
-                  <object class="GtkCellRendererPixbuf" id="cellrendererpixbuf1">
+                  <object class="CtkCellRendererPixbuf" id="cellrendererpixbuf1">
                     <property name="icon-name">object-select-symbolic</property>
                   </object>
                 </child>
@@ -143,7 +143,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label2">
+          <object class="CtkLabel" id="label2">
             <property name="visible">1</property>
             <property name="label" translatable="yes">Computed Columns</property>
             <property name="xalign">0</property>
@@ -157,7 +157,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label3">
+          <object class="CtkLabel" id="label3">
             <property name="visible">1</property>
             <property name="label" translatable="yes">Filtered</property>
             <property name="xalign">0</property>
@@ -171,27 +171,27 @@
           </packing>
         </child>
         <child>
-          <object class="GtkTreeView" id="treeview3">
+          <object class="CtkTreeView" id="treeview3">
             <property name="visible">1</property>
             <property name="can_focus">1</property>
             <property name="headers_clickable">0</property>
             <property name="search_column">0</property>
             <child internal-child="selection">
-              <object class="GtkTreeSelection" id="treeview-selection5"/>
+              <object class="CtkTreeSelection" id="treeview-selection5"/>
             </child>
             <child>
-              <object class="GtkTreeViewColumn" id="treeviewcolumn7">
+              <object class="CtkTreeViewColumn" id="treeviewcolumn7">
                 <property name="title" translatable="yes">Width</property>
                 <child>
-                  <object class="GtkCellRendererText" id="cellrenderertext6"/>
+                  <object class="CtkCellRendererText" id="cellrenderertext6"/>
                 </child>
               </object>
             </child>
             <child>
-              <object class="GtkTreeViewColumn" id="treeviewcolumn8">
+              <object class="CtkTreeViewColumn" id="treeviewcolumn8">
                 <property name="title" translatable="yes">Height</property>
                 <child>
-                  <object class="GtkCellRendererText" id="cellrenderertext7"/>
+                  <object class="CtkCellRendererText" id="cellrenderertext7"/>
                 </child>
               </object>
             </child>

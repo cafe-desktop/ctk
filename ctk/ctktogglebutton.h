@@ -36,29 +36,29 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_TOGGLE_BUTTON                  (ctk_toggle_button_get_type ())
-#define CTK_TOGGLE_BUTTON(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TOGGLE_BUTTON, GtkToggleButton))
-#define CTK_TOGGLE_BUTTON_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TOGGLE_BUTTON, GtkToggleButtonClass))
+#define CTK_TOGGLE_BUTTON(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TOGGLE_BUTTON, CtkToggleButton))
+#define CTK_TOGGLE_BUTTON_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TOGGLE_BUTTON, CtkToggleButtonClass))
 #define CTK_IS_TOGGLE_BUTTON(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TOGGLE_BUTTON))
 #define CTK_IS_TOGGLE_BUTTON_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TOGGLE_BUTTON))
-#define CTK_TOGGLE_BUTTON_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TOGGLE_BUTTON, GtkToggleButtonClass))
+#define CTK_TOGGLE_BUTTON_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TOGGLE_BUTTON, CtkToggleButtonClass))
 
-typedef struct _GtkToggleButton              GtkToggleButton;
-typedef struct _GtkToggleButtonPrivate       GtkToggleButtonPrivate;
-typedef struct _GtkToggleButtonClass         GtkToggleButtonClass;
+typedef struct _CtkToggleButton              CtkToggleButton;
+typedef struct _CtkToggleButtonPrivate       CtkToggleButtonPrivate;
+typedef struct _CtkToggleButtonClass         CtkToggleButtonClass;
 
-struct _GtkToggleButton
+struct _CtkToggleButton
 {
   /*< private >*/
-  GtkButton button;
+  CtkButton button;
 
-  GtkToggleButtonPrivate *priv;
+  CtkToggleButtonPrivate *priv;
 };
 
-struct _GtkToggleButtonClass
+struct _CtkToggleButtonClass
 {
-  GtkButtonClass parent_class;
+  CtkButtonClass parent_class;
 
-  void (* toggled) (GtkToggleButton *toggle_button);
+  void (* toggled) (CtkToggleButton *toggle_button);
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -72,28 +72,28 @@ GDK_AVAILABLE_IN_ALL
 GType      ctk_toggle_button_get_type          (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget* ctk_toggle_button_new               (void);
+CtkWidget* ctk_toggle_button_new               (void);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* ctk_toggle_button_new_with_label    (const gchar     *label);
+CtkWidget* ctk_toggle_button_new_with_label    (const gchar     *label);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* ctk_toggle_button_new_with_mnemonic (const gchar     *label);
+CtkWidget* ctk_toggle_button_new_with_mnemonic (const gchar     *label);
 GDK_AVAILABLE_IN_ALL
-void       ctk_toggle_button_set_mode          (GtkToggleButton *toggle_button,
+void       ctk_toggle_button_set_mode          (CtkToggleButton *toggle_button,
                                                 gboolean         draw_indicator);
 GDK_AVAILABLE_IN_ALL
-gboolean   ctk_toggle_button_get_mode          (GtkToggleButton *toggle_button);
+gboolean   ctk_toggle_button_get_mode          (CtkToggleButton *toggle_button);
 GDK_AVAILABLE_IN_ALL
-void       ctk_toggle_button_set_active        (GtkToggleButton *toggle_button,
+void       ctk_toggle_button_set_active        (CtkToggleButton *toggle_button,
                                                 gboolean         is_active);
 GDK_AVAILABLE_IN_ALL
-gboolean   ctk_toggle_button_get_active        (GtkToggleButton *toggle_button);
+gboolean   ctk_toggle_button_get_active        (CtkToggleButton *toggle_button);
 GDK_AVAILABLE_IN_ALL
-void       ctk_toggle_button_toggled           (GtkToggleButton *toggle_button);
+void       ctk_toggle_button_toggled           (CtkToggleButton *toggle_button);
 GDK_AVAILABLE_IN_ALL
-void       ctk_toggle_button_set_inconsistent  (GtkToggleButton *toggle_button,
+void       ctk_toggle_button_set_inconsistent  (CtkToggleButton *toggle_button,
                                                 gboolean         setting);
 GDK_AVAILABLE_IN_ALL
-gboolean   ctk_toggle_button_get_inconsistent  (GtkToggleButton *toggle_button);
+gboolean   ctk_toggle_button_get_inconsistent  (CtkToggleButton *toggle_button);
 
 
 G_END_DECLS

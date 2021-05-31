@@ -1,4 +1,4 @@
-/* GtkCellRendererCombo
+/* CtkCellRendererCombo
  * Copyright (C) 2004 Lorenzo Gil Sanchez
  *
  * This library is free software; you can redistribute it and/or
@@ -28,27 +28,27 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CELL_RENDERER_COMBO		(ctk_cell_renderer_combo_get_type ())
-#define CTK_CELL_RENDERER_COMBO(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_RENDERER_COMBO, GtkCellRendererCombo))
-#define CTK_CELL_RENDERER_COMBO_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CELL_RENDERER_COMBO, GtkCellRendererComboClass))
+#define CTK_CELL_RENDERER_COMBO(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_RENDERER_COMBO, CtkCellRendererCombo))
+#define CTK_CELL_RENDERER_COMBO_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CELL_RENDERER_COMBO, CtkCellRendererComboClass))
 #define CTK_IS_CELL_RENDERER_COMBO(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CELL_RENDERER_COMBO))
 #define CTK_IS_CELL_RENDERER_COMBO_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_CELL_RENDERER_COMBO))
-#define CTK_CELL_RENDERER_COMBO_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CELL_RENDERER_COMBO, GtkCellRendererTextClass))
+#define CTK_CELL_RENDERER_COMBO_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CELL_RENDERER_COMBO, CtkCellRendererTextClass))
 
-typedef struct _GtkCellRendererCombo              GtkCellRendererCombo;
-typedef struct _GtkCellRendererComboPrivate       GtkCellRendererComboPrivate;
-typedef struct _GtkCellRendererComboClass         GtkCellRendererComboClass;
+typedef struct _CtkCellRendererCombo              CtkCellRendererCombo;
+typedef struct _CtkCellRendererComboPrivate       CtkCellRendererComboPrivate;
+typedef struct _CtkCellRendererComboClass         CtkCellRendererComboClass;
 
-struct _GtkCellRendererCombo
+struct _CtkCellRendererCombo
 {
-  GtkCellRendererText parent;
+  CtkCellRendererText parent;
 
   /*< private >*/
-  GtkCellRendererComboPrivate *priv;
+  CtkCellRendererComboPrivate *priv;
 };
 
-struct _GtkCellRendererComboClass
+struct _CtkCellRendererComboClass
 {
-  GtkCellRendererTextClass parent;
+  CtkCellRendererTextClass parent;
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -60,7 +60,7 @@ struct _GtkCellRendererComboClass
 GDK_AVAILABLE_IN_ALL
 GType            ctk_cell_renderer_combo_get_type (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkCellRenderer *ctk_cell_renderer_combo_new      (void);
+CtkCellRenderer *ctk_cell_renderer_combo_new      (void);
 
 G_END_DECLS
 

@@ -8,7 +8,7 @@
 set VCInstallDir=$(VCInstallDir)
 nmake -f generate-msvc.mak PREFIX=$(GlibEtcInstallRoot)</GenerateRequiredSourcesBase>
     <GeneratedGdkSources>..\config.h;..\gdk\gdkconfig.h;..\gdk\gdkversionmacros.h;..\gdk\gdkmarshalers.h;..\gdk\gdkmarshalers.c;..\gdk\gdkresources.h;..\gdk\gdkresources.c</GeneratedGdkSources>
-    <GeneratedGtkSources>..\ctk\ctk-win32.rc;..\ctk\libctk3.manifest;..\ctk\ctkdbusgenerated.h;..\ctk\ctkdbusgenerated.c</GeneratedGtkSources>
+    <GeneratedCtkSources>..\ctk\ctk-win32.rc;..\ctk\libctk3.manifest;..\ctk\ctkdbusgenerated.h;..\ctk\ctkdbusgenerated.c</GeneratedCtkSources>
     <GeneratedDemoSources>..\demos\ctk-demo\demos.h</GeneratedDemoSources>
   </PropertyGroup>
   <PropertyGroup>
@@ -21,8 +21,8 @@ nmake -f generate-msvc.mak PREFIX=$(GlibEtcInstallRoot)</GenerateRequiredSources
     <BuildMacro Include="GeneratedGdkSources">
       <Value>$(GeneratedGdkSources)</Value>
     </BuildMacro>
-    <BuildMacro Include="GeneratedGtkSources">
-      <Value>$(GeneratedGtkSources)</Value>
+    <BuildMacro Include="GeneratedCtkSources">
+      <Value>$(GeneratedCtkSources)</Value>
     </BuildMacro>
     <BuildMacro Include="GeneratedDemoSources">
       <Value>$(GeneratedDemoSources)</Value>

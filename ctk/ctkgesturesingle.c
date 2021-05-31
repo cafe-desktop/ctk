@@ -21,9 +21,9 @@
 /**
  * SECTION:ctkgesturesingle
  * @Short_description: Base class for mouse/single-touch gestures
- * @Title: GtkGestureSingle
+ * @Title: CtkGestureSingle
  *
- * #GtkGestureSingle is a subclass of #GtkGesture, optimized (although
+ * #CtkGestureSingle is a subclass of #CtkGesture, optimized (although
  * not restricted) for dealing with mouse and single-touch gestures. Under
  * interaction, these gestures stick to the first interacting sequence, which
  * is accessible through ctk_gesture_single_get_current_sequence() while the
@@ -44,9 +44,9 @@
 #include "ctkintl.h"
 #include "ctkdebug.h"
 
-typedef struct _GtkGestureSinglePrivate GtkGestureSinglePrivate;
+typedef struct _CtkGestureSinglePrivate CtkGestureSinglePrivate;
 
-struct _GtkGestureSinglePrivate
+struct _CtkGestureSinglePrivate
 {
   GdkEventSequence *current_sequence;
   guint button;
@@ -64,7 +64,7 @@ enum {
 
 static GParamSpec *properties[LAST_PROP] = { NULL, };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkGestureSingle, ctk_gesture_single, CTK_TYPE_GESTURE)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkGestureSingle, ctk_gesture_single, CTK_TYPE_GESTURE)
 
 static void
 ctk_gesture_single_get_property (GObject    *object,
@@ -72,7 +72,7 @@ ctk_gesture_single_get_property (GObject    *object,
                                  GValue     *value,
                                  GParamSpec *pspec)
 {
-  GtkGestureSinglePrivate *priv;
+  CtkGestureSinglePrivate *priv;
 
   priv = ctk_gesture_single_get_instance_private (CTK_GESTURE_SINGLE (object));
 
@@ -118,10 +118,10 @@ ctk_gesture_single_set_property (GObject      *object,
 }
 
 static void
-ctk_gesture_single_cancel (GtkGesture       *gesture,
+ctk_gesture_single_cancel (CtkGesture       *gesture,
                            GdkEventSequence *sequence)
 {
-  GtkGestureSinglePrivate *priv;
+  CtkGestureSinglePrivate *priv;
 
   priv = ctk_gesture_single_get_instance_private (CTK_GESTURE_SINGLE (gesture));
 
@@ -130,11 +130,11 @@ ctk_gesture_single_cancel (GtkGesture       *gesture,
 }
 
 static gboolean
-ctk_gesture_single_handle_event (GtkEventController *controller,
+ctk_gesture_single_handle_event (CtkEventController *controller,
                                  const GdkEvent     *event)
 {
   GdkEventSequence *sequence = NULL;
-  GtkGestureSinglePrivate *priv;
+  CtkGestureSinglePrivate *priv;
   GdkDevice *source_device;
   GdkInputSource source;
   guint button = 0, i;
@@ -237,10 +237,10 @@ ctk_gesture_single_handle_event (GtkEventController *controller,
 }
 
 static void
-ctk_gesture_single_class_init (GtkGestureSingleClass *klass)
+ctk_gesture_single_class_init (CtkGestureSingleClass *klass)
 {
-  GtkEventControllerClass *controller_class = CTK_EVENT_CONTROLLER_CLASS (klass);
-  GtkGestureClass *gesture_class = CTK_GESTURE_CLASS (klass);
+  CtkEventControllerClass *controller_class = CTK_EVENT_CONTROLLER_CLASS (klass);
+  CtkGestureClass *gesture_class = CTK_GESTURE_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->get_property = ctk_gesture_single_get_property;
@@ -251,7 +251,7 @@ ctk_gesture_single_class_init (GtkGestureSingleClass *klass)
   gesture_class->cancel = ctk_gesture_single_cancel;
 
   /**
-   * GtkGestureSingle:touch-only:
+   * CtkGestureSingle:touch-only:
    *
    * Whether the gesture handles only touch events.
    *
@@ -265,7 +265,7 @@ ctk_gesture_single_class_init (GtkGestureSingleClass *klass)
                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkGestureSingle:exclusive:
+   * CtkGestureSingle:exclusive:
    *
    * Whether the gesture is exclusive. Exclusive gestures only listen to pointer
    * and pointer emulated events.
@@ -280,7 +280,7 @@ ctk_gesture_single_class_init (GtkGestureSingleClass *klass)
                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkGestureSingle:button:
+   * CtkGestureSingle:button:
    *
    * Mouse button number to listen to, or 0 to listen for any button.
    *
@@ -298,9 +298,9 @@ ctk_gesture_single_class_init (GtkGestureSingleClass *klass)
 }
 
 static void
-_ctk_gesture_single_update_evmask (GtkGestureSingle *gesture)
+_ctk_gesture_single_update_evmask (CtkGestureSingle *gesture)
 {
-  GtkGestureSinglePrivate *priv;
+  CtkGestureSinglePrivate *priv;
   GdkEventMask evmask;
 
   priv = ctk_gesture_single_get_instance_private (gesture);
@@ -314,9 +314,9 @@ _ctk_gesture_single_update_evmask (GtkGestureSingle *gesture)
 }
 
 static void
-ctk_gesture_single_init (GtkGestureSingle *gesture)
+ctk_gesture_single_init (CtkGestureSingle *gesture)
 {
-  GtkGestureSinglePrivate *priv;
+  CtkGestureSinglePrivate *priv;
 
   priv = ctk_gesture_single_get_instance_private (gesture);
   priv->touch_only = FALSE;
@@ -326,7 +326,7 @@ ctk_gesture_single_init (GtkGestureSingle *gesture)
 
 /**
  * ctk_gesture_single_get_touch_only:
- * @gesture: a #GtkGestureSingle
+ * @gesture: a #CtkGestureSingle
  *
  * Returns %TRUE if the gesture is only triggered by touch events.
  *
@@ -335,9 +335,9 @@ ctk_gesture_single_init (GtkGestureSingle *gesture)
  * Since: 3.14
  **/
 gboolean
-ctk_gesture_single_get_touch_only (GtkGestureSingle *gesture)
+ctk_gesture_single_get_touch_only (CtkGestureSingle *gesture)
 {
-  GtkGestureSinglePrivate *priv;
+  CtkGestureSinglePrivate *priv;
 
   g_return_val_if_fail (CTK_IS_GESTURE_SINGLE (gesture), FALSE);
 
@@ -348,7 +348,7 @@ ctk_gesture_single_get_touch_only (GtkGestureSingle *gesture)
 
 /**
  * ctk_gesture_single_set_touch_only:
- * @gesture: a #GtkGestureSingle
+ * @gesture: a #CtkGestureSingle
  * @touch_only: whether @gesture handles only touch events
  *
  * If @touch_only is %TRUE, @gesture will only handle events of type
@@ -358,10 +358,10 @@ ctk_gesture_single_get_touch_only (GtkGestureSingle *gesture)
  * Since: 3.14
  **/
 void
-ctk_gesture_single_set_touch_only (GtkGestureSingle *gesture,
+ctk_gesture_single_set_touch_only (CtkGestureSingle *gesture,
                                    gboolean          touch_only)
 {
-  GtkGestureSinglePrivate *priv;
+  CtkGestureSinglePrivate *priv;
 
   g_return_if_fail (CTK_IS_GESTURE_SINGLE (gesture));
 
@@ -378,7 +378,7 @@ ctk_gesture_single_set_touch_only (GtkGestureSingle *gesture,
 
 /**
  * ctk_gesture_single_get_exclusive:
- * @gesture: a #GtkGestureSingle
+ * @gesture: a #CtkGestureSingle
  *
  * Gets whether a gesture is exclusive. For more information, see
  * ctk_gesture_single_set_exclusive().
@@ -388,9 +388,9 @@ ctk_gesture_single_set_touch_only (GtkGestureSingle *gesture,
  * Since: 3.14
  **/
 gboolean
-ctk_gesture_single_get_exclusive (GtkGestureSingle *gesture)
+ctk_gesture_single_get_exclusive (CtkGestureSingle *gesture)
 {
-  GtkGestureSinglePrivate *priv;
+  CtkGestureSinglePrivate *priv;
 
   g_return_val_if_fail (CTK_IS_GESTURE_SINGLE (gesture), FALSE);
 
@@ -401,7 +401,7 @@ ctk_gesture_single_get_exclusive (GtkGestureSingle *gesture)
 
 /**
  * ctk_gesture_single_set_exclusive:
- * @gesture: a #GtkGestureSingle
+ * @gesture: a #CtkGestureSingle
  * @exclusive: %TRUE to make @gesture exclusive
  *
  * Sets whether @gesture is exclusive. An exclusive gesture will
@@ -412,10 +412,10 @@ ctk_gesture_single_get_exclusive (GtkGestureSingle *gesture)
  * Since: 3.14
  **/
 void
-ctk_gesture_single_set_exclusive (GtkGestureSingle *gesture,
+ctk_gesture_single_set_exclusive (CtkGestureSingle *gesture,
                                   gboolean          exclusive)
 {
-  GtkGestureSinglePrivate *priv;
+  CtkGestureSinglePrivate *priv;
 
   g_return_if_fail (CTK_IS_GESTURE_SINGLE (gesture));
 
@@ -432,7 +432,7 @@ ctk_gesture_single_set_exclusive (GtkGestureSingle *gesture,
 
 /**
  * ctk_gesture_single_get_button:
- * @gesture: a #GtkGestureSingle
+ * @gesture: a #CtkGestureSingle
  *
  * Returns the button number @gesture listens for, or 0 if @gesture
  * reacts to any button press.
@@ -442,9 +442,9 @@ ctk_gesture_single_set_exclusive (GtkGestureSingle *gesture,
  * Since: 3.14
  **/
 guint
-ctk_gesture_single_get_button (GtkGestureSingle *gesture)
+ctk_gesture_single_get_button (CtkGestureSingle *gesture)
 {
-  GtkGestureSinglePrivate *priv;
+  CtkGestureSinglePrivate *priv;
 
   g_return_val_if_fail (CTK_IS_GESTURE_SINGLE (gesture), 0);
 
@@ -455,7 +455,7 @@ ctk_gesture_single_get_button (GtkGestureSingle *gesture)
 
 /**
  * ctk_gesture_single_set_button:
- * @gesture: a #GtkGestureSingle
+ * @gesture: a #CtkGestureSingle
  * @button: button number to listen to, or 0 for any button
  *
  * Sets the button number @gesture listens to. If non-0, every
@@ -465,10 +465,10 @@ ctk_gesture_single_get_button (GtkGestureSingle *gesture)
  * Since: 3.14
  **/
 void
-ctk_gesture_single_set_button (GtkGestureSingle *gesture,
+ctk_gesture_single_set_button (CtkGestureSingle *gesture,
                                guint             button)
 {
-  GtkGestureSinglePrivate *priv;
+  CtkGestureSinglePrivate *priv;
 
   g_return_if_fail (CTK_IS_GESTURE_SINGLE (gesture));
 
@@ -483,7 +483,7 @@ ctk_gesture_single_set_button (GtkGestureSingle *gesture,
 
 /**
  * ctk_gesture_single_get_current_button:
- * @gesture: a #GtkGestureSingle
+ * @gesture: a #CtkGestureSingle
  *
  * Returns the button number currently interacting with @gesture, or 0 if there
  * is none.
@@ -493,9 +493,9 @@ ctk_gesture_single_set_button (GtkGestureSingle *gesture,
  * Since: 3.14
  **/
 guint
-ctk_gesture_single_get_current_button (GtkGestureSingle *gesture)
+ctk_gesture_single_get_current_button (CtkGestureSingle *gesture)
 {
-  GtkGestureSinglePrivate *priv;
+  CtkGestureSinglePrivate *priv;
 
   g_return_val_if_fail (CTK_IS_GESTURE_SINGLE (gesture), 0);
 
@@ -506,7 +506,7 @@ ctk_gesture_single_get_current_button (GtkGestureSingle *gesture)
 
 /**
  * ctk_gesture_single_get_current_sequence:
- * @gesture: a #GtkGestureSingle
+ * @gesture: a #CtkGestureSingle
  *
  * Returns the event sequence currently interacting with @gesture.
  * This is only meaningful if ctk_gesture_is_active() returns %TRUE.
@@ -516,9 +516,9 @@ ctk_gesture_single_get_current_button (GtkGestureSingle *gesture)
  * Since: 3.14
  **/
 GdkEventSequence *
-ctk_gesture_single_get_current_sequence (GtkGestureSingle *gesture)
+ctk_gesture_single_get_current_sequence (CtkGestureSingle *gesture)
 {
-  GtkGestureSinglePrivate *priv;
+  CtkGestureSinglePrivate *priv;
 
   g_return_val_if_fail (CTK_IS_GESTURE_SINGLE (gesture), NULL);
 

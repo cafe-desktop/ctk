@@ -10,7 +10,7 @@ window1
   alpha: 1
   button1
     "push button"
-    parent: unnamed-GtkContainerAccessible-0
+    parent: unnamed-CtkContainerAccessible-0
     index: 0
     name: Page 1
     state: enabled focusable sensitive showing visible
@@ -26,7 +26,7 @@ window1
     action 0 description: Clicks the button
   button2
     "push button"
-    parent: unnamed-GtkContainerAccessible-1
+    parent: unnamed-CtkContainerAccessible-1
     index: 0
     name: Page 2
     state: enabled focusable sensitive visible
@@ -126,7 +126,7 @@ window1
       action 0 name: click
       action 0 description: Clicks the button
       action 0 keybinding: <Alt>c
-    unnamed-GtkContainerAccessible-2
+    unnamed-CtkContainerAccessible-2
       "filler"
       parent: headerbar
       state: enabled sensitive showing vertical visible
@@ -136,7 +136,7 @@ window1
       alpha: 1
       Page 1
         "label"
-        parent: unnamed-GtkContainerAccessible-2
+        parent: unnamed-CtkContainerAccessible-2
         index: 0
         name: Page 1
         state: enabled multi-line sensitive showing visible
@@ -176,7 +176,7 @@ window1
         <AtkHypertext>
       
         "label"
-        parent: unnamed-GtkContainerAccessible-2
+        parent: unnamed-CtkContainerAccessible-2
         index: 1
         name: 
         state: enabled multi-line sensitive

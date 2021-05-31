@@ -1,4 +1,4 @@
-/* GtkPageSetupUnixDialog
+/* CtkPageSetupUnixDialog
  * Copyright (C) 2006 Alexander Larsson <alexl@redhat.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -27,31 +27,31 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_PAGE_SETUP_UNIX_DIALOG                  (ctk_page_setup_unix_dialog_get_type ())
-#define CTK_PAGE_SETUP_UNIX_DIALOG(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PAGE_SETUP_UNIX_DIALOG, GtkPageSetupUnixDialog))
-#define CTK_PAGE_SETUP_UNIX_DIALOG_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PAGE_SETUP_UNIX_DIALOG, GtkPageSetupUnixDialogClass))
+#define CTK_PAGE_SETUP_UNIX_DIALOG(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PAGE_SETUP_UNIX_DIALOG, CtkPageSetupUnixDialog))
+#define CTK_PAGE_SETUP_UNIX_DIALOG_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PAGE_SETUP_UNIX_DIALOG, CtkPageSetupUnixDialogClass))
 #define CTK_IS_PAGE_SETUP_UNIX_DIALOG(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PAGE_SETUP_UNIX_DIALOG))
 #define CTK_IS_PAGE_SETUP_UNIX_DIALOG_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PAGE_SETUP_UNIX_DIALOG))
-#define CTK_PAGE_SETUP_UNIX_DIALOG_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PAGE_SETUP_UNIX_DIALOG, GtkPageSetupUnixDialogClass))
+#define CTK_PAGE_SETUP_UNIX_DIALOG_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PAGE_SETUP_UNIX_DIALOG, CtkPageSetupUnixDialogClass))
 
 
-typedef struct _GtkPageSetupUnixDialog         GtkPageSetupUnixDialog;
-typedef struct _GtkPageSetupUnixDialogClass    GtkPageSetupUnixDialogClass;
-typedef struct _GtkPageSetupUnixDialogPrivate  GtkPageSetupUnixDialogPrivate;
+typedef struct _CtkPageSetupUnixDialog         CtkPageSetupUnixDialog;
+typedef struct _CtkPageSetupUnixDialogClass    CtkPageSetupUnixDialogClass;
+typedef struct _CtkPageSetupUnixDialogPrivate  CtkPageSetupUnixDialogPrivate;
 
-struct _GtkPageSetupUnixDialog
+struct _CtkPageSetupUnixDialog
 {
-  GtkDialog parent_instance;
+  CtkDialog parent_instance;
 
-  GtkPageSetupUnixDialogPrivate *priv;
+  CtkPageSetupUnixDialogPrivate *priv;
 };
 
 /**
- * GtkPageSetupUnixDialogClass:
+ * CtkPageSetupUnixDialogClass:
  * @parent_class: The parent class.
  */
-struct _GtkPageSetupUnixDialogClass
+struct _CtkPageSetupUnixDialogClass
 {
-  GtkDialogClass parent_class;
+  CtkDialogClass parent_class;
 
   /*< private >*/
 
@@ -65,18 +65,18 @@ struct _GtkPageSetupUnixDialogClass
 GDK_AVAILABLE_IN_ALL
 GType 		  ctk_page_setup_unix_dialog_get_type	        (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget *       ctk_page_setup_unix_dialog_new                (const gchar            *title,
-								 GtkWindow              *parent);
+CtkWidget *       ctk_page_setup_unix_dialog_new                (const gchar            *title,
+								 CtkWindow              *parent);
 GDK_AVAILABLE_IN_ALL
-void              ctk_page_setup_unix_dialog_set_page_setup     (GtkPageSetupUnixDialog *dialog,
-								 GtkPageSetup           *page_setup);
+void              ctk_page_setup_unix_dialog_set_page_setup     (CtkPageSetupUnixDialog *dialog,
+								 CtkPageSetup           *page_setup);
 GDK_AVAILABLE_IN_ALL
-GtkPageSetup *    ctk_page_setup_unix_dialog_get_page_setup     (GtkPageSetupUnixDialog *dialog);
+CtkPageSetup *    ctk_page_setup_unix_dialog_get_page_setup     (CtkPageSetupUnixDialog *dialog);
 GDK_AVAILABLE_IN_ALL
-void              ctk_page_setup_unix_dialog_set_print_settings (GtkPageSetupUnixDialog *dialog,
-								 GtkPrintSettings       *print_settings);
+void              ctk_page_setup_unix_dialog_set_print_settings (CtkPageSetupUnixDialog *dialog,
+								 CtkPrintSettings       *print_settings);
 GDK_AVAILABLE_IN_ALL
-GtkPrintSettings *ctk_page_setup_unix_dialog_get_print_settings (GtkPageSetupUnixDialog *dialog);
+CtkPrintSettings *ctk_page_setup_unix_dialog_get_print_settings (CtkPageSetupUnixDialog *dialog);
 
 G_END_DECLS
 

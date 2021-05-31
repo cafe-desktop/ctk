@@ -24,18 +24,18 @@
 
 G_BEGIN_DECLS
 
-NSSet   *_ctk_quartz_target_list_to_pasteboard_types    (GtkTargetList *target_list);
-NSSet   *_ctk_quartz_target_entries_to_pasteboard_types (const GtkTargetEntry *targets,
+NSSet   *_ctk_quartz_target_list_to_pasteboard_types    (CtkTargetList *target_list);
+NSSet   *_ctk_quartz_target_entries_to_pasteboard_types (const CtkTargetEntry *targets,
 							 guint                 n_targets);
 
 GList   *_ctk_quartz_pasteboard_types_to_atom_list (NSArray  *array);
 
-GtkSelectionData *_ctk_quartz_get_selection_data_from_pasteboard (NSPasteboard *pasteboard,
+CtkSelectionData *_ctk_quartz_get_selection_data_from_pasteboard (NSPasteboard *pasteboard,
 								  GdkAtom       target,
 								  GdkAtom       selection);
 
 void _ctk_quartz_set_selection_data_for_pasteboard (NSPasteboard *pasteboard,
-						    GtkSelectionData *selection_data);
+						    CtkSelectionData *selection_data);
 
 NSImage *_ctk_quartz_create_image_from_surface (cairo_surface_t *surface);
 

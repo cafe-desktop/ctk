@@ -1,7 +1,7 @@
 /* GTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
- * GtkAspectFrame: Ensure that the child window has a specified aspect ratio
+ * CtkAspectFrame: Ensure that the child window has a specified aspect ratio
  *    or, if obey_child, has the same aspect ratio as its requested size
  *
  *     Copyright Owen Taylor                          4/9/97
@@ -30,19 +30,19 @@
 /**
  * SECTION:ctkaspectframe
  * @Short_description: A frame that constrains its child to a particular aspect ratio
- * @Title: GtkAspectFrame
+ * @Title: CtkAspectFrame
  *
- * The #GtkAspectFrame is useful when you want
+ * The #CtkAspectFrame is useful when you want
  * pack a widget so that it can resize but always retains
  * the same aspect ratio. For instance, one might be
- * drawing a small preview of a larger image. #GtkAspectFrame
- * derives from #GtkFrame, so it can draw a label and
+ * drawing a small preview of a larger image. #CtkAspectFrame
+ * derives from #CtkFrame, so it can draw a label and
  * a frame around the child. The frame will be
  * “shrink-wrapped” to the size of the child.
  *
  * # CSS nodes
  *
- * GtkAspectFrame uses a CSS node with name frame.
+ * CtkAspectFrame uses a CSS node with name frame.
  */
 
 #include "config.h"
@@ -56,9 +56,9 @@
 
 
 
-struct _GtkAspectFramePrivate
+struct _CtkAspectFramePrivate
 {
-  GtkAllocation center_allocation;
+  CtkAllocation center_allocation;
 
   gboolean      obey_child;
   gfloat        xalign;
@@ -83,22 +83,22 @@ static void ctk_aspect_frame_get_property (GObject         *object,
 					   guint            prop_id,
 					   GValue          *value,
 					   GParamSpec      *pspec);
-static void ctk_aspect_frame_compute_child_allocation (GtkFrame            *frame,
-						       GtkAllocation       *child_allocation);
+static void ctk_aspect_frame_compute_child_allocation (CtkFrame            *frame,
+						       CtkAllocation       *child_allocation);
 
 #define MAX_RATIO 10000.0
 #define MIN_RATIO 0.0001
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkAspectFrame, ctk_aspect_frame, CTK_TYPE_FRAME)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkAspectFrame, ctk_aspect_frame, CTK_TYPE_FRAME)
 
 static void
-ctk_aspect_frame_class_init (GtkAspectFrameClass *class)
+ctk_aspect_frame_class_init (CtkAspectFrameClass *class)
 {
   GObjectClass *gobject_class;
-  GtkFrameClass *frame_class;
+  CtkFrameClass *frame_class;
   
   gobject_class = (GObjectClass*) class;
-  frame_class = (GtkFrameClass*) class;
+  frame_class = (CtkFrameClass*) class;
   
   gobject_class->set_property = ctk_aspect_frame_set_property;
   gobject_class->get_property = ctk_aspect_frame_get_property;
@@ -138,7 +138,7 @@ ctk_aspect_frame_class_init (GtkAspectFrameClass *class)
 }
 
 static void
-ctk_aspect_frame_init (GtkAspectFrame *aspect_frame)
+ctk_aspect_frame_init (CtkAspectFrame *aspect_frame)
 {
   aspect_frame->priv = ctk_aspect_frame_get_instance_private (aspect_frame);
 
@@ -154,8 +154,8 @@ ctk_aspect_frame_set_property (GObject         *object,
 			       const GValue    *value,
 			       GParamSpec      *pspec)
 {
-  GtkAspectFrame *aspect_frame = CTK_ASPECT_FRAME (object);
-  GtkAspectFramePrivate *priv = aspect_frame->priv;
+  CtkAspectFrame *aspect_frame = CTK_ASPECT_FRAME (object);
+  CtkAspectFramePrivate *priv = aspect_frame->priv;
   
   switch (prop_id)
     {
@@ -200,8 +200,8 @@ ctk_aspect_frame_get_property (GObject         *object,
 			       GValue          *value,
 			       GParamSpec      *pspec)
 {
-  GtkAspectFrame *aspect_frame = CTK_ASPECT_FRAME (object);
-  GtkAspectFramePrivate *priv = aspect_frame->priv;
+  CtkAspectFrame *aspect_frame = CTK_ASPECT_FRAME (object);
+  CtkAspectFramePrivate *priv = aspect_frame->priv;
   
   switch (prop_id)
     {
@@ -227,28 +227,28 @@ ctk_aspect_frame_get_property (GObject         *object,
  * ctk_aspect_frame_new:
  * @label: (allow-none): Label text.
  * @xalign: Horizontal alignment of the child within the allocation of
- *  the #GtkAspectFrame. This ranges from 0.0 (left aligned)
+ *  the #CtkAspectFrame. This ranges from 0.0 (left aligned)
  *  to 1.0 (right aligned)
  * @yalign: Vertical alignment of the child within the allocation of
- *  the #GtkAspectFrame. This ranges from 0.0 (top aligned)
+ *  the #CtkAspectFrame. This ranges from 0.0 (top aligned)
  *  to 1.0 (bottom aligned)
  * @ratio: The desired aspect ratio.
  * @obey_child: If %TRUE, @ratio is ignored, and the aspect
  *  ratio is taken from the requistion of the child.
  *
- * Create a new #GtkAspectFrame.
+ * Create a new #CtkAspectFrame.
  *
- * Returns: the new #GtkAspectFrame.
+ * Returns: the new #CtkAspectFrame.
  */
-GtkWidget*
+CtkWidget*
 ctk_aspect_frame_new (const gchar *label,
 		      gfloat       xalign,
 		      gfloat       yalign,
 		      gfloat       ratio,
 		      gboolean     obey_child)
 {
-  GtkAspectFrame *aspect_frame;
-  GtkAspectFramePrivate *priv;
+  CtkAspectFrame *aspect_frame;
+  CtkAspectFramePrivate *priv;
 
   aspect_frame = g_object_new (CTK_TYPE_ASPECT_FRAME, NULL);
 
@@ -266,27 +266,27 @@ ctk_aspect_frame_new (const gchar *label,
 
 /**
  * ctk_aspect_frame_set:
- * @aspect_frame: a #GtkAspectFrame
+ * @aspect_frame: a #CtkAspectFrame
  * @xalign: Horizontal alignment of the child within the allocation of
- *  the #GtkAspectFrame. This ranges from 0.0 (left aligned)
+ *  the #CtkAspectFrame. This ranges from 0.0 (left aligned)
  *  to 1.0 (right aligned)
  * @yalign: Vertical alignment of the child within the allocation of
- *  the #GtkAspectFrame. This ranges from 0.0 (top aligned)
+ *  the #CtkAspectFrame. This ranges from 0.0 (top aligned)
  *  to 1.0 (bottom aligned)
  * @ratio: The desired aspect ratio.
  * @obey_child: If %TRUE, @ratio is ignored, and the aspect
  *  ratio is taken from the requistion of the child.
  *
- * Set parameters for an existing #GtkAspectFrame.
+ * Set parameters for an existing #CtkAspectFrame.
  */
 void
-ctk_aspect_frame_set (GtkAspectFrame *aspect_frame,
+ctk_aspect_frame_set (CtkAspectFrame *aspect_frame,
 		      gfloat          xalign,
 		      gfloat          yalign,
 		      gfloat          ratio,
 		      gboolean        obey_child)
 {
-  GtkAspectFramePrivate *priv;
+  CtkAspectFramePrivate *priv;
 
   g_return_if_fail (CTK_IS_ASPECT_FRAME (aspect_frame));
 
@@ -331,23 +331,23 @@ ctk_aspect_frame_set (GtkAspectFrame *aspect_frame,
 }
 
 static void
-ctk_aspect_frame_compute_child_allocation (GtkFrame      *frame,
-					   GtkAllocation *child_allocation)
+ctk_aspect_frame_compute_child_allocation (CtkFrame      *frame,
+					   CtkAllocation *child_allocation)
 {
-  GtkAspectFrame *aspect_frame = CTK_ASPECT_FRAME (frame);
-  GtkAspectFramePrivate *priv = aspect_frame->priv;
-  GtkBin *bin = CTK_BIN (frame);
-  GtkWidget *child;
+  CtkAspectFrame *aspect_frame = CTK_ASPECT_FRAME (frame);
+  CtkAspectFramePrivate *priv = aspect_frame->priv;
+  CtkBin *bin = CTK_BIN (frame);
+  CtkWidget *child;
   gdouble ratio;
 
   child = ctk_bin_get_child (bin);
   if (child && ctk_widget_get_visible (child))
     {
-      GtkAllocation full_allocation;
+      CtkAllocation full_allocation;
       
       if (priv->obey_child)
 	{
-	  GtkRequisition child_requisition;
+	  CtkRequisition child_requisition;
 
           ctk_widget_get_preferred_size (child, &child_requisition, NULL);
 	  if (child_requisition.height != 0)

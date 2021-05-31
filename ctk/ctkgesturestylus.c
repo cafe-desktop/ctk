@@ -20,10 +20,10 @@
 /**
  * SECTION:ctkgesturestylus
  * @Short_description: Gesture for stylus input
- * @Title: GtkGestureStylus
- * @See_also: #GtkGesture, #GtkGestureSingle
+ * @Title: CtkGestureStylus
+ * @See_also: #CtkGesture, #CtkGestureSingle
  *
- * #GtkGestureStylus is a #GtkGesture implementation specific to stylus
+ * #CtkGestureStylus is a #CtkGesture implementation specific to stylus
  * input. The provided signals just provide the basic information
  */
 
@@ -35,7 +35,7 @@
 #include "ctkmarshalers.h"
 #include "ctkmain.h"
 
-G_DEFINE_TYPE (GtkGestureStylus, ctk_gesture_stylus, CTK_TYPE_GESTURE_SINGLE)
+G_DEFINE_TYPE (CtkGestureStylus, ctk_gesture_stylus, CTK_TYPE_GESTURE_SINGLE)
 
 enum {
   PROXIMITY,
@@ -48,7 +48,7 @@ enum {
 static guint signals[N_SIGNALS] = { 0, };
 
 static gboolean
-ctk_gesture_stylus_handle_event (GtkEventController *controller,
+ctk_gesture_stylus_handle_event (CtkEventController *controller,
                                  const GdkEvent     *event)
 {
   GdkModifierType modifiers;
@@ -88,9 +88,9 @@ ctk_gesture_stylus_handle_event (GtkEventController *controller,
 }
 
 static void
-ctk_gesture_stylus_class_init (GtkGestureStylusClass *klass)
+ctk_gesture_stylus_class_init (CtkGestureStylusClass *klass)
 {
-  GtkEventControllerClass *event_controller_class;
+  CtkEventControllerClass *event_controller_class;
 
   event_controller_class = CTK_EVENT_CONTROLLER_CLASS (klass);
   event_controller_class->handle_event = ctk_gesture_stylus_handle_event;
@@ -99,7 +99,7 @@ ctk_gesture_stylus_class_init (GtkGestureStylusClass *klass)
     g_signal_new (I_("proximity"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkGestureStylusClass, proximity),
+                  G_STRUCT_OFFSET (CtkGestureStylusClass, proximity),
                   NULL, NULL,
                   _ctk_marshal_VOID__DOUBLE_DOUBLE,
                   G_TYPE_NONE, 2, G_TYPE_DOUBLE, G_TYPE_DOUBLE);
@@ -111,7 +111,7 @@ ctk_gesture_stylus_class_init (GtkGestureStylusClass *klass)
     g_signal_new (I_("down"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkGestureStylusClass, down),
+                  G_STRUCT_OFFSET (CtkGestureStylusClass, down),
                   NULL, NULL,
                   _ctk_marshal_VOID__DOUBLE_DOUBLE,
                   G_TYPE_NONE, 2, G_TYPE_DOUBLE, G_TYPE_DOUBLE);
@@ -123,7 +123,7 @@ ctk_gesture_stylus_class_init (GtkGestureStylusClass *klass)
     g_signal_new (I_("motion"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkGestureStylusClass, motion),
+                  G_STRUCT_OFFSET (CtkGestureStylusClass, motion),
                   NULL, NULL,
                   _ctk_marshal_VOID__DOUBLE_DOUBLE,
                   G_TYPE_NONE, 2, G_TYPE_DOUBLE, G_TYPE_DOUBLE);
@@ -135,7 +135,7 @@ ctk_gesture_stylus_class_init (GtkGestureStylusClass *klass)
     g_signal_new (I_("up"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkGestureStylusClass, up),
+                  G_STRUCT_OFFSET (CtkGestureStylusClass, up),
                   NULL, NULL,
                   _ctk_marshal_VOID__DOUBLE_DOUBLE,
                   G_TYPE_NONE, 2, G_TYPE_DOUBLE, G_TYPE_DOUBLE);
@@ -145,22 +145,22 @@ ctk_gesture_stylus_class_init (GtkGestureStylusClass *klass)
 }
 
 static void
-ctk_gesture_stylus_init (GtkGestureStylus *gesture)
+ctk_gesture_stylus_init (CtkGestureStylus *gesture)
 {
 }
 
 /**
  * ctk_gesture_stylus_new:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
- * Creates a new #GtkGestureStylus.
+ * Creates a new #CtkGestureStylus.
  *
  * Returns: a newly created stylus gesture
  *
  * Since: 3.24
  **/
-GtkGesture *
-ctk_gesture_stylus_new (GtkWidget *widget)
+CtkGesture *
+ctk_gesture_stylus_new (CtkWidget *widget)
 {
   return g_object_new (CTK_TYPE_GESTURE_STYLUS,
                        "widget", widget,
@@ -168,7 +168,7 @@ ctk_gesture_stylus_new (GtkWidget *widget)
 }
 
 static const GdkEvent *
-gesture_get_current_event (GtkGestureStylus *gesture)
+gesture_get_current_event (CtkGestureStylus *gesture)
 {
   GdkEventSequence *sequence;
 
@@ -179,13 +179,13 @@ gesture_get_current_event (GtkGestureStylus *gesture)
 
 /**
  * ctk_gesture_stylus_get_axis:
- * @gesture: a #GtkGestureStylus
+ * @gesture: a #CtkGestureStylus
  * @axis: requested device axis
  * @value: (out): return location for the axis value
  *
  * Returns the current value for the requested @axis. This function
- * must be called from either the #GtkGestureStylus:down,
- * #GtkGestureStylus:motion, #GtkGestureStylus:up or #GtkGestureStylus:proximity
+ * must be called from either the #CtkGestureStylus:down,
+ * #CtkGestureStylus:motion, #CtkGestureStylus:up or #CtkGestureStylus:proximity
  * signals.
  *
  * Returns: #TRUE if there is a current value for the axis
@@ -193,7 +193,7 @@ gesture_get_current_event (GtkGestureStylus *gesture)
  * Since: 3.24
  **/
 gboolean
-ctk_gesture_stylus_get_axis (GtkGestureStylus *gesture,
+ctk_gesture_stylus_get_axis (CtkGestureStylus *gesture,
 			     GdkAxisUse        axis,
 			     gdouble          *value)
 {
@@ -212,13 +212,13 @@ ctk_gesture_stylus_get_axis (GtkGestureStylus *gesture,
 
 /**
  * ctk_gesture_stylus_get_axes:
- * @gesture: a GtkGestureStylus
+ * @gesture: a CtkGestureStylus
  * @axes: (array): array of requested axes, terminated with #GDK_AXIS_IGNORE
  * @values: (out) (array): return location for the axis values
  *
  * Returns the current values for the requested @axes. This function
- * must be called from either the #GtkGestureStylus:down,
- * #GtkGestureStylus:motion, #GtkGestureStylus:up or #GtkGestureStylus:proximity
+ * must be called from either the #CtkGestureStylus:down,
+ * #CtkGestureStylus:motion, #CtkGestureStylus:up or #CtkGestureStylus:proximity
  * signals.
  *
  * Returns: #TRUE if there is a current value for the axes
@@ -226,7 +226,7 @@ ctk_gesture_stylus_get_axis (GtkGestureStylus *gesture,
  * Since: 3.24
  **/
 gboolean
-ctk_gesture_stylus_get_axes (GtkGestureStylus  *gesture,
+ctk_gesture_stylus_get_axes (CtkGestureStylus  *gesture,
 			     GdkAxisUse         axes[],
 			     gdouble          **values)
 {
@@ -267,11 +267,11 @@ ctk_gesture_stylus_get_axes (GtkGestureStylus  *gesture,
 
 /**
  * ctk_gesture_stylus_get_device_tool:
- * @gesture: a #GtkGestureStylus
+ * @gesture: a #CtkGestureStylus
  *
  * Returns the #GdkDeviceTool currently driving input through this gesture.
- * This function must be called from either the #GtkGestureStylus::down,
- * #GtkGestureStylus::motion, #GtkGestureStylus::up or #GtkGestureStylus::proximity
+ * This function must be called from either the #CtkGestureStylus::down,
+ * #CtkGestureStylus::motion, #CtkGestureStylus::up or #CtkGestureStylus::proximity
  * signal handlers.
  *
  * Returns: (nullable) (transfer none): The current stylus tool
@@ -279,7 +279,7 @@ ctk_gesture_stylus_get_axes (GtkGestureStylus  *gesture,
  * Since: 3.24
  **/
 GdkDeviceTool *
-ctk_gesture_stylus_get_device_tool (GtkGestureStylus *gesture)
+ctk_gesture_stylus_get_device_tool (CtkGestureStylus *gesture)
 {
   const GdkEvent *event;
 

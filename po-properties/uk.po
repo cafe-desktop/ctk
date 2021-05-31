@@ -368,10 +368,10 @@ msgstr "Група дій"
 
 #: ctk/deprecated/ctkaction.c:498
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
-"GtkActionGroup, з якою пов'язаний цей об'єкт GtkAction, або NULL (для "
+"CtkActionGroup, з якою пов'язаний цей об'єкт CtkAction, або NULL (для "
 "внутрішнього використання)."
 
 #: ctk/deprecated/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
@@ -928,8 +928,8 @@ msgid "Style context"
 msgstr "Стиль контексту"
 
 #: ctk/deprecated/ctkstyle.c:472
-msgid "GtkStyleContext to get style from"
-msgstr "GtkStyleContext для отримання стилю з"
+msgid "CtkStyleContext to get style from"
+msgstr "CtkStyleContext для отримання стилю з"
 
 #: ctk/deprecated/ctktable.c:185
 msgid "Rows"
@@ -1311,10 +1311,10 @@ msgstr "Тип упаковки"
 
 #: ctk/ctkactionbar.c:339 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
 msgstr ""
-"Об'єкт GtkPackType, що визначає відносно чого упаковується вкладений об'єкт "
+"Об'єкт CtkPackType, що визначає відносно чого упаковується вкладений об'єкт "
 "-- відносно початку, кінця, чи батьківського об'єкта"
 
 #: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
@@ -1384,8 +1384,8 @@ msgstr "Включити пункт «Інші…»"
 #: ctk/ctkappchooserbutton.c:619
 msgid ""
 "Whether the combobox should include an item that triggers a "
-"GtkAppChooserDialog"
-msgstr "Чи спадному списку слід враховувати пункт GtkAppChooserDialog"
+"CtkAppChooserDialog"
+msgstr "Чи спадному списку слід враховувати пункт CtkAppChooserDialog"
 
 #: ctk/ctkappchooserbutton.c:634
 msgid "Show default item"
@@ -2007,10 +2007,10 @@ msgstr "Тип упаковки"
 
 #: ctk/ctkcellareabox.c:381
 msgid ""
-"A GtkPackType indicating whether the cell is packed with reference to the "
+"A CtkPackType indicating whether the cell is packed with reference to the "
 "start or end of the cell area"
 msgstr ""
-"GtkPackType вказує, чи комірки упаковані з посиланням на початок або кінець "
+"CtkPackType вказує, чи комірки упаковані з посиланням на початок або кінець "
 "ділянки комірки"
 
 #: ctk/ctkcellarea.c:790
@@ -2287,8 +2287,8 @@ msgid "The stock ID of the stock icon to render"
 msgstr "Ідентифікатор вбудованої піктограми, для відтворення"
 
 #: ctk/ctkcellrendererpixbuf.c:211
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
-msgstr "Значення GtkIconSize, яке визначає розмір візуалізації значка "
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
+msgstr "Значення CtkIconSize, яке визначає розмір візуалізації значка "
 
 #: ctk/ctkcellrendererpixbuf.c:227
 msgid "Detail"
@@ -2400,8 +2400,8 @@ msgid "Pulse of the spinner"
 msgstr "Пульсація вертушки"
 
 #: ctk/ctkcellrendererspinner.c:160
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
-msgstr "Значення GtkIconSize, що визначає розмір візуалізації вертушки"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
+msgstr "Значення CtkIconSize, що визначає розмір візуалізації вертушки"
 
 #: ctk/ctkcellrenderertext.c:256
 msgid "Text to render"
@@ -2840,17 +2840,17 @@ msgstr "Ділянка комірки"
 
 #: ctk/ctkcellview.c:283 ctk/ctkcombobox.c:1183 ctk/ctkentrycompletion.c:468
 #: ctk/ctkiconview.c:650 ctk/ctktreemenu.c:308 ctk/ctktreeviewcolumn.c:400
-msgid "The GtkCellArea used to layout cells"
-msgstr "GtkCellArea для компонування комірок"
+msgid "The CtkCellArea used to layout cells"
+msgstr "CtkCellArea для компонування комірок"
 
 #: ctk/ctkcellview.c:306
 msgid "Cell Area Context"
 msgstr "Контекст ділянки комірки"
 
 #: ctk/ctkcellview.c:307
-msgid "The GtkCellAreaContext used to compute the geometry of the cell view"
+msgid "The CtkCellAreaContext used to compute the geometry of the cell view"
 msgstr ""
-"GtkCellAreaContext використовуватися для обрахунку геометричного вигляду "
+"CtkCellAreaContext використовуватися для обрахунку геометричного вигляду "
 "комірки"
 
 #: ctk/ctkcellview.c:324
@@ -3071,10 +3071,10 @@ msgstr "Текстовий стовпчик"
 #: ctk/ctkcombobox.c:1112
 msgid ""
 "The column in the combo box's model to associate with strings from the entry "
-"if the combo was created with #GtkComboBox:has-entry = %TRUE"
+"if the combo was created with #CtkComboBox:has-entry = %TRUE"
 msgstr ""
 "Стовпчик у моделі спадного списку для асоціації з рядками із запису, коли "
-"список створено з  #GtkComboBox:has-entry = %TRUE"
+"список створено з  #CtkComboBox:has-entry = %TRUE"
 
 #: ctk/ctkcombobox.c:1129
 msgid "ID Column"
@@ -4242,8 +4242,8 @@ msgid "Auto render"
 msgstr "Автоматична обробка"
 
 #: ctk/ctkglarea.c:808
-msgid "Whether the GtkGLArea renders on each redraw"
-msgstr "Чи обробляється GtkGLArea при кожній події перемальовування"
+msgid "Whether the CtkGLArea renders on each redraw"
+msgstr "Чи обробляється CtkGLArea при кожній події перемальовування"
 
 #: ctk/ctkglarea.c:828
 msgid "Has alpha"
@@ -4606,11 +4606,11 @@ msgstr "Вирівнювання"
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkLabel:xalign for that"
+"CtkLabel:xalign for that"
 msgstr ""
 "Вирівнювання рядків тексту мітки відносно один одного. НЕ впливає на "
 "вирівнювання мітки всередині вказаного для неї місця. З цього питання див. "
-"GtkLabel::xalign"
+"CtkLabel::xalign"
 
 #: ctk/ctklabel.c:877
 msgid "Pattern"
@@ -5221,9 +5221,9 @@ msgid "Message area"
 msgstr "Ділянка повідомлення"
 
 #: ctk/ctkmessagedialog.c:295
-msgid "GtkBox that holds the dialog's primary and secondary labels"
+msgid "CtkBox that holds the dialog's primary and secondary labels"
 msgstr ""
-"Контейнер GtkBox, який містить основну та додаткову мітку діалогового вікна"
+"Контейнер CtkBox, який містить основну та додаткову мітку діалогового вікна"
 
 #: ctk/ctkmodelbutton.c:1150
 msgid "Role"
@@ -5980,16 +5980,16 @@ msgid "Default Page Setup"
 msgstr "Типові параметри сторінки"
 
 #: ctk/ctkprintoperation.c:1110
-msgid "The GtkPageSetup used by default"
-msgstr "Типово використовується GtkPageSetup"
+msgid "The CtkPageSetup used by default"
+msgstr "Типово використовується CtkPageSetup"
 
 #: ctk/ctkprintoperation.c:1128 ctk/ctkprintunixdialog.c:431
 msgid "Print Settings"
 msgstr "Параметри сторінки"
 
 #: ctk/ctkprintoperation.c:1129 ctk/ctkprintunixdialog.c:432
-msgid "The GtkPrintSettings used for initializing the dialog"
-msgstr "Для ініціалізації діалогу використовується GtkPrintSettings"
+msgid "The CtkPrintSettings used for initializing the dialog"
+msgstr "Для ініціалізації діалогу використовується CtkPrintSettings"
 
 #: ctk/ctkprintoperation.c:1147
 msgid "Job Name"
@@ -6108,8 +6108,8 @@ msgid "Embed Page Setup"
 msgstr "Вбудувати параметри сторінки"
 
 #: ctk/ctkprintoperation.c:1425 ctk/ctkprintunixdialog.c:473
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
-msgstr "TRUE, якщо розкривні списки вбудовані у GtkPrintUnixDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
+msgstr "TRUE, якщо розкривні списки вбудовані у CtkPrintUnixDialog"
 
 #: ctk/ctkprintoperation.c:1446
 msgid "Number of Pages To Print"
@@ -6120,16 +6120,16 @@ msgid "The number of pages that will be printed."
 msgstr "Кількість сторінок, яку буде надруковано."
 
 #: ctk/ctkprintunixdialog.c:414
-msgid "The GtkPageSetup to use"
-msgstr "GtkPageSetup, що використовується"
+msgid "The CtkPageSetup to use"
+msgstr "CtkPageSetup, що використовується"
 
 #: ctk/ctkprintunixdialog.c:439
 msgid "Selected Printer"
 msgstr "Вибраний принтер"
 
 #: ctk/ctkprintunixdialog.c:440
-msgid "The GtkPrinter which is selected"
-msgstr "GtkPrinter, що виділений"
+msgid "The CtkPrinter which is selected"
+msgstr "CtkPrinter, що виділений"
 
 #: ctk/ctkprintunixdialog.c:447
 msgid "Manual Capabilities"
@@ -6246,9 +6246,9 @@ msgid "The radio tool button whose group this button belongs to."
 msgstr "Радіо-кнопка, чиїй групі належить цей віджет."
 
 #: ctk/ctkrange.c:435
-msgid "The GtkAdjustment that contains the current value of this range object"
+msgid "The CtkAdjustment that contains the current value of this range object"
 msgstr ""
-"Об'єкт GtkAdjustment, що містить поточне значення цього діапазонного об'єкта"
+"Об'єкт CtkAdjustment, що містить поточне значення цього діапазонного об'єкта"
 
 #: ctk/ctkrange.c:442
 msgid "Invert direction slider moves to increase range value"
@@ -6501,9 +6501,9 @@ msgstr "Розмір значка"
 
 #: ctk/ctkscalebutton.c:218
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
+"The CtkAdjustment that contains the current value of this scale button object"
 msgstr ""
-"Об'єкт GtkAdjustment, що містить поточне значення масштабу цієї кнопки "
+"Об'єкт CtkAdjustment, що містить поточне значення масштабу цієї кнопки "
 "масштабу"
 
 #: ctk/ctkscalebutton.c:246
@@ -6629,16 +6629,16 @@ msgid "Horizontal Adjustment"
 msgstr "Горизонтальне вирівнювання"
 
 #: ctk/ctkscrolledwindow.c:570
-msgid "The GtkAdjustment for the horizontal position"
-msgstr "Об'єкт GtkAdjustment для горизонтальної позиції"
+msgid "The CtkAdjustment for the horizontal position"
+msgstr "Об'єкт CtkAdjustment для горизонтальної позиції"
 
 #: ctk/ctkscrolledwindow.c:576
 msgid "Vertical Adjustment"
 msgstr "Вертикальне вирівнювання"
 
 #: ctk/ctkscrolledwindow.c:577
-msgid "The GtkAdjustment for the vertical position"
-msgstr "Об'єкт GtkAdjustment для вертикальної позиції"
+msgid "The CtkAdjustment for the vertical position"
+msgstr "Об'єкт CtkAdjustment для вертикальної позиції"
 
 #: ctk/ctkscrolledwindow.c:583
 msgid "Horizontal Scrollbar Policy"
@@ -7144,16 +7144,16 @@ msgid "Default file chooser backend"
 msgstr "Типовий механізм вибору файлів"
 
 #: ctk/ctksettings.c:990
-msgid "Name of the GtkFileChooser backend to use by default"
-msgstr "Назва GtkFileChooser механізму для типового використання"
+msgid "Name of the CtkFileChooser backend to use by default"
+msgstr "Назва CtkFileChooser механізму для типового використання"
 
 #: ctk/ctksettings.c:1007
 msgid "Default print backend"
 msgstr "Типовий механізм друку"
 
 #: ctk/ctksettings.c:1008
-msgid "List of the GtkPrintBackend backends to use by default"
-msgstr "Список механізмів  GtkPrintBackend, які типово використовуються"
+msgid "List of the CtkPrintBackend backends to use by default"
+msgstr "Список механізмів  CtkPrintBackend, які типово використовуються"
 
 #: ctk/ctksettings.c:1031
 msgid "Default command to run when displaying a print preview"
@@ -7782,8 +7782,8 @@ msgid "Stack"
 msgstr "Стос"
 
 #: ctk/ctkstacksidebar.c:450
-msgid "Associated stack for this GtkStackSidebar"
-msgstr "Пов'язаний стос для цього GtkStackSidebar"
+msgid "Associated stack for this CtkStackSidebar"
+msgstr "Пов'язаний стос для цього CtkStackSidebar"
 
 #: ctk/ctkstackswitcher.c:687
 msgid "Symbolic size to use for named icon"
@@ -7826,8 +7826,8 @@ msgid "Value type"
 msgstr "Тип значення"
 
 #: ctk/ctkstyleproperty.c:117
-msgid "The value type returned by GtkStyleContext"
-msgstr "GtkStyleContext повернуло тип значення"
+msgid "The value type returned by CtkStyleContext"
+msgstr "CtkStyleContext повернуло тип значення"
 
 #: ctk/ctkswitch.c:879
 msgid "Whether the switch is on or off"
@@ -8709,8 +8709,8 @@ msgid "Fixed Height Mode"
 msgstr "Режим фіксованої висоти"
 
 #: ctk/ctktreeview.c:1108
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
-msgstr "Прискорює GtkTreeView, вважаючи що всі рядки мають ту ж саму висоту"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
+msgstr "Прискорює CtkTreeView, вважаючи що всі рядки мають ту ж саму висоту"
 
 #: ctk/ctktreeview.c:1127
 msgid "Hover Selection"
@@ -9518,8 +9518,8 @@ msgid "Focus in Toplevel"
 msgstr "Фокус у вікні найвищого рівня"
 
 #: ctk/ctkwindow.c:912
-msgid "Whether the input focus is within this GtkWindow"
-msgstr "Чи фокус вводу в цьому об'єкті GtkWindow"
+msgid "Whether the input focus is within this CtkWindow"
+msgstr "Чи фокус вводу в цьому об'єкті CtkWindow"
 
 #: ctk/ctkwindow.c:918
 msgid "Type hint"
@@ -9631,12 +9631,12 @@ msgid "Whether the window is maximized"
 msgstr "Чи вікно розгорнуте"
 
 #: ctk/ctkwindow.c:1113
-msgid "GtkApplication"
-msgstr "GtkApplication"
+msgid "CtkApplication"
+msgstr "CtkApplication"
 
 #: ctk/ctkwindow.c:1114
-msgid "The GtkApplication for the window"
-msgstr "GtkApplication для вікна"
+msgid "The CtkApplication for the window"
+msgstr "CtkApplication для вікна"
 
 #: ctk/ctkwindow.c:1124 ctk/ctkwindow.c:1125
 msgid "Decorated button layout"
@@ -9651,8 +9651,8 @@ msgid "Cloud Print account"
 msgstr "Обліковий запис служби віртуального друку"
 
 #: modules/printbackends/cloudprint/ctkprintercloudprint.c:138
-msgid "GtkCloudprintAccount instance"
-msgstr "Екземпляр GtkCloudprintAccount"
+msgid "CtkCloudprintAccount instance"
+msgstr "Екземпляр CtkCloudprintAccount"
 
 #: modules/printbackends/cloudprint/ctkprintercloudprint.c:147
 msgid "Printer ID"

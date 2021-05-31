@@ -177,7 +177,7 @@ decoration:disabled {
   margin-left: -6px;
 }
 
-/* XXX: We don't draw icons here, but the GtkImage still sizes itself to 16x16,
+/* XXX: We don't draw icons here, but the CtkImage still sizes itself to 16x16,
  * so shrink it enough: */
 .titlebar button.titlebutton image {
   margin: -3px;

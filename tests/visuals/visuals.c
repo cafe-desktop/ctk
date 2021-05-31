@@ -1,4 +1,4 @@
-/* visuals: UI runner for visual GtkBuilder files
+/* visuals: UI runner for visual CtkBuilder files
  *
  * Copyright (C) 2012 Red Hat, Inc.
  *
@@ -22,11 +22,11 @@
 #include <ctk/ctk.h>
 
 static void
-dark_button_toggled_cb (GtkToggleButton *button,
+dark_button_toggled_cb (CtkToggleButton *button,
                         gpointer user_data)
 {
   gboolean active = ctk_toggle_button_get_active (button);
-  GtkSettings *settings = ctk_settings_get_default ();
+  CtkSettings *settings = ctk_settings_get_default ();
 
   g_object_set (settings,
                 "ctk-application-prefer-dark-theme", active,
@@ -34,10 +34,10 @@ dark_button_toggled_cb (GtkToggleButton *button,
 }
 
 static void
-create_dark_popup (GtkWidget *parent)
+create_dark_popup (CtkWidget *parent)
 {
-  GtkWidget *popup = ctk_window_new (CTK_WINDOW_TOPLEVEL);
-  GtkWidget *button = ctk_toggle_button_new_with_label ("Dark");
+  CtkWidget *popup = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  CtkWidget *button = ctk_toggle_button_new_with_label ("Dark");
 
   ctk_window_set_decorated (CTK_WINDOW (popup), FALSE);
   ctk_widget_set_size_request (popup, 100, 100);
@@ -58,8 +58,8 @@ create_dark_popup (GtkWidget *parent)
 int
 main (int argc, char *argv[])
 {
-  GtkBuilder *builder;
-  GtkWidget  *window;
+  CtkBuilder *builder;
+  CtkWidget  *window;
   const gchar *filename;
 
   ctk_init (&argc, &argv);

@@ -26,34 +26,34 @@ G_BEGIN_DECLS
 
 #define CTK_TYPE_ACTION_OBSERVABLE                          (ctk_action_observable_get_type ())
 #define CTK_ACTION_OBSERVABLE(inst)                         (G_TYPE_CHECK_INSTANCE_CAST ((inst),                     \
-                                                             CTK_TYPE_ACTION_OBSERVABLE, GtkActionObservable))
+                                                             CTK_TYPE_ACTION_OBSERVABLE, CtkActionObservable))
 #define CTK_IS_ACTION_OBSERVABLE(inst)                      (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                     \
                                                              CTK_TYPE_ACTION_OBSERVABLE))
 #define CTK_ACTION_OBSERVABLE_GET_IFACE(inst)               (G_TYPE_INSTANCE_GET_INTERFACE ((inst),                  \
                                                              CTK_TYPE_ACTION_OBSERVABLE,                             \
-                                                             GtkActionObservableInterface))
+                                                             CtkActionObservableInterface))
 
-typedef struct _GtkActionObservableInterface                GtkActionObservableInterface;
+typedef struct _CtkActionObservableInterface                CtkActionObservableInterface;
 
-struct _GtkActionObservableInterface
+struct _CtkActionObservableInterface
 {
   GTypeInterface g_iface;
 
-  void (* register_observer)   (GtkActionObservable *observable,
+  void (* register_observer)   (CtkActionObservable *observable,
                                 const gchar         *action_name,
-                                GtkActionObserver   *observer);
-  void (* unregister_observer) (GtkActionObservable *observable,
+                                CtkActionObserver   *observer);
+  void (* unregister_observer) (CtkActionObservable *observable,
                                 const gchar         *action_name,
-                                GtkActionObserver   *observer);
+                                CtkActionObserver   *observer);
 };
 
 GType                   ctk_action_observable_get_type                  (void);
-void                    ctk_action_observable_register_observer         (GtkActionObservable *observable,
+void                    ctk_action_observable_register_observer         (CtkActionObservable *observable,
                                                                          const gchar         *action_name,
-                                                                         GtkActionObserver   *observer);
-void                    ctk_action_observable_unregister_observer       (GtkActionObservable *observable,
+                                                                         CtkActionObserver   *observer);
+void                    ctk_action_observable_unregister_observer       (CtkActionObservable *observable,
                                                                          const gchar         *action_name,
-                                                                         GtkActionObserver   *observer);
+                                                                         CtkActionObserver   *observer);
 
 G_END_DECLS
 

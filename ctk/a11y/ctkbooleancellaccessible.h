@@ -28,26 +28,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_BOOLEAN_CELL_ACCESSIBLE            (ctk_boolean_cell_accessible_get_type ())
-#define CTK_BOOLEAN_CELL_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_BOOLEAN_CELL_ACCESSIBLE, GtkBooleanCellAccessible))
-#define CTK_BOOLEAN_CELL_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GAIL_BOOLEAN_CELL, GtkBooleanCellAccessibleClass))
+#define CTK_BOOLEAN_CELL_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_BOOLEAN_CELL_ACCESSIBLE, CtkBooleanCellAccessible))
+#define CTK_BOOLEAN_CELL_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GAIL_BOOLEAN_CELL, CtkBooleanCellAccessibleClass))
 #define CTK_IS_BOOLEAN_CELL_ACCESSIBLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_BOOLEAN_CELL_ACCESSIBLE))
 #define CTK_IS_BOOLEAN_CELL_ACCESSIBLE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_BOOLEAN_CELL_ACCESSIBLE))
-#define CTK_BOOLEAN_CELL_ACCESSIBLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_BOOLEAN_CELL_ACCESSIBLE, GtkBooleanCellAccessibleClass))
+#define CTK_BOOLEAN_CELL_ACCESSIBLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_BOOLEAN_CELL_ACCESSIBLE, CtkBooleanCellAccessibleClass))
 
-typedef struct _GtkBooleanCellAccessible        GtkBooleanCellAccessible;
-typedef struct _GtkBooleanCellAccessibleClass   GtkBooleanCellAccessibleClass;
-typedef struct _GtkBooleanCellAccessiblePrivate GtkBooleanCellAccessiblePrivate;
+typedef struct _CtkBooleanCellAccessible        CtkBooleanCellAccessible;
+typedef struct _CtkBooleanCellAccessibleClass   CtkBooleanCellAccessibleClass;
+typedef struct _CtkBooleanCellAccessiblePrivate CtkBooleanCellAccessiblePrivate;
 
-struct _GtkBooleanCellAccessible
+struct _CtkBooleanCellAccessible
 {
-  GtkRendererCellAccessible parent;
+  CtkRendererCellAccessible parent;
 
-  GtkBooleanCellAccessiblePrivate *priv;
+  CtkBooleanCellAccessiblePrivate *priv;
 };
 
-struct _GtkBooleanCellAccessibleClass
+struct _CtkBooleanCellAccessibleClass
 {
-  GtkRendererCellAccessibleClass parent_class;
+  CtkRendererCellAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

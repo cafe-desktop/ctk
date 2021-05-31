@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="ctk30">
   <!-- interface-requires ctk+ 3.10 -->
-  <template class="GtkSearchBar" parent="GtkBin">
+  <template class="CtkSearchBar" parent="CtkBin">
     <child>
-      <object class="GtkRevealer" id="revealer">
+      <object class="CtkRevealer" id="revealer">
         <property name="visible">1</property>
         <property name="hexpand">1</property>
         <child>
-          <object class="GtkBox" id="tool_box">
+          <object class="CtkBox" id="tool_box">
             <property name="visible">1</property>
             <property name="border-width">6</property>
             <property name="spacing">6</property>
             <child>
-              <object class="GtkBox" id="box_left">
+              <object class="CtkBox" id="box_left">
                 <property name="visible">1</property>
                 <property name="halign">start</property>
                 <property name="hexpand">1</property>
@@ -23,7 +23,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkBox" id="box_center">
+              <object class="CtkBox" id="box_center">
                 <property name="visible">1</property>
                 <property name="halign">center</property>
                 <property name="orientation">vertical</property>
@@ -33,13 +33,13 @@
               </packing>
             </child>
             <child>
-              <object class="GtkBox" id="box_right">
+              <object class="CtkBox" id="box_right">
                 <property name="visible">1</property>
                 <property name="halign">end</property>
                 <property name="hexpand">1</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkButton" id="close_button">
+                  <object class="CtkButton" id="close_button">
                     <property name="visible">1</property>
                     <property name="can-focus">1</property>
                     <property name="receives-default">1</property>
@@ -48,7 +48,7 @@
                       <class name="close"/>
                     </style>
                     <child>
-                      <object class="GtkImage" id="close_image">
+                      <object class="CtkImage" id="close_image">
                         <property name="visible">1</property>
                         <property name="icon-size">1</property>
                         <property name="icon-name">window-close-symbolic</property>
@@ -69,7 +69,7 @@
       </object>
     </child>
   </template>
-  <object class="GtkSizeGroup" id="sizegroup">
+  <object class="CtkSizeGroup" id="sizegroup">
     <property name="mode">both</property>
     <widgets>
       <widget name="box_left"/>

@@ -1,6 +1,6 @@
 <!-- test invalid scale mark attributes -->
 <interface>
-  <object class="GtkScale">
+  <object class="CtkScale">
     <marks>
       <mark translatable="foobar" value="0"/>
     </marks>

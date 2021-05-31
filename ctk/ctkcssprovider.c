@@ -50,10 +50,10 @@
 /**
  * SECTION:ctkcssprovider
  * @Short_description: CSS-like styling for widgets
- * @Title: GtkCssProvider
- * @See_also: #GtkStyleContext, #GtkStyleProvider
+ * @Title: CtkCssProvider
+ * @See_also: #CtkStyleContext, #CtkStyleProvider
  *
- * GtkCssProvider is an object implementing the #GtkStyleProvider interface.
+ * CtkCssProvider is an object implementing the #CtkStyleProvider interface.
  * It is able to parse [CSS-like][css-overview] input in order to style widgets.
  *
  * An application can make GTK+ parse a specific CSS style sheet by calling
@@ -68,28 +68,28 @@
  * `$HOME/.themes/THEME/ctk-VERSION/ctk.css`,
  * `$XDG_DATA_DIRS/themes/THEME/ctk-VERSION/ctk.css` and
  * `DATADIR/share/themes/THEME/ctk-VERSION/ctk.css`, where `THEME` is the name of
- * the current theme (see the #GtkSettings:ctk-theme-name setting), `DATADIR`
+ * the current theme (see the #CtkSettings:ctk-theme-name setting), `DATADIR`
  * is the prefix configured when GTK+ was compiled (unless overridden by the
  * `CTK_DATA_PREFIX` environment variable), and `VERSION` is the GTK+ version number.
  * If no file is found for the current version, GTK+ tries older versions all the
  * way back to 3.0.
  *
  * In the same way, GTK+ tries to load a ctk-keys.css file for the current
- * key theme, as defined by #GtkSettings:ctk-key-theme-name.
+ * key theme, as defined by #CtkSettings:ctk-key-theme-name.
  */
 
 
-typedef struct GtkCssRuleset GtkCssRuleset;
-typedef struct _GtkCssScanner GtkCssScanner;
+typedef struct CtkCssRuleset CtkCssRuleset;
+typedef struct _CtkCssScanner CtkCssScanner;
 typedef struct _PropertyValue PropertyValue;
 typedef struct _WidgetPropertyValue WidgetPropertyValue;
 typedef enum ParserScope ParserScope;
 typedef enum ParserSymbol ParserSymbol;
 
 struct _PropertyValue {
-  GtkCssStyleProperty *property;
-  GtkCssValue         *value;
-  GtkCssSection       *section;
+  CtkCssStyleProperty *property;
+  CtkCssValue         *value;
+  CtkCssSection       *section;
 };
 
 struct _WidgetPropertyValue {
@@ -97,31 +97,31 @@ struct _WidgetPropertyValue {
   char *name;
   char *value;
 
-  GtkCssSection *section;
+  CtkCssSection *section;
 };
 
-struct GtkCssRuleset
+struct CtkCssRuleset
 {
-  GtkCssSelector *selector;
-  GtkCssSelectorTree *selector_match;
+  CtkCssSelector *selector;
+  CtkCssSelectorTree *selector_match;
   WidgetPropertyValue *widget_style;
   PropertyValue *styles;
-  GtkBitmask *set_styles;
+  CtkBitmask *set_styles;
   guint n_styles;
   guint owns_styles : 1;
   guint owns_widget_style : 1;
 };
 
-struct _GtkCssScanner
+struct _CtkCssScanner
 {
-  GtkCssProvider *provider;
-  GtkCssParser *parser;
-  GtkCssSection *section;
-  GtkCssScanner *parent;
+  CtkCssProvider *provider;
+  CtkCssParser *parser;
+  CtkCssSection *section;
+  CtkCssScanner *parent;
   GSList *state;
 };
 
-struct _GtkCssProviderPrivate
+struct _CtkCssProviderPrivate
 {
   GScanner *scanner;
 
@@ -129,7 +129,7 @@ struct _GtkCssProviderPrivate
   GHashTable *keyframes;
 
   GArray *rulesets;
-  GtkCssSelectorTree *tree;
+  CtkCssSelectorTree *tree;
   GResource *resource;
   gchar *path;
 };
@@ -144,16 +144,16 @@ static gboolean ctk_keep_css_sections = FALSE;
 static guint css_provider_signals[LAST_SIGNAL] = { 0 };
 
 static void ctk_css_provider_finalize (GObject *object);
-static void ctk_css_style_provider_iface_init (GtkStyleProviderIface *iface);
-static void ctk_css_style_provider_private_iface_init (GtkStyleProviderPrivateInterface *iface);
+static void ctk_css_style_provider_iface_init (CtkStyleProviderIface *iface);
+static void ctk_css_style_provider_private_iface_init (CtkStyleProviderPrivateInterface *iface);
 static void widget_property_value_list_free (WidgetPropertyValue *head);
-static void ctk_css_style_provider_emit_error (GtkStyleProviderPrivate *provider,
-                                               GtkCssSection           *section,
+static void ctk_css_style_provider_emit_error (CtkStyleProviderPrivate *provider,
+                                               CtkCssSection           *section,
                                                const GError            *error);
 
 static gboolean
-ctk_css_provider_load_internal (GtkCssProvider *css_provider,
-                                GtkCssScanner  *scanner,
+ctk_css_provider_load_internal (CtkCssProvider *css_provider,
+                                CtkCssScanner  *scanner,
                                 GFile          *file,
                                 const char     *data,
                                 GError        **error);
@@ -164,16 +164,16 @@ ctk_css_provider_error_quark (void)
   return g_quark_from_static_string ("ctk-css-provider-error-quark");
 }
 
-G_DEFINE_TYPE_EXTENDED (GtkCssProvider, ctk_css_provider, G_TYPE_OBJECT, 0,
-                        G_ADD_PRIVATE (GtkCssProvider)
+G_DEFINE_TYPE_EXTENDED (CtkCssProvider, ctk_css_provider, G_TYPE_OBJECT, 0,
+                        G_ADD_PRIVATE (CtkCssProvider)
                         G_IMPLEMENT_INTERFACE (CTK_TYPE_STYLE_PROVIDER,
                                                ctk_css_style_provider_iface_init)
                         G_IMPLEMENT_INTERFACE (CTK_TYPE_STYLE_PROVIDER_PRIVATE,
                                                ctk_css_style_provider_private_iface_init));
 
 static void
-ctk_css_provider_parsing_error (GtkCssProvider  *provider,
-                                GtkCssSection   *section,
+ctk_css_provider_parsing_error (CtkCssProvider  *provider,
+                                CtkCssSection   *section,
                                 const GError    *error)
 {
   /* Only emit a warning when we have no error handlers. This is our
@@ -197,7 +197,7 @@ ctk_css_provider_parsing_error (GtkCssProvider  *provider,
     }
 }
 
-/* This is exported privately for use in GtkInspector.
+/* This is exported privately for use in CtkInspector.
  * It is the callers responsibility to reparse the current theme.
  */
 void
@@ -207,7 +207,7 @@ ctk_css_provider_set_keep_css_sections (void)
 }
 
 static void
-ctk_css_provider_class_init (GtkCssProviderClass *klass)
+ctk_css_provider_class_init (CtkCssProviderClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -215,7 +215,7 @@ ctk_css_provider_class_init (GtkCssProviderClass *klass)
     ctk_css_provider_set_keep_css_sections ();
 
   /**
-   * GtkCssProvider::parsing-error:
+   * CtkCssProvider::parsing-error:
    * @provider: the provider that had a parsing error
    * @section: section the error happened in
    * @error: The parsing error
@@ -236,7 +236,7 @@ ctk_css_provider_class_init (GtkCssProviderClass *klass)
     g_signal_new (I_("parsing-error"),
                   G_TYPE_FROM_CLASS (object_class),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkCssProviderClass, parsing_error),
+                  G_STRUCT_OFFSET (CtkCssProviderClass, parsing_error),
                   NULL, NULL,
                   _ctk_marshal_VOID__BOXED_BOXED,
                   G_TYPE_NONE, 2, CTK_TYPE_CSS_SECTION, G_TYPE_ERROR);
@@ -247,11 +247,11 @@ ctk_css_provider_class_init (GtkCssProviderClass *klass)
 }
 
 static void
-ctk_css_ruleset_init_copy (GtkCssRuleset       *new,
-                           GtkCssRuleset       *ruleset,
-                           GtkCssSelector      *selector)
+ctk_css_ruleset_init_copy (CtkCssRuleset       *new,
+                           CtkCssRuleset       *ruleset,
+                           CtkCssSelector      *selector)
 {
-  memcpy (new, ruleset, sizeof (GtkCssRuleset));
+  memcpy (new, ruleset, sizeof (CtkCssRuleset));
 
   new->selector = selector;
   /* First copy takes over ownership */
@@ -264,7 +264,7 @@ ctk_css_ruleset_init_copy (GtkCssRuleset       *new,
 }
 
 static void
-ctk_css_ruleset_clear (GtkCssRuleset *ruleset)
+ctk_css_ruleset_clear (CtkCssRuleset *ruleset)
 {
   if (ruleset->owns_styles)
     {
@@ -286,11 +286,11 @@ ctk_css_ruleset_clear (GtkCssRuleset *ruleset)
   if (ruleset->selector)
     _ctk_css_selector_free (ruleset->selector);
 
-  memset (ruleset, 0, sizeof (GtkCssRuleset));
+  memset (ruleset, 0, sizeof (CtkCssRuleset));
 }
 
 static WidgetPropertyValue *
-widget_property_value_new (char *name, GtkCssSection *section)
+widget_property_value_new (char *name, CtkCssSection *section)
 {
   WidgetPropertyValue *value;
 
@@ -348,7 +348,7 @@ widget_property_value_list_remove_name (WidgetPropertyValue *head, const char *n
 }
 
 static void
-ctk_css_ruleset_add_style (GtkCssRuleset *ruleset,
+ctk_css_ruleset_add_style (CtkCssRuleset *ruleset,
                            char          *name,
                            WidgetPropertyValue *value)
 {
@@ -358,10 +358,10 @@ ctk_css_ruleset_add_style (GtkCssRuleset *ruleset,
 }
 
 static void
-ctk_css_ruleset_add (GtkCssRuleset       *ruleset,
-                     GtkCssStyleProperty *property,
-                     GtkCssValue         *value,
-                     GtkCssSection       *section)
+ctk_css_ruleset_add (CtkCssRuleset       *ruleset,
+                     CtkCssStyleProperty *property,
+                     CtkCssValue         *value,
+                     CtkCssSection       *section)
 {
   guint i;
 
@@ -403,27 +403,27 @@ ctk_css_ruleset_add (GtkCssRuleset       *ruleset,
 }
 
 static void
-ctk_css_scanner_destroy (GtkCssScanner *scanner)
+ctk_css_scanner_destroy (CtkCssScanner *scanner)
 {
   if (scanner->section)
     ctk_css_section_unref (scanner->section);
   g_object_unref (scanner->provider);
   _ctk_css_parser_free (scanner->parser);
 
-  g_slice_free (GtkCssScanner, scanner);
+  g_slice_free (CtkCssScanner, scanner);
 }
 
 static void
-ctk_css_style_provider_emit_error (GtkStyleProviderPrivate *provider,
-                                   GtkCssSection           *section,
+ctk_css_style_provider_emit_error (CtkStyleProviderPrivate *provider,
+                                   CtkCssSection           *section,
                                    const GError            *error)
 {
   g_signal_emit (provider, css_provider_signals[PARSING_ERROR], 0, section, error);
 }
 
 static void
-ctk_css_provider_emit_error (GtkCssProvider *provider,
-                             GtkCssScanner  *scanner,
+ctk_css_provider_emit_error (CtkCssProvider *provider,
+                             CtkCssScanner  *scanner,
                              const GError   *error)
 {
   ctk_css_style_provider_emit_error (CTK_STYLE_PROVIDER_PRIVATE (provider),
@@ -432,25 +432,25 @@ ctk_css_provider_emit_error (GtkCssProvider *provider,
 }
 
 static void
-ctk_css_scanner_parser_error (GtkCssParser *parser,
+ctk_css_scanner_parser_error (CtkCssParser *parser,
                               const GError *error,
                               gpointer      user_data)
 {
-  GtkCssScanner *scanner = user_data;
+  CtkCssScanner *scanner = user_data;
 
   ctk_css_provider_emit_error (scanner->provider, scanner, error);
 }
 
-static GtkCssScanner *
-ctk_css_scanner_new (GtkCssProvider *provider,
-                     GtkCssScanner  *parent,
-                     GtkCssSection  *section,
+static CtkCssScanner *
+ctk_css_scanner_new (CtkCssProvider *provider,
+                     CtkCssScanner  *parent,
+                     CtkCssSection  *section,
                      GFile          *file,
                      const gchar    *text)
 {
-  GtkCssScanner *scanner;
+  CtkCssScanner *scanner;
 
-  scanner = g_slice_new0 (GtkCssScanner);
+  scanner = g_slice_new0 (CtkCssScanner);
 
   g_object_ref (provider);
   scanner->provider = provider;
@@ -467,7 +467,7 @@ ctk_css_scanner_new (GtkCssProvider *provider,
 }
 
 static gboolean
-ctk_css_scanner_would_recurse (GtkCssScanner *scanner,
+ctk_css_scanner_would_recurse (CtkCssScanner *scanner,
                                GFile         *file)
 {
   while (scanner)
@@ -483,10 +483,10 @@ ctk_css_scanner_would_recurse (GtkCssScanner *scanner,
 }
 
 static void
-ctk_css_scanner_push_section (GtkCssScanner     *scanner,
-                              GtkCssSectionType  section_type)
+ctk_css_scanner_push_section (CtkCssScanner     *scanner,
+                              CtkCssSectionType  section_type)
 {
-  GtkCssSection *section;
+  CtkCssSection *section;
 
   section = _ctk_css_section_new (scanner->section,
                                   section_type,
@@ -498,10 +498,10 @@ ctk_css_scanner_push_section (GtkCssScanner     *scanner,
 }
 
 static void
-ctk_css_scanner_pop_section (GtkCssScanner *scanner,
-                             GtkCssSectionType check_type)
+ctk_css_scanner_pop_section (CtkCssScanner *scanner,
+                             CtkCssSectionType check_type)
 {
-  GtkCssSection *parent;
+  CtkCssSection *parent;
   
   g_assert (ctk_css_section_get_section_type (scanner->section) == check_type);
 
@@ -516,13 +516,13 @@ ctk_css_scanner_pop_section (GtkCssScanner *scanner,
 }
 
 static void
-ctk_css_provider_init (GtkCssProvider *css_provider)
+ctk_css_provider_init (CtkCssProvider *css_provider)
 {
-  GtkCssProviderPrivate *priv;
+  CtkCssProviderPrivate *priv;
 
   priv = css_provider->priv = ctk_css_provider_get_instance_private (css_provider);
 
-  priv->rulesets = g_array_new (FALSE, FALSE, sizeof (GtkCssRuleset));
+  priv->rulesets = g_array_new (FALSE, FALSE, sizeof (CtkCssRuleset));
 
   priv->symbolic_colors = g_hash_table_new_full (g_str_hash, g_str_equal,
                                                  (GDestroyNotify) g_free,
@@ -533,13 +533,13 @@ ctk_css_provider_init (GtkCssProvider *css_provider)
 }
 
 static void
-verify_tree_match_results (GtkCssProvider *provider,
-			   const GtkCssMatcher *matcher,
+verify_tree_match_results (CtkCssProvider *provider,
+			   const CtkCssMatcher *matcher,
 			   GPtrArray *tree_rules)
 {
 #ifdef VERIFY_TREE
-  GtkCssProviderPrivate *priv = provider->priv;
-  GtkCssRuleset *ruleset;
+  CtkCssProviderPrivate *priv = provider->priv;
+  CtkCssRuleset *ruleset;
   gboolean should_match;
   int i, j;
 
@@ -547,7 +547,7 @@ verify_tree_match_results (GtkCssProvider *provider,
     {
       gboolean found = FALSE;
 
-      ruleset = &g_array_index (priv->rulesets, GtkCssRuleset, i);
+      ruleset = &g_array_index (priv->rulesets, CtkCssRuleset, i);
 
       for (j = 0; j < tree_rules->len; j++)
 	{
@@ -570,13 +570,13 @@ verify_tree_match_results (GtkCssProvider *provider,
 }
 
 static void
-verify_tree_get_change_results (GtkCssProvider *provider,
-				const GtkCssMatcher *matcher,
-				GtkCssChange change)
+verify_tree_get_change_results (CtkCssProvider *provider,
+				const CtkCssMatcher *matcher,
+				CtkCssChange change)
 {
 #ifdef VERIFY_TREE
   {
-    GtkCssChange verify_change = 0;
+    CtkCssChange verify_change = 0;
     GPtrArray *tree_rules;
     int i;
 
@@ -587,7 +587,7 @@ verify_tree_get_change_results (GtkCssProvider *provider,
 
         for (i = tree_rules->len - 1; i >= 0; i--)
           {
-	    GtkCssRuleset *ruleset;
+	    CtkCssRuleset *ruleset;
 
             ruleset = tree_rules->pdata[i];
 
@@ -625,17 +625,17 @@ verify_tree_get_change_results (GtkCssProvider *provider,
 
 
 static gboolean
-ctk_css_provider_get_style_property (GtkStyleProvider *provider,
-                                     GtkWidgetPath    *path,
-                                     GtkStateFlags     state,
+ctk_css_provider_get_style_property (CtkStyleProvider *provider,
+                                     CtkWidgetPath    *path,
+                                     CtkStateFlags     state,
                                      GParamSpec       *pspec,
                                      GValue           *value)
 {
-  GtkCssProvider *css_provider = CTK_CSS_PROVIDER (provider);
-  GtkCssProviderPrivate *priv = css_provider->priv;
+  CtkCssProvider *css_provider = CTK_CSS_PROVIDER (provider);
+  CtkCssProviderPrivate *priv = css_provider->priv;
   WidgetPropertyValue *val;
   GPtrArray *tree_rules;
-  GtkCssMatcher matcher;
+  CtkCssMatcher matcher;
   gboolean found = FALSE;
   gchar *prop_name;
   gint i;
@@ -667,7 +667,7 @@ ctk_css_provider_get_style_property (GtkStyleProvider *provider,
 
       for (i = tree_rules->len - 1; i >= 0; i--)
         {
-          GtkCssRuleset *ruleset = tree_rules->pdata[i];
+          CtkCssRuleset *ruleset = tree_rules->pdata[i];
 
           if (ruleset->widget_style == NULL)
             continue;
@@ -676,7 +676,7 @@ ctk_css_provider_get_style_property (GtkStyleProvider *provider,
             {
               if (strcmp (val->name, prop_name) == 0)
                 {
-                  GtkCssScanner *scanner;
+                  CtkCssScanner *scanner;
 
 	          scanner = ctk_css_scanner_new (css_provider,
                                                  NULL,
@@ -707,38 +707,38 @@ ctk_css_provider_get_style_property (GtkStyleProvider *provider,
 }
 
 static void
-ctk_css_style_provider_iface_init (GtkStyleProviderIface *iface)
+ctk_css_style_provider_iface_init (CtkStyleProviderIface *iface)
 {
   iface->get_style_property = ctk_css_provider_get_style_property;
 }
 
-static GtkCssValue *
-ctk_css_style_provider_get_color (GtkStyleProviderPrivate *provider,
+static CtkCssValue *
+ctk_css_style_provider_get_color (CtkStyleProviderPrivate *provider,
                                   const char              *name)
 {
-  GtkCssProvider *css_provider = CTK_CSS_PROVIDER (provider);
+  CtkCssProvider *css_provider = CTK_CSS_PROVIDER (provider);
 
   return g_hash_table_lookup (css_provider->priv->symbolic_colors, name);
 }
 
-static GtkCssKeyframes *
-ctk_css_style_provider_get_keyframes (GtkStyleProviderPrivate *provider,
+static CtkCssKeyframes *
+ctk_css_style_provider_get_keyframes (CtkStyleProviderPrivate *provider,
                                       const char              *name)
 {
-  GtkCssProvider *css_provider = CTK_CSS_PROVIDER (provider);
+  CtkCssProvider *css_provider = CTK_CSS_PROVIDER (provider);
 
   return g_hash_table_lookup (css_provider->priv->keyframes, name);
 }
 
 static void
-ctk_css_style_provider_lookup (GtkStyleProviderPrivate *provider,
-                               const GtkCssMatcher     *matcher,
-                               GtkCssLookup            *lookup,
-                               GtkCssChange            *change)
+ctk_css_style_provider_lookup (CtkStyleProviderPrivate *provider,
+                               const CtkCssMatcher     *matcher,
+                               CtkCssLookup            *lookup,
+                               CtkCssChange            *change)
 {
-  GtkCssProvider *css_provider;
-  GtkCssProviderPrivate *priv;
-  GtkCssRuleset *ruleset;
+  CtkCssProvider *css_provider;
+  CtkCssProviderPrivate *priv;
+  CtkCssRuleset *ruleset;
   guint j;
   int i;
   GPtrArray *tree_rules;
@@ -764,7 +764,7 @@ ctk_css_style_provider_lookup (GtkStyleProviderPrivate *provider,
 
           for (j = 0; j < ruleset->n_styles; j++)
             {
-              GtkCssStyleProperty *prop = ruleset->styles[j].property;
+              CtkCssStyleProperty *prop = ruleset->styles[j].property;
               guint id = _ctk_css_style_property_get_id (prop);
 
               if (!_ctk_css_lookup_is_missing (lookup, id))
@@ -785,7 +785,7 @@ ctk_css_style_provider_lookup (GtkStyleProviderPrivate *provider,
 
   if (change)
     {
-      GtkCssMatcher change_matcher;
+      CtkCssMatcher change_matcher;
 
       _ctk_css_matcher_superset_init (&change_matcher, matcher, CTK_CSS_CHANGE_NAME | CTK_CSS_CHANGE_CLASS);
 
@@ -795,7 +795,7 @@ ctk_css_style_provider_lookup (GtkStyleProviderPrivate *provider,
 }
 
 static void
-ctk_css_style_provider_private_iface_init (GtkStyleProviderPrivateInterface *iface)
+ctk_css_style_provider_private_iface_init (CtkStyleProviderPrivateInterface *iface)
 {
   iface->get_color = ctk_css_style_provider_get_color;
   iface->get_keyframes = ctk_css_style_provider_get_keyframes;
@@ -806,15 +806,15 @@ ctk_css_style_provider_private_iface_init (GtkStyleProviderPrivateInterface *ifa
 static void
 ctk_css_provider_finalize (GObject *object)
 {
-  GtkCssProvider *css_provider;
-  GtkCssProviderPrivate *priv;
+  CtkCssProvider *css_provider;
+  CtkCssProviderPrivate *priv;
   guint i;
 
   css_provider = CTK_CSS_PROVIDER (object);
   priv = css_provider->priv;
 
   for (i = 0; i < priv->rulesets->len; i++)
-    ctk_css_ruleset_clear (&g_array_index (priv->rulesets, GtkCssRuleset, i));
+    ctk_css_ruleset_clear (&g_array_index (priv->rulesets, CtkCssRuleset, i));
 
   g_array_free (priv->rulesets, TRUE);
   _ctk_css_selector_tree_free (priv->tree);
@@ -837,19 +837,19 @@ ctk_css_provider_finalize (GObject *object)
 /**
  * ctk_css_provider_new:
  *
- * Returns a newly created #GtkCssProvider.
+ * Returns a newly created #CtkCssProvider.
  *
- * Returns: A new #GtkCssProvider
+ * Returns: A new #CtkCssProvider
  **/
-GtkCssProvider *
+CtkCssProvider *
 ctk_css_provider_new (void)
 {
   return g_object_new (CTK_TYPE_CSS_PROVIDER, NULL);
 }
 
 static void
-ctk_css_provider_take_error (GtkCssProvider *provider,
-                             GtkCssScanner  *scanner,
+ctk_css_provider_take_error (CtkCssProvider *provider,
+                             CtkCssScanner  *scanner,
                              GError         *error)
 {
   ctk_css_provider_emit_error (provider, scanner, error);
@@ -857,8 +857,8 @@ ctk_css_provider_take_error (GtkCssProvider *provider,
 }
 
 static void
-ctk_css_provider_error_literal (GtkCssProvider *provider,
-                                GtkCssScanner  *scanner,
+ctk_css_provider_error_literal (CtkCssProvider *provider,
+                                CtkCssScanner  *scanner,
                                 GQuark          domain,
                                 gint            code,
                                 const char     *message)
@@ -869,15 +869,15 @@ ctk_css_provider_error_literal (GtkCssProvider *provider,
 }
 
 static void
-ctk_css_provider_error (GtkCssProvider *provider,
-                        GtkCssScanner  *scanner,
+ctk_css_provider_error (CtkCssProvider *provider,
+                        CtkCssScanner  *scanner,
                         GQuark          domain,
                         gint            code,
                         const char     *format,
                         ...)  G_GNUC_PRINTF (5, 6);
 static void
-ctk_css_provider_error (GtkCssProvider *provider,
-                        GtkCssScanner  *scanner,
+ctk_css_provider_error (CtkCssProvider *provider,
+                        CtkCssScanner  *scanner,
                         GQuark          domain,
                         gint            code,
                         const char     *format,
@@ -897,8 +897,8 @@ ctk_css_provider_error (GtkCssProvider *provider,
 }
 
 static void
-ctk_css_provider_invalid_token (GtkCssProvider *provider,
-                                GtkCssScanner  *scanner,
+ctk_css_provider_invalid_token (CtkCssProvider *provider,
+                                CtkCssScanner  *scanner,
                                 const char     *expected)
 {
   ctk_css_provider_error (provider,
@@ -909,11 +909,11 @@ ctk_css_provider_invalid_token (GtkCssProvider *provider,
 }
 
 static void
-css_provider_commit (GtkCssProvider *css_provider,
+css_provider_commit (CtkCssProvider *css_provider,
                      GSList         *selectors,
-                     GtkCssRuleset  *ruleset)
+                     CtkCssRuleset  *ruleset)
 {
-  GtkCssProviderPrivate *priv;
+  CtkCssProviderPrivate *priv;
   GSList *l;
 
   priv = css_provider->priv;
@@ -926,7 +926,7 @@ css_provider_commit (GtkCssProvider *css_provider,
 
   for (l = selectors; l; l = l->next)
     {
-      GtkCssRuleset new;
+      CtkCssRuleset new;
 
       ctk_css_ruleset_init_copy (&new, ruleset, l->data);
 
@@ -937,9 +937,9 @@ css_provider_commit (GtkCssProvider *css_provider,
 }
 
 static void
-ctk_css_provider_reset (GtkCssProvider *css_provider)
+ctk_css_provider_reset (CtkCssProvider *css_provider)
 {
-  GtkCssProviderPrivate *priv;
+  CtkCssProviderPrivate *priv;
   guint i;
 
   priv = css_provider->priv;
@@ -961,7 +961,7 @@ ctk_css_provider_reset (GtkCssProvider *css_provider)
   g_hash_table_remove_all (priv->keyframes);
 
   for (i = 0; i < priv->rulesets->len; i++)
-    ctk_css_ruleset_clear (&g_array_index (priv->rulesets, GtkCssRuleset, i));
+    ctk_css_ruleset_clear (&g_array_index (priv->rulesets, CtkCssRuleset, i));
   g_array_set_size (priv->rulesets, 0);
   _ctk_css_selector_tree_free (priv->tree);
   priv->tree = NULL;
@@ -969,8 +969,8 @@ ctk_css_provider_reset (GtkCssProvider *css_provider)
 }
 
 static void
-ctk_css_provider_propagate_error (GtkCssProvider  *provider,
-                                  GtkCssSection   *section,
+ctk_css_provider_propagate_error (CtkCssProvider  *provider,
+                                  CtkCssSection   *section,
                                   const GError    *error,
                                   GError         **propagate_to)
 {
@@ -1000,7 +1000,7 @@ ctk_css_provider_propagate_error (GtkCssProvider  *provider,
 }
 
 static gboolean
-parse_import (GtkCssScanner *scanner)
+parse_import (CtkCssScanner *scanner)
 {
   GFile *file;
 
@@ -1066,9 +1066,9 @@ parse_import (GtkCssScanner *scanner)
 }
 
 static gboolean
-parse_color_definition (GtkCssScanner *scanner)
+parse_color_definition (CtkCssScanner *scanner)
 {
-  GtkCssValue *color;
+  CtkCssValue *color;
   char *name;
 
   ctk_css_scanner_push_section (scanner, CTK_CSS_SECTION_COLOR_DEFINITION);
@@ -1123,9 +1123,9 @@ parse_color_definition (GtkCssScanner *scanner)
 }
 
 static gboolean
-parse_binding_set (GtkCssScanner *scanner)
+parse_binding_set (CtkCssScanner *scanner)
 {
-  GtkBindingSet *binding_set;
+  CtkBindingSet *binding_set;
   char *name;
 
   ctk_css_scanner_push_section (scanner, CTK_CSS_SECTION_BINDING_SET);
@@ -1231,9 +1231,9 @@ skip_semicolon:
 }
 
 static gboolean
-parse_keyframes (GtkCssScanner *scanner)
+parse_keyframes (CtkCssScanner *scanner)
 {
-  GtkCssKeyframes *keyframes;
+  CtkCssKeyframes *keyframes;
   char *name;
 
   ctk_css_scanner_push_section (scanner, CTK_CSS_SECTION_KEYFRAMES);
@@ -1296,7 +1296,7 @@ exit:
 }
 
 static void
-parse_at_keyword (GtkCssScanner *scanner)
+parse_at_keyword (CtkCssScanner *scanner)
 {
   if (parse_import (scanner))
     return;
@@ -1319,14 +1319,14 @@ parse_at_keyword (GtkCssScanner *scanner)
 }
 
 static GSList *
-parse_selector_list (GtkCssScanner *scanner)
+parse_selector_list (CtkCssScanner *scanner)
 {
   GSList *selectors = NULL;
 
   ctk_css_scanner_push_section (scanner, CTK_CSS_SECTION_SELECTOR);
 
   do {
-      GtkCssSelector *select = _ctk_css_selector_parse (scanner->parser);
+      CtkCssSelector *select = _ctk_css_selector_parse (scanner->parser);
 
       if (select == NULL)
         {
@@ -1358,7 +1358,7 @@ name_is_style_property (const char *name)
 }
 
 static void
-warn_if_deprecated (GtkCssScanner *scanner,
+warn_if_deprecated (CtkCssScanner *scanner,
                     const gchar   *name)
 {
   gchar *n = NULL;
@@ -1407,10 +1407,10 @@ out:
 }
 
 static void
-parse_declaration (GtkCssScanner *scanner,
-                   GtkCssRuleset *ruleset)
+parse_declaration (CtkCssScanner *scanner,
+                   CtkCssRuleset *ruleset)
 {
-  GtkStyleProperty *property;
+  CtkStyleProperty *property;
   char *name;
 
   ctk_css_scanner_push_section (scanner, CTK_CSS_SECTION_DECLARATION);
@@ -1464,7 +1464,7 @@ parse_declaration (GtkCssScanner *scanner,
 
   if (property)
     {
-      GtkCssValue *value;
+      CtkCssValue *value;
 
       g_free (name);
 
@@ -1498,13 +1498,13 @@ parse_declaration (GtkCssScanner *scanner,
 
       if (CTK_IS_CSS_SHORTHAND_PROPERTY (property))
         {
-          GtkCssShorthandProperty *shorthand = CTK_CSS_SHORTHAND_PROPERTY (property);
+          CtkCssShorthandProperty *shorthand = CTK_CSS_SHORTHAND_PROPERTY (property);
           guint i;
 
           for (i = 0; i < _ctk_css_shorthand_property_get_n_subproperties (shorthand); i++)
             {
-              GtkCssStyleProperty *child = _ctk_css_shorthand_property_get_subproperty (shorthand, i);
-              GtkCssValue *sub = _ctk_css_array_value_get_nth (value, i);
+              CtkCssStyleProperty *child = _ctk_css_shorthand_property_get_subproperty (shorthand, i);
+              CtkCssValue *sub = _ctk_css_array_value_get_nth (value, i);
               
               ctk_css_ruleset_add (ruleset, child, _ctk_css_value_ref (sub), scanner->section);
             }
@@ -1574,8 +1574,8 @@ check_for_semicolon:
 }
 
 static void
-parse_declarations (GtkCssScanner *scanner,
-                    GtkCssRuleset *ruleset)
+parse_declarations (CtkCssScanner *scanner,
+                    CtkCssRuleset *ruleset)
 {
   while (!_ctk_css_parser_is_eof (scanner->parser) &&
          !_ctk_css_parser_begins_with (scanner->parser, '}'))
@@ -1585,10 +1585,10 @@ parse_declarations (GtkCssScanner *scanner,
 }
 
 static void
-parse_ruleset (GtkCssScanner *scanner)
+parse_ruleset (CtkCssScanner *scanner)
 {
   GSList *selectors;
-  GtkCssRuleset ruleset = { 0, };
+  CtkCssRuleset ruleset = { 0, };
 
   ctk_css_scanner_push_section (scanner, CTK_CSS_SECTION_RULESET);
 
@@ -1636,7 +1636,7 @@ parse_ruleset (GtkCssScanner *scanner)
 }
 
 static void
-parse_statement (GtkCssScanner *scanner)
+parse_statement (CtkCssScanner *scanner)
 {
   if (_ctk_css_parser_begins_with (scanner->parser, '@'))
     parse_at_keyword (scanner);
@@ -1645,7 +1645,7 @@ parse_statement (GtkCssScanner *scanner)
 }
 
 static void
-parse_stylesheet (GtkCssScanner *scanner)
+parse_stylesheet (CtkCssScanner *scanner)
 {
   ctk_css_scanner_push_section (scanner, CTK_CSS_SECTION_DOCUMENT);
 
@@ -1667,8 +1667,8 @@ static int
 ctk_css_provider_compare_rule (gconstpointer a_,
                                gconstpointer b_)
 {
-  const GtkCssRuleset *a = (const GtkCssRuleset *) a_;
-  const GtkCssRuleset *b = (const GtkCssRuleset *) b_;
+  const CtkCssRuleset *a = (const CtkCssRuleset *) a_;
+  const CtkCssRuleset *b = (const CtkCssRuleset *) b_;
   int compare;
 
   compare = _ctk_css_selector_compare (a->selector, b->selector);
@@ -1679,10 +1679,10 @@ ctk_css_provider_compare_rule (gconstpointer a_,
 }
 
 static void
-ctk_css_provider_postprocess (GtkCssProvider *css_provider)
+ctk_css_provider_postprocess (CtkCssProvider *css_provider)
 {
-  GtkCssProviderPrivate *priv = css_provider->priv;
-  GtkCssSelectorTreeBuilder *builder;
+  CtkCssProviderPrivate *priv = css_provider->priv;
+  CtkCssSelectorTreeBuilder *builder;
   guint i;
 
   g_array_sort (priv->rulesets, ctk_css_provider_compare_rule);
@@ -1690,9 +1690,9 @@ ctk_css_provider_postprocess (GtkCssProvider *css_provider)
   builder = _ctk_css_selector_tree_builder_new ();
   for (i = 0; i < priv->rulesets->len; i++)
     {
-      GtkCssRuleset *ruleset;
+      CtkCssRuleset *ruleset;
 
-      ruleset = &g_array_index (priv->rulesets, GtkCssRuleset, i);
+      ruleset = &g_array_index (priv->rulesets, CtkCssRuleset, i);
 
       _ctk_css_selector_tree_builder_add (builder,
 					  ruleset->selector,
@@ -1706,9 +1706,9 @@ ctk_css_provider_postprocess (GtkCssProvider *css_provider)
 #ifndef VERIFY_TREE
   for (i = 0; i < priv->rulesets->len; i++)
     {
-      GtkCssRuleset *ruleset;
+      CtkCssRuleset *ruleset;
 
-      ruleset = &g_array_index (priv->rulesets, GtkCssRuleset, i);
+      ruleset = &g_array_index (priv->rulesets, CtkCssRuleset, i);
 
       _ctk_css_selector_free (ruleset->selector);
       ruleset->selector = NULL;
@@ -1717,14 +1717,14 @@ ctk_css_provider_postprocess (GtkCssProvider *css_provider)
 }
 
 static gboolean
-ctk_css_provider_load_internal (GtkCssProvider *css_provider,
-                                GtkCssScanner  *parent,
+ctk_css_provider_load_internal (CtkCssProvider *css_provider,
+                                CtkCssScanner  *parent,
                                 GFile          *file,
                                 const char     *text,
                                 GError        **error)
 {
   GBytes *free_bytes = NULL;
-  GtkCssScanner *scanner;
+  CtkCssScanner *scanner;
   gulong error_handler;
 
   if (error)
@@ -1812,7 +1812,7 @@ ctk_css_provider_load_internal (GtkCssProvider *css_provider,
 
 /**
  * ctk_css_provider_load_from_data:
- * @css_provider: a #GtkCssProvider
+ * @css_provider: a #CtkCssProvider
  * @data: (array length=length) (element-type guint8): CSS data loaded in memory
  * @length: the length of @data in bytes, or -1 for NUL terminated strings. If
  *   @length is not -1, the code will assume it is not NUL terminated and will
@@ -1825,10 +1825,10 @@ ctk_css_provider_load_internal (GtkCssProvider *css_provider,
  * Returns: %TRUE. The return value is deprecated and %FALSE will only be
  *     returned for backwards compatibility reasons if an @error is not 
  *     %NULL and a loading error occurred. To track errors while loading
- *     CSS, connect to the #GtkCssProvider::parsing-error signal.
+ *     CSS, connect to the #CtkCssProvider::parsing-error signal.
  **/
 gboolean
-ctk_css_provider_load_from_data (GtkCssProvider  *css_provider,
+ctk_css_provider_load_from_data (CtkCssProvider  *css_provider,
                                  const gchar     *data,
                                  gssize           length,
                                  GError         **error)
@@ -1863,7 +1863,7 @@ ctk_css_provider_load_from_data (GtkCssProvider  *css_provider,
 
 /**
  * ctk_css_provider_load_from_file:
- * @css_provider: a #GtkCssProvider
+ * @css_provider: a #CtkCssProvider
  * @file: #GFile pointing to a file to load
  * @error: (out) (allow-none): return location for a #GError, or %NULL
  *
@@ -1873,10 +1873,10 @@ ctk_css_provider_load_from_data (GtkCssProvider  *css_provider,
  * Returns: %TRUE. The return value is deprecated and %FALSE will only be
  *     returned for backwards compatibility reasons if an @error is not 
  *     %NULL and a loading error occurred. To track errors while loading
- *     CSS, connect to the #GtkCssProvider::parsing-error signal.
+ *     CSS, connect to the #CtkCssProvider::parsing-error signal.
  **/
 gboolean
-ctk_css_provider_load_from_file (GtkCssProvider  *css_provider,
+ctk_css_provider_load_from_file (CtkCssProvider  *css_provider,
                                  GFile           *file,
                                  GError         **error)
 {
@@ -1896,7 +1896,7 @@ ctk_css_provider_load_from_file (GtkCssProvider  *css_provider,
 
 /**
  * ctk_css_provider_load_from_path:
- * @css_provider: a #GtkCssProvider
+ * @css_provider: a #CtkCssProvider
  * @path: the path of a filename to load, in the GLib filename encoding
  * @error: (out) (allow-none): return location for a #GError, or %NULL
  *
@@ -1906,10 +1906,10 @@ ctk_css_provider_load_from_file (GtkCssProvider  *css_provider,
  * Returns: %TRUE. The return value is deprecated and %FALSE will only be
  *     returned for backwards compatibility reasons if an @error is not 
  *     %NULL and a loading error occurred. To track errors while loading
- *     CSS, connect to the #GtkCssProvider::parsing-error signal.
+ *     CSS, connect to the #CtkCssProvider::parsing-error signal.
  **/
 gboolean
-ctk_css_provider_load_from_path (GtkCssProvider  *css_provider,
+ctk_css_provider_load_from_path (CtkCssProvider  *css_provider,
                                  const gchar     *path,
                                  GError         **error)
 {
@@ -1930,19 +1930,19 @@ ctk_css_provider_load_from_path (GtkCssProvider  *css_provider,
 
 /**
  * ctk_css_provider_load_from_resource:
- * @css_provider: a #GtkCssProvider
+ * @css_provider: a #CtkCssProvider
  * @resource_path: a #GResource resource path
  *
  * Loads the data contained in the resource at @resource_path into
- * the #GtkCssProvider, clearing any previously loaded information.
+ * the #CtkCssProvider, clearing any previously loaded information.
  *
  * To track errors while loading CSS, connect to the
- * #GtkCssProvider::parsing-error signal.
+ * #CtkCssProvider::parsing-error signal.
  *
  * Since: 3.16
  */
 void
-ctk_css_provider_load_from_resource (GtkCssProvider *css_provider,
+ctk_css_provider_load_from_resource (CtkCssProvider *css_provider,
 			             const gchar    *resource_path)
 {
   GFile *file;
@@ -1975,10 +1975,10 @@ ctk_css_provider_load_from_resource (GtkCssProvider *css_provider,
  *
  * Deprecated: 3.24: Use ctk_css_provider_new() instead.
  **/
-GtkCssProvider *
+CtkCssProvider *
 ctk_css_provider_get_default (void)
 {
-  static GtkCssProvider *provider;
+  static CtkCssProvider *provider;
 
   if (G_UNLIKELY (!provider))
     {
@@ -2003,7 +2003,7 @@ _ctk_get_theme_dir (void)
  * if it is part of a theme, otherwise NULL.
  */
 const gchar *
-_ctk_css_provider_get_theme_dir (GtkCssProvider *provider)
+_ctk_css_provider_get_theme_dir (CtkCssProvider *provider)
 {
   return provider->priv->path;
 }
@@ -2109,7 +2109,7 @@ _ctk_css_find_theme (const gchar *name,
 
 /**
  * _ctk_css_provider_load_named:
- * @provider: a #GtkCssProvider
+ * @provider: a #CtkCssProvider
  * @name: A theme name
  * @variant: (allow-none): variant to load, for example, "dark", or
  *     %NULL for the default
@@ -2120,7 +2120,7 @@ _ctk_css_find_theme (const gchar *name,
  * theme than GTK uses for loading its own theme.
  **/
 void
-_ctk_css_provider_load_named (GtkCssProvider *provider,
+_ctk_css_provider_load_named (CtkCssProvider *provider,
                               const gchar    *name,
                               const gchar    *variant)
 {
@@ -2197,15 +2197,15 @@ _ctk_css_provider_load_named (GtkCssProvider *provider,
  *
  * Loads a theme from the usual theme paths
  *
- * Returns: (transfer none): a #GtkCssProvider with the theme loaded.
+ * Returns: (transfer none): a #CtkCssProvider with the theme loaded.
  *     This memory is owned by GTK+, and you must not free it.
  */
-GtkCssProvider *
+CtkCssProvider *
 ctk_css_provider_get_named (const gchar *name,
                             const gchar *variant)
 {
   static GHashTable *themes = NULL;
-  GtkCssProvider *provider;
+  CtkCssProvider *provider;
   gchar *key;
 
   if (variant == NULL)
@@ -2249,7 +2249,7 @@ compare_names (gconstpointer a, gconstpointer b)
 }
 
 static void
-ctk_css_ruleset_print (const GtkCssRuleset *ruleset,
+ctk_css_ruleset_print (const CtkCssRuleset *ruleset,
                        GString             *str)
 {
   GList *values, *walk;
@@ -2322,7 +2322,7 @@ ctk_css_provider_print_colors (GHashTable *colors,
   for (walk = keys; walk; walk = walk->next)
     {
       const char *name = walk->data;
-      GtkCssValue *color = g_hash_table_lookup (colors, (gpointer) name);
+      CtkCssValue *color = g_hash_table_lookup (colors, (gpointer) name);
 
       g_string_append (str, "@define-color ");
       g_string_append (str, name);
@@ -2347,7 +2347,7 @@ ctk_css_provider_print_keyframes (GHashTable *keyframes,
   for (walk = keys; walk; walk = walk->next)
     {
       const char *name = walk->data;
-      GtkCssKeyframes *keyframe = g_hash_table_lookup (keyframes, (gpointer) name);
+      CtkCssKeyframes *keyframe = g_hash_table_lookup (keyframes, (gpointer) name);
 
       if (str->len > 0)
         g_string_append (str, "\n");
@@ -2378,9 +2378,9 @@ ctk_css_provider_print_keyframes (GHashTable *keyframes,
  * Since: 3.2
  **/
 char *
-ctk_css_provider_to_string (GtkCssProvider *provider)
+ctk_css_provider_to_string (CtkCssProvider *provider)
 {
-  GtkCssProviderPrivate *priv;
+  CtkCssProviderPrivate *priv;
   GString *str;
   guint i;
 
@@ -2397,7 +2397,7 @@ ctk_css_provider_to_string (GtkCssProvider *provider)
     {
       if (str->len != 0)
         g_string_append (str, "\n");
-      ctk_css_ruleset_print (&g_array_index (priv->rulesets, GtkCssRuleset, i), str);
+      ctk_css_ruleset_print (&g_array_index (priv->rulesets, CtkCssRuleset, i), str);
     }
 
   return g_string_free (str, FALSE);

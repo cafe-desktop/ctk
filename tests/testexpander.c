@@ -1,20 +1,20 @@
 #include <ctk/ctk.h>
 
 static void
-expander_cb (GtkExpander *expander, GParamSpec *pspec, GtkWindow *dialog)
+expander_cb (CtkExpander *expander, GParamSpec *pspec, CtkWindow *dialog)
 {
   ctk_window_set_resizable (dialog, ctk_expander_get_expanded (expander));
 }
 
 static void
-do_not_expand (GtkWidget *child, gpointer data)
+do_not_expand (CtkWidget *child, gpointer data)
 {
   ctk_container_child_set (CTK_CONTAINER (ctk_widget_get_parent (child)), child,
                            "expand", FALSE, "fill", FALSE, NULL);
 }
 
 static void
-response_cb (GtkDialog *dialog, gint response_id)
+response_cb (CtkDialog *dialog, gint response_id)
 {
   ctk_main_quit ();
 }
@@ -22,13 +22,13 @@ response_cb (GtkDialog *dialog, gint response_id)
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *dialog;
-  GtkWidget *area;
-  GtkWidget *box;
-  GtkWidget *expander;
-  GtkWidget *sw;
-  GtkWidget *tv;
-  GtkTextBuffer *buffer;
+  CtkWidget *dialog;
+  CtkWidget *area;
+  CtkWidget *box;
+  CtkWidget *expander;
+  CtkWidget *sw;
+  CtkWidget *tv;
+  CtkTextBuffer *buffer;
 
   ctk_init (&argc, &argv);
 

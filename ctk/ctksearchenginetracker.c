@@ -52,29 +52,29 @@
  */
 #define FTS_MATCHING
 
-struct _GtkSearchEngineTracker
+struct _CtkSearchEngineTracker
 {
-  GtkSearchEngine parent;
+  CtkSearchEngine parent;
   GDBusConnection *connection;
   GCancellable *cancellable;
-  GtkQuery *query;
+  CtkQuery *query;
   gboolean query_pending;
   GPtrArray *indexed_locations;
 };
 
-struct _GtkSearchEngineTrackerClass
+struct _CtkSearchEngineTrackerClass
 {
-  GtkSearchEngineClass parent_class;
+  CtkSearchEngineClass parent_class;
 };
 
-G_DEFINE_TYPE (GtkSearchEngineTracker, _ctk_search_engine_tracker, CTK_TYPE_SEARCH_ENGINE)
+G_DEFINE_TYPE (CtkSearchEngineTracker, _ctk_search_engine_tracker, CTK_TYPE_SEARCH_ENGINE)
 
 static void
 finalize (GObject *object)
 {
-  GtkSearchEngineTracker *tracker;
+  CtkSearchEngineTracker *tracker;
 
-  g_debug ("Finalizing GtkSearchEngineTracker");
+  g_debug ("Finalizing CtkSearchEngineTracker");
 
   tracker = CTK_SEARCH_ENGINE_TRACKER (object);
 
@@ -100,7 +100,7 @@ get_connection (void)
   GVariant *reply;
 
   /* Normally I hate sync calls with UIs, but we need to return NULL
-   * or a GtkSearchEngine as a result of this function.
+   * or a CtkSearchEngine as a result of this function.
    */
   connection = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, &error);
 
@@ -150,7 +150,7 @@ get_connection (void)
 }
 
 static void
-get_query_results (GtkSearchEngineTracker *engine,
+get_query_results (CtkSearchEngineTracker *engine,
                    const gchar            *sparql,
                    GAsyncReadyCallback     callback,
                    gpointer                user_data)
@@ -267,14 +267,14 @@ query_callback (GObject      *object,
                 GAsyncResult *res,
                 gpointer      user_data)
 {
-  GtkSearchEngineTracker *tracker;
+  CtkSearchEngineTracker *tracker;
   GList *hits;
   GVariant *reply;
   GVariant *r;
   GVariantIter iter;
   GError *error = NULL;
   gint i, n;
-  GtkSearchHit *hit;
+  CtkSearchHit *hit;
 
   tracker = CTK_SEARCH_ENGINE_TRACKER (user_data);
 
@@ -299,7 +299,7 @@ query_callback (GObject      *object,
   r = g_variant_get_child_value (reply, 0);
   g_variant_iter_init (&iter, r);
   n = g_variant_iter_n_children (&iter);
-  hit = g_new (GtkSearchHit, n);
+  hit = g_new (CtkSearchHit, n);
   hits = NULL;
   for (i = 0; i < n; i++)
     {
@@ -329,9 +329,9 @@ query_callback (GObject      *object,
 }
 
 static void
-ctk_search_engine_tracker_start (GtkSearchEngine *engine)
+ctk_search_engine_tracker_start (CtkSearchEngine *engine)
 {
-  GtkSearchEngineTracker *tracker;
+  CtkSearchEngineTracker *tracker;
   const gchar *search_text;
   GFile *location;
   GString *sparql;
@@ -347,7 +347,7 @@ ctk_search_engine_tracker_start (GtkSearchEngine *engine)
 
   if (tracker->query == NULL)
     {
-      g_debug ("Attempt to start a new search with no GtkQuery, doing nothing");
+      g_debug ("Attempt to start a new search with no CtkQuery, doing nothing");
       return;
     }
 
@@ -409,9 +409,9 @@ ctk_search_engine_tracker_start (GtkSearchEngine *engine)
 }
 
 static void
-ctk_search_engine_tracker_stop (GtkSearchEngine *engine)
+ctk_search_engine_tracker_stop (CtkSearchEngine *engine)
 {
-  GtkSearchEngineTracker *tracker;
+  CtkSearchEngineTracker *tracker;
 
   tracker = CTK_SEARCH_ENGINE_TRACKER (engine);
 
@@ -423,10 +423,10 @@ ctk_search_engine_tracker_stop (GtkSearchEngine *engine)
 }
 
 static void
-ctk_search_engine_tracker_set_query (GtkSearchEngine *engine,
-                                     GtkQuery        *query)
+ctk_search_engine_tracker_set_query (CtkSearchEngine *engine,
+                                     CtkQuery        *query)
 {
-  GtkSearchEngineTracker *tracker;
+  CtkSearchEngineTracker *tracker;
 
   tracker = CTK_SEARCH_ENGINE_TRACKER (engine);
 
@@ -440,10 +440,10 @@ ctk_search_engine_tracker_set_query (GtkSearchEngine *engine,
 }
 
 static void
-_ctk_search_engine_tracker_class_init (GtkSearchEngineTrackerClass *class)
+_ctk_search_engine_tracker_class_init (CtkSearchEngineTrackerClass *class)
 {
   GObjectClass *gobject_class;
-  GtkSearchEngineClass *engine_class;
+  CtkSearchEngineClass *engine_class;
 
   gobject_class = G_OBJECT_CLASS (class);
   gobject_class->finalize = finalize;
@@ -454,10 +454,10 @@ _ctk_search_engine_tracker_class_init (GtkSearchEngineTrackerClass *class)
   engine_class->stop = ctk_search_engine_tracker_stop;
 }
 
-static void get_indexed_locations (GtkSearchEngineTracker *engine);
+static void get_indexed_locations (CtkSearchEngineTracker *engine);
 
 static void
-_ctk_search_engine_tracker_init (GtkSearchEngineTracker *engine)
+_ctk_search_engine_tracker_init (CtkSearchEngineTracker *engine)
 {
   engine->cancellable = g_cancellable_new ();
   engine->query_pending = FALSE;
@@ -466,10 +466,10 @@ _ctk_search_engine_tracker_init (GtkSearchEngineTracker *engine)
   get_indexed_locations (engine);
 }
 
-GtkSearchEngine *
+CtkSearchEngine *
 _ctk_search_engine_tracker_new (void)
 {
-  GtkSearchEngineTracker *engine;
+  CtkSearchEngineTracker *engine;
   GDBusConnection *connection;
 
   g_debug ("--");
@@ -478,7 +478,7 @@ _ctk_search_engine_tracker_new (void)
   if (!connection)
     return NULL;
 
-  g_debug ("Creating GtkSearchEngineTracker...");
+  g_debug ("Creating CtkSearchEngineTracker...");
 
   engine = g_object_new (CTK_TYPE_SEARCH_ENGINE_TRACKER, NULL);
 
@@ -531,7 +531,7 @@ path_from_tracker_dir (const gchar *value)
 }
 
 static void
-get_indexed_locations (GtkSearchEngineTracker *engine)
+get_indexed_locations (CtkSearchEngineTracker *engine)
 {
   GSettingsSchemaSource *source;
   GSettingsSchema *schema;
@@ -569,7 +569,7 @@ gboolean
 _ctk_search_engine_tracker_is_indexed (GFile    *location,
                                        gpointer  data)
 {
-  GtkSearchEngineTracker *engine = data;
+  CtkSearchEngineTracker *engine = data;
   gint i;
   GFile *place;
 

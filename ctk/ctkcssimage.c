@@ -35,22 +35,22 @@
 #include "ctk/ctkcssimagefallbackprivate.h"
 #include "ctk/ctkcssimagewin32private.h"
 
-G_DEFINE_ABSTRACT_TYPE (GtkCssImage, _ctk_css_image, G_TYPE_OBJECT)
+G_DEFINE_ABSTRACT_TYPE (CtkCssImage, _ctk_css_image, G_TYPE_OBJECT)
 
 static int
-ctk_css_image_real_get_width (GtkCssImage *image)
+ctk_css_image_real_get_width (CtkCssImage *image)
 {
   return 0;
 }
 
 static int
-ctk_css_image_real_get_height (GtkCssImage *image)
+ctk_css_image_real_get_height (CtkCssImage *image)
 {
   return 0;
 }
 
 static double
-ctk_css_image_real_get_aspect_ratio (GtkCssImage *image)
+ctk_css_image_real_get_aspect_ratio (CtkCssImage *image)
 {
   int width, height;
 
@@ -63,26 +63,26 @@ ctk_css_image_real_get_aspect_ratio (GtkCssImage *image)
     return 0;
 }
 
-static GtkCssImage *
-ctk_css_image_real_compute (GtkCssImage             *image,
+static CtkCssImage *
+ctk_css_image_real_compute (CtkCssImage             *image,
                             guint                    property_id,
-                            GtkStyleProviderPrivate *provider,
-                            GtkCssStyle             *style,
-                            GtkCssStyle             *parent_style)
+                            CtkStyleProviderPrivate *provider,
+                            CtkCssStyle             *style,
+                            CtkCssStyle             *parent_style)
 {
   return g_object_ref (image);
 }
 
 static gboolean
-ctk_css_image_real_equal (GtkCssImage *image1,
-                          GtkCssImage *image2)
+ctk_css_image_real_equal (CtkCssImage *image1,
+                          CtkCssImage *image2)
 {
   return FALSE;
 }
 
-static GtkCssImage *
-ctk_css_image_real_transition (GtkCssImage *start,
-                               GtkCssImage *end,
+static CtkCssImage *
+ctk_css_image_real_transition (CtkCssImage *start,
+                               CtkCssImage *end,
                                guint        property_id,
                                double       progress)
 {
@@ -97,7 +97,7 @@ ctk_css_image_real_transition (GtkCssImage *start,
 }
 
 static void
-_ctk_css_image_class_init (GtkCssImageClass *klass)
+_ctk_css_image_class_init (CtkCssImageClass *klass)
 {
   klass->get_width = ctk_css_image_real_get_width;
   klass->get_height = ctk_css_image_real_get_height;
@@ -108,14 +108,14 @@ _ctk_css_image_class_init (GtkCssImageClass *klass)
 }
 
 static void
-_ctk_css_image_init (GtkCssImage *image)
+_ctk_css_image_init (CtkCssImage *image)
 {
 }
 
 int
-_ctk_css_image_get_width (GtkCssImage *image)
+_ctk_css_image_get_width (CtkCssImage *image)
 {
-  GtkCssImageClass *klass;
+  CtkCssImageClass *klass;
 
   g_return_val_if_fail (CTK_IS_CSS_IMAGE (image), 0);
 
@@ -125,9 +125,9 @@ _ctk_css_image_get_width (GtkCssImage *image)
 }
 
 int
-_ctk_css_image_get_height (GtkCssImage *image)
+_ctk_css_image_get_height (CtkCssImage *image)
 {
-  GtkCssImageClass *klass;
+  CtkCssImageClass *klass;
 
   g_return_val_if_fail (CTK_IS_CSS_IMAGE (image), 0);
 
@@ -137,9 +137,9 @@ _ctk_css_image_get_height (GtkCssImage *image)
 }
 
 double
-_ctk_css_image_get_aspect_ratio (GtkCssImage *image)
+_ctk_css_image_get_aspect_ratio (CtkCssImage *image)
 {
-  GtkCssImageClass *klass;
+  CtkCssImageClass *klass;
 
   g_return_val_if_fail (CTK_IS_CSS_IMAGE (image), 0);
 
@@ -148,14 +148,14 @@ _ctk_css_image_get_aspect_ratio (GtkCssImage *image)
   return klass->get_aspect_ratio (image);
 }
 
-GtkCssImage *
-_ctk_css_image_compute (GtkCssImage             *image,
+CtkCssImage *
+_ctk_css_image_compute (CtkCssImage             *image,
                         guint                    property_id,
-                        GtkStyleProviderPrivate *provider,
-                        GtkCssStyle             *style,
-                        GtkCssStyle             *parent_style)
+                        CtkStyleProviderPrivate *provider,
+                        CtkCssStyle             *style,
+                        CtkCssStyle             *parent_style)
 {
-  GtkCssImageClass *klass;
+  CtkCssImageClass *klass;
 
   g_return_val_if_fail (CTK_IS_CSS_IMAGE (image), NULL);
   g_return_val_if_fail (CTK_IS_CSS_STYLE (style), NULL);
@@ -166,13 +166,13 @@ _ctk_css_image_compute (GtkCssImage             *image,
   return klass->compute (image, property_id, provider, style, parent_style);
 }
 
-GtkCssImage *
-_ctk_css_image_transition (GtkCssImage *start,
-                           GtkCssImage *end,
+CtkCssImage *
+_ctk_css_image_transition (CtkCssImage *start,
+                           CtkCssImage *end,
                            guint        property_id,
                            double       progress)
 {
-  GtkCssImageClass *klass;
+  CtkCssImageClass *klass;
 
   g_return_val_if_fail (start == NULL || CTK_IS_CSS_IMAGE (start), NULL);
   g_return_val_if_fail (end == NULL || CTK_IS_CSS_IMAGE (end), NULL);
@@ -197,10 +197,10 @@ _ctk_css_image_transition (GtkCssImage *start,
 }
 
 gboolean
-_ctk_css_image_equal (GtkCssImage *image1,
-                      GtkCssImage *image2)
+_ctk_css_image_equal (CtkCssImage *image1,
+                      CtkCssImage *image2)
 {
-  GtkCssImageClass *klass;
+  CtkCssImageClass *klass;
 
   g_return_val_if_fail (image1 == NULL || CTK_IS_CSS_IMAGE (image1), FALSE);
   g_return_val_if_fail (image2 == NULL || CTK_IS_CSS_IMAGE (image2), FALSE);
@@ -220,12 +220,12 @@ _ctk_css_image_equal (GtkCssImage *image1,
 }
 
 void
-_ctk_css_image_draw (GtkCssImage        *image,
+_ctk_css_image_draw (CtkCssImage        *image,
                      cairo_t            *cr,
                      double              width,
                      double              height)
 {
-  GtkCssImageClass *klass;
+  CtkCssImageClass *klass;
 
   g_return_if_fail (CTK_IS_CSS_IMAGE (image));
   g_return_if_fail (cr != NULL);
@@ -242,10 +242,10 @@ _ctk_css_image_draw (GtkCssImage        *image,
 }
 
 void
-_ctk_css_image_print (GtkCssImage *image,
+_ctk_css_image_print (CtkCssImage *image,
                       GString     *string)
 {
-  GtkCssImageClass *klass;
+  CtkCssImageClass *klass;
 
   g_return_if_fail (CTK_IS_CSS_IMAGE (image));
   g_return_if_fail (string != NULL);
@@ -259,7 +259,7 @@ _ctk_css_image_print (GtkCssImage *image,
  * http://dev.w3.org/csswg/css3-images/#default-sizing
  */
 void
-_ctk_css_image_get_concrete_size (GtkCssImage *image,
+_ctk_css_image_get_concrete_size (CtkCssImage *image,
                                   double       specified_width,
                                   double       specified_height,
                                   double       default_width,
@@ -381,7 +381,7 @@ _ctk_css_image_get_concrete_size (GtkCssImage *image,
 }
 
 cairo_surface_t *
-_ctk_css_image_get_surface (GtkCssImage     *image,
+_ctk_css_image_get_surface (CtkCssImage     *image,
                             cairo_surface_t *target,
                             int              surface_width,
                             int              surface_height)
@@ -411,7 +411,7 @@ _ctk_css_image_get_surface (GtkCssImage     *image,
 }
 
 static GType
-ctk_css_image_get_parser_type (GtkCssParser *parser)
+ctk_css_image_get_parser_type (CtkCssParser *parser)
 {
   static const struct {
     const char *prefix;
@@ -453,16 +453,16 @@ ctk_css_image_get_parser_type (GtkCssParser *parser)
  * Returns: %TURE if it looks like an image.
  **/
 gboolean
-_ctk_css_image_can_parse (GtkCssParser *parser)
+_ctk_css_image_can_parse (CtkCssParser *parser)
 {
   return ctk_css_image_get_parser_type (parser) != G_TYPE_INVALID;
 }
 
-GtkCssImage *
-_ctk_css_image_new_parse (GtkCssParser *parser)
+CtkCssImage *
+_ctk_css_image_new_parse (CtkCssParser *parser)
 {
-  GtkCssImageClass *klass;
-  GtkCssImage *image;
+  CtkCssImageClass *klass;
+  CtkCssImage *image;
   GType image_type;
 
   g_return_val_if_fail (parser != NULL, NULL);

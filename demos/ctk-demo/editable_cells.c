@@ -1,13 +1,13 @@
 /* Tree View/Editable Cells
  *
- * This demo demonstrates the use of editable cells in a GtkTreeView. If
- * you're new to the GtkTreeView widgets and associates, look into
- * the GtkListStore example first. It also shows how to use the
- * GtkCellRenderer::editing-started signal to do custom setup of the
+ * This demo demonstrates the use of editable cells in a CtkTreeView. If
+ * you're new to the CtkTreeView widgets and associates, look into
+ * the CtkListStore example first. It also shows how to use the
+ * CtkCellRenderer::editing-started signal to do custom setup of the
  * editable widget.
  *
- * The cell renderers used in this demo are GtkCellRendererText,
- * GtkCellRendererCombo and GtkCellRendererProgress.
+ * The cell renderers used in this demo are CtkCellRendererText,
+ * CtkCellRendererCombo and CtkCellRendererProgress.
  */
 
 #include <ctk/ctk.h>
@@ -71,12 +71,12 @@ add_items (void)
   g_array_append_vals (articles, &foo, 1);
 }
 
-static GtkTreeModel *
+static CtkTreeModel *
 create_items_model (void)
 {
   gint i = 0;
-  GtkListStore *model;
-  GtkTreeIter iter;
+  CtkListStore *model;
+  CtkTreeIter iter;
 
   /* create array */
   articles = g_array_sized_new (FALSE, FALSE, sizeof (Item), 1);
@@ -105,13 +105,13 @@ create_items_model (void)
   return CTK_TREE_MODEL (model);
 }
 
-static GtkTreeModel *
+static CtkTreeModel *
 create_numbers_model (void)
 {
 #define N_NUMBERS 10
   gint i = 0;
-  GtkListStore *model;
-  GtkTreeIter iter;
+  CtkListStore *model;
+  CtkTreeIter iter;
 
   /* create list store */
   model = ctk_list_store_new (NUM_NUMBER_COLUMNS, G_TYPE_STRING, G_TYPE_INT);
@@ -137,14 +137,14 @@ create_numbers_model (void)
 }
 
 static void
-add_item (GtkWidget *button, gpointer data)
+add_item (CtkWidget *button, gpointer data)
 {
   Item foo;
-  GtkTreeIter current, iter;
-  GtkTreePath *path;
-  GtkTreeModel *model;
-  GtkTreeViewColumn *column;
-  GtkTreeView *treeview = (GtkTreeView *)data;
+  CtkTreeIter current, iter;
+  CtkTreePath *path;
+  CtkTreeModel *model;
+  CtkTreeViewColumn *column;
+  CtkTreeView *treeview = (CtkTreeView *)data;
 
   g_return_if_fail (articles != NULL);
 
@@ -183,17 +183,17 @@ add_item (GtkWidget *button, gpointer data)
 }
 
 static void
-remove_item (GtkWidget *widget, gpointer data)
+remove_item (CtkWidget *widget, gpointer data)
 {
-  GtkTreeIter iter;
-  GtkTreeView *treeview = (GtkTreeView *)data;
-  GtkTreeModel *model = ctk_tree_view_get_model (treeview);
-  GtkTreeSelection *selection = ctk_tree_view_get_selection (treeview);
+  CtkTreeIter iter;
+  CtkTreeView *treeview = (CtkTreeView *)data;
+  CtkTreeModel *model = ctk_tree_view_get_model (treeview);
+  CtkTreeSelection *selection = ctk_tree_view_get_selection (treeview);
 
   if (ctk_tree_selection_get_selected (selection, NULL, &iter))
     {
       gint i;
-      GtkTreePath *path;
+      CtkTreePath *path;
 
       path = ctk_tree_model_get_path (model, &iter);
       i = ctk_tree_path_get_indices (path)[0];
@@ -206,11 +206,11 @@ remove_item (GtkWidget *widget, gpointer data)
 }
 
 static gboolean
-separator_row (GtkTreeModel *model,
-               GtkTreeIter  *iter,
+separator_row (CtkTreeModel *model,
+               CtkTreeIter  *iter,
                gpointer      data)
 {
-  GtkTreePath *path;
+  CtkTreePath *path;
   gint idx;
 
   path = ctk_tree_model_get_path (model, iter);
@@ -222,8 +222,8 @@ separator_row (GtkTreeModel *model,
 }
 
 static void
-editing_started (GtkCellRenderer *cell,
-                 GtkCellEditable *editable,
+editing_started (CtkCellRenderer *cell,
+                 CtkCellEditable *editable,
                  const gchar     *path,
                  gpointer         data)
 {
@@ -232,14 +232,14 @@ editing_started (GtkCellRenderer *cell,
 }
 
 static void
-cell_edited (GtkCellRendererText *cell,
+cell_edited (CtkCellRendererText *cell,
              const gchar         *path_string,
              const gchar         *new_text,
              gpointer             data)
 {
-  GtkTreeModel *model = (GtkTreeModel *)data;
-  GtkTreePath *path = ctk_tree_path_new_from_string (path_string);
-  GtkTreeIter iter;
+  CtkTreeModel *model = (CtkTreeModel *)data;
+  CtkTreePath *path = ctk_tree_path_new_from_string (path_string);
+  CtkTreeIter iter;
 
   gint column = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (cell), "column"));
 
@@ -281,11 +281,11 @@ cell_edited (GtkCellRendererText *cell,
 }
 
 static void
-add_columns (GtkTreeView  *treeview,
-             GtkTreeModel *items_model,
-             GtkTreeModel *numbers_model)
+add_columns (CtkTreeView  *treeview,
+             CtkTreeModel *items_model,
+             CtkTreeModel *numbers_model)
 {
-  GtkCellRenderer *renderer;
+  CtkCellRenderer *renderer;
 
   /* number column */
   renderer = ctk_cell_renderer_combo_new ();
@@ -330,20 +330,20 @@ add_columns (GtkTreeView  *treeview,
                                                NULL);
 }
 
-GtkWidget *
-do_editable_cells (GtkWidget *do_widget)
+CtkWidget *
+do_editable_cells (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkWidget *vbox;
-      GtkWidget *hbox;
-      GtkWidget *sw;
-      GtkWidget *treeview;
-      GtkWidget *button;
-      GtkTreeModel *items_model;
-      GtkTreeModel *numbers_model;
+      CtkWidget *vbox;
+      CtkWidget *hbox;
+      CtkWidget *sw;
+      CtkWidget *treeview;
+      CtkWidget *button;
+      CtkTreeModel *items_model;
+      CtkTreeModel *numbers_model;
 
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window),

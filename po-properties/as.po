@@ -313,10 +313,10 @@ msgstr "কাৰ্য্যৰ গোট"
 
 #: ../ctk/deprecated/ctkaction.c:498
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
-"এই  GtkAction-টো যি GtkActionGroup ৰ সৈতে সংশ্লিষ্ট, বা NULL (ভিতৰুৱা ভাবে "
+"এই  CtkAction-টো যি CtkActionGroup ৰ সৈতে সংশ্লিষ্ট, বা NULL (ভিতৰুৱা ভাবে "
 "ব্যৱহাৰ কৰিব লগা)।"
 
 #: ../ctk/deprecated/ctkaction.c:519 ../ctk/deprecated/ctkimagemenuitem.c:205
@@ -890,8 +890,8 @@ msgid "Style context"
 msgstr "শৈলী পৰিপ্ৰেক্ষতিত"
 
 #: ../ctk/deprecated/ctkstyle.c:470
-msgid "GtkStyleContext to get style from"
-msgstr "শৈলী প্ৰাপ্ত কৰিবলে GtkStyleContext "
+msgid "CtkStyleContext to get style from"
+msgstr "শৈলী প্ৰাপ্ত কৰিবলে CtkStyleContext "
 
 #: ../ctk/deprecated/ctktable.c:189
 msgid "Rows"
@@ -1262,10 +1262,10 @@ msgstr "Pack ৰ ধৰণ"
 
 #: ../ctk/ctkactionbar.c:251 ../ctk/ctkbox.c:330 ../ctk/ctkheaderbar.c:1785
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
 msgstr ""
-"এটা GtkPackType যি নিৰ্দেশ কৰি যে চাইল্ড পেৰেন্টৰ আৰম্ভ নে শেষৰ সাপেক্ষে "
+"এটা CtkPackType যি নিৰ্দেশ কৰি যে চাইল্ড পেৰেন্টৰ আৰম্ভ নে শেষৰ সাপেক্ষে "
 "স্থাপিত"
 
 #: ../ctk/ctkactionbar.c:257 ../ctk/ctkbox.c:336 ../ctk/ctkheaderbar.c:1791
@@ -1335,10 +1335,10 @@ msgstr "'অন্য…' এটি বস্তু অন্তৰ্ভুক�
 #: ../ctk/ctkappchooserbutton.c:617
 msgid ""
 "Whether the combobox should include an item that triggers a "
-"GtkAppChooserDialog"
+"CtkAppChooserDialog"
 msgstr ""
 "comboboxএ এনে এটি বস্তু অন্তৰ্ভুক্ত কৰিব লাগে নে যিটোয়ে এটা "
-"GtkAppChooserDialog "
+"CtkAppChooserDialog "
 "ট্ৰিগাৰ কৰে"
 
 #: ../ctk/ctkappchooserbutton.c:633
@@ -1949,10 +1949,10 @@ msgstr "Packৰ ধৰণ"
 
 #: ../ctk/ctkcellareabox.c:381
 msgid ""
-"A GtkPackType indicating whether the cell is packed with reference to the "
+"A CtkPackType indicating whether the cell is packed with reference to the "
 "start or end of the cell area"
 msgstr ""
-"এটা GtkPackType যি সংকেত দিয়ে যে কোষটো কোষ কালিৰ আৰম্ভ  সাপেক্ষে স্থাপিত নে "
+"এটা CtkPackType যি সংকেত দিয়ে যে কোষটো কোষ কালিৰ আৰম্ভ  সাপেক্ষে স্থাপিত নে "
 "কোষ "
 "কালিৰ শেষ সাপেক্ষে স্থাপিত"
 
@@ -2230,8 +2230,8 @@ msgid "The stock ID of the stock icon to render"
 msgstr "যি স্টক আইকনটো অঁকা হ'ব তাৰ স্টক আইডি (ID)"
 
 #: ../ctk/ctkcellrendererpixbuf.c:196
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
-msgstr "যি আইকনটো অঁকা হ'ব তাৰ আকাৰ নিৰ্ধাৰণী GtkIconSize তৰ মান"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
+msgstr "যি আইকনটো অঁকা হ'ব তাৰ আকাৰ নিৰ্ধাৰণী CtkIconSize তৰ মান"
 
 #: ../ctk/ctkcellrendererpixbuf.c:205
 msgid "Detail"
@@ -2347,8 +2347,8 @@ msgid "Pulse of the spinner"
 msgstr "স্পিনাৰৰ পাল্চ"
 
 #: ../ctk/ctkcellrendererspinner.c:160
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
-msgstr "GtkIconSizeৰ মান যিটোয়ে ৰেন্ডাৰড স্পিনাৰৰ আকাৰ ধাৰ্য্য কৰে"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
+msgstr "CtkIconSizeৰ মান যিটোয়ে ৰেন্ডাৰড স্পিনাৰৰ আকাৰ ধাৰ্য্য কৰে"
 
 #: ../ctk/ctkcellrenderertext.c:254
 msgid "Text to render"
@@ -2803,16 +2803,16 @@ msgstr "কোষ কালি"
 #: ../ctk/ctkcellview.c:254 ../ctk/ctkcombobox.c:1015
 #: ../ctk/ctkentrycompletion.c:474 ../ctk/ctkiconview.c:639
 #: ../ctk/ctktreemenu.c:313 ../ctk/ctktreeviewcolumn.c:415
-msgid "The GtkCellArea used to layout cells"
-msgstr "কোষ সংস্থাপন কৰিবলে ব্যৱহৃত GtkCellArea"
+msgid "The CtkCellArea used to layout cells"
+msgstr "কোষ সংস্থাপন কৰিবলে ব্যৱহৃত CtkCellArea"
 
 #: ../ctk/ctkcellview.c:277
 msgid "Cell Area Context"
 msgstr "কোষ কালি পৰিপ্ৰেক্ষতিত"
 
 #: ../ctk/ctkcellview.c:278
-msgid "The GtkCellAreaContext used to compute the geometry of the cell view"
-msgstr "কোষ দৰ্শণৰ জ্যামিতি গণনা কৰিবলে ব্যৱহৃত GtkCellAreaContext"
+msgid "The CtkCellAreaContext used to compute the geometry of the cell view"
+msgstr "কোষ দৰ্শণৰ জ্যামিতি গণনা কৰিবলে ব্যৱহৃত CtkCellAreaContext"
 
 #: ../ctk/ctkcellview.c:295
 msgid "Draw Sensitive"
@@ -3018,11 +3018,11 @@ msgstr "প্ৰবিষ্টি লিখনি স্তম্ভ"
 #: ../ctk/ctkcombobox.c:944
 msgid ""
 "The column in the combo box's model to associate with strings from the entry "
-"if the combo was created with #GtkComboBox:has-entry = %TRUE"
+"if the combo was created with #CtkComboBox:has-entry = %TRUE"
 msgstr ""
 "প্ৰবিষ্টিৰ স্ট্ৰিংসমূহৰ লগত সহযোগিতা কৰিবলে কম্বো বাকচৰ আৰ্হিত থকা স্তম্ভ যদি "
 "কম্বোটো "
-"#GtkComboBox:has-entry = %TRUE ৰে সৃষ্টি কৰা হৈছিল"
+"#CtkComboBox:has-entry = %TRUE ৰে সৃষ্টি কৰা হৈছিল"
 
 #: ../ctk/ctkcombobox.c:961
 msgid "ID Column"
@@ -4449,11 +4449,11 @@ msgstr "সমপ্ৰান্ত নিৰ্ধাৰণ"
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkMisc::xalign for that"
+"CtkMisc::xalign for that"
 msgstr ""
 "লেবেলৰ লিখনিৰ শাৰীবোৰৰ সংৰেখন পৰস্পৰৰ সাপেক্ষে। ই লেবেলৰ সংৰেখনক প্ৰভাবিত "
 "নকৰে। "
-"ইয়াৰ বাবে GtkMisc::xalign চাওক"
+"ইয়াৰ বাবে CtkMisc::xalign চাওক"
 
 #: ../ctk/ctklabel.c:765
 msgid "Pattern"
@@ -5046,8 +5046,8 @@ msgid "Message area"
 msgstr "বাৰ্তাৰ এলেকা"
 
 #: ../ctk/ctkmessagedialog.c:295
-msgid "GtkVBox that holds the dialog's primary and secondary labels"
-msgstr "ডাইলগৰ প্ৰাথমিক আৰু দ্বৈতিক লেবেলসমূহ ধৰি ৰখা GtkVBox"
+msgid "CtkVBox that holds the dialog's primary and secondary labels"
+msgstr "ডাইলগৰ প্ৰাথমিক আৰু দ্বৈতিক লেবেলসমূহ ধৰি ৰখা CtkVBox"
 
 #
 #: ../ctk/ctkmountoperation.c:161 ../ctk/ctkstylecontext.c:282
@@ -5569,15 +5569,15 @@ msgid "Default Page Setup"
 msgstr "অবিকল্পিত পৃষ্ঠা"
 
 #: ../ctk/ctkprintoperation.c:1088
-msgid "The GtkPageSetup used by default"
-msgstr "The GtkPageSetup used by default"
+msgid "The CtkPageSetup used by default"
+msgstr "The CtkPageSetup used by default"
 
 #: ../ctk/ctkprintoperation.c:1106 ../ctk/ctkprintunixdialog.c:424
 msgid "Print Settings"
 msgstr "প্ৰিন্ট কৰক"
 
 #: ../ctk/ctkprintoperation.c:1107 ../ctk/ctkprintunixdialog.c:425
-msgid "The GtkPrintSettings used for initializing the dialog"
+msgid "The CtkPrintSettings used for initializing the dialog"
 msgstr "উল্লিখিত সময় অবধি"
 
 #: ../ctk/ctkprintoperation.c:1125
@@ -5693,9 +5693,9 @@ msgid "Embed Page Setup"
 msgstr "পৃষ্ঠাৰ বিন্যাস প্ৰোথিত কৰক"
 
 #: ../ctk/ctkprintoperation.c:1403 ../ctk/ctkprintunixdialog.c:466
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
 msgstr ""
-"TRUE যদি পৃষ্ঠা প্ৰতিষ্ঠাৰ কম্বোক GtkPrintUnixDialog ত প্ৰোথিত কৰা হৈছে"
+"TRUE যদি পৃষ্ঠা প্ৰতিষ্ঠাৰ কম্বোক CtkPrintUnixDialog ত প্ৰোথিত কৰা হৈছে"
 
 #: ../ctk/ctkprintoperation.c:1424
 msgid "Number of Pages To Print"
@@ -5706,15 +5706,15 @@ msgid "The number of pages that will be printed."
 msgstr "মূদ্ৰণ হোৱা সৰ্বমুঠ পৃষ্ঠাৰ সংখ্যা।"
 
 #: ../ctk/ctkprintunixdialog.c:407
-msgid "The GtkPageSetup to use"
-msgstr "The GtkPageSetup to use"
+msgid "The CtkPageSetup to use"
+msgstr "The CtkPageSetup to use"
 
 #: ../ctk/ctkprintunixdialog.c:432
 msgid "Selected Printer"
 msgstr "Selected"
 
 #: ../ctk/ctkprintunixdialog.c:433
-msgid "The GtkPrinter which is selected"
+msgid "The CtkPrinter which is selected"
 msgstr "হলো"
 
 #: ../ctk/ctkprintunixdialog.c:440
@@ -5838,8 +5838,8 @@ msgid "The radio tool button whose group this button belongs to."
 msgstr "এই উইজেটটি যি গ্ৰুপেৰ অংশ উক্ত গ্ৰুপেৰ ৰেডিঅ' বুটাম"
 
 #: ../ctk/ctkrange.c:436
-msgid "The GtkAdjustment that contains the current value of this range object"
-msgstr "যি GtkAdjustment এই সীমাসূচক অবজেক্টেৰ বৰ্তমান মান ধাৰণ কৰে"
+msgid "The CtkAdjustment that contains the current value of this range object"
+msgstr "যি CtkAdjustment এই সীমাসূচক অবজেক্টেৰ বৰ্তমান মান ধাৰণ কৰে"
 
 #: ../ctk/ctkrange.c:444
 msgid "Invert direction slider moves to increase range value"
@@ -6091,7 +6091,7 @@ msgstr "The icon size"
 
 #: ../ctk/ctkscalebutton.c:214
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
+"The CtkAdjustment that contains the current value of this scale button object"
 msgstr "ধাৰন কৰি সৰ্বমোট"
 
 #
@@ -6213,16 +6213,16 @@ msgid "Horizontal Adjustment"
 msgstr "পথালি সমন্বয়"
 
 #: ../ctk/ctkscrolledwindow.c:364
-msgid "The GtkAdjustment for the horizontal position"
-msgstr "পথালি অবস্থানেৰ বাবে GtkAdjustment"
+msgid "The CtkAdjustment for the horizontal position"
+msgstr "পথালি অবস্থানেৰ বাবে CtkAdjustment"
 
 #: ../ctk/ctkscrolledwindow.c:371
 msgid "Vertical Adjustment"
 msgstr "উলম্ব সমন্বয়"
 
 #: ../ctk/ctkscrolledwindow.c:372
-msgid "The GtkAdjustment for the vertical position"
-msgstr "উলম্ব অবস্থানেৰ বাবে GtkAdjustment"
+msgid "The CtkAdjustment for the vertical position"
+msgstr "উলম্ব অবস্থানেৰ বাবে CtkAdjustment"
 
 #: ../ctk/ctkscrolledwindow.c:379
 msgid "Horizontal Scrollbar Policy"
@@ -6672,15 +6672,15 @@ msgid "Default file chooser backend"
 msgstr "স্বাভাবিক অবস্থায় ব্যৱহৃত ফাইল বাছাইকাৰী ব্যাকএন্ড"
 
 #: ../ctk/ctksettings.c:952
-msgid "Name of the GtkFileChooser backend to use by default"
-msgstr "স্বাভাবিক অবস্থায় যি GtkFileChooser ব্যাকএন্ড ব্যৱহাৰ কৰা হ'ব তাৰ নাম"
+msgid "Name of the CtkFileChooser backend to use by default"
+msgstr "স্বাভাবিক অবস্থায় যি CtkFileChooser ব্যাকএন্ড ব্যৱহাৰ কৰা হ'ব তাৰ নাম"
 
 #: ../ctk/ctksettings.c:969
 msgid "Default print backend"
 msgstr "অবিকল্পিত"
 
 #: ../ctk/ctksettings.c:970
-msgid "List of the GtkPrintBackend backends to use by default"
+msgid "List of the CtkPrintBackend backends to use by default"
 msgstr "তালিকা সৰ্বমোট"
 
 #: ../ctk/ctksettings.c:993
@@ -7211,8 +7211,8 @@ msgid "Value type"
 msgstr "মানৰ ধৰণ"
 
 #: ../ctk/ctkstyleproperty.c:118
-msgid "The value type returned by GtkStyleContext"
-msgstr "GtkStyleContext দ্বাৰা ঘুৰাই দিয়া মানৰ ধৰণ"
+msgid "The value type returned by CtkStyleContext"
+msgstr "CtkStyleContext দ্বাৰা ঘুৰাই দিয়া মানৰ ধৰণ"
 
 #: ../ctk/ctkswitch.c:910
 msgid "Whether the switch is on or off"
@@ -7977,8 +7977,8 @@ msgid "Fixed Height Mode"
 msgstr "পূৰ্বনিৰ্দিষ্ট উচ্চতা ব্যৱহাৰকাৰী অৱস্থা"
 
 #: ../ctk/ctktreeview.c:1091
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
-msgstr "সকল শাৰীৰ উচ্চতা সমান বিবেচনা কৰি GtkTreeViewকে দ্ৰুততৰ কৰে"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
+msgstr "সকল শাৰীৰ উচ্চতা সমান বিবেচনা কৰি CtkTreeViewকে দ্ৰুততৰ কৰে"
 
 #: ../ctk/ctktreeview.c:1111
 msgid "Hover Selection"
@@ -8784,8 +8784,8 @@ msgid "Focus in Toplevel"
 msgstr "ওপৰতৰ স্তৰৰ ফোকাস"
 
 #: ../ctk/ctkwindow.c:880
-msgid "Whether the input focus is within this GtkWindow"
-msgstr "ইনপুটেৰ ফ'কাচ GtkWindow'ৰ মাজত আছে নে"
+msgid "Whether the input focus is within this CtkWindow"
+msgstr "ইনপুটেৰ ফ'কাচ CtkWindow'ৰ মাজত আছে নে"
 
 #: ../ctk/ctkwindow.c:887
 msgid "Type hint"
@@ -8913,20 +8913,20 @@ msgid "Decoration resize handle size"
 msgstr "সাঁজ পুনৰআকাৰ হেণ্ডেলৰ আকাৰ"
 
 #: ../ctk/ctkwindow.c:1114
-msgid "GtkApplication"
-msgstr "GtkApplication"
+msgid "CtkApplication"
+msgstr "CtkApplication"
 
 #: ../ctk/ctkwindow.c:1115
-msgid "The GtkApplication for the window"
-msgstr "উইন্ডোৰ বাবে GtkApplication "
+msgid "The CtkApplication for the window"
+msgstr "উইন্ডোৰ বাবে CtkApplication "
 
 #: ../modules/printbackends/cloudprint/ctkprintercloudprint.c:137
 msgid "Cloud Print account"
 msgstr "Cloud প্ৰিন্ট একাওন্ট"
 
 #: ../modules/printbackends/cloudprint/ctkprintercloudprint.c:138
-msgid "GtkCloudprintAccount instance"
-msgstr "GtkCloudprintAccount ইনস্টেনচ্"
+msgid "CtkCloudprintAccount instance"
+msgstr "CtkCloudprintAccount ইনস্টেনচ্"
 
 #: ../modules/printbackends/cloudprint/ctkprintercloudprint.c:147
 #| msgid "Printer"
@@ -9003,8 +9003,8 @@ msgstr "ব্যৱহাৰ কৰিব লগিয়া ৰঙ আলেখ�
 #~ msgid "The type of values after style lookup"
 #~ msgstr "শৈলী লুকআপৰ পিছত মানসমূহৰ ধৰণ"
 
-#~ msgid "TRUE if page setup combos are embedded in GtkPrintDialog"
-#~ msgstr "TRUE যদি পৃষ্ঠাৰ বিন্যাসৰ কম্বো GtkPrintDialog ত প্ৰোথিত হৈছে"
+#~ msgid "TRUE if page setup combos are embedded in CtkPrintDialog"
+#~ msgstr "TRUE যদি পৃষ্ঠাৰ বিন্যাসৰ কম্বো CtkPrintDialog ত প্ৰোথিত হৈছে"
 
 #~ msgid "Event base"
 #~ msgstr "ঘটনা ভিত্তি"

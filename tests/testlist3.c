@@ -1,16 +1,16 @@
 #include <ctk/ctk.h>
 
-static GtkTargetEntry entries[] = {
+static CtkTargetEntry entries[] = {
   { "CTK_LIST_BOX_ROW", CTK_TARGET_SAME_APP, 0 }
 };
 
 static void
-drag_begin (GtkWidget      *widget,
+drag_begin (CtkWidget      *widget,
             GdkDragContext *context,
             gpointer        data)
 {
-  GtkWidget *row;
-  GtkAllocation alloc;
+  CtkWidget *row;
+  CtkAllocation alloc;
   cairo_surface_t *surface;
   cairo_t *cr;
   int x, y;
@@ -38,11 +38,11 @@ drag_begin (GtkWidget      *widget,
 }
 
 static void
-drag_end (GtkWidget      *widget,
+drag_end (CtkWidget      *widget,
           GdkDragContext *context,
           gpointer        data)
 {
-  GtkWidget *row;
+  CtkWidget *row;
 
   row = ctk_widget_get_ancestor (widget, CTK_TYPE_LIST_BOX_ROW);
   g_object_set_data (G_OBJECT (ctk_widget_get_parent (row)), "drag-row", NULL);
@@ -51,9 +51,9 @@ drag_end (GtkWidget      *widget,
 }
 
 void
-drag_data_get (GtkWidget        *widget,
+drag_data_get (CtkWidget        *widget,
                GdkDragContext   *context,
-               GtkSelectionData *selection_data,
+               CtkSelectionData *selection_data,
                guint             info,
                guint             time,
                gpointer          data)
@@ -65,16 +65,16 @@ drag_data_get (GtkWidget        *widget,
                           sizeof (gpointer));
 }
 
-static GtkListBoxRow *
-get_last_row (GtkListBox *list)
+static CtkListBoxRow *
+get_last_row (CtkListBox *list)
 {
   int i;
-  GtkListBoxRow *row;
+  CtkListBoxRow *row;
 
   row = NULL;
   for (i = 0; ; i++)
     {
-      GtkListBoxRow *tmp;
+      CtkListBoxRow *tmp;
       tmp = ctk_list_box_get_row_at_index (list, i);
       if (tmp == NULL)
         return row;
@@ -83,36 +83,36 @@ get_last_row (GtkListBox *list)
   return row;
 }
 
-static GtkListBoxRow *
-get_row_before (GtkListBox    *list,
-                GtkListBoxRow *row)
+static CtkListBoxRow *
+get_row_before (CtkListBox    *list,
+                CtkListBoxRow *row)
 {
   int pos = ctk_list_box_row_get_index (row);
   return ctk_list_box_get_row_at_index (list, pos - 1);
 }
 
-static GtkListBoxRow *
-get_row_after (GtkListBox    *list,
-               GtkListBoxRow *row)
+static CtkListBoxRow *
+get_row_after (CtkListBox    *list,
+               CtkListBoxRow *row)
 {
   int pos = ctk_list_box_row_get_index (row);
   return ctk_list_box_get_row_at_index (list, pos + 1);
 }
 
 static void
-drag_data_received (GtkWidget        *widget,
+drag_data_received (CtkWidget        *widget,
                     GdkDragContext   *context,
                     gint              x,
                     gint              y,
-                    GtkSelectionData *selection_data,
+                    CtkSelectionData *selection_data,
                     guint             info,
                     guint32           time,
                     gpointer          data)
 {
-  GtkWidget *row_before;
-  GtkWidget *row_after;
-  GtkWidget *row;
-  GtkWidget *source;
+  CtkWidget *row_before;
+  CtkWidget *row_after;
+  CtkWidget *row;
+  CtkWidget *source;
   int pos;
 
   row_before = CTK_WIDGET (g_object_get_data (G_OBJECT (widget), "row-before"));
@@ -145,19 +145,19 @@ drag_data_received (GtkWidget        *widget,
 }
 
 static gboolean
-drag_motion (GtkWidget      *widget,
+drag_motion (CtkWidget      *widget,
              GdkDragContext *context,
              int             x,
              int             y,
              guint           time)
 {
-  GtkAllocation alloc;
-  GtkWidget *row;
+  CtkAllocation alloc;
+  CtkWidget *row;
   int hover_row_y;
   int hover_row_height;
-  GtkWidget *drag_row;
-  GtkWidget *row_before;
-  GtkWidget *row_after;
+  CtkWidget *drag_row;
+  CtkWidget *row_before;
+  CtkWidget *row_after;
 
   row = CTK_WIDGET (ctk_list_box_get_row_at_y (CTK_LIST_BOX (widget), y));
 
@@ -212,13 +212,13 @@ drag_motion (GtkWidget      *widget,
 }
 
 static void
-drag_leave (GtkWidget      *widget,
+drag_leave (CtkWidget      *widget,
             GdkDragContext *context,
             guint           time)
 {
-  GtkWidget *drag_row;
-  GtkWidget *row_before;
-  GtkWidget *row_after;
+  CtkWidget *drag_row;
+  CtkWidget *row_before;
+  CtkWidget *row_after;
 
   drag_row = CTK_WIDGET (g_object_get_data (G_OBJECT (widget), "drag-row"));
   row_before = CTK_WIDGET (g_object_get_data (G_OBJECT (widget), "row-before"));
@@ -231,10 +231,10 @@ drag_leave (GtkWidget      *widget,
     ctk_style_context_remove_class (ctk_widget_get_style_context (row_after), "drag-hover-top");
 }
 
-static GtkWidget *
+static CtkWidget *
 create_row (const gchar *text)
 {
-  GtkWidget *row, *ebox, *box, *label, *image;
+  CtkWidget *row, *ebox, *box, *label, *image;
 
   row = ctk_list_box_row_new ();
   ebox = ctk_event_box_new ();
@@ -257,8 +257,8 @@ create_row (const gchar *text)
 }
 
 static void
-on_row_activated (GtkListBox *self,
-                  GtkWidget  *child)
+on_row_activated (CtkListBox *self,
+                  CtkWidget  *child)
 {
   const char *id;
   id = g_object_get_data (G_OBJECT (ctk_bin_get_child (CTK_BIN (child))), "id");
@@ -266,7 +266,7 @@ on_row_activated (GtkListBox *self,
 }
 
 static void
-on_selected_children_changed (GtkListBox *self)
+on_selected_children_changed (CtkListBox *self)
 {
   g_message ("Selection changed");
 }
@@ -278,9 +278,9 @@ a11y_selection_changed (AtkObject *obj)
 }
 
 static void
-selection_mode_changed (GtkComboBox *combo, gpointer data)
+selection_mode_changed (CtkComboBox *combo, gpointer data)
 {
-  GtkListBox *list = data;
+  CtkListBox *list = data;
 
   ctk_list_box_set_selection_mode (list, ctk_combo_box_get_active (combo));
 }
@@ -325,11 +325,11 @@ static const char *css =
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window, *list, *sw, *row;
-  GtkWidget *hbox, *vbox, *combo, *button;
+  CtkWidget *window, *list, *sw, *row;
+  CtkWidget *hbox, *vbox, *combo, *button;
   gint i;
   gchar *text;
-  GtkCssProvider *provider;
+  CtkCssProvider *provider;
 
   ctk_init (NULL, NULL);
 

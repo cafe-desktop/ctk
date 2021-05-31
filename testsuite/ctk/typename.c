@@ -1,4 +1,4 @@
-/* typename.c: Test for GtkBuilder's type-name-mangling heuristics
+/* typename.c: Test for CtkBuilder's type-name-mangling heuristics
  * Copyright (C) 2014 Red Hat, Inc.
  * Authors: Matthias Clasen
  *
@@ -51,11 +51,11 @@ check (const gchar *TN, const gchar *gtf)
   g_free (symbol);
 }
 
-static void test_GtkWindow (void)    { check ("GtkWindow", "ctk_window_get_type"); }
-static void test_GtkHBox (void)      { check ("GtkHBox", "ctk_hbox_get_type"); }
-static void test_GtkUIManager (void) { check ("GtkUIManager", "ctk_ui_manager_get_type"); }
-static void test_GtkCList (void)     { check ("GtkCList", "ctk_clist_get_type"); }
-static void test_GtkIMContext (void) { check ("GtkIMContext", "ctk_im_context_get_type"); }
+static void test_CtkWindow (void)    { check ("CtkWindow", "ctk_window_get_type"); }
+static void test_CtkHBox (void)      { check ("CtkHBox", "ctk_hbox_get_type"); }
+static void test_CtkUIManager (void) { check ("CtkUIManager", "ctk_ui_manager_get_type"); }
+static void test_CtkCList (void)     { check ("CtkCList", "ctk_clist_get_type"); }
+static void test_CtkIMContext (void) { check ("CtkIMContext", "ctk_im_context_get_type"); }
 static void test_Me2Shell (void)     { check ("Me2Shell", "me_2shell_get_type"); }
 static void test_GWeather (void)     { check ("GWeatherLocation", "gweather_location_get_type"); }
  
@@ -64,11 +64,11 @@ main (int argc, char *argv[])
 {
   g_test_init (&argc, &argv, NULL);
   
-  g_test_add_func ("/builder/get-type/GtkWindow",    test_GtkWindow);
-  g_test_add_func ("/builder/get-type/GtkHBox",      test_GtkHBox);
-  g_test_add_func ("/builder/get-type/GtkUIManager", test_GtkUIManager);
-  g_test_add_func ("/builder/get-type/GtkCList",     test_GtkCList);
-  g_test_add_func ("/builder/get-type/GtkIMContext", test_GtkIMContext);
+  g_test_add_func ("/builder/get-type/CtkWindow",    test_CtkWindow);
+  g_test_add_func ("/builder/get-type/CtkHBox",      test_CtkHBox);
+  g_test_add_func ("/builder/get-type/CtkUIManager", test_CtkUIManager);
+  g_test_add_func ("/builder/get-type/CtkCList",     test_CtkCList);
+  g_test_add_func ("/builder/get-type/CtkIMContext", test_CtkIMContext);
   g_test_add_func ("/builder/get-type/Me2Shell",     test_Me2Shell);
   g_test_add_func ("/builder/get-type/GWeather",     test_GWeather);
 

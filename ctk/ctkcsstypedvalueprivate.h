@@ -25,13 +25,13 @@
 
 G_BEGIN_DECLS
 
-GtkCssValue *   _ctk_css_typed_value_new           (const GValue           *value);
-GtkCssValue *   _ctk_css_typed_value_new_take      (GValue                 *value);
+CtkCssValue *   _ctk_css_typed_value_new           (const GValue           *value);
+CtkCssValue *   _ctk_css_typed_value_new_take      (GValue                 *value);
 
-gboolean        _ctk_is_css_typed_value_of_type    (const GtkCssValue      *value,
+gboolean        _ctk_is_css_typed_value_of_type    (const CtkCssValue      *value,
                                                     GType                   type);
 
-const GValue *  _ctk_css_typed_value_get           (const GtkCssValue      *value);
+const GValue *  _ctk_css_typed_value_get           (const CtkCssValue      *value);
 
 G_END_DECLS
 

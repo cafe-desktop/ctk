@@ -1,7 +1,7 @@
 /* Combo Boxes
  *
- * The GtkComboBox widget allows to select one option out of a list.
- * The GtkComboBoxEntry additionally allows the user to enter a value
+ * The CtkComboBox widget allows to select one option out of a list.
+ * The CtkComboBoxEntry additionally allows the user to enter a value
  * that is not in the list of options.
  *
  * How the options are displayed is controlled by cell renderers.
@@ -16,7 +16,7 @@ enum
   TEXT_COL
 };
 
-static GtkTreeModel *
+static CtkTreeModel *
 create_icon_store (void)
 {
   const gchar *icon_names[6] = {
@@ -36,8 +36,8 @@ create_icon_store (void)
     N_("Open")
   };
 
-  GtkTreeIter iter;
-  GtkListStore *store;
+  CtkTreeIter iter;
+  CtkListStore *store;
   gint i;
 
   store = ctk_list_store_new (2, G_TYPE_STRING, G_TYPE_STRING);
@@ -65,18 +65,18 @@ create_icon_store (void)
   return CTK_TREE_MODEL (store);
 }
 
-/* A GtkCellLayoutDataFunc that demonstrates how one can control
+/* A CtkCellLayoutDataFunc that demonstrates how one can control
  * sensitivity of rows. This particular function does nothing
  * useful and just makes the second row insensitive.
  */
 static void
-set_sensitive (GtkCellLayout   *cell_layout,
-               GtkCellRenderer *cell,
-               GtkTreeModel    *tree_model,
-               GtkTreeIter     *iter,
+set_sensitive (CtkCellLayout   *cell_layout,
+               CtkCellRenderer *cell,
+               CtkTreeModel    *tree_model,
+               CtkTreeIter     *iter,
                gpointer         data)
 {
-  GtkTreePath *path;
+  CtkTreePath *path;
   gint *indices;
   gboolean sensitive;
 
@@ -88,16 +88,16 @@ set_sensitive (GtkCellLayout   *cell_layout,
   g_object_set (cell, "sensitive", sensitive, NULL);
 }
 
-/* A GtkTreeViewRowSeparatorFunc that demonstrates how rows can be
+/* A CtkTreeViewRowSeparatorFunc that demonstrates how rows can be
  * rendered as separators. This particular function does nothing
  * useful and just turns the fourth row into a separator.
  */
 static gboolean
-is_separator (GtkTreeModel *model,
-              GtkTreeIter  *iter,
+is_separator (CtkTreeModel *model,
+              CtkTreeIter  *iter,
               gpointer      data)
 {
-  GtkTreePath *path;
+  CtkTreePath *path;
   gboolean result;
 
   path = ctk_tree_model_get_path (model, iter);
@@ -107,7 +107,7 @@ is_separator (GtkTreeModel *model,
   return result;
 }
 
-static GtkTreeModel *
+static CtkTreeModel *
 create_capital_store (void)
 {
   struct {
@@ -173,8 +173,8 @@ create_capital_store (void)
     { NULL, NULL }
   };
 
-  GtkTreeIter iter, iter2;
-  GtkTreeStore *store;
+  CtkTreeIter iter, iter2;
+  CtkTreeStore *store;
   gint i;
 
   store = ctk_tree_store_new (1, G_TYPE_STRING);
@@ -197,10 +197,10 @@ create_capital_store (void)
 }
 
 static void
-is_capital_sensitive (GtkCellLayout   *cell_layout,
-                      GtkCellRenderer *cell,
-                      GtkTreeModel    *tree_model,
-                      GtkTreeIter     *iter,
+is_capital_sensitive (CtkCellLayout   *cell_layout,
+                      CtkCellRenderer *cell,
+                      CtkTreeModel    *tree_model,
+                      CtkTreeIter     *iter,
                       gpointer         data)
 {
   gboolean sensitive;
@@ -211,7 +211,7 @@ is_capital_sensitive (GtkCellLayout   *cell_layout,
 }
 
 static void
-fill_combo_entry (GtkWidget *combo)
+fill_combo_entry (CtkWidget *combo)
 {
   ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (combo), "One");
   ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (combo), "Two");
@@ -233,18 +233,18 @@ fill_combo_entry (GtkWidget *combo)
 typedef struct _MaskEntry MaskEntry;
 struct _MaskEntry
 {
-  GtkEntry entry;
+  CtkEntry entry;
   gchar *mask;
 };
 
 typedef struct _MaskEntryClass MaskEntryClass;
 struct _MaskEntryClass
 {
-  GtkEntryClass parent_class;
+  CtkEntryClass parent_class;
 };
 
 
-static void mask_entry_editable_init (GtkEditableInterface *iface);
+static void mask_entry_editable_init (CtkEditableInterface *iface);
 
 G_DEFINE_TYPE_WITH_CODE (MaskEntry, mask_entry, CTK_TYPE_ENTRY,
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_EDITABLE,
@@ -273,7 +273,7 @@ mask_entry_set_background (MaskEntry *entry)
 
 
 static void
-mask_entry_changed (GtkEditable *editable)
+mask_entry_changed (CtkEditable *editable)
 {
   mask_entry_set_background (MASK_ENTRY (editable));
 }
@@ -292,21 +292,21 @@ mask_entry_class_init (MaskEntryClass *klass)
 
 
 static void
-mask_entry_editable_init (GtkEditableInterface *iface)
+mask_entry_editable_init (CtkEditableInterface *iface)
 {
   iface->changed = mask_entry_changed;
 }
 
 
-GtkWidget *
-do_combobox (GtkWidget *do_widget)
+CtkWidget *
+do_combobox (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *vbox, *frame, *box, *combo, *entry;
-  GtkTreeModel *model;
-  GtkCellRenderer *renderer;
-  GtkTreePath *path;
-  GtkTreeIter iter;
+  static CtkWidget *window = NULL;
+  CtkWidget *vbox, *frame, *box, *combo, *entry;
+  CtkTreeModel *model;
+  CtkCellRenderer *renderer;
+  CtkTreePath *path;
+  CtkTreeIter iter;
 
   if (!window)
   {
@@ -394,7 +394,7 @@ do_combobox (GtkWidget *do_widget)
     ctk_tree_path_free (path);
     ctk_combo_box_set_active_iter (CTK_COMBO_BOX (combo), &iter);
 
-    /* A GtkComboBoxEntry with validation */
+    /* A CtkComboBoxEntry with validation */
     frame = ctk_frame_new ("Editable");
     ctk_box_pack_start (CTK_BOX (vbox), frame, FALSE, FALSE, 0);
 

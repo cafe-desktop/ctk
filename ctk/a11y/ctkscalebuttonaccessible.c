@@ -27,12 +27,12 @@
 static void atk_action_interface_init (AtkActionIface *iface);
 static void atk_value_interface_init  (AtkValueIface  *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkScaleButtonAccessible, ctk_scale_button_accessible, CTK_TYPE_BUTTON_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (CtkScaleButtonAccessible, ctk_scale_button_accessible, CTK_TYPE_BUTTON_ACCESSIBLE,
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_ACTION, atk_action_interface_init)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_VALUE, atk_value_interface_init));
 
 static void
-ctk_scale_button_accessible_value_changed (GtkAdjustment *adjustment,
+ctk_scale_button_accessible_value_changed (CtkAdjustment *adjustment,
                                            gpointer       data)
 {
   g_object_notify (G_OBJECT (data), "accessible-value");
@@ -42,7 +42,7 @@ static void
 ctk_scale_button_accessible_initialize (AtkObject *obj,
                                         gpointer   data)
 {
-  GtkAdjustment *adjustment;
+  CtkAdjustment *adjustment;
 
   ATK_OBJECT_CLASS (ctk_scale_button_accessible_parent_class)->initialize (obj, data);
 
@@ -60,15 +60,15 @@ static void
 ctk_scale_button_accessible_notify_ctk (GObject    *obj,
                                         GParamSpec *pspec)
 {
-  GtkScaleButton *scale_button;
-  GtkScaleButtonAccessible *accessible;
+  CtkScaleButton *scale_button;
+  CtkScaleButtonAccessible *accessible;
 
   scale_button = CTK_SCALE_BUTTON (obj);
   accessible = CTK_SCALE_BUTTON_ACCESSIBLE (ctk_widget_get_accessible (CTK_WIDGET (scale_button)));
 
   if (strcmp (pspec->name, "adjustment") == 0)
     {
-      GtkAdjustment* adjustment;
+      CtkAdjustment* adjustment;
 
       adjustment = ctk_scale_button_get_adjustment (scale_button);
       g_signal_connect (adjustment,
@@ -83,10 +83,10 @@ ctk_scale_button_accessible_notify_ctk (GObject    *obj,
 }
 
 static void
-ctk_scale_button_accessible_class_init (GtkScaleButtonAccessibleClass *klass)
+ctk_scale_button_accessible_class_init (CtkScaleButtonAccessibleClass *klass)
 {
   AtkObjectClass *atk_object_class = ATK_OBJECT_CLASS (klass);
-  GtkWidgetAccessibleClass *widget_class = CTK_WIDGET_ACCESSIBLE_CLASS (klass);
+  CtkWidgetAccessibleClass *widget_class = CTK_WIDGET_ACCESSIBLE_CLASS (klass);
 
   atk_object_class->initialize = ctk_scale_button_accessible_initialize;
 
@@ -94,7 +94,7 @@ ctk_scale_button_accessible_class_init (GtkScaleButtonAccessibleClass *klass)
 }
 
 static void
-ctk_scale_button_accessible_init (GtkScaleButtonAccessible *button)
+ctk_scale_button_accessible_init (CtkScaleButtonAccessible *button)
 {
 }
 
@@ -102,7 +102,7 @@ static gboolean
 ctk_scale_button_accessible_do_action (AtkAction *action,
                                        gint       i)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (action));
   if (widget == NULL)
@@ -189,8 +189,8 @@ static void
 ctk_scale_button_accessible_get_current_value (AtkValue *obj,
                                                GValue   *value)
 {
-  GtkWidget *widget;
-  GtkAdjustment *adjustment;
+  CtkWidget *widget;
+  CtkAdjustment *adjustment;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   adjustment = ctk_scale_button_get_adjustment (CTK_SCALE_BUTTON (widget));
@@ -206,8 +206,8 @@ static void
 ctk_scale_button_accessible_get_maximum_value (AtkValue *obj,
                                                GValue   *value)
 {
-  GtkWidget *widget;
-  GtkAdjustment *adjustment;
+  CtkWidget *widget;
+  CtkAdjustment *adjustment;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   adjustment = ctk_scale_button_get_adjustment (CTK_SCALE_BUTTON (widget));
@@ -223,8 +223,8 @@ static void
 ctk_scale_button_accessible_get_minimum_value (AtkValue *obj,
                                                GValue   *value)
 {
-  GtkWidget *widget;
-  GtkAdjustment *adjustment;
+  CtkWidget *widget;
+  CtkAdjustment *adjustment;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   adjustment = ctk_scale_button_get_adjustment (CTK_SCALE_BUTTON (widget));
@@ -240,8 +240,8 @@ static void
 ctk_scale_button_accessible_get_minimum_increment (AtkValue *obj,
                                                    GValue   *value)
 {
-  GtkWidget *widget;
-  GtkAdjustment *adjustment;
+  CtkWidget *widget;
+  CtkAdjustment *adjustment;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   adjustment = ctk_scale_button_get_adjustment (CTK_SCALE_BUTTON (widget));
@@ -257,8 +257,8 @@ static gboolean
 ctk_scale_button_accessible_set_current_value (AtkValue     *obj,
                                                const GValue *value)
 {
-  GtkWidget *widget;
-  GtkAdjustment *adjustment;
+  CtkWidget *widget;
+  CtkAdjustment *adjustment;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   adjustment = ctk_scale_button_get_adjustment (CTK_SCALE_BUTTON (widget));
@@ -275,8 +275,8 @@ ctk_scale_button_accessible_get_value_and_text (AtkValue  *obj,
                                                 gdouble   *value,
                                                 gchar    **text)
 {
-  GtkWidget *widget;
-  GtkAdjustment *adjustment;
+  CtkWidget *widget;
+  CtkAdjustment *adjustment;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   adjustment = ctk_scale_button_get_adjustment (CTK_SCALE_BUTTON (widget));
@@ -290,8 +290,8 @@ ctk_scale_button_accessible_get_value_and_text (AtkValue  *obj,
 static AtkRange *
 ctk_scale_button_accessible_get_range (AtkValue *obj)
 {
-  GtkWidget *widget;
-  GtkAdjustment *adjustment;
+  CtkWidget *widget;
+  CtkAdjustment *adjustment;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   adjustment = ctk_scale_button_get_adjustment (CTK_SCALE_BUTTON (widget));
@@ -307,8 +307,8 @@ static void
 ctk_scale_button_accessible_set_value (AtkValue      *obj,
                                        const gdouble  value)
 {
-  GtkWidget *widget;
-  GtkAdjustment *adjustment;
+  CtkWidget *widget;
+  CtkAdjustment *adjustment;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   adjustment = ctk_scale_button_get_adjustment (CTK_SCALE_BUTTON (widget));
@@ -321,8 +321,8 @@ ctk_scale_button_accessible_set_value (AtkValue      *obj,
 static gdouble
 ctk_scale_button_accessible_get_increment (AtkValue *obj)
 {
-  GtkWidget *widget;
-  GtkAdjustment *adjustment;
+  CtkWidget *widget;
+  CtkAdjustment *adjustment;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   adjustment = ctk_scale_button_get_adjustment (CTK_SCALE_BUTTON (widget));

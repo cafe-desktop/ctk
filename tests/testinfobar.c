@@ -5,7 +5,7 @@ typedef enum {
 } Response;
 
 static void
-on_info_bar_response (GtkInfoBar *info_bar,
+on_info_bar_response (CtkInfoBar *info_bar,
                       int         response_id,
                       void       *user_data)
 {
@@ -28,15 +28,15 @@ static void
 on_activate (GApplication *application,
              void         *user_data)
 {
-  GtkWidget *box;
-  GtkWidget *info_bar;
-  GtkWidget *widget;
+  CtkWidget *box;
+  CtkWidget *info_bar;
+  CtkWidget *widget;
 
   box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 10);
 
   info_bar = ctk_info_bar_new ();
   ctk_container_add (CTK_CONTAINER (ctk_info_bar_get_content_area (CTK_INFO_BAR (info_bar))),
-                     ctk_label_new ("Hello!\nI am a GtkInfoBar"));
+                     ctk_label_new ("Hello!\nI am a CtkInfoBar"));
 
   widget = ctk_toggle_button_new_with_label ("Toggle :visible");
   ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (widget), TRUE);
@@ -96,7 +96,7 @@ int
 main (int   argc,
       char *argv[])
 {
-  GtkApplication *application;
+  CtkApplication *application;
   int result;
 
   application = ctk_application_new ("org.ctk.test.infobar",

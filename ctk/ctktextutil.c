@@ -39,21 +39,21 @@
 #define DRAG_ICON_MAX_LINES 7
 #define ELLIPSIS_CHARACTER "\xe2\x80\xa6"
 
-typedef struct _GtkUnicodeMenuEntry GtkUnicodeMenuEntry;
-typedef struct _GtkTextUtilCallbackInfo GtkTextUtilCallbackInfo;
+typedef struct _CtkUnicodeMenuEntry CtkUnicodeMenuEntry;
+typedef struct _CtkTextUtilCallbackInfo CtkTextUtilCallbackInfo;
 
-struct _GtkUnicodeMenuEntry {
+struct _CtkUnicodeMenuEntry {
   const char *label;
   gunichar ch;
 };
 
-struct _GtkTextUtilCallbackInfo
+struct _CtkTextUtilCallbackInfo
 {
-  GtkTextUtilCharChosenFunc func;
+  CtkTextUtilCharChosenFunc func;
   gpointer data;
 };
 
-static const GtkUnicodeMenuEntry bidi_menu_entries[] = {
+static const CtkUnicodeMenuEntry bidi_menu_entries[] = {
   { N_("LRM _Left-to-right mark"), 0x200E },
   { N_("RLM _Right-to-left mark"), 0x200F },
   { N_("LRE Left-to-right _embedding"), 0x202A },
@@ -66,13 +66,13 @@ static const GtkUnicodeMenuEntry bidi_menu_entries[] = {
   { N_("ZWNJ Zero width _non-joiner"), 0x200C }
 };
 
-static GtkTextUtilCallbackInfo *
-callback_info_new (GtkTextUtilCharChosenFunc  func,
+static CtkTextUtilCallbackInfo *
+callback_info_new (CtkTextUtilCharChosenFunc  func,
                    gpointer                   data)
 {
-  GtkTextUtilCallbackInfo *info;
+  CtkTextUtilCallbackInfo *info;
 
-  info = g_slice_new (GtkTextUtilCallbackInfo);
+  info = g_slice_new (CtkTextUtilCallbackInfo);
 
   info->func = func;
   info->data = data;
@@ -81,17 +81,17 @@ callback_info_new (GtkTextUtilCharChosenFunc  func,
 }
 
 static void
-callback_info_free (GtkTextUtilCallbackInfo *info)
+callback_info_free (CtkTextUtilCallbackInfo *info)
 {
-  g_slice_free (GtkTextUtilCallbackInfo, info);
+  g_slice_free (CtkTextUtilCallbackInfo, info);
 }
 
 static void
-activate_cb (GtkWidget *menu_item,
+activate_cb (CtkWidget *menu_item,
              gpointer   data)
 {
-  GtkUnicodeMenuEntry *entry;
-  GtkTextUtilCallbackInfo *info = data;
+  CtkUnicodeMenuEntry *entry;
+  CtkTextUtilCallbackInfo *info = data;
   char buf[7];
   
   entry = g_object_get_data (G_OBJECT (menu_item), "ctk-unicode-menu-entry");
@@ -103,7 +103,7 @@ activate_cb (GtkWidget *menu_item,
 
 /*
  * _ctk_text_util_append_special_char_menuitems
- * @menushell: a #GtkMenuShell
+ * @menushell: a #CtkMenuShell
  * @callback:  call this when an item is chosen
  * @data: data for callback
  * 
@@ -117,16 +117,16 @@ activate_cb (GtkWidget *menu_item,
  * instead of requiring the menu items to be created.
  */
 void
-_ctk_text_util_append_special_char_menuitems (GtkMenuShell              *menushell,
-                                              GtkTextUtilCharChosenFunc  func,
+_ctk_text_util_append_special_char_menuitems (CtkMenuShell              *menushell,
+                                              CtkTextUtilCharChosenFunc  func,
                                               gpointer                   data)
 {
   int i;
 
   for (i = 0; i < G_N_ELEMENTS (bidi_menu_entries); i++)
     {
-      GtkWidget *menuitem;
-      GtkTextUtilCallbackInfo *info;
+      CtkWidget *menuitem;
+      CtkTextUtilCallbackInfo *info;
 
       info = callback_info_new (func, data);
 
@@ -192,7 +192,7 @@ limit_layout_lines (PangoLayout *layout)
 
 /**
  * _ctk_text_util_create_drag_icon:
- * @widget: #GtkWidget to extract the pango context
+ * @widget: #CtkWidget to extract the pango context
  * @text: a #gchar to render the icon
  * @len: length of @text, or -1 for NUL-terminated text
  *
@@ -201,11 +201,11 @@ limit_layout_lines (PangoLayout *layout)
  * Returns: a #cairo_surface_t to use as DND icon
  */
 cairo_surface_t *
-_ctk_text_util_create_drag_icon (GtkWidget *widget,
+_ctk_text_util_create_drag_icon (CtkWidget *widget,
                                  gchar     *text,
                                  gsize      len)
 {
-  GtkStyleContext *style_context;
+  CtkStyleContext *style_context;
   cairo_surface_t *surface;
   PangoContext *context;
   PangoLayout  *layout;
@@ -254,11 +254,11 @@ _ctk_text_util_create_drag_icon (GtkWidget *widget,
 }
 
 static void
-set_attributes_from_style (GtkStyleContext   *context,
-                           GtkTextAttributes *values)
+set_attributes_from_style (CtkStyleContext   *context,
+                           CtkTextAttributes *values)
 {
   GdkRGBA bg_color, fg_color;
-  GtkStateFlags state;
+  CtkStateFlags state;
 
   state = ctk_style_context_get_state (context);
 
@@ -282,19 +282,19 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 cairo_surface_t *
-_ctk_text_util_create_rich_drag_icon (GtkWidget     *widget,
-                                      GtkTextBuffer *buffer,
-                                      GtkTextIter   *start,
-                                      GtkTextIter   *end)
+_ctk_text_util_create_rich_drag_icon (CtkWidget     *widget,
+                                      CtkTextBuffer *buffer,
+                                      CtkTextIter   *start,
+                                      CtkTextIter   *end)
 {
-  GtkAllocation      allocation;
+  CtkAllocation      allocation;
   cairo_surface_t   *surface;
   gint               layout_width, layout_height;
-  GtkTextBuffer     *new_buffer;
-  GtkTextLayout     *layout;
-  GtkTextAttributes *style;
+  CtkTextBuffer     *new_buffer;
+  CtkTextLayout     *layout;
+  CtkTextAttributes *style;
   PangoContext      *ltr_context, *rtl_context;
-  GtkTextIter        iter;
+  CtkTextIter        iter;
   cairo_t           *cr;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);

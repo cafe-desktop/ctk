@@ -39,19 +39,19 @@
 #include <ctk/ctk.h>
 #endif
 
-struct _GtkPlacesViewRow
+struct _CtkPlacesViewRow
 {
-  GtkListBoxRow  parent_instance;
+  CtkListBoxRow  parent_instance;
 
-  GtkLabel      *available_space_label;
-  GtkStack      *mount_stack;
-  GtkSpinner    *busy_spinner;
-  GtkButton     *eject_button;
-  GtkImage      *eject_icon;
-  GtkEventBox   *event_box;
-  GtkImage      *icon_image;
-  GtkLabel      *name_label;
-  GtkLabel      *path_label;
+  CtkLabel      *available_space_label;
+  CtkStack      *mount_stack;
+  CtkSpinner    *busy_spinner;
+  CtkButton     *eject_button;
+  CtkImage      *eject_icon;
+  CtkEventBox   *event_box;
+  CtkImage      *icon_image;
+  CtkLabel      *name_label;
+  CtkLabel      *path_label;
 
   GVolume       *volume;
   GMount        *mount;
@@ -62,7 +62,7 @@ struct _GtkPlacesViewRow
   gint           is_network : 1;
 };
 
-G_DEFINE_TYPE (GtkPlacesViewRow, ctk_places_view_row, CTK_TYPE_LIST_BOX_ROW)
+G_DEFINE_TYPE (CtkPlacesViewRow, ctk_places_view_row, CTK_TYPE_LIST_BOX_ROW)
 
 enum {
   PROP_0,
@@ -83,7 +83,7 @@ measure_available_space_finished (GObject      *object,
                                   GAsyncResult *res,
                                   gpointer      user_data)
 {
-  GtkPlacesViewRow *row = user_data;
+  CtkPlacesViewRow *row = user_data;
   GFileInfo *info;
   GError *error;
   guint64 free_space;
@@ -145,7 +145,7 @@ out:
 }
 
 static void
-measure_available_space (GtkPlacesViewRow *row)
+measure_available_space (CtkPlacesViewRow *row)
 {
   gboolean should_measure;
 
@@ -197,7 +197,7 @@ measure_available_space (GtkPlacesViewRow *row)
 static void
 ctk_places_view_row_finalize (GObject *object)
 {
-  GtkPlacesViewRow *self = CTK_PLACES_VIEW_ROW (object);
+  CtkPlacesViewRow *self = CTK_PLACES_VIEW_ROW (object);
 
   g_cancellable_cancel (self->cancellable);
 
@@ -215,7 +215,7 @@ ctk_places_view_row_get_property (GObject    *object,
                                   GValue     *value,
                                   GParamSpec *pspec)
 {
-  GtkPlacesViewRow *self;
+  CtkPlacesViewRow *self;
   GIcon *icon;
 
   self = CTK_PLACES_VIEW_ROW (object);
@@ -263,7 +263,7 @@ ctk_places_view_row_set_property (GObject      *object,
                                   const GValue *value,
                                   GParamSpec   *pspec)
 {
-  GtkPlacesViewRow *self = CTK_PLACES_VIEW_ROW (object);
+  CtkPlacesViewRow *self = CTK_PLACES_VIEW_ROW (object);
 
   switch (prop_id)
     {
@@ -315,10 +315,10 @@ ctk_places_view_row_set_property (GObject      *object,
 }
 
 static void
-ctk_places_view_row_class_init (GtkPlacesViewRowClass *klass)
+ctk_places_view_row_class_init (CtkPlacesViewRowClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   object_class->finalize = ctk_places_view_row_finalize;
   object_class->get_property = ctk_places_view_row_get_property;
@@ -377,24 +377,24 @@ ctk_places_view_row_class_init (GtkPlacesViewRowClass *klass)
 
   ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/ui/ctkplacesviewrow.ui");
 
-  ctk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, available_space_label);
-  ctk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, mount_stack);
-  ctk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, busy_spinner);
-  ctk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, eject_button);
-  ctk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, eject_icon);
-  ctk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, event_box);
-  ctk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, icon_image);
-  ctk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, name_label);
-  ctk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, path_label);
+  ctk_widget_class_bind_template_child (widget_class, CtkPlacesViewRow, available_space_label);
+  ctk_widget_class_bind_template_child (widget_class, CtkPlacesViewRow, mount_stack);
+  ctk_widget_class_bind_template_child (widget_class, CtkPlacesViewRow, busy_spinner);
+  ctk_widget_class_bind_template_child (widget_class, CtkPlacesViewRow, eject_button);
+  ctk_widget_class_bind_template_child (widget_class, CtkPlacesViewRow, eject_icon);
+  ctk_widget_class_bind_template_child (widget_class, CtkPlacesViewRow, event_box);
+  ctk_widget_class_bind_template_child (widget_class, CtkPlacesViewRow, icon_image);
+  ctk_widget_class_bind_template_child (widget_class, CtkPlacesViewRow, name_label);
+  ctk_widget_class_bind_template_child (widget_class, CtkPlacesViewRow, path_label);
 }
 
 static void
-ctk_places_view_row_init (GtkPlacesViewRow *self)
+ctk_places_view_row_init (CtkPlacesViewRow *self)
 {
   ctk_widget_init_template (CTK_WIDGET (self));
 }
 
-GtkWidget*
+CtkWidget*
 ctk_places_view_row_new (GVolume *volume,
                          GMount  *mount)
 {
@@ -405,7 +405,7 @@ ctk_places_view_row_new (GVolume *volume,
 }
 
 GMount*
-ctk_places_view_row_get_mount (GtkPlacesViewRow *row)
+ctk_places_view_row_get_mount (CtkPlacesViewRow *row)
 {
   g_return_val_if_fail (CTK_IS_PLACES_VIEW_ROW (row), NULL);
 
@@ -413,7 +413,7 @@ ctk_places_view_row_get_mount (GtkPlacesViewRow *row)
 }
 
 GVolume*
-ctk_places_view_row_get_volume (GtkPlacesViewRow *row)
+ctk_places_view_row_get_volume (CtkPlacesViewRow *row)
 {
   g_return_val_if_fail (CTK_IS_PLACES_VIEW_ROW (row), NULL);
 
@@ -421,23 +421,23 @@ ctk_places_view_row_get_volume (GtkPlacesViewRow *row)
 }
 
 GFile*
-ctk_places_view_row_get_file (GtkPlacesViewRow *row)
+ctk_places_view_row_get_file (CtkPlacesViewRow *row)
 {
   g_return_val_if_fail (CTK_IS_PLACES_VIEW_ROW (row), NULL);
 
   return row->file;
 }
 
-GtkWidget*
-ctk_places_view_row_get_eject_button (GtkPlacesViewRow *row)
+CtkWidget*
+ctk_places_view_row_get_eject_button (CtkPlacesViewRow *row)
 {
   g_return_val_if_fail (CTK_IS_PLACES_VIEW_ROW (row), NULL);
 
   return CTK_WIDGET (row->eject_button);
 }
 
-GtkWidget*
-ctk_places_view_row_get_event_box (GtkPlacesViewRow *row)
+CtkWidget*
+ctk_places_view_row_get_event_box (CtkPlacesViewRow *row)
 {
   g_return_val_if_fail (CTK_IS_PLACES_VIEW_ROW (row), NULL);
 
@@ -445,7 +445,7 @@ ctk_places_view_row_get_event_box (GtkPlacesViewRow *row)
 }
 
 void
-ctk_places_view_row_set_busy (GtkPlacesViewRow *row,
+ctk_places_view_row_set_busy (CtkPlacesViewRow *row,
                               gboolean          is_busy)
 {
   g_return_if_fail (CTK_IS_PLACES_VIEW_ROW (row));
@@ -462,7 +462,7 @@ ctk_places_view_row_set_busy (GtkPlacesViewRow *row,
 }
 
 gboolean
-ctk_places_view_row_get_is_network (GtkPlacesViewRow *row)
+ctk_places_view_row_get_is_network (CtkPlacesViewRow *row)
 {
   g_return_val_if_fail (CTK_IS_PLACES_VIEW_ROW (row), FALSE);
 
@@ -470,7 +470,7 @@ ctk_places_view_row_get_is_network (GtkPlacesViewRow *row)
 }
 
 void
-ctk_places_view_row_set_is_network (GtkPlacesViewRow *row,
+ctk_places_view_row_set_is_network (CtkPlacesViewRow *row,
                                     gboolean          is_network)
 {
   if (row->is_network != is_network)
@@ -483,16 +483,16 @@ ctk_places_view_row_set_is_network (GtkPlacesViewRow *row,
 }
 
 void
-ctk_places_view_row_set_path_size_group (GtkPlacesViewRow *row,
-                                         GtkSizeGroup     *group)
+ctk_places_view_row_set_path_size_group (CtkPlacesViewRow *row,
+                                         CtkSizeGroup     *group)
 {
   if (group)
     ctk_size_group_add_widget (group, CTK_WIDGET (row->path_label));
 }
 
 void
-ctk_places_view_row_set_space_size_group (GtkPlacesViewRow *row,
-                                          GtkSizeGroup     *group)
+ctk_places_view_row_set_space_size_group (CtkPlacesViewRow *row,
+                                          CtkSizeGroup     *group)
 {
   if (group)
     ctk_size_group_add_widget (group, CTK_WIDGET (row->available_space_label));

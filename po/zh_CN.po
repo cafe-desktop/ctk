@@ -1792,7 +1792,7 @@ msgid ""
 "  --id=ID            Preview only the named object\n"
 "  --css=FILE         Use style from CSS file\n"
 "\n"
-"Perform various tasks on GtkBuilder .ui files.\n"
+"Perform various tasks on CtkBuilder .ui files.\n"
 msgstr ""
 "用法：\n"
 "  ctk-builder-tool [命令] 文件\n"
@@ -1810,7 +1810,7 @@ msgstr ""
 "  --id=ID            仅预览已命名的对象\n"
 "  --css=文件         使用 CSS 文件中的样式\n"
 "\n"
-"此命令可以对 GtkBuilder 的 .ui 文件执行各种操作。\n"
+"此命令可以对 CtkBuilder 的 .ui 文件执行各种操作。\n"
 
 #. Translate to calendar:YM if you want years to be displayed
 #. * before months; otherwise translate to calendar:MY.
@@ -2652,7 +2652,7 @@ msgstr "访问时间"
 msgid "Create Folder"
 msgstr "创建文件夹"
 
-#. The pointers we return for a GtkFileSystemVolume are opaque tokens; they are
+#. The pointers we return for a CtkFileSystemVolume are opaque tokens; they are
 #. * really pointers to GDrive, GVolume or GMount objects.  We need an extra
 #. * token for the fake “File System” volume.  So, we’ll return a pointer to
 #. * this particular string.
@@ -4503,7 +4503,7 @@ msgstr "GL 绘制已停用"
 
 #: ctk/inspector/visual.ui:61
 msgid "GTK+ Theme"
-msgstr "Gtk+ 主题"
+msgstr "Ctk+ 主题"
 
 #: ctk/inspector/visual.ui:94
 msgid "Dark Variant"

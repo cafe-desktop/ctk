@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.8 -->
-  <template class="ExampleAppPrefs" parent="GtkDialog">
+  <template class="ExampleAppPrefs" parent="CtkDialog">
     <property name="title" translatable="yes">Preferences</property>
     <property name="resizable">False</property>
     <property name="modal">True</property>
     <child internal-child="vbox">
-      <object class="GtkBox" id="vbox">
+      <object class="CtkBox" id="vbox">
         <child>
-          <object class="GtkGrid" id="grid">
+          <object class="CtkGrid" id="grid">
             <property name="visible">True</property>
             <property name="margin">6</property>
             <property name="row-spacing">12</property>
             <property name="column-spacing">6</property>
             <child>
-              <object class="GtkLabel" id="fontlabel">
+              <object class="CtkLabel" id="fontlabel">
                 <property name="visible">True</property>
                 <property name="label">_Font:</property>
                 <property name="use-underline">True</property>
@@ -27,7 +27,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkFontButton" id="font">
+              <object class="CtkFontButton" id="font">
                 <property name="visible">True</property>
               </object>
               <packing>
@@ -36,7 +36,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="transitionlabel">
+              <object class="CtkLabel" id="transitionlabel">
                 <property name="visible">True</property>
                 <property name="label">_Transition:</property>
                 <property name="use-underline">True</property>
@@ -49,7 +49,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkComboBoxText" id="transition">
+              <object class="CtkComboBoxText" id="transition">
                 <property name="visible">True</property>
                 <items>
                   <item translatable="yes" id="none">None</item>

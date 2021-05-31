@@ -36,10 +36,10 @@
 /**
  * SECTION:ctktable
  * @Short_description: Pack widgets in regular patterns
- * @Title: GtkTable
- * @See_also: #GtkGrid
+ * @Title: CtkTable
+ * @See_also: #CtkGrid
  *
- * The #GtkTable functions allow the programmer to arrange widgets in rows and
+ * The #CtkTable functions allow the programmer to arrange widgets in rows and
  * columns, making it easy to align many widgets next to each other,
  * horizontally and vertically.
  *
@@ -60,16 +60,16 @@
  * ctk_table_set_homogeneous(), can be used to set whether all cells in the
  * table will resize themselves to the size of the largest widget in the table.
  *
- * > #GtkTable has been deprecated. Use #GtkGrid instead. It provides the same
- * > capabilities as GtkTable for arranging widgets in a rectangular grid, but
+ * > #CtkTable has been deprecated. Use #CtkGrid instead. It provides the same
+ * > capabilities as CtkTable for arranging widgets in a rectangular grid, but
  * > does support height-for-width geometry management.
  */
 
 
-struct _GtkTablePrivate
+struct _CtkTablePrivate
 {
-  GtkTableRowCol *cols;
-  GtkTableRowCol *rows;
+  CtkTableRowCol *cols;
+  CtkTableRowCol *rows;
 
   GList          *children;
 
@@ -106,21 +106,21 @@ enum
   
 
 static void ctk_table_finalize	    (GObject	    *object);
-static void ctk_table_get_preferred_width  (GtkWidget *widget,
+static void ctk_table_get_preferred_width  (CtkWidget *widget,
                                             gint      *minimum,
                                             gint      *natural);
-static void ctk_table_get_preferred_height (GtkWidget *widget,
+static void ctk_table_get_preferred_height (CtkWidget *widget,
                                             gint      *minimum,
                                             gint      *natural);
-static void ctk_table_size_allocate (GtkWidget	    *widget,
-				     GtkAllocation  *allocation);
-static void ctk_table_add	    (GtkContainer   *container,
-				     GtkWidget	    *widget);
-static void ctk_table_remove	    (GtkContainer   *container,
-				     GtkWidget	    *widget);
-static void ctk_table_forall	    (GtkContainer   *container,
+static void ctk_table_size_allocate (CtkWidget	    *widget,
+				     CtkAllocation  *allocation);
+static void ctk_table_add	    (CtkContainer   *container,
+				     CtkWidget	    *widget);
+static void ctk_table_remove	    (CtkContainer   *container,
+				     CtkWidget	    *widget);
+static void ctk_table_forall	    (CtkContainer   *container,
 				     gboolean	     include_internals,
-				     GtkCallback     callback,
+				     CtkCallback     callback,
 				     gpointer	     callback_data);
 static void ctk_table_get_property  (GObject         *object,
 				     guint            prop_id,
@@ -130,37 +130,37 @@ static void ctk_table_set_property  (GObject         *object,
 				     guint            prop_id,
 				     const GValue    *value,
 				     GParamSpec      *pspec);
-static void ctk_table_set_child_property (GtkContainer    *container,
-					  GtkWidget       *child,
+static void ctk_table_set_child_property (CtkContainer    *container,
+					  CtkWidget       *child,
 					  guint            property_id,
 					  const GValue    *value,
 					  GParamSpec      *pspec);
-static void ctk_table_get_child_property (GtkContainer    *container,
-					  GtkWidget       *child,
+static void ctk_table_get_child_property (CtkContainer    *container,
+					  CtkWidget       *child,
 					  guint            property_id,
 					  GValue          *value,
 					  GParamSpec      *pspec);
-static GType ctk_table_child_type   (GtkContainer   *container);
+static GType ctk_table_child_type   (CtkContainer   *container);
 
 
-static void ctk_table_size_request_init	 (GtkTable *table);
-static void ctk_table_size_request_pass1 (GtkTable *table);
-static void ctk_table_size_request_pass2 (GtkTable *table);
-static void ctk_table_size_request_pass3 (GtkTable *table);
+static void ctk_table_size_request_init	 (CtkTable *table);
+static void ctk_table_size_request_pass1 (CtkTable *table);
+static void ctk_table_size_request_pass2 (CtkTable *table);
+static void ctk_table_size_request_pass3 (CtkTable *table);
 
-static void ctk_table_size_allocate_init  (GtkTable *table);
-static void ctk_table_size_allocate_pass1 (GtkTable *table);
-static void ctk_table_size_allocate_pass2 (GtkTable *table);
+static void ctk_table_size_allocate_init  (CtkTable *table);
+static void ctk_table_size_allocate_pass1 (CtkTable *table);
+static void ctk_table_size_allocate_pass2 (CtkTable *table);
 
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkTable, ctk_table, CTK_TYPE_CONTAINER)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkTable, ctk_table, CTK_TYPE_CONTAINER)
 
 static void
-ctk_table_class_init (GtkTableClass *class)
+ctk_table_class_init (CtkTableClass *class)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
-  GtkContainerClass *container_class = CTK_CONTAINER_CLASS (class);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
+  CtkContainerClass *container_class = CTK_CONTAINER_CLASS (class);
   
   gobject_class->finalize = ctk_table_finalize;
 
@@ -282,7 +282,7 @@ ctk_table_class_init (GtkTableClass *class)
 }
 
 static GType
-ctk_table_child_type (GtkContainer   *container)
+ctk_table_child_type (CtkContainer   *container)
 {
   return CTK_TYPE_WIDGET;
 }
@@ -293,8 +293,8 @@ ctk_table_get_property (GObject      *object,
 			GValue       *value,
 			GParamSpec   *pspec)
 {
-  GtkTable *table = CTK_TABLE (object);
-  GtkTablePrivate *priv = table->priv;
+  CtkTable *table = CTK_TABLE (object);
+  CtkTablePrivate *priv = table->priv;
 
   switch (prop_id)
     {
@@ -325,8 +325,8 @@ ctk_table_set_property (GObject      *object,
 			const GValue *value,
 			GParamSpec   *pspec)
 {
-  GtkTable *table = CTK_TABLE (object);
-  GtkTablePrivate *priv = table->priv;
+  CtkTable *table = CTK_TABLE (object);
+  CtkTablePrivate *priv = table->priv;
 
   switch (prop_id)
     {
@@ -352,15 +352,15 @@ ctk_table_set_property (GObject      *object,
 }
 
 static void
-ctk_table_set_child_property (GtkContainer    *container,
-			      GtkWidget       *child,
+ctk_table_set_child_property (CtkContainer    *container,
+			      CtkWidget       *child,
 			      guint            property_id,
 			      const GValue    *value,
 			      GParamSpec      *pspec)
 {
-  GtkTable *table = CTK_TABLE (container);
-  GtkTablePrivate *priv = table->priv;
-  GtkTableChild *table_child;
+  CtkTable *table = CTK_TABLE (container);
+  CtkTablePrivate *priv = table->priv;
+  CtkTableChild *table_child;
   GList *list;
 
   table_child = NULL;
@@ -437,15 +437,15 @@ ctk_table_set_child_property (GtkContainer    *container,
 }
 
 static void
-ctk_table_get_child_property (GtkContainer    *container,
-			      GtkWidget       *child,
+ctk_table_get_child_property (CtkContainer    *container,
+			      CtkWidget       *child,
 			      guint            property_id,
 			      GValue          *value,
 			      GParamSpec      *pspec)
 {
-  GtkTable *table = CTK_TABLE (container);
-  GtkTablePrivate *priv = table->priv;
-  GtkTableChild *table_child;
+  CtkTable *table = CTK_TABLE (container);
+  CtkTablePrivate *priv = table->priv;
+  CtkTableChild *table_child;
   GList *list;
 
   table_child = NULL;
@@ -499,9 +499,9 @@ ctk_table_get_child_property (GtkContainer    *container,
 }
 
 static void
-ctk_table_init (GtkTable *table)
+ctk_table_init (CtkTable *table)
 {
-  GtkTablePrivate *priv;
+  CtkTablePrivate *priv;
 
   table->priv = ctk_table_get_instance_private (table);
   priv = table->priv;
@@ -537,13 +537,13 @@ ctk_table_init (GtkTable *table)
  *
  * Deprecated: 3.4: Use ctk_grid_new().
  */
-GtkWidget*
+CtkWidget*
 ctk_table_new (guint	rows,
 	       guint	columns,
 	       gboolean homogeneous)
 {
-  GtkTable *table;
-  GtkTablePrivate *priv;
+  CtkTable *table;
+  CtkTablePrivate *priv;
 
   if (rows == 0)
     rows = 1;
@@ -562,21 +562,21 @@ ctk_table_new (guint	rows,
 
 /**
  * ctk_table_resize:
- * @table: The #GtkTable you wish to change the size of.
+ * @table: The #CtkTable you wish to change the size of.
  * @rows: The new number of rows.
  * @columns: The new number of columns.
  *
  * If you need to change a table’s size after
  * it has been created, this function allows you to do so.
  *
- * Deprecated: 3.4: #GtkGrid resizes automatically.
+ * Deprecated: 3.4: #CtkGrid resizes automatically.
  */
 void
-ctk_table_resize (GtkTable *table,
+ctk_table_resize (CtkTable *table,
 		  guint     n_rows,
 		  guint     n_cols)
 {
-  GtkTablePrivate *priv;
+  CtkTablePrivate *priv;
 
   g_return_if_fail (CTK_IS_TABLE (table));
   g_return_if_fail (n_rows > 0 && n_rows <= 65535);
@@ -594,7 +594,7 @@ ctk_table_resize (GtkTable *table,
       
       for (list = priv->children; list; list = list->next)
 	{
-	  GtkTableChild *child;
+	  CtkTableChild *child;
 	  
 	  child = list->data;
 	  
@@ -608,7 +608,7 @@ ctk_table_resize (GtkTable *table,
 
 	  i = priv->nrows;
 	  priv->nrows = n_rows;
-	  priv->rows = g_realloc (priv->rows, priv->nrows * sizeof (GtkTableRowCol));
+	  priv->rows = g_realloc (priv->rows, priv->nrows * sizeof (CtkTableRowCol));
 
 	  for (; i < priv->nrows; i++)
 	    {
@@ -630,7 +630,7 @@ ctk_table_resize (GtkTable *table,
 
 	  i = priv->ncols;
 	  priv->ncols = n_cols;
-	  priv->cols = g_realloc (priv->cols, priv->ncols * sizeof (GtkTableRowCol));
+	  priv->cols = g_realloc (priv->cols, priv->ncols * sizeof (CtkTableRowCol));
 
 	  for (; i < priv->ncols; i++)
 	    {
@@ -650,7 +650,7 @@ ctk_table_resize (GtkTable *table,
 
 /**
  * ctk_table_attach:
- * @table: The #GtkTable to add a new widget to.
+ * @table: The #CtkTable to add a new widget to.
  * @child: The widget to add.
  * @left_attach: the column number to attach the left side of a child widget to.
  * @right_attach: the column number to attach the right side of a child widget to.
@@ -676,23 +676,23 @@ ctk_table_resize (GtkTable *table,
  * ]|
  * If you want to make the button span the entire bottom row, use @left_attach == 0 and @right_attach = 2 instead.
  *
- * Deprecated: 3.4: Use ctk_grid_attach() with #GtkGrid. Note that the attach
+ * Deprecated: 3.4: Use ctk_grid_attach() with #CtkGrid. Note that the attach
  *     arguments differ between those two functions.
  */
 void
-ctk_table_attach (GtkTable	  *table,
-		  GtkWidget	  *child,
+ctk_table_attach (CtkTable	  *table,
+		  CtkWidget	  *child,
 		  guint		   left_attach,
 		  guint		   right_attach,
 		  guint		   top_attach,
 		  guint		   bottom_attach,
-		  GtkAttachOptions xoptions,
-		  GtkAttachOptions yoptions,
+		  CtkAttachOptions xoptions,
+		  CtkAttachOptions yoptions,
 		  guint		   xpadding,
 		  guint		   ypadding)
 {
-  GtkTablePrivate *priv;
-  GtkTableChild *table_child;
+  CtkTablePrivate *priv;
+  CtkTableChild *table_child;
 
   g_return_if_fail (CTK_IS_TABLE (table));
   g_return_if_fail (CTK_IS_WIDGET (child));
@@ -711,7 +711,7 @@ ctk_table_attach (GtkTable	  *table,
   if (bottom_attach >= priv->nrows)
     ctk_table_resize (table, bottom_attach, priv->ncols);
 
-  table_child = g_new (GtkTableChild, 1);
+  table_child = g_new (CtkTableChild, 1);
   table_child->widget = child;
   table_child->left_attach = left_attach;
   table_child->right_attach = right_attach;
@@ -742,15 +742,15 @@ ctk_table_attach (GtkTable	  *table,
  *
  * As there are many options associated with ctk_table_attach(), this convenience
  * function provides the programmer with a means to add children to a table with
- * identical padding and expansion options. The values used for the #GtkAttachOptions
+ * identical padding and expansion options. The values used for the #CtkAttachOptions
  * are `CTK_EXPAND | CTK_FILL`, and the padding is set to 0.
  *
- * Deprecated: 3.4: Use ctk_grid_attach() with #GtkGrid. Note that the attach
+ * Deprecated: 3.4: Use ctk_grid_attach() with #CtkGrid. Note that the attach
  *     arguments differ between those two functions.
  */
 void
-ctk_table_attach_defaults (GtkTable  *table,
-			   GtkWidget *widget,
+ctk_table_attach_defaults (CtkTable  *table,
+			   CtkWidget *widget,
 			   guint      left_attach,
 			   guint      right_attach,
 			   guint      top_attach,
@@ -766,7 +766,7 @@ ctk_table_attach_defaults (GtkTable  *table,
 
 /**
  * ctk_table_set_row_spacing:
- * @table: a #GtkTable containing the row whose properties you wish to change.
+ * @table: a #CtkTable containing the row whose properties you wish to change.
  * @row: row number whose spacing will be changed.
  * @spacing: number of pixels that the spacing should take up.
  *
@@ -774,14 +774,14 @@ ctk_table_attach_defaults (GtkTable  *table,
  *
  * Deprecated: 3.4: Use ctk_widget_set_margin_top() and
  *     ctk_widget_set_margin_bottom() on the widgets contained in the row if
- *     you need this functionality. #GtkGrid does not support per-row spacing.
+ *     you need this functionality. #CtkGrid does not support per-row spacing.
  */
 void
-ctk_table_set_row_spacing (GtkTable *table,
+ctk_table_set_row_spacing (CtkTable *table,
 			   guint     row,
 			   guint     spacing)
 {
-  GtkTablePrivate *priv;
+  CtkTablePrivate *priv;
 
   g_return_if_fail (CTK_IS_TABLE (table));
 
@@ -800,7 +800,7 @@ ctk_table_set_row_spacing (GtkTable *table,
 
 /**
  * ctk_table_get_row_spacing:
- * @table: a #GtkTable
+ * @table: a #CtkTable
  * @row: a row in the table, 0 indicates the first row
  *
  * Gets the amount of space between row @row, and
@@ -808,14 +808,14 @@ ctk_table_set_row_spacing (GtkTable *table,
  *
  * Returns: the row spacing
  *
- * Deprecated: 3.4: #GtkGrid does not offer a replacement for this
+ * Deprecated: 3.4: #CtkGrid does not offer a replacement for this
  *     functionality.
  **/
 guint
-ctk_table_get_row_spacing (GtkTable *table,
+ctk_table_get_row_spacing (CtkTable *table,
 			   guint     row)
 {
-  GtkTablePrivate *priv;
+  CtkTablePrivate *priv;
 
   g_return_val_if_fail (CTK_IS_TABLE (table), 0);
 
@@ -828,7 +828,7 @@ ctk_table_get_row_spacing (GtkTable *table,
 
 /**
  * ctk_table_set_col_spacing:
- * @table: a #GtkTable.
+ * @table: a #CtkTable.
  * @column: the column whose spacing should be changed.
  * @spacing: number of pixels that the spacing should take up.
  *
@@ -837,14 +837,14 @@ ctk_table_get_row_spacing (GtkTable *table,
  *
  * Deprecated: 3.4: Use ctk_widget_set_margin_start() and
  *     ctk_widget_set_margin_end() on the widgets contained in the row if
- *     you need this functionality. #GtkGrid does not support per-row spacing.
+ *     you need this functionality. #CtkGrid does not support per-row spacing.
  */
 void
-ctk_table_set_col_spacing (GtkTable *table,
+ctk_table_set_col_spacing (CtkTable *table,
 			   guint     column,
 			   guint     spacing)
 {
-  GtkTablePrivate *priv;
+  CtkTablePrivate *priv;
 
   g_return_if_fail (CTK_IS_TABLE (table));
 
@@ -863,7 +863,7 @@ ctk_table_set_col_spacing (GtkTable *table,
 
 /**
  * ctk_table_get_col_spacing:
- * @table: a #GtkTable
+ * @table: a #CtkTable
  * @column: a column in the table, 0 indicates the first column
  *
  * Gets the amount of space between column @col, and
@@ -871,14 +871,14 @@ ctk_table_set_col_spacing (GtkTable *table,
  *
  * Returns: the column spacing
  *
- * Deprecated: 3.4: #GtkGrid does not offer a replacement for this
+ * Deprecated: 3.4: #CtkGrid does not offer a replacement for this
  *     functionality.
  **/
 guint
-ctk_table_get_col_spacing (GtkTable *table,
+ctk_table_get_col_spacing (CtkTable *table,
 			   guint     column)
 {
-  GtkTablePrivate *priv;
+  CtkTablePrivate *priv;
 
   g_return_val_if_fail (CTK_IS_TABLE (table), 0);
 
@@ -891,18 +891,18 @@ ctk_table_get_col_spacing (GtkTable *table,
 
 /**
  * ctk_table_set_row_spacings:
- * @table: a #GtkTable.
+ * @table: a #CtkTable.
  * @spacing: the number of pixels of space to place between every row in the table.
  *
  * Sets the space between every row in @table equal to @spacing.
  *
- * Deprecated: 3.4: Use ctk_grid_set_row_spacing() with #GtkGrid.
+ * Deprecated: 3.4: Use ctk_grid_set_row_spacing() with #CtkGrid.
  */
 void
-ctk_table_set_row_spacings (GtkTable *table,
+ctk_table_set_row_spacings (CtkTable *table,
 			    guint     spacing)
 {
-  GtkTablePrivate *priv;
+  CtkTablePrivate *priv;
   guint row;
   
   g_return_if_fail (CTK_IS_TABLE (table));
@@ -921,7 +921,7 @@ ctk_table_set_row_spacings (GtkTable *table,
 
 /**
  * ctk_table_get_default_row_spacing:
- * @table: a #GtkTable
+ * @table: a #CtkTable
  *
  * Gets the default row spacing for the table. This is
  * the spacing that will be used for newly added rows.
@@ -929,10 +929,10 @@ ctk_table_set_row_spacings (GtkTable *table,
  *
  * Returns: the default row spacing
  *
- * Deprecated: 3.4: Use ctk_grid_get_row_spacing() with #GtkGrid.
+ * Deprecated: 3.4: Use ctk_grid_get_row_spacing() with #CtkGrid.
  **/
 guint
-ctk_table_get_default_row_spacing (GtkTable *table)
+ctk_table_get_default_row_spacing (CtkTable *table)
 {
   g_return_val_if_fail (CTK_IS_TABLE (table), 0);
 
@@ -941,19 +941,19 @@ ctk_table_get_default_row_spacing (GtkTable *table)
 
 /**
  * ctk_table_set_col_spacings:
- * @table: a #GtkTable.
+ * @table: a #CtkTable.
  * @spacing: the number of pixels of space to place between every column
  *   in the table.
  *
  * Sets the space between every column in @table equal to @spacing.
  *
- * Deprecated: 3.4: Use ctk_grid_set_column_spacing() with #GtkGrid.
+ * Deprecated: 3.4: Use ctk_grid_set_column_spacing() with #CtkGrid.
  */
 void
-ctk_table_set_col_spacings (GtkTable *table,
+ctk_table_set_col_spacings (CtkTable *table,
 			    guint     spacing)
 {
-  GtkTablePrivate *priv;
+  CtkTablePrivate *priv;
   guint col;
 
   g_return_if_fail (CTK_IS_TABLE (table));
@@ -972,7 +972,7 @@ ctk_table_set_col_spacings (GtkTable *table,
 
 /**
  * ctk_table_get_default_col_spacing:
- * @table: a #GtkTable
+ * @table: a #CtkTable
  *
  * Gets the default column spacing for the table. This is
  * the spacing that will be used for newly added columns.
@@ -980,10 +980,10 @@ ctk_table_set_col_spacings (GtkTable *table,
  *
  * Returns: the default column spacing
  *
- * Deprecated: 3.4: Use ctk_grid_get_column_spacing() with #GtkGrid.
+ * Deprecated: 3.4: Use ctk_grid_get_column_spacing() with #CtkGrid.
  **/
 guint
-ctk_table_get_default_col_spacing (GtkTable *table)
+ctk_table_get_default_col_spacing (CtkTable *table)
 {
   g_return_val_if_fail (CTK_IS_TABLE (table), 0);
 
@@ -992,7 +992,7 @@ ctk_table_get_default_col_spacing (GtkTable *table)
 
 /**
  * ctk_table_set_homogeneous:
- * @table: The #GtkTable you wish to set the homogeneous properties of.
+ * @table: The #CtkTable you wish to set the homogeneous properties of.
  * @homogeneous: Set to %TRUE to ensure all table cells are the same size. Set
  *   to %FALSE if this is not your desired behaviour.
  *
@@ -1000,13 +1000,13 @@ ctk_table_get_default_col_spacing (GtkTable *table)
  * an equal size or not.
  *
  * Deprecated: 3.4: Use ctk_grid_set_row_homogeneous() and
- *     ctk_grid_set_column_homogeneous() with #GtkGrid.
+ *     ctk_grid_set_column_homogeneous() with #CtkGrid.
  */
 void
-ctk_table_set_homogeneous (GtkTable *table,
+ctk_table_set_homogeneous (CtkTable *table,
 			   gboolean  homogeneous)
 {
-  GtkTablePrivate *priv;
+  CtkTablePrivate *priv;
 
   g_return_if_fail (CTK_IS_TABLE (table));
 
@@ -1026,7 +1026,7 @@ ctk_table_set_homogeneous (GtkTable *table,
 
 /**
  * ctk_table_get_homogeneous:
- * @table: a #GtkTable
+ * @table: a #CtkTable
  *
  * Returns whether the table cells are all constrained to the same
  * width and height. (See ctk_table_set_homogeneous ())
@@ -1034,10 +1034,10 @@ ctk_table_set_homogeneous (GtkTable *table,
  * Returns: %TRUE if the cells are all constrained to the same size
  *
  * Deprecated: 3.4: Use ctk_grid_get_row_homogeneous() and
- *     ctk_grid_get_column_homogeneous() with #GtkGrid.
+ *     ctk_grid_get_column_homogeneous() with #CtkGrid.
  **/
 gboolean
-ctk_table_get_homogeneous (GtkTable *table)
+ctk_table_get_homogeneous (CtkTable *table)
 {
   g_return_val_if_fail (CTK_IS_TABLE (table), FALSE);
 
@@ -1046,7 +1046,7 @@ ctk_table_get_homogeneous (GtkTable *table)
 
 /**
  * ctk_table_get_size:
- * @table: a #GtkTable
+ * @table: a #CtkTable
  * @rows: (out) (allow-none): return location for the number of
  *   rows, or %NULL
  * @columns: (out) (allow-none): return location for the number
@@ -1056,15 +1056,15 @@ ctk_table_get_homogeneous (GtkTable *table)
  *
  * Since: 2.22
  *
- * Deprecated: 3.4: #GtkGrid does not expose the number of columns and
+ * Deprecated: 3.4: #CtkGrid does not expose the number of columns and
  *     rows.
  **/
 void
-ctk_table_get_size (GtkTable *table,
+ctk_table_get_size (CtkTable *table,
                     guint    *rows,
                     guint    *columns)
 {
-  GtkTablePrivate *priv;
+  CtkTablePrivate *priv;
 
   g_return_if_fail (CTK_IS_TABLE (table));
 
@@ -1080,8 +1080,8 @@ ctk_table_get_size (GtkTable *table,
 static void
 ctk_table_finalize (GObject *object)
 {
-  GtkTable *table = CTK_TABLE (object);
-  GtkTablePrivate *priv = table->priv;
+  CtkTable *table = CTK_TABLE (object);
+  CtkTablePrivate *priv = table->priv;
 
   g_free (priv->rows);
   g_free (priv->cols);
@@ -1090,12 +1090,12 @@ ctk_table_finalize (GObject *object)
 }
 
 static void
-ctk_table_get_preferred_width (GtkWidget *widget,
+ctk_table_get_preferred_width (CtkWidget *widget,
                                gint      *minimum,
                                gint      *natural)
 {
-  GtkTable *table = CTK_TABLE (widget);
-  GtkTablePrivate *priv = table->priv;
+  CtkTable *table = CTK_TABLE (widget);
+  CtkTablePrivate *priv = table->priv;
   gint col;
 
   ctk_table_size_request_init (table);
@@ -1115,12 +1115,12 @@ ctk_table_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-ctk_table_get_preferred_height (GtkWidget *widget,
+ctk_table_get_preferred_height (CtkWidget *widget,
                                 gint      *minimum,
                                 gint      *natural)
 {
-  GtkTable *table = CTK_TABLE (widget);
-  GtkTablePrivate *priv = table->priv;
+  CtkTable *table = CTK_TABLE (widget);
+  CtkTablePrivate *priv = table->priv;
   gint row;
 
   ctk_table_size_request_init (table);
@@ -1139,10 +1139,10 @@ ctk_table_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-ctk_table_size_allocate (GtkWidget     *widget,
-			 GtkAllocation *allocation)
+ctk_table_size_allocate (CtkWidget     *widget,
+			 CtkAllocation *allocation)
 {
-  GtkTable *table = CTK_TABLE (widget);
+  CtkTable *table = CTK_TABLE (widget);
 
   ctk_widget_set_allocation (widget, allocation);
 
@@ -1152,20 +1152,20 @@ ctk_table_size_allocate (GtkWidget     *widget,
 }
 
 static void
-ctk_table_add (GtkContainer *container,
-	       GtkWidget    *widget)
+ctk_table_add (CtkContainer *container,
+	       CtkWidget    *widget)
 {
   ctk_table_attach_defaults (CTK_TABLE (container), widget, 0, 1, 0, 1);
 }
 
 static void
-ctk_table_remove (GtkContainer *container,
-		  GtkWidget    *widget)
+ctk_table_remove (CtkContainer *container,
+		  CtkWidget    *widget)
 {
-  GtkTable *table = CTK_TABLE (container);
-  GtkTablePrivate *priv = table->priv;
-  GtkTableChild *child;
-  GtkWidget *widget_container = CTK_WIDGET (container);
+  CtkTable *table = CTK_TABLE (container);
+  CtkTablePrivate *priv = table->priv;
+  CtkTableChild *child;
+  CtkWidget *widget_container = CTK_WIDGET (container);
   GList *children;
 
   children = priv->children;
@@ -1192,14 +1192,14 @@ ctk_table_remove (GtkContainer *container,
 }
 
 static void
-ctk_table_forall (GtkContainer *container,
+ctk_table_forall (CtkContainer *container,
 		  gboolean	include_internals,
-		  GtkCallback	callback,
+		  CtkCallback	callback,
 		  gpointer	callback_data)
 {
-  GtkTable *table = CTK_TABLE (container);
-  GtkTablePrivate *priv = table->priv;
-  GtkTableChild *child;
+  CtkTable *table = CTK_TABLE (container);
+  CtkTablePrivate *priv = table->priv;
+  CtkTableChild *child;
   GList *children;
 
   children = priv->children;
@@ -1214,10 +1214,10 @@ ctk_table_forall (GtkContainer *container,
 }
 
 static void
-ctk_table_size_request_init (GtkTable *table)
+ctk_table_size_request_init (CtkTable *table)
 {
-  GtkTablePrivate *priv = table->priv;
-  GtkTableChild *child;
+  CtkTablePrivate *priv = table->priv;
+  CtkTableChild *child;
   GList *children;
   gint row, col;
 
@@ -1249,10 +1249,10 @@ ctk_table_size_request_init (GtkTable *table)
 }
 
 static void
-ctk_table_size_request_pass1 (GtkTable *table)
+ctk_table_size_request_pass1 (CtkTable *table)
 {
-  GtkTablePrivate *priv = table->priv;
-  GtkTableChild *child;
+  CtkTablePrivate *priv = table->priv;
+  CtkTableChild *child;
   GList *children;
   gint width;
   gint height;
@@ -1265,7 +1265,7 @@ ctk_table_size_request_pass1 (GtkTable *table)
       
       if (ctk_widget_get_visible (child->widget))
 	{
-	  GtkRequisition child_requisition;
+	  CtkRequisition child_requisition;
 
           ctk_widget_get_preferred_size (child->widget, &child_requisition, NULL);
 
@@ -1289,9 +1289,9 @@ ctk_table_size_request_pass1 (GtkTable *table)
 }
 
 static void
-ctk_table_size_request_pass2 (GtkTable *table)
+ctk_table_size_request_pass2 (CtkTable *table)
 {
-  GtkTablePrivate *priv = table->priv;
+  CtkTablePrivate *priv = table->priv;
   gint max_width;
   gint max_height;
   gint row, col;
@@ -1314,10 +1314,10 @@ ctk_table_size_request_pass2 (GtkTable *table)
 }
 
 static void
-ctk_table_size_request_pass3 (GtkTable *table)
+ctk_table_size_request_pass3 (CtkTable *table)
 {
-  GtkTablePrivate *priv = table->priv;
-  GtkTableChild *child;
+  CtkTablePrivate *priv = table->priv;
+  CtkTableChild *child;
   GList *children;
   gint width, height;
   gint row, col;
@@ -1335,7 +1335,7 @@ ctk_table_size_request_pass3 (GtkTable *table)
 	   */
 	  if (child->left_attach != (child->right_attach - 1))
 	    {
-	      GtkRequisition child_requisition;
+	      CtkRequisition child_requisition;
 
               ctk_widget_get_preferred_size (child->widget,
                                              &child_requisition, NULL);
@@ -1387,7 +1387,7 @@ ctk_table_size_request_pass3 (GtkTable *table)
 	   */
 	  if (child->top_attach != (child->bottom_attach - 1))
 	    {
-	      GtkRequisition child_requisition;
+	      CtkRequisition child_requisition;
 
               ctk_widget_get_preferred_size (child->widget,
                                              &child_requisition, NULL);
@@ -1441,10 +1441,10 @@ ctk_table_size_request_pass3 (GtkTable *table)
 }
 
 static void
-ctk_table_size_allocate_init (GtkTable *table)
+ctk_table_size_allocate_init (CtkTable *table)
 {
-  GtkTablePrivate *priv = table->priv;
-  GtkTableChild *child;
+  CtkTablePrivate *priv = table->priv;
+  CtkTableChild *child;
   GList *children;
   gint row, col;
   gint has_expand;
@@ -1636,10 +1636,10 @@ ctk_table_size_allocate_init (GtkTable *table)
 }
 
 static void
-ctk_table_size_allocate_pass1 (GtkTable *table)
+ctk_table_size_allocate_pass1 (CtkTable *table)
 {
-  GtkTablePrivate *priv = table->priv;
-  GtkAllocation allocation;
+  CtkTablePrivate *priv = table->priv;
+  CtkAllocation allocation;
   gint real_width;
   gint real_height;
   gint width, height;
@@ -1841,18 +1841,18 @@ ctk_table_size_allocate_pass1 (GtkTable *table)
 }
 
 static void
-ctk_table_size_allocate_pass2 (GtkTable *table)
+ctk_table_size_allocate_pass2 (CtkTable *table)
 {
-  GtkTablePrivate *priv = table->priv;
-  GtkTableChild *child;
+  CtkTablePrivate *priv = table->priv;
+  CtkTableChild *child;
   GList *children;
   gint max_width;
   gint max_height;
   gint x, y;
   gint row, col;
-  GtkAllocation allocation;
-  GtkAllocation table_allocation, widget_allocation;
-  GtkWidget *widget = CTK_WIDGET (table);
+  CtkAllocation allocation;
+  CtkAllocation table_allocation, widget_allocation;
+  CtkWidget *widget = CTK_WIDGET (table);
 
   children = priv->children;
   while (children)
@@ -1862,7 +1862,7 @@ ctk_table_size_allocate_pass2 (GtkTable *table)
       
       if (ctk_widget_get_visible (child->widget))
 	{
-	  GtkRequisition child_requisition;
+	  CtkRequisition child_requisition;
 
           ctk_widget_get_preferred_size (child->widget,
                                          &child_requisition, NULL);

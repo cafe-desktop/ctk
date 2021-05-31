@@ -31,10 +31,10 @@
 
 /**
  * SECTION:ctkshortcutswindow
- * @Title: GtkShortcutsWindow
+ * @Title: CtkShortcutsWindow
  * @Short_description: Toplevel which shows help for shortcuts
  *
- * A GtkShortcutsWindow shows brief information about the keyboard shortcuts
+ * A CtkShortcutsWindow shows brief information about the keyboard shortcuts
  * and gestures of an application. The shortcuts can be grouped, and you can
  * have multiple sections in this window, corresponding to the major modes of
  * your application.
@@ -42,10 +42,10 @@
  * Additionally, the shortcuts can be filtered by the current view, to avoid
  * showing information that is not relevant in the current application context.
  *
- * The recommended way to construct a GtkShortcutsWindow is with GtkBuilder,
- * by populating a #GtkShortcutsWindow with one or more #GtkShortcutsSection
- * objects, which contain #GtkShortcutsGroups that in turn contain objects of
- * class #GtkShortcutsShortcut.
+ * The recommended way to construct a CtkShortcutsWindow is with CtkBuilder,
+ * by populating a #CtkShortcutsWindow with one or more #CtkShortcutsSection
+ * objects, which contain #CtkShortcutsGroups that in turn contain objects of
+ * class #CtkShortcutsShortcut.
  *
  * # A simple example:
  *
@@ -61,7 +61,7 @@
  *
  * ![](clocks-shortcuts.png)
  *
- * This example shows a #GtkShortcutsWindow that has been configured to show only
+ * This example shows a #CtkShortcutsWindow that has been configured to show only
  * the shortcuts relevant to the "stopwatch" view.
  *
  * The .ui file for this example can be found [here](https://git.gnome.org/browse/ctk+/tree/demos/ctk-demo/shortcuts-clocks.ui).
@@ -70,7 +70,7 @@
  *
  * ![](builder-shortcuts.png)
  *
- * This example shows a #GtkShortcutsWindow with two sections, "Editor Shortcuts"
+ * This example shows a #CtkShortcutsWindow with two sections, "Editor Shortcuts"
  * and "Terminal Shortcuts".
  *
  * The .ui file for this example can be found [here](https://git.gnome.org/browse/ctk+/tree/demos/ctk-demo/shortcuts-builder.ui).
@@ -82,38 +82,38 @@ typedef struct
   gchar          *initial_section;
   gchar          *last_section_name;
   gchar          *view_name;
-  GtkSizeGroup   *search_text_group;
-  GtkSizeGroup   *search_image_group;
+  CtkSizeGroup   *search_text_group;
+  CtkSizeGroup   *search_image_group;
   GHashTable     *search_items_hash;
 
-  GtkStack       *stack;
-  GtkStack       *title_stack;
-  GtkMenuButton  *menu_button;
-  GtkLabel       *menu_label;
-  GtkSearchBar   *search_bar;
-  GtkSearchEntry *search_entry;
-  GtkHeaderBar   *header_bar;
-  GtkWidget      *main_box;
-  GtkPopover     *popover;
-  GtkListBox     *list_box;
-  GtkBox         *search_gestures;
-  GtkBox         *search_shortcuts;
+  CtkStack       *stack;
+  CtkStack       *title_stack;
+  CtkMenuButton  *menu_button;
+  CtkLabel       *menu_label;
+  CtkSearchBar   *search_bar;
+  CtkSearchEntry *search_entry;
+  CtkHeaderBar   *header_bar;
+  CtkWidget      *main_box;
+  CtkPopover     *popover;
+  CtkListBox     *list_box;
+  CtkBox         *search_gestures;
+  CtkBox         *search_shortcuts;
 
-  GtkWindow      *window;
+  CtkWindow      *window;
   gulong          keys_changed_id;
-} GtkShortcutsWindowPrivate;
+} CtkShortcutsWindowPrivate;
 
 typedef struct
 {
-  GtkShortcutsWindow *self;
-  GtkBuilder        *builder;
+  CtkShortcutsWindow *self;
+  CtkBuilder        *builder;
   GQueue            *stack;
   gchar             *property_name;
   guint              translatable : 1;
 } ViewsParserData;
 
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkShortcutsWindow, ctk_shortcuts_window, CTK_TYPE_WINDOW)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkShortcutsWindow, ctk_shortcuts_window, CTK_TYPE_WINDOW)
 
 
 enum {
@@ -134,7 +134,7 @@ static guint signals[LAST_SIGNAL];
 
 
 static gint
-number_of_children (GtkContainer *container)
+number_of_children (CtkContainer *container)
 {
   GList *children;
   gint n;
@@ -147,10 +147,10 @@ number_of_children (GtkContainer *container)
 }
 
 static void
-update_title_stack (GtkShortcutsWindow *self)
+update_title_stack (CtkShortcutsWindow *self)
 {
-  GtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
-  GtkWidget *visible_child;
+  CtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
+  CtkWidget *visible_child;
 
   visible_child = ctk_stack_get_visible_child (priv->stack);
 
@@ -177,19 +177,19 @@ update_title_stack (GtkShortcutsWindow *self)
 }
 
 static void
-ctk_shortcuts_window_add_search_item (GtkWidget *child, gpointer data)
+ctk_shortcuts_window_add_search_item (CtkWidget *child, gpointer data)
 {
-  GtkShortcutsWindow *self = data;
-  GtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
-  GtkWidget *item;
+  CtkShortcutsWindow *self = data;
+  CtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
+  CtkWidget *item;
   gchar *accelerator = NULL;
   gchar *title = NULL;
   gchar *hash_key = NULL;
   GIcon *icon = NULL;
   gboolean icon_set = FALSE;
   gboolean subtitle_set = FALSE;
-  GtkTextDirection direction;
-  GtkShortcutType shortcut_type;
+  CtkTextDirection direction;
+  CtkShortcutType shortcut_type;
   gchar *action_name = NULL;
   gchar *subtitle;
   gchar *str;
@@ -273,8 +273,8 @@ section_notify_cb (GObject    *section,
                    GParamSpec *pspec,
                    gpointer    data)
 {
-  GtkShortcutsWindow *self = data;
-  GtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
+  CtkShortcutsWindow *self = data;
+  CtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
 
   if (strcmp (pspec->name, "section-name") == 0)
     {
@@ -287,7 +287,7 @@ section_notify_cb (GObject    *section,
   else if (strcmp (pspec->name, "title") == 0)
     {
       gchar *title;
-      GtkWidget *label;
+      CtkWidget *label;
 
       label = g_object_get_data (section, "ctk-shortcuts-title");
       g_object_get (section, "title", &title, NULL);
@@ -297,15 +297,15 @@ section_notify_cb (GObject    *section,
 }
 
 static void
-ctk_shortcuts_window_add_section (GtkShortcutsWindow  *self,
-                                  GtkShortcutsSection *section)
+ctk_shortcuts_window_add_section (CtkShortcutsWindow  *self,
+                                  CtkShortcutsSection *section)
 {
-  GtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
-  GtkListBoxRow *row;
+  CtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
+  CtkListBoxRow *row;
   gchar *title;
   gchar *name;
   const gchar *visible_section;
-  GtkWidget *label;
+  CtkWidget *label;
 
   ctk_container_foreach (CTK_CONTAINER (section), ctk_shortcuts_window_add_search_item, self);
 
@@ -347,10 +347,10 @@ ctk_shortcuts_window_add_section (GtkShortcutsWindow  *self,
 }
 
 static void
-ctk_shortcuts_window_add (GtkContainer *container,
-                          GtkWidget    *widget)
+ctk_shortcuts_window_add (CtkContainer *container,
+                          CtkWidget    *widget)
 {
-  GtkShortcutsWindow *self = (GtkShortcutsWindow *)container;
+  CtkShortcutsWindow *self = (CtkShortcutsWindow *)container;
 
   if (CTK_IS_SHORTCUTS_SECTION (widget))
     ctk_shortcuts_window_add_section (self, CTK_SHORTCUTS_SECTION (widget));
@@ -361,29 +361,29 @@ ctk_shortcuts_window_add (GtkContainer *container,
 }
 
 static void
-ctk_shortcuts_window_remove (GtkContainer *container,
-                             GtkWidget    *widget)
+ctk_shortcuts_window_remove (CtkContainer *container,
+                             CtkWidget    *widget)
 {
-  GtkShortcutsWindow *self = (GtkShortcutsWindow *)container;
-  GtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
+  CtkShortcutsWindow *self = (CtkShortcutsWindow *)container;
+  CtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
 
   g_signal_handlers_disconnect_by_func (widget, section_notify_cb, self);
 
-  if (widget == (GtkWidget *)priv->header_bar ||
-      widget == (GtkWidget *)priv->main_box)
+  if (widget == (CtkWidget *)priv->header_bar ||
+      widget == (CtkWidget *)priv->main_box)
     CTK_CONTAINER_CLASS (ctk_shortcuts_window_parent_class)->remove (container, widget);
   else
     ctk_container_remove (CTK_CONTAINER (priv->stack), widget);
 }
 
 static void
-ctk_shortcuts_window_forall (GtkContainer *container,
+ctk_shortcuts_window_forall (CtkContainer *container,
                              gboolean      include_internal,
-                             GtkCallback   callback,
+                             CtkCallback   callback,
                              gpointer      callback_data)
 {
-  GtkShortcutsWindow *self = (GtkShortcutsWindow *)container;
-  GtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
+  CtkShortcutsWindow *self = (CtkShortcutsWindow *)container;
+  CtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
 
   if (include_internal)
     {
@@ -394,15 +394,15 @@ ctk_shortcuts_window_forall (GtkContainer *container,
       if (priv->stack)
         {
           GList *children, *l;
-          GtkWidget *search;
-          GtkWidget *empty;
+          CtkWidget *search;
+          CtkWidget *empty;
 
           search = ctk_stack_get_child_by_name (CTK_STACK (priv->stack), "internal-search");
           empty = ctk_stack_get_child_by_name (CTK_STACK (priv->stack), "no-search-results");
           children = ctk_container_get_children (CTK_CONTAINER (priv->stack));
           for (l = children; l; l = l->next)
             {
-              GtkWidget *child = l->data;
+              CtkWidget *child = l->data;
 
               if (include_internal ||
                   (child != search && child != empty))
@@ -414,10 +414,10 @@ ctk_shortcuts_window_forall (GtkContainer *container,
 }
 
 static void
-ctk_shortcuts_window_set_view_name (GtkShortcutsWindow *self,
+ctk_shortcuts_window_set_view_name (CtkShortcutsWindow *self,
                                     const gchar        *view_name)
 {
-  GtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
+  CtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
   GList *sections, *l;
 
   g_free (priv->view_name);
@@ -426,7 +426,7 @@ ctk_shortcuts_window_set_view_name (GtkShortcutsWindow *self,
   sections = ctk_container_get_children (CTK_CONTAINER (priv->stack));
   for (l = sections; l; l = l->next)
     {
-      GtkShortcutsSection *section = l->data;
+      CtkShortcutsSection *section = l->data;
 
       if (CTK_IS_SHORTCUTS_SECTION (section))
         g_object_set (section, "view-name", priv->view_name, NULL);
@@ -435,11 +435,11 @@ ctk_shortcuts_window_set_view_name (GtkShortcutsWindow *self,
 }
 
 static void
-ctk_shortcuts_window_set_section_name (GtkShortcutsWindow *self,
+ctk_shortcuts_window_set_section_name (CtkShortcutsWindow *self,
                                        const gchar        *section_name)
 {
-  GtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
-  GtkWidget *section = NULL;
+  CtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
+  CtkWidget *section = NULL;
 
   g_free (priv->initial_section);
   priv->initial_section = g_strdup (section_name);
@@ -451,11 +451,11 @@ ctk_shortcuts_window_set_section_name (GtkShortcutsWindow *self,
 }
 
 static void
-update_accels_cb (GtkWidget *widget,
+update_accels_cb (CtkWidget *widget,
                   gpointer   data)
 {
-  GtkShortcutsWindow *self = data;
-  GtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
+  CtkShortcutsWindow *self = data;
+  CtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
 
   if (CTK_IS_SHORTCUTS_SHORTCUT (widget))
     ctk_shortcuts_shortcut_update_accel (CTK_SHORTCUTS_SHORTCUT (widget), priv->window);
@@ -464,26 +464,26 @@ update_accels_cb (GtkWidget *widget,
 }
 
 static void
-update_accels_for_actions (GtkShortcutsWindow *self)
+update_accels_for_actions (CtkShortcutsWindow *self)
 {
-  GtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
+  CtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
 
   if (priv->window)
     ctk_container_forall (CTK_CONTAINER (self), update_accels_cb, self);
 }
 
 static void
-keys_changed_handler (GtkWindow          *window,
-                      GtkShortcutsWindow *self)
+keys_changed_handler (CtkWindow          *window,
+                      CtkShortcutsWindow *self)
 {
   update_accels_for_actions (self);
 }
 
 void
-ctk_shortcuts_window_set_window (GtkShortcutsWindow *self,
-                                 GtkWindow          *window)
+ctk_shortcuts_window_set_window (CtkShortcutsWindow *self,
+                                 CtkWindow          *window)
 {
-  GtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
+  CtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
 
   if (priv->keys_changed_id)
     {
@@ -502,12 +502,12 @@ ctk_shortcuts_window_set_window (GtkShortcutsWindow *self,
 }
 
 static void
-ctk_shortcuts_window__list_box__row_activated (GtkShortcutsWindow *self,
-                                               GtkListBoxRow      *row,
-                                               GtkListBox         *list_box)
+ctk_shortcuts_window__list_box__row_activated (CtkShortcutsWindow *self,
+                                               CtkListBoxRow      *row,
+                                               CtkListBox         *list_box)
 {
-  GtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
-  GtkWidget *section;
+  CtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
+  CtkWidget *section;
 
   section = g_object_get_data (G_OBJECT (row), "ctk-shortcuts-section");
   ctk_stack_set_visible_child (priv->stack, section);
@@ -515,11 +515,11 @@ ctk_shortcuts_window__list_box__row_activated (GtkShortcutsWindow *self,
 }
 
 static gboolean
-hidden_by_direction (GtkWidget *widget)
+hidden_by_direction (CtkWidget *widget)
 {
   if (CTK_IS_SHORTCUTS_SHORTCUT (widget))
     {
-      GtkTextDirection dir;
+      CtkTextDirection dir;
 
       g_object_get (widget, "direction", &dir, NULL);
       if (dir != CTK_TEXT_DIR_NONE &&
@@ -531,10 +531,10 @@ hidden_by_direction (GtkWidget *widget)
 }
 
 static void
-ctk_shortcuts_window__entry__changed (GtkShortcutsWindow *self,
-                                     GtkSearchEntry      *search_entry)
+ctk_shortcuts_window__entry__changed (CtkShortcutsWindow *self,
+                                     CtkSearchEntry      *search_entry)
 {
-  GtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
+  CtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
   gchar *downcase = NULL;
   GHashTableIter iter;
   const gchar *text;
@@ -571,7 +571,7 @@ ctk_shortcuts_window__entry__changed (GtkShortcutsWindow *self,
   has_result = FALSE;
   while (g_hash_table_iter_next (&iter, &key, &value))
     {
-      GtkWidget *widget = key;
+      CtkWidget *widget = key;
       const gchar *keywords = value;
       gboolean match;
 
@@ -593,9 +593,9 @@ ctk_shortcuts_window__entry__changed (GtkShortcutsWindow *self,
 }
 
 static void
-ctk_shortcuts_window__search_mode__changed (GtkShortcutsWindow *self)
+ctk_shortcuts_window__search_mode__changed (CtkShortcutsWindow *self)
 {
-  GtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
+  CtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
 
   if (!ctk_search_bar_get_search_mode (priv->search_bar))
     {
@@ -605,15 +605,15 @@ ctk_shortcuts_window__search_mode__changed (GtkShortcutsWindow *self)
 }
 
 static void
-ctk_shortcuts_window_close (GtkShortcutsWindow *self)
+ctk_shortcuts_window_close (CtkShortcutsWindow *self)
 {
   ctk_window_close (CTK_WINDOW (self));
 }
 
 static void
-ctk_shortcuts_window_search (GtkShortcutsWindow *self)
+ctk_shortcuts_window_search (CtkShortcutsWindow *self)
 {
-  GtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
+  CtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
 
   ctk_search_bar_set_search_mode (priv->search_bar, TRUE);
 }
@@ -621,8 +621,8 @@ ctk_shortcuts_window_search (GtkShortcutsWindow *self)
 static void
 ctk_shortcuts_window_constructed (GObject *object)
 {
-  GtkShortcutsWindow *self = (GtkShortcutsWindow *)object;
-  GtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
+  CtkShortcutsWindow *self = (CtkShortcutsWindow *)object;
+  CtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
 
   G_OBJECT_CLASS (ctk_shortcuts_window_parent_class)->constructed (object);
 
@@ -633,8 +633,8 @@ ctk_shortcuts_window_constructed (GObject *object)
 static void
 ctk_shortcuts_window_finalize (GObject *object)
 {
-  GtkShortcutsWindow *self = (GtkShortcutsWindow *)object;
-  GtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
+  CtkShortcutsWindow *self = (CtkShortcutsWindow *)object;
+  CtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
 
   g_clear_pointer (&priv->keywords, g_hash_table_unref);
   g_clear_pointer (&priv->initial_section, g_free);
@@ -651,8 +651,8 @@ ctk_shortcuts_window_finalize (GObject *object)
 static void
 ctk_shortcuts_window_dispose (GObject *object)
 {
-  GtkShortcutsWindow *self = (GtkShortcutsWindow *)object;
-  GtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
+  CtkShortcutsWindow *self = (CtkShortcutsWindow *)object;
+  CtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
 
   g_signal_handlers_disconnect_by_func (priv->stack, G_CALLBACK (update_title_stack), self);
 
@@ -682,14 +682,14 @@ ctk_shortcuts_window_get_property (GObject    *object,
                                   GValue     *value,
                                   GParamSpec *pspec)
 {
-  GtkShortcutsWindow *self = (GtkShortcutsWindow *)object;
-  GtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
+  CtkShortcutsWindow *self = (CtkShortcutsWindow *)object;
+  CtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
 
   switch (prop_id)
     {
     case PROP_SECTION_NAME:
       {
-        GtkWidget *child = ctk_stack_get_visible_child (priv->stack);
+        CtkWidget *child = ctk_stack_get_visible_child (priv->stack);
 
         if (child != NULL)
           {
@@ -718,7 +718,7 @@ ctk_shortcuts_window_set_property (GObject      *object,
                                   const GValue *value,
                                   GParamSpec   *pspec)
 {
-  GtkShortcutsWindow *self = (GtkShortcutsWindow *)object;
+  CtkShortcutsWindow *self = (CtkShortcutsWindow *)object;
 
   switch (prop_id)
     {
@@ -736,10 +736,10 @@ ctk_shortcuts_window_set_property (GObject      *object,
 }
 
 static void
-ctk_shortcuts_window_unmap (GtkWidget *widget)
+ctk_shortcuts_window_unmap (CtkWidget *widget)
 {
-  GtkShortcutsWindow *self = (GtkShortcutsWindow *)widget;
-  GtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
+  CtkShortcutsWindow *self = (CtkShortcutsWindow *)widget;
+  CtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
 
   ctk_search_bar_set_search_mode (priv->search_bar, FALSE);
 
@@ -747,18 +747,18 @@ ctk_shortcuts_window_unmap (GtkWidget *widget)
 }
 
 static GType
-ctk_shortcuts_window_child_type (GtkContainer *container)
+ctk_shortcuts_window_child_type (CtkContainer *container)
 {
   return CTK_TYPE_SHORTCUTS_SECTION;
 }
 
 static void
-ctk_shortcuts_window_class_init (GtkShortcutsWindowClass *klass)
+ctk_shortcuts_window_class_init (CtkShortcutsWindowClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
-  GtkContainerClass *container_class = CTK_CONTAINER_CLASS (klass);
-  GtkBindingSet *binding_set = ctk_binding_set_by_class (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkContainerClass *container_class = CTK_CONTAINER_CLASS (klass);
+  CtkBindingSet *binding_set = ctk_binding_set_by_class (klass);
 
   object_class->constructed = ctk_shortcuts_window_constructed;
   object_class->finalize = ctk_shortcuts_window_finalize;
@@ -776,11 +776,11 @@ ctk_shortcuts_window_class_init (GtkShortcutsWindowClass *klass)
   klass->search = ctk_shortcuts_window_search;
 
   /**
-   * GtkShortcutsWindow:section-name:
+   * CtkShortcutsWindow:section-name:
    *
    * The name of the section to show.
    *
-   * This should be the section-name of one of the #GtkShortcutsSection
+   * This should be the section-name of one of the #CtkShortcutsSection
    * objects that are in this shortcuts window.
    */
   properties[PROP_SECTION_NAME] =
@@ -789,12 +789,12 @@ ctk_shortcuts_window_class_init (GtkShortcutsWindowClass *klass)
                          (G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
   /**
-   * GtkShortcutsWindow:view-name:
+   * CtkShortcutsWindow:view-name:
    *
    * The view name by which to filter the contents.
    *
-   * This should correspond to the #GtkShortcutsGroup:view property of some of
-   * the #GtkShortcutsGroup objects that are inside this shortcuts window.
+   * This should correspond to the #CtkShortcutsGroup:view property of some of
+   * the #CtkShortcutsGroup objects that are inside this shortcuts window.
    *
    * Set this to %NULL to show all groups.
    */
@@ -806,10 +806,10 @@ ctk_shortcuts_window_class_init (GtkShortcutsWindowClass *klass)
   g_object_class_install_properties (object_class, LAST_PROP, properties);
 
   /**
-   * GtkShortcutsWindow::close:
+   * CtkShortcutsWindow::close:
    *
    * The ::close signal is a
-   * [keybinding signal][GtkBindingSignal]
+   * [keybinding signal][CtkBindingSignal]
    * which gets emitted when the user uses a keybinding to close
    * the window.
    *
@@ -818,16 +818,16 @@ ctk_shortcuts_window_class_init (GtkShortcutsWindowClass *klass)
   signals[CLOSE] = g_signal_new (I_("close"),
                                  G_TYPE_FROM_CLASS (klass),
                                  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-                                 G_STRUCT_OFFSET (GtkShortcutsWindowClass, close),
+                                 G_STRUCT_OFFSET (CtkShortcutsWindowClass, close),
                                  NULL, NULL, NULL,
                                  G_TYPE_NONE,
                                  0);
 
   /**
-   * GtkShortcutsWindow::search:
+   * CtkShortcutsWindow::search:
    *
    * The ::search signal is a
-   * [keybinding signal][GtkBindingSignal]
+   * [keybinding signal][CtkBindingSignal]
    * which gets emitted when the user uses a keybinding to start a search.
    *
    * The default binding for this signal is Control-F.
@@ -835,7 +835,7 @@ ctk_shortcuts_window_class_init (GtkShortcutsWindowClass *klass)
   signals[SEARCH] = g_signal_new (I_("search"),
                                  G_TYPE_FROM_CLASS (klass),
                                  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-                                 G_STRUCT_OFFSET (GtkShortcutsWindowClass, search),
+                                 G_STRUCT_OFFSET (CtkShortcutsWindowClass, search),
                                  NULL, NULL, NULL,
                                  G_TYPE_NONE,
                                  0);
@@ -848,27 +848,27 @@ ctk_shortcuts_window_class_init (GtkShortcutsWindowClass *klass)
 }
 
 static gboolean
-window_key_press_event_cb (GtkWidget *window,
+window_key_press_event_cb (CtkWidget *window,
                            GdkEvent  *event,
                            gpointer   data)
 {
-  GtkShortcutsWindow *self = CTK_SHORTCUTS_WINDOW (window);
-  GtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
+  CtkShortcutsWindow *self = CTK_SHORTCUTS_WINDOW (window);
+  CtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
 
   return ctk_search_bar_handle_event (priv->search_bar, event);
 }
 
 static void
-ctk_shortcuts_window_init (GtkShortcutsWindow *self)
+ctk_shortcuts_window_init (CtkShortcutsWindow *self)
 {
-  GtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
-  GtkToggleButton *search_button;
-  GtkBox *menu_box;
-  GtkBox *box;
-  GtkArrow *arrow;
-  GtkWidget *scroller;
-  GtkWidget *label;
-  GtkWidget *empty;
+  CtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
+  CtkToggleButton *search_button;
+  CtkBox *menu_box;
+  CtkBox *box;
+  CtkArrow *arrow;
+  CtkWidget *scroller;
+  CtkWidget *label;
+  CtkWidget *empty;
   PangoAttrList *attributes;
 
   ctk_window_set_resizable (CTK_WINDOW (self), FALSE);

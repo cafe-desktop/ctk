@@ -27,20 +27,20 @@
 
 G_BEGIN_DECLS
 
-/* --- global GtkAccelMap object --- */
+/* --- global CtkAccelMap object --- */
 #define CTK_TYPE_ACCEL_MAP                (ctk_accel_map_get_type ())
-#define CTK_ACCEL_MAP(accel_map)	  (G_TYPE_CHECK_INSTANCE_CAST ((accel_map), CTK_TYPE_ACCEL_MAP, GtkAccelMap))
-#define CTK_ACCEL_MAP_CLASS(klass)	  (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ACCEL_MAP, GtkAccelMapClass))
+#define CTK_ACCEL_MAP(accel_map)	  (G_TYPE_CHECK_INSTANCE_CAST ((accel_map), CTK_TYPE_ACCEL_MAP, CtkAccelMap))
+#define CTK_ACCEL_MAP_CLASS(klass)	  (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ACCEL_MAP, CtkAccelMapClass))
 #define CTK_IS_ACCEL_MAP(accel_map)	  (G_TYPE_CHECK_INSTANCE_TYPE ((accel_map), CTK_TYPE_ACCEL_MAP))
 #define CTK_IS_ACCEL_MAP_CLASS(klass)	  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_ACCEL_MAP))
-#define CTK_ACCEL_MAP_GET_CLASS(obj)      (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ACCEL_MAP, GtkAccelMapClass))
+#define CTK_ACCEL_MAP_GET_CLASS(obj)      (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ACCEL_MAP, CtkAccelMapClass))
 
-typedef struct _GtkAccelMap      GtkAccelMap;
-typedef struct _GtkAccelMapClass GtkAccelMapClass;
+typedef struct _CtkAccelMap      CtkAccelMap;
+typedef struct _CtkAccelMapClass CtkAccelMapClass;
 
 /* --- notifier --- */
 /**
- * GtkAccelMapForeach:
+ * CtkAccelMapForeach:
  * @data: User data passed to ctk_accel_map_foreach() or
  *  ctk_accel_map_foreach_unfiltered()
  * @accel_path: Accel path of the current accelerator
@@ -49,7 +49,7 @@ typedef struct _GtkAccelMapClass GtkAccelMapClass;
  * @changed: Changed flag of the accelerator (if %TRUE, accelerator has changed
  *  during runtime and would need to be saved during an accelerator dump)
  */
-typedef void (*GtkAccelMapForeach)		(gpointer	 data,
+typedef void (*CtkAccelMapForeach)		(gpointer	 data,
 						 const gchar	*accel_path,
 						 guint           accel_key,
 						 GdkModifierType accel_mods,
@@ -64,7 +64,7 @@ void	   ctk_accel_map_add_entry	(const gchar		*accel_path,
 					 GdkModifierType         accel_mods);
 GDK_AVAILABLE_IN_ALL
 gboolean   ctk_accel_map_lookup_entry	(const gchar		*accel_path,
-					 GtkAccelKey		*key);
+					 CtkAccelKey		*key);
 GDK_AVAILABLE_IN_ALL
 gboolean   ctk_accel_map_change_entry	(const gchar		*accel_path,
 					 guint			 accel_key,
@@ -76,7 +76,7 @@ GDK_AVAILABLE_IN_ALL
 void	   ctk_accel_map_save		(const gchar		*file_name);
 GDK_AVAILABLE_IN_ALL
 void	   ctk_accel_map_foreach	(gpointer		 data,
-					 GtkAccelMapForeach	 foreach_func);
+					 CtkAccelMapForeach	 foreach_func);
 GDK_AVAILABLE_IN_ALL
 void	   ctk_accel_map_load_fd	(gint			 fd);
 GDK_AVAILABLE_IN_ALL
@@ -94,15 +94,15 @@ GDK_AVAILABLE_IN_ALL
 void	ctk_accel_map_add_filter	 (const gchar		*filter_pattern);
 GDK_AVAILABLE_IN_ALL
 void	ctk_accel_map_foreach_unfiltered (gpointer		 data,
-					  GtkAccelMapForeach	 foreach_func);
+					  CtkAccelMapForeach	 foreach_func);
 
 /* --- notification --- */
 GDK_AVAILABLE_IN_ALL
 GType        ctk_accel_map_get_type (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkAccelMap *ctk_accel_map_get      (void);
+CtkAccelMap *ctk_accel_map_get      (void);
 
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkAccelMap, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CtkAccelMap, g_object_unref)
 
 G_END_DECLS
 

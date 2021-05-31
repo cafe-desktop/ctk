@@ -26,29 +26,29 @@
 #include "ctklabel.h"
 
 
-struct _GtkInspectorDataListPrivate
+struct _CtkInspectorDataListPrivate
 {
-  GtkTreeModel *object;
-  GtkTreeModel *types;
-  GtkTreeView *view;
-  GtkWidget *object_title;
+  CtkTreeModel *object;
+  CtkTreeModel *types;
+  CtkTreeView *view;
+  CtkWidget *object_title;
   gboolean show_data;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorDataList, ctk_inspector_data_list, CTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkInspectorDataList, ctk_inspector_data_list, CTK_TYPE_BOX)
 
 static void
-ctk_inspector_data_list_init (GtkInspectorDataList *sl)
+ctk_inspector_data_list_init (CtkInspectorDataList *sl)
 {
   sl->priv = ctk_inspector_data_list_get_instance_private (sl);
   ctk_widget_init_template (CTK_WIDGET (sl));
 }
 
 static void
-cell_data_func (GtkTreeViewColumn *col,
-                GtkCellRenderer   *cell,
-                GtkTreeModel      *model,
-                GtkTreeIter       *iter,
+cell_data_func (CtkTreeViewColumn *col,
+                CtkCellRenderer   *cell,
+                CtkTreeModel      *model,
+                CtkTreeIter       *iter,
                 gpointer           data)
 {
   gint num;
@@ -64,13 +64,13 @@ cell_data_func (GtkTreeViewColumn *col,
 }
 
 static void
-add_columns (GtkInspectorDataList *sl)
+add_columns (CtkInspectorDataList *sl)
 {
   gint n_columns;
-  GtkCellRenderer *cell;
+  CtkCellRenderer *cell;
   GType type;
   gchar *title;
-  GtkTreeViewColumn *col;
+  CtkTreeViewColumn *col;
   gint i;
 
   n_columns = ctk_tree_model_get_n_columns (sl->priv->object);
@@ -88,21 +88,21 @@ add_columns (GtkInspectorDataList *sl)
 }
 
 static void
-show_types (GtkInspectorDataList *sl)
+show_types (CtkInspectorDataList *sl)
 {
   ctk_tree_view_set_model (sl->priv->view, NULL);
   sl->priv->show_data = FALSE;
 }
 
 static void
-show_data (GtkInspectorDataList *sl)
+show_data (CtkInspectorDataList *sl)
 {
   ctk_tree_view_set_model (sl->priv->view, sl->priv->object);
   sl->priv->show_data = TRUE;
 }
 
 static void
-clear_view (GtkInspectorDataList *sl)
+clear_view (CtkInspectorDataList *sl)
 {
   ctk_tree_view_set_model (sl->priv->view, NULL);
   while (ctk_tree_view_get_n_columns (sl->priv->view) > 0)
@@ -111,7 +111,7 @@ clear_view (GtkInspectorDataList *sl)
 }
 
 void
-ctk_inspector_data_list_set_object (GtkInspectorDataList *sl,
+ctk_inspector_data_list_set_object (CtkInspectorDataList *sl,
                                     GObject              *object)
 {
   const gchar *title;
@@ -137,8 +137,8 @@ ctk_inspector_data_list_set_object (GtkInspectorDataList *sl,
 }
 
 static void
-toggle_show (GtkToggleButton      *button,
-             GtkInspectorDataList *sl)
+toggle_show (CtkToggleButton      *button,
+             CtkInspectorDataList *sl)
 {
   if (ctk_toggle_button_get_active (button) == sl->priv->show_data)
     return;
@@ -150,13 +150,13 @@ toggle_show (GtkToggleButton      *button,
 }
 
 static void
-ctk_inspector_data_list_class_init (GtkInspectorDataListClass *klass)
+ctk_inspector_data_list_class_init (CtkInspectorDataListClass *klass)
 {
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/data-list.ui");
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorDataList, view);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorDataList, object_title);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorDataList, view);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorDataList, object_title);
   ctk_widget_class_bind_template_callback (widget_class, toggle_show);
 }
 

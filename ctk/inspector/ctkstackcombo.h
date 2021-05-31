@@ -30,14 +30,14 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_STACK_COMBO            (ctk_stack_combo_get_type ())
-#define CTK_STACK_COMBO(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_STACK_COMBO, GtkStackCombo))
-#define CTK_STACK_COMBO_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_STACK_COMBO, GtkStackComboClass))
+#define CTK_STACK_COMBO(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_STACK_COMBO, CtkStackCombo))
+#define CTK_STACK_COMBO_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_STACK_COMBO, CtkStackComboClass))
 #define CTK_IS_STACK_COMBO(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_STACK_COMBO))
 #define CTK_IS_STACK_COMBO_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_STACK_COMBO))
-#define CTK_STACK_COMBO_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_STACK_COMBO, GtkStackComboClass))
+#define CTK_STACK_COMBO_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_STACK_COMBO, CtkStackComboClass))
 
-typedef struct _GtkStackCombo              GtkStackCombo;
-typedef struct _GtkStackComboClass         GtkStackComboClass;
+typedef struct _CtkStackCombo              CtkStackCombo;
+typedef struct _CtkStackComboClass         CtkStackComboClass;
 
 GType        ctk_stack_combo_get_type          (void) G_GNUC_CONST;
 

@@ -27,26 +27,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_FRAME_ACCESSIBLE                      (ctk_frame_accessible_get_type ())
-#define CTK_FRAME_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FRAME_ACCESSIBLE, GtkFrameAccessible))
-#define CTK_FRAME_ACCESSIBLE_CLASS(klass)              (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_FRAME_ACCESSIBLE, GtkFrameAccessibleClass))
+#define CTK_FRAME_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FRAME_ACCESSIBLE, CtkFrameAccessible))
+#define CTK_FRAME_ACCESSIBLE_CLASS(klass)              (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_FRAME_ACCESSIBLE, CtkFrameAccessibleClass))
 #define CTK_IS_FRAME_ACCESSIBLE(obj)                   (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_FRAME_ACCESSIBLE))
 #define CTK_IS_FRAME_ACCESSIBLE_CLASS(klass)           (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_FRAME_ACCESSIBLE))
-#define CTK_FRAME_ACCESSIBLE_GET_CLASS(obj)            (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_FRAME_ACCESSIBLE, GtkFrameAccessibleClass))
+#define CTK_FRAME_ACCESSIBLE_GET_CLASS(obj)            (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_FRAME_ACCESSIBLE, CtkFrameAccessibleClass))
 
-typedef struct _GtkFrameAccessible        GtkFrameAccessible;
-typedef struct _GtkFrameAccessibleClass   GtkFrameAccessibleClass;
-typedef struct _GtkFrameAccessiblePrivate GtkFrameAccessiblePrivate;
+typedef struct _CtkFrameAccessible        CtkFrameAccessible;
+typedef struct _CtkFrameAccessibleClass   CtkFrameAccessibleClass;
+typedef struct _CtkFrameAccessiblePrivate CtkFrameAccessiblePrivate;
 
-struct _GtkFrameAccessible
+struct _CtkFrameAccessible
 {
-  GtkContainerAccessible parent;
+  CtkContainerAccessible parent;
 
-  GtkFrameAccessiblePrivate *priv;
+  CtkFrameAccessiblePrivate *priv;
 };
 
-struct _GtkFrameAccessibleClass
+struct _CtkFrameAccessibleClass
 {
-  GtkContainerAccessibleClass parent_class;
+  CtkContainerAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

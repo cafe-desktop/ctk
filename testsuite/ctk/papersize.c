@@ -20,7 +20,7 @@
 static void
 test_parse (void)
 {
-  GtkPaperSize *p;
+  CtkPaperSize *p;
 
   p = ctk_paper_size_new (CTK_PAPER_NAME_A4);
   g_assert (p != NULL);
@@ -75,7 +75,7 @@ test_parse (void)
 static void
 test_compare (void)
 {
-  GtkPaperSize *a1, *a2, *b, *c;
+  CtkPaperSize *a1, *a2, *b, *c;
 
   a1 = ctk_paper_size_new (CTK_PAPER_NAME_A4);
   a2 = ctk_paper_size_new ("iso_a4_210x297mm");
@@ -96,7 +96,7 @@ test_compare (void)
 static void
 test_units (void)
 {
-  GtkPaperSize *p;
+  CtkPaperSize *p;
 
   p = ctk_paper_size_new (CTK_PAPER_NAME_A4);
 

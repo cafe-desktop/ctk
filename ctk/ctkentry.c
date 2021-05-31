@@ -84,10 +84,10 @@
 /**
  * SECTION:ctkentry
  * @Short_description: A single line text entry field
- * @Title: GtkEntry
- * @See_also: #GtkTextView, #GtkEntryCompletion
+ * @Title: CtkEntry
+ * @See_also: #CtkTextView, #CtkEntryCompletion
  *
- * The #GtkEntry widget is a single line text entry
+ * The #CtkEntry widget is a single line text entry
  * widget. A fairly large set of key bindings are supported
  * by default. If the entered text is longer than the allocation
  * of the widget, the widget will scroll so that the cursor
@@ -101,18 +101,18 @@
  * ctk_entry_set_invisible_char(). Since 2.16, GTK+ displays a warning
  * when Caps Lock or input methods might interfere with entering text in
  * a password entry. The warning can be turned off with the
- * #GtkEntry:caps-lock-warning property.
+ * #CtkEntry:caps-lock-warning property.
  *
- * Since 2.16, GtkEntry has the ability to display progress or activity
+ * Since 2.16, CtkEntry has the ability to display progress or activity
  * information behind the text. To make an entry display such information,
  * use ctk_entry_set_progress_fraction() or ctk_entry_set_progress_pulse_step().
  *
- * Additionally, GtkEntry can show icons at either side of the entry. These
+ * Additionally, CtkEntry can show icons at either side of the entry. These
  * icons can be activatable by clicking, can be set up as drag source and
  * can have tooltips. To add an icon, use ctk_entry_set_icon_from_gicon() or
  * one of the various other functions that set an icon from a stock id, an
  * icon name or a pixbuf. To trigger an action when the user clicks an icon,
- * connect to the #GtkEntry::icon-press signal. To allow DND operations
+ * connect to the #CtkEntry::icon-press signal. To allow DND operations
  * from an icon, use ctk_entry_set_icon_drag_source(). To set a tooltip on
  * an icon, use ctk_entry_set_icon_tooltip_text() or the corresponding function
  * for markup.
@@ -136,7 +136,7 @@
  * ╰── [window.popup]
  * ]|
  *
- * GtkEntry has a main node with the name entry. Depending on the properties
+ * CtkEntry has a main node with the name entry. Depending on the properties
  * of the entry, the style classes .read-only and .flat may appear. The style
  * classes .warning and .error may also be used with entries.
  *
@@ -177,19 +177,19 @@ static GQuark          quark_ctk_signal = 0;
 static GQuark          quark_entry_completion = 0;
 
 typedef struct _EntryIconInfo EntryIconInfo;
-typedef struct _GtkEntryPasswordHint GtkEntryPasswordHint;
-typedef struct _GtkEntryCapslockFeedback GtkEntryCapslockFeedback;
+typedef struct _CtkEntryPasswordHint CtkEntryPasswordHint;
+typedef struct _CtkEntryCapslockFeedback CtkEntryCapslockFeedback;
 
-struct _GtkEntryPrivate
+struct _CtkEntryPrivate
 {
   EntryIconInfo         *icons[MAX_ICONS];
 
-  GtkEntryBuffer        *buffer;
-  GtkIMContext          *im_context;
-  GtkWidget             *popup_menu;
+  CtkEntryBuffer        *buffer;
+  CtkIMContext          *im_context;
+  CtkWidget             *popup_menu;
 
   GdkWindow             *text_area;
-  GtkAllocation          text_allocation;
+  CtkAllocation          text_allocation;
   int                    text_baseline;
 
   PangoLayout           *cached_layout;
@@ -203,27 +203,27 @@ struct _GtkEntryPrivate
   gdouble       progress_pulse_current;
 
   guint              tick_id;
-  GtkProgressTracker tracker;
+  CtkProgressTracker tracker;
   gint64             pulse1;
   gint64             pulse2;
   gdouble            last_iteration;
 
   gchar        *placeholder_text;
 
-  GtkTextHandle *text_handle;
-  GtkWidget     *selection_bubble;
+  CtkTextHandle *text_handle;
+  CtkWidget     *selection_bubble;
   guint          selection_bubble_timeout_id;
 
-  GtkWidget     *magnifier_popover;
-  GtkWidget     *magnifier;
+  CtkWidget     *magnifier_popover;
+  CtkWidget     *magnifier;
 
-  GtkGesture    *drag_gesture;
-  GtkGesture    *multipress_gesture;
+  CtkGesture    *drag_gesture;
+  CtkGesture    *multipress_gesture;
 
-  GtkCssGadget  *gadget;
-  GtkCssGadget  *progress_gadget;
-  GtkCssNode    *selection_node;
-  GtkCssNode    *undershoot_node[2];
+  CtkCssGadget  *gadget;
+  CtkCssGadget  *progress_gadget;
+  CtkCssNode    *selection_node;
+  CtkCssNode    *undershoot_node[2];
 
   gfloat        xalign;
 
@@ -265,7 +265,7 @@ struct _GtkEntryPrivate
   guint         caps_lock_warning_shown : 1;
   guint         change_count            : 8;
   guint         cursor_visible          : 1;
-  guint         editing_canceled        : 1; /* Only used by GtkCellRendererText */
+  guint         editing_canceled        : 1; /* Only used by CtkCellRendererText */
   guint         in_click                : 1; /* Flag so we don't select all when clicking in entry to focus in */
   guint         invisible_char_set      : 1;
   guint         mouse_cursor_obscured   : 1;
@@ -294,23 +294,23 @@ struct _EntryIconInfo
   guint pressed        : 1;
 
   GdkDragAction actions;
-  GtkTargetList *target_list;
-  GtkCssGadget *gadget;
+  CtkTargetList *target_list;
+  CtkCssGadget *gadget;
   GdkEventSequence *current_sequence;
   GdkDevice *device;
 };
 
-struct _GtkEntryPasswordHint
+struct _CtkEntryPasswordHint
 {
   gint position;      /* Position (in text) of the last password hint */
   guint source_id;    /* Timeout source id */
 };
 
-struct _GtkEntryCapslockFeedback
+struct _CtkEntryCapslockFeedback
 {
-  GtkWidget *entry;
-  GtkWidget *window;
-  GtkWidget *label;
+  CtkWidget *entry;
+  CtkWidget *window;
+  CtkWidget *label;
 };
 
 enum {
@@ -406,8 +406,8 @@ typedef enum
 
 /* GObject methods
  */
-static void   ctk_entry_editable_init        (GtkEditableInterface *iface);
-static void   ctk_entry_cell_editable_init   (GtkCellEditableIface *iface);
+static void   ctk_entry_editable_init        (CtkEditableInterface *iface);
+static void   ctk_entry_cell_editable_init   (CtkCellEditableIface *iface);
 static void   ctk_entry_set_property         (GObject          *object,
                                               guint             prop_id,
                                               const GValue     *value,
@@ -419,308 +419,308 @@ static void   ctk_entry_get_property         (GObject          *object,
 static void   ctk_entry_finalize             (GObject          *object);
 static void   ctk_entry_dispose              (GObject          *object);
 
-/* GtkWidget methods
+/* CtkWidget methods
  */
-static void   ctk_entry_destroy              (GtkWidget        *widget);
-static void   ctk_entry_realize              (GtkWidget        *widget);
-static void   ctk_entry_unrealize            (GtkWidget        *widget);
-static void   ctk_entry_map                  (GtkWidget        *widget);
-static void   ctk_entry_unmap                (GtkWidget        *widget);
-static void   ctk_entry_get_preferred_width  (GtkWidget        *widget,
+static void   ctk_entry_destroy              (CtkWidget        *widget);
+static void   ctk_entry_realize              (CtkWidget        *widget);
+static void   ctk_entry_unrealize            (CtkWidget        *widget);
+static void   ctk_entry_map                  (CtkWidget        *widget);
+static void   ctk_entry_unmap                (CtkWidget        *widget);
+static void   ctk_entry_get_preferred_width  (CtkWidget        *widget,
                                               gint             *minimum,
                                               gint             *natural);
-static void   ctk_entry_get_preferred_height (GtkWidget        *widget,
+static void   ctk_entry_get_preferred_height (CtkWidget        *widget,
                                               gint             *minimum,
                                               gint             *natural);
-static void  ctk_entry_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
+static void  ctk_entry_get_preferred_height_and_baseline_for_width (CtkWidget *widget,
                                                                     gint       width,
                                                                     gint      *minimum_height,
                                                                     gint      *natural_height,
                                                                     gint      *minimum_baseline,
                                                                     gint      *natural_baseline);
-static void   ctk_entry_size_allocate        (GtkWidget        *widget,
-					      GtkAllocation    *allocation);
-static gint   ctk_entry_draw                 (GtkWidget        *widget,
+static void   ctk_entry_size_allocate        (CtkWidget        *widget,
+					      CtkAllocation    *allocation);
+static gint   ctk_entry_draw                 (CtkWidget        *widget,
                                               cairo_t          *cr);
-static gboolean ctk_entry_event              (GtkWidget        *widget,
+static gboolean ctk_entry_event              (CtkWidget        *widget,
                                               GdkEvent         *event);
-static gint   ctk_entry_enter_notify         (GtkWidget        *widget,
+static gint   ctk_entry_enter_notify         (CtkWidget        *widget,
                                               GdkEventCrossing *event);
-static gint   ctk_entry_leave_notify         (GtkWidget        *widget,
+static gint   ctk_entry_leave_notify         (CtkWidget        *widget,
                                               GdkEventCrossing *event);
-static gint   ctk_entry_key_press            (GtkWidget        *widget,
+static gint   ctk_entry_key_press            (CtkWidget        *widget,
 					      GdkEventKey      *event);
-static gint   ctk_entry_key_release          (GtkWidget        *widget,
+static gint   ctk_entry_key_release          (CtkWidget        *widget,
 					      GdkEventKey      *event);
-static gint   ctk_entry_focus_in             (GtkWidget        *widget,
+static gint   ctk_entry_focus_in             (CtkWidget        *widget,
 					      GdkEventFocus    *event);
-static gint   ctk_entry_focus_out            (GtkWidget        *widget,
+static gint   ctk_entry_focus_out            (CtkWidget        *widget,
 					      GdkEventFocus    *event);
-static void   ctk_entry_grab_focus           (GtkWidget        *widget);
-static void   ctk_entry_style_updated        (GtkWidget        *widget);
-static gboolean ctk_entry_query_tooltip      (GtkWidget        *widget,
+static void   ctk_entry_grab_focus           (CtkWidget        *widget);
+static void   ctk_entry_style_updated        (CtkWidget        *widget);
+static gboolean ctk_entry_query_tooltip      (CtkWidget        *widget,
                                               gint              x,
                                               gint              y,
                                               gboolean          keyboard_tip,
-                                              GtkTooltip       *tooltip);
-static void   ctk_entry_direction_changed    (GtkWidget        *widget,
-					      GtkTextDirection  previous_dir);
-static void   ctk_entry_state_flags_changed  (GtkWidget        *widget,
-					      GtkStateFlags     previous_state);
-static void   ctk_entry_screen_changed       (GtkWidget        *widget,
+                                              CtkTooltip       *tooltip);
+static void   ctk_entry_direction_changed    (CtkWidget        *widget,
+					      CtkTextDirection  previous_dir);
+static void   ctk_entry_state_flags_changed  (CtkWidget        *widget,
+					      CtkStateFlags     previous_state);
+static void   ctk_entry_screen_changed       (CtkWidget        *widget,
 					      GdkScreen        *old_screen);
 
-static gboolean ctk_entry_drag_drop          (GtkWidget        *widget,
+static gboolean ctk_entry_drag_drop          (CtkWidget        *widget,
                                               GdkDragContext   *context,
                                               gint              x,
                                               gint              y,
                                               guint             time);
-static gboolean ctk_entry_drag_motion        (GtkWidget        *widget,
+static gboolean ctk_entry_drag_motion        (CtkWidget        *widget,
 					      GdkDragContext   *context,
 					      gint              x,
 					      gint              y,
 					      guint             time);
-static void     ctk_entry_drag_leave         (GtkWidget        *widget,
+static void     ctk_entry_drag_leave         (CtkWidget        *widget,
 					      GdkDragContext   *context,
 					      guint             time);
-static void     ctk_entry_drag_data_received (GtkWidget        *widget,
+static void     ctk_entry_drag_data_received (CtkWidget        *widget,
 					      GdkDragContext   *context,
 					      gint              x,
 					      gint              y,
-					      GtkSelectionData *selection_data,
+					      CtkSelectionData *selection_data,
 					      guint             info,
 					      guint             time);
-static void     ctk_entry_drag_data_get      (GtkWidget        *widget,
+static void     ctk_entry_drag_data_get      (CtkWidget        *widget,
 					      GdkDragContext   *context,
-					      GtkSelectionData *selection_data,
+					      CtkSelectionData *selection_data,
 					      guint             info,
 					      guint             time);
-static void     ctk_entry_drag_data_delete   (GtkWidget        *widget,
+static void     ctk_entry_drag_data_delete   (CtkWidget        *widget,
 					      GdkDragContext   *context);
-static void     ctk_entry_drag_begin         (GtkWidget        *widget,
+static void     ctk_entry_drag_begin         (CtkWidget        *widget,
                                               GdkDragContext   *context);
-static void     ctk_entry_drag_end           (GtkWidget        *widget,
+static void     ctk_entry_drag_end           (CtkWidget        *widget,
                                               GdkDragContext   *context);
 
 
-/* GtkEditable method implementations
+/* CtkEditable method implementations
  */
-static void     ctk_entry_insert_text          (GtkEditable *editable,
+static void     ctk_entry_insert_text          (CtkEditable *editable,
 						const gchar *new_text,
 						gint         new_text_length,
 						gint        *position);
-static void     ctk_entry_delete_text          (GtkEditable *editable,
+static void     ctk_entry_delete_text          (CtkEditable *editable,
 						gint         start_pos,
 						gint         end_pos);
-static gchar *  ctk_entry_get_chars            (GtkEditable *editable,
+static gchar *  ctk_entry_get_chars            (CtkEditable *editable,
 						gint         start_pos,
 						gint         end_pos);
-static void     ctk_entry_real_set_position    (GtkEditable *editable,
+static void     ctk_entry_real_set_position    (CtkEditable *editable,
 						gint         position);
-static gint     ctk_entry_get_position         (GtkEditable *editable);
-static void     ctk_entry_set_selection_bounds (GtkEditable *editable,
+static gint     ctk_entry_get_position         (CtkEditable *editable);
+static void     ctk_entry_set_selection_bounds (CtkEditable *editable,
 						gint         start,
 						gint         end);
-static gboolean ctk_entry_get_selection_bounds (GtkEditable *editable,
+static gboolean ctk_entry_get_selection_bounds (CtkEditable *editable,
 						gint        *start,
 						gint        *end);
 
-/* GtkCellEditable method implementations
+/* CtkCellEditable method implementations
  */
-static void ctk_entry_start_editing (GtkCellEditable *cell_editable,
+static void ctk_entry_start_editing (CtkCellEditable *cell_editable,
 				     GdkEvent        *event);
 
 /* Default signal handlers
  */
-static void ctk_entry_real_insert_text   (GtkEditable     *editable,
+static void ctk_entry_real_insert_text   (CtkEditable     *editable,
 					  const gchar     *new_text,
 					  gint             new_text_length,
 					  gint            *position);
-static void ctk_entry_real_delete_text   (GtkEditable     *editable,
+static void ctk_entry_real_delete_text   (CtkEditable     *editable,
 					  gint             start_pos,
 					  gint             end_pos);
-static void ctk_entry_move_cursor        (GtkEntry        *entry,
-					  GtkMovementStep  step,
+static void ctk_entry_move_cursor        (CtkEntry        *entry,
+					  CtkMovementStep  step,
 					  gint             count,
 					  gboolean         extend_selection);
-static void ctk_entry_insert_at_cursor   (GtkEntry        *entry,
+static void ctk_entry_insert_at_cursor   (CtkEntry        *entry,
 					  const gchar     *str);
-static void ctk_entry_delete_from_cursor (GtkEntry        *entry,
-					  GtkDeleteType    type,
+static void ctk_entry_delete_from_cursor (CtkEntry        *entry,
+					  CtkDeleteType    type,
 					  gint             count);
-static void ctk_entry_backspace          (GtkEntry        *entry);
-static void ctk_entry_cut_clipboard      (GtkEntry        *entry);
-static void ctk_entry_copy_clipboard     (GtkEntry        *entry);
-static void ctk_entry_paste_clipboard    (GtkEntry        *entry);
-static void ctk_entry_toggle_overwrite   (GtkEntry        *entry);
-static void ctk_entry_insert_emoji       (GtkEntry        *entry);
-static void ctk_entry_select_all         (GtkEntry        *entry);
-static void ctk_entry_real_activate      (GtkEntry        *entry);
-static gboolean ctk_entry_popup_menu     (GtkWidget       *widget);
+static void ctk_entry_backspace          (CtkEntry        *entry);
+static void ctk_entry_cut_clipboard      (CtkEntry        *entry);
+static void ctk_entry_copy_clipboard     (CtkEntry        *entry);
+static void ctk_entry_paste_clipboard    (CtkEntry        *entry);
+static void ctk_entry_toggle_overwrite   (CtkEntry        *entry);
+static void ctk_entry_insert_emoji       (CtkEntry        *entry);
+static void ctk_entry_select_all         (CtkEntry        *entry);
+static void ctk_entry_real_activate      (CtkEntry        *entry);
+static gboolean ctk_entry_popup_menu     (CtkWidget       *widget);
 
 static void keymap_direction_changed     (GdkKeymap       *keymap,
-					  GtkEntry        *entry);
+					  CtkEntry        *entry);
 static void keymap_state_changed         (GdkKeymap       *keymap,
-					  GtkEntry        *entry);
-static void remove_capslock_feedback     (GtkEntry        *entry);
+					  CtkEntry        *entry);
+static void remove_capslock_feedback     (CtkEntry        *entry);
 
 /* IM Context Callbacks
  */
-static void     ctk_entry_commit_cb               (GtkIMContext *context,
+static void     ctk_entry_commit_cb               (CtkIMContext *context,
 						   const gchar  *str,
-						   GtkEntry     *entry);
-static void     ctk_entry_preedit_changed_cb      (GtkIMContext *context,
-						   GtkEntry     *entry);
-static gboolean ctk_entry_retrieve_surrounding_cb (GtkIMContext *context,
-						   GtkEntry     *entry);
-static gboolean ctk_entry_delete_surrounding_cb   (GtkIMContext *context,
+						   CtkEntry     *entry);
+static void     ctk_entry_preedit_changed_cb      (CtkIMContext *context,
+						   CtkEntry     *entry);
+static gboolean ctk_entry_retrieve_surrounding_cb (CtkIMContext *context,
+						   CtkEntry     *entry);
+static gboolean ctk_entry_delete_surrounding_cb   (CtkIMContext *context,
 						   gint          offset,
 						   gint          n_chars,
-						   GtkEntry     *entry);
+						   CtkEntry     *entry);
 
 /* Event controller callbacks */
-static void   ctk_entry_multipress_gesture_pressed (GtkGestureMultiPress *gesture,
+static void   ctk_entry_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
                                                     gint                  n_press,
                                                     gdouble               x,
                                                     gdouble               y,
-                                                    GtkEntry             *entry);
-static void   ctk_entry_drag_gesture_update        (GtkGestureDrag *gesture,
+                                                    CtkEntry             *entry);
+static void   ctk_entry_drag_gesture_update        (CtkGestureDrag *gesture,
                                                     gdouble         offset_x,
                                                     gdouble         offset_y,
-                                                    GtkEntry       *entry);
-static void   ctk_entry_drag_gesture_end           (GtkGestureDrag *gesture,
+                                                    CtkEntry       *entry);
+static void   ctk_entry_drag_gesture_end           (CtkGestureDrag *gesture,
                                                     gdouble         offset_x,
                                                     gdouble         offset_y,
-                                                    GtkEntry       *entry);
+                                                    CtkEntry       *entry);
 
 /* Internal routines
  */
-static void         ctk_entry_draw_text                (GtkEntry       *entry,
+static void         ctk_entry_draw_text                (CtkEntry       *entry,
                                                         cairo_t        *cr);
-static void         ctk_entry_draw_cursor              (GtkEntry       *entry,
+static void         ctk_entry_draw_cursor              (CtkEntry       *entry,
                                                         cairo_t        *cr,
 							CursorType      type);
-static PangoLayout *ctk_entry_ensure_layout            (GtkEntry       *entry,
+static PangoLayout *ctk_entry_ensure_layout            (CtkEntry       *entry,
                                                         gboolean        include_preedit);
-static void         ctk_entry_reset_layout             (GtkEntry       *entry);
-static void         ctk_entry_recompute                (GtkEntry       *entry);
-static gint         ctk_entry_find_position            (GtkEntry       *entry,
+static void         ctk_entry_reset_layout             (CtkEntry       *entry);
+static void         ctk_entry_recompute                (CtkEntry       *entry);
+static gint         ctk_entry_find_position            (CtkEntry       *entry,
 							gint            x);
-static void         ctk_entry_get_cursor_locations     (GtkEntry       *entry,
+static void         ctk_entry_get_cursor_locations     (CtkEntry       *entry,
 							CursorType      type,
 							gint           *strong_x,
 							gint           *weak_x);
-static void         ctk_entry_adjust_scroll            (GtkEntry       *entry);
-static gint         ctk_entry_move_visually            (GtkEntry       *editable,
+static void         ctk_entry_adjust_scroll            (CtkEntry       *entry);
+static gint         ctk_entry_move_visually            (CtkEntry       *editable,
 							gint            start,
 							gint            count);
-static gint         ctk_entry_move_logically           (GtkEntry       *entry,
+static gint         ctk_entry_move_logically           (CtkEntry       *entry,
 							gint            start,
 							gint            count);
-static gint         ctk_entry_move_forward_word        (GtkEntry       *entry,
+static gint         ctk_entry_move_forward_word        (CtkEntry       *entry,
 							gint            start,
                                                         gboolean        allow_whitespace);
-static gint         ctk_entry_move_backward_word       (GtkEntry       *entry,
+static gint         ctk_entry_move_backward_word       (CtkEntry       *entry,
 							gint            start,
                                                         gboolean        allow_whitespace);
-static void         ctk_entry_delete_whitespace        (GtkEntry       *entry);
-static void         ctk_entry_select_word              (GtkEntry       *entry);
-static void         ctk_entry_select_line              (GtkEntry       *entry);
-static void         ctk_entry_paste                    (GtkEntry       *entry,
+static void         ctk_entry_delete_whitespace        (CtkEntry       *entry);
+static void         ctk_entry_select_word              (CtkEntry       *entry);
+static void         ctk_entry_select_line              (CtkEntry       *entry);
+static void         ctk_entry_paste                    (CtkEntry       *entry,
 							GdkAtom         selection);
-static void         ctk_entry_update_primary_selection (GtkEntry       *entry);
-static void         ctk_entry_do_popup                 (GtkEntry       *entry,
+static void         ctk_entry_update_primary_selection (CtkEntry       *entry);
+static void         ctk_entry_do_popup                 (CtkEntry       *entry,
 							const GdkEvent *event);
-static gboolean     ctk_entry_mnemonic_activate        (GtkWidget      *widget,
+static gboolean     ctk_entry_mnemonic_activate        (CtkWidget      *widget,
 							gboolean        group_cycling);
-static void         ctk_entry_grab_notify              (GtkWidget      *widget,
+static void         ctk_entry_grab_notify              (CtkWidget      *widget,
                                                         gboolean        was_grabbed);
-static void         ctk_entry_check_cursor_blink       (GtkEntry       *entry);
-static void         ctk_entry_pend_cursor_blink        (GtkEntry       *entry);
-static void         ctk_entry_reset_blink_time         (GtkEntry       *entry);
-static void         ctk_entry_get_text_area_size       (GtkEntry       *entry,
+static void         ctk_entry_check_cursor_blink       (CtkEntry       *entry);
+static void         ctk_entry_pend_cursor_blink        (CtkEntry       *entry);
+static void         ctk_entry_reset_blink_time         (CtkEntry       *entry);
+static void         ctk_entry_get_text_area_size       (CtkEntry       *entry,
 							gint           *x,
 							gint           *y,
 							gint           *width,
 							gint           *height);
-static void         ctk_entry_get_frame_size           (GtkEntry       *entry,
+static void         ctk_entry_get_frame_size           (CtkEntry       *entry,
 							gint           *x,
 							gint           *y,
 							gint           *width,
 							gint           *height);
-static void         get_frame_size                     (GtkEntry       *entry,
+static void         get_frame_size                     (CtkEntry       *entry,
                                                         gboolean        relative_to_window,
 							gint           *x,
 							gint           *y,
 							gint           *width,
 							gint           *height);
-static void         ctk_entry_move_adjustments         (GtkEntry             *entry);
-static void         ctk_entry_update_cached_style_values(GtkEntry      *entry);
-static gboolean     get_middle_click_paste             (GtkEntry *entry);
-static void         ctk_entry_get_scroll_limits        (GtkEntry       *entry,
+static void         ctk_entry_move_adjustments         (CtkEntry             *entry);
+static void         ctk_entry_update_cached_style_values(CtkEntry      *entry);
+static gboolean     get_middle_click_paste             (CtkEntry *entry);
+static void         ctk_entry_get_scroll_limits        (CtkEntry       *entry,
                                                         gint           *min_offset,
                                                         gint           *max_offset);
 
-/* GtkTextHandle handlers */
-static void         ctk_entry_handle_drag_started      (GtkTextHandle         *handle,
-                                                        GtkTextHandlePosition  pos,
-                                                        GtkEntry              *entry);
-static void         ctk_entry_handle_dragged           (GtkTextHandle         *handle,
-                                                        GtkTextHandlePosition  pos,
+/* CtkTextHandle handlers */
+static void         ctk_entry_handle_drag_started      (CtkTextHandle         *handle,
+                                                        CtkTextHandlePosition  pos,
+                                                        CtkEntry              *entry);
+static void         ctk_entry_handle_dragged           (CtkTextHandle         *handle,
+                                                        CtkTextHandlePosition  pos,
                                                         gint                   x,
                                                         gint                   y,
-                                                        GtkEntry              *entry);
-static void         ctk_entry_handle_drag_finished     (GtkTextHandle         *handle,
-                                                        GtkTextHandlePosition  pos,
-                                                        GtkEntry              *entry);
+                                                        CtkEntry              *entry);
+static void         ctk_entry_handle_drag_finished     (CtkTextHandle         *handle,
+                                                        CtkTextHandlePosition  pos,
+                                                        CtkEntry              *entry);
 
-static void         ctk_entry_selection_bubble_popup_set   (GtkEntry *entry);
-static void         ctk_entry_selection_bubble_popup_unset (GtkEntry *entry);
+static void         ctk_entry_selection_bubble_popup_set   (CtkEntry *entry);
+static void         ctk_entry_selection_bubble_popup_unset (CtkEntry *entry);
 
-static void         begin_change                       (GtkEntry *entry);
-static void         end_change                         (GtkEntry *entry);
-static void         emit_changed                       (GtkEntry *entry);
+static void         begin_change                       (CtkEntry *entry);
+static void         end_change                         (CtkEntry *entry);
+static void         emit_changed                       (CtkEntry *entry);
 
-static void         buffer_inserted_text               (GtkEntryBuffer *buffer, 
+static void         buffer_inserted_text               (CtkEntryBuffer *buffer, 
                                                         guint           position,
                                                         const gchar    *chars,
                                                         guint           n_chars,
-                                                        GtkEntry       *entry);
-static void         buffer_deleted_text                (GtkEntryBuffer *buffer, 
+                                                        CtkEntry       *entry);
+static void         buffer_deleted_text                (CtkEntryBuffer *buffer, 
                                                         guint           position,
                                                         guint           n_chars,
-                                                        GtkEntry       *entry);
-static void         buffer_notify_text                 (GtkEntryBuffer *buffer, 
+                                                        CtkEntry       *entry);
+static void         buffer_notify_text                 (CtkEntryBuffer *buffer, 
                                                         GParamSpec     *spec,
-                                                        GtkEntry       *entry);
-static void         buffer_notify_length               (GtkEntryBuffer *buffer, 
+                                                        CtkEntry       *entry);
+static void         buffer_notify_length               (CtkEntryBuffer *buffer, 
                                                         GParamSpec     *spec,
-                                                        GtkEntry       *entry);
-static void         buffer_notify_max_length           (GtkEntryBuffer *buffer, 
+                                                        CtkEntry       *entry);
+static void         buffer_notify_max_length           (CtkEntryBuffer *buffer, 
                                                         GParamSpec     *spec,
-                                                        GtkEntry       *entry);
-static void         buffer_connect_signals             (GtkEntry       *entry);
-static void         buffer_disconnect_signals          (GtkEntry       *entry);
-static GtkEntryBuffer *get_buffer                      (GtkEntry       *entry);
-static void         set_show_emoji_icon                (GtkEntry       *entry,
+                                                        CtkEntry       *entry);
+static void         buffer_connect_signals             (CtkEntry       *entry);
+static void         buffer_disconnect_signals          (CtkEntry       *entry);
+static CtkEntryBuffer *get_buffer                      (CtkEntry       *entry);
+static void         set_show_emoji_icon                (CtkEntry       *entry,
                                                         gboolean        value);
-static void         set_enable_emoji_completion        (GtkEntry       *entry,
+static void         set_enable_emoji_completion        (CtkEntry       *entry,
                                                         gboolean        value);
 
-static void     ctk_entry_measure  (GtkCssGadget        *gadget,
-                                    GtkOrientation       orientation,
+static void     ctk_entry_measure  (CtkCssGadget        *gadget,
+                                    CtkOrientation       orientation,
                                     int                  for_size,
                                     int                 *minimum,
                                     int                 *natural,
                                     int                 *minimum_baseline,
                                     int                 *natural_baseline,
                                     gpointer             data);
-static void     ctk_entry_allocate (GtkCssGadget        *gadget,
-                                    const GtkAllocation *allocation,
+static void     ctk_entry_allocate (CtkCssGadget        *gadget,
+                                    const CtkAllocation *allocation,
                                     int                  baseline,
-                                    GtkAllocation       *out_clip,
+                                    CtkAllocation       *out_clip,
                                     gpointer             data);
-static gboolean ctk_entry_render   (GtkCssGadget        *gadget,
+static gboolean ctk_entry_render   (CtkCssGadget        *gadget,
                                     cairo_t             *cr,
                                     int                  x,
                                     int                  y,
@@ -728,18 +728,18 @@ static gboolean ctk_entry_render   (GtkCssGadget        *gadget,
                                     int                  height,
                                     gpointer             data);
 
-G_DEFINE_TYPE_WITH_CODE (GtkEntry, ctk_entry, CTK_TYPE_WIDGET,
-                         G_ADD_PRIVATE (GtkEntry)
+G_DEFINE_TYPE_WITH_CODE (CtkEntry, ctk_entry, CTK_TYPE_WIDGET,
+                         G_ADD_PRIVATE (CtkEntry)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_EDITABLE,
                                                 ctk_entry_editable_init)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_CELL_EDITABLE,
                                                 ctk_entry_cell_editable_init))
 
 static void
-add_move_binding (GtkBindingSet  *binding_set,
+add_move_binding (CtkBindingSet  *binding_set,
 		  guint           keyval,
 		  guint           modmask,
-		  GtkMovementStep step,
+		  CtkMovementStep step,
 		  gint            count)
 {
   g_return_if_fail ((modmask & GDK_SHIFT_MASK) == 0);
@@ -759,13 +759,13 @@ add_move_binding (GtkBindingSet  *binding_set,
 }
 
 static void
-ctk_entry_class_init (GtkEntryClass *class)
+ctk_entry_class_init (CtkEntryClass *class)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class;
-  GtkBindingSet *binding_set;
+  CtkWidgetClass *widget_class;
+  CtkBindingSet *binding_set;
 
-  widget_class = (GtkWidgetClass*) class;
+  widget_class = (CtkWidgetClass*) class;
 
   gobject_class->dispose = ctk_entry_dispose;
   gobject_class->finalize = ctk_entry_finalize;
@@ -886,12 +886,12 @@ ctk_entry_class_init (GtkEntryClass *class)
                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry:inner-border:
+   * CtkEntry:inner-border:
    *
    * Sets the text area's border between the text and the frame.
    *
    * Deprecated: 3.4: Use the standard border and padding CSS properties
-   *   (through objects like #GtkStyleContext and #GtkCssProvider); the value
+   *   (through objects like #CtkStyleContext and #CtkCssProvider); the value
    *   of this style property is ignored.
    */
   entry_props[PROP_INNER_BORDER] =
@@ -924,7 +924,7 @@ ctk_entry_class_init (GtkEntryClass *class)
                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry:max-width-chars:
+   * CtkEntry:max-width-chars:
    *
    * The desired maximum width of the entry, in characters.
    * If this property is set to -1, the width will be calculated
@@ -956,7 +956,7 @@ ctk_entry_class_init (GtkEntryClass *class)
                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry:xalign:
+   * CtkEntry:xalign:
    *
    * The horizontal alignment, from 0 (left) to 1 (right).
    * Reversed for RTL layouts.
@@ -972,7 +972,7 @@ ctk_entry_class_init (GtkEntryClass *class)
                           CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry:truncate-multiline:
+   * CtkEntry:truncate-multiline:
    *
    * When %TRUE, pasted multi-line text is truncated to the first line.
    *
@@ -986,10 +986,10 @@ ctk_entry_class_init (GtkEntryClass *class)
                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry:shadow-type:
+   * CtkEntry:shadow-type:
    *
    * Which kind of shadow to draw around the entry when
-   * #GtkEntry:has-frame is set to %TRUE.
+   * #CtkEntry:has-frame is set to %TRUE.
    *
    * Deprecated: 3.20: Use CSS to determine the style of the border;
    *     the value of this style property is ignored.
@@ -1005,9 +1005,9 @@ ctk_entry_class_init (GtkEntryClass *class)
                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY|G_PARAM_DEPRECATED);
 
   /**
-   * GtkEntry:overwrite-mode:
+   * CtkEntry:overwrite-mode:
    *
-   * If text is overwritten when typing in the #GtkEntry.
+   * If text is overwritten when typing in the #CtkEntry.
    *
    * Since: 2.14
    */
@@ -1019,9 +1019,9 @@ ctk_entry_class_init (GtkEntryClass *class)
                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry:text-length:
+   * CtkEntry:text-length:
    *
-   * The length of the text in the #GtkEntry.
+   * The length of the text in the #CtkEntry.
    *
    * Since: 2.14
    */
@@ -1034,9 +1034,9 @@ ctk_entry_class_init (GtkEntryClass *class)
                          CTK_PARAM_READABLE);
 
   /**
-   * GtkEntry:invisible-char-set:
+   * CtkEntry:invisible-char-set:
    *
-   * Whether the invisible char has been set for the #GtkEntry.
+   * Whether the invisible char has been set for the #CtkEntry.
    *
    * Since: 2.16
    */
@@ -1048,7 +1048,7 @@ ctk_entry_class_init (GtkEntryClass *class)
                             CTK_PARAM_READWRITE);
 
   /**
-   * GtkEntry:caps-lock-warning:
+   * CtkEntry:caps-lock-warning:
    *
    * Whether password entries will show a warning when Caps Lock is on.
    *
@@ -1066,7 +1066,7 @@ ctk_entry_class_init (GtkEntryClass *class)
                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry:progress-fraction:
+   * CtkEntry:progress-fraction:
    *
    * The current fraction of the task that's been completed.
    *
@@ -1081,7 +1081,7 @@ ctk_entry_class_init (GtkEntryClass *class)
                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry:progress-pulse-step:
+   * CtkEntry:progress-pulse-step:
    *
    * The fraction of total entry width to move the progress
    * bouncing block for each call to ctk_entry_progress_pulse().
@@ -1097,9 +1097,9 @@ ctk_entry_class_init (GtkEntryClass *class)
                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-  * GtkEntry:placeholder-text:
+  * CtkEntry:placeholder-text:
   *
-  * The text that will be displayed in the #GtkEntry when it is empty
+  * The text that will be displayed in the #CtkEntry when it is empty
   * and unfocused.
   *
   * Since: 3.2
@@ -1112,7 +1112,7 @@ ctk_entry_class_init (GtkEntryClass *class)
                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
    /**
-   * GtkEntry:primary-icon-pixbuf:
+   * CtkEntry:primary-icon-pixbuf:
    *
    * A pixbuf to use as the primary icon for the entry.
    *
@@ -1126,7 +1126,7 @@ ctk_entry_class_init (GtkEntryClass *class)
                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry:secondary-icon-pixbuf:
+   * CtkEntry:secondary-icon-pixbuf:
    *
    * An pixbuf to use as the secondary icon for the entry.
    *
@@ -1140,13 +1140,13 @@ ctk_entry_class_init (GtkEntryClass *class)
                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry:primary-icon-stock:
+   * CtkEntry:primary-icon-stock:
    *
    * The stock id to use for the primary icon for the entry.
    *
    * Since: 2.16
    *
-   * Deprecated: 3.10: Use #GtkEntry:primary-icon-name instead.
+   * Deprecated: 3.10: Use #CtkEntry:primary-icon-name instead.
    */
   entry_props[PROP_STOCK_PRIMARY] =
     g_param_spec_string ("primary-icon-stock",
@@ -1156,13 +1156,13 @@ ctk_entry_class_init (GtkEntryClass *class)
                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY|G_PARAM_DEPRECATED);
 
   /**
-   * GtkEntry:secondary-icon-stock:
+   * CtkEntry:secondary-icon-stock:
    *
    * The stock id to use for the secondary icon for the entry.
    *
    * Since: 2.16
    *
-   * Deprecated: 3.10: Use #GtkEntry:secondary-icon-name instead.
+   * Deprecated: 3.10: Use #CtkEntry:secondary-icon-name instead.
    */
   entry_props[PROP_STOCK_SECONDARY] =
       g_param_spec_string ("secondary-icon-stock",
@@ -1172,7 +1172,7 @@ ctk_entry_class_init (GtkEntryClass *class)
                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY|G_PARAM_DEPRECATED);
 
   /**
-   * GtkEntry:primary-icon-name:
+   * CtkEntry:primary-icon-name:
    *
    * The icon name to use for the primary icon for the entry.
    *
@@ -1186,7 +1186,7 @@ ctk_entry_class_init (GtkEntryClass *class)
                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry:secondary-icon-name:
+   * CtkEntry:secondary-icon-name:
    *
    * The icon name to use for the secondary icon for the entry.
    *
@@ -1200,7 +1200,7 @@ ctk_entry_class_init (GtkEntryClass *class)
                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry:primary-icon-gicon:
+   * CtkEntry:primary-icon-gicon:
    *
    * The #GIcon to use for the primary icon for the entry.
    *
@@ -1214,7 +1214,7 @@ ctk_entry_class_init (GtkEntryClass *class)
                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry:secondary-icon-gicon:
+   * CtkEntry:secondary-icon-gicon:
    *
    * The #GIcon to use for the secondary icon for the entry.
    *
@@ -1228,7 +1228,7 @@ ctk_entry_class_init (GtkEntryClass *class)
                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry:primary-icon-storage-type:
+   * CtkEntry:primary-icon-storage-type:
    *
    * The representation which is used for the primary icon of the entry.
    *
@@ -1243,7 +1243,7 @@ ctk_entry_class_init (GtkEntryClass *class)
                          CTK_PARAM_READABLE);
 
   /**
-   * GtkEntry:secondary-icon-storage-type:
+   * CtkEntry:secondary-icon-storage-type:
    *
    * The representation which is used for the secondary icon of the entry.
    *
@@ -1258,11 +1258,11 @@ ctk_entry_class_init (GtkEntryClass *class)
                          CTK_PARAM_READABLE);
 
   /**
-   * GtkEntry:primary-icon-activatable:
+   * CtkEntry:primary-icon-activatable:
    *
    * Whether the primary icon is activatable.
    *
-   * GTK+ emits the #GtkEntry::icon-press and #GtkEntry::icon-release
+   * GTK+ emits the #CtkEntry::icon-press and #CtkEntry::icon-release
    * signals only on sensitive, activatable icons.
    *
    * Sensitive, but non-activatable icons can be used for purely
@@ -1278,11 +1278,11 @@ ctk_entry_class_init (GtkEntryClass *class)
                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry:secondary-icon-activatable:
+   * CtkEntry:secondary-icon-activatable:
    *
    * Whether the secondary icon is activatable.
    *
-   * GTK+ emits the #GtkEntry::icon-press and #GtkEntry::icon-release
+   * GTK+ emits the #CtkEntry::icon-press and #CtkEntry::icon-release
    * signals only on sensitive, activatable icons.
    *
    * Sensitive, but non-activatable icons can be used for purely
@@ -1298,12 +1298,12 @@ ctk_entry_class_init (GtkEntryClass *class)
                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry:primary-icon-sensitive:
+   * CtkEntry:primary-icon-sensitive:
    *
    * Whether the primary icon is sensitive.
    *
    * An insensitive icon appears grayed out. GTK+ does not emit the
-   * #GtkEntry::icon-press and #GtkEntry::icon-release signals and
+   * #CtkEntry::icon-press and #CtkEntry::icon-release signals and
    * does not allow DND from insensitive icons.
    *
    * An icon should be set insensitive if the action that would trigger
@@ -1319,12 +1319,12 @@ ctk_entry_class_init (GtkEntryClass *class)
                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry:secondary-icon-sensitive:
+   * CtkEntry:secondary-icon-sensitive:
    *
    * Whether the secondary icon is sensitive.
    *
    * An insensitive icon appears grayed out. GTK+ does not emit the
-   * #GtkEntry::icon-press and #GtkEntry::icon-release signals and
+   * #CtkEntry::icon-press and #CtkEntry::icon-release signals and
    * does not allow DND from insensitive icons.
    *
    * An icon should be set insensitive if the action that would trigger
@@ -1340,7 +1340,7 @@ ctk_entry_class_init (GtkEntryClass *class)
                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry:primary-icon-tooltip-text:
+   * CtkEntry:primary-icon-tooltip-text:
    *
    * The contents of the tooltip on the primary icon.
    *
@@ -1356,7 +1356,7 @@ ctk_entry_class_init (GtkEntryClass *class)
                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry:secondary-icon-tooltip-text:
+   * CtkEntry:secondary-icon-tooltip-text:
    *
    * The contents of the tooltip on the secondary icon.
    *
@@ -1372,7 +1372,7 @@ ctk_entry_class_init (GtkEntryClass *class)
                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry:primary-icon-tooltip-markup:
+   * CtkEntry:primary-icon-tooltip-markup:
    *
    * The contents of the tooltip on the primary icon, which is marked up
    * with the [Pango text markup language][PangoMarkupFormat].
@@ -1389,7 +1389,7 @@ ctk_entry_class_init (GtkEntryClass *class)
                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry:secondary-icon-tooltip-markup:
+   * CtkEntry:secondary-icon-tooltip-markup:
    *
    * The contents of the tooltip on the secondary icon, which is marked up
    * with the [Pango text markup language][PangoMarkupFormat].
@@ -1406,14 +1406,14 @@ ctk_entry_class_init (GtkEntryClass *class)
                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry:im-module:
+   * CtkEntry:im-module:
    *
    * Which IM (input method) module should be used for this entry.
-   * See #GtkIMContext.
+   * See #CtkIMContext.
    *
    * Setting this to a non-%NULL value overrides the
-   * system-wide IM module setting. See the GtkSettings
-   * #GtkSettings:ctk-im-module property.
+   * system-wide IM module setting. See the CtkSettings
+   * #CtkSettings:ctk-im-module property.
    *
    * Since: 2.16
    */
@@ -1425,7 +1425,7 @@ ctk_entry_class_init (GtkEntryClass *class)
                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry:completion:
+   * CtkEntry:completion:
    *
    * The auxiliary completion object to use with the entry.
    *
@@ -1439,7 +1439,7 @@ ctk_entry_class_init (GtkEntryClass *class)
                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry:input-purpose:
+   * CtkEntry:input-purpose:
    *
    * The purpose of this text field.
    *
@@ -1448,7 +1448,7 @@ ctk_entry_class_init (GtkEntryClass *class)
    *
    * Note that setting the purpose to %CTK_INPUT_PURPOSE_PASSWORD or
    * %CTK_INPUT_PURPOSE_PIN is independent from setting
-   * #GtkEntry:visibility.
+   * #CtkEntry:visibility.
    *
    * Since: 3.6
    */
@@ -1461,9 +1461,9 @@ ctk_entry_class_init (GtkEntryClass *class)
                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry:input-hints:
+   * CtkEntry:input-hints:
    *
-   * Additional hints (beyond #GtkEntry:input-purpose) that
+   * Additional hints (beyond #CtkEntry:input-purpose) that
    * allow input methods to fine-tune their behaviour.
    *
    * Since: 3.6
@@ -1477,14 +1477,14 @@ ctk_entry_class_init (GtkEntryClass *class)
                           CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry:attributes:
+   * CtkEntry:attributes:
    *
    * A list of Pango attributes to apply to the text of the entry.
    *
    * This is mainly useful to change the size or weight of the text.
    *
    * The #PangoAttribute's @start_index and @end_index must refer to the
-   * #GtkEntryBuffer text, i.e. without the preedit string.
+   * #CtkEntryBuffer text, i.e. without the preedit string.
    *
    * Since: 3.6
    */
@@ -1496,9 +1496,9 @@ ctk_entry_class_init (GtkEntryClass *class)
                           CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry:populate-all:
+   * CtkEntry:populate-all:
    *
-   * If :populate-all is %TRUE, the #GtkEntry::populate-popup
+   * If :populate-all is %TRUE, the #CtkEntry::populate-popup
    * signal is also emitted for touch popups.
    *
    * Since: 3.8
@@ -1511,7 +1511,7 @@ ctk_entry_class_init (GtkEntryClass *class)
                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry::tabs:
+   * CtkEntry::tabs:
    *
    * A list of tabstops to apply to the text of the entry.
    *
@@ -1525,7 +1525,7 @@ ctk_entry_class_init (GtkEntryClass *class)
                           CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntry::show-emoji-icon:
+   * CtkEntry::show-emoji-icon:
    *
    * When this is %TRUE, the entry will show an emoji icon in the secondary
    * icon position that brings up the Emoji chooser when clicked.
@@ -1549,7 +1549,7 @@ ctk_entry_class_init (GtkEntryClass *class)
   g_object_class_install_properties (gobject_class, NUM_PROPERTIES, entry_props);
 
   /**
-   * GtkEntry:icon-prelight:
+   * CtkEntry:icon-prelight:
    *
    * The prelight style property determines whether activatable
    * icons prelight on mouseover.
@@ -1567,14 +1567,14 @@ ctk_entry_class_init (GtkEntryClass *class)
                                                                  CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
-   * GtkEntry:progress-border:
+   * CtkEntry:progress-border:
    *
    * The border around the progress bar in the entry.
    *
    * Since: 2.16
    *
    * Deprecated: 3.4: Use the standard margin CSS property (through objects
-   *   like #GtkStyleContext and #GtkCssProvider); the value of this style
+   *   like #CtkStyleContext and #CtkCssProvider); the value of this style
    *   property is ignored.
    */
   ctk_widget_class_install_style_property (widget_class,
@@ -1585,11 +1585,11 @@ ctk_entry_class_init (GtkEntryClass *class)
                                                                CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
-   * GtkEntry:invisible-char:
+   * CtkEntry:invisible-char:
    *
    * The invisible character is used when masking entry contents (in
    * \"password mode\")"). When it is not explicitly set with the
-   * #GtkEntry:invisible-char property, GTK+ determines the character
+   * #CtkEntry:invisible-char property, GTK+ determines the character
    * to use from a list of possible candidates, depending on availability
    * in the current font.
    *
@@ -1606,7 +1606,7 @@ ctk_entry_class_init (GtkEntryClass *class)
 							         CTK_PARAM_READABLE));
   
   /**
-   * GtkEntry::populate-popup:
+   * CtkEntry::populate-popup:
    * @entry: The entry on which the signal is emitted
    * @widget: the container that is being populated
    *
@@ -1615,11 +1615,11 @@ ctk_entry_class_init (GtkEntryClass *class)
    *
    * If you need to add items to the context menu, connect
    * to this signal and append your items to the @widget, which
-   * will be a #GtkMenu in this case.
+   * will be a #CtkMenu in this case.
    *
-   * If #GtkEntry:populate-all is %TRUE, this signal will
+   * If #CtkEntry:populate-all is %TRUE, this signal will
    * also be emitted to populate touch popups. In this case,
-   * @widget will be a different container, e.g. a #GtkToolbar.
+   * @widget will be a different container, e.g. a #CtkToolbar.
    * The signal handler should not make assumptions about the
    * type of @widget.
    */
@@ -1627,7 +1627,7 @@ ctk_entry_class_init (GtkEntryClass *class)
     g_signal_new (I_("populate-popup"),
 		  G_OBJECT_CLASS_TYPE (gobject_class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkEntryClass, populate_popup),
+		  G_STRUCT_OFFSET (CtkEntryClass, populate_popup),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
@@ -1636,14 +1636,14 @@ ctk_entry_class_init (GtkEntryClass *class)
  /* Action signals */
   
   /**
-   * GtkEntry::activate:
+   * CtkEntry::activate:
    * @entry: The entry on which the signal is emitted
    *
    * The ::activate signal is emitted when the user hits
    * the Enter key.
    *
    * While this signal is used as a
-   * [keybinding signal][GtkBindingSignal],
+   * [keybinding signal][CtkBindingSignal],
    * it is also commonly used by applications to intercept
    * activation of entries.
    *
@@ -1653,21 +1653,21 @@ ctk_entry_class_init (GtkEntryClass *class)
     g_signal_new (I_("activate"),
 		  G_OBJECT_CLASS_TYPE (gobject_class),
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		  G_STRUCT_OFFSET (GtkEntryClass, activate),
+		  G_STRUCT_OFFSET (CtkEntryClass, activate),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
   widget_class->activate_signal = signals[ACTIVATE];
 
   /**
-   * GtkEntry::move-cursor:
+   * CtkEntry::move-cursor:
    * @entry: the object which received the signal
-   * @step: the granularity of the move, as a #GtkMovementStep
+   * @step: the granularity of the move, as a #CtkMovementStep
    * @count: the number of @step units to move
    * @extend_selection: %TRUE if the move should extend the selection
    *
    * The ::move-cursor signal is a
-   * [keybinding signal][GtkBindingSignal]
+   * [keybinding signal][CtkBindingSignal]
    * which gets emitted when the user initiates a cursor movement.
    * If the cursor is not visible in @entry, this signal causes
    * the viewport to be moved instead.
@@ -1688,7 +1688,7 @@ ctk_entry_class_init (GtkEntryClass *class)
     g_signal_new (I_("move-cursor"),
 		  G_OBJECT_CLASS_TYPE (gobject_class),
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		  G_STRUCT_OFFSET (GtkEntryClass, move_cursor),
+		  G_STRUCT_OFFSET (CtkEntryClass, move_cursor),
 		  NULL, NULL,
 		  _ctk_marshal_VOID__ENUM_INT_BOOLEAN,
 		  G_TYPE_NONE, 3,
@@ -1697,12 +1697,12 @@ ctk_entry_class_init (GtkEntryClass *class)
 		  G_TYPE_BOOLEAN);
 
   /**
-   * GtkEntry::insert-at-cursor:
+   * CtkEntry::insert-at-cursor:
    * @entry: the object which received the signal
    * @string: the string to insert
    *
    * The ::insert-at-cursor signal is a
-   * [keybinding signal][GtkBindingSignal]
+   * [keybinding signal][CtkBindingSignal]
    * which gets emitted when the user initiates the insertion of a
    * fixed string at the cursor.
    *
@@ -1712,20 +1712,20 @@ ctk_entry_class_init (GtkEntryClass *class)
     g_signal_new (I_("insert-at-cursor"),
 		  G_OBJECT_CLASS_TYPE (gobject_class),
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		  G_STRUCT_OFFSET (GtkEntryClass, insert_at_cursor),
+		  G_STRUCT_OFFSET (CtkEntryClass, insert_at_cursor),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
 		  G_TYPE_STRING);
 
   /**
-   * GtkEntry::delete-from-cursor:
+   * CtkEntry::delete-from-cursor:
    * @entry: the object which received the signal
-   * @type: the granularity of the deletion, as a #GtkDeleteType
+   * @type: the granularity of the deletion, as a #CtkDeleteType
    * @count: the number of @type units to delete
    *
    * The ::delete-from-cursor signal is a
-   * [keybinding signal][GtkBindingSignal]
+   * [keybinding signal][CtkBindingSignal]
    * which gets emitted when the user initiates a text deletion.
    *
    * If the @type is %CTK_DELETE_CHARS, GTK+ deletes the selection
@@ -1740,7 +1740,7 @@ ctk_entry_class_init (GtkEntryClass *class)
     g_signal_new (I_("delete-from-cursor"),
 		  G_OBJECT_CLASS_TYPE (gobject_class),
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		  G_STRUCT_OFFSET (GtkEntryClass, delete_from_cursor),
+		  G_STRUCT_OFFSET (CtkEntryClass, delete_from_cursor),
 		  NULL, NULL,
 		  _ctk_marshal_VOID__ENUM_INT,
 		  G_TYPE_NONE, 2,
@@ -1748,11 +1748,11 @@ ctk_entry_class_init (GtkEntryClass *class)
 		  G_TYPE_INT);
 
   /**
-   * GtkEntry::backspace:
+   * CtkEntry::backspace:
    * @entry: the object which received the signal
    *
    * The ::backspace signal is a
-   * [keybinding signal][GtkBindingSignal]
+   * [keybinding signal][CtkBindingSignal]
    * which gets emitted when the user asks for it.
    *
    * The default bindings for this signal are
@@ -1762,17 +1762,17 @@ ctk_entry_class_init (GtkEntryClass *class)
     g_signal_new (I_("backspace"),
 		  G_OBJECT_CLASS_TYPE (gobject_class),
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		  G_STRUCT_OFFSET (GtkEntryClass, backspace),
+		  G_STRUCT_OFFSET (CtkEntryClass, backspace),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
-   * GtkEntry::cut-clipboard:
+   * CtkEntry::cut-clipboard:
    * @entry: the object which received the signal
    *
    * The ::cut-clipboard signal is a
-   * [keybinding signal][GtkBindingSignal]
+   * [keybinding signal][CtkBindingSignal]
    * which gets emitted to cut the selection to the clipboard.
    *
    * The default bindings for this signal are
@@ -1782,17 +1782,17 @@ ctk_entry_class_init (GtkEntryClass *class)
     g_signal_new (I_("cut-clipboard"),
 		  G_OBJECT_CLASS_TYPE (gobject_class),
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		  G_STRUCT_OFFSET (GtkEntryClass, cut_clipboard),
+		  G_STRUCT_OFFSET (CtkEntryClass, cut_clipboard),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
-   * GtkEntry::copy-clipboard:
+   * CtkEntry::copy-clipboard:
    * @entry: the object which received the signal
    *
    * The ::copy-clipboard signal is a
-   * [keybinding signal][GtkBindingSignal]
+   * [keybinding signal][CtkBindingSignal]
    * which gets emitted to copy the selection to the clipboard.
    *
    * The default bindings for this signal are
@@ -1802,17 +1802,17 @@ ctk_entry_class_init (GtkEntryClass *class)
     g_signal_new (I_("copy-clipboard"),
 		  G_OBJECT_CLASS_TYPE (gobject_class),
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		  G_STRUCT_OFFSET (GtkEntryClass, copy_clipboard),
+		  G_STRUCT_OFFSET (CtkEntryClass, copy_clipboard),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
-   * GtkEntry::paste-clipboard:
+   * CtkEntry::paste-clipboard:
    * @entry: the object which received the signal
    *
    * The ::paste-clipboard signal is a
-   * [keybinding signal][GtkBindingSignal]
+   * [keybinding signal][CtkBindingSignal]
    * which gets emitted to paste the contents of the clipboard
    * into the text view.
    *
@@ -1823,17 +1823,17 @@ ctk_entry_class_init (GtkEntryClass *class)
     g_signal_new (I_("paste-clipboard"),
 		  G_OBJECT_CLASS_TYPE (gobject_class),
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		  G_STRUCT_OFFSET (GtkEntryClass, paste_clipboard),
+		  G_STRUCT_OFFSET (CtkEntryClass, paste_clipboard),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
-   * GtkEntry::toggle-overwrite:
+   * CtkEntry::toggle-overwrite:
    * @entry: the object which received the signal
    *
    * The ::toggle-overwrite signal is a
-   * [keybinding signal][GtkBindingSignal]
+   * [keybinding signal][CtkBindingSignal]
    * which gets emitted to toggle the overwrite mode of the entry.
    *
    * The default bindings for this signal is Insert.
@@ -1842,13 +1842,13 @@ ctk_entry_class_init (GtkEntryClass *class)
     g_signal_new (I_("toggle-overwrite"),
 		  G_OBJECT_CLASS_TYPE (gobject_class),
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		  G_STRUCT_OFFSET (GtkEntryClass, toggle_overwrite),
+		  G_STRUCT_OFFSET (CtkEntryClass, toggle_overwrite),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
-   * GtkEntry::icon-press:
+   * CtkEntry::icon-press:
    * @entry: The entry on which the signal is emitted
    * @icon_pos: The position of the clicked icon
    * @event: the button press event
@@ -1870,7 +1870,7 @@ ctk_entry_class_init (GtkEntryClass *class)
                   GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   
   /**
-   * GtkEntry::icon-release:
+   * CtkEntry::icon-release:
    * @entry: The entry on which the signal is emitted
    * @icon_pos: The position of the clicked icon
    * @event: the button release event
@@ -1892,7 +1892,7 @@ ctk_entry_class_init (GtkEntryClass *class)
                   GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
 
   /**
-   * GtkEntry::preedit-changed:
+   * CtkEntry::preedit-changed:
    * @entry: the object which received the signal
    * @preedit: the current preedit string
    *
@@ -1914,11 +1914,11 @@ ctk_entry_class_init (GtkEntryClass *class)
 
 
   /**
-   * GtkEntry::insert-emoji:
+   * CtkEntry::insert-emoji:
    * @entry: the object which received the signal
    *
    * The ::insert-emoji signal is a
-   * [keybinding signal][GtkBindingSignal]
+   * [keybinding signal][CtkBindingSignal]
    * which gets emitted to present the Emoji chooser for the @entry.
    *
    * The default bindings for this signal are Ctrl-. and Ctrl-;
@@ -1929,7 +1929,7 @@ ctk_entry_class_init (GtkEntryClass *class)
     g_signal_new (I_("insert-emoji"),
 		  G_OBJECT_CLASS_TYPE (gobject_class),
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		  G_STRUCT_OFFSET (GtkEntryClass, insert_emoji),
+		  G_STRUCT_OFFSET (CtkEntryClass, insert_emoji),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
@@ -2102,14 +2102,14 @@ ctk_entry_class_init (GtkEntryClass *class)
 				"toggle-overwrite", 0);
 
   /**
-   * GtkEntry:inner-border:
+   * CtkEntry:inner-border:
    *
    * Sets the text area's border between the text and the frame.
    *
    * Since: 2.10
    *
    * Deprecated: 3.4: Use the standard border and padding CSS properties
-   *   (through objects like #GtkStyleContext and #GtkCssProvider); the value
+   *   (through objects like #CtkStyleContext and #CtkCssProvider); the value
    *   of this style property is ignored.
    */
   ctk_widget_class_install_style_property (widget_class,
@@ -2130,7 +2130,7 @@ ctk_entry_class_init (GtkEntryClass *class)
 }
 
 static void
-ctk_entry_editable_init (GtkEditableInterface *iface)
+ctk_entry_editable_init (CtkEditableInterface *iface)
 {
   iface->do_insert_text = ctk_entry_insert_text;
   iface->do_delete_text = ctk_entry_delete_text;
@@ -2144,15 +2144,15 @@ ctk_entry_editable_init (GtkEditableInterface *iface)
 }
 
 static void
-ctk_entry_cell_editable_init (GtkCellEditableIface *iface)
+ctk_entry_cell_editable_init (CtkCellEditableIface *iface)
 {
   iface->start_editing = ctk_entry_start_editing;
 }
 
 /* for deprecated properties */
 static void
-ctk_entry_do_set_inner_border (GtkEntry *entry,
-                               const GtkBorder *border)
+ctk_entry_do_set_inner_border (CtkEntry *entry,
+                               const CtkBorder *border)
 {
   if (border)
     g_object_set_qdata_full (G_OBJECT (entry), quark_inner_border,
@@ -2164,8 +2164,8 @@ ctk_entry_do_set_inner_border (GtkEntry *entry,
   g_object_notify_by_pspec (G_OBJECT (entry), entry_props[PROP_INNER_BORDER]);
 }
 
-static const GtkBorder *
-ctk_entry_do_get_inner_border (GtkEntry *entry)
+static const CtkBorder *
+ctk_entry_do_get_inner_border (CtkEntry *entry)
 {
   return g_object_get_qdata (G_OBJECT (entry), quark_inner_border);
 }
@@ -2176,8 +2176,8 @@ ctk_entry_set_property (GObject         *object,
                         const GValue    *value,
                         GParamSpec      *pspec)
 {
-  GtkEntry *entry = CTK_ENTRY (object);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (object);
+  CtkEntryPrivate *priv = entry->priv;
 
   switch (prop_id)
     {
@@ -2188,11 +2188,11 @@ ctk_entry_set_property (GObject         *object,
     case PROP_EDITABLE:
       {
         gboolean new_value = g_value_get_boolean (value);
-        GtkStyleContext *context = ctk_widget_get_style_context (CTK_WIDGET (entry));
+        CtkStyleContext *context = ctk_widget_get_style_context (CTK_WIDGET (entry));
 
         if (new_value != priv->editable)
 	  {
-            GtkWidget *widget = CTK_WIDGET (entry);
+            CtkWidget *widget = CTK_WIDGET (entry);
 
 	    if (!new_value)
 	      {
@@ -2474,8 +2474,8 @@ ctk_entry_get_property (GObject         *object,
                         GValue          *value,
                         GParamSpec      *pspec)
 {
-  GtkEntry *entry = CTK_ENTRY (object);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (object);
+  CtkEntryPrivate *priv = entry->priv;
 
   switch (prop_id)
     {
@@ -2727,7 +2727,7 @@ ctk_entry_get_property (GObject         *object,
 }
 
 static gunichar
-find_invisible_char (GtkWidget *widget)
+find_invisible_char (CtkWidget *widget)
 {
   PangoLayout *layout;
   PangoAttrList *attr_list;
@@ -2775,10 +2775,10 @@ find_invisible_char (GtkWidget *widget)
 }
 
 static void
-ctk_entry_init (GtkEntry *entry)
+ctk_entry_init (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv;
-  GtkCssNode *widget_node;
+  CtkEntryPrivate *priv;
+  CtkCssNode *widget_node;
   gint i;
 
   entry->priv = ctk_entry_get_instance_private (entry);
@@ -2856,9 +2856,9 @@ ctk_entry_init (GtkEntry *entry)
 }
 
 static void
-ctk_entry_ensure_magnifier (GtkEntry *entry)
+ctk_entry_ensure_magnifier (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   if (priv->magnifier_popover)
     return;
@@ -2877,9 +2877,9 @@ ctk_entry_ensure_magnifier (GtkEntry *entry)
 }
 
 static void
-ctk_entry_ensure_text_handles (GtkEntry *entry)
+ctk_entry_ensure_text_handles (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   if (priv->text_handle)
     return;
@@ -2894,8 +2894,8 @@ ctk_entry_ensure_text_handles (GtkEntry *entry)
 }
 
 static gint
-get_icon_width (GtkEntry             *entry,
-                GtkEntryIconPosition  icon_pos)
+get_icon_width (CtkEntry             *entry,
+                CtkEntryIconPosition  icon_pos)
 {
   EntryIconInfo *icon_info = entry->priv->icons[icon_pos];
   gint width;
@@ -2913,9 +2913,9 @@ get_icon_width (GtkEntry             *entry,
 }
 
 static void
-begin_change (GtkEntry *entry)
+begin_change (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   priv->change_count++;
 
@@ -2923,10 +2923,10 @@ begin_change (GtkEntry *entry)
 }
 
 static void
-end_change (GtkEntry *entry)
+end_change (CtkEntry *entry)
 {
-  GtkEditable *editable = CTK_EDITABLE (entry);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEditable *editable = CTK_EDITABLE (entry);
+  CtkEntryPrivate *priv = entry->priv;
 
   g_return_if_fail (priv->change_count > 0);
 
@@ -2945,10 +2945,10 @@ end_change (GtkEntry *entry)
 }
 
 static void
-emit_changed (GtkEntry *entry)
+emit_changed (CtkEntry *entry)
 {
-  GtkEditable *editable = CTK_EDITABLE (entry);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEditable *editable = CTK_EDITABLE (entry);
+  CtkEntryPrivate *priv = entry->priv;
 
   if (priv->change_count == 0)
     g_signal_emit_by_name (editable, "changed");
@@ -2957,10 +2957,10 @@ emit_changed (GtkEntry *entry)
 }
 
 static void
-ctk_entry_destroy (GtkWidget *widget)
+ctk_entry_destroy (CtkWidget *widget)
 {
-  GtkEntry *entry = CTK_ENTRY (widget);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntryPrivate *priv = entry->priv;
 
   priv->current_pos = priv->selection_bound = 0;
   ctk_entry_reset_im_context (entry);
@@ -2981,8 +2981,8 @@ ctk_entry_destroy (GtkWidget *widget)
 static void
 ctk_entry_dispose (GObject *object)
 {
-  GtkEntry *entry = CTK_ENTRY (object);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (object);
+  CtkEntryPrivate *priv = entry->priv;
   GdkKeymap *keymap;
 
   ctk_entry_set_icon_from_pixbuf (entry, CTK_ENTRY_ICON_PRIMARY, NULL);
@@ -3009,8 +3009,8 @@ ctk_entry_dispose (GObject *object)
 static void
 ctk_entry_finalize (GObject *object)
 {
-  GtkEntry *entry = CTK_ENTRY (object);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (object);
+  CtkEntryPrivate *priv = entry->priv;
   EntryIconInfo *icon_info = NULL;
   gint i;
 
@@ -3066,9 +3066,9 @@ ctk_entry_finalize (GObject *object)
 }
 
 static DisplayMode
-ctk_entry_get_display_mode (GtkEntry *entry)
+ctk_entry_get_display_mode (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   if (priv->visible)
     return DISPLAY_NORMAL;
@@ -3080,12 +3080,12 @@ ctk_entry_get_display_mode (GtkEntry *entry)
 }
 
 gchar*
-_ctk_entry_get_display_text (GtkEntry *entry,
+_ctk_entry_get_display_text (CtkEntry *entry,
                              gint      start_pos,
                              gint      end_pos)
 {
-  GtkEntryPasswordHint *password_hint;
-  GtkEntryPrivate *priv;
+  CtkEntryPasswordHint *password_hint;
+  CtkEntryPrivate *priv;
   gunichar invisible_char;
   const gchar *start;
   const gchar *end;
@@ -3149,10 +3149,10 @@ _ctk_entry_get_display_text (GtkEntry *entry,
 }
 
 static void
-update_cursors (GtkWidget *widget)
+update_cursors (CtkWidget *widget)
 {
-  GtkEntry *entry = CTK_ENTRY (widget);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntryPrivate *priv = entry->priv;
   EntryIconInfo *icon_info = NULL;
   GdkDisplay *display;
   GdkCursor *cursor;
@@ -3189,11 +3189,11 @@ update_cursors (GtkWidget *widget)
 }
 
 static void
-realize_icon_info (GtkWidget            *widget, 
-                   GtkEntryIconPosition  icon_pos)
+realize_icon_info (CtkWidget            *widget, 
+                   CtkEntryIconPosition  icon_pos)
 {
-  GtkEntry *entry = CTK_ENTRY (widget);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntryPrivate *priv = entry->priv;
   EntryIconInfo *icon_info = priv->icons[icon_pos];
   GdkWindowAttr attributes;
   gint attributes_mask;
@@ -3225,11 +3225,11 @@ realize_icon_info (GtkWidget            *widget,
 }
 
 static void
-update_icon_style (GtkWidget            *widget,
-                   GtkEntryIconPosition  icon_pos)
+update_icon_style (CtkWidget            *widget,
+                   CtkEntryIconPosition  icon_pos)
 {
-  GtkEntry *entry = CTK_ENTRY (widget);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntryPrivate *priv = entry->priv;
   EntryIconInfo *icon_info = priv->icons[icon_pos];
   const gchar *sides[2] = { CTK_STYLE_CLASS_LEFT, CTK_STYLE_CLASS_RIGHT };
 
@@ -3244,13 +3244,13 @@ update_icon_style (GtkWidget            *widget,
 }
 
 static void
-update_icon_state (GtkWidget            *widget,
-                   GtkEntryIconPosition  icon_pos)
+update_icon_state (CtkWidget            *widget,
+                   CtkEntryIconPosition  icon_pos)
 {
-  GtkEntry *entry = CTK_ENTRY (widget);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntryPrivate *priv = entry->priv;
   EntryIconInfo *icon_info = priv->icons[icon_pos];
-  GtkStateFlags state;
+  CtkStateFlags state;
 
   if (icon_info == NULL)
     return;
@@ -3267,10 +3267,10 @@ update_icon_state (GtkWidget            *widget,
 }
 
 static void
-update_node_state (GtkEntry *entry)
+update_node_state (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
-  GtkStateFlags state;
+  CtkEntryPrivate *priv = entry->priv;
+  CtkStateFlags state;
 
   state = ctk_widget_get_state_flags (CTK_WIDGET (entry));
   state &= ~CTK_STATE_FLAG_DROP_ACTIVE;
@@ -3285,12 +3285,12 @@ update_node_state (GtkEntry *entry)
 }
 
 static void
-update_node_ordering (GtkEntry *entry)
+update_node_ordering (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
   EntryIconInfo *icon_info;
-  GtkEntryIconPosition icon_pos;
-  GtkCssNode *sibling, *parent;
+  CtkEntryIconPosition icon_pos;
+  CtkCssNode *sibling, *parent;
 
   if (priv->progress_gadget)
     {
@@ -3307,7 +3307,7 @@ update_node_ordering (GtkEntry *entry)
   icon_info = priv->icons[icon_pos];
   if (icon_info)
     {
-      GtkCssNode *node;
+      CtkCssNode *node;
 
       node = ctk_css_gadget_get_node (icon_info->gadget);
       parent = ctk_css_node_get_parent (node);
@@ -3318,13 +3318,13 @@ update_node_ordering (GtkEntry *entry)
 }
 
 static EntryIconInfo*
-construct_icon_info (GtkWidget            *widget,
-                     GtkEntryIconPosition  icon_pos)
+construct_icon_info (CtkWidget            *widget,
+                     CtkEntryIconPosition  icon_pos)
 {
-  GtkEntry *entry = CTK_ENTRY (widget);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntryPrivate *priv = entry->priv;
   EntryIconInfo *icon_info;
-  GtkCssNode *widget_node;
+  CtkCssNode *widget_node;
 
   g_return_val_if_fail (priv->icons[icon_pos] == NULL, NULL);
 
@@ -3347,10 +3347,10 @@ construct_icon_info (GtkWidget            *widget,
 }
 
 static void
-ctk_entry_map (GtkWidget *widget)
+ctk_entry_map (CtkWidget *widget)
 {
-  GtkEntry *entry = CTK_ENTRY (widget);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntryPrivate *priv = entry->priv;
   EntryIconInfo *icon_info = NULL;
   gint i;
 
@@ -3372,10 +3372,10 @@ ctk_entry_map (GtkWidget *widget)
 }
 
 static void
-ctk_entry_unmap (GtkWidget *widget)
+ctk_entry_unmap (CtkWidget *widget)
 {
-  GtkEntry *entry = CTK_ENTRY (widget);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntryPrivate *priv = entry->priv;
   EntryIconInfo *icon_info = NULL;
   gint i;
 
@@ -3399,10 +3399,10 @@ ctk_entry_unmap (GtkWidget *widget)
 }
 
 static void
-ctk_entry_realize (GtkWidget *widget)
+ctk_entry_realize (CtkWidget *widget)
 {
-  GtkEntry *entry;
-  GtkEntryPrivate *priv;
+  CtkEntry *entry;
+  CtkEntryPrivate *priv;
   EntryIconInfo *icon_info;
   GdkWindowAttr attributes;
   gint attributes_mask;
@@ -3465,11 +3465,11 @@ ctk_entry_realize (GtkWidget *widget)
 }
 
 static void
-ctk_entry_unrealize (GtkWidget *widget)
+ctk_entry_unrealize (CtkWidget *widget)
 {
-  GtkEntry *entry = CTK_ENTRY (widget);
-  GtkEntryPrivate *priv = entry->priv;
-  GtkClipboard *clipboard;
+  CtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntryPrivate *priv = entry->priv;
+  CtkClipboard *clipboard;
   EntryIconInfo *icon_info;
   gint i;
 
@@ -3511,7 +3511,7 @@ ctk_entry_unrealize (GtkWidget *widget)
 }
 
 static void
-ctk_entry_get_preferred_width (GtkWidget *widget,
+ctk_entry_get_preferred_width (CtkWidget *widget,
                                gint      *minimum,
                                gint      *natural)
 {
@@ -3523,7 +3523,7 @@ ctk_entry_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-ctk_entry_get_preferred_height (GtkWidget *widget,
+ctk_entry_get_preferred_height (CtkWidget *widget,
                                 gint      *minimum,
                                 gint      *natural)
 {
@@ -3535,7 +3535,7 @@ ctk_entry_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-ctk_entry_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
+ctk_entry_get_preferred_height_and_baseline_for_width (CtkWidget *widget,
 						       gint       width,
 						       gint      *minimum,
 						       gint      *natural,
@@ -3550,8 +3550,8 @@ ctk_entry_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
 }
 
 static void
-ctk_entry_measure (GtkCssGadget   *gadget,
-                   GtkOrientation  orientation,
+ctk_entry_measure (CtkCssGadget   *gadget,
+                   CtkOrientation  orientation,
                    int             for_size,
                    int            *minimum,
                    int            *natural,
@@ -3559,9 +3559,9 @@ ctk_entry_measure (GtkCssGadget   *gadget,
                    int            *natural_baseline,
                    gpointer        unused)
 {
-  GtkWidget *widget;
-  GtkEntry *entry;
-  GtkEntryPrivate *priv;
+  CtkWidget *widget;
+  CtkEntry *entry;
+  CtkEntryPrivate *priv;
   PangoContext *context;
   PangoFontMetrics *metrics;
 
@@ -3677,15 +3677,15 @@ ctk_entry_measure (GtkCssGadget   *gadget,
 }
 
 static void
-place_windows (GtkEntry *entry)
+place_windows (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
   EntryIconInfo *icon_info;
 
   icon_info = priv->icons[CTK_ENTRY_ICON_PRIMARY];
   if (icon_info)
     {
-      GtkAllocation primary;
+      CtkAllocation primary;
 
       ctk_css_gadget_get_border_allocation (icon_info->gadget, &primary, NULL);
       gdk_window_move_resize (icon_info->window,
@@ -3696,7 +3696,7 @@ place_windows (GtkEntry *entry)
   icon_info = priv->icons[CTK_ENTRY_ICON_SECONDARY];
   if (icon_info)
     {
-      GtkAllocation secondary;
+      CtkAllocation secondary;
 
       ctk_css_gadget_get_border_allocation (icon_info->gadget, &secondary, NULL);
       gdk_window_move_resize (icon_info->window,
@@ -3710,14 +3710,14 @@ place_windows (GtkEntry *entry)
 }
 
 static void
-ctk_entry_get_text_area_size (GtkEntry *entry,
+ctk_entry_get_text_area_size (CtkEntry *entry,
                               gint     *x,
 			      gint     *y,
 			      gint     *width,
 			      gint     *height)
 {
-  GtkEntryPrivate *priv = entry->priv;
-  GtkAllocation allocation, widget_allocation;
+  CtkEntryPrivate *priv = entry->priv;
+  CtkAllocation allocation, widget_allocation;
   int baseline;
 
   ctk_css_gadget_get_content_allocation (priv->gadget, &allocation, &baseline);
@@ -3739,13 +3739,13 @@ ctk_entry_get_text_area_size (GtkEntry *entry,
 }
 
 static void
-ctk_entry_get_frame_size (GtkEntry *entry,
+ctk_entry_get_frame_size (CtkEntry *entry,
                           gint     *x,
                           gint     *y,
                           gint     *width,
                           gint     *height)
 {
-  GtkAllocation allocation;
+  CtkAllocation allocation;
 
   ctk_css_gadget_get_content_allocation (entry->priv->gadget, &allocation, NULL);
 
@@ -3763,21 +3763,21 @@ ctk_entry_get_frame_size (GtkEntry *entry,
 }
 
 static G_GNUC_UNUSED void
-get_frame_size (GtkEntry *entry,
+get_frame_size (CtkEntry *entry,
                 gboolean  relative_to_window,
                 gint     *x,
                 gint     *y,
                 gint     *width,
                 gint     *height)
 {
-  GtkEntryClass *class = CTK_ENTRY_GET_CLASS (entry);
+  CtkEntryClass *class = CTK_ENTRY_GET_CLASS (entry);
 
   g_assert (class->get_frame_size != NULL);
   class->get_frame_size (entry, x, y, width, height);
 
   if (!relative_to_window)
     {
-      GtkAllocation allocation;
+      CtkAllocation allocation;
 
       ctk_widget_get_allocation (CTK_WIDGET (entry), &allocation);
 
@@ -3789,8 +3789,8 @@ get_frame_size (GtkEntry *entry,
 }
 
 static void
-ctk_entry_size_allocate (GtkWidget     *widget,
-			 GtkAllocation *allocation)
+ctk_entry_size_allocate (CtkWidget     *widget,
+			 CtkAllocation *allocation)
 {
   GdkRectangle clip;
 
@@ -3805,16 +3805,16 @@ ctk_entry_size_allocate (GtkWidget     *widget,
 }
 
 static void
-ctk_entry_allocate (GtkCssGadget        *gadget,
-                    const GtkAllocation *allocation,
+ctk_entry_allocate (CtkCssGadget        *gadget,
+                    const CtkAllocation *allocation,
                     int                  baseline,
-                    GtkAllocation       *out_clip,
+                    CtkAllocation       *out_clip,
                     gpointer             data)
 {
-  GtkEntry *entry;
-  GtkWidget *widget;
-  GtkEntryPrivate *priv;
-  GtkAllocation widget_allocation;
+  CtkEntry *entry;
+  CtkWidget *widget;
+  CtkEntryPrivate *priv;
+  CtkAllocation widget_allocation;
   gint i;
 
   widget = ctk_css_gadget_get_owner (gadget);
@@ -3839,7 +3839,7 @@ ctk_entry_allocate (GtkCssGadget        *gadget,
   for (i = 0; i < MAX_ICONS; i++)
     {
       EntryIconInfo *icon_info = priv->icons[i];
-      GtkAllocation icon_alloc;
+      CtkAllocation icon_alloc;
       GdkRectangle clip;
       gint dummy, width, height;
 
@@ -3883,7 +3883,7 @@ ctk_entry_allocate (GtkCssGadget        *gadget,
   if (priv->progress_gadget && ctk_css_gadget_get_visible (priv->progress_gadget))
     {
       int extra_width, req_width;
-      GtkAllocation progress_alloc;
+      CtkAllocation progress_alloc;
       GdkRectangle clip;
 
       ctk_css_gadget_get_preferred_size (priv->progress_gadget,
@@ -3921,7 +3921,7 @@ ctk_entry_allocate (GtkCssGadget        *gadget,
    */
   if (ctk_widget_get_realized (widget))
     {
-      GtkEntryCompletion *completion;
+      CtkEntryCompletion *completion;
 
       place_windows (entry);
       ctk_entry_recompute (entry);
@@ -3933,10 +3933,10 @@ ctk_entry_allocate (GtkCssGadget        *gadget,
 }
 
 static gboolean
-should_prelight (GtkEntry             *entry,
-                 GtkEntryIconPosition  icon_pos)
+should_prelight (CtkEntry             *entry,
+                 CtkEntryIconPosition  icon_pos)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
   EntryIconInfo *icon_info = priv->icons[icon_pos];
 
   if (!icon_info)
@@ -3952,7 +3952,7 @@ should_prelight (GtkEntry             *entry,
 }
 
 static gboolean
-ctk_entry_draw (GtkWidget *widget,
+ctk_entry_draw (CtkWidget *widget,
 		cairo_t   *cr)
 {
   ctk_css_gadget_draw (CTK_ENTRY (widget)->priv->gadget, cr);
@@ -3963,13 +3963,13 @@ ctk_entry_draw (GtkWidget *widget,
 #define UNDERSHOOT_SIZE 20
 
 static void
-ctk_entry_draw_undershoot (GtkEntry *entry,
+ctk_entry_draw_undershoot (CtkEntry *entry,
                            cairo_t  *cr)
 {
-  GtkEntryPrivate *priv = entry->priv;
-  GtkStyleContext *context;
+  CtkEntryPrivate *priv = entry->priv;
+  CtkStyleContext *context;
   gint min_offset, max_offset;
-  GtkAllocation allocation;
+  CtkAllocation allocation;
   GdkRectangle rect;
   gboolean rtl;
 
@@ -4022,7 +4022,7 @@ ctk_entry_draw_undershoot (GtkEntry *entry,
 }
 
 static gboolean
-ctk_entry_render (GtkCssGadget *gadget,
+ctk_entry_render (CtkCssGadget *gadget,
                   cairo_t      *cr,
                   int           x,
                   int           y,
@@ -4030,9 +4030,9 @@ ctk_entry_render (GtkCssGadget *gadget,
                   int           height,
                   gpointer      data)
 {
-  GtkWidget *widget;
-  GtkEntry *entry;
-  GtkEntryPrivate *priv;
+  CtkWidget *widget;
+  CtkEntry *entry;
+  CtkEntryPrivate *priv;
   int i;
 
   widget = ctk_css_gadget_get_owner (gadget);
@@ -4074,11 +4074,11 @@ ctk_entry_render (GtkCssGadget *gadget,
 }
 
 static gint
-ctk_entry_enter_notify (GtkWidget        *widget,
+ctk_entry_enter_notify (CtkWidget        *widget,
                         GdkEventCrossing *event)
 {
-  GtkEntry *entry = CTK_ENTRY (widget);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntryPrivate *priv = entry->priv;
   gint i;
 
   for (i = 0; i < MAX_ICONS; i++)
@@ -4102,11 +4102,11 @@ ctk_entry_enter_notify (GtkWidget        *widget,
 }
 
 static gint
-ctk_entry_leave_notify (GtkWidget        *widget,
+ctk_entry_leave_notify (CtkWidget        *widget,
                         GdkEventCrossing *event)
 {
-  GtkEntry *entry = CTK_ENTRY (widget);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntryPrivate *priv = entry->priv;
   gint i;
 
   for (i = 0; i < MAX_ICONS; i++)
@@ -4134,7 +4134,7 @@ ctk_entry_leave_notify (GtkWidget        *widget,
 }
 
 static void
-ctk_entry_get_pixel_ranges (GtkEntry  *entry,
+ctk_entry_get_pixel_ranges (CtkEntry  *entry,
 			    gint     **ranges,
 			    gint      *n_ranges)
 {
@@ -4175,7 +4175,7 @@ ctk_entry_get_pixel_ranges (GtkEntry  *entry,
 }
 
 static gboolean
-in_selection (GtkEntry *entry,
+in_selection (CtkEntry *entry,
 	      gint	x)
 {
   gint *ranges;
@@ -4198,13 +4198,13 @@ in_selection (GtkEntry *entry,
 }
 
 static void
-ctk_entry_move_handle (GtkEntry              *entry,
-                       GtkTextHandlePosition  pos,
+ctk_entry_move_handle (CtkEntry              *entry,
+                       CtkTextHandlePosition  pos,
                        gint                   x,
                        gint                   y,
                        gint                   height)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   if (!_ctk_text_handle_get_is_dragged (priv->text_handle, pos) &&
       (x < 0 || x > priv->text_allocation.width))
@@ -4216,7 +4216,7 @@ ctk_entry_move_handle (GtkEntry              *entry,
     }
   else
     {
-      GtkAllocation allocation;
+      CtkAllocation allocation;
       GdkRectangle rect;
 
       ctk_widget_get_allocation (CTK_WIDGET (entry), &allocation);
@@ -4232,9 +4232,9 @@ ctk_entry_move_handle (GtkEntry              *entry,
 }
 
 static gint
-ctk_entry_get_selection_bound_location (GtkEntry *entry)
+ctk_entry_get_selection_bound_location (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
   PangoLayout *layout;
   PangoRectangle pos;
   gint x;
@@ -4255,10 +4255,10 @@ ctk_entry_get_selection_bound_location (GtkEntry *entry)
 }
 
 static void
-ctk_entry_update_handles (GtkEntry          *entry,
-                          GtkTextHandleMode  mode)
+ctk_entry_update_handles (CtkEntry          *entry,
+                          CtkTextHandleMode  mode)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
   gint strong_x, height;
   gint cursor, bound;
 
@@ -4298,10 +4298,10 @@ ctk_entry_update_handles (GtkEntry          *entry,
 }
 
 static gboolean
-ctk_entry_event (GtkWidget *widget,
+ctk_entry_event (CtkWidget *widget,
                  GdkEvent  *event)
 {
-  GtkEntryPrivate *priv = CTK_ENTRY (widget)->priv;
+  CtkEntryPrivate *priv = CTK_ENTRY (widget)->priv;
   EntryIconInfo *icon_info = NULL;
   GdkEventSequence *sequence;
   GdkDevice *device;
@@ -4426,8 +4426,8 @@ ctk_entry_event (GtkWidget *widget,
 }
 
 static void
-gesture_get_current_point_in_layout (GtkGestureSingle *gesture,
-                                     GtkEntry         *entry,
+gesture_get_current_point_in_layout (CtkGestureSingle *gesture,
+                                     CtkEntry         *entry,
                                      gint             *x,
                                      gint             *y)
 {
@@ -4446,15 +4446,15 @@ gesture_get_current_point_in_layout (GtkGestureSingle *gesture,
 }
 
 static void
-ctk_entry_multipress_gesture_pressed (GtkGestureMultiPress *gesture,
+ctk_entry_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
                                       gint                  n_press,
                                       gdouble               widget_x,
                                       gdouble               widget_y,
-                                      GtkEntry             *entry)
+                                      CtkEntry             *entry)
 {
-  GtkEditable *editable = CTK_EDITABLE (entry);
-  GtkWidget *widget = CTK_WIDGET (entry);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEditable *editable = CTK_EDITABLE (entry);
+  CtkWidget *widget = CTK_WIDGET (entry);
+  CtkEntryPrivate *priv = entry->priv;
   GdkEventSequence *current;
   const GdkEvent *event;
   gint x, y, sel_start, sel_end;
@@ -4499,7 +4499,7 @@ ctk_entry_multipress_gesture_pressed (GtkGestureMultiPress *gesture,
   else if (button == GDK_BUTTON_PRIMARY)
     {
       gboolean have_selection = ctk_editable_get_selection_bounds (editable, &sel_start, &sel_end);
-      GtkTextHandleMode mode;
+      CtkTextHandleMode mode;
       gboolean is_touchscreen, extend_selection;
       GdkDevice *source;
 
@@ -4634,9 +4634,9 @@ ctk_entry_multipress_gesture_pressed (GtkGestureMultiPress *gesture,
 }
 
 static gchar *
-_ctk_entry_get_selected_text (GtkEntry *entry)
+_ctk_entry_get_selected_text (CtkEntry *entry)
 {
-  GtkEditable *editable = CTK_EDITABLE (entry);
+  CtkEditable *editable = CTK_EDITABLE (entry);
   gint         start_text, end_text;
   gchar       *text = NULL;
 
@@ -4647,13 +4647,13 @@ _ctk_entry_get_selected_text (GtkEntry *entry)
 }
 
 static void
-ctk_entry_show_magnifier (GtkEntry *entry,
+ctk_entry_show_magnifier (CtkEntry *entry,
                           gint      x,
                           gint      y)
 {
-  GtkAllocation allocation;
+  CtkAllocation allocation;
   cairo_rectangle_int_t rect;
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
 
   ctk_entry_ensure_magnifier (entry);
 
@@ -4674,13 +4674,13 @@ ctk_entry_show_magnifier (GtkEntry *entry,
 }
 
 static void
-ctk_entry_drag_gesture_update (GtkGestureDrag *gesture,
+ctk_entry_drag_gesture_update (CtkGestureDrag *gesture,
                                gdouble         offset_x,
                                gdouble         offset_y,
-                               GtkEntry       *entry)
+                               CtkEntry       *entry)
 {
-  GtkWidget *widget = CTK_WIDGET (entry);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkWidget *widget = CTK_WIDGET (entry);
+  CtkEntryPrivate *priv = entry->priv;
   GdkEventSequence *sequence;
   const GdkEvent *event;
   gint x, y;
@@ -4713,7 +4713,7 @@ ctk_entry_drag_gesture_update (GtkGestureDrag *gesture,
         {
           gint *ranges;
           gint n_ranges;
-          GtkTargetList  *target_list = ctk_target_list_new (NULL, 0);
+          CtkTargetList  *target_list = ctk_target_list_new (NULL, 0);
           guint actions = priv->editable ? GDK_ACTION_COPY | GDK_ACTION_MOVE : GDK_ACTION_COPY;
           guint button;
 
@@ -4808,12 +4808,12 @@ ctk_entry_drag_gesture_update (GtkGestureDrag *gesture,
 }
 
 static void
-ctk_entry_drag_gesture_end (GtkGestureDrag *gesture,
+ctk_entry_drag_gesture_end (CtkGestureDrag *gesture,
                             gdouble         offset_x,
                             gdouble         offset_y,
-                            GtkEntry       *entry)
+                            CtkEntry       *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
   gboolean in_drag, is_touchscreen;
   GdkEventSequence *sequence;
   const GdkEvent *event;
@@ -4860,9 +4860,9 @@ set_invisible_cursor (GdkWindow *window)
 }
 
 static void
-ctk_entry_obscure_mouse_cursor (GtkEntry *entry)
+ctk_entry_obscure_mouse_cursor (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   if (priv->mouse_cursor_obscured)
     return;
@@ -4875,11 +4875,11 @@ ctk_entry_obscure_mouse_cursor (GtkEntry *entry)
 }
 
 static gint
-ctk_entry_key_press (GtkWidget   *widget,
+ctk_entry_key_press (CtkWidget   *widget,
 		     GdkEventKey *event)
 {
-  GtkEntry *entry = CTK_ENTRY (widget);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntryPrivate *priv = entry->priv;
   gboolean retval = FALSE;
 
   priv->handling_key_event = TRUE;
@@ -4926,11 +4926,11 @@ out:
 }
 
 static gint
-ctk_entry_key_release (GtkWidget   *widget,
+ctk_entry_key_release (CtkWidget   *widget,
 		       GdkEventKey *event)
 {
-  GtkEntry *entry = CTK_ENTRY (widget);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntryPrivate *priv = entry->priv;
   gboolean retval = FALSE;
 
   priv->handling_key_event = TRUE;
@@ -4953,11 +4953,11 @@ out:
 }
 
 static gint
-ctk_entry_focus_in (GtkWidget     *widget,
+ctk_entry_focus_in (CtkWidget     *widget,
 		    GdkEventFocus *event)
 {
-  GtkEntry *entry = CTK_ENTRY (widget);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntryPrivate *priv = entry->priv;
   GdkKeymap *keymap;
 
   ctk_widget_queue_draw (widget);
@@ -4991,12 +4991,12 @@ ctk_entry_focus_in (GtkWidget     *widget,
 }
 
 static gint
-ctk_entry_focus_out (GtkWidget     *widget,
+ctk_entry_focus_out (CtkWidget     *widget,
 		     GdkEventFocus *event)
 {
-  GtkEntry *entry = CTK_ENTRY (widget);
-  GtkEntryPrivate *priv = entry->priv;
-  GtkEntryCompletion *completion;
+  CtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntryPrivate *priv = entry->priv;
+  CtkEntryCompletion *completion;
   GdkKeymap *keymap;
 
   ctk_entry_selection_bubble_popup_unset (entry);
@@ -5037,7 +5037,7 @@ ctk_entry_focus_out (GtkWidget     *widget,
 }
 
 void
-_ctk_entry_grab_focus (GtkEntry  *entry,
+_ctk_entry_grab_focus (CtkEntry  *entry,
                        gboolean   select_all)
 {
   if (!ctk_widget_get_can_focus (CTK_WIDGET (entry)))
@@ -5053,10 +5053,10 @@ _ctk_entry_grab_focus (GtkEntry  *entry,
 }
 
 static void
-ctk_entry_grab_focus (GtkWidget *widget)
+ctk_entry_grab_focus (CtkWidget *widget)
 {
-  GtkEntry *entry = CTK_ENTRY (widget);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntryPrivate *priv = entry->priv;
   gboolean select_on_focus;
 
   if (priv->editable && !priv->in_click)
@@ -5076,7 +5076,7 @@ ctk_entry_grab_focus (GtkWidget *widget)
 
 /**
  * ctk_entry_grab_focus_without_selecting:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  *
  * Causes @entry to have keyboard focus.
  *
@@ -5089,7 +5089,7 @@ ctk_entry_grab_focus (GtkWidget *widget)
  * Since: 3.16
  */
 void
-ctk_entry_grab_focus_without_selecting (GtkEntry *entry)
+ctk_entry_grab_focus_without_selecting (CtkEntry *entry)
 {
   g_return_if_fail (CTK_IS_ENTRY (entry));
 
@@ -5097,10 +5097,10 @@ ctk_entry_grab_focus_without_selecting (GtkEntry *entry)
 }
 
 static void
-ctk_entry_direction_changed (GtkWidget        *widget,
-                             GtkTextDirection  previous_dir)
+ctk_entry_direction_changed (CtkWidget        *widget,
+                             CtkTextDirection  previous_dir)
 {
-  GtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntry *entry = CTK_ENTRY (widget);
 
   ctk_entry_recompute (entry);
 
@@ -5113,11 +5113,11 @@ ctk_entry_direction_changed (GtkWidget        *widget,
 }
 
 static void
-ctk_entry_state_flags_changed (GtkWidget     *widget,
-                               GtkStateFlags  previous_state)
+ctk_entry_state_flags_changed (CtkWidget     *widget,
+                               CtkStateFlags  previous_state)
 {
-  GtkEntry *entry = CTK_ENTRY (widget);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntryPrivate *priv = entry->priv;
   GdkCursor *cursor;
 
   if (ctk_widget_get_realized (widget))
@@ -5151,16 +5151,16 @@ ctk_entry_state_flags_changed (GtkWidget     *widget,
 }
 
 static void
-ctk_entry_screen_changed (GtkWidget *widget,
+ctk_entry_screen_changed (CtkWidget *widget,
 			  GdkScreen *old_screen)
 {
   ctk_entry_recompute (CTK_ENTRY (widget));
 }
 
-/* GtkEditable method implementations
+/* CtkEditable method implementations
  */
 static void
-ctk_entry_insert_text (GtkEditable *editable,
+ctk_entry_insert_text (CtkEditable *editable,
 		       const gchar *new_text,
 		       gint         new_text_length,
 		       gint        *position)
@@ -5178,7 +5178,7 @@ ctk_entry_insert_text (GtkEditable *editable,
 }
 
 static void
-ctk_entry_delete_text (GtkEditable *editable,
+ctk_entry_delete_text (CtkEditable *editable,
 		       gint         start_pos,
 		       gint         end_pos)
 {
@@ -5190,11 +5190,11 @@ ctk_entry_delete_text (GtkEditable *editable,
 }
 
 static gchar *    
-ctk_entry_get_chars      (GtkEditable   *editable,
+ctk_entry_get_chars      (CtkEditable   *editable,
 			  gint           start_pos,
 			  gint           end_pos)
 {
-  GtkEntry *entry = CTK_ENTRY (editable);
+  CtkEntry *entry = CTK_ENTRY (editable);
   const gchar *text;
   gint text_length;
   gint start_index, end_index;
@@ -5215,11 +5215,11 @@ ctk_entry_get_chars      (GtkEditable   *editable,
 }
 
 static void
-ctk_entry_real_set_position (GtkEditable *editable,
+ctk_entry_real_set_position (CtkEditable *editable,
 			     gint         position)
 {
-  GtkEntry *entry = CTK_ENTRY (editable);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (editable);
+  CtkEntryPrivate *priv = entry->priv;
 
   guint length;
 
@@ -5236,20 +5236,20 @@ ctk_entry_real_set_position (GtkEditable *editable,
 }
 
 static gint
-ctk_entry_get_position (GtkEditable *editable)
+ctk_entry_get_position (CtkEditable *editable)
 {
-  GtkEntry *entry = CTK_ENTRY (editable);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (editable);
+  CtkEntryPrivate *priv = entry->priv;
 
   return priv->current_pos;
 }
 
 static void
-ctk_entry_set_selection_bounds (GtkEditable *editable,
+ctk_entry_set_selection_bounds (CtkEditable *editable,
 				gint         start,
 				gint         end)
 {
-  GtkEntry *entry = CTK_ENTRY (editable);
+  CtkEntry *entry = CTK_ENTRY (editable);
   guint length;
 
   length = ctk_entry_buffer_get_length (get_buffer (entry));
@@ -5268,12 +5268,12 @@ ctk_entry_set_selection_bounds (GtkEditable *editable,
 }
 
 static gboolean
-ctk_entry_get_selection_bounds (GtkEditable *editable,
+ctk_entry_get_selection_bounds (CtkEditable *editable,
 				gint        *start,
 				gint        *end)
 {
-  GtkEntry *entry = CTK_ENTRY (editable);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (editable);
+  CtkEntryPrivate *priv = entry->priv;
 
   *start = priv->selection_bound;
   *end = priv->current_pos;
@@ -5282,9 +5282,9 @@ ctk_entry_get_selection_bounds (GtkEditable *editable,
 }
 
 static void
-ctk_entry_update_cached_style_values (GtkEntry *entry)
+ctk_entry_update_cached_style_values (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   if (!priv->invisible_char_set)
     {
@@ -5299,30 +5299,30 @@ ctk_entry_update_cached_style_values (GtkEntry *entry)
 }
 
 static void 
-ctk_entry_style_updated (GtkWidget *widget)
+ctk_entry_style_updated (CtkWidget *widget)
 {
-  GtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntry *entry = CTK_ENTRY (widget);
 
   CTK_WIDGET_CLASS (ctk_entry_parent_class)->style_updated (widget);
 
   ctk_entry_update_cached_style_values (entry);
 }
 
-/* GtkCellEditable method implementations
+/* CtkCellEditable method implementations
  */
 static void
-ctk_cell_editable_entry_activated (GtkEntry *entry, gpointer data)
+ctk_cell_editable_entry_activated (CtkEntry *entry, gpointer data)
 {
   ctk_cell_editable_editing_done (CTK_CELL_EDITABLE (entry));
   ctk_cell_editable_remove_widget (CTK_CELL_EDITABLE (entry));
 }
 
 static gboolean
-ctk_cell_editable_key_press_event (GtkEntry    *entry,
+ctk_cell_editable_key_press_event (CtkEntry    *entry,
 				   GdkEventKey *key_event,
 				   gpointer     data)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   if (key_event->keyval == GDK_KEY_Escape)
     {
@@ -5346,7 +5346,7 @@ ctk_cell_editable_key_press_event (GtkEntry    *entry,
 }
 
 static void
-ctk_entry_start_editing (GtkCellEditable *cell_editable,
+ctk_entry_start_editing (CtkCellEditable *cell_editable,
 			 GdkEvent        *event)
 {
   g_signal_connect (cell_editable, "activate",
@@ -5356,19 +5356,19 @@ ctk_entry_start_editing (GtkCellEditable *cell_editable,
 }
 
 static void
-ctk_entry_password_hint_free (GtkEntryPasswordHint *password_hint)
+ctk_entry_password_hint_free (CtkEntryPasswordHint *password_hint)
 {
   if (password_hint->source_id)
     g_source_remove (password_hint->source_id);
 
-  g_slice_free (GtkEntryPasswordHint, password_hint);
+  g_slice_free (CtkEntryPasswordHint, password_hint);
 }
 
 
 static gboolean
 ctk_entry_remove_password_hint (gpointer data)
 {
-  GtkEntryPasswordHint *password_hint = g_object_get_qdata (data, quark_password_hint);
+  CtkEntryPasswordHint *password_hint = g_object_get_qdata (data, quark_password_hint);
   password_hint->position = -1;
 
   /* Force the string to be redrawn, but now without a visible character */
@@ -5379,7 +5379,7 @@ ctk_entry_remove_password_hint (gpointer data)
 /* Default signal handlers
  */
 static void
-ctk_entry_real_insert_text (GtkEditable *editable,
+ctk_entry_real_insert_text (CtkEditable *editable,
 			    const gchar *new_text,
 			    gint         new_text_length,
 			    gint        *position)
@@ -5407,7 +5407,7 @@ ctk_entry_real_insert_text (GtkEditable *editable,
 }
 
 static void
-ctk_entry_real_delete_text (GtkEditable *editable,
+ctk_entry_real_delete_text (CtkEditable *editable,
                             gint         start_pos,
                             gint         end_pos)
 {
@@ -5424,16 +5424,16 @@ ctk_entry_real_delete_text (GtkEditable *editable,
   end_change (CTK_ENTRY (editable));
 }
 
-/* GtkEntryBuffer signal handlers
+/* CtkEntryBuffer signal handlers
  */
 static void
-buffer_inserted_text (GtkEntryBuffer *buffer,
+buffer_inserted_text (CtkEntryBuffer *buffer,
                       guint           position,
                       const gchar    *chars,
                       guint           n_chars,
-                      GtkEntry       *entry)
+                      CtkEntry       *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
   guint password_hint_timeout;
   guint current_pos;
   gint selection_bound;
@@ -5458,11 +5458,11 @@ buffer_inserted_text (GtkEntryBuffer *buffer,
 
       if (password_hint_timeout > 0)
         {
-          GtkEntryPasswordHint *password_hint = g_object_get_qdata (G_OBJECT (entry),
+          CtkEntryPasswordHint *password_hint = g_object_get_qdata (G_OBJECT (entry),
                                                                     quark_password_hint);
           if (!password_hint)
             {
-              password_hint = g_slice_new0 (GtkEntryPasswordHint);
+              password_hint = g_slice_new0 (CtkEntryPasswordHint);
               g_object_set_qdata_full (G_OBJECT (entry), quark_password_hint, password_hint,
                                        (GDestroyNotify)ctk_entry_password_hint_free);
             }
@@ -5478,12 +5478,12 @@ buffer_inserted_text (GtkEntryBuffer *buffer,
 }
 
 static void
-buffer_deleted_text (GtkEntryBuffer *buffer,
+buffer_deleted_text (CtkEntryBuffer *buffer,
                      guint           position,
                      guint           n_chars,
-                     GtkEntry       *entry)
+                     CtkEntry       *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
   guint end_pos = position + n_chars;
   gint selection_bound;
   guint current_pos;
@@ -5505,7 +5505,7 @@ buffer_deleted_text (GtkEntryBuffer *buffer,
   /* Disable the password hint if one exists. */
   if (!priv->visible)
     {
-      GtkEntryPasswordHint *password_hint = g_object_get_qdata (G_OBJECT (entry),
+      CtkEntryPasswordHint *password_hint = g_object_get_qdata (G_OBJECT (entry),
                                                                 quark_password_hint);
       if (password_hint)
         {
@@ -5518,9 +5518,9 @@ buffer_deleted_text (GtkEntryBuffer *buffer,
 }
 
 static void
-buffer_notify_text (GtkEntryBuffer *buffer,
+buffer_notify_text (CtkEntryBuffer *buffer,
                     GParamSpec     *spec,
-                    GtkEntry       *entry)
+                    CtkEntry       *entry)
 {
   if (entry->priv->handling_key_event)
     ctk_entry_obscure_mouse_cursor (entry);
@@ -5530,23 +5530,23 @@ buffer_notify_text (GtkEntryBuffer *buffer,
 }
 
 static void
-buffer_notify_length (GtkEntryBuffer *buffer,
+buffer_notify_length (CtkEntryBuffer *buffer,
                       GParamSpec     *spec,
-                      GtkEntry       *entry)
+                      CtkEntry       *entry)
 {
   g_object_notify_by_pspec (G_OBJECT (entry), entry_props[PROP_TEXT_LENGTH]);
 }
 
 static void
-buffer_notify_max_length (GtkEntryBuffer *buffer,
+buffer_notify_max_length (CtkEntryBuffer *buffer,
                           GParamSpec     *spec,
-                          GtkEntry       *entry)
+                          CtkEntry       *entry)
 {
   g_object_notify_by_pspec (G_OBJECT (entry), entry_props[PROP_MAX_LENGTH]);
 }
 
 static void
-buffer_connect_signals (GtkEntry *entry)
+buffer_connect_signals (CtkEntry *entry)
 {
   g_signal_connect (get_buffer (entry), "inserted-text", G_CALLBACK (buffer_inserted_text), entry);
   g_signal_connect (get_buffer (entry), "deleted-text", G_CALLBACK (buffer_deleted_text), entry);
@@ -5556,7 +5556,7 @@ buffer_connect_signals (GtkEntry *entry)
 }
 
 static void
-buffer_disconnect_signals (GtkEntry *entry)
+buffer_disconnect_signals (CtkEntry *entry)
 {
   g_signal_handlers_disconnect_by_func (get_buffer (entry), buffer_inserted_text, entry);
   g_signal_handlers_disconnect_by_func (get_buffer (entry), buffer_deleted_text, entry);
@@ -5571,10 +5571,10 @@ buffer_disconnect_signals (GtkEntry *entry)
  * right arrow key.
  */
 static gint
-get_better_cursor_x (GtkEntry *entry,
+get_better_cursor_x (CtkEntry *entry,
 		     gint      offset)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
   GdkKeymap *keymap = gdk_keymap_get_for_display (ctk_widget_get_display (CTK_WIDGET (entry)));
   PangoDirection keymap_direction = gdk_keymap_get_direction (keymap);
   gboolean split_cursor;
@@ -5598,12 +5598,12 @@ get_better_cursor_x (GtkEntry *entry,
 }
 
 static void
-ctk_entry_move_cursor (GtkEntry       *entry,
-		       GtkMovementStep step,
+ctk_entry_move_cursor (CtkEntry       *entry,
+		       CtkMovementStep step,
 		       gint            count,
 		       gboolean        extend_selection)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
   gint new_pos = priv->current_pos;
 
   ctk_entry_reset_im_context (entry);
@@ -5672,7 +5672,7 @@ ctk_entry_move_cursor (GtkEntry       *entry,
                                                  count > 0 ?
                                                  CTK_DIR_RIGHT : CTK_DIR_LEFT))
                     {
-                      GtkWidget *toplevel = ctk_widget_get_toplevel (CTK_WIDGET (entry));
+                      CtkWidget *toplevel = ctk_widget_get_toplevel (CTK_WIDGET (entry));
 
                       if (toplevel)
                         ctk_widget_child_focus (toplevel,
@@ -5735,11 +5735,11 @@ ctk_entry_move_cursor (GtkEntry       *entry,
 }
 
 static void
-ctk_entry_insert_at_cursor (GtkEntry    *entry,
+ctk_entry_insert_at_cursor (CtkEntry    *entry,
 			    const gchar *str)
 {
-  GtkEntryPrivate *priv = entry->priv;
-  GtkEditable *editable = CTK_EDITABLE (entry);
+  CtkEntryPrivate *priv = entry->priv;
+  CtkEditable *editable = CTK_EDITABLE (entry);
   gint pos = priv->current_pos;
 
   if (priv->editable)
@@ -5751,12 +5751,12 @@ ctk_entry_insert_at_cursor (GtkEntry    *entry,
 }
 
 static void
-ctk_entry_delete_from_cursor (GtkEntry       *entry,
-			      GtkDeleteType   type,
+ctk_entry_delete_from_cursor (CtkEntry       *entry,
+			      CtkDeleteType   type,
 			      gint            count)
 {
-  GtkEntryPrivate *priv = entry->priv;
-  GtkEditable *editable = CTK_EDITABLE (entry);
+  CtkEntryPrivate *priv = entry->priv;
+  CtkEditable *editable = CTK_EDITABLE (entry);
   gint start_pos = priv->current_pos;
   gint end_pos = priv->current_pos;
   gint old_n_bytes = ctk_entry_buffer_get_bytes (get_buffer (entry));
@@ -5839,10 +5839,10 @@ ctk_entry_delete_from_cursor (GtkEntry       *entry,
 }
 
 static void
-ctk_entry_backspace (GtkEntry *entry)
+ctk_entry_backspace (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
-  GtkEditable *editable = CTK_EDITABLE (entry);
+  CtkEntryPrivate *priv = entry->priv;
+  CtkEditable *editable = CTK_EDITABLE (entry);
   gint prev_pos;
 
   ctk_entry_reset_im_context (entry);
@@ -5913,10 +5913,10 @@ ctk_entry_backspace (GtkEntry *entry)
 }
 
 static void
-ctk_entry_copy_clipboard (GtkEntry *entry)
+ctk_entry_copy_clipboard (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
-  GtkEditable *editable = CTK_EDITABLE (entry);
+  CtkEntryPrivate *priv = entry->priv;
+  CtkEditable *editable = CTK_EDITABLE (entry);
   gint start, end;
   gchar *str;
 
@@ -5937,10 +5937,10 @@ ctk_entry_copy_clipboard (GtkEntry *entry)
 }
 
 static void
-ctk_entry_cut_clipboard (GtkEntry *entry)
+ctk_entry_cut_clipboard (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
-  GtkEditable *editable = CTK_EDITABLE (entry);
+  CtkEntryPrivate *priv = entry->priv;
+  CtkEditable *editable = CTK_EDITABLE (entry);
   gint start, end;
 
   if (!priv->visible)
@@ -5965,7 +5965,7 @@ ctk_entry_cut_clipboard (GtkEntry *entry)
 
   if (priv->text_handle)
     {
-      GtkTextHandleMode handle_mode;
+      CtkTextHandleMode handle_mode;
 
       handle_mode = _ctk_text_handle_get_mode (priv->text_handle);
 
@@ -5975,9 +5975,9 @@ ctk_entry_cut_clipboard (GtkEntry *entry)
 }
 
 static void
-ctk_entry_paste_clipboard (GtkEntry *entry)
+ctk_entry_paste_clipboard (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   if (priv->editable)
     ctk_entry_paste (entry, GDK_SELECTION_CLIPBOARD);
@@ -5986,7 +5986,7 @@ ctk_entry_paste_clipboard (GtkEntry *entry)
 
   if (priv->text_handle)
     {
-      GtkTextHandleMode handle_mode;
+      CtkTextHandleMode handle_mode;
 
       handle_mode = _ctk_text_handle_get_mode (priv->text_handle);
 
@@ -5996,10 +5996,10 @@ ctk_entry_paste_clipboard (GtkEntry *entry)
 }
 
 static void
-ctk_entry_delete_cb (GtkEntry *entry)
+ctk_entry_delete_cb (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
-  GtkEditable *editable = CTK_EDITABLE (entry);
+  CtkEntryPrivate *priv = entry->priv;
+  CtkEditable *editable = CTK_EDITABLE (entry);
   gint start, end;
 
   if (priv->editable)
@@ -6010,9 +6010,9 @@ ctk_entry_delete_cb (GtkEntry *entry)
 }
 
 static void
-ctk_entry_toggle_overwrite (GtkEntry *entry)
+ctk_entry_toggle_overwrite (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   priv->overwrite_mode = !priv->overwrite_mode;
   ctk_entry_pend_cursor_blink (entry);
@@ -6020,19 +6020,19 @@ ctk_entry_toggle_overwrite (GtkEntry *entry)
 }
 
 static void
-ctk_entry_select_all (GtkEntry *entry)
+ctk_entry_select_all (CtkEntry *entry)
 {
   ctk_entry_select_line (entry);
 }
 
 static void
-ctk_entry_real_activate (GtkEntry *entry)
+ctk_entry_real_activate (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
-  GtkWindow *window;
-  GtkWidget *default_widget, *focus_widget;
-  GtkWidget *toplevel;
-  GtkWidget *widget;
+  CtkEntryPrivate *priv = entry->priv;
+  CtkWindow *window;
+  CtkWidget *default_widget, *focus_widget;
+  CtkWidget *toplevel;
+  CtkWidget *widget;
 
   widget = CTK_WIDGET (entry);
 
@@ -6057,7 +6057,7 @@ ctk_entry_real_activate (GtkEntry *entry)
 
 static void
 keymap_direction_changed (GdkKeymap *keymap,
-                          GtkEntry  *entry)
+                          CtkEntry  *entry)
 {
   ctk_entry_recompute (entry);
 }
@@ -6066,21 +6066,21 @@ keymap_direction_changed (GdkKeymap *keymap,
  */
 
 static void
-ctk_entry_commit_cb (GtkIMContext *context,
+ctk_entry_commit_cb (CtkIMContext *context,
 		     const gchar  *str,
-		     GtkEntry     *entry)
+		     CtkEntry     *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   if (priv->editable)
     ctk_entry_enter_text (entry, str);
 }
 
 static void 
-ctk_entry_preedit_changed_cb (GtkIMContext *context,
-			      GtkEntry     *entry)
+ctk_entry_preedit_changed_cb (CtkIMContext *context,
+			      CtkEntry     *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   if (priv->editable)
     {
@@ -6101,10 +6101,10 @@ ctk_entry_preedit_changed_cb (GtkIMContext *context,
 }
 
 static gboolean
-ctk_entry_retrieve_surrounding_cb (GtkIMContext *context,
-                                   GtkEntry     *entry)
+ctk_entry_retrieve_surrounding_cb (CtkIMContext *context,
+                                   CtkEntry     *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
   gchar *text;
 
   /* XXXX ??? does this even make sense when text is not visible? Should we return FALSE? */
@@ -6117,12 +6117,12 @@ ctk_entry_retrieve_surrounding_cb (GtkIMContext *context,
 }
 
 static gboolean
-ctk_entry_delete_surrounding_cb (GtkIMContext *slave,
+ctk_entry_delete_surrounding_cb (CtkIMContext *slave,
 				 gint          offset,
 				 gint          n_chars,
-				 GtkEntry     *entry)
+				 CtkEntry     *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   if (priv->editable)
     ctk_editable_delete_text (CTK_EDITABLE (entry),
@@ -6137,11 +6137,11 @@ ctk_entry_delete_surrounding_cb (GtkIMContext *slave,
 
 /* Used for im_commit_cb and inserting Unicode chars */
 void
-ctk_entry_enter_text (GtkEntry       *entry,
+ctk_entry_enter_text (CtkEntry       *entry,
                       const gchar    *str)
 {
-  GtkEntryPrivate *priv = entry->priv;
-  GtkEditable *editable = CTK_EDITABLE (entry);
+  CtkEntryPrivate *priv = entry->priv;
+  CtkEditable *editable = CTK_EDITABLE (entry);
   gint tmp_pos;
   gboolean old_need_im_reset;
   guint text_length;
@@ -6172,11 +6172,11 @@ ctk_entry_enter_text (GtkEntry       *entry,
  * should go through this function.
  */
 void
-ctk_entry_set_positions (GtkEntry *entry,
+ctk_entry_set_positions (CtkEntry *entry,
 			 gint      current_pos,
 			 gint      selection_bound)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
   gboolean changed = FALSE;
 
   g_object_freeze_notify (G_OBJECT (entry));
@@ -6205,7 +6205,7 @@ ctk_entry_set_positions (GtkEntry *entry,
     {
       if (!priv->selection_node)
         {
-          GtkCssNode *widget_node;
+          CtkCssNode *widget_node;
 
           widget_node = ctk_css_gadget_get_node (priv->gadget);
           priv->selection_node = ctk_css_node_new ();
@@ -6232,9 +6232,9 @@ ctk_entry_set_positions (GtkEntry *entry,
 }
 
 static void
-ctk_entry_reset_layout (GtkEntry *entry)
+ctk_entry_reset_layout (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   if (priv->cached_layout)
     {
@@ -6244,9 +6244,9 @@ ctk_entry_reset_layout (GtkEntry *entry)
 }
 
 static void
-update_im_cursor_location (GtkEntry *entry)
+update_im_cursor_location (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
   GdkRectangle area;
   gint strong_x;
   gint strong_xoffset;
@@ -6273,10 +6273,10 @@ update_im_cursor_location (GtkEntry *entry)
 }
 
 static void
-ctk_entry_recompute (GtkEntry *entry)
+ctk_entry_recompute (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
-  GtkTextHandleMode handle_mode;
+  CtkEntryPrivate *priv = entry->priv;
+  CtkTextHandleMode handle_mode;
 
   ctk_entry_reset_layout (entry);
   ctk_entry_check_cursor_blink (entry);
@@ -6297,11 +6297,11 @@ ctk_entry_recompute (GtkEntry *entry)
 }
 
 static void
-ctk_entry_get_placeholder_text_color (GtkEntry   *entry,
+ctk_entry_get_placeholder_text_color (CtkEntry   *entry,
                                       PangoColor *color)
 {
-  GtkWidget *widget = CTK_WIDGET (entry);
-  GtkStyleContext *context;
+  CtkWidget *widget = CTK_WIDGET (entry);
+  CtkStyleContext *context;
   GdkRGBA fg = { 0.5, 0.5, 0.5 };
 
   context = ctk_widget_get_style_context (widget);
@@ -6313,9 +6313,9 @@ ctk_entry_get_placeholder_text_color (GtkEntry   *entry,
 }
 
 static inline gboolean
-show_placeholder_text (GtkEntry *entry)
+show_placeholder_text (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   if (!ctk_widget_has_focus (CTK_WIDGET (entry)) &&
       ctk_entry_buffer_get_bytes (get_buffer (entry)) == 0 &&
@@ -6326,12 +6326,12 @@ show_placeholder_text (GtkEntry *entry)
 }
 
 static PangoLayout *
-ctk_entry_create_layout (GtkEntry *entry,
+ctk_entry_create_layout (CtkEntry *entry,
 			 gboolean  include_preedit)
 {
-  GtkEntryPrivate *priv = entry->priv;
-  GtkWidget *widget = CTK_WIDGET (entry);
-  GtkStyleContext *context;
+  CtkEntryPrivate *priv = entry->priv;
+  CtkWidget *widget = CTK_WIDGET (entry);
+  CtkStyleContext *context;
   PangoLayout *layout;
   PangoAttrList *tmp_attrs;
   gboolean placeholder_layout;
@@ -6444,10 +6444,10 @@ ctk_entry_create_layout (GtkEntry *entry,
 }
 
 static PangoLayout *
-ctk_entry_ensure_layout (GtkEntry *entry,
+ctk_entry_ensure_layout (CtkEntry *entry,
                          gboolean  include_preedit)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   if (priv->preedit_length > 0 &&
       !include_preedit != !priv->cache_includes_preedit)
@@ -6463,11 +6463,11 @@ ctk_entry_ensure_layout (GtkEntry *entry,
 }
 
 static void
-get_layout_position (GtkEntry *entry,
+get_layout_position (CtkEntry *entry,
                      gint     *x,
                      gint     *y)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
   PangoLayout *layout;
   PangoRectangle logical_rect;
   gint y_pos, area_height;
@@ -6505,16 +6505,16 @@ get_layout_position (GtkEntry *entry,
 }
 
 static void
-ctk_entry_draw_text (GtkEntry *entry,
+ctk_entry_draw_text (CtkEntry *entry,
                      cairo_t  *cr)
 {
-  GtkEntryPrivate *priv = entry->priv;
-  GtkWidget *widget = CTK_WIDGET (entry);
-  GtkStyleContext *context;
+  CtkEntryPrivate *priv = entry->priv;
+  CtkWidget *widget = CTK_WIDGET (entry);
+  CtkStyleContext *context;
   PangoLayout *layout;
   gint x, y;
   gint start_pos, end_pos;
-  GtkAllocation allocation;
+  CtkAllocation allocation;
 
   /* Nothing to display at all */
   if (ctk_entry_get_display_mode (entry) == DISPLAY_BLANK)
@@ -6571,13 +6571,13 @@ ctk_entry_draw_text (GtkEntry *entry,
 }
 
 static void
-ctk_entry_draw_cursor (GtkEntry  *entry,
+ctk_entry_draw_cursor (CtkEntry  *entry,
                        cairo_t   *cr,
 		       CursorType type)
 {
-  GtkEntryPrivate *priv = entry->priv;
-  GtkWidget *widget = CTK_WIDGET (entry);
-  GtkStyleContext *context;
+  CtkEntryPrivate *priv = entry->priv;
+  CtkWidget *widget = CTK_WIDGET (entry);
+  CtkStyleContext *context;
   PangoRectangle cursor_rect;
   gint cursor_index;
   gboolean block;
@@ -6648,15 +6648,15 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-ctk_entry_handle_dragged (GtkTextHandle         *handle,
-                          GtkTextHandlePosition  pos,
+ctk_entry_handle_dragged (CtkTextHandle         *handle,
+                          CtkTextHandlePosition  pos,
                           gint                   x,
                           gint                   y,
-                          GtkEntry              *entry)
+                          CtkEntry              *entry)
 {
   gint cursor_pos, selection_bound_pos, tmp_pos;
-  GtkEntryPrivate *priv = entry->priv;
-  GtkTextHandleMode mode;
+  CtkEntryPrivate *priv = entry->priv;
+  CtkTextHandleMode mode;
   gint *min, *max;
 
   ctk_entry_selection_bubble_popup_unset (entry);
@@ -6723,24 +6723,24 @@ ctk_entry_handle_dragged (GtkTextHandle         *handle,
 }
 
 static void
-ctk_entry_handle_drag_started (GtkTextHandle         *handle,
-                               GtkTextHandlePosition  pos,
-                               GtkEntry              *entry)
+ctk_entry_handle_drag_started (CtkTextHandle         *handle,
+                               CtkTextHandlePosition  pos,
+                               CtkEntry              *entry)
 {
   entry->priv->cursor_handle_dragged = FALSE;
   entry->priv->selection_handle_dragged = FALSE;
 }
 
 static void
-ctk_entry_handle_drag_finished (GtkTextHandle         *handle,
-                                GtkTextHandlePosition  pos,
-                                GtkEntry              *entry)
+ctk_entry_handle_drag_finished (CtkTextHandle         *handle,
+                                CtkTextHandlePosition  pos,
+                                CtkEntry              *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   if (!priv->cursor_handle_dragged && !priv->selection_handle_dragged)
     {
-      GtkSettings *settings;
+      CtkSettings *settings;
       guint double_click_time;
 
       settings = ctk_widget_get_settings (CTK_WIDGET (entry));
@@ -6761,7 +6761,7 @@ ctk_entry_handle_drag_finished (GtkTextHandle         *handle,
 
 /**
  * ctk_entry_reset_im_context:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  *
  * Reset the input method context of the entry if needed.
  *
@@ -6771,9 +6771,9 @@ ctk_entry_handle_drag_finished (GtkTextHandle         *handle,
  * Since: 2.22
  */
 void
-ctk_entry_reset_im_context (GtkEntry *entry)
+ctk_entry_reset_im_context (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   g_return_if_fail (CTK_IS_ENTRY (entry));
 
@@ -6786,10 +6786,10 @@ ctk_entry_reset_im_context (GtkEntry *entry)
 
 /**
  * ctk_entry_im_context_filter_keypress:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @event: (type Gdk.EventKey): the key event
  *
- * Allow the #GtkEntry input method to internally handle key press
+ * Allow the #CtkEntry input method to internally handle key press
  * and release events. If this function returns %TRUE, then no further
  * processing should be done for this key event. See
  * ctk_im_context_filter_keypress().
@@ -6797,7 +6797,7 @@ ctk_entry_reset_im_context (GtkEntry *entry)
  * Note that you are expected to call this function from your handler
  * when overriding key event handling. This is needed in the case when
  * you need to insert your own key handling between the input method
- * and the default key event handling of the #GtkEntry.
+ * and the default key event handling of the #CtkEntry.
  * See ctk_text_view_reset_im_context() for an example of use.
  *
  * Returns: %TRUE if the input method handled the key event.
@@ -6805,10 +6805,10 @@ ctk_entry_reset_im_context (GtkEntry *entry)
  * Since: 2.22
  */
 gboolean
-ctk_entry_im_context_filter_keypress (GtkEntry    *entry,
+ctk_entry_im_context_filter_keypress (CtkEntry    *entry,
                                       GdkEventKey *event)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_ENTRY (entry), FALSE);
 
@@ -6817,23 +6817,23 @@ ctk_entry_im_context_filter_keypress (GtkEntry    *entry,
   return ctk_im_context_filter_keypress (priv->im_context, event);
 }
 
-GtkIMContext*
-_ctk_entry_get_im_context (GtkEntry *entry)
+CtkIMContext*
+_ctk_entry_get_im_context (CtkEntry *entry)
 {
   return entry->priv->im_context;
 }
 
-GtkCssGadget *
-ctk_entry_get_gadget (GtkEntry  *entry)
+CtkCssGadget *
+ctk_entry_get_gadget (CtkEntry  *entry)
 {
   return entry->priv->gadget;
 }
 
 static gint
-ctk_entry_find_position (GtkEntry *entry,
+ctk_entry_find_position (CtkEntry *entry,
 			 gint      x)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
   PangoLayout *layout;
   PangoLayoutLine *line;
   gint index;
@@ -6867,12 +6867,12 @@ ctk_entry_find_position (GtkEntry *entry,
 }
 
 static void
-ctk_entry_get_cursor_locations (GtkEntry   *entry,
+ctk_entry_get_cursor_locations (CtkEntry   *entry,
 				CursorType  type,
 				gint       *strong_x,
 				gint       *weak_x)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
   DisplayMode mode = ctk_entry_get_display_mode (entry);
 
   /* Nothing to display at all, so no cursor is relevant */
@@ -6922,10 +6922,10 @@ ctk_entry_get_cursor_locations (GtkEntry   *entry,
 }
 
 static gboolean
-ctk_entry_get_is_selection_handle_dragged (GtkEntry *entry)
+ctk_entry_get_is_selection_handle_dragged (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
-  GtkTextHandlePosition pos;
+  CtkEntryPrivate *priv = entry->priv;
+  CtkTextHandlePosition pos;
 
   if (!priv->text_handle)
     return FALSE;
@@ -6942,11 +6942,11 @@ ctk_entry_get_is_selection_handle_dragged (GtkEntry *entry)
 }
 
 static void
-ctk_entry_get_scroll_limits (GtkEntry *entry,
+ctk_entry_get_scroll_limits (CtkEntry *entry,
                              gint     *min_offset,
                              gint     *max_offset)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
   gfloat xalign;
   PangoLayout *layout;
   PangoLayoutLine *line;
@@ -6980,13 +6980,13 @@ ctk_entry_get_scroll_limits (GtkEntry *entry,
 }
 
 static void
-ctk_entry_adjust_scroll (GtkEntry *entry)
+ctk_entry_adjust_scroll (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
   gint min_offset, max_offset;
   gint strong_x, weak_x;
   gint strong_xoffset, weak_xoffset;
-  GtkTextHandleMode handle_mode;
+  CtkTextHandleMode handle_mode;
 
   if (!ctk_widget_get_realized (CTK_WIDGET (entry)))
     return;
@@ -7059,11 +7059,11 @@ ctk_entry_adjust_scroll (GtkEntry *entry)
 }
 
 static void
-ctk_entry_move_adjustments (GtkEntry *entry)
+ctk_entry_move_adjustments (CtkEntry *entry)
 {
-  GtkWidget *widget = CTK_WIDGET (entry);
-  GtkAllocation allocation;
-  GtkAdjustment *adjustment;
+  CtkWidget *widget = CTK_WIDGET (entry);
+  CtkAllocation allocation;
+  CtkAdjustment *adjustment;
   PangoContext *context;
   PangoFontMetrics *metrics;
   gint x, layout_x;
@@ -7095,11 +7095,11 @@ ctk_entry_move_adjustments (GtkEntry *entry)
 }
 
 static gint
-ctk_entry_move_visually (GtkEntry *entry,
+ctk_entry_move_visually (CtkEntry *entry,
 			 gint      start,
 			 gint      count)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
   gint index;
   PangoLayout *layout = ctk_entry_ensure_layout (entry, FALSE);
   const gchar *text;
@@ -7152,7 +7152,7 @@ ctk_entry_move_visually (GtkEntry *entry,
 }
 
 static gint
-ctk_entry_move_logically (GtkEntry *entry,
+ctk_entry_move_logically (CtkEntry *entry,
 			  gint      start,
 			  gint      count)
 {
@@ -7198,7 +7198,7 @@ ctk_entry_move_logically (GtkEntry *entry,
 }
 
 static gint
-ctk_entry_move_forward_word (GtkEntry *entry,
+ctk_entry_move_forward_word (CtkEntry *entry,
 			     gint      start,
                              gboolean  allow_whitespace)
 {
@@ -7234,7 +7234,7 @@ ctk_entry_move_forward_word (GtkEntry *entry,
 
 
 static gint
-ctk_entry_move_backward_word (GtkEntry *entry,
+ctk_entry_move_backward_word (CtkEntry *entry,
 			      gint      start,
                               gboolean  allow_whitespace)
 {
@@ -7267,9 +7267,9 @@ ctk_entry_move_backward_word (GtkEntry *entry,
 }
 
 static void
-ctk_entry_delete_whitespace (GtkEntry *entry)
+ctk_entry_delete_whitespace (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
   PangoLayout *layout = ctk_entry_ensure_layout (entry, FALSE);
   PangoLogAttr *log_attrs;
   gint n_attrs;
@@ -7293,9 +7293,9 @@ ctk_entry_delete_whitespace (GtkEntry *entry)
 
 
 static void
-ctk_entry_select_word (GtkEntry *entry)
+ctk_entry_select_word (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
   gint start_pos = ctk_entry_move_backward_word (entry, priv->current_pos, TRUE);
   gint end_pos = ctk_entry_move_forward_word (entry, priv->current_pos, TRUE);
 
@@ -7303,7 +7303,7 @@ ctk_entry_select_word (GtkEntry *entry)
 }
 
 static void
-ctk_entry_select_line (GtkEntry *entry)
+ctk_entry_select_line (CtkEntry *entry)
 {
   ctk_editable_select_region (CTK_EDITABLE (entry), 0, -1);
 }
@@ -7321,13 +7321,13 @@ truncate_multiline (const gchar *text)
 }
 
 static void
-paste_received (GtkClipboard *clipboard,
+paste_received (CtkClipboard *clipboard,
 		const gchar  *text,
 		gpointer      data)
 {
-  GtkEntry *entry = CTK_ENTRY (data);
-  GtkEditable *editable = CTK_EDITABLE (entry);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (data);
+  CtkEditable *editable = CTK_EDITABLE (entry);
+  CtkEntryPrivate *priv = entry->priv;
   guint button;
 
   button = ctk_gesture_single_get_current_button (CTK_GESTURE_SINGLE (priv->multipress_gesture));
@@ -7346,7 +7346,7 @@ paste_received (GtkClipboard *clipboard,
       gint pos, start, end;
       gint length = -1;
       gboolean popup_completion;
-      GtkEntryCompletion *completion;
+      CtkEntryCompletion *completion;
 
       completion = ctk_entry_get_completion (entry);
 
@@ -7384,7 +7384,7 @@ paste_received (GtkClipboard *clipboard,
 }
 
 static void
-ctk_entry_paste (GtkEntry *entry,
+ctk_entry_paste (CtkEntry *entry,
 		 GdkAtom   selection)
 {
   g_object_ref (entry);
@@ -7393,12 +7393,12 @@ ctk_entry_paste (GtkEntry *entry,
 }
 
 static void
-primary_get_cb (GtkClipboard     *clipboard,
-		GtkSelectionData *selection_data,
+primary_get_cb (CtkClipboard     *clipboard,
+		CtkSelectionData *selection_data,
 		guint             info,
 		gpointer          data)
 {
-  GtkEntry *entry = CTK_ENTRY (data);
+  CtkEntry *entry = CTK_ENTRY (data);
   gint start, end;
   
   if (ctk_editable_get_selection_bounds (CTK_EDITABLE (entry), &start, &end))
@@ -7410,21 +7410,21 @@ primary_get_cb (GtkClipboard     *clipboard,
 }
 
 static void
-primary_clear_cb (GtkClipboard *clipboard,
+primary_clear_cb (CtkClipboard *clipboard,
 		  gpointer      data)
 {
-  GtkEntry *entry = CTK_ENTRY (data);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (data);
+  CtkEntryPrivate *priv = entry->priv;
 
   ctk_editable_select_region (CTK_EDITABLE (entry), priv->current_pos, priv->current_pos);
 }
 
 static void
-ctk_entry_update_primary_selection (GtkEntry *entry)
+ctk_entry_update_primary_selection (CtkEntry *entry)
 {
-  GtkTargetList *list;
-  GtkTargetEntry *targets;
-  GtkClipboard *clipboard;
+  CtkTargetList *list;
+  CtkTargetEntry *targets;
+  CtkClipboard *clipboard;
   gint start, end;
   gint n_targets;
 
@@ -7454,13 +7454,13 @@ ctk_entry_update_primary_selection (GtkEntry *entry)
 }
 
 static void
-ctk_entry_clear_icon (GtkEntry             *entry,
-                      GtkEntryIconPosition  icon_pos)
+ctk_entry_clear_icon (CtkEntry             *entry,
+                      CtkEntryIconPosition  icon_pos)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
   EntryIconInfo *icon_info = priv->icons[icon_pos];
-  GtkIconHelper *icon_helper;
-  GtkImageType storage_type;
+  CtkIconHelper *icon_helper;
+  CtkImageType storage_type;
 
   if (icon_info == NULL)
     return;
@@ -7532,9 +7532,9 @@ ctk_entry_clear_icon (GtkEntry             *entry,
  *
  * Creates a new entry.
  *
- * Returns: a new #GtkEntry.
+ * Returns: a new #CtkEntry.
  */
-GtkWidget*
+CtkWidget*
 ctk_entry_new (void)
 {
   return g_object_new (CTK_TYPE_ENTRY, NULL);
@@ -7542,29 +7542,29 @@ ctk_entry_new (void)
 
 /**
  * ctk_entry_new_with_buffer:
- * @buffer: The buffer to use for the new #GtkEntry.
+ * @buffer: The buffer to use for the new #CtkEntry.
  *
  * Creates a new entry with the specified text buffer.
  *
- * Returns: a new #GtkEntry
+ * Returns: a new #CtkEntry
  *
  * Since: 2.18
  */
-GtkWidget*
-ctk_entry_new_with_buffer (GtkEntryBuffer *buffer)
+CtkWidget*
+ctk_entry_new_with_buffer (CtkEntryBuffer *buffer)
 {
   g_return_val_if_fail (CTK_IS_ENTRY_BUFFER (buffer), NULL);
   return g_object_new (CTK_TYPE_ENTRY, "buffer", buffer, NULL);
 }
 
-static GtkEntryBuffer*
-get_buffer (GtkEntry *entry)
+static CtkEntryBuffer*
+get_buffer (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   if (priv->buffer == NULL)
     {
-      GtkEntryBuffer *buffer;
+      CtkEntryBuffer *buffer;
       buffer = ctk_entry_buffer_new (NULL, 0);
       ctk_entry_set_buffer (entry, buffer);
       g_object_unref (buffer);
@@ -7575,17 +7575,17 @@ get_buffer (GtkEntry *entry)
 
 /**
  * ctk_entry_get_buffer:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  *
- * Get the #GtkEntryBuffer object which holds the text for
+ * Get the #CtkEntryBuffer object which holds the text for
  * this widget.
  *
  * Since: 2.18
  *
- * Returns: (transfer none): A #GtkEntryBuffer object.
+ * Returns: (transfer none): A #CtkEntryBuffer object.
  */
-GtkEntryBuffer*
-ctk_entry_get_buffer (GtkEntry *entry)
+CtkEntryBuffer*
+ctk_entry_get_buffer (CtkEntry *entry)
 {
   g_return_val_if_fail (CTK_IS_ENTRY (entry), NULL);
 
@@ -7594,19 +7594,19 @@ ctk_entry_get_buffer (GtkEntry *entry)
 
 /**
  * ctk_entry_set_buffer:
- * @entry: a #GtkEntry
- * @buffer: a #GtkEntryBuffer
+ * @entry: a #CtkEntry
+ * @buffer: a #CtkEntryBuffer
  *
- * Set the #GtkEntryBuffer object which holds the text for
+ * Set the #CtkEntryBuffer object which holds the text for
  * this widget.
  *
  * Since: 2.18
  */
 void
-ctk_entry_set_buffer (GtkEntry       *entry,
-                      GtkEntryBuffer *buffer)
+ctk_entry_set_buffer (CtkEntry       *entry,
+                      CtkEntryBuffer *buffer)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
   GObject *obj;
   gboolean had_buffer = FALSE;
 
@@ -7652,7 +7652,7 @@ ctk_entry_set_buffer (GtkEntry       *entry,
 
 /**
  * ctk_entry_get_text_area:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @text_area: (out): Return location for the text area.
  *
  * Gets the area where the entry’s text is drawn. This function is
@@ -7665,10 +7665,10 @@ ctk_entry_set_buffer (GtkEntry       *entry,
  * Since: 3.0
  **/
 void
-ctk_entry_get_text_area (GtkEntry     *entry,
+ctk_entry_get_text_area (CtkEntry     *entry,
                          GdkRectangle *text_area)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
 
   g_return_if_fail (CTK_IS_ENTRY (entry));
   g_return_if_fail (text_area != NULL);
@@ -7677,7 +7677,7 @@ ctk_entry_get_text_area (GtkEntry     *entry,
 
   if (ctk_widget_get_realized (CTK_WIDGET (entry)))
     {
-      GtkAllocation allocation;
+      CtkAllocation allocation;
 
       *text_area = priv->text_allocation;
 
@@ -7696,7 +7696,7 @@ ctk_entry_get_text_area (GtkEntry     *entry,
 
 /**
  * ctk_entry_set_text:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @text: the new text
  *
  * Sets the text in the widget to the given
@@ -7705,11 +7705,11 @@ ctk_entry_get_text_area (GtkEntry     *entry,
  * See ctk_entry_buffer_set_text().
  */
 void
-ctk_entry_set_text (GtkEntry    *entry,
+ctk_entry_set_text (CtkEntry    *entry,
 		    const gchar *text)
 {
   gint tmp_pos;
-  GtkEntryCompletion *completion;
+  CtkEntryCompletion *completion;
 
   g_return_if_fail (CTK_IS_ENTRY (entry));
   g_return_if_fail (text != NULL);
@@ -7736,7 +7736,7 @@ ctk_entry_set_text (GtkEntry    *entry,
 
 /**
  * ctk_entry_set_visibility:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @visible: %TRUE if the contents of the entry are displayed
  *           as plaintext
  *
@@ -7749,16 +7749,16 @@ ctk_entry_set_text (GtkEntry    *entry,
  * in the current font, but it can be changed with
  * ctk_entry_set_invisible_char().
  *
- * Note that you probably want to set #GtkEntry:input-purpose
+ * Note that you probably want to set #CtkEntry:input-purpose
  * to %CTK_INPUT_PURPOSE_PASSWORD or %CTK_INPUT_PURPOSE_PIN to
  * inform input methods about the purpose of this entry,
  * in addition to setting visibility to %FALSE.
  */
 void
-ctk_entry_set_visibility (GtkEntry *entry,
+ctk_entry_set_visibility (CtkEntry *entry,
 			  gboolean visible)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
 
   g_return_if_fail (CTK_IS_ENTRY (entry));
 
@@ -7777,7 +7777,7 @@ ctk_entry_set_visibility (GtkEntry *entry,
 
 /**
  * ctk_entry_get_visibility:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  *
  * Retrieves whether the text in @entry is visible. See
  * ctk_entry_set_visibility().
@@ -7785,7 +7785,7 @@ ctk_entry_set_visibility (GtkEntry *entry,
  * Returns: %TRUE if the text is currently visible
  **/
 gboolean
-ctk_entry_get_visibility (GtkEntry *entry)
+ctk_entry_get_visibility (CtkEntry *entry)
 {
   g_return_val_if_fail (CTK_IS_ENTRY (entry), FALSE);
 
@@ -7794,7 +7794,7 @@ ctk_entry_get_visibility (GtkEntry *entry)
 
 /**
  * ctk_entry_set_invisible_char:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @ch: a Unicode character
  * 
  * Sets the character to use in place of the actual text when
@@ -7806,10 +7806,10 @@ ctk_entry_get_visibility (GtkEntry *entry)
  * at all; there will be no text on the screen as they type.
  **/
 void
-ctk_entry_set_invisible_char (GtkEntry *entry,
+ctk_entry_set_invisible_char (CtkEntry *entry,
                               gunichar  ch)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
 
   g_return_if_fail (CTK_IS_ENTRY (entry));
 
@@ -7831,7 +7831,7 @@ ctk_entry_set_invisible_char (GtkEntry *entry,
 
 /**
  * ctk_entry_get_invisible_char:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  *
  * Retrieves the character displayed in place of the real characters
  * for entries with visibility set to false. See ctk_entry_set_invisible_char().
@@ -7840,7 +7840,7 @@ ctk_entry_set_invisible_char (GtkEntry *entry,
  *               show invisible text at all. 
  **/
 gunichar
-ctk_entry_get_invisible_char (GtkEntry *entry)
+ctk_entry_get_invisible_char (CtkEntry *entry)
 {
   g_return_val_if_fail (CTK_IS_ENTRY (entry), 0);
 
@@ -7849,7 +7849,7 @@ ctk_entry_get_invisible_char (GtkEntry *entry)
 
 /**
  * ctk_entry_unset_invisible_char:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  *
  * Unsets the invisible char previously set with
  * ctk_entry_set_invisible_char(). So that the
@@ -7858,9 +7858,9 @@ ctk_entry_get_invisible_char (GtkEntry *entry)
  * Since: 2.16
  **/
 void
-ctk_entry_unset_invisible_char (GtkEntry *entry)
+ctk_entry_unset_invisible_char (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
   gunichar ch;
 
   g_return_if_fail (CTK_IS_ENTRY (entry));
@@ -7885,18 +7885,18 @@ ctk_entry_unset_invisible_char (GtkEntry *entry)
 
 /**
  * ctk_entry_set_overwrite_mode:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @overwrite: new value
  *
- * Sets whether the text is overwritten when typing in the #GtkEntry.
+ * Sets whether the text is overwritten when typing in the #CtkEntry.
  *
  * Since: 2.14
  **/
 void
-ctk_entry_set_overwrite_mode (GtkEntry *entry,
+ctk_entry_set_overwrite_mode (CtkEntry *entry,
                               gboolean  overwrite)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   g_return_if_fail (CTK_IS_ENTRY (entry));
 
@@ -7910,7 +7910,7 @@ ctk_entry_set_overwrite_mode (GtkEntry *entry,
 
 /**
  * ctk_entry_get_overwrite_mode:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  *
  * Gets the value set by ctk_entry_set_overwrite_mode().
  *
@@ -7919,7 +7919,7 @@ ctk_entry_set_overwrite_mode (GtkEntry *entry,
  * Since: 2.14
  **/
 gboolean
-ctk_entry_get_overwrite_mode (GtkEntry *entry)
+ctk_entry_get_overwrite_mode (CtkEntry *entry)
 {
   g_return_val_if_fail (CTK_IS_ENTRY (entry), FALSE);
 
@@ -7928,12 +7928,12 @@ ctk_entry_get_overwrite_mode (GtkEntry *entry)
 
 /**
  * ctk_entry_get_text:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  *
  * Retrieves the contents of the entry widget.
  * See also ctk_editable_get_chars().
  *
- * This is equivalent to getting @entry's #GtkEntryBuffer and calling
+ * This is equivalent to getting @entry's #CtkEntryBuffer and calling
  * ctk_entry_buffer_get_text() on it.
  *
  * Returns: a pointer to the contents of the widget as a
@@ -7942,7 +7942,7 @@ ctk_entry_get_overwrite_mode (GtkEntry *entry)
  *      stored.
  **/
 const gchar*
-ctk_entry_get_text (GtkEntry *entry)
+ctk_entry_get_text (CtkEntry *entry)
 {
   g_return_val_if_fail (CTK_IS_ENTRY (entry), NULL);
 
@@ -7951,7 +7951,7 @@ ctk_entry_get_text (GtkEntry *entry)
 
 /**
  * ctk_entry_set_max_length:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @max: the maximum length of the entry, or 0 for no maximum.
  *   (other than the maximum length of entries.) The value passed in will
  *   be clamped to the range 0-65536.
@@ -7960,12 +7960,12 @@ ctk_entry_get_text (GtkEntry *entry)
  * the current contents are longer than the given length, then they
  * will be truncated to fit.
  *
- * This is equivalent to getting @entry's #GtkEntryBuffer and
+ * This is equivalent to getting @entry's #CtkEntryBuffer and
  * calling ctk_entry_buffer_set_max_length() on it.
  * ]|
  **/
 void
-ctk_entry_set_max_length (GtkEntry     *entry,
+ctk_entry_set_max_length (CtkEntry     *entry,
                           gint          max)
 {
   g_return_if_fail (CTK_IS_ENTRY (entry));
@@ -7974,19 +7974,19 @@ ctk_entry_set_max_length (GtkEntry     *entry,
 
 /**
  * ctk_entry_get_max_length:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  *
  * Retrieves the maximum allowed length of the text in
  * @entry. See ctk_entry_set_max_length().
  *
- * This is equivalent to getting @entry's #GtkEntryBuffer and
+ * This is equivalent to getting @entry's #CtkEntryBuffer and
  * calling ctk_entry_buffer_get_max_length() on it.
  *
  * Returns: the maximum allowed number of characters
- *               in #GtkEntry, or 0 if there is no maximum.
+ *               in #CtkEntry, or 0 if there is no maximum.
  **/
 gint
-ctk_entry_get_max_length (GtkEntry *entry)
+ctk_entry_get_max_length (CtkEntry *entry)
 {
   g_return_val_if_fail (CTK_IS_ENTRY (entry), 0);
 
@@ -7995,22 +7995,22 @@ ctk_entry_get_max_length (GtkEntry *entry)
 
 /**
  * ctk_entry_get_text_length:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  *
  * Retrieves the current length of the text in
  * @entry. 
  *
- * This is equivalent to getting @entry's #GtkEntryBuffer and
+ * This is equivalent to getting @entry's #CtkEntryBuffer and
  * calling ctk_entry_buffer_get_length() on it.
 
  *
  * Returns: the current number of characters
- *               in #GtkEntry, or 0 if there are none.
+ *               in #CtkEntry, or 0 if there are none.
  *
  * Since: 2.14
  **/
 guint16
-ctk_entry_get_text_length (GtkEntry *entry)
+ctk_entry_get_text_length (CtkEntry *entry)
 {
   g_return_val_if_fail (CTK_IS_ENTRY (entry), 0);
 
@@ -8019,7 +8019,7 @@ ctk_entry_get_text_length (GtkEntry *entry)
 
 /**
  * ctk_entry_set_activates_default:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @setting: %TRUE to activate window’s default widget on Enter keypress
  *
  * If @setting is %TRUE, pressing Enter in the @entry will activate the default
@@ -8029,13 +8029,13 @@ ctk_entry_get_text_length (GtkEntry *entry)
  *
  * (For experts: if @setting is %TRUE, the entry calls
  * ctk_window_activate_default() on the window containing the entry, in
- * the default handler for the #GtkEntry::activate signal.)
+ * the default handler for the #CtkEntry::activate signal.)
  **/
 void
-ctk_entry_set_activates_default (GtkEntry *entry,
+ctk_entry_set_activates_default (CtkEntry *entry,
                                  gboolean  setting)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
 
   g_return_if_fail (CTK_IS_ENTRY (entry));
 
@@ -8052,14 +8052,14 @@ ctk_entry_set_activates_default (GtkEntry *entry,
 
 /**
  * ctk_entry_get_activates_default:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  *
  * Retrieves the value set by ctk_entry_set_activates_default().
  *
  * Returns: %TRUE if the entry will activate the default widget
  */
 gboolean
-ctk_entry_get_activates_default (GtkEntry *entry)
+ctk_entry_get_activates_default (CtkEntry *entry)
 {
   g_return_val_if_fail (CTK_IS_ENTRY (entry), FALSE);
 
@@ -8068,7 +8068,7 @@ ctk_entry_get_activates_default (GtkEntry *entry)
 
 /**
  * ctk_entry_set_width_chars:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @n_chars: width in chars
  *
  * Changes the size request of the entry to be about the right size
@@ -8078,10 +8078,10 @@ ctk_entry_get_activates_default (GtkEntry *entry)
  * size reverts to the default entry size.
  **/
 void
-ctk_entry_set_width_chars (GtkEntry *entry,
+ctk_entry_set_width_chars (CtkEntry *entry,
                            gint      n_chars)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
 
   g_return_if_fail (CTK_IS_ENTRY (entry));
 
@@ -8097,14 +8097,14 @@ ctk_entry_set_width_chars (GtkEntry *entry,
 
 /**
  * ctk_entry_get_width_chars:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * 
  * Gets the value set by ctk_entry_set_width_chars().
  * 
  * Returns: number of chars to request space for, or negative if unset
  **/
 gint
-ctk_entry_get_width_chars (GtkEntry *entry)
+ctk_entry_get_width_chars (CtkEntry *entry)
 {
   g_return_val_if_fail (CTK_IS_ENTRY (entry), 0);
 
@@ -8113,7 +8113,7 @@ ctk_entry_get_width_chars (GtkEntry *entry)
 
 /**
  * ctk_entry_set_max_width_chars:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @n_chars: the new desired maximum width, in characters
  *
  * Sets the desired maximum width in characters of @entry.
@@ -8121,10 +8121,10 @@ ctk_entry_get_width_chars (GtkEntry *entry)
  * Since: 3.12
  */
 void
-ctk_entry_set_max_width_chars (GtkEntry *entry,
+ctk_entry_set_max_width_chars (CtkEntry *entry,
                                gint      n_chars)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
 
   g_return_if_fail (CTK_IS_ENTRY (entry));
 
@@ -8140,7 +8140,7 @@ ctk_entry_set_max_width_chars (GtkEntry *entry,
 
 /**
  * ctk_entry_get_max_width_chars:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  *
  * Retrieves the desired maximum width of @entry, in characters.
  * See ctk_entry_set_max_width_chars().
@@ -8150,7 +8150,7 @@ ctk_entry_set_max_width_chars (GtkEntry *entry,
  * Since: 3.12
  */
 gint
-ctk_entry_get_max_width_chars (GtkEntry *entry)
+ctk_entry_get_max_width_chars (CtkEntry *entry)
 {
   g_return_val_if_fail (CTK_IS_ENTRY (entry), 0);
 
@@ -8159,16 +8159,16 @@ ctk_entry_get_max_width_chars (GtkEntry *entry)
 
 /**
  * ctk_entry_set_has_frame:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @setting: new value
  * 
  * Sets whether the entry has a beveled frame around it.
  **/
 void
-ctk_entry_set_has_frame (GtkEntry *entry,
+ctk_entry_set_has_frame (CtkEntry *entry,
                          gboolean  setting)
 {
-  GtkStyleContext *context;
+  CtkStyleContext *context;
 
   g_return_if_fail (CTK_IS_ENTRY (entry));
 
@@ -8188,16 +8188,16 @@ ctk_entry_set_has_frame (GtkEntry *entry,
 
 /**
  * ctk_entry_get_has_frame:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * 
  * Gets the value set by ctk_entry_set_has_frame().
  * 
  * Returns: whether the entry has a beveled frame
  **/
 gboolean
-ctk_entry_get_has_frame (GtkEntry *entry)
+ctk_entry_get_has_frame (CtkEntry *entry)
 {
-  GtkStyleContext *context;
+  CtkStyleContext *context;
 
   g_return_val_if_fail (CTK_IS_ENTRY (entry), FALSE);
 
@@ -8208,8 +8208,8 @@ ctk_entry_get_has_frame (GtkEntry *entry)
 
 /**
  * ctk_entry_set_inner_border:
- * @entry: a #GtkEntry
- * @border: (allow-none): a #GtkBorder, or %NULL
+ * @entry: a #CtkEntry
+ * @border: (allow-none): a #CtkBorder, or %NULL
  *
  * Sets %entry’s inner-border property to @border, or clears it if %NULL
  * is passed. The inner-border is the area around the entry’s text, but
@@ -8223,12 +8223,12 @@ ctk_entry_get_has_frame (GtkEntry *entry)
  * Since: 2.10
  *
  * Deprecated: 3.4: Use the standard border and padding CSS properties (through
- *   objects like #GtkStyleContext and #GtkCssProvider); the value set with
- *   this function is ignored by #GtkEntry.
+ *   objects like #CtkStyleContext and #CtkCssProvider); the value set with
+ *   this function is ignored by #CtkEntry.
  **/
 void
-ctk_entry_set_inner_border (GtkEntry        *entry,
-                            const GtkBorder *border)
+ctk_entry_set_inner_border (CtkEntry        *entry,
+                            const CtkBorder *border)
 {
   g_return_if_fail (CTK_IS_ENTRY (entry));
 
@@ -8237,22 +8237,22 @@ ctk_entry_set_inner_border (GtkEntry        *entry,
 
 /**
  * ctk_entry_get_inner_border:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  *
- * This function returns the entry’s #GtkEntry:inner-border property. See
+ * This function returns the entry’s #CtkEntry:inner-border property. See
  * ctk_entry_set_inner_border() for more information.
  *
- * Returns: (nullable) (transfer none): the entry’s #GtkBorder, or
+ * Returns: (nullable) (transfer none): the entry’s #CtkBorder, or
  *   %NULL if none was set.
  *
  * Since: 2.10
  *
  * Deprecated: 3.4: Use the standard border and padding CSS properties (through
- *   objects like #GtkStyleContext and #GtkCssProvider); the value returned by
- *   this function is ignored by #GtkEntry.
+ *   objects like #CtkStyleContext and #CtkCssProvider); the value returned by
+ *   this function is ignored by #CtkEntry.
  **/
-const GtkBorder *
-ctk_entry_get_inner_border (GtkEntry *entry)
+const CtkBorder *
+ctk_entry_get_inner_border (CtkEntry *entry)
 {
   g_return_val_if_fail (CTK_IS_ENTRY (entry), NULL);
 
@@ -8261,7 +8261,7 @@ ctk_entry_get_inner_border (GtkEntry *entry)
 
 /**
  * ctk_entry_get_layout:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * 
  * Gets the #PangoLayout used to display the entry.
  * The layout is useful to e.g. convert text positions to
@@ -8277,7 +8277,7 @@ ctk_entry_get_inner_border (GtkEntry *entry)
  * Returns: (transfer none): the #PangoLayout for this entry
  **/
 PangoLayout*
-ctk_entry_get_layout (GtkEntry *entry)
+ctk_entry_get_layout (CtkEntry *entry)
 {
   PangoLayout *layout;
   
@@ -8291,7 +8291,7 @@ ctk_entry_get_layout (GtkEntry *entry)
 
 /**
  * ctk_entry_layout_index_to_text_index:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @layout_index: byte index into the entry layout text
  *
  * Converts from a position in the entry’s #PangoLayout (returned by
@@ -8301,10 +8301,10 @@ ctk_entry_get_layout (GtkEntry *entry)
  * Returns: byte index into the entry contents
  **/
 gint
-ctk_entry_layout_index_to_text_index (GtkEntry *entry,
+ctk_entry_layout_index_to_text_index (CtkEntry *entry,
                                       gint      layout_index)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
   PangoLayout *layout;
   const gchar *text;
   gint cursor_index;
@@ -8330,7 +8330,7 @@ ctk_entry_layout_index_to_text_index (GtkEntry *entry,
 
 /**
  * ctk_entry_text_index_to_layout_index:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @text_index: byte index into the entry contents
  *
  * Converts from a position in the entry contents (returned
@@ -8341,10 +8341,10 @@ ctk_entry_layout_index_to_text_index (GtkEntry *entry,
  * Returns: byte index into the entry layout text
  **/
 gint
-ctk_entry_text_index_to_layout_index (GtkEntry *entry,
+ctk_entry_text_index_to_layout_index (CtkEntry *entry,
                                       gint      text_index)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
   PangoLayout *layout;
   const gchar *text;
   gint cursor_index;
@@ -8365,7 +8365,7 @@ ctk_entry_text_index_to_layout_index (GtkEntry *entry,
 
 /**
  * ctk_entry_get_layout_offsets:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @x: (out) (allow-none): location to store X offset of layout, or %NULL
  * @y: (out) (allow-none): location to store Y offset of layout, or %NULL
  *
@@ -8391,12 +8391,12 @@ ctk_entry_text_index_to_layout_index (GtkEntry *entry,
  * indices in the layout to byte indices in the entry contents.
  **/
 void
-ctk_entry_get_layout_offsets (GtkEntry *entry,
+ctk_entry_get_layout_offsets (CtkEntry *entry,
                               gint     *x,
                               gint     *y)
 {
-  GtkEntryPrivate *priv;
-  GtkAllocation allocation;
+  CtkEntryPrivate *priv;
+  CtkAllocation allocation;
 
   g_return_if_fail (CTK_IS_ENTRY (entry));
 
@@ -8417,7 +8417,7 @@ ctk_entry_get_layout_offsets (GtkEntry *entry,
 
 /**
  * ctk_entry_set_alignment:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @xalign: The horizontal alignment, from 0 (left) to 1 (right).
  *          Reversed for RTL layouts
  * 
@@ -8428,9 +8428,9 @@ ctk_entry_get_layout_offsets (GtkEntry *entry,
  * Since: 2.4
  **/
 void
-ctk_entry_set_alignment (GtkEntry *entry, gfloat xalign)
+ctk_entry_set_alignment (CtkEntry *entry, gfloat xalign)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
 
   g_return_if_fail (CTK_IS_ENTRY (entry));
 
@@ -8451,7 +8451,7 @@ ctk_entry_set_alignment (GtkEntry *entry, gfloat xalign)
 
 /**
  * ctk_entry_get_alignment:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  *
  * Gets the value set by ctk_entry_set_alignment().
  *
@@ -8460,7 +8460,7 @@ ctk_entry_set_alignment (GtkEntry *entry, gfloat xalign)
  * Since: 2.4
  **/
 gfloat
-ctk_entry_get_alignment (GtkEntry *entry)
+ctk_entry_get_alignment (CtkEntry *entry)
 {
   g_return_val_if_fail (CTK_IS_ENTRY (entry), 0.0);
 
@@ -8469,7 +8469,7 @@ ctk_entry_get_alignment (GtkEntry *entry)
 
 /**
  * ctk_entry_set_icon_from_pixbuf:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @icon_pos: Icon position
  * @pixbuf: (allow-none): A #GdkPixbuf, or %NULL
  *
@@ -8480,11 +8480,11 @@ ctk_entry_get_alignment (GtkEntry *entry)
  * Since: 2.16
  */
 void
-ctk_entry_set_icon_from_pixbuf (GtkEntry             *entry,
-                                GtkEntryIconPosition  icon_pos,
+ctk_entry_set_icon_from_pixbuf (CtkEntry             *entry,
+                                CtkEntryIconPosition  icon_pos,
                                 GdkPixbuf            *pixbuf)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
   EntryIconInfo *icon_info;
 
   g_return_if_fail (CTK_IS_ENTRY (entry));
@@ -8533,7 +8533,7 @@ ctk_entry_set_icon_from_pixbuf (GtkEntry             *entry,
 
 /**
  * ctk_entry_set_icon_from_stock:
- * @entry: A #GtkEntry
+ * @entry: A #CtkEntry
  * @icon_pos: Icon position
  * @stock_id: (allow-none): The name of the stock item, or %NULL
  *
@@ -8547,11 +8547,11 @@ ctk_entry_set_icon_from_pixbuf (GtkEntry             *entry,
  * Deprecated: 3.10: Use ctk_entry_set_icon_from_icon_name() instead.
  */
 void
-ctk_entry_set_icon_from_stock (GtkEntry             *entry,
-                               GtkEntryIconPosition  icon_pos,
+ctk_entry_set_icon_from_stock (CtkEntry             *entry,
+                               CtkEntryIconPosition  icon_pos,
                                const gchar          *stock_id)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
   EntryIconInfo *icon_info;
 
   g_return_if_fail (CTK_IS_ENTRY (entry));
@@ -8593,7 +8593,7 @@ ctk_entry_set_icon_from_stock (GtkEntry             *entry,
 
 /**
  * ctk_entry_set_icon_from_icon_name:
- * @entry: A #GtkEntry
+ * @entry: A #CtkEntry
  * @icon_pos: The position at which to set the icon
  * @icon_name: (allow-none): An icon name, or %NULL
  *
@@ -8608,11 +8608,11 @@ ctk_entry_set_icon_from_stock (GtkEntry             *entry,
  * Since: 2.16
  */
 void
-ctk_entry_set_icon_from_icon_name (GtkEntry             *entry,
-                                   GtkEntryIconPosition  icon_pos,
+ctk_entry_set_icon_from_icon_name (CtkEntry             *entry,
+                                   CtkEntryIconPosition  icon_pos,
                                    const gchar          *icon_name)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
   EntryIconInfo *icon_info;
 
   g_return_if_fail (CTK_IS_ENTRY (entry));
@@ -8655,7 +8655,7 @@ ctk_entry_set_icon_from_icon_name (GtkEntry             *entry,
 
 /**
  * ctk_entry_set_icon_from_gicon:
- * @entry: A #GtkEntry
+ * @entry: A #CtkEntry
  * @icon_pos: The position at which to set the icon
  * @icon: (allow-none): The icon to set, or %NULL
  *
@@ -8669,11 +8669,11 @@ ctk_entry_set_icon_from_icon_name (GtkEntry             *entry,
  * Since: 2.16
  */
 void
-ctk_entry_set_icon_from_gicon (GtkEntry             *entry,
-                               GtkEntryIconPosition  icon_pos,
+ctk_entry_set_icon_from_gicon (CtkEntry             *entry,
+                               CtkEntryIconPosition  icon_pos,
                                GIcon                *icon)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
   EntryIconInfo *icon_info;
 
   g_return_if_fail (CTK_IS_ENTRY (entry));
@@ -8715,7 +8715,7 @@ ctk_entry_set_icon_from_gicon (GtkEntry             *entry,
 
 /**
  * ctk_entry_set_icon_activatable:
- * @entry: A #GtkEntry
+ * @entry: A #CtkEntry
  * @icon_pos: Icon position
  * @activatable: %TRUE if the icon should be activatable
  *
@@ -8724,11 +8724,11 @@ ctk_entry_set_icon_from_gicon (GtkEntry             *entry,
  * Since: 2.16
  */
 void
-ctk_entry_set_icon_activatable (GtkEntry             *entry,
-                                GtkEntryIconPosition  icon_pos,
+ctk_entry_set_icon_activatable (CtkEntry             *entry,
+                                CtkEntryIconPosition  icon_pos,
                                 gboolean              activatable)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
   EntryIconInfo *icon_info;
 
   g_return_if_fail (CTK_IS_ENTRY (entry));
@@ -8757,7 +8757,7 @@ ctk_entry_set_icon_activatable (GtkEntry             *entry,
 
 /**
  * ctk_entry_get_icon_activatable:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @icon_pos: Icon position
  *
  * Returns whether the icon is activatable.
@@ -8767,10 +8767,10 @@ ctk_entry_set_icon_activatable (GtkEntry             *entry,
  * Since: 2.16
  */
 gboolean
-ctk_entry_get_icon_activatable (GtkEntry             *entry,
-                                GtkEntryIconPosition  icon_pos)
+ctk_entry_get_icon_activatable (CtkEntry             *entry,
+                                CtkEntryIconPosition  icon_pos)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
   EntryIconInfo *icon_info;
 
   g_return_val_if_fail (CTK_IS_ENTRY (entry), FALSE);
@@ -8784,7 +8784,7 @@ ctk_entry_get_icon_activatable (GtkEntry             *entry,
 
 /**
  * ctk_entry_get_icon_pixbuf:
- * @entry: A #GtkEntry
+ * @entry: A #CtkEntry
  * @icon_pos: Icon position
  *
  * Retrieves the image used for the icon.
@@ -8799,10 +8799,10 @@ ctk_entry_get_icon_activatable (GtkEntry             *entry,
  * Since: 2.16
  */
 GdkPixbuf *
-ctk_entry_get_icon_pixbuf (GtkEntry             *entry,
-                           GtkEntryIconPosition  icon_pos)
+ctk_entry_get_icon_pixbuf (CtkEntry             *entry,
+                           CtkEntryIconPosition  icon_pos)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
   EntryIconInfo *icon_info;
   cairo_surface_t *surface;
   GdkPixbuf *pixbuf;
@@ -8841,7 +8841,7 @@ ctk_entry_get_icon_pixbuf (GtkEntry             *entry,
 
 /**
  * ctk_entry_get_icon_gicon:
- * @entry: A #GtkEntry
+ * @entry: A #CtkEntry
  * @icon_pos: Icon position
  *
  * Retrieves the #GIcon used for the icon, or %NULL if there is
@@ -8854,10 +8854,10 @@ ctk_entry_get_icon_pixbuf (GtkEntry             *entry,
  * Since: 2.16
  */
 GIcon *
-ctk_entry_get_icon_gicon (GtkEntry             *entry,
-                          GtkEntryIconPosition  icon_pos)
+ctk_entry_get_icon_gicon (CtkEntry             *entry,
+                          CtkEntryIconPosition  icon_pos)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
   EntryIconInfo *icon_info;
 
   g_return_val_if_fail (CTK_IS_ENTRY (entry), NULL);
@@ -8874,7 +8874,7 @@ ctk_entry_get_icon_gicon (GtkEntry             *entry,
 
 /**
  * ctk_entry_get_icon_stock:
- * @entry: A #GtkEntry
+ * @entry: A #CtkEntry
  * @icon_pos: Icon position
  *
  * Retrieves the stock id used for the icon, or %NULL if there is
@@ -8889,10 +8889,10 @@ ctk_entry_get_icon_gicon (GtkEntry             *entry,
  * Deprecated: 3.10: Use ctk_entry_get_icon_name() instead.
  */
 const gchar *
-ctk_entry_get_icon_stock (GtkEntry             *entry,
-                          GtkEntryIconPosition  icon_pos)
+ctk_entry_get_icon_stock (CtkEntry             *entry,
+                          CtkEntryIconPosition  icon_pos)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
   EntryIconInfo *icon_info;
 
   g_return_val_if_fail (CTK_IS_ENTRY (entry), NULL);
@@ -8909,7 +8909,7 @@ ctk_entry_get_icon_stock (GtkEntry             *entry,
 
 /**
  * ctk_entry_get_icon_name:
- * @entry: A #GtkEntry
+ * @entry: A #CtkEntry
  * @icon_pos: Icon position
  *
  * Retrieves the icon name used for the icon, or %NULL if there is
@@ -8922,10 +8922,10 @@ ctk_entry_get_icon_stock (GtkEntry             *entry,
  * Since: 2.16
  */
 const gchar *
-ctk_entry_get_icon_name (GtkEntry             *entry,
-                         GtkEntryIconPosition  icon_pos)
+ctk_entry_get_icon_name (CtkEntry             *entry,
+                         CtkEntryIconPosition  icon_pos)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
   EntryIconInfo *icon_info;
 
   g_return_val_if_fail (CTK_IS_ENTRY (entry), NULL);
@@ -8942,7 +8942,7 @@ ctk_entry_get_icon_name (GtkEntry             *entry,
 
 /**
  * ctk_entry_set_icon_sensitive:
- * @entry: A #GtkEntry
+ * @entry: A #CtkEntry
  * @icon_pos: Icon position
  * @sensitive: Specifies whether the icon should appear
  *             sensitive or insensitive
@@ -8952,11 +8952,11 @@ ctk_entry_get_icon_name (GtkEntry             *entry,
  * Since: 2.16
  */
 void
-ctk_entry_set_icon_sensitive (GtkEntry             *entry,
-                              GtkEntryIconPosition  icon_pos,
+ctk_entry_set_icon_sensitive (CtkEntry             *entry,
+                              CtkEntryIconPosition  icon_pos,
                               gboolean              sensitive)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
   EntryIconInfo *icon_info;
 
   g_return_if_fail (CTK_IS_ENTRY (entry));
@@ -8988,7 +8988,7 @@ ctk_entry_set_icon_sensitive (GtkEntry             *entry,
 
 /**
  * ctk_entry_get_icon_sensitive:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @icon_pos: Icon position
  *
  * Returns whether the icon appears sensitive or insensitive.
@@ -8998,10 +8998,10 @@ ctk_entry_set_icon_sensitive (GtkEntry             *entry,
  * Since: 2.16
  */
 gboolean
-ctk_entry_get_icon_sensitive (GtkEntry             *entry,
-                              GtkEntryIconPosition  icon_pos)
+ctk_entry_get_icon_sensitive (CtkEntry             *entry,
+                              CtkEntryIconPosition  icon_pos)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
   EntryIconInfo *icon_info;
 
   g_return_val_if_fail (CTK_IS_ENTRY (entry), TRUE);
@@ -9017,7 +9017,7 @@ ctk_entry_get_icon_sensitive (GtkEntry             *entry,
 
 /**
  * ctk_entry_get_icon_storage_type:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @icon_pos: Icon position
  *
  * Gets the type of representation being used by the icon
@@ -9028,11 +9028,11 @@ ctk_entry_get_icon_sensitive (GtkEntry             *entry,
  *
  * Since: 2.16
  **/
-GtkImageType
-ctk_entry_get_icon_storage_type (GtkEntry             *entry,
-                                 GtkEntryIconPosition  icon_pos)
+CtkImageType
+ctk_entry_get_icon_storage_type (CtkEntry             *entry,
+                                 CtkEntryIconPosition  icon_pos)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
   EntryIconInfo *icon_info;
 
   g_return_val_if_fail (CTK_IS_ENTRY (entry), CTK_IMAGE_EMPTY);
@@ -9050,14 +9050,14 @@ ctk_entry_get_icon_storage_type (GtkEntry             *entry,
 
 /**
  * ctk_entry_get_icon_at_pos:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @x: the x coordinate of the position to find
  * @y: the y coordinate of the position to find
  *
  * Finds the icon at the given position and return its index. The
  * position’s coordinates are relative to the @entry’s top left corner.
  * If @x, @y doesn’t lie inside an icon, -1 is returned.
- * This function is intended for use in a #GtkWidget::query-tooltip
+ * This function is intended for use in a #CtkWidget::query-tooltip
  * signal handler.
  *
  * Returns: the index of the icon at the given position, or -1
@@ -9065,11 +9065,11 @@ ctk_entry_get_icon_storage_type (GtkEntry             *entry,
  * Since: 2.16
  */
 gint
-ctk_entry_get_icon_at_pos (GtkEntry *entry,
+ctk_entry_get_icon_at_pos (CtkEntry *entry,
                            gint      x,
                            gint      y)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
   guint i;
 
   g_return_val_if_fail (CTK_IS_ENTRY (entry), -1);
@@ -9092,7 +9092,7 @@ ctk_entry_get_icon_at_pos (GtkEntry *entry,
 
 /**
  * ctk_entry_set_icon_drag_source:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @icon_pos: icon position
  * @target_list: the targets (data formats) in which the data can be provided
  * @actions: a bitmask of the allowed drag actions
@@ -9101,25 +9101,25 @@ ctk_entry_get_icon_at_pos (GtkEntry *entry,
  * operation when the user clicks and drags the icon.
  *
  * To handle the drag operation, you need to connect to the usual
- * #GtkWidget::drag-data-get (or possibly #GtkWidget::drag-data-delete)
+ * #CtkWidget::drag-data-get (or possibly #CtkWidget::drag-data-delete)
  * signal, and use ctk_entry_get_current_icon_drag_source() in
  * your signal handler to find out if the drag was started from
  * an icon.
  *
  * By default, GTK+ uses the icon as the drag icon. You can use the 
- * #GtkWidget::drag-begin signal to set a different icon. Note that you 
+ * #CtkWidget::drag-begin signal to set a different icon. Note that you 
  * have to use g_signal_connect_after() to ensure that your signal handler
  * gets executed after the default handler.
  *
  * Since: 2.16
  */
 void
-ctk_entry_set_icon_drag_source (GtkEntry             *entry,
-                                GtkEntryIconPosition  icon_pos,
-                                GtkTargetList        *target_list,
+ctk_entry_set_icon_drag_source (CtkEntry             *entry,
+                                CtkEntryIconPosition  icon_pos,
+                                CtkTargetList        *target_list,
                                 GdkDragAction         actions)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
   EntryIconInfo *icon_info;
 
   g_return_if_fail (CTK_IS_ENTRY (entry));
@@ -9141,12 +9141,12 @@ ctk_entry_set_icon_drag_source (GtkEntry             *entry,
 
 /**
  * ctk_entry_get_current_icon_drag_source:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  *
  * Returns the index of the icon which is the source of the current
  * DND operation, or -1.
  *
- * This function is meant to be used in a #GtkWidget::drag-data-get
+ * This function is meant to be used in a #CtkWidget::drag-data-get
  * callback.
  *
  * Returns: index of the icon which is the source of the current
@@ -9155,9 +9155,9 @@ ctk_entry_set_icon_drag_source (GtkEntry             *entry,
  * Since: 2.16
  */
 gint
-ctk_entry_get_current_icon_drag_source (GtkEntry *entry)
+ctk_entry_get_current_icon_drag_source (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
   EntryIconInfo *icon_info = NULL;
   gint i;
 
@@ -9179,7 +9179,7 @@ ctk_entry_get_current_icon_drag_source (GtkEntry *entry)
 
 /**
  * ctk_entry_get_icon_area:
- * @entry: A #GtkEntry
+ * @entry: A #CtkEntry
  * @icon_pos: Icon position
  * @icon_area: (out): Return location for the icon’s area
  *
@@ -9196,11 +9196,11 @@ ctk_entry_get_current_icon_drag_source (GtkEntry *entry)
  * Since: 3.0
  */
 void
-ctk_entry_get_icon_area (GtkEntry             *entry,
-                         GtkEntryIconPosition  icon_pos,
+ctk_entry_get_icon_area (CtkEntry             *entry,
+                         CtkEntryIconPosition  icon_pos,
                          GdkRectangle         *icon_area)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
   EntryIconInfo *icon_info;
 
   g_return_if_fail (CTK_IS_ENTRY (entry));
@@ -9212,7 +9212,7 @@ ctk_entry_get_icon_area (GtkEntry             *entry,
 
   if (icon_info)
     {
-      GtkAllocation widget_allocation;
+      CtkAllocation widget_allocation;
       ctk_widget_get_allocation (CTK_WIDGET (entry), &widget_allocation);
       ctk_css_gadget_get_border_allocation (icon_info->gadget, icon_area, NULL);
       icon_area->x -= widget_allocation.x;
@@ -9228,14 +9228,14 @@ ctk_entry_get_icon_area (GtkEntry             *entry,
 }
 
 static void
-ensure_has_tooltip (GtkEntry *entry)
+ensure_has_tooltip (CtkEntry *entry)
 {
   gchar *text = ctk_widget_get_tooltip_text (CTK_WIDGET (entry));
   gboolean has_tooltip = text != NULL;
 
   if (!has_tooltip)
     {
-      GtkEntryPrivate *priv = entry->priv;
+      CtkEntryPrivate *priv = entry->priv;
       int i;
 
       for (i = 0; i < MAX_ICONS; i++)
@@ -9259,7 +9259,7 @@ ensure_has_tooltip (GtkEntry *entry)
 
 /**
  * ctk_entry_get_icon_tooltip_text:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @icon_pos: the icon position
  *
  * Gets the contents of the tooltip on the icon at the specified 
@@ -9271,10 +9271,10 @@ ensure_has_tooltip (GtkEntry *entry)
  * Since: 2.16
  */
 gchar *
-ctk_entry_get_icon_tooltip_text (GtkEntry             *entry,
-                                 GtkEntryIconPosition  icon_pos)
+ctk_entry_get_icon_tooltip_text (CtkEntry             *entry,
+                                 CtkEntryIconPosition  icon_pos)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
   EntryIconInfo *icon_info;
   gchar *text = NULL;
 
@@ -9297,7 +9297,7 @@ ctk_entry_get_icon_tooltip_text (GtkEntry             *entry,
 
 /**
  * ctk_entry_set_icon_tooltip_text:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @icon_pos: the icon position
  * @tooltip: (allow-none): the contents of the tooltip for the icon, or %NULL
  *
@@ -9310,19 +9310,19 @@ ctk_entry_get_icon_tooltip_text (GtkEntry             *entry,
  * ctk_entry_set_icon_tooltip_markup().
  *
  * If you unset the widget tooltip via ctk_widget_set_tooltip_text() or
- * ctk_widget_set_tooltip_markup(), this sets GtkWidget:has-tooltip to %FALSE,
+ * ctk_widget_set_tooltip_markup(), this sets CtkWidget:has-tooltip to %FALSE,
  * which suppresses icon tooltips too. You can resolve this by then calling
- * ctk_widget_set_has_tooltip() to set GtkWidget:has-tooltip back to %TRUE, or
+ * ctk_widget_set_has_tooltip() to set CtkWidget:has-tooltip back to %TRUE, or
  * setting at least one non-empty tooltip on any icon achieves the same result.
  *
  * Since: 2.16
  */
 void
-ctk_entry_set_icon_tooltip_text (GtkEntry             *entry,
-                                 GtkEntryIconPosition  icon_pos,
+ctk_entry_set_icon_tooltip_text (CtkEntry             *entry,
+                                 CtkEntryIconPosition  icon_pos,
                                  const gchar          *tooltip)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
   EntryIconInfo *icon_info;
 
   g_return_if_fail (CTK_IS_ENTRY (entry));
@@ -9353,7 +9353,7 @@ ctk_entry_set_icon_tooltip_text (GtkEntry             *entry,
 
 /**
  * ctk_entry_get_icon_tooltip_markup:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @icon_pos: the icon position
  *
  * Gets the contents of the tooltip on the icon at the specified 
@@ -9365,10 +9365,10 @@ ctk_entry_set_icon_tooltip_text (GtkEntry             *entry,
  * Since: 2.16
  */
 gchar *
-ctk_entry_get_icon_tooltip_markup (GtkEntry             *entry,
-                                   GtkEntryIconPosition  icon_pos)
+ctk_entry_get_icon_tooltip_markup (CtkEntry             *entry,
+                                   CtkEntryIconPosition  icon_pos)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
   EntryIconInfo *icon_info;
 
   g_return_val_if_fail (CTK_IS_ENTRY (entry), NULL);
@@ -9386,7 +9386,7 @@ ctk_entry_get_icon_tooltip_markup (GtkEntry             *entry,
 
 /**
  * ctk_entry_set_icon_tooltip_markup:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @icon_pos: the icon position
  * @tooltip: (allow-none): the contents of the tooltip for the icon, or %NULL
  *
@@ -9402,11 +9402,11 @@ ctk_entry_get_icon_tooltip_markup (GtkEntry             *entry,
  * Since: 2.16
  */
 void
-ctk_entry_set_icon_tooltip_markup (GtkEntry             *entry,
-                                   GtkEntryIconPosition  icon_pos,
+ctk_entry_set_icon_tooltip_markup (CtkEntry             *entry,
+                                   CtkEntryIconPosition  icon_pos,
                                    const gchar          *tooltip)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
   EntryIconInfo *icon_info;
 
   g_return_if_fail (CTK_IS_ENTRY (entry));
@@ -9436,14 +9436,14 @@ ctk_entry_set_icon_tooltip_markup (GtkEntry             *entry,
 }
 
 static gboolean
-ctk_entry_query_tooltip (GtkWidget  *widget,
+ctk_entry_query_tooltip (CtkWidget  *widget,
                          gint        x,
                          gint        y,
                          gboolean    keyboard_tip,
-                         GtkTooltip *tooltip)
+                         CtkTooltip *tooltip)
 {
-  GtkEntry *entry;
-  GtkEntryPrivate *priv;
+  CtkEntry *entry;
+  CtkEntryPrivate *priv;
   EntryIconInfo *icon_info;
   gint icon_pos;
 
@@ -9478,8 +9478,8 @@ ctk_entry_query_tooltip (GtkWidget  *widget,
 /* Quick hack of a popup menu
  */
 static void
-activate_cb (GtkWidget *menuitem,
-	     GtkEntry  *entry)
+activate_cb (CtkWidget *menuitem,
+	     CtkEntry  *entry)
 {
   const gchar *signal;
 
@@ -9489,7 +9489,7 @@ activate_cb (GtkWidget *menuitem,
 
 
 static gboolean
-ctk_entry_mnemonic_activate (GtkWidget *widget,
+ctk_entry_mnemonic_activate (CtkWidget *widget,
 			     gboolean   group_cycling)
 {
   ctk_widget_grab_focus (widget);
@@ -9497,7 +9497,7 @@ ctk_entry_mnemonic_activate (GtkWidget *widget,
 }
 
 static void
-check_undo_icon_grab (GtkEntry      *entry,
+check_undo_icon_grab (CtkEntry      *entry,
                       EntryIconInfo *info)
 {
   if (!info->device ||
@@ -9510,10 +9510,10 @@ check_undo_icon_grab (GtkEntry      *entry,
 }
 
 static void
-ctk_entry_grab_notify (GtkWidget *widget,
+ctk_entry_grab_notify (CtkWidget *widget,
                        gboolean   was_grabbed)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
   gint i;
 
   priv = CTK_ENTRY (widget)->priv;
@@ -9526,13 +9526,13 @@ ctk_entry_grab_notify (GtkWidget *widget,
 }
 
 static void
-append_action_signal (GtkEntry     *entry,
-		      GtkWidget    *menu,
+append_action_signal (CtkEntry     *entry,
+		      CtkWidget    *menu,
 		      const gchar  *label,
 		      const gchar  *signal,
                       gboolean      sensitive)
 {
-  GtkWidget *menuitem = ctk_menu_item_new_with_mnemonic (label);
+  CtkWidget *menuitem = ctk_menu_item_new_with_mnemonic (label);
 
   g_object_set_qdata (G_OBJECT (menuitem), quark_ctk_signal, (char *)signal);
   g_signal_connect (menuitem, "activate",
@@ -9545,37 +9545,37 @@ append_action_signal (GtkEntry     *entry,
 }
 	
 static void
-popup_menu_detach (GtkWidget *attach_widget,
-		   GtkMenu   *menu)
+popup_menu_detach (CtkWidget *attach_widget,
+		   CtkMenu   *menu)
 {
-  GtkEntry *entry_attach = CTK_ENTRY (attach_widget);
-  GtkEntryPrivate *priv_attach = entry_attach->priv;
+  CtkEntry *entry_attach = CTK_ENTRY (attach_widget);
+  CtkEntryPrivate *priv_attach = entry_attach->priv;
 
   priv_attach->popup_menu = NULL;
 }
 
 typedef struct
 {
-  GtkEntry *entry;
+  CtkEntry *entry;
   GdkEvent *trigger_event;
 } PopupInfo;
 
 static void
-popup_targets_received (GtkClipboard     *clipboard,
-			GtkSelectionData *data,
+popup_targets_received (CtkClipboard     *clipboard,
+			CtkSelectionData *data,
 			gpointer          user_data)
 {
   PopupInfo *info = user_data;
-  GtkEntry *entry = info->entry;
-  GtkEntryPrivate *info_entry_priv = entry->priv;
+  CtkEntry *entry = info->entry;
+  CtkEntryPrivate *info_entry_priv = entry->priv;
   GdkRectangle rect = { 0, 0, 1, 0 };
 
   if (ctk_widget_get_realized (CTK_WIDGET (entry)))
     {
       DisplayMode mode;
       gboolean clipboard_contains_text;
-      GtkWidget *menu;
-      GtkWidget *menuitem;
+      CtkWidget *menu;
+      CtkWidget *menuitem;
 
       clipboard_contains_text = ctk_selection_data_targets_include_text (data);
       if (info_entry_priv->popup_menu)
@@ -9657,7 +9657,7 @@ popup_targets_received (GtkClipboard     *clipboard,
 }
 
 static void
-ctk_entry_do_popup (GtkEntry       *entry,
+ctk_entry_do_popup (CtkEntry       *entry,
                     const GdkEvent *event)
 {
   PopupInfo *info = g_slice_new (PopupInfo);
@@ -9676,20 +9676,20 @@ ctk_entry_do_popup (GtkEntry       *entry,
 }
 
 static gboolean
-ctk_entry_popup_menu (GtkWidget *widget)
+ctk_entry_popup_menu (CtkWidget *widget)
 {
   ctk_entry_do_popup (CTK_ENTRY (widget), NULL);
   return GDK_EVENT_STOP;
 }
 
 static void
-show_or_hide_handles (GtkWidget  *popover,
+show_or_hide_handles (CtkWidget  *popover,
                       GParamSpec *pspec,
-                      GtkEntry   *entry)
+                      CtkEntry   *entry)
 {
   gboolean visible;
-  GtkTextHandle *handle;
-  GtkTextHandleMode mode;
+  CtkTextHandle *handle;
+  CtkTextHandleMode mode;
 
   visible = ctk_widget_get_visible (popover);
 
@@ -9708,8 +9708,8 @@ show_or_hide_handles (GtkWidget  *popover,
 }
 
 static void
-activate_bubble_cb (GtkWidget *item,
-	            GtkEntry  *entry)
+activate_bubble_cb (CtkWidget *item,
+	            CtkEntry  *entry)
 {
   const gchar *signal;
 
@@ -9722,14 +9722,14 @@ activate_bubble_cb (GtkWidget *item,
 }
 
 static void
-append_bubble_action (GtkEntry     *entry,
-                      GtkWidget    *toolbar,
+append_bubble_action (CtkEntry     *entry,
+                      CtkWidget    *toolbar,
                       const gchar  *label,
                       const gchar  *icon_name,
                       const gchar  *signal,
                       gboolean      sensitive)
 {
-  GtkWidget *item, *image;
+  CtkWidget *item, *image;
 
   item = ctk_button_new ();
   ctk_widget_set_focus_on_click (item, FALSE);
@@ -9746,21 +9746,21 @@ append_bubble_action (GtkEntry     *entry,
 }
 
 static void
-bubble_targets_received (GtkClipboard     *clipboard,
-                         GtkSelectionData *data,
+bubble_targets_received (CtkClipboard     *clipboard,
+                         CtkSelectionData *data,
                          gpointer          user_data)
 {
-  GtkEntry *entry = user_data;
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = user_data;
+  CtkEntryPrivate *priv = entry->priv;
   cairo_rectangle_int_t rect;
-  GtkAllocation allocation;
+  CtkAllocation allocation;
   gint start_x, end_x;
   gboolean has_selection;
   gboolean has_clipboard;
   gboolean all_selected;
   DisplayMode mode;
-  GtkWidget *box;
-  GtkWidget *toolbar;
+  CtkWidget *box;
+  CtkWidget *toolbar;
   gint length, start, end;
 
   has_selection = ctk_editable_get_selection_bounds (CTK_EDITABLE (entry), &start, &end);
@@ -9847,7 +9847,7 @@ bubble_targets_received (GtkClipboard     *clipboard,
 static gboolean
 ctk_entry_selection_bubble_popup_show (gpointer user_data)
 {
-  GtkEntry *entry = user_data;
+  CtkEntry *entry = user_data;
 
   ctk_clipboard_request_contents (ctk_widget_get_clipboard (CTK_WIDGET (entry), GDK_SELECTION_CLIPBOARD),
                                   gdk_atom_intern_static_string ("TARGETS"),
@@ -9857,9 +9857,9 @@ ctk_entry_selection_bubble_popup_show (gpointer user_data)
 }
 
 static void
-ctk_entry_selection_bubble_popup_unset (GtkEntry *entry)
+ctk_entry_selection_bubble_popup_unset (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
 
   priv = entry->priv;
 
@@ -9874,9 +9874,9 @@ ctk_entry_selection_bubble_popup_unset (GtkEntry *entry)
 }
 
 static void
-ctk_entry_selection_bubble_popup_set (GtkEntry *entry)
+ctk_entry_selection_bubble_popup_set (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
 
   priv = entry->priv;
 
@@ -9889,11 +9889,11 @@ ctk_entry_selection_bubble_popup_set (GtkEntry *entry)
 }
 
 static void
-ctk_entry_drag_begin (GtkWidget      *widget,
+ctk_entry_drag_begin (CtkWidget      *widget,
                       GdkDragContext *context)
 {
-  GtkEntry *entry = CTK_ENTRY (widget);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntryPrivate *priv = entry->priv;
   gchar *text;
   gint i;
 
@@ -9937,11 +9937,11 @@ ctk_entry_drag_begin (GtkWidget      *widget,
 }
 
 static void
-ctk_entry_drag_end (GtkWidget      *widget,
+ctk_entry_drag_end (CtkWidget      *widget,
                     GdkDragContext *context)
 {
-  GtkEntry *entry = CTK_ENTRY (widget);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntryPrivate *priv = entry->priv;
   gint i;
 
   for (i = 0; i < MAX_ICONS; i++)
@@ -9954,12 +9954,12 @@ ctk_entry_drag_end (GtkWidget      *widget,
 }
 
 static void
-ctk_entry_drag_leave (GtkWidget        *widget,
+ctk_entry_drag_leave (CtkWidget        *widget,
 		      GdkDragContext   *context,
 		      guint             time)
 {
-  GtkEntry *entry = CTK_ENTRY (widget);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntryPrivate *priv = entry->priv;
 
   ctk_drag_unhighlight (widget);
   priv->dnd_position = -1;
@@ -9967,14 +9967,14 @@ ctk_entry_drag_leave (GtkWidget        *widget,
 }
 
 static gboolean
-ctk_entry_drag_drop  (GtkWidget        *widget,
+ctk_entry_drag_drop  (CtkWidget        *widget,
 		      GdkDragContext   *context,
 		      gint              x,
 		      gint              y,
 		      guint             time)
 {
-  GtkEntry *entry = CTK_ENTRY (widget);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntryPrivate *priv = entry->priv;
   GdkAtom target = GDK_NONE;
 
   if (priv->editable)
@@ -9989,15 +9989,15 @@ ctk_entry_drag_drop  (GtkWidget        *widget,
 }
 
 static gboolean
-ctk_entry_drag_motion (GtkWidget        *widget,
+ctk_entry_drag_motion (CtkWidget        *widget,
 		       GdkDragContext   *context,
 		       gint              x,
 		       gint              y,
 		       guint             time)
 {
-  GtkEntry *entry = CTK_ENTRY (widget);
-  GtkEntryPrivate *priv = entry->priv;
-  GtkWidget *source_widget;
+  CtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntryPrivate *priv = entry->priv;
+  CtkWidget *source_widget;
   GdkDragAction suggested_action;
   gint new_position, old_position;
   gint sel1, sel2;
@@ -10056,17 +10056,17 @@ ctk_entry_drag_motion (GtkWidget        *widget,
 }
 
 static void
-ctk_entry_drag_data_received (GtkWidget        *widget,
+ctk_entry_drag_data_received (CtkWidget        *widget,
 			      GdkDragContext   *context,
 			      gint              x,
 			      gint              y,
-			      GtkSelectionData *selection_data,
+			      CtkSelectionData *selection_data,
 			      guint             info,
 			      guint             time)
 {
-  GtkEntry *entry = CTK_ENTRY (widget);
-  GtkEntryPrivate *priv = entry->priv;
-  GtkEditable *editable = CTK_EDITABLE (widget);
+  CtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntryPrivate *priv = entry->priv;
+  CtkEditable *editable = CTK_EDITABLE (widget);
   gchar *str;
 
   str = (gchar *) ctk_selection_data_get_text (selection_data);
@@ -10108,15 +10108,15 @@ ctk_entry_drag_data_received (GtkWidget        *widget,
 }
 
 static void
-ctk_entry_drag_data_get (GtkWidget        *widget,
+ctk_entry_drag_data_get (CtkWidget        *widget,
 			 GdkDragContext   *context,
-			 GtkSelectionData *selection_data,
+			 CtkSelectionData *selection_data,
 			 guint             info,
 			 guint             time)
 {
-  GtkEntry *entry = CTK_ENTRY (widget);
-  GtkEntryPrivate *priv = entry->priv;
-  GtkEditable *editable = CTK_EDITABLE (widget);
+  CtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntryPrivate *priv = entry->priv;
+  CtkEditable *editable = CTK_EDITABLE (widget);
   gint sel_start, sel_end;
   gint i;
 
@@ -10144,12 +10144,12 @@ ctk_entry_drag_data_get (GtkWidget        *widget,
 }
 
 static void
-ctk_entry_drag_data_delete (GtkWidget      *widget,
+ctk_entry_drag_data_delete (CtkWidget      *widget,
 			    GdkDragContext *context)
 {
-  GtkEntry *entry = CTK_ENTRY (widget);
-  GtkEntryPrivate *priv = entry->priv;
-  GtkEditable *editable = CTK_EDITABLE (widget);
+  CtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntryPrivate *priv = entry->priv;
+  CtkEditable *editable = CTK_EDITABLE (widget);
   gint sel_start, sel_end;
   gint i;
 
@@ -10182,15 +10182,15 @@ ctk_entry_drag_data_delete (GtkWidget      *widget,
 #define CURSOR_DIVIDER 3
 
 static gboolean
-cursor_blinks (GtkEntry *entry)
+cursor_blinks (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   if (ctk_widget_has_focus (CTK_WIDGET (entry)) &&
       priv->editable &&
       priv->selection_bound == priv->current_pos)
     {
-      GtkSettings *settings;
+      CtkSettings *settings;
       gboolean blink;
 
       settings = ctk_widget_get_settings (CTK_WIDGET (entry));
@@ -10203,9 +10203,9 @@ cursor_blinks (GtkEntry *entry)
 }
 
 static gboolean
-get_middle_click_paste (GtkEntry *entry)
+get_middle_click_paste (CtkEntry *entry)
 {
-  GtkSettings *settings;
+  CtkSettings *settings;
   gboolean paste;
 
   settings = ctk_widget_get_settings (CTK_WIDGET (entry));
@@ -10215,9 +10215,9 @@ get_middle_click_paste (GtkEntry *entry)
 }
 
 static gint
-get_cursor_time (GtkEntry *entry)
+get_cursor_time (CtkEntry *entry)
 {
-  GtkSettings *settings = ctk_widget_get_settings (CTK_WIDGET (entry));
+  CtkSettings *settings = ctk_widget_get_settings (CTK_WIDGET (entry));
   gint time;
 
   g_object_get (settings, "ctk-cursor-blink-time", &time, NULL);
@@ -10226,9 +10226,9 @@ get_cursor_time (GtkEntry *entry)
 }
 
 static gint
-get_cursor_blink_timeout (GtkEntry *entry)
+get_cursor_blink_timeout (CtkEntry *entry)
 {
-  GtkSettings *settings = ctk_widget_get_settings (CTK_WIDGET (entry));
+  CtkSettings *settings = ctk_widget_get_settings (CTK_WIDGET (entry));
   gint timeout;
 
   g_object_get (settings, "ctk-cursor-blink-timeout", &timeout, NULL);
@@ -10237,10 +10237,10 @@ get_cursor_blink_timeout (GtkEntry *entry)
 }
 
 static void
-show_cursor (GtkEntry *entry)
+show_cursor (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
-  GtkWidget *widget;
+  CtkEntryPrivate *priv = entry->priv;
+  CtkWidget *widget;
 
   if (!priv->cursor_visible)
     {
@@ -10253,10 +10253,10 @@ show_cursor (GtkEntry *entry)
 }
 
 static void
-hide_cursor (GtkEntry *entry)
+hide_cursor (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
-  GtkWidget *widget;
+  CtkEntryPrivate *priv = entry->priv;
+  CtkWidget *widget;
 
   if (priv->cursor_visible)
     {
@@ -10274,8 +10274,8 @@ hide_cursor (GtkEntry *entry)
 static gint
 blink_cb (gpointer data)
 {
-  GtkEntry *entry;
-  GtkEntryPrivate *priv; 
+  CtkEntry *entry;
+  CtkEntryPrivate *priv; 
   gint blink_timeout;
 
   entry = CTK_ENTRY (data);
@@ -10283,7 +10283,7 @@ blink_cb (gpointer data)
  
   if (!ctk_widget_has_focus (CTK_WIDGET (entry)))
     {
-      g_warning ("GtkEntry - did not receive focus-out-event. If you\n"
+      g_warning ("CtkEntry - did not receive focus-out-event. If you\n"
 		 "connect a handler to this signal, it must return\n"
 		 "GDK_EVENT_PROPAGATE so the entry gets the event as well");
 
@@ -10324,9 +10324,9 @@ blink_cb (gpointer data)
 }
 
 static void
-ctk_entry_check_cursor_blink (GtkEntry *entry)
+ctk_entry_check_cursor_blink (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   if (cursor_blinks (entry))
     {
@@ -10352,9 +10352,9 @@ ctk_entry_check_cursor_blink (GtkEntry *entry)
 }
 
 static void
-ctk_entry_pend_cursor_blink (GtkEntry *entry)
+ctk_entry_pend_cursor_blink (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   if (cursor_blinks (entry))
     {
@@ -10370,30 +10370,30 @@ ctk_entry_pend_cursor_blink (GtkEntry *entry)
 }
 
 static void
-ctk_entry_reset_blink_time (GtkEntry *entry)
+ctk_entry_reset_blink_time (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   priv->blink_time = 0;
 }
 
 /**
  * ctk_entry_set_completion:
- * @entry: A #GtkEntry
- * @completion: (allow-none): The #GtkEntryCompletion or %NULL
+ * @entry: A #CtkEntry
+ * @completion: (allow-none): The #CtkEntryCompletion or %NULL
  *
  * Sets @completion to be the auxiliary completion object to use with @entry.
  * All further configuration of the completion mechanism is done on
- * @completion using the #GtkEntryCompletion API. Completion is disabled if
+ * @completion using the #CtkEntryCompletion API. Completion is disabled if
  * @completion is set to %NULL.
  *
  * Since: 2.4
  */
 void
-ctk_entry_set_completion (GtkEntry           *entry,
-                          GtkEntryCompletion *completion)
+ctk_entry_set_completion (CtkEntry           *entry,
+                          CtkEntryCompletion *completion)
 {
-  GtkEntryCompletion *old;
+  CtkEntryCompletion *old;
 
   g_return_if_fail (CTK_IS_ENTRY (entry));
   g_return_if_fail (!completion || CTK_IS_ENTRY_COMPLETION (completion));
@@ -10427,7 +10427,7 @@ ctk_entry_set_completion (GtkEntry           *entry,
 
 /**
  * ctk_entry_get_completion:
- * @entry: A #GtkEntry
+ * @entry: A #CtkEntry
  *
  * Returns the auxiliary completion object currently in use by @entry.
  *
@@ -10436,10 +10436,10 @@ ctk_entry_set_completion (GtkEntry           *entry,
  *
  * Since: 2.4
  */
-GtkEntryCompletion *
-ctk_entry_get_completion (GtkEntry *entry)
+CtkEntryCompletion *
+ctk_entry_get_completion (CtkEntry *entry)
 {
-  GtkEntryCompletion *completion;
+  CtkEntryCompletion *completion;
 
   g_return_val_if_fail (CTK_IS_ENTRY (entry), NULL);
 
@@ -10450,7 +10450,7 @@ ctk_entry_get_completion (GtkEntry *entry)
 
 /**
  * ctk_entry_set_cursor_hadjustment:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @adjustment: (nullable): an adjustment which should be adjusted when the cursor
  *              is moved, or %NULL
  *
@@ -10465,8 +10465,8 @@ ctk_entry_get_completion (GtkEntry *entry)
  * Since: 2.12
  */
 void
-ctk_entry_set_cursor_hadjustment (GtkEntry      *entry,
-                                  GtkAdjustment *adjustment)
+ctk_entry_set_cursor_hadjustment (CtkEntry      *entry,
+                                  CtkAdjustment *adjustment)
 {
   g_return_if_fail (CTK_IS_ENTRY (entry));
   if (adjustment)
@@ -10483,7 +10483,7 @@ ctk_entry_set_cursor_hadjustment (GtkEntry      *entry,
 
 /**
  * ctk_entry_get_cursor_hadjustment:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  *
  * Retrieves the horizontal cursor adjustment for the entry. 
  * See ctk_entry_set_cursor_hadjustment().
@@ -10493,8 +10493,8 @@ ctk_entry_set_cursor_hadjustment (GtkEntry      *entry,
  *
  * Since: 2.12
  */
-GtkAdjustment*
-ctk_entry_get_cursor_hadjustment (GtkEntry *entry)
+CtkAdjustment*
+ctk_entry_get_cursor_hadjustment (CtkEntry *entry)
 {
   g_return_val_if_fail (CTK_IS_ENTRY (entry), NULL);
 
@@ -10502,12 +10502,12 @@ ctk_entry_get_cursor_hadjustment (GtkEntry *entry)
 }
 
 static gboolean
-tick_cb (GtkWidget     *widget,
+tick_cb (CtkWidget     *widget,
          GdkFrameClock *frame_clock,
          gpointer       user_data)
 {
-  GtkEntry *entry = CTK_ENTRY (widget);
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntryPrivate *priv = entry->priv;
   gint64 frame_time;
   gdouble iteration, pulse_iterations, current_iterations, fraction;
 
@@ -10561,9 +10561,9 @@ tick_cb (GtkWidget     *widget,
 }
 
 static void
-ctk_entry_ensure_progress_gadget (GtkEntry *entry)
+ctk_entry_ensure_progress_gadget (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   if (priv->progress_gadget)
     return;
@@ -10584,9 +10584,9 @@ ctk_entry_ensure_progress_gadget (GtkEntry *entry)
 }
 
 static void
-ctk_entry_start_pulse_mode (GtkEntry *entry)
+ctk_entry_start_pulse_mode (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   if (priv->progress_pulse_mode)
     return;
@@ -10611,9 +10611,9 @@ ctk_entry_start_pulse_mode (GtkEntry *entry)
 }
 
 static void
-ctk_entry_stop_pulse_mode (GtkEntry *entry)
+ctk_entry_stop_pulse_mode (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   if (priv->progress_pulse_mode)
     {
@@ -10627,9 +10627,9 @@ ctk_entry_stop_pulse_mode (GtkEntry *entry)
 }
 
 static void
-ctk_entry_update_pulse (GtkEntry *entry)
+ctk_entry_update_pulse (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
   gint64 pulse_time = g_get_monotonic_time ();
 
   if (priv->pulse2 == pulse_time)
@@ -10641,7 +10641,7 @@ ctk_entry_update_pulse (GtkEntry *entry)
 
 /**
  * ctk_entry_set_progress_fraction:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @fraction: fraction of the task that’s been completed
  *
  * Causes the entry’s progress indicator to “fill in” the given
@@ -10651,11 +10651,11 @@ ctk_entry_update_pulse (GtkEntry *entry)
  * Since: 2.16
  */
 void
-ctk_entry_set_progress_fraction (GtkEntry *entry,
+ctk_entry_set_progress_fraction (CtkEntry *entry,
                                  gdouble   fraction)
 {
-  GtkWidget       *widget;
-  GtkEntryPrivate *private;
+  CtkWidget       *widget;
+  CtkEntryPrivate *private;
   gdouble          old_fraction;
 
   g_return_if_fail (CTK_IS_ENTRY (entry));
@@ -10687,7 +10687,7 @@ ctk_entry_set_progress_fraction (GtkEntry *entry,
 
 /**
  * ctk_entry_get_progress_fraction:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  *
  * Returns the current fraction of the task that’s been completed.
  * See ctk_entry_set_progress_fraction().
@@ -10697,7 +10697,7 @@ ctk_entry_set_progress_fraction (GtkEntry *entry,
  * Since: 2.16
  */
 gdouble
-ctk_entry_get_progress_fraction (GtkEntry *entry)
+ctk_entry_get_progress_fraction (CtkEntry *entry)
 {
   g_return_val_if_fail (CTK_IS_ENTRY (entry), 0.0);
 
@@ -10706,7 +10706,7 @@ ctk_entry_get_progress_fraction (GtkEntry *entry)
 
 /**
  * ctk_entry_set_progress_pulse_step:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @fraction: fraction between 0.0 and 1.0
  *
  * Sets the fraction of total entry width to move the progress
@@ -10715,10 +10715,10 @@ ctk_entry_get_progress_fraction (GtkEntry *entry)
  * Since: 2.16
  */
 void
-ctk_entry_set_progress_pulse_step (GtkEntry *entry,
+ctk_entry_set_progress_pulse_step (CtkEntry *entry,
                                    gdouble   fraction)
 {
-  GtkEntryPrivate *private;
+  CtkEntryPrivate *private;
 
   g_return_if_fail (CTK_IS_ENTRY (entry));
 
@@ -10735,7 +10735,7 @@ ctk_entry_set_progress_pulse_step (GtkEntry *entry,
 
 /**
  * ctk_entry_get_progress_pulse_step:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  *
  * Retrieves the pulse step set with ctk_entry_set_progress_pulse_step().
  *
@@ -10744,7 +10744,7 @@ ctk_entry_set_progress_pulse_step (GtkEntry *entry,
  * Since: 2.16
  */
 gdouble
-ctk_entry_get_progress_pulse_step (GtkEntry *entry)
+ctk_entry_get_progress_pulse_step (CtkEntry *entry)
 {
   g_return_val_if_fail (CTK_IS_ENTRY (entry), 0.0);
 
@@ -10753,7 +10753,7 @@ ctk_entry_get_progress_pulse_step (GtkEntry *entry)
 
 /**
  * ctk_entry_progress_pulse:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  *
  * Indicates that some progress is made, but you don’t know how much.
  * Causes the entry’s progress indicator to enter “activity mode,”
@@ -10765,7 +10765,7 @@ ctk_entry_get_progress_pulse_step (GtkEntry *entry)
  * Since: 2.16
  */
 void
-ctk_entry_progress_pulse (GtkEntry *entry)
+ctk_entry_progress_pulse (CtkEntry *entry)
 {
   g_return_if_fail (CTK_IS_ENTRY (entry));
 
@@ -10775,12 +10775,12 @@ ctk_entry_progress_pulse (GtkEntry *entry)
 
 /**
  * ctk_entry_set_placeholder_text:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @text: (nullable): a string to be displayed when @entry is empty and unfocused, or %NULL
  *
  * Sets text to be displayed in @entry when it is empty and unfocused.
  * This can be used to give a visual hint of the expected contents of
- * the #GtkEntry.
+ * the #CtkEntry.
  *
  * Note that since the placeholder text gets removed when the entry
  * received focus, using this feature is a bit problematic if the entry
@@ -10791,10 +10791,10 @@ ctk_entry_progress_pulse (GtkEntry *entry)
  * Since: 3.2
  **/
 void
-ctk_entry_set_placeholder_text (GtkEntry    *entry,
+ctk_entry_set_placeholder_text (CtkEntry    *entry,
                                 const gchar *text)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
 
   g_return_if_fail (CTK_IS_ENTRY (entry));
 
@@ -10813,7 +10813,7 @@ ctk_entry_set_placeholder_text (GtkEntry    *entry,
 
 /**
  * ctk_entry_get_placeholder_text:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  *
  * Retrieves the text that will be displayed when @entry is empty and unfocused
  *
@@ -10823,9 +10823,9 @@ ctk_entry_set_placeholder_text (GtkEntry    *entry,
  * Since: 3.2
  **/
 const gchar *
-ctk_entry_get_placeholder_text (GtkEntry *entry)
+ctk_entry_get_placeholder_text (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_ENTRY (entry), NULL);
 
@@ -10837,10 +10837,10 @@ ctk_entry_get_placeholder_text (GtkEntry *entry)
 /* Caps Lock warning for password entries */
 
 static void
-show_capslock_feedback (GtkEntry    *entry,
+show_capslock_feedback (CtkEntry    *entry,
                         const gchar *text)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   if (ctk_entry_get_icon_storage_type (entry, CTK_ENTRY_ICON_SECONDARY) == CTK_IMAGE_EMPTY)
     {
@@ -10856,9 +10856,9 @@ show_capslock_feedback (GtkEntry    *entry,
 }
 
 static void
-remove_capslock_feedback (GtkEntry *entry)
+remove_capslock_feedback (CtkEntry *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   if (priv->caps_lock_warning_shown)
     {
@@ -10869,9 +10869,9 @@ remove_capslock_feedback (GtkEntry *entry)
 
 static void
 keymap_state_changed (GdkKeymap *keymap, 
-                      GtkEntry  *entry)
+                      CtkEntry  *entry)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
   char *text = NULL;
 
   if (ctk_entry_get_display_mode (entry) != DISPLAY_NORMAL && priv->caps_lock_warning)
@@ -10888,18 +10888,18 @@ keymap_state_changed (GdkKeymap *keymap,
 
 /**
  * ctk_entry_set_input_purpose:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @purpose: the purpose
  *
- * Sets the #GtkEntry:input-purpose property which
+ * Sets the #CtkEntry:input-purpose property which
  * can be used by on-screen keyboards and other input
  * methods to adjust their behaviour.
  *
  * Since: 3.6
  */
 void
-ctk_entry_set_input_purpose (GtkEntry        *entry,
-                             GtkInputPurpose  purpose)
+ctk_entry_set_input_purpose (CtkEntry        *entry,
+                             CtkInputPurpose  purpose)
 
 {
   g_return_if_fail (CTK_IS_ENTRY (entry));
@@ -10916,16 +10916,16 @@ ctk_entry_set_input_purpose (GtkEntry        *entry,
 
 /**
  * ctk_entry_get_input_purpose:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  *
- * Gets the value of the #GtkEntry:input-purpose property.
+ * Gets the value of the #CtkEntry:input-purpose property.
  *
  * Since: 3.6
  */
-GtkInputPurpose
-ctk_entry_get_input_purpose (GtkEntry *entry)
+CtkInputPurpose
+ctk_entry_get_input_purpose (CtkEntry *entry)
 {
-  GtkInputPurpose purpose;
+  CtkInputPurpose purpose;
 
   g_return_val_if_fail (CTK_IS_ENTRY (entry), CTK_INPUT_PURPOSE_FREE_FORM);
 
@@ -10938,17 +10938,17 @@ ctk_entry_get_input_purpose (GtkEntry *entry)
 
 /**
  * ctk_entry_set_input_hints:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @hints: the hints
  *
- * Sets the #GtkEntry:input-hints property, which
+ * Sets the #CtkEntry:input-hints property, which
  * allows input methods to fine-tune their behaviour.
  *
  * Since: 3.6
  */
 void
-ctk_entry_set_input_hints (GtkEntry      *entry,
-                           GtkInputHints  hints)
+ctk_entry_set_input_hints (CtkEntry      *entry,
+                           CtkInputHints  hints)
 
 {
   g_return_if_fail (CTK_IS_ENTRY (entry));
@@ -10965,16 +10965,16 @@ ctk_entry_set_input_hints (GtkEntry      *entry,
 
 /**
  * ctk_entry_get_input_hints:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  *
- * Gets the value of the #GtkEntry:input-hints property.
+ * Gets the value of the #CtkEntry:input-hints property.
  *
  * Since: 3.6
  */
-GtkInputHints
-ctk_entry_get_input_hints (GtkEntry *entry)
+CtkInputHints
+ctk_entry_get_input_hints (CtkEntry *entry)
 {
-  GtkInputHints hints;
+  CtkInputHints hints;
 
   g_return_val_if_fail (CTK_IS_ENTRY (entry), CTK_INPUT_HINT_NONE);
 
@@ -10987,7 +10987,7 @@ ctk_entry_get_input_hints (GtkEntry *entry)
 
 /**
  * ctk_entry_set_attributes:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @attrs: a #PangoAttrList
  *
  * Sets a #PangoAttrList; the attributes in the list are applied to the
@@ -10996,10 +10996,10 @@ ctk_entry_get_input_hints (GtkEntry *entry)
  * Since: 3.6
  */
 void
-ctk_entry_set_attributes (GtkEntry      *entry,
+ctk_entry_set_attributes (CtkEntry      *entry,
                           PangoAttrList *attrs)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
   g_return_if_fail (CTK_IS_ENTRY (entry));
 
   if (attrs)
@@ -11017,7 +11017,7 @@ ctk_entry_set_attributes (GtkEntry      *entry,
 
 /**
  * ctk_entry_get_attributes:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  *
  * Gets the attribute list that was set on the entry using
  * ctk_entry_set_attributes(), if any.
@@ -11028,7 +11028,7 @@ ctk_entry_set_attributes (GtkEntry      *entry,
  * Since: 3.6
  */
 PangoAttrList *
-ctk_entry_get_attributes (GtkEntry *entry)
+ctk_entry_get_attributes (CtkEntry *entry)
 {
   g_return_val_if_fail (CTK_IS_ENTRY (entry), NULL);
 
@@ -11037,7 +11037,7 @@ ctk_entry_get_attributes (GtkEntry *entry)
 
 /**
  * ctk_entry_set_tabs:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  * @tabs: a #PangoTabArray
  *
  * Sets a #PangoTabArray; the tabstops in the array are applied to the entry
@@ -11047,10 +11047,10 @@ ctk_entry_get_attributes (GtkEntry *entry)
  */
 
 void
-ctk_entry_set_tabs (GtkEntry      *entry,
+ctk_entry_set_tabs (CtkEntry      *entry,
                     PangoTabArray *tabs)
 {
-  GtkEntryPrivate *priv;
+  CtkEntryPrivate *priv;
   g_return_if_fail (CTK_IS_ENTRY (entry));
 
   priv = entry->priv;
@@ -11070,7 +11070,7 @@ ctk_entry_set_tabs (GtkEntry      *entry,
 
 /**
  * ctk_entry_get_tabs:
- * @entry: a #GtkEntry
+ * @entry: a #CtkEntry
  *
  * Gets the tabstops that were set on the entry using ctk_entry_set_tabs(), if
  * any.
@@ -11081,7 +11081,7 @@ ctk_entry_set_tabs (GtkEntry      *entry,
  */
 
 PangoTabArray *
-ctk_entry_get_tabs (GtkEntry *entry)
+ctk_entry_get_tabs (CtkEntry *entry)
 {
   g_return_val_if_fail (CTK_IS_ENTRY (entry), NULL);
 
@@ -11089,9 +11089,9 @@ ctk_entry_get_tabs (GtkEntry *entry)
 }
 
 static void
-ctk_entry_insert_emoji (GtkEntry *entry)
+ctk_entry_insert_emoji (CtkEntry *entry)
 {
-  GtkWidget *chooser;
+  CtkWidget *chooser;
   GdkRectangle rect;
 
   if (ctk_entry_get_input_hints (entry) & CTK_INPUT_HINT_NO_EMOJI)
@@ -11119,7 +11119,7 @@ ctk_entry_insert_emoji (GtkEntry *entry)
 }
 
 static void
-pick_emoji (GtkEntry *entry,
+pick_emoji (CtkEntry *entry,
             int       icon,
             GdkEvent *event,
             gpointer  data)
@@ -11129,10 +11129,10 @@ pick_emoji (GtkEntry *entry,
 }
 
 static void
-set_show_emoji_icon (GtkEntry *entry,
+set_show_emoji_icon (CtkEntry *entry,
                      gboolean  value)
 {
-  GtkEntryPrivate *priv = entry->priv;
+  CtkEntryPrivate *priv = entry->priv;
 
   if (priv->show_emoji_icon == value)
     return;
@@ -11177,10 +11177,10 @@ set_show_emoji_icon (GtkEntry *entry,
 }
 
 static void
-set_enable_emoji_completion (GtkEntry *entry,
+set_enable_emoji_completion (CtkEntry *entry,
                              gboolean  value)
 {
-  GtkEntryPrivate *priv = ctk_entry_get_instance_private (entry);
+  CtkEntryPrivate *priv = ctk_entry_get_instance_private (entry);
 
   if (priv->enable_emoji_completion == value)
     return;

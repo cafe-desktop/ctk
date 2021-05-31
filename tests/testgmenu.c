@@ -95,7 +95,7 @@ static GMenuModel *
 get_model (void)
 {
   GError *error = NULL;
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GMenuModel *menu, *section;
   float i;
 
@@ -192,10 +192,10 @@ get_group (void)
 /* The action treeview {{{1 */
 
 static void
-enabled_cell_func (GtkTreeViewColumn *column,
-                   GtkCellRenderer   *cell,
-                   GtkTreeModel      *model,
-                   GtkTreeIter       *iter,
+enabled_cell_func (CtkTreeViewColumn *column,
+                   CtkCellRenderer   *cell,
+                   CtkTreeModel      *model,
+                   CtkTreeIter       *iter,
                    gpointer           data)
 {
   GActionGroup *group = data;
@@ -210,10 +210,10 @@ enabled_cell_func (GtkTreeViewColumn *column,
 }
 
 static void
-state_cell_func (GtkTreeViewColumn *column,
-                 GtkCellRenderer   *cell,
-                 GtkTreeModel      *model,
-                 GtkTreeIter       *iter,
+state_cell_func (CtkTreeViewColumn *column,
+                 CtkCellRenderer   *cell,
+                 CtkTreeModel      *model,
+                 CtkTreeIter       *iter,
                  gpointer           data)
 {
   GActionGroup *group = data;
@@ -250,15 +250,15 @@ state_cell_func (GtkTreeViewColumn *column,
 }
 
 static void
-enabled_cell_toggled (GtkCellRendererToggle *cell,
+enabled_cell_toggled (CtkCellRendererToggle *cell,
                       const gchar           *path_str,
-                      GtkTreeModel          *model)
+                      CtkTreeModel          *model)
 {
   GActionGroup *group;
   GAction *action;
   gchar *name;
-  GtkTreePath *path;
-  GtkTreeIter iter;
+  CtkTreePath *path;
+  CtkTreeIter iter;
   gboolean enabled;
 
   group = g_object_get_data (G_OBJECT (model), "group");
@@ -277,15 +277,15 @@ enabled_cell_toggled (GtkCellRendererToggle *cell,
 }
 
 static void
-state_cell_toggled (GtkCellRendererToggle *cell,
+state_cell_toggled (CtkCellRendererToggle *cell,
                     const gchar           *path_str,
-                    GtkTreeModel          *model)
+                    CtkTreeModel          *model)
 {
   GActionGroup *group;
   GAction *action;
   gchar *name;
-  GtkTreePath *path;
-  GtkTreeIter iter;
+  CtkTreePath *path;
+  CtkTreeIter iter;
   GVariant *state;
 
   group = g_object_get_data (G_OBJECT (model), "group");
@@ -316,16 +316,16 @@ state_cell_toggled (GtkCellRendererToggle *cell,
 }
 
 static void
-state_cell_edited (GtkCellRendererCombo  *cell,
+state_cell_edited (CtkCellRendererCombo  *cell,
                    const gchar           *path_str,
                    const gchar           *new_text,
-                   GtkTreeModel          *model)
+                   CtkTreeModel          *model)
 {
   GActionGroup *group;
   GAction *action;
   gchar *name;
-  GtkTreePath *path;
-  GtkTreeIter iter;
+  CtkTreePath *path;
+  CtkTreeIter iter;
 
   group = g_object_get_data (G_OBJECT (model), "group");
   path = ctk_tree_path_new_from_string (path_str);
@@ -340,15 +340,15 @@ state_cell_edited (GtkCellRendererCombo  *cell,
   ctk_tree_path_free (path);
 }
 
-static GtkWidget *
+static CtkWidget *
 create_action_treeview (GActionGroup *group)
 {
-  GtkWidget *tv;
-  GtkListStore *store;
-  GtkListStore *values;
-  GtkTreeIter iter;
-  GtkTreeViewColumn *column;
-  GtkCellRenderer *cell;
+  CtkWidget *tv;
+  CtkListStore *store;
+  CtkListStore *values;
+  CtkTreeIter iter;
+  CtkTreeViewColumn *column;
+  CtkCellRenderer *cell;
   gchar **actions;
   gint i;
 
@@ -418,7 +418,7 @@ create_action_treeview (GActionGroup *group)
 /* Dynamic menu changes {{{1 */
 
 static void
-toggle_sumerian (GtkToggleButton *button, gpointer data)
+toggle_sumerian (CtkToggleButton *button, gpointer data)
 {
   GMenuModel *model;
   gboolean adding;
@@ -437,20 +437,20 @@ toggle_sumerian (GtkToggleButton *button, gpointer data)
 }
 
 static void
-action_list_add (GtkTreeModel *store,
+action_list_add (CtkTreeModel *store,
                  const gchar  *action)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
   ctk_list_store_append (CTK_LIST_STORE (store), &iter);
   ctk_list_store_set (CTK_LIST_STORE (store), &iter, 0, action, -1);
 }
 
 static void
-action_list_remove (GtkTreeModel *store,
+action_list_remove (CtkTreeModel *store,
                     const gchar  *action)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   gchar *text;
 
   ctk_tree_model_get_iter_first (store, &iter);
@@ -467,15 +467,15 @@ action_list_remove (GtkTreeModel *store,
 }
 
 static void
-toggle_italic (GtkToggleButton *button, gpointer data)
+toggle_italic (CtkToggleButton *button, gpointer data)
 {
   GMenuModel *model;
   GActionGroup *group;
   GSimpleAction *action;
   gboolean adding;
   GMenuModel *m;
-  GtkTreeView *tv = data;
-  GtkTreeModel *store;
+  CtkTreeView *tv = data;
+  CtkTreeModel *store;
 
   model = g_object_get_data (G_OBJECT (button), "model");
   group = g_object_get_data (G_OBJECT (button), "group");
@@ -503,7 +503,7 @@ toggle_italic (GtkToggleButton *button, gpointer data)
 }
 
 static void
-toggle_speed (GtkToggleButton *button, gpointer data)
+toggle_speed (CtkToggleButton *button, gpointer data)
 {
   GMenuModel *model;
   GActionGroup *group;
@@ -511,8 +511,8 @@ toggle_speed (GtkToggleButton *button, gpointer data)
   gboolean adding;
   GMenuModel *m;
   GMenu *submenu;
-  GtkTreeView *tv = data;
-  GtkTreeModel *store;
+  CtkTreeView *tv = data;
+  CtkTreeModel *store;
 
   model = g_object_get_data (G_OBJECT (button), "model");
   group = g_object_get_data (G_OBJECT (button), "group");
@@ -553,13 +553,13 @@ toggle_speed (GtkToggleButton *button, gpointer data)
       g_menu_remove (G_MENU (m), g_menu_model_get_n_items (m) - 1);
     }
 }
-static GtkWidget *
+static CtkWidget *
 create_add_remove_buttons (GActionGroup *group,
                            GMenuModel   *model,
-                           GtkWidget    *treeview)
+                           CtkWidget    *treeview)
 {
-  GtkWidget *box;
-  GtkWidget *button;
+  CtkWidget *box;
+  CtkWidget *button;
 
   box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 6);
 
@@ -598,7 +598,7 @@ create_add_remove_buttons (GActionGroup *group,
 #define OBJ_PATH "/org/ctk/TestMenus"
 
 static gboolean
-on_delete_event (GtkWidget   *widget,
+on_delete_event (CtkWidget   *widget,
 		 GdkEvent    *event,
 		 gpointer     user_data)
 {
@@ -609,11 +609,11 @@ on_delete_event (GtkWidget   *widget,
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window;
-  GtkWidget *box;
-  GtkWidget *button;
-  GtkWidget *tv;
-  GtkWidget *buttons;
+  CtkWidget *window;
+  CtkWidget *box;
+  CtkWidget *button;
+  CtkWidget *tv;
+  CtkWidget *buttons;
   GMenuModel *model;
   GActionGroup *group;
   GDBusConnection *bus;

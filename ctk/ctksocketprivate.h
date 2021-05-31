@@ -28,7 +28,7 @@
 #include "ctkplug.h"
 #include "ctksocket.h"
 
-struct _GtkSocketPrivate
+struct _CtkSocketPrivate
 {
   gint resize_count;
 
@@ -38,7 +38,7 @@ struct _GtkSocketPrivate
   guint16 current_height;
 
   GdkWindow *plug_window;
-  GtkWidget *plug_widget;
+  CtkWidget *plug_widget;
 
   gshort xembed_version; /* -1 == not xembed */
   guint same_app  : 1;
@@ -48,14 +48,14 @@ struct _GtkSocketPrivate
   guint is_mapped : 1;
   guint active    : 1;
 
-  GtkAccelGroup *accel_group;
-  GtkWidget *toplevel;
+  CtkAccelGroup *accel_group;
+  CtkWidget *toplevel;
 };
 
 /* from ctkplug.c */
-void _ctk_plug_add_to_socket      (GtkPlug   *plug,
-				   GtkSocket *socket_);
-void _ctk_plug_remove_from_socket (GtkPlug   *plug,
-				   GtkSocket *socket_);
+void _ctk_plug_add_to_socket      (CtkPlug   *plug,
+				   CtkSocket *socket_);
+void _ctk_plug_remove_from_socket (CtkPlug   *plug,
+				   CtkSocket *socket_);
 
 #endif /* __CTK_SOCKET_PRIVATE_H__ */

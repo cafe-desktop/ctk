@@ -18,7 +18,7 @@
 #include <ctk/ctk.h>
 
 static void
-value_changed (GtkWidget *button,
+value_changed (CtkWidget *button,
                gdouble volume,
                gpointer user_data)
 {
@@ -26,8 +26,8 @@ value_changed (GtkWidget *button,
 }
 
 static void
-toggle_orientation (GtkWidget *button,
-                    GtkWidget *scalebutton)
+toggle_orientation (CtkWidget *button,
+                    CtkWidget *scalebutton)
 {
   if (ctk_orientable_get_orientation (CTK_ORIENTABLE (scalebutton)) ==
       CTK_ORIENTATION_HORIZONTAL)
@@ -43,7 +43,7 @@ toggle_orientation (GtkWidget *button,
 }
 
 static void
-response_cb (GtkDialog *dialog,
+response_cb (CtkDialog *dialog,
              gint       arg1,
              gpointer   user_data)
 {
@@ -53,8 +53,8 @@ response_cb (GtkDialog *dialog,
 static gboolean
 show_error (gpointer data)
 {
-  GtkWindow *window = (GtkWindow *) data;
-  GtkWidget *dialog;
+  CtkWindow *window = (CtkWindow *) data;
+  CtkWidget *dialog;
 
   g_message ("showing error");
 
@@ -75,12 +75,12 @@ int
 main (int    argc,
       char **argv)
 {
-  GtkWidget *window;
-  GtkWidget *button;
-  GtkWidget *button2;
-  GtkWidget *button3;
-  GtkWidget *box;
-  GtkWidget *vbox;
+  CtkWidget *window;
+  CtkWidget *button;
+  CtkWidget *button2;
+  CtkWidget *button3;
+  CtkWidget *box;
+  CtkWidget *vbox;
 
   ctk_init (&argc, &argv);
 

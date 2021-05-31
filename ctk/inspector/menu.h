@@ -21,30 +21,30 @@
 #include <ctk/ctkbox.h>
 
 #define CTK_TYPE_INSPECTOR_MENU            (ctk_inspector_menu_get_type())
-#define CTK_INSPECTOR_MENU(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_MENU, GtkInspectorMenu))
-#define CTK_INSPECTOR_MENU_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_MENU, GtkInspectorMenuClass))
+#define CTK_INSPECTOR_MENU(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_MENU, CtkInspectorMenu))
+#define CTK_INSPECTOR_MENU_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_MENU, CtkInspectorMenuClass))
 #define CTK_INSPECTOR_IS_MENU(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), CTK_TYPE_INSPECTOR_MENU))
 #define CTK_INSPECTOR_IS_MENU_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), CTK_TYPE_INSPECTOR_MENU))
-#define CTK_INSPECTOR_MENU_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_MENU, GtkInspectorMenuClass))
+#define CTK_INSPECTOR_MENU_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_MENU, CtkInspectorMenuClass))
 
 
-typedef struct _GtkInspectorMenuPrivate GtkInspectorMenuPrivate;
+typedef struct _CtkInspectorMenuPrivate CtkInspectorMenuPrivate;
 
-typedef struct _GtkInspectorMenu
+typedef struct _CtkInspectorMenu
 {
-  GtkBox parent;
-  GtkInspectorMenuPrivate *priv;
-} GtkInspectorMenu;
+  CtkBox parent;
+  CtkInspectorMenuPrivate *priv;
+} CtkInspectorMenu;
 
-typedef struct _GtkInspectorMenuClass
+typedef struct _CtkInspectorMenuClass
 {
-  GtkBoxClass parent;
-} GtkInspectorMenuClass;
+  CtkBoxClass parent;
+} CtkInspectorMenuClass;
 
 G_BEGIN_DECLS
 
 GType      ctk_inspector_menu_get_type   (void);
-void       ctk_inspector_menu_set_object (GtkInspectorMenu *sl,
+void       ctk_inspector_menu_set_object (CtkInspectorMenu *sl,
                                           GObject          *object);
 
 G_END_DECLS

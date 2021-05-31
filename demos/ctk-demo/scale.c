@@ -1,6 +1,6 @@
 /* Scale
  *
- * GtkScale is a way to select a value from a range.
+ * CtkScale is a way to select a value from a range.
  * Scales can have marks to help pick special values,
  * and they can also restrict the values that can be
  * chosen.
@@ -8,14 +8,14 @@
 
 #include <ctk/ctk.h>
 
-GtkWidget *
-do_scale (GtkWidget *do_widget)
+CtkWidget *
+do_scale (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkBuilder *builder;
+      CtkBuilder *builder;
 
       builder = ctk_builder_new_from_resource ("/scale/scale.ui");
       ctk_builder_connect_signals (builder, NULL);

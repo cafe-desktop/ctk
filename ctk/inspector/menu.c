@@ -34,31 +34,31 @@ enum
   COLUMN_ICON
 };
 
-struct _GtkInspectorMenuPrivate
+struct _CtkInspectorMenuPrivate
 {
-  GtkTreeStore *model;
+  CtkTreeStore *model;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorMenu, ctk_inspector_menu, CTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkInspectorMenu, ctk_inspector_menu, CTK_TYPE_BOX)
 
 static void
-ctk_inspector_menu_init (GtkInspectorMenu *sl)
+ctk_inspector_menu_init (CtkInspectorMenu *sl)
 {
   sl->priv = ctk_inspector_menu_get_instance_private (sl);
   ctk_widget_init_template (CTK_WIDGET (sl));
 }
 
-static void add_menu (GtkInspectorMenu *sl,
+static void add_menu (CtkInspectorMenu *sl,
                       GMenuModel       *menu,
-                      GtkTreeIter      *parent);
+                      CtkTreeIter      *parent);
 
 static void
-add_item (GtkInspectorMenu *sl,
+add_item (CtkInspectorMenu *sl,
           GMenuModel       *menu,
           gint              idx,
-          GtkTreeIter      *parent)
+          CtkTreeIter      *parent)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   GVariant *value;
   gchar *label = NULL;
   gchar *action = NULL;
@@ -109,9 +109,9 @@ add_item (GtkInspectorMenu *sl,
 }
 
 static void
-add_menu (GtkInspectorMenu *sl,
+add_menu (CtkInspectorMenu *sl,
           GMenuModel       *menu,
-          GtkTreeIter      *parent)
+          CtkTreeIter      *parent)
 {
   gint n_items;
   gint i;
@@ -124,7 +124,7 @@ add_menu (GtkInspectorMenu *sl,
 }
 
 void
-ctk_inspector_menu_set_object (GtkInspectorMenu *sl,
+ctk_inspector_menu_set_object (CtkInspectorMenu *sl,
                                GObject          *object)
 {
   ctk_widget_hide (CTK_WIDGET (sl));
@@ -135,12 +135,12 @@ ctk_inspector_menu_set_object (GtkInspectorMenu *sl,
 }
 
 static void
-ctk_inspector_menu_class_init (GtkInspectorMenuClass *klass)
+ctk_inspector_menu_class_init (CtkInspectorMenuClass *klass)
 {
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/menu.ui");
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMenu, model);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMenu, model);
 }
 
 // vim: set et sw=2 ts=2:

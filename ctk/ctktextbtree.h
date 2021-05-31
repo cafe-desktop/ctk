@@ -44,181 +44,181 @@
 
 G_BEGIN_DECLS
 
-GtkTextBTree  *_ctk_text_btree_new        (GtkTextTagTable *table,
-                                           GtkTextBuffer   *buffer);
-void           _ctk_text_btree_ref        (GtkTextBTree    *tree);
-void           _ctk_text_btree_unref      (GtkTextBTree    *tree);
-GtkTextBuffer *_ctk_text_btree_get_buffer (GtkTextBTree    *tree);
+CtkTextBTree  *_ctk_text_btree_new        (CtkTextTagTable *table,
+                                           CtkTextBuffer   *buffer);
+void           _ctk_text_btree_ref        (CtkTextBTree    *tree);
+void           _ctk_text_btree_unref      (CtkTextBTree    *tree);
+CtkTextBuffer *_ctk_text_btree_get_buffer (CtkTextBTree    *tree);
 
 
-guint _ctk_text_btree_get_chars_changed_stamp    (GtkTextBTree *tree);
-guint _ctk_text_btree_get_segments_changed_stamp (GtkTextBTree *tree);
-void  _ctk_text_btree_segments_changed           (GtkTextBTree *tree);
+guint _ctk_text_btree_get_chars_changed_stamp    (CtkTextBTree *tree);
+guint _ctk_text_btree_get_segments_changed_stamp (CtkTextBTree *tree);
+void  _ctk_text_btree_segments_changed           (CtkTextBTree *tree);
 
-gboolean _ctk_text_btree_is_end (GtkTextBTree       *tree,
-                                 GtkTextLine        *line,
-                                 GtkTextLineSegment *seg,
+gboolean _ctk_text_btree_is_end (CtkTextBTree       *tree,
+                                 CtkTextLine        *line,
+                                 CtkTextLineSegment *seg,
                                  int                 byte_index,
                                  int                 char_offset);
 
 /* Indexable segment mutation */
 
-void _ctk_text_btree_delete        (GtkTextIter *start,
-                                    GtkTextIter *end);
-void _ctk_text_btree_insert        (GtkTextIter *iter,
+void _ctk_text_btree_delete        (CtkTextIter *start,
+                                    CtkTextIter *end);
+void _ctk_text_btree_insert        (CtkTextIter *iter,
                                     const gchar *text,
                                     gint         len);
-void _ctk_text_btree_insert_pixbuf (GtkTextIter *iter,
+void _ctk_text_btree_insert_pixbuf (CtkTextIter *iter,
                                     GdkPixbuf   *pixbuf);
 
-void _ctk_text_btree_insert_child_anchor (GtkTextIter        *iter,
-                                          GtkTextChildAnchor *anchor);
+void _ctk_text_btree_insert_child_anchor (CtkTextIter        *iter,
+                                          CtkTextChildAnchor *anchor);
 
-void _ctk_text_btree_unregister_child_anchor (GtkTextChildAnchor *anchor);
+void _ctk_text_btree_unregister_child_anchor (CtkTextChildAnchor *anchor);
 
 /* View stuff */
-GtkTextLine *_ctk_text_btree_find_line_by_y    (GtkTextBTree      *tree,
+CtkTextLine *_ctk_text_btree_find_line_by_y    (CtkTextBTree      *tree,
                                                 gpointer           view_id,
                                                 gint               ypixel,
                                                 gint              *line_top_y);
-gint         _ctk_text_btree_find_line_top     (GtkTextBTree      *tree,
-                                                GtkTextLine       *line,
+gint         _ctk_text_btree_find_line_top     (CtkTextBTree      *tree,
+                                                CtkTextLine       *line,
                                                 gpointer           view_id);
-void         _ctk_text_btree_add_view          (GtkTextBTree      *tree,
-                                                GtkTextLayout     *layout);
-void         _ctk_text_btree_remove_view       (GtkTextBTree      *tree,
+void         _ctk_text_btree_add_view          (CtkTextBTree      *tree,
+                                                CtkTextLayout     *layout);
+void         _ctk_text_btree_remove_view       (CtkTextBTree      *tree,
                                                 gpointer           view_id);
-void         _ctk_text_btree_invalidate_region (GtkTextBTree      *tree,
-                                                const GtkTextIter *start,
-                                                const GtkTextIter *end,
+void         _ctk_text_btree_invalidate_region (CtkTextBTree      *tree,
+                                                const CtkTextIter *start,
+                                                const CtkTextIter *end,
                                                 gboolean           cursors_only);
-void         _ctk_text_btree_get_view_size     (GtkTextBTree      *tree,
+void         _ctk_text_btree_get_view_size     (CtkTextBTree      *tree,
                                                 gpointer           view_id,
                                                 gint              *width,
                                                 gint              *height);
-gboolean     _ctk_text_btree_is_valid          (GtkTextBTree      *tree,
+gboolean     _ctk_text_btree_is_valid          (CtkTextBTree      *tree,
                                                 gpointer           view_id);
-gboolean     _ctk_text_btree_validate          (GtkTextBTree      *tree,
+gboolean     _ctk_text_btree_validate          (CtkTextBTree      *tree,
                                                 gpointer           view_id,
                                                 gint               max_pixels,
                                                 gint              *y,
                                                 gint              *old_height,
                                                 gint              *new_height);
-void         _ctk_text_btree_validate_line     (GtkTextBTree      *tree,
-                                                GtkTextLine       *line,
+void         _ctk_text_btree_validate_line     (CtkTextBTree      *tree,
+                                                CtkTextLine       *line,
                                                 gpointer           view_id);
 
 /* Tag */
 
-void _ctk_text_btree_tag (const GtkTextIter *start,
-                          const GtkTextIter *end,
-                          GtkTextTag        *tag,
+void _ctk_text_btree_tag (const CtkTextIter *start,
+                          const CtkTextIter *end,
+                          CtkTextTag        *tag,
                           gboolean           apply);
 
 /* "Getters" */
 
-GtkTextLine * _ctk_text_btree_get_line          (GtkTextBTree      *tree,
+CtkTextLine * _ctk_text_btree_get_line          (CtkTextBTree      *tree,
                                                  gint               line_number,
                                                  gint              *real_line_number);
-GtkTextLine * _ctk_text_btree_get_line_no_last  (GtkTextBTree      *tree,
+CtkTextLine * _ctk_text_btree_get_line_no_last  (CtkTextBTree      *tree,
                                                  gint               line_number,
                                                  gint              *real_line_number);
-GtkTextLine * _ctk_text_btree_get_end_iter_line (GtkTextBTree      *tree);
-GtkTextLine * _ctk_text_btree_get_line_at_char  (GtkTextBTree      *tree,
+CtkTextLine * _ctk_text_btree_get_end_iter_line (CtkTextBTree      *tree);
+CtkTextLine * _ctk_text_btree_get_line_at_char  (CtkTextBTree      *tree,
                                                  gint               char_index,
                                                  gint              *line_start_index,
                                                  gint              *real_char_index);
-GtkTextTag**  _ctk_text_btree_get_tags          (const GtkTextIter *iter,
+CtkTextTag**  _ctk_text_btree_get_tags          (const CtkTextIter *iter,
                                                  gint              *num_tags);
-gchar        *_ctk_text_btree_get_text          (const GtkTextIter *start,
-                                                 const GtkTextIter *end,
+gchar        *_ctk_text_btree_get_text          (const CtkTextIter *start,
+                                                 const CtkTextIter *end,
                                                  gboolean           include_hidden,
                                                  gboolean           include_nonchars);
-gint          _ctk_text_btree_line_count        (GtkTextBTree      *tree);
-gint          _ctk_text_btree_char_count        (GtkTextBTree      *tree);
-gboolean      _ctk_text_btree_char_is_invisible (const GtkTextIter *iter);
+gint          _ctk_text_btree_line_count        (CtkTextBTree      *tree);
+gint          _ctk_text_btree_char_count        (CtkTextBTree      *tree);
+gboolean      _ctk_text_btree_char_is_invisible (const CtkTextIter *iter);
 
 
 
 /* Get iterators (these are implemented in ctktextiter.c) */
-void     _ctk_text_btree_get_iter_at_char         (GtkTextBTree       *tree,
-                                                   GtkTextIter        *iter,
+void     _ctk_text_btree_get_iter_at_char         (CtkTextBTree       *tree,
+                                                   CtkTextIter        *iter,
                                                    gint                char_index);
-void     _ctk_text_btree_get_iter_at_line_char    (GtkTextBTree       *tree,
-                                                   GtkTextIter        *iter,
+void     _ctk_text_btree_get_iter_at_line_char    (CtkTextBTree       *tree,
+                                                   CtkTextIter        *iter,
                                                    gint                line_number,
                                                    gint                char_index);
-void     _ctk_text_btree_get_iter_at_line_byte    (GtkTextBTree       *tree,
-                                                   GtkTextIter        *iter,
+void     _ctk_text_btree_get_iter_at_line_byte    (CtkTextBTree       *tree,
+                                                   CtkTextIter        *iter,
                                                    gint                line_number,
                                                    gint                byte_index);
-gboolean _ctk_text_btree_get_iter_from_string     (GtkTextBTree       *tree,
-                                                   GtkTextIter        *iter,
+gboolean _ctk_text_btree_get_iter_from_string     (CtkTextBTree       *tree,
+                                                   CtkTextIter        *iter,
                                                    const gchar        *string);
-gboolean _ctk_text_btree_get_iter_at_mark_name    (GtkTextBTree       *tree,
-                                                   GtkTextIter        *iter,
+gboolean _ctk_text_btree_get_iter_at_mark_name    (CtkTextBTree       *tree,
+                                                   CtkTextIter        *iter,
                                                    const gchar        *mark_name);
-void     _ctk_text_btree_get_iter_at_mark         (GtkTextBTree       *tree,
-                                                   GtkTextIter        *iter,
-                                                   GtkTextMark        *mark);
-void     _ctk_text_btree_get_end_iter             (GtkTextBTree       *tree,
-                                                   GtkTextIter        *iter);
-void     _ctk_text_btree_get_iter_at_line         (GtkTextBTree       *tree,
-                                                   GtkTextIter        *iter,
-                                                   GtkTextLine        *line,
+void     _ctk_text_btree_get_iter_at_mark         (CtkTextBTree       *tree,
+                                                   CtkTextIter        *iter,
+                                                   CtkTextMark        *mark);
+void     _ctk_text_btree_get_end_iter             (CtkTextBTree       *tree,
+                                                   CtkTextIter        *iter);
+void     _ctk_text_btree_get_iter_at_line         (CtkTextBTree       *tree,
+                                                   CtkTextIter        *iter,
+                                                   CtkTextLine        *line,
                                                    gint                byte_offset);
-gboolean _ctk_text_btree_get_iter_at_first_toggle (GtkTextBTree       *tree,
-                                                   GtkTextIter        *iter,
-                                                   GtkTextTag         *tag);
-gboolean _ctk_text_btree_get_iter_at_last_toggle  (GtkTextBTree       *tree,
-                                                   GtkTextIter        *iter,
-                                                   GtkTextTag         *tag);
+gboolean _ctk_text_btree_get_iter_at_first_toggle (CtkTextBTree       *tree,
+                                                   CtkTextIter        *iter,
+                                                   CtkTextTag         *tag);
+gboolean _ctk_text_btree_get_iter_at_last_toggle  (CtkTextBTree       *tree,
+                                                   CtkTextIter        *iter,
+                                                   CtkTextTag         *tag);
 
-void     _ctk_text_btree_get_iter_at_child_anchor  (GtkTextBTree       *tree,
-                                                    GtkTextIter        *iter,
-                                                    GtkTextChildAnchor *anchor);
+void     _ctk_text_btree_get_iter_at_child_anchor  (CtkTextBTree       *tree,
+                                                    CtkTextIter        *iter,
+                                                    CtkTextChildAnchor *anchor);
 
 
 
 /* Manipulate marks */
-GtkTextMark        *_ctk_text_btree_set_mark                (GtkTextBTree       *tree,
-                                                             GtkTextMark         *existing_mark,
+CtkTextMark        *_ctk_text_btree_set_mark                (CtkTextBTree       *tree,
+                                                             CtkTextMark         *existing_mark,
                                                              const gchar        *name,
                                                              gboolean            left_gravity,
-                                                             const GtkTextIter  *index,
+                                                             const CtkTextIter  *index,
                                                              gboolean           should_exist);
-void                _ctk_text_btree_remove_mark_by_name     (GtkTextBTree       *tree,
+void                _ctk_text_btree_remove_mark_by_name     (CtkTextBTree       *tree,
                                                              const gchar        *name);
-void                _ctk_text_btree_remove_mark             (GtkTextBTree       *tree,
-                                                             GtkTextMark        *segment);
-gboolean            _ctk_text_btree_get_selection_bounds    (GtkTextBTree       *tree,
-                                                             GtkTextIter        *start,
-                                                             GtkTextIter        *end);
-void                _ctk_text_btree_place_cursor            (GtkTextBTree       *tree,
-                                                             const GtkTextIter  *where);
-void                _ctk_text_btree_select_range            (GtkTextBTree       *tree,
-                                                             const GtkTextIter  *ins,
-							     const GtkTextIter  *bound);
-gboolean            _ctk_text_btree_mark_is_insert          (GtkTextBTree       *tree,
-                                                             GtkTextMark        *segment);
-gboolean            _ctk_text_btree_mark_is_selection_bound (GtkTextBTree       *tree,
-                                                             GtkTextMark        *segment);
-GtkTextMark        *_ctk_text_btree_get_insert		    (GtkTextBTree       *tree);
-GtkTextMark        *_ctk_text_btree_get_selection_bound	    (GtkTextBTree       *tree);
-GtkTextMark        *_ctk_text_btree_get_mark_by_name        (GtkTextBTree       *tree,
+void                _ctk_text_btree_remove_mark             (CtkTextBTree       *tree,
+                                                             CtkTextMark        *segment);
+gboolean            _ctk_text_btree_get_selection_bounds    (CtkTextBTree       *tree,
+                                                             CtkTextIter        *start,
+                                                             CtkTextIter        *end);
+void                _ctk_text_btree_place_cursor            (CtkTextBTree       *tree,
+                                                             const CtkTextIter  *where);
+void                _ctk_text_btree_select_range            (CtkTextBTree       *tree,
+                                                             const CtkTextIter  *ins,
+							     const CtkTextIter  *bound);
+gboolean            _ctk_text_btree_mark_is_insert          (CtkTextBTree       *tree,
+                                                             CtkTextMark        *segment);
+gboolean            _ctk_text_btree_mark_is_selection_bound (CtkTextBTree       *tree,
+                                                             CtkTextMark        *segment);
+CtkTextMark        *_ctk_text_btree_get_insert		    (CtkTextBTree       *tree);
+CtkTextMark        *_ctk_text_btree_get_selection_bound	    (CtkTextBTree       *tree);
+CtkTextMark        *_ctk_text_btree_get_mark_by_name        (CtkTextBTree       *tree,
                                                              const gchar        *name);
-GtkTextLine *       _ctk_text_btree_first_could_contain_tag (GtkTextBTree       *tree,
-                                                             GtkTextTag         *tag);
-GtkTextLine *       _ctk_text_btree_last_could_contain_tag  (GtkTextBTree       *tree,
-                                                             GtkTextTag         *tag);
+CtkTextLine *       _ctk_text_btree_first_could_contain_tag (CtkTextBTree       *tree,
+                                                             CtkTextTag         *tag);
+CtkTextLine *       _ctk_text_btree_last_could_contain_tag  (CtkTextBTree       *tree,
+                                                             CtkTextTag         *tag);
 
 /* Lines */
 
 /* Chunk of data associated with a line; views can use this to store
    info at the line. They should "subclass" the header struct here. */
-struct _GtkTextLineData {
+struct _CtkTextLineData {
   gpointer view_id;
-  GtkTextLineData *next;
+  CtkTextLineData *next;
   gint height;
   gint top_ink : 16;
   gint bottom_ink : 16;
@@ -233,113 +233,113 @@ struct _GtkTextLineData {
  * You can consider this line a "paragraph" also
  */
 
-struct _GtkTextLine {
-  GtkTextBTreeNode *parent;             /* Pointer to parent node containing
+struct _CtkTextLine {
+  CtkTextBTreeNode *parent;             /* Pointer to parent node containing
                                          * line. */
-  GtkTextLine *next;            /* Next in linked list of lines with
+  CtkTextLine *next;            /* Next in linked list of lines with
                                  * same parent node in B-tree.  NULL
                                  * means end of list. */
-  GtkTextLineSegment *segments; /* First in ordered list of segments
+  CtkTextLineSegment *segments; /* First in ordered list of segments
                                  * that make up the line. */
-  GtkTextLineData *views;      /* data stored here by views */
+  CtkTextLineData *views;      /* data stored here by views */
   guchar dir_strong;                /* BiDi algo dir of line */
   guchar dir_propagated_back;       /* BiDi algo dir of next line */
   guchar dir_propagated_forward;    /* BiDi algo dir of prev line */
 };
 
 
-gint                _ctk_text_line_get_number                 (GtkTextLine         *line);
-gboolean            _ctk_text_line_char_has_tag               (GtkTextLine         *line,
-                                                               GtkTextBTree        *tree,
+gint                _ctk_text_line_get_number                 (CtkTextLine         *line);
+gboolean            _ctk_text_line_char_has_tag               (CtkTextLine         *line,
+                                                               CtkTextBTree        *tree,
                                                                gint                 char_in_line,
-                                                               GtkTextTag          *tag);
-gboolean            _ctk_text_line_byte_has_tag               (GtkTextLine         *line,
-                                                               GtkTextBTree        *tree,
+                                                               CtkTextTag          *tag);
+gboolean            _ctk_text_line_byte_has_tag               (CtkTextLine         *line,
+                                                               CtkTextBTree        *tree,
                                                                gint                 byte_in_line,
-                                                               GtkTextTag          *tag);
-gboolean            _ctk_text_line_is_last                    (GtkTextLine         *line,
-                                                               GtkTextBTree        *tree);
-gboolean            _ctk_text_line_contains_end_iter          (GtkTextLine         *line,
-                                                               GtkTextBTree        *tree);
-GtkTextLine *       _ctk_text_line_next                       (GtkTextLine         *line);
-GtkTextLine *       _ctk_text_line_next_excluding_last        (GtkTextLine         *line);
-GtkTextLine *       _ctk_text_line_previous                   (GtkTextLine         *line);
-void                _ctk_text_line_add_data                   (GtkTextLine         *line,
-                                                               GtkTextLineData     *data);
-gpointer            _ctk_text_line_remove_data                (GtkTextLine         *line,
+                                                               CtkTextTag          *tag);
+gboolean            _ctk_text_line_is_last                    (CtkTextLine         *line,
+                                                               CtkTextBTree        *tree);
+gboolean            _ctk_text_line_contains_end_iter          (CtkTextLine         *line,
+                                                               CtkTextBTree        *tree);
+CtkTextLine *       _ctk_text_line_next                       (CtkTextLine         *line);
+CtkTextLine *       _ctk_text_line_next_excluding_last        (CtkTextLine         *line);
+CtkTextLine *       _ctk_text_line_previous                   (CtkTextLine         *line);
+void                _ctk_text_line_add_data                   (CtkTextLine         *line,
+                                                               CtkTextLineData     *data);
+gpointer            _ctk_text_line_remove_data                (CtkTextLine         *line,
                                                                gpointer             view_id);
-gpointer            _ctk_text_line_get_data                   (GtkTextLine         *line,
+gpointer            _ctk_text_line_get_data                   (CtkTextLine         *line,
                                                                gpointer             view_id);
-void                _ctk_text_line_invalidate_wrap            (GtkTextLine         *line,
-                                                               GtkTextLineData     *ld);
-gint                _ctk_text_line_char_count                 (GtkTextLine         *line);
-gint                _ctk_text_line_byte_count                 (GtkTextLine         *line);
-gint                _ctk_text_line_char_index                 (GtkTextLine         *line);
-GtkTextLineSegment *_ctk_text_line_byte_to_segment            (GtkTextLine         *line,
+void                _ctk_text_line_invalidate_wrap            (CtkTextLine         *line,
+                                                               CtkTextLineData     *ld);
+gint                _ctk_text_line_char_count                 (CtkTextLine         *line);
+gint                _ctk_text_line_byte_count                 (CtkTextLine         *line);
+gint                _ctk_text_line_char_index                 (CtkTextLine         *line);
+CtkTextLineSegment *_ctk_text_line_byte_to_segment            (CtkTextLine         *line,
                                                                gint                 byte_offset,
                                                                gint                *seg_offset);
-GtkTextLineSegment *_ctk_text_line_char_to_segment            (GtkTextLine         *line,
+CtkTextLineSegment *_ctk_text_line_char_to_segment            (CtkTextLine         *line,
                                                                gint                 char_offset,
                                                                gint                *seg_offset);
-gboolean            _ctk_text_line_byte_locate                (GtkTextLine         *line,
+gboolean            _ctk_text_line_byte_locate                (CtkTextLine         *line,
                                                                gint                 byte_offset,
-                                                               GtkTextLineSegment **segment,
-                                                               GtkTextLineSegment **any_segment,
+                                                               CtkTextLineSegment **segment,
+                                                               CtkTextLineSegment **any_segment,
                                                                gint                *seg_byte_offset,
                                                                gint                *line_byte_offset);
-gboolean            _ctk_text_line_char_locate                (GtkTextLine         *line,
+gboolean            _ctk_text_line_char_locate                (CtkTextLine         *line,
                                                                gint                 char_offset,
-                                                               GtkTextLineSegment **segment,
-                                                               GtkTextLineSegment **any_segment,
+                                                               CtkTextLineSegment **segment,
+                                                               CtkTextLineSegment **any_segment,
                                                                gint                *seg_char_offset,
                                                                gint                *line_char_offset);
-void                _ctk_text_line_byte_to_char_offsets       (GtkTextLine         *line,
+void                _ctk_text_line_byte_to_char_offsets       (CtkTextLine         *line,
                                                                gint                 byte_offset,
                                                                gint                *line_char_offset,
                                                                gint                *seg_char_offset);
-void                _ctk_text_line_char_to_byte_offsets       (GtkTextLine         *line,
+void                _ctk_text_line_char_to_byte_offsets       (CtkTextLine         *line,
                                                                gint                 char_offset,
                                                                gint                *line_byte_offset,
                                                                gint                *seg_byte_offset);
-GtkTextLineSegment *_ctk_text_line_byte_to_any_segment        (GtkTextLine         *line,
+CtkTextLineSegment *_ctk_text_line_byte_to_any_segment        (CtkTextLine         *line,
                                                                gint                 byte_offset,
                                                                gint                *seg_offset);
-GtkTextLineSegment *_ctk_text_line_char_to_any_segment        (GtkTextLine         *line,
+CtkTextLineSegment *_ctk_text_line_char_to_any_segment        (CtkTextLine         *line,
                                                                gint                 char_offset,
                                                                gint                *seg_offset);
-gint                _ctk_text_line_byte_to_char               (GtkTextLine         *line,
+gint                _ctk_text_line_byte_to_char               (CtkTextLine         *line,
                                                                gint                 byte_offset);
-gint                _ctk_text_line_char_to_byte               (GtkTextLine         *line,
+gint                _ctk_text_line_char_to_byte               (CtkTextLine         *line,
                                                                gint                 char_offset);
-GtkTextLine    *    _ctk_text_line_next_could_contain_tag     (GtkTextLine         *line,
-                                                               GtkTextBTree        *tree,
-                                                               GtkTextTag          *tag);
-GtkTextLine    *    _ctk_text_line_previous_could_contain_tag (GtkTextLine         *line,
-                                                               GtkTextBTree        *tree,
-                                                               GtkTextTag          *tag);
+CtkTextLine    *    _ctk_text_line_next_could_contain_tag     (CtkTextLine         *line,
+                                                               CtkTextBTree        *tree,
+                                                               CtkTextTag          *tag);
+CtkTextLine    *    _ctk_text_line_previous_could_contain_tag (CtkTextLine         *line,
+                                                               CtkTextBTree        *tree,
+                                                               CtkTextTag          *tag);
 
-GtkTextLineData    *_ctk_text_line_data_new                   (GtkTextLayout     *layout,
-                                                               GtkTextLine       *line);
+CtkTextLineData    *_ctk_text_line_data_new                   (CtkTextLayout     *layout,
+                                                               CtkTextLine       *line);
 
 /* Debug */
-void _ctk_text_btree_check (GtkTextBTree *tree);
-void _ctk_text_btree_spew (GtkTextBTree *tree);
+void _ctk_text_btree_check (CtkTextBTree *tree);
+void _ctk_text_btree_spew (CtkTextBTree *tree);
 extern gboolean _ctk_text_view_debug_btree;
 
 /* ignore, exported only for ctktextsegment.c */
-void _ctk_toggle_segment_check_func (GtkTextLineSegment *segPtr,
-                                     GtkTextLine        *line);
-void _ctk_change_node_toggle_count  (GtkTextBTreeNode   *node,
-                                     GtkTextTagInfo     *info,
+void _ctk_toggle_segment_check_func (CtkTextLineSegment *segPtr,
+                                     CtkTextLine        *line);
+void _ctk_change_node_toggle_count  (CtkTextBTreeNode   *node,
+                                     CtkTextTagInfo     *info,
                                      gint                delta);
 
 /* for ctktextmark.c */
-void _ctk_text_btree_release_mark_segment (GtkTextBTree       *tree,
-                                           GtkTextLineSegment *segment);
+void _ctk_text_btree_release_mark_segment (CtkTextBTree       *tree,
+                                           CtkTextLineSegment *segment);
 
 /* for coordination with the tag table */
-void _ctk_text_btree_notify_will_remove_tag (GtkTextBTree *tree,
-                                             GtkTextTag   *tag);
+void _ctk_text_btree_notify_will_remove_tag (CtkTextBTree *tree,
+                                             CtkTextTag   *tag);
 
 G_END_DECLS
 

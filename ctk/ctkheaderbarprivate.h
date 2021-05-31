@@ -22,10 +22,10 @@
 
 G_BEGIN_DECLS
 
-gboolean     _ctk_header_bar_shows_app_menu        (GtkHeaderBar *bar);
-void         _ctk_header_bar_update_window_buttons (GtkHeaderBar *bar);
-gboolean     _ctk_header_bar_update_window_icon    (GtkHeaderBar *bar,
-                                                    GtkWindow    *window);
+gboolean     _ctk_header_bar_shows_app_menu        (CtkHeaderBar *bar);
+void         _ctk_header_bar_update_window_buttons (CtkHeaderBar *bar);
+gboolean     _ctk_header_bar_update_window_icon    (CtkHeaderBar *bar,
+                                                    CtkWindow    *window);
 
 G_END_DECLS
 

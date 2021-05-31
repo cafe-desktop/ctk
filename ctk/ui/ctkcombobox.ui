@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="ctk30">
   <!-- interface-requires ctk+ 3.10 -->
-  <template class="GtkComboBox" parent="GtkBin">
+  <template class="CtkComboBox" parent="CtkBin">
     <child>
-      <object class="GtkBox" id="box">
+      <object class="CtkBox" id="box">
         <property name="visible">1</property>
         <style>
           <class name="linked"/>
         </style>
         <child>
-          <object class="GtkToggleButton" id="button">
+          <object class="CtkToggleButton" id="button">
             <property name="visible">1</property>
             <signal name="toggled" handler="ctk_combo_box_button_toggled" swapped="no"/>
             <child>
-              <object class="GtkBox">
+              <object class="CtkBox">
                 <property name="visible">1</property>
                 <child>
-                  <object class="GtkIcon" id="arrow">
+                  <object class="CtkIcon" id="arrow">
                     <property name="visible">1</property>
                     <property name="css-name">arrow</property>
                   </object>

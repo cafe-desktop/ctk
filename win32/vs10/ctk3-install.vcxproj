@@ -157,63 +157,63 @@
   <ItemGroup>
     <CustomBuild Include="..\..\config.h.win32">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Installing Build Results...</Message>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(GtkPCFiles)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(GtkDoInstallBin)$(GtkDoInstall)$(GtkPostInstall)</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(CtkPCFiles)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(CtkDoInstallBin)$(CtkDoInstall)$(CtkPostInstall)</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">blah;%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug_Broadway|Win32'">Installing Build Results...</Message>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug_Broadway|Win32'">$(GtkPCFiles)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug_Broadway|Win32'">$(GtkDoInstallBin)$(GtkDoInstall)$(GtkDoInstallBroadwayHeaders)$(GtkPostInstall)</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug_Broadway|Win32'">$(CtkPCFiles)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug_Broadway|Win32'">$(CtkDoInstallBin)$(CtkDoInstall)$(CtkDoInstallBroadwayHeaders)$(CtkPostInstall)</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug_Broadway|Win32'">blah;%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Installing Build Results...</Message>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(GtkPCFiles)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(GtkDoInstallBin)$(GtkDoInstall)$(GtkPostInstall)</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(CtkPCFiles)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(CtkDoInstallBin)$(CtkDoInstall)$(CtkPostInstall)</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">blah;%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug_Broadway|x64'">Installing Build Results...</Message>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug_Broadway|x64'">$(GtkPCFiles)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug_Broadway|x64'">$(GtkDoInstallBin)$(GtkDoInstall)$(GtkDoInstallBroadwayHeaders)$(GtkPostInstall)</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug_Broadway|x64'">$(CtkPCFiles)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug_Broadway|x64'">$(CtkDoInstallBin)$(CtkDoInstall)$(CtkDoInstallBroadwayHeaders)$(CtkPostInstall)</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug_Broadway|x64'">blah;%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Installing Build Results...</Message>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(GtkPCFiles)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(GtkDoInstallBin)$(GtkDoInstall)$(GtkPostInstall)</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(CtkPCFiles)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(CtkDoInstallBin)$(CtkDoInstall)$(CtkPostInstall)</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">blah;%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release_Broadway|Win32'">Installing Build Results...</Message>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release_Broadway|Win32'">$(GtkPCFiles)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release_Broadway|Win32'">$(GtkDoInstallBin)$(GtkDoInstall)$(GtkDoInstallBroadwayHeaders)$(GtkPostInstall)</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release_Broadway|Win32'">$(CtkPCFiles)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release_Broadway|Win32'">$(CtkDoInstallBin)$(CtkDoInstall)$(CtkDoInstallBroadwayHeaders)$(CtkPostInstall)</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release_Broadway|Win32'">blah;%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Installing Build Results...</Message>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(GtkPCFiles)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(GtkDoInstallBin)$(GtkDoInstall)$(GtkPostInstall)</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(CtkPCFiles)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(CtkDoInstallBin)$(CtkDoInstall)$(CtkPostInstall)</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">blah;%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release_Broadway|x64'">Installing Build Results...</Message>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release_Broadway|x64'">$(GtkPCFiles)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release_Broadway|x64'">$(GtkDoInstallBin)$(GtkDoInstall)$(GtkDoInstallBroadwayHeaders)$(GtkPostInstall)</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release_Broadway|x64'">$(CtkPCFiles)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release_Broadway|x64'">$(CtkDoInstallBin)$(CtkDoInstall)$(CtkDoInstallBroadwayHeaders)$(CtkPostInstall)</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release_Broadway|x64'">blah;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="..\ctkpc.py">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating .pc files...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(GenerateGtkPC)</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(GtkPCFiles);%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(GenerateCtkPC)</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(CtkPCFiles);%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug_Broadway|Win32'">Generating .pc files...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug_Broadway|Win32'">$(GenerateGtkPC) --broadway</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug_Broadway|Win32'">$(GtkPCFiles);%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug_Broadway|Win32'">$(GenerateCtkPC) --broadway</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug_Broadway|Win32'">$(CtkPCFiles);%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating .pc files...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(GenerateGtkPCX64)</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(GtkPCFiles);%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(GenerateCtkPCX64)</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(CtkPCFiles);%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug_Broadway|x64'">Generating .pc files...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug_Broadway|x64'">$(GenerateGtkPCX64) --broadway</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug_Broadway|x64'">$(GtkPCFiles);%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug_Broadway|x64'">$(GenerateCtkPCX64) --broadway</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug_Broadway|x64'">$(CtkPCFiles);%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating .pc files...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(GenerateGtkPC)</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(GtkPCFiles);%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(GenerateCtkPC)</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(CtkPCFiles);%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release_Broadway|Win32'">Generating .pc files...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release_Broadway|Win32'">$(GenerateGtkPC) --broadway</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release_Broadway|Win32'">$(GtkPCFiles);%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release_Broadway|Win32'">$(GenerateCtkPC) --broadway</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release_Broadway|Win32'">$(CtkPCFiles);%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating .pc files...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(GenerateGtkPCX64)</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(GtkPCFiles);%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(GenerateCtkPCX64)</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(CtkPCFiles);%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release_Broadway|x64'">Generating .pc files...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release_Broadway|x64'">$(GenerateGtkPCX64) --broadway</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release_Broadway|x64'">$(GtkPCFiles);%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release_Broadway|x64'">$(GenerateCtkPCX64) --broadway</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release_Broadway|x64'">$(CtkPCFiles);%(Outputs)</Outputs>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>

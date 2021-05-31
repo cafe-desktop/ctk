@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="ctk30">
   <!-- interface-requires ctk+ 3.10 -->
-  <template class="GtkTooltipWindow" parent="GtkWindow">
+  <template class="CtkTooltipWindow" parent="CtkWindow">
     <property name="resizable">0</property>
     <property name="type-hint">tooltip</property>
     <child>
-      <object class="GtkBox" id="box">
+      <object class="CtkBox" id="box">
         <property name="visible">1</property>
         <property name="spacing">6</property>
         <property name="margin-top">6</property>
@@ -13,7 +13,7 @@
         <property name="margin-start">6</property>
         <property name="margin-end">6</property>
         <child>
-          <object class="GtkImage" id="image">
+          <object class="CtkImage" id="image">
             <property name="icon-name">image-missing</property>
           </object>
           <packing>
@@ -21,7 +21,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label">
+          <object class="CtkLabel" id="label">
             <property name="wrap">1</property>
             <property name="max-width-chars">70</property>
           </object>

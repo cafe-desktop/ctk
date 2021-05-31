@@ -56,31 +56,31 @@
  * SECTION:ctkinfobar
  * @short_description: Report important messages to the user
  * @include: ctk/ctk.h
- * @see_also: #GtkStatusbar, #GtkMessageDialog
+ * @see_also: #CtkStatusbar, #CtkMessageDialog
  *
- * #GtkInfoBar is a widget that can be used to show messages to
+ * #CtkInfoBar is a widget that can be used to show messages to
  * the user without showing a dialog. It is often temporarily shown
- * at the top or bottom of a document. In contrast to #GtkDialog, which
- * has a action area at the bottom, #GtkInfoBar has an action area
+ * at the top or bottom of a document. In contrast to #CtkDialog, which
+ * has a action area at the bottom, #CtkInfoBar has an action area
  * at the side.
  *
- * The API of #GtkInfoBar is very similar to #GtkDialog, allowing you
+ * The API of #CtkInfoBar is very similar to #CtkDialog, allowing you
  * to add buttons to the action area with ctk_info_bar_add_button() or
  * ctk_info_bar_new_with_buttons(). The sensitivity of action widgets
  * can be controlled with ctk_info_bar_set_response_sensitive().
- * To add widgets to the main content area of a #GtkInfoBar, use
+ * To add widgets to the main content area of a #CtkInfoBar, use
  * ctk_info_bar_get_content_area() and add your widgets to the container.
  *
- * Similar to #GtkMessageDialog, the contents of a #GtkInfoBar can by
+ * Similar to #CtkMessageDialog, the contents of a #CtkInfoBar can by
  * classified as error message, warning, informational message, etc,
  * by using ctk_info_bar_set_message_type(). GTK+ may use the message type
  * to determine how the message is displayed.
  *
- * A simple example for using a #GtkInfoBar:
+ * A simple example for using a #CtkInfoBar:
  * |[<!-- language="C" -->
- * GtkWidget *widget, *message_label, *content_area;
- * GtkWidget *grid;
- * GtkInfoBar *bar;
+ * CtkWidget *widget, *message_label, *content_area;
+ * CtkWidget *grid;
+ * CtkInfoBar *bar;
  *
  * // set up info bar
  * widget = ctk_info_bar_new ();
@@ -112,20 +112,20 @@
  * ctk_widget_show (bar);
  * ]|
  *
- * # GtkInfoBar as GtkBuildable
+ * # CtkInfoBar as CtkBuildable
  *
- * The GtkInfoBar implementation of the GtkBuildable interface exposes
+ * The CtkInfoBar implementation of the CtkBuildable interface exposes
  * the content area and action area as internal children with the names
  * “content_area” and “action_area”.
  *
- * GtkInfoBar supports a custom <action-widgets> element, which can contain
+ * CtkInfoBar supports a custom <action-widgets> element, which can contain
  * multiple <action-widget> elements. The “response” attribute specifies a
  * numeric response, and the content of the element is the id of widget
  * (which should be a child of the dialogs @action_area).
  *
  * # CSS nodes
  *
- * GtkInfoBar has a single CSS node with name infobar. The node may get
+ * CtkInfoBar has a single CSS node with name infobar. The node may get
  * one of the style classes .info, .warning, .error or .question, depending
  * on the message type.
  */
@@ -139,19 +139,19 @@ enum
   LAST_PROP
 };
 
-struct _GtkInfoBarPrivate
+struct _CtkInfoBarPrivate
 {
-  GtkWidget *content_area;
-  GtkWidget *action_area;
-  GtkWidget *close_button;
-  GtkWidget *revealer;
+  CtkWidget *content_area;
+  CtkWidget *action_area;
+  CtkWidget *close_button;
+  CtkWidget *revealer;
 
   gboolean show_close_button;
-  GtkMessageType message_type;
+  CtkMessageType message_type;
   int default_response;
   gboolean default_response_sensitive;
 
-  GtkGesture *gesture;
+  CtkGesture *gesture;
 };
 
 typedef struct _ResponseData ResponseData;
@@ -184,22 +184,22 @@ static void     ctk_info_bar_get_property (GObject        *object,
                                            guint           prop_id,
                                            GValue         *value,
                                            GParamSpec     *pspec);
-static void     ctk_info_bar_buildable_interface_init     (GtkBuildableIface *iface);
-static gboolean  ctk_info_bar_buildable_custom_tag_start   (GtkBuildable  *buildable,
-                                                            GtkBuilder    *builder,
+static void     ctk_info_bar_buildable_interface_init     (CtkBuildableIface *iface);
+static gboolean  ctk_info_bar_buildable_custom_tag_start   (CtkBuildable  *buildable,
+                                                            CtkBuilder    *builder,
                                                             GObject       *child,
                                                             const gchar   *tagname,
                                                             GMarkupParser *parser,
                                                             gpointer      *data);
-static void      ctk_info_bar_buildable_custom_finished    (GtkBuildable  *buildable,
-                                                            GtkBuilder    *builder,
+static void      ctk_info_bar_buildable_custom_finished    (CtkBuildable  *buildable,
+                                                            CtkBuilder    *builder,
                                                             GObject       *child,
                                                             const gchar   *tagname,
                                                             gpointer       user_data);
 
 
-G_DEFINE_TYPE_WITH_CODE (GtkInfoBar, ctk_info_bar, CTK_TYPE_BOX,
-                         G_ADD_PRIVATE (GtkInfoBar)
+G_DEFINE_TYPE_WITH_CODE (CtkInfoBar, ctk_info_bar, CTK_TYPE_BOX,
+                         G_ADD_PRIVATE (CtkInfoBar)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
                                                 ctk_info_bar_buildable_interface_init))
 
@@ -209,7 +209,7 @@ ctk_info_bar_set_property (GObject      *object,
                            const GValue *value,
                            GParamSpec   *pspec)
 {
-  GtkInfoBar *info_bar = CTK_INFO_BAR (object);
+  CtkInfoBar *info_bar = CTK_INFO_BAR (object);
 
   switch (prop_id)
     {
@@ -234,7 +234,7 @@ ctk_info_bar_get_property (GObject    *object,
                            GValue     *value,
                            GParamSpec *pspec)
 {
-  GtkInfoBar *info_bar = CTK_INFO_BAR (object);
+  CtkInfoBar *info_bar = CTK_INFO_BAR (object);
 
   switch (prop_id)
     {
@@ -260,7 +260,7 @@ response_data_free (gpointer data)
 }
 
 static ResponseData *
-get_response_data (GtkWidget *widget,
+get_response_data (CtkWidget *widget,
                    gboolean   create)
 {
   ResponseData *ad = g_object_get_data (G_OBJECT (widget),
@@ -279,12 +279,12 @@ get_response_data (GtkWidget *widget,
   return ad;
 }
 
-static GtkWidget *
-find_button (GtkInfoBar *info_bar,
+static CtkWidget *
+find_button (CtkInfoBar *info_bar,
              gint        response_id)
 {
   GList *children, *list;
-  GtkWidget *child = NULL;
+  CtkWidget *child = NULL;
 
   children = ctk_container_get_children (CTK_CONTAINER (info_bar->priv->action_area));
 
@@ -305,10 +305,10 @@ find_button (GtkInfoBar *info_bar,
 }
 
 static void
-update_state (GtkWidget *widget,
+update_state (CtkWidget *widget,
               gboolean   in)
 {
-  GtkStateFlags state;
+  CtkStateFlags state;
 
   state = ctk_widget_get_state_flags (widget);
   if (in)
@@ -320,7 +320,7 @@ update_state (GtkWidget *widget,
 }
 
 static gboolean
-ctk_info_bar_enter_notify (GtkWidget        *widget,
+ctk_info_bar_enter_notify (CtkWidget        *widget,
                            GdkEventCrossing *event)
 {
   if (event->detail != GDK_NOTIFY_INFERIOR)
@@ -330,7 +330,7 @@ ctk_info_bar_enter_notify (GtkWidget        *widget,
 }
 
 static gboolean
-ctk_info_bar_leave_notify (GtkWidget        *widget,
+ctk_info_bar_leave_notify (CtkWidget        *widget,
                            GdkEventCrossing *event)
 {
   if (event->detail != GDK_NOTIFY_INFERIOR)
@@ -340,9 +340,9 @@ ctk_info_bar_leave_notify (GtkWidget        *widget,
 }
 
 static void
-ctk_info_bar_realize (GtkWidget *widget)
+ctk_info_bar_realize (CtkWidget *widget)
 {
-  GtkAllocation allocation;
+  CtkAllocation allocation;
   GdkWindow *window;
   GdkWindowAttr attributes;
   gint attributes_mask;
@@ -372,10 +372,10 @@ ctk_info_bar_realize (GtkWidget *widget)
 }
 
 static void
-ctk_info_bar_size_allocate (GtkWidget     *widget,
-                            GtkAllocation *allocation)
+ctk_info_bar_size_allocate (CtkWidget     *widget,
+                            CtkAllocation *allocation)
 {
-  GtkAllocation tmp_allocation;
+  CtkAllocation tmp_allocation;
   GdkWindow *window;
 
   tmp_allocation = *allocation;
@@ -395,7 +395,7 @@ ctk_info_bar_size_allocate (GtkWidget     *widget,
 }
 
 static void
-ctk_info_bar_close (GtkInfoBar *info_bar)
+ctk_info_bar_close (CtkInfoBar *info_bar)
 {
   if (!ctk_widget_get_visible (info_bar->priv->close_button)
       && !find_button (info_bar, CTK_RESPONSE_CANCEL))
@@ -408,7 +408,7 @@ ctk_info_bar_close (GtkInfoBar *info_bar)
 static void
 ctk_info_bar_finalize (GObject *object)
 {
-  GtkInfoBar *info_bar = CTK_INFO_BAR (object);
+  CtkInfoBar *info_bar = CTK_INFO_BAR (object);
 
   g_object_unref (info_bar->priv->gesture);
 
@@ -416,11 +416,11 @@ ctk_info_bar_finalize (GObject *object)
 }
 
 static void
-ctk_info_bar_class_init (GtkInfoBarClass *klass)
+ctk_info_bar_class_init (CtkInfoBarClass *klass)
 {
-  GtkWidgetClass *widget_class;
+  CtkWidgetClass *widget_class;
   GObjectClass *object_class;
-  GtkBindingSet *binding_set;
+  CtkBindingSet *binding_set;
 
   widget_class = CTK_WIDGET_CLASS (klass);
   object_class = G_OBJECT_CLASS (klass);
@@ -437,7 +437,7 @@ ctk_info_bar_class_init (GtkInfoBarClass *klass)
   klass->close = ctk_info_bar_close;
 
   /**
-   * GtkInfoBar:message-type:
+   * CtkInfoBar:message-type:
    *
    * The type of the message.
    *
@@ -454,7 +454,7 @@ ctk_info_bar_class_init (GtkInfoBarClass *klass)
                        CTK_PARAM_READWRITE|G_PARAM_CONSTRUCT|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkInfoBar:show-close-button:
+   * CtkInfoBar:show-close-button:
    *
    * Whether to include a standard close button.
    *
@@ -477,7 +477,7 @@ ctk_info_bar_class_init (GtkInfoBarClass *klass)
   g_object_class_install_properties (object_class, LAST_PROP, props);
 
   /**
-   * GtkInfoBar::response:
+   * CtkInfoBar::response:
    * @info_bar: the object on which the signal is emitted
    * @response_id: the response ID
    *
@@ -490,17 +490,17 @@ ctk_info_bar_class_init (GtkInfoBarClass *klass)
   signals[RESPONSE] = g_signal_new (I_("response"),
                                     G_OBJECT_CLASS_TYPE (klass),
                                     G_SIGNAL_RUN_LAST,
-                                    G_STRUCT_OFFSET (GtkInfoBarClass, response),
+                                    G_STRUCT_OFFSET (CtkInfoBarClass, response),
                                     NULL, NULL,
                                     NULL,
                                     G_TYPE_NONE, 1,
                                     G_TYPE_INT);
 
   /**
-   * GtkInfoBar::close:
+   * CtkInfoBar::close:
    *
    * The ::close signal is a
-   * [keybinding signal][GtkBindingSignal]
+   * [keybinding signal][CtkBindingSignal]
    * which gets emitted when the user uses a keybinding to dismiss
    * the info bar.
    *
@@ -511,13 +511,13 @@ ctk_info_bar_class_init (GtkInfoBarClass *klass)
   signals[CLOSE] =  g_signal_new (I_("close"),
                                   G_OBJECT_CLASS_TYPE (klass),
                                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-                                  G_STRUCT_OFFSET (GtkInfoBarClass, close),
+                                  G_STRUCT_OFFSET (CtkInfoBarClass, close),
                                   NULL, NULL,
                                   NULL,
                                   G_TYPE_NONE, 0);
 
   /**
-   * GtkInfoBar:content-area-border:
+   * CtkInfoBar:content-area-border:
    *
    * The width of the border around the content
    * content area of the info bar.
@@ -535,7 +535,7 @@ ctk_info_bar_class_init (GtkInfoBarClass *klass)
                                                              CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
-   * GtkInfoBar:content-area-spacing:
+   * CtkInfoBar:content-area-spacing:
    *
    * The default spacing used between elements of the
    * content area of the info bar.
@@ -553,7 +553,7 @@ ctk_info_bar_class_init (GtkInfoBarClass *klass)
                                                              CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
-   * GtkInfoBar:button-spacing:
+   * CtkInfoBar:button-spacing:
    *
    * Spacing between buttons in the action area of the info bar.
    *
@@ -570,7 +570,7 @@ ctk_info_bar_class_init (GtkInfoBarClass *klass)
                                                              CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
-   * GtkInfoBar:action-area-border:
+   * CtkInfoBar:action-area-border:
    *
    * Width of the border around the action area of the info bar.
    *
@@ -593,40 +593,40 @@ ctk_info_bar_class_init (GtkInfoBarClass *klass)
   /* Bind class to template
    */
   ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/ui/ctkinfobar.ui");
-  ctk_widget_class_bind_template_child_internal_private (widget_class, GtkInfoBar, content_area);
-  ctk_widget_class_bind_template_child_internal_private (widget_class, GtkInfoBar, action_area);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInfoBar, close_button);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInfoBar, revealer);
+  ctk_widget_class_bind_template_child_internal_private (widget_class, CtkInfoBar, content_area);
+  ctk_widget_class_bind_template_child_internal_private (widget_class, CtkInfoBar, action_area);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInfoBar, close_button);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInfoBar, revealer);
 
   ctk_widget_class_set_css_name (widget_class, "infobar");
 }
 
 static void
-close_button_clicked_cb (GtkWidget  *button,
-                         GtkInfoBar *info_bar)
+close_button_clicked_cb (CtkWidget  *button,
+                         CtkInfoBar *info_bar)
 {
   ctk_info_bar_response (CTK_INFO_BAR (info_bar),
                          CTK_RESPONSE_CLOSE);
 }
 
 static void
-click_pressed_cb (GtkGestureMultiPress *gesture,
+click_pressed_cb (CtkGestureMultiPress *gesture,
                    guint            n_press,
                    gdouble          x,
                    gdouble          y,
-                   GtkInfoBar      *info_bar)
+                   CtkInfoBar      *info_bar)
 {
-  GtkInfoBarPrivate *priv = ctk_info_bar_get_instance_private (info_bar);
+  CtkInfoBarPrivate *priv = ctk_info_bar_get_instance_private (info_bar);
 
   if (priv->default_response && priv->default_response_sensitive)
     ctk_info_bar_response (info_bar, priv->default_response);
 }
 
 static void
-ctk_info_bar_init (GtkInfoBar *info_bar)
+ctk_info_bar_init (CtkInfoBar *info_bar)
 {
-  GtkInfoBarPrivate *priv;
-  GtkWidget *widget = CTK_WIDGET (info_bar);
+  CtkInfoBarPrivate *priv;
+  CtkWidget *widget = CTK_WIDGET (info_bar);
 
   priv = info_bar->priv = ctk_info_bar_get_instance_private (info_bar);
 
@@ -647,10 +647,10 @@ ctk_info_bar_init (GtkInfoBar *info_bar)
   g_signal_connect (priv->gesture, "pressed", G_CALLBACK (click_pressed_cb), widget);
 }
 
-static GtkBuildableIface *parent_buildable_iface;
+static CtkBuildableIface *parent_buildable_iface;
 
 static void
-ctk_info_bar_buildable_interface_init (GtkBuildableIface *iface)
+ctk_info_bar_buildable_interface_init (CtkBuildableIface *iface)
 {
   parent_buildable_iface = g_type_interface_peek_parent (iface);
   iface->custom_tag_start = ctk_info_bar_buildable_custom_tag_start;
@@ -658,8 +658,8 @@ ctk_info_bar_buildable_interface_init (GtkBuildableIface *iface)
 }
 
 static gint
-get_response_for_widget (GtkInfoBar *info_bar,
-                         GtkWidget  *widget)
+get_response_for_widget (CtkInfoBar *info_bar,
+                         CtkWidget  *widget)
 {
   ResponseData *rd;
 
@@ -671,8 +671,8 @@ get_response_for_widget (GtkInfoBar *info_bar,
 }
 
 static void
-action_widget_activated (GtkWidget  *widget,
-                         GtkInfoBar *info_bar)
+action_widget_activated (CtkWidget  *widget,
+                         CtkInfoBar *info_bar)
 {
   gint response_id;
 
@@ -682,20 +682,20 @@ action_widget_activated (GtkWidget  *widget,
 
 /**
  * ctk_info_bar_add_action_widget:
- * @info_bar: a #GtkInfoBar
+ * @info_bar: a #CtkInfoBar
  * @child: an activatable widget
  * @response_id: response ID for @child
  *
- * Add an activatable widget to the action area of a #GtkInfoBar,
- * connecting a signal handler that will emit the #GtkInfoBar::response
+ * Add an activatable widget to the action area of a #CtkInfoBar,
+ * connecting a signal handler that will emit the #CtkInfoBar::response
  * signal on the message area when the widget is activated. The widget
  * is appended to the end of the message areas action area.
  *
  * Since: 2.18
  */
 void
-ctk_info_bar_add_action_widget (GtkInfoBar *info_bar,
-                                GtkWidget  *child,
+ctk_info_bar_add_action_widget (CtkInfoBar *info_bar,
+                                CtkWidget  *child,
                                 gint        response_id)
 {
   ResponseData *ad;
@@ -722,7 +722,7 @@ ctk_info_bar_add_action_widget (GtkInfoBar *info_bar,
       g_signal_connect_closure_by_id (child, signal_id, 0, closure, FALSE);
     }
   else
-    g_warning ("Only 'activatable' widgets can be packed into the action area of a GtkInfoBar");
+    g_warning ("Only 'activatable' widgets can be packed into the action area of a CtkInfoBar");
 
   ctk_box_pack_end (CTK_BOX (info_bar->priv->action_area),
                     child, FALSE, FALSE, 0);
@@ -733,16 +733,16 @@ ctk_info_bar_add_action_widget (GtkInfoBar *info_bar,
 
 /**
  * ctk_info_bar_get_action_area:
- * @info_bar: a #GtkInfoBar
+ * @info_bar: a #CtkInfoBar
  *
  * Returns the action area of @info_bar.
  *
- * Returns: (type Gtk.Box) (transfer none): the action area
+ * Returns: (type Ctk.Box) (transfer none): the action area
  *
  * Since: 2.18
  */
-GtkWidget*
-ctk_info_bar_get_action_area (GtkInfoBar *info_bar)
+CtkWidget*
+ctk_info_bar_get_action_area (CtkInfoBar *info_bar)
 {
   g_return_val_if_fail (CTK_IS_INFO_BAR (info_bar), NULL);
 
@@ -751,16 +751,16 @@ ctk_info_bar_get_action_area (GtkInfoBar *info_bar)
 
 /**
  * ctk_info_bar_get_content_area:
- * @info_bar: a #GtkInfoBar
+ * @info_bar: a #CtkInfoBar
  *
  * Returns the content area of @info_bar.
  *
- * Returns: (type Gtk.Box) (transfer none): the content area
+ * Returns: (type Ctk.Box) (transfer none): the content area
  *
  * Since: 2.18
  */
-GtkWidget*
-ctk_info_bar_get_content_area (GtkInfoBar *info_bar)
+CtkWidget*
+ctk_info_bar_get_content_area (CtkInfoBar *info_bar)
 {
   g_return_val_if_fail (CTK_IS_INFO_BAR (info_bar), NULL);
 
@@ -769,7 +769,7 @@ ctk_info_bar_get_content_area (GtkInfoBar *info_bar)
 
 /**
  * ctk_info_bar_add_button:
- * @info_bar: a #GtkInfoBar
+ * @info_bar: a #CtkInfoBar
  * @button_text: text of button
  * @response_id: response ID for the button
  *
@@ -779,17 +779,17 @@ ctk_info_bar_get_content_area (GtkInfoBar *info_bar)
  * action area. The button widget is returned, but usually you don't
  * need it.
  *
- * Returns: (transfer none) (type Gtk.Button): the #GtkButton widget
+ * Returns: (transfer none) (type Ctk.Button): the #CtkButton widget
  * that was added
  *
  * Since: 2.18
  */
-GtkWidget*
-ctk_info_bar_add_button (GtkInfoBar  *info_bar,
+CtkWidget*
+ctk_info_bar_add_button (CtkInfoBar  *info_bar,
                          const gchar *button_text,
                          gint         response_id)
 {
-  GtkWidget *button;
+  CtkWidget *button;
 
   g_return_val_if_fail (CTK_IS_INFO_BAR (info_bar), NULL);
   g_return_val_if_fail (button_text != NULL, NULL);
@@ -801,7 +801,7 @@ ctk_info_bar_add_button (GtkInfoBar  *info_bar,
 
   if (button_text)
     {
-      GtkStockItem item;
+      CtkStockItem item;
       if (ctk_stock_lookup (button_text, &item))
         g_object_set (button, "use-stock", TRUE, NULL);
     }
@@ -818,7 +818,7 @@ ctk_info_bar_add_button (GtkInfoBar  *info_bar,
 }
 
 static void
-add_buttons_valist (GtkInfoBar  *info_bar,
+add_buttons_valist (CtkInfoBar  *info_bar,
                     const gchar *first_button_text,
                     va_list      args)
 {
@@ -847,7 +847,7 @@ add_buttons_valist (GtkInfoBar  *info_bar,
 
 /**
  * ctk_info_bar_add_buttons:
- * @info_bar: a #GtkInfoBar
+ * @info_bar: a #CtkInfoBar
  * @first_button_text: button text or stock ID
  * @...: response ID for first button, then more text-response_id pairs,
  *     ending with %NULL
@@ -860,7 +860,7 @@ add_buttons_valist (GtkInfoBar  *info_bar,
  * Since: 2.18
  */
 void
-ctk_info_bar_add_buttons (GtkInfoBar  *info_bar,
+ctk_info_bar_add_buttons (CtkInfoBar  *info_bar,
                           const gchar *first_button_text,
                           ...)
 {
@@ -874,13 +874,13 @@ ctk_info_bar_add_buttons (GtkInfoBar  *info_bar,
 /**
  * ctk_info_bar_new:
  *
- * Creates a new #GtkInfoBar object.
+ * Creates a new #CtkInfoBar object.
  *
- * Returns: a new #GtkInfoBar object
+ * Returns: a new #CtkInfoBar object
  *
  * Since: 2.18
  */
-GtkWidget *
+CtkWidget *
 ctk_info_bar_new (void)
 {
    return g_object_new (CTK_TYPE_INFO_BAR, NULL);
@@ -892,21 +892,21 @@ ctk_info_bar_new (void)
  * @...: response ID for first button, then additional buttons, ending
  *    with %NULL
  *
- * Creates a new #GtkInfoBar with buttons. Button text/response ID
+ * Creates a new #CtkInfoBar with buttons. Button text/response ID
  * pairs should be listed, with a %NULL pointer ending the list.
  * Button text can be either a stock ID such as %CTK_STOCK_OK, or
  * some arbitrary text. A response ID can be any positive number,
- * or one of the values in the #GtkResponseType enumeration. If the
- * user clicks one of these dialog buttons, GtkInfoBar will emit
+ * or one of the values in the #CtkResponseType enumeration. If the
+ * user clicks one of these dialog buttons, CtkInfoBar will emit
  * the “response” signal with the corresponding response ID.
  *
- * Returns: a new #GtkInfoBar
+ * Returns: a new #CtkInfoBar
  */
-GtkWidget*
+CtkWidget*
 ctk_info_bar_new_with_buttons (const gchar *first_button_text,
                                ...)
 {
-  GtkInfoBar *info_bar;
+  CtkInfoBar *info_bar;
   va_list args;
 
   info_bar = CTK_INFO_BAR (ctk_info_bar_new ());
@@ -919,11 +919,11 @@ ctk_info_bar_new_with_buttons (const gchar *first_button_text,
 }
 
 static void
-update_default_response (GtkInfoBar *info_bar,
+update_default_response (CtkInfoBar *info_bar,
                          int         response_id,
                          gboolean    sensitive)
 {
-  GtkInfoBarPrivate *priv = ctk_info_bar_get_instance_private (info_bar);
+  CtkInfoBarPrivate *priv = ctk_info_bar_get_instance_private (info_bar);
 
   priv->default_response = response_id;
   priv->default_response_sensitive = sensitive;
@@ -936,7 +936,7 @@ update_default_response (GtkInfoBar *info_bar,
 
 /**
  * ctk_info_bar_set_response_sensitive:
- * @info_bar: a #GtkInfoBar
+ * @info_bar: a #CtkInfoBar
  * @response_id: a response ID
  * @setting: TRUE for sensitive
  *
@@ -947,7 +947,7 @@ update_default_response (GtkInfoBar *info_bar,
  * Since: 2.18
  */
 void
-ctk_info_bar_set_response_sensitive (GtkInfoBar *info_bar,
+ctk_info_bar_set_response_sensitive (CtkInfoBar *info_bar,
                                      gint        response_id,
                                      gboolean    setting)
 {
@@ -962,7 +962,7 @@ ctk_info_bar_set_response_sensitive (GtkInfoBar *info_bar,
 
   for (list = children; list; list = list->next)
     {
-      GtkWidget *widget = list->data;
+      CtkWidget *widget = list->data;
       ResponseData *rd = get_response_data (widget, FALSE);
 
       if (rd && rd->response_id == response_id)
@@ -977,7 +977,7 @@ ctk_info_bar_set_response_sensitive (GtkInfoBar *info_bar,
 
 /**
  * ctk_info_bar_set_default_response:
- * @info_bar: a #GtkInfoBar
+ * @info_bar: a #CtkInfoBar
  * @response_id: a response ID
  *
  * Sets the last widget in the info bar’s action area with
@@ -990,7 +990,7 @@ ctk_info_bar_set_response_sensitive (GtkInfoBar *info_bar,
  * Since: 2.18
  */
 void
-ctk_info_bar_set_default_response (GtkInfoBar *info_bar,
+ctk_info_bar_set_default_response (CtkInfoBar *info_bar,
                                    gint        response_id)
 {
   GList *children, *list;
@@ -1002,7 +1002,7 @@ ctk_info_bar_set_default_response (GtkInfoBar *info_bar,
 
   for (list = children; list; list = list->next)
     {
-      GtkWidget *widget = list->data;
+      CtkWidget *widget = list->data;
       ResponseData *rd = get_response_data (widget, FALSE);
 
       if (rd && rd->response_id == response_id)
@@ -1019,7 +1019,7 @@ ctk_info_bar_set_default_response (GtkInfoBar *info_bar,
 
 /**
  * ctk_info_bar_response:
- * @info_bar: a #GtkInfoBar
+ * @info_bar: a #CtkInfoBar
  * @response_id: a response ID
  *
  * Emits the “response” signal with the given @response_id.
@@ -1027,7 +1027,7 @@ ctk_info_bar_set_default_response (GtkInfoBar *info_bar,
  * Since: 2.18
  */
 void
-ctk_info_bar_response (GtkInfoBar *info_bar,
+ctk_info_bar_response (CtkInfoBar *info_bar,
                        gint        response_id)
 {
   g_return_if_fail (CTK_IS_INFO_BAR (info_bar));
@@ -1045,8 +1045,8 @@ typedef struct
 
 typedef struct
 {
-  GtkInfoBar *info_bar;
-  GtkBuilder *builder;
+  CtkInfoBar *info_bar;
+  CtkBuilder *builder;
   GSList *items;
   gint response_id;
   gboolean is_text;
@@ -1114,7 +1114,7 @@ parser_start_element (GMarkupParseContext  *context,
   else
     {
       _ctk_builder_error_unhandled_tag (data->builder, context,
-                                        "GtkInfoBar", element_name,
+                                        "CtkInfoBar", element_name,
                                         error);
     }
 }
@@ -1163,8 +1163,8 @@ static const GMarkupParser sub_parser =
 };
 
 gboolean
-ctk_info_bar_buildable_custom_tag_start (GtkBuildable  *buildable,
-                                         GtkBuilder    *builder,
+ctk_info_bar_buildable_custom_tag_start (CtkBuildable  *buildable,
+                                         CtkBuilder    *builder,
                                          GObject       *child,
                                          const gchar   *tagname,
                                          GMarkupParser *parser,
@@ -1193,8 +1193,8 @@ ctk_info_bar_buildable_custom_tag_start (GtkBuildable  *buildable,
 }
 
 static void
-ctk_info_bar_buildable_custom_finished (GtkBuildable *buildable,
-                                        GtkBuilder   *builder,
+ctk_info_bar_buildable_custom_finished (CtkBuildable *buildable,
+                                        CtkBuilder   *builder,
                                         GObject      *child,
                                         const gchar  *tagname,
                                         gpointer      user_data)
@@ -1202,7 +1202,7 @@ ctk_info_bar_buildable_custom_finished (GtkBuildable *buildable,
   GSList *l;
   SubParserData *data;
   GObject *object;
-  GtkInfoBar *info_bar;
+  CtkInfoBar *info_bar;
   ResponseData *ad;
   guint signal_id;
 
@@ -1254,8 +1254,8 @@ ctk_info_bar_buildable_custom_finished (GtkBuildable *buildable,
 
 /**
  * ctk_info_bar_set_message_type:
- * @info_bar: a #GtkInfoBar
- * @message_type: a #GtkMessageType
+ * @info_bar: a #CtkInfoBar
+ * @message_type: a #CtkMessageType
  *
  * Sets the message type of the message area.
  *
@@ -1264,10 +1264,10 @@ ctk_info_bar_buildable_custom_finished (GtkBuildable *buildable,
  * Since: 2.18
  */
 void
-ctk_info_bar_set_message_type (GtkInfoBar     *info_bar,
-                               GtkMessageType  message_type)
+ctk_info_bar_set_message_type (CtkInfoBar     *info_bar,
+                               CtkMessageType  message_type)
 {
-  GtkInfoBarPrivate *priv;
+  CtkInfoBarPrivate *priv;
 
   g_return_if_fail (CTK_IS_INFO_BAR (info_bar));
 
@@ -1275,7 +1275,7 @@ ctk_info_bar_set_message_type (GtkInfoBar     *info_bar,
 
   if (priv->message_type != message_type)
     {
-      GtkStyleContext *context;
+      CtkStyleContext *context;
       AtkObject *atk_obj;
       const char *type_class[] = {
         CTK_STYLE_CLASS_INFO,
@@ -1323,7 +1323,7 @@ ctk_info_bar_set_message_type (GtkInfoBar     *info_bar,
               break;
 
             default:
-              g_warning ("Unknown GtkMessageType %u", message_type);
+              g_warning ("Unknown CtkMessageType %u", message_type);
               break;
             }
 
@@ -1340,7 +1340,7 @@ ctk_info_bar_set_message_type (GtkInfoBar     *info_bar,
 
 /**
  * ctk_info_bar_get_message_type:
- * @info_bar: a #GtkInfoBar
+ * @info_bar: a #CtkInfoBar
  *
  * Returns the message type of the message area.
  *
@@ -1348,8 +1348,8 @@ ctk_info_bar_set_message_type (GtkInfoBar     *info_bar,
  *
  * Since: 2.18
  */
-GtkMessageType
-ctk_info_bar_get_message_type (GtkInfoBar *info_bar)
+CtkMessageType
+ctk_info_bar_get_message_type (CtkInfoBar *info_bar)
 {
   g_return_val_if_fail (CTK_IS_INFO_BAR (info_bar), CTK_MESSAGE_OTHER);
 
@@ -1359,7 +1359,7 @@ ctk_info_bar_get_message_type (GtkInfoBar *info_bar)
 
 /**
  * ctk_info_bar_set_show_close_button:
- * @info_bar: a #GtkInfoBar
+ * @info_bar: a #CtkInfoBar
  * @setting: %TRUE to include a close button
  *
  * If true, a standard close button is shown. When clicked it emits
@@ -1368,7 +1368,7 @@ ctk_info_bar_get_message_type (GtkInfoBar *info_bar)
  * Since: 3.10
  */
 void
-ctk_info_bar_set_show_close_button (GtkInfoBar *info_bar,
+ctk_info_bar_set_show_close_button (CtkInfoBar *info_bar,
                                     gboolean    setting)
 {
   g_return_if_fail (CTK_IS_INFO_BAR (info_bar));
@@ -1383,7 +1383,7 @@ ctk_info_bar_set_show_close_button (GtkInfoBar *info_bar,
 
 /**
  * ctk_info_bar_get_show_close_button:
- * @info_bar: a #GtkInfoBar
+ * @info_bar: a #CtkInfoBar
  *
  * Returns whether the widget will display a standard close button.
  *
@@ -1392,7 +1392,7 @@ ctk_info_bar_set_show_close_button (GtkInfoBar *info_bar,
  * Since: 3.10
  */
 gboolean
-ctk_info_bar_get_show_close_button (GtkInfoBar *info_bar)
+ctk_info_bar_get_show_close_button (CtkInfoBar *info_bar)
 {
   g_return_val_if_fail (CTK_IS_INFO_BAR (info_bar), FALSE);
 
@@ -1401,10 +1401,10 @@ ctk_info_bar_get_show_close_button (GtkInfoBar *info_bar)
 
 /**
  * ctk_info_bar_set_revealed:
- * @info_bar: a #GtkInfoBar
+ * @info_bar: a #CtkInfoBar
  * @revealed: The new value of the property
  *
- * Sets the GtkInfoBar:revealed property to @revealed. This will cause
+ * Sets the CtkInfoBar:revealed property to @revealed. This will cause
  * @info_bar to show up with a slide-in transition.
  *
  * Note that this property does not automatically show @info_bar and thus won’t
@@ -1413,10 +1413,10 @@ ctk_info_bar_get_show_close_button (GtkInfoBar *info_bar)
  * Since: 3.22.29
  */
 void
-ctk_info_bar_set_revealed (GtkInfoBar *info_bar,
+ctk_info_bar_set_revealed (CtkInfoBar *info_bar,
                            gboolean    revealed)
 {
-  GtkInfoBarPrivate *priv = ctk_info_bar_get_instance_private (info_bar);
+  CtkInfoBarPrivate *priv = ctk_info_bar_get_instance_private (info_bar);
 
   g_return_if_fail (CTK_IS_INFO_BAR (info_bar));
 
@@ -1430,16 +1430,16 @@ ctk_info_bar_set_revealed (GtkInfoBar *info_bar,
 
 /**
  * ctk_info_bar_get_revealed:
- * @info_bar: a #GtkInfoBar
+ * @info_bar: a #CtkInfoBar
  *
- * Returns: the current value of the GtkInfoBar:revealed property.
+ * Returns: the current value of the CtkInfoBar:revealed property.
  *
  * Since: 3.22.29
  */
 gboolean
-ctk_info_bar_get_revealed (GtkInfoBar *info_bar)
+ctk_info_bar_get_revealed (CtkInfoBar *info_bar)
 {
-  GtkInfoBarPrivate *priv = ctk_info_bar_get_instance_private (info_bar);
+  CtkInfoBarPrivate *priv = ctk_info_bar_get_instance_private (info_bar);
 
   g_return_val_if_fail (CTK_IS_INFO_BAR (info_bar), FALSE);
 

@@ -31,7 +31,7 @@ LDFLAGS = $(ATK_LIBS) /link /machine:ix86 $(LINKDEBUG)
 # Don't define CTK_COMPILATION here, because it's for ctk-x.x.dll only
 DEFINES = \
 	-DHAVE_CONFIG_H \
-	$(G_DEBUGGING) -DCTK_DISABLE_COMPAT_H -DG_LOG_DOMAIN=\"Gtk\" -Dnear=xxnear \
+	$(G_DEBUGGING) -DCTK_DISABLE_COMPAT_H -DG_LOG_DOMAIN=\"Ctk\" -Dnear=xxnear \
 	-DPANGO_ENABLE_BACKEND \
 	-DCTK_VERSION=\"$(CTK_VER)\" -DCTK_BINARY_VERSION=\"$(CTK_BINARY_VERSION)\" \
 	-DCTK_HOST=\"win32\" \
@@ -639,7 +639,7 @@ ctk-x11-$(CTK_VER).dll : $(ctk_OBJECTS) ctk.def
 
 # General rule for compiling the objects into the DLL
 .c.obj :
-	$(CC) $(CFLAGS) -GF -Zm400 -GD -c -DCTK_COMPILATION -DG_LOG_DOMAIN=\"Gtk\" $<
+	$(CC) $(CFLAGS) -GF -Zm400 -GD -c -DCTK_COMPILATION -DG_LOG_DOMAIN=\"Ctk\" $<
 
 $(EXAMPLE).obj : ..\examples\$(EXAMPLE)\$(EXAMPLE).c
 	$(CC) $(CFLAGS) -c -DG_LOG_DOMAIN=\"$(EXAMPLE)\" ..\examples\$(EXAMPLE)\$(EXAMPLE).c

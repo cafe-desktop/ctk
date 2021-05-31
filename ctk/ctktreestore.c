@@ -30,28 +30,28 @@
 
 /**
  * SECTION:ctktreestore
- * @Short_description: A tree-like data structure that can be used with the GtkTreeView
- * @Title: GtkTreeStore
- * @See_also: #GtkTreeModel
+ * @Short_description: A tree-like data structure that can be used with the CtkTreeView
+ * @Title: CtkTreeStore
+ * @See_also: #CtkTreeModel
  *
- * The #GtkTreeStore object is a list model for use with a #GtkTreeView
- * widget.  It implements the #GtkTreeModel interface, and consequentially,
+ * The #CtkTreeStore object is a list model for use with a #CtkTreeView
+ * widget.  It implements the #CtkTreeModel interface, and consequentially,
  * can use all of the methods available there.  It also implements the
- * #GtkTreeSortable interface so it can be sorted by the view.  Finally,
+ * #CtkTreeSortable interface so it can be sorted by the view.  Finally,
  * it also implements the tree
- * [drag and drop][ctk3-GtkTreeView-drag-and-drop]
+ * [drag and drop][ctk3-CtkTreeView-drag-and-drop]
  * interfaces.
  *
- * # GtkTreeStore as GtkBuildable
+ * # CtkTreeStore as CtkBuildable
  *
- * The GtkTreeStore implementation of the #GtkBuildable interface allows
+ * The CtkTreeStore implementation of the #CtkBuildable interface allows
  * to specify the model columns with a <columns> element that may contain
  * multiple <column> elements, each specifying one model column. The “type”
  * attribute specifies the data type for the column.
  *
  * An example of a UI Definition fragment for a tree store:
  * |[
- * <object class="GtkTreeStore">
+ * <object class="CtkTreeStore">
  *   <columns>
  *     <column type="gchararray"/>
  *     <column type="gchararray"/>
@@ -61,17 +61,17 @@
  * ]|
  */
 
-struct _GtkTreeStorePrivate
+struct _CtkTreeStorePrivate
 {
   gint stamp;
-  GtkSortType order;
+  CtkSortType order;
   gpointer root;
   gpointer last;
   gint n_columns;
   gint sort_column_id;
   GList *sort_list;
   GType *column_headers;
-  GtkTreeIterCompareFunc default_sort_func;
+  CtkTreeIterCompareFunc default_sort_func;
   gpointer default_sort_data;
   GDestroyNotify default_sort_destroy;
   guint columns_dirty : 1;
@@ -79,114 +79,114 @@ struct _GtkTreeStorePrivate
 
 
 #define G_NODE(node) ((GNode *)node)
-#define CTK_TREE_STORE_IS_SORTED(tree) (((GtkTreeStore*)(tree))->priv->sort_column_id != CTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID)
-#define VALID_ITER(iter, tree_store) ((iter)!= NULL && (iter)->user_data != NULL && ((GtkTreeStore*)(tree_store))->priv->stamp == (iter)->stamp)
+#define CTK_TREE_STORE_IS_SORTED(tree) (((CtkTreeStore*)(tree))->priv->sort_column_id != CTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID)
+#define VALID_ITER(iter, tree_store) ((iter)!= NULL && (iter)->user_data != NULL && ((CtkTreeStore*)(tree_store))->priv->stamp == (iter)->stamp)
 
-static void         ctk_tree_store_tree_model_init (GtkTreeModelIface *iface);
-static void         ctk_tree_store_drag_source_init(GtkTreeDragSourceIface *iface);
-static void         ctk_tree_store_drag_dest_init  (GtkTreeDragDestIface   *iface);
-static void         ctk_tree_store_sortable_init   (GtkTreeSortableIface   *iface);
-static void         ctk_tree_store_buildable_init  (GtkBuildableIface      *iface);
+static void         ctk_tree_store_tree_model_init (CtkTreeModelIface *iface);
+static void         ctk_tree_store_drag_source_init(CtkTreeDragSourceIface *iface);
+static void         ctk_tree_store_drag_dest_init  (CtkTreeDragDestIface   *iface);
+static void         ctk_tree_store_sortable_init   (CtkTreeSortableIface   *iface);
+static void         ctk_tree_store_buildable_init  (CtkBuildableIface      *iface);
 static void         ctk_tree_store_finalize        (GObject           *object);
-static GtkTreeModelFlags ctk_tree_store_get_flags  (GtkTreeModel      *tree_model);
-static gint         ctk_tree_store_get_n_columns   (GtkTreeModel      *tree_model);
-static GType        ctk_tree_store_get_column_type (GtkTreeModel      *tree_model,
+static CtkTreeModelFlags ctk_tree_store_get_flags  (CtkTreeModel      *tree_model);
+static gint         ctk_tree_store_get_n_columns   (CtkTreeModel      *tree_model);
+static GType        ctk_tree_store_get_column_type (CtkTreeModel      *tree_model,
 						    gint               index);
-static gboolean     ctk_tree_store_get_iter        (GtkTreeModel      *tree_model,
-						    GtkTreeIter       *iter,
-						    GtkTreePath       *path);
-static GtkTreePath *ctk_tree_store_get_path        (GtkTreeModel      *tree_model,
-						    GtkTreeIter       *iter);
-static void         ctk_tree_store_get_value       (GtkTreeModel      *tree_model,
-						    GtkTreeIter       *iter,
+static gboolean     ctk_tree_store_get_iter        (CtkTreeModel      *tree_model,
+						    CtkTreeIter       *iter,
+						    CtkTreePath       *path);
+static CtkTreePath *ctk_tree_store_get_path        (CtkTreeModel      *tree_model,
+						    CtkTreeIter       *iter);
+static void         ctk_tree_store_get_value       (CtkTreeModel      *tree_model,
+						    CtkTreeIter       *iter,
 						    gint               column,
 						    GValue            *value);
-static gboolean     ctk_tree_store_iter_next       (GtkTreeModel      *tree_model,
-						    GtkTreeIter       *iter);
-static gboolean     ctk_tree_store_iter_previous   (GtkTreeModel      *tree_model,
-						    GtkTreeIter       *iter);
-static gboolean     ctk_tree_store_iter_children   (GtkTreeModel      *tree_model,
-						    GtkTreeIter       *iter,
-						    GtkTreeIter       *parent);
-static gboolean     ctk_tree_store_iter_has_child  (GtkTreeModel      *tree_model,
-						    GtkTreeIter       *iter);
-static gint         ctk_tree_store_iter_n_children (GtkTreeModel      *tree_model,
-						    GtkTreeIter       *iter);
-static gboolean     ctk_tree_store_iter_nth_child  (GtkTreeModel      *tree_model,
-						    GtkTreeIter       *iter,
-						    GtkTreeIter       *parent,
+static gboolean     ctk_tree_store_iter_next       (CtkTreeModel      *tree_model,
+						    CtkTreeIter       *iter);
+static gboolean     ctk_tree_store_iter_previous   (CtkTreeModel      *tree_model,
+						    CtkTreeIter       *iter);
+static gboolean     ctk_tree_store_iter_children   (CtkTreeModel      *tree_model,
+						    CtkTreeIter       *iter,
+						    CtkTreeIter       *parent);
+static gboolean     ctk_tree_store_iter_has_child  (CtkTreeModel      *tree_model,
+						    CtkTreeIter       *iter);
+static gint         ctk_tree_store_iter_n_children (CtkTreeModel      *tree_model,
+						    CtkTreeIter       *iter);
+static gboolean     ctk_tree_store_iter_nth_child  (CtkTreeModel      *tree_model,
+						    CtkTreeIter       *iter,
+						    CtkTreeIter       *parent,
 						    gint               n);
-static gboolean     ctk_tree_store_iter_parent     (GtkTreeModel      *tree_model,
-						    GtkTreeIter       *iter,
-						    GtkTreeIter       *child);
+static gboolean     ctk_tree_store_iter_parent     (CtkTreeModel      *tree_model,
+						    CtkTreeIter       *iter,
+						    CtkTreeIter       *child);
 
 
-static void ctk_tree_store_set_n_columns   (GtkTreeStore *tree_store,
+static void ctk_tree_store_set_n_columns   (CtkTreeStore *tree_store,
 					    gint          n_columns);
-static void ctk_tree_store_set_column_type (GtkTreeStore *tree_store,
+static void ctk_tree_store_set_column_type (CtkTreeStore *tree_store,
 					    gint          column,
 					    GType         type);
 
-static void ctk_tree_store_increment_stamp (GtkTreeStore  *tree_store);
+static void ctk_tree_store_increment_stamp (CtkTreeStore  *tree_store);
 
 
 /* DND interfaces */
-static gboolean real_ctk_tree_store_row_draggable   (GtkTreeDragSource *drag_source,
-						   GtkTreePath       *path);
-static gboolean ctk_tree_store_drag_data_delete   (GtkTreeDragSource *drag_source,
-						   GtkTreePath       *path);
-static gboolean ctk_tree_store_drag_data_get      (GtkTreeDragSource *drag_source,
-						   GtkTreePath       *path,
-						   GtkSelectionData  *selection_data);
-static gboolean ctk_tree_store_drag_data_received (GtkTreeDragDest   *drag_dest,
-						   GtkTreePath       *dest,
-						   GtkSelectionData  *selection_data);
-static gboolean ctk_tree_store_row_drop_possible  (GtkTreeDragDest   *drag_dest,
-						   GtkTreePath       *dest_path,
-						   GtkSelectionData  *selection_data);
+static gboolean real_ctk_tree_store_row_draggable   (CtkTreeDragSource *drag_source,
+						   CtkTreePath       *path);
+static gboolean ctk_tree_store_drag_data_delete   (CtkTreeDragSource *drag_source,
+						   CtkTreePath       *path);
+static gboolean ctk_tree_store_drag_data_get      (CtkTreeDragSource *drag_source,
+						   CtkTreePath       *path,
+						   CtkSelectionData  *selection_data);
+static gboolean ctk_tree_store_drag_data_received (CtkTreeDragDest   *drag_dest,
+						   CtkTreePath       *dest,
+						   CtkSelectionData  *selection_data);
+static gboolean ctk_tree_store_row_drop_possible  (CtkTreeDragDest   *drag_dest,
+						   CtkTreePath       *dest_path,
+						   CtkSelectionData  *selection_data);
 
 /* Sortable Interfaces */
 
-static void     ctk_tree_store_sort                    (GtkTreeStore           *tree_store);
-static void     ctk_tree_store_sort_iter_changed       (GtkTreeStore           *tree_store,
-							GtkTreeIter            *iter,
+static void     ctk_tree_store_sort                    (CtkTreeStore           *tree_store);
+static void     ctk_tree_store_sort_iter_changed       (CtkTreeStore           *tree_store,
+							CtkTreeIter            *iter,
 							gint                    column,
 							gboolean                emit_signal);
-static gboolean ctk_tree_store_get_sort_column_id      (GtkTreeSortable        *sortable,
+static gboolean ctk_tree_store_get_sort_column_id      (CtkTreeSortable        *sortable,
 							gint                   *sort_column_id,
-							GtkSortType            *order);
-static void     ctk_tree_store_set_sort_column_id      (GtkTreeSortable        *sortable,
+							CtkSortType            *order);
+static void     ctk_tree_store_set_sort_column_id      (CtkTreeSortable        *sortable,
 							gint                    sort_column_id,
-							GtkSortType             order);
-static void     ctk_tree_store_set_sort_func           (GtkTreeSortable        *sortable,
+							CtkSortType             order);
+static void     ctk_tree_store_set_sort_func           (CtkTreeSortable        *sortable,
 							gint                    sort_column_id,
-							GtkTreeIterCompareFunc  func,
+							CtkTreeIterCompareFunc  func,
 							gpointer                data,
 							GDestroyNotify          destroy);
-static void     ctk_tree_store_set_default_sort_func   (GtkTreeSortable        *sortable,
-							GtkTreeIterCompareFunc  func,
+static void     ctk_tree_store_set_default_sort_func   (CtkTreeSortable        *sortable,
+							CtkTreeIterCompareFunc  func,
 							gpointer                data,
 							GDestroyNotify          destroy);
-static gboolean ctk_tree_store_has_default_sort_func   (GtkTreeSortable        *sortable);
+static gboolean ctk_tree_store_has_default_sort_func   (CtkTreeSortable        *sortable);
 
 
 /* buildable */
 
-static gboolean ctk_tree_store_buildable_custom_tag_start (GtkBuildable  *buildable,
-							   GtkBuilder    *builder,
+static gboolean ctk_tree_store_buildable_custom_tag_start (CtkBuildable  *buildable,
+							   CtkBuilder    *builder,
 							   GObject       *child,
 							   const gchar   *tagname,
 							   GMarkupParser *parser,
 							   gpointer      *data);
-static void     ctk_tree_store_buildable_custom_finished (GtkBuildable 	 *buildable,
-							  GtkBuilder   	 *builder,
+static void     ctk_tree_store_buildable_custom_finished (CtkBuildable 	 *buildable,
+							  CtkBuilder   	 *builder,
 							  GObject      	 *child,
 							  const gchar  	 *tagname,
 							  gpointer     	  user_data);
 
-static void     ctk_tree_store_move                    (GtkTreeStore           *tree_store,
-                                                        GtkTreeIter            *iter,
-                                                        GtkTreeIter            *position,
+static void     ctk_tree_store_move                    (CtkTreeStore           *tree_store,
+                                                        CtkTreeIter            *iter,
+                                                        CtkTreeIter            *position,
                                                         gboolean                before);
 
 
@@ -194,7 +194,7 @@ static void     ctk_tree_store_move                    (GtkTreeStore           *
 static void validate_gnode (GNode *node);
 
 static inline void
-validate_tree (GtkTreeStore *tree_store)
+validate_tree (CtkTreeStore *tree_store)
 {
   if (CTK_DEBUG_CHECK (TREE))
     {
@@ -206,8 +206,8 @@ validate_tree (GtkTreeStore *tree_store)
 #define validate_tree(store)
 #endif
 
-G_DEFINE_TYPE_WITH_CODE (GtkTreeStore, ctk_tree_store, G_TYPE_OBJECT,
-                         G_ADD_PRIVATE (GtkTreeStore)
+G_DEFINE_TYPE_WITH_CODE (CtkTreeStore, ctk_tree_store, G_TYPE_OBJECT,
+                         G_ADD_PRIVATE (CtkTreeStore)
 			 G_IMPLEMENT_INTERFACE (CTK_TYPE_TREE_MODEL,
 						ctk_tree_store_tree_model_init)
 			 G_IMPLEMENT_INTERFACE (CTK_TYPE_TREE_DRAG_SOURCE,
@@ -220,7 +220,7 @@ G_DEFINE_TYPE_WITH_CODE (GtkTreeStore, ctk_tree_store, G_TYPE_OBJECT,
 						ctk_tree_store_buildable_init))
 
 static void
-ctk_tree_store_class_init (GtkTreeStoreClass *class)
+ctk_tree_store_class_init (CtkTreeStoreClass *class)
 {
   GObjectClass *object_class;
 
@@ -230,7 +230,7 @@ ctk_tree_store_class_init (GtkTreeStoreClass *class)
 }
 
 static void
-ctk_tree_store_tree_model_init (GtkTreeModelIface *iface)
+ctk_tree_store_tree_model_init (CtkTreeModelIface *iface)
 {
   iface->get_flags = ctk_tree_store_get_flags;
   iface->get_n_columns = ctk_tree_store_get_n_columns;
@@ -248,7 +248,7 @@ ctk_tree_store_tree_model_init (GtkTreeModelIface *iface)
 }
 
 static void
-ctk_tree_store_drag_source_init (GtkTreeDragSourceIface *iface)
+ctk_tree_store_drag_source_init (CtkTreeDragSourceIface *iface)
 {
   iface->row_draggable = real_ctk_tree_store_row_draggable;
   iface->drag_data_delete = ctk_tree_store_drag_data_delete;
@@ -256,14 +256,14 @@ ctk_tree_store_drag_source_init (GtkTreeDragSourceIface *iface)
 }
 
 static void
-ctk_tree_store_drag_dest_init (GtkTreeDragDestIface *iface)
+ctk_tree_store_drag_dest_init (CtkTreeDragDestIface *iface)
 {
   iface->drag_data_received = ctk_tree_store_drag_data_received;
   iface->row_drop_possible = ctk_tree_store_row_drop_possible;
 }
 
 static void
-ctk_tree_store_sortable_init (GtkTreeSortableIface *iface)
+ctk_tree_store_sortable_init (CtkTreeSortableIface *iface)
 {
   iface->get_sort_column_id = ctk_tree_store_get_sort_column_id;
   iface->set_sort_column_id = ctk_tree_store_set_sort_column_id;
@@ -273,16 +273,16 @@ ctk_tree_store_sortable_init (GtkTreeSortableIface *iface)
 }
 
 void
-ctk_tree_store_buildable_init (GtkBuildableIface *iface)
+ctk_tree_store_buildable_init (CtkBuildableIface *iface)
 {
   iface->custom_tag_start = ctk_tree_store_buildable_custom_tag_start;
   iface->custom_finished = ctk_tree_store_buildable_custom_finished;
 }
 
 static void
-ctk_tree_store_init (GtkTreeStore *tree_store)
+ctk_tree_store_init (CtkTreeStore *tree_store)
 {
-  GtkTreeStorePrivate *priv;
+  CtkTreeStorePrivate *priv;
 
   priv = ctk_tree_store_get_instance_private (tree_store);
   tree_store->priv = priv;
@@ -309,16 +309,16 @@ ctk_tree_store_init (GtkTreeStore *tree_store)
  * are supported.
  *
  * As an example, `ctk_tree_store_new (3, G_TYPE_INT, G_TYPE_STRING,
- * GDK_TYPE_PIXBUF);` will create a new #GtkTreeStore with three columns, of type
+ * GDK_TYPE_PIXBUF);` will create a new #CtkTreeStore with three columns, of type
  * #gint, #gchararray, and #GdkPixbuf respectively.
  *
- * Returns: a new #GtkTreeStore
+ * Returns: a new #CtkTreeStore
  **/
-GtkTreeStore *
+CtkTreeStore *
 ctk_tree_store_new (gint n_columns,
 			       ...)
 {
-  GtkTreeStore *retval;
+  CtkTreeStore *retval;
   va_list args;
   gint i;
 
@@ -352,13 +352,13 @@ ctk_tree_store_new (gint n_columns,
  *
  * Non vararg creation function.  Used primarily by language bindings.
  *
- * Returns: (transfer full): a new #GtkTreeStore
+ * Returns: (transfer full): a new #CtkTreeStore
  **/
-GtkTreeStore *
+CtkTreeStore *
 ctk_tree_store_newv (gint   n_columns,
 		     GType *types)
 {
-  GtkTreeStore *retval;
+  CtkTreeStore *retval;
   gint i;
 
   g_return_val_if_fail (n_columns > 0, NULL);
@@ -383,17 +383,17 @@ ctk_tree_store_newv (gint   n_columns,
 
 /**
  * ctk_tree_store_set_column_types:
- * @tree_store: A #GtkTreeStore
+ * @tree_store: A #CtkTreeStore
  * @n_columns: Number of columns for the tree store
  * @types: (array length=n_columns): An array of #GType types, one for each column
  * 
  * This function is meant primarily for #GObjects that inherit from 
- * #GtkTreeStore, and should only be used when constructing a new 
- * #GtkTreeStore.  It will not function after a row has been added, 
- * or a method on the #GtkTreeModel interface is called.
+ * #CtkTreeStore, and should only be used when constructing a new 
+ * #CtkTreeStore.  It will not function after a row has been added, 
+ * or a method on the #CtkTreeModel interface is called.
  **/
 void
-ctk_tree_store_set_column_types (GtkTreeStore *tree_store,
+ctk_tree_store_set_column_types (CtkTreeStore *tree_store,
 				 gint          n_columns,
 				 GType        *types)
 {
@@ -415,10 +415,10 @@ ctk_tree_store_set_column_types (GtkTreeStore *tree_store,
 }
 
 static void
-ctk_tree_store_set_n_columns (GtkTreeStore *tree_store,
+ctk_tree_store_set_n_columns (CtkTreeStore *tree_store,
 			      gint          n_columns)
 {
-  GtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreeStorePrivate *priv = tree_store->priv;
   int i;
 
   if (priv->n_columns == n_columns)
@@ -437,7 +437,7 @@ ctk_tree_store_set_n_columns (GtkTreeStore *tree_store,
 
 /**
  * ctk_tree_store_set_column_type:
- * @tree_store: a #GtkTreeStore
+ * @tree_store: a #CtkTreeStore
  * @column: column number
  * @type: type of the data to be stored in @column
  *
@@ -448,11 +448,11 @@ ctk_tree_store_set_n_columns (GtkTreeStore *tree_store,
  *
  **/
 static void
-ctk_tree_store_set_column_type (GtkTreeStore *tree_store,
+ctk_tree_store_set_column_type (CtkTreeStore *tree_store,
 				gint          column,
 				GType         type)
 {
-  GtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreeStorePrivate *priv = tree_store->priv;
 
   if (!_ctk_tree_data_list_check_type (type))
     {
@@ -475,8 +475,8 @@ node_free (GNode *node, gpointer data)
 static void
 ctk_tree_store_finalize (GObject *object)
 {
-  GtkTreeStore *tree_store = CTK_TREE_STORE (object);
-  GtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreeStore *tree_store = CTK_TREE_STORE (object);
+  CtkTreeStorePrivate *priv = tree_store->priv;
 
   g_node_traverse (priv->root, G_POST_ORDER, G_TRAVERSE_ALL, -1,
 		   node_free, priv->column_headers);
@@ -497,24 +497,24 @@ ctk_tree_store_finalize (GObject *object)
   G_OBJECT_CLASS (ctk_tree_store_parent_class)->finalize (object);
 }
 
-/* fulfill the GtkTreeModel requirements */
-/* NOTE: GtkTreeStore::root is a GNode, that acts as the parent node.  However,
+/* fulfill the CtkTreeModel requirements */
+/* NOTE: CtkTreeStore::root is a GNode, that acts as the parent node.  However,
  * it is not visible to the tree or to the user., and the path “0” refers to the
- * first child of GtkTreeStore::root.
+ * first child of CtkTreeStore::root.
  */
 
 
-static GtkTreeModelFlags
-ctk_tree_store_get_flags (GtkTreeModel *tree_model)
+static CtkTreeModelFlags
+ctk_tree_store_get_flags (CtkTreeModel *tree_model)
 {
   return CTK_TREE_MODEL_ITERS_PERSIST;
 }
 
 static gint
-ctk_tree_store_get_n_columns (GtkTreeModel *tree_model)
+ctk_tree_store_get_n_columns (CtkTreeModel *tree_model)
 {
-  GtkTreeStore *tree_store = (GtkTreeStore *) tree_model;
-  GtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreeStore *tree_store = (CtkTreeStore *) tree_model;
+  CtkTreeStorePrivate *priv = tree_store->priv;
 
   priv->columns_dirty = TRUE;
 
@@ -522,11 +522,11 @@ ctk_tree_store_get_n_columns (GtkTreeModel *tree_model)
 }
 
 static GType
-ctk_tree_store_get_column_type (GtkTreeModel *tree_model,
+ctk_tree_store_get_column_type (CtkTreeModel *tree_model,
 				gint          index)
 {
-  GtkTreeStore *tree_store = (GtkTreeStore *) tree_model;
-  GtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreeStore *tree_store = (CtkTreeStore *) tree_model;
+  CtkTreeStorePrivate *priv = tree_store->priv;
 
   g_return_val_if_fail (index < priv->n_columns, G_TYPE_INVALID);
 
@@ -536,13 +536,13 @@ ctk_tree_store_get_column_type (GtkTreeModel *tree_model,
 }
 
 static gboolean
-ctk_tree_store_get_iter (GtkTreeModel *tree_model,
-			 GtkTreeIter  *iter,
-			 GtkTreePath  *path)
+ctk_tree_store_get_iter (CtkTreeModel *tree_model,
+			 CtkTreeIter  *iter,
+			 CtkTreePath  *path)
 {
-  GtkTreeStore *tree_store = (GtkTreeStore *) tree_model;
-  GtkTreeStorePrivate *priv = tree_store->priv;
-  GtkTreeIter parent;
+  CtkTreeStore *tree_store = (CtkTreeStore *) tree_model;
+  CtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreeIter parent;
   gint *indices;
   gint depth, i;
 
@@ -575,13 +575,13 @@ ctk_tree_store_get_iter (GtkTreeModel *tree_model,
   return TRUE;
 }
 
-static GtkTreePath *
-ctk_tree_store_get_path (GtkTreeModel *tree_model,
-			 GtkTreeIter  *iter)
+static CtkTreePath *
+ctk_tree_store_get_path (CtkTreeModel *tree_model,
+			 CtkTreeIter  *iter)
 {
-  GtkTreeStore *tree_store = (GtkTreeStore *) tree_model;
-  GtkTreeStorePrivate *priv = tree_store->priv;
-  GtkTreePath *retval;
+  CtkTreeStore *tree_store = (CtkTreeStore *) tree_model;
+  CtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreePath *retval;
   GNode *tmp_node;
   gint i = 0;
 
@@ -602,7 +602,7 @@ ctk_tree_store_get_path (GtkTreeModel *tree_model,
     }
   else
     {
-      GtkTreeIter tmp_iter = *iter;
+      CtkTreeIter tmp_iter = *iter;
 
       tmp_iter.user_data = G_NODE (iter->user_data)->parent;
 
@@ -641,14 +641,14 @@ ctk_tree_store_get_path (GtkTreeModel *tree_model,
 
 
 static void
-ctk_tree_store_get_value (GtkTreeModel *tree_model,
-			  GtkTreeIter  *iter,
+ctk_tree_store_get_value (CtkTreeModel *tree_model,
+			  CtkTreeIter  *iter,
 			  gint          column,
 			  GValue       *value)
 {
-  GtkTreeStore *tree_store = (GtkTreeStore *) tree_model;
-  GtkTreeStorePrivate *priv = tree_store->priv;
-  GtkTreeDataList *list;
+  CtkTreeStore *tree_store = (CtkTreeStore *) tree_model;
+  CtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreeDataList *list;
   gint tmp_column = column;
 
   g_return_if_fail (column < priv->n_columns);
@@ -673,8 +673,8 @@ ctk_tree_store_get_value (GtkTreeModel *tree_model,
 }
 
 static gboolean
-ctk_tree_store_iter_next (GtkTreeModel  *tree_model,
-			  GtkTreeIter   *iter)
+ctk_tree_store_iter_next (CtkTreeModel  *tree_model,
+			  CtkTreeIter   *iter)
 {
   g_return_val_if_fail (iter->user_data != NULL, FALSE);
   g_return_val_if_fail (iter->stamp == CTK_TREE_STORE (tree_model)->priv->stamp, FALSE);
@@ -691,8 +691,8 @@ ctk_tree_store_iter_next (GtkTreeModel  *tree_model,
 }
 
 static gboolean
-ctk_tree_store_iter_previous (GtkTreeModel *tree_model,
-                              GtkTreeIter  *iter)
+ctk_tree_store_iter_previous (CtkTreeModel *tree_model,
+                              CtkTreeIter  *iter)
 {
   g_return_val_if_fail (iter->user_data != NULL, FALSE);
   g_return_val_if_fail (iter->stamp == CTK_TREE_STORE (tree_model)->priv->stamp, FALSE);
@@ -709,12 +709,12 @@ ctk_tree_store_iter_previous (GtkTreeModel *tree_model,
 }
 
 static gboolean
-ctk_tree_store_iter_children (GtkTreeModel *tree_model,
-			      GtkTreeIter  *iter,
-			      GtkTreeIter  *parent)
+ctk_tree_store_iter_children (CtkTreeModel *tree_model,
+			      CtkTreeIter  *iter,
+			      CtkTreeIter  *parent)
 {
-  GtkTreeStore *tree_store = (GtkTreeStore *) tree_model;
-  GtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreeStore *tree_store = (CtkTreeStore *) tree_model;
+  CtkTreeStorePrivate *priv = tree_store->priv;
   GNode *children;
 
   if (parent)
@@ -739,8 +739,8 @@ ctk_tree_store_iter_children (GtkTreeModel *tree_model,
 }
 
 static gboolean
-ctk_tree_store_iter_has_child (GtkTreeModel *tree_model,
-			       GtkTreeIter  *iter)
+ctk_tree_store_iter_has_child (CtkTreeModel *tree_model,
+			       CtkTreeIter  *iter)
 {
   g_return_val_if_fail (iter->user_data != NULL, FALSE);
   g_return_val_if_fail (VALID_ITER (iter, tree_model), FALSE);
@@ -749,8 +749,8 @@ ctk_tree_store_iter_has_child (GtkTreeModel *tree_model,
 }
 
 static gint
-ctk_tree_store_iter_n_children (GtkTreeModel *tree_model,
-				GtkTreeIter  *iter)
+ctk_tree_store_iter_n_children (CtkTreeModel *tree_model,
+				CtkTreeIter  *iter)
 {
   GNode *node;
   gint i = 0;
@@ -772,13 +772,13 @@ ctk_tree_store_iter_n_children (GtkTreeModel *tree_model,
 }
 
 static gboolean
-ctk_tree_store_iter_nth_child (GtkTreeModel *tree_model,
-			       GtkTreeIter  *iter,
-			       GtkTreeIter  *parent,
+ctk_tree_store_iter_nth_child (CtkTreeModel *tree_model,
+			       CtkTreeIter  *iter,
+			       CtkTreeIter  *parent,
 			       gint          n)
 {
-  GtkTreeStore *tree_store = (GtkTreeStore *) tree_model;
-  GtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreeStore *tree_store = (CtkTreeStore *) tree_model;
+  CtkTreeStorePrivate *priv = tree_store->priv;
   GNode *parent_node;
   GNode *child;
 
@@ -805,12 +805,12 @@ ctk_tree_store_iter_nth_child (GtkTreeModel *tree_model,
 }
 
 static gboolean
-ctk_tree_store_iter_parent (GtkTreeModel *tree_model,
-			    GtkTreeIter  *iter,
-			    GtkTreeIter  *child)
+ctk_tree_store_iter_parent (CtkTreeModel *tree_model,
+			    CtkTreeIter  *iter,
+			    CtkTreeIter  *child)
 {
-  GtkTreeStore *tree_store = (GtkTreeStore *) tree_model;
-  GtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreeStore *tree_store = (CtkTreeStore *) tree_model;
+  CtkTreeStorePrivate *priv = tree_store->priv;
   GNode *parent;
 
   g_return_val_if_fail (iter != NULL, FALSE);
@@ -836,15 +836,15 @@ ctk_tree_store_iter_parent (GtkTreeModel *tree_model,
 
 /* Does not emit a signal */
 static gboolean
-ctk_tree_store_real_set_value (GtkTreeStore *tree_store,
-			       GtkTreeIter  *iter,
+ctk_tree_store_real_set_value (CtkTreeStore *tree_store,
+			       CtkTreeIter  *iter,
 			       gint          column,
 			       GValue       *value,
 			       gboolean      sort)
 {
-  GtkTreeStorePrivate *priv = tree_store->priv;
-  GtkTreeDataList *list;
-  GtkTreeDataList *prev;
+  CtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreeDataList *list;
+  CtkTreeDataList *prev;
   gint old_column = column;
   GValue real_value = G_VALUE_INIT;
   gboolean converted = FALSE;
@@ -933,8 +933,8 @@ ctk_tree_store_real_set_value (GtkTreeStore *tree_store,
 
 /**
  * ctk_tree_store_set_value:
- * @tree_store: a #GtkTreeStore
- * @iter: A valid #GtkTreeIter for the row being modified
+ * @tree_store: a #CtkTreeStore
+ * @iter: A valid #CtkTreeIter for the row being modified
  * @column: column number to modify
  * @value: new value for the cell
  *
@@ -944,8 +944,8 @@ ctk_tree_store_real_set_value (GtkTreeStore *tree_store,
  *
  **/
 void
-ctk_tree_store_set_value (GtkTreeStore *tree_store,
-			  GtkTreeIter  *iter,
+ctk_tree_store_set_value (CtkTreeStore *tree_store,
+			  CtkTreeIter  *iter,
 			  gint          column,
 			  GValue       *value)
 {
@@ -956,7 +956,7 @@ ctk_tree_store_set_value (GtkTreeStore *tree_store,
 
   if (ctk_tree_store_real_set_value (tree_store, iter, column, value, TRUE))
     {
-      GtkTreePath *path;
+      CtkTreePath *path;
 
       path = ctk_tree_store_get_path (CTK_TREE_MODEL (tree_store), iter);
       ctk_tree_model_row_changed (CTK_TREE_MODEL (tree_store), path, iter);
@@ -964,17 +964,17 @@ ctk_tree_store_set_value (GtkTreeStore *tree_store,
     }
 }
 
-static GtkTreeIterCompareFunc
-ctk_tree_store_get_compare_func (GtkTreeStore *tree_store)
+static CtkTreeIterCompareFunc
+ctk_tree_store_get_compare_func (CtkTreeStore *tree_store)
 {
-  GtkTreeStorePrivate *priv = tree_store->priv;
-  GtkTreeIterCompareFunc func = NULL;
+  CtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreeIterCompareFunc func = NULL;
 
   if (CTK_TREE_STORE_IS_SORTED (tree_store))
     {
       if (priv->sort_column_id != -1)
 	{
-	  GtkTreeDataSortHeader *header;
+	  CtkTreeDataSortHeader *header;
 	  header = _ctk_tree_data_list_get_header (priv->sort_list,
 						   priv->sort_column_id);
 	  g_return_val_if_fail (header != NULL, NULL);
@@ -991,17 +991,17 @@ ctk_tree_store_get_compare_func (GtkTreeStore *tree_store)
 }
 
 static void
-ctk_tree_store_set_vector_internal (GtkTreeStore *tree_store,
-				    GtkTreeIter  *iter,
+ctk_tree_store_set_vector_internal (CtkTreeStore *tree_store,
+				    CtkTreeIter  *iter,
 				    gboolean     *emit_signal,
 				    gboolean     *maybe_need_sort,
 				    gint         *columns,
 				    GValue       *values,
 				    gint          n_values)
 {
-  GtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreeStorePrivate *priv = tree_store->priv;
   gint i;
-  GtkTreeIterCompareFunc func = NULL;
+  CtkTreeIterCompareFunc func = NULL;
 
   func = ctk_tree_store_get_compare_func (tree_store);
   if (func != _ctk_tree_data_list_compare_func)
@@ -1020,15 +1020,15 @@ ctk_tree_store_set_vector_internal (GtkTreeStore *tree_store,
 }
 
 static void
-ctk_tree_store_set_valist_internal (GtkTreeStore *tree_store,
-                                    GtkTreeIter  *iter,
+ctk_tree_store_set_valist_internal (CtkTreeStore *tree_store,
+                                    CtkTreeIter  *iter,
                                     gboolean     *emit_signal,
                                     gboolean     *maybe_need_sort,
                                     va_list       var_args)
 {
-  GtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreeStorePrivate *priv = tree_store->priv;
   gint column;
-  GtkTreeIterCompareFunc func = NULL;
+  CtkTreeIterCompareFunc func = NULL;
 
   column = va_arg (var_args, gint);
 
@@ -1078,8 +1078,8 @@ ctk_tree_store_set_valist_internal (GtkTreeStore *tree_store,
 
 /**
  * ctk_tree_store_set_valuesv: (rename-to ctk_tree_store_set)
- * @tree_store: A #GtkTreeStore
- * @iter: A valid #GtkTreeIter for the row being modified
+ * @tree_store: A #CtkTreeStore
+ * @iter: A valid #CtkTreeIter for the row being modified
  * @columns: (array length=n_values): an array of column numbers
  * @values: (array length=n_values): an array of GValues
  * @n_values: the length of the @columns and @values arrays
@@ -1092,13 +1092,13 @@ ctk_tree_store_set_valist_internal (GtkTreeStore *tree_store,
  * Since: 2.12
  **/
 void
-ctk_tree_store_set_valuesv (GtkTreeStore *tree_store,
-			    GtkTreeIter  *iter,
+ctk_tree_store_set_valuesv (CtkTreeStore *tree_store,
+			    CtkTreeIter  *iter,
 			    gint         *columns,
 			    GValue       *values,
 			    gint          n_values)
 {
-  GtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreeStorePrivate *priv = tree_store->priv;
   gboolean emit_signal = FALSE;
   gboolean maybe_need_sort = FALSE;
 
@@ -1115,7 +1115,7 @@ ctk_tree_store_set_valuesv (GtkTreeStore *tree_store,
 
   if (emit_signal)
     {
-      GtkTreePath *path;
+      CtkTreePath *path;
 
       path = ctk_tree_store_get_path (CTK_TREE_MODEL (tree_store), iter);
       ctk_tree_model_row_changed (CTK_TREE_MODEL (tree_store), path, iter);
@@ -1125,8 +1125,8 @@ ctk_tree_store_set_valuesv (GtkTreeStore *tree_store,
 
 /**
  * ctk_tree_store_set_valist:
- * @tree_store: A #GtkTreeStore
- * @iter: A valid #GtkTreeIter for the row being modified
+ * @tree_store: A #CtkTreeStore
+ * @iter: A valid #CtkTreeIter for the row being modified
  * @var_args: va_list of column/value pairs
  *
  * See ctk_tree_store_set(); this version takes a va_list for
@@ -1134,11 +1134,11 @@ ctk_tree_store_set_valuesv (GtkTreeStore *tree_store,
  *
  **/
 void
-ctk_tree_store_set_valist (GtkTreeStore *tree_store,
-                           GtkTreeIter  *iter,
+ctk_tree_store_set_valist (CtkTreeStore *tree_store,
+                           CtkTreeIter  *iter,
                            va_list       var_args)
 {
-  GtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreeStorePrivate *priv = tree_store->priv;
   gboolean emit_signal = FALSE;
   gboolean maybe_need_sort = FALSE;
 
@@ -1155,7 +1155,7 @@ ctk_tree_store_set_valist (GtkTreeStore *tree_store,
 
   if (emit_signal)
     {
-      GtkTreePath *path;
+      CtkTreePath *path;
 
       path = ctk_tree_store_get_path (CTK_TREE_MODEL (tree_store), iter);
       ctk_tree_model_row_changed (CTK_TREE_MODEL (tree_store), path, iter);
@@ -1165,8 +1165,8 @@ ctk_tree_store_set_valist (GtkTreeStore *tree_store,
 
 /**
  * ctk_tree_store_set:
- * @tree_store: A #GtkTreeStore
- * @iter: A valid #GtkTreeIter for the row being modified
+ * @tree_store: A #CtkTreeStore
+ * @iter: A valid #CtkTreeIter for the row being modified
  * @...: pairs of column number and value, terminated with -1
  *
  * Sets the value of one or more cells in the row referenced by @iter.
@@ -1180,8 +1180,8 @@ ctk_tree_store_set_valist (GtkTreeStore *tree_store,
  * will be copied if it is a %G_TYPE_STRING or %G_TYPE_BOXED.
  **/
 void
-ctk_tree_store_set (GtkTreeStore *tree_store,
-		    GtkTreeIter  *iter,
+ctk_tree_store_set (CtkTreeStore *tree_store,
+		    CtkTreeIter  *iter,
 		    ...)
 {
   va_list var_args;
@@ -1193,8 +1193,8 @@ ctk_tree_store_set (GtkTreeStore *tree_store,
 
 /**
  * ctk_tree_store_remove:
- * @tree_store: A #GtkTreeStore
- * @iter: A valid #GtkTreeIter
+ * @tree_store: A #CtkTreeStore
+ * @iter: A valid #CtkTreeIter
  * 
  * Removes @iter from @tree_store.  After being removed, @iter is set to the
  * next valid row at that level, or invalidated if it previously pointed to the
@@ -1203,12 +1203,12 @@ ctk_tree_store_set (GtkTreeStore *tree_store,
  * Returns: %TRUE if @iter is still valid, %FALSE if not.
  **/
 gboolean
-ctk_tree_store_remove (GtkTreeStore *tree_store,
-		       GtkTreeIter  *iter)
+ctk_tree_store_remove (CtkTreeStore *tree_store,
+		       CtkTreeIter  *iter)
 {
-  GtkTreeStorePrivate *priv = tree_store->priv;
-  GtkTreePath *path;
-  GtkTreeIter new_iter = {0,};
+  CtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreePath *path;
+  CtkTreeIter new_iter = {0,};
   GNode *parent;
   GNode *next_node;
 
@@ -1261,9 +1261,9 @@ ctk_tree_store_remove (GtkTreeStore *tree_store,
 
 /**
  * ctk_tree_store_insert:
- * @tree_store: A #GtkTreeStore
- * @iter: (out): An unset #GtkTreeIter to set to the new row
- * @parent: (allow-none): A valid #GtkTreeIter, or %NULL
+ * @tree_store: A #CtkTreeStore
+ * @iter: (out): An unset #CtkTreeIter to set to the new row
+ * @parent: (allow-none): A valid #CtkTreeIter, or %NULL
  * @position: position to insert the new row, or -1 for last
  *
  * Creates a new row at @position.  If parent is non-%NULL, then the row will be
@@ -1276,13 +1276,13 @@ ctk_tree_store_remove (GtkTreeStore *tree_store,
  *
  **/
 void
-ctk_tree_store_insert (GtkTreeStore *tree_store,
-		       GtkTreeIter  *iter,
-		       GtkTreeIter  *parent,
+ctk_tree_store_insert (CtkTreeStore *tree_store,
+		       CtkTreeIter  *iter,
+		       CtkTreeIter  *parent,
 		       gint          position)
 {
-  GtkTreeStorePrivate *priv = tree_store->priv;
-  GtkTreePath *path;
+  CtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreePath *path;
   GNode *parent_node;
   GNode *new_node;
 
@@ -1318,15 +1318,15 @@ ctk_tree_store_insert (GtkTreeStore *tree_store,
 
   ctk_tree_path_free (path);
 
-  validate_tree ((GtkTreeStore*)tree_store);
+  validate_tree ((CtkTreeStore*)tree_store);
 }
 
 /**
  * ctk_tree_store_insert_before:
- * @tree_store: A #GtkTreeStore
- * @iter: (out): An unset #GtkTreeIter to set to the new row
- * @parent: (allow-none): A valid #GtkTreeIter, or %NULL
- * @sibling: (allow-none): A valid #GtkTreeIter, or %NULL
+ * @tree_store: A #CtkTreeStore
+ * @iter: (out): An unset #CtkTreeIter to set to the new row
+ * @parent: (allow-none): A valid #CtkTreeIter, or %NULL
+ * @sibling: (allow-none): A valid #CtkTreeIter, or %NULL
  *
  * Inserts a new row before @sibling.  If @sibling is %NULL, then the row will
  * be appended to @parent ’s children.  If @parent and @sibling are %NULL, then
@@ -1340,13 +1340,13 @@ ctk_tree_store_insert (GtkTreeStore *tree_store,
  *
  **/
 void
-ctk_tree_store_insert_before (GtkTreeStore *tree_store,
-			      GtkTreeIter  *iter,
-			      GtkTreeIter  *parent,
-			      GtkTreeIter  *sibling)
+ctk_tree_store_insert_before (CtkTreeStore *tree_store,
+			      CtkTreeIter  *iter,
+			      CtkTreeIter  *parent,
+			      CtkTreeIter  *sibling)
 {
-  GtkTreeStorePrivate *priv = tree_store->priv;
-  GtkTreePath *path;
+  CtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreePath *path;
   GNode *parent_node = NULL;
   GNode *new_node;
 
@@ -1387,7 +1387,7 @@ ctk_tree_store_insert_before (GtkTreeStore *tree_store,
     {
       if (new_node->prev == NULL && new_node->next == NULL)
         {
-          GtkTreeIter parent_iter;
+          CtkTreeIter parent_iter;
 
           parent_iter.stamp = priv->stamp;
           parent_iter.user_data = parent_node;
@@ -1404,10 +1404,10 @@ ctk_tree_store_insert_before (GtkTreeStore *tree_store,
 
 /**
  * ctk_tree_store_insert_after:
- * @tree_store: A #GtkTreeStore
- * @iter: (out): An unset #GtkTreeIter to set to the new row
- * @parent: (allow-none): A valid #GtkTreeIter, or %NULL
- * @sibling: (allow-none): A valid #GtkTreeIter, or %NULL
+ * @tree_store: A #CtkTreeStore
+ * @iter: (out): An unset #CtkTreeIter to set to the new row
+ * @parent: (allow-none): A valid #CtkTreeIter, or %NULL
+ * @sibling: (allow-none): A valid #CtkTreeIter, or %NULL
  *
  * Inserts a new row after @sibling.  If @sibling is %NULL, then the row will be
  * prepended to @parent ’s children.  If @parent and @sibling are %NULL, then
@@ -1421,13 +1421,13 @@ ctk_tree_store_insert_before (GtkTreeStore *tree_store,
  *
  **/
 void
-ctk_tree_store_insert_after (GtkTreeStore *tree_store,
-			     GtkTreeIter  *iter,
-			     GtkTreeIter  *parent,
-			     GtkTreeIter  *sibling)
+ctk_tree_store_insert_after (CtkTreeStore *tree_store,
+			     CtkTreeIter  *iter,
+			     CtkTreeIter  *parent,
+			     CtkTreeIter  *sibling)
 {
-  GtkTreeStorePrivate *priv = tree_store->priv;
-  GtkTreePath *path;
+  CtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreePath *path;
   GNode *parent_node;
   GNode *new_node;
 
@@ -1469,7 +1469,7 @@ ctk_tree_store_insert_after (GtkTreeStore *tree_store,
     {
       if (new_node->prev == NULL && new_node->next == NULL)
         {
-          GtkTreeIter parent_iter;
+          CtkTreeIter parent_iter;
 
           parent_iter.stamp = priv->stamp;
           parent_iter.user_data = parent_node;
@@ -1486,9 +1486,9 @@ ctk_tree_store_insert_after (GtkTreeStore *tree_store,
 
 /**
  * ctk_tree_store_insert_with_values:
- * @tree_store: A #GtkTreeStore
- * @iter: (out) (allow-none): An unset #GtkTreeIter to set the new row, or %NULL.
- * @parent: (allow-none): A valid #GtkTreeIter, or %NULL
+ * @tree_store: A #CtkTreeStore
+ * @iter: (out) (allow-none): An unset #CtkTreeIter to set the new row, or %NULL.
+ * @parent: (allow-none): A valid #CtkTreeIter, or %NULL
  * @position: position to insert the new row, or -1 to append after existing rows
  * @...: pairs of column number and value, terminated with -1
  *
@@ -1514,17 +1514,17 @@ ctk_tree_store_insert_after (GtkTreeStore *tree_store,
  * Since: 2.10
  */
 void
-ctk_tree_store_insert_with_values (GtkTreeStore *tree_store,
-				   GtkTreeIter  *iter,
-				   GtkTreeIter  *parent,
+ctk_tree_store_insert_with_values (CtkTreeStore *tree_store,
+				   CtkTreeIter  *iter,
+				   CtkTreeIter  *parent,
 				   gint          position,
 				   ...)
 {
-  GtkTreeStorePrivate *priv = tree_store->priv;
-  GtkTreePath *path;
+  CtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreePath *path;
   GNode *parent_node;
   GNode *new_node;
-  GtkTreeIter tmp_iter;
+  CtkTreeIter tmp_iter;
   va_list var_args;
   gboolean changed = FALSE;
   gboolean maybe_need_sort = FALSE;
@@ -1573,14 +1573,14 @@ ctk_tree_store_insert_with_values (GtkTreeStore *tree_store,
 
   ctk_tree_path_free (path);
 
-  validate_tree ((GtkTreeStore *)tree_store);
+  validate_tree ((CtkTreeStore *)tree_store);
 }
 
 /**
  * ctk_tree_store_insert_with_valuesv: (rename-to ctk_tree_store_insert_with_values)
- * @tree_store: A #GtkTreeStore
- * @iter: (out) (allow-none): An unset #GtkTreeIter to set the new row, or %NULL.
- * @parent: (allow-none): A valid #GtkTreeIter, or %NULL
+ * @tree_store: A #CtkTreeStore
+ * @iter: (out) (allow-none): An unset #CtkTreeIter to set the new row, or %NULL.
+ * @parent: (allow-none): A valid #CtkTreeIter, or %NULL
  * @position: position to insert the new row, or -1 for last
  * @columns: (array length=n_values): an array of column numbers
  * @values: (array length=n_values): an array of GValues
@@ -1593,19 +1593,19 @@ ctk_tree_store_insert_with_values (GtkTreeStore *tree_store,
  * Since: 2.10
  */
 void
-ctk_tree_store_insert_with_valuesv (GtkTreeStore *tree_store,
-				    GtkTreeIter  *iter,
-				    GtkTreeIter  *parent,
+ctk_tree_store_insert_with_valuesv (CtkTreeStore *tree_store,
+				    CtkTreeIter  *iter,
+				    CtkTreeIter  *parent,
 				    gint          position,
 				    gint         *columns,
 				    GValue       *values,
 				    gint          n_values)
 {
-  GtkTreeStorePrivate *priv = tree_store->priv;
-  GtkTreePath *path;
+  CtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreePath *path;
   GNode *parent_node;
   GNode *new_node;
-  GtkTreeIter tmp_iter;
+  CtkTreeIter tmp_iter;
   gboolean changed = FALSE;
   gboolean maybe_need_sort = FALSE;
 
@@ -1651,14 +1651,14 @@ ctk_tree_store_insert_with_valuesv (GtkTreeStore *tree_store,
 
   ctk_tree_path_free (path);
 
-  validate_tree ((GtkTreeStore *)tree_store);
+  validate_tree ((CtkTreeStore *)tree_store);
 }
 
 /**
  * ctk_tree_store_prepend:
- * @tree_store: A #GtkTreeStore
- * @iter: (out): An unset #GtkTreeIter to set to the prepended row
- * @parent: (allow-none): A valid #GtkTreeIter, or %NULL
+ * @tree_store: A #CtkTreeStore
+ * @iter: (out): An unset #CtkTreeIter to set to the prepended row
+ * @parent: (allow-none): A valid #CtkTreeIter, or %NULL
  * 
  * Prepends a new row to @tree_store.  If @parent is non-%NULL, then it will prepend
  * the new row before the first child of @parent, otherwise it will prepend a row
@@ -1667,11 +1667,11 @@ ctk_tree_store_insert_with_valuesv (GtkTreeStore *tree_store,
  * call ctk_tree_store_set() or ctk_tree_store_set_value().
  **/
 void
-ctk_tree_store_prepend (GtkTreeStore *tree_store,
-			GtkTreeIter  *iter,
-			GtkTreeIter  *parent)
+ctk_tree_store_prepend (CtkTreeStore *tree_store,
+			CtkTreeIter  *iter,
+			CtkTreeIter  *parent)
 {
-  GtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreeStorePrivate *priv = tree_store->priv;
   GNode *parent_node;
 
   g_return_if_fail (CTK_IS_TREE_STORE (tree_store));
@@ -1688,7 +1688,7 @@ ctk_tree_store_prepend (GtkTreeStore *tree_store,
 
   if (parent_node->children == NULL)
     {
-      GtkTreePath *path;
+      CtkTreePath *path;
       
       iter->stamp = priv->stamp;
       iter->user_data = g_node_new (NULL);
@@ -1715,9 +1715,9 @@ ctk_tree_store_prepend (GtkTreeStore *tree_store,
 
 /**
  * ctk_tree_store_append:
- * @tree_store: A #GtkTreeStore
- * @iter: (out): An unset #GtkTreeIter to set to the appended row
- * @parent: (allow-none): A valid #GtkTreeIter, or %NULL
+ * @tree_store: A #CtkTreeStore
+ * @iter: (out): An unset #CtkTreeIter to set to the appended row
+ * @parent: (allow-none): A valid #CtkTreeIter, or %NULL
  * 
  * Appends a new row to @tree_store.  If @parent is non-%NULL, then it will append the
  * new row after the last child of @parent, otherwise it will append a row to
@@ -1726,11 +1726,11 @@ ctk_tree_store_prepend (GtkTreeStore *tree_store,
  * ctk_tree_store_set() or ctk_tree_store_set_value().
  **/
 void
-ctk_tree_store_append (GtkTreeStore *tree_store,
-		       GtkTreeIter  *iter,
-		       GtkTreeIter  *parent)
+ctk_tree_store_append (CtkTreeStore *tree_store,
+		       CtkTreeIter  *iter,
+		       CtkTreeIter  *parent)
 {
-  GtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreeStorePrivate *priv = tree_store->priv;
   GNode *parent_node;
 
   g_return_if_fail (CTK_IS_TREE_STORE (tree_store));
@@ -1747,7 +1747,7 @@ ctk_tree_store_append (GtkTreeStore *tree_store,
 
   if (parent_node->children == NULL)
     {
-      GtkTreePath *path;
+      CtkTreePath *path;
 
       iter->stamp = priv->stamp;
       iter->user_data = g_node_new (NULL);
@@ -1774,9 +1774,9 @@ ctk_tree_store_append (GtkTreeStore *tree_store,
 
 /**
  * ctk_tree_store_is_ancestor:
- * @tree_store: A #GtkTreeStore
- * @iter: A valid #GtkTreeIter
- * @descendant: A valid #GtkTreeIter
+ * @tree_store: A #CtkTreeStore
+ * @iter: A valid #CtkTreeIter
+ * @descendant: A valid #CtkTreeIter
  * 
  * Returns %TRUE if @iter is an ancestor of @descendant.  That is, @iter is the
  * parent (or grandparent or great-grandparent) of @descendant.
@@ -1784,9 +1784,9 @@ ctk_tree_store_append (GtkTreeStore *tree_store,
  * Returns: %TRUE, if @iter is an ancestor of @descendant
  **/
 gboolean
-ctk_tree_store_is_ancestor (GtkTreeStore *tree_store,
-			    GtkTreeIter  *iter,
-			    GtkTreeIter  *descendant)
+ctk_tree_store_is_ancestor (CtkTreeStore *tree_store,
+			    CtkTreeIter  *iter,
+			    CtkTreeIter  *descendant)
 {
   g_return_val_if_fail (CTK_IS_TREE_STORE (tree_store), FALSE);
   g_return_val_if_fail (VALID_ITER (iter, tree_store), FALSE);
@@ -1799,8 +1799,8 @@ ctk_tree_store_is_ancestor (GtkTreeStore *tree_store,
 
 /**
  * ctk_tree_store_iter_depth:
- * @tree_store: A #GtkTreeStore
- * @iter: A valid #GtkTreeIter
+ * @tree_store: A #CtkTreeStore
+ * @iter: A valid #CtkTreeIter
  * 
  * Returns the depth of @iter.  This will be 0 for anything on the root level, 1
  * for anything down a level, etc.
@@ -1808,8 +1808,8 @@ ctk_tree_store_is_ancestor (GtkTreeStore *tree_store,
  * Returns: The depth of @iter
  **/
 gint
-ctk_tree_store_iter_depth (GtkTreeStore *tree_store,
-			   GtkTreeIter  *iter)
+ctk_tree_store_iter_depth (CtkTreeStore *tree_store,
+			   CtkTreeIter  *iter)
 {
   g_return_val_if_fail (CTK_IS_TREE_STORE (tree_store), 0);
   g_return_val_if_fail (VALID_ITER (iter, tree_store), 0);
@@ -1820,9 +1820,9 @@ ctk_tree_store_iter_depth (GtkTreeStore *tree_store,
 /* simple ripoff from g_node_traverse_post_order */
 static gboolean
 ctk_tree_store_clear_traverse (GNode        *node,
-			       GtkTreeStore *store)
+			       CtkTreeStore *store)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
   if (node->children)
     {
@@ -1859,9 +1859,9 @@ ctk_tree_store_clear_traverse (GNode        *node,
 }
 
 static void
-ctk_tree_store_increment_stamp (GtkTreeStore *tree_store)
+ctk_tree_store_increment_stamp (CtkTreeStore *tree_store)
 {
-  GtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreeStorePrivate *priv = tree_store->priv;
   do
     {
       priv->stamp++;
@@ -1871,12 +1871,12 @@ ctk_tree_store_increment_stamp (GtkTreeStore *tree_store)
 
 /**
  * ctk_tree_store_clear:
- * @tree_store: a #GtkTreeStore
+ * @tree_store: a #CtkTreeStore
  * 
  * Removes all rows from @tree_store
  **/
 void
-ctk_tree_store_clear (GtkTreeStore *tree_store)
+ctk_tree_store_clear (CtkTreeStore *tree_store)
 {
   g_return_if_fail (CTK_IS_TREE_STORE (tree_store));
 
@@ -1885,7 +1885,7 @@ ctk_tree_store_clear (GtkTreeStore *tree_store)
 }
 
 static gboolean
-ctk_tree_store_iter_is_valid_helper (GtkTreeIter *iter,
+ctk_tree_store_iter_is_valid_helper (CtkTreeIter *iter,
 				     GNode       *first)
 {
   GNode *node;
@@ -1910,21 +1910,21 @@ ctk_tree_store_iter_is_valid_helper (GtkTreeIter *iter,
 
 /**
  * ctk_tree_store_iter_is_valid:
- * @tree_store: A #GtkTreeStore.
- * @iter: A #GtkTreeIter.
+ * @tree_store: A #CtkTreeStore.
+ * @iter: A #CtkTreeIter.
  *
  * WARNING: This function is slow. Only use it for debugging and/or testing
  * purposes.
  *
- * Checks if the given iter is a valid iter for this #GtkTreeStore.
+ * Checks if the given iter is a valid iter for this #CtkTreeStore.
  *
  * Returns: %TRUE if the iter is valid, %FALSE if the iter is invalid.
  *
  * Since: 2.2
  **/
 gboolean
-ctk_tree_store_iter_is_valid (GtkTreeStore *tree_store,
-                              GtkTreeIter  *iter)
+ctk_tree_store_iter_is_valid (CtkTreeStore *tree_store,
+                              CtkTreeIter  *iter)
 {
   g_return_val_if_fail (CTK_IS_TREE_STORE (tree_store), FALSE);
   g_return_val_if_fail (iter != NULL, FALSE);
@@ -1938,17 +1938,17 @@ ctk_tree_store_iter_is_valid (GtkTreeStore *tree_store,
 /* DND */
 
 
-static gboolean real_ctk_tree_store_row_draggable (GtkTreeDragSource *drag_source,
-                                                   GtkTreePath       *path)
+static gboolean real_ctk_tree_store_row_draggable (CtkTreeDragSource *drag_source,
+                                                   CtkTreePath       *path)
 {
   return TRUE;
 }
                
 static gboolean
-ctk_tree_store_drag_data_delete (GtkTreeDragSource *drag_source,
-                                 GtkTreePath       *path)
+ctk_tree_store_drag_data_delete (CtkTreeDragSource *drag_source,
+                                 CtkTreePath       *path)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
   if (ctk_tree_store_get_iter (CTK_TREE_MODEL (drag_source),
                                &iter,
@@ -1965,9 +1965,9 @@ ctk_tree_store_drag_data_delete (GtkTreeDragSource *drag_source,
 }
 
 static gboolean
-ctk_tree_store_drag_data_get (GtkTreeDragSource *drag_source,
-                              GtkTreePath       *path,
-                              GtkSelectionData  *selection_data)
+ctk_tree_store_drag_data_get (CtkTreeDragSource *drag_source,
+                              CtkTreePath       *path,
+                              CtkSelectionData  *selection_data)
 {
   /* Note that we don't need to handle the CTK_TREE_MODEL_ROW
    * target, because the default handler does it for us, but
@@ -1990,15 +1990,15 @@ ctk_tree_store_drag_data_get (GtkTreeDragSource *drag_source,
 }
 
 static void
-copy_node_data (GtkTreeStore *tree_store,
-                GtkTreeIter  *src_iter,
-                GtkTreeIter  *dest_iter)
+copy_node_data (CtkTreeStore *tree_store,
+                CtkTreeIter  *src_iter,
+                CtkTreeIter  *dest_iter)
 {
-  GtkTreeDataList *dl = G_NODE (src_iter->user_data)->data;
-  GtkTreeDataList *copy_head = NULL;
-  GtkTreeDataList *copy_prev = NULL;
-  GtkTreeDataList *copy_iter = NULL;
-  GtkTreePath *path;
+  CtkTreeDataList *dl = G_NODE (src_iter->user_data)->data;
+  CtkTreeDataList *copy_head = NULL;
+  CtkTreeDataList *copy_prev = NULL;
+  CtkTreeDataList *copy_iter = NULL;
+  CtkTreePath *path;
   gint col;
 
   col = 0;
@@ -2026,12 +2026,12 @@ copy_node_data (GtkTreeStore *tree_store,
 }
 
 static void
-recursive_node_copy (GtkTreeStore *tree_store,
-                     GtkTreeIter  *src_iter,
-                     GtkTreeIter  *dest_iter)
+recursive_node_copy (CtkTreeStore *tree_store,
+                     CtkTreeIter  *src_iter,
+                     CtkTreeIter  *dest_iter)
 {
-  GtkTreeIter child;
-  GtkTreeModel *model;
+  CtkTreeIter child;
+  CtkTreeModel *model;
 
   model = CTK_TREE_MODEL (tree_store);
 
@@ -2046,7 +2046,7 @@ recursive_node_copy (GtkTreeStore *tree_store,
        */
       do
         {
-          GtkTreeIter copy;
+          CtkTreeIter copy;
 
           /* Gee, a really slow algorithm... ;-) FIXME */
           ctk_tree_store_append (tree_store,
@@ -2060,14 +2060,14 @@ recursive_node_copy (GtkTreeStore *tree_store,
 }
 
 static gboolean
-ctk_tree_store_drag_data_received (GtkTreeDragDest   *drag_dest,
-                                   GtkTreePath       *dest,
-                                   GtkSelectionData  *selection_data)
+ctk_tree_store_drag_data_received (CtkTreeDragDest   *drag_dest,
+                                   CtkTreePath       *dest,
+                                   CtkSelectionData  *selection_data)
 {
-  GtkTreeModel *tree_model;
-  GtkTreeStore *tree_store;
-  GtkTreeModel *src_model = NULL;
-  GtkTreePath *src_path = NULL;
+  CtkTreeModel *tree_model;
+  CtkTreeStore *tree_store;
+  CtkTreeModel *src_model = NULL;
+  CtkTreePath *src_path = NULL;
   gboolean retval = FALSE;
 
   tree_model = CTK_TREE_MODEL (drag_dest);
@@ -2081,9 +2081,9 @@ ctk_tree_store_drag_data_received (GtkTreeDragDest   *drag_dest,
       src_model == tree_model)
     {
       /* Copy the given row to a new position */
-      GtkTreeIter src_iter;
-      GtkTreeIter dest_iter;
-      GtkTreePath *prev;
+      CtkTreeIter src_iter;
+      CtkTreeIter dest_iter;
+      CtkTreePath *prev;
 
       if (!ctk_tree_store_get_iter (src_model,
                                     &src_iter,
@@ -2097,9 +2097,9 @@ ctk_tree_store_drag_data_received (GtkTreeDragDest   *drag_dest,
 
       if (!ctk_tree_path_prev (prev))
         {
-          GtkTreeIter dest_parent;
-          GtkTreePath *parent;
-          GtkTreeIter *dest_parent_p;
+          CtkTreeIter dest_parent;
+          CtkTreePath *parent;
+          CtkTreeIter *dest_parent_p;
 
           /* dest was the first spot at the current depth; which means
            * we are supposed to prepend.
@@ -2129,7 +2129,7 @@ ctk_tree_store_drag_data_received (GtkTreeDragDest   *drag_dest,
         {
           if (ctk_tree_store_get_iter (tree_model, &dest_iter, prev))
             {
-              GtkTreeIter tmp_iter = dest_iter;
+              CtkTreeIter tmp_iter = dest_iter;
 
               ctk_tree_store_insert_after (tree_store, &dest_iter, NULL,
                                            &tmp_iter);
@@ -2168,13 +2168,13 @@ ctk_tree_store_drag_data_received (GtkTreeDragDest   *drag_dest,
 }
 
 static gboolean
-ctk_tree_store_row_drop_possible (GtkTreeDragDest  *drag_dest,
-                                  GtkTreePath      *dest_path,
-				  GtkSelectionData *selection_data)
+ctk_tree_store_row_drop_possible (CtkTreeDragDest  *drag_dest,
+                                  CtkTreePath      *dest_path,
+				  CtkSelectionData *selection_data)
 {
-  GtkTreeModel *src_model = NULL;
-  GtkTreePath *src_path = NULL;
-  GtkTreePath *tmp = NULL;
+  CtkTreeModel *src_model = NULL;
+  CtkTreePath *src_path = NULL;
+  CtkTreePath *tmp = NULL;
   gboolean retval = FALSE;
   
   /* don't accept drops if the tree has been sorted */
@@ -2197,7 +2197,7 @@ ctk_tree_store_row_drop_possible (GtkTreeDragDest  *drag_dest,
 
   /* Can't drop if dest_path's parent doesn't exist */
   {
-    GtkTreeIter iter;
+    CtkTreeIter iter;
 
     if (ctk_tree_path_get_depth (dest_path) > 1)
       {
@@ -2252,8 +2252,8 @@ ctk_tree_store_reorder_func (gconstpointer a,
 
 /**
  * ctk_tree_store_reorder: (skip)
- * @tree_store: A #GtkTreeStore
- * @parent: (nullable): A #GtkTreeIter, or %NULL
+ * @tree_store: A #CtkTreeStore
+ * @parent: (nullable): A #CtkTreeIter, or %NULL
  * @new_order: (array): an array of integers mapping the new position of each child
  *      to its old position before the re-ordering,
  *      i.e. @new_order`[newpos] = oldpos`.
@@ -2265,13 +2265,13 @@ ctk_tree_store_reorder_func (gconstpointer a,
  * Since: 2.2
  **/
 void
-ctk_tree_store_reorder (GtkTreeStore *tree_store,
-			GtkTreeIter  *parent,
+ctk_tree_store_reorder (CtkTreeStore *tree_store,
+			CtkTreeIter  *parent,
 			gint         *new_order)
 {
   gint i, length = 0;
   GNode *level, *node;
-  GtkTreePath *path;
+  CtkTreePath *path;
   SortTuple *sort_array;
 
   g_return_if_fail (CTK_IS_TREE_STORE (tree_store));
@@ -2343,9 +2343,9 @@ ctk_tree_store_reorder (GtkTreeStore *tree_store,
 
 /**
  * ctk_tree_store_swap:
- * @tree_store: A #GtkTreeStore.
- * @a: A #GtkTreeIter.
- * @b: Another #GtkTreeIter.
+ * @tree_store: A #CtkTreeStore.
+ * @a: A #CtkTreeIter.
+ * @b: Another #CtkTreeIter.
  *
  * Swaps @a and @b in the same level of @tree_store. Note that this function
  * only works with unsorted stores.
@@ -2353,15 +2353,15 @@ ctk_tree_store_reorder (GtkTreeStore *tree_store,
  * Since: 2.2
  **/
 void
-ctk_tree_store_swap (GtkTreeStore *tree_store,
-		     GtkTreeIter  *a,
-		     GtkTreeIter  *b)
+ctk_tree_store_swap (CtkTreeStore *tree_store,
+		     CtkTreeIter  *a,
+		     CtkTreeIter  *b)
 {
   GNode *tmp, *node_a, *node_b, *parent_node;
   GNode *a_prev, *a_next, *b_prev, *b_next;
   gint i, a_count, b_count, length, *order;
-  GtkTreePath *path_a, *path_b;
-  GtkTreeIter parent;
+  CtkTreePath *path_a, *path_b;
+  CtkTreeIter parent;
 
   g_return_if_fail (CTK_IS_TREE_STORE (tree_store));
   g_return_if_fail (VALID_ITER (a, tree_store));
@@ -2489,15 +2489,15 @@ ctk_tree_store_swap (GtkTreeStore *tree_store,
  *	-Kris
  */
 static void
-ctk_tree_store_move (GtkTreeStore *tree_store,
-                     GtkTreeIter  *iter,
-		     GtkTreeIter  *position,
+ctk_tree_store_move (CtkTreeStore *tree_store,
+                     CtkTreeIter  *iter,
+		     CtkTreeIter  *position,
 		     gboolean      before)
 {
   GNode *parent, *node, *a, *b, *tmp, *tmp_a, *tmp_b;
   gint old_pos, new_pos, length, i, *order;
-  GtkTreePath *path = NULL, *tmppath, *pos_path = NULL;
-  GtkTreeIter parent_iter, dst_a, dst_b;
+  CtkTreePath *path = NULL, *tmppath, *pos_path = NULL;
+  CtkTreeIter parent_iter, dst_a, dst_b;
   gint depth = 0;
   gboolean handle_b = TRUE;
 
@@ -2807,9 +2807,9 @@ free_paths_and_out:
 
 /**
  * ctk_tree_store_move_before:
- * @tree_store: A #GtkTreeStore.
- * @iter: A #GtkTreeIter.
- * @position: (allow-none): A #GtkTreeIter or %NULL.
+ * @tree_store: A #CtkTreeStore.
+ * @iter: A #CtkTreeIter.
+ * @position: (allow-none): A #CtkTreeIter or %NULL.
  *
  * Moves @iter in @tree_store to the position before @position. @iter and
  * @position should be in the same level. Note that this function only
@@ -2819,18 +2819,18 @@ free_paths_and_out:
  * Since: 2.2
  **/
 void
-ctk_tree_store_move_before (GtkTreeStore *tree_store,
-                            GtkTreeIter  *iter,
-			    GtkTreeIter  *position)
+ctk_tree_store_move_before (CtkTreeStore *tree_store,
+                            CtkTreeIter  *iter,
+			    CtkTreeIter  *position)
 {
   ctk_tree_store_move (tree_store, iter, position, TRUE);
 }
 
 /**
  * ctk_tree_store_move_after:
- * @tree_store: A #GtkTreeStore.
- * @iter: A #GtkTreeIter.
- * @position: (allow-none): A #GtkTreeIter.
+ * @tree_store: A #CtkTreeStore.
+ * @iter: A #CtkTreeIter.
+ * @position: (allow-none): A #CtkTreeIter.
  *
  * Moves @iter in @tree_store to the position after @position. @iter and
  * @position should be in the same level. Note that this function only
@@ -2840,9 +2840,9 @@ ctk_tree_store_move_before (GtkTreeStore *tree_store,
  * Since: 2.2
  **/
 void
-ctk_tree_store_move_after (GtkTreeStore *tree_store,
-                           GtkTreeIter  *iter,
-			   GtkTreeIter  *position)
+ctk_tree_store_move_after (CtkTreeStore *tree_store,
+                           CtkTreeIter  *iter,
+			   CtkTreeIter  *position)
 {
   ctk_tree_store_move (tree_store, iter, position, FALSE);
 }
@@ -2853,20 +2853,20 @@ ctk_tree_store_compare_func (gconstpointer a,
 			     gconstpointer b,
 			     gpointer      user_data)
 {
-  GtkTreeStore *tree_store = user_data;
-  GtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreeStore *tree_store = user_data;
+  CtkTreeStorePrivate *priv = tree_store->priv;
   GNode *node_a;
   GNode *node_b;
-  GtkTreeIterCompareFunc func;
+  CtkTreeIterCompareFunc func;
   gpointer data;
 
-  GtkTreeIter iter_a;
-  GtkTreeIter iter_b;
+  CtkTreeIter iter_a;
+  CtkTreeIter iter_b;
   gint retval;
 
   if (priv->sort_column_id != -1)
     {
-      GtkTreeDataSortHeader *header;
+      CtkTreeDataSortHeader *header;
 
       header = _ctk_tree_data_list_get_header (priv->sort_list,
 					       priv->sort_column_id);
@@ -2904,18 +2904,18 @@ ctk_tree_store_compare_func (gconstpointer a,
 }
 
 static void
-ctk_tree_store_sort_helper (GtkTreeStore *tree_store,
+ctk_tree_store_sort_helper (CtkTreeStore *tree_store,
 			    GNode        *parent,
 			    gboolean      recurse)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   GArray *sort_array;
   GNode *node;
   GNode *tmp_node;
   gint list_length;
   gint i;
   gint *new_order;
-  GtkTreePath *path;
+  CtkTreePath *path;
 
   node = parent->children;
   if (node == NULL || node->next == NULL)
@@ -2982,16 +2982,16 @@ ctk_tree_store_sort_helper (GtkTreeStore *tree_store,
 }
 
 static void
-ctk_tree_store_sort (GtkTreeStore *tree_store)
+ctk_tree_store_sort (CtkTreeStore *tree_store)
 {
-  GtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreeStorePrivate *priv = tree_store->priv;
 
   if (!CTK_TREE_STORE_IS_SORTED (tree_store))
     return;
 
   if (priv->sort_column_id != -1)
     {
-      GtkTreeDataSortHeader *header = NULL;
+      CtkTreeDataSortHeader *header = NULL;
 
       header = _ctk_tree_data_list_get_header (priv->sort_list,
 					       priv->sort_column_id);
@@ -3009,17 +3009,17 @@ ctk_tree_store_sort (GtkTreeStore *tree_store)
 }
 
 static void
-ctk_tree_store_sort_iter_changed (GtkTreeStore *tree_store,
-				  GtkTreeIter  *iter,
+ctk_tree_store_sort_iter_changed (CtkTreeStore *tree_store,
+				  CtkTreeIter  *iter,
 				  gint          column,
 				  gboolean      emit_signal)
 {
-  GtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreeStorePrivate *priv = tree_store->priv;
   GNode *prev = NULL;
   GNode *next = NULL;
   GNode *node;
-  GtkTreePath *tmp_path;
-  GtkTreeIter tmp_iter;
+  CtkTreePath *tmp_path;
+  CtkTreeIter tmp_iter;
   gint cmp_a = 0;
   gint cmp_b = 0;
   gint i;
@@ -3027,7 +3027,7 @@ ctk_tree_store_sort_iter_changed (GtkTreeStore *tree_store,
   gint new_location;
   gint *new_order;
   gint length;
-  GtkTreeIterCompareFunc func;
+  CtkTreeIterCompareFunc func;
   gpointer data;
 
   g_return_if_fail (G_NODE (iter->user_data)->parent != NULL);
@@ -3035,7 +3035,7 @@ ctk_tree_store_sort_iter_changed (GtkTreeStore *tree_store,
   tmp_iter.stamp = priv->stamp;
   if (priv->sort_column_id != -1)
     {
-      GtkTreeDataSortHeader *header;
+      CtkTreeDataSortHeader *header;
       header = _ctk_tree_data_list_get_header (priv->sort_list,
 					       priv->sort_column_id);
       g_return_if_fail (header != NULL);
@@ -3204,12 +3204,12 @@ ctk_tree_store_sort_iter_changed (GtkTreeStore *tree_store,
 
 
 static gboolean
-ctk_tree_store_get_sort_column_id (GtkTreeSortable  *sortable,
+ctk_tree_store_get_sort_column_id (CtkTreeSortable  *sortable,
 				   gint             *sort_column_id,
-				   GtkSortType      *order)
+				   CtkSortType      *order)
 {
-  GtkTreeStore *tree_store = (GtkTreeStore *) sortable;
-  GtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreeStore *tree_store = (CtkTreeStore *) sortable;
+  CtkTreeStorePrivate *priv = tree_store->priv;
 
   if (sort_column_id)
     * sort_column_id = priv->sort_column_id;
@@ -3224,12 +3224,12 @@ ctk_tree_store_get_sort_column_id (GtkTreeSortable  *sortable,
 }
 
 static void
-ctk_tree_store_set_sort_column_id (GtkTreeSortable  *sortable,
+ctk_tree_store_set_sort_column_id (CtkTreeSortable  *sortable,
 				   gint              sort_column_id,
-				   GtkSortType       order)
+				   CtkSortType       order)
 {
-  GtkTreeStore *tree_store = (GtkTreeStore *) sortable;
-  GtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreeStore *tree_store = (CtkTreeStore *) sortable;
+  CtkTreeStorePrivate *priv = tree_store->priv;
 
   if ((priv->sort_column_id == sort_column_id) &&
       (priv->order == order))
@@ -3239,7 +3239,7 @@ ctk_tree_store_set_sort_column_id (GtkTreeSortable  *sortable,
     {
       if (sort_column_id != CTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID)
 	{
-	  GtkTreeDataSortHeader *header = NULL;
+	  CtkTreeDataSortHeader *header = NULL;
 
 	  header = _ctk_tree_data_list_get_header (priv->sort_list,
 						   sort_column_id);
@@ -3263,14 +3263,14 @@ ctk_tree_store_set_sort_column_id (GtkTreeSortable  *sortable,
 }
 
 static void
-ctk_tree_store_set_sort_func (GtkTreeSortable        *sortable,
+ctk_tree_store_set_sort_func (CtkTreeSortable        *sortable,
 			      gint                    sort_column_id,
-			      GtkTreeIterCompareFunc  func,
+			      CtkTreeIterCompareFunc  func,
 			      gpointer                data,
 			      GDestroyNotify          destroy)
 {
-  GtkTreeStore *tree_store = (GtkTreeStore *) sortable;
-  GtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreeStore *tree_store = (CtkTreeStore *) sortable;
+  CtkTreeStorePrivate *priv = tree_store->priv;
 
   priv->sort_list = _ctk_tree_data_list_set_header (priv->sort_list,
 						    sort_column_id,
@@ -3281,13 +3281,13 @@ ctk_tree_store_set_sort_func (GtkTreeSortable        *sortable,
 }
 
 static void
-ctk_tree_store_set_default_sort_func (GtkTreeSortable        *sortable,
-				      GtkTreeIterCompareFunc  func,
+ctk_tree_store_set_default_sort_func (CtkTreeSortable        *sortable,
+				      CtkTreeIterCompareFunc  func,
 				      gpointer                data,
 				      GDestroyNotify          destroy)
 {
-  GtkTreeStore *tree_store = (GtkTreeStore *) sortable;
-  GtkTreeStorePrivate *priv = tree_store->priv;
+  CtkTreeStore *tree_store = (CtkTreeStore *) sortable;
+  CtkTreeStorePrivate *priv = tree_store->priv;
 
   if (priv->default_sort_destroy)
     {
@@ -3306,9 +3306,9 @@ ctk_tree_store_set_default_sort_func (GtkTreeSortable        *sortable,
 }
 
 static gboolean
-ctk_tree_store_has_default_sort_func (GtkTreeSortable *sortable)
+ctk_tree_store_has_default_sort_func (CtkTreeSortable *sortable)
 {
-  GtkTreeStore *tree_store = (GtkTreeStore *) sortable;
+  CtkTreeStore *tree_store = (CtkTreeStore *) sortable;
 
   return (tree_store->priv->default_sort_func != NULL);
 }
@@ -3331,7 +3331,7 @@ validate_gnode (GNode* node)
 }
 #endif
 
-/* GtkBuildable custom tag implementation
+/* CtkBuildable custom tag implementation
  *
  * <columns>
  *   <column type="..."/>
@@ -3339,7 +3339,7 @@ validate_gnode (GNode* node)
  * </columns>
  */
 typedef struct {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GObject *object;
   GSList *items;
 } GSListSubParserData;
@@ -3385,7 +3385,7 @@ tree_model_start_element (GMarkupParseContext  *context,
   else
     {
       _ctk_builder_error_unhandled_tag (data->builder, context,
-                                        "GtkTreeStore", element_name,
+                                        "CtkTreeStore", element_name,
                                         error);
     }
 }
@@ -3440,8 +3440,8 @@ static const GMarkupParser tree_model_parser =
 
 
 static gboolean
-ctk_tree_store_buildable_custom_tag_start (GtkBuildable  *buildable,
-                                           GtkBuilder    *builder,
+ctk_tree_store_buildable_custom_tag_start (CtkBuildable  *buildable,
+                                           CtkBuilder    *builder,
                                            GObject       *child,
                                            const gchar   *tagname,
                                            GMarkupParser *parser,
@@ -3469,8 +3469,8 @@ ctk_tree_store_buildable_custom_tag_start (GtkBuildable  *buildable,
 }
 
 static void
-ctk_tree_store_buildable_custom_finished (GtkBuildable *buildable,
-                                          GtkBuilder   *builder,
+ctk_tree_store_buildable_custom_finished (CtkBuildable *buildable,
+                                          CtkBuilder   *builder,
                                           GObject      *child,
                                           const gchar  *tagname,
                                           gpointer      user_data)

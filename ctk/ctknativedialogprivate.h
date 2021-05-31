@@ -23,7 +23,7 @@
 
 G_BEGIN_DECLS
 
-void _ctk_native_dialog_emit_response (GtkNativeDialog *self,
+void _ctk_native_dialog_emit_response (CtkNativeDialog *self,
                                        int              response_id);
 
 G_END_DECLS

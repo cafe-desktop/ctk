@@ -69,9 +69,9 @@ enum
 };
 
 gboolean
-select_func (GtkTreeSelection  *selection,
-	     GtkTreeModel      *model,
-	     GtkTreePath       *path,
+select_func (CtkTreeSelection  *selection,
+	     CtkTreeModel      *model,
+	     CtkTreePath       *path,
 	     gboolean           path_currently_selected,
 	     gpointer           data)
 {
@@ -81,7 +81,7 @@ select_func (GtkTreeSelection  *selection,
 }
 
 static void
-switch_search_method (GtkWidget *button,
+switch_search_method (CtkWidget *button,
 		      gpointer   tree_view)
 {
   if (!ctk_tree_view_get_search_entry (CTK_TREE_VIEW (tree_view)))
@@ -96,26 +96,26 @@ switch_search_method (GtkWidget *button,
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window;
-  GtkWidget *vbox;
-  GtkWidget *scrolled_window;
-  GtkWidget *tree_view;
-  GtkTreeStore *model;
-  GtkTreeModel *smodel = NULL;
-  GtkTreeModel *ssmodel = NULL;
-  GtkCellRenderer *renderer;
-  GtkTreeViewColumn *column;
-  GtkTreeIter iter;
+  CtkWidget *window;
+  CtkWidget *vbox;
+  CtkWidget *scrolled_window;
+  CtkWidget *tree_view;
+  CtkTreeStore *model;
+  CtkTreeModel *smodel = NULL;
+  CtkTreeModel *ssmodel = NULL;
+  CtkCellRenderer *renderer;
+  CtkTreeViewColumn *column;
+  CtkTreeIter iter;
   gint i;
 
-  GtkWidget *entry, *button;
-  GtkWidget *window2, *vbox2, *scrolled_window2, *tree_view2;
-  GtkWidget *window3, *vbox3, *scrolled_window3, *tree_view3;
+  CtkWidget *entry, *button;
+  CtkWidget *window2, *vbox2, *scrolled_window2, *tree_view2;
+  CtkWidget *window3, *vbox3, *scrolled_window3, *tree_view3;
 
   ctk_init (&argc, &argv);
 
   /**
-   * First window - Just a GtkTreeStore
+   * First window - Just a CtkTreeStore
    */
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -123,7 +123,7 @@ main (int argc, char *argv[])
   g_signal_connect (window, "destroy", ctk_main_quit, NULL);
   vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 8);
   ctk_container_set_border_width (CTK_CONTAINER (vbox), 8);
-  ctk_box_pack_start (CTK_BOX (vbox), ctk_label_new ("Jonathan and Kristian's list of cool words. (And Anders' cool list of numbers) \n\nThis is just a GtkTreeStore"), FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (vbox), ctk_label_new ("Jonathan and Kristian's list of cool words. (And Anders' cool list of numbers) \n\nThis is just a CtkTreeStore"), FALSE, FALSE, 0);
   ctk_container_add (CTK_CONTAINER (window), vbox);
 
   entry = ctk_entry_new ();
@@ -156,7 +156,7 @@ main (int argc, char *argv[])
   for (i = 0; data[i].word_1 != NULL; i++)
     {
       gint k;
-      GtkTreeIter child_iter;
+      CtkTreeIter child_iter;
 
 
       ctk_tree_store_prepend (CTK_TREE_STORE (model), &iter, NULL);
@@ -240,7 +240,7 @@ main (int argc, char *argv[])
   ctk_widget_show_all (window);
 
   /**
-   * Second window - GtkTreeModelSort wrapping the GtkTreeStore
+   * Second window - CtkTreeModelSort wrapping the CtkTreeStore
    */
 
   if (smodel)
@@ -252,7 +252,7 @@ main (int argc, char *argv[])
       vbox2 = ctk_box_new (CTK_ORIENTATION_VERTICAL, 8);
       ctk_container_set_border_width (CTK_CONTAINER (vbox2), 8);
       ctk_box_pack_start (CTK_BOX (vbox2), 
-			  ctk_label_new ("Jonathan and Kristian's list of words.\n\nA GtkTreeModelSort wrapping the GtkTreeStore of window 1"),
+			  ctk_label_new ("Jonathan and Kristian's list of words.\n\nA CtkTreeModelSort wrapping the CtkTreeStore of window 1"),
 			  FALSE, FALSE, 0);
       ctk_container_add (CTK_CONTAINER (window2), vbox2);
       
@@ -296,7 +296,7 @@ main (int argc, char *argv[])
       ctk_tree_view_append_column (CTK_TREE_VIEW (tree_view2), column);
       
       /*      ctk_tree_sortable_set_default_sort_func (CTK_TREE_SORTABLE (smodel),
-					       (GtkTreeIterCompareFunc)ctk_tree_data_list_compare_func,
+					       (CtkTreeIterCompareFunc)ctk_tree_data_list_compare_func,
 					       NULL, NULL);
       ctk_tree_sortable_set_sort_column_id (CTK_TREE_SORTABLE (smodel),
 					    WORD_COLUMN_1,
@@ -309,8 +309,8 @@ main (int argc, char *argv[])
     }
   
   /**
-   * Third window - GtkTreeModelSort wrapping the GtkTreeModelSort which
-   * is wrapping the GtkTreeStore.
+   * Third window - CtkTreeModelSort wrapping the CtkTreeModelSort which
+   * is wrapping the CtkTreeStore.
    */
   
   if (ssmodel)
@@ -322,7 +322,7 @@ main (int argc, char *argv[])
       vbox3 = ctk_box_new (CTK_ORIENTATION_VERTICAL, 8);
       ctk_container_set_border_width (CTK_CONTAINER (vbox3), 8);
       ctk_box_pack_start (CTK_BOX (vbox3), 
-			  ctk_label_new ("Jonathan and Kristian's list of words.\n\nA GtkTreeModelSort wrapping the GtkTreeModelSort of window 2"),
+			  ctk_label_new ("Jonathan and Kristian's list of words.\n\nA CtkTreeModelSort wrapping the CtkTreeModelSort of window 2"),
 			  FALSE, FALSE, 0);
       ctk_container_add (CTK_CONTAINER (window3), vbox3);
       
@@ -366,7 +366,7 @@ main (int argc, char *argv[])
       ctk_tree_view_append_column (CTK_TREE_VIEW (tree_view3), column);
       
       /*      ctk_tree_sortable_set_default_sort_func (CTK_TREE_SORTABLE (ssmodel),
-					       (GtkTreeIterCompareFunc)ctk_tree_data_list_compare_func,
+					       (CtkTreeIterCompareFunc)ctk_tree_data_list_compare_func,
 					       NULL, NULL);
       ctk_tree_sortable_set_sort_column_id (CTK_TREE_SORTABLE (ssmodel),
 					    WORD_COLUMN_1,
@@ -390,7 +390,7 @@ main (int argc, char *argv[])
 			  -1);
       for (k = 0; childdata[k].word_1 != NULL; k++)
 	{
-	  GtkTreeIter child_iter;
+	  CtkTreeIter child_iter;
 	  
 	  ctk_tree_store_append (CTK_TREE_STORE (model), &child_iter, &iter);
 	  ctk_tree_store_set (CTK_TREE_STORE (model), &child_iter,

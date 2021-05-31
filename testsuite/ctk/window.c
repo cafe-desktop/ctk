@@ -16,7 +16,7 @@ stop_main (gpointer data)
 }
 
 static gboolean
-on_draw (GtkWidget *widget, cairo_t *cr)
+on_draw (CtkWidget *widget, cairo_t *cr)
 {
   gint i, j;
 
@@ -38,7 +38,7 @@ on_draw (GtkWidget *widget, cairo_t *cr)
 }
 
 static gboolean
-on_keypress (GtkWidget *widget)
+on_keypress (CtkWidget *widget)
 {
   ctk_main_quit ();
 
@@ -48,8 +48,8 @@ on_keypress (GtkWidget *widget)
 static void
 test_default_size (void)
 {
-  GtkWidget *window;
-  GtkWidget *box;
+  CtkWidget *window;
+  CtkWidget *box;
   gint w, h;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -125,8 +125,8 @@ test_default_size (void)
 static void
 test_resize (void)
 {
-  GtkWidget *window;
-  GtkWidget *box;
+  CtkWidget *window;
+  CtkWidget *box;
   gint w, h;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -179,7 +179,7 @@ test_resize (void)
 static void
 test_resize_popup (void)
 {
-  GtkWidget *window;
+  CtkWidget *window;
   gint x, y, w, h;
 
   /* testcase for the dnd window */
@@ -213,7 +213,7 @@ test_resize_popup (void)
 static void
 test_show_hide (void)
 {
-  GtkWidget *window;
+  CtkWidget *window;
   gint w, h, w1, h1;
 
   g_test_bug ("696882");
@@ -253,7 +253,7 @@ test_show_hide (void)
 static void
 test_show_hide2 (void)
 {
-  GtkWidget *window;
+  CtkWidget *window;
   gint x, y, w, h, w1, h1;
 
   g_test_bug ("696882");
@@ -296,7 +296,7 @@ test_show_hide2 (void)
 static void
 test_show_hide3 (void)
 {
-  GtkWidget *window;
+  CtkWidget *window;
   gint x, y, w, h, w1, h1;
 
   g_test_bug ("696882");
@@ -339,7 +339,7 @@ test_show_hide3 (void)
 }
 
 static gboolean
-on_map_event (GtkWidget *window)
+on_map_event (CtkWidget *window)
 {
   ctk_main_quit ();
 
@@ -349,7 +349,7 @@ on_map_event (GtkWidget *window)
 static void
 test_hide_titlebar_when_maximized (void)
 {
-  GtkWidget *window;
+  CtkWidget *window;
 
   g_test_bug ("740287");
 

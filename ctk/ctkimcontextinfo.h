@@ -27,9 +27,9 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GtkIMContextInfo GtkIMContextInfo;
+typedef struct _CtkIMContextInfo CtkIMContextInfo;
 
-struct _GtkIMContextInfo
+struct _CtkIMContextInfo
 {
   const gchar *context_id;
   const gchar *context_name;

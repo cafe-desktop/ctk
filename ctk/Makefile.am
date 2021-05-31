@@ -19,7 +19,7 @@ CTK_PLAT_CFLAGS_DEFINES =				\
 	-DCTK_PRINT_BACKENDS=\"$(CTK_PRINT_BACKENDS)\"
 
 AM_CPPFLAGS =						\
-	-DG_LOG_DOMAIN=\"Gtk\"				\
+	-DG_LOG_DOMAIN=\"Ctk\"				\
 	$(CTK_BASE_CFLAGS_DEFINES)			\
 	$(CTK_PLAT_CFLAGS_DEFINES)			\
 	-DX11_DATA_PREFIX=\"$(X11_PREFIX)\"		\
@@ -998,8 +998,8 @@ ctk_dbus_built_sources = ctkdbusgenerated.c ctkdbusgenerated.h
 
 $(ctk_dbus_built_sources) : Makefile.am ctkdbusinterfaces.xml
 	$(AM_V_GEN) gdbus-codegen \
-	--interface-prefix org.Gtk. \
-	--c-namespace _Gtk \
+	--interface-prefix org.Ctk. \
+	--c-namespace _Ctk \
 	--generate-c-code ctkdbusgenerated \
 	$(srcdir)/ctkdbusinterfaces.xml
 
@@ -1531,7 +1531,7 @@ include $(top_srcdir)/win32/Makefile.msvcproj
 
 if HAVE_INTROSPECTION
 # Introspection Items for MSVC
-MSVC_INTROSPECT_GIRS = Gtk-3.0.gir
+MSVC_INTROSPECT_GIRS = Ctk-3.0.gir
 
 CTK_MSVC_GIR_CFLAGS =						\
 	$(CTK_BASE_CFLAGS_DEFINES)				\
@@ -1556,7 +1556,7 @@ CTK_MSVC_GIR_CFLAGS =						\
 	-I.. -I../ctk -I../gdk
 
 INTROSPECTION_INTERMEDIATE_ITEMS = \
-	$(top_builddir)/win32/Gtk-3.0.gir.msvc.introspect		\
+	$(top_builddir)/win32/Ctk-3.0.gir.msvc.introspect		\
 	$(top_builddir)/win32/Ctk_3_0_gir_list
 
 Ctk_3_0_gir_MSVC_FILES =		\
@@ -1625,7 +1625,7 @@ INTROSPECTION_COMPILER_ARGS = \
 	--includedir=. \
 	--includedir=../gdk
 
-Gtk-3.0.gir: $(INTROSPECTION_SCANNER) libctk-3.la $(top_builddir)/gdk/Gdk-3.0.gir Makefile
+Ctk-3.0.gir: $(INTROSPECTION_SCANNER) libctk-3.la $(top_builddir)/gdk/Gdk-3.0.gir Makefile
 Ctk_3_0_gir_SCANNERFLAGS = 			\
 	--warn-all				\
 	--add-include-path=$(top_builddir)/gdk	\
@@ -1643,7 +1643,7 @@ Ctk_3_0_gir_CFLAGS = \
 Ctk_3_0_gir_FILES = $(introspection_files)
 Ctk_3_0_gir_LIBS = libctk-3.la $(top_builddir)/gdk/libgdk-3.la
 Ctk_3_0_gir_EXPORT_PACKAGES = ctk+-3.0
-INTROSPECTION_GIRS = Gtk-3.0.gir
+INTROSPECTION_GIRS = Ctk-3.0.gir
 
 girdir = $(datadir)/gir-1.0
 gir_DATA = $(INTROSPECTION_GIRS)

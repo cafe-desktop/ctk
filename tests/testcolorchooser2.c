@@ -1,11 +1,11 @@
 #include <ctk/ctk.h>
 
-static void rgba_changed (GtkColorChooser *chooser, GParamSpec *pspec, gpointer data);
+static void rgba_changed (CtkColorChooser *chooser, GParamSpec *pspec, gpointer data);
 
 static void
-text_activated (GtkEntry *entry, gpointer data)
+text_activated (CtkEntry *entry, gpointer data)
 {
-  GtkColorChooser *chooser = data;
+  CtkColorChooser *chooser = data;
   GdkRGBA rgba;
   const char *text;
 
@@ -18,9 +18,9 @@ text_activated (GtkEntry *entry, gpointer data)
 }
 
 static void
-rgba_changed (GtkColorChooser *chooser, GParamSpec *pspec, gpointer data)
+rgba_changed (CtkColorChooser *chooser, GParamSpec *pspec, gpointer data)
 {
-  GtkWidget *entry = data;
+  CtkWidget *entry = data;
   GdkRGBA color;
   char *s;
 
@@ -36,10 +36,10 @@ rgba_changed (GtkColorChooser *chooser, GParamSpec *pspec, gpointer data)
 
 int main (int argc, char *argv[])
 {
-  GtkWidget *window;
-  GtkWidget *chooser;
-  GtkWidget *entry;
-  GtkBuilder *builder;
+  CtkWidget *window;
+  CtkWidget *chooser;
+  CtkWidget *entry;
+  CtkBuilder *builder;
 
   ctk_init (NULL, NULL);
 

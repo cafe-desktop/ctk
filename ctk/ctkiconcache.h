@@ -20,32 +20,32 @@
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gdk/gdk.h>
 
-typedef struct _GtkIconCache GtkIconCache;
+typedef struct _CtkIconCache CtkIconCache;
 
-GtkIconCache *_ctk_icon_cache_new            (const gchar  *data);
-GtkIconCache *_ctk_icon_cache_new_for_path   (const gchar  *path);
-gint          _ctk_icon_cache_get_directory_index  (GtkIconCache *cache,
+CtkIconCache *_ctk_icon_cache_new            (const gchar  *data);
+CtkIconCache *_ctk_icon_cache_new_for_path   (const gchar  *path);
+gint          _ctk_icon_cache_get_directory_index  (CtkIconCache *cache,
 					            const gchar  *directory);
-gboolean      _ctk_icon_cache_has_icon       (GtkIconCache *cache,
+gboolean      _ctk_icon_cache_has_icon       (CtkIconCache *cache,
 					      const gchar  *icon_name);
-gboolean      _ctk_icon_cache_has_icon_in_directory (GtkIconCache *cache,
+gboolean      _ctk_icon_cache_has_icon_in_directory (CtkIconCache *cache,
 					             const gchar  *icon_name,
 					             const gchar  *directory);
-gboolean      _ctk_icon_cache_has_icons      (GtkIconCache *cache,
+gboolean      _ctk_icon_cache_has_icons      (CtkIconCache *cache,
                                               const gchar  *directory);
-void	      _ctk_icon_cache_add_icons      (GtkIconCache *cache,
+void	      _ctk_icon_cache_add_icons      (CtkIconCache *cache,
 					      const gchar  *directory,
 					      GHashTable   *hash_table);
 
-gint          _ctk_icon_cache_get_icon_flags (GtkIconCache *cache,
+gint          _ctk_icon_cache_get_icon_flags (CtkIconCache *cache,
 					      const gchar  *icon_name,
 					      gint          directory_index);
-GdkPixbuf    *_ctk_icon_cache_get_icon       (GtkIconCache *cache,
+GdkPixbuf    *_ctk_icon_cache_get_icon       (CtkIconCache *cache,
 					      const gchar  *icon_name,
 					      gint          directory_index);
 
-GtkIconCache *_ctk_icon_cache_ref            (GtkIconCache *cache);
-void          _ctk_icon_cache_unref          (GtkIconCache *cache);
+CtkIconCache *_ctk_icon_cache_ref            (CtkIconCache *cache);
+void          _ctk_icon_cache_unref          (CtkIconCache *cache);
 
 
 #endif /* __CTK_ICON_CACHE_H__ */

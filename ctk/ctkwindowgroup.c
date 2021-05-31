@@ -32,9 +32,9 @@
 /**
  * SECTION:ctkwindowgroup
  * @Short_description: Limit the effect of grabs
- * @Title: GtkWindowGroup
+ * @Title: CtkWindowGroup
  *
- * A #GtkWindowGroup restricts the effect of grabs to windows
+ * A #CtkWindowGroup restricts the effect of grabs to windows
  * in the same group, thereby making window groups almost behave
  * like separate applications. 
  *
@@ -42,8 +42,8 @@
  * Windows that have not been explicitly assigned to a group are
  * implicitly treated like windows of the default window group.
  *
- * GtkWindowGroup objects are referenced by each window in the group,
- * so once you have added all windows to a GtkWindowGroup, you can drop
+ * CtkWindowGroup objects are referenced by each window in the group,
+ * so once you have added all windows to a CtkWindowGroup, you can drop
  * the initial reference to the window group with g_object_unref(). If the
  * windows in the window group are subsequently destroyed, then they will
  * be removed from the window group and drop their references on the window
@@ -51,30 +51,30 @@
  * freed.
  */
 
-typedef struct _GtkDeviceGrabInfo GtkDeviceGrabInfo;
-struct _GtkDeviceGrabInfo
+typedef struct _CtkDeviceGrabInfo CtkDeviceGrabInfo;
+struct _CtkDeviceGrabInfo
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   GdkDevice *device;
   guint block_others : 1;
 };
 
-struct _GtkWindowGroupPrivate
+struct _CtkWindowGroupPrivate
 {
   GSList *grabs;
   GSList *device_grabs;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkWindowGroup, ctk_window_group, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkWindowGroup, ctk_window_group, G_TYPE_OBJECT)
 
 static void
-ctk_window_group_init (GtkWindowGroup *group)
+ctk_window_group_init (CtkWindowGroup *group)
 {
   group->priv = ctk_window_group_get_instance_private (group);
 }
 
 static void
-ctk_window_group_class_init (GtkWindowGroupClass *klass)
+ctk_window_group_class_init (CtkWindowGroupClass *klass)
 {
 }
 
@@ -82,23 +82,23 @@ ctk_window_group_class_init (GtkWindowGroupClass *klass)
 /**
  * ctk_window_group_new:
  * 
- * Creates a new #GtkWindowGroup object. Grabs added with
- * ctk_grab_add() only affect windows within the same #GtkWindowGroup.
+ * Creates a new #CtkWindowGroup object. Grabs added with
+ * ctk_grab_add() only affect windows within the same #CtkWindowGroup.
  * 
- * Returns: a new #GtkWindowGroup. 
+ * Returns: a new #CtkWindowGroup. 
  **/
-GtkWindowGroup *
+CtkWindowGroup *
 ctk_window_group_new (void)
 {
   return g_object_new (CTK_TYPE_WINDOW_GROUP, NULL);
 }
 
 static void
-window_group_cleanup_grabs (GtkWindowGroup *group,
-                            GtkWindow      *window)
+window_group_cleanup_grabs (CtkWindowGroup *group,
+                            CtkWindow      *window)
 {
-  GtkWindowGroupPrivate *priv;
-  GtkDeviceGrabInfo *info;
+  CtkWindowGroupPrivate *priv;
+  CtkDeviceGrabInfo *info;
   GSList *tmp_list;
   GSList *to_remove = NULL;
 
@@ -107,7 +107,7 @@ window_group_cleanup_grabs (GtkWindowGroup *group,
   tmp_list = priv->grabs;
   while (tmp_list)
     {
-      if (ctk_widget_get_toplevel (tmp_list->data) == (GtkWidget*) window)
+      if (ctk_widget_get_toplevel (tmp_list->data) == (CtkWidget*) window)
         to_remove = g_slist_prepend (to_remove, g_object_ref (tmp_list->data));
       tmp_list = tmp_list->next;
     }
@@ -125,7 +125,7 @@ window_group_cleanup_grabs (GtkWindowGroup *group,
     {
       info = tmp_list->data;
 
-      if (ctk_widget_get_toplevel (info->widget) == (GtkWidget *) window)
+      if (ctk_widget_get_toplevel (info->widget) == (CtkWidget *) window)
         to_remove = g_slist_prepend (to_remove, info);
 
       tmp_list = tmp_list->next;
@@ -142,16 +142,16 @@ window_group_cleanup_grabs (GtkWindowGroup *group,
 
 /**
  * ctk_window_group_add_window:
- * @window_group: a #GtkWindowGroup
- * @window: the #GtkWindow to add
+ * @window_group: a #CtkWindowGroup
+ * @window: the #CtkWindow to add
  * 
- * Adds a window to a #GtkWindowGroup. 
+ * Adds a window to a #CtkWindowGroup. 
  **/
 void
-ctk_window_group_add_window (GtkWindowGroup *window_group,
-                             GtkWindow      *window)
+ctk_window_group_add_window (CtkWindowGroup *window_group,
+                             CtkWindow      *window)
 {
-  GtkWindowGroup *old_group;
+  CtkWindowGroup *old_group;
 
   g_return_if_fail (CTK_IS_WINDOW_GROUP (window_group));
   g_return_if_fail (CTK_IS_WINDOW (window));
@@ -176,14 +176,14 @@ ctk_window_group_add_window (GtkWindowGroup *window_group,
 
 /**
  * ctk_window_group_remove_window:
- * @window_group: a #GtkWindowGroup
- * @window: the #GtkWindow to remove
+ * @window_group: a #CtkWindowGroup
+ * @window: the #CtkWindow to remove
  * 
- * Removes a window from a #GtkWindowGroup.
+ * Removes a window from a #CtkWindowGroup.
  **/
 void
-ctk_window_group_remove_window (GtkWindowGroup *window_group,
-                                GtkWindow      *window)
+ctk_window_group_remove_window (CtkWindowGroup *window_group,
+                                CtkWindow      *window)
 {
   g_return_if_fail (CTK_IS_WINDOW_GROUP (window_group));
   g_return_if_fail (CTK_IS_WINDOW (window));
@@ -200,17 +200,17 @@ ctk_window_group_remove_window (GtkWindowGroup *window_group,
 
 /**
  * ctk_window_group_list_windows:
- * @window_group: a #GtkWindowGroup
+ * @window_group: a #CtkWindowGroup
  *
- * Returns a list of the #GtkWindows that belong to @window_group.
+ * Returns a list of the #CtkWindows that belong to @window_group.
  *
- * Returns: (element-type GtkWindow) (transfer container): A
+ * Returns: (element-type CtkWindow) (transfer container): A
  *   newly-allocated list of windows inside the group.
  *
  * Since: 2.14
  **/
 GList *
-ctk_window_group_list_windows (GtkWindowGroup *window_group)
+ctk_window_group_list_windows (CtkWindowGroup *window_group)
 {
   GList *toplevels, *toplevel, *group_windows;
 
@@ -221,7 +221,7 @@ ctk_window_group_list_windows (GtkWindowGroup *window_group)
 
   for (toplevel = toplevels; toplevel; toplevel = toplevel->next)
     {
-      GtkWindow *window = toplevel->data;
+      CtkWindow *window = toplevel->data;
 
       if (window_group == _ctk_window_get_window_group (window))
         group_windows = g_list_prepend (group_windows, window);
@@ -234,7 +234,7 @@ ctk_window_group_list_windows (GtkWindowGroup *window_group)
 
 /**
  * ctk_window_group_get_current_grab:
- * @window_group: a #GtkWindowGroup
+ * @window_group: a #CtkWindowGroup
  *
  * Gets the current grab widget of the given group,
  * see ctk_grab_add().
@@ -243,8 +243,8 @@ ctk_window_group_list_windows (GtkWindowGroup *window_group)
  *
  * Since: 2.22
  */
-GtkWidget *
-ctk_window_group_get_current_grab (GtkWindowGroup *window_group)
+CtkWidget *
+ctk_window_group_get_current_grab (CtkWindowGroup *window_group)
 {
   g_return_val_if_fail (CTK_IS_WINDOW_GROUP (window_group), NULL);
 
@@ -254,37 +254,37 @@ ctk_window_group_get_current_grab (GtkWindowGroup *window_group)
 }
 
 void
-_ctk_window_group_add_grab (GtkWindowGroup *window_group,
-                            GtkWidget      *widget)
+_ctk_window_group_add_grab (CtkWindowGroup *window_group,
+                            CtkWidget      *widget)
 {
-  GtkWindowGroupPrivate *priv;
+  CtkWindowGroupPrivate *priv;
 
   priv = window_group->priv;
   priv->grabs = g_slist_prepend (priv->grabs, widget);
 }
 
 void
-_ctk_window_group_remove_grab (GtkWindowGroup *window_group,
-                               GtkWidget      *widget)
+_ctk_window_group_remove_grab (CtkWindowGroup *window_group,
+                               CtkWidget      *widget)
 {
-  GtkWindowGroupPrivate *priv;
+  CtkWindowGroupPrivate *priv;
 
   priv = window_group->priv;
   priv->grabs = g_slist_remove (priv->grabs, widget);
 }
 
 void
-_ctk_window_group_add_device_grab (GtkWindowGroup *window_group,
-                                   GtkWidget      *widget,
+_ctk_window_group_add_device_grab (CtkWindowGroup *window_group,
+                                   CtkWidget      *widget,
                                    GdkDevice      *device,
                                    gboolean        block_others)
 {
-  GtkWindowGroupPrivate *priv;
-  GtkDeviceGrabInfo *info;
+  CtkWindowGroupPrivate *priv;
+  CtkDeviceGrabInfo *info;
 
   priv = window_group->priv;
 
-  info = g_slice_new0 (GtkDeviceGrabInfo);
+  info = g_slice_new0 (CtkDeviceGrabInfo);
   info->widget = widget;
   info->device = device;
   info->block_others = block_others;
@@ -293,12 +293,12 @@ _ctk_window_group_add_device_grab (GtkWindowGroup *window_group,
 }
 
 void
-_ctk_window_group_remove_device_grab (GtkWindowGroup *window_group,
-                                      GtkWidget      *widget,
+_ctk_window_group_remove_device_grab (CtkWindowGroup *window_group,
+                                      CtkWidget      *widget,
                                       GdkDevice      *device)
 {
-  GtkWindowGroupPrivate *priv;
-  GtkDeviceGrabInfo *info;
+  CtkWindowGroupPrivate *priv;
+  CtkDeviceGrabInfo *info;
   GSList *list, *node = NULL;
   GdkDevice *other_device;
 
@@ -326,13 +326,13 @@ _ctk_window_group_remove_device_grab (GtkWindowGroup *window_group,
       info = node->data;
 
       priv->device_grabs = g_slist_delete_link (priv->device_grabs, node);
-      g_slice_free (GtkDeviceGrabInfo, info);
+      g_slice_free (CtkDeviceGrabInfo, info);
     }
 }
 
 /**
  * ctk_window_group_get_current_device_grab:
- * @window_group: a #GtkWindowGroup
+ * @window_group: a #CtkWindowGroup
  * @device: a #GdkDevice
  *
  * Returns the current grab widget for @device, or %NULL if none.
@@ -341,12 +341,12 @@ _ctk_window_group_remove_device_grab (GtkWindowGroup *window_group,
  *
  * Since: 3.0
  */
-GtkWidget *
-ctk_window_group_get_current_device_grab (GtkWindowGroup *window_group,
+CtkWidget *
+ctk_window_group_get_current_device_grab (CtkWindowGroup *window_group,
                                           GdkDevice      *device)
 {
-  GtkWindowGroupPrivate *priv;
-  GtkDeviceGrabInfo *info;
+  CtkWindowGroupPrivate *priv;
+  CtkDeviceGrabInfo *info;
   GdkDevice *other_device;
   GSList *list;
 
@@ -371,12 +371,12 @@ ctk_window_group_get_current_device_grab (GtkWindowGroup *window_group,
 }
 
 gboolean
-_ctk_window_group_widget_is_blocked_for_device (GtkWindowGroup *window_group,
-                                                GtkWidget      *widget,
+_ctk_window_group_widget_is_blocked_for_device (CtkWindowGroup *window_group,
+                                                CtkWidget      *widget,
                                                 GdkDevice      *device)
 {
-  GtkWindowGroupPrivate *priv;
-  GtkDeviceGrabInfo *info;
+  CtkWindowGroupPrivate *priv;
+  CtkDeviceGrabInfo *info;
   GdkDevice *other_device;
   GSList *list;
 

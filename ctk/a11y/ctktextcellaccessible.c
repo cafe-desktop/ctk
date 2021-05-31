@@ -24,7 +24,7 @@
 #include "ctkcellaccessibleparent.h"
 #include "ctkstylecontextprivate.h"
 
-struct _GtkTextCellAccessiblePrivate
+struct _CtkTextCellAccessiblePrivate
 {
   gchar *cell_text;
   gint caret_pos;
@@ -80,20 +80,20 @@ static AtkAttributeSet* ctk_text_cell_accessible_get_run_attributes
 static AtkAttributeSet* ctk_text_cell_accessible_get_default_attributes 
                                                         (AtkText        *text);
 
-static GtkWidget*       get_widget                      (GtkTextCellAccessible *cell);
-static PangoLayout*     create_pango_layout             (GtkTextCellAccessible *cell);
+static CtkWidget*       get_widget                      (CtkTextCellAccessible *cell);
+static PangoLayout*     create_pango_layout             (CtkTextCellAccessible *cell);
 static void             add_attr                        (PangoAttrList  *attr_list,
                                                          PangoAttribute *attr);
 
 /* Misc */
 
-static void ctk_text_cell_accessible_update_cache       (GtkCellAccessible *cell,
+static void ctk_text_cell_accessible_update_cache       (CtkCellAccessible *cell,
                                                          gboolean           emit_signal);
 
 static void atk_text_interface_init (AtkTextIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkTextCellAccessible, ctk_text_cell_accessible, CTK_TYPE_RENDERER_CELL_ACCESSIBLE,
-                         G_ADD_PRIVATE (GtkTextCellAccessible)
+G_DEFINE_TYPE_WITH_CODE (CtkTextCellAccessible, ctk_text_cell_accessible, CTK_TYPE_RENDERER_CELL_ACCESSIBLE,
+                         G_ADD_PRIVATE (CtkTextCellAccessible)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_TEXT, atk_text_interface_init))
 
 static AtkStateSet *
@@ -111,7 +111,7 @@ ctk_text_cell_accessible_ref_state_set (AtkObject *accessible)
 static void
 ctk_text_cell_accessible_finalize (GObject *object)
 {
-  GtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (object);
+  CtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (object);
 
   g_free (text_cell->priv->cell_text);
 
@@ -124,7 +124,7 @@ ctk_text_cell_accessible_finalize (GObject *object)
 static const gchar *
 ctk_text_cell_accessible_get_name (AtkObject *atk_obj)
 {
-  GtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (atk_obj);
+  CtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (atk_obj);
 
   if (atk_obj->name)
     return atk_obj->name;
@@ -133,14 +133,14 @@ ctk_text_cell_accessible_get_name (AtkObject *atk_obj)
 }
 
 static void
-ctk_text_cell_accessible_update_cache (GtkCellAccessible *cell,
+ctk_text_cell_accessible_update_cache (CtkCellAccessible *cell,
                                        gboolean           emit_signal)
 {
-  GtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (cell);
+  CtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (cell);
   AtkObject *obj = ATK_OBJECT (cell);
   gint text_length;
   gchar *text;
-  GtkCellRenderer *renderer;
+  CtkCellRenderer *renderer;
 
   if (text_cell->priv->layout)
     g_object_unref (text_cell->priv->layout);
@@ -180,11 +180,11 @@ ctk_text_cell_accessible_update_cache (GtkCellAccessible *cell,
 }
 
 static void
-ctk_text_cell_accessible_class_init (GtkTextCellAccessibleClass *klass)
+ctk_text_cell_accessible_class_init (CtkTextCellAccessibleClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
   AtkObjectClass *atk_object_class = ATK_OBJECT_CLASS (klass);
-  GtkCellAccessibleClass *cell_class = CTK_CELL_ACCESSIBLE_CLASS (klass);
+  CtkCellAccessibleClass *cell_class = CTK_CELL_ACCESSIBLE_CLASS (klass);
 
   cell_class->update_cache = ctk_text_cell_accessible_update_cache;
 
@@ -195,7 +195,7 @@ ctk_text_cell_accessible_class_init (GtkTextCellAccessibleClass *klass)
 }
 
 static void
-ctk_text_cell_accessible_init (GtkTextCellAccessible *text_cell)
+ctk_text_cell_accessible_init (CtkTextCellAccessible *text_cell)
 {
   text_cell->priv = ctk_text_cell_accessible_get_instance_private (text_cell);
 }
@@ -221,7 +221,7 @@ ctk_text_cell_accessible_get_text_before_offset (AtkText         *atk_text,
                                                  gint            *start_offset,
                                                  gint            *end_offset)
 {
-  GtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (atk_text);
+  CtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (atk_text);
   gchar *text;
 
   text = _ctk_pango_get_text_before (text_cell->priv->layout, boundary_type, offset, start_offset, end_offset);
@@ -236,7 +236,7 @@ ctk_text_cell_accessible_get_text_at_offset (AtkText         *atk_text,
                                              gint            *start_offset,
                                              gint            *end_offset)
 {
-  GtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (atk_text);
+  CtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (atk_text);
   gchar *text;
 
   text = _ctk_pango_get_text_at (text_cell->priv->layout, boundary_type, offset, start_offset, end_offset);
@@ -251,7 +251,7 @@ ctk_text_cell_accessible_get_text_after_offset (AtkText         *atk_text,
                                                 gint            *start_offset,
                                                 gint            *end_offset)
 {
-  GtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (atk_text);
+  CtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (atk_text);
   gchar *text;
 
   text = _ctk_pango_get_text_after (text_cell->priv->layout, boundary_type, offset, start_offset, end_offset);
@@ -278,7 +278,7 @@ static gboolean
 ctk_text_cell_accessible_set_caret_offset (AtkText *text,
                                            gint     offset)
 {
-  GtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (text);
+  CtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (text);
 
   if (text_cell->priv->cell_text == NULL)
     return FALSE;
@@ -307,7 +307,7 @@ ctk_text_cell_accessible_get_run_attributes (AtkText *text,
                                              gint    *end_offset)
 {
   AtkAttributeSet *attrib_set = NULL;
-  GtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (text);
+  CtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (text);
 
   attrib_set = _ctk_pango_get_run_attributes  (NULL, text_cell->priv->layout, offset, start_offset, end_offset);
 
@@ -332,8 +332,8 @@ static AtkAttributeSet *
 ctk_text_cell_accessible_get_default_attributes (AtkText *text)
 {
   AtkAttributeSet *attrib_set = NULL;
-  GtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (text);
-  GtkWidget *widget;
+  CtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (text);
+  CtkWidget *widget;
 
   widget = get_widget (CTK_TEXT_CELL_ACCESSIBLE (text));
 
@@ -349,8 +349,8 @@ ctk_text_cell_accessible_get_default_attributes (AtkText *text)
   return attrib_set;
 }
 
-GtkWidget *
-get_widget (GtkTextCellAccessible *text)
+CtkWidget *
+get_widget (CtkTextCellAccessible *text)
 {
   AtkObject *parent;
 
@@ -366,7 +366,7 @@ get_widget (GtkTextCellAccessible *text)
  * cached PangoLayout so we must create a temporary one using this function.
  */
 static PangoLayout *
-create_pango_layout (GtkTextCellAccessible *text)
+create_pango_layout (CtkTextCellAccessible *text)
 {
   GdkRGBA *foreground_rgba;
   PangoAttrList *attr_list, *attributes;
@@ -379,8 +379,8 @@ create_pango_layout (GtkTextCellAccessible *text)
   gchar *renderer_text;
   gdouble scale;
   gint rise;
-  GtkRendererCellAccessible *gail_renderer;
-  GtkCellRendererText *ctk_renderer;
+  CtkRendererCellAccessible *gail_renderer;
+  CtkCellRendererText *ctk_renderer;
 
   gail_renderer = CTK_RENDERER_CELL_ACCESSIBLE (text);
   g_object_get (gail_renderer, "renderer", &ctk_renderer, NULL);
@@ -479,7 +479,7 @@ add_attr (PangoAttrList *attr_list,
 
 
 static void
-get_origins (GtkWidget *widget,
+get_origins (CtkWidget *widget,
              gint      *x_window,
              gint      *y_window,
              gint      *x_toplevel,
@@ -506,14 +506,14 @@ ctk_text_cell_accessible_get_character_extents (AtkText      *text,
                                                 gint         *height,
                                                 AtkCoordType  coords)
 {
-  GtkRendererCellAccessible *gail_renderer;
-  GtkRequisition min_size;
-  GtkCellRendererText *ctk_renderer;
+  CtkRendererCellAccessible *gail_renderer;
+  CtkRequisition min_size;
+  CtkCellRendererText *ctk_renderer;
   GdkRectangle rendered_rect;
-  GtkWidget *widget;
+  CtkWidget *widget;
   AtkObject *parent;
   PangoRectangle char_rect;
-  GtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (text);
+  CtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (text);
   gchar *renderer_text;
   gfloat xalign, yalign;
   gint x_offset, y_offset, index;
@@ -594,12 +594,12 @@ ctk_text_cell_accessible_get_offset_at_point (AtkText      *text,
                                               AtkCoordType  coords)
 {
   AtkObject *parent;
-  GtkRendererCellAccessible *gail_renderer;
-  GtkCellRendererText *ctk_renderer;
-  GtkRequisition min_size;
-  GtkWidget *widget;
+  CtkRendererCellAccessible *gail_renderer;
+  CtkCellRendererText *ctk_renderer;
+  CtkRequisition min_size;
+  CtkWidget *widget;
   GdkRectangle rendered_rect;
-  GtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (text);
+  CtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (text);
   gchar *renderer_text;
   gfloat xalign, yalign;
   gint x_offset, y_offset, index;

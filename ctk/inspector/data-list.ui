@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="ctk30">
-  <template class="GtkInspectorDataList" parent="GtkBox">
+  <template class="CtkInspectorDataList" parent="CtkBox">
     <property name="orientation">vertical</property>
     <child>
-      <object class="GtkBox">
+      <object class="CtkBox">
         <property name="visible">True</property>
         <property name="orientation">horizontal</property>
         <property name="spacing">6</property>
         <property name="margin">6</property>
         <child>
-          <object class="GtkToggleButton" id="show_button">
+          <object class="CtkToggleButton" id="show_button">
             <property name="visible">True</property>
             <property name="relief">none</property>
             <property name="tooltip-text" translatable="yes">Show data</property>
@@ -18,7 +18,7 @@
               <class name="image-button"/>
             </style>
             <child>
-              <object class="GtkImage">
+              <object class="CtkImage">
                 <property name="visible">True</property>
                 <property name="icon-name">view-refresh-symbolic</property>
                 <property name="icon-size">1</property>
@@ -30,20 +30,20 @@
           </packing>
         </child>
         <child type="center">
-          <object class="GtkLabel" id="object_title">
+          <object class="CtkLabel" id="object_title">
             <property name="visible">True</property>
           </object>
         </child>
       </object>
     </child>
     <child>
-      <object class="GtkScrolledWindow">
+      <object class="CtkScrolledWindow">
         <property name="visible">True</property>
         <property name="expand">True</property>
         <property name="hscrollbar-policy">automatic</property>
         <property name="vscrollbar-policy">always</property>
         <child>
-          <object class= "GtkTreeView" id="view">
+          <object class= "CtkTreeView" id="view">
             <property name="visible">True</property>
           </object>
         </child>

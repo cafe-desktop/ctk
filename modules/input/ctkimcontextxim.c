@@ -25,19 +25,19 @@
 #include "ctk/ctkintl.h"
 
 typedef struct _StatusWindow StatusWindow;
-typedef struct _GtkXIMInfo GtkXIMInfo;
+typedef struct _CtkXIMInfo CtkXIMInfo;
 
-struct _GtkIMContextXIM
+struct _CtkIMContextXIM
 {
-  GtkIMContext object;
+  CtkIMContext object;
 
-  GtkXIMInfo *im_info;
+  CtkXIMInfo *im_info;
 
   gchar *locale;
   gchar *mb_charset;
 
   GdkWindow *client_window;
-  GtkWidget *client_widget;
+  CtkWidget *client_widget;
 
   /* The status window for this input context; we claim the
    * status window when we are focused and have created an XIC
@@ -71,7 +71,7 @@ struct _GtkIMContextXIM
   guint has_focus : 1;
 };
 
-struct _GtkXIMInfo
+struct _CtkXIMInfo
 {
   GdkScreen *screen;
   XIM im;
@@ -79,7 +79,7 @@ struct _GtkXIMInfo
   XIMStyle preedit_style_setting;
   XIMStyle status_style_setting;
   XIMStyle style;
-  GtkSettings *settings;
+  CtkSettings *settings;
   gulong status_set;
   gulong preedit_set;
   gulong display_closed_cb;
@@ -93,44 +93,44 @@ struct _GtkXIMInfo
 /* A context status window; these are kept in the status_windows list. */
 struct _StatusWindow
 {
-  GtkWidget *window;
+  CtkWidget *window;
   
   /* Toplevel window to which the status window corresponds */
-  GtkWidget *toplevel;
+  CtkWidget *toplevel;
 
-  /* Currently focused GtkIMContextXIM for the toplevel, if any */
-  GtkIMContextXIM *context;
+  /* Currently focused CtkIMContextXIM for the toplevel, if any */
+  CtkIMContextXIM *context;
 };
 
-static void     ctk_im_context_xim_class_init         (GtkIMContextXIMClass  *class);
-static void     ctk_im_context_xim_init               (GtkIMContextXIM       *im_context_xim);
+static void     ctk_im_context_xim_class_init         (CtkIMContextXIMClass  *class);
+static void     ctk_im_context_xim_init               (CtkIMContextXIM       *im_context_xim);
 static void     ctk_im_context_xim_finalize           (GObject               *obj);
-static void     ctk_im_context_xim_set_client_window  (GtkIMContext          *context,
+static void     ctk_im_context_xim_set_client_window  (CtkIMContext          *context,
 						       GdkWindow             *client_window);
-static gboolean ctk_im_context_xim_filter_keypress    (GtkIMContext          *context,
+static gboolean ctk_im_context_xim_filter_keypress    (CtkIMContext          *context,
 						       GdkEventKey           *key);
-static void     ctk_im_context_xim_reset              (GtkIMContext          *context);
-static void     ctk_im_context_xim_focus_in           (GtkIMContext          *context);
-static void     ctk_im_context_xim_focus_out          (GtkIMContext          *context);
-static void     ctk_im_context_xim_set_cursor_location (GtkIMContext          *context,
+static void     ctk_im_context_xim_reset              (CtkIMContext          *context);
+static void     ctk_im_context_xim_focus_in           (CtkIMContext          *context);
+static void     ctk_im_context_xim_focus_out          (CtkIMContext          *context);
+static void     ctk_im_context_xim_set_cursor_location (CtkIMContext          *context,
 						       GdkRectangle		*area);
-static void     ctk_im_context_xim_set_use_preedit    (GtkIMContext          *context,
+static void     ctk_im_context_xim_set_use_preedit    (CtkIMContext          *context,
 						       gboolean		      use_preedit);
-static void     ctk_im_context_xim_get_preedit_string (GtkIMContext          *context,
+static void     ctk_im_context_xim_get_preedit_string (CtkIMContext          *context,
 						       gchar                **str,
 						       PangoAttrList        **attrs,
 						       gint                  *cursor_pos);
 
-static void reinitialize_ic      (GtkIMContextXIM *context_xim);
-static void set_ic_client_window (GtkIMContextXIM *context_xim,
+static void reinitialize_ic      (CtkIMContextXIM *context_xim);
+static void set_ic_client_window (CtkIMContextXIM *context_xim,
 				  GdkWindow       *client_window);
 
-static void setup_styles (GtkXIMInfo *info);
+static void setup_styles (CtkXIMInfo *info);
 
-static void update_client_widget   (GtkIMContextXIM *context_xim);
-static void update_status_window   (GtkIMContextXIM *context_xim);
+static void update_client_widget   (CtkIMContextXIM *context_xim);
+static void update_status_window   (CtkIMContextXIM *context_xim);
 
-static StatusWindow *status_window_get      (GtkWidget    *toplevel);
+static StatusWindow *status_window_get      (CtkWidget    *toplevel);
 static void          status_window_free     (StatusWindow *status_window);
 static void          status_window_set_text (StatusWindow *status_window,
 					     const gchar  *text);
@@ -139,10 +139,10 @@ static void xim_destroy_callback   (XIM      xim,
 				    XPointer client_data,
 				    XPointer call_data);
 
-static XIC       ctk_im_context_xim_get_ic            (GtkIMContextXIM *context_xim);
+static XIC       ctk_im_context_xim_get_ic            (CtkIMContextXIM *context_xim);
 static void           xim_info_display_closed (GdkDisplay *display,
 			                       gboolean    is_error,
-			                       GtkXIMInfo *info);
+			                       CtkXIMInfo *info);
 
 static GObjectClass *parent_class;
 
@@ -158,13 +158,13 @@ ctk_im_context_xim_register_type (GTypeModule *type_module)
 {
   const GTypeInfo im_context_xim_info =
   {
-    sizeof (GtkIMContextXIMClass),
+    sizeof (CtkIMContextXIMClass),
     (GBaseInitFunc) NULL,
     (GBaseFinalizeFunc) NULL,
     (GClassInitFunc) ctk_im_context_xim_class_init,
     NULL,           /* class_finalize */    
     NULL,           /* class_data */
-    sizeof (GtkIMContextXIM),
+    sizeof (CtkIMContextXIM),
     0,
     (GInstanceInitFunc) ctk_im_context_xim_init,
   };
@@ -172,7 +172,7 @@ ctk_im_context_xim_register_type (GTypeModule *type_module)
   ctk_type_im_context_xim = 
     g_type_module_register_type (type_module,
 				 CTK_TYPE_IM_CONTEXT,
-				 "GtkIMContextXIM",
+				 "CtkIMContextXIM",
 				 &im_context_xim_info, 0);
 }
 
@@ -225,7 +225,7 @@ choose_better_style (XIMStyle style1, XIMStyle style2)
 }
 
 static void
-reinitialize_all_ics (GtkXIMInfo *info)
+reinitialize_all_ics (CtkXIMInfo *info)
 {
   GSList *tmp_list;
 
@@ -234,7 +234,7 @@ reinitialize_all_ics (GtkXIMInfo *info)
 }
 
 static void
-setup_styles (GtkXIMInfo *info)
+setup_styles (CtkXIMInfo *info)
 {
   int i;
   unsigned long settings_preference;
@@ -261,7 +261,7 @@ setup_styles (GtkXIMInfo *info)
 }
 
 static void
-setup_im (GtkXIMInfo *info)
+setup_im (CtkXIMInfo *info)
 {
   XIMValuesList *ic_values = NULL;
   XIMCallback im_destroy_callback;
@@ -317,7 +317,7 @@ setup_im (GtkXIMInfo *info)
 static void
 xim_info_display_closed (GdkDisplay *display,
 			 gboolean    is_error,
-			 GtkXIMInfo *info)
+			 CtkXIMInfo *info)
 {
   GSList *ics, *tmp_list;
 
@@ -352,7 +352,7 @@ static void
 xim_instantiate_callback (Display *display, XPointer client_data,
 			  XPointer call_data)
 {
-  GtkXIMInfo *info = (GtkXIMInfo*)client_data;
+  CtkXIMInfo *info = (CtkXIMInfo*)client_data;
   XIM im = NULL;
 
   im = XOpenIM (display, NULL, NULL, NULL);
@@ -371,7 +371,7 @@ xim_instantiate_callback (Display *display, XPointer client_data,
 
 /* initialize info->im */
 static void
-xim_info_try_im (GtkXIMInfo *info)
+xim_info_try_im (CtkXIMInfo *info)
 {
   GdkScreen *screen = info->screen;
   GdkDisplay *display = gdk_screen_get_display (screen);
@@ -403,7 +403,7 @@ xim_destroy_callback (XIM      xim,
 		      XPointer client_data,
 		      XPointer call_data)
 {
-  GtkXIMInfo *info = (GtkXIMInfo*)client_data;
+  CtkXIMInfo *info = (CtkXIMInfo*)client_data;
 
   info->im = NULL;
 
@@ -417,19 +417,19 @@ xim_destroy_callback (XIM      xim,
   return;
 } 
 
-static GtkXIMInfo *
+static CtkXIMInfo *
 get_im (GdkWindow *client_window,
 	const char *locale)
 {
   GSList *tmp_list;
-  GtkXIMInfo *info;
+  CtkXIMInfo *info;
   GdkScreen *screen = gdk_window_get_screen (client_window);
 
   info = NULL;
   tmp_list = open_ims;
   while (tmp_list)
     {
-      GtkXIMInfo *tmp_info = tmp_list->data;
+      CtkXIMInfo *tmp_info = tmp_list->data;
       if (tmp_info->screen == screen &&
 	  strcmp (tmp_info->locale, locale) == 0)
 	{
@@ -448,7 +448,7 @@ get_im (GdkWindow *client_window,
 
   if (info == NULL)
     {
-      info = g_new (GtkXIMInfo, 1);
+      info = g_new (CtkXIMInfo, 1);
       open_ims = g_slist_prepend (open_ims, info);
 
       info->screen = screen;
@@ -470,9 +470,9 @@ get_im (GdkWindow *client_window,
 }
 
 static void
-ctk_im_context_xim_class_init (GtkIMContextXIMClass *class)
+ctk_im_context_xim_class_init (CtkIMContextXIMClass *class)
 {
-  GtkIMContextClass *im_context_class = CTK_IM_CONTEXT_CLASS (class);
+  CtkIMContextClass *im_context_class = CTK_IM_CONTEXT_CLASS (class);
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
 
   parent_class = g_type_class_peek_parent (class);
@@ -489,7 +489,7 @@ ctk_im_context_xim_class_init (GtkIMContextXIMClass *class)
 }
 
 static void
-ctk_im_context_xim_init (GtkIMContextXIM *im_context_xim)
+ctk_im_context_xim_init (CtkIMContextXIM *im_context_xim)
 {
   im_context_xim->use_preedit = TRUE;
   im_context_xim->filter_key_release = FALSE;
@@ -501,7 +501,7 @@ ctk_im_context_xim_init (GtkIMContextXIM *im_context_xim)
 static void
 ctk_im_context_xim_finalize (GObject *obj)
 {
-  GtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (obj);
+  CtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (obj);
 
   context_xim->finalizing = TRUE;
 
@@ -538,7 +538,7 @@ ctk_im_context_xim_finalize (GObject *obj)
 }
 
 static void
-reinitialize_ic (GtkIMContextXIM *context_xim)
+reinitialize_ic (CtkIMContextXIM *context_xim)
 {
   if (context_xim->ic)
     {
@@ -561,7 +561,7 @@ reinitialize_ic (GtkIMContextXIM *context_xim)
 }
 
 static void
-set_ic_client_window (GtkIMContextXIM *context_xim,
+set_ic_client_window (CtkIMContextXIM *context_xim,
 		      GdkWindow       *client_window)
 {
   reinitialize_ic (context_xim);
@@ -583,18 +583,18 @@ set_ic_client_window (GtkIMContextXIM *context_xim,
 }
 
 static void
-ctk_im_context_xim_set_client_window (GtkIMContext          *context,
+ctk_im_context_xim_set_client_window (CtkIMContext          *context,
 				      GdkWindow             *client_window)
 {
-  GtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
+  CtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
 
   set_ic_client_window (context_xim, client_window);
 }
 
-GtkIMContext *
+CtkIMContext *
 ctk_im_context_xim_new (void)
 {
-  GtkIMContextXIM *result;
+  CtkIMContextXIM *result;
   const gchar *charset;
 
   if (!GDK_IS_X11_DISPLAY(gdk_display_get_default()))
@@ -610,7 +610,7 @@ ctk_im_context_xim_new (void)
 }
 
 static char *
-mb_to_utf8 (GtkIMContextXIM *context_xim,
+mb_to_utf8 (CtkIMContextXIM *context_xim,
 	    const char      *str)
 {
   GError *error = NULL;
@@ -634,10 +634,10 @@ mb_to_utf8 (GtkIMContextXIM *context_xim,
 }
 
 static gboolean
-ctk_im_context_xim_filter_keypress (GtkIMContext *context,
+ctk_im_context_xim_filter_keypress (CtkIMContext *context,
 				    GdkEventKey  *event)
 {
-  GtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
+  CtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
   XIC ic = ctk_im_context_xim_get_ic (context_xim);
   gchar static_buffer[256];
   gchar *buffer = static_buffer;
@@ -731,9 +731,9 @@ ctk_im_context_xim_filter_keypress (GtkIMContext *context,
 }
 
 static void
-ctk_im_context_xim_focus_in (GtkIMContext *context)
+ctk_im_context_xim_focus_in (CtkIMContext *context)
 {
-  GtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
+  CtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
 
   if (!context_xim->has_focus)
     {
@@ -750,9 +750,9 @@ ctk_im_context_xim_focus_in (GtkIMContext *context)
 }
 
 static void
-ctk_im_context_xim_focus_out (GtkIMContext *context)
+ctk_im_context_xim_focus_out (CtkIMContext *context)
 {
-  GtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
+  CtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
 
   if (context_xim->has_focus)
     {
@@ -769,10 +769,10 @@ ctk_im_context_xim_focus_out (GtkIMContext *context)
 }
 
 static void
-ctk_im_context_xim_set_cursor_location (GtkIMContext *context,
+ctk_im_context_xim_set_cursor_location (CtkIMContext *context,
 					GdkRectangle *area)
 {
-  GtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
+  CtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
   XIC ic = ctk_im_context_xim_get_ic (context_xim);
 
   XVaNestedList preedit_attr;
@@ -796,10 +796,10 @@ ctk_im_context_xim_set_cursor_location (GtkIMContext *context,
 }
 
 static void
-ctk_im_context_xim_set_use_preedit (GtkIMContext *context,
+ctk_im_context_xim_set_use_preedit (CtkIMContext *context,
 				    gboolean      use_preedit)
 {
-  GtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
+  CtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
 
   use_preedit = use_preedit != FALSE;
 
@@ -813,9 +813,9 @@ ctk_im_context_xim_set_use_preedit (GtkIMContext *context,
 }
 
 static void
-ctk_im_context_xim_reset (GtkIMContext *context)
+ctk_im_context_xim_reset (CtkIMContext *context)
 {
-  GtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
+  CtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
   XIC ic = ctk_im_context_xim_get_ic (context_xim);
   gchar *result;
 
@@ -917,12 +917,12 @@ add_feedback_attr (PangoAttrList *attrs,
 }
 
 static void     
-ctk_im_context_xim_get_preedit_string (GtkIMContext   *context,
+ctk_im_context_xim_get_preedit_string (CtkIMContext   *context,
 				       gchar         **str,
 				       PangoAttrList **attrs,
 				       gint           *cursor_pos)
 {
-  GtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
+  CtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
   gchar *utf8 = g_ucs4_to_utf8 (context_xim->preedit_chars, context_xim->preedit_length, NULL, NULL, NULL);
 
   if (attrs)
@@ -964,8 +964,8 @@ preedit_start_callback (XIC      xic,
 			XPointer client_data,
 			XPointer call_data)
 {
-  GtkIMContext *context = CTK_IM_CONTEXT (client_data);
-  GtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
+  CtkIMContext *context = CTK_IM_CONTEXT (client_data);
+  CtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
   
   if (!context_xim->finalizing)
     g_signal_emit_by_name (context, "preedit-start");
@@ -978,8 +978,8 @@ preedit_done_callback (XIC      xic,
 		     XPointer client_data,
 		     XPointer call_data)
 {
-  GtkIMContext *context = CTK_IM_CONTEXT (client_data);
-  GtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
+  CtkIMContext *context = CTK_IM_CONTEXT (client_data);
+  CtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
 
   if (context_xim->preedit_length)
     {
@@ -993,7 +993,7 @@ preedit_done_callback (XIC      xic,
 }		     
 
 static gint
-xim_text_to_utf8 (GtkIMContextXIM *context, XIMText *xim_text, gchar **text)
+xim_text_to_utf8 (CtkIMContextXIM *context, XIMText *xim_text, gchar **text)
 {
   gint text_length = 0;
   GError *error = NULL;
@@ -1050,7 +1050,7 @@ preedit_draw_callback (XIC                           xic,
 		       XPointer                      client_data,
 		       XIMPreeditDrawCallbackStruct *call_data)
 {
-  GtkIMContextXIM *context = CTK_IM_CONTEXT_XIM (client_data);
+  CtkIMContextXIM *context = CTK_IM_CONTEXT_XIM (client_data);
 
   XIMText *new_xim_text = call_data->text;
   gint new_text_length;
@@ -1123,7 +1123,7 @@ preedit_caret_callback (XIC                            xic,
 			XPointer                       client_data,
 			XIMPreeditCaretCallbackStruct *call_data)
 {
-  GtkIMContextXIM *context = CTK_IM_CONTEXT_XIM (client_data);
+  CtkIMContextXIM *context = CTK_IM_CONTEXT_XIM (client_data);
   
   if (call_data->direction == XIMAbsolutePosition)
     {
@@ -1159,7 +1159,7 @@ status_draw_callback (XIC      xic,
 		      XPointer client_data,
 		      XIMStatusDrawCallbackStruct *call_data)
 {
-  GtkIMContextXIM *context = CTK_IM_CONTEXT_XIM (client_data);
+  CtkIMContextXIM *context = CTK_IM_CONTEXT_XIM (client_data);
 
   if (call_data->type == XIMTextType)
     {
@@ -1178,15 +1178,15 @@ status_draw_callback (XIC      xic,
 static void
 string_conversion_callback (XIC xic, XPointer client_data, XPointer call_data)
 {
-  GtkIMContextXIM *context_xim;
+  CtkIMContextXIM *context_xim;
   XIMStringConversionCallbackStruct *conv_data;
   gchar *surrounding;
   gint  cursor_index;
 
-  context_xim = (GtkIMContextXIM *)client_data;
+  context_xim = (CtkIMContextXIM *)client_data;
   conv_data = (XIMStringConversionCallbackStruct *)call_data;
 
-  if (ctk_im_context_get_surrounding ((GtkIMContext *)context_xim,
+  if (ctk_im_context_get_surrounding ((CtkIMContext *)context_xim,
                                       &surrounding, &cursor_index))
     {
       gchar *text = NULL;
@@ -1280,7 +1280,7 @@ string_conversion_callback (XIC xic, XPointer client_data, XPointer call_data)
       if (conv_data->operation == XIMStringConversionSubstitution
           && subst_nchars > 0)
         {
-          ctk_im_context_delete_surrounding ((GtkIMContext *)context_xim,
+          ctk_im_context_delete_surrounding ((CtkIMContext *)context_xim,
                                             subst_offset, subst_nchars);
         }
 
@@ -1290,7 +1290,7 @@ string_conversion_callback (XIC xic, XPointer client_data, XPointer call_data)
 
 
 static XVaNestedList
-set_preedit_callback (GtkIMContextXIM *context_xim)
+set_preedit_callback (CtkIMContextXIM *context_xim)
 {
   context_xim->preedit_start_callback.client_data = (XPointer)context_xim;
   context_xim->preedit_start_callback.callback = (XIMProc)preedit_start_callback;
@@ -1309,7 +1309,7 @@ set_preedit_callback (GtkIMContextXIM *context_xim)
 }
 
 static XVaNestedList
-set_status_callback (GtkIMContextXIM *context_xim)
+set_status_callback (CtkIMContextXIM *context_xim)
 {
   context_xim->status_start_callback.client_data = (XPointer)context_xim;
   context_xim->status_start_callback.callback = (XIMProc)status_start_callback;
@@ -1327,7 +1327,7 @@ set_status_callback (GtkIMContextXIM *context_xim)
 
 
 static void
-set_string_conversion_callback (GtkIMContextXIM *context_xim, XIC xic)
+set_string_conversion_callback (CtkIMContextXIM *context_xim, XIC xic)
 {
   if (!context_xim->im_info->supports_string_conversion)
     return;
@@ -1342,7 +1342,7 @@ set_string_conversion_callback (GtkIMContextXIM *context_xim, XIC xic)
 }
 
 static XIC
-ctk_im_context_xim_get_ic (GtkIMContextXIM *context_xim)
+ctk_im_context_xim_get_ic (CtkIMContextXIM *context_xim)
 {
   if (context_xim->im_info == NULL || context_xim->im_info->im == NULL)
     return NULL;
@@ -1450,13 +1450,13 @@ ctk_im_context_xim_get_ic (GtkIMContextXIM *context_xim)
  * window that is owned by some widget, and then calling
  * ctk_widget_get_toplevel() on that widget. This should
  * handle both cases where we might have GdkWindows without widgets,
- * and cases where GtkWidgets have strange window hierarchies
- * (like a torn off GtkHandleBox.)
+ * and cases where CtkWidgets have strange window hierarchies
+ * (like a torn off CtkHandleBox.)
  *
  * The status window is visible if and only if there is text
- * for it; whenever a new GtkIMContextXIM claims the status
+ * for it; whenever a new CtkIMContextXIM claims the status
  * window, we blank out any existing text. We actually only
- * create a GtkWindow for the status window the first time
+ * create a CtkWindow for the status window the first time
  * it is shown; this is an important optimization when we are
  * using XIM with something like a simple compose-key input
  * method that never needs a status window.
@@ -1465,7 +1465,7 @@ ctk_im_context_xim_get_ic (GtkIMContextXIM *context_xim)
 /* Called when we no longer need a status window
 */
 static void
-disclaim_status_window (GtkIMContextXIM *context_xim)
+disclaim_status_window (CtkIMContextXIM *context_xim)
 {
   if (context_xim->status_window)
     {
@@ -1481,11 +1481,11 @@ disclaim_status_window (GtkIMContextXIM *context_xim)
 /* Called when we need a status window
  */
 static void
-claim_status_window (GtkIMContextXIM *context_xim)
+claim_status_window (CtkIMContextXIM *context_xim)
 {
   if (!context_xim->status_window && context_xim->client_widget)
     {
-      GtkWidget *toplevel = ctk_widget_get_toplevel (context_xim->client_widget);
+      CtkWidget *toplevel = ctk_widget_get_toplevel (context_xim->client_widget);
       if (toplevel && ctk_widget_is_toplevel (toplevel))
 	{
 	  StatusWindow *status_window = status_window_get (toplevel);
@@ -1503,7 +1503,7 @@ claim_status_window (GtkIMContextXIM *context_xim)
  * us to need, or not to need a status window.
  */
 static void
-update_status_window (GtkIMContextXIM *context_xim)
+update_status_window (CtkIMContextXIM *context_xim)
 {
   if (context_xim->ic && context_xim->in_toplevel && context_xim->has_focus)
     claim_status_window (context_xim);
@@ -1514,11 +1514,11 @@ update_status_window (GtkIMContextXIM *context_xim)
 /* Updates the in_toplevel flag for @context_xim
  */
 static void
-update_in_toplevel (GtkIMContextXIM *context_xim)
+update_in_toplevel (CtkIMContextXIM *context_xim)
 {
   if (context_xim->client_widget)
     {
-      GtkWidget *toplevel = ctk_widget_get_toplevel (context_xim->client_widget);
+      CtkWidget *toplevel = ctk_widget_get_toplevel (context_xim->client_widget);
       
       context_xim->in_toplevel = (toplevel && ctk_widget_is_toplevel (toplevel));
     }
@@ -1539,17 +1539,17 @@ update_in_toplevel (GtkIMContextXIM *context_xim)
  * window.
  */
 static void
-on_client_widget_hierarchy_changed (GtkWidget       *widget,
-				    GtkWidget       *old_toplevel,
-				    GtkIMContextXIM *context_xim)
+on_client_widget_hierarchy_changed (CtkWidget       *widget,
+				    CtkWidget       *old_toplevel,
+				    CtkIMContextXIM *context_xim)
 {
   update_in_toplevel (context_xim);
 }
 
-/* Finds the GtkWidget that owns the window, or if none, the
+/* Finds the CtkWidget that owns the window, or if none, the
  * widget owning the nearest parent that has a widget.
  */
-static GtkWidget *
+static CtkWidget *
 widget_for_window (GdkWindow *window)
 {
   while (window)
@@ -1569,9 +1569,9 @@ widget_for_window (GdkWindow *window)
  * removing and/or setting up our watches for the toplevel
  */
 static void
-update_client_widget (GtkIMContextXIM *context_xim)
+update_client_widget (CtkIMContextXIM *context_xim)
 {
-  GtkWidget *new_client_widget = widget_for_window (context_xim->client_window);
+  CtkWidget *new_client_widget = widget_for_window (context_xim->client_window);
 
   if (new_client_widget != context_xim->client_widget)
     {
@@ -1596,7 +1596,7 @@ update_client_widget (GtkIMContextXIM *context_xim)
 /* Called when the toplevel is destroyed; frees the status window
  */
 static void
-on_status_toplevel_destroy (GtkWidget    *toplevel,
+on_status_toplevel_destroy (CtkWidget    *toplevel,
 			    StatusWindow *status_window)
 {
   status_window_free (status_window);
@@ -1606,7 +1606,7 @@ on_status_toplevel_destroy (GtkWidget    *toplevel,
  * screen for the status window to match.
  */
 static void
-on_status_toplevel_notify_screen (GtkWindow    *toplevel,
+on_status_toplevel_notify_screen (CtkWindow    *toplevel,
 				  GParamSpec   *pspec,
 				  StatusWindow *status_window)
 {
@@ -1619,12 +1619,12 @@ on_status_toplevel_notify_screen (GtkWindow    *toplevel,
  * the status window to follow it.
  */
 static gboolean
-on_status_toplevel_configure (GtkWidget         *toplevel,
+on_status_toplevel_configure (CtkWidget         *toplevel,
 			      GdkEventConfigure *event,
 			      StatusWindow      *status_window)
 {
   GdkRectangle rect;
-  GtkRequisition requisition;
+  CtkRequisition requisition;
   gint y;
   gint height;
 
@@ -1681,7 +1681,7 @@ status_window_free (StatusWindow *status_window)
 /* Finds the status window object for a toplevel, creating it if necessary.
  */
 static StatusWindow *
-status_window_get (GtkWidget *toplevel)
+status_window_get (CtkWidget *toplevel)
 {
   StatusWindow *status_window;
 
@@ -1715,8 +1715,8 @@ status_window_get (GtkWidget *toplevel)
 static void
 status_window_make_window (StatusWindow *status_window)
 {
-  GtkWidget *window;
-  GtkWidget *status_label;
+  CtkWidget *window;
+  CtkWidget *status_label;
   
   status_window->window = ctk_window_new (CTK_WINDOW_POPUP);
   window = status_window->window;
@@ -1744,7 +1744,7 @@ status_window_set_text (StatusWindow *status_window,
 {
   if (text[0])
     {
-      GtkWidget *label;
+      CtkWidget *label;
       
       if (!status_window->window)
 	status_window_make_window (status_window);
@@ -1775,7 +1775,7 @@ ctk_im_context_xim_shutdown (void)
 
   while (open_ims)
     {
-      GtkXIMInfo *info = open_ims->data;
+      CtkXIMInfo *info = open_ims->data;
       GdkDisplay *display = gdk_screen_get_display (info->screen);
 
       xim_info_display_closed (display, FALSE, info);

@@ -2,14 +2,14 @@
 <!-- Generated with glade 3.19.0 -->
 <interface>
   <requires lib="ctk+" version="3.16"/>
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkGrid" id="grid1">
+      <object class="CtkGrid" id="grid1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
-          <object class="GtkLabel" id="label1">
+          <object class="CtkLabel" id="label1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">normal</property>
@@ -20,7 +20,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label2">
+          <object class="CtkLabel" id="label2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">reverse</property>
@@ -31,7 +31,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label3">
+          <object class="CtkLabel" id="label3">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">alternate</property>
@@ -42,7 +42,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label4">
+          <object class="CtkLabel" id="label4">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">alternate-reverse</property>
@@ -53,7 +53,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label12">
+          <object class="CtkLabel" id="label12">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">--&gt;
@@ -65,7 +65,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box31">
+          <object class="CtkBox" id="box31">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -86,7 +86,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box32">
+          <object class="CtkBox" id="box32">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -107,7 +107,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box30">
+          <object class="CtkBox" id="box30">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -128,7 +128,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box29">
+          <object class="CtkBox" id="box29">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -149,7 +149,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label11">
+          <object class="CtkLabel" id="label11">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">&lt;--
@@ -161,7 +161,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box18">
+          <object class="CtkBox" id="box18">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -182,7 +182,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box26">
+          <object class="CtkBox" id="box26">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -203,7 +203,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box27">
+          <object class="CtkBox" id="box27">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -224,7 +224,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box28">
+          <object class="CtkBox" id="box28">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -245,7 +245,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box22">
+          <object class="CtkBox" id="box22">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -266,7 +266,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box23">
+          <object class="CtkBox" id="box23">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -287,7 +287,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box24">
+          <object class="CtkBox" id="box24">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -308,7 +308,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box25">
+          <object class="CtkBox" id="box25">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -329,7 +329,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label10">
+          <object class="CtkLabel" id="label10">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">--&gt;
@@ -341,7 +341,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label9">
+          <object class="CtkLabel" id="label9">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">&lt;--
@@ -353,7 +353,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box17">
+          <object class="CtkBox" id="box17">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -374,7 +374,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box19">
+          <object class="CtkBox" id="box19">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -395,7 +395,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box20">
+          <object class="CtkBox" id="box20">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -416,7 +416,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box21">
+          <object class="CtkBox" id="box21">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -437,7 +437,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label8">
+          <object class="CtkLabel" id="label8">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">--&gt;
@@ -449,7 +449,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box10">
+          <object class="CtkBox" id="box10">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -470,7 +470,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box16">
+          <object class="CtkBox" id="box16">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -491,7 +491,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box15">
+          <object class="CtkBox" id="box15">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -512,7 +512,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box14">
+          <object class="CtkBox" id="box14">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -533,7 +533,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box13">
+          <object class="CtkBox" id="box13">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -554,7 +554,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box12">
+          <object class="CtkBox" id="box12">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -575,7 +575,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box11">
+          <object class="CtkBox" id="box11">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -596,7 +596,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box9">
+          <object class="CtkBox" id="box9">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -617,7 +617,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label7">
+          <object class="CtkLabel" id="label7">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">&lt;--
@@ -629,7 +629,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label6">
+          <object class="CtkLabel" id="label6">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">--&gt;
@@ -641,7 +641,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box5">
+          <object class="CtkBox" id="box5">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -662,7 +662,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box6">
+          <object class="CtkBox" id="box6">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -683,7 +683,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box7">
+          <object class="CtkBox" id="box7">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -704,7 +704,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box8">
+          <object class="CtkBox" id="box8">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -725,7 +725,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label5">
+          <object class="CtkLabel" id="label5">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">&lt;--
@@ -737,7 +737,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box1">
+          <object class="CtkBox" id="box1">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -758,7 +758,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box2">
+          <object class="CtkBox" id="box2">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -779,7 +779,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box3">
+          <object class="CtkBox" id="box3">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -800,7 +800,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box4">
+          <object class="CtkBox" id="box4">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -821,7 +821,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label13">
+          <object class="CtkLabel" id="label13">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">&lt;--
@@ -833,7 +833,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label14">
+          <object class="CtkLabel" id="label14">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">--&gt;
@@ -845,7 +845,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box33">
+          <object class="CtkBox" id="box33">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -866,7 +866,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box34">
+          <object class="CtkBox" id="box34">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -887,7 +887,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box35">
+          <object class="CtkBox" id="box35">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -908,7 +908,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box36">
+          <object class="CtkBox" id="box36">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -929,7 +929,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box37">
+          <object class="CtkBox" id="box37">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -950,7 +950,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box38">
+          <object class="CtkBox" id="box38">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -971,7 +971,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box39">
+          <object class="CtkBox" id="box39">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -992,7 +992,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box40">
+          <object class="CtkBox" id="box40">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -1013,7 +1013,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label15">
+          <object class="CtkLabel" id="label15">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">&lt;--
@@ -1025,7 +1025,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label16">
+          <object class="CtkLabel" id="label16">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">--&gt;
@@ -1037,7 +1037,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box41">
+          <object class="CtkBox" id="box41">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -1058,7 +1058,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box42">
+          <object class="CtkBox" id="box42">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -1079,7 +1079,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box43">
+          <object class="CtkBox" id="box43">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -1100,7 +1100,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box44">
+          <object class="CtkBox" id="box44">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -1121,7 +1121,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box45">
+          <object class="CtkBox" id="box45">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -1142,7 +1142,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box46">
+          <object class="CtkBox" id="box46">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -1163,7 +1163,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box47">
+          <object class="CtkBox" id="box47">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -1184,7 +1184,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box48">
+          <object class="CtkBox" id="box48">
             <property name="width_request">50</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>

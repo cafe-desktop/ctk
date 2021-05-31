@@ -38,29 +38,29 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_RADIO_ACTION            (ctk_radio_action_get_type ())
-#define CTK_RADIO_ACTION(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RADIO_ACTION, GtkRadioAction))
-#define CTK_RADIO_ACTION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RADIO_ACTION, GtkRadioActionClass))
+#define CTK_RADIO_ACTION(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RADIO_ACTION, CtkRadioAction))
+#define CTK_RADIO_ACTION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RADIO_ACTION, CtkRadioActionClass))
 #define CTK_IS_RADIO_ACTION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_RADIO_ACTION))
 #define CTK_IS_RADIO_ACTION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_RADIO_ACTION))
-#define CTK_RADIO_ACTION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_RADIO_ACTION, GtkRadioActionClass))
+#define CTK_RADIO_ACTION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_RADIO_ACTION, CtkRadioActionClass))
 
-typedef struct _GtkRadioAction        GtkRadioAction;
-typedef struct _GtkRadioActionPrivate GtkRadioActionPrivate;
-typedef struct _GtkRadioActionClass   GtkRadioActionClass;
+typedef struct _CtkRadioAction        CtkRadioAction;
+typedef struct _CtkRadioActionPrivate CtkRadioActionPrivate;
+typedef struct _CtkRadioActionClass   CtkRadioActionClass;
 
-struct _GtkRadioAction
+struct _CtkRadioAction
 {
-  GtkToggleAction parent;
+  CtkToggleAction parent;
 
   /*< private >*/
-  GtkRadioActionPrivate *private_data;
+  CtkRadioActionPrivate *private_data;
 };
 
-struct _GtkRadioActionClass
+struct _CtkRadioActionClass
 {
-  GtkToggleActionClass parent_class;
+  CtkToggleActionClass parent_class;
 
-  void       (* changed) (GtkRadioAction *action, GtkRadioAction *current);
+  void       (* changed) (CtkRadioAction *action, CtkRadioAction *current);
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -72,23 +72,23 @@ struct _GtkRadioActionClass
 GDK_DEPRECATED_IN_3_10
 GType           ctk_radio_action_get_type          (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_10
-GtkRadioAction *ctk_radio_action_new               (const gchar           *name,
+CtkRadioAction *ctk_radio_action_new               (const gchar           *name,
                                                     const gchar           *label,
                                                     const gchar           *tooltip,
                                                     const gchar           *stock_id,
                                                     gint                   value);
 GDK_DEPRECATED_IN_3_10
-GSList         *ctk_radio_action_get_group         (GtkRadioAction        *action);
+GSList         *ctk_radio_action_get_group         (CtkRadioAction        *action);
 GDK_DEPRECATED_IN_3_10
-void            ctk_radio_action_set_group         (GtkRadioAction        *action,
+void            ctk_radio_action_set_group         (CtkRadioAction        *action,
                                                     GSList                *group);
 GDK_DEPRECATED_IN_3_10
-void            ctk_radio_action_join_group        (GtkRadioAction        *action,
-                                                    GtkRadioAction        *group_source);
+void            ctk_radio_action_join_group        (CtkRadioAction        *action,
+                                                    CtkRadioAction        *group_source);
 GDK_DEPRECATED_IN_3_10
-gint            ctk_radio_action_get_current_value (GtkRadioAction        *action);
+gint            ctk_radio_action_get_current_value (CtkRadioAction        *action);
 GDK_DEPRECATED_IN_3_10
-void            ctk_radio_action_set_current_value (GtkRadioAction        *action,
+void            ctk_radio_action_set_current_value (CtkRadioAction        *action,
                                                     gint                   current_value);
 
 G_END_DECLS

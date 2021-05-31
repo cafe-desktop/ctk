@@ -36,19 +36,19 @@ Structures and Memory Management
 ================================
 
 Information about source sites and drop sites is stored
-in the structures GtkSourceSite and GtkDestSite.
+in the structures CtkSourceSite and CtkDestSite.
 
 Information about in-progress drags and drops is stored
-in the structures GtkSourceInfo and GtkDestInfo.
+in the structures CtkSourceInfo and CtkDestInfo.
 
-The GtkSourceInfo structure is created when the drag
+The CtkSourceInfo structure is created when the drag
 begins, and persists until the drag either completes
 or times out. A pointer to it is stored in 
 dataset-data for the GdkDragContext, however there
 is no ownership. If the SourceInfo is destroyed
 before the context, the field is simply cleared.
 
-A GtkDestInfo is attached to each GdkDragContext
+A CtkDestInfo is attached to each GdkDragContext
 that is received for an incoming drag. In contrast
 to the SourceInfo the DestInfo is "owned" by the
 context, and when the context is destroyed, destroyed.
@@ -167,7 +167,7 @@ disjoint. The need to pass in a specific target window
 is the reason why the GDK DND API splits
 gdk_drag_find_window() and gdk_drag_motion().
 
-For proxy drags, the GtkDestInfo and GtkSourceInfo for the
+For proxy drags, the CtkDestInfo and CtkSourceInfo for the
 drag point at each other.
 
 Because the abstraction of the drag protocol is at the GDK

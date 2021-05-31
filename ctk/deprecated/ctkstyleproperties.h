@@ -29,27 +29,27 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_STYLE_PROPERTIES         (ctk_style_properties_get_type ())
-#define CTK_STYLE_PROPERTIES(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_STYLE_PROPERTIES, GtkStyleProperties))
-#define CTK_STYLE_PROPERTIES_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST    ((c), CTK_TYPE_STYLE_PROPERTIES, GtkStylePropertiesClass))
+#define CTK_STYLE_PROPERTIES(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_STYLE_PROPERTIES, CtkStyleProperties))
+#define CTK_STYLE_PROPERTIES_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST    ((c), CTK_TYPE_STYLE_PROPERTIES, CtkStylePropertiesClass))
 #define CTK_IS_STYLE_PROPERTIES(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_STYLE_PROPERTIES))
 #define CTK_IS_STYLE_PROPERTIES_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE    ((c), CTK_TYPE_STYLE_PROPERTIES))
-#define CTK_STYLE_PROPERTIES_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS  ((o), CTK_TYPE_STYLE_PROPERTIES, GtkStylePropertiesClass))
+#define CTK_STYLE_PROPERTIES_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS  ((o), CTK_TYPE_STYLE_PROPERTIES, CtkStylePropertiesClass))
 
-typedef struct _GtkStyleProperties GtkStyleProperties;
-typedef struct _GtkStylePropertiesClass GtkStylePropertiesClass;
-typedef struct _GtkStylePropertiesPrivate GtkStylePropertiesPrivate;
+typedef struct _CtkStyleProperties CtkStyleProperties;
+typedef struct _CtkStylePropertiesClass CtkStylePropertiesClass;
+typedef struct _CtkStylePropertiesPrivate CtkStylePropertiesPrivate;
 
-typedef struct _GtkSymbolicColor GtkSymbolicColor;
-typedef struct _GtkGradient GtkGradient;
+typedef struct _CtkSymbolicColor CtkSymbolicColor;
+typedef struct _CtkGradient CtkGradient;
 
-struct _GtkStyleProperties
+struct _CtkStyleProperties
 {
   /*< private >*/
   GObject parent_object;
-  GtkStylePropertiesPrivate *priv;
+  CtkStylePropertiesPrivate *priv;
 };
 
-struct _GtkStylePropertiesClass
+struct _CtkStylePropertiesClass
 {
   /*< private >*/
   GObjectClass parent_class;
@@ -61,7 +61,7 @@ struct _GtkStylePropertiesClass
   void (*_ctk_reserved4) (void);
 };
 
-typedef gboolean (* GtkStylePropertyParser) (const gchar  *string,
+typedef gboolean (* CtkStylePropertyParser) (const gchar  *string,
                                              GValue       *value,
                                              GError      **error);
 
@@ -70,63 +70,63 @@ GType ctk_style_properties_get_type (void) G_GNUC_CONST;
 
 /* Next 2 are implemented in ctkcsscustomproperty.c */
 GDK_DEPRECATED_IN_3_8
-void     ctk_style_properties_register_property (GtkStylePropertyParser  parse_func,
+void     ctk_style_properties_register_property (CtkStylePropertyParser  parse_func,
                                                  GParamSpec             *pspec);
 GDK_DEPRECATED_IN_3_8
 gboolean ctk_style_properties_lookup_property   (const gchar             *property_name,
-                                                 GtkStylePropertyParser  *parse_func,
+                                                 CtkStylePropertyParser  *parse_func,
                                                  GParamSpec             **pspec);
 
 GDK_DEPRECATED_IN_3_16
-GtkStyleProperties * ctk_style_properties_new (void);
+CtkStyleProperties * ctk_style_properties_new (void);
 
 GDK_DEPRECATED_IN_3_8
-void               ctk_style_properties_map_color    (GtkStyleProperties *props,
+void               ctk_style_properties_map_color    (CtkStyleProperties *props,
                                                       const gchar        *name,
-                                                      GtkSymbolicColor   *color);
+                                                      CtkSymbolicColor   *color);
 GDK_DEPRECATED_IN_3_8
-GtkSymbolicColor * ctk_style_properties_lookup_color (GtkStyleProperties *props,
+CtkSymbolicColor * ctk_style_properties_lookup_color (CtkStyleProperties *props,
                                                       const gchar        *name);
 
 GDK_DEPRECATED_IN_3_16
-void     ctk_style_properties_set_property (GtkStyleProperties *props,
+void     ctk_style_properties_set_property (CtkStyleProperties *props,
                                             const gchar        *property,
-                                            GtkStateFlags       state,
+                                            CtkStateFlags       state,
                                             const GValue       *value);
 GDK_DEPRECATED_IN_3_16
-void     ctk_style_properties_set_valist   (GtkStyleProperties *props,
-                                            GtkStateFlags       state,
+void     ctk_style_properties_set_valist   (CtkStyleProperties *props,
+                                            CtkStateFlags       state,
                                             va_list             args);
 GDK_DEPRECATED_IN_3_16
-void     ctk_style_properties_set          (GtkStyleProperties *props,
-                                            GtkStateFlags       state,
+void     ctk_style_properties_set          (CtkStyleProperties *props,
+                                            CtkStateFlags       state,
                                             ...) G_GNUC_NULL_TERMINATED;
 
 GDK_DEPRECATED_IN_3_16
-gboolean ctk_style_properties_get_property (GtkStyleProperties *props,
+gboolean ctk_style_properties_get_property (CtkStyleProperties *props,
                                             const gchar        *property,
-                                            GtkStateFlags       state,
+                                            CtkStateFlags       state,
                                             GValue             *value);
 GDK_DEPRECATED_IN_3_16
-void     ctk_style_properties_get_valist   (GtkStyleProperties *props,
-                                            GtkStateFlags       state,
+void     ctk_style_properties_get_valist   (CtkStyleProperties *props,
+                                            CtkStateFlags       state,
                                             va_list             args);
 GDK_DEPRECATED_IN_3_16
-void     ctk_style_properties_get          (GtkStyleProperties *props,
-                                            GtkStateFlags       state,
+void     ctk_style_properties_get          (CtkStyleProperties *props,
+                                            CtkStateFlags       state,
                                             ...) G_GNUC_NULL_TERMINATED;
 
 GDK_DEPRECATED_IN_3_16
-void     ctk_style_properties_unset_property (GtkStyleProperties *props,
+void     ctk_style_properties_unset_property (CtkStyleProperties *props,
                                               const gchar        *property,
-                                              GtkStateFlags       state);
+                                              CtkStateFlags       state);
 
 GDK_DEPRECATED_IN_3_16
-void     ctk_style_properties_clear          (GtkStyleProperties  *props);
+void     ctk_style_properties_clear          (CtkStyleProperties  *props);
 
 GDK_DEPRECATED_IN_3_16
-void     ctk_style_properties_merge          (GtkStyleProperties       *props,
-                                              const GtkStyleProperties *props_to_merge,
+void     ctk_style_properties_merge          (CtkStyleProperties       *props,
+                                              const CtkStyleProperties *props_to_merge,
                                               gboolean                  replace);
 
 G_END_DECLS

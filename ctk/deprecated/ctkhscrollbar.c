@@ -37,30 +37,30 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 /**
  * SECTION:ctkhscrollbar
  * @Short_description: A horizontal scrollbar
- * @Title: GtkHScrollbar
- * @See_also: #GtkScrollbar, #GtkScrolledWindow
+ * @Title: CtkHScrollbar
+ * @See_also: #CtkScrollbar, #CtkScrolledWindow
  *
- * The #GtkHScrollbar widget is a widget arranged horizontally creating a
- * scrollbar. See #GtkScrollbar for details on
- * scrollbars. #GtkAdjustment pointers may be added to handle the
+ * The #CtkHScrollbar widget is a widget arranged horizontally creating a
+ * scrollbar. See #CtkScrollbar for details on
+ * scrollbars. #CtkAdjustment pointers may be added to handle the
  * adjustment of the scrollbar or it may be left %NULL in which case one
- * will be created for you. See #GtkScrollbar for a description of what the
+ * will be created for you. See #CtkScrollbar for a description of what the
  * fields in an adjustment represent for a scrollbar.
  *
- * GtkHScrollbar has been deprecated, use #GtkScrollbar instead.
+ * CtkHScrollbar has been deprecated, use #CtkScrollbar instead.
  */
 
 
-G_DEFINE_TYPE (GtkHScrollbar, ctk_hscrollbar, CTK_TYPE_SCROLLBAR)
+G_DEFINE_TYPE (CtkHScrollbar, ctk_hscrollbar, CTK_TYPE_SCROLLBAR)
 
 static void
-ctk_hscrollbar_class_init (GtkHScrollbarClass *class)
+ctk_hscrollbar_class_init (CtkHScrollbarClass *class)
 {
   CTK_RANGE_CLASS (class)->stepper_detail = "hscrollbar";
 }
 
 static void
-ctk_hscrollbar_init (GtkHScrollbar *hscrollbar)
+ctk_hscrollbar_init (CtkHScrollbar *hscrollbar)
 {
   ctk_orientable_set_orientation (CTK_ORIENTABLE (hscrollbar),
                                   CTK_ORIENTATION_HORIZONTAL);
@@ -68,16 +68,16 @@ ctk_hscrollbar_init (GtkHScrollbar *hscrollbar)
 
 /**
  * ctk_hscrollbar_new:
- * @adjustment: (allow-none): the #GtkAdjustment to use, or %NULL to create a new adjustment
+ * @adjustment: (allow-none): the #CtkAdjustment to use, or %NULL to create a new adjustment
  *
  * Creates a new horizontal scrollbar.
  *
- * Returns: the new #GtkHScrollbar
+ * Returns: the new #CtkHScrollbar
  *
  * Deprecated: 3.2: Use ctk_scrollbar_new() with %CTK_ORIENTATION_HORIZONTAL instead
  */
-GtkWidget *
-ctk_hscrollbar_new (GtkAdjustment *adjustment)
+CtkWidget *
+ctk_hscrollbar_new (CtkAdjustment *adjustment)
 {
   g_return_val_if_fail (adjustment == NULL || CTK_IS_ADJUSTMENT (adjustment),
                         NULL);

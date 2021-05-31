@@ -475,10 +475,10 @@ msgstr "Үйлдлийн бүлэг"
 
 #: ctk/ctkaction.c:396
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
-"GtkActionGroup this GtkAction хамааралтай эсвэл NULL (дотоод хэрэглээнд)."
+"CtkActionGroup this CtkAction хамааралтай эсвэл NULL (дотоод хэрэглээнд)."
 
 #: ctk/ctkaction.c:414 ctk/ctkimagemenuitem.c:172
 msgid "Always show image"
@@ -937,10 +937,10 @@ msgstr "Багц төрөл "
 
 #: ctk/ctkbox.c:287 ctk/ctknotebook.c:692
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
 msgstr ""
-"GtkPackType нь тус процессийн эхэнд эсвэл төгсгөлд дэд процесс нь өөрийн "
+"CtkPackType нь тус процессийн эхэнд эсвэл төгсгөлд дэд процесс нь өөрийн "
 "мэдээлэлтэйгээ багцлагдсан гэдгийг заана."
 
 # ctk/ctkpaned.c:208 ctk/ctkruler.c:138
@@ -1523,8 +1523,8 @@ msgstr "Хэмжээ"
 
 # ctk/ctkwindow.c:417
 #: ctk/ctkcellrendererpixbuf.c:153
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
-msgstr "Зурагдах эмблемийн хэмжээг тодорхойлогч GtkIconSize утга"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
+msgstr "Зурагдах эмблемийн хэмжээг тодорхойлогч CtkIconSize утга"
 
 #: ctk/ctkcellrendererpixbuf.c:162
 msgid "Detail"
@@ -1663,8 +1663,8 @@ msgstr "Хэрэглэх эмблемийн хэлбэрийн нэр"
 # ctk/ctkwindow.c:417
 #: ctk/ctkcellrendererspinner.c:154
 #, fuzzy
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
-msgstr "Зурагдах эмблемийн хэмжээг тодорхойлогч GtkIconSize утга"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
+msgstr "Зурагдах эмблемийн хэмжээг тодорхойлогч CtkIconSize утга"
 
 # ctk/ctkcellrenderertext.c:175
 #: ctk/ctkcellrenderertext.c:232
@@ -3735,10 +3735,10 @@ msgstr "Тэнцүүлэх"
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkMisc::xalign for that"
+"CtkMisc::xalign for that"
 msgstr ""
 "бичээсийн текстийн мөрүүдийн зэрэгцүүлэлт нь хоорондоо харьцангуйгаар "
-"хийгдэнэ.Энэ нь тухайн байрлалд үл нөлөөлнө. Үүний талаар : GtkMisc::xalign "
+"хийгдэнэ.Энэ нь тухайн байрлалд үл нөлөөлнө. Үүний талаар : CtkMisc::xalign "
 "- ийг хар."
 
 # ctk/ctklabel.c:318
@@ -3852,16 +3852,16 @@ msgid "Horizontal adjustment"
 msgstr "Хэвтээ зэрэгцүүлэлт"
 
 #: ctk/ctklayout.c:626 ctk/ctkscrolledwindow.c:244
-msgid "The GtkAdjustment for the horizontal position"
-msgstr "GtkAdjustment - элементийн хэвтээ байрлал."
+msgid "The CtkAdjustment for the horizontal position"
+msgstr "CtkAdjustment - элементийн хэвтээ байрлал."
 
 #: ctk/ctklayout.c:633 ctk/ctkviewport.c:150
 msgid "Vertical adjustment"
 msgstr "Босоо зэрэгцүүлэлт"
 
 #: ctk/ctklayout.c:634 ctk/ctkscrolledwindow.c:251
-msgid "The GtkAdjustment for the vertical position"
-msgstr "GtkAdjustment элементийн босоо байрлал."
+msgid "The CtkAdjustment for the vertical position"
+msgstr "CtkAdjustment элементийн босоо байрлал."
 
 # ctk/ctklayout.c:633 ctk/ctktreeviewcolumn.c:190
 #: ctk/ctklayout.c:641 ctk/ctktreeviewcolumn.c:211
@@ -4279,7 +4279,7 @@ msgid "Message area"
 msgstr "Мэдээний төрөл"
 
 #: ctk/ctkmessagedialog.c:306
-msgid "GtkVBox that holds the dialog's primary and secondary labels"
+msgid "CtkVBox that holds the dialog's primary and secondary labels"
 msgstr ""
 
 # ctk/ctkmisc.c:107
@@ -4784,7 +4784,7 @@ msgid "Default Page Setup"
 msgstr "Стандалрт өндөр"
 
 #: ctk/ctkprintoperation.c:1006
-msgid "The GtkPageSetup used by default"
+msgid "The CtkPageSetup used by default"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1024 ctk/ctkprintunixdialog.c:316
@@ -4792,7 +4792,7 @@ msgid "Print Settings"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1025 ctk/ctkprintunixdialog.c:317
-msgid "The GtkPrintSettings used for initializing the dialog"
+msgid "The CtkPrintSettings used for initializing the dialog"
 msgstr ""
 
 # ctk/ctksettings.c:215
@@ -4934,7 +4934,7 @@ msgid "Embed Page Setup"
 msgstr "Хуудсын хэмжээ"
 
 #: ctk/ctkprintoperation.c:1321
-msgid "TRUE if page setup combos are embedded in GtkPrintDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintDialog"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1342
@@ -4949,7 +4949,7 @@ msgid "The number of pages that will be printed."
 msgstr "Хүснэгт дэх мөрийн тоо"
 
 #: ctk/ctkprintunixdialog.c:299
-msgid "The GtkPageSetup to use"
+msgid "The CtkPageSetup to use"
 msgstr ""
 
 # ctk/ctkfilesel.c:537
@@ -4961,7 +4961,7 @@ msgstr "Сонгогдсон жил"
 # ctk/ctkfontsel.c:210
 #: ctk/ctkprintunixdialog.c:325
 #, fuzzy
-msgid "The GtkPrinter which is selected"
+msgid "The CtkPrinter which is selected"
 msgstr "Идэвхитэй байгаа элемент"
 
 #: ctk/ctkprintunixdialog.c:332
@@ -4985,7 +4985,7 @@ msgid "Whether the application has a selection"
 msgstr "Үйлдэл нээлттэй эсэх."
 
 #: ctk/ctkprintunixdialog.c:358
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
 msgstr ""
 
 # ctk/ctkprogressbar.c:187
@@ -5151,8 +5151,8 @@ msgid "How the range should be updated on the screen"
 msgstr "Дэлгэцэнд хэрхэн шинэчлэгдэх дараалал"
 
 #: ctk/ctkrange.c:420
-msgid "The GtkAdjustment that contains the current value of this range object"
-msgstr "GtkAdjustment нь энэ дараалал обьектийн утгыг агуулна."
+msgid "The CtkAdjustment that contains the current value of this range object"
+msgstr "CtkAdjustment нь энэ дараалал обьектийн утгыг агуулна."
 
 #: ctk/ctkrange.c:428
 msgid "Invert direction slider moves to increase range value"
@@ -5441,8 +5441,8 @@ msgstr "Хэрэгсэл мөрийн тэмдэгтийн хэмжээ."
 #: ctk/ctkscalebutton.c:240
 #, fuzzy
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
-msgstr "GtkAdjustment нь энэ дараалал обьектийн утгыг агуулна."
+"The CtkAdjustment that contains the current value of this scale button object"
+msgstr "CtkAdjustment нь энэ дараалал обьектийн утгыг агуулна."
 
 # ctk/ctkwindow.c:494
 #: ctk/ctkscalebutton.c:268
@@ -6018,8 +6018,8 @@ msgstr "Стандарт файл сонгогч"
 
 # ctk/ctksettings.c:216
 #: ctk/ctksettings.c:743
-msgid "Name of the GtkFileChooser backend to use by default"
-msgstr "Стандартаар хэрэглэх GtkFileChooser· бакэндын нэр"
+msgid "Name of the CtkFileChooser backend to use by default"
+msgstr "Стандартаар хэрэглэх CtkFileChooser· бакэндын нэр"
 
 #: ctk/ctksettings.c:760
 #, fuzzy
@@ -6029,8 +6029,8 @@ msgstr "Стандарт файл сонгогч"
 # ctk/ctksettings.c:216
 #: ctk/ctksettings.c:761
 #, fuzzy
-msgid "List of the GtkPrintBackend backends to use by default"
-msgstr "Стандартаар хэрэглэх GtkFileChooser· бакэндын нэр"
+msgid "List of the CtkPrintBackend backends to use by default"
+msgstr "Стандартаар хэрэглэх CtkFileChooser· бакэндын нэр"
 
 #: ctk/ctksettings.c:784
 msgid "Default command to run when displaying a print preview"
@@ -6284,7 +6284,7 @@ msgstr "Сувгийн тоо"
 #: ctk/ctkspinner.c:147
 msgid ""
 "The number of steps for the spinner to complete a full loop. The animation "
-"will complete a full cycle in one second by default (see #GtkSpinner:cycle-"
+"will complete a full cycle in one second by default (see #CtkSpinner:cycle-"
 "duration)."
 msgstr ""
 
@@ -7372,8 +7372,8 @@ msgid "Fixed Height Mode"
 msgstr "хатуу өндөртэй горим"
 
 #: ctk/ctktreeview.c:657
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
-msgstr "GtkTreeView бүх мөрийг ижил өндөртэй авч хурдасгана."
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
+msgstr "CtkTreeView бүх мөрийг ижил өндөртэй авч хурдасгана."
 
 #: ctk/ctktreeview.c:677
 msgid "Hover Selection"
@@ -7683,15 +7683,15 @@ msgstr "Нийлмэл ХГ-тодорхойлох XML тэмдэгт мөр"
 
 #: ctk/ctkviewport.c:143
 msgid ""
-"The GtkAdjustment that determines the values of the horizontal position for "
+"The CtkAdjustment that determines the values of the horizontal position for "
 "this viewport"
-msgstr "GtkAdjustment,нь харагч портын хэвтээ байрлалын утгыг тодорхойлдог."
+msgstr "CtkAdjustment,нь харагч портын хэвтээ байрлалын утгыг тодорхойлдог."
 
 #: ctk/ctkviewport.c:151
 msgid ""
-"The GtkAdjustment that determines the values of the vertical position for "
+"The CtkAdjustment that determines the values of the vertical position for "
 "this viewport"
-msgstr "GtkAdjustment,нь харагч портын босоо байрлалын утгыг тодорхойлдог."
+msgstr "CtkAdjustment,нь харагч портын босоо байрлалын утгыг тодорхойлдог."
 
 #: ctk/ctkviewport.c:159
 msgid "Determines how the shadowed box around the viewport is drawn"
@@ -8226,8 +8226,8 @@ msgid "Focus in Toplevel"
 msgstr "Оргил үе дэх фокус"
 
 #: ctk/ctkwindow.c:710
-msgid "Whether the input focus is within this GtkWindow"
-msgstr "Төв оролт GtkWindow-тай байдаг эсэх"
+msgid "Whether the input focus is within this CtkWindow"
+msgstr "Төв оролт CtkWindow-тай байдаг эсэх"
 
 #: ctk/ctkwindow.c:717
 msgid "Type hint"
@@ -8474,12 +8474,12 @@ msgstr "Төлөвийн самбарыг оруулах аргыг хэрхэн
 # ctk/ctkprogress.c:123
 #, fuzzy
 #~ msgid ""
-#~ "If TRUE, the GtkProgress is in activity mode, meaning that it signals "
+#~ "If TRUE, the CtkProgress is in activity mode, meaning that it signals "
 #~ "something is happening, but not how much of the activity is finished. "
 #~ "This is used when you're doing something but don't know how long it will "
 #~ "take."
 #~ msgstr ""
-#~ "Хэрэв ҮНЭН бол,идэвхитэй горимд GtkProgress болно. Энэ нь нэгэн үйлдэл "
+#~ "Хэрэв ҮНЭН бол,идэвхитэй горимд CtkProgress болно. Энэ нь нэгэн үйлдэл "
 #~ "хэдийгээр дүрслэгдсэн ч тэдний үргэлжилэл тодорхойлогдохгүй гэсэн үг. Энэ "
 #~ "нь та програм хэр удаан үргэлжилэхийг мэдэхгүй тохиолдолд ажилуулхад "
 #~ "хэрэглэгдэнэ."
@@ -8674,9 +8674,9 @@ msgstr "Төлөвийн самбарыг оруулах аргыг хэрхэн
 #~ "Whether the preview widget should take up the entire space it is allocated"
 #~ msgstr "Жишээлэн харах элемент түүнд нөөцлөгдсөн бүх зайг эзлэх эсэх"
 
-#~ msgid "The GtkAdjustment connected to the progress bar (Deprecated)"
+#~ msgid "The CtkAdjustment connected to the progress bar (Deprecated)"
 #~ msgstr ""
-#~ "GtkAdjustment процесийн индикатортой холбогдсон (Хэрэглэхгүй байсан нь "
+#~ "CtkAdjustment процесийн индикатортой холбогдсон (Хэрэглэхгүй байсан нь "
 #~ "дээр )"
 
 # ctk/ctkprogressbar.c:148

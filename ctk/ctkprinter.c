@@ -1,4 +1,4 @@
-/* GtkPrinter
+/* CtkPrinter
  * Copyright (C) 2006 John (J5) Palmieri  <johnp@redhat.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -31,16 +31,16 @@
 /**
  * SECTION:ctkprinter
  * @Short_description: Represents a printer
- * @Title: GtkPrinter
+ * @Title: CtkPrinter
  *
- * A #GtkPrinter object represents a printer. You only need to
+ * A #CtkPrinter object represents a printer. You only need to
  * deal directly with printers if you use the non-portable
- * #GtkPrintUnixDialog API.
+ * #CtkPrintUnixDialog API.
  *
- * A #GtkPrinter allows to get status information about the printer,
+ * A #CtkPrinter allows to get status information about the printer,
  * such as its description, its location, the number of queued jobs,
- * etc. Most importantly, a #GtkPrinter object can be used to create
- * a #GtkPrintJob object, which lets you print to the printer.
+ * etc. Most importantly, a #CtkPrinter object can be used to create
+ * a #CtkPrintJob object, which lets you print to the printer.
  *
  * Printing support was added in GTK+ 2.10.
  */
@@ -48,7 +48,7 @@
 
 static void ctk_printer_finalize     (GObject *object);
 
-struct _GtkPrinterPrivate
+struct _CtkPrinterPrivate
 {
   gchar *name;
   gchar *location;
@@ -68,7 +68,7 @@ struct _GtkPrinterPrivate
   gchar *state_message;  
   gint job_count;
 
-  GtkPrintBackend *backend;
+  CtkPrintBackend *backend;
 };
 
 enum {
@@ -102,10 +102,10 @@ static void ctk_printer_get_property (GObject      *object,
 				      GValue       *value,
 				      GParamSpec   *pspec);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkPrinter, ctk_printer, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkPrinter, ctk_printer, G_TYPE_OBJECT)
 
 static void
-ctk_printer_class_init (GtkPrinterClass *class)
+ctk_printer_class_init (CtkPrinterClass *class)
 {
   GObjectClass *object_class;
   object_class = (GObjectClass *) class;
@@ -182,7 +182,7 @@ ctk_printer_class_init (GtkPrinterClass *class)
  						     CTK_PARAM_READABLE));
 
   /**
-   * GtkPrinter:paused:
+   * CtkPrinter:paused:
    *
    * This property is %TRUE if this printer is paused. 
    * A paused printer still accepts jobs, but it does 
@@ -198,7 +198,7 @@ ctk_printer_class_init (GtkPrinterClass *class)
 							 FALSE,
 							 CTK_PARAM_READABLE));
   /**
-   * GtkPrinter:accepting-jobs:
+   * CtkPrinter:accepting-jobs:
    *
    * This property is %TRUE if the printer is accepting jobs.
    *
@@ -213,8 +213,8 @@ ctk_printer_class_init (GtkPrinterClass *class)
 							 CTK_PARAM_READABLE));
 
   /**
-   * GtkPrinter::details-acquired:
-   * @printer: the #GtkPrinter on which the signal is emitted
+   * CtkPrinter::details-acquired:
+   * @printer: the #CtkPrinter on which the signal is emitted
    * @success: %TRUE if the details were successfully acquired
    *
    * Gets emitted in response to a request for detailed information
@@ -227,16 +227,16 @@ ctk_printer_class_init (GtkPrinterClass *class)
     g_signal_new (I_("details-acquired"),
 		  G_TYPE_FROM_CLASS (class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkPrinterClass, details_acquired),
+		  G_STRUCT_OFFSET (CtkPrinterClass, details_acquired),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
 }
 
 static void
-ctk_printer_init (GtkPrinter *printer)
+ctk_printer_init (CtkPrinter *printer)
 {
-  GtkPrinterPrivate *priv;
+  CtkPrinterPrivate *priv;
 
   priv = printer->priv = ctk_printer_get_instance_private (printer);
 
@@ -260,8 +260,8 @@ ctk_printer_init (GtkPrinter *printer)
 static void
 ctk_printer_finalize (GObject *object)
 {
-  GtkPrinter *printer = CTK_PRINTER (object);
-  GtkPrinterPrivate *priv = printer->priv;
+  CtkPrinter *printer = CTK_PRINTER (object);
+  CtkPrinterPrivate *priv = printer->priv;
 
   g_free (priv->name);
   g_free (priv->location);
@@ -281,8 +281,8 @@ ctk_printer_set_property (GObject         *object,
 			  const GValue    *value,
 			  GParamSpec      *pspec)
 {
-  GtkPrinter *printer = CTK_PRINTER (object);
-  GtkPrinterPrivate *priv = printer->priv;
+  CtkPrinter *printer = CTK_PRINTER (object);
+  CtkPrinterPrivate *priv = printer->priv;
 
   switch (prop_id)
     {
@@ -318,8 +318,8 @@ ctk_printer_get_property (GObject    *object,
 			  GValue     *value,
 			  GParamSpec *pspec)
 {
-  GtkPrinter *printer = CTK_PRINTER (object);
-  GtkPrinterPrivate *priv = printer->priv;
+  CtkPrinter *printer = CTK_PRINTER (object);
+  CtkPrinterPrivate *priv = printer->priv;
 
   switch (prop_id)
     {
@@ -377,18 +377,18 @@ ctk_printer_get_property (GObject    *object,
 /**
  * ctk_printer_new:
  * @name: the name of the printer
- * @backend: a #GtkPrintBackend
+ * @backend: a #CtkPrintBackend
  * @virtual_: whether the printer is virtual
  *
- * Creates a new #GtkPrinter.
+ * Creates a new #CtkPrinter.
  *
- * Returns: a new #GtkPrinter
+ * Returns: a new #CtkPrinter
  *
  * Since: 2.10
  **/
-GtkPrinter *
+CtkPrinter *
 ctk_printer_new (const gchar     *name,
-		 GtkPrintBackend *backend,
+		 CtkPrintBackend *backend,
 		 gboolean         virtual_)
 {
   GObject *result;
@@ -399,12 +399,12 @@ ctk_printer_new (const gchar     *name,
 			 "is-virtual", virtual_,
                          NULL);
 
-  return (GtkPrinter *) result;
+  return (CtkPrinter *) result;
 }
 
 /**
  * ctk_printer_get_backend:
- * @printer: a #GtkPrinter
+ * @printer: a #CtkPrinter
  * 
  * Returns the backend of the printer.
  * 
@@ -412,8 +412,8 @@ ctk_printer_new (const gchar     *name,
  * 
  * Since: 2.10
  */
-GtkPrintBackend *
-ctk_printer_get_backend (GtkPrinter *printer)
+CtkPrintBackend *
+ctk_printer_get_backend (CtkPrinter *printer)
 {
   g_return_val_if_fail (CTK_IS_PRINTER (printer), NULL);
   
@@ -422,7 +422,7 @@ ctk_printer_get_backend (GtkPrinter *printer)
 
 /**
  * ctk_printer_get_name:
- * @printer: a #GtkPrinter
+ * @printer: a #CtkPrinter
  * 
  * Returns the name of the printer.
  * 
@@ -431,7 +431,7 @@ ctk_printer_get_backend (GtkPrinter *printer)
  * Since: 2.10
  */
 const gchar *
-ctk_printer_get_name (GtkPrinter *printer)
+ctk_printer_get_name (CtkPrinter *printer)
 {
   g_return_val_if_fail (CTK_IS_PRINTER (printer), NULL);
 
@@ -440,7 +440,7 @@ ctk_printer_get_name (GtkPrinter *printer)
 
 /**
  * ctk_printer_get_description:
- * @printer: a #GtkPrinter
+ * @printer: a #CtkPrinter
  * 
  * Gets the description of the printer.
  * 
@@ -449,7 +449,7 @@ ctk_printer_get_name (GtkPrinter *printer)
  * Since: 2.10
  */
 const gchar *
-ctk_printer_get_description (GtkPrinter *printer)
+ctk_printer_get_description (CtkPrinter *printer)
 {
   g_return_val_if_fail (CTK_IS_PRINTER (printer), NULL);
   
@@ -457,10 +457,10 @@ ctk_printer_get_description (GtkPrinter *printer)
 }
 
 gboolean
-ctk_printer_set_description (GtkPrinter  *printer,
+ctk_printer_set_description (CtkPrinter  *printer,
 			     const gchar *description)
 {
-  GtkPrinterPrivate *priv;
+  CtkPrinterPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_PRINTER (printer), FALSE);
 
@@ -477,7 +477,7 @@ ctk_printer_set_description (GtkPrinter  *printer,
 
 /**
  * ctk_printer_get_state_message:
- * @printer: a #GtkPrinter
+ * @printer: a #CtkPrinter
  * 
  * Returns the state message describing the current state
  * of the printer.
@@ -487,7 +487,7 @@ ctk_printer_set_description (GtkPrinter  *printer,
  * Since: 2.10
  */
 const gchar *
-ctk_printer_get_state_message (GtkPrinter *printer)
+ctk_printer_get_state_message (CtkPrinter *printer)
 {
   g_return_val_if_fail (CTK_IS_PRINTER (printer), NULL);
 
@@ -495,10 +495,10 @@ ctk_printer_get_state_message (GtkPrinter *printer)
 }
 
 gboolean
-ctk_printer_set_state_message (GtkPrinter  *printer,
+ctk_printer_set_state_message (CtkPrinter  *printer,
 			       const gchar *message)
 {
-  GtkPrinterPrivate *priv;
+  CtkPrinterPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_PRINTER (printer), FALSE);
 
@@ -516,7 +516,7 @@ ctk_printer_set_state_message (GtkPrinter  *printer,
 
 /**
  * ctk_printer_get_location:
- * @printer: a #GtkPrinter
+ * @printer: a #CtkPrinter
  * 
  * Returns a description of the location of the printer.
  * 
@@ -525,7 +525,7 @@ ctk_printer_set_state_message (GtkPrinter  *printer,
  * Since: 2.10
  */
 const gchar *
-ctk_printer_get_location (GtkPrinter *printer)
+ctk_printer_get_location (CtkPrinter *printer)
 {
   g_return_val_if_fail (CTK_IS_PRINTER (printer), NULL);
 
@@ -533,10 +533,10 @@ ctk_printer_get_location (GtkPrinter *printer)
 }
 
 gboolean
-ctk_printer_set_location (GtkPrinter  *printer,
+ctk_printer_set_location (CtkPrinter  *printer,
 			  const gchar *location)
 {
-  GtkPrinterPrivate *priv;
+  CtkPrinterPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_PRINTER (printer), FALSE);
 
@@ -554,7 +554,7 @@ ctk_printer_set_location (GtkPrinter  *printer,
 
 /**
  * ctk_printer_get_icon_name:
- * @printer: a #GtkPrinter
+ * @printer: a #CtkPrinter
  * 
  * Gets the name of the icon to use for the printer.
  * 
@@ -563,7 +563,7 @@ ctk_printer_set_location (GtkPrinter  *printer,
  * Since: 2.10
  */
 const gchar *
-ctk_printer_get_icon_name (GtkPrinter *printer)
+ctk_printer_get_icon_name (CtkPrinter *printer)
 {
   g_return_val_if_fail (CTK_IS_PRINTER (printer), NULL);
 
@@ -571,10 +571,10 @@ ctk_printer_get_icon_name (GtkPrinter *printer)
 }
 
 void
-ctk_printer_set_icon_name (GtkPrinter  *printer,
+ctk_printer_set_icon_name (CtkPrinter  *printer,
 			   const gchar *icon)
 {
-  GtkPrinterPrivate *priv;
+  CtkPrinterPrivate *priv;
 
   g_return_if_fail (CTK_IS_PRINTER (printer));
 
@@ -587,7 +587,7 @@ ctk_printer_set_icon_name (GtkPrinter  *printer,
 
 /**
  * ctk_printer_get_job_count:
- * @printer: a #GtkPrinter
+ * @printer: a #CtkPrinter
  * 
  * Gets the number of jobs currently queued on the printer.
  * 
@@ -596,7 +596,7 @@ ctk_printer_set_icon_name (GtkPrinter  *printer,
  * Since: 2.10
  */
 gint 
-ctk_printer_get_job_count (GtkPrinter *printer)
+ctk_printer_get_job_count (CtkPrinter *printer)
 {
   g_return_val_if_fail (CTK_IS_PRINTER (printer), 0);
 
@@ -604,10 +604,10 @@ ctk_printer_get_job_count (GtkPrinter *printer)
 }
 
 gboolean
-ctk_printer_set_job_count (GtkPrinter *printer,
+ctk_printer_set_job_count (CtkPrinter *printer,
 			   gint        count)
 {
-  GtkPrinterPrivate *priv;
+  CtkPrinterPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_PRINTER (printer), FALSE);
 
@@ -625,7 +625,7 @@ ctk_printer_set_job_count (GtkPrinter *printer,
 
 /**
  * ctk_printer_has_details:
- * @printer: a #GtkPrinter
+ * @printer: a #CtkPrinter
  * 
  * Returns whether the printer details are available.
  * 
@@ -634,7 +634,7 @@ ctk_printer_set_job_count (GtkPrinter *printer,
  * Since: 2.12
  */
 gboolean
-ctk_printer_has_details (GtkPrinter *printer)
+ctk_printer_has_details (CtkPrinter *printer)
 {
   g_return_val_if_fail (CTK_IS_PRINTER (printer), FALSE);
 
@@ -642,7 +642,7 @@ ctk_printer_has_details (GtkPrinter *printer)
 }
 
 void
-ctk_printer_set_has_details (GtkPrinter *printer,
+ctk_printer_set_has_details (CtkPrinter *printer,
 			     gboolean val)
 {
   printer->priv->has_details = val;
@@ -650,7 +650,7 @@ ctk_printer_set_has_details (GtkPrinter *printer,
 
 /**
  * ctk_printer_is_active:
- * @printer: a #GtkPrinter
+ * @printer: a #CtkPrinter
  * 
  * Returns whether the printer is currently active (i.e. 
  * accepts new jobs).
@@ -660,7 +660,7 @@ ctk_printer_set_has_details (GtkPrinter *printer,
  * Since: 2.10
  */
 gboolean
-ctk_printer_is_active (GtkPrinter *printer)
+ctk_printer_is_active (CtkPrinter *printer)
 {
   g_return_val_if_fail (CTK_IS_PRINTER (printer), TRUE);
   
@@ -668,7 +668,7 @@ ctk_printer_is_active (GtkPrinter *printer)
 }
 
 void
-ctk_printer_set_is_active (GtkPrinter *printer,
+ctk_printer_set_is_active (CtkPrinter *printer,
 			   gboolean val)
 {
   g_return_if_fail (CTK_IS_PRINTER (printer));
@@ -678,7 +678,7 @@ ctk_printer_set_is_active (GtkPrinter *printer,
 
 /**
  * ctk_printer_is_paused:
- * @printer: a #GtkPrinter
+ * @printer: a #CtkPrinter
  * 
  * Returns whether the printer is currently paused.
  * A paused printer still accepts jobs, but it is not
@@ -689,7 +689,7 @@ ctk_printer_set_is_active (GtkPrinter *printer,
  * Since: 2.14
  */
 gboolean
-ctk_printer_is_paused (GtkPrinter *printer)
+ctk_printer_is_paused (CtkPrinter *printer)
 {
   g_return_val_if_fail (CTK_IS_PRINTER (printer), TRUE);
   
@@ -697,10 +697,10 @@ ctk_printer_is_paused (GtkPrinter *printer)
 }
 
 gboolean
-ctk_printer_set_is_paused (GtkPrinter *printer,
+ctk_printer_set_is_paused (CtkPrinter *printer,
 			   gboolean    val)
 {
-  GtkPrinterPrivate *priv;
+  CtkPrinterPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_PRINTER (printer), FALSE);
 
@@ -716,7 +716,7 @@ ctk_printer_set_is_paused (GtkPrinter *printer,
 
 /**
  * ctk_printer_is_accepting_jobs:
- * @printer: a #GtkPrinter
+ * @printer: a #CtkPrinter
  * 
  * Returns whether the printer is accepting jobs
  * 
@@ -725,7 +725,7 @@ ctk_printer_set_is_paused (GtkPrinter *printer,
  * Since: 2.14
  */
 gboolean
-ctk_printer_is_accepting_jobs (GtkPrinter *printer)
+ctk_printer_is_accepting_jobs (CtkPrinter *printer)
 {
   g_return_val_if_fail (CTK_IS_PRINTER (printer), TRUE);
   
@@ -733,10 +733,10 @@ ctk_printer_is_accepting_jobs (GtkPrinter *printer)
 }
 
 gboolean
-ctk_printer_set_is_accepting_jobs (GtkPrinter *printer,
+ctk_printer_set_is_accepting_jobs (CtkPrinter *printer,
 				   gboolean val)
 {
-  GtkPrinterPrivate *priv;
+  CtkPrinterPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_PRINTER (printer), FALSE);
 
@@ -752,7 +752,7 @@ ctk_printer_set_is_accepting_jobs (GtkPrinter *printer,
 
 /**
  * ctk_printer_is_virtual:
- * @printer: a #GtkPrinter
+ * @printer: a #CtkPrinter
  * 
  * Returns whether the printer is virtual (i.e. does not
  * represent actual printer hardware, but something like 
@@ -763,7 +763,7 @@ ctk_printer_set_is_accepting_jobs (GtkPrinter *printer,
  * Since: 2.10
  */
 gboolean
-ctk_printer_is_virtual (GtkPrinter *printer)
+ctk_printer_is_virtual (CtkPrinter *printer)
 {
   g_return_val_if_fail (CTK_IS_PRINTER (printer), TRUE);
   
@@ -772,7 +772,7 @@ ctk_printer_is_virtual (GtkPrinter *printer)
 
 /**
  * ctk_printer_accepts_pdf:
- * @printer: a #GtkPrinter
+ * @printer: a #CtkPrinter
  *
  * Returns whether the printer accepts input in
  * PDF format.  
@@ -782,7 +782,7 @@ ctk_printer_is_virtual (GtkPrinter *printer)
  * Since: 2.10
  */
 gboolean 
-ctk_printer_accepts_pdf (GtkPrinter *printer)
+ctk_printer_accepts_pdf (CtkPrinter *printer)
 { 
   g_return_val_if_fail (CTK_IS_PRINTER (printer), TRUE);
   
@@ -790,7 +790,7 @@ ctk_printer_accepts_pdf (GtkPrinter *printer)
 }
 
 void
-ctk_printer_set_accepts_pdf (GtkPrinter *printer,
+ctk_printer_set_accepts_pdf (CtkPrinter *printer,
 			     gboolean val)
 {
   g_return_if_fail (CTK_IS_PRINTER (printer));
@@ -800,7 +800,7 @@ ctk_printer_set_accepts_pdf (GtkPrinter *printer,
 
 /**
  * ctk_printer_accepts_ps:
- * @printer: a #GtkPrinter
+ * @printer: a #CtkPrinter
  *
  * Returns whether the printer accepts input in
  * PostScript format.  
@@ -810,7 +810,7 @@ ctk_printer_set_accepts_pdf (GtkPrinter *printer,
  * Since: 2.10
  */
 gboolean 
-ctk_printer_accepts_ps (GtkPrinter *printer)
+ctk_printer_accepts_ps (CtkPrinter *printer)
 { 
   g_return_val_if_fail (CTK_IS_PRINTER (printer), TRUE);
   
@@ -818,7 +818,7 @@ ctk_printer_accepts_ps (GtkPrinter *printer)
 }
 
 void
-ctk_printer_set_accepts_ps (GtkPrinter *printer,
+ctk_printer_set_accepts_ps (CtkPrinter *printer,
 			    gboolean val)
 {
   g_return_if_fail (CTK_IS_PRINTER (printer));
@@ -827,7 +827,7 @@ ctk_printer_set_accepts_ps (GtkPrinter *printer,
 }
 
 gboolean
-ctk_printer_is_new (GtkPrinter *printer)
+ctk_printer_is_new (CtkPrinter *printer)
 {
   g_return_val_if_fail (CTK_IS_PRINTER (printer), FALSE);
   
@@ -835,7 +835,7 @@ ctk_printer_is_new (GtkPrinter *printer)
 }
 
 void
-ctk_printer_set_is_new (GtkPrinter *printer,
+ctk_printer_set_is_new (CtkPrinter *printer,
 			gboolean val)
 {
   g_return_if_fail (CTK_IS_PRINTER (printer));
@@ -846,7 +846,7 @@ ctk_printer_set_is_new (GtkPrinter *printer,
 
 /**
  * ctk_printer_is_default:
- * @printer: a #GtkPrinter
+ * @printer: a #CtkPrinter
  * 
  * Returns whether the printer is the default printer.
  * 
@@ -855,7 +855,7 @@ ctk_printer_set_is_new (GtkPrinter *printer,
  * Since: 2.10
  */
 gboolean
-ctk_printer_is_default (GtkPrinter *printer)
+ctk_printer_is_default (CtkPrinter *printer)
 {
   g_return_val_if_fail (CTK_IS_PRINTER (printer), FALSE);
   
@@ -863,7 +863,7 @@ ctk_printer_is_default (GtkPrinter *printer)
 }
 
 void
-ctk_printer_set_is_default (GtkPrinter *printer,
+ctk_printer_set_is_default (CtkPrinter *printer,
 			    gboolean    val)
 {
   g_return_if_fail (CTK_IS_PRINTER (printer));
@@ -873,17 +873,17 @@ ctk_printer_set_is_default (GtkPrinter *printer,
 
 /**
  * ctk_printer_request_details:
- * @printer: a #GtkPrinter
+ * @printer: a #CtkPrinter
  * 
  * Requests the printer details. When the details are available,
- * the #GtkPrinter::details-acquired signal will be emitted on @printer.
+ * the #CtkPrinter::details-acquired signal will be emitted on @printer.
  * 
  * Since: 2.12
  */
 void
-ctk_printer_request_details (GtkPrinter *printer)
+ctk_printer_request_details (CtkPrinter *printer)
 {
-  GtkPrintBackendClass *backend_class;
+  CtkPrintBackendClass *backend_class;
 
   g_return_if_fail (CTK_IS_PRINTER (printer));
 
@@ -891,85 +891,85 @@ ctk_printer_request_details (GtkPrinter *printer)
   backend_class->printer_request_details (printer);
 }
 
-GtkPrinterOptionSet *
-_ctk_printer_get_options (GtkPrinter           *printer,
-			  GtkPrintSettings     *settings,
-			  GtkPageSetup         *page_setup,
-			  GtkPrintCapabilities  capabilities)
+CtkPrinterOptionSet *
+_ctk_printer_get_options (CtkPrinter           *printer,
+			  CtkPrintSettings     *settings,
+			  CtkPageSetup         *page_setup,
+			  CtkPrintCapabilities  capabilities)
 {
-  GtkPrintBackendClass *backend_class = CTK_PRINT_BACKEND_GET_CLASS (printer->priv->backend);
+  CtkPrintBackendClass *backend_class = CTK_PRINT_BACKEND_GET_CLASS (printer->priv->backend);
   return backend_class->printer_get_options (printer, settings, page_setup, capabilities);
 }
 
 gboolean
-_ctk_printer_mark_conflicts (GtkPrinter          *printer,
-			     GtkPrinterOptionSet *options)
+_ctk_printer_mark_conflicts (CtkPrinter          *printer,
+			     CtkPrinterOptionSet *options)
 {
-  GtkPrintBackendClass *backend_class = CTK_PRINT_BACKEND_GET_CLASS (printer->priv->backend);
+  CtkPrintBackendClass *backend_class = CTK_PRINT_BACKEND_GET_CLASS (printer->priv->backend);
   return backend_class->printer_mark_conflicts (printer, options);
 }
   
 void
-_ctk_printer_get_settings_from_options (GtkPrinter          *printer,
-					GtkPrinterOptionSet *options,
-					GtkPrintSettings    *settings)
+_ctk_printer_get_settings_from_options (CtkPrinter          *printer,
+					CtkPrinterOptionSet *options,
+					CtkPrintSettings    *settings)
 {
-  GtkPrintBackendClass *backend_class = CTK_PRINT_BACKEND_GET_CLASS (printer->priv->backend);
+  CtkPrintBackendClass *backend_class = CTK_PRINT_BACKEND_GET_CLASS (printer->priv->backend);
   backend_class->printer_get_settings_from_options (printer, options, settings);
 }
 
 void
-_ctk_printer_prepare_for_print (GtkPrinter       *printer,
-				GtkPrintJob      *print_job,
-				GtkPrintSettings *settings,
-				GtkPageSetup     *page_setup)
+_ctk_printer_prepare_for_print (CtkPrinter       *printer,
+				CtkPrintJob      *print_job,
+				CtkPrintSettings *settings,
+				CtkPageSetup     *page_setup)
 {
-  GtkPrintBackendClass *backend_class = CTK_PRINT_BACKEND_GET_CLASS (printer->priv->backend);
+  CtkPrintBackendClass *backend_class = CTK_PRINT_BACKEND_GET_CLASS (printer->priv->backend);
   backend_class->printer_prepare_for_print (printer, print_job, settings, page_setup);
 }
 
 cairo_surface_t *
-_ctk_printer_create_cairo_surface (GtkPrinter       *printer,
-				   GtkPrintSettings *settings,
+_ctk_printer_create_cairo_surface (CtkPrinter       *printer,
+				   CtkPrintSettings *settings,
 				   gdouble           width, 
 				   gdouble           height,
 				   GIOChannel       *cache_io)
 {
-  GtkPrintBackendClass *backend_class = CTK_PRINT_BACKEND_GET_CLASS (printer->priv->backend);
+  CtkPrintBackendClass *backend_class = CTK_PRINT_BACKEND_GET_CLASS (printer->priv->backend);
 
   return backend_class->printer_create_cairo_surface (printer, settings,
 						      width, height, cache_io);
 }
 
 gboolean
-_ctk_printer_get_hard_margins_for_paper_size (GtkPrinter   *printer,
-					      GtkPaperSize *paper_size,
+_ctk_printer_get_hard_margins_for_paper_size (CtkPrinter   *printer,
+					      CtkPaperSize *paper_size,
 					      gdouble      *top,
 					      gdouble      *bottom,
 					      gdouble      *left,
 					      gdouble      *right)
 {
-  GtkPrintBackendClass *backend_class = CTK_PRINT_BACKEND_GET_CLASS (printer->priv->backend);
+  CtkPrintBackendClass *backend_class = CTK_PRINT_BACKEND_GET_CLASS (printer->priv->backend);
 
   return backend_class->printer_get_hard_margins_for_paper_size (printer, paper_size, top, bottom, left, right);
 }
 
 /**
  * ctk_printer_list_papers:
- * @printer: a #GtkPrinter
+ * @printer: a #CtkPrinter
  * 
  * Lists all the paper sizes @printer supports.
  * This will return and empty list unless the printer’s details are 
  * available, see ctk_printer_has_details() and ctk_printer_request_details().
  *
- * Returns: (element-type GtkPageSetup) (transfer full): a newly allocated list of newly allocated #GtkPageSetup s.
+ * Returns: (element-type CtkPageSetup) (transfer full): a newly allocated list of newly allocated #CtkPageSetup s.
  *
  * Since: 2.12
  */
 GList  *
-ctk_printer_list_papers (GtkPrinter *printer)
+ctk_printer_list_papers (CtkPrinter *printer)
 {
-  GtkPrintBackendClass *backend_class;
+  CtkPrintBackendClass *backend_class;
 
   g_return_val_if_fail (CTK_IS_PRINTER (printer), NULL);
 
@@ -979,18 +979,18 @@ ctk_printer_list_papers (GtkPrinter *printer)
 
 /**
  * ctk_printer_get_default_page_size:
- * @printer: a #GtkPrinter
+ * @printer: a #CtkPrinter
  *
  * Returns default page size of @printer.
  * 
- * Returns: a newly allocated #GtkPageSetup with default page size of the printer.
+ * Returns: a newly allocated #CtkPageSetup with default page size of the printer.
  *
  * Since: 2.14
  */
-GtkPageSetup  *
-ctk_printer_get_default_page_size (GtkPrinter *printer)
+CtkPageSetup  *
+ctk_printer_get_default_page_size (CtkPrinter *printer)
 {
-  GtkPrintBackendClass *backend_class;
+  CtkPrintBackendClass *backend_class;
 
   g_return_val_if_fail (CTK_IS_PRINTER (printer), NULL);
 
@@ -1000,7 +1000,7 @@ ctk_printer_get_default_page_size (GtkPrinter *printer)
 
 /**
  * ctk_printer_get_hard_margins:
- * @printer: a #GtkPrinter
+ * @printer: a #CtkPrinter
  * @top: (out): a location to store the top margin in
  * @bottom: (out): a location to store the bottom margin in
  * @left: (out): a location to store the left margin in
@@ -1017,24 +1017,24 @@ ctk_printer_get_default_page_size (GtkPrinter *printer)
  * Since: 2.20
  */
 gboolean
-ctk_printer_get_hard_margins (GtkPrinter *printer,
+ctk_printer_get_hard_margins (CtkPrinter *printer,
 			      gdouble    *top,
 			      gdouble    *bottom,
 			      gdouble    *left,
 			      gdouble    *right)
 {
-  GtkPrintBackendClass *backend_class = CTK_PRINT_BACKEND_GET_CLASS (printer->priv->backend);
+  CtkPrintBackendClass *backend_class = CTK_PRINT_BACKEND_GET_CLASS (printer->priv->backend);
 
   return backend_class->printer_get_hard_margins (printer, top, bottom, left, right);
 }
 
 /**
  * ctk_printer_get_capabilities:
- * @printer: a #GtkPrinter
+ * @printer: a #CtkPrinter
  * 
  * Returns the printer’s capabilities.
  *
- * This is useful when you’re using #GtkPrintUnixDialog’s manual-capabilities 
+ * This is useful when you’re using #CtkPrintUnixDialog’s manual-capabilities 
  * setting and need to know which settings the printer can handle and which 
  * you must handle yourself.
  *
@@ -1045,10 +1045,10 @@ ctk_printer_get_hard_margins (GtkPrinter *printer,
  *
  * Since: 2.12
  */
-GtkPrintCapabilities
-ctk_printer_get_capabilities (GtkPrinter *printer)
+CtkPrintCapabilities
+ctk_printer_get_capabilities (CtkPrinter *printer)
 {
-  GtkPrintBackendClass *backend_class;
+  CtkPrintBackendClass *backend_class;
 
   g_return_val_if_fail (CTK_IS_PRINTER (printer), 0);
 
@@ -1058,8 +1058,8 @@ ctk_printer_get_capabilities (GtkPrinter *printer)
 
 /**
  * ctk_printer_compare:
- * @a: a #GtkPrinter
- * @b: another #GtkPrinter
+ * @a: a #CtkPrinter
+ * @b: another #CtkPrinter
  *
  * Compares two printers.
  * 
@@ -1069,8 +1069,8 @@ ctk_printer_get_capabilities (GtkPrinter *printer)
  * Since: 2.10
  */
 gint
-ctk_printer_compare (GtkPrinter *a, 
-                     GtkPrinter *b)
+ctk_printer_compare (CtkPrinter *a, 
+                     CtkPrinter *b)
 {
   const char *name_a, *name_b;
   
@@ -1092,20 +1092,20 @@ ctk_printer_compare (GtkPrinter *a,
 typedef struct 
 {
   GList *backends;
-  GtkPrinterFunc func;
+  CtkPrinterFunc func;
   gpointer data;
   GDestroyNotify destroy;
   GMainLoop *loop;
 } PrinterList;
 
-static void list_done_cb (GtkPrintBackend *backend, 
+static void list_done_cb (CtkPrintBackend *backend, 
 			  PrinterList     *printer_list);
 
 static void
 stop_enumeration (PrinterList *printer_list)
 {
   GList *list, *next;
-  GtkPrintBackend *backend;
+  CtkPrintBackend *backend;
 
   for (list = printer_list->backends; list; list = next)
     {
@@ -1131,8 +1131,8 @@ free_printer_list (PrinterList *printer_list)
 }
 
 static gboolean
-list_added_cb (GtkPrintBackend *backend, 
-	       GtkPrinter      *printer, 
+list_added_cb (CtkPrintBackend *backend, 
+	       CtkPrinter      *printer, 
 	       PrinterList     *printer_list)
 {
   if (printer_list->func (printer, printer_list->data))
@@ -1149,9 +1149,9 @@ backend_status_changed (GObject    *object,
                         GParamSpec *pspec,
                         gpointer    data)
 {
-  GtkPrintBackend *backend = CTK_PRINT_BACKEND (object);
+  CtkPrintBackend *backend = CTK_PRINT_BACKEND (object);
   PrinterList *printer_list = data;
-  GtkPrintBackendStatus status;
+  CtkPrintBackendStatus status;
 
   g_object_get (backend, "status", &status, NULL);
  
@@ -1161,7 +1161,7 @@ backend_status_changed (GObject    *object,
 
 static gboolean
 list_printers_remove_backend (PrinterList     *printer_list,
-                              GtkPrintBackend *backend)
+                              CtkPrintBackend *backend)
 {
   printer_list->backends = g_list_remove (printer_list->backends, backend);
   ctk_print_backend_destroy (backend);
@@ -1177,7 +1177,7 @@ list_printers_remove_backend (PrinterList     *printer_list,
 }
 
 static void
-list_done_cb (GtkPrintBackend *backend,
+list_done_cb (CtkPrintBackend *backend,
 	      PrinterList     *printer_list)
 {
   g_signal_handlers_disconnect_by_func (backend, list_added_cb, printer_list);
@@ -1189,10 +1189,10 @@ list_done_cb (GtkPrintBackend *backend,
 
 static gboolean
 list_printers_init (PrinterList     *printer_list,
-		    GtkPrintBackend *backend)
+		    CtkPrintBackend *backend)
 {
   GList *list, *node;
-  GtkPrintBackendStatus status;
+  CtkPrintBackendStatus status;
 
   list = ctk_print_backend_get_printer_list (backend);
 
@@ -1239,20 +1239,20 @@ list_printers_init (PrinterList     *printer_list,
  * @wait: if %TRUE, wait in a recursive mainloop until
  *    all printers are enumerated; otherwise return early
  *
- * Calls a function for all #GtkPrinters. 
+ * Calls a function for all #CtkPrinters. 
  * If @func returns %TRUE, the enumeration is stopped.
  *
  * Since: 2.10
  */
 void
-ctk_enumerate_printers (GtkPrinterFunc func,
+ctk_enumerate_printers (CtkPrinterFunc func,
 			gpointer       data,
 			GDestroyNotify destroy,
 			gboolean       wait)
 {
   PrinterList *printer_list;
   GList *node, *next;
-  GtkPrintBackend *backend;
+  CtkPrintBackend *backend;
 
   printer_list = g_new0 (PrinterList, 1);
 
@@ -1308,7 +1308,7 @@ ctk_print_capabilities_get_type (void)
         { 0, NULL, NULL }
       };
 
-      etype = g_flags_register_static (I_("GtkPrintCapabilities"), values);
+      etype = g_flags_register_static (I_("CtkPrintCapabilities"), values);
     }
 
   return etype;

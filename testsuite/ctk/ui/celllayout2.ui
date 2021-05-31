@@ -1,8 +1,8 @@
 <!-- test invalid cell layout attribute value -->
 <interface>
-  <object class="GtkIconView">
+  <object class="CtkIconView">
     <child>
-      <object class="GtkCellRendererText">
+      <object class="CtkCellRendererText">
       </object>
       <attributes>
         <attribute name="text">blue</attribute>

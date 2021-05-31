@@ -32,9 +32,9 @@
 
 G_BEGIN_DECLS
 
-void            ctk_image_set_from_definition           (GtkImage               *image,
-                                                         GtkImageDefinition     *def,
-                                                         GtkIconSize             size);
+void            ctk_image_set_from_definition           (CtkImage               *image,
+                                                         CtkImageDefinition     *def,
+                                                         CtkIconSize             size);
 
 G_END_DECLS
 

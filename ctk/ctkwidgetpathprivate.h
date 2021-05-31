@@ -22,7 +22,7 @@
 
 G_BEGIN_DECLS
 
-void ctk_widget_path_iter_add_qclass (GtkWidgetPath *path,
+void ctk_widget_path_iter_add_qclass (CtkWidgetPath *path,
                                       gint           pos,
                                       GQuark         qname);
 

@@ -23,40 +23,40 @@
 #include "ctkcssdimensionvalueprivate.h"
 #include "ctkcsswin32sizevalueprivate.h"
 
-struct _GtkCssValue {
+struct _CtkCssValue {
   CTK_CSS_VALUE_BASE
 };
 
-GtkCssDimension
-ctk_css_number_value_get_dimension (const GtkCssValue *value)
+CtkCssDimension
+ctk_css_number_value_get_dimension (const CtkCssValue *value)
 {
-  GtkCssNumberValueClass *number_value_class = (GtkCssNumberValueClass *) value->class;
+  CtkCssNumberValueClass *number_value_class = (CtkCssNumberValueClass *) value->class;
 
   return number_value_class->get_dimension (value);
 }
 
 gboolean
-ctk_css_number_value_has_percent (const GtkCssValue *value)
+ctk_css_number_value_has_percent (const CtkCssValue *value)
 {
-  GtkCssNumberValueClass *number_value_class = (GtkCssNumberValueClass *) value->class;
+  CtkCssNumberValueClass *number_value_class = (CtkCssNumberValueClass *) value->class;
 
   return number_value_class->has_percent (value);
 }
 
-GtkCssValue *
-ctk_css_number_value_multiply (const GtkCssValue *value,
+CtkCssValue *
+ctk_css_number_value_multiply (const CtkCssValue *value,
                                double             factor)
 {
-  GtkCssNumberValueClass *number_value_class = (GtkCssNumberValueClass *) value->class;
+  CtkCssNumberValueClass *number_value_class = (CtkCssNumberValueClass *) value->class;
 
   return number_value_class->multiply (value, factor);
 }
 
-GtkCssValue *
-ctk_css_number_value_add (GtkCssValue *value1,
-                          GtkCssValue *value2)
+CtkCssValue *
+ctk_css_number_value_add (CtkCssValue *value1,
+                          CtkCssValue *value2)
 {
-  GtkCssValue *sum;
+  CtkCssValue *sum;
 
   sum = ctk_css_number_value_try_add (value1, value2);
   if (sum == NULL)
@@ -65,16 +65,16 @@ ctk_css_number_value_add (GtkCssValue *value1,
   return sum;
 }
 
-GtkCssValue *
-ctk_css_number_value_try_add (const GtkCssValue *value1,
-                              const GtkCssValue *value2)
+CtkCssValue *
+ctk_css_number_value_try_add (const CtkCssValue *value1,
+                              const CtkCssValue *value2)
 {
-  GtkCssNumberValueClass *number_value_class;
+  CtkCssNumberValueClass *number_value_class;
   
   if (value1->class != value2->class)
     return NULL;
 
-  number_value_class = (GtkCssNumberValueClass *) value1->class;
+  number_value_class = (CtkCssNumberValueClass *) value1->class;
 
   return number_value_class->try_add (value1, value2);
 }
@@ -93,27 +93,27 @@ ctk_css_number_value_try_add (const GtkCssValue *value1,
  *     expression.
  */
 gint
-ctk_css_number_value_get_calc_term_order (const GtkCssValue *value)
+ctk_css_number_value_get_calc_term_order (const CtkCssValue *value)
 {
-  GtkCssNumberValueClass *number_value_class = (GtkCssNumberValueClass *) value->class;
+  CtkCssNumberValueClass *number_value_class = (CtkCssNumberValueClass *) value->class;
 
   return number_value_class->get_calc_term_order (value);
 }
 
-GtkCssValue *
+CtkCssValue *
 _ctk_css_number_value_new (double     value,
-                           GtkCssUnit unit)
+                           CtkCssUnit unit)
 {
   return ctk_css_dimension_value_new (value, unit);
 }
 
-GtkCssValue *
-ctk_css_number_value_transition (GtkCssValue *start,
-                                 GtkCssValue *end,
+CtkCssValue *
+ctk_css_number_value_transition (CtkCssValue *start,
+                                 CtkCssValue *end,
                                  guint        property_id,
                                  double       progress)
 {
-  GtkCssValue *result, *mul_start, *mul_end;
+  CtkCssValue *result, *mul_start, *mul_end;
 
   mul_start = ctk_css_number_value_multiply (start, 1 - progress);
   mul_end = ctk_css_number_value_multiply (end, progress);
@@ -127,7 +127,7 @@ ctk_css_number_value_transition (GtkCssValue *start,
 }
 
 gboolean
-ctk_css_number_value_can_parse (GtkCssParser *parser)
+ctk_css_number_value_can_parse (CtkCssParser *parser)
 {
   return _ctk_css_parser_has_number (parser)
       || _ctk_css_parser_has_prefix (parser, "calc")
@@ -140,9 +140,9 @@ ctk_css_number_value_can_parse (GtkCssParser *parser)
       || _ctk_css_parser_has_prefix (parser, "-ctk-win32-part-border-right");
 }
 
-GtkCssValue *
-_ctk_css_number_value_parse (GtkCssParser           *parser,
-                             GtkCssNumberParseFlags  flags)
+CtkCssValue *
+_ctk_css_number_value_parse (CtkCssParser           *parser,
+                             CtkCssNumberParseFlags  flags)
 {
   if (_ctk_css_parser_has_prefix (parser, "calc"))
     return ctk_css_calc_value_parse (parser, flags);
@@ -159,14 +159,14 @@ _ctk_css_number_value_parse (GtkCssParser           *parser,
 }
 
 double
-_ctk_css_number_value_get (const GtkCssValue *number,
+_ctk_css_number_value_get (const CtkCssValue *number,
                            double             one_hundred_percent)
 {
-  GtkCssNumberValueClass *number_value_class;
+  CtkCssNumberValueClass *number_value_class;
 
   g_return_val_if_fail (number != NULL, 0.0);
 
-  number_value_class = (GtkCssNumberValueClass *) number->class;
+  number_value_class = (CtkCssNumberValueClass *) number->class;
 
   return number_value_class->get (number, one_hundred_percent);
 }

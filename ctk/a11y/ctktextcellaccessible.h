@@ -28,26 +28,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_TEXT_CELL_ACCESSIBLE            (ctk_text_cell_accessible_get_type ())
-#define CTK_TEXT_CELL_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TEXT_CELL_ACCESSIBLE, GtkTextCellAccessible))
-#define CTK_TEXT_CELL_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TEXT_CELL_ACCESSIBLE, GtkTextCellAccessibleClass))
+#define CTK_TEXT_CELL_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TEXT_CELL_ACCESSIBLE, CtkTextCellAccessible))
+#define CTK_TEXT_CELL_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TEXT_CELL_ACCESSIBLE, CtkTextCellAccessibleClass))
 #define CTK_IS_TEXT_CELL_ACCESSIBLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TEXT_CELL_ACCESSIBLE))
 #define CTK_IS_TEXT_CELL_ACCESSIBLE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TEXT_CELL_ACCESSIBLE))
-#define CTK_TEXT_CELL_ACCESSIBLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TEXT_CELL_ACCESSIBLE, GtkTextCellAccessibleClass))
+#define CTK_TEXT_CELL_ACCESSIBLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TEXT_CELL_ACCESSIBLE, CtkTextCellAccessibleClass))
 
-typedef struct _GtkTextCellAccessible        GtkTextCellAccessible;
-typedef struct _GtkTextCellAccessibleClass   GtkTextCellAccessibleClass;
-typedef struct _GtkTextCellAccessiblePrivate GtkTextCellAccessiblePrivate;
+typedef struct _CtkTextCellAccessible        CtkTextCellAccessible;
+typedef struct _CtkTextCellAccessibleClass   CtkTextCellAccessibleClass;
+typedef struct _CtkTextCellAccessiblePrivate CtkTextCellAccessiblePrivate;
 
-struct _GtkTextCellAccessible
+struct _CtkTextCellAccessible
 {
-  GtkRendererCellAccessible parent;
+  CtkRendererCellAccessible parent;
 
-  GtkTextCellAccessiblePrivate *priv;
+  CtkTextCellAccessiblePrivate *priv;
 };
 
-struct _GtkTextCellAccessibleClass
+struct _CtkTextCellAccessibleClass
 {
-  GtkRendererCellAccessibleClass parent_class;
+  CtkRendererCellAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

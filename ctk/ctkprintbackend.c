@@ -39,12 +39,12 @@ static void ctk_print_backend_get_property (GObject      *object,
                                             GValue       *value,
                                             GParamSpec   *pspec);
 
-struct _GtkPrintBackendPrivate
+struct _CtkPrintBackendPrivate
 {
   GHashTable *printers;
   guint printer_list_requested : 1;
   guint printer_list_done : 1;
-  GtkPrintBackendStatus status;
+  CtkPrintBackendStatus status;
   char **auth_info_required;
   char **auth_info;
   gboolean store_auth_info;
@@ -80,13 +80,13 @@ ctk_print_backend_error_quark (void)
 }
 
 /*****************************************
- *     GtkPrintBackendModule modules     *
+ *     CtkPrintBackendModule modules     *
  *****************************************/
 
-typedef struct _GtkPrintBackendModule GtkPrintBackendModule;
-typedef struct _GtkPrintBackendModuleClass GtkPrintBackendModuleClass;
+typedef struct _CtkPrintBackendModule CtkPrintBackendModule;
+typedef struct _CtkPrintBackendModuleClass CtkPrintBackendModuleClass;
 
-struct _GtkPrintBackendModule
+struct _CtkPrintBackendModule
 {
   GTypeModule parent_instance;
   
@@ -94,28 +94,28 @@ struct _GtkPrintBackendModule
 
   void             (*init)     (GTypeModule    *module);
   void             (*exit)     (void);
-  GtkPrintBackend* (*create)   (void);
+  CtkPrintBackend* (*create)   (void);
 
   gchar *path;
 };
 
-struct _GtkPrintBackendModuleClass
+struct _CtkPrintBackendModuleClass
 {
   GTypeModuleClass parent_class;
 };
 
 GType _ctk_print_backend_module_get_type (void);
 
-G_DEFINE_TYPE (GtkPrintBackendModule, _ctk_print_backend_module, G_TYPE_TYPE_MODULE)
+G_DEFINE_TYPE (CtkPrintBackendModule, _ctk_print_backend_module, G_TYPE_TYPE_MODULE)
 #define CTK_TYPE_PRINT_BACKEND_MODULE      (_ctk_print_backend_module_get_type ())
-#define CTK_PRINT_BACKEND_MODULE(module)   (G_TYPE_CHECK_INSTANCE_CAST ((module), CTK_TYPE_PRINT_BACKEND_MODULE, GtkPrintBackendModule))
+#define CTK_PRINT_BACKEND_MODULE(module)   (G_TYPE_CHECK_INSTANCE_CAST ((module), CTK_TYPE_PRINT_BACKEND_MODULE, CtkPrintBackendModule))
 
 static GSList *loaded_backends;
 
 static gboolean
 ctk_print_backend_module_load (GTypeModule *module)
 {
-  GtkPrintBackendModule *pb_module = CTK_PRINT_BACKEND_MODULE (module); 
+  CtkPrintBackendModule *pb_module = CTK_PRINT_BACKEND_MODULE (module); 
   gpointer initp, exitp, createp;
  
   pb_module->library = g_module_open (pb_module->path, G_MODULE_BIND_LAZY | G_MODULE_BIND_LOCAL);
@@ -153,7 +153,7 @@ ctk_print_backend_module_load (GTypeModule *module)
 static void
 ctk_print_backend_module_unload (GTypeModule *module)
 {
-  GtkPrintBackendModule *pb_module = CTK_PRINT_BACKEND_MODULE (module);
+  CtkPrintBackendModule *pb_module = CTK_PRINT_BACKEND_MODULE (module);
   
   pb_module->exit();
 
@@ -171,7 +171,7 @@ ctk_print_backend_module_unload (GTypeModule *module)
 static void
 ctk_print_backend_module_finalize (GObject *object)
 {
-  GtkPrintBackendModule *module = CTK_PRINT_BACKEND_MODULE (object);
+  CtkPrintBackendModule *module = CTK_PRINT_BACKEND_MODULE (object);
 
   g_free (module->path);
 
@@ -179,7 +179,7 @@ ctk_print_backend_module_finalize (GObject *object)
 }
 
 static void
-_ctk_print_backend_module_class_init (GtkPrintBackendModuleClass *class)
+_ctk_print_backend_module_class_init (CtkPrintBackendModuleClass *class)
 {
   GTypeModuleClass *module_class = G_TYPE_MODULE_CLASS (class);
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
@@ -196,8 +196,8 @@ ctk_print_backend_set_property (GObject      *object,
                                 const GValue *value,
                                 GParamSpec   *pspec)
 {
-  GtkPrintBackend *backend = CTK_PRINT_BACKEND (object);
-  GtkPrintBackendPrivate *priv = backend->priv;
+  CtkPrintBackend *backend = CTK_PRINT_BACKEND (object);
+  CtkPrintBackendPrivate *priv = backend->priv;
 
   switch (prop_id)
     {
@@ -216,8 +216,8 @@ ctk_print_backend_get_property (GObject    *object,
                                 GValue     *value,
                                 GParamSpec *pspec)
 {
-  GtkPrintBackend *backend = CTK_PRINT_BACKEND (object);
-  GtkPrintBackendPrivate *priv = backend->priv;
+  CtkPrintBackend *backend = CTK_PRINT_BACKEND (object);
+  CtkPrintBackendPrivate *priv = backend->priv;
 
   switch (prop_id)
     {
@@ -231,14 +231,14 @@ ctk_print_backend_get_property (GObject    *object,
 }
 
 static void
-_ctk_print_backend_module_init (GtkPrintBackendModule *pb_module)
+_ctk_print_backend_module_init (CtkPrintBackendModule *pb_module)
 {
 }
 
-static GtkPrintBackend *
-_ctk_print_backend_module_create (GtkPrintBackendModule *pb_module)
+static CtkPrintBackend *
+_ctk_print_backend_module_create (CtkPrintBackendModule *pb_module)
 {
-  GtkPrintBackend *pb;
+  CtkPrintBackend *pb;
   
   if (g_type_module_use (G_TYPE_MODULE (pb_module)))
     {
@@ -249,14 +249,14 @@ _ctk_print_backend_module_create (GtkPrintBackendModule *pb_module)
   return NULL;
 }
 
-static GtkPrintBackend *
+static CtkPrintBackend *
 _ctk_print_backend_create (const gchar *backend_name)
 {
   GSList *l;
   gchar *module_path;
   gchar *full_name;
-  GtkPrintBackendModule *pb_module;
-  GtkPrintBackend *pb;
+  CtkPrintBackendModule *pb_module;
+  CtkPrintBackend *pb;
 
   for (l = loaded_backends; l != NULL; l = l->next)
     {
@@ -299,17 +299,17 @@ _ctk_print_backend_create (const gchar *backend_name)
 /**
  * ctk_print_backend_load_modules:
  *
- * Returns: (element-type GtkPrintBackend) (transfer container):
+ * Returns: (element-type CtkPrintBackend) (transfer container):
  */
 GList *
 ctk_print_backend_load_modules (void)
 {
   GList *result;
-  GtkPrintBackend *backend;
+  CtkPrintBackend *backend;
   gchar *setting;
   gchar **backends;
   gint i;
-  GtkSettings *settings;
+  CtkSettings *settings;
 
   result = NULL;
 
@@ -335,29 +335,29 @@ ctk_print_backend_load_modules (void)
 }
 
 /*****************************************
- *             GtkPrintBackend           *
+ *             CtkPrintBackend           *
  *****************************************/
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkPrintBackend, ctk_print_backend, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkPrintBackend, ctk_print_backend, G_TYPE_OBJECT)
 
-static void                 fallback_printer_request_details       (GtkPrinter          *printer);
-static gboolean             fallback_printer_mark_conflicts        (GtkPrinter          *printer,
-								    GtkPrinterOptionSet *options);
-static gboolean             fallback_printer_get_hard_margins      (GtkPrinter          *printer,
+static void                 fallback_printer_request_details       (CtkPrinter          *printer);
+static gboolean             fallback_printer_mark_conflicts        (CtkPrinter          *printer,
+								    CtkPrinterOptionSet *options);
+static gboolean             fallback_printer_get_hard_margins      (CtkPrinter          *printer,
                                                                     gdouble             *top,
                                                                     gdouble             *bottom,
                                                                     gdouble             *left,
                                                                     gdouble             *right);
-static gboolean             fallback_printer_get_hard_margins_for_paper_size (GtkPrinter          *printer,
-									      GtkPaperSize        *paper_size,
+static gboolean             fallback_printer_get_hard_margins_for_paper_size (CtkPrinter          *printer,
+									      CtkPaperSize        *paper_size,
 									      gdouble             *top,
 									      gdouble             *bottom,
 									      gdouble             *left,
 									      gdouble             *right);
-static GList *              fallback_printer_list_papers           (GtkPrinter          *printer);
-static GtkPageSetup *       fallback_printer_get_default_page_size (GtkPrinter          *printer);
-static GtkPrintCapabilities fallback_printer_get_capabilities      (GtkPrinter          *printer);
-static void                 request_password                       (GtkPrintBackend     *backend,
+static GList *              fallback_printer_list_papers           (CtkPrinter          *printer);
+static CtkPageSetup *       fallback_printer_get_default_page_size (CtkPrinter          *printer);
+static CtkPrintCapabilities fallback_printer_get_capabilities      (CtkPrinter          *printer);
+static void                 request_password                       (CtkPrintBackend     *backend,
                                                                     gpointer             auth_info_required,
                                                                     gpointer             auth_info_default,
                                                                     gpointer             auth_info_display,
@@ -366,7 +366,7 @@ static void                 request_password                       (GtkPrintBack
                                                                     gboolean             can_store_auth_info);
   
 static void
-ctk_print_backend_class_init (GtkPrintBackendClass *class)
+ctk_print_backend_class_init (CtkPrintBackendClass *class)
 {
   GObjectClass *object_class;
   object_class = (GObjectClass *) class;
@@ -400,7 +400,7 @@ ctk_print_backend_class_init (GtkPrintBackendClass *class)
     g_signal_new (I_("printer-list-changed"),
 		  G_TYPE_FROM_CLASS (class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkPrintBackendClass, printer_list_changed),
+		  G_STRUCT_OFFSET (CtkPrintBackendClass, printer_list_changed),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
@@ -408,7 +408,7 @@ ctk_print_backend_class_init (GtkPrintBackendClass *class)
     g_signal_new (I_("printer-list-done"),
 		    G_TYPE_FROM_CLASS (class),
 		    G_SIGNAL_RUN_LAST,
-		    G_STRUCT_OFFSET (GtkPrintBackendClass, printer_list_done),
+		    G_STRUCT_OFFSET (CtkPrintBackendClass, printer_list_done),
 		    NULL, NULL,
 		    NULL,
 		    G_TYPE_NONE, 0);
@@ -416,7 +416,7 @@ ctk_print_backend_class_init (GtkPrintBackendClass *class)
     g_signal_new (I_("printer-added"),
 		  G_TYPE_FROM_CLASS (class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkPrintBackendClass, printer_added),
+		  G_STRUCT_OFFSET (CtkPrintBackendClass, printer_added),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1, CTK_TYPE_PRINTER);
@@ -424,7 +424,7 @@ ctk_print_backend_class_init (GtkPrintBackendClass *class)
     g_signal_new (I_("printer-removed"),
 		  G_TYPE_FROM_CLASS (class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkPrintBackendClass, printer_removed),
+		  G_STRUCT_OFFSET (CtkPrintBackendClass, printer_removed),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1, CTK_TYPE_PRINTER);
@@ -432,7 +432,7 @@ ctk_print_backend_class_init (GtkPrintBackendClass *class)
     g_signal_new (I_("printer-status-changed"),
 		  G_TYPE_FROM_CLASS (class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkPrintBackendClass, printer_status_changed),
+		  G_STRUCT_OFFSET (CtkPrintBackendClass, printer_status_changed),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1, CTK_TYPE_PRINTER);
@@ -440,16 +440,16 @@ ctk_print_backend_class_init (GtkPrintBackendClass *class)
     g_signal_new (I_("request-password"),
 		  G_TYPE_FROM_CLASS (class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkPrintBackendClass, request_password),
+		  G_STRUCT_OFFSET (CtkPrintBackendClass, request_password),
 		  NULL, NULL, NULL,
 		  G_TYPE_NONE, 6, G_TYPE_POINTER, G_TYPE_POINTER, G_TYPE_POINTER,
 		  G_TYPE_POINTER, G_TYPE_STRING, G_TYPE_BOOLEAN);
 }
 
 static void
-ctk_print_backend_init (GtkPrintBackend *backend)
+ctk_print_backend_init (CtkPrintBackend *backend)
 {
-  GtkPrintBackendPrivate *priv;
+  CtkPrintBackendPrivate *priv;
 
   priv = backend->priv = ctk_print_backend_get_instance_private (backend);
 
@@ -463,8 +463,8 @@ ctk_print_backend_init (GtkPrintBackend *backend)
 static void
 ctk_print_backend_dispose (GObject *object)
 {
-  GtkPrintBackend *backend;
-  GtkPrintBackendPrivate *priv;
+  CtkPrintBackend *backend;
+  CtkPrintBackendPrivate *priv;
 
   backend = CTK_PRINT_BACKEND (object);
   priv = backend->priv;
@@ -483,19 +483,19 @@ ctk_print_backend_dispose (GObject *object)
 
 
 static void
-fallback_printer_request_details (GtkPrinter *printer)
+fallback_printer_request_details (CtkPrinter *printer)
 {
 }
 
 static gboolean
-fallback_printer_mark_conflicts (GtkPrinter          *printer,
-				 GtkPrinterOptionSet *options)
+fallback_printer_mark_conflicts (CtkPrinter          *printer,
+				 CtkPrinterOptionSet *options)
 {
   return FALSE;
 }
 
 static gboolean
-fallback_printer_get_hard_margins (GtkPrinter *printer,
+fallback_printer_get_hard_margins (CtkPrinter *printer,
 				   gdouble    *top,
 				   gdouble    *bottom,
 				   gdouble    *left,
@@ -505,8 +505,8 @@ fallback_printer_get_hard_margins (GtkPrinter *printer,
 }
 
 static gboolean
-fallback_printer_get_hard_margins_for_paper_size (GtkPrinter   *printer,
-						  GtkPaperSize *paper_size,
+fallback_printer_get_hard_margins_for_paper_size (CtkPrinter   *printer,
+						  CtkPaperSize *paper_size,
 						  gdouble      *top,
 						  gdouble      *bottom,
 						  gdouble      *left,
@@ -516,19 +516,19 @@ fallback_printer_get_hard_margins_for_paper_size (GtkPrinter   *printer,
 }
 
 static GList *
-fallback_printer_list_papers (GtkPrinter *printer)
+fallback_printer_list_papers (CtkPrinter *printer)
 {
   return NULL;
 }
 
-static GtkPageSetup *
-fallback_printer_get_default_page_size (GtkPrinter *printer)
+static CtkPageSetup *
+fallback_printer_get_default_page_size (CtkPrinter *printer)
 {
   return NULL;
 }
 
-static GtkPrintCapabilities
-fallback_printer_get_capabilities (GtkPrinter *printer)
+static CtkPrintCapabilities
+fallback_printer_get_capabilities (CtkPrinter *printer)
 {
   return 0;
 }
@@ -539,7 +539,7 @@ printer_hash_to_sorted_active_list (const gchar  *key,
                                     gpointer      value,
                                     GList       **out_list)
 {
-  GtkPrinter *printer;
+  CtkPrinter *printer;
 
   printer = CTK_PRINTER (value);
 
@@ -554,10 +554,10 @@ printer_hash_to_sorted_active_list (const gchar  *key,
 
 
 void
-ctk_print_backend_add_printer (GtkPrintBackend *backend,
-			       GtkPrinter      *printer)
+ctk_print_backend_add_printer (CtkPrintBackend *backend,
+			       CtkPrinter      *printer)
 {
-  GtkPrintBackendPrivate *priv;
+  CtkPrintBackendPrivate *priv;
   
   g_return_if_fail (CTK_IS_PRINT_BACKEND (backend));
 
@@ -572,10 +572,10 @@ ctk_print_backend_add_printer (GtkPrintBackend *backend,
 }
 
 void
-ctk_print_backend_remove_printer (GtkPrintBackend *backend,
-				  GtkPrinter      *printer)
+ctk_print_backend_remove_printer (CtkPrintBackend *backend,
+				  CtkPrinter      *printer)
 {
-  GtkPrintBackendPrivate *priv;
+  CtkPrintBackendPrivate *priv;
   
   g_return_if_fail (CTK_IS_PRINT_BACKEND (backend));
   priv = backend->priv;
@@ -588,7 +588,7 @@ ctk_print_backend_remove_printer (GtkPrintBackend *backend,
 }
 
 void
-ctk_print_backend_set_list_done (GtkPrintBackend *backend)
+ctk_print_backend_set_list_done (CtkPrintBackend *backend)
 {
   if (!backend->priv->printer_list_done)
     {
@@ -603,14 +603,14 @@ ctk_print_backend_set_list_done (GtkPrintBackend *backend)
  *
  * Returns the current list of printers.
  *
- * Returns: (element-type GtkPrinter) (transfer container):
- *   A list of #GtkPrinter objects. The list should be freed
+ * Returns: (element-type CtkPrinter) (transfer container):
+ *   A list of #CtkPrinter objects. The list should be freed
  *   with g_list_free().
  */
 GList *
-ctk_print_backend_get_printer_list (GtkPrintBackend *backend)
+ctk_print_backend_get_printer_list (CtkPrintBackend *backend)
 {
-  GtkPrintBackendPrivate *priv;
+  CtkPrintBackendPrivate *priv;
   GList *result;
   
   g_return_val_if_fail (CTK_IS_PRINT_BACKEND (backend), NULL);
@@ -634,19 +634,19 @@ ctk_print_backend_get_printer_list (GtkPrintBackend *backend)
 }
 
 gboolean
-ctk_print_backend_printer_list_is_done (GtkPrintBackend *print_backend)
+ctk_print_backend_printer_list_is_done (CtkPrintBackend *print_backend)
 {
   g_return_val_if_fail (CTK_IS_PRINT_BACKEND (print_backend), TRUE);
 
   return print_backend->priv->printer_list_done;
 }
 
-GtkPrinter *
-ctk_print_backend_find_printer (GtkPrintBackend *backend,
+CtkPrinter *
+ctk_print_backend_find_printer (CtkPrintBackend *backend,
                                 const gchar     *printer_name)
 {
-  GtkPrintBackendPrivate *priv;
-  GtkPrinter *printer;
+  CtkPrintBackendPrivate *priv;
+  CtkPrinter *printer;
   
   g_return_val_if_fail (CTK_IS_PRINT_BACKEND (backend), NULL);
 
@@ -661,10 +661,10 @@ ctk_print_backend_find_printer (GtkPrintBackend *backend,
 }
 
 void
-ctk_print_backend_print_stream (GtkPrintBackend        *backend,
-                                GtkPrintJob            *job,
+ctk_print_backend_print_stream (CtkPrintBackend        *backend,
+                                CtkPrintJob            *job,
                                 GIOChannel             *data_io,
-                                GtkPrintJobCompleteFunc callback,
+                                CtkPrintJobCompleteFunc callback,
                                 gpointer                user_data,
 				GDestroyNotify          dnotify)
 {
@@ -679,7 +679,7 @@ ctk_print_backend_print_stream (GtkPrintBackend        *backend,
 }
 
 void 
-ctk_print_backend_set_password (GtkPrintBackend  *backend,
+ctk_print_backend_set_password (CtkPrintBackend  *backend,
                                 gchar           **auth_info_required,
                                 gchar           **auth_info,
                                 gboolean          store_auth_info)
@@ -694,7 +694,7 @@ ctk_print_backend_set_password (GtkPrintBackend  *backend,
 }
 
 static void
-store_auth_info_toggled (GtkCheckButton *chkbtn,
+store_auth_info_toggled (CtkCheckButton *chkbtn,
                          gpointer        user_data)
 {
   gboolean *data = (gboolean *) user_data;
@@ -702,7 +702,7 @@ store_auth_info_toggled (GtkCheckButton *chkbtn,
 }
 
 static void
-store_entry (GtkEntry  *entry,
+store_entry (CtkEntry  *entry,
              gpointer   user_data)
 {
   gchar **data = (gchar **) user_data;
@@ -717,11 +717,11 @@ store_entry (GtkEntry  *entry,
 }
 
 static void
-password_dialog_response (GtkWidget       *dialog,
+password_dialog_response (CtkWidget       *dialog,
                           gint             response_id,
-                          GtkPrintBackend *backend)
+                          CtkPrintBackend *backend)
 {
-  GtkPrintBackendPrivate *priv = backend->priv;
+  CtkPrintBackendPrivate *priv = backend->priv;
   gint i, auth_info_len;
 
   if (response_id == CTK_RESPONSE_OK)
@@ -750,7 +750,7 @@ password_dialog_response (GtkWidget       *dialog,
 }
 
 static void
-request_password (GtkPrintBackend  *backend,
+request_password (CtkPrintBackend  *backend,
                   gpointer          auth_info_required,
                   gpointer          auth_info_default,
                   gpointer          auth_info_display,
@@ -758,10 +758,10 @@ request_password (GtkPrintBackend  *backend,
                   const gchar      *prompt,
                   gboolean          can_store_auth_info)
 {
-  GtkPrintBackendPrivate *priv = backend->priv;
-  GtkWidget *dialog, *box, *main_box, *label, *icon, *vbox, *entry, *chkbtn;
-  GtkWidget *focus = NULL;
-  GtkWidget *content_area;
+  CtkPrintBackendPrivate *priv = backend->priv;
+  CtkWidget *dialog, *box, *main_box, *label, *icon, *vbox, *entry, *chkbtn;
+  CtkWidget *focus = NULL;
+  CtkWidget *content_area;
   gchar     *markup;
   gint       length;
   gint       i;
@@ -868,7 +868,7 @@ request_password (GtkPrintBackend  *backend,
 }
 
 void
-ctk_print_backend_destroy (GtkPrintBackend *print_backend)
+ctk_print_backend_destroy (CtkPrintBackend *print_backend)
 {
   /* The lifecycle of print backends and printers are tied, such that
    * the backend owns the printers, but the printers also ref the backend.

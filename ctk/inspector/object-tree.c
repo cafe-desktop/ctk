@@ -69,16 +69,16 @@ enum
 };
 
 
-struct _GtkInspectorObjectTreePrivate
+struct _CtkInspectorObjectTreePrivate
 {
-  GtkTreeView *tree;
-  GtkTreeStore *model;
+  CtkTreeView *tree;
+  CtkTreeStore *model;
   gulong map_hook;
   gulong unmap_hook;
-  GtkTreeViewColumn *object_column;
-  GtkWidget *search_bar;
-  GtkWidget *search_entry;
-  GtkTreeWalk *walk;
+  CtkTreeViewColumn *object_column;
+  CtkWidget *search_bar;
+  CtkWidget *search_entry;
+  CtkTreeWalk *walk;
   gint search_length;
 };
 
@@ -98,7 +98,7 @@ struct _ObjectTreeClassFuncs {
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorObjectTree, ctk_inspector_object_tree, CTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkInspectorObjectTree, ctk_inspector_object_tree, CTK_TYPE_BOX)
 
 static GObject *
 object_tree_get_parent_default (GObject *object)
@@ -131,7 +131,7 @@ object_tree_widget_forall (GObject              *object,
                            gpointer              forall_data)
 {
   struct {
-    GtkPropagationPhase  phase;
+    CtkPropagationPhase  phase;
     const gchar         *name;
   } phases[] = {
     { CTK_PHASE_CAPTURE, "capture" },
@@ -176,7 +176,7 @@ typedef struct {
 } ForallData;
 
 static void
-container_children_callback (GtkWidget *widget,
+container_children_callback (CtkWidget *widget,
                              gpointer   client_data)
 {
   ForallData *forall_data = client_data;
@@ -226,7 +226,7 @@ object_tree_menu_item_forall (GObject              *object,
                               ObjectTreeForallFunc  forall_func,
                               gpointer              forall_data)
 {
-  GtkWidget *submenu;
+  CtkWidget *submenu;
 
   submenu = ctk_menu_item_get_submenu (CTK_MENU_ITEM (object));
   if (submenu)
@@ -238,7 +238,7 @@ object_tree_combo_box_forall (GObject              *object,
                               ObjectTreeForallFunc  forall_func,
                               gpointer              forall_data)
 {
-  GtkWidget *popup;
+  CtkWidget *popup;
   GObject *child;
 
   popup = ctk_combo_box_get_popup (CTK_COMBO_BOX (object));
@@ -293,7 +293,7 @@ typedef struct {
 } ParentForallData;
 
 static gboolean
-cell_callback (GtkCellRenderer *renderer,
+cell_callback (CtkCellRenderer *renderer,
                gpointer         data)
 {
   ParentForallData *d = data;
@@ -325,7 +325,7 @@ object_tree_cell_layout_forall (GObject              *object,
                                 ObjectTreeForallFunc  forall_func,
                                 gpointer              forall_data)
 {
-  GtkCellArea *area;
+  CtkCellArea *area;
 
   /* cell areas handle their own stuff */
   if (CTK_IS_CELL_AREA (object))
@@ -344,7 +344,7 @@ object_tree_text_view_forall (GObject              *object,
                               ObjectTreeForallFunc  forall_func,
                               gpointer              forall_data)
 {
-  GtkTextBuffer *buffer;
+  CtkTextBuffer *buffer;
 
   buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (object));
   forall_func (G_OBJECT (buffer), "buffer", forall_data);
@@ -355,14 +355,14 @@ object_tree_text_buffer_forall (GObject              *object,
                                 ObjectTreeForallFunc  forall_func,
                                 gpointer              forall_data)
 {
-  GtkTextTagTable *tags;
+  CtkTextTagTable *tags;
 
   tags = ctk_text_buffer_get_tag_table (CTK_TEXT_BUFFER (object));
   forall_func (G_OBJECT (tags), "tag-table", forall_data);
 }
 
 static void
-tag_callback (GtkTextTag *tag,
+tag_callback (CtkTextTag *tag,
               gpointer    data)
 {
   ForallData *d = data;
@@ -557,12 +557,12 @@ object_get_sensitive (GObject *object)
 }
 
 static void
-on_row_activated (GtkTreeView            *tree,
-                  GtkTreePath            *path,
-                  GtkTreeViewColumn      *col,
-                  GtkInspectorObjectTree *wt)
+on_row_activated (CtkTreeView            *tree,
+                  CtkTreePath            *path,
+                  CtkTreeViewColumn      *col,
+                  CtkInspectorObjectTree *wt)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   GObject *object;
   gchar *name;
 
@@ -578,12 +578,12 @@ on_row_activated (GtkTreeView            *tree,
 }
 
 GObject *
-ctk_inspector_object_tree_get_selected (GtkInspectorObjectTree *wt)
+ctk_inspector_object_tree_get_selected (CtkInspectorObjectTree *wt)
 {
   GObject *object;
-  GtkTreeIter iter;
-  GtkTreeSelection *sel;
-  GtkTreeModel *model;
+  CtkTreeIter iter;
+  CtkTreeSelection *sel;
+  CtkTreeModel *model;
 
   object = NULL;
   sel = ctk_tree_view_get_selection (CTK_TREE_VIEW (wt->priv->tree));
@@ -596,11 +596,11 @@ ctk_inspector_object_tree_get_selected (GtkInspectorObjectTree *wt)
 }
 
 static void
-on_selection_changed (GtkTreeSelection       *selection,
-                      GtkInspectorObjectTree *wt)
+on_selection_changed (CtkTreeSelection       *selection,
+                      CtkInspectorObjectTree *wt)
 {
   GObject *object;
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
   if (ctk_tree_selection_get_selected (selection, NULL, &iter))
     ctk_tree_walk_reset (wt->priv->walk, &iter);
@@ -612,14 +612,14 @@ on_selection_changed (GtkTreeSelection       *selection,
 
 typedef struct {
   GObject *dead_object;
-  GtkTreeWalk *walk;
-  GtkTreePath *walk_pos;
+  CtkTreeWalk *walk;
+  CtkTreePath *walk_pos;
 } RemoveData;
 
 static gboolean
-remove_cb (GtkTreeModel *model,
-           GtkTreePath  *path,
-           GtkTreeIter  *iter,
+remove_cb (CtkTreeModel *model,
+           CtkTreePath  *path,
+           CtkTreeIter  *iter,
            gpointer      data)
 {
   RemoveData *remove_data = data;
@@ -644,8 +644,8 @@ remove_cb (GtkTreeModel *model,
 static void
 ctk_object_tree_remove_dead_object (gpointer data, GObject *dead_object)
 {
-  GtkInspectorObjectTree *wt = data;
-  GtkTreeIter iter;
+  CtkInspectorObjectTree *wt = data;
+  CtkTreeIter iter;
   RemoveData remove_data;
 
   remove_data.dead_object = dead_object;
@@ -662,12 +662,12 @@ ctk_object_tree_remove_dead_object (gpointer data, GObject *dead_object)
 }
 
 static gboolean
-weak_unref_cb (GtkTreeModel *model,
-               GtkTreePath  *path,
-               GtkTreeIter  *iter,
+weak_unref_cb (CtkTreeModel *model,
+               CtkTreePath  *path,
+               CtkTreeIter  *iter,
                gpointer      data)
 {
-  GtkInspectorObjectTree *wt = data;
+  CtkInspectorObjectTree *wt = data;
   GObject *object;
 
   ctk_tree_model_get (model, iter, OBJECT, &object, -1);
@@ -678,7 +678,7 @@ weak_unref_cb (GtkTreeModel *model,
 }
 
 static void
-clear_store (GtkInspectorObjectTree *wt)
+clear_store (CtkInspectorObjectTree *wt)
 {
   if (wt->priv->model)
     {
@@ -694,9 +694,9 @@ map_or_unmap (GSignalInvocationHint *ihint,
               const GValue          *params,
               gpointer               data)
 {
-  GtkInspectorObjectTree *wt = data;
-  GtkWidget *widget;
-  GtkTreeIter iter;
+  CtkInspectorObjectTree *wt = data;
+  CtkWidget *widget;
+  CtkTreeIter iter;
 
   widget = g_value_get_object (params);
   if (ctk_inspector_object_tree_find_object (wt, G_OBJECT (widget), &iter))
@@ -707,11 +707,11 @@ map_or_unmap (GSignalInvocationHint *ihint,
 }
 
 static void
-move_search_to_row (GtkInspectorObjectTree *wt,
-                    GtkTreeIter            *iter)
+move_search_to_row (CtkInspectorObjectTree *wt,
+                    CtkTreeIter            *iter)
 {
-  GtkTreeSelection *selection;
-  GtkTreePath *path;
+  CtkTreeSelection *selection;
+  CtkTreePath *path;
 
   selection = ctk_tree_view_get_selection (wt->priv->tree);
   path = ctk_tree_model_get_path (CTK_TREE_MODEL (wt->priv->model), iter);
@@ -722,9 +722,9 @@ move_search_to_row (GtkInspectorObjectTree *wt,
 }
 
 static gboolean
-key_press_event (GtkWidget              *window,
+key_press_event (CtkWidget              *window,
                  GdkEvent               *event,
-                 GtkInspectorObjectTree *wt)
+                 CtkInspectorObjectTree *wt)
 {
   if (ctk_widget_get_mapped (CTK_WIDGET (wt)))
     {
@@ -739,10 +739,10 @@ key_press_event (GtkWidget              *window,
            event->key.keyval == GDK_KEY_ISO_Enter ||
            event->key.keyval == GDK_KEY_KP_Enter))
         {
-          GtkTreeSelection *selection;
-          GtkTreeModel *model;
-          GtkTreeIter iter;
-          GtkTreePath *path;
+          CtkTreeSelection *selection;
+          CtkTreeModel *model;
+          CtkTreeIter iter;
+          CtkTreePath *path;
 
           selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (wt->priv->tree));
           if (ctk_tree_selection_get_selected (selection, &model, &iter))
@@ -768,7 +768,7 @@ key_press_event (GtkWidget              *window,
                ((event->key.state & (default_accel | GDK_SHIFT_MASK)) == (default_accel | GDK_SHIFT_MASK)) &&
                (event->key.keyval == GDK_KEY_g || event->key.keyval == GDK_KEY_G))
         {
-          GtkTreeIter iter;
+          CtkTreeIter iter;
           if (ctk_tree_walk_next_match (wt->priv->walk, TRUE, TRUE, &iter))
             move_search_to_row (wt, &iter);
           else
@@ -780,7 +780,7 @@ key_press_event (GtkWidget              *window,
                ((event->key.state & (default_accel | GDK_SHIFT_MASK)) == default_accel) &&
                (event->key.keyval == GDK_KEY_g || event->key.keyval == GDK_KEY_G))
         {
-          GtkTreeIter iter;
+          CtkTreeIter iter;
 
           if (ctk_tree_walk_next_match (wt->priv->walk, TRUE, FALSE, &iter))
             move_search_to_row (wt, &iter);
@@ -797,8 +797,8 @@ key_press_event (GtkWidget              *window,
 }
 
 static void
-on_hierarchy_changed (GtkWidget *widget,
-                      GtkWidget *previous_toplevel)
+on_hierarchy_changed (CtkWidget *widget,
+                      CtkWidget *previous_toplevel)
 {
   if (previous_toplevel)
     g_signal_handlers_disconnect_by_func (previous_toplevel, key_press_event, widget);
@@ -807,10 +807,10 @@ on_hierarchy_changed (GtkWidget *widget,
 }
 
 static void
-on_search_changed (GtkSearchEntry         *entry,
-                   GtkInspectorObjectTree *wt)
+on_search_changed (CtkSearchEntry         *entry,
+                   CtkInspectorObjectTree *wt)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   gint length;
   gboolean backwards;
 
@@ -845,11 +845,11 @@ match_string (const gchar *string,
 }
 
 static gboolean
-match_row (GtkTreeModel *model,
-           GtkTreeIter  *iter,
+match_row (CtkTreeModel *model,
+           CtkTreeIter  *iter,
            gpointer      data)
 {
-  GtkInspectorObjectTree *wt = data;
+  CtkInspectorObjectTree *wt = data;
   gchar *type, *name, *label;
   const gchar *text;
   gboolean match;
@@ -875,7 +875,7 @@ match_row (GtkTreeModel *model,
 static void
 search_mode_changed (GObject                *search_bar,
                      GParamSpec             *pspec,
-                     GtkInspectorObjectTree *wt)
+                     CtkInspectorObjectTree *wt)
 {
   if (!ctk_search_bar_get_search_mode (CTK_SEARCH_BAR (search_bar)))
     {
@@ -885,12 +885,12 @@ search_mode_changed (GObject                *search_bar,
 }
 
 static void
-next_match (GtkButton              *button,
-            GtkInspectorObjectTree *wt)
+next_match (CtkButton              *button,
+            CtkInspectorObjectTree *wt)
 {
   if (ctk_search_bar_get_search_mode (CTK_SEARCH_BAR (wt->priv->search_bar)))
     {
-      GtkTreeIter iter;
+      CtkTreeIter iter;
 
       if (ctk_tree_walk_next_match (wt->priv->walk, TRUE, FALSE, &iter))
         move_search_to_row (wt, &iter);
@@ -900,12 +900,12 @@ next_match (GtkButton              *button,
 }
 
 static void
-previous_match (GtkButton              *button,
-                GtkInspectorObjectTree *wt)
+previous_match (CtkButton              *button,
+                CtkInspectorObjectTree *wt)
 {
   if (ctk_search_bar_get_search_mode (CTK_SEARCH_BAR (wt->priv->search_bar)))
     {
-      GtkTreeIter iter;
+      CtkTreeIter iter;
 
       if (ctk_tree_walk_next_match (wt->priv->walk, TRUE, TRUE, &iter))
         move_search_to_row (wt, &iter);
@@ -915,15 +915,15 @@ previous_match (GtkButton              *button,
 }
 
 static void
-stop_search (GtkWidget              *entry,
-             GtkInspectorObjectTree *wt)
+stop_search (CtkWidget              *entry,
+             CtkInspectorObjectTree *wt)
 {
   ctk_entry_set_text (CTK_ENTRY (wt->priv->search_entry), "");
   ctk_search_bar_set_search_mode (CTK_SEARCH_BAR (wt->priv->search_bar), FALSE);
 }
 
 static void
-ctk_inspector_object_tree_init (GtkInspectorObjectTree *wt)
+ctk_inspector_object_tree_init (CtkInspectorObjectTree *wt)
 {
   guint signal_id;
 
@@ -950,7 +950,7 @@ ctk_inspector_object_tree_init (GtkInspectorObjectTree *wt)
 static void
 ctk_inspector_object_tree_dispose (GObject *object)
 {
-  GtkInspectorObjectTree *wt = CTK_INSPECTOR_OBJECT_TREE (object);
+  CtkInspectorObjectTree *wt = CTK_INSPECTOR_OBJECT_TREE (object);
 
   clear_store (wt);
 
@@ -960,7 +960,7 @@ ctk_inspector_object_tree_dispose (GObject *object)
 static void
 ctk_inspector_object_tree_finalize (GObject *object)
 {
-  GtkInspectorObjectTree *wt = CTK_INSPECTOR_OBJECT_TREE (object);
+  CtkInspectorObjectTree *wt = CTK_INSPECTOR_OBJECT_TREE (object);
   guint signal_id;
 
   signal_id = g_signal_lookup ("map", CTK_TYPE_WIDGET);
@@ -974,10 +974,10 @@ ctk_inspector_object_tree_finalize (GObject *object)
 }
 
 static void
-ctk_inspector_object_tree_class_init (GtkInspectorObjectTreeClass *klass)
+ctk_inspector_object_tree_class_init (CtkInspectorObjectTreeClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   object_class->finalize = ctk_inspector_object_tree_finalize;
   object_class->dispose = ctk_inspector_object_tree_dispose;
@@ -986,7 +986,7 @@ ctk_inspector_object_tree_class_init (GtkInspectorObjectTreeClass *klass)
       g_signal_new ("object-activated",
                     G_OBJECT_CLASS_TYPE (klass),
                     G_SIGNAL_RUN_FIRST | G_SIGNAL_NO_RECURSE,
-                    G_STRUCT_OFFSET (GtkInspectorObjectTreeClass, object_activated),
+                    G_STRUCT_OFFSET (CtkInspectorObjectTreeClass, object_activated),
                     NULL, NULL,
                     NULL,
                     G_TYPE_NONE, 2, G_TYPE_OBJECT, G_TYPE_STRING);
@@ -995,17 +995,17 @@ ctk_inspector_object_tree_class_init (GtkInspectorObjectTreeClass *klass)
       g_signal_new ("object-selected",
                     G_OBJECT_CLASS_TYPE (klass),
                     G_SIGNAL_RUN_FIRST | G_SIGNAL_NO_RECURSE,
-                    G_STRUCT_OFFSET (GtkInspectorObjectTreeClass, object_selected),
+                    G_STRUCT_OFFSET (CtkInspectorObjectTreeClass, object_selected),
                     NULL, NULL,
                     NULL,
                     G_TYPE_NONE, 1, G_TYPE_OBJECT);
 
   ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/object-tree.ui");
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorObjectTree, model);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorObjectTree, tree);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorObjectTree, object_column);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorObjectTree, search_bar);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorObjectTree, search_entry);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorObjectTree, model);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorObjectTree, tree);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorObjectTree, object_column);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorObjectTree, search_bar);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorObjectTree, search_entry);
   ctk_widget_class_bind_template_callback (widget_class, on_selection_changed);
   ctk_widget_class_bind_template_callback (widget_class, on_row_activated);
   ctk_widget_class_bind_template_callback (widget_class, on_hierarchy_changed);
@@ -1017,8 +1017,8 @@ ctk_inspector_object_tree_class_init (GtkInspectorObjectTreeClass *klass)
 
 typedef struct
 {
-  GtkInspectorObjectTree *wt;
-  GtkTreeIter *iter;
+  CtkInspectorObjectTree *wt;
+  CtkTreeIter *iter;
   GObject *parent;
 } FindAllData;
 
@@ -1033,12 +1033,12 @@ child_callback (GObject    *object,
 }
 
 void
-ctk_inspector_object_tree_append_object (GtkInspectorObjectTree *wt,
+ctk_inspector_object_tree_append_object (CtkInspectorObjectTree *wt,
                                          GObject                *object,
-                                         GtkTreeIter            *parent_iter,
+                                         CtkTreeIter            *parent_iter,
                                          const gchar            *name)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   const gchar *class_name;
   gchar *classes;
   const gchar *label;
@@ -1049,7 +1049,7 @@ ctk_inspector_object_tree_append_object (GtkInspectorObjectTree *wt,
   if (CTK_IS_WIDGET (object))
     {
       const gchar *id;
-      GtkStyleContext *context;
+      CtkStyleContext *context;
       GList *list, *l;
       GString *string;
 
@@ -1138,34 +1138,34 @@ ctk_inspector_object_tree_append_object (GtkInspectorObjectTree *wt,
 }
 
 static void
-block_selection_changed (GtkInspectorObjectTree *wt)
+block_selection_changed (CtkInspectorObjectTree *wt)
 {
-  GtkTreeSelection *selection;
+  CtkTreeSelection *selection;
 
   selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (wt->priv->tree));
   g_signal_handlers_block_by_func (selection, on_selection_changed, wt);
 }
 
 static void
-unblock_selection_changed (GtkInspectorObjectTree *wt)
+unblock_selection_changed (CtkInspectorObjectTree *wt)
 {
-  GtkTreeSelection *selection;
+  CtkTreeSelection *selection;
 
   selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (wt->priv->tree));
   g_signal_handlers_unblock_by_func (selection, on_selection_changed, wt);
 }
 
 gboolean
-select_object_internal (GtkInspectorObjectTree *wt,
+select_object_internal (CtkInspectorObjectTree *wt,
                         GObject                *object,
                         gboolean                activate)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
   if (ctk_inspector_object_tree_find_object (wt, object, &iter))
     {
-      GtkTreePath *path;
-      GtkTreeSelection *selection;
+      CtkTreePath *path;
+      CtkTreeSelection *selection;
 
       selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (wt->priv->tree));
       path = ctk_tree_model_get_path (CTK_TREE_MODEL (wt->priv->model), &iter);
@@ -1188,17 +1188,17 @@ select_object_internal (GtkInspectorObjectTree *wt,
 }
 
 gboolean
-ctk_inspector_object_tree_select_object (GtkInspectorObjectTree *wt,
+ctk_inspector_object_tree_select_object (CtkInspectorObjectTree *wt,
                                          GObject                *object)
 {
   return select_object_internal (wt, object, TRUE);
 }
 
 void
-ctk_inspector_object_tree_scan (GtkInspectorObjectTree *wt,
-                                GtkWidget              *window)
+ctk_inspector_object_tree_scan (CtkInspectorObjectTree *wt,
+                                CtkWidget              *window)
 {
-  GtkWidget *inspector_win;
+  CtkWidget *inspector_win;
   GList *toplevels, *l;
   GdkScreen *screen;
   GObject *selected;
@@ -1239,10 +1239,10 @@ ctk_inspector_object_tree_scan (GtkInspectorObjectTree *wt,
 }
 
 static gboolean
-ctk_inspector_object_tree_find_object_at_parent_iter (GtkTreeModel *model,
+ctk_inspector_object_tree_find_object_at_parent_iter (CtkTreeModel *model,
                                                       GObject      *object,
-                                                      GtkTreeIter  *parent,
-                                                      GtkTreeIter  *iter)
+                                                      CtkTreeIter  *parent,
+                                                      CtkTreeIter  *iter)
 {
   if (!ctk_tree_model_iter_children (model, iter, parent))
     return FALSE;
@@ -1261,11 +1261,11 @@ ctk_inspector_object_tree_find_object_at_parent_iter (GtkTreeModel *model,
 }
 
 gboolean
-ctk_inspector_object_tree_find_object (GtkInspectorObjectTree *wt,
+ctk_inspector_object_tree_find_object (CtkInspectorObjectTree *wt,
                                        GObject                *object,
-                                       GtkTreeIter            *iter)
+                                       CtkTreeIter            *iter)
 {
-  GtkTreeIter parent_iter;
+  CtkTreeIter parent_iter;
   GObject *parent;
 
   parent = object_get_parent (object);

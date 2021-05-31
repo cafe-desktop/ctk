@@ -26,34 +26,34 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CSS_IMAGE_LINEAR           (_ctk_css_image_linear_get_type ())
-#define CTK_CSS_IMAGE_LINEAR(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_IMAGE_LINEAR, GtkCssImageLinear))
-#define CTK_CSS_IMAGE_LINEAR_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_IMAGE_LINEAR, GtkCssImageLinearClass))
+#define CTK_CSS_IMAGE_LINEAR(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_IMAGE_LINEAR, CtkCssImageLinear))
+#define CTK_CSS_IMAGE_LINEAR_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_IMAGE_LINEAR, CtkCssImageLinearClass))
 #define CTK_IS_CSS_IMAGE_LINEAR(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_IMAGE_LINEAR))
 #define CTK_IS_CSS_IMAGE_LINEAR_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_IMAGE_LINEAR))
-#define CTK_CSS_IMAGE_LINEAR_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_IMAGE_LINEAR, GtkCssImageLinearClass))
+#define CTK_CSS_IMAGE_LINEAR_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_IMAGE_LINEAR, CtkCssImageLinearClass))
 
-typedef struct _GtkCssImageLinear           GtkCssImageLinear;
-typedef struct _GtkCssImageLinearClass      GtkCssImageLinearClass;
-typedef struct _GtkCssImageLinearColorStop  GtkCssImageLinearColorStop;
+typedef struct _CtkCssImageLinear           CtkCssImageLinear;
+typedef struct _CtkCssImageLinearClass      CtkCssImageLinearClass;
+typedef struct _CtkCssImageLinearColorStop  CtkCssImageLinearColorStop;
 
-struct _GtkCssImageLinearColorStop {
-  GtkCssValue        *offset;
-  GtkCssValue        *color;
+struct _CtkCssImageLinearColorStop {
+  CtkCssValue        *offset;
+  CtkCssValue        *color;
 };
 
-struct _GtkCssImageLinear
+struct _CtkCssImageLinear
 {
-  GtkCssImage parent;
+  CtkCssImage parent;
 
   guint        side;  /* side the gradient should go to or 0 for angle */
-  GtkCssValue *angle;
+  CtkCssValue *angle;
   GArray *stops;
   guint repeating :1;
 };
 
-struct _GtkCssImageLinearClass
+struct _CtkCssImageLinearClass
 {
-  GtkCssImageClass parent_class;
+  CtkCssImageClass parent_class;
 };
 
 GType          _ctk_css_image_linear_get_type             (void) G_GNUC_CONST;

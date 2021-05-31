@@ -23,15 +23,15 @@ gchar *screen2_name = NULL;
 
 typedef struct
 {
-  GtkEntry *e1;
-  GtkEntry *e2;
+  CtkEntry *e1;
+  CtkEntry *e2;
 }
-MyDoubleGtkEntry;
+MyDoubleCtkEntry;
 
 void
-get_screen_response (GtkDialog *dialog,
+get_screen_response (CtkDialog *dialog,
 		     gint       response_id,
-		     GtkEntry  *entry)
+		     CtkEntry  *entry)
 {
   if (response_id == CTK_RESPONSE_DELETE_EVENT)
     return;
@@ -40,9 +40,9 @@ get_screen_response (GtkDialog *dialog,
 }
 
 void
-entry_dialog_response (GtkDialog        *dialog,
+entry_dialog_response (CtkDialog        *dialog,
 		       gint              response_id,
-		       MyDoubleGtkEntry *de)
+		       MyDoubleCtkEntry *de)
 {
   if (response_id == CTK_RESPONSE_APPLY)
     ctk_entry_set_text (de->e2, ctk_entry_get_text (de->e1));
@@ -52,12 +52,12 @@ entry_dialog_response (GtkDialog        *dialog,
 
 void
 make_selection_dialog (GdkScreen * screen,
-		       GtkWidget * entry,
-		       GtkWidget * other_entry)
+		       CtkWidget * entry,
+		       CtkWidget * other_entry)
 {
-  GtkWidget *window, *vbox;
-  GtkWidget *content_area;
-  MyDoubleGtkEntry *double_entry = g_new (MyDoubleGtkEntry, 1);
+  CtkWidget *window, *vbox;
+  CtkWidget *content_area;
+  MyDoubleCtkEntry *double_entry = g_new (MyDoubleCtkEntry, 1);
   double_entry->e1 = CTK_ENTRY (entry);
   double_entry->e2 = CTK_ENTRY (other_entry);
 
@@ -99,9 +99,9 @@ make_selection_dialog (GdkScreen * screen,
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *dialog, *display_entry, *dialog_label;
-  GtkWidget *entry, *entry2;
-  GtkWidget *content_area;
+  CtkWidget *dialog, *display_entry, *dialog_label;
+  CtkWidget *entry, *entry2;
+  CtkWidget *content_area;
   GdkDisplay *dpy2;
   GdkScreen *scr2 = NULL;	/* Quiet GCC */
   gboolean correct_second_display = FALSE;

@@ -39,17 +39,17 @@ enum
   COLUMN_GROUP
 };
 
-struct _GtkInspectorActionsPrivate
+struct _CtkInspectorActionsPrivate
 {
-  GtkListStore *model;
+  CtkListStore *model;
   GHashTable *groups;
   GHashTable *iters;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorActions, ctk_inspector_actions, CTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkInspectorActions, ctk_inspector_actions, CTK_TYPE_BOX)
 
 static void
-ctk_inspector_actions_init (GtkInspectorActions *sl)
+ctk_inspector_actions_init (CtkInspectorActions *sl)
 {
   sl->priv = ctk_inspector_actions_get_instance_private (sl);
   sl->priv->iters = g_hash_table_new_full (g_str_hash,
@@ -64,12 +64,12 @@ ctk_inspector_actions_init (GtkInspectorActions *sl)
 }
 
 static void
-add_action (GtkInspectorActions *sl,
+add_action (CtkInspectorActions *sl,
             GActionGroup        *group,
             const gchar         *prefix,
             const gchar         *name)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   gboolean enabled;
   const gchar *parameter;
   GVariant *state;
@@ -100,7 +100,7 @@ add_action (GtkInspectorActions *sl,
 static void
 action_added_cb (GActionGroup        *group,
                  const gchar         *action_name,
-                 GtkInspectorActions *sl)
+                 CtkInspectorActions *sl)
 {
   const gchar *prefix;
   prefix = g_hash_table_lookup (sl->priv->groups, group);
@@ -110,11 +110,11 @@ action_added_cb (GActionGroup        *group,
 static void
 action_removed_cb (GActionGroup        *group,
                    const gchar         *action_name,
-                   GtkInspectorActions *sl)
+                   CtkInspectorActions *sl)
 {
   const gchar *prefix;
   gchar *key;
-  GtkTreeIter *iter;
+  CtkTreeIter *iter;
   prefix = g_hash_table_lookup (sl->priv->groups, group);
   key = g_strconcat (prefix, ".", action_name, NULL);
   iter = g_hash_table_lookup (sl->priv->iters, key);
@@ -127,11 +127,11 @@ static void
 action_enabled_changed_cb (GActionGroup        *group,
                            const gchar         *action_name,
                            gboolean             enabled,
-                           GtkInspectorActions *sl)
+                           CtkInspectorActions *sl)
 {
   const gchar *prefix;
   gchar *key;
-  GtkTreeIter *iter;
+  CtkTreeIter *iter;
   prefix = g_hash_table_lookup (sl->priv->groups, group);
   key = g_strconcat (prefix, ".", action_name, NULL);
   iter = g_hash_table_lookup (sl->priv->iters, key);
@@ -145,11 +145,11 @@ static void
 action_state_changed_cb (GActionGroup        *group,
                          const gchar         *action_name,
                          GVariant            *state,
-                         GtkInspectorActions *sl)
+                         CtkInspectorActions *sl)
 {
   const gchar *prefix;
   gchar *key;
-  GtkTreeIter *iter;
+  CtkTreeIter *iter;
   gchar *state_string;
   prefix = g_hash_table_lookup (sl->priv->groups, group);
   key = g_strconcat (prefix, ".", action_name, NULL);
@@ -166,7 +166,7 @@ action_state_changed_cb (GActionGroup        *group,
 }
 
 static void
-add_group (GtkInspectorActions *sl,
+add_group (CtkInspectorActions *sl,
            GActionGroup        *group,
            const gchar         *prefix)
 {
@@ -191,7 +191,7 @@ static void
 disconnect_group (gpointer key, gpointer value, gpointer data)
 {
   GActionGroup *group = key;
-  GtkInspectorActions *sl = data;
+  CtkInspectorActions *sl = data;
 
   g_signal_handlers_disconnect_by_func (group, action_added_cb, sl);
   g_signal_handlers_disconnect_by_func (group, action_removed_cb, sl);
@@ -200,7 +200,7 @@ disconnect_group (gpointer key, gpointer value, gpointer data)
 }
 
 void
-ctk_inspector_actions_set_object (GtkInspectorActions *sl,
+ctk_inspector_actions_set_object (CtkInspectorActions *sl,
                                   GObject             *object)
 {
   ctk_widget_hide (CTK_WIDGET (sl));
@@ -233,18 +233,18 @@ ctk_inspector_actions_set_object (GtkInspectorActions *sl,
 }
 
 static void
-row_activated (GtkTreeView         *tv,
-               GtkTreePath         *path,
-               GtkTreeViewColumn   *col,
-               GtkInspectorActions *sl)
+row_activated (CtkTreeView         *tv,
+               CtkTreePath         *path,
+               CtkTreeViewColumn   *col,
+               CtkInspectorActions *sl)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   GdkRectangle rect;
-  GtkWidget *popover;
+  CtkWidget *popover;
   gchar *prefix;
   gchar *name;
   GActionGroup *group;
-  GtkWidget *editor;
+  CtkWidget *editor;
 
   ctk_tree_model_get_iter (CTK_TREE_MODEL (sl->priv->model), &iter, path);
   ctk_tree_model_get (CTK_TREE_MODEL (sl->priv->model),
@@ -272,12 +272,12 @@ row_activated (GtkTreeView         *tv,
 }
 
 static void
-ctk_inspector_actions_class_init (GtkInspectorActionsClass *klass)
+ctk_inspector_actions_class_init (CtkInspectorActionsClass *klass)
 {
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/actions.ui");
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorActions, model);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorActions, model);
   ctk_widget_class_bind_template_callback (widget_class, row_activated);
 }
 

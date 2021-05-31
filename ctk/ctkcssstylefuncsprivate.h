@@ -25,14 +25,14 @@
 G_BEGIN_DECLS
 
 gboolean            _ctk_css_style_funcs_parse_value       (GValue                  *value,
-                                                            GtkCssParser            *parser);
+                                                            CtkCssParser            *parser);
 void                _ctk_css_style_funcs_print_value       (const GValue            *value,
                                                             GString                 *string);
-GtkCssValue *       _ctk_css_style_funcs_compute_value     (GtkStyleProviderPrivate *provider,
-                                                            GtkCssStyle             *style,
-                                                            GtkCssStyle             *parent_style,
+CtkCssValue *       _ctk_css_style_funcs_compute_value     (CtkStyleProviderPrivate *provider,
+                                                            CtkCssStyle             *style,
+                                                            CtkCssStyle             *parent_style,
 							    GType                    target_type,
-                                                            GtkCssValue             *specified);
+                                                            CtkCssValue             *specified);
 
 G_END_DECLS
 

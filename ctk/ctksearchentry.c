@@ -38,9 +38,9 @@
 /**
  * SECTION:ctksearchentry
  * @Short_description: An entry which shows a search icon
- * @Title: GtkSearchEntry
+ * @Title: CtkSearchEntry
  *
- * #GtkSearchEntry is a subclass of #GtkEntry that has been
+ * #CtkSearchEntry is a subclass of #CtkEntry that has been
  * tailored for use as a search entry.
  *
  * It will show an inactive symbolic “find” icon when the search
@@ -53,16 +53,16 @@
  *
  * To make filtering appear more reactive, it is a good idea to
  * not react to every change in the entry text immediately, but
- * only after a short delay. To support this, #GtkSearchEntry
- * emits the #GtkSearchEntry::search-changed signal which can
- * be used instead of the #GtkEditable::changed signal.
+ * only after a short delay. To support this, #CtkSearchEntry
+ * emits the #CtkSearchEntry::search-changed signal which can
+ * be used instead of the #CtkEditable::changed signal.
  *
- * The #GtkSearchEntry::previous-match, #GtkSearchEntry::next-match
- * and #GtkSearchEntry::stop-search signals can be used to implement
+ * The #CtkSearchEntry::previous-match, #CtkSearchEntry::next-match
+ * and #CtkSearchEntry::stop-search signals can be used to implement
  * moving between search results and ending the search.
  *
- * Often, GtkSearchEntry will be fed events by means of being
- * placed inside a #GtkSearchBar. If that is not the case,
+ * Often, CtkSearchEntry will be fed events by means of being
+ * placed inside a #CtkSearchBar. If that is not the case,
  * you can use ctk_search_entry_handle_event() to pass events.
  *
  * Since: 3.6
@@ -82,17 +82,17 @@ typedef struct {
   guint delayed_changed_id;
   gboolean content_changed;
   gboolean search_stopped;
-} GtkSearchEntryPrivate;
+} CtkSearchEntryPrivate;
 
-static void ctk_search_entry_icon_release  (GtkEntry             *entry,
-                                            GtkEntryIconPosition  icon_pos);
-static void ctk_search_entry_changed       (GtkEditable          *editable);
-static void ctk_search_entry_editable_init (GtkEditableInterface *iface);
+static void ctk_search_entry_icon_release  (CtkEntry             *entry,
+                                            CtkEntryIconPosition  icon_pos);
+static void ctk_search_entry_changed       (CtkEditable          *editable);
+static void ctk_search_entry_editable_init (CtkEditableInterface *iface);
 
-static GtkEditableInterface *parent_editable_iface;
+static CtkEditableInterface *parent_editable_iface;
 
-G_DEFINE_TYPE_WITH_CODE (GtkSearchEntry, ctk_search_entry, CTK_TYPE_ENTRY,
-                         G_ADD_PRIVATE (GtkSearchEntry)
+G_DEFINE_TYPE_WITH_CODE (CtkSearchEntry, ctk_search_entry, CTK_TYPE_ENTRY,
+                         G_ADD_PRIVATE (CtkSearchEntry)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_EDITABLE,
                                                 ctk_search_entry_editable_init))
 
@@ -101,13 +101,13 @@ G_DEFINE_TYPE_WITH_CODE (GtkSearchEntry, ctk_search_entry, CTK_TYPE_ENTRY,
 
 /* This widget got created without a private structure, meaning
  * that we cannot now have one without breaking ABI */
-#define GET_PRIV(e) ((GtkSearchEntryPrivate *) ctk_search_entry_get_instance_private ((GtkSearchEntry *) (e)))
+#define GET_PRIV(e) ((CtkSearchEntryPrivate *) ctk_search_entry_get_instance_private ((CtkSearchEntry *) (e)))
 
 static void
-ctk_search_entry_preedit_changed (GtkEntry    *entry,
+ctk_search_entry_preedit_changed (CtkEntry    *entry,
                                   const gchar *preedit)
 {
-  GtkSearchEntryPrivate *priv = GET_PRIV (entry);
+  CtkSearchEntryPrivate *priv = GET_PRIV (entry);
 
   priv->content_changed = TRUE;
 }
@@ -116,7 +116,7 @@ static void
 ctk_search_entry_notify (GObject    *object,
                          GParamSpec *pspec)
 {
-  GtkSearchEntryPrivate *priv = GET_PRIV (object);
+  CtkSearchEntryPrivate *priv = GET_PRIV (object);
 
   if (strcmp (pspec->name, "text") == 0)
     priv->content_changed = TRUE;
@@ -128,7 +128,7 @@ ctk_search_entry_notify (GObject    *object,
 static void
 ctk_search_entry_finalize (GObject *object)
 {
-  GtkSearchEntryPrivate *priv = GET_PRIV (object);
+  CtkSearchEntryPrivate *priv = GET_PRIV (object);
 
   if (priv->delayed_changed_id > 0)
     g_source_remove (priv->delayed_changed_id);
@@ -137,18 +137,18 @@ ctk_search_entry_finalize (GObject *object)
 }
 
 static void
-ctk_search_entry_stop_search (GtkSearchEntry *entry)
+ctk_search_entry_stop_search (CtkSearchEntry *entry)
 {
-  GtkSearchEntryPrivate *priv = GET_PRIV (entry);
+  CtkSearchEntryPrivate *priv = GET_PRIV (entry);
 
   priv->search_stopped = TRUE;
 }
 
 static void
-ctk_search_entry_class_init (GtkSearchEntryClass *klass)
+ctk_search_entry_class_init (CtkSearchEntryClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkBindingSet *binding_set;
+  CtkBindingSet *binding_set;
 
   object_class->finalize = ctk_search_entry_finalize;
   object_class->notify = ctk_search_entry_notify;
@@ -164,10 +164,10 @@ ctk_search_entry_class_init (GtkSearchEntryClass *klass)
                                    G_CALLBACK (ctk_search_entry_preedit_changed));
 
   /**
-   * GtkSearchEntry::search-changed:
+   * CtkSearchEntry::search-changed:
    * @entry: the entry on which the signal was emitted
    *
-   * The #GtkSearchEntry::search-changed signal is emitted with a short
+   * The #CtkSearchEntry::search-changed signal is emitted with a short
    * delay of 150 milliseconds after the last change to the entry text.
    *
    * Since: 3.10
@@ -176,16 +176,16 @@ ctk_search_entry_class_init (GtkSearchEntryClass *klass)
     g_signal_new (I_("search-changed"),
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkSearchEntryClass, search_changed),
+                  G_STRUCT_OFFSET (CtkSearchEntryClass, search_changed),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 0);
 
   /**
-   * GtkSearchEntry::next-match:
+   * CtkSearchEntry::next-match:
    * @entry: the entry on which the signal was emitted
    *
-   * The ::next-match signal is a [keybinding signal][GtkBindingSignal]
+   * The ::next-match signal is a [keybinding signal][CtkBindingSignal]
    * which gets emitted when the user initiates a move to the next match
    * for the current search string.
    *
@@ -200,16 +200,16 @@ ctk_search_entry_class_init (GtkSearchEntryClass *klass)
     g_signal_new (I_("next-match"),
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-                  G_STRUCT_OFFSET (GtkSearchEntryClass, next_match),
+                  G_STRUCT_OFFSET (CtkSearchEntryClass, next_match),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 0);
 
   /**
-   * GtkSearchEntry::previous-match:
+   * CtkSearchEntry::previous-match:
    * @entry: the entry on which the signal was emitted
    *
-   * The ::previous-match signal is a [keybinding signal][GtkBindingSignal]
+   * The ::previous-match signal is a [keybinding signal][CtkBindingSignal]
    * which gets emitted when the user initiates a move to the previous match
    * for the current search string.
    *
@@ -224,16 +224,16 @@ ctk_search_entry_class_init (GtkSearchEntryClass *klass)
     g_signal_new (I_("previous-match"),
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-                  G_STRUCT_OFFSET (GtkSearchEntryClass, previous_match),
+                  G_STRUCT_OFFSET (CtkSearchEntryClass, previous_match),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 0);
 
   /**
-   * GtkSearchEntry::stop-search:
+   * CtkSearchEntry::stop-search:
    * @entry: the entry on which the signal was emitted
    *
-   * The ::stop-search signal is a [keybinding signal][GtkBindingSignal]
+   * The ::stop-search signal is a [keybinding signal][CtkBindingSignal]
    * which gets emitted when the user stops a search via keyboard input.
    *
    * Applications should connect to it, to implement hiding the search
@@ -247,7 +247,7 @@ ctk_search_entry_class_init (GtkSearchEntryClass *klass)
     g_signal_new (I_("stop-search"),
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-                  G_STRUCT_OFFSET (GtkSearchEntryClass, stop_search),
+                  G_STRUCT_OFFSET (CtkSearchEntryClass, stop_search),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 0);
@@ -263,7 +263,7 @@ ctk_search_entry_class_init (GtkSearchEntryClass *klass)
 }
 
 static void
-ctk_search_entry_editable_init (GtkEditableInterface *iface)
+ctk_search_entry_editable_init (CtkEditableInterface *iface)
 {
   parent_editable_iface = g_type_interface_peek_parent (iface);
   iface->do_insert_text = parent_editable_iface->do_insert_text;
@@ -279,8 +279,8 @@ ctk_search_entry_editable_init (GtkEditableInterface *iface)
 }
 
 static void
-ctk_search_entry_icon_release (GtkEntry             *entry,
-                               GtkEntryIconPosition  icon_pos)
+ctk_search_entry_icon_release (CtkEntry             *entry,
+                               CtkEntryIconPosition  icon_pos)
 {
   if (icon_pos == CTK_ENTRY_ICON_SECONDARY)
     ctk_entry_set_text (entry, "");
@@ -289,8 +289,8 @@ ctk_search_entry_icon_release (GtkEntry             *entry,
 static gboolean
 ctk_search_entry_changed_timeout_cb (gpointer user_data)
 {
-  GtkSearchEntry *entry = user_data;
-  GtkSearchEntryPrivate *priv = GET_PRIV (entry);
+  CtkSearchEntry *entry = user_data;
+  CtkSearchEntryPrivate *priv = GET_PRIV (entry);
 
   g_signal_emit (entry, signals[SEARCH_CHANGED], 0);
   priv->delayed_changed_id = 0;
@@ -299,9 +299,9 @@ ctk_search_entry_changed_timeout_cb (gpointer user_data)
 }
 
 static void
-reset_timeout (GtkSearchEntry *entry)
+reset_timeout (CtkSearchEntry *entry)
 {
-  GtkSearchEntryPrivate *priv = GET_PRIV (entry);
+  CtkSearchEntryPrivate *priv = GET_PRIV (entry);
 
   if (priv->delayed_changed_id > 0)
     g_source_remove (priv->delayed_changed_id);
@@ -312,10 +312,10 @@ reset_timeout (GtkSearchEntry *entry)
 }
 
 static void
-ctk_search_entry_changed (GtkEditable *editable)
+ctk_search_entry_changed (CtkEditable *editable)
 {
-  GtkSearchEntry *entry = CTK_SEARCH_ENTRY (editable);
-  GtkSearchEntryPrivate *priv = GET_PRIV (entry);
+  CtkSearchEntry *entry = CTK_SEARCH_ENTRY (editable);
+  CtkSearchEntryPrivate *priv = GET_PRIV (entry);
   const char *str, *icon_name;
   gboolean cleared;
 
@@ -356,7 +356,7 @@ ctk_search_entry_changed (GtkEditable *editable)
 }
 
 static void
-ctk_search_entry_init (GtkSearchEntry *entry)
+ctk_search_entry_init (CtkSearchEntry *entry)
 {
   AtkObject *atk_obj;
 
@@ -376,14 +376,14 @@ ctk_search_entry_init (GtkSearchEntry *entry)
 /**
  * ctk_search_entry_new:
  *
- * Creates a #GtkSearchEntry, with a find icon when the search field is
+ * Creates a #CtkSearchEntry, with a find icon when the search field is
  * empty, and a clear icon when it isn't.
  *
- * Returns: a new #GtkSearchEntry
+ * Returns: a new #CtkSearchEntry
  *
  * Since: 3.6
  */
-GtkWidget *
+CtkWidget *
 ctk_search_entry_new (void)
 {
   return CTK_WIDGET (g_object_new (CTK_TYPE_SEARCH_ENTRY, NULL));
@@ -420,12 +420,12 @@ ctk_search_entry_is_keynav_event (GdkEvent *event)
 
 /**
  * ctk_search_entry_handle_event:
- * @entry: a #GtkSearchEntry
+ * @entry: a #CtkSearchEntry
  * @event: a key event
  *
  * This function should be called when the top-level window
  * which contains the search entry received a key event. If
- * the entry is part of a #GtkSearchBar, it is preferable
+ * the entry is part of a #CtkSearchBar, it is preferable
  * to call ctk_search_bar_handle_event() instead, which will
  * reveal the entry in addition to passing the event to this
  * function.
@@ -442,10 +442,10 @@ ctk_search_entry_is_keynav_event (GdkEvent *event)
  * Since: 3.16
  */
 gboolean
-ctk_search_entry_handle_event (GtkSearchEntry *entry,
+ctk_search_entry_handle_event (CtkSearchEntry *entry,
                                GdkEvent       *event)
 {
-  GtkSearchEntryPrivate *priv = GET_PRIV (entry);
+  CtkSearchEntryPrivate *priv = GET_PRIV (entry);
   gboolean handled;
 
   if (!ctk_widget_get_realized (CTK_WIDGET (entry)))

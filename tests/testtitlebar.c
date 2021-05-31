@@ -1,9 +1,9 @@
 #include <ctk/ctk.h>
 
 static void
-on_text_changed (GtkEntry       *entry,
+on_text_changed (CtkEntry       *entry,
                  GParamSpec     *pspec,
-                 GtkHeaderBar   *bar)
+                 CtkHeaderBar   *bar)
 {
   const gchar *layout;
 
@@ -13,19 +13,19 @@ on_text_changed (GtkEntry       *entry,
 }
 
 static void
-create_widgets (GtkHeaderBar *bar,
-                GtkPackType   pack_type,
+create_widgets (CtkHeaderBar *bar,
+                CtkPackType   pack_type,
                 gint          n)
 {
   GList *children, *l;
-  GtkWidget *child;
+  CtkWidget *child;
   gint i;
   gchar *label;
 
   children = ctk_container_get_children (CTK_CONTAINER (bar));
   for (l = children; l; l = l->next)
     {
-      GtkPackType type;
+      CtkPackType type;
 
       child = l->data;
       ctk_container_child_get (CTK_CONTAINER (bar), child, "pack-type", &type, NULL);
@@ -49,9 +49,9 @@ create_widgets (GtkHeaderBar *bar,
 }
 
 static void
-change_start (GtkSpinButton *button,
+change_start (CtkSpinButton *button,
               GParamSpec    *pspec,
-              GtkHeaderBar  *bar)
+              CtkHeaderBar  *bar)
 {
   create_widgets (bar,
                   CTK_PACK_START,
@@ -59,9 +59,9 @@ change_start (GtkSpinButton *button,
 }
 
 static void
-change_end (GtkSpinButton *button,
+change_end (CtkSpinButton *button,
             GParamSpec    *pspec,
-            GtkHeaderBar  *bar)
+            CtkHeaderBar  *bar)
 {
   create_widgets (bar,
                   CTK_PACK_END,
@@ -71,15 +71,15 @@ change_end (GtkSpinButton *button,
 static void
 activate (GApplication *gapp)
 {
-  GtkApplication *app = CTK_APPLICATION (gapp);
-  GtkWidget *window;
-  GtkWidget *header;
-  GtkWidget *grid;
-  GtkWidget *label;
-  GtkWidget *entry;
-  GtkWidget *check;
-  GtkWidget *spin;
-  GtkBuilder *builder;
+  CtkApplication *app = CTK_APPLICATION (gapp);
+  CtkWidget *window;
+  CtkWidget *header;
+  CtkWidget *grid;
+  CtkWidget *label;
+  CtkWidget *entry;
+  CtkWidget *check;
+  CtkWidget *spin;
+  CtkBuilder *builder;
   GMenuModel *menu;
   gchar *layout;
 
@@ -191,7 +191,7 @@ activate (GApplication *gapp)
 int
 main (int argc, char *argv[])
 {
-  GtkApplication *app;
+  CtkApplication *app;
 
   app = ctk_application_new ("org.ctk.Test.titlebar", 0);
   g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);

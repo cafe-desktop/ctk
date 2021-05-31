@@ -1,38 +1,38 @@
 /* Spinner
  *
- * GtkSpinner allows to show that background activity is on-going.
+ * CtkSpinner allows to show that background activity is on-going.
  *
  */
 
 #include <glib/gi18n.h>
 #include <ctk/ctk.h>
 
-static GtkWidget *spinner_sensitive = NULL;
-static GtkWidget *spinner_unsensitive = NULL;
+static CtkWidget *spinner_sensitive = NULL;
+static CtkWidget *spinner_unsensitive = NULL;
 
 static void
-on_play_clicked (GtkButton *button, gpointer user_data)
+on_play_clicked (CtkButton *button, gpointer user_data)
 {
   ctk_spinner_start (CTK_SPINNER (spinner_sensitive));
   ctk_spinner_start (CTK_SPINNER (spinner_unsensitive));
 }
 
 static void
-on_stop_clicked (GtkButton *button, gpointer user_data)
+on_stop_clicked (CtkButton *button, gpointer user_data)
 {
   ctk_spinner_stop (CTK_SPINNER (spinner_sensitive));
   ctk_spinner_stop (CTK_SPINNER (spinner_unsensitive));
 }
 
-GtkWidget *
-do_spinner (GtkWidget *do_widget)
+CtkWidget *
+do_spinner (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *content_area;
-  GtkWidget *vbox;
-  GtkWidget *hbox;
-  GtkWidget *button;
-  GtkWidget *spinner;
+  static CtkWidget *window = NULL;
+  CtkWidget *content_area;
+  CtkWidget *vbox;
+  CtkWidget *hbox;
+  CtkWidget *button;
+  CtkWidget *spinner;
 
   if (!window)
   {

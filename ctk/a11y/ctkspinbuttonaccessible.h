@@ -27,26 +27,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_SPIN_BUTTON_ACCESSIBLE                      (ctk_spin_button_accessible_get_type ())
-#define CTK_SPIN_BUTTON_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SPIN_BUTTON_ACCESSIBLE, GtkSpinButtonAccessible))
-#define CTK_SPIN_BUTTON_ACCESSIBLE_CLASS(klass)              (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SPIN_BUTTON_ACCESSIBLE, GtkSpinButtonAccessibleClass))
+#define CTK_SPIN_BUTTON_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SPIN_BUTTON_ACCESSIBLE, CtkSpinButtonAccessible))
+#define CTK_SPIN_BUTTON_ACCESSIBLE_CLASS(klass)              (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SPIN_BUTTON_ACCESSIBLE, CtkSpinButtonAccessibleClass))
 #define CTK_IS_SPIN_BUTTON_ACCESSIBLE(obj)                   (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SPIN_BUTTON_ACCESSIBLE))
 #define CTK_IS_SPIN_BUTTON_ACCESSIBLE_CLASS(klass)           (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SPIN_BUTTON_ACCESSIBLE))
-#define CTK_SPIN_BUTTON_ACCESSIBLE_GET_CLASS(obj)            (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SPIN_BUTTON_ACCESSIBLE, GtkSpinButtonAccessibleClass))
+#define CTK_SPIN_BUTTON_ACCESSIBLE_GET_CLASS(obj)            (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SPIN_BUTTON_ACCESSIBLE, CtkSpinButtonAccessibleClass))
 
-typedef struct _GtkSpinButtonAccessible        GtkSpinButtonAccessible;
-typedef struct _GtkSpinButtonAccessibleClass   GtkSpinButtonAccessibleClass;
-typedef struct _GtkSpinButtonAccessiblePrivate GtkSpinButtonAccessiblePrivate;
+typedef struct _CtkSpinButtonAccessible        CtkSpinButtonAccessible;
+typedef struct _CtkSpinButtonAccessibleClass   CtkSpinButtonAccessibleClass;
+typedef struct _CtkSpinButtonAccessiblePrivate CtkSpinButtonAccessiblePrivate;
 
-struct _GtkSpinButtonAccessible
+struct _CtkSpinButtonAccessible
 {
-  GtkEntryAccessible parent;
+  CtkEntryAccessible parent;
 
-  GtkSpinButtonAccessiblePrivate *priv;
+  CtkSpinButtonAccessiblePrivate *priv;
 };
 
-struct _GtkSpinButtonAccessibleClass
+struct _CtkSpinButtonAccessibleClass
 {
-  GtkEntryAccessibleClass parent_class;
+  CtkEntryAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

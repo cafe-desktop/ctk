@@ -19,10 +19,10 @@
 /**
  * SECTION:ctkrecentfilter
  * @Short_Description: A filter for selecting a subset of recently used files
- * @Title: GtkRecentFilter
+ * @Title: CtkRecentFilter
  *
- * A #GtkRecentFilter can be used to restrict the files being shown
- * in a #GtkRecentChooser.  Files can be filtered based on their name
+ * A #CtkRecentFilter can be used to restrict the files being shown
+ * in a #CtkRecentChooser.  Files can be filtered based on their name
  * (with ctk_recent_filter_add_pattern()), on their mime type (with
  * ctk_file_filter_add_mime_type()), on the application that has
  * registered them (with ctk_recent_filter_add_application()), or by
@@ -31,27 +31,27 @@
  * Filtering by mime type handles aliasing and subclassing of mime
  * types; e.g. a filter for text/plain also matches a file with mime
  * type application/rtf, since application/rtf is a subclass of text/plain.
- * Note that #GtkRecentFilter allows wildcards for the subtype of a
+ * Note that #CtkRecentFilter allows wildcards for the subtype of a
  * mime type, so you can e.g. filter for image/\*.
  *
- * Normally, filters are used by adding them to a #GtkRecentChooser,
+ * Normally, filters are used by adding them to a #CtkRecentChooser,
  * see ctk_recent_chooser_add_filter(), but it is also possible to
  * manually use a filter on a file with ctk_recent_filter_filter().
  *
  * Recently used files are supported since GTK+ 2.10.
  *
- * ## GtkRecentFilter as GtkBuildable
+ * ## CtkRecentFilter as CtkBuildable
  *
- * The GtkRecentFilter implementation of the GtkBuildable interface
+ * The CtkRecentFilter implementation of the CtkBuildable interface
  * supports adding rules using the <mime-types>, <patterns> and
  * <applications> elements and listing the rules within. Specifying
  * a <mime-type>, <pattern> or <application> has the same effect as
  * calling ctk_recent_filter_add_mime_type(),
  * ctk_recent_filter_add_pattern() or ctk_recent_filter_add_application().
  *
- * An example of a UI definition fragment specifying GtkRecentFilter rules:
+ * An example of a UI definition fragment specifying CtkRecentFilter rules:
  * |[
- * <object class="GtkRecentFilter">
+ * <object class="CtkRecentFilter">
  *   <mime-types>
  *     <mime-type>text/plain</mime-type>
  *     <mime-type>image/png</mime-type>
@@ -80,20 +80,20 @@
 #include "ctkintl.h"
 #include "ctkprivate.h"
 
-static void     ctk_recent_filter_buildable_init                 (GtkBuildableIface *iface);
-static gboolean ctk_recent_filter_buildable_custom_tag_start     (GtkBuildable  *buildable,
-								  GtkBuilder    *builder,
+static void     ctk_recent_filter_buildable_init                 (CtkBuildableIface *iface);
+static gboolean ctk_recent_filter_buildable_custom_tag_start     (CtkBuildable  *buildable,
+								  CtkBuilder    *builder,
 								  GObject       *child,
 								  const gchar   *tagname,
 								  GMarkupParser *parser,
 								  gpointer      *data);
-static void     ctk_recent_filter_buildable_custom_tag_end       (GtkBuildable  *buildable,
-								  GtkBuilder    *builder,
+static void     ctk_recent_filter_buildable_custom_tag_end       (CtkBuildable  *buildable,
+								  CtkBuilder    *builder,
 								  GObject       *child,
 								  const gchar   *tagname,
 								  gpointer      *data);
 
-typedef struct _GtkRecentFilterClass GtkRecentFilterClass;
+typedef struct _CtkRecentFilterClass CtkRecentFilterClass;
 typedef struct _FilterRule FilterRule;
 
 typedef enum {
@@ -107,17 +107,17 @@ typedef enum {
   FILTER_RULE_CUSTOM
 } FilterRuleType;
 
-struct _GtkRecentFilter
+struct _CtkRecentFilter
 {
   GInitiallyUnowned parent_instance;
 
   gchar *name;
   GSList *rules;
   
-  GtkRecentFilterFlags needed;
+  CtkRecentFilterFlags needed;
 };
 
-struct _GtkRecentFilterClass
+struct _CtkRecentFilterClass
 {
   GInitiallyUnownedClass parent_class;
 };
@@ -125,7 +125,7 @@ struct _GtkRecentFilterClass
 struct _FilterRule
 {
   FilterRuleType type;
-  GtkRecentFilterFlags needed;
+  CtkRecentFilterFlags needed;
   
   union {
     gchar *uri;
@@ -136,14 +136,14 @@ struct _FilterRule
     gchar *group;
     gint age;
     struct {
-      GtkRecentFilterFunc func;
+      CtkRecentFilterFunc func;
       gpointer data;
       GDestroyNotify data_destroy;
     } custom;
   } u;
 };
 
-G_DEFINE_TYPE_WITH_CODE (GtkRecentFilter, ctk_recent_filter, G_TYPE_INITIALLY_UNOWNED,
+G_DEFINE_TYPE_WITH_CODE (CtkRecentFilter, ctk_recent_filter, G_TYPE_INITIALLY_UNOWNED,
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
                                                 ctk_recent_filter_buildable_init))
 
@@ -188,7 +188,7 @@ filter_rule_free (FilterRule *rule)
 static void
 ctk_recent_filter_finalize (GObject *object)
 {
-  GtkRecentFilter *filter = CTK_RECENT_FILTER (object);
+  CtkRecentFilter *filter = CTK_RECENT_FILTER (object);
   
   g_free (filter->name);
   g_slist_free_full (filter->rules, (GDestroyNotify) filter_rule_free);
@@ -197,7 +197,7 @@ ctk_recent_filter_finalize (GObject *object)
 }
 
 static void
-ctk_recent_filter_class_init (GtkRecentFilterClass *klass)
+ctk_recent_filter_class_init (CtkRecentFilterClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
   
@@ -205,17 +205,17 @@ ctk_recent_filter_class_init (GtkRecentFilterClass *klass)
 }
 
 static void
-ctk_recent_filter_init (GtkRecentFilter *filter)
+ctk_recent_filter_init (CtkRecentFilter *filter)
 {
 
 }
 
 
 /*
- * GtkBuildable implementation
+ * CtkBuildable implementation
  */
 static void
-ctk_recent_filter_buildable_init (GtkBuildableIface *iface)
+ctk_recent_filter_buildable_init (CtkBuildableIface *iface)
 {
   iface->custom_tag_start = ctk_recent_filter_buildable_custom_tag_start;
   iface->custom_tag_end = ctk_recent_filter_buildable_custom_tag_end;
@@ -229,8 +229,8 @@ typedef enum {
 } ParserType;
 
 typedef struct {
-  GtkRecentFilter *filter;
-  GtkBuilder      *builder;
+  CtkRecentFilter *filter;
+  CtkBuilder      *builder;
   ParserType       type;
   GString         *string;
   gboolean         parsing;
@@ -285,7 +285,7 @@ parser_start_element (GMarkupParseContext *context,
   else
     {
       _ctk_builder_error_unhandled_tag (data->builder, context,
-                                        "GtkRecentFilter", element_name,
+                                        "CtkRecentFilter", element_name,
                                         error);
     }
 }
@@ -341,8 +341,8 @@ static const GMarkupParser sub_parser =
   };
 
 static gboolean
-ctk_recent_filter_buildable_custom_tag_start (GtkBuildable  *buildable,
-                                              GtkBuilder    *builder,
+ctk_recent_filter_buildable_custom_tag_start (CtkBuildable  *buildable,
+                                              CtkBuilder    *builder,
                                               GObject       *child,
                                               const gchar   *tagname,
                                               GMarkupParser *parser,
@@ -388,8 +388,8 @@ ctk_recent_filter_buildable_custom_tag_start (GtkBuildable  *buildable,
 }
 
 static void
-ctk_recent_filter_buildable_custom_tag_end (GtkBuildable *buildable,
-					    GtkBuilder   *builder,
+ctk_recent_filter_buildable_custom_tag_end (CtkBuildable *buildable,
+					    CtkBuilder   *builder,
 					    GObject      *child,
 					    const gchar  *tagname,
 					    gpointer     *parser_data)
@@ -412,22 +412,22 @@ ctk_recent_filter_buildable_custom_tag_end (GtkBuildable *buildable,
 /**
  * ctk_recent_filter_new:
  *
- * Creates a new #GtkRecentFilter with no rules added to it.
+ * Creates a new #CtkRecentFilter with no rules added to it.
  * Such filter does not accept any recently used resources, so is not
  * particularly useful until you add rules with
  * ctk_recent_filter_add_pattern(), ctk_recent_filter_add_mime_type(),
  * ctk_recent_filter_add_application(), ctk_recent_filter_add_age().
  * To create a filter that accepts any recently used resource, use:
  * |[<!-- language="C" -->
- * GtkRecentFilter *filter = ctk_recent_filter_new ();
+ * CtkRecentFilter *filter = ctk_recent_filter_new ();
  * ctk_recent_filter_add_pattern (filter, "*");
  * ]|
  *
- * Returns: a new #GtkRecentFilter
+ * Returns: a new #CtkRecentFilter
  *
  * Since: 2.10
  */
-GtkRecentFilter *
+CtkRecentFilter *
 ctk_recent_filter_new (void)
 {
   return g_object_new (CTK_TYPE_RECENT_FILTER, NULL);
@@ -435,7 +435,7 @@ ctk_recent_filter_new (void)
 
 /**
  * ctk_recent_filter_set_name:
- * @filter: a #GtkRecentFilter
+ * @filter: a #CtkRecentFilter
  * @name: then human readable name of @filter
  *
  * Sets the human-readable name of the filter; this is the string
@@ -445,7 +445,7 @@ ctk_recent_filter_new (void)
  * Since: 2.10
  */
 void
-ctk_recent_filter_set_name (GtkRecentFilter *filter,
+ctk_recent_filter_set_name (CtkRecentFilter *filter,
 			    const gchar     *name)
 {
   g_return_if_fail (CTK_IS_RECENT_FILTER (filter));
@@ -458,7 +458,7 @@ ctk_recent_filter_set_name (GtkRecentFilter *filter,
 
 /**
  * ctk_recent_filter_get_name:
- * @filter: a #GtkRecentFilter
+ * @filter: a #CtkRecentFilter
  *
  * Gets the human-readable name for the filter.
  * See ctk_recent_filter_set_name().
@@ -469,7 +469,7 @@ ctk_recent_filter_set_name (GtkRecentFilter *filter,
  * Since: 2.10
  */
 const gchar *
-ctk_recent_filter_get_name (GtkRecentFilter *filter)
+ctk_recent_filter_get_name (CtkRecentFilter *filter)
 {
   g_return_val_if_fail (CTK_IS_RECENT_FILTER (filter), NULL);
   
@@ -478,28 +478,28 @@ ctk_recent_filter_get_name (GtkRecentFilter *filter)
 
 /**
  * ctk_recent_filter_get_needed:
- * @filter: a #GtkRecentFilter
+ * @filter: a #CtkRecentFilter
  *
- * Gets the fields that need to be filled in for the #GtkRecentFilterInfo
+ * Gets the fields that need to be filled in for the #CtkRecentFilterInfo
  * passed to ctk_recent_filter_filter()
  * 
  * This function will not typically be used by applications; it
  * is intended principally for use in the implementation of
- * #GtkRecentChooser.
+ * #CtkRecentChooser.
  * 
  * Returns: bitfield of flags indicating needed fields when
  *   calling ctk_recent_filter_filter()
  *
  * Since: 2.10
  */
-GtkRecentFilterFlags
-ctk_recent_filter_get_needed (GtkRecentFilter *filter)
+CtkRecentFilterFlags
+ctk_recent_filter_get_needed (CtkRecentFilter *filter)
 {
   return filter->needed;
 }
 
 static void
-recent_filter_add_rule (GtkRecentFilter *filter,
+recent_filter_add_rule (CtkRecentFilter *filter,
 			FilterRule      *rule)
 {
   filter->needed |= rule->needed;
@@ -508,7 +508,7 @@ recent_filter_add_rule (GtkRecentFilter *filter,
 
 /**
  * ctk_recent_filter_add_mime_type:
- * @filter: a #GtkRecentFilter
+ * @filter: a #CtkRecentFilter
  * @mime_type: a MIME type
  *
  * Adds a rule that allows resources based on their registered MIME type.
@@ -516,7 +516,7 @@ recent_filter_add_rule (GtkRecentFilter *filter,
  * Since: 2.10
  */
 void
-ctk_recent_filter_add_mime_type (GtkRecentFilter *filter,
+ctk_recent_filter_add_mime_type (CtkRecentFilter *filter,
 				 const gchar     *mime_type)
 {
   FilterRule *rule;
@@ -534,7 +534,7 @@ ctk_recent_filter_add_mime_type (GtkRecentFilter *filter,
 
 /**
  * ctk_recent_filter_add_pattern:
- * @filter: a #GtkRecentFilter
+ * @filter: a #CtkRecentFilter
  * @pattern: a file pattern
  *
  * Adds a rule that allows resources based on a pattern matching their
@@ -543,7 +543,7 @@ ctk_recent_filter_add_mime_type (GtkRecentFilter *filter,
  * Since: 2.10
  */
 void
-ctk_recent_filter_add_pattern (GtkRecentFilter *filter,
+ctk_recent_filter_add_pattern (CtkRecentFilter *filter,
 			       const gchar     *pattern)
 {
   FilterRule *rule;
@@ -561,7 +561,7 @@ ctk_recent_filter_add_pattern (GtkRecentFilter *filter,
 
 /**
  * ctk_recent_filter_add_pixbuf_formats:
- * @filter: a #GtkRecentFilter
+ * @filter: a #CtkRecentFilter
  *
  * Adds a rule allowing image files in the formats supported
  * by GdkPixbuf.
@@ -569,7 +569,7 @@ ctk_recent_filter_add_pattern (GtkRecentFilter *filter,
  * Since: 2.10
  */
 void
-ctk_recent_filter_add_pixbuf_formats (GtkRecentFilter *filter)
+ctk_recent_filter_add_pixbuf_formats (CtkRecentFilter *filter)
 {
   FilterRule *rule;
 
@@ -585,7 +585,7 @@ ctk_recent_filter_add_pixbuf_formats (GtkRecentFilter *filter)
 
 /**
  * ctk_recent_filter_add_application:
- * @filter: a #GtkRecentFilter
+ * @filter: a #CtkRecentFilter
  * @application: an application name
  *
  * Adds a rule that allows resources based on the name of the application
@@ -594,7 +594,7 @@ ctk_recent_filter_add_pixbuf_formats (GtkRecentFilter *filter)
  * Since: 2.10
  */
 void
-ctk_recent_filter_add_application (GtkRecentFilter *filter,
+ctk_recent_filter_add_application (CtkRecentFilter *filter,
 				   const gchar     *application)
 {
   FilterRule *rule;
@@ -612,7 +612,7 @@ ctk_recent_filter_add_application (GtkRecentFilter *filter,
 
 /**
  * ctk_recent_filter_add_group:
- * @filter: a #GtkRecentFilter
+ * @filter: a #CtkRecentFilter
  * @group: a group name
  *
  * Adds a rule that allows resources based on the name of the group
@@ -621,7 +621,7 @@ ctk_recent_filter_add_application (GtkRecentFilter *filter,
  * Since: 2.10
  */
 void
-ctk_recent_filter_add_group (GtkRecentFilter *filter,
+ctk_recent_filter_add_group (CtkRecentFilter *filter,
 			     const gchar     *group)
 {
   FilterRule *rule;
@@ -639,7 +639,7 @@ ctk_recent_filter_add_group (GtkRecentFilter *filter,
 
 /**
  * ctk_recent_filter_add_age:
- * @filter: a #GtkRecentFilter
+ * @filter: a #CtkRecentFilter
  * @days: number of days
  *
  * Adds a rule that allows resources based on their age - that is, the number
@@ -648,7 +648,7 @@ ctk_recent_filter_add_group (GtkRecentFilter *filter,
  * Since: 2.10
  */
 void
-ctk_recent_filter_add_age (GtkRecentFilter *filter,
+ctk_recent_filter_add_age (CtkRecentFilter *filter,
 			   gint             days)
 {
   FilterRule *rule;
@@ -665,7 +665,7 @@ ctk_recent_filter_add_age (GtkRecentFilter *filter,
 
 /**
  * ctk_recent_filter_add_custom:
- * @filter: a #GtkRecentFilter
+ * @filter: a #CtkRecentFilter
  * @needed: bitfield of flags indicating the information that the custom
  *          filter function needs.
  * @func: callback function; if the function returns %TRUE, then
@@ -682,9 +682,9 @@ ctk_recent_filter_add_age (GtkRecentFilter *filter,
  * Since: 2.10
  **/
 void
-ctk_recent_filter_add_custom (GtkRecentFilter      *filter,
-			      GtkRecentFilterFlags  needed,
-			      GtkRecentFilterFunc   func,
+ctk_recent_filter_add_custom (CtkRecentFilter      *filter,
+			      CtkRecentFilterFlags  needed,
+			      CtkRecentFilterFunc   func,
 			      gpointer              data,
 			      GDestroyNotify        data_destroy)
 {
@@ -706,27 +706,27 @@ ctk_recent_filter_add_custom (GtkRecentFilter      *filter,
 
 /**
  * ctk_recent_filter_filter:
- * @filter: a #GtkRecentFilter
- * @filter_info: a #GtkRecentFilterInfo containing information
+ * @filter: a #CtkRecentFilter
+ * @filter_info: a #CtkRecentFilterInfo containing information
  *   about a recently used resource
  *
  * Tests whether a file should be displayed according to @filter.
- * The #GtkRecentFilterInfo @filter_info should include
+ * The #CtkRecentFilterInfo @filter_info should include
  * the fields returned from ctk_recent_filter_get_needed(), and
- * must set the #GtkRecentFilterInfo.contains field of @filter_info
+ * must set the #CtkRecentFilterInfo.contains field of @filter_info
  * to indicate which fields have been set.
  *
  * This function will not typically be used by applications; it
  * is intended principally for use in the implementation of
- * #GtkRecentChooser.
+ * #CtkRecentChooser.
  * 
  * Returns: %TRUE if the file should be displayed
  *
  * Since: 2.10
  */
 gboolean
-ctk_recent_filter_filter (GtkRecentFilter           *filter,
-			  const GtkRecentFilterInfo *filter_info)
+ctk_recent_filter_filter (CtkRecentFilter           *filter,
+			  const CtkRecentFilterInfo *filter_info)
 {
   GSList *l;
   

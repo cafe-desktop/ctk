@@ -1,10 +1,10 @@
 #include <ctk/ctk.h>
 #include <gdk/wayland/gdkwayland.h>
 
-static GtkWidget *window;
-static GtkWidget *label;
-static GtkWidget *entry;
-static GtkWidget *unexport_button;
+static CtkWidget *window;
+static CtkWidget *label;
+static CtkWidget *entry;
+static CtkWidget *unexport_button;
 static char *export_handle;
 int export_count;
 
@@ -40,7 +40,7 @@ exported_callback (GdkWindow  *window,
 }
 
 static void
-export_callback (GtkWidget *widget,
+export_callback (CtkWidget *widget,
                  gpointer   data)
 {
   if (!gdk_wayland_window_export_handle (ctk_widget_get_window (window),
@@ -52,7 +52,7 @@ export_callback (GtkWidget *widget,
 }
 
 static void
-unexport_callback (GtkWidget *widget,
+unexport_callback (CtkWidget *widget,
                    gpointer   data)
 {
   gdk_wayland_window_unexport_handle (ctk_widget_get_window (window));
@@ -69,9 +69,9 @@ main (int   argc,
       char *argv[])
 {
   GdkDisplay *display;
-  GtkWidget *vbox;
-  GtkWidget *hbox;
-  GtkWidget *export_button;
+  CtkWidget *vbox;
+  CtkWidget *hbox;
+  CtkWidget *export_button;
 
   ctk_init (&argc, &argv);
 

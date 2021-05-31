@@ -22,27 +22,27 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_IM_CONTEXT_MULTIPRESS            (ctk_im_context_multipress_get_type ())
-#define CTK_IM_CONTEXT_MULTIPRESS(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_IM_CONTEXT_MULTIPRESS, GtkImContextMultipress))
-#define CTK_IM_CONTEXT_MULTIPRESS_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_IM_CONTEXT_MULTIPRESS, GtkImContextMultipressClass))
+#define CTK_IM_CONTEXT_MULTIPRESS(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_IM_CONTEXT_MULTIPRESS, CtkImContextMultipress))
+#define CTK_IM_CONTEXT_MULTIPRESS_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_IM_CONTEXT_MULTIPRESS, CtkImContextMultipressClass))
 #define CTK_IS_IM_CONTEXT_MULTIPRESS(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_IM_CONTEXT_MULTIPRESS))
 #define CTK_IS_IM_CONTEXT_MULTIPRESS_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_IM_CONTEXT_MULTIPRESS))
-#define CTK_IM_CONTEXT_MULTIPRESS_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_IM_CONTEXT_MULTIPRESS, GtkImContextMultipressClass))
+#define CTK_IM_CONTEXT_MULTIPRESS_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_IM_CONTEXT_MULTIPRESS, CtkImContextMultipressClass))
 
-typedef struct _GtkImContextMultipress GtkImContextMultipress;
+typedef struct _CtkImContextMultipress CtkImContextMultipress;
 
 /* This input method allows multi-press character input, like that found on
  * mobile phones.
  *
- * This is based on GtkImContextSimple, which allows "compose" based on
+ * This is based on CtkImContextSimple, which allows "compose" based on
  * sequences of characters.  But instead the character sequences are defined
  * by lists of characters for a key, so that repeated pressing of the same key
  * can cycle through the possible output characters, with automatic choosing
  * of the character after a time delay.
  */
-struct _GtkImContextMultipress
+struct _CtkImContextMultipress
 {
   /*< private >*/
-  GtkIMContext parent;
+  CtkIMContext parent;
 
   /* Sequence information, loaded from the configuration file: */
   GHashTable* key_sequences;
@@ -64,16 +64,16 @@ struct _GtkImContextMultipress
 };
 
 
-typedef struct _GtkImContextMultipressClass  GtkImContextMultipressClass;
+typedef struct _CtkImContextMultipressClass  CtkImContextMultipressClass;
 
-struct _GtkImContextMultipressClass
+struct _CtkImContextMultipressClass
 {
-  GtkIMContextClass parent_class;
+  CtkIMContextClass parent_class;
 };
 
 void ctk_im_context_multipress_register_type (GTypeModule* type_module);
 GType ctk_im_context_multipress_get_type (void);
-GtkIMContext *ctk_im_context_multipress_new (void);
+CtkIMContext *ctk_im_context_multipress_new (void);
 
 G_END_DECLS
 

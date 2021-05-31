@@ -23,30 +23,30 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GtkPathBar        GtkPathBar;
-typedef struct _GtkPathBarClass   GtkPathBarClass;
-typedef struct _GtkPathBarPrivate GtkPathBarPrivate;
+typedef struct _CtkPathBar        CtkPathBar;
+typedef struct _CtkPathBarClass   CtkPathBarClass;
+typedef struct _CtkPathBarPrivate CtkPathBarPrivate;
 
 
 #define CTK_TYPE_PATH_BAR                 (ctk_path_bar_get_type ())
-#define CTK_PATH_BAR(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PATH_BAR, GtkPathBar))
-#define CTK_PATH_BAR_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PATH_BAR, GtkPathBarClass))
+#define CTK_PATH_BAR(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PATH_BAR, CtkPathBar))
+#define CTK_PATH_BAR_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PATH_BAR, CtkPathBarClass))
 #define CTK_IS_PATH_BAR(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PATH_BAR))
 #define CTK_IS_PATH_BAR_CLASS(klass)      (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PATH_BAR))
-#define CTK_PATH_BAR_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PATH_BAR, GtkPathBarClass))
+#define CTK_PATH_BAR_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PATH_BAR, CtkPathBarClass))
 
-struct _GtkPathBar
+struct _CtkPathBar
 {
-  GtkContainer parent;
+  CtkContainer parent;
 
-  GtkPathBarPrivate *priv;
+  CtkPathBarPrivate *priv;
 };
 
-struct _GtkPathBarClass
+struct _CtkPathBarClass
 {
-  GtkContainerClass parent_class;
+  CtkContainerClass parent_class;
 
-  void (* path_clicked) (GtkPathBar  *path_bar,
+  void (* path_clicked) (CtkPathBar  *path_bar,
 			 GFile       *file,
 			 GFile       *child_file,
 			 gboolean     child_is_hidden);
@@ -54,13 +54,13 @@ struct _GtkPathBarClass
 
 GDK_AVAILABLE_IN_ALL
 GType    ctk_path_bar_get_type (void) G_GNUC_CONST;
-void     _ctk_path_bar_set_file_system (GtkPathBar         *path_bar,
-					GtkFileSystem      *file_system);
-void     _ctk_path_bar_set_file        (GtkPathBar         *path_bar,
+void     _ctk_path_bar_set_file_system (CtkPathBar         *path_bar,
+					CtkFileSystem      *file_system);
+void     _ctk_path_bar_set_file        (CtkPathBar         *path_bar,
 					GFile              *file,
 					gboolean            keep_trail);
-void     _ctk_path_bar_up              (GtkPathBar *path_bar);
-void     _ctk_path_bar_down            (GtkPathBar *path_bar);
+void     _ctk_path_bar_up              (CtkPathBar *path_bar);
+void     _ctk_path_bar_down            (CtkPathBar *path_bar);
 
 G_END_DECLS
 

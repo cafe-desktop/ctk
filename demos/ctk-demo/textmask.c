@@ -8,7 +8,7 @@
 #include <ctk/ctk.h>
 
 static gboolean
-draw_text (GtkWidget *da,
+draw_text (CtkWidget *da,
            cairo_t   *cr,
            gpointer   data)
 {
@@ -53,11 +53,11 @@ draw_text (GtkWidget *da,
   return TRUE;
 }
 
-GtkWidget *
-do_textmask (GtkWidget *do_widget)
+CtkWidget *
+do_textmask (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
-  static GtkWidget *da;
+  static CtkWidget *window = NULL;
+  static CtkWidget *da;
 
   if (!window)
     {

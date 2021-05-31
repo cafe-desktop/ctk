@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="ctk30">
   <!-- interface-requires ctk+ 3.10 -->
-  <template class="GtkAssistant" parent="GtkWindow">
+  <template class="CtkAssistant" parent="CtkWindow">
     <child type="titlebar">
-      <object class="GtkHeaderBar" id="headerbar">
+      <object class="CtkHeaderBar" id="headerbar">
         <property name="visible">1</property>
       </object>
     </child>
     <child>
-      <object class="GtkBox" id="main_box">
+      <object class="CtkBox" id="main_box">
         <property name="visible">1</property>
         <child>
-          <object class="GtkBox" id="sidebar">
+          <object class="CtkBox" id="sidebar">
             <property name="visible">1</property>
             <property name="orientation">vertical</property>
             <style>
@@ -23,11 +23,11 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="content_box">
+          <object class="CtkBox" id="content_box">
             <property name="visible">1</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkNotebook" id="content">
+              <object class="CtkNotebook" id="content">
                 <property name="visible">1</property>
                 <property name="can-focus">1</property>
                 <property name="show-tabs">0</property>
@@ -40,13 +40,13 @@
               </packing>
             </child>
             <child>
-              <object class="GtkBox" id="action_area">
+              <object class="CtkBox" id="action_area">
                 <property name="visible">1</property>
                 <property name="halign">end</property>
                 <property name="spacing">6</property>
                 <property name="margin">6</property>
                 <child>
-                  <object class="GtkButton" id="apply">
+                  <object class="CtkButton" id="apply">
                     <property name="label" translatable="yes">_Apply</property>
                     <property name="can-focus">1</property>
                     <property name="can-default">1</property>
@@ -64,7 +64,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="forward">
+                  <object class="CtkButton" id="forward">
                     <property name="label" translatable="yes">_Next</property>
                     <property name="visible">1</property>
                     <property name="can-focus">1</property>
@@ -84,7 +84,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="back">
+                  <object class="CtkButton" id="back">
                     <property name="label" translatable="yes">_Back</property>
                     <property name="visible">1</property>
                     <property name="can-focus">1</property>
@@ -103,7 +103,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="last">
+                  <object class="CtkButton" id="last">
                     <property name="label" translatable="yes">_Finish</property>
                     <property name="can-focus">1</property>
                     <property name="receives-default">1</property>
@@ -121,7 +121,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="cancel">
+                  <object class="CtkButton" id="cancel">
                     <property name="label" translatable="yes">_Cancel</property>
                     <property name="visible">1</property>
                     <property name="can-focus">1</property>
@@ -140,7 +140,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="close">
+                  <object class="CtkButton" id="close">
                     <property name="label" translatable="yes">_Close</property>
                     <property name="can-focus">1</property>
                     <property name="can-default">1</property>
@@ -172,7 +172,7 @@
       </object>
     </child>
   </template>
-  <object class="GtkSizeGroup" id="button_size_group">
+  <object class="CtkSizeGroup" id="button_size_group">
     <widgets>
       <widget name="apply"/>
       <widget name="forward"/>
@@ -182,5 +182,5 @@
       <widget name="close"/>
     </widgets>
   </object>
-  <object class="GtkSizeGroup" id="title_size_group"/>
+  <object class="CtkSizeGroup" id="title_size_group"/>
 </interface>

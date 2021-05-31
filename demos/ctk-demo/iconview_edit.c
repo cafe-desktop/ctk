@@ -1,7 +1,7 @@
 /* Icon View/Editing and Drag-and-Drop
  *
- * The GtkIconView widget supports Editing and Drag-and-Drop.
- * This example also demonstrates using the generic GtkCellLayout
+ * The CtkIconView widget supports Editing and Drag-and-Drop.
+ * This example also demonstrates using the generic CtkCellLayout
  * interface to set up cell renderers in an icon view.
  */
 
@@ -16,9 +16,9 @@ enum
 
 
 static void
-fill_store (GtkListStore *store)
+fill_store (CtkListStore *store)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   const gchar *text[] = { "Red", "Green", "Blue", "Yellow" };
   gint i;
 
@@ -32,10 +32,10 @@ fill_store (GtkListStore *store)
     }
 }
 
-static GtkListStore *
+static CtkListStore *
 create_store (void)
 {
-  GtkListStore *store;
+  CtkListStore *store;
 
   store = ctk_list_store_new (NUM_COLS, G_TYPE_STRING);
 
@@ -43,10 +43,10 @@ create_store (void)
 }
 
 static void
-set_cell_color (GtkCellLayout   *cell_layout,
-                GtkCellRenderer *cell,
-                GtkTreeModel    *tree_model,
-                GtkTreeIter     *iter,
+set_cell_color (CtkCellLayout   *cell_layout,
+                CtkCellRenderer *cell,
+                CtkTreeModel    *tree_model,
+                CtkTreeIter     *iter,
                 gpointer         data)
 {
   gchar *text;
@@ -76,14 +76,14 @@ set_cell_color (GtkCellLayout   *cell_layout,
 }
 
 static void
-edited (GtkCellRendererText *cell,
+edited (CtkCellRendererText *cell,
         gchar               *path_string,
         gchar               *text,
         gpointer             data)
 {
-  GtkTreeModel *model;
-  GtkTreeIter iter;
-  GtkTreePath *path;
+  CtkTreeModel *model;
+  CtkTreeIter iter;
+  CtkTreePath *path;
 
   model = ctk_icon_view_get_model (CTK_ICON_VIEW (data));
   path = ctk_tree_path_new_from_string (path_string);
@@ -95,16 +95,16 @@ edited (GtkCellRendererText *cell,
   ctk_tree_path_free (path);
 }
 
-GtkWidget *
-do_iconview_edit (GtkWidget *do_widget)
+CtkWidget *
+do_iconview_edit (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkWidget *icon_view;
-      GtkListStore *store;
-      GtkCellRenderer *renderer;
+      CtkWidget *icon_view;
+      CtkListStore *store;
+      CtkCellRenderer *renderer;
 
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 

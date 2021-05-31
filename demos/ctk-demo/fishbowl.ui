@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.6 -->
-  <object class="GtkWindow" id="window">
+  <object class="CtkWindow" id="window">
     <property name="title" translatable="yes">Fishbowl</property>
     <child type="titlebar">
-      <object class="GtkHeaderBar" id="">
+      <object class="CtkHeaderBar" id="">
         <property name="visible">True</property>
         <property name="show-close-button">True</property>
         <child>
-          <object class="GtkBox">
+          <object class="CtkBox">
             <property name="visible">True</property>
             <style>
               <class name="linked"/>
             </style>
             <child>
-              <object class="GtkButton">
+              <object class="CtkButton">
                 <property name="visible">True</property>
                 <child>
-                  <object class="GtkImage">
+                  <object class="CtkImage">
                     <property name="icon-name">pan-start-symbolic</property>
                     <property name="visible">True</property>
                   </object>
@@ -26,10 +26,10 @@
               </object>
             </child>
             <child>
-              <object class="GtkButton">
+              <object class="CtkButton">
                 <property name="visible">True</property>
                 <child>
-                  <object class="GtkImage">
+                  <object class="CtkImage">
                     <property name="icon-name">pan-end-symbolic</property>
                     <property name="visible">True</property>
                   </object>
@@ -40,7 +40,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkLabel">
+          <object class="CtkLabel">
             <property name="visible">True</property>
             <property name="label">fps</property>
           </object>
@@ -49,7 +49,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel">
+          <object class="CtkLabel">
             <property name="visible">True</property>
             <property name="label" bind-source="bowl" bind-property="framerate"/>
           </object>
@@ -58,7 +58,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel">
+          <object class="CtkLabel">
             <property name="visible">True</property>
             <property name="label">Icons, </property>
           </object>
@@ -67,7 +67,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel">
+          <object class="CtkLabel">
             <property name="visible">True</property>
             <property name="label" bind-source="bowl" bind-property="count"/>
           </object>
@@ -76,11 +76,11 @@
           </packing>
         </child>
         <child>
-          <object class="GtkToggleButton" id="changes_allow">
+          <object class="CtkToggleButton" id="changes_allow">
             <property name="visible" bind-source="changes_allow" bind-property="active" bind-flags="invert-boolean"/>
             <property name="relief">none</property>
             <child>
-              <object class="GtkImage">
+              <object class="CtkImage">
                 <property name="icon-name">changes-allow</property>
                 <property name="visible">True</property>
               </object>
@@ -91,12 +91,12 @@
           </packing>
         </child>
         <child>
-          <object class="GtkToggleButton" id="changes_prevent">
+          <object class="CtkToggleButton" id="changes_prevent">
             <property name="active" bind-source="changes_allow" bind-property="active" bind-flags="bidirectional|invert-boolean">True</property>
             <property name="visible" bind-source="changes_prevent" bind-property="active" bind-flags="invert-boolean">False</property>
             <property name="relief">none</property>
             <child>
-              <object class="GtkImage">
+              <object class="CtkImage">
                 <property name="icon-name">changes-prevent</property>
                 <property name="visible">True</property>
               </object>
@@ -109,7 +109,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkFishbowl" id="bowl">
+      <object class="CtkFishbowl" id="bowl">
         <property name="visible">True</property>
         <property name="animating">True</property>
         <property name="benchmark" bind-source="changes_allow" bind-property="active" bind-flags="invert-boolean">True</property>

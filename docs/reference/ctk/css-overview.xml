@@ -75,7 +75,7 @@ We use <literallayout> for syntax productions, and each line is put in a <code>
     </para>
 
     <example>
-      <title>The CSS nodes of a GtkScale</title>
+      <title>The CSS nodes of a CtkScale</title>
       <programlisting><![CDATA[
 scale[.fine-tune]
 ├── marks.top
@@ -207,7 +207,7 @@ notebook > entry {
     </example>
 
     <example>
-      <title>Theme any widget within a GtkBox</title>
+      <title>Theme any widget within a CtkBox</title>
       <programlisting><![CDATA[
 box * {
   font: 20px Sans;
@@ -243,7 +243,7 @@ label#title-label {
     </example>
 
     <example>
-      <title>Theme the entry of a GtkSpinButton</title>
+      <title>Theme the entry of a CtkSpinButton</title>
       <programlisting><![CDATA[
 spinbutton entry {
   color: #900185;

@@ -1,8 +1,8 @@
 <!-- invalid child property attribute -->
 <interface>
-  <object class="GtkBox">
+  <object class="CtkBox">
     <child>
-      <object class="GtkLabel" id="widget1"/>
+      <object class="CtkLabel" id="widget1"/>
       <packing>
         <property food="good"/>
       </packing>

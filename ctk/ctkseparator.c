@@ -36,24 +36,24 @@
 /**
  * SECTION:ctkseparator
  * @Short_description: A separator widget
- * @Title: GtkSeparator
+ * @Title: CtkSeparator
  *
- * GtkSeparator is a horizontal or vertical separator widget, depending on the
- * value of the #GtkOrientable:orientation property, used to group the widgets
+ * CtkSeparator is a horizontal or vertical separator widget, depending on the
+ * value of the #CtkOrientable:orientation property, used to group the widgets
  * within a window. It displays a line with a shadow to make it appear sunken
  * into the interface.
  *
  * # CSS nodes
  *
- * GtkSeparator has a single CSS node with name separator. The node
+ * CtkSeparator has a single CSS node with name separator. The node
  * gets one of the .horizontal or .vertical style classes.
  */
 
 
-struct _GtkSeparatorPrivate
+struct _CtkSeparatorPrivate
 {
-  GtkOrientation orientation;
-  GtkCssGadget *gadget;
+  CtkOrientation orientation;
+  CtkCssGadget *gadget;
 };
 
 
@@ -63,8 +63,8 @@ enum {
 };
 
 
-G_DEFINE_TYPE_WITH_CODE (GtkSeparator, ctk_separator, CTK_TYPE_WIDGET,
-                         G_ADD_PRIVATE (GtkSeparator)
+G_DEFINE_TYPE_WITH_CODE (CtkSeparator, ctk_separator, CTK_TYPE_WIDGET,
+                         G_ADD_PRIVATE (CtkSeparator)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_ORIENTABLE, NULL))
 
 
@@ -74,8 +74,8 @@ ctk_separator_set_property (GObject      *object,
                             const GValue *value,
                             GParamSpec   *pspec)
 {
-  GtkSeparator *separator = CTK_SEPARATOR (object);
-  GtkSeparatorPrivate *private = separator->priv;
+  CtkSeparator *separator = CTK_SEPARATOR (object);
+  CtkSeparatorPrivate *private = separator->priv;
 
   switch (prop_id)
     {
@@ -100,8 +100,8 @@ ctk_separator_get_property (GObject    *object,
                             GValue     *value,
                             GParamSpec *pspec)
 {
-  GtkSeparator *separator = CTK_SEPARATOR (object);
-  GtkSeparatorPrivate *private = separator->priv;
+  CtkSeparator *separator = CTK_SEPARATOR (object);
+  CtkSeparatorPrivate *private = separator->priv;
 
   switch (prop_id)
     {
@@ -115,7 +115,7 @@ ctk_separator_get_property (GObject    *object,
 }
 
 static void
-ctk_separator_get_preferred_width (GtkWidget *widget,
+ctk_separator_get_preferred_width (CtkWidget *widget,
                                    gint      *minimum,
                                    gint      *natural)
 {
@@ -127,7 +127,7 @@ ctk_separator_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-ctk_separator_get_preferred_height (GtkWidget *widget,
+ctk_separator_get_preferred_height (CtkWidget *widget,
                                     gint      *minimum,
                                     gint      *natural)
 {
@@ -139,10 +139,10 @@ ctk_separator_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-ctk_separator_size_allocate (GtkWidget     *widget,
-                             GtkAllocation *allocation)
+ctk_separator_size_allocate (CtkWidget     *widget,
+                             CtkAllocation *allocation)
 {
-  GtkAllocation clip;
+  CtkAllocation clip;
 
   ctk_widget_set_allocation (widget, allocation);
 
@@ -155,7 +155,7 @@ ctk_separator_size_allocate (GtkWidget     *widget,
 }
 
 static gboolean
-ctk_separator_draw (GtkWidget *widget,
+ctk_separator_draw (CtkWidget *widget,
                     cairo_t   *cr)
 {
   ctk_css_gadget_draw (CTK_SEPARATOR (widget)->priv->gadget, cr);
@@ -164,9 +164,9 @@ ctk_separator_draw (GtkWidget *widget,
 }
 
 static void
-ctk_separator_init (GtkSeparator *separator)
+ctk_separator_init (CtkSeparator *separator)
 {
-  GtkCssNode *widget_node;
+  CtkCssNode *widget_node;
 
   separator->priv = ctk_separator_get_instance_private (separator);
   separator->priv->orientation = CTK_ORIENTATION_HORIZONTAL;
@@ -185,7 +185,7 @@ ctk_separator_init (GtkSeparator *separator)
 static void
 ctk_separator_finalize (GObject *object)
 {
-  GtkSeparatorPrivate *priv = CTK_SEPARATOR (object)->priv;
+  CtkSeparatorPrivate *priv = CTK_SEPARATOR (object)->priv;
 
   g_clear_object (&priv->gadget);
 
@@ -194,10 +194,10 @@ ctk_separator_finalize (GObject *object)
 }
 
 static void
-ctk_separator_class_init (GtkSeparatorClass *class)
+ctk_separator_class_init (CtkSeparatorClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
   object_class->set_property = ctk_separator_set_property;
   object_class->get_property = ctk_separator_get_property;
@@ -219,14 +219,14 @@ ctk_separator_class_init (GtkSeparatorClass *class)
  * ctk_separator_new:
  * @orientation: the separator’s orientation.
  *
- * Creates a new #GtkSeparator with the given orientation.
+ * Creates a new #CtkSeparator with the given orientation.
  *
- * Returns: a new #GtkSeparator.
+ * Returns: a new #CtkSeparator.
  *
  * Since: 3.0
  */
-GtkWidget *
-ctk_separator_new (GtkOrientation orientation)
+CtkWidget *
+ctk_separator_new (CtkOrientation orientation)
 {
   return g_object_new (CTK_TYPE_SEPARATOR,
                        "orientation", orientation,

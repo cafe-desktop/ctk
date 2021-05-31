@@ -51,20 +51,20 @@ static GHashTable *parse_funcs = NULL;
 static GHashTable *print_funcs = NULL;
 static GHashTable *compute_funcs = NULL;
 
-typedef gboolean         (* GtkStyleParseFunc)             (GtkCssParser            *parser,
+typedef gboolean         (* CtkStyleParseFunc)             (CtkCssParser            *parser,
                                                             GValue                  *value);
-typedef void             (* GtkStylePrintFunc)             (const GValue            *value,
+typedef void             (* CtkStylePrintFunc)             (const GValue            *value,
                                                             GString                 *string);
-typedef GtkCssValue *    (* GtkStyleComputeFunc)           (GtkStyleProviderPrivate *provider,
-                                                            GtkCssStyle             *values,
-                                                            GtkCssStyle             *parent_values,
-                                                            GtkCssValue             *specified);
+typedef CtkCssValue *    (* CtkStyleComputeFunc)           (CtkStyleProviderPrivate *provider,
+                                                            CtkCssStyle             *values,
+                                                            CtkCssStyle             *parent_values,
+                                                            CtkCssValue             *specified);
 
 static void
 register_conversion_function (GType               type,
-                              GtkStyleParseFunc   parse,
-                              GtkStylePrintFunc   print,
-                              GtkStyleComputeFunc compute)
+                              CtkStyleParseFunc   parse,
+                              CtkStylePrintFunc   print,
+                              CtkStyleComputeFunc compute)
 {
   if (parse)
     g_hash_table_insert (parse_funcs, GSIZE_TO_POINTER (type), parse);
@@ -94,7 +94,7 @@ string_append_string (GString    *str,
 /*** IMPLEMENTATIONS ***/
 
 static gboolean 
-enum_parse (GtkCssParser *parser,
+enum_parse (CtkCssParser *parser,
 	    GType         type,
 	    int          *res)
 {
@@ -135,10 +135,10 @@ enum_print (int         value,
 }
 
 static gboolean
-rgba_value_parse (GtkCssParser *parser,
+rgba_value_parse (CtkCssParser *parser,
                   GValue       *value)
 {
-  GtkSymbolicColor *symbolic;
+  CtkSymbolicColor *symbolic;
   GdkRGBA rgba;
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
@@ -180,11 +180,11 @@ rgba_value_print (const GValue *value,
     }
 }
 
-static GtkCssValue *
-rgba_value_compute (GtkStyleProviderPrivate *provider,
-                    GtkCssStyle             *values,
-                    GtkCssStyle             *parent_values,
-                    GtkCssValue             *specified)
+static CtkCssValue *
+rgba_value_compute (CtkStyleProviderPrivate *provider,
+                    CtkCssStyle             *values,
+                    CtkCssStyle             *parent_values,
+                    CtkCssValue             *specified)
 {
   GdkRGBA white = { 1, 1, 1, 1 };
   const GValue *value;
@@ -195,8 +195,8 @@ rgba_value_compute (GtkStyleProviderPrivate *provider,
 
   if (G_VALUE_HOLDS (value, CTK_TYPE_SYMBOLIC_COLOR))
     {
-      GtkSymbolicColor *symbolic = g_value_get_boxed (value);
-      GtkCssValue *val;
+      CtkSymbolicColor *symbolic = g_value_get_boxed (value);
+      CtkCssValue *val;
       GValue new_value = G_VALUE_INIT;
       GdkRGBA rgba;
 
@@ -223,10 +223,10 @@ rgba_value_compute (GtkStyleProviderPrivate *provider,
 }
 
 static gboolean
-color_value_parse (GtkCssParser *parser,
+color_value_parse (CtkCssParser *parser,
                    GValue       *value)
 {
-  GtkSymbolicColor *symbolic;
+  CtkSymbolicColor *symbolic;
   GdkRGBA rgba;
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
@@ -276,11 +276,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     }
 }
 
-static GtkCssValue *
-color_value_compute (GtkStyleProviderPrivate *provider,
-                     GtkCssStyle             *values,
-                     GtkCssStyle             *parent_values,
-                     GtkCssValue             *specified)
+static CtkCssValue *
+color_value_compute (CtkStyleProviderPrivate *provider,
+                     CtkCssStyle             *values,
+                     CtkCssStyle             *parent_values,
+                     CtkCssValue             *specified)
 {
   GdkColor color = { 0, 65535, 65535, 65535 };
   const GValue *value;
@@ -292,7 +292,7 @@ color_value_compute (GtkStyleProviderPrivate *provider,
   if (G_VALUE_HOLDS (value, CTK_TYPE_SYMBOLIC_COLOR))
     {
       GValue new_value = G_VALUE_INIT;
-      GtkCssValue *val;
+      CtkCssValue *val;
 
       val = _ctk_css_color_value_resolve (_ctk_symbolic_color_get_css_value (g_value_get_boxed (value)),
                                           provider,
@@ -318,10 +318,10 @@ color_value_compute (GtkStyleProviderPrivate *provider,
 }
 
 static gboolean
-symbolic_color_value_parse (GtkCssParser *parser,
+symbolic_color_value_parse (CtkCssParser *parser,
                             GValue       *value)
 {
-  GtkSymbolicColor *symbolic;
+  CtkSymbolicColor *symbolic;
 
   symbolic = _ctk_css_symbolic_value_new (parser);
   if (symbolic == NULL)
@@ -335,7 +335,7 @@ static void
 symbolic_color_value_print (const GValue *value,
                             GString      *string)
 {
-  GtkSymbolicColor *symbolic = g_value_get_boxed (value);
+  CtkSymbolicColor *symbolic = g_value_get_boxed (value);
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
@@ -352,7 +352,7 @@ symbolic_color_value_print (const GValue *value,
 }
 
 static gboolean 
-font_description_value_parse (GtkCssParser *parser,
+font_description_value_parse (CtkCssParser *parser,
                               GValue       *value)
 {
   PangoFontDescription *font_desc;
@@ -393,7 +393,7 @@ font_description_value_print (const GValue *value,
 }
 
 static gboolean 
-boolean_value_parse (GtkCssParser *parser,
+boolean_value_parse (CtkCssParser *parser,
                      GValue       *value)
 {
   if (_ctk_css_parser_try (parser, "true", TRUE) ||
@@ -426,14 +426,14 @@ boolean_value_print (const GValue *value,
 }
 
 static gboolean 
-int_value_parse (GtkCssParser *parser,
+int_value_parse (CtkCssParser *parser,
                  GValue       *value)
 {
   gint i;
 
   if (_ctk_css_parser_has_prefix (parser, "-ctk"))
     {
-      GtkCssValue *cssvalue = ctk_css_win32_size_value_parse (parser, CTK_CSS_PARSE_NUMBER | CTK_CSS_NUMBER_AS_PIXELS);
+      CtkCssValue *cssvalue = ctk_css_win32_size_value_parse (parser, CTK_CSS_PARSE_NUMBER | CTK_CSS_NUMBER_AS_PIXELS);
 
       if (cssvalue)
         {
@@ -463,7 +463,7 @@ int_value_print (const GValue *value,
 }
 
 static gboolean 
-uint_value_parse (GtkCssParser *parser,
+uint_value_parse (CtkCssParser *parser,
                   GValue       *value)
 {
   guint u;
@@ -486,7 +486,7 @@ uint_value_print (const GValue *value,
 }
 
 static gboolean 
-double_value_parse (GtkCssParser *parser,
+double_value_parse (CtkCssParser *parser,
                     GValue       *value)
 {
   gdouble d;
@@ -509,7 +509,7 @@ double_value_print (const GValue *value,
 }
 
 static gboolean 
-float_value_parse (GtkCssParser *parser,
+float_value_parse (CtkCssParser *parser,
                    GValue       *value)
 {
   gdouble d;
@@ -532,7 +532,7 @@ float_value_print (const GValue *value,
 }
 
 static gboolean 
-string_value_parse (GtkCssParser *parser,
+string_value_parse (CtkCssParser *parser,
                     GValue       *value)
 {
   char *str = _ctk_css_parser_read_string (parser);
@@ -552,10 +552,10 @@ string_value_print (const GValue *value,
 }
 
 static gboolean 
-theming_engine_value_parse (GtkCssParser *parser,
+theming_engine_value_parse (CtkCssParser *parser,
                             GValue       *value)
 {
-  GtkThemingEngine *engine;
+  CtkThemingEngine *engine;
   char *str;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
@@ -593,7 +593,7 @@ static void
 theming_engine_value_print (const GValue *value,
                             GString      *string)
 {
-  GtkThemingEngine *engine;
+  CtkThemingEngine *engine;
   char *name;
 
   engine = g_value_get_object (value);
@@ -609,10 +609,10 @@ theming_engine_value_print (const GValue *value,
 }
 
 static gboolean 
-border_value_parse (GtkCssParser *parser,
+border_value_parse (CtkCssParser *parser,
                     GValue       *value)
 {
-  GtkBorder border = { 0, };
+  CtkBorder border = { 0, };
   guint i;
   int numbers[4];
 
@@ -620,7 +620,7 @@ border_value_parse (GtkCssParser *parser,
     {
       if (_ctk_css_parser_has_prefix (parser, "-ctk"))
         {
-          GtkCssValue *cssvalue = ctk_css_win32_size_value_parse (parser, CTK_CSS_PARSE_NUMBER | CTK_CSS_NUMBER_AS_PIXELS);
+          CtkCssValue *cssvalue = ctk_css_win32_size_value_parse (parser, CTK_CSS_PARSE_NUMBER | CTK_CSS_NUMBER_AS_PIXELS);
 
           if (cssvalue)
             {
@@ -665,7 +665,7 @@ border_value_parse (GtkCssParser *parser,
 static void
 border_value_print (const GValue *value, GString *string)
 {
-  const GtkBorder *border = g_value_get_boxed (value);
+  const CtkBorder *border = g_value_get_boxed (value);
 
   if (border == NULL)
     g_string_append (string, "none");
@@ -680,10 +680,10 @@ border_value_print (const GValue *value, GString *string)
 }
 
 static gboolean 
-gradient_value_parse (GtkCssParser *parser,
+gradient_value_parse (CtkCssParser *parser,
                       GValue       *value)
 {
-  GtkGradient *gradient;
+  CtkGradient *gradient;
 
   gradient = _ctk_gradient_parse (parser);
   if (gradient == NULL)
@@ -697,7 +697,7 @@ static void
 gradient_value_print (const GValue *value,
                       GString      *string)
 {
-  GtkGradient *gradient = g_value_get_boxed (value);
+  CtkGradient *gradient = g_value_get_boxed (value);
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
@@ -714,7 +714,7 @@ gradient_value_print (const GValue *value,
 }
 
 static gboolean 
-pattern_value_parse (GtkCssParser *parser,
+pattern_value_parse (CtkCssParser *parser,
                      GValue       *value)
 {
   if (_ctk_css_parser_try (parser, "none", TRUE))
@@ -842,11 +842,11 @@ pattern_value_print (const GValue *value,
     }
 }
 
-static GtkCssValue *
-pattern_value_compute (GtkStyleProviderPrivate *provider,
-                       GtkCssStyle             *values,
-                       GtkCssStyle             *parent_values,
-                       GtkCssValue             *specified)
+static CtkCssValue *
+pattern_value_compute (CtkStyleProviderPrivate *provider,
+                       CtkCssStyle             *values,
+                       CtkCssStyle             *parent_values,
+                       CtkCssValue             *specified)
 {
   const GValue *value = _ctk_css_typed_value_get (specified);
 
@@ -870,7 +870,7 @@ pattern_value_compute (GtkStyleProviderPrivate *provider,
 }
 
 static gboolean 
-enum_value_parse (GtkCssParser *parser,
+enum_value_parse (CtkCssParser *parser,
                   GValue       *value)
 {
   int v;
@@ -892,7 +892,7 @@ enum_value_print (const GValue *value,
 }
 
 static gboolean 
-flags_value_parse (GtkCssParser *parser,
+flags_value_parse (CtkCssParser *parser,
                    GValue       *value)
 {
   GFlagsClass *flags_class;
@@ -1072,9 +1072,9 @@ ctk_css_style_funcs_init (void)
  **/
 gboolean
 _ctk_css_style_funcs_parse_value (GValue       *value,
-                                  GtkCssParser *parser)
+                                  CtkCssParser *parser)
 {
-  GtkStyleParseFunc func;
+  CtkStyleParseFunc func;
 
   g_return_val_if_fail (value != NULL, FALSE);
   g_return_val_if_fail (parser != NULL, FALSE);
@@ -1110,7 +1110,7 @@ void
 _ctk_css_style_funcs_print_value (const GValue *value,
                                   GString      *string)
 {
-  GtkStylePrintFunc func;
+  CtkStylePrintFunc func;
 
   ctk_css_style_funcs_init ();
 
@@ -1146,14 +1146,14 @@ _ctk_css_style_funcs_print_value (const GValue *value,
  *
  * Returns: the resulting value
  **/
-GtkCssValue *
-_ctk_css_style_funcs_compute_value (GtkStyleProviderPrivate *provider,
-                                    GtkCssStyle             *style,
-                                    GtkCssStyle             *parent_style,
+CtkCssValue *
+_ctk_css_style_funcs_compute_value (CtkStyleProviderPrivate *provider,
+                                    CtkCssStyle             *style,
+                                    CtkCssStyle             *parent_style,
                                     GType                    target_type,
-                                    GtkCssValue             *specified)
+                                    CtkCssValue             *specified)
 {
-  GtkStyleComputeFunc func;
+  CtkStyleComputeFunc func;
 
   g_return_val_if_fail (CTK_IS_STYLE_PROVIDER (provider), NULL);
   g_return_val_if_fail (CTK_IS_CSS_STYLE (style), NULL);

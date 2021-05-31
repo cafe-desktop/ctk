@@ -27,26 +27,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_SWITCH_ACCESSIBLE              (ctk_switch_accessible_get_type ())
-#define CTK_SWITCH_ACCESSIBLE(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SWITCH_ACCESSIBLE, GtkSwitchAccessible))
-#define CTK_SWITCH_ACCESSIBLE_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SWITCH_ACCESSIBLE, GtkSwitchAccessibleClass))
+#define CTK_SWITCH_ACCESSIBLE(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SWITCH_ACCESSIBLE, CtkSwitchAccessible))
+#define CTK_SWITCH_ACCESSIBLE_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SWITCH_ACCESSIBLE, CtkSwitchAccessibleClass))
 #define CTK_IS_SWITCH_ACCESSIBLE(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SWITCH_ACCESSIBLE))
 #define CTK_IS_SWITCH_ACCESSIBLE_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SWITCH_ACCESSIBLE))
-#define CTK_SWITCH_ACCESSIBLE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SWITCH_ACCESSIBLE, GtkSwitchAccessibleClass))
+#define CTK_SWITCH_ACCESSIBLE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SWITCH_ACCESSIBLE, CtkSwitchAccessibleClass))
 
-typedef struct _GtkSwitchAccessible        GtkSwitchAccessible;
-typedef struct _GtkSwitchAccessibleClass   GtkSwitchAccessibleClass;
-typedef struct _GtkSwitchAccessiblePrivate GtkSwitchAccessiblePrivate;
+typedef struct _CtkSwitchAccessible        CtkSwitchAccessible;
+typedef struct _CtkSwitchAccessibleClass   CtkSwitchAccessibleClass;
+typedef struct _CtkSwitchAccessiblePrivate CtkSwitchAccessiblePrivate;
 
-struct _GtkSwitchAccessible
+struct _CtkSwitchAccessible
 {
-  GtkWidgetAccessible parent;
+  CtkWidgetAccessible parent;
 
-  GtkSwitchAccessiblePrivate *priv;
+  CtkSwitchAccessiblePrivate *priv;
 };
 
-struct _GtkSwitchAccessibleClass
+struct _CtkSwitchAccessibleClass
 {
-  GtkWidgetAccessibleClass parent_class;
+  CtkWidgetAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

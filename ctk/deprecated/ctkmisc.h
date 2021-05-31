@@ -36,28 +36,28 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_MISC		       (ctk_misc_get_type ())
-#define CTK_MISC(obj)		       (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_MISC, GtkMisc))
-#define CTK_MISC_CLASS(klass)	       (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_MISC, GtkMiscClass))
+#define CTK_MISC(obj)		       (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_MISC, CtkMisc))
+#define CTK_MISC_CLASS(klass)	       (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_MISC, CtkMiscClass))
 #define CTK_IS_MISC(obj)	       (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_MISC))
 #define CTK_IS_MISC_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_MISC))
-#define CTK_MISC_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_MISC, GtkMiscClass))
+#define CTK_MISC_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_MISC, CtkMiscClass))
 
 
-typedef struct _GtkMisc              GtkMisc;
-typedef struct _GtkMiscPrivate       GtkMiscPrivate;
-typedef struct _GtkMiscClass         GtkMiscClass;
+typedef struct _CtkMisc              CtkMisc;
+typedef struct _CtkMiscPrivate       CtkMiscPrivate;
+typedef struct _CtkMiscClass         CtkMiscClass;
 
-struct _GtkMisc
+struct _CtkMisc
 {
-  GtkWidget widget;
+  CtkWidget widget;
 
   /*< private >*/
-  GtkMiscPrivate *priv;
+  CtkMiscPrivate *priv;
 };
 
-struct _GtkMiscClass
+struct _CtkMiscClass
 {
-  GtkWidgetClass parent_class;
+  CtkWidgetClass parent_class;
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -69,24 +69,24 @@ struct _GtkMiscClass
 GDK_DEPRECATED_IN_3_14
 GType   ctk_misc_get_type      (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_14
-void	ctk_misc_set_alignment (GtkMisc *misc,
+void	ctk_misc_set_alignment (CtkMisc *misc,
 				gfloat	 xalign,
 				gfloat	 yalign);
 GDK_DEPRECATED_IN_3_14
-void    ctk_misc_get_alignment (GtkMisc *misc,
+void    ctk_misc_get_alignment (CtkMisc *misc,
 				gfloat  *xalign,
 				gfloat  *yalign);
 GDK_DEPRECATED_IN_3_14
-void	ctk_misc_set_padding   (GtkMisc *misc,
+void	ctk_misc_set_padding   (CtkMisc *misc,
 				gint	 xpad,
 				gint	 ypad);
 GDK_DEPRECATED_IN_3_14
-void    ctk_misc_get_padding   (GtkMisc *misc,
+void    ctk_misc_get_padding   (CtkMisc *misc,
 				gint    *xpad,
 				gint    *ypad);
 
-void   _ctk_misc_get_padding_and_border	(GtkMisc   *misc,
-					 GtkBorder *border);
+void   _ctk_misc_get_padding_and_border	(CtkMisc   *misc,
+					 CtkBorder *border);
 
 G_END_DECLS
 

@@ -24,37 +24,37 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_SIDEBAR_ROW             (ctk_sidebar_row_get_type())
-#define CTK_SIDEBAR_ROW(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SIDEBAR_ROW, GtkSidebarRow))
-#define CTK_SIDEBAR_ROW_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SIDEBAR_ROW, GtkSidebarRowClass))
+#define CTK_SIDEBAR_ROW(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SIDEBAR_ROW, CtkSidebarRow))
+#define CTK_SIDEBAR_ROW_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SIDEBAR_ROW, CtkSidebarRowClass))
 #define CTK_IS_SIDEBAR_ROW(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SIDEBAR_ROW))
 #define CTK_IS_SIDEBAR_ROW_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SIDEBAR_ROW))
-#define CTK_SIDEBAR_ROW_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SIDEBAR_ROW, GtkSidebarRowClass))
+#define CTK_SIDEBAR_ROW_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SIDEBAR_ROW, CtkSidebarRowClass))
 
-typedef struct _GtkSidebarRow GtkSidebarRow;
-typedef struct _GtkSidebarRowClass GtkSidebarRowClass;
+typedef struct _CtkSidebarRow CtkSidebarRow;
+typedef struct _CtkSidebarRowClass CtkSidebarRowClass;
 
-struct _GtkSidebarRowClass
+struct _CtkSidebarRowClass
 {
-  GtkListBoxRowClass parent;
+  CtkListBoxRowClass parent;
 };
 
 GType      ctk_sidebar_row_get_type   (void) G_GNUC_CONST;
 
-GtkSidebarRow *ctk_sidebar_row_new    (void);
-GtkSidebarRow *ctk_sidebar_row_clone  (GtkSidebarRow *self);
+CtkSidebarRow *ctk_sidebar_row_new    (void);
+CtkSidebarRow *ctk_sidebar_row_clone  (CtkSidebarRow *self);
 
 /* Use these methods instead of ctk_widget_hide/show to use an animation */
-void           ctk_sidebar_row_hide   (GtkSidebarRow *self,
+void           ctk_sidebar_row_hide   (CtkSidebarRow *self,
                                        gboolean       inmediate);
-void           ctk_sidebar_row_reveal (GtkSidebarRow *self);
+void           ctk_sidebar_row_reveal (CtkSidebarRow *self);
 
-GtkWidget     *ctk_sidebar_row_get_eject_button (GtkSidebarRow *self);
-GtkWidget     *ctk_sidebar_row_get_event_box    (GtkSidebarRow *self);
-void           ctk_sidebar_row_set_start_icon   (GtkSidebarRow *self,
+CtkWidget     *ctk_sidebar_row_get_eject_button (CtkSidebarRow *self);
+CtkWidget     *ctk_sidebar_row_get_event_box    (CtkSidebarRow *self);
+void           ctk_sidebar_row_set_start_icon   (CtkSidebarRow *self,
                                                  GIcon         *icon);
-void           ctk_sidebar_row_set_end_icon     (GtkSidebarRow *self,
+void           ctk_sidebar_row_set_end_icon     (CtkSidebarRow *self,
                                                  GIcon         *icon);
-void           ctk_sidebar_row_set_busy         (GtkSidebarRow *row,
+void           ctk_sidebar_row_set_busy         (CtkSidebarRow *row,
                                                  gboolean       is_busy);
 
 G_END_DECLS

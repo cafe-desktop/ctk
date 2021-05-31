@@ -28,21 +28,21 @@
 #include "ctkcssrgbavalueprivate.h"
 #include "ctkcssprovider.h"
 
-G_DEFINE_TYPE (GtkCssImageLinear, _ctk_css_image_linear, CTK_TYPE_CSS_IMAGE)
+G_DEFINE_TYPE (CtkCssImageLinear, _ctk_css_image_linear, CTK_TYPE_CSS_IMAGE)
 
 static void
-ctk_css_image_linear_get_start_end (GtkCssImageLinear *linear,
+ctk_css_image_linear_get_start_end (CtkCssImageLinear *linear,
                                     double             length,
                                     double            *start,
                                     double            *end)
 {
-  GtkCssImageLinearColorStop *stop;
+  CtkCssImageLinearColorStop *stop;
   double pos;
   guint i;
       
   if (linear->repeating)
     {
-      stop = &g_array_index (linear->stops, GtkCssImageLinearColorStop, 0);
+      stop = &g_array_index (linear->stops, CtkCssImageLinearColorStop, 0);
       if (stop->offset == NULL)
         *start = 0;
       else
@@ -52,7 +52,7 @@ ctk_css_image_linear_get_start_end (GtkCssImageLinear *linear,
 
       for (i = 0; i < linear->stops->len; i++)
         {
-          stop = &g_array_index (linear->stops, GtkCssImageLinearColorStop, i);
+          stop = &g_array_index (linear->stops, CtkCssImageLinearColorStop, i);
           
           if (stop->offset == NULL)
             continue;
@@ -128,12 +128,12 @@ ctk_css_image_linear_compute_start_point (double angle_in_degrees,
 }
                                          
 static void
-ctk_css_image_linear_draw (GtkCssImage        *image,
+ctk_css_image_linear_draw (CtkCssImage        *image,
                            cairo_t            *cr,
                            double              width,
                            double              height)
 {
-  GtkCssImageLinear *linear = CTK_CSS_IMAGE_LINEAR (image);
+  CtkCssImageLinear *linear = CTK_CSS_IMAGE_LINEAR (image);
   cairo_pattern_t *pattern;
   double angle; /* actual angle of the gradiant line in degrees */
   double x, y; /* coordinates of start point */
@@ -188,10 +188,10 @@ ctk_css_image_linear_draw (GtkCssImage        *image,
   last = -1;
   for (i = 0; i < linear->stops->len; i++)
     {
-      GtkCssImageLinearColorStop *stop;
+      CtkCssImageLinearColorStop *stop;
       double pos, step;
       
-      stop = &g_array_index (linear->stops, GtkCssImageLinearColorStop, i);
+      stop = &g_array_index (linear->stops, CtkCssImageLinearColorStop, i);
 
       if (stop->offset == NULL)
         {
@@ -211,7 +211,7 @@ ctk_css_image_linear_draw (GtkCssImage        *image,
         {
           const GdkRGBA *rgba;
 
-          stop = &g_array_index (linear->stops, GtkCssImageLinearColorStop, last);
+          stop = &g_array_index (linear->stops, CtkCssImageLinearColorStop, last);
 
           rgba = _ctk_css_rgba_value_get_rgba (stop->color);
           offset += step;
@@ -238,10 +238,10 @@ ctk_css_image_linear_draw (GtkCssImage        *image,
 
 
 static gboolean
-ctk_css_image_linear_parse (GtkCssImage  *image,
-                            GtkCssParser *parser)
+ctk_css_image_linear_parse (CtkCssImage  *image,
+                            CtkCssParser *parser)
 {
-  GtkCssImageLinear *linear = CTK_CSS_IMAGE_LINEAR (image);
+  CtkCssImageLinear *linear = CTK_CSS_IMAGE_LINEAR (image);
   guint i;
 
   if (_ctk_css_parser_try (parser, "repeating-linear-gradient(", TRUE))
@@ -326,7 +326,7 @@ ctk_css_image_linear_parse (GtkCssImage  *image,
     linear->side = 1 << CTK_CSS_BOTTOM;
 
   do {
-    GtkCssImageLinearColorStop stop;
+    CtkCssImageLinearColorStop stop;
 
     stop.color = _ctk_css_color_value_parse (parser);
     if (stop.color == NULL)
@@ -370,10 +370,10 @@ ctk_css_image_linear_parse (GtkCssImage  *image,
 }
 
 static void
-ctk_css_image_linear_print (GtkCssImage *image,
+ctk_css_image_linear_print (CtkCssImage *image,
                             GString     *string)
 {
-  GtkCssImageLinear *linear = CTK_CSS_IMAGE_LINEAR (image);
+  CtkCssImageLinear *linear = CTK_CSS_IMAGE_LINEAR (image);
   guint i;
 
   if (linear->repeating)
@@ -408,12 +408,12 @@ ctk_css_image_linear_print (GtkCssImage *image,
 
   for (i = 0; i < linear->stops->len; i++)
     {
-      GtkCssImageLinearColorStop *stop;
+      CtkCssImageLinearColorStop *stop;
       
       if (i > 0)
         g_string_append (string, ", ");
 
-      stop = &g_array_index (linear->stops, GtkCssImageLinearColorStop, i);
+      stop = &g_array_index (linear->stops, CtkCssImageLinearColorStop, i);
 
       _ctk_css_value_print (stop->color, string);
 
@@ -427,15 +427,15 @@ ctk_css_image_linear_print (GtkCssImage *image,
   g_string_append (string, ")");
 }
 
-static GtkCssImage *
-ctk_css_image_linear_compute (GtkCssImage             *image,
+static CtkCssImage *
+ctk_css_image_linear_compute (CtkCssImage             *image,
                               guint                    property_id,
-                              GtkStyleProviderPrivate *provider,
-                              GtkCssStyle             *style,
-                              GtkCssStyle             *parent_style)
+                              CtkStyleProviderPrivate *provider,
+                              CtkCssStyle             *style,
+                              CtkCssStyle             *parent_style)
 {
-  GtkCssImageLinear *linear = CTK_CSS_IMAGE_LINEAR (image);
-  GtkCssImageLinear *copy;
+  CtkCssImageLinear *linear = CTK_CSS_IMAGE_LINEAR (image);
+  CtkCssImageLinear *copy;
   guint i;
 
   copy = g_object_new (CTK_TYPE_CSS_IMAGE_LINEAR, NULL);
@@ -448,10 +448,10 @@ ctk_css_image_linear_compute (GtkCssImage             *image,
   g_array_set_size (copy->stops, linear->stops->len);
   for (i = 0; i < linear->stops->len; i++)
     {
-      GtkCssImageLinearColorStop *stop, *scopy;
+      CtkCssImageLinearColorStop *stop, *scopy;
 
-      stop = &g_array_index (linear->stops, GtkCssImageLinearColorStop, i);
-      scopy = &g_array_index (copy->stops, GtkCssImageLinearColorStop, i);
+      stop = &g_array_index (linear->stops, CtkCssImageLinearColorStop, i);
+      scopy = &g_array_index (copy->stops, CtkCssImageLinearColorStop, i);
               
       scopy->color = _ctk_css_value_compute (stop->color, property_id, provider, style, parent_style);
       
@@ -468,13 +468,13 @@ ctk_css_image_linear_compute (GtkCssImage             *image,
   return CTK_CSS_IMAGE (copy);
 }
 
-static GtkCssImage *
-ctk_css_image_linear_transition (GtkCssImage *start_image,
-                                 GtkCssImage *end_image,
+static CtkCssImage *
+ctk_css_image_linear_transition (CtkCssImage *start_image,
+                                 CtkCssImage *end_image,
                                  guint        property_id,
                                  double       progress)
 {
-  GtkCssImageLinear *start, *end, *result;
+  CtkCssImageLinear *start, *end, *result;
   guint i;
 
   start = CTK_CSS_IMAGE_LINEAR (start_image);
@@ -505,10 +505,10 @@ ctk_css_image_linear_transition (GtkCssImage *start_image,
   
   for (i = 0; i < start->stops->len; i++)
     {
-      GtkCssImageLinearColorStop stop, *start_stop, *end_stop;
+      CtkCssImageLinearColorStop stop, *start_stop, *end_stop;
 
-      start_stop = &g_array_index (start->stops, GtkCssImageLinearColorStop, i);
-      end_stop = &g_array_index (end->stops, GtkCssImageLinearColorStop, i);
+      start_stop = &g_array_index (start->stops, CtkCssImageLinearColorStop, i);
+      end_stop = &g_array_index (end->stops, CtkCssImageLinearColorStop, i);
 
       if ((start_stop->offset != NULL) != (end_stop->offset != NULL))
         goto fail;
@@ -549,11 +549,11 @@ fail:
 }
 
 static gboolean
-ctk_css_image_linear_equal (GtkCssImage *image1,
-                            GtkCssImage *image2)
+ctk_css_image_linear_equal (CtkCssImage *image1,
+                            CtkCssImage *image2)
 {
-  GtkCssImageLinear *linear1 = CTK_CSS_IMAGE_LINEAR (image1);
-  GtkCssImageLinear *linear2 = CTK_CSS_IMAGE_LINEAR (image2);
+  CtkCssImageLinear *linear1 = CTK_CSS_IMAGE_LINEAR (image1);
+  CtkCssImageLinear *linear2 = CTK_CSS_IMAGE_LINEAR (image2);
   guint i;
 
   if (linear1->repeating != linear2->repeating ||
@@ -564,10 +564,10 @@ ctk_css_image_linear_equal (GtkCssImage *image1,
 
   for (i = 0; i < linear1->stops->len; i++)
     {
-      GtkCssImageLinearColorStop *stop1, *stop2;
+      CtkCssImageLinearColorStop *stop1, *stop2;
 
-      stop1 = &g_array_index (linear1->stops, GtkCssImageLinearColorStop, i);
-      stop2 = &g_array_index (linear2->stops, GtkCssImageLinearColorStop, i);
+      stop1 = &g_array_index (linear1->stops, CtkCssImageLinearColorStop, i);
+      stop2 = &g_array_index (linear2->stops, CtkCssImageLinearColorStop, i);
 
       if (!_ctk_css_value_equal0 (stop1->offset, stop2->offset) ||
           !_ctk_css_value_equal (stop1->color, stop2->color))
@@ -580,7 +580,7 @@ ctk_css_image_linear_equal (GtkCssImage *image1,
 static void
 ctk_css_image_linear_dispose (GObject *object)
 {
-  GtkCssImageLinear *linear = CTK_CSS_IMAGE_LINEAR (object);
+  CtkCssImageLinear *linear = CTK_CSS_IMAGE_LINEAR (object);
 
   if (linear->stops)
     {
@@ -599,9 +599,9 @@ ctk_css_image_linear_dispose (GObject *object)
 }
 
 static void
-_ctk_css_image_linear_class_init (GtkCssImageLinearClass *klass)
+_ctk_css_image_linear_class_init (CtkCssImageLinearClass *klass)
 {
-  GtkCssImageClass *image_class = CTK_CSS_IMAGE_CLASS (klass);
+  CtkCssImageClass *image_class = CTK_CSS_IMAGE_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   image_class->draw = ctk_css_image_linear_draw;
@@ -617,7 +617,7 @@ _ctk_css_image_linear_class_init (GtkCssImageLinearClass *klass)
 static void
 ctk_css_image_clear_color_stop (gpointer color_stop)
 {
-  GtkCssImageLinearColorStop *stop = color_stop;
+  CtkCssImageLinearColorStop *stop = color_stop;
 
   _ctk_css_value_unref (stop->color);
   if (stop->offset)
@@ -625,9 +625,9 @@ ctk_css_image_clear_color_stop (gpointer color_stop)
 }
 
 static void
-_ctk_css_image_linear_init (GtkCssImageLinear *linear)
+_ctk_css_image_linear_init (CtkCssImageLinear *linear)
 {
-  linear->stops = g_array_new (FALSE, FALSE, sizeof (GtkCssImageLinearColorStop));
+  linear->stops = g_array_new (FALSE, FALSE, sizeof (CtkCssImageLinearColorStop));
   g_array_set_clear_func (linear->stops, ctk_css_image_clear_color_stop);
 }
 

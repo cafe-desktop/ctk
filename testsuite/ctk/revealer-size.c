@@ -11,9 +11,9 @@ keep_size (int      direction,
   gboolean animations_before;
   int min_height, min_width;
   int min_child_width, min_child_height;
-  GtkRevealer *revealer = CTK_REVEALER (ctk_revealer_new ());
-  GtkWidget   *child    = ctk_button_new_with_label ("Some Text!");
-  GtkSettings *settings = ctk_settings_get_default ();
+  CtkRevealer *revealer = CTK_REVEALER (ctk_revealer_new ());
+  CtkWidget   *child    = ctk_button_new_with_label ("Some Text!");
+  CtkSettings *settings = ctk_settings_get_default ();
 
   g_object_get (settings, "ctk-enable-animations", &animations_before, NULL);
   g_object_set (settings, "ctk-enable-animations", animations, NULL);

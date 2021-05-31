@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * ctkprintbackendtest.h: Test implementation of GtkPrintBackend 
+ * ctkprintbackendtest.h: Test implementation of CtkPrintBackend 
  * for testing the dialog
  * Copyright (C) 2007, Red Hat, Inc.
  *
@@ -26,12 +26,12 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_PRINT_BACKEND_TEST    (ctk_print_backend_test_get_type ())
-#define CTK_PRINT_BACKEND_TEST(obj)    (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINT_BACKEND_TEST, GtkPrintBackendTest))
+#define CTK_PRINT_BACKEND_TEST(obj)    (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINT_BACKEND_TEST, CtkPrintBackendTest))
 #define CTK_IS_PRINT_BACKEND_TEST(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PRINT_BACKEND_TEST))
 
-typedef struct _GtkPrintBackendTest    GtkPrintBackendTest;
+typedef struct _CtkPrintBackendTest    CtkPrintBackendTest;
 
-GtkPrintBackend *ctk_print_backend_test_new      (void);
+CtkPrintBackend *ctk_print_backend_test_new      (void);
 GType            ctk_print_backend_test_get_type (void) G_GNUC_CONST;
 
 G_END_DECLS

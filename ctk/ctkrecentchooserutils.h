@@ -1,5 +1,5 @@
 /* ctkrecentchooserutils.h - Private utility functions for implementing a
- *                           GtkRecentChooser interface
+ *                           CtkRecentChooser interface
  *
  * Copyright (C) 2006 Emmanuele Bassi
  *
@@ -45,13 +45,13 @@ typedef enum {
   CTK_RECENT_CHOOSER_PROP_SORT_TYPE,
   CTK_RECENT_CHOOSER_PROP_FILTER,
   CTK_RECENT_CHOOSER_PROP_LAST
-} GtkRecentChooserProp;
+} CtkRecentChooserProp;
 
 void   _ctk_recent_chooser_install_properties  (GObjectClass          *klass);
 
-void   _ctk_recent_chooser_delegate_iface_init (GtkRecentChooserIface *iface);
-void   _ctk_recent_chooser_set_delegate        (GtkRecentChooser      *receiver,
-						GtkRecentChooser      *delegate);
+void   _ctk_recent_chooser_delegate_iface_init (CtkRecentChooserIface *iface);
+void   _ctk_recent_chooser_set_delegate        (CtkRecentChooser      *receiver,
+						CtkRecentChooser      *delegate);
 
 GQuark _ctk_recent_chooser_delegate_get_quark  (void) G_GNUC_CONST;
 

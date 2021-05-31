@@ -36,32 +36,32 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_ALIGNMENT                  (ctk_alignment_get_type ())
-#define CTK_ALIGNMENT(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ALIGNMENT, GtkAlignment))
-#define CTK_ALIGNMENT_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ALIGNMENT, GtkAlignmentClass))
+#define CTK_ALIGNMENT(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ALIGNMENT, CtkAlignment))
+#define CTK_ALIGNMENT_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ALIGNMENT, CtkAlignmentClass))
 #define CTK_IS_ALIGNMENT(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_ALIGNMENT))
 #define CTK_IS_ALIGNMENT_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_ALIGNMENT))
-#define CTK_ALIGNMENT_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ALIGNMENT, GtkAlignmentClass))
+#define CTK_ALIGNMENT_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ALIGNMENT, CtkAlignmentClass))
 
 
-typedef struct _GtkAlignment              GtkAlignment;
-typedef struct _GtkAlignmentPrivate       GtkAlignmentPrivate;
-typedef struct _GtkAlignmentClass         GtkAlignmentClass;
+typedef struct _CtkAlignment              CtkAlignment;
+typedef struct _CtkAlignmentPrivate       CtkAlignmentPrivate;
+typedef struct _CtkAlignmentClass         CtkAlignmentClass;
 
-struct _GtkAlignment
+struct _CtkAlignment
 {
-  GtkBin bin;
+  CtkBin bin;
 
   /*< private >*/
-  GtkAlignmentPrivate *priv;
+  CtkAlignmentPrivate *priv;
 };
 
 /**
- * GtkAlignmentClass:
+ * CtkAlignmentClass:
  * @parent_class: The parent class.
  */
-struct _GtkAlignmentClass
+struct _CtkAlignmentClass
 {
-  GtkBinClass parent_class;
+  CtkBinClass parent_class;
 
   /*< private >*/
 
@@ -76,26 +76,26 @@ struct _GtkAlignmentClass
 GDK_DEPRECATED_IN_3_14
 GType      ctk_alignment_get_type   (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_14
-GtkWidget* ctk_alignment_new        (gfloat             xalign,
+CtkWidget* ctk_alignment_new        (gfloat             xalign,
 				     gfloat             yalign,
 				     gfloat             xscale,
 				     gfloat             yscale);
 GDK_DEPRECATED_IN_3_14
-void       ctk_alignment_set        (GtkAlignment      *alignment,
+void       ctk_alignment_set        (CtkAlignment      *alignment,
 				     gfloat             xalign,
 				     gfloat             yalign,
 				     gfloat             xscale,
 				     gfloat             yscale);
 
 GDK_DEPRECATED_IN_3_14
-void       ctk_alignment_set_padding (GtkAlignment      *alignment,
+void       ctk_alignment_set_padding (CtkAlignment      *alignment,
 				      guint              padding_top,
 				      guint              padding_bottom,
 				      guint              padding_left,
 				      guint              padding_right);
 
 GDK_DEPRECATED_IN_3_14
-void       ctk_alignment_get_padding (GtkAlignment      *alignment,
+void       ctk_alignment_get_padding (CtkAlignment      *alignment,
 				      guint             *padding_top,
 				      guint             *padding_bottom,
 				      guint             *padding_left,

@@ -23,11 +23,11 @@
 
 static void atk_selection_interface_init (AtkSelectionIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkListBoxAccessible, ctk_list_box_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (CtkListBoxAccessible, ctk_list_box_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_SELECTION, atk_selection_interface_init))
 
 static void
-ctk_list_box_accessible_init (GtkListBoxAccessible *accessible)
+ctk_list_box_accessible_init (CtkListBoxAccessible *accessible)
 {
 }
 
@@ -44,7 +44,7 @@ static AtkStateSet*
 ctk_list_box_accessible_ref_state_set (AtkObject *obj)
 {
   AtkStateSet *state_set;
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   state_set = ATK_OBJECT_CLASS (ctk_list_box_accessible_parent_class)->ref_state_set (obj);
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
@@ -56,7 +56,7 @@ ctk_list_box_accessible_ref_state_set (AtkObject *obj)
 }
 
 static void
-ctk_list_box_accessible_class_init (GtkListBoxAccessibleClass *klass)
+ctk_list_box_accessible_class_init (CtkListBoxAccessibleClass *klass)
 {
   AtkObjectClass *object_class = ATK_OBJECT_CLASS (klass);
 
@@ -68,8 +68,8 @@ static gboolean
 ctk_list_box_accessible_add_selection (AtkSelection *selection,
                                        gint          idx)
 {
-  GtkWidget *box;
-  GtkListBoxRow *row;
+  CtkWidget *box;
+  CtkListBoxRow *row;
 
   box = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (box == NULL)
@@ -88,8 +88,8 @@ static gboolean
 ctk_list_box_accessible_remove_selection (AtkSelection *selection,
                                           gint          idx)
 {
-  GtkWidget *box;
-  GtkListBoxRow *row;
+  CtkWidget *box;
+  CtkListBoxRow *row;
 
   box = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (box == NULL)
@@ -107,7 +107,7 @@ ctk_list_box_accessible_remove_selection (AtkSelection *selection,
 static gboolean
 ctk_list_box_accessible_clear_selection (AtkSelection *selection)
 {
-  GtkWidget *box;
+  CtkWidget *box;
 
   box = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (box == NULL)
@@ -120,7 +120,7 @@ ctk_list_box_accessible_clear_selection (AtkSelection *selection)
 static gboolean
 ctk_list_box_accessible_select_all (AtkSelection *selection)
 {
-  GtkWidget *box;
+  CtkWidget *box;
 
   box = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (box == NULL)
@@ -133,12 +133,12 @@ ctk_list_box_accessible_select_all (AtkSelection *selection)
 typedef struct
 {
   gint idx;
-  GtkWidget *row;
+  CtkWidget *row;
 } FindSelectedData;
 
 static void
-find_selected_row (GtkListBox    *box,
-                   GtkListBoxRow *row,
+find_selected_row (CtkListBox    *box,
+                   CtkListBoxRow *row,
                    gpointer       data)
 {
   FindSelectedData *d = data;
@@ -156,7 +156,7 @@ static AtkObject *
 ctk_list_box_accessible_ref_selection (AtkSelection *selection,
                                        gint          idx)
 {
-  GtkWidget *box;
+  CtkWidget *box;
   AtkObject *accessible;
   FindSelectedData data;
 
@@ -177,8 +177,8 @@ ctk_list_box_accessible_ref_selection (AtkSelection *selection,
 }
 
 static void
-count_selected (GtkListBox    *box,
-                GtkListBoxRow *row,
+count_selected (CtkListBox    *box,
+                CtkListBoxRow *row,
                 gpointer       data)
 {
   gint *count = data;
@@ -188,7 +188,7 @@ count_selected (GtkListBox    *box,
 static gint
 ctk_list_box_accessible_get_selection_count (AtkSelection *selection)
 {
-  GtkWidget *box;
+  CtkWidget *box;
   gint count;
 
   box = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
@@ -205,8 +205,8 @@ static gboolean
 ctk_list_box_accessible_is_child_selected (AtkSelection *selection,
                                            gint          idx)
 {
-  GtkWidget *box;
-  GtkListBoxRow *row;
+  CtkWidget *box;
+  CtkListBoxRow *row;
 
   box = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (box == NULL)
@@ -229,7 +229,7 @@ static void atk_selection_interface_init (AtkSelectionIface *iface)
 }
 
 void
-_ctk_list_box_accessible_selection_changed (GtkListBox *box)
+_ctk_list_box_accessible_selection_changed (CtkListBox *box)
 {
   AtkObject *accessible;
   accessible = ctk_widget_get_accessible (CTK_WIDGET (box));
@@ -237,8 +237,8 @@ _ctk_list_box_accessible_selection_changed (GtkListBox *box)
 }
 
 void
-_ctk_list_box_accessible_update_cursor (GtkListBox *box,
-                                        GtkListBoxRow *row)
+_ctk_list_box_accessible_update_cursor (CtkListBox *box,
+                                        CtkListBoxRow *row)
 {
   AtkObject *accessible;
   AtkObject *descendant;

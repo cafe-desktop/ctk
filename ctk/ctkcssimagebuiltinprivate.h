@@ -26,37 +26,37 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CSS_IMAGE_BUILTIN           (ctk_css_image_builtin_get_type ())
-#define CTK_CSS_IMAGE_BUILTIN(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_IMAGE_BUILTIN, GtkCssImageBuiltin))
-#define CTK_CSS_IMAGE_BUILTIN_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_IMAGE_BUILTIN, GtkCssImageBuiltinClass))
+#define CTK_CSS_IMAGE_BUILTIN(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_IMAGE_BUILTIN, CtkCssImageBuiltin))
+#define CTK_CSS_IMAGE_BUILTIN_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_IMAGE_BUILTIN, CtkCssImageBuiltinClass))
 #define CTK_IS_CSS_IMAGE_BUILTIN(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_IMAGE_BUILTIN))
 #define CTK_IS_CSS_IMAGE_BUILTIN_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_IMAGE_BUILTIN))
-#define CTK_CSS_IMAGE_BUILTIN_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_IMAGE_BUILTIN, GtkCssImageBuiltinClass))
+#define CTK_CSS_IMAGE_BUILTIN_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_IMAGE_BUILTIN, CtkCssImageBuiltinClass))
 
-typedef struct _GtkCssImageBuiltin           GtkCssImageBuiltin;
-typedef struct _GtkCssImageBuiltinClass      GtkCssImageBuiltinClass;
+typedef struct _CtkCssImageBuiltin           CtkCssImageBuiltin;
+typedef struct _CtkCssImageBuiltinClass      CtkCssImageBuiltinClass;
 
-struct _GtkCssImageBuiltin
+struct _CtkCssImageBuiltin
 {
-  GtkCssImage   parent;
+  CtkCssImage   parent;
 
   GdkRGBA       fg_color;
   GdkRGBA       bg_color;
 };
 
-struct _GtkCssImageBuiltinClass
+struct _CtkCssImageBuiltinClass
 {
-  GtkCssImageClass parent_class;
+  CtkCssImageClass parent_class;
 };
 
 GType          ctk_css_image_builtin_get_type              (void) G_GNUC_CONST;
 
-GtkCssImage *  ctk_css_image_builtin_new                   (void);
+CtkCssImage *  ctk_css_image_builtin_new                   (void);
 
-void           ctk_css_image_builtin_draw                  (GtkCssImage                 *image,
+void           ctk_css_image_builtin_draw                  (CtkCssImage                 *image,
                                                             cairo_t                     *cr,
                                                             double                       width,
                                                             double                       height,
-                                                            GtkCssImageBuiltinType       image_type);
+                                                            CtkCssImageBuiltinType       image_type);
 
 G_END_DECLS
 

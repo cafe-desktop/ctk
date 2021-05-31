@@ -27,7 +27,7 @@
 
 #include <ctk/ctk.h>
 
-typedef struct _GtkTextHandlePrivate GtkTextHandlePrivate;
+typedef struct _CtkTextHandlePrivate CtkTextHandlePrivate;
 typedef struct _HandleWindow HandleWindow;
 
 enum {
@@ -44,43 +44,43 @@ enum {
 
 struct _HandleWindow
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   GdkRectangle pointing_to;
-  GtkBorder border;
+  CtkBorder border;
   gint dx;
   gint dy;
-  GtkTextDirection dir;
+  CtkTextDirection dir;
   guint dragged : 1;
   guint mode_visible : 1;
   guint user_visible : 1;
   guint has_point : 1;
 };
 
-struct _GtkTextHandlePrivate
+struct _CtkTextHandlePrivate
 {
   HandleWindow windows[2];
-  GtkWidget *parent;
-  GtkScrollable *parent_scrollable;
-  GtkAdjustment *vadj;
-  GtkAdjustment *hadj;
+  CtkWidget *parent;
+  CtkScrollable *parent_scrollable;
+  CtkAdjustment *vadj;
+  CtkAdjustment *hadj;
   guint hierarchy_changed_id;
   guint scrollable_notify_id;
   guint mode : 2;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkTextHandle, _ctk_text_handle, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkTextHandle, _ctk_text_handle, G_TYPE_OBJECT)
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-static void _ctk_text_handle_update (GtkTextHandle         *handle,
-                                     GtkTextHandlePosition  pos);
+static void _ctk_text_handle_update (CtkTextHandle         *handle,
+                                     CtkTextHandlePosition  pos);
 
 static void
-_ctk_text_handle_get_size (GtkTextHandle *handle,
+_ctk_text_handle_get_size (CtkTextHandle *handle,
                            gint          *width,
                            gint          *height)
 {
-  GtkTextHandlePrivate *priv;
+  CtkTextHandlePrivate *priv;
   gint w, h;
 
   priv = handle->priv;
@@ -97,13 +97,13 @@ _ctk_text_handle_get_size (GtkTextHandle *handle,
 }
 
 static void
-_ctk_text_handle_draw (GtkTextHandle         *handle,
+_ctk_text_handle_draw (CtkTextHandle         *handle,
                        cairo_t               *cr,
-                       GtkTextHandlePosition  pos)
+                       CtkTextHandlePosition  pos)
 {
-  GtkTextHandlePrivate *priv;
+  CtkTextHandlePrivate *priv;
   HandleWindow *handle_window;
-  GtkStyleContext *context;
+  CtkStyleContext *context;
   gint width, height;
 
   priv = handle->priv;
@@ -121,10 +121,10 @@ _ctk_text_handle_draw (GtkTextHandle         *handle,
 }
 
 static gint
-_text_handle_pos_from_widget (GtkTextHandle *handle,
-                              GtkWidget     *widget)
+_text_handle_pos_from_widget (CtkTextHandle *handle,
+                              CtkWidget     *widget)
 {
-  GtkTextHandlePrivate *priv = handle->priv;
+  CtkTextHandlePrivate *priv = handle->priv;
 
   if (widget == priv->windows[CTK_TEXT_HANDLE_POSITION_SELECTION_START].widget)
     return CTK_TEXT_HANDLE_POSITION_SELECTION_START;
@@ -135,9 +135,9 @@ _text_handle_pos_from_widget (GtkTextHandle *handle,
 }
 
 static gboolean
-ctk_text_handle_widget_draw (GtkWidget     *widget,
+ctk_text_handle_widget_draw (CtkWidget     *widget,
                              cairo_t       *cr,
-                             GtkTextHandle *handle)
+                             CtkTextHandle *handle)
 {
   gint pos;
 
@@ -157,11 +157,11 @@ ctk_text_handle_widget_draw (GtkWidget     *widget,
 }
 
 static void
-ctk_text_handle_set_state (GtkTextHandle *handle,
+ctk_text_handle_set_state (CtkTextHandle *handle,
                            gint           pos,
-                           GtkStateFlags  state)
+                           CtkStateFlags  state)
 {
-  GtkTextHandlePrivate *priv = handle->priv;
+  CtkTextHandlePrivate *priv = handle->priv;
 
   if (!priv->windows[pos].widget)
     return;
@@ -171,11 +171,11 @@ ctk_text_handle_set_state (GtkTextHandle *handle,
 }
 
 static void
-ctk_text_handle_unset_state (GtkTextHandle *handle,
+ctk_text_handle_unset_state (CtkTextHandle *handle,
                              gint           pos,
-                             GtkStateFlags  state)
+                             CtkStateFlags  state)
 {
-  GtkTextHandlePrivate *priv = handle->priv;
+  CtkTextHandlePrivate *priv = handle->priv;
 
   if (!priv->windows[pos].widget)
     return;
@@ -185,11 +185,11 @@ ctk_text_handle_unset_state (GtkTextHandle *handle,
 }
 
 static gboolean
-ctk_text_handle_widget_event (GtkWidget     *widget,
+ctk_text_handle_widget_event (CtkWidget     *widget,
                               GdkEvent      *event,
-                              GtkTextHandle *handle)
+                              CtkTextHandle *handle)
 {
-  GtkTextHandlePrivate *priv;
+  CtkTextHandlePrivate *priv;
   gint pos;
 
   priv = handle->priv;
@@ -227,8 +227,8 @@ ctk_text_handle_widget_event (GtkWidget     *widget,
     {
       gint x, y, handle_width, handle_height;
       cairo_rectangle_int_t rect;
-      GtkAllocation allocation;
-      GtkWidget *window;
+      CtkAllocation allocation;
+      CtkWidget *window;
 
       window = ctk_widget_get_parent (priv->windows[pos].widget);
       ctk_widget_get_allocation (priv->windows[pos].widget, &allocation);
@@ -259,10 +259,10 @@ ctk_text_handle_widget_event (GtkWidget     *widget,
 }
 
 static void
-ctk_text_handle_widget_style_updated (GtkWidget     *widget,
-                                      GtkTextHandle *handle)
+ctk_text_handle_widget_style_updated (CtkWidget     *widget,
+                                      CtkTextHandle *handle)
 {
-  GtkTextHandlePrivate *priv;
+  CtkTextHandlePrivate *priv;
 
   priv = handle->priv;
   ctk_style_context_set_parent (ctk_widget_get_style_context (widget),
@@ -272,18 +272,18 @@ ctk_text_handle_widget_style_updated (GtkWidget     *widget,
   _ctk_text_handle_update (handle, CTK_TEXT_HANDLE_POSITION_SELECTION_END);
 }
 
-static GtkWidget *
-_ctk_text_handle_ensure_widget (GtkTextHandle         *handle,
-                                GtkTextHandlePosition  pos)
+static CtkWidget *
+_ctk_text_handle_ensure_widget (CtkTextHandle         *handle,
+                                CtkTextHandlePosition  pos)
 {
-  GtkTextHandlePrivate *priv;
+  CtkTextHandlePrivate *priv;
 
   priv = handle->priv;
 
   if (!priv->windows[pos].widget)
     {
-      GtkWidget *widget, *window;
-      GtkStyleContext *context;
+      CtkWidget *widget, *window;
+      CtkStyleContext *context;
 
       widget = ctk_event_box_new ();
       ctk_event_box_set_visible_window (CTK_EVENT_BOX (widget), TRUE);
@@ -325,14 +325,14 @@ _ctk_text_handle_ensure_widget (GtkTextHandle         *handle,
 }
 
 static void
-_handle_update_child_visible (GtkTextHandle         *handle,
-                              GtkTextHandlePosition  pos)
+_handle_update_child_visible (CtkTextHandle         *handle,
+                              CtkTextHandlePosition  pos)
 {
   HandleWindow *handle_window;
-  GtkTextHandlePrivate *priv;
+  CtkTextHandlePrivate *priv;
   cairo_rectangle_int_t rect;
-  GtkAllocation allocation;
-  GtkWidget *parent;
+  CtkAllocation allocation;
+  CtkWidget *parent;
 
   priv = handle->priv;
   handle_window = &priv->windows[pos];
@@ -359,12 +359,12 @@ _handle_update_child_visible (GtkTextHandle         *handle,
 }
 
 static void
-_ctk_text_handle_update (GtkTextHandle         *handle,
-                         GtkTextHandlePosition  pos)
+_ctk_text_handle_update (CtkTextHandle         *handle,
+                         CtkTextHandlePosition  pos)
 {
-  GtkTextHandlePrivate *priv;
+  CtkTextHandlePrivate *priv;
   HandleWindow *handle_window;
-  GtkBorder *border;
+  CtkBorder *border;
 
   priv = handle->priv;
   handle_window = &priv->windows[pos];
@@ -378,8 +378,8 @@ _ctk_text_handle_update (GtkTextHandle         *handle,
     {
       cairo_rectangle_int_t rect;
       gint width, height;
-      GtkWidget *window;
-      GtkAllocation alloc;
+      CtkWidget *window;
+      CtkAllocation alloc;
       gint w, h;
 
       _ctk_text_handle_ensure_widget (handle, pos);
@@ -446,18 +446,18 @@ _ctk_text_handle_update (GtkTextHandle         *handle,
 }
 
 static void
-adjustment_changed_cb (GtkAdjustment *adjustment,
-                       GtkTextHandle *handle)
+adjustment_changed_cb (CtkAdjustment *adjustment,
+                       CtkTextHandle *handle)
 {
   _ctk_text_handle_update (handle, CTK_TEXT_HANDLE_POSITION_SELECTION_START);
   _ctk_text_handle_update (handle, CTK_TEXT_HANDLE_POSITION_SELECTION_END);
 }
 
 static void
-_ctk_text_handle_set_scrollable (GtkTextHandle *handle,
-                                 GtkScrollable *scrollable)
+_ctk_text_handle_set_scrollable (CtkTextHandle *handle,
+                                 CtkScrollable *scrollable)
 {
-  GtkTextHandlePrivate *priv;
+  CtkTextHandlePrivate *priv;
 
   priv = handle->priv;
 
@@ -508,17 +508,17 @@ _ctk_text_handle_set_scrollable (GtkTextHandle *handle,
 static void
 _ctk_text_handle_scrollable_notify (GObject       *object,
                                     GParamSpec    *pspec,
-                                    GtkTextHandle *handle)
+                                    CtkTextHandle *handle)
 {
   if (pspec->value_type == CTK_TYPE_ADJUSTMENT)
     _ctk_text_handle_set_scrollable (handle, CTK_SCROLLABLE (object));
 }
 
 static void
-_ctk_text_handle_update_scrollable (GtkTextHandle *handle,
-                                    GtkScrollable *scrollable)
+_ctk_text_handle_update_scrollable (CtkTextHandle *handle,
+                                    CtkScrollable *scrollable)
 {
-  GtkTextHandlePrivate *priv;
+  CtkTextHandlePrivate *priv;
 
   priv = handle->priv;
 
@@ -540,11 +540,11 @@ _ctk_text_handle_update_scrollable (GtkTextHandle *handle,
                         handle);
 }
 
-static GtkWidget *
-ctk_text_handle_lookup_scrollable (GtkTextHandle *handle)
+static CtkWidget *
+ctk_text_handle_lookup_scrollable (CtkTextHandle *handle)
 {
-  GtkTextHandlePrivate *priv;
-  GtkWidget *scrolled_window;
+  CtkTextHandlePrivate *priv;
+  CtkWidget *scrolled_window;
 
   priv = handle->priv;
   scrolled_window = ctk_widget_get_ancestor (priv->parent,
@@ -556,12 +556,12 @@ ctk_text_handle_lookup_scrollable (GtkTextHandle *handle)
 }
 
 static void
-_ctk_text_handle_parent_hierarchy_changed (GtkWidget     *widget,
-                                           GtkWindow     *previous_toplevel,
-                                           GtkTextHandle *handle)
+_ctk_text_handle_parent_hierarchy_changed (CtkWidget     *widget,
+                                           CtkWindow     *previous_toplevel,
+                                           CtkTextHandle *handle)
 {
-  GtkWidget *toplevel, *scrollable;
-  GtkTextHandlePrivate *priv;
+  CtkWidget *toplevel, *scrollable;
+  CtkTextHandlePrivate *priv;
 
   priv = handle->priv;
   toplevel = ctk_widget_get_ancestor (widget, CTK_TYPE_WINDOW);
@@ -590,11 +590,11 @@ _ctk_text_handle_parent_hierarchy_changed (GtkWidget     *widget,
 }
 
 static void
-_ctk_text_handle_set_parent (GtkTextHandle *handle,
-                             GtkWidget     *parent)
+_ctk_text_handle_set_parent (CtkTextHandle *handle,
+                             CtkWidget     *parent)
 {
-  GtkTextHandlePrivate *priv;
-  GtkWidget *scrollable = NULL;
+  CtkTextHandlePrivate *priv;
+  CtkWidget *scrollable = NULL;
 
   priv = handle->priv;
 
@@ -623,7 +623,7 @@ _ctk_text_handle_set_parent (GtkTextHandle *handle,
 static void
 ctk_text_handle_finalize (GObject *object)
 {
-  GtkTextHandlePrivate *priv;
+  CtkTextHandlePrivate *priv;
 
   priv = CTK_TEXT_HANDLE (object)->priv;
 
@@ -645,7 +645,7 @@ ctk_text_handle_set_property (GObject      *object,
                               const GValue *value,
                               GParamSpec   *pspec)
 {
-  GtkTextHandle *handle;
+  CtkTextHandle *handle;
 
   handle = CTK_TEXT_HANDLE (object);
 
@@ -665,7 +665,7 @@ ctk_text_handle_get_property (GObject    *object,
                               GValue     *value,
                               GParamSpec *pspec)
 {
-  GtkTextHandlePrivate *priv;
+  CtkTextHandlePrivate *priv;
 
   priv = CTK_TEXT_HANDLE (object)->priv;
 
@@ -680,7 +680,7 @@ ctk_text_handle_get_property (GObject    *object,
 }
 
 static void
-_ctk_text_handle_class_init (GtkTextHandleClass *klass)
+_ctk_text_handle_class_init (CtkTextHandleClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -692,7 +692,7 @@ _ctk_text_handle_class_init (GtkTextHandleClass *klass)
     g_signal_new (I_("handle-dragged"),
 		  G_OBJECT_CLASS_TYPE (object_class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkTextHandleClass, handle_dragged),
+		  G_STRUCT_OFFSET (CtkTextHandleClass, handle_dragged),
 		  NULL, NULL,
 		  _ctk_marshal_VOID__ENUM_INT_INT,
 		  G_TYPE_NONE, 3,
@@ -726,13 +726,13 @@ _ctk_text_handle_class_init (GtkTextHandleClass *klass)
 }
 
 static void
-_ctk_text_handle_init (GtkTextHandle *handle)
+_ctk_text_handle_init (CtkTextHandle *handle)
 {
   handle->priv = _ctk_text_handle_get_instance_private (handle);
 }
 
-GtkTextHandle *
-_ctk_text_handle_new (GtkWidget *parent)
+CtkTextHandle *
+_ctk_text_handle_new (CtkWidget *parent)
 {
   return g_object_new (CTK_TYPE_TEXT_HANDLE,
                        "parent", parent,
@@ -740,10 +740,10 @@ _ctk_text_handle_new (GtkWidget *parent)
 }
 
 void
-_ctk_text_handle_set_mode (GtkTextHandle     *handle,
-                           GtkTextHandleMode  mode)
+_ctk_text_handle_set_mode (CtkTextHandle     *handle,
+                           CtkTextHandleMode  mode)
 {
-  GtkTextHandlePrivate *priv;
+  CtkTextHandlePrivate *priv;
   HandleWindow *start, *end;
 
   g_return_if_fail (CTK_IS_TEXT_HANDLE (handle));
@@ -792,10 +792,10 @@ _ctk_text_handle_set_mode (GtkTextHandle     *handle,
     ctk_widget_queue_draw (end->widget);
 }
 
-GtkTextHandleMode
-_ctk_text_handle_get_mode (GtkTextHandle *handle)
+CtkTextHandleMode
+_ctk_text_handle_get_mode (CtkTextHandle *handle)
 {
-  GtkTextHandlePrivate *priv;
+  CtkTextHandlePrivate *priv;
 
   g_return_val_if_fail (CTK_IS_TEXT_HANDLE (handle), CTK_TEXT_HANDLE_MODE_NONE);
 
@@ -804,11 +804,11 @@ _ctk_text_handle_get_mode (GtkTextHandle *handle)
 }
 
 void
-_ctk_text_handle_set_position (GtkTextHandle         *handle,
-                               GtkTextHandlePosition  pos,
+_ctk_text_handle_set_position (CtkTextHandle         *handle,
+                               CtkTextHandlePosition  pos,
                                GdkRectangle          *rect)
 {
-  GtkTextHandlePrivate *priv;
+  CtkTextHandlePrivate *priv;
   HandleWindow *handle_window;
 
   g_return_if_fail (CTK_IS_TEXT_HANDLE (handle));
@@ -831,11 +831,11 @@ _ctk_text_handle_set_position (GtkTextHandle         *handle,
 }
 
 void
-_ctk_text_handle_set_visible (GtkTextHandle         *handle,
-                              GtkTextHandlePosition  pos,
+_ctk_text_handle_set_visible (CtkTextHandle         *handle,
+                              CtkTextHandlePosition  pos,
                               gboolean               visible)
 {
-  GtkTextHandlePrivate *priv;
+  CtkTextHandlePrivate *priv;
 
   g_return_if_fail (CTK_IS_TEXT_HANDLE (handle));
 
@@ -850,10 +850,10 @@ _ctk_text_handle_set_visible (GtkTextHandle         *handle,
 }
 
 gboolean
-_ctk_text_handle_get_is_dragged (GtkTextHandle         *handle,
-                                 GtkTextHandlePosition  pos)
+_ctk_text_handle_get_is_dragged (CtkTextHandle         *handle,
+                                 CtkTextHandlePosition  pos)
 {
-  GtkTextHandlePrivate *priv;
+  CtkTextHandlePrivate *priv;
 
   g_return_val_if_fail (CTK_IS_TEXT_HANDLE (handle), FALSE);
 
@@ -865,11 +865,11 @@ _ctk_text_handle_get_is_dragged (GtkTextHandle         *handle,
 }
 
 void
-_ctk_text_handle_set_direction (GtkTextHandle         *handle,
-                                GtkTextHandlePosition  pos,
-                                GtkTextDirection       dir)
+_ctk_text_handle_set_direction (CtkTextHandle         *handle,
+                                CtkTextHandlePosition  pos,
+                                CtkTextDirection       dir)
 {
-  GtkTextHandlePrivate *priv;
+  CtkTextHandlePrivate *priv;
 
   g_return_if_fail (CTK_IS_TEXT_HANDLE (handle));
 

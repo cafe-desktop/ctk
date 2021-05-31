@@ -23,27 +23,27 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_COLOR_EDITOR            (ctk_color_editor_get_type ())
-#define CTK_COLOR_EDITOR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_COLOR_EDITOR, GtkColorEditor))
-#define CTK_COLOR_EDITOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_COLOR_EDITOR, GtkColorEditorClass))
+#define CTK_COLOR_EDITOR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_COLOR_EDITOR, CtkColorEditor))
+#define CTK_COLOR_EDITOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_COLOR_EDITOR, CtkColorEditorClass))
 #define CTK_IS_COLOR_EDITOR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_COLOR_EDITOR))
 #define CTK_IS_COLOR_EDITOR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_COLOR_EDITOR))
-#define CTK_COLOR_EDITOR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_COLOR_EDITOR, GtkColorEditorClass))
+#define CTK_COLOR_EDITOR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_COLOR_EDITOR, CtkColorEditorClass))
 
 
-typedef struct _GtkColorEditor         GtkColorEditor;
-typedef struct _GtkColorEditorClass    GtkColorEditorClass;
-typedef struct _GtkColorEditorPrivate  GtkColorEditorPrivate;
+typedef struct _CtkColorEditor         CtkColorEditor;
+typedef struct _CtkColorEditorClass    CtkColorEditorClass;
+typedef struct _CtkColorEditorPrivate  CtkColorEditorPrivate;
 
-struct _GtkColorEditor
+struct _CtkColorEditor
 {
-  GtkBox parent_instance;
+  CtkBox parent_instance;
 
-  GtkColorEditorPrivate *priv;
+  CtkColorEditorPrivate *priv;
 };
 
-struct _GtkColorEditorClass
+struct _CtkColorEditorClass
 {
-  GtkBoxClass parent_class;
+  CtkBoxClass parent_class;
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -54,7 +54,7 @@ struct _GtkColorEditorClass
 
 
 GType       ctk_color_editor_get_type (void) G_GNUC_CONST;
-GtkWidget * ctk_color_editor_new      (void);
+CtkWidget * ctk_color_editor_new      (void);
 
 G_END_DECLS
 

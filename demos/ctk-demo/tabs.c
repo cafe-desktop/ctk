@@ -1,21 +1,21 @@
 /* Text View/Tabs
  *
- * GtkTextView can position text at fixed positions, using tabs.
+ * CtkTextView can position text at fixed positions, using tabs.
  */
 
 #include <ctk/ctk.h>
 #include <gdk/gdkkeysyms.h>
 
-GtkWidget *
-do_tabs (GtkWidget *do_widget)
+CtkWidget *
+do_tabs (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkWidget *view;
-      GtkWidget *sw;
-      GtkTextBuffer *buffer;
+      CtkWidget *view;
+      CtkWidget *sw;
+      CtkTextBuffer *buffer;
       PangoTabArray *tabs;
 
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);

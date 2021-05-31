@@ -379,10 +379,10 @@ msgstr "Grupo de acción"
 
 #: ctk/deprecated/ctkaction.c:498
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
-"El GtkActionGroup con el que esta GtkAction está asociada, o NULL (para uso "
+"El CtkActionGroup con el que esta CtkAction está asociada, o NULL (para uso "
 "interno)."
 
 #: ctk/deprecated/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
@@ -948,8 +948,8 @@ msgid "Style context"
 msgstr "Estilo del contexto"
 
 #: ctk/deprecated/ctkstyle.c:472
-msgid "GtkStyleContext to get style from"
-msgstr "GtkStyleContext del que obtener el estilo"
+msgid "CtkStyleContext to get style from"
+msgstr "CtkStyleContext del que obtener el estilo"
 
 #: ctk/deprecated/ctktable.c:185
 msgid "Rows"
@@ -1334,10 +1334,10 @@ msgstr "Tipo de empaquetado"
 
 #: ctk/ctkactionbar.c:339 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
 msgstr ""
-"Un GtkPackType que indica si el hijo está empaquetado con referencia al "
+"Un CtkPackType que indica si el hijo está empaquetado con referencia al "
 "inicio o el final del padre"
 
 #: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
@@ -1407,10 +1407,10 @@ msgstr "Incluir un elemento «Otros…»"
 #: ctk/ctkappchooserbutton.c:619
 msgid ""
 "Whether the combobox should include an item that triggers a "
-"GtkAppChooserDialog"
+"CtkAppChooserDialog"
 msgstr ""
 "Indica si la caja combo debería incluir un elemento que dispare un "
-"GtkAppChooserDialog"
+"CtkAppChooserDialog"
 
 #: ctk/ctkappchooserbutton.c:634
 msgid "Show default item"
@@ -2034,10 +2034,10 @@ msgstr "Tipo de empaquetado"
 
 #: ctk/ctkcellareabox.c:381
 msgid ""
-"A GtkPackType indicating whether the cell is packed with reference to the "
+"A CtkPackType indicating whether the cell is packed with reference to the "
 "start or end of the cell area"
 msgstr ""
-"Un GtkPackType que indica si la celda está empaquetada con referencia al "
+"Un CtkPackType que indica si la celda está empaquetada con referencia al "
 "inicio o al final del área de celdas"
 
 #: ctk/ctkcellarea.c:790
@@ -2316,7 +2316,7 @@ msgid "The stock ID of the stock icon to render"
 msgstr "El ID de inventario del icono de inventario a renderizar"
 
 #: ctk/ctkcellrendererpixbuf.c:211
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
 msgstr "El valor de GTKIconSize que especifica el tamaño del icono renderizado"
 
 #: ctk/ctkcellrendererpixbuf.c:227
@@ -2430,7 +2430,7 @@ msgid "Pulse of the spinner"
 msgstr "Pulso del marcador incrementable"
 
 #: ctk/ctkcellrendererspinner.c:160
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
 msgstr ""
 "El valor de GTKIconSize que especifica el tamaño del marcador incrementable "
 "renderizado"
@@ -2876,16 +2876,16 @@ msgstr "Área de la celda"
 
 #: ctk/ctkcellview.c:283 ctk/ctkcombobox.c:1183 ctk/ctkentrycompletion.c:468
 #: ctk/ctkiconview.c:650 ctk/ctktreemenu.c:308 ctk/ctktreeviewcolumn.c:400
-msgid "The GtkCellArea used to layout cells"
-msgstr "El GtkCellArea usado para la distribución de las celdas"
+msgid "The CtkCellArea used to layout cells"
+msgstr "El CtkCellArea usado para la distribución de las celdas"
 
 #: ctk/ctkcellview.c:306
 msgid "Cell Area Context"
 msgstr "Contexto del área de la celda"
 
 #: ctk/ctkcellview.c:307
-msgid "The GtkCellAreaContext used to compute the geometry of the cell view"
-msgstr "El GtkCellArea usado para calcular la geometría de la vista de celdas"
+msgid "The CtkCellAreaContext used to compute the geometry of the cell view"
+msgstr "El CtkCellArea usado para calcular la geometría de la vista de celdas"
 
 #: ctk/ctkcellview.c:324
 msgid "Draw Sensitive"
@@ -3106,10 +3106,10 @@ msgstr "Columna de entrada de texto"
 #: ctk/ctkcombobox.c:1112
 msgid ""
 "The column in the combo box's model to associate with strings from the entry "
-"if the combo was created with #GtkComboBox:has-entry = %TRUE"
+"if the combo was created with #CtkComboBox:has-entry = %TRUE"
 msgstr ""
 "La columna en el modelo ce caja combinada para asociar con cadenas de la "
-"entrada si la caja combinada se creó con #GtkComboBox:has-entry = %TRUE"
+"entrada si la caja combinada se creó con #CtkComboBox:has-entry = %TRUE"
 
 #: ctk/ctkcombobox.c:1129
 msgid "ID Column"
@@ -4289,8 +4289,8 @@ msgid "Auto render"
 msgstr "Renderizado automático"
 
 #: ctk/ctkglarea.c:808
-msgid "Whether the GtkGLArea renders on each redraw"
-msgstr "Indica si el GtkGLArea se renderiza en cada redibujado"
+msgid "Whether the CtkGLArea renders on each redraw"
+msgstr "Indica si el CtkGLArea se renderiza en cada redibujado"
 
 #: ctk/ctkglarea.c:828
 msgid "Has alpha"
@@ -4653,11 +4653,11 @@ msgstr "Justificación"
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkLabel:xalign for that"
+"CtkLabel:xalign for that"
 msgstr ""
 "La alineación de las líneas en el texto de una etiqueta relativa a la otra. "
 "Esto NO afecta la alineación de la etiqueta dentro de su ubicación. Consulte "
-"GtkLabel:xalign para ello"
+"CtkLabel:xalign para ello"
 
 #: ctk/ctklabel.c:877
 msgid "Pattern"
@@ -5278,8 +5278,8 @@ msgid "Message area"
 msgstr "Área de mensajes"
 
 #: ctk/ctkmessagedialog.c:295
-msgid "GtkBox that holds the dialog's primary and secondary labels"
-msgstr "GtkBox que contiene las etiquetas primaria y secundaria del diálogo"
+msgid "CtkBox that holds the dialog's primary and secondary labels"
+msgstr "CtkBox que contiene las etiquetas primaria y secundaria del diálogo"
 
 #: ctk/ctkmodelbutton.c:1150
 msgid "Role"
@@ -6038,16 +6038,16 @@ msgid "Default Page Setup"
 msgstr "Configuración de la página predeterminada"
 
 #: ctk/ctkprintoperation.c:1110
-msgid "The GtkPageSetup used by default"
-msgstr "La GtkPageSetup usada por omisión"
+msgid "The CtkPageSetup used by default"
+msgstr "La CtkPageSetup usada por omisión"
 
 #: ctk/ctkprintoperation.c:1128 ctk/ctkprintunixdialog.c:431
 msgid "Print Settings"
 msgstr "Configuración de impresión"
 
 #: ctk/ctkprintoperation.c:1129 ctk/ctkprintunixdialog.c:432
-msgid "The GtkPrintSettings used for initializing the dialog"
-msgstr "Los GtkPrintSettings usados para inicializar el diálogo"
+msgid "The CtkPrintSettings used for initializing the dialog"
+msgstr "Los CtkPrintSettings usados para inicializar el diálogo"
 
 #: ctk/ctkprintoperation.c:1147
 msgid "Job Name"
@@ -6167,10 +6167,10 @@ msgid "Embed Page Setup"
 msgstr "Configuración de página empotrada"
 
 #: ctk/ctkprintoperation.c:1425 ctk/ctkprintunixdialog.c:473
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
 msgstr ""
 "TRUE si los combos de configuración de página están empotrados en "
-"GtkPrintUnixDialog"
+"CtkPrintUnixDialog"
 
 #: ctk/ctkprintoperation.c:1446
 msgid "Number of Pages To Print"
@@ -6181,16 +6181,16 @@ msgid "The number of pages that will be printed."
 msgstr "El número de páginas que se imprimirán."
 
 #: ctk/ctkprintunixdialog.c:414
-msgid "The GtkPageSetup to use"
-msgstr "El GtkPageSetup a usar"
+msgid "The CtkPageSetup to use"
+msgstr "El CtkPageSetup a usar"
 
 #: ctk/ctkprintunixdialog.c:439
 msgid "Selected Printer"
 msgstr "Impresora seleccionada"
 
 #: ctk/ctkprintunixdialog.c:440
-msgid "The GtkPrinter which is selected"
-msgstr "El GtkPrinter que está seleccionado"
+msgid "The CtkPrinter which is selected"
+msgstr "El CtkPrinter que está seleccionado"
 
 #: ctk/ctkprintunixdialog.c:447
 msgid "Manual Capabilities"
@@ -6306,8 +6306,8 @@ msgid "The radio tool button whose group this button belongs to."
 msgstr "La herramienta de botón de radio a cuyo grupo pertenece este widget."
 
 #: ctk/ctkrange.c:435
-msgid "The GtkAdjustment that contains the current value of this range object"
-msgstr "El GtkAdjustment que contiene el valor actual de este objeto de rango"
+msgid "The CtkAdjustment that contains the current value of this range object"
+msgstr "El CtkAdjustment que contiene el valor actual de este objeto de rango"
 
 #: ctk/ctkrange.c:442
 msgid "Invert direction slider moves to increase range value"
@@ -6574,9 +6574,9 @@ msgstr "El tamaño del icono"
 
 #: ctk/ctkscalebutton.c:218
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
+"The CtkAdjustment that contains the current value of this scale button object"
 msgstr ""
-"El GtkAdjustment que contiene el valor actual de este objeto de botón de "
+"El CtkAdjustment que contiene el valor actual de este objeto de botón de "
 "escala"
 
 #: ctk/ctkscalebutton.c:246
@@ -6702,16 +6702,16 @@ msgid "Horizontal Adjustment"
 msgstr "Ajuste horizontal"
 
 #: ctk/ctkscrolledwindow.c:570
-msgid "The GtkAdjustment for the horizontal position"
-msgstr "El ajuste GtkAdjustment para la posición horizontal"
+msgid "The CtkAdjustment for the horizontal position"
+msgstr "El ajuste CtkAdjustment para la posición horizontal"
 
 #: ctk/ctkscrolledwindow.c:576
 msgid "Vertical Adjustment"
 msgstr "Ajuste vertical"
 
 #: ctk/ctkscrolledwindow.c:577
-msgid "The GtkAdjustment for the vertical position"
-msgstr "El ajuste GtkAdjustment para la posición vertical"
+msgid "The CtkAdjustment for the vertical position"
+msgstr "El ajuste CtkAdjustment para la posición vertical"
 
 #: ctk/ctkscrolledwindow.c:583
 msgid "Horizontal Scrollbar Policy"
@@ -7236,16 +7236,16 @@ msgid "Default file chooser backend"
 msgstr "Backend predeterminado del selector de archivos"
 
 #: ctk/ctksettings.c:990
-msgid "Name of the GtkFileChooser backend to use by default"
-msgstr "Nombre del backend predeterminado del GtkFileChooser"
+msgid "Name of the CtkFileChooser backend to use by default"
+msgstr "Nombre del backend predeterminado del CtkFileChooser"
 
 #: ctk/ctksettings.c:1007
 msgid "Default print backend"
 msgstr "Backend predeterminado de impresión"
 
 #: ctk/ctksettings.c:1008
-msgid "List of the GtkPrintBackend backends to use by default"
-msgstr "Lista de backends GtkPrintBackend para usar por omisión"
+msgid "List of the CtkPrintBackend backends to use by default"
+msgstr "Lista de backends CtkPrintBackend para usar por omisión"
 
 #: ctk/ctksettings.c:1031
 msgid "Default command to run when displaying a print preview"
@@ -7895,8 +7895,8 @@ msgid "Stack"
 msgstr "Pila"
 
 #: ctk/ctkstacksidebar.c:450
-msgid "Associated stack for this GtkStackSidebar"
-msgstr "Pila asociada para esta GtkStackSidebar"
+msgid "Associated stack for this CtkStackSidebar"
+msgstr "Pila asociada para esta CtkStackSidebar"
 
 #: ctk/ctkstackswitcher.c:687
 msgid "Symbolic size to use for named icon"
@@ -7939,8 +7939,8 @@ msgid "Value type"
 msgstr "Tipo de valor"
 
 #: ctk/ctkstyleproperty.c:117
-msgid "The value type returned by GtkStyleContext"
-msgstr "El tipo de valor devuelto por GtkStyleContext"
+msgid "The value type returned by CtkStyleContext"
+msgstr "El tipo de valor devuelto por CtkStyleContext"
 
 #: ctk/ctkswitch.c:879
 msgid "Whether the switch is on or off"
@@ -8846,9 +8846,9 @@ msgid "Fixed Height Mode"
 msgstr "Modo de altura fija"
 
 #: ctk/ctktreeview.c:1108
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 msgstr ""
-"Acelera GtkTreeView asumiendo que todas las filas tienen la misma altura"
+"Acelera CtkTreeView asumiendo que todas las filas tienen la misma altura"
 
 #: ctk/ctktreeview.c:1127
 msgid "Hover Selection"
@@ -9254,7 +9254,7 @@ msgstr "Eventos"
 #: ctk/ctkwidget.c:1256
 msgid "The event mask that decides what kind of GdkEvents this widget gets"
 msgstr ""
-"La máscara de eventos que decide que tipo de GtkEvents recibe este widget"
+"La máscara de eventos que decide que tipo de CtkEvents recibe este widget"
 
 #: ctk/ctkwidget.c:1263
 msgid "No show all"
@@ -9674,8 +9674,8 @@ msgid "Focus in Toplevel"
 msgstr "Foco en el nivel superior"
 
 #: ctk/ctkwindow.c:912
-msgid "Whether the input focus is within this GtkWindow"
-msgstr "Indica si el foco de entrada esta dentro de este GtkWindow"
+msgid "Whether the input focus is within this CtkWindow"
+msgstr "Indica si el foco de entrada esta dentro de este CtkWindow"
 
 #: ctk/ctkwindow.c:918
 msgid "Type hint"
@@ -9786,12 +9786,12 @@ msgid "Whether the window is maximized"
 msgstr "Indica si la ventana está maximizada"
 
 #: ctk/ctkwindow.c:1113
-msgid "GtkApplication"
-msgstr "GtkApplication"
+msgid "CtkApplication"
+msgstr "CtkApplication"
 
 #: ctk/ctkwindow.c:1114
-msgid "The GtkApplication for the window"
-msgstr "El GtkApplication para la ventana"
+msgid "The CtkApplication for the window"
+msgstr "El CtkApplication para la ventana"
 
 #: ctk/ctkwindow.c:1124 ctk/ctkwindow.c:1125
 msgid "Decorated button layout"
@@ -9806,8 +9806,8 @@ msgid "Cloud Print account"
 msgstr "Cuenta de Cloud Print"
 
 #: modules/printbackends/cloudprint/ctkprintercloudprint.c:138
-msgid "GtkCloudprintAccount instance"
-msgstr "Instancia de GtkCloudprintAccount"
+msgid "CtkCloudprintAccount instance"
+msgstr "Instancia de CtkCloudprintAccount"
 
 #: modules/printbackends/cloudprint/ctkprintercloudprint.c:147
 msgid "Printer ID"
@@ -9969,10 +9969,10 @@ msgstr "El título del perfil de color que usar"
 #~ msgid "menu"
 #~ msgstr "menú"
 
-#~ msgid "TRUE if page setup combos are embedded in GtkPrintDialog"
+#~ msgid "TRUE if page setup combos are embedded in CtkPrintDialog"
 #~ msgstr ""
 #~ "TRUE si los combos de la configuración de página están empotrados en "
-#~ "GtkPrintDialog"
+#~ "CtkPrintDialog"
 
 #~ msgid "Specified type"
 #~ msgstr "Tipo especificado"
@@ -10032,11 +10032,11 @@ msgstr "El título del perfil de color que usar"
 #~ msgid ""
 #~ "The number of steps for the spinner to complete a full loop. The "
 #~ "animation will complete a full cycle in one second by default (see "
-#~ "#GtkSpinner:cycle-duration)."
+#~ "#CtkSpinner:cycle-duration)."
 #~ msgstr ""
 #~ "El número de pasos para que el marcador incrementable complete una vuelta "
 #~ "completa. La animación completará de forma predeterminada un ciclo "
-#~ "completo en un segundo (consulte #GtkSpinner:cycle-duration)."
+#~ "completo en un segundo (consulte #CtkSpinner:cycle-duration)."
 
 #~ msgid ""
 #~ "The length of time in milliseconds for the spinner to complete a full loop"
@@ -10087,17 +10087,17 @@ msgstr "El título del perfil de color que usar"
 #~ msgstr "Ajuste vertical para el widget"
 
 #~ msgid ""
-#~ "The GtkAdjustment that determines the values of the horizontal position "
+#~ "The CtkAdjustment that determines the values of the horizontal position "
 #~ "for this viewport"
 #~ msgstr ""
-#~ "El GtkAdjustment que determina los valores de la posición horizontal para "
+#~ "El CtkAdjustment que determina los valores de la posición horizontal para "
 #~ "este puerto de visión"
 
 #~ msgid ""
-#~ "The GtkAdjustment that determines the values of the vertical position for "
+#~ "The CtkAdjustment that determines the values of the vertical position for "
 #~ "this viewport"
 #~ msgstr ""
-#~ "El GtkAdjustment que determina los valores de la posición vertical de "
+#~ "El CtkAdjustment que determina los valores de la posición vertical de "
 #~ "este puerto de visión"
 
 #~ msgid "Whether the statusbar has a grip for resizing the toplevel"
@@ -10297,12 +10297,12 @@ msgstr "El título del perfil de color que usar"
 #~ msgstr "Modo de actividad"
 
 #~ msgid ""
-#~ "If TRUE, the GtkProgress is in activity mode, meaning that it signals "
+#~ "If TRUE, the CtkProgress is in activity mode, meaning that it signals "
 #~ "something is happening, but not how much of the activity is finished. "
 #~ "This is used when you're doing something but don't know how long it will "
 #~ "take."
 #~ msgstr ""
-#~ "Si es TRUE el GtkProgress está en modo actividad, que quiere decir que "
+#~ "Si es TRUE el CtkProgress está en modo actividad, que quiere decir que "
 #~ "señala que algo está pasando, pero no cuánto de la actividad está "
 #~ "terminado. Esto se usa cuando está haciendo algo que no sabe cuánto "
 #~ "tiempo puede llevar finalizarlo."
@@ -10421,8 +10421,8 @@ msgstr "El título del perfil de color que usar"
 #~ "Indica si el widget de vista previa debe tomar el espacio entero adonde "
 #~ "se encuentra situado"
 
-#~ msgid "The GtkAdjustment connected to the progress bar (Deprecated)"
-#~ msgstr "El GtkAdjustment conectado a la barra de progreso (obsoleto)"
+#~ msgid "The CtkAdjustment connected to the progress bar (Deprecated)"
+#~ msgstr "El CtkAdjustment conectado a la barra de progreso (obsoleto)"
 
 #~ msgid "Bar style"
 #~ msgstr "Estilo de la barra"

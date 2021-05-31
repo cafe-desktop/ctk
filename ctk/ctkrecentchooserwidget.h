@@ -29,28 +29,28 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_RECENT_CHOOSER_WIDGET		  (ctk_recent_chooser_widget_get_type ())
-#define CTK_RECENT_CHOOSER_WIDGET(obj)		  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RECENT_CHOOSER_WIDGET, GtkRecentChooserWidget))
+#define CTK_RECENT_CHOOSER_WIDGET(obj)		  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RECENT_CHOOSER_WIDGET, CtkRecentChooserWidget))
 #define CTK_IS_RECENT_CHOOSER_WIDGET(obj)	  (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_RECENT_CHOOSER_WIDGET))
-#define CTK_RECENT_CHOOSER_WIDGET_CLASS(klass)	  (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RECENT_CHOOSER_WIDGET, GtkRecentChooserWidgetClass))
+#define CTK_RECENT_CHOOSER_WIDGET_CLASS(klass)	  (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RECENT_CHOOSER_WIDGET, CtkRecentChooserWidgetClass))
 #define CTK_IS_RECENT_CHOOSER_WIDGET_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_RECENT_CHOOSER_WIDGET))
-#define CTK_RECENT_CHOOSER_WIDGET_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_RECENT_CHOOSER_WIDGET, GtkRecentChooserWidgetClass))
+#define CTK_RECENT_CHOOSER_WIDGET_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_RECENT_CHOOSER_WIDGET, CtkRecentChooserWidgetClass))
 
-typedef struct _GtkRecentChooserWidget        GtkRecentChooserWidget;
-typedef struct _GtkRecentChooserWidgetClass   GtkRecentChooserWidgetClass;
+typedef struct _CtkRecentChooserWidget        CtkRecentChooserWidget;
+typedef struct _CtkRecentChooserWidgetClass   CtkRecentChooserWidgetClass;
 
-typedef struct _GtkRecentChooserWidgetPrivate GtkRecentChooserWidgetPrivate;
+typedef struct _CtkRecentChooserWidgetPrivate CtkRecentChooserWidgetPrivate;
 
-struct _GtkRecentChooserWidget
+struct _CtkRecentChooserWidget
 {
-  GtkBox parent_instance;
+  CtkBox parent_instance;
 
   /*< private >*/
-  GtkRecentChooserWidgetPrivate *priv;
+  CtkRecentChooserWidgetPrivate *priv;
 };
 
-struct _GtkRecentChooserWidgetClass
+struct _CtkRecentChooserWidgetClass
 {
-  GtkBoxClass parent_class;
+  CtkBoxClass parent_class;
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -62,9 +62,9 @@ struct _GtkRecentChooserWidgetClass
 GDK_AVAILABLE_IN_ALL
 GType      ctk_recent_chooser_widget_get_type        (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget *ctk_recent_chooser_widget_new             (void);
+CtkWidget *ctk_recent_chooser_widget_new             (void);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *ctk_recent_chooser_widget_new_for_manager (GtkRecentManager *manager);
+CtkWidget *ctk_recent_chooser_widget_new_for_manager (CtkRecentManager *manager);
 
 G_END_DECLS
 

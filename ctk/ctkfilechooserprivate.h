@@ -50,77 +50,77 @@ G_BEGIN_DECLS
 #define SETTINGS_KEY_DATE_FORMAT            "date-format"
 #define SETTINGS_KEY_TYPE_FORMAT            "type-format"
 
-#define CTK_FILE_CHOOSER_GET_IFACE(inst)  (G_TYPE_INSTANCE_GET_INTERFACE ((inst), CTK_TYPE_FILE_CHOOSER, GtkFileChooserIface))
+#define CTK_FILE_CHOOSER_GET_IFACE(inst)  (G_TYPE_INSTANCE_GET_INTERFACE ((inst), CTK_TYPE_FILE_CHOOSER, CtkFileChooserIface))
 
-typedef struct _GtkFileChooserIface GtkFileChooserIface;
+typedef struct _CtkFileChooserIface CtkFileChooserIface;
 
-struct _GtkFileChooserIface
+struct _CtkFileChooserIface
 {
   GTypeInterface base_iface;
 
   /* Methods
    */
-  gboolean       (*set_current_folder) 	   (GtkFileChooser    *chooser,
+  gboolean       (*set_current_folder) 	   (CtkFileChooser    *chooser,
 					    GFile             *file,
 					    GError           **error);
-  GFile *        (*get_current_folder) 	   (GtkFileChooser    *chooser);
-  void           (*set_current_name)   	   (GtkFileChooser    *chooser,
+  GFile *        (*get_current_folder) 	   (CtkFileChooser    *chooser);
+  void           (*set_current_name)   	   (CtkFileChooser    *chooser,
 					    const gchar       *name);
-  gchar *        (*get_current_name)       (GtkFileChooser    *chooser);
-  gboolean       (*select_file)        	   (GtkFileChooser    *chooser,
+  gchar *        (*get_current_name)       (CtkFileChooser    *chooser);
+  gboolean       (*select_file)        	   (CtkFileChooser    *chooser,
 					    GFile             *file,
 					    GError           **error);
-  void           (*unselect_file)      	   (GtkFileChooser    *chooser,
+  void           (*unselect_file)      	   (CtkFileChooser    *chooser,
 					    GFile             *file);
-  void           (*select_all)         	   (GtkFileChooser    *chooser);
-  void           (*unselect_all)       	   (GtkFileChooser    *chooser);
-  GSList *       (*get_files)          	   (GtkFileChooser    *chooser);
-  GFile *        (*get_preview_file)   	   (GtkFileChooser    *chooser);
-  GtkFileSystem *(*get_file_system)    	   (GtkFileChooser    *chooser);
-  void           (*add_filter)         	   (GtkFileChooser    *chooser,
-					    GtkFileFilter     *filter);
-  void           (*remove_filter)      	   (GtkFileChooser    *chooser,
-					    GtkFileFilter     *filter);
-  GSList *       (*list_filters)       	   (GtkFileChooser    *chooser);
-  gboolean       (*add_shortcut_folder)    (GtkFileChooser    *chooser,
+  void           (*select_all)         	   (CtkFileChooser    *chooser);
+  void           (*unselect_all)       	   (CtkFileChooser    *chooser);
+  GSList *       (*get_files)          	   (CtkFileChooser    *chooser);
+  GFile *        (*get_preview_file)   	   (CtkFileChooser    *chooser);
+  CtkFileSystem *(*get_file_system)    	   (CtkFileChooser    *chooser);
+  void           (*add_filter)         	   (CtkFileChooser    *chooser,
+					    CtkFileFilter     *filter);
+  void           (*remove_filter)      	   (CtkFileChooser    *chooser,
+					    CtkFileFilter     *filter);
+  GSList *       (*list_filters)       	   (CtkFileChooser    *chooser);
+  gboolean       (*add_shortcut_folder)    (CtkFileChooser    *chooser,
 					    GFile             *file,
 					    GError           **error);
-  gboolean       (*remove_shortcut_folder) (GtkFileChooser    *chooser,
+  gboolean       (*remove_shortcut_folder) (CtkFileChooser    *chooser,
 					    GFile             *file,
 					    GError           **error);
-  GSList *       (*list_shortcut_folders)  (GtkFileChooser    *chooser);
+  GSList *       (*list_shortcut_folders)  (CtkFileChooser    *chooser);
 
   /* Signals
    */
-  void (*current_folder_changed) (GtkFileChooser *chooser);
-  void (*selection_changed)      (GtkFileChooser *chooser);
-  void (*update_preview)         (GtkFileChooser *chooser);
-  void (*file_activated)         (GtkFileChooser *chooser);
-  GtkFileChooserConfirmation (*confirm_overwrite) (GtkFileChooser *chooser);
+  void (*current_folder_changed) (CtkFileChooser *chooser);
+  void (*selection_changed)      (CtkFileChooser *chooser);
+  void (*update_preview)         (CtkFileChooser *chooser);
+  void (*file_activated)         (CtkFileChooser *chooser);
+  CtkFileChooserConfirmation (*confirm_overwrite) (CtkFileChooser *chooser);
 
   /* 3.22 additions */
-  void           (*add_choice)    (GtkFileChooser *chooser,
+  void           (*add_choice)    (CtkFileChooser *chooser,
                                    const char      *id,
                                    const char      *label,
                                    const char     **options,
                                    const char     **option_labels);
-  void           (*remove_choice) (GtkFileChooser  *chooser,
+  void           (*remove_choice) (CtkFileChooser  *chooser,
                                    const char      *id);
-  void           (*set_choice)    (GtkFileChooser  *chooser,
+  void           (*set_choice)    (CtkFileChooser  *chooser,
                                    const char      *id,
                                    const char      *option);
-  const char *   (*get_choice)    (GtkFileChooser  *chooser,
+  const char *   (*get_choice)    (CtkFileChooser  *chooser,
                                    const char      *id);
 };
 
-GtkFileSystem *_ctk_file_chooser_get_file_system         (GtkFileChooser    *chooser);
-gboolean       _ctk_file_chooser_add_shortcut_folder     (GtkFileChooser    *chooser,
+CtkFileSystem *_ctk_file_chooser_get_file_system         (CtkFileChooser    *chooser);
+gboolean       _ctk_file_chooser_add_shortcut_folder     (CtkFileChooser    *chooser,
 							  GFile             *folder,
 							  GError           **error);
-gboolean       _ctk_file_chooser_remove_shortcut_folder  (GtkFileChooser    *chooser,
+gboolean       _ctk_file_chooser_remove_shortcut_folder  (CtkFileChooser    *chooser,
 							  GFile             *folder,
 							  GError           **error);
-GSList *       _ctk_file_chooser_list_shortcut_folder_files (GtkFileChooser *chooser);
+GSList *       _ctk_file_chooser_list_shortcut_folder_files (CtkFileChooser *chooser);
 
 
 G_END_DECLS

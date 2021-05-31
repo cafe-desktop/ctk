@@ -24,8 +24,8 @@
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *dialog;
-  GtkWidget *ok G_GNUC_UNUSED;
+  CtkWidget *dialog;
+  CtkWidget *ok G_GNUC_UNUSED;
 
   ctk_init (&argc, &argv);
 

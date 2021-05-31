@@ -1,4 +1,4 @@
-/* Extensive GtkTreeModelFilter tests.
+/* Extensive CtkTreeModelFilter tests.
  * Copyright (C) 2009,2011  Kristian Rietveld  <kris@ctk.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -45,11 +45,11 @@
 #define LEVEL_LENGTH 5
 
 static void
-create_tree_store_set_values (GtkTreeStore *store,
-                              GtkTreeIter  *iter,
+create_tree_store_set_values (CtkTreeStore *store,
+                              CtkTreeIter  *iter,
                               gboolean      visible)
 {
-  GtkTreePath *path;
+  CtkTreePath *path;
   gchar *path_string;
 
   path = ctk_tree_model_get_path (CTK_TREE_MODEL (store), iter);
@@ -66,15 +66,15 @@ create_tree_store_set_values (GtkTreeStore *store,
 
 static void
 create_tree_store_recurse (int           depth,
-                           GtkTreeStore *store,
-                           GtkTreeIter  *parent,
+                           CtkTreeStore *store,
+                           CtkTreeIter  *parent,
                            gboolean      visible)
 {
   int i;
 
   for (i = 0; i < LEVEL_LENGTH; i++)
     {
-      GtkTreeIter iter;
+      CtkTreeIter iter;
 
       ctk_tree_store_insert (store, &iter, parent, i);
       create_tree_store_set_values (store, &iter, visible);
@@ -84,11 +84,11 @@ create_tree_store_recurse (int           depth,
     }
 }
 
-static GtkTreeStore *
+static CtkTreeStore *
 create_tree_store (int      depth,
                    gboolean visible)
 {
-  GtkTreeStore *store;
+  CtkTreeStore *store;
 
   store = ctk_tree_store_new (2, G_TYPE_STRING, G_TYPE_BOOLEAN);
 
@@ -103,10 +103,10 @@ create_tree_store (int      depth,
 
 typedef struct
 {
-  GtkWidget *tree_view;
+  CtkWidget *tree_view;
 
-  GtkTreeStore *store;
-  GtkTreeModelFilter *filter;
+  CtkTreeStore *store;
+  CtkTreeModelFilter *filter;
 
   SignalMonitor *monitor;
 
@@ -129,8 +129,8 @@ filter_test_setup_generic (FilterTest    *fixture,
                            gboolean       empty,
                            gboolean       unfiltered)
 {
-  const GtkTreePath *vroot = test_data;
-  GtkTreeModel *filter;
+  const CtkTreePath *vroot = test_data;
+  CtkTreeModel *filter;
 
   fixture->store = create_tree_store (depth, !empty);
 
@@ -139,7 +139,7 @@ filter_test_setup_generic (FilterTest    *fixture,
 
   /* Please forgive me for casting const away. */
   filter = ctk_tree_model_filter_new (CTK_TREE_MODEL (fixture->store),
-                                      (GtkTreePath *)vroot);
+                                      (CtkTreePath *)vroot);
   fixture->filter = CTK_TREE_MODEL_FILTER (filter);
 
   if (!unfiltered)
@@ -157,7 +157,7 @@ static void
 filter_test_setup_expand_root (FilterTest *fixture)
 {
   int i;
-  GtkTreePath *path;
+  CtkTreePath *path;
 
   path = ctk_tree_path_new_from_indices (0, -1);
 
@@ -214,11 +214,11 @@ filter_test_setup_empty_unfiltered_root_expanded (FilterTest    *fixture,
   filter_test_setup_expand_root (fixture);
 }
 
-static GtkTreePath *
-strip_virtual_root (GtkTreePath *path,
-                    GtkTreePath *root_path)
+static CtkTreePath *
+strip_virtual_root (CtkTreePath *path,
+                    CtkTreePath *root_path)
 {
-  GtkTreePath *real_path;
+  CtkTreePath *real_path;
 
   if (root_path)
     {
@@ -240,11 +240,11 @@ strip_virtual_root (GtkTreePath *path,
 
 static int
 count_visible (FilterTest  *fixture,
-               GtkTreePath *store_path)
+               CtkTreePath *store_path)
 {
   int i;
   int n_visible = 0;
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
   ctk_tree_model_get_iter (CTK_TREE_MODEL (fixture->store),
                            &iter, store_path);
@@ -266,14 +266,14 @@ count_visible (FilterTest  *fixture,
 
 static void
 filter_test_append_refilter_signals_recurse (FilterTest  *fixture,
-                                             GtkTreePath *store_path,
-                                             GtkTreePath *filter_path,
+                                             CtkTreePath *store_path,
+                                             CtkTreePath *filter_path,
                                              int          depth,
-                                             GtkTreePath *root_path)
+                                             CtkTreePath *root_path)
 {
   int i;
   int rows_deleted = 0;
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
   ctk_tree_path_down (store_path);
   ctk_tree_path_down (filter_path);
@@ -284,7 +284,7 @@ filter_test_append_refilter_signals_recurse (FilterTest  *fixture,
   for (i = 0; i < LEVEL_LENGTH; i++)
     {
       gboolean visible;
-      GtkTreePath *real_path;
+      CtkTreePath *real_path;
 
       ctk_tree_model_get (CTK_TREE_MODEL (fixture->store), &iter,
                           1, &visible,
@@ -300,8 +300,8 @@ filter_test_append_refilter_signals_recurse (FilterTest  *fixture,
                   && ctk_tree_model_iter_has_child (CTK_TREE_MODEL (fixture->store),
                                                     &iter))
                 {
-                  GtkTreePath *store_copy;
-                  GtkTreePath *filter_copy;
+                  CtkTreePath *store_copy;
+                  CtkTreePath *filter_copy;
 
                   store_copy = ctk_tree_path_copy (store_path);
                   filter_copy = ctk_tree_path_copy (filter_path);
@@ -341,8 +341,8 @@ filter_test_append_refilter_signals_recurse (FilterTest  *fixture,
 
               if (depth > 1)
                 {
-                  GtkTreePath *store_copy;
-                  GtkTreePath *filter_copy;
+                  CtkTreePath *store_copy;
+                  CtkTreePath *filter_copy;
 
                   store_copy = ctk_tree_path_copy (store_path);
                   filter_copy = ctk_tree_path_copy (filter_path);
@@ -356,7 +356,7 @@ filter_test_append_refilter_signals_recurse (FilterTest  *fixture,
                 }
               else if (depth == 1)
                 {
-                  GtkTreePath *tmp_path;
+                  CtkTreePath *tmp_path;
 
                   /* If all child rows are invisible, then the last row to
                    * become invisible will emit row-has-child-toggled on the
@@ -394,7 +394,7 @@ filter_test_append_refilter_signals_recurse (FilterTest  *fixture,
   if (rows_deleted == LEVEL_LENGTH
       && ctk_tree_path_get_depth (filter_path) > 1)
     {
-      GtkTreePath *real_path;
+      CtkTreePath *real_path;
 
       ctk_tree_path_up (store_path);
       ctk_tree_path_up (filter_path);
@@ -422,8 +422,8 @@ filter_test_append_refilter_signals (FilterTest *fixture,
   /* A special function that walks the tree store like the
    * model validation functions below.
    */
-  GtkTreePath *path;
-  GtkTreePath *filter_path;
+  CtkTreePath *path;
+  CtkTreePath *filter_path;
 
   path = ctk_tree_path_new ();
   filter_path = ctk_tree_path_new ();
@@ -439,13 +439,13 @@ filter_test_append_refilter_signals (FilterTest *fixture,
 static void
 filter_test_append_refilter_signals_with_vroot (FilterTest  *fixture,
                                                 int          depth,
-                                                GtkTreePath *root_path)
+                                                CtkTreePath *root_path)
 {
   /* A special function that walks the tree store like the
    * model validation functions below.
    */
-  GtkTreePath *path;
-  GtkTreePath *filter_path;
+  CtkTreePath *path;
+  CtkTreePath *filter_path;
 
   path = ctk_tree_path_new ();
   filter_path = ctk_tree_path_new ();
@@ -495,12 +495,12 @@ filter_test_teardown (FilterTest    *fixture,
 
 static void
 check_filter_model_recurse (FilterTest  *fixture,
-                            GtkTreePath *store_parent_path,
-                            GtkTreePath *filter_parent_path)
+                            CtkTreePath *store_parent_path,
+                            CtkTreePath *filter_parent_path)
 {
   int i;
-  GtkTreeIter store_iter;
-  GtkTreeIter filter_iter;
+  CtkTreeIter store_iter;
+  CtkTreeIter filter_iter;
   gboolean store_has_next, filter_has_next;
 
   ctk_tree_path_down (store_parent_path);
@@ -524,7 +524,7 @@ check_filter_model_recurse (FilterTest  *fixture,
 
       if (visible)
         {
-          GtkTreePath *tmp;
+          CtkTreePath *tmp;
           gchar *filter_str, *store_str;
 
           g_return_if_fail (filter_has_next == TRUE);
@@ -581,7 +581,7 @@ check_filter_model_recurse (FilterTest  *fixture,
 static void
 check_filter_model (FilterTest *fixture)
 {
-  GtkTreePath *path;
+  CtkTreePath *path;
 
   if (fixture->monitor)
     signal_monitor_assert_is_empty (fixture->monitor);
@@ -593,7 +593,7 @@ check_filter_model (FilterTest *fixture)
 
 static void
 check_filter_model_with_root (FilterTest  *fixture,
-                              GtkTreePath *path)
+                              CtkTreePath *path)
 {
   if (fixture->monitor)
     signal_monitor_assert_is_empty (fixture->monitor);
@@ -606,7 +606,7 @@ check_filter_model_with_root (FilterTest  *fixture,
 /* Helpers */
 
 static void
-check_level_length (GtkTreeModelFilter *filter,
+check_level_length (CtkTreeModelFilter *filter,
                     const gchar        *level,
                     const int           expected_length)
 {
@@ -621,7 +621,7 @@ check_level_length (GtkTreeModelFilter *filter,
     {
       int model_length;
       gboolean retrieved_iter = FALSE;
-      GtkTreeIter iter;
+      CtkTreeIter iter;
 
       retrieved_iter = ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (filter),
                                                             &iter, level);
@@ -636,7 +636,7 @@ set_path_visibility (FilterTest  *fixture,
                      const gchar *path,
                      gboolean     visible)
 {
-  GtkTreeIter store_iter;
+  CtkTreeIter store_iter;
 
   ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store),
                                        &store_iter, path);
@@ -652,8 +652,8 @@ insert_path_with_visibility (FilterTest  *fixture,
                              gboolean     visible)
 {
   int position;
-  GtkTreePath *path;
-  GtkTreeIter parent, iter;
+  CtkTreePath *path;
+  CtkTreeIter parent, iter;
 
   path = ctk_tree_path_new_from_string (path_string);
   position = ctk_tree_path_get_indices (path)[ctk_tree_path_get_depth (path)];
@@ -683,7 +683,7 @@ static void
 verify_test_suite_vroot (FilterTest    *fixture,
                          gconstpointer  user_data)
 {
-  check_filter_model_with_root (fixture, (GtkTreePath *)user_data);
+  check_filter_model_with_root (fixture, (CtkTreePath *)user_data);
 }
 
 
@@ -785,7 +785,7 @@ static void
 filled_hide_child_levels_root_expanded (FilterTest    *fixture,
                                         gconstpointer  user_data)
 {
-  GtkTreePath *path;
+  CtkTreePath *path;
 
   path = ctk_tree_path_new_from_indices (0, -1);
   ctk_tree_view_expand_row (CTK_TREE_VIEW (fixture->tree_view), path, FALSE);
@@ -844,7 +844,7 @@ static void
 filled_vroot_hide_root_level (FilterTest    *fixture,
                               gconstpointer  user_data)
 {
-  GtkTreePath *path = (GtkTreePath *)user_data;
+  CtkTreePath *path = (CtkTreePath *)user_data;
 
   /* These changes do not affect the filter's root level */
   set_path_visibility (fixture, "0", FALSE);
@@ -973,7 +973,7 @@ static void
 filled_vroot_hide_child_levels (FilterTest    *fixture,
                                 gconstpointer  user_data)
 {
-  GtkTreePath *path = (GtkTreePath *)user_data;
+  CtkTreePath *path = (CtkTreePath *)user_data;
 
   set_path_visibility (fixture, "2:0:2", FALSE);
   check_filter_model_with_root (fixture, path);
@@ -1022,8 +1022,8 @@ static void
 filled_vroot_hide_child_levels_root_expanded (FilterTest    *fixture,
                                               gconstpointer  user_data)
 {
-  GtkTreePath *path = (GtkTreePath *)user_data;
-  GtkTreePath *tmp_path;
+  CtkTreePath *path = (CtkTreePath *)user_data;
+  CtkTreePath *tmp_path;
 
   tmp_path = ctk_tree_path_new_from_indices (0, -1);
   ctk_tree_view_expand_row (CTK_TREE_VIEW (fixture->tree_view), tmp_path, FALSE);
@@ -1124,8 +1124,8 @@ static void
 empty_show_multiple_nodes (FilterTest    *fixture,
                            gconstpointer  user_data)
 {
-  GtkTreeIter iter;
-  GtkTreePath *changed_path;
+  CtkTreeIter iter;
+  CtkTreePath *changed_path;
 
   check_filter_model (fixture);
   check_level_length (fixture->filter, NULL, 0);
@@ -1201,7 +1201,7 @@ static void
 empty_vroot_show_nodes (FilterTest    *fixture,
                         gconstpointer  user_data)
 {
-  GtkTreePath *path = (GtkTreePath *)user_data;
+  CtkTreePath *path = (CtkTreePath *)user_data;
 
   check_filter_model_with_root (fixture, path);
   check_level_length (fixture->filter, NULL, 0);
@@ -1245,9 +1245,9 @@ static void
 empty_vroot_show_multiple_nodes (FilterTest    *fixture,
                                  gconstpointer  user_data)
 {
-  GtkTreeIter iter;
-  GtkTreePath *changed_path;
-  GtkTreePath *path = (GtkTreePath *)user_data;
+  CtkTreeIter iter;
+  CtkTreePath *changed_path;
+  CtkTreePath *path = (CtkTreePath *)user_data;
 
   check_filter_model_with_root (fixture, path);
   check_level_length (fixture->filter, NULL, 0);
@@ -1513,7 +1513,7 @@ unfiltered_vroot_hide_single (FilterTest    *fixture,
                               gconstpointer  user_data)
 
 {
-  GtkTreePath *path = (GtkTreePath *)user_data;
+  CtkTreePath *path = (CtkTreePath *)user_data;
 
   signal_monitor_append_signal (fixture->monitor, ROW_CHANGED, "2");
   signal_monitor_append_signal (fixture->monitor, ROW_HAS_CHILD_TOGGLED, "2");
@@ -1538,7 +1538,7 @@ unfiltered_vroot_hide_single_child (FilterTest    *fixture,
                                     gconstpointer  user_data)
 
 {
-  GtkTreePath *path = (GtkTreePath *)user_data;
+  CtkTreePath *path = (CtkTreePath *)user_data;
 
   /* Not visible, so no signal will be received. */
   set_path_visibility (fixture, "2:2:2", FALSE);
@@ -1564,7 +1564,7 @@ unfiltered_vroot_hide_single_child_root_expanded (FilterTest    *fixture,
                                                   gconstpointer  user_data)
 
 {
-  GtkTreePath *path = (GtkTreePath *)user_data;
+  CtkTreePath *path = (CtkTreePath *)user_data;
 
   signal_monitor_append_signal (fixture->monitor, ROW_CHANGED, "2:2");
   signal_monitor_append_signal (fixture->monitor, ROW_HAS_CHILD_TOGGLED, "2:2");
@@ -1587,7 +1587,7 @@ unfiltered_vroot_hide_single_multi_level (FilterTest    *fixture,
                                           gconstpointer  user_data)
 
 {
-  GtkTreePath *path = (GtkTreePath *)user_data;
+  CtkTreePath *path = (CtkTreePath *)user_data;
 
   /* This row is not shown, so its signal is not propagated */
   set_path_visibility (fixture, "2:2:2:2", FALSE);
@@ -1624,7 +1624,7 @@ unfiltered_vroot_hide_single_multi_level_root_expanded (FilterTest    *fixture,
                                                         gconstpointer  user_data)
 
 {
-  GtkTreePath *path = (GtkTreePath *)user_data;
+  CtkTreePath *path = (CtkTreePath *)user_data;
 
   /* This row is not shown, so its signal is not propagated */
   set_path_visibility (fixture, "2:2:2:2", FALSE);
@@ -1811,7 +1811,7 @@ unfiltered_vroot_show_single (FilterTest    *fixture,
                               gconstpointer  user_data)
 
 {
-  GtkTreePath *path = (GtkTreePath *)user_data;
+  CtkTreePath *path = (CtkTreePath *)user_data;
 
   signal_monitor_append_signal (fixture->monitor, ROW_CHANGED, "2");
   signal_monitor_append_signal (fixture->monitor, ROW_HAS_CHILD_TOGGLED, "2");
@@ -1835,7 +1835,7 @@ unfiltered_vroot_show_single_child (FilterTest    *fixture,
                                     gconstpointer  user_data)
 
 {
-  GtkTreePath *path = (GtkTreePath *)user_data;
+  CtkTreePath *path = (CtkTreePath *)user_data;
 
   set_path_visibility (fixture, "2:2:2", TRUE);
 
@@ -1868,7 +1868,7 @@ unfiltered_vroot_show_single_child_root_expanded (FilterTest    *fixture,
                                                   gconstpointer  user_data)
 
 {
-  GtkTreePath *path = (GtkTreePath *)user_data;
+  CtkTreePath *path = (CtkTreePath *)user_data;
 
   signal_monitor_append_signal (fixture->monitor, ROW_CHANGED, "2:2");
   signal_monitor_append_signal (fixture->monitor, ROW_HAS_CHILD_TOGGLED, "2:2");
@@ -1901,7 +1901,7 @@ unfiltered_vroot_show_single_multi_level (FilterTest    *fixture,
                                           gconstpointer  user_data)
 
 {
-  GtkTreePath *path = (GtkTreePath *)user_data;
+  CtkTreePath *path = (CtkTreePath *)user_data;
 
   /* The view is not showing this row (collapsed state), so it is not
    * referenced.  The signal should not go through.
@@ -1939,7 +1939,7 @@ unfiltered_vroot_show_single_multi_level_root_expanded (FilterTest    *fixture,
                                                         gconstpointer  user_data)
 
 {
-  GtkTreePath *path = (GtkTreePath *)user_data;
+  CtkTreePath *path = (CtkTreePath *)user_data;
 
   /* The view is not showing this row (collapsed state), so it is not
    * referenced.  The signal should not go through.
@@ -1980,8 +1980,8 @@ unfiltered_rows_reordered_root_level (FilterTest    *fixture,
   int order0[] = { 1, 2, 3, 4, 0 };
   int order1[] = { 0, 2, 1, 3, 4 };
   int order2[] = { 4, 0, 1, 2, 3 };
-  GtkTreeIter iter0, iter1, iter2, iter3, iter4;
-  GtkTreePath *path;
+  CtkTreeIter iter0, iter1, iter2, iter3, iter4;
+  CtkTreePath *path;
 
   ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store),
                                        &iter0, "0");
@@ -2023,8 +2023,8 @@ unfiltered_rows_reordered_child_level (FilterTest    *fixture,
   int order0[] = { 1, 2, 3, 4, 0 };
   int order1[] = { 0, 2, 1, 3, 4 };
   int order2[] = { 4, 0, 1, 2, 3 };
-  GtkTreeIter iter0, iter1, iter2, iter3, iter4;
-  GtkTreePath *path;
+  CtkTreeIter iter0, iter1, iter2, iter3, iter4;
+  CtkTreePath *path;
 
   /* Expand row 0 */
   path = ctk_tree_path_new_from_indices (0, -1);
@@ -2069,8 +2069,8 @@ filtered_rows_reordered_root_level_first_hidden (FilterTest    *fixture,
   int order0[] = { 1, 2, 3, 0 };
   int order1[] = { 0, 2, 1, 3 };
   int order2[] = { 3, 0, 1, 2 };
-  GtkTreeIter iter1, iter2, iter3, iter4;
-  GtkTreePath *path;
+  CtkTreeIter iter1, iter2, iter3, iter4;
+  CtkTreePath *path;
 
   /* Hide middle path */
   signal_monitor_append_signal (fixture->monitor,
@@ -2116,8 +2116,8 @@ filtered_rows_reordered_root_level_middle_hidden (FilterTest    *fixture,
   int order0[] = { 1, 2, 3, 0 };
   int order1[] = { 0, 2, 1, 3 };
   int order2[] = { 3, 0, 1, 2 };
-  GtkTreeIter iter0, iter1, iter3, iter4;
-  GtkTreePath *path;
+  CtkTreeIter iter0, iter1, iter3, iter4;
+  CtkTreePath *path;
 
   /* Hide middle path */
   signal_monitor_append_signal (fixture->monitor,
@@ -2163,8 +2163,8 @@ filtered_rows_reordered_child_level_first_hidden (FilterTest    *fixture,
   int order0[] = { 1, 2, 3, 0 };
   int order1[] = { 0, 2, 1, 3 };
   int order2[] = { 3, 0, 1, 2 };
-  GtkTreeIter iter1, iter2, iter3, iter4;
-  GtkTreePath *path;
+  CtkTreeIter iter1, iter2, iter3, iter4;
+  CtkTreePath *path;
 
   /* Expand row 0 */
   path = ctk_tree_path_new_from_indices (0, -1);
@@ -2213,8 +2213,8 @@ filtered_rows_reordered_child_level_middle_hidden (FilterTest    *fixture,
   int order0[] = { 1, 2, 3, 0 };
   int order1[] = { 0, 2, 1, 3 };
   int order2[] = { 3, 0, 1, 2 };
-  GtkTreeIter iter0, iter1, iter3, iter4;
-  GtkTreePath *path;
+  CtkTreeIter iter0, iter1, iter3, iter4;
+  CtkTreePath *path;
 
   /* Expand row 0 */
   path = ctk_tree_path_new_from_indices (0, -1);
@@ -2261,8 +2261,8 @@ filtered_rows_reordered_child_level_4_hidden (FilterTest    *fixture,
                                               gconstpointer  user_data)
 {
   int order0[] = { 0 };
-  GtkTreeIter iter1, iter4;
-  GtkTreePath *path;
+  CtkTreeIter iter1, iter4;
+  CtkTreePath *path;
 
   /* Expand row 0 */
   path = ctk_tree_path_new_from_indices (0, -1);
@@ -2301,8 +2301,8 @@ static void
 filtered_rows_reordered_child_level_all_hidden (FilterTest    *fixture,
                                                 gconstpointer  user_data)
 {
-  GtkTreeIter iter1, iter4;
-  GtkTreePath *path;
+  CtkTreeIter iter1, iter4;
+  CtkTreePath *path;
 
   /* Expand row 0 */
   path = ctk_tree_path_new_from_indices (0, -1);
@@ -2341,13 +2341,13 @@ filtered_rows_reordered_child_level_all_hidden (FilterTest    *fixture,
 static void
 insert_before (void)
 {
-  GtkTreeStore *store;
-  GtkTreeModel *filter;
-  GtkWidget *tree_view;
+  CtkTreeStore *store;
+  CtkTreeModel *filter;
+  CtkWidget *tree_view;
   SignalMonitor *monitor;
-  GtkTreeIter iter;
-  GtkTreeIter last_iter;
-  GtkTreePath *path;
+  CtkTreeIter iter;
+  CtkTreeIter last_iter;
+  CtkTreePath *path;
 
   /* This tests two aspects of the row-inserted handling:
    *   1) If the newly inserted node was already handled by building
@@ -2427,12 +2427,12 @@ insert_before (void)
 static void
 insert_child (void)
 {
-  GtkTreeStore *store;
-  GtkTreeModel *filter;
-  GtkWidget *tree_view;
+  CtkTreeStore *store;
+  CtkTreeModel *filter;
+  CtkWidget *tree_view;
   SignalMonitor *monitor;
-  GtkTreeIter parent, iter;
-  GtkTreePath *path;
+  CtkTreeIter parent, iter;
+  CtkTreePath *path;
 
   store = ctk_tree_store_new (2, G_TYPE_STRING, G_TYPE_BOOLEAN);
 
@@ -2450,8 +2450,8 @@ insert_child (void)
   /* Insert child -- invisible */
   path = ctk_tree_path_new_from_indices (0, -1);
   signal_monitor_append_signal_path (monitor, ROW_HAS_CHILD_TOGGLED, path);
-  /* The signal is received twice, once a pass through from GtkTreeStore
-   * and one generated by GtkTreeModelFilter.  Not accurate, but cannot
+  /* The signal is received twice, once a pass through from CtkTreeStore
+   * and one generated by CtkTreeModelFilter.  Not accurate, but cannot
    * hurt.
    */
   signal_monitor_append_signal_path (monitor, ROW_HAS_CHILD_TOGGLED, path);
@@ -2492,10 +2492,10 @@ insert_child (void)
 static void
 remove_node (void)
 {
-  GtkTreeIter iter, iter1, iter2, iter3;
-  GtkListStore *list;
-  GtkTreeModel *filter;
-  GtkWidget *view G_GNUC_UNUSED;
+  CtkTreeIter iter, iter1, iter2, iter3;
+  CtkListStore *list;
+  CtkTreeModel *filter;
+  CtkWidget *view G_GNUC_UNUSED;
 
   list = ctk_list_store_new (1, G_TYPE_INT);
   ctk_list_store_insert_with_values (list, &iter1, 0, 0, 1, -1);
@@ -2522,12 +2522,12 @@ remove_node (void)
 static void
 remove_node_vroot (void)
 {
-  GtkTreeIter parent, root;
-  GtkTreeIter iter, iter1, iter2, iter3;
-  GtkTreeStore *tree;
-  GtkTreeModel *filter;
-  GtkTreePath *path;
-  GtkWidget *view G_GNUC_UNUSED;
+  CtkTreeIter parent, root;
+  CtkTreeIter iter, iter1, iter2, iter3;
+  CtkTreeStore *tree;
+  CtkTreeModel *filter;
+  CtkTreePath *path;
+  CtkWidget *view G_GNUC_UNUSED;
 
   tree = ctk_tree_store_new (1, G_TYPE_INT);
   ctk_tree_store_insert_with_values (tree, &parent, NULL, 0, 0, 0, -1);
@@ -2560,12 +2560,12 @@ remove_node_vroot (void)
 static void
 remove_vroot_ancestor (void)
 {
-  GtkTreeIter parent, root;
-  GtkTreeIter iter, iter1, iter2, iter3;
-  GtkTreeStore *tree;
-  GtkTreeModel *filter;
-  GtkTreePath *path;
-  GtkWidget *view G_GNUC_UNUSED;
+  CtkTreeIter parent, root;
+  CtkTreeIter iter, iter1, iter2, iter3;
+  CtkTreeStore *tree;
+  CtkTreeModel *filter;
+  CtkTreePath *path;
+  CtkWidget *view G_GNUC_UNUSED;
 
   tree = ctk_tree_store_new (1, G_TYPE_INT);
   ctk_tree_store_insert_with_values (tree, &parent, NULL, 0, 0, 0, -1);
@@ -2596,11 +2596,11 @@ remove_vroot_ancestor (void)
 static void
 ref_count_single_level (void)
 {
-  GtkTreeIter iter[5];
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *filter_model;
-  GtkWidget *tree_view;
+  CtkTreeIter iter[5];
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *filter_model;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -2640,11 +2640,11 @@ ref_count_single_level (void)
 static void
 ref_count_two_levels (void)
 {
-  GtkTreeIter parent1, parent2, iter, iter_first;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *filter_model;
-  GtkWidget *tree_view;
+  CtkTreeIter parent1, parent2, iter, iter_first;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *filter_model;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -2715,13 +2715,13 @@ ref_count_two_levels (void)
 static void
 ref_count_three_levels (void)
 {
-  GtkTreeIter grandparent1, grandparent2, parent1, parent2;
-  GtkTreeIter iter_parent1, iter_parent2, iter_parent2_first;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *filter_model;
-  GtkTreePath *path;
-  GtkWidget *tree_view;
+  CtkTreeIter grandparent1, grandparent2, parent1, parent2;
+  CtkTreeIter iter_parent1, iter_parent2, iter_parent2_first;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *filter_model;
+  CtkTreePath *path;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -2888,13 +2888,13 @@ ref_count_three_levels (void)
 static void
 ref_count_delete_row (void)
 {
-  GtkTreeIter grandparent1, grandparent2, parent1, parent2;
-  GtkTreeIter iter_parent1, iter_parent2, iter_parent2_first;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *filter_model;
-  GtkTreePath *path;
-  GtkWidget *tree_view;
+  CtkTreeIter grandparent1, grandparent2, parent1, parent2;
+  CtkTreeIter iter_parent1, iter_parent2, iter_parent2_first;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *filter_model;
+  CtkTreePath *path;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -2978,15 +2978,15 @@ ref_count_delete_row (void)
 static void
 ref_count_filter_row_length_1 (void)
 {
-  GtkTreeIter level1_1;
-  GtkTreeIter level2_1;
-  GtkTreeIter level3_1;
-  GtkTreeIter level4_1;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *filter_model;
-  GtkTreePath *path;
-  GtkWidget *tree_view;
+  CtkTreeIter level1_1;
+  CtkTreeIter level2_1;
+  CtkTreeIter level3_1;
+  CtkTreeIter level4_1;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *filter_model;
+  CtkTreePath *path;
+  CtkWidget *tree_view;
   GType column_types[] = { G_TYPE_BOOLEAN };
 
   model = ctk_tree_model_ref_count_new ();
@@ -3084,15 +3084,15 @@ ref_count_filter_row_length_1 (void)
 static void
 ref_count_filter_row_length_1_remove_in_root_level (void)
 {
-  GtkTreeIter level1_1;
-  GtkTreeIter level2_1;
-  GtkTreeIter level3_1;
-  GtkTreeIter level4_1;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *filter_model;
-  GtkTreePath *path;
-  GtkWidget *tree_view;
+  CtkTreeIter level1_1;
+  CtkTreeIter level2_1;
+  CtkTreeIter level3_1;
+  CtkTreeIter level4_1;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *filter_model;
+  CtkTreePath *path;
+  CtkWidget *tree_view;
   GType column_types[] = { G_TYPE_BOOLEAN };
 
   model = ctk_tree_model_ref_count_new ();
@@ -3166,15 +3166,15 @@ ref_count_filter_row_length_1_remove_in_root_level (void)
 static void
 ref_count_filter_row_length_1_remove_in_child_level (void)
 {
-  GtkTreeIter level1_1;
-  GtkTreeIter level2_1;
-  GtkTreeIter level3_1;
-  GtkTreeIter level4_1;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *filter_model;
-  GtkTreePath *path;
-  GtkWidget *tree_view;
+  CtkTreeIter level1_1;
+  CtkTreeIter level2_1;
+  CtkTreeIter level3_1;
+  CtkTreeIter level4_1;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *filter_model;
+  CtkTreePath *path;
+  CtkWidget *tree_view;
   GType column_types[] = { G_TYPE_BOOLEAN };
 
   model = ctk_tree_model_ref_count_new ();
@@ -3248,15 +3248,15 @@ ref_count_filter_row_length_1_remove_in_child_level (void)
 static void
 ref_count_filter_row_length_gt_1 (void)
 {
-  GtkTreeIter level1_1, level1_2;
-  GtkTreeIter level2_1, level2_2;
-  GtkTreeIter level3_1, level3_2;
-  GtkTreeIter level4_1, level4_2;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *filter_model;
-  GtkTreePath *path;
-  GtkWidget *tree_view;
+  CtkTreeIter level1_1, level1_2;
+  CtkTreeIter level2_1, level2_2;
+  CtkTreeIter level3_1, level3_2;
+  CtkTreeIter level4_1, level4_2;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *filter_model;
+  CtkTreePath *path;
+  CtkWidget *tree_view;
   GType column_types[] = { G_TYPE_BOOLEAN };
 
   model = ctk_tree_model_ref_count_new ();
@@ -3385,15 +3385,15 @@ ref_count_filter_row_length_gt_1 (void)
 static void
 ref_count_filter_row_length_gt_1_visible_children (void)
 {
-  GtkTreeIter level1_1, level1_2;
-  GtkTreeIter level2_1, level2_2;
-  GtkTreeIter level3_1, level3_2;
-  GtkTreeIter level4_1, level4_2;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *filter_model;
-  GtkTreePath *path;
-  GtkWidget *tree_view;
+  CtkTreeIter level1_1, level1_2;
+  CtkTreeIter level2_1, level2_2;
+  CtkTreeIter level3_1, level3_2;
+  CtkTreeIter level4_1, level4_2;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *filter_model;
+  CtkTreePath *path;
+  CtkWidget *tree_view;
   GType column_types[] = { G_TYPE_BOOLEAN };
 
   model = ctk_tree_model_ref_count_new ();
@@ -3499,12 +3499,12 @@ ref_count_filter_row_length_gt_1_visible_children (void)
 static void
 ref_count_cleanup (void)
 {
-  GtkTreeIter grandparent1, grandparent2, parent1, parent2;
-  GtkTreeIter iter_parent1, iter_parent2, iter_parent2_first;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *filter_model;
-  GtkWidget *tree_view;
+  CtkTreeIter grandparent1, grandparent2, parent1, parent2;
+  CtkTreeIter iter_parent1, iter_parent2, iter_parent2_first;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *filter_model;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -3571,14 +3571,14 @@ ref_count_cleanup (void)
 static void
 ref_count_row_ref (void)
 {
-  GtkTreeIter grandparent1, grandparent2, parent1, parent2;
-  GtkTreeIter iter_parent1, iter_parent2, iter_parent2_first;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *filter_model;
-  GtkWidget *tree_view;
-  GtkTreePath *path;
-  GtkTreeRowReference *row_ref;
+  CtkTreeIter grandparent1, grandparent2, parent1, parent2;
+  CtkTreeIter iter_parent1, iter_parent2, iter_parent2_first;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *filter_model;
+  CtkWidget *tree_view;
+  CtkTreePath *path;
+  CtkTreeRowReference *row_ref;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -3671,12 +3671,12 @@ ref_count_row_ref (void)
 static void
 ref_count_transfer_root_level_insert (void)
 {
-  GtkTreeIter grandparent1, grandparent2, grandparent3;
-  GtkTreeIter new_node;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *filter_model;
-  GtkWidget *tree_view;
+  CtkTreeIter grandparent1, grandparent2, grandparent3;
+  CtkTreeIter new_node;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *filter_model;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -3712,11 +3712,11 @@ ref_count_transfer_root_level_insert (void)
 static void
 ref_count_transfer_root_level_remove (void)
 {
-  GtkTreeIter grandparent1, grandparent2, grandparent3;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *filter_model;
-  GtkWidget *tree_view;
+  CtkTreeIter grandparent1, grandparent2, grandparent3;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *filter_model;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -3754,11 +3754,11 @@ ref_count_transfer_root_level_remove (void)
 static void
 ref_count_transfer_root_level_remove_filtered (void)
 {
-  GtkTreeIter grandparent1, grandparent2, grandparent3, grandparent4;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *filter_model;
-  GtkWidget *tree_view;
+  CtkTreeIter grandparent1, grandparent2, grandparent3, grandparent4;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *filter_model;
+  CtkWidget *tree_view;
   GType column_types[] = { G_TYPE_BOOLEAN };
 
   model = ctk_tree_model_ref_count_new ();
@@ -3831,11 +3831,11 @@ ref_count_transfer_root_level_remove_filtered (void)
 static void
 ref_count_transfer_root_level_reordered (void)
 {
-  GtkTreeIter grandparent1, grandparent2, grandparent3;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *filter_model;
-  GtkWidget *tree_view;
+  CtkTreeIter grandparent1, grandparent2, grandparent3;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *filter_model;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -3872,11 +3872,11 @@ ref_count_transfer_root_level_reordered (void)
 static void
 ref_count_transfer_root_level_reordered_filtered (void)
 {
-  GtkTreeIter grandparent1, grandparent2, grandparent3;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *filter_model;
-  GtkWidget *tree_view;
+  CtkTreeIter grandparent1, grandparent2, grandparent3;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *filter_model;
+  CtkWidget *tree_view;
   GType column_types[] = { G_TYPE_BOOLEAN };
 
   model = ctk_tree_model_ref_count_new ();
@@ -3973,12 +3973,12 @@ ref_count_transfer_root_level_reordered_filtered (void)
 static void
 ref_count_transfer_root_level_filter (void)
 {
-  GtkTreeIter grandparent1, grandparent2, grandparent3, grandparent4;
-  GtkTreeIter new_node;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *filter_model;
-  GtkWidget *tree_view;
+  CtkTreeIter grandparent1, grandparent2, grandparent3, grandparent4;
+  CtkTreeIter new_node;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *filter_model;
+  CtkWidget *tree_view;
   GType column_types[] = { G_TYPE_BOOLEAN };
 
   model = ctk_tree_model_ref_count_new ();
@@ -4107,13 +4107,13 @@ ref_count_transfer_root_level_filter (void)
 static void
 ref_count_transfer_child_level_insert (void)
 {
-  GtkTreeIter grandparent1;
-  GtkTreeIter parent1, parent2, parent3;
-  GtkTreeIter new_node;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *filter_model;
-  GtkWidget *tree_view;
+  CtkTreeIter grandparent1;
+  CtkTreeIter parent1, parent2, parent3;
+  CtkTreeIter new_node;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *filter_model;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -4153,12 +4153,12 @@ ref_count_transfer_child_level_insert (void)
 static void
 ref_count_transfer_child_level_remove (void)
 {
-  GtkTreeIter grandparent1;
-  GtkTreeIter parent1, parent2, parent3;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *filter_model;
-  GtkWidget *tree_view;
+  CtkTreeIter grandparent1;
+  CtkTreeIter parent1, parent2, parent3;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *filter_model;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -4201,12 +4201,12 @@ ref_count_transfer_child_level_remove (void)
 static void
 ref_count_transfer_child_level_remove_filtered (void)
 {
-  GtkTreeIter grandparent1;
-  GtkTreeIter parent1, parent2, parent3, parent4;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *filter_model;
-  GtkWidget *tree_view;
+  CtkTreeIter grandparent1;
+  CtkTreeIter parent1, parent2, parent3, parent4;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *filter_model;
+  CtkWidget *tree_view;
   GType column_types[] = { G_TYPE_BOOLEAN };
 
   model = ctk_tree_model_ref_count_new ();
@@ -4288,12 +4288,12 @@ ref_count_transfer_child_level_remove_filtered (void)
 static void
 ref_count_transfer_child_level_reordered (void)
 {
-  GtkTreeIter grandparent1;
-  GtkTreeIter parent1, parent2, parent3;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *filter_model;
-  GtkWidget *tree_view;
+  CtkTreeIter grandparent1;
+  CtkTreeIter parent1, parent2, parent3;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *filter_model;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -4334,12 +4334,12 @@ ref_count_transfer_child_level_reordered (void)
 static void
 ref_count_transfer_child_level_reordered_filtered (void)
 {
-  GtkTreeIter grandparent1;
-  GtkTreeIter parent1, parent2, parent3;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *filter_model;
-  GtkWidget *tree_view;
+  CtkTreeIter grandparent1;
+  CtkTreeIter parent1, parent2, parent3;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *filter_model;
+  CtkWidget *tree_view;
   GType column_types[] = { G_TYPE_BOOLEAN };
 
   model = ctk_tree_model_ref_count_new ();
@@ -4444,13 +4444,13 @@ ref_count_transfer_child_level_reordered_filtered (void)
 static void
 ref_count_transfer_child_level_filter (void)
 {
-  GtkTreeIter root;
-  GtkTreeIter grandparent1, grandparent2, grandparent3, grandparent4;
-  GtkTreeIter new_node;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *filter_model;
-  GtkWidget *tree_view;
+  CtkTreeIter root;
+  CtkTreeIter grandparent1, grandparent2, grandparent3, grandparent4;
+  CtkTreeIter new_node;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *filter_model;
+  CtkWidget *tree_view;
   GType column_types[] = { G_TYPE_BOOLEAN };
 
   model = ctk_tree_model_ref_count_new ();
@@ -4581,11 +4581,11 @@ ref_count_transfer_child_level_filter (void)
 
 
 static gboolean
-specific_path_dependent_filter_func (GtkTreeModel *model,
-                                     GtkTreeIter  *iter,
+specific_path_dependent_filter_func (CtkTreeModel *model,
+                                     CtkTreeIter  *iter,
                                      gpointer      data)
 {
-  GtkTreePath *path;
+  CtkTreePath *path;
 
   path = ctk_tree_model_get_path (model, iter);
   if (ctk_tree_path_get_indices (path)[0] < 4)
@@ -4598,10 +4598,10 @@ static void
 specific_path_dependent_filter (void)
 {
   int i;
-  GtkTreeIter iter;
-  GtkListStore *list;
-  GtkTreeModel *sort;
-  GtkTreeModel *filter;
+  CtkTreeIter iter;
+  CtkListStore *list;
+  CtkTreeModel *sort;
+  CtkTreeModel *filter;
 
   list = ctk_list_store_new (1, G_TYPE_INT);
   ctk_list_store_insert_with_values (list, &iter, 0, 0, 1, -1);
@@ -4640,8 +4640,8 @@ specific_path_dependent_filter (void)
 
 
 static gboolean
-specific_append_after_collapse_visible_func (GtkTreeModel *model,
-                                             GtkTreeIter  *iter,
+specific_append_after_collapse_visible_func (CtkTreeModel *model,
+                                             CtkTreeIter  *iter,
                                              gpointer      data)
 {
   gint number;
@@ -4666,16 +4666,16 @@ specific_append_after_collapse (void)
    * - Add a row.
    */
 
-  GtkTreeIter iter;
-  GtkTreeIter child_iter;
-  GtkTreeIter child_iter2;
-  GtkTreePath *append_path;
-  GtkTreeStore *store;
-  GtkTreeModel *filter;
-  GtkTreeModel *sort;
+  CtkTreeIter iter;
+  CtkTreeIter child_iter;
+  CtkTreeIter child_iter2;
+  CtkTreePath *append_path;
+  CtkTreeStore *store;
+  CtkTreeModel *filter;
+  CtkTreeModel *sort;
 
-  GtkWidget *window;
-  GtkWidget *tree_view;
+  CtkWidget *window;
+  CtkWidget *tree_view;
 
   store = ctk_tree_store_new (2, G_TYPE_STRING, G_TYPE_INT);
 
@@ -4747,17 +4747,17 @@ specific_append_after_collapse (void)
 
 
 static gint
-specific_sort_filter_remove_node_compare_func (GtkTreeModel  *model,
-                                               GtkTreeIter   *iter1,
-                                               GtkTreeIter   *iter2,
+specific_sort_filter_remove_node_compare_func (CtkTreeModel  *model,
+                                               CtkTreeIter   *iter1,
+                                               CtkTreeIter   *iter2,
                                                gpointer       data)
 {
   return -1;
 }
 
 static gboolean
-specific_sort_filter_remove_node_visible_func (GtkTreeModel  *model,
-                                               GtkTreeIter   *iter,
+specific_sort_filter_remove_node_visible_func (CtkTreeModel  *model,
+                                               CtkTreeIter   *iter,
                                                gpointer       data)
 {
   char *item = NULL;
@@ -4783,13 +4783,13 @@ specific_sort_filter_remove_node (void)
    *  - Remove a node from the tree store.
    */
 
-  GtkTreeIter iter;
-  GtkTreeStore *store;
-  GtkTreeModel *filter;
-  GtkTreeModel *sort;
+  CtkTreeIter iter;
+  CtkTreeStore *store;
+  CtkTreeModel *filter;
+  CtkTreeModel *sort;
 
-  GtkWidget *window;
-  GtkWidget *tree_view;
+  CtkWidget *window;
+  CtkWidget *tree_view;
 
   store = ctk_tree_store_new (1, G_TYPE_STRING);
   ctk_tree_store_append (store, &iter, NULL);
@@ -4834,9 +4834,9 @@ specific_sort_filter_remove_root (void)
    * from who this test case originated.  -Kris.
    */
 
-  GtkTreeModel *model, *sort, *filter;
-  GtkTreeIter root, mid, leaf;
-  GtkTreePath *path;
+  CtkTreeModel *model, *sort, *filter;
+  CtkTreeIter root, mid, leaf;
+  CtkTreePath *path;
 
   model = CTK_TREE_MODEL (ctk_tree_store_new (1, G_TYPE_INT));
   ctk_tree_store_append (CTK_TREE_STORE (model), &root, NULL);
@@ -4862,7 +4862,7 @@ static void
 specific_root_mixed_visibility (void)
 {
   int i;
-  GtkTreeModel *filter;
+  CtkTreeModel *filter;
   /* A bit nasty, apologies */
   FilterTest fixture;
 
@@ -4870,7 +4870,7 @@ specific_root_mixed_visibility (void)
 
   for (i = 0; i < LEVEL_LENGTH; i++)
     {
-      GtkTreeIter iter;
+      CtkTreeIter iter;
 
       ctk_tree_store_insert (fixture.store, &iter, NULL, i);
       if (i % 2 == 0)
@@ -4898,8 +4898,8 @@ specific_root_mixed_visibility (void)
 
 
 static gboolean
-specific_has_child_filter_filter_func (GtkTreeModel *model,
-                                       GtkTreeIter  *iter,
+specific_has_child_filter_filter_func (CtkTreeModel *model,
+                                       CtkTreeIter  *iter,
                                        gpointer      data)
 {
   return ctk_tree_model_iter_has_child (model, iter);
@@ -4908,10 +4908,10 @@ specific_has_child_filter_filter_func (GtkTreeModel *model,
 static void
 specific_has_child_filter (void)
 {
-  GtkTreeModel *filter;
-  GtkTreeIter iter, root;
+  CtkTreeModel *filter;
+  CtkTreeIter iter, root;
   FilterTest fixture; /* This is not how it should be done */
-  GtkWidget *tree_view;
+  CtkWidget *tree_view;
 
   fixture.store = ctk_tree_store_new (2, G_TYPE_STRING, G_TYPE_BOOLEAN);
   filter = ctk_tree_model_filter_new (CTK_TREE_MODEL (fixture.store), NULL);
@@ -5017,12 +5017,12 @@ specific_has_child_filter (void)
 
 
 static gboolean
-specific_root_has_child_filter_filter_func (GtkTreeModel *model,
-                                            GtkTreeIter  *iter,
+specific_root_has_child_filter_filter_func (CtkTreeModel *model,
+                                            CtkTreeIter  *iter,
                                             gpointer      data)
 {
   int depth;
-  GtkTreePath *path;
+  CtkTreePath *path;
 
   path = ctk_tree_model_get_path (model, iter);
   depth = ctk_tree_path_get_depth (path);
@@ -5037,10 +5037,10 @@ specific_root_has_child_filter_filter_func (GtkTreeModel *model,
 static void
 specific_root_has_child_filter (void)
 {
-  GtkTreeModel *filter;
-  GtkTreeIter iter, root;
+  CtkTreeModel *filter;
+  CtkTreeIter iter, root;
   FilterTest fixture; /* This is not how it should be done ... */
-  GtkWidget *tree_view;
+  CtkWidget *tree_view;
 
   /* This is a variation on the above test case, specific has-child-filter,
    * herein the has-child check for visibility only applies to root level
@@ -5182,11 +5182,11 @@ specific_root_has_child_filter (void)
 static void
 specific_has_child_filter_on_sort_model (void)
 {
-  GtkTreeModel *filter;
-  GtkTreeModel *sort_model;
-  GtkTreeIter iter, root;
+  CtkTreeModel *filter;
+  CtkTreeModel *sort_model;
+  CtkTreeIter iter, root;
   FilterTest fixture; /* This is not how it should be done */
-  GtkWidget *tree_view;
+  CtkWidget *tree_view;
 
   fixture.store = ctk_tree_store_new (2, G_TYPE_STRING, G_TYPE_BOOLEAN);
   sort_model = ctk_tree_model_sort_new_with_model (CTK_TREE_MODEL (fixture.store));
@@ -5290,8 +5290,8 @@ specific_has_child_filter_on_sort_model (void)
 }
 
 static gboolean
-specific_at_least_2_children_filter_filter_func (GtkTreeModel *model,
-                                                 GtkTreeIter  *iter,
+specific_at_least_2_children_filter_filter_func (CtkTreeModel *model,
+                                                 CtkTreeIter  *iter,
                                                  gpointer      data)
 {
   return ctk_tree_model_iter_n_children (model, iter) >= 2;
@@ -5300,10 +5300,10 @@ specific_at_least_2_children_filter_filter_func (GtkTreeModel *model,
 static void
 specific_at_least_2_children_filter (void)
 {
-  GtkTreeModel *filter;
-  GtkTreeIter iter, root;
+  CtkTreeModel *filter;
+  CtkTreeIter iter, root;
   FilterTest fixture; /* This is not how it should be done */
-  GtkWidget *tree_view;
+  CtkWidget *tree_view;
 
   fixture.store = ctk_tree_store_new (2, G_TYPE_STRING, G_TYPE_BOOLEAN);
   filter = ctk_tree_model_filter_new (CTK_TREE_MODEL (fixture.store), NULL);
@@ -5413,12 +5413,12 @@ specific_at_least_2_children_filter (void)
 static void
 specific_at_least_2_children_filter_on_sort_model (void)
 {
-  GtkTreeRowReference *ref;
-  GtkTreeModel *filter;
-  GtkTreeModel *sort_model;
-  GtkTreeIter iter, root;
+  CtkTreeRowReference *ref;
+  CtkTreeModel *filter;
+  CtkTreeModel *sort_model;
+  CtkTreeIter iter, root;
   FilterTest fixture; /* This is not how it should be done */
-  GtkWidget *tree_view;
+  CtkWidget *tree_view;
 
   fixture.store = ctk_tree_store_new (2, G_TYPE_STRING, G_TYPE_BOOLEAN);
   sort_model = ctk_tree_model_sort_new_with_model (CTK_TREE_MODEL (fixture.store));
@@ -5449,7 +5449,7 @@ specific_at_least_2_children_filter_on_sort_model (void)
   signal_monitor_assert_is_empty (fixture.monitor);
 
     {
-      GtkTreePath *path = ctk_tree_path_new_from_indices (0, 0, -1);
+      CtkTreePath *path = ctk_tree_path_new_from_indices (0, 0, -1);
 
       ref = ctk_tree_row_reference_new (sort_model, path);
       ctk_tree_path_free (path);
@@ -5500,11 +5500,11 @@ specific_filter_add_child (void)
    * from who this test case originated.  -Kris.
    */
 
-  GtkTreeIter iter;
-  GtkTreeIter iter_first;
-  GtkTreeIter child;
-  GtkTreeStore *store;
-  GtkTreeModel *filter G_GNUC_UNUSED;
+  CtkTreeIter iter;
+  CtkTreeIter iter_first;
+  CtkTreeIter child;
+  CtkTreeStore *store;
+  CtkTreeModel *filter G_GNUC_UNUSED;
 
   store = ctk_tree_store_new (1, G_TYPE_STRING);
 
@@ -5530,10 +5530,10 @@ specific_filter_add_child (void)
 static void
 specific_list_store_clear (void)
 {
-  GtkTreeIter iter;
-  GtkListStore *list;
-  GtkTreeModel *filter;
-  GtkWidget *view G_GNUC_UNUSED;
+  CtkTreeIter iter;
+  CtkListStore *list;
+  CtkTreeModel *filter;
+  CtkWidget *view G_GNUC_UNUSED;
 
   list = ctk_list_store_new (1, G_TYPE_INT);
   ctk_list_store_insert_with_values (list, &iter, 0, 0, 1, -1);
@@ -5554,12 +5554,12 @@ specific_list_store_clear (void)
 static void
 specific_sort_ref_leaf_and_remove_ancestor (void)
 {
-  GtkTreeIter iter, child, child2, child3;
-  GtkTreeStore *tree;
-  GtkTreeModel *sort;
-  GtkTreePath *path;
-  GtkTreeRowReference *rowref;
-  GtkWidget *view G_GNUC_UNUSED;
+  CtkTreeIter iter, child, child2, child3;
+  CtkTreeStore *tree;
+  CtkTreeModel *sort;
+  CtkTreePath *path;
+  CtkTreeRowReference *rowref;
+  CtkWidget *view G_GNUC_UNUSED;
 
   tree = ctk_tree_store_new (1, G_TYPE_INT);
   ctk_tree_store_insert_with_values (tree, &iter, NULL, 0, 0, 1, -1);
@@ -5603,12 +5603,12 @@ specific_sort_ref_leaf_and_remove_ancestor (void)
 static void
 specific_ref_leaf_and_remove_ancestor (void)
 {
-  GtkTreeIter iter, child, child2, child3;
-  GtkTreeStore *tree;
-  GtkTreeModel *filter;
-  GtkTreePath *path;
-  GtkTreeRowReference *rowref;
-  GtkWidget *view G_GNUC_UNUSED;
+  CtkTreeIter iter, child, child2, child3;
+  CtkTreeStore *tree;
+  CtkTreeModel *filter;
+  CtkTreePath *path;
+  CtkTreeRowReference *rowref;
+  CtkWidget *view G_GNUC_UNUSED;
 
   tree = ctk_tree_store_new (1, G_TYPE_INT);
   ctk_tree_store_insert_with_values (tree, &iter, NULL, 0, 0, 1, -1);
@@ -5652,12 +5652,12 @@ specific_ref_leaf_and_remove_ancestor (void)
 static void
 specific_virtual_ref_leaf_and_remove_ancestor (void)
 {
-  GtkTreeIter iter, child, child2, child3;
-  GtkTreeStore *tree;
-  GtkTreeModel *filter;
-  GtkTreePath *path;
-  GtkTreeRowReference *rowref;
-  GtkWidget *view G_GNUC_UNUSED;
+  CtkTreeIter iter, child, child2, child3;
+  CtkTreeStore *tree;
+  CtkTreeModel *filter;
+  CtkTreePath *path;
+  CtkTreeRowReference *rowref;
+  CtkWidget *view G_GNUC_UNUSED;
 
   tree = ctk_tree_store_new (1, G_TYPE_INT);
   ctk_tree_store_insert_with_values (tree, &iter, NULL, 0, 0, 1, -1);
@@ -5700,9 +5700,9 @@ specific_virtual_ref_leaf_and_remove_ancestor (void)
 
 
 static int
-specific_bug_301558_sort_func (GtkTreeModel *model,
-                               GtkTreeIter  *a,
-                               GtkTreeIter  *b,
+specific_bug_301558_sort_func (CtkTreeModel *model,
+                               CtkTreeIter  *a,
+                               CtkTreeIter  *b,
                                gpointer      data)
 {
   int i, j;
@@ -5719,11 +5719,11 @@ specific_bug_301558 (void)
   /* Test case for GNOME Bugzilla bug 301558 provided by
    * Markku Vire.
    */
-  GtkTreeStore *tree;
-  GtkTreeModel *filter;
-  GtkTreeModel *sort;
-  GtkTreeIter root, iter, iter2;
-  GtkWidget *view G_GNUC_UNUSED;
+  CtkTreeStore *tree;
+  CtkTreeModel *filter;
+  CtkTreeModel *sort;
+  CtkTreeIter root, iter, iter2;
+  CtkWidget *view G_GNUC_UNUSED;
   int i;
   gboolean add;
 
@@ -5775,8 +5775,8 @@ specific_bug_301558 (void)
 
 
 static gboolean
-specific_bug_311955_filter_func (GtkTreeModel *model,
-                                 GtkTreeIter  *iter,
+specific_bug_311955_filter_func (CtkTreeModel *model,
+                                 CtkTreeIter  *iter,
                                  gpointer      data)
 {
   int value;
@@ -5792,16 +5792,16 @@ specific_bug_311955 (void)
   /* This is a test case for GNOME Bugzilla bug 311955.  It was written
    * by Markku Vire.
    */
-  GtkTreeIter iter, child, root;
-  GtkTreeStore *store;
-  GtkTreeModel *sort;
-  GtkTreeModel *filter;
+  CtkTreeIter iter, child, root;
+  CtkTreeStore *store;
+  CtkTreeModel *sort;
+  CtkTreeModel *filter;
 
-  GtkWidget *window G_GNUC_UNUSED;
-  GtkWidget *tree_view;
+  CtkWidget *window G_GNUC_UNUSED;
+  CtkWidget *tree_view;
   int i;
   int n;
-  GtkTreePath *path;
+  CtkTreePath *path;
 
   g_test_bug ("311955");
 
@@ -5884,13 +5884,13 @@ specific_bug_311955_clean (void)
   /* Cleaned up version of the test case for GNOME Bugzilla bug 311955,
    * which is easier to understand.
    */
-  GtkTreeIter iter, child, grandchild;
-  GtkTreeStore *store;
-  GtkTreeModel *sort;
-  GtkTreeModel *filter;
+  CtkTreeIter iter, child, grandchild;
+  CtkTreeStore *store;
+  CtkTreeModel *sort;
+  CtkTreeModel *filter;
 
-  GtkWidget *tree_view;
-  GtkTreePath *path;
+  CtkWidget *tree_view;
+  CtkTreePath *path;
 
   store = ctk_tree_store_new (1, G_TYPE_INT);
 
@@ -5958,11 +5958,11 @@ specific_bug_346800 (void)
    * by Jonathan Matthew.
    */
 
-  GtkTreeIter node_iters[50];
-  GtkTreeIter child_iters[50];
-  GtkTreeModel *model;
-  GtkTreeModelFilter *filter;
-  GtkTreeStore *store;
+  CtkTreeIter node_iters[50];
+  CtkTreeIter child_iters[50];
+  CtkTreeModel *model;
+  CtkTreeModelFilter *filter;
+  CtkTreeStore *store;
   GType *columns;
   int i;
   int items = 50;
@@ -6010,8 +6010,8 @@ specific_bug_346800 (void)
 }
 
 static gboolean
-specific_bug_464173_visible_func (GtkTreeModel *model,
-                                  GtkTreeIter  *iter,
+specific_bug_464173_visible_func (CtkTreeModel *model,
+                                  CtkTreeIter  *iter,
                                   gpointer      data)
 {
   gboolean *visible = (gboolean *)data;
@@ -6025,10 +6025,10 @@ specific_bug_464173 (void)
   /* Test case for GNOME Bugzilla bug 464173, test case written
    * by Andreas Koehler.
    */
-  GtkTreeStore *model;
-  GtkTreeModelFilter *f_model;
-  GtkTreeIter iter1, iter2;
-  GtkWidget *view G_GNUC_UNUSED;
+  CtkTreeStore *model;
+  CtkTreeModelFilter *f_model;
+  CtkTreeIter iter1, iter2;
+  CtkWidget *view G_GNUC_UNUSED;
   gboolean visible = TRUE;
 
   g_test_bug ("464173");
@@ -6052,8 +6052,8 @@ specific_bug_464173 (void)
 
 
 static gboolean
-specific_bug_540201_filter_func (GtkTreeModel *model,
-                                 GtkTreeIter  *iter,
+specific_bug_540201_filter_func (CtkTreeModel *model,
+                                 CtkTreeIter  *iter,
                                  gpointer      data)
 {
   gboolean has_children;
@@ -6069,11 +6069,11 @@ specific_bug_540201 (void)
   /* Test case for GNOME Bugzilla bug 540201, steps provided by
    * Charles Day.
    */
-  GtkTreeIter iter, root;
-  GtkTreeStore *store;
-  GtkTreeModel *filter;
+  CtkTreeIter iter, root;
+  CtkTreeStore *store;
+  CtkTreeModel *filter;
 
-  GtkWidget *tree_view G_GNUC_UNUSED;
+  CtkWidget *tree_view G_GNUC_UNUSED;
 
   g_test_bug ("540201");
 
@@ -6105,8 +6105,8 @@ specific_bug_540201 (void)
 
 
 static gboolean
-specific_bug_549287_visible_func (GtkTreeModel *model,
-                                  GtkTreeIter  *iter,
+specific_bug_549287_visible_func (CtkTreeModel *model,
+                                  CtkTreeIter  *iter,
                                   gpointer      data)
 {
   gboolean result = FALSE;
@@ -6122,11 +6122,11 @@ specific_bug_549287 (void)
   /* Test case for GNOME Bugzilla bug 529287, provided by Julient Puydt */
 
   int i;
-  GtkTreeStore *store;
-  GtkTreeModel *filtered;
-  GtkWidget *view G_GNUC_UNUSED;
-  GtkTreeIter iter;
-  GtkTreeIter *swap, *parent, *child;
+  CtkTreeStore *store;
+  CtkTreeModel *filtered;
+  CtkWidget *view G_GNUC_UNUSED;
+  CtkTreeIter iter;
+  CtkTreeIter *swap, *parent, *child;
 
   g_test_bug ("529287");
 
@@ -6176,8 +6176,8 @@ specific_bug_549287 (void)
 }
 
 static gboolean
-specific_bug_621076_visible_func (GtkTreeModel *model,
-                                  GtkTreeIter  *iter,
+specific_bug_621076_visible_func (CtkTreeModel *model,
+                                  CtkTreeIter  *iter,
                                   gpointer      data)
 {
   gboolean visible = FALSE;
@@ -6190,7 +6190,7 @@ specific_bug_621076_visible_func (GtkTreeModel *model,
     }
   else
     {
-      GtkTreeIter child_iter;
+      CtkTreeIter child_iter;
       gboolean valid;
 
       /* Recursively check if we have a visible child */
@@ -6220,11 +6220,11 @@ specific_bug_621076 (void)
    * structure.  Also, it is recursive.
    */
 
-  GtkTreeStore *store;
-  GtkTreeModel *filter;
-  GtkWidget *view;
-  GtkTreeIter group_iter;
-  GtkTreeIter item_iter;
+  CtkTreeStore *store;
+  CtkTreeModel *filter;
+  CtkWidget *view;
+  CtkTreeIter group_iter;
+  CtkTreeIter item_iter;
   SignalMonitor *monitor;
 
   g_test_bug ("621076");
@@ -6399,8 +6399,8 @@ specific_bug_621076 (void)
 
 #if 0
   {
-    GtkWidget *window;
-    GtkTreeViewColumn *col;
+    CtkWidget *window;
+    CtkTreeViewColumn *col;
 
     ctk_tree_view_expand_all (CTK_TREE_VIEW (view));
 
@@ -6434,11 +6434,11 @@ specific_bug_621076 (void)
 static void
 specific_bug_657353_related (void)
 {
-  GtkTreeIter node1, node2, node3, node4;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeModel *filter_model;
-  GtkWidget *tree_view;
+  CtkTreeIter node1, node2, node3, node4;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeModel *filter_model;
+  CtkWidget *tree_view;
   GType column_types[] = { G_TYPE_BOOLEAN };
 
   /* ctk_tree_model_filter_rows_reordered() used to have a problem to
@@ -6500,8 +6500,8 @@ specific_bug_657353_related (void)
 }
 
 static gboolean
-specific_bug_657353_visible_func (GtkTreeModel *model,
-                                  GtkTreeIter  *iter,
+specific_bug_657353_visible_func (CtkTreeModel *model,
+                                  CtkTreeIter  *iter,
                                   gpointer      data)
 {
   gchar *str;
@@ -6517,23 +6517,23 @@ specific_bug_657353_visible_func (GtkTreeModel *model,
 static void
 specific_bug_657353 (void)
 {
-  GtkListStore *store;
-  GtkTreeModel *sort_model;
-  GtkTreeModel *filter_model;
-  GtkTreeIter iter, iter_a, iter_b, iter_c;
-  GtkWidget *tree_view;
+  CtkListStore *store;
+  CtkTreeModel *sort_model;
+  CtkTreeModel *filter_model;
+  CtkTreeIter iter, iter_a, iter_b, iter_c;
+  CtkWidget *tree_view;
 
   /* This is a very carefully crafted test case that is triggering the
    * situation described in bug 657353.
    *
-   *   GtkListStore acts like EphyCompletionModel
-   *   GtkTreeModelSort acts like the sort model added in
+   *   CtkListStore acts like EphyCompletionModel
+   *   CtkTreeModelSort acts like the sort model added in
    *                      ephy_location_entry_set_completion.
-   *   GtkTreeModelFilter acts like the filter model in
-   *                      GtkEntryCompletion.
+   *   CtkTreeModelFilter acts like the filter model in
+   *                      CtkEntryCompletion.
    */
 
-  /* Set up a model that's wrapped in a GtkTreeModelSort.  The first item
+  /* Set up a model that's wrapped in a CtkTreeModelSort.  The first item
    * will be hidden.
    */
   store = ctk_list_store_new (1, G_TYPE_STRING);
@@ -6581,10 +6581,10 @@ specific_bug_657353 (void)
 static void
 specific_bug_658696 (void)
 {
-  GtkTreeStore *store;
-  GtkTreeModel *filter;
-  GtkTreePath *vroot;
-  GtkTreeIter iter;
+  CtkTreeStore *store;
+  CtkTreeModel *filter;
+  CtkTreePath *vroot;
+  CtkTreeIter iter;
 
   store = create_tree_store (4, TRUE);
 
@@ -6600,11 +6600,11 @@ specific_bug_658696 (void)
 }
 
 static gboolean
-specific_bug_659022_visible_func (GtkTreeModel *model,
-                                  GtkTreeIter  *iter,
+specific_bug_659022_visible_func (CtkTreeModel *model,
+                                  CtkTreeIter  *iter,
                                   gpointer      data)
 {
-  GtkTreeIter tmp;
+  CtkTreeIter tmp;
 
   if (!ctk_tree_model_iter_parent (model, &tmp, iter))
     {
@@ -6620,11 +6620,11 @@ specific_bug_659022_visible_func (GtkTreeModel *model,
 static void
 specific_bug_659022_row_changed_emission (void)
 {
-  GtkTreeModel *filter;
-  GtkTreeModel *model;
-  GtkTreeIter parent, child, child2;
-  GtkTreePath *path;
-  GtkWidget *tree_view;
+  CtkTreeModel *filter;
+  CtkTreeModel *model;
+  CtkTreeIter parent, child, child2;
+  CtkTreePath *path;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
 
@@ -6659,11 +6659,11 @@ specific_bug_659022_row_changed_emission (void)
 static void
 specific_bug_659022_row_deleted_node_invisible (void)
 {
-  GtkTreeModel *filter;
-  GtkTreeModel *model;
-  GtkTreeIter parent, child;
-  GtkTreeIter parent2, child2, child3;
-  GtkWidget *tree_view;
+  CtkTreeModel *filter;
+  CtkTreeModel *model;
+  CtkTreeIter parent, child;
+  CtkTreeIter parent2, child2, child3;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
 
@@ -6695,12 +6695,12 @@ specific_bug_659022_row_deleted_node_invisible (void)
 static void
 specific_bug_659022_row_deleted_free_level (void)
 {
-  GtkTreeModel *filter;
-  GtkTreeModel *model;
-  GtkTreeModelRefCount *ref_model;
-  GtkTreeIter parent, child;
-  GtkTreeIter parent2, child2, child3;
-  GtkWidget *tree_view;
+  CtkTreeModel *filter;
+  CtkTreeModel *model;
+  CtkTreeModelRefCount *ref_model;
+  CtkTreeIter parent, child;
+  CtkTreeIter parent2, child2, child3;
+  CtkWidget *tree_view;
 
   model = ctk_tree_model_ref_count_new ();
   ref_model = CTK_TREE_MODEL_REF_COUNT (model);
@@ -6758,10 +6758,10 @@ specific_bug_659022_row_deleted_free_level (void)
 static void
 specific_bug_679910 (void)
 {
-  GtkTreeModel *filter;
-  GtkListStore *store;
-  GtkTreeIter iter, nil_iter;
-  GtkTreeIter filter_iter;
+  CtkTreeModel *filter;
+  CtkListStore *store;
+  CtkTreeIter iter, nil_iter;
+  CtkTreeIter filter_iter;
 
   store = ctk_list_store_new (1, G_TYPE_POINTER);
   filter = ctk_tree_model_filter_new (CTK_TREE_MODEL (store), NULL);
@@ -6786,9 +6786,9 @@ static int row_changed_count;
 static int filter_row_changed_count;
 
 static void
-row_changed (GtkTreeModel *model,
-             GtkTreePath  *path,
-             GtkTreeIter  *iter,
+row_changed (CtkTreeModel *model,
+             CtkTreePath  *path,
+             CtkTreeIter  *iter,
              gpointer data)
 {
   int *count = data;
@@ -6799,10 +6799,10 @@ row_changed (GtkTreeModel *model,
 static void
 test_row_changed (void)
 {
-  GtkTreeModel *filter;
-  GtkListStore *store;
-  GtkTreeIter iter1, iter2, iter3;
-  GtkTreeIter fiter1, fiter2, fiter3;
+  CtkTreeModel *filter;
+  CtkListStore *store;
+  CtkTreeIter iter1, iter2, iter3;
+  CtkTreeIter fiter1, fiter2, fiter3;
 
   store = ctk_list_store_new (1, G_TYPE_INT);
   filter = ctk_tree_model_filter_new (CTK_TREE_MODEL (store), NULL);
@@ -7123,7 +7123,7 @@ register_filter_model_tests (void)
                    ref_count_row_ref);
 
   /* Reference counting, transfer of first reference on
-   * first node in level.  This is a GtkTreeModelFilter-specific
+   * first node in level.  This is a CtkTreeModelFilter-specific
    * feature.
    */
   g_test_add_func ("/TreeModelFilter/ref-count/transfer/root-level/insert",

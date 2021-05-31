@@ -1,21 +1,21 @@
 /* Stack
  *
- * GtkStack is a container that shows a single child at a time,
+ * CtkStack is a container that shows a single child at a time,
  * with nice transitions when the visible child changes.
  *
- * GtkStackSwitcher adds buttons to control which child is visible.
+ * CtkStackSwitcher adds buttons to control which child is visible.
  */
 
 #include <ctk/ctk.h>
 
-GtkWidget *
-do_stack (GtkWidget *do_widget)
+CtkWidget *
+do_stack (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkBuilder *builder;
+      CtkBuilder *builder;
 
       builder = ctk_builder_new_from_resource ("/stack/stack.ui");
       ctk_builder_connect_signals (builder, NULL);

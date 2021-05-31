@@ -27,27 +27,27 @@
 
 /**
  * SECTION:ctkshortcutlabel
- * @Title: GtkShortcutLabel
+ * @Title: CtkShortcutLabel
  * @Short_description: Displays a keyboard shortcut
- * @See_also: #GtkCellRendererAccel
+ * @See_also: #CtkCellRendererAccel
  *
- * #GtkShortcutLabel is a widget that represents a single keyboard shortcut or gesture
+ * #CtkShortcutLabel is a widget that represents a single keyboard shortcut or gesture
  * in the user interface.
  */
 
-struct _GtkShortcutLabel
+struct _CtkShortcutLabel
 {
-  GtkBox  parent_instance;
+  CtkBox  parent_instance;
   gchar  *accelerator;
   gchar  *disabled_text;
 };
 
-struct _GtkShortcutLabelClass
+struct _CtkShortcutLabelClass
 {
-  GtkBoxClass parent_class;
+  CtkBoxClass parent_class;
 };
 
-G_DEFINE_TYPE (GtkShortcutLabel, ctk_shortcut_label, CTK_TYPE_BOX)
+G_DEFINE_TYPE (CtkShortcutLabel, ctk_shortcut_label, CTK_TYPE_BOX)
 
 enum {
   PROP_0,
@@ -251,10 +251,10 @@ get_labels (guint key, GdkModifierType modifier, guint *n_mods)
   return retval;
 }
 
-static GtkWidget *
+static CtkWidget *
 dim_label (const gchar *text)
 {
-  GtkWidget *label;
+  CtkWidget *label;
 
   label = ctk_label_new (text);
   ctk_widget_show (label);
@@ -264,7 +264,7 @@ dim_label (const gchar *text)
 }
 
 static void
-display_shortcut (GtkContainer    *self,
+display_shortcut (CtkContainer    *self,
                   guint            key,
                   GdkModifierType  modifier)
 {
@@ -275,7 +275,7 @@ display_shortcut (GtkContainer    *self,
   keys = get_labels (key, modifier, &n_mods);
   for (i = 0; keys[i]; i++)
     {
-      GtkWidget *disp;
+      CtkWidget *disp;
 
       if (i > 0)
         ctk_container_add (self, dim_label ("+"));
@@ -294,7 +294,7 @@ display_shortcut (GtkContainer    *self,
 }
 
 static gboolean
-parse_combination (GtkShortcutLabel *self,
+parse_combination (CtkShortcutLabel *self,
                    const gchar      *str)
 {
   gchar **accels;
@@ -323,7 +323,7 @@ parse_combination (GtkShortcutLabel *self,
 }
 
 static gboolean
-parse_sequence (GtkShortcutLabel *self,
+parse_sequence (CtkShortcutLabel *self,
                 const gchar      *str)
 {
   gchar **accels;
@@ -346,7 +346,7 @@ parse_sequence (GtkShortcutLabel *self,
 }
 
 static gboolean
-parse_range (GtkShortcutLabel *self,
+parse_range (CtkShortcutLabel *self,
              const gchar      *str)
 {
   gchar *dots;
@@ -368,16 +368,16 @@ parse_range (GtkShortcutLabel *self,
 }
 
 static void
-ctk_shortcut_label_rebuild (GtkShortcutLabel *self)
+ctk_shortcut_label_rebuild (CtkShortcutLabel *self)
 {
   gchar **accels;
   gint k;
 
-  ctk_container_foreach (CTK_CONTAINER (self), (GtkCallback)ctk_widget_destroy, NULL);
+  ctk_container_foreach (CTK_CONTAINER (self), (CtkCallback)ctk_widget_destroy, NULL);
 
   if (self->accelerator == NULL || self->accelerator[0] == '\0')
     {
-      GtkWidget *label;
+      CtkWidget *label;
 
       label = dim_label (self->disabled_text);
       ctk_widget_show (label);
@@ -404,7 +404,7 @@ ctk_shortcut_label_rebuild (GtkShortcutLabel *self)
 static void
 ctk_shortcut_label_finalize (GObject *object)
 {
-  GtkShortcutLabel *self = (GtkShortcutLabel *)object;
+  CtkShortcutLabel *self = (CtkShortcutLabel *)object;
 
   g_free (self->accelerator);
   g_free (self->disabled_text);
@@ -418,7 +418,7 @@ ctk_shortcut_label_get_property (GObject    *object,
                                  GValue     *value,
                                  GParamSpec *pspec)
 {
-  GtkShortcutLabel *self = CTK_SHORTCUT_LABEL (object);
+  CtkShortcutLabel *self = CTK_SHORTCUT_LABEL (object);
 
   switch (prop_id)
     {
@@ -441,7 +441,7 @@ ctk_shortcut_label_set_property (GObject      *object,
                                  const GValue *value,
                                  GParamSpec   *pspec)
 {
-  GtkShortcutLabel *self = CTK_SHORTCUT_LABEL (object);
+  CtkShortcutLabel *self = CTK_SHORTCUT_LABEL (object);
 
   switch (prop_id)
     {
@@ -459,7 +459,7 @@ ctk_shortcut_label_set_property (GObject      *object,
 }
 
 static void
-ctk_shortcut_label_class_init (GtkShortcutLabelClass *klass)
+ctk_shortcut_label_class_init (CtkShortcutLabelClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -468,9 +468,9 @@ ctk_shortcut_label_class_init (GtkShortcutLabelClass *klass)
   object_class->set_property = ctk_shortcut_label_set_property;
 
   /**
-   * GtkShortcutLabel:accelerator:
+   * CtkShortcutLabel:accelerator:
    *
-   * The accelerator that @self displays. See #GtkShortcutsShortcut:accelerator
+   * The accelerator that @self displays. See #CtkShortcutsShortcut:accelerator
    * for the accepted syntax.
    *
    * Since: 3.22
@@ -481,7 +481,7 @@ ctk_shortcut_label_class_init (GtkShortcutLabelClass *klass)
                          (G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
   /**
-   * GtkShortcutLabel:disabled-text:
+   * CtkShortcutLabel:disabled-text:
    *
    * The text that is displayed when no accelerator is set.
    *
@@ -496,7 +496,7 @@ ctk_shortcut_label_class_init (GtkShortcutLabelClass *klass)
 }
 
 static void
-ctk_shortcut_label_init (GtkShortcutLabel *self)
+ctk_shortcut_label_init (CtkShortcutLabel *self)
 {
   ctk_box_set_spacing (CTK_BOX (self), 6);
 
@@ -508,13 +508,13 @@ ctk_shortcut_label_init (GtkShortcutLabel *self)
  * ctk_shortcut_label_new:
  * @accelerator: the initial accelerator
  *
- * Creates a new #GtkShortcutLabel with @accelerator set.
+ * Creates a new #CtkShortcutLabel with @accelerator set.
  *
- * Returns: (transfer full): a newly-allocated #GtkShortcutLabel
+ * Returns: (transfer full): a newly-allocated #CtkShortcutLabel
  *
  * Since: 3.22
  */
-GtkWidget *
+CtkWidget *
 ctk_shortcut_label_new (const gchar *accelerator)
 {
   return g_object_new (CTK_TYPE_SHORTCUT_LABEL,
@@ -524,7 +524,7 @@ ctk_shortcut_label_new (const gchar *accelerator)
 
 /**
  * ctk_shortcut_label_get_accelerator:
- * @self: a #GtkShortcutLabel
+ * @self: a #CtkShortcutLabel
  *
  * Retrieves the current accelerator of @self.
  *
@@ -533,7 +533,7 @@ ctk_shortcut_label_new (const gchar *accelerator)
  * Since: 3.22
  */
 const gchar *
-ctk_shortcut_label_get_accelerator (GtkShortcutLabel *self)
+ctk_shortcut_label_get_accelerator (CtkShortcutLabel *self)
 {
   g_return_val_if_fail (CTK_IS_SHORTCUT_LABEL (self), NULL);
 
@@ -542,7 +542,7 @@ ctk_shortcut_label_get_accelerator (GtkShortcutLabel *self)
 
 /**
  * ctk_shortcut_label_set_accelerator:
- * @self: a #GtkShortcutLabel
+ * @self: a #CtkShortcutLabel
  * @accelerator: the new accelerator
  *
  * Sets the accelerator to be displayed by @self.
@@ -550,7 +550,7 @@ ctk_shortcut_label_get_accelerator (GtkShortcutLabel *self)
  * Since: 3.22
  */
 void
-ctk_shortcut_label_set_accelerator (GtkShortcutLabel *self,
+ctk_shortcut_label_set_accelerator (CtkShortcutLabel *self,
                                     const gchar      *accelerator)
 {
   g_return_if_fail (CTK_IS_SHORTCUT_LABEL (self));
@@ -566,7 +566,7 @@ ctk_shortcut_label_set_accelerator (GtkShortcutLabel *self,
 
 /**
  * ctk_shortcut_label_get_disabled_text:
- * @self: a #GtkShortcutLabel
+ * @self: a #CtkShortcutLabel
  *
  * Retrieves the text that is displayed when no accelerator is set.
  *
@@ -576,7 +576,7 @@ ctk_shortcut_label_set_accelerator (GtkShortcutLabel *self,
  * Since: 3.22
  */
 const gchar *
-ctk_shortcut_label_get_disabled_text (GtkShortcutLabel *self)
+ctk_shortcut_label_get_disabled_text (CtkShortcutLabel *self)
 {
   g_return_val_if_fail (CTK_IS_SHORTCUT_LABEL (self), NULL);
 
@@ -585,7 +585,7 @@ ctk_shortcut_label_get_disabled_text (GtkShortcutLabel *self)
 
 /**
  * ctk_shortcut_label_set_disabled_text:
- * @self: a #GtkShortcutLabel
+ * @self: a #CtkShortcutLabel
  * @disabled_text: the text to be displayed when no accelerator is set
  *
  * Sets the text to be displayed by @self when no accelerator is set.
@@ -593,7 +593,7 @@ ctk_shortcut_label_get_disabled_text (GtkShortcutLabel *self)
  * Since: 3.22
  */
 void
-ctk_shortcut_label_set_disabled_text (GtkShortcutLabel *self,
+ctk_shortcut_label_set_disabled_text (CtkShortcutLabel *self,
                                       const gchar      *disabled_text)
 {
   g_return_if_fail (CTK_IS_SHORTCUT_LABEL (self));

@@ -32,11 +32,11 @@ typedef enum {
   SNAPSHOT_DRAW
 } SnapshotMode;
 
-static GtkWidget *
-builder_get_toplevel (GtkBuilder *builder)
+static CtkWidget *
+builder_get_toplevel (CtkBuilder *builder)
 {
   GSList *list, *walk;
-  GtkWidget *window = NULL;
+  CtkWidget *window = NULL;
 
   list = ctk_builder_get_objects (builder);
   for (walk = list; walk; walk = walk->next)
@@ -94,7 +94,7 @@ check_for_draw (GdkEvent *event, gpointer data)
 }
 
 static cairo_surface_t *
-snapshot_widget (GtkWidget *widget, SnapshotMode mode)
+snapshot_widget (CtkWidget *widget, SnapshotMode mode)
 {
   cairo_surface_t *surface;
   cairo_pattern_t *bg;
@@ -105,7 +105,7 @@ snapshot_widget (GtkWidget *widget, SnapshotMode mode)
   loop = g_main_loop_new (NULL, FALSE);
 
   /* We wait until the widget is drawn for the first time.
-   * We can not wait for a GtkWidget::draw event, because that might not
+   * We can not wait for a CtkWidget::draw event, because that might not
    * happen if the window is fully obscured by windowed child widgets.
    * Alternatively, we could wait for an expose event on widget's window.
    * Both of these are rather hairy, not sure what's best.
@@ -166,7 +166,7 @@ snapshot_widget (GtkWidget *widget, SnapshotMode mode)
 }
 
 static void
-connect_signals (GtkBuilder    *builder,
+connect_signals (CtkBuilder    *builder,
                  GObject       *object,
                  const gchar   *signal_name,
                  const gchar   *handler_name,
@@ -255,8 +255,8 @@ connect_signals (GtkBuilder    *builder,
 cairo_surface_t *
 reftest_snapshot_ui_file (const char *ui_file)
 {
-  GtkWidget *window;
-  GtkBuilder *builder;
+  CtkWidget *window;
+  CtkBuilder *builder;
   GError *error = NULL;
   char *directory;
 

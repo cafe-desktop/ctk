@@ -10,13 +10,13 @@ enum {
   N_SIMPLE_COLUMNS
 };
 
-static GtkCellRenderer *cell_1 = NULL, *cell_2 = NULL, *cell_3 = NULL;
+static CtkCellRenderer *cell_1 = NULL, *cell_2 = NULL, *cell_3 = NULL;
 
-static GtkTreeModel *
+static CtkTreeModel *
 simple_list_model (void)
 {
-  GtkTreeIter   iter;
-  GtkListStore *store = 
+  CtkTreeIter   iter;
+  CtkListStore *store = 
     ctk_list_store_new (N_SIMPLE_COLUMNS,
 			G_TYPE_STRING,  /* name text */
 			G_TYPE_STRING,  /* icon name */
@@ -74,16 +74,16 @@ simple_list_model (void)
 		      -1);
 
 
-  return (GtkTreeModel *)store;
+  return (CtkTreeModel *)store;
 }
 
-static GtkWidget *
+static CtkWidget *
 simple_iconview (void)
 {
-  GtkTreeModel *model;
-  GtkWidget *iconview;
-  GtkCellArea *area;
-  GtkCellRenderer *renderer;
+  CtkTreeModel *model;
+  CtkWidget *iconview;
+  CtkCellArea *area;
+  CtkCellRenderer *renderer;
 
   iconview = ctk_icon_view_new ();
   ctk_widget_show (iconview);
@@ -116,59 +116,59 @@ simple_iconview (void)
 }
 
 static void
-orientation_changed (GtkComboBox      *combo,
-		     GtkIconView *iconview)
+orientation_changed (CtkComboBox      *combo,
+		     CtkIconView *iconview)
 {
-  GtkOrientation orientation = ctk_combo_box_get_active (combo);
+  CtkOrientation orientation = ctk_combo_box_get_active (combo);
 
   ctk_icon_view_set_item_orientation (iconview, orientation);
 }
 
 static void
-align_cell_2_toggled (GtkToggleButton  *toggle,
-		      GtkIconView *iconview)
+align_cell_2_toggled (CtkToggleButton  *toggle,
+		      CtkIconView *iconview)
 {
-  GtkCellArea *area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (iconview));
+  CtkCellArea *area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (iconview));
   gboolean     align = ctk_toggle_button_get_active (toggle);
 
   ctk_cell_area_cell_set (area, cell_2, "align", align, NULL);
 }
 
 static void
-align_cell_3_toggled (GtkToggleButton  *toggle,
-		      GtkIconView *iconview)
+align_cell_3_toggled (CtkToggleButton  *toggle,
+		      CtkIconView *iconview)
 {
-  GtkCellArea *area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (iconview));
+  CtkCellArea *area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (iconview));
   gboolean     align = ctk_toggle_button_get_active (toggle);
 
   ctk_cell_area_cell_set (area, cell_3, "align", align, NULL);
 }
 
 static void
-expand_cell_1_toggled (GtkToggleButton  *toggle,
-		       GtkIconView *iconview)
+expand_cell_1_toggled (CtkToggleButton  *toggle,
+		       CtkIconView *iconview)
 {
-  GtkCellArea *area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (iconview));
+  CtkCellArea *area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (iconview));
   gboolean     expand = ctk_toggle_button_get_active (toggle);
 
   ctk_cell_area_cell_set (area, cell_1, "expand", expand, NULL);
 }
 
 static void
-expand_cell_2_toggled (GtkToggleButton  *toggle,
-		       GtkIconView *iconview)
+expand_cell_2_toggled (CtkToggleButton  *toggle,
+		       CtkIconView *iconview)
 {
-  GtkCellArea *area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (iconview));
+  CtkCellArea *area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (iconview));
   gboolean     expand = ctk_toggle_button_get_active (toggle);
 
   ctk_cell_area_cell_set (area, cell_2, "expand", expand, NULL);
 }
 
 static void
-expand_cell_3_toggled (GtkToggleButton  *toggle,
-		       GtkIconView *iconview)
+expand_cell_3_toggled (CtkToggleButton  *toggle,
+		       CtkIconView *iconview)
 {
-  GtkCellArea *area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (iconview));
+  CtkCellArea *area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (iconview));
   gboolean     expand = ctk_toggle_button_get_active (toggle);
 
   ctk_cell_area_cell_set (area, cell_3, "expand", expand, NULL);
@@ -177,8 +177,8 @@ expand_cell_3_toggled (GtkToggleButton  *toggle,
 static void
 simple_cell_area (void)
 {
-  GtkWidget *window, *widget;
-  GtkWidget *iconview, *frame, *vbox, *hbox;
+  CtkWidget *window, *widget;
+  CtkWidget *iconview, *frame, *vbox, *hbox;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
@@ -262,7 +262,7 @@ simple_cell_area (void)
 /*******************************************************
  *                      Focus Test                     *
  *******************************************************/
-static GtkCellRenderer *focus_renderer, *sibling_renderer;
+static CtkCellRenderer *focus_renderer, *sibling_renderer;
 
 enum {
   FOCUS_COLUMN_NAME,
@@ -271,11 +271,11 @@ enum {
   N_FOCUS_COLUMNS
 };
 
-static GtkTreeModel *
+static CtkTreeModel *
 focus_list_model (void)
 {
-  GtkTreeIter   iter;
-  GtkListStore *store = 
+  CtkTreeIter   iter;
+  CtkListStore *store = 
     ctk_list_store_new (N_FOCUS_COLUMNS,
 			G_TYPE_STRING,  /* name text */
 			G_TYPE_BOOLEAN, /* check */
@@ -302,16 +302,16 @@ focus_list_model (void)
 		      FOCUS_COLUMN_STATIC_TEXT, "Does it feed on cute kittens ?",
 		      -1);
 
-  return (GtkTreeModel *)store;
+  return (CtkTreeModel *)store;
 }
 
 static void
-cell_toggled (GtkCellRendererToggle *cell_renderer,
+cell_toggled (CtkCellRendererToggle *cell_renderer,
 	      const gchar           *path,
-	      GtkIconView      *iconview)
+	      CtkIconView      *iconview)
 {
-  GtkTreeModel *model = ctk_icon_view_get_model (iconview);
-  GtkTreeIter   iter;
+  CtkTreeModel *model = ctk_icon_view_get_model (iconview);
+  CtkTreeIter   iter;
   gboolean      active;
 
   g_print ("Cell toggled !\n");
@@ -324,13 +324,13 @@ cell_toggled (GtkCellRendererToggle *cell_renderer,
 }
 
 static void
-cell_edited (GtkCellRendererToggle *cell_renderer,
+cell_edited (CtkCellRendererToggle *cell_renderer,
 	     const gchar           *path,
 	     const gchar           *new_text,
-	     GtkIconView      *iconview)
+	     CtkIconView      *iconview)
 {
-  GtkTreeModel *model = ctk_icon_view_get_model (iconview);
-  GtkTreeIter   iter;
+  CtkTreeModel *model = ctk_icon_view_get_model (iconview);
+  CtkTreeIter   iter;
 
   g_print ("Cell edited with new text '%s' !\n", new_text);
 
@@ -340,13 +340,13 @@ cell_edited (GtkCellRendererToggle *cell_renderer,
   ctk_list_store_set (CTK_LIST_STORE (model), &iter, FOCUS_COLUMN_NAME, new_text, -1);
 }
 
-static GtkWidget *
-focus_iconview (gboolean color_bg, GtkCellRenderer **focus, GtkCellRenderer **sibling)
+static CtkWidget *
+focus_iconview (gboolean color_bg, CtkCellRenderer **focus, CtkCellRenderer **sibling)
 {
-  GtkTreeModel *model;
-  GtkWidget *iconview;
-  GtkCellArea *area;
-  GtkCellRenderer *renderer, *toggle;
+  CtkTreeModel *model;
+  CtkWidget *iconview;
+  CtkCellArea *area;
+  CtkCellRenderer *renderer, *toggle;
 
   iconview = ctk_icon_view_new ();
   ctk_widget_show (iconview);
@@ -404,10 +404,10 @@ focus_iconview (gboolean color_bg, GtkCellRenderer **focus, GtkCellRenderer **si
 }
 
 static void
-focus_sibling_toggled (GtkToggleButton  *toggle,
-		       GtkIconView *iconview)
+focus_sibling_toggled (CtkToggleButton  *toggle,
+		       CtkIconView *iconview)
 {
-  GtkCellArea *area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (iconview));
+  CtkCellArea *area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (iconview));
   gboolean     active = ctk_toggle_button_get_active (toggle);
 
   if (active)
@@ -422,8 +422,8 @@ focus_sibling_toggled (GtkToggleButton  *toggle,
 static void
 focus_cell_area (void)
 {
-  GtkWidget *window, *widget;
-  GtkWidget *iconview, *frame, *vbox, *hbox;
+  CtkWidget *window, *widget;
+  CtkWidget *iconview, *frame, *vbox, *hbox;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   hbox  = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 4);
@@ -477,10 +477,10 @@ focus_cell_area (void)
  *                  Background Area                    *
  *******************************************************/
 static void
-cell_spacing_changed (GtkSpinButton    *spin_button,
-		      GtkIconView *iconview)
+cell_spacing_changed (CtkSpinButton    *spin_button,
+		      CtkIconView *iconview)
 {
-  GtkCellArea *area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (iconview));
+  CtkCellArea *area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (iconview));
   gint        value;
 
   value = (gint)ctk_spin_button_get_value (spin_button);
@@ -489,8 +489,8 @@ cell_spacing_changed (GtkSpinButton    *spin_button,
 }
 
 static void
-row_spacing_changed (GtkSpinButton    *spin_button,
-		     GtkIconView *iconview)
+row_spacing_changed (CtkSpinButton    *spin_button,
+		     CtkIconView *iconview)
 {
   gint value;
 
@@ -500,8 +500,8 @@ row_spacing_changed (GtkSpinButton    *spin_button,
 }
 
 static void
-item_padding_changed (GtkSpinButton    *spin_button,
-		     GtkIconView *iconview)
+item_padding_changed (CtkSpinButton    *spin_button,
+		     CtkIconView *iconview)
 {
   gint value;
 
@@ -513,8 +513,8 @@ item_padding_changed (GtkSpinButton    *spin_button,
 static void
 background_area (void)
 {
-  GtkWidget *window, *widget, *label, *main_vbox;
-  GtkWidget *iconview, *frame, *vbox, *hbox;
+  CtkWidget *window, *widget, *label, *main_vbox;
+  CtkWidget *iconview, *frame, *vbox, *hbox;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   hbox  = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 4);

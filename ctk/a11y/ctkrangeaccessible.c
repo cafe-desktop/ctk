@@ -21,30 +21,30 @@
 #include <ctk/ctk.h>
 #include "ctkrangeaccessible.h"
 
-struct _GtkRangeAccessiblePrivate
+struct _CtkRangeAccessiblePrivate
 {
-  GtkAdjustment *adjustment;
+  CtkAdjustment *adjustment;
 };
 
 static void atk_value_interface_init  (AtkValueIface  *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkRangeAccessible, ctk_range_accessible, CTK_TYPE_WIDGET_ACCESSIBLE,
-                         G_ADD_PRIVATE (GtkRangeAccessible)
+G_DEFINE_TYPE_WITH_CODE (CtkRangeAccessible, ctk_range_accessible, CTK_TYPE_WIDGET_ACCESSIBLE,
+                         G_ADD_PRIVATE (CtkRangeAccessible)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_VALUE, atk_value_interface_init))
 
 static void
-ctk_range_accessible_value_changed (GtkAdjustment *adjustment,
+ctk_range_accessible_value_changed (CtkAdjustment *adjustment,
                                     gpointer       data)
 {
   g_object_notify (G_OBJECT (data), "accessible-value");
 }
 
 static void
-ctk_range_accessible_widget_set (GtkAccessible *accessible)
+ctk_range_accessible_widget_set (CtkAccessible *accessible)
 {
-  GtkRangeAccessiblePrivate *priv = CTK_RANGE_ACCESSIBLE (accessible)->priv;
-  GtkWidget *range;
-  GtkAdjustment *adj;
+  CtkRangeAccessiblePrivate *priv = CTK_RANGE_ACCESSIBLE (accessible)->priv;
+  CtkWidget *range;
+  CtkAdjustment *adj;
 
   range = ctk_accessible_get_widget (accessible);
   adj = ctk_range_get_adjustment (CTK_RANGE (range));
@@ -59,9 +59,9 @@ ctk_range_accessible_widget_set (GtkAccessible *accessible)
 }
 
 static void
-ctk_range_accessible_widget_unset (GtkAccessible *accessible)
+ctk_range_accessible_widget_unset (CtkAccessible *accessible)
 {
-  GtkRangeAccessiblePrivate *priv = CTK_RANGE_ACCESSIBLE (accessible)->priv;
+  CtkRangeAccessiblePrivate *priv = CTK_RANGE_ACCESSIBLE (accessible)->priv;
 
   if (priv->adjustment)
     {
@@ -85,7 +85,7 @@ static void
 ctk_range_accessible_notify_ctk (GObject    *obj,
                                  GParamSpec *pspec)
 {
-  GtkWidget *widget = CTK_WIDGET (obj);
+  CtkWidget *widget = CTK_WIDGET (obj);
   AtkObject *range;
 
   if (strcmp (pspec->name, "adjustment") == 0)
@@ -100,11 +100,11 @@ ctk_range_accessible_notify_ctk (GObject    *obj,
 
 
 static void
-ctk_range_accessible_class_init (GtkRangeAccessibleClass *klass)
+ctk_range_accessible_class_init (CtkRangeAccessibleClass *klass)
 {
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
-  GtkAccessibleClass *accessible_class = (GtkAccessibleClass*)klass;
-  GtkWidgetAccessibleClass *widget_class = (GtkWidgetAccessibleClass*)klass;
+  CtkAccessibleClass *accessible_class = (CtkAccessibleClass*)klass;
+  CtkWidgetAccessibleClass *widget_class = (CtkWidgetAccessibleClass*)klass;
 
   class->initialize = ctk_range_accessible_initialize;
 
@@ -115,7 +115,7 @@ ctk_range_accessible_class_init (GtkRangeAccessibleClass *klass)
 }
 
 static void
-ctk_range_accessible_init (GtkRangeAccessible *range)
+ctk_range_accessible_init (CtkRangeAccessible *range)
 {
   range->priv = ctk_range_accessible_get_instance_private (range);
 }
@@ -124,8 +124,8 @@ static void
 ctk_range_accessible_get_current_value (AtkValue *obj,
                                         GValue   *value)
 {
-  GtkWidget *widget;
-  GtkAdjustment *adjustment;
+  CtkWidget *widget;
+  CtkAdjustment *adjustment;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   adjustment = ctk_range_get_adjustment (CTK_RANGE (widget));
@@ -141,8 +141,8 @@ static void
 ctk_range_accessible_get_maximum_value (AtkValue *obj,
                                         GValue   *value)
 {
-  GtkWidget *widget;
-  GtkAdjustment *adjustment;
+  CtkWidget *widget;
+  CtkAdjustment *adjustment;
   gdouble max;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
@@ -165,8 +165,8 @@ static void
 ctk_range_accessible_get_minimum_value (AtkValue *obj,
                                         GValue   *value)
 {
-  GtkWidget *widget;
-  GtkAdjustment *adjustment;
+  CtkWidget *widget;
+  CtkAdjustment *adjustment;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   adjustment = ctk_range_get_adjustment (CTK_RANGE (widget));
@@ -182,8 +182,8 @@ static void
 ctk_range_accessible_get_minimum_increment (AtkValue *obj,
                                             GValue   *value)
 {
-  GtkWidget *widget;
-  GtkAdjustment *adjustment;
+  CtkWidget *widget;
+  CtkAdjustment *adjustment;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   adjustment = ctk_range_get_adjustment (CTK_RANGE (widget));
@@ -199,8 +199,8 @@ static gboolean
 ctk_range_accessible_set_current_value (AtkValue     *obj,
                                         const GValue *value)
 {
- GtkWidget *widget;
-  GtkAdjustment *adjustment;
+ CtkWidget *widget;
+  CtkAdjustment *adjustment;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   adjustment = ctk_range_get_adjustment (CTK_RANGE (widget));
@@ -217,8 +217,8 @@ ctk_range_accessible_get_value_and_text (AtkValue  *obj,
                                          gdouble   *value,
                                          gchar    **text)
 {
-  GtkWidget *widget;
-  GtkAdjustment *adjustment;
+  CtkWidget *widget;
+  CtkAdjustment *adjustment;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   adjustment = ctk_range_get_adjustment (CTK_RANGE (widget));
@@ -232,8 +232,8 @@ ctk_range_accessible_get_value_and_text (AtkValue  *obj,
 static AtkRange *
 ctk_range_accessible_get_range (AtkValue *obj)
 {
-  GtkWidget *widget;
-  GtkAdjustment *adjustment;
+  CtkWidget *widget;
+  CtkAdjustment *adjustment;
   gdouble min, max;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
@@ -255,8 +255,8 @@ static void
 ctk_range_accessible_set_value (AtkValue      *obj,
                                 const gdouble  value)
 {
-  GtkWidget *widget;
-  GtkAdjustment *adjustment;
+  CtkWidget *widget;
+  CtkAdjustment *adjustment;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   adjustment = ctk_range_get_adjustment (CTK_RANGE (widget));
@@ -269,8 +269,8 @@ ctk_range_accessible_set_value (AtkValue      *obj,
 static gdouble
 ctk_range_accessible_get_increment (AtkValue *obj)
 {
-  GtkWidget *widget;
-  GtkAdjustment *adjustment;
+  CtkWidget *widget;
+  CtkAdjustment *adjustment;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   adjustment = ctk_range_get_adjustment (CTK_RANGE (widget));

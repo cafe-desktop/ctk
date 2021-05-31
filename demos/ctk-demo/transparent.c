@@ -1,6 +1,6 @@
 /* Overlay/Transparency
  *
- * Use transparent background on GdkWindows to create a shadow effect on a GtkOverlay widget.
+ * Use transparent background on GdkWindows to create a shadow effect on a CtkOverlay widget.
  */
 
 #include <ctk/ctk.h>
@@ -161,7 +161,7 @@ draw_shadow_box (cairo_t   *cr,
 }
 
 static gboolean
-draw_callback (GtkWidget *widget,
+draw_callback (CtkWidget *widget,
                cairo_t   *cr,
                gpointer   data)
 {
@@ -179,18 +179,18 @@ draw_callback (GtkWidget *widget,
   return FALSE;
 }
 
-GtkWidget *
-do_transparent (GtkWidget *do_widget)
+CtkWidget *
+do_transparent (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkWidget *view;
-      GtkWidget *sw;
-      GtkWidget *overlay;
-      GtkWidget *entry;
-      GtkCssProvider *provider;
+      CtkWidget *view;
+      CtkWidget *sw;
+      CtkWidget *overlay;
+      CtkWidget *entry;
+      CtkCssProvider *provider;
       gchar *css;
 
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);

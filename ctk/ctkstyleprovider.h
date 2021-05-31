@@ -31,9 +31,9 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_STYLE_PROVIDER          (ctk_style_provider_get_type ())
-#define CTK_STYLE_PROVIDER(o)            (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_STYLE_PROVIDER, GtkStyleProvider))
+#define CTK_STYLE_PROVIDER(o)            (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_STYLE_PROVIDER, CtkStyleProvider))
 #define CTK_IS_STYLE_PROVIDER(o)         (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_STYLE_PROVIDER))
-#define CTK_STYLE_PROVIDER_GET_IFACE(o)  (G_TYPE_INSTANCE_GET_INTERFACE ((o), CTK_TYPE_STYLE_PROVIDER, GtkStyleProviderIface))
+#define CTK_STYLE_PROVIDER_GET_IFACE(o)  (G_TYPE_INSTANCE_GET_INTERFACE ((o), CTK_TYPE_STYLE_PROVIDER, CtkStyleProviderIface))
 
 /**
  * CTK_STYLE_PROVIDER_PRIORITY_FALLBACK:
@@ -60,7 +60,7 @@ G_BEGIN_DECLS
  * CTK_STYLE_PROVIDER_PRIORITY_SETTINGS:
  *
  * The priority used for style information provided
- * via #GtkSettings.
+ * via #CtkSettings.
  *
  * This priority is higher than #CTK_STYLE_PROVIDER_PRIORITY_THEME
  * to let settings override themes.
@@ -70,7 +70,7 @@ G_BEGIN_DECLS
 /**
  * CTK_STYLE_PROVIDER_PRIORITY_APPLICATION:
  *
- * A priority that can be used when adding a #GtkStyleProvider
+ * A priority that can be used when adding a #CtkStyleProvider
  * for application-specific style information.
  */
 #define CTK_STYLE_PROVIDER_PRIORITY_APPLICATION 600
@@ -86,52 +86,52 @@ G_BEGIN_DECLS
  */
 #define CTK_STYLE_PROVIDER_PRIORITY_USER        800
 
-typedef struct _GtkStyleProviderIface GtkStyleProviderIface;
-typedef struct _GtkStyleProvider GtkStyleProvider; /* dummy typedef */
+typedef struct _CtkStyleProviderIface CtkStyleProviderIface;
+typedef struct _CtkStyleProvider CtkStyleProvider; /* dummy typedef */
 
 /**
- * GtkStyleProviderIface:
+ * CtkStyleProviderIface:
  * @get_style: Gets a set of style information that applies to a widget path.
  * @get_style_property: Gets the value of a widget style property that applies to a widget path.
  * @get_icon_factory: Gets the icon factory that applies to a widget path.
  */
-struct _GtkStyleProviderIface
+struct _CtkStyleProviderIface
 {
   /*< private >*/
   GTypeInterface g_iface;
 
   /*< public >*/
 
-  GtkStyleProperties * (* get_style) (GtkStyleProvider *provider,
-                                      GtkWidgetPath    *path);
+  CtkStyleProperties * (* get_style) (CtkStyleProvider *provider,
+                                      CtkWidgetPath    *path);
 
-  gboolean (* get_style_property) (GtkStyleProvider *provider,
-                                   GtkWidgetPath    *path,
-                                   GtkStateFlags     state,
+  gboolean (* get_style_property) (CtkStyleProvider *provider,
+                                   CtkWidgetPath    *path,
+                                   CtkStateFlags     state,
                                    GParamSpec       *pspec,
                                    GValue           *value);
 
-  GtkIconFactory * (* get_icon_factory) (GtkStyleProvider *provider,
-					 GtkWidgetPath    *path);
+  CtkIconFactory * (* get_icon_factory) (CtkStyleProvider *provider,
+					 CtkWidgetPath    *path);
 };
 
 GDK_AVAILABLE_IN_ALL
 GType ctk_style_provider_get_type (void) G_GNUC_CONST;
 
 GDK_DEPRECATED_IN_3_8
-GtkStyleProperties *ctk_style_provider_get_style (GtkStyleProvider *provider,
-                                                  GtkWidgetPath    *path);
+CtkStyleProperties *ctk_style_provider_get_style (CtkStyleProvider *provider,
+                                                  CtkWidgetPath    *path);
 
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_style_provider_get_style_property (GtkStyleProvider *provider,
-                                                GtkWidgetPath    *path,
-                                                GtkStateFlags     state,
+gboolean ctk_style_provider_get_style_property (CtkStyleProvider *provider,
+                                                CtkWidgetPath    *path,
+                                                CtkStateFlags     state,
                                                 GParamSpec       *pspec,
                                                 GValue           *value);
 
 GDK_DEPRECATED_IN_3_8_FOR(NULL)
-GtkIconFactory * ctk_style_provider_get_icon_factory (GtkStyleProvider *provider,
-						      GtkWidgetPath    *path);
+CtkIconFactory * ctk_style_provider_get_icon_factory (CtkStyleProvider *provider,
+						      CtkWidgetPath    *path);
 
 G_END_DECLS
 

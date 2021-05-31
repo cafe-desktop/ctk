@@ -20,8 +20,8 @@
 
 #define N_BUTTONS 3
 
-GtkWidget *bbox = NULL;
-GtkWidget *hbbox = NULL, *vbbox = NULL;
+CtkWidget *bbox = NULL;
+CtkWidget *hbbox = NULL, *vbbox = NULL;
 
 static const char* styles[] = { "CTK_BUTTONBOX_SPREAD",
 				"CTK_BUTTONBOX_EDGE",
@@ -31,12 +31,12 @@ static const char* styles[] = { "CTK_BUTTONBOX_SPREAD",
 				"CTK_BUTTONBOX_EXPAND",
 				NULL};
 
-static const char* types[] = { "GtkHButtonBox",
-			       "GtkVButtonBox",
+static const char* types[] = { "CtkHButtonBox",
+			       "CtkVButtonBox",
 			       NULL};
 
 static void
-populate_combo_with (GtkComboBoxText *combo, const char** elements)
+populate_combo_with (CtkComboBoxText *combo, const char** elements)
 {
   int i;
   
@@ -48,19 +48,19 @@ populate_combo_with (GtkComboBoxText *combo, const char** elements)
 }
 
 static void
-combo_changed_cb (GtkComboBoxText *combo,
+combo_changed_cb (CtkComboBoxText *combo,
 		  gpointer user_data)
 {
   gint active = ctk_combo_box_get_active (CTK_COMBO_BOX (combo));
 
   ctk_button_box_set_layout (CTK_BUTTON_BOX (bbox),
-			     (GtkButtonBoxStyle) (active + 1));
+			     (CtkButtonBoxStyle) (active + 1));
 }
 
 static void
-reparent_widget (GtkWidget *widget,
-		 GtkWidget *old_parent,
-		 GtkWidget *new_parent)
+reparent_widget (CtkWidget *widget,
+		 CtkWidget *old_parent,
+		 CtkWidget *new_parent)
 {
   g_object_ref (widget);
   ctk_container_remove (CTK_CONTAINER (old_parent), widget);
@@ -69,12 +69,12 @@ reparent_widget (GtkWidget *widget,
 }
 
 static void
-combo_types_changed_cb (GtkComboBoxText *combo,
-			GtkWidget **buttons)
+combo_types_changed_cb (CtkComboBoxText *combo,
+			CtkWidget **buttons)
 {
   int i;
-  GtkWidget *old_parent, *new_parent;
-  GtkButtonBoxStyle style;
+  CtkWidget *old_parent, *new_parent;
+  CtkButtonBoxStyle style;
 
   gint active = ctk_combo_box_get_active (CTK_COMBO_BOX (combo));
 
@@ -99,8 +99,8 @@ combo_types_changed_cb (GtkComboBoxText *combo,
 }
 
 static void
-option_cb (GtkToggleButton *option,
-	   GtkWidget *button)
+option_cb (CtkToggleButton *option,
+	   CtkWidget *button)
 {
   gboolean active = ctk_toggle_button_get_active (option);
   
@@ -114,8 +114,8 @@ int
 main (int    argc,
       char **argv)
 {
-  GtkWidget *window, *buttons[N_BUTTONS];
-  GtkWidget *vbox, *hbox, *combo_styles, *combo_types, *option;
+  CtkWidget *window, *buttons[N_BUTTONS];
+  CtkWidget *vbox, *hbox, *combo_styles, *combo_types, *option;
   int i;
   
   ctk_init (&argc, &argv);
@@ -126,7 +126,7 @@ main (int    argc,
   vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
   ctk_container_add (CTK_CONTAINER (window), vbox);
   
-  /* GtkHButtonBox */
+  /* CtkHButtonBox */
   
   hbbox = ctk_button_box_new (CTK_ORIENTATION_HORIZONTAL);
   ctk_box_pack_start (CTK_BOX (vbox), hbbox, TRUE, TRUE, 5);
@@ -140,7 +140,7 @@ main (int    argc,
 
   ctk_button_box_set_layout (CTK_BUTTON_BOX (hbbox), CTK_BUTTONBOX_SPREAD);
   
-  /* GtkVButtonBox */
+  /* CtkVButtonBox */
   vbbox = ctk_button_box_new (CTK_ORIENTATION_VERTICAL);
   ctk_box_pack_start (CTK_BOX (vbox), vbbox, TRUE, TRUE, 5);
   

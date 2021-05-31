@@ -34,28 +34,28 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_INVISIBLE		(ctk_invisible_get_type ())
-#define CTK_INVISIBLE(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_INVISIBLE, GtkInvisible))
-#define CTK_INVISIBLE_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_INVISIBLE, GtkInvisibleClass))
+#define CTK_INVISIBLE(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_INVISIBLE, CtkInvisible))
+#define CTK_INVISIBLE_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_INVISIBLE, CtkInvisibleClass))
 #define CTK_IS_INVISIBLE(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_INVISIBLE))
 #define CTK_IS_INVISIBLE_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_INVISIBLE))
-#define CTK_INVISIBLE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_INVISIBLE, GtkInvisibleClass))
+#define CTK_INVISIBLE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_INVISIBLE, CtkInvisibleClass))
 
 
-typedef struct _GtkInvisible              GtkInvisible;
-typedef struct _GtkInvisiblePrivate       GtkInvisiblePrivate;
-typedef struct _GtkInvisibleClass         GtkInvisibleClass;
+typedef struct _CtkInvisible              CtkInvisible;
+typedef struct _CtkInvisiblePrivate       CtkInvisiblePrivate;
+typedef struct _CtkInvisibleClass         CtkInvisibleClass;
 
-struct _GtkInvisible
+struct _CtkInvisible
 {
-  GtkWidget widget;
+  CtkWidget widget;
 
   /*< private >*/
-  GtkInvisiblePrivate *priv;
+  CtkInvisiblePrivate *priv;
 };
 
-struct _GtkInvisibleClass
+struct _CtkInvisibleClass
 {
-  GtkWidgetClass parent_class;
+  CtkWidgetClass parent_class;
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -68,14 +68,14 @@ GDK_AVAILABLE_IN_ALL
 GType ctk_invisible_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget* ctk_invisible_new            (void);
+CtkWidget* ctk_invisible_new            (void);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* ctk_invisible_new_for_screen (GdkScreen    *screen);
+CtkWidget* ctk_invisible_new_for_screen (GdkScreen    *screen);
 GDK_AVAILABLE_IN_ALL
-void	   ctk_invisible_set_screen	(GtkInvisible *invisible,
+void	   ctk_invisible_set_screen	(CtkInvisible *invisible,
 					 GdkScreen    *screen);
 GDK_AVAILABLE_IN_ALL
-GdkScreen* ctk_invisible_get_screen	(GtkInvisible *invisible);
+GdkScreen* ctk_invisible_get_screen	(CtkInvisible *invisible);
 
 G_END_DECLS
 

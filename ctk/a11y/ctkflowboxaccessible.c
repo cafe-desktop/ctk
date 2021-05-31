@@ -23,11 +23,11 @@
 
 static void atk_selection_interface_init (AtkSelectionIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkFlowBoxAccessible, ctk_flow_box_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (CtkFlowBoxAccessible, ctk_flow_box_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_SELECTION, atk_selection_interface_init))
 
 static void
-ctk_flow_box_accessible_init (GtkFlowBoxAccessible *accessible)
+ctk_flow_box_accessible_init (CtkFlowBoxAccessible *accessible)
 {
 }
 
@@ -44,7 +44,7 @@ static AtkStateSet*
 ctk_flow_box_accessible_ref_state_set (AtkObject *obj)
 {
   AtkStateSet *state_set;
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   state_set = ATK_OBJECT_CLASS (ctk_flow_box_accessible_parent_class)->ref_state_set (obj);
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
@@ -56,7 +56,7 @@ ctk_flow_box_accessible_ref_state_set (AtkObject *obj)
 }
 
 static void
-ctk_flow_box_accessible_class_init (GtkFlowBoxAccessibleClass *klass)
+ctk_flow_box_accessible_class_init (CtkFlowBoxAccessibleClass *klass)
 {
   AtkObjectClass *object_class = ATK_OBJECT_CLASS (klass);
 
@@ -68,9 +68,9 @@ static gboolean
 ctk_flow_box_accessible_add_selection (AtkSelection *selection,
                                        gint          idx)
 {
-  GtkWidget *box;
+  CtkWidget *box;
   GList *children;
-  GtkWidget *child;
+  CtkWidget *child;
 
   box = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (box == NULL)
@@ -91,9 +91,9 @@ static gboolean
 ctk_flow_box_accessible_remove_selection (AtkSelection *selection,
                                           gint          idx)
 {
-  GtkWidget *box;
+  CtkWidget *box;
   GList *children;
-  GtkWidget *child;
+  CtkWidget *child;
 
   box = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (box == NULL)
@@ -113,7 +113,7 @@ ctk_flow_box_accessible_remove_selection (AtkSelection *selection,
 static gboolean
 ctk_flow_box_accessible_clear_selection (AtkSelection *selection)
 {
-  GtkWidget *box;
+  CtkWidget *box;
 
   box = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (box == NULL)
@@ -126,7 +126,7 @@ ctk_flow_box_accessible_clear_selection (AtkSelection *selection)
 static gboolean
 ctk_flow_box_accessible_select_all (AtkSelection *selection)
 {
-  GtkWidget *box;
+  CtkWidget *box;
 
   box = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (box == NULL)
@@ -139,12 +139,12 @@ ctk_flow_box_accessible_select_all (AtkSelection *selection)
 typedef struct
 {
   gint idx;
-  GtkWidget *child;
+  CtkWidget *child;
 } FindSelectedData;
 
 static void
-find_selected_child (GtkFlowBox      *box,
-                     GtkFlowBoxChild *child,
+find_selected_child (CtkFlowBox      *box,
+                     CtkFlowBoxChild *child,
                      gpointer         data)
 {
   FindSelectedData *d = data;
@@ -162,7 +162,7 @@ static AtkObject *
 ctk_flow_box_accessible_ref_selection (AtkSelection *selection,
                                        gint          idx)
 {
-  GtkWidget *box;
+  CtkWidget *box;
   AtkObject *accessible;
   FindSelectedData data;
 
@@ -183,8 +183,8 @@ ctk_flow_box_accessible_ref_selection (AtkSelection *selection,
 }
 
 static void
-count_selected (GtkFlowBox      *box,
-                GtkFlowBoxChild *child,
+count_selected (CtkFlowBox      *box,
+                CtkFlowBoxChild *child,
                 gpointer         data)
 {
   gint *count = data;
@@ -194,7 +194,7 @@ count_selected (GtkFlowBox      *box,
 static gint
 ctk_flow_box_accessible_get_selection_count (AtkSelection *selection)
 {
-  GtkWidget *box;
+  CtkWidget *box;
   gint count;
 
   box = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
@@ -211,8 +211,8 @@ static gboolean
 ctk_flow_box_accessible_is_child_selected (AtkSelection *selection,
                                            gint          idx)
 {
-  GtkWidget *box;
-  GtkFlowBoxChild *child;
+  CtkWidget *box;
+  CtkFlowBoxChild *child;
 
   box = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (box == NULL)
@@ -235,7 +235,7 @@ static void atk_selection_interface_init (AtkSelectionIface *iface)
 }
 
 void
-_ctk_flow_box_accessible_selection_changed (GtkWidget *box)
+_ctk_flow_box_accessible_selection_changed (CtkWidget *box)
 {
   AtkObject *accessible;
   accessible = ctk_widget_get_accessible (box);
@@ -243,8 +243,8 @@ _ctk_flow_box_accessible_selection_changed (GtkWidget *box)
 }
 
 void
-_ctk_flow_box_accessible_update_cursor (GtkWidget *box,
-                                        GtkWidget *child)
+_ctk_flow_box_accessible_update_cursor (CtkWidget *box,
+                                        CtkWidget *child)
 {
   AtkObject *accessible;
   AtkObject *descendant;

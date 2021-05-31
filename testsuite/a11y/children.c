@@ -26,14 +26,14 @@
 
 typedef struct
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   gpointer child[3];
 } STATE;
 
 static void
 test_scrolled_window_child_count (void)
 {
-  GtkWidget *sw;
+  CtkWidget *sw;
   AtkObject *accessible;
 
   sw = ctk_scrolled_window_new (NULL, NULL);
@@ -70,7 +70,7 @@ static void
 remove_child (STATE *state,
               gint i)
 {
-  GtkWidget *child;
+  CtkWidget *child;
 
   if (CTK_IS_ENTRY (state->widget))
     {
@@ -137,7 +137,7 @@ do_create_child (STATE *state, gint i)
 }
 
 static void
-test_add_remove (GtkWidget *widget)
+test_add_remove (CtkWidget *widget)
 {
   AtkObject *accessible;
   AtkObject *child_accessible;
@@ -215,7 +215,7 @@ test_add_remove (GtkWidget *widget)
 static void
 add_child_test (const gchar      *prefix,
                 GTestFixtureFunc  test_func,
-                GtkWidget        *widget)
+                CtkWidget        *widget)
 {
   gchar *path;
 
@@ -230,7 +230,7 @@ add_child_test (const gchar      *prefix,
 }
 
 static void
-add_child_tests (GtkWidget *widget)
+add_child_tests (CtkWidget *widget)
 {
   g_object_ref_sink (widget);
   add_child_test ("/child/add-remove", (GTestFixtureFunc)test_add_remove, widget);

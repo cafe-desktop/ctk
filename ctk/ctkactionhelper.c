@@ -33,34 +33,34 @@ typedef struct
   GActionGroup *group;
 
   GHashTable *watchers;
-} GtkActionHelperGroup;
+} CtkActionHelperGroup;
 
-static void             ctk_action_helper_action_added                  (GtkActionHelper    *helper,
+static void             ctk_action_helper_action_added                  (CtkActionHelper    *helper,
                                                                          gboolean            enabled,
                                                                          const GVariantType *parameter_type,
                                                                          GVariant           *state,
                                                                          gboolean            should_emit_signals);
 
-static void             ctk_action_helper_action_removed                (GtkActionHelper    *helper,
+static void             ctk_action_helper_action_removed                (CtkActionHelper    *helper,
                                                                          gboolean            should_emit_signals);
 
-static void             ctk_action_helper_action_enabled_changed        (GtkActionHelper    *helper,
+static void             ctk_action_helper_action_enabled_changed        (CtkActionHelper    *helper,
                                                                          gboolean            enabled);
 
-static void             ctk_action_helper_action_state_changed          (GtkActionHelper    *helper,
+static void             ctk_action_helper_action_state_changed          (CtkActionHelper    *helper,
                                                                          GVariant           *new_state);
 
-typedef GObjectClass GtkActionHelperClass;
+typedef GObjectClass CtkActionHelperClass;
 
-struct _GtkActionHelper
+struct _CtkActionHelper
 {
   GObject parent_instance;
 
-  GtkWidget *widget;
+  CtkWidget *widget;
 
-  GtkActionHelperGroup *group;
+  CtkActionHelperGroup *group;
 
-  GtkActionMuxer *action_context;
+  CtkActionMuxer *action_context;
   gchar *action_name;
 
   GVariant *target;
@@ -69,7 +69,7 @@ struct _GtkActionHelper
   gboolean enabled;
   gboolean active;
 
-  GtkButtonRole role;
+  CtkButtonRole role;
 
   gint reporting;
 };
@@ -85,13 +85,13 @@ enum
 
 static GParamSpec *ctk_action_helper_pspecs[N_PROPS];
 
-static void ctk_action_helper_observer_iface_init (GtkActionObserverInterface *iface);
+static void ctk_action_helper_observer_iface_init (CtkActionObserverInterface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkActionHelper, ctk_action_helper, G_TYPE_OBJECT,
+G_DEFINE_TYPE_WITH_CODE (CtkActionHelper, ctk_action_helper, G_TYPE_OBJECT,
   G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTION_OBSERVER, ctk_action_helper_observer_iface_init))
 
 static void
-ctk_action_helper_report_change (GtkActionHelper *helper,
+ctk_action_helper_report_change (CtkActionHelper *helper,
                                  guint            prop_id)
 {
   helper->reporting++;
@@ -133,7 +133,7 @@ ctk_action_helper_report_change (GtkActionHelper *helper,
 }
 
 static void
-ctk_action_helper_action_added (GtkActionHelper    *helper,
+ctk_action_helper_action_added (CtkActionHelper    *helper,
                                 gboolean            enabled,
                                 const GVariantType *parameter_type,
                                 GVariant           *state,
@@ -191,7 +191,7 @@ ctk_action_helper_action_added (GtkActionHelper    *helper,
 }
 
 static void
-ctk_action_helper_action_removed (GtkActionHelper *helper,
+ctk_action_helper_action_removed (CtkActionHelper *helper,
                                   gboolean         should_emit_signals)
 {
   CTK_NOTE(ACTIONS, g_message ("%s: action %s was removed", "actionhelper", helper->action_name));
@@ -219,7 +219,7 @@ ctk_action_helper_action_removed (GtkActionHelper *helper,
 }
 
 static void
-ctk_action_helper_action_enabled_changed (GtkActionHelper *helper,
+ctk_action_helper_action_enabled_changed (CtkActionHelper *helper,
                                           gboolean         enabled)
 {
   CTK_NOTE(ACTIONS, g_message ("%s: action %s: enabled changed to %d", "actionhelper",  helper->action_name, enabled));
@@ -235,7 +235,7 @@ ctk_action_helper_action_enabled_changed (GtkActionHelper *helper,
 }
 
 static void
-ctk_action_helper_action_state_changed (GtkActionHelper *helper,
+ctk_action_helper_action_state_changed (CtkActionHelper *helper,
                                         GVariant        *new_state)
 {
   gboolean was_active;
@@ -264,7 +264,7 @@ static void
 ctk_action_helper_get_property (GObject *object, guint prop_id,
                                 GValue *value, GParamSpec *pspec)
 {
-  GtkActionHelper *helper = CTK_ACTION_HELPER (object);
+  CtkActionHelper *helper = CTK_ACTION_HELPER (object);
 
   switch (prop_id)
     {
@@ -288,7 +288,7 @@ ctk_action_helper_get_property (GObject *object, guint prop_id,
 static void
 ctk_action_helper_finalize (GObject *object)
 {
-  GtkActionHelper *helper = CTK_ACTION_HELPER (object);
+  CtkActionHelper *helper = CTK_ACTION_HELPER (object);
 
   g_free (helper->action_name);
 
@@ -300,8 +300,8 @@ ctk_action_helper_finalize (GObject *object)
 }
 
 static void
-ctk_action_helper_observer_action_added (GtkActionObserver   *observer,
-                                         GtkActionObservable *observable,
+ctk_action_helper_observer_action_added (CtkActionObserver   *observer,
+                                         CtkActionObservable *observable,
                                          const gchar         *action_name,
                                          const GVariantType  *parameter_type,
                                          gboolean             enabled,
@@ -311,8 +311,8 @@ ctk_action_helper_observer_action_added (GtkActionObserver   *observer,
 }
 
 static void
-ctk_action_helper_observer_action_enabled_changed (GtkActionObserver   *observer,
-                                                   GtkActionObservable *observable,
+ctk_action_helper_observer_action_enabled_changed (CtkActionObserver   *observer,
+                                                   CtkActionObservable *observable,
                                                    const gchar         *action_name,
                                                    gboolean             enabled)
 {
@@ -320,8 +320,8 @@ ctk_action_helper_observer_action_enabled_changed (GtkActionObserver   *observer
 }
 
 static void
-ctk_action_helper_observer_action_state_changed (GtkActionObserver   *observer,
-                                                 GtkActionObservable *observable,
+ctk_action_helper_observer_action_state_changed (CtkActionObserver   *observer,
+                                                 CtkActionObservable *observable,
                                                  const gchar         *action_name,
                                                  GVariant            *state)
 {
@@ -329,20 +329,20 @@ ctk_action_helper_observer_action_state_changed (GtkActionObserver   *observer,
 }
 
 static void
-ctk_action_helper_observer_action_removed (GtkActionObserver   *observer,
-                                           GtkActionObservable *observable,
+ctk_action_helper_observer_action_removed (CtkActionObserver   *observer,
+                                           CtkActionObservable *observable,
                                            const gchar         *action_name)
 {
   ctk_action_helper_action_removed (CTK_ACTION_HELPER (observer), TRUE);
 }
 
 static void
-ctk_action_helper_init (GtkActionHelper *helper)
+ctk_action_helper_init (CtkActionHelper *helper)
 {
 }
 
 static void
-ctk_action_helper_class_init (GtkActionHelperClass *class)
+ctk_action_helper_class_init (CtkActionHelperClass *class)
 {
   class->get_property = ctk_action_helper_get_property;
   class->finalize = ctk_action_helper_finalize;
@@ -359,7 +359,7 @@ ctk_action_helper_class_init (GtkActionHelperClass *class)
 }
 
 static void
-ctk_action_helper_observer_iface_init (GtkActionObserverInterface *iface)
+ctk_action_helper_observer_iface_init (CtkActionObserverInterface *iface)
 {
   iface->action_added = ctk_action_helper_observer_action_added;
   iface->action_enabled_changed = ctk_action_helper_observer_action_enabled_changed;
@@ -369,10 +369,10 @@ ctk_action_helper_observer_iface_init (GtkActionObserverInterface *iface)
 
 /*< private >
  * ctk_action_helper_new:
- * @widget: a #GtkWidget implementing #GtkActionable
+ * @widget: a #CtkWidget implementing #CtkActionable
  *
  * Creates a helper to track the state of a named action.  This will
- * usually be used by widgets implementing #GtkActionable.
+ * usually be used by widgets implementing #CtkActionable.
  *
  * This helper class is usually used by @widget itself.  In order to
  * avoid reference cycles, the helper does not hold a reference on
@@ -381,12 +381,12 @@ ctk_action_helper_observer_iface_init (GtkActionObserverInterface *iface)
  * of the widget, you should take a ref on @widget for each ref you hold
  * on the helper.
  *
- * Returns: a new #GtkActionHelper
+ * Returns: a new #CtkActionHelper
  */
-GtkActionHelper *
-ctk_action_helper_new (GtkActionable *widget)
+CtkActionHelper *
+ctk_action_helper_new (CtkActionable *widget)
 {
-  GtkActionHelper *helper;
+  CtkActionHelper *helper;
   GParamSpec *pspec;
 
   g_return_val_if_fail (CTK_IS_ACTIONABLE (widget), NULL);
@@ -405,7 +405,7 @@ ctk_action_helper_new (GtkActionable *widget)
 }
 
 void
-ctk_action_helper_set_action_name (GtkActionHelper *helper,
+ctk_action_helper_set_action_name (CtkActionHelper *helper,
                                    const gchar     *action_name)
 {
   gboolean was_enabled, was_active;
@@ -478,13 +478,13 @@ ctk_action_helper_set_action_name (GtkActionHelper *helper,
 
 /*< private >
  * ctk_action_helper_set_action_target_value:
- * @helper: a #GtkActionHelper
- * @target_value: an action target, as per #GtkActionable
+ * @helper: a #CtkActionHelper
+ * @target_value: an action target, as per #CtkActionable
  *
  * This function consumes @action_target if it is floating.
  */
 void
-ctk_action_helper_set_action_target_value (GtkActionHelper *helper,
+ctk_action_helper_set_action_target_value (CtkActionHelper *helper,
                                            GVariant        *target_value)
 {
   gboolean was_enabled;
@@ -553,7 +553,7 @@ ctk_action_helper_set_action_target_value (GtkActionHelper *helper,
 }
 
 const gchar *
-ctk_action_helper_get_action_name (GtkActionHelper *helper)
+ctk_action_helper_get_action_name (CtkActionHelper *helper)
 {
   if (helper == NULL)
     return NULL;
@@ -562,7 +562,7 @@ ctk_action_helper_get_action_name (GtkActionHelper *helper)
 }
 
 GVariant *
-ctk_action_helper_get_action_target_value (GtkActionHelper *helper)
+ctk_action_helper_get_action_target_value (CtkActionHelper *helper)
 {
   if (helper == NULL)
     return NULL;
@@ -571,7 +571,7 @@ ctk_action_helper_get_action_target_value (GtkActionHelper *helper)
 }
 
 gboolean
-ctk_action_helper_get_enabled (GtkActionHelper *helper)
+ctk_action_helper_get_enabled (CtkActionHelper *helper)
 {
   g_return_val_if_fail (CTK_IS_ACTION_HELPER (helper), FALSE);
 
@@ -579,7 +579,7 @@ ctk_action_helper_get_enabled (GtkActionHelper *helper)
 }
 
 gboolean
-ctk_action_helper_get_active (GtkActionHelper *helper)
+ctk_action_helper_get_active (CtkActionHelper *helper)
 {
   g_return_val_if_fail (CTK_IS_ACTION_HELPER (helper), FALSE);
 
@@ -587,7 +587,7 @@ ctk_action_helper_get_active (GtkActionHelper *helper)
 }
 
 void
-ctk_action_helper_activate (GtkActionHelper *helper)
+ctk_action_helper_activate (CtkActionHelper *helper)
 {
   g_return_if_fail (CTK_IS_ACTION_HELPER (helper));
 

@@ -38,21 +38,21 @@
 #define BOX_SPACE 6
 
 typedef struct {
-  GtkWidget *box;
-  GtkWidget *heading;
-  GtkWidget *button;
+  CtkWidget *box;
+  CtkWidget *heading;
+  CtkWidget *button;
   const char *first;
   gunichar label;
   gboolean empty;
 } EmojiSection;
 
-struct _GtkEmojiChooser
+struct _CtkEmojiChooser
 {
-  GtkPopover parent_instance;
+  CtkPopover parent_instance;
 
-  GtkWidget *search_entry;
-  GtkWidget *stack;
-  GtkWidget *scrolled_window;
+  CtkWidget *search_entry;
+  CtkWidget *stack;
+  CtkWidget *scrolled_window;
 
   int emoji_max_width;
 
@@ -67,23 +67,23 @@ struct _GtkEmojiChooser
   EmojiSection symbols;
   EmojiSection flags;
 
-  GtkGesture *recent_long_press;
-  GtkGesture *recent_multi_press;
-  GtkGesture *people_long_press;
-  GtkGesture *people_multi_press;
-  GtkGesture *body_long_press;
-  GtkGesture *body_multi_press;
+  CtkGesture *recent_long_press;
+  CtkGesture *recent_multi_press;
+  CtkGesture *people_long_press;
+  CtkGesture *people_multi_press;
+  CtkGesture *body_long_press;
+  CtkGesture *body_multi_press;
 
   GVariant *data;
-  GtkWidget *box;
+  CtkWidget *box;
   GVariantIter *iter;
   guint populate_idle;
 
   GSettings *settings;
 };
 
-struct _GtkEmojiChooserClass {
-  GtkPopoverClass parent_class;
+struct _CtkEmojiChooserClass {
+  CtkPopoverClass parent_class;
 };
 
 enum {
@@ -93,12 +93,12 @@ enum {
 
 static int signals[LAST_SIGNAL];
 
-G_DEFINE_TYPE (GtkEmojiChooser, ctk_emoji_chooser, CTK_TYPE_POPOVER)
+G_DEFINE_TYPE (CtkEmojiChooser, ctk_emoji_chooser, CTK_TYPE_POPOVER)
 
 static void
 ctk_emoji_chooser_finalize (GObject *object)
 {
-  GtkEmojiChooser *chooser = CTK_EMOJI_CHOOSER (object);
+  CtkEmojiChooser *chooser = CTK_EMOJI_CHOOSER (object);
 
   if (chooser->populate_idle)
     g_source_remove (chooser->populate_idle);
@@ -117,13 +117,13 @@ ctk_emoji_chooser_finalize (GObject *object)
 }
 
 static void
-scroll_to_section (GtkButton *button,
+scroll_to_section (CtkButton *button,
                    gpointer   data)
 {
   EmojiSection *section = data;
-  GtkEmojiChooser *chooser;
-  GtkAdjustment *adj;
-  GtkAllocation alloc = { 0, 0, 0, 0 };
+  CtkEmojiChooser *chooser;
+  CtkAdjustment *adj;
+  CtkAllocation alloc = { 0, 0, 0, 0 };
 
   chooser = CTK_EMOJI_CHOOSER (ctk_widget_get_ancestor (CTK_WIDGET (button), CTK_TYPE_EMOJI_CHOOSER));
 
@@ -136,16 +136,16 @@ scroll_to_section (GtkButton *button,
 }
 
 static void
-add_emoji (GtkWidget    *box,
+add_emoji (CtkWidget    *box,
            gboolean      prepend,
            GVariant     *item,
            gunichar      modifier,
-           GtkEmojiChooser *chooser);
+           CtkEmojiChooser *chooser);
 
 #define MAX_RECENT (7*3)
 
 static void
-populate_recent_section (GtkEmojiChooser *chooser)
+populate_recent_section (CtkEmojiChooser *chooser)
 {
   GVariant *variant;
   GVariant *item;
@@ -176,7 +176,7 @@ populate_recent_section (GtkEmojiChooser *chooser)
 }
 
 static void
-add_recent_item (GtkEmojiChooser *chooser,
+add_recent_item (CtkEmojiChooser *chooser,
                  GVariant        *item,
                  gunichar         modifier)
 {
@@ -223,14 +223,14 @@ add_recent_item (GtkEmojiChooser *chooser,
 }
 
 static void
-emoji_activated (GtkFlowBox      *box,
-                 GtkFlowBoxChild *child,
+emoji_activated (CtkFlowBox      *box,
+                 CtkFlowBoxChild *child,
                  gpointer         data)
 {
-  GtkEmojiChooser *chooser = data;
+  CtkEmojiChooser *chooser = data;
   char *text;
-  GtkWidget *ebox;
-  GtkWidget *label;
+  CtkWidget *ebox;
+  CtkWidget *label;
   GVariant *item;
   gunichar modifier;
 
@@ -273,14 +273,14 @@ has_variations (GVariant *emoji_data)
 }
 
 static void
-show_variations (GtkEmojiChooser *chooser,
-                 GtkWidget       *child)
+show_variations (CtkEmojiChooser *chooser,
+                 CtkWidget       *child)
 {
-  GtkWidget *popover;
-  GtkWidget *view;
-  GtkWidget *box;
+  CtkWidget *popover;
+  CtkWidget *view;
+  CtkWidget *box;
   GVariant *emoji_data;
-  GtkWidget *parent_popover;
+  CtkWidget *parent_popover;
   gunichar modifier;
 
   if (!child)
@@ -317,7 +317,7 @@ show_variations (GtkEmojiChooser *chooser,
 }
 
 static void
-update_hover (GtkWidget *widget,
+update_hover (CtkWidget *widget,
               GdkEvent  *event,
               gpointer   data)
 {
@@ -328,14 +328,14 @@ update_hover (GtkWidget *widget,
 }
 
 static void
-long_pressed_cb (GtkGesture *gesture,
+long_pressed_cb (CtkGesture *gesture,
                  double      x,
                  double      y,
                  gpointer    data)
 {
-  GtkEmojiChooser *chooser = data;
-  GtkWidget *box;
-  GtkWidget *child;
+  CtkEmojiChooser *chooser = data;
+  CtkWidget *box;
+  CtkWidget *child;
 
   box = ctk_event_controller_get_widget (CTK_EVENT_CONTROLLER (gesture));
   child = CTK_WIDGET (ctk_flow_box_get_child_at_pos (CTK_FLOW_BOX (box), x, y));
@@ -343,15 +343,15 @@ long_pressed_cb (GtkGesture *gesture,
 }
 
 static void
-pressed_cb (GtkGesture *gesture,
+pressed_cb (CtkGesture *gesture,
             int         n_press,
             double      x,
             double      y,
             gpointer    data)
 {
-  GtkEmojiChooser *chooser = data;
-  GtkWidget *box;
-  GtkWidget *child;
+  CtkEmojiChooser *chooser = data;
+  CtkWidget *box;
+  CtkWidget *child;
 
   box = ctk_event_controller_get_widget (CTK_EVENT_CONTROLLER (gesture));
   child = CTK_WIDGET (ctk_flow_box_get_child_at_pos (CTK_FLOW_BOX (box), x, y));
@@ -359,25 +359,25 @@ pressed_cb (GtkGesture *gesture,
 }
 
 static gboolean
-popup_menu (GtkWidget *widget,
+popup_menu (CtkWidget *widget,
             gpointer   data)
 {
-  GtkEmojiChooser *chooser = data;
+  CtkEmojiChooser *chooser = data;
 
   show_variations (chooser, widget);
   return TRUE;
 }
 
 static void
-add_emoji (GtkWidget    *box,
+add_emoji (CtkWidget    *box,
            gboolean      prepend,
            GVariant     *item,
            gunichar      modifier,
-           GtkEmojiChooser *chooser)
+           CtkEmojiChooser *chooser)
 {
-  GtkWidget *child;
-  GtkWidget *ebox;
-  GtkWidget *label;
+  CtkWidget *child;
+  CtkWidget *ebox;
+  CtkWidget *label;
   PangoAttrList *attrs;
   GVariant *codes;
   char text[64];
@@ -443,7 +443,7 @@ add_emoji (GtkWidget    *box,
 static gboolean
 populate_emoji_chooser (gpointer data)
 {
-  GtkEmojiChooser *chooser = data;
+  CtkEmojiChooser *chooser = data;
   GBytes *bytes = NULL;
   GVariant *item;
   guint64 start, now;
@@ -504,10 +504,10 @@ populate_emoji_chooser (gpointer data)
 }
 
 static void
-adj_value_changed (GtkAdjustment *adj,
+adj_value_changed (CtkAdjustment *adj,
                    gpointer       data)
 {
-  GtkEmojiChooser *chooser = data;
+  CtkEmojiChooser *chooser = data;
   double value = ctk_adjustment_get_value (adj);
   EmojiSection const *sections[] = {
     &chooser->recent,
@@ -528,7 +528,7 @@ adj_value_changed (GtkAdjustment *adj,
   for (i = 0; i < G_N_ELEMENTS (sections); ++i)
     {
       EmojiSection const *section = sections[i];
-      GtkAllocation alloc;
+      CtkAllocation alloc;
 
       if (section->heading)
         ctk_widget_get_allocation (section->heading, &alloc);
@@ -554,11 +554,11 @@ adj_value_changed (GtkAdjustment *adj,
 }
 
 static gboolean
-filter_func (GtkFlowBoxChild *child,
+filter_func (CtkFlowBoxChild *child,
              gpointer         data)
 {
   EmojiSection *section = data;
-  GtkEmojiChooser *chooser;
+  CtkEmojiChooser *chooser;
   GVariant *emoji_data;
   const char *text;
   const char *name;
@@ -594,7 +594,7 @@ invalidate_section (EmojiSection *section)
 }
 
 static void
-update_headings (GtkEmojiChooser *chooser)
+update_headings (CtkEmojiChooser *chooser)
 {
   ctk_widget_set_visible (chooser->people.heading, !chooser->people.empty);
   ctk_widget_set_visible (chooser->people.box, !chooser->people.empty);
@@ -626,10 +626,10 @@ update_headings (GtkEmojiChooser *chooser)
 }
 
 static void
-search_changed (GtkEntry *entry,
+search_changed (CtkEntry *entry,
                 gpointer  data)
 {
-  GtkEmojiChooser *chooser = data;
+  CtkEmojiChooser *chooser = data;
 
   invalidate_section (&chooser->recent);
   invalidate_section (&chooser->people);
@@ -646,13 +646,13 @@ search_changed (GtkEntry *entry,
 }
 
 static void
-setup_section (GtkEmojiChooser *chooser,
+setup_section (CtkEmojiChooser *chooser,
                EmojiSection   *section,
                const char     *first,
                const char     *icon)
 {
-  GtkAdjustment *adj;
-  GtkWidget *image;
+  CtkAdjustment *adj;
+  CtkWidget *image;
 
   section->first = first;
 
@@ -667,9 +667,9 @@ setup_section (GtkEmojiChooser *chooser,
 }
 
 static void
-ctk_emoji_chooser_init (GtkEmojiChooser *chooser)
+ctk_emoji_chooser_init (CtkEmojiChooser *chooser)
 {
-  GtkAdjustment *adj;
+  CtkAdjustment *adj;
 
   chooser->settings = g_settings_new ("org.ctk.Settings.EmojiChooser");
 
@@ -735,10 +735,10 @@ ctk_emoji_chooser_init (GtkEmojiChooser *chooser)
 }
 
 static void
-ctk_emoji_chooser_show (GtkWidget *widget)
+ctk_emoji_chooser_show (CtkWidget *widget)
 {
-  GtkEmojiChooser *chooser = CTK_EMOJI_CHOOSER (widget);
-  GtkAdjustment *adj;
+  CtkEmojiChooser *chooser = CTK_EMOJI_CHOOSER (widget);
+  CtkAdjustment *adj;
 
   CTK_WIDGET_CLASS (ctk_emoji_chooser_parent_class)->show (widget);
 
@@ -749,10 +749,10 @@ ctk_emoji_chooser_show (GtkWidget *widget)
 }
 
 static void
-ctk_emoji_chooser_class_init (GtkEmojiChooserClass *klass)
+ctk_emoji_chooser_class_init (CtkEmojiChooserClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   object_class->finalize = ctk_emoji_chooser_finalize;
   widget_class->show = ctk_emoji_chooser_show;
@@ -767,54 +767,54 @@ ctk_emoji_chooser_class_init (GtkEmojiChooserClass *klass)
 
   ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/ui/ctkemojichooser.ui");
 
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, search_entry);
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, stack);
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, scrolled_window);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, search_entry);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, stack);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, scrolled_window);
 
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, recent.box);
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, recent.button);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, recent.box);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, recent.button);
 
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, people.box);
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, people.heading);
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, people.button);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, people.box);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, people.heading);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, people.button);
 
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, body.box);
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, body.heading);
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, body.button);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, body.box);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, body.heading);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, body.button);
 
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, nature.box);
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, nature.heading);
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, nature.button);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, nature.box);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, nature.heading);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, nature.button);
 
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, food.box);
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, food.heading);
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, food.button);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, food.box);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, food.heading);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, food.button);
 
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, travel.box);
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, travel.heading);
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, travel.button);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, travel.box);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, travel.heading);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, travel.button);
 
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, activities.box);
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, activities.heading);
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, activities.button);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, activities.box);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, activities.heading);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, activities.button);
 
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, objects.box);
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, objects.heading);
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, objects.button);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, objects.box);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, objects.heading);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, objects.button);
 
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, symbols.box);
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, symbols.heading);
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, symbols.button);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, symbols.box);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, symbols.heading);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, symbols.button);
 
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, flags.box);
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, flags.heading);
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, flags.button);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, flags.box);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, flags.heading);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiChooser, flags.button);
 
   ctk_widget_class_bind_template_callback (widget_class, emoji_activated);
   ctk_widget_class_bind_template_callback (widget_class, search_changed);
 }
 
-GtkWidget *
+CtkWidget *
 ctk_emoji_chooser_new (void)
 {
   return CTK_WIDGET (g_object_new (CTK_TYPE_EMOJI_CHOOSER, NULL));

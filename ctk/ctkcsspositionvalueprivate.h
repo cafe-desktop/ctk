@@ -25,14 +25,14 @@
 
 G_BEGIN_DECLS
 
-GtkCssValue *   _ctk_css_position_value_new           (GtkCssValue            *x,
-                                                       GtkCssValue            *y);
-GtkCssValue *   _ctk_css_position_value_parse         (GtkCssParser           *parser);
-GtkCssValue *   _ctk_css_position_value_try_parse     (GtkCssParser           *parser);
+CtkCssValue *   _ctk_css_position_value_new           (CtkCssValue            *x,
+                                                       CtkCssValue            *y);
+CtkCssValue *   _ctk_css_position_value_parse         (CtkCssParser           *parser);
+CtkCssValue *   _ctk_css_position_value_try_parse     (CtkCssParser           *parser);
 
-double          _ctk_css_position_value_get_x         (const GtkCssValue      *position,
+double          _ctk_css_position_value_get_x         (const CtkCssValue      *position,
                                                      double                  one_hundred_percent);
-double          _ctk_css_position_value_get_y         (const GtkCssValue      *position,
+double          _ctk_css_position_value_get_y         (const CtkCssValue      *position,
                                                      double                  one_hundred_percent);
 
 

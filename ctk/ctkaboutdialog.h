@@ -32,18 +32,18 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_ABOUT_DIALOG            (ctk_about_dialog_get_type ())
-#define CTK_ABOUT_DIALOG(object)         (G_TYPE_CHECK_INSTANCE_CAST ((object), CTK_TYPE_ABOUT_DIALOG, GtkAboutDialog))
-#define CTK_ABOUT_DIALOG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ABOUT_DIALOG, GtkAboutDialogClass))
+#define CTK_ABOUT_DIALOG(object)         (G_TYPE_CHECK_INSTANCE_CAST ((object), CTK_TYPE_ABOUT_DIALOG, CtkAboutDialog))
+#define CTK_ABOUT_DIALOG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ABOUT_DIALOG, CtkAboutDialogClass))
 #define CTK_IS_ABOUT_DIALOG(object)      (G_TYPE_CHECK_INSTANCE_TYPE ((object), CTK_TYPE_ABOUT_DIALOG))
 #define CTK_IS_ABOUT_DIALOG_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_ABOUT_DIALOG))
-#define CTK_ABOUT_DIALOG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ABOUT_DIALOG, GtkAboutDialogClass))
+#define CTK_ABOUT_DIALOG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ABOUT_DIALOG, CtkAboutDialogClass))
 
-typedef struct _GtkAboutDialog        GtkAboutDialog;
-typedef struct _GtkAboutDialogClass   GtkAboutDialogClass;
-typedef struct _GtkAboutDialogPrivate GtkAboutDialogPrivate;
+typedef struct _CtkAboutDialog        CtkAboutDialog;
+typedef struct _CtkAboutDialogClass   CtkAboutDialogClass;
+typedef struct _CtkAboutDialogPrivate CtkAboutDialogPrivate;
 
 /**
- * GtkLicense:
+ * CtkLicense:
  * @CTK_LICENSE_UNKNOWN: No license specified
  * @CTK_LICENSE_CUSTOM: A license text is going to be specified by the
  *   developer
@@ -96,27 +96,27 @@ typedef enum {
   CTK_LICENSE_BSD_3,
   CTK_LICENSE_APACHE_2_0,
   CTK_LICENSE_MPL_2_0
-} GtkLicense;
+} CtkLicense;
 
 /**
- * GtkAboutDialog:
+ * CtkAboutDialog:
  *
- * The #GtkAboutDialog-struct contains
+ * The #CtkAboutDialog-struct contains
  * only private fields and should not be directly accessed.
  */
-struct _GtkAboutDialog
+struct _CtkAboutDialog
 {
-  GtkDialog parent_instance;
+  CtkDialog parent_instance;
 
   /*< private >*/
-  GtkAboutDialogPrivate *priv;
+  CtkAboutDialogPrivate *priv;
 };
 
-struct _GtkAboutDialogClass
+struct _CtkAboutDialogClass
 {
-  GtkDialogClass parent_class;
+  CtkDialogClass parent_class;
 
-  gboolean (*activate_link) (GtkAboutDialog *dialog,
+  gboolean (*activate_link) (CtkAboutDialog *dialog,
                              const gchar    *uri);
 
   /* Padding for future expansion */
@@ -129,94 +129,94 @@ struct _GtkAboutDialogClass
 GDK_AVAILABLE_IN_ALL
 GType                  ctk_about_dialog_get_type               (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget             *ctk_about_dialog_new                    (void);
+CtkWidget             *ctk_about_dialog_new                    (void);
 GDK_AVAILABLE_IN_ALL
-void                   ctk_show_about_dialog                   (GtkWindow       *parent,
+void                   ctk_show_about_dialog                   (CtkWindow       *parent,
                                                                 const gchar     *first_property_name,
                                                                 ...) G_GNUC_NULL_TERMINATED;
 GDK_AVAILABLE_IN_ALL
-const gchar *          ctk_about_dialog_get_program_name       (GtkAboutDialog  *about);
+const gchar *          ctk_about_dialog_get_program_name       (CtkAboutDialog  *about);
 GDK_AVAILABLE_IN_ALL
-void                   ctk_about_dialog_set_program_name       (GtkAboutDialog  *about,
+void                   ctk_about_dialog_set_program_name       (CtkAboutDialog  *about,
                                                                 const gchar     *name);
 GDK_AVAILABLE_IN_ALL
-const gchar *          ctk_about_dialog_get_version            (GtkAboutDialog  *about);
+const gchar *          ctk_about_dialog_get_version            (CtkAboutDialog  *about);
 GDK_AVAILABLE_IN_ALL
-void                   ctk_about_dialog_set_version            (GtkAboutDialog  *about,
+void                   ctk_about_dialog_set_version            (CtkAboutDialog  *about,
                                                                 const gchar     *version);
 GDK_AVAILABLE_IN_ALL
-const gchar *          ctk_about_dialog_get_copyright          (GtkAboutDialog  *about);
+const gchar *          ctk_about_dialog_get_copyright          (CtkAboutDialog  *about);
 GDK_AVAILABLE_IN_ALL
-void                   ctk_about_dialog_set_copyright          (GtkAboutDialog  *about,
+void                   ctk_about_dialog_set_copyright          (CtkAboutDialog  *about,
                                                                 const gchar     *copyright);
 GDK_AVAILABLE_IN_ALL
-const gchar *          ctk_about_dialog_get_comments           (GtkAboutDialog  *about);
+const gchar *          ctk_about_dialog_get_comments           (CtkAboutDialog  *about);
 GDK_AVAILABLE_IN_ALL
-void                   ctk_about_dialog_set_comments           (GtkAboutDialog  *about,
+void                   ctk_about_dialog_set_comments           (CtkAboutDialog  *about,
                                                                 const gchar     *comments);
 GDK_AVAILABLE_IN_ALL
-const gchar *          ctk_about_dialog_get_license            (GtkAboutDialog  *about);
+const gchar *          ctk_about_dialog_get_license            (CtkAboutDialog  *about);
 GDK_AVAILABLE_IN_ALL
-void                   ctk_about_dialog_set_license            (GtkAboutDialog  *about,
+void                   ctk_about_dialog_set_license            (CtkAboutDialog  *about,
                                                                 const gchar     *license);
 GDK_AVAILABLE_IN_ALL
-void                   ctk_about_dialog_set_license_type       (GtkAboutDialog  *about,
-                                                                GtkLicense       license_type);
+void                   ctk_about_dialog_set_license_type       (CtkAboutDialog  *about,
+                                                                CtkLicense       license_type);
 GDK_AVAILABLE_IN_ALL
-GtkLicense             ctk_about_dialog_get_license_type       (GtkAboutDialog  *about);
+CtkLicense             ctk_about_dialog_get_license_type       (CtkAboutDialog  *about);
 
 GDK_AVAILABLE_IN_ALL
-gboolean               ctk_about_dialog_get_wrap_license       (GtkAboutDialog  *about);
+gboolean               ctk_about_dialog_get_wrap_license       (CtkAboutDialog  *about);
 GDK_AVAILABLE_IN_ALL
-void                   ctk_about_dialog_set_wrap_license       (GtkAboutDialog  *about,
+void                   ctk_about_dialog_set_wrap_license       (CtkAboutDialog  *about,
                                                                 gboolean         wrap_license);
 
 GDK_AVAILABLE_IN_ALL
-const gchar *          ctk_about_dialog_get_website            (GtkAboutDialog  *about);
+const gchar *          ctk_about_dialog_get_website            (CtkAboutDialog  *about);
 GDK_AVAILABLE_IN_ALL
-void                   ctk_about_dialog_set_website            (GtkAboutDialog  *about,
+void                   ctk_about_dialog_set_website            (CtkAboutDialog  *about,
                                                                 const gchar     *website);
 GDK_AVAILABLE_IN_ALL
-const gchar *          ctk_about_dialog_get_website_label      (GtkAboutDialog  *about);
+const gchar *          ctk_about_dialog_get_website_label      (CtkAboutDialog  *about);
 GDK_AVAILABLE_IN_ALL
-void                   ctk_about_dialog_set_website_label      (GtkAboutDialog  *about,
+void                   ctk_about_dialog_set_website_label      (CtkAboutDialog  *about,
                                                                 const gchar     *website_label);
 GDK_AVAILABLE_IN_ALL
-const gchar* const *   ctk_about_dialog_get_authors            (GtkAboutDialog  *about);
+const gchar* const *   ctk_about_dialog_get_authors            (CtkAboutDialog  *about);
 GDK_AVAILABLE_IN_ALL
-void                   ctk_about_dialog_set_authors            (GtkAboutDialog  *about,
+void                   ctk_about_dialog_set_authors            (CtkAboutDialog  *about,
                                                                 const gchar    **authors);
 GDK_AVAILABLE_IN_ALL
-const gchar* const *   ctk_about_dialog_get_documenters        (GtkAboutDialog  *about);
+const gchar* const *   ctk_about_dialog_get_documenters        (CtkAboutDialog  *about);
 GDK_AVAILABLE_IN_ALL
-void                   ctk_about_dialog_set_documenters        (GtkAboutDialog  *about,
+void                   ctk_about_dialog_set_documenters        (CtkAboutDialog  *about,
                                                                 const gchar    **documenters);
 GDK_AVAILABLE_IN_ALL
-const gchar* const *   ctk_about_dialog_get_artists            (GtkAboutDialog  *about);
+const gchar* const *   ctk_about_dialog_get_artists            (CtkAboutDialog  *about);
 GDK_AVAILABLE_IN_ALL
-void                   ctk_about_dialog_set_artists            (GtkAboutDialog  *about,
+void                   ctk_about_dialog_set_artists            (CtkAboutDialog  *about,
                                                                 const gchar    **artists);
 GDK_AVAILABLE_IN_ALL
-const gchar *          ctk_about_dialog_get_translator_credits (GtkAboutDialog  *about);
+const gchar *          ctk_about_dialog_get_translator_credits (CtkAboutDialog  *about);
 GDK_AVAILABLE_IN_ALL
-void                   ctk_about_dialog_set_translator_credits (GtkAboutDialog  *about,
+void                   ctk_about_dialog_set_translator_credits (CtkAboutDialog  *about,
                                                                 const gchar     *translator_credits);
 GDK_AVAILABLE_IN_ALL
-GdkPixbuf             *ctk_about_dialog_get_logo               (GtkAboutDialog  *about);
+GdkPixbuf             *ctk_about_dialog_get_logo               (CtkAboutDialog  *about);
 GDK_AVAILABLE_IN_ALL
-void                   ctk_about_dialog_set_logo               (GtkAboutDialog  *about,
+void                   ctk_about_dialog_set_logo               (CtkAboutDialog  *about,
                                                                 GdkPixbuf       *logo);
 GDK_AVAILABLE_IN_ALL
-const gchar *          ctk_about_dialog_get_logo_icon_name     (GtkAboutDialog  *about);
+const gchar *          ctk_about_dialog_get_logo_icon_name     (CtkAboutDialog  *about);
 GDK_AVAILABLE_IN_ALL
-void                   ctk_about_dialog_set_logo_icon_name     (GtkAboutDialog  *about,
+void                   ctk_about_dialog_set_logo_icon_name     (CtkAboutDialog  *about,
                                                                 const gchar     *icon_name);
 GDK_AVAILABLE_IN_3_4
-void                  ctk_about_dialog_add_credit_section      (GtkAboutDialog  *about,
+void                  ctk_about_dialog_add_credit_section      (CtkAboutDialog  *about,
                                                                 const gchar     *section_name,
                                                                 const gchar    **people);
 
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkAboutDialog, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CtkAboutDialog, g_object_unref)
 
 G_END_DECLS
 

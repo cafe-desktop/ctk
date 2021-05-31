@@ -34,14 +34,14 @@ enum {
 #define INITIAL_RSPACING        2
 #define N_ITEMS 1000
 
-static GtkFlowBox    *the_flowbox       = NULL;
+static CtkFlowBox    *the_flowbox       = NULL;
 static gint           items_type       = SIMPLE_ITEMS;
-static GtkOrientation text_orientation = CTK_ORIENTATION_HORIZONTAL;
+static CtkOrientation text_orientation = CTK_ORIENTATION_HORIZONTAL;
 
 static void
-populate_flowbox_simple (GtkFlowBox *flowbox)
+populate_flowbox_simple (CtkFlowBox *flowbox)
 {
-  GtkWidget *widget, *frame;
+  CtkWidget *widget, *frame;
   gint i;
 
   for (i = 0; i < N_ITEMS; i++)
@@ -65,9 +65,9 @@ populate_flowbox_simple (GtkFlowBox *flowbox)
 }
 
 static void
-populate_flowbox_focus (GtkFlowBox *flowbox)
+populate_flowbox_focus (CtkFlowBox *flowbox)
 {
-  GtkWidget *widget, *frame, *box;
+  CtkWidget *widget, *frame, *box;
   gint i;
   gboolean sensitive;
 
@@ -114,9 +114,9 @@ populate_flowbox_focus (GtkFlowBox *flowbox)
 }
 
 static void
-populate_flowbox_buttons (GtkFlowBox *flowbox)
+populate_flowbox_buttons (CtkFlowBox *flowbox)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   gint i;
 
   for (i = 0; i < 50; i++)
@@ -130,9 +130,9 @@ populate_flowbox_buttons (GtkFlowBox *flowbox)
 }
 
 static void
-populate_flowbox_wrappy (GtkFlowBox *flowbox)
+populate_flowbox_wrappy (CtkFlowBox *flowbox)
 {
-  GtkWidget *widget, *frame;
+  CtkWidget *widget, *frame;
   gint i;
 
   const gchar *strings[] = {
@@ -166,9 +166,9 @@ populate_flowbox_wrappy (GtkFlowBox *flowbox)
 }
 
 static void
-populate_flowbox_stock (GtkFlowBox *flowbox)
+populate_flowbox_stock (CtkFlowBox *flowbox)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   static GSList *stock_ids = NULL;
   GSList *l;
   gint i;
@@ -196,9 +196,9 @@ populate_flowbox_stock (GtkFlowBox *flowbox)
 }
 
 static void
-populate_flowbox_images (GtkFlowBox *flowbox)
+populate_flowbox_images (CtkFlowBox *flowbox)
 {
-  GtkWidget *widget, *image, *label;
+  CtkWidget *widget, *image, *label;
   gint i;
 
   for (i = 0; i < N_ITEMS; i++)
@@ -229,7 +229,7 @@ populate_flowbox_images (GtkFlowBox *flowbox)
 }
 
 static void
-populate_items (GtkFlowBox *flowbox)
+populate_items (CtkFlowBox *flowbox)
 {
   GList *children, *l;
 
@@ -237,7 +237,7 @@ populate_items (GtkFlowBox *flowbox)
   children = ctk_container_get_children (CTK_CONTAINER (flowbox));
   for (l = children; l; l = l->next)
     {
-      GtkWidget *child = l->data;
+      CtkWidget *child = l->data;
 
       ctk_container_remove (CTK_CONTAINER (flowbox), child);
     }
@@ -258,44 +258,44 @@ populate_items (GtkFlowBox *flowbox)
 }
 
 static void
-horizontal_alignment_changed (GtkComboBox   *box,
-                              GtkFlowBox    *flowbox)
+horizontal_alignment_changed (CtkComboBox   *box,
+                              CtkFlowBox    *flowbox)
 {
-  GtkAlign alignment = ctk_combo_box_get_active (box);
+  CtkAlign alignment = ctk_combo_box_get_active (box);
 
   ctk_widget_set_halign (CTK_WIDGET (flowbox), alignment);
 }
 
 static void
-vertical_alignment_changed (GtkComboBox   *box,
-                            GtkFlowBox    *flowbox)
+vertical_alignment_changed (CtkComboBox   *box,
+                            CtkFlowBox    *flowbox)
 {
-  GtkAlign alignment = ctk_combo_box_get_active (box);
+  CtkAlign alignment = ctk_combo_box_get_active (box);
 
   ctk_widget_set_valign (CTK_WIDGET (flowbox), alignment);
 }
 
 static void
-orientation_changed (GtkComboBox   *box,
-                     GtkFlowBox *flowbox)
+orientation_changed (CtkComboBox   *box,
+                     CtkFlowBox *flowbox)
 {
-  GtkOrientation orientation = ctk_combo_box_get_active (box);
+  CtkOrientation orientation = ctk_combo_box_get_active (box);
 
   ctk_orientable_set_orientation (CTK_ORIENTABLE (flowbox), orientation);
 }
 
 static void
-selection_mode_changed (GtkComboBox *box,
-                        GtkFlowBox  *flowbox)
+selection_mode_changed (CtkComboBox *box,
+                        CtkFlowBox  *flowbox)
 {
-  GtkSelectionMode mode = ctk_combo_box_get_active (box);
+  CtkSelectionMode mode = ctk_combo_box_get_active (box);
 
   ctk_flow_box_set_selection_mode (flowbox, mode);
 }
 
 static void
-line_length_changed (GtkSpinButton *spin,
-                     GtkFlowBox *flowbox)
+line_length_changed (CtkSpinButton *spin,
+                     CtkFlowBox *flowbox)
 {
   gint length = ctk_spin_button_get_value_as_int (spin);
 
@@ -303,8 +303,8 @@ line_length_changed (GtkSpinButton *spin,
 }
 
 static void
-max_line_length_changed (GtkSpinButton *spin,
-                         GtkFlowBox *flowbox)
+max_line_length_changed (CtkSpinButton *spin,
+                         CtkFlowBox *flowbox)
 {
   gint length = ctk_spin_button_get_value_as_int (spin);
 
@@ -312,10 +312,10 @@ max_line_length_changed (GtkSpinButton *spin,
 }
 
 static void
-spacing_changed (GtkSpinButton *button,
+spacing_changed (CtkSpinButton *button,
                  gpointer       data)
 {
-  GtkOrientation orientation = GPOINTER_TO_INT (data);
+  CtkOrientation orientation = GPOINTER_TO_INT (data);
   gint           state = ctk_spin_button_get_value_as_int (button);
 
   if (orientation == CTK_ORIENTATION_HORIZONTAL)
@@ -325,8 +325,8 @@ spacing_changed (GtkSpinButton *button,
 }
 
 static void
-items_changed (GtkComboBox   *box,
-               GtkFlowBox *flowbox)
+items_changed (CtkComboBox   *box,
+               CtkFlowBox *flowbox)
 {
   items_type = ctk_combo_box_get_active (box);
 
@@ -334,8 +334,8 @@ items_changed (GtkComboBox   *box,
 }
 
 static void
-text_orientation_changed (GtkComboBox   *box,
-                          GtkFlowBox *flowbox)
+text_orientation_changed (CtkComboBox   *box,
+                          CtkFlowBox *flowbox)
 {
   text_orientation = ctk_combo_box_get_active (box);
 
@@ -343,8 +343,8 @@ text_orientation_changed (GtkComboBox   *box,
 }
 
 static void
-homogeneous_toggled (GtkToggleButton *button,
-                     GtkFlowBox      *flowbox)
+homogeneous_toggled (CtkToggleButton *button,
+                     CtkFlowBox      *flowbox)
 {
   gboolean state = ctk_toggle_button_get_active (button);
 
@@ -352,8 +352,8 @@ homogeneous_toggled (GtkToggleButton *button,
 }
 
 static void
-on_child_activated (GtkFlowBox *self,
-                    GtkWidget  *child)
+on_child_activated (CtkFlowBox *self,
+                    CtkWidget  *child)
 {
   const char *id;
   id = g_object_get_data (G_OBJECT (ctk_bin_get_child (CTK_BIN (child))), "id");
@@ -361,12 +361,12 @@ on_child_activated (GtkFlowBox *self,
 }
 
 static G_GNUC_UNUSED void
-selection_foreach (GtkFlowBox      *self,
-                   GtkFlowBoxChild *child_info,
+selection_foreach (CtkFlowBox      *self,
+                   CtkFlowBoxChild *child_info,
                    gpointer         data)
 {
   const char *id;
-  GtkWidget *child;
+  CtkWidget *child;
 
   child = ctk_bin_get_child (CTK_BIN (child_info));
   id = g_object_get_data (G_OBJECT (child), "id");
@@ -374,14 +374,14 @@ selection_foreach (GtkFlowBox      *self,
 }
 
 static void
-on_selected_children_changed (GtkFlowBox *self)
+on_selected_children_changed (CtkFlowBox *self)
 {
   g_message ("Selection changed");
   //ctk_flow_box_selected_foreach (self, selection_foreach, NULL);
 }
 
 static gboolean
-filter_func (GtkFlowBoxChild *child, gpointer user_data)
+filter_func (CtkFlowBoxChild *child, gpointer user_data)
 {
   gint index;
 
@@ -391,8 +391,8 @@ filter_func (GtkFlowBoxChild *child, gpointer user_data)
 }
 
 static void
-filter_toggled (GtkToggleButton *button,
-                GtkFlowBox      *flowbox)
+filter_toggled (CtkToggleButton *button,
+                CtkFlowBox      *flowbox)
 {
   gboolean state = ctk_toggle_button_get_active (button);
 
@@ -403,8 +403,8 @@ filter_toggled (GtkToggleButton *button,
 }
 
 static gint
-sort_func (GtkFlowBoxChild *a,
-           GtkFlowBoxChild *b,
+sort_func (CtkFlowBoxChild *a,
+           CtkFlowBoxChild *b,
            gpointer         data)
 {
   gchar *ida, *idb;
@@ -415,8 +415,8 @@ sort_func (GtkFlowBoxChild *a,
 }
 
 static void
-sort_toggled (GtkToggleButton *button,
-              GtkFlowBox      *flowbox)
+sort_toggled (CtkToggleButton *button,
+              CtkFlowBox      *flowbox)
 {
   gboolean state = ctk_toggle_button_get_active (button);
 
@@ -426,11 +426,11 @@ sort_toggled (GtkToggleButton *button,
     ctk_flow_box_set_sort_func (flowbox, NULL, NULL, NULL);
 }
 
-static GtkWidget *
+static CtkWidget *
 create_window (void)
 {
-  GtkWidget *window, *hbox, *vbox, *flowbox_cntl, *items_cntl;
-  GtkWidget *flowbox, *widget, *expander, *swindow;
+  CtkWidget *window, *hbox, *vbox, *flowbox_cntl, *items_cntl;
+  CtkWidget *flowbox, *widget, *expander, *swindow;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   hbox   = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 6);
@@ -452,7 +452,7 @@ create_window (void)
 
   flowbox = ctk_flow_box_new ();
   ctk_widget_set_halign (flowbox, CTK_ALIGN_END);
-  the_flowbox = (GtkFlowBox *)flowbox;
+  the_flowbox = (CtkFlowBox *)flowbox;
   ctk_widget_set_halign (flowbox, INITIAL_HALIGN);
   ctk_widget_set_valign (flowbox, INITIAL_VALIGN);
   ctk_flow_box_set_column_spacing (CTK_FLOW_BOX (flowbox), INITIAL_CSPACING);
@@ -689,7 +689,7 @@ create_window (void)
   populate_items (CTK_FLOW_BOX (flowbox));
 
   /* This line was added only for the convenience of reproducing
-   * a height-for-width inside GtkScrolledWindow bug (bug 629778).
+   * a height-for-width inside CtkScrolledWindow bug (bug 629778).
    *   -Tristan
    */
   ctk_window_set_default_size (CTK_WINDOW (window), 390, -1);
@@ -700,7 +700,7 @@ create_window (void)
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window;
+  CtkWidget *window;
 
   ctk_init (&argc, &argv);
 

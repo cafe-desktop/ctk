@@ -3,6 +3,6 @@
   padding: 0;
 }
 
-GtkPaned label {
+CtkPaned label {
   background-color: pink
 }

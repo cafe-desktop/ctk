@@ -35,45 +35,45 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_SWITCH                 (ctk_switch_get_type ())
-#define CTK_SWITCH(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SWITCH, GtkSwitch))
+#define CTK_SWITCH(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SWITCH, CtkSwitch))
 #define CTK_IS_SWITCH(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SWITCH))
-#define CTK_SWITCH_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SWITCH, GtkSwitchClass))
+#define CTK_SWITCH_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SWITCH, CtkSwitchClass))
 #define CTK_IS_SWITCH_CLASS(klass)      (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SWITCH))
-#define CTK_SWITCH_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SWITCH, GtkSwitchClass))
+#define CTK_SWITCH_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SWITCH, CtkSwitchClass))
 
-typedef struct _GtkSwitch               GtkSwitch;
-typedef struct _GtkSwitchPrivate        GtkSwitchPrivate;
-typedef struct _GtkSwitchClass          GtkSwitchClass;
+typedef struct _CtkSwitch               CtkSwitch;
+typedef struct _CtkSwitchPrivate        CtkSwitchPrivate;
+typedef struct _CtkSwitchClass          CtkSwitchClass;
 
 /**
- * GtkSwitch:
+ * CtkSwitch:
  *
- * The #GtkSwitch-struct contains private
+ * The #CtkSwitch-struct contains private
  * data and it should only be accessed using the provided API.
  */
-struct _GtkSwitch
+struct _CtkSwitch
 {
   /*< private >*/
-  GtkWidget parent_instance;
+  CtkWidget parent_instance;
 
-  GtkSwitchPrivate *priv;
+  CtkSwitchPrivate *priv;
 };
 
 /**
- * GtkSwitchClass:
+ * CtkSwitchClass:
  * @parent_class: The parent class.
  * @activate: An action signal and emitting it causes the switch to animate.
  * @state_set: Class handler for the ::state-set signal.
  */
-struct _GtkSwitchClass
+struct _CtkSwitchClass
 {
-  GtkWidgetClass parent_class;
+  CtkWidgetClass parent_class;
 
   /*< public >*/
 
-  void (* activate) (GtkSwitch *sw);
+  void (* activate) (CtkSwitch *sw);
 
-  gboolean (* state_set) (GtkSwitch *sw, gboolean state);
+  gboolean (* state_set) (CtkSwitch *sw, gboolean state);
   /*< private >*/
 
   void (* _switch_padding_1) (void);
@@ -87,19 +87,19 @@ GDK_AVAILABLE_IN_ALL
 GType ctk_switch_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget *     ctk_switch_new          (void);
+CtkWidget *     ctk_switch_new          (void);
 
 GDK_AVAILABLE_IN_ALL
-void            ctk_switch_set_active   (GtkSwitch *sw,
+void            ctk_switch_set_active   (CtkSwitch *sw,
                                          gboolean   is_active);
 GDK_AVAILABLE_IN_ALL
-gboolean        ctk_switch_get_active   (GtkSwitch *sw);
+gboolean        ctk_switch_get_active   (CtkSwitch *sw);
 
 GDK_AVAILABLE_IN_3_14
-void            ctk_switch_set_state   (GtkSwitch *sw,
+void            ctk_switch_set_state   (CtkSwitch *sw,
                                         gboolean   state);
 GDK_AVAILABLE_IN_3_14
-gboolean        ctk_switch_get_state   (GtkSwitch *sw);
+gboolean        ctk_switch_get_state   (CtkSwitch *sw);
 
 G_END_DECLS
 

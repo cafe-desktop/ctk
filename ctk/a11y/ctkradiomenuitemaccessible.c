@@ -20,12 +20,12 @@
 #include <ctk/ctk.h>
 #include "ctkradiomenuitemaccessible.h"
 
-struct _GtkRadioMenuItemAccessiblePrivate
+struct _CtkRadioMenuItemAccessiblePrivate
 {
   GSList *old_group;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkRadioMenuItemAccessible,
+G_DEFINE_TYPE_WITH_PRIVATE (CtkRadioMenuItemAccessible,
                             ctk_radio_menu_item_accessible,
                             CTK_TYPE_CHECK_MENU_ITEM_ACCESSIBLE)
 
@@ -33,10 +33,10 @@ G_DEFINE_TYPE_WITH_PRIVATE (GtkRadioMenuItemAccessible,
 static AtkRelationSet *
 ctk_radio_menu_item_accessible_ref_relation_set (AtkObject *obj)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   AtkRelationSet *relation_set;
   GSList *list;
-  GtkRadioMenuItemAccessible *radio_menu_item;
+  CtkRadioMenuItemAccessible *radio_menu_item;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
@@ -72,7 +72,7 @@ ctk_radio_menu_item_accessible_ref_relation_set (AtkObject *obj)
           accessible_array = g_new (AtkObject *, list_length);
           while (list != NULL)
             {
-              GtkWidget* list_item = list->data;
+              CtkWidget* list_item = list->data;
 
               accessible_array[i++] = ctk_widget_get_accessible (list_item);
 
@@ -102,7 +102,7 @@ ctk_radio_menu_item_accessible_initialize (AtkObject *obj,
 }
 
 static void
-ctk_radio_menu_item_accessible_class_init (GtkRadioMenuItemAccessibleClass *klass)
+ctk_radio_menu_item_accessible_class_init (CtkRadioMenuItemAccessibleClass *klass)
 {
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
 
@@ -111,7 +111,7 @@ ctk_radio_menu_item_accessible_class_init (GtkRadioMenuItemAccessibleClass *klas
 }
 
 static void
-ctk_radio_menu_item_accessible_init (GtkRadioMenuItemAccessible *radio_menu_item)
+ctk_radio_menu_item_accessible_init (CtkRadioMenuItemAccessible *radio_menu_item)
 {
   radio_menu_item->priv = ctk_radio_menu_item_accessible_get_instance_private (radio_menu_item);
 }

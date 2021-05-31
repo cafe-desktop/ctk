@@ -24,12 +24,12 @@
 
 G_BEGIN_DECLS
 
-extern const GtkComposeTableCompact ctk_compose_table_compact;
+extern const CtkComposeTableCompact ctk_compose_table_compact;
 
 gboolean ctk_check_algorithmically (const guint16                *compose_buffer,
                                     gint                          n_compose,
                                     gunichar                     *output);
-gboolean ctk_check_compact_table   (const GtkComposeTableCompact *table,
+gboolean ctk_check_compact_table   (const CtkComposeTableCompact *table,
                                     guint16                      *compose_buffer,
                                     gint                          n_compose,
                                     gboolean                     *compose_finish,

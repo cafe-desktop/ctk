@@ -20,12 +20,12 @@
 #include <ctk/ctk.h>
 #include "ctkscaleaccessible.h"
 
-G_DEFINE_TYPE (GtkScaleAccessible, ctk_scale_accessible, CTK_TYPE_RANGE_ACCESSIBLE)
+G_DEFINE_TYPE (CtkScaleAccessible, ctk_scale_accessible, CTK_TYPE_RANGE_ACCESSIBLE)
 
 static const gchar *
 ctk_scale_accessible_get_description (AtkObject *object)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   PangoLayout *layout;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (object));
@@ -40,7 +40,7 @@ ctk_scale_accessible_get_description (AtkObject *object)
 }
 
 static void
-ctk_scale_accessible_class_init (GtkScaleAccessibleClass *klass)
+ctk_scale_accessible_class_init (CtkScaleAccessibleClass *klass)
 {
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
 
@@ -48,6 +48,6 @@ ctk_scale_accessible_class_init (GtkScaleAccessibleClass *klass)
 }
 
 static void
-ctk_scale_accessible_init (GtkScaleAccessible *scale)
+ctk_scale_accessible_init (CtkScaleAccessible *scale)
 {
 }

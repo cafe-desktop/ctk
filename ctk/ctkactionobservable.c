@@ -21,7 +21,7 @@
 
 #include "ctkactionobservable.h"
 
-G_DEFINE_INTERFACE (GtkActionObservable, ctk_action_observable, G_TYPE_OBJECT)
+G_DEFINE_INTERFACE (CtkActionObservable, ctk_action_observable, G_TYPE_OBJECT)
 
 /*
  * SECTION:ctkactionobserable
@@ -30,23 +30,23 @@ G_DEFINE_INTERFACE (GtkActionObservable, ctk_action_observable, G_TYPE_OBJECT)
  */
 
 void
-ctk_action_observable_default_init (GtkActionObservableInterface *iface)
+ctk_action_observable_default_init (CtkActionObservableInterface *iface)
 {
 }
 
 /**
  * ctk_action_observable_register_observer:
- * @observable: a #GtkActionObservable
+ * @observable: a #CtkActionObservable
  * @action_name: the name of the action
- * @observer: the #GtkActionObserver to which the events will be reported
+ * @observer: the #CtkActionObserver to which the events will be reported
  *
  * Registers @observer as being interested in changes to @action_name on
  * @observable.
  */
 void
-ctk_action_observable_register_observer (GtkActionObservable *observable,
+ctk_action_observable_register_observer (CtkActionObservable *observable,
                                          const gchar         *action_name,
-                                         GtkActionObserver   *observer)
+                                         CtkActionObserver   *observer)
 {
   g_return_if_fail (CTK_IS_ACTION_OBSERVABLE (observable));
 
@@ -56,9 +56,9 @@ ctk_action_observable_register_observer (GtkActionObservable *observable,
 
 /**
  * ctk_action_observable_unregister_observer:
- * @observable: a #GtkActionObservable
+ * @observable: a #CtkActionObservable
  * @action_name: the name of the action
- * @observer: the #GtkActionObserver to which the events will be reported
+ * @observer: the #CtkActionObserver to which the events will be reported
  *
  * Removes the registration of @observer as being interested in changes
  * to @action_name on @observable.
@@ -67,9 +67,9 @@ ctk_action_observable_register_observer (GtkActionObservable *observable,
  * unregistered an equal number of times.
  */
 void
-ctk_action_observable_unregister_observer (GtkActionObservable *observable,
+ctk_action_observable_unregister_observer (CtkActionObservable *observable,
                                            const gchar         *action_name,
-                                           GtkActionObserver   *observer)
+                                           CtkActionObserver   *observer)
 {
   g_return_if_fail (CTK_IS_ACTION_OBSERVABLE (observable));
 

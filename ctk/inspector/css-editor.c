@@ -37,20 +37,20 @@
 #include "ctktextiter.h"
 
 
-struct _GtkInspectorCssEditorPrivate
+struct _CtkInspectorCssEditorPrivate
 {
-  GtkWidget *view;
-  GtkTextBuffer *text;
-  GtkCssProvider *provider;
-  GtkToggleButton *disable_button;
+  CtkWidget *view;
+  CtkTextBuffer *text;
+  CtkCssProvider *provider;
+  CtkToggleButton *disable_button;
   guint timeout;
   GList *errors;
 };
 
 typedef struct {
   GError *error;
-  GtkTextIter start;
-  GtkTextIter end;
+  CtkTextIter start;
+  CtkTextIter end;
 } CssError;
 
 static void
@@ -62,14 +62,14 @@ css_error_free (gpointer data)
 }
 
 static gboolean
-query_tooltip_cb (GtkWidget             *widget,
+query_tooltip_cb (CtkWidget             *widget,
                   gint                   x,
                   gint                   y,
                   gboolean               keyboard_tip,
-                  GtkTooltip            *tooltip,
-                  GtkInspectorCssEditor *ce)
+                  CtkTooltip            *tooltip,
+                  CtkInspectorCssEditor *ce)
 {
-  GtkTextIter iter;
+  CtkTextIter iter;
   GList *l;
 
   if (keyboard_tip)
@@ -102,10 +102,10 @@ query_tooltip_cb (GtkWidget             *widget,
   return FALSE;
 }
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorCssEditor, ctk_inspector_css_editor, CTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkInspectorCssEditor, ctk_inspector_css_editor, CTK_TYPE_BOX)
 
 static void
-set_initial_text (GtkInspectorCssEditor *ce)
+set_initial_text (CtkInspectorCssEditor *ce)
 {
   gchar *initial_text;
   initial_text = g_strconcat ("/*\n",
@@ -118,8 +118,8 @@ set_initial_text (GtkInspectorCssEditor *ce)
 }
 
 static void
-disable_toggled (GtkToggleButton       *button,
-                 GtkInspectorCssEditor *ce)
+disable_toggled (CtkToggleButton       *button,
+                 CtkInspectorCssEditor *ce)
 {
   if (ctk_toggle_button_get_active (button))
     ctk_style_context_remove_provider_for_screen (gdk_screen_get_default (),
@@ -131,9 +131,9 @@ disable_toggled (GtkToggleButton       *button,
 }
 
 static gchar *
-get_current_text (GtkTextBuffer *buffer)
+get_current_text (CtkTextBuffer *buffer)
 {
-  GtkTextIter start, end;
+  CtkTextIter start, end;
 
   ctk_text_buffer_get_start_iter (buffer, &start);
   ctk_text_buffer_get_end_iter (buffer, &end);
@@ -143,7 +143,7 @@ get_current_text (GtkTextBuffer *buffer)
 }
 
 static void
-save_to_file (GtkInspectorCssEditor *ce,
+save_to_file (CtkInspectorCssEditor *ce,
               const gchar           *filename)
 {
   gchar *text;
@@ -153,7 +153,7 @@ save_to_file (GtkInspectorCssEditor *ce,
 
   if (!g_file_set_contents (filename, text, -1, &error))
     {
-      GtkWidget *dialog;
+      CtkWidget *dialog;
 
       dialog = ctk_message_dialog_new (CTK_WINDOW (ctk_widget_get_toplevel (CTK_WIDGET (ce))),
                                        CTK_DIALOG_MODAL|CTK_DIALOG_DESTROY_WITH_PARENT,
@@ -171,9 +171,9 @@ save_to_file (GtkInspectorCssEditor *ce,
 }
 
 static void
-save_response (GtkWidget             *dialog,
+save_response (CtkWidget             *dialog,
                gint                   response,
-               GtkInspectorCssEditor *ce)
+               CtkInspectorCssEditor *ce)
 {
   ctk_widget_hide (dialog);
 
@@ -190,10 +190,10 @@ save_response (GtkWidget             *dialog,
 }
 
 static void
-save_clicked (GtkButton             *button,
-              GtkInspectorCssEditor *ce)
+save_clicked (CtkButton             *button,
+              CtkInspectorCssEditor *ce)
 {
-  GtkWidget *dialog;
+  CtkWidget *dialog;
 
   dialog = ctk_file_chooser_dialog_new ("",
                                         CTK_WINDOW (ctk_widget_get_toplevel (CTK_WIDGET (ce))),
@@ -210,7 +210,7 @@ save_clicked (GtkButton             *button,
 }
 
 static void
-update_style (GtkInspectorCssEditor *ce)
+update_style (CtkInspectorCssEditor *ce)
 {
   gchar *text;
 
@@ -225,7 +225,7 @@ update_style (GtkInspectorCssEditor *ce)
 static gboolean
 update_timeout (gpointer data)
 {
-  GtkInspectorCssEditor *ce = data;
+  CtkInspectorCssEditor *ce = data;
 
   ce->priv->timeout = 0;
 
@@ -235,8 +235,8 @@ update_timeout (gpointer data)
 }
 
 static void
-text_changed (GtkTextBuffer         *buffer,
-              GtkInspectorCssEditor *ce)
+text_changed (CtkTextBuffer         *buffer,
+              CtkInspectorCssEditor *ce)
 {
   if (ce->priv->timeout != 0)
     g_source_remove (ce->priv->timeout);
@@ -248,13 +248,13 @@ text_changed (GtkTextBuffer         *buffer,
 }
 
 static void
-show_parsing_error (GtkCssProvider        *provider,
-                    GtkCssSection         *section,
+show_parsing_error (CtkCssProvider        *provider,
+                    CtkCssSection         *section,
                     const GError          *error,
-                    GtkInspectorCssEditor *ce)
+                    CtkInspectorCssEditor *ce)
 {
   const char *tag_name;
-  GtkTextBuffer *buffer = CTK_TEXT_BUFFER (ce->priv->text);
+  CtkTextBuffer *buffer = CTK_TEXT_BUFFER (ce->priv->text);
   CssError *css_error;
 
   css_error = g_new (CssError, 1);
@@ -283,7 +283,7 @@ show_parsing_error (GtkCssProvider        *provider,
 }
 
 static void
-create_provider (GtkInspectorCssEditor *ce)
+create_provider (CtkInspectorCssEditor *ce)
 {
   ce->priv->provider = ctk_css_provider_new ();
   ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
@@ -295,7 +295,7 @@ create_provider (GtkInspectorCssEditor *ce)
 }
 
 static void
-destroy_provider (GtkInspectorCssEditor *ce)
+destroy_provider (CtkInspectorCssEditor *ce)
 {
   ctk_style_context_remove_provider_for_screen (gdk_screen_get_default (),
                                                 CTK_STYLE_PROVIDER (ce->priv->provider));
@@ -303,7 +303,7 @@ destroy_provider (GtkInspectorCssEditor *ce)
 }
 
 static void
-ctk_inspector_css_editor_init (GtkInspectorCssEditor *ce)
+ctk_inspector_css_editor_init (CtkInspectorCssEditor *ce)
 {
   ce->priv = ctk_inspector_css_editor_get_instance_private (ce);
   ctk_widget_init_template (CTK_WIDGET (ce));
@@ -312,7 +312,7 @@ ctk_inspector_css_editor_init (GtkInspectorCssEditor *ce)
 static void
 constructed (GObject *object)
 {
-  GtkInspectorCssEditor *ce = CTK_INSPECTOR_CSS_EDITOR (object);
+  CtkInspectorCssEditor *ce = CTK_INSPECTOR_CSS_EDITOR (object);
 
   create_provider (ce);
   set_initial_text (ce);
@@ -321,7 +321,7 @@ constructed (GObject *object)
 static void
 finalize (GObject *object)
 {
-  GtkInspectorCssEditor *ce = CTK_INSPECTOR_CSS_EDITOR (object);
+  CtkInspectorCssEditor *ce = CTK_INSPECTOR_CSS_EDITOR (object);
 
   if (ce->priv->timeout != 0)
     g_source_remove (ce->priv->timeout);
@@ -334,18 +334,18 @@ finalize (GObject *object)
 }
 
 static void
-ctk_inspector_css_editor_class_init (GtkInspectorCssEditorClass *klass)
+ctk_inspector_css_editor_class_init (CtkInspectorCssEditorClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   object_class->constructed = constructed;
   object_class->finalize = finalize;
 
   ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/css-editor.ui");
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorCssEditor, text);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorCssEditor, view);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorCssEditor, disable_button);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorCssEditor, text);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorCssEditor, view);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorCssEditor, disable_button);
   ctk_widget_class_bind_template_callback (widget_class, disable_toggled);
   ctk_widget_class_bind_template_callback (widget_class, save_clicked);
   ctk_widget_class_bind_template_callback (widget_class, text_changed);

@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkBox" id="box1">
+      <object class="CtkBox" id="box1">
         <property name="visible">True</property>
         <child>
-          <object class="GtkStackSwitcher" id="stackswitcher1">
+          <object class="CtkStackSwitcher" id="stackswitcher1">
             <property name="visible">True</property>
             <property name="stack">stack1</property>
           </object>
         </child>
         <child>
-          <object class="GtkStack" id="stack1">
+          <object class="CtkStack" id="stack1">
             <property name="visible">True</property>
             <child>
-              <object class="GtkButton" id="page1">
+              <object class="CtkButton" id="page1">
                 <property name="label" translatable="yes">Yes</property>
                 <property name="visible">True</property>
               </object>
@@ -27,7 +27,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="page2">
+              <object class="CtkButton" id="page2">
                 <property name="label" translatable="yes">No</property>
                 <property name="visible">True</property>
               </object>

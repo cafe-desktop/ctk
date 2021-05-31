@@ -22,18 +22,18 @@
 
 G_BEGIN_DECLS
 
-void     _ctk_cell_accessible_state_changed (GtkCellAccessible *cell,
-                                             GtkCellRendererState added,
-                                             GtkCellRendererState removed);
-void     _ctk_cell_accessible_update_cache  (GtkCellAccessible *cell,
+void     _ctk_cell_accessible_state_changed (CtkCellAccessible *cell,
+                                             CtkCellRendererState added,
+                                             CtkCellRendererState removed);
+void     _ctk_cell_accessible_update_cache  (CtkCellAccessible *cell,
                                              gboolean           emit_signal);
-void     _ctk_cell_accessible_initialize    (GtkCellAccessible *cell,
-                                             GtkWidget         *widget,
+void     _ctk_cell_accessible_initialize    (CtkCellAccessible *cell,
+                                             CtkWidget         *widget,
                                              AtkObject         *parent);
-gboolean _ctk_cell_accessible_add_state     (GtkCellAccessible *cell,
+gboolean _ctk_cell_accessible_add_state     (CtkCellAccessible *cell,
                                              AtkStateType       state_type,
                                              gboolean           emit_signal);
-gboolean _ctk_cell_accessible_remove_state  (GtkCellAccessible *cell,
+gboolean _ctk_cell_accessible_remove_state  (CtkCellAccessible *cell,
                                              AtkStateType       state_type,
                                              gboolean           emit_signal);
 

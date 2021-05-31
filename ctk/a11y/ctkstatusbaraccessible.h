@@ -27,26 +27,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_STATUSBAR_ACCESSIBLE                  (ctk_statusbar_accessible_get_type ())
-#define CTK_STATUSBAR_ACCESSIBLE(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_STATUSBAR_ACCESSIBLE, GtkStatusbarAccessible))
-#define CTK_STATUSBAR_ACCESSIBLE_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_STATUSBAR_ACCESSIBLE, GtkStatusbarAccessibleClass))
+#define CTK_STATUSBAR_ACCESSIBLE(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_STATUSBAR_ACCESSIBLE, CtkStatusbarAccessible))
+#define CTK_STATUSBAR_ACCESSIBLE_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_STATUSBAR_ACCESSIBLE, CtkStatusbarAccessibleClass))
 #define CTK_IS_STATUSBAR_ACCESSIBLE(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_STATUSBAR_ACCESSIBLE))
 #define CTK_IS_STATUSBAR_ACCESSIBLE_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_STATUSBAR_ACCESSIBLE))
-#define CTK_STATUSBAR_ACCESSIBLE_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_STATUSBAR_ACCESSIBLE, GtkStatusbarAccessibleClass))
+#define CTK_STATUSBAR_ACCESSIBLE_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_STATUSBAR_ACCESSIBLE, CtkStatusbarAccessibleClass))
 
-typedef struct _GtkStatusbarAccessible        GtkStatusbarAccessible;
-typedef struct _GtkStatusbarAccessibleClass   GtkStatusbarAccessibleClass;
-typedef struct _GtkStatusbarAccessiblePrivate GtkStatusbarAccessiblePrivate;
+typedef struct _CtkStatusbarAccessible        CtkStatusbarAccessible;
+typedef struct _CtkStatusbarAccessibleClass   CtkStatusbarAccessibleClass;
+typedef struct _CtkStatusbarAccessiblePrivate CtkStatusbarAccessiblePrivate;
 
-struct _GtkStatusbarAccessible
+struct _CtkStatusbarAccessible
 {
-  GtkContainerAccessible parent;
+  CtkContainerAccessible parent;
 
-  GtkStatusbarAccessiblePrivate *priv;
+  CtkStatusbarAccessiblePrivate *priv;
 };
 
-struct _GtkStatusbarAccessibleClass
+struct _CtkStatusbarAccessibleClass
 {
-  GtkContainerAccessibleClass parent_class;
+  CtkContainerAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

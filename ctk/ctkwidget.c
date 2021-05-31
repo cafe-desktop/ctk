@@ -76,9 +76,9 @@
 /**
  * SECTION:ctkwidget
  * @Short_description: Base class for all widgets
- * @Title: GtkWidget
+ * @Title: CtkWidget
  *
- * GtkWidget is the base class all widgets in GTK+ derive from. It manages the
+ * CtkWidget is the base class all widgets in GTK+ derive from. It manages the
  * widget lifecycle, states and style.
  *
  * # Height-for-width Geometry Management # {#geometry-management}
@@ -93,12 +93,12 @@
  * Height-for-width geometry management is implemented in GTK+ by way
  * of five virtual methods:
  *
- * - #GtkWidgetClass.get_request_mode()
- * - #GtkWidgetClass.get_preferred_width()
- * - #GtkWidgetClass.get_preferred_height()
- * - #GtkWidgetClass.get_preferred_height_for_width()
- * - #GtkWidgetClass.get_preferred_width_for_height()
- * - #GtkWidgetClass.get_preferred_height_and_baseline_for_width()
+ * - #CtkWidgetClass.get_request_mode()
+ * - #CtkWidgetClass.get_preferred_width()
+ * - #CtkWidgetClass.get_preferred_height()
+ * - #CtkWidgetClass.get_preferred_height_for_width()
+ * - #CtkWidgetClass.get_preferred_width_for_height()
+ * - #CtkWidgetClass.get_preferred_height_and_baseline_for_width()
  *
  * There are some important things to keep in mind when implementing
  * height-for-width and when using it in container implementations.
@@ -106,7 +106,7 @@
  * The geometry management system will query a widget hierarchy in
  * only one orientation at a time. When widgets are initially queried
  * for their minimum sizes it is generally done in two initial passes
- * in the #GtkSizeRequestMode chosen by the toplevel.
+ * in the #CtkSizeRequestMode chosen by the toplevel.
  *
  * For example, when queried in the normal
  * %CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH mode:
@@ -130,24 +130,24 @@
  * Each container widget, once allocated a size, will go on to first share the
  * space in one orientation among its children and then request each child's
  * height for its target allocated width or its width for allocated height,
- * depending. In this way a #GtkWidget will typically be requested its size
+ * depending. In this way a #CtkWidget will typically be requested its size
  * a number of times before actually being allocated a size. The size a
  * widget is finally allocated can of course differ from the size it has
- * requested. For this reason, #GtkWidget caches a  small number of results
+ * requested. For this reason, #CtkWidget caches a  small number of results
  * to avoid re-querying for the same sizes in one allocation cycle.
  *
  * See
- * [GtkContainer’s geometry management section][container-geometry-management]
+ * [CtkContainer’s geometry management section][container-geometry-management]
  * to learn more about how height-for-width allocations are performed
  * by container widgets.
  *
  * If a widget does move content around to intelligently use up the
  * allocated size then it must support the request in both
- * #GtkSizeRequestModes even if the widget in question only
+ * #CtkSizeRequestModes even if the widget in question only
  * trades sizes in a single orientation.
  *
- * For instance, a #GtkLabel that does height-for-width word wrapping
- * will not expect to have #GtkWidgetClass.get_preferred_height() called
+ * For instance, a #CtkLabel that does height-for-width word wrapping
+ * will not expect to have #CtkWidgetClass.get_preferred_height() called
  * because that call is specific to a width-for-height request. In this
  * case the label must return the height required for its own minimum
  * possible width. By following this rule any widget that handles
@@ -155,12 +155,12 @@
  * at least enough space to fit its own content.
  *
  * Here are some examples of how a %CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH widget
- * generally deals with width-for-height requests, for #GtkWidgetClass.get_preferred_height()
+ * generally deals with width-for-height requests, for #CtkWidgetClass.get_preferred_height()
  * it will do:
  *
  * |[<!-- language="C" -->
  * static void
- * foo_widget_get_preferred_height (GtkWidget *widget,
+ * foo_widget_get_preferred_height (CtkWidget *widget,
  *                                  gint *min_height,
  *                                  gint *nat_height)
  * {
@@ -179,18 +179,18 @@
  *      }
  *    else
  *      {
- *         ... some widgets do both. For instance, if a GtkLabel is
+ *         ... some widgets do both. For instance, if a CtkLabel is
  *         rotated to 90 degrees it will return the minimum and
  *         natural height for the rotated label here.
  *      }
  * }
  * ]|
  *
- * And in #GtkWidgetClass.get_preferred_width_for_height() it will simply return
+ * And in #CtkWidgetClass.get_preferred_width_for_height() it will simply return
  * the minimum and natural width:
  * |[<!-- language="C" -->
  * static void
- * foo_widget_get_preferred_width_for_height (GtkWidget *widget,
+ * foo_widget_get_preferred_width_for_height (CtkWidget *widget,
  *                                            gint for_height,
  *                                            gint *min_width,
  *                                            gint *nat_width)
@@ -204,7 +204,7 @@
  *    else
  *      {
  *         ... again if a widget is sometimes operating in
- *         width-for-height mode (like a rotated GtkLabel) it can go
+ *         width-for-height mode (like a rotated CtkLabel) it can go
  *         ahead and do its real width for height calculation here.
  *      }
  * }
@@ -224,8 +224,8 @@
  *
  * It will not work to use the wrapper functions, such as
  * ctk_widget_get_preferred_width() inside your own size request
- * implementation. These return a request adjusted by #GtkSizeGroup
- * and by the #GtkWidgetClass.adjust_size_request() virtual method. If a
+ * implementation. These return a request adjusted by #CtkSizeGroup
+ * and by the #CtkWidgetClass.adjust_size_request() virtual method. If a
  * widget used the wrappers inside its virtual method implementations,
  * then the adjustments (such as widget margins) would be applied
  * twice. GTK+ therefore does not allow this and will warn if you try
@@ -235,7 +235,7 @@
  * another widget, such as a child of a
  * container, you must use the wrapper APIs.
  * Otherwise, you would not properly consider widget margins,
- * #GtkSizeGroup, and so forth.
+ * #CtkSizeGroup, and so forth.
  *
  * Since 3.10 GTK+ also supports baseline vertical alignment of widgets. This
  * means that widgets are positioned such that the typographical baseline of
@@ -244,11 +244,11 @@
  * that supports baselines and has a natural “row” that it aligns to the baseline,
  * or a baseline assigned to it by the grandparent.
  *
- * Baseline alignment support for a widget is done by the #GtkWidgetClass.get_preferred_height_and_baseline_for_width()
+ * Baseline alignment support for a widget is done by the #CtkWidgetClass.get_preferred_height_and_baseline_for_width()
  * virtual function. It allows you to report a baseline in combination with the
  * minimum and natural height. If there is no baseline you can return -1 to indicate
  * this. The default implementation of this virtual function calls into the
- * #GtkWidgetClass.get_preferred_height() and #GtkWidgetClass.get_preferred_height_for_width(),
+ * #CtkWidgetClass.get_preferred_height() and #CtkWidgetClass.get_preferred_height_for_width(),
  * so if baselines are not supported it doesn’t need to be implemented.
  *
  * If a widget ends up baseline aligned it will be allocated all the space in the parent
@@ -258,7 +258,7 @@
  *
  * # Style Properties
  *
- * #GtkWidget introduces “style
+ * #CtkWidget introduces “style
  * properties” - these are basically object properties that are stored
  * not on the object, but in the style object associated to the widget. Style
  * properties are set in [resource files][ctk3-Resource-Files].
@@ -272,30 +272,30 @@
  * style properties and ctk_widget_style_get_property(), ctk_widget_style_get() or
  * ctk_widget_style_get_valist() to obtain the value of a style property.
  *
- * # GtkWidget as GtkBuildable
+ * # CtkWidget as CtkBuildable
  *
- * The GtkWidget implementation of the GtkBuildable interface supports a
+ * The CtkWidget implementation of the CtkBuildable interface supports a
  * custom <accelerator> element, which has attributes named ”key”, ”modifiers”
  * and ”signal” and allows to specify accelerators.
  *
  * An example of a UI definition fragment specifying an accelerator:
  * |[
- * <object class="GtkButton">
+ * <object class="CtkButton">
  *   <accelerator key="q" modifiers="GDK_CONTROL_MASK" signal="clicked"/>
  * </object>
  * ]|
  *
- * In addition to accelerators, GtkWidget also support a custom <accessible>
+ * In addition to accelerators, CtkWidget also support a custom <accessible>
  * element, which supports actions and relations. Properties on the accessible
  * implementation of an object can be set by accessing the internal child
- * “accessible” of a #GtkWidget.
+ * “accessible” of a #CtkWidget.
  *
  * An example of a UI definition fragment specifying an accessible:
  * |[
- * <object class="GtkLabel" id="label1"/>
+ * <object class="CtkLabel" id="label1"/>
  *   <property name="label">I am a Label for a Button</property>
  * </object>
- * <object class="GtkButton" id="button1">
+ * <object class="CtkButton" id="button1">
  *   <accessibility>
  *     <action action_name="click" translatable="yes">Click the button.</action>
  *     <relation target="label1" type="labelled-by"/>
@@ -308,10 +308,10 @@
  * </object>
  * ]|
  *
- * Finally, GtkWidget allows style information such as style classes to
+ * Finally, CtkWidget allows style information such as style classes to
  * be associated with widgets, using the custom <style> element:
  * |[
- * <object class="GtkButton" id="button1">
+ * <object class="CtkButton" id="button1">
  *   <style>
  *     <class name="my-special-button-class"/>
  *     <class name="dark-button"/>
@@ -321,23 +321,23 @@
  *
  * # Building composite widgets from template XML ## {#composite-templates}
  *
- * GtkWidget exposes some facilities to automate the procedure
- * of creating composite widgets using #GtkBuilder interface description
+ * CtkWidget exposes some facilities to automate the procedure
+ * of creating composite widgets using #CtkBuilder interface description
  * language.
  *
- * To create composite widgets with #GtkBuilder XML, one must associate
+ * To create composite widgets with #CtkBuilder XML, one must associate
  * the interface description with the widget class at class initialization
  * time using ctk_widget_class_set_template().
  *
  * The interface description semantics expected in composite template descriptions
- * is slightly different from regular #GtkBuilder XML.
+ * is slightly different from regular #CtkBuilder XML.
  *
  * Unlike regular interface descriptions, ctk_widget_class_set_template() will
  * expect a <template> tag as a direct child of the toplevel <interface>
  * tag. The <template> tag must specify the “class” attribute which must be
  * the type name of the widget. Optionally, the “parent” attribute may be
  * specified to specify the direct parent type of the widget type, this is
- * ignored by the GtkBuilder but required for Glade to introspect what kind
+ * ignored by the CtkBuilder but required for Glade to introspect what kind
  * of properties and internal children exist for a given type when the actual
  * type does not exist.
  *
@@ -352,20 +352,20 @@
  * which might be referenced by other widgets declared as children of the
  * <template> tag.
  *
- * An example of a GtkBuilder Template Definition:
+ * An example of a CtkBuilder Template Definition:
  * |[
  * <interface>
- *   <template class="FooWidget" parent="GtkBox">
+ *   <template class="FooWidget" parent="CtkBox">
  *     <property name="orientation">CTK_ORIENTATION_HORIZONTAL</property>
  *     <property name="spacing">4</property>
  *     <child>
- *       <object class="GtkButton" id="hello_button">
+ *       <object class="CtkButton" id="hello_button">
  *         <property name="label">Hello World</property>
  *         <signal name="clicked" handler="hello_button_clicked" object="FooWidget" swapped="yes"/>
  *       </object>
  *     </child>
  *     <child>
- *       <object class="GtkButton" id="goodbye_button">
+ *       <object class="CtkButton" id="goodbye_button">
  *         <property name="label">Goodbye World</property>
  *       </object>
  *     </child>
@@ -376,7 +376,7 @@
  * Typically, you'll place the template fragment into a file that is
  * bundled with your project, using #GResource. In order to load the
  * template, you need to call ctk_widget_class_set_template_from_resource()
- * from the class initialization of your #GtkWidget type:
+ * from the class initialization of your #CtkWidget type:
  *
  * |[<!-- language="C" -->
  * static void
@@ -409,8 +409,8 @@
  *
  * |[<!-- language="C" -->
  * typedef struct {
- *   GtkWidget *hello_button;
- *   GtkWidget *goodbye_button;
+ *   CtkWidget *hello_button;
+ *   CtkWidget *goodbye_button;
  * } FooWidgetPrivate;
  *
  * G_DEFINE_TYPE_WITH_PRIVATE (FooWidget, foo_widget, CTK_TYPE_BOX)
@@ -443,7 +443,7 @@
  * // because of the swapped="yes" attribute in the template XML
  * static void
  * hello_button_clicked (FooWidget *self,
- *                       GtkButton *button)
+ *                       CtkButton *button)
  * {
  *   g_print ("Hello, world!\n");
  * }
@@ -478,20 +478,20 @@ typedef struct {
   GBytes               *data;
   GSList               *children;
   GSList               *callbacks;
-  GtkBuilderConnectFunc connect_func;
+  CtkBuilderConnectFunc connect_func;
   gpointer              connect_data;
   GDestroyNotify        destroy_notify;
-} GtkWidgetTemplate;
+} CtkWidgetTemplate;
 
 typedef struct {
-  GtkEventController *controller;
+  CtkEventController *controller;
   guint grab_notify_id;
   guint sequence_state_changed_id;
 } EventControllerData;
 
-struct _GtkWidgetClassPrivate
+struct _CtkWidgetClassPrivate
 {
-  GtkWidgetTemplate *template;
+  CtkWidgetTemplate *template;
   GType accessible_type;
   AtkRole accessible_role;
   const char *css_name;
@@ -616,9 +616,9 @@ enum {
 
 static GParamSpec *widget_props[NUM_PROPERTIES] = { NULL, };
 
-typedef	struct	_GtkStateData	 GtkStateData;
+typedef	struct	_CtkStateData	 CtkStateData;
 
-struct _GtkStateData
+struct _CtkStateData
 {
   guint         flags_to_set;
   guint         flags_to_unset;
@@ -628,8 +628,8 @@ struct _GtkStateData
 
 /* --- prototypes --- */
 static void	ctk_widget_base_class_init	(gpointer            g_class);
-static void	ctk_widget_class_init		(GtkWidgetClass     *klass);
-static void	ctk_widget_base_class_finalize	(GtkWidgetClass     *klass);
+static void	ctk_widget_class_init		(CtkWidgetClass     *klass);
+static void	ctk_widget_base_class_finalize	(CtkWidgetClass     *klass);
 static void     ctk_widget_init                  (GTypeInstance     *instance,
                                                   gpointer           g_class);
 static void	ctk_widget_set_property		 (GObject           *object,
@@ -642,189 +642,189 @@ static void	ctk_widget_get_property		 (GObject           *object,
 						  GParamSpec        *pspec);
 static void	ctk_widget_constructed           (GObject	    *object);
 static void	ctk_widget_dispose		 (GObject	    *object);
-static void	ctk_widget_real_destroy		 (GtkWidget	    *object);
+static void	ctk_widget_real_destroy		 (CtkWidget	    *object);
 static void	ctk_widget_finalize		 (GObject	    *object);
-static void	ctk_widget_real_show		 (GtkWidget	    *widget);
-static void	ctk_widget_real_hide		 (GtkWidget	    *widget);
-static void	ctk_widget_real_map		 (GtkWidget	    *widget);
-static void	ctk_widget_real_unmap		 (GtkWidget	    *widget);
-static void	ctk_widget_real_realize		 (GtkWidget	    *widget);
-static void	ctk_widget_real_unrealize	 (GtkWidget	    *widget);
-static void	ctk_widget_real_size_allocate	 (GtkWidget	    *widget,
-                                                  GtkAllocation	    *allocation);
-static void	ctk_widget_real_style_set        (GtkWidget         *widget,
-                                                  GtkStyle          *previous_style);
-static void	ctk_widget_real_direction_changed(GtkWidget         *widget,
-                                                  GtkTextDirection   previous_direction);
+static void	ctk_widget_real_show		 (CtkWidget	    *widget);
+static void	ctk_widget_real_hide		 (CtkWidget	    *widget);
+static void	ctk_widget_real_map		 (CtkWidget	    *widget);
+static void	ctk_widget_real_unmap		 (CtkWidget	    *widget);
+static void	ctk_widget_real_realize		 (CtkWidget	    *widget);
+static void	ctk_widget_real_unrealize	 (CtkWidget	    *widget);
+static void	ctk_widget_real_size_allocate	 (CtkWidget	    *widget,
+                                                  CtkAllocation	    *allocation);
+static void	ctk_widget_real_style_set        (CtkWidget         *widget,
+                                                  CtkStyle          *previous_style);
+static void	ctk_widget_real_direction_changed(CtkWidget         *widget,
+                                                  CtkTextDirection   previous_direction);
 
-static void	ctk_widget_real_grab_focus	 (GtkWidget         *focus_widget);
-static gboolean ctk_widget_real_query_tooltip    (GtkWidget         *widget,
+static void	ctk_widget_real_grab_focus	 (CtkWidget         *focus_widget);
+static gboolean ctk_widget_real_query_tooltip    (CtkWidget         *widget,
 						  gint               x,
 						  gint               y,
 						  gboolean           keyboard_tip,
-						  GtkTooltip        *tooltip);
-static void     ctk_widget_real_style_updated    (GtkWidget         *widget);
-static gboolean ctk_widget_real_show_help        (GtkWidget         *widget,
-                                                  GtkWidgetHelpType  help_type);
-static gboolean _ctk_widget_run_controllers      (GtkWidget           *widget,
+						  CtkTooltip        *tooltip);
+static void     ctk_widget_real_style_updated    (CtkWidget         *widget);
+static gboolean ctk_widget_real_show_help        (CtkWidget         *widget,
+                                                  CtkWidgetHelpType  help_type);
+static gboolean _ctk_widget_run_controllers      (CtkWidget           *widget,
                                                   const GdkEvent      *event,
-                                                  GtkPropagationPhase  phase);
+                                                  CtkPropagationPhase  phase);
 
-static void	ctk_widget_dispatch_child_properties_changed	(GtkWidget        *object,
+static void	ctk_widget_dispatch_child_properties_changed	(CtkWidget        *object,
 								 guint             n_pspecs,
 								 GParamSpec      **pspecs);
-static gboolean         ctk_widget_real_scroll_event            (GtkWidget        *widget,
+static gboolean         ctk_widget_real_scroll_event            (CtkWidget        *widget,
                                                                  GdkEventScroll   *event);
-static gboolean         ctk_widget_real_button_event            (GtkWidget        *widget,
+static gboolean         ctk_widget_real_button_event            (CtkWidget        *widget,
                                                                  GdkEventButton   *event);
-static gboolean         ctk_widget_real_motion_event            (GtkWidget        *widget,
+static gboolean         ctk_widget_real_motion_event            (CtkWidget        *widget,
                                                                  GdkEventMotion   *event);
-static gboolean		ctk_widget_real_key_press_event   	(GtkWidget        *widget,
+static gboolean		ctk_widget_real_key_press_event   	(CtkWidget        *widget,
 								 GdkEventKey      *event);
-static gboolean		ctk_widget_real_key_release_event 	(GtkWidget        *widget,
+static gboolean		ctk_widget_real_key_release_event 	(CtkWidget        *widget,
 								 GdkEventKey      *event);
-static gboolean		ctk_widget_real_focus_in_event   	 (GtkWidget       *widget,
+static gboolean		ctk_widget_real_focus_in_event   	 (CtkWidget       *widget,
 								  GdkEventFocus   *event);
-static gboolean		ctk_widget_real_focus_out_event   	(GtkWidget        *widget,
+static gboolean		ctk_widget_real_focus_out_event   	(CtkWidget        *widget,
 								 GdkEventFocus    *event);
-static gboolean         ctk_widget_real_touch_event             (GtkWidget        *widget,
+static gboolean         ctk_widget_real_touch_event             (CtkWidget        *widget,
                                                                  GdkEventTouch    *event);
-static gboolean         ctk_widget_real_grab_broken_event       (GtkWidget          *widget,
+static gboolean         ctk_widget_real_grab_broken_event       (CtkWidget          *widget,
                                                                  GdkEventGrabBroken *event);
-static gboolean		ctk_widget_real_focus			(GtkWidget        *widget,
-								 GtkDirectionType  direction);
-static void             ctk_widget_real_move_focus              (GtkWidget        *widget,
-                                                                 GtkDirectionType  direction);
-static gboolean		ctk_widget_real_keynav_failed		(GtkWidget        *widget,
-								 GtkDirectionType  direction);
+static gboolean		ctk_widget_real_focus			(CtkWidget        *widget,
+								 CtkDirectionType  direction);
+static void             ctk_widget_real_move_focus              (CtkWidget        *widget,
+                                                                 CtkDirectionType  direction);
+static gboolean		ctk_widget_real_keynav_failed		(CtkWidget        *widget,
+								 CtkDirectionType  direction);
 #ifdef G_ENABLE_CONSISTENCY_CHECKS
-static void             ctk_widget_verify_invariants            (GtkWidget        *widget);
-static void             ctk_widget_push_verify_invariants       (GtkWidget        *widget);
-static void             ctk_widget_pop_verify_invariants        (GtkWidget        *widget);
+static void             ctk_widget_verify_invariants            (CtkWidget        *widget);
+static void             ctk_widget_push_verify_invariants       (CtkWidget        *widget);
+static void             ctk_widget_pop_verify_invariants        (CtkWidget        *widget);
 #else
 #define                 ctk_widget_verify_invariants(widget)
 #define                 ctk_widget_push_verify_invariants(widget)
 #define                 ctk_widget_pop_verify_invariants(widget)
 #endif
-static PangoContext*	ctk_widget_peek_pango_context		(GtkWidget	  *widget);
-static void     	ctk_widget_update_pango_context		(GtkWidget	  *widget);
-static void		ctk_widget_propagate_state		(GtkWidget	  *widget,
-								 GtkStateData 	  *data);
-static void             ctk_widget_update_alpha                 (GtkWidget        *widget);
+static PangoContext*	ctk_widget_peek_pango_context		(CtkWidget	  *widget);
+static void     	ctk_widget_update_pango_context		(CtkWidget	  *widget);
+static void		ctk_widget_propagate_state		(CtkWidget	  *widget,
+								 CtkStateData 	  *data);
+static void             ctk_widget_update_alpha                 (CtkWidget        *widget);
 
-static gint		ctk_widget_event_internal		(GtkWidget	  *widget,
+static gint		ctk_widget_event_internal		(CtkWidget	  *widget,
 								 GdkEvent	  *event);
-static gboolean		ctk_widget_real_mnemonic_activate	(GtkWidget	  *widget,
+static gboolean		ctk_widget_real_mnemonic_activate	(CtkWidget	  *widget,
 								 gboolean	   group_cycling);
-static void             ctk_widget_real_get_width               (GtkWidget        *widget,
+static void             ctk_widget_real_get_width               (CtkWidget        *widget,
                                                                  gint             *minimum_size,
                                                                  gint             *natural_size);
-static void             ctk_widget_real_get_height              (GtkWidget        *widget,
+static void             ctk_widget_real_get_height              (CtkWidget        *widget,
                                                                  gint             *minimum_size,
                                                                  gint             *natural_size);
-static void             ctk_widget_real_get_height_for_width    (GtkWidget        *widget,
+static void             ctk_widget_real_get_height_for_width    (CtkWidget        *widget,
                                                                  gint              width,
                                                                  gint             *minimum_height,
                                                                  gint             *natural_height);
-static void             ctk_widget_real_get_width_for_height    (GtkWidget        *widget,
+static void             ctk_widget_real_get_width_for_height    (CtkWidget        *widget,
                                                                  gint              height,
                                                                  gint             *minimum_width,
                                                                  gint             *natural_width);
-static void             ctk_widget_real_state_flags_changed     (GtkWidget        *widget,
-                                                                 GtkStateFlags     old_state);
-static void             ctk_widget_real_queue_draw_region       (GtkWidget         *widget,
+static void             ctk_widget_real_state_flags_changed     (CtkWidget        *widget,
+                                                                 CtkStateFlags     old_state);
+static void             ctk_widget_real_queue_draw_region       (CtkWidget         *widget,
 								 const cairo_region_t *region);
-static AtkObject*	ctk_widget_real_get_accessible		(GtkWidget	  *widget);
+static AtkObject*	ctk_widget_real_get_accessible		(CtkWidget	  *widget);
 static void		ctk_widget_accessible_interface_init	(AtkImplementorIface *iface);
 static AtkObject*	ctk_widget_ref_accessible		(AtkImplementor *implementor);
-static void             ctk_widget_invalidate_widget_windows    (GtkWidget        *widget,
+static void             ctk_widget_invalidate_widget_windows    (CtkWidget        *widget,
 								 cairo_region_t        *region);
-static GdkScreen *      ctk_widget_get_screen_unchecked         (GtkWidget        *widget);
-static gboolean         ctk_widget_real_can_activate_accel      (GtkWidget *widget,
+static GdkScreen *      ctk_widget_get_screen_unchecked         (CtkWidget        *widget);
+static gboolean         ctk_widget_real_can_activate_accel      (CtkWidget *widget,
                                                                  guint      signal_id);
 
-static void             ctk_widget_real_set_has_tooltip         (GtkWidget *widget,
+static void             ctk_widget_real_set_has_tooltip         (CtkWidget *widget,
 								 gboolean   has_tooltip,
 								 gboolean   force);
-static void             ctk_widget_buildable_interface_init     (GtkBuildableIface *iface);
-static void             ctk_widget_buildable_set_name           (GtkBuildable     *buildable,
+static void             ctk_widget_buildable_interface_init     (CtkBuildableIface *iface);
+static void             ctk_widget_buildable_set_name           (CtkBuildable     *buildable,
                                                                  const gchar      *name);
-static const gchar *    ctk_widget_buildable_get_name           (GtkBuildable     *buildable);
-static GObject *        ctk_widget_buildable_get_internal_child (GtkBuildable *buildable,
-								 GtkBuilder   *builder,
+static const gchar *    ctk_widget_buildable_get_name           (CtkBuildable     *buildable);
+static GObject *        ctk_widget_buildable_get_internal_child (CtkBuildable *buildable,
+								 CtkBuilder   *builder,
 								 const gchar  *childname);
-static void             ctk_widget_buildable_set_buildable_property (GtkBuildable     *buildable,
-								     GtkBuilder       *builder,
+static void             ctk_widget_buildable_set_buildable_property (CtkBuildable     *buildable,
+								     CtkBuilder       *builder,
 								     const gchar      *name,
 								     const GValue     *value);
-static gboolean         ctk_widget_buildable_custom_tag_start   (GtkBuildable     *buildable,
-                                                                 GtkBuilder       *builder,
+static gboolean         ctk_widget_buildable_custom_tag_start   (CtkBuildable     *buildable,
+                                                                 CtkBuilder       *builder,
                                                                  GObject          *child,
                                                                  const gchar      *tagname,
                                                                  GMarkupParser    *parser,
                                                                  gpointer         *data);
-static void             ctk_widget_buildable_custom_finished    (GtkBuildable     *buildable,
-                                                                 GtkBuilder       *builder,
+static void             ctk_widget_buildable_custom_finished    (CtkBuildable     *buildable,
+                                                                 CtkBuilder       *builder,
                                                                  GObject          *child,
                                                                  const gchar      *tagname,
                                                                  gpointer          data);
-static void             ctk_widget_buildable_parser_finished    (GtkBuildable     *buildable,
-                                                                 GtkBuilder       *builder);
+static void             ctk_widget_buildable_parser_finished    (CtkBuildable     *buildable,
+                                                                 CtkBuilder       *builder);
 
-static GtkSizeRequestMode ctk_widget_real_get_request_mode      (GtkWidget         *widget);
-static void             ctk_widget_real_get_width               (GtkWidget         *widget,
+static CtkSizeRequestMode ctk_widget_real_get_request_mode      (CtkWidget         *widget);
+static void             ctk_widget_real_get_width               (CtkWidget         *widget,
                                                                  gint              *minimum_size,
                                                                  gint              *natural_size);
-static void             ctk_widget_real_get_height              (GtkWidget         *widget,
+static void             ctk_widget_real_get_height              (CtkWidget         *widget,
                                                                  gint              *minimum_size,
                                                                  gint              *natural_size);
 
-static void             ctk_widget_queue_tooltip_query          (GtkWidget *widget);
+static void             ctk_widget_queue_tooltip_query          (CtkWidget *widget);
 
 
-static void             ctk_widget_real_adjust_size_request     (GtkWidget         *widget,
-                                                                 GtkOrientation     orientation,
+static void             ctk_widget_real_adjust_size_request     (CtkWidget         *widget,
+                                                                 CtkOrientation     orientation,
                                                                  gint              *minimum_size,
                                                                  gint              *natural_size);
-static void             ctk_widget_real_adjust_baseline_request (GtkWidget         *widget,
+static void             ctk_widget_real_adjust_baseline_request (CtkWidget         *widget,
 								 gint              *minimum_baseline,
 								 gint              *natural_baseline);
-static void             ctk_widget_real_adjust_size_allocation  (GtkWidget         *widget,
-                                                                 GtkOrientation     orientation,
+static void             ctk_widget_real_adjust_size_allocation  (CtkWidget         *widget,
+                                                                 CtkOrientation     orientation,
                                                                  gint              *minimum_size,
                                                                  gint              *natural_size,
                                                                  gint              *allocated_pos,
                                                                  gint              *allocated_size);
-static void             ctk_widget_real_adjust_baseline_allocation (GtkWidget         *widget,
+static void             ctk_widget_real_adjust_baseline_allocation (CtkWidget         *widget,
 								    gint              *baseline);
 
-static void                  template_data_free                 (GtkWidgetTemplate    *template_data);
+static void                  template_data_free                 (CtkWidgetTemplate    *template_data);
 
-static void ctk_widget_set_usize_internal (GtkWidget          *widget,
+static void ctk_widget_set_usize_internal (CtkWidget          *widget,
 					   gint                width,
 					   gint                height);
 
-static void ctk_widget_add_events_internal (GtkWidget *widget,
+static void ctk_widget_add_events_internal (CtkWidget *widget,
                                             GdkDevice *device,
                                             gint       events);
-static void ctk_widget_set_device_enabled_internal (GtkWidget *widget,
+static void ctk_widget_set_device_enabled_internal (CtkWidget *widget,
                                                     GdkDevice *device,
                                                     gboolean   recurse,
                                                     gboolean   enabled);
 
 static void ctk_widget_on_frame_clock_update (GdkFrameClock *frame_clock,
-                                              GtkWidget     *widget);
+                                              CtkWidget     *widget);
 
 static gboolean event_window_is_still_viewable (GdkEvent *event);
 
-static void ctk_widget_update_input_shape (GtkWidget *widget);
+static void ctk_widget_update_input_shape (CtkWidget *widget);
 
 /* --- variables --- */
-static gint             GtkWidget_private_offset = 0;
+static gint             CtkWidget_private_offset = 0;
 static gpointer         ctk_widget_parent_class = NULL;
 static guint            widget_signals[LAST_SIGNAL] = { 0 };
 static guint            composite_child_stack = 0;
-GtkTextDirection ctk_default_direction = CTK_TEXT_DIR_LTR;
+CtkTextDirection ctk_default_direction = CTK_TEXT_DIR_LTR;
 static GParamSpecPool  *style_property_spec_pool = NULL;
 
 static GQuark		quark_property_parser = 0;
@@ -862,13 +862,13 @@ ctk_widget_get_type (void)
     {
       const GTypeInfo widget_info =
       {
-	sizeof (GtkWidgetClass),
+	sizeof (CtkWidgetClass),
 	ctk_widget_base_class_init,
 	(GBaseFinalizeFunc) ctk_widget_base_class_finalize,
 	(GClassInitFunc) ctk_widget_class_init,
 	NULL,		/* class_finalize */
 	NULL,		/* class_init */
-	sizeof (GtkWidget),
+	sizeof (CtkWidget),
 	0,		/* n_preallocs */
 	ctk_widget_init,
 	NULL,		/* value_table */
@@ -888,13 +888,13 @@ ctk_widget_get_type (void)
 	NULL /* interface data */
       };
 
-      widget_type = g_type_register_static (G_TYPE_INITIALLY_UNOWNED, "GtkWidget",
+      widget_type = g_type_register_static (G_TYPE_INITIALLY_UNOWNED, "CtkWidget",
                                             &widget_info, G_TYPE_FLAG_ABSTRACT);
 
-      g_type_add_class_private (widget_type, sizeof (GtkWidgetClassPrivate));
+      g_type_add_class_private (widget_type, sizeof (CtkWidgetClassPrivate));
 
-      GtkWidget_private_offset =
-        g_type_add_instance_private (widget_type, sizeof (GtkWidgetPrivate));
+      CtkWidget_private_offset =
+        g_type_add_instance_private (widget_type, sizeof (CtkWidgetPrivate));
 
       g_type_add_interface_static (widget_type, ATK_TYPE_IMPLEMENTOR,
                                    &accessibility_info) ;
@@ -906,17 +906,17 @@ ctk_widget_get_type (void)
 }
 
 static inline gpointer
-ctk_widget_get_instance_private (GtkWidget *self)
+ctk_widget_get_instance_private (CtkWidget *self)
 {
-  return (G_STRUCT_MEMBER_P (self, GtkWidget_private_offset));
+  return (G_STRUCT_MEMBER_P (self, CtkWidget_private_offset));
 }
 
 static void
 ctk_widget_base_class_init (gpointer g_class)
 {
-  GtkWidgetClass *klass = g_class;
+  CtkWidgetClass *klass = g_class;
 
-  klass->priv = G_TYPE_CLASS_GET_PRIVATE (g_class, CTK_TYPE_WIDGET, GtkWidgetClassPrivate);
+  klass->priv = G_TYPE_CLASS_GET_PRIVATE (g_class, CTK_TYPE_WIDGET, CtkWidgetClassPrivate);
   klass->priv->template = NULL;
 }
 
@@ -987,13 +987,13 @@ ctk_widget_draw_marshallerv (GClosure     *closure,
 }
 
 static void
-ctk_widget_class_init (GtkWidgetClass *klass)
+ctk_widget_class_init (CtkWidgetClass *klass)
 {
   static GObjectNotifyContext cpn_context = { 0, NULL, NULL };
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
-  GtkBindingSet *binding_set;
+  CtkBindingSet *binding_set;
 
-  g_type_class_adjust_private_offset (klass, &GtkWidget_private_offset);
+  g_type_class_adjust_private_offset (klass, &CtkWidget_private_offset);
   ctk_widget_parent_class = g_type_class_peek_parent (klass);
 
   quark_property_parser = g_quark_from_static_string ("ctk-rc-property-parser");
@@ -1020,7 +1020,7 @@ ctk_widget_class_init (GtkWidgetClass *klass)
 
   style_property_spec_pool = g_param_spec_pool_new (FALSE);
   _ctk_widget_child_property_pool = g_param_spec_pool_new (TRUE);
-  cpn_context.quark_notify_queue = g_quark_from_static_string ("GtkWidget-child-property-notify-queue");
+  cpn_context.quark_notify_queue = g_quark_from_static_string ("CtkWidget-child-property-notify-queue");
   cpn_context.dispatcher = child_property_notify_dispatcher;
   _ctk_widget_child_property_notify_context = &cpn_context;
 
@@ -1186,14 +1186,14 @@ ctk_widget_class_init (GtkWidgetClass *klass)
                             CTK_PARAM_READWRITE);
 
   /**
-   * GtkWidget:focus-on-click:
+   * CtkWidget:focus-on-click:
    *
    * Whether the widget should grab focus when it is clicked with the mouse.
    *
    * This property is only relevant for widgets that can take focus.
    *
-   * Before 3.20, several widgets (GtkButton, GtkFileChooserButton,
-   * GtkComboBox) implemented this property individually.
+   * Before 3.20, several widgets (CtkButton, CtkFileChooserButton,
+   * CtkComboBox) implemented this property individually.
    *
    * Since: 3.20
    */
@@ -1235,11 +1235,11 @@ ctk_widget_class_init (GtkWidgetClass *klass)
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
   /**
-   * GtkWidget:style:
+   * CtkWidget:style:
    *
    * The style of the widget, which contains information about how it will look (colors, etc).
    *
-   * Deprecated: Use #GtkStyleContext instead
+   * Deprecated: Use #CtkStyleContext instead
    */
   widget_props[PROP_STYLE] =
       g_param_spec_object ("style",
@@ -1266,11 +1266,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
 /**
- * GtkWidget:has-tooltip:
+ * CtkWidget:has-tooltip:
  *
- * Enables or disables the emission of #GtkWidget::query-tooltip on @widget.
+ * Enables or disables the emission of #CtkWidget::query-tooltip on @widget.
  * A value of %TRUE indicates that @widget can have a tooltip, in this case
- * the widget will be queried using #GtkWidget::query-tooltip to determine
+ * the widget will be queried using #CtkWidget::query-tooltip to determine
  * whether it will provide a tooltip or not.
  *
  * Note that setting this property to %TRUE for the first time will change
@@ -1288,18 +1288,18 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkWidget:tooltip-text:
+   * CtkWidget:tooltip-text:
    *
    * Sets the text of tooltip to be the given string.
    *
    * Also see ctk_tooltip_set_text().
    *
    * This is a convenience property which will take care of getting the
-   * tooltip shown if the given string is not %NULL: #GtkWidget:has-tooltip
+   * tooltip shown if the given string is not %NULL: #CtkWidget:has-tooltip
    * will automatically be set to %TRUE and there will be taken care of
-   * #GtkWidget::query-tooltip in the default signal handler.
+   * #CtkWidget::query-tooltip in the default signal handler.
    *
-   * Note that if both #GtkWidget:tooltip-text and #GtkWidget:tooltip-markup
+   * Note that if both #CtkWidget:tooltip-text and #CtkWidget:tooltip-markup
    * are set, the last one wins.
    *
    * Since: 2.12
@@ -1312,18 +1312,18 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                            CTK_PARAM_READWRITE);
 
   /**
-   * GtkWidget:tooltip-markup:
+   * CtkWidget:tooltip-markup:
    *
    * Sets the text of tooltip to be the given string, which is marked up
    * with the [Pango text markup language][PangoMarkupFormat].
    * Also see ctk_tooltip_set_markup().
    *
    * This is a convenience property which will take care of getting the
-   * tooltip shown if the given string is not %NULL: #GtkWidget:has-tooltip
+   * tooltip shown if the given string is not %NULL: #CtkWidget:has-tooltip
    * will automatically be set to %TRUE and there will be taken care of
-   * #GtkWidget::query-tooltip in the default signal handler.
+   * #CtkWidget::query-tooltip in the default signal handler.
    *
-   * Note that if both #GtkWidget:tooltip-text and #GtkWidget:tooltip-markup
+   * Note that if both #CtkWidget:tooltip-text and #CtkWidget:tooltip-markup
    * are set, the last one wins.
    *
    * Since: 2.12
@@ -1336,7 +1336,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                            CTK_PARAM_READWRITE);
 
   /**
-   * GtkWidget:window:
+   * CtkWidget:window:
    *
    * The widget's window if it is realized, %NULL otherwise.
    *
@@ -1350,7 +1350,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                            CTK_PARAM_READABLE);
 
   /**
-   * GtkWidget:double-buffered:
+   * CtkWidget:double-buffered:
    *
    * Whether the widget is double buffered.
    *
@@ -1366,9 +1366,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY|G_PARAM_DEPRECATED);
 
   /**
-   * GtkWidget:halign:
+   * CtkWidget:halign:
    *
-   * How to distribute horizontal space if widget gets extra space, see #GtkAlign
+   * How to distribute horizontal space if widget gets extra space, see #CtkAlign
    *
    * Since: 3.0
    */
@@ -1381,9 +1381,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkWidget:valign:
+   * CtkWidget:valign:
    *
-   * How to distribute vertical space if widget gets extra space, see #GtkAlign
+   * How to distribute vertical space if widget gets extra space, see #CtkAlign
    *
    * Since: 3.0
    */
@@ -1396,7 +1396,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkWidget:margin-left:
+   * CtkWidget:margin-left:
    *
    * Margin on left side of widget.
    *
@@ -1404,7 +1404,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * request, the margin will be added in addition to the size from
    * ctk_widget_set_size_request() for example.
    *
-   * Deprecated: 3.12: Use #GtkWidget:margin-start instead.
+   * Deprecated: 3.12: Use #CtkWidget:margin-start instead.
    *
    * Since: 3.0
    */
@@ -1417,7 +1417,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY|G_PARAM_DEPRECATED);
 
   /**
-   * GtkWidget:margin-right:
+   * CtkWidget:margin-right:
    *
    * Margin on right side of widget.
    *
@@ -1425,7 +1425,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * request, the margin will be added in addition to the size from
    * ctk_widget_set_size_request() for example.
    *
-   * Deprecated: 3.12: Use #GtkWidget:margin-end instead.
+   * Deprecated: 3.12: Use #CtkWidget:margin-end instead.
    *
    * Since: 3.0
    */
@@ -1438,7 +1438,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY|G_PARAM_DEPRECATED);
 
   /**
-   * GtkWidget:margin-start:
+   * CtkWidget:margin-start:
    *
    * Margin on start of widget, horizontally. This property supports
    * left-to-right and right-to-left text directions.
@@ -1458,7 +1458,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkWidget:margin-end:
+   * CtkWidget:margin-end:
    *
    * Margin on end of widget, horizontally. This property supports
    * left-to-right and right-to-left text directions.
@@ -1478,7 +1478,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkWidget:margin-top:
+   * CtkWidget:margin-top:
    *
    * Margin on top side of widget.
    *
@@ -1497,7 +1497,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkWidget:margin-bottom:
+   * CtkWidget:margin-bottom:
    *
    * Margin on bottom side of widget.
    *
@@ -1516,7 +1516,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkWidget:margin:
+   * CtkWidget:margin:
    *
    * Sets all four sides' margin at once. If read, returns max
    * margin on any side.
@@ -1532,7 +1532,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                         CTK_PARAM_READWRITE);
 
   /**
-   * GtkWidget:hexpand:
+   * CtkWidget:hexpand:
    *
    * Whether to expand horizontally. See ctk_widget_set_hexpand().
    *
@@ -1546,9 +1546,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkWidget:hexpand-set:
+   * CtkWidget:hexpand-set:
    *
-   * Whether to use the #GtkWidget:hexpand property. See ctk_widget_get_hexpand_set().
+   * Whether to use the #CtkWidget:hexpand property. See ctk_widget_get_hexpand_set().
    *
    * Since: 3.0
    */
@@ -1560,7 +1560,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkWidget:vexpand:
+   * CtkWidget:vexpand:
    *
    * Whether to expand vertically. See ctk_widget_set_vexpand().
    *
@@ -1574,9 +1574,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkWidget:vexpand-set:
+   * CtkWidget:vexpand-set:
    *
-   * Whether to use the #GtkWidget:vexpand property. See ctk_widget_get_vexpand_set().
+   * Whether to use the #CtkWidget:vexpand property. See ctk_widget_get_vexpand_set().
    *
    * Since: 3.0
    */
@@ -1588,9 +1588,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkWidget:expand:
+   * CtkWidget:expand:
    *
-   * Whether to expand in both directions. Setting this sets both #GtkWidget:hexpand and #GtkWidget:vexpand
+   * Whether to expand in both directions. Setting this sets both #CtkWidget:hexpand and #CtkWidget:vexpand
    *
    * Since: 3.0
    */
@@ -1602,12 +1602,12 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                             CTK_PARAM_READWRITE);
 
   /**
-   * GtkWidget:opacity:
+   * CtkWidget:opacity:
    *
    * The requested opacity of the widget. See ctk_widget_set_opacity() for
    * more details about window opacity.
    *
-   * Before 3.8 this was only available in GtkWindow
+   * Before 3.8 this was only available in CtkWindow
    *
    * Since: 3.8
    */
@@ -1620,7 +1620,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkWidget:scale-factor:
+   * CtkWidget:scale-factor:
    *
    * The scale factor of the widget. See ctk_widget_get_scale_factor() for
    * more details about widget scaling.
@@ -1638,7 +1638,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   g_object_class_install_properties (gobject_class, NUM_PROPERTIES, widget_props);
 
   /**
-   * GtkWidget::destroy:
+   * CtkWidget::destroy:
    * @object: the object which received the signal
    *
    * Signals that all holders of a reference to the widget should release
@@ -1651,13 +1651,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("destroy"),
                   G_TYPE_FROM_CLASS (gobject_class),
                   G_SIGNAL_RUN_CLEANUP | G_SIGNAL_NO_RECURSE | G_SIGNAL_NO_HOOKS,
-                  G_STRUCT_OFFSET (GtkWidgetClass, destroy),
+                  G_STRUCT_OFFSET (CtkWidgetClass, destroy),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 0);
 
   /**
-   * GtkWidget::show:
+   * CtkWidget::show:
    * @widget: the object which received the signal.
    *
    * The ::show signal is emitted when @widget is shown, for example with
@@ -1667,13 +1667,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("show"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_FIRST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, show),
+		  G_STRUCT_OFFSET (CtkWidgetClass, show),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
-   * GtkWidget::hide:
+   * CtkWidget::hide:
    * @widget: the object which received the signal.
    *
    * The ::hide signal is emitted when @widget is hidden, for example with
@@ -1683,36 +1683,36 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("hide"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_FIRST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, hide),
+		  G_STRUCT_OFFSET (CtkWidgetClass, hide),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
-   * GtkWidget::map:
+   * CtkWidget::map:
    * @widget: the object which received the signal.
    *
    * The ::map signal is emitted when @widget is going to be mapped, that is
    * when the widget is visible (which is controlled with
    * ctk_widget_set_visible()) and all its parents up to the toplevel widget
-   * are also visible. Once the map has occurred, #GtkWidget::map-event will
+   * are also visible. Once the map has occurred, #CtkWidget::map-event will
    * be emitted.
    *
    * The ::map signal can be used to determine whether a widget will be drawn,
    * for instance it can resume an animation that was stopped during the
-   * emission of #GtkWidget::unmap.
+   * emission of #CtkWidget::unmap.
    */
   widget_signals[MAP] =
     g_signal_new (I_("map"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_FIRST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, map),
+		  G_STRUCT_OFFSET (CtkWidgetClass, map),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
-   * GtkWidget::unmap:
+   * CtkWidget::unmap:
    * @widget: the object which received the signal.
    *
    * The ::unmap signal is emitted when @widget is going to be unmapped, which
@@ -1726,13 +1726,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("unmap"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_FIRST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, unmap),
+		  G_STRUCT_OFFSET (CtkWidgetClass, unmap),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
-   * GtkWidget::realize:
+   * CtkWidget::realize:
    * @widget: the object which received the signal.
    *
    * The ::realize signal is emitted when @widget is associated with a
@@ -1743,13 +1743,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("realize"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_FIRST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, realize),
+		  G_STRUCT_OFFSET (CtkWidgetClass, realize),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
-   * GtkWidget::unrealize:
+   * CtkWidget::unrealize:
    * @widget: the object which received the signal.
    *
    * The ::unrealize signal is emitted when the #GdkWindow associated with
@@ -1761,49 +1761,49 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("unrealize"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, unrealize),
+		  G_STRUCT_OFFSET (CtkWidgetClass, unrealize),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
-   * GtkWidget::size-allocate:
+   * CtkWidget::size-allocate:
    * @widget: the object which received the signal.
-   * @allocation: (type Gtk.Allocation): the region which has been
+   * @allocation: (type Ctk.Allocation): the region which has been
    *   allocated to the widget.
    */
   widget_signals[SIZE_ALLOCATE] =
     g_signal_new (I_("size-allocate"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_FIRST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, size_allocate),
+		  G_STRUCT_OFFSET (CtkWidgetClass, size_allocate),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
 		  GDK_TYPE_RECTANGLE | G_SIGNAL_TYPE_STATIC_SCOPE);
 
   /**
-   * GtkWidget::state-changed:
+   * CtkWidget::state-changed:
    * @widget: the object which received the signal.
    * @state: the previous state
    *
    * The ::state-changed signal is emitted when the widget state changes.
    * See ctk_widget_get_state().
    *
-   * Deprecated: 3.0: Use #GtkWidget::state-flags-changed instead.
+   * Deprecated: 3.0: Use #CtkWidget::state-flags-changed instead.
    */
   widget_signals[STATE_CHANGED] =
     g_signal_new (I_("state-changed"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_FIRST | G_SIGNAL_DEPRECATED,
-		  G_STRUCT_OFFSET (GtkWidgetClass, state_changed),
+		  G_STRUCT_OFFSET (CtkWidgetClass, state_changed),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
 		  CTK_TYPE_STATE_TYPE);
 
   /**
-   * GtkWidget::state-flags-changed:
+   * CtkWidget::state-flags-changed:
    * @widget: the object which received the signal.
    * @flags: The previous state flags.
    *
@@ -1816,14 +1816,14 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("state-flags-changed"),
                   G_TYPE_FROM_CLASS (gobject_class),
                   G_SIGNAL_RUN_FIRST,
-                  G_STRUCT_OFFSET (GtkWidgetClass, state_flags_changed),
+                  G_STRUCT_OFFSET (CtkWidgetClass, state_flags_changed),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 1,
                   CTK_TYPE_STATE_FLAGS);
 
   /**
-   * GtkWidget::parent-set:
+   * CtkWidget::parent-set:
    * @widget: the object on which the signal is emitted
    * @old_parent: (allow-none): the previous parent, or %NULL if the widget
    *   just got its initial parent.
@@ -1835,14 +1835,14 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("parent-set"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_FIRST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, parent_set),
+		  G_STRUCT_OFFSET (CtkWidgetClass, parent_set),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
 		  CTK_TYPE_WIDGET);
 
   /**
-   * GtkWidget::hierarchy-changed:
+   * CtkWidget::hierarchy-changed:
    * @widget: the object on which the signal is emitted
    * @previous_toplevel: (allow-none): the previous toplevel ancestor, or %NULL
    *   if the widget was previously unanchored
@@ -1850,21 +1850,21 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * The ::hierarchy-changed signal is emitted when the
    * anchored state of a widget changes. A widget is
    * “anchored” when its toplevel
-   * ancestor is a #GtkWindow. This signal is emitted when
+   * ancestor is a #CtkWindow. This signal is emitted when
    * a widget changes from un-anchored to anchored or vice-versa.
    */
   widget_signals[HIERARCHY_CHANGED] =
     g_signal_new (I_("hierarchy-changed"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, hierarchy_changed),
+		  G_STRUCT_OFFSET (CtkWidgetClass, hierarchy_changed),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
 		  CTK_TYPE_WIDGET);
 
   /**
-   * GtkWidget::style-set:
+   * CtkWidget::style-set:
    * @widget: the object on which the signal is emitted
    * @previous_style: (allow-none): the previous style, or %NULL if the widget
    *   just got its initial style
@@ -1874,10 +1874,10 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * ctk_widget_modify_base() also cause this signal to be emitted.
    *
    * Note that this signal is emitted for changes to the deprecated
-   * #GtkStyle. To track changes to the #GtkStyleContext associated
-   * with a widget, use the #GtkWidget::style-updated signal.
+   * #CtkStyle. To track changes to the #CtkStyleContext associated
+   * with a widget, use the #CtkWidget::style-updated signal.
    *
-   * Deprecated:3.0: Use the #GtkWidget::style-updated signal
+   * Deprecated:3.0: Use the #CtkWidget::style-updated signal
    */
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
@@ -1886,7 +1886,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     g_signal_new (I_("style-set"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_FIRST | G_SIGNAL_DEPRECATED,
-		  G_STRUCT_OFFSET (GtkWidgetClass, style_set),
+		  G_STRUCT_OFFSET (CtkWidgetClass, style_set),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
@@ -1895,12 +1895,12 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 G_GNUC_END_IGNORE_DEPRECATIONS
 
   /**
-   * GtkWidget::style-updated:
+   * CtkWidget::style-updated:
    * @widget: the object on which the signal is emitted
    *
    * The ::style-updated signal is a convenience signal that is emitted when the
-   * #GtkStyleContext::changed signal is emitted on the @widget's associated
-   * #GtkStyleContext as returned by ctk_widget_get_style_context().
+   * #CtkStyleContext::changed signal is emitted on the @widget's associated
+   * #CtkStyleContext as returned by ctk_widget_get_style_context().
    *
    * Note that style-modifying functions like ctk_widget_override_color() also
    * cause this signal to be emitted.
@@ -1911,13 +1911,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("style-updated"),
                   G_TYPE_FROM_CLASS (gobject_class),
                   G_SIGNAL_RUN_FIRST,
-                  G_STRUCT_OFFSET (GtkWidgetClass, style_updated),
+                  G_STRUCT_OFFSET (CtkWidgetClass, style_updated),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 0);
 
   /**
-   * GtkWidget::direction-changed:
+   * CtkWidget::direction-changed:
    * @widget: the object on which the signal is emitted
    * @previous_direction: the previous text direction of @widget
    *
@@ -1928,14 +1928,14 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("direction-changed"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_FIRST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, direction_changed),
+		  G_STRUCT_OFFSET (CtkWidgetClass, direction_changed),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
 		  CTK_TYPE_TEXT_DIRECTION);
 
   /**
-   * GtkWidget::grab-notify:
+   * CtkWidget::grab-notify:
    * @widget: the object which received the signal
    * @was_grabbed: %FALSE if the widget becomes shadowed, %TRUE
    *               if it becomes unshadowed
@@ -1953,14 +1953,14 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("grab-notify"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_FIRST,
-                  G_STRUCT_OFFSET (GtkWidgetClass, grab_notify),
+                  G_STRUCT_OFFSET (CtkWidgetClass, grab_notify),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
 		  G_TYPE_BOOLEAN);
 
   /**
-   * GtkWidget::child-notify:
+   * CtkWidget::child-notify:
    * @widget: the object which received the signal
    * @child_property: the #GParamSpec of the changed child property
    *
@@ -1972,14 +1972,14 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("child-notify"),
 		   G_TYPE_FROM_CLASS (gobject_class),
 		   G_SIGNAL_RUN_FIRST | G_SIGNAL_NO_RECURSE | G_SIGNAL_DETAILED | G_SIGNAL_NO_HOOKS,
-		   G_STRUCT_OFFSET (GtkWidgetClass, child_notify),
+		   G_STRUCT_OFFSET (CtkWidgetClass, child_notify),
 		   NULL, NULL,
 		   NULL,
 		   G_TYPE_NONE, 1,
 		   G_TYPE_PARAM);
 
   /**
-   * GtkWidget::draw:
+   * CtkWidget::draw:
    * @widget: the object which received the signal
    * @cr: the cairo context to draw to
    *
@@ -2010,7 +2010,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("draw"),
 		   G_TYPE_FROM_CLASS (gobject_class),
 		   G_SIGNAL_RUN_LAST,
-		   G_STRUCT_OFFSET (GtkWidgetClass, draw),
+		   G_STRUCT_OFFSET (CtkWidgetClass, draw),
                    _ctk_boolean_handled_accumulator, NULL,
                    ctk_widget_draw_marshaller,
 		   G_TYPE_BOOLEAN, 1,
@@ -2019,7 +2019,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               ctk_widget_draw_marshallerv);
 
   /**
-   * GtkWidget::mnemonic-activate:
+   * CtkWidget::mnemonic-activate:
    * @widget: the object which received the signal.
    * @group_cycling: %TRUE if there are other widgets with the same mnemonic
    *
@@ -2033,7 +2033,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("mnemonic-activate"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, mnemonic_activate),
+		  G_STRUCT_OFFSET (CtkWidgetClass, mnemonic_activate),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOOLEAN,
 		  G_TYPE_BOOLEAN, 1,
@@ -2043,20 +2043,20 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__BOOLEANv);
 
   /**
-   * GtkWidget::grab-focus:
+   * CtkWidget::grab-focus:
    * @widget: the object which received the signal.
    */
   widget_signals[GRAB_FOCUS] =
     g_signal_new (I_("grab-focus"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		  G_STRUCT_OFFSET (GtkWidgetClass, grab_focus),
+		  G_STRUCT_OFFSET (CtkWidgetClass, grab_focus),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
-   * GtkWidget::focus:
+   * CtkWidget::focus:
    * @widget: the object which received the signal.
    * @direction:
    *
@@ -2066,7 +2066,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("focus"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, focus),
+		  G_STRUCT_OFFSET (CtkWidgetClass, focus),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__ENUM,
 		  G_TYPE_BOOLEAN, 1,
@@ -2076,7 +2076,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__ENUMv);
 
   /**
-   * GtkWidget::move-focus:
+   * CtkWidget::move-focus:
    * @widget: the object which received the signal.
    * @direction:
    */
@@ -2084,7 +2084,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("move-focus"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-                  G_STRUCT_OFFSET (GtkWidgetClass, move_focus),
+                  G_STRUCT_OFFSET (CtkWidgetClass, move_focus),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE,
@@ -2092,7 +2092,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                   CTK_TYPE_DIRECTION_TYPE);
 
   /**
-   * GtkWidget::keynav-failed:
+   * CtkWidget::keynav-failed:
    * @widget: the object which received the signal
    * @direction: the direction of movement
    *
@@ -2109,7 +2109,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("keynav-failed"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkWidgetClass, keynav_failed),
+                  G_STRUCT_OFFSET (CtkWidgetClass, keynav_failed),
                   _ctk_boolean_handled_accumulator, NULL,
                   _ctk_marshal_BOOLEAN__ENUM,
                   G_TYPE_BOOLEAN, 1,
@@ -2119,15 +2119,15 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__ENUMv);
 
   /**
-   * GtkWidget::event:
+   * CtkWidget::event:
    * @widget: the object which received the signal.
    * @event: the #GdkEvent which triggered this signal
    *
    * The GTK+ main loop will emit three signals for each GDK event delivered
    * to a widget: one generic ::event signal, another, more specific,
    * signal that matches the type of event delivered (e.g.
-   * #GtkWidget::key-press-event) and finally a generic
-   * #GtkWidget::event-after signal.
+   * #CtkWidget::key-press-event) and finally a generic
+   * #CtkWidget::event-after signal.
    *
    * Returns: %TRUE to stop other handlers from being invoked for the event
    * and to cancel the emission of the second specific ::event signal.
@@ -2139,7 +2139,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("event"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, event),
+		  G_STRUCT_OFFSET (CtkWidgetClass, event),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
@@ -2148,11 +2148,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
   /**
-   * GtkWidget::event-after:
+   * CtkWidget::event-after:
    * @widget: the object which received the signal.
    * @event: the #GdkEvent which triggered this signal
    *
-   * After the emission of the #GtkWidget::event signal and (optionally)
+   * After the emission of the #CtkWidget::event signal and (optionally)
    * the second more specific signal, ::event-after will be emitted
    * regardless of the previous two signals handlers return values.
    *
@@ -2168,7 +2168,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
 
   /**
-   * GtkWidget::button-press-event:
+   * CtkWidget::button-press-event:
    * @widget: the object which received the signal.
    * @event: (type Gdk.EventButton): the #GdkEventButton which triggered
    *   this signal.
@@ -2188,7 +2188,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("button-press-event"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, button_press_event),
+		  G_STRUCT_OFFSET (CtkWidgetClass, button_press_event),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
@@ -2197,7 +2197,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
   /**
-   * GtkWidget::button-release-event:
+   * CtkWidget::button-release-event:
    * @widget: the object which received the signal.
    * @event: (type Gdk.EventButton): the #GdkEventButton which triggered
    *   this signal.
@@ -2217,7 +2217,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("button-release-event"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, button_release_event),
+		  G_STRUCT_OFFSET (CtkWidgetClass, button_release_event),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
@@ -2229,7 +2229,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("touch-event"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkWidgetClass, touch_event),
+                  G_STRUCT_OFFSET (CtkWidgetClass, touch_event),
                   _ctk_boolean_handled_accumulator, NULL,
                   _ctk_marshal_BOOLEAN__BOXED,
                   G_TYPE_BOOLEAN, 1,
@@ -2238,7 +2238,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
   /**
-   * GtkWidget::scroll-event:
+   * CtkWidget::scroll-event:
    * @widget: the object which received the signal.
    * @event: (type Gdk.EventScroll): the #GdkEventScroll which triggered
    *   this signal.
@@ -2259,7 +2259,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("scroll-event"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, scroll_event),
+		  G_STRUCT_OFFSET (CtkWidgetClass, scroll_event),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
@@ -2268,7 +2268,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
   /**
-   * GtkWidget::motion-notify-event:
+   * CtkWidget::motion-notify-event:
    * @widget: the object which received the signal.
    * @event: (type Gdk.EventMotion): the #GdkEventMotion which triggered
    *   this signal.
@@ -2288,7 +2288,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("motion-notify-event"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, motion_notify_event),
+		  G_STRUCT_OFFSET (CtkWidgetClass, motion_notify_event),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
@@ -2297,7 +2297,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
   /**
-   * GtkWidget::composited-changed:
+   * CtkWidget::composited-changed:
    * @widget: the object on which the signal is emitted
    *
    * The ::composited-changed signal is emitted when the composited
@@ -2310,13 +2310,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("composited-changed"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION | G_SIGNAL_DEPRECATED,
-		  G_STRUCT_OFFSET (GtkWidgetClass, composited_changed),
+		  G_STRUCT_OFFSET (CtkWidgetClass, composited_changed),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
-   * GtkWidget::delete-event:
+   * CtkWidget::delete-event:
    * @widget: the object which received the signal
    * @event: the event which triggered this signal
    *
@@ -2333,7 +2333,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("delete-event"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, delete_event),
+		  G_STRUCT_OFFSET (CtkWidgetClass, delete_event),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
@@ -2342,7 +2342,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
   /**
-   * GtkWidget::destroy-event:
+   * CtkWidget::destroy-event:
    * @widget: the object which received the signal.
    * @event: the event which triggered this signal
    *
@@ -2362,7 +2362,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("destroy-event"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, destroy_event),
+		  G_STRUCT_OFFSET (CtkWidgetClass, destroy_event),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
@@ -2371,7 +2371,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
   /**
-   * GtkWidget::key-press-event:
+   * CtkWidget::key-press-event:
    * @widget: the object which received the signal
    * @event: (type Gdk.EventKey): the #GdkEventKey which triggered this signal.
    *
@@ -2390,7 +2390,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("key-press-event"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, key_press_event),
+		  G_STRUCT_OFFSET (CtkWidgetClass, key_press_event),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
@@ -2399,7 +2399,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
   /**
-   * GtkWidget::key-release-event:
+   * CtkWidget::key-release-event:
    * @widget: the object which received the signal
    * @event: (type Gdk.EventKey): the #GdkEventKey which triggered this signal.
    *
@@ -2417,7 +2417,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("key-release-event"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, key_release_event),
+		  G_STRUCT_OFFSET (CtkWidgetClass, key_release_event),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
@@ -2426,7 +2426,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
   /**
-   * GtkWidget::enter-notify-event:
+   * CtkWidget::enter-notify-event:
    * @widget: the object which received the signal
    * @event: (type Gdk.EventCrossing): the #GdkEventCrossing which triggered
    *   this signal.
@@ -2446,7 +2446,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("enter-notify-event"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, enter_notify_event),
+		  G_STRUCT_OFFSET (CtkWidgetClass, enter_notify_event),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
@@ -2455,7 +2455,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
   /**
-   * GtkWidget::leave-notify-event:
+   * CtkWidget::leave-notify-event:
    * @widget: the object which received the signal
    * @event: (type Gdk.EventCrossing): the #GdkEventCrossing which triggered
    *   this signal.
@@ -2475,7 +2475,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("leave-notify-event"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, leave_notify_event),
+		  G_STRUCT_OFFSET (CtkWidgetClass, leave_notify_event),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
@@ -2484,7 +2484,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
   /**
-   * GtkWidget::configure-event:
+   * CtkWidget::configure-event:
    * @widget: the object which received the signal
    * @event: (type Gdk.EventConfigure): the #GdkEventConfigure which triggered
    *   this signal.
@@ -2503,7 +2503,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("configure-event"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, configure_event),
+		  G_STRUCT_OFFSET (CtkWidgetClass, configure_event),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
@@ -2512,7 +2512,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
   /**
-   * GtkWidget::focus-in-event:
+   * CtkWidget::focus-in-event:
    * @widget: the object which received the signal
    * @event: (type Gdk.EventFocus): the #GdkEventFocus which triggered
    *   this signal.
@@ -2530,7 +2530,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("focus-in-event"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, focus_in_event),
+		  G_STRUCT_OFFSET (CtkWidgetClass, focus_in_event),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
@@ -2539,7 +2539,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
   /**
-   * GtkWidget::focus-out-event:
+   * CtkWidget::focus-out-event:
    * @widget: the object which received the signal
    * @event: (type Gdk.EventFocus): the #GdkEventFocus which triggered this
    *   signal.
@@ -2557,7 +2557,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("focus-out-event"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, focus_out_event),
+		  G_STRUCT_OFFSET (CtkWidgetClass, focus_out_event),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
@@ -2566,7 +2566,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
   /**
-   * GtkWidget::map-event:
+   * CtkWidget::map-event:
    * @widget: the object which received the signal
    * @event: (type Gdk.EventAny): the #GdkEventAny which triggered this signal.
    *
@@ -2584,7 +2584,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("map-event"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, map_event),
+		  G_STRUCT_OFFSET (CtkWidgetClass, map_event),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
@@ -2593,7 +2593,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
   /**
-   * GtkWidget::unmap-event:
+   * CtkWidget::unmap-event:
    * @widget: the object which received the signal
    * @event: (type Gdk.EventAny): the #GdkEventAny which triggered this signal
    *
@@ -2611,7 +2611,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("unmap-event"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, unmap_event),
+		  G_STRUCT_OFFSET (CtkWidgetClass, unmap_event),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
@@ -2620,7 +2620,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
   /**
-   * GtkWidget::property-notify-event:
+   * CtkWidget::property-notify-event:
    * @widget: the object which received the signal
    * @event: (type Gdk.EventProperty): the #GdkEventProperty which triggered
    *   this signal.
@@ -2638,7 +2638,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("property-notify-event"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, property_notify_event),
+		  G_STRUCT_OFFSET (CtkWidgetClass, property_notify_event),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
@@ -2647,7 +2647,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
   /**
-   * GtkWidget::selection-clear-event:
+   * CtkWidget::selection-clear-event:
    * @widget: the object which received the signal
    * @event: (type Gdk.EventSelection): the #GdkEventSelection which triggered
    *   this signal.
@@ -2662,7 +2662,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("selection-clear-event"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, selection_clear_event),
+		  G_STRUCT_OFFSET (CtkWidgetClass, selection_clear_event),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
@@ -2671,7 +2671,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
   /**
-   * GtkWidget::selection-request-event:
+   * CtkWidget::selection-request-event:
    * @widget: the object which received the signal
    * @event: (type Gdk.EventSelection): the #GdkEventSelection which triggered
    *   this signal.
@@ -2687,7 +2687,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("selection-request-event"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, selection_request_event),
+		  G_STRUCT_OFFSET (CtkWidgetClass, selection_request_event),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
@@ -2696,7 +2696,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
   /**
-   * GtkWidget::selection-notify-event:
+   * CtkWidget::selection-notify-event:
    * @widget: the object which received the signal.
    * @event: (type Gdk.EventSelection):
    *
@@ -2706,7 +2706,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("selection-notify-event"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, selection_notify_event),
+		  G_STRUCT_OFFSET (CtkWidgetClass, selection_notify_event),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
@@ -2715,7 +2715,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
   /**
-   * GtkWidget::selection-received:
+   * CtkWidget::selection-received:
    * @widget: the object which received the signal.
    * @data:
    * @time:
@@ -2724,7 +2724,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("selection-received"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, selection_received),
+		  G_STRUCT_OFFSET (CtkWidgetClass, selection_received),
 		  NULL, NULL,
 		  _ctk_marshal_VOID__BOXED_UINT,
 		  G_TYPE_NONE, 2,
@@ -2735,7 +2735,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_VOID__BOXED_UINTv);
 
   /**
-   * GtkWidget::selection-get:
+   * CtkWidget::selection-get:
    * @widget: the object which received the signal.
    * @data:
    * @info:
@@ -2745,7 +2745,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("selection-get"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, selection_get),
+		  G_STRUCT_OFFSET (CtkWidgetClass, selection_get),
 		  NULL, NULL,
 		  _ctk_marshal_VOID__BOXED_UINT_UINT,
 		  G_TYPE_NONE, 3,
@@ -2757,7 +2757,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_VOID__BOXED_UINT_UINTv);
 
   /**
-   * GtkWidget::proximity-in-event:
+   * CtkWidget::proximity-in-event:
    * @widget: the object which received the signal
    * @event: (type Gdk.EventProximity): the #GdkEventProximity which triggered
    *   this signal.
@@ -2774,7 +2774,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("proximity-in-event"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, proximity_in_event),
+		  G_STRUCT_OFFSET (CtkWidgetClass, proximity_in_event),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
@@ -2783,7 +2783,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
   /**
-   * GtkWidget::proximity-out-event:
+   * CtkWidget::proximity-out-event:
    * @widget: the object which received the signal
    * @event: (type Gdk.EventProximity): the #GdkEventProximity which triggered
    *   this signal.
@@ -2800,7 +2800,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("proximity-out-event"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, proximity_out_event),
+		  G_STRUCT_OFFSET (CtkWidgetClass, proximity_out_event),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
@@ -2809,26 +2809,26 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
   /**
-   * GtkWidget::drag-leave:
+   * CtkWidget::drag-leave:
    * @widget: the object which received the signal.
    * @context: the drag context
    * @time: the timestamp of the motion event
    *
    * The ::drag-leave signal is emitted on the drop site when the cursor
    * leaves the widget. A typical reason to connect to this signal is to
-   * undo things done in #GtkWidget::drag-motion, e.g. undo highlighting
+   * undo things done in #CtkWidget::drag-motion, e.g. undo highlighting
    * with ctk_drag_unhighlight().
    *
    *
-   * Likewise, the #GtkWidget::drag-leave signal is also emitted before the 
+   * Likewise, the #CtkWidget::drag-leave signal is also emitted before the 
    * ::drag-drop signal, for instance to allow cleaning up of a preview item  
-   * created in the #GtkWidget::drag-motion signal handler.
+   * created in the #CtkWidget::drag-motion signal handler.
    */
   widget_signals[DRAG_LEAVE] =
     g_signal_new (I_("drag-leave"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, drag_leave),
+		  G_STRUCT_OFFSET (CtkWidgetClass, drag_leave),
 		  NULL, NULL,
 		  _ctk_marshal_VOID__OBJECT_UINT,
 		  G_TYPE_NONE, 2,
@@ -2839,7 +2839,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_VOID__OBJECT_UINTv);
 
   /**
-   * GtkWidget::drag-begin:
+   * CtkWidget::drag-begin:
    * @widget: the object which received the signal
    * @context: the drag context
    *
@@ -2855,33 +2855,33 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("drag-begin"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, drag_begin),
+		  G_STRUCT_OFFSET (CtkWidgetClass, drag_begin),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
 		  GDK_TYPE_DRAG_CONTEXT);
 
   /**
-   * GtkWidget::drag-end:
+   * CtkWidget::drag-end:
    * @widget: the object which received the signal
    * @context: the drag context
    *
    * The ::drag-end signal is emitted on the drag source when a drag is
    * finished.  A typical reason to connect to this signal is to undo
-   * things done in #GtkWidget::drag-begin.
+   * things done in #CtkWidget::drag-begin.
    */
   widget_signals[DRAG_END] =
     g_signal_new (I_("drag-end"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, drag_end),
+		  G_STRUCT_OFFSET (CtkWidgetClass, drag_end),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
 		  GDK_TYPE_DRAG_CONTEXT);
 
   /**
-   * GtkWidget::drag-data-delete:
+   * CtkWidget::drag-data-delete:
    * @widget: the object which received the signal
    * @context: the drag context
    *
@@ -2894,14 +2894,14 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("drag-data-delete"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, drag_data_delete),
+		  G_STRUCT_OFFSET (CtkWidgetClass, drag_data_delete),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
 		  GDK_TYPE_DRAG_CONTEXT);
 
   /**
-   * GtkWidget::drag-failed:
+   * CtkWidget::drag-failed:
    * @widget: the object which received the signal
    * @context: the drag context
    * @result: the result of the drag operation
@@ -2920,7 +2920,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("drag-failed"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, drag_failed),
+		  G_STRUCT_OFFSET (CtkWidgetClass, drag_failed),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__OBJECT_ENUM,
 		  G_TYPE_BOOLEAN, 2,
@@ -2931,7 +2931,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__OBJECT_ENUMv);
 
   /**
-   * GtkWidget::drag-motion:
+   * CtkWidget::drag-motion:
    * @widget: the object which received the signal
    * @context: the drag context
    * @x: the x coordinate of the current cursor position
@@ -2949,19 +2949,19 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * If the decision whether the drop will be accepted or rejected can't be
    * made based solely on the cursor position and the type of the data, the
    * handler may inspect the dragged data by calling ctk_drag_get_data() and
-   * defer the gdk_drag_status() call to the #GtkWidget::drag-data-received
+   * defer the gdk_drag_status() call to the #CtkWidget::drag-data-received
    * handler. Note that you must pass #CTK_DEST_DEFAULT_DROP,
    * #CTK_DEST_DEFAULT_MOTION or #CTK_DEST_DEFAULT_ALL to ctk_drag_dest_set()
    * when using the drag-motion signal that way.
    *
    * Also note that there is no drag-enter signal. The drag receiver has to
    * keep track of whether he has received any drag-motion signals since the
-   * last #GtkWidget::drag-leave and if not, treat the drag-motion signal as
+   * last #CtkWidget::drag-leave and if not, treat the drag-motion signal as
    * an "enter" signal. Upon an "enter", the handler will typically highlight
    * the drop site with ctk_drag_highlight().
    * |[<!-- language="C" -->
    * static void
-   * drag_motion (GtkWidget      *widget,
+   * drag_motion (CtkWidget      *widget,
    *              GdkDragContext *context,
    *              gint            x,
    *              gint            y,
@@ -2991,11 +2991,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * }
    *
    * static void
-   * drag_data_received (GtkWidget        *widget,
+   * drag_data_received (CtkWidget        *widget,
    *                     GdkDragContext   *context,
    *                     gint              x,
    *                     gint              y,
-   *                     GtkSelectionData *selection_data,
+   *                     CtkSelectionData *selection_data,
    *                     guint             info,
    *                     guint             time)
    * {
@@ -3031,7 +3031,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("drag-motion"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, drag_motion),
+		  G_STRUCT_OFFSET (CtkWidgetClass, drag_motion),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__OBJECT_INT_INT_UINT,
 		  G_TYPE_BOOLEAN, 4,
@@ -3044,7 +3044,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__OBJECT_INT_INT_UINTv);
 
   /**
-   * GtkWidget::drag-drop:
+   * CtkWidget::drag-drop:
    * @widget: the object which received the signal
    * @context: the drag context
    * @x: the x coordinate of the current cursor position
@@ -3058,7 +3058,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * Otherwise, the handler returns %TRUE. In this case, the handler must
    * ensure that ctk_drag_finish() is called to let the source know that
    * the drop is done. The call to ctk_drag_finish() can be done either
-   * directly or in a #GtkWidget::drag-data-received handler which gets
+   * directly or in a #CtkWidget::drag-data-received handler which gets
    * triggered by calling ctk_drag_get_data() to receive the data for one
    * or more of the supported targets.
    *
@@ -3068,7 +3068,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("drag-drop"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, drag_drop),
+		  G_STRUCT_OFFSET (CtkWidgetClass, drag_drop),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__OBJECT_INT_INT_UINT,
 		  G_TYPE_BOOLEAN, 4,
@@ -3081,12 +3081,12 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__OBJECT_INT_INT_UINTv);
 
   /**
-   * GtkWidget::drag-data-get:
+   * CtkWidget::drag-data-get:
    * @widget: the object which received the signal
    * @context: the drag context
-   * @data: the #GtkSelectionData to be filled with the dragged data
+   * @data: the #CtkSelectionData to be filled with the dragged data
    * @info: the info that has been registered with the target in the
-   *        #GtkTargetList
+   *        #CtkTargetList
    * @time: the timestamp at which the data was requested
    *
    * The ::drag-data-get signal is emitted on the drag source when the drop
@@ -3099,7 +3099,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("drag-data-get"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, drag_data_get),
+		  G_STRUCT_OFFSET (CtkWidgetClass, drag_data_get),
 		  NULL, NULL,
 		  _ctk_marshal_VOID__OBJECT_BOXED_UINT_UINT,
 		  G_TYPE_NONE, 4,
@@ -3112,21 +3112,21 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_VOID__OBJECT_BOXED_UINT_UINTv);
 
   /**
-   * GtkWidget::drag-data-received:
+   * CtkWidget::drag-data-received:
    * @widget: the object which received the signal
    * @context: the drag context
    * @x: where the drop happened
    * @y: where the drop happened
    * @data: the received data
    * @info: the info that has been registered with the target in the
-   *        #GtkTargetList
+   *        #CtkTargetList
    * @time: the timestamp at which the data was received
    *
    * The ::drag-data-received signal is emitted on the drop site when the
    * dragged data has been received. If the data was received in order to
    * determine whether the drop will be accepted, the handler is expected
    * to call gdk_drag_status() and not finish the drag.
-   * If the data was received in response to a #GtkWidget::drag-drop signal
+   * If the data was received in response to a #CtkWidget::drag-drop signal
    * (and this is the last target to be received), the handler for this
    * signal is expected to process the received data and then call
    * ctk_drag_finish(), setting the @success parameter depending on
@@ -3141,11 +3141,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * shown in the following example:
    * |[<!-- language="C" -->
    * void
-   * drag_data_received (GtkWidget          *widget,
+   * drag_data_received (CtkWidget          *widget,
    *                     GdkDragContext     *context,
    *                     gint                x,
    *                     gint                y,
-   *                     GtkSelectionData   *data,
+   *                     CtkSelectionData   *data,
    *                     guint               info,
    *                     guint               time)
    * {
@@ -3158,7 +3158,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    *       action = gdk_drag_context_get_selected_action (context);
    *       if (action == GDK_ACTION_ASK)
    *         {
-   *           GtkWidget *dialog;
+   *           CtkWidget *dialog;
    *           gint response;
    *
    *           dialog = ctk_message_dialog_new (NULL,
@@ -3187,7 +3187,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("drag-data-received"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, drag_data_received),
+		  G_STRUCT_OFFSET (CtkWidgetClass, drag_data_received),
 		  NULL, NULL,
 		  _ctk_marshal_VOID__OBJECT_INT_INT_BOXED_UINT_UINT,
 		  G_TYPE_NONE, 6,
@@ -3202,7 +3202,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                                _ctk_marshal_VOID__OBJECT_INT_INT_BOXED_UINT_UINTv);
 
   /**
-   * GtkWidget::visibility-notify-event:
+   * CtkWidget::visibility-notify-event:
    * @widget: the object which received the signal
    * @event: (type Gdk.EventVisibility): the #GdkEventVisibility which
    *   triggered this signal.
@@ -3225,7 +3225,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("visibility-notify-event"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_DEPRECATED,
-		  G_STRUCT_OFFSET (GtkWidgetClass, visibility_notify_event),
+		  G_STRUCT_OFFSET (CtkWidgetClass, visibility_notify_event),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
@@ -3235,7 +3235,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
   /**
-   * GtkWidget::window-state-event:
+   * CtkWidget::window-state-event:
    * @widget: the object which received the signal
    * @event: (type Gdk.EventWindowState): the #GdkEventWindowState which
    *   triggered this signal.
@@ -3254,7 +3254,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("window-state-event"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, window_state_event),
+		  G_STRUCT_OFFSET (CtkWidgetClass, window_state_event),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
@@ -3263,7 +3263,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
   /**
-   * GtkWidget::damage-event:
+   * CtkWidget::damage-event:
    * @widget: the object which received the signal
    * @event: (type Gdk.EventExpose): the #GdkEventExpose event
    *
@@ -3280,7 +3280,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("damage-event"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, damage_event),
+		  G_STRUCT_OFFSET (CtkWidgetClass, damage_event),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
@@ -3289,7 +3289,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
 /**
-   * GtkWidget::grab-broken-event:
+   * CtkWidget::grab-broken-event:
    * @widget: the object which received the signal
    * @event: (type Gdk.EventGrabBroken): the #GdkEventGrabBroken event
    *
@@ -3309,7 +3309,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("grab-broken-event"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, grab_broken_event),
+		  G_STRUCT_OFFSET (CtkWidgetClass, grab_broken_event),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
@@ -3318,16 +3318,16 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
   /**
-   * GtkWidget::query-tooltip:
+   * CtkWidget::query-tooltip:
    * @widget: the object which received the signal
    * @x: the x coordinate of the cursor position where the request has
    *     been emitted, relative to @widget's left side
    * @y: the y coordinate of the cursor position where the request has
    *     been emitted, relative to @widget's top
    * @keyboard_mode: %TRUE if the tooltip was triggered using the keyboard
-   * @tooltip: a #GtkTooltip
+   * @tooltip: a #CtkTooltip
    *
-   * Emitted when #GtkWidget:has-tooltip is %TRUE and the hover timeout
+   * Emitted when #CtkWidget:has-tooltip is %TRUE and the hover timeout
    * has expired with the cursor hovering "above" @widget; or emitted when @widget got
    * focus in keyboard mode.
    *
@@ -3348,7 +3348,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("query-tooltip"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, query_tooltip),
+		  G_STRUCT_OFFSET (CtkWidgetClass, query_tooltip),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__INT_INT_BOOLEAN_OBJECT,
 		  G_TYPE_BOOLEAN, 4,
@@ -3361,13 +3361,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__INT_INT_BOOLEAN_OBJECTv);
 
   /**
-   * GtkWidget::popup-menu:
+   * CtkWidget::popup-menu:
    * @widget: the object which received the signal
    *
    * This signal gets emitted whenever a widget should pop up a context
    * menu. This usually happens through the standard key binding mechanism;
    * by pressing a certain key while a widget is focused, the user can cause
-   * the widget to pop up a menu.  For example, the #GtkEntry widget creates
+   * the widget to pop up a menu.  For example, the #CtkEntry widget creates
    * a menu with clipboard commands. See the
    * [Popup Menu Migration Checklist][checklist-popup-menu]
    * for an example of how to use this signal.
@@ -3378,7 +3378,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("popup-menu"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		  G_STRUCT_OFFSET (GtkWidgetClass, popup_menu),
+		  G_STRUCT_OFFSET (CtkWidgetClass, popup_menu),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__VOID,
 		  G_TYPE_BOOLEAN, 0);
@@ -3387,7 +3387,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__VOIDv);
 
   /**
-   * GtkWidget::show-help:
+   * CtkWidget::show-help:
    * @widget: the object which received the signal.
    * @help_type:
    *
@@ -3398,7 +3398,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("show-help"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		  G_STRUCT_OFFSET (GtkWidgetClass, show_help),
+		  G_STRUCT_OFFSET (CtkWidgetClass, show_help),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__ENUM,
 		  G_TYPE_BOOLEAN, 1,
@@ -3408,7 +3408,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__ENUMv);
 
   /**
-   * GtkWidget::accel-closures-changed:
+   * CtkWidget::accel-closures-changed:
    * @widget: the object which received the signal.
    */
   widget_signals[ACCEL_CLOSURES_CHANGED] =
@@ -3421,7 +3421,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  G_TYPE_NONE, 0);
 
   /**
-   * GtkWidget::screen-changed:
+   * CtkWidget::screen-changed:
    * @widget: the object on which the signal is emitted
    * @previous_screen: (allow-none): the previous screen, or %NULL if the
    *   widget was not associated with a screen before
@@ -3433,21 +3433,21 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_new (I_("screen-changed"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, screen_changed),
+		  G_STRUCT_OFFSET (CtkWidgetClass, screen_changed),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
 		  GDK_TYPE_SCREEN);
 
   /**
-   * GtkWidget::can-activate-accel:
+   * CtkWidget::can-activate-accel:
    * @widget: the object which received the signal
    * @signal_id: the ID of a signal installed on @widget
    *
    * Determines whether an accelerator that activates the signal
    * identified by @signal_id can currently be activated.
    * This signal is present to allow applications and derived
-   * widgets to override the default #GtkWidget handling
+   * widgets to override the default #CtkWidget handling
    * for determining whether an accelerator can be activated.
    *
    * Returns: %TRUE if the signal can be activated.
@@ -3456,7 +3456,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
      g_signal_new (I_("can-activate-accel"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkWidgetClass, can_activate_accel),
+		  G_STRUCT_OFFSET (CtkWidgetClass, can_activate_accel),
                   _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__UINT,
                   G_TYPE_BOOLEAN, 1, G_TYPE_UINT);
@@ -3485,7 +3485,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                                 CTK_WIDGET_HELP_WHATS_THIS);
 
   /**
-   * GtkWidget:interior-focus:
+   * CtkWidget:interior-focus:
    *
    * The "interior-focus" style property defines whether
    * to draw the focus indicator inside widgets.
@@ -3499,7 +3499,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 								 TRUE,
 								 CTK_PARAM_READABLE | G_PARAM_DEPRECATED));
   /**
-   * GtkWidget:focus-line-width:
+   * CtkWidget:focus-line-width:
    *
    * The "focus-line-width" style property defines the width,
    * in pixels, of the focus indicator line
@@ -3513,7 +3513,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 							     0, G_MAXINT, 1,
 							     CTK_PARAM_READABLE | G_PARAM_DEPRECATED));
   /**
-   * GtkWidget:focus-line-pattern:
+   * CtkWidget:focus-line-pattern:
    *
    * The "focus-line-pattern" style property defines the dash pattern used to
    * draw the focus indicator. The character values are interpreted as pixel
@@ -3528,7 +3528,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 								"\1\1",
 								CTK_PARAM_READABLE | G_PARAM_DEPRECATED));
   /**
-   * GtkWidget:focus-padding:
+   * CtkWidget:focus-padding:
    *
    * The "focus-padding" style property defines the width, in pixels,
    * between focus indicator and the widget 'box'.
@@ -3543,7 +3543,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 							     CTK_PARAM_READABLE | G_PARAM_DEPRECATED));
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   /**
-   * GtkWidget:cursor-color:
+   * CtkWidget:cursor-color:
    *
    * The color with which to draw the insertion cursor in entries and
    * text views.
@@ -3557,7 +3557,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 							       GDK_TYPE_COLOR,
 							       CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
   /**
-   * GtkWidget:secondary-cursor-color:
+   * CtkWidget:secondary-cursor-color:
    *
    * The color with which to draw the secondary insertion cursor in entries and
    * text views when editing mixed right-to-left and left-to-right text.
@@ -3587,7 +3587,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   /**
-   * GtkWidget:link-color:
+   * CtkWidget:link-color:
    *
    * The "link-color" style property defines the color of unvisited links.
    *
@@ -3604,7 +3604,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 							       CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
-   * GtkWidget:visited-link-color:
+   * CtkWidget:visited-link-color:
    *
    * The "visited-link-color" style property defines the color of visited links.
    *
@@ -3622,7 +3622,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 G_GNUC_END_IGNORE_DEPRECATIONS
 
   /**
-   * GtkWidget:wide-separators:
+   * CtkWidget:wide-separators:
    *
    * The "wide-separators" style property defines whether separators have
    * configurable width and should be drawn using a box instead of a line.
@@ -3640,7 +3640,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                                                                  CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
-   * GtkWidget:separator-width:
+   * CtkWidget:separator-width:
    *
    * The "separator-width" style property defines the width of separators.
    * This property only takes effect if the "wide-separators" style property is %TRUE.
@@ -3658,7 +3658,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                                                              CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
-   * GtkWidget:separator-height:
+   * CtkWidget:separator-height:
    *
    * The "separator-height" style property defines the height of separators.
    * This property only takes effect if the "wide-separators" style property is %TRUE.
@@ -3676,7 +3676,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                                                              CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
-   * GtkWidget:scroll-arrow-hlength:
+   * CtkWidget:scroll-arrow-hlength:
    *
    * The "scroll-arrow-hlength" style property defines the length of
    * horizontal scroll arrows.
@@ -3691,7 +3691,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                                                              CTK_PARAM_READABLE));
 
   /**
-   * GtkWidget:scroll-arrow-vlength:
+   * CtkWidget:scroll-arrow-vlength:
    *
    * The "scroll-arrow-vlength" style property defines the length of
    * vertical scroll arrows.
@@ -3723,7 +3723,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-ctk_widget_base_class_finalize (GtkWidgetClass *klass)
+ctk_widget_base_class_finalize (CtkWidgetClass *klass)
 {
   GList *list, *node;
 
@@ -3746,14 +3746,14 @@ ctk_widget_set_property (GObject         *object,
 			 const GValue    *value,
 			 GParamSpec      *pspec)
 {
-  GtkWidget *widget = CTK_WIDGET (object);
+  CtkWidget *widget = CTK_WIDGET (object);
 
   switch (prop_id)
     {
       gboolean tmp;
       gchar *tooltip_markup;
       const gchar *tooltip_text;
-      GtkWindow *tooltip_window;
+      CtkWindow *tooltip_window;
 
     case PROP_NAME:
       ctk_widget_set_name (widget, g_value_get_string (value));
@@ -3932,8 +3932,8 @@ ctk_widget_get_property (GObject         *object,
 			 GValue          *value,
 			 GParamSpec      *pspec)
 {
-  GtkWidget *widget = CTK_WIDGET (object);
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidget *widget = CTK_WIDGET (object);
+  CtkWidgetPrivate *priv = widget->priv;
 
   switch (prop_id)
     {
@@ -4096,10 +4096,10 @@ ctk_widget_get_property (GObject         *object,
 }
 
 static void
-_ctk_widget_emulate_press (GtkWidget      *widget,
+_ctk_widget_emulate_press (CtkWidget      *widget,
                            const GdkEvent *event)
 {
-  GtkWidget *event_widget, *next_child, *parent;
+  CtkWidget *event_widget, *next_child, *parent;
   GdkEvent *press;
 
   event_widget = ctk_get_event_widget ((GdkEvent *) event);
@@ -4171,10 +4171,10 @@ _ctk_widget_emulate_press (GtkWidget      *widget,
 }
 
 static const GdkEvent *
-_ctk_widget_get_last_event (GtkWidget        *widget,
+_ctk_widget_get_last_event (CtkWidget        *widget,
                             GdkEventSequence *sequence)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
   EventControllerData *data;
   const GdkEvent *event;
   GList *l;
@@ -4196,11 +4196,11 @@ _ctk_widget_get_last_event (GtkWidget        *widget,
 }
 
 static gboolean
-_ctk_widget_get_emulating_sequence (GtkWidget         *widget,
+_ctk_widget_get_emulating_sequence (CtkWidget         *widget,
                                     GdkEventSequence  *sequence,
                                     GdkEventSequence **sequence_out)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
   GList *l;
 
   *sequence_out = sequence;
@@ -4238,10 +4238,10 @@ _ctk_widget_get_emulating_sequence (GtkWidget         *widget,
 }
 
 static gboolean
-ctk_widget_needs_press_emulation (GtkWidget        *widget,
+ctk_widget_needs_press_emulation (CtkWidget        *widget,
                                   GdkEventSequence *sequence)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
   gboolean sequence_press_handled = FALSE;
   GList *l;
 
@@ -4251,8 +4251,8 @@ ctk_widget_needs_press_emulation (GtkWidget        *widget,
   for (l = priv->event_controllers; l; l = l->next)
     {
       EventControllerData *data;
-      GtkPropagationPhase phase;
-      GtkGesture *gesture;
+      CtkPropagationPhase phase;
+      CtkGesture *gesture;
 
       data = l->data;
       phase = ctk_event_controller_get_propagation_phase (data->controller);
@@ -4272,13 +4272,13 @@ ctk_widget_needs_press_emulation (GtkWidget        *widget,
 }
 
 static gint
-_ctk_widget_set_sequence_state_internal (GtkWidget             *widget,
+_ctk_widget_set_sequence_state_internal (CtkWidget             *widget,
                                          GdkEventSequence      *sequence,
-                                         GtkEventSequenceState  state,
-                                         GtkGesture            *emitter)
+                                         CtkEventSequenceState  state,
+                                         CtkGesture            *emitter)
 {
   gboolean emulates_pointer, sequence_handled = FALSE;
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
   const GdkEvent *mimic_event;
   GList *group = NULL, *l;
   GdkEventSequence *seq;
@@ -4295,9 +4295,9 @@ _ctk_widget_set_sequence_state_internal (GtkWidget             *widget,
 
   for (l = priv->event_controllers; l; l = l->next)
     {
-      GtkEventSequenceState gesture_state;
+      CtkEventSequenceState gesture_state;
       EventControllerData *data;
-      GtkGesture *gesture;
+      CtkGesture *gesture;
       gboolean retval;
 
       seq = sequence;
@@ -4364,10 +4364,10 @@ _ctk_widget_set_sequence_state_internal (GtkWidget             *widget,
 }
 
 static gboolean
-_ctk_widget_cancel_sequence (GtkWidget        *widget,
+_ctk_widget_cancel_sequence (CtkWidget        *widget,
                              GdkEventSequence *sequence)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
   gboolean emulates_pointer;
   gboolean handled = FALSE;
   GdkEventSequence *seq;
@@ -4378,7 +4378,7 @@ _ctk_widget_cancel_sequence (GtkWidget        *widget,
   for (l = priv->event_controllers; l; l = l->next)
     {
       EventControllerData *data;
-      GtkGesture *gesture;
+      CtkGesture *gesture;
 
       seq = sequence;
       data = l->data;
@@ -4404,8 +4404,8 @@ _ctk_widget_cancel_sequence (GtkWidget        *widget,
 static void
 ctk_widget_init (GTypeInstance *instance, gpointer g_class)
 {
-  GtkWidget *widget = CTK_WIDGET (instance);
-  GtkWidgetPrivate *priv;
+  CtkWidget *widget = CTK_WIDGET (instance);
+  CtkWidgetPrivate *priv;
 
   widget->priv = ctk_widget_get_instance_private (widget); 
   priv = widget->priv;
@@ -4479,12 +4479,12 @@ ctk_widget_init (GTypeInstance *instance, gpointer g_class)
 
 
 static void
-ctk_widget_dispatch_child_properties_changed (GtkWidget   *widget,
+ctk_widget_dispatch_child_properties_changed (CtkWidget   *widget,
 					      guint        n_pspecs,
 					      GParamSpec **pspecs)
 {
-  GtkWidgetPrivate *priv = widget->priv;
-  GtkWidget *container = priv->parent;
+  CtkWidgetPrivate *priv = widget->priv;
+  CtkWidget *container = priv->parent;
   guint i;
 
   for (i = 0; widget->priv->parent == container && i < n_pspecs; i++)
@@ -4493,16 +4493,16 @@ ctk_widget_dispatch_child_properties_changed (GtkWidget   *widget,
 
 /**
  * ctk_widget_freeze_child_notify:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
- * Stops emission of #GtkWidget::child-notify signals on @widget. The
+ * Stops emission of #CtkWidget::child-notify signals on @widget. The
  * signals are queued until ctk_widget_thaw_child_notify() is called
  * on @widget.
  *
  * This is the analogue of g_object_freeze_notify() for child properties.
  **/
 void
-ctk_widget_freeze_child_notify (GtkWidget *widget)
+ctk_widget_freeze_child_notify (CtkWidget *widget)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -4516,11 +4516,11 @@ ctk_widget_freeze_child_notify (GtkWidget *widget)
 
 /**
  * ctk_widget_child_notify:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @child_property: the name of a child property installed on the
  *                  class of @widget’s parent
  *
- * Emits a #GtkWidget::child-notify signal for the
+ * Emits a #CtkWidget::child-notify signal for the
  * [child property][child-properties] @child_property
  * on @widget.
  *
@@ -4529,7 +4529,7 @@ ctk_widget_freeze_child_notify (GtkWidget *widget)
  * Also see ctk_container_child_notify().
  */
 void
-ctk_widget_child_notify (GtkWidget    *widget,
+ctk_widget_child_notify (CtkWidget    *widget,
                          const gchar  *child_property)
 {
   if (widget->priv->parent == NULL)
@@ -4540,14 +4540,14 @@ ctk_widget_child_notify (GtkWidget    *widget,
 
 /**
  * ctk_widget_thaw_child_notify:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Reverts the effect of a previous call to ctk_widget_freeze_child_notify().
- * This causes all queued #GtkWidget::child-notify signals on @widget to be
+ * This causes all queued #CtkWidget::child-notify signals on @widget to be
  * emitted.
  */
 void
-ctk_widget_thaw_child_notify (GtkWidget *widget)
+ctk_widget_thaw_child_notify (CtkWidget *widget)
 {
   GObjectNotifyQueue *nqueue;
 
@@ -4581,30 +4581,30 @@ ctk_widget_thaw_child_notify (GtkWidget *widget)
  * g_object_new(), but returns a widget so you don’t have to
  * cast the object yourself.
  *
- * Returns: a new #GtkWidget of type @widget_type
+ * Returns: a new #CtkWidget of type @widget_type
  **/
-GtkWidget*
+CtkWidget*
 ctk_widget_new (GType        type,
 		const gchar *first_property_name,
 		...)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   va_list var_args;
 
   g_return_val_if_fail (g_type_is_a (type, CTK_TYPE_WIDGET), NULL);
 
   va_start (var_args, first_property_name);
-  widget = (GtkWidget *)g_object_new_valist (type, first_property_name, var_args);
+  widget = (CtkWidget *)g_object_new_valist (type, first_property_name, var_args);
   va_end (var_args);
 
   return widget;
 }
 
 static inline void
-ctk_widget_queue_draw_child (GtkWidget *widget)
+ctk_widget_queue_draw_child (CtkWidget *widget)
 {
-  GtkWidgetPrivate *priv = widget->priv;
-  GtkWidget *parent;
+  CtkWidgetPrivate *priv = widget->priv;
+  CtkWidget *parent;
 
   parent = priv->parent;
   if (parent && _ctk_widget_is_drawable (parent))
@@ -4617,19 +4617,19 @@ ctk_widget_queue_draw_child (GtkWidget *widget)
 
 /**
  * ctk_widget_unparent:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * This function is only for use in widget implementations.
  * Should be called by implementations of the remove method
- * on #GtkContainer, to dissociate a child from the container.
+ * on #CtkContainer, to dissociate a child from the container.
  **/
 void
-ctk_widget_unparent (GtkWidget *widget)
+ctk_widget_unparent (CtkWidget *widget)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
   GObjectNotifyQueue *nqueue;
-  GtkWidget *toplevel;
-  GtkWidget *old_parent;
+  CtkWidget *toplevel;
+  CtkWidget *old_parent;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -4716,7 +4716,7 @@ ctk_widget_unparent (GtkWidget *widget)
 
   /* Now that the parent pointer is nullified and the hierarchy-changed
    * already passed, go ahead and unset the parent window, if we are unparenting
-   * an embedded GtkWindow the window will become toplevel again and hierarchy-changed
+   * an embedded CtkWindow the window will become toplevel again and hierarchy-changed
    * will fire again for the new subhierarchy.
    */
   ctk_widget_set_parent_window (widget, NULL);
@@ -4733,7 +4733,7 @@ ctk_widget_unparent (GtkWidget *widget)
 
 /**
  * ctk_widget_destroy:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Destroys a widget.
  *
@@ -4748,11 +4748,11 @@ ctk_widget_unparent (GtkWidget *widget)
  *  of top level widgets that GTK+ maintains internally
  *
  * It's expected that all references held on the widget will also
- * be released; you should connect to the #GtkWidget::destroy signal
+ * be released; you should connect to the #CtkWidget::destroy signal
  * if you hold a reference to @widget and you wish to remove it when
  * this function is called. It is not necessary to do so if you are
- * implementing a #GtkContainer, as you'll be able to use the
- * #GtkContainerClass.remove() virtual function for that.
+ * implementing a #CtkContainer, as you'll be able to use the
+ * #CtkContainerClass.remove() virtual function for that.
  *
  * It's important to notice that ctk_widget_destroy() will only cause
  * the @widget to be finalized if no additional references, acquired
@@ -4768,7 +4768,7 @@ ctk_widget_unparent (GtkWidget *widget)
  * See also: ctk_container_remove()
  */
 void
-ctk_widget_destroy (GtkWidget *widget)
+ctk_widget_destroy (CtkWidget *widget)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -4778,7 +4778,7 @@ ctk_widget_destroy (GtkWidget *widget)
 
 /**
  * ctk_widget_destroyed:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @widget_pointer: (inout) (transfer none): address of a variable that contains @widget
  *
  * This function sets *@widget_pointer to %NULL if @widget_pointer !=
@@ -4790,8 +4790,8 @@ ctk_widget_destroy (GtkWidget *widget)
  * of the same dialog.
  **/
 void
-ctk_widget_destroyed (GtkWidget      *widget,
-		      GtkWidget      **widget_pointer)
+ctk_widget_destroyed (CtkWidget      *widget,
+		      CtkWidget      **widget_pointer)
 {
   /* Don't make any assumptions about the
    *  value of widget!
@@ -4803,7 +4803,7 @@ ctk_widget_destroyed (GtkWidget      *widget,
 
 /**
  * ctk_widget_show:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Flags a widget to be displayed. Any widget that isn’t shown will
  * not appear on the screen. If you want to show all the widgets in a
@@ -4818,13 +4818,13 @@ ctk_widget_destroyed (GtkWidget      *widget,
  * toplevel container is realized and mapped.
  **/
 void
-ctk_widget_show (GtkWidget *widget)
+ctk_widget_show (CtkWidget *widget)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
   if (!_ctk_widget_get_visible (widget))
     {
-      GtkWidget *parent;
+      CtkWidget *parent;
 
       g_object_ref (widget);
       ctk_widget_push_verify_invariants (widget);
@@ -4854,9 +4854,9 @@ ctk_widget_show (GtkWidget *widget)
 }
 
 static void
-ctk_widget_real_show (GtkWidget *widget)
+ctk_widget_real_show (CtkWidget *widget)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
 
   if (!_ctk_widget_get_visible (widget))
     {
@@ -4871,7 +4871,7 @@ ctk_widget_real_show (GtkWidget *widget)
 }
 
 static void
-ctk_widget_show_map_callback (GtkWidget *widget, GdkEvent *event, gint *flag)
+ctk_widget_show_map_callback (CtkWidget *widget, GdkEvent *event, gint *flag)
 {
   *flag = TRUE;
   g_signal_handlers_disconnect_by_func (widget,
@@ -4881,16 +4881,16 @@ ctk_widget_show_map_callback (GtkWidget *widget, GdkEvent *event, gint *flag)
 
 /**
  * ctk_widget_show_now:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Shows a widget. If the widget is an unmapped toplevel widget
- * (i.e. a #GtkWindow that has not yet been shown), enter the main
+ * (i.e. a #CtkWindow that has not yet been shown), enter the main
  * loop and wait for the window to actually be mapped. Be careful;
  * because the main loop is running, anything can happen during
  * this function.
  **/
 void
-ctk_widget_show_now (GtkWidget *widget)
+ctk_widget_show_now (CtkWidget *widget)
 {
   gint flag = FALSE;
 
@@ -4915,20 +4915,20 @@ ctk_widget_show_now (GtkWidget *widget)
 
 /**
  * ctk_widget_hide:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Reverses the effects of ctk_widget_show(), causing the widget to be
  * hidden (invisible to the user).
  **/
 void
-ctk_widget_hide (GtkWidget *widget)
+ctk_widget_hide (CtkWidget *widget)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
   if (_ctk_widget_get_visible (widget))
     {
-      GtkWidget *toplevel = _ctk_widget_get_toplevel (widget);
-      GtkWidget *parent;
+      CtkWidget *toplevel = _ctk_widget_get_toplevel (widget);
+      CtkWidget *parent;
 
       g_object_ref (widget);
       ctk_widget_push_verify_invariants (widget);
@@ -4961,7 +4961,7 @@ ctk_widget_hide (GtkWidget *widget)
 }
 
 static void
-ctk_widget_real_hide (GtkWidget *widget)
+ctk_widget_real_hide (CtkWidget *widget)
 {
   if (_ctk_widget_get_visible (widget))
     {
@@ -4974,10 +4974,10 @@ ctk_widget_real_hide (GtkWidget *widget)
 
 /**
  * ctk_widget_hide_on_delete:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
- * Utility function; intended to be connected to the #GtkWidget::delete-event
- * signal on a #GtkWindow. The function calls ctk_widget_hide() on its
+ * Utility function; intended to be connected to the #CtkWidget::delete-event
+ * signal on a #CtkWindow. The function calls ctk_widget_hide() on its
  * argument, then returns %TRUE. If connected to ::delete-event, the
  * result is that clicking the close button for a window (on the
  * window frame, top right corner usually) will hide but not destroy
@@ -4987,7 +4987,7 @@ ctk_widget_real_hide (GtkWidget *widget)
  * Returns: %TRUE
  **/
 gboolean
-ctk_widget_hide_on_delete (GtkWidget *widget)
+ctk_widget_hide_on_delete (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -4998,15 +4998,15 @@ ctk_widget_hide_on_delete (GtkWidget *widget)
 
 /**
  * ctk_widget_show_all:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Recursively shows a widget, and any child widgets (if the widget is
  * a container).
  **/
 void
-ctk_widget_show_all (GtkWidget *widget)
+ctk_widget_show_all (CtkWidget *widget)
 {
-  GtkWidgetClass *class;
+  CtkWidgetClass *class;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -5021,15 +5021,15 @@ ctk_widget_show_all (GtkWidget *widget)
 
 /**
  * ctk_widget_map:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * This function is only for use in widget implementations. Causes
  * a widget to be mapped if it isn’t already.
  **/
 void
-ctk_widget_map (GtkWidget *widget)
+ctk_widget_map (CtkWidget *widget)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (_ctk_widget_get_visible (widget));
@@ -5055,15 +5055,15 @@ ctk_widget_map (GtkWidget *widget)
 
 /**
  * ctk_widget_unmap:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * This function is only for use in widget implementations. Causes
  * a widget to be unmapped if it’s currently mapped.
  **/
 void
-ctk_widget_unmap (GtkWidget *widget)
+ctk_widget_unmap (CtkWidget *widget)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -5086,7 +5086,7 @@ ctk_widget_unmap (GtkWidget *widget)
 }
 
 static void
-_ctk_widget_enable_device_events (GtkWidget *widget)
+_ctk_widget_enable_device_events (CtkWidget *widget)
 {
   GHashTable *device_events;
   GHashTableIter iter;
@@ -5111,13 +5111,13 @@ _ctk_widget_enable_device_events (GtkWidget *widget)
 }
 
 typedef struct {
-  GtkWidget *widget;
+  CtkWidget *widget;
   GdkDevice *device;
   gboolean enabled;
 } DeviceEnableData;
 
 static void
-device_enable_foreach (GtkWidget *widget,
+device_enable_foreach (CtkWidget *widget,
                        gpointer   user_data)
 {
   DeviceEnableData *data = user_data;
@@ -5131,7 +5131,7 @@ device_enable_foreach_window (gpointer win,
   GdkWindow *window = win;
   DeviceEnableData *data = user_data;
   GdkEventMask events;
-  GtkWidget *window_widget;
+  CtkWidget *window_widget;
   GList *window_list;
 
   gdk_window_get_user_data (window, (gpointer *) &window_widget);
@@ -5150,7 +5150,7 @@ device_enable_foreach_window (gpointer win,
 }
 
 void
-ctk_widget_set_device_enabled_internal (GtkWidget *widget,
+ctk_widget_set_device_enabled_internal (CtkWidget *widget,
                                         GdkDevice *device,
                                         gboolean   recurse,
                                         gboolean   enabled)
@@ -5181,7 +5181,7 @@ ctk_widget_set_device_enabled_internal (GtkWidget *widget,
 }
 
 static void
-ctk_widget_update_devices_mask (GtkWidget *widget,
+ctk_widget_update_devices_mask (CtkWidget *widget,
                                 gboolean   recurse)
 {
   GList *enabled_devices, *l;
@@ -5192,14 +5192,14 @@ ctk_widget_update_devices_mask (GtkWidget *widget,
     ctk_widget_set_device_enabled_internal (widget, GDK_DEVICE (l->data), recurse, TRUE);
 }
 
-typedef struct _GtkTickCallbackInfo GtkTickCallbackInfo;
+typedef struct _CtkTickCallbackInfo CtkTickCallbackInfo;
 
-struct _GtkTickCallbackInfo
+struct _CtkTickCallbackInfo
 {
   guint refcount;
 
   guint id;
-  GtkTickCallback callback;
+  CtkTickCallback callback;
   gpointer user_data;
   GDestroyNotify notify;
 
@@ -5207,17 +5207,17 @@ struct _GtkTickCallbackInfo
 };
 
 static void
-ref_tick_callback_info (GtkTickCallbackInfo *info)
+ref_tick_callback_info (CtkTickCallbackInfo *info)
 {
   info->refcount++;
 }
 
 static void
-unref_tick_callback_info (GtkWidget           *widget,
-                          GtkTickCallbackInfo *info,
+unref_tick_callback_info (CtkWidget           *widget,
+                          CtkTickCallbackInfo *info,
                           GList               *link)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
 
   info->refcount--;
   if (info->refcount == 0)
@@ -5225,7 +5225,7 @@ unref_tick_callback_info (GtkWidget           *widget,
       priv->tick_callbacks = g_list_delete_link (priv->tick_callbacks, link);
       if (info->notify)
         info->notify (info->user_data);
-      g_slice_free (GtkTickCallbackInfo, info);
+      g_slice_free (CtkTickCallbackInfo, info);
     }
 
   if (priv->tick_callbacks == NULL && priv->clock_tick_id)
@@ -5238,8 +5238,8 @@ unref_tick_callback_info (GtkWidget           *widget,
 }
 
 static void
-destroy_tick_callback_info (GtkWidget           *widget,
-                            GtkTickCallbackInfo *info,
+destroy_tick_callback_info (CtkWidget           *widget,
+                            CtkTickCallbackInfo *info,
                             GList               *link)
 {
   if (!info->destroyed)
@@ -5250,9 +5250,9 @@ destroy_tick_callback_info (GtkWidget           *widget,
 }
 
 static void
-destroy_tick_callbacks (GtkWidget *widget)
+destroy_tick_callbacks (CtkWidget *widget)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
   GList *l;
 
   for (l = priv->tick_callbacks; l;)
@@ -5265,16 +5265,16 @@ destroy_tick_callbacks (GtkWidget *widget)
 
 static void
 ctk_widget_on_frame_clock_update (GdkFrameClock *frame_clock,
-                                  GtkWidget     *widget)
+                                  CtkWidget     *widget)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
   GList *l;
 
   g_object_ref (widget);
 
   for (l = priv->tick_callbacks; l;)
     {
-      GtkTickCallbackInfo *info = l->data;
+      CtkTickCallbackInfo *info = l->data;
       GList *next;
 
       ref_tick_callback_info (info);
@@ -5300,7 +5300,7 @@ static guint tick_callback_id;
 
 /**
  * ctk_widget_add_tick_callback:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @callback: function to call for updating animations
  * @user_data: data to pass to @callback
  * @notify: function to call to free @user_data when the callback is removed.
@@ -5313,7 +5313,7 @@ static guint tick_callback_id;
  * that change every frame or every few frames. The tick callback does
  * not automatically imply a relayout or repaint. If you want a
  * repaint or relayout, and aren’t changing widget properties that
- * would trigger that (for example, changing the text of a #GtkLabel),
+ * would trigger that (for example, changing the text of a #CtkLabel),
  * then you will have to call ctk_widget_queue_resize() or
  * ctk_widget_queue_draw_area() yourself.
  *
@@ -5332,13 +5332,13 @@ static guint tick_callback_id;
  * Since: 3.8
  */
 guint
-ctk_widget_add_tick_callback (GtkWidget       *widget,
-                              GtkTickCallback  callback,
+ctk_widget_add_tick_callback (CtkWidget       *widget,
+                              CtkTickCallback  callback,
                               gpointer         user_data,
                               GDestroyNotify   notify)
 {
-  GtkWidgetPrivate *priv;
-  GtkTickCallbackInfo *info;
+  CtkWidgetPrivate *priv;
+  CtkTickCallbackInfo *info;
   GdkFrameClock *frame_clock;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
@@ -5358,7 +5358,7 @@ ctk_widget_add_tick_callback (GtkWidget       *widget,
         }
     }
 
-  info = g_slice_new0 (GtkTickCallbackInfo);
+  info = g_slice_new0 (CtkTickCallbackInfo);
 
   info->refcount = 1;
   info->id = ++tick_callback_id;
@@ -5374,7 +5374,7 @@ ctk_widget_add_tick_callback (GtkWidget       *widget,
 
 /**
  * ctk_widget_remove_tick_callback:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @id: an id returned by ctk_widget_add_tick_callback()
  *
  * Removes a tick callback previously registered with
@@ -5383,10 +5383,10 @@ ctk_widget_add_tick_callback (GtkWidget       *widget,
  * Since: 3.8
  */
 void
-ctk_widget_remove_tick_callback (GtkWidget *widget,
+ctk_widget_remove_tick_callback (CtkWidget *widget,
                                  guint      id)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
   GList *l;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -5395,7 +5395,7 @@ ctk_widget_remove_tick_callback (GtkWidget *widget,
 
   for (l = priv->tick_callbacks; l; l = l->next)
     {
-      GtkTickCallbackInfo *info = l->data;
+      CtkTickCallbackInfo *info = l->data;
       if (info->id == id)
         {
           destroy_tick_callback_info (widget, info, l);
@@ -5405,16 +5405,16 @@ ctk_widget_remove_tick_callback (GtkWidget *widget,
 }
 
 gboolean
-ctk_widget_has_tick_callback (GtkWidget *widget)
+ctk_widget_has_tick_callback (CtkWidget *widget)
 {
   return widget->priv->tick_callbacks != NULL;
 }
 
 static void
-ctk_widget_connect_frame_clock (GtkWidget     *widget,
+ctk_widget_connect_frame_clock (CtkWidget     *widget,
                                 GdkFrameClock *frame_clock)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
 
   priv->frameclock_connected = TRUE;
 
@@ -5436,10 +5436,10 @@ ctk_widget_connect_frame_clock (GtkWidget     *widget,
 }
 
 static void
-ctk_widget_disconnect_frame_clock (GtkWidget     *widget,
+ctk_widget_disconnect_frame_clock (CtkWidget     *widget,
                                    GdkFrameClock *frame_clock)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
 
   if (CTK_IS_CONTAINER (widget))
     _ctk_container_stop_idle_sizer (CTK_CONTAINER (widget));
@@ -5461,7 +5461,7 @@ ctk_widget_disconnect_frame_clock (GtkWidget     *widget,
 
 /**
  * ctk_widget_realize:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Creates the GDK (windowing system) resources associated with a
  * widget.  For example, @widget->window will be created when a widget
@@ -5479,13 +5479,13 @@ ctk_widget_disconnect_frame_clock (GtkWidget     *widget,
  * isn’t very useful otherwise. Many times when you think you might
  * need it, a better approach is to connect to a signal that will be
  * called after the widget is realized automatically, such as
- * #GtkWidget::draw. Or simply g_signal_connect () to the
- * #GtkWidget::realize signal.
+ * #CtkWidget::draw. Or simply g_signal_connect () to the
+ * #CtkWidget::realize signal.
  **/
 void
-ctk_widget_realize (GtkWidget *widget)
+ctk_widget_realize (CtkWidget *widget)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
   cairo_region_t *region;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -5547,14 +5547,14 @@ ctk_widget_realize (GtkWidget *widget)
 
 /**
  * ctk_widget_unrealize:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * This function is only useful in widget implementations.
  * Causes a widget to be unrealized (frees all GDK resources
  * associated with the widget, such as @widget->window).
  **/
 void
-ctk_widget_unrealize (GtkWidget *widget)
+ctk_widget_unrealize (CtkWidget *widget)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -5589,17 +5589,17 @@ ctk_widget_unrealize (GtkWidget *widget)
  *****************************************/
 
 static void
-ctk_widget_real_queue_draw_region (GtkWidget         *widget,
+ctk_widget_real_queue_draw_region (CtkWidget         *widget,
 				   const cairo_region_t *region)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
 
   gdk_window_invalidate_region (priv->window, region, TRUE);
 }
 
 /**
  * ctk_widget_queue_draw_region:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @region: region to draw
  *
  * Invalidates the area of @widget defined by @region by calling
@@ -5611,15 +5611,15 @@ ctk_widget_real_queue_draw_region (GtkWidget         *widget,
  *
  * Normally you would only use this function in widget
  * implementations. You might also use it to schedule a redraw of a
- * #GtkDrawingArea or some portion thereof.
+ * #CtkDrawingArea or some portion thereof.
  *
  * Since: 3.0
  **/
 void
-ctk_widget_queue_draw_region (GtkWidget            *widget,
+ctk_widget_queue_draw_region (CtkWidget            *widget,
                               const cairo_region_t *region)
 {
-  GtkWidget *w;
+  CtkWidget *w;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -5636,7 +5636,7 @@ ctk_widget_queue_draw_region (GtkWidget            *widget,
 
 /**
  * ctk_widget_queue_draw_area:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @x: x coordinate of upper-left corner of rectangle to redraw
  * @y: y coordinate of upper-left corner of rectangle to redraw
  * @width: width of region to draw
@@ -5655,7 +5655,7 @@ ctk_widget_queue_draw_region (GtkWidget            *widget,
  * nothing. Negative values for @width and @height are not allowed.
  */
 void
-ctk_widget_queue_draw_area (GtkWidget *widget,
+ctk_widget_queue_draw_area (CtkWidget *widget,
 			    gint       x,
 			    gint       y,
 			    gint       width,
@@ -5683,13 +5683,13 @@ ctk_widget_queue_draw_area (GtkWidget *widget,
 
 /**
  * ctk_widget_queue_draw:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Equivalent to calling ctk_widget_queue_draw_area() for the
  * entire area of a widget.
  **/
 void
-ctk_widget_queue_draw (GtkWidget *widget)
+ctk_widget_queue_draw (CtkWidget *widget)
 {
   GdkRectangle rect;
 
@@ -5706,14 +5706,14 @@ ctk_widget_queue_draw (GtkWidget *widget)
 }
 
 static void
-ctk_widget_set_alloc_needed (GtkWidget *widget);
+ctk_widget_set_alloc_needed (CtkWidget *widget);
 /**
  * ctk_widget_queue_allocate:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * This function is only for use in widget implementations.
  *
- * Flags the widget for a rerun of the GtkWidgetClass::size_allocate
+ * Flags the widget for a rerun of the CtkWidgetClass::size_allocate
  * function. Use this function instead of ctk_widget_queue_resize()
  * when the @widget's size request didn't change but it wants to
  * reposition its contents.
@@ -5723,7 +5723,7 @@ ctk_widget_set_alloc_needed (GtkWidget *widget);
  * Since: 3.20
  */
 void
-ctk_widget_queue_allocate (GtkWidget *widget)
+ctk_widget_queue_allocate (CtkWidget *widget)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -5735,12 +5735,12 @@ ctk_widget_queue_allocate (GtkWidget *widget)
 
 /**
  * ctk_widget_queue_resize_internal:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * 
  * Queue a resize on a widget, and on all other widgets grouped with this widget.
  **/
 void
-ctk_widget_queue_resize_internal (GtkWidget *widget)
+ctk_widget_queue_resize_internal (CtkWidget *widget)
 {
   GSList *groups, *l, *widgets;
 
@@ -5773,7 +5773,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
     }
   else if (_ctk_widget_get_visible (widget))
     {
-      GtkWidget *parent = _ctk_widget_get_parent (widget);
+      CtkWidget *parent = _ctk_widget_get_parent (widget);
       if (parent)
         ctk_widget_queue_resize_internal (parent);
     }
@@ -5781,21 +5781,21 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 
 /**
  * ctk_widget_queue_resize:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * This function is only for use in widget implementations.
  * Flags a widget to have its size renegotiated; should
  * be called when a widget for some reason has a new size request.
- * For example, when you change the text in a #GtkLabel, #GtkLabel
+ * For example, when you change the text in a #CtkLabel, #CtkLabel
  * queues a resize to ensure there’s enough space for the new text.
  *
  * Note that you cannot call ctk_widget_queue_resize() on a widget
- * from inside its implementation of the GtkWidgetClass::size_allocate 
+ * from inside its implementation of the CtkWidgetClass::size_allocate 
  * virtual method. Calls to ctk_widget_queue_resize() from inside
- * GtkWidgetClass::size_allocate will be silently ignored.
+ * CtkWidgetClass::size_allocate will be silently ignored.
  **/
 void
-ctk_widget_queue_resize (GtkWidget *widget)
+ctk_widget_queue_resize (CtkWidget *widget)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -5807,7 +5807,7 @@ ctk_widget_queue_resize (GtkWidget *widget)
 
 /**
  * ctk_widget_queue_resize_no_redraw:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * This function works like ctk_widget_queue_resize(),
  * except that the widget is not invalidated.
@@ -5815,7 +5815,7 @@ ctk_widget_queue_resize (GtkWidget *widget)
  * Since: 2.4
  **/
 void
-ctk_widget_queue_resize_no_redraw (GtkWidget *widget)
+ctk_widget_queue_resize_no_redraw (CtkWidget *widget)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -5824,7 +5824,7 @@ ctk_widget_queue_resize_no_redraw (GtkWidget *widget)
 
 /**
  * ctk_widget_get_frame_clock:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Obtains the frame clock for a widget. The frame clock is a global
  * “ticker” that can be used to drive animations and repaints.  The
@@ -5854,7 +5854,7 @@ ctk_widget_queue_resize_no_redraw (GtkWidget *widget)
  * Since: 3.8
  */
 GdkFrameClock*
-ctk_widget_get_frame_clock (GtkWidget *widget)
+ctk_widget_get_frame_clock (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
@@ -5866,7 +5866,7 @@ ctk_widget_get_frame_clock (GtkWidget *widget)
        * hierarchy anyways, but should squash any funny business with
        * reparenting windows and widgets.
        */
-      GtkWidget *toplevel = _ctk_widget_get_toplevel (widget);
+      CtkWidget *toplevel = _ctk_widget_get_toplevel (widget);
       GdkWindow *window = _ctk_widget_get_window (toplevel);
       g_assert (window != NULL);
 
@@ -5880,10 +5880,10 @@ ctk_widget_get_frame_clock (GtkWidget *widget)
 
 /**
  * ctk_widget_size_request:
- * @widget: a #GtkWidget
- * @requisition: (out): a #GtkRequisition to be filled in
+ * @widget: a #CtkWidget
+ * @requisition: (out): a #CtkRequisition to be filled in
  *
- * This function is typically used when implementing a #GtkContainer
+ * This function is typically used when implementing a #CtkContainer
  * subclass.  Obtains the preferred size of a widget. The container
  * uses this information to arrange its child widgets and decide what
  * size allocations to give them with ctk_widget_size_allocate().
@@ -5899,8 +5899,8 @@ ctk_widget_get_frame_clock (GtkWidget *widget)
  * Deprecated: 3.0: Use ctk_widget_get_preferred_size() instead.
  **/
 void
-ctk_widget_size_request (GtkWidget	*widget,
-			 GtkRequisition *requisition)
+ctk_widget_size_request (CtkWidget	*widget,
+			 CtkRequisition *requisition)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -5909,8 +5909,8 @@ ctk_widget_size_request (GtkWidget	*widget,
 
 /**
  * ctk_widget_get_child_requisition:
- * @widget: a #GtkWidget
- * @requisition: (out): a #GtkRequisition to be filled in
+ * @widget: a #CtkWidget
+ * @requisition: (out): a #CtkRequisition to be filled in
  *
  * This function is only for use in widget implementations. Obtains
  * @widget->requisition, unless someone has forced a particular
@@ -5935,8 +5935,8 @@ ctk_widget_size_request (GtkWidget	*widget,
  * Deprecated: 3.0: Use ctk_widget_get_preferred_size() instead.
  **/
 void
-ctk_widget_get_child_requisition (GtkWidget	 *widget,
-				  GtkRequisition *requisition)
+ctk_widget_get_child_requisition (CtkWidget	 *widget,
+				  CtkRequisition *requisition)
 {
   ctk_widget_get_preferred_size (widget, requisition, NULL);
 }
@@ -5958,10 +5958,10 @@ invalidate_predicate (GdkWindow *window,
  * modified by this call.
  */
 static void
-ctk_widget_invalidate_widget_windows (GtkWidget      *widget,
+ctk_widget_invalidate_widget_windows (CtkWidget      *widget,
 				      cairo_region_t *region)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
 
   if (!_ctk_widget_get_realized (widget))
     return;
@@ -5980,11 +5980,11 @@ ctk_widget_invalidate_widget_windows (GtkWidget      *widget,
 
 /**
  * ctk_widget_size_allocate_with_baseline:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @allocation: position and size to be allocated to @widget
  * @baseline: The baseline of the child, or -1
  *
- * This function is only used by #GtkContainer subclasses, to assign a size,
+ * This function is only used by #CtkContainer subclasses, to assign a size,
  * position and (optionally) baseline to their child widgets.
  *
  * In this function, the allocation and baseline may be adjusted. It
@@ -5992,8 +5992,8 @@ ctk_widget_invalidate_widget_windows (GtkWidget      *widget,
  * adjust_size_allocation virtual and adjust_baseline_allocation
  * methods on the child will be used to adjust the allocation and
  * baseline. Standard adjustments include removing the widget's
- * margins, and applying the widget’s #GtkWidget:halign and
- * #GtkWidget:valign properties.
+ * margins, and applying the widget’s #CtkWidget:halign and
+ * #CtkWidget:valign properties.
  *
  * If the child widget does not have a valign of %CTK_ALIGN_BASELINE the
  * baseline argument is ignored and -1 is used instead.
@@ -6001,11 +6001,11 @@ ctk_widget_invalidate_widget_windows (GtkWidget      *widget,
  * Since: 3.10
  **/
 void
-ctk_widget_size_allocate_with_baseline (GtkWidget     *widget,
-					GtkAllocation *allocation,
+ctk_widget_size_allocate_with_baseline (CtkWidget     *widget,
+					CtkAllocation *allocation,
 					gint           baseline)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
   GdkRectangle real_allocation;
   GdkRectangle old_allocation, old_clip;
   GdkRectangle adjusted_allocation;
@@ -6045,7 +6045,7 @@ ctk_widget_size_allocate_with_baseline (GtkWidget     *widget,
   if (CTK_DEBUG_CHECK (GEOMETRY))
     {
       gint depth;
-      GtkWidget *parent;
+      CtkWidget *parent;
       const gchar *name;
 
       depth = 0;
@@ -6234,32 +6234,32 @@ out:
 
 /**
  * ctk_widget_size_allocate:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @allocation: position and size to be allocated to @widget
  *
- * This function is only used by #GtkContainer subclasses, to assign a size
+ * This function is only used by #CtkContainer subclasses, to assign a size
  * and position to their child widgets.
  *
  * In this function, the allocation may be adjusted. It will be forced
  * to a 1x1 minimum size, and the adjust_size_allocation virtual
  * method on the child will be used to adjust the allocation. Standard
  * adjustments include removing the widget’s margins, and applying the
- * widget’s #GtkWidget:halign and #GtkWidget:valign properties.
+ * widget’s #CtkWidget:halign and #CtkWidget:valign properties.
  *
  * For baseline support in containers you need to use ctk_widget_size_allocate_with_baseline()
  * instead.
  **/
 void
-ctk_widget_size_allocate (GtkWidget	*widget,
-			  GtkAllocation *allocation)
+ctk_widget_size_allocate (CtkWidget	*widget,
+			  CtkAllocation *allocation)
 {
   ctk_widget_size_allocate_with_baseline (widget, allocation, -1);
 }
 
 /**
  * ctk_widget_common_ancestor:
- * @widget_a: a #GtkWidget
- * @widget_b: a #GtkWidget
+ * @widget_a: a #CtkWidget
+ * @widget_b: a #CtkWidget
  *
  * Find the common ancestor of @widget_a and @widget_b that
  * is closest to the two widgets.
@@ -6268,12 +6268,12 @@ ctk_widget_size_allocate (GtkWidget	*widget,
  *   @widget_b or %NULL if @widget_a and @widget_b do not
  *   share a common ancestor.
  **/
-static GtkWidget *
-ctk_widget_common_ancestor (GtkWidget *widget_a,
-			    GtkWidget *widget_b)
+static CtkWidget *
+ctk_widget_common_ancestor (CtkWidget *widget_a,
+			    CtkWidget *widget_b)
 {
-  GtkWidget *parent_a;
-  GtkWidget *parent_b;
+  CtkWidget *parent_a;
+  CtkWidget *parent_b;
   gint depth_a = 0;
   gint depth_b = 0;
 
@@ -6317,8 +6317,8 @@ ctk_widget_common_ancestor (GtkWidget *widget_a,
 
 /**
  * ctk_widget_translate_coordinates:
- * @src_widget:  a #GtkWidget
- * @dest_widget: a #GtkWidget
+ * @src_widget:  a #CtkWidget
+ * @dest_widget: a #CtkWidget
  * @src_x: X position relative to @src_widget
  * @src_y: Y position relative to @src_widget
  * @dest_x: (out) (optional): location to store X position relative to @dest_widget
@@ -6334,16 +6334,16 @@ ctk_widget_common_ancestor (GtkWidget *widget_a,
  *   *@dest_x and *@dest_y. Otherwise %TRUE.
  **/
 gboolean
-ctk_widget_translate_coordinates (GtkWidget  *src_widget,
-				  GtkWidget  *dest_widget,
+ctk_widget_translate_coordinates (CtkWidget  *src_widget,
+				  CtkWidget  *dest_widget,
 				  gint        src_x,
 				  gint        src_y,
 				  gint       *dest_x,
 				  gint       *dest_y)
 {
-  GtkWidgetPrivate *src_priv;
-  GtkWidgetPrivate *dest_priv;
-  GtkWidget *ancestor;
+  CtkWidgetPrivate *src_priv;
+  CtkWidgetPrivate *dest_priv;
+  CtkWidget *ancestor;
   GdkWindow *window;
   GList *dest_list = NULL;
 
@@ -6385,7 +6385,7 @@ ctk_widget_translate_coordinates (GtkWidget  *src_widget,
 
       window = gdk_window_get_effective_parent (window);
 
-      if (!window)		/* Handle GtkHandleBox */
+      if (!window)		/* Handle CtkHandleBox */
 	return FALSE;
     }
 
@@ -6397,7 +6397,7 @@ ctk_widget_translate_coordinates (GtkWidget  *src_widget,
 
       window = gdk_window_get_effective_parent (window);
 
-      if (!window)		/* Handle GtkHandleBox */
+      if (!window)		/* Handle CtkHandleBox */
         {
           g_list_free (dest_list);
           return FALSE;
@@ -6440,10 +6440,10 @@ ctk_widget_translate_coordinates (GtkWidget  *src_widget,
 }
 
 static void
-ctk_widget_real_size_allocate (GtkWidget     *widget,
-			       GtkAllocation *allocation)
+ctk_widget_real_size_allocate (CtkWidget     *widget,
+			       CtkAllocation *allocation)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
 
   ctk_widget_set_allocation (widget, allocation);
 
@@ -6457,9 +6457,9 @@ ctk_widget_real_size_allocate (GtkWidget     *widget,
 }
 
 /* translate initial/final into start/end */
-static GtkAlign
-effective_align (GtkAlign         align,
-                 GtkTextDirection direction)
+static CtkAlign
+effective_align (CtkAlign         align,
+                 CtkTextDirection direction)
 {
   switch (align)
     {
@@ -6473,7 +6473,7 @@ effective_align (GtkAlign         align,
 }
 
 static void
-adjust_for_align (GtkAlign  align,
+adjust_for_align (CtkAlign  align,
                   gint     *natural_size,
                   gint     *allocated_pos,
                   gint     *allocated_size)
@@ -6520,14 +6520,14 @@ adjust_for_margin(gint               start_margin,
 }
 
 static void
-ctk_widget_real_adjust_size_allocation (GtkWidget         *widget,
-                                        GtkOrientation     orientation,
+ctk_widget_real_adjust_size_allocation (CtkWidget         *widget,
+                                        CtkOrientation     orientation,
                                         gint              *minimum_size,
                                         gint              *natural_size,
                                         gint              *allocated_pos,
                                         gint              *allocated_size)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
 
   if (orientation == CTK_ORIENTATION_HORIZONTAL)
     {
@@ -6550,7 +6550,7 @@ ctk_widget_real_adjust_size_allocation (GtkWidget         *widget,
 }
 
 static void
-ctk_widget_real_adjust_baseline_allocation (GtkWidget *widget,
+ctk_widget_real_adjust_baseline_allocation (CtkWidget *widget,
 					    gint      *baseline)
 {
   if (*baseline >= 0)
@@ -6558,10 +6558,10 @@ ctk_widget_real_adjust_baseline_allocation (GtkWidget *widget,
 }
 
 static gboolean
-ctk_widget_real_can_activate_accel (GtkWidget *widget,
+ctk_widget_real_can_activate_accel (CtkWidget *widget,
                                     guint      signal_id)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
 
   /* widgets must be onscreen for accels to take effect */
   return ctk_widget_is_sensitive (widget) &&
@@ -6571,12 +6571,12 @@ ctk_widget_real_can_activate_accel (GtkWidget *widget,
 
 /**
  * ctk_widget_can_activate_accel:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @signal_id: the ID of a signal installed on @widget
  *
  * Determines whether an accelerator that activates the signal
  * identified by @signal_id can currently be activated.
- * This is done by emitting the #GtkWidget::can-activate-accel
+ * This is done by emitting the #CtkWidget::can-activate-accel
  * signal on @widget; if the signal isn’t overridden by a
  * handler or in a derived widget, then the default check is
  * that the widget must be sensitive, and the widget and all
@@ -6587,7 +6587,7 @@ ctk_widget_real_can_activate_accel (GtkWidget *widget,
  * Since: 2.4
  **/
 gboolean
-ctk_widget_can_activate_accel (GtkWidget *widget,
+ctk_widget_can_activate_accel (CtkWidget *widget,
                                guint      signal_id)
 {
   gboolean can_activate = FALSE;
@@ -6633,7 +6633,7 @@ closures_destroy (gpointer data)
 }
 
 static GClosure*
-widget_new_accel_closure (GtkWidget *widget,
+widget_new_accel_closure (CtkWidget *widget,
 			  guint      signal_id)
 {
   AccelClosure *aclosure;
@@ -6684,12 +6684,12 @@ widget_new_accel_closure (GtkWidget *widget,
  * ctk_menu_item_set_accel_path() instead.
  */
 void
-ctk_widget_add_accelerator (GtkWidget      *widget,
+ctk_widget_add_accelerator (CtkWidget      *widget,
 			    const gchar    *accel_signal,
-			    GtkAccelGroup  *accel_group,
+			    CtkAccelGroup  *accel_group,
 			    guint           accel_key,
 			    GdkModifierType accel_mods,
-			    GtkAccelFlags   accel_flags)
+			    CtkAccelFlags   accel_flags)
 {
   GClosure *closure;
   GSignalQuery query;
@@ -6741,12 +6741,12 @@ ctk_widget_add_accelerator (GtkWidget      *widget,
  * Returns: whether an accelerator was installed and could be removed
  */
 gboolean
-ctk_widget_remove_accelerator (GtkWidget      *widget,
-			       GtkAccelGroup  *accel_group,
+ctk_widget_remove_accelerator (CtkWidget      *widget,
+			       CtkAccelGroup  *accel_group,
 			       guint           accel_key,
 			       GdkModifierType accel_mods)
 {
-  GtkAccelGroupEntry *ag_entry;
+  CtkAccelGroupEntry *ag_entry;
   GList *slist, *clist;
   guint n;
 
@@ -6787,15 +6787,15 @@ ctk_widget_remove_accelerator (GtkWidget      *widget,
  * Lists the closures used by @widget for accelerator group connections
  * with ctk_accel_group_connect_by_path() or ctk_accel_group_connect().
  * The closures can be used to monitor accelerator changes on @widget,
- * by connecting to the @GtkAccelGroup::accel-changed signal of the
- * #GtkAccelGroup of a closure which can be found out with
+ * by connecting to the @CtkAccelGroup::accel-changed signal of the
+ * #CtkAccelGroup of a closure which can be found out with
  * ctk_accel_group_from_accel_closure().
  *
  * Returns: (transfer container) (element-type GClosure):
  *     a newly allocated #GList of closures
  */
 GList*
-ctk_widget_list_accel_closures (GtkWidget *widget)
+ctk_widget_list_accel_closures (CtkWidget *widget)
 {
   GSList *slist;
   GList *clist = NULL;
@@ -6810,7 +6810,7 @@ ctk_widget_list_accel_closures (GtkWidget *widget)
 
 typedef struct {
   GQuark         path_quark;
-  GtkAccelGroup *accel_group;
+  CtkAccelGroup *accel_group;
   GClosure      *closure;
 } AccelPath;
 
@@ -6830,9 +6830,9 @@ destroy_accel_path (gpointer data)
 
 /**
  * ctk_widget_set_accel_path:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @accel_path: (allow-none): path used to look up the accelerator
- * @accel_group: (allow-none): a #GtkAccelGroup.
+ * @accel_group: (allow-none): a #CtkAccelGroup.
  *
  * Given an accelerator group, @accel_group, and an accelerator path,
  * @accel_path, sets up an accelerator in @accel_group so whenever the
@@ -6844,11 +6844,11 @@ destroy_accel_path (gpointer data)
  * to be saved for future use. (See ctk_accel_map_save().)
  *
  * This function is a low level function that would most likely
- * be used by a menu creation system like #GtkUIManager. If you
- * use #GtkUIManager, setting up accelerator paths will be done
+ * be used by a menu creation system like #CtkUIManager. If you
+ * use #CtkUIManager, setting up accelerator paths will be done
  * automatically.
  *
- * Even when you you aren’t using #GtkUIManager, if you only want to
+ * Even when you you aren’t using #CtkUIManager, if you only want to
  * set up accelerators on menu items ctk_menu_item_set_accel_path()
  * provides a somewhat more convenient interface.
  *
@@ -6857,9 +6857,9 @@ destroy_accel_path (gpointer data)
  * g_intern_static_string().
  **/
 void
-ctk_widget_set_accel_path (GtkWidget     *widget,
+ctk_widget_set_accel_path (CtkWidget     *widget,
 			   const gchar   *accel_path,
-			   GtkAccelGroup *accel_group)
+			   CtkAccelGroup *accel_group)
 {
   AccelPath *apath;
 
@@ -6890,7 +6890,7 @@ ctk_widget_set_accel_path (GtkWidget     *widget,
 }
 
 const gchar*
-_ctk_widget_get_accel_path (GtkWidget *widget,
+_ctk_widget_get_accel_path (CtkWidget *widget,
 			    gboolean  *locked)
 {
   AccelPath *apath;
@@ -6905,15 +6905,15 @@ _ctk_widget_get_accel_path (GtkWidget *widget,
 
 /**
  * ctk_widget_mnemonic_activate:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @group_cycling: %TRUE if there are other widgets with the same mnemonic
  *
- * Emits the #GtkWidget::mnemonic-activate signal.
+ * Emits the #CtkWidget::mnemonic-activate signal.
  *
  * Returns: %TRUE if the signal has been handled
  */
 gboolean
-ctk_widget_mnemonic_activate (GtkWidget *widget,
+ctk_widget_mnemonic_activate (CtkWidget *widget,
                               gboolean   group_cycling)
 {
   gboolean handled;
@@ -6933,7 +6933,7 @@ ctk_widget_mnemonic_activate (GtkWidget *widget,
 }
 
 static gboolean
-ctk_widget_real_mnemonic_activate (GtkWidget *widget,
+ctk_widget_real_mnemonic_activate (CtkWidget *widget,
                                    gboolean   group_cycling)
 {
   if (!group_cycling && CTK_WIDGET_GET_CLASS (widget)->activate_signal)
@@ -6973,7 +6973,7 @@ ctk_cairo_set_marked_for_draw (cairo_t  *cr,
  * @window: the window to check. @window may not be an input-only
  *          window.
  *
- * This function is supposed to be called in #GtkWidget::draw
+ * This function is supposed to be called in #CtkWidget::draw
  * implementations for widgets that support multiple windows.
  * @cr must be untransformed from invoking of the draw function.
  * This function will return %TRUE if the contents of the given
@@ -7015,7 +7015,7 @@ ctk_cairo_should_draw_window (cairo_t   *cr,
 }
 
 void
-ctk_widget_draw_internal (GtkWidget *widget,
+ctk_widget_draw_internal (CtkWidget *widget,
                           cairo_t   *cr,
                           gboolean   clip_to_size)
 {
@@ -7101,7 +7101,7 @@ ctk_widget_draw_internal (GtkWidget *widget,
 	}
       if (widget->priv->highlight_resize)
         {
-          GtkAllocation alloc;
+          CtkAllocation alloc;
           ctk_widget_get_allocation (widget, &alloc);
 
           cairo_rectangle (cr, 0, 0, alloc.width, alloc.height);
@@ -7163,7 +7163,7 @@ ctk_widget_draw_internal (GtkWidget *widget,
  * Since: 3.0
  **/
 void
-ctk_widget_draw (GtkWidget *widget,
+ctk_widget_draw (CtkWidget *widget,
                  cairo_t   *cr)
 {
   gboolean was_marked;
@@ -7190,7 +7190,7 @@ ctk_widget_draw (GtkWidget *widget,
 }
 
 static gboolean
-ctk_widget_real_scroll_event (GtkWidget      *widget,
+ctk_widget_real_scroll_event (CtkWidget      *widget,
                               GdkEventScroll *event)
 {
   return _ctk_widget_run_controllers (widget, (GdkEvent *) event,
@@ -7198,7 +7198,7 @@ ctk_widget_real_scroll_event (GtkWidget      *widget,
 }
 
 static gboolean
-ctk_widget_real_button_event (GtkWidget      *widget,
+ctk_widget_real_button_event (CtkWidget      *widget,
                               GdkEventButton *event)
 {
   return _ctk_widget_run_controllers (widget, (GdkEvent *) event,
@@ -7206,7 +7206,7 @@ ctk_widget_real_button_event (GtkWidget      *widget,
 }
 
 static gboolean
-ctk_widget_real_motion_event (GtkWidget      *widget,
+ctk_widget_real_motion_event (CtkWidget      *widget,
                               GdkEventMotion *event)
 {
   return _ctk_widget_run_controllers (widget, (GdkEvent *) event,
@@ -7214,7 +7214,7 @@ ctk_widget_real_motion_event (GtkWidget      *widget,
 }
 
 static gboolean
-ctk_widget_real_key_press_event (GtkWidget         *widget,
+ctk_widget_real_key_press_event (CtkWidget         *widget,
 				 GdkEventKey       *event)
 {
   if (_ctk_widget_run_controllers (widget, (GdkEvent *) event,
@@ -7225,7 +7225,7 @@ ctk_widget_real_key_press_event (GtkWidget         *widget,
 }
 
 static gboolean
-ctk_widget_real_key_release_event (GtkWidget         *widget,
+ctk_widget_real_key_release_event (CtkWidget         *widget,
 				   GdkEventKey       *event)
 {
   if (_ctk_widget_run_controllers (widget, (GdkEvent *) event,
@@ -7236,7 +7236,7 @@ ctk_widget_real_key_release_event (GtkWidget         *widget,
 }
 
 static gboolean
-ctk_widget_real_focus_in_event (GtkWidget     *widget,
+ctk_widget_real_focus_in_event (CtkWidget     *widget,
                                 GdkEventFocus *event)
 {
   ctk_widget_queue_draw (widget);
@@ -7245,7 +7245,7 @@ ctk_widget_real_focus_in_event (GtkWidget     *widget,
 }
 
 static gboolean
-ctk_widget_real_focus_out_event (GtkWidget     *widget,
+ctk_widget_real_focus_out_event (CtkWidget     *widget,
                                  GdkEventFocus *event)
 {
   ctk_widget_queue_draw (widget);
@@ -7254,7 +7254,7 @@ ctk_widget_real_focus_out_event (GtkWidget     *widget,
 }
 
 static gboolean
-ctk_widget_real_touch_event (GtkWidget     *widget,
+ctk_widget_real_touch_event (CtkWidget     *widget,
                              GdkEventTouch *event)
 {
   GdkEvent *bevent;
@@ -7333,7 +7333,7 @@ ctk_widget_real_touch_event (GtkWidget     *widget,
 }
 
 static gboolean
-ctk_widget_real_grab_broken_event (GtkWidget          *widget,
+ctk_widget_real_grab_broken_event (CtkWidget          *widget,
                                    GdkEventGrabBroken *event)
 {
   return _ctk_widget_run_controllers (widget, (GdkEvent*) event,
@@ -7345,7 +7345,7 @@ ctk_widget_real_grab_broken_event (GtkWidget          *widget,
 
 /**
  * ctk_widget_event:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @event: a #GdkEvent
  *
  * Rarely-used function. This function is used to emit
@@ -7361,7 +7361,7 @@ ctk_widget_real_grab_broken_event (GtkWidget          *widget,
  *               the event was handled)
  **/
 gboolean
-ctk_widget_event (GtkWidget *widget,
+ctk_widget_event (CtkWidget *widget,
 		  GdkEvent  *event)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), TRUE);
@@ -7379,18 +7379,18 @@ ctk_widget_event (GtkWidget *widget,
 }
 
 void
-_ctk_widget_set_captured_event_handler (GtkWidget               *widget,
-                                        GtkCapturedEventHandler  callback)
+_ctk_widget_set_captured_event_handler (CtkWidget               *widget,
+                                        CtkCapturedEventHandler  callback)
 {
   g_object_set_data (G_OBJECT (widget), "captured-event-handler", callback);
 }
 
 static GdkEventMask
-_ctk_widget_get_controllers_evmask (GtkWidget *widget)
+_ctk_widget_get_controllers_evmask (CtkWidget *widget)
 {
   EventControllerData *data;
   GdkEventMask evmask = 0;
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
   GList *l;
 
   priv = widget->priv;
@@ -7406,13 +7406,13 @@ _ctk_widget_get_controllers_evmask (GtkWidget *widget)
 }
 
 static gboolean
-_ctk_widget_run_controllers (GtkWidget           *widget,
+_ctk_widget_run_controllers (CtkWidget           *widget,
                              const GdkEvent      *event,
-                             GtkPropagationPhase  phase)
+                             CtkPropagationPhase  phase)
 {
   EventControllerData *data;
   gboolean handled = FALSE;
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
   GList *l;
 
   priv = widget->priv;
@@ -7435,7 +7435,7 @@ _ctk_widget_run_controllers (GtkWidget           *widget,
         }
       else
         {
-          GtkPropagationPhase controller_phase;
+          CtkPropagationPhase controller_phase;
 
           controller_phase = ctk_event_controller_get_propagation_phase (data->controller);
 
@@ -7452,8 +7452,8 @@ _ctk_widget_run_controllers (GtkWidget           *widget,
 }
 
 static void
-cancel_event_sequence_on_hierarchy (GtkWidget        *widget,
-                                    GtkWidget        *event_widget,
+cancel_event_sequence_on_hierarchy (CtkWidget        *widget,
+                                    CtkWidget        *event_widget,
                                     GdkEventSequence *sequence)
 {
   gboolean cancel = TRUE;
@@ -7474,11 +7474,11 @@ cancel_event_sequence_on_hierarchy (GtkWidget        *widget,
 }
 
 gboolean
-_ctk_widget_captured_event (GtkWidget *widget,
+_ctk_widget_captured_event (CtkWidget *widget,
                             GdkEvent  *event)
 {
   gboolean return_val = FALSE;
-  GtkCapturedEventHandler handler;
+  CtkCapturedEventHandler handler;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), TRUE);
   g_return_val_if_fail (WIDGET_REALIZED_FOR_EVENT (widget, event), TRUE);
@@ -7523,7 +7523,7 @@ _ctk_widget_captured_event (GtkWidget *widget,
 
 /* Returns TRUE if a translation should be done */
 static gboolean
-_ctk_widget_get_translation_to_window (GtkWidget      *widget,
+_ctk_widget_get_translation_to_window (CtkWidget      *widget,
 				       GdkWindow      *window,
 				       int            *x,
 				       int            *y)
@@ -7574,7 +7574,7 @@ _ctk_widget_get_translation_to_window (GtkWidget      *widget,
  * modification will be applied.
  *
  * This is the inverse to the transformation GTK applies when
- * preparing an expose event to be emitted with the #GtkWidget::draw
+ * preparing an expose event to be emitted with the #CtkWidget::draw
  * signal. It is intended to help porting multiwindow widgets from
  * GTK+ 2 to the rendering architecture of GTK+ 3.
  *
@@ -7582,7 +7582,7 @@ _ctk_widget_get_translation_to_window (GtkWidget      *widget,
  **/
 void
 ctk_cairo_transform_to_window (cairo_t   *cr,
-                               GtkWidget *widget,
+                               CtkWidget *widget,
                                GdkWindow *window)
 {
   int x, y;
@@ -7597,7 +7597,7 @@ ctk_cairo_transform_to_window (cairo_t   *cr,
 
 /**
  * ctk_widget_send_expose:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @event: a expose #GdkEvent
  *
  * Very rarely-used function. This function is used to emit
@@ -7615,12 +7615,12 @@ ctk_cairo_transform_to_window (cairo_t   *cr,
  *   the event was handled)
  *
  * Deprecated: 3.22: Application and widget code should not handle
- *   expose events directly; invalidation should use the #GtkWidget
- *   API, and drawing should only happen inside #GtkWidget::draw
+ *   expose events directly; invalidation should use the #CtkWidget
+ *   API, and drawing should only happen inside #CtkWidget::draw
  *   implementations
  */
 gint
-ctk_widget_send_expose (GtkWidget *widget,
+ctk_widget_send_expose (CtkWidget *widget,
 			GdkEvent  *event)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), TRUE);
@@ -7674,7 +7674,7 @@ event_window_is_still_viewable (GdkEvent *event)
 }
 
 static gint
-ctk_widget_event_internal (GtkWidget *widget,
+ctk_widget_event_internal (CtkWidget *widget,
 			   GdkEvent  *event)
 {
   gboolean return_val = FALSE, handled;
@@ -7821,7 +7821,7 @@ ctk_widget_event_internal (GtkWidget *widget,
 
 /**
  * ctk_widget_activate:
- * @widget: a #GtkWidget that’s activatable
+ * @widget: a #CtkWidget that’s activatable
  *
  * For widgets that can be “activated” (buttons, menu items, etc.)
  * this function activates them. Activation is what happens when you
@@ -7831,7 +7831,7 @@ ctk_widget_event_internal (GtkWidget *widget,
  * Returns: %TRUE if the widget was activatable
  **/
 gboolean
-ctk_widget_activate (GtkWidget *widget)
+ctk_widget_activate (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -7847,10 +7847,10 @@ ctk_widget_activate (GtkWidget *widget)
 }
 
 static void
-ctk_widget_reparent_subwindows (GtkWidget *widget,
+ctk_widget_reparent_subwindows (CtkWidget *widget,
 				GdkWindow *new_window)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
 
   if (!_ctk_widget_get_has_window (widget))
     {
@@ -7864,7 +7864,7 @@ ctk_widget_reparent_subwindows (GtkWidget *widget,
 
 	  gdk_window_get_user_data (window, &child);
 	  while (child && child != widget)
-	    child = ((GtkWidget*) child)->priv->parent;
+	    child = ((CtkWidget*) child)->priv->parent;
 
 	  if (child)
 	    gdk_window_reparent (window, new_window, 0, 0);
@@ -7902,10 +7902,10 @@ ctk_widget_reparent_subwindows (GtkWidget *widget,
 }
 
 static void
-ctk_widget_reparent_fixup_child (GtkWidget *widget,
+ctk_widget_reparent_fixup_child (CtkWidget *widget,
 				 gpointer   client_data)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
 
   g_assert (client_data != NULL);
 
@@ -7926,19 +7926,19 @@ ctk_widget_reparent_fixup_child (GtkWidget *widget,
 
 /**
  * ctk_widget_reparent:
- * @widget: a #GtkWidget
- * @new_parent: a #GtkContainer to move the widget into
+ * @widget: a #CtkWidget
+ * @new_parent: a #CtkContainer to move the widget into
  *
- * Moves a widget from one #GtkContainer to another, handling reference
+ * Moves a widget from one #CtkContainer to another, handling reference
  * count issues to avoid destroying the widget.
  *
  * Deprecated: 3.14: Use ctk_container_remove() and ctk_container_add().
  **/
 void
-ctk_widget_reparent (GtkWidget *widget,
-		     GtkWidget *new_parent)
+ctk_widget_reparent (CtkWidget *widget,
+		     CtkWidget *new_parent)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (CTK_IS_CONTAINER (new_parent));
@@ -7974,7 +7974,7 @@ ctk_widget_reparent (GtkWidget *widget,
 
 /**
  * ctk_widget_intersect:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @area: a rectangle
  * @intersection: (out caller-allocates) (optional): rectangle to store
  *   intersection of @widget and @area
@@ -7987,11 +7987,11 @@ ctk_widget_reparent (GtkWidget *widget,
  * Returns: %TRUE if there was an intersection
  **/
 gboolean
-ctk_widget_intersect (GtkWidget	         *widget,
+ctk_widget_intersect (CtkWidget	         *widget,
 		      const GdkRectangle *area,
 		      GdkRectangle       *intersection)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
   GdkRectangle *dest;
   GdkRectangle tmp;
   gint return_val;
@@ -8019,7 +8019,7 @@ ctk_widget_intersect (GtkWidget	         *widget,
 
 /**
  * ctk_widget_region_intersect:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @region: a #cairo_region_t, in the same coordinate system as
  *          @widget->allocation. That is, relative to @widget->window
  *          for widgets which return %FALSE from ctk_widget_get_has_window();
@@ -8036,7 +8036,7 @@ ctk_widget_intersect (GtkWidget	         *widget,
  *     cairo_region_intersect_rectangle() to get the same behavior.
  */
 cairo_region_t *
-ctk_widget_region_intersect (GtkWidget            *widget,
+ctk_widget_region_intersect (CtkWidget            *widget,
 			     const cairo_region_t *region)
 {
   GdkRectangle rect;
@@ -8056,15 +8056,15 @@ ctk_widget_region_intersect (GtkWidget            *widget,
 
 /**
  * _ctk_widget_grab_notify:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @was_grabbed: whether a grab is now in effect
  *
- * Emits the #GtkWidget::grab-notify signal on @widget.
+ * Emits the #CtkWidget::grab-notify signal on @widget.
  *
  * Since: 2.6
  **/
 void
-_ctk_widget_grab_notify (GtkWidget *widget,
+_ctk_widget_grab_notify (CtkWidget *widget,
 			 gboolean   was_grabbed)
 {
   g_signal_emit (widget, widget_signals[GRAB_NOTIFY], 0, was_grabbed);
@@ -8072,11 +8072,11 @@ _ctk_widget_grab_notify (GtkWidget *widget,
 
 /**
  * ctk_widget_grab_focus:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
- * Causes @widget to have the keyboard focus for the #GtkWindow it's
- * inside. @widget must be a focusable widget, such as a #GtkEntry;
- * something like #GtkFrame won’t work.
+ * Causes @widget to have the keyboard focus for the #CtkWindow it's
+ * inside. @widget must be a focusable widget, such as a #CtkEntry;
+ * something like #CtkFrame won’t work.
  *
  * More precisely, it must have the %CTK_CAN_FOCUS flag set. Use
  * ctk_widget_set_can_focus() to modify that flag.
@@ -8086,7 +8086,7 @@ _ctk_widget_grab_notify (GtkWidget *widget,
  * will likely fail and cause critical warnings.
  **/
 void
-ctk_widget_grab_focus (GtkWidget *widget)
+ctk_widget_grab_focus (CtkWidget *widget)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -8100,12 +8100,12 @@ ctk_widget_grab_focus (GtkWidget *widget)
 }
 
 static void
-reset_focus_recurse (GtkWidget *widget,
+reset_focus_recurse (CtkWidget *widget,
 		     gpointer   data)
 {
   if (CTK_IS_CONTAINER (widget))
     {
-      GtkContainer *container;
+      CtkContainer *container;
 
       container = CTK_CONTAINER (widget);
       ctk_container_set_focus_child (container, NULL);
@@ -8117,12 +8117,12 @@ reset_focus_recurse (GtkWidget *widget,
 }
 
 static void
-ctk_widget_real_grab_focus (GtkWidget *focus_widget)
+ctk_widget_real_grab_focus (CtkWidget *focus_widget)
 {
   if (ctk_widget_get_can_focus (focus_widget))
     {
-      GtkWidget *toplevel;
-      GtkWidget *widget;
+      CtkWidget *toplevel;
+      CtkWidget *widget;
 
       /* clear the current focus setting, break if the current widget
        * is the focus widget's parent, since containers above that will
@@ -8137,7 +8137,7 @@ ctk_widget_real_grab_focus (GtkWidget *focus_widget)
 	    {
 	      /* We call _ctk_window_internal_set_focus() here so that the
 	       * toplevel window can request the focus if necessary.
-	       * This is needed when the toplevel is a GtkPlug
+	       * This is needed when the toplevel is a CtkPlug
 	       */
 	      if (!ctk_widget_has_focus (widget))
 		_ctk_window_internal_set_focus (CTK_WINDOW (toplevel), focus_widget);
@@ -8147,7 +8147,7 @@ ctk_widget_real_grab_focus (GtkWidget *focus_widget)
 
 	  if (widget)
 	    {
-	      GtkWidget *common_ancestor = ctk_widget_common_ancestor (widget, focus_widget);
+	      CtkWidget *common_ancestor = ctk_widget_common_ancestor (widget, focus_widget);
 
 	      if (widget != common_ancestor)
 		{
@@ -8187,11 +8187,11 @@ ctk_widget_real_grab_focus (GtkWidget *focus_widget)
 }
 
 static gboolean
-ctk_widget_real_query_tooltip (GtkWidget  *widget,
+ctk_widget_real_query_tooltip (CtkWidget  *widget,
 			       gint        x,
 			       gint        y,
 			       gboolean    keyboard_tip,
-			       GtkTooltip *tooltip)
+			       CtkTooltip *tooltip)
 {
   gchar *tooltip_markup;
   gboolean has_tooltip;
@@ -8209,11 +8209,11 @@ ctk_widget_real_query_tooltip (GtkWidget  *widget,
 }
 
 gboolean
-ctk_widget_query_tooltip (GtkWidget  *widget,
+ctk_widget_query_tooltip (CtkWidget  *widget,
                           gint        x,
                           gint        y,
                           gboolean    keyboard_mode,
-                          GtkTooltip *tooltip)
+                          CtkTooltip *tooltip)
 {
   gboolean retval = FALSE;
 
@@ -8229,21 +8229,21 @@ ctk_widget_query_tooltip (GtkWidget  *widget,
 }
 
 static void
-ctk_widget_real_state_flags_changed (GtkWidget     *widget,
-                                     GtkStateFlags  old_state)
+ctk_widget_real_state_flags_changed (CtkWidget     *widget,
+                                     CtkStateFlags  old_state)
 {
 }
 
 static void
-ctk_widget_real_style_updated (GtkWidget *widget)
+ctk_widget_real_style_updated (CtkWidget *widget)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
 
   ctk_widget_update_alpha (widget);
 
   if (widget->priv->context)
     {
-      GtkCssStyleChange *change = ctk_style_context_get_change (widget->priv->context);
+      CtkCssStyleChange *change = ctk_style_context_get_change (widget->priv->context);
       gboolean has_text = ctk_widget_peek_pango_context (widget) != NULL;
 
       if (change == NULL ||
@@ -8287,8 +8287,8 @@ ctk_widget_real_style_updated (GtkWidget *widget)
 }
 
 static gboolean
-ctk_widget_real_show_help (GtkWidget        *widget,
-                           GtkWidgetHelpType help_type)
+ctk_widget_real_show_help (CtkWidget        *widget,
+                           CtkWidgetHelpType help_type)
 {
   if (help_type == CTK_WIDGET_HELP_TOOLTIP)
     {
@@ -8301,8 +8301,8 @@ ctk_widget_real_show_help (GtkWidget        *widget,
 }
 
 static gboolean
-ctk_widget_real_focus (GtkWidget         *widget,
-                       GtkDirectionType   direction)
+ctk_widget_real_focus (CtkWidget         *widget,
+                       CtkDirectionType   direction)
 {
   if (!ctk_widget_get_can_focus (widget))
     return FALSE;
@@ -8317,10 +8317,10 @@ ctk_widget_real_focus (GtkWidget         *widget,
 }
 
 static void
-ctk_widget_real_move_focus (GtkWidget         *widget,
-                            GtkDirectionType   direction)
+ctk_widget_real_move_focus (CtkWidget         *widget,
+                            CtkDirectionType   direction)
 {
-  GtkWidget *toplevel = _ctk_widget_get_toplevel (widget);
+  CtkWidget *toplevel = _ctk_widget_get_toplevel (widget);
 
   if (widget != toplevel && CTK_IS_WINDOW (toplevel))
     {
@@ -8330,8 +8330,8 @@ ctk_widget_real_move_focus (GtkWidget         *widget,
 }
 
 static gboolean
-ctk_widget_real_keynav_failed (GtkWidget        *widget,
-                               GtkDirectionType  direction)
+ctk_widget_real_keynav_failed (CtkWidget        *widget,
+                               CtkDirectionType  direction)
 {
   switch (direction)
     {
@@ -8353,7 +8353,7 @@ ctk_widget_real_keynav_failed (GtkWidget        *widget,
 
 /**
  * ctk_widget_set_can_focus:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @can_focus: whether or not @widget can own the input focus.
  *
  * Specifies whether @widget can own the input focus. See
@@ -8363,7 +8363,7 @@ ctk_widget_real_keynav_failed (GtkWidget        *widget,
  * Since: 2.18
  **/
 void
-ctk_widget_set_can_focus (GtkWidget *widget,
+ctk_widget_set_can_focus (CtkWidget *widget,
                           gboolean   can_focus)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -8379,7 +8379,7 @@ ctk_widget_set_can_focus (GtkWidget *widget,
 
 /**
  * ctk_widget_get_can_focus:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Determines whether @widget can own the input focus. See
  * ctk_widget_set_can_focus().
@@ -8389,7 +8389,7 @@ ctk_widget_set_can_focus (GtkWidget *widget,
  * Since: 2.18
  **/
 gboolean
-ctk_widget_get_can_focus (GtkWidget *widget)
+ctk_widget_get_can_focus (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -8398,7 +8398,7 @@ ctk_widget_get_can_focus (GtkWidget *widget)
 
 /**
  * ctk_widget_has_focus:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Determines if the widget has the global input focus. See
  * ctk_widget_is_focus() for the difference between having the global
@@ -8409,7 +8409,7 @@ ctk_widget_get_can_focus (GtkWidget *widget)
  * Since: 2.18
  **/
 gboolean
-ctk_widget_has_focus (GtkWidget *widget)
+ctk_widget_has_focus (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -8418,7 +8418,7 @@ ctk_widget_has_focus (GtkWidget *widget)
 
 /**
  * ctk_widget_has_visible_focus:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Determines if the widget should show a visible indication that
  * it has the global input focus. This is a convenience function for
@@ -8435,7 +8435,7 @@ ctk_widget_has_focus (GtkWidget *widget)
  * Since: 3.2
  */
 gboolean
-ctk_widget_has_visible_focus (GtkWidget *widget)
+ctk_widget_has_visible_focus (CtkWidget *widget)
 {
   gboolean draw_focus;
 
@@ -8443,7 +8443,7 @@ ctk_widget_has_visible_focus (GtkWidget *widget)
 
   if (widget->priv->has_focus)
     {
-      GtkWidget *toplevel;
+      CtkWidget *toplevel;
 
       toplevel = _ctk_widget_get_toplevel (widget);
 
@@ -8460,19 +8460,19 @@ ctk_widget_has_visible_focus (GtkWidget *widget)
 
 /**
  * ctk_widget_is_focus:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Determines if the widget is the focus widget within its
- * toplevel. (This does not mean that the #GtkWidget:has-focus property is
- * necessarily set; #GtkWidget:has-focus will only be set if the
+ * toplevel. (This does not mean that the #CtkWidget:has-focus property is
+ * necessarily set; #CtkWidget:has-focus will only be set if the
  * toplevel widget additionally has the global input focus.)
  *
  * Returns: %TRUE if the widget is the focus widget.
  **/
 gboolean
-ctk_widget_is_focus (GtkWidget *widget)
+ctk_widget_is_focus (CtkWidget *widget)
 {
-  GtkWidget *toplevel;
+  CtkWidget *toplevel;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -8486,7 +8486,7 @@ ctk_widget_is_focus (GtkWidget *widget)
 
 /**
  * ctk_widget_set_focus_on_click:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @focus_on_click: whether the widget should grab focus when clicked with the mouse
  *
  * Sets whether the widget should grab focus when it is clicked with the mouse.
@@ -8497,10 +8497,10 @@ ctk_widget_is_focus (GtkWidget *widget)
  * Since: 3.20
  **/
 void
-ctk_widget_set_focus_on_click (GtkWidget *widget,
+ctk_widget_set_focus_on_click (CtkWidget *widget,
 			       gboolean   focus_on_click)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -8518,7 +8518,7 @@ ctk_widget_set_focus_on_click (GtkWidget *widget,
 
 /**
  * ctk_widget_get_focus_on_click:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Returns whether the widget should grab focus when it is clicked with the mouse.
  * See ctk_widget_set_focus_on_click().
@@ -8529,7 +8529,7 @@ ctk_widget_set_focus_on_click (GtkWidget *widget,
  * Since: 3.20
  **/
 gboolean
-ctk_widget_get_focus_on_click (GtkWidget *widget)
+ctk_widget_get_focus_on_click (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -8539,7 +8539,7 @@ ctk_widget_get_focus_on_click (GtkWidget *widget)
 
 /**
  * ctk_widget_set_can_default:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @can_default: whether or not @widget can be a default widget.
  *
  * Specifies whether @widget can be a default widget. See
@@ -8549,7 +8549,7 @@ ctk_widget_get_focus_on_click (GtkWidget *widget)
  * Since: 2.18
  **/
 void
-ctk_widget_set_can_default (GtkWidget *widget,
+ctk_widget_set_can_default (CtkWidget *widget,
                             gboolean   can_default)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -8565,7 +8565,7 @@ ctk_widget_set_can_default (GtkWidget *widget,
 
 /**
  * ctk_widget_get_can_default:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Determines whether @widget can be a default widget. See
  * ctk_widget_set_can_default().
@@ -8575,7 +8575,7 @@ ctk_widget_set_can_default (GtkWidget *widget,
  * Since: 2.18
  **/
 gboolean
-ctk_widget_get_can_default (GtkWidget *widget)
+ctk_widget_get_can_default (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -8584,7 +8584,7 @@ ctk_widget_get_can_default (GtkWidget *widget)
 
 /**
  * ctk_widget_has_default:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Determines whether @widget is the current default widget within its
  * toplevel. See ctk_widget_set_can_default().
@@ -8595,7 +8595,7 @@ ctk_widget_get_can_default (GtkWidget *widget)
  * Since: 2.18
  */
 gboolean
-ctk_widget_has_default (GtkWidget *widget)
+ctk_widget_has_default (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -8603,10 +8603,10 @@ ctk_widget_has_default (GtkWidget *widget)
 }
 
 void
-_ctk_widget_set_has_default (GtkWidget *widget,
+_ctk_widget_set_has_default (CtkWidget *widget,
                              gboolean   has_default)
 {
-  GtkStyleContext *context;
+  CtkStyleContext *context;
 
   widget->priv->has_default = has_default;
 
@@ -8620,7 +8620,7 @@ _ctk_widget_set_has_default (GtkWidget *widget,
 
 /**
  * ctk_widget_grab_default:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Causes @widget to become the default widget. @widget must be able to be
  * a default widget; typically you would ensure this yourself
@@ -8628,14 +8628,14 @@ _ctk_widget_set_has_default (GtkWidget *widget,
  * The default widget is activated when
  * the user presses Enter in a window. Default widgets must be
  * activatable, that is, ctk_widget_activate() should affect them. Note
- * that #GtkEntry widgets require the “activates-default” property
+ * that #CtkEntry widgets require the “activates-default” property
  * set to %TRUE before they activate the default widget when Enter
- * is pressed and the #GtkEntry is focused.
+ * is pressed and the #CtkEntry is focused.
  **/
 void
-ctk_widget_grab_default (GtkWidget *widget)
+ctk_widget_grab_default (CtkWidget *widget)
 {
-  GtkWidget *window;
+  CtkWidget *window;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (ctk_widget_get_can_default (widget));
@@ -8645,12 +8645,12 @@ ctk_widget_grab_default (GtkWidget *widget)
   if (window && _ctk_widget_is_toplevel (window))
     ctk_window_set_default (CTK_WINDOW (window), widget);
   else
-    g_warning (G_STRLOC ": widget not within a GtkWindow");
+    g_warning (G_STRLOC ": widget not within a CtkWindow");
 }
 
 /**
  * ctk_widget_set_receives_default:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @receives_default: whether or not @widget can be a default widget.
  *
  * Specifies whether @widget will be treated as the default widget
@@ -8663,7 +8663,7 @@ ctk_widget_grab_default (GtkWidget *widget)
  * Since: 2.18
  **/
 void
-ctk_widget_set_receives_default (GtkWidget *widget,
+ctk_widget_set_receives_default (CtkWidget *widget,
                                  gboolean   receives_default)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -8678,7 +8678,7 @@ ctk_widget_set_receives_default (GtkWidget *widget,
 
 /**
  * ctk_widget_get_receives_default:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Determines whether @widget is always treated as the default widget
  * within its toplevel when it has the focus, even if another widget
@@ -8692,7 +8692,7 @@ ctk_widget_set_receives_default (GtkWidget *widget,
  * Since: 2.18
  **/
 gboolean
-ctk_widget_get_receives_default (GtkWidget *widget)
+ctk_widget_get_receives_default (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -8701,7 +8701,7 @@ ctk_widget_get_receives_default (GtkWidget *widget)
 
 /**
  * ctk_widget_has_grab:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Determines whether the widget is currently grabbing events, so it
  * is the only widget receiving input events (keyboard and mouse).
@@ -8713,7 +8713,7 @@ ctk_widget_get_receives_default (GtkWidget *widget)
  * Since: 2.18
  **/
 gboolean
-ctk_widget_has_grab (GtkWidget *widget)
+ctk_widget_has_grab (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -8721,7 +8721,7 @@ ctk_widget_has_grab (GtkWidget *widget)
 }
 
 void
-_ctk_widget_set_has_grab (GtkWidget *widget,
+_ctk_widget_set_has_grab (CtkWidget *widget,
                           gboolean   has_grab)
 {
   widget->priv->has_grab = has_grab;
@@ -8729,26 +8729,26 @@ _ctk_widget_set_has_grab (GtkWidget *widget,
 
 /**
  * ctk_widget_device_is_shadowed:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @device: a #GdkDevice
  *
  * Returns %TRUE if @device has been shadowed by a GTK+
  * device grab on another widget, so it would stop sending
  * events to @widget. This may be used in the
- * #GtkWidget::grab-notify signal to check for specific
+ * #CtkWidget::grab-notify signal to check for specific
  * devices. See ctk_device_grab_add().
  *
  * Returns: %TRUE if there is an ongoing grab on @device
- *          by another #GtkWidget than @widget.
+ *          by another #CtkWidget than @widget.
  *
  * Since: 3.0
  **/
 gboolean
-ctk_widget_device_is_shadowed (GtkWidget *widget,
+ctk_widget_device_is_shadowed (CtkWidget *widget,
                                GdkDevice *device)
 {
-  GtkWindowGroup *group;
-  GtkWidget *grab_widget, *toplevel;
+  CtkWindowGroup *group;
+  CtkWidget *grab_widget, *toplevel;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
   g_return_val_if_fail (GDK_IS_DEVICE (device), FALSE);
@@ -8781,13 +8781,13 @@ ctk_widget_device_is_shadowed (GtkWidget *widget,
 
 /**
  * ctk_widget_set_name:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @name: name for the widget
  *
  * Widgets can be named, which allows you to refer to them from a
  * CSS file. You can apply a style to widgets with a particular name
  * in the CSS file. See the documentation for the CSS syntax (on the
- * same page as the docs for #GtkStyleContext).
+ * same page as the docs for #CtkStyleContext).
  *
  * Note that the CSS syntax has certain special characters to delimit
  * and represent elements in a selector (period, #, >, *...), so using
@@ -8795,10 +8795,10 @@ ctk_widget_device_is_shadowed (GtkWidget *widget,
  * of alphanumeric symbols, dashes and underscores will suffice.
  */
 void
-ctk_widget_set_name (GtkWidget	 *widget,
+ctk_widget_set_name (CtkWidget	 *widget,
 		     const gchar *name)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
   gchar *new_name;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -8819,7 +8819,7 @@ ctk_widget_set_name (GtkWidget	 *widget,
 
 /**
  * ctk_widget_get_name:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Retrieves the name of a widget. See ctk_widget_set_name() for the
  * significance of widget names.
@@ -8828,9 +8828,9 @@ ctk_widget_set_name (GtkWidget	 *widget,
  * should not be modified or freed
  **/
 const gchar*
-ctk_widget_get_name (GtkWidget *widget)
+ctk_widget_get_name (CtkWidget *widget)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
@@ -8842,11 +8842,11 @@ ctk_widget_get_name (GtkWidget *widget)
 }
 
 static void
-ctk_widget_update_state_flags (GtkWidget     *widget,
-                               GtkStateFlags  flags_to_set,
-                               GtkStateFlags  flags_to_unset)
+ctk_widget_update_state_flags (CtkWidget     *widget,
+                               CtkStateFlags  flags_to_set,
+                               CtkStateFlags  flags_to_unset)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
 
   priv = widget->priv;
 
@@ -8863,7 +8863,7 @@ ctk_widget_update_state_flags (GtkWidget     *widget,
 
   if (flags_to_set != 0 || flags_to_unset != 0)
     {
-      GtkStateData data;
+      CtkStateData data;
 
       data.old_scale_factor = ctk_widget_get_scale_factor (widget);
       data.flags_to_set = flags_to_set;
@@ -8875,7 +8875,7 @@ ctk_widget_update_state_flags (GtkWidget     *widget,
 
 /**
  * ctk_widget_set_state_flags:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @flags: State flags to turn on
  * @clear: Whether to clear state before turning on @flags
  *
@@ -8888,16 +8888,16 @@ ctk_widget_update_state_flags (GtkWidget     *widget,
  *
  * It is worth mentioning that any other state than %CTK_STATE_FLAG_INSENSITIVE,
  * will be propagated down to all non-internal children if @widget is a
- * #GtkContainer, while %CTK_STATE_FLAG_INSENSITIVE itself will be propagated
- * down to all #GtkContainer children by different means than turning on the
+ * #CtkContainer, while %CTK_STATE_FLAG_INSENSITIVE itself will be propagated
+ * down to all #CtkContainer children by different means than turning on the
  * state flag down the hierarchy, both ctk_widget_get_state_flags() and
  * ctk_widget_is_sensitive() will make use of these.
  *
  * Since: 3.0
  **/
 void
-ctk_widget_set_state_flags (GtkWidget     *widget,
-                            GtkStateFlags  flags,
+ctk_widget_set_state_flags (CtkWidget     *widget,
+                            CtkStateFlags  flags,
                             gboolean       clear)
 {
 #define ALLOWED_FLAGS (~(CTK_STATE_FLAG_DIR_LTR | CTK_STATE_FLAG_DIR_RTL))
@@ -8919,7 +8919,7 @@ ctk_widget_set_state_flags (GtkWidget     *widget,
 
 /**
  * ctk_widget_unset_state_flags:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @flags: State flags to turn off
  *
  * This function is for use in widget implementations. Turns off flag
@@ -8929,8 +8929,8 @@ ctk_widget_set_state_flags (GtkWidget     *widget,
  * Since: 3.0
  **/
 void
-ctk_widget_unset_state_flags (GtkWidget     *widget,
-                              GtkStateFlags  flags)
+ctk_widget_unset_state_flags (CtkWidget     *widget,
+                              CtkStateFlags  flags)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (flags < (1 << CTK_STATE_FLAGS_BITS));
@@ -8943,7 +8943,7 @@ ctk_widget_unset_state_flags (GtkWidget     *widget,
 
 /**
  * ctk_widget_get_state_flags:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Returns the widget state as a flag set. It is worth mentioning
  * that the effective %CTK_STATE_FLAG_INSENSITIVE state will be
@@ -8951,15 +8951,15 @@ ctk_widget_unset_state_flags (GtkWidget     *widget,
  * @widget itself is sensitive.
  *
  * Also note that if you are looking for a way to obtain the
- * #GtkStateFlags to pass to a #GtkStyleContext method, you
+ * #CtkStateFlags to pass to a #CtkStyleContext method, you
  * should look at ctk_style_context_get_state().
  *
  * Returns: The state flags for widget
  *
  * Since: 3.0
  **/
-GtkStateFlags
-ctk_widget_get_state_flags (GtkWidget *widget)
+CtkStateFlags
+ctk_widget_get_state_flags (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
 
@@ -8968,7 +8968,7 @@ ctk_widget_get_state_flags (GtkWidget *widget)
 
 /**
  * ctk_widget_set_state:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @state: new state for @widget
  *
  * This function is for use in widget implementations. Sets the state
@@ -8978,10 +8978,10 @@ ctk_widget_get_state_flags (GtkWidget *widget)
  * Deprecated: 3.0: Use ctk_widget_set_state_flags() instead.
  **/
 void
-ctk_widget_set_state (GtkWidget           *widget,
-		      GtkStateType         state)
+ctk_widget_set_state (CtkWidget           *widget,
+		      CtkStateType         state)
 {
-  GtkStateFlags flags;
+  CtkStateFlags flags;
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   if (state == ctk_widget_get_state (widget))
@@ -9022,7 +9022,7 @@ ctk_widget_set_state (GtkWidget           *widget,
 
 /**
  * ctk_widget_get_state:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Returns the widget’s state. See ctk_widget_set_state().
  *
@@ -9032,10 +9032,10 @@ ctk_widget_set_state (GtkWidget           *widget,
  *
  * Deprecated: 3.0: Use ctk_widget_get_state_flags() instead.
  */
-GtkStateType
-ctk_widget_get_state (GtkWidget *widget)
+CtkStateType
+ctk_widget_get_state (CtkWidget *widget)
 {
-  GtkStateFlags flags;
+  CtkStateFlags flags;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), CTK_STATE_NORMAL);
 
@@ -9055,7 +9055,7 @@ ctk_widget_get_state (GtkWidget *widget)
 
 /**
  * ctk_widget_set_visible:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @visible: whether the widget should be shown or not
  *
  * Sets the visibility state of @widget. Note that setting this to
@@ -9069,7 +9069,7 @@ ctk_widget_get_state (GtkWidget *widget)
  * Since: 2.18
  **/
 void
-ctk_widget_set_visible (GtkWidget *widget,
+ctk_widget_set_visible (CtkWidget *widget,
                         gboolean   visible)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -9081,10 +9081,10 @@ ctk_widget_set_visible (GtkWidget *widget,
 }
 
 void
-_ctk_widget_set_visible_flag (GtkWidget *widget,
+_ctk_widget_set_visible_flag (CtkWidget *widget,
                               gboolean   visible)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
 
   priv->visible = visible;
 
@@ -9102,7 +9102,7 @@ _ctk_widget_set_visible_flag (GtkWidget *widget,
 
 /**
  * ctk_widget_get_visible:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Determines whether the widget is visible. If you want to
  * take into account whether the widget’s parent is also marked as
@@ -9117,7 +9117,7 @@ _ctk_widget_set_visible_flag (GtkWidget *widget,
  * Since: 2.18
  **/
 gboolean
-ctk_widget_get_visible (GtkWidget *widget)
+ctk_widget_get_visible (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -9126,7 +9126,7 @@ ctk_widget_get_visible (GtkWidget *widget)
 
 /**
  * ctk_widget_is_visible:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Determines whether the widget and all its parents are marked as
  * visible.
@@ -9140,13 +9140,13 @@ ctk_widget_get_visible (GtkWidget *widget)
  * Since: 3.8
  **/
 gboolean
-ctk_widget_is_visible (GtkWidget *widget)
+ctk_widget_is_visible (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   while (widget)
     {
-      GtkWidgetPrivate *priv = widget->priv;
+      CtkWidgetPrivate *priv = widget->priv;
 
       if (!priv->visible)
         return FALSE;
@@ -9159,7 +9159,7 @@ ctk_widget_is_visible (GtkWidget *widget)
 
 /**
  * ctk_widget_set_has_window:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @has_window: whether or not @widget has a window.
  *
  * Specifies whether @widget has a #GdkWindow of its own. Note that
@@ -9167,7 +9167,7 @@ ctk_widget_is_visible (GtkWidget *widget)
  * (ctk_widget_get_window() never returns a %NULL window when a widget
  * is realized), but for many of them it’s actually the #GdkWindow of
  * one of its parent widgets. Widgets that do not create a %window for
- * themselves in #GtkWidget::realize must announce this by
+ * themselves in #CtkWidget::realize must announce this by
  * calling this function with @has_window = %FALSE.
  *
  * This function should only be called by widget implementations,
@@ -9176,7 +9176,7 @@ ctk_widget_is_visible (GtkWidget *widget)
  * Since: 2.18
  **/
 void
-ctk_widget_set_has_window (GtkWidget *widget,
+ctk_widget_set_has_window (CtkWidget *widget,
                            gboolean   has_window)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -9186,7 +9186,7 @@ ctk_widget_set_has_window (GtkWidget *widget,
 
 /**
  * ctk_widget_get_has_window:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Determines whether @widget has a #GdkWindow of its own. See
  * ctk_widget_set_has_window().
@@ -9196,7 +9196,7 @@ ctk_widget_set_has_window (GtkWidget *widget,
  * Since: 2.18
  **/
 gboolean
-ctk_widget_get_has_window (GtkWidget *widget)
+ctk_widget_get_has_window (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -9205,12 +9205,12 @@ ctk_widget_get_has_window (GtkWidget *widget)
 
 /**
  * ctk_widget_is_toplevel:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Determines whether @widget is a toplevel widget.
  *
- * Currently only #GtkWindow and #GtkInvisible (and out-of-process
- * #GtkPlugs) are toplevel widgets. Toplevel widgets have no parent
+ * Currently only #CtkWindow and #CtkInvisible (and out-of-process
+ * #CtkPlugs) are toplevel widgets. Toplevel widgets have no parent
  * widget.
  *
  * Returns: %TRUE if @widget is a toplevel, %FALSE otherwise
@@ -9218,7 +9218,7 @@ ctk_widget_get_has_window (GtkWidget *widget)
  * Since: 2.18
  **/
 gboolean
-ctk_widget_is_toplevel (GtkWidget *widget)
+ctk_widget_is_toplevel (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -9226,7 +9226,7 @@ ctk_widget_is_toplevel (GtkWidget *widget)
 }
 
 void
-_ctk_widget_set_is_toplevel (GtkWidget *widget,
+_ctk_widget_set_is_toplevel (CtkWidget *widget,
                              gboolean   is_toplevel)
 {
   widget->priv->toplevel = is_toplevel;
@@ -9234,7 +9234,7 @@ _ctk_widget_set_is_toplevel (GtkWidget *widget,
 
 /**
  * ctk_widget_is_drawable:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Determines whether @widget can be drawn to. A widget can be drawn
  * to if it is mapped and visible.
@@ -9244,7 +9244,7 @@ _ctk_widget_set_is_toplevel (GtkWidget *widget,
  * Since: 2.18
  **/
 gboolean
-ctk_widget_is_drawable (GtkWidget *widget)
+ctk_widget_is_drawable (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -9254,7 +9254,7 @@ ctk_widget_is_drawable (GtkWidget *widget)
 
 /**
  * ctk_widget_get_realized:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Determines whether @widget is realized.
  *
@@ -9263,7 +9263,7 @@ ctk_widget_is_drawable (GtkWidget *widget)
  * Since: 2.20
  **/
 gboolean
-ctk_widget_get_realized (GtkWidget *widget)
+ctk_widget_get_realized (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -9272,7 +9272,7 @@ ctk_widget_get_realized (GtkWidget *widget)
 
 /**
  * ctk_widget_set_realized:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @realized: %TRUE to mark the widget as realized
  *
  * Marks the widget as being realized. This function must only be 
@@ -9285,7 +9285,7 @@ ctk_widget_get_realized (GtkWidget *widget)
  * Since: 2.20
  */
 void
-ctk_widget_set_realized (GtkWidget *widget,
+ctk_widget_set_realized (CtkWidget *widget,
                          gboolean   realized)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -9295,7 +9295,7 @@ ctk_widget_set_realized (GtkWidget *widget,
 
 /**
  * ctk_widget_get_mapped:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Whether the widget is mapped.
  *
@@ -9304,7 +9304,7 @@ ctk_widget_set_realized (GtkWidget *widget,
  * Since: 2.20
  */
 gboolean
-ctk_widget_get_mapped (GtkWidget *widget)
+ctk_widget_get_mapped (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -9313,7 +9313,7 @@ ctk_widget_get_mapped (GtkWidget *widget)
 
 /**
  * ctk_widget_set_mapped:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @mapped: %TRUE to mark the widget as mapped
  *
  * Marks the widget as being mapped.
@@ -9324,7 +9324,7 @@ ctk_widget_get_mapped (GtkWidget *widget)
  * Since: 2.20
  */
 void
-ctk_widget_set_mapped (GtkWidget *widget,
+ctk_widget_set_mapped (CtkWidget *widget,
                        gboolean   mapped)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -9334,15 +9334,15 @@ ctk_widget_set_mapped (GtkWidget *widget,
 
 /**
  * ctk_widget_set_app_paintable:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @app_paintable: %TRUE if the application will paint on the widget
  *
  * Sets whether the application intends to draw on the widget in
- * an #GtkWidget::draw handler.
+ * an #CtkWidget::draw handler.
  *
  * This is a hint to the widget and does not affect the behavior of
  * the GTK+ core; many widgets ignore this flag entirely. For widgets
- * that do pay attention to the flag, such as #GtkEventBox and #GtkWindow,
+ * that do pay attention to the flag, such as #CtkEventBox and #CtkWindow,
  * the effect is to suppress default themed drawing of the widget's
  * background. (Children of the widget will still be drawn.) The application
  * is then entirely responsible for drawing the widget background.
@@ -9350,7 +9350,7 @@ ctk_widget_set_mapped (GtkWidget *widget,
  * Note that the background is still drawn when the widget is mapped.
  **/
 void
-ctk_widget_set_app_paintable (GtkWidget *widget,
+ctk_widget_set_app_paintable (CtkWidget *widget,
 			      gboolean   app_paintable)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -9370,10 +9370,10 @@ ctk_widget_set_app_paintable (GtkWidget *widget,
 
 /**
  * ctk_widget_get_app_paintable:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Determines whether the application intends to draw on the widget in
- * an #GtkWidget::draw handler.
+ * an #CtkWidget::draw handler.
  *
  * See ctk_widget_set_app_paintable()
  *
@@ -9382,7 +9382,7 @@ ctk_widget_set_app_paintable (GtkWidget *widget,
  * Since: 2.18
  **/
 gboolean
-ctk_widget_get_app_paintable (GtkWidget *widget)
+ctk_widget_get_app_paintable (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -9391,7 +9391,7 @@ ctk_widget_get_app_paintable (GtkWidget *widget)
 
 /**
  * ctk_widget_set_double_buffered:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @double_buffered: %TRUE to double-buffer a widget
  *
  * Widgets are double buffered by default; you can use this function
@@ -9425,7 +9425,7 @@ ctk_widget_get_app_paintable (GtkWidget *widget)
  * It should not be used in newly written code.
  **/
 void
-ctk_widget_set_double_buffered (GtkWidget *widget,
+ctk_widget_set_double_buffered (CtkWidget *widget,
 				gboolean   double_buffered)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -9442,7 +9442,7 @@ ctk_widget_set_double_buffered (GtkWidget *widget,
 
 /**
  * ctk_widget_get_double_buffered:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Determines whether the widget is double buffered.
  *
@@ -9453,7 +9453,7 @@ ctk_widget_set_double_buffered (GtkWidget *widget,
  * Since: 2.18
  **/
 gboolean
-ctk_widget_get_double_buffered (GtkWidget *widget)
+ctk_widget_get_double_buffered (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -9462,7 +9462,7 @@ ctk_widget_get_double_buffered (GtkWidget *widget)
 
 /**
  * ctk_widget_set_redraw_on_allocate:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @redraw_on_allocate: if %TRUE, the entire widget will be redrawn
  *   when it is allocated to a new size. Otherwise, only the
  *   new portion of the widget will be redrawn.
@@ -9484,7 +9484,7 @@ ctk_widget_get_double_buffered (GtkWidget *widget)
  * regions newly when the widget increases size.
  **/
 void
-ctk_widget_set_redraw_on_allocate (GtkWidget *widget,
+ctk_widget_set_redraw_on_allocate (CtkWidget *widget,
 				   gboolean   redraw_on_allocate)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -9494,7 +9494,7 @@ ctk_widget_set_redraw_on_allocate (GtkWidget *widget,
 
 /**
  * ctk_widget_set_sensitive:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @sensitive: %TRUE to make the widget sensitive
  *
  * Sets the sensitivity of a widget. A widget is sensitive if the user
@@ -9503,10 +9503,10 @@ ctk_widget_set_redraw_on_allocate (GtkWidget *widget,
  * “inactive”, “disabled”, or “ghosted” in some other toolkits.
  **/
 void
-ctk_widget_set_sensitive (GtkWidget *widget,
+ctk_widget_set_sensitive (CtkWidget *widget,
 			  gboolean   sensitive)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -9522,7 +9522,7 @@ ctk_widget_set_sensitive (GtkWidget *widget,
   if (priv->parent == NULL
       || ctk_widget_is_sensitive (priv->parent))
     {
-      GtkStateData data;
+      CtkStateData data;
 
       data.old_scale_factor = ctk_widget_get_scale_factor (widget);
 
@@ -9545,7 +9545,7 @@ ctk_widget_set_sensitive (GtkWidget *widget,
 
 /**
  * ctk_widget_get_sensitive:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Returns the widget’s sensitivity (in the sense of returning
  * the value that has been set using ctk_widget_set_sensitive()).
@@ -9558,7 +9558,7 @@ ctk_widget_set_sensitive (GtkWidget *widget,
  * Since: 2.18
  */
 gboolean
-ctk_widget_get_sensitive (GtkWidget *widget)
+ctk_widget_get_sensitive (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -9567,7 +9567,7 @@ ctk_widget_get_sensitive (GtkWidget *widget)
 
 /**
  * ctk_widget_is_sensitive:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Returns the widget’s effective sensitivity, which means
  * it is sensitive itself and also its parent widget is sensitive
@@ -9577,7 +9577,7 @@ ctk_widget_get_sensitive (GtkWidget *widget)
  * Since: 2.18
  */
 gboolean
-ctk_widget_is_sensitive (GtkWidget *widget)
+ctk_widget_is_sensitive (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -9586,23 +9586,23 @@ ctk_widget_is_sensitive (GtkWidget *widget)
 
 /**
  * ctk_widget_set_parent:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @parent: parent container
  *
  * This function is useful only when implementing subclasses of
- * #GtkContainer.
+ * #CtkContainer.
  * Sets the container as the parent of @widget, and takes care of
  * some details such as updating the state and style of the child
  * to reflect its new location. The opposite function is
  * ctk_widget_unparent().
  **/
 void
-ctk_widget_set_parent (GtkWidget *widget,
-		       GtkWidget *parent)
+ctk_widget_set_parent (CtkWidget *widget,
+		       CtkWidget *parent)
 {
-  GtkStateFlags parent_flags;
-  GtkWidgetPrivate *priv;
-  GtkStateData data;
+  CtkStateFlags parent_flags;
+  CtkWidgetPrivate *priv;
+  CtkStateData data;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (CTK_IS_WIDGET (parent));
@@ -9691,30 +9691,30 @@ ctk_widget_set_parent (GtkWidget *widget,
 
 /**
  * ctk_widget_get_parent:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Returns the parent container of @widget.
  *
  * Returns: (transfer none) (nullable): the parent container of @widget, or %NULL
  **/
-GtkWidget *
-ctk_widget_get_parent (GtkWidget *widget)
+CtkWidget *
+ctk_widget_get_parent (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   return widget->priv->parent;
 }
 
-static GtkModifierStyle *
-_ctk_widget_get_modifier_properties (GtkWidget *widget)
+static CtkModifierStyle *
+_ctk_widget_get_modifier_properties (CtkWidget *widget)
 {
-  GtkModifierStyle *style;
+  CtkModifierStyle *style;
 
   style = g_object_get_qdata (G_OBJECT (widget), quark_modifier_style);
 
   if (G_UNLIKELY (!style))
     {
-      GtkStyleContext *context;
+      CtkStyleContext *context;
 
       style = _ctk_modifier_style_new ();
       g_object_set_qdata_full (G_OBJECT (widget),
@@ -9734,7 +9734,7 @@ _ctk_widget_get_modifier_properties (GtkWidget *widget)
 
 /**
  * ctk_widget_override_color:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @state: the state for which to set the color
  * @color: (allow-none): the color to assign, or %NULL to undo the effect
  *     of previous calls to ctk_widget_override_color()
@@ -9745,7 +9745,7 @@ _ctk_widget_get_modifier_properties (GtkWidget *widget)
  *
  * This function does not act recursively. Setting the color of a
  * container does not affect its children. Note that some widgets that
- * you may not think of as containers, for instance #GtkButtons,
+ * you may not think of as containers, for instance #CtkButtons,
  * are actually containers.
  *
  * This API is mostly meant as a quick way for applications to
@@ -9754,7 +9754,7 @@ _ctk_widget_get_modifier_properties (GtkWidget *widget)
  * done by setting meaningful CSS classes in your
  * widget/container implementation through ctk_style_context_add_class().
  *
- * This way, your widget library can install a #GtkCssProvider
+ * This way, your widget library can install a #CtkCssProvider
  * with the %CTK_STYLE_PROVIDER_PRIORITY_FALLBACK priority in order
  * to provide a default styling for those widgets that need so, and
  * this theming may fully overridden by the user’s theme.
@@ -9762,7 +9762,7 @@ _ctk_widget_get_modifier_properties (GtkWidget *widget)
  * Note that for complex widgets this may bring in undesired
  * results (such as uniform background color everywhere), in
  * these cases it is better to fully style such widgets through a
- * #GtkCssProvider with the %CTK_STYLE_PROVIDER_PRIORITY_APPLICATION
+ * #CtkCssProvider with the %CTK_STYLE_PROVIDER_PRIORITY_APPLICATION
  * priority.
  *
  * Since: 3.0
@@ -9770,11 +9770,11 @@ _ctk_widget_get_modifier_properties (GtkWidget *widget)
  * Deprecated:3.16: Use a custom style provider and style classes instead
  */
 void
-ctk_widget_override_color (GtkWidget     *widget,
-                           GtkStateFlags  state,
+ctk_widget_override_color (CtkWidget     *widget,
+                           CtkStateFlags  state,
                            const GdkRGBA *color)
 {
-  GtkModifierStyle *style;
+  CtkModifierStyle *style;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -9784,7 +9784,7 @@ ctk_widget_override_color (GtkWidget     *widget,
 
 /**
  * ctk_widget_override_background_color:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @state: the state for which to set the background color
  * @color: (allow-none): the color to assign, or %NULL to undo the effect
  *     of previous calls to ctk_widget_override_background_color()
@@ -9799,16 +9799,16 @@ ctk_widget_override_color (GtkWidget     *widget,
  * Deprecated: 3.16: This function is not useful in the context of CSS-based
  *   rendering. If you wish to change the way a widget renders its background
  *   you should use a custom CSS style, through an application-specific
- *   #GtkStyleProvider and a CSS style class. You can also override the default
- *   drawing of a widget through the #GtkWidget::draw signal, and use Cairo to
+ *   #CtkStyleProvider and a CSS style class. You can also override the default
+ *   drawing of a widget through the #CtkWidget::draw signal, and use Cairo to
  *   draw a specific color, regardless of the CSS style.
  */
 void
-ctk_widget_override_background_color (GtkWidget     *widget,
-                                      GtkStateFlags  state,
+ctk_widget_override_background_color (CtkWidget     *widget,
+                                      CtkStateFlags  state,
                                       const GdkRGBA *color)
 {
-  GtkModifierStyle *style;
+  CtkModifierStyle *style;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -9818,7 +9818,7 @@ ctk_widget_override_background_color (GtkWidget     *widget,
 
 /**
  * ctk_widget_override_font:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @font_desc: (allow-none): the font description to use, or %NULL to undo
  *     the effect of previous calls to ctk_widget_override_font()
  *
@@ -9830,13 +9830,13 @@ ctk_widget_override_background_color (GtkWidget     *widget,
  * Deprecated: 3.16: This function is not useful in the context of CSS-based
  *   rendering. If you wish to change the font a widget uses to render its text
  *   you should use a custom CSS style, through an application-specific
- *   #GtkStyleProvider and a CSS style class.
+ *   #CtkStyleProvider and a CSS style class.
  */
 void
-ctk_widget_override_font (GtkWidget                  *widget,
+ctk_widget_override_font (CtkWidget                  *widget,
                           const PangoFontDescription *font_desc)
 {
-  GtkModifierStyle *style;
+  CtkModifierStyle *style;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -9846,7 +9846,7 @@ ctk_widget_override_font (GtkWidget                  *widget,
 
 /**
  * ctk_widget_override_symbolic_color:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @name: the name of the symbolic color to modify
  * @color: (allow-none): the color to assign (does not need
  *     to be allocated), or %NULL to undo the effect of previous
@@ -9863,14 +9863,14 @@ ctk_widget_override_font (GtkWidget                  *widget,
  * Deprecated: 3.16: This function is not useful in the context of CSS-based
  *   rendering. If you wish to change the color used to render symbolic icons
  *   you should use a custom CSS style, through an application-specific
- *   #GtkStyleProvider and a CSS style class.
+ *   #CtkStyleProvider and a CSS style class.
  */
 void
-ctk_widget_override_symbolic_color (GtkWidget     *widget,
+ctk_widget_override_symbolic_color (CtkWidget     *widget,
                                     const gchar   *name,
                                     const GdkRGBA *color)
 {
-  GtkModifierStyle *style;
+  CtkModifierStyle *style;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -9880,7 +9880,7 @@ ctk_widget_override_symbolic_color (GtkWidget     *widget,
 
 /**
  * ctk_widget_override_cursor:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @cursor: (allow-none): the color to use for primary cursor (does not need to be
  *     allocated), or %NULL to undo the effect of previous calls to
  *     of ctk_widget_override_cursor().
@@ -9901,14 +9901,14 @@ ctk_widget_override_symbolic_color (GtkWidget     *widget,
  * Deprecated: 3.16: This function is not useful in the context of CSS-based
  *   rendering. If you wish to change the color used to render the primary
  *   and secondary cursors you should use a custom CSS style, through an
- *   application-specific #GtkStyleProvider and a CSS style class.
+ *   application-specific #CtkStyleProvider and a CSS style class.
  */
 void
-ctk_widget_override_cursor (GtkWidget     *widget,
+ctk_widget_override_cursor (CtkWidget     *widget,
                             const GdkRGBA *cursor,
                             const GdkRGBA *secondary_cursor)
 {
-  GtkModifierStyle *style;
+  CtkModifierStyle *style;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -9923,32 +9923,32 @@ ctk_widget_override_cursor (GtkWidget     *widget,
 }
 
 static void
-ctk_widget_real_direction_changed (GtkWidget        *widget,
-                                   GtkTextDirection  previous_direction)
+ctk_widget_real_direction_changed (CtkWidget        *widget,
+                                   CtkTextDirection  previous_direction)
 {
   ctk_widget_queue_resize (widget);
 }
 
 static void
-ctk_widget_real_style_set (GtkWidget *widget,
-                           GtkStyle  *previous_style)
+ctk_widget_real_style_set (CtkWidget *widget,
+                           CtkStyle  *previous_style)
 {
 }
 
 typedef struct {
-  GtkWidget *previous_toplevel;
+  CtkWidget *previous_toplevel;
   GdkScreen *previous_screen;
   GdkScreen *new_screen;
 } HierarchyChangedInfo;
 
 static void
-do_screen_change (GtkWidget *widget,
+do_screen_change (CtkWidget *widget,
 		  GdkScreen *old_screen,
 		  GdkScreen *new_screen)
 {
   if (old_screen != new_screen)
     {
-      GtkWidgetPrivate *priv = widget->priv;
+      CtkWidgetPrivate *priv = widget->priv;
 
       if (old_screen)
 	{
@@ -9967,10 +9967,10 @@ do_screen_change (GtkWidget *widget,
 }
 
 static void
-ctk_widget_propagate_hierarchy_changed_recurse (GtkWidget *widget,
+ctk_widget_propagate_hierarchy_changed_recurse (CtkWidget *widget,
 						gpointer   client_data)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
   HierarchyChangedInfo *info = client_data;
   gboolean new_anchored = _ctk_widget_is_toplevel (widget) ||
                  (priv->parent && priv->parent->priv->anchored);
@@ -10006,18 +10006,18 @@ ctk_widget_propagate_hierarchy_changed_recurse (GtkWidget *widget,
 
 /**
  * _ctk_widget_propagate_hierarchy_changed:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @previous_toplevel: Previous toplevel
  *
  * Propagates changes in the anchored state to a widget and all
  * children, unsetting or setting the %ANCHORED flag, and
- * emitting #GtkWidget::hierarchy-changed.
+ * emitting #CtkWidget::hierarchy-changed.
  **/
 void
-_ctk_widget_propagate_hierarchy_changed (GtkWidget *widget,
-					 GtkWidget *previous_toplevel)
+_ctk_widget_propagate_hierarchy_changed (CtkWidget *widget,
+					 CtkWidget *previous_toplevel)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
   HierarchyChangedInfo info;
 
   info.previous_toplevel = previous_toplevel;
@@ -10043,7 +10043,7 @@ _ctk_widget_propagate_hierarchy_changed (GtkWidget *widget,
 }
 
 static void
-ctk_widget_propagate_screen_changed_recurse (GtkWidget *widget,
+ctk_widget_propagate_screen_changed_recurse (CtkWidget *widget,
 					     gpointer   client_data)
 {
   HierarchyChangedInfo *info = client_data;
@@ -10062,7 +10062,7 @@ ctk_widget_propagate_screen_changed_recurse (GtkWidget *widget,
 
 /**
  * ctk_widget_is_composited:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Whether @widget can rely on having its alpha channel
  * drawn correctly. On X11 this function returns whether a
@@ -10080,7 +10080,7 @@ ctk_widget_propagate_screen_changed_recurse (GtkWidget *widget,
  * Deprecated: 3.22: Use gdk_screen_is_composited() instead.
  */
 gboolean
-ctk_widget_is_composited (GtkWidget *widget)
+ctk_widget_is_composited (CtkWidget *widget)
 {
   GdkScreen *screen;
 
@@ -10092,7 +10092,7 @@ ctk_widget_is_composited (GtkWidget *widget)
 }
 
 static void
-propagate_composited_changed (GtkWidget *widget,
+propagate_composited_changed (CtkWidget *widget,
 			      gpointer dummy)
 {
   if (CTK_IS_CONTAINER (widget))
@@ -10106,21 +10106,21 @@ propagate_composited_changed (GtkWidget *widget,
 }
 
 void
-_ctk_widget_propagate_composited_changed (GtkWidget *widget)
+_ctk_widget_propagate_composited_changed (CtkWidget *widget)
 {
   propagate_composited_changed (widget, NULL);
 }
 
 /**
  * _ctk_widget_propagate_screen_changed:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @previous_screen: Previous screen
  *
  * Propagates changes in the screen for a widget to all
- * children, emitting #GtkWidget::screen-changed.
+ * children, emitting #CtkWidget::screen-changed.
  **/
 void
-_ctk_widget_propagate_screen_changed (GtkWidget    *widget,
+_ctk_widget_propagate_screen_changed (CtkWidget    *widget,
 				      GdkScreen    *previous_screen)
 {
   HierarchyChangedInfo info;
@@ -10138,7 +10138,7 @@ _ctk_widget_propagate_screen_changed (GtkWidget    *widget,
 }
 
 static void
-reset_style_recurse (GtkWidget *widget, gpointer data)
+reset_style_recurse (CtkWidget *widget, gpointer data)
 {
   _ctk_widget_invalidate_style_context (widget, CTK_CSS_CHANGE_ANY);
 
@@ -10150,17 +10150,17 @@ reset_style_recurse (GtkWidget *widget, gpointer data)
 
 /**
  * ctk_widget_reset_style:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Updates the style context of @widget and all descendants
- * by updating its widget path. #GtkContainers may want
+ * by updating its widget path. #CtkContainers may want
  * to use this on a child when reordering it in a way that a different
  * style might apply to it. See also ctk_container_get_path_for_child().
  *
  * Since: 3.0
  */
 void
-ctk_widget_reset_style (GtkWidget *widget)
+ctk_widget_reset_style (CtkWidget *widget)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -10179,9 +10179,9 @@ ctk_widget_reset_style (GtkWidget *widget)
  * Use push/pop_verify_invariants to help with that.
  */
 static void
-ctk_widget_verify_invariants (GtkWidget *widget)
+ctk_widget_verify_invariants (CtkWidget *widget)
 {
-  GtkWidget *parent;
+  CtkWidget *parent;
 
   if (widget->priv->verifying_invariants_count > 0)
     return;
@@ -10310,13 +10310,13 @@ ctk_widget_verify_invariants (GtkWidget *widget)
  * on the call stack, after we finish updating everything.
  */
 static void
-ctk_widget_push_verify_invariants (GtkWidget *widget)
+ctk_widget_push_verify_invariants (CtkWidget *widget)
 {
   widget->priv->verifying_invariants_count += 1;
 }
 
 static void
-ctk_widget_verify_child_invariants (GtkWidget *widget,
+ctk_widget_verify_child_invariants (CtkWidget *widget,
                                     gpointer   client_data)
 {
   /* We don't recurse further; this is a one-level check. */
@@ -10324,7 +10324,7 @@ ctk_widget_verify_child_invariants (GtkWidget *widget,
 }
 
 static void
-ctk_widget_pop_verify_invariants (GtkWidget *widget)
+ctk_widget_pop_verify_invariants (CtkWidget *widget)
 {
   g_assert (widget->priv->verifying_invariants_count > 0);
 
@@ -10353,14 +10353,14 @@ ctk_widget_pop_verify_invariants (GtkWidget *widget)
 #endif /* G_ENABLE_CONSISTENCY_CHECKS */
 
 static PangoContext *
-ctk_widget_peek_pango_context (GtkWidget *widget)
+ctk_widget_peek_pango_context (CtkWidget *widget)
 {
   return g_object_get_qdata (G_OBJECT (widget), quark_pango_context);
 }
 
 /**
  * ctk_widget_get_pango_context:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Gets a #PangoContext with the appropriate font map, font description,
  * and base direction for this widget. Unlike the context returned
@@ -10368,12 +10368,12 @@ ctk_widget_peek_pango_context (GtkWidget *widget)
  * the widget (it can be used until the screen for the widget changes
  * or the widget is removed from its toplevel), and will be updated to
  * match any changes to the widget’s attributes. This can be tracked
- * by using the #GtkWidget::screen-changed signal on the widget.
+ * by using the #CtkWidget::screen-changed signal on the widget.
  *
  * Returns: (transfer none): the #PangoContext for the widget.
  **/
 PangoContext *
-ctk_widget_get_pango_context (GtkWidget *widget)
+ctk_widget_get_pango_context (CtkWidget *widget)
 {
   PangoContext *context;
 
@@ -10393,7 +10393,7 @@ ctk_widget_get_pango_context (GtkWidget *widget)
 }
 
 static PangoFontMap *
-ctk_widget_get_effective_font_map (GtkWidget *widget)
+ctk_widget_get_effective_font_map (CtkWidget *widget)
 {
   PangoFontMap *font_map;
 
@@ -10407,11 +10407,11 @@ ctk_widget_get_effective_font_map (GtkWidget *widget)
 }
 
 static void
-update_pango_context (GtkWidget    *widget,
+update_pango_context (CtkWidget    *widget,
                       PangoContext *context)
 {
   PangoFontDescription *font_desc;
-  GtkStyleContext *style_context;
+  CtkStyleContext *style_context;
   GdkScreen *screen;
   cairo_font_options_t *font_options;
 
@@ -10456,7 +10456,7 @@ update_pango_context (GtkWidget    *widget,
 }
 
 static void
-ctk_widget_update_pango_context (GtkWidget *widget)
+ctk_widget_update_pango_context (CtkWidget *widget)
 {
   PangoContext *context = ctk_widget_peek_pango_context (widget);
 
@@ -10466,7 +10466,7 @@ ctk_widget_update_pango_context (GtkWidget *widget)
 
 /**
  * ctk_widget_set_font_options:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @options: (allow-none): a #cairo_font_options_t, or %NULL to unset any
  *   previously set default font options.
  *
@@ -10476,7 +10476,7 @@ ctk_widget_update_pango_context (GtkWidget *widget)
  * Since: 3.18
  **/
 void
-ctk_widget_set_font_options (GtkWidget                  *widget,
+ctk_widget_set_font_options (CtkWidget                  *widget,
                              const cairo_font_options_t *options)
 {
   cairo_font_options_t *font_options;
@@ -10497,7 +10497,7 @@ ctk_widget_set_font_options (GtkWidget                  *widget,
 
 /**
  * ctk_widget_get_font_options:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Returns the #cairo_font_options_t used for Pango rendering. When not set,
  * the defaults font options for the #GdkScreen will be used.
@@ -10507,7 +10507,7 @@ ctk_widget_set_font_options (GtkWidget                  *widget,
  * Since: 3.18
  **/
 const cairo_font_options_t *
-ctk_widget_get_font_options (GtkWidget *widget)
+ctk_widget_get_font_options (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
@@ -10515,7 +10515,7 @@ ctk_widget_get_font_options (GtkWidget *widget)
 }
 
 static void
-ctk_widget_set_font_map_recurse (GtkWidget *widget, gpointer data)
+ctk_widget_set_font_map_recurse (CtkWidget *widget, gpointer data)
 {
   if (g_object_get_qdata (G_OBJECT (widget), quark_font_map))
     return;
@@ -10530,7 +10530,7 @@ ctk_widget_set_font_map_recurse (GtkWidget *widget, gpointer data)
 
 /**
  * ctk_widget_set_font_map:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @font_map: (allow-none): a #PangoFontMap, or %NULL to unset any previously
  *     set font map
  *
@@ -10540,7 +10540,7 @@ ctk_widget_set_font_map_recurse (GtkWidget *widget, gpointer data)
  * Since: 3.18
  */
 void
-ctk_widget_set_font_map (GtkWidget    *widget,
+ctk_widget_set_font_map (CtkWidget    *widget,
                          PangoFontMap *font_map)
 {
   PangoFontMap *map;
@@ -10565,7 +10565,7 @@ ctk_widget_set_font_map (GtkWidget    *widget,
 
 /**
  * ctk_widget_get_font_map:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Gets the font map that has been set with ctk_widget_set_font_map().
  *
@@ -10574,7 +10574,7 @@ ctk_widget_set_font_map (GtkWidget    *widget,
  * Since: 3.18
  */
 PangoFontMap *
-ctk_widget_get_font_map (GtkWidget *widget)
+ctk_widget_get_font_map (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
@@ -10583,7 +10583,7 @@ ctk_widget_get_font_map (GtkWidget *widget)
 
 /**
  * ctk_widget_create_pango_context:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Creates a new #PangoContext with the appropriate font map,
  * font options, font description, and base direction for drawing
@@ -10592,7 +10592,7 @@ ctk_widget_get_font_map (GtkWidget *widget)
  * Returns: (transfer full): the new #PangoContext
  **/
 PangoContext *
-ctk_widget_create_pango_context (GtkWidget *widget)
+ctk_widget_create_pango_context (CtkWidget *widget)
 {
   GdkDisplay *display;
   PangoContext *context;
@@ -10609,7 +10609,7 @@ ctk_widget_create_pango_context (GtkWidget *widget)
 
 /**
  * ctk_widget_create_pango_layout:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @text: (nullable): text to set on the layout (can be %NULL)
  *
  * Creates a new #PangoLayout with the appropriate font map,
@@ -10618,13 +10618,13 @@ ctk_widget_create_pango_context (GtkWidget *widget)
  *
  * If you keep a #PangoLayout created in this way around, you need
  * to re-create it when the widget #PangoContext is replaced.
- * This can be tracked by using the #GtkWidget::screen-changed signal
+ * This can be tracked by using the #CtkWidget::screen-changed signal
  * on the widget.
  *
  * Returns: (transfer full): the new #PangoLayout
  **/
 PangoLayout *
-ctk_widget_create_pango_layout (GtkWidget   *widget,
+ctk_widget_create_pango_layout (CtkWidget   *widget,
 				const gchar *text)
 {
   PangoLayout *layout;
@@ -10643,9 +10643,9 @@ ctk_widget_create_pango_layout (GtkWidget   *widget,
 
 /**
  * ctk_widget_render_icon_pixbuf:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @stock_id: a stock ID
- * @size: (type int): a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`
+ * @size: (type int): a stock size (#CtkIconSize). A size of `(CtkIconSize)-1`
  *     means render at the size of the source and don’t scale (if there are
  *     multiple source sizes, GTK+ picks one of the available sizes).
  *
@@ -10667,12 +10667,12 @@ ctk_widget_create_pango_layout (GtkWidget   *widget,
  * Deprecated: 3.10: Use ctk_icon_theme_load_icon() instead.
  **/
 GdkPixbuf*
-ctk_widget_render_icon_pixbuf (GtkWidget   *widget,
+ctk_widget_render_icon_pixbuf (CtkWidget   *widget,
                                const gchar *stock_id,
-                               GtkIconSize  size)
+                               CtkIconSize  size)
 {
-  GtkStyleContext *context;
-  GtkIconSet *icon_set;
+  CtkStyleContext *context;
+  CtkIconSet *icon_set;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
   g_return_val_if_fail (stock_id != NULL, NULL);
@@ -10691,20 +10691,20 @@ ctk_widget_render_icon_pixbuf (GtkWidget   *widget,
 
 /**
  * ctk_widget_set_parent_window:
- * @widget: a #GtkWidget.
+ * @widget: a #CtkWidget.
  * @parent_window: the new parent window.
  *
  * Sets a non default parent window for @widget.
  *
- * For #GtkWindow classes, setting a @parent_window effects whether
+ * For #CtkWindow classes, setting a @parent_window effects whether
  * the window is a toplevel window or can be embedded into other
  * widgets.
  *
- * For #GtkWindow classes, this needs to be called before the
+ * For #CtkWindow classes, this needs to be called before the
  * window is realized.
  */
 void
-ctk_widget_set_parent_window (GtkWidget *widget,
+ctk_widget_set_parent_window (CtkWidget *widget,
                               GdkWindow *parent_window)
 {
   GdkWindow *old_parent_window;
@@ -10741,7 +10741,7 @@ ctk_widget_set_parent_window (GtkWidget *widget,
 
 /**
  * ctk_widget_get_parent_window:
- * @widget: a #GtkWidget.
+ * @widget: a #CtkWidget.
  *
  * Gets @widget’s parent window, or %NULL if it does not have one.
  *
@@ -10749,9 +10749,9 @@ ctk_widget_set_parent_window (GtkWidget *widget,
  * if it does not have a parent window.
  **/
 GdkWindow *
-ctk_widget_get_parent_window (GtkWidget *widget)
+ctk_widget_get_parent_window (CtkWidget *widget)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
   GdkWindow *parent_window;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
@@ -10767,7 +10767,7 @@ ctk_widget_get_parent_window (GtkWidget *widget)
 
 /**
  * ctk_widget_set_child_visible:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @is_visible: if %TRUE, @widget should be mapped along with its parent.
  *
  * Sets whether @widget should be mapped along with its when its parent
@@ -10789,10 +10789,10 @@ ctk_widget_get_parent_window (GtkWidget *widget)
  * never should be called by an application.
  **/
 void
-ctk_widget_set_child_visible (GtkWidget *widget,
+ctk_widget_set_child_visible (CtkWidget *widget,
 			      gboolean   is_visible)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (!_ctk_widget_is_toplevel (widget));
@@ -10806,7 +10806,7 @@ ctk_widget_set_child_visible (GtkWidget *widget,
     priv->child_visible = TRUE;
   else
     {
-      GtkWidget *toplevel;
+      CtkWidget *toplevel;
 
       priv->child_visible = FALSE;
 
@@ -10831,7 +10831,7 @@ ctk_widget_set_child_visible (GtkWidget *widget,
 
 /**
  * ctk_widget_get_child_visible:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Gets the value set with ctk_widget_set_child_visible().
  * If you feel a need to use this function, your code probably
@@ -10843,7 +10843,7 @@ ctk_widget_set_child_visible (GtkWidget *widget,
  * Returns: %TRUE if the widget is mapped with the parent.
  **/
 gboolean
-ctk_widget_get_child_visible (GtkWidget *widget)
+ctk_widget_get_child_visible (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -10851,9 +10851,9 @@ ctk_widget_get_child_visible (GtkWidget *widget)
 }
 
 static GdkScreen *
-ctk_widget_get_screen_unchecked (GtkWidget *widget)
+ctk_widget_get_screen_unchecked (CtkWidget *widget)
 {
-  GtkWidget *toplevel;
+  CtkWidget *toplevel;
 
   toplevel = _ctk_widget_get_toplevel (widget);
 
@@ -10870,11 +10870,11 @@ ctk_widget_get_screen_unchecked (GtkWidget *widget)
 
 /**
  * ctk_widget_get_screen:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Get the #GdkScreen from the toplevel window associated with
  * this widget. This function can only be called after the widget
- * has been added to a widget hierarchy with a #GtkWindow
+ * has been added to a widget hierarchy with a #CtkWindow
  * at the top.
  *
  * In general, you should only create screen specific
@@ -10886,7 +10886,7 @@ ctk_widget_get_screen_unchecked (GtkWidget *widget)
  * Since: 2.2
  **/
 GdkScreen*
-ctk_widget_get_screen (GtkWidget *widget)
+ctk_widget_get_screen (CtkWidget *widget)
 {
   GdkScreen *screen;
 
@@ -10902,7 +10902,7 @@ ctk_widget_get_screen (GtkWidget *widget)
 
 /**
  * ctk_widget_has_screen:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Checks whether there is a #GdkScreen is associated with
  * this widget. All toplevel widgets have an associated
@@ -10915,7 +10915,7 @@ ctk_widget_get_screen (GtkWidget *widget)
  * Since: 2.2
  **/
 gboolean
-ctk_widget_has_screen (GtkWidget *widget)
+ctk_widget_has_screen (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -10923,9 +10923,9 @@ ctk_widget_has_screen (GtkWidget *widget)
 }
 
 void
-_ctk_widget_scale_changed (GtkWidget *widget)
+_ctk_widget_scale_changed (CtkWidget *widget)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -10940,13 +10940,13 @@ _ctk_widget_scale_changed (GtkWidget *widget)
 
   if (CTK_IS_CONTAINER (widget))
     ctk_container_forall (CTK_CONTAINER (widget),
-                          (GtkCallback) _ctk_widget_scale_changed,
+                          (CtkCallback) _ctk_widget_scale_changed,
                           NULL);
 }
 
 /**
  * ctk_widget_get_scale_factor:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Retrieves the internal scale factor that maps from window coordinates
  * to the actual device pixels. On traditional systems this is 1, on
@@ -10959,9 +10959,9 @@ _ctk_widget_scale_changed (GtkWidget *widget)
  * Since: 3.10
  */
 gint
-ctk_widget_get_scale_factor (GtkWidget *widget)
+ctk_widget_get_scale_factor (CtkWidget *widget)
 {
-  GtkWidget *toplevel;
+  CtkWidget *toplevel;
   GdkDisplay *display;
   GdkMonitor *monitor;
 
@@ -10985,11 +10985,11 @@ ctk_widget_get_scale_factor (GtkWidget *widget)
 
 /**
  * ctk_widget_get_display:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Get the #GdkDisplay for the toplevel window associated with
  * this widget. This function can only be called after the widget
- * has been added to a widget hierarchy with a #GtkWindow at the top.
+ * has been added to a widget hierarchy with a #CtkWindow at the top.
  *
  * In general, you should only create display specific
  * resources when a widget has been realized, and you should
@@ -11000,7 +11000,7 @@ ctk_widget_get_scale_factor (GtkWidget *widget)
  * Since: 2.2
  **/
 GdkDisplay*
-ctk_widget_get_display (GtkWidget *widget)
+ctk_widget_get_display (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
@@ -11009,11 +11009,11 @@ ctk_widget_get_display (GtkWidget *widget)
 
 /**
  * ctk_widget_get_root_window:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Get the root window where this widget is located. This function can
  * only be called after the widget has been added to a widget
- * hierarchy with #GtkWindow at the top.
+ * hierarchy with #CtkWindow at the top.
  *
  * The root window is useful for such purposes as creating a popup
  * #GdkWindow associated with the window. In general, you should only
@@ -11027,7 +11027,7 @@ ctk_widget_get_display (GtkWidget *widget)
  * Deprecated: 3.12: Use gdk_screen_get_root_window() instead
  */
 GdkWindow*
-ctk_widget_get_root_window (GtkWidget *widget)
+ctk_widget_get_root_window (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
@@ -11036,7 +11036,7 @@ ctk_widget_get_root_window (GtkWidget *widget)
 
 /**
  * ctk_widget_child_focus:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @direction: direction of focus movement
  *
  * This function is used by custom widget implementations; if you're
@@ -11049,7 +11049,7 @@ ctk_widget_get_root_window (GtkWidget *widget)
  * around the window using keyboard shortcuts. @direction indicates
  * what kind of motion is taking place (up, down, left, right, tab
  * forward, tab backward). ctk_widget_child_focus() emits the
- * #GtkWidget::focus signal; widgets override the default handler
+ * #CtkWidget::focus signal; widgets override the default handler
  * for this signal in order to implement appropriate focus behavior.
  *
  * The default ::focus handler for a widget should return %TRUE if
@@ -11062,8 +11062,8 @@ ctk_widget_get_root_window (GtkWidget *widget)
  * Returns: %TRUE if focus ended up inside @widget
  **/
 gboolean
-ctk_widget_child_focus (GtkWidget       *widget,
-                        GtkDirectionType direction)
+ctk_widget_child_focus (CtkWidget       *widget,
+                        CtkDirectionType direction)
 {
   gboolean return_val;
 
@@ -11090,12 +11090,12 @@ ctk_widget_child_focus (GtkWidget       *widget,
 
 /**
  * ctk_widget_keynav_failed:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @direction: direction of focus movement
  *
  * This function should be called whenever keyboard navigation within
  * a single widget hits a boundary. The function emits the
- * #GtkWidget::keynav-failed signal on the widget and its return
+ * #CtkWidget::keynav-failed signal on the widget and its return
  * value should be interpreted in a way similar to the return value of
  * ctk_widget_child_focus():
  *
@@ -11109,7 +11109,7 @@ ctk_widget_child_focus (GtkWidget       *widget,
  *
  * The default ::keynav-failed handler returns %FALSE for
  * %CTK_DIR_TAB_FORWARD and %CTK_DIR_TAB_BACKWARD. For the other
- * values of #GtkDirectionType it returns %TRUE.
+ * values of #CtkDirectionType it returns %TRUE.
  *
  * Whenever the default handler returns %TRUE, it also calls
  * ctk_widget_error_bell() to notify the user of the failed keyboard
@@ -11117,7 +11117,7 @@ ctk_widget_child_focus (GtkWidget       *widget,
  *
  * A use case for providing an own implementation of ::keynav-failed
  * (either by connecting to it or by overriding it) would be a row of
- * #GtkEntry widgets where the user should be able to navigate the
+ * #CtkEntry widgets where the user should be able to navigate the
  * entire row with the cursor keys, as e.g. known from user interfaces
  * that require entering license keys.
  *
@@ -11128,8 +11128,8 @@ ctk_widget_child_focus (GtkWidget       *widget,
  * Since: 2.12
  **/
 gboolean
-ctk_widget_keynav_failed (GtkWidget        *widget,
-                          GtkDirectionType  direction)
+ctk_widget_keynav_failed (CtkWidget        *widget,
+                          CtkDirectionType  direction)
 {
   gboolean return_val;
 
@@ -11143,10 +11143,10 @@ ctk_widget_keynav_failed (GtkWidget        *widget,
 
 /**
  * ctk_widget_error_bell:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Notifies the user about an input-related error on this widget.
- * If the #GtkSettings:ctk-error-bell setting is %TRUE, it calls
+ * If the #CtkSettings:ctk-error-bell setting is %TRUE, it calls
  * gdk_window_beep(), otherwise it does nothing.
  *
  * Note that the effect of gdk_window_beep() can be configured in many
@@ -11156,10 +11156,10 @@ ctk_widget_keynav_failed (GtkWidget        *widget,
  * Since: 2.12
  **/
 void
-ctk_widget_error_bell (GtkWidget *widget)
+ctk_widget_error_bell (CtkWidget *widget)
 {
-  GtkWidgetPrivate *priv;
-  GtkSettings* settings;
+  CtkWidgetPrivate *priv;
+  CtkSettings* settings;
   gboolean beep;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -11179,11 +11179,11 @@ ctk_widget_error_bell (GtkWidget *widget)
 }
 
 static void
-ctk_widget_set_usize_internal (GtkWidget          *widget,
+ctk_widget_set_usize_internal (CtkWidget          *widget,
 			       gint                width,
 			       gint                height)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
   gboolean changed = FALSE;
 
   g_object_freeze_notify (G_OBJECT (widget));
@@ -11211,7 +11211,7 @@ ctk_widget_set_usize_internal (GtkWidget          *widget,
 
 /**
  * ctk_widget_set_size_request:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @width: width @widget should request, or -1 to unset
  * @height: height @widget should request, or -1 to unset
  *
@@ -11242,12 +11242,12 @@ ctk_widget_set_usize_internal (GtkWidget          *widget,
  * the “natural” size request of the widget will be used instead.
  *
  * The size request set here does not include any margin from the
- * #GtkWidget properties margin-left, margin-right, margin-top, and
+ * #CtkWidget properties margin-left, margin-right, margin-top, and
  * margin-bottom, but it does include pretty much all other padding
- * or border properties set by any subclass of #GtkWidget.
+ * or border properties set by any subclass of #CtkWidget.
  **/
 void
-ctk_widget_set_size_request (GtkWidget *widget,
+ctk_widget_set_size_request (CtkWidget *widget,
                              gint       width,
                              gint       height)
 {
@@ -11266,7 +11266,7 @@ ctk_widget_set_size_request (GtkWidget *widget,
 
 /**
  * ctk_widget_get_size_request:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @width: (out) (allow-none): return location for width, or %NULL
  * @height: (out) (allow-none): return location for height, or %NULL
  *
@@ -11279,7 +11279,7 @@ ctk_widget_set_size_request (GtkWidget *widget,
  * this function.
  **/
 void
-ctk_widget_get_size_request (GtkWidget *widget,
+ctk_widget_get_size_request (CtkWidget *widget,
                              gint      *width,
                              gint      *height)
 {
@@ -11294,20 +11294,20 @@ ctk_widget_get_size_request (GtkWidget *widget,
 
 /*< private >
  * ctk_widget_has_size_request:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Returns if the widget has a size request set (anything besides -1 for height
  * or width)
  */
 gboolean
-ctk_widget_has_size_request (GtkWidget *widget)
+ctk_widget_has_size_request (CtkWidget *widget)
 {
   return !(widget->priv->width == -1 && widget->priv->height == -1);
 }
 
 /**
  * ctk_widget_set_events:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @events: event mask
  *
  * Sets the event mask (see #GdkEventMask) for a widget. The event
@@ -11319,11 +11319,11 @@ ctk_widget_has_size_request (GtkWidget *widget)
  * already realized, or if you want to preserve the existing event
  * mask. This function can’t be used with widgets that have no window.
  * (See ctk_widget_get_has_window()).  To get events on those widgets,
- * place them inside a #GtkEventBox and receive events on the event
+ * place them inside a #CtkEventBox and receive events on the event
  * box.
  **/
 void
-ctk_widget_set_events (GtkWidget *widget,
+ctk_widget_set_events (CtkWidget *widget,
 		       gint	  events)
 {
   gint e;
@@ -11342,7 +11342,7 @@ ctk_widget_set_events (GtkWidget *widget,
 
 /**
  * ctk_widget_set_device_events:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @device: a #GdkDevice
  * @events: event mask
  *
@@ -11355,13 +11355,13 @@ ctk_widget_set_events (GtkWidget *widget,
  * already realized, or if you want to preserve the existing event
  * mask. This function can’t be used with windowless widgets (which return
  * %FALSE from ctk_widget_get_has_window());
- * to get events on those widgets, place them inside a #GtkEventBox
+ * to get events on those widgets, place them inside a #CtkEventBox
  * and receive events on the event box.
  *
  * Since: 3.0
  **/
 void
-ctk_widget_set_device_events (GtkWidget    *widget,
+ctk_widget_set_device_events (CtkWidget    *widget,
                               GdkDevice    *device,
                               GdkEventMask  events)
 {
@@ -11385,7 +11385,7 @@ ctk_widget_set_device_events (GtkWidget    *widget,
 
 /**
  * ctk_widget_set_device_enabled:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @device: a #GdkDevice
  * @enabled: whether to enable the device
  *
@@ -11399,7 +11399,7 @@ ctk_widget_set_device_events (GtkWidget    *widget,
  * Since: 3.0
  */
 void
-ctk_widget_set_device_enabled (GtkWidget *widget,
+ctk_widget_set_device_enabled (CtkWidget *widget,
                                GdkDevice *device,
                                gboolean   enabled)
 {
@@ -11420,7 +11420,7 @@ ctk_widget_set_device_enabled (GtkWidget *widget,
 
 /**
  * ctk_widget_get_device_enabled:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @device: a #GdkDevice
  *
  * Returns whether @device can interact with @widget and its
@@ -11431,7 +11431,7 @@ ctk_widget_set_device_enabled (GtkWidget *widget,
  * Since: 3.0
  */
 gboolean
-ctk_widget_get_device_enabled (GtkWidget *widget,
+ctk_widget_get_device_enabled (CtkWidget *widget,
                                GdkDevice *device)
 {
   GList *enabled_devices;
@@ -11445,7 +11445,7 @@ ctk_widget_get_device_enabled (GtkWidget *widget,
 }
 
 static void
-ctk_widget_add_events_internal_list (GtkWidget    *widget,
+ctk_widget_add_events_internal_list (CtkWidget    *widget,
                                      GdkDevice    *device,
                                      GdkEventMask  events,
                                      GList        *window_list)
@@ -11458,7 +11458,7 @@ ctk_widget_add_events_internal_list (GtkWidget    *widget,
   for (l = window_list; l != NULL; l = l->next)
     {
       GdkWindow *window = l->data;
-      GtkWidget *window_widget;
+      CtkWidget *window_widget;
 
       gdk_window_get_user_data (window, (gpointer *)&window_widget);
       if (window_widget == widget)
@@ -11483,11 +11483,11 @@ ctk_widget_add_events_internal_list (GtkWidget    *widget,
 }
 
 static void
-ctk_widget_add_events_internal (GtkWidget *widget,
+ctk_widget_add_events_internal (CtkWidget *widget,
                                 GdkDevice *device,
                                 gint       events)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
   GList *window_list;
   GList win;
 
@@ -11505,7 +11505,7 @@ ctk_widget_add_events_internal (GtkWidget *widget,
 
 /**
  * ctk_widget_add_events:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @events: an event mask, see #GdkEventMask
  *
  * Adds the events in the bitfield @events to the event mask for
@@ -11513,7 +11513,7 @@ ctk_widget_add_events_internal (GtkWidget *widget,
  * [input handling overview][event-masks] for details.
  **/
 void
-ctk_widget_add_events (GtkWidget *widget,
+ctk_widget_add_events (CtkWidget *widget,
 		       gint	  events)
 {
   gint old_events;
@@ -11535,7 +11535,7 @@ ctk_widget_add_events (GtkWidget *widget,
 
 /**
  * ctk_widget_add_device_events:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @device: a #GdkDevice
  * @events: an event mask, see #GdkEventMask
  *
@@ -11545,7 +11545,7 @@ ctk_widget_add_events (GtkWidget *widget,
  * Since: 3.0
  **/
 void
-ctk_widget_add_device_events (GtkWidget    *widget,
+ctk_widget_add_device_events (CtkWidget    *widget,
                               GdkDevice    *device,
                               GdkEventMask  events)
 {
@@ -11577,7 +11577,7 @@ ctk_widget_add_device_events (GtkWidget    *widget,
 
 /**
  * ctk_widget_get_toplevel:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * This function returns the topmost widget in the container hierarchy
  * @widget is a part of. If @widget has no parent widgets, it will be
@@ -11588,20 +11588,20 @@ ctk_widget_add_device_events (GtkWidget    *widget,
  * `ctk_widget_get_ancestor (widget, CTK_TYPE_WINDOW)`
  * would return
  * %NULL if @widget wasn’t inside a toplevel window, and if the
- * window was inside a #GtkWindow-derived widget which was in turn
- * inside the toplevel #GtkWindow. While the second case may
- * seem unlikely, it actually happens when a #GtkPlug is embedded
- * inside a #GtkSocket within the same application.
+ * window was inside a #CtkWindow-derived widget which was in turn
+ * inside the toplevel #CtkWindow. While the second case may
+ * seem unlikely, it actually happens when a #CtkPlug is embedded
+ * inside a #CtkSocket within the same application.
  *
- * To reliably find the toplevel #GtkWindow, use
+ * To reliably find the toplevel #CtkWindow, use
  * ctk_widget_get_toplevel() and call CTK_IS_WINDOW()
  * on the result. For instance, to get the title of a widget's toplevel
  * window, one might use:
  * |[<!-- language="C" -->
  * static const char *
- * get_widget_toplevel_title (GtkWidget *widget)
+ * get_widget_toplevel_title (CtkWidget *widget)
  * {
- *   GtkWidget *toplevel = ctk_widget_get_toplevel (widget);
+ *   CtkWidget *toplevel = ctk_widget_get_toplevel (widget);
  *   if (CTK_IS_WINDOW (toplevel))
  *     {
  *       return ctk_window_get_title (CTK_WINDOW (toplevel));
@@ -11614,8 +11614,8 @@ ctk_widget_add_device_events (GtkWidget    *widget,
  * Returns: (transfer none): the topmost ancestor of @widget, or @widget itself
  *    if there’s no ancestor.
  **/
-GtkWidget*
-ctk_widget_get_toplevel (GtkWidget *widget)
+CtkWidget*
+ctk_widget_get_toplevel (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
@@ -11627,14 +11627,14 @@ ctk_widget_get_toplevel (GtkWidget *widget)
 
 /**
  * ctk_widget_get_ancestor:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @widget_type: ancestor type
  *
  * Gets the first ancestor of @widget with type @widget_type. For example,
  * `ctk_widget_get_ancestor (widget, CTK_TYPE_BOX)` gets
- * the first #GtkBox that’s an ancestor of @widget. No reference will be
+ * the first #CtkBox that’s an ancestor of @widget. No reference will be
  * added to the returned widget; it should not be unreferenced. See note
- * about checking for a toplevel #GtkWindow in the docs for
+ * about checking for a toplevel #CtkWindow in the docs for
  * ctk_widget_get_toplevel().
  *
  * Note that unlike ctk_widget_is_ancestor(), ctk_widget_get_ancestor()
@@ -11642,8 +11642,8 @@ ctk_widget_get_toplevel (GtkWidget *widget)
  *
  * Returns: (transfer none) (nullable): the ancestor widget, or %NULL if not found
  **/
-GtkWidget*
-ctk_widget_get_ancestor (GtkWidget *widget,
+CtkWidget*
+ctk_widget_get_ancestor (CtkWidget *widget,
 			 GType      widget_type)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
@@ -11659,19 +11659,19 @@ ctk_widget_get_ancestor (GtkWidget *widget,
 
 /**
  * ctk_widget_set_visual:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @visual: (allow-none): visual to be used or %NULL to unset a previous one
  *
  * Sets the visual that should be used for by widget and its children for
  * creating #GdkWindows. The visual must be on the same #GdkScreen as
  * returned by ctk_widget_get_screen(), so handling the
- * #GtkWidget::screen-changed signal is necessary.
+ * #CtkWidget::screen-changed signal is necessary.
  *
  * Setting a new @visual will not cause @widget to recreate its windows,
  * so you should call this function before @widget is realized.
  **/
 void
-ctk_widget_set_visual (GtkWidget *widget,
+ctk_widget_set_visual (CtkWidget *widget,
                        GdkVisual *visual)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -11688,16 +11688,16 @@ ctk_widget_set_visual (GtkWidget *widget,
 
 /**
  * ctk_widget_get_visual:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Gets the visual that will be used to render @widget.
  *
  * Returns: (transfer none): the visual for @widget
  **/
 GdkVisual*
-ctk_widget_get_visual (GtkWidget *widget)
+ctk_widget_get_visual (CtkWidget *widget)
 {
-  GtkWidget *w;
+  CtkWidget *w;
   GdkVisual *visual;
   GdkScreen *screen;
 
@@ -11727,18 +11727,18 @@ ctk_widget_get_visual (GtkWidget *widget)
 
 /**
  * ctk_widget_get_settings:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Gets the settings object holding the settings used for this widget.
  *
- * Note that this function can only be called when the #GtkWidget
+ * Note that this function can only be called when the #CtkWidget
  * is attached to a toplevel, since the settings object is specific
  * to a particular #GdkScreen.
  *
- * Returns: (transfer none): the relevant #GtkSettings object
+ * Returns: (transfer none): the relevant #CtkSettings object
  */
-GtkSettings*
-ctk_widget_get_settings (GtkWidget *widget)
+CtkSettings*
+ctk_widget_get_settings (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
@@ -11747,20 +11747,20 @@ ctk_widget_get_settings (GtkWidget *widget)
 
 /**
  * ctk_widget_get_events:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Returns the event mask (see #GdkEventMask) for the widget. These are the
  * events that the widget will receive.
  *
  * Note: Internally, the widget event mask will be the logical OR of the event
  * mask set through ctk_widget_set_events() or ctk_widget_add_events(), and the
- * event mask necessary to cater for every #GtkEventController created for the
+ * event mask necessary to cater for every #CtkEventController created for the
  * widget.
  *
  * Returns: event mask for @widget
  **/
 gint
-ctk_widget_get_events (GtkWidget *widget)
+ctk_widget_get_events (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
 
@@ -11770,7 +11770,7 @@ ctk_widget_get_events (GtkWidget *widget)
 
 /**
  * ctk_widget_get_device_events:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @device: a #GdkDevice
  *
  * Returns the events mask for the widget corresponding to an specific device. These
@@ -11781,7 +11781,7 @@ ctk_widget_get_events (GtkWidget *widget)
  * Since: 3.0
  **/
 GdkEventMask
-ctk_widget_get_device_events (GtkWidget *widget,
+ctk_widget_get_device_events (CtkWidget *widget,
                               GdkDevice *device)
 {
   GHashTable *device_events;
@@ -11799,7 +11799,7 @@ ctk_widget_get_device_events (GtkWidget *widget,
 
 /**
  * ctk_widget_get_pointer:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @x: (out) (allow-none): return location for the X coordinate, or %NULL
  * @y: (out) (allow-none): return location for the Y coordinate, or %NULL
  *
@@ -11812,11 +11812,11 @@ ctk_widget_get_device_events (GtkWidget *widget,
  * Deprecated: 3.4: Use gdk_window_get_device_position() instead.
  **/
 void
-ctk_widget_get_pointer (GtkWidget *widget,
+ctk_widget_get_pointer (CtkWidget *widget,
 			gint	  *x,
 			gint	  *y)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -11848,8 +11848,8 @@ ctk_widget_get_pointer (GtkWidget *widget,
 
 /**
  * ctk_widget_is_ancestor:
- * @widget: a #GtkWidget
- * @ancestor: another #GtkWidget
+ * @widget: a #CtkWidget
+ * @ancestor: another #CtkWidget
  *
  * Determines whether @widget is somewhere inside @ancestor, possibly with
  * intermediate containers.
@@ -11858,8 +11858,8 @@ ctk_widget_get_pointer (GtkWidget *widget,
  *    grandchild, great grandchild, etc.
  **/
 gboolean
-ctk_widget_is_ancestor (GtkWidget *widget,
-			GtkWidget *ancestor)
+ctk_widget_is_ancestor (CtkWidget *widget,
+			CtkWidget *ancestor)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
   g_return_val_if_fail (ancestor != NULL, FALSE);
@@ -11878,7 +11878,7 @@ static GQuark quark_composite_name = 0;
 
 /**
  * ctk_widget_set_composite_name:
- * @widget: a #GtkWidget.
+ * @widget: a #CtkWidget.
  * @name: the name to set
  *
  * Sets a widgets composite name. The widget must be
@@ -11887,7 +11887,7 @@ static GQuark quark_composite_name = 0;
  * Deprecated: 3.10: Use ctk_widget_class_set_template(), or don’t use this API at all.
  **/
 void
-ctk_widget_set_composite_name (GtkWidget   *widget,
+ctk_widget_set_composite_name (CtkWidget   *widget,
 			       const gchar *name)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -11905,7 +11905,7 @@ ctk_widget_set_composite_name (GtkWidget   *widget,
 
 /**
  * ctk_widget_get_composite_name:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Obtains the composite name of a widget.
  *
@@ -11916,9 +11916,9 @@ ctk_widget_set_composite_name (GtkWidget   *widget,
  * Deprecated: 3.10: Use ctk_widget_class_set_template(), or don’t use this API at all.
  **/
 gchar*
-ctk_widget_get_composite_name (GtkWidget *widget)
+ctk_widget_get_composite_name (CtkWidget *widget)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
@@ -11967,11 +11967,11 @@ ctk_widget_pop_composite_child (void)
 }
 
 static void
-ctk_widget_emit_direction_changed (GtkWidget        *widget,
-                                   GtkTextDirection  old_dir)
+ctk_widget_emit_direction_changed (CtkWidget        *widget,
+                                   CtkTextDirection  old_dir)
 {
-  GtkTextDirection direction;
-  GtkStateFlags state;
+  CtkTextDirection direction;
+  CtkStateFlags state;
 
   ctk_widget_update_pango_context (widget);
 
@@ -12002,7 +12002,7 @@ ctk_widget_emit_direction_changed (GtkWidget        *widget,
 
 /**
  * ctk_widget_set_direction:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @dir:    the new direction
  *
  * Sets the reading direction on a particular widget. This direction
@@ -12019,10 +12019,10 @@ ctk_widget_emit_direction_changed (GtkWidget        *widget,
  * set by ctk_widget_set_default_direction() will be used.
  **/
 void
-ctk_widget_set_direction (GtkWidget        *widget,
-                          GtkTextDirection  dir)
+ctk_widget_set_direction (CtkWidget        *widget,
+                          CtkTextDirection  dir)
 {
-  GtkTextDirection old_dir;
+  CtkTextDirection old_dir;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (dir >= CTK_TEXT_DIR_NONE && dir <= CTK_TEXT_DIR_RTL);
@@ -12037,15 +12037,15 @@ ctk_widget_set_direction (GtkWidget        *widget,
 
 /**
  * ctk_widget_get_direction:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Gets the reading direction for a particular widget. See
  * ctk_widget_set_direction().
  *
  * Returns: the reading direction for the widget.
  **/
-GtkTextDirection
-ctk_widget_get_direction (GtkWidget *widget)
+CtkTextDirection
+ctk_widget_get_direction (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), CTK_TEXT_DIR_LTR);
 
@@ -12056,9 +12056,9 @@ ctk_widget_get_direction (GtkWidget *widget)
 }
 
 static void
-ctk_widget_set_default_direction_recurse (GtkWidget *widget, gpointer data)
+ctk_widget_set_default_direction_recurse (CtkWidget *widget, gpointer data)
 {
-  GtkTextDirection old_dir = GPOINTER_TO_UINT (data);
+  CtkTextDirection old_dir = GPOINTER_TO_UINT (data);
 
   g_object_ref (widget);
 
@@ -12082,14 +12082,14 @@ ctk_widget_set_default_direction_recurse (GtkWidget *widget, gpointer data)
  * direction has not been explicitly set by ctk_widget_set_direction().
  **/
 void
-ctk_widget_set_default_direction (GtkTextDirection dir)
+ctk_widget_set_default_direction (CtkTextDirection dir)
 {
   g_return_if_fail (dir == CTK_TEXT_DIR_RTL || dir == CTK_TEXT_DIR_LTR);
 
   if (dir != ctk_default_direction)
     {
       GList *toplevels, *tmp_list;
-      GtkTextDirection old_dir = ctk_default_direction;
+      CtkTextDirection old_dir = ctk_default_direction;
 
       ctk_default_direction = dir;
 
@@ -12116,7 +12116,7 @@ ctk_widget_set_default_direction (GtkTextDirection dir)
  *
  * Returns: the current default direction.
  **/
-GtkTextDirection
+CtkTextDirection
 ctk_widget_get_default_direction (void)
 {
   return ctk_default_direction;
@@ -12125,15 +12125,15 @@ ctk_widget_get_default_direction (void)
 static void
 ctk_widget_constructed (GObject *object)
 {
-  GtkWidget *widget = CTK_WIDGET (object);
-  GtkWidgetPath *path;
+  CtkWidget *widget = CTK_WIDGET (object);
+  CtkWidgetPath *path;
 
   /* As strange as it may seem, this may happen on object construction.
    * init() implementations of parent types may eventually call this function,
    * each with its corresponding GType, which could leave a child
    * implementation with a wrong widget type in the widget path
    */
-  path = (GtkWidgetPath*)g_object_get_qdata (object, quark_widget_path);
+  path = (CtkWidgetPath*)g_object_get_qdata (object, quark_widget_path);
   if (path && G_OBJECT_TYPE (widget) != ctk_widget_path_get_object_type (path))
     g_object_set_qdata (object, quark_widget_path, NULL);
 
@@ -12143,8 +12143,8 @@ ctk_widget_constructed (GObject *object)
 static void
 ctk_widget_dispose (GObject *object)
 {
-  GtkWidget *widget = CTK_WIDGET (object);
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidget *widget = CTK_WIDGET (object);
+  CtkWidgetPrivate *priv = widget->priv;
   GSList *sizegroups;
 
   if (priv->parent)
@@ -12166,7 +12166,7 @@ ctk_widget_dispose (GObject *object)
   sizegroups = _ctk_widget_get_sizegroups (widget);
   while (sizegroups)
     {
-      GtkSizeGroup *size_group;
+      CtkSizeGroup *size_group;
 
       size_group = sizegroups->data;
       sizegroups = sizegroups->next;
@@ -12198,7 +12198,7 @@ finalize_assertion_weak_ref (gpointer data,
 }
 
 static FinalizeAssertion *
-finalize_assertion_new (GtkWidget           *widget,
+finalize_assertion_new (CtkWidget           *widget,
 			GType                widget_type,
 			AutomaticChildClass *child_class)
 {
@@ -12227,10 +12227,10 @@ finalize_assertion_new (GtkWidget           *widget,
 }
 
 static GSList *
-build_finalize_assertion_list (GtkWidget *widget)
+build_finalize_assertion_list (CtkWidget *widget)
 {
   GType class_type;
-  GtkWidgetClass *class;
+  CtkWidgetClass *class;
   GSList *l, *list = NULL;
 
   for (class = CTK_WIDGET_GET_CLASS (widget);
@@ -12257,15 +12257,15 @@ build_finalize_assertion_list (GtkWidget *widget)
 #endif /* G_ENABLE_CONSISTENCY_CHECKS */
 
 static void
-ctk_widget_real_destroy (GtkWidget *object)
+ctk_widget_real_destroy (CtkWidget *object)
 {
   /* ctk_object_destroy() will already hold a refcount on object */
-  GtkWidget *widget = CTK_WIDGET (object);
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidget *widget = CTK_WIDGET (object);
+  CtkWidgetPrivate *priv = widget->priv;
 
   if (g_object_get_qdata (G_OBJECT (widget), quark_auto_children))
     {
-      GtkWidgetClass *class;
+      CtkWidgetClass *class;
       GSList *l;
 
 #ifdef G_ENABLE_CONSISTENCY_CHECKS
@@ -12357,8 +12357,8 @@ ctk_widget_real_destroy (GtkWidget *object)
 static void
 ctk_widget_finalize (GObject *object)
 {
-  GtkWidget *widget = CTK_WIDGET (object);
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidget *widget = CTK_WIDGET (object);
+  CtkWidgetPrivate *priv = widget->priv;
   GList *l;
 
   ctk_grab_remove (widget);
@@ -12405,9 +12405,9 @@ ctk_widget_finalize (GObject *object)
  *****************************************/
 
 static void
-ctk_widget_real_map (GtkWidget *widget)
+ctk_widget_real_map (CtkWidget *widget)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
 
   g_assert (_ctk_widget_get_realized (widget));
 
@@ -12429,9 +12429,9 @@ ctk_widget_real_map (GtkWidget *widget)
  *****************************************/
 
 static void
-ctk_widget_real_unmap (GtkWidget *widget)
+ctk_widget_real_unmap (CtkWidget *widget)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
 
   if (_ctk_widget_get_mapped (widget))
     {
@@ -12451,9 +12451,9 @@ ctk_widget_real_unmap (GtkWidget *widget)
  *****************************************/
 
 static void
-ctk_widget_real_realize (GtkWidget *widget)
+ctk_widget_real_realize (CtkWidget *widget)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
 
   g_assert (!_ctk_widget_get_has_window (widget));
 
@@ -12474,9 +12474,9 @@ ctk_widget_real_realize (GtkWidget *widget)
  *****************************************/
 
 static void
-ctk_widget_real_unrealize (GtkWidget *widget)
+ctk_widget_real_unrealize (CtkWidget *widget)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
 
   g_assert (!widget->priv->mapped);
 
@@ -12488,7 +12488,7 @@ ctk_widget_real_unrealize (GtkWidget *widget)
 
   if (CTK_IS_CONTAINER (widget))
     ctk_container_forall (CTK_CONTAINER (widget),
-			  (GtkCallback) ctk_widget_unrealize,
+			  (CtkCallback) ctk_widget_unrealize,
 			  NULL);
 
   if (_ctk_widget_get_has_window (widget))
@@ -12509,12 +12509,12 @@ ctk_widget_real_unrealize (GtkWidget *widget)
 }
 
 static void
-ctk_widget_real_adjust_size_request (GtkWidget      *widget,
-                                     GtkOrientation  orientation,
+ctk_widget_real_adjust_size_request (CtkWidget      *widget,
+                                     CtkOrientation  orientation,
                                      gint           *minimum_size,
                                      gint           *natural_size)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
 
   if (orientation == CTK_ORIENTATION_HORIZONTAL && priv->width > 0)
     *minimum_size = MAX (*minimum_size, priv->width);
@@ -12540,11 +12540,11 @@ ctk_widget_real_adjust_size_request (GtkWidget      *widget,
 }
 
 static void
-ctk_widget_real_adjust_baseline_request (GtkWidget *widget,
+ctk_widget_real_adjust_baseline_request (CtkWidget *widget,
 					 gint      *minimum_baseline,
 					 gint      *natural_baseline)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
 
   if (priv->height >= 0)
     {
@@ -12560,7 +12560,7 @@ ctk_widget_real_adjust_baseline_request (GtkWidget *widget,
 }
 
 static gboolean
-is_my_window (GtkWidget *widget,
+is_my_window (CtkWidget *widget,
               GdkWindow *window)
 {
   gpointer user_data;
@@ -12571,13 +12571,13 @@ is_my_window (GtkWidget *widget,
 
 /*
  * _ctk_widget_get_device_window:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @device: a #GdkDevice
  *
  * Returns: (nullable): the window of @widget that @device is in, or %NULL
  */
 GdkWindow *
-_ctk_widget_get_device_window (GtkWidget *widget,
+_ctk_widget_get_device_window (CtkWidget *widget,
                                GdkDevice *device)
 {
   GdkWindow *window;
@@ -12596,7 +12596,7 @@ _ctk_widget_get_device_window (GtkWidget *widget,
 }
 
 static void
-list_devices (GtkWidget        *widget,
+list_devices (CtkWidget        *widget,
               GdkDeviceManager *device_manager,
               GdkDeviceType     device_type,
               GList           **result)
@@ -12623,7 +12623,7 @@ list_devices (GtkWidget        *widget,
 
 /*
  * _ctk_widget_list_devices:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Returns the list of #GdkDevices that is currently on top
  * of any window belonging to @widget.
@@ -12631,7 +12631,7 @@ list_devices (GtkWidget        *widget,
  * by GTK+ and must not be freed.
  */
 GList *
-_ctk_widget_list_devices (GtkWidget *widget)
+_ctk_widget_list_devices (CtkWidget *widget)
 {
   GdkDisplay *display;
   GdkDeviceManager *device_manager;
@@ -12655,7 +12655,7 @@ _ctk_widget_list_devices (GtkWidget *widget)
 }
 
 static void
-synth_crossing (GtkWidget       *widget,
+synth_crossing (CtkWidget       *widget,
                 GdkEventType     type,
                 GdkWindow       *window,
                 GdkDevice       *device,
@@ -12696,8 +12696,8 @@ synth_crossing (GtkWidget       *widget,
 
 /*
  * _ctk_widget_synthesize_crossing:
- * @from: the #GtkWidget the virtual pointer is leaving.
- * @to: the #GtkWidget the virtual pointer is moving to.
+ * @from: the #CtkWidget the virtual pointer is leaving.
+ * @to: the #CtkWidget the virtual pointer is moving to.
  * @mode: the #GdkCrossingMode to place on the synthesized events.
  *
  * Generate crossing event(s) on widget state (sensitivity) or GTK+ grab change.
@@ -12726,8 +12726,8 @@ synth_crossing (GtkWidget       *widget,
  *   - enter notify on real pointer window, detail Ancestor
  */
 void
-_ctk_widget_synthesize_crossing (GtkWidget       *from,
-				 GtkWidget       *to,
+_ctk_widget_synthesize_crossing (CtkWidget       *from,
+				 CtkWidget       *to,
                                  GdkDevice       *device,
 				 GdkCrossingMode  mode)
 {
@@ -12885,12 +12885,12 @@ _ctk_widget_synthesize_crossing (GtkWidget       *from,
 }
 
 static void
-ctk_widget_propagate_state (GtkWidget    *widget,
-                            GtkStateData *data)
+ctk_widget_propagate_state (CtkWidget    *widget,
+                            CtkStateData *data)
 {
-  GtkWidgetPrivate *priv = widget->priv;
-  GtkStateFlags new_flags, old_flags = priv->state_flags;
-  GtkStateType old_state;
+  CtkWidgetPrivate *priv = widget->priv;
+  CtkStateFlags new_flags, old_flags = priv->state_flags;
+  CtkStateType old_state;
   gint new_scale_factor = ctk_widget_get_scale_factor (widget);
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
@@ -12906,7 +12906,7 @@ ctk_widget_propagate_state (GtkWidget    *widget,
 
   if (ctk_widget_is_focus (widget) && !ctk_widget_is_sensitive (widget))
     {
-      GtkWidget *window;
+      CtkWidget *window;
 
       window = _ctk_widget_get_toplevel (widget);
 
@@ -12973,7 +12973,7 @@ ctk_widget_propagate_state (GtkWidget    *widget,
 
       if (CTK_IS_CONTAINER (widget))
         {
-          GtkStateData child_data;
+          CtkStateData child_data;
 
           /* Make sure to only propagate the right states further */
           child_data.old_scale_factor = new_scale_factor;
@@ -12981,7 +12981,7 @@ ctk_widget_propagate_state (GtkWidget    *widget,
           child_data.flags_to_unset = data->flags_to_unset & CTK_STATE_FLAGS_DO_PROPAGATE;
 
           ctk_container_forall (CTK_CONTAINER (widget),
-                                (GtkCallback) ctk_widget_propagate_state,
+                                (CtkCallback) ctk_widget_propagate_state,
                                 &child_data);
         }
 
@@ -12991,7 +12991,7 @@ ctk_widget_propagate_state (GtkWidget    *widget,
 
 /**
  * ctk_widget_shape_combine_region:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @region: (allow-none): shape to be added, or %NULL to remove an existing shape
  *
  * Sets a shape for this widget’s GDK window. This allows for
@@ -13001,10 +13001,10 @@ ctk_widget_propagate_state (GtkWidget    *widget,
  * Since: 3.0
  **/
 void
-ctk_widget_shape_combine_region (GtkWidget *widget,
+ctk_widget_shape_combine_region (CtkWidget *widget,
                                  cairo_region_t *region)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
   /*  set_shape doesn't work on widgets without GDK window */
@@ -13038,9 +13038,9 @@ ctk_widget_shape_combine_region (GtkWidget *widget,
 }
 
 static void
-ctk_widget_update_input_shape (GtkWidget *widget)
+ctk_widget_update_input_shape (CtkWidget *widget)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
 
   /* set shape if widget has a GDK window already.
    * otherwise the shape is scheduled to be set by ctk_widget_realize().
@@ -13078,7 +13078,7 @@ ctk_widget_update_input_shape (GtkWidget *widget)
 }
 
 void
-ctk_widget_set_csd_input_shape (GtkWidget            *widget,
+ctk_widget_set_csd_input_shape (CtkWidget            *widget,
                                 const cairo_region_t *region)
 {
   if (region == NULL)
@@ -13092,7 +13092,7 @@ ctk_widget_set_csd_input_shape (GtkWidget            *widget,
 
 /**
  * ctk_widget_input_shape_combine_region:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @region: (allow-none): shape to be added, or %NULL to remove an existing shape
  *
  * Sets an input shape for this widget’s GDK window. This allows for
@@ -13102,7 +13102,7 @@ ctk_widget_set_csd_input_shape (GtkWidget            *widget,
  * Since: 3.0
  **/
 void
-ctk_widget_input_shape_combine_region (GtkWidget      *widget,
+ctk_widget_input_shape_combine_region (CtkWidget      *widget,
                                        cairo_region_t *region)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -13124,16 +13124,16 @@ ctk_widget_input_shape_combine_region (GtkWidget      *widget,
 
 /**
  * ctk_widget_class_install_style_property_parser: (skip)
- * @klass: a #GtkWidgetClass
+ * @klass: a #CtkWidgetClass
  * @pspec: the #GParamSpec for the style property
  * @parser: the parser for the style property
  *
  * Installs a style property on a widget class.
  **/
 void
-ctk_widget_class_install_style_property_parser (GtkWidgetClass     *klass,
+ctk_widget_class_install_style_property_parser (CtkWidgetClass     *klass,
 						GParamSpec         *pspec,
-						GtkRcPropertyParser parser)
+						CtkRcPropertyParser parser)
 {
   g_return_if_fail (CTK_IS_WIDGET_CLASS (klass));
   g_return_if_fail (G_IS_PARAM_SPEC (pspec));
@@ -13155,17 +13155,17 @@ ctk_widget_class_install_style_property_parser (GtkWidgetClass     *klass,
 
 /**
  * ctk_widget_class_install_style_property:
- * @klass: a #GtkWidgetClass
+ * @klass: a #CtkWidgetClass
  * @pspec: the #GParamSpec for the property
  *
  * Installs a style property on a widget class. The parser for the
  * style property is determined by the value type of @pspec.
  **/
 void
-ctk_widget_class_install_style_property (GtkWidgetClass *klass,
+ctk_widget_class_install_style_property (CtkWidgetClass *klass,
 					 GParamSpec     *pspec)
 {
-  GtkRcPropertyParser parser;
+  CtkRcPropertyParser parser;
 
   g_return_if_fail (CTK_IS_WIDGET_CLASS (klass));
   g_return_if_fail (G_IS_PARAM_SPEC (pspec));
@@ -13177,7 +13177,7 @@ ctk_widget_class_install_style_property (GtkWidgetClass *klass,
 
 /**
  * ctk_widget_class_find_style_property:
- * @klass: a #GtkWidgetClass
+ * @klass: a #CtkWidgetClass
  * @property_name: the name of the style property to find
  *
  * Finds a style property of a widget class by name.
@@ -13188,7 +13188,7 @@ ctk_widget_class_install_style_property (GtkWidgetClass *klass,
  * Since: 2.2
  */
 GParamSpec*
-ctk_widget_class_find_style_property (GtkWidgetClass *klass,
+ctk_widget_class_find_style_property (CtkWidgetClass *klass,
 				      const gchar    *property_name)
 {
   g_return_val_if_fail (property_name != NULL, NULL);
@@ -13201,7 +13201,7 @@ ctk_widget_class_find_style_property (GtkWidgetClass *klass,
 
 /**
  * ctk_widget_class_list_style_properties:
- * @klass: a #GtkWidgetClass
+ * @klass: a #CtkWidgetClass
  * @n_properties: (out): location to return the number of style properties found
  *
  * Returns all style properties of a widget class.
@@ -13213,7 +13213,7 @@ ctk_widget_class_find_style_property (GtkWidgetClass *klass,
  * Since: 2.2
  */
 GParamSpec**
-ctk_widget_class_list_style_properties (GtkWidgetClass *klass,
+ctk_widget_class_list_style_properties (CtkWidgetClass *klass,
 					guint          *n_properties)
 {
   GParamSpec **pspecs;
@@ -13230,14 +13230,14 @@ ctk_widget_class_list_style_properties (GtkWidgetClass *klass,
 
 /**
  * ctk_widget_style_get_property:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @property_name: the name of a style property
  * @value: location to return the property value
  *
  * Gets the value of a style property of @widget.
  */
 void
-ctk_widget_style_get_property (GtkWidget   *widget,
+ctk_widget_style_get_property (CtkWidget   *widget,
 			       const gchar *property_name,
 			       GValue      *value)
 {
@@ -13259,7 +13259,7 @@ ctk_widget_style_get_property (GtkWidget   *widget,
 	       property_name);
   else
     {
-      GtkStyleContext *context;
+      CtkStyleContext *context;
       const GValue *peek_value;
 
       context = _ctk_widget_get_style_context (widget);
@@ -13285,7 +13285,7 @@ ctk_widget_style_get_property (GtkWidget   *widget,
 
 /**
  * ctk_widget_style_get_valist:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @first_property_name: the name of the first property to get
  * @var_args: a va_list of pairs of property names and
  *     locations to return the property values, starting with the location
@@ -13295,11 +13295,11 @@ ctk_widget_style_get_property (GtkWidget   *widget,
  * bindings.
  */
 void
-ctk_widget_style_get_valist (GtkWidget   *widget,
+ctk_widget_style_get_valist (CtkWidget   *widget,
 			     const gchar *first_property_name,
 			     va_list      var_args)
 {
-  GtkStyleContext *context;
+  CtkStyleContext *context;
   const gchar *name;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -13348,7 +13348,7 @@ ctk_widget_style_get_valist (GtkWidget   *widget,
 
 /**
  * ctk_widget_style_get:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @first_property_name: the name of the first property to get
  * @...: pairs of property names and locations to return the
  *     property values, starting with the location for
@@ -13357,7 +13357,7 @@ ctk_widget_style_get_valist (GtkWidget   *widget,
  * Gets the values of a multiple style properties of @widget.
  */
 void
-ctk_widget_style_get (GtkWidget   *widget,
+ctk_widget_style_get (CtkWidget   *widget,
 		      const gchar *first_property_name,
 		      ...)
 {
@@ -13373,46 +13373,46 @@ ctk_widget_style_get (GtkWidget   *widget,
 /**
  * ctk_requisition_new:
  *
- * Allocates a new #GtkRequisition-struct and initializes its elements to zero.
+ * Allocates a new #CtkRequisition-struct and initializes its elements to zero.
  *
- * Returns: a new empty #GtkRequisition. The newly allocated #GtkRequisition should
+ * Returns: a new empty #CtkRequisition. The newly allocated #CtkRequisition should
  *   be freed with ctk_requisition_free().
  *
  * Since: 3.0
  */
-GtkRequisition *
+CtkRequisition *
 ctk_requisition_new (void)
 {
-  return g_slice_new0 (GtkRequisition);
+  return g_slice_new0 (CtkRequisition);
 }
 
 /**
  * ctk_requisition_copy:
- * @requisition: a #GtkRequisition
+ * @requisition: a #CtkRequisition
  *
- * Copies a #GtkRequisition.
+ * Copies a #CtkRequisition.
  *
  * Returns: a copy of @requisition
  **/
-GtkRequisition *
-ctk_requisition_copy (const GtkRequisition *requisition)
+CtkRequisition *
+ctk_requisition_copy (const CtkRequisition *requisition)
 {
-  return g_slice_dup (GtkRequisition, requisition);
+  return g_slice_dup (CtkRequisition, requisition);
 }
 
 /**
  * ctk_requisition_free:
- * @requisition: a #GtkRequisition
+ * @requisition: a #CtkRequisition
  *
- * Frees a #GtkRequisition.
+ * Frees a #CtkRequisition.
  **/
 void
-ctk_requisition_free (GtkRequisition *requisition)
+ctk_requisition_free (CtkRequisition *requisition)
 {
-  g_slice_free (GtkRequisition, requisition);
+  g_slice_free (CtkRequisition, requisition);
 }
 
-G_DEFINE_BOXED_TYPE (GtkRequisition, ctk_requisition,
+G_DEFINE_BOXED_TYPE (CtkRequisition, ctk_requisition,
                      ctk_requisition_copy,
                      ctk_requisition_free)
 
@@ -13430,10 +13430,10 @@ G_DEFINE_BOXED_TYPE (GtkRequisition, ctk_requisition,
  * Since: 3.2
  **/
 void
-ctk_widget_class_set_accessible_type (GtkWidgetClass *widget_class,
+ctk_widget_class_set_accessible_type (CtkWidgetClass *widget_class,
                                       GType           type)
 {
-  GtkWidgetClassPrivate *priv;
+  CtkWidgetClassPrivate *priv;
 
   g_return_if_fail (CTK_IS_WIDGET_CLASS (widget_class));
   g_return_if_fail (g_type_is_a (type, widget_class->priv->accessible_type));
@@ -13468,10 +13468,10 @@ ctk_widget_class_set_accessible_type (GtkWidgetClass *widget_class,
  * Since: 3.2
  **/
 void
-ctk_widget_class_set_accessible_role (GtkWidgetClass *widget_class,
+ctk_widget_class_set_accessible_role (CtkWidgetClass *widget_class,
                                       AtkRole         role)
 {
-  GtkWidgetClassPrivate *priv;
+  CtkWidgetClassPrivate *priv;
 
   g_return_if_fail (CTK_IS_WIDGET_CLASS (widget_class));
 
@@ -13482,7 +13482,7 @@ ctk_widget_class_set_accessible_role (GtkWidgetClass *widget_class,
 
 /**
  * _ctk_widget_peek_accessible:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Gets the accessible for @widget, if it has been created yet.
  * Otherwise, this function returns %NULL. If the @widget’s implementation
@@ -13493,14 +13493,14 @@ ctk_widget_class_set_accessible_role (GtkWidgetClass *widget_class,
  *     created yet.
  **/
 AtkObject *
-_ctk_widget_peek_accessible (GtkWidget *widget)
+_ctk_widget_peek_accessible (CtkWidget *widget)
 {
   return widget->priv->accessible;
 }
 
 /**
  * ctk_widget_get_accessible:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Returns the accessible object that describes the widget to an
  * assistive technology.
@@ -13518,7 +13518,7 @@ _ctk_widget_peek_accessible (GtkWidget *widget)
  * Returns: (transfer none): the #AtkObject associated with @widget
  */
 AtkObject*
-ctk_widget_get_accessible (GtkWidget *widget)
+ctk_widget_get_accessible (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
@@ -13526,7 +13526,7 @@ ctk_widget_get_accessible (GtkWidget *widget)
 }
 
 static AtkObject*
-ctk_widget_real_get_accessible (GtkWidget *widget)
+ctk_widget_real_get_accessible (CtkWidget *widget)
 {
   AtkObject* accessible;
 
@@ -13534,8 +13534,8 @@ ctk_widget_real_get_accessible (GtkWidget *widget)
 
   if (!accessible)
     {
-      GtkWidgetClass *widget_class;
-      GtkWidgetClassPrivate *priv;
+      CtkWidgetClass *widget_class;
+      CtkWidgetClassPrivate *priv;
       AtkObjectFactory *factory;
       AtkRegistry *default_registry;
 
@@ -13581,7 +13581,7 @@ ctk_widget_real_get_accessible (GtkWidget *widget)
 
 /*
  * Initialize a AtkImplementorIface instance’s virtual pointers as
- * appropriate to this implementor’s class (GtkWidget).
+ * appropriate to this implementor’s class (CtkWidget).
  */
 static void
 ctk_widget_accessible_interface_init (AtkImplementorIface *iface)
@@ -13605,9 +13605,9 @@ ctk_widget_ref_accessible (AtkImplementor *implementor)
  */
 
 static void
-ctk_widget_update_computed_expand (GtkWidget *widget)
+ctk_widget_update_computed_expand (CtkWidget *widget)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
 
   priv = widget->priv;
 
@@ -13648,7 +13648,7 @@ ctk_widget_update_computed_expand (GtkWidget *widget)
 
 /**
  * ctk_widget_queue_compute_expand:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Mark @widget as needing to recompute its expand flags. Call
  * this function when setting legacy expand child properties
@@ -13657,9 +13657,9 @@ ctk_widget_update_computed_expand (GtkWidget *widget)
  * See ctk_widget_compute_expand().
  */
 void
-ctk_widget_queue_compute_expand (GtkWidget *widget)
+ctk_widget_queue_compute_expand (CtkWidget *widget)
 {
-  GtkWidget *parent;
+  CtkWidget *parent;
   gboolean changed_anything;
 
   if (widget->priv->need_compute_expand)
@@ -13715,8 +13715,8 @@ ctk_widget_queue_compute_expand (GtkWidget *widget)
  * Returns: whether widget tree rooted here should be expanded
  */
 gboolean
-ctk_widget_compute_expand (GtkWidget      *widget,
-                           GtkOrientation  orientation)
+ctk_widget_compute_expand (CtkWidget      *widget,
+                           CtkOrientation  orientation)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -13733,14 +13733,14 @@ ctk_widget_compute_expand (GtkWidget      *widget,
 }
 
 static void
-ctk_widget_set_expand (GtkWidget     *widget,
-                       GtkOrientation orientation,
+ctk_widget_set_expand (CtkWidget     *widget,
+                       CtkOrientation orientation,
                        gboolean       expand)
 {
   gint expand_prop;
   gint expand_set_prop;
   gboolean was_both;
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -13786,11 +13786,11 @@ ctk_widget_set_expand (GtkWidget     *widget,
 }
 
 static void
-ctk_widget_set_expand_set (GtkWidget      *widget,
-                           GtkOrientation  orientation,
+ctk_widget_set_expand_set (CtkWidget      *widget,
+                           CtkOrientation  orientation,
                            gboolean        set)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
   gint prop;
 
   priv = widget->priv;
@@ -13824,7 +13824,7 @@ ctk_widget_set_expand_set (GtkWidget      *widget,
  * @widget: the widget
  *
  * Gets whether the widget would like any available extra horizontal
- * space. When a user resizes a #GtkWindow, widgets with expand=TRUE
+ * space. When a user resizes a #CtkWindow, widgets with expand=TRUE
  * generally receive the extra space. For example, a list or
  * scrollable area or document in your window would often be set to
  * expand.
@@ -13841,7 +13841,7 @@ ctk_widget_set_expand_set (GtkWidget      *widget,
  * Returns: whether hexpand flag is set
  */
 gboolean
-ctk_widget_get_hexpand (GtkWidget *widget)
+ctk_widget_get_hexpand (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -13854,7 +13854,7 @@ ctk_widget_get_hexpand (GtkWidget *widget)
  * @expand: whether to expand
  *
  * Sets whether the widget would like any available extra horizontal
- * space. When a user resizes a #GtkWindow, widgets with expand=TRUE
+ * space. When a user resizes a #CtkWindow, widgets with expand=TRUE
  * generally receive the extra space. For example, a list or
  * scrollable area or document in your window would often be set to
  * expand.
@@ -13868,7 +13868,7 @@ ctk_widget_get_hexpand (GtkWidget *widget)
  * its current children and state, call ctk_widget_compute_expand(). A
  * container can decide how the expandability of children affects the
  * expansion of the container by overriding the compute_expand virtual
- * method on #GtkWidget.).
+ * method on #CtkWidget.).
  *
  * Setting hexpand explicitly with this function will override the
  * automatic expand behavior.
@@ -13880,7 +13880,7 @@ ctk_widget_get_hexpand (GtkWidget *widget)
  * value to be used, rather than looking at children and widget state.
  */
 void
-ctk_widget_set_hexpand (GtkWidget      *widget,
+ctk_widget_set_hexpand (CtkWidget      *widget,
                         gboolean        expand)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -13906,7 +13906,7 @@ ctk_widget_set_hexpand (GtkWidget      *widget,
  * Returns: whether hexpand has been explicitly set
  */
 gboolean
-ctk_widget_get_hexpand_set (GtkWidget      *widget)
+ctk_widget_get_hexpand_set (CtkWidget      *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -13935,7 +13935,7 @@ ctk_widget_get_hexpand_set (GtkWidget      *widget)
  * for completeness and consistency.
  */
 void
-ctk_widget_set_hexpand_set (GtkWidget      *widget,
+ctk_widget_set_hexpand_set (CtkWidget      *widget,
                             gboolean        set)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -13956,7 +13956,7 @@ ctk_widget_set_hexpand_set (GtkWidget      *widget,
  * Returns: whether vexpand flag is set
  */
 gboolean
-ctk_widget_get_vexpand (GtkWidget *widget)
+ctk_widget_get_vexpand (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -13974,7 +13974,7 @@ ctk_widget_get_vexpand (GtkWidget *widget)
  * See ctk_widget_set_hexpand() for more detail.
  */
 void
-ctk_widget_set_vexpand (GtkWidget      *widget,
+ctk_widget_set_vexpand (CtkWidget      *widget,
                         gboolean        expand)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -13994,7 +13994,7 @@ ctk_widget_set_vexpand (GtkWidget      *widget,
  * Returns: whether vexpand has been explicitly set
  */
 gboolean
-ctk_widget_get_vexpand_set (GtkWidget      *widget)
+ctk_widget_get_vexpand_set (CtkWidget      *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -14012,7 +14012,7 @@ ctk_widget_get_vexpand_set (GtkWidget      *widget)
  * See ctk_widget_set_hexpand_set() for more detail.
  */
 void
-ctk_widget_set_vexpand_set (GtkWidget      *widget,
+ctk_widget_set_vexpand_set (CtkWidget      *widget,
                             gboolean        set)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -14021,7 +14021,7 @@ ctk_widget_set_vexpand_set (GtkWidget      *widget,
 }
 
 /*
- * GtkBuildable implementation
+ * CtkBuildable implementation
  */
 static GQuark		 quark_builder_has_default = 0;
 static GQuark		 quark_builder_has_focus = 0;
@@ -14029,7 +14029,7 @@ static GQuark		 quark_builder_atk_relations = 0;
 static GQuark            quark_builder_set_name = 0;
 
 static void
-ctk_widget_buildable_interface_init (GtkBuildableIface *iface)
+ctk_widget_buildable_interface_init (CtkBuildableIface *iface)
 {
   quark_builder_has_default = g_quark_from_static_string ("ctk-builder-has-default");
   quark_builder_has_focus = g_quark_from_static_string ("ctk-builder-has-focus");
@@ -14046,7 +14046,7 @@ ctk_widget_buildable_interface_init (GtkBuildableIface *iface)
 }
 
 static void
-ctk_widget_buildable_set_name (GtkBuildable *buildable,
+ctk_widget_buildable_set_name (CtkBuildable *buildable,
 			       const gchar  *name)
 {
   g_object_set_qdata_full (G_OBJECT (buildable), quark_builder_set_name,
@@ -14054,17 +14054,17 @@ ctk_widget_buildable_set_name (GtkBuildable *buildable,
 }
 
 static const gchar *
-ctk_widget_buildable_get_name (GtkBuildable *buildable)
+ctk_widget_buildable_get_name (CtkBuildable *buildable)
 {
   return g_object_get_qdata (G_OBJECT (buildable), quark_builder_set_name);
 }
 
 static GObject *
-ctk_widget_buildable_get_internal_child (GtkBuildable *buildable,
-					 GtkBuilder   *builder,
+ctk_widget_buildable_get_internal_child (CtkBuildable *buildable,
+					 CtkBuilder   *builder,
 					 const gchar  *childname)
 {
-  GtkWidgetClass *class;
+  CtkWidgetClass *class;
   GSList *l;
   GType internal_child_type = 0;
 
@@ -14078,7 +14078,7 @@ ctk_widget_buildable_get_internal_child (GtkBuildable *buildable,
        CTK_IS_WIDGET_CLASS (class);
        class = g_type_class_peek_parent (class))
     {
-      GtkWidgetTemplate *template = class->priv->template;
+      CtkWidgetTemplate *template = class->priv->template;
 
       if (!template)
 	continue;
@@ -14103,8 +14103,8 @@ ctk_widget_buildable_get_internal_child (GtkBuildable *buildable,
 }
 
 static void
-ctk_widget_buildable_set_buildable_property (GtkBuildable *buildable,
-					     GtkBuilder   *builder,
+ctk_widget_buildable_set_buildable_property (CtkBuildable *buildable,
+					     CtkBuilder   *builder,
 					     const gchar  *name,
 					     const GValue *value)
 {
@@ -14151,8 +14151,8 @@ free_relation (AtkRelationData *data, gpointer user_data)
 }
 
 static void
-ctk_widget_buildable_parser_finished (GtkBuildable *buildable,
-				      GtkBuilder   *builder)
+ctk_widget_buildable_parser_finished (CtkBuildable *buildable,
+				      CtkBuilder   *builder)
 {
   GSList *atk_relations;
 
@@ -14202,7 +14202,7 @@ ctk_widget_buildable_parser_finished (GtkBuildable *buildable,
 
 typedef struct
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GSList *actions;
   GSList *relations;
 } AccessibilitySubParserData;
@@ -14297,7 +14297,7 @@ accessibility_start_element (GMarkupParseContext  *context,
   else
     {
       _ctk_builder_error_unhandled_tag (data->builder, context,
-                                        "GtkWidget", element_name,
+                                        "CtkWidget", element_name,
                                         error);
     }
 }
@@ -14329,7 +14329,7 @@ static const GMarkupParser accessibility_parser =
 typedef struct
 {
   GObject *object;
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   guint    key;
   guint    modifiers;
   gchar   *signal;
@@ -14400,7 +14400,7 @@ accel_group_start_element (GMarkupParseContext  *context,
   else
     {
       _ctk_builder_error_unhandled_tag (data->builder, context,
-                                        "GtkWidget", element_name,
+                                        "CtkWidget", element_name,
                                         error);
     }
 }
@@ -14412,7 +14412,7 @@ static const GMarkupParser accel_group_parser =
 
 typedef struct
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GSList *classes;
 } StyleParserData;
 
@@ -14456,7 +14456,7 @@ style_start_element (GMarkupParseContext  *context,
   else
     {
       _ctk_builder_error_unhandled_tag (data->builder, context,
-                                        "GtkWidget", element_name,
+                                        "CtkWidget", element_name,
                                         error);
     }
 }
@@ -14467,8 +14467,8 @@ static const GMarkupParser style_parser =
   };
 
 static gboolean
-ctk_widget_buildable_custom_tag_start (GtkBuildable     *buildable,
-                                       GtkBuilder       *builder,
+ctk_widget_buildable_custom_tag_start (CtkBuildable     *buildable,
+                                       CtkBuilder       *builder,
                                        GObject          *child,
                                        const gchar      *tagname,
                                        GMarkupParser    *parser,
@@ -14518,13 +14518,13 @@ ctk_widget_buildable_custom_tag_start (GtkBuildable     *buildable,
 }
 
 void
-_ctk_widget_buildable_finish_accelerator (GtkWidget *widget,
-                                          GtkWidget *toplevel,
+_ctk_widget_buildable_finish_accelerator (CtkWidget *widget,
+                                          CtkWidget *toplevel,
                                           gpointer   user_data)
 {
   AccelGroupParserData *accel_data;
   GSList *accel_groups;
-  GtkAccelGroup *accel_group;
+  CtkAccelGroup *accel_group;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (CTK_IS_WIDGET (toplevel));
@@ -14556,8 +14556,8 @@ _ctk_widget_buildable_finish_accelerator (GtkWidget *widget,
 }
 
 static void
-ctk_widget_buildable_custom_finished (GtkBuildable *buildable,
-                                      GtkBuilder   *builder,
+ctk_widget_buildable_custom_finished (CtkBuildable *buildable,
+                                      CtkBuilder   *builder,
                                       GObject      *child,
                                       const gchar  *tagname,
                                       gpointer      user_data)
@@ -14565,7 +14565,7 @@ ctk_widget_buildable_custom_finished (GtkBuildable *buildable,
   if (strcmp (tagname, "accelerator") == 0)
     {
       AccelGroupParserData *accel_data;
-      GtkWidget *toplevel;
+      CtkWidget *toplevel;
 
       accel_data = (AccelGroupParserData*)user_data;
       g_assert (accel_data->object);
@@ -14633,7 +14633,7 @@ ctk_widget_buildable_custom_finished (GtkBuildable *buildable,
   else if (strcmp (tagname, "style") == 0)
     {
       StyleParserData *style_data = (StyleParserData *)user_data;
-      GtkStyleContext *context;
+      CtkStyleContext *context;
       GSList *l;
 
       context = _ctk_widget_get_style_context (CTK_WIDGET (buildable));
@@ -14648,15 +14648,15 @@ ctk_widget_buildable_custom_finished (GtkBuildable *buildable,
     }
 }
 
-static GtkSizeRequestMode
-ctk_widget_real_get_request_mode (GtkWidget *widget)
+static CtkSizeRequestMode
+ctk_widget_real_get_request_mode (CtkWidget *widget)
 {
   /* By default widgets don't trade size at all. */
   return CTK_SIZE_REQUEST_CONSTANT_SIZE;
 }
 
 static void
-ctk_widget_real_get_width (GtkWidget *widget,
+ctk_widget_real_get_width (CtkWidget *widget,
 			   gint      *minimum_size,
 			   gint      *natural_size)
 {
@@ -14665,7 +14665,7 @@ ctk_widget_real_get_width (GtkWidget *widget,
 }
 
 static void
-ctk_widget_real_get_height (GtkWidget *widget,
+ctk_widget_real_get_height (CtkWidget *widget,
 			    gint      *minimum_size,
 			    gint      *natural_size)
 {
@@ -14674,7 +14674,7 @@ ctk_widget_real_get_height (GtkWidget *widget,
 }
 
 static void
-ctk_widget_real_get_height_for_width (GtkWidget *widget,
+ctk_widget_real_get_height_for_width (CtkWidget *widget,
                                       gint       width,
                                       gint      *minimum_height,
                                       gint      *natural_height)
@@ -14683,7 +14683,7 @@ ctk_widget_real_get_height_for_width (GtkWidget *widget,
 }
 
 static void
-ctk_widget_real_get_width_for_height (GtkWidget *widget,
+ctk_widget_real_get_width_for_height (CtkWidget *widget,
                                       gint       height,
                                       gint      *minimum_width,
                                       gint      *natural_width)
@@ -14693,9 +14693,9 @@ ctk_widget_real_get_width_for_height (GtkWidget *widget,
 
 /**
  * ctk_widget_get_halign:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
- * Gets the value of the #GtkWidget:halign property.
+ * Gets the value of the #CtkWidget:halign property.
  *
  * For backwards compatibility reasons this method will never return
  * %CTK_ALIGN_BASELINE, but instead it will convert it to
@@ -14704,10 +14704,10 @@ ctk_widget_real_get_width_for_height (GtkWidget *widget,
  *
  * Returns: the horizontal alignment of @widget
  */
-GtkAlign
-ctk_widget_get_halign (GtkWidget *widget)
+CtkAlign
+ctk_widget_get_halign (CtkWidget *widget)
 {
-  GtkAlign align;
+  CtkAlign align;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), CTK_ALIGN_FILL);
 
@@ -14719,15 +14719,15 @@ ctk_widget_get_halign (GtkWidget *widget)
 
 /**
  * ctk_widget_set_halign:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @align: the horizontal alignment
  *
  * Sets the horizontal alignment of @widget.
- * See the #GtkWidget:halign property.
+ * See the #CtkWidget:halign property.
  */
 void
-ctk_widget_set_halign (GtkWidget *widget,
-                       GtkAlign   align)
+ctk_widget_set_halign (CtkWidget *widget,
+                       CtkAlign   align)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -14741,17 +14741,17 @@ ctk_widget_set_halign (GtkWidget *widget,
 
 /**
  * ctk_widget_get_valign_with_baseline:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
- * Gets the value of the #GtkWidget:valign property, including
+ * Gets the value of the #CtkWidget:valign property, including
  * %CTK_ALIGN_BASELINE.
  *
  * Returns: the vertical alignment of @widget
  *
  * Since: 3.10
  */
-GtkAlign
-ctk_widget_get_valign_with_baseline (GtkWidget *widget)
+CtkAlign
+ctk_widget_get_valign_with_baseline (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), CTK_ALIGN_FILL);
   return widget->priv->valign;
@@ -14759,9 +14759,9 @@ ctk_widget_get_valign_with_baseline (GtkWidget *widget)
 
 /**
  * ctk_widget_get_valign:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
- * Gets the value of the #GtkWidget:valign property.
+ * Gets the value of the #CtkWidget:valign property.
  *
  * For backwards compatibility reasons this method will never return
  * %CTK_ALIGN_BASELINE, but instead it will convert it to
@@ -14772,10 +14772,10 @@ ctk_widget_get_valign_with_baseline (GtkWidget *widget)
  *
  * Returns: the vertical alignment of @widget, ignoring baseline alignment
  */
-GtkAlign
-ctk_widget_get_valign (GtkWidget *widget)
+CtkAlign
+ctk_widget_get_valign (CtkWidget *widget)
 {
-  GtkAlign align;
+  CtkAlign align;
 
   align = ctk_widget_get_valign_with_baseline (widget);
   if (align == CTK_ALIGN_BASELINE)
@@ -14785,15 +14785,15 @@ ctk_widget_get_valign (GtkWidget *widget)
 
 /**
  * ctk_widget_set_valign:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @align: the vertical alignment
  *
  * Sets the vertical alignment of @widget.
- * See the #GtkWidget:valign property.
+ * See the #CtkWidget:valign property.
  */
 void
-ctk_widget_set_valign (GtkWidget *widget,
-                       GtkAlign   align)
+ctk_widget_set_valign (CtkWidget *widget,
+                       CtkAlign   align)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -14807,9 +14807,9 @@ ctk_widget_set_valign (GtkWidget *widget,
 
 /**
  * ctk_widget_get_margin_left:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
- * Gets the value of the #GtkWidget:margin-left property.
+ * Gets the value of the #CtkWidget:margin-left property.
  *
  * Returns: The left margin of @widget
  *
@@ -14818,7 +14818,7 @@ ctk_widget_set_valign (GtkWidget *widget,
  * Since: 3.0
  */
 gint
-ctk_widget_get_margin_left (GtkWidget *widget)
+ctk_widget_get_margin_left (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
 
@@ -14827,18 +14827,18 @@ ctk_widget_get_margin_left (GtkWidget *widget)
 
 /**
  * ctk_widget_set_margin_left:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @margin: the left margin
  *
  * Sets the left margin of @widget.
- * See the #GtkWidget:margin-left property.
+ * See the #CtkWidget:margin-left property.
  *
  * Deprecated: 3.12: Use ctk_widget_set_margin_start() instead.
  *
  * Since: 3.0
  */
 void
-ctk_widget_set_margin_left (GtkWidget *widget,
+ctk_widget_set_margin_left (CtkWidget *widget,
                             gint       margin)
 {
   gboolean rtl;
@@ -14859,9 +14859,9 @@ ctk_widget_set_margin_left (GtkWidget *widget,
 
 /**
  * ctk_widget_get_margin_right:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
- * Gets the value of the #GtkWidget:margin-right property.
+ * Gets the value of the #CtkWidget:margin-right property.
  *
  * Returns: The right margin of @widget
  *
@@ -14870,7 +14870,7 @@ ctk_widget_set_margin_left (GtkWidget *widget,
  * Since: 3.0
  */
 gint
-ctk_widget_get_margin_right (GtkWidget *widget)
+ctk_widget_get_margin_right (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
 
@@ -14879,18 +14879,18 @@ ctk_widget_get_margin_right (GtkWidget *widget)
 
 /**
  * ctk_widget_set_margin_right:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @margin: the right margin
  *
  * Sets the right margin of @widget.
- * See the #GtkWidget:margin-right property.
+ * See the #CtkWidget:margin-right property.
  *
  * Deprecated: 3.12: Use ctk_widget_set_margin_end() instead.
  *
  * Since: 3.0
  */
 void
-ctk_widget_set_margin_right (GtkWidget *widget,
+ctk_widget_set_margin_right (CtkWidget *widget,
                              gint       margin)
 {
   gboolean rtl;
@@ -14911,16 +14911,16 @@ ctk_widget_set_margin_right (GtkWidget *widget,
 
 /**
  * ctk_widget_get_margin_start:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
- * Gets the value of the #GtkWidget:margin-start property.
+ * Gets the value of the #CtkWidget:margin-start property.
  *
  * Returns: The start margin of @widget
  *
  * Since: 3.12
  */
 gint
-ctk_widget_get_margin_start (GtkWidget *widget)
+ctk_widget_get_margin_start (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
 
@@ -14932,16 +14932,16 @@ ctk_widget_get_margin_start (GtkWidget *widget)
 
 /**
  * ctk_widget_set_margin_start:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @margin: the start margin
  *
  * Sets the start margin of @widget.
- * See the #GtkWidget:margin-start property.
+ * See the #CtkWidget:margin-start property.
  *
  * Since: 3.12
  */
 void
-ctk_widget_set_margin_start (GtkWidget *widget,
+ctk_widget_set_margin_start (CtkWidget *widget,
                              gint       margin)
 {
   gint16 *start;
@@ -14968,16 +14968,16 @@ ctk_widget_set_margin_start (GtkWidget *widget,
 
 /**
  * ctk_widget_get_margin_end:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
- * Gets the value of the #GtkWidget:margin-end property.
+ * Gets the value of the #CtkWidget:margin-end property.
  *
  * Returns: The end margin of @widget
  *
  * Since: 3.12
  */
 gint
-ctk_widget_get_margin_end (GtkWidget *widget)
+ctk_widget_get_margin_end (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
 
@@ -14989,16 +14989,16 @@ ctk_widget_get_margin_end (GtkWidget *widget)
 
 /**
  * ctk_widget_set_margin_end:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @margin: the end margin
  *
  * Sets the end margin of @widget.
- * See the #GtkWidget:margin-end property.
+ * See the #CtkWidget:margin-end property.
  *
  * Since: 3.12
  */
 void
-ctk_widget_set_margin_end (GtkWidget *widget,
+ctk_widget_set_margin_end (CtkWidget *widget,
                            gint       margin)
 {
   gint16 *end;
@@ -15025,16 +15025,16 @@ ctk_widget_set_margin_end (GtkWidget *widget,
 
 /**
  * ctk_widget_get_margin_top:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
- * Gets the value of the #GtkWidget:margin-top property.
+ * Gets the value of the #CtkWidget:margin-top property.
  *
  * Returns: The top margin of @widget
  *
  * Since: 3.0
  */
 gint
-ctk_widget_get_margin_top (GtkWidget *widget)
+ctk_widget_get_margin_top (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
 
@@ -15043,16 +15043,16 @@ ctk_widget_get_margin_top (GtkWidget *widget)
 
 /**
  * ctk_widget_set_margin_top:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @margin: the top margin
  *
  * Sets the top margin of @widget.
- * See the #GtkWidget:margin-top property.
+ * See the #CtkWidget:margin-top property.
  *
  * Since: 3.0
  */
 void
-ctk_widget_set_margin_top (GtkWidget *widget,
+ctk_widget_set_margin_top (CtkWidget *widget,
                            gint       margin)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -15068,16 +15068,16 @@ ctk_widget_set_margin_top (GtkWidget *widget,
 
 /**
  * ctk_widget_get_margin_bottom:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
- * Gets the value of the #GtkWidget:margin-bottom property.
+ * Gets the value of the #CtkWidget:margin-bottom property.
  *
  * Returns: The bottom margin of @widget
  *
  * Since: 3.0
  */
 gint
-ctk_widget_get_margin_bottom (GtkWidget *widget)
+ctk_widget_get_margin_bottom (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
 
@@ -15086,16 +15086,16 @@ ctk_widget_get_margin_bottom (GtkWidget *widget)
 
 /**
  * ctk_widget_set_margin_bottom:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @margin: the bottom margin
  *
  * Sets the bottom margin of @widget.
- * See the #GtkWidget:margin-bottom property.
+ * See the #CtkWidget:margin-bottom property.
  *
  * Since: 3.0
  */
 void
-ctk_widget_set_margin_bottom (GtkWidget *widget,
+ctk_widget_set_margin_bottom (CtkWidget *widget,
                               gint       margin)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -15111,7 +15111,7 @@ ctk_widget_set_margin_bottom (GtkWidget *widget,
 
 /**
  * ctk_widget_get_clipboard:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @selection: a #GdkAtom which identifies the clipboard
  *             to use. %GDK_SELECTION_CLIPBOARD gives the
  *             default clipboard. Another common value
@@ -15130,8 +15130,8 @@ ctk_widget_set_margin_bottom (GtkWidget *widget,
  *
  * Since: 2.2
  **/
-GtkClipboard *
-ctk_widget_get_clipboard (GtkWidget *widget, GdkAtom selection)
+CtkClipboard *
+ctk_widget_get_clipboard (CtkWidget *widget, GdkAtom selection)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
   g_return_val_if_fail (ctk_widget_has_screen (widget), NULL);
@@ -15142,7 +15142,7 @@ ctk_widget_get_clipboard (GtkWidget *widget, GdkAtom selection)
 
 /**
  * ctk_widget_list_mnemonic_labels:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Returns a newly allocated list of the widgets, normally labels, for
  * which this widget is the target of a mnemonic (see for example,
@@ -15155,14 +15155,14 @@ ctk_widget_get_clipboard (GtkWidget *widget, GdkAtom selection)
  * (GFunc)g_object_ref, NULL)` first, and then unref all the
  * widgets afterwards.
 
- * Returns: (element-type GtkWidget) (transfer container): the list of
+ * Returns: (element-type CtkWidget) (transfer container): the list of
  *  mnemonic labels; free this list
  *  with g_list_free() when you are done with it.
  *
  * Since: 2.4
  **/
 GList *
-ctk_widget_list_mnemonic_labels (GtkWidget *widget)
+ctk_widget_list_mnemonic_labels (CtkWidget *widget)
 {
   GList *list = NULL;
   GSList *l;
@@ -15177,21 +15177,21 @@ ctk_widget_list_mnemonic_labels (GtkWidget *widget)
 
 /**
  * ctk_widget_add_mnemonic_label:
- * @widget: a #GtkWidget
- * @label: a #GtkWidget that acts as a mnemonic label for @widget
+ * @widget: a #CtkWidget
+ * @label: a #CtkWidget that acts as a mnemonic label for @widget
  *
  * Adds a widget to the list of mnemonic labels for
  * this widget. (See ctk_widget_list_mnemonic_labels()). Note the
  * list of mnemonic labels for the widget is cleared when the
  * widget is destroyed, so the caller must make sure to update
  * its internal state at this point as well, by using a connection
- * to the #GtkWidget::destroy signal or a weak notifier.
+ * to the #CtkWidget::destroy signal or a weak notifier.
  *
  * Since: 2.4
  **/
 void
-ctk_widget_add_mnemonic_label (GtkWidget *widget,
-                               GtkWidget *label)
+ctk_widget_add_mnemonic_label (CtkWidget *widget,
+                               CtkWidget *label)
 {
   GSList *old_list, *new_list;
 
@@ -15207,8 +15207,8 @@ ctk_widget_add_mnemonic_label (GtkWidget *widget,
 
 /**
  * ctk_widget_remove_mnemonic_label:
- * @widget: a #GtkWidget
- * @label: a #GtkWidget that was previously set as a mnemonic label for
+ * @widget: a #CtkWidget
+ * @label: a #CtkWidget that was previously set as a mnemonic label for
  *         @widget with ctk_widget_add_mnemonic_label().
  *
  * Removes a widget from the list of mnemonic labels for
@@ -15219,8 +15219,8 @@ ctk_widget_add_mnemonic_label (GtkWidget *widget,
  * Since: 2.4
  **/
 void
-ctk_widget_remove_mnemonic_label (GtkWidget *widget,
-                                  GtkWidget *label)
+ctk_widget_remove_mnemonic_label (CtkWidget *widget,
+                                  CtkWidget *label)
 {
   GSList *old_list, *new_list;
 
@@ -15237,9 +15237,9 @@ ctk_widget_remove_mnemonic_label (GtkWidget *widget,
 
 /**
  * ctk_widget_get_no_show_all:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
- * Returns the current value of the #GtkWidget:no-show-all property,
+ * Returns the current value of the #CtkWidget:no-show-all property,
  * which determines whether calls to ctk_widget_show_all()
  * will affect this widget.
  *
@@ -15248,7 +15248,7 @@ ctk_widget_remove_mnemonic_label (GtkWidget *widget,
  * Since: 2.4
  **/
 gboolean
-ctk_widget_get_no_show_all (GtkWidget *widget)
+ctk_widget_get_no_show_all (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -15257,19 +15257,19 @@ ctk_widget_get_no_show_all (GtkWidget *widget)
 
 /**
  * ctk_widget_set_no_show_all:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @no_show_all: the new value for the “no-show-all” property
  *
- * Sets the #GtkWidget:no-show-all property, which determines whether
+ * Sets the #CtkWidget:no-show-all property, which determines whether
  * calls to ctk_widget_show_all() will affect this widget.
  *
  * This is mostly for use in constructing widget hierarchies with externally
- * controlled visibility, see #GtkUIManager.
+ * controlled visibility, see #CtkUIManager.
  *
  * Since: 2.4
  **/
 void
-ctk_widget_set_no_show_all (GtkWidget *widget,
+ctk_widget_set_no_show_all (CtkWidget *widget,
 			    gboolean   no_show_all)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -15286,11 +15286,11 @@ ctk_widget_set_no_show_all (GtkWidget *widget,
 
 
 static void
-ctk_widget_real_set_has_tooltip (GtkWidget *widget,
+ctk_widget_real_set_has_tooltip (CtkWidget *widget,
 			         gboolean   has_tooltip,
 			         gboolean   force)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
 
   if (priv->has_tooltip != has_tooltip || force)
     {
@@ -15316,8 +15316,8 @@ ctk_widget_real_set_has_tooltip (GtkWidget *widget,
 
 /**
  * ctk_widget_set_tooltip_window:
- * @widget: a #GtkWidget
- * @custom_window: (allow-none): a #GtkWindow, or %NULL
+ * @widget: a #CtkWidget
+ * @custom_window: (allow-none): a #CtkWindow, or %NULL
  *
  * Replaces the default window used for displaying
  * tooltips with @custom_window. GTK+ will take care of showing and
@@ -15328,8 +15328,8 @@ ctk_widget_real_set_has_tooltip (GtkWidget *widget,
  * Since: 2.12
  */
 void
-ctk_widget_set_tooltip_window (GtkWidget *widget,
-			       GtkWindow *custom_window)
+ctk_widget_set_tooltip_window (CtkWidget *widget,
+			       CtkWindow *custom_window)
 {
   gboolean has_tooltip;
   gchar *tooltip_markup;
@@ -15354,18 +15354,18 @@ ctk_widget_set_tooltip_window (GtkWidget *widget,
 
 /**
  * ctk_widget_get_tooltip_window:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
- * Returns the #GtkWindow of the current tooltip. This can be the
- * GtkWindow created by default, or the custom tooltip window set
+ * Returns the #CtkWindow of the current tooltip. This can be the
+ * CtkWindow created by default, or the custom tooltip window set
  * using ctk_widget_set_tooltip_window().
  *
- * Returns: (transfer none): The #GtkWindow of the current tooltip.
+ * Returns: (transfer none): The #CtkWindow of the current tooltip.
  *
  * Since: 2.12
  */
-GtkWindow *
-ctk_widget_get_tooltip_window (GtkWidget *widget)
+CtkWindow *
+ctk_widget_get_tooltip_window (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
@@ -15374,7 +15374,7 @@ ctk_widget_get_tooltip_window (GtkWidget *widget)
 
 /**
  * ctk_widget_trigger_tooltip_query:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Triggers a tooltip query on the display where the toplevel of @widget
  * is located. See ctk_tooltip_trigger_tooltip_query() for more
@@ -15383,7 +15383,7 @@ ctk_widget_get_tooltip_window (GtkWidget *widget)
  * Since: 2.12
  */
 void
-ctk_widget_trigger_tooltip_query (GtkWidget *widget)
+ctk_widget_trigger_tooltip_query (CtkWidget *widget)
 {
   ctk_tooltip_trigger_tooltip_query (ctk_widget_get_display (widget));
 }
@@ -15404,7 +15404,7 @@ tooltip_query_idle (gpointer data)
 }
 
 static void
-ctk_widget_queue_tooltip_query (GtkWidget *widget)
+ctk_widget_queue_tooltip_query (CtkWidget *widget)
 {
   GdkDisplay *display;
 
@@ -15422,19 +15422,19 @@ ctk_widget_queue_tooltip_query (GtkWidget *widget)
 
 /**
  * ctk_widget_set_tooltip_text:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @text: (allow-none): the contents of the tooltip for @widget
  *
  * Sets @text as the contents of the tooltip. This function will take
- * care of setting #GtkWidget:has-tooltip to %TRUE and of the default
- * handler for the #GtkWidget::query-tooltip signal.
+ * care of setting #CtkWidget:has-tooltip to %TRUE and of the default
+ * handler for the #CtkWidget::query-tooltip signal.
  *
- * See also the #GtkWidget:tooltip-text property and ctk_tooltip_set_text().
+ * See also the #CtkWidget:tooltip-text property and ctk_tooltip_set_text().
  *
  * Since: 2.12
  */
 void
-ctk_widget_set_tooltip_text (GtkWidget   *widget,
+ctk_widget_set_tooltip_text (CtkWidget   *widget,
                              const gchar *text)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -15444,7 +15444,7 @@ ctk_widget_set_tooltip_text (GtkWidget   *widget,
 
 /**
  * ctk_widget_get_tooltip_text:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Gets the contents of the tooltip for @widget.
  *
@@ -15454,7 +15454,7 @@ ctk_widget_set_tooltip_text (GtkWidget   *widget,
  * Since: 2.12
  */
 gchar *
-ctk_widget_get_tooltip_text (GtkWidget *widget)
+ctk_widget_get_tooltip_text (CtkWidget *widget)
 {
   gchar *text = NULL;
 
@@ -15467,22 +15467,22 @@ ctk_widget_get_tooltip_text (GtkWidget *widget)
 
 /**
  * ctk_widget_set_tooltip_markup:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @markup: (allow-none): the contents of the tooltip for @widget, or %NULL
  *
  * Sets @markup as the contents of the tooltip, which is marked up with
  *  the [Pango text markup language][PangoMarkupFormat].
  *
- * This function will take care of setting #GtkWidget:has-tooltip to %TRUE
- * and of the default handler for the #GtkWidget::query-tooltip signal.
+ * This function will take care of setting #CtkWidget:has-tooltip to %TRUE
+ * and of the default handler for the #CtkWidget::query-tooltip signal.
  *
- * See also the #GtkWidget:tooltip-markup property and
+ * See also the #CtkWidget:tooltip-markup property and
  * ctk_tooltip_set_markup().
  *
  * Since: 2.12
  */
 void
-ctk_widget_set_tooltip_markup (GtkWidget   *widget,
+ctk_widget_set_tooltip_markup (CtkWidget   *widget,
                                const gchar *markup)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -15492,7 +15492,7 @@ ctk_widget_set_tooltip_markup (GtkWidget   *widget,
 
 /**
  * ctk_widget_get_tooltip_markup:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Gets the contents of the tooltip for @widget.
  *
@@ -15502,7 +15502,7 @@ ctk_widget_set_tooltip_markup (GtkWidget   *widget,
  * Since: 2.12
  */
 gchar *
-ctk_widget_get_tooltip_markup (GtkWidget *widget)
+ctk_widget_get_tooltip_markup (CtkWidget *widget)
 {
   gchar *text = NULL;
 
@@ -15515,16 +15515,16 @@ ctk_widget_get_tooltip_markup (GtkWidget *widget)
 
 /**
  * ctk_widget_set_has_tooltip:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @has_tooltip: whether or not @widget has a tooltip.
  *
  * Sets the has-tooltip property on @widget to @has_tooltip.  See
- * #GtkWidget:has-tooltip for more information.
+ * #CtkWidget:has-tooltip for more information.
  *
  * Since: 2.12
  */
 void
-ctk_widget_set_has_tooltip (GtkWidget *widget,
+ctk_widget_set_has_tooltip (CtkWidget *widget,
 			    gboolean   has_tooltip)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -15534,17 +15534,17 @@ ctk_widget_set_has_tooltip (GtkWidget *widget,
 
 /**
  * ctk_widget_get_has_tooltip:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Returns the current value of the has-tooltip property.  See
- * #GtkWidget:has-tooltip for more information.
+ * #CtkWidget:has-tooltip for more information.
  *
  * Returns: current value of has-tooltip on @widget.
  *
  * Since: 2.12
  */
 gboolean
-ctk_widget_get_has_tooltip (GtkWidget *widget)
+ctk_widget_get_has_tooltip (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -15553,8 +15553,8 @@ ctk_widget_get_has_tooltip (GtkWidget *widget)
 
 /**
  * ctk_widget_get_clip:
- * @widget: a #GtkWidget
- * @clip: (out): a pointer to a #GtkAllocation to copy to
+ * @widget: a #CtkWidget
+ * @clip: (out): a pointer to a #CtkAllocation to copy to
  *
  * Retrieves the widget’s clip area.
  *
@@ -15567,10 +15567,10 @@ ctk_widget_get_has_tooltip (GtkWidget *widget)
  * Since: 3.14
  */
 void
-ctk_widget_get_clip (GtkWidget     *widget,
-                     GtkAllocation *clip)
+ctk_widget_get_clip (CtkWidget     *widget,
+                     CtkAllocation *clip)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (clip != NULL);
@@ -15582,8 +15582,8 @@ ctk_widget_get_clip (GtkWidget     *widget,
 
 /**
  * ctk_widget_set_clip:
- * @widget: a #GtkWidget
- * @clip: a pointer to a #GtkAllocation to copy from
+ * @widget: a #CtkWidget
+ * @clip: a pointer to a #CtkAllocation to copy from
  *
  * Sets the widget’s clip.  This must not be used directly,
  * but from within a widget’s size_allocate method.
@@ -15591,7 +15591,7 @@ ctk_widget_get_clip (GtkWidget     *widget,
  * to the parent class), because that function resets the clip.
  *
  * The clip set should be the area that @widget draws on. If @widget is a
- * #GtkContainer, the area must contain all children's clips.
+ * #CtkContainer, the area must contain all children's clips.
  *
  * If this function is not called by @widget during a ::size-allocate handler,
  * the clip will be set to @widget's allocation.
@@ -15599,10 +15599,10 @@ ctk_widget_get_clip (GtkWidget     *widget,
  * Since: 3.14
  */
 void
-ctk_widget_set_clip (GtkWidget           *widget,
-                     const GtkAllocation *clip)
+ctk_widget_set_clip (CtkWidget           *widget,
+                     const CtkAllocation *clip)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (_ctk_widget_get_visible (widget) || _ctk_widget_is_toplevel (widget));
@@ -15614,7 +15614,7 @@ ctk_widget_set_clip (GtkWidget           *widget,
   if (CTK_DEBUG_CHECK (GEOMETRY))
     {
       gint depth;
-      GtkWidget *parent;
+      CtkWidget *parent;
       const gchar *name;
 
       depth = 0;
@@ -15638,7 +15638,7 @@ ctk_widget_set_clip (GtkWidget           *widget,
   while (priv->parent &&
          _ctk_widget_get_window (widget) == _ctk_widget_get_window (priv->parent))
     {
-      GtkWidgetPrivate *parent_priv = priv->parent->priv;
+      CtkWidgetPrivate *parent_priv = priv->parent->priv;
       GdkRectangle union_rect;
 
       gdk_rectangle_union (&priv->clip,
@@ -15655,30 +15655,30 @@ ctk_widget_set_clip (GtkWidget           *widget,
 
 /*
  * _ctk_widget_set_simple_clip:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @content_clip: (nullable): Clipping area of the contents
  *     or %NULL, if the contents
  *     do not extent the allocation.
  *
  * This is a convenience function for ctk_widget_set_clip(), if you
  * just want to set the clip for @widget based on its allocation,
- * CSS properties and - if the widget is a #GtkContainer - its
+ * CSS properties and - if the widget is a #CtkContainer - its
  * children. ctk_widget_set_allocation() must have been called
  * and all children must have been allocated with
  * ctk_widget_size_allocate() before calling this function.
  * It is therefore a good idea to call this function last in
- * your implementation of GtkWidget::size_allocate().
+ * your implementation of CtkWidget::size_allocate().
  *
  * If your widget overdraws its contents, you cannot use this
  * function and must call ctk_widget_set_clip() yourself.
  **/
 void
-_ctk_widget_set_simple_clip (GtkWidget     *widget,
-                             GtkAllocation *content_clip)
+_ctk_widget_set_simple_clip (CtkWidget     *widget,
+                             CtkAllocation *content_clip)
 {
-  GtkStyleContext *context;
-  GtkAllocation clip, allocation;
-  GtkBorder extents;
+  CtkStyleContext *context;
+  CtkAllocation clip, allocation;
+  CtkBorder extents;
 
   context = _ctk_widget_get_style_context (widget);
 
@@ -15717,8 +15717,8 @@ _ctk_widget_set_simple_clip (GtkWidget     *widget,
 
 /**
  * ctk_widget_get_allocated_size:
- * @widget: a #GtkWidget
- * @allocation: (out): a pointer to a #GtkAllocation to copy to
+ * @widget: a #CtkWidget
+ * @allocation: (out): a pointer to a #CtkAllocation to copy to
  * @baseline: (out) (allow-none): a pointer to an integer to copy to
  *
  * Retrieves the widget’s allocated size.
@@ -15734,11 +15734,11 @@ _ctk_widget_set_simple_clip (GtkWidget     *widget,
  * Since: 3.20
  */
 void
-ctk_widget_get_allocated_size (GtkWidget     *widget,
-                               GtkAllocation *allocation,
+ctk_widget_get_allocated_size (CtkWidget     *widget,
+                               CtkAllocation *allocation,
                                int           *baseline)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (allocation != NULL);
@@ -15753,12 +15753,12 @@ ctk_widget_get_allocated_size (GtkWidget     *widget,
 
 /**
  * ctk_widget_get_allocation:
- * @widget: a #GtkWidget
- * @allocation: (out): a pointer to a #GtkAllocation to copy to
+ * @widget: a #CtkWidget
+ * @allocation: (out): a pointer to a #CtkAllocation to copy to
  *
  * Retrieves the widget’s allocation.
  *
- * Note, when implementing a #GtkContainer: a widget’s allocation will
+ * Note, when implementing a #CtkContainer: a widget’s allocation will
  * be its “adjusted” allocation, that is, the widget’s parent
  * container typically calls ctk_widget_size_allocate() with an
  * allocation, and that allocation is then adjusted (to handle margin
@@ -15766,7 +15766,7 @@ ctk_widget_get_allocated_size (GtkWidget     *widget,
  * ctk_widget_get_allocation() returns the adjusted allocation that
  * was actually assigned to the widget. The adjusted allocation is
  * guaranteed to be completely contained within the
- * ctk_widget_size_allocate() allocation, however. So a #GtkContainer
+ * ctk_widget_size_allocate() allocation, however. So a #CtkContainer
  * is guaranteed that its children stay inside the assigned bounds,
  * but not that they have exactly the bounds the container assigned.
  * There is no way to get the original allocation assigned by
@@ -15776,10 +15776,10 @@ ctk_widget_get_allocated_size (GtkWidget     *widget,
  * Since: 2.18
  */
 void
-ctk_widget_get_allocation (GtkWidget     *widget,
-                           GtkAllocation *allocation)
+ctk_widget_get_allocation (CtkWidget     *widget,
+                           CtkAllocation *allocation)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (allocation != NULL);
@@ -15791,26 +15791,26 @@ ctk_widget_get_allocation (GtkWidget     *widget,
 
 /**
  * ctk_widget_set_allocation:
- * @widget: a #GtkWidget
- * @allocation: a pointer to a #GtkAllocation to copy from
+ * @widget: a #CtkWidget
+ * @allocation: a pointer to a #CtkAllocation to copy from
  *
  * Sets the widget’s allocation.  This should not be used
  * directly, but from within a widget’s size_allocate method.
  *
  * The allocation set should be the “adjusted” or actual
- * allocation. If you’re implementing a #GtkContainer, you want to use
+ * allocation. If you’re implementing a #CtkContainer, you want to use
  * ctk_widget_size_allocate() instead of ctk_widget_set_allocation().
- * The GtkWidgetClass::adjust_size_allocation virtual method adjusts the
+ * The CtkWidgetClass::adjust_size_allocation virtual method adjusts the
  * allocation inside ctk_widget_size_allocate() to create an adjusted
  * allocation.
  *
  * Since: 2.18
  */
 void
-ctk_widget_set_allocation (GtkWidget           *widget,
-                           const GtkAllocation *allocation)
+ctk_widget_set_allocation (CtkWidget           *widget,
+                           const CtkAllocation *allocation)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (_ctk_widget_get_visible (widget) || _ctk_widget_is_toplevel (widget));
@@ -15828,12 +15828,12 @@ ctk_widget_set_allocation (GtkWidget           *widget,
  *
  * Returns the width that has currently been allocated to @widget.
  * This function is intended to be used when implementing handlers
- * for the #GtkWidget::draw function.
+ * for the #CtkWidget::draw function.
  *
  * Returns: the width of the @widget
  **/
 int
-ctk_widget_get_allocated_width (GtkWidget *widget)
+ctk_widget_get_allocated_width (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
 
@@ -15846,12 +15846,12 @@ ctk_widget_get_allocated_width (GtkWidget *widget)
  *
  * Returns the height that has currently been allocated to @widget.
  * This function is intended to be used when implementing handlers
- * for the #GtkWidget::draw function.
+ * for the #CtkWidget::draw function.
  *
  * Returns: the height of the @widget
  **/
 int
-ctk_widget_get_allocated_height (GtkWidget *widget)
+ctk_widget_get_allocated_height (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
 
@@ -15864,15 +15864,15 @@ ctk_widget_get_allocated_height (GtkWidget *widget)
  *
  * Returns the baseline that has currently been allocated to @widget.
  * This function is intended to be used when implementing handlers
- * for the #GtkWidget::draw function, and when allocating child
- * widgets in #GtkWidget::size_allocate.
+ * for the #CtkWidget::draw function, and when allocating child
+ * widgets in #CtkWidget::size_allocate.
  *
  * Returns: the baseline of the @widget, or -1 if none
  *
  * Since: 3.10
  **/
 int
-ctk_widget_get_allocated_baseline (GtkWidget *widget)
+ctk_widget_get_allocated_baseline (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
 
@@ -15881,8 +15881,8 @@ ctk_widget_get_allocated_baseline (GtkWidget *widget)
 
 /**
  * ctk_widget_get_requisition:
- * @widget: a #GtkWidget
- * @requisition: (out): a pointer to a #GtkRequisition to copy to
+ * @widget: a #CtkWidget
+ * @requisition: (out): a pointer to a #CtkRequisition to copy to
  *
  * Retrieves the widget’s requisition.
  *
@@ -15895,13 +15895,13 @@ ctk_widget_get_allocated_baseline (GtkWidget *widget)
  *
  * Since: 2.20
  *
- * Deprecated: 3.0: The #GtkRequisition cache on the widget was
+ * Deprecated: 3.0: The #CtkRequisition cache on the widget was
  * removed, If you need to cache sizes across requests and allocations,
  * add an explicit cache to the widget in question instead.
  */
 void
-ctk_widget_get_requisition (GtkWidget      *widget,
-                            GtkRequisition *requisition)
+ctk_widget_get_requisition (CtkWidget      *widget,
+                            CtkRequisition *requisition)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (requisition != NULL);
@@ -15911,11 +15911,11 @@ ctk_widget_get_requisition (GtkWidget      *widget,
 
 /**
  * ctk_widget_set_window:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @window: (transfer full): a #GdkWindow
  *
  * Sets a widget’s window. This function should only be used in a
- * widget’s #GtkWidget::realize implementation. The %window passed is
+ * widget’s #CtkWidget::realize implementation. The %window passed is
  * usually either new window created with gdk_window_new(), or the
  * window of its parent widget as returned by
  * ctk_widget_get_parent_window().
@@ -15929,10 +15929,10 @@ ctk_widget_get_requisition (GtkWidget      *widget,
  * Since: 2.18
  */
 void
-ctk_widget_set_window (GtkWidget *widget,
+ctk_widget_set_window (CtkWidget *widget,
                        GdkWindow *window)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (window == NULL || GDK_IS_WINDOW (window));
@@ -15949,7 +15949,7 @@ ctk_widget_set_window (GtkWidget *widget,
 
 /**
  * ctk_widget_register_window:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @window: a #GdkWindow
  *
  * Registers a #GdkWindow with the widget and sets it up so that
@@ -15964,10 +15964,10 @@ ctk_widget_set_window (GtkWidget *widget,
  * Since: 3.8
  */
 void
-ctk_widget_register_window (GtkWidget    *widget,
+ctk_widget_register_window (CtkWidget    *widget,
 			    GdkWindow    *window)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
   gpointer user_data;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -15984,7 +15984,7 @@ ctk_widget_register_window (GtkWidget    *widget,
 
 /**
  * ctk_widget_unregister_window:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @window: a #GdkWindow
  *
  * Unregisters a #GdkWindow from the widget that was previously set up with
@@ -15994,10 +15994,10 @@ ctk_widget_register_window (GtkWidget    *widget,
  * Since: 3.8
  */
 void
-ctk_widget_unregister_window (GtkWidget    *widget,
+ctk_widget_unregister_window (CtkWidget    *widget,
 			      GdkWindow    *window)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
   gpointer user_data;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -16013,7 +16013,7 @@ ctk_widget_unregister_window (GtkWidget    *widget,
 
 /**
  * ctk_widget_get_window:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Returns the widget’s window if it is realized, %NULL otherwise
  *
@@ -16022,7 +16022,7 @@ ctk_widget_unregister_window (GtkWidget    *widget,
  * Since: 2.14
  */
 GdkWindow*
-ctk_widget_get_window (GtkWidget *widget)
+ctk_widget_get_window (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
@@ -16031,7 +16031,7 @@ ctk_widget_get_window (GtkWidget *widget)
 
 /**
  * ctk_widget_get_support_multidevice:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Returns %TRUE if @widget is multiple pointer aware. See
  * ctk_widget_set_support_multidevice() for more information.
@@ -16039,7 +16039,7 @@ ctk_widget_get_window (GtkWidget *widget)
  * Returns: %TRUE if @widget is multidevice aware.
  **/
 gboolean
-ctk_widget_get_support_multidevice (GtkWidget *widget)
+ctk_widget_get_support_multidevice (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -16048,21 +16048,21 @@ ctk_widget_get_support_multidevice (GtkWidget *widget)
 
 /**
  * ctk_widget_set_support_multidevice:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @support_multidevice: %TRUE to support input from multiple devices.
  *
  * Enables or disables multiple pointer awareness. If this setting is %TRUE,
  * @widget will start receiving multiple, per device enter/leave events. Note
- * that if custom #GdkWindows are created in #GtkWidget::realize,
+ * that if custom #GdkWindows are created in #CtkWidget::realize,
  * gdk_window_set_support_multidevice() will have to be called manually on them.
  *
  * Since: 3.0
  **/
 void
-ctk_widget_set_support_multidevice (GtkWidget *widget,
+ctk_widget_set_support_multidevice (CtkWidget *widget,
                                     gboolean   support_multidevice)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -16080,10 +16080,10 @@ ctk_widget_set_support_multidevice (GtkWidget *widget,
  */
 
 static void
-ctk_widget_update_alpha (GtkWidget *widget)
+ctk_widget_update_alpha (CtkWidget *widget)
 {
-  GtkWidgetPrivate *priv;
-  GtkStyleContext *context;
+  CtkWidgetPrivate *priv;
+  CtkStyleContext *context;
   gdouble opacity;
   guint8 alpha;
 
@@ -16114,7 +16114,7 @@ ctk_widget_update_alpha (GtkWidget *widget)
 
 /**
  * ctk_widget_set_opacity:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @opacity: desired opacity, between 0 and 1
  *
  * Request the @widget to be rendered partially transparent,
@@ -16135,10 +16135,10 @@ ctk_widget_update_alpha (GtkWidget *widget)
  * Since: 3.8
  **/
 void
-ctk_widget_set_opacity (GtkWidget *widget,
+ctk_widget_set_opacity (CtkWidget *widget,
                         gdouble    opacity)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
   guint8 alpha;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -16161,7 +16161,7 @@ ctk_widget_set_opacity (GtkWidget *widget,
 
 /**
  * ctk_widget_get_opacity:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Fetches the requested opacity for this widget.
  * See ctk_widget_set_opacity().
@@ -16171,7 +16171,7 @@ ctk_widget_set_opacity (GtkWidget *widget,
  * Since: 3.8
  **/
 gdouble
-ctk_widget_get_opacity (GtkWidget *widget)
+ctk_widget_get_opacity (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), 0.0);
 
@@ -16179,7 +16179,7 @@ ctk_widget_get_opacity (GtkWidget *widget)
 }
 
 static void
-_ctk_widget_set_has_focus (GtkWidget *widget,
+_ctk_widget_set_has_focus (CtkWidget *widget,
                            gboolean   has_focus)
 {
   widget->priv->has_focus = has_focus;
@@ -16192,16 +16192,16 @@ _ctk_widget_set_has_focus (GtkWidget *widget,
 
 /**
  * ctk_widget_send_focus_change:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @event: a #GdkEvent of type GDK_FOCUS_CHANGE
  *
  * Sends the focus change @event to @widget
  *
  * This function is not meant to be used by applications. The only time it
- * should be used is when it is necessary for a #GtkWidget to assign focus
+ * should be used is when it is necessary for a #CtkWidget to assign focus
  * to a widget that is semantically owned by the first widget even though
  * it’s not a direct child - for instance, a search entry in a floating
- * window similar to the quick search in #GtkTreeView.
+ * window similar to the quick search in #CtkTreeView.
  *
  * An example of its usage is:
  *
@@ -16225,7 +16225,7 @@ _ctk_widget_set_has_focus (GtkWidget *widget,
  * Since: 2.20
  */
 gboolean
-ctk_widget_send_focus_change (GtkWidget *widget,
+ctk_widget_send_focus_change (CtkWidget *widget,
                               GdkEvent  *event)
 {
   gboolean res;
@@ -16248,7 +16248,7 @@ ctk_widget_send_focus_change (GtkWidget *widget,
 
 /**
  * ctk_widget_in_destruction:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Returns whether the widget is currently being destroyed.
  * This information can sometimes be used to avoid doing
@@ -16257,60 +16257,60 @@ ctk_widget_send_focus_change (GtkWidget *widget,
  * Returns: %TRUE if @widget is being destroyed
  */
 gboolean
-ctk_widget_in_destruction (GtkWidget *widget)
+ctk_widget_in_destruction (CtkWidget *widget)
 {
   return widget->priv->in_destruction;
 }
 
 gboolean
-_ctk_widget_get_in_reparent (GtkWidget *widget)
+_ctk_widget_get_in_reparent (CtkWidget *widget)
 {
   return widget->priv->in_reparent;
 }
 
 void
-_ctk_widget_set_in_reparent (GtkWidget *widget,
+_ctk_widget_set_in_reparent (CtkWidget *widget,
                              gboolean   in_reparent)
 {
   widget->priv->in_reparent = in_reparent;
 }
 
 gboolean
-_ctk_widget_get_anchored (GtkWidget *widget)
+_ctk_widget_get_anchored (CtkWidget *widget)
 {
   return widget->priv->anchored;
 }
 
 void
-_ctk_widget_set_anchored (GtkWidget *widget,
+_ctk_widget_set_anchored (CtkWidget *widget,
                           gboolean   anchored)
 {
   widget->priv->anchored = anchored;
 }
 
 gboolean
-_ctk_widget_get_shadowed (GtkWidget *widget)
+_ctk_widget_get_shadowed (CtkWidget *widget)
 {
   return widget->priv->shadowed;
 }
 
 void
-_ctk_widget_set_shadowed (GtkWidget *widget,
+_ctk_widget_set_shadowed (CtkWidget *widget,
                           gboolean   shadowed)
 {
   widget->priv->shadowed = shadowed;
 }
 
 gboolean
-_ctk_widget_get_alloc_needed (GtkWidget *widget)
+_ctk_widget_get_alloc_needed (CtkWidget *widget)
 {
   return widget->priv->alloc_needed;
 }
 
 static void
-ctk_widget_set_alloc_needed (GtkWidget *widget)
+ctk_widget_set_alloc_needed (CtkWidget *widget)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
 
   priv->alloc_needed = TRUE;
 
@@ -16342,9 +16342,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 gboolean
-ctk_widget_needs_allocate (GtkWidget *widget)
+ctk_widget_needs_allocate (CtkWidget *widget)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
 
   if (!priv->visible || !priv->child_visible)
     return FALSE;
@@ -16356,9 +16356,9 @@ ctk_widget_needs_allocate (GtkWidget *widget)
 }
 
 void
-ctk_widget_ensure_allocate (GtkWidget *widget)
+ctk_widget_ensure_allocate (CtkWidget *widget)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
 
   if (!ctk_widget_needs_allocate (widget))
     return;
@@ -16372,7 +16372,7 @@ ctk_widget_ensure_allocate (GtkWidget *widget)
    */
   if (priv->alloc_needed)
     {
-      GtkAllocation allocation;
+      CtkAllocation allocation;
       int baseline;
 
       ctk_widget_get_allocated_size (widget, &allocation, &baseline);
@@ -16384,24 +16384,24 @@ ctk_widget_ensure_allocate (GtkWidget *widget)
 
       if (CTK_IS_CONTAINER (widget))
         ctk_container_forall (CTK_CONTAINER (widget),
-                              (GtkCallback) ctk_widget_ensure_allocate,
+                              (CtkCallback) ctk_widget_ensure_allocate,
                               NULL);
     }
 }
 
 void
-ctk_widget_queue_resize_on_widget (GtkWidget *widget)
+ctk_widget_queue_resize_on_widget (CtkWidget *widget)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
 
   priv->resize_needed = TRUE;
   ctk_widget_set_alloc_needed (widget);
 }
 
 void
-ctk_widget_ensure_resize (GtkWidget *widget)
+ctk_widget_ensure_resize (CtkWidget *widget)
 {
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
 
   if (!priv->resize_needed)
     return;
@@ -16411,7 +16411,7 @@ ctk_widget_ensure_resize (GtkWidget *widget)
 }
 
 void
-_ctk_widget_add_sizegroup (GtkWidget    *widget,
+_ctk_widget_add_sizegroup (CtkWidget    *widget,
 			   gpointer      group)
 {
   GSList *groups;
@@ -16424,7 +16424,7 @@ _ctk_widget_add_sizegroup (GtkWidget    *widget,
 }
 
 void
-_ctk_widget_remove_sizegroup (GtkWidget    *widget,
+_ctk_widget_remove_sizegroup (CtkWidget    *widget,
 			      gpointer      group)
 {
   GSList *groups;
@@ -16437,7 +16437,7 @@ _ctk_widget_remove_sizegroup (GtkWidget    *widget,
 }
 
 GSList *
-_ctk_widget_get_sizegroups (GtkWidget    *widget)
+_ctk_widget_get_sizegroups (CtkWidget    *widget)
 {
   if (widget->priv->have_size_groups)
     return g_object_get_qdata (G_OBJECT (widget), quark_size_groups);
@@ -16446,15 +16446,15 @@ _ctk_widget_get_sizegroups (GtkWidget    *widget)
 }
 
 void
-_ctk_widget_add_attached_window (GtkWidget    *widget,
-                                 GtkWindow    *window)
+_ctk_widget_add_attached_window (CtkWidget    *widget,
+                                 CtkWindow    *window)
 {
   widget->priv->attached_windows = g_list_prepend (widget->priv->attached_windows, window);
 }
 
 void
-_ctk_widget_remove_attached_window (GtkWidget    *widget,
-                                    GtkWindow    *window)
+_ctk_widget_remove_attached_window (CtkWidget    *widget,
+                                    CtkWindow    *window)
 {
   widget->priv->attached_windows = g_list_remove (widget->priv->attached_windows, window);
 }
@@ -16474,8 +16474,8 @@ _ctk_widget_remove_attached_window (GtkWidget    *widget,
  * Since: 3.2
  */
 gint
-ctk_widget_path_append_for_widget (GtkWidgetPath *path,
-                                   GtkWidget     *widget)
+ctk_widget_path_append_for_widget (CtkWidgetPath *path,
+                                   CtkWidget     *widget)
 {
   const GQuark *classes;
   guint n_classes, i;
@@ -16500,10 +16500,10 @@ ctk_widget_path_append_for_widget (GtkWidgetPath *path,
   return pos;
 }
 
-GtkWidgetPath *
-_ctk_widget_create_path (GtkWidget *widget)
+CtkWidgetPath *
+_ctk_widget_create_path (CtkWidget *widget)
 {
-  GtkWidget *parent;
+  CtkWidget *parent;
 
   parent = widget->priv->parent;
 
@@ -16516,8 +16516,8 @@ _ctk_widget_create_path (GtkWidget *widget)
        * where style properties might be retrieved on that
        * situation.
        */
-      GtkWidget *attach_widget = NULL;
-      GtkWidgetPath *result;
+      CtkWidget *attach_widget = NULL;
+      CtkWidgetPath *result;
 
       if (CTK_IS_WINDOW (widget))
         attach_widget = ctk_window_get_attached_to (CTK_WINDOW (widget));
@@ -16535,22 +16535,22 @@ _ctk_widget_create_path (GtkWidget *widget)
 
 /**
  * ctk_widget_get_path:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
- * Returns the #GtkWidgetPath representing @widget, if the widget
+ * Returns the #CtkWidgetPath representing @widget, if the widget
  * is not connected to a toplevel widget, a partial path will be
  * created.
  *
- * Returns: (transfer none): The #GtkWidgetPath representing @widget
+ * Returns: (transfer none): The #CtkWidgetPath representing @widget
  **/
-GtkWidgetPath *
-ctk_widget_get_path (GtkWidget *widget)
+CtkWidgetPath *
+ctk_widget_get_path (CtkWidget *widget)
 {
-  GtkWidgetPath *path;
+  CtkWidgetPath *path;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
-  path = (GtkWidgetPath*)g_object_get_qdata (G_OBJECT (widget), quark_widget_path);
+  path = (CtkWidgetPath*)g_object_get_qdata (G_OBJECT (widget), quark_widget_path);
   if (!path)
     {
       path = _ctk_widget_create_path (widget);
@@ -16564,7 +16564,7 @@ ctk_widget_get_path (GtkWidget *widget)
 }
 
 void
-ctk_widget_clear_path (GtkWidget *widget)
+ctk_widget_clear_path (CtkWidget *widget)
 {
   g_object_set_qdata (G_OBJECT (widget), quark_widget_path, NULL);
 }
@@ -16582,10 +16582,10 @@ ctk_widget_clear_path (GtkWidget *widget)
  * Since: 3.20
  */
 void
-ctk_widget_class_set_css_name (GtkWidgetClass *widget_class,
+ctk_widget_class_set_css_name (CtkWidgetClass *widget_class,
                                const char     *name)
 {
-  GtkWidgetClassPrivate *priv;
+  CtkWidgetClassPrivate *priv;
 
   g_return_if_fail (CTK_IS_WIDGET_CLASS (widget_class));
   g_return_if_fail (name != NULL);
@@ -16607,7 +16607,7 @@ ctk_widget_class_set_css_name (GtkWidgetClass *widget_class,
  * Since: 3.20
  */
 const char *
-ctk_widget_class_get_css_name (GtkWidgetClass *widget_class)
+ctk_widget_class_get_css_name (CtkWidgetClass *widget_class)
 {
   g_return_val_if_fail (CTK_IS_WIDGET_CLASS (widget_class), NULL);
 
@@ -16615,19 +16615,19 @@ ctk_widget_class_get_css_name (GtkWidgetClass *widget_class)
 }
 
 void
-_ctk_widget_style_context_invalidated (GtkWidget *widget)
+_ctk_widget_style_context_invalidated (CtkWidget *widget)
 {
   g_signal_emit (widget, widget_signals[STYLE_UPDATED], 0);
 }
 
-GtkCssNode *
-ctk_widget_get_css_node (GtkWidget *widget)
+CtkCssNode *
+ctk_widget_get_css_node (CtkWidget *widget)
 {
   return widget->priv->cssnode;
 }
 
-GtkStyleContext *
-_ctk_widget_peek_style_context (GtkWidget *widget)
+CtkStyleContext *
+_ctk_widget_peek_style_context (CtkWidget *widget)
 {
   return widget->priv->context;
 }
@@ -16635,18 +16635,18 @@ _ctk_widget_peek_style_context (GtkWidget *widget)
 
 /**
  * ctk_widget_get_style_context:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Returns the style context associated to @widget. The returned object is
  * guaranteed to be the same for the lifetime of @widget.
  *
- * Returns: (transfer none): a #GtkStyleContext. This memory is owned by @widget and
+ * Returns: (transfer none): a #CtkStyleContext. This memory is owned by @widget and
  *          must not be freed.
  **/
-GtkStyleContext *
-ctk_widget_get_style_context (GtkWidget *widget)
+CtkStyleContext *
+ctk_widget_get_style_context (CtkWidget *widget)
 {
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
@@ -16680,15 +16680,15 @@ ctk_widget_get_style_context (GtkWidget *widget)
 }
 
 void
-_ctk_widget_invalidate_style_context (GtkWidget    *widget,
-                                      GtkCssChange  change)
+_ctk_widget_invalidate_style_context (CtkWidget    *widget,
+                                      CtkCssChange  change)
 {
   ctk_css_node_invalidate (widget->priv->cssnode, change);
 }
 
 /**
  * ctk_widget_get_modifier_mask:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @intent: the use case for the modifier mask
  *
  * Returns the modifier mask the @widget’s windowing system backend
@@ -16701,7 +16701,7 @@ _ctk_widget_invalidate_style_context (GtkWidget    *widget,
  * Since: 3.4
  **/
 GdkModifierType
-ctk_widget_get_modifier_mask (GtkWidget         *widget,
+ctk_widget_get_modifier_mask (CtkWidget         *widget,
                               GdkModifierIntent  intent)
 {
   GdkDisplay *display;
@@ -16714,25 +16714,25 @@ ctk_widget_get_modifier_mask (GtkWidget         *widget,
                                        intent);
 }
 
-GtkStyle *
-_ctk_widget_get_style (GtkWidget *widget)
+CtkStyle *
+_ctk_widget_get_style (CtkWidget *widget)
 {
   return widget->priv->style;
 }
 
 void
-_ctk_widget_set_style (GtkWidget *widget,
-                       GtkStyle  *style)
+_ctk_widget_set_style (CtkWidget *widget,
+                       CtkStyle  *style)
 {
   widget->priv->style = style;
   g_signal_emit (widget, widget_signals[STYLE_SET], 0, widget->priv->style);
 }
 
-GtkActionMuxer *
-_ctk_widget_get_parent_muxer (GtkWidget *widget,
+CtkActionMuxer *
+_ctk_widget_get_parent_muxer (CtkWidget *widget,
                               gboolean   create)
 {
-  GtkWidget *parent;
+  CtkWidget *parent;
 
   if (CTK_IS_WINDOW (widget))
     return ctk_application_get_parent_muxer_for_window (CTK_WINDOW (widget));
@@ -16751,11 +16751,11 @@ _ctk_widget_get_parent_muxer (GtkWidget *widget,
 }
 
 void
-_ctk_widget_update_parent_muxer (GtkWidget *widget)
+_ctk_widget_update_parent_muxer (CtkWidget *widget)
 {
-  GtkActionMuxer *muxer;
+  CtkActionMuxer *muxer;
 
-  muxer = (GtkActionMuxer*)g_object_get_qdata (G_OBJECT (widget), quark_action_muxer);
+  muxer = (CtkActionMuxer*)g_object_get_qdata (G_OBJECT (widget), quark_action_muxer);
   if (muxer == NULL)
     return;
 
@@ -16763,13 +16763,13 @@ _ctk_widget_update_parent_muxer (GtkWidget *widget)
                                _ctk_widget_get_parent_muxer (widget, TRUE));
 }
 
-GtkActionMuxer *
-_ctk_widget_get_action_muxer (GtkWidget *widget,
+CtkActionMuxer *
+_ctk_widget_get_action_muxer (CtkWidget *widget,
                               gboolean   create)
 {
-  GtkActionMuxer *muxer;
+  CtkActionMuxer *muxer;
 
-  muxer = (GtkActionMuxer*)g_object_get_qdata (G_OBJECT (widget), quark_action_muxer);
+  muxer = (CtkActionMuxer*)g_object_get_qdata (G_OBJECT (widget), quark_action_muxer);
   if (muxer)
     return muxer;
 
@@ -16790,12 +16790,12 @@ _ctk_widget_get_action_muxer (GtkWidget *widget,
 
 /**
  * ctk_widget_insert_action_group:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @name: the prefix for actions in @group
  * @group: (allow-none): a #GActionGroup, or %NULL
  *
  * Inserts @group into @widget. Children of @widget that implement
- * #GtkActionable can then be associated with actions in @group by
+ * #CtkActionable can then be associated with actions in @group by
  * setting their “action-name” to
  * @prefix.`action-name`.
  *
@@ -16805,11 +16805,11 @@ _ctk_widget_get_action_muxer (GtkWidget *widget,
  * Since: 3.6
  */
 void
-ctk_widget_insert_action_group (GtkWidget    *widget,
+ctk_widget_insert_action_group (CtkWidget    *widget,
                                 const gchar  *name,
                                 GActionGroup *group)
 {
-  GtkActionMuxer *muxer;
+  CtkActionMuxer *muxer;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (name != NULL);
@@ -16823,7 +16823,7 @@ ctk_widget_insert_action_group (GtkWidget    *widget,
 }
 
 /****************************************************************
- *                 GtkBuilder automated templates               *
+ *                 CtkBuilder automated templates               *
  ****************************************************************/
 static AutomaticChildClass *
 template_child_class_new (const gchar *name,
@@ -16872,7 +16872,7 @@ callback_symbol_free (CallbackSymbol *callback)
 }
 
 static void
-template_data_free (GtkWidgetTemplate *template_data)
+template_data_free (CtkWidgetTemplate *template_data)
 {
   if (template_data)
     {
@@ -16884,12 +16884,12 @@ template_data_free (GtkWidgetTemplate *template_data)
 	  template_data->destroy_notify)
 	template_data->destroy_notify (template_data->connect_data);
 
-      g_slice_free (GtkWidgetTemplate, template_data);
+      g_slice_free (CtkWidgetTemplate, template_data);
     }
 }
 
 static GHashTable *
-get_auto_child_hash (GtkWidget *widget,
+get_auto_child_hash (CtkWidget *widget,
 		     GType      type,
 		     gboolean   create)
 {
@@ -16930,11 +16930,11 @@ get_auto_child_hash (GtkWidget *widget,
 }
 
 static gboolean
-setup_template_child (GtkWidgetTemplate   *template_data,
+setup_template_child (CtkWidgetTemplate   *template_data,
                       GType                class_type,
                       AutomaticChildClass *child_class,
-                      GtkWidget           *widget,
-                      GtkBuilder          *builder)
+                      CtkWidget           *widget,
+                      CtkBuilder          *builder)
 {
   GHashTable *auto_child_hash;
   GObject    *object;
@@ -16949,7 +16949,7 @@ setup_template_child (GtkWidgetTemplate   *template_data,
 
   /* Insert into the hash so that it can be fetched with
    * ctk_widget_get_template_child() and also in automated
-   * implementations of GtkBuildable.get_internal_child()
+   * implementations of CtkBuildable.get_internal_child()
    */
   auto_child_hash = get_auto_child_hash (widget, class_type, TRUE);
   g_hash_table_insert (auto_child_hash, child_class->name, g_object_ref (object));
@@ -16968,14 +16968,14 @@ setup_template_child (GtkWidgetTemplate   *template_data,
 
 /**
  * ctk_widget_init_template:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Creates and initializes child widgets defined in templates. This
  * function must be called in the instance initializer for any
  * class which assigned itself a template using ctk_widget_class_set_template()
  *
  * It is important to call this function in the instance initializer
- * of a #GtkWidget subclass and not in #GObject.constructed() or
+ * of a #CtkWidget subclass and not in #GObject.constructed() or
  * #GObject.constructor() for two reasons.
  *
  * One reason is that generally derived widgets will assume that parent
@@ -16990,10 +16990,10 @@ setup_template_child (GtkWidgetTemplate   *template_data,
  * Since: 3.10
  */
 void
-ctk_widget_init_template (GtkWidget *widget)
+ctk_widget_init_template (CtkWidget *widget)
 {
-  GtkWidgetTemplate *template;
-  GtkBuilder *builder;
+  CtkWidgetTemplate *template;
+  CtkBuilder *builder;
   GError *error = NULL;
   GObject *object;
   GSList *l;
@@ -17009,7 +17009,7 @@ ctk_widget_init_template (GtkWidget *widget)
 
   builder = ctk_builder_new ();
 
-  /* Add any callback symbols declared for this GType to the GtkBuilder namespace */
+  /* Add any callback symbols declared for this GType to the CtkBuilder namespace */
   for (l = template->callbacks; l; l = l->next)
     {
       CallbackSymbol *callback = l->data;
@@ -17044,7 +17044,7 @@ ctk_widget_init_template (GtkWidget *widget)
       AutomaticChildClass *child_class = l->data;
 
       /* This will setup the pointer of an automated child, and cause
-       * it to be available in any GtkBuildable.get_internal_child()
+       * it to be available in any CtkBuildable.get_internal_child()
        * invocations which may follow by reference in child classes.
        */
       if (!setup_template_child (template,
@@ -17061,7 +17061,7 @@ ctk_widget_init_template (GtkWidget *widget)
   /* Connect signals. All signal data from a template receive the 
    * template instance as user data automatically.
    *
-   * A GtkBuilderConnectFunc can be provided to ctk_widget_class_set_signal_connect_func()
+   * A CtkBuilderConnectFunc can be provided to ctk_widget_class_set_signal_connect_func()
    * in order for templates to be usable by bindings.
    */
   if (template->connect_func)
@@ -17074,11 +17074,11 @@ ctk_widget_init_template (GtkWidget *widget)
 
 /**
  * ctk_widget_class_set_template:
- * @widget_class: A #GtkWidgetClass
- * @template_bytes: A #GBytes holding the #GtkBuilder XML 
+ * @widget_class: A #CtkWidgetClass
+ * @template_bytes: A #GBytes holding the #CtkBuilder XML 
  *
  * This should be called at class initialization time to specify
- * the GtkBuilder XML to be used to extend a widget.
+ * the CtkBuilder XML to be used to extend a widget.
  *
  * For convenience, ctk_widget_class_set_template_from_resource() is also provided.
  *
@@ -17088,20 +17088,20 @@ ctk_widget_init_template (GtkWidget *widget)
  * Since: 3.10
  */
 void
-ctk_widget_class_set_template (GtkWidgetClass    *widget_class,
+ctk_widget_class_set_template (CtkWidgetClass    *widget_class,
 			       GBytes            *template_bytes)
 {
   g_return_if_fail (CTK_IS_WIDGET_CLASS (widget_class));
   g_return_if_fail (widget_class->priv->template == NULL);
   g_return_if_fail (template_bytes != NULL);
 
-  widget_class->priv->template = g_slice_new0 (GtkWidgetTemplate);
+  widget_class->priv->template = g_slice_new0 (CtkWidgetTemplate);
   widget_class->priv->template->data = g_bytes_ref (template_bytes);
 }
 
 /**
  * ctk_widget_class_set_template_from_resource:
- * @widget_class: A #GtkWidgetClass
+ * @widget_class: A #CtkWidgetClass
  * @resource_name: The name of the resource to load the template from
  *
  * A convenience function to call ctk_widget_class_set_template().
@@ -17112,7 +17112,7 @@ ctk_widget_class_set_template (GtkWidgetClass    *widget_class,
  * Since: 3.10
  */
 void
-ctk_widget_class_set_template_from_resource (GtkWidgetClass    *widget_class,
+ctk_widget_class_set_template_from_resource (CtkWidgetClass    *widget_class,
 					     const gchar       *resource_name)
 {
   GError *error = NULL;
@@ -17144,7 +17144,7 @@ ctk_widget_class_set_template_from_resource (GtkWidgetClass    *widget_class,
 
 /**
  * ctk_widget_class_bind_template_callback_full:
- * @widget_class: A #GtkWidgetClass
+ * @widget_class: A #CtkWidgetClass
  * @callback_name: The name of the callback as expected in the template XML
  * @callback_symbol: (scope async): The callback symbol
  *
@@ -17157,7 +17157,7 @@ ctk_widget_class_set_template_from_resource (GtkWidgetClass    *widget_class,
  * Since: 3.10
  */
 void
-ctk_widget_class_bind_template_callback_full (GtkWidgetClass *widget_class,
+ctk_widget_class_bind_template_callback_full (CtkWidgetClass *widget_class,
                                               const gchar    *callback_name,
                                               GCallback       callback_symbol)
 {
@@ -17174,14 +17174,14 @@ ctk_widget_class_bind_template_callback_full (GtkWidgetClass *widget_class,
 
 /**
  * ctk_widget_class_set_connect_func:
- * @widget_class: A #GtkWidgetClass
- * @connect_func: The #GtkBuilderConnectFunc to use when connecting signals in the class template
+ * @widget_class: A #CtkWidgetClass
+ * @connect_func: The #CtkBuilderConnectFunc to use when connecting signals in the class template
  * @connect_data: The data to pass to @connect_func
  * @connect_data_destroy: The #GDestroyNotify to free @connect_data, this will only be used at
  *                        class finalization time, when no classes of type @widget_type are in use anymore.
  *
- * For use in language bindings, this will override the default #GtkBuilderConnectFunc to be
- * used when parsing GtkBuilder XML from this class’s template data.
+ * For use in language bindings, this will override the default #CtkBuilderConnectFunc to be
+ * used when parsing CtkBuilder XML from this class’s template data.
  *
  * Note that this must be called from a composite widget classes class
  * initializer after calling ctk_widget_class_set_template().
@@ -17189,8 +17189,8 @@ ctk_widget_class_bind_template_callback_full (GtkWidgetClass *widget_class,
  * Since: 3.10
  */
 void
-ctk_widget_class_set_connect_func (GtkWidgetClass        *widget_class,
-				   GtkBuilderConnectFunc  connect_func,
+ctk_widget_class_set_connect_func (CtkWidgetClass        *widget_class,
+				   CtkBuilderConnectFunc  connect_func,
 				   gpointer               connect_data,
 				   GDestroyNotify         connect_data_destroy)
 {
@@ -17209,10 +17209,10 @@ ctk_widget_class_set_connect_func (GtkWidgetClass        *widget_class,
 
 /**
  * ctk_widget_class_bind_template_child_full:
- * @widget_class: A #GtkWidgetClass
+ * @widget_class: A #CtkWidgetClass
  * @name: The “id” of the child defined in the template XML
  * @internal_child: Whether the child should be accessible as an “internal-child”
- *                  when this class is used in GtkBuilder XML
+ *                  when this class is used in CtkBuilder XML
  * @struct_offset: The structure offset into the composite widget’s instance public or private structure
  *                 where the automated child pointer should be set, or 0 to not assign the pointer.
  *
@@ -17227,10 +17227,10 @@ ctk_widget_class_set_connect_func (GtkWidgetClass        *widget_class,
  * on your instance and if a @struct_offset that is != 0 is specified, then the automatic location
  * in your instance public or private data will be set to %NULL. You can however access an automated child
  * pointer the first time your classes #GObjectClass.dispose() runs, or alternatively in
- * #GtkWidgetClass.destroy().
+ * #CtkWidgetClass.destroy().
  *
- * If @internal_child is specified, #GtkBuildableIface.get_internal_child() will be automatically
- * implemented by the #GtkWidget class so there is no need to implement it manually.
+ * If @internal_child is specified, #CtkBuildableIface.get_internal_child() will be automatically
+ * implemented by the #CtkWidget class so there is no need to implement it manually.
  *
  * The wrapper macros ctk_widget_class_bind_template_child(), ctk_widget_class_bind_template_child_internal(),
  * ctk_widget_class_bind_template_child_private() and ctk_widget_class_bind_template_child_internal_private()
@@ -17242,7 +17242,7 @@ ctk_widget_class_set_connect_func (GtkWidgetClass        *widget_class,
  * Since: 3.10
  */
 void
-ctk_widget_class_bind_template_child_full (GtkWidgetClass *widget_class,
+ctk_widget_class_bind_template_child_full (CtkWidgetClass *widget_class,
                                            const gchar    *name,
                                            gboolean        internal_child,
                                            gssize          struct_offset)
@@ -17262,7 +17262,7 @@ ctk_widget_class_bind_template_child_full (GtkWidgetClass *widget_class,
 
 /**
  * ctk_widget_get_template_child:
- * @widget: A #GtkWidget
+ * @widget: A #CtkWidget
  * @widget_type: The #GType to get a template child for
  * @name: The “id” of the child defined in the template XML
  *
@@ -17279,7 +17279,7 @@ ctk_widget_class_bind_template_child_full (GtkWidgetClass *widget_class,
  * Returns: (transfer none): The object built in the template XML with the id @name
  */
 GObject *
-ctk_widget_get_template_child (GtkWidget   *widget,
+ctk_widget_get_template_child (CtkWidget   *widget,
                                GType        widget_type,
                                const gchar *name)
 {
@@ -17300,7 +17300,7 @@ ctk_widget_get_template_child (GtkWidget   *widget,
 
 /**
  * ctk_widget_list_action_prefixes:
- * @widget: A #GtkWidget
+ * @widget: A #CtkWidget
  *
  * Retrieves a %NULL-terminated array of strings containing the prefixes of
  * #GActionGroup's available to @widget.
@@ -17310,9 +17310,9 @@ ctk_widget_get_template_child (GtkWidget   *widget,
  * Since: 3.16
  */
 const gchar **
-ctk_widget_list_action_prefixes (GtkWidget *widget)
+ctk_widget_list_action_prefixes (CtkWidget *widget)
 {
-  GtkActionMuxer *muxer;
+  CtkActionMuxer *muxer;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
@@ -17325,11 +17325,11 @@ ctk_widget_list_action_prefixes (GtkWidget *widget)
 
 /**
  * ctk_widget_get_action_group:
- * @widget: A #GtkWidget
+ * @widget: A #CtkWidget
  * @prefix: The “prefix” of the action group.
  *
  * Retrieves the #GActionGroup that was registered using @prefix. The resulting
- * #GActionGroup may have been registered to @widget or any #GtkWidget in its
+ * #GActionGroup may have been registered to @widget or any #CtkWidget in its
  * ancestry.
  *
  * If no action group was found matching @prefix, then %NULL is returned.
@@ -17339,10 +17339,10 @@ ctk_widget_list_action_prefixes (GtkWidget *widget)
  * Since: 3.16
  */
 GActionGroup *
-ctk_widget_get_action_group (GtkWidget   *widget,
+ctk_widget_get_action_group (CtkWidget   *widget,
                              const gchar *prefix)
 {
-  GtkActionMuxer *muxer;
+  CtkActionMuxer *muxer;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
   g_return_val_if_fail (prefix, NULL);
@@ -17355,7 +17355,7 @@ ctk_widget_get_action_group (GtkWidget   *widget,
 }
 
 static void
-event_controller_grab_notify (GtkWidget           *widget,
+event_controller_grab_notify (CtkWidget           *widget,
                               gboolean             was_grabbed,
                               EventControllerData *data)
 {
@@ -17371,7 +17371,7 @@ event_controller_grab_notify (GtkWidget           *widget,
 }
 
 static void
-_ctk_widget_update_evmask (GtkWidget *widget)
+_ctk_widget_update_evmask (CtkWidget *widget)
 {
   if (_ctk_widget_get_realized (widget))
     {
@@ -17382,13 +17382,13 @@ _ctk_widget_update_evmask (GtkWidget *widget)
 }
 
 static void
-event_controller_sequence_state_changed (GtkGesture            *gesture,
+event_controller_sequence_state_changed (CtkGesture            *gesture,
                                          GdkEventSequence      *sequence,
-                                         GtkEventSequenceState  state,
-                                         GtkWidget             *widget)
+                                         CtkEventSequenceState  state,
+                                         CtkWidget             *widget)
 {
   gboolean handled = FALSE;
-  GtkWidget *event_widget;
+  CtkWidget *event_widget;
   const GdkEvent *event;
 
   handled = _ctk_widget_set_sequence_state_internal (widget, sequence,
@@ -17407,11 +17407,11 @@ event_controller_sequence_state_changed (GtkGesture            *gesture,
 }
 
 static EventControllerData *
-_ctk_widget_has_controller (GtkWidget          *widget,
-                            GtkEventController *controller)
+_ctk_widget_has_controller (CtkWidget          *widget,
+                            CtkEventController *controller)
 {
   EventControllerData *data;
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
   GList *l;
 
   priv = widget->priv;
@@ -17428,11 +17428,11 @@ _ctk_widget_has_controller (GtkWidget          *widget,
 }
 
 void
-_ctk_widget_add_controller (GtkWidget          *widget,
-                            GtkEventController *controller)
+_ctk_widget_add_controller (CtkWidget          *widget,
+                            CtkEventController *controller)
 {
   EventControllerData *data;
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (CTK_IS_EVENT_CONTROLLER (controller));
@@ -17465,8 +17465,8 @@ _ctk_widget_add_controller (GtkWidget          *widget,
 }
 
 void
-_ctk_widget_remove_controller (GtkWidget          *widget,
-                               GtkEventController *controller)
+_ctk_widget_remove_controller (CtkWidget          *widget,
+                               CtkEventController *controller)
 {
   EventControllerData *data;
 
@@ -17490,11 +17490,11 @@ _ctk_widget_remove_controller (GtkWidget          *widget,
 }
 
 GList *
-_ctk_widget_list_controllers (GtkWidget           *widget,
-                              GtkPropagationPhase  phase)
+_ctk_widget_list_controllers (CtkWidget           *widget,
+                              CtkPropagationPhase  phase)
 {
   EventControllerData *data;
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
   GList *l, *retval = NULL;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
@@ -17514,11 +17514,11 @@ _ctk_widget_list_controllers (GtkWidget           *widget,
 }
 
 gboolean
-_ctk_widget_consumes_motion (GtkWidget        *widget,
+_ctk_widget_consumes_motion (CtkWidget        *widget,
                              GdkEventSequence *sequence)
 {
   EventControllerData *data;
-  GtkWidgetPrivate *priv;
+  CtkWidgetPrivate *priv;
   GList *l;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
@@ -17543,10 +17543,10 @@ _ctk_widget_consumes_motion (GtkWidget        *widget,
 }
 
 void
-ctk_widget_reset_controllers (GtkWidget *widget)
+ctk_widget_reset_controllers (CtkWidget *widget)
 {
   EventControllerData *controller_data;
-  GtkWidgetPrivate *priv = widget->priv;
+  CtkWidgetPrivate *priv = widget->priv;
   GList *l;
 
   /* Reset all controllers */
@@ -17562,11 +17562,11 @@ ctk_widget_reset_controllers (GtkWidget *widget)
 }
 
 void
-ctk_widget_render (GtkWidget            *widget,
+ctk_widget_render (CtkWidget            *widget,
                    GdkWindow            *window,
                    const cairo_region_t *region)
 {
-  GtkWidgetPrivate *priv = ctk_widget_get_instance_private (widget);
+  CtkWidgetPrivate *priv = ctk_widget_get_instance_private (widget);
   GdkDrawingContext *context;
   gboolean do_clip;
   cairo_t *cr;

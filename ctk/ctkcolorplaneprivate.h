@@ -24,27 +24,27 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_COLOR_PLANE            (ctk_color_plane_get_type ())
-#define CTK_COLOR_PLANE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_COLOR_PLANE, GtkColorPlane))
-#define CTK_COLOR_PLANE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_COLOR_PLANE, GtkColorPlaneClass))
+#define CTK_COLOR_PLANE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_COLOR_PLANE, CtkColorPlane))
+#define CTK_COLOR_PLANE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_COLOR_PLANE, CtkColorPlaneClass))
 #define CTK_IS_COLOR_PLANE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_COLOR_PLANE))
 #define CTK_IS_COLOR_PLANE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_COLOR_PLANE))
-#define CTK_COLOR_PLANE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_COLOR_PLANE, GtkColorPlaneClass))
+#define CTK_COLOR_PLANE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_COLOR_PLANE, CtkColorPlaneClass))
 
 
-typedef struct _GtkColorPlane         GtkColorPlane;
-typedef struct _GtkColorPlaneClass    GtkColorPlaneClass;
-typedef struct _GtkColorPlanePrivate  GtkColorPlanePrivate;
+typedef struct _CtkColorPlane         CtkColorPlane;
+typedef struct _CtkColorPlaneClass    CtkColorPlaneClass;
+typedef struct _CtkColorPlanePrivate  CtkColorPlanePrivate;
 
-struct _GtkColorPlane
+struct _CtkColorPlane
 {
-  GtkDrawingArea parent_instance;
+  CtkDrawingArea parent_instance;
 
-  GtkColorPlanePrivate *priv;
+  CtkColorPlanePrivate *priv;
 };
 
-struct _GtkColorPlaneClass
+struct _CtkColorPlaneClass
 {
-  GtkDrawingAreaClass parent_class;
+  CtkDrawingAreaClass parent_class;
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -55,9 +55,9 @@ struct _GtkColorPlaneClass
 
 
 GType       ctk_color_plane_get_type (void) G_GNUC_CONST;
-GtkWidget * ctk_color_plane_new      (GtkAdjustment *h_adj,
-                                      GtkAdjustment *s_adj,
-                                      GtkAdjustment *v_adj);
+CtkWidget * ctk_color_plane_new      (CtkAdjustment *h_adj,
+                                      CtkAdjustment *s_adj,
+                                      CtkAdjustment *v_adj);
 
 G_END_DECLS
 

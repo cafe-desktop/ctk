@@ -19,7 +19,7 @@
 
 
 G_MODULE_EXPORT void
-set_letter_spacing (GtkLabel *label)
+set_letter_spacing (CtkLabel *label)
 {
   PangoAttrList *attrs;
 

@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkBox">
+      <object class="CtkBox">
         <property name="visible">True</property>
         <child>
-          <object class="GtkBox">
+          <object class="CtkBox">
             <property name="visible">True</property>
             <child>
-              <object class="GtkCheckButton">
+              <object class="CtkCheckButton">
                 <property name="visible">True</property>
                 <property name="active">True</property>
               </object>
             </child>
             <child>
-              <object class="GtkLabel">
+              <object class="CtkLabel">
                 <property name="visible">True</property>
                 <property name="name">label1</property>
                 <property name="label" translatable="yes">Hello World!</property>
@@ -26,16 +26,16 @@
           </object>
         </child>
         <child>
-          <object class="GtkBox">
+          <object class="CtkBox">
             <property name="visible">True</property>
             <child>
-              <object class="GtkCheckButton">
+              <object class="CtkCheckButton">
                 <property name="visible">True</property>
                 <property name="active">False</property>
               </object>
             </child>
             <child>
-              <object class="GtkLabel">
+              <object class="CtkLabel">
                 <property name="visible">True</property>
                 <property name="name">label2</property>
                 <property name="label" translatable="yes">Hello World!</property>

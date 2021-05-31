@@ -13,7 +13,7 @@
   The user interface is then built by adding buttons, drop-down menus, input 
   fields, and other widgets to the window.
   If you are creating complex user interfaces it is recommended to
-  use #GtkBuilder and its GTK-specific markup description language, instead of
+  use #CtkBuilder and its GTK-specific markup description language, instead of
   assembling the interface manually. You can also use a visual user interface
   editor, like <ulink url="https://glade.gnome.org/">Glade</ulink>.</para>
   
@@ -31,7 +31,7 @@
     <title>Basics</title>
 
     <para>To begin our introduction to GTK, we'll start with a simple
-    signal-based Gtk application. This program will create an empty 200 × 200 pixel
+    signal-based Ctk application. This program will create an empty 200 × 200 pixel
     window.</para>
 
     <informalfigure>
@@ -68,11 +68,11 @@
     header is directly included.</para></warning>
 
     <para>In a GTK+ application, the purpose of the main() function is to
-    create a #GtkApplication object and run it. In this example a
-    #GtkApplication pointer named <varname>app</varname> is called and then
+    create a #CtkApplication object and run it. In this example a
+    #CtkApplication pointer named <varname>app</varname> is called and then
     initialized using ctk_application_new().</para>
 
-    <para>When creating a #GtkApplication
+    <para>When creating a #CtkApplication
     you need to pick an application identifier (a name)
     and input to ctk_application_new() as parameter.
     For this example <varname>org.ctk.example</varname> is used
@@ -83,7 +83,7 @@
     </para>
 
     <para>Next the
-    <ulink url="https://wiki.gnome.org/HowDoI/GtkApplication">activate signal</ulink>
+    <ulink url="https://wiki.gnome.org/HowDoI/CtkApplication">activate signal</ulink>
     is connected to the activate() function above the main() functions.
     The <varname>activate</varname> signal will be sent
     when your application is launched with
@@ -100,20 +100,20 @@
     application. Inside the activate() function we want to construct
     our GTK window, so that a window is shown when the application
     is launched. The call to ctk_application_window_new() will
-    create a new #GtkWindow and store it inside the
+    create a new #CtkWindow and store it inside the
     <varname>window</varname> pointer. The window will have a frame,
     a title bar, and window controls depending on the platform.</para>
 
     <para>A window title is set using ctk_window_set_title(). This function
-    takes a GtkWindow* pointer and a string as input. As our
-    <varname>window</varname> pointer is a GtkWidget pointer, we need to cast it
-    to GtkWindow*.
+    takes a CtkWindow* pointer and a string as input. As our
+    <varname>window</varname> pointer is a CtkWidget pointer, we need to cast it
+    to CtkWindow*.
     But instead of casting <varname>window</varname> via
-    <varname>(GtkWindow*)</varname>, 
+    <varname>(CtkWindow*)</varname>, 
     <varname>window</varname> can be cast using the macro
     <varname>CTK_WINDOW()</varname>.
     <varname>CTK_WINDOW()</varname> will check if the 
-    pointer is an instance of the GtkWindow class, before casting, and emit a
+    pointer is an instance of the CtkWindow class, before casting, and emit a
     warning if the check fails. More information about this convention 
     can be found 
     <ulink url="https://developer.gnome.org/gobject/stable/gtype-conventions.html">
@@ -125,7 +125,7 @@
     <para>When you exit the window, by for example pressing the X,
     the g_application_run() in the main loop returns with a number
     which is saved inside an integer named "status". Afterwards, the
-    #GtkApplication object is freed from memory with g_object_unref().
+    #CtkApplication object is freed from memory with g_object_unref().
     Finally the status integer is returned and the GTK application exits.</para>
 
     <para>While the program is running, GTK+ is receiving
@@ -166,19 +166,19 @@
   </section>
 
   <para>As seen above, example-1.c builds further upon example-0.c by adding a
-  button to our window, with the label "Hello World". Two new GtkWidget pointers
+  button to our window, with the label "Hello World". Two new CtkWidget pointers
   are declared to accomplish this, <varname>button</varname> and
   <varname>button_box</varname>. The button_box variable is created to store a
-  #GtkButtonBox which is GTK+'s way of controlling the size and layout of buttons.
-  The #GtkButtonBox is created and assigned to ctk_button_box_new() which takes a
-  #GtkOrientation enum as parameter. The buttons which this box will contain can
+  #CtkButtonBox which is GTK+'s way of controlling the size and layout of buttons.
+  The #CtkButtonBox is created and assigned to ctk_button_box_new() which takes a
+  #CtkOrientation enum as parameter. The buttons which this box will contain can
   either be stored horizontally or vertically but this does not matter in this
   particular case as we are dealing with only one button. After initializing
   button_box with horizontal orientation, the code adds the button_box widget to the
   window widget using ctk_container_add().</para>
 
   <para>Next the <varname>button</varname> variable is initialized in similar manner.
-  ctk_button_new_with_label() is called which returns a GtkButton to be stored inside
+  ctk_button_new_with_label() is called which returns a CtkButton to be stored inside
   <varname>button</varname>. Afterwards <varname>button</varname> is added to
   our <varname>button_box</varname>.
   Using g_signal_connect the button is connected to a function in our app called
@@ -203,7 +203,7 @@
   </para>
 
   <para>The rest of the code in example-1.c is identical to example-0.c. Next
-  section will elaborate further on how to add several GtkWidgets to your GTK
+  section will elaborate further on how to add several CtkWidgets to your GTK
   application.</para>
 
   <section>
@@ -219,7 +219,7 @@
     whose purpose it is to control the layout of the child widgets that are
     added to them. See <xref linkend="LayoutContainers"/> for an overview.</para>
 
-    <para>The following example shows how the GtkGrid container lets you
+    <para>The following example shows how the CtkGrid container lets you
     arrange several buttons:</para>
 
     <informalfigure>
@@ -252,10 +252,10 @@
 
     <para>Thankfully, GTK+ supports the separation of user interface
     layout from your business logic, by using UI descriptions in an
-    XML format that can be parsed by the #GtkBuilder class.</para>
+    XML format that can be parsed by the #CtkBuilder class.</para>
 
     <example>
-      <title>Packing buttons with GtkBuilder</title>
+      <title>Packing buttons with CtkBuilder</title>
       <para>Create a new file with the following content named example-3.c.</para>
       <programlisting><xi:include href="@abs_top_srcdir@/examples/builder.c" parse="text"><xi:fallback>MISSING XINCLUDE CONTENT</xi:fallback></xi:include></programlisting>
       <para>Create a new file with the following content named builder.ui.</para>
@@ -268,11 +268,11 @@
       </literallayout>
     </para>
 
-    <para>Note that GtkBuilder can also be used to construct objects
+    <para>Note that CtkBuilder can also be used to construct objects
     that are not widgets, such as tree models, adjustments, etc.
     That is the reason the method we use here is called
     ctk_builder_get_object() and returns a GObject* instead of a
-    GtkWidget*.</para>
+    CtkWidget*.</para>
 
     <para>Normally, you would pass a full path to
     ctk_builder_add_from_file() to make the execution of your program
@@ -316,7 +316,7 @@
       </varlistentry>
       <varlistentry>
         <term>Other resources</term>
-        <listitem>Other files, such as GtkBuilder ui files, are best loaded from
+        <listitem>Other files, such as CtkBuilder ui files, are best loaded from
           resources stored in the application binary itself. This eliminates the
           need for most of the files that would traditionally be installed in
           an application-specific location in <filename>/usr/share</filename>.</listitem>
@@ -327,9 +327,9 @@
     <para>GTK+ includes application support that is built on top of
     #GApplication. In this tutorial we'll build a simple application by
     starting from scratch, adding more and more pieces over time. Along
-    the way, we'll learn about #GtkApplication, templates, resources,
-    application menus, settings, #GtkHeaderBar, #GtkStack, #GtkSearchBar,
-    #GtkListBox, and more.</para>
+    the way, we'll learn about #CtkApplication, templates, resources,
+    application menus, settings, #CtkHeaderBar, #CtkStack, #CtkSearchBar,
+    #CtkListBox, and more.</para>
 
     <para>The full, buildable sources for these examples can be found
     in the examples/ directory of the GTK+ source distribution, or
@@ -341,7 +341,7 @@
     <section>
       <title>A trivial application</title>
 
-      <para>When using #GtkApplication, the main() function can be very
+      <para>When using #CtkApplication, the main() function can be very
       simple. We just call g_application_run() and give it an instance
       of our application class.</para>
 
@@ -350,7 +350,7 @@
       </informalexample>
 
       <para>All the application logic is in the application class, which
-      is a subclass of #GtkApplication. Our example does not yet have any
+      is a subclass of #CtkApplication. Our example does not yet have any
       interesting functionality. All it does is open a window when it is
       activated without arguments, and open the files it is given, if it
       is started with arguments.</para>
@@ -368,7 +368,7 @@
       </informalexample>
 
       <para>Another important class that is part of the application support
-      in GTK+ is #GtkApplicationWindow. It is typically subclassed as well.
+      in GTK+ is #CtkApplicationWindow. It is typically subclassed as well.
       Our subclass does not do anything yet, so we will just get an empty
       window.</para>
 
@@ -412,11 +412,11 @@
     <section>
       <title>Populating the window</title>
 
-      <para>In this step, we use a #GtkBuilder template to associate a
-      #GtkBuilder ui file with our application window class.</para>
-      <para>Our simple ui file puts a #GtkHeaderBar on top of a #GtkStack
-      widget. The header bar contains a #GtkStackSwitcher, which is a
-      standalone widget to show a row of 'tabs' for the pages of a #GtkStack.
+      <para>In this step, we use a #CtkBuilder template to associate a
+      #CtkBuilder ui file with our application window class.</para>
+      <para>Our simple ui file puts a #CtkHeaderBar on top of a #CtkStack
+      widget. The header bar contains a #CtkStackSwitcher, which is a
+      standalone widget to show a row of 'tabs' for the pages of a #CtkStack.
       </para>
 
       <informalexample>
@@ -424,7 +424,7 @@
       </informalexample>
 
       <para>To make use of this file in our application, we revisit
-      our #GtkApplicationWindow subclass, and call
+      our #CtkApplicationWindow subclass, and call
       ctk_widget_class_set_template_from_resource() from the class init
       function to set the ui file as template for this class. We also
       add a call to ctk_widget_init_template() in the instance init
@@ -489,7 +489,7 @@ example_app_window_class_init (ExampleAppWindowClass *class)
       all the files that it is given on the commandline.</para>
 
       <para>To this end, we add a private struct to our application
-      window subclass and keep a reference to the #GtkStack there.
+      window subclass and keep a reference to the #CtkStack there.
       The ctk_widget_class_bind_template_child_private() function
       arranges things so that after instantiating the template, the
       @stack member of the private struct will point to the widget of
@@ -501,7 +501,7 @@ example_app_window_class_init (ExampleAppWindowClass *class)
 
 struct _ExampleAppWindowPrivate
 {
-  GtkWidget *stack;
+  CtkWidget *stack;
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE(ExampleAppWindow, example_app_window, CTK_TYPE_APPLICATION_WINDOW);
@@ -522,7 +522,7 @@ example_app_window_class_init (ExampleAppWindowClass *class)
       </informalexample>
 
       <para>Now we revisit the example_app_window_open() function that
-      is called for each commandline argument, and construct a GtkTextView
+      is called for each commandline argument, and construct a CtkTextView
       that we then add as a page to the stack:</para>
 
       <informalexample>
@@ -535,7 +535,7 @@ example_app_window_open (ExampleAppWindow *win,
 {
   ExampleAppWindowPrivate *priv;
   gchar *basename;
-  GtkWidget *scrolled, *view;
+  CtkWidget *scrolled, *view;
   gchar *contents;
   gsize length;
 
@@ -555,7 +555,7 @@ example_app_window_open (ExampleAppWindow *win,
 
   if (g_file_load_contents (file, NULL, &contents, &length, NULL, NULL))
     {
-      GtkTextBuffer *buffer;
+      CtkTextBuffer *buffer;
 
       buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
       ctk_text_buffer_set_text (buffer, contents, length);
@@ -637,7 +637,7 @@ static GActionEntry app_entries[] =
 static void
 example_app_startup (GApplication *app)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GMenuModel *app_menu;
   const gchar *quit_accels[2] = { "&lt;Ctrl&gt;Q", NULL };
 
@@ -742,7 +742,7 @@ example_app_window_init (ExampleAppWindow *win)
       change one of the settings, e.g. using the gsettings commandline
       tool. Of course, we expect the application to provide a preference
       dialog for these. So lets do that now. Our preference dialog will
-      be a subclass of GtkDialog, and we'll use the same techniques that
+      be a subclass of CtkDialog, and we'll use the same techniques that
       we've already seen: templates, private structs, settings
       bindings.</para>
 
@@ -771,7 +771,7 @@ preferences_activated (GSimpleAction *action,
                        gpointer       app)
 {
   ExampleAppPrefs *prefs;
-  GtkWindow *win;
+  CtkWindow *win;
 
   win = ctk_application_get_active_window (CTK_APPLICATION (app));
   prefs = example_app_prefs_new (EXAMPLE_APP_WINDOW (win));
@@ -799,8 +799,8 @@ preferences_activated (GSimpleAction *action,
       <title>Adding a search bar</title>
 
       <para>We continue to flesh out the functionality of our application.
-      For now, we add search. GTK+ supports this with #GtkSearchEntry and
-      #GtkSearchBar. The search bar is a widget that can slide in from the
+      For now, we add search. GTK+ supports this with #CtkSearchEntry and
+      #CtkSearchBar. The search bar is a widget that can slide in from the
       top to present a search entry.</para>
 
       <para>We add a toggle button to the header bar, which can be used
@@ -820,15 +820,15 @@ preferences_activated (GSimpleAction *action,
 ...
 
 static void
-search_text_changed (GtkEntry         *entry,
+search_text_changed (CtkEntry         *entry,
                      ExampleAppWindow *win)
 {
   ExampleAppWindowPrivate *priv;
   const gchar *text;
-  GtkWidget *tab;
-  GtkWidget *view;
-  GtkTextBuffer *buffer;
-  GtkTextIter start, match_start, match_end;
+  CtkWidget *tab;
+  CtkWidget *view;
+  CtkTextBuffer *buffer;
+  CtkTextIter start, match_start, match_end;
 
   text = ctk_entry_get_text (entry);
 
@@ -884,7 +884,7 @@ example_app_window_init (ExampleAppWindow *win)
       <title>Adding a side bar</title>
 
       <para>As another piece of functionality, we are adding a sidebar,
-      which demonstrates #GtkMenuButton, #GtkRevealer and #GtkListBox.</para>
+      which demonstrates #CtkMenuButton, #CtkRevealer and #CtkListBox.</para>
 
       <informalexample>
         <programlisting><xi:include href="@abs_top_srcdir@/examples/application8/window.ui" parse="text"><xi:fallback>MISSING XINCLUDE CONTENT</xi:fallback></xi:include></programlisting>
@@ -894,7 +894,7 @@ example_app_window_init (ExampleAppWindow *win)
       found in each file is a little too involved to go into here. But we'll
       look at the code to add the gears menu.</para>
 
-      <para>As expected by now, the gears menu is specified in a GtkBuilder
+      <para>As expected by now, the gears menu is specified in a CtkBuilder
       ui file.</para>
 
       <informalexample>
@@ -1010,7 +1010,7 @@ example_app_window_init (ExampleAppWindow *win)
     <section>
       <title>Header bar</title>
 
-      <para>Our application already uses a GtkHeaderBar, but so far it
+      <para>Our application already uses a CtkHeaderBar, but so far it
       still gets a 'normal' window titlebar on top of that. This is a
       bit redundant, and we will now tell GTK+ to use the header bar
       as replacement for the titlebar. To do so, we move it around to
@@ -1044,9 +1044,9 @@ example_app_window_init (ExampleAppWindow *win)
     <para>Many widgets, like buttons, do all their drawing themselves. You
     just tell them the label you want to see, and they figure out what font
     to use, draw the button outline and focus rectangle, etc. Sometimes, it
-    is necessary to do some custom drawing. In that case, a #GtkDrawingArea
+    is necessary to do some custom drawing. In that case, a #CtkDrawingArea
     might be the right widget to use. It offers a canvas on which you can
-    draw by connecting to the #GtkWidget::draw signal.
+    draw by connecting to the #CtkWidget::draw signal.
     </para>
 
     <para>The contents of a widget often need to be partially or fully redrawn,

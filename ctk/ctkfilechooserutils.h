@@ -1,6 +1,6 @@
 /* GTK - The GIMP Toolkit
  * ctkfilechooserutils.h: Private utility functions useful for
- *                        implementing a GtkFileChooser interface
+ *                        implementing a CtkFileChooser interface
  * Copyright (C) 2003, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -40,19 +40,19 @@ typedef enum {
   CTK_FILE_CHOOSER_PROP_DO_OVERWRITE_CONFIRMATION,
   CTK_FILE_CHOOSER_PROP_CREATE_FOLDERS,
   CTK_FILE_CHOOSER_PROP_LAST                   = CTK_FILE_CHOOSER_PROP_CREATE_FOLDERS
-} GtkFileChooserProp;
+} CtkFileChooserProp;
 
 void _ctk_file_chooser_install_properties (GObjectClass *klass);
 
-void _ctk_file_chooser_delegate_iface_init (GtkFileChooserIface *iface);
-void _ctk_file_chooser_set_delegate        (GtkFileChooser *receiver,
-					    GtkFileChooser *delegate);
+void _ctk_file_chooser_delegate_iface_init (CtkFileChooserIface *iface);
+void _ctk_file_chooser_set_delegate        (CtkFileChooser *receiver,
+					    CtkFileChooser *delegate);
 
 GQuark _ctk_file_chooser_delegate_get_quark (void) G_GNUC_CONST;
 
 GList *_ctk_file_chooser_extract_recent_folders (GList *infos);
 
-GSettings *_ctk_file_chooser_get_settings_for_widget (GtkWidget *widget);
+GSettings *_ctk_file_chooser_get_settings_for_widget (CtkWidget *widget);
 
 gchar * _ctk_file_chooser_label_for_file (GFile *file);
 

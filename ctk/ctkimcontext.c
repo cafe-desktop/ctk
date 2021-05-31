@@ -25,20 +25,20 @@
 
 /**
  * SECTION:ctkimcontext
- * @title: GtkIMContext
+ * @title: CtkIMContext
  * @short_description: Base class for input method contexts
  * @include: ctk/ctk.h,ctk/ctkimmodule.h
  *
- * #GtkIMContext defines the interface for GTK+ input methods. An input method
- * is used by GTK+ text input widgets like #GtkEntry to map from key events to
+ * #CtkIMContext defines the interface for GTK+ input methods. An input method
+ * is used by GTK+ text input widgets like #CtkEntry to map from key events to
  * Unicode character strings.
  *
  * The default input method can be set programmatically via the 
- * #GtkSettings:ctk-im-module GtkSettings property. Alternatively, you may set 
+ * #CtkSettings:ctk-im-module CtkSettings property. Alternatively, you may set 
  * the CTK_IM_MODULE environment variable as documented in
  * [Running GTK+ Applications][ctk-running].
  *
- * The #GtkEntry #GtkEntry:im-module and #GtkTextView #GtkTextView:im-module 
+ * The #CtkEntry #CtkEntry:im-module and #CtkTextView #CtkTextView:im-module 
  * properties may also be used to set input methods for specific widget 
  * instances. For instance, a certain entry widget might be expected to contain 
  * certain characters which would be easier to input with a certain input 
@@ -56,13 +56,13 @@
  *
  * Additional input methods can be made available for use by GTK+ widgets as
  * loadable modules. An input method module is a small shared library which
- * implements a subclass of #GtkIMContext or #GtkIMContextSimple and exports
+ * implements a subclass of #CtkIMContext or #CtkIMContextSimple and exports
  * these four functions:
  *
  * |[<!-- language="C" -->
  * void im_module_init(GTypeModule *module);
  * ]|
- * This function should register the #GType of the #GtkIMContext subclass which
+ * This function should register the #GType of the #CtkIMContext subclass which
  * implements the input method by means of g_type_module_register_type(). Note
  * that g_type_register_static() cannot be used as the type needs to be
  * registered dynamically.
@@ -73,7 +73,7 @@
  * Here goes any cleanup code your input method might require on module unload.
  *
  * |[<!-- language="C" -->
- * void im_module_list(const GtkIMContextInfo ***contexts, int *n_contexts)
+ * void im_module_list(const CtkIMContextInfo ***contexts, int *n_contexts)
  * {
  *   *contexts = info_list;
  *   *n_contexts = G_N_ELEMENTS (info_list);
@@ -81,15 +81,15 @@
  * ]|
  * This function returns the list of input methods provided by the module. The
  * example implementation above shows a common solution and simply returns a
- * pointer to statically defined array of #GtkIMContextInfo items for each
+ * pointer to statically defined array of #CtkIMContextInfo items for each
  * provided input method.
  *
  * |[<!-- language="C" -->
- * GtkIMContext * im_module_create(const gchar *context_id);
+ * CtkIMContext * im_module_create(const gchar *context_id);
  * ]|
  * This function should return a pointer to a newly created instance of the
- * #GtkIMContext subclass identified by @context_id. The context ID is the same
- * as specified in the #GtkIMContextInfo array returned by im_module_list().
+ * #CtkIMContext subclass identified by @context_id. The context ID is the same
+ * as specified in the #CtkIMContextInfo array returned by im_module_list().
  *
  * After a new loadable input method module has been installed on the system,
  * the configuration file `ctk.immodules` needs to be
@@ -116,22 +116,22 @@ enum {
 static guint im_context_signals[LAST_SIGNAL] = { 0, };
 static GParamSpec *properties[LAST_PROPERTY] = { NULL, };
 
-typedef struct _GtkIMContextPrivate GtkIMContextPrivate;
-struct _GtkIMContextPrivate {
-  GtkInputPurpose purpose;
-  GtkInputHints hints;
+typedef struct _CtkIMContextPrivate CtkIMContextPrivate;
+struct _CtkIMContextPrivate {
+  CtkInputPurpose purpose;
+  CtkInputHints hints;
 };
 
-static void     ctk_im_context_real_get_preedit_string (GtkIMContext   *context,
+static void     ctk_im_context_real_get_preedit_string (CtkIMContext   *context,
 							gchar         **str,
 							PangoAttrList **attrs,
 							gint           *cursor_pos);
-static gboolean ctk_im_context_real_filter_keypress    (GtkIMContext   *context,
+static gboolean ctk_im_context_real_filter_keypress    (CtkIMContext   *context,
 							GdkEventKey    *event);
-static gboolean ctk_im_context_real_get_surrounding    (GtkIMContext   *context,
+static gboolean ctk_im_context_real_get_surrounding    (CtkIMContext   *context,
 							gchar         **text,
 							gint           *cursor_index);
-static void     ctk_im_context_real_set_surrounding    (GtkIMContext   *context,
+static void     ctk_im_context_real_set_surrounding    (CtkIMContext   *context,
 							const char     *text,
 							gint            len,
 							gint            cursor_index);
@@ -146,19 +146,19 @@ static void     ctk_im_context_set_property            (GObject        *obj,
                                                         GParamSpec     *pspec);
 
 
-G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (GtkIMContext, ctk_im_context, G_TYPE_OBJECT)
+G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (CtkIMContext, ctk_im_context, G_TYPE_OBJECT)
 
 /**
- * GtkIMContextClass:
- * @preedit_start: Default handler of the #GtkIMContext::preedit-start signal.
- * @preedit_end: Default handler of the #GtkIMContext::preedit-end signal.
- * @preedit_changed: Default handler of the #GtkIMContext::preedit-changed
+ * CtkIMContextClass:
+ * @preedit_start: Default handler of the #CtkIMContext::preedit-start signal.
+ * @preedit_end: Default handler of the #CtkIMContext::preedit-end signal.
+ * @preedit_changed: Default handler of the #CtkIMContext::preedit-changed
  *   signal.
- * @commit: Default handler of the #GtkIMContext::commit signal.
+ * @commit: Default handler of the #CtkIMContext::commit signal.
  * @retrieve_surrounding: Default handler of the
- *   #GtkIMContext::retrieve-surrounding signal.
+ *   #CtkIMContext::retrieve-surrounding signal.
  * @delete_surrounding: Default handler of the
- *   #GtkIMContext::delete-surrounding signal.
+ *   #CtkIMContext::delete-surrounding signal.
  * @set_client_window: Called via ctk_im_context_set_client_window() when the
  *   input window where the entered text will appear changes. Override this to
  *   keep track of the current input window, for instance for the purpose of
@@ -172,7 +172,7 @@ G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (GtkIMContext, ctk_im_context, G_TYPE_OBJECT
  *   key press or release event. Every non-trivial input method needs to
  *   override this in order to implement the mapping from key events to text.
  *   A return value of %TRUE indicates to the caller that the event was
- *   consumed by the input method. In that case, the #GtkIMContext::commit
+ *   consumed by the input method. In that case, the #CtkIMContext::commit
  *   signal should be emitted upon completion of a key sequence to pass the
  *   resulting text back to the input widget. Alternatively, %FALSE may be
  *   returned to indicate that the event wasn’t handled by the input method.
@@ -193,7 +193,7 @@ G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (GtkIMContext, ctk_im_context, G_TYPE_OBJECT
  *   the use of the preedit string. Override this to display feedback by some
  *   other means if turned off.
  * @set_surrounding: Called via ctk_im_context_set_surrounding() in response
- *   to signal #GtkIMContext::retrieve-surrounding to update the input
+ *   to signal #CtkIMContext::retrieve-surrounding to update the input
  *   method’s idea of the context around the cursor. It is not necessary to
  *   override this method even with input methods which implement
  *   context-dependent behavior. The base implementation is sufficient for
@@ -202,11 +202,11 @@ G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (GtkIMContext, ctk_im_context, G_TYPE_OBJECT
  *   the context around the cursor location. It is not necessary to override
  *   this method even with input methods which implement context-dependent
  *   behavior. The base implementation emits
- *   #GtkIMContext::retrieve-surrounding and records the context received
+ *   #CtkIMContext::retrieve-surrounding and records the context received
  *   by the subsequent invocation of @get_surrounding.
  */
 static void
-ctk_im_context_class_init (GtkIMContextClass *klass)
+ctk_im_context_class_init (CtkIMContextClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -219,7 +219,7 @@ ctk_im_context_class_init (GtkIMContextClass *klass)
   klass->set_surrounding = ctk_im_context_real_set_surrounding;
 
   /**
-   * GtkIMContext::preedit-start:
+   * CtkIMContext::preedit-start:
    * @context: the object on which the signal is emitted
    *
    * The ::preedit-start signal is emitted when a new preediting sequence
@@ -229,12 +229,12 @@ ctk_im_context_class_init (GtkIMContextClass *klass)
     g_signal_new (I_("preedit-start"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkIMContextClass, preedit_start),
+		  G_STRUCT_OFFSET (CtkIMContextClass, preedit_start),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
   /**
-   * GtkIMContext::preedit-end:
+   * CtkIMContext::preedit-end:
    * @context: the object on which the signal is emitted
    *
    * The ::preedit-end signal is emitted when a preediting sequence
@@ -244,12 +244,12 @@ ctk_im_context_class_init (GtkIMContextClass *klass)
     g_signal_new (I_("preedit-end"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkIMContextClass, preedit_end),
+		  G_STRUCT_OFFSET (CtkIMContextClass, preedit_end),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
   /**
-   * GtkIMContext::preedit-changed:
+   * CtkIMContext::preedit-changed:
    * @context: the object on which the signal is emitted
    *
    * The ::preedit-changed signal is emitted whenever the preedit sequence
@@ -261,12 +261,12 @@ ctk_im_context_class_init (GtkIMContextClass *klass)
     g_signal_new (I_("preedit-changed"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkIMContextClass, preedit_changed),
+		  G_STRUCT_OFFSET (CtkIMContextClass, preedit_changed),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
   /**
-   * GtkIMContext::commit:
+   * CtkIMContext::commit:
    * @context: the object on which the signal is emitted
    * @str: the completed character(s) entered by the user
    *
@@ -278,13 +278,13 @@ ctk_im_context_class_init (GtkIMContextClass *klass)
     g_signal_new (I_("commit"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkIMContextClass, commit),
+		  G_STRUCT_OFFSET (CtkIMContextClass, commit),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
 		  G_TYPE_STRING);
   /**
-   * GtkIMContext::retrieve-surrounding:
+   * CtkIMContext::retrieve-surrounding:
    * @context: the object on which the signal is emitted
    *
    * The ::retrieve-surrounding signal is emitted when the input method
@@ -298,7 +298,7 @@ ctk_im_context_class_init (GtkIMContextClass *klass)
     g_signal_new (I_("retrieve-surrounding"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkIMContextClass, retrieve_surrounding),
+                  G_STRUCT_OFFSET (CtkIMContextClass, retrieve_surrounding),
                   _ctk_boolean_handled_accumulator, NULL,
                   _ctk_marshal_BOOLEAN__VOID,
                   G_TYPE_BOOLEAN, 0);
@@ -306,7 +306,7 @@ ctk_im_context_class_init (GtkIMContextClass *klass)
                               G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__VOIDv);
   /**
-   * GtkIMContext::delete-surrounding:
+   * CtkIMContext::delete-surrounding:
    * @context: the object on which the signal is emitted
    * @offset:  the character offset from the cursor position of the text
    *           to be deleted. A negative value indicates a position before
@@ -322,7 +322,7 @@ ctk_im_context_class_init (GtkIMContextClass *klass)
     g_signal_new (I_("delete-surrounding"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkIMContextClass, delete_surrounding),
+                  G_STRUCT_OFFSET (CtkIMContextClass, delete_surrounding),
                   _ctk_boolean_handled_accumulator, NULL,
                   _ctk_marshal_BOOLEAN__INT_INT,
                   G_TYPE_BOOLEAN, 2,
@@ -352,12 +352,12 @@ ctk_im_context_class_init (GtkIMContextClass *klass)
 }
 
 static void
-ctk_im_context_init (GtkIMContext *im_context)
+ctk_im_context_init (CtkIMContext *im_context)
 {
 }
 
 static void
-ctk_im_context_real_get_preedit_string (GtkIMContext       *context,
+ctk_im_context_real_get_preedit_string (CtkIMContext       *context,
 					gchar             **str,
 					PangoAttrList     **attrs,
 					gint               *cursor_pos)
@@ -371,7 +371,7 @@ ctk_im_context_real_get_preedit_string (GtkIMContext       *context,
 }
 
 static gboolean
-ctk_im_context_real_filter_keypress (GtkIMContext       *context,
+ctk_im_context_real_filter_keypress (CtkIMContext       *context,
 				     GdkEventKey        *event)
 {
   return FALSE;
@@ -384,7 +384,7 @@ typedef struct
 } SurroundingInfo;
 
 static void
-ctk_im_context_real_set_surrounding (GtkIMContext  *context,
+ctk_im_context_real_set_surrounding (CtkIMContext  *context,
 				     const gchar   *text,
 				     gint           len,
 				     gint           cursor_index)
@@ -401,7 +401,7 @@ ctk_im_context_real_set_surrounding (GtkIMContext  *context,
 }
 
 static gboolean
-ctk_im_context_real_get_surrounding (GtkIMContext *context,
+ctk_im_context_real_get_surrounding (CtkIMContext *context,
 				     gchar       **text,
 				     gint         *cursor_index)
 {
@@ -444,7 +444,7 @@ ctk_im_context_real_get_surrounding (GtkIMContext *context,
 
 /**
  * ctk_im_context_set_client_window:
- * @context: a #GtkIMContext
+ * @context: a #CtkIMContext
  * @window: (allow-none):  the client window. This may be %NULL to indicate
  *           that the previous client window no longer exists.
  * 
@@ -454,10 +454,10 @@ ctk_im_context_real_get_surrounding (GtkIMContext *context,
  * also be used for purposes internal to the input method.
  **/
 void
-ctk_im_context_set_client_window (GtkIMContext *context,
+ctk_im_context_set_client_window (CtkIMContext *context,
 				  GdkWindow    *window)
 {
-  GtkIMContextClass *klass;
+  CtkIMContextClass *klass;
   
   g_return_if_fail (CTK_IS_IM_CONTEXT (context));
 
@@ -468,7 +468,7 @@ ctk_im_context_set_client_window (GtkIMContext *context,
 
 /**
  * ctk_im_context_get_preedit_string:
- * @context:    a #GtkIMContext
+ * @context:    a #CtkIMContext
  * @str:        (out) (transfer full): location to store the retrieved
  *              string. The string retrieved must be freed with g_free().
  * @attrs:      (out) (transfer full): location to store the retrieved
@@ -483,12 +483,12 @@ ctk_im_context_set_client_window (GtkIMContext *context,
  * point.
  **/
 void
-ctk_im_context_get_preedit_string (GtkIMContext   *context,
+ctk_im_context_get_preedit_string (CtkIMContext   *context,
 				   gchar         **str,
 				   PangoAttrList **attrs,
 				   gint           *cursor_pos)
 {
-  GtkIMContextClass *klass;
+  CtkIMContextClass *klass;
   
   g_return_if_fail (CTK_IS_IM_CONTEXT (context));
   
@@ -499,7 +499,7 @@ ctk_im_context_get_preedit_string (GtkIMContext   *context,
 
 /**
  * ctk_im_context_filter_keypress:
- * @context: a #GtkIMContext
+ * @context: a #CtkIMContext
  * @event: the key event
  * 
  * Allow an input method to internally handle key press and release 
@@ -510,10 +510,10 @@ ctk_im_context_get_preedit_string (GtkIMContext   *context,
  *
  **/
 gboolean
-ctk_im_context_filter_keypress (GtkIMContext *context,
+ctk_im_context_filter_keypress (CtkIMContext *context,
 				GdkEventKey  *key)
 {
-  GtkIMContextClass *klass;
+  CtkIMContextClass *klass;
   
   g_return_val_if_fail (CTK_IS_IM_CONTEXT (context), FALSE);
   g_return_val_if_fail (key != NULL, FALSE);
@@ -524,7 +524,7 @@ ctk_im_context_filter_keypress (GtkIMContext *context,
 
 /**
  * ctk_im_context_focus_in:
- * @context: a #GtkIMContext
+ * @context: a #CtkIMContext
  *
  * Notify the input method that the widget to which this
  * input context corresponds has gained focus. The input method
@@ -532,9 +532,9 @@ ctk_im_context_filter_keypress (GtkIMContext *context,
  * this change.
  **/
 void
-ctk_im_context_focus_in (GtkIMContext   *context)
+ctk_im_context_focus_in (CtkIMContext   *context)
 {
-  GtkIMContextClass *klass;
+  CtkIMContextClass *klass;
   
   g_return_if_fail (CTK_IS_IM_CONTEXT (context));
   
@@ -545,7 +545,7 @@ ctk_im_context_focus_in (GtkIMContext   *context)
 
 /**
  * ctk_im_context_focus_out:
- * @context: a #GtkIMContext
+ * @context: a #CtkIMContext
  *
  * Notify the input method that the widget to which this
  * input context corresponds has lost focus. The input method
@@ -553,9 +553,9 @@ ctk_im_context_focus_in (GtkIMContext   *context)
  * state to reflect this change.
  **/
 void
-ctk_im_context_focus_out (GtkIMContext   *context)
+ctk_im_context_focus_out (CtkIMContext   *context)
 {
-  GtkIMContextClass *klass;
+  CtkIMContextClass *klass;
   
   g_return_if_fail (CTK_IS_IM_CONTEXT (context));
 
@@ -566,16 +566,16 @@ ctk_im_context_focus_out (GtkIMContext   *context)
 
 /**
  * ctk_im_context_reset:
- * @context: a #GtkIMContext
+ * @context: a #CtkIMContext
  *
  * Notify the input method that a change such as a change in cursor
  * position has been made. This will typically cause the input
  * method to clear the preedit state.
  **/
 void
-ctk_im_context_reset (GtkIMContext   *context)
+ctk_im_context_reset (CtkIMContext   *context)
 {
-  GtkIMContextClass *klass;
+  CtkIMContextClass *klass;
   
   g_return_if_fail (CTK_IS_IM_CONTEXT (context));
 
@@ -587,7 +587,7 @@ ctk_im_context_reset (GtkIMContext   *context)
 
 /**
  * ctk_im_context_set_cursor_location:
- * @context: a #GtkIMContext
+ * @context: a #CtkIMContext
  * @area: new location
  *
  * Notify the input method that a change in cursor 
@@ -595,10 +595,10 @@ ctk_im_context_reset (GtkIMContext   *context)
  * window.
  **/
 void
-ctk_im_context_set_cursor_location (GtkIMContext       *context,
+ctk_im_context_set_cursor_location (CtkIMContext       *context,
 				    const GdkRectangle *area)
 {
-  GtkIMContextClass *klass;
+  CtkIMContextClass *klass;
   
   g_return_if_fail (CTK_IS_IM_CONTEXT (context));
 
@@ -609,7 +609,7 @@ ctk_im_context_set_cursor_location (GtkIMContext       *context,
 
 /**
  * ctk_im_context_set_use_preedit:
- * @context: a #GtkIMContext
+ * @context: a #CtkIMContext
  * @use_preedit: whether the IM context should use the preedit string.
  * 
  * Sets whether the IM context should use the preedit string
@@ -618,10 +618,10 @@ ctk_im_context_set_cursor_location (GtkIMContext       *context,
  * feedback, such as displaying it in a child of the root window.
  **/
 void
-ctk_im_context_set_use_preedit (GtkIMContext *context,
+ctk_im_context_set_use_preedit (CtkIMContext *context,
 				gboolean      use_preedit)
 {
-  GtkIMContextClass *klass;
+  CtkIMContextClass *klass;
   
   g_return_if_fail (CTK_IS_IM_CONTEXT (context));
 
@@ -632,7 +632,7 @@ ctk_im_context_set_use_preedit (GtkIMContext *context,
 
 /**
  * ctk_im_context_set_surrounding:
- * @context: a #GtkIMContext 
+ * @context: a #CtkIMContext 
  * @text: text surrounding the insertion point, as UTF-8.
  *        the preedit string should not be included within
  *        @text.
@@ -641,16 +641,16 @@ ctk_im_context_set_use_preedit (GtkIMContext *context,
  * 
  * Sets surrounding context around the insertion point and preedit
  * string. This function is expected to be called in response to the
- * GtkIMContext::retrieve_surrounding signal, and will likely have no
+ * CtkIMContext::retrieve_surrounding signal, and will likely have no
  * effect if called at other times.
  **/
 void
-ctk_im_context_set_surrounding (GtkIMContext  *context,
+ctk_im_context_set_surrounding (CtkIMContext  *context,
 				const gchar   *text,
 				gint           len,
 				gint           cursor_index)
 {
-  GtkIMContextClass *klass;
+  CtkIMContextClass *klass;
   
   g_return_if_fail (CTK_IS_IM_CONTEXT (context));
   g_return_if_fail (text != NULL || len == 0);
@@ -669,7 +669,7 @@ ctk_im_context_set_surrounding (GtkIMContext  *context,
 
 /**
  * ctk_im_context_get_surrounding:
- * @context: a #GtkIMContext
+ * @context: a #CtkIMContext
  * @text: (out) (transfer full): location to store a UTF-8 encoded
  *        string of text holding context around the insertion point.
  *        If the function returns %TRUE, then you must free the result
@@ -683,7 +683,7 @@ ctk_im_context_set_surrounding (GtkIMContext  *context,
  * only some sequences of characters are allowed.
  *
  * This function is implemented by emitting the
- * GtkIMContext::retrieve_surrounding signal on the input method; in
+ * CtkIMContext::retrieve_surrounding signal on the input method; in
  * response to this signal, a widget should provide as much context as
  * is available, up to an entire paragraph, by calling
  * ctk_im_context_set_surrounding(). Note that there is no obligation
@@ -694,11 +694,11 @@ ctk_im_context_set_surrounding (GtkIMContext  *context,
  *    you must free the result stored in *text.
  **/
 gboolean
-ctk_im_context_get_surrounding (GtkIMContext *context,
+ctk_im_context_get_surrounding (CtkIMContext *context,
 				gchar       **text,
 				gint         *cursor_index)
 {
-  GtkIMContextClass *klass;
+  CtkIMContextClass *klass;
   gchar *local_text = NULL;
   gint local_index;
   gboolean result = FALSE;
@@ -719,16 +719,16 @@ ctk_im_context_get_surrounding (GtkIMContext *context,
 
 /**
  * ctk_im_context_delete_surrounding:
- * @context: a #GtkIMContext
+ * @context: a #CtkIMContext
  * @offset: offset from cursor position in chars;
  *    a negative value means start before the cursor.
  * @n_chars: number of characters to delete.
  * 
  * Asks the widget that the input context is attached to to delete
  * characters around the cursor position by emitting the
- * GtkIMContext::delete_surrounding signal. Note that @offset and @n_chars
+ * CtkIMContext::delete_surrounding signal. Note that @offset and @n_chars
  * are in characters not in bytes which differs from the usage other
- * places in #GtkIMContext.
+ * places in #CtkIMContext.
  *
  * In order to use this function, you should first call
  * ctk_im_context_get_surrounding() to get the current context, and
@@ -744,7 +744,7 @@ ctk_im_context_get_surrounding (GtkIMContext *context,
  * Returns: %TRUE if the signal was handled.
  **/
 gboolean
-ctk_im_context_delete_surrounding (GtkIMContext *context,
+ctk_im_context_delete_surrounding (CtkIMContext *context,
 				   gint          offset,
 				   gint          n_chars)
 {
@@ -765,7 +765,7 @@ ctk_im_context_get_property (GObject    *obj,
                              GValue     *value,
                              GParamSpec *pspec)
 {
-  GtkIMContextPrivate *priv = ctk_im_context_get_instance_private (CTK_IM_CONTEXT (obj));
+  CtkIMContextPrivate *priv = ctk_im_context_get_instance_private (CTK_IM_CONTEXT (obj));
 
   switch (property_id)
     {
@@ -787,7 +787,7 @@ ctk_im_context_set_property (GObject      *obj,
                              const GValue *value,
                              GParamSpec   *pspec)
 {
-  GtkIMContextPrivate *priv = ctk_im_context_get_instance_private (CTK_IM_CONTEXT (obj));
+  CtkIMContextPrivate *priv = ctk_im_context_get_instance_private (CTK_IM_CONTEXT (obj));
 
   switch (property_id)
     {

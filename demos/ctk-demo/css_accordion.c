@@ -7,22 +7,22 @@
 #include <ctk/ctk.h>
 
 static void
-apply_css (GtkWidget *widget, GtkStyleProvider *provider)
+apply_css (CtkWidget *widget, CtkStyleProvider *provider)
 {
   ctk_style_context_add_provider (ctk_widget_get_style_context (widget), provider, G_MAXUINT);
   if (CTK_IS_CONTAINER (widget))
-    ctk_container_forall (CTK_CONTAINER (widget), (GtkCallback) apply_css, provider);
+    ctk_container_forall (CTK_CONTAINER (widget), (CtkCallback) apply_css, provider);
 }
 
-GtkWidget *
-do_css_accordion (GtkWidget *do_widget)
+CtkWidget *
+do_css_accordion (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkWidget *container, *child;
-      GtkStyleProvider *provider;
+      CtkWidget *container, *child;
+      CtkStyleProvider *provider;
 
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_title (CTK_WINDOW (window), "CSS Accordion");

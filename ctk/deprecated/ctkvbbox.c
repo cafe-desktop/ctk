@@ -33,15 +33,15 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 /**
  * SECTION:ctkvbbox
  * @Short_description: A container for arranging buttons vertically
- * @Title: GtkVButtonBox
- * @See_also: #GtkBox, #GtkButtonBox, #GtkHButtonBox
+ * @Title: CtkVButtonBox
+ * @See_also: #CtkBox, #CtkButtonBox, #CtkHButtonBox
  *
  * A button box should be used to provide a consistent layout of buttons
  * throughout your application. The layout/spacing can be altered by the
  * programmer, or if desired, by the user to alter the “feel” of a
  * program to a small degree.
  *
- * A #GtkVButtonBox is created with ctk_vbutton_box_new(). Buttons are
+ * A #CtkVButtonBox is created with ctk_vbutton_box_new(). Buttons are
  * packed into a button box the same way widgets are added to any other
  * container, using ctk_container_add(). You can also use
  * ctk_box_pack_start() or ctk_box_pack_end(), but for button boxes both
@@ -54,18 +54,18 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  * arrangement and layout of the buttons can be changed with
  * ctk_button_box_set_layout().
  *
- * GtkVButtonBox has been deprecated, use #GtkButtonBox instead.
+ * CtkVButtonBox has been deprecated, use #CtkButtonBox instead.
  */
 
-G_DEFINE_TYPE (GtkVButtonBox, ctk_vbutton_box, CTK_TYPE_BUTTON_BOX)
+G_DEFINE_TYPE (CtkVButtonBox, ctk_vbutton_box, CTK_TYPE_BUTTON_BOX)
 
 static void
-ctk_vbutton_box_class_init (GtkVButtonBoxClass *class)
+ctk_vbutton_box_class_init (CtkVButtonBoxClass *class)
 {
 }
 
 static void
-ctk_vbutton_box_init (GtkVButtonBox *vbutton_box)
+ctk_vbutton_box_init (CtkVButtonBox *vbutton_box)
 {
   ctk_orientable_set_orientation (CTK_ORIENTABLE (vbutton_box),
                                   CTK_ORIENTATION_VERTICAL);
@@ -76,11 +76,11 @@ ctk_vbutton_box_init (GtkVButtonBox *vbutton_box)
  *
  * Creates a new vertical button box.
  *
- * Returns: a new button box #GtkWidget.
+ * Returns: a new button box #CtkWidget.
  *
  * Deprecated: 3.2: Use ctk_button_box_new() with %CTK_ORIENTATION_VERTICAL instead
  */
-GtkWidget *
+CtkWidget *
 ctk_vbutton_box_new (void)
 {
   return g_object_new (CTK_TYPE_VBUTTON_BOX, NULL);

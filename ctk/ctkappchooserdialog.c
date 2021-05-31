@@ -24,17 +24,17 @@
 
 /**
  * SECTION:ctkappchooserdialog
- * @Title: GtkAppChooserDialog
+ * @Title: CtkAppChooserDialog
  * @Short_description: An application chooser dialog
  *
- * #GtkAppChooserDialog shows a #GtkAppChooserWidget inside a #GtkDialog.
+ * #CtkAppChooserDialog shows a #CtkAppChooserWidget inside a #CtkDialog.
  *
- * Note that #GtkAppChooserDialog does not have any interesting methods
- * of its own. Instead, you should get the embedded #GtkAppChooserWidget
+ * Note that #CtkAppChooserDialog does not have any interesting methods
+ * of its own. Instead, you should get the embedded #CtkAppChooserWidget
  * using ctk_app_chooser_dialog_get_widget() and call its methods if
- * the generic #GtkAppChooser interface is not sufficient for your needs.
+ * the generic #CtkAppChooser interface is not sufficient for your needs.
  *
- * To set the heading that is shown above the #GtkAppChooserWidget,
+ * To set the heading that is shown above the #CtkAppChooserWidget,
  * use ctk_app_chooser_dialog_set_heading().
  */
 #include "config.h"
@@ -63,23 +63,23 @@
 #include <glib/gi18n-lib.h>
 #include <gio/gio.h>
 
-struct _GtkAppChooserDialogPrivate {
+struct _CtkAppChooserDialogPrivate {
   char *content_type;
   GFile *gfile;
   char *heading;
 
-  GtkWidget *label;
-  GtkWidget *inner_box;
+  CtkWidget *label;
+  CtkWidget *inner_box;
 
-  GtkWidget *open_label;
+  CtkWidget *open_label;
 
-  GtkWidget *search_bar;
-  GtkWidget *search_entry;
-  GtkWidget *app_chooser_widget;
-  GtkWidget *show_more_button;
-  GtkWidget *software_button;
+  CtkWidget *search_bar;
+  CtkWidget *search_entry;
+  CtkWidget *app_chooser_widget;
+  CtkWidget *show_more_button;
+  CtkWidget *software_button;
 
-  GtkSizeGroup *buttons;
+  CtkSizeGroup *buttons;
 
   gboolean show_more_clicked;
   gboolean dismissed;
@@ -91,15 +91,15 @@ enum {
   PROP_HEADING
 };
 
-static void ctk_app_chooser_dialog_iface_init (GtkAppChooserIface *iface);
-G_DEFINE_TYPE_WITH_CODE (GtkAppChooserDialog, ctk_app_chooser_dialog, CTK_TYPE_DIALOG,
-                         G_ADD_PRIVATE (GtkAppChooserDialog)
+static void ctk_app_chooser_dialog_iface_init (CtkAppChooserIface *iface);
+G_DEFINE_TYPE_WITH_CODE (CtkAppChooserDialog, ctk_app_chooser_dialog, CTK_TYPE_DIALOG,
+                         G_ADD_PRIVATE (CtkAppChooserDialog)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_APP_CHOOSER,
                                                 ctk_app_chooser_dialog_iface_init));
 
 
 static void
-add_or_find_application (GtkAppChooserDialog *self)
+add_or_find_application (CtkAppChooserDialog *self)
 {
   GAppInfo *app;
 
@@ -117,11 +117,11 @@ add_or_find_application (GtkAppChooserDialog *self)
 }
 
 static void
-ctk_app_chooser_dialog_response (GtkDialog *dialog,
+ctk_app_chooser_dialog_response (CtkDialog *dialog,
                                  gint       response_id,
                                  gpointer   user_data)
 {
-  GtkAppChooserDialog *self = CTK_APP_CHOOSER_DIALOG (dialog);
+  CtkAppChooserDialog *self = CTK_APP_CHOOSER_DIALOG (dialog);
 
   switch (response_id)
     {
@@ -137,21 +137,21 @@ ctk_app_chooser_dialog_response (GtkDialog *dialog,
 }
 
 static void
-widget_application_selected_cb (GtkAppChooserWidget *widget,
+widget_application_selected_cb (CtkAppChooserWidget *widget,
                                 GAppInfo            *app_info,
                                 gpointer             user_data)
 {
-  GtkDialog *self = user_data;
+  CtkDialog *self = user_data;
 
   ctk_dialog_set_response_sensitive (self, CTK_RESPONSE_OK, TRUE);
 }
 
 static void
-widget_application_activated_cb (GtkAppChooserWidget *widget,
+widget_application_activated_cb (CtkAppChooserWidget *widget,
                                  GAppInfo            *app_info,
                                  gpointer             user_data)
 {
-  GtkAppChooserDialog *self = user_data;
+  CtkAppChooserDialog *self = user_data;
 
   ctk_dialog_response (CTK_DIALOG (self), CTK_RESPONSE_OK);
 }
@@ -170,7 +170,7 @@ get_extension (const char *basename)
 }
 
 static void
-set_dialog_properties (GtkAppChooserDialog *self)
+set_dialog_properties (CtkAppChooserDialog *self)
 {
   gchar *name;
   gchar *extension;
@@ -180,7 +180,7 @@ set_dialog_properties (GtkAppChooserDialog *self)
   gchar *title;
   gchar *subtitle;
   gboolean use_header;
-  GtkWidget *header;
+  CtkWidget *header;
 
   name = NULL;
   extension = NULL;
@@ -252,10 +252,10 @@ set_dialog_properties (GtkAppChooserDialog *self)
 }
 
 static void
-show_more_button_clicked_cb (GtkButton *button,
+show_more_button_clicked_cb (CtkButton *button,
                              gpointer   user_data)
 {
-  GtkAppChooserDialog *self = user_data;
+  CtkAppChooserDialog *self = user_data;
 
   g_object_set (self->priv->app_chooser_widget,
                 "show-recommended", TRUE,
@@ -272,8 +272,8 @@ widget_notify_for_button_cb (GObject    *source,
                              GParamSpec *pspec,
                              gpointer    user_data)
 {
-  GtkAppChooserDialog *self = user_data;
-  GtkAppChooserWidget *widget = CTK_APP_CHOOSER_WIDGET (source);
+  CtkAppChooserDialog *self = user_data;
+  CtkAppChooserWidget *widget = CTK_APP_CHOOSER_WIDGET (source);
   gboolean should_hide;
 
   should_hide = ctk_app_chooser_widget_get_show_other (widget) ||
@@ -284,10 +284,10 @@ widget_notify_for_button_cb (GObject    *source,
 }
 
 static void
-forget_menu_item_activate_cb (GtkMenuItem *item,
+forget_menu_item_activate_cb (CtkMenuItem *item,
                               gpointer     user_data)
 {
-  GtkAppChooserDialog *self = user_data;
+  CtkAppChooserDialog *self = user_data;
   GAppInfo *info;
 
   info = ctk_app_chooser_get_app_info (CTK_APP_CHOOSER (self));
@@ -302,10 +302,10 @@ forget_menu_item_activate_cb (GtkMenuItem *item,
     }
 }
 
-static GtkWidget *
-build_forget_menu_item (GtkAppChooserDialog *self)
+static CtkWidget *
+build_forget_menu_item (CtkAppChooserDialog *self)
 {
-  GtkWidget *retval;
+  CtkWidget *retval;
 
   retval = ctk_menu_item_new_with_label (_("Forget association"));
   ctk_widget_show (retval);
@@ -317,13 +317,13 @@ build_forget_menu_item (GtkAppChooserDialog *self)
 }
 
 static void
-widget_populate_popup_cb (GtkAppChooserWidget *widget,
-                          GtkMenu             *menu,
+widget_populate_popup_cb (CtkAppChooserWidget *widget,
+                          CtkMenu             *menu,
                           GAppInfo            *info,
                           gpointer             user_data)
 {
-  GtkAppChooserDialog *self = user_data;
-  GtkWidget *menu_item;
+  CtkAppChooserDialog *self = user_data;
+  CtkWidget *menu_item;
 
   if (g_app_info_can_remove_supports_type (info))
     {
@@ -333,15 +333,15 @@ widget_populate_popup_cb (GtkAppChooserWidget *widget,
 }
 
 static gboolean
-key_press_event_cb (GtkWidget    *widget,
+key_press_event_cb (CtkWidget    *widget,
                     GdkEvent     *event,
-                    GtkSearchBar *bar)
+                    CtkSearchBar *bar)
 {
   return ctk_search_bar_handle_event (bar, event);
 }
 
 static void
-construct_appchooser_widget (GtkAppChooserDialog *self)
+construct_appchooser_widget (CtkAppChooserDialog *self)
 {
   GAppInfo *info;
 
@@ -378,7 +378,7 @@ construct_appchooser_widget (GtkAppChooserDialog *self)
 }
 
 static void
-set_gfile_and_content_type (GtkAppChooserDialog *self,
+set_gfile_and_content_type (CtkAppChooserDialog *self,
                             GFile               *file)
 {
   GFileInfo *info;
@@ -397,16 +397,16 @@ set_gfile_and_content_type (GtkAppChooserDialog *self,
 }
 
 static GAppInfo *
-ctk_app_chooser_dialog_get_app_info (GtkAppChooser *object)
+ctk_app_chooser_dialog_get_app_info (CtkAppChooser *object)
 {
-  GtkAppChooserDialog *self = CTK_APP_CHOOSER_DIALOG (object);
+  CtkAppChooserDialog *self = CTK_APP_CHOOSER_DIALOG (object);
   return ctk_app_chooser_get_app_info (CTK_APP_CHOOSER (self->priv->app_chooser_widget));
 }
 
 static void
-ctk_app_chooser_dialog_refresh (GtkAppChooser *object)
+ctk_app_chooser_dialog_refresh (CtkAppChooser *object)
 {
-  GtkAppChooserDialog *self = CTK_APP_CHOOSER_DIALOG (object);
+  CtkAppChooserDialog *self = CTK_APP_CHOOSER_DIALOG (object);
 
   ctk_app_chooser_refresh (CTK_APP_CHOOSER (self->priv->app_chooser_widget));
 }
@@ -414,9 +414,9 @@ ctk_app_chooser_dialog_refresh (GtkAppChooser *object)
 static void
 show_error_dialog (const gchar *primary,
                    const gchar *secondary,
-                   GtkWindow   *parent)
+                   CtkWindow   *parent)
 {
-  GtkWidget *message_dialog;
+  CtkWidget *message_dialog;
 
   message_dialog = ctk_message_dialog_new (parent, 0,
                                            CTK_MESSAGE_ERROR,
@@ -435,8 +435,8 @@ show_error_dialog (const gchar *primary,
 }
 
 static void
-software_button_clicked_cb (GtkButton           *button,
-                            GtkAppChooserDialog *self)
+software_button_clicked_cb (CtkButton           *button,
+                            CtkAppChooserDialog *self)
 {
   GSubprocess *process;
   GError *error = NULL;
@@ -461,7 +461,7 @@ software_button_clicked_cb (GtkButton           *button,
 }
 
 static void
-ensure_software_button (GtkAppChooserDialog *self)
+ensure_software_button (CtkAppChooserDialog *self)
 {
   gchar *path;
 
@@ -475,16 +475,16 @@ ensure_software_button (GtkAppChooserDialog *self)
 }
 
 static void
-setup_search (GtkAppChooserDialog *self)
+setup_search (CtkAppChooserDialog *self)
 {
   gboolean use_header;
 
   g_object_get (self, "use-header-bar", &use_header, NULL);
   if (use_header)
     {
-      GtkWidget *button;
-      GtkWidget *image;
-      GtkWidget *header;
+      CtkWidget *button;
+      CtkWidget *image;
+      CtkWidget *header;
 
       button = ctk_toggle_button_new ();
       ctk_widget_set_valign (button, CTK_ALIGN_CENTER);
@@ -511,7 +511,7 @@ setup_search (GtkAppChooserDialog *self)
 static void
 ctk_app_chooser_dialog_constructed (GObject *object)
 {
-  GtkAppChooserDialog *self = CTK_APP_CHOOSER_DIALOG (object);
+  CtkAppChooserDialog *self = CTK_APP_CHOOSER_DIALOG (object);
 
   if (G_OBJECT_CLASS (ctk_app_chooser_dialog_parent_class)->constructed != NULL)
     G_OBJECT_CLASS (ctk_app_chooser_dialog_parent_class)->constructed (object);
@@ -522,7 +522,7 @@ ctk_app_chooser_dialog_constructed (GObject *object)
   setup_search (self);
 }
 
-/* This is necessary do deal with the fact that GtkDialog
+/* This is necessary do deal with the fact that CtkDialog
  * exposes bits of its internal spacing as style properties,
  * and puts the action area inside the content area.
  * To achieve a flush-top search bar, we need the content
@@ -530,9 +530,9 @@ ctk_app_chooser_dialog_constructed (GObject *object)
  * containers to compensate.
  */
 static void
-update_spacings (GtkAppChooserDialog *self)
+update_spacings (CtkAppChooserDialog *self)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   gint content_area_border;
   gint action_area_border;
 
@@ -554,7 +554,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-ctk_app_chooser_dialog_style_updated (GtkWidget *widget)
+ctk_app_chooser_dialog_style_updated (CtkWidget *widget)
 {
   CTK_WIDGET_CLASS (ctk_app_chooser_dialog_parent_class)->style_updated (widget);
 
@@ -564,7 +564,7 @@ ctk_app_chooser_dialog_style_updated (GtkWidget *widget)
 static void
 ctk_app_chooser_dialog_dispose (GObject *object)
 {
-  GtkAppChooserDialog *self = CTK_APP_CHOOSER_DIALOG (object);
+  CtkAppChooserDialog *self = CTK_APP_CHOOSER_DIALOG (object);
   
   g_clear_object (&self->priv->gfile);
 
@@ -576,7 +576,7 @@ ctk_app_chooser_dialog_dispose (GObject *object)
 static void
 ctk_app_chooser_dialog_finalize (GObject *object)
 {
-  GtkAppChooserDialog *self = CTK_APP_CHOOSER_DIALOG (object);
+  CtkAppChooserDialog *self = CTK_APP_CHOOSER_DIALOG (object);
 
   g_free (self->priv->content_type);
   g_free (self->priv->heading);
@@ -590,7 +590,7 @@ ctk_app_chooser_dialog_set_property (GObject      *object,
                                      const GValue *value,
                                      GParamSpec   *pspec)
 {
-  GtkAppChooserDialog *self = CTK_APP_CHOOSER_DIALOG (object);
+  CtkAppChooserDialog *self = CTK_APP_CHOOSER_DIALOG (object);
 
   switch (property_id)
     {
@@ -617,7 +617,7 @@ ctk_app_chooser_dialog_get_property (GObject    *object,
                                      GValue     *value,
                                      GParamSpec *pspec)
 {
-  GtkAppChooserDialog *self = CTK_APP_CHOOSER_DIALOG (object);
+  CtkAppChooserDialog *self = CTK_APP_CHOOSER_DIALOG (object);
 
   switch (property_id)
     {
@@ -638,16 +638,16 @@ ctk_app_chooser_dialog_get_property (GObject    *object,
 }
 
 static void
-ctk_app_chooser_dialog_iface_init (GtkAppChooserIface *iface)
+ctk_app_chooser_dialog_iface_init (CtkAppChooserIface *iface)
 {
   iface->get_app_info = ctk_app_chooser_dialog_get_app_info;
   iface->refresh = ctk_app_chooser_dialog_refresh;
 }
 
 static void
-ctk_app_chooser_dialog_class_init (GtkAppChooserDialogClass *klass)
+ctk_app_chooser_dialog_class_init (CtkAppChooserDialogClass *klass)
 {
-  GtkWidgetClass *widget_class;
+  CtkWidgetClass *widget_class;
   GObjectClass *gobject_class;
   GParamSpec *pspec;
 
@@ -664,10 +664,10 @@ ctk_app_chooser_dialog_class_init (GtkAppChooserDialogClass *klass)
   g_object_class_override_property (gobject_class, PROP_CONTENT_TYPE, "content-type");
 
   /**
-   * GtkAppChooserDialog:gfile:
+   * CtkAppChooserDialog:gfile:
    *
-   * The GFile used by the #GtkAppChooserDialog.
-   * The dialog's #GtkAppChooserWidget content type will be guessed from the
+   * The GFile used by the #CtkAppChooserDialog.
+   * The dialog's #CtkAppChooserWidget content type will be guessed from the
    * file, if present.
    */
   pspec = g_param_spec_object ("gfile",
@@ -679,7 +679,7 @@ ctk_app_chooser_dialog_class_init (GtkAppChooserDialogClass *klass)
   g_object_class_install_property (gobject_class, PROP_GFILE, pspec);
 
   /**
-   * GtkAppChooserDialog:heading:
+   * CtkAppChooserDialog:heading:
    *
    * The text to show at the top of the dialog.
    * The string may contain Pango markup.
@@ -696,19 +696,19 @@ ctk_app_chooser_dialog_class_init (GtkAppChooserDialogClass *klass)
    */
   ctk_widget_class_set_template_from_resource (widget_class,
 					       "/org/ctk/libctk/ui/ctkappchooserdialog.ui");
-  ctk_widget_class_bind_template_child_private (widget_class, GtkAppChooserDialog, label);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkAppChooserDialog, show_more_button);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkAppChooserDialog, software_button);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkAppChooserDialog, inner_box);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkAppChooserDialog, search_bar);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkAppChooserDialog, search_entry);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkAppChooserDialog, buttons);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkAppChooserDialog, label);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkAppChooserDialog, show_more_button);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkAppChooserDialog, software_button);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkAppChooserDialog, inner_box);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkAppChooserDialog, search_bar);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkAppChooserDialog, search_entry);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkAppChooserDialog, buttons);
   ctk_widget_class_bind_template_callback (widget_class, show_more_button_clicked_cb);
   ctk_widget_class_bind_template_callback (widget_class, software_button_clicked_cb);
 }
 
 static void
-ctk_app_chooser_dialog_init (GtkAppChooserDialog *self)
+ctk_app_chooser_dialog_init (CtkAppChooserDialog *self)
 {
   self->priv = ctk_app_chooser_dialog_get_instance_private (self);
 
@@ -732,9 +732,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-set_parent_and_flags (GtkWidget      *dialog,
-                      GtkWindow      *parent,
-                      GtkDialogFlags  flags)
+set_parent_and_flags (CtkWidget      *dialog,
+                      CtkWindow      *parent,
+                      CtkDialogFlags  flags)
 {
   if (parent != NULL)
     ctk_window_set_transient_for (CTK_WINDOW (dialog), parent);
@@ -748,23 +748,23 @@ set_parent_and_flags (GtkWidget      *dialog,
 
 /**
  * ctk_app_chooser_dialog_new:
- * @parent: (allow-none): a #GtkWindow, or %NULL
+ * @parent: (allow-none): a #CtkWindow, or %NULL
  * @flags: flags for this dialog
  * @file: a #GFile
  *
- * Creates a new #GtkAppChooserDialog for the provided #GFile,
+ * Creates a new #CtkAppChooserDialog for the provided #GFile,
  * to allow the user to select an application for it.
  *
- * Returns: a newly created #GtkAppChooserDialog
+ * Returns: a newly created #CtkAppChooserDialog
  *
  * Since: 3.0
  **/
-GtkWidget *
-ctk_app_chooser_dialog_new (GtkWindow      *parent,
-                            GtkDialogFlags  flags,
+CtkWidget *
+ctk_app_chooser_dialog_new (CtkWindow      *parent,
+                            CtkDialogFlags  flags,
                             GFile          *file)
 {
-  GtkWidget *retval;
+  CtkWidget *retval;
 
   g_return_val_if_fail (G_IS_FILE (file), NULL);
 
@@ -779,23 +779,23 @@ ctk_app_chooser_dialog_new (GtkWindow      *parent,
 
 /**
  * ctk_app_chooser_dialog_new_for_content_type:
- * @parent: (allow-none): a #GtkWindow, or %NULL
+ * @parent: (allow-none): a #CtkWindow, or %NULL
  * @flags: flags for this dialog
  * @content_type: a content type string
  *
- * Creates a new #GtkAppChooserDialog for the provided content type,
+ * Creates a new #CtkAppChooserDialog for the provided content type,
  * to allow the user to select an application for it.
  *
- * Returns: a newly created #GtkAppChooserDialog
+ * Returns: a newly created #CtkAppChooserDialog
  *
  * Since: 3.0
  **/
-GtkWidget *
-ctk_app_chooser_dialog_new_for_content_type (GtkWindow      *parent,
-                                             GtkDialogFlags  flags,
+CtkWidget *
+ctk_app_chooser_dialog_new_for_content_type (CtkWindow      *parent,
+                                             CtkDialogFlags  flags,
                                              const gchar    *content_type)
 {
-  GtkWidget *retval;
+  CtkWidget *retval;
 
   g_return_val_if_fail (content_type != NULL, NULL);
 
@@ -810,16 +810,16 @@ ctk_app_chooser_dialog_new_for_content_type (GtkWindow      *parent,
 
 /**
  * ctk_app_chooser_dialog_get_widget:
- * @self: a #GtkAppChooserDialog
+ * @self: a #CtkAppChooserDialog
  *
- * Returns the #GtkAppChooserWidget of this dialog.
+ * Returns the #CtkAppChooserWidget of this dialog.
  *
- * Returns: (transfer none): the #GtkAppChooserWidget of @self
+ * Returns: (transfer none): the #CtkAppChooserWidget of @self
  *
  * Since: 3.0
  */
-GtkWidget *
-ctk_app_chooser_dialog_get_widget (GtkAppChooserDialog *self)
+CtkWidget *
+ctk_app_chooser_dialog_get_widget (CtkAppChooserDialog *self)
 {
   g_return_val_if_fail (CTK_IS_APP_CHOOSER_DIALOG (self), NULL);
 
@@ -828,14 +828,14 @@ ctk_app_chooser_dialog_get_widget (GtkAppChooserDialog *self)
 
 /**
  * ctk_app_chooser_dialog_set_heading:
- * @self: a #GtkAppChooserDialog
+ * @self: a #CtkAppChooserDialog
  * @heading: a string containing Pango markup
  *
  * Sets the text to display at the top of the dialog.
  * If the heading is not set, the dialog displays a default text.
  */
 void
-ctk_app_chooser_dialog_set_heading (GtkAppChooserDialog *self,
+ctk_app_chooser_dialog_set_heading (CtkAppChooserDialog *self,
                                     const gchar         *heading)
 {
   g_return_if_fail (CTK_IS_APP_CHOOSER_DIALOG (self));
@@ -861,7 +861,7 @@ ctk_app_chooser_dialog_set_heading (GtkAppChooserDialog *self,
 
 /**
  * ctk_app_chooser_dialog_get_heading:
- * @self: a #GtkAppChooserDialog
+ * @self: a #CtkAppChooserDialog
  *
  * Returns the text to display at the top of the dialog.
  *
@@ -869,7 +869,7 @@ ctk_app_chooser_dialog_set_heading (GtkAppChooserDialog *self,
  *     case a default text is displayed
  */
 const gchar *
-ctk_app_chooser_dialog_get_heading (GtkAppChooserDialog *self)
+ctk_app_chooser_dialog_get_heading (CtkAppChooserDialog *self)
 {
   g_return_val_if_fail (CTK_IS_APP_CHOOSER_DIALOG (self), NULL);
 

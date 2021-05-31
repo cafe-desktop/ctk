@@ -7,62 +7,62 @@
 #include <ctk/ctk.h>
 
 #define CTK_TYPE_MIRROR_BIN              (ctk_mirror_bin_get_type ())
-#define CTK_MIRROR_BIN(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_MIRROR_BIN, GtkMirrorBin))
-#define CTK_MIRROR_BIN_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_MIRROR_BIN, GtkMirrorBinClass))
+#define CTK_MIRROR_BIN(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_MIRROR_BIN, CtkMirrorBin))
+#define CTK_MIRROR_BIN_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_MIRROR_BIN, CtkMirrorBinClass))
 #define CTK_IS_MIRROR_BIN(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_MIRROR_BIN))
 #define CTK_IS_MIRROR_BIN_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_MIRROR_BIN))
-#define CTK_MIRROR_BIN_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_MIRROR_BIN, GtkMirrorBinClass))
+#define CTK_MIRROR_BIN_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_MIRROR_BIN, CtkMirrorBinClass))
 
-typedef struct _GtkMirrorBin   GtkMirrorBin;
-typedef struct _GtkMirrorBinClass  GtkMirrorBinClass;
+typedef struct _CtkMirrorBin   CtkMirrorBin;
+typedef struct _CtkMirrorBinClass  CtkMirrorBinClass;
 
-struct _GtkMirrorBin
+struct _CtkMirrorBin
 {
-  GtkContainer container;
+  CtkContainer container;
 
-  GtkWidget *child;
+  CtkWidget *child;
   GdkWindow *offscreen_window;
 };
 
-struct _GtkMirrorBinClass
+struct _CtkMirrorBinClass
 {
-  GtkContainerClass parent_class;
+  CtkContainerClass parent_class;
 };
 
 GType      ctk_mirror_bin_get_type  (void) G_GNUC_CONST;
-GtkWidget* ctk_mirror_bin_new       (void);
+CtkWidget* ctk_mirror_bin_new       (void);
 
 /*** implementation ***/
 
-static void     ctk_mirror_bin_realize       (GtkWidget       *widget);
-static void     ctk_mirror_bin_unrealize     (GtkWidget       *widget);
-static void     ctk_mirror_bin_get_preferred_width  (GtkWidget *widget,
+static void     ctk_mirror_bin_realize       (CtkWidget       *widget);
+static void     ctk_mirror_bin_unrealize     (CtkWidget       *widget);
+static void     ctk_mirror_bin_get_preferred_width  (CtkWidget *widget,
                                                      gint      *minimum,
                                                      gint      *natural);
-static void     ctk_mirror_bin_get_preferred_height (GtkWidget *widget,
+static void     ctk_mirror_bin_get_preferred_height (CtkWidget *widget,
                                                      gint      *minimum,
                                                      gint      *natural);
-static void     ctk_mirror_bin_size_allocate (GtkWidget       *widget,
-                                               GtkAllocation   *allocation);
-static gboolean ctk_mirror_bin_damage        (GtkWidget       *widget,
+static void     ctk_mirror_bin_size_allocate (CtkWidget       *widget,
+                                               CtkAllocation   *allocation);
+static gboolean ctk_mirror_bin_damage        (CtkWidget       *widget,
                                                GdkEventExpose  *event);
-static gboolean ctk_mirror_bin_draw          (GtkWidget       *widget,
+static gboolean ctk_mirror_bin_draw          (CtkWidget       *widget,
                                               cairo_t         *cr);
 
-static void     ctk_mirror_bin_add           (GtkContainer    *container,
-                                               GtkWidget       *child);
-static void     ctk_mirror_bin_remove        (GtkContainer    *container,
-                                               GtkWidget       *widget);
-static void     ctk_mirror_bin_forall        (GtkContainer    *container,
+static void     ctk_mirror_bin_add           (CtkContainer    *container,
+                                               CtkWidget       *child);
+static void     ctk_mirror_bin_remove        (CtkContainer    *container,
+                                               CtkWidget       *widget);
+static void     ctk_mirror_bin_forall        (CtkContainer    *container,
                                                gboolean         include_internals,
-                                               GtkCallback      callback,
+                                               CtkCallback      callback,
                                                gpointer         callback_data);
-static GType    ctk_mirror_bin_child_type    (GtkContainer    *container);
+static GType    ctk_mirror_bin_child_type    (CtkContainer    *container);
 
-G_DEFINE_TYPE (GtkMirrorBin, ctk_mirror_bin, CTK_TYPE_CONTAINER);
+G_DEFINE_TYPE (CtkMirrorBin, ctk_mirror_bin, CTK_TYPE_CONTAINER);
 
 static void
-to_child (GtkMirrorBin *bin,
+to_child (CtkMirrorBin *bin,
           double         widget_x,
           double         widget_y,
           double        *x_out,
@@ -73,7 +73,7 @@ to_child (GtkMirrorBin *bin,
 }
 
 static void
-to_parent (GtkMirrorBin *bin,
+to_parent (CtkMirrorBin *bin,
            double         offscreen_x,
            double         offscreen_y,
            double        *x_out,
@@ -84,10 +84,10 @@ to_parent (GtkMirrorBin *bin,
 }
 
 static void
-ctk_mirror_bin_class_init (GtkMirrorBinClass *klass)
+ctk_mirror_bin_class_init (CtkMirrorBinClass *klass)
 {
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
-  GtkContainerClass *container_class = CTK_CONTAINER_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkContainerClass *container_class = CTK_CONTAINER_CLASS (klass);
 
   widget_class->realize = ctk_mirror_bin_realize;
   widget_class->unrealize = ctk_mirror_bin_unrealize;
@@ -108,12 +108,12 @@ ctk_mirror_bin_class_init (GtkMirrorBinClass *klass)
 }
 
 static void
-ctk_mirror_bin_init (GtkMirrorBin *bin)
+ctk_mirror_bin_init (CtkMirrorBin *bin)
 {
   ctk_widget_set_has_window (CTK_WIDGET (bin), TRUE);
 }
 
-GtkWidget *
+CtkWidget *
 ctk_mirror_bin_new (void)
 {
   return g_object_new (CTK_TYPE_MIRROR_BIN, NULL);
@@ -123,9 +123,9 @@ static GdkWindow *
 pick_offscreen_child (GdkWindow     *offscreen_window,
                       double         widget_x,
                       double         widget_y,
-                      GtkMirrorBin *bin)
+                      CtkMirrorBin *bin)
 {
- GtkAllocation child_area;
+ CtkAllocation child_area;
  double x, y;
 
  if (bin->child && ctk_widget_get_visible (bin->child))
@@ -148,7 +148,7 @@ offscreen_window_to_parent (GdkWindow     *offscreen_window,
                             double         offscreen_y,
                             double        *parent_x,
                             double        *parent_y,
-                            GtkMirrorBin *bin)
+                            CtkMirrorBin *bin)
 {
   to_parent (bin, offscreen_x, offscreen_y, parent_x, parent_y);
 }
@@ -159,21 +159,21 @@ offscreen_window_from_parent (GdkWindow     *window,
                               double         parent_y,
                               double        *offscreen_x,
                               double        *offscreen_y,
-                              GtkMirrorBin *bin)
+                              CtkMirrorBin *bin)
 {
   to_child (bin, parent_x, parent_y, offscreen_x, offscreen_y);
 }
 
 static void
-ctk_mirror_bin_realize (GtkWidget *widget)
+ctk_mirror_bin_realize (CtkWidget *widget)
 {
-  GtkMirrorBin *bin = CTK_MIRROR_BIN (widget);
-  GtkAllocation allocation;
+  CtkMirrorBin *bin = CTK_MIRROR_BIN (widget);
+  CtkAllocation allocation;
   GdkWindow *window;
   GdkWindowAttr attributes;
   gint attributes_mask;
   guint border_width;
-  GtkRequisition child_requisition;
+  CtkRequisition child_requisition;
 
   ctk_widget_set_realized (widget, TRUE);
 
@@ -211,7 +211,7 @@ ctk_mirror_bin_realize (GtkWidget *widget)
   child_requisition.width = child_requisition.height = 0;
   if (bin->child && ctk_widget_get_visible (bin->child))
     {
-      GtkAllocation child_allocation;
+      CtkAllocation child_allocation;
 
       ctk_widget_get_allocation (bin->child, &child_allocation);
       attributes.width = child_allocation.width;
@@ -232,9 +232,9 @@ ctk_mirror_bin_realize (GtkWidget *widget)
 }
 
 static void
-ctk_mirror_bin_unrealize (GtkWidget *widget)
+ctk_mirror_bin_unrealize (CtkWidget *widget)
 {
-  GtkMirrorBin *bin = CTK_MIRROR_BIN (widget);
+  CtkMirrorBin *bin = CTK_MIRROR_BIN (widget);
 
   gdk_window_set_user_data (bin->offscreen_window, NULL);
   gdk_window_destroy (bin->offscreen_window);
@@ -244,9 +244,9 @@ ctk_mirror_bin_unrealize (GtkWidget *widget)
 }
 
 static GType
-ctk_mirror_bin_child_type (GtkContainer *container)
+ctk_mirror_bin_child_type (CtkContainer *container)
 {
-  GtkMirrorBin *bin = CTK_MIRROR_BIN (container);
+  CtkMirrorBin *bin = CTK_MIRROR_BIN (container);
 
   if (bin->child)
     return G_TYPE_NONE;
@@ -255,10 +255,10 @@ ctk_mirror_bin_child_type (GtkContainer *container)
 }
 
 static void
-ctk_mirror_bin_add (GtkContainer *container,
-                     GtkWidget    *widget)
+ctk_mirror_bin_add (CtkContainer *container,
+                     CtkWidget    *widget)
 {
-  GtkMirrorBin *bin = CTK_MIRROR_BIN (container);
+  CtkMirrorBin *bin = CTK_MIRROR_BIN (container);
 
   if (!bin->child)
     {
@@ -267,14 +267,14 @@ ctk_mirror_bin_add (GtkContainer *container,
       bin->child = widget;
     }
   else
-    g_warning ("GtkMirrorBin cannot have more than one child");
+    g_warning ("CtkMirrorBin cannot have more than one child");
 }
 
 static void
-ctk_mirror_bin_remove (GtkContainer *container,
-                        GtkWidget    *widget)
+ctk_mirror_bin_remove (CtkContainer *container,
+                        CtkWidget    *widget)
 {
-  GtkMirrorBin *bin = CTK_MIRROR_BIN (container);
+  CtkMirrorBin *bin = CTK_MIRROR_BIN (container);
   gboolean was_visible;
 
   was_visible = ctk_widget_get_visible (widget);
@@ -291,12 +291,12 @@ ctk_mirror_bin_remove (GtkContainer *container,
 }
 
 static void
-ctk_mirror_bin_forall (GtkContainer *container,
+ctk_mirror_bin_forall (CtkContainer *container,
                         gboolean      include_internals,
-                        GtkCallback   callback,
+                        CtkCallback   callback,
                         gpointer      callback_data)
 {
-  GtkMirrorBin *bin = CTK_MIRROR_BIN (container);
+  CtkMirrorBin *bin = CTK_MIRROR_BIN (container);
 
   g_return_if_fail (callback != NULL);
 
@@ -305,11 +305,11 @@ ctk_mirror_bin_forall (GtkContainer *container,
 }
 
 static void
-ctk_mirror_bin_size_request (GtkWidget      *widget,
-                              GtkRequisition *requisition)
+ctk_mirror_bin_size_request (CtkWidget      *widget,
+                              CtkRequisition *requisition)
 {
-  GtkMirrorBin *bin = CTK_MIRROR_BIN (widget);
-  GtkRequisition child_requisition;
+  CtkMirrorBin *bin = CTK_MIRROR_BIN (widget);
+  CtkRequisition child_requisition;
   guint border_width;
 
   child_requisition.width = 0;
@@ -325,11 +325,11 @@ ctk_mirror_bin_size_request (GtkWidget      *widget,
 }
 
 static void
-ctk_mirror_bin_get_preferred_width (GtkWidget *widget,
+ctk_mirror_bin_get_preferred_width (CtkWidget *widget,
                                     gint      *minimum,
                                     gint      *natural)
 {
-  GtkRequisition requisition;
+  CtkRequisition requisition;
 
   ctk_mirror_bin_size_request (widget, &requisition);
 
@@ -337,11 +337,11 @@ ctk_mirror_bin_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-ctk_mirror_bin_get_preferred_height (GtkWidget *widget,
+ctk_mirror_bin_get_preferred_height (CtkWidget *widget,
                                      gint      *minimum,
                                      gint      *natural)
 {
-  GtkRequisition requisition;
+  CtkRequisition requisition;
 
   ctk_mirror_bin_size_request (widget, &requisition);
 
@@ -349,10 +349,10 @@ ctk_mirror_bin_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-ctk_mirror_bin_size_allocate (GtkWidget     *widget,
-                               GtkAllocation *allocation)
+ctk_mirror_bin_size_allocate (CtkWidget     *widget,
+                               CtkAllocation *allocation)
 {
-  GtkMirrorBin *bin = CTK_MIRROR_BIN (widget);
+  CtkMirrorBin *bin = CTK_MIRROR_BIN (widget);
   gint w, h;
   guint border_width;
 
@@ -371,8 +371,8 @@ ctk_mirror_bin_size_allocate (GtkWidget     *widget,
 
   if (bin->child && ctk_widget_get_visible (bin->child))
     {
-      GtkRequisition child_requisition;
-      GtkAllocation child_allocation;
+      CtkRequisition child_requisition;
+      CtkAllocation child_allocation;
 
       ctk_widget_get_preferred_size (bin->child,
                                      &child_requisition, NULL);
@@ -391,7 +391,7 @@ ctk_mirror_bin_size_allocate (GtkWidget     *widget,
 }
 
 static gboolean
-ctk_mirror_bin_damage (GtkWidget      *widget,
+ctk_mirror_bin_damage (CtkWidget      *widget,
                         GdkEventExpose *event)
 {
   gdk_window_invalidate_rect (ctk_widget_get_window (widget),
@@ -401,10 +401,10 @@ ctk_mirror_bin_damage (GtkWidget      *widget,
 }
 
 static gboolean
-ctk_mirror_bin_draw (GtkWidget *widget,
+ctk_mirror_bin_draw (CtkWidget *widget,
                      cairo_t   *cr)
 {
-  GtkMirrorBin *bin = CTK_MIRROR_BIN (widget);
+  CtkMirrorBin *bin = CTK_MIRROR_BIN (widget);
   GdkWindow *window;
 
   window = ctk_widget_get_window (widget);
@@ -464,16 +464,16 @@ ctk_mirror_bin_draw (GtkWidget *widget,
 
 /*** ***/
 
-GtkWidget *
-do_offscreen_window2 (GtkWidget *do_widget)
+CtkWidget *
+do_offscreen_window2 (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkWidget *bin, *vbox;
-      GtkWidget *hbox, *entry, *applybutton, *backbutton;
-      GtkSizeGroup *group;
+      CtkWidget *bin, *vbox;
+      CtkWidget *hbox, *entry, *applybutton, *backbutton;
+      CtkSizeGroup *group;
 
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window),

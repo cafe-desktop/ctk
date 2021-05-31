@@ -32,11 +32,11 @@ G_BEGIN_DECLS
 
 #define CTK_ICON_HELPER(obj) \
   (G_TYPE_CHECK_INSTANCE_CAST ((obj), \
-   CTK_TYPE_ICON_HELPER, GtkIconHelper))
+   CTK_TYPE_ICON_HELPER, CtkIconHelper))
 
 #define CTK_ICON_HELPER_CLASS(klass) \
   (G_TYPE_CHECK_CLASS_CAST ((klass), \
-   CTK_TYPE_ICON_HELPER, GtkIconHelperClass))
+   CTK_TYPE_ICON_HELPER, CtkIconHelperClass))
 
 #define CTK_IS_ICON_HELPER(obj) \
   (G_TYPE_CHECK_INSTANCE_TYPE ((obj), \
@@ -48,98 +48,98 @@ G_BEGIN_DECLS
 
 #define CTK_ICON_HELPER_GET_CLASS(obj) \
   (G_TYPE_INSTANCE_GET_CLASS ((obj), \
-   CTK_TYPE_ICON_HELPER, GtkIconHelperClass))
+   CTK_TYPE_ICON_HELPER, CtkIconHelperClass))
 
-typedef struct _GtkIconHelper GtkIconHelper;
-typedef struct _GtkIconHelperClass GtkIconHelperClass;
-typedef struct _GtkIconHelperPrivate GtkIconHelperPrivate;
+typedef struct _CtkIconHelper CtkIconHelper;
+typedef struct _CtkIconHelperClass CtkIconHelperClass;
+typedef struct _CtkIconHelperPrivate CtkIconHelperPrivate;
 
-struct _GtkIconHelper
+struct _CtkIconHelper
 {
-  GtkCssGadget parent;
+  CtkCssGadget parent;
 
-  GtkIconHelperPrivate *priv;
+  CtkIconHelperPrivate *priv;
 };
 
-struct _GtkIconHelperClass
+struct _CtkIconHelperClass
 {
-  GtkCssGadgetClass parent_class;
+  CtkCssGadgetClass parent_class;
 };
 
 GType ctk_icon_helper_get_type (void) G_GNUC_CONST;
 
-GtkIconHelper *ctk_icon_helper_new (GtkCssNode *node,
-                                    GtkWidget  *owner);
-GtkCssGadget *ctk_icon_helper_new_named (const char *name,
-                                          GtkWidget  *owner);
+CtkIconHelper *ctk_icon_helper_new (CtkCssNode *node,
+                                    CtkWidget  *owner);
+CtkCssGadget *ctk_icon_helper_new_named (const char *name,
+                                          CtkWidget  *owner);
 
-void _ctk_icon_helper_clear (GtkIconHelper *self);
+void _ctk_icon_helper_clear (CtkIconHelper *self);
 
-gboolean _ctk_icon_helper_get_is_empty (GtkIconHelper *self);
+gboolean _ctk_icon_helper_get_is_empty (CtkIconHelper *self);
 
-void _ctk_icon_helper_set_definition (GtkIconHelper *self,
-                                      GtkImageDefinition *def);
-void _ctk_icon_helper_set_gicon (GtkIconHelper *self,
+void _ctk_icon_helper_set_definition (CtkIconHelper *self,
+                                      CtkImageDefinition *def);
+void _ctk_icon_helper_set_gicon (CtkIconHelper *self,
                                  GIcon *gicon,
-                                 GtkIconSize icon_size);
-void _ctk_icon_helper_set_pixbuf (GtkIconHelper *self,
+                                 CtkIconSize icon_size);
+void _ctk_icon_helper_set_pixbuf (CtkIconHelper *self,
 				  GdkPixbuf *pixbuf);
-void _ctk_icon_helper_set_pixbuf_scale (GtkIconHelper *self,
+void _ctk_icon_helper_set_pixbuf_scale (CtkIconHelper *self,
 					int scale);
-void _ctk_icon_helper_set_animation (GtkIconHelper *self,
+void _ctk_icon_helper_set_animation (CtkIconHelper *self,
                                      GdkPixbufAnimation *animation);
-void _ctk_icon_helper_set_icon_set (GtkIconHelper *self,
-                                    GtkIconSet *icon_set,
-                                    GtkIconSize icon_size);
+void _ctk_icon_helper_set_icon_set (CtkIconHelper *self,
+                                    CtkIconSet *icon_set,
+                                    CtkIconSize icon_size);
 
-void _ctk_icon_helper_set_icon_name (GtkIconHelper *self,
+void _ctk_icon_helper_set_icon_name (CtkIconHelper *self,
                                      const gchar *icon_name,
-                                     GtkIconSize icon_size);
-void _ctk_icon_helper_set_stock_id (GtkIconHelper *self,
+                                     CtkIconSize icon_size);
+void _ctk_icon_helper_set_stock_id (CtkIconHelper *self,
                                     const gchar *stock_id,
-                                    GtkIconSize icon_size);
-void _ctk_icon_helper_set_surface (GtkIconHelper *self,
+                                    CtkIconSize icon_size);
+void _ctk_icon_helper_set_surface (CtkIconHelper *self,
 				   cairo_surface_t *surface);
 
-gboolean _ctk_icon_helper_set_icon_size    (GtkIconHelper *self,
-                                            GtkIconSize    icon_size);
-gboolean _ctk_icon_helper_set_pixel_size   (GtkIconHelper *self,
+gboolean _ctk_icon_helper_set_icon_size    (CtkIconHelper *self,
+                                            CtkIconSize    icon_size);
+gboolean _ctk_icon_helper_set_pixel_size   (CtkIconHelper *self,
                                             gint           pixel_size);
-gboolean _ctk_icon_helper_set_use_fallback (GtkIconHelper *self,
+gboolean _ctk_icon_helper_set_use_fallback (CtkIconHelper *self,
                                             gboolean       use_fallback);
 
-GtkImageType _ctk_icon_helper_get_storage_type (GtkIconHelper *self);
-GtkIconSize _ctk_icon_helper_get_icon_size (GtkIconHelper *self);
-gint _ctk_icon_helper_get_pixel_size (GtkIconHelper *self);
-gboolean _ctk_icon_helper_get_use_fallback (GtkIconHelper *self);
+CtkImageType _ctk_icon_helper_get_storage_type (CtkIconHelper *self);
+CtkIconSize _ctk_icon_helper_get_icon_size (CtkIconHelper *self);
+gint _ctk_icon_helper_get_pixel_size (CtkIconHelper *self);
+gboolean _ctk_icon_helper_get_use_fallback (CtkIconHelper *self);
 
-GdkPixbuf *_ctk_icon_helper_peek_pixbuf (GtkIconHelper *self);
-GIcon *_ctk_icon_helper_peek_gicon (GtkIconHelper *self);
-GtkIconSet *_ctk_icon_helper_peek_icon_set (GtkIconHelper *self);
-GdkPixbufAnimation *_ctk_icon_helper_peek_animation (GtkIconHelper *self);
-cairo_surface_t *_ctk_icon_helper_peek_surface (GtkIconHelper *self);
+GdkPixbuf *_ctk_icon_helper_peek_pixbuf (CtkIconHelper *self);
+GIcon *_ctk_icon_helper_peek_gicon (CtkIconHelper *self);
+CtkIconSet *_ctk_icon_helper_peek_icon_set (CtkIconHelper *self);
+GdkPixbufAnimation *_ctk_icon_helper_peek_animation (CtkIconHelper *self);
+cairo_surface_t *_ctk_icon_helper_peek_surface (CtkIconHelper *self);
 
-GtkImageDefinition *ctk_icon_helper_get_definition (GtkIconHelper *self);
-const gchar *_ctk_icon_helper_get_stock_id (GtkIconHelper *self);
-const gchar *_ctk_icon_helper_get_icon_name (GtkIconHelper *self);
+CtkImageDefinition *ctk_icon_helper_get_definition (CtkIconHelper *self);
+const gchar *_ctk_icon_helper_get_stock_id (CtkIconHelper *self);
+const gchar *_ctk_icon_helper_get_icon_name (CtkIconHelper *self);
 
-cairo_surface_t *ctk_icon_helper_load_surface (GtkIconHelper *self,
+cairo_surface_t *ctk_icon_helper_load_surface (CtkIconHelper *self,
                                                int              scale);
-void _ctk_icon_helper_get_size (GtkIconHelper *self,
+void _ctk_icon_helper_get_size (CtkIconHelper *self,
                                 gint *width_out,
                                 gint *height_out);
 
-void _ctk_icon_helper_draw (GtkIconHelper *self,
+void _ctk_icon_helper_draw (CtkIconHelper *self,
                             cairo_t *cr,
                             gdouble x,
                             gdouble y);
 
-gboolean _ctk_icon_helper_get_force_scale_pixbuf (GtkIconHelper *self);
-void     _ctk_icon_helper_set_force_scale_pixbuf (GtkIconHelper *self,
+gboolean _ctk_icon_helper_get_force_scale_pixbuf (CtkIconHelper *self);
+void     _ctk_icon_helper_set_force_scale_pixbuf (CtkIconHelper *self,
                                                   gboolean       force_scale);
 
-void      ctk_icon_helper_invalidate_for_change (GtkIconHelper     *self,
-                                                 GtkCssStyleChange *change);
+void      ctk_icon_helper_invalidate_for_change (CtkIconHelper     *self,
+                                                 CtkCssStyleChange *change);
 
 G_END_DECLS
 

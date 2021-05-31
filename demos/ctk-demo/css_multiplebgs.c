@@ -1,6 +1,6 @@
 /* Theming/Multiple Backgrounds
  *
- * Gtk themes are written using CSS. Every widget is build of multiple items
+ * Ctk themes are written using CSS. Every widget is build of multiple items
  * that you can style very similarly to a regular website.
  *
  */
@@ -8,12 +8,12 @@
 #include <ctk/ctk.h>
 
 static void
-show_parsing_error (GtkCssProvider *provider,
-                    GtkCssSection  *section,
+show_parsing_error (CtkCssProvider *provider,
+                    CtkCssSection  *section,
                     const GError   *error,
-                    GtkTextBuffer  *buffer)
+                    CtkTextBuffer  *buffer)
 {
-  GtkTextIter start, end;
+  CtkTextIter start, end;
   const char *tag_name;
 
   ctk_text_buffer_get_iter_at_line_index (buffer,
@@ -34,10 +34,10 @@ show_parsing_error (GtkCssProvider *provider,
 }
 
 static void
-css_text_changed (GtkTextBuffer  *buffer,
-                  GtkCssProvider *provider)
+css_text_changed (CtkTextBuffer  *buffer,
+                  CtkCssProvider *provider)
 {
-  GtkTextIter start, end;
+  CtkTextIter start, end;
   char *text;
 
   ctk_text_buffer_get_start_iter (buffer, &start);
@@ -52,10 +52,10 @@ css_text_changed (GtkTextBuffer  *buffer,
 }
 
 static gboolean
-drawing_area_draw (GtkWidget *widget,
+drawing_area_draw (CtkWidget *widget,
                    cairo_t *cr)
 {
-  GtkStyleContext *context = ctk_widget_get_style_context (widget);
+  CtkStyleContext *context = ctk_widget_get_style_context (widget);
 
   ctk_render_background (context, cr,
                          0, 0,
@@ -70,23 +70,23 @@ drawing_area_draw (GtkWidget *widget,
 }
 
 static void
-apply_css (GtkWidget *widget, GtkStyleProvider *provider)
+apply_css (CtkWidget *widget, CtkStyleProvider *provider)
 {
   ctk_style_context_add_provider (ctk_widget_get_style_context (widget), provider, G_MAXUINT);
   if (CTK_IS_CONTAINER (widget))
-    ctk_container_forall (CTK_CONTAINER (widget), (GtkCallback) apply_css, provider);
+    ctk_container_forall (CTK_CONTAINER (widget), (CtkCallback) apply_css, provider);
 }
 
-GtkWidget *
-do_css_multiplebgs (GtkWidget *do_widget)
+CtkWidget *
+do_css_multiplebgs (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkWidget *paned, *container, *child;
-      GtkStyleProvider *provider;
-      GtkTextBuffer *text;
+      CtkWidget *paned, *container, *child;
+      CtkStyleProvider *provider;
+      CtkTextBuffer *text;
       GBytes *bytes;
 
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);

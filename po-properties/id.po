@@ -371,10 +371,10 @@ msgstr "Kelompok Aksi"
 
 #: ctk/deprecated/ctkaction.c:498
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
-"GtkActionGroup yang digunakan pada GtkAction ini, atau isi saja NULL (untuk "
+"CtkActionGroup yang digunakan pada CtkAction ini, atau isi saja NULL (untuk "
 "keperluan internal)."
 
 #: ctk/deprecated/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
@@ -929,8 +929,8 @@ msgid "Style context"
 msgstr "Konteks gaya"
 
 #: ctk/deprecated/ctkstyle.c:472
-msgid "GtkStyleContext to get style from"
-msgstr "GtkStyleContext tempat mengambil gaya"
+msgid "CtkStyleContext to get style from"
+msgstr "CtkStyleContext tempat mengambil gaya"
 
 #: ctk/deprecated/ctktable.c:185
 msgid "Rows"
@@ -1312,10 +1312,10 @@ msgstr "Tipe pak"
 
 #: ctk/ctkactionbar.c:339 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
 msgstr ""
-"Suatu nilai GtkPackType yang menentukan apakah anak dipak dengan merujuk "
+"Suatu nilai CtkPackType yang menentukan apakah anak dipak dengan merujuk "
 "pada awal atau akhir bapaknya"
 
 #: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
@@ -1385,10 +1385,10 @@ msgstr "Sertakan butir 'Lainnya…'"
 #: ctk/ctkappchooserbutton.c:619
 msgid ""
 "Whether the combobox should include an item that triggers a "
-"GtkAppChooserDialog"
+"CtkAppChooserDialog"
 msgstr ""
 "Apakah kotak kombo mesti menyertakan butir yang memicu suatu "
-"GtkAppChooserDialog"
+"CtkAppChooserDialog"
 
 #: ctk/ctkappchooserbutton.c:634
 msgid "Show default item"
@@ -2004,10 +2004,10 @@ msgstr "Tipe Pak"
 
 #: ctk/ctkcellareabox.c:381
 msgid ""
-"A GtkPackType indicating whether the cell is packed with reference to the "
+"A CtkPackType indicating whether the cell is packed with reference to the "
 "start or end of the cell area"
 msgstr ""
-"Suatu nilai GtkPackType yang menunjukkan apakah sel dipak dengan rujukan ke "
+"Suatu nilai CtkPackType yang menunjukkan apakah sel dipak dengan rujukan ke "
 "awal atau akhir area sel"
 
 #: ctk/ctkcellarea.c:790
@@ -2287,8 +2287,8 @@ msgid "The stock ID of the stock icon to render"
 msgstr "ID stok pada ikon yang hendak digambar"
 
 #: ctk/ctkcellrendererpixbuf.c:211
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
-msgstr "Nilai GtkIconSize yang menentukan ukuran dari icon yang digambarkan"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
+msgstr "Nilai CtkIconSize yang menentukan ukuran dari icon yang digambarkan"
 
 #: ctk/ctkcellrendererpixbuf.c:227
 msgid "Detail"
@@ -2402,8 +2402,8 @@ msgid "Pulse of the spinner"
 msgstr "Pulsa spinner"
 
 #: ctk/ctkcellrendererspinner.c:160
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
-msgstr "Nilai GtkIconSize yang menyatakan ukuran spinner yang dirender"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
+msgstr "Nilai CtkIconSize yang menyatakan ukuran spinner yang dirender"
 
 #: ctk/ctkcellrenderertext.c:256
 msgid "Text to render"
@@ -2844,17 +2844,17 @@ msgstr "Area Sel"
 
 #: ctk/ctkcellview.c:283 ctk/ctkcombobox.c:1183 ctk/ctkentrycompletion.c:468
 #: ctk/ctkiconview.c:650 ctk/ctktreemenu.c:308 ctk/ctktreeviewcolumn.c:400
-msgid "The GtkCellArea used to layout cells"
-msgstr "GtkCellArea yang dipakai untuk mengatur tata letak sel"
+msgid "The CtkCellArea used to layout cells"
+msgstr "CtkCellArea yang dipakai untuk mengatur tata letak sel"
 
 #: ctk/ctkcellview.c:306
 msgid "Cell Area Context"
 msgstr "Konteks Area Sel"
 
 #: ctk/ctkcellview.c:307
-msgid "The GtkCellAreaContext used to compute the geometry of the cell view"
+msgid "The CtkCellAreaContext used to compute the geometry of the cell view"
 msgstr ""
-"GtkCellAreaContext yang dipakai untuk menghitung geometri dari tilikan sel"
+"CtkCellAreaContext yang dipakai untuk menghitung geometri dari tilikan sel"
 
 #: ctk/ctkcellview.c:324
 msgid "Draw Sensitive"
@@ -3071,10 +3071,10 @@ msgstr "Kolom Teks Entri"
 #: ctk/ctkcombobox.c:1112
 msgid ""
 "The column in the combo box's model to associate with strings from the entry "
-"if the combo was created with #GtkComboBox:has-entry = %TRUE"
+"if the combo was created with #CtkComboBox:has-entry = %TRUE"
 msgstr ""
 "Kolom pada model kotak kombo yang diasosiasikan dengan string dari entri "
-"bila kombo dibuat dengan #GtkComboBox:has-entry = %TRUE"
+"bila kombo dibuat dengan #CtkComboBox:has-entry = %TRUE"
 
 #: ctk/ctkcombobox.c:1129
 msgid "ID Column"
@@ -4241,8 +4241,8 @@ msgid "Auto render"
 msgstr "Render otomatis"
 
 #: ctk/ctkglarea.c:808
-msgid "Whether the GtkGLArea renders on each redraw"
-msgstr "Apakah GtkGLArea merender pada setiap menggambar ulang"
+msgid "Whether the CtkGLArea renders on each redraw"
+msgstr "Apakah CtkGLArea merender pada setiap menggambar ulang"
 
 #: ctk/ctkglarea.c:828
 msgid "Has alpha"
@@ -4601,11 +4601,11 @@ msgstr "Rata"
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkLabel:xalign for that"
+"CtkLabel:xalign for that"
 msgstr ""
 "Penyesuaian letak baris pada label teks, relatif terhadap satu dan yang "
 "lainnya. Hal ini TIDAK memengaruhi perataan label dalam alokasinya. Lihat "
-"GtkLabel:xalign untuk itu"
+"CtkLabel:xalign untuk itu"
 
 #: ctk/ctklabel.c:877
 msgid "Pattern"
@@ -5217,8 +5217,8 @@ msgid "Message area"
 msgstr "Area pesan"
 
 #: ctk/ctkmessagedialog.c:295
-msgid "GtkBox that holds the dialog's primary and secondary labels"
-msgstr "GtkBox yang menampung label primer dan sekunder milik dialog"
+msgid "CtkBox that holds the dialog's primary and secondary labels"
+msgstr "CtkBox yang menampung label primer dan sekunder milik dialog"
 
 #: ctk/ctkmodelbutton.c:1150
 msgid "Role"
@@ -5964,16 +5964,16 @@ msgid "Default Page Setup"
 msgstr "Tatanan Halaman Baku"
 
 #: ctk/ctkprintoperation.c:1110
-msgid "The GtkPageSetup used by default"
-msgstr "GtkPageSetup yang dipakai secara baku"
+msgid "The CtkPageSetup used by default"
+msgstr "CtkPageSetup yang dipakai secara baku"
 
 #: ctk/ctkprintoperation.c:1128 ctk/ctkprintunixdialog.c:431
 msgid "Print Settings"
 msgstr "Tatanan Pencetakan"
 
 #: ctk/ctkprintoperation.c:1129 ctk/ctkprintunixdialog.c:432
-msgid "The GtkPrintSettings used for initializing the dialog"
-msgstr "GtkPrintSettings yang dipakai untuk menginisialisasi dialog"
+msgid "The CtkPrintSettings used for initializing the dialog"
+msgstr "CtkPrintSettings yang dipakai untuk menginisialisasi dialog"
 
 #: ctk/ctkprintoperation.c:1147
 msgid "Job Name"
@@ -6092,8 +6092,8 @@ msgid "Embed Page Setup"
 msgstr "Tanamkan Penyiapan Halaman"
 
 #: ctk/ctkprintoperation.c:1425 ctk/ctkprintunixdialog.c:473
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
-msgstr "TRUE bila kombo penyiapan halaman ditanamkan pada GtkPrintUnixDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
+msgstr "TRUE bila kombo penyiapan halaman ditanamkan pada CtkPrintUnixDialog"
 
 #: ctk/ctkprintoperation.c:1446
 msgid "Number of Pages To Print"
@@ -6104,16 +6104,16 @@ msgid "The number of pages that will be printed."
 msgstr "Cacah halaman yang akan dicetak."
 
 #: ctk/ctkprintunixdialog.c:414
-msgid "The GtkPageSetup to use"
-msgstr "GtkPageSetup yang akan dipakai"
+msgid "The CtkPageSetup to use"
+msgstr "CtkPageSetup yang akan dipakai"
 
 #: ctk/ctkprintunixdialog.c:439
 msgid "Selected Printer"
 msgstr "Pencetak Terpilih"
 
 #: ctk/ctkprintunixdialog.c:440
-msgid "The GtkPrinter which is selected"
-msgstr "GtkPrinter yang dipilih"
+msgid "The CtkPrinter which is selected"
+msgstr "CtkPrinter yang dipilih"
 
 #: ctk/ctkprintunixdialog.c:447
 msgid "Manual Capabilities"
@@ -6229,8 +6229,8 @@ msgid "The radio tool button whose group this button belongs to."
 msgstr "Tombol alat radio tempat grup pemilik tombol ini."
 
 #: ctk/ctkrange.c:435
-msgid "The GtkAdjustment that contains the current value of this range object"
-msgstr "GtkAdjustment yang berisi nilai sekarang pada obyek jangkauan"
+msgid "The CtkAdjustment that contains the current value of this range object"
+msgstr "CtkAdjustment yang berisi nilai sekarang pada obyek jangkauan"
 
 #: ctk/ctkrange.c:442
 msgid "Invert direction slider moves to increase range value"
@@ -6488,8 +6488,8 @@ msgstr "Ukuran ikon"
 
 #: ctk/ctkscalebutton.c:218
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
-msgstr "GtkAdjustment yang memuat nilai kini dari objek tombol skala ini"
+"The CtkAdjustment that contains the current value of this scale button object"
+msgstr "CtkAdjustment yang memuat nilai kini dari objek tombol skala ini"
 
 #: ctk/ctkscalebutton.c:246
 msgid "Icons"
@@ -6612,16 +6612,16 @@ msgid "Horizontal Adjustment"
 msgstr "Penyesuaian Horisontal"
 
 #: ctk/ctkscrolledwindow.c:570
-msgid "The GtkAdjustment for the horizontal position"
-msgstr "GtkAdjustment untuk posisi horisontal"
+msgid "The CtkAdjustment for the horizontal position"
+msgstr "CtkAdjustment untuk posisi horisontal"
 
 #: ctk/ctkscrolledwindow.c:576
 msgid "Vertical Adjustment"
 msgstr "Penyesuaian Vertikal"
 
 #: ctk/ctkscrolledwindow.c:577
-msgid "The GtkAdjustment for the vertical position"
-msgstr "GtkAdjustment untuk posisi vertikal"
+msgid "The CtkAdjustment for the vertical position"
+msgstr "CtkAdjustment untuk posisi vertikal"
 
 #: ctk/ctkscrolledwindow.c:583
 msgid "Horizontal Scrollbar Policy"
@@ -7129,16 +7129,16 @@ msgid "Default file chooser backend"
 msgstr "Sistem pemilih berkas utama"
 
 #: ctk/ctksettings.c:990
-msgid "Name of the GtkFileChooser backend to use by default"
-msgstr "Nama sistem GtkFileChooser yang digunakan sebagai standar"
+msgid "Name of the CtkFileChooser backend to use by default"
+msgstr "Nama sistem CtkFileChooser yang digunakan sebagai standar"
 
 #: ctk/ctksettings.c:1007
 msgid "Default print backend"
 msgstr "Backend pencetakan baku"
 
 #: ctk/ctksettings.c:1008
-msgid "List of the GtkPrintBackend backends to use by default"
-msgstr "Daftar dari backend GtkPrintBackend yang dipakai secara baku"
+msgid "List of the CtkPrintBackend backends to use by default"
+msgstr "Daftar dari backend CtkPrintBackend yang dipakai secara baku"
 
 #: ctk/ctksettings.c:1031
 msgid "Default command to run when displaying a print preview"
@@ -7768,8 +7768,8 @@ msgid "Stack"
 msgstr "Tumpukan"
 
 #: ctk/ctkstacksidebar.c:450
-msgid "Associated stack for this GtkStackSidebar"
-msgstr "Stack yang terkait dengan GtkStackSidebar ini"
+msgid "Associated stack for this CtkStackSidebar"
+msgstr "Stack yang terkait dengan CtkStackSidebar ini"
 
 #: ctk/ctkstackswitcher.c:687
 msgid "Symbolic size to use for named icon"
@@ -7812,8 +7812,8 @@ msgid "Value type"
 msgstr "Tipe nilai"
 
 #: ctk/ctkstyleproperty.c:117
-msgid "The value type returned by GtkStyleContext"
-msgstr "Tipe nilai yang dikembalikan oleh GtkStyleContext"
+msgid "The value type returned by CtkStyleContext"
+msgstr "Tipe nilai yang dikembalikan oleh CtkStyleContext"
 
 #: ctk/ctkswitch.c:879
 msgid "Whether the switch is on or off"
@@ -8706,9 +8706,9 @@ msgid "Fixed Height Mode"
 msgstr "Moda Tinggi Tetap"
 
 #: ctk/ctktreeview.c:1108
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 msgstr ""
-"Mempercepat kinerja GtkTreeView dengan mengasumsikan tinggi yang seragam "
+"Mempercepat kinerja CtkTreeView dengan mengasumsikan tinggi yang seragam "
 "untuk setiap barisnya"
 
 #: ctk/ctktreeview.c:1127
@@ -9523,8 +9523,8 @@ msgid "Focus in Toplevel"
 msgstr "Fokus pada Tingkat Atas"
 
 #: ctk/ctkwindow.c:912
-msgid "Whether the input focus is within this GtkWindow"
-msgstr "Menentukan apakah fokus input ada dalam GtkWindow ini"
+msgid "Whether the input focus is within this CtkWindow"
+msgstr "Menentukan apakah fokus input ada dalam CtkWindow ini"
 
 #: ctk/ctkwindow.c:918
 msgid "Type hint"
@@ -9636,12 +9636,12 @@ msgid "Whether the window is maximized"
 msgstr "Apakah jendela dimaksimalkan"
 
 #: ctk/ctkwindow.c:1113
-msgid "GtkApplication"
-msgstr "GtkApplication"
+msgid "CtkApplication"
+msgstr "CtkApplication"
 
 #: ctk/ctkwindow.c:1114
-msgid "The GtkApplication for the window"
-msgstr "GtkApplication bagi jendela"
+msgid "The CtkApplication for the window"
+msgstr "CtkApplication bagi jendela"
 
 #: ctk/ctkwindow.c:1124 ctk/ctkwindow.c:1125
 msgid "Decorated button layout"
@@ -9656,8 +9656,8 @@ msgid "Cloud Print account"
 msgstr "Akun Cetak Cloud"
 
 #: modules/printbackends/cloudprint/ctkprintercloudprint.c:138
-msgid "GtkCloudprintAccount instance"
-msgstr "Instansi GtkCloudprintAccount"
+msgid "CtkCloudprintAccount instance"
+msgstr "Instansi CtkCloudprintAccount"
 
 #: modules/printbackends/cloudprint/ctkprintercloudprint.c:147
 msgid "Printer ID"

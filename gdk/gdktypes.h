@@ -488,7 +488,7 @@ typedef enum {
  * @GDK_WINDOW_TYPE_HINT_NORMAL: Normal toplevel window.
  * @GDK_WINDOW_TYPE_HINT_DIALOG: Dialog window.
  * @GDK_WINDOW_TYPE_HINT_MENU: Window used to implement a menu; GTK+ uses
- *  this hint only for torn-off menus, see #GtkTearoffMenuItem.
+ *  this hint only for torn-off menus, see #CtkTearoffMenuItem.
  * @GDK_WINDOW_TYPE_HINT_TOOLBAR: Window used to implement toolbars.
  * @GDK_WINDOW_TYPE_HINT_SPLASHSCREEN: Window used to display a splash
  *  screen during application startup.

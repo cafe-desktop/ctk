@@ -25,18 +25,18 @@
 #include <ctk/ctk.h>
 #include <gdk/gdkkeysyms.h>
 
-/* exported for GtkBuilder */
-G_MODULE_EXPORT void signal_normal (GtkWindow *window, GParamSpec *spec);
-G_MODULE_EXPORT void signal_after (GtkWindow *window, GParamSpec *spec);
-G_MODULE_EXPORT void signal_object (GtkButton *button, GParamSpec *spec);
-G_MODULE_EXPORT void signal_object_after (GtkButton *button, GParamSpec *spec);
-G_MODULE_EXPORT void signal_first (GtkButton *button, GParamSpec *spec);
-G_MODULE_EXPORT void signal_second (GtkButton *button, GParamSpec *spec);
-G_MODULE_EXPORT void signal_extra (GtkButton *button, GParamSpec *spec);
-G_MODULE_EXPORT void signal_extra2 (GtkButton *button, GParamSpec *spec);
+/* exported for CtkBuilder */
+G_MODULE_EXPORT void signal_normal (CtkWindow *window, GParamSpec *spec);
+G_MODULE_EXPORT void signal_after (CtkWindow *window, GParamSpec *spec);
+G_MODULE_EXPORT void signal_object (CtkButton *button, GParamSpec *spec);
+G_MODULE_EXPORT void signal_object_after (CtkButton *button, GParamSpec *spec);
+G_MODULE_EXPORT void signal_first (CtkButton *button, GParamSpec *spec);
+G_MODULE_EXPORT void signal_second (CtkButton *button, GParamSpec *spec);
+G_MODULE_EXPORT void signal_extra (CtkButton *button, GParamSpec *spec);
+G_MODULE_EXPORT void signal_extra2 (CtkButton *button, GParamSpec *spec);
 
 /* Copied from ctkiconfactory.c; keep in sync! */
-struct _GtkIconSet
+struct _CtkIconSet
 {
   guint ref_count;
   GSList *sources;
@@ -46,12 +46,12 @@ struct _GtkIconSet
 };
 
 
-static GtkBuilder *
+static CtkBuilder *
 builder_new_from_string (const gchar *buffer,
                          gsize length,
                          const gchar *domain)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GError *error = NULL;
 
   builder = ctk_builder_new ();
@@ -70,7 +70,7 @@ builder_new_from_string (const gchar *buffer,
 static void
 test_parser (void)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GError *error;
   
   builder = ctk_builder_new ();
@@ -91,7 +91,7 @@ test_parser (void)
   g_error_free (error);
 
   error = NULL;
-  ctk_builder_add_from_string (builder, "<interface><object class=\"GtkVBox\" id=\"a\"><object class=\"GtkHBox\" id=\"b\"/></object></interface>", -1, &error);
+  ctk_builder_add_from_string (builder, "<interface><object class=\"CtkVBox\" id=\"a\"><object class=\"CtkHBox\" id=\"b\"/></object></interface>", -1, &error);
   g_assert_error (error, CTK_BUILDER_ERROR, CTK_BUILDER_ERROR_INVALID_TAG);
   g_error_free (error);
 
@@ -101,27 +101,27 @@ test_parser (void)
   g_error_free (error);
 
   error = NULL;
-  ctk_builder_add_from_string (builder, "<interface><object class=\"GtkWidget\" id=\"a\" constructor=\"none\"></object></interface>", -1, &error);
+  ctk_builder_add_from_string (builder, "<interface><object class=\"CtkWidget\" id=\"a\" constructor=\"none\"></object></interface>", -1, &error);
   g_assert_error (error, CTK_BUILDER_ERROR, CTK_BUILDER_ERROR_INVALID_VALUE);
   g_error_free (error);
 
   error = NULL;
-  ctk_builder_add_from_string (builder, "<interface><object class=\"GtkButton\" id=\"a\"><child internal-child=\"foobar\"><object class=\"GtkButton\" id=\"int\"/></child></object></interface>", -1, &error);
+  ctk_builder_add_from_string (builder, "<interface><object class=\"CtkButton\" id=\"a\"><child internal-child=\"foobar\"><object class=\"CtkButton\" id=\"int\"/></child></object></interface>", -1, &error);
   g_assert_error (error, CTK_BUILDER_ERROR, CTK_BUILDER_ERROR_INVALID_VALUE);
   g_error_free (error);
 
   error = NULL;
-  ctk_builder_add_from_string (builder, "<interface><object class=\"GtkButton\" id=\"a\"></object><object class=\"GtkButton\" id=\"a\"/></object></interface>", -1, &error);
+  ctk_builder_add_from_string (builder, "<interface><object class=\"CtkButton\" id=\"a\"></object><object class=\"CtkButton\" id=\"a\"/></object></interface>", -1, &error);
   g_assert_error (error, CTK_BUILDER_ERROR, CTK_BUILDER_ERROR_DUPLICATE_ID);
   g_error_free (error);
 
   error = NULL;
-  ctk_builder_add_from_string (builder, "<interface><object class=\"GtkButton\" id=\"a\"><property name=\"deafbeef\"></property></object></interface>", -1, &error);
+  ctk_builder_add_from_string (builder, "<interface><object class=\"CtkButton\" id=\"a\"><property name=\"deafbeef\"></property></object></interface>", -1, &error);
   g_assert_error (error, CTK_BUILDER_ERROR, CTK_BUILDER_ERROR_INVALID_PROPERTY);
   g_error_free (error);
   
   error = NULL;
-  ctk_builder_add_from_string (builder, "<interface><object class=\"GtkButton\" id=\"a\"><signal name=\"deafbeef\" handler=\"ctk_true\"/></object></interface>", -1, &error);
+  ctk_builder_add_from_string (builder, "<interface><object class=\"CtkButton\" id=\"a\"><signal name=\"deafbeef\" handler=\"ctk_true\"/></object></interface>", -1, &error);
   g_assert_error (error, CTK_BUILDER_ERROR, CTK_BUILDER_ERROR_INVALID_SIGNAL);
   g_error_free (error);
 
@@ -133,8 +133,8 @@ static int after = 0;
 static int object = 0;
 static int object_after = 0;
 
-G_MODULE_EXPORT void /* exported for GtkBuilder */
-signal_normal (GtkWindow *window, GParamSpec *spec)
+G_MODULE_EXPORT void /* exported for CtkBuilder */
+signal_normal (CtkWindow *window, GParamSpec *spec)
 {
   g_assert (CTK_IS_WINDOW (window));
   g_assert (normal == 0);
@@ -143,8 +143,8 @@ signal_normal (GtkWindow *window, GParamSpec *spec)
   normal++;
 }
 
-G_MODULE_EXPORT void /* exported for GtkBuilder */
-signal_after (GtkWindow *window, GParamSpec *spec)
+G_MODULE_EXPORT void /* exported for CtkBuilder */
+signal_after (CtkWindow *window, GParamSpec *spec)
 {
   g_assert (CTK_IS_WINDOW (window));
   g_assert (normal == 1);
@@ -153,8 +153,8 @@ signal_after (GtkWindow *window, GParamSpec *spec)
   after++;
 }
 
-G_MODULE_EXPORT void /* exported for GtkBuilder */
-signal_object (GtkButton *button, GParamSpec *spec)
+G_MODULE_EXPORT void /* exported for CtkBuilder */
+signal_object (CtkButton *button, GParamSpec *spec)
 {
   g_assert (CTK_IS_BUTTON (button));
   g_assert (object == 0);
@@ -163,8 +163,8 @@ signal_object (GtkButton *button, GParamSpec *spec)
   object++;
 }
 
-G_MODULE_EXPORT void /* exported for GtkBuilder */
-signal_object_after (GtkButton *button, GParamSpec *spec)
+G_MODULE_EXPORT void /* exported for CtkBuilder */
+signal_object_after (CtkButton *button, GParamSpec *spec)
 {
   g_assert (CTK_IS_BUTTON (button));
   g_assert (object == 1);
@@ -173,29 +173,29 @@ signal_object_after (GtkButton *button, GParamSpec *spec)
   object_after++;
 }
 
-G_MODULE_EXPORT void /* exported for GtkBuilder */
-signal_first (GtkButton *button, GParamSpec *spec)
+G_MODULE_EXPORT void /* exported for CtkBuilder */
+signal_first (CtkButton *button, GParamSpec *spec)
 {
   g_assert (normal == 0);
   normal = 10;
 }
 
-G_MODULE_EXPORT void /* exported for GtkBuilder */
-signal_second (GtkButton *button, GParamSpec *spec)
+G_MODULE_EXPORT void /* exported for CtkBuilder */
+signal_second (CtkButton *button, GParamSpec *spec)
 {
   g_assert (normal == 10);
   normal = 20;
 }
 
-G_MODULE_EXPORT void /* exported for GtkBuilder */
-signal_extra (GtkButton *button, GParamSpec *spec)
+G_MODULE_EXPORT void /* exported for CtkBuilder */
+signal_extra (CtkButton *button, GParamSpec *spec)
 {
   g_assert (normal == 20);
   normal = 30;
 }
 
-G_MODULE_EXPORT void /* exported for GtkBuilder */
-signal_extra2 (GtkButton *button, GParamSpec *spec)
+G_MODULE_EXPORT void /* exported for CtkBuilder */
+signal_extra2 (CtkButton *button, GParamSpec *spec)
 {
   g_assert (normal == 30);
   normal = 40;
@@ -204,12 +204,12 @@ signal_extra2 (GtkButton *button, GParamSpec *spec)
 static void
 test_connect_signals (void)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GObject *window;
   const gchar buffer[] =
     "<interface>"
-    "  <object class=\"GtkButton\" id=\"button\"/>"
-    "  <object class=\"GtkWindow\" id=\"window1\">"
+    "  <object class=\"CtkButton\" id=\"button\"/>"
+    "  <object class=\"CtkWindow\" id=\"window1\">"
     "    <signal name=\"notify::title\" handler=\"signal_normal\"/>"
     "    <signal name=\"notify::title\" handler=\"signal_after\" after=\"yes\"/>"
     "    <signal name=\"notify::title\" handler=\"signal_object\""
@@ -220,28 +220,28 @@ test_connect_signals (void)
     "</interface>";
   const gchar buffer_order[] =
     "<interface>"
-    "  <object class=\"GtkWindow\" id=\"window1\">"
+    "  <object class=\"CtkWindow\" id=\"window1\">"
     "    <signal name=\"notify::title\" handler=\"signal_first\"/>"
     "    <signal name=\"notify::title\" handler=\"signal_second\"/>"
     "  </object>"
     "</interface>";
   const gchar buffer_extra[] =
     "<interface>"
-    "  <object class=\"GtkWindow\" id=\"window2\">"
+    "  <object class=\"CtkWindow\" id=\"window2\">"
     "    <signal name=\"notify::title\" handler=\"signal_extra\"/>"
     "  </object>"
     "</interface>";
   const gchar buffer_extra2[] =
     "<interface>"
-    "  <object class=\"GtkWindow\" id=\"window3\">"
+    "  <object class=\"CtkWindow\" id=\"window3\">"
     "    <signal name=\"notify::title\" handler=\"signal_extra2\"/>"
     "  </object>"
     "</interface>";
   const gchar buffer_after_child[] =
     "<interface>"
-    "  <object class=\"GtkWindow\" id=\"window1\">"
+    "  <object class=\"CtkWindow\" id=\"window1\">"
     "    <child>"
-    "      <object class=\"GtkButton\" id=\"button1\"/>"
+    "      <object class=\"CtkButton\" id=\"button1\"/>"
     "    </child>"
     "    <signal name=\"notify::title\" handler=\"signal_normal\"/>"
     "  </object>"
@@ -304,22 +304,22 @@ test_connect_signals (void)
 static void
 test_uimanager_simple (void)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GObject *window, *uimgr, *menubar;
   GObject *menu, *label;
   GList *children;
   const gchar buffer[] =
     "<interface>"
-    "  <object class=\"GtkUIManager\" id=\"uimgr1\"/>"
+    "  <object class=\"CtkUIManager\" id=\"uimgr1\"/>"
     "</interface>";
     
   const gchar buffer2[] =
     "<interface>"
-    "  <object class=\"GtkUIManager\" id=\"uimgr1\">"
+    "  <object class=\"CtkUIManager\" id=\"uimgr1\">"
     "    <child>"
-    "      <object class=\"GtkActionGroup\" id=\"ag1\">"
+    "      <object class=\"CtkActionGroup\" id=\"ag1\">"
     "        <child>"
-    "          <object class=\"GtkAction\" id=\"file\">"
+    "          <object class=\"CtkAction\" id=\"file\">"
     "            <property name=\"label\">_File</property>"
     "          </object>"
     "          <accelerator key=\"n\" modifiers=\"GDK_CONTROL_MASK\"/>"
@@ -333,9 +333,9 @@ test_uimanager_simple (void)
     "      </menubar>"
     "    </ui>"
     "  </object>"
-    "  <object class=\"GtkWindow\" id=\"window1\">"
+    "  <object class=\"CtkWindow\" id=\"window1\">"
     "    <child>"
-    "      <object class=\"GtkMenuBar\" id=\"menubar1\" constructor=\"uimgr1\"/>"
+    "      <object class=\"CtkMenuBar\" id=\"menubar1\" constructor=\"uimgr1\"/>"
     "    </child>"
     "  </object>"
     "</interface>";
@@ -371,7 +371,7 @@ test_uimanager_simple (void)
 static void
 test_domain (void)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   const gchar buffer1[] = "<interface/>";
   const gchar buffer2[] = "<interface domain=\"domain\"/>";
   const gchar *domain;
@@ -397,18 +397,18 @@ test_domain (void)
 static void
 test_translation (void)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   const gchar buffer[] =
     "<interface>"
-    "  <object class=\"GtkWindow\" id=\"window1\">"
+    "  <object class=\"CtkWindow\" id=\"window1\">"
     "    <child>"
-    "      <object class=\"GtkLabel\" id=\"label\">"
+    "      <object class=\"CtkLabel\" id=\"label\">"
     "        <property name=\"label\" translatable=\"yes\">File</property>"
     "      </object>"
     "    </child>"
     "  </object>"
     "</interface>";
-  GtkLabel *window, *label;
+  CtkLabel *window, *label;
 
   setlocale (LC_ALL, "sv_SE");
   textdomain ("builder");
@@ -427,24 +427,24 @@ test_translation (void)
 static void
 test_sizegroup (void)
 {
-  GtkBuilder * builder;
+  CtkBuilder * builder;
   const gchar buffer1[] =
     "<interface domain=\"test\">"
-    "  <object class=\"GtkSizeGroup\" id=\"sizegroup1\">"
+    "  <object class=\"CtkSizeGroup\" id=\"sizegroup1\">"
     "    <property name=\"mode\">CTK_SIZE_GROUP_HORIZONTAL</property>"
     "    <widgets>"
     "      <widget name=\"radio1\"/>"
     "      <widget name=\"radio2\"/>"
     "    </widgets>"
     "  </object>"
-    "  <object class=\"GtkWindow\" id=\"window1\">"
+    "  <object class=\"CtkWindow\" id=\"window1\">"
     "    <child>"
-    "      <object class=\"GtkVBox\" id=\"vbox1\">"
+    "      <object class=\"CtkVBox\" id=\"vbox1\">"
     "        <child>"
-    "          <object class=\"GtkRadioButton\" id=\"radio1\"/>"
+    "          <object class=\"CtkRadioButton\" id=\"radio1\"/>"
     "        </child>"
     "        <child>"
-    "          <object class=\"GtkRadioButton\" id=\"radio2\"/>"
+    "          <object class=\"CtkRadioButton\" id=\"radio2\"/>"
     "        </child>"
     "      </object>"
     "    </child>"
@@ -452,7 +452,7 @@ test_sizegroup (void)
     "</interface>";
   const gchar buffer2[] =
     "<interface domain=\"test\">"
-    "  <object class=\"GtkSizeGroup\" id=\"sizegroup1\">"
+    "  <object class=\"CtkSizeGroup\" id=\"sizegroup1\">"
     "    <property name=\"mode\">CTK_SIZE_GROUP_HORIZONTAL</property>"
     "    <widgets>"
     "    </widgets>"
@@ -460,28 +460,28 @@ test_sizegroup (void)
     "</interface>";
   const gchar buffer3[] =
     "<interface domain=\"test\">"
-    "  <object class=\"GtkSizeGroup\" id=\"sizegroup1\">"
+    "  <object class=\"CtkSizeGroup\" id=\"sizegroup1\">"
     "    <property name=\"mode\">CTK_SIZE_GROUP_HORIZONTAL</property>"
     "    <widgets>"
     "      <widget name=\"radio1\"/>"
     "      <widget name=\"radio2\"/>"
     "    </widgets>"
     "  </object>"
-    "  <object class=\"GtkSizeGroup\" id=\"sizegroup2\">"
+    "  <object class=\"CtkSizeGroup\" id=\"sizegroup2\">"
     "    <property name=\"mode\">CTK_SIZE_GROUP_HORIZONTAL</property>"
     "    <widgets>"
     "      <widget name=\"radio1\"/>"
     "      <widget name=\"radio2\"/>"
     "    </widgets>"
     "  </object>"
-    "  <object class=\"GtkWindow\" id=\"window1\">"
+    "  <object class=\"CtkWindow\" id=\"window1\">"
     "    <child>"
-    "      <object class=\"GtkVBox\" id=\"vbox1\">"
+    "      <object class=\"CtkVBox\" id=\"vbox1\">"
     "        <child>"
-    "          <object class=\"GtkRadioButton\" id=\"radio1\"/>"
+    "          <object class=\"CtkRadioButton\" id=\"radio1\"/>"
     "        </child>"
     "        <child>"
-    "          <object class=\"GtkRadioButton\" id=\"radio2\"/>"
+    "          <object class=\"CtkRadioButton\" id=\"radio2\"/>"
     "        </child>"
     "      </object>"
     "    </child>"
@@ -529,7 +529,7 @@ test_list_store (void)
 {
   const gchar buffer1[] =
     "<interface>"
-    "  <object class=\"GtkListStore\" id=\"liststore1\">"
+    "  <object class=\"CtkListStore\" id=\"liststore1\">"
     "    <columns>"
     "      <column type=\"gchararray\"/>"
     "      <column type=\"guint\"/>"
@@ -538,7 +538,7 @@ test_list_store (void)
     "</interface>";
   const char buffer2[] = 
     "<interface>"
-    "  <object class=\"GtkListStore\" id=\"liststore1\">"
+    "  <object class=\"CtkListStore\" id=\"liststore1\">"
     "    <columns>"
     "      <column type=\"gchararray\"/>"
     "      <column type=\"gchararray\"/>"
@@ -560,7 +560,7 @@ test_list_store (void)
     "</interface>";
   const char buffer3[] = 
     "<interface>"
-    "  <object class=\"GtkListStore\" id=\"liststore1\">"
+    "  <object class=\"CtkListStore\" id=\"liststore1\">"
     "    <columns>"
     "      <column type=\"gchararray\"/>"
     "      <column type=\"gchararray\"/>"
@@ -583,9 +583,9 @@ test_list_store (void)
     "    </data>"
     "  </object>"
     "</interface>";
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GObject *store;
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   gchar *surname, *lastname;
   int age;
   
@@ -688,14 +688,14 @@ test_tree_store (void)
 {
   const gchar buffer[] =
     "<interface domain=\"test\">"
-    "  <object class=\"GtkTreeStore\" id=\"treestore1\">"
+    "  <object class=\"CtkTreeStore\" id=\"treestore1\">"
     "    <columns>"
     "      <column type=\"gchararray\"/>"
     "      <column type=\"guint\"/>"
     "    </columns>"
     "  </object>"
     "</interface>";
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GObject *store;
   
   builder = builder_new_from_string (buffer, -1, NULL);
@@ -712,50 +712,50 @@ test_types (void)
 {
   const gchar buffer[] = 
     "<interface>"
-    "  <object class=\"GtkAction\" id=\"action\"/>"
-    "  <object class=\"GtkActionGroup\" id=\"actiongroup\"/>"
-    "  <object class=\"GtkAlignment\" id=\"alignment\"/>"
-    "  <object class=\"GtkArrow\" id=\"arrow\"/>"
-    "  <object class=\"GtkButton\" id=\"button\"/>"
-    "  <object class=\"GtkCheckButton\" id=\"checkbutton\"/>"
-    "  <object class=\"GtkDialog\" id=\"dialog\"/>"
-    "  <object class=\"GtkDrawingArea\" id=\"drawingarea\"/>"
-    "  <object class=\"GtkEventBox\" id=\"eventbox\"/>"
-    "  <object class=\"GtkEntry\" id=\"entry\"/>"
-    "  <object class=\"GtkFontButton\" id=\"fontbutton\"/>"
-    "  <object class=\"GtkHButtonBox\" id=\"hbuttonbox\"/>"
-    "  <object class=\"GtkHBox\" id=\"hbox\"/>"
-    "  <object class=\"GtkHPaned\" id=\"hpaned\"/>"
-    "  <object class=\"GtkHScale\" id=\"hscale\"/>"
-    "  <object class=\"GtkHScrollbar\" id=\"hscrollbar\"/>"
-    "  <object class=\"GtkHSeparator\" id=\"hseparator\"/>"
-    "  <object class=\"GtkImage\" id=\"image\"/>"
-    "  <object class=\"GtkLabel\" id=\"label\"/>"
-    "  <object class=\"GtkListStore\" id=\"liststore\"/>"
-    "  <object class=\"GtkMenuBar\" id=\"menubar\"/>"
-    "  <object class=\"GtkNotebook\" id=\"notebook\"/>"
-    "  <object class=\"GtkProgressBar\" id=\"progressbar\"/>"
-    "  <object class=\"GtkRadioButton\" id=\"radiobutton\"/>"
-    "  <object class=\"GtkSizeGroup\" id=\"sizegroup\"/>"
-    "  <object class=\"GtkScrolledWindow\" id=\"scrolledwindow\"/>"
-    "  <object class=\"GtkSpinButton\" id=\"spinbutton\"/>"
-    "  <object class=\"GtkStatusbar\" id=\"statusbar\"/>"
-    "  <object class=\"GtkTextView\" id=\"textview\"/>"
-    "  <object class=\"GtkToggleAction\" id=\"toggleaction\"/>"
-    "  <object class=\"GtkToggleButton\" id=\"togglebutton\"/>"
-    "  <object class=\"GtkToolbar\" id=\"toolbar\"/>"
-    "  <object class=\"GtkTreeStore\" id=\"treestore\"/>"
-    "  <object class=\"GtkTreeView\" id=\"treeview\"/>"
-    "  <object class=\"GtkTable\" id=\"table\"/>"
-    "  <object class=\"GtkVBox\" id=\"vbox\"/>"
-    "  <object class=\"GtkVButtonBox\" id=\"vbuttonbox\"/>"
-    "  <object class=\"GtkVScrollbar\" id=\"vscrollbar\"/>"
-    "  <object class=\"GtkVSeparator\" id=\"vseparator\"/>"
-    "  <object class=\"GtkViewport\" id=\"viewport\"/>"
-    "  <object class=\"GtkVPaned\" id=\"vpaned\"/>"
-    "  <object class=\"GtkVScale\" id=\"vscale\"/>"
-    "  <object class=\"GtkWindow\" id=\"window\"/>"
-    "  <object class=\"GtkUIManager\" id=\"uimanager\"/>"
+    "  <object class=\"CtkAction\" id=\"action\"/>"
+    "  <object class=\"CtkActionGroup\" id=\"actiongroup\"/>"
+    "  <object class=\"CtkAlignment\" id=\"alignment\"/>"
+    "  <object class=\"CtkArrow\" id=\"arrow\"/>"
+    "  <object class=\"CtkButton\" id=\"button\"/>"
+    "  <object class=\"CtkCheckButton\" id=\"checkbutton\"/>"
+    "  <object class=\"CtkDialog\" id=\"dialog\"/>"
+    "  <object class=\"CtkDrawingArea\" id=\"drawingarea\"/>"
+    "  <object class=\"CtkEventBox\" id=\"eventbox\"/>"
+    "  <object class=\"CtkEntry\" id=\"entry\"/>"
+    "  <object class=\"CtkFontButton\" id=\"fontbutton\"/>"
+    "  <object class=\"CtkHButtonBox\" id=\"hbuttonbox\"/>"
+    "  <object class=\"CtkHBox\" id=\"hbox\"/>"
+    "  <object class=\"CtkHPaned\" id=\"hpaned\"/>"
+    "  <object class=\"CtkHScale\" id=\"hscale\"/>"
+    "  <object class=\"CtkHScrollbar\" id=\"hscrollbar\"/>"
+    "  <object class=\"CtkHSeparator\" id=\"hseparator\"/>"
+    "  <object class=\"CtkImage\" id=\"image\"/>"
+    "  <object class=\"CtkLabel\" id=\"label\"/>"
+    "  <object class=\"CtkListStore\" id=\"liststore\"/>"
+    "  <object class=\"CtkMenuBar\" id=\"menubar\"/>"
+    "  <object class=\"CtkNotebook\" id=\"notebook\"/>"
+    "  <object class=\"CtkProgressBar\" id=\"progressbar\"/>"
+    "  <object class=\"CtkRadioButton\" id=\"radiobutton\"/>"
+    "  <object class=\"CtkSizeGroup\" id=\"sizegroup\"/>"
+    "  <object class=\"CtkScrolledWindow\" id=\"scrolledwindow\"/>"
+    "  <object class=\"CtkSpinButton\" id=\"spinbutton\"/>"
+    "  <object class=\"CtkStatusbar\" id=\"statusbar\"/>"
+    "  <object class=\"CtkTextView\" id=\"textview\"/>"
+    "  <object class=\"CtkToggleAction\" id=\"toggleaction\"/>"
+    "  <object class=\"CtkToggleButton\" id=\"togglebutton\"/>"
+    "  <object class=\"CtkToolbar\" id=\"toolbar\"/>"
+    "  <object class=\"CtkTreeStore\" id=\"treestore\"/>"
+    "  <object class=\"CtkTreeView\" id=\"treeview\"/>"
+    "  <object class=\"CtkTable\" id=\"table\"/>"
+    "  <object class=\"CtkVBox\" id=\"vbox\"/>"
+    "  <object class=\"CtkVButtonBox\" id=\"vbuttonbox\"/>"
+    "  <object class=\"CtkVScrollbar\" id=\"vscrollbar\"/>"
+    "  <object class=\"CtkVSeparator\" id=\"vseparator\"/>"
+    "  <object class=\"CtkViewport\" id=\"viewport\"/>"
+    "  <object class=\"CtkVPaned\" id=\"vpaned\"/>"
+    "  <object class=\"CtkVScale\" id=\"vscale\"/>"
+    "  <object class=\"CtkWindow\" id=\"window\"/>"
+    "  <object class=\"CtkUIManager\" id=\"uimanager\"/>"
     "</interface>";
   const gchar buffer2[] = 
     "<interface>"
@@ -769,7 +769,7 @@ test_types (void)
     "<interface>"
     "  <object type-func=\"xxx_invalid_get_type_function\" id=\"window\"/>"
     "</interface>";
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GObject *window;
   GError *error;
 
@@ -801,10 +801,10 @@ test_types (void)
 static void
 test_spin_button (void)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   const gchar buffer[] =
     "<interface>"
-    "<object class=\"GtkAdjustment\" id=\"adjustment1\">"
+    "<object class=\"CtkAdjustment\" id=\"adjustment1\">"
     "<property name=\"lower\">0</property>"
     "<property name=\"upper\">10</property>"
     "<property name=\"step-increment\">2</property>"
@@ -812,13 +812,13 @@ test_spin_button (void)
     "<property name=\"page-size\">0</property>"
     "<property name=\"value\">1</property>"
     "</object>"
-    "<object class=\"GtkSpinButton\" id=\"spinbutton1\">"
+    "<object class=\"CtkSpinButton\" id=\"spinbutton1\">"
     "<property name=\"visible\">True</property>"
     "<property name=\"adjustment\">adjustment1</property>"
     "</object>"
     "</interface>";
   GObject *obj;
-  GtkAdjustment *adjustment;
+  CtkAdjustment *adjustment;
   gdouble value;
   
   builder = builder_new_from_string (buffer, -1, NULL);
@@ -845,34 +845,34 @@ test_spin_button (void)
 static void
 test_notebook (void)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   const gchar buffer[] =
     "<interface>"
-    "  <object class=\"GtkNotebook\" id=\"notebook1\">"
+    "  <object class=\"CtkNotebook\" id=\"notebook1\">"
     "    <child>"
-    "      <object class=\"GtkLabel\" id=\"label1\">"
+    "      <object class=\"CtkLabel\" id=\"label1\">"
     "        <property name=\"label\">label1</property>"
     "      </object>"
     "    </child>"
     "    <child type=\"tab\">"
-    "      <object class=\"GtkLabel\" id=\"tablabel1\">"
+    "      <object class=\"CtkLabel\" id=\"tablabel1\">"
     "        <property name=\"label\">tab_label1</property>"
     "      </object>"
     "    </child>"
     "    <child>"
-    "      <object class=\"GtkLabel\" id=\"label2\">"
+    "      <object class=\"CtkLabel\" id=\"label2\">"
     "        <property name=\"label\">label2</property>"
     "      </object>"
     "    </child>"
     "    <child type=\"tab\">"
-    "      <object class=\"GtkLabel\" id=\"tablabel2\">"
+    "      <object class=\"CtkLabel\" id=\"tablabel2\">"
     "        <property name=\"label\">tab_label2</property>"
     "      </object>"
     "    </child>"
     "  </object>"
     "</interface>";
   GObject *notebook;
-  GtkWidget *label;
+  CtkWidget *label;
 
   builder = builder_new_from_string (buffer, -1, NULL);
   notebook = ctk_builder_get_object (builder, "notebook1");
@@ -899,22 +899,22 @@ test_notebook (void)
 static void
 test_construct_only_property (void)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   const gchar buffer[] =
     "<interface>"
-    "  <object class=\"GtkWindow\" id=\"window1\">"
+    "  <object class=\"CtkWindow\" id=\"window1\">"
     "    <property name=\"type\">CTK_WINDOW_POPUP</property>"
     "  </object>"
     "</interface>";
   const gchar buffer2[] =
     "<interface>"
-    "  <object class=\"GtkTextTagTable\" id=\"tagtable1\"/>"
-    "  <object class=\"GtkTextBuffer\" id=\"textbuffer1\">"
+    "  <object class=\"CtkTextTagTable\" id=\"tagtable1\"/>"
+    "  <object class=\"CtkTextBuffer\" id=\"textbuffer1\">"
     "    <property name=\"tag-table\">tagtable1</property>"
     "  </object>"
     "</interface>";
   GObject *widget, *tagtable, *textbuffer;
-  GtkWindowType type;
+  CtkWindowType type;
   
   builder = builder_new_from_string (buffer, -1, NULL);
   widget = ctk_builder_get_object (builder, "window1");
@@ -936,20 +936,20 @@ test_construct_only_property (void)
 static void
 test_object_properties (void)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   const gchar buffer[] =
     "<interface>"
-    "  <object class=\"GtkWindow\" id=\"window1\">"
+    "  <object class=\"CtkWindow\" id=\"window1\">"
     "    <child>"
-    "      <object class=\"GtkVBox\" id=\"vbox\">"
+    "      <object class=\"CtkVBox\" id=\"vbox\">"
     "        <property name=\"border-width\">10</property>"
     "        <child>"
-    "          <object class=\"GtkLabel\" id=\"label1\">"
+    "          <object class=\"CtkLabel\" id=\"label1\">"
     "            <property name=\"mnemonic-widget\">spinbutton1</property>"
     "          </object>"
     "        </child>"
     "        <child>"
-    "          <object class=\"GtkSpinButton\" id=\"spinbutton1\"/>"
+    "          <object class=\"CtkSpinButton\" id=\"spinbutton1\"/>"
     "        </child>"
     "      </object>"
     "    </child>"
@@ -957,7 +957,7 @@ test_object_properties (void)
     "</interface>";
   const gchar buffer2[] =
     "<interface>"
-    "  <object class=\"GtkWindow\" id=\"window2\"/>"
+    "  <object class=\"CtkWindow\" id=\"window2\"/>"
     "</interface>";
   GObject *label, *spinbutton, *window;
   
@@ -979,14 +979,14 @@ test_object_properties (void)
 static void
 test_children (void)
 {
-  GtkBuilder * builder;
-  GtkWidget *content_area, *dialog_action_area;
+  CtkBuilder * builder;
+  CtkWidget *content_area, *dialog_action_area;
   GList *children;
   const gchar buffer1[] =
     "<interface>"
-    "  <object class=\"GtkWindow\" id=\"window1\">"
+    "  <object class=\"CtkWindow\" id=\"window1\">"
     "    <child>"
-    "      <object class=\"GtkButton\" id=\"button1\">"
+    "      <object class=\"CtkButton\" id=\"button1\">"
     "        <property name=\"label\">Hello</property>"
     "      </object>"
     "    </child>"
@@ -994,13 +994,13 @@ test_children (void)
     "</interface>";
   const gchar buffer2[] =
     "<interface>"
-    "  <object class=\"GtkDialog\" id=\"dialog1\">"
+    "  <object class=\"CtkDialog\" id=\"dialog1\">"
     "    <property name=\"use_header_bar\">1</property>"
     "    <child internal-child=\"vbox\">"
-    "      <object class=\"GtkVBox\" id=\"dialog1-vbox\">"
+    "      <object class=\"CtkVBox\" id=\"dialog1-vbox\">"
     "        <property name=\"border-width\">10</property>"
     "          <child internal-child=\"action_area\">"
-    "            <object class=\"GtkHButtonBox\" id=\"dialog1-action_area\">"
+    "            <object class=\"CtkHButtonBox\" id=\"dialog1-action_area\">"
     "              <property name=\"border-width\">20</property>"
     "            </object>"
     "          </child>"
@@ -1062,18 +1062,18 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 static void
 test_child_properties (void)
 {
-  GtkBuilder * builder;
+  CtkBuilder * builder;
   const gchar buffer1[] =
     "<interface>"
-    "  <object class=\"GtkBox\" id=\"vbox1\">"
+    "  <object class=\"CtkBox\" id=\"vbox1\">"
     "    <child>"
-    "      <object class=\"GtkLabel\" id=\"label1\"/>"
+    "      <object class=\"CtkLabel\" id=\"label1\"/>"
     "      <packing>"
     "        <property name=\"pack-type\">start</property>"
     "      </packing>"
     "    </child>"
     "    <child>"
-    "      <object class=\"GtkLabel\" id=\"label2\"/>"
+    "      <object class=\"CtkLabel\" id=\"label2\"/>"
     "      <packing>"
     "        <property name=\"pack-type\">end</property>"
     "      </packing>"
@@ -1082,7 +1082,7 @@ test_child_properties (void)
     "</interface>";
 
   GObject *label, *vbox;
-  GtkPackType pack_type;
+  CtkPackType pack_type;
   
   builder = builder_new_from_string (buffer1, -1, NULL);
   vbox = ctk_builder_get_object (builder, "vbox1");
@@ -1112,10 +1112,10 @@ test_child_properties (void)
 static void
 test_treeview_column (void)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   const gchar buffer[] =
     "<interface>"
-    "<object class=\"GtkListStore\" id=\"liststore1\">"
+    "<object class=\"CtkListStore\" id=\"liststore1\">"
     "  <columns>"
     "    <column type=\"gchararray\"/>"
     "    <column type=\"guint\"/>"
@@ -1127,16 +1127,16 @@ test_treeview_column (void)
     "    </row>"
     "  </data>"
     "</object>"
-    "<object class=\"GtkWindow\" id=\"window1\">"
+    "<object class=\"CtkWindow\" id=\"window1\">"
     "  <child>"
-    "    <object class=\"GtkTreeView\" id=\"treeview1\">"
+    "    <object class=\"CtkTreeView\" id=\"treeview1\">"
     "      <property name=\"visible\">True</property>"
     "      <property name=\"model\">liststore1</property>"
     "      <child>"
-    "        <object class=\"GtkTreeViewColumn\" id=\"column1\">"
+    "        <object class=\"CtkTreeViewColumn\" id=\"column1\">"
     "          <property name=\"title\">Test</property>"
     "          <child>"
-    "            <object class=\"GtkCellRendererText\" id=\"renderer1\"/>"
+    "            <object class=\"CtkCellRendererText\" id=\"renderer1\"/>"
     "            <attributes>"
     "              <attribute name=\"text\">1</attribute>"
     "            </attributes>"
@@ -1144,10 +1144,10 @@ test_treeview_column (void)
     "        </object>"
     "      </child>"
     "      <child>"
-    "        <object class=\"GtkTreeViewColumn\" id=\"column2\">"
+    "        <object class=\"CtkTreeViewColumn\" id=\"column2\">"
     "          <property name=\"title\">Number</property>"
     "          <child>"
-    "            <object class=\"GtkCellRendererText\" id=\"renderer2\"/>"
+    "            <object class=\"CtkCellRendererText\" id=\"renderer2\"/>"
     "            <attributes>"
     "              <attribute name=\"text\">0</attribute>"
     "            </attributes>"
@@ -1159,7 +1159,7 @@ test_treeview_column (void)
     "</object>"
     "</interface>";
   GObject *window, *treeview;
-  GtkTreeViewColumn *column;
+  CtkTreeViewColumn *column;
   GList *renderers;
   GObject *renderer;
 
@@ -1187,10 +1187,10 @@ test_treeview_column (void)
 static void
 test_icon_view (void)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   const gchar buffer[] =
     "<interface>"
-    "  <object class=\"GtkListStore\" id=\"liststore1\">"
+    "  <object class=\"CtkListStore\" id=\"liststore1\">"
     "    <columns>"
     "      <column type=\"gchararray\"/>"
     "      <column type=\"GdkPixbuf\"/>"
@@ -1201,15 +1201,15 @@ test_icon_view (void)
     "      </row>"
     "    </data>"
     "  </object>"
-    "  <object class=\"GtkWindow\" id=\"window1\">"
+    "  <object class=\"CtkWindow\" id=\"window1\">"
     "    <child>"
-    "      <object class=\"GtkIconView\" id=\"iconview1\">"
+    "      <object class=\"CtkIconView\" id=\"iconview1\">"
     "        <property name=\"model\">liststore1</property>"
     "        <property name=\"text-column\">0</property>"
     "        <property name=\"pixbuf-column\">1</property>"
     "        <property name=\"visible\">True</property>"
     "        <child>"
-    "          <object class=\"GtkCellRendererText\" id=\"renderer1\"/>"
+    "          <object class=\"CtkCellRendererText\" id=\"renderer1\"/>"
     "          <attributes>"
     "            <attribute name=\"text\">0</attribute>"
     "          </attributes>"
@@ -1233,10 +1233,10 @@ test_icon_view (void)
 static void
 test_combo_box (void)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   const gchar buffer[] =
     "<interface>"
-    "  <object class=\"GtkListStore\" id=\"liststore1\">"
+    "  <object class=\"CtkListStore\" id=\"liststore1\">"
     "    <columns>"
     "      <column type=\"guint\"/>"
     "      <column type=\"gchararray\"/>"
@@ -1252,19 +1252,19 @@ test_combo_box (void)
     "      </row>"
     "    </data>"
     "  </object>"
-    "  <object class=\"GtkWindow\" id=\"window1\">"
+    "  <object class=\"CtkWindow\" id=\"window1\">"
     "    <child>"
-    "      <object class=\"GtkComboBox\" id=\"combobox1\">"
+    "      <object class=\"CtkComboBox\" id=\"combobox1\">"
     "        <property name=\"model\">liststore1</property>"
     "        <property name=\"visible\">True</property>"
     "        <child>"
-    "          <object class=\"GtkCellRendererText\" id=\"renderer1\"/>"
+    "          <object class=\"CtkCellRendererText\" id=\"renderer1\"/>"
     "          <attributes>"
     "            <attribute name=\"text\">0</attribute>"
     "          </attributes>"
     "        </child>"
     "        <child>"
-    "          <object class=\"GtkCellRendererText\" id=\"renderer2\"/>"
+    "          <object class=\"CtkCellRendererText\" id=\"renderer2\"/>"
     "          <attributes>"
     "            <attribute name=\"text\">1</attribute>"
     "          </attributes>"
@@ -1289,10 +1289,10 @@ test_combo_box (void)
 static void
 test_combo_box_entry (void)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   const gchar buffer[] =
     "<interface>"
-    "  <object class=\"GtkListStore\" id=\"liststore1\">"
+    "  <object class=\"CtkListStore\" id=\"liststore1\">"
     "    <columns>"
     "      <column type=\"guint\"/>"
     "      <column type=\"gchararray\"/>"
@@ -1308,20 +1308,20 @@ test_combo_box_entry (void)
     "      </row>"
     "    </data>"
     "  </object>"
-    "  <object class=\"GtkWindow\" id=\"window1\">"
+    "  <object class=\"CtkWindow\" id=\"window1\">"
     "    <child>"
-    "      <object class=\"GtkComboBox\" id=\"comboboxentry1\">"
+    "      <object class=\"CtkComboBox\" id=\"comboboxentry1\">"
     "        <property name=\"model\">liststore1</property>"
     "        <property name=\"has-entry\">True</property>"
     "        <property name=\"visible\">True</property>"
     "        <child>"
-    "          <object class=\"GtkCellRendererText\" id=\"renderer1\"/>"
+    "          <object class=\"CtkCellRendererText\" id=\"renderer1\"/>"
     "            <attributes>"
     "              <attribute name=\"text\">0</attribute>"
     "            </attributes>"
     "        </child>"
     "        <child>"
-    "          <object class=\"GtkCellRendererText\" id=\"renderer2\"/>"
+    "          <object class=\"CtkCellRendererText\" id=\"renderer2\"/>"
     "            <attributes>"
     "              <attribute name=\"text\">1</attribute>"
     "            </attributes>"
@@ -1361,10 +1361,10 @@ test_combo_box_entry (void)
 static void
 test_cell_view (void)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   const gchar *buffer =
     "<interface>"
-    "  <object class=\"GtkListStore\" id=\"liststore1\">"
+    "  <object class=\"CtkListStore\" id=\"liststore1\">"
     "    <columns>"
     "      <column type=\"gchararray\"/>"
     "    </columns>"
@@ -1374,14 +1374,14 @@ test_cell_view (void)
     "      </row>"
     "    </data>"
     "  </object>"
-    "  <object class=\"GtkWindow\" id=\"window1\">"
+    "  <object class=\"CtkWindow\" id=\"window1\">"
     "    <child>"
-    "      <object class=\"GtkCellView\" id=\"cellview1\">"
+    "      <object class=\"CtkCellView\" id=\"cellview1\">"
     "        <property name=\"visible\">True</property>"
     "        <property name=\"model\">liststore1</property>"
     "        <accelerator key=\"f\" modifiers=\"GDK_CONTROL_MASK\" signal=\"grab_focus\"/>"
     "        <child>"
-    "          <object class=\"GtkCellRendererText\" id=\"renderer1\"/>"
+    "          <object class=\"CtkCellRendererText\" id=\"renderer1\"/>"
     "          <attributes>"
     "            <attribute name=\"text\">0</attribute>"
     "          </attributes>"
@@ -1392,7 +1392,7 @@ test_cell_view (void)
     "</interface>";
   GObject *cellview;
   GObject *model, *window;
-  GtkTreePath *path;
+  CtkTreePath *path;
   GList *renderers;
   
   builder = builder_new_from_string (buffer, -1, NULL);
@@ -1421,19 +1421,19 @@ test_cell_view (void)
 static void
 test_dialog (void)
 {
-  GtkBuilder * builder;
+  CtkBuilder * builder;
   const gchar buffer1[] =
     "<interface>"
-    "  <object class=\"GtkDialog\" id=\"dialog1\">"
+    "  <object class=\"CtkDialog\" id=\"dialog1\">"
     "    <child internal-child=\"vbox\">"
-    "      <object class=\"GtkVBox\" id=\"dialog1-vbox\">"
+    "      <object class=\"CtkVBox\" id=\"dialog1-vbox\">"
     "          <child internal-child=\"action_area\">"
-    "            <object class=\"GtkHButtonBox\" id=\"dialog1-action_area\">"
+    "            <object class=\"CtkHButtonBox\" id=\"dialog1-action_area\">"
     "              <child>"
-    "                <object class=\"GtkButton\" id=\"button_cancel\"/>"
+    "                <object class=\"CtkButton\" id=\"button_cancel\"/>"
     "              </child>"
     "              <child>"
-    "                <object class=\"GtkButton\" id=\"button_ok\"/>"
+    "                <object class=\"CtkButton\" id=\"button_ok\"/>"
     "              </child>"
     "            </object>"
     "          </child>"
@@ -1464,14 +1464,14 @@ test_dialog (void)
 static void
 test_message_dialog (void)
 {
-  GtkBuilder * builder;
+  CtkBuilder * builder;
   const gchar buffer1[] =
     "<interface>"
-    "  <object class=\"GtkMessageDialog\" id=\"dialog1\">"
+    "  <object class=\"CtkMessageDialog\" id=\"dialog1\">"
     "    <child internal-child=\"message_area\">"
-    "      <object class=\"GtkVBox\" id=\"dialog-message-area\">"
+    "      <object class=\"CtkVBox\" id=\"dialog-message-area\">"
     "        <child>"
-    "          <object class=\"GtkExpander\" id=\"expander\"/>"
+    "          <object class=\"CtkExpander\" id=\"expander\"/>"
     "        </child>"
     "      </object>"
     "    </child>"
@@ -1494,12 +1494,12 @@ test_message_dialog (void)
 static void
 test_accelerators (void)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   const gchar *buffer =
     "<interface>"
-    "  <object class=\"GtkWindow\" id=\"window1\">"
+    "  <object class=\"CtkWindow\" id=\"window1\">"
     "    <child>"
-    "      <object class=\"GtkButton\" id=\"button1\">"
+    "      <object class=\"CtkButton\" id=\"button1\">"
     "        <accelerator key=\"q\" modifiers=\"GDK_CONTROL_MASK\" signal=\"clicked\"/>"
     "      </object>"
     "    </child>"
@@ -1507,9 +1507,9 @@ test_accelerators (void)
     "</interface>";
   const gchar *buffer2 =
     "<interface>"
-    "  <object class=\"GtkWindow\" id=\"window1\">"
+    "  <object class=\"CtkWindow\" id=\"window1\">"
     "    <child>"
-    "      <object class=\"GtkTreeView\" id=\"treeview1\">"
+    "      <object class=\"CtkTreeView\" id=\"treeview1\">"
     "        <signal name=\"cursor-changed\" handler=\"ctk_main_quit\"/>"
     "        <accelerator key=\"f\" modifiers=\"GDK_CONTROL_MASK\" signal=\"grab_focus\"/>"
     "      </object>"
@@ -1552,9 +1552,9 @@ test_widget (void)
 {
   const gchar *buffer =
     "<interface>"
-    "  <object class=\"GtkWindow\" id=\"window1\">"
+    "  <object class=\"CtkWindow\" id=\"window1\">"
     "    <child>"
-    "      <object class=\"GtkButton\" id=\"button1\">"
+    "      <object class=\"CtkButton\" id=\"button1\">"
     "         <property name=\"can-focus\">True</property>"
     "         <property name=\"has-focus\">True</property>"
     "      </object>"
@@ -1563,9 +1563,9 @@ test_widget (void)
    "</interface>";
   const gchar *buffer2 =
     "<interface>"
-    "  <object class=\"GtkWindow\" id=\"window1\">"
+    "  <object class=\"CtkWindow\" id=\"window1\">"
     "    <child>"
-    "      <object class=\"GtkButton\" id=\"button1\">"
+    "      <object class=\"CtkButton\" id=\"button1\">"
     "         <property name=\"can-default\">True</property>"
     "         <property name=\"has-default\">True</property>"
     "      </object>"
@@ -1574,11 +1574,11 @@ test_widget (void)
    "</interface>";
   const gchar *buffer3 =
     "<interface>"
-    "  <object class=\"GtkWindow\" id=\"window1\">"
+    "  <object class=\"CtkWindow\" id=\"window1\">"
     "    <child>"
-    "      <object class=\"GtkVBox\" id=\"vbox1\">"
+    "      <object class=\"CtkVBox\" id=\"vbox1\">"
     "        <child>"
-    "          <object class=\"GtkLabel\" id=\"label1\">"
+    "          <object class=\"CtkLabel\" id=\"label1\">"
     "            <child internal-child=\"accessible\">"
     "              <object class=\"AtkObject\" id=\"a11y-label1\">"
     "                <property name=\"AtkObject::accessible-name\">A Label</property>"
@@ -1590,7 +1590,7 @@ test_widget (void)
     "          </object>"
     "        </child>"
     "        <child>"
-    "          <object class=\"GtkButton\" id=\"button1\">"
+    "          <object class=\"CtkButton\" id=\"button1\">"
     "            <accessibility>"
     "              <action action_name=\"click\" description=\"Sliff\"/>"
     "              <action action_name=\"clack\" translatable=\"yes\">Sniff</action>"
@@ -1601,7 +1601,7 @@ test_widget (void)
     "    </child>"
     "  </object>"
     "</interface>";
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GObject *window1, *button1, *label1;
   AtkObject *accessible;
   AtkRelationSet *relation_set;
@@ -1653,16 +1653,16 @@ test_window (void)
 {
   const gchar *buffer1 =
     "<interface>"
-    "  <object class=\"GtkWindow\" id=\"window1\">"
+    "  <object class=\"CtkWindow\" id=\"window1\">"
     "     <property name=\"title\"></property>"
     "  </object>"
    "</interface>";
   const gchar *buffer2 =
     "<interface>"
-    "  <object class=\"GtkWindow\" id=\"window1\">"
+    "  <object class=\"CtkWindow\" id=\"window1\">"
     "  </object>"
    "</interface>";
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GObject *window1;
   gchar *title;
   
@@ -1685,7 +1685,7 @@ test_value_from_string (void)
 {
   GValue value = G_VALUE_INIT;
   GError *error = NULL;
-  GtkBuilder *builder;
+  CtkBuilder *builder;
 
   builder = ctk_builder_new ();
   
@@ -1827,14 +1827,14 @@ model_weakref (gpointer data,
 static void
 test_reference_counting (void)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   const gchar buffer1[] =
     "<interface>"
-    "  <object class=\"GtkListStore\" id=\"liststore1\"/>"
-    "  <object class=\"GtkListStore\" id=\"liststore2\"/>"
-    "  <object class=\"GtkWindow\" id=\"window1\">"
+    "  <object class=\"CtkListStore\" id=\"liststore1\"/>"
+    "  <object class=\"CtkListStore\" id=\"liststore2\"/>"
+    "  <object class=\"CtkWindow\" id=\"window1\">"
     "    <child>"
-    "      <object class=\"GtkTreeView\" id=\"treeview1\">"
+    "      <object class=\"CtkTreeView\" id=\"treeview1\">"
     "        <property name=\"model\">liststore1</property>"
     "      </object>"
     "    </child>"
@@ -1842,9 +1842,9 @@ test_reference_counting (void)
     "</interface>";
   const gchar buffer2[] =
     "<interface>"
-    "  <object class=\"GtkVBox\" id=\"vbox1\">"
+    "  <object class=\"CtkVBox\" id=\"vbox1\">"
     "    <child>"
-    "      <object class=\"GtkLabel\" id=\"label1\"/>"
+    "      <object class=\"CtkLabel\" id=\"label1\"/>"
     "      <packing>"
     "        <property name=\"pack-type\">start</property>"
     "      </packing>"
@@ -1874,10 +1874,10 @@ test_reference_counting (void)
 static void
 test_icon_factory (void)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   const gchar buffer1[] =
     "<interface>"
-    "  <object class=\"GtkIconFactory\" id=\"iconfactory1\">"
+    "  <object class=\"CtkIconFactory\" id=\"iconfactory1\">"
     "    <sources>"
     "      <source stock-id=\"apple-red\" filename=\"apple-red.png\"/>"
     "    </sources>"
@@ -1885,7 +1885,7 @@ test_icon_factory (void)
     "</interface>";
   const gchar buffer2[] =
     "<interface>"
-    "  <object class=\"GtkIconFactory\" id=\"iconfactory1\">"
+    "  <object class=\"CtkIconFactory\" id=\"iconfactory1\">"
     "    <sources>"
     "      <source stock-id=\"sliff\" direction=\"rtl\" state=\"active\""
     "              size=\"menu\" filename=\"sloff.png\"/>"
@@ -1895,9 +1895,9 @@ test_icon_factory (void)
     "  </object>"
     "</interface>";
   GObject *factory;
-  GtkIconSet *icon_set;
-  GtkIconSource *icon_source;
-  GtkWidget *image;
+  CtkIconSet *icon_set;
+  CtkIconSource *icon_source;
+  CtkWidget *image;
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
@@ -1980,11 +1980,11 @@ filter_pango_attrs (PangoAttribute *attr,
 static void
 test_pango_attributes (void)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   FoundAttrs found = { 0, };
   const gchar buffer[] =
     "<interface>"
-    "  <object class=\"GtkLabel\" id=\"label1\">"
+    "  <object class=\"CtkLabel\" id=\"label1\">"
     "    <attributes>"
     "      <attribute name=\"weight\" value=\"PANGO_WEIGHT_BOLD\"/>"
     "      <attribute name=\"foreground\" value=\"DarkSlateGray\"/>"
@@ -1997,7 +1997,7 @@ test_pango_attributes (void)
     "</interface>";
   const gchar err_buffer1[] =
     "<interface>"
-    "  <object class=\"GtkLabel\" id=\"label1\">"
+    "  <object class=\"CtkLabel\" id=\"label1\">"
     "    <attributes>"
     "      <attribute name=\"weight\"/>"
     "    </attributes>"
@@ -2005,7 +2005,7 @@ test_pango_attributes (void)
     "</interface>";
   const gchar err_buffer2[] =
     "<interface>"
-    "  <object class=\"GtkLabel\" id=\"label1\">"
+    "  <object class=\"CtkLabel\" id=\"label1\">"
     "    <attributes>"
     "      <attribute name=\"weight\" value=\"PANGO_WEIGHT_BOLD\" unrecognized=\"True\"/>"
     "    </attributes>"
@@ -2058,7 +2058,7 @@ test_pango_attributes (void)
 static void
 test_requires (void)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GError     *error = NULL;
   gchar      *buffer;
   const gchar buffer_fmt[] =
@@ -2078,12 +2078,12 @@ test_requires (void)
 static void
 test_add_objects (void)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GError *error;
   gint ret;
   GObject *obj;
-  GtkUIManager *manager;
-  GtkWidget *menubar;
+  CtkUIManager *manager;
+  CtkWidget *menubar;
   GObject *menu, *label;
   GList *children;
   gchar *objects[2] = {"mainbox", NULL};
@@ -2092,18 +2092,18 @@ test_add_objects (void)
   gchar *objects4[2] = {"uimgr1", NULL};
   const gchar buffer[] =
     "<interface>"
-    "  <object class=\"GtkWindow\" id=\"window\">"
+    "  <object class=\"CtkWindow\" id=\"window\">"
     "    <child>"
-    "      <object class=\"GtkVBox\" id=\"mainbox\">"
+    "      <object class=\"CtkVBox\" id=\"mainbox\">"
     "        <property name=\"visible\">True</property>"
     "        <child>"
-    "          <object class=\"GtkLabel\" id=\"label1\">"
+    "          <object class=\"CtkLabel\" id=\"label1\">"
     "            <property name=\"visible\">True</property>"
     "            <property name=\"label\" translatable=\"no\">first label</property>"
     "          </object>"
     "        </child>"
     "        <child>"
-    "          <object class=\"GtkLabel\" id=\"label2\">"
+    "          <object class=\"CtkLabel\" id=\"label2\">"
     "            <property name=\"visible\">True</property>"
     "            <property name=\"label\" translatable=\"no\">second label</property>"
     "          </object>"
@@ -2114,9 +2114,9 @@ test_add_objects (void)
     "      </object>"
     "    </child>"
     "  </object>"
-    "  <object class=\"GtkWindow\" id=\"window2\">"
+    "  <object class=\"CtkWindow\" id=\"window2\">"
     "    <child>"
-    "      <object class=\"GtkLabel\" id=\"label3\">"
+    "      <object class=\"CtkLabel\" id=\"label3\">"
     "        <property name=\"label\" translatable=\"no\">second label</property>"
     "      </object>"
     "    </child>"
@@ -2124,11 +2124,11 @@ test_add_objects (void)
     "<interface/>";
   const gchar buffer2[] =
     "<interface>"
-    "  <object class=\"GtkUIManager\" id=\"uimgr1\">"
+    "  <object class=\"CtkUIManager\" id=\"uimgr1\">"
     "    <child>"
-    "      <object class=\"GtkActionGroup\" id=\"ag1\">"
+    "      <object class=\"CtkActionGroup\" id=\"ag1\">"
     "        <child>"
-    "          <object class=\"GtkAction\" id=\"file\">"
+    "          <object class=\"CtkAction\" id=\"file\">"
     "            <property name=\"label\">_File</property>"
     "          </object>"
     "          <accelerator key=\"n\" modifiers=\"GDK_CONTROL_MASK\"/>"
@@ -2142,9 +2142,9 @@ test_add_objects (void)
     "      </menubar>"
     "    </ui>"
     "  </object>"
-    "  <object class=\"GtkWindow\" id=\"window1\">"
+    "  <object class=\"CtkWindow\" id=\"window1\">"
     "    <child>"
-    "      <object class=\"GtkMenuBar\" id=\"menubar1\" constructor=\"uimgr1\"/>"
+    "      <object class=\"CtkMenuBar\" id=\"menubar1\" constructor=\"uimgr1\"/>"
     "    </child>"
     "  </object>"
     "</interface>";
@@ -2231,11 +2231,11 @@ test_add_objects (void)
   g_object_unref (builder);
 }
 
-static GtkWidget *
-get_parent_menubar (GtkWidget *menuitem)
+static CtkWidget *
+get_parent_menubar (CtkWidget *menuitem)
 {
-  GtkMenuShell *menu_shell;
-  GtkWidget *attach = NULL;
+  CtkMenuShell *menu_shell;
+  CtkWidget *attach = NULL;
 
   menu_shell = CTK_MENU_SHELL (ctk_widget_get_parent (menuitem));
 
@@ -2258,27 +2258,27 @@ test_menus (void)
 {
   const gchar *buffer =
     "<interface>"
-    "  <object class=\"GtkWindow\" id=\"window1\">"
+    "  <object class=\"CtkWindow\" id=\"window1\">"
     "    <accel-groups>"
     "      <group name=\"accelgroup1\"/>"
     "    </accel-groups>"
     "    <child>"
-    "      <object class=\"GtkVBox\" id=\"vbox1\">"
+    "      <object class=\"CtkVBox\" id=\"vbox1\">"
     "        <property name=\"visible\">True</property>"
     "        <property name=\"orientation\">vertical</property>"
     "        <child>"
-    "          <object class=\"GtkMenuBar\" id=\"menubar1\">"
+    "          <object class=\"CtkMenuBar\" id=\"menubar1\">"
     "            <property name=\"visible\">True</property>"
     "            <child>"
-    "              <object class=\"GtkMenuItem\" id=\"menuitem1\">"
+    "              <object class=\"CtkMenuItem\" id=\"menuitem1\">"
     "                <property name=\"visible\">True</property>"
     "                <property name=\"label\" translatable=\"yes\">_File</property>"
     "                <property name=\"use_underline\">True</property>"
     "                <child type=\"submenu\">"
-    "                  <object class=\"GtkMenu\" id=\"menu1\">"
+    "                  <object class=\"CtkMenu\" id=\"menu1\">"
     "                    <property name=\"visible\">True</property>"
     "                    <child>"
-    "                      <object class=\"GtkImageMenuItem\" id=\"imagemenuitem1\">"
+    "                      <object class=\"CtkImageMenuItem\" id=\"imagemenuitem1\">"
     "                        <property name=\"label\">ctk-new</property>"
     "                        <property name=\"visible\">True</property>"
     "                        <property name=\"use_stock\">True</property>"
@@ -2294,27 +2294,27 @@ test_menus (void)
     "      </object>"
     "    </child>"
     "  </object>"
-    "<object class=\"GtkAccelGroup\" id=\"accelgroup1\"/>"
+    "<object class=\"CtkAccelGroup\" id=\"accelgroup1\"/>"
     "</interface>";
 
   const gchar *buffer1 =
     "<interface>"
-    "  <object class=\"GtkWindow\" id=\"window1\">"
+    "  <object class=\"CtkWindow\" id=\"window1\">"
     "    <accel-groups>"
     "      <group name=\"accelgroup1\"/>"
     "    </accel-groups>"
     "    <child>"
-    "      <object class=\"GtkVBox\" id=\"vbox1\">"
+    "      <object class=\"CtkVBox\" id=\"vbox1\">"
     "        <property name=\"visible\">True</property>"
     "        <property name=\"orientation\">vertical</property>"
     "        <child>"
-    "          <object class=\"GtkMenuBar\" id=\"menubar1\">"
+    "          <object class=\"CtkMenuBar\" id=\"menubar1\">"
     "            <property name=\"visible\">True</property>"
     "            <child>"
-    "              <object class=\"GtkImageMenuItem\" id=\"imagemenuitem1\">"
+    "              <object class=\"CtkImageMenuItem\" id=\"imagemenuitem1\">"
     "                <property name=\"visible\">True</property>"
     "                <child>"
-    "                  <object class=\"GtkLabel\" id=\"custom1\">"
+    "                  <object class=\"CtkLabel\" id=\"custom1\">"
     "                    <property name=\"visible\">True</property>"
     "                    <property name=\"label\">a label</property>"
     "                  </object>"
@@ -2326,20 +2326,20 @@ test_menus (void)
     "      </object>"
     "    </child>"
     "  </object>"
-    "<object class=\"GtkAccelGroup\" id=\"accelgroup1\"/>"
+    "<object class=\"CtkAccelGroup\" id=\"accelgroup1\"/>"
     "</interface>";
-  GtkBuilder *builder;
-  GtkWidget *child;
-  GtkWidget *window, *item;
-  GtkAccelGroup *accel_group;
-  GtkWidget *item_accel_label, *sample_accel_label, *sample_menu_item, *custom;
+  CtkBuilder *builder;
+  CtkWidget *child;
+  CtkWidget *window, *item;
+  CtkAccelGroup *accel_group;
+  CtkWidget *item_accel_label, *sample_accel_label, *sample_menu_item, *custom;
 
   /* Check that the item has the correct accel label string set
    */
   builder = builder_new_from_string (buffer, -1, NULL);
-  window = (GtkWidget *)ctk_builder_get_object (builder, "window1");
-  item = (GtkWidget *)ctk_builder_get_object (builder, "imagemenuitem1");
-  accel_group = (GtkAccelGroup *)ctk_builder_get_object (builder, "accelgroup1");
+  window = (CtkWidget *)ctk_builder_get_object (builder, "window1");
+  item = (CtkWidget *)ctk_builder_get_object (builder, "imagemenuitem1");
+  accel_group = (CtkAccelGroup *)ctk_builder_get_object (builder, "accelgroup1");
 
   ctk_widget_show_all (window);
 
@@ -2375,12 +2375,12 @@ test_menus (void)
 
 
   /* Check that we can add alien children to menu items via normal
-   * GtkContainer apis.
+   * CtkContainer apis.
    */
   builder = builder_new_from_string (buffer1, -1, NULL);
-  window = (GtkWidget *)ctk_builder_get_object (builder, "window1");
-  item = (GtkWidget *)ctk_builder_get_object (builder, "imagemenuitem1");
-  custom = (GtkWidget *)ctk_builder_get_object (builder, "custom1");
+  window = (CtkWidget *)ctk_builder_get_object (builder, "window1");
+  item = (CtkWidget *)ctk_builder_get_object (builder, "imagemenuitem1");
+  custom = (CtkWidget *)ctk_builder_get_object (builder, "custom1");
 
   g_assert (ctk_widget_get_parent (custom) == item);
 
@@ -2391,7 +2391,7 @@ test_menus (void)
 static void
 test_file (const gchar *filename)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GError *error = NULL;
   GSList *l, *objects;
 
@@ -2432,15 +2432,15 @@ test_file (const gchar *filename)
 static void
 test_message_area (void)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GObject *obj, *obj1;
   const gchar buffer[] =
     "<interface>"
-    "  <object class=\"GtkInfoBar\" id=\"infobar1\">"
+    "  <object class=\"CtkInfoBar\" id=\"infobar1\">"
     "    <child internal-child=\"content_area\">"
-    "      <object class=\"GtkHBox\" id=\"contentarea1\">"
+    "      <object class=\"CtkHBox\" id=\"contentarea1\">"
     "        <child>"
-    "          <object class=\"GtkLabel\" id=\"content\">"
+    "          <object class=\"CtkLabel\" id=\"content\">"
     "            <property name=\"label\" translatable=\"yes\">Message</property>"
     "          </object>"
     "          <packing>"
@@ -2450,9 +2450,9 @@ test_message_area (void)
     "      </object>"
     "    </child>"
     "    <child internal-child=\"action_area\">"
-    "      <object class=\"GtkVButtonBox\" id=\"actionarea1\">"
+    "      <object class=\"CtkVButtonBox\" id=\"actionarea1\">"
     "        <child>"
-    "          <object class=\"GtkButton\" id=\"button_ok\">"
+    "          <object class=\"CtkButton\" id=\"button_ok\">"
     "            <property name=\"label\">ctk-ok</property>"
     "            <property name=\"use-stock\">yes</property>"
     "          </object>"
@@ -2480,11 +2480,11 @@ test_message_area (void)
 static void
 test_gmenu (void)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GObject *obj, *obj1;
   const gchar buffer[] =
     "<interface>"
-    "  <object class=\"GtkWindow\" id=\"window\">"
+    "  <object class=\"CtkWindow\" id=\"window\">"
     "  </object>"
     "  <menu id='edit-menu'>"
     "    <section>"
@@ -2553,14 +2553,14 @@ test_gmenu (void)
 static void
 test_level_bar (void)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GError *error = NULL;
   GObject *obj, *obj1;
   const gchar buffer1[] =
     "<interface>"
-    "  <object class=\"GtkWindow\" id=\"window\">"
+    "  <object class=\"CtkWindow\" id=\"window\">"
     "    <child>"
-    "      <object class=\"GtkLevelBar\" id=\"levelbar\">"
+    "      <object class=\"CtkLevelBar\" id=\"levelbar\">"
     "        <property name=\"value\">4.70</property>"
     "        <property name=\"min-value\">2</property>"
     "        <property name=\"max-value\">5</property>"
@@ -2575,7 +2575,7 @@ test_level_bar (void)
     "</interface>";
   const gchar buffer2[] =
     "<interface>"
-    "  <object class=\"GtkLevelBar\" id=\"levelbar\">"
+    "  <object class=\"CtkLevelBar\" id=\"levelbar\">"
     "    <offsets>"
     "      <offset name=\"low\" bogus_attr=\"foo\"/>"
     "    </offsets>"
@@ -2583,7 +2583,7 @@ test_level_bar (void)
     "</interface>";
   const gchar buffer3[] =
     "<interface>"
-    "  <object class=\"GtkLevelBar\" id=\"levelbar\">"
+    "  <object class=\"CtkLevelBar\" id=\"levelbar\">"
     "    <offsets>"
     "      <offset name=\"low\" value=\"1\"/>"
     "    </offsets>"
@@ -2620,13 +2620,13 @@ test_level_bar (void)
 static GObject *external_object = NULL, *external_object_swapped = NULL;
 
 G_MODULE_EXPORT void
-on_button_clicked (GtkButton *button, GObject *data)
+on_button_clicked (CtkButton *button, GObject *data)
 {
   external_object = data;
 }
 
 G_MODULE_EXPORT void
-on_button_clicked_swapped (GObject *data, GtkButton *button)
+on_button_clicked_swapped (GObject *data, CtkButton *button)
 {
   external_object_swapped = data;
 }
@@ -2634,13 +2634,13 @@ on_button_clicked_swapped (GObject *data, GtkButton *button)
 static void
 test_expose_object (void)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GError *error = NULL;
-  GtkWidget *image;
+  CtkWidget *image;
   GObject *obj;
   const gchar buffer[] =
     "<interface>"
-    "  <object class=\"GtkButton\" id=\"button\">"
+    "  <object class=\"CtkButton\" id=\"button\">"
     "    <property name=\"image\">external_image</property>"
     "    <signal name=\"clicked\" handler=\"on_button_clicked\" object=\"builder\" swapped=\"no\"/>"
     "    <signal name=\"clicked\" handler=\"on_button_clicked_swapped\" object=\"builder\"/>"
@@ -2673,16 +2673,16 @@ test_expose_object (void)
 static void
 test_no_ids (void)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GError *error = NULL;
   GObject *obj;
   const gchar buffer[] =
     "<interface>"
-    "  <object class=\"GtkInfoBar\">"
+    "  <object class=\"CtkInfoBar\">"
     "    <child internal-child=\"content_area\">"
-    "      <object class=\"GtkHBox\">"
+    "      <object class=\"CtkHBox\">"
     "        <child>"
-    "          <object class=\"GtkLabel\">"
+    "          <object class=\"CtkLabel\">"
     "            <property name=\"label\" translatable=\"yes\">Message</property>"
     "          </object>"
     "          <packing>"
@@ -2692,9 +2692,9 @@ test_no_ids (void)
     "      </object>"
     "    </child>"
     "    <child internal-child=\"action_area\">"
-    "      <object class=\"GtkVButtonBox\">"
+    "      <object class=\"CtkVButtonBox\">"
     "        <child>"
-    "          <object class=\"GtkButton\" id=\"button_ok\">"
+    "          <object class=\"CtkButton\" id=\"button_ok\">"
     "            <property name=\"label\">ctk-ok</property>"
     "            <property name=\"use-stock\">yes</property>"
     "          </object>"
@@ -2722,23 +2722,23 @@ test_property_bindings (void)
 {
   const gchar *buffer =
     "<interface>"
-    "  <object class=\"GtkWindow\" id=\"window\">"
+    "  <object class=\"CtkWindow\" id=\"window\">"
     "    <child>"
-    "      <object class=\"GtkVBox\" id=\"vbox\">"
+    "      <object class=\"CtkVBox\" id=\"vbox\">"
     "        <property name=\"visible\">True</property>"
     "        <property name=\"orientation\">vertical</property>"
     "        <child>"
-    "          <object class=\"GtkCheckButton\" id=\"checkbutton\">"
+    "          <object class=\"CtkCheckButton\" id=\"checkbutton\">"
     "            <property name=\"active\">false</property>"
     "          </object>"
     "        </child>"
     "        <child>"
-    "          <object class=\"GtkButton\" id=\"button\">"
+    "          <object class=\"CtkButton\" id=\"button\">"
     "            <property name=\"sensitive\" bind-source=\"checkbutton\" bind-property=\"active\" bind-flags=\"sync-create\">false</property>"
     "          </object>"
     "        </child>"
     "        <child>"
-    "          <object class=\"GtkButton\" id=\"button2\">"
+    "          <object class=\"CtkButton\" id=\"button2\">"
     "            <property name=\"sensitive\" bind-source=\"checkbutton\" bind-property=\"active\" />"
     "          </object>"
     "        </child>"
@@ -2747,7 +2747,7 @@ test_property_bindings (void)
     "  </object>"
     "</interface>";
 
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GObject *checkbutton, *button, *button2, *window;
   
   builder = builder_new_from_string (buffer, -1, NULL);
@@ -2775,10 +2775,10 @@ test_property_bindings (void)
 
 #define MY_CTK_GRID_TEMPLATE "\
 <interface>\n\
- <template class=\"MyGtkGrid\" parent=\"GtkGrid\">\n\
+ <template class=\"MyCtkGrid\" parent=\"CtkGrid\">\n\
    <property name=\"visible\">True</property>\n\
     <child>\n\
-     <object class=\"GtkLabel\" id=\"label\">\n\
+     <object class=\"CtkLabel\" id=\"label\">\n\
        <property name=\"visible\">True</property>\n\
      </object>\n\
   </child>\n\
@@ -2790,54 +2790,54 @@ test_property_bindings (void)
 
 typedef struct
 {
-  GtkGridClass parent_class;
-} MyGtkGridClass;
+  CtkGridClass parent_class;
+} MyCtkGridClass;
 
 typedef struct
 {
-  GtkLabel *label;
-} MyGtkGridPrivate;
+  CtkLabel *label;
+} MyCtkGridPrivate;
 
 typedef struct
 {
-  GtkGrid parent_instance;
-  GtkLabel *label;
-  MyGtkGridPrivate *priv;
-} MyGtkGrid;
+  CtkGrid parent_instance;
+  CtkLabel *label;
+  MyCtkGridPrivate *priv;
+} MyCtkGrid;
 
-G_DEFINE_TYPE_WITH_PRIVATE (MyGtkGrid, my_ctk_grid, CTK_TYPE_GRID);
+G_DEFINE_TYPE_WITH_PRIVATE (MyCtkGrid, my_ctk_grid, CTK_TYPE_GRID);
 
 static void
-my_ctk_grid_init (MyGtkGrid *grid)
+my_ctk_grid_init (MyCtkGrid *grid)
 {
   grid->priv = my_ctk_grid_get_instance_private (grid);
   ctk_widget_init_template (CTK_WIDGET (grid));
 }
 
 static void
-my_ctk_grid_class_init (MyGtkGridClass *klass)
+my_ctk_grid_class_init (MyCtkGridClass *klass)
 {
   GBytes *template = g_bytes_new_static (MY_CTK_GRID_TEMPLATE, strlen (MY_CTK_GRID_TEMPLATE));
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   ctk_widget_class_set_template (widget_class, template);
-  ctk_widget_class_bind_template_child (widget_class, MyGtkGrid, label);
-  ctk_widget_class_bind_template_child_private (widget_class, MyGtkGrid, label);
+  ctk_widget_class_bind_template_child (widget_class, MyCtkGrid, label);
+  ctk_widget_class_bind_template_child_private (widget_class, MyCtkGrid, label);
 }
 
 static void
 test_template ()
 {
-  MyGtkGrid *my_ctk_grid;
+  MyCtkGrid *my_ctk_grid;
 
   /* make sure the type we are trying to register does not exist */
-  g_assert (!g_type_from_name ("MyGtkGrid"));
+  g_assert (!g_type_from_name ("MyCtkGrid"));
 
   /* create the template object */
   my_ctk_grid = g_object_new (MY_TYPE_CTK_GRID, NULL);
 
   /* Check everything is fine */
-  g_assert (g_type_from_name ("MyGtkGrid"));
+  g_assert (g_type_from_name ("MyCtkGrid"));
   g_assert (MY_IS_CTK_GRID (my_ctk_grid));
   g_assert (my_ctk_grid->label == my_ctk_grid->priv->label);
   g_assert (CTK_IS_LABEL (my_ctk_grid->label));
@@ -2845,40 +2845,40 @@ test_template ()
 }
 
 G_MODULE_EXPORT void
-on_cellrenderertoggle1_toggled (GtkCellRendererToggle *cell)
+on_cellrenderertoggle1_toggled (CtkCellRendererToggle *cell)
 {
 }
 
 static void
 test_anaconda_signal (void)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   const gchar buffer[] = 
     "<?xml version='1.0' encoding='UTF-8'?>"
     "<!-- Generated with glade 3.18.3 -->"
     "<interface>"
     "  <requires lib='ctk+' version='3.12'/>"
-    "  <object class='GtkListStore' id='liststore1'>"
+    "  <object class='CtkListStore' id='liststore1'>"
     "    <columns>"
     "      <!-- column-name use -->"
     "      <column type='gboolean'/>"
     "    </columns>"
     "  </object>"
-    "  <object class='GtkWindow' id='window1'>"
+    "  <object class='CtkWindow' id='window1'>"
     "    <property name='can_focus'>False</property>"
     "    <child>"
-    "      <object class='GtkTreeView' id='treeview1'>"
+    "      <object class='CtkTreeView' id='treeview1'>"
     "        <property name='visible'>True</property>"
     "        <property name='can_focus'>True</property>"
     "        <property name='model'>liststore1</property>"
     "        <child internal-child='selection'>"
-    "          <object class='GtkTreeSelection' id='treeview-selection1'/>"
+    "          <object class='CtkTreeSelection' id='treeview-selection1'/>"
     "        </child>"
     "        <child>"
-    "          <object class='GtkTreeViewColumn' id='treeviewcolumn1'>"
+    "          <object class='CtkTreeViewColumn' id='treeviewcolumn1'>"
     "            <property name='title' translatable='yes'>column</property>"
     "            <child>"
-    "              <object class='GtkCellRendererToggle' id='cellrenderertoggle1'>"
+    "              <object class='CtkCellRendererToggle' id='cellrenderertoggle1'>"
     "                <signal name='toggled' handler='on_cellrenderertoggle1_toggled' swapped='no'/>"
     "              </object>"
     "              <attributes>"
@@ -2901,14 +2901,14 @@ test_anaconda_signal (void)
 static void
 test_file_filter (void)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GObject *obj;
-  GtkFileFilter *filter;
-  GtkFileFilterInfo info;
+  CtkFileFilter *filter;
+  CtkFileFilterInfo info;
 
   const gchar buffer[] =
     "<interface>"
-    "  <object class='GtkFileFilter' id='filter1'>"
+    "  <object class='CtkFileFilter' id='filter1'>"
     "    <mime-types>"
     "      <mime-type>text/plain</mime-type>"
     "      <mime-type>image/*</mime-type>"

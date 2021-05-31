@@ -28,16 +28,16 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_TREE_MODEL_FILTER              (ctk_tree_model_filter_get_type ())
-#define CTK_TREE_MODEL_FILTER(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TREE_MODEL_FILTER, GtkTreeModelFilter))
-#define CTK_TREE_MODEL_FILTER_CLASS(vtable)     (G_TYPE_CHECK_CLASS_CAST ((vtable), CTK_TYPE_TREE_MODEL_FILTER, GtkTreeModelFilterClass))
+#define CTK_TREE_MODEL_FILTER(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TREE_MODEL_FILTER, CtkTreeModelFilter))
+#define CTK_TREE_MODEL_FILTER_CLASS(vtable)     (G_TYPE_CHECK_CLASS_CAST ((vtable), CTK_TYPE_TREE_MODEL_FILTER, CtkTreeModelFilterClass))
 #define CTK_IS_TREE_MODEL_FILTER(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TREE_MODEL_FILTER))
 #define CTK_IS_TREE_MODEL_FILTER_CLASS(vtable)  (G_TYPE_CHECK_CLASS_TYPE ((vtable), CTK_TYPE_TREE_MODEL_FILTER))
-#define CTK_TREE_MODEL_FILTER_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TREE_MODEL_FILTER, GtkTreeModelFilterClass))
+#define CTK_TREE_MODEL_FILTER_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TREE_MODEL_FILTER, CtkTreeModelFilterClass))
 
 /**
- * GtkTreeModelFilterVisibleFunc:
- * @model: the child model of the #GtkTreeModelFilter
- * @iter: a #GtkTreeIter pointing to the row in @model whose visibility
+ * CtkTreeModelFilterVisibleFunc:
+ * @model: the child model of the #CtkTreeModelFilter
+ * @iter: a #CtkTreeIter pointing to the row in @model whose visibility
  *   is determined
  * @data: (closure): user data given to ctk_tree_model_filter_set_visible_func()
  *
@@ -45,14 +45,14 @@ G_BEGIN_DECLS
  *
  * Returns: Whether the row indicated by @iter is visible.
  */
-typedef gboolean (* GtkTreeModelFilterVisibleFunc) (GtkTreeModel *model,
-                                                    GtkTreeIter  *iter,
+typedef gboolean (* CtkTreeModelFilterVisibleFunc) (CtkTreeModel *model,
+                                                    CtkTreeIter  *iter,
                                                     gpointer      data);
 
 /**
- * GtkTreeModelFilterModifyFunc:
- * @model: the #GtkTreeModelFilter
- * @iter: a #GtkTreeIter pointing to the row whose display values are determined
+ * CtkTreeModelFilterModifyFunc:
+ * @model: the #CtkTreeModelFilter
+ * @iter: a #CtkTreeIter pointing to the row whose display values are determined
  * @value: (out caller-allocates): A #GValue which is already initialized for
  *  with the correct type for the column @column.
  * @column: the column whose display value is determined
@@ -66,34 +66,34 @@ typedef gboolean (* GtkTreeModelFilterVisibleFunc) (GtkTreeModel *model,
  * particularly efficient operation.
  */
 
-typedef void (* GtkTreeModelFilterModifyFunc) (GtkTreeModel *model,
-                                               GtkTreeIter  *iter,
+typedef void (* CtkTreeModelFilterModifyFunc) (CtkTreeModel *model,
+                                               CtkTreeIter  *iter,
                                                GValue       *value,
                                                gint          column,
                                                gpointer      data);
 
-typedef struct _GtkTreeModelFilter          GtkTreeModelFilter;
-typedef struct _GtkTreeModelFilterClass     GtkTreeModelFilterClass;
-typedef struct _GtkTreeModelFilterPrivate   GtkTreeModelFilterPrivate;
+typedef struct _CtkTreeModelFilter          CtkTreeModelFilter;
+typedef struct _CtkTreeModelFilterClass     CtkTreeModelFilterClass;
+typedef struct _CtkTreeModelFilterPrivate   CtkTreeModelFilterPrivate;
 
-struct _GtkTreeModelFilter
+struct _CtkTreeModelFilter
 {
   GObject parent;
 
   /*< private >*/
-  GtkTreeModelFilterPrivate *priv;
+  CtkTreeModelFilterPrivate *priv;
 };
 
-struct _GtkTreeModelFilterClass
+struct _CtkTreeModelFilterClass
 {
   GObjectClass parent_class;
 
-  gboolean (* visible) (GtkTreeModelFilter *self,
-                        GtkTreeModel       *child_model,
-                        GtkTreeIter        *iter);
-  void (* modify) (GtkTreeModelFilter *self,
-                   GtkTreeModel       *child_model,
-                   GtkTreeIter        *iter,
+  gboolean (* visible) (CtkTreeModelFilter *self,
+                        CtkTreeModel       *child_model,
+                        CtkTreeIter        *iter);
+  void (* modify) (CtkTreeModelFilter *self,
+                   CtkTreeModel       *child_model,
+                   CtkTreeIter        *iter,
                    GValue             *value,
                    gint                column);
 
@@ -108,48 +108,48 @@ struct _GtkTreeModelFilterClass
 GDK_AVAILABLE_IN_ALL
 GType         ctk_tree_model_filter_get_type                   (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkTreeModel *ctk_tree_model_filter_new                        (GtkTreeModel                 *child_model,
-                                                                GtkTreePath                  *root);
+CtkTreeModel *ctk_tree_model_filter_new                        (CtkTreeModel                 *child_model,
+                                                                CtkTreePath                  *root);
 GDK_AVAILABLE_IN_ALL
-void          ctk_tree_model_filter_set_visible_func           (GtkTreeModelFilter           *filter,
-                                                                GtkTreeModelFilterVisibleFunc func,
+void          ctk_tree_model_filter_set_visible_func           (CtkTreeModelFilter           *filter,
+                                                                CtkTreeModelFilterVisibleFunc func,
                                                                 gpointer                      data,
                                                                 GDestroyNotify                destroy);
 GDK_AVAILABLE_IN_ALL
-void          ctk_tree_model_filter_set_modify_func            (GtkTreeModelFilter           *filter,
+void          ctk_tree_model_filter_set_modify_func            (CtkTreeModelFilter           *filter,
                                                                 gint                          n_columns,
                                                                 GType                        *types,
-                                                                GtkTreeModelFilterModifyFunc  func,
+                                                                CtkTreeModelFilterModifyFunc  func,
                                                                 gpointer                      data,
                                                                 GDestroyNotify                destroy);
 GDK_AVAILABLE_IN_ALL
-void          ctk_tree_model_filter_set_visible_column         (GtkTreeModelFilter           *filter,
+void          ctk_tree_model_filter_set_visible_column         (CtkTreeModelFilter           *filter,
                                                                 gint                          column);
 
 GDK_AVAILABLE_IN_ALL
-GtkTreeModel *ctk_tree_model_filter_get_model                  (GtkTreeModelFilter           *filter);
+CtkTreeModel *ctk_tree_model_filter_get_model                  (CtkTreeModelFilter           *filter);
 
 /* conversion */
 GDK_AVAILABLE_IN_ALL
-gboolean      ctk_tree_model_filter_convert_child_iter_to_iter (GtkTreeModelFilter           *filter,
-                                                                GtkTreeIter                  *filter_iter,
-                                                                GtkTreeIter                  *child_iter);
+gboolean      ctk_tree_model_filter_convert_child_iter_to_iter (CtkTreeModelFilter           *filter,
+                                                                CtkTreeIter                  *filter_iter,
+                                                                CtkTreeIter                  *child_iter);
 GDK_AVAILABLE_IN_ALL
-void          ctk_tree_model_filter_convert_iter_to_child_iter (GtkTreeModelFilter           *filter,
-                                                                GtkTreeIter                  *child_iter,
-                                                                GtkTreeIter                  *filter_iter);
+void          ctk_tree_model_filter_convert_iter_to_child_iter (CtkTreeModelFilter           *filter,
+                                                                CtkTreeIter                  *child_iter,
+                                                                CtkTreeIter                  *filter_iter);
 GDK_AVAILABLE_IN_ALL
-GtkTreePath  *ctk_tree_model_filter_convert_child_path_to_path (GtkTreeModelFilter           *filter,
-                                                                GtkTreePath                  *child_path);
+CtkTreePath  *ctk_tree_model_filter_convert_child_path_to_path (CtkTreeModelFilter           *filter,
+                                                                CtkTreePath                  *child_path);
 GDK_AVAILABLE_IN_ALL
-GtkTreePath  *ctk_tree_model_filter_convert_path_to_child_path (GtkTreeModelFilter           *filter,
-                                                                GtkTreePath                  *filter_path);
+CtkTreePath  *ctk_tree_model_filter_convert_path_to_child_path (CtkTreeModelFilter           *filter,
+                                                                CtkTreePath                  *filter_path);
 
 /* extras */
 GDK_AVAILABLE_IN_ALL
-void          ctk_tree_model_filter_refilter                   (GtkTreeModelFilter           *filter);
+void          ctk_tree_model_filter_refilter                   (CtkTreeModelFilter           *filter);
 GDK_AVAILABLE_IN_ALL
-void          ctk_tree_model_filter_clear_cache                (GtkTreeModelFilter           *filter);
+void          ctk_tree_model_filter_clear_cache                (CtkTreeModelFilter           *filter);
 
 G_END_DECLS
 

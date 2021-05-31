@@ -1,6 +1,6 @@
 /* Header Bar
  *
- * GtkHeaderBar is a container that is suitable for implementing
+ * CtkHeaderBar is a container that is suitable for implementing
  * window titlebars. One of its features is that it can position
  * a title (and optional subtitle) centered with regard to the
  * full width, regardless of variable-width content at the left
@@ -11,14 +11,14 @@
 
 #include <ctk/ctk.h>
 
-GtkWidget *
-do_headerbar (GtkWidget *do_widget)
+CtkWidget *
+do_headerbar (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *header;
-  GtkWidget *button;
-  GtkWidget *box;
-  GtkWidget *image;
+  static CtkWidget *window = NULL;
+  CtkWidget *header;
+  CtkWidget *button;
+  CtkWidget *box;
+  CtkWidget *image;
   GIcon *icon;
 
   if (!window)

@@ -436,7 +436,7 @@ msgstr "བྱ་བའི་སྡེ་ཚན།"
 
 #: ctk/ctkaction.c:396
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
 "ཇི་ཊི་ཀེ་བྱ་བའི་སྡེ་ཚན་འདི་ ཇི་ཊི་ཀེ་བྱ་བ་དང་མཉམ་སྦྱར་ ཡང་ན་ སྟོངམ་ཨིན། (ནང་འཁོད་ལག་ལེན་གྱི་དོན་ལུ)"
@@ -841,10 +841,10 @@ msgstr "སྒམ་གྱི་དབྱེ་བ།"
 
 #: ctk/ctkbox.c:287 ctk/ctknotebook.c:692
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
 msgstr ""
-"GtkPackType ཅིག་གིས་ ཆ་ལག་དེ་ རྩ་ལག་འགོ་བཙུགས་སམ་ མཇུག་བསྡུ་བའི་ གཞི་བསྟུན་དང་འཁྲིལ་ཏེ་ སྒམ་"
+"CtkPackType ཅིག་གིས་ ཆ་ལག་དེ་ རྩ་ལག་འགོ་བཙུགས་སམ་ མཇུག་བསྡུ་བའི་ གཞི་བསྟུན་དང་འཁྲིལ་ཏེ་ སྒམ་"
 "བརྐྱབས་མ་བརྐྱབས་ཀྱི་ སྤུས་ཚད་ལེགས་བཅོས་སྟོནམ་ཨིན།"
 
 #: ctk/ctkbox.c:293 ctk/ctknotebook.c:670 ctk/ctkpaned.c:270
@@ -1354,7 +1354,7 @@ msgid "Size"
 msgstr "ཚད། "
 
 #: ctk/ctkcellrendererpixbuf.c:153
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
 msgstr "ལྷག་སྟོན་འབད་ཡོད་པའི་ངོས་དཔར་གྱི་ཚད་ གསལ་བཀོད་འབད་མི་ ཇི་ཊི་ཀེ་ངོས་དཔར་ཚད་ཀྱི་བེ་ལུ།"
 
 #: ctk/ctkcellrendererpixbuf.c:162
@@ -1477,7 +1477,7 @@ msgstr "དཔར་འཕྲུལ་གྱི་མིང༌།"
 
 #: ctk/ctkcellrendererspinner.c:154
 #, fuzzy
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
 msgstr "ལྷག་སྟོན་འབད་ཡོད་པའི་ངོས་དཔར་གྱི་ཚད་ གསལ་བཀོད་འབད་མི་ ཇི་ཊི་ཀེ་ངོས་དཔར་ཚད་ཀྱི་བེ་ལུ།"
 
 #: ctk/ctkcellrenderertext.c:232
@@ -3288,10 +3288,10 @@ msgstr "ལྟེམས་བཅོས།"
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkMisc::xalign for that"
+"CtkMisc::xalign for that"
 msgstr ""
 "ཁ་ཡིག་གི་ཚིག་ཡིག་ནང་གི་གྱལ་རིམ་ཚུ་ རེ་རེའི་འབྲེལ་བ་དང་འཁྲིལ་བའི་ཕྲང་སྒྲིག འདི་གིས་དེ་རང་གི་སྐལ་སྤྲོད་ནང་"
-"གི་ ཁ་ཡིག་ཚུ་གི་ ཕྲང་སྒྲིག་ཚུ་ལུ་ གནོད་པ་མེད། དེ་གི་དོན་ལུ་ GtkMisc::xalign ལུ་བལྟ།"
+"གི་ ཁ་ཡིག་ཚུ་གི་ ཕྲང་སྒྲིག་ཚུ་ལུ་ གནོད་པ་མེད། དེ་གི་དོན་ལུ་ CtkMisc::xalign ལུ་བལྟ།"
 
 #: ctk/ctklabel.c:587
 msgid "Pattern"
@@ -3393,16 +3393,16 @@ msgid "Horizontal adjustment"
 msgstr "ཐད་སྙོམས་་བདེ་སྒྲིག"
 
 #: ctk/ctklayout.c:626 ctk/ctkscrolledwindow.c:244
-msgid "The GtkAdjustment for the horizontal position"
-msgstr "ཐད་སྙོམས་གནས་ལུགས་ཀྱི་དོན་ལུ་ GtkAdjustment"
+msgid "The CtkAdjustment for the horizontal position"
+msgstr "ཐད་སྙོམས་གནས་ལུགས་ཀྱི་དོན་ལུ་ CtkAdjustment"
 
 #: ctk/ctklayout.c:633 ctk/ctkviewport.c:150
 msgid "Vertical adjustment"
 msgstr "ཀེར་ཕྲང་བདེ་སྒྲིག"
 
 #: ctk/ctklayout.c:634 ctk/ctkscrolledwindow.c:251
-msgid "The GtkAdjustment for the vertical position"
-msgstr "ཀེར་ཕྲང་གནས་སའི་དོན་ལས་ GtkAdjustment།"
+msgid "The CtkAdjustment for the vertical position"
+msgstr "ཀེར་ཕྲང་གནས་སའི་དོན་ལས་ CtkAdjustment།"
 
 #: ctk/ctklayout.c:641 ctk/ctktreeviewcolumn.c:211
 msgid "Width"
@@ -3773,7 +3773,7 @@ msgid "Message area"
 msgstr "འཕྲིན་དོན་གྱི་དབྱེ་བ།"
 
 #: ctk/ctkmessagedialog.c:306
-msgid "GtkVBox that holds the dialog's primary and secondary labels"
+msgid "CtkVBox that holds the dialog's primary and secondary labels"
 msgstr ""
 
 #: ctk/ctkmisc.c:91
@@ -4223,7 +4223,7 @@ msgid "Default Page Setup"
 msgstr "སྔོན་སྒྲིག་ཤོག་ལེབ་གཞི་སྒྲིག"
 
 #: ctk/ctkprintoperation.c:1006
-msgid "The GtkPageSetup used by default"
+msgid "The CtkPageSetup used by default"
 msgstr "སྔོན་སྒྲིག་ཐོག་ལས་ལག་ལེན་འཐབ་མི་ ཇི་ཊི་ཀེ་ཤོག་ལེབ་གཞི་སྒྲིག"
 
 #: ctk/ctkprintoperation.c:1024 ctk/ctkprintunixdialog.c:316
@@ -4231,7 +4231,7 @@ msgid "Print Settings"
 msgstr "དཔར་བསྐྲུན་སྒྲིག་སྟངས།"
 
 #: ctk/ctkprintoperation.c:1025 ctk/ctkprintunixdialog.c:317
-msgid "The GtkPrintSettings used for initializing the dialog"
+msgid "The CtkPrintSettings used for initializing the dialog"
 msgstr "ཌའི་ལོག་འགོ་འབྱེད་འབད་ནི་ལུ་ལག་ལེན་འཐབ་མི་ ཇི་ཊི་ཀེ་དཔར་བསྐྲུན་སྒྲིག་སྟངས།"
 
 #: ctk/ctkprintoperation.c:1043
@@ -4358,7 +4358,7 @@ msgid "Embed Page Setup"
 msgstr "ཤོག་ལེབ་གཞི་སྒྲིག"
 
 #: ctk/ctkprintoperation.c:1321
-msgid "TRUE if page setup combos are embedded in GtkPrintDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintDialog"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1342
@@ -4372,7 +4372,7 @@ msgid "The number of pages that will be printed."
 msgstr "ཡིག་ཆའི་ནང་གི་ཤོག་གྲངས།"
 
 #: ctk/ctkprintunixdialog.c:299
-msgid "The GtkPageSetup to use"
+msgid "The CtkPageSetup to use"
 msgstr "ལག་ལེན་འཐབ་ནིའི་ ཇི་ཊི་ཀེ་ཤོག་ལེབ་གཞི་སྒྲིག"
 
 #: ctk/ctkprintunixdialog.c:324
@@ -4380,7 +4380,7 @@ msgid "Selected Printer"
 msgstr "སེལ་འཐུ་འབད་མི་དཔར་འཕྲུལ།"
 
 #: ctk/ctkprintunixdialog.c:325
-msgid "The GtkPrinter which is selected"
+msgid "The CtkPrinter which is selected"
 msgstr "སེལ་འཐུ་འབད་ཡོད་མི་ ཇི་ཊི་ཀེ་དཔར་འཕྲུལ་དེ།"
 
 #: ctk/ctkprintunixdialog.c:332
@@ -4402,7 +4402,7 @@ msgid "Whether the application has a selection"
 msgstr "བྱ་བ་དེ་ ལྕོགས་ཅན་ཨིན་ན།"
 
 #: ctk/ctkprintunixdialog.c:358
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
 msgstr ""
 
 #: ctk/ctkprogressbar.c:134
@@ -4554,8 +4554,8 @@ msgid "How the range should be updated on the screen"
 msgstr "གསལ་གཞི་གུ་ ཁྱབ་ཚད་དེ་ ག་དེ་སྦེ་ དུས་མཐུན་བཟོ་ནི་ཨིན་ན།"
 
 #: ctk/ctkrange.c:420
-msgid "The GtkAdjustment that contains the current value of this range object"
-msgstr "ཁྱབ་ཚད་དངོས་པོ་འདི་གི་ ད་ལྟོའི་བེ་ལུ་འཛིན་མི་ GtkAdjustment"
+msgid "The CtkAdjustment that contains the current value of this range object"
+msgstr "ཁྱབ་ཚད་དངོས་པོ་འདི་གི་ ད་ལྟོའི་བེ་ལུ་འཛིན་མི་ CtkAdjustment"
 
 #: ctk/ctkrange.c:428
 msgid "Invert direction slider moves to increase range value"
@@ -4815,8 +4815,8 @@ msgstr "ལག་ཆས་ཕྲ་རིང་གི་ ངོས་དཔར�
 #: ctk/ctkscalebutton.c:240
 #, fuzzy
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
-msgstr "ཁྱབ་ཚད་དངོས་པོ་འདི་གི་ ད་ལྟོའི་བེ་ལུ་འཛིན་མི་ GtkAdjustment"
+"The CtkAdjustment that contains the current value of this scale button object"
+msgstr "ཁྱབ་ཚད་དངོས་པོ་འདི་གི་ ད་ལྟོའི་བེ་ལུ་འཛིན་མི་ CtkAdjustment"
 
 #: ctk/ctkscalebutton.c:268
 #, fuzzy
@@ -5336,7 +5336,7 @@ msgid "Default file chooser backend"
 msgstr "ཡིག་སྣོད་འདེམས་བྱེད་ཀྱི་རྒྱབ་མཐའ་ སྔོན་སྒྲིག་འབད།"
 
 #: ctk/ctksettings.c:743
-msgid "Name of the GtkFileChooser backend to use by default"
+msgid "Name of the CtkFileChooser backend to use by default"
 msgstr "སྔོན་སྒྲིག་གྱིས་ ལག་ལེན་འཐབ་ནིའི་ ཇི་ཊི་ཀེ་ཡིག་སྣོད་འདེམས་བྱེད་ཀྱི་ རྒྱབ་མཐའི་མིང༌།"
 
 #: ctk/ctksettings.c:760
@@ -5344,7 +5344,7 @@ msgid "Default print backend"
 msgstr "སྔོན་སྒྲིག་དཔར་བསྐྲུན་རྒྱབ་མཐའ།"
 
 #: ctk/ctksettings.c:761
-msgid "List of the GtkPrintBackend backends to use by default"
+msgid "List of the CtkPrintBackend backends to use by default"
 msgstr "སྔོན་སྒྲིག་གྱིས་ལག་ལེན་འཐབ་ནིའི་ ཇི་ཊི་ཀེ་དཔར་བསྐྲུན་རྒྱབ་མཐའི་ཐོ་ཡིག།"
 
 #: ctk/ctksettings.c:784
@@ -5579,7 +5579,7 @@ msgstr "ཤོག་གྲངས།"
 #: ctk/ctkspinner.c:147
 msgid ""
 "The number of steps for the spinner to complete a full loop. The animation "
-"will complete a full cycle in one second by default (see #GtkSpinner:cycle-"
+"will complete a full cycle in one second by default (see #CtkSpinner:cycle-"
 "duration)."
 msgstr ""
 
@@ -6544,9 +6544,9 @@ msgid "Fixed Height Mode"
 msgstr "གཏན་བཟོས་མཐོ་ཚད་ཐབས་ལམ།"
 
 #: ctk/ctktreeview.c:657
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 msgstr ""
-"གྲལ་ཐིག་ཆ་མཉམ་ལུ་ མཐོ་ཚད་འདྲ་མཉམ་ཡོད་པའི་ དབང་དུ་བཏང་སྟེ་ GtkTreeView མྱུར་བསྐྱོད་འབད།"
+"གྲལ་ཐིག་ཆ་མཉམ་ལུ་ མཐོ་ཚད་འདྲ་མཉམ་ཡོད་པའི་ དབང་དུ་བཏང་སྟེ་ CtkTreeView མྱུར་བསྐྱོད་འབད།"
 
 #: ctk/ctktreeview.c:677
 msgid "Hover Selection"
@@ -6814,13 +6814,13 @@ msgstr "མཉམ་བསྡོམས་འབད་མི་ ཡུ་ཨའ�
 
 #: ctk/ctkviewport.c:143
 msgid ""
-"The GtkAdjustment that determines the values of the horizontal position for "
+"The CtkAdjustment that determines the values of the horizontal position for "
 "this viewport"
 msgstr "མཐོང་སྣང་འདྲེན་ལམ་འདི་གི་ ཐད་སྙོམས་གནས་ལུགས་ཀྱི་ཐག་བཅད་མི་ ཇི་ཊི་ཀེ་བདེ་སྒྲིག"
 
 #: ctk/ctkviewport.c:151
 msgid ""
-"The GtkAdjustment that determines the values of the vertical position for "
+"The CtkAdjustment that determines the values of the vertical position for "
 "this viewport"
 msgstr "མཐོང་སྣང་འདྲེན་ལམ་འདི་གི་ ཀེར་ཕྲང་གནས་ལུགས་ཀྱི་བེ་ལུསི་ ཐག་བཅད་མི་ ཇི་ཊི་ཀེ་བདེ་སྒྲིག"
 
@@ -7295,8 +7295,8 @@ msgid "Focus in Toplevel"
 msgstr "མཐོ་རིམ་གནས་རིམ་ལུ་ ཆེད་དམིགས་འབད།"
 
 #: ctk/ctkwindow.c:710
-msgid "Whether the input focus is within this GtkWindow"
-msgstr "ཨིན་པུཊི་གི་ ཆེད་དམིགས་དེ་ GtkWindow འདི་གི་ནང་འཁོད་ཨིན་ན་མེན།"
+msgid "Whether the input focus is within this CtkWindow"
+msgstr "ཨིན་པུཊི་གི་ ཆེད་དམིགས་དེ་ CtkWindow འདི་གི་ནང་འཁོད་ཨིན་ན་མེན།"
 
 #: ctk/ctkwindow.c:717
 msgid "Type hint"
@@ -7521,12 +7521,12 @@ msgstr "ཨིན་པུཊི་ཐབས་ཤེས་ཀྱི་ གན�
 
 #, fuzzy
 #~ msgid ""
-#~ "If TRUE, the GtkProgress is in activity mode, meaning that it signals "
+#~ "If TRUE, the CtkProgress is in activity mode, meaning that it signals "
 #~ "something is happening, but not how much of the activity is finished. "
 #~ "This is used when you're doing something but don't know how long it will "
 #~ "take."
 #~ msgstr ""
-#~ "བདེན་པ་ཨིན་པ་ཅིན་ GtkProgress དེ་ བྱ་བའི་ཐབས་ལམ་ནང་ཡོད། དེ་གིས་བྱ་བ་ཅིག་བྱུང་དོ་ཡོད་པའི་"
+#~ "བདེན་པ་ཨིན་པ་ཅིན་ CtkProgress དེ་ བྱ་བའི་ཐབས་ལམ་ནང་ཡོད། དེ་གིས་བྱ་བ་ཅིག་བྱུང་དོ་ཡོད་པའི་"
 #~ "སྐོར་ལས་ བརྡ་སྟོནམ་ཨིན་རུང་ བྱ་བ་དེ་ ག་དེམ་ཅིག་ ཚར་སོངམ་ཨིན་ན་མི་སྟོན། འདི་ཁྱོད་ཀྱིས་ དུས་ཡུན་ག་"
 #~ "དེམ་ཅིག་འགོར་ནི་ཨིན་ན་མ་ཤེས་པའི་ ལཱ་ཅིག་འབད་བའི་སྐབས་ ལག་ལེན་འཐབ་ཨིན།"
 
@@ -7730,8 +7730,8 @@ msgstr "ཨིན་པུཊི་ཐབས་ཤེས་ཀྱི་ གན�
 #~ msgstr ""
 #~ "སྔོན་ལྟའི་ཝིཌི་གེཊི་གིས་ དེ་གི་དོན་ལུ་སྐལ་སྤྲོད་འབད་དེ་ཡོད་མི་ བར་སྟོང་ཆ་མཉམ་ དབང་དགོཔ་ཨིན་ན་མེན།"
 
-#~ msgid "The GtkAdjustment connected to the progress bar (Deprecated)"
-#~ msgstr "GtkAdjustmentདེ་ ཡར་འཕེལ་ཕྲ་རིང་ལུ་ མཐུད་དེ་ཡོད།༼ངོས་ལེན་མེདཔ་༽"
+#~ msgid "The CtkAdjustment connected to the progress bar (Deprecated)"
+#~ msgstr "CtkAdjustmentདེ་ ཡར་འཕེལ་ཕྲ་རིང་ལུ་ མཐུད་དེ་ཡོད།༼ངོས་ལེན་མེདཔ་༽"
 
 #~ msgid "Bar style"
 #~ msgstr "ཕྲ་རིང་གི་བཟོ་རྣམ།"

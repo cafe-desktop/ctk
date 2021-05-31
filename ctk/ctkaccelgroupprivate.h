@@ -25,18 +25,18 @@
 
 G_BEGIN_DECLS
 
-struct _GtkAccelGroupPrivate
+struct _CtkAccelGroupPrivate
 {
   guint               lock_count;
   GdkModifierType     modifier_mask;
   GSList             *acceleratables;
   guint               n_accels;
-  GtkAccelGroupEntry *priv_accels;
+  CtkAccelGroupEntry *priv_accels;
 };
 
-void	_ctk_accel_group_reconnect        (GtkAccelGroup *accel_group,
+void	_ctk_accel_group_reconnect        (CtkAccelGroup *accel_group,
                                            GQuark         accel_path_quark);
-GSList* _ctk_accel_group_get_accelerables (GtkAccelGroup *accel_group);
+GSList* _ctk_accel_group_get_accelerables (CtkAccelGroup *accel_group);
 
 G_END_DECLS
 

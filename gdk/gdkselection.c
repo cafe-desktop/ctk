@@ -243,7 +243,7 @@ gdk_selection_send_notify_for_display (GdkDisplay       *display,
  *
  * Retrieves selection data that was stored by the selection
  * data in response to a call to gdk_selection_convert(). This function
- * will not be used by applications, who should use the #GtkClipboard
+ * will not be used by applications, who should use the #CtkClipboard
  * API instead.
  *
  * Returns: the length of the retrieved data.

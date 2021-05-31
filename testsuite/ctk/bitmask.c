@@ -1,4 +1,4 @@
-/* GtkRBTree tests.
+/* CtkRBTree tests.
  *
  * Copyright (C) 2011, Red Hat, Inc.
  * Authors: Benjamin Otte <otte@gnome.org>
@@ -34,11 +34,11 @@
 
 /* UTILITIES */
 
-static GtkBitmask *
+static CtkBitmask *
 ctk_bitmask_new_parse (const char *string)
 {
   guint i, length;
-  GtkBitmask *mask;
+  CtkBitmask *mask;
 
   length = strlen (string);
   mask = _ctk_bitmask_new ();
@@ -84,7 +84,7 @@ static const char *tests[] = {
   "1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"
 };
 
-static GtkBitmask *masks[G_N_ELEMENTS (tests)];
+static CtkBitmask *masks[G_N_ELEMENTS (tests)];
 
 /* TEST */
 
@@ -132,8 +132,8 @@ test_set (void)
 {
   guint i, j;
   guint indexes[N_TRIES];
-  GtkBitmask *copy;
-  const GtkBitmask *mask;
+  CtkBitmask *copy;
+  const CtkBitmask *mask;
 
   for (i = 0; i < N_RUNS; i++)
     {
@@ -159,7 +159,7 @@ test_set (void)
 static void
 test_union (void)
 {
-  GtkBitmask *left, *right, *expected;
+  CtkBitmask *left, *right, *expected;
   guint run, try, n_tries;
 
   for (run = 0; run < N_RUNS; run++)
@@ -195,7 +195,7 @@ test_union (void)
 static void
 test_intersect (void)
 {
-  GtkBitmask *left, *right, *expected;
+  CtkBitmask *left, *right, *expected;
   guint run, try;
   gboolean intersects;
 
@@ -240,7 +240,7 @@ test_intersect (void)
 static void
 test_intersect_hardcoded (void)
 {
-  GtkBitmask *left, *right, *intersection, *expected;
+  CtkBitmask *left, *right, *intersection, *expected;
   const char *left_str, *right_str;
   guint left_len, right_len;
   guint i, l, r;
@@ -283,7 +283,7 @@ test_intersect_hardcoded (void)
 static void
 test_subtract_hardcoded (void)
 {
-  GtkBitmask *left, *right, *subtracted, *expected;
+  CtkBitmask *left, *right, *subtracted, *expected;
   const char *left_str, *right_str;
   guint left_len, right_len;
   guint i, l, r;
@@ -339,7 +339,7 @@ test_invert_range_hardcoded (void)
   guint t, l, r, i;
   gsize r_len, l_len, ref_len;
   char *ref_str;
-  GtkBitmask *bitmask, *ref;
+  CtkBitmask *bitmask, *ref;
 
   for (t = 0; t < G_N_ELEMENTS (tests); t++)
     {
@@ -379,7 +379,7 @@ test_invert_range_hardcoded (void)
 static void
 test_invert_range (void)
 {
-  GtkBitmask *left, *right, *intersection, *expected;
+  CtkBitmask *left, *right, *intersection, *expected;
   guint run;
   guint left_start, left_end, right_start, right_end, start, end;
 

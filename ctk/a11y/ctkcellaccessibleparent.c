@@ -29,8 +29,8 @@ ctk_cell_accessible_parent_get_type (void)
     {
       GType g_define_type_id =
         g_type_register_static_simple (G_TYPE_INTERFACE,
-                                       "GtkCellAccessibleParent",
-                                       sizeof (GtkCellAccessibleParentIface),
+                                       "CtkCellAccessibleParent",
+                                       sizeof (CtkCellAccessibleParentIface),
                                        NULL,
                                        0,
                                        NULL,
@@ -50,15 +50,15 @@ ctk_cell_accessible_parent_get_type (void)
  * @height: (out):
  */
 void
-ctk_cell_accessible_parent_get_cell_extents (GtkCellAccessibleParent *parent,
-                                             GtkCellAccessible       *cell,
+ctk_cell_accessible_parent_get_cell_extents (CtkCellAccessibleParent *parent,
+                                             CtkCellAccessible       *cell,
                                              gint                    *x,
                                              gint                    *y,
                                              gint                    *width,
                                              gint                    *height,
                                              AtkCoordType             coord_type)
 {
-  GtkCellAccessibleParentIface *iface;
+  CtkCellAccessibleParentIface *iface;
 
   g_return_if_fail (CTK_IS_CELL_ACCESSIBLE_PARENT (parent));
 
@@ -73,11 +73,11 @@ ctk_cell_accessible_parent_get_cell_extents (GtkCellAccessibleParent *parent,
  * @cell_rect: (out):
  */
 void
-ctk_cell_accessible_parent_get_cell_area (GtkCellAccessibleParent *parent,
-                                          GtkCellAccessible       *cell,
+ctk_cell_accessible_parent_get_cell_area (CtkCellAccessibleParent *parent,
+                                          CtkCellAccessible       *cell,
                                           GdkRectangle            *cell_rect)
 {
-  GtkCellAccessibleParentIface *iface;
+  CtkCellAccessibleParentIface *iface;
 
   g_return_if_fail (CTK_IS_CELL_ACCESSIBLE_PARENT (parent));
   g_return_if_fail (cell_rect);
@@ -89,10 +89,10 @@ ctk_cell_accessible_parent_get_cell_area (GtkCellAccessibleParent *parent,
 }
 
 gboolean
-ctk_cell_accessible_parent_grab_focus (GtkCellAccessibleParent *parent,
-                                       GtkCellAccessible       *cell)
+ctk_cell_accessible_parent_grab_focus (CtkCellAccessibleParent *parent,
+                                       CtkCellAccessible       *cell)
 {
-  GtkCellAccessibleParentIface *iface;
+  CtkCellAccessibleParentIface *iface;
 
   g_return_val_if_fail (CTK_IS_CELL_ACCESSIBLE_PARENT (parent), FALSE);
 
@@ -105,10 +105,10 @@ ctk_cell_accessible_parent_grab_focus (GtkCellAccessibleParent *parent,
 }
 
 int
-ctk_cell_accessible_parent_get_child_index (GtkCellAccessibleParent *parent,
-                                            GtkCellAccessible       *cell)
+ctk_cell_accessible_parent_get_child_index (CtkCellAccessibleParent *parent,
+                                            CtkCellAccessible       *cell)
 {
-  GtkCellAccessibleParentIface *iface;
+  CtkCellAccessibleParentIface *iface;
 
   g_return_val_if_fail (CTK_IS_CELL_ACCESSIBLE_PARENT (parent), FALSE);
 
@@ -120,11 +120,11 @@ ctk_cell_accessible_parent_get_child_index (GtkCellAccessibleParent *parent,
     return -1;
 }
 
-GtkCellRendererState
-ctk_cell_accessible_parent_get_renderer_state (GtkCellAccessibleParent *parent,
-                                               GtkCellAccessible       *cell)
+CtkCellRendererState
+ctk_cell_accessible_parent_get_renderer_state (CtkCellAccessibleParent *parent,
+                                               CtkCellAccessible       *cell)
 {
-  GtkCellAccessibleParentIface *iface;
+  CtkCellAccessibleParentIface *iface;
 
   g_return_val_if_fail (CTK_IS_CELL_ACCESSIBLE_PARENT (parent), 0);
   g_return_val_if_fail (CTK_IS_CELL_ACCESSIBLE (cell), 0);
@@ -138,10 +138,10 @@ ctk_cell_accessible_parent_get_renderer_state (GtkCellAccessibleParent *parent,
 }
 
 void
-ctk_cell_accessible_parent_expand_collapse (GtkCellAccessibleParent *parent,
-                                            GtkCellAccessible       *cell)
+ctk_cell_accessible_parent_expand_collapse (CtkCellAccessibleParent *parent,
+                                            CtkCellAccessible       *cell)
 {
-  GtkCellAccessibleParentIface *iface;
+  CtkCellAccessibleParentIface *iface;
 
   g_return_if_fail (CTK_IS_CELL_ACCESSIBLE_PARENT (parent));
   g_return_if_fail (CTK_IS_CELL_ACCESSIBLE (cell));
@@ -153,10 +153,10 @@ ctk_cell_accessible_parent_expand_collapse (GtkCellAccessibleParent *parent,
 }
 
 void
-ctk_cell_accessible_parent_activate (GtkCellAccessibleParent *parent,
-                                     GtkCellAccessible       *cell)
+ctk_cell_accessible_parent_activate (CtkCellAccessibleParent *parent,
+                                     CtkCellAccessible       *cell)
 {
-  GtkCellAccessibleParentIface *iface;
+  CtkCellAccessibleParentIface *iface;
 
   g_return_if_fail (CTK_IS_CELL_ACCESSIBLE_PARENT (parent));
   g_return_if_fail (CTK_IS_CELL_ACCESSIBLE (cell));
@@ -168,10 +168,10 @@ ctk_cell_accessible_parent_activate (GtkCellAccessibleParent *parent,
 }
 
 void
-ctk_cell_accessible_parent_edit (GtkCellAccessibleParent *parent,
-                                 GtkCellAccessible       *cell)
+ctk_cell_accessible_parent_edit (CtkCellAccessibleParent *parent,
+                                 CtkCellAccessible       *cell)
 {
-  GtkCellAccessibleParentIface *iface;
+  CtkCellAccessibleParentIface *iface;
 
   g_return_if_fail (CTK_IS_CELL_ACCESSIBLE_PARENT (parent));
   g_return_if_fail (CTK_IS_CELL_ACCESSIBLE (cell));
@@ -183,11 +183,11 @@ ctk_cell_accessible_parent_edit (GtkCellAccessibleParent *parent,
 }
 
 void
-ctk_cell_accessible_parent_update_relationset (GtkCellAccessibleParent *parent,
-                                               GtkCellAccessible       *cell,
+ctk_cell_accessible_parent_update_relationset (CtkCellAccessibleParent *parent,
+                                               CtkCellAccessible       *cell,
                                                AtkRelationSet          *relationset)
 {
-  GtkCellAccessibleParentIface *iface;
+  CtkCellAccessibleParentIface *iface;
 
   g_return_if_fail (CTK_IS_CELL_ACCESSIBLE_PARENT (parent));
   g_return_if_fail (CTK_IS_CELL_ACCESSIBLE (cell));
@@ -205,12 +205,12 @@ ctk_cell_accessible_parent_update_relationset (GtkCellAccessibleParent *parent,
  * @column: (out):
  */
 void
-ctk_cell_accessible_parent_get_cell_position (GtkCellAccessibleParent *parent,
-                                              GtkCellAccessible       *cell,
+ctk_cell_accessible_parent_get_cell_position (CtkCellAccessibleParent *parent,
+                                              CtkCellAccessible       *cell,
                                               gint                    *row,
                                               gint                    *column)
 {
-  GtkCellAccessibleParentIface *iface;
+  CtkCellAccessibleParentIface *iface;
 
   g_return_if_fail (CTK_IS_CELL_ACCESSIBLE_PARENT (parent));
   g_return_if_fail (CTK_IS_CELL_ACCESSIBLE (cell));
@@ -233,10 +233,10 @@ ctk_cell_accessible_parent_get_cell_position (GtkCellAccessibleParent *parent,
  * Returns: (transfer full) (element-type AtkObject)
  */
 GPtrArray *
-ctk_cell_accessible_parent_get_column_header_cells (GtkCellAccessibleParent *parent,
-                                                    GtkCellAccessible       *cell)
+ctk_cell_accessible_parent_get_column_header_cells (CtkCellAccessibleParent *parent,
+                                                    CtkCellAccessible       *cell)
 {
-  GtkCellAccessibleParentIface *iface;
+  CtkCellAccessibleParentIface *iface;
 
   g_return_val_if_fail (CTK_IS_CELL_ACCESSIBLE_PARENT (parent), NULL);
   g_return_val_if_fail (CTK_IS_CELL_ACCESSIBLE (cell), NULL);
@@ -254,10 +254,10 @@ ctk_cell_accessible_parent_get_column_header_cells (GtkCellAccessibleParent *par
  * Returns: (transfer full) (element-type AtkObject)
  */
 GPtrArray *
-ctk_cell_accessible_parent_get_row_header_cells (GtkCellAccessibleParent *parent,
-                                                    GtkCellAccessible       *cell)
+ctk_cell_accessible_parent_get_row_header_cells (CtkCellAccessibleParent *parent,
+                                                    CtkCellAccessible       *cell)
 {
-  GtkCellAccessibleParentIface *iface;
+  CtkCellAccessibleParentIface *iface;
 
   g_return_val_if_fail (CTK_IS_CELL_ACCESSIBLE_PARENT (parent), NULL);
   g_return_val_if_fail (CTK_IS_CELL_ACCESSIBLE (cell), NULL);

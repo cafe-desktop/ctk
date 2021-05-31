@@ -1,6 +1,6 @@
 /* GTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
- * GtkStatusbar Copyright (C) 1998 Shawn T. Amundson
+ * CtkStatusbar Copyright (C) 1998 Shawn T. Amundson
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -39,11 +39,11 @@
 
 /**
  * SECTION:ctkstatusbar
- * @title: GtkStatusbar
+ * @title: CtkStatusbar
  * @short_description: Report messages of minor importance to the user
  *
- * A #GtkStatusbar is usually placed along the bottom of an application's
- * main #GtkWindow. It may provide a regular commentary of the application's
+ * A #CtkStatusbar is usually placed along the bottom of an application's
+ * main #CtkWindow. It may provide a regular commentary of the application's
  * status (as is usually the case in a web browser, for example), or may be
  * used to simply output a message when the status changes, (when an upload
  * is complete in an FTP client, for example).
@@ -74,16 +74,16 @@
  *
  * # CSS node
  *
- * GtkStatusbar has a single CSS node with name statusbar.
+ * CtkStatusbar has a single CSS node with name statusbar.
  */
 
-typedef struct _GtkStatusbarMsg GtkStatusbarMsg;
+typedef struct _CtkStatusbarMsg CtkStatusbarMsg;
 
-struct _GtkStatusbarPrivate
+struct _CtkStatusbarPrivate
 {
-  GtkWidget     *frame;
-  GtkWidget     *label;
-  GtkWidget     *message_area;
+  CtkWidget     *frame;
+  CtkWidget     *label;
+  CtkWidget     *message_area;
 
   GSList        *messages;
   GSList        *keys;
@@ -93,7 +93,7 @@ struct _GtkStatusbarPrivate
 };
 
 
-struct _GtkStatusbarMsg
+struct _CtkStatusbarMsg
 {
   gchar *text;
   guint context_id;
@@ -107,19 +107,19 @@ enum
   SIGNAL_LAST
 };
 
-static void     ctk_statusbar_update            (GtkStatusbar      *statusbar,
+static void     ctk_statusbar_update            (CtkStatusbar      *statusbar,
 						 guint              context_id,
 						 const gchar       *text);
-static void     ctk_statusbar_destroy           (GtkWidget         *widget);
+static void     ctk_statusbar_destroy           (CtkWidget         *widget);
 
 static guint              statusbar_signals[SIGNAL_LAST] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkStatusbar, ctk_statusbar, CTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkStatusbar, ctk_statusbar, CTK_TYPE_BOX)
 
 static void
-ctk_statusbar_class_init (GtkStatusbarClass *class)
+ctk_statusbar_class_init (CtkStatusbarClass *class)
 {
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
   widget_class->destroy = ctk_statusbar_destroy;
 
@@ -127,7 +127,7 @@ ctk_statusbar_class_init (GtkStatusbarClass *class)
   class->text_popped = ctk_statusbar_update;
 
   /**
-   * GtkStatusbar::text-pushed:
+   * CtkStatusbar::text-pushed:
    * @statusbar: the object which received the signal
    * @context_id: the context id of the relevant message/statusbar
    * @text: the message that was pushed
@@ -138,7 +138,7 @@ ctk_statusbar_class_init (GtkStatusbarClass *class)
     g_signal_new (I_("text-pushed"),
 		  G_OBJECT_CLASS_TYPE (class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkStatusbarClass, text_pushed),
+		  G_STRUCT_OFFSET (CtkStatusbarClass, text_pushed),
 		  NULL, NULL,
 		  _ctk_marshal_VOID__UINT_STRING,
 		  G_TYPE_NONE, 2,
@@ -146,7 +146,7 @@ ctk_statusbar_class_init (GtkStatusbarClass *class)
 		  G_TYPE_STRING);
 
   /**
-   * GtkStatusbar::text-popped:
+   * CtkStatusbar::text-popped:
    * @statusbar: the object which received the signal
    * @context_id: the context id of the relevant message/statusbar
    * @text: the message that was just popped
@@ -157,7 +157,7 @@ ctk_statusbar_class_init (GtkStatusbarClass *class)
     g_signal_new (I_("text-popped"),
 		  G_OBJECT_CLASS_TYPE (class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkStatusbarClass, text_popped),
+		  G_STRUCT_OFFSET (CtkStatusbarClass, text_popped),
 		  NULL, NULL,
 		  _ctk_marshal_VOID__UINT_STRING,
 		  G_TYPE_NONE, 2,
@@ -165,7 +165,7 @@ ctk_statusbar_class_init (GtkStatusbarClass *class)
 		  G_TYPE_STRING);
 
   /**
-   * GtkStatusbar:shadow-type:
+   * CtkStatusbar:shadow-type:
    *
    * The style of the bevel around the statusbar text.
    *
@@ -183,18 +183,18 @@ ctk_statusbar_class_init (GtkStatusbarClass *class)
   /* Bind class to template
    */
   ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/ui/ctkstatusbar.ui");
-  ctk_widget_class_bind_template_child_internal_private (widget_class, GtkStatusbar, message_area);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkStatusbar, frame);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkStatusbar, label);
+  ctk_widget_class_bind_template_child_internal_private (widget_class, CtkStatusbar, message_area);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkStatusbar, frame);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkStatusbar, label);
 
   ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_STATUSBAR_ACCESSIBLE);
   ctk_widget_class_set_css_name (widget_class, "statusbar");
 }
 
 static void
-ctk_statusbar_init (GtkStatusbar *statusbar)
+ctk_statusbar_init (CtkStatusbar *statusbar)
 {
-  GtkStatusbarPrivate *priv;
+  CtkStatusbarPrivate *priv;
 
   statusbar->priv = ctk_statusbar_get_instance_private (statusbar);
   priv = statusbar->priv;
@@ -210,22 +210,22 @@ ctk_statusbar_init (GtkStatusbar *statusbar)
 /**
  * ctk_statusbar_new:
  *
- * Creates a new #GtkStatusbar ready for messages.
+ * Creates a new #CtkStatusbar ready for messages.
  *
- * Returns: the new #GtkStatusbar
+ * Returns: the new #CtkStatusbar
  */
-GtkWidget* 
+CtkWidget* 
 ctk_statusbar_new (void)
 {
   return g_object_new (CTK_TYPE_STATUSBAR, NULL);
 }
 
 static void
-ctk_statusbar_update (GtkStatusbar *statusbar,
+ctk_statusbar_update (CtkStatusbar *statusbar,
 		      guint	    context_id,
 		      const gchar  *text)
 {
-  GtkStatusbarPrivate *priv;
+  CtkStatusbarPrivate *priv;
 
   g_return_if_fail (CTK_IS_STATUSBAR (statusbar));
 
@@ -239,7 +239,7 @@ ctk_statusbar_update (GtkStatusbar *statusbar,
 
 /**
  * ctk_statusbar_get_context_id:
- * @statusbar: a #GtkStatusbar
+ * @statusbar: a #CtkStatusbar
  * @context_description: textual description of what context 
  *                       the new message is being used in
  *
@@ -250,10 +250,10 @@ ctk_statusbar_update (GtkStatusbar *statusbar,
  * Returns: an integer id
  */
 guint
-ctk_statusbar_get_context_id (GtkStatusbar *statusbar,
+ctk_statusbar_get_context_id (CtkStatusbar *statusbar,
 			      const gchar  *context_description)
 {
-  GtkStatusbarPrivate *priv;
+  CtkStatusbarPrivate *priv;
   gchar *string;
   guint id;
   
@@ -278,14 +278,14 @@ ctk_statusbar_get_context_id (GtkStatusbar *statusbar,
   return id;
 }
 
-static GtkStatusbarMsg *
-ctk_statusbar_msg_create (GtkStatusbar *statusbar,
+static CtkStatusbarMsg *
+ctk_statusbar_msg_create (CtkStatusbar *statusbar,
 		          guint         context_id,
 		          const gchar  *text)
 {
-  GtkStatusbarMsg *msg;
+  CtkStatusbarMsg *msg;
 
-  msg = g_slice_new (GtkStatusbarMsg);
+  msg = g_slice_new (CtkStatusbarMsg);
   msg->text = g_strdup (text);
   msg->context_id = context_id;
   msg->message_id = statusbar->priv->seq_message_id++;
@@ -294,15 +294,15 @@ ctk_statusbar_msg_create (GtkStatusbar *statusbar,
 }
 
 static void
-ctk_statusbar_msg_free (GtkStatusbarMsg *msg)
+ctk_statusbar_msg_free (CtkStatusbarMsg *msg)
 {
   g_free (msg->text);
-  g_slice_free (GtkStatusbarMsg, msg);
+  g_slice_free (CtkStatusbarMsg, msg);
 }
 
 /**
  * ctk_statusbar_push:
- * @statusbar: a #GtkStatusbar
+ * @statusbar: a #CtkStatusbar
  * @context_id: the message’s context id, as returned by
  *              ctk_statusbar_get_context_id()
  * @text: the message to add to the statusbar
@@ -313,12 +313,12 @@ ctk_statusbar_msg_free (GtkStatusbarMsg *msg)
  *          ctk_statusbar_remove().
  */
 guint
-ctk_statusbar_push (GtkStatusbar *statusbar,
+ctk_statusbar_push (CtkStatusbar *statusbar,
 		    guint	  context_id,
 		    const gchar  *text)
 {
-  GtkStatusbarPrivate *priv;
-  GtkStatusbarMsg *msg;
+  CtkStatusbarPrivate *priv;
+  CtkStatusbarMsg *msg;
 
   g_return_val_if_fail (CTK_IS_STATUSBAR (statusbar), 0);
   g_return_val_if_fail (text != NULL, 0);
@@ -339,10 +339,10 @@ ctk_statusbar_push (GtkStatusbar *statusbar,
 
 /**
  * ctk_statusbar_pop:
- * @statusbar: a #GtkStatusbar
+ * @statusbar: a #CtkStatusbar
  * @context_id: a context identifier
  * 
- * Removes the first message in the #GtkStatusbar’s stack
+ * Removes the first message in the #CtkStatusbar’s stack
  * with the given context id. 
  *
  * Note that this may not change the displayed message, if 
@@ -350,11 +350,11 @@ ctk_statusbar_push (GtkStatusbar *statusbar,
  * context id.
  */
 void
-ctk_statusbar_pop (GtkStatusbar *statusbar,
+ctk_statusbar_pop (CtkStatusbar *statusbar,
 		   guint	 context_id)
 {
-  GtkStatusbarPrivate *priv;
-  GtkStatusbarMsg *msg;
+  CtkStatusbarPrivate *priv;
+  CtkStatusbarMsg *msg;
 
   g_return_if_fail (CTK_IS_STATUSBAR (statusbar));
 
@@ -389,7 +389,7 @@ ctk_statusbar_pop (GtkStatusbar *statusbar,
 
 /**
  * ctk_statusbar_remove:
- * @statusbar: a #GtkStatusbar
+ * @statusbar: a #CtkStatusbar
  * @context_id: a context identifier
  * @message_id: a message identifier, as returned by ctk_statusbar_push()
  *
@@ -397,12 +397,12 @@ ctk_statusbar_pop (GtkStatusbar *statusbar,
  * The exact @context_id and @message_id must be specified.
  */
 void
-ctk_statusbar_remove (GtkStatusbar *statusbar,
+ctk_statusbar_remove (CtkStatusbar *statusbar,
 		      guint	   context_id,
 		      guint        message_id)
 {
-  GtkStatusbarPrivate *priv;
-  GtkStatusbarMsg *msg;
+  CtkStatusbarPrivate *priv;
+  CtkStatusbarMsg *msg;
 
   g_return_if_fail (CTK_IS_STATUSBAR (statusbar));
   g_return_if_fail (message_id > 0);
@@ -441,7 +441,7 @@ ctk_statusbar_remove (GtkStatusbar *statusbar,
 
 /**
  * ctk_statusbar_remove_all:
- * @statusbar: a #GtkStatusbar
+ * @statusbar: a #CtkStatusbar
  * @context_id: a context identifier
  *
  * Forces the removal of all messages from a statusbar's
@@ -450,11 +450,11 @@ ctk_statusbar_remove (GtkStatusbar *statusbar,
  * Since: 2.22
  */
 void
-ctk_statusbar_remove_all (GtkStatusbar *statusbar,
+ctk_statusbar_remove_all (CtkStatusbar *statusbar,
                           guint         context_id)
 {
-  GtkStatusbarPrivate *priv;
-  GtkStatusbarMsg *msg;
+  CtkStatusbarPrivate *priv;
+  CtkStatusbarMsg *msg;
   GSList *prev, *list;
 
   g_return_if_fail (CTK_IS_STATUSBAR (statusbar));
@@ -502,18 +502,18 @@ ctk_statusbar_remove_all (GtkStatusbar *statusbar,
 
 /**
  * ctk_statusbar_get_message_area:
- * @statusbar: a #GtkStatusbar
+ * @statusbar: a #CtkStatusbar
  *
  * Retrieves the box containing the label widget.
  *
- * Returns: (type Gtk.Box) (transfer none): a #GtkBox
+ * Returns: (type Ctk.Box) (transfer none): a #CtkBox
  *
  * Since: 2.20
  */
-GtkWidget*
-ctk_statusbar_get_message_area (GtkStatusbar *statusbar)
+CtkWidget*
+ctk_statusbar_get_message_area (CtkStatusbar *statusbar)
 {
-  GtkStatusbarPrivate *priv;
+  CtkStatusbarPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_STATUSBAR (statusbar), NULL);
 
@@ -523,10 +523,10 @@ ctk_statusbar_get_message_area (GtkStatusbar *statusbar)
 }
 
 static void
-ctk_statusbar_destroy (GtkWidget *widget)
+ctk_statusbar_destroy (CtkWidget *widget)
 {
-  GtkStatusbar *statusbar = CTK_STATUSBAR (widget);
-  GtkStatusbarPrivate *priv = statusbar->priv;
+  CtkStatusbar *statusbar = CTK_STATUSBAR (widget);
+  CtkStatusbarPrivate *priv = statusbar->priv;
 
   g_slist_free_full (priv->messages, (GDestroyNotify) ctk_statusbar_msg_free);
   priv->messages = NULL;

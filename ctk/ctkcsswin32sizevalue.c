@@ -30,7 +30,7 @@ typedef enum {
   CTK_WIN32_PART_BORDER_RIGHT,
   CTK_WIN32_PART_BORDER_BOTTOM,
   CTK_WIN32_PART_BORDER_LEFT
-} GtkWin32SizeType;
+} CtkWin32SizeType;
 
 static const char *css_value_names[] = {
   "-ctk-win32-size(",
@@ -42,11 +42,11 @@ static const char *css_value_names[] = {
   "-ctk-win32-part-border-left("
 };
 
-struct _GtkCssValue {
+struct _CtkCssValue {
   CTK_CSS_VALUE_BASE
   double                 scale;         /* needed for calc() math */
-  GtkWin32Theme         *theme;
-  GtkWin32SizeType       type;
+  CtkWin32Theme         *theme;
+  CtkWin32SizeType       type;
   union {
     struct {
       gint               id;
@@ -58,21 +58,21 @@ struct _GtkCssValue {
   }                      val;
 };
 
-static GtkCssValue *    ctk_css_win32_size_value_new (double            scale,
-                                                      GtkWin32Theme    *theme,
-                                                      GtkWin32SizeType  type);
+static CtkCssValue *    ctk_css_win32_size_value_new (double            scale,
+                                                      CtkWin32Theme    *theme,
+                                                      CtkWin32SizeType  type);
 
 static void
-ctk_css_value_win32_size_free (GtkCssValue *value)
+ctk_css_value_win32_size_free (CtkCssValue *value)
 {
   ctk_win32_theme_unref (value->theme);
-  g_slice_free (GtkCssValue, value);
+  g_slice_free (CtkCssValue, value);
 }
 
 static int
-ctk_css_value_win32_compute_size (const GtkCssValue *value)
+ctk_css_value_win32_compute_size (const CtkCssValue *value)
 {
-  GtkBorder border;
+  CtkBorder border;
   int size;
 
   switch (value->type)
@@ -117,19 +117,19 @@ ctk_css_value_win32_compute_size (const GtkCssValue *value)
   return size;
 }
 
-static GtkCssValue *
-ctk_css_value_win32_size_compute (GtkCssValue             *value,
+static CtkCssValue *
+ctk_css_value_win32_size_compute (CtkCssValue             *value,
                                   guint                    property_id,
-                                  GtkStyleProviderPrivate *provider,
-                                  GtkCssStyle             *style,
-                                  GtkCssStyle             *parent_style)
+                                  CtkStyleProviderPrivate *provider,
+                                  CtkCssStyle             *style,
+                                  CtkCssStyle             *parent_style)
 {
   return _ctk_css_number_value_new (value->scale * ctk_css_value_win32_compute_size (value), CTK_CSS_PX);
 }
 
 static gboolean
-ctk_css_value_win32_size_equal (const GtkCssValue *value1,
-                                const GtkCssValue *value2)
+ctk_css_value_win32_size_equal (const CtkCssValue *value1,
+                                const CtkCssValue *value2)
 {
   if (value1->type != value2->type ||
       !ctk_win32_theme_equal (value1->theme, value2->theme) )
@@ -152,7 +152,7 @@ ctk_css_value_win32_size_equal (const GtkCssValue *value1,
 }
 
 static void
-ctk_css_value_win32_size_print (const GtkCssValue *value,
+ctk_css_value_win32_size_print (const CtkCssValue *value,
                                 GString           *string)
 {
   if (value->scale != 1.0)
@@ -192,29 +192,29 @@ ctk_css_value_win32_size_print (const GtkCssValue *value,
 }
 
 static double
-ctk_css_value_win32_size_get (const GtkCssValue *value,
+ctk_css_value_win32_size_get (const CtkCssValue *value,
                               double             one_hundred_percent)
 {
   return value->scale * ctk_css_value_win32_compute_size (value);
 }
 
-static GtkCssDimension
-ctk_css_value_win32_size_get_dimension (const GtkCssValue *value)
+static CtkCssDimension
+ctk_css_value_win32_size_get_dimension (const CtkCssValue *value)
 {
   return CTK_CSS_DIMENSION_LENGTH;
 }
 
 static gboolean
-ctk_css_value_win32_size_has_percent (const GtkCssValue *value)
+ctk_css_value_win32_size_has_percent (const CtkCssValue *value)
 {
   return FALSE;
 }
 
-static GtkCssValue *
-ctk_css_value_win32_size_multiply (const GtkCssValue *value,
+static CtkCssValue *
+ctk_css_value_win32_size_multiply (const CtkCssValue *value,
                                    double             factor)
 {
-  GtkCssValue *result;
+  CtkCssValue *result;
 
   result = ctk_css_win32_size_value_new (value->scale * factor, value->theme, value->type);
   result->val = value->val;
@@ -222,11 +222,11 @@ ctk_css_value_win32_size_multiply (const GtkCssValue *value,
   return result;
 }
 
-static GtkCssValue *
-ctk_css_value_win32_size_try_add (const GtkCssValue *value1,
-                                  const GtkCssValue *value2)
+static CtkCssValue *
+ctk_css_value_win32_size_try_add (const CtkCssValue *value1,
+                                  const CtkCssValue *value2)
 {
-  GtkCssValue *result;
+  CtkCssValue *result;
 
   if (!ctk_css_value_win32_size_equal (value1, value2))
     return NULL;
@@ -238,12 +238,12 @@ ctk_css_value_win32_size_try_add (const GtkCssValue *value1,
 }
 
 static gint
-ctk_css_value_win32_size_get_calc_term_order (const GtkCssValue *value)
+ctk_css_value_win32_size_get_calc_term_order (const CtkCssValue *value)
 {
   return 2000 + 100 * value->type;
 }
 
-static const GtkCssNumberValueClass CTK_CSS_VALUE_WIN32_SIZE = {
+static const CtkCssNumberValueClass CTK_CSS_VALUE_WIN32_SIZE = {
   {
     ctk_css_value_win32_size_free,
     ctk_css_value_win32_size_compute,
@@ -259,14 +259,14 @@ static const GtkCssNumberValueClass CTK_CSS_VALUE_WIN32_SIZE = {
   ctk_css_value_win32_size_get_calc_term_order
 };
 
-static GtkCssValue *
+static CtkCssValue *
 ctk_css_win32_size_value_new (double            scale,
-                              GtkWin32Theme    *theme,
-                              GtkWin32SizeType  type)
+                              CtkWin32Theme    *theme,
+                              CtkWin32SizeType  type)
 {
-  GtkCssValue *result;
+  CtkCssValue *result;
 
-  result = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_WIN32_SIZE.value_class);
+  result = _ctk_css_value_new (CtkCssValue, &CTK_CSS_VALUE_WIN32_SIZE.value_class);
   result->scale = scale;
   result->theme = ctk_win32_theme_ref (theme);
   result->type = type;
@@ -274,9 +274,9 @@ ctk_css_win32_size_value_new (double            scale,
   return result;
 }
 
-static GtkCssValue *
-ctk_css_win32_size_value_parse_size (GtkCssValue *value,
-                                     GtkCssParser *parser)
+static CtkCssValue *
+ctk_css_win32_size_value_parse_size (CtkCssValue *value,
+                                     CtkCssParser *parser)
 {
   char *name;
 
@@ -303,9 +303,9 @@ ctk_css_win32_size_value_parse_size (GtkCssValue *value,
   return value;
 }
 
-static GtkCssValue *
-ctk_css_win32_size_value_parse_part_size (GtkCssValue *value,
-                                          GtkCssParser *parser)
+static CtkCssValue *
+ctk_css_win32_size_value_parse_part_size (CtkCssValue *value,
+                                          CtkCssParser *parser)
 {
   if (!_ctk_css_parser_try_int (parser, &value->val.part.part))
     {
@@ -331,12 +331,12 @@ ctk_css_win32_size_value_parse_part_size (GtkCssValue *value,
   return value;
 }
 
-GtkCssValue *
-ctk_css_win32_size_value_parse (GtkCssParser           *parser,
-                                GtkCssNumberParseFlags  flags)
+CtkCssValue *
+ctk_css_win32_size_value_parse (CtkCssParser           *parser,
+                                CtkCssNumberParseFlags  flags)
 {
-  GtkWin32Theme *theme;
-  GtkCssValue *result;
+  CtkWin32Theme *theme;
+  CtkCssValue *result;
   guint type;
 
   for (type = 0; type < G_N_ELEMENTS(css_value_names); type++)

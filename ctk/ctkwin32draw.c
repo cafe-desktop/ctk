@@ -163,11 +163,11 @@ typedef enum {
   EDGE_SUNKEN       = (EDGE_SUNKEN_OUTER | EDGE_SUNKEN_INNER),
   EDGE_ETCHED       = (EDGE_SUNKEN_OUTER | EDGE_RAISED_INNER),
   EDGE_BUMP         = (EDGE_RAISED_OUTER | EDGE_SUNKEN_INNER)
-} GtkWin32Edge;
+} CtkWin32Edge;
 
 static void
 draw_edge (cairo_t      *cr,
-           GtkWin32Edge  edge,
+           CtkWin32Edge  edge,
            gboolean      soft,
            int           x,
            int           y,
@@ -448,12 +448,12 @@ draw_tooltip (cairo_t *cr,
   cairo_fill (cr);
 }
 
-typedef struct _GtkWin32ThemePart GtkWin32ThemePart;
-struct _GtkWin32ThemePart {
+typedef struct _CtkWin32ThemePart CtkWin32ThemePart;
+struct _CtkWin32ThemePart {
   const char *class_name;
   gint        part;
   gint        size;
-  GtkBorder   margins;
+  CtkBorder   margins;
   void        (* draw_func)             (cairo_t        *cr,
                                          int             part,
                                          int             state,
@@ -461,7 +461,7 @@ struct _GtkWin32ThemePart {
                                          int             height);
 };
 
-static GtkWin32ThemePart theme_parts[] = {
+static CtkWin32ThemePart theme_parts[] = {
   { "button",  1,  0, { 3, 3, 3, 3 }, draw_button },
   { "button",  2, 13, { 0, 0, 0, 0 }, draw_radio },
   { "button",  3, 13, { 0, 0, 0, 0 }, draw_check },
@@ -492,7 +492,7 @@ static GtkWin32ThemePart theme_parts[] = {
   { "window", 21,  0, { 0, 0, 0, 0 }, draw_window_button }
 };
 
-static const GtkWin32ThemePart *
+static const CtkWin32ThemePart *
 get_theme_part (const char *class_name,
                 gint        part)
 {
@@ -516,7 +516,7 @@ ctk_win32_draw_theme_background (cairo_t    *cr,
                                  int         width,
                                  int         height)
 {
-  const GtkWin32ThemePart *theme_part;
+  const CtkWin32ThemePart *theme_part;
 
   theme_part = get_theme_part (class_name, part);
 
@@ -537,7 +537,7 @@ ctk_win32_get_theme_part_size (const char *class_name,
                                int         *width,
                                int         *height)
 {
-  const GtkWin32ThemePart *theme_part;
+  const CtkWin32ThemePart *theme_part;
 
   theme_part = get_theme_part (class_name, part);
 
@@ -561,9 +561,9 @@ void
 ctk_win32_get_theme_margins (const char     *class_name,
                              int             part,
                              int             state,
-                             GtkBorder      *out_margins)
+                             CtkBorder      *out_margins)
 {
-  const GtkWin32ThemePart *theme_part;
+  const CtkWin32ThemePart *theme_part;
 
   theme_part = get_theme_part (class_name, part);
 

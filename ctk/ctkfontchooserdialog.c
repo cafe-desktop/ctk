@@ -42,46 +42,46 @@
 #include "ctkheaderbar.h"
 #include "ctkactionable.h"
 
-struct _GtkFontChooserDialogPrivate
+struct _CtkFontChooserDialogPrivate
 {
-  GtkWidget *fontchooser;
+  CtkWidget *fontchooser;
 
-  GtkWidget *select_button;
-  GtkWidget *cancel_button;
-  GtkWidget *tweak_button;
+  CtkWidget *select_button;
+  CtkWidget *cancel_button;
+  CtkWidget *tweak_button;
 };
 
 /**
  * SECTION:ctkfontchooserdialog
  * @Short_description: A dialog for selecting fonts
- * @Title: GtkFontChooserDialog
- * @See_also: #GtkFontChooser, #GtkDialog
+ * @Title: CtkFontChooserDialog
+ * @See_also: #CtkFontChooser, #CtkDialog
  *
- * The #GtkFontChooserDialog widget is a dialog for selecting a font.
- * It implements the #GtkFontChooser interface.
+ * The #CtkFontChooserDialog widget is a dialog for selecting a font.
+ * It implements the #CtkFontChooser interface.
  *
- * # GtkFontChooserDialog as GtkBuildable
+ * # CtkFontChooserDialog as CtkBuildable
  *
- * The GtkFontChooserDialog implementation of the #GtkBuildable
+ * The CtkFontChooserDialog implementation of the #CtkBuildable
  * interface exposes the buttons with the names “select_button”
  * and “cancel_button”.
  *
  * Since: 3.2
  */
 
-static void     ctk_font_chooser_dialog_buildable_interface_init     (GtkBuildableIface *iface);
-static GObject *ctk_font_chooser_dialog_buildable_get_internal_child (GtkBuildable *buildable,
-                                                                      GtkBuilder   *builder,
+static void     ctk_font_chooser_dialog_buildable_interface_init     (CtkBuildableIface *iface);
+static GObject *ctk_font_chooser_dialog_buildable_get_internal_child (CtkBuildable *buildable,
+                                                                      CtkBuilder   *builder,
                                                                       const gchar  *childname);
 
-G_DEFINE_TYPE_WITH_CODE (GtkFontChooserDialog, ctk_font_chooser_dialog, CTK_TYPE_DIALOG,
-                         G_ADD_PRIVATE (GtkFontChooserDialog)
+G_DEFINE_TYPE_WITH_CODE (CtkFontChooserDialog, ctk_font_chooser_dialog, CTK_TYPE_DIALOG,
+                         G_ADD_PRIVATE (CtkFontChooserDialog)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_FONT_CHOOSER,
                                                 _ctk_font_chooser_delegate_iface_init)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
                                                 ctk_font_chooser_dialog_buildable_interface_init))
 
-static GtkBuildableIface *parent_buildable_iface;
+static CtkBuildableIface *parent_buildable_iface;
 
 static void
 ctk_font_chooser_dialog_set_property (GObject      *object,
@@ -89,8 +89,8 @@ ctk_font_chooser_dialog_set_property (GObject      *object,
                                       const GValue *value,
                                       GParamSpec   *pspec)
 {
-  GtkFontChooserDialog *dialog = CTK_FONT_CHOOSER_DIALOG (object);
-  GtkFontChooserDialogPrivate *priv = dialog->priv;
+  CtkFontChooserDialog *dialog = CTK_FONT_CHOOSER_DIALOG (object);
+  CtkFontChooserDialogPrivate *priv = dialog->priv;
 
   switch (prop_id)
     {
@@ -106,8 +106,8 @@ ctk_font_chooser_dialog_get_property (GObject      *object,
                                       GValue       *value,
                                       GParamSpec   *pspec)
 {
-  GtkFontChooserDialog *dialog = CTK_FONT_CHOOSER_DIALOG (object);
-  GtkFontChooserDialogPrivate *priv = dialog->priv;
+  CtkFontChooserDialog *dialog = CTK_FONT_CHOOSER_DIALOG (object);
+  CtkFontChooserDialogPrivate *priv = dialog->priv;
 
   switch (prop_id)
     {
@@ -118,20 +118,20 @@ ctk_font_chooser_dialog_get_property (GObject      *object,
 }
 
 static void
-font_activated_cb (GtkFontChooser *fontchooser,
+font_activated_cb (CtkFontChooser *fontchooser,
                    const gchar    *fontname,
                    gpointer        user_data)
 {
-  GtkDialog *dialog = user_data;
+  CtkDialog *dialog = user_data;
 
   ctk_dialog_response (dialog, CTK_RESPONSE_OK);
 }
 
 static gboolean
-ctk_font_chooser_dialog_key_press_event (GtkWidget   *dialog,
+ctk_font_chooser_dialog_key_press_event (CtkWidget   *dialog,
                                          GdkEventKey *event)
 {
-  GtkFontChooserDialog *fdialog = CTK_FONT_CHOOSER_DIALOG (dialog);
+  CtkFontChooserDialog *fdialog = CTK_FONT_CHOOSER_DIALOG (dialog);
   gboolean handled = FALSE;
 
   handled = CTK_WIDGET_CLASS (ctk_font_chooser_dialog_parent_class)->key_press_event (dialog, event);
@@ -143,9 +143,9 @@ ctk_font_chooser_dialog_key_press_event (GtkWidget   *dialog,
 }
 
 static void
-update_tweak_button (GtkFontChooserDialog *dialog)
+update_tweak_button (CtkFontChooserDialog *dialog)
 {
-  GtkFontChooserLevel level;
+  CtkFontChooserLevel level;
 
   if (!dialog->priv->tweak_button)
     return;
@@ -158,7 +158,7 @@ update_tweak_button (GtkFontChooserDialog *dialog)
 }
 
 static void
-setup_tweak_button (GtkFontChooserDialog *dialog)
+setup_tweak_button (CtkFontChooserDialog *dialog)
 {
   gboolean use_header;
 
@@ -168,9 +168,9 @@ setup_tweak_button (GtkFontChooserDialog *dialog)
   g_object_get (dialog, "use-header-bar", &use_header, NULL);
   if (use_header)
     {
-      GtkWidget *button;
-      GtkWidget *image;
-      GtkWidget *header;
+      CtkWidget *button;
+      CtkWidget *image;
+      CtkWidget *header;
       GActionGroup *actions;
 
       actions = G_ACTION_GROUP (g_simple_action_group_new ());
@@ -196,9 +196,9 @@ setup_tweak_button (GtkFontChooserDialog *dialog)
 }
 
 static void
-ctk_font_chooser_dialog_map (GtkWidget *widget)
+ctk_font_chooser_dialog_map (CtkWidget *widget)
 {
-  GtkFontChooserDialog *dialog = CTK_FONT_CHOOSER_DIALOG (widget);
+  CtkFontChooserDialog *dialog = CTK_FONT_CHOOSER_DIALOG (widget);
 
   setup_tweak_button (dialog);
 
@@ -206,10 +206,10 @@ ctk_font_chooser_dialog_map (GtkWidget *widget)
 }
 
 static void
-ctk_font_chooser_dialog_class_init (GtkFontChooserDialogClass *klass)
+ctk_font_chooser_dialog_class_init (CtkFontChooserDialogClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   gobject_class->get_property = ctk_font_chooser_dialog_get_property;
   gobject_class->set_property = ctk_font_chooser_dialog_set_property;
@@ -224,16 +224,16 @@ ctk_font_chooser_dialog_class_init (GtkFontChooserDialogClass *klass)
   ctk_widget_class_set_template_from_resource (widget_class,
                                                "/org/ctk/libctk/ui/ctkfontchooserdialog.ui");
 
-  ctk_widget_class_bind_template_child_private (widget_class, GtkFontChooserDialog, fontchooser);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkFontChooserDialog, select_button);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkFontChooserDialog, cancel_button);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkFontChooserDialog, fontchooser);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkFontChooserDialog, select_button);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkFontChooserDialog, cancel_button);
   ctk_widget_class_bind_template_callback (widget_class, font_activated_cb);
 }
 
 static void
-update_button (GtkFontChooserDialog *dialog)
+update_button (CtkFontChooserDialog *dialog)
 {
-  GtkFontChooserDialogPrivate *priv = dialog->priv;
+  CtkFontChooserDialogPrivate *priv = dialog->priv;
   PangoFontDescription *desc;
 
   desc = ctk_font_chooser_get_font_desc (CTK_FONT_CHOOSER (priv->fontchooser));
@@ -245,9 +245,9 @@ update_button (GtkFontChooserDialog *dialog)
 }
 
 static void
-ctk_font_chooser_dialog_init (GtkFontChooserDialog *fontchooserdiag)
+ctk_font_chooser_dialog_init (CtkFontChooserDialog *fontchooserdiag)
 {
-  GtkFontChooserDialogPrivate *priv;
+  CtkFontChooserDialogPrivate *priv;
 
   fontchooserdiag->priv = ctk_font_chooser_dialog_get_instance_private (fontchooserdiag);
   priv = fontchooserdiag->priv;
@@ -277,17 +277,17 @@ G_GNUC_END_IGNORE_DEPRECATIONS
  * @title: (allow-none): Title of the dialog, or %NULL
  * @parent: (allow-none): Transient parent of the dialog, or %NULL
  *
- * Creates a new #GtkFontChooserDialog.
+ * Creates a new #CtkFontChooserDialog.
  *
- * Returns: a new #GtkFontChooserDialog
+ * Returns: a new #CtkFontChooserDialog
  *
  * Since: 3.2
  */
-GtkWidget*
+CtkWidget*
 ctk_font_chooser_dialog_new (const gchar *title,
-                             GtkWindow   *parent)
+                             CtkWindow   *parent)
 {
-  GtkFontChooserDialog *dialog;
+  CtkFontChooserDialog *dialog;
 
   dialog = g_object_new (CTK_TYPE_FONT_CHOOSER_DIALOG,
                          "title", title,
@@ -298,18 +298,18 @@ ctk_font_chooser_dialog_new (const gchar *title,
 }
 
 static void
-ctk_font_chooser_dialog_buildable_interface_init (GtkBuildableIface *iface)
+ctk_font_chooser_dialog_buildable_interface_init (CtkBuildableIface *iface)
 {
   parent_buildable_iface = g_type_interface_peek_parent (iface);
   iface->get_internal_child = ctk_font_chooser_dialog_buildable_get_internal_child;
 }
 
 static GObject *
-ctk_font_chooser_dialog_buildable_get_internal_child (GtkBuildable *buildable,
-                                                      GtkBuilder   *builder,
+ctk_font_chooser_dialog_buildable_get_internal_child (CtkBuildable *buildable,
+                                                      CtkBuilder   *builder,
                                                       const gchar  *childname)
 {
-  GtkFontChooserDialogPrivate *priv;
+  CtkFontChooserDialogPrivate *priv;
 
   priv = CTK_FONT_CHOOSER_DIALOG (buildable)->priv;
 

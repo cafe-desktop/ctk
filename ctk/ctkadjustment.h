@@ -35,35 +35,35 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_ADJUSTMENT                  (ctk_adjustment_get_type ())
-#define CTK_ADJUSTMENT(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ADJUSTMENT, GtkAdjustment))
-#define CTK_ADJUSTMENT_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ADJUSTMENT, GtkAdjustmentClass))
+#define CTK_ADJUSTMENT(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ADJUSTMENT, CtkAdjustment))
+#define CTK_ADJUSTMENT_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ADJUSTMENT, CtkAdjustmentClass))
 #define CTK_IS_ADJUSTMENT(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_ADJUSTMENT))
 #define CTK_IS_ADJUSTMENT_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_ADJUSTMENT))
-#define CTK_ADJUSTMENT_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ADJUSTMENT, GtkAdjustmentClass))
+#define CTK_ADJUSTMENT_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ADJUSTMENT, CtkAdjustmentClass))
 
 
-typedef struct _GtkAdjustmentPrivate  GtkAdjustmentPrivate;
-typedef struct _GtkAdjustmentClass    GtkAdjustmentClass;
+typedef struct _CtkAdjustmentPrivate  CtkAdjustmentPrivate;
+typedef struct _CtkAdjustmentClass    CtkAdjustmentClass;
 
 /**
- * GtkAdjustment:
+ * CtkAdjustment:
  *
- * The #GtkAdjustment-struct contains only private fields and
+ * The #CtkAdjustment-struct contains only private fields and
  * should not be directly accessed.
  */
-struct _GtkAdjustment
+struct _CtkAdjustment
 {
   GInitiallyUnowned parent_instance;
 
-  GtkAdjustmentPrivate *priv;
+  CtkAdjustmentPrivate *priv;
 };
 
-struct _GtkAdjustmentClass
+struct _CtkAdjustmentClass
 {
   GInitiallyUnownedClass parent_class;
 
-  void (* changed)       (GtkAdjustment *adjustment);
-  void (* value_changed) (GtkAdjustment *adjustment);
+  void (* changed)       (CtkAdjustment *adjustment);
+  void (* value_changed) (CtkAdjustment *adjustment);
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -76,7 +76,7 @@ struct _GtkAdjustmentClass
 GDK_AVAILABLE_IN_ALL
 GType      ctk_adjustment_get_type              (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkAdjustment*   ctk_adjustment_new             (gdouble          value,
+CtkAdjustment*   ctk_adjustment_new             (gdouble          value,
                                                  gdouble          lower,
                                                  gdouble          upper,
                                                  gdouble          step_increment,
@@ -84,47 +84,47 @@ GtkAdjustment*   ctk_adjustment_new             (gdouble          value,
                                                  gdouble          page_size);
 
 GDK_DEPRECATED_IN_3_18
-void       ctk_adjustment_changed               (GtkAdjustment   *adjustment);
+void       ctk_adjustment_changed               (CtkAdjustment   *adjustment);
 GDK_DEPRECATED_IN_3_18
-void       ctk_adjustment_value_changed         (GtkAdjustment   *adjustment);
+void       ctk_adjustment_value_changed         (CtkAdjustment   *adjustment);
 GDK_AVAILABLE_IN_ALL
-void       ctk_adjustment_clamp_page            (GtkAdjustment   *adjustment,
+void       ctk_adjustment_clamp_page            (CtkAdjustment   *adjustment,
                                                  gdouble          lower,
                                                  gdouble          upper);
 
 GDK_AVAILABLE_IN_ALL
-gdouble    ctk_adjustment_get_value             (GtkAdjustment   *adjustment);
+gdouble    ctk_adjustment_get_value             (CtkAdjustment   *adjustment);
 GDK_AVAILABLE_IN_ALL
-void       ctk_adjustment_set_value             (GtkAdjustment   *adjustment,
+void       ctk_adjustment_set_value             (CtkAdjustment   *adjustment,
                                                  gdouble          value);
 GDK_AVAILABLE_IN_ALL
-gdouble    ctk_adjustment_get_lower             (GtkAdjustment   *adjustment);
+gdouble    ctk_adjustment_get_lower             (CtkAdjustment   *adjustment);
 GDK_AVAILABLE_IN_ALL
-void       ctk_adjustment_set_lower             (GtkAdjustment   *adjustment,
+void       ctk_adjustment_set_lower             (CtkAdjustment   *adjustment,
                                                  gdouble          lower);
 GDK_AVAILABLE_IN_ALL
-gdouble    ctk_adjustment_get_upper             (GtkAdjustment   *adjustment);
+gdouble    ctk_adjustment_get_upper             (CtkAdjustment   *adjustment);
 GDK_AVAILABLE_IN_ALL
-void       ctk_adjustment_set_upper             (GtkAdjustment   *adjustment,
+void       ctk_adjustment_set_upper             (CtkAdjustment   *adjustment,
                                                  gdouble          upper);
 GDK_AVAILABLE_IN_ALL
-gdouble    ctk_adjustment_get_step_increment    (GtkAdjustment   *adjustment);
+gdouble    ctk_adjustment_get_step_increment    (CtkAdjustment   *adjustment);
 GDK_AVAILABLE_IN_ALL
-void       ctk_adjustment_set_step_increment    (GtkAdjustment   *adjustment,
+void       ctk_adjustment_set_step_increment    (CtkAdjustment   *adjustment,
                                                  gdouble          step_increment);
 GDK_AVAILABLE_IN_ALL
-gdouble    ctk_adjustment_get_page_increment    (GtkAdjustment   *adjustment);
+gdouble    ctk_adjustment_get_page_increment    (CtkAdjustment   *adjustment);
 GDK_AVAILABLE_IN_ALL
-void       ctk_adjustment_set_page_increment    (GtkAdjustment   *adjustment,
+void       ctk_adjustment_set_page_increment    (CtkAdjustment   *adjustment,
                                                  gdouble          page_increment);
 GDK_AVAILABLE_IN_ALL
-gdouble    ctk_adjustment_get_page_size         (GtkAdjustment   *adjustment);
+gdouble    ctk_adjustment_get_page_size         (CtkAdjustment   *adjustment);
 GDK_AVAILABLE_IN_ALL
-void       ctk_adjustment_set_page_size         (GtkAdjustment   *adjustment,
+void       ctk_adjustment_set_page_size         (CtkAdjustment   *adjustment,
                                                  gdouble          page_size);
 
 GDK_AVAILABLE_IN_ALL
-void       ctk_adjustment_configure             (GtkAdjustment   *adjustment,
+void       ctk_adjustment_configure             (CtkAdjustment   *adjustment,
                                                  gdouble          value,
                                                  gdouble          lower,
                                                  gdouble          upper,
@@ -132,7 +132,7 @@ void       ctk_adjustment_configure             (GtkAdjustment   *adjustment,
                                                  gdouble          page_increment,
                                                  gdouble          page_size);
 GDK_AVAILABLE_IN_3_2
-gdouble    ctk_adjustment_get_minimum_increment (GtkAdjustment   *adjustment);
+gdouble    ctk_adjustment_get_minimum_increment (CtkAdjustment   *adjustment);
 
 G_END_DECLS
 

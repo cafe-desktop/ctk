@@ -25,10 +25,10 @@
 
 G_BEGIN_DECLS
 
-GtkCssValue *   _ctk_css_transform_value_new_none       (void);
-GtkCssValue *   _ctk_css_transform_value_parse          (GtkCssParser           *parser);
+CtkCssValue *   _ctk_css_transform_value_new_none       (void);
+CtkCssValue *   _ctk_css_transform_value_parse          (CtkCssParser           *parser);
 
-gboolean        _ctk_css_transform_value_get_matrix     (const GtkCssValue      *transform,
+gboolean        _ctk_css_transform_value_get_matrix     (const CtkCssValue      *transform,
                                                          cairo_matrix_t         *matrix);
 
 G_END_DECLS

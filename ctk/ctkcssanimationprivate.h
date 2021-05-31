@@ -28,51 +28,51 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CSS_ANIMATION           (_ctk_css_animation_get_type ())
-#define CTK_CSS_ANIMATION(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_ANIMATION, GtkCssAnimation))
-#define CTK_CSS_ANIMATION_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_ANIMATION, GtkCssAnimationClass))
+#define CTK_CSS_ANIMATION(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_ANIMATION, CtkCssAnimation))
+#define CTK_CSS_ANIMATION_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_ANIMATION, CtkCssAnimationClass))
 #define CTK_IS_CSS_ANIMATION(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_ANIMATION))
 #define CTK_IS_CSS_ANIMATION_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_ANIMATION))
-#define CTK_CSS_ANIMATION_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_ANIMATION, GtkCssAnimationClass))
+#define CTK_CSS_ANIMATION_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_ANIMATION, CtkCssAnimationClass))
 
-typedef struct _GtkCssAnimation           GtkCssAnimation;
-typedef struct _GtkCssAnimationClass      GtkCssAnimationClass;
+typedef struct _CtkCssAnimation           CtkCssAnimation;
+typedef struct _CtkCssAnimationClass      CtkCssAnimationClass;
 
-struct _GtkCssAnimation
+struct _CtkCssAnimation
 {
-  GtkStyleAnimation parent;
+  CtkStyleAnimation parent;
 
   char            *name;
-  GtkCssKeyframes *keyframes;
-  GtkCssValue     *ease;
-  GtkCssDirection  direction;
-  GtkCssPlayState  play_state;
-  GtkCssFillMode   fill_mode;
-  GtkProgressTracker tracker;
+  CtkCssKeyframes *keyframes;
+  CtkCssValue     *ease;
+  CtkCssDirection  direction;
+  CtkCssPlayState  play_state;
+  CtkCssFillMode   fill_mode;
+  CtkProgressTracker tracker;
 };
 
-struct _GtkCssAnimationClass
+struct _CtkCssAnimationClass
 {
-  GtkStyleAnimationClass parent_class;
+  CtkStyleAnimationClass parent_class;
 };
 
 GType                   _ctk_css_animation_get_type        (void) G_GNUC_CONST;
 
-GtkStyleAnimation *     _ctk_css_animation_new             (const char         *name,
-                                                            GtkCssKeyframes    *keyframes,
+CtkStyleAnimation *     _ctk_css_animation_new             (const char         *name,
+                                                            CtkCssKeyframes    *keyframes,
                                                             gint64              timestamp,
                                                             gint64              delay_us,
                                                             gint64              duration_us,
-                                                            GtkCssValue        *ease,
-                                                            GtkCssDirection     direction,
-                                                            GtkCssPlayState     play_state,
-                                                            GtkCssFillMode      fill_mode,
+                                                            CtkCssValue        *ease,
+                                                            CtkCssDirection     direction,
+                                                            CtkCssPlayState     play_state,
+                                                            CtkCssFillMode      fill_mode,
                                                             double              iteration_count);
 
-GtkStyleAnimation *     _ctk_css_animation_advance_with_play_state (GtkCssAnimation   *animation,
+CtkStyleAnimation *     _ctk_css_animation_advance_with_play_state (CtkCssAnimation   *animation,
                                                                     gint64             timestamp,
-                                                                    GtkCssPlayState    play_state);
+                                                                    CtkCssPlayState    play_state);
 
-const char *            _ctk_css_animation_get_name        (GtkCssAnimation   *animation);
+const char *            _ctk_css_animation_get_name        (CtkCssAnimation   *animation);
 
 G_END_DECLS
 

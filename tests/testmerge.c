@@ -38,8 +38,8 @@ struct { const gchar *filename; guint merge_id; } merge_ids[] = {
 };
 
 static void
-dump_tree (GtkWidget    *button, 
-	   GtkUIManager *merge)
+dump_tree (CtkWidget    *button, 
+	   CtkUIManager *merge)
 {
   gchar *dump;
 
@@ -55,14 +55,14 @@ dump_accels (void)
 }
 
 static void
-print_toplevel (GtkWidget *widget, gpointer user_data)
+print_toplevel (CtkWidget *widget, gpointer user_data)
 {
   g_print ("%s\n", G_OBJECT_TYPE_NAME (widget));
 }
 
 static void
-dump_toplevels (GtkWidget    *button, 
-		GtkUIManager *merge)
+dump_toplevels (CtkWidget    *button, 
+		CtkUIManager *merge)
 {
   GSList *toplevels;
 
@@ -76,8 +76,8 @@ dump_toplevels (GtkWidget    *button,
 }
 
 static void
-toggle_tearoffs (GtkWidget    *button, 
-		 GtkUIManager *merge)
+toggle_tearoffs (CtkWidget    *button, 
+		 CtkUIManager *merge)
 {
   gboolean add_tearoffs;
 
@@ -87,10 +87,10 @@ toggle_tearoffs (GtkWidget    *button,
 }
 
 static gint
-delayed_toggle_dynamic (GtkUIManager *merge)
+delayed_toggle_dynamic (CtkUIManager *merge)
 {
-  GtkAction *dyn;
-  static GtkActionGroup *dynamic = NULL;
+  CtkAction *dyn;
+  static CtkActionGroup *dynamic = NULL;
   static guint merge_id = 0;
 
   if (!dynamic)
@@ -138,14 +138,14 @@ delayed_toggle_dynamic (GtkUIManager *merge)
 }
 
 static void
-toggle_dynamic (GtkWidget    *button, 
-		GtkUIManager *merge)
+toggle_dynamic (CtkWidget    *button, 
+		CtkUIManager *merge)
 {
   gdk_threads_add_timeout (2000, (GSourceFunc)delayed_toggle_dynamic, merge);
 }
 
 static void
-activate_action (GtkAction *action)
+activate_action (CtkAction *action)
 {
   const gchar *name = ctk_action_get_name (action);
   const gchar *typename = G_OBJECT_TYPE_NAME (action);
@@ -154,7 +154,7 @@ activate_action (GtkAction *action)
 }
 
 static void
-toggle_action (GtkAction *action)
+toggle_action (CtkAction *action)
 {
   const gchar *name = ctk_action_get_name (action);
   const gchar *typename = G_OBJECT_TYPE_NAME (action);
@@ -165,7 +165,7 @@ toggle_action (GtkAction *action)
 
 
 static void
-radio_action_changed (GtkAction *action, GtkRadioAction *current)
+radio_action_changed (CtkAction *action, CtkRadioAction *current)
 {
   g_message ("RadioAction %s (type=%s) activated (active=%d) (value %d)", 
 	     ctk_action_get_name (CTK_ACTION (current)), 
@@ -174,7 +174,7 @@ radio_action_changed (GtkAction *action, GtkRadioAction *current)
 	     ctk_radio_action_get_current_value (current));
 }
 
-static GtkActionEntry entries[] = {
+static CtkActionEntry entries[] = {
   { "FileMenuAction", NULL, "_File" },
   { "EditMenuAction", NULL, "_Edit" },
   { "HelpMenuAction", NULL, "_Help" },
@@ -194,7 +194,7 @@ static GtkActionEntry entries[] = {
 };
 static guint n_entries = G_N_ELEMENTS (entries);
 
-static GtkToggleActionEntry toggle_entries[] = {
+static CtkToggleActionEntry toggle_entries[] = {
   { "BoldAction",  CTK_STOCK_BOLD,  "_Bold",  "<control>b", "Make it bold", G_CALLBACK (toggle_action), 
     TRUE },
 };
@@ -207,7 +207,7 @@ enum {
   JUSTIFY_FILL
 };
 
-static GtkRadioActionEntry radio_entries[] = {
+static CtkRadioActionEntry radio_entries[] = {
   { "justify-left", CTK_STOCK_JUSTIFY_LEFT, NULL, "<control>L", 
     "Left justify the text", JUSTIFY_LEFT },
   { "justify-center", CTK_STOCK_JUSTIFY_CENTER, NULL, "<super>E",
@@ -220,17 +220,17 @@ static GtkRadioActionEntry radio_entries[] = {
 static guint n_radio_entries = G_N_ELEMENTS (radio_entries);
 
 static void
-add_widget (GtkUIManager *merge, 
-	    GtkWidget    *widget, 
-	    GtkBox       *box)
+add_widget (CtkUIManager *merge, 
+	    CtkWidget    *widget, 
+	    CtkBox       *box)
 {
   ctk_box_pack_start (box, widget, FALSE, FALSE, 0);
   ctk_widget_show (widget);
 }
 
 static void
-toggle_merge (GtkWidget    *button, 
-	      GtkUIManager *merge)
+toggle_merge (CtkWidget    *button, 
+	      CtkUIManager *merge)
 {
   gint mergenum;
 
@@ -245,7 +245,7 @@ toggle_merge (GtkWidget    *button,
 	ctk_ui_manager_add_ui_from_file (merge, merge_ids[mergenum].filename, &err);
       if (err != NULL)
 	{
-	  GtkWidget *dialog;
+	  CtkWidget *dialog;
 
 	  dialog = ctk_message_dialog_new (CTK_WINDOW (ctk_widget_get_toplevel (button)),
 					   0, CTK_MESSAGE_WARNING, CTK_BUTTONS_OK,
@@ -267,13 +267,13 @@ toggle_merge (GtkWidget    *button,
 }
 
 static void  
-set_name_func (GtkTreeViewColumn *tree_column,
-	       GtkCellRenderer   *cell,
-	       GtkTreeModel      *tree_model,
-	       GtkTreeIter       *iter,
+set_name_func (CtkTreeViewColumn *tree_column,
+	       CtkCellRenderer   *cell,
+	       CtkTreeModel      *tree_model,
+	       CtkTreeIter       *iter,
 	       gpointer           data)
 {
-  GtkAction *action;
+  CtkAction *action;
   char *name;
   
   ctk_tree_model_get (tree_model, iter, 0, &action, -1);
@@ -284,13 +284,13 @@ set_name_func (GtkTreeViewColumn *tree_column,
 }
 
 static void
-set_sensitive_func (GtkTreeViewColumn *tree_column,
-		    GtkCellRenderer   *cell,
-		    GtkTreeModel      *tree_model,
-		    GtkTreeIter       *iter,
+set_sensitive_func (CtkTreeViewColumn *tree_column,
+		    CtkCellRenderer   *cell,
+		    CtkTreeModel      *tree_model,
+		    CtkTreeIter       *iter,
 		    gpointer           data)
 {
-  GtkAction *action;
+  CtkAction *action;
   gboolean sensitive;
   
   ctk_tree_model_get (tree_model, iter, 0, &action, -1);
@@ -301,13 +301,13 @@ set_sensitive_func (GtkTreeViewColumn *tree_column,
 
 
 static void
-set_visible_func (GtkTreeViewColumn *tree_column,
-		  GtkCellRenderer   *cell,
-		  GtkTreeModel      *tree_model,
-		  GtkTreeIter       *iter,
+set_visible_func (CtkTreeViewColumn *tree_column,
+		  CtkCellRenderer   *cell,
+		  CtkTreeModel      *tree_model,
+		  CtkTreeIter       *iter,
 		  gpointer           data)
 {
-  GtkAction *action;
+  CtkAction *action;
   gboolean visible;
   
   ctk_tree_model_get (tree_model, iter, 0, &action, -1);
@@ -317,13 +317,13 @@ set_visible_func (GtkTreeViewColumn *tree_column,
 }
 
 static void
-sensitivity_toggled (GtkCellRendererToggle *cell, 
+sensitivity_toggled (CtkCellRendererToggle *cell, 
 		     const gchar           *path_str,
-		     GtkTreeModel          *model)
+		     CtkTreeModel          *model)
 {
-  GtkTreePath *path;
-  GtkTreeIter iter;
-  GtkAction *action;
+  CtkTreePath *path;
+  CtkTreeIter iter;
+  CtkAction *action;
   gboolean sensitive;
 
   path = ctk_tree_path_new_from_string (path_str);
@@ -337,13 +337,13 @@ sensitivity_toggled (GtkCellRendererToggle *cell,
 }
 
 static void
-visibility_toggled (GtkCellRendererToggle *cell, 
+visibility_toggled (CtkCellRendererToggle *cell, 
 		    const gchar           *path_str, 
-		    GtkTreeModel          *model)
+		    CtkTreeModel          *model)
 {
-  GtkTreePath *path;
-  GtkTreeIter iter;
-  GtkAction *action;
+  CtkTreePath *path;
+  CtkTreeIter iter;
+  CtkAction *action;
   gboolean visible;
 
   path = ctk_tree_path_new_from_string (path_str);
@@ -357,13 +357,13 @@ visibility_toggled (GtkCellRendererToggle *cell,
 }
 
 static gint
-iter_compare_func (GtkTreeModel *model, 
-		   GtkTreeIter  *a, 
-		   GtkTreeIter  *b,
+iter_compare_func (CtkTreeModel *model, 
+		   CtkTreeIter  *a, 
+		   CtkTreeIter  *b,
 		   gpointer      user_data)
 {
   GValue a_value = G_VALUE_INIT, b_value = G_VALUE_INIT;
-  GtkAction *a_action, *b_action;
+  CtkAction *a_action, *b_action;
   const gchar *a_name, *b_name;
   gint retval = 0;
 
@@ -389,13 +389,13 @@ iter_compare_func (GtkTreeModel *model,
   return retval;
 }
 
-static GtkWidget *
-create_tree_view (GtkUIManager *merge)
+static CtkWidget *
+create_tree_view (CtkUIManager *merge)
 {
-  GtkWidget *tree_view, *sw;
-  GtkListStore *store;
+  CtkWidget *tree_view, *sw;
+  CtkListStore *store;
   GList *p;
-  GtkCellRenderer *cell;
+  CtkCellRenderer *cell;
   
   store = ctk_list_store_new (1, CTK_TYPE_ACTION);
   ctk_tree_sortable_set_sort_func (CTK_TREE_SORTABLE (store), 0,
@@ -411,7 +411,7 @@ create_tree_view (GtkUIManager *merge)
 
       for (l = actions; l; l = l->next)
 	{
-	  GtkTreeIter iter;
+	  CtkTreeIter iter;
 
 	  ctk_list_store_append (store, &iter);
 	  ctk_list_store_set (store, &iter, 0, l->data, -1);
@@ -453,16 +453,16 @@ create_tree_view (GtkUIManager *merge)
 }
 
 static gboolean
-area_press (GtkWidget      *drawing_area,
+area_press (CtkWidget      *drawing_area,
 	    GdkEventButton *event,
-	    GtkUIManager   *merge)
+	    CtkUIManager   *merge)
 {
   ctk_widget_grab_focus (drawing_area);
 
   if (gdk_event_triggers_context_menu ((GdkEvent *) event) &&
       event->type == GDK_BUTTON_PRESS)
     {
-      GtkWidget *menu = ctk_ui_manager_get_widget (merge, "/FileMenu");
+      CtkWidget *menu = ctk_ui_manager_get_widget (merge, "/FileMenu");
       
       if (CTK_IS_MENU (menu)) 
 	{
@@ -478,10 +478,10 @@ area_press (GtkWidget      *drawing_area,
 }
 
 static void
-activate_path (GtkWidget      *button,
-	       GtkUIManager   *merge)
+activate_path (CtkWidget      *button,
+	       CtkUIManager   *merge)
 {
-  GtkAction *action = ctk_ui_manager_get_action (merge, 
+  CtkAction *action = ctk_ui_manager_get_action (merge, 
 						 "/menubar/HelpMenu/About");
   if (action)
     ctk_action_activate (action);
@@ -492,8 +492,8 @@ activate_path (GtkWidget      *button,
 typedef struct _ActionStatus ActionStatus;
 
 struct _ActionStatus {
-  GtkAction *action;
-  GtkWidget *statusbar;
+  CtkAction *action;
+  CtkWidget *statusbar;
 };
 
 static void
@@ -508,7 +508,7 @@ action_status_destroy (gpointer data)
 }
 
 static void
-set_tip (GtkWidget *widget)
+set_tip (CtkWidget *widget)
 {
   ActionStatus *data;
   gchar *tooltip;
@@ -527,7 +527,7 @@ set_tip (GtkWidget *widget)
 }
 
 static void
-unset_tip (GtkWidget *widget)
+unset_tip (CtkWidget *widget)
 {
   ActionStatus *data;
 
@@ -538,10 +538,10 @@ unset_tip (GtkWidget *widget)
 }
 		    
 static void
-connect_proxy (GtkUIManager *merge,
-	       GtkAction    *action,
-	       GtkWidget    *proxy,
-	       GtkWidget    *statusbar)
+connect_proxy (CtkUIManager *merge,
+	       CtkAction    *action,
+	       CtkWidget    *proxy,
+	       CtkWidget    *statusbar)
 {
   if (CTK_IS_MENU_ITEM (proxy)) 
     {
@@ -575,12 +575,12 @@ connect_proxy (GtkUIManager *merge,
 int
 main (int argc, char **argv)
 {
-  GtkActionGroup *action_group;
-  GtkAction *action;
-  GtkUIManager *merge;
-  GtkWidget *window, *grid, *frame, *menu_box, *vbox, *view;
-  GtkWidget *button, *area, *statusbar;
-  GtkWidget *box;
+  CtkActionGroup *action_group;
+  CtkAction *action;
+  CtkUIManager *merge;
+  CtkWidget *window, *grid, *frame, *menu_box, *vbox, *view;
+  CtkWidget *button, *area, *statusbar;
+  CtkWidget *box;
   gint i;
   
   ctk_init (&argc, &argv);
@@ -718,7 +718,7 @@ main (int argc, char **argv)
 	 action; 
 	 action = action->next)
       {
-	GtkAction *a = action->data;
+	CtkAction *a = action->data;
 	g_print ("  action %s ref count %d\n", 
 		 ctk_action_get_name (a), G_OBJECT (a)->ref_count);
       }
@@ -736,7 +736,7 @@ main (int argc, char **argv)
 	 action; 
 	 action = action->next)
       {
-	GtkAction *a = action->data;
+	CtkAction *a = action->data;
 	g_print ("  action %s ref count %d\n", 
 		 ctk_action_get_name (a), G_OBJECT (a)->ref_count);
       }

@@ -31,32 +31,32 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_EVENT_CONTROLLER_KEY         (ctk_event_controller_key_get_type ())
-#define CTK_EVENT_CONTROLLER_KEY(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_EVENT_CONTROLLER_KEY, GtkEventControllerKey))
-#define CTK_EVENT_CONTROLLER_KEY_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_EVENT_CONTROLLER_KEY, GtkEventControllerKeyClass))
+#define CTK_EVENT_CONTROLLER_KEY(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_EVENT_CONTROLLER_KEY, CtkEventControllerKey))
+#define CTK_EVENT_CONTROLLER_KEY_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_EVENT_CONTROLLER_KEY, CtkEventControllerKeyClass))
 #define CTK_IS_EVENT_CONTROLLER_KEY(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_EVENT_CONTROLLER_KEY))
 #define CTK_IS_EVENT_CONTROLLER_KEY_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), CTK_TYPE_EVENT_CONTROLLER_KEY))
-#define CTK_EVENT_CONTROLLER_KEY_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_EVENT_CONTROLLER_KEY, GtkEventControllerKeyClass))
+#define CTK_EVENT_CONTROLLER_KEY_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_EVENT_CONTROLLER_KEY, CtkEventControllerKeyClass))
 
-typedef struct _GtkEventControllerKey GtkEventControllerKey;
-typedef struct _GtkEventControllerKeyClass GtkEventControllerKeyClass;
+typedef struct _CtkEventControllerKey CtkEventControllerKey;
+typedef struct _CtkEventControllerKeyClass CtkEventControllerKeyClass;
 
 GDK_AVAILABLE_IN_3_24
 GType               ctk_event_controller_key_get_type  (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_24
-GtkEventController *ctk_event_controller_key_new (GtkWidget *widget);
+CtkEventController *ctk_event_controller_key_new (CtkWidget *widget);
 
 GDK_AVAILABLE_IN_3_24
-void                ctk_event_controller_key_set_im_context (GtkEventControllerKey *controller,
-                                                             GtkIMContext          *im_context);
+void                ctk_event_controller_key_set_im_context (CtkEventControllerKey *controller,
+                                                             CtkIMContext          *im_context);
 GDK_AVAILABLE_IN_3_24
-GtkIMContext *      ctk_event_controller_key_get_im_context (GtkEventControllerKey *controller);
+CtkIMContext *      ctk_event_controller_key_get_im_context (CtkEventControllerKey *controller);
 
 GDK_AVAILABLE_IN_3_24
-gboolean            ctk_event_controller_key_forward        (GtkEventControllerKey *controller,
-                                                             GtkWidget             *widget);
+gboolean            ctk_event_controller_key_forward        (CtkEventControllerKey *controller,
+                                                             CtkWidget             *widget);
 GDK_AVAILABLE_IN_3_24
-guint               ctk_event_controller_key_get_group      (GtkEventControllerKey *controller);
+guint               ctk_event_controller_key_get_group      (CtkEventControllerKey *controller);
 
 G_END_DECLS
 

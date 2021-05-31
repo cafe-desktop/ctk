@@ -60,7 +60,7 @@
 /**
  * SECTION:ctkstatusicon
  * @Short_description: Display an icon in the system tray
- * @Title: GtkStatusIcon
+ * @Title: CtkStatusIcon
  *
  * The “system tray” or notification area is normally used for transient icons
  * that indicate some special state. For example, a system tray icon might
@@ -68,7 +68,7 @@
  * message, or something along those lines. The basic idea is that creating an
  * icon in the notification area is less annoying than popping up a dialog.
  *
- * A #GtkStatusIcon object can be used to display an icon in a “system tray”.
+ * A #CtkStatusIcon object can be used to display an icon in a “system tray”.
  * The icon can have a tooltip, and the user can interact with it by
  * activating it or popping up a context menu.
  *
@@ -85,13 +85,13 @@
  * Implementations of the “tray” side of this specification can
  * be found e.g. in the GNOME 2 and KDE panel applications.
  *
- * Note that a GtkStatusIcon is not a widget, but just a #GObject. Making it a
+ * Note that a CtkStatusIcon is not a widget, but just a #GObject. Making it a
  * widget would be impractical, since the system tray on Windows doesn’t allow
  * to embed arbitrary widgets.
  *
- * GtkStatusIcon has been deprecated in 3.14. You should consider using
+ * CtkStatusIcon has been deprecated in 3.14. You should consider using
  * notifications or more modern platform-specific APIs instead. GLib provides
- * the #GNotification API which works well with #GtkApplication on multiple
+ * the #GNotification API which works well with #CtkApplication on multiple
  * platforms and environments, and should be the preferred mechanism to notify
  * the users of transient status updates. See this [HowDoI](https://wiki.gnome.org/HowDoI/GNotification)
  * for code examples.
@@ -139,32 +139,32 @@ static guint status_icon_signals [LAST_SIGNAL] = { 0 };
 #include "ctkstatusicon-quartz.c"
 #endif
 
-struct _GtkStatusIconPrivate
+struct _CtkStatusIconPrivate
 {
 #ifdef GDK_WINDOWING_X11
-  GtkWidget    *tray_icon;
-  GtkWidget    *image;
+  CtkWidget    *tray_icon;
+  CtkWidget    *image;
 #else
-  GtkWidget    *dummy_widget;
+  CtkWidget    *dummy_widget;
 #endif
 
 #ifdef GDK_WINDOWING_WIN32
   NOTIFYICONDATAW nid;
   gint          taskbar_top;
   gint		last_click_x, last_click_y;
-  GtkOrientation orientation;
+  CtkOrientation orientation;
   gchar         *tooltip_text;
   gchar         *title;
 #endif
 
 #ifdef GDK_WINDOWING_QUARTZ
-  GtkQuartzStatusIcon *status_item;
+  CtkQuartzStatusIcon *status_item;
   gchar         *tooltip_text;
   gchar         *title;
 #endif
 
   gint           size;
-  GtkImageDefinition *image_def;
+  CtkImageDefinition *image_def;
   guint          visible : 1;
 };
 
@@ -180,41 +180,41 @@ static void     ctk_status_icon_get_property     (GObject        *object,
 					          GParamSpec     *pspec);
 
 #ifdef GDK_WINDOWING_X11
-static void     ctk_status_icon_size_allocate    (GtkStatusIcon  *status_icon,
-						  GtkAllocation  *allocation);
-static void     ctk_status_icon_screen_changed   (GtkStatusIcon  *status_icon,
+static void     ctk_status_icon_size_allocate    (CtkStatusIcon  *status_icon,
+						  CtkAllocation  *allocation);
+static void     ctk_status_icon_screen_changed   (CtkStatusIcon  *status_icon,
 						  GdkScreen      *old_screen);
-static void     ctk_status_icon_embedded_changed (GtkStatusIcon *status_icon);
-static void     ctk_status_icon_orientation_changed (GtkStatusIcon *status_icon);
-static void     ctk_status_icon_padding_changed  (GtkStatusIcon *status_icon);
-static void     ctk_status_icon_icon_size_changed(GtkStatusIcon *status_icon);
-static void     ctk_status_icon_fg_changed       (GtkStatusIcon *status_icon);
-static void     ctk_status_icon_color_changed    (GtkTrayIcon   *tray,
+static void     ctk_status_icon_embedded_changed (CtkStatusIcon *status_icon);
+static void     ctk_status_icon_orientation_changed (CtkStatusIcon *status_icon);
+static void     ctk_status_icon_padding_changed  (CtkStatusIcon *status_icon);
+static void     ctk_status_icon_icon_size_changed(CtkStatusIcon *status_icon);
+static void     ctk_status_icon_fg_changed       (CtkStatusIcon *status_icon);
+static void     ctk_status_icon_color_changed    (CtkTrayIcon   *tray,
                                                   GParamSpec    *pspec,
-                                                  GtkStatusIcon *status_icon);
-static gboolean ctk_status_icon_scroll           (GtkStatusIcon  *status_icon,
+                                                  CtkStatusIcon *status_icon);
+static gboolean ctk_status_icon_scroll           (CtkStatusIcon  *status_icon,
 						  GdkEventScroll *event);
-static gboolean ctk_status_icon_query_tooltip    (GtkStatusIcon *status_icon,
+static gboolean ctk_status_icon_query_tooltip    (CtkStatusIcon *status_icon,
 						  gint           x,
 						  gint           y,
 						  gboolean       keyboard_tip,
-						  GtkTooltip    *tooltip);
+						  CtkTooltip    *tooltip);
 
-static gboolean ctk_status_icon_key_press        (GtkStatusIcon  *status_icon,
+static gboolean ctk_status_icon_key_press        (CtkStatusIcon  *status_icon,
 						  GdkEventKey    *event);
-static void     ctk_status_icon_popup_menu       (GtkStatusIcon  *status_icon);
+static void     ctk_status_icon_popup_menu       (CtkStatusIcon  *status_icon);
 #endif
-static gboolean ctk_status_icon_button_press     (GtkStatusIcon  *status_icon,
+static gboolean ctk_status_icon_button_press     (CtkStatusIcon  *status_icon,
 						  GdkEventButton *event);
-static gboolean ctk_status_icon_button_release   (GtkStatusIcon  *status_icon,
+static gboolean ctk_status_icon_button_release   (CtkStatusIcon  *status_icon,
 						  GdkEventButton *event);
-static void     ctk_status_icon_reset_image_data (GtkStatusIcon  *status_icon);
-static void     ctk_status_icon_update_image    (GtkStatusIcon *status_icon);
+static void     ctk_status_icon_reset_image_data (CtkStatusIcon  *status_icon);
+static void     ctk_status_icon_update_image    (CtkStatusIcon *status_icon);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkStatusIcon, ctk_status_icon, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkStatusIcon, ctk_status_icon, G_TYPE_OBJECT)
 
 static void
-ctk_status_icon_class_init (GtkStatusIconClass *class)
+ctk_status_icon_class_init (CtkStatusIconClass *class)
 {
   GObjectClass *gobject_class = (GObjectClass *) class;
 
@@ -245,9 +245,9 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
 							CTK_PARAM_WRITABLE));
 
   /**
-   * GtkStatusIcon:stock:
+   * CtkStatusIcon:stock:
    *
-   * Deprecated: 3.10: Use #GtkStatusIcon:icon-name instead.
+   * Deprecated: 3.10: Use #CtkStatusIcon:icon-name instead.
    */
   g_object_class_install_property (gobject_class,
 				   PROP_STOCK,
@@ -266,9 +266,9 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
                                                         CTK_PARAM_READWRITE));
 
   /**
-   * GtkStatusIcon:gicon:
+   * CtkStatusIcon:gicon:
    *
-   * The #GIcon displayed in the #GtkStatusIcon. For themed icons,
+   * The #GIcon displayed in the #CtkStatusIcon. For themed icons,
    * the image will be updated automatically if the theme changes.
    *
    * Since: 2.14
@@ -318,7 +318,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
 
 
   /**
-   * GtkStatusIcon:embedded: 
+   * CtkStatusIcon:embedded: 
    *
    * %TRUE if the statusicon is embedded in a notification area.
    *
@@ -333,7 +333,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
 							 CTK_PARAM_READABLE));
 
   /**
-   * GtkStatusIcon:orientation:
+   * CtkStatusIcon:orientation:
    *
    * The orientation of the tray in which the statusicon 
    * is embedded. 
@@ -350,12 +350,12 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
 						      CTK_PARAM_READABLE));
 
 /**
- * GtkStatusIcon:has-tooltip:
+ * CtkStatusIcon:has-tooltip:
  *
- * Enables or disables the emission of #GtkStatusIcon::query-tooltip on
+ * Enables or disables the emission of #CtkStatusIcon::query-tooltip on
  * @status_icon.  A value of %TRUE indicates that @status_icon can have a
  * tooltip, in this case the status icon will be queried using
- * #GtkStatusIcon::query-tooltip to determine whether it will provide a
+ * #CtkStatusIcon::query-tooltip to determine whether it will provide a
  * tooltip or not.
  *
  * Note that setting this property to %TRUE for the first time will change
@@ -364,7 +364,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
  * to %FALSE again.
  *
  * Whether this property is respected is platform dependent.
- * For plain text tooltips, use #GtkStatusIcon:tooltip-text in preference.
+ * For plain text tooltips, use #CtkStatusIcon:tooltip-text in preference.
  *
  * Since: 2.16
  */
@@ -377,7 +377,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
  							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkStatusIcon:tooltip-text:
+   * CtkStatusIcon:tooltip-text:
    *
    * Sets the text of tooltip to be the given string.
    *
@@ -385,8 +385,8 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
    *
    * This is a convenience property which will take care of getting the
    * tooltip shown if the given string is not %NULL.
-   * #GtkStatusIcon:has-tooltip will automatically be set to %TRUE and
-   * the default handler for the #GtkStatusIcon::query-tooltip signal
+   * #CtkStatusIcon:has-tooltip will automatically be set to %TRUE and
+   * the default handler for the #CtkStatusIcon::query-tooltip signal
    * will take care of displaying the tooltip.
    *
    * Note that some platforms have limitations on the length of tooltips
@@ -403,7 +403,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
                                                         NULL,
                                                         CTK_PARAM_READWRITE));
   /**
-   * GtkStatusIcon:tooltip-markup:
+   * CtkStatusIcon:tooltip-markup:
    *
    * Sets the text of tooltip to be the given string, which is marked up
    * with the [Pango text markup language][PangoMarkupFormat].
@@ -411,8 +411,8 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
    *
    * This is a convenience property which will take care of getting the
    * tooltip shown if the given string is not %NULL.
-   * #GtkStatusIcon:has-tooltip will automatically be set to %TRUE and
-   * the default handler for the #GtkStatusIcon::query-tooltip signal
+   * #CtkStatusIcon:has-tooltip will automatically be set to %TRUE and
+   * the default handler for the #CtkStatusIcon::query-tooltip signal
    * will take care of displaying the tooltip.
    *
    * On some platforms, embedded markup will be ignored.
@@ -429,7 +429,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
 
 
   /**
-   * GtkStatusIcon:title:
+   * CtkStatusIcon:title:
    *
    * The title of this tray icon. This should be a short, human-readable,
    * localized string describing the tray icon. It may be used by tools
@@ -446,7 +446,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
                                                         CTK_PARAM_READWRITE));
 
   /**
-   * GtkStatusIcon::activate:
+   * CtkStatusIcon::activate:
    * @status_icon: the object which received the signal
    *
    * Gets emitted when the user activates the status icon. 
@@ -461,7 +461,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
     g_signal_new (I_("activate"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
-		  G_STRUCT_OFFSET (GtkStatusIconClass, activate),
+		  G_STRUCT_OFFSET (CtkStatusIconClass, activate),
 		  NULL,
 		  NULL,
 		  NULL,
@@ -469,7 +469,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
 		  0);
 
   /**
-   * GtkStatusIcon::popup-menu:
+   * CtkStatusIcon::popup-menu:
    * @status_icon: the object which received the signal
    * @button: the button that was pressed, or 0 if the 
    *   signal is not emitted in response to a button press event
@@ -492,7 +492,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
     g_signal_new (I_("popup-menu"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
-		  G_STRUCT_OFFSET (GtkStatusIconClass, popup_menu),
+		  G_STRUCT_OFFSET (CtkStatusIconClass, popup_menu),
 		  NULL,
 		  NULL,
 		  _ctk_marshal_VOID__UINT_UINT,
@@ -502,7 +502,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
 		  G_TYPE_UINT);
 
   /**
-   * GtkStatusIcon::size-changed:
+   * CtkStatusIcon::size-changed:
    * @status_icon: the object which received the signal
    * @size: the new size
    *
@@ -518,7 +518,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
     g_signal_new (I_("size-changed"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkStatusIconClass, size_changed),
+		  G_STRUCT_OFFSET (CtkStatusIconClass, size_changed),
 		  g_signal_accumulator_true_handled,
 		  NULL,
 		  _ctk_marshal_BOOLEAN__INT,
@@ -527,7 +527,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
 		  G_TYPE_INT);
 
   /**
-   * GtkStatusIcon::button-press-event:
+   * CtkStatusIcon::button-press-event:
    * @status_icon: the object which received the signal
    * @event: (type Gdk.EventButton): the #GdkEventButton which triggered 
    *                                 this signal
@@ -547,14 +547,14 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
     g_signal_new (I_("button_press_event"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkStatusIconClass, button_press_event),
+		  G_STRUCT_OFFSET (CtkStatusIconClass, button_press_event),
 		  g_signal_accumulator_true_handled, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
 		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
 
   /**
-   * GtkStatusIcon::button-release-event:
+   * CtkStatusIcon::button-release-event:
    * @status_icon: the object which received the signal
    * @event: (type Gdk.EventButton): the #GdkEventButton which triggered 
    *                                 this signal
@@ -574,14 +574,14 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
     g_signal_new (I_("button_release_event"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkStatusIconClass, button_release_event),
+		  G_STRUCT_OFFSET (CtkStatusIconClass, button_release_event),
 		  g_signal_accumulator_true_handled, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
 		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
 
   /**
-   * GtkStatusIcon::scroll-event:
+   * CtkStatusIcon::scroll-event:
    * @status_icon: the object which received the signal.
    * @event: (type Gdk.EventScroll): the #GdkEventScroll which triggered 
    *                                 this signal
@@ -601,21 +601,21 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
     g_signal_new (I_("scroll_event"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkStatusIconClass, scroll_event),
+		  G_STRUCT_OFFSET (CtkStatusIconClass, scroll_event),
 		  g_signal_accumulator_true_handled, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
 		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
 
   /**
-   * GtkStatusIcon::query-tooltip:
+   * CtkStatusIcon::query-tooltip:
    * @status_icon: the object which received the signal
    * @x: the x coordinate of the cursor position where the request has been
    *     emitted, relative to @status_icon
    * @y: the y coordinate of the cursor position where the request has been
    *     emitted, relative to @status_icon
    * @keyboard_mode: %TRUE if the tooltip was trigged using the keyboard
-   * @tooltip: a #GtkTooltip
+   * @tooltip: a #CtkTooltip
    *
    * Emitted when the hover timeout has expired with the
    * cursor hovering above @status_icon; or emitted when @status_icon got
@@ -631,7 +631,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
    * destined function calls.
    *
    * Whether this signal is emitted is platform-dependent.
-   * For plain text tooltips, use #GtkStatusIcon:tooltip-text in preference.
+   * For plain text tooltips, use #CtkStatusIcon:tooltip-text in preference.
    *
    * Returns: %TRUE if @tooltip should be shown right now, %FALSE otherwise.
    *
@@ -641,7 +641,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
     g_signal_new (I_("query_tooltip"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkStatusIconClass, query_tooltip),
+		  G_STRUCT_OFFSET (CtkStatusIconClass, query_tooltip),
 		  g_signal_accumulator_true_handled, NULL,
 		  _ctk_marshal_BOOLEAN__INT_INT_BOOLEAN_OBJECT,
 		  G_TYPE_BOOLEAN, 4,
@@ -654,7 +654,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
 #ifdef GDK_WINDOWING_WIN32
 
 static void
-build_button_event (GtkStatusIconPrivate *priv,
+build_button_event (CtkStatusIconPrivate *priv,
 		    GdkEventButton       *e,
 		    guint                 button)
 {
@@ -679,7 +679,7 @@ build_button_event (GtkStatusIconPrivate *priv,
 
 typedef struct
 {
-  GtkStatusIcon *status_icon;
+  CtkStatusIcon *status_icon;
   GdkEventButton *event;
 } ButtonCallbackData;
 
@@ -703,15 +703,15 @@ static UINT taskbar_created_msg = 0;
 static GSList *status_icons = NULL;
 static UINT status_icon_id = 0;
 
-static GtkStatusIcon *
+static CtkStatusIcon *
 find_status_icon (UINT id)
 {
   GSList *rover;
 
   for (rover = status_icons; rover != NULL; rover = rover->next)
     {
-      GtkStatusIcon *status_icon = CTK_STATUS_ICON (rover->data);
-      GtkStatusIconPrivate *priv = status_icon->priv;
+      CtkStatusIcon *status_icon = CTK_STATUS_ICON (rover->data);
+      CtkStatusIconPrivate *priv = status_icon->priv;
 
       if (priv->nid.uID == id)
         return status_icon;
@@ -732,8 +732,8 @@ wndproc (HWND   hwnd,
 
       for (rover = status_icons; rover != NULL; rover = rover->next)
 	{
-	  GtkStatusIcon *status_icon = CTK_STATUS_ICON (rover->data);
-	  GtkStatusIconPrivate *priv = status_icon->priv;
+	  CtkStatusIcon *status_icon = CTK_STATUS_ICON (rover->data);
+	  CtkStatusIconPrivate *priv = status_icon->priv;
 
           if (priv->visible)
             {
@@ -866,9 +866,9 @@ create_tray_observer (void)
 #endif
 
 static void
-ctk_status_icon_init (GtkStatusIcon *status_icon)
+ctk_status_icon_init (CtkStatusIcon *status_icon)
 {
-  GtkStatusIconPrivate *priv;
+  CtkStatusIconPrivate *priv;
 
   priv = ctk_status_icon_get_instance_private (status_icon);
   status_icon->priv = priv;
@@ -986,7 +986,7 @@ ctk_status_icon_init (GtkStatusIcon *status_icon)
 #ifdef GDK_WINDOWING_QUARTZ
   QUARTZ_POOL_ALLOC;
 
-  priv->status_item = [[GtkQuartzStatusIcon alloc] initWithStatusIcon:status_icon];
+  priv->status_item = [[CtkQuartzStatusIcon alloc] initWithStatusIcon:status_icon];
   priv->size = [priv->status_item getHeight];
 
   QUARTZ_POOL_RELEASE;
@@ -1001,8 +1001,8 @@ ctk_status_icon_constructed (GObject *object)
 
 #ifdef GDK_WINDOWING_X11
   {
-    GtkStatusIcon *status_icon = CTK_STATUS_ICON (object);
-    GtkStatusIconPrivate *priv = status_icon->priv;
+    CtkStatusIcon *status_icon = CTK_STATUS_ICON (object);
+    CtkStatusIconPrivate *priv = status_icon->priv;
 
     if (priv->visible && priv->tray_icon)
       ctk_widget_show (priv->tray_icon);
@@ -1013,8 +1013,8 @@ ctk_status_icon_constructed (GObject *object)
 static void
 ctk_status_icon_finalize (GObject *object)
 {
-  GtkStatusIcon *status_icon = CTK_STATUS_ICON (object);
-  GtkStatusIconPrivate *priv = status_icon->priv;
+  CtkStatusIcon *status_icon = CTK_STATUS_ICON (object);
+  CtkStatusIconPrivate *priv = status_icon->priv;
 
   ctk_status_icon_reset_image_data (status_icon);
   ctk_image_definition_unref (priv->image_def);
@@ -1081,7 +1081,7 @@ ctk_status_icon_set_property (GObject      *object,
 			      const GValue *value,
 			      GParamSpec   *pspec)
 {
-  GtkStatusIcon *status_icon = CTK_STATUS_ICON (object);
+  CtkStatusIcon *status_icon = CTK_STATUS_ICON (object);
 
   switch (prop_id)
     {
@@ -1130,7 +1130,7 @@ ctk_status_icon_get_property (GObject    *object,
 			      GValue     *value,
 			      GParamSpec *pspec)
 {
-  GtkStatusIcon *status_icon = CTK_STATUS_ICON (object);
+  CtkStatusIcon *status_icon = CTK_STATUS_ICON (object);
 
   switch (prop_id)
     {
@@ -1195,14 +1195,14 @@ ctk_status_icon_get_property (GObject    *object,
  * 
  * Creates an empty status icon object.
  * 
- * Returns: a new #GtkStatusIcon
+ * Returns: a new #CtkStatusIcon
  *
  * Since: 2.10
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications
  */
-GtkStatusIcon *
+CtkStatusIcon *
 ctk_status_icon_new (void)
 {
   return g_object_new (CTK_TYPE_STATUS_ICON, NULL);
@@ -1217,14 +1217,14 @@ ctk_status_icon_new (void)
  * The image will be scaled down to fit in the available 
  * space in the notification area, if necessary.
  * 
- * Returns: a new #GtkStatusIcon
+ * Returns: a new #CtkStatusIcon
  *
  * Since: 2.10
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications
  */
-GtkStatusIcon *
+CtkStatusIcon *
 ctk_status_icon_new_from_pixbuf (GdkPixbuf *pixbuf)
 {
   return g_object_new (CTK_TYPE_STATUS_ICON,
@@ -1241,14 +1241,14 @@ ctk_status_icon_new_from_pixbuf (GdkPixbuf *pixbuf)
  * The image will be scaled down to fit in the available 
  * space in the notification area, if necessary.
  * 
- * Returns: a new #GtkStatusIcon
+ * Returns: a new #CtkStatusIcon
  *
  * Since: 2.10
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications
  */
-GtkStatusIcon *
+CtkStatusIcon *
 ctk_status_icon_new_from_file (const gchar *filename)
 {
   return g_object_new (CTK_TYPE_STATUS_ICON,
@@ -1265,14 +1265,14 @@ ctk_status_icon_new_from_file (const gchar *filename)
  * own stock icon names, see ctk_icon_factory_add_default() and 
  * ctk_icon_factory_add(). 
  *
- * Returns: a new #GtkStatusIcon
+ * Returns: a new #CtkStatusIcon
  *
  * Since: 2.10
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications
  */
-GtkStatusIcon *
+CtkStatusIcon *
 ctk_status_icon_new_from_stock (const gchar *stock_id)
 {
   return g_object_new (CTK_TYPE_STATUS_ICON,
@@ -1288,14 +1288,14 @@ ctk_status_icon_new_from_stock (const gchar *stock_id)
  * If the current icon theme is changed, the icon will be updated 
  * appropriately.
  * 
- * Returns: a new #GtkStatusIcon
+ * Returns: a new #CtkStatusIcon
  *
  * Since: 2.10
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications
  */
-GtkStatusIcon *
+CtkStatusIcon *
 ctk_status_icon_new_from_icon_name (const gchar *icon_name)
 {
   return g_object_new (CTK_TYPE_STATUS_ICON,
@@ -1310,14 +1310,14 @@ ctk_status_icon_new_from_icon_name (const gchar *icon_name)
  * Creates a status icon displaying a #GIcon. If the icon is a
  * themed icon, it will be updated when the theme changes.
  *
- * Returns: a new #GtkStatusIcon
+ * Returns: a new #CtkStatusIcon
  *
  * Since: 2.14
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications
  */
-GtkStatusIcon *
+CtkStatusIcon *
 ctk_status_icon_new_from_gicon (GIcon *icon)
 {
   return g_object_new (CTK_TYPE_STATUS_ICON,
@@ -1326,14 +1326,14 @@ ctk_status_icon_new_from_gicon (GIcon *icon)
 }
 
 static void
-emit_activate_signal (GtkStatusIcon *status_icon)
+emit_activate_signal (CtkStatusIcon *status_icon)
 {
   g_signal_emit (status_icon,
 		 status_icon_signals [ACTIVATE_SIGNAL], 0);
 }
 
 static void
-emit_popup_menu_signal (GtkStatusIcon *status_icon,
+emit_popup_menu_signal (CtkStatusIcon *status_icon,
 			guint          button,
 			guint32        activate_time)
 {
@@ -1346,7 +1346,7 @@ emit_popup_menu_signal (GtkStatusIcon *status_icon,
 #ifdef GDK_WINDOWING_X11
 
 static gboolean
-emit_size_changed_signal (GtkStatusIcon *status_icon,
+emit_size_changed_signal (CtkStatusIcon *status_icon,
 			  gint           size)
 {
   gboolean handled = FALSE;
@@ -1363,10 +1363,10 @@ emit_size_changed_signal (GtkStatusIcon *status_icon,
 
 /* rounds the pixel size to the nearest size avaiable in the theme */
 static gint
-round_pixel_size (GtkWidget *widget, 
+round_pixel_size (CtkWidget *widget, 
                   gint       pixel_size)
 {
-  GtkIconSize s;
+  CtkIconSize s;
   gint w, h, d, dist, size;
 
   dist = G_MAXINT;
@@ -1389,15 +1389,15 @@ round_pixel_size (GtkWidget *widget,
 }
 
 static void
-ctk_status_icon_update_image (GtkStatusIcon *status_icon)
+ctk_status_icon_update_image (CtkStatusIcon *status_icon)
 {
-  GtkStatusIconPrivate *priv = status_icon->priv;
+  CtkStatusIconPrivate *priv = status_icon->priv;
 #ifdef GDK_WINDOWING_WIN32
   HICON prev_hicon;
 #endif
-  GtkIconHelper *icon_helper;
+  CtkIconHelper *icon_helper;
   cairo_surface_t *surface;
-  GtkWidget *widget;
+  CtkWidget *widget;
 #ifndef GDK_WINDOWING_X11
   GdkPixbuf *pixbuf;
 #endif
@@ -1496,11 +1496,11 @@ ctk_status_icon_update_image (GtkStatusIcon *status_icon)
 #ifdef GDK_WINDOWING_X11
 
 static void
-ctk_status_icon_size_allocate (GtkStatusIcon *status_icon,
-			       GtkAllocation *allocation)
+ctk_status_icon_size_allocate (CtkStatusIcon *status_icon,
+			       CtkAllocation *allocation)
 {
-  GtkStatusIconPrivate *priv = status_icon->priv;
-  GtkOrientation orientation;
+  CtkStatusIconPrivate *priv = status_icon->priv;
+  CtkOrientation orientation;
   gint size;
 
   orientation = _ctk_tray_icon_get_orientation (CTK_TRAY_ICON (priv->tray_icon));
@@ -1522,10 +1522,10 @@ ctk_status_icon_size_allocate (GtkStatusIcon *status_icon,
 }
 
 static void
-ctk_status_icon_screen_changed (GtkStatusIcon *status_icon,
+ctk_status_icon_screen_changed (CtkStatusIcon *status_icon,
 				GdkScreen *old_screen)
 {
-  GtkStatusIconPrivate *priv = status_icon->priv;
+  CtkStatusIconPrivate *priv = status_icon->priv;
 
   if (ctk_widget_get_screen (priv->tray_icon) != old_screen)
     {
@@ -1534,10 +1534,10 @@ ctk_status_icon_screen_changed (GtkStatusIcon *status_icon,
 }
 
 static void
-ctk_status_icon_padding_changed (GtkStatusIcon *status_icon)
+ctk_status_icon_padding_changed (CtkStatusIcon *status_icon)
 {
-  GtkStatusIconPrivate *priv = status_icon->priv;
-  GtkOrientation orientation;
+  CtkStatusIconPrivate *priv = status_icon->priv;
+  CtkOrientation orientation;
   gint padding;
 
   orientation = _ctk_tray_icon_get_orientation (CTK_TRAY_ICON (priv->tray_icon));
@@ -1556,9 +1556,9 @@ ctk_status_icon_padding_changed (GtkStatusIcon *status_icon)
 }
 
 static void
-ctk_status_icon_icon_size_changed (GtkStatusIcon *status_icon)
+ctk_status_icon_icon_size_changed (CtkStatusIcon *status_icon)
 {
-  GtkStatusIconPrivate *priv = status_icon->priv;
+  CtkStatusIconPrivate *priv = status_icon->priv;
   gint icon_size;
 
   icon_size = _ctk_tray_icon_get_icon_size (CTK_TRAY_ICON (priv->tray_icon));
@@ -1570,7 +1570,7 @@ ctk_status_icon_icon_size_changed (GtkStatusIcon *status_icon)
 }
 
 static void
-ctk_status_icon_embedded_changed (GtkStatusIcon *status_icon)
+ctk_status_icon_embedded_changed (CtkStatusIcon *status_icon)
 {
   ctk_status_icon_padding_changed (status_icon);
   ctk_status_icon_icon_size_changed (status_icon);
@@ -1578,16 +1578,16 @@ ctk_status_icon_embedded_changed (GtkStatusIcon *status_icon)
 }
 
 static void
-ctk_status_icon_orientation_changed (GtkStatusIcon *status_icon)
+ctk_status_icon_orientation_changed (CtkStatusIcon *status_icon)
 {
   ctk_status_icon_padding_changed (status_icon);
   g_object_notify (G_OBJECT (status_icon), "orientation");
 }
 
 static void
-ctk_status_icon_fg_changed (GtkStatusIcon *status_icon)
+ctk_status_icon_fg_changed (CtkStatusIcon *status_icon)
 {
-  GtkStatusIconPrivate *priv = status_icon->priv;
+  CtkStatusIconPrivate *priv = status_icon->priv;
   GdkRGBA *rgba;
 
   g_object_get (priv->tray_icon, "fg-color", &rgba, NULL);
@@ -1598,11 +1598,11 @@ ctk_status_icon_fg_changed (GtkStatusIcon *status_icon)
 }
 
 static void
-ctk_status_icon_color_changed (GtkTrayIcon   *tray,
+ctk_status_icon_color_changed (CtkTrayIcon   *tray,
                                GParamSpec    *pspec,
-                               GtkStatusIcon *status_icon)
+                               CtkStatusIcon *status_icon)
 {
-  GtkStatusIconPrivate *priv = status_icon->priv;
+  CtkStatusIconPrivate *priv = status_icon->priv;
   const gchar *name;
 
   switch (pspec->name[0])
@@ -1634,7 +1634,7 @@ ctk_status_icon_color_changed (GtkTrayIcon   *tray,
 }
 
 static gboolean
-ctk_status_icon_key_press (GtkStatusIcon  *status_icon,
+ctk_status_icon_key_press (CtkStatusIcon  *status_icon,
 			   GdkEventKey    *event)
 {
   guint state, keyval;
@@ -1656,7 +1656,7 @@ ctk_status_icon_key_press (GtkStatusIcon  *status_icon,
 }
 
 static void
-ctk_status_icon_popup_menu (GtkStatusIcon  *status_icon)
+ctk_status_icon_popup_menu (CtkStatusIcon  *status_icon)
 {
   emit_popup_menu_signal (status_icon, 0, ctk_get_current_event_time ());
 }
@@ -1664,7 +1664,7 @@ ctk_status_icon_popup_menu (GtkStatusIcon  *status_icon)
 #endif  /* GDK_WINDOWING_X11 */
 
 static gboolean
-ctk_status_icon_button_press (GtkStatusIcon  *status_icon,
+ctk_status_icon_button_press (CtkStatusIcon  *status_icon,
 			      GdkEventButton *event)
 {
   gboolean handled = FALSE;
@@ -1690,7 +1690,7 @@ ctk_status_icon_button_press (GtkStatusIcon  *status_icon,
 }
 
 static gboolean
-ctk_status_icon_button_release (GtkStatusIcon  *status_icon,
+ctk_status_icon_button_release (CtkStatusIcon  *status_icon,
 				GdkEventButton *event)
 {
   gboolean handled = FALSE;
@@ -1703,7 +1703,7 @@ ctk_status_icon_button_release (GtkStatusIcon  *status_icon,
 #ifdef GDK_WINDOWING_X11
 
 static gboolean
-ctk_status_icon_scroll (GtkStatusIcon  *status_icon,
+ctk_status_icon_scroll (CtkStatusIcon  *status_icon,
 			GdkEventScroll *event)
 {
   gboolean handled = FALSE;
@@ -1714,11 +1714,11 @@ ctk_status_icon_scroll (GtkStatusIcon  *status_icon,
 }
 
 static gboolean
-ctk_status_icon_query_tooltip (GtkStatusIcon *status_icon,
+ctk_status_icon_query_tooltip (CtkStatusIcon *status_icon,
 			       gint           x,
 			       gint           y,
 			       gboolean       keyboard_tip,
-			       GtkTooltip    *tooltip)
+			       CtkTooltip    *tooltip)
 {
   gboolean handled = FALSE;
   g_signal_emit (status_icon,
@@ -1730,10 +1730,10 @@ ctk_status_icon_query_tooltip (GtkStatusIcon *status_icon,
 #endif /* GDK_WINDOWING_X11 */
 
 static void
-ctk_status_icon_reset_image_data (GtkStatusIcon *status_icon)
+ctk_status_icon_reset_image_data (CtkStatusIcon *status_icon)
 {
-  GtkStatusIconPrivate *priv = status_icon->priv;
-  GtkImageType storage_type = ctk_image_definition_get_storage_type (priv->image_def);
+  CtkStatusIconPrivate *priv = status_icon->priv;
+  CtkImageType storage_type = ctk_image_definition_get_storage_type (priv->image_def);
 
   switch (storage_type)
   {
@@ -1762,10 +1762,10 @@ ctk_status_icon_reset_image_data (GtkStatusIcon *status_icon)
 }
 
 static void
-ctk_status_icon_take_image (GtkStatusIcon      *status_icon,
-                            GtkImageDefinition *def)
+ctk_status_icon_take_image (CtkStatusIcon      *status_icon,
+                            CtkImageDefinition *def)
 {
-  GtkStatusIconPrivate *priv = status_icon->priv;
+  CtkStatusIconPrivate *priv = status_icon->priv;
 
   g_object_freeze_notify (G_OBJECT (status_icon));
 
@@ -1795,7 +1795,7 @@ ctk_status_icon_take_image (GtkStatusIcon      *status_icon,
           g_object_notify (G_OBJECT (status_icon), "gicon");
           break;
         default:
-          g_warning ("Image type %u not handled by GtkStatusIcon", 
+          g_warning ("Image type %u not handled by CtkStatusIcon", 
                      ctk_image_definition_get_storage_type (def));
         }
     }
@@ -1807,7 +1807,7 @@ ctk_status_icon_take_image (GtkStatusIcon      *status_icon,
 
 /**
  * ctk_status_icon_set_from_pixbuf:
- * @status_icon: a #GtkStatusIcon
+ * @status_icon: a #CtkStatusIcon
  * @pixbuf: (allow-none): a #GdkPixbuf or %NULL
  *
  * Makes @status_icon display @pixbuf.
@@ -1815,12 +1815,12 @@ ctk_status_icon_take_image (GtkStatusIcon      *status_icon,
  *
  * Since: 2.10
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications; you can use g_notification_set_icon()
  *   to associate a #GIcon with a notification
  */
 void
-ctk_status_icon_set_from_pixbuf (GtkStatusIcon *status_icon,
+ctk_status_icon_set_from_pixbuf (CtkStatusIcon *status_icon,
 				 GdkPixbuf     *pixbuf)
 {
   g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
@@ -1832,7 +1832,7 @@ ctk_status_icon_set_from_pixbuf (GtkStatusIcon *status_icon,
 
 /**
  * ctk_status_icon_set_from_file:
- * @status_icon: a #GtkStatusIcon
+ * @status_icon: a #CtkStatusIcon
  * @filename: (type filename): a filename
  * 
  * Makes @status_icon display the file @filename.
@@ -1840,12 +1840,12 @@ ctk_status_icon_set_from_pixbuf (GtkStatusIcon *status_icon,
  *
  * Since: 2.10 
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications; you can use g_notification_set_icon()
  *   to associate a #GIcon with a notification
  */
 void
-ctk_status_icon_set_from_file (GtkStatusIcon *status_icon,
+ctk_status_icon_set_from_file (CtkStatusIcon *status_icon,
  			       const gchar   *filename)
 {
   GdkPixbuf *pixbuf;
@@ -1863,7 +1863,7 @@ ctk_status_icon_set_from_file (GtkStatusIcon *status_icon,
 
 /**
  * ctk_status_icon_set_from_stock:
- * @status_icon: a #GtkStatusIcon
+ * @status_icon: a #CtkStatusIcon
  * @stock_id: a stock icon id
  * 
  * Makes @status_icon display the stock icon with the id @stock_id.
@@ -1874,7 +1874,7 @@ ctk_status_icon_set_from_file (GtkStatusIcon *status_icon,
  * Deprecated: 3.10: Use ctk_status_icon_set_from_icon_name() instead.
  **/
 void
-ctk_status_icon_set_from_stock (GtkStatusIcon *status_icon,
+ctk_status_icon_set_from_stock (CtkStatusIcon *status_icon,
 				const gchar   *stock_id)
 {
   g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
@@ -1886,7 +1886,7 @@ ctk_status_icon_set_from_stock (GtkStatusIcon *status_icon,
 
 /**
  * ctk_status_icon_set_from_icon_name:
- * @status_icon: a #GtkStatusIcon
+ * @status_icon: a #CtkStatusIcon
  * @icon_name: an icon name
  * 
  * Makes @status_icon display the icon named @icon_name from the 
@@ -1895,12 +1895,12 @@ ctk_status_icon_set_from_stock (GtkStatusIcon *status_icon,
  *
  * Since: 2.10 
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications; you can use g_notification_set_icon()
  *   to associate a #GIcon with a notification
  */
 void
-ctk_status_icon_set_from_icon_name (GtkStatusIcon *status_icon,
+ctk_status_icon_set_from_icon_name (CtkStatusIcon *status_icon,
 				    const gchar   *icon_name)
 {
   g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
@@ -1912,7 +1912,7 @@ ctk_status_icon_set_from_icon_name (GtkStatusIcon *status_icon,
 
 /**
  * ctk_status_icon_set_from_gicon:
- * @status_icon: a #GtkStatusIcon
+ * @status_icon: a #CtkStatusIcon
  * @icon: a GIcon
  *
  * Makes @status_icon display the #GIcon.
@@ -1920,12 +1920,12 @@ ctk_status_icon_set_from_icon_name (GtkStatusIcon *status_icon,
  *
  * Since: 2.14
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications; you can use g_notification_set_icon()
  *   to associate a #GIcon with a notification
  */
 void
-ctk_status_icon_set_from_gicon (GtkStatusIcon *status_icon,
+ctk_status_icon_set_from_gicon (CtkStatusIcon *status_icon,
                                 GIcon         *icon)
 {
   g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
@@ -1937,23 +1937,23 @@ ctk_status_icon_set_from_gicon (GtkStatusIcon *status_icon,
 
 /**
  * ctk_status_icon_get_storage_type:
- * @status_icon: a #GtkStatusIcon
+ * @status_icon: a #CtkStatusIcon
  * 
- * Gets the type of representation being used by the #GtkStatusIcon
- * to store image data. If the #GtkStatusIcon has no image data,
+ * Gets the type of representation being used by the #CtkStatusIcon
+ * to store image data. If the #CtkStatusIcon has no image data,
  * the return value will be %CTK_IMAGE_EMPTY. 
  * 
  * Returns: the image representation being used
  *
  * Since: 2.10
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications; there is no direct replacement
  *   for this function, and #GNotification only supports #GIcon
  *   instances
  */
-GtkImageType
-ctk_status_icon_get_storage_type (GtkStatusIcon *status_icon)
+CtkImageType
+ctk_status_icon_get_storage_type (CtkStatusIcon *status_icon)
 {
   g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), CTK_IMAGE_EMPTY);
 
@@ -1961,9 +1961,9 @@ ctk_status_icon_get_storage_type (GtkStatusIcon *status_icon)
 }
 /**
  * ctk_status_icon_get_pixbuf:
- * @status_icon: a #GtkStatusIcon
+ * @status_icon: a #CtkStatusIcon
  * 
- * Gets the #GdkPixbuf being displayed by the #GtkStatusIcon.
+ * Gets the #GdkPixbuf being displayed by the #CtkStatusIcon.
  * The storage type of the status icon must be %CTK_IMAGE_EMPTY or
  * %CTK_IMAGE_PIXBUF (see ctk_status_icon_get_storage_type()).
  * The caller of this function does not own a reference to the
@@ -1974,14 +1974,14 @@ ctk_status_icon_get_storage_type (GtkStatusIcon *status_icon)
  *
  * Since: 2.10
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications; there is no direct replacement
  *   for this function
  */
 GdkPixbuf *
-ctk_status_icon_get_pixbuf (GtkStatusIcon *status_icon)
+ctk_status_icon_get_pixbuf (CtkStatusIcon *status_icon)
 {
-  GtkStatusIconPrivate *priv;
+  CtkStatusIconPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), NULL);
 
@@ -1992,12 +1992,12 @@ ctk_status_icon_get_pixbuf (GtkStatusIcon *status_icon)
 
 /**
  * ctk_status_icon_get_stock:
- * @status_icon: a #GtkStatusIcon
+ * @status_icon: a #CtkStatusIcon
  * 
- * Gets the id of the stock icon being displayed by the #GtkStatusIcon.
+ * Gets the id of the stock icon being displayed by the #CtkStatusIcon.
  * The storage type of the status icon must be %CTK_IMAGE_EMPTY or
  * %CTK_IMAGE_STOCK (see ctk_status_icon_get_storage_type()).
- * The returned string is owned by the #GtkStatusIcon and should not
+ * The returned string is owned by the #CtkStatusIcon and should not
  * be freed or modified.
  * 
  * Returns: (nullable): stock id of the displayed stock icon,
@@ -2008,9 +2008,9 @@ ctk_status_icon_get_pixbuf (GtkStatusIcon *status_icon)
  * Deprecated: 3.10: Use ctk_status_icon_get_icon_name() instead.
  **/
 const gchar *
-ctk_status_icon_get_stock (GtkStatusIcon *status_icon)
+ctk_status_icon_get_stock (CtkStatusIcon *status_icon)
 {
-  GtkStatusIconPrivate *priv;
+  CtkStatusIconPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), NULL);
 
@@ -2021,26 +2021,26 @@ ctk_status_icon_get_stock (GtkStatusIcon *status_icon)
 
 /**
  * ctk_status_icon_get_icon_name:
- * @status_icon: a #GtkStatusIcon
+ * @status_icon: a #CtkStatusIcon
  * 
- * Gets the name of the icon being displayed by the #GtkStatusIcon.
+ * Gets the name of the icon being displayed by the #CtkStatusIcon.
  * The storage type of the status icon must be %CTK_IMAGE_EMPTY or
  * %CTK_IMAGE_ICON_NAME (see ctk_status_icon_get_storage_type()).
- * The returned string is owned by the #GtkStatusIcon and should not
+ * The returned string is owned by the #CtkStatusIcon and should not
  * be freed or modified.
  * 
  * Returns: (nullable): name of the displayed icon, or %NULL if the image is empty.
  *
  * Since: 2.10
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications; there is no direct replacement
  *   for this function
  */
 const gchar *
-ctk_status_icon_get_icon_name (GtkStatusIcon *status_icon)
+ctk_status_icon_get_icon_name (CtkStatusIcon *status_icon)
 {
-  GtkStatusIconPrivate *priv;
+  CtkStatusIconPrivate *priv;
   
   g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), NULL);
 
@@ -2051,9 +2051,9 @@ ctk_status_icon_get_icon_name (GtkStatusIcon *status_icon)
 
 /**
  * ctk_status_icon_get_gicon:
- * @status_icon: a #GtkStatusIcon
+ * @status_icon: a #CtkStatusIcon
  *
- * Retrieves the #GIcon being displayed by the #GtkStatusIcon.
+ * Retrieves the #GIcon being displayed by the #CtkStatusIcon.
  * The storage type of the status icon must be %CTK_IMAGE_EMPTY or
  * %CTK_IMAGE_GICON (see ctk_status_icon_get_storage_type()).
  * The caller of this function does not own a reference to the
@@ -2065,14 +2065,14 @@ ctk_status_icon_get_icon_name (GtkStatusIcon *status_icon)
  *
  * Since: 2.14
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications; there is no direct replacement
  *   for this function
  */
 GIcon *
-ctk_status_icon_get_gicon (GtkStatusIcon *status_icon)
+ctk_status_icon_get_gicon (CtkStatusIcon *status_icon)
 {
-  GtkStatusIconPrivate *priv;
+  CtkStatusIconPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), NULL);
 
@@ -2083,7 +2083,7 @@ ctk_status_icon_get_gicon (GtkStatusIcon *status_icon)
 
 /**
  * ctk_status_icon_get_size:
- * @status_icon: a #GtkStatusIcon
+ * @status_icon: a #CtkStatusIcon
  * 
  * Gets the size in pixels that is available for the image. 
  * Stock icons and named icons adapt their size automatically
@@ -2098,13 +2098,13 @@ ctk_status_icon_get_gicon (GtkStatusIcon *status_icon)
  *
  * Since: 2.10
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications; there is no direct replacement
  *   for this function, as the representation of a notification
  *   is left to the platform
  */
 gint
-ctk_status_icon_get_size (GtkStatusIcon *status_icon)
+ctk_status_icon_get_size (CtkStatusIcon *status_icon)
 {
   g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), 0);
 
@@ -2113,7 +2113,7 @@ ctk_status_icon_get_size (GtkStatusIcon *status_icon)
 
 /**
  * ctk_status_icon_set_screen:
- * @status_icon: a #GtkStatusIcon
+ * @status_icon: a #CtkStatusIcon
  * @screen: a #GdkScreen
  *
  * Sets the #GdkScreen where @status_icon is displayed; if
@@ -2122,13 +2122,13 @@ ctk_status_icon_get_size (GtkStatusIcon *status_icon)
  *
  * Since: 2.12
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications; there is no direct replacement
  *   for this function, as GTK typically only has one #GdkScreen
  *   and notifications are managed by the platform
  */
 void
-ctk_status_icon_set_screen (GtkStatusIcon *status_icon,
+ctk_status_icon_set_screen (CtkStatusIcon *status_icon,
                             GdkScreen     *screen)
 {
   g_return_if_fail (GDK_IS_SCREEN (screen));
@@ -2141,7 +2141,7 @@ ctk_status_icon_set_screen (GtkStatusIcon *status_icon,
 
 /**
  * ctk_status_icon_get_screen:
- * @status_icon: a #GtkStatusIcon
+ * @status_icon: a #CtkStatusIcon
  *
  * Returns the #GdkScreen associated with @status_icon.
  *
@@ -2149,12 +2149,12 @@ ctk_status_icon_set_screen (GtkStatusIcon *status_icon,
  *
  * Since: 2.12
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications; there is no direct replacement
  *   for this function, as notifications are managed by the platform
  */
 GdkScreen *
-ctk_status_icon_get_screen (GtkStatusIcon *status_icon)
+ctk_status_icon_get_screen (CtkStatusIcon *status_icon)
 {
   g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), NULL);
 
@@ -2168,22 +2168,22 @@ ctk_status_icon_get_screen (GtkStatusIcon *status_icon)
 
 /**
  * ctk_status_icon_set_visible:
- * @status_icon: a #GtkStatusIcon
+ * @status_icon: a #CtkStatusIcon
  * @visible: %TRUE to show the status icon, %FALSE to hide it
  * 
  * Shows or hides a status icon.
  *
  * Since: 2.10
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications; there is no direct replacement
  *   for this function, as notifications are managed by the platform
  */
 void
-ctk_status_icon_set_visible (GtkStatusIcon *status_icon,
+ctk_status_icon_set_visible (CtkStatusIcon *status_icon,
 			     gboolean       visible)
 {
-  GtkStatusIconPrivate *priv;
+  CtkStatusIconPrivate *priv;
 
   g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
 
@@ -2227,7 +2227,7 @@ ctk_status_icon_set_visible (GtkStatusIcon *status_icon,
 
 /**
  * ctk_status_icon_get_visible:
- * @status_icon: a #GtkStatusIcon
+ * @status_icon: a #CtkStatusIcon
  * 
  * Returns whether the status icon is visible or not. 
  * Note that being visible does not guarantee that 
@@ -2238,12 +2238,12 @@ ctk_status_icon_set_visible (GtkStatusIcon *status_icon,
  *
  * Since: 2.10
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications; there is no direct replacement
  *   for this function
  */
 gboolean
-ctk_status_icon_get_visible (GtkStatusIcon *status_icon)
+ctk_status_icon_get_visible (CtkStatusIcon *status_icon)
 {
   g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), FALSE);
 
@@ -2252,7 +2252,7 @@ ctk_status_icon_get_visible (GtkStatusIcon *status_icon)
 
 /**
  * ctk_status_icon_is_embedded:
- * @status_icon: a #GtkStatusIcon
+ * @status_icon: a #CtkStatusIcon
  * 
  * Returns whether the status icon is embedded in a notification
  * area. 
@@ -2262,12 +2262,12 @@ ctk_status_icon_get_visible (GtkStatusIcon *status_icon)
  *
  * Since: 2.10
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications; there is no direct replacement
  *   for this function
  */
 gboolean
-ctk_status_icon_is_embedded (GtkStatusIcon *status_icon)
+ctk_status_icon_is_embedded (CtkStatusIcon *status_icon)
 {
   g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), FALSE);
 
@@ -2281,39 +2281,39 @@ ctk_status_icon_is_embedded (GtkStatusIcon *status_icon)
 
 /**
  * ctk_status_icon_position_menu:
- * @menu: the #GtkMenu
+ * @menu: the #CtkMenu
  * @x: (inout): return location for the x position
  * @y: (inout): return location for the y position
  * @push_in: (out): whether the first menu item should be offset
  *           (pushed in) to be aligned with the menu popup position
- *           (only useful for GtkOptionMenu).
- * @user_data: (type GtkStatusIcon): the status icon to position the menu on
+ *           (only useful for CtkOptionMenu).
+ * @user_data: (type CtkStatusIcon): the status icon to position the menu on
  *
  * Menu positioning function to use with ctk_menu_popup()
  * to position @menu aligned to the status icon @user_data.
  * 
  * Since: 2.10
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications; notifications do not have menus,
  *   but can have buttons, and actions associated with each button
  */
 void
-ctk_status_icon_position_menu (GtkMenu  *menu,
+ctk_status_icon_position_menu (CtkMenu  *menu,
 			       gint     *x,
 			       gint     *y,
 			       gboolean *push_in,
 			       gpointer  user_data)
 {
 #ifdef GDK_WINDOWING_X11
-  GtkStatusIcon *status_icon = CTK_STATUS_ICON (user_data);
-  GtkStatusIconPrivate *priv = status_icon->priv;
-  GtkAllocation allocation;
-  GtkTrayIcon *tray_icon;
-  GtkWidget *widget;
+  CtkStatusIcon *status_icon = CTK_STATUS_ICON (user_data);
+  CtkStatusIconPrivate *priv = status_icon->priv;
+  CtkAllocation allocation;
+  CtkTrayIcon *tray_icon;
+  CtkWidget *widget;
   GdkScreen *screen;
-  GtkTextDirection direction;
-  GtkRequisition menu_req;
+  CtkTextDirection direction;
+  CtkRequisition menu_req;
   GdkRectangle monitor;
   GdkWindow *window;
   gint monitor_num, height, width, xoffset, yoffset;
@@ -2401,9 +2401,9 @@ ctk_status_icon_position_menu (GtkMenu  *menu,
 #endif /* GDK_WINDOWING_X11 */
 
 #ifdef GDK_WINDOWING_WIN32
-  GtkStatusIcon *status_icon;
-  GtkStatusIconPrivate *priv;
-  GtkRequisition menu_req;
+  CtkStatusIcon *status_icon;
+  CtkStatusIconPrivate *priv;
+  CtkRequisition menu_req;
   
   g_return_if_fail (CTK_IS_MENU (menu));
   g_return_if_fail (CTK_IS_STATUS_ICON (user_data));
@@ -2422,7 +2422,7 @@ ctk_status_icon_position_menu (GtkMenu  *menu,
 
 /**
  * ctk_status_icon_get_geometry:
- * @status_icon: a #GtkStatusIcon
+ * @status_icon: a #CtkStatusIcon
  * @screen: (out) (transfer none) (allow-none): return location for
  *          the screen, or %NULL if the information is not needed
  * @area: (out) (allow-none): return location for the area occupied by
@@ -2450,21 +2450,21 @@ ctk_status_icon_position_menu (GtkMenu  *menu,
  *
  * Since: 2.10
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications; there is no direct replacement
  *   for this function, as the platform is responsible for the
  *   presentation of notifications
  */
 gboolean
-ctk_status_icon_get_geometry (GtkStatusIcon    *status_icon,
+ctk_status_icon_get_geometry (CtkStatusIcon    *status_icon,
 			      GdkScreen       **screen,
 			      GdkRectangle     *area,
-			      GtkOrientation   *orientation)
+			      CtkOrientation   *orientation)
 {
 #ifdef GDK_WINDOWING_X11   
-  GtkStatusIconPrivate *priv = status_icon->priv;
-  GtkAllocation allocation;
-  GtkWidget *widget;
+  CtkStatusIconPrivate *priv = status_icon->priv;
+  CtkAllocation allocation;
+  CtkWidget *widget;
   gint x, y;
 
   g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), FALSE);
@@ -2500,24 +2500,24 @@ ctk_status_icon_get_geometry (GtkStatusIcon    *status_icon,
 
 /**
  * ctk_status_icon_set_has_tooltip:
- * @status_icon: a #GtkStatusIcon
+ * @status_icon: a #CtkStatusIcon
  * @has_tooltip: whether or not @status_icon has a tooltip
  *
  * Sets the has-tooltip property on @status_icon to @has_tooltip.
- * See #GtkStatusIcon:has-tooltip for more information.
+ * See #CtkStatusIcon:has-tooltip for more information.
  *
  * Since: 2.16
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications; there is no direct replacement
  *   for this function, but notifications can display an arbitrary
  *   amount of text using g_notification_set_body()
  */
 void
-ctk_status_icon_set_has_tooltip (GtkStatusIcon *status_icon,
+ctk_status_icon_set_has_tooltip (CtkStatusIcon *status_icon,
 				 gboolean       has_tooltip)
 {
-  GtkStatusIconPrivate *priv;
+  CtkStatusIconPrivate *priv;
   gboolean changed = FALSE;
 
   g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
@@ -2551,23 +2551,23 @@ ctk_status_icon_set_has_tooltip (GtkStatusIcon *status_icon,
 
 /**
  * ctk_status_icon_get_has_tooltip:
- * @status_icon: a #GtkStatusIcon
+ * @status_icon: a #CtkStatusIcon
  *
  * Returns the current value of the has-tooltip property.
- * See #GtkStatusIcon:has-tooltip for more information.
+ * See #CtkStatusIcon:has-tooltip for more information.
  *
  * Returns: current value of has-tooltip on @status_icon.
  *
  * Since: 2.16
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications; there is no direct replacement
  *   for this function
  */
 gboolean
-ctk_status_icon_get_has_tooltip (GtkStatusIcon *status_icon)
+ctk_status_icon_get_has_tooltip (CtkStatusIcon *status_icon)
 {
-  GtkStatusIconPrivate *priv;
+  CtkStatusIconPrivate *priv;
   gboolean has_tooltip = FALSE;
 
   g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), FALSE);
@@ -2590,29 +2590,29 @@ ctk_status_icon_get_has_tooltip (GtkStatusIcon *status_icon)
 
 /**
  * ctk_status_icon_set_tooltip_text:
- * @status_icon: a #GtkStatusIcon
+ * @status_icon: a #CtkStatusIcon
  * @text: the contents of the tooltip for @status_icon
  *
  * Sets @text as the contents of the tooltip.
  *
- * This function will take care of setting #GtkStatusIcon:has-tooltip to
- * %TRUE and of the default handler for the #GtkStatusIcon::query-tooltip
+ * This function will take care of setting #CtkStatusIcon:has-tooltip to
+ * %TRUE and of the default handler for the #CtkStatusIcon::query-tooltip
  * signal.
  *
- * See also the #GtkStatusIcon:tooltip-text property and
+ * See also the #CtkStatusIcon:tooltip-text property and
  * ctk_tooltip_set_text().
  *
  * Since: 2.16
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications; there is no direct replacement
  *   for this function
  */
 void
-ctk_status_icon_set_tooltip_text (GtkStatusIcon *status_icon,
+ctk_status_icon_set_tooltip_text (CtkStatusIcon *status_icon,
 				  const gchar   *text)
 {
-  GtkStatusIconPrivate *priv;
+  CtkStatusIconPrivate *priv;
 
   g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
 
@@ -2653,7 +2653,7 @@ ctk_status_icon_set_tooltip_text (GtkStatusIcon *status_icon,
 
 /**
  * ctk_status_icon_get_tooltip_text:
- * @status_icon: a #GtkStatusIcon
+ * @status_icon: a #CtkStatusIcon
  *
  * Gets the contents of the tooltip for @status_icon.
  *
@@ -2662,14 +2662,14 @@ ctk_status_icon_set_tooltip_text (GtkStatusIcon *status_icon,
  *
  * Since: 2.16
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications; there is no direct replacement
  *   for this function
  */
 gchar *
-ctk_status_icon_get_tooltip_text (GtkStatusIcon *status_icon)
+ctk_status_icon_get_tooltip_text (CtkStatusIcon *status_icon)
 {
-  GtkStatusIconPrivate *priv;
+  CtkStatusIconPrivate *priv;
   gchar *tooltip_text = NULL;
 
   g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), NULL);
@@ -2694,30 +2694,30 @@ ctk_status_icon_get_tooltip_text (GtkStatusIcon *status_icon)
 
 /**
  * ctk_status_icon_set_tooltip_markup:
- * @status_icon: a #GtkStatusIcon
+ * @status_icon: a #CtkStatusIcon
  * @markup: (allow-none): the contents of the tooltip for @status_icon, or %NULL
  *
  * Sets @markup as the contents of the tooltip, which is marked up with
  *  the [Pango text markup language][PangoMarkupFormat].
  *
- * This function will take care of setting #GtkStatusIcon:has-tooltip to %TRUE
- * and of the default handler for the #GtkStatusIcon::query-tooltip signal.
+ * This function will take care of setting #CtkStatusIcon:has-tooltip to %TRUE
+ * and of the default handler for the #CtkStatusIcon::query-tooltip signal.
  *
- * See also the #GtkStatusIcon:tooltip-markup property and
+ * See also the #CtkStatusIcon:tooltip-markup property and
  * ctk_tooltip_set_markup().
  *
  * Since: 2.16
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications; there is no direct replacement
  *   for this function
  */
 void
-ctk_status_icon_set_tooltip_markup (GtkStatusIcon *status_icon,
+ctk_status_icon_set_tooltip_markup (CtkStatusIcon *status_icon,
 				    const gchar   *markup)
 {
 #ifdef GDK_WINDOWING_X11
-  GtkStatusIconPrivate *priv;
+  CtkStatusIconPrivate *priv;
 #endif
 #if defined (GDK_WINDOWING_WIN32) || defined (GDK_WINDOWING_QUARTZ)
   gchar *text = NULL;
@@ -2747,7 +2747,7 @@ ctk_status_icon_set_tooltip_markup (GtkStatusIcon *status_icon,
 
 /**
  * ctk_status_icon_get_tooltip_markup:
- * @status_icon: a #GtkStatusIcon
+ * @status_icon: a #CtkStatusIcon
  *
  * Gets the contents of the tooltip for @status_icon.
  *
@@ -2756,14 +2756,14 @@ ctk_status_icon_set_tooltip_markup (GtkStatusIcon *status_icon,
  *
  * Since: 2.16
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications; there is no direct replacement
  *   for this function
  */
 gchar *
-ctk_status_icon_get_tooltip_markup (GtkStatusIcon *status_icon)
+ctk_status_icon_get_tooltip_markup (CtkStatusIcon *status_icon)
 {
-  GtkStatusIconPrivate *priv;
+  CtkStatusIconPrivate *priv;
   gchar *markup = NULL;
 
   g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), NULL);
@@ -2788,7 +2788,7 @@ ctk_status_icon_get_tooltip_markup (GtkStatusIcon *status_icon)
 
 /**
  * ctk_status_icon_get_x11_window_id:
- * @status_icon: a #GtkStatusIcon
+ * @status_icon: a #CtkStatusIcon
  *
  * This function is only useful on the X11/freedesktop.org platform.
  *
@@ -2807,12 +2807,12 @@ ctk_status_icon_get_tooltip_markup (GtkStatusIcon *status_icon)
  *
  * Since: 2.14
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications; there is no direct replacement
  *   for this function
  */
 guint32
-ctk_status_icon_get_x11_window_id (GtkStatusIcon *status_icon)
+ctk_status_icon_get_x11_window_id (CtkStatusIcon *status_icon)
 {
 #ifdef GDK_WINDOWING_X11
   if (status_icon->priv->tray_icon)
@@ -2827,7 +2827,7 @@ ctk_status_icon_get_x11_window_id (GtkStatusIcon *status_icon)
 
 /**
  * ctk_status_icon_set_title:
- * @status_icon: a #GtkStatusIcon
+ * @status_icon: a #CtkStatusIcon
  * @title: the title 
  *
  * Sets the title of this tray icon.
@@ -2837,15 +2837,15 @@ ctk_status_icon_get_x11_window_id (GtkStatusIcon *status_icon)
  *
  * Since: 2.18
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications; you should use g_notification_set_title()
  *   and g_notification_set_body() to present text inside your notification
  */
 void
-ctk_status_icon_set_title (GtkStatusIcon *status_icon,
+ctk_status_icon_set_title (CtkStatusIcon *status_icon,
                            const gchar   *title)
 {
-  GtkStatusIconPrivate *priv;
+  CtkStatusIconPrivate *priv;
 
   g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
 
@@ -2869,7 +2869,7 @@ ctk_status_icon_set_title (GtkStatusIcon *status_icon,
 
 /**
  * ctk_status_icon_get_title:
- * @status_icon: a #GtkStatusIcon
+ * @status_icon: a #CtkStatusIcon
  *
  * Gets the title of this tray icon. See ctk_status_icon_set_title().
  *
@@ -2877,14 +2877,14 @@ ctk_status_icon_set_title (GtkStatusIcon *status_icon,
  *
  * Since: 2.18
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications; there is no direct replacement
  *   for this function
  */
 const gchar *
-ctk_status_icon_get_title (GtkStatusIcon *status_icon)
+ctk_status_icon_get_title (CtkStatusIcon *status_icon)
 {
-  GtkStatusIconPrivate *priv;
+  CtkStatusIconPrivate *priv;
   const gchar *title = NULL;
 
   g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), NULL);
@@ -2908,7 +2908,7 @@ ctk_status_icon_get_title (GtkStatusIcon *status_icon)
 
 /**
  * ctk_status_icon_set_name:
- * @status_icon: a #GtkStatusIcon
+ * @status_icon: a #CtkStatusIcon
  * @name: the name
  *
  * Sets the name of this tray icon.
@@ -2918,17 +2918,17 @@ ctk_status_icon_get_title (GtkStatusIcon *status_icon)
  *
  * Since: 2.20
  *
- * Deprecated: 3.14: Use #GNotification and #GtkApplication to
+ * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications; there is no direct replacement
  *   for this function, as notifications are associated with a
  *   unique application identifier by #GApplication
  */
 void
-ctk_status_icon_set_name (GtkStatusIcon *status_icon,
+ctk_status_icon_set_name (CtkStatusIcon *status_icon,
                           const gchar   *name)
 {
 #ifdef GDK_WINDOWING_X11
-  GtkStatusIconPrivate *priv;
+  CtkStatusIconPrivate *priv;
 #endif
 
   g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));

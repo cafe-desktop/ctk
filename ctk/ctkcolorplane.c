@@ -26,16 +26,16 @@
 #include "ctkcolorutils.h"
 #include "ctkintl.h"
 
-struct _GtkColorPlanePrivate
+struct _CtkColorPlanePrivate
 {
-  GtkAdjustment *h_adj;
-  GtkAdjustment *s_adj;
-  GtkAdjustment *v_adj;
+  CtkAdjustment *h_adj;
+  CtkAdjustment *s_adj;
+  CtkAdjustment *v_adj;
 
   cairo_surface_t *surface;
 
-  GtkGesture *drag_gesture;
-  GtkGesture *long_press_gesture;
+  CtkGesture *drag_gesture;
+  CtkGesture *long_press_gesture;
 };
 
 enum {
@@ -45,10 +45,10 @@ enum {
   PROP_V_ADJUSTMENT
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkColorPlane, ctk_color_plane, CTK_TYPE_DRAWING_AREA)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkColorPlane, ctk_color_plane, CTK_TYPE_DRAWING_AREA)
 
 static void
-sv_to_xy (GtkColorPlane *plane,
+sv_to_xy (CtkColorPlane *plane,
           gint          *x,
           gint          *y)
 {
@@ -66,10 +66,10 @@ sv_to_xy (GtkColorPlane *plane,
 }
 
 static gboolean
-plane_draw (GtkWidget *widget,
+plane_draw (CtkWidget *widget,
             cairo_t   *cr)
 {
-  GtkColorPlane *plane = CTK_COLOR_PLANE (widget);
+  CtkColorPlane *plane = CTK_COLOR_PLANE (widget);
   gint x, y;
   gint width, height;
 
@@ -107,9 +107,9 @@ plane_draw (GtkWidget *widget,
 }
 
 static void
-create_surface (GtkColorPlane *plane)
+create_surface (CtkColorPlane *plane)
 {
-  GtkWidget *widget = CTK_WIDGET (plane);
+  CtkWidget *widget = CTK_WIDGET (plane);
   cairo_t *cr;
   cairo_surface_t *surface;
   gint width, height, stride;
@@ -173,8 +173,8 @@ create_surface (GtkColorPlane *plane)
 }
 
 static void
-plane_size_allocate (GtkWidget     *widget,
-                     GtkAllocation *allocation)
+plane_size_allocate (CtkWidget     *widget,
+                     CtkAllocation *allocation)
 {
   CTK_WIDGET_CLASS (ctk_color_plane_parent_class)->size_allocate (widget, allocation);
 
@@ -182,7 +182,7 @@ plane_size_allocate (GtkWidget     *widget,
 }
 
 static void
-plane_realize (GtkWidget *widget)
+plane_realize (CtkWidget *widget)
 {
   CTK_WIDGET_CLASS (ctk_color_plane_parent_class)->realize (widget);
 
@@ -190,7 +190,7 @@ plane_realize (GtkWidget *widget)
 }
 
 static void
-set_cross_cursor (GtkWidget *widget,
+set_cross_cursor (CtkWidget *widget,
                   gboolean   enabled)
 {
   GdkCursor *cursor = NULL;
@@ -213,24 +213,24 @@ set_cross_cursor (GtkWidget *widget,
 }
 
 static void
-h_changed (GtkColorPlane *plane)
+h_changed (CtkColorPlane *plane)
 {
   create_surface (plane);
   ctk_widget_queue_draw (CTK_WIDGET (plane));
 }
 
 static void
-sv_changed (GtkColorPlane *plane)
+sv_changed (CtkColorPlane *plane)
 {
   ctk_widget_queue_draw (CTK_WIDGET (plane));
 }
 
 static void
-update_color (GtkColorPlane *plane,
+update_color (CtkColorPlane *plane,
               gint           x,
               gint           y)
 {
-  GtkWidget *widget = CTK_WIDGET (plane);
+  CtkWidget *widget = CTK_WIDGET (plane);
   gdouble s, v;
 
   s = CLAMP (1 - y * (1.0 / ctk_widget_get_allocated_height (widget)), 0, 1);
@@ -242,10 +242,10 @@ update_color (GtkColorPlane *plane,
 }
 
 static void
-hold_action (GtkGestureLongPress *gesture,
+hold_action (CtkGestureLongPress *gesture,
              gdouble              x,
              gdouble              y,
-             GtkColorPlane       *plane)
+             CtkColorPlane       *plane)
 {
   gboolean handled;
 
@@ -253,7 +253,7 @@ hold_action (GtkGestureLongPress *gesture,
 }
 
 static void
-sv_move (GtkColorPlane *plane,
+sv_move (CtkColorPlane *plane,
          gdouble        ds,
          gdouble        dv)
 {
@@ -309,10 +309,10 @@ error:
 }
 
 static gboolean
-plane_key_press (GtkWidget   *widget,
+plane_key_press (CtkWidget   *widget,
                  GdkEventKey *event)
 {
-  GtkColorPlane *plane = CTK_COLOR_PLANE (widget);
+  CtkColorPlane *plane = CTK_COLOR_PLANE (widget);
   gdouble step;
 
   if ((event->state & GDK_MOD1_MASK) != 0)
@@ -339,10 +339,10 @@ plane_key_press (GtkWidget   *widget,
 }
 
 static void
-plane_drag_gesture_begin (GtkGestureDrag *gesture,
+plane_drag_gesture_begin (CtkGestureDrag *gesture,
                           gdouble         start_x,
                           gdouble         start_y,
-                          GtkColorPlane  *plane)
+                          CtkColorPlane  *plane)
 {
   guint button;
 
@@ -368,10 +368,10 @@ plane_drag_gesture_begin (GtkGestureDrag *gesture,
 }
 
 static void
-plane_drag_gesture_update (GtkGestureDrag *gesture,
+plane_drag_gesture_update (CtkGestureDrag *gesture,
                            gdouble         offset_x,
                            gdouble         offset_y,
-                           GtkColorPlane  *plane)
+                           CtkColorPlane  *plane)
 {
   gdouble start_x, start_y;
 
@@ -381,16 +381,16 @@ plane_drag_gesture_update (GtkGestureDrag *gesture,
 }
 
 static void
-plane_drag_gesture_end (GtkGestureDrag *gesture,
+plane_drag_gesture_end (CtkGestureDrag *gesture,
                         gdouble         offset_x,
                         gdouble         offset_y,
-                        GtkColorPlane  *plane)
+                        CtkColorPlane  *plane)
 {
   set_cross_cursor (CTK_WIDGET (plane), FALSE);
 }
 
 static void
-ctk_color_plane_init (GtkColorPlane *plane)
+ctk_color_plane_init (CtkColorPlane *plane)
 {
   AtkObject *atk_obj;
 
@@ -429,7 +429,7 @@ ctk_color_plane_init (GtkColorPlane *plane)
 static void
 plane_finalize (GObject *object)
 {
-  GtkColorPlane *plane = CTK_COLOR_PLANE (object);
+  CtkColorPlane *plane = CTK_COLOR_PLANE (object);
 
   if (plane->priv->surface)
     cairo_surface_destroy (plane->priv->surface);
@@ -450,8 +450,8 @@ plane_set_property (GObject      *object,
 		    const GValue *value,
 		    GParamSpec   *pspec)
 {
-  GtkColorPlane *plane = CTK_COLOR_PLANE (object);
-  GtkAdjustment *adjustment;
+  CtkColorPlane *plane = CTK_COLOR_PLANE (object);
+  CtkAdjustment *adjustment;
 
   /* Construct only properties can only be set once, these are created
    * only in order to be properly buildable from ctkcoloreditor.ui
@@ -489,10 +489,10 @@ plane_set_property (GObject      *object,
 }
 
 static void
-ctk_color_plane_class_init (GtkColorPlaneClass *class)
+ctk_color_plane_class_init (CtkColorPlaneClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
   object_class->finalize = plane_finalize;
   object_class->set_property = plane_set_property;
@@ -530,10 +530,10 @@ ctk_color_plane_class_init (GtkColorPlaneClass *class)
 							G_PARAM_CONSTRUCT_ONLY));
 }
 
-GtkWidget *
-ctk_color_plane_new (GtkAdjustment *h_adj,
-                     GtkAdjustment *s_adj,
-                     GtkAdjustment *v_adj)
+CtkWidget *
+ctk_color_plane_new (CtkAdjustment *h_adj,
+                     CtkAdjustment *s_adj,
+                     CtkAdjustment *v_adj)
 {
   return g_object_new (CTK_TYPE_COLOR_PLANE,
                        "h-adjustment", h_adj,

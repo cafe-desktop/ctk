@@ -36,7 +36,7 @@ gboolean ctk_show_uri  (GdkScreen   *screen,
                         GError     **error);
 
 GDK_AVAILABLE_IN_3_22
-gboolean ctk_show_uri_on_window (GtkWindow   *parent,
+gboolean ctk_show_uri_on_window (CtkWindow   *parent,
                                  const char  *uri,
                                  guint32      timestamp,
                                  GError     **error);

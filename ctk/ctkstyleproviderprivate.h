@@ -28,51 +28,51 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_STYLE_PROVIDER_PRIVATE          (_ctk_style_provider_private_get_type ())
-#define CTK_STYLE_PROVIDER_PRIVATE(o)            (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_STYLE_PROVIDER_PRIVATE, GtkStyleProviderPrivate))
+#define CTK_STYLE_PROVIDER_PRIVATE(o)            (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_STYLE_PROVIDER_PRIVATE, CtkStyleProviderPrivate))
 #define CTK_IS_STYLE_PROVIDER_PRIVATE(o)         (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_STYLE_PROVIDER_PRIVATE))
-#define CTK_STYLE_PROVIDER_PRIVATE_GET_INTERFACE(o)  (G_TYPE_INSTANCE_GET_INTERFACE ((o), CTK_TYPE_STYLE_PROVIDER_PRIVATE, GtkStyleProviderPrivateInterface))
+#define CTK_STYLE_PROVIDER_PRIVATE_GET_INTERFACE(o)  (G_TYPE_INSTANCE_GET_INTERFACE ((o), CTK_TYPE_STYLE_PROVIDER_PRIVATE, CtkStyleProviderPrivateInterface))
 
-typedef struct _GtkStyleProviderPrivateInterface GtkStyleProviderPrivateInterface;
-/* typedef struct _GtkStyleProviderPrivate GtkStyleProviderPrivate; */ /* dummy typedef */
+typedef struct _CtkStyleProviderPrivateInterface CtkStyleProviderPrivateInterface;
+/* typedef struct _CtkStyleProviderPrivate CtkStyleProviderPrivate; */ /* dummy typedef */
 
-struct _GtkStyleProviderPrivateInterface
+struct _CtkStyleProviderPrivateInterface
 {
   GTypeInterface g_iface;
 
-  GtkCssValue *         (* get_color)           (GtkStyleProviderPrivate *provider,
+  CtkCssValue *         (* get_color)           (CtkStyleProviderPrivate *provider,
                                                  const char              *name);
-  GtkSettings *         (* get_settings)        (GtkStyleProviderPrivate *provider);
-  GtkCssKeyframes *     (* get_keyframes)       (GtkStyleProviderPrivate *provider,
+  CtkSettings *         (* get_settings)        (CtkStyleProviderPrivate *provider);
+  CtkCssKeyframes *     (* get_keyframes)       (CtkStyleProviderPrivate *provider,
                                                  const char              *name);
-  int                   (* get_scale)           (GtkStyleProviderPrivate *provider);
-  void                  (* lookup)              (GtkStyleProviderPrivate *provider,
-                                                 const GtkCssMatcher     *matcher,
-                                                 GtkCssLookup            *lookup,
-                                                 GtkCssChange            *out_change);
-  void                  (* emit_error)          (GtkStyleProviderPrivate *provider,
-                                                 GtkCssSection           *section,
+  int                   (* get_scale)           (CtkStyleProviderPrivate *provider);
+  void                  (* lookup)              (CtkStyleProviderPrivate *provider,
+                                                 const CtkCssMatcher     *matcher,
+                                                 CtkCssLookup            *lookup,
+                                                 CtkCssChange            *out_change);
+  void                  (* emit_error)          (CtkStyleProviderPrivate *provider,
+                                                 CtkCssSection           *section,
                                                  const GError            *error);
   /* signal */
-  void                  (* changed)             (GtkStyleProviderPrivate *provider);
+  void                  (* changed)             (CtkStyleProviderPrivate *provider);
 };
 
 GType                   _ctk_style_provider_private_get_type     (void) G_GNUC_CONST;
 
-GtkSettings *           _ctk_style_provider_private_get_settings (GtkStyleProviderPrivate *provider);
-GtkCssValue *           _ctk_style_provider_private_get_color    (GtkStyleProviderPrivate *provider,
+CtkSettings *           _ctk_style_provider_private_get_settings (CtkStyleProviderPrivate *provider);
+CtkCssValue *           _ctk_style_provider_private_get_color    (CtkStyleProviderPrivate *provider,
                                                                   const char              *name);
-GtkCssKeyframes *       _ctk_style_provider_private_get_keyframes(GtkStyleProviderPrivate *provider,
+CtkCssKeyframes *       _ctk_style_provider_private_get_keyframes(CtkStyleProviderPrivate *provider,
                                                                   const char              *name);
-int                     _ctk_style_provider_private_get_scale    (GtkStyleProviderPrivate *provider);
-void                    _ctk_style_provider_private_lookup       (GtkStyleProviderPrivate *provider,
-                                                                  const GtkCssMatcher     *matcher,
-                                                                  GtkCssLookup            *lookup,
-                                                                  GtkCssChange            *out_change);
+int                     _ctk_style_provider_private_get_scale    (CtkStyleProviderPrivate *provider);
+void                    _ctk_style_provider_private_lookup       (CtkStyleProviderPrivate *provider,
+                                                                  const CtkCssMatcher     *matcher,
+                                                                  CtkCssLookup            *lookup,
+                                                                  CtkCssChange            *out_change);
 
-void                    _ctk_style_provider_private_changed      (GtkStyleProviderPrivate *provider);
+void                    _ctk_style_provider_private_changed      (CtkStyleProviderPrivate *provider);
 
-void                    _ctk_style_provider_private_emit_error   (GtkStyleProviderPrivate *provider,
-                                                                  GtkCssSection           *section,
+void                    _ctk_style_provider_private_emit_error   (CtkStyleProviderPrivate *provider,
+                                                                  CtkCssSection           *section,
                                                                   GError                  *error);
 
 G_END_DECLS

@@ -1,9 +1,9 @@
 #include <ctk/ctk.h>
 
-static GtkWidget *
+static CtkWidget *
 create_level_bar (void)
 {
-  GtkWidget *bar;
+  CtkWidget *bar;
 
   bar = ctk_level_bar_new ();
   ctk_level_bar_set_min_value (CTK_LEVEL_BAR (bar), 0.0);
@@ -27,7 +27,7 @@ create_level_bar (void)
 static void
 add_custom_css (void)
 {
-  GtkCssProvider *provider;
+  CtkCssProvider *provider;
   const gchar data[] =
   "levelbar block.my-offset {"
   "   background: magenta;"
@@ -43,7 +43,7 @@ add_custom_css (void)
 static gboolean
 increase_level (gpointer data)
 {
-  GtkLevelBar *bar = data;
+  CtkLevelBar *bar = data;
   gdouble value;
 
   value = ctk_level_bar_get_value (bar);
@@ -56,7 +56,7 @@ increase_level (gpointer data)
 }
 
 static gboolean
-window_delete_event (GtkWidget *widget,
+window_delete_event (CtkWidget *widget,
                      GdkEvent *event,
                      gpointer _data)
 {
@@ -65,7 +65,7 @@ window_delete_event (GtkWidget *widget,
 }
 
 static void
-toggle (GtkSwitch *sw, GParamSpec *pspec, GtkLevelBar *bar)
+toggle (CtkSwitch *sw, GParamSpec *pspec, CtkLevelBar *bar)
 {
   if (ctk_switch_get_active (sw))
     ctk_level_bar_set_mode (bar, CTK_LEVEL_BAR_MODE_DISCRETE);
@@ -76,11 +76,11 @@ toggle (GtkSwitch *sw, GParamSpec *pspec, GtkLevelBar *bar)
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window;
-  GtkWidget *box;
-  GtkWidget *bar;
-  GtkWidget *box2;
-  GtkWidget *sw;
+  CtkWidget *window;
+  CtkWidget *box;
+  CtkWidget *bar;
+  CtkWidget *box2;
+  CtkWidget *sw;
 
   ctk_init (&argc, &argv);
 

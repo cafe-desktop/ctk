@@ -20,10 +20,10 @@
 
 /**
  * SECTION:ctklevelbar
- * @Title: GtkLevelBar
+ * @Title: CtkLevelBar
  * @Short_description: A bar that can used as a level indicator
  *
- * The #GtkLevelBar is a bar widget that can be used
+ * The #CtkLevelBar is a bar widget that can be used
  * as a level indicator. Typical use cases are displaying the strength
  * of a password, or showing the charge level of a battery.
  *
@@ -42,11 +42,11 @@
  *
  * |[<!-- language="C" -->
  *
- * static GtkWidget *
+ * static CtkWidget *
  * create_level_bar (void)
  * {
- *   GtkWidget *widget;
- *   GtkLevelBar *bar;
+ *   CtkWidget *widget;
+ *   CtkLevelBar *bar;
  *
  *   widget = ctk_level_bar_new ();
  *   bar = CTK_LEVEL_BAR (widget);
@@ -87,11 +87,11 @@
  * set the minimum value to 0 and the maximum value to 5 after changing the indicator
  * mode to discrete.
  *
- * GtkLevelBar was introduced in GTK+ 3.6.
+ * CtkLevelBar was introduced in GTK+ 3.6.
  *
- * # GtkLevelBar as GtkBuildable
+ * # CtkLevelBar as CtkBuildable
  *
- * The GtkLevelBar implementation of the GtkBuildable interface supports a
+ * The CtkLevelBar implementation of the CtkBuildable interface supports a
  * custom <offsets> element, which can contain any number of <offset> elements,
  * each of which must have name and value attributes.
  *
@@ -106,7 +106,7 @@
  *     ┊
  * ]|
  *
- * GtkLevelBar has a main CSS node with name levelbar and one of the style
+ * CtkLevelBar has a main CSS node with name levelbar and one of the style
  * classes .discrete or .continuous and a subnode with name trough. Below the
  * trough node are a number of nodes with name block and style class .filled
  * or .empty. In continuous mode, there is exactly one node of each, in discrete
@@ -164,12 +164,12 @@ static guint signals[NUM_SIGNALS] = { 0, };
 typedef struct {
   gchar *name;
   gdouble value;
-} GtkLevelBarOffset;
+} CtkLevelBarOffset;
 
-struct _GtkLevelBarPrivate {
-  GtkOrientation orientation;
+struct _CtkLevelBarPrivate {
+  CtkOrientation orientation;
 
-  GtkLevelBarMode bar_mode;
+  CtkLevelBarMode bar_mode;
 
   gdouble min_value;
   gdouble max_value;
@@ -177,29 +177,29 @@ struct _GtkLevelBarPrivate {
 
   GList *offsets;
 
-  GtkCssGadget *trough_gadget;
-  GtkCssGadget **block_gadget;
+  CtkCssGadget *trough_gadget;
+  CtkCssGadget **block_gadget;
   guint n_blocks;
 
   guint inverted : 1;
 };
 
-static void ctk_level_bar_set_value_internal (GtkLevelBar *self,
+static void ctk_level_bar_set_value_internal (CtkLevelBar *self,
                                               gdouble      value);
 
-static void ctk_level_bar_buildable_init (GtkBuildableIface *iface);
+static void ctk_level_bar_buildable_init (CtkBuildableIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkLevelBar, ctk_level_bar, CTK_TYPE_WIDGET,
-                         G_ADD_PRIVATE (GtkLevelBar)
+G_DEFINE_TYPE_WITH_CODE (CtkLevelBar, ctk_level_bar, CTK_TYPE_WIDGET,
+                         G_ADD_PRIVATE (CtkLevelBar)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_ORIENTABLE, NULL)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
                                                 ctk_level_bar_buildable_init))
 
-static GtkLevelBarOffset *
+static CtkLevelBarOffset *
 ctk_level_bar_offset_new (const gchar *name,
                           gdouble      value)
 {
-  GtkLevelBarOffset *offset = g_slice_new0 (GtkLevelBarOffset);
+  CtkLevelBarOffset *offset = g_slice_new0 (CtkLevelBarOffset);
 
   offset->name = g_strdup (name);
   offset->value = value;
@@ -208,17 +208,17 @@ ctk_level_bar_offset_new (const gchar *name,
 }
 
 static void
-ctk_level_bar_offset_free (GtkLevelBarOffset *offset)
+ctk_level_bar_offset_free (CtkLevelBarOffset *offset)
 {
   g_free (offset->name);
-  g_slice_free (GtkLevelBarOffset, offset);
+  g_slice_free (CtkLevelBarOffset, offset);
 }
 
 static gint
 offset_find_func (gconstpointer data,
                   gconstpointer user_data)
 {
-  const GtkLevelBarOffset *offset = data;
+  const CtkLevelBarOffset *offset = data;
   const gchar *name = user_data;
 
   return g_strcmp0 (name, offset->name);
@@ -228,20 +228,20 @@ static gint
 offset_sort_func (gconstpointer a,
                   gconstpointer b)
 {
-  const GtkLevelBarOffset *offset_a = a;
-  const GtkLevelBarOffset *offset_b = b;
+  const CtkLevelBarOffset *offset_a = a;
+  const CtkLevelBarOffset *offset_b = b;
 
   return (offset_a->value > offset_b->value);
 }
 
 static gboolean
-ctk_level_bar_ensure_offset (GtkLevelBar *self,
+ctk_level_bar_ensure_offset (CtkLevelBar *self,
                              const gchar *name,
                              gdouble      value)
 {
   GList *existing;
-  GtkLevelBarOffset *offset = NULL;
-  GtkLevelBarOffset *new_offset;
+  CtkLevelBarOffset *offset = NULL;
+  CtkLevelBarOffset *new_offset;
 
   existing = g_list_find_custom (self->priv->offsets, name, offset_find_func);
   if (existing)
@@ -264,7 +264,7 @@ ctk_level_bar_ensure_offset (GtkLevelBar *self,
 }
 
 static gboolean
-ctk_level_bar_value_in_interval (GtkLevelBar *self,
+ctk_level_bar_value_in_interval (CtkLevelBar *self,
                                  gdouble      value)
 {
   return ((value >= self->priv->min_value) &&
@@ -272,7 +272,7 @@ ctk_level_bar_value_in_interval (GtkLevelBar *self,
 }
 
 static gint
-ctk_level_bar_get_num_blocks (GtkLevelBar *self)
+ctk_level_bar_get_num_blocks (CtkLevelBar *self)
 {
   if (self->priv->bar_mode == CTK_LEVEL_BAR_MODE_CONTINUOUS)
     return 1;
@@ -283,7 +283,7 @@ ctk_level_bar_get_num_blocks (GtkLevelBar *self)
 }
 
 static gint
-ctk_level_bar_get_num_block_nodes (GtkLevelBar *self)
+ctk_level_bar_get_num_block_nodes (CtkLevelBar *self)
 {
   if (self->priv->bar_mode == CTK_LEVEL_BAR_MODE_CONTINUOUS)
     return 2;
@@ -292,7 +292,7 @@ ctk_level_bar_get_num_block_nodes (GtkLevelBar *self)
 }
 
 static void
-ctk_level_bar_get_min_block_size (GtkLevelBar *self,
+ctk_level_bar_get_min_block_size (CtkLevelBar *self,
                                   gint        *block_width,
                                   gint        *block_height)
 {
@@ -321,7 +321,7 @@ ctk_level_bar_get_min_block_size (GtkLevelBar *self,
 }
 
 static gboolean
-ctk_level_bar_get_real_inverted (GtkLevelBar *self)
+ctk_level_bar_get_real_inverted (CtkLevelBar *self)
 {
   if (ctk_widget_get_direction (CTK_WIDGET (self)) == CTK_TEXT_DIR_RTL &&
       self->priv->orientation == CTK_ORIENTATION_HORIZONTAL)
@@ -331,7 +331,7 @@ ctk_level_bar_get_real_inverted (GtkLevelBar *self)
 }
 
 static void
-ctk_level_bar_draw_fill_continuous (GtkLevelBar *self,
+ctk_level_bar_draw_fill_continuous (CtkLevelBar *self,
                                     cairo_t     *cr)
 {
   gboolean inverted;
@@ -347,7 +347,7 @@ ctk_level_bar_draw_fill_continuous (GtkLevelBar *self,
 }
 
 static void
-ctk_level_bar_draw_fill_discrete (GtkLevelBar *self,
+ctk_level_bar_draw_fill_discrete (CtkLevelBar *self,
                                   cairo_t     *cr)
 {
   gint num_blocks, i;
@@ -359,7 +359,7 @@ ctk_level_bar_draw_fill_discrete (GtkLevelBar *self,
 }
 
 static gboolean
-ctk_level_bar_render_trough (GtkCssGadget *gadget,
+ctk_level_bar_render_trough (CtkCssGadget *gadget,
                              cairo_t      *cr,
                              int           x,
                              int           y,
@@ -367,8 +367,8 @@ ctk_level_bar_render_trough (GtkCssGadget *gadget,
                              int           height,
                              gpointer      data)
 {
-  GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkLevelBar *self = CTK_LEVEL_BAR (widget);
+  CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
+  CtkLevelBar *self = CTK_LEVEL_BAR (widget);
 
   if (self->priv->bar_mode == CTK_LEVEL_BAR_MODE_CONTINUOUS)
     ctk_level_bar_draw_fill_continuous (self, cr);
@@ -379,10 +379,10 @@ ctk_level_bar_render_trough (GtkCssGadget *gadget,
 }
 
 static gboolean
-ctk_level_bar_draw (GtkWidget *widget,
+ctk_level_bar_draw (CtkWidget *widget,
                     cairo_t   *cr)
 {
-  GtkLevelBar *self = CTK_LEVEL_BAR (widget);
+  CtkLevelBar *self = CTK_LEVEL_BAR (widget);
 
   ctk_css_gadget_draw (self->priv->trough_gadget, cr);
 
@@ -390,8 +390,8 @@ ctk_level_bar_draw (GtkWidget *widget,
 }
 
 static void
-ctk_level_bar_measure_trough (GtkCssGadget   *gadget,
-                              GtkOrientation  orientation,
+ctk_level_bar_measure_trough (CtkCssGadget   *gadget,
+                              CtkOrientation  orientation,
                               int             for_size,
                               int            *minimum,
                               int            *natural,
@@ -399,8 +399,8 @@ ctk_level_bar_measure_trough (GtkCssGadget   *gadget,
                               int            *natural_baseline,
                               gpointer        data)
 {
-  GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkLevelBar *self = CTK_LEVEL_BAR (widget);
+  CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
+  CtkLevelBar *self = CTK_LEVEL_BAR (widget);
   gint num_blocks, size;
   gint block_width, block_height;
 
@@ -427,7 +427,7 @@ ctk_level_bar_measure_trough (GtkCssGadget   *gadget,
 }
 
 static void
-ctk_level_bar_get_preferred_width (GtkWidget *widget,
+ctk_level_bar_get_preferred_width (CtkWidget *widget,
                                    gint      *minimum,
                                    gint      *natural)
 {
@@ -439,7 +439,7 @@ ctk_level_bar_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-ctk_level_bar_get_preferred_height (GtkWidget *widget,
+ctk_level_bar_get_preferred_height (CtkWidget *widget,
                                     gint      *minimum,
                                     gint      *natural)
 {
@@ -451,12 +451,12 @@ ctk_level_bar_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-ctk_level_bar_allocate_trough_continuous (GtkLevelBar *self,
-                                          const GtkAllocation *allocation,
+ctk_level_bar_allocate_trough_continuous (CtkLevelBar *self,
+                                          const CtkAllocation *allocation,
                                           int baseline,
-                                          GtkAllocation *out_clip)
+                                          CtkAllocation *out_clip)
 {
-  GtkAllocation block_area, clip;
+  CtkAllocation block_area, clip;
   gdouble fill_percentage;
   gboolean inverted;
   int block_min;
@@ -507,12 +507,12 @@ ctk_level_bar_allocate_trough_continuous (GtkLevelBar *self,
 }
 
 static void
-ctk_level_bar_allocate_trough_discrete (GtkLevelBar *self,
-                                        const GtkAllocation *allocation,
+ctk_level_bar_allocate_trough_discrete (CtkLevelBar *self,
+                                        const CtkAllocation *allocation,
                                         int baseline,
-                                        GtkAllocation *out_clip)
+                                        CtkAllocation *out_clip)
 {
-  GtkAllocation block_area, clip;
+  CtkAllocation block_area, clip;
   gint num_blocks, i;
   gint block_width, block_height;
 
@@ -554,14 +554,14 @@ ctk_level_bar_allocate_trough_discrete (GtkLevelBar *self,
 }
 
 static void
-ctk_level_bar_allocate_trough (GtkCssGadget        *gadget,
-                               const GtkAllocation *allocation,
+ctk_level_bar_allocate_trough (CtkCssGadget        *gadget,
+                               const CtkAllocation *allocation,
                                int                  baseline,
-                               GtkAllocation       *out_clip,
+                               CtkAllocation       *out_clip,
                                gpointer             data)
 {
-  GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkLevelBar *self = CTK_LEVEL_BAR (widget);
+  CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
+  CtkLevelBar *self = CTK_LEVEL_BAR (widget);
 
   if (self->priv->bar_mode == CTK_LEVEL_BAR_MODE_CONTINUOUS)
     ctk_level_bar_allocate_trough_continuous (self, allocation, baseline, out_clip);
@@ -570,10 +570,10 @@ ctk_level_bar_allocate_trough (GtkCssGadget        *gadget,
 }
 
 static void
-ctk_level_bar_size_allocate (GtkWidget     *widget,
-                             GtkAllocation *allocation)
+ctk_level_bar_size_allocate (CtkWidget     *widget,
+                             CtkAllocation *allocation)
 {
-  GtkAllocation clip;
+  CtkAllocation clip;
 
   CTK_WIDGET_CLASS (ctk_level_bar_parent_class)->size_allocate (widget, allocation);
 
@@ -586,10 +586,10 @@ ctk_level_bar_size_allocate (GtkWidget     *widget,
 }
 
 static void
-update_block_nodes (GtkLevelBar *self)
+update_block_nodes (CtkLevelBar *self)
 {
-  GtkLevelBarPrivate *priv = self->priv;
-  GtkCssNode *trough_node = ctk_css_gadget_get_node (priv->trough_gadget);
+  CtkLevelBarPrivate *priv = self->priv;
+  CtkCssNode *trough_node = ctk_css_gadget_get_node (priv->trough_gadget);
   guint n_blocks;
   guint i;
 
@@ -604,12 +604,12 @@ update_block_nodes (GtkLevelBar *self)
           ctk_css_node_set_parent (ctk_css_gadget_get_node (priv->block_gadget[i]), NULL);
           g_clear_object (&priv->block_gadget[i]);
         }
-      priv->block_gadget = g_renew (GtkCssGadget*, priv->block_gadget, n_blocks);
+      priv->block_gadget = g_renew (CtkCssGadget*, priv->block_gadget, n_blocks);
       priv->n_blocks = n_blocks;
     }
   else
     {
-      priv->block_gadget = g_renew (GtkCssGadget*, priv->block_gadget, n_blocks);
+      priv->block_gadget = g_renew (CtkCssGadget*, priv->block_gadget, n_blocks);
       for (i = priv->n_blocks; i < n_blocks; i++)
         {
           priv->block_gadget[i] = ctk_css_custom_gadget_new ("block",
@@ -625,10 +625,10 @@ update_block_nodes (GtkLevelBar *self)
 }
 
 static void
-update_mode_style_classes (GtkLevelBar *self)
+update_mode_style_classes (CtkLevelBar *self)
 {
-  GtkLevelBarPrivate *priv = self->priv;
-  GtkCssNode *widget_node;
+  CtkLevelBarPrivate *priv = self->priv;
+  CtkCssNode *widget_node;
 
   widget_node = ctk_widget_get_css_node (CTK_WIDGET (self));
   if (priv->bar_mode == CTK_LEVEL_BAR_MODE_CONTINUOUS)
@@ -644,12 +644,12 @@ update_mode_style_classes (GtkLevelBar *self)
 }
 
 static void
-ctk_level_bar_state_flags_changed (GtkWidget     *widget,
-                                   GtkStateFlags  previous_state)
+ctk_level_bar_state_flags_changed (CtkWidget     *widget,
+                                   CtkStateFlags  previous_state)
 {
-  GtkLevelBar *self = CTK_LEVEL_BAR (widget);
-  GtkLevelBarPrivate *priv = self->priv;
-  GtkStateFlags state;
+  CtkLevelBar *self = CTK_LEVEL_BAR (widget);
+  CtkLevelBarPrivate *priv = self->priv;
+  CtkStateFlags state;
   gint i;
 
   state = ctk_widget_get_state_flags (widget);
@@ -662,13 +662,13 @@ ctk_level_bar_state_flags_changed (GtkWidget     *widget,
 }
 
 static void
-update_level_style_classes (GtkLevelBar *self)
+update_level_style_classes (CtkLevelBar *self)
 {
-  GtkLevelBarPrivate *priv = self->priv;
+  CtkLevelBarPrivate *priv = self->priv;
   gdouble value;
   const gchar *classes[3] = { NULL, NULL, NULL };
   const gchar *value_class = NULL;
-  GtkLevelBarOffset *offset, *prev_offset;
+  CtkLevelBarOffset *offset, *prev_offset;
   GList *l;
   gint num_filled, num_blocks, i;
   gboolean inverted;
@@ -718,10 +718,10 @@ update_level_style_classes (GtkLevelBar *self)
 }
 
 static void
-ctk_level_bar_direction_changed (GtkWidget        *widget,
-                                 GtkTextDirection  previous_dir)
+ctk_level_bar_direction_changed (CtkWidget        *widget,
+                                 CtkTextDirection  previous_dir)
 {
-  GtkLevelBar *self = CTK_LEVEL_BAR (widget);
+  CtkLevelBar *self = CTK_LEVEL_BAR (widget);
 
   update_level_style_classes (self);
 
@@ -729,9 +729,9 @@ ctk_level_bar_direction_changed (GtkWidget        *widget,
 }
 
 static void
-ctk_level_bar_ensure_offsets_in_range (GtkLevelBar *self)
+ctk_level_bar_ensure_offsets_in_range (CtkLevelBar *self)
 {
-  GtkLevelBarOffset *offset;
+  CtkLevelBarOffset *offset;
   GList *l = self->priv->offsets;
 
   while (l != NULL)
@@ -747,8 +747,8 @@ ctk_level_bar_ensure_offsets_in_range (GtkLevelBar *self)
 }
 
 typedef struct {
-  GtkLevelBar *self;
-  GtkBuilder *builder;
+  CtkLevelBar *self;
+  CtkBuilder *builder;
   GList *offsets;
 } OffsetsParserData;
 
@@ -777,7 +777,7 @@ offset_start_element (GMarkupParseContext  *context,
       const gchar *name;
       const gchar *value;
       GValue gvalue = G_VALUE_INIT;
-      GtkLevelBarOffset *offset;
+      CtkLevelBarOffset *offset;
 
       if (!_ctk_builder_check_parent (data->builder, context, "offsets", error))
         return;
@@ -803,7 +803,7 @@ offset_start_element (GMarkupParseContext  *context,
   else
     {
       _ctk_builder_error_unhandled_tag (data->builder, context,
-                                        "GtkLevelBar", element_name,
+                                        "CtkLevelBar", element_name,
                                         error);
     }
 }
@@ -814,8 +814,8 @@ static const GMarkupParser offset_parser =
 };
 
 static gboolean
-ctk_level_bar_buildable_custom_tag_start (GtkBuildable  *buildable,
-                                          GtkBuilder    *builder,
+ctk_level_bar_buildable_custom_tag_start (CtkBuildable  *buildable,
+                                          CtkBuilder    *builder,
                                           GObject       *child,
                                           const gchar   *tagname,
                                           GMarkupParser *parser,
@@ -841,15 +841,15 @@ ctk_level_bar_buildable_custom_tag_start (GtkBuildable  *buildable,
 }
 
 static void
-ctk_level_bar_buildable_custom_finished (GtkBuildable *buildable,
-                                         GtkBuilder   *builder,
+ctk_level_bar_buildable_custom_finished (CtkBuildable *buildable,
+                                         CtkBuilder   *builder,
                                          GObject      *child,
                                          const gchar  *tagname,
                                          gpointer      user_data)
 {
   OffsetsParserData *data = user_data;
-  GtkLevelBar *self;
-  GtkLevelBarOffset *offset;
+  CtkLevelBar *self;
+  CtkLevelBarOffset *offset;
   GList *l;
 
   self = data->self;
@@ -869,15 +869,15 @@ ctk_level_bar_buildable_custom_finished (GtkBuildable *buildable,
 }
 
 static void
-ctk_level_bar_buildable_init (GtkBuildableIface *iface)
+ctk_level_bar_buildable_init (CtkBuildableIface *iface)
 {
   iface->custom_tag_start = ctk_level_bar_buildable_custom_tag_start;
   iface->custom_finished = ctk_level_bar_buildable_custom_finished;
 }
 
 static void
-ctk_level_bar_set_orientation (GtkLevelBar    *self,
-                               GtkOrientation  orientation)
+ctk_level_bar_set_orientation (CtkLevelBar    *self,
+                               CtkOrientation  orientation)
 {
   if (self->priv->orientation != orientation)
     {
@@ -894,7 +894,7 @@ ctk_level_bar_get_property (GObject    *obj,
                             GValue     *value,
                             GParamSpec *pspec)
 {
-  GtkLevelBar *self = CTK_LEVEL_BAR (obj);
+  CtkLevelBar *self = CTK_LEVEL_BAR (obj);
 
   switch (property_id)
     {
@@ -928,7 +928,7 @@ ctk_level_bar_set_property (GObject      *obj,
                             const GValue *value,
                             GParamSpec   *pspec)
 {
-  GtkLevelBar *self = CTK_LEVEL_BAR (obj);
+  CtkLevelBar *self = CTK_LEVEL_BAR (obj);
 
   switch (property_id)
     {
@@ -959,8 +959,8 @@ ctk_level_bar_set_property (GObject      *obj,
 static void
 ctk_level_bar_finalize (GObject *obj)
 {
-  GtkLevelBar *self = CTK_LEVEL_BAR (obj);
-  GtkLevelBarPrivate *priv = self->priv;
+  CtkLevelBar *self = CTK_LEVEL_BAR (obj);
+  CtkLevelBarPrivate *priv = self->priv;
   gint i;
 
   g_list_free_full (priv->offsets, (GDestroyNotify) ctk_level_bar_offset_free);
@@ -975,10 +975,10 @@ ctk_level_bar_finalize (GObject *obj)
 }
 
 static void
-ctk_level_bar_class_init (GtkLevelBarClass *klass)
+ctk_level_bar_class_init (CtkLevelBarClass *klass)
 {
   GObjectClass *oclass = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *wclass = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *wclass = CTK_WIDGET_CLASS (klass);
 
   oclass->get_property = ctk_level_bar_get_property;
   oclass->set_property = ctk_level_bar_set_property;
@@ -994,8 +994,8 @@ ctk_level_bar_class_init (GtkLevelBarClass *klass)
   g_object_class_override_property (oclass, PROP_ORIENTATION, "orientation");
 
   /**
-   * GtkLevelBar::offset-changed:
-   * @self: a #GtkLevelBar
+   * CtkLevelBar::offset-changed:
+   * @self: a #CtkLevelBar
    * @name: the name of the offset that changed value
    *
    * Emitted when an offset specified on the bar changes value as an
@@ -1011,16 +1011,16 @@ ctk_level_bar_class_init (GtkLevelBarClass *klass)
     g_signal_new (I_("offset-changed"),
                   CTK_TYPE_LEVEL_BAR,
                   G_SIGNAL_RUN_FIRST | G_SIGNAL_DETAILED,
-                  G_STRUCT_OFFSET (GtkLevelBarClass, offset_changed),
+                  G_STRUCT_OFFSET (CtkLevelBarClass, offset_changed),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE,
                   1, G_TYPE_STRING);
 
   /**
-   * GtkLevelBar:value:
+   * CtkLevelBar:value:
    *
-   * The #GtkLevelBar:value property determines the currently
+   * The #CtkLevelBar:value property determines the currently
    * filled value of the level bar.
    *
    * Since: 3.6
@@ -1033,9 +1033,9 @@ ctk_level_bar_class_init (GtkLevelBarClass *klass)
                          G_PARAM_READWRITE|G_PARAM_STATIC_STRINGS|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkLevelBar:min-value:
+   * CtkLevelBar:min-value:
    *
-   * The #GtkLevelBar:min-value property determines the minimum value of
+   * The #CtkLevelBar:min-value property determines the minimum value of
    * the interval that can be displayed by the bar.
    *
    * Since: 3.6
@@ -1048,9 +1048,9 @@ ctk_level_bar_class_init (GtkLevelBarClass *klass)
                          G_PARAM_READWRITE|G_PARAM_STATIC_STRINGS|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkLevelBar:max-value:
+   * CtkLevelBar:max-value:
    *
-   * The #GtkLevelBar:max-value property determaxes the maximum value of
+   * The #CtkLevelBar:max-value property determaxes the maximum value of
    * the interval that can be displayed by the bar.
    *
    * Since: 3.6
@@ -1063,16 +1063,16 @@ ctk_level_bar_class_init (GtkLevelBarClass *klass)
                          G_PARAM_READWRITE|G_PARAM_STATIC_STRINGS|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkLevelBar:mode:
+   * CtkLevelBar:mode:
    *
-   * The #GtkLevelBar:mode property determines the way #GtkLevelBar
+   * The #CtkLevelBar:mode property determines the way #CtkLevelBar
    * interprets the value properties to draw the level fill area.
    * Specifically, when the value is #CTK_LEVEL_BAR_MODE_CONTINUOUS,
-   * #GtkLevelBar will draw a single block representing the current value in
+   * #CtkLevelBar will draw a single block representing the current value in
    * that area; when the value is #CTK_LEVEL_BAR_MODE_DISCRETE,
    * the widget will draw a succession of separate blocks filling the
    * draw area, with the number of blocks being equal to the units separating
-   * the integral roundings of #GtkLevelBar:min-value and #GtkLevelBar:max-value.
+   * the integral roundings of #CtkLevelBar:min-value and #CtkLevelBar:max-value.
    *
    * Since: 3.6
    */
@@ -1085,7 +1085,7 @@ ctk_level_bar_class_init (GtkLevelBarClass *klass)
                        G_PARAM_READWRITE|G_PARAM_STATIC_STRINGS|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkLevelBar:inverted:
+   * CtkLevelBar:inverted:
    *
    * Level bars normally grow from top to bottom or left to right.
    * Inverted level bars grow in the opposite direction.
@@ -1100,10 +1100,10 @@ ctk_level_bar_class_init (GtkLevelBarClass *klass)
                           G_PARAM_READWRITE|G_PARAM_STATIC_STRINGS|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkLevelBar:min-block-height:
+   * CtkLevelBar:min-block-height:
    *
    * The min-block-height style property determines the minimum
-   * height for blocks filling the #GtkLevelBar widget.
+   * height for blocks filling the #CtkLevelBar widget.
    *
    * Since: 3.6
    *
@@ -1117,10 +1117,10 @@ ctk_level_bar_class_init (GtkLevelBarClass *klass)
                                1, G_MAXINT, DEFAULT_BLOCK_SIZE,
                                G_PARAM_READWRITE|G_PARAM_DEPRECATED));
   /**
-   * GtkLevelBar:min-block-width:
+   * CtkLevelBar:min-block-width:
    *
    * The min-block-width style property determines the minimum
-   * width for blocks filling the #GtkLevelBar widget.
+   * width for blocks filling the #CtkLevelBar widget.
    *
    * Since: 3.6
    *
@@ -1141,10 +1141,10 @@ ctk_level_bar_class_init (GtkLevelBarClass *klass)
 }
 
 static void
-ctk_level_bar_init (GtkLevelBar *self)
+ctk_level_bar_init (CtkLevelBar *self)
 {
-  GtkLevelBarPrivate *priv;
-  GtkCssNode *widget_node, *trough_node;
+  CtkLevelBarPrivate *priv;
+  CtkCssNode *widget_node, *trough_node;
 
   priv = self->priv = ctk_level_bar_get_instance_private (self);
 
@@ -1188,13 +1188,13 @@ ctk_level_bar_init (GtkLevelBar *self)
 /**
  * ctk_level_bar_new:
  *
- * Creates a new #GtkLevelBar.
+ * Creates a new #CtkLevelBar.
  *
- * Returns: a #GtkLevelBar.
+ * Returns: a #CtkLevelBar.
  *
  * Since: 3.6
  */
-GtkWidget *
+CtkWidget *
 ctk_level_bar_new (void)
 {
   return g_object_new (CTK_TYPE_LEVEL_BAR, NULL);
@@ -1205,14 +1205,14 @@ ctk_level_bar_new (void)
  * @min_value: a positive value
  * @max_value: a positive value
  *
- * Utility constructor that creates a new #GtkLevelBar for the specified
+ * Utility constructor that creates a new #CtkLevelBar for the specified
  * interval.
  *
- * Returns: a #GtkLevelBar
+ * Returns: a #CtkLevelBar
  *
  * Since: 3.6
  */
-GtkWidget *
+CtkWidget *
 ctk_level_bar_new_for_interval (gdouble min_value,
                                 gdouble max_value)
 {
@@ -1224,16 +1224,16 @@ ctk_level_bar_new_for_interval (gdouble min_value,
 
 /**
  * ctk_level_bar_get_min_value:
- * @self: a #GtkLevelBar
+ * @self: a #CtkLevelBar
  *
- * Returns the value of the #GtkLevelBar:min-value property.
+ * Returns the value of the #CtkLevelBar:min-value property.
  *
  * Returns: a positive value
  *
  * Since: 3.6
  */
 gdouble
-ctk_level_bar_get_min_value (GtkLevelBar *self)
+ctk_level_bar_get_min_value (CtkLevelBar *self)
 {
   g_return_val_if_fail (CTK_IS_LEVEL_BAR (self), 0.0);
 
@@ -1242,16 +1242,16 @@ ctk_level_bar_get_min_value (GtkLevelBar *self)
 
 /**
  * ctk_level_bar_get_max_value:
- * @self: a #GtkLevelBar
+ * @self: a #CtkLevelBar
  *
- * Returns the value of the #GtkLevelBar:max-value property.
+ * Returns the value of the #CtkLevelBar:max-value property.
  *
  * Returns: a positive value
  *
  * Since: 3.6
  */
 gdouble
-ctk_level_bar_get_max_value (GtkLevelBar *self)
+ctk_level_bar_get_max_value (CtkLevelBar *self)
 {
   g_return_val_if_fail (CTK_IS_LEVEL_BAR (self), 0.0);
 
@@ -1260,17 +1260,17 @@ ctk_level_bar_get_max_value (GtkLevelBar *self)
 
 /**
  * ctk_level_bar_get_value:
- * @self: a #GtkLevelBar
+ * @self: a #CtkLevelBar
  *
- * Returns the value of the #GtkLevelBar:value property.
+ * Returns the value of the #CtkLevelBar:value property.
  *
  * Returns: a value in the interval between
- *     #GtkLevelBar:min-value and #GtkLevelBar:max-value
+ *     #CtkLevelBar:min-value and #CtkLevelBar:max-value
  *
  * Since: 3.6
  */
 gdouble
-ctk_level_bar_get_value (GtkLevelBar *self)
+ctk_level_bar_get_value (CtkLevelBar *self)
 {
   g_return_val_if_fail (CTK_IS_LEVEL_BAR (self), 0.0);
 
@@ -1278,7 +1278,7 @@ ctk_level_bar_get_value (GtkLevelBar *self)
 }
 
 static void
-ctk_level_bar_set_value_internal (GtkLevelBar *self,
+ctk_level_bar_set_value_internal (CtkLevelBar *self,
                                   gdouble      value)
 {
   self->priv->cur_value = value;
@@ -1288,10 +1288,10 @@ ctk_level_bar_set_value_internal (GtkLevelBar *self,
 
 /**
  * ctk_level_bar_set_min_value:
- * @self: a #GtkLevelBar
+ * @self: a #CtkLevelBar
  * @value: a positive value
  *
- * Sets the value of the #GtkLevelBar:min-value property.
+ * Sets the value of the #CtkLevelBar:min-value property.
  *
  * You probably want to update preexisting level offsets after calling
  * this function.
@@ -1299,10 +1299,10 @@ ctk_level_bar_set_value_internal (GtkLevelBar *self,
  * Since: 3.6
  */
 void
-ctk_level_bar_set_min_value (GtkLevelBar *self,
+ctk_level_bar_set_min_value (CtkLevelBar *self,
                              gdouble      value)
 {
-  GtkLevelBarPrivate *priv = self->priv;
+  CtkLevelBarPrivate *priv = self->priv;
 
   g_return_if_fail (CTK_IS_LEVEL_BAR (self));
   g_return_if_fail (value >= 0.0);
@@ -1322,10 +1322,10 @@ ctk_level_bar_set_min_value (GtkLevelBar *self,
 
 /**
  * ctk_level_bar_set_max_value:
- * @self: a #GtkLevelBar
+ * @self: a #CtkLevelBar
  * @value: a positive value
  *
- * Sets the value of the #GtkLevelBar:max-value property.
+ * Sets the value of the #CtkLevelBar:max-value property.
  *
  * You probably want to update preexisting level offsets after calling
  * this function.
@@ -1333,10 +1333,10 @@ ctk_level_bar_set_min_value (GtkLevelBar *self,
  * Since: 3.6
  */
 void
-ctk_level_bar_set_max_value (GtkLevelBar *self,
+ctk_level_bar_set_max_value (CtkLevelBar *self,
                              gdouble      value)
 {
-  GtkLevelBarPrivate *priv = self->priv;
+  CtkLevelBarPrivate *priv = self->priv;
 
   g_return_if_fail (CTK_IS_LEVEL_BAR (self));
   g_return_if_fail (value >= 0.0);
@@ -1357,16 +1357,16 @@ ctk_level_bar_set_max_value (GtkLevelBar *self,
 
 /**
  * ctk_level_bar_set_value:
- * @self: a #GtkLevelBar
+ * @self: a #CtkLevelBar
  * @value: a value in the interval between
- *     #GtkLevelBar:min-value and #GtkLevelBar:max-value
+ *     #CtkLevelBar:min-value and #CtkLevelBar:max-value
  *
- * Sets the value of the #GtkLevelBar:value property.
+ * Sets the value of the #CtkLevelBar:value property.
  *
  * Since: 3.6
  */
 void
-ctk_level_bar_set_value (GtkLevelBar *self,
+ctk_level_bar_set_value (CtkLevelBar *self,
                          gdouble      value)
 {
   g_return_if_fail (CTK_IS_LEVEL_BAR (self));
@@ -1380,16 +1380,16 @@ ctk_level_bar_set_value (GtkLevelBar *self,
 
 /**
  * ctk_level_bar_get_mode:
- * @self: a #GtkLevelBar
+ * @self: a #CtkLevelBar
  *
- * Returns the value of the #GtkLevelBar:mode property.
+ * Returns the value of the #CtkLevelBar:mode property.
  *
- * Returns: a #GtkLevelBarMode
+ * Returns: a #CtkLevelBarMode
  *
  * Since: 3.6
  */
-GtkLevelBarMode
-ctk_level_bar_get_mode (GtkLevelBar *self)
+CtkLevelBarMode
+ctk_level_bar_get_mode (CtkLevelBar *self)
 {
   g_return_val_if_fail (CTK_IS_LEVEL_BAR (self), 0);
 
@@ -1398,18 +1398,18 @@ ctk_level_bar_get_mode (GtkLevelBar *self)
 
 /**
  * ctk_level_bar_set_mode:
- * @self: a #GtkLevelBar
- * @mode: a #GtkLevelBarMode
+ * @self: a #CtkLevelBar
+ * @mode: a #CtkLevelBarMode
  *
- * Sets the value of the #GtkLevelBar:mode property.
+ * Sets the value of the #CtkLevelBar:mode property.
  *
  * Since: 3.6
  */
 void
-ctk_level_bar_set_mode (GtkLevelBar     *self,
-                        GtkLevelBarMode  mode)
+ctk_level_bar_set_mode (CtkLevelBar     *self,
+                        CtkLevelBarMode  mode)
 {
-  GtkLevelBarPrivate *priv = self->priv;
+  CtkLevelBarPrivate *priv = self->priv;
 
   g_return_if_fail (CTK_IS_LEVEL_BAR (self));
 
@@ -1428,16 +1428,16 @@ ctk_level_bar_set_mode (GtkLevelBar     *self,
 
 /**
  * ctk_level_bar_get_inverted:
- * @self: a #GtkLevelBar
+ * @self: a #CtkLevelBar
  *
- * Return the value of the #GtkLevelBar:inverted property.
+ * Return the value of the #CtkLevelBar:inverted property.
  *
  * Returns: %TRUE if the level bar is inverted
  *
  * Since: 3.8
  */
 gboolean
-ctk_level_bar_get_inverted (GtkLevelBar *self)
+ctk_level_bar_get_inverted (CtkLevelBar *self)
 {
   g_return_val_if_fail (CTK_IS_LEVEL_BAR (self), FALSE);
 
@@ -1446,18 +1446,18 @@ ctk_level_bar_get_inverted (GtkLevelBar *self)
 
 /**
  * ctk_level_bar_set_inverted:
- * @self: a #GtkLevelBar
+ * @self: a #CtkLevelBar
  * @inverted: %TRUE to invert the level bar
  *
- * Sets the value of the #GtkLevelBar:inverted property.
+ * Sets the value of the #CtkLevelBar:inverted property.
  *
  * Since: 3.8
  */
 void
-ctk_level_bar_set_inverted (GtkLevelBar *self,
+ctk_level_bar_set_inverted (CtkLevelBar *self,
                             gboolean     inverted)
 {
-  GtkLevelBarPrivate *priv = self->priv;
+  CtkLevelBarPrivate *priv = self->priv;
 
   g_return_if_fail (CTK_IS_LEVEL_BAR (self));
 
@@ -1472,7 +1472,7 @@ ctk_level_bar_set_inverted (GtkLevelBar *self,
 
 /**
  * ctk_level_bar_remove_offset_value:
- * @self: a #GtkLevelBar
+ * @self: a #CtkLevelBar
  * @name: (allow-none): the name of an offset in the bar
  *
  * Removes an offset marker previously added with
@@ -1481,10 +1481,10 @@ ctk_level_bar_set_inverted (GtkLevelBar *self,
  * Since: 3.6
  */
 void
-ctk_level_bar_remove_offset_value (GtkLevelBar *self,
+ctk_level_bar_remove_offset_value (CtkLevelBar *self,
                                    const gchar *name)
 {
-  GtkLevelBarPrivate *priv = self->priv;
+  CtkLevelBarPrivate *priv = self->priv;
   GList *existing;
 
   g_return_if_fail (CTK_IS_LEVEL_BAR (self));
@@ -1501,13 +1501,13 @@ ctk_level_bar_remove_offset_value (GtkLevelBar *self,
 
 /**
  * ctk_level_bar_add_offset_value:
- * @self: a #GtkLevelBar
+ * @self: a #CtkLevelBar
  * @name: the name of the new offset
  * @value: the value for the new offset
  *
  * Adds a new offset marker on @self at the position specified by @value.
  * When the bar value is in the interval topped by @value (or between @value
- * and #GtkLevelBar:max-value in case the offset is the last one on the bar)
+ * and #CtkLevelBar:max-value in case the offset is the last one on the bar)
  * a style class named `level-`@name will be applied
  * when rendering the level bar fill.
  * If another offset marker named @name exists, its value will be
@@ -1516,7 +1516,7 @@ ctk_level_bar_remove_offset_value (GtkLevelBar *self,
  * Since: 3.6
  */
 void
-ctk_level_bar_add_offset_value (GtkLevelBar *self,
+ctk_level_bar_add_offset_value (CtkLevelBar *self,
                                 const gchar *name,
                                 gdouble      value)
 {
@@ -1535,7 +1535,7 @@ ctk_level_bar_add_offset_value (GtkLevelBar *self,
 
 /**
  * ctk_level_bar_get_offset_value:
- * @self: a #GtkLevelBar
+ * @self: a #CtkLevelBar
  * @name: (allow-none): the name of an offset in the bar
  * @value: (out): location where to store the value
  *
@@ -1547,12 +1547,12 @@ ctk_level_bar_add_offset_value (GtkLevelBar *self,
  * Since: 3.6
  */
 gboolean
-ctk_level_bar_get_offset_value (GtkLevelBar *self,
+ctk_level_bar_get_offset_value (CtkLevelBar *self,
                                 const gchar *name,
                                 gdouble     *value)
 {
   GList *existing;
-  GtkLevelBarOffset *offset = NULL;
+  CtkLevelBarOffset *offset = NULL;
 
   g_return_val_if_fail (CTK_IS_LEVEL_BAR (self), 0.0);
 

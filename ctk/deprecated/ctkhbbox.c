@@ -33,15 +33,15 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 /**
  * SECTION:ctkhbbox
  * @Short_description: A container for arranging buttons horizontally
- * @Title: GtkHButtonBox
- * @See_also: #GtkBox, #GtkButtonBox, #GtkVButtonBox
+ * @Title: CtkHButtonBox
+ * @See_also: #CtkBox, #CtkButtonBox, #CtkVButtonBox
  *
  * A button box should be used to provide a consistent layout of buttons
  * throughout your application. The layout/spacing can be altered by the
  * programmer, or if desired, by the user to alter the “feel” of a
  * program to a small degree.
  *
- * A #GtkHButtonBox is created with ctk_hbutton_box_new(). Buttons are
+ * A #CtkHButtonBox is created with ctk_hbutton_box_new(). Buttons are
  * packed into a button box the same way widgets are added to any other
  * container, using ctk_container_add(). You can also use
  * ctk_box_pack_start() or ctk_box_pack_end(), but for button boxes both
@@ -54,19 +54,19 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  * arrangement and layout of the buttons can be changed with
  * ctk_button_box_set_layout().
  *
- * GtkHButtonBox has been deprecated, use #GtkButtonBox instead.
+ * CtkHButtonBox has been deprecated, use #CtkButtonBox instead.
  */
 
 
-G_DEFINE_TYPE (GtkHButtonBox, ctk_hbutton_box, CTK_TYPE_BUTTON_BOX)
+G_DEFINE_TYPE (CtkHButtonBox, ctk_hbutton_box, CTK_TYPE_BUTTON_BOX)
 
 static void
-ctk_hbutton_box_class_init (GtkHButtonBoxClass *class)
+ctk_hbutton_box_class_init (CtkHButtonBoxClass *class)
 {
 }
 
 static void
-ctk_hbutton_box_init (GtkHButtonBox *hbutton_box)
+ctk_hbutton_box_init (CtkHButtonBox *hbutton_box)
 {
   ctk_orientable_set_orientation (CTK_ORIENTABLE (hbutton_box),
                                   CTK_ORIENTATION_HORIZONTAL);
@@ -77,11 +77,11 @@ ctk_hbutton_box_init (GtkHButtonBox *hbutton_box)
  *
  * Creates a new horizontal button box.
  *
- * Returns: a new button box #GtkWidget.
+ * Returns: a new button box #CtkWidget.
  *
  * Deprecated: 3.2: Use ctk_button_box_new() with %CTK_ORIENTATION_HORIZONTAL instead
  */
-GtkWidget *
+CtkWidget *
 ctk_hbutton_box_new (void)
 {
   return g_object_new (CTK_TYPE_HBUTTON_BOX, NULL);

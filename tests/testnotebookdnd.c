@@ -55,18 +55,18 @@ gchar *tabs4 [] = {
   NULL
 };
 
-static const GtkTargetEntry button_targets[] = {
+static const CtkTargetEntry button_targets[] = {
   { "CTK_NOTEBOOK_TAB", CTK_TARGET_SAME_APP, 0 },
 };
 
-static GtkNotebook*
-window_creation_function (GtkNotebook *source_notebook,
-                          GtkWidget   *child,
+static CtkNotebook*
+window_creation_function (CtkNotebook *source_notebook,
+                          CtkWidget   *child,
                           gint         x,
                           gint         y,
                           gpointer     data)
 {
-  GtkWidget *window, *notebook;
+  CtkWidget *window, *notebook;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   notebook = ctk_notebook_new ();
@@ -86,13 +86,13 @@ window_creation_function (GtkNotebook *source_notebook,
 }
 
 static void
-on_page_reordered (GtkNotebook *notebook, GtkWidget *child, guint page_num, gpointer data)
+on_page_reordered (CtkNotebook *notebook, CtkWidget *child, guint page_num, gpointer data)
 {
   g_print ("page %d reordered\n", page_num);
 }
 
 static void
-on_notebook_drag_begin (GtkWidget      *widget,
+on_notebook_drag_begin (CtkWidget      *widget,
                         GdkDragContext *context,
                         gpointer        data)
 {
@@ -103,7 +103,7 @@ on_notebook_drag_begin (GtkWidget      *widget,
 
   if (page_num > 2)
     {
-      GtkIconTheme *icon_theme;
+      CtkIconTheme *icon_theme;
       int width;
 
       icon_theme = ctk_icon_theme_get_for_screen (ctk_widget_get_screen (widget));
@@ -122,9 +122,9 @@ on_notebook_drag_begin (GtkWidget      *widget,
 static gboolean
 remove_in_idle (gpointer data)
 {
-  GtkWidget *child = data;
-  GtkWidget *parent = ctk_widget_get_parent (child);
-  GtkWidget *tab_label;
+  CtkWidget *child = data;
+  CtkWidget *parent = ctk_widget_get_parent (child);
+  CtkWidget *tab_label;
 
   tab_label = ctk_notebook_get_tab_label (CTK_NOTEBOOK (parent), child);
   g_print ("Removing tab: %s\n", ctk_label_get_text (CTK_LABEL (tab_label)));
@@ -134,16 +134,16 @@ remove_in_idle (gpointer data)
 }
 
 static void
-on_button_drag_data_received (GtkWidget        *widget,
+on_button_drag_data_received (CtkWidget        *widget,
                               GdkDragContext   *context,
                               gint              x,
                               gint              y,
-                              GtkSelectionData *data,
+                              CtkSelectionData *data,
                               guint             info,
                               guint             time,
                               gpointer          user_data)
 {
-  GtkWidget **child;
+  CtkWidget **child;
 
   child = (void*) ctk_selection_data_get_data (data);
 
@@ -151,10 +151,10 @@ on_button_drag_data_received (GtkWidget        *widget,
 }
 
 static void
-action_clicked_cb (GtkWidget *button,
-                   GtkWidget *notebook)
+action_clicked_cb (CtkWidget *button,
+                   CtkWidget *notebook)
 {
-  GtkWidget *page, *title;
+  CtkWidget *page, *title;
 
   page = ctk_entry_new ();
   ctk_entry_set_text (CTK_ENTRY (page), "Addition");
@@ -167,12 +167,12 @@ action_clicked_cb (GtkWidget *button,
   ctk_notebook_set_tab_detachable (CTK_NOTEBOOK (notebook), page, TRUE);
 }
 
-static GtkWidget*
+static CtkWidget*
 create_notebook (gchar           **labels,
                  const gchar      *group,
-                 GtkPositionType   pos)
+                 CtkPositionType   pos)
 {
-  GtkWidget *notebook, *title, *page, *action_widget;
+  CtkWidget *notebook, *title, *page, *action_widget;
 
   notebook = ctk_notebook_new ();
   ctk_widget_set_vexpand (notebook, TRUE);
@@ -212,12 +212,12 @@ create_notebook (gchar           **labels,
   return notebook;
 }
 
-static GtkWidget*
+static CtkWidget*
 create_notebook_non_dragable_content (gchar           **labels,
                                       const gchar      *group,
-                                      GtkPositionType   pos)
+                                      CtkPositionType   pos)
 {
-  GtkWidget *notebook, *title, *page, *action_widget;
+  CtkWidget *notebook, *title, *page, *action_widget;
 
   notebook = ctk_notebook_new ();
   ctk_widget_set_vexpand (notebook, TRUE);
@@ -238,10 +238,10 @@ create_notebook_non_dragable_content (gchar           **labels,
 
   while (*labels)
     {
-      GtkWidget *button;
+      CtkWidget *button;
       button = ctk_button_new_with_label (*labels);
-      /* Use GtkListBox since it bubbles up motion notify event, which can
-       * experience more issues than GtkBox. */
+      /* Use CtkListBox since it bubbles up motion notify event, which can
+       * experience more issues than CtkBox. */
       page = ctk_list_box_new ();
       ctk_container_add (CTK_CONTAINER (page), button);
 
@@ -261,12 +261,12 @@ create_notebook_non_dragable_content (gchar           **labels,
   return notebook;
 }
 
-static GtkWidget*
+static CtkWidget*
 create_notebook_with_notebooks (gchar           **labels,
                                 const gchar      *group,
-                                GtkPositionType   pos)
+                                CtkPositionType   pos)
 {
-  GtkWidget *notebook, *title, *page;
+  CtkWidget *notebook, *title, *page;
   gint count = 0;
 
   notebook = ctk_notebook_new ();
@@ -300,10 +300,10 @@ create_notebook_with_notebooks (gchar           **labels,
   return notebook;
 }
 
-static GtkWidget*
+static CtkWidget*
 create_trash_button (void)
 {
-  GtkWidget *button;
+  CtkWidget *button;
 
   button = ctk_button_new_with_mnemonic ("_Delete");
 
@@ -321,7 +321,7 @@ create_trash_button (void)
 gint
 main (gint argc, gchar *argv[])
 {
-  GtkWidget *window, *grid;
+  CtkWidget *window, *grid;
 
   ctk_init (&argc, &argv);
 

@@ -29,21 +29,21 @@
 
 GType type_cyrillic_translit = 0;
 
-static void cyrillic_translit_class_init (GtkIMContextSimpleClass *class);
-static void cyrillic_translit_init (GtkIMContextSimple *im_context);
+static void cyrillic_translit_class_init (CtkIMContextSimpleClass *class);
+static void cyrillic_translit_init (CtkIMContextSimple *im_context);
 
 static void
 cyrillic_translit_register_type (GTypeModule *module)
 {
   const GTypeInfo object_info =
   {
-    sizeof (GtkIMContextSimpleClass),
+    sizeof (CtkIMContextSimpleClass),
     (GBaseInitFunc) NULL,
     (GBaseFinalizeFunc) NULL,
     (GClassInitFunc) cyrillic_translit_class_init,
     NULL,           /* class_finalize */
     NULL,           /* class_data */
-    sizeof (GtkIMContextSimple),
+    sizeof (CtkIMContextSimple),
     0,
     (GInstanceInitFunc) cyrillic_translit_init,
   };
@@ -51,7 +51,7 @@ cyrillic_translit_register_type (GTypeModule *module)
   type_cyrillic_translit = 
     g_type_module_register_type (module,
 				 CTK_TYPE_IM_CONTEXT_SIMPLE,
-				 "GtkIMContextCyrillicTranslit",
+				 "CtkIMContextCyrillicTranslit",
 				 &object_info, 0);
 }
 
@@ -197,12 +197,12 @@ static guint16 cyrillic_compose_seqs[] = {
 };
 
 static void
-cyrillic_translit_class_init (GtkIMContextSimpleClass *class)
+cyrillic_translit_class_init (CtkIMContextSimpleClass *class)
 {
 }
 
 static void
-cyrillic_translit_init (GtkIMContextSimple *im_context)
+cyrillic_translit_init (CtkIMContextSimple *im_context)
 {
   ctk_im_context_simple_add_table (im_context,
 				   cyrillic_compose_seqs,
@@ -210,7 +210,7 @@ cyrillic_translit_init (GtkIMContextSimple *im_context)
 				   G_N_ELEMENTS (cyrillic_compose_seqs) / (4 + 2));
 }
 
-static const GtkIMContextInfo cyrillic_translit_info = { 
+static const CtkIMContextInfo cyrillic_translit_info = { 
   "cyrillic_translit",		   /* ID */
   NC_("input menthod menu", "Cyrillic (Transliterated)"), /* Human readable name */
   GETTEXT_PACKAGE,		   /* Translation domain */
@@ -218,7 +218,7 @@ static const GtkIMContextInfo cyrillic_translit_info = {
   ""			           /* Languages for which this module is the default */
 };
 
-static const GtkIMContextInfo *info_list[] = {
+static const CtkIMContextInfo *info_list[] = {
   &cyrillic_translit_info
 };
 
@@ -237,14 +237,14 @@ MODULE_ENTRY (void, exit) (void)
 {
 }
 
-MODULE_ENTRY (void, list) (const GtkIMContextInfo ***contexts,
+MODULE_ENTRY (void, list) (const CtkIMContextInfo ***contexts,
 			   int                      *n_contexts)
 {
   *contexts = info_list;
   *n_contexts = G_N_ELEMENTS (info_list);
 }
 
-MODULE_ENTRY (GtkIMContext *, create) (const gchar *context_id)
+MODULE_ENTRY (CtkIMContext *, create) (const gchar *context_id)
 {
   if (strcmp (context_id, "cyrillic_translit") == 0)
     return g_object_new (type_cyrillic_translit, NULL);

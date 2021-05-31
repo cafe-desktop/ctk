@@ -1,4 +1,4 @@
-/* Gtk+ object tests
+/* Ctk+ object tests
  * Copyright (C) 2007 Imendio AB
  * Authors: Tim Janik
  *
@@ -53,47 +53,47 @@ list_ignore_properties (gboolean buglist)
 {
   /* currently untestable properties */
   static const IgnoreProperty ignore_properties[] = {
-    { "GtkContainer",           "child",                NULL, },                        /* needs working child widget */
-    { "GtkRadioMenuItem",       "group",                NULL, },                        /* needs working sibling */
-    { "GtkWidget",              "parent",               NULL, },                        /* needs working parent widget */
-    { "GtkCList",               "selection-mode",       (void*) CTK_SELECTION_NONE, },
-    { "GtkWidget",              "has-default",          (void*) TRUE, },                /* conflicts with toplevel-less widgets */
-    { "GtkWidget",              "screen",               NULL, },
-    { "GtkWindow",              "type-hint",            (void*) GDK_WINDOW_TYPE_HINT_DND, }, /* conflicts with ::visible=TRUE */
-    { "GtkCellView",            "background",           (void*) "", },                  /* "" is not a valid background color */
-    { "GtkColorButton",         "color",                (void*) NULL, },                /* not a valid boxed color */
-    { "GtkInputDialog",         "has-separator",        (void*) MATCH_ANY_VALUE, },     /* property disabled */
-    { "GtkInvisible",           "screen",               (void*) MATCH_ANY_VALUE },      /* cannot create GdkScreen */
-    { "GtkMessageDialog",       "has-separator",        (void*) MATCH_ANY_VALUE, },     /* property disabled */
-    { "GtkFontSelectionDialog", "has-separator",        (void*) MATCH_ANY_VALUE, },     /* property disabled */
-    { "GtkColorSelectionDialog","has-separator",        (void*) MATCH_ANY_VALUE, },     /* property disabled */
-    { "GtkColorSelection",      "child",                NULL, },
-    { "GtkColorSelection",      "current-color",        (void*) NULL, },                /* not a valid boxed color */
-    { "GtkComboBox",            "row-span-column",      (void*) MATCH_ANY_VALUE },      /* GtkComboBoxEntry needs a tree model for this */
-    { "GtkComboBox",            "column-span-column",   (void*) MATCH_ANY_VALUE },      /* GtkComboBoxEntry needs a tree model for this */
-    { "GtkFileChooserButton",   "select-multiple",      (void*) MATCH_ANY_VALUE },      /* property disabled */
-    { "GtkFileChooserButton",   "action",               (void*) CTK_FILE_CHOOSER_ACTION_SAVE },
-    { "GtkFileChooserButton",   "action",               (void*) CTK_FILE_CHOOSER_ACTION_CREATE_FOLDER },
-    { "GtkFileChooserWidget",   "select-multiple",      (void*) 0x1 },                  /* property conflicts */
-    { "GtkFileChooserDialog",   "select-multiple",      (void*) MATCH_ANY_VALUE },      /* property disabled */
-    { "GtkMenu",                "accel-path",           (void*) MATCH_ANY_VALUE },      /* has odd restrictions in the setter */
-    { "GtkMenuItem",            "accel-path",           (void*) MATCH_ANY_VALUE },      /* has odd restrictions in the setter */
-    { "GtkRecentChooserMenu",   "select-multiple",      (void*) MATCH_ANY_VALUE },      /* property disabled */
-    { "GtkTextView",            "overwrite",            (void*) MATCH_ANY_VALUE },      /* needs text buffer */
-    { "GtkToolbar",             "icon-size",            (void*) CTK_ICON_SIZE_INVALID },
-    { "GtkTreeView",            "expander-column",      (void*) MATCH_ANY_VALUE },      /* assertion list != NULL */
-    { "GtkWindow",              "screen",               (void*) MATCH_ANY_VALUE },      /* cannot create GdkScreen */
+    { "CtkContainer",           "child",                NULL, },                        /* needs working child widget */
+    { "CtkRadioMenuItem",       "group",                NULL, },                        /* needs working sibling */
+    { "CtkWidget",              "parent",               NULL, },                        /* needs working parent widget */
+    { "CtkCList",               "selection-mode",       (void*) CTK_SELECTION_NONE, },
+    { "CtkWidget",              "has-default",          (void*) TRUE, },                /* conflicts with toplevel-less widgets */
+    { "CtkWidget",              "screen",               NULL, },
+    { "CtkWindow",              "type-hint",            (void*) GDK_WINDOW_TYPE_HINT_DND, }, /* conflicts with ::visible=TRUE */
+    { "CtkCellView",            "background",           (void*) "", },                  /* "" is not a valid background color */
+    { "CtkColorButton",         "color",                (void*) NULL, },                /* not a valid boxed color */
+    { "CtkInputDialog",         "has-separator",        (void*) MATCH_ANY_VALUE, },     /* property disabled */
+    { "CtkInvisible",           "screen",               (void*) MATCH_ANY_VALUE },      /* cannot create GdkScreen */
+    { "CtkMessageDialog",       "has-separator",        (void*) MATCH_ANY_VALUE, },     /* property disabled */
+    { "CtkFontSelectionDialog", "has-separator",        (void*) MATCH_ANY_VALUE, },     /* property disabled */
+    { "CtkColorSelectionDialog","has-separator",        (void*) MATCH_ANY_VALUE, },     /* property disabled */
+    { "CtkColorSelection",      "child",                NULL, },
+    { "CtkColorSelection",      "current-color",        (void*) NULL, },                /* not a valid boxed color */
+    { "CtkComboBox",            "row-span-column",      (void*) MATCH_ANY_VALUE },      /* CtkComboBoxEntry needs a tree model for this */
+    { "CtkComboBox",            "column-span-column",   (void*) MATCH_ANY_VALUE },      /* CtkComboBoxEntry needs a tree model for this */
+    { "CtkFileChooserButton",   "select-multiple",      (void*) MATCH_ANY_VALUE },      /* property disabled */
+    { "CtkFileChooserButton",   "action",               (void*) CTK_FILE_CHOOSER_ACTION_SAVE },
+    { "CtkFileChooserButton",   "action",               (void*) CTK_FILE_CHOOSER_ACTION_CREATE_FOLDER },
+    { "CtkFileChooserWidget",   "select-multiple",      (void*) 0x1 },                  /* property conflicts */
+    { "CtkFileChooserDialog",   "select-multiple",      (void*) MATCH_ANY_VALUE },      /* property disabled */
+    { "CtkMenu",                "accel-path",           (void*) MATCH_ANY_VALUE },      /* has odd restrictions in the setter */
+    { "CtkMenuItem",            "accel-path",           (void*) MATCH_ANY_VALUE },      /* has odd restrictions in the setter */
+    { "CtkRecentChooserMenu",   "select-multiple",      (void*) MATCH_ANY_VALUE },      /* property disabled */
+    { "CtkTextView",            "overwrite",            (void*) MATCH_ANY_VALUE },      /* needs text buffer */
+    { "CtkToolbar",             "icon-size",            (void*) CTK_ICON_SIZE_INVALID },
+    { "CtkTreeView",            "expander-column",      (void*) MATCH_ANY_VALUE },      /* assertion list != NULL */
+    { "CtkWindow",              "screen",               (void*) MATCH_ANY_VALUE },      /* cannot create GdkScreen */
     { NULL, NULL, NULL }
   };
-  /* properties suspected to be Gdk/Gtk+ bugs */
+  /* properties suspected to be Gdk/Ctk+ bugs */
   static const IgnoreProperty bug_properties[] = {
-    { "GtkComboBox",            "active",               (void*) MATCH_ANY_VALUE },      /* FIXME: triggers NULL model bug */
-    { "GtkCTree",               "spacing",              (void*) MATCH_ANY_VALUE },      /* FIXME: triggers signedness bug */
-    { "GtkFileChooserButton",   "local-only",           (void*) MATCH_ANY_VALUE },      /* FIXME: triggers NULL path assertion */
-    { "GtkFileChooserDialog",   "local-only",           (void*) MATCH_ANY_VALUE },      /* FIXME: triggers NULL path assertion */
-    { "GtkFileChooserWidget",   "local-only",           (void*) MATCH_ANY_VALUE },      /* FIXME: triggers NULL path assertion */
-    { "GtkMenu",                "tearoff-state",        (void*) MATCH_ANY_VALUE },      /* FIXME: triggers NULL widget cast */
-    { "GtkText",                "text-position",        (void*) MATCH_ANY_VALUE },      /* FIXME: segfaults, fix property minimum/maximum */
+    { "CtkComboBox",            "active",               (void*) MATCH_ANY_VALUE },      /* FIXME: triggers NULL model bug */
+    { "CtkCTree",               "spacing",              (void*) MATCH_ANY_VALUE },      /* FIXME: triggers signedness bug */
+    { "CtkFileChooserButton",   "local-only",           (void*) MATCH_ANY_VALUE },      /* FIXME: triggers NULL path assertion */
+    { "CtkFileChooserDialog",   "local-only",           (void*) MATCH_ANY_VALUE },      /* FIXME: triggers NULL path assertion */
+    { "CtkFileChooserWidget",   "local-only",           (void*) MATCH_ANY_VALUE },      /* FIXME: triggers NULL path assertion */
+    { "CtkMenu",                "tearoff-state",        (void*) MATCH_ANY_VALUE },      /* FIXME: triggers NULL widget cast */
+    { "CtkText",                "text-position",        (void*) MATCH_ANY_VALUE },      /* FIXME: segfaults, fix property minimum/maximum */
     { NULL, NULL, NULL }
   };
   if (buglist)
@@ -274,7 +274,7 @@ object_test_property (GObject           *object,
 }
 
 static void
-widget_test_properties (GtkWidget   *widget,
+widget_test_properties (CtkWidget   *widget,
                         double       dvalue)
 {
   /* try setting all possible properties, according to dvalue */
@@ -291,7 +291,7 @@ widget_test_properties (GtkWidget   *widget,
 }
 
 static void
-widget_fixups (GtkWidget *widget)
+widget_fixups (CtkWidget *widget)
 {
   /* post-constructor for widgets that need additional settings to work correctly */
   if (CTK_IS_COMBO_BOX_TEXT (widget))
@@ -305,7 +305,7 @@ widget_property_tests (gconstpointer test_data)
 {
   GType wtype = (GType) test_data;
   /* create widget */
-  GtkWidget *widget = ctk_widget_new (wtype, NULL);
+  CtkWidget *widget = ctk_widget_new (wtype, NULL);
   g_object_ref_sink (widget);
   widget_fixups (widget);
   /* test property values */

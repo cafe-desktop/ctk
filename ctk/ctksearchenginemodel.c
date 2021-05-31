@@ -30,28 +30,28 @@
 
 #define BATCH_SIZE 500
 
-struct _GtkSearchEngineModel
+struct _CtkSearchEngineModel
 {
-  GtkSearchEngine parent;
+  CtkSearchEngine parent;
 
-  GtkFileSystemModel *model;
-  GtkQuery *query;
+  CtkFileSystemModel *model;
+  CtkQuery *query;
 
   gboolean query_finished;
   guint idle;
 };
 
-struct _GtkSearchEngineModelClass
+struct _CtkSearchEngineModelClass
 {
-  GtkSearchEngineClass parent_class;
+  CtkSearchEngineClass parent_class;
 };
 
-G_DEFINE_TYPE (GtkSearchEngineModel, _ctk_search_engine_model, CTK_TYPE_SEARCH_ENGINE)
+G_DEFINE_TYPE (CtkSearchEngineModel, _ctk_search_engine_model, CTK_TYPE_SEARCH_ENGINE)
 
 static void
 ctk_search_engine_model_dispose (GObject *object)
 {
-  GtkSearchEngineModel *model = CTK_SEARCH_ENGINE_MODEL (object);
+  CtkSearchEngineModel *model = CTK_SEARCH_ENGINE_MODEL (object);
 
   g_clear_object (&model->query);
   g_clear_object (&model->model);
@@ -60,7 +60,7 @@ ctk_search_engine_model_dispose (GObject *object)
 }
 
 gboolean
-info_matches_query (GtkQuery  *query,
+info_matches_query (CtkQuery  *query,
                     GFileInfo *info)
 {
   const gchar *display_name;
@@ -81,8 +81,8 @@ info_matches_query (GtkQuery  *query,
 static gboolean
 do_search (gpointer data)
 {
-  GtkSearchEngineModel *model = data;
-  GtkTreeIter iter;
+  CtkSearchEngineModel *model = data;
+  CtkTreeIter iter;
   GList *hits = NULL;
 
   if (ctk_tree_model_get_iter_first (CTK_TREE_MODEL (model->model), &iter))
@@ -95,10 +95,10 @@ do_search (gpointer data)
           if (info_matches_query (model->query, info))
             {
               GFile *file;
-              GtkSearchHit *hit;
+              CtkSearchHit *hit;
 
               file = _ctk_file_system_model_get_file (model->model, &iter);
-              hit = g_new (GtkSearchHit, 1);
+              hit = g_new (CtkSearchHit, 1);
               hit->file = g_object_ref (file);
               hit->info = g_object_ref (info);
               hits = g_list_prepend (hits, hit);
@@ -119,9 +119,9 @@ do_search (gpointer data)
 }
 
 static void
-ctk_search_engine_model_start (GtkSearchEngine *engine)
+ctk_search_engine_model_start (CtkSearchEngine *engine)
 {
-  GtkSearchEngineModel *model;
+  CtkSearchEngineModel *model;
 
   model = CTK_SEARCH_ENGINE_MODEL (engine);
 
@@ -133,9 +133,9 @@ ctk_search_engine_model_start (GtkSearchEngine *engine)
 }
 
 static void
-ctk_search_engine_model_stop (GtkSearchEngine *engine)
+ctk_search_engine_model_stop (CtkSearchEngine *engine)
 {
-  GtkSearchEngineModel *model;
+  CtkSearchEngineModel *model;
 
   model = CTK_SEARCH_ENGINE_MODEL (engine);
 
@@ -147,19 +147,19 @@ ctk_search_engine_model_stop (GtkSearchEngine *engine)
 }
 
 static void
-ctk_search_engine_model_set_query (GtkSearchEngine *engine,
-                                   GtkQuery        *query)
+ctk_search_engine_model_set_query (CtkSearchEngine *engine,
+                                   CtkQuery        *query)
 {
-  GtkSearchEngineModel *model = CTK_SEARCH_ENGINE_MODEL (engine);
+  CtkSearchEngineModel *model = CTK_SEARCH_ENGINE_MODEL (engine);
 
   g_set_object (&model->query, query);
 }
 
 static void
-_ctk_search_engine_model_class_init (GtkSearchEngineModelClass *class)
+_ctk_search_engine_model_class_init (CtkSearchEngineModelClass *class)
 {
   GObjectClass *gobject_class;
-  GtkSearchEngineClass *engine_class;
+  CtkSearchEngineClass *engine_class;
 
   gobject_class = G_OBJECT_CLASS (class);
   gobject_class->dispose = ctk_search_engine_model_dispose;
@@ -171,14 +171,14 @@ _ctk_search_engine_model_class_init (GtkSearchEngineModelClass *class)
 }
 
 static void
-_ctk_search_engine_model_init (GtkSearchEngineModel *engine)
+_ctk_search_engine_model_init (CtkSearchEngineModel *engine)
 {
 }
 
-GtkSearchEngine *
-_ctk_search_engine_model_new (GtkFileSystemModel *model)
+CtkSearchEngine *
+_ctk_search_engine_model_new (CtkFileSystemModel *model)
 {
-  GtkSearchEngineModel *engine;
+  CtkSearchEngineModel *engine;
 
   engine = CTK_SEARCH_ENGINE_MODEL (g_object_new (CTK_TYPE_SEARCH_ENGINE_MODEL, NULL));
   engine->model = g_object_ref (model);
