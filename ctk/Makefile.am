@@ -1557,20 +1557,20 @@ CTK_MSVC_GIR_CFLAGS =						\
 
 INTROSPECTION_INTERMEDIATE_ITEMS = \
 	$(top_builddir)/win32/Gtk-3.0.gir.msvc.introspect		\
-	$(top_builddir)/win32/Gtk_3_0_gir_list
+	$(top_builddir)/win32/Ctk_3_0_gir_list
 
-Gtk_3_0_gir_MSVC_FILES =		\
+Ctk_3_0_gir_MSVC_FILES =		\
 	$(introspected_pub_headers)	\
 	$(ctk_base_c_sources)		\
 	$(ctk_os_win32_c_sources)	\
 	gtktypebuiltins.h		\
 	gtktypebuiltins.c
 
-Gtk_3_0_gir_MSVC_EXPORT_PACKAGES = $(Gtk_3_0_gir_EXPORT_PACKAGES)
-Gtk_3_0_gir_MSVC_INCLUDE_GIRS = Atk-1.0
-Gtk_3_0_gir_MSVC_LIBS = gtk-3.0 gdk-3.0
-Gtk_3_0_gir_MSVC_CFLAGS = $(CTK_MSVC_GIR_CFLAGS)
-Gtk_3_0_gir_MSVC_SCANNERFLAGS = --warn-all --include-uninstalled='./vs$$$$(VSVER)/$$$$(CFG)/$$$$(PLAT)/bin/Gdk-3.0.gir'
+Ctk_3_0_gir_MSVC_EXPORT_PACKAGES = $(Ctk_3_0_gir_EXPORT_PACKAGES)
+Ctk_3_0_gir_MSVC_INCLUDE_GIRS = Atk-1.0
+Ctk_3_0_gir_MSVC_LIBS = gtk-3.0 gdk-3.0
+Ctk_3_0_gir_MSVC_CFLAGS = $(CTK_MSVC_GIR_CFLAGS)
+Ctk_3_0_gir_MSVC_SCANNERFLAGS = --warn-all --include-uninstalled='./vs$$$$(VSVER)/$$$$(CFG)/$$$$(PLAT)/bin/Gdk-3.0.gir'
 
 include $(top_srcdir)/win32/Makefile.msvc-introspection
 
@@ -1626,23 +1626,23 @@ INTROSPECTION_COMPILER_ARGS = \
 	--includedir=../gdk
 
 Gtk-3.0.gir: $(INTROSPECTION_SCANNER) libgtk-3.la $(top_builddir)/gdk/Gdk-3.0.gir Makefile
-Gtk_3_0_gir_SCANNERFLAGS = 			\
+Ctk_3_0_gir_SCANNERFLAGS = 			\
 	--warn-all				\
 	--add-include-path=$(top_builddir)/gdk	\
 	--include-uninstalled=$(top_builddir)/gdk/Gdk-3.0.gir
-Gtk_3_0_gir_INCLUDES = Atk-1.0
-Gtk_3_0_gir_C_INCLUDES = gtk/gtk.h gtk/gtk-a11y.h
+Ctk_3_0_gir_INCLUDES = Atk-1.0
+Ctk_3_0_gir_C_INCLUDES = gtk/gtk.h gtk/gtk-a11y.h
 if USE_X11
-Gtk_3_0_gir_SCANNERFLAGS += --add-include-path=$(top_builddir)/gdk/x11
-Gtk_3_0_gir_INCLUDES += xlib-2.0
-Gtk_3_0_gir_C_INCLUDES += gtk/gtkx.h
+Ctk_3_0_gir_SCANNERFLAGS += --add-include-path=$(top_builddir)/gdk/x11
+Ctk_3_0_gir_INCLUDES += xlib-2.0
+Ctk_3_0_gir_C_INCLUDES += gtk/gtkx.h
 endif
-Gtk_3_0_gir_CFLAGS = \
+Ctk_3_0_gir_CFLAGS = \
 		$(AM_CPPFLAGS) \
 		-DCTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
-Gtk_3_0_gir_FILES = $(introspection_files)
-Gtk_3_0_gir_LIBS = libgtk-3.la $(top_builddir)/gdk/libgdk-3.la
-Gtk_3_0_gir_EXPORT_PACKAGES = gtk+-3.0
+Ctk_3_0_gir_FILES = $(introspection_files)
+Ctk_3_0_gir_LIBS = libgtk-3.la $(top_builddir)/gdk/libgdk-3.la
+Ctk_3_0_gir_EXPORT_PACKAGES = gtk+-3.0
 INTROSPECTION_GIRS = Gtk-3.0.gir
 
 girdir = $(datadir)/gir-1.0
