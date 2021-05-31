@@ -1,6 +1,6 @@
-# Kazakh translation for GTK.
-# Copyright (C) 2010-2020 The GTK authors.
-# This file is distributed under the same license as the GTK package.
+# Kazakh translation for CTK.
+# Copyright (C) 2010-2020 The CTK authors.
+# This file is distributed under the same license as the CTK package.
 # Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2010-2020.
 #
 msgid ""
@@ -2759,8 +2759,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:464
-msgid "Load additional GTK+ modules"
-msgstr "Қосымша GTK+ модульдерін жүктеу"
+msgid "Load additional CTK+ modules"
+msgstr "Қосымша CTK+ модульдерін жүктеу"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:465
@@ -2774,13 +2774,13 @@ msgstr "Барлық ескертулерді қатаң деп белгілеу
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:470
-msgid "GTK+ debugging flags to set"
-msgstr "GTK+ жөндеу жалаушалары орнатылған"
+msgid "CTK+ debugging flags to set"
+msgstr "CTK+ жөндеу жалаушалары орнатылған"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:473
-msgid "GTK+ debugging flags to unset"
-msgstr "GTK+ жөндеу жалаушалары орнатылмаған"
+msgid "CTK+ debugging flags to unset"
+msgstr "CTK+ жөндеу жалаушалары орнатылмаған"
 
 #: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
 #, c-format
@@ -2788,12 +2788,12 @@ msgid "Cannot open display: %s"
 msgstr "Экранды ашу мүмкін емес: %s"
 
 #: ctk/ctkmain.c:922
-msgid "GTK+ Options"
-msgstr "GTK+ опциялары"
+msgid "CTK+ Options"
+msgstr "CTK+ опциялары"
 
 #: ctk/ctkmain.c:922
-msgid "Show GTK+ Options"
-msgstr "GTK+ опцияларын көрсету"
+msgid "Show CTK+ Options"
+msgstr "CTK+ опцияларын көрсету"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -3809,10 +3809,10 @@ msgstr "Сериализацияланған деректердің пішімі
 
 #: ctk/ctktextbufferserialize.c:1873
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 "Сериализацияланған мәліметтер қате жасалған. Бірінші секциясы "
-"GTKTEXTBUFFERCONTENTS-0001 емес болып тұр"
+"CTKTEXTBUFFERCONTENTS-0001 емес болып тұр"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -3891,17 +3891,17 @@ msgstr "Әрқашан үстінде"
 
 #: ctk/ctkwindow.c:12777
 #, c-format
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "GTK+ Inspector қолданғыңыз келе ме?"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "CTK+ Inspector қолданғыңыз келе ме?"
 
 #: ctk/ctkwindow.c:12779
 #, c-format
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"GTK+ инспекторы - бұл интерактивті жөндеуші, оның көмегімен кез-келген GTK+ "
+"CTK+ инспекторы - бұл интерактивті жөндеуші, оның көмегімен кез-келген CTK+ "
 "қолданбасының ішкі құрылысын шолып, түзете аласыз. Оны қолдану нәтижесінде "
 "қолданба сынуы, немесе құлап түсуі  де мүмкін."
 
@@ -3932,8 +3932,8 @@ msgid "Parameter Type"
 msgstr "Параметр түрі"
 
 #: ctk/inspector/css-editor.c:112
-msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "Сіз осында GTK+ танитын кез-келген CSS тере аласыз."
+msgid "You can type here any CSS rule recognized by CTK+."
+msgstr "Сіз осында CTK+ танитын кез-келген CSS тере аласыз."
 
 #: ctk/inspector/css-editor.c:113
 msgid ""
@@ -3993,8 +3993,8 @@ msgid "None"
 msgstr "Ешнәрсе"
 
 #: ctk/inspector/general.ui:34
-msgid "GTK+ Version"
-msgstr "GTK+ нұсқасы"
+msgid "CTK+ Version"
+msgstr "CTK+ нұсқасы"
 
 #: ctk/inspector/general.ui:68
 msgid "GDK Backend"
@@ -4382,8 +4382,8 @@ msgid "GL rendering is disabled"
 msgstr "GL рендерингі сөндірілген"
 
 #: ctk/inspector/visual.ui:61
-msgid "GTK+ Theme"
-msgstr "GTK+ темасы"
+msgid "CTK+ Theme"
+msgstr "CTK+ темасы"
 
 #: ctk/inspector/visual.ui:94
 msgid "Dark Variant"
@@ -8505,8 +8505,8 @@ msgstr "Сынау принтеріне баспаға шығару"
 #~ msgid "Count:"
 #~ msgstr "Санағыш:"
 
-#~ msgid "GTK+ Inspector — %s"
-#~ msgstr "GTK+ инспекторы — %s"
+#~ msgid "CTK+ Inspector — %s"
+#~ msgstr "CTK+ инспекторы — %s"
 
 #~ msgid "Send Widget to Shell"
 #~ msgstr "Виджетті Shell-ге жіберу"
@@ -9043,9 +9043,9 @@ msgstr "Сынау принтеріне баспаға шығару"
 
 #~ msgid ""
 #~ "Image-loading module %s does not export the proper interface; perhaps "
-#~ "it's from a different GTK version?"
+#~ "it's from a different CTK version?"
 #~ msgstr ""
-#~ "%s сурет жүктеу модулі дұрыс интерфейс ұсынып тұрған жоқ; ол басқа GTK "
+#~ "%s сурет жүктеу модулі дұрыс интерфейс ұсынып тұрған жоқ; ол басқа CTK "
 #~ "нұсқасынан емес пе?"
 
 #~ msgid "Image type '%s' is not supported"

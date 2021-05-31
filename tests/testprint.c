@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * testprint.c: Print example
  * Copyright (C) 2006, Red Hat, Inc.
  *

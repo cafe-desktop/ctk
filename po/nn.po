@@ -72,7 +72,7 @@ msgstr "DISPLAY"
 #: ../gdk/gdk.c:211
 #, fuzzy
 msgid "GDK debugging flags to set"
-msgstr "Feilsøkingsflagg som skal setjes for GTK+"
+msgstr "Feilsøkingsflagg som skal setjes for CTK+"
 
 #
 #. Placeholder in --gdk-debug=FLAGS in --help output
@@ -88,7 +88,7 @@ msgstr "FLAGG"
 #: ../gdk/gdk.c:214
 #, fuzzy
 msgid "GDK debugging flags to unset"
-msgstr "Feilsøkingsflagg som skal fjernes for GTK+"
+msgstr "Feilsøkingsflagg som skal fjernes for CTK+"
 
 #.
 #. * Translators, the strings in the 'keyboard label' context are
@@ -867,7 +867,7 @@ msgstr "Gløym passord _no"
 #: ../ctk/ctkappchooserdialog.c:558
 #, fuzzy
 msgid "Show other applications"
-msgstr "Vis alternativ for GTK+"
+msgstr "Vis alternativ for CTK+"
 
 #
 #: ../ctk/ctkappchooserwidget.c:603
@@ -1914,8 +1914,8 @@ msgstr ""
 #
 #. Description of --ctk-module=MODULES in --help output
 #: ../ctk/ctkmain.c:446
-msgid "Load additional GTK+ modules"
-msgstr "Last tilleggsmodular for GTK+"
+msgid "Load additional CTK+ modules"
+msgstr "Last tilleggsmodular for CTK+"
 
 #
 #. Placeholder in --ctk-module=MODULES in --help output
@@ -1932,14 +1932,14 @@ msgstr "La alle advarsler vera fatale"
 #
 #. Description of --ctk-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:452
-msgid "GTK+ debugging flags to set"
-msgstr "Feilsøkingsflagg som skal setjes for GTK+"
+msgid "CTK+ debugging flags to set"
+msgstr "Feilsøkingsflagg som skal setjes for CTK+"
 
 #
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:455
-msgid "GTK+ debugging flags to unset"
-msgstr "Feilsøkingsflagg som skal fjernes for GTK+"
+msgid "CTK+ debugging flags to unset"
+msgstr "Feilsøkingsflagg som skal fjernes for CTK+"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -1957,13 +1957,13 @@ msgstr "Klarte ikkje opna display: %s"
 
 #
 #: ../ctk/ctkmain.c:840
-msgid "GTK+ Options"
-msgstr "Alternativ for GTK+"
+msgid "CTK+ Options"
+msgstr "Alternativ for CTK+"
 
 #
 #: ../ctk/ctkmain.c:840
-msgid "Show GTK+ Options"
-msgstr "Vis alternativ for GTK+"
+msgid "Show CTK+ Options"
+msgstr "Vis alternativ for CTK+"
 
 #: ../ctk/ctkmountoperation.c:518
 msgid "Co_nnect"
@@ -3402,10 +3402,10 @@ msgstr "Serialiserte data har feil utforming"
 
 #: ../ctk/ctktextbufferserialize.c:1868
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 "Serialiserte data er feilforma. Fyrste del er ikkje "
-"GTKTEXTBUFFERCONTENTS-0001"
+"CTKTEXTBUFFERCONTENTS-0001"
 
 #: ../ctk/ctktextutil.c:58
 msgid "LRM _Left-to-right mark"

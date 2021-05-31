@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 2012, One Laptop Per Child.
  * Copyright (C) 2014, Red Hat, Inc.
  *
@@ -294,7 +294,7 @@ ctk_gesture_long_press_class_init (CtkGestureLongPressClass *klass)
    * @y: the Y coordinate where the press happened, relative to the widget allocation
    *
    * This signal is emitted whenever a press goes unmoved/unreleased longer than
-   * what the GTK+ defaults tell.
+   * what the CTK+ defaults tell.
    *
    * Since: 3.14
    */

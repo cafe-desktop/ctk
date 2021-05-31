@@ -73,7 +73,7 @@ msgstr "SGRÎN"
 #: gdk/gdk.c:164
 #, fuzzy
 msgid "GDK debugging flags to set"
-msgstr "Opsiynau datnamu GTK+ i'w gosod"
+msgstr "Opsiynau datnamu CTK+ i'w gosod"
 
 #. Placeholder in --gdk-debug=FLAGS in --help output
 #. Placeholder in --gdk-no-debug=FLAGS in --help output
@@ -87,7 +87,7 @@ msgstr "OPSIYNAU"
 #: gdk/gdk.c:167
 #, fuzzy
 msgid "GDK debugging flags to unset"
-msgstr "Opsiynau datnamu GTK+ i'w dadosod"
+msgstr "Opsiynau datnamu CTK+ i'w dadosod"
 
 #: gdk/keyname-table.h:3940
 msgctxt "keyboard label"
@@ -1281,8 +1281,8 @@ msgstr "URI annilys"
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:526
-msgid "Load additional GTK+ modules"
-msgstr "Llwytho modylau GTK+ ychwanegol"
+msgid "Load additional CTK+ modules"
+msgstr "Llwytho modylau CTK+ ychwanegol"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:527
@@ -1296,13 +1296,13 @@ msgstr "Gwneud pob gwall yn farwol"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:532
-msgid "GTK+ debugging flags to set"
-msgstr "Opsiynau datnamu GTK+ i'w gosod"
+msgid "CTK+ debugging flags to set"
+msgstr "Opsiynau datnamu CTK+ i'w gosod"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:535
-msgid "GTK+ debugging flags to unset"
-msgstr "Opsiynau datnamu GTK+ i'w dadosod"
+msgid "CTK+ debugging flags to unset"
+msgstr "Opsiynau datnamu CTK+ i'w dadosod"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -1319,12 +1319,12 @@ msgid "Cannot open display: %s"
 msgstr ""
 
 #: ctk/ctkmain.c:922
-msgid "GTK+ Options"
-msgstr "Opsiynau GTK+"
+msgid "CTK+ Options"
+msgstr "Opsiynau CTK+"
 
 #: ctk/ctkmain.c:922
-msgid "Show GTK+ Options"
-msgstr "Dangos Opsiynau GTK+"
+msgid "Show CTK+ Options"
+msgstr "Dangos Opsiynau CTK+"
 
 #: ctk/ctkmountoperation.c:491
 msgid "Co_nnect"
@@ -2715,9 +2715,9 @@ msgstr "Data cyfresol wedi ei gam-ffurfio"
 
 #: ctk/ctktextbufferserialize.c:1862
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
-"Data cyfresol wedi'i gam-ffurfio. Nid GTKTEXTBUFFERCONTENTS-0001 yw'r rhan "
+"Data cyfresol wedi'i gam-ffurfio. Nid CTKTEXTBUFFERCONTENTS-0001 yw'r rhan "
 "gyntaf"
 
 #: ctk/ctktextutil.c:60
@@ -4295,10 +4295,10 @@ msgstr ""
 
 #~ msgid ""
 #~ "Image-loading module %s does not export the proper interface; perhaps "
-#~ "it's from a different GTK version?"
+#~ "it's from a different CTK version?"
 #~ msgstr ""
 #~ "Nid yw'r modiwl llwytho delweddau %s yn darparu'r rhyngwyneb cywir; "
-#~ "efallai ei fod o fersiwn arall o GTK"
+#~ "efallai ei fod o fersiwn arall o CTK"
 
 #~ msgid "Image type '%s' is not supported"
 #~ msgstr "Ni chynhelir y math delwedd '%s'"

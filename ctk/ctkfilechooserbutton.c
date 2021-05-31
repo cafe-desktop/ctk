@@ -1,6 +1,6 @@
 /* -*- Mode: C; c-file-style: "gnu"; tab-width: 8 -*- */
 
-/* GTK+: ctkfilechooserbutton.c
+/* CTK+: ctkfilechooserbutton.c
  *
  * Copyright (c) 2004 James M. Cape <jcape@ignore-your.tv>
  *

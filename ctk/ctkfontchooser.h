@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkfontchooser.h - Abstract interface for font file selectors GUIs
  *
  * Copyright (C) 2006, Emmanuele Bassi

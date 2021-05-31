@@ -6,7 +6,7 @@
 
 <refentryinfo>
   <title>broadwayd</title>
-  <productname>GTK+</productname>
+  <productname>CTK+</productname>
   <authorgroup>
     <author>
       <contrib>Developer</contrib>
@@ -40,7 +40,7 @@
 <refsect1><title>Description</title>
 <para>
 <command>broadwayd</command> is a display server for the Broadway
-GDK backend. It allows multiple GTK+ applications to display their
+GDK backend. It allows multiple CTK+ applications to display their
 windows in the same web browser, by connecting to broadwayd.
 </para>
 <para>

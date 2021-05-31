@@ -1,7 +1,7 @@
 # translation of ka.po to Georgian
-# Georgian translation for GTK+.
-# Copyright © 2006 The GTK Team
-# This file is distributed under the same license as the GTK package.
+# Georgian translation for CTK+.
+# Copyright © 2006 The CTK Team
+# This file is distributed under the same license as the CTK package.
 #
 #
 # Gia Shervashidze <giasher@telenet.ge>, 2005.
@@ -76,7 +76,7 @@ msgstr "ეკრანი"
 #: gdk/gdk.c:164
 #, fuzzy
 msgid "GDK debugging flags to set"
-msgstr "GTK+ გამართვის ალმების მითითება"
+msgstr "CTK+ გამართვის ალმების მითითება"
 
 #. Placeholder in --gdk-debug=FLAGS in --help output
 #. Placeholder in --gdk-no-debug=FLAGS in --help output
@@ -90,7 +90,7 @@ msgstr "ალმები"
 #: gdk/gdk.c:167
 #, fuzzy
 msgid "GDK debugging flags to unset"
-msgstr "GTK+ გამართვის ალმების მოხსნა"
+msgstr "CTK+ გამართვის ალმების მოხსნა"
 
 #: gdk/keyname-table.h:3940
 #, fuzzy
@@ -1300,8 +1300,8 @@ msgstr "მცდარი URI"
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:526
-msgid "Load additional GTK+ modules"
-msgstr "GTK+ დამატებითი მოდულების ჩატვირთვა"
+msgid "Load additional CTK+ modules"
+msgstr "CTK+ დამატებითი მოდულების ჩატვირთვა"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:527
@@ -1315,13 +1315,13 @@ msgstr "ყველა გაფრთხილების გადამწ�
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:532
-msgid "GTK+ debugging flags to set"
-msgstr "GTK+ გამართვის ალმების მითითება"
+msgid "CTK+ debugging flags to set"
+msgstr "CTK+ გამართვის ალმების მითითება"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:535
-msgid "GTK+ debugging flags to unset"
-msgstr "GTK+ გამართვის ალმების მოხსნა"
+msgid "CTK+ debugging flags to unset"
+msgstr "CTK+ გამართვის ალმების მოხსნა"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -1338,12 +1338,12 @@ msgid "Cannot open display: %s"
 msgstr "შეუძლებელია დისპლეის გახსნა: %s"
 
 #: ctk/ctkmain.c:922
-msgid "GTK+ Options"
-msgstr "GTK+ პარამეტრები"
+msgid "CTK+ Options"
+msgstr "CTK+ პარამეტრები"
 
 #: ctk/ctkmain.c:922
-msgid "Show GTK+ Options"
-msgstr "GTK+ პარამეტრების ჩვენება"
+msgid "Show CTK+ Options"
+msgstr "CTK+ პარამეტრების ჩვენება"
 
 #: ctk/ctkmountoperation.c:491
 msgid "Co_nnect"
@@ -2816,9 +2816,9 @@ msgstr "სერიალიზებული მონაცემები �
 
 #: ctk/ctktextbufferserialize.c:1862
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
-"სერიალიზებული მონაცემები მცდარია. პირველი სექცია GTKTEXTBUFFERCONTENTS-0001 "
+"სერიალიზებული მონაცემები მცდარია. პირველი სექცია CTKTEXTBUFFERCONTENTS-0001 "
 "არაა"
 
 #: ctk/ctktextutil.c:60
@@ -4439,10 +4439,10 @@ msgstr ""
 
 #~ msgid ""
 #~ "Image-loading module %s does not export the proper interface; perhaps "
-#~ "it's from a different GTK version?"
+#~ "it's from a different CTK version?"
 #~ msgstr ""
 #~ "ნახატების ჩამოტვირთვის მოდული \"%s\" ვერ ახდენს მართებული ინტერფეისის "
-#~ "ექსპორტს; შესაძლოა იგი GTK–ს სხვა ვერსიიდანაა?"
+#~ "ექსპორტს; შესაძლოა იგი CTK–ს სხვა ვერსიიდანაა?"
 
 #~ msgid "Image type '%s' is not supported"
 #~ msgstr "გამოსახულების ტიპი \"%s\"  ვერ გამოიყენება"

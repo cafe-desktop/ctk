@@ -50,7 +50,7 @@
  *
  * CtkRevealer has a single CSS node with name revealer.
  *
- * The CtkRevealer widget was added in GTK+ 3.10.
+ * The CtkRevealer widget was added in CTK+ 3.10.
  */
 
 /**

@@ -7,9 +7,9 @@
 
   <para>
     This chapter includes a checklist of smaller things you need to do to
-    ensure that your programs are good citizens in the GTK+ world.  By
+    ensure that your programs are good citizens in the CTK+ world.  By
     paying attention to the points in the checklist, you ensure that
-    many automatic features of GTK+ will work correctly in your
+    many automatic features of CTK+ will work correctly in your
     program.
   </para>
 
@@ -160,10 +160,10 @@ my_widget_popup_menu_handler (CtkWidget *widget)
     </formalpara>
 
     <para>
-      In early GTK+ versions, the <structname>GdkEventExpose</structname>
+      In early CTK+ versions, the <structname>GdkEventExpose</structname>
       structure only had an <structfield>area</structfield> field to
       let you determine the region that you needed to redraw. In current
-      GTK+, this field still exists for compatibility and as a simple
+      CTK+, this field still exists for compatibility and as a simple
       interface. However, there is also a <structfield>region</structfield>
       field which contains a fine-grained region. The
       <structfield>area</structfield> field is simply the bounding rectangle

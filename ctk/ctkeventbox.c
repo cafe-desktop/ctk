@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -247,7 +247,7 @@ ctk_event_box_get_visible_window (CtkEventBox *event_box)
  * window below the child. (See ctk_event_box_set_above_child().)
  * Since the input-only window is not an ancestor window of any windows
  * that descendent widgets of the event box create, events on these
- * windows aren’t propagated up by the windowing system, but only by GTK+.
+ * windows aren’t propagated up by the windowing system, but only by CTK+.
  * The practical effect of this is if an event isn’t in the event
  * mask for the descendant window (see ctk_widget_add_events()),
  * it won’t be received by the event box.

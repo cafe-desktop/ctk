@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -55,7 +55,7 @@
 #include "ctkpopovermenu.h"
 #include "ctkshortcutswindow.h"
 
-/* A handful of containers inside GTK+ are cheating and widgets
+/* A handful of containers inside CTK+ are cheating and widgets
  * inside internal structure as direct children for the purpose
  * of forall().
  */
@@ -70,14 +70,14 @@
  * @Short_description: Base class for widgets which contain other widgets
  * @Title: CtkContainer
  *
- * A GTK+ user interface is constructed by nesting widgets inside widgets.
+ * A CTK+ user interface is constructed by nesting widgets inside widgets.
  * Container widgets are the inner nodes in the resulting tree of widgets:
  * they contain other widgets. So, for example, you might have a #CtkWindow
  * containing a #CtkFrame containing a #CtkLabel. If you wanted an image instead
  * of a textual label inside the frame, you might replace the #CtkLabel widget
  * with a #CtkImage widget.
  *
- * There are two major kinds of container widgets in GTK+. Both are subclasses
+ * There are two major kinds of container widgets in CTK+. Both are subclasses
  * of the abstract CtkContainer base class.
  *
  * The first type of container widget has a single child widget and derives
@@ -104,13 +104,13 @@
  *
  * # Height for width geometry management
  *
- * GTK+ uses a height-for-width (and width-for-height) geometry management system.
+ * CTK+ uses a height-for-width (and width-for-height) geometry management system.
  * Height-for-width means that a widget can change how much vertical space it needs,
  * depending on the amount of horizontal space that it is given (and similar for
  * width-for-height).
  *
  * There are some things to keep in mind when implementing container widgets
- * that make use of GTK+’s height for width geometry management system. First,
+ * that make use of CTK+’s height for width geometry management system. First,
  * it’s important to note that a container must prioritize one of its
  * dimensions, that is to say that a widget or container can only have a
  * #CtkSizeRequestMode that is %CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH or
@@ -3336,7 +3336,7 @@ chain_widget_destroyed (CtkWidget *widget,
  * @focusable_widgets: (transfer none) (element-type CtkWidget):
  *     the new focus chain
  *
- * Sets a focus chain, overriding the one computed automatically by GTK+.
+ * Sets a focus chain, overriding the one computed automatically by CTK+.
  *
  * In principle each widget in the chain should be a descendant of the
  * container, but this is not enforced by this method, since it’s allowed
@@ -3404,8 +3404,8 @@ ctk_container_set_focus_chain (CtkContainer *container,
  *
  * Retrieves the focus chain of the container, if one has been
  * set explicitly. If no focus chain has been explicitly
- * set, GTK+ computes the focus chain based on the positions
- * of the children. In that case, GTK+ stores %NULL in
+ * set, CTK+ computes the focus chain based on the positions
+ * of the children. In that case, CTK+ stores %NULL in
  * @focusable_widgets and returns %FALSE.
  *
  * Returns: %TRUE if the focus chain of the container

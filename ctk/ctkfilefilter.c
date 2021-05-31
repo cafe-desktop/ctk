@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkfilefilter.c: Filters for selecting a file subset
  * Copyright (C) 2003, Red Hat, Inc.
  *
@@ -433,7 +433,7 @@ ctk_file_filter_set_name (CtkFileFilter *filter,
  * Gets the human-readable name for the filter. See ctk_file_filter_set_name().
  * 
  * Returns: (nullable): The human-readable name of the filter,
- *   or %NULL. This value is owned by GTK+ and must not
+ *   or %NULL. This value is owned by CTK+ and must not
  *   be modified or freed.
  * 
  * Since: 2.4
@@ -543,7 +543,7 @@ ctk_file_filter_add_pixbuf_formats (CtkFileFilter *filter)
  * Adds rule to a filter that allows files based on a custom callback
  * function. The bitfield @needed which is passed in provides information
  * about what sorts of information that the filter function needs;
- * this allows GTK+ to avoid retrieving expensive information when
+ * this allows CTK+ to avoid retrieving expensive information when
  * it isn’t needed by the filter.
  * 
  * Since: 2.4

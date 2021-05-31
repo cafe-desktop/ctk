@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 2000 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -632,12 +632,12 @@ ctk_im_multicontext_append_menuitems (CtkIMMulticontext *context,
 	{
 	  if (strcmp (contexts[i]->domain, GETTEXT_PACKAGE) == 0)
 	    {
-	      /* Same translation domain as GTK+ */
+	      /* Same translation domain as CTK+ */
 	      if (!(contexts[i]->domain_dirname && contexts[i]->domain_dirname[0]) ||
 		  pathnamecmp (contexts[i]->domain_dirname, _ctk_get_localedir ()) == 0)
 		{
 		  /* Empty or NULL, domain directory, or same as
-		   * GTK+. Input method may have a name in the GTK+
+		   * CTK+. Input method may have a name in the CTK+
 		   * message catalog.
 		   */
 		  translated_name = g_dpgettext2 (GETTEXT_PACKAGE, "input method menu", contexts[i]->context_name);
@@ -645,13 +645,13 @@ ctk_im_multicontext_append_menuitems (CtkIMMulticontext *context,
 	      else
 		{
 		  /* Separate domain directory but the same
-		   * translation domain as GTK+. We can't call
-		   * bindtextdomain() as that would make GTK+ forget
+		   * translation domain as CTK+. We can't call
+		   * bindtextdomain() as that would make CTK+ forget
 		   * its own messages.
 		   */
-		  g_warning ("Input method %s should not use GTK's translation domain %s",
+		  g_warning ("Input method %s should not use CTK's translation domain %s",
 			     contexts[i]->context_id, GETTEXT_PACKAGE);
-		  /* Try translating the name in GTK+'s domain */
+		  /* Try translating the name in CTK+'s domain */
 		  translated_name = g_dpgettext2 (GETTEXT_PACKAGE, "input method menu", contexts[i]->context_name);
 		}
 	    }

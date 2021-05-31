@@ -6163,12 +6163,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "圖示大小清單 (ctk-menu=16,16:ctk-button=20,20…"
 
 #: ../ctk/ctksettings.c:540
-msgid "GTK Modules"
-msgstr "GTK 模組"
+msgid "CTK Modules"
+msgstr "CTK 模組"
 
 #: ../ctk/ctksettings.c:541
-msgid "List of currently active GTK modules"
-msgstr "目前正在使用的 GTK 模組的清單"
+msgid "List of currently active CTK modules"
+msgstr "目前正在使用的 CTK 模組的清單"
 
 #: ../ctk/ctksettings.c:549
 msgid "Xft Antialias"
@@ -6670,9 +6670,9 @@ msgstr "對話盒使用標頭列"
 
 #: ../ctk/ctksettings.c:1596
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
-msgstr "內置 GTK+ 對話盒是否使用標頭列代替動作區域。"
+msgstr "內置 CTK+ 對話盒是否使用標頭列代替動作區域。"
 
 #: ../ctk/ctksettings.c:1612
 msgid "Enable primary paste"
@@ -6689,8 +6689,8 @@ msgid "Recent Files Enabled"
 msgstr "最近使用檔案已啟用"
 
 #: ../ctk/ctksettings.c:1630
-msgid "Whether GTK+ remembers recent files"
-msgstr "GTK+ 是否記住最近使用檔案"
+msgid "Whether CTK+ remembers recent files"
+msgstr "CTK+ 是否記住最近使用檔案"
 
 #: ../ctk/ctksettings.c:1645
 msgid "Long press time"

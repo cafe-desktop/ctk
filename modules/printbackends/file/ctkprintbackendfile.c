@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkprintbackendfile.c: Default implementation of CtkPrintBackend 
  * for printing to a file
  * Copyright (C) 2003, Red Hat, Inc.

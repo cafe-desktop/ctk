@@ -915,7 +915,7 @@ parse_command_line (int *argc, char ***argv)
   GOptionContext *context;
   gchar *schema_dir;
 
-  context = g_option_context_new ("- run GTK accessibility tests");
+  context = g_option_context_new ("- run CTK accessibility tests");
   g_option_context_add_main_entries (context, test_args, NULL);
   g_option_context_set_ignore_unknown_options (context, TRUE);
 

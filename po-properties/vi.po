@@ -1,4 +1,4 @@
-# Vietnamese translation for GTK+ Properties.
+# Vietnamese translation for CTK+ Properties.
 # Copyright © 2015 GNOME i18n Project for Vietnamese.
 # This file is distributed under the same license as the ctk+ package.
 # Nguyễn Thái Ngọc Duy <pclouds@gmx.net>, 2002.
@@ -345,7 +345,7 @@ msgid ""
 "The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
-"CtkActionGroup (nhóm hành động GTK) với đó hành động CtkAction này được "
+"CtkActionGroup (nhóm hành động CTK) với đó hành động CtkAction này được "
 "tượng ứng, hoặc NULL (rỗng: chỉ dùng nội bộ)."
 
 #: ctk/deprecated/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
@@ -6611,12 +6611,12 @@ msgstr ""
 "Danh sách các kích thước biểu tượng (ctk-menu=16,16;ctk-button=20,20…)."
 
 #: ctk/ctksettings.c:547
-msgid "GTK Modules"
-msgstr "Mô-đun GTK"
+msgid "CTK Modules"
+msgstr "Mô-đun CTK"
 
 #: ctk/ctksettings.c:548
-msgid "List of currently active GTK modules"
-msgstr "Danh sách các mô-đun GTK hoạt động hiện thời"
+msgid "List of currently active CTK modules"
+msgstr "Danh sách các mô-đun CTK hoạt động hiện thời"
 
 #: ctk/ctksettings.c:556
 msgid "Xft Antialias"
@@ -7189,10 +7189,10 @@ msgstr "Hộp thoại dùng thanh đầu đề"
 
 #: ctk/ctksettings.c:1671
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"Hộp thoại dựng sẵn GTK+ có nên dùng thanh tiêu đề thay cho vùng hành động "
+"Hộp thoại dựng sẵn CTK+ có nên dùng thanh tiêu đề thay cho vùng hành động "
 "hay không."
 
 #: ctk/ctksettings.c:1687
@@ -7210,8 +7210,8 @@ msgid "Recent Files Enabled"
 msgstr "Nhớ tập tin mới dùng được bật"
 
 #: ctk/ctksettings.c:1705
-msgid "Whether GTK+ remembers recent files"
-msgstr "GTK+ có nhớ những tập tin mới mở hay không"
+msgid "Whether CTK+ remembers recent files"
+msgstr "CTK+ có nhớ những tập tin mới mở hay không"
 
 #: ctk/ctksettings.c:1720
 msgid "Long press time"
@@ -9487,7 +9487,7 @@ msgstr "Tiêu đề của hộp thoại hồ sơ màu được dùng"
 #~ "This is used when you're doing something but don't know how long it will "
 #~ "take."
 #~ msgstr ""
-#~ "Nếu TRUE (đúng), CtkProgress (tiến hành GTK) nằm trong chế độ hoạt động, "
+#~ "Nếu TRUE (đúng), CtkProgress (tiến hành CTK) nằm trong chế độ hoạt động, "
 #~ "có nghĩa là nó thông báo có gì xảy ra, nhưng không thông báo lớp tiến "
 #~ "hành. Dùng khi bạn làm công việc sẽ chiếm thời gian không rõ."
 

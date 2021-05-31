@@ -62,7 +62,7 @@
  * be held when activating actions locally (if GDK threads are enabled).
  *
  * The settings #CtkSettings:ctk-shell-shows-app-menu and
- * #CtkSettings:ctk-shell-shows-menubar tell GTK+ whether the
+ * #CtkSettings:ctk-shell-shows-menubar tell CTK+ whether the
  * desktop environment is showing the application menu and menubar
  * models outside the application as part of the desktop shell.
  * For instance, on OS X, both menus will be displayed remotely;

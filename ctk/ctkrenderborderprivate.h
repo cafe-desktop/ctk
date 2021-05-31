@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 2010 Carlos Garnacho <carlosg@gnome.org>
  * Copyright (C) 2011 Red Hat, Inc.
  *

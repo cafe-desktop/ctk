@@ -2814,8 +2814,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:464
-msgid "Load additional GTK+ modules"
-msgstr "Enlegi aldonajn modulojn de GTK+"
+msgid "Load additional CTK+ modules"
+msgstr "Enlegi aldonajn modulojn de CTK+"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:465
@@ -2829,13 +2829,13 @@ msgstr "Fari ĉiujn avertojn fatalaj"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:470
-msgid "GTK+ debugging flags to set"
-msgstr "Agordotaj cimo-flagoj de GTK+"
+msgid "CTK+ debugging flags to set"
+msgstr "Agordotaj cimo-flagoj de CTK+"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:473
-msgid "GTK+ debugging flags to unset"
-msgstr "Malagordotaj cimo-flagoj de GTK+"
+msgid "CTK+ debugging flags to unset"
+msgstr "Malagordotaj cimo-flagoj de CTK+"
 
 #: ctk/ctkmain.c:808 ctk/ctkmain.c:1002
 #, c-format
@@ -2843,12 +2843,12 @@ msgid "Cannot open display: %s"
 msgstr "Ne povas malfermi ekranon: %s"
 
 #: ctk/ctkmain.c:920
-msgid "GTK+ Options"
-msgstr "Agordoj de GTK+"
+msgid "CTK+ Options"
+msgstr "Agordoj de CTK+"
 
 #: ctk/ctkmain.c:920
-msgid "Show GTK+ Options"
-msgstr "Montri agordojn de GTK+"
+msgid "Show CTK+ Options"
+msgstr "Montri agordojn de CTK+"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -3826,10 +3826,10 @@ msgstr "Seriigitaj datumoj estas misformitaj"
 
 #: ctk/ctktextbufferserialize.c:1864
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 "Seriigitaj datumoj estas misformitaj. Unua sekcio ne estas "
-"GTKTEXTBUFFERCONTENTS-0001"
+"CTKTEXTBUFFERCONTENTS-0001"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -3908,18 +3908,18 @@ msgstr "Ĉiam malfone"
 
 #: ctk/ctkwindow.c:12710
 #, c-format
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "Ĉu vi volas uzi Inspektiston de GTK+?"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "Ĉu vi volas uzi Inspektiston de CTK+?"
 
 #: ctk/ctkwindow.c:12712
 #, c-format
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"Inspektisto de GTK+ estas interaga sencimigilo ebliganta esplori kaj ŝanĝi "
-"la internaĵojn de iu ajn aplikaĵo de GTK+. Uzi ĝin povas malfunkciigi la "
+"Inspektisto de CTK+ estas interaga sencimigilo ebliganta esplori kaj ŝanĝi "
+"la internaĵojn de iu ajn aplikaĵo de CTK+. Uzi ĝin povas malfunkciigi la "
 "aplikaĵon."
 
 #: ctk/ctkwindow.c:12717
@@ -3949,8 +3949,8 @@ msgid "Parameter Type"
 msgstr "Tipo de parametro"
 
 #: ctk/inspector/css-editor.c:112
-msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "Tien ĉi vi povas entajpi iun ajn regulon de CSS rekonatan de GTK+."
+msgid "You can type here any CSS rule recognized by CTK+."
+msgstr "Tien ĉi vi povas entajpi iun ajn regulon de CSS rekonatan de CTK+."
 
 #: ctk/inspector/css-editor.c:113
 msgid ""
@@ -4009,8 +4009,8 @@ msgid "None"
 msgstr "Neniu"
 
 #: ctk/inspector/general.ui:34
-msgid "GTK+ Version"
-msgstr "Versio de GTK+"
+msgid "CTK+ Version"
+msgstr "Versio de CTK+"
 
 #: ctk/inspector/general.ui:68
 msgid "GDK Backend"
@@ -4397,8 +4397,8 @@ msgid "GL rendering is disabled"
 msgstr "GL-bildigo estas malŝaltita"
 
 #: ctk/inspector/visual.ui:61
-msgid "GTK+ Theme"
-msgstr "Haŭto de GTK+"
+msgid "CTK+ Theme"
+msgstr "Haŭto de CTK+"
 
 #: ctk/inspector/visual.ui:94
 msgid "Dark Variant"
@@ -8709,10 +8709,10 @@ msgstr "Presi en prova presilo"
 
 #~ msgid ""
 #~ "Image-loading module %s does not export the proper interface; perhaps "
-#~ "it's from a different GTK version?"
+#~ "it's from a different CTK version?"
 #~ msgstr ""
 #~ "Bildoŝarga modulo %s ne elsportas la taŭgan interfacon; eble ĝi apartenas "
-#~ "al alia versio de GTK?"
+#~ "al alia versio de CTK?"
 
 #~ msgid "Image type '%s' is not supported"
 #~ msgstr "Bildotipo \"%s\" ne estas subtenata"

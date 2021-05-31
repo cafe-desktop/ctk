@@ -116,7 +116,7 @@ include $(srcdir)/a11y/Makefile.inc
 include $(srcdir)/deprecated/Makefile.inc
 include $(srcdir)/inspector/Makefile.inc
 
-# GTK+ header files for public installation (non-generated, or generated
+# CTK+ header files for public installation (non-generated, or generated
 # by configure)
 
 ctk_public_h_sources = 		\
@@ -366,7 +366,7 @@ ctk_private_type_h_sources =	\
 	ctktexthandleprivate.h
 
 
-# GTK+ header files that don't get installed
+# CTK+ header files that don't get installed
 ctk_private_h_sources =		\
 	$(inspector_h_sources)	\
 	$(ctk_private_type_h_sources) \
@@ -606,7 +606,7 @@ ctk_private_h_sources =		\
 	language-names.h	\
 	script-names.h
 
-# GTK+ C sources to build the library from
+# CTK+ C sources to build the library from
 ctk_base_c_sources = 		\
 	$(a11y_c_sources)	\
 	$(deprecated_c_sources)	\
@@ -1177,7 +1177,7 @@ ctk_extra_sources =				\
 	fallback-c89.c
 
 #
-# setup GTK+ sources and their dependencies
+# setup CTK+ sources and their dependencies
 #
 MAINTAINERCLEANFILES = \
 	$(ctk_built_sources) 			\
@@ -1584,7 +1584,7 @@ dist-hook: \
 	$(top_builddir)/win32/vs9/ctk-3.headers	\
 	$(INTROSPECTION_INTERMEDIATE_ITEMS)
 
-# Install a RC file for the default GTK+ theme, and key themes
+# Install a RC file for the default CTK+ theme, and key themes
 install-data-local: install-ms-lib install-def-file install-mac-key-theme
 	$(MKDIR_P) $(DESTDIR)$(datadir)/themes/Default/ctk-3.0
 	$(INSTALL_DATA) $(srcdir)/ctk-keys.css.default $(DESTDIR)$(datadir)/themes/Default/ctk-3.0/ctk-keys.css

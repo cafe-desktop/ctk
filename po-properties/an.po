@@ -2033,7 +2033,7 @@ msgstr "Grandaria"
 #: ../ctk/ctkcellrendererpixbuf.c:195
 msgid "The CtkIconSize value that specifies the size of the rendered icon"
 msgstr ""
-"A valor de GTKIconSize que especifica a grandaria de l'icono renderizau"
+"A valor de CTKIconSize que especifica a grandaria de l'icono renderizau"
 
 #: ../ctk/ctkcellrendererpixbuf.c:204
 msgid "Detail"
@@ -2152,7 +2152,7 @@ msgstr "Preto d'o marcador incrementable"
 #: ../ctk/ctkcellrendererspinner.c:158
 msgid "The CtkIconSize value that specifies the size of the rendered spinner"
 msgstr ""
-"A valor de GTKIconSize que especifica a grandaria d'o marcador incrementable "
+"A valor de CTKIconSize que especifica a grandaria d'o marcador incrementable "
 "renderizau"
 
 #: ../ctk/ctkcellrenderertext.c:254
@@ -6374,12 +6374,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Lista de grandarias d'os iconos (ctk-menu=16,16:ctk-button=20,20…"
 
 #: ../ctk/ctksettings.c:539
-msgid "GTK Modules"
-msgstr "Modulos GTK"
+msgid "CTK Modules"
+msgstr "Modulos CTK"
 
 #: ../ctk/ctksettings.c:540
-msgid "List of currently active GTK modules"
-msgstr "Lista de modulos GTK activos actualment"
+msgid "List of currently active CTK modules"
+msgstr "Lista de modulos CTK activos actualment"
 
 #: ../ctk/ctksettings.c:548
 msgid "Xft Antialias"
@@ -7018,7 +7018,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Whether buttons in dialogs should use the alternative button order"
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
 "Indica si os botons en os dialogos han a fer servir un orden alternativov de "
@@ -7045,8 +7045,8 @@ msgstr "Fichers recients activaus"
 
 #: ../ctk/ctksettings.c:1628
 #, fuzzy
-msgid "Whether GTK+ remembers recent files"
-msgstr "Indica si GTK+ recuerda os fichers recients"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Indica si CTK+ recuerda os fichers recients"
 
 #: ../ctk/ctksizegroup.c:329 ../ctk/ctktreeselection.c:129
 #, fuzzy

@@ -1,8 +1,8 @@
 /* Foreign drawing
  *
- * Many applications can't use GTK+ widgets, for a variety of reasons,
+ * Many applications can't use CTK+ widgets, for a variety of reasons,
  * but still want their user interface to appear integrated with the
- * rest of the desktop, and follow GTK+ themes. This demo shows how to
+ * rest of the desktop, and follow CTK+ themes. This demo shows how to
  * use CtkStyleContext and the ctk_render_ APIs to achieve this.
  *
  * Note that this is a very simple, non-interactive example.

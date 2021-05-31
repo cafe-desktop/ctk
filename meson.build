@@ -75,7 +75,7 @@ add_project_arguments(ctk_debug_cflags, language: 'c')
 # backwards binary compatibility with for all interfaces a module
 # might. Unless we add module-only API with lower stability
 # guarantees, this should be unchanged until we break binary compat
-# for GTK+.
+# for CTK+.
 ctk_binary_version = '3.0.0'
 
 ctk_binary_age = 100 * ctk_minor_version + ctk_micro_version
@@ -265,7 +265,7 @@ cdata.set('HAVE_DECL_ISNAN', cc.has_header_symbol('math.h', 'isnan') ? 1 : false
 
 # Disable deprecation checks for all libraries we depend on on stable branches.
 # This is so newer versions of those libraries don't cause more warnings with
-# a stable GTK version.
+# a stable CTK version.
 # We don't ever want to turn off deprecation warnings for master however, because
 # that's where we get rid of deprecated API we use.
 if ctk_minor_version.is_even()
@@ -675,13 +675,13 @@ if win32_enabled
 endif
 
 # IMModules stuff-unfortunately we need to put items here
-# as they can be built as modules or built directly into GTK
+# as they can be built as modules or built directly into CTK
 builtin_modules_opt = get_option('builtin_immodules')
 if builtin_modules_opt == 'auto'
   if os_win32
-    # Current MSVC projects build all immodules directly into GTK by default,
+    # Current MSVC projects build all immodules directly into CTK by default,
     # as does the mingw autotools build
-    message('IMModules are built into GTK for MSVC builds by default')
+    message('IMModules are built into CTK for MSVC builds by default')
     builtin_immodules = true
   else
     builtin_immodules = false
@@ -728,7 +728,7 @@ foreach proto_name: proto_sources
 endforeach
 
 # Unfortunately it seems that we need to include the input module sources here, and build
-# them in $(buildrootdir) if we are to build them included in GTK...
+# them in $(buildrootdir) if we are to build them included in CTK...
 # Make sure the source listings are the same as in modules/input/Makefile.am
 immodule_srcdir = 'modules/input/'
 immodules = [
@@ -1007,7 +1007,7 @@ test(
 summary = [
   '',
   '------',
-  'GTK+ @0@ (@1@)'.format(ctk_version, ctk_api_version),
+  'CTK+ @0@ (@1@)'.format(ctk_version, ctk_api_version),
   '',
   '  Display backends: @0@ [disabled: @1@]'.format(pkg_targets.strip(), ' '.join(disabled_backends)),
   '    Print backends: @0@ [disabled: @1@]'.format(' '.join(print_backends), ' '.join(disabled_print_backends)),

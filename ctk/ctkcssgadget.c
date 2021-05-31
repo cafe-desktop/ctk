@@ -37,7 +37,7 @@
  * Gadgets are 'next-generation widgets' - they combine a CSS node
  * for style matching with geometry management and drawing. Each gadget
  * corresponds to 'CSS box'. Compared to traditional widgets, they are more
- * like building blocks - a typical GTK+ widget will have multiple gadgets,
+ * like building blocks - a typical CTK+ widget will have multiple gadgets,
  * for example a check button has its main gadget, and sub-gadgets for
  * the checkmark and the text.
  *

@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkfilesystemmodel.h: CtkTreeModel wrapping a CtkFileSystem
  * Copyright (C) 2003, Red Hat, Inc.
  *

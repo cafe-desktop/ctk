@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright © 2012 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -29,13 +29,13 @@
  *
  * Use ctk_level_bar_set_value() to set the current value, and
  * ctk_level_bar_add_offset_value() to set the value offsets at which
- * the bar will be considered in a different state. GTK will add a few
+ * the bar will be considered in a different state. CTK will add a few
  * offsets by default on the level bar: #CTK_LEVEL_BAR_OFFSET_LOW,
  * #CTK_LEVEL_BAR_OFFSET_HIGH and #CTK_LEVEL_BAR_OFFSET_FULL, with
  * values 0.25, 0.75 and 1.0 respectively.
  *
  * Note that it is your responsibility to update preexisting offsets
- * when changing the minimum or maximum value. GTK+ will simply clamp
+ * when changing the minimum or maximum value. CTK+ will simply clamp
  * them to the new range.
  *
  * ## Adding a custom offset on the bar
@@ -87,7 +87,7 @@
  * set the minimum value to 0 and the maximum value to 5 after changing the indicator
  * mode to discrete.
  *
- * CtkLevelBar was introduced in GTK+ 3.6.
+ * CtkLevelBar was introduced in CTK+ 3.6.
  *
  * # CtkLevelBar as CtkBuildable
  *

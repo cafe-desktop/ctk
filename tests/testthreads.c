@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include <stdio.h>
@@ -82,7 +82,7 @@ counter (void *data)
 
   ctk_widget_show_all (window);
 
-  /* Since flag is only checked or set inside the GTK lock,
+  /* Since flag is only checked or set inside the CTK lock,
    * we don't have to worry about locking it explicitly
    */
   while (!flag)
@@ -152,7 +152,7 @@ main (int argc, char **argv)
   gdk_threads_leave();
   fprintf(stderr, "Done\n");
 #else /* !USE_PTHREADS */
-  fprintf (stderr, "GTK+ not compiled with threads support\n");
+  fprintf (stderr, "CTK+ not compiled with threads support\n");
   exit (1);
 #endif /* USE_PTHREADS */  
 

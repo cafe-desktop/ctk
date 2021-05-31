@@ -3,34 +3,34 @@
                "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
 ]>
 <chapter id="ctk-getting-started" xmlns:xi="http://www.w3.org/2003/XInclude">
-  <title>Getting Started with GTK+</title>
+  <title>Getting Started with CTK+</title>
 
-  <para>GTK+ is a <ulink url="http://en.wikipedia.org/wiki/Widget_toolkit">
+  <para>CTK+ is a <ulink url="http://en.wikipedia.org/wiki/Widget_toolkit">
   widget toolkit</ulink>. Each user interface created by 
-  GTK+ consists of widgets. This is implemented in C using 
+  CTK+ consists of widgets. This is implemented in C using 
   <link linkend="gobject">GObject</link>, an object-oriented framework for C.
   Widgets are organized in a hierachy. The window widget is the main container.
   The user interface is then built by adding buttons, drop-down menus, input 
   fields, and other widgets to the window.
   If you are creating complex user interfaces it is recommended to
-  use #CtkBuilder and its GTK-specific markup description language, instead of
+  use #CtkBuilder and its CTK-specific markup description language, instead of
   assembling the interface manually. You can also use a visual user interface
   editor, like <ulink url="https://glade.gnome.org/">Glade</ulink>.</para>
   
-  <para>GTK+ is event-driven. The toolkit listens for events such as
+  <para>CTK+ is event-driven. The toolkit listens for events such as
   a click on a button, and passes the event to your application.</para>
 
   <para>This chapter contains some tutorial information to get you
-  started with GTK+ programming. It assumes that you have GTK+, its
+  started with CTK+ programming. It assumes that you have CTK+, its
   dependencies and a C compiler installed and ready to use. If you
-  need to build GTK+ itself first, refer to the
-  <link linkend="ctk-compiling">Compiling the GTK+ libraries</link>
+  need to build CTK+ itself first, refer to the
+  <link linkend="ctk-compiling">Compiling the CTK+ libraries</link>
   section in this reference.</para>
 
   <section>
     <title>Basics</title>
 
-    <para>To begin our introduction to GTK, we'll start with a simple
+    <para>To begin our introduction to CTK, we'll start with a simple
     signal-based Ctk application. This program will create an empty 200 × 200 pixel
     window.</para>
 
@@ -54,20 +54,20 @@
       </literallayout>
     </para>
 
-    <note><para>For more information on how to compile a GTK+ application, please
-    refer to the <link linkend="ctk-compiling">Compiling GTK+ Applications</link>
+    <note><para>For more information on how to compile a CTK+ application, please
+    refer to the <link linkend="ctk-compiling">Compiling CTK+ Applications</link>
     section in this reference.</para></note>
 
-    <para>All GTK+ applications will, of course, include
+    <para>All CTK+ applications will, of course, include
     <filename>ctk/ctk.h</filename>, which declares functions, types and
-    macros required by GTK+ applications.</para>
+    macros required by CTK+ applications.</para>
 
-    <warning><para>Even if GTK+ installs multiple header files, only the
+    <warning><para>Even if CTK+ installs multiple header files, only the
     top-level <filename>ctk/ctk.h</filename> header can be directly included
     by third party code. The compiler will abort with an error if any other
     header is directly included.</para></warning>
 
-    <para>In a GTK+ application, the purpose of the main() function is to
+    <para>In a CTK+ application, the purpose of the main() function is to
     create a #CtkApplication object and run it. In this example a
     #CtkApplication pointer named <varname>app</varname> is called and then
     initialized using ctk_application_new().</para>
@@ -89,8 +89,8 @@
     when your application is launched with
     g_application_run() on the line below.
     The ctk_application_run() also takes as arguments the pointers to the command line arguments
-    counter and string array; this allows GTK+ to parse specific command line
-    arguments that control the behavior of GTK+ itself. The parsed arguments
+    counter and string array; this allows CTK+ to parse specific command line
+    arguments that control the behavior of CTK+ itself. The parsed arguments
     will be removed from the array, leaving the unrecognized ones for your
     application to parse.
     </para>
@@ -98,7 +98,7 @@
     <para>Within g_application_run the activate() signal is sent and
     we then proceed into the <function>activate</function>() function of the
     application. Inside the activate() function we want to construct
-    our GTK window, so that a window is shown when the application
+    our CTK window, so that a window is shown when the application
     is launched. The call to ctk_application_window_new() will
     create a new #CtkWindow and store it inside the
     <varname>window</varname> pointer. The window will have a frame,
@@ -120,24 +120,24 @@
     here</ulink>.</para>
 
     <para>Finally the window size is set using ctk_window_set_default_size and
-    the window is then shown by GTK via ctk_widget_show_all().</para>
+    the window is then shown by CTK via ctk_widget_show_all().</para>
 
     <para>When you exit the window, by for example pressing the X,
     the g_application_run() in the main loop returns with a number
     which is saved inside an integer named "status". Afterwards, the
     #CtkApplication object is freed from memory with g_object_unref().
-    Finally the status integer is returned and the GTK application exits.</para>
+    Finally the status integer is returned and the CTK application exits.</para>
 
-    <para>While the program is running, GTK+ is receiving
+    <para>While the program is running, CTK+ is receiving
     <firstterm>events</firstterm>. These are typically input events caused by
     the user interacting with your program, but also things like messages from
-    the window manager or other applications. GTK+ processes these and as a
+    the window manager or other applications. CTK+ processes these and as a
     result, <firstterm>signals</firstterm> may be emitted on your widgets.
     Connecting handlers for these signals is how you normally make your
     program do something in response to user input.</para>
 
     <para>The following example is slightly more complex, and tries to
-    showcase some of the capabilities of GTK+.</para>
+    showcase some of the capabilities of CTK+.</para>
 
     <para>In the long tradition of programming languages and libraries,
     it is called <emphasis>Hello, World</emphasis>.</para>
@@ -151,7 +151,7 @@
     </informalfigure>
 
     <example id="ctk-getting-started-hello-world">
-      <title>Hello World in GTK+</title>
+      <title>Hello World in CTK+</title>
       <para>Create a new file with the following content named example-1.c.</para>
       <programlisting><xi:include href="@abs_top_srcdir@/examples/hello-world.c" parse="text">
           <xi:fallback>MISSING XINCLUDE CONTENT</xi:fallback></xi:include></programlisting>
@@ -169,7 +169,7 @@
   button to our window, with the label "Hello World". Two new CtkWidget pointers
   are declared to accomplish this, <varname>button</varname> and
   <varname>button_box</varname>. The button_box variable is created to store a
-  #CtkButtonBox which is GTK+'s way of controlling the size and layout of buttons.
+  #CtkButtonBox which is CTK+'s way of controlling the size and layout of buttons.
   The #CtkButtonBox is created and assigned to ctk_button_box_new() which takes a
   #CtkOrientation enum as parameter. The buttons which this box will contain can
   either be stored horizontally or vertically but this does not matter in this
@@ -182,10 +182,10 @@
   <varname>button</varname>. Afterwards <varname>button</varname> is added to
   our <varname>button_box</varname>.
   Using g_signal_connect the button is connected to a function in our app called
-  print_hello(), so that when the button is clicked, GTK will call this function.
+  print_hello(), so that when the button is clicked, CTK will call this function.
   As the print_hello() function does not use any data as input, NULL is passed
   to it. print_hello() calls g_print() with the string "Hello World"
-  which will print Hello World in a terminal if the GTK application was started
+  which will print Hello World in a terminal if the CTK application was started
   from one.</para>
 
   <para>After connecting print_hello(), another signal is connected to the "clicked" state
@@ -195,7 +195,7 @@
   function should take as parameter by letting you pass it as data. In this case
   the function being called back is ctk_widget_destroy() and the <varname>window</varname>
   pointer is passed to it. This has the effect that when the button is clicked,
-  the whole GTK window is destroyed. In contrast if a normal g_signal_connect() were used
+  the whole CTK window is destroyed. In contrast if a normal g_signal_connect() were used
   to connect the "clicked" signal with ctk_widget_destroy(), then the <varname>button</varname>
   itself would have been destroyed, not the window.
   More information about creating buttons can be found
@@ -203,7 +203,7 @@
   </para>
 
   <para>The rest of the code in example-1.c is identical to example-0.c. Next
-  section will elaborate further on how to add several CtkWidgets to your GTK
+  section will elaborate further on how to add several CtkWidgets to your CTK
   application.</para>
 
   <section>
@@ -215,7 +215,7 @@
     it becomes important to control how each widget is positioned and sized.
     This is where packing comes in.</para>
 
-    <para>GTK+ comes with a large variety of <firstterm>layout containers</firstterm>
+    <para>CTK+ comes with a large variety of <firstterm>layout containers</firstterm>
     whose purpose it is to control the layout of the child widgets that are
     added to them. See <xref linkend="LayoutContainers"/> for an overview.</para>
 
@@ -250,7 +250,7 @@
     or hundreds of widgets, doing all the setup work in C code is
     cumbersome, and making changes becomes next to impossible.</para>
 
-    <para>Thankfully, GTK+ supports the separation of user interface
+    <para>Thankfully, CTK+ supports the separation of user interface
     layout from your business logic, by using UI descriptions in an
     XML format that can be parsed by the #CtkBuilder class.</para>
 
@@ -324,7 +324,7 @@
     </variablelist>
     </para>
 
-    <para>GTK+ includes application support that is built on top of
+    <para>CTK+ includes application support that is built on top of
     #GApplication. In this tutorial we'll build a simple application by
     starting from scratch, adding more and more pieces over time. Along
     the way, we'll learn about #CtkApplication, templates, resources,
@@ -332,8 +332,8 @@
     #CtkListBox, and more.</para>
 
     <para>The full, buildable sources for these examples can be found
-    in the examples/ directory of the GTK+ source distribution, or
-    <ulink url="https://git.gnome.org/browse/ctk+/tree/examples">online</ulink> in the GTK+ git repository.
+    in the examples/ directory of the CTK+ source distribution, or
+    <ulink url="https://git.gnome.org/browse/ctk+/tree/examples">online</ulink> in the CTK+ git repository.
     You can build each example separately by using make with the <filename>Makefile.example</filename>
     file. For more information, see the <filename>README</filename> included in the
     examples directory.</para>
@@ -368,7 +368,7 @@
       </informalexample>
 
       <para>Another important class that is part of the application support
-      in GTK+ is #CtkApplicationWindow. It is typically subclassed as well.
+      in CTK+ is #CtkApplicationWindow. It is typically subclassed as well.
       Our subclass does not do anything yet, so we will just get an empty
       window.</para>
 
@@ -799,7 +799,7 @@ preferences_activated (GSimpleAction *action,
       <title>Adding a search bar</title>
 
       <para>We continue to flesh out the functionality of our application.
-      For now, we add search. GTK+ supports this with #CtkSearchEntry and
+      For now, we add search. CTK+ supports this with #CtkSearchEntry and
       #CtkSearchBar. The search bar is a widget that can slide in from the
       top to present a search entry.</para>
 
@@ -1012,7 +1012,7 @@ example_app_window_init (ExampleAppWindow *win)
 
       <para>Our application already uses a CtkHeaderBar, but so far it
       still gets a 'normal' window titlebar on top of that. This is a
-      bit redundant, and we will now tell GTK+ to use the header bar
+      bit redundant, and we will now tell CTK+ to use the header bar
       as replacement for the titlebar. To do so, we move it around to
       be a direct child of the window, and set its type to be titlebar.</para>
 
@@ -1053,7 +1053,7 @@ example_app_window_init (ExampleAppWindow *win)
     e.g. when another window is moved and uncovers part of the widget, or
     when the window containing it is resized. It is also possible to explicitly
     cause part or all of the widget to be redrawn, by calling
-    ctk_widget_queue_draw() or its variants. GTK+ takes care of most of the
+    ctk_widget_queue_draw() or its variants. CTK+ takes care of most of the
     details by providing a ready-to-use cairo context to the ::draw signal
     handler.</para>
 

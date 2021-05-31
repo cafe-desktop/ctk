@@ -12,7 +12,7 @@ so, please do the following:
  with QT 5.10.x is sufficiently recent, but not the one that comes with QT-
  5.6.x.  Note that Visual Studio 2013 or later is required for building
  ANGLE from QT-5.10.x, but the Visual Studio 2013-built ANGLE DLLs does work
- without problems with GTK+ built with Visual Studio 2008~2013.  You may
+ without problems with CTK+ built with Visual Studio 2008~2013.  You may
  need to obtain D3Dcompiler_[47|43|42].dll if it does not come with the
  system (which is part of the DirectX runtimes).  Its headers and .lib
  needs to be set to be found by the compiler and linker respectively before

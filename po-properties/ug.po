@@ -5641,12 +5641,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "سىنبەلگە چوڭلۇق تىزىمى (ctk-menu=16,16:ctk-button=20,20..."
 
 #: ../ctk/ctksettings.c:513
-msgid "GTK Modules"
-msgstr "GTK بۆلەكلىرى"
+msgid "CTK Modules"
+msgstr "CTK بۆلەكلىرى"
 
 #: ../ctk/ctksettings.c:514
-msgid "List of currently active GTK modules"
-msgstr "نۆۋەتتە ئاكتىپلانغان GTK بۆلەكلىرىنىڭ تىزىمى"
+msgid "List of currently active CTK modules"
+msgstr "نۆۋەتتە ئاكتىپلانغان CTK بۆلەكلىرىنىڭ تىزىمى"
 
 #: ../ctk/ctksettings.c:522
 msgid "Xft Antialias"

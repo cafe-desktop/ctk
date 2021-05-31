@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __GDK_TYPES_H__
@@ -29,7 +29,7 @@
 #error "Only <gdk/gdk.h> can be included directly."
 #endif
 
-/* GDK uses "glib". (And so does GTK).
+/* GDK uses "glib". (And so does CTK).
  */
 #include <glib.h>
 #include <pango/pango.h>
@@ -37,9 +37,9 @@
 #include <cairo.h>
 
 /* The system specific file gdkconfig.h contains such configuration
- * settings that are needed not only when compiling GDK (or GTK)
+ * settings that are needed not only when compiling GDK (or CTK)
  * itself, but also occasionally when compiling programs that use GDK
- * (or GTK). One such setting is what windowing API backend is in use.
+ * (or CTK). One such setting is what windowing API backend is in use.
  */
 #include <gdk/gdkconfig.h>
 
@@ -206,7 +206,7 @@ typedef enum
  * @GDK_HYPER_MASK: the Hyper modifier. Since 2.10
  * @GDK_META_MASK: the Meta modifier. Since 2.10
  * @GDK_MODIFIER_RESERVED_29_MASK: A reserved bit flag; do not use in your own code
- * @GDK_RELEASE_MASK: not used in GDK itself. GTK+ uses it to differentiate
+ * @GDK_RELEASE_MASK: not used in GDK itself. CTK+ uses it to differentiate
  *  between (keyval, modifiers) pairs from key press and release events.
  * @GDK_MODIFIER_MASK: a mask covering all modifier types.
  *
@@ -412,7 +412,7 @@ typedef enum
  * the application needs to asks for more, by calling
  * gdk_event_request_motions().
  * 
- * Since GTK 3.8, motion events are already compressed by default, independent
+ * Since CTK 3.8, motion events are already compressed by default, independent
  * of this mechanism. This compression can be disabled with
  * gdk_window_set_event_compression(). See the documentation of that function
  * for details.
@@ -487,7 +487,7 @@ typedef enum {
  * GdkWindowTypeHint:
  * @GDK_WINDOW_TYPE_HINT_NORMAL: Normal toplevel window.
  * @GDK_WINDOW_TYPE_HINT_DIALOG: Dialog window.
- * @GDK_WINDOW_TYPE_HINT_MENU: Window used to implement a menu; GTK+ uses
+ * @GDK_WINDOW_TYPE_HINT_MENU: Window used to implement a menu; CTK+ uses
  *  this hint only for torn-off menus, see #CtkTearoffMenuItem.
  * @GDK_WINDOW_TYPE_HINT_TOOLBAR: Window used to implement toolbars.
  * @GDK_WINDOW_TYPE_HINT_SPLASHSCREEN: Window used to display a splash
@@ -547,7 +547,7 @@ typedef enum
  *
  * An enumeration describing the way in which a device
  * axis (valuator) maps onto the predefined valuator
- * types that GTK+ understands.
+ * types that CTK+ understands.
  *
  * Note that the X and Y axes are not really needed; pointer devices
  * report their location via the x/y members of events regardless. Whether

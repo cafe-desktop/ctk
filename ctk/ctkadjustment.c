@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -37,7 +37,7 @@
  *
  * The #CtkAdjustment object represents a value which has an associated lower
  * and upper bound, together with step and page increments, and a page size.
- * It is used within several GTK+ widgets, including #CtkSpinButton, #CtkViewport,
+ * It is used within several CTK+ widgets, including #CtkSpinButton, #CtkViewport,
  * and #CtkRange (which is a base class for #CtkScrollbar and #CtkScale).
  *
  * The #CtkAdjustment object does not update the value itself. Instead
@@ -870,7 +870,7 @@ ctk_adjustment_configure (CtkAdjustment *adjustment,
  * This is typically called by the owner of the #CtkAdjustment after it has
  * changed any of the #CtkAdjustment properties other than the value.
  *
- * Deprecated: 3.18: GTK+ emits #CtkAdjustment::changed itself whenever any
+ * Deprecated: 3.18: CTK+ emits #CtkAdjustment::changed itself whenever any
  *    of the properties (other than value) change
  */
 void
@@ -888,7 +888,7 @@ ctk_adjustment_changed (CtkAdjustment *adjustment)
  * This is typically called by the owner of the #CtkAdjustment after it has
  * changed the #CtkAdjustment:value property.
  *
- * Deprecated: 3.18: GTK+ emits #CtkAdjustment::value-changed itself whenever
+ * Deprecated: 3.18: CTK+ emits #CtkAdjustment::value-changed itself whenever
  *    the value changes
  */
 void

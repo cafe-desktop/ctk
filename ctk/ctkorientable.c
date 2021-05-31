@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * ctkorientable.c
@@ -39,7 +39,7 @@
  * it allows the orientation to be changed at runtime, allowing the widgets
  * to “flip”.
  *
- * #CtkOrientable was introduced in GTK+ 2.16.
+ * #CtkOrientable was introduced in CTK+ 2.16.
  */
 
 

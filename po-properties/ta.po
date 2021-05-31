@@ -6470,11 +6470,11 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "சின்னத்தின் அளவுகளின் பட்டியல் (ctk-மெனு=16,16:ctk-பட்டன்=20,20..."
 
 #: ../ctk/ctksettings.c:532
-msgid "GTK Modules"
-msgstr "GTK தொகுதிகள்"
+msgid "CTK Modules"
+msgstr "CTK தொகுதிகள்"
 
 #: ../ctk/ctksettings.c:533
-msgid "List of currently active GTK modules"
+msgid "List of currently active CTK modules"
 msgstr "பட்டியல் of செயலில்"
 
 #: ../ctk/ctksettings.c:541
@@ -7028,10 +7028,10 @@ msgstr "உரையாடல்கள் தலைப்புப் பட்�
 #: ../ctk/ctksettings.c:1588
 #| msgid "Whether buttons in dialogs should use the alternative button order"
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"உள்ளமைந்த GTK+ உரையாடல்கள் செயல் பகுதிக்கு பதில் தலைப்புப் பட்டியைப் "
+"உள்ளமைந்த CTK+ உரையாடல்கள் செயல் பகுதிக்கு பதில் தலைப்புப் பட்டியைப் "
 "பயன்படுத்த வேண்டுமா."
 
 #: ../ctk/ctksettings.c:1604
@@ -7051,8 +7051,8 @@ msgid "Recent Files Enabled"
 msgstr "சமீபத்திய கோப்புகள் செயல்படுத்தப்பட்டுள்ளன் அதிகபட்ச வயது"
 
 #: ../ctk/ctksettings.c:1622
-msgid "Whether GTK+ remembers recent files"
-msgstr "GTK+ சமீபத்திய கோப்புகளை நினைவில் கொள்ள வேண்டுமா"
+msgid "Whether CTK+ remembers recent files"
+msgstr "CTK+ சமீபத்திய கோப்புகளை நினைவில் கொள்ள வேண்டுமா"
 
 #: ../ctk/ctksettings.c:1637
 msgid "Long press time"

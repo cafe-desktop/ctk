@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __CTK_MAIN_H__
@@ -44,7 +44,7 @@ G_BEGIN_DECLS
  *
  * Use this priority for functionality related to size allocation.
  *
- * It is used internally by GTK+ to compute the sizes of widgets.
+ * It is used internally by CTK+ to compute the sizes of widgets.
  * This priority is higher than %GDK_PRIORITY_REDRAW to avoid
  * resizing a widget which was just redrawn.
  */
@@ -65,7 +65,7 @@ typedef gint (*CtkKeySnoopFunc) (CtkWidget   *grab_widget,
                                  GdkEventKey *event,
                                  gpointer     func_data);
 
-/* GTK+ version
+/* CTK+ version
  */
 GDK_AVAILABLE_IN_ALL
 guint ctk_get_major_version (void) G_GNUC_CONST;
@@ -119,7 +119,7 @@ GOptionGroup *ctk_get_option_group (gboolean open_default_display);
 #ifdef G_OS_WIN32
 
 /* Variants that are used to check for correct struct packing
- * when building GTK+-using code.
+ * when building CTK+-using code.
  */
 GDK_AVAILABLE_IN_ALL
 void     ctk_init_abi_check       (int    *argc,

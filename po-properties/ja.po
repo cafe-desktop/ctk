@@ -374,7 +374,7 @@ msgid ""
 "The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
-"この CtkAction と連携する CtkActionGroup、または NULL (GTK+ 内部で使用) です"
+"この CtkAction と連携する CtkActionGroup、または NULL (CTK+ 内部で使用) です"
 
 #: ctk/deprecated/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
 #: ctk/ctkbutton.c:393
@@ -7384,12 +7384,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "アイコンの大きさを示す並び (ctk-menu=16,16;ctk-button=20,20...)"
 
 #: ctk/ctksettings.c:568
-msgid "GTK Modules"
-msgstr "GTK のモジュール"
+msgid "CTK Modules"
+msgstr "CTK のモジュール"
 
 #: ctk/ctksettings.c:569
-msgid "List of currently active GTK modules"
-msgstr "現在、利用可能な GTK モジュールの一覧です"
+msgid "List of currently active CTK modules"
+msgstr "現在、利用可能な CTK モジュールの一覧です"
 
 #: ctk/ctksettings.c:577
 msgid "Xft Antialias"
@@ -7945,7 +7945,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Whether buttons in dialogs should use the alternative button order"
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr "ダイアログにあるボタンの並びを別のものにするか"
 
@@ -7966,7 +7966,7 @@ msgid "Recent Files Enabled"
 msgstr "最近開いたファイルの最大寿命"
 
 #: ctk/ctksettings.c:1732
-msgid "Whether GTK+ remembers recent files"
+msgid "Whether CTK+ remembers recent files"
 msgstr ""
 
 #: ctk/ctksettings.c:1747

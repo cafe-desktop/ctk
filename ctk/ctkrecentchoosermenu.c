@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkrecentchoosermenu.c - Recently used items menu widget
  * Copyright (C) 2005, Emmanuele Bassi
  * 
@@ -65,7 +65,7 @@
  * ctk_recent_chooser_list_filters() will return a list containing a single
  * #CtkRecentFilter object.
  *
- * Recently used files are supported since GTK+ 2.10.
+ * Recently used files are supported since CTK+ 2.10.
  */
 
 

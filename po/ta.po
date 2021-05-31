@@ -2482,8 +2482,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ../ctk/ctkmain.c:453
-msgid "Load additional GTK+ modules"
-msgstr "கூடுதல் GTK+தொகுதிகளை ஏற்று"
+msgid "Load additional CTK+ modules"
+msgstr "கூடுதல் CTK+தொகுதிகளை ஏற்று"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ../ctk/ctkmain.c:454
@@ -2497,13 +2497,13 @@ msgstr "அனைத்து எச்சரிக்கை செய்தி�
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:459
-msgid "GTK+ debugging flags to set"
-msgstr "GTK+ பிழைத்திருத்தும் கொடிகளை அமைகிறது"
+msgid "CTK+ debugging flags to set"
+msgstr "CTK+ பிழைத்திருத்தும் கொடிகளை அமைகிறது"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:462
-msgid "GTK+ debugging flags to unset"
-msgstr "GTK+ பிழைத்திருத்தும் கொடிகளை நீக்குகிறது"
+msgid "CTK+ debugging flags to unset"
+msgstr "CTK+ பிழைத்திருத்தும் கொடிகளை நீக்குகிறது"
 
 #: ../ctk/ctkmain.c:764
 #, c-format
@@ -2511,12 +2511,12 @@ msgid "Cannot open display: %s"
 msgstr "காட்சியை திறக்கமுடியவில்லை: %s"
 
 #: ../ctk/ctkmain.c:830
-msgid "GTK+ Options"
-msgstr "GTK+ விருப்பங்கள்"
+msgid "CTK+ Options"
+msgstr "CTK+ விருப்பங்கள்"
 
 #: ../ctk/ctkmain.c:830
-msgid "Show GTK+ Options"
-msgstr "GTK+ விருப்பங்களை காட்டு"
+msgid "Show CTK+ Options"
+msgstr "CTK+ விருப்பங்களை காட்டு"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -3335,9 +3335,9 @@ msgstr "வரிசைபடுத்தப்பட்ட தரவு தவ�
 
 #: ../ctk/ctktextbufferserialize.c:1882
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
-"வரிசைபடுத்தப்பட்ட தரவு தவறாக உள்ளது. முதல் பிரிவு GTKTEXTBUFFERCONTENTS-0001 "
+"வரிசைபடுத்தப்பட்ட தரவு தவறாக உள்ளது. முதல் பிரிவு CTKTEXTBUFFERCONTENTS-0001 "
 "இல்லை"
 
 #: ../ctk/ctktextutil.c:57
@@ -3404,17 +3404,17 @@ msgid "%d %%"
 msgstr "%d %%"
 
 #: ../ctk/ctkwindow.c:11655
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "GTK+ ஆய்வியைப் பயன்படுத்த விரும்புகிறீர்களா?"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "CTK+ ஆய்வியைப் பயன்படுத்த விரும்புகிறீர்களா?"
 
 #: ../ctk/ctkwindow.c:11657
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"GTK+ ஆய்வி தொடர்புத் தன்மை கொண்ட ஒரு வழுத்திருத்தியாகும். இதைக் கொண்டு "
-"நீங்கள் எந்த ஒரு GTK"
+"CTK+ ஆய்வி தொடர்புத் தன்மை கொண்ட ஒரு வழுத்திருத்தியாகும். இதைக் கொண்டு "
+"நீங்கள் எந்த ஒரு CTK"
 "+ பயன்பாட்டின் அக அம்சங்களையும் ஆராய்ந்து மாற்றங்களும் செய்யலாம். இதைப் "
 "பயன்படுத்துவதால் "
 "பயன்பாடு செயலிழக்கவோ பழுதாகவோ வாய்ப்புள்ளது."
@@ -3473,9 +3473,9 @@ msgid "Restore defaults for this widget"
 msgstr "இந்த விட்ஜிட்டிற்கான முன்னிருப்பு அமைவுகளை மீட்டமை"
 
 #: ../ctk/inspector/css-editor.c:86 ../ctk/inspector/css-editor.c:92
-msgid "You can type here any CSS rule recognized by GTK+."
+msgid "You can type here any CSS rule recognized by CTK+."
 msgstr ""
-"இங்கு நீங்கள் GTK+ அடையாளம் காணக்கூடிய எந்த CSS விதியையும் தட்டச்சு செய்யலாம்."
+"இங்கு நீங்கள் CTK+ அடையாளம் காணக்கூடிய எந்த CSS விதியையும் தட்டச்சு செய்யலாம்."
 
 #: ../ctk/inspector/css-editor.c:87 ../ctk/inspector/css-editor.c:93
 msgid ""
@@ -3521,8 +3521,8 @@ msgstr "தரவைக் காட்டு "
 
 #. vim: set et sw=2 ts=2:
 #: ../ctk/inspector/general.ui.h:1
-msgid "GTK+ Version"
-msgstr "GTK+ பதிப்பு"
+msgid "CTK+ Version"
+msgstr "CTK+ பதிப்பு"
 
 #: ../ctk/inspector/general.ui.h:2
 msgid "GDK Backend"
@@ -3657,7 +3657,7 @@ msgid "Default"
 msgstr "முன்னிருப்பு"
 
 #: ../ctk/inspector/prop-editor.c:1563
-#| msgid "GTK+ Theme"
+#| msgid "CTK+ Theme"
 msgid "Theme"
 msgstr "தீம்"
 
@@ -3762,8 +3762,8 @@ msgstr "அமைவு CTK_TEST_TOUCHSCREEN ஆல் உள்குறிய�
 
 #. vim: set et sw=2 ts=2:
 #: ../ctk/inspector/visual.ui.h:1
-msgid "GTK+ Theme"
-msgstr "GTK+ தீம்"
+msgid "CTK+ Theme"
+msgstr "CTK+ தீம்"
 
 #: ../ctk/inspector/visual.ui.h:2
 msgid "Dark variant"
@@ -3823,8 +3823,8 @@ msgstr "முகவரி"
 
 #: ../ctk/inspector/window.c:143
 #, c-format
-msgid "GTK+ Inspector — %s"
-msgstr "GTK+ ஆய்வி — %s"
+msgid "CTK+ Inspector — %s"
+msgstr "CTK+ ஆய்வி — %s"
 
 #. vim: set et sw=2 ts=2:
 #: ../ctk/inspector/window.ui.h:1
@@ -6056,9 +6056,9 @@ msgstr "ஒலியளவை குறைக்கவும்"
 
 #~ msgid ""
 #~ "Image-loading module %s does not export the proper interface; perhaps "
-#~ "it's from a different GTK version?"
+#~ "it's from a different CTK version?"
 #~ msgstr ""
-#~ "உருவம்-ஏற்றும் கூறு %s சரியான இடைமுகத்தை ஏற்றுமதி செய்வதில்லை; இது வேரு ஒரு GTK "
+#~ "உருவம்-ஏற்றும் கூறு %s சரியான இடைமுகத்தை ஏற்றுமதி செய்வதில்லை; இது வேரு ஒரு CTK "
 #~ "பதிப்புக்காக இருக்கக் கூடும்?"
 
 #~ msgid "Image type '%s' is not supported"

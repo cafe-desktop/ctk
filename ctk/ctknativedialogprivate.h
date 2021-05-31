@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctknativedialogprivate.h: Native dialog
  * Copyright (C) 2015, Red Hat, Inc.
  *

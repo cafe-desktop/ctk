@@ -6886,12 +6886,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Seznam velikosti ikon (ctk-menu=16,16;ctk-button=20,20..."
 
 #: ctk/ctksettings.c:578
-msgid "GTK Modules"
-msgstr "Moduli GTK"
+msgid "CTK Modules"
+msgstr "Moduli CTK"
 
 #: ctk/ctksettings.c:579
-msgid "List of currently active GTK modules"
-msgstr "Seznam trenutno dejavnih modulov GTK"
+msgid "List of currently active CTK modules"
+msgstr "Seznam trenutno dejavnih modulov CTK"
 
 #: ctk/ctksettings.c:587
 msgid "Xft Antialias"
@@ -7446,10 +7446,10 @@ msgstr "Pogovorna okna imajo nazivno vrstico"
 
 #: ctk/ctksettings.c:1708
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"Ali naj vgrajena pogovorna okna GTK+ uporabljajo nazivno vrstico namesto "
+"Ali naj vgrajena pogovorna okna CTK+ uporabljajo nazivno vrstico namesto "
 "območja dejanj."
 
 #: ctk/ctksettings.c:1724
@@ -7469,8 +7469,8 @@ msgid "Recent Files Enabled"
 msgstr "Nedavno uporabljene datoteke omogočene"
 
 #: ctk/ctksettings.c:1742
-msgid "Whether GTK+ remembers recent files"
-msgstr "Ali GTK+ pomni nedavne datoteke"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Ali CTK+ pomni nedavne datoteke"
 
 #: ctk/ctksettings.c:1757
 msgid "Long press time"

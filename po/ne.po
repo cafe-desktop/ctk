@@ -2899,8 +2899,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:463
-msgid "Load additional GTK+ modules"
-msgstr "थप GTK+ मोड्युलहरू लोड गर्नुहोस्"
+msgid "Load additional CTK+ modules"
+msgstr "थप CTK+ मोड्युलहरू लोड गर्नुहोस्"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:464
@@ -2914,13 +2914,13 @@ msgstr "सबै चेतावनीहरू घातक बनाउनु
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:469
-msgid "GTK+ debugging flags to set"
-msgstr "सेट गरिने GTK + त्रुटि सच्याउने झण्डाहरू"
+msgid "CTK+ debugging flags to set"
+msgstr "सेट गरिने CTK + त्रुटि सच्याउने झण्डाहरू"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:472
-msgid "GTK+ debugging flags to unset"
-msgstr "सेट हटाइने GTK + त्रुटि सच्याउने झण्डाहरू"
+msgid "CTK+ debugging flags to unset"
+msgstr "सेट हटाइने CTK + त्रुटि सच्याउने झण्डाहरू"
 
 #: ctk/ctkmain.c:807 ctk/ctkmain.c:1001
 #, fuzzy, c-format
@@ -2930,12 +2930,12 @@ msgstr ""
 "%sस"
 
 #: ctk/ctkmain.c:919
-msgid "GTK+ Options"
-msgstr "GTK+ विकल्पहरू"
+msgid "CTK+ Options"
+msgstr "CTK+ विकल्पहरू"
 
 #: ctk/ctkmain.c:919
-msgid "Show GTK+ Options"
-msgstr "GTK+ विकल्पहरू देखाउनुहोस्"
+msgid "Show CTK+ Options"
+msgstr "CTK+ विकल्पहरू देखाउनुहोस्"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -3959,8 +3959,8 @@ msgid "Serialized data is malformed"
 msgstr "क्रमाङ्कन गरिएको डेटा विकृत छ"
 
 #: ctk/ctktextbufferserialize.c:1864
-msgid "Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
-msgstr "क्रमाङ्कन गरिएको डेटा विकृत छ । पहिलो खण्ड GTKTEXTBUFFERCONTENTS-0001 होइन"
+msgid "Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
+msgstr "क्रमाङ्कन गरिएको डेटा विकृत छ । पहिलो खण्ड CTKTEXTBUFFERCONTENTS-0001 होइन"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -4040,14 +4040,14 @@ msgstr "सधै माथि"
 
 #: ctk/ctkwindow.c:12504
 #, fuzzy, c-format
-msgid "Do you want to use GTK+ Inspector?"
+msgid "Do you want to use CTK+ Inspector?"
 msgstr "तपाईं किबोर्ड स्क्यानका लागि यो उपकरण प्रयोग गर्न चाहनुहुन्छ?"
 
 #: ctk/ctkwindow.c:12506
 #, c-format
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify the internals of "
-"any GTK+ application. Using it may cause the application to break or crash."
+"CTK+ Inspector is an interactive debugger that lets you explore and modify the internals of "
+"any CTK+ application. Using it may cause the application to break or crash."
 msgstr ""
 
 #: ctk/ctkwindow.c:12511
@@ -4077,7 +4077,7 @@ msgid "Parameter Type"
 msgstr "मानसँग प्रकार %s को परामिति थप्न सकिएन '%s'"
 
 #: ctk/inspector/css-editor.c:112
-msgid "You can type here any CSS rule recognized by GTK+."
+msgid "You can type here any CSS rule recognized by CTK+."
 msgstr ""
 
 #: ctk/inspector/css-editor.c:113
@@ -4141,8 +4141,8 @@ msgstr "None"
 
 #: ctk/inspector/general.ui:34
 #, fuzzy
-#| msgid "GTK+ Options"
-msgid "GTK+ Version"
+#| msgid "CTK+ Options"
+msgid "CTK+ Version"
 msgstr "संस्करण:"
 
 #: ctk/inspector/general.ui:68
@@ -4592,7 +4592,7 @@ msgstr "अक्षम पारिएको"
 
 #: ctk/inspector/visual.ui:61
 #, fuzzy
-msgid "GTK+ Theme"
+msgid "CTK+ Theme"
 msgstr "जीटीके+ बिचार"
 
 #: ctk/inspector/visual.ui:94
@@ -7405,8 +7405,8 @@ msgstr "परीक्षण मुद्रकमा मुद्रण गर
 
 #~ msgid ""
 #~ "Image-loading module %s does not export the proper interface; perhaps it's from a different "
-#~ "GTK version?"
-#~ msgstr "छवि-लोडिङ मोड्युल %s ले उचित इन्टरफेस निर्यात गर्दैन; सायद यो फरक GTK संस्करण बाट हो ?"
+#~ "CTK version?"
+#~ msgstr "छवि-लोडिङ मोड्युल %s ले उचित इन्टरफेस निर्यात गर्दैन; सायद यो फरक CTK संस्करण बाट हो ?"
 
 #~ msgid "Image type '%s' is not supported"
 #~ msgstr "छवि प्रकार '%s' समर्थित छैन"

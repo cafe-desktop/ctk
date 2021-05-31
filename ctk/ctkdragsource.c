@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1999 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -135,7 +135,7 @@ ctk_drag_source_site_destroy (gpointer data)
  * @n_targets: the number of items in @targets
  * @actions: the bitmask of possible actions for a drag from this widget
  *
- * Sets up a widget so that GTK+ will start a drag operation when the user
+ * Sets up a widget so that CTK+ will start a drag operation when the user
  * clicks and drags on the widget. The widget must have a window.
  */
 void
@@ -364,7 +364,7 @@ ctk_drag_source_add_uri_targets (CtkWidget *widget)
  * @pixbuf: the #GdkPixbuf for the drag icon
  * 
  * Sets the icon that will be used for drags from a particular widget
- * from a #GdkPixbuf. GTK+ retains a reference for @pixbuf and will 
+ * from a #GdkPixbuf. CTK+ retains a reference for @pixbuf and will 
  * release it when it is no longer needed.
  */
 void 

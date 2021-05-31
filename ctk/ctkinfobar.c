@@ -1,6 +1,6 @@
 /*
  * ctkinfobar.c
- * This file is part of GTK+
+ * This file is part of CTK+
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -23,7 +23,7 @@
  * list of people on the ctk Team.
  * See the gedit ChangeLog files for a list of changes.
  *
- * Modified by the GTK+ team, 2008-2009.
+ * Modified by the CTK+ team, 2008-2009.
  */
 
 
@@ -73,7 +73,7 @@
  *
  * Similar to #CtkMessageDialog, the contents of a #CtkInfoBar can by
  * classified as error message, warning, informational message, etc,
- * by using ctk_info_bar_set_message_type(). GTK+ may use the message type
+ * by using ctk_info_bar_set_message_type(). CTK+ may use the message type
  * to determine how the message is displayed.
  *
  * A simple example for using a #CtkInfoBar:
@@ -1259,7 +1259,7 @@ ctk_info_bar_buildable_custom_finished (CtkBuildable *buildable,
  *
  * Sets the message type of the message area.
  *
- * GTK+ uses this type to determine how the message is displayed.
+ * CTK+ uses this type to determine how the message is displayed.
  *
  * Since: 2.18
  */

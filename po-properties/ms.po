@@ -6878,12 +6878,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Senarai saiz ikon (ctk-menu=16,16:ctk-button=20,20..."
 
 #: ctk/ctksettings.c:568
-msgid "GTK Modules"
-msgstr "Modul GTK"
+msgid "CTK Modules"
+msgstr "Modul CTK"
 
 #: ctk/ctksettings.c:569
-msgid "List of currently active GTK modules"
-msgstr "Senarai modul GTK aktif buat masa ini"
+msgid "List of currently active CTK modules"
+msgstr "Senarai modul CTK aktif buat masa ini"
 
 #: ctk/ctksettings.c:577
 msgid "Xft Antialias"
@@ -7442,10 +7442,10 @@ msgstr "Dialog guna palang pengepala"
 
 #: ctk/ctksettings.c:1698
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"Sama ada dialog GTK+ terbina-dalam seharusnya guna palang pengepala selain "
+"Sama ada dialog CTK+ terbina-dalam seharusnya guna palang pengepala selain "
 "dari kawasan tindakan."
 
 #: ctk/ctksettings.c:1714
@@ -7465,8 +7465,8 @@ msgid "Recent Files Enabled"
 msgstr "Fail Baru-baru Ini Dibenarkan"
 
 #: ctk/ctksettings.c:1732
-msgid "Whether GTK+ remembers recent files"
-msgstr "Sama ada GTK+ ingat fail baru-baru ini"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Sama ada CTK+ ingat fail baru-baru ini"
 
 #: ctk/ctksettings.c:1747
 msgid "Long press time"
@@ -10044,8 +10044,8 @@ msgstr "Tajuk bagi profil warna yang digunakan"
 #~ msgid "Show Preview"
 #~ msgstr "Papar teks"
 
-#~ msgid "Whether this text is hidden. Not implemented in GTK 2.0"
-#~ msgstr "Samada  teks adalah ghaib. Tak diimplementasikan pada GTK 2.0"
+#~ msgid "Whether this text is hidden. Not implemented in CTK 2.0"
+#~ msgstr "Samada  teks adalah ghaib. Tak diimplementasikan pada CTK 2.0"
 
 #, fuzzy
 #~ msgid "Width In Chararacters"

@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkrecentchooser.h - Abstract interface for recent file selectors GUIs
  *
  * Copyright (C) 2006, Emmanuele Bassi

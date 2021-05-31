@@ -1,4 +1,4 @@
-/* GTK+
+/* CTK+
  * querymodules.c:
  *
  * Copyright (C) 2000-2010 Red Hat Software
@@ -140,7 +140,7 @@ query_module (const char *dir, const char *name, GString *contents)
     }
   else
     {
-      g_fprintf (stderr, "%s does not export GTK+ IM module API: %s\n", path,
+      g_fprintf (stderr, "%s does not export CTK+ IM module API: %s\n", path,
                  g_module_error ());
       error = TRUE;
     }
@@ -172,7 +172,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
   contents = g_string_new ("");
   g_string_append_printf (contents,
-                          "# GTK+ Input Method Modules file\n"
+                          "# CTK+ Input Method Modules file\n"
                           "# Automatically generated file, do not edit\n"
                           "# Created by %s from ctk+-%d.%d.%d\n"
                           "#\n",

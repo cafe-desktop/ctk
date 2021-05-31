@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __GDK_WINDOW_H__
@@ -389,7 +389,7 @@ struct _GdkWindowAttr
  *
  * The #GdkGeometry struct gives the window manager information about
  * a window’s geometry constraints. Normally you would set these on
- * the GTK+ level using ctk_window_set_geometry_hints(). #CtkWindow
+ * the CTK+ level using ctk_window_set_geometry_hints(). #CtkWindow
  * then sets the hints on the #GdkWindow it creates.
  *
  * gdk_window_set_geometry_hints() expects the hints to be fully valid already

@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkprintbackendcups.h: Default implementation of CtkPrintBackend
  * for the Common Unix Print System (CUPS)
  * Copyright (C) 2006, 2007 Red Hat, Inc.
@@ -1668,7 +1668,7 @@ cups_request_execute (CtkPrintBackendCups              *print_backend,
 
   dispatch = (CtkPrintCupsDispatchWatch *) g_source_new (&_cups_dispatch_watch_funcs,
                                                          sizeof (CtkPrintCupsDispatchWatch));
-  g_source_set_name (&dispatch->source, "GTK+ CUPS backend");
+  g_source_set_name (&dispatch->source, "CTK+ CUPS backend");
 
   CTK_NOTE (PRINTING,
             g_print ("CUPS Backend: %s <source %p> - Executing cups request on server '%s' and resource '%s'\n", G_STRFUNC, dispatch, request->server, request->resource));

@@ -103,7 +103,7 @@ ctk_text_buffer_register_serialize_format (CtkTextBuffer              *buffer,
  * @buffer: a #CtkTextBuffer
  * @tagset_name: (allow-none): an optional tagset name, on %NULL
  *
- * This function registers GTK+’s internal rich text serialization
+ * This function registers CTK+’s internal rich text serialization
  * format with the passed @buffer. The internal format does not comply
  * to any standard rich text format and only works between #CtkTextBuffer
  * instances. It is capable of serializing all of a text buffer’s tags
@@ -201,7 +201,7 @@ ctk_text_buffer_register_deserialize_format (CtkTextBuffer                *buffe
  * @buffer: a #CtkTextBuffer
  * @tagset_name: (allow-none): an optional tagset name, on %NULL
  *
- * This function registers GTK+’s internal rich text serialization
+ * This function registers CTK+’s internal rich text serialization
  * format with the passed @buffer. See
  * ctk_text_buffer_register_serialize_tagset() for details.
  *

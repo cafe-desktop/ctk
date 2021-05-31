@@ -2034,8 +2034,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ../ctk/ctkmain.c:446
-msgid "Load additional GTK+ modules"
-msgstr "ଅତିରିକ୍ତ GTK+ ଏକକାଂଶଗୁଡ଼ିକୁ ଧାରଣ କରନ୍ତୁ"
+msgid "Load additional CTK+ modules"
+msgstr "ଅତିରିକ୍ତ CTK+ ଏକକାଂଶଗୁଡ଼ିକୁ ଧାରଣ କରନ୍ତୁ"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ../ctk/ctkmain.c:447
@@ -2049,12 +2049,12 @@ msgstr "ସମସ୍ତ ଚେତାବନୀକୁ ମାରାତ୍ମକ କ
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:452
-msgid "GTK+ debugging flags to set"
-msgstr "ବିନ୍ଯାସ ପାଇଁ GTK+ ତୃଟିମୁକ୍ତକରଣ ସୂଚକ"
+msgid "CTK+ debugging flags to set"
+msgstr "ବିନ୍ଯାସ ପାଇଁ CTK+ ତୃଟିମୁକ୍ତକରଣ ସୂଚକ"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:455
-msgid "GTK+ debugging flags to unset"
+msgid "CTK+ debugging flags to unset"
 msgstr "ଅବିନ୍ଯାସ ପାଇଁ ଜି.ଟି.କେ.+ ତୃଟିମୁକ୍ତିକରଣ ସୂଚକ"
 
 #. Translate to default:RTL if you want your widgets
@@ -2072,11 +2072,11 @@ msgid "Cannot open display: %s"
 msgstr "ପ୍ରଦର୍ଶନକୁ ଖୋଲିପାରିବେ ନାହିଁ: %s"
 
 #: ../ctk/ctkmain.c:834
-msgid "GTK+ Options"
+msgid "CTK+ Options"
 msgstr "ଜି.ଟି.କେ.+ ପସନ୍ଦ"
 
 #: ../ctk/ctkmain.c:834
-msgid "Show GTK+ Options"
+msgid "Show CTK+ Options"
 msgstr "ଜି.ଟି.କେ.+ ପସନ୍ଦ ଦେଖାନ୍ତୁ"
 
 #: ../ctk/ctkmountoperation.c:535
@@ -3448,10 +3448,10 @@ msgstr "ଧାରାବହିକ ତଥ୍ଯକୁ ବିକୃତ ରୂପର
 
 #: ../ctk/ctktextbufferserialize.c:1868
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 "ଧାରାବହିକ ତଥ୍ଯକୁ ବିକୃତ ରୂପରେ ଗଠନ କରାଯାଇଛି। ପ୍ରଥମ ଭାଗଟି "
-"GTKTEXTBUFFERCONTENTS-0001 ନୁହେଁ"
+"CTKTEXTBUFFERCONTENTS-0001 ନୁହେଁ"
 
 #: ../ctk/ctktextutil.c:58
 msgid "LRM _Left-to-right mark"
@@ -5132,7 +5132,7 @@ msgstr "ପରୀକ୍ଷା ମୁଦ୍ରଣୀରେ ମୁଦ୍ରଣ କ
 
 #~ msgid ""
 #~ "Image-loading module %s does not export the proper interface; perhaps "
-#~ "it's from a different GTK version?"
+#~ "it's from a different CTK version?"
 #~ msgstr ""
 #~ "%s ଚିତ୍ର-ଧାରଣ ଏକକାଂଶ ଠିକ ଅନ୍ତରାପୃଷ୍ଠ ରପ୍ତାନି କରେ ନାହିଁ; ବୋଧହୁଏ ଏହା ଗୋଟିଏ ଅଲଗା ଜି.ଟି.କେ. "
 #~ "ସଂସ୍କରଣରୁ ପ୍ରାପ୍ତ?"

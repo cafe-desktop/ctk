@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright © 2013 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -30,7 +30,7 @@
  * The position of a popover relative to the widget it is attached to
  * can also be changed through ctk_popover_set_position().
  *
- * By default, #CtkPopover performs a GTK+ grab, in order to ensure
+ * By default, #CtkPopover performs a CTK+ grab, in order to ensure
  * input events get redirected to it while it is shown, and also so
  * the popover is dismissed in the expected situations (clicks outside
  * the popover, or the Esc key being pressed). If no such modal behavior

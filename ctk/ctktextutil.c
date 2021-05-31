@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2001.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2001.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -111,7 +111,7 @@ activate_cb (CtkWidget *menu_item,
  * the menuitems, when selected, will call the given function
  * with the chosen character.
  *
- * This function is private/internal in GTK 2.0, the functionality may
+ * This function is private/internal in CTK 2.0, the functionality may
  * become public sometime, but it probably needs more thought first.
  * e.g. maybe there should be a way to just get the list of items,
  * instead of requiring the menu items to be created.

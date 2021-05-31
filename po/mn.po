@@ -1449,7 +1449,7 @@ msgstr "Хүчингүй UTF-8"
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:526
-msgid "Load additional GTK+ modules"
+msgid "Load additional CTK+ modules"
 msgstr ""
 
 #. Placeholder in --ctk-module=MODULES in --help output
@@ -1464,12 +1464,12 @@ msgstr ""
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:532
-msgid "GTK+ debugging flags to set"
+msgid "CTK+ debugging flags to set"
 msgstr ""
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:535
-msgid "GTK+ debugging flags to unset"
+msgid "CTK+ debugging flags to unset"
 msgstr ""
 
 # ctk/ctkmain.c:731
@@ -1488,11 +1488,11 @@ msgid "Cannot open display: %s"
 msgstr ""
 
 #: ctk/ctkmain.c:922
-msgid "GTK+ Options"
+msgid "CTK+ Options"
 msgstr ""
 
 #: ctk/ctkmain.c:922
-msgid "Show GTK+ Options"
+msgid "Show CTK+ Options"
 msgstr ""
 
 # ctk/ctkstock.c:282
@@ -3119,7 +3119,7 @@ msgstr ""
 
 #: ctk/ctktextbufferserialize.c:1862
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 
 #: ctk/ctktextutil.c:60
@@ -4743,10 +4743,10 @@ msgstr ""
 # gdk-pixbuf/gdk-pixbuf-io.c:373
 #~ msgid ""
 #~ "Image-loading module %s does not export the proper interface; perhaps "
-#~ "it's from a different GTK version?"
+#~ "it's from a different CTK version?"
 #~ msgstr ""
 #~ "Зураг ачаалагч модул \"%s\" зөв интерфейсийг гаргаж чадахгүй байна.Магад "
-#~ "энэ нь ялгаатай GTK хувилбараас байж болох юм."
+#~ "энэ нь ялгаатай CTK хувилбараас байж болох юм."
 
 # gdk-pixbuf/gdk-pixbuf-io.c:490 gdk-pixbuf/gdk-pixbuf-io.c:516
 #~ msgid "Image type '%s' is not supported"

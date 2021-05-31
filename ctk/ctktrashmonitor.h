@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctktrashmonitor.h: Monitor the trash:/// folder to see if there is trash or not
  * Copyright (C) 2011 Suse
  *

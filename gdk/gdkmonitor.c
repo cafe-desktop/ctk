@@ -36,7 +36,7 @@
  * to find particular monitors with gdk_display_get_primary_monitor() or
  * gdk_display_get_monitor_at_window().
  *
- * GdkMonitor was introduced in GTK+ 3.22 and supersedes earlier
+ * GdkMonitor was introduced in CTK+ 3.22 and supersedes earlier
  * APIs in GdkScreen to obtain monitor-related information.
  */
 

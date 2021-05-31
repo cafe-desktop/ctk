@@ -7021,12 +7021,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Liosta de mheudan nan ìomhaigheagan (ctk-menu=16,16:ctk-button=20,20…"
 
 #: ctk/ctksettings.c:567
-msgid "GTK Modules"
-msgstr "Mòidealan GTK"
+msgid "CTK Modules"
+msgstr "Mòidealan CTK"
 
 #: ctk/ctksettings.c:568
-msgid "List of currently active GTK modules"
-msgstr "Liosta de mhòidealan GTK a tha an gnìomh an-dràsta fhèin"
+msgid "List of currently active CTK modules"
+msgstr "Liosta de mhòidealan CTK a tha an gnìomh an-dràsta fhèin"
 
 #: ctk/ctksettings.c:576
 msgid "Xft Antialias"
@@ -7622,10 +7622,10 @@ msgstr "Cleachdaidh còmhraidhean am bàr banna-cinn"
 
 #: ctk/ctksettings.c:1697
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"Co-dhiù an cleachd còmhraidhean am broinn GTK+ ’bàr banna-cinn an àite raon "
+"Co-dhiù an cleachd còmhraidhean am broinn CTK+ ’bàr banna-cinn an àite raon "
 "ghnìomhan."
 
 #: ctk/ctksettings.c:1713
@@ -7645,8 +7645,8 @@ msgid "Recent Files Enabled"
 msgstr "Cuir an comas cuimhne nam faidhlichean o chionn goirid"
 
 #: ctk/ctksettings.c:1731
-msgid "Whether GTK+ remembers recent files"
-msgstr "Co-dhiù an cuimhnich GTK+ faidhlichean a chleachdadh o chionn goirid"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Co-dhiù an cuimhnich CTK+ faidhlichean a chleachdadh o chionn goirid"
 
 #: ctk/ctksettings.c:1746
 msgid "Long press time"

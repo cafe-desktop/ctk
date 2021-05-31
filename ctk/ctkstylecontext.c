@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 2010 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -75,7 +75,7 @@
  * ctk_style_context_add_provider_for_screen(). The resulting style is a
  * combination of all providers’ information in priority order.
  *
- * For GTK+ widgets, any #CtkStyleContext returned by
+ * For CTK+ widgets, any #CtkStyleContext returned by
  * ctk_widget_get_style_context() will already have a #CtkWidgetPath, a
  * #GdkScreen and RTL/LTR information set. The style context will also be
  * updated automatically if any of these settings change on the widget.
@@ -92,15 +92,15 @@
  * which style classes it uses itself, and which style classes may be added by
  * applications to affect their appearance.
  *
- * GTK+ defines macros for a number of style classes.
+ * CTK+ defines macros for a number of style classes.
  *
  * # Style Regions
  *
  * Widgets can also add regions with flags to their context. This feature is
- * deprecated and will be removed in a future GTK+ update. Please use style
+ * deprecated and will be removed in a future CTK+ update. Please use style
  * classes instead.
  *
- * GTK+ defines macros for a number of style regions.
+ * CTK+ defines macros for a number of style regions.
  *
  * # Custom styling in UI libraries and applications
  *
@@ -552,7 +552,7 @@ ctk_style_context_pop_state (CtkStyleContext *context,
  * to call ctk_style_context_set_path() yourself.
  *
  * This function is only useful when using the theming layer
- * separated from GTK+, if you are using #CtkStyleContext to
+ * separated from CTK+, if you are using #CtkStyleContext to
  * theme #CtkWidgets, use ctk_widget_get_style_context()
  * in order to get a style context ready to theme the widget.
  *
@@ -696,7 +696,7 @@ ctk_style_context_reset_widgets (GdkScreen *screen)
  * Adds a global style provider to @screen, which will be used
  * in style construction for all #CtkStyleContexts under @screen.
  *
- * GTK+ uses this to make styling information from #CtkSettings
+ * CTK+ uses this to make styling information from #CtkSettings
  * available.
  *
  * Note: If both priorities are the same, A #CtkStyleProvider
@@ -798,9 +798,9 @@ ctk_style_context_query_func (guint    id,
  *
  * Gets a style property from @context for the given state.
  *
- * Note that not all CSS properties that are supported by GTK+ can be
+ * Note that not all CSS properties that are supported by CTK+ can be
  * retrieved in this way, since they may not be representable as #GValue.
- * GTK+ defines macros for a number of properties that can be used
+ * CTK+ defines macros for a number of properties that can be used
  * with this function.
  *
  * Note that passing a state other than the current state of @context
@@ -1228,7 +1228,7 @@ ctk_style_context_get_parent (CtkStyleContext *context)
  * To undo, call ctk_style_context_restore().
  *
  * The matching call to ctk_style_context_restore() must be done
- * before GTK returns to the main loop.
+ * before CTK returns to the main loop.
  **/
 void
 ctk_style_context_save_to_node (CtkStyleContext *context,
@@ -1280,7 +1280,7 @@ ctk_style_context_save_named (CtkStyleContext *context,
  * in one go through ctk_style_context_restore().
  *
  * The matching call to ctk_style_context_restore() must be done
- * before GTK returns to the main loop.
+ * before CTK returns to the main loop.
  *
  * Since: 3.0
  **/
@@ -1414,7 +1414,7 @@ ctk_style_context_has_class (CtkStyleContext *context,
  *
  * Returns: (transfer container) (element-type utf8): a #GList of
  *          strings with the currently defined classes. The contents
- *          of the list are owned by GTK+, but you must free the list
+ *          of the list are owned by CTK+, but you must free the list
  *          itself with g_list_free() when you are done with it.
  *
  * Since: 3.0
@@ -1443,7 +1443,7 @@ ctk_style_context_list_classes (CtkStyleContext *context)
  *
  * Returns: (transfer container) (element-type utf8): a #GList of
  *          strings with the currently defined regions. The contents
- *          of the list are owned by GTK+, but you must free the list
+ *          of the list are owned by CTK+, but you must free the list
  *          itself with g_list_free() when you are done with it.
  *
  * Since: 3.0
@@ -2730,7 +2730,7 @@ ctk_style_context_get_margin (CtkStyleContext *context,
  * #CtkStyleContext::changed signal happens.
  *
  * Returns: (transfer none): the #PangoFontDescription for the given
- *          state.  This object is owned by GTK+ and should not be
+ *          state.  This object is owned by CTK+ and should not be
  *          freed.
  *
  * Since: 3.0
@@ -3159,7 +3159,7 @@ ctk_gradient_resolve_for_context (CtkGradient     *gradient,
  * information may be included.
  *
  * This function is intended for testing and debugging of the
- * CSS implementation in GTK+. There are no guarantees about
+ * CSS implementation in CTK+. There are no guarantees about
  * the format of the returned string, it may change.
  *
  * Returns: a newly allocated string representing @context

@@ -31,7 +31,7 @@ G_BEGIN_DECLS
 #define CTK_TYPE_SEARCH_ENGINE_TRACKER3 (ctk_search_engine_tracker3_get_type ())
 G_DECLARE_FINAL_TYPE (CtkSearchEngineTracker3,
                       ctk_search_engine_tracker3,
-                      GTK, SEARCH_ENGINE_TRACKER3,
+                      CTK, SEARCH_ENGINE_TRACKER3,
                       CtkSearchEngine)
 
 GType            ctk_search_engine_tracker3_get_type (void);

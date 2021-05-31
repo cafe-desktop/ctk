@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctknativedialog.h: Native dialog
  * Copyright (C) 2015, Red Hat, Inc.
  *
@@ -30,7 +30,7 @@ G_BEGIN_DECLS
 #define CTK_TYPE_NATIVE_DIALOG             (ctk_native_dialog_get_type ())
 
 GDK_AVAILABLE_IN_3_20
-G_DECLARE_DERIVABLE_TYPE (CtkNativeDialog, ctk_native_dialog, GTK, NATIVE_DIALOG, GObject)
+G_DECLARE_DERIVABLE_TYPE (CtkNativeDialog, ctk_native_dialog, CTK, NATIVE_DIALOG, GObject)
 
 struct _CtkNativeDialogClass
 {

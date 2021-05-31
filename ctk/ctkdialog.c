@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -58,7 +58,7 @@
  * of input, e.g. to display a message, ask a question, or anything else
  * that does not require extensive effort on the user’s part.
  *
- * GTK+ treats a dialog as a window split vertically. The top section is a
+ * CTK+ treats a dialog as a window split vertically. The top section is a
  * #CtkVBox, and is where widgets such as a #CtkLabel or a #CtkEntry should
  * be packed. The bottom area is known as the
  * “action area”. This is generally used for
@@ -83,7 +83,7 @@
  * If you add buttons to #CtkDialog using ctk_dialog_new_with_buttons(),
  * ctk_dialog_add_button(), ctk_dialog_add_buttons(), or
  * ctk_dialog_add_action_widget(), clicking the button will emit a signal
- * called #CtkDialog::response with a response ID that you specified. GTK+
+ * called #CtkDialog::response with a response ID that you specified. CTK+
  * will never assign a meaning to positive response IDs; these are entirely
  * user-defined. But for convenience, you can use the response IDs in the
  * #CtkResponseType enumeration (these all have values less than zero). If
@@ -1560,10 +1560,10 @@ ctk_dialog_set_alternative_button_order_valist (CtkDialog *dialog,
  * the dialog buttons are reordered according to the order of the
  * response ids passed to this function.
  *
- * By default, GTK+ dialogs use the button order advocated by the
+ * By default, CTK+ dialogs use the button order advocated by the
  * [GNOME Human Interface Guidelines](http://library.gnome.org/devel/hig-book/stable/)
  * with the affirmative button at the far
- * right, and the cancel button left of it. But the builtin GTK+ dialogs
+ * right, and the cancel button left of it. But the builtin CTK+ dialogs
  * and #CtkMessageDialogs do provide an alternative button order,
  * which is more suitable on some platforms, e.g. Windows.
  *

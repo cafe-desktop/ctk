@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkrecentchooserdialog.c: Recent files selector dialog
  * Copyright (C) 2006 Emmanuele Bassi
  * 
@@ -75,7 +75,7 @@
  * ctk_widget_destroy (dialog);
  * ]|
  *
- * Recently used files are supported since GTK+ 2.10.
+ * Recently used files are supported since CTK+ 2.10.
  */
 
 

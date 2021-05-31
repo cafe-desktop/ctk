@@ -2,7 +2,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: GTK+\n"
+"Project-Id-Version: CTK+\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-10-01 15:41-0400\n"
 "PO-Revision-Date: 2006-07-27 00:37+0400\n"
@@ -1278,8 +1278,8 @@ msgstr "Yaraqsız UTF-8"
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:526
-msgid "Load additional GTK+ modules"
-msgstr "GTK+ quşılmaların yökläw"
+msgid "Load additional CTK+ modules"
+msgstr "CTK+ quşılmaların yökläw"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:527
@@ -1293,12 +1293,12 @@ msgstr ""
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:532
-msgid "GTK+ debugging flags to set"
+msgid "CTK+ debugging flags to set"
 msgstr ""
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:535
-msgid "GTK+ debugging flags to unset"
+msgid "CTK+ debugging flags to unset"
 msgstr ""
 
 #. Translate to default:RTL if you want your widgets
@@ -1316,12 +1316,12 @@ msgid "Cannot open display: %s"
 msgstr ""
 
 #: ctk/ctkmain.c:922
-msgid "GTK+ Options"
-msgstr "GTK+ Caylaw"
+msgid "CTK+ Options"
+msgstr "CTK+ Caylaw"
 
 #: ctk/ctkmain.c:922
-msgid "Show GTK+ Options"
-msgstr "GTK+ Caylawın Kürsätü"
+msgid "Show CTK+ Options"
+msgstr "CTK+ Caylawın Kürsätü"
 
 #: ctk/ctkmountoperation.c:491
 #, fuzzy
@@ -2801,7 +2801,7 @@ msgstr ""
 
 #: ctk/ctktextbufferserialize.c:1862
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 
 #: ctk/ctktextutil.c:60

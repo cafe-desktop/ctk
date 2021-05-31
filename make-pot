@@ -5,7 +5,7 @@
 # command without the need to autogen first. This is needed for
 # translation tools such as the damn lies website.
 #
-# Call this from your GTK+ checkout directory, like this:
+# Call this from your CTK+ checkout directory, like this:
 #
 #   ./make-pot
 #
@@ -19,7 +19,7 @@
 # are heavily inspired by the variables used in po/Makefile.in.in:
 #
 # XGETTEXT - path of the xgettext binary
-# top_srcdir - the location of the GTK+ checkout
+# top_srcdir - the location of the CTK+ checkout
 # srcdir - the directory where POTFILES.in is located (defaults to
 #          $top_srcdir/po or $top_srcdir/po-properties)
 # GETTEXT_PACKAGE - the gettext domain, used for naming the resulting

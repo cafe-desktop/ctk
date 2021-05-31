@@ -40,17 +40,17 @@ typedef struct _CtkShortcutsShortcutClass CtkShortcutsShortcutClass;
  *   The shortcut is a keyboard accelerator. The #CtkShortcutsShortcut:accelerator
  *   property will be used.
  * @CTK_SHORTCUT_GESTURE_PINCH:
- *   The shortcut is a pinch gesture. GTK+ provides an icon and subtitle.
+ *   The shortcut is a pinch gesture. CTK+ provides an icon and subtitle.
  * @CTK_SHORTCUT_GESTURE_STRETCH:
- *   The shortcut is a stretch gesture. GTK+ provides an icon and subtitle.
+ *   The shortcut is a stretch gesture. CTK+ provides an icon and subtitle.
  * @CTK_SHORTCUT_GESTURE_ROTATE_CLOCKWISE:
- *   The shortcut is a clockwise rotation gesture. GTK+ provides an icon and subtitle.
+ *   The shortcut is a clockwise rotation gesture. CTK+ provides an icon and subtitle.
  * @CTK_SHORTCUT_GESTURE_ROTATE_COUNTERCLOCKWISE:
- *   The shortcut is a counterclockwise rotation gesture. GTK+ provides an icon and subtitle.
+ *   The shortcut is a counterclockwise rotation gesture. CTK+ provides an icon and subtitle.
  * @CTK_SHORTCUT_GESTURE_TWO_FINGER_SWIPE_LEFT:
- *   The shortcut is a two-finger swipe gesture. GTK+ provides an icon and subtitle.
+ *   The shortcut is a two-finger swipe gesture. CTK+ provides an icon and subtitle.
  * @CTK_SHORTCUT_GESTURE_TWO_FINGER_SWIPE_RIGHT:
- *   The shortcut is a two-finger swipe gesture. GTK+ provides an icon and subtitle.
+ *   The shortcut is a two-finger swipe gesture. CTK+ provides an icon and subtitle.
  * @CTK_SHORTCUT_GESTURE:
  *   The shortcut is a gesture. The #CtkShortcutsShortcut:icon property will be
  *   used.

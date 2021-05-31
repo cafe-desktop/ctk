@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 2017 Red Hat, Inc.
  * Copyright (C) 2018 Purism SPC
  *
@@ -42,7 +42,7 @@ struct _CtkIMContextWaylandGlobal
 
   CtkIMContext *current;
 
-  /* The input-method.enter event may happen before or after GTK focus-in,
+  /* The input-method.enter event may happen before or after CTK focus-in,
    * so the context may not exist at the time. Same for leave and focus-out. */
   gboolean focused;
 

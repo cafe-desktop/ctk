@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  * Copyright (C) 1998 Elliot Lee
  *
@@ -17,10 +17,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -56,7 +56,7 @@
  * When reattaching, the ghost and float window, must be aligned
  * along one of the edges, the “snap edge”.
  * This either can be specified by the application programmer
- * explicitly, or GTK+ will pick a reasonable default based
+ * explicitly, or CTK+ will pick a reasonable default based
  * on the handle position.
  *
  * To make detaching and reattaching the handlebox as minimally confusing
@@ -991,7 +991,7 @@ ctk_handle_box_get_handle_position (CtkHandleBox *handle_box)
  * ctk_handle_box_set_snap_edge:
  * @handle_box: a #CtkHandleBox
  * @edge: the snap edge, or -1 to unset the value; in which
- *   case GTK+ will try to guess an appropriate value
+ *   case CTK+ will try to guess an appropriate value
  *   in the future.
  *
  * Sets the snap edge of a handlebox. The snap edge is

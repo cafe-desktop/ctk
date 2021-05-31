@@ -8,7 +8,7 @@
 # ### Annotazione sulle ctk-properties ###
 #
 # In questo file sono riportate le traduzioni del nome o spiegazione
-# delle proprietà dei vari widget definiti nelle GTK+
+# delle proprietà dei vari widget definiti nelle CTK+
 #
 # Per esempio, il widget CtkLabel ha diverse proprietà, tra cui
 # "label", "use-markup", "use-underline" e altro.
@@ -640,7 +640,7 @@ msgstr "Il pulsante Aiuta del dialogo."
 msgid "Font name"
 msgstr "Nome carattere"
 
-# GTK-2-14
+# CTK-2-14
 #: ctk/deprecated/ctkfontsel.c:241
 msgid "The string that represents this font"
 msgstr "La stringa che rappresenta questo carattere"
@@ -2392,7 +2392,7 @@ msgstr "Testo"
 msgid "Text on the progress bar"
 msgstr "Testo sulla barra di avanzamento"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkcellrendererprogress.c:180 ctk/ctkcellrendererspinner.c:144
 msgid "Pulse"
 msgstr "Pulsazione"
@@ -2409,7 +2409,7 @@ msgstr ""
 msgid "Text x alignment"
 msgstr "Allineamento orizzontale del testo"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkcellrendererprogress.c:198
 msgid ""
 "The horizontal text alignment, from 0 (left) to 1 (right). Reversed for RTL "
@@ -2422,7 +2422,7 @@ msgstr ""
 msgid "Text y alignment"
 msgstr "Allineamento verticale del testo"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkcellrendererprogress.c:215
 msgid "The vertical text alignment, from 0 (top) to 1 (bottom)."
 msgstr "L'allineamento verticale del testo, da 0 (alto) a 1 (basso)."
@@ -2694,7 +2694,7 @@ msgstr "La larghezza massima della cella, in caratteri"
 msgid "Wrap mode"
 msgstr "Modalità a capo automatico"
 
-# renderer direi non tradotto, termine tecnico delle GTK+ relativo al
+# renderer direi non tradotto, termine tecnico delle CTK+ relativo al
 # widget CtkTreeView, ma visto che Alessio aveva già tradotto così... -Luca
 #: ctk/ctkcellrenderertext.c:543
 msgid ""
@@ -2850,12 +2850,12 @@ msgstr "Imposta elisione"
 msgid "Whether this tag affects the ellipsize mode"
 msgstr "Indica se questo tag ha effetto sulla modalità elisione"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkcellrenderertext.c:666
 msgid "Align set"
 msgstr "Imposta allineamento"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkcellrenderertext.c:667
 msgid "Whether this tag affects the alignment mode"
 msgstr "Indica se questo tag ha effetto sulla modalità allineamento"
@@ -3327,7 +3327,7 @@ msgstr "Il valore iniziale utilizzato per questa proprietà"
 msgid "Content area border"
 msgstr "Bordo dell'area del contenuto"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkdialog.c:589
 msgid "Width of border around the main dialog area"
 msgstr ""
@@ -3364,7 +3364,7 @@ msgstr ""
 msgid "The contents of the buffer"
 msgstr "Il contenuto del buffer"
 
-# GTK-2-14
+# CTK-2-14
 #: ctk/ctkentrybuffer.c:364 ctk/ctkentry.c:1030
 msgid "Text length"
 msgstr "Lunghezza testo"
@@ -3497,7 +3497,7 @@ msgstr "Dividere linee multiple"
 msgid "Whether to truncate multiline pastes to one line."
 msgstr "Indica se dividere linee multiple quando incollate."
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkentry.c:1002
 msgid "Which kind of shadow to draw around the entry when has-frame is set"
 msgstr ""
@@ -3508,7 +3508,7 @@ msgstr ""
 msgid "Overwrite mode"
 msgstr "Modalità «sovrascrivi»"
 
-# GTK-2-14
+# CTK-2-14
 #: ctk/ctkentry.c:1017
 msgid "Whether new text overwrites existing text"
 msgstr "Indica se il nuovo testo sovrascrive quello esistente"
@@ -3845,12 +3845,12 @@ msgstr "Singola corrispondenza popup"
 msgid "If TRUE, the popup window will appear for a single match."
 msgstr "Se VERO, la finestra popup apparirà per una singola corrispondenza."
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkentrycompletion.c:449
 msgid "Inline selection"
 msgstr "Selezione in linea"
 
-# GTK-2-12
+# CTK-2-12
 # non so se è una reale descrizione o se
 # si sono dimenticati di metterla nei sorgenti --Luca
 #: ctk/ctkentrycompletion.c:450
@@ -4895,7 +4895,7 @@ msgstr "Larghezza minima blocchi di riempimento"
 msgid "Minimum width for blocks that fill the bar"
 msgstr "La larghezza minima dei blocchi che riempiono la barra"
 
-# GTK-2-14
+# CTK-2-14
 #: ctk/ctklinkbutton.c:168
 msgid "URI"
 msgstr "URI"
@@ -4904,12 +4904,12 @@ msgstr "URI"
 msgid "The URI bound to this button"
 msgstr "L'URI legato a questo pulsante"
 
-# GTK-2-14
+# CTK-2-14
 #: ctk/ctklinkbutton.c:184
 msgid "Visited"
 msgstr "Visitato"
 
-# GTK-2-14
+# CTK-2-14
 #: ctk/ctklinkbutton.c:185
 msgid "Whether this link has been visited."
 msgstr "Indica se questo collegamento è stato visitato."
@@ -5071,7 +5071,7 @@ msgstr "Pop-over"
 msgid "The popover"
 msgstr "Il pop-over"
 
-# GTK-2-14
+# CTK-2-14
 #: ctk/ctkmenu.c:641
 msgid "The currently selected menu item"
 msgstr "La voce di menù attualmente selezionata"
@@ -5114,12 +5114,12 @@ msgstr "Stato di sganciamento"
 msgid "A boolean that indicates whether the menu is torn-off"
 msgstr "Un valore booleano che indica se il menù è sganciato"
 
-# GTK-2-14
+# CTK-2-14
 #: ctk/ctkmenu.c:735
 msgid "Monitor"
 msgstr "Monitor"
 
-# GTK-2-14
+# CTK-2-14
 #: ctk/ctkmenu.c:736
 msgid "The monitor the menu will be popped up on"
 msgstr "Il monitor su cui apparirà il menù"
@@ -5257,7 +5257,7 @@ msgstr "Inserimento in basso"
 msgid "Arbitrary constant to scale down the size of the scroll arrow"
 msgstr "Costante arbitraria per rimpicciolire la freccia di scorrimento"
 
-# GTK-2-14
+# CTK-2-14
 #: ctk/ctkmenuitem.c:745
 msgid "Right Justified"
 msgstr "Allineato a destra"
@@ -5269,12 +5269,12 @@ msgstr ""
 "Indica se l'elemento del menù appare allineato sul lato destro di una barra "
 "dei menù"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkmenuitem.c:759 ctk/ctkpopovermenu.c:376
 msgid "Submenu"
 msgstr "Sottomenù"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkmenuitem.c:760
 msgid "The submenu attached to the menu item, or NULL if it has none"
 msgstr "Il sottomenù attaccato alla voce di menù, o NULL se non ce n'è alcuno"
@@ -5294,12 +5294,12 @@ msgstr ""
 "La quantità di spazio usato completamente dalla freccia, relativo alla "
 "dimensione del carattere dell'elemento del menù"
 
-# GTK-2-14
+# CTK-2-14
 #: ctk/ctkmenuitem.c:915
 msgid "Width in Characters"
 msgstr "Larghezza in caratteri"
 
-# GTK-2-14
+# CTK-2-14
 #: ctk/ctkmenuitem.c:916
 msgid "The minimum desired width of the menu item in characters"
 msgstr "La larghezza desiderata minima di una voce di menù, in caratteri"
@@ -5434,12 +5434,12 @@ msgstr "Icone"
 msgid "Whether to prefer the icon over text"
 msgstr "Indica se preferire le icone ai testi"
 
-# GTK-2-14
+# CTK-2-14
 #: ctk/ctkmountoperation.c:167 ctk/ctkstylecontext.c:259
 msgid "Parent"
 msgstr "Genitore"
 
-# GTK-2-14
+# CTK-2-14
 #: ctk/ctkmountoperation.c:168
 msgid "The parent window"
 msgstr "La finestra genitore"
@@ -5452,7 +5452,7 @@ msgstr "È mostrato"
 msgid "Are we showing a dialog"
 msgstr "Se viene mostrato un dialogo"
 
-# GTK-2-14
+# CTK-2-14
 #: ctk/ctkmountoperation.c:184
 msgid "The screen where this window will be displayed."
 msgstr "Lo schermo dove verrà mostrata questa finestra."
@@ -6076,22 +6076,22 @@ msgstr "Numero lavori"
 msgid "Number of jobs queued in the printer"
 msgstr "Il numero di lavori di stampa accodati nella stampante"
 
-# GTK-2-14
+# CTK-2-14
 #: ctk/ctkprinter.c:196
 msgid "Paused Printer"
 msgstr "Stampante in pausa"
 
-# GTK-2-14
+# CTK-2-14
 #: ctk/ctkprinter.c:197
 msgid "TRUE if this printer is paused"
 msgstr "VERO se la stampante è in pausa"
 
-# GTK-2-14
+# CTK-2-14
 #: ctk/ctkprinter.c:210
 msgid "Accepting Jobs"
 msgstr "Accetta lavori"
 
-# GTK-2-14
+# CTK-2-14
 #: ctk/ctkprinter.c:211
 msgid "TRUE if this printer is accepting new jobs"
 msgstr "VERO se la stampante può accettare nuovi lavori"
@@ -6194,7 +6194,7 @@ msgstr "La pagina corrente nel documento"
 msgid "Use full page"
 msgstr "Usa pagina intera"
 
-# GTK-2-12
+# CTK-2-12
 #
 # Nota "contex" qui è sottinteso "cairo context".
 # Non so se è opportuno tradurlo, quindi lo lascio invariato...
@@ -6361,7 +6361,7 @@ msgstr "Mostra il testo"
 msgid "Whether the progress is shown as text."
 msgstr "Indica se l'avanzamento viene mostrato come testo."
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkprogressbar.c:331
 msgid ""
 "The preferred place to ellipsize the string, if the progress bar does not "
@@ -6469,7 +6469,7 @@ msgstr "La politica di sensibilità dello stepper di incremento"
 msgid "Show Fill Level"
 msgstr "Mostra livello riempimento"
 
-# GTK-2-12
+# CTK-2-12
 # trough --> avvallamento
 #: ctk/ctkrange.c:474
 msgid "Whether to display a fill level indicator graphics on trough."
@@ -6556,12 +6556,12 @@ msgid ""
 msgstr ""
 "Spostamento verticale della freccia quando il pulsante viene rilasciato"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkrange.c:639
 msgid "Trough Under Steppers"
 msgstr "Avvallamento sotto gli stepper"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkrange.c:640
 msgid ""
 "Whether to draw trough for full length of range or exclude the steppers and "
@@ -6624,12 +6624,12 @@ msgstr ""
 "Indica se devono essere visualizzati gli elementi che si riferiscono a "
 "risorse non disponibili"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkrecentchooser.c:207
 msgid "Whether to allow multiple items to be selected"
 msgstr "Indica se è possibile selezionare più elementi"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkrecentchooser.c:221
 msgid "Local only"
 msgstr "Solo locale"
@@ -6648,7 +6648,7 @@ msgstr "Limite"
 msgid "The maximum number of items to be displayed"
 msgstr "Il numero massimo di elementi da visualizzare"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkrecentchooser.c:250
 msgid "Sort Type"
 msgstr "Tipo ordinamento"
@@ -6661,7 +6661,7 @@ msgstr "Il tipo di ordinamento degli elementi visualizzati"
 msgid "The current filter for selecting which resources are displayed"
 msgstr "Il filtro attualmente usato per selezionare quali risorse visualizzare"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkrecentmanager.c:290
 msgid "The full path to the file to be used to store and read the list"
 msgstr ""
@@ -6703,18 +6703,18 @@ msgstr "Figlio mostrato"
 msgid "Whether the child is revealed and the animation target reached"
 msgstr "Indica se il figlio è stato mostrato e l'animazione target raggiunta"
 
-# GTK-2-12
+# CTK-2-12
 # FIXME
 #: ctk/ctkscalebutton.c:199
 msgid "The value of the scale"
 msgstr "Il valore della scala"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkscalebutton.c:209
 msgid "The icon size"
 msgstr "La dimensione dell'icona"
 
-# GTK-2-12
+# CTK-2-12
 # FIXME
 #: ctk/ctkscalebutton.c:218
 msgid ""
@@ -6723,12 +6723,12 @@ msgstr ""
 "Il CtkAdjustment che contiene il valore attuale di questo oggetto pulsante "
 "scala"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkscalebutton.c:246
 msgid "Icons"
 msgstr "Icone"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkscalebutton.c:247
 msgid "List of icon names"
 msgstr "Elenco di nomi di icona"
@@ -6737,7 +6737,7 @@ msgstr "Elenco di nomi di icona"
 msgid "The number of decimal places that are displayed in the value"
 msgstr "Il numero di cifre decimali che sono visualizzate nel valore"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkscale.c:775
 msgid "Draw Value"
 msgstr "Mostra valore"
@@ -6756,7 +6756,7 @@ msgstr "Ha un'origine"
 msgid "Whether the scale has an origin"
 msgstr "Indica se la scala ha un'origine"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkscale.c:789
 msgid "Value Position"
 msgstr "Posizione valore"
@@ -6765,7 +6765,7 @@ msgstr "Posizione valore"
 msgid "The position in which the current value is displayed"
 msgstr "La posizione nella quale il valore corrente verrà visualizzato"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkscale.c:807
 msgid "Slider Length"
 msgstr "Lunghezza slider"
@@ -6774,7 +6774,7 @@ msgstr "Lunghezza slider"
 msgid "Length of scale's slider"
 msgstr "La lunghezza dello slider di scala"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkscale.c:822
 msgid "Value spacing"
 msgstr "Spaziatura valore"
@@ -6867,7 +6867,7 @@ msgstr "Regolazione verticale"
 msgid "The CtkAdjustment for the vertical position"
 msgstr "Il widget CtkAdjustment per il posizionamento verticale"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkscrolledwindow.c:583
 msgid "Horizontal Scrollbar Policy"
 msgstr "Politica barra scorrimento orizzontale"
@@ -6876,7 +6876,7 @@ msgstr "Politica barra scorrimento orizzontale"
 msgid "When the horizontal scrollbar is displayed"
 msgstr "Indica quando verrà visualizzata la barra di scorrimento orizzontale"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkscrolledwindow.c:591
 msgid "Vertical Scrollbar Policy"
 msgstr "Politica barra scorrimento verticale"
@@ -6909,17 +6909,17 @@ msgstr ""
 msgid "Shadow Type"
 msgstr "Tipo ombra"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkscrolledwindow.c:626
 msgid "Style of bevel around the contents"
 msgstr "Stile della smussatura attorno al contenuto"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkscrolledwindow.c:642
 msgid "Scrollbars within bevel"
 msgstr "Barre scorrimento dentro smussatura"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkscrolledwindow.c:643
 msgid "Place scrollbars within the scrolled window's bevel"
 msgstr ""
@@ -7059,13 +7059,13 @@ msgstr "Velocità lampeggiamento cursore"
 msgid "Length of the cursor blink cycle, in milliseconds"
 msgstr "Lunghezza del ciclo di lampeggiamento del cursore, in millisecondi"
 
-# GTK-2-12
+# CTK-2-12
 # FIXME
 #: ctk/ctksettings.c:445
 msgid "Cursor Blink Timeout"
 msgstr "Temporizzazione lampeggiamento cursore"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctksettings.c:446
 msgid "Time after which the cursor stops blinking, in seconds"
 msgstr "Il tempo dopo il quale il cursore smette di lampeggiare, in secondi"
@@ -7158,12 +7158,12 @@ msgstr ""
 "Elenco delle dimensioni delle icona (ctk-menù=16,16;ctk-button=20,20...)"
 
 #: ctk/ctksettings.c:578
-msgid "GTK Modules"
-msgstr "Moduli GTK"
+msgid "CTK Modules"
+msgstr "Moduli CTK"
 
 #: ctk/ctksettings.c:579
-msgid "List of currently active GTK modules"
-msgstr "Elenco dei moduli GTK attualmente attivi"
+msgid "List of currently active CTK modules"
+msgstr "Elenco dei moduli CTK attualmente attivi"
 
 #: ctk/ctksettings.c:587
 msgid "Xft Antialias"
@@ -7230,7 +7230,7 @@ msgid "Size to use for cursors, or 0 to use the default size"
 msgstr ""
 "La dimensione da usare per i cursori, 0 per usare la dimensione predefinita"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctksettings.c:656
 msgid "Alternative button order"
 msgstr "Ordine alternativo pulsanti"
@@ -7241,12 +7241,12 @@ msgstr ""
 "Indica se nelle finestre di dialogo i pulsanti devono usare la disposizione "
 "alternativa"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctksettings.c:674
 msgid "Alternative sort indicator direction"
 msgstr "Direzione alternativa indicatori ordinamento"
 
-# GTK-2-12
+# CTK-2-12
 # aggiunto un paio di parole sottintese nella parentesi
 #: ctk/ctksettings.c:675
 msgid ""
@@ -7315,7 +7315,7 @@ msgstr "Schema colore"
 msgid "A palette of named colors for use in themes"
 msgstr "Una tavolozza di colori dotati di nome da usare nei temi"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctksettings.c:795
 msgid "Enable Animations"
 msgstr "Abilita animazioni"
@@ -7324,7 +7324,7 @@ msgstr "Abilita animazioni"
 msgid "Whether to enable toolkit-wide animations."
 msgstr "Indica se abilitare le animazioni per tutto il toolkit."
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctksettings.c:817
 msgid "Enable Touchscreen Mode"
 msgstr "Abilita modalità touchscreen"
@@ -7335,17 +7335,17 @@ msgstr ""
 "Se VERO, non vengono recapitati eventi di notifica in caso di assenza di "
 "movimento per lo schermo corrente"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctksettings.c:837
 msgid "Tooltip timeout"
 msgstr "Temporizzazione suggerimento"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctksettings.c:838
 msgid "Timeout before tooltip is shown"
 msgstr "Periodo di tempo prima che il suggerimento sia mostrato"
 
-# GTK-2-12
+# CTK-2-12
 #
 # Browse mode is enabled when the mouse pointer moves off an object
 # where a tooltip was currently being displayed. If the mouse pointer
@@ -7357,51 +7357,51 @@ msgstr "Periodo di tempo prima che il suggerimento sia mostrato"
 msgid "Tooltip browse timeout"
 msgstr "Temporizzazione suggerimento browse"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctksettings.c:866
 msgid "Timeout before tooltip is shown when browse mode is enabled"
 msgstr ""
 "Periodo di tempo prima che il suggerimento sia mostrato quando la modalità "
 "browse è abilitata"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctksettings.c:889
 msgid "Tooltip browse mode timeout"
 msgstr "Temporizzazione modalità browse dei suggerimenti"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctksettings.c:890
 msgid "Timeout after which browse mode is disabled"
 msgstr "Periodo di tempo dopo il quale la modalità browse è disabilitata"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctksettings.c:912
 msgid "Keynav Cursor Only"
 msgstr "Navigazione con solo tasti cursore"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctksettings.c:913
 msgid "When TRUE, there are only cursor keys available to navigate widgets"
 msgstr ""
 "Quando VERO, sono disponibili solo i tasti cursore per spostarsi tra i widget"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctksettings.c:932
 msgid "Keynav Wrap Around"
 msgstr "Navigazione da tastiera ciclica"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctksettings.c:933
 msgid "Whether to wrap around when keyboard-navigating widgets"
 msgstr ""
 "Indica se riprendere in modo ciclico la navigazione da tastiera dei widget"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctksettings.c:953
 msgid "Error Bell"
 msgstr "Campanella di errore"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctksettings.c:954
 msgid "When TRUE, keyboard navigation and other errors will cause a beep"
 msgstr ""
@@ -7415,7 +7415,7 @@ msgstr "Hash colore"
 msgid "A hash table representation of the color scheme."
 msgstr "Una rappresentazione con tabella hash dello schema dei colori."
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctksettings.c:989
 msgid "Default file chooser backend"
 msgstr "Backend predefinito per selettore file"
@@ -7424,7 +7424,7 @@ msgstr "Backend predefinito per selettore file"
 msgid "Name of the CtkFileChooser backend to use by default"
 msgstr "Nome del backend di CtkFileChooser da usare come predefinito"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctksettings.c:1007
 msgid "Default print backend"
 msgstr "Backend predefinito per stampa"
@@ -7609,7 +7609,7 @@ msgstr "Indica se selezionare il contenuto del campo quando ottiene il focus"
 msgid "Password Hint Timeout"
 msgstr "Timeout per l'aiuto sulla password"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctksettings.c:1396
 msgid "How long to show the last input character in hidden entries"
 msgstr ""
@@ -7776,10 +7776,10 @@ msgstr "I dialoghi usano la barra d'intestazione"
 
 #: ctk/ctksettings.c:1708
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"Indica se le finestre di dialogo GTK+ debbano usare una barra d'intestazione "
+"Indica se le finestre di dialogo CTK+ debbano usare una barra d'intestazione "
 "al posto di un'area d'azione."
 
 #: ctk/ctksettings.c:1724
@@ -7799,8 +7799,8 @@ msgid "Recent Files Enabled"
 msgstr "File recenti abilitati"
 
 #: ctk/ctksettings.c:1742
-msgid "Whether GTK+ remembers recent files"
-msgstr "Indica se GTK+ debba ricordarsi i file utilizzati"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Indica se CTK+ debba ricordarsi i file utilizzati"
 
 #: ctk/ctksettings.c:1757
 msgid "Long press time"
@@ -8206,12 +8206,12 @@ msgstr "Widget padre"
 msgid "Mark name"
 msgstr "Nome del marcatore"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctktextmark.c:151
 msgid "Left gravity"
 msgstr "Gravità sinistra"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctktextmark.c:152
 msgid "Whether the mark has left gravity"
 msgstr "Indica se il marcatore ha la gravità a sinistra"
@@ -8439,13 +8439,13 @@ msgstr "Caratteristiche del carattere"
 msgid "OpenType Font Features to use"
 msgstr "Caratteristiche del carattere OpenType da usare"
 
-# GTK-2-12
+# CTK-2-12
 # da rivedere, confrontando meglio con la spiegazione nelle API Ref...
 #: ctk/ctktexttag.c:712
 msgid "Margin Accumulates"
 msgstr "Margini cumulativi"
 
-# GTK-2-12
+# CTK-2-12
 # da rivedere, confrontando meglio con la spiegazione nelle API Ref...
 #: ctk/ctktexttag.c:713
 msgid "Whether left and right margins accumulate."
@@ -9100,7 +9100,7 @@ msgstr ""
 "Indica se le linee dell'albero devono essere visualizzate nella vista ad "
 "albero"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctktreeview.c:1205
 msgid "The column in the model containing the tooltip texts for the rows"
 msgstr ""
@@ -9763,12 +9763,12 @@ msgstr ""
 "Identificatore univoco della finestra utilizzato quando si ripristina una "
 "sessione"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkwindow.c:775
 msgid "Startup ID"
 msgstr "ID avvio"
 
-# GTK-2-12
+# CTK-2-12
 #: ctk/ctkwindow.c:776
 msgid "Unique startup identifier for the window used by startup-notification"
 msgstr ""

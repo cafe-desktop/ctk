@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -101,8 +101,8 @@ _ctk_get_lc_ctype (void)
    * doesn't know anything about them. You set the locale in the
    * Control Panel. Setting these env vars won't have any affect on
    * locale-dependent C library functions like ctime(). But just for
-   * kicks, do obey LC_ALL, LC_CTYPE and LANG in GTK. (This also makes
-   * it easier to test GTK and Pango in various default languages, you
+   * kicks, do obey LC_ALL, LC_CTYPE and LANG in CTK. (This also makes
+   * it easier to test CTK and Pango in various default languages, you
    * don't have to clickety-click in the Control Panel, you can simply
    * start the program with LC_ALL=something on the command line.)
    */

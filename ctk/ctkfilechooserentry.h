@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkfilechooserentry.h: Entry with filename completion
  * Copyright (C) 2003, Red Hat, Inc.
  *

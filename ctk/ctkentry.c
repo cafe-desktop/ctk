@@ -1,5 +1,5 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  * Copyright (C) 2004-2006 Christian Hammond
  * Copyright (C) 2008 Cody Russell
@@ -20,10 +20,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -96,9 +96,9 @@
  * When using an entry for passwords and other sensitive information,
  * it can be put into “password mode” using ctk_entry_set_visibility().
  * In this mode, entered text is displayed using a “invisible” character.
- * By default, GTK+ picks the best invisible character that is available
+ * By default, CTK+ picks the best invisible character that is available
  * in the current font, but it can be changed with
- * ctk_entry_set_invisible_char(). Since 2.16, GTK+ displays a warning
+ * ctk_entry_set_invisible_char(). Since 2.16, CTK+ displays a warning
  * when Caps Lock or input methods might interfere with entering text in
  * a password entry. The warning can be turned off with the
  * #CtkEntry:caps-lock-warning property.
@@ -1262,7 +1262,7 @@ ctk_entry_class_init (CtkEntryClass *class)
    *
    * Whether the primary icon is activatable.
    *
-   * GTK+ emits the #CtkEntry::icon-press and #CtkEntry::icon-release
+   * CTK+ emits the #CtkEntry::icon-press and #CtkEntry::icon-release
    * signals only on sensitive, activatable icons.
    *
    * Sensitive, but non-activatable icons can be used for purely
@@ -1282,7 +1282,7 @@ ctk_entry_class_init (CtkEntryClass *class)
    *
    * Whether the secondary icon is activatable.
    *
-   * GTK+ emits the #CtkEntry::icon-press and #CtkEntry::icon-release
+   * CTK+ emits the #CtkEntry::icon-press and #CtkEntry::icon-release
    * signals only on sensitive, activatable icons.
    *
    * Sensitive, but non-activatable icons can be used for purely
@@ -1302,7 +1302,7 @@ ctk_entry_class_init (CtkEntryClass *class)
    *
    * Whether the primary icon is sensitive.
    *
-   * An insensitive icon appears grayed out. GTK+ does not emit the
+   * An insensitive icon appears grayed out. CTK+ does not emit the
    * #CtkEntry::icon-press and #CtkEntry::icon-release signals and
    * does not allow DND from insensitive icons.
    *
@@ -1323,7 +1323,7 @@ ctk_entry_class_init (CtkEntryClass *class)
    *
    * Whether the secondary icon is sensitive.
    *
-   * An insensitive icon appears grayed out. GTK+ does not emit the
+   * An insensitive icon appears grayed out. CTK+ does not emit the
    * #CtkEntry::icon-press and #CtkEntry::icon-release signals and
    * does not allow DND from insensitive icons.
    *
@@ -1589,7 +1589,7 @@ ctk_entry_class_init (CtkEntryClass *class)
    *
    * The invisible character is used when masking entry contents (in
    * \"password mode\")"). When it is not explicitly set with the
-   * #CtkEntry:invisible-char property, GTK+ determines the character
+   * #CtkEntry:invisible-char property, CTK+ determines the character
    * to use from a list of possible candidates, depending on availability
    * in the current font.
    *
@@ -1728,7 +1728,7 @@ ctk_entry_class_init (CtkEntryClass *class)
    * [keybinding signal][CtkBindingSignal]
    * which gets emitted when the user initiates a text deletion.
    *
-   * If the @type is %CTK_DELETE_CHARS, GTK+ deletes the selection
+   * If the @type is %CTK_DELETE_CHARS, CTK+ deletes the selection
    * if there is one, otherwise it deletes the requested number
    * of characters.
    *
@@ -7745,7 +7745,7 @@ ctk_entry_set_text (CtkEntry    *entry,
  * as the invisible char, and will also appear that way when
  * the text in the entry widget is copied elsewhere.
  *
- * By default, GTK+ picks the best invisible character available
+ * By default, CTK+ picks the best invisible character available
  * in the current font, but it can be changed with
  * ctk_entry_set_invisible_char().
  *
@@ -7800,7 +7800,7 @@ ctk_entry_get_visibility (CtkEntry *entry)
  * Sets the character to use in place of the actual text when
  * ctk_entry_set_visibility() has been called to set text visibility
  * to %FALSE. i.e. this is the character used in “password mode” to
- * show the user how many characters have been typed. By default, GTK+
+ * show the user how many characters have been typed. By default, CTK+
  * picks the best invisible char available in the current font. If you
  * set the invisible char to 0, then the user will get no feedback
  * at all; there will be no text on the screen as they type.
@@ -9097,7 +9097,7 @@ ctk_entry_get_icon_at_pos (CtkEntry *entry,
  * @target_list: the targets (data formats) in which the data can be provided
  * @actions: a bitmask of the allowed drag actions
  *
- * Sets up the icon at the given position so that GTK+ will start a drag
+ * Sets up the icon at the given position so that CTK+ will start a drag
  * operation when the user clicks and drags the icon.
  *
  * To handle the drag operation, you need to connect to the usual
@@ -9106,7 +9106,7 @@ ctk_entry_get_icon_at_pos (CtkEntry *entry,
  * your signal handler to find out if the drag was started from
  * an icon.
  *
- * By default, GTK+ uses the icon as the drag icon. You can use the 
+ * By default, CTK+ uses the icon as the drag icon. You can use the 
  * #CtkWidget::drag-begin signal to set a different icon. Note that you 
  * have to use g_signal_connect_after() to ensure that your signal handler
  * gets executed after the default handler.

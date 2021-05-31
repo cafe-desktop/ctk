@@ -4,26 +4,26 @@
 ]>
 <refentry id="ctk-running">
 <refmeta>
-<refentrytitle>Running GTK+ Applications</refentrytitle>
+<refentrytitle>Running CTK+ Applications</refentrytitle>
 <manvolnum>3</manvolnum>
-<refmiscinfo>GTK Library</refmiscinfo>
+<refmiscinfo>CTK Library</refmiscinfo>
 </refmeta>
 
 <refnamediv>
-<refname>Running GTK+ Applications</refname>
+<refname>Running CTK+ Applications</refname>
 <refpurpose>
-How to run and debug your GTK+ application
+How to run and debug your CTK+ application
 </refpurpose>
 </refnamediv>
 
 <refsect1>
-<title>Running and debugging GTK+ Applications</title>
+<title>Running and debugging CTK+ Applications</title>
 
 <refsect2>
 <title>Common commandline options</title>
 
 <para>
-All GTK+ applications support a number of standard commandline
+All CTK+ applications support a number of standard commandline
 options. These are removed from <literal>argv</literal> by ctk_init().
 Modules may parse and remove further options. The
 <link linkend="x11-cmdline">X11</link> and
@@ -36,7 +36,7 @@ some additional commandline options.
 
 <para>
 A list of modules to load in addition to those specified in the
-<envar>GTK3_MODULES</envar> environment variable and the
+<envar>CTK3_MODULES</envar> environment variable and the
 <literal>ctk-modules</literal> setting.
 </para>
 </formalpara>
@@ -45,7 +45,7 @@ A list of modules to load in addition to those specified in the
 <title><systemitem>--g-fatal-warnings</systemitem></title>
 
 <para>
-Make GTK+ abort on all warnings. This is useful to stop on the first
+Make CTK+ abort on all warnings. This is useful to stop on the first
 warning in a debugger, if your application is printing multiple
 warnings.  It's almost always best to start debugging with the first
 warning that occurs.
@@ -56,9 +56,9 @@ warning that occurs.
 <title><systemitem>--ctk-debug <replaceable>options</replaceable></systemitem></title>
 
 <para>
-A list of <link linkend="GTK-Debug-Options">debug options</link>
+A list of <link linkend="CTK-Debug-Options">debug options</link>
 to turn on in addition to those specified in the <envar>CTK_DEBUG</envar>
-environment variable. This option is not available if GTK+ has been
+environment variable. This option is not available if CTK+ has been
 configured with <option>--enable-debug=no</option>.
 </para>
 </formalpara>
@@ -67,14 +67,14 @@ configured with <option>--enable-debug=no</option>.
 <title><systemitem>--ctk-no-debug <replaceable>options</replaceable></systemitem></title>
 
 <para>
-A list of <link linkend="GTK-Debug-Options">debug options</link>
-to turn off. This option is only available if GTK+ has been configured with
+A list of <link linkend="CTK-Debug-Options">debug options</link>
+to turn off. This option is only available if CTK+ has been configured with
 <option>--enable-debug=yes</option>.
 </para>
 </formalpara>
 
 <para>
-The following options are really used by GDK, not by GTK+, but we
+The following options are really used by GDK, not by CTK+, but we
 list them here for completeness nevertheless.
 </para>
 
@@ -100,7 +100,7 @@ Sets the program name.
 <para>
 A list of <link linkend="GDK-Debug-Options">debug options</link>
 to turn on in addition to those specified in the <envar>GDK_DEBUG</envar>
-environment variable. This option is only available if GTK+ has been
+environment variable. This option is only available if CTK+ has been
 configured with <option>--enable-debug=yes</option>.
 </para>
 </formalpara>
@@ -110,7 +110,7 @@ configured with <option>--enable-debug=yes</option>.
 
 <para>
 A list of <link linkend="GDK-Debug-Options">debug options</link>
-to turn off. This option is only available if GTK+ has been configured with
+to turn off. This option is only available if CTK+ has been configured with
 <option>--enable-debug=yes</option>.
 </para>
 </formalpara>
@@ -121,7 +121,7 @@ to turn off. This option is only available if GTK+ has been configured with
 <title>Environment variables</title>
 
 <para>
-GTK+ inspects a number of environment variables in addition to standard
+CTK+ inspects a number of environment variables in addition to standard
 variables like <envar>LANG</envar>, <envar>PATH</envar>, <envar>HOME</envar>
 or <envar>DISPLAY</envar>; mostly to determine paths to look for certain
 files. The <link linkend="x11-envar">X11</link>,
@@ -130,12 +130,12 @@ files. The <link linkend="x11-envar">X11</link>,
 additional environment variables.
 </para>
 
-<formalpara id="GTK-Debug-Options">
+<formalpara id="CTK-Debug-Options">
   <title><envar>CTK_DEBUG</envar></title>
 
   <para>
-  Unless GTK+ has been configured with <option>--enable-debug=no</option>,
-  this variable can be set to a list of debug options, which cause GTK+
+  Unless CTK+ has been configured with <option>--enable-debug=no</option>,
+  this variable can be set to a list of debug options, which cause CTK+
   to print out different types of debugging information.
   <variablelist>
     <varlistentry>
@@ -230,10 +230,10 @@ additional environment variables.
 </formalpara>
 
 <formalpara>
-  <title><envar>GTK3_MODULES</envar></title>
+  <title><envar>CTK3_MODULES</envar></title>
 
   <para>
-    A list of modules to load. Note that GTK+ also allows to specify modules to load via a commandline option (<option>--ctk-module</option>) and with the <literal>ctk-modules</literal> setting.
+    A list of modules to load. Note that CTK+ also allows to specify modules to load via a commandline option (<option>--ctk-module</option>) and with the <literal>ctk-modules</literal> setting.
   </para>
 </formalpara>
 
@@ -241,13 +241,13 @@ additional environment variables.
   <title><envar>CTK_MODULES</envar></title>
 
   <para>
-    A list of modules to load in addition to the ones in the <envar>GTK3_MODULES</envar> variable.
+    A list of modules to load in addition to the ones in the <envar>CTK3_MODULES</envar> variable.
   </para>
   <warning>
-    Note that this environment variable is read by GTK+ 2.x too,
+    Note that this environment variable is read by CTK+ 2.x too,
     which may not have the same set of modules available for loading.
-    Use <envar>GTK3_MODULES</envar> for modules that are only compatible
-    with GTK+ 3.
+    Use <envar>CTK3_MODULES</envar> for modules that are only compatible
+    with CTK+ 3.
   </warning>
 </formalpara>
 
@@ -255,29 +255,29 @@ additional environment variables.
   <title><envar>CTK_PATH</envar></title>
 
   <para>
-    Specifies a list of directories to search when GTK+ is looking for
+    Specifies a list of directories to search when CTK+ is looking for
     dynamically loaded objects such as the modules specified by
     <envar>CTK_MODULES</envar>, theme engines, input method
     modules, file system backends and print backends. If the path to
     the dynamically loaded object is given as an absolute path name,
-    then GTK+ loads it directly.
-    Otherwise, GTK+ goes in turn through the directories in <envar>CTK_PATH</envar>,
+    then CTK+ loads it directly.
+    Otherwise, CTK+ goes in turn through the directories in <envar>CTK_PATH</envar>,
     followed by the directory <filename>.ctk-3.0</filename> in the user's
     home directory, followed by the system default directory,
     which is <filename><replaceable>libdir</replaceable>/ctk-3.0/modules</filename>.
     (If <envar>CTK_EXE_PREFIX</envar> is defined, <replaceable>libdir</replaceable> is
     <filename>$CTK_EXE_PREFIX/lib</filename>. Otherwise it is the libdir
-    specified when GTK+ was configured, usually
+    specified when CTK+ was configured, usually
     <filename>/usr/lib</filename>, or
     <filename>/usr/local/lib</filename>.)
-    For each directory in this list, GTK+ actually looks in a
+    For each directory in this list, CTK+ actually looks in a
     subdirectory
     <filename><replaceable>directory</replaceable>/<replaceable>version</replaceable>/<replaceable>host</replaceable>/<replaceable>type</replaceable></filename>
     Where <replaceable>version</replaceable> is derived from the
-    version of GTK+ (use <literal>pkg-config
+    version of CTK+ (use <literal>pkg-config
     --variable=ctk_binary_version ctk+-3.0</literal> to determine this from a
     script), <replaceable>host</replaceable> is the architecture on
-    which GTK+ was built. (use <literal>pkg-config
+    which CTK+ was built. (use <literal>pkg-config
     --variable=ctk_host ctk+-3.0</literal> to determine this from a
     script), and <replaceable>type</replaceable> is a directory
     specific to the type of modules; currently it can be
@@ -285,16 +285,16 @@ additional environment variables.
     <literal>immodules</literal>, <literal>filesystems</literal> or
     <literal>printbackends</literal>, corresponding to the types of
     modules mentioned above. Either <replaceable>version</replaceable>,
-    <replaceable>host</replaceable>, or both may be omitted. GTK+ looks
+    <replaceable>host</replaceable>, or both may be omitted. CTK+ looks
     first in the most specific directory, then in directories with
     fewer components.
     The components of CTK_PATH are separated by the ':' character on
     Linux and Unix, and the ';' character on Windows.
   </para>
   <warning>
-    Note that this environment variable is read by GTK+ 2.x too, which
+    Note that this environment variable is read by CTK+ 2.x too, which
     makes it unsuitable for setting it system-wide (or session-wide),
-    since doing so will cause either GTK+ 2.x applications or GTK+ 3
+    since doing so will cause either CTK+ 2.x applications or CTK+ 3
     applications to see incompatible modules.
   </warning>
 </formalpara>
@@ -309,7 +309,7 @@ additional environment variables.
     <literal>Ctk/IMModule</literal>, that will be used for the default
     IM module.
     This also can be a colon-separated list of input-methods, which
-    GTK+ will try in turn until it finds one available on the system.
+    CTK+ will try in turn until it finds one available on the system.
   </para>
 </formalpara>
 
@@ -327,9 +327,9 @@ additional environment variables.
     <command>ctk-query-immodules-3.0</command> utility.
   </para>
   <warning>
-    Note that this environment variable is read by GTK+ 2.x too, which
+    Note that this environment variable is read by CTK+ 2.x too, which
     makes it unsuitable for setting it system-wide (or session-wide),
-    since doing so will cause either GTK+ 2.x applications or GTK+ 3
+    since doing so will cause either CTK+ 2.x applications or CTK+ 3
     applications to see the wrong list of IM modules.
   </warning>
 </formalpara>
@@ -338,8 +338,8 @@ additional environment variables.
   <title><envar>CTK_EXE_PREFIX</envar></title>
 
   <para>
-    If set, GTK+ uses <filename>$CTK_EXE_PREFIX/lib</filename> instead of
-    the libdir configured when GTK+ was compiled.
+    If set, CTK+ uses <filename>$CTK_EXE_PREFIX/lib</filename> instead of
+    the libdir configured when CTK+ was compiled.
   </para>
 </formalpara>
 
@@ -347,8 +347,8 @@ additional environment variables.
   <title><envar>CTK_DATA_PREFIX</envar></title>
 
   <para>
-    If set, makes GTK+ use <filename>$CTK_DATA_PREFIX</filename>
-    instead of the prefix configured when GTK+ was compiled.
+    If set, makes CTK+ use <filename>$CTK_DATA_PREFIX</filename>
+    instead of the prefix configured when CTK+ was compiled.
   </para>
 </formalpara>
 
@@ -356,7 +356,7 @@ additional environment variables.
   <title><envar>CTK_THEME</envar></title>
 
   <para>
-    If set, makes GTK+ use the named theme instead of the theme
+    If set, makes CTK+ use the named theme instead of the theme
     that is specified by the ctk-theme-name setting. This is intended
     mainly for easy debugging of theme issues.
   </para>
@@ -368,7 +368,7 @@ additional environment variables.
 
 <para>
 The following environment variables are used by GdkPixbuf, GDK or
-Pango, not by GTK+ itself, but we list them here for completeness
+Pango, not by CTK+ itself, but we list them here for completeness
 nevertheless.
 </para>
 
@@ -380,7 +380,7 @@ nevertheless.
     This environment variable overrides the default value
     <filename><replaceable>libdir</replaceable>/ctk-3.0/3.0.0/loaders.cache</filename>
     (<replaceable>libdir</replaceable> is the sysconfdir specified when
-    GTK+ was configured, usually <filename>/usr/local/lib</filename>.)
+    CTK+ was configured, usually <filename>/usr/local/lib</filename>.)
   </para>
   <para>
     The <filename>loaders.cache</filename> file is generated by the
@@ -392,7 +392,7 @@ nevertheless.
   <title><envar>GDK_DEBUG</envar></title>
 
   <para>
-  If GTK+ has been configured with <option>--enable-debug=yes</option>,
+  If CTK+ has been configured with <option>--enable-debug=yes</option>,
   this variable can be set to a list of debug options, which cause GDK
   to print out different types of debugging information.
   <variablelist>
@@ -458,7 +458,7 @@ nevertheless.
       <varlistentry>
         <term>image</term>
         <listitem><para>Always create image surfaces. This essentially turns off
-          all hardware acceleration inside GTK.</para></listitem>
+          all hardware acceleration inside CTK.</para></listitem>
       </varlistentry>
 
       <varlistentry>
@@ -479,7 +479,7 @@ nevertheless.
 
   <para>
     If set, selects the GDK backend to use. Selecting a backend requires that
-    GTK+ is compiled with support for that backend. The following backends can
+    CTK+ is compiled with support for that backend. The following backends can
     be selected, provided they are included in the GDK libraries you are using:
     <variablelist>
 
@@ -522,7 +522,7 @@ nevertheless.
 
   <para>
     The default value of this environment variable is 1. If changed to 0, this
-    disables the default use of client-side decorations on GTK+ windows, thus
+    disables the default use of client-side decorations on CTK+ windows, thus
     making the window manager responsible for drawing the decorations of
     windows that do not have a custom titlebar widget.
   </para>
@@ -548,7 +548,7 @@ nevertheless.
   <title><envar>XDG_DATA_HOME</envar>, <envar>XDG_DATA_DIRS</envar></title>
 
   <para>
-    GTK+ uses these environment variables to locate icon themes
+    CTK+ uses these environment variables to locate icon themes
     and MIME information. For more information, see
     <ulink url="https://freedesktop.org/Standards/icon-theme-spec">Icon Theme Specification</ulink>,
     the <ulink url="https://freedesktop.org/Standards/shared-mime-info-spec">Shared MIME-info Database</ulink>
@@ -560,9 +560,9 @@ nevertheless.
   <title><envar>DESKTOP_STARTUP_ID</envar></title>
 
   <para>
-    GTK+ uses this environment variable to provide startup notification
+    CTK+ uses this environment variable to provide startup notification
     according to the <ulink url="https://standards.freedesktop.org/startup-notification-spec/startup-notification-latest.txt">Startup Notification Spec</ulink>.
-    Following the specification, GTK+ unsets this variable after reading
+    Following the specification, CTK+ unsets this variable after reading
     it (to keep it from leaking to child processes). So, if you need its
     value for your own purposes, you have to read it before calling
     ctk_init().
@@ -577,26 +577,26 @@ nevertheless.
   <inlinegraphic fileref="inspector.png" format="PNG"></inlinegraphic>
 
   <para>
-    GTK+ includes an interactive debugger, called the GTK+ Inspector, which
-    lets you explore the widget tree of any GTK+ application at runtime, as
+    CTK+ includes an interactive debugger, called the CTK+ Inspector, which
+    lets you explore the widget tree of any CTK+ application at runtime, as
     well as tweak the theme and trigger visual debugging aids. You can
     easily try out changes at runtime before putting them into the code.
   </para>
   <para>
-    Note that the GTK+ inspector can only show GTK+ internals. It can not
-    understand the application-specific logic of a GTK+ application. Also,
-    the fact that the GTK+ inspector is running in the application process
+    Note that the CTK+ inspector can only show CTK+ internals. It can not
+    understand the application-specific logic of a CTK+ application. Also,
+    the fact that the CTK+ inspector is running in the application process
     limits what it can do. It is meant as a complement to full-blown debuggers
     and system tracing facilities such as DTrace, not as a replacement.
   </para>
   <para>
-    To enable the GTK+ inspector, you can use the Control-Shift-I or
+    To enable the CTK+ inspector, you can use the Control-Shift-I or
     Control-Shift-D keyboard shortcuts, or set the
     <envar>CTK_DEBUG=interactive</envar> environment variable.
   </para>
   <para>
     In some situations, it may be inappropriate to give users access to the
-    GTK+ inspector. The keyboard shortcuts can be disabled with the
+    CTK+ inspector. The keyboard shortcuts can be disabled with the
     `enable-inspector-keybinding` key in the `org.ctk.Settings.Debug`
     GSettings schema.
   </para>

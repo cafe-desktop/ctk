@@ -754,7 +754,7 @@ activate_about (GSimpleAction *action,
                          "logo-icon-name", "text-editor",
                          "version", "0.1",
                          "copyright", "(C) Red Hat, Inc",
-                         "comments", "Program to demonstrate GTK+ printing.",
+                         "comments", "Program to demonstrate CTK+ printing.",
                          "authors", authors,
                          NULL);
 }

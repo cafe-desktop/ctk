@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 2011 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -19,7 +19,7 @@
 #define __CTK_X_H__
 
 #if defined (CTK_COMPILATION)
-#error "<ctk/ctkx.h> must not be included by GTK+ headers."
+#error "<ctk/ctkx.h> must not be included by CTK+ headers."
 #endif
 
 #define __CTKX_H_INSIDE__

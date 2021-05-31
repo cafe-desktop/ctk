@@ -1,5 +1,5 @@
 /*
- * GTK - The GIMP Toolkit
+ * CTK - The GIMP Toolkit
  * Copyright (C) 2018 Red Hat, Inc.
  * All rights reserved.
  *

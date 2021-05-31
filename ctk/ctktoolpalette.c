@@ -1645,7 +1645,7 @@ ctk_tool_palette_set_drag_source (CtkToolPalette            *palette,
  * ctk_tool_palette_add_drag_dest:
  * @palette: a #CtkToolPalette
  * @widget: a #CtkWidget which should be a drag destination for @palette
- * @flags: the flags that specify what actions GTK+ should take for drops
+ * @flags: the flags that specify what actions CTK+ should take for drops
  *     on that widget
  * @targets: the #CtkToolPaletteDragTargets which the widget
  *     should support

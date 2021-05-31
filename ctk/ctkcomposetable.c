@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 2015 Takao Fujiwara <takao.fujiwara1@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -111,7 +111,7 @@ parse_compose_value (CtkComposeData *compose_data,
 
   if (g_utf8_get_char (g_utf8_next_char (words[1])) > 0)
     {
-      g_warning ("GTK+ supports to output one char only: %s: %s", val, line);
+      g_warning ("CTK+ supports to output one char only: %s: %s", val, line);
       goto fail;
     }
 

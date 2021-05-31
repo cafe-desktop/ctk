@@ -6067,12 +6067,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "İşaretçik ölçüleri listesi (ctk-menu=16,16;ctk-button=20,20..."
 
 #: ctk/ctksettings.c:379
-msgid "GTK Modules"
-msgstr "GTK Modülleri"
+msgid "CTK Modules"
+msgstr "CTK Modülleri"
 
 #: ctk/ctksettings.c:380
-msgid "List of currently active GTK modules"
-msgstr "Hal-hazırda faal olğan GTK modülleriniñ listesi"
+msgid "List of currently active CTK modules"
+msgstr "Hal-hazırda faal olğan CTK modülleriniñ listesi"
 
 # tüklü
 #: ctk/ctksettings.c:389

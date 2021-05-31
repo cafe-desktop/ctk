@@ -31,7 +31,7 @@
                         <child>
                           <object class="CtkLabel" id="ctk_version_label">
                             <property name="visible">True</property>
-                            <property name="label" translatable="yes">GTK+ Version</property>
+                            <property name="label" translatable="yes">CTK+ Version</property>
                             <property name="halign">start</property>
                             <property name="valign">baseline</property>
                             <property name="xalign">0.0</property>

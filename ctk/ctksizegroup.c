@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctksizegroup.c: 
  * Copyright (C) 2001 Red Hat Software
  *
@@ -61,7 +61,7 @@
  * group; when all widgets have been removed, the size group will be
  * freed.
  *
- * Widgets can be part of multiple size groups; GTK+ will compute the
+ * Widgets can be part of multiple size groups; CTK+ will compute the
  * horizontal size of a widget from the horizontal requisition of all
  * widgets that can be reached from the widget by a chain of size groups
  * of type %CTK_SIZE_GROUP_HORIZONTAL or %CTK_SIZE_GROUP_BOTH, and the
@@ -532,7 +532,7 @@ ctk_size_group_remove_widget (CtkSizeGroup *size_group,
  * Returns the list of widgets associated with @size_group.
  *
  * Returns:  (element-type CtkWidget) (transfer none): a #GSList of
- *   widgets. The list is owned by GTK+ and should not be modified.
+ *   widgets. The list is owned by CTK+ and should not be modified.
  *
  * Since: 2.10
  **/

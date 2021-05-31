@@ -62,7 +62,7 @@
  * the user tries to activate it. If it is selectable, the row will be marked
  * as selected when the user tries to select it.
  *
- * The CtkListBox widget was added in GTK+ 3.10.
+ * The CtkListBox widget was added in CTK+ 3.10.
  *
  * # CtkListBox as CtkBuildable
  *

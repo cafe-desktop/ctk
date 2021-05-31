@@ -29,7 +29,7 @@ G_BEGIN_DECLS
 
 #define CTK_TYPE_APPLICATION_ACCELS (ctk_application_accels_get_type ())
 G_DECLARE_FINAL_TYPE (CtkApplicationAccels, ctk_application_accels,
-                      GTK, APPLICATION_ACCELS,
+                      CTK, APPLICATION_ACCELS,
                       GObject)
 
 CtkApplicationAccels *

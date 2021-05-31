@@ -53,7 +53,7 @@ test_init_of_theme (void)
 int
 main (int argc, char *argv[])
 {
-  /* If gdk_init() is called before ctk_init() the GTK code takes
+  /* If gdk_init() is called before ctk_init() the CTK code takes
    * a different path (why?)
    */
   gdk_init (NULL, NULL);

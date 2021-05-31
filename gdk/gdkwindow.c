@@ -17,10 +17,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -64,7 +64,7 @@
  *
  * A #GdkWindow is a (usually) rectangular region on the screen.
  * It’s a low-level object, used to implement high-level objects such as
- * #CtkWidget and #CtkWindow on the GTK+ level. A #CtkWindow is a toplevel
+ * #CtkWidget and #CtkWindow on the CTK+ level. A #CtkWindow is a toplevel
  * window, the thing a user might think of as a “window” with a titlebar
  * and so on; a #CtkWindow may contain many #GdkWindows. For example,
  * each #CtkButton has a #GdkWindow associated with it.
@@ -2223,11 +2223,11 @@ gdk_window_destroy (GdkWindow *window)
  * @user_data: (allow-none) (type GObject.Object): user data
  *
  * For most purposes this function is deprecated in favor of
- * g_object_set_data(). However, for historical reasons GTK+ stores
+ * g_object_set_data(). However, for historical reasons CTK+ stores
  * the #CtkWidget that owns a #GdkWindow as user data on the
  * #GdkWindow. So, custom widget implementations should use
- * this function for that. If GTK+ receives an event for a #GdkWindow,
- * and the user data for the window is non-%NULL, GTK+ will assume the
+ * this function for that. If CTK+ receives an event for a #GdkWindow,
+ * and the user data for the window is non-%NULL, CTK+ will assume the
  * user data is a #CtkWidget, and forward the event to that widget.
  *
  **/
@@ -2627,7 +2627,7 @@ gdk_window_get_children_with_user_data (GdkWindow *window,
  *
  * Adds an event filter to @window, allowing you to intercept events
  * before they reach GDK. This is a low-level operation and makes it
- * easy to break GDK and/or GTK+, so you have to know what you're
+ * easy to break GDK and/or CTK+, so you have to know what you're
  * doing. Pass %NULL for @window to get all events for all windows,
  * instead of events for a specific window.
  *
@@ -3166,7 +3166,7 @@ gdk_window_begin_paint_rect (GdkWindow          *window,
  * gdk_window_begin_paint_region() are conveniences for the
  * programmer, so you can avoid doing that work yourself.
  *
- * When using GTK+, the widget system automatically places calls to
+ * When using CTK+, the widget system automatically places calls to
  * gdk_window_begin_paint_region() and gdk_window_end_paint() around
  * emissions of the expose_event signal. That is, if you’re writing an
  * expose event handler, you can assume that the exposed area in
@@ -3221,13 +3221,13 @@ gdk_window_begin_paint_region (GdkWindow            *window,
  * calling gdk_window_begin_draw_frame(), the user may see flicker
  * as individual drawing operations are performed in sequence.
  *
- * When using GTK+, the widget system automatically places calls to
+ * When using CTK+, the widget system automatically places calls to
  * gdk_window_begin_draw_frame() and gdk_window_end_draw_frame() around
  * emissions of the `CtkWidget::draw` signal. That is, if you’re
  * drawing the contents of the widget yourself, you can assume that the
  * widget has a cleared background, is already set as the clip region,
  * and already has a backing store. Therefore in most cases, application
- * code in GTK does not need to call gdk_window_begin_draw_frame()
+ * code in CTK does not need to call gdk_window_begin_draw_frame()
  * explicitly.
  *
  * Returns: (transfer none): a #GdkDrawingContext context that should be
@@ -3376,7 +3376,7 @@ gdk_window_get_drawing_context (GdkWindow *window)
  * gdk_cairo_draw_from_gl() and cairo rendering, as otherwise GDK has no way
  * of knowing when something paints over the GL-drawn regions.
  *
- * This is typically called automatically by GTK+ and you don't need
+ * This is typically called automatically by CTK+ and you don't need
  * to care about this.
  *
  * Since: 3.16
@@ -3616,7 +3616,7 @@ _gdk_window_ref_cairo_surface (GdkWindow *window)
  *
  * If you are drawing on a native #GdkWindow in response to a %GDK_EXPOSE event
  * you should use gdk_window_begin_draw_frame() and gdk_drawing_context_get_cairo_context()
- * instead. GTK will automatically do this for you when drawing a widget.
+ * instead. CTK will automatically do this for you when drawing a widget.
  *
  * Returns: A newly created Cairo context. Free with
  *  cairo_destroy() when you are done drawing.
@@ -4761,9 +4761,9 @@ gdk_window_thaw_updates (GdkWindow *window)
  * an equal number of times to begin processing exposes.
  *
  * This function is not part of the GDK public API and is only
- * for use by GTK+.
+ * for use by CTK+.
  *
- * Deprecated: 3.16: This symbol was never meant to be used outside of GTK+
+ * Deprecated: 3.16: This symbol was never meant to be used outside of CTK+
  */
 void
 gdk_window_freeze_toplevel_updates_libctk_only (GdkWindow *window)
@@ -4789,9 +4789,9 @@ gdk_window_freeze_toplevel_updates (GdkWindow *window)
  * gdk_window_freeze_toplevel_updates_libctk_only().
  *
  * This function is not part of the GDK public API and is only
- * for use by GTK+.
+ * for use by CTK+.
  *
- * Deprecated: 3.16: This symbol was never meant to be used outside of GTK+
+ * Deprecated: 3.16: This symbol was never meant to be used outside of CTK+
  */
 void
 gdk_window_thaw_toplevel_updates_libctk_only (GdkWindow *window)
@@ -4827,10 +4827,10 @@ gdk_window_thaw_toplevel_updates (GdkWindow *window)
  * In essence, because the GDK rendering model prevents all flicker,
  * if you are redrawing the same region 400 times you may never
  * notice, aside from noticing a speed problem. Enabling update
- * debugging causes GTK to flicker slowly and noticeably, so you can
+ * debugging causes CTK to flicker slowly and noticeably, so you can
  * see exactly what’s being redrawn when, in what order.
  *
- * The --ctk-debug=updates command line option passed to GTK+ programs
+ * The --ctk-debug=updates command line option passed to CTK+ programs
  * enables this debug option at application startup time. That's
  * usually more useful than calling gdk_window_set_debug_updates()
  * yourself, though you might want to use this function to enable
@@ -6188,7 +6188,7 @@ gdk_window_move (GdkWindow *window,
  * @height: new height of the window
  *
  * Resizes @window; for toplevel windows, asks the window manager to resize
- * the window. The window manager may not allow the resize. When using GTK+,
+ * the window. The window manager may not allow the resize. When using CTK+,
  * use ctk_window_resize() instead of this low-level GDK function.
  *
  * Windows may not be resized below 1x1.
@@ -6385,7 +6385,7 @@ gdk_window_move_region (GdkWindow            *window,
  *
  * Sets the background color of @window.
  *
- * However, when using GTK+, influence the background of a widget
+ * However, when using CTK+, influence the background of a widget
  * using a style class or CSS — if you’re an application — or with
  * ctk_style_context_set_background() — if you're implementing a
  * custom widget.
@@ -8621,7 +8621,7 @@ _gdk_display_set_window_under_pointer (GdkDisplay *display,
  *
  * Pointer grabs are used for operations which need complete control over mouse
  * events, even if the mouse leaves the application.
- * For example in GTK+ it is used for Drag and Drop, for dragging the handle in
+ * For example in CTK+ it is used for Drag and Drop, for dragging the handle in
  * the #CtkHPaned and #CtkVPaned widgets.
  *
  * Note that if the event mask of an X window has selected both button press and
@@ -10469,7 +10469,7 @@ gdk_window_set_geometry_hints (GdkWindow         *window,
  * If you haven’t explicitly set the icon name for the window
  * (using gdk_window_set_icon_name()), the icon name will be set to
  * @title as well. @title must be in UTF-8 encoding (as with all
- * user-readable strings in GDK/GTK+). @title may not be %NULL.
+ * user-readable strings in GDK/CTK+). @title may not be %NULL.
  **/
 void
 gdk_window_set_title (GdkWindow   *window,
@@ -10483,7 +10483,7 @@ gdk_window_set_title (GdkWindow   *window,
  * @window: a toplevel #GdkWindow
  * @role: a string indicating its role
  *
- * When using GTK+, typically you should use ctk_window_set_role() instead
+ * When using CTK+, typically you should use ctk_window_set_role() instead
  * of this low-level function.
  *
  * The window manager and session manager use a window’s role to
@@ -10509,7 +10509,7 @@ gdk_window_set_role (GdkWindow   *window,
  * @window: a toplevel #GdkWindow
  * @startup_id: a string with startup-notification identifier
  *
- * When using GTK+, typically you should use ctk_window_set_startup_id()
+ * When using CTK+, typically you should use ctk_window_set_startup_id()
  * instead of this low-level function.
  *
  * Since: 2.12
@@ -10769,7 +10769,7 @@ gdk_window_iconify (GdkWindow *window)
  * @window: a toplevel #GdkWindow
  *
  * Attempt to deiconify (unminimize) @window. On X11 the window manager may
- * choose to ignore the request to deiconify. When using GTK+,
+ * choose to ignore the request to deiconify. When using CTK+,
  * use ctk_window_deiconify() instead of the #GdkWindow variant. Or better yet,
  * you probably want to use ctk_window_present_with_time(), which raises the window, focuses it,
  * unminimizes it, and puts it on the current desktop.
@@ -11504,7 +11504,7 @@ gdk_test_render_sync (GdkWindow *window)
  * @modifiers: Keyboard modifiers the event is setup with
  * @key_pressrelease: either %GDK_KEY_PRESS or %GDK_KEY_RELEASE
  *
- * This function is intended to be used in GTK+ test programs.
+ * This function is intended to be used in CTK+ test programs.
  * If (@x,@y) are > (-1,-1), it will warp the mouse pointer to
  * the given (@x,@y) coordinates within @window and simulate a
  * key press or release event.
@@ -11547,7 +11547,7 @@ gdk_test_simulate_key (GdkWindow      *window,
  * @modifiers: Keyboard modifiers the event is setup with
  * @button_pressrelease: either %GDK_BUTTON_PRESS or %GDK_BUTTON_RELEASE
  *
- * This function is intended to be used in GTK+ test programs.
+ * This function is intended to be used in CTK+ test programs.
  * It will warp the mouse pointer to the given (@x,@y) coordinates
  * within @window and simulate a button press or release event.
  * Because the mouse pointer needs to be warped to the target
@@ -11893,7 +11893,7 @@ gdk_window_get_unscaled_size (GdkWindow *window,
  *
  * This function only works for toplevel windows.
  *
- * GTK+ will update this property automatically if
+ * CTK+ will update this property automatically if
  * the @window background is opaque, as we know where the opaque regions
  * are. If your window background is not opaque, please update this
  * property in your #CtkWidget::style-updated handler.
@@ -11931,14 +11931,14 @@ gdk_window_set_opaque_region (GdkWindow      *window,
  * @top: The top extent
  * @bottom: The bottom extent
  *
- * Newer GTK+ windows using client-side decorations use extra geometry
+ * Newer CTK+ windows using client-side decorations use extra geometry
  * around their frames for effects like shadows and invisible borders.
  * Window managers that want to maximize windows or snap to edges need
  * to know where the extents of the actual frame lie, so that users
  * don’t feel like windows are snapping against random invisible edges.
  *
- * Note that this property is automatically updated by GTK+, so this
- * function should only be used by applications which do not use GTK+
+ * Note that this property is automatically updated by CTK+, so this
+ * function should only be used by applications which do not use CTK+
  * to create toplevel windows.
  *
  * Since: 3.12

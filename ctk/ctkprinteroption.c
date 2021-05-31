@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkprinteroption.c: Handling possible settings for a specific printer setting
  * Copyright (C) 2006, Red Hat, Inc.
  *

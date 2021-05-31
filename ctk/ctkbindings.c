@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * CtkBindingSet: Keybinding manager for GObjects.
@@ -19,10 +19,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -41,9 +41,9 @@
  * @Short_description: Key bindings for individual widgets
  * @See_also: Keyboard Accelerators, Mnemonics, #CtkCssProvider
  *
- * #CtkBindingSet provides a mechanism for configuring GTK+ key bindings
+ * #CtkBindingSet provides a mechanism for configuring CTK+ key bindings
  * through CSS files. This eases key binding adjustments for application
- * developers as well as users and provides GTK+ users or administrators
+ * developers as well as users and provides CTK+ users or administrators
  * with high key  binding configurability which requires no application
  * or toolkit side changes.
  *
@@ -90,9 +90,9 @@
  *
  * # Unbinding existing key bindings
  *
- * GTK+ already defines a number of useful bindings for the widgets
+ * CTK+ already defines a number of useful bindings for the widgets
  * it provides. Because custom bindings set up in CSS files take
- * precedence over the default bindings shipped with GTK+, overriding
+ * precedence over the default bindings shipped with CTK+, overriding
  * existing bindings as demonstrated in
  * [Installing a key binding][ctk-bindings-install]
  * works as expected. The same mechanism can not be used to “unbind”
@@ -112,13 +112,13 @@
  * ]|
  *
  * The above example will not have the desired effect of causing
- * “<Control>Right” and “<Control>Left” key presses to be ignored by GTK+.
+ * “<Control>Right” and “<Control>Left” key presses to be ignored by CTK+.
  * Instead, it just causes any existing bindings from the bindings set
  * “MoveCursor3” to be deleted, so when “<Control>Right” or
  * “<Control>Left” are pressed, no binding for these keys is found in
- * binding set “MoveCursor3”. GTK+ will thus continue to search for
+ * binding set “MoveCursor3”. CTK+ will thus continue to search for
  * matching key bindings, and will eventually lookup and find the default
- * GTK+ bindings for entries which implement word movement. To keep GTK+
+ * CTK+ bindings for entries which implement word movement. To keep CTK+
  * from activating its default bindings, the “unbind” keyword can be used
  * like this:
  *
@@ -135,7 +135,7 @@
  * }
  * ]|
  *
- * Now, GTK+ will find a match when looking up “<Control>Right” and
+ * Now, CTK+ will find a match when looking up “<Control>Right” and
  * “<Control>Left” key presses before it resorts to its default bindings,
  * and the match instructs it to abort (“unbind”) the search, so the key
  * presses are not consumed by this widget. As usual, further processing
@@ -513,7 +513,7 @@ binding_compose_params (GObject         *object,
 
               g_type_class_unref (class);
             }
-          /* This is just a hack for compatibility with GTK+-1.2 where a string
+          /* This is just a hack for compatibility with CTK+-1.2 where a string
            * could be used for a single flag value / without the support for multiple
            * values in ctk_rc_parse_flags(), this isn't very useful.
            */
@@ -679,7 +679,7 @@ ctk_binding_entry_activate (CtkBindingEntry *entry,
  * ctk_binding_set_new: (skip)
  * @set_name: unique name of this binding set
  *
- * GTK+ maintains a global list of binding sets. Each binding set has
+ * CTK+ maintains a global list of binding sets. Each binding set has
  * a unique name which needs to be specified upon creation.
  *
  * Returns: (transfer none): new binding set

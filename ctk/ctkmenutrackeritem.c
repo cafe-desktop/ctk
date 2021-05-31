@@ -54,7 +54,7 @@
  * allowed to change, so listen to the notify signals to update your item's
  * appearance. When using a GObject library, this can conveniently be done
  * with g_object_bind_property() and #GBinding, and this is how this is
- * implemented in GTK+; the appearance side is implemented in #CtkModelMenuItem.
+ * implemented in CTK+; the appearance side is implemented in #CtkModelMenuItem.
  *
  * When an item is clicked, simply call ctk_menu_tracker_item_activated() in
  * response. The #CtkMenuTrackerItem will take care of everything related to

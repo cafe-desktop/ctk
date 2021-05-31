@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  *
  * Copyright (C) 2012, Red Hat, Inc.
  *
@@ -34,7 +34,7 @@
  * for choosing colors. Depending on the situation, colors may be
  * allowed to have alpha (translucency).
  *
- * In GTK+, the main widgets that implement this interface are
+ * In CTK+, the main widgets that implement this interface are
  * #CtkColorChooserWidget, #CtkColorChooserDialog and #CtkColorButton.
  *
  * Since: 3.4

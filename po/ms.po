@@ -2866,8 +2866,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:464
-msgid "Load additional GTK+ modules"
-msgstr "Muat modul GTK+ tambahan"
+msgid "Load additional CTK+ modules"
+msgstr "Muat modul CTK+ tambahan"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:465
@@ -2881,12 +2881,12 @@ msgstr "Jadikan semua amaran mati"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:470
-msgid "GTK+ debugging flags to set"
+msgid "CTK+ debugging flags to set"
 msgstr "Bendera penyahpepijatan GDK+ untuk ditetapkan"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:473
-msgid "GTK+ debugging flags to unset"
+msgid "CTK+ debugging flags to unset"
 msgstr "Bendera penyahpepijatan GDK+ untuk dinyahtetapkan"
 
 #: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
@@ -2895,12 +2895,12 @@ msgid "Cannot open display: %s"
 msgstr "Tidak dapat membuka paparan: %s"
 
 #: ctk/ctkmain.c:922
-msgid "GTK+ Options"
-msgstr "Pilihan GTK+"
+msgid "CTK+ Options"
+msgstr "Pilihan CTK+"
 
 #: ctk/ctkmain.c:922
-msgid "Show GTK+ Options"
-msgstr "Tunjuk Pilihan GTK+"
+msgid "Show CTK+ Options"
+msgstr "Tunjuk Pilihan CTK+"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -3917,9 +3917,9 @@ msgstr "Data tersiri cacat"
 
 #: ctk/ctktextbufferserialize.c:1873
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
-"Data tersiri cacat. Bahagian pertama bukanlah GTKTEXTBUFFERCONTENTS-0001"
+"Data tersiri cacat. Bahagian pertama bukanlah CTKTEXTBUFFERCONTENTS-0001"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -3998,18 +3998,18 @@ msgstr "Sentiasa di Atas"
 
 #: ctk/ctkwindow.c:12764
 #, c-format
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "Anda mahu menggunakan pemeriksa GTK+?"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "Anda mahu menggunakan pemeriksa CTK+?"
 
 #: ctk/ctkwindow.c:12766
 #, c-format
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"Pemeriksa GTK+ adalah satu penyahpepijat interaktif yang biarkan anda "
-"jelajah dan ubah suai dalaman sebarang aplikasi GTK+. Penggunaannya boleh "
+"Pemeriksa CTK+ adalah satu penyahpepijat interaktif yang biarkan anda "
+"jelajah dan ubah suai dalaman sebarang aplikasi CTK+. Penggunaannya boleh "
 "menyebabkan aplikasi terhenti atau rosak."
 
 #: ctk/ctkwindow.c:12771
@@ -4039,8 +4039,8 @@ msgid "Parameter Type"
 msgstr "Jenis parameter"
 
 #: ctk/inspector/css-editor.c:112
-msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "Anda boleh taip di sini mana-mana peraturan CSS dikenali oleh GTK+."
+msgid "You can type here any CSS rule recognized by CTK+."
+msgstr "Anda boleh taip di sini mana-mana peraturan CSS dikenali oleh CTK+."
 
 #: ctk/inspector/css-editor.c:113
 msgid ""
@@ -4101,8 +4101,8 @@ msgid "None"
 msgstr "Tiada"
 
 #: ctk/inspector/general.ui:34
-msgid "GTK+ Version"
-msgstr "Versi GTK+"
+msgid "CTK+ Version"
+msgstr "Versi CTK+"
 
 #: ctk/inspector/general.ui:68
 msgid "GDK Backend"
@@ -4490,8 +4490,8 @@ msgid "GL rendering is disabled"
 msgstr "Penerapan GL dilumpuhkan"
 
 #: ctk/inspector/visual.ui:61
-msgid "GTK+ Theme"
-msgstr "Tema GTK+"
+msgid "CTK+ Theme"
+msgstr "Tema CTK+"
 
 #: ctk/inspector/visual.ui:94
 msgid "Dark Variant"
@@ -8459,10 +8459,10 @@ msgstr "Cetak untuk Uji Pencetak"
 
 #~ msgid ""
 #~ "Image-loading module %s does not export the proper interface; perhaps "
-#~ "it's from a different GTK version?"
+#~ "it's from a different CTK version?"
 #~ msgstr ""
 #~ "Modul Image-loading %s tidak boleh mengeksport antaramuka dengan betul; "
-#~ "mungkin ianya daripada GTK versi lain"
+#~ "mungkin ianya daripada CTK versi lain"
 
 #~ msgid "Image type '%s' is not supported"
 #~ msgstr "Jenis imej '%s'tidak disokong"

@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 /**
@@ -29,17 +29,17 @@
  * @See_also:See the GLib manual, especially #GMainLoop and signal-related
  *    functions such as g_signal_connect()
  *
- * Before using GTK+, you need to initialize it; initialization connects to the
+ * Before using CTK+, you need to initialize it; initialization connects to the
  * window system display, and parses some standard command line arguments. The
- * ctk_init() macro initializes GTK+. ctk_init() exits the application if errors
+ * ctk_init() macro initializes CTK+. ctk_init() exits the application if errors
  * occur; to avoid this, use ctk_init_check(). ctk_init_check() allows you to
- * recover from a failed GTK+ initialization - you might start up your
+ * recover from a failed CTK+ initialization - you might start up your
  * application in text mode instead.
  *
- * Like all GUI toolkits, GTK+ uses an event-driven programming model. When the
- * user is doing nothing, GTK+ sits in the “main loop” and
+ * Like all GUI toolkits, CTK+ uses an event-driven programming model. When the
+ * user is doing nothing, CTK+ sits in the “main loop” and
  * waits for input. If the user performs some action - say, a mouse click - then
- * the main loop “wakes up” and delivers an event to GTK+. GTK+ forwards the
+ * the main loop “wakes up” and delivers an event to CTK+. CTK+ forwards the
  * event to one or more widgets.
  *
  * When widgets receive an event, they frequently emit one or more
@@ -50,10 +50,10 @@
  *
  * When your callbacks are invoked, you would typically take some action - for
  * example, when an Open button is clicked you might display a
- * #CtkFileChooserDialog. After a callback finishes, GTK+ will return to the
+ * #CtkFileChooserDialog. After a callback finishes, CTK+ will return to the
  * main loop and await more user input.
  *
- * ## Typical main() function for a GTK+ application
+ * ## Typical main() function for a CTK+ application
  *
  * |[<!-- language="C" -->
  * int
@@ -197,15 +197,15 @@ static const GDebugKey ctk_debug_keys[] = {
 /**
  * ctk_get_major_version:
  *
- * Returns the major version number of the GTK+ library.
- * (e.g. in GTK+ version 3.1.5 this is 3.)
+ * Returns the major version number of the CTK+ library.
+ * (e.g. in CTK+ version 3.1.5 this is 3.)
  *
- * This function is in the library, so it represents the GTK+ library
+ * This function is in the library, so it represents the CTK+ library
  * your code is running against. Contrast with the #CTK_MAJOR_VERSION
- * macro, which represents the major version of the GTK+ headers you
+ * macro, which represents the major version of the CTK+ headers you
  * have included when compiling your code.
  *
- * Returns: the major version number of the GTK+ library
+ * Returns: the major version number of the CTK+ library
  *
  * Since: 3.0
  */
@@ -218,15 +218,15 @@ ctk_get_major_version (void)
 /**
  * ctk_get_minor_version:
  *
- * Returns the minor version number of the GTK+ library.
- * (e.g. in GTK+ version 3.1.5 this is 1.)
+ * Returns the minor version number of the CTK+ library.
+ * (e.g. in CTK+ version 3.1.5 this is 1.)
  *
- * This function is in the library, so it represents the GTK+ library
+ * This function is in the library, so it represents the CTK+ library
  * your code is are running against. Contrast with the
  * #CTK_MINOR_VERSION macro, which represents the minor version of the
- * GTK+ headers you have included when compiling your code.
+ * CTK+ headers you have included when compiling your code.
  *
- * Returns: the minor version number of the GTK+ library
+ * Returns: the minor version number of the CTK+ library
  *
  * Since: 3.0
  */
@@ -239,15 +239,15 @@ ctk_get_minor_version (void)
 /**
  * ctk_get_micro_version:
  *
- * Returns the micro version number of the GTK+ library.
- * (e.g. in GTK+ version 3.1.5 this is 5.)
+ * Returns the micro version number of the CTK+ library.
+ * (e.g. in CTK+ version 3.1.5 this is 5.)
  *
- * This function is in the library, so it represents the GTK+ library
+ * This function is in the library, so it represents the CTK+ library
  * your code is are running against. Contrast with the
  * #CTK_MICRO_VERSION macro, which represents the micro version of the
- * GTK+ headers you have included when compiling your code.
+ * CTK+ headers you have included when compiling your code.
  *
- * Returns: the micro version number of the GTK+ library
+ * Returns: the micro version number of the CTK+ library
  *
  * Since: 3.0
  */
@@ -261,11 +261,11 @@ ctk_get_micro_version (void)
  * ctk_get_binary_age:
  *
  * Returns the binary age as passed to `libtool`
- * when building the GTK+ library the process is running against.
+ * when building the CTK+ library the process is running against.
  * If `libtool` means nothing to you, don't
  * worry about it.
  *
- * Returns: the binary age of the GTK+ library
+ * Returns: the binary age of the CTK+ library
  *
  * Since: 3.0
  */
@@ -279,11 +279,11 @@ ctk_get_binary_age (void)
  * ctk_get_interface_age:
  *
  * Returns the interface age as passed to `libtool`
- * when building the GTK+ library the process is running against.
+ * when building the CTK+ library the process is running against.
  * If `libtool` means nothing to you, don't
  * worry about it.
  *
- * Returns: the interface age of the GTK+ library
+ * Returns: the interface age of the CTK+ library
  *
  * Since: 3.0
  */
@@ -299,12 +299,12 @@ ctk_get_interface_age (void)
  * @required_minor: the required minor version
  * @required_micro: the required micro version
  *
- * Checks that the GTK+ library in use is compatible with the
+ * Checks that the CTK+ library in use is compatible with the
  * given version. Generally you would pass in the constants
  * #CTK_MAJOR_VERSION, #CTK_MINOR_VERSION, #CTK_MICRO_VERSION
  * as the three arguments to this function; that produces
  * a check that the library in use is compatible with
- * the version of GTK+ the application or module was compiled
+ * the version of CTK+ the application or module was compiled
  * against.
  *
  * Compatibility is defined by two things: first the version
@@ -314,17 +314,17 @@ ctk_get_interface_age (void)
  * version @required_major.required_minor.@required_micro
  * (same major version.)
  *
- * This function is primarily for GTK+ modules; the module
+ * This function is primarily for CTK+ modules; the module
  * can call this function to check that it wasn’t loaded
- * into an incompatible version of GTK+. However, such a
+ * into an incompatible version of CTK+. However, such a
  * check isn’t completely reliable, since the module may be
- * linked against an old version of GTK+ and calling the
+ * linked against an old version of CTK+ and calling the
  * old version of ctk_check_version(), but still get loaded
- * into an application using a newer version of GTK+.
+ * into an application using a newer version of CTK+.
  *
- * Returns: (nullable): %NULL if the GTK+ library is compatible with the
+ * Returns: (nullable): %NULL if the CTK+ library is compatible with the
  *   given version, or a string describing the version mismatch.
- *   The returned string is owned by GTK+ and should not be modified
+ *   The returned string is owned by CTK+ and should not be modified
  *   or freed.
  */
 const gchar*
@@ -336,18 +336,18 @@ ctk_check_version (guint required_major,
   gint required_effective_micro = 100 * required_minor + required_micro;
 
   if (required_major > CTK_MAJOR_VERSION)
-    return "GTK+ version too old (major mismatch)";
+    return "CTK+ version too old (major mismatch)";
   if (required_major < CTK_MAJOR_VERSION)
-    return "GTK+ version too new (major mismatch)";
+    return "CTK+ version too new (major mismatch)";
   if (required_effective_micro < ctk_effective_micro - CTK_BINARY_AGE)
-    return "GTK+ version too new (micro mismatch)";
+    return "CTK+ version too new (micro mismatch)";
   if (required_effective_micro > ctk_effective_micro)
-    return "GTK+ version too old (micro mismatch)";
+    return "CTK+ version too old (micro mismatch)";
   return NULL;
 }
 
 /* This checks to see if the process is running suid or sgid
- * at the current time. If so, we don’t allow GTK+ to be initialized.
+ * at the current time. If so, we don’t allow CTK+ to be initialized.
  * This is meant to be a mild check - we only error out if we
  * can prove the programmer is doing something wrong, not if
  * they could be doing something wrong. For this reason, we
@@ -381,10 +381,10 @@ check_setugid (void)
       rgid != egid || rgid != sgid)
     {
       g_warning ("This process is currently running setuid or setgid.\n"
-                 "This is not a supported use of GTK+. You must create a helper\n"
+                 "This is not a supported use of CTK+. You must create a helper\n"
                  "program instead. For further details, see:\n\n"
                  "    http://www.ctk.org/setuid.html\n\n"
-                 "Refusing to initialize GTK+.");
+                 "Refusing to initialize CTK+.");
       exit (1);
     }
 #endif
@@ -461,16 +461,16 @@ ctk_arg_module_cb (const char *key, const char *value, gpointer user_data)
 
 static const GOptionEntry ctk_args[] = {
   { "ctk-module",       0, 0, G_OPTION_ARG_CALLBACK, ctk_arg_module_cb,   
-    /* Description of --ctk-module=MODULES in --help output */ N_("Load additional GTK+ modules"), 
+    /* Description of --ctk-module=MODULES in --help output */ N_("Load additional CTK+ modules"), 
     /* Placeholder in --ctk-module=MODULES in --help output */ N_("MODULES") },
   { "g-fatal-warnings", 0, 0, G_OPTION_ARG_NONE, &g_fatal_warnings, 
     /* Description of --g-fatal-warnings in --help output */   N_("Make all warnings fatal"), NULL },
 #ifdef G_ENABLE_DEBUG
   { "ctk-debug",        0, 0, G_OPTION_ARG_CALLBACK, ctk_arg_debug_cb,    
-    /* Description of --ctk-debug=FLAGS in --help output */    N_("GTK+ debugging flags to set"), 
+    /* Description of --ctk-debug=FLAGS in --help output */    N_("CTK+ debugging flags to set"), 
     /* Placeholder in --ctk-debug=FLAGS in --help output */    N_("FLAGS") },
   { "ctk-no-debug",     0, 0, G_OPTION_ARG_CALLBACK, ctk_arg_no_debug_cb, 
-    /* Description of --ctk-no-debug=FLAGS in --help output */ N_("GTK+ debugging flags to unset"), 
+    /* Description of --ctk-no-debug=FLAGS in --help output */ N_("CTK+ debugging flags to unset"), 
     /* Placeholder in --ctk-no-debug=FLAGS in --help output */ N_("FLAGS") },
 #endif 
   { NULL }
@@ -652,7 +652,7 @@ do_pre_parse_initialization (int    *argc,
   pre_initialized = TRUE;
 
   if (_ctk_module_has_mixed_deps (NULL))
-    g_error ("GTK+ 2.x symbols detected. Using GTK+ 2.x and GTK+ 3 in the same process is not supported");
+    g_error ("CTK+ 2.x symbols detected. Using CTK+ 2.x and CTK+ 3 in the same process is not supported");
 
   GDK_PRIVATE_CALL (gdk_pre_parse) ();
   gdk_event_handler_set ((GdkEventFunc)ctk_main_do_event, NULL, NULL);
@@ -670,7 +670,7 @@ do_pre_parse_initialization (int    *argc,
       env_string = NULL;
     }
 
-  env_string = g_getenv ("GTK3_MODULES");
+  env_string = g_getenv ("CTK3_MODULES");
   if (env_string)
     ctk_modules_string = g_string_new (env_string);
 
@@ -856,12 +856,12 @@ ctk_set_display_debug_flags (GdkDisplay *display,
 /**
  * ctk_get_debug_flags:
  *
- * Returns the GTK+ debug flags.
+ * Returns the CTK+ debug flags.
  *
- * This function is intended for GTK+ modules that want
- * to adjust their debug output based on GTK+ debug flags.
+ * This function is intended for CTK+ modules that want
+ * to adjust their debug output based on CTK+ debug flags.
  *
- * Returns: the GTK+ debug flags.
+ * Returns: the CTK+ debug flags.
  */
 guint
 ctk_get_debug_flags (void)
@@ -872,7 +872,7 @@ ctk_get_debug_flags (void)
 /**
  * ctk_set_debug_flags:
  *
- * Sets the GTK+ debug flags.
+ * Sets the CTK+ debug flags.
  */
 void
 ctk_set_debug_flags (guint flags)
@@ -897,14 +897,14 @@ ctk_simulate_touchscreen (void)
  *     when parsing the commandline arguments
  *
  * Returns a #GOptionGroup for the commandline arguments recognized
- * by GTK+ and GDK.
+ * by CTK+ and GDK.
  *
  * You should add this group to your #GOptionContext
  * with g_option_context_add_group(), if you are using
  * g_option_context_parse() to parse your commandline arguments.
  *
  * Returns: (transfer full): a #GOptionGroup for the commandline
- *     arguments recognized by GTK+
+ *     arguments recognized by CTK+
  *
  * Since: 2.6
  */
@@ -919,7 +919,7 @@ ctk_get_option_group (gboolean open_default_display)
   info = g_new0 (OptionGroupInfo, 1);
   info->open_default_display = open_default_display;
   
-  group = g_option_group_new ("ctk", _("GTK+ Options"), _("Show GTK+ Options"), info, g_free);
+  group = g_option_group_new ("ctk", _("CTK+ Options"), _("Show CTK+ Options"), info, g_free);
   g_option_group_set_parse_hooks (group, pre_parse_hook, post_parse_hook);
 
   GDK_PRIVATE_CALL (gdk_add_option_entries) (group);
@@ -936,7 +936,7 @@ ctk_get_option_group (gboolean open_default_display)
  *     any arguments were handled.
  * @argv: (array length=argc) (inout) (allow-none): Address of the
  *     `argv` parameter of main(), or %NULL. Any options
- *     understood by GTK+ are stripped before return.
+ *     understood by CTK+ are stripped before return.
  * @parameter_string: (allow-none): a string which is displayed in
  *    the first line of `--help` output, after
  *    `programname [OPTION...]`
@@ -1021,17 +1021,17 @@ done:
  *     command line arguments
  *
  * Parses command line arguments, and initializes global
- * attributes of GTK+, but does not actually open a connection
+ * attributes of CTK+, but does not actually open a connection
  * to a display. (See gdk_display_open(), gdk_get_display_arg_name())
  *
- * Any arguments used by GTK+ or GDK are removed from the array and
+ * Any arguments used by CTK+ or GDK are removed from the array and
  * @argc and @argv are updated accordingly.
  *
  * There is no need to call this function explicitly if you are using
  * ctk_init(), or ctk_init_check().
  *
- * Note that many aspects of GTK+ require a display connection to
- * function, so this way of initializing GTK+ is really only useful
+ * Note that many aspects of CTK+ require a display connection to
+ * function, so this way of initializing CTK+ is really only useful
  * for specialized use cases.
  *
  * Returns: %TRUE if initialization succeeded, otherwise %FALSE
@@ -1079,7 +1079,7 @@ ctk_parse_args (int    *argc,
  *     any arguments were handled.
  * @argv: (array length=argc) (inout) (allow-none): Address of the
  *     `argv` parameter of main(), or %NULL. Any options
- *     understood by GTK+ are stripped before return.
+ *     understood by CTK+ are stripped before return.
  *
  * This function does the same work as ctk_init() with only a single
  * change: It does not terminate the program if the commandline
@@ -1090,7 +1090,7 @@ ctk_parse_args (int    *argc,
  * communication with the user - for example a curses or command line
  * interface.
  *
- * Note that calling any GTK function or instantiating any GTK type after
+ * Note that calling any CTK function or instantiating any CTK type after
  * this function returns %FALSE results in undefined behavior.
  *
  * Returns: %TRUE if the commandline arguments (if any) were valid and
@@ -1125,9 +1125,9 @@ ctk_init_check (int    *argc,
  *     any arguments were handled.
  * @argv: (array length=argc) (inout) (allow-none): Address of the
  *     `argv` parameter of main(), or %NULL. Any options
- *     understood by GTK+ are stripped before return.
+ *     understood by CTK+ are stripped before return.
  *
- * Call this function before using any other GTK+ functions in your GUI
+ * Call this function before using any other CTK+ functions in your GUI
  * applications.  It will initialize everything needed to operate the
  * toolkit and parses some standard command line options.
  *
@@ -1138,7 +1138,7 @@ ctk_init_check (int    *argc,
  * @argc and @argv are adjusted accordingly so your own code will
  * never see those standard arguments.
  *
- * Note that there are some alternative ways to initialize GTK+:
+ * Note that there are some alternative ways to initialize CTK+:
  * if you are calling ctk_parse_args(), ctk_init_check(),
  * ctk_init_with_args() or g_option_context_parse() with
  * the option group returned by ctk_get_option_group(),
@@ -1153,7 +1153,7 @@ ctk_init_check (int    *argc,
  * your program to fall back to a textual interface you want to
  * call ctk_init_check() instead.
  *
- * Since 2.18, GTK+ calls `signal (SIGPIPE, SIG_IGN)`
+ * Since 2.18, CTK+ calls `signal (SIGPIPE, SIG_IGN)`
  * during initialization, to ignore SIGPIPE signals, since these are
  * almost never wanted in graphical applications. If you do need to
  * handle SIGPIPE for some reason, reset the handler after ctk_init(),
@@ -1187,17 +1187,17 @@ check_sizeof_CtkWindow (size_t sizeof_CtkWindow)
 {
   if (sizeof_CtkWindow != sizeof (CtkWindow))
     g_error ("Incompatible build!\n"
-             "The code using GTK+ thinks CtkWindow is of different\n"
-             "size than it actually is in this build of GTK+.\n"
+             "The code using CTK+ thinks CtkWindow is of different\n"
+             "size than it actually is in this build of CTK+.\n"
              "On Windows, this probably means that you have compiled\n"
              "your code with gcc without the -mms-bitfields switch,\n"
              "or that you are using an unsupported compiler.");
 }
 
-/* In GTK+ 2.0 the CtkWindow struct actually is the same size in
+/* In CTK+ 2.0 the CtkWindow struct actually is the same size in
  * gcc-compiled code on Win32 whether compiled with -fnative-struct or
- * not. Unfortunately this wan’t noticed until after GTK+ 2.0.1. So,
- * from GTK+ 2.0.2 on, check some other struct, too, where the use of
+ * not. Unfortunately this wan’t noticed until after CTK+ 2.0.1. So,
+ * from CTK+ 2.0.2 on, check some other struct, too, where the use of
  * -fnative-struct still matters. CtkBox is one such.
  */
 static void
@@ -1205,8 +1205,8 @@ check_sizeof_CtkBox (size_t sizeof_CtkBox)
 {
   if (sizeof_CtkBox != sizeof (CtkBox))
     g_error ("Incompatible build!\n"
-             "The code using GTK+ thinks CtkBox is of different\n"
-             "size than it actually is in this build of GTK+.\n"
+             "The code using CTK+ thinks CtkBox is of different\n"
+             "size than it actually is in this build of CTK+.\n"
              "On Windows, this probably means that you have compiled\n"
              "your code with gcc without the -mms-bitfields switch,\n"
              "or that you are using an unsupported compiler.");
@@ -1245,13 +1245,13 @@ ctk_init_check_abi_check (int *argc, char ***argv, int num_checks, size_t sizeof
  * setlocale() and will default to setting the %CTK_TEXT_DIR_LTR
  * direction otherwise. %CTK_TEXT_DIR_NONE will never be returned.
  *
- * GTK+ sets the default text direction according to the locale
+ * CTK+ sets the default text direction according to the locale
  * during ctk_init(), and you should normally use
  * ctk_widget_get_direction() or ctk_widget_get_default_direction()
  * to obtain the current direcion.
  *
  * This function is only needed rare cases when the locale is
- * changed after GTK+ has already been initialized. In this case,
+ * changed after CTK+ has already been initialized. In this case,
  * you can use it to update the default text direction as follows:
  *
  * |[<!-- language="C" -->
@@ -1289,7 +1289,7 @@ ctk_get_locale_direction (void)
  * Returns the #PangoLanguage for the default language currently in
  * effect. (Note that this can change over the life of an
  * application.) The default language is derived from the current
- * locale. It determines, for example, whether GTK+ uses the
+ * locale. It determines, for example, whether CTK+ uses the
  * right-to-left or left-to-right text direction.
  *
  * This function is equivalent to pango_language_get_default().
@@ -1417,7 +1417,7 @@ ctk_events_pending (void)
  *
  * Runs a single iteration of the mainloop.
  *
- * If no events are waiting to be processed GTK+ will block
+ * If no events are waiting to be processed CTK+ will block
  * until the next event is noticed. If you don’t want to block
  * look at ctk_main_iteration_do() or check if any events are
  * pending with ctk_events_pending() first.
@@ -1440,7 +1440,7 @@ ctk_main_iteration (void)
 
 /**
  * ctk_main_iteration_do:
- * @blocking: %TRUE if you want GTK+ to block if no events are pending
+ * @blocking: %TRUE if you want CTK+ to block if no events are pending
  *
  * Runs a single iteration of the mainloop.
  * If no events are available either return or block depending on
@@ -1651,7 +1651,7 @@ check_event_in_child_popover (CtkWidget *event_widget,
  *
  * Processes a single GDK event.
  *
- * This is public only to allow filtering of events between GDK and GTK+.
+ * This is public only to allow filtering of events between GDK and CTK+.
  * You will not usually need to call this function directly.
  *
  * While you should not call this function directly, you might want to
@@ -1770,7 +1770,7 @@ ctk_main_do_event (GdkEvent *event)
     }
 
   /* Find out the topmost widget where captured event propagation
-   * should start, which is the widget holding the GTK+ grab
+   * should start, which is the widget holding the CTK+ grab
    * if any, otherwise it's left NULL and events are emitted
    * from the toplevel (or topmost parentless parent).
    */
@@ -1795,7 +1795,7 @@ ctk_main_do_event (GdkEvent *event)
     grab_widget = event_widget;
 
   /* If the widget receiving events is actually blocked by another
-   * device GTK+ grab
+   * device CTK+ grab
    */
   if (device &&
       _ctk_window_group_widget_is_blocked_for_device (window_group, grab_widget, device))
@@ -2307,7 +2307,7 @@ ctk_grab_remove (CtkWidget *widget)
  * @device: a #GdkDevice to grab on.
  * @block_others: %TRUE to prevent other devices to interact with @widget.
  *
- * Adds a GTK+ grab on @device, so all the events on @device and its
+ * Adds a CTK+ grab on @device, so all the events on @device and its
  * associated pointer or keyboard (if any) are delivered to @widget.
  * If the @block_others parameter is %TRUE, any other devices will be
  * unable to interact with @widget during the grab.
@@ -2452,7 +2452,7 @@ ctk_invoke_key_snoopers (CtkWidget *grab_widget,
 /**
  * ctk_get_current_event:
  *
- * Obtains a copy of the event currently being processed by GTK+.
+ * Obtains a copy of the event currently being processed by CTK+.
  *
  * For example, if you are handling a #CtkButton::clicked signal,
  * the current event will be the #GdkEventButton that triggered
@@ -2698,7 +2698,7 @@ propagate_event (CtkWidget *widget,
  * Sends an event to a widget, propagating the event to parent widgets
  * if the event remains unhandled.
  *
- * Events received by GTK+ from GDK normally begin in ctk_main_do_event().
+ * Events received by CTK+ from GDK normally begin in ctk_main_do_event().
  * Depending on the type of event, existence of modal dialogs, grabs, etc.,
  * the event may be propagated; if so, this function is used.
  *

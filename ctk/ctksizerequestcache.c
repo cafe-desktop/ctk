@@ -208,7 +208,7 @@ _ctk_size_request_cache_commit (SizeRequestCache *cache,
 /* looks for a cached size request for this for_size.
  *
  * Note that this caching code was originally derived from
- * the Clutter toolkit but has evolved for other GTK+ requirements.
+ * the Clutter toolkit but has evolved for other CTK+ requirements.
  */
 gboolean
 _ctk_size_request_cache_lookup (SizeRequestCache *cache,

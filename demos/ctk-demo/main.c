@@ -42,24 +42,24 @@ activate_about (GSimpleAction *action,
 {
   CtkApplication *app = user_data;
   const gchar *authors[] = {
-    "The GTK+ Team",
+    "The CTK+ Team",
     NULL
   };
 
   ctk_show_about_dialog (CTK_WINDOW (ctk_application_get_active_window (app)),
-                         "program-name", "GTK+ Demo",
-                         "version", g_strdup_printf ("%s,\nRunning against GTK+ %d.%d.%d",
+                         "program-name", "CTK+ Demo",
+                         "version", g_strdup_printf ("%s,\nRunning against CTK+ %d.%d.%d",
                                                      PACKAGE_VERSION,
                                                      ctk_get_major_version (),
                                                      ctk_get_minor_version (),
                                                      ctk_get_micro_version ()),
-                         "copyright", "(C) 1997-2013 The GTK+ Team",
+                         "copyright", "(C) 1997-2013 The CTK+ Team",
                          "license-type", CTK_LICENSE_LGPL_2_1,
                          "website", "http://www.ctk.org",
-                         "comments", "Program to demonstrate GTK+ widgets",
+                         "comments", "Program to demonstrate CTK+ widgets",
                          "authors", authors,
                          "logo-icon-name", "ctk3-demo",
-                         "title", "About GTK+ Demo",
+                         "title", "About CTK+ Demo",
                          NULL);
 }
 
@@ -1181,7 +1181,7 @@ main (int argc, char **argv)
 
   /* Most code in ctk-demo is intended to be exemplary, but not
    * these few lines, which are just a hack so ctk-demo will work
-   * in the GTK tree without installing it.
+   * in the CTK tree without installing it.
    */
   if (g_file_test ("../../modules/input/immodules.cache", G_FILE_TEST_EXISTS))
     {

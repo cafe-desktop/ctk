@@ -5109,12 +5109,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 
 #: ctk/ctksettings.c:380
-msgid "GTK Modules"
-msgstr "GTK Modules"
+msgid "CTK Modules"
+msgstr "CTK Modules"
 
 #: ctk/ctksettings.c:381
-msgid "List of currently active GTK modules"
-msgstr "List of currently active GTK modules"
+msgid "List of currently active CTK modules"
+msgstr "List of currently active CTK modules"
 
 #: ctk/ctksettings.c:390
 msgid "Xft Antialias"

@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 2008 Tristan Van Berkom <tristan.van.berkom@gmail.com>
  *
  * This library is free software; you can redistribute it and/or

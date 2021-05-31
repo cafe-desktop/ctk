@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -227,9 +227,9 @@
  *
  * # Links
  *
- * Since 2.18, GTK+ supports markup for clickable hyperlinks in addition
+ * Since 2.18, CTK+ supports markup for clickable hyperlinks in addition
  * to regular Pango markup. The markup for links is borrowed from HTML,
- * using the `<a>` with “href“ and “title“ attributes. GTK+ renders links
+ * using the `<a>` with “href“ and “title“ attributes. CTK+ renders links
  * similar to the way they appear in web browsers, with colored, underlined
  * text. The “title“ attribute is displayed as a tooltip on the link.
  *
@@ -239,7 +239,7 @@
  * const gchar *text =
  * "Go to the"
  * "<a href=\"http://www.ctk.org title=\"&lt;i&gt;Our&lt;/i&gt; website\">"
- * "GTK+ website</a> for more...";
+ * "CTK+ website</a> for more...";
  * CtkWidget *label = ctk_label_new (NULL);
  * ctk_label_set_markup (CTK_LABEL (label), text);
  * ]|
@@ -3181,7 +3181,7 @@ ctk_label_get_max_width_chars (CtkLabel *label)
  * by the edge of the widget if it exceeds the widget size.
  *
  * Note that setting line wrapping to %TRUE does not make the label
- * wrap at its parent container’s width, because GTK+ widgets
+ * wrap at its parent container’s width, because CTK+ widgets
  * conceptually can’t make their requisition depend on the parent
  * container’s size. For a label that wraps at a specific position,
  * set the label’s width using ctk_widget_set_size_request().
@@ -6831,7 +6831,7 @@ ctk_label_get_current_link (CtkLabel *label)
  * This function is intended for use in a #CtkLabel::activate-link handler
  * or for use in a #CtkWidget::query-tooltip handler.
  *
- * Returns: the currently active URI. The string is owned by GTK+ and must
+ * Returns: the currently active URI. The string is owned by CTK+ and must
  *   not be freed or modified.
  *
  * Since: 2.18

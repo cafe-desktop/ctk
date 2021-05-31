@@ -2822,8 +2822,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:464
-msgid "Load additional GTK+ modules"
-msgstr "Cjarie i modui GTK+ adizionâi"
+msgid "Load additional CTK+ modules"
+msgstr "Cjarie i modui CTK+ adizionâi"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:465
@@ -2837,12 +2837,12 @@ msgstr "Fâs deventâ ducj i avertiments fatâi"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:470
-msgid "GTK+ debugging flags to set"
+msgid "CTK+ debugging flags to set"
 msgstr "Opzion di debug GDK di stabilî"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:473
-msgid "GTK+ debugging flags to unset"
+msgid "CTK+ debugging flags to unset"
 msgstr "Opzions di debug GDK di no stabilî"
 
 #: ctk/ctkmain.c:808 ctk/ctkmain.c:1002
@@ -2851,12 +2851,12 @@ msgid "Cannot open display: %s"
 msgstr "Impussibil vierzi il display: %s"
 
 #: ctk/ctkmain.c:920
-msgid "GTK+ Options"
-msgstr "Opzions GTK+"
+msgid "CTK+ Options"
+msgstr "Opzions CTK+"
 
 #: ctk/ctkmain.c:920
-msgid "Show GTK+ Options"
-msgstr "Mostre opzions GTK+"
+msgid "Show CTK+ Options"
+msgstr "Mostre opzions CTK+"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -3878,10 +3878,10 @@ msgstr "I dâts serializâts a son malformâts"
 
 #: ctk/ctktextbufferserialize.c:1873
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 "I dâts serializâts a son malformâts. La prime sezion no je "
-"GTKTEXTBUFFERCONTENTS-0001"
+"CTKTEXTBUFFERCONTENTS-0001"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -3960,18 +3960,18 @@ msgstr "Simpri denant"
 
 #: ctk/ctkwindow.c:12770
 #, c-format
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "Doprâ GTK+ Inspector?"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "Doprâ CTK+ Inspector?"
 
 #: ctk/ctkwindow.c:12772
 #, c-format
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"Ispetôr GTK+ al è un debugger interatîf che ti permet di esplorâ e modificâ "
-"il didentri di cualsisei aplicazion GTK+.\n"
+"Ispetôr CTK+ al è un debugger interatîf che ti permet di esplorâ e modificâ "
+"il didentri di cualsisei aplicazion CTK+.\n"
 "Doprantlu ae aplicazion si podarès causâ une interuzion o un colàs."
 
 #: ctk/ctkwindow.c:12777
@@ -4001,8 +4001,8 @@ msgid "Parameter Type"
 msgstr "Gjenar di parametri"
 
 #: ctk/inspector/css-editor.c:112
-msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "Si pues scrivi achì cualsisei regule CSS ricognossude di GTK+."
+msgid "You can type here any CSS rule recognized by CTK+."
+msgstr "Si pues scrivi achì cualsisei regule CSS ricognossude di CTK+."
 
 #: ctk/inspector/css-editor.c:113
 msgid ""
@@ -4063,8 +4063,8 @@ msgid "None"
 msgstr "Nissun"
 
 #: ctk/inspector/general.ui:34
-msgid "GTK+ Version"
-msgstr "Version GTK+"
+msgid "CTK+ Version"
+msgstr "Version CTK+"
 
 #: ctk/inspector/general.ui:68
 msgid "GDK Backend"
@@ -4451,7 +4451,7 @@ msgid "GL rendering is disabled"
 msgstr "Rese video GL disabilitade"
 
 #: ctk/inspector/visual.ui:61
-msgid "GTK+ Theme"
+msgid "CTK+ Theme"
 msgstr "Teme Ctk+"
 
 #: ctk/inspector/visual.ui:94

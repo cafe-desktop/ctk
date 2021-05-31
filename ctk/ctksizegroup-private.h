@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctksizegroup-private.h:
  * Copyright (C) 2000-2010 Red Hat Software
  *

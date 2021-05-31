@@ -6594,12 +6594,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Liste over ikonstørrelser (ctk-menu=16,16;ctk-button=20,20 …"
 
 #: ../ctk/ctksettings.c:541
-msgid "GTK Modules"
-msgstr "GTK-moduler"
+msgid "CTK Modules"
+msgstr "CTK-moduler"
 
 #: ../ctk/ctksettings.c:542
-msgid "List of currently active GTK modules"
-msgstr "Liste over aktive GTK-moduler"
+msgid "List of currently active CTK modules"
+msgstr "Liste over aktive CTK-moduler"
 
 #: ../ctk/ctksettings.c:550
 msgid "Xft Antialias"
@@ -7145,7 +7145,7 @@ msgstr ""
 #: ../ctk/ctksettings.c:1657
 #, fuzzy
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
 "Om knapper i dialoger skal bruke den alternative rekkefølgen for knapper"
@@ -7165,7 +7165,7 @@ msgid "Recent Files Enabled"
 msgstr "Nylig brukte filer er slått på"
 
 #: ../ctk/ctksettings.c:1691
-msgid "Whether GTK+ remembers recent files"
+msgid "Whether CTK+ remembers recent files"
 msgstr ""
 
 #: ../ctk/ctksettings.c:1706

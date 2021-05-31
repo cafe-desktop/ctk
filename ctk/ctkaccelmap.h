@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1998, 2001 Tim Janik
  *
  * This library is free software; you can redistribute it and/or

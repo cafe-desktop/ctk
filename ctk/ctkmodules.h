@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright 1998-2002 Tim Janik, Red Hat, Inc., and others.
  * Copyright (C) 2003 Alex Graveley
  *
@@ -29,10 +29,10 @@ G_BEGIN_DECLS
 
 /**
  * CtkModuleInitFunc:
- * @argc: (allow-none): GTK+ always passes %NULL for this argument
- * @argv: (allow-none) (array length=argc): GTK+ always passes %NULL for this argument
+ * @argc: (allow-none): CTK+ always passes %NULL for this argument
+ * @argv: (allow-none) (array length=argc): CTK+ always passes %NULL for this argument
  *
- * Each GTK+ module must have a function ctk_module_init() with this prototype.
+ * Each CTK+ module must have a function ctk_module_init() with this prototype.
  * This function is called after loading the module.
  */
 typedef void     (*CtkModuleInitFunc)        (gint        *argc,
@@ -42,8 +42,8 @@ typedef void     (*CtkModuleInitFunc)        (gint        *argc,
  * CtkModuleDisplayInitFunc:
  * @display: an open #GdkDisplay
  *
- * A multihead-aware GTK+ module may have a ctk_module_display_init() function
- * with this prototype. GTK+ calls this function for each opened display.
+ * A multihead-aware CTK+ module may have a ctk_module_display_init() function
+ * with this prototype. CTK+ calls this function for each opened display.
  *
  * Since: 2.2
  */

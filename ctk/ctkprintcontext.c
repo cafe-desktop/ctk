@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkprintcontext.c: Print Context
  * Copyright (C) 2006, Red Hat, Inc.
  *
@@ -91,7 +91,7 @@
  * }
  * ]|
  *
- * Printing support was added in GTK+ 2.10.
+ * Printing support was added in CTK+ 2.10.
  */
 
 
@@ -192,7 +192,7 @@ _ctk_print_context_get_fontmap (CtkPrintContext *context)
  * 
  * This function is intended to be used when implementing
  * an internal print preview, it is not needed for printing,
- * since GTK+ itself creates a suitable cairo context in that
+ * since CTK+ itself creates a suitable cairo context in that
  * case.
  *
  * Since: 2.10 

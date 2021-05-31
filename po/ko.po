@@ -2911,8 +2911,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:464
-msgid "Load additional GTK+ modules"
-msgstr "GTK+ 모듈을 추가로 읽어들입니다"
+msgid "Load additional CTK+ modules"
+msgstr "CTK+ 모듈을 추가로 읽어들입니다"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:465
@@ -2926,13 +2926,13 @@ msgstr "모든 경고를 치명적인 것으로 간주합니다"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:470
-msgid "GTK+ debugging flags to set"
-msgstr "설정할 GTK+ 디버깅 플래그"
+msgid "CTK+ debugging flags to set"
+msgstr "설정할 CTK+ 디버깅 플래그"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:473
-msgid "GTK+ debugging flags to unset"
-msgstr "설정 해제할 GTK+ 디버깅 플래그"
+msgid "CTK+ debugging flags to unset"
+msgstr "설정 해제할 CTK+ 디버깅 플래그"
 
 #: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
 #, c-format
@@ -2940,12 +2940,12 @@ msgid "Cannot open display: %s"
 msgstr "디스플레이를 열 수 없습니다: %s"
 
 #: ctk/ctkmain.c:922
-msgid "GTK+ Options"
-msgstr "GTK+ 옵션"
+msgid "CTK+ Options"
+msgstr "CTK+ 옵션"
 
 #: ctk/ctkmain.c:922
-msgid "Show GTK+ Options"
-msgstr "GTK+ 옵션 표시"
+msgid "Show CTK+ Options"
+msgstr "CTK+ 옵션 표시"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -3966,10 +3966,10 @@ msgstr "일렬화된 데이터의 형식이 잘못되었습니다"
 
 #: ctk/ctktextbufferserialize.c:1873
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 "일렬화된 데이터의 형식이 잘못되었습니다. 첫번째 섹션이 "
-"GTKTEXTBUFFERCONTENTS-0001이 아닙니다"
+"CTKTEXTBUFFERCONTENTS-0001이 아닙니다"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -4049,18 +4049,18 @@ msgstr "항상 위"
 
 #: ctk/ctkwindow.c:12777
 #, c-format
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "GTK+ 인스펙터를 사용하시겠습니까?"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "CTK+ 인스펙터를 사용하시겠습니까?"
 
 #: ctk/ctkwindow.c:12779
 #, c-format
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"GTK+ 인스펙터는 디버깅 프로그램으로, GTK+ 인스펙터를 이용해서 모든 GTK+ 프로"
-"그램의 내부 구조를 살펴 보거나 수정할 수 있습니다. GTK+ 인스펙터를 사용했을 "
+"CTK+ 인스펙터는 디버깅 프로그램으로, CTK+ 인스펙터를 이용해서 모든 CTK+ 프로"
+"그램의 내부 구조를 살펴 보거나 수정할 수 있습니다. CTK+ 인스펙터를 사용했을 "
 "때 프로그램이 멈추거나 이상 동작으로 중지할 수도 있습니다."
 
 #: ctk/ctkwindow.c:12784
@@ -4090,8 +4090,8 @@ msgid "Parameter Type"
 msgstr "파라미터 종류"
 
 #: ctk/inspector/css-editor.c:112
-msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "GTK+에서 인식하는 모든 CSS 규칙을 여기 입력할 수 있습니다."
+msgid "You can type here any CSS rule recognized by CTK+."
+msgstr "CTK+에서 인식하는 모든 CSS 규칙을 여기 입력할 수 있습니다."
 
 #: ctk/inspector/css-editor.c:113
 msgid ""
@@ -4150,8 +4150,8 @@ msgid "None"
 msgstr "없음"
 
 #: ctk/inspector/general.ui:34
-msgid "GTK+ Version"
-msgstr "GTK+ 버전"
+msgid "CTK+ Version"
+msgstr "CTK+ 버전"
 
 #: ctk/inspector/general.ui:68
 msgid "GDK Backend"
@@ -4540,8 +4540,8 @@ msgid "GL rendering is disabled"
 msgstr "GL 렌더링을 사용하지 않습니다"
 
 #: ctk/inspector/visual.ui:61
-msgid "GTK+ Theme"
-msgstr "GTK+ 테마"
+msgid "CTK+ Theme"
+msgstr "CTK+ 테마"
 
 #: ctk/inspector/visual.ui:94
 msgid "Dark Variant"
@@ -7743,7 +7743,7 @@ msgstr "웨일랜드"
 #: modules/input/imwaylandctk.c:82
 msgctxt "input method menu"
 msgid "Waylandctk"
-msgstr "웨일랜드GTK"
+msgstr "웨일랜드CTK"
 
 #. ID
 #: modules/input/imxim.c:26

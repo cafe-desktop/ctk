@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkrecentfilter.h - Filter object for recently used resources
  * Copyright (C) 2006, Emmanuele Bassi
  *

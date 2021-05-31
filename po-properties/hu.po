@@ -6896,12 +6896,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Ikonméretek listája (ctk-menu=16,16;ctk-button=20,20..."
 
 #: ctk/ctksettings.c:578
-msgid "GTK Modules"
-msgstr "GTK-modulok"
+msgid "CTK Modules"
+msgstr "CTK-modulok"
 
 #: ctk/ctksettings.c:579
-msgid "List of currently active GTK modules"
-msgstr "Az éppen aktív GTK-modulok listája"
+msgid "List of currently active CTK modules"
+msgstr "Az éppen aktív CTK-modulok listája"
 
 #: ctk/ctksettings.c:587
 msgid "Xft Antialias"
@@ -7481,10 +7481,10 @@ msgstr "A párbeszédablakok fejlécsávot használnak"
 
 #: ctk/ctksettings.c:1708
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"A beépített GTK+ ablakok fejlécsávot használjanak-e a műveletterület helyett."
+"A beépített CTK+ ablakok fejlécsávot használjanak-e a műveletterület helyett."
 
 #: ctk/ctksettings.c:1724
 msgid "Enable primary paste"
@@ -7503,8 +7503,8 @@ msgid "Recent Files Enabled"
 msgstr "Legutóbbi fájlok engedélyezve"
 
 #: ctk/ctksettings.c:1742
-msgid "Whether GTK+ remembers recent files"
-msgstr "Emlékezzen-e a GTK+ a legutóbbi fájlokra"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Emlékezzen-e a CTK+ a legutóbbi fájlokra"
 
 #: ctk/ctksettings.c:1757
 msgid "Long press time"

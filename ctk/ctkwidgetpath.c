@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 2010 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -39,7 +39,7 @@
  * path abstraction is used in #CtkStyleContext on behalf of the real
  * widget in order to query style information.
  *
- * If you are using GTK+ widgets, you probably will not need to use
+ * If you are using CTK+ widgets, you probably will not need to use
  * this API directly, as there is ctk_widget_get_path(), and the style
  * context returned by ctk_widget_get_style_context() will be automatically
  * updated on widget hierarchy changes.
@@ -928,7 +928,7 @@ ctk_widget_path_iter_clear_classes (CtkWidgetPath *path,
  *
  * Returns: (transfer container) (element-type utf8): The list of
  *          classes, This is a list of strings, the #GSList contents
- *          are owned by GTK+, but you should use g_slist_free() to
+ *          are owned by CTK+, but you should use g_slist_free() to
  *          free the list itself.
  *
  * Since: 3.0
@@ -1142,7 +1142,7 @@ ctk_widget_path_iter_clear_regions (CtkWidgetPath *path,
  *
  * Returns: (transfer container) (element-type utf8): The list of
  *          regions, This is a list of strings, the #GSList contents
- *          are owned by GTK+, but you should use g_slist_free() to
+ *          are owned by CTK+, but you should use g_slist_free() to
  *          free the list itself.
  *
  * Since: 3.0

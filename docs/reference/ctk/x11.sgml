@@ -4,35 +4,35 @@
 ]>
 <refentry id="ctk-x11">
 <refmeta>
-<refentrytitle>Using GTK+ on the X Window System</refentrytitle>
+<refentrytitle>Using CTK+ on the X Window System</refentrytitle>
 <manvolnum>3</manvolnum>
-<refmiscinfo>GTK Library</refmiscinfo>
+<refmiscinfo>CTK Library</refmiscinfo>
 </refmeta>
 
 <refnamediv>
-<refname>Using GTK+ on the X Window System</refname>
+<refname>Using CTK+ on the X Window System</refname>
 <refpurpose>
-X11-specific aspects of using GTK+
+X11-specific aspects of using CTK+
 </refpurpose>
 </refnamediv>
 
 <refsect1>
-<title>GTK+ for the X Window System</title>
+<title>CTK+ for the X Window System</title>
 
 <para>
-On UNIX, the X backend is the default build for GTK+.
+On UNIX, the X backend is the default build for CTK+.
 So you don't need to do anything special when compiling it,
 and everything should "just work."
 </para>
 
 <para>
-To mix low-level Xlib routines into a GTK program,
+To mix low-level Xlib routines into a CTK program,
 see <link linkend="gdk-X-Window-System-Interaction">GDK X Window
 System interaction</link> in the GDK manual.
 </para>
 
 <para>
-GTK+ includes an cross-process embedding facility in the form of
+CTK+ includes an cross-process embedding facility in the form of
 the #CtkSocket and #CtkPlug widgets. These are X11-specific, and
 you have to include the <filename>ctk/ctkx.h</filename> header
 to use them.
@@ -97,11 +97,11 @@ The X11 GDK backend can be influenced with some additional environment variables
   <title><envar>GDK_DPI_SCALE</envar></title>
 
   <para>
-    This can be useful when using scale-aware GTK+ applications together
+    This can be useful when using scale-aware CTK+ applications together
     with scale-unaware applications on a high-dpi display. In that case,
     the font resolution can be doubled to make scale-unaware applications
     readable, and <envar>GDK_DPI_SCALE=0.5</envar> can be set to compensate
-    for that in GTK+ applications which are already scaled by setting
+    for that in CTK+ applications which are already scaled by setting
     <envar>GDK_SCALE=2</envar>.
   </para>
 </formalpara>
@@ -130,7 +130,7 @@ has links to many relevant specifications.
 </para>
 <para>
 The GDK manual covers <link
-linkend="gdk-X-Window-System-Interaction">using Xlib in a GTK
+linkend="gdk-X-Window-System-Interaction">using Xlib in a CTK
 program</link>.
 </para>
 
@@ -165,7 +165,7 @@ url="http://www.freedesktop.org/standards/">convention</ulink>.
 </para>
 
 <para>
-GTK+ has functions for asking the window manager to do various things;
+CTK+ has functions for asking the window manager to do various things;
 see for example <link
 linkend="ctk-window-iconify">ctk_window_iconify()</link> or <link
 linkend="ctk-window-maximize">ctk_window_maximize()</link> or <link

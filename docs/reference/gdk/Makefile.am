@@ -61,7 +61,7 @@ AM_CPPFLAGS = 			\
 	$(CTK_DEBUG_FLAGS)	\
 	$(GDK_DEP_CFLAGS)
 
-GTKDOC_LIBS = $(top_builddir)/gdk/libgdk-3.la $(GDK_DEP_LIBS)
+CTKDOC_LIBS = $(top_builddir)/gdk/libgdk-3.la $(GDK_DEP_LIBS)
 
 # Extra options to supply to gtkdoc-mkdb
 MKDB_OPTIONS=--output-format=xml --name-space=gdk
@@ -202,11 +202,11 @@ EXTRA_DIST += \
 	version.xml.in \
 	meson.build
 
-if ENABLE_GTK_DOC
+if ENABLE_CTK_DOC
 TESTS_ENVIRONMENT = cd $(srcdir) && \
   DOC_MODULE=$(DOC_MODULE) DOC_MAIN_SGML_FILE=$(DOC_MAIN_SGML_FILE) \
   SRCDIR=$(abs_srcdir) BUILDDIR=$(abs_builddir)
-#TESTS = $(GTKDOC_CHECK)
+#TESTS = $(CTKDOC_CHECK)
 endif
 
 -include $(top_srcdir)/git.mk

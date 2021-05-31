@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkfilechooserentry.c: Entry with filename completion
  * Copyright (C) 2003, Red Hat, Inc.
  *
@@ -841,7 +841,7 @@ delete_text_callback (CtkFileChooserEntry *chooser_entry,
  * @eat_escape: If %TRUE, capture Escape key presses and emit ::hide-entry
  *
  * Creates a new #CtkFileChooserEntry object. #CtkFileChooserEntry
- * is an internal implementation widget for the GTK+ file chooser
+ * is an internal implementation widget for the CTK+ file chooser
  * which is an entry with completion with respect to a
  * #CtkFileSystem object.
  *

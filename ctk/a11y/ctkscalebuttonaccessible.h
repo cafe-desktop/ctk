@@ -1,4 +1,4 @@
-/* GTK+ - accessibility implementations
+/* CTK+ - accessibility implementations
  * Copyright 2008 Jan Arne Petersen <jap@gnome.org>
  *
  * This library is free software; you can redistribute it and/or

@@ -2519,7 +2519,7 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ../ctk/ctkmain.c:454
-msgid "Load additional GTK+ modules"
+msgid "Load additional CTK+ modules"
 msgstr "Učitaj dopunske Ctk+ dodatke"
 
 #. Placeholder in --ctk-module=MODULES in --help output
@@ -2534,12 +2534,12 @@ msgstr "Učini sva upozorenja pogubnim."
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:460
-msgid "GTK+ debugging flags to set"
+msgid "CTK+ debugging flags to set"
 msgstr "Koje Ctk+ opcije za nalaženje grešaka uključiti"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:463
-msgid "GTK+ debugging flags to unset"
+msgid "CTK+ debugging flags to unset"
 msgstr "Koje Ctk+ opcije za nalaženje grešaka isključiti"
 
 #: ../ctk/ctkmain.c:776
@@ -2548,11 +2548,11 @@ msgid "Cannot open display: %s"
 msgstr "Ne može se otvoriti ekran: %s"
 
 #: ../ctk/ctkmain.c:842
-msgid "GTK+ Options"
+msgid "CTK+ Options"
 msgstr "Ctk+ opcije"
 
 #: ../ctk/ctkmain.c:842
-msgid "Show GTK+ Options"
+msgid "Show CTK+ Options"
 msgstr "Prikaži Ctk+ opcije"
 
 #. Translate to default:RTL if you want your widgets
@@ -3371,10 +3371,10 @@ msgstr "Podaci nisu lijepo zapakovani u nisku"
 
 #: ../ctk/ctktextbufferserialize.c:1886
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 "Podaci nisu lijepo zapakovani u nisku. Prva oblast nije "
-"GTKTEXTBUFFERCONTENTS-0001"
+"CTKTEXTBUFFERCONTENTS-0001"
 
 #: ../ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -3440,17 +3440,17 @@ msgid "%d %%"
 msgstr "%d %%"
 
 #: ../ctk/ctkwindow.c:11841
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "Da li želite koristiti GTK+ Kontrolora?"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "Da li želite koristiti CTK+ Kontrolora?"
 
 #: ../ctk/ctkwindow.c:11843
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"GTK+ je interaktivni otklanjač grešaka koji vam dozvoljava istraživanje i "
-"modificiranje unutarnjih dijelova bilo koje GTK+ aplikacije. Korištenje može "
+"CTK+ je interaktivni otklanjač grešaka koji vam dozvoljava istraživanje i "
+"modificiranje unutarnjih dijelova bilo koje CTK+ aplikacije. Korištenje može "
 "uzrokovati prekid ili pad iste."
 
 #: ../ctk/ctkwindow.c:11848
@@ -3478,8 +3478,8 @@ msgid "Class name"
 msgstr "Ime klase"
 
 #: ../ctk/inspector/css-editor.c:90 ../ctk/inspector/css-editor.c:96
-msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "Ovdje možete ukucati bilo koje CSS pravilo koje GTK+ prepoznaje."
+msgid "You can type here any CSS rule recognized by CTK+."
+msgstr "Ovdje možete ukucati bilo koje CSS pravilo koje CTK+ prepoznaje."
 
 #: ../ctk/inspector/css-editor.c:91 ../ctk/inspector/css-editor.c:97
 msgid ""

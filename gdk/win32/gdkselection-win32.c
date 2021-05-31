@@ -17,24 +17,24 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 /*
-GTK+ selection works like this:
+CTK+ selection works like this:
 There are three selections that matter - GDK_SELECTION_CLIPBOARD,
 GDK_SELECTION_PRIMARY and DND. Primary selection is only handled
-internally by GTK+ (it's not portable to Windows). DND is actually
+internally by CTK+ (it's not portable to Windows). DND is actually
 represented by two selections - LOCAL and OLE2, one for each DnD protocol,
 but they work the same way.
 
 "Target" is a GdkAtom describing a clipboard format.
 
 For Clipboard:
-GTK+ calls ctk_clipboard_set_contents(), which first ensures the
+CTK+ calls ctk_clipboard_set_contents(), which first ensures the
 clipboard is owned by the clipboard widget (which also indirectly
 causes an SelectionRequest xevent to be sent to it), then clears the old
 supported targets from the clipboard, then adds all the
@@ -44,7 +44,7 @@ ctk_clipboard_set_contents() is also given a callback to invoke when
 the actual data is needed. This callback is implemented by the widget
 from which the data can be put into clipboard.
 
-GTK+ might also call ctk_clipboard_set_can_store(), which sets the
+CTK+ might also call ctk_clipboard_set_can_store(), which sets the
 targets for which the data can be put into system clipboard, so that
 it remains usable even if the application is no longer around. Usually
 all data formats are storable, except for the shortcut formats, which
@@ -53,7 +53,7 @@ the application is alive.
 
 ("C:" means clipboard client (requestor), "S:" means clipboard server (provider))
 
-When something needs to be obtained from clipboard, GTK+ calls
+When something needs to be obtained from clipboard, CTK+ calls
 C: ctk_selection_convert().
 That function has a shortcut where it directly gets the selection contents by calling
 S: ctk_selection_invoke_handler(),
@@ -71,7 +71,7 @@ which sends SelectionRequest xevent to the window that owns the selection.
 The client gives its clipboard window as the requestor for that event,
 and gives the property as GDK_SELECTION.
 
-Server-side GTK+ catches SelectionRequest in a
+Server-side CTK+ catches SelectionRequest in a
 S:_ctk_selection_request()
 event handler, which calls
 S:ctk_selection_invoke_handler()
@@ -83,7 +83,7 @@ to submit the data, by setting the property given by the message sender
 On X11 data submission takes from of
 S:XChangeProperty()
 call, which causes SelectionNotify (and PropertyNotify for INCR)
-xevent to be sent, which client-side GTK+ catches and handles in
+xevent to be sent, which client-side CTK+ catches and handles in
 C:_ctk_selection_notify()
 (and
 C:_ctk_selection_property_notify(),
@@ -97,7 +97,7 @@ On X11 the "TARGETS" target might be given in a SelectionRequest xmessage to req
 all supported targets for a selection.
 
 If data must be stored on the clipboard, because the application is quitting,
-GTK+ will call
+CTK+ will call
 S:gdk_clipboard_store() -> gdk_display_store_clipboard() (gdk_x11_display_store_clipboard())
 on all the clipboards it owns.
 X11 gdk_display_store_clipboard() puts a list of storeable targets into GDK_SELECTION
@@ -108,7 +108,7 @@ and the clipboard manager responds by requesting all these formats and storing t
 then responds with SelectionNotify xevent to allow the application to quit.
 
 When clipboard owner changes, the old owner receives SelectionClear xevent,
-GTK+ handles it by clearing the clipboard object on its own level, GDK
+CTK+ handles it by clearing the clipboard object on its own level, GDK
 is not involved.
 
 On Windows:
@@ -126,7 +126,7 @@ into it all the data that it offers, as if responding to multiple WM_RENDERFORMA
 messages.
 
 On GDK-Win32:
-GTK+ calls ctk_clipboard_set_contents(), which first ensures the
+CTK+ calls ctk_clipboard_set_contents(), which first ensures the
 clipboard is owned by the clipboard widget (calls OpenClipboard(),
 then EmptyClipboard() to become the owner, then
 sends a TARGETS GDK_SELECTION_REQUEST to itself, without closing the clipboard),
@@ -137,7 +137,7 @@ ctk_clipboard_set_contents() is also given a callback to invoke when
 the actual data is needed. This callback is implemented by the widget
 from which the data can be put into clipboard.
 
-GTK+ might also call ctk_clipboard_set_can_store(), which sets the
+CTK+ might also call ctk_clipboard_set_can_store(), which sets the
 targets for which the data can be put into system clipboard, so that
 it remains usable even if the application is no longer around. Usually
 all data formats are storable, except for the shortcut formats, which
@@ -149,7 +149,7 @@ the application is alive.
  instead of "convert" to avoid clashing with g(t|d)k_selection_convert(), which
  is completely unrelated)
 
-When something needs to be obtained from clipboard, GTK+ calls
+When something needs to be obtained from clipboard, CTK+ calls
 C: ctk_selection_convert().
 That function has a shortcut where it directly gets the selection contents by calling
 S: ctk_selection_invoke_handler(),
@@ -189,7 +189,7 @@ it just picks the data right from the OS)
 Server-side GDK catches WM_RENDERFORMAT, figures out a target
 to request (this one is easier, as it has the list of supported
 targets saved up), and posts a GDK_SELECTION_REQUEST event, then runs the main loop,
-while GTK+ catches the event in a
+while CTK+ catches the event in a
 S:_ctk_selection_request()
 event handler, which calls
 S:ctk_selection_invoke_handler()
@@ -209,7 +209,7 @@ window property to that data (unlike change_property!),
 calls
 C:CloseClipboard() (if there are no more clipboard opeartions
 scheduled)
-and posts a GDK_SELECTION_NOTIFY event, which GTK+ catches in
+and posts a GDK_SELECTION_NOTIFY event, which CTK+ catches in
 C:_ctk_selection_notify()
 event handler, which calls
 C:ctk_selection_retrieval_report()
@@ -225,12 +225,12 @@ to be generated, just queries the system clipboard.
 On server side GDK_SELECTION_REQUEST is only generated internally:
 in response to WM_RENDERFORMAT (it renders a target),
 in response to idataobject_getdata() (it renders a target),
-after DnD ends (with a DELETE target, this is caught by GTK to make it delete the selection),
+after DnD ends (with a DELETE target, this is caught by CTK to make it delete the selection),
 and in response to owner change, with TARGETS target, which makes it register its formats by calling
 S:SetClipboardData(..., NULL)
 
 If data must be stored on the clipboard, because the application is quitting,
-GTK+ will call
+CTK+ will call
 S:gdk_clipboard_store() -> gdk_display_store_clipboard() (gdk_win32_display_store_clipboard())
 on all the clipboards it owns.
 GDK-Win32 gdk_display_store_clipboard() sends WM_RENDERALLFORMATS to the window,
@@ -238,7 +238,7 @@ then posts a GDK_SELECTION_NOTIFY event allow the application to quit.
 
 When clipboard owner changes, the old owner receives WM_DESTROYCLIPBOARD message,
 GDK handles it by posting a GDK_SELECTION_CLEAR event, which
-GTK+ handles by clearing the clipboard object on its own level.
+CTK+ handles by clearing the clipboard object on its own level.
 
 Any operations that require OpenClipboard()/CloseClipboard() combo (i.e.
 everything, except for WM_RENDERFORMAT handling) must be put into a queue,
@@ -257,9 +257,9 @@ S:_gdk_win32_window_change_property()
 which passes clipboard data back via the selection singleton.
 GDK-Win32 uses delayed rendering for all formats, even text.
 
-GTK+ will call
+CTK+ will call
 C:ctk_selection_convert() -> gdk_selection_convert() (_gdk_win32_display_convert_selection())
-to get the data associated with the drag, when GTK+ apps want to inspect the data,
+to get the data associated with the drag, when CTK+ apps want to inspect the data,
 but with a OLE2_DND selection instead of CLIPBOARD selection.
 
 _gdk_win32_display_convert_selection() queries the droptarget global variable,
@@ -267,7 +267,7 @@ which should already contain a matched list of supported formats and targets,
 picks a format there, then queries it from the IDataObject that the droptarget kept around.
 Then optionally transmutes the data, and sets the property. Then posts GDK_SELECTION_NOTIFY.
 
-GTK+ catches that event and processes it, causeing "selection-received" signal to
+CTK+ catches that event and processes it, causeing "selection-received" signal to
 be emitted on the selection widget, and its handler is
 C:ctk_drag_selection_received(),
 which emits the "drag-data-received" signal for the app.
@@ -391,7 +391,7 @@ gdk_win32_selection_init (GdkWin32Selection *win32_selection)
   _gdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_JFIF) = gdk_atom_intern_static_string ("JFIF");
   _gdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_GIF) = gdk_atom_intern_static_string ("GIF");
 
-  /* These are a bit unusual. It's here to allow GTK+ applications
+  /* These are a bit unusual. It's here to allow CTK+ applications
    * to actually support CF_DIB and Shell ID List clipboard formats on their own,
    * instead of allowing GDK to use them internally for interoperability.
    */
@@ -458,9 +458,9 @@ gdk_win32_selection_init (GdkWin32Selection *win32_selection)
   win32_selection->clipboard_selection_targets = g_array_new (FALSE, FALSE, sizeof (GdkSelTargetFormat));
   win32_selection->compatibility_formats = g_hash_table_new_full (NULL, NULL, NULL, (GDestroyNotify) g_array_unref);
 
-  /* GTK+ actually has more text formats, but it's unlikely that we'd
+  /* CTK+ actually has more text formats, but it's unlikely that we'd
    * get anything other than UTF8_STRING these days.
-   * GTKTEXTBUFFERCONTENTS format can potentially be converted to
+   * CTKTEXTBUFFERCONTENTS format can potentially be converted to
    * W32-compatible rich text format, but that's too complex to address right now.
    */
   comp = g_array_sized_new (FALSE, FALSE, sizeof (GdkSelTargetFormat), 3);
@@ -2130,7 +2130,7 @@ convert_dnd_selection_to_target (GdkAtom    target,
   fmt.lindex = -1;
   fmt.tymed = TYMED_HGLOBAL;
 
-  /* We rely on GTK+ applications to synthesize the DELETE request
+  /* We rely on CTK+ applications to synthesize the DELETE request
    * for themselves, since they do know whether a DnD operation was a
    * move and whether was successful. Therefore, we do not need to
    * actually send anything here. Just report back without storing
@@ -2784,7 +2784,7 @@ _gdk_win32_add_target_to_selformats (GdkAtom  target,
  * Implementation detail:
  * This function will be called repeatedly, every time the PRIMARY selection changes.
  * It will also be called immediately before the CLIPBOARD selection changes.
- * We let GTK+ handle the PRIMARY selection internally and do nothing here
+ * We let CTK+ handle the PRIMARY selection internally and do nothing here
  * (therefore it's not possible to middle-click-paste between processes,
  * unless one process deliberately puts PRIMARY selection contents into
  * CLIPBOARD selection, and the other process does paste on middle-click).

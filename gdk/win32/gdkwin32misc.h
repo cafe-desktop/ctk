@@ -17,10 +17,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __GDK_WIN32_MISC_H__
@@ -103,7 +103,7 @@ GdkWindow *   gdk_win32_window_lookup_for_display (GdkDisplay *display,
 
 #if defined (INSIDE_GDK_WIN32) || defined (GDK_COMPILATION) || defined (CTK_COMPILATION)
 
-/* For internal GTK use only */
+/* For internal CTK use only */
 GDK_AVAILABLE_IN_ALL
 GdkPixbuf    *gdk_win32_icon_to_pixbuf_libctk_only (HICON hicon,
                                                     gdouble *x_hot,

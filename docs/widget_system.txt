@@ -1,4 +1,4 @@
-Notes about the inner workings of the widget system of GTK+
+Notes about the inner workings of the widget system of CTK+
 ===========================================================
 
 This file contains some notes as to how the widget system does
@@ -16,7 +16,7 @@ and should work. It consists of three parts:
     the states change.
 
 Any action necessary to maintain the invariants in II which is not
-explicitly mentioned in IV), is the responsibility of the core GTK
+explicitly mentioned in IV), is the responsibility of the core CTK
 code, which is roughly defined as:
 
   ctkobject.c
@@ -25,7 +25,7 @@ code, which is roughly defined as:
   ctkmain.c
   ctksignal.c
 
-Section II is mostly of interest to those maintaining GTK, the
+Section II is mostly of interest to those maintaining CTK, the
 other sections may also be interesting to people writing
 new widgets.
 
@@ -311,10 +311,10 @@ ctk_widget_map
 ctk_widget_unmap
 
 These functions are not meant to be used by applications - they
-are used only by GTK and widgets to enforce invariants on the
+are used only by CTK and widgets to enforce invariants on the
 state.
 
-When The X window corresponding to a GTK window is destroyed:
+When The X window corresponding to a CTK window is destroyed:
 -------------------------------------------------------------
 
 ctk_widget_destroy is called (as above).
@@ -468,7 +468,7 @@ The Finalize Pseudo-signal
 
 The finalize pseudo-signal is received after all references
 to the widget have been removed. The finalize callback
-cannot make any GTK calls with the widget as a parameter.
+cannot make any CTK calls with the widget as a parameter.
 
 1) Free any memory allocated by the widget. (But _not_
    the widget structure itself.

@@ -1475,7 +1475,7 @@ gdk_device_grab_info (GdkDisplay  *display,
  *  keyboard grabbed.
  *
  * Deprecated: 3.16: The symbol was never meant to be used outside
- *   of GTK+
+ *   of CTK+
  */
 gboolean
 gdk_device_grab_info_libctk_only (GdkDisplay  *display,
@@ -2138,7 +2138,7 @@ _gdk_display_get_next_serial (GdkDisplay *display)
  * normally called after opening the application’s initial set of
  * windows.
  *
- * GTK+ will call this function automatically after opening the first
+ * CTK+ will call this function automatically after opening the first
  * #CtkWindow unless ctk_window_set_auto_startup_notification() is called
  * to disable that feature.
  *
@@ -2158,7 +2158,7 @@ gdk_notify_startup_complete (void)
  * Indicates to the GUI environment that the application has
  * finished loading, using a given identifier.
  *
- * GTK+ will call this function automatically for #CtkWindow
+ * CTK+ will call this function automatically for #CtkWindow
  * with custom startup-notification identifier unless
  * ctk_window_set_auto_startup_notification() is called to
  * disable that feature.
@@ -2184,7 +2184,7 @@ gdk_notify_startup_complete_with_id (const gchar* startup_id)
  * Indicates to the GUI environment that the application has
  * finished loading, using a given identifier.
  *
- * GTK+ will call this function automatically for #CtkWindow
+ * CTK+ will call this function automatically for #CtkWindow
  * with custom startup-notification identifier unless
  * ctk_window_set_auto_startup_notification() is called to
  * disable that feature.

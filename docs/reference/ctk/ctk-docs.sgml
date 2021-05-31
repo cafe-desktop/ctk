@@ -8,18 +8,18 @@
 ]>
 <book id="index" xmlns:xi="http://www.w3.org/2003/XInclude">
   <bookinfo>
-    <title>GTK+ 3 Reference Manual</title>
+    <title>CTK+ 3 Reference Manual</title>
     <releaseinfo>
-      This document is for the GTK+ 3 library, version &version;.
+      This document is for the CTK+ 3 library, version &version;.
       The latest versions can be found online at
       <ulink role="online-location" url="https://developer.gnome.org/ctk3/">https://developer.gnome.org/ctk3/</ulink>.
-      If you are looking for the older GTK+ 2 series of libraries,
+      If you are looking for the older CTK+ 2 series of libraries,
       see <ulink role="online-location" url="https://developer.gnome.org/ctk2/">https://developer.gnome.org/ctk2/</ulink>.
     </releaseinfo>
   </bookinfo>
 
   <part id="ctk">
-    <title>GTK+ Overview</title>
+    <title>CTK+ Overview</title>
     <xi:include href="overview.xml"/>
     <xi:include href="xml/getting_started.xml"/>
     <xi:include href="resources.sgml" />
@@ -29,7 +29,7 @@
   </part>
 
   <part id="ctkobjects">
-    <title>GTK+ Widgets and Objects</title>
+    <title>CTK+ Widgets and Objects</title>
 
     <chapter>
       <title>Object Hierarchy</title>
@@ -363,7 +363,7 @@
   </part>
 
   <part  id="ctkbase">
-    <title>GTK+ Core Reference</title>
+    <title>CTK+ Core Reference</title>
     <xi:include href="xml/ctkmain.xml" />
     <xi:include href="xml/ctkfeatures.xml" />
     <xi:include href="xml/ctkaccelgroup.xml" />
@@ -379,7 +379,7 @@
   </part>
 
   <part id="theming">
-    <title>Theming in GTK+</title>
+    <title>Theming in CTK+</title>
     <xi:include href="css-overview.xml" />
     <xi:include href="css-properties.xml" />
     <xi:include href="xml/ctkstylecontext.xml" />
@@ -391,15 +391,15 @@
   </part>
 
   <part id="migrating">
-    <title>Migrating from Previous Versions of GTK+</title>
+    <title>Migrating from Previous Versions of CTK+</title>
 
     <partintro>
       <para>
         This part describes what you need to change in programs use
-        older versions of GTK+ so that they can use the new features.
+        older versions of CTK+ so that they can use the new features.
         It also mentions how to convert applications using widgets
         found in the libgnomeui library to use their counterparts
-        in GTK+.
+        in CTK+.
       </para>
     </partintro>
 
@@ -413,7 +413,7 @@
   </part>
 
   <part>
-    <title>GTK+ Tools</title>
+    <title>CTK+ Tools</title>
     <xi:include href="ctk3-demo.xml" />
     <xi:include href="ctk3-demo-application.xml" />
     <xi:include href="ctk3-widget-factory.xml" />
@@ -428,7 +428,7 @@
   </part>
 
   <part id="platform-support">
-    <title>GTK+ Platform Support</title>
+    <title>CTK+ Platform Support</title>
     <xi:include href="building.sgml" />
     <xi:include href="xml/compiling.sgml" />
     <xi:include href="running.sgml" />

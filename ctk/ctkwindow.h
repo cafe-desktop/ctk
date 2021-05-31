@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __CTK_WINDOW_H__
@@ -104,7 +104,7 @@ struct _CtkWindowClass
  * ctk_window_set_decorated() to toggle the frame).  Windows with type
  * #CTK_WINDOW_POPUP are ignored by the window manager; window manager
  * keybindings won’t work on them, the window manager won’t decorate the
- * window with a frame, many GTK+ features that rely on the window
+ * window with a frame, many CTK+ features that rely on the window
  * manager will not work (e.g. resize grips and
  * maximization/minimization). #CTK_WINDOW_POPUP is used to implement
  * widgets such as #CtkMenu or tooltips that you normally don’t think of

@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -343,7 +343,7 @@ gdk_x11_get_xatom_name_for_display (GdkDisplay *display,
  * doesn’t need to be freed. Also, this function will never return %NULL, 
  * even if @xatom is invalid.
  * 
- * Returns: name of the X atom; this string is owned by GTK+,
+ * Returns: name of the X atom; this string is owned by CTK+,
  *   so it shouldn’t be modifed or freed. 
  **/
 const gchar *

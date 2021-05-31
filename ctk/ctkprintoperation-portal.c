@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkprintoperation-portal.c: Print Operation Details for sandboxed apps
  * Copyright (C) 2016, Red Hat, Inc.
  *

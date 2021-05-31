@@ -6402,12 +6402,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "चिन्ह आकारमानाची यादी (ctk-menu=16,16:ctk-button=20,20..."
 
 #: ../ctk/ctksettings.c:540
-msgid "GTK Modules"
-msgstr "GTK विभाग"
+msgid "CTK Modules"
+msgstr "CTK विभाग"
 
 #: ../ctk/ctksettings.c:541
-msgid "List of currently active GTK modules"
-msgstr "संख्या अक्टिव्ह असलेली GTK विभाग"
+msgid "List of currently active CTK modules"
+msgstr "संख्या अक्टिव्ह असलेली CTK विभाग"
 
 #: ../ctk/ctksettings.c:549
 msgid "Xft Antialias"
@@ -6940,10 +6940,10 @@ msgstr "संवाद शीर्षक पट्टींचा वापर
 #: ../ctk/ctksettings.c:1596
 #| msgid "Whether buttons in dialogs should use the alternative button order"
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"कृती क्षेत्रऐवजी बिल्टइन GTK+ संवादाचा शीर्षक पट्टी म्हणून वापर करायचे किंवा "
+"कृती क्षेत्रऐवजी बिल्टइन CTK+ संवादाचा शीर्षक पट्टी म्हणून वापर करायचे किंवा "
 "नाही."
 
 #: ../ctk/ctksettings.c:1612
@@ -6965,8 +6965,8 @@ msgid "Recent Files Enabled"
 msgstr "नुकतेच फाइल्स सुरू केले"
 
 #: ../ctk/ctksettings.c:1630
-msgid "Whether GTK+ remembers recent files"
-msgstr "GTK+ नुकतेच फाइल्स लक्षात ठेवते किंवा नाही"
+msgid "Whether CTK+ remembers recent files"
+msgstr "CTK+ नुकतेच फाइल्स लक्षात ठेवते किंवा नाही"
 
 #: ../ctk/ctksettings.c:1645
 msgid "Long press time"
@@ -8741,7 +8741,7 @@ msgstr "उच्च पातळीतील स्थिरांक"
 
 #: ../ctk/ctkwindow.c:884
 msgid "Whether the input focus is within this CtkWindow"
-msgstr "GTKWindow च्या अंतर्गत इनपुट स्थिरांक आहे का"
+msgstr "CTKWindow च्या अंतर्गत इनपुट स्थिरांक आहे का"
 
 #: ../ctk/ctkwindow.c:891
 msgid "Type hint"

@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -65,7 +65,7 @@
  *
  * You can use gdk_display_manager_get() to obtain the #GdkDisplayManager
  * singleton, but that should be rarely necessary. Typically, initializing
- * GTK+ opens a display that you can work with without ever accessing the
+ * CTK+ opens a display that you can work with without ever accessing the
  * #GdkDisplayManager.
  *
  * The GDK library can be built with support for multiple backends.

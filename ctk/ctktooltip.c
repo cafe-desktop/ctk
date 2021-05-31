@@ -56,7 +56,7 @@
  * image, or you want the tooltip to have different contents per #CtkTreeView
  * row or cell, you will have to do a little more work:
  * 
- * - Set the #CtkWidget:has-tooltip property to %TRUE, this will make GTK+
+ * - Set the #CtkWidget:has-tooltip property to %TRUE, this will make CTK+
  *   monitor the widget for motion and related events which are needed to
  *   determine when and where to show a tooltip.
  *

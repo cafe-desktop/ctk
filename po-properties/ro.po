@@ -146,7 +146,7 @@ msgstr "Afișaj implicit pentru GDK"
 
 #: gdk/gdkglcontext.c:318
 msgid "The GDK display used to create the GL context"
-msgstr "Afișajul GTK folosit pentru a crea contextul GL"
+msgstr "Afișajul CTK folosit pentru a crea contextul GL"
 
 #: gdk/gdkglcontext.c:333 ctk/ctkwidget.c:1347
 msgid "Window"
@@ -6955,12 +6955,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Listă dimensiuni iconițe (ctk-menu=16,16;ctk-button=20,20..."
 
 #: ctk/ctksettings.c:578
-msgid "GTK Modules"
-msgstr "Module GTK"
+msgid "CTK Modules"
+msgstr "Module CTK"
 
 #: ctk/ctksettings.c:579
-msgid "List of currently active GTK modules"
-msgstr "Listă module GTK active în acest moment"
+msgid "List of currently active CTK modules"
+msgstr "Listă module CTK active în acest moment"
 
 #: ctk/ctksettings.c:587
 msgid "Xft Antialias"
@@ -7526,10 +7526,10 @@ msgstr "Dialogurile folosesc bara de sus"
 
 #: ctk/ctksettings.c:1708
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"Dacă dialogurile încorporate în GTK+ ar trebui să folosească bara de sus în "
+"Dacă dialogurile încorporate în CTK+ ar trebui să folosească bara de sus în "
 "loc de zona cu acțiuni."
 
 #: ctk/ctksettings.c:1724
@@ -7549,8 +7549,8 @@ msgid "Recent Files Enabled"
 msgstr "Fișiere recente activate"
 
 #: ctk/ctksettings.c:1742
-msgid "Whether GTK+ remembers recent files"
-msgstr "Dacă GTK+ ține minte fișierele recente"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Dacă CTK+ ține minte fișierele recente"
 
 #: ctk/ctksettings.c:1757
 msgid "Long press time"

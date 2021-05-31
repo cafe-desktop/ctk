@@ -269,7 +269,7 @@ gdk_seat_get_capabilities (GdkSeat *seat)
  * commonly.
  *
  * Grabs are used for operations which need complete control over the
- * events corresponding to the given capabilities. For example in GTK+ this
+ * events corresponding to the given capabilities. For example in CTK+ this
  * is used for Drag and Drop operations, popup menus and such.
  *
  * Note that if the event mask of a #GdkWindow has selected both button press
@@ -361,7 +361,7 @@ gdk_seat_get_slaves (GdkSeat             *seat,
  * Returns the master device that routes pointer events.
  *
  * Returns: (transfer none) (nullable): a master #GdkDevice with pointer
- *          capabilities. This object is owned by GTK+ and must not be freed.
+ *          capabilities. This object is owned by CTK+ and must not be freed.
  *
  * Since: 3.20
  **/
@@ -383,7 +383,7 @@ gdk_seat_get_pointer (GdkSeat *seat)
  * Returns the master device that routes keyboard events.
  *
  * Returns: (transfer none) (nullable): a master #GdkDevice with keyboard
- *          capabilities. This object is owned by GTK+ and must not be freed.
+ *          capabilities. This object is owned by CTK+ and must not be freed.
  *
  * Since: 3.20
  **/
@@ -420,7 +420,7 @@ gdk_seat_device_removed (GdkSeat   *seat,
  *
  * Returns the #GdkDisplay this seat belongs to.
  *
- * Returns: (transfer none): a #GdkDisplay. This object is owned by GTK+
+ * Returns: (transfer none): a #GdkDisplay. This object is owned by CTK+
  *          and must not be freed.
  **/
 GdkDisplay *

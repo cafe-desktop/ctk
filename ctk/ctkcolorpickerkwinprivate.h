@@ -1,5 +1,5 @@
 /*
- * GTK - The GIMP Toolkit
+ * CTK - The GIMP Toolkit
  * Copyright (C) 2018 Red Hat, Inc.
  * All rights reserved.
  *
@@ -31,7 +31,7 @@ G_BEGIN_DECLS
 
 
 #define CTK_TYPE_COLOR_PICKER_KWIN ctk_color_picker_kwin_get_type ()
-G_DECLARE_FINAL_TYPE (CtkColorPickerKwin, ctk_color_picker_kwin, GTK, COLOR_PICKER_KWIN, GObject)
+G_DECLARE_FINAL_TYPE (CtkColorPickerKwin, ctk_color_picker_kwin, CTK, COLOR_PICKER_KWIN, GObject)
 
 GDK_AVAILABLE_IN_ALL
 CtkColorPicker * ctk_color_picker_kwin_new (void);

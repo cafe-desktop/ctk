@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkprintoperation.h: Print Operation
  * Copyright (C) 2006, Red Hat, Inc.
  *
@@ -213,7 +213,7 @@ struct _CtkPrintOperationClass
  *     or paper size from a key file.
  *
  * Error codes that identify various errors that can occur while
- * using the GTK+ printing support.
+ * using the CTK+ printing support.
  */
 typedef enum
 {

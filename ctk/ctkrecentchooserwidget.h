@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkrecentchooserwidget.h: embeddable recently used resources chooser widget
  * Copyright (C) 2006 Emmanuele Bassi
  *

@@ -269,7 +269,7 @@ AM_CPPFLAGS = \
 CPPFLAGS += \
 	-UCTK_DISABLE_SINGLE_INCLUDES
 
-GTKDOC_LIBS = \
+CTKDOC_LIBS = \
 	$(top_builddir)/gdk/libgdk-3.la \
 	$(top_builddir)/ctk/libctk-3.la	\
 	$(CTK_DEP_LIBS)
@@ -547,11 +547,11 @@ EXTRA_DIST += \
 	$(man_MANS) \
 	meson.build
 
-if ENABLE_GTK_DOC
+if ENABLE_CTK_DOC
 TESTS_ENVIRONMENT = cd $(srcdir) && \
   DOC_MODULE=$(DOC_MODULE) DOC_MAIN_SGML_FILE=$(DOC_MAIN_SGML_FILE) \
   SRCDIR=$(abs_srcdir) BUILDDIR=$(abs_builddir)
-#TESTS = $(GTKDOC_CHECK)
+#TESTS = $(CTKDOC_CHECK)
 endif
 
 dist-hook-local: dist-local-check-mans-enabled all-local

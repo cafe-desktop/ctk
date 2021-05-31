@@ -248,7 +248,7 @@ ctk_cell_renderer_class_init (CtkCellRendererClass *class)
    * See ctk_cell_editable_start_editing() for information on the lifecycle of
    * the @editable and a way to do setup that doesn’t depend on the @renderer.
    *
-   * Note that GTK+ doesn't guarantee that cell renderers will
+   * Note that CTK+ doesn't guarantee that cell renderers will
    * continue to use the same kind of widget for editing in future
    * releases, therefore you should check the type of @editable
    * before doing any specific setup, as in the following example:

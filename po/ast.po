@@ -76,7 +76,7 @@ msgstr "PANTALLA"
 #: gdk/gdk.c:164
 #, fuzzy
 msgid "GDK debugging flags to set"
-msgstr "Etiquetes depuración GTK+ a afitar"
+msgstr "Etiquetes depuración CTK+ a afitar"
 
 #. Placeholder in --gdk-debug=FLAGS in --help output
 #. Placeholder in --gdk-no-debug=FLAGS in --help output
@@ -90,7 +90,7 @@ msgstr "ETIQUETES"
 #: gdk/gdk.c:167
 #, fuzzy
 msgid "GDK debugging flags to unset"
-msgstr "Etiquetes depuración GTK+ a quitar"
+msgstr "Etiquetes depuración CTK+ a quitar"
 
 #: gdk/keyname-table.h:3940
 msgctxt "keyboard label"
@@ -1270,8 +1270,8 @@ msgstr "URI non válida"
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:526
-msgid "Load additional GTK+ modules"
-msgstr "Cargar módulos GTK+ adicionales"
+msgid "Load additional CTK+ modules"
+msgstr "Cargar módulos CTK+ adicionales"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:527
@@ -1285,13 +1285,13 @@ msgstr "Facer que tolos avisos seyan fatales"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:532
-msgid "GTK+ debugging flags to set"
-msgstr "Etiquetes depuración GTK+ a afitar"
+msgid "CTK+ debugging flags to set"
+msgstr "Etiquetes depuración CTK+ a afitar"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:535
-msgid "GTK+ debugging flags to unset"
-msgstr "Etiquetes depuración GTK+ a quitar"
+msgid "CTK+ debugging flags to unset"
+msgstr "Etiquetes depuración CTK+ a quitar"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -1308,12 +1308,12 @@ msgid "Cannot open display: %s"
 msgstr "Nun se pue abrir la pantalla: %s"
 
 #: ctk/ctkmain.c:922
-msgid "GTK+ Options"
-msgstr "Opciones GTK+"
+msgid "CTK+ Options"
+msgstr "Opciones CTK+"
 
 #: ctk/ctkmain.c:922
-msgid "Show GTK+ Options"
-msgstr "Amosar Opciones GTK+"
+msgid "Show CTK+ Options"
+msgstr "Amosar Opciones CTK+"
 
 #: ctk/ctkmountoperation.c:491
 msgid "Co_nnect"
@@ -2682,10 +2682,10 @@ msgstr "Los datos serializados tán mal formaos"
 
 #: ctk/ctktextbufferserialize.c:1862
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 "Los datos serializaos tán mal formados. La primer seición nun ye "
-"GTKTEXTBUFFERCONTENTS-0001"
+"CTKTEXTBUFFERCONTENTS-0001"
 
 #: ctk/ctktextutil.c:60
 msgid "LRM _Left-to-right mark"
@@ -4244,10 +4244,10 @@ msgstr ""
 
 #~ msgid ""
 #~ "Image-loading module %s does not export the proper interface; perhaps "
-#~ "it's from a different GTK version?"
+#~ "it's from a different CTK version?"
 #~ msgstr ""
 #~ "El módulu de carga d'imaxe %s nun exporta la interfaz afayaíza; ¿pue que "
-#~ "seya d'una versión GTK distinta?"
+#~ "seya d'una versión CTK distinta?"
 
 #~ msgid "Image type '%s' is not supported"
 #~ msgstr "El tipu d'imaxe '%s' nun ta soportáu"

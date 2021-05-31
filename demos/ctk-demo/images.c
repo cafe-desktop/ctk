@@ -7,7 +7,7 @@
  * case a call to ctk_image_new_from_file() is all you need.
  *
  * If you want to put image data in your program as a C variable,
- * use the make-inline-pixbuf program that comes with GTK+.
+ * use the make-inline-pixbuf program that comes with CTK+.
  * This way you won't need to depend on loading external files, your
  * application binary can be self-contained.
  */

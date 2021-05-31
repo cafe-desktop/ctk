@@ -1,7 +1,7 @@
 # translation of ctk+.master.is.po to Íslenska
 # Icelandic translation of ctk 2.2
 # Copyright (C) 2003, 2015 Free Software Foundation, Inc.
-# This file is distributed under the same license as the GTK package.
+# This file is distributed under the same license as the CTK package.
 #
 # Richard Allen <ra@ra.is>, 2003.
 # Sveinn í Felli <sv1@fellsnet.is>, 2015, 2017, 2018, 2019.
@@ -2822,8 +2822,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:464
-msgid "Load additional GTK+ modules"
-msgstr "Hlaða inn viðbótar GTK+ forritseiningum"
+msgid "Load additional CTK+ modules"
+msgstr "Hlaða inn viðbótar CTK+ forritseiningum"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:465
@@ -2837,13 +2837,13 @@ msgstr "Túlka allar aðvaranir sem banvænar"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:470
-msgid "GTK+ debugging flags to set"
-msgstr "Setja GTK+ aflúsunarrofa"
+msgid "CTK+ debugging flags to set"
+msgstr "Setja CTK+ aflúsunarrofa"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:473
-msgid "GTK+ debugging flags to unset"
-msgstr "Fjarlægja GTK+ aflúsunarrofa"
+msgid "CTK+ debugging flags to unset"
+msgstr "Fjarlægja CTK+ aflúsunarrofa"
 
 #: ctk/ctkmain.c:808 ctk/ctkmain.c:1002
 #, c-format
@@ -2851,12 +2851,12 @@ msgid "Cannot open display: %s"
 msgstr "Get ekki birt: %s"
 
 #: ctk/ctkmain.c:920
-msgid "GTK+ Options"
-msgstr "GTK+ valkostir"
+msgid "CTK+ Options"
+msgstr "CTK+ valkostir"
 
 #: ctk/ctkmain.c:920
-msgid "Show GTK+ Options"
-msgstr "Birta GTK+ valkosti"
+msgid "Show CTK+ Options"
+msgstr "Birta CTK+ valkosti"
 
 #  Translate to default:RTL if you want your widgets
 #  * to be RTL, otherwise translate to default:LTR.
@@ -3863,10 +3863,10 @@ msgstr "Seríalíseruð gögn eru gölluð"
 
 #: ctk/ctktextbufferserialize.c:1864
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 "Seríalíseruð gögn eru gölluð. Fyrsti hlutinn er ekki "
-"GTKTEXTBUFFERCONTENTS-0001"
+"CTKTEXTBUFFERCONTENTS-0001"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -3945,18 +3945,18 @@ msgstr "Alltaf efst"
 
 #: ctk/ctkwindow.c:12767
 #, c-format
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "Viltu nota GTK+ Inspector?"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "Viltu nota CTK+ Inspector?"
 
 #: ctk/ctkwindow.c:12769
 #, c-format
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"GTK+ Inspector er gagnvirkt aflúsunartól sem hjálpar þér að skoða og breyta "
-"innviðum allra GTK+ forrita. Notkun þess getur valdið því að forrit bili eða "
+"CTK+ Inspector er gagnvirkt aflúsunartól sem hjálpar þér að skoða og breyta "
+"innviðum allra CTK+ forrita. Notkun þess getur valdið því að forrit bili eða "
 "hrynji."
 
 #: ctk/ctkwindow.c:12774
@@ -3986,8 +3986,8 @@ msgid "Parameter Type"
 msgstr "Tegund viðfangs"
 
 #: ctk/inspector/css-editor.c:112
-msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "Þú getur skrifað hér hverja þá CSS reglu sem GTK+ þekkir."
+msgid "You can type here any CSS rule recognized by CTK+."
+msgstr "Þú getur skrifað hér hverja þá CSS reglu sem CTK+ þekkir."
 
 #: ctk/inspector/css-editor.c:113
 msgid ""
@@ -4046,8 +4046,8 @@ msgid "None"
 msgstr "Ekkert"
 
 #: ctk/inspector/general.ui:34
-msgid "GTK+ Version"
-msgstr "GTK+ útgáfa"
+msgid "CTK+ Version"
+msgstr "CTK+ útgáfa"
 
 #: ctk/inspector/general.ui:68
 msgid "GDK Backend"
@@ -4435,8 +4435,8 @@ msgid "GL rendering is disabled"
 msgstr "GL myndgerð er óvirk"
 
 #: ctk/inspector/visual.ui:61
-msgid "GTK+ Theme"
-msgstr "GTK+ þema"
+msgid "CTK+ Theme"
+msgstr "CTK+ þema"
 
 #: ctk/inspector/visual.ui:94
 msgid "Dark Variant"

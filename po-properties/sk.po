@@ -6909,12 +6909,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Zoznam veľkostí ikon (ctk-menu=16,16:ctk-button=20,20…"
 
 #: ctk/ctksettings.c:578
-msgid "GTK Modules"
-msgstr "Moduly GTK"
+msgid "CTK Modules"
+msgstr "Moduly CTK"
 
 #: ctk/ctksettings.c:579
-msgid "List of currently active GTK modules"
-msgstr "Zoznam aktívnych modulov GTK"
+msgid "List of currently active CTK modules"
+msgstr "Zoznam aktívnych modulov CTK"
 
 #: ctk/ctksettings.c:587
 msgid "Xft Antialias"
@@ -7480,10 +7480,10 @@ msgstr "Dialógové okná použijú panel so záhlavím"
 
 #: ctk/ctksettings.c:1708
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"Určuje, či sa vo vstavaných dialógových oknách GTK+ zobrazí hlavičkový panel "
+"Určuje, či sa vo vstavaných dialógových oknách CTK+ zobrazí hlavičkový panel "
 "namiesto oblasti akcií."
 
 #: ctk/ctksettings.c:1724
@@ -7503,8 +7503,8 @@ msgid "Recent Files Enabled"
 msgstr "Povolené nedávne súbory"
 
 #: ctk/ctksettings.c:1742
-msgid "Whether GTK+ remembers recent files"
-msgstr "Určuje, či si GTK+ pamätá nedávne súbory"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Určuje, či si CTK+ pamätá nedávne súbory"
 
 #: ctk/ctksettings.c:1757
 msgid "Long press time"
@@ -9230,7 +9230,7 @@ msgstr "Určuje, či použiť vlastnosť vexpand"
 
 # MČ: „Expand“ by som skôr preložil, ako „Roztiahnuť“
 # PM: expander aktuálne prekladáme ako rozbaľovač ako by si to potom preložil?
-# PK: to je rozdiel, v GTK expand je ze sa prvok roztiahne, expander je asi ta sipka na rozbalenie napr. v strome
+# PK: to je rozdiel, v CTK expand je ze sa prvok roztiahne, expander je asi ta sipka na rozbalenie napr. v strome
 #: ctk/ctkwidget.c:1599
 msgid "Expand Both"
 msgstr "Roztiahnuť obe"

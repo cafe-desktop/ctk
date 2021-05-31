@@ -2742,8 +2742,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:464
-msgid "Load additional GTK+ modules"
-msgstr "Laai addisionele GTK+-modules"
+msgid "Load additional CTK+ modules"
+msgstr "Laai addisionele CTK+-modules"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:465
@@ -2757,13 +2757,13 @@ msgstr "Maak alle waarskuwings fataal"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:470
-msgid "GTK+ debugging flags to set"
-msgstr "GTK+-ontfoutvlaggies om te gebruik"
+msgid "CTK+ debugging flags to set"
+msgstr "CTK+-ontfoutvlaggies om te gebruik"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:473
-msgid "GTK+ debugging flags to unset"
-msgstr "GTK+-ontfoutvlaggies om af te stel"
+msgid "CTK+ debugging flags to unset"
+msgstr "CTK+-ontfoutvlaggies om af te stel"
 
 #: ctk/ctkmain.c:808 ctk/ctkmain.c:1002
 #, c-format
@@ -2771,12 +2771,12 @@ msgid "Cannot open display: %s"
 msgstr "Kan nie vertoon open nie: %s"
 
 #: ctk/ctkmain.c:920
-msgid "GTK+ Options"
-msgstr "GTK+-keuses"
+msgid "CTK+ Options"
+msgstr "CTK+-keuses"
 
 #: ctk/ctkmain.c:920
-msgid "Show GTK+ Options"
-msgstr "Wys GTK+-keuses"
+msgid "Show CTK+ Options"
+msgstr "Wys CTK+-keuses"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -3751,7 +3751,7 @@ msgstr ""
 
 #: ctk/ctktextbufferserialize.c:1864
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 
 #: ctk/ctktextutil.c:57
@@ -3831,18 +3831,18 @@ msgstr "Altyd bo-op"
 
 #: ctk/ctkwindow.c:12686
 #, c-format
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "Wil u die GTK+-inspekteur gebruik?"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "Wil u die CTK+-inspekteur gebruik?"
 
 #: ctk/ctkwindow.c:12688
 #, c-format
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"Die GTK+-inspekteur is 'n interaktiewe ontfouter wat help om die interne "
-"werking van enige GTK+-toepassing te ontdek en verander. Die gebruik daarvan "
+"Die CTK+-inspekteur is 'n interaktiewe ontfouter wat help om die interne "
+"werking van enige CTK+-toepassing te ontdek en verander. Die gebruik daarvan "
 "kan die toepassing laat breek of omval."
 
 #: ctk/ctkwindow.c:12693
@@ -3872,8 +3872,8 @@ msgid "Parameter Type"
 msgstr ""
 
 #: ctk/inspector/css-editor.c:112
-msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "Tik hier enige CSS-reël wat deur GTK+ herken word."
+msgid "You can type here any CSS rule recognized by CTK+."
+msgstr "Tik hier enige CSS-reël wat deur CTK+ herken word."
 
 #: ctk/inspector/css-editor.c:113
 msgid ""
@@ -3930,8 +3930,8 @@ msgid "None"
 msgstr "Geen"
 
 #: ctk/inspector/general.ui:34
-msgid "GTK+ Version"
-msgstr "GTK-Weergawe"
+msgid "CTK+ Version"
+msgstr "CTK-Weergawe"
 
 #: ctk/inspector/general.ui:68
 msgid "GDK Backend"
@@ -4319,8 +4319,8 @@ msgid "GL rendering is disabled"
 msgstr ""
 
 #: ctk/inspector/visual.ui:61
-msgid "GTK+ Theme"
-msgstr "GTK+ Tema"
+msgid "CTK+ Theme"
+msgstr "CTK+ Tema"
 
 #: ctk/inspector/visual.ui:94
 msgid "Dark Variant"
@@ -7219,10 +7219,10 @@ msgstr "Druk na toetsdrukker"
 
 #~ msgid ""
 #~ "Image-loading module %s does not export the proper interface; perhaps "
-#~ "it's from a different GTK version?"
+#~ "it's from a different CTK version?"
 #~ msgstr ""
 #~ "Beeldlaai-module %s voer nie die regte koppelvlak uit nie; miskien is dit "
-#~ "van 'n verskillende GTK-weergawe?"
+#~ "van 'n verskillende CTK-weergawe?"
 
 #~ msgid "Image type '%s' is not supported"
 #~ msgstr "Beeldtipe '%s' word nie ondersteun nie"

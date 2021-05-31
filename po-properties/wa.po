@@ -4968,12 +4968,12 @@ msgstr ""
 "Djivêye des grandeus po les imådjetes (ctk-menu=16,16:ctk-button=20,20..."
 
 #: ctk/ctksettings.c:380
-msgid "GTK Modules"
-msgstr "Modules GTK"
+msgid "CTK Modules"
+msgstr "Modules CTK"
 
 #: ctk/ctksettings.c:381
-msgid "List of currently active GTK modules"
-msgstr "Djivêye des modules GTK en alaedje pol moumint"
+msgid "List of currently active CTK modules"
+msgstr "Djivêye des modules CTK en alaedje pol moumint"
 
 #: ctk/ctksettings.c:390
 msgid "Xft Antialias"

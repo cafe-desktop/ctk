@@ -67,7 +67,7 @@ msgstr "DÎMEN"
 #: ../gdk/gdk.c:213
 #, fuzzy
 msgid "GDK debugging flags to set"
-msgstr "Nîşenekên neqandina çewtiyên GTK+ yên wê werine tayînkirin"
+msgstr "Nîşenekên neqandina çewtiyên CTK+ yên wê werine tayînkirin"
 
 #. Placeholder in --gdk-debug=FLAGS in --help output
 #. Placeholder in --gdk-no-debug=FLAGS in --help output
@@ -81,7 +81,7 @@ msgstr "Al"
 #: ../gdk/gdk.c:216
 #, fuzzy
 msgid "GDK debugging flags to unset"
-msgstr "Nîşenekên neqandina çewtiyên GTK+ yên wê werine rakirin"
+msgstr "Nîşenekên neqandina çewtiyên CTK+ yên wê werine rakirin"
 
 #: ../gdk/keyname-table.h:3940
 msgctxt "keyboard label"
@@ -1259,8 +1259,8 @@ msgstr "URI nederbasdar e"
 
 #. Description of --ctk-module=MODULES in --help output
 #: ../ctk/ctkmain.c:515
-msgid "Load additional GTK+ modules"
-msgstr "Modulên GTK+ yên pêvek bar bike"
+msgid "Load additional CTK+ modules"
+msgstr "Modulên CTK+ yên pêvek bar bike"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ../ctk/ctkmain.c:516
@@ -1274,13 +1274,13 @@ msgstr "Hemû hişyariyan xedar bike"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:521
-msgid "GTK+ debugging flags to set"
-msgstr "Nîşenekên neqandina çewtiyên GTK+ yên wê werine tayînkirin"
+msgid "CTK+ debugging flags to set"
+msgstr "Nîşenekên neqandina çewtiyên CTK+ yên wê werine tayînkirin"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:524
-msgid "GTK+ debugging flags to unset"
-msgstr "Nîşenekên neqandina çewtiyên GTK+ yên wê werine rakirin"
+msgid "CTK+ debugging flags to unset"
+msgstr "Nîşenekên neqandina çewtiyên CTK+ yên wê werine rakirin"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -1297,12 +1297,12 @@ msgid "Cannot open display: %s"
 msgstr "Dîmendêr nayê vekirin: %s"
 
 #: ../ctk/ctkmain.c:915
-msgid "GTK+ Options"
-msgstr "Vebijarkên GTK+"
+msgid "CTK+ Options"
+msgstr "Vebijarkên CTK+"
 
 #: ../ctk/ctkmain.c:915
-msgid "Show GTK+ Options"
-msgstr "Vebijarkên GTK+ Nîşan Bide"
+msgid "Show CTK+ Options"
+msgstr "Vebijarkên CTK+ Nîşan Bide"
 
 #: ../ctk/ctkmountoperation.c:491
 msgid "Co_nnect"
@@ -2691,9 +2691,9 @@ msgstr "Daneya vegerandî xirabûye"
 
 #: ../ctk/ctktextbufferserialize.c:1870
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
-"Xirakirina Daneya vegerandî. Beşa destpêkê ne eve GTKTEXTBUFFERCONTENTS-0001"
+"Xirakirina Daneya vegerandî. Beşa destpêkê ne eve CTKTEXTBUFFERCONTENTS-0001"
 
 #: ../ctk/ctktextutil.c:60
 msgid "LRM _Left-to-right mark"
@@ -4268,10 +4268,10 @@ msgstr ""
 
 #~ msgid ""
 #~ "Image-loading module %s does not export the proper interface; perhaps "
-#~ "it's from a different GTK version?"
+#~ "it's from a different CTK version?"
 #~ msgstr ""
 #~ "Modula barkirina wêne %s ji navrûyê rastî re nehatiye şandin. Gelo dibe "
-#~ "ew guhertoyeke cuda ya GTK'ê be?"
+#~ "ew guhertoyeke cuda ya CTK'ê be?"
 
 #~ msgid "Image type '%s' is not supported"
 #~ msgstr "Cureyê wêne %s' destekê nade"

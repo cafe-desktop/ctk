@@ -7612,11 +7612,11 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Lys van ikongroottes (ctk-menu=16,16;ctk-button=20,20..."
 
 #: ctk/ctksettings.c:567
-msgid "GTK Modules"
+msgid "CTK Modules"
 msgstr ""
 
 #: ctk/ctksettings.c:568
-msgid "List of currently active GTK modules"
+msgid "List of currently active CTK modules"
 msgstr ""
 
 #: ctk/ctksettings.c:576
@@ -8200,7 +8200,7 @@ msgstr ""
 #: ctk/ctksettings.c:1697
 #, fuzzy
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr "Of stapelikons in knoppies vertoon moet word"
 
@@ -8219,7 +8219,7 @@ msgid "Recent Files Enabled"
 msgstr ""
 
 #: ctk/ctksettings.c:1731
-msgid "Whether GTK+ remembers recent files"
+msgid "Whether CTK+ remembers recent files"
 msgstr ""
 
 #: ctk/ctksettings.c:1746
@@ -11087,8 +11087,8 @@ msgstr "Die titel van die kleurkies-dialoog"
 #~ msgid "Show Preview"
 #~ msgstr "Vertoon teks"
 
-#~ msgid "Whether this text is hidden. Not implemented in GTK 2.0"
-#~ msgstr "Of hierdie teks verskuil is Nie in GTK 2.0 geïmplementeer nie"
+#~ msgid "Whether this text is hidden. Not implemented in CTK 2.0"
+#~ msgstr "Of hierdie teks verskuil is Nie in CTK 2.0 geïmplementeer nie"
 
 #, fuzzy
 #~ msgid "Width In Chararacters"

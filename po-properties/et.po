@@ -1,5 +1,5 @@
-# GTK+ omaduste eesti keele tõlge.
-# Estonian translation of GTK+-properties.
+# CTK+ omaduste eesti keele tõlge.
+# Estonian translation of CTK+-properties.
 #
 # Copyright (C) 1999, 2002–2006 Free Software Foundation, Inc.
 # Copyright (C) 2007, 2009–2011 The GNOME Project.
@@ -3758,7 +3758,7 @@ msgstr "Teisene tekst"
 #: ctk/ctkentry.c:1419 ctk/ctktextview.c:992
 #, fuzzy
 msgid "IM module"
-msgstr "GTK moodulid"
+msgstr "CTK moodulid"
 
 #: ctk/ctkentry.c:1420 ctk/ctktextview.c:993
 #, fuzzy
@@ -7272,12 +7272,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr ""
 
 #: ctk/ctksettings.c:567
-msgid "GTK Modules"
-msgstr "GTK moodulid"
+msgid "CTK Modules"
+msgstr "CTK moodulid"
 
 #: ctk/ctksettings.c:568
-msgid "List of currently active GTK modules"
-msgstr "Nimekiri hetkel aktiivsetest GTK moodulitest"
+msgid "List of currently active CTK modules"
+msgstr "Nimekiri hetkel aktiivsetest CTK moodulitest"
 
 #: ctk/ctksettings.c:576
 msgid "Xft Antialias"
@@ -7820,7 +7820,7 @@ msgstr ""
 
 #: ctk/ctksettings.c:1697
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
 
@@ -7841,7 +7841,7 @@ msgid "Recent Files Enabled"
 msgstr "Hiljutiste failide suurim vanus"
 
 #: ctk/ctksettings.c:1731
-msgid "Whether GTK+ remembers recent files"
+msgid "Whether CTK+ remembers recent files"
 msgstr ""
 
 #: ctk/ctksettings.c:1746

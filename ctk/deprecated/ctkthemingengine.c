@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 2010 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -38,11 +38,11 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  * @See_also: #CtkStyleContext
  *
  * #CtkThemingEngine was the object used for rendering themed content
- * in GTK+ widgets. It used to allow overriding GTK+'s default
+ * in CTK+ widgets. It used to allow overriding CTK+'s default
  * implementation of rendering functions by allowing engines to be
  * loaded as modules.
  *
- * #CtkThemingEngine has been deprecated in GTK+ 3.14 and will be
+ * #CtkThemingEngine has been deprecated in CTK+ 3.14 and will be
  * ignored for rendering. The advancements in CSS theming are good
  * enough to allow themers to achieve their goals without the need
  * to modify source code.
@@ -851,7 +851,7 @@ ctk_theming_engine_get_margin (CtkThemingEngine *engine,
  * Returns the font description for a given state.
  *
  * Returns: (transfer none): the #PangoFontDescription for the given
- *          state. This object is owned by GTK+ and should not be
+ *          state. This object is owned by CTK+ and should not be
  *          freed.
  *
  * Since: 3.0

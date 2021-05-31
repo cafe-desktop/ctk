@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 2001 CodeFactory AB
  * Copyright (C) 2001, 2002 Anders Carlsson
  * Copyright (C) 2003, 2004 Matthias Clasen <mclasen@redhat.com>
@@ -20,10 +20,10 @@
 /*
  * Author: Anders Carlsson <andersca@gnome.org>
  *
- * Modified by the GTK+ Team and others 1997-2004.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2004.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -78,13 +78,13 @@
  *
  * To specify a person with an email address, use a string like
  * "Edgar Allan Poe <edgar\@poe.com>". To specify a website with a title,
- * use a string like "GTK+ team http://www.ctk.org".
+ * use a string like "CTK+ team http://www.ctk.org".
  *
  * To make constructing a CtkAboutDialog as convenient as possible, you can
  * use the function ctk_show_about_dialog() which constructs and shows a dialog
  * and keeps it around so that it can be shown again.
  *
- * Note that GTK+ sets a default title of `_("About %s")` on the dialog
+ * Note that CTK+ sets a default title of `_("About %s")` on the dialog
  * window (where \%s is replaced by the name of the application, but in
  * order to ensure proper translation of the title, applications should
  * set the title property explicitly when constructing a CtkAboutDialog,

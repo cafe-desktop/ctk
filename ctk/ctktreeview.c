@@ -7599,8 +7599,8 @@ check_model_dnd (CtkTreeModel *model,
                  "g_signal_stop_emission_by_name() in your signal handler to prevent "
                  "the default handler from running. Look at the source code "
                  "for the default handler in ctktreeview.c to get an idea what "
-                 "your handler should do. (ctktreeview.c is in the GTK source "
-                 "code.) If you're using GTK from a language other than C, "
+                 "your handler should do. (ctktreeview.c is in the CTK source "
+                 "code.) If you're using CTK from a language other than C, "
                  "there may be a more natural way to override default handlers, e.g. via derivation.",
                  signal, g_type_name (required_iface), signal);
       return FALSE;
@@ -11959,7 +11959,7 @@ ctk_tree_view_get_headers_clickable (CtkTreeView *tree_view)
  * Sets a hint for the theme to draw even/odd rows in the @tree_view
  * with different colors, also known as "zebra striping".
  *
- * This function tells the GTK+ theme that the user interface for your
+ * This function tells the CTK+ theme that the user interface for your
  * application requires users to read across tree rows and associate
  * cells with one another.
  *

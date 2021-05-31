@@ -107,12 +107,12 @@
  * # Performance Considerations
  *
  * Internally, the #CtkListStore was implemented with a linked list with
- * a tail pointer prior to GTK+ 2.6.  As a result, it was fast at data
+ * a tail pointer prior to CTK+ 2.6.  As a result, it was fast at data
  * insertion and deletion, and not fast at random data access.  The
  * #CtkListStore sets the #CTK_TREE_MODEL_ITERS_PERSIST flag, which means
  * that #CtkTreeIters can be cached while the row exists.  Thus, if
  * access to a particular row is needed often and your code is expected to
- * run on older versions of GTK+, it is worth keeping the iter around.
+ * run on older versions of CTK+, it is worth keeping the iter around.
  *
  * # Atomic Operations
  *

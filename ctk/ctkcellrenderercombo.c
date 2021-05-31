@@ -45,7 +45,7 @@
  * #CtkCellRendererCombo:text-column property. Further properties of the combo box
  * can be set in a handler for the #CtkCellRenderer::editing-started signal.
  *
- * The #CtkCellRendererCombo cell renderer was added in GTK+ 2.6.
+ * The #CtkCellRendererCombo cell renderer was added in CTK+ 2.6.
  */
 
 

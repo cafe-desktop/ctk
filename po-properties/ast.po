@@ -1523,7 +1523,7 @@ msgstr "Tamañu"
 
 #: ../ctk/ctkcellrendererpixbuf.c:173
 msgid "The CtkIconSize value that specifies the size of the rendered icon"
-msgstr "El valor de GTKIconSize qu'especifica el tamañu del iconu renderizáu"
+msgstr "El valor de CTKIconSize qu'especifica el tamañu del iconu renderizáu"
 
 #: ../ctk/ctkcellrendererpixbuf.c:182
 msgid "Detail"
@@ -1646,7 +1646,7 @@ msgstr "Pulsu del marcador incrementable"
 #: ../ctk/ctkcellrendererspinner.c:152
 msgid "The CtkIconSize value that specifies the size of the rendered spinner"
 msgstr ""
-"El valor de GTKIconSize qu'especifica'l tamañu del marcador incrementable "
+"El valor de CTKIconSize qu'especifica'l tamañu del marcador incrementable "
 "renderizáu"
 
 #: ../ctk/ctkcellrenderertext.c:255
@@ -5480,12 +5480,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Llista de los tamaños de los iconos (ctk-menu=16,16:ctk-button=20,20..."
 
 #: ../ctk/ctksettings.c:477
-msgid "GTK Modules"
-msgstr "Módulos GTK"
+msgid "CTK Modules"
+msgstr "Módulos CTK"
 
 #: ../ctk/ctksettings.c:478
-msgid "List of currently active GTK modules"
-msgstr "Llista de módulos GTK anguaño activos"
+msgid "List of currently active CTK modules"
+msgstr "Llista de módulos CTK anguaño activos"
 
 #: ../ctk/ctksettings.c:486
 msgid "Xft Antialias"

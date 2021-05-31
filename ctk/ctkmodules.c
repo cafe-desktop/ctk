@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright 1998-2002 Tim Janik, Red Hat, Inc., and others.
  * Copyright (C) 2003 Alex Graveley
  *
@@ -163,7 +163,7 @@ module_build_la_path (const gchar *directory,
  * @name: the name of the module
  * @type: the type of the module, for instance 'modules', 'engines', immodules'
  * 
- * Looks for a dynamically module named @name of type @type in the standard GTK+
+ * Looks for a dynamically module named @name of type @type in the standard CTK+
  *  module search path.
  * 
  * Returns: the pathname to the found module, or %NULL if it wasn’t found.
@@ -226,8 +226,8 @@ find_module (const gchar *name)
 
   if (_ctk_module_has_mixed_deps (module))
     {
-      g_warning ("GTK+ module %s cannot be loaded.\n"
-                 "GTK+ 2.x symbols detected. Using GTK+ 2.x and GTK+ 3 in the same process is not supported.", module_name);
+      g_warning ("CTK+ module %s cannot be loaded.\n"
+                 "CTK+ 2.x symbols detected. Using CTK+ 2.x and CTK+ 3 in the same process is not supported.", module_name);
       g_module_close (module);
       module = NULL;
     }
@@ -252,7 +252,7 @@ module_is_blacklisted (const gchar *name,
       g_str_equal (name, "atk-bridge"))
     {
       if (verbose)
-        g_message ("Not loading module \"%s\": The functionality is provided by GTK natively. Please try to not load it.", name);
+        g_message ("Not loading module \"%s\": The functionality is provided by CTK natively. Please try to not load it.", name);
 
       return TRUE;
     }

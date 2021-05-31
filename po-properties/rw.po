@@ -5646,12 +5646,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Bya Agashushondanga Ibikubiyemo Akabuto 20 20"
 
 #: ctk/ctksettings.c:380
-msgid "GTK Modules"
+msgid "CTK Modules"
 msgstr ""
 
 #: ctk/ctksettings.c:381
 #, fuzzy
-msgid "List of currently active GTK modules"
+msgid "List of currently active CTK modules"
 msgstr "Bya Gikora Modire"
 
 #: ctk/ctksettings.c:390
@@ -8537,5 +8537,5 @@ msgstr "Kuri Gushushanya i Iyinjiza Uburyo"
 #~ msgstr "Umwandiko"
 
 #, fuzzy
-#~ msgid "Whether this text is hidden. Not implemented in GTK 2.0"
+#~ msgid "Whether this text is hidden. Not implemented in CTK 2.0"
 #~ msgstr "iyi Umwandiko ni gihishwe in 2. 0"

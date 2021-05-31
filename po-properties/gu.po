@@ -6356,12 +6356,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "ચિહ્ન માપોની યાદી (ctk-menu=16,16:ctk-button=20,20..."
 
 #: ../ctk/ctksettings.c:540
-msgid "GTK Modules"
-msgstr "GTK મોડ્યુલો"
+msgid "CTK Modules"
+msgstr "CTK મોડ્યુલો"
 
 #: ../ctk/ctksettings.c:541
-msgid "List of currently active GTK modules"
-msgstr "વર્તમાનમાં સક્રિય GTK મોડ્યુલોની યાદી"
+msgid "List of currently active CTK modules"
+msgstr "વર્તમાનમાં સક્રિય CTK મોડ્યુલોની યાદી"
 
 #: ../ctk/ctksettings.c:549
 msgid "Xft Antialias"
@@ -6878,7 +6878,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Whether buttons in dialogs should use the alternative button order"
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr "શું સંવાદમાંના બટનોએ વૈકલ્પિક બટન ક્રમ વાપરવો જોઈએ"
 
@@ -6898,8 +6898,8 @@ msgid "Recent Files Enabled"
 msgstr "તાજેતરની ફાઇલો સક્રિય થયેલ છે"
 
 #: ../ctk/ctksettings.c:1630
-msgid "Whether GTK+ remembers recent files"
-msgstr "શું GTK+ તાજેતરની ફાઇલોને યાદ રાખે છે"
+msgid "Whether CTK+ remembers recent files"
+msgstr "શું CTK+ તાજેતરની ફાઇલોને યાદ રાખે છે"
 
 #: ../ctk/ctksettings.c:1645
 msgid "Long press time"

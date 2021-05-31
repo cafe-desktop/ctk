@@ -6862,12 +6862,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 
 #: ctk/ctksettings.c:578
-msgid "GTK Modules"
-msgstr "GTK Modules"
+msgid "CTK Modules"
+msgstr "CTK Modules"
 
 #: ctk/ctksettings.c:579
-msgid "List of currently active GTK modules"
-msgstr "List of currently active GTK modules"
+msgid "List of currently active CTK modules"
+msgstr "List of currently active CTK modules"
 
 #: ctk/ctksettings.c:587
 msgid "Xft Antialias"
@@ -7419,10 +7419,10 @@ msgstr "Dialogs use header bar"
 
 #: ctk/ctksettings.c:1708
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 
 #: ctk/ctksettings.c:1724
@@ -7442,8 +7442,8 @@ msgid "Recent Files Enabled"
 msgstr "Recent Files Enabled"
 
 #: ctk/ctksettings.c:1742
-msgid "Whether GTK+ remembers recent files"
-msgstr "Whether GTK+ remembers recent files"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Whether CTK+ remembers recent files"
 
 #: ctk/ctksettings.c:1757
 msgid "Long press time"

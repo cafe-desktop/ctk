@@ -6669,11 +6669,11 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr ""
 
 #: ctk/ctksettings.c:568
-msgid "GTK Modules"
+msgid "CTK Modules"
 msgstr ""
 
 #: ctk/ctksettings.c:569
-msgid "List of currently active GTK modules"
+msgid "List of currently active CTK modules"
 msgstr ""
 
 #: ctk/ctksettings.c:577
@@ -7200,7 +7200,7 @@ msgstr ""
 
 #: ctk/ctksettings.c:1698
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
 
@@ -7219,7 +7219,7 @@ msgid "Recent Files Enabled"
 msgstr ""
 
 #: ctk/ctksettings.c:1732
-msgid "Whether GTK+ remembers recent files"
+msgid "Whether CTK+ remembers recent files"
 msgstr ""
 
 #: ctk/ctksettings.c:1747

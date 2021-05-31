@@ -56,10 +56,10 @@
  * @short_description: Application class
  *
  * #CtkApplication is a class that handles many important aspects
- * of a GTK+ application in a convenient fashion, without enforcing
+ * of a CTK+ application in a convenient fashion, without enforcing
  * a one-size-fits-all application model.
  *
- * Currently, CtkApplication handles GTK+ initialization, application
+ * Currently, CtkApplication handles CTK+ initialization, application
  * uniqueness, session management, provides some basic scriptability and
  * desktop shell integration by exporting actions and menus and manages a
  * list of toplevel windows whose life-cycle is automatically tied to the
@@ -130,7 +130,7 @@
  *
  * ## See Also ## {#seealso}
  * [HowDoI: Using CtkApplication](https://wiki.gnome.org/HowDoI/CtkApplication),
- * [Getting Started with GTK+: Basics](https://developer.gnome.org/ctk3/stable/ctk-getting-started.html#id-1.2.3.3)
+ * [Getting Started with CTK+: Basics](https://developer.gnome.org/ctk3/stable/ctk-getting-started.html#id-1.2.3.3)
  */
 
 enum {
@@ -850,8 +850,8 @@ ctk_application_class_init (CtkApplicationClass *class)
   /**
    * CtkApplication:screensaver-active:
    *
-   * This property is %TRUE if GTK+ believes that the screensaver is
-   * currently active. GTK+ only tracks session state (including this)
+   * This property is %TRUE if CTK+ believes that the screensaver is
+   * currently active. CTK+ only tracks session state (including this)
    * when #CtkApplication::register-session is set to %TRUE.
    *
    * Tracking the screensaver state is supported on Linux.
@@ -902,13 +902,13 @@ ctk_application_class_init (CtkApplicationClass *class)
  *
  * Concretely, ctk_init() is called in the default handler for the
  * #GApplication::startup signal. Therefore, #CtkApplication subclasses should
- * chain up in their #GApplication::startup handler before using any GTK+ API.
+ * chain up in their #GApplication::startup handler before using any CTK+ API.
  *
  * Note that commandline arguments are not passed to ctk_init().
- * All GTK+ functionality that is available via commandline arguments
+ * All CTK+ functionality that is available via commandline arguments
  * can also be achieved by setting suitable environment variables
  * such as `G_DEBUG`, so this should not be a big
- * problem. If you absolutely must support GTK+ commandline arguments,
+ * problem. If you absolutely must support CTK+ commandline arguments,
  * you can explicitly call ctk_init() before creating the application
  * instance.
  *
@@ -917,7 +917,7 @@ ctk_application_class_init (CtkApplicationClass *class)
  *
  * If no application ID is given then some features (most notably application 
  * uniqueness) will be disabled. A null application ID is only allowed with 
- * GTK+ 3.6 or later.
+ * CTK+ 3.6 or later.
  *
  * Returns: a new #CtkApplication instance
  *
@@ -953,7 +953,7 @@ ctk_application_new (const gchar       *application_id,
  * will remain until the window is destroyed, but you can explicitly
  * remove it with ctk_application_remove_window().
  *
- * GTK+ will keep the @application running as long as it has
+ * CTK+ will keep the @application running as long as it has
  * any windows.
  *
  * Since: 3.0

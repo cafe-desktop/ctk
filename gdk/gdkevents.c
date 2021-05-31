@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -41,7 +41,7 @@
  * This section describes functions dealing with events from the window
  * system.
  *
- * In GTK+ applications the events are handled automatically in
+ * In CTK+ applications the events are handled automatically in
  * ctk_main_do_event() and passed on to the appropriate widgets, so these
  * functions are rarely needed. Though some of the fields in the
  * [Event Structures][gdk3-Event-Structures] are useful.
@@ -332,10 +332,10 @@ _gdk_event_queue_flush (GdkDisplay *display)
  * 
  * Sets the function to call to handle all events from GDK.
  *
- * Note that GTK+ uses this to install its own event handler, so it is
- * usually not useful for GTK+ applications. (Although an application
+ * Note that CTK+ uses this to install its own event handler, so it is
+ * usually not useful for CTK+ applications. (Although an application
  * can call this function then call ctk_main_do_event() to pass
- * events to GTK+.)
+ * events to CTK+.)
  **/
 void 
 gdk_event_handler_set (GdkEventFunc   func,
@@ -1605,7 +1605,7 @@ gdk_event_get_axis (const GdkEvent *event,
  * @device: a #GdkDevice
  *
  * Sets the device for @event to @device. The event must
- * have been allocated by GTK+, for instance, by
+ * have been allocated by CTK+, for instance, by
  * gdk_event_copy().
  *
  * Since: 3.0
@@ -1730,7 +1730,7 @@ gdk_event_get_device (const GdkEvent *event)
         GdkSeat *seat;
 
         g_warning ("Event with type %d not holding a GdkDevice. "
-                   "It is most likely synthesized outside Gdk/GTK+",
+                   "It is most likely synthesized outside Gdk/CTK+",
                    event->type);
 
         display = gdk_window_get_display (event->any.window);
@@ -1755,7 +1755,7 @@ gdk_event_get_device (const GdkEvent *event)
  *
  * Sets the slave device for @event to @device.
  *
- * The event must have been allocated by GTK+,
+ * The event must have been allocated by CTK+,
  * for instance by gdk_event_copy().
  *
  * Since: 3.0
@@ -2038,7 +2038,7 @@ gdk_events_get_center (GdkEvent *event1,
  * @screen: a #GdkScreen
  * 
  * Sets the screen for @event to @screen. The event must
- * have been allocated by GTK+, for instance, by
+ * have been allocated by CTK+, for instance, by
  * gdk_event_copy().
  *
  * Since: 2.2
@@ -2121,7 +2121,7 @@ gdk_event_get_event_sequence (const GdkEvent *event)
  * @show_events:  %TRUE to output event debugging information.
  * 
  * Sets whether a trace of received events is output.
- * Note that GTK+ must be compiled with debugging (that is,
+ * Note that CTK+ must be compiled with debugging (that is,
  * configured using the `--enable-debug` option)
  * to use this option.
  **/
@@ -2464,7 +2464,7 @@ gdk_event_get_seat (const GdkEvent *event)
       GdkDevice *device;
 
       g_warning ("Event with type %d not holding a GdkSeat. "
-                 "It is most likely synthesized outside Gdk/GTK+",
+                 "It is most likely synthesized outside Gdk/CTK+",
                  event->type);
 
       device = gdk_event_get_device (event);

@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkrecentchooserwidget.c: embeddable recently used resources chooser widget
  * Copyright (C) 2006 Emmanuele Bassi
  * 
@@ -38,7 +38,7 @@
  * Note that #CtkRecentChooserWidget does not have any methods of its own.
  * Instead, you should use the functions that work on a #CtkRecentChooser.
  *
- * Recently used files are supported since GTK+ 2.10.
+ * Recently used files are supported since CTK+ 2.10.
  */
 
 

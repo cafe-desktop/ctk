@@ -1,5 +1,5 @@
 # British translation
-# Copyright (C) 2004 GTK+'s COPYRIGHT HOLDER
+# Copyright (C) 2004 CTK+'s COPYRIGHT HOLDER
 # This file is distributed under the same licence as the ctk+ package
 # Abigail Brady <morwen@evilmagic.org>, Gareth Owen <gowen72@yahoo.com> 2004
 # Philip Withnall <philip@tecnocode.co.uk>, 2010.
@@ -6864,12 +6864,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 
 #: ctk/ctksettings.c:578
-msgid "GTK Modules"
-msgstr "GTK Modules"
+msgid "CTK Modules"
+msgstr "CTK Modules"
 
 #: ctk/ctksettings.c:579
-msgid "List of currently active GTK modules"
-msgstr "List of currently active GTK modules"
+msgid "List of currently active CTK modules"
+msgstr "List of currently active CTK modules"
 
 #: ctk/ctksettings.c:587
 msgid "Xft Antialias"
@@ -7421,10 +7421,10 @@ msgstr "Dialogues use header bar"
 
 #: ctk/ctksettings.c:1708
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"Whether builtin GTK+ dialogues should use a header bar instead of an action "
+"Whether builtin CTK+ dialogues should use a header bar instead of an action "
 "area."
 
 #: ctk/ctksettings.c:1724
@@ -7444,8 +7444,8 @@ msgid "Recent Files Enabled"
 msgstr "Recent Files Enabled"
 
 #: ctk/ctksettings.c:1742
-msgid "Whether GTK+ remembers recent files"
-msgstr "Whether GTK+ remembers recent files"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Whether CTK+ remembers recent files"
 
 #: ctk/ctksettings.c:1757
 msgid "Long press time"
@@ -10154,5 +10154,5 @@ msgstr "The title of the colour profile to use"
 #~ msgid "Show Preview"
 #~ msgstr "Show text"
 
-#~ msgid "Whether this text is hidden. Not implemented in GTK 2.0"
-#~ msgstr "Whether this text is hidden. Not implemented in GTK 2.0"
+#~ msgid "Whether this text is hidden. Not implemented in CTK 2.0"
+#~ msgstr "Whether this text is hidden. Not implemented in CTK 2.0"

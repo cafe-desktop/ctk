@@ -1,6 +1,6 @@
-# Shavian translation of GTK.
+# Shavian translation of CTK.
 # Copyright (C) 2009.
-# This file is distributed under the same license as the GTK package.
+# This file is distributed under the same license as the CTK package.
 # Thomas Thurman <tthurman@gnome.org>, 2009.
 #
 msgid ""
@@ -330,10 +330,10 @@ msgstr "𐑳𐑯𐑱𐑚𐑩𐑤 𐑑 𐑤𐑴𐑛 𐑦𐑥𐑦𐑡-𐑤𐑴𐑛
 #: ../gdk-pixbuf/gdk-pixbuf-io.c:730
 msgid ""
 "Image-loading module %s does not export the proper interface; perhaps it's "
-"from a different GTK version?"
+"from a different CTK version?"
 msgstr ""
 "𐑦𐑥𐑦𐑡-𐑤𐑴𐑛𐑦𐑙 𐑥𐑪𐑛𐑿𐑤 %s 𐑛𐑳𐑟 𐑯𐑪𐑑 𐑧𐑒𐑕𐑐𐑹𐑑 𐑞 𐑐𐑮𐑪𐑐𐑼 𐑦𐑯𐑑𐑼𐑓𐑱𐑕; 𐑐𐑼𐑣𐑨𐑐𐑕 𐑦𐑑𐑕 𐑓𐑮𐑪𐑥 𐑩 𐑛𐑦𐑓𐑼𐑩𐑯𐑑 "
-"GTK 𐑝𐑻𐑠𐑩𐑯?"
+"CTK 𐑝𐑻𐑠𐑩𐑯?"
 
 #, c-format
 #: ../gdk-pixbuf/gdk-pixbuf-io.c:739 ../gdk-pixbuf/gdk-pixbuf-io.c:790
@@ -2194,8 +2194,8 @@ msgstr "𐑦𐑯𐑝𐑨𐑤𐑦𐑛 URI"
 
 #. Description of --ctk-module=MODULES in --help output
 #: ../ctk/ctkmain.c:447
-msgid "Load additional GTK+ modules"
-msgstr "𐑤𐑴𐑛 𐑩𐑛𐑦𐑖𐑩𐑯𐑩𐑤 GTK+ 𐑥𐑪𐑛𐑿𐑤𐑟"
+msgid "Load additional CTK+ modules"
+msgstr "𐑤𐑴𐑛 𐑩𐑛𐑦𐑖𐑩𐑯𐑩𐑤 CTK+ 𐑥𐑪𐑛𐑿𐑤𐑟"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ../ctk/ctkmain.c:448
@@ -2209,13 +2209,13 @@ msgstr "𐑥𐑱𐑒 𐑷𐑤 𐑢𐑪𐑮𐑯𐑦𐑙𐑟 𐑓𐑱𐑑𐑩𐑤"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:453
-msgid "GTK+ debugging flags to set"
-msgstr "GTK+ 𐑛𐑰𐑚𐑳𐑜𐑦𐑙 𐑓𐑤𐑨𐑜𐑟 𐑑 𐑕𐑧𐑑"
+msgid "CTK+ debugging flags to set"
+msgstr "CTK+ 𐑛𐑰𐑚𐑳𐑜𐑦𐑙 𐑓𐑤𐑨𐑜𐑟 𐑑 𐑕𐑧𐑑"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:456
-msgid "GTK+ debugging flags to unset"
-msgstr "GTK+ 𐑛𐑰𐑚𐑳𐑜𐑦𐑙 𐑓𐑤𐑨𐑜𐑟 𐑑 𐑩𐑯𐑕𐑧𐑑"
+msgid "CTK+ debugging flags to unset"
+msgstr "CTK+ 𐑛𐑰𐑚𐑳𐑜𐑦𐑙 𐑓𐑤𐑨𐑜𐑟 𐑑 𐑩𐑯𐑕𐑧𐑑"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -2233,12 +2233,12 @@ msgid "Cannot open display: %s"
 msgstr "𐑒𐑨𐑯𐑪𐑑 𐑴𐑐𐑩𐑯 𐑛𐑩𐑕𐑐𐑤𐑱: %s"
 
 #: ../ctk/ctkmain.c:810
-msgid "GTK+ Options"
-msgstr "GTK+ 𐑪𐑐𐑖𐑩𐑯𐑟"
+msgid "CTK+ Options"
+msgstr "CTK+ 𐑪𐑐𐑖𐑩𐑯𐑟"
 
 #: ../ctk/ctkmain.c:810
-msgid "Show GTK+ Options"
-msgstr "𐑖𐑴 GTK+ 𐑪𐑐𐑖𐑩𐑯𐑟"
+msgid "Show CTK+ Options"
+msgstr "𐑖𐑴 CTK+ 𐑪𐑐𐑖𐑩𐑯𐑟"
 
 #: ../ctk/ctkmountoperation.c:489
 msgid "Co_nnect"
@@ -3592,9 +3592,9 @@ msgstr "𐑕𐑦𐑮𐑰𐑩𐑤𐑲𐑟𐑛 𐑛𐑱𐑑𐑩 𐑦𐑟 𐑥𐑨�
 
 #: ../ctk/ctktextbufferserialize.c:1857
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
-"𐑕𐑦𐑮𐑰𐑩𐑤𐑲𐑟𐑛 𐑛𐑱𐑑𐑩 𐑦𐑟 𐑥𐑨𐑤𐑓𐑹𐑥𐑛. 𐑓𐑻𐑕𐑑 𐑕𐑧𐑒𐑖𐑩𐑯 𐑦𐑟𐑯𐑑 GTKTEXTBUFFERCONTENTS-0001"
+"𐑕𐑦𐑮𐑰𐑩𐑤𐑲𐑟𐑛 𐑛𐑱𐑑𐑩 𐑦𐑟 𐑥𐑨𐑤𐑓𐑹𐑥𐑛. 𐑓𐑻𐑕𐑑 𐑕𐑧𐑒𐑖𐑩𐑯 𐑦𐑟𐑯𐑑 CTKTEXTBUFFERCONTENTS-0001"
 
 #: ../ctk/ctktextutil.c:61
 msgid "LRM _Left-to-right mark"

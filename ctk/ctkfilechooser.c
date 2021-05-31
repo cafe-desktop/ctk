@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkfilechooser.c: Abstract interface for file selector GUIs
  * Copyright (C) 2003, Red Hat, Inc.
  *
@@ -32,7 +32,7 @@
  * @See_also: #CtkFileChooserDialog, #CtkFileChooserWidget, #CtkFileChooserButton
  *
  * #CtkFileChooser is an interface that can be implemented by file
- * selection widgets.  In GTK+, the main objects that implement this
+ * selection widgets.  In CTK+, the main objects that implement this
  * interface are #CtkFileChooserWidget, #CtkFileChooserDialog, and
  * #CtkFileChooserButton.  You do not need to write an object that
  * implements the #CtkFileChooser interface unless you are trying to
@@ -71,8 +71,8 @@
  * ctk_file_chooser_get_filename() to g_open() or g_fopen(),
  * you may not be able to directly set it as the text of a
  * #CtkLabel widget unless you convert it first to UTF-8,
- * which all GTK+ widgets expect. You should use g_filename_to_utf8()
- * to convert filenames into strings that can be passed to GTK+
+ * which all CTK+ widgets expect. You should use g_filename_to_utf8()
+ * to convert filenames into strings that can be passed to CTK+
  * widgets.
  *
  * # Adding a Preview Widget
@@ -1905,7 +1905,7 @@ ctk_file_chooser_remove_filter (CtkFileChooser *chooser,
  *
  * Returns: (element-type CtkFileFilter) (transfer container): a
  *  #GSList containing the current set of user selectable filters. The
- *  contents of the list are owned by GTK+, but you must free the list
+ *  contents of the list are owned by CTK+, but you must free the list
  *  itself with g_slist_free() when you are done with it.
  *
  * Since: 2.4

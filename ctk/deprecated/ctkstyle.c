@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -54,7 +54,7 @@
  * A #CtkStyle object encapsulates the information that provides the look and
  * feel for a widget.
  *
- * > In GTK+ 3.0, CtkStyle has been deprecated and replaced by
+ * > In CTK+ 3.0, CtkStyle has been deprecated and replaced by
  * > #CtkStyleContext.
  *
  * Each #CtkWidget has an associated #CtkStyle object that is used when
@@ -63,7 +63,7 @@
  * states; see #CtkStateType.
  *
  * Usually the #CtkStyle for a widget is the same as the default style that
- * is set by GTK+ and modified the theme engine.
+ * is set by CTK+ and modified the theme engine.
  *
  * Usually applications should not need to use or modify the #CtkStyle of
  * their widgets.
@@ -4040,7 +4040,7 @@ ctk_widget_get_default_style_for_screen (GdkScreen *screen)
  * Returns the default style used by all widgets initially.
  *
  * Returns: (transfer none): the default style. This #CtkStyle
- *     object is owned by GTK+ and should not be modified or freed.
+ *     object is owned by CTK+ and should not be modified or freed.
  *
  * Deprecated:3.0: Use #CtkStyleContext instead, and
  *     ctk_css_provider_get_default() to obtain a #CtkStyleProvider
@@ -4121,7 +4121,7 @@ ctk_widget_has_rc_style (CtkWidget *widget)
  *     the default style
  *
  * Used to set the #CtkStyle for a widget (@widget->style). Since
- * GTK 3, this function does nothing, the passed in style is ignored.
+ * CTK 3, this function does nothing, the passed in style is ignored.
  *
  * Deprecated:3.0: Use #CtkStyleContext instead
  */
@@ -4738,7 +4738,7 @@ ctk_widget_class_path (CtkWidget *widget,
  * @stock_id: a stock ID
  * @size: (type int): a stock size (#CtkIconSize). A size of `(CtkIconSize)-1`
  *     means render at the size of the source and don’t scale (if there are
- *     multiple source sizes, GTK+ picks one of the available sizes).
+ *     multiple source sizes, CTK+ picks one of the available sizes).
  * @detail: (allow-none): render detail to pass to theme engine
  *
  * A convenience function that uses the theme settings for @widget

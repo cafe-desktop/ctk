@@ -4,32 +4,32 @@
 <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
 ]>
 <chapter id="ctk-migrating-3-x-to-y">
-  <title>Migrating from one GTK+ 3 release to another</title>
+  <title>Migrating from one CTK+ 3 release to another</title>
 
   <para>
-    GTK+ 3 has seen considerable development over multiple stable releases.
+    CTK+ 3 has seen considerable development over multiple stable releases.
     While we try to maintain compatibility as far as possible, some minor
     adjustments may be necessary when moving an application from one release
-    of GTK+ 3 to the next.
+    of CTK+ 3 to the next.
   </para>
 
   <para>
-    The following sections list noteworthy changes in GTK+ 3.x release that
+    The following sections list noteworthy changes in CTK+ 3.x release that
     may or may not require applications to be updated.
   </para>
 
   <section>
-    <title>Changes in GTK+ 3.2</title>
+    <title>Changes in CTK+ 3.2</title>
 
     <para>
-      The accessible implementations for GTK+ widgets have been integrated
+      The accessible implementations for CTK+ widgets have been integrated
       into libctk itself, and the gail module does not exist anymore. This
       change should not affect applications very much.
     </para>
   </section>
 
   <section>
-    <title>Changes in GTK+ 3.4</title>
+    <title>Changes in CTK+ 3.4</title>
 
     <para>
       Scroll events have been separated from button events, and smooth
@@ -42,7 +42,7 @@
     </para>
 
     <para>
-      GTK+ now uses &lt;Primary&gt; instead of &lt;Control&gt; in keyboard
+      CTK+ now uses &lt;Primary&gt; instead of &lt;Control&gt; in keyboard
       accelerators, for improved cross-platform handling. This should not
       affect applications, unless they parse or create these accelerator
       manually.
@@ -82,23 +82,23 @@
   </section>
 
   <section>
-    <title>Changes in GTK+ 3.6</title>
+    <title>Changes in CTK+ 3.6</title>
 
     <para>
       The accessibility bridge code that exports accessible objects
       on the bus is now used by default; atk-bridge has been converted
-      into a library that GTK+ links against. To void the linking,
-      pass --without-atk-bridge when configuring GTK+.
+      into a library that CTK+ links against. To void the linking,
+      pass --without-atk-bridge when configuring CTK+.
     </para>
 
     <para>
       GDK threading support has been deprecated. It is recommended to
       use g_idle_add(), g_main_context_invoke() and similar funtions
-      to make all GTK+ calls from the main thread.
+      to make all CTK+ calls from the main thread.
     </para>
 
     <para>
-      GTK+ now follows the XDG Base Directory specification for
+      CTK+ now follows the XDG Base Directory specification for
       user configuration and data files. In detail,
       <itemizedlist>
         <listitem>$XDG_CONFIG_HOME/ctk-3.0/custom-papers is the new location
@@ -120,19 +120,19 @@
   </section>
 
   <section>
-    <title>Changes in GTK+ 3.8</title>
+    <title>Changes in CTK+ 3.8</title>
 
     <para>
       CtkIconInfo has changed from being a boxed type to a GObject.
       This is technically an ABI change, but basically all existing code
       will keep working if its used as a boxed type, and it is not
-      possible to instantiate CtkIconInfos outside GTK+, so this is
+      possible to instantiate CtkIconInfos outside CTK+, so this is
       not expected to be a big problem.
     </para>
   </section>
 
   <section>
-    <title>Changes in GTK+ 3.10</title>
+    <title>Changes in CTK+ 3.10</title>
 
     <para>
       GDK has been changed to allow only a single screen per display.
@@ -189,7 +189,7 @@
   </section>
 
   <section>
-    <title>Changes in GTK+ 3.12</title>
+    <title>Changes in CTK+ 3.12</title>
 
     <para>
       CtkWidget had a hack where if opacity is 0.999 we set up an opacity
@@ -222,12 +222,12 @@
   </section>
 
   <section>
-    <title>Changes in GTK+ 3.14</title>
+    <title>Changes in CTK+ 3.14</title>
 
     <para>
       A new state, CTK_STATE_FLAG_CHECKED, has been added for checked states
       of radio and check buttons and menuitems. Applications that are using
-      GTK+ styles without widgets will need adjustments.
+      CTK+ styles without widgets will need adjustments.
     </para>
 
     <para>
@@ -241,7 +241,7 @@
     </para>
 
     <para>
-      GTK+ now includes an interactive debugger which can be activated with
+      CTK+ now includes an interactive debugger which can be activated with
       the keyboard shortcuts Ctrl-Shift-d or Ctrl-Shift-i. If these shortcuts
       interfere with application keybindings, they can be disabled with the
       setting org.ctk.Settings.Debug.enable-inspector-keybinding.
@@ -254,7 +254,7 @@
     </para>
 
     <para>
-      Using GTK+ under X11 without the X Render extension has been observed
+      Using CTK+ under X11 without the X Render extension has been observed
       to be problematic. This combination is using code paths in cairo and
       graphics drivers which are rarely tested and likely buggy.
     </para>
@@ -271,15 +271,15 @@
   </section>
 
   <section>
-    <title>Changes in GTK+ 3.16</title>
+    <title>Changes in CTK+ 3.16</title>
 
     <para>
-      GTK+ now includes an OpenGL rendering widget. To support GL on various
-      platforms, GTK+ uses libepoxy.
+      CTK+ now includes an OpenGL rendering widget. To support GL on various
+      platforms, CTK+ uses libepoxy.
     </para>
 
     <para>
-      GTK+ no longer uses ctk-update-icon-cache during its build. The
+      CTK+ no longer uses ctk-update-icon-cache during its build. The
       --enable-ctk2-dependency configure option has been removed.
     </para>
 
@@ -315,7 +315,7 @@
   </section>
 
   <section>
-    <title>Changes in GTK+ 3.18</title>
+    <title>Changes in CTK+ 3.18</title>
 
     <para>
       The CtkListBox model support that was introduced in 3.16 has been
@@ -332,21 +332,21 @@
   </section>
 
   <section>
-    <title>Changes in GTK+ 3.20</title>
+    <title>Changes in CTK+ 3.20</title>
 
     <para>
-      The way theming works in GTK+ has been reworked fundamentally, to
+      The way theming works in CTK+ has been reworked fundamentally, to
       implement many more CSS features and make themes more expressive.
       As a result, custom CSS that is shipped with applications and third-party
       themes will need adjustments. Widgets now use element names much more
       than style classes; type names are no longer used in style matching.
       Every widget now documents the element names it has and the style classes
-      it uses. The GTK+ inspector can also help with finding this information.
+      it uses. The CTK+ inspector can also help with finding this information.
     </para>
 
     <para>
-      GTK+ now uses internal subobjects (also known as gadgets) for allocating
-      and drawing widget parts. Applications that subclass GTK+ widgets may see
+      CTK+ now uses internal subobjects (also known as gadgets) for allocating
+      and drawing widget parts. Applications that subclass CTK+ widgets may see
       warnings if they override the size_allocate vfunc and don't chain up.
       The proper way to subclass is to chain up in size_allocate. If you do not
       want to do that for some reason, you have to override the draw vfunc as
@@ -358,7 +358,7 @@
       decorations may affect applications that are saving and restoring window
       sizes. The recommended best practice for this which is known to work with
       client-side and server-side decorations and with older and newer versions
-      of GTK+ is to use ctk_window_get_size() to save window sizes and
+      of CTK+ is to use ctk_window_get_size() to save window sizes and
       ctk_window_set_default_size() to restore it.
       See https://wiki.gnome.org/HowDoI/SaveWindowState for a detailed example.
     </para>
@@ -394,7 +394,7 @@
   </section>
 
   <section>
-    <title>Changes in GTK+ 3.22</title>
+    <title>Changes in CTK+ 3.22</title>
 
     <para>
       The CSS parser has gotten a bit more selective in what it accepts as
@@ -427,13 +427,13 @@
 
     <para>
       The behavior of the expand flag in #CtkTables #CtkAttachOptions has been
-       changed to (again) match the behavior in #CtkBox and in GTK+ 2.x. These
+       changed to (again) match the behavior in #CtkBox and in CTK+ 2.x. These
        options don't cause the table itself to expand.
      </para>
 
      <para>
        The way CtkPopover behaved during a call to ctk_widget_hide() violated
-       some of the internal assumptions GTK+ makes about widget visibility.
+       some of the internal assumptions CTK+ makes about widget visibility.
        ctk_popover_popup() and ctk_popover_popdown() have been introduced to
        show or hide the popover with a transition, while ctk_widget_show()
        and ctk_widget_hide() on a CtkPopover now work the same way they do

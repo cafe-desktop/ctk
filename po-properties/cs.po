@@ -1,5 +1,5 @@
 # Czech translation of ctk+-properties.
-# Copyright (C) 1999, 2008, 2009, 2010, 2011 the author(s) of GTK+.
+# Copyright (C) 1999, 2008, 2009, 2010, 2011 the author(s) of CTK+.
 # Copyright (C) 2003, 2004, 2005 Miloslav Trmac <mitr@volny.cz>.
 # This file is distributed under the same license as the ctk+ package.
 #
@@ -6856,12 +6856,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Seznam velikostí ikon (ctk-menu=16,16;ctk-button=20,20…)"
 
 #: ctk/ctksettings.c:578
-msgid "GTK Modules"
-msgstr "Moduly GTK"
+msgid "CTK Modules"
+msgstr "Moduly CTK"
 
 #: ctk/ctksettings.c:579
-msgid "List of currently active GTK modules"
-msgstr "Seznam momentálně aktivních modulů GTK"
+msgid "List of currently active CTK modules"
+msgstr "Seznam momentálně aktivních modulů CTK"
 
 #: ctk/ctksettings.c:587
 msgid "Xft Antialias"
@@ -7427,10 +7427,10 @@ msgstr "Dialogy používají lištu se záhlavím"
 
 #: ctk/ctksettings.c:1708
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"Jestli zabudované dialogy GTK+ mají používat lištu se záhlavím namísto "
+"Jestli zabudované dialogy CTK+ mají používat lištu se záhlavím namísto "
 "oblasti s akcemi."
 
 #: ctk/ctksettings.c:1724
@@ -7450,8 +7450,8 @@ msgid "Recent Files Enabled"
 msgstr "Nedávné soubory povoleny"
 
 #: ctk/ctksettings.c:1742
-msgid "Whether GTK+ remembers recent files"
-msgstr "Jestli si GTK+ pamatuje nedávné soubory"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Jestli si CTK+ pamatuje nedávné soubory"
 
 #: ctk/ctksettings.c:1757
 msgid "Long press time"

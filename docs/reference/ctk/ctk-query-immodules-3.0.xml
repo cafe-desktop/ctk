@@ -6,7 +6,7 @@
 
 <refentryinfo>
   <title>ctk-query-immodules-3.0</title>
-  <productname>GTK+</productname>
+  <productname>CTK+</productname>
   <authorgroup>
     <author>
       <contrib>Developer</contrib>
@@ -38,11 +38,11 @@
 <refsect1><title>Description</title>
 <para>
 <command>ctk-query-immodules-3.0</command> collects information about loadable
-input method modules for GTK+ and writes it to the default cache file
+input method modules for CTK+ and writes it to the default cache file
 location, or to <filename>stdout</filename>.
 </para>
 <para>
-If called without arguments, it looks for modules in the GTK+ input method
+If called without arguments, it looks for modules in the CTK+ input method
 module path.
 </para>
 <para>
@@ -53,9 +53,9 @@ may be absolute or relative paths.
 <para>
 Normally, the output of <command>ctk-query-immodules-3.0</command> is written
 to <filename><replaceable>libdir</replaceable>/ctk-3.0/3.0.0/immodules.cache</filename>,
-where GTK+ looks for it by default. If it is written to some other location,
+where CTK+ looks for it by default. If it is written to some other location,
 the <envar>CTK_IM_MODULE_FILE</envar> environment variable can be set to point
-GTK+ at the file.
+CTK+ at the file.
 </para>
 </refsect1>
 
@@ -73,7 +73,7 @@ GTK+ at the file.
 <variablelist>
   <varlistentry>
     <term><filename><replaceable>libdir</replaceable>/ctk-3.0/3.0.0/immodules.cache</filename></term>
-    <listitem><para>The default im cache file used by GTK+ applications</para></listitem>
+    <listitem><para>The default im cache file used by CTK+ applications</para></listitem>
   </varlistentry>
 </variablelist>
 
@@ -87,7 +87,7 @@ GTK+ at the file.
   </varlistentry>
   <varlistentry>
     <term><link linkend="ctk-im-module-file"><envar>CTK_IM_MODULE_FILE</envar></link></term>
-    <listitem><para>Specifies an alternative im module cache for GTK+
+    <listitem><para>Specifies an alternative im module cache for CTK+
     applications</para></listitem>
   </varlistentry>
 </variablelist>

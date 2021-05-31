@@ -160,7 +160,7 @@ struct _CtkTextAppearance
  *
  * Using #CtkTextAttributes directly should rarely be necessary.
  * It’s primarily useful with ctk_text_iter_get_attributes().
- * As with most GTK+ structs, the fields in this struct should only
+ * As with most CTK+ structs, the fields in this struct should only
  * be read, never modified directly.
  */
 struct _CtkTextAttributes

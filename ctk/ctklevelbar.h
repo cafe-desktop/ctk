@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright © 2012 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or

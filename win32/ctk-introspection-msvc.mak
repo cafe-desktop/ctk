@@ -1,4 +1,4 @@
-# NMake Makefile to build Introspection Files for GTK+
+# NMake Makefile to build Introspection Files for CTK+
 
 !include detectenv-msvc.mak
 

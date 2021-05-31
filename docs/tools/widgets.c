@@ -943,13 +943,13 @@ create_about_dialog (void)
 
   widget = ctk_about_dialog_new ();
   g_object_set (widget,
-                "program-name", "GTK+ Code Demos",
+                "program-name", "CTK+ Code Demos",
                 "version", PACKAGE_VERSION,
-                "copyright", "© 1997-2013 The GTK+ Team",
+                "copyright", "© 1997-2013 The CTK+ Team",
                 "website", "http://www.ctk.org",
-                "comments", "Program to demonstrate GTK+ functions.",
+                "comments", "Program to demonstrate CTK+ functions.",
                 "logo-icon-name", "help-about",
-                "title", "About GTK+ Code Demos",
+                "title", "About CTK+ Code Demos",
                 "authors", authors,
 		NULL);
   ctk_window_set_icon_name (CTK_WINDOW (widget), "help-about");

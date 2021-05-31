@@ -4,23 +4,23 @@
 ]>
 <refentry id="ctk-osx">
 <refmeta>
-<refentrytitle>Using GTK+ on Mac OS X</refentrytitle>
+<refentrytitle>Using CTK+ on Mac OS X</refentrytitle>
 <manvolnum>3</manvolnum>
-<refmiscinfo>GTK Library</refmiscinfo>
+<refmiscinfo>CTK Library</refmiscinfo>
 </refmeta>
 
 <refnamediv>
-<refname>Using GTK+ on Mac OS X</refname>
+<refname>Using CTK+ on Mac OS X</refname>
 <refpurpose>
-OS X-specific aspects of using GTK+
+OS X-specific aspects of using CTK+
 </refpurpose>
 </refnamediv>
 
 <refsect1>
-<title>Using GTK+ on Mac OS X</title>
+<title>Using CTK+ on Mac OS X</title>
 
 <para>
-The Mac OS X port of GTK+ is an implementation of GDK (and therefore GTK+)
+The Mac OS X port of CTK+ is an implementation of GDK (and therefore CTK+)
 on top of the Quarz API.
 </para>
 
@@ -31,7 +31,7 @@ or environment variables.
 
 <para>
 For up-to-date information about the current status of this port, see the
-<ulink url="https://wiki.gnome.org/Projects/GTK+/OSX">project page</ulink>.
+<ulink url="https://wiki.gnome.org/Projects/CTK+/OSX">project page</ulink>.
 </para>
 
 </refsect1>

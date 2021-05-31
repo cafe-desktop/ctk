@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -848,7 +848,7 @@ ctk_window_class_init (CtkWindowClass *klass)
    *
    * Whether mnemonics are currently visible in this window.
    *
-   * This property is maintained by GTK+ based on user input,
+   * This property is maintained by CTK+ based on user input,
    * and should not be set by applications.
    *
    * Since: 2.20
@@ -865,7 +865,7 @@ ctk_window_class_init (CtkWindowClass *klass)
    *
    * Whether 'focus rectangles' are currently visible in this window.
    *
-   * This property is maintained by GTK+ based on user input
+   * This property is maintained by CTK+ based on user input
    * and should not be set by applications.
    *
    * Since: 2.20
@@ -2306,7 +2306,7 @@ ctk_window_buildable_custom_finished (CtkBuildable  *buildable,
  * popup menu from scratch (which is a bad idea, just use #CtkMenu),
  * you might use #CTK_WINDOW_POPUP. #CTK_WINDOW_POPUP is not for
  * dialogs, though in some other toolkits dialogs are called “popups”.
- * In GTK+, #CTK_WINDOW_POPUP means a pop-up menu or pop-up tooltip.
+ * In CTK+, #CTK_WINDOW_POPUP means a pop-up menu or pop-up tooltip.
  * On X11, popup windows are not controlled by the
  * [window manager][ctk-X11-arch].
  *
@@ -2416,7 +2416,7 @@ ctk_window_get_title (CtkWindow *window)
  * Don’t use this function. It sets the X Window System “class” and
  * “name” hints for a window.  According to the ICCCM, you should
  * always set these to the same value for all windows in an
- * application, and GTK+ sets them to that value by default, so calling
+ * application, and CTK+ sets them to that value by default, so calling
  * this function is sort of pointless. However, you may want to call
  * ctk_window_set_role() on each window in your application, for the
  * benefit of the session manager. Setting the role allows the window
@@ -2450,7 +2450,7 @@ ctk_window_set_wmclass (CtkWindow *window,
  * @window: a #CtkWindow
  * @role: unique identifier for the window to be used when restoring a session
  *
- * This function is only useful on X11, not with other GTK+ targets.
+ * This function is only useful on X11, not with other CTK+ targets.
  * 
  * In combination with the window title, the window role allows a
  * [window manager][ctk-X11-arch] to identify "the
@@ -2501,7 +2501,7 @@ ctk_window_set_role (CtkWindow   *window,
  * function before calling ctk_window_present() or any equivalent
  * function generating a window map event.
  *
- * This function is only useful on X11, not with other GTK+ targets.
+ * This function is only useful on X11, not with other CTK+ targets.
  * 
  * Since: 2.12
  **/
@@ -3278,7 +3278,7 @@ ctk_window_unset_transient_for  (CtkWindow *window)
  * [window managers][ctk-X11-arch] to e.g. keep the
  * dialog on top of the main window, or center the dialog over the
  * main window. ctk_dialog_new_with_buttons() and other convenience
- * functions in GTK+ will sometimes call
+ * functions in CTK+ will sometimes call
  * ctk_window_set_transient_for() on your behalf.
  *
  * Passing %NULL for @parent unsets the current transient window.
@@ -3378,7 +3378,7 @@ ctk_window_get_transient_for (CtkWindow *window)
  * @attach_widget: (allow-none): a #CtkWidget, or %NULL
  *
  * Marks @window as attached to @attach_widget. This creates a logical binding
- * between the window and the widget it belongs to, which is used by GTK+ to
+ * between the window and the widget it belongs to, which is used by CTK+ to
  * propagate information such as styling or accessibility to @window as if it
  * was a children of @attach_widget.
  *
@@ -3588,7 +3588,7 @@ ctk_window_set_application (CtkWindow      *window,
  *
  * This function should be called before the window becomes visible.
  *
- * ctk_dialog_new_with_buttons() and other convenience functions in GTK+
+ * ctk_dialog_new_with_buttons() and other convenience functions in CTK+
  * will sometimes call ctk_window_set_type_hint() on your behalf.
  * 
  **/
@@ -4046,7 +4046,7 @@ ctk_window_get_geometry_info (CtkWindow *window,
  * ctk_window_set_geometry_hints:
  * @window: a #CtkWindow
  * @geometry_widget: (allow-none): widget the geometry hints used to be applied to
- *   or %NULL. Since 3.20 this argument is ignored and GTK behaves as if %NULL was
+ *   or %NULL. Since 3.20 this argument is ignored and CTK behaves as if %NULL was
  *   set.
  * @geometry: (allow-none): struct containing geometry information or %NULL
  * @geom_mask: mask indicating which struct fields should be paid attention to
@@ -4187,7 +4187,7 @@ on_titlebar_title_notify (CtkHeaderBar *titlebar,
  * A typical widget used here is #CtkHeaderBar, as it provides various features
  * expected of a titlebar while allowing the addition of child widgets to it.
  *
- * If you set a custom titlebar, GTK+ will do its best to convince
+ * If you set a custom titlebar, CTK+ will do its best to convince
  * the window manager not to put its own titlebar on the window.
  * Depending on the system, this function may not work for a window
  * that is already visible, so you set the titlebar before calling
@@ -4290,9 +4290,9 @@ _ctk_window_titlebar_shows_app_menu (CtkWindow *window)
  *
  * By default, windows are decorated with a title bar, resize
  * controls, etc.  Some [window managers][ctk-X11-arch]
- * allow GTK+ to disable these decorations, creating a
+ * allow CTK+ to disable these decorations, creating a
  * borderless window. If you set the decorated property to %FALSE
- * using this function, GTK+ will do its best to convince the window
+ * using this function, CTK+ will do its best to convince the window
  * manager not to decorate the window. Depending on the system, this
  * function may not have any effect when called on a window that is
  * already visible, so you should call it before calling ctk_widget_show().
@@ -4362,9 +4362,9 @@ ctk_window_get_decorated (CtkWindow *window)
  * @setting: %TRUE to decorate the window as deletable
  *
  * By default, windows have a close button in the window frame. Some 
- * [window managers][ctk-X11-arch] allow GTK+ to 
+ * [window managers][ctk-X11-arch] allow CTK+ to 
  * disable this button. If you set the deletable property to %FALSE
- * using this function, GTK+ will do its best to convince the window
+ * using this function, CTK+ will do its best to convince the window
  * manager not to show a close button. Depending on the system, this
  * function may not have any effect when called on a window that is
  * already visible, so you should call it before calling ctk_widget_show().
@@ -4675,7 +4675,7 @@ ctk_window_unrealize_icon (CtkWindow *window)
  * ctk_window_set_icon_list() allows you to pass in the same icon in
  * several hand-drawn sizes. The list should contain the natural sizes
  * your icon is available in; that is, don’t scale the image before
- * passing it to GTK+. Scaling is postponed until the last minute,
+ * passing it to CTK+. Scaling is postponed until the last minute,
  * when the desired final size is known, to allow best quality.
  *
  * By passing several sizes, you may improve the final image quality
@@ -4763,7 +4763,7 @@ ctk_window_get_icon_list (CtkWindow  *window)
  *
  * The icon should be provided in whatever size it was naturally
  * drawn; that is, don’t scale the image before passing it to
- * GTK+. Scaling is postponed until the last minute, when the desired
+ * CTK+. Scaling is postponed until the last minute, when the desired
  * final size is known, to allow best quality.
  *
  * If you have your icon hand-drawn in multiple sizes, use
@@ -5078,7 +5078,7 @@ ctk_window_set_default_icon_name (const gchar *name)
  *
  * Returns the fallback icon name for windows that has been set
  * with ctk_window_set_default_icon_name(). The returned
- * string is owned by GTK+ and should not be modified. It
+ * string is owned by CTK+ and should not be modified. It
  * is only valid until the next call to
  * ctk_window_set_default_icon_name().
  *
@@ -5367,7 +5367,7 @@ ctk_window_get_default_size (CtkWindow *window,
  *
  * Windows may not be resized smaller than 1 by 1 pixels.
  * 
- * When using client side decorations, GTK+ will do its best to adjust
+ * When using client side decorations, CTK+ will do its best to adjust
  * the given size so that the resulting window size matches the
  * requested size without the title bar, borders and shadows added for
  * the client side decorations, but there is no guarantee that the
@@ -5437,7 +5437,7 @@ ctk_window_resize_to_geometry (CtkWindow *window,
  *
  * Obtains the current size of @window.
  *
- * If @window is not visible on screen, this function return the size GTK+
+ * If @window is not visible on screen, this function return the size CTK+
  * will suggest to the [window manager][ctk-X11-arch] for the initial window
  * size (but this is not reliably the same as the size the window manager
  * will actually select). See: ctk_window_set_default_size().
@@ -5445,7 +5445,7 @@ ctk_window_resize_to_geometry (CtkWindow *window,
  * Depending on the windowing system and the window manager constraints,
  * the size returned by this function may not match the size set using
  * ctk_window_resize(); additionally, since ctk_window_resize() may be
- * implemented as an asynchronous operation, GTK+ cannot guarantee in any
+ * implemented as an asynchronous operation, CTK+ cannot guarantee in any
  * way that this code:
  *
  * |[<!-- language="C" -->
@@ -5490,7 +5490,7 @@ ctk_window_resize_to_geometry (CtkWindow *window,
  * Note that, if you connect to the #CtkWidget::size-allocate signal,
  * you should not use the dimensions of the #CtkAllocation passed to
  * the signal handler, as the allocation may contain client side
- * decorations added by GTK+, depending on the windowing system in
+ * decorations added by CTK+, depending on the windowing system in
  * use.
  *
  * If you are getting a window size in order to position the window
@@ -5503,7 +5503,7 @@ ctk_window_resize_to_geometry (CtkWindow *window,
  * yourself, because all apps will behave consistently and according to
  * user or system preferences, if the window manager handles it. Also,
  * the window manager can take into account the size of the window
- * decorations and border that it may add, and of which GTK+ has no
+ * decorations and border that it may add, and of which CTK+ has no
  * knowledge. Additionally, positioning windows in global screen coordinates
  * may not be allowed by the windowing system. For more information,
  * see: ctk_window_set_position().
@@ -9774,7 +9774,7 @@ ctk_window_move_resize (CtkWindow *window)
    * or ctk_window_move().
    *
    * If the configure request has changed, we send off a new one.  To
-   * ensure GTK+ invariants are maintained (resize queue does what it
+   * ensure CTK+ invariants are maintained (resize queue does what it
    * should), we go ahead and size_allocate the requested size in this
    * function.
    *
@@ -11597,7 +11597,7 @@ ctk_XParseGeometry (const char   *string,
  *
  * Parses a standard X Window System geometry string - see the
  * manual page for X (type “man X”) for details on this.
- * ctk_window_parse_geometry() does work on all GTK+ ports
+ * ctk_window_parse_geometry() does work on all CTK+ ports
  * including Win32 but is primarily intended for an X environment.
  *
  * If either a size or a position can be extracted from the
@@ -11669,7 +11669,7 @@ ctk_XParseGeometry (const char   *string,
  *
  * Returns: %TRUE if string was parsed successfully
  *
- * Deprecated: 3.20: Geometry handling in GTK is deprecated.
+ * Deprecated: 3.20: Geometry handling in CTK is deprecated.
  **/
 gboolean
 ctk_window_parse_geometry (CtkWindow   *window,
@@ -12248,7 +12248,7 @@ _ctk_window_set_has_toplevel_focus (CtkWindow *window,
  * ctk_window_set_auto_startup_notification:
  * @setting: %TRUE to automatically do startup notification
  *
- * By default, after showing the first #CtkWindow, GTK+ calls 
+ * By default, after showing the first #CtkWindow, CTK+ calls 
  * gdk_notify_startup_complete().  Call this function to disable 
  * the automatic startup notification. You might do this if your 
  * first window is a splash screen, and you want to delay notification 
@@ -12427,7 +12427,7 @@ _ctk_window_get_wmclass (CtkWindow  *window,
  * @window: a #CtkWindow
  * @setting: the new value
  *
- * Tells GTK+ whether to drop its extra reference to the window
+ * Tells CTK+ whether to drop its extra reference to the window
  * when ctk_widget_destroy() is called.
  *
  * This function is only exported for the benefit of language
@@ -12774,10 +12774,10 @@ ctk_window_set_debugging (gboolean enable,
                                            CTK_DIALOG_MODAL|CTK_DIALOG_DESTROY_WITH_PARENT,
                                            CTK_MESSAGE_QUESTION,
                                            CTK_BUTTONS_NONE,
-                                           _("Do you want to use GTK+ Inspector?"));
+                                           _("Do you want to use CTK+ Inspector?"));
           ctk_message_dialog_format_secondary_text (CTK_MESSAGE_DIALOG (dialog),
-              _("GTK+ Inspector is an interactive debugger that lets you explore and "
-                "modify the internals of any GTK+ application. Using it may cause the "
+              _("CTK+ Inspector is an interactive debugger that lets you explore and "
+                "modify the internals of any CTK+ application. Using it may cause the "
                 "application to break or crash."));
 
           area = ctk_message_dialog_get_message_area (CTK_MESSAGE_DIALOG (dialog));

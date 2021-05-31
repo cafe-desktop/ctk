@@ -6453,11 +6453,11 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "আইকনৰ আকাৰৰ তালিকা (ctk-menu= ১৬, ১৬:ctk-button=২০,২০..."
 
 #: ../ctk/ctksettings.c:540
-msgid "GTK Modules"
+msgid "CTK Modules"
 msgstr "জি.টি.কে. মডিউল"
 
 #: ../ctk/ctksettings.c:541
-msgid "List of currently active GTK modules"
+msgid "List of currently active CTK modules"
 msgstr "বৰ্তমানে সক্ৰিয় জি.টি.কে. মডিউলৰ তালিকা"
 
 #: ../ctk/ctksettings.c:549
@@ -7000,10 +7000,10 @@ msgstr "ডাইলগসমূহে হেডাৰ বাৰ ব্যৱহ
 #: ../ctk/ctksettings.c:1596
 #| msgid "Whether buttons in dialogs should use the alternative button order"
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"বিল্টইন GTK+ ডাইলগসমূহে এটা কাৰ্য্য স্থানৰ পৰিৱৰ্তে এটা হেডাৰ বাৰ ব্যৱহাৰ "
+"বিল্টইন CTK+ ডাইলগসমূহে এটা কাৰ্য্য স্থানৰ পৰিৱৰ্তে এটা হেডাৰ বাৰ ব্যৱহাৰ "
 "কৰিব লাগে নে।"
 
 #: ../ctk/ctksettings.c:1612
@@ -7023,8 +7023,8 @@ msgid "Recent Files Enabled"
 msgstr "শেহতীয়া ফাইলসমূহ সামৰ্থবান কৰা আছে"
 
 #: ../ctk/ctksettings.c:1630
-msgid "Whether GTK+ remembers recent files"
-msgstr "GTK+ এ শেতহীয়া ফাইলসমূহ মনত ৰাখে নে"
+msgid "Whether CTK+ remembers recent files"
+msgstr "CTK+ এ শেতহীয়া ফাইলসমূহ মনত ৰাখে নে"
 
 #: ../ctk/ctksettings.c:1645
 msgid "Long press time"

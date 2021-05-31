@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 2010 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -56,25 +56,25 @@
  * CtkCssProvider is an object implementing the #CtkStyleProvider interface.
  * It is able to parse [CSS-like][css-overview] input in order to style widgets.
  *
- * An application can make GTK+ parse a specific CSS style sheet by calling
+ * An application can make CTK+ parse a specific CSS style sheet by calling
  * ctk_css_provider_load_from_file() or ctk_css_provider_load_from_resource()
  * and adding the provider with ctk_style_context_add_provider() or
  * ctk_style_context_add_provider_for_screen().
 
- * In addition, certain files will be read when GTK+ is initialized. First, the
- * file `$XDG_CONFIG_HOME/ctk-3.0/ctk.css` is loaded if it exists. Then, GTK+
+ * In addition, certain files will be read when CTK+ is initialized. First, the
+ * file `$XDG_CONFIG_HOME/ctk-3.0/ctk.css` is loaded if it exists. Then, CTK+
  * loads the first existing file among
  * `XDG_DATA_HOME/themes/THEME/ctk-VERSION/ctk.css`,
  * `$HOME/.themes/THEME/ctk-VERSION/ctk.css`,
  * `$XDG_DATA_DIRS/themes/THEME/ctk-VERSION/ctk.css` and
  * `DATADIR/share/themes/THEME/ctk-VERSION/ctk.css`, where `THEME` is the name of
  * the current theme (see the #CtkSettings:ctk-theme-name setting), `DATADIR`
- * is the prefix configured when GTK+ was compiled (unless overridden by the
- * `CTK_DATA_PREFIX` environment variable), and `VERSION` is the GTK+ version number.
- * If no file is found for the current version, GTK+ tries older versions all the
+ * is the prefix configured when CTK+ was compiled (unless overridden by the
+ * `CTK_DATA_PREFIX` environment variable), and `VERSION` is the CTK+ version number.
+ * If no file is found for the current version, CTK+ tries older versions all the
  * way back to 3.0.
  *
- * In the same way, GTK+ tries to load a ctk-keys.css file for the current
+ * In the same way, CTK+ tries to load a ctk-keys.css file for the current
  * key theme, as defined by #CtkSettings:ctk-key-theme-name.
  */
 
@@ -1971,7 +1971,7 @@ ctk_css_provider_load_from_resource (CtkCssProvider *css_provider,
  * fallback for all widgets.
  *
  * Returns: (transfer none): The provider used for fallback styling.
- *          This memory is owned by GTK+, and you must not free it.
+ *          This memory is owned by CTK+, and you must not free it.
  *
  * Deprecated: 3.24: Use ctk_css_provider_new() instead.
  **/
@@ -2022,7 +2022,7 @@ _ctk_css_provider_get_theme_dir (CtkCssProvider *provider)
  * $dir/$subdir/ctk-3.0/ctk-$variant.css
  * and return the first found file.
  * We don't check versions before 3.14,
- * since those GTK+ versions didn't have
+ * since those CTK+ versions didn't have
  * the versioned loading mechanism.
  */
 static gchar *
@@ -2117,7 +2117,7 @@ _ctk_css_find_theme (const gchar *name,
  * Loads a theme from the usual theme paths. The actual process of
  * finding the theme might change between releases, but it is
  * guaranteed that this function uses the same mechanism to load the
- * theme than GTK uses for loading its own theme.
+ * theme than CTK uses for loading its own theme.
  **/
 void
 _ctk_css_provider_load_named (CtkCssProvider *provider,
@@ -2198,7 +2198,7 @@ _ctk_css_provider_load_named (CtkCssProvider *provider,
  * Loads a theme from the usual theme paths
  *
  * Returns: (transfer none): a #CtkCssProvider with the theme loaded.
- *     This memory is owned by GTK+, and you must not free it.
+ *     This memory is owned by CTK+, and you must not free it.
  */
 CtkCssProvider *
 ctk_css_provider_get_named (const gchar *name,

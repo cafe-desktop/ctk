@@ -6879,12 +6879,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Popis veličina ikone (ctk-menu=16,16:ctk-button=20,20..."
 
 #: ctk/ctksettings.c:578
-msgid "GTK Modules"
-msgstr "GTK moduli"
+msgid "CTK Modules"
+msgstr "CTK moduli"
 
 #: ctk/ctksettings.c:579
-msgid "List of currently active GTK modules"
-msgstr "Popis trenutno aktivnih GTK modula"
+msgid "List of currently active CTK modules"
+msgstr "Popis trenutno aktivnih CTK modula"
 
 #: ctk/ctksettings.c:587
 msgid "Xft Antialias"
@@ -7449,10 +7449,10 @@ msgstr "Dijalozi koriste traku zaglavlja"
 
 #: ctk/ctksettings.c:1708
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"Trebaju li ugrađeni GTK+ dijalozi koristiti traku zaglavlja umjesto područja "
+"Trebaju li ugrađeni CTK+ dijalozi koristiti traku zaglavlja umjesto područja "
 "radnje."
 
 #: ctk/ctksettings.c:1724
@@ -7472,8 +7472,8 @@ msgid "Recent Files Enabled"
 msgstr "Nedavne datoteke omogućene"
 
 #: ctk/ctksettings.c:1742
-msgid "Whether GTK+ remembers recent files"
-msgstr "Treba li GTK+ pamtiti nedavne datoteke"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Treba li CTK+ pamtiti nedavne datoteke"
 
 #: ctk/ctksettings.c:1757
 msgid "Long press time"

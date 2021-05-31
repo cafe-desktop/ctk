@@ -2735,7 +2735,7 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:463
-msgid "Load additional GTK+ modules"
+msgid "Load additional CTK+ modules"
 msgstr "حمّل وحدات ج‌ت‌ك+ إضافية"
 
 #. Placeholder in --ctk-module=MODULES in --help output
@@ -2750,12 +2750,12 @@ msgstr "اجعل جميع التحذيرات قاتلة"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:469
-msgid "GTK+ debugging flags to set"
+msgid "CTK+ debugging flags to set"
 msgstr "شارات تنقيح ج‌ت‌ك+ التي ستضبط"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:472
-msgid "GTK+ debugging flags to unset"
+msgid "CTK+ debugging flags to unset"
 msgstr "شارات تنقيح ج‌ت‌ك+ التي ستُصفّر"
 
 #: ctk/ctkmain.c:807 ctk/ctkmain.c:1001
@@ -2764,11 +2764,11 @@ msgid "Cannot open display: %s"
 msgstr "غير قادر على فتح العرض: %s"
 
 #: ctk/ctkmain.c:919
-msgid "GTK+ Options"
+msgid "CTK+ Options"
 msgstr "خيارات ج‌ت‌ك+"
 
 #: ctk/ctkmain.c:919
-msgid "Show GTK+ Options"
+msgid "Show CTK+ Options"
 msgstr "اعرض خيارات ج‌ت‌ك+"
 
 #. Translate to default:RTL if you want your widgets
@@ -3732,8 +3732,8 @@ msgstr "البيانات المرسلة غير صالحة"
 
 #: ctk/ctktextbufferserialize.c:1864
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
-msgstr "البيانات المرسلة غير صالحة. القسم الأول ليس GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
+msgstr "البيانات المرسلة غير صالحة. القسم الأول ليس CTKTEXTBUFFERCONTENTS-0001"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -3811,13 +3811,13 @@ msgid "Always on Top"
 msgstr "دائما في القمّة"
 
 #: ctk/ctkwindow.c:12679
-msgid "Do you want to use GTK+ Inspector?"
+msgid "Do you want to use CTK+ Inspector?"
 msgstr "هل تريد استخدام فاحص جتك+؟"
 
 #: ctk/ctkwindow.c:12681
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
 "فاحص جتك+ هو منقّح تفاعلي يتيح لك تعديل داخليات أي تطبيق جتك+. استخدامه قد "
@@ -3850,7 +3850,7 @@ msgid "Parameter Type"
 msgstr "نوع المعامل"
 
 #: ctk/inspector/css-editor.c:112
-msgid "You can type here any CSS rule recognized by GTK+."
+msgid "You can type here any CSS rule recognized by CTK+."
 msgstr "يمكنك أن تكتب هنا أي قاعدة طرز متراصة تتعرف عليها ج‌ت‌ك+."
 
 #: ctk/inspector/css-editor.c:113
@@ -3907,7 +3907,7 @@ msgid "None"
 msgstr "لا شيء"
 
 #: ctk/inspector/general.ui:34
-msgid "GTK+ Version"
+msgid "CTK+ Version"
 msgstr "إصدارة ج‌ت‌ك+"
 
 #: ctk/inspector/general.ui:68
@@ -4300,7 +4300,7 @@ msgid "GL rendering is disabled"
 msgstr ""
 
 #: ctk/inspector/visual.ui:61
-msgid "GTK+ Theme"
+msgid "CTK+ Theme"
 msgstr "سِمة ج‌ت‌ك+"
 
 #: ctk/inspector/visual.ui:94

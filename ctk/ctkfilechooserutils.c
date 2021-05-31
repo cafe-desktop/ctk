@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkfilechooserutils.c: Private utility functions useful for
  *                        implementing a CtkFileChooser interface
  * Copyright (C) 2003, Red Hat, Inc.

@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkprintoperation-unix.c: Print Operation Details for Unix 
  *                           and Unix-like platforms
  * Copyright (C) 2006, Red Hat, Inc.

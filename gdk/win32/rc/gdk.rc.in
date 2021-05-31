@@ -15,13 +15,13 @@ VS_VERSION_INFO VERSIONINFO
     BEGIN
       BLOCK "040904B0"
       BEGIN
-	VALUE "CompanyName", "The GTK developer community"
+	VALUE "CompanyName", "The CTK developer community"
 	VALUE "FileDescription", "GIMP Drawing Kit"
 	VALUE "FileVersion", "@CTK_VERSION@.0"
 	VALUE "InternalName", "libgdk-win32-@CTK_API_VERSION@-@LT_CURRENT_MINUS_AGE@"
-	VALUE "LegalCopyright", "Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald. Modified by the GTK+ Team and others 1997-2011."
+	VALUE "LegalCopyright", "Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald. Modified by the CTK+ Team and others 1997-2011."
 	VALUE "OriginalFilename", "libgdk-win32-@CTK_API_VERSION@-@LT_CURRENT_MINUS_AGE@.dll"
-	VALUE "ProductName", "GTK+"
+	VALUE "ProductName", "CTK+"
 	VALUE "ProductVersion", "@CTK_VERSION@"
       END
     END

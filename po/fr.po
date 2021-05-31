@@ -1,6 +1,6 @@
-# French translation of GTK+.
+# French translation of CTK+.
 # Copyright (C) 1998-2020 Free Software Foundation, Inc.
-# This file is distributed under the same license as the GTK+ package.
+# This file is distributed under the same license as the CTK+ package.
 #
 # Vincent Renardias <vincent@debian.org>, 1998-1999.
 # Christophe Merlet <redfox@redfoxcenter.org>, 2000-2006.
@@ -3016,8 +3016,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:464
-msgid "Load additional GTK+ modules"
-msgstr "Charge des modules GTK+ additionnels"
+msgid "Load additional CTK+ modules"
+msgstr "Charge des modules CTK+ additionnels"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:465
@@ -3031,13 +3031,13 @@ msgstr "Rend tous les avertissements fatals"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:470
-msgid "GTK+ debugging flags to set"
-msgstr "Drapeaux de débogage GTK+ à définir"
+msgid "CTK+ debugging flags to set"
+msgstr "Drapeaux de débogage CTK+ à définir"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:473
-msgid "GTK+ debugging flags to unset"
-msgstr "Drapeaux de débogage GTK+ à ne pas définir"
+msgid "CTK+ debugging flags to unset"
+msgstr "Drapeaux de débogage CTK+ à ne pas définir"
 
 #: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
 #, c-format
@@ -3045,12 +3045,12 @@ msgid "Cannot open display: %s"
 msgstr "Impossible d’ouvrir l’affichage : %s"
 
 #: ctk/ctkmain.c:922
-msgid "GTK+ Options"
-msgstr "Options GTK+"
+msgid "CTK+ Options"
+msgstr "Options CTK+"
 
 #: ctk/ctkmain.c:922
-msgid "Show GTK+ Options"
-msgstr "Affiche les options GTK+"
+msgid "Show CTK+ Options"
+msgstr "Affiche les options CTK+"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -4083,10 +4083,10 @@ msgstr "Les données linéarisées ne sont pas conformes"
 
 #: ctk/ctktextbufferserialize.c:1873
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 "Les données linéarisées ne sont pas conformes. La première section n’est pas "
-"GTKTEXTBUFFERCONTENTS-0001"
+"CTKTEXTBUFFERCONTENTS-0001"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -4165,18 +4165,18 @@ msgstr "Toujours au premier plan"
 
 #: ctk/ctkwindow.c:12777
 #, c-format
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "Voulez-vous utiliser l’Inspecteur GTK+ ?"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "Voulez-vous utiliser l’Inspecteur CTK+ ?"
 
 #: ctk/ctkwindow.c:12779
 #, c-format
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"L’Inspecteur GTK+ est un débogueur interactif vous permettant d’explorer et "
-"de modifier les entrailles de n’importe quelle application GTK+. En "
+"L’Inspecteur CTK+ est un débogueur interactif vous permettant d’explorer et "
+"de modifier les entrailles de n’importe quelle application CTK+. En "
 "l’utilisant, il peut arriver que l’application fonctionne mal ou plante."
 
 #: ctk/ctkwindow.c:12784
@@ -4206,8 +4206,8 @@ msgid "Parameter Type"
 msgstr "Type de paramètre"
 
 #: ctk/inspector/css-editor.c:112
-msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "Vous pouvez saisir ici toute règle CSS reconnue par GTK+."
+msgid "You can type here any CSS rule recognized by CTK+."
+msgstr "Vous pouvez saisir ici toute règle CSS reconnue par CTK+."
 
 #: ctk/inspector/css-editor.c:113
 msgid ""
@@ -4268,8 +4268,8 @@ msgid "None"
 msgstr "Aucun"
 
 #: ctk/inspector/general.ui:34
-msgid "GTK+ Version"
-msgstr "Version de GTK+"
+msgid "CTK+ Version"
+msgstr "Version de CTK+"
 
 #: ctk/inspector/general.ui:68
 msgid "GDK Backend"
@@ -4657,8 +4657,8 @@ msgid "GL rendering is disabled"
 msgstr "Le rendu GL est désactivé"
 
 #: ctk/inspector/visual.ui:61
-msgid "GTK+ Theme"
-msgstr "Thème GTK+"
+msgid "CTK+ Theme"
+msgstr "Thème CTK+"
 
 #: ctk/inspector/visual.ui:94
 msgid "Dark Variant"

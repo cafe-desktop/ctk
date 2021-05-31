@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkprintsettings.h: Print Settings
  * Copyright (C) 2006, Red Hat, Inc.
  *
@@ -199,7 +199,7 @@ void              ctk_print_settings_set_int                 (CtkPrintSettings  
  * CTK_PRINT_SETTINGS_OUTPUT_URI:
  *
  * The key used by the “Print to file” printer to store the URI
- * to which the output should be written. GTK+ itself supports
+ * to which the output should be written. CTK+ itself supports
  * only “file://” URIs.
  */
 #define CTK_PRINT_SETTINGS_OUTPUT_URI          "output-uri"

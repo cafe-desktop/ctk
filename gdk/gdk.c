@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -55,12 +55,12 @@
  * This section describes the GDK initialization functions and miscellaneous
  * utility functions, as well as deprecation facilities.
  *
- * The GDK and GTK+ headers annotate deprecated APIs in a way that produces
+ * The GDK and CTK+ headers annotate deprecated APIs in a way that produces
  * compiler warnings if these deprecated APIs are used. The warnings
  * can be turned off by defining the macro %GDK_DISABLE_DEPRECATION_WARNINGS
  * before including the glib.h header.
  *
- * GDK and GTK+ also provide support for building applications against
+ * GDK and CTK+ also provide support for building applications against
  * defined subsets of deprecated or new APIs. Define the macro
  * %GDK_VERSION_MIN_REQUIRED to specify up to what version
  * you want to receive warnings about deprecated APIs. Define the
@@ -260,7 +260,7 @@ gdk_add_option_entries (GOptionGroup *group)
  * not public API and must not be used by applications.
  *
  * Deprecated: 3.16: This symbol was never meant to be used outside
- *   of GTK+
+ *   of CTK+
  */
 void
 gdk_add_option_entries_libctk_only (GOptionGroup *group)
@@ -323,7 +323,7 @@ gdk_pre_parse (void)
 
   if (getenv ("GDK_NATIVE_WINDOWS"))
     {
-      g_warning ("The GDK_NATIVE_WINDOWS environment variable is not supported in GTK3.\n"
+      g_warning ("The GDK_NATIVE_WINDOWS environment variable is not supported in CTK3.\n"
                  "See the documentation for gdk_window_ensure_native() on how to get native windows.");
       g_unsetenv ("GDK_NATIVE_WINDOWS");
     }
@@ -347,7 +347,7 @@ gdk_pre_parse (void)
  * public API and should not be used in application code.
  *
  * Deprecated: 3.16: This symbol was never meant to be used outside
- *   of GTK+
+ *   of CTK+
  */
 void
 gdk_pre_parse_libctk_only (void)
@@ -427,7 +427,7 @@ gdk_get_display (void)
  * to gdk_init() or gdk_parse_args(), if any.
  *
  * Returns: (nullable): the display name, if specified explicitly,
- *   otherwise %NULL this string is owned by GTK+ and must not be
+ *   otherwise %NULL this string is owned by CTK+ and must not be
  *   modified or freed.
  *
  * Since: 2.2
@@ -508,7 +508,7 @@ gdk_should_use_portal (void)
  *   could be opened, otherwise %NULL.
  *
  * Deprecated: 3.16: This symbol was never meant to be used outside
- *   of GTK+
+ *   of CTK+
  */
 GdkDisplay *
 gdk_display_open_default_libctk_only (void)
@@ -527,8 +527,8 @@ gdk_display_open_default_libctk_only (void)
  * Any arguments used by GDK are removed from the array and @argc and @argv
  * are updated accordingly.
  *
- * GTK+ initializes GDK in ctk_init() and so this function is not usually
- * needed by GTK+ applications.
+ * CTK+ initializes GDK in ctk_init() and so this function is not usually
+ * needed by CTK+ applications.
  *
  * Returns: %TRUE if initialization succeeded.
  */
@@ -554,8 +554,8 @@ gdk_init_check (int    *argc,
  * Any arguments used by GDK are removed from the array and @argc and @argv
  * are updated accordingly.
  *
- * GTK+ initializes GDK in ctk_init() and so this function is not usually
- * needed by GTK+ applications.
+ * CTK+ initializes GDK in ctk_init() and so this function is not usually
+ * needed by CTK+ applications.
  */
 void
 gdk_init (int *argc, char ***argv)
@@ -583,11 +583,11 @@ gdk_init (int *argc, char ***argv)
  * locked for performance reasons. So e.g. you must coordinate
  * accesses to the same #GHashTable from multiple threads.
  *
- * GTK+, however, is not thread safe. You should only use GTK+ and GDK
+ * CTK+, however, is not thread safe. You should only use CTK+ and GDK
  * from the thread ctk_init() and ctk_main() were called on.
  * This is usually referred to as the “main thread”.
  *
- * Signals on GTK+ and GDK types, as well as non-signal callbacks, are
+ * Signals on CTK+ and GDK types, as well as non-signal callbacks, are
  * emitted in the main thread.
  *
  * You can schedule work in the main thread safely from other threads
@@ -632,11 +632,11 @@ gdk_init (int *argc, char ***argv)
  * gdk_threads_enter:
  *
  * This function marks the beginning of a critical section in which
- * GDK and GTK+ functions can be called safely and without causing race
+ * GDK and CTK+ functions can be called safely and without causing race
  * conditions. Only one thread at a time can be in such a critial
  * section.
  *
- * Deprecated:3.6: All GDK and GTK+ calls should be made from the main
+ * Deprecated:3.6: All GDK and CTK+ calls should be made from the main
  *     thread
  */
 void
@@ -651,7 +651,7 @@ gdk_threads_enter (void)
  *
  * Leaves a critical region begun with gdk_threads_enter().
  *
- * Deprecated:3.6: All GDK and GTK+ calls should be made from the main
+ * Deprecated:3.6: All GDK and CTK+ calls should be made from the main
  *     thread
  */
 void
@@ -700,9 +700,9 @@ gdk_threads_impl_unlock (void)
  * in conjunction with gdk_threads_enter() and gdk_threads_leave().
  *
  * This call must be made before any use of the main loop from
- * GTK+; to be safe, call it before ctk_init().
+ * CTK+; to be safe, call it before ctk_init().
  *
- * Deprecated:3.6: All GDK and GTK+ calls should be made from the main
+ * Deprecated:3.6: All GDK and CTK+ calls should be made from the main
  *     thread
  */
 void
@@ -732,16 +732,16 @@ gdk_threads_init (void)
  * specific processing.
  *
  * As an example, consider an application that has its own recursive
- * lock that when held, holds the GTK+ lock as well. When GTK+ unlocks
- * the GTK+ lock when entering a recursive main loop, the application
+ * lock that when held, holds the CTK+ lock as well. When CTK+ unlocks
+ * the CTK+ lock when entering a recursive main loop, the application
  * must temporarily release its lock as well.
  *
- * Most threaded GTK+ apps won’t need to use this method.
+ * Most threaded CTK+ apps won’t need to use this method.
  *
  * This method must be called before gdk_threads_init(), and cannot
  * be called multiple times.
  *
- * Deprecated:3.6: All GDK and GTK+ calls should be made from the main
+ * Deprecated:3.6: All GDK and CTK+ calls should be made from the main
  *     thread
  *
  * Since: 2.4
@@ -798,7 +798,7 @@ gdk_threads_dispatch_free (gpointer data)
  * removed from the list of event sources and will not be called again.
  *
  * This variant of g_idle_add_full() calls @function with the GDK lock
- * held. It can be thought of a MT-safe version for GTK+ widgets for the
+ * held. It can be thought of a MT-safe version for CTK+ widgets for the
  * following use case, where you have to worry about idle_callback()
  * running in thread A and accessing @self after it has been finalized
  * in thread B:
@@ -907,7 +907,7 @@ gdk_threads_add_idle (GSourceFunc    function,
  * (it does not try to “catch up” time lost in delays).
  *
  * This variant of g_timeout_add_full() can be thought of a MT-safe version 
- * for GTK+ widgets for the following use case:
+ * for CTK+ widgets for the following use case:
  *
  * |[<!-- language="C" -->
  * static gboolean timeout_callback (gpointer data)
@@ -1099,7 +1099,7 @@ gdk_set_program_class (const char *program_class)
  * to gdk_display_open(), ctk_init(), ctk_init_with_args() or
  * ctk_init_check() in order to take effect.
  *
- * Most common GTK+ applications won’t ever need to call this. Only
+ * Most common CTK+ applications won’t ever need to call this. Only
  * applications that do mixed GDK/Xlib calls could want to disable
  * multidevice support if such Xlib code deals with input devices in
  * any way and doesn’t observe the presence of XInput 2.

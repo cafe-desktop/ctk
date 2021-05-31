@@ -2871,8 +2871,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:464
-msgid "Load additional GTK+ modules"
-msgstr "載入額外的 GTK+ 模組"
+msgid "Load additional CTK+ modules"
+msgstr "載入額外的 CTK+ 模組"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:465
@@ -2886,13 +2886,13 @@ msgstr "把所有的警告訊息都當成嚴重錯誤"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:470
-msgid "GTK+ debugging flags to set"
-msgstr "準備設定的 GTK+ 偵錯旗標"
+msgid "CTK+ debugging flags to set"
+msgstr "準備設定的 CTK+ 偵錯旗標"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:473
-msgid "GTK+ debugging flags to unset"
-msgstr "準備去除的 GTK+ 偵錯旗標"
+msgid "CTK+ debugging flags to unset"
+msgstr "準備去除的 CTK+ 偵錯旗標"
 
 #: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
 #, c-format
@@ -2900,12 +2900,12 @@ msgid "Cannot open display: %s"
 msgstr "無法開啟畫面：%s"
 
 #: ctk/ctkmain.c:922
-msgid "GTK+ Options"
-msgstr "GTK+ 選項"
+msgid "CTK+ Options"
+msgstr "CTK+ 選項"
 
 #: ctk/ctkmain.c:922
-msgid "Show GTK+ Options"
-msgstr "顯示 GTK+ 選項"
+msgid "Show CTK+ Options"
+msgstr "顯示 CTK+ 選項"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -3919,8 +3919,8 @@ msgstr "已還原資料的格式錯誤"
 
 #: ctk/ctktextbufferserialize.c:1873
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
-msgstr "序列化資料的格式錯誤。第一部份不是 GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
+msgstr "序列化資料的格式錯誤。第一部份不是 CTKTEXTBUFFERCONTENTS-0001"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -3999,17 +3999,17 @@ msgstr "永遠在最上層"
 
 #: ctk/ctkwindow.c:12777
 #, c-format
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "您是否要使用 GTK+ 檢查器？"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "您是否要使用 CTK+ 檢查器？"
 
 #: ctk/ctkwindow.c:12779
 #, c-format
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"GTK+ 檢查器是一個互動式除錯程式，讓您可以探索任何 GTK+ 應用程式中並修改其內"
+"CTK+ 檢查器是一個互動式除錯程式，讓您可以探索任何 CTK+ 應用程式中並修改其內"
 "部。使用它可能造成應用程式中斷或當機。"
 
 #: ctk/ctkwindow.c:12784
@@ -4039,8 +4039,8 @@ msgid "Parameter Type"
 msgstr "參數類型"
 
 #: ctk/inspector/css-editor.c:112
-msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "您可以在這裡輸入任何 GTK+ 可識別之 CSS 規則。"
+msgid "You can type here any CSS rule recognized by CTK+."
+msgstr "您可以在這裡輸入任何 CTK+ 可識別之 CSS 規則。"
 
 #: ctk/inspector/css-editor.c:113
 msgid ""
@@ -4097,8 +4097,8 @@ msgid "None"
 msgstr "沒有"
 
 #: ctk/inspector/general.ui:34
-msgid "GTK+ Version"
-msgstr "GTK+ 版本"
+msgid "CTK+ Version"
+msgstr "CTK+ 版本"
 
 #: ctk/inspector/general.ui:68
 msgid "GDK Backend"
@@ -4486,8 +4486,8 @@ msgid "GL rendering is disabled"
 msgstr "GL 繪製已停用"
 
 #: ctk/inspector/visual.ui:61
-msgid "GTK+ Theme"
-msgstr "GTK+ 主題"
+msgid "CTK+ Theme"
+msgstr "CTK+ 主題"
 
 #: ctk/inspector/visual.ui:94
 msgid "Dark Variant"
@@ -8546,8 +8546,8 @@ msgstr "列印至測試印表機"
 #~ msgid "%d:%02d"
 #~ msgstr "%d:%02d"
 
-#~ msgid "GTK could not find a media module. Check your installation."
-#~ msgstr "GTK 找不到媒體模組。請檢查安裝是否完整。"
+#~ msgid "CTK could not find a media module. Check your installation."
+#~ msgstr "CTK 找不到媒體模組。請檢查安裝是否完整。"
 
 #~ msgid "Hide text"
 #~ msgstr "隱藏文字"
@@ -8871,8 +8871,8 @@ msgstr "列印至測試印表機"
 #~ msgid "Count:"
 #~ msgstr "計數："
 
-#~ msgid "GTK+ Inspector — %s"
-#~ msgstr "GTK+ 檢查器 — %s"
+#~ msgid "CTK+ Inspector — %s"
+#~ msgstr "CTK+ 檢查器 — %s"
 
 #~ msgid "Send Widget to Shell"
 #~ msgstr "傳送元件到 Shell"

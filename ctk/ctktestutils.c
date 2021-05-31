@@ -33,7 +33,7 @@
 
 /* This is a hack.
  * We want to include the same headers as ctktypefuncs.c but we are not
- * allowed to include ctkx.h directly during GTK compilation.
+ * allowed to include ctkx.h directly during CTK compilation.
  * So....
  */
 #undef CTK_COMPILATION
@@ -42,7 +42,7 @@
 
 /**
  * SECTION:ctktesting
- * @Short_description: Utilities for testing GTK+ applications
+ * @Short_description: Utilities for testing CTK+ applications
  * @Title: Testing
  */
 
@@ -56,7 +56,7 @@
  *        stripped before return.
  * @...: currently unused
  *
- * This function is used to initialize a GTK+ test program.
+ * This function is used to initialize a CTK+ test program.
  *
  * It will in turn call g_test_init() and ctk_init() to properly
  * initialize the testing framework and graphical toolkit. It’ll 
@@ -91,7 +91,7 @@ ctk_test_init (int    *argcp,
 
   /* XSendEvent() doesn't work yet on XI2 events.
    * So at the moment gdk_test_simulate_* can only
-   * send events that GTK+ understands if XI2 is
+   * send events that CTK+ understands if XI2 is
    * disabled, bummer.
    */
   gdk_disable_multidevice ();

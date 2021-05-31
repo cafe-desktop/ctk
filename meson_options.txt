@@ -46,4 +46,4 @@ option('installed_tests', type: 'boolean', value: 'false',
 
 # input modules
 option('builtin_immodules', type: 'combo', choices : ['yes', 'no', 'auto'],
-       value: 'auto', description: 'Build immodules into GTK so/DLL')
+       value: 'auto', description: 'Build immodules into CTK so/DLL')

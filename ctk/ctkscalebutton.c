@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 2005 Ronald S. Bultje
  * Copyright (C) 2006, 2007 Christian Persch
  * Copyright (C) 2006 Jan Arne Petersen
@@ -26,10 +26,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 2007.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 2007.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -63,7 +63,7 @@
  *
  * #CtkScaleButton provides a button which pops up a scale widget.
  * This kind of widget is commonly used for volume controls in multimedia
- * applications, and GTK+ provides a #CtkVolumeButton subclass that
+ * applications, and CTK+ provides a #CtkVolumeButton subclass that
  * is tailored for this use case.
  *
  * # CSS nodes
@@ -181,7 +181,7 @@ ctk_scale_button_class_init (CtkScaleButtonClass *klass)
    *
    * The orientation of the #CtkScaleButton's popup window.
    *
-   * Note that since GTK+ 2.16, #CtkScaleButton implements the
+   * Note that since CTK+ 2.16, #CtkScaleButton implements the
    * #CtkOrientable interface which has its own @orientation
    * property. However we redefine the property here in order to
    * override its default horizontal orientation.

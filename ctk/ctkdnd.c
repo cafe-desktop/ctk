@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1999 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -73,7 +73,7 @@
  * @Short_description: Functions for controlling drag and drop handling
  * @Title: Drag and Drop
  *
- * GTK+ has a rich set of functions for doing inter-process communication
+ * CTK+ has a rich set of functions for doing inter-process communication
  * via the drag-and-drop metaphor.
  *
  * As well as the functions listed here, applications may need to use some
@@ -868,7 +868,7 @@ ctk_drag_update_cursor (CtkDragSourceInfo *info)
  *   or #CtkWidget::drag-drop signal
  *
  * Gets the data associated with a drag. When the data
- * is received or the retrieval fails, GTK+ will emit a
+ * is received or the retrieval fails, CTK+ will emit a
  * #CtkWidget::drag-data-received signal. Failure of the retrieval
  * is indicated by the length field of the @selection_data
  * signal parameter being negative. However, when ctk_drag_get_data()
@@ -992,7 +992,7 @@ ctk_drag_finish (GdkDragContext *context,
  *
  * Highlights a widget as a currently hovered drop target.
  * To end the highlight, call ctk_drag_unhighlight().
- * GTK+ calls this automatically if %CTK_DEST_DEFAULT_HIGHLIGHT is set.
+ * CTK+ calls this automatically if %CTK_DEST_DEFAULT_HIGHLIGHT is set.
  */
 void
 ctk_drag_highlight (CtkWidget  *widget)
@@ -1792,7 +1792,7 @@ ctk_drag_begin_internal (CtkWidget           *widget,
       if (keyboard)
         grab_dnd_keys (ipc_widget, keyboard, time);
 
-      /* We use a GTK grab here to override any grabs that the widget
+      /* We use a CTK grab here to override any grabs that the widget
        * we are dragging from might have held
        */
       ctk_device_grab_add (ipc_widget, pointer, FALSE);
@@ -2137,7 +2137,7 @@ out:
  * @hot_y: the Y offset within @widget of the hotspot
  * 
  * Changes the icon for drag operation to a given widget.
- * GTK+ will not destroy the widget, so if you don’t want
+ * CTK+ will not destroy the widget, so if you don’t want
  * it to persist, you should connect to the “drag-end” 
  * signal and destroy it yourself.
  */
@@ -2309,7 +2309,7 @@ _ctk_cairo_surface_extents (cairo_surface_t *surface,
  *     with a context for the source side of a drag)
  * @surface: the surface to use as icon
  *
- * Sets @surface as the icon for a given drag. GTK+ retains
+ * Sets @surface as the icon for a given drag. CTK+ retains
  * references for the arguments, and will release them when
  * they are no longer needed.
  *
@@ -2631,7 +2631,7 @@ ctk_drag_drop (CtkDragSourceInfo *info,
     {
       CtkSelectionData selection_data;
       GList *tmp_list;
-      /* GTK+ traditionally has used application/x-rootwin-drop, but the
+      /* CTK+ traditionally has used application/x-rootwin-drop, but the
        * XDND spec specifies x-rootwindow-drop.
        */
       GdkAtom target1 = gdk_atom_intern_static_string ("application/x-rootwindow-drop");
@@ -3280,7 +3280,7 @@ ctk_drag_abort_timeout (gpointer data)
  * @current_y: current Y coordinate
  * 
  * Checks to see if a mouse drag starting at (@start_x, @start_y) and ending
- * at (@current_x, @current_y) has passed the GTK+ drag threshold, and thus
+ * at (@current_x, @current_y) has passed the CTK+ drag threshold, and thus
  * should trigger the beginning of a drag-and-drop operation.
  *
  * Returns: %TRUE if the drag threshold has been passed.

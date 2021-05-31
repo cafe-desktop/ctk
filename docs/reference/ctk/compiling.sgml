@@ -4,24 +4,24 @@
 ]>
 <refentry id="ctk-compiling">
 <refmeta>
-<refentrytitle>Compiling GTK+ Applications</refentrytitle>
+<refentrytitle>Compiling CTK+ Applications</refentrytitle>
 <manvolnum>3</manvolnum>
-<refmiscinfo>GTK Library</refmiscinfo>
+<refmiscinfo>CTK Library</refmiscinfo>
 </refmeta>
 
 <refnamediv>
-<refname>Compiling GTK+ Applications</refname>
+<refname>Compiling CTK+ Applications</refname>
 <refpurpose>
-How to compile your GTK+ application
+How to compile your CTK+ application
 </refpurpose>
 </refnamediv>
 
 <refsect1>
-<title>Compiling GTK+ Applications on UNIX</title>
+<title>Compiling CTK+ Applications on UNIX</title>
 
 <para>
-To compile a GTK+ application, you need to tell the compiler where to
-find the GTK+ header files and libraries. This is done with the
+To compile a CTK+ application, you need to tell the compiler where to
+find the CTK+ header files and libraries. This is done with the
 <literal>pkg-config</literal> utility.
 </para>
 <para>
@@ -40,14 +40,14 @@ The simplest way to compile a program is to use the "backticks"
 feature of the shell. If you enclose a command in backticks
 (<emphasis>not single quotes</emphasis>), then its output will be
 substituted into the command line before execution. So to compile
-a GTK+ Hello, World, you would type the following:
+a CTK+ Hello, World, you would type the following:
 <programlisting>
 $ cc `pkg-config --cflags ctk+-3.0` hello.c -o hello `pkg-config --libs ctk+-3.0`
 </programlisting>
 </para>
 
 <para>
-Deprecated GTK+ functions are annotated to make the compiler
+Deprecated CTK+ functions are annotated to make the compiler
 emit warnings when they are used (e.g. with gcc, you need to use
 the -Wdeprecated-declarations option). If these warnings are
 problematic, they can be turned off by defining the preprocessor
@@ -56,9 +56,9 @@ option <literal>-DGDK_DISABLE_DEPRECATION_WARNINGS</literal>
 </para>
 
 <para>
-GTK+ deprecation annotations are versioned; by defining the
+CTK+ deprecation annotations are versioned; by defining the
 macros %GDK_VERSION_MIN_REQUIRED and %GDK_VERSION_MAX_ALLOWED,
-you can specify the range of GTK+ versions whose API you want
+you can specify the range of CTK+ versions whose API you want
 to use. APIs that were deprecated before or introduced after
 this range will trigger compiler warnings.
 </para>
@@ -101,24 +101,24 @@ line option <literal>-DCTK_MULTIDEVICE_SAFE=1</literal>.
     <title>Useful autotools macros</title>
 
     <para>
-      GTK+ provides various macros for easily checking version and backends
+      CTK+ provides various macros for easily checking version and backends
       supported. The macros are
       <variablelist>
         <varlistentry>
           <term>AM_PATH_CTK_3_0([minimum-version], [if-found], [if-not-found], [modules])</term>
-          <listitem>This macro should be used to check that GTK+ is installed
+          <listitem>This macro should be used to check that CTK+ is installed
           and available for compilation. The four arguments are optional, and
           they are: <emphasis>minimum-version</emphasis>, the minimum version
-          of GTK+ required for compilation; <emphasis>if-found</emphasis>, the
-          action to perform if a valid version of GTK+ has been found;
+          of CTK+ required for compilation; <emphasis>if-found</emphasis>, the
+          action to perform if a valid version of CTK+ has been found;
           <emphasis>if-not-found</emphasis>, the action to perform if a valid
-          version of GTK+ has not been found; <emphasis>modules</emphasis>, a
-          list of modules to be checked along with GTK+.</listitem>
+          version of CTK+ has not been found; <emphasis>modules</emphasis>, a
+          list of modules to be checked along with CTK+.</listitem>
         </varlistentry>
         <varlistentry>
           <term>CTK_CHECK_BACKEND([backend-name], [minimum-version], [if-found], [if-not-found])</term>
           <listitem>This macro should be used to check if a specific backend
-          is supported by GTK+. The <emphasis>minimum-version</emphasis>,
+          is supported by CTK+. The <emphasis>minimum-version</emphasis>,
           <emphasis>if-found</emphasis> and <emphasis>if-not-found</emphasis>
           arguments are optional.</listitem>
         </varlistentry>

@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -378,7 +378,7 @@ ctk_radio_menu_item_new_with_label_from_widget (CtkRadioMenuItem *group,
  * @radio_menu_item: a #CtkRadioMenuItem
  *
  * Returns the group to which the radio menu item belongs, as a #GList of
- * #CtkRadioMenuItem. The list belongs to GTK+ and should not be freed.
+ * #CtkRadioMenuItem. The list belongs to CTK+ and should not be freed.
  *
  * Returns: (element-type CtkRadioMenuItem) (transfer none): the group
  *     of @radio_menu_item

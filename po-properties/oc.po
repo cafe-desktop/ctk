@@ -7012,12 +7012,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Lista de las talhas d'icònas (ctk-menu=16,16:ctk-button=20,20..."
 
 #: ctk/ctksettings.c:567
-msgid "GTK Modules"
-msgstr "Moduls GTK"
+msgid "CTK Modules"
+msgstr "Moduls CTK"
 
 #: ctk/ctksettings.c:568
-msgid "List of currently active GTK modules"
-msgstr "Lista dels moduls GTK actualament actius"
+msgid "List of currently active CTK modules"
+msgstr "Lista dels moduls CTK actualament actius"
 
 #: ctk/ctksettings.c:576
 msgid "Xft Antialias"
@@ -7602,10 +7602,10 @@ msgstr "Las bóstias de dialògs utilizan la barra d'entèsta"
 
 #: ctk/ctksettings.c:1691
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"Indica se las bóstias de dialòg integradas de GTK+ devon utilizar una barra "
+"Indica se las bóstias de dialòg integradas de CTK+ devon utilizar una barra "
 "d'entèsta a la plaça d'una zòna d'accions."
 
 #: ctk/ctksettings.c:1707
@@ -7625,8 +7625,8 @@ msgid "Recent Files Enabled"
 msgstr "Fichièrs recents activats"
 
 #: ctk/ctksettings.c:1725
-msgid "Whether GTK+ remembers recent files"
-msgstr "Indica se GTK+ se remembra dels fichièrs recents"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Indica se CTK+ se remembra dels fichièrs recents"
 
 #: ctk/ctksettings.c:1740
 msgid "Long press time"

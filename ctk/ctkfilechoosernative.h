@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkfilechoosernative.h: Native File selector dialog
  * Copyright (C) 2015, Red Hat, Inc.
  *
@@ -31,7 +31,7 @@ G_BEGIN_DECLS
 #define CTK_TYPE_FILE_CHOOSER_NATIVE             (ctk_file_chooser_native_get_type ())
 
 GDK_AVAILABLE_IN_3_20
-G_DECLARE_FINAL_TYPE (CtkFileChooserNative, ctk_file_chooser_native, GTK, FILE_CHOOSER_NATIVE, CtkNativeDialog)
+G_DECLARE_FINAL_TYPE (CtkFileChooserNative, ctk_file_chooser_native, CTK, FILE_CHOOSER_NATIVE, CtkNativeDialog)
 
 GDK_AVAILABLE_IN_3_20
 CtkFileChooserNative *ctk_file_chooser_native_new (const gchar          *title,

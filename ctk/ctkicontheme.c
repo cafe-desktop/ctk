@@ -508,7 +508,7 @@ ctk_icon_theme_class_init (CtkIconThemeClass *klass)
    * CtkIconTheme::changed:
    * @icon_theme: the icon theme
    *
-   * Emitted when the current icon theme is switched or GTK+ detects
+   * Emitted when the current icon theme is switched or CTK+ detects
    * that a change has occurred in the contents of the current
    * icon theme.
    */
@@ -871,7 +871,7 @@ ctk_icon_theme_finalize (GObject *object)
  * @n_elements: number of elements in @path.
  * 
  * Sets the search path for the icon theme object. When looking
- * for an icon theme, GTK+ will search for a subdirectory of
+ * for an icon theme, CTK+ will search for a subdirectory of
  * one or more of the directories in @path with the same name
  * as the icon theme containing an index.theme file. (Themes from
  * multiple of the path elements are combined to allow themes to be
@@ -1375,7 +1375,7 @@ load_themes (CtkIconTheme *icon_theme)
   /* Always look in the Adwaita, gnome and hicolor icon themes.
    * Looking in hicolor is mandated by the spec, looking in Adwaita
    * and gnome is a pragmatic solution to prevent missing icons in
-   * GTK+ applications when run under, e.g. KDE.
+   * CTK+ applications when run under, e.g. KDE.
    */
   insert_theme (icon_theme, DEFAULT_ICON_THEME);
   insert_theme (icon_theme, "gnome");
@@ -2273,7 +2273,7 @@ ctk_icon_theme_error_quark (void)
  * CtkWidget::style-set signal. If for some reason you do not want to
  * update the icon when the icon theme changes, you should consider
  * using gdk_pixbuf_copy() to make a private copy of the pixbuf
- * returned by this function. Otherwise GTK+ may need to keep the old
+ * returned by this function. Otherwise CTK+ may need to keep the old
  * icon theme loaded, which would be a waste of memory.
  *
  * Returns: (nullable) (transfer full): the rendered icon; this may be
@@ -2322,7 +2322,7 @@ ctk_icon_theme_load_icon (CtkIconTheme         *icon_theme,
  * CtkWidget::style-set signal. If for some reason you do not want to
  * update the icon when the icon theme changes, you should consider
  * using gdk_pixbuf_copy() to make a private copy of the pixbuf
- * returned by this function. Otherwise GTK+ may need to keep the old
+ * returned by this function. Otherwise CTK+ may need to keep the old
  * icon theme loaded, which would be a waste of memory.
  *
  * Returns: (nullable) (transfer full): the rendered icon; this may be
@@ -3665,7 +3665,7 @@ ctk_icon_info_get_base_scale (CtkIconInfo *icon_info)
  * 
  * Returns: (nullable) (type filename): the filename for the icon, or %NULL
  *     if ctk_icon_info_get_builtin_pixbuf() should be used instead.
- *     The return value is owned by GTK+ and should not be modified
+ *     The return value is owned by CTK+ and should not be modified
  *     or freed.
  *
  * Since: 2.4
@@ -3682,7 +3682,7 @@ ctk_icon_info_get_filename (CtkIconInfo *icon_info)
  * ctk_icon_info_get_builtin_pixbuf:
  * @icon_info: a #CtkIconInfo
  * 
- * Gets the built-in image for this icon, if any. To allow GTK+ to use
+ * Gets the built-in image for this icon, if any. To allow CTK+ to use
  * built in icon images, you must pass the %CTK_ICON_LOOKUP_USE_BUILTIN
  * to ctk_icon_theme_lookup_icon().
  *
@@ -4064,7 +4064,7 @@ proxy_pixbuf_destroy (guchar *pixels, gpointer data)
  * ctk_icon_theme_lookup_icon(); the size will be based on the size
  * passed to ctk_icon_theme_lookup_icon(). Note that the resulting
  * pixbuf may not be exactly this size; an icon theme may have icons
- * that differ slightly from their nominal sizes, and in addition GTK+
+ * that differ slightly from their nominal sizes, and in addition CTK+
  * will avoid scaling icons that it considers sufficiently close to the
  * requested size or for which the source image would have to be scaled
  * up too far. (This maintains sharpness.). This behaviour can be changed
@@ -4137,7 +4137,7 @@ ctk_icon_info_load_icon (CtkIconInfo *icon_info,
  * ctk_icon_theme_lookup_icon(); the size will be based on the size
  * passed to ctk_icon_theme_lookup_icon(). Note that the resulting
  * surface may not be exactly this size; an icon theme may have icons
- * that differ slightly from their nominal sizes, and in addition GTK+
+ * that differ slightly from their nominal sizes, and in addition CTK+
  * will avoid scaling icons that it considers sufficiently close to the
  * requested size or for which the source image would have to be scaled
  * up too far. (This maintains sharpness.). This behaviour can be changed
@@ -5332,7 +5332,7 @@ ctk_icon_info_get_display_name (CtkIconInfo *icon_info)
  * of built-in icons is to allow an application or library
  * that uses themed icons to function requiring files to
  * be present in the file system. For instance, the default
- * images for all of GTK+’s stock icons are registered
+ * images for all of CTK+’s stock icons are registered
  * as built-icons.
  *
  * In general, if you use ctk_icon_theme_add_builtin_icon()

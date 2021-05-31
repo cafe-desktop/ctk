@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkprinteroptionset.h: printer option set
  * Copyright (C) 2006, Red Hat, Inc.
  *

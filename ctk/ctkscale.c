@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  * Copyright (C) 2001 Red Hat, Inc.
  *
@@ -17,10 +17,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -2173,7 +2173,7 @@ ctk_scale_clear_marks (CtkScale *scale)
  * Adds a mark at @value.
  *
  * A mark is indicated visually by drawing a tick mark next to the scale,
- * and GTK+ makes it easy for the user to position the scale exactly at the
+ * and CTK+ makes it easy for the user to position the scale exactly at the
  * marks value.
  *
  * If @markup is not %NULL, text is shown next to the tick mark.

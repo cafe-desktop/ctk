@@ -359,7 +359,7 @@ parse_settings (unsigned char *data,
 
       if (gdk_name == NULL)
         {
-          GDK_NOTE(SETTINGS, g_message ("    ==> unknown to GTK"));
+          GDK_NOTE(SETTINGS, g_message ("    ==> unknown to CTK"));
           free_value (value);
         }
       else

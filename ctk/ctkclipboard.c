@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 2000 Red Hat, Inc.
  * Copyright (C) 2004 Nokia Corporation
  *
@@ -104,7 +104,7 @@
  * determining which formats are advertised by the clipboard
  * provider, asking for the clipboard in the best available format
  * and converting the results into the UTF-8 encoding. (The standard
- * form for representing strings in GTK+.)
+ * form for representing strings in CTK+.)
  */
 
 
@@ -233,7 +233,7 @@ ctk_clipboard_class_init (CtkClipboardClass *class)
    * @clipboard: the #CtkClipboard on which the signal is emitted
    * @event: (type Gdk.EventOwnerChange): the @GdkEventOwnerChange event
    *
-   * The ::owner-change signal is emitted when GTK+ receives an
+   * The ::owner-change signal is emitted when CTK+ receives an
    * event that indicates that the ownership of the selection
    * associated with @clipboard has changed.
    *
@@ -344,7 +344,7 @@ clipboard_display_closed (GdkDisplay   *display,
  * Returns: (transfer none): the appropriate clipboard object. If no
  *   clipboard already exists, a new one will be created. Once a clipboard
  *   object has been created, it is persistent and, since it is owned by
- *   GTK+, must not be freed or unrefd.
+ *   CTK+, must not be freed or unrefd.
  *
  * Since: 2.2
  **/
@@ -370,7 +370,7 @@ ctk_clipboard_get_for_display (GdkDisplay *display,
  * Returns: (transfer none): the appropriate clipboard object. If no clipboard
  *     already exists, a new one will be created. Once a clipboard
  *     object has been created, it is persistent and, since it is
- *     owned by GTK+, must not be freed or unreffed.
+ *     owned by CTK+, must not be freed or unreffed.
  */
 CtkClipboard *
 ctk_clipboard_get (GdkAtom selection)
@@ -841,7 +841,7 @@ text_clear_func (CtkClipboard *clipboard,
  * @len:       length of @text, in bytes, or -1, in which case
  *             the length will be determined with strlen().
  * 
- * Sets the contents of the clipboard to the given UTF-8 string. GTK+ will
+ * Sets the contents of the clipboard to the given UTF-8 string. CTK+ will
  * make a copy of the text and take responsibility for responding
  * for requests for the text, and for converting the text into
  * the requested format.
@@ -898,7 +898,7 @@ pixbuf_clear_func (CtkClipboard *clipboard,
  * @pixbuf:    a #GdkPixbuf 
  * 
  * Sets the contents of the clipboard to the given #GdkPixbuf. 
- * GTK+ will take responsibility for responding for requests 
+ * CTK+ will take responsibility for responding for requests 
  * for the image, and for converting the image into the 
  * requested format.
  * 

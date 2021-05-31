@@ -1,4 +1,4 @@
-# Actual GTK things
+# Actual CTK things
 {
   CtkWidgetClass action GPtrArray
   Memcheck:Leak
@@ -11,7 +11,7 @@
 }
 
 {
-   GTK media extension gio modules
+   CTK media extension gio modules
    Memcheck:Leak
    match-leak-kinds: definite
    fun:malloc

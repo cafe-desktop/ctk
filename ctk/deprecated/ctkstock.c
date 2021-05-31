@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 2000 Red Hat, Inc. 
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -40,16 +40,16 @@
  *                     icons
  * @Title: Stock Items
  *
- * > Since GTK+ 3.10, stock items are deprecated. You should instead set
+ * > Since CTK+ 3.10, stock items are deprecated. You should instead set
  * > up whatever labels and/or icons you need using normal widget API,
- * > rather than relying on GTK+ providing ready-made combinations of these.
+ * > rather than relying on CTK+ providing ready-made combinations of these.
  *
  * Stock items represent commonly-used menu or toolbar items such as
  * “Open” or “Exit”. Each stock item is identified by a stock ID;
  * stock IDs are just strings, but macros such as #CTK_STOCK_OPEN are
  * provided to avoid typing mistakes in the strings.
  * Applications can register their own stock items in addition to those
- * built-in to GTK+.
+ * built-in to CTK+.
  *
  * Each stock ID can be associated with a #CtkStockItem, which contains
  * the user-visible label, keyboard accelerator, and translation domain
@@ -143,9 +143,9 @@ real_add (const CtkStockItem *items,
  *
  * Registers each of the stock items in @items. If an item already
  * exists with the same stock ID as one of the @items, the old item
- * gets replaced. The stock items are copied, so GTK+ does not hold
+ * gets replaced. The stock items are copied, so CTK+ does not hold
  * any pointer into @items and @items can be freed. Use
- * ctk_stock_add_static() if @items is persistent and GTK+ need not
+ * ctk_stock_add_static() if @items is persistent and CTK+ need not
  * copy the array.
  *
  * Deprecated: 3.10

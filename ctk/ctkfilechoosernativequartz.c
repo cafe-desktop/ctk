@@ -1,5 +1,5 @@
 /* -*- Mode: C; c-file-style: "gnu"; tab-width: 8 -*- */
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkfilechoosernativequartz.c: Quartz Native File selector dialog
  * Copyright (C) 2017, Tom Schoonjans
  *

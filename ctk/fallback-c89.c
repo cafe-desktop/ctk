@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 2011 Chun-wei Fan <fanc999@yahoo.com.tw>
  *
  * Author: Chun-wei Fan <fanc999@yahoo.com.tw>

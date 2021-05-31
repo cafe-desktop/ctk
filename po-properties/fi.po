@@ -7250,12 +7250,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Luettelo kuvakeko'oista (ctk-menu=16,16;ctk-button=20,20..."
 
 #: ctk/ctksettings.c:567
-msgid "GTK Modules"
-msgstr "GTK-moduulit"
+msgid "CTK Modules"
+msgstr "CTK-moduulit"
 
 #: ctk/ctksettings.c:568
-msgid "List of currently active GTK modules"
-msgstr "Luettelo tällä hetkellä aktiivisista GTK-moduuleista"
+msgid "List of currently active CTK modules"
+msgstr "Luettelo tällä hetkellä aktiivisista CTK-moduuleista"
 
 #: ctk/ctksettings.c:576
 msgid "Xft Antialias"
@@ -7809,7 +7809,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Whether buttons in dialogs should use the alternative button order"
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr "Käyttävätkö ikkunan painikkeet vaihtoehtoista painikejärjestystä"
 
@@ -7830,8 +7830,8 @@ msgid "Recent Files Enabled"
 msgstr "Viimeisimmät asiakirjat-luettelon enimmäisikä"
 
 #: ctk/ctksettings.c:1731
-msgid "Whether GTK+ remembers recent files"
-msgstr "Muistaako GTK+ viimeisimmät tiedostot"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Muistaako CTK+ viimeisimmät tiedostot"
 
 #: ctk/ctksettings.c:1746
 msgid "Long press time"

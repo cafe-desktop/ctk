@@ -5345,12 +5345,12 @@ msgstr ""
 "button=20,20..."
 
 #: ctk/ctksettings.c:380
-msgid "GTK Modules"
-msgstr "Iimodyuli Ze-GTK"
+msgid "CTK Modules"
+msgstr "Iimodyuli Ze-CTK"
 
 #: ctk/ctksettings.c:381
-msgid "List of currently active GTK modules"
-msgstr "Uluhlu lweemodyuli ze-GTK ezisebenzayo ngoku"
+msgid "List of currently active CTK modules"
+msgstr "Uluhlu lweemodyuli ze-CTK ezisebenzayo ngoku"
 
 #: ctk/ctksettings.c:390
 msgid "Xft Antialias"
@@ -8171,5 +8171,5 @@ msgstr ""
 #~ msgid "Show Preview"
 #~ msgstr "Bonisa umbhalo"
 
-#~ msgid "Whether this text is hidden. Not implemented in GTK 2.0"
-#~ msgstr "Nokuba ngaba lo mbhalo ufihlakele na. Ayifakelwanga kwi-GTK 2.0"
+#~ msgid "Whether this text is hidden. Not implemented in CTK 2.0"
+#~ msgstr "Nokuba ngaba lo mbhalo ufihlakele na. Ayifakelwanga kwi-CTK 2.0"

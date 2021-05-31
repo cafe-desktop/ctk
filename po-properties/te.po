@@ -5857,12 +5857,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "ప్రతిమ పరిమాణముల జాబితా (ctk-menu=16,16:ctk-button=20,20..."
 
 #: ../ctk/ctksettings.c:519
-msgid "GTK Modules"
-msgstr "GTK మాడ్యూల్స్‍"
+msgid "CTK Modules"
+msgstr "CTK మాడ్యూల్స్‍"
 
 #: ../ctk/ctksettings.c:520
-msgid "List of currently active GTK modules"
-msgstr "ప్రస్తుతం క్రియాశీలముగావున్న GTK మాడ్యూళ్ళ జాబితా"
+msgid "List of currently active CTK modules"
+msgstr "ప్రస్తుతం క్రియాశీలముగావున్న CTK మాడ్యూళ్ళ జాబితా"
 
 #: ../ctk/ctksettings.c:528
 msgid "Xft Antialias"

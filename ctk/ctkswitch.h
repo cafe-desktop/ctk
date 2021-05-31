@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  *
  * Copyright (C) 2010  Intel Corporation
  * Copyright (C) 2010  RedHat, Inc.

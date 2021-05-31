@@ -151,7 +151,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
  * cases.
  *
  * Engines must ensure property registration happens exactly once,
- * usually GTK+ deals with theming engines as singletons, so this
+ * usually CTK+ deals with theming engines as singletons, so this
  * should be guaranteed to happen once, but bear this in mind
  * when creating #CtkThemeEngines yourself.
  *

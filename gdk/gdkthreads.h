@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __GDK_THREADS_H__
@@ -84,14 +84,14 @@ guint    gdk_threads_add_timeout_seconds      (guint          interval,
  * GDK_THREADS_ENTER:
  *
  * This macro marks the beginning of a critical section in which GDK and
- * GTK+ functions can be called safely and without causing race
+ * CTK+ functions can be called safely and without causing race
  * conditions.  Only one thread at a time can be in such a critial
  * section. The macro expands to a no-op if #G_THREADS_ENABLED has not
  * been defined. Typically gdk_threads_enter() should be used instead of
  * this macro.
  *
  * Deprecated:3.6: Use g_main_context_invoke(), g_idle_add() and related
- *     functions if you need to schedule GTK+ calls from other threads.
+ *     functions if you need to schedule CTK+ calls from other threads.
  */
 #define GDK_THREADS_ENTER() gdk_threads_enter()
 

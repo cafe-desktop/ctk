@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -67,16 +67,16 @@
  * @Short_description: Deprecated routines for handling resource files
  * @Title: Resource Files
  *
- * GTK+ provides resource file mechanism for configuring
- * various aspects of the operation of a GTK+ program
+ * CTK+ provides resource file mechanism for configuring
+ * various aspects of the operation of a CTK+ program
  * at runtime.
  *
- * > In GTK+ 3.0, resource files have been deprecated and replaced by
+ * > In CTK+ 3.0, resource files have been deprecated and replaced by
  * > CSS-like style sheets, which are understood by #CtkCssProvider.
  *
  * # Default Files #
  *
- * An application can cause GTK+ to parse a specific RC
+ * An application can cause CTK+ to parse a specific RC
  * file by calling ctk_rc_parse(). In addition to this,
  * certain files will be read at the end of ctk_init().
  * Unless modified, the files looked for will be
@@ -85,22 +85,22 @@
  * (`SYSCONFDIR` defaults to
  * `/usr/local/etc`. It can be changed with the
  * `--prefix` or `--sysconfdir` options when
- * configuring GTK+.)
+ * configuring CTK+.)
  *
  * The set of these “default” files
  * can be retrieved with ctk_rc_get_default_files()
  * and modified with ctk_rc_add_default_file() and
  * ctk_rc_set_default_files().
- * Additionally, the `GTK2_RC_FILES` environment variable
+ * Additionally, the `CTK2_RC_FILES` environment variable
  * can be set to a #G_SEARCHPATH_SEPARATOR_S-separated list of files
  * in order to overwrite the set of default files at runtime.
  *
  * # Locale Specific Files # {#locale-specific-rc}
  *
- * For each RC file, in addition to the file itself, GTK+ will look for
+ * For each RC file, in addition to the file itself, CTK+ will look for
  * a locale-specific file that will be parsed after the main file.
  * For instance, if `LANG` is set to `ja_JP.ujis`,
- * when loading the default file `~/.ctkrc` then GTK+ looks
+ * when loading the default file `~/.ctkrc` then CTK+ looks
  * for `~/.ctkrc.ja_JP` and `~/.ctkrc.ja`,
  * and parses the first of those that exists.
  *
@@ -134,7 +134,7 @@
  * the class name of the widget, while for the class path, the class name is
  * always used.
  *
- * Since GTK+ 2.10, `widget_class` paths can also contain <classname>
+ * Since CTK+ 2.10, `widget_class` paths can also contain <classname>
  * substrings, which are matching the class with the given name and any
  * derived classes. For instance,
  * |[
@@ -179,7 +179,7 @@
  * `application`
  * should be used for styles an application sets
  * up, and `ctk` is used for styles
- * that GTK+ creates internally.
+ * that CTK+ creates internally.
  *
  * # Theme ctkrc Files #
  *
@@ -274,7 +274,7 @@
  *         filename is not an absolute filename,
  *         it is searched in the directories of the currently open RC files.
  *
- *    GTK+ also tries to load a
+ *    CTK+ also tries to load a
  *         [locale-specific variant][locale-specific-rc] of
  *         the included file.
  *
@@ -361,13 +361,13 @@
  *       number`
  *
  *          Sets the xthickness, which is used for various horizontal padding
- *          values in GTK+.
+ *          values in CTK+.
  *
  * * `ythickness =
  *       number`
  *
  *          Sets the ythickness, which is used for various vertical padding
- *          values in GTK+.
+ *          values in CTK+.
  *
  * * `bg_pixmap[state] =
  *       pixmap`
@@ -380,12 +380,12 @@
 
  * * `font = font`
  *
- *          Starting with GTK+ 2.0, the “font”  and “fontset” 
+ *          Starting with CTK+ 2.0, the “font”  and “fontset” 
  *          declarations are ignored; use “font_name”  declarations instead.
  *
  * * `fontset = font`
  *
- *          Starting with GTK+ 2.0, the “font”  and “fontset” 
+ *          Starting with CTK+ 2.0, the “font”  and “fontset” 
  *          declarations are ignored; use “font_name”  declarations instead.
  *
  * * `font_name = font`
@@ -449,7 +449,7 @@
  *
  * ## Color Format ## {#color-format}
  *
- * Colors can be specified as a string containing a color name (GTK+ knows
+ * Colors can be specified as a string containing a color name (CTK+ knows
  * all names from the X color database `/usr/lib/X11/rgb.txt`),
  * in one of the hexadecimal forms `#rrrrggggbbbb`,
  * `#rrrgggbbb`, `#rrggbb`,
@@ -538,7 +538,7 @@
  * }
  * ]|
  *
- * The sizes that come with GTK+ itself are `"ctk-menu"`,
+ * The sizes that come with CTK+ itself are `"ctk-menu"`,
  * `"ctk-small-toolbar"`, `"ctk-large-toolbar"`,
  * `"ctk-button"`, `"ctk-dialog"`. Applications
  * can define other sizes.
@@ -554,11 +554,11 @@
  * }
  * ]|
  *
- * When selecting an icon source to use, GTK+ will consider text direction most
+ * When selecting an icon source to use, CTK+ will consider text direction most
  * important, state second, and size third. It will select the best match based on
  * those criteria. If an attribute matches exactly (e.g. you specified
- * `PRELIGHT` or specified the size), GTK+ won’t modify the image;
- * if the attribute matches with a wildcard, GTK+ will scale or modify the image to
+ * `PRELIGHT` or specified the size), CTK+ won’t modify the image;
+ * if the attribute matches with a wildcard, CTK+ will scale or modify the image to
  * match the state and size the user requested.
  *
  * # Key bindings #
@@ -735,7 +735,7 @@ ctk_rc_make_default_dir (const gchar *type)
  * Obtains the path in which to look for IM modules. See the documentation
  * of the `CTK_PATH`
  * environment variable for more details about looking up modules. This
- * function is useful solely for utilities supplied with GTK+ and should
+ * function is useful solely for utilities supplied with CTK+ and should
  * not be used by applications under normal circumstances.
  *
  * Returns: (type filename): a newly-allocated string containing the
@@ -789,7 +789,7 @@ ctk_rc_get_im_module_file (void)
  * ctk_rc_get_theme_dir:
  *
  * Returns the standard directory in which themes should
- * be installed. (GTK+ does not actually use this directory
+ * be installed. (CTK+ does not actually use this directory
  * itself.)
  *
  * Returns: The directory (must be freed with g_free()).
@@ -815,9 +815,9 @@ ctk_rc_get_theme_dir (void)
 /**
  * ctk_rc_get_module_dir:
  *
- * Returns a directory in which GTK+ looks for theme engines.
+ * Returns a directory in which CTK+ looks for theme engines.
  * For full information about the search for theme engines,
- * see the docs for `CTK_PATH` in [Running GTK+ Applications][ctk-running].
+ * see the docs for `CTK_PATH` in [Running CTK+ Applications][ctk-running].
  *
  * return value: (type filename): the directory. (Must be freed with g_free())
  *
@@ -849,7 +849,7 @@ ctk_rc_add_default_file (const gchar *filename)
  * @filenames: (array zero-terminated=1) (element-type filename): A
  *     %NULL-terminated list of filenames.
  *
- * Sets the list of files that GTK+ will read at the
+ * Sets the list of files that CTK+ will read at the
  * end of ctk_init().
  *
  * Deprecated:3.0: Use #CtkStyleContext with a custom #CtkStyleProvider instead
@@ -867,7 +867,7 @@ ctk_rc_set_default_files (gchar **filenames)
  *
  * Returns: (transfer none) (array zero-terminated=1) (element-type filename):
  *      A %NULL-terminated array of filenames.  This memory is owned
- *     by GTK+ and must not be freed by the application.  If you want
+ *     by CTK+ and must not be freed by the application.  If you want
  *     to store this information, you should make a copy.
  *
  * Deprecated:3.0: Use #CtkStyleContext instead
@@ -1274,7 +1274,7 @@ ctk_rc_reparse_all (void)
  * Finds all matching RC styles for a given widget,
  * composites them together, and then creates a
  * #CtkStyle representing the composite appearance.
- * (GTK+ actually keeps a cache of previously
+ * (CTK+ actually keeps a cache of previously
  * created styles, so a new style may not be
  * created.)
  *
@@ -1307,7 +1307,7 @@ ctk_rc_get_style (CtkWidget *widget)
  * Creates up a #CtkStyle from styles defined in a RC file by providing
  * the raw components used in matching. This function may be useful
  * when creating pseudo-widgets that should be themed like widgets but
- * don’t actually have corresponding GTK+ widgets. An example of this
+ * don’t actually have corresponding CTK+ widgets. An example of this
  * would be items inside a GNOME canvas widget.
  *
  * The action of ctk_rc_get_style() is similar to:
@@ -1322,7 +1322,7 @@ ctk_rc_get_style (CtkWidget *widget)
  * Returns: (nullable) (transfer none): A style created by matching
  *     with the supplied paths, or %NULL if nothing matching was
  *     specified and the default style should be used. The returned
- *     value is owned by GTK+ as part of an internal cache, so you
+ *     value is owned by CTK+ as part of an internal cache, so you
  *     must call g_object_ref() on the returned value if you want to
  *     keep a reference to it.
  *
@@ -1343,7 +1343,7 @@ ctk_rc_get_style_by_paths (CtkSettings *settings,
    * with a CtkWidgetPath appropriate for the supplied information.
    *
    * CtkWidgetPath is composed of a list of GTypes with optional names;
-   * In GTK+-2.0, widget_path consisted of the widget names, or
+   * In CTK+-2.0, widget_path consisted of the widget names, or
    * the class names for unnamed widgets, while class_path had the
    * class names always. So, use class_path to determine the GTypes
    * and extract widget names from widget_path as applicable.
@@ -1482,7 +1482,7 @@ ctk_rc_find_pixmap_in_path (CtkSettings  *settings,
  * ctk_rc_find_module_in_path:
  * @module_file: name of a theme engine
  *
- * Searches for a theme engine in the GTK+ search path. This function
+ * Searches for a theme engine in the CTK+ search path. This function
  * is not useful for applications and should not be used.
  *
  * Returns: (type filename): The filename, if found (must be
@@ -1890,7 +1890,7 @@ pattern_spec_free (PatternSpec *pspec)
  * This function was used internally by the CtkRC parsing mechanism
  * to assign match patterns to #CtkBindingSet structures.
  *
- * In GTK+ 3, these match patterns are unused.
+ * In CTK+ 3, these match patterns are unused.
  *
  * Deprecated: 3.0
  */

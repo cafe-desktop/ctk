@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkfilechooserwidget.h: Embeddable file selector widget
  * Copyright (C) 2003, Red Hat, Inc.
  *

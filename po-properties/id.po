@@ -6899,12 +6899,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Daftar ukuran ikon (ctk-menu=16,16;ctk-button=20,20..."
 
 #: ctk/ctksettings.c:578
-msgid "GTK Modules"
-msgstr "Modul GTK"
+msgid "CTK Modules"
+msgstr "Modul CTK"
 
 #: ctk/ctksettings.c:579
-msgid "List of currently active GTK modules"
-msgstr "Daftar modul GTK yang sedang aktif"
+msgid "List of currently active CTK modules"
+msgstr "Daftar modul CTK yang sedang aktif"
 
 #: ctk/ctksettings.c:587
 msgid "Xft Antialias"
@@ -7469,10 +7469,10 @@ msgstr "Dialog memakai bilah kepala"
 
 #: ctk/ctksettings.c:1708
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"Apakah dialog bawaan GTK+ mesti memakai bilah kepala sebagai ganti dari "
+"Apakah dialog bawaan CTK+ mesti memakai bilah kepala sebagai ganti dari "
 "suatu wilayah aksi."
 
 #: ctk/ctksettings.c:1724
@@ -7492,8 +7492,8 @@ msgid "Recent Files Enabled"
 msgstr "Berkas Terkini Difungsikan"
 
 #: ctk/ctksettings.c:1742
-msgid "Whether GTK+ remembers recent files"
-msgstr "Apakah GTK+ mengingat berkas-berkas terkini"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Apakah CTK+ mengingat berkas-berkas terkini"
 
 #: ctk/ctksettings.c:1757
 msgid "Long press time"

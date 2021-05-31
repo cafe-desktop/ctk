@@ -31,7 +31,7 @@ G_BEGIN_DECLS
 
 #define CTK_TYPE_PLACES_VIEW_ROW (ctk_places_view_row_get_type())
 
-G_DECLARE_FINAL_TYPE (CtkPlacesViewRow, ctk_places_view_row, GTK, PLACES_VIEW_ROW, CtkListBoxRow)
+G_DECLARE_FINAL_TYPE (CtkPlacesViewRow, ctk_places_view_row, CTK, PLACES_VIEW_ROW, CtkListBoxRow)
 
 CtkWidget*         ctk_places_view_row_new                       (GVolume            *volume,
                                                                   GMount             *mount);

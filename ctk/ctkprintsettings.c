@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkprintsettings.c: Print Settings
  * Copyright (C) 2006, Red Hat, Inc.
  *
@@ -45,7 +45,7 @@
  * document. The predefined keys try to use shared values as much as possible
  * so that moving such a document between systems still works.
  *
- * Printing support was added in GTK+ 2.10.
+ * Printing support was added in CTK+ 2.10.
  */
 
 typedef struct _CtkPrintSettingsClass CtkPrintSettingsClass;

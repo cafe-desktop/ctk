@@ -1285,8 +1285,8 @@ msgstr "Անվավեր URI"
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:526
-msgid "Load additional GTK+ modules"
-msgstr "Բեռնել հավելյալ GTK+ մոդուլներ"
+msgid "Load additional CTK+ modules"
+msgstr "Բեռնել հավելյալ CTK+ մոդուլներ"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:527
@@ -1300,13 +1300,13 @@ msgstr "Բոլոր զգուշացումները դարձնել վճռորոշ"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:532
-msgid "GTK+ debugging flags to set"
-msgstr "Սահմանել GTK+ վրիպազերծման դրոշները"
+msgid "CTK+ debugging flags to set"
+msgstr "Սահմանել CTK+ վրիպազերծման դրոշները"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:535
-msgid "GTK+ debugging flags to unset"
-msgstr "Հանել GTK+ վրիպազերծման դրոշները"
+msgid "CTK+ debugging flags to unset"
+msgstr "Հանել CTK+ վրիպազերծման դրոշները"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -1323,12 +1323,12 @@ msgid "Cannot open display: %s"
 msgstr "Չի կարող բացել %s դիսփլեյը"
 
 #: ctk/ctkmain.c:922
-msgid "GTK+ Options"
-msgstr "GTK+ Ընտրանքներ"
+msgid "CTK+ Options"
+msgstr "CTK+ Ընտրանքներ"
 
 #: ctk/ctkmain.c:922
-msgid "Show GTK+ Options"
-msgstr "Ցուցադրել GTK+ Ընտրանքները"
+msgid "Show CTK+ Options"
+msgstr "Ցուցադրել CTK+ Ընտրանքները"
 
 #: ctk/ctkmountoperation.c:491
 msgid "Co_nnect"
@@ -2727,10 +2727,10 @@ msgstr "Սերիալիզացված տվյալները սխալ են կազմակ
 
 #: ctk/ctktextbufferserialize.c:1862
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 "Սերիալիզացված տվյալները սխալ են կազմակերպված։ Առաջին բաժինը "
-"GTKTEXTBUFFERCONTENTS-0001 չէ։"
+"CTKTEXTBUFFERCONTENTS-0001 չէ։"
 
 #: ctk/ctktextutil.c:60
 msgid "LRM _Left-to-right mark"

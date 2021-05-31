@@ -2695,8 +2695,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:463
-msgid "Load additional GTK+ modules"
-msgstr "โหลดมอดูล GTK+ เพิ่มเติม"
+msgid "Load additional CTK+ modules"
+msgstr "โหลดมอดูล CTK+ เพิ่มเติม"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:464
@@ -2710,13 +2710,13 @@ msgstr "ให้ความสำคัญกับคำเตือนปร
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:469
-msgid "GTK+ debugging flags to set"
-msgstr "แฟล็กการดีบั๊กของ GTK+ ที่จะเปิดใช้"
+msgid "CTK+ debugging flags to set"
+msgstr "แฟล็กการดีบั๊กของ CTK+ ที่จะเปิดใช้"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:472
-msgid "GTK+ debugging flags to unset"
-msgstr "แฟล็กการดีบั๊กของ GTK+ ที่จะปิด"
+msgid "CTK+ debugging flags to unset"
+msgstr "แฟล็กการดีบั๊กของ CTK+ ที่จะปิด"
 
 #: ctk/ctkmain.c:805
 #, c-format
@@ -2724,12 +2724,12 @@ msgid "Cannot open display: %s"
 msgstr "ไม่สามารถเปิดดิสเพลย์: %s"
 
 #: ctk/ctkmain.c:914
-msgid "GTK+ Options"
-msgstr "ตัวเลือกของ GTK+"
+msgid "CTK+ Options"
+msgstr "ตัวเลือกของ CTK+"
 
 #: ctk/ctkmain.c:914
-msgid "Show GTK+ Options"
-msgstr "แสดงตัวเลือกของ GTK+"
+msgid "Show CTK+ Options"
+msgstr "แสดงตัวเลือกของ CTK+"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -3679,10 +3679,10 @@ msgstr "ข้อมูลที่ serialize มา มีรูปแบบไ
 
 #: ctk/ctktextbufferserialize.c:1864
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 "ข้อมูลที่ serialize มา มีรูปแบบไม่ถูกต้อง เนื้อหาส่วนแรกไม่ได้เป็น "
-"GTKTEXTBUFFERCONTENTS-0001"
+"CTKTEXTBUFFERCONTENTS-0001"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -3761,19 +3761,19 @@ msgstr "อยู่บนสุด"
 
 #: ctk/ctkwindow.c:12467
 #, c-format
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "คุณต้องการใช้เครื่องมือตรวจวิเคราะห์ของ GTK+ หรือไม่?"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "คุณต้องการใช้เครื่องมือตรวจวิเคราะห์ของ CTK+ หรือไม่?"
 
 #: ctk/ctkwindow.c:12469
 #, c-format
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"เครื่องมือตรวจวิเคราะห์ของ GTK+ "
+"เครื่องมือตรวจวิเคราะห์ของ CTK+ "
 "เป็นเครื่องมือดีบั๊กแบบโต้ตอบซึ่งช่วยให้คุณสามารถสำรวจและเปลี่ยนแปลงโครงสร้างภายในของโปรแกรม "
-"GTK+ ใดๆ ได้ การใช้เครื่องมือนี้อาจทำให้โปรแกรมทำงานผิดพลาดหรือพังได้"
+"CTK+ ใดๆ ได้ การใช้เครื่องมือนี้อาจทำให้โปรแกรมทำงานผิดพลาดหรือพังได้"
 
 #: ctk/ctkwindow.c:12474
 msgid "Don't show this message again"
@@ -3802,8 +3802,8 @@ msgid "Parameter Type"
 msgstr "ชนิดของพารามิเตอร์"
 
 #: ctk/inspector/css-editor.c:118
-msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "คุณสามารถพิมพ์กฎ CSS ใดๆ ที่ GTK+ รองรับได้ที่นี่"
+msgid "You can type here any CSS rule recognized by CTK+."
+msgstr "คุณสามารถพิมพ์กฎ CSS ใดๆ ที่ CTK+ รองรับได้ที่นี่"
 
 #: ctk/inspector/css-editor.c:119
 msgid ""
@@ -3860,8 +3860,8 @@ msgid "None"
 msgstr "ไม่มี"
 
 #: ctk/inspector/general.ui:34
-msgid "GTK+ Version"
-msgstr "รุ่น GTK+"
+msgid "CTK+ Version"
+msgstr "รุ่น CTK+"
 
 #: ctk/inspector/general.ui:68
 msgid "GDK Backend"
@@ -4251,8 +4251,8 @@ msgid "GL rendering is disabled"
 msgstr "การวาดด้วย GL ถูกปิดไว้"
 
 #: ctk/inspector/visual.ui:61
-msgid "GTK+ Theme"
-msgstr "ชุดตกแต่งสำหรับ GTK+"
+msgid "CTK+ Theme"
+msgstr "ชุดตกแต่งสำหรับ CTK+"
 
 #: ctk/inspector/visual.ui:94
 msgid "Dark Variant"
@@ -7126,9 +7126,9 @@ msgstr "พิมพ์ออกยังเครื่องพิมพ์ท
 
 #~ msgid ""
 #~ "Image-loading module %s does not export the proper interface; perhaps "
-#~ "it's from a different GTK version?"
+#~ "it's from a different CTK version?"
 #~ msgstr ""
-#~ "มอดูล %s ซึ่งใช้สำหรับอ่านรูปภาพ ไม่ได้ส่งออกอินเทอร์เฟซที่ต้องการ เป็นไปได้ว่ามาจาก GTK+ "
+#~ "มอดูล %s ซึ่งใช้สำหรับอ่านรูปภาพ ไม่ได้ส่งออกอินเทอร์เฟซที่ต้องการ เป็นไปได้ว่ามาจาก CTK+ "
 #~ "ที่ต่างรุ่นกัน"
 
 #~ msgid "Image type '%s' is not supported"

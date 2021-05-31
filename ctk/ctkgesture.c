@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 2012, One Laptop Per Child.
  * Copyright (C) 2014, Red Hat, Inc.
  *
@@ -54,7 +54,7 @@
  * target widget, and gestures that are attached to containers above the widget
  * get a chance to interact with the event before it reaches the target.
  *
- * After the capture phase, GTK+ emits the traditional #CtkWidget::button-press-event,
+ * After the capture phase, CTK+ emits the traditional #CtkWidget::button-press-event,
  * #CtkWidget::button-release-event, #CtkWidget::touch-event, etc signals. Gestures
  * with the %CTK_PHASE_TARGET phase are fed events from the default #CtkWidget::event
  * handlers.
@@ -1216,7 +1216,7 @@ ctk_gesture_set_state (CtkGesture            *gesture,
  * by @gesture.
  *
  * Returns: (transfer container) (element-type GdkEventSequence): A list
- *          of #GdkEventSequences, the list elements are owned by GTK+
+ *          of #GdkEventSequences, the list elements are owned by CTK+
  *          and must not be freed or modified, the list itself must be deleted
  *          through g_list_free()
  *

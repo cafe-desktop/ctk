@@ -72,7 +72,7 @@ msgstr "DISPLAY"
 #. Description of --gdk-debug=FLAGS in --help output
 #: gdk/gdk.c:240
 msgid "GDK debugging flags to set"
-msgstr "Fanioane de depanare GTK+ de setat"
+msgstr "Fanioane de depanare CTK+ de setat"
 
 #. Placeholder in --gdk-debug=FLAGS in --help output
 #. Placeholder in --gdk-no-debug=FLAGS in --help output
@@ -85,7 +85,7 @@ msgstr "FANIOANE"
 #. Description of --gdk-no-debug=FLAGS in --help output
 #: gdk/gdk.c:243
 msgid "GDK debugging flags to unset"
-msgstr "Fanioane de depanare GTK+ de desetat"
+msgstr "Fanioane de depanare CTK+ de desetat"
 
 #: gdk/gdkwindow.c:2851
 msgid "GL support disabled via GDK_DEBUG"
@@ -2941,8 +2941,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:464
-msgid "Load additional GTK+ modules"
-msgstr "Încarcă alte module GTK+"
+msgid "Load additional CTK+ modules"
+msgstr "Încarcă alte module CTK+"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:465
@@ -2956,13 +2956,13 @@ msgstr "Fă ca orice avertisment să fie fatal"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:470
-msgid "GTK+ debugging flags to set"
-msgstr "Fanioane de depanare GTK+ de setat"
+msgid "CTK+ debugging flags to set"
+msgstr "Fanioane de depanare CTK+ de setat"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:473
-msgid "GTK+ debugging flags to unset"
-msgstr "Fanioane de depanare GTK+ de desetat"
+msgid "CTK+ debugging flags to unset"
+msgstr "Fanioane de depanare CTK+ de desetat"
 
 #: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
 #, c-format
@@ -2970,12 +2970,12 @@ msgid "Cannot open display: %s"
 msgstr "Nu se poate deschide afișajul: %s"
 
 #: ctk/ctkmain.c:922
-msgid "GTK+ Options"
-msgstr "Opțiuni GTK+"
+msgid "CTK+ Options"
+msgstr "Opțiuni CTK+"
 
 #: ctk/ctkmain.c:922
-msgid "Show GTK+ Options"
-msgstr "Arată opțiunile GTK+"
+msgid "Show CTK+ Options"
+msgstr "Arată opțiunile CTK+"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -3998,10 +3998,10 @@ msgstr "Datele serializate au fost deformate"
 
 #: ctk/ctktextbufferserialize.c:1873
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 "Datele serializate sunt deformate. Prima secțiune nu e "
-"GTKTEXTBUFFERCONTENTS-0001"
+"CTKTEXTBUFFERCONTENTS-0001"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -4080,18 +4080,18 @@ msgstr "Întotdeauna deasupra"
 
 #: ctk/ctkwindow.c:12777
 #, c-format
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "Doriți să utilizați Inspector GTK+?"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "Doriți să utilizați Inspector CTK+?"
 
 #: ctk/ctkwindow.c:12779
 #, c-format
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"Inspectorul GTK+ este un depanator interactiv care vă permite să explorați "
-"și să modificați componentele interne ale oricărei aplicație GTK+. Folosindu-"
+"Inspectorul CTK+ este un depanator interactiv care vă permite să explorați "
+"și să modificați componentele interne ale oricărei aplicație CTK+. Folosindu-"
 "l poate cauza crăparea aplicației."
 
 #: ctk/ctkwindow.c:12784
@@ -4121,8 +4121,8 @@ msgid "Parameter Type"
 msgstr "Tip de parametru"
 
 #: ctk/inspector/css-editor.c:112
-msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "Puteți tasta aici orice regulă CSS recunoscută de GTK+."
+msgid "You can type here any CSS rule recognized by CTK+."
+msgstr "Puteți tasta aici orice regulă CSS recunoscută de CTK+."
 
 #: ctk/inspector/css-editor.c:113
 msgid ""
@@ -4182,8 +4182,8 @@ msgid "None"
 msgstr "Niciunul"
 
 #: ctk/inspector/general.ui:34
-msgid "GTK+ Version"
-msgstr "Versiune GTK+"
+msgid "CTK+ Version"
+msgstr "Versiune CTK+"
 
 #: ctk/inspector/general.ui:68
 msgid "GDK Backend"
@@ -4571,8 +4571,8 @@ msgid "GL rendering is disabled"
 msgstr "Randarea GL este dezactivată"
 
 #: ctk/inspector/visual.ui:61
-msgid "GTK+ Theme"
-msgstr "Temă GTK+"
+msgid "CTK+ Theme"
+msgstr "Temă CTK+"
 
 #: ctk/inspector/visual.ui:94
 msgid "Dark Variant"

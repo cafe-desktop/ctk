@@ -1,5 +1,5 @@
 /* -*- Mode: C; c-file-style: "gnu"; tab-width: 8 -*- */
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkfilechoosernative.c: Native File selector dialog
  * Copyright (C) 2015, Red Hat, Inc.
  *
@@ -182,7 +182,7 @@
  * When the org.freedesktop.portal.FileChooser portal is available on the
  * session bus, it is used to bring up an out-of-process file chooser. Depending
  * on the kind of session the application is running in, this may or may not
- * be a GTK+ file chooser. In this situation, the following things are not
+ * be a CTK+ file chooser. In this situation, the following things are not
  * supported and will be silently ignored:
  *
  * * Extra widgets added with ctk_file_chooser_set_extra_widget().
@@ -238,7 +238,7 @@ G_DEFINE_TYPE_WITH_CODE (CtkFileChooserNative, ctk_file_chooser_native, CTK_TYPE
  * Retrieves the custom label text for the accept button.
  *
  * Returns: (nullable): The custom label, or %NULL for the default. This string
- * is owned by GTK+ and should not be modified or freed
+ * is owned by CTK+ and should not be modified or freed
  *
  * Since: 3.20
  **/
@@ -284,7 +284,7 @@ ctk_file_chooser_native_set_accept_label (CtkFileChooserNative *self,
  * Retrieves the custom label text for the cancel button.
  *
  * Returns: (nullable): The custom label, or %NULL for the default. This string
- * is owned by GTK+ and should not be modified or freed
+ * is owned by CTK+ and should not be modified or freed
  *
  * Since: 3.20
  **/

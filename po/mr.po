@@ -2544,8 +2544,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ../ctk/ctkmain.c:453
-msgid "Load additional GTK+ modules"
-msgstr "अतिरिक्त GTK+ विभाग भारित करा"
+msgid "Load additional CTK+ modules"
+msgstr "अतिरिक्त CTK+ विभाग भारित करा"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ../ctk/ctkmain.c:454
@@ -2559,13 +2559,13 @@ msgstr "सर्व सुचनांस गंभीर करा"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:459
-msgid "GTK+ debugging flags to set"
-msgstr "निर्धारित करायचा GTK+ त्रुटीनिर्वारण ध्वज"
+msgid "CTK+ debugging flags to set"
+msgstr "निर्धारित करायचा CTK+ त्रुटीनिर्वारण ध्वज"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:462
-msgid "GTK+ debugging flags to unset"
-msgstr "अनिर्धारित करायचा GTK+ त्रुटीनिर्वारण ध्वज"
+msgid "CTK+ debugging flags to unset"
+msgstr "अनिर्धारित करायचा CTK+ त्रुटीनिर्वारण ध्वज"
 
 #: ../ctk/ctkmain.c:764
 #, c-format
@@ -2573,12 +2573,12 @@ msgid "Cannot open display: %s"
 msgstr "दृश्य उघडू शकत नाही: %s"
 
 #: ../ctk/ctkmain.c:830
-msgid "GTK+ Options"
-msgstr "GTK+ पर्याय"
+msgid "CTK+ Options"
+msgstr "CTK+ पर्याय"
 
 #: ../ctk/ctkmain.c:830
-msgid "Show GTK+ Options"
-msgstr "GTK+ पर्याय दाखवा"
+msgid "Show CTK+ Options"
+msgstr "CTK+ पर्याय दाखवा"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -3432,9 +3432,9 @@ msgstr "श्रृंखला माहिती सदोषीत आहे
 
 #: ../ctk/ctktextbufferserialize.c:1882
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
-"श्रृंखला माहिती सदोषीत आहे. पहिले विभाग GTKTEXTBUFFERCONTENTS-0001 नाही"
+"श्रृंखला माहिती सदोषीत आहे. पहिले विभाग CTKTEXTBUFFERCONTENTS-0001 नाही"
 
 #: ../ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -3500,16 +3500,16 @@ msgid "%d %%"
 msgstr "%d %%"
 
 #: ../ctk/ctkwindow.c:11632
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "तुम्हाला GTK+ इंस्पेक्टर वापरायचे?"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "तुम्हाला CTK+ इंस्पेक्टर वापरायचे?"
 
 #: ../ctk/ctkwindow.c:11634
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"GTK+ इंस्पेक्टर परस्पर डिबगर आहे जे तुम्हाला कोणत्याही GTK+ ॲप्लिकेशन "
+"CTK+ इंस्पेक्टर परस्पर डिबगर आहे जे तुम्हाला कोणत्याही CTK+ ॲप्लिकेशन "
 "विश्लेषीत आणि संपादित करण्यास मदत करते. वापरमुळे ॲप्लिकेशन्स खंडीत किंवा "
 "क्रॅश होऊ शकतात."
 
@@ -3574,8 +3574,8 @@ msgid "Restore defaults for this widget"
 msgstr "या विजेटकरिता पूर्वनिर्धारितला पूर्वस्थितीत आणा"
 
 #: ../ctk/inspector/css-editor.c:86 ../ctk/inspector/css-editor.c:92
-msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "तुम्ही येथे GTK+ तर्फे ओळखण्याजोगी कोणतेही CSS नियम टाइप करू शकता."
+msgid "You can type here any CSS rule recognized by CTK+."
+msgstr "तुम्ही येथे CTK+ तर्फे ओळखण्याजोगी कोणतेही CSS नियम टाइप करू शकता."
 
 #: ../ctk/inspector/css-editor.c:87 ../ctk/inspector/css-editor.c:93
 msgid ""
@@ -3618,9 +3618,9 @@ msgstr "डाटा दाखवा"
 
 #. vim: set et sw=2 ts=2:
 #: ../ctk/inspector/general.ui.h:1
-#| msgid "GTK+ Options"
-msgid "GTK+ Version"
-msgstr "GTK+ आवृत्ती"
+#| msgid "CTK+ Options"
+msgid "CTK+ Version"
+msgstr "CTK+ आवृत्ती"
 
 #: ../ctk/inspector/general.ui.h:2
 #| msgid "Go _Back"
@@ -3862,8 +3862,8 @@ msgstr "CTK_TEST_TOUCHSCREEN द्वारे सेटिंग हार्�
 
 #. vim: set et sw=2 ts=2:
 #: ../ctk/inspector/visual.ui.h:1
-msgid "GTK+ Theme"
-msgstr "GTK+ रंग रूप"
+msgid "CTK+ Theme"
+msgstr "CTK+ रंग रूप"
 
 #: ../ctk/inspector/visual.ui.h:2
 #| msgctxt "Color name"
@@ -3929,8 +3929,8 @@ msgstr "पत्ता"
 
 #: ../ctk/inspector/window.c:143
 #, c-format
-msgid "GTK+ Inspector — %s"
-msgstr "GTK+ इंस्पेक्टर — %s"
+msgid "CTK+ Inspector — %s"
+msgstr "CTK+ इंस्पेक्टर — %s"
 
 #. vim: set et sw=2 ts=2:
 #: ../ctk/inspector/window.ui.h:1

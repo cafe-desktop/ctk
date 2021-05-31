@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -43,10 +43,10 @@
    to the TARGETS request, though I don't really think so ... */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 /**
@@ -434,7 +434,7 @@ ctk_target_list_add_rich_text_targets (CtkTargetList  *list,
  * ctk_target_list_add_image_targets:
  * @list: a #CtkTargetList
  * @info: an ID that will be passed back to the application
- * @writable: whether to add only targets for which GTK+ knows
+ * @writable: whether to add only targets for which CTK+ knows
  *   how to convert a pixbuf into the format
  * 
  * Appends the image targets supported by #CtkSelectionData to
@@ -2139,7 +2139,7 @@ ctk_selection_data_targets_include_rich_text (const CtkSelectionData *selection_
  * ctk_targets_include_image:
  * @targets: (array length=n_targets): an array of #GdkAtoms
  * @n_targets: the length of @targets
- * @writable: whether to accept only targets for which GTK+ knows
+ * @writable: whether to accept only targets for which CTK+ knows
  *   how to convert a pixbuf into the format
  * 
  * Determines if any of the targets in @targets can be used to
@@ -2184,7 +2184,7 @@ ctk_targets_include_image (GdkAtom *targets,
 /**
  * ctk_selection_data_targets_include_image:
  * @selection_data: a #CtkSelectionData object
- * @writable: whether to accept only targets for which GTK+ knows
+ * @writable: whether to accept only targets for which CTK+ knows
  *   how to convert a pixbuf into the format
  * 
  * Given a #CtkSelectionData object holding a list of targets,

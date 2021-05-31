@@ -5312,11 +5312,11 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "רשימה פֿון בילדל גרײסן (ctk-menu=16,16;ctk-button=20,20...)"
 
 #: ctk/ctksettings.c:380
-msgid "GTK Modules"
+msgid "CTK Modules"
 msgstr ""
 
 #: ctk/ctksettings.c:381
-msgid "List of currently active GTK modules"
+msgid "List of currently active CTK modules"
 msgstr ""
 
 #: ctk/ctksettings.c:390
@@ -8039,8 +8039,8 @@ msgstr "װי צו צײכענען דעם אַרײַנשרײַב־מכשיר װײ�
 #~ msgid "Show Preview"
 #~ msgstr "װײַז טעקסט"
 
-#~ msgid "Whether this text is hidden. Not implemented in GTK 2.0"
-#~ msgstr "אױב דער טעקסט איז באַהאַלטן.  ניט רעאַליזירט אין GTK 2.0"
+#~ msgid "Whether this text is hidden. Not implemented in CTK 2.0"
+#~ msgstr "אױב דער טעקסט איז באַהאַלטן.  ניט רעאַליזירט אין CTK 2.0"
 
 #, fuzzy
 #~ msgid "Width In Chararacters"

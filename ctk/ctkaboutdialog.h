@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
 
    Copyright (C) 2001 CodeFactory AB
    Copyright (C) 2001 Anders Carlsson <andersca@codefactory.se>

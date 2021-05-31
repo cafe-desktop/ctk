@@ -2780,7 +2780,7 @@ msgstr ""
 # dopunski dodaci? „dobar fazon“... crni Danilo
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:464
-msgid "Load additional GTK+ modules"
+msgid "Load additional CTK+ modules"
 msgstr "Učitava dopunske Ctk+ dodatke"
 
 #. Placeholder in --ctk-module=MODULES in --help output
@@ -2795,12 +2795,12 @@ msgstr "Čini sva upozorenja kobnim"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:470
-msgid "GTK+ debugging flags to set"
+msgid "CTK+ debugging flags to set"
 msgstr "Ctk+ opcije za uklanjanje grešaka za uključivanje"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:473
-msgid "GTK+ debugging flags to unset"
+msgid "CTK+ debugging flags to unset"
 msgstr "Ctk+ opcije za uklanjanje grešaka za isključivanje"
 
 #: ctk/ctkmain.c:808 ctk/ctkmain.c:1002
@@ -2809,11 +2809,11 @@ msgid "Cannot open display: %s"
 msgstr "Ne mogu da pristupim ekranu: %s"
 
 #: ctk/ctkmain.c:920
-msgid "GTK+ Options"
+msgid "CTK+ Options"
 msgstr "Ctk+ opcije"
 
 #: ctk/ctkmain.c:920
-msgid "Show GTK+ Options"
+msgid "Show CTK+ Options"
 msgstr "Prikazuje Ctk+ opcije"
 
 #. Translate to default:RTL if you want your widgets
@@ -3790,10 +3790,10 @@ msgstr "Podaci nisu lepo zapakovani u nisku"
 
 #: ctk/ctktextbufferserialize.c:1864
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 "Podaci nisu lepo zapakovani u nisku. Prva oblast nije "
-"„GTKTEXTBUFFERCONTENTS-0001“"
+"„CTKTEXTBUFFERCONTENTS-0001“"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -3872,14 +3872,14 @@ msgstr "Uvek u prvom planu"
 
 #: ctk/ctkwindow.c:12686
 #, c-format
-msgid "Do you want to use GTK+ Inspector?"
+msgid "Do you want to use CTK+ Inspector?"
 msgstr "Da li želite da koristite Ctk+ Nadzornika?"
 
 #: ctk/ctkwindow.c:12688
 #, c-format
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
 "Ctk+ Nadzornik je međudejstveni pročišćavač koji vam omogućava da "
@@ -3913,7 +3913,7 @@ msgid "Parameter Type"
 msgstr "Vrsta parametara"
 
 #: ctk/inspector/css-editor.c:112
-msgid "You can type here any CSS rule recognized by GTK+."
+msgid "You can type here any CSS rule recognized by CTK+."
 msgstr "Ovde možete upisati CSS pravilo koje Ctk+ prepoznaje."
 
 #: ctk/inspector/css-editor.c:113
@@ -3972,7 +3972,7 @@ msgid "None"
 msgstr "Ništa"
 
 #: ctk/inspector/general.ui:34
-msgid "GTK+ Version"
+msgid "CTK+ Version"
 msgstr "Ctk+ izdanje"
 
 #: ctk/inspector/general.ui:68
@@ -4371,7 +4371,7 @@ msgid "GL rendering is disabled"
 msgstr "Crtanje pomoću GL-a je onemogućeno"
 
 #: ctk/inspector/visual.ui:61
-msgid "GTK+ Theme"
+msgid "CTK+ Theme"
 msgstr "Ctk+ tema"
 
 #: ctk/inspector/visual.ui:94
@@ -10850,10 +10850,10 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 #~ msgstr "Spisak veličina ikonice (ctk-menu=16,16;ctk-button=20,20..."
 
-#~ msgid "GTK Modules"
+#~ msgid "CTK Modules"
 #~ msgstr "Ctk dodaci"
 
-#~ msgid "List of currently active GTK modules"
+#~ msgid "List of currently active CTK modules"
 #~ msgstr "Spisak trenutno pokrenutih Ctk dodataka"
 
 #~ msgid "Xft Antialias"
@@ -11245,7 +11245,7 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgstr "Prozorčići koriste traku zaglavlja"
 
 #~ msgid ""
-#~ "Whether builtin GTK+ dialogs should use a header bar instead of an action "
+#~ "Whether builtin CTK+ dialogs should use a header bar instead of an action "
 #~ "area."
 #~ msgstr ""
 #~ "Da li ugrađeni Ctk+ prozorčići treba da koriste traku zaglavlja umesto "
@@ -11261,7 +11261,7 @@ msgstr "Štampaj na probnom štampaču"
 #~ "Da li srednji klik na miša treba da ubaci „PRVI“ sadržaj ostave na položaj "
 #~ "kurzora."
 
-#~ msgid "Whether GTK+ remembers recent files"
+#~ msgid "Whether CTK+ remembers recent files"
 #~ msgstr "Da li Ctk+ pamti skorašnje datoteke"
 
 #~ msgid "Long press time"

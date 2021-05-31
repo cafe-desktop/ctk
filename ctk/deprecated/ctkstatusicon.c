@@ -510,7 +510,7 @@ ctk_status_icon_class_init (CtkStatusIconClass *class)
    * changes, e.g. because the notification area got resized.
    *
    * Returns: %TRUE if the icon was updated for the new
-   * size. Otherwise, GTK+ will scale the icon as necessary.
+   * size. Otherwise, CTK+ will scale the icon as necessary.
    *
    * Since: 2.10
    */
@@ -2124,7 +2124,7 @@ ctk_status_icon_get_size (CtkStatusIcon *status_icon)
  *
  * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications; there is no direct replacement
- *   for this function, as GTK typically only has one #GdkScreen
+ *   for this function, as CTK typically only has one #GdkScreen
  *   and notifications are managed by the platform
  */
 void
@@ -2439,7 +2439,7 @@ ctk_status_icon_position_menu (CtkMenu  *menu,
  * See ctk_status_icon_position_menu() for a more convenient 
  * alternative for positioning menus.
  *
- * Note that some platforms do not allow GTK+ to provide 
+ * Note that some platforms do not allow CTK+ to provide 
  * this information, and even on platforms that do allow it,
  * the information is not reliable unless the status icon
  * is embedded in a notification area, see

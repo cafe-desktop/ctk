@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkprintoperation.c: Print Operation
  * Copyright (C) 2006, Red Hat, Inc.
  *
@@ -40,11 +40,11 @@
  * @See_also: #CtkPrintContext, #CtkPrintUnixDialog
  *
  * CtkPrintOperation is the high-level, portable printing API.
- * It looks a bit different than other GTK+ dialogs such as the
+ * It looks a bit different than other CTK+ dialogs such as the
  * #CtkFileChooser, since some platforms don’t expose enough
  * infrastructure to implement a good print dialog. On such
  * platforms, CtkPrintOperation uses the native print dialog.
- * On platforms which do not provide a native print dialog, GTK+
+ * On platforms which do not provide a native print dialog, CTK+
  * uses its own, see #CtkPrintUnixDialog.
  *
  * The typical way to use the high-level printing API is to create
@@ -1136,7 +1136,7 @@ ctk_print_operation_class_init (CtkPrintOperationClass *class)
    * A string used to identify the job (e.g. in monitoring 
    * applications like eggcups). 
    * 
-   * If you don't set a job name, GTK+ picks a default one 
+   * If you don't set a job name, CTK+ picks a default one 
    * by numbering successive print jobs.
    *
    * Since: 2.10
@@ -1365,7 +1365,7 @@ ctk_print_operation_class_init (CtkPrintOperationClass *class)
    * Used as the label of the tab containing custom widgets.
    * Note that this property may be ignored on some platforms.
    * 
-   * If this is %NULL, GTK+ uses a default label.
+   * If this is %NULL, CTK+ uses a default label.
    *
    * Since: 2.10
    */
@@ -1596,7 +1596,7 @@ ctk_print_operation_get_print_settings (CtkPrintOperation *op)
  * Sets the name of the print job. The name is used to identify 
  * the job (e.g. in monitoring applications like eggcups). 
  * 
- * If you don’t set a job name, GTK+ picks a default one by 
+ * If you don’t set a job name, CTK+ picks a default one by 
  * numbering successive print jobs.
  *
  * Since: 2.10

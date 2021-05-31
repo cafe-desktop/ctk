@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __CTK_IMAGE_H__
@@ -56,11 +56,11 @@ typedef struct _CtkImageClass         CtkImageClass;
  * @CTK_IMAGE_ICON_SET: the widget contains a #CtkIconSet
  * @CTK_IMAGE_ANIMATION: the widget contains a #GdkPixbufAnimation
  * @CTK_IMAGE_ICON_NAME: the widget contains a named icon.
- *  This image type was added in GTK+ 2.6
+ *  This image type was added in CTK+ 2.6
  * @CTK_IMAGE_GICON: the widget contains a #GIcon.
- *  This image type was added in GTK+ 2.14
+ *  This image type was added in CTK+ 2.14
  * @CTK_IMAGE_SURFACE: the widget contains a #cairo_surface_t.
- *  This image type was added in GTK+ 3.10
+ *  This image type was added in CTK+ 3.10
  *
  * Describes the image data representation used by a #CtkImage. If you
  * want to get the image from the widget, you can only get the

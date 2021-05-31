@@ -192,7 +192,7 @@ accept_character (CtkImContextMultipress *multipress_context, const gchar *chara
    * attributes in get_preedit_string(). */
   clear_compose_buffer (multipress_context);
 
-  /* Provide the character to GTK+ */
+  /* Provide the character to CTK+ */
   g_signal_emit_by_name (multipress_context, "commit", characters);
 }
 

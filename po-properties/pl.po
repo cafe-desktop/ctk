@@ -6970,12 +6970,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Lista rozmiarów ikon (ctk-menu=16,16;ctk-button=20,20…"
 
 #: ctk/ctksettings.c:578
-msgid "GTK Modules"
-msgstr "Moduły GTK"
+msgid "CTK Modules"
+msgstr "Moduły CTK"
 
 #: ctk/ctksettings.c:579
-msgid "List of currently active GTK modules"
-msgstr "Lista obecnie używanych modułów GTK"
+msgid "List of currently active CTK modules"
+msgstr "Lista obecnie używanych modułów CTK"
 
 #: ctk/ctksettings.c:587
 msgid "Xft Antialias"
@@ -7544,10 +7544,10 @@ msgstr "Okna dialogowe używają paska nagłówka"
 
 #: ctk/ctksettings.c:1708
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"Określa, czy wbudowane okna dialogowe biblioteki GTK powinny używać paska "
+"Określa, czy wbudowane okna dialogowe biblioteki CTK powinny używać paska "
 "nagłówka zamiast obszaru działania."
 
 #: ctk/ctksettings.c:1724
@@ -7567,8 +7567,8 @@ msgid "Recent Files Enabled"
 msgstr "Włączenie ostatnio używanych plików"
 
 #: ctk/ctksettings.c:1742
-msgid "Whether GTK+ remembers recent files"
-msgstr "Określa, czy biblioteka GTK pamięta ostatnio używane pliki"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Określa, czy biblioteka CTK pamięta ostatnio używane pliki"
 
 #: ctk/ctksettings.c:1757
 msgid "Long press time"

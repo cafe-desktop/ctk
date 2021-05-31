@@ -5799,13 +5799,13 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Die Liste der Symbolgrößen (ctk-menu=16,16;ctk-button=20,20 usw.)"
 
 #: ctk/ctksettings.c:380
-msgid "GTK Modules"
-msgstr "GTK-Module"
+msgid "CTK Modules"
+msgstr "CTK-Module"
 
 #: ctk/ctksettings.c:381
 #, fuzzy
-msgid "List of currently active GTK modules"
-msgstr "Liste der aktiven GTK-Module"
+msgid "List of currently active CTK modules"
+msgstr "Liste der aktiven CTK-Module"
 
 #: ctk/ctksettings.c:390
 #, fuzzy

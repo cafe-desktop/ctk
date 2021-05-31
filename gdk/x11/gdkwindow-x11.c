@@ -17,10 +17,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -3699,8 +3699,8 @@ gdk_x11_window_set_utf8_property  (GdkWindow *window,
  * Set a hint for the window manager, requesting that the titlebar
  * should be hidden when the window is maximized.
  *
- * Note that this property is automatically updated by GTK+, so this
- * function should only be used by applications which do not use GTK+
+ * Note that this property is automatically updated by CTK+, so this
+ * function should only be used by applications which do not use CTK+
  * to create toplevel windows.
  *
  * Since: 3.4
@@ -3788,14 +3788,14 @@ gdk_x11_window_set_frame_extents (GdkWindow *window,
  * @window: (type GdkX11Window): a #GdkWindow
  * @variant: the theme variant to export
  *
- * GTK+ applications can request a dark theme variant. In order to
- * make other applications - namely window managers using GTK+ for
- * themeing - aware of this choice, GTK+ uses this function to
+ * CTK+ applications can request a dark theme variant. In order to
+ * make other applications - namely window managers using CTK+ for
+ * themeing - aware of this choice, CTK+ uses this function to
  * export the requested theme variant as _CTK_THEME_VARIANT property
  * on toplevel windows.
  *
- * Note that this property is automatically updated by GTK+, so this
- * function should only be used by applications which do not use GTK+
+ * Note that this property is automatically updated by CTK+, so this
+ * function should only be used by applications which do not use CTK+
  * to create toplevel windows.
  *
  * Since: 3.2

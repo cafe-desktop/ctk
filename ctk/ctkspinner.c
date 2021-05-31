@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  *
  * Copyright (C) 2007 John Stowers, Neil Jagdish Patel.
  * Copyright (C) 2009 Bastien Nocera, David Zeuthen
@@ -21,10 +21,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 2007.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 2007.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"

@@ -66,7 +66,7 @@
  * For each property of #CtkTextTag, there is a “set” property, e.g.
  * “font-set” corresponds to “font”. These “set” properties reflect
  * whether a property has been set or not.
- * They are maintained by GTK+ and you should not set them independently.
+ * They are maintained by CTK+ and you should not set them independently.
  */
 
 #include "config.h"

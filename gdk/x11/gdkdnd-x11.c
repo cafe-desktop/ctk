@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -2216,13 +2216,13 @@ gdk_x11_drag_context_drag_motion (GdkDragContext *context,
 
   if (protocol == GDK_DRAG_PROTO_XDND && context_x11->version == 0)
     {
-      /* This ugly hack is necessary since GTK+ doesn't know about
+      /* This ugly hack is necessary since CTK+ doesn't know about
        * the XDND protocol version, and in particular doesn't know
        * that gdk_drag_find_window_for_screen() has the side-effect
        * of setting context_x11->version, and therefore sometimes call
        * gdk_drag_motion() without a prior call to
        * gdk_drag_find_window_for_screen(). This happens, e.g.
-       * when GTK+ is proxying DND events to embedded windows.
+       * when CTK+ is proxying DND events to embedded windows.
        */
       if (dest_window)
         {
@@ -2343,7 +2343,7 @@ gdk_x11_drag_context_drag_motion (GdkDragContext *context,
             case GDK_DRAG_PROTO_ROOTWIN:
               {
                 GdkEvent *temp_event;
-                /* GTK+ traditionally has used application/x-rootwin-drop,
+                /* CTK+ traditionally has used application/x-rootwin-drop,
                  * but the XDND spec specifies x-rootwindow-drop.
                  */
                 GdkAtom target1 = gdk_atom_intern_static_string ("application/x-rootwindow-drop");

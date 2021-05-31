@@ -5,7 +5,7 @@ includedir=@includedir@
 targets=@GDK_BACKENDS@
 
 Name: GDK
-Description: GTK+ Drawing Kit
+Description: CTK+ Drawing Kit
 Version: @VERSION@
 Requires: @GDK_PACKAGES@
 Requires.private: @GDK_PRIVATE_PACKAGES@

@@ -1,4 +1,4 @@
-# German GTK+ translation (property nicks).
+# German CTK+ translation (property nicks).
 # Copyright (C) 1998-2003 Free Software Foundation, Inc.
 #
 # # IM = Input method => Eingabemethode
@@ -22,7 +22,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: GTK+ master\n"
+"Project-Id-Version: CTK+ master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-26 19:37+0000\n"
 "PO-Revision-Date: 2020-08-05 05:15+0200\n"
@@ -3701,7 +3701,7 @@ msgstr ""
 msgid "Populate all"
 msgstr "Alle belegen"
 
-# GTK+ Ereignisse
+# CTK+ Ereignisse
 #: ctk/ctkentry.c:1509 ctk/ctktextview.c:1047
 msgid "Whether to emit ::populate-popup for touch popups"
 msgstr ""
@@ -5821,7 +5821,7 @@ msgstr ""
 "Legt fest, ob die Seitenleiste ein Objekt zum Anzeigen mit Stern markierter "
 "Orte enthält"
 
-# GTK+ Ereignisse
+# CTK+ Ereignisse
 #: ctk/ctkplacessidebar.c:4871
 msgid "Whether to emit ::populate-popup for popups that are not menus"
 msgstr ""
@@ -7052,12 +7052,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Die Liste der Symbolgrößen (ctk-menu=16,16;ctk-button=20,20 usw.)"
 
 #: ctk/ctksettings.c:578
-msgid "GTK Modules"
-msgstr "GTK-Module"
+msgid "CTK Modules"
+msgstr "CTK-Module"
 
 #: ctk/ctksettings.c:579
-msgid "List of currently active GTK modules"
-msgstr "Liste der aktiven GTK-Module"
+msgid "List of currently active CTK modules"
+msgstr "Liste der aktiven CTK-Module"
 
 #: ctk/ctksettings.c:587
 msgid "Xft Antialias"
@@ -7642,10 +7642,10 @@ msgstr "Dialogfenster verwenden Kopfleiste"
 
 #: ctk/ctksettings.c:1708
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"Legt fest, ob mitgelieferte GTK+-Dialoge eine Kopfleiste anstelle eines "
+"Legt fest, ob mitgelieferte CTK+-Dialoge eine Kopfleiste anstelle eines "
 "Aktionsbereichs verwenden."
 
 #: ctk/ctksettings.c:1724
@@ -7665,8 +7665,8 @@ msgid "Recent Files Enabled"
 msgstr "Zuletzt verwendete Dateien aktiviert"
 
 #: ctk/ctksettings.c:1742
-msgid "Whether GTK+ remembers recent files"
-msgstr "Legt fest, ob GTK+ zuletzt verwendete Dateien merken soll"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Legt fest, ob CTK+ zuletzt verwendete Dateien merken soll"
 
 #: ctk/ctksettings.c:1757
 msgid "Long press time"

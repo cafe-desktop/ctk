@@ -6819,12 +6819,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Ikono-tamainen zerrenda (ctk-menu=16,16;ctk-button=20,20…"
 
 #: ctk/ctksettings.c:578
-msgid "GTK Modules"
-msgstr "GTK moduluak"
+msgid "CTK Modules"
+msgstr "CTK moduluak"
 
 #: ctk/ctksettings.c:579
-msgid "List of currently active GTK modules"
-msgstr "Unean aktibatuta dauden GTK moduluen zerrenda"
+msgid "List of currently active CTK modules"
+msgstr "Unean aktibatuta dauden CTK moduluen zerrenda"
 
 #: ctk/ctksettings.c:587
 msgid "Xft Antialias"
@@ -7357,9 +7357,9 @@ msgstr "Elkarrizketa-koadroek goiburu-barra darabilte"
 
 #: ctk/ctksettings.c:1708
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
-msgstr "GTK+ekin eraikitako elkarrizketa-koadroek goiburu-barra erabiliko duten ekintza-area baten ordez, edo ez."
+msgstr "CTK+ekin eraikitako elkarrizketa-koadroek goiburu-barra erabiliko duten ekintza-area baten ordez, edo ez."
 
 #: ctk/ctksettings.c:1724
 msgid "Enable primary paste"
@@ -7376,8 +7376,8 @@ msgid "Recent Files Enabled"
 msgstr "Gaitutako azken fitxategiak"
 
 #: ctk/ctksettings.c:1742
-msgid "Whether GTK+ remembers recent files"
-msgstr "GTK+ek azken fitxategiak gogoratzen dituen ala ez"
+msgid "Whether CTK+ remembers recent files"
+msgstr "CTK+ek azken fitxategiak gogoratzen dituen ala ez"
 
 #: ctk/ctksettings.c:1757
 msgid "Long press time"

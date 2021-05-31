@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 
@@ -326,8 +326,8 @@ create_alpha_window (CtkWidget *widget)
  *
  * In order for this to work properly, the widget must have an RGBA
  * colourmap.  The widget should also be set as app-paintable since it
- * doesn't make sense for GTK to draw a background if we are drawing it
- * (and because GTK might actually replace our transparency with its
+ * doesn't make sense for CTK to draw a background if we are drawing it
+ * (and because CTK might actually replace our transparency with its
  * default background colour).
  */
 static gboolean
@@ -349,7 +349,7 @@ transparent_draw (CtkWidget *widget,
  * since we want it to draw its own (red) background.  Because of this,
  * however, we must ensure that we use g_signal_register_after so that
  * this handler is called after the red has been drawn.  If it was
- * called before then GTK would just blindly paint over our work.
+ * called before then CTK would just blindly paint over our work.
  */
 static gboolean
 window_draw (CtkWidget *widget,
@@ -9988,7 +9988,7 @@ main (int argc, char *argv[])
 
   test_init ();
 
-  g_set_application_name ("GTK+ Test Program");
+  g_set_application_name ("CTK+ Test Program");
 
   ctk_init (&argc, &argv);
 

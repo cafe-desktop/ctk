@@ -1,4 +1,4 @@
-How to do a GTK+ release?
+How to do a CTK+ release?
 =========================
 
 Make sure you have suitable versions of autoconf and libtool.
@@ -77,7 +77,7 @@ Make sure that gtk-doc is the latest released version.
 
 11) Tag the release. The git command for doing that looks like
 
-    git tag -m "GTK+ 2.12.10" 2.12.10
+    git tag -m "CTK+ 2.12.10" 2.12.10
 
 12) Push the tagged commit upstream. The git command for doing that is
 

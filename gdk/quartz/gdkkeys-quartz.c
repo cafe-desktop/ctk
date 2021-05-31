@@ -318,7 +318,7 @@ update_keymap (void)
                         }
                     }
 
-                  /* Special-case shift-tab since GTK+ expects
+                  /* Special-case shift-tab since CTK+ expects
                    * GDK_KEY_ISO_Left_Tab for that.
                    */
                   if (found && p[j] == GDK_KEY_Tab && modifiers[j] == shiftKey)
@@ -407,7 +407,7 @@ update_keymap (void)
                         }
                     }
 
-                  /* Special-case shift-tab since GTK+ expects
+                  /* Special-case shift-tab since CTK+ expects
                    * GDK_KEY_ISO_Left_Tab for that.
                    */
                   if (found && p[j] == GDK_KEY_Tab && modifiers[j] == shiftKey)

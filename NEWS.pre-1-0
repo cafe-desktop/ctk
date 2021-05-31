@@ -1,23 +1,23 @@
 
-Overview of Changes in GTK+ 1.0.0:
+Overview of Changes in CTK+ 1.0.0:
 
 * A few bug fixes.
 
-Overview of Changes in GTK+ 0.99.10:
+Overview of Changes in CTK+ 0.99.10:
 
 * Lots of bug fixes
 * Documentation improvements
 * Better looking handlebox
 * A few convenience functions
 
-Overview of Changes in GTK+ 0.99.9:
+Overview of Changes in CTK+ 0.99.9:
 
 * Added examples directory, even more examples soon
 * Added optional word wrap to ctktext
 * Changes to ctkhandlebox
 * Lots of bug fixes
 
-Overview of Changes in GTK+ 0.99.8:
+Overview of Changes in CTK+ 0.99.8:
 
 * Compilation and configuration fixes
 * DND Fixes
@@ -26,13 +26,13 @@ Overview of Changes in GTK+ 0.99.8:
 * Few more FAQ additions
 * More prep for 1.0
 
-Overview of Changes in GTK+ 0.99.7:
+Overview of Changes in CTK+ 0.99.7:
 
 * This release is mainly because 0.99.6 did not compile completely
   due to a missing file.
 * Fixes to Ctk's quit handlers.
 
-Overview of Changes in GTK+ 0.99.6:
+Overview of Changes in CTK+ 0.99.6:
 
 * Intermediate release to become 1.0.
 * More signedness corrections for handler functions in ctkmain.h.
@@ -45,7 +45,7 @@ Overview of Changes in GTK+ 0.99.6:
 * Clean ups due to compiler warnings.
 * Various widget fixes.
 
-Overview of Fixes in GTK+ 0.99.5:
+Overview of Fixes in CTK+ 0.99.5:
 
 * Signal signedness and naming corrections
 * rc/style fixes
@@ -57,7 +57,7 @@ Overview of Fixes in GTK+ 0.99.5:
 * FAQ updates
 * Bug fixes
 
-Overview of Changes in GTK+ 0.99.4:
+Overview of Changes in CTK+ 0.99.4:
 
 * Reference counting revolution integrated.
   Refer to docs/refcounting.txt on this issue.
@@ -100,7 +100,7 @@ Overview of Changes in GTK+ 0.99.4:
 * Clean ups and many many bug fixes by a lot of people all over the place.
 * New, long and descriptive ChangeLog entries for bored readers ;)
 
-Overview of Changes in GTK+ 0.99.3:
+Overview of Changes in CTK+ 0.99.3:
 
 * Filesel enhancement / stability changes
 * New widget, ctkcombo 

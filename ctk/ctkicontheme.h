@@ -77,7 +77,7 @@ struct _CtkIconTheme
  * CtkIconThemeClass:
  * @parent_class: The parent class.
  * @changed: Signal emitted when the current icon theme is switched or
- *    GTK+ detects that a change has occurred in the contents of the
+ *    CTK+ detects that a change has occurred in the contents of the
  *    current icon theme.
  */
 struct _CtkIconThemeClass
