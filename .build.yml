@@ -95,6 +95,8 @@ requires:
     - curl
 
 build_scripts:
+  - git clone --branch master --depth=1 https://github.com/cafe-desktop/debian-packages
+  - cp -dpR ./crt/debian/* .
   - ./buildPackages.sh $CPU_COUNT
 
 releases:
