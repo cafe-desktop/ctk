@@ -1,6 +1,6 @@
 /* -*- Mode: C; c-file-style: "gnu"; tab-width: 8 -*- */
 /* GTK - The GIMP Toolkit
- * gtkfilechoosernative.c: Native File selector dialog
+ * ctkfilechoosernative.c: Native File selector dialog
  * Copyright (C) 2015, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -19,33 +19,33 @@
 
 #include "config.h"
 
-#include "gtkfilechoosernativeprivate.h"
-#include "gtknativedialogprivate.h"
+#include "ctkfilechoosernativeprivate.h"
+#include "ctknativedialogprivate.h"
 
-#include "gtkprivate.h"
-#include "gtkfilechooserdialog.h"
-#include "gtkfilechooserprivate.h"
-#include "gtkfilechooserwidget.h"
-#include "gtkfilechooserwidgetprivate.h"
-#include "gtkfilechooserutils.h"
-#include "gtkfilechooserembed.h"
-#include "gtkfilesystem.h"
-#include "gtksizerequest.h"
-#include "gtktypebuiltins.h"
-#include "gtkintl.h"
-#include "gtksettings.h"
-#include "gtktogglebutton.h"
-#include "gtkstylecontext.h"
-#include "gtkheaderbar.h"
-#include "gtklabel.h"
-#include "gtkfilechooserentry.h"
-#include "gtkfilefilterprivate.h"
+#include "ctkprivate.h"
+#include "ctkfilechooserdialog.h"
+#include "ctkfilechooserprivate.h"
+#include "ctkfilechooserwidget.h"
+#include "ctkfilechooserwidgetprivate.h"
+#include "ctkfilechooserutils.h"
+#include "ctkfilechooserembed.h"
+#include "ctkfilesystem.h"
+#include "ctksizerequest.h"
+#include "ctktypebuiltins.h"
+#include "ctkintl.h"
+#include "ctksettings.h"
+#include "ctktogglebutton.h"
+#include "ctkstylecontext.h"
+#include "ctkheaderbar.h"
+#include "ctklabel.h"
+#include "ctkfilechooserentry.h"
+#include "ctkfilefilterprivate.h"
 #ifdef GDK_WINDOWING_QUARTZ
 #include <gdk/quartz/gdkquartz.h>
 #endif
 
 /**
- * SECTION:gtkfilechoosernative
+ * SECTION:ctkfilechoosernative
  * @Short_description: A native file chooser dialog, suitable for “File/Open” or “File/Save” commands
  * @Title: GtkFileChooserNative
  * @See_also: #GtkFileChooser, #GtkNativeDialog, #GtkFileChooserDialog
@@ -64,7 +64,7 @@
  * This is required, as there may not be one in the case of a platform native dialog.
  * Showing, hiding and running the dialog is handled by the #GtkNativeDialog functions.
  *
- * ## Typical usage ## {#gtkfilechoosernative-typical-usage}
+ * ## Typical usage ## {#ctkfilechoosernative-typical-usage}
  *
  * In the simplest of cases, you can the following code to use
  * #GtkFileChooserDialog to select a file for opening:
@@ -132,14 +132,14 @@
  *
  * For more information on how to best set up a file dialog, see #GtkFileChooserDialog.
  *
- * ## Response Codes ## {#gtkfilechooserdialognative-responses}
+ * ## Response Codes ## {#ctkfilechooserdialognative-responses}
  *
  * #GtkFileChooserNative inherits from #GtkNativeDialog, which means it
  * will return #CTK_RESPONSE_ACCEPT if the user accepted, and
  * #CTK_RESPONSE_CANCEL if he pressed cancel. It can also return
  * #CTK_RESPONSE_DELETE_EVENT if the window was unexpectedly closed.
  *
- * ## Differences from #GtkFileChooserDialog ##  {#gtkfilechooserdialognative-differences}
+ * ## Differences from #GtkFileChooserDialog ##  {#ctkfilechooserdialognative-differences}
  *
  * There are a few things in the GtkFileChooser API that are not
  * possible to use with #GtkFileChooserNative, as such use would
@@ -162,7 +162,7 @@
  * No operations that change the the dialog work while the dialog is
  * visible. Set all the properties that are required before showing the dialog.
  *
- * ## Win32 details ## {#gtkfilechooserdialognative-win32}
+ * ## Win32 details ## {#ctkfilechooserdialognative-win32}
  *
  * On windows the IFileDialog implementation (added in Windows Vista) is
  * used. It supports many of the features that #GtkFileChooserDialog
@@ -177,7 +177,7 @@
  * If any of these features are used the regular #GtkFileChooserDialog
  * will be used in place of the native one.
  *
- * ## Portal details ## {#gtkfilechooserdialognative-portal}
+ * ## Portal details ## {#ctkfilechooserdialognative-portal}
  *
  * When the org.freedesktop.portal.FileChooser portal is available on the
  * session bus, it is used to bring up an out-of-process file chooser. Depending
@@ -191,7 +191,7 @@
  *
  * * Any #GtkFileFilter added with a custom filter.
  *
- * ## macOS details ## {#gtkfilechooserdialognative-macos}
+ * ## macOS details ## {#ctkfilechooserdialognative-macos}
  *
  * On macOS the NSSavePanel and NSOpenPanel classes are used to provide native
  * file chooser dialogs. Some features provided by #GtkFileChooserDialog are

@@ -23,7 +23,7 @@
  * grouping items.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static GtkTreeModel *
 get_model (void)

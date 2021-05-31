@@ -1,5 +1,5 @@
 /*
- * gtkimcontextime.c
+ * ctkimcontextime.c
  * Copyright (C) 2003 Takuro Ashie
  * Copyright (C) 2003-2004 Kazuki IWAMOTO
  *
@@ -28,7 +28,7 @@
 #endif
 
 #include "config.h"
-#include "gtkimcontextime.h"
+#include "ctkimcontextime.h"
 
 #include "imm-extra.h"
 
@@ -76,7 +76,7 @@ struct _GtkIMContextIMEPrivate
    *
    * See also:
    *   https://bugzilla.gnome.org/show_bug.cgi?id=787142
-   *   https://gitlab.gnome.org/GNOME/gtk/commit/c255ba68fc2c918dd84da48a472e7973d3c00b03
+   *   https://gitlab.gnome.org/GNOME/ctk/commit/c255ba68fc2c918dd84da48a472e7973d3c00b03
    */
   gboolean pretend_empty_preedit;
   GtkWin32IMEFocusBehavior focus_behavior;

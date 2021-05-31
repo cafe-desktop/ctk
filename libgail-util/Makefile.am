@@ -56,8 +56,8 @@ libgailutil_3_la_CPPFLAGS = \
 	-I$(top_srcdir)		\
 	-I$(top_srcdir)/gdk	\
 	-I$(top_builddir)/gdk	\
-	-I$(top_srcdir)/gtk	\
-	-I$(top_builddir)/gtk	\
+	-I$(top_srcdir)/ctk	\
+	-I$(top_builddir)/ctk	\
 	$(AM_CPPFLAGS) 		\
 	-DGDK_DISABLE_DEPRECATED\
 	-DCTK_DISABLE_DEPRECATED
@@ -68,7 +68,7 @@ libgailutil_3_la_CFLAGS = \
 	$(AM_CFLAGS)
 
 libgailutil_3_la_LIBADD = \
-	$(top_builddir)/gtk/libgtk-3.la	\
+	$(top_builddir)/ctk/libctk-3.la	\
 	$(top_builddir)/gdk/libgdk-3.la	\
 	$(CTK_DEP_LIBS)
 

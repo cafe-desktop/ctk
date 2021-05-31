@@ -22,9 +22,9 @@
 
 #include <glib-object.h>
 
-#include "gtk/gtkcssparserprivate.h"
-#include "gtk/gtkcssstylepropertyprivate.h"
-#include "gtk/gtkstylepropertyprivate.h"
+#include "ctk/ctkcssparserprivate.h"
+#include "ctk/ctkcssstylepropertyprivate.h"
+#include "ctk/ctkstylepropertyprivate.h"
 
 G_BEGIN_DECLS
 

@@ -4,7 +4,7 @@ MSVC_HEADERS_LISTS =	\
 	gdk3-win32.headers	\
 	gdk3-broadway.headers	\
 	gdk-3.headers		\
-	gtk-3.headers		\
+	ctk-3.headers		\
 	gailutil-3.headers
 
 GENERATED_ITEMS = \
@@ -12,43 +12,43 @@ GENERATED_ITEMS = \
 	gdk3-broadway.vcproj		\
 	broadwayd.vcproj		\
 	gdk-3.vcproj			\
-	gtk-3.vcproj			\
-	gtk3-demo.vcproj		\
-	gtk3-demo-application.vcproj	\
-	gtk3-icon-browser.vcproj	\
+	ctk-3.vcproj			\
+	ctk3-demo.vcproj		\
+	ctk3-demo-application.vcproj	\
+	ctk3-icon-browser.vcproj	\
 	gailutil-3.vcproj		\
-	gtk3-install.vsprops		\
-	gtk3-version-paths.vsprops
+	ctk3-install.vsprops		\
+	ctk3-version-paths.vsprops
 
 EXTRA_DIST += \
 	README.txt			\
-	gtk+.sln			\
-	gtk3-prebuild.vcproj		\
+	ctk+.sln			\
+	ctk3-prebuild.vcproj		\
 	gdk3-win32.vcprojin		\
 	gdk-3.vcprojin			\
-	gtk-3.vcprojin			\
-	gtk-builder-tool.vcproj	\
-	gtk-encode-symbolic-svg.vcproj	\
-	gtk-query-settings.vcproj	\
-	gtk-update-icon-cache.vcproj	\
-	gtk3-demo.vcprojin		\
-	gtk3-demo-application.vcprojin	\
-	gtk3-icon-browser.vcprojin	\
+	ctk-3.vcprojin			\
+	ctk-builder-tool.vcproj	\
+	ctk-encode-symbolic-svg.vcproj	\
+	ctk-query-settings.vcproj	\
+	ctk-update-icon-cache.vcproj	\
+	ctk3-demo.vcprojin		\
+	ctk3-demo-application.vcprojin	\
+	ctk3-icon-browser.vcprojin	\
 	gailutil-3.vcprojin		\
-	gtk3-install.vcproj		\
-	gtk3-introspect.vcproj		\
+	ctk3-install.vcproj		\
+	ctk3-introspect.vcproj		\
 	broadwayd.vcprojin		\
 	gdk3-broadway.vcprojin		\
-	gtk3-build-defines.vsprops	\
-	gtk3-copy-gdk-broadway.vsprops	\
-	gtk3-gen-srcs.vsprops		\
-	gtk3-ignore-broadway.vsprops	\
-	gtk3-install.vspropsin		\
-	gtk3-version-paths.vsprops.in	\
+	ctk3-build-defines.vsprops	\
+	ctk3-copy-gdk-broadway.vsprops	\
+	ctk3-gen-srcs.vsprops		\
+	ctk3-ignore-broadway.vsprops	\
+	ctk3-install.vspropsin		\
+	ctk3-version-paths.vsprops.in	\
 	$(GENERATED_ITEMS)
 
-gtk3-install.vsprops: $(top_srcdir)/win32/vs9/gtk3-install.vspropsin $(MSVC_HEADERS_LISTS)
-	$(CPP) -P - <$(top_srcdir)/win32/vs9/gtk3-install.vspropsin >$@
+ctk3-install.vsprops: $(top_srcdir)/win32/vs9/ctk3-install.vspropsin $(MSVC_HEADERS_LISTS)
+	$(CPP) -P - <$(top_srcdir)/win32/vs9/ctk3-install.vspropsin >$@
 	rm $(MSVC_HEADERS_LISTS)
 
 DISTCLEANFILES = $(GENERATED_ITEMS)

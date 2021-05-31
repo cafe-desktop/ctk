@@ -1,4 +1,4 @@
-/* gtkstatusicon.c:
+/* ctkstatusicon.c:
  *
  * Copyright (C) 2003 Sun Microsystems, Inc.
  * Copyright (C) 2005 Hans Breuer <hans@breuer.org>
@@ -31,24 +31,24 @@
 #include <stdlib.h>
 
 #define GDK_DISABLE_DEPRECATION_WARNINGS
-#include "gtkstatusicon.h"
+#include "ctkstatusicon.h"
 
-#include "gtkintl.h"
-#include "gtkiconhelperprivate.h"
-#include "gtkmain.h"
-#include "gtkmarshalers.h"
-#include "gtksizerequest.h"
-#include "gtkprivate.h"
-#include "gtkwidget.h"
-#include "gtktooltip.h"
-#include "gtkicontheme.h"
-#include "gtklabel.h"
-#include "gtkstylecontextprivate.h"
-#include "gtktypebuiltins.h"
+#include "ctkintl.h"
+#include "ctkiconhelperprivate.h"
+#include "ctkmain.h"
+#include "ctkmarshalers.h"
+#include "ctksizerequest.h"
+#include "ctkprivate.h"
+#include "ctkwidget.h"
+#include "ctktooltip.h"
+#include "ctkicontheme.h"
+#include "ctklabel.h"
+#include "ctkstylecontextprivate.h"
+#include "ctktypebuiltins.h"
 
 #ifdef GDK_WINDOWING_X11
 #include "gdk/x11/gdkx.h"
-#include "gtktrayicon.h"
+#include "ctktrayicon.h"
 #endif
 
 #ifdef GDK_WINDOWING_WIN32
@@ -58,7 +58,7 @@
 
 
 /**
- * SECTION:gtkstatusicon
+ * SECTION:ctkstatusicon
  * @Short_description: Display an icon in the system tray
  * @Title: GtkStatusIcon
  *
@@ -136,7 +136,7 @@ enum
 static guint status_icon_signals [LAST_SIGNAL] = { 0 };
 
 #ifdef GDK_WINDOWING_QUARTZ
-#include "gtkstatusicon-quartz.c"
+#include "ctkstatusicon-quartz.c"
 #endif
 
 struct _GtkStatusIconPrivate
@@ -842,7 +842,7 @@ create_tray_observer (void)
   taskbar_created_msg = RegisterWindowMessage("TaskbarCreated");
 
   memset (&wclass, 0, sizeof(WNDCLASS));
-  wclass.lpszClassName = "gtkstatusicon-observer";
+  wclass.lpszClassName = "ctkstatusicon-observer";
   wclass.lpfnWndProc   = wndproc;
   wclass.hInstance     = hmodule;
 

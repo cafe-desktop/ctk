@@ -6,7 +6,7 @@
  */
 
 #include <math.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 /* In points */
 #define HEADER_HEIGHT (10*72/25.4)
@@ -168,7 +168,7 @@ do_printing (GtkWidget *do_widget)
 
   settings = ctk_print_settings_new ();
 
-  ctk_print_settings_set (settings, CTK_PRINT_SETTINGS_OUTPUT_BASENAME, "gtk-demo");
+  ctk_print_settings_set (settings, CTK_PRINT_SETTINGS_OUTPUT_BASENAME, "ctk-demo");
   ctk_print_operation_set_print_settings (operation, settings);
 
   ctk_print_operation_run (operation, CTK_PRINT_OPERATION_ACTION_PRINT_DIALOG, CTK_WINDOW (do_widget), &error);

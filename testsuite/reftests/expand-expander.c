@@ -20,9 +20,9 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
-#include "gtk-reftest.h"
+#include "ctk-reftest.h"
 
 static gboolean
 unblock (gpointer data)

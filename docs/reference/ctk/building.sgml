@@ -2,7 +2,7 @@
 <!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
                "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
 ]>
-<refentry id="gtk-building">
+<refentry id="ctk-building">
 <refmeta>
 <refentrytitle>Compiling the GTK+ libraries</refentrytitle>
 <manvolnum>3</manvolnum>
@@ -53,8 +53,8 @@ How to compile GTK+ itself
       which you unpack into a directory full of the source files as follows:
     </para>
     <programlisting>
-      tar xvfj gtk+-3.2.0.tar.bz2
-      tar xvfJ gtk+-3.2.0.tar.xz
+      tar xvfj ctk+-3.2.0.tar.bz2
+      tar xvfJ ctk+-3.2.0.tar.xz
     </programlisting>
     <para>
       In the toplevel directory that is created, there will be
@@ -67,10 +67,10 @@ How to compile GTK+ itself
       is built and installed. The most commonly useful argument is
       the <systemitem>--prefix</systemitem> argument which
       determines where the package is installed. To install a package
-      in <filename>/opt/gtk</filename> you would run configure as:
+      in <filename>/opt/ctk</filename> you would run configure as:
     </para>
     <programlisting>
-      ./configure --prefix=/opt/gtk
+      ./configure --prefix=/opt/ctk
     </programlisting>
     <para>
       A full list of options can be found by running
@@ -104,13 +104,13 @@ How to compile GTK+ itself
       a search path that <command>pkg-config</command> (see below)
       uses when looking for files describing how to compile
       programs using different libraries. If you were installing GTK+
-      and it's dependencies into <filename>/opt/gtk</filename>, you
+      and it's dependencies into <filename>/opt/ctk</filename>, you
       might want to set these variables as:
     </para>
     <programlisting>
-      CPPFLAGS="-I/opt/gtk/include"
-      LDFLAGS="-L/opt/gtk/lib"
-      PKG_CONFIG_PATH="/opt/gtk/lib/pkgconfig"
+      CPPFLAGS="-I/opt/ctk/include"
+      LDFLAGS="-L/opt/ctk/lib"
+      PKG_CONFIG_PATH="/opt/ctk/lib/pkgconfig"
       export CPPFLAGS LDFLAGS PKG_CONFIG_PATH
     </programlisting>
     <para>
@@ -121,8 +121,8 @@ How to compile GTK+ itself
       the various libraries will be found.
     </para>
     <programlisting>
-      LD_LIBRARY_PATH="/opt/gtk/lib"
-      PATH="/opt/gtk/bin:$PATH"
+      LD_LIBRARY_PATH="/opt/ctk/lib"
+      PATH="/opt/ctk/bin:$PATH"
       export LD_LIBRARY_PATH PATH
     </programlisting>
   </refsect1>
@@ -171,7 +171,7 @@ How to compile GTK+ itself
           The GLib library provides core non-graphical functionality
           such as high level data types, Unicode manipulation, and
           an object and type system to C programs. It is available
-          from the <ulink url="https://ftp.gtk.org/pub/glib/">GTK+
+          from the <ulink url="https://ftp.ctk.org/pub/glib/">GTK+
           FTP site</ulink> or
           <ulink url="https://download.gnome.org/sources/glib/">here</ulink>.
         </para>
@@ -298,9 +298,9 @@ How to compile GTK+ itself
       steps of <literal>configure</literal>, <literal>make</literal>,
       <literal>make install</literal> mentioned above. If you're
       lucky, this will all go smoothly, and you'll be ready to
-      <link linkend="gtk-compiling">start compiling your own GTK+
+      <link linkend="ctk-compiling">start compiling your own GTK+
       applications</link>. You can test your GTK+ installation
-      by running the <command>gtk3-demo</command> program that
+      by running the <command>ctk3-demo</command> program that
       GTK+ installs.
     </para>
     <para>
@@ -312,8 +312,8 @@ How to compile GTK+ itself
       ran into, is found in the file <filename>config.log</filename>.
       Looking at the last couple of hundred lines in this file will
       frequently make clear what went wrong. If all else fails, you
-      can ask for help on the gtk-list mailing list.
-      See <xref linkend="gtk-resources"/> for more information.
+      can ask for help on the ctk-list mailing list.
+      See <xref linkend="ctk-resources"/> for more information.
     </para>
   </refsect1>
       <refsect1 id="extra-configuration-options">
@@ -358,8 +358,8 @@ How to compile GTK+ itself
           </group>
           <sbr/>
           <group>
-            <arg choice="plain">--disable-gtk-doc</arg>
-            <arg choice="plain">--enable-gtk-doc</arg>
+            <arg choice="plain">--disable-ctk-doc</arg>
+            <arg choice="plain">--enable-ctk-doc</arg>
           </group>
           <sbr/>
           <group>
@@ -540,19 +540,19 @@ How to compile GTK+ itself
       </formalpara>
 
       <formalpara>
-        <title><systemitem>--disable-gtk-doc</systemitem> and
-          <systemitem>--enable-gtk-doc</systemitem></title>
+        <title><systemitem>--disable-ctk-doc</systemitem> and
+          <systemitem>--enable-ctk-doc</systemitem></title>
 
         <para>
-          The <application>gtk-doc</application> package is
+          The <application>ctk-doc</application> package is
           used to generate the reference documentation included
-          with GTK+. By default support for <application>gtk-doc</application>
+          with GTK+. By default support for <application>ctk-doc</application>
           is disabled because it requires various extra dependencies
           to be installed. If you have
-          <application>gtk-doc</application> installed and
+          <application>ctk-doc</application> installed and
           are modifying GTK+, you may want to enable
-          <application>gtk-doc</application> support by passing
-          in <systemitem>--enable-gtk-doc</systemitem>. If not
+          <application>ctk-doc</application> support by passing
+          in <systemitem>--enable-ctk-doc</systemitem>. If not
           enabled, pre-generated HTML files distributed with GTK+
           will be installed.
         </para>
@@ -631,8 +631,8 @@ How to compile GTK+ itself
 
         <para>
           Whether to install tests on the system. If enabled, tests
-          and their data are installed in <filename>${libexecdir}/gtk+/installed-tests</filename>.
-          Metadata for the tests is installed in <filename>${prefix}/share/installed-tests/gtk+</filename>.
+          and their data are installed in <filename>${libexecdir}/ctk+/installed-tests</filename>.
+          Metadata for the tests is installed in <filename>${prefix}/share/installed-tests/ctk+</filename>.
           To run the installed tests, gnome-desktop-testing-runner
           can be used.
         </para>
@@ -642,5 +642,5 @@ How to compile GTK+ itself
 </refentry>
 
 <!-- Local Variables: -->
-<!-- sgml-parent-document: ("gtk-docs.sgml" "chapter" "refentry")  -->
+<!-- sgml-parent-document: ("ctk-docs.sgml" "chapter" "refentry")  -->
 <!-- End: -->

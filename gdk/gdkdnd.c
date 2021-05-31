@@ -19,7 +19,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -67,7 +67,7 @@ static GList *contexts = NULL;
  *
  * GTK+ provides a higher level abstraction based on top of these functions,
  * and so they are not normally needed in GTK+ applications.
- * See the [Drag and Drop][gtk3-Drag-and-Drop] section of
+ * See the [Drag and Drop][ctk3-Drag-and-Drop] section of
  * the GTK+ documentation for more information.
  */
 

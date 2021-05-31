@@ -19,27 +19,27 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
 
-#include "gtktogglebutton.h"
+#include "ctktogglebutton.h"
 
-#include "gtkbuttonprivate.h"
-#include "gtktogglebuttonprivate.h"
-#include "gtklabel.h"
-#include "gtkmain.h"
-#include "gtkmarshalers.h"
-#include "deprecated/gtktoggleaction.h"
-#include "deprecated/gtkactivatable.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
-#include "a11y/gtktogglebuttonaccessible.h"
+#include "ctkbuttonprivate.h"
+#include "ctktogglebuttonprivate.h"
+#include "ctklabel.h"
+#include "ctkmain.h"
+#include "ctkmarshalers.h"
+#include "deprecated/ctktoggleaction.h"
+#include "deprecated/ctkactivatable.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
+#include "a11y/ctktogglebuttonaccessible.h"
 
 
 /**
- * SECTION:gtktogglebutton
+ * SECTION:ctktogglebutton
  * @Short_description: Create buttons which retain their state
  * @Title: GtkToggleButton
  * @See_also: #GtkButton, #GtkCheckButton, #GtkCheckMenuItem

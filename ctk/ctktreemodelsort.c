@@ -1,6 +1,6 @@
-/* gtktreemodelsort.c
+/* ctktreemodelsort.c
  * Copyright (C) 2000,2001  Red Hat, Inc.,  Jonathan Blandford <jrb@redhat.com>
- * Copyright (C) 2001,2002  Kristian Rietveld <kris@gtk.org>
+ * Copyright (C) 2001,2002  Kristian Rietveld <kris@ctk.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -19,17 +19,17 @@
 #include "config.h"
 #include <string.h>
 
-#include "gtktreemodelsort.h"
-#include "gtktreesortable.h"
-#include "gtktreestore.h"
-#include "gtktreedatalist.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtktreednd.h"
+#include "ctktreemodelsort.h"
+#include "ctktreesortable.h"
+#include "ctktreestore.h"
+#include "ctktreedatalist.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctktreednd.h"
 
 
 /**
- * SECTION:gtktreemodelsort
+ * SECTION:ctktreemodelsort
  * @Short_description: A GtkTreeModel which makes an underlying tree model sortable
  * @Title: GtkTreeModelSort
  * @See_also: #GtkTreeModel, #GtkListStore, #GtkTreeStore, #GtkTreeSortable, #GtkTreeModelFilter

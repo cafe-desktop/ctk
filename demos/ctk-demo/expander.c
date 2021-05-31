@@ -8,7 +8,7 @@
  */
 
 #include <glib/gi18n.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static GtkWidget *window = NULL;
 

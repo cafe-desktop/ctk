@@ -18,7 +18,7 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static GtkWidget *test_window;
 

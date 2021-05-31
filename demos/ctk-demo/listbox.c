@@ -5,7 +5,7 @@
  *
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -197,7 +197,7 @@ ctk_message_row_update (GtkMessageRow *row)
     ctk_button_set_label (CTK_BUTTON (priv->resent_by_button), priv->message->resent_by);
 
   if (strcmp (priv->message->sender_nick, "@GTKtoolkit") == 0)
-    ctk_image_set_from_icon_name (priv->avatar_image, "gtk3-demo", CTK_ICON_SIZE_DND);
+    ctk_image_set_from_icon_name (priv->avatar_image, "ctk3-demo", CTK_ICON_SIZE_DND);
   else
     ctk_image_set_from_pixbuf (priv->avatar_image, avatar_pixbuf_other);
 

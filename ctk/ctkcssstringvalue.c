@@ -17,7 +17,7 @@
 
 #include "config.h"
 
-#include "gtkcssstringvalueprivate.h"
+#include "ctkcssstringvalueprivate.h"
 
 #include <string.h>
 

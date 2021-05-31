@@ -1,5 +1,5 @@
 /*
- * gtkappchooser.h: app-chooser interface
+ * ctkappchooser.h: app-chooser interface
  *
  * Copyright (C) 2010 Red Hat, Inc.
  *
@@ -23,7 +23,7 @@
 #define __CTK_APP_CHOOSER_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
 #include <glib.h>

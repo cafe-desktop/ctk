@@ -23,7 +23,7 @@
 #ifndef _CTK_INSPECTOR_OBJECT_HIERARCHY_H_
 #define _CTK_INSPECTOR_OBJECT_HIERARCHY_H_
 
-#include <gtk/gtkbox.h>
+#include <ctk/ctkbox.h>
 
 #define CTK_TYPE_INSPECTOR_OBJECT_HIERARCHY            (ctk_inspector_object_hierarchy_get_type())
 #define CTK_INSPECTOR_OBJECT_HIERARCHY(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_OBJECT_HIERARCHY, GtkInspectorObjectHierarchy))

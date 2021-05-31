@@ -22,7 +22,7 @@
 #ifndef __CTK_SEARCH_ENGINE_TRACKER_H__
 #define __CTK_SEARCH_ENGINE_TRACKER_H__
 
-#include "gtksearchengine.h"
+#include "ctksearchengine.h"
 
 G_BEGIN_DECLS
 

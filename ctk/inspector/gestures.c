@@ -21,13 +21,13 @@
 #include "gestures.h"
 #include "object-tree.h"
 
-#include "gtksizegroup.h"
-#include "gtkcomboboxtext.h"
-#include "gtklistbox.h"
-#include "gtkgesture.h"
-#include "gtklabel.h"
-#include "gtkframe.h"
-#include "gtkwidgetprivate.h"
+#include "ctksizegroup.h"
+#include "ctkcomboboxtext.h"
+#include "ctklistbox.h"
+#include "ctkgesture.h"
+#include "ctklabel.h"
+#include "ctkframe.h"
+#include "ctkwidgetprivate.h"
 
 enum
 {

@@ -5,8 +5,8 @@ Organization
 ============
 
 The DND code is split between a lowlevel part - gdkdnd.c and a
-highlevel part - gtkdnd.c.  To put it simply, gdkdnd.c contain the
-portions of DND code that are easiest to do in raw X, while gtkdnd.c
+highlevel part - ctkdnd.c.  To put it simply, gdkdnd.c contain the
+portions of DND code that are easiest to do in raw X, while ctkdnd.c
 contains the portions of DND that are easiest to do with an event loop
 and high level selection handling.
 
@@ -22,7 +22,7 @@ gdkdnd.c divides into 4 pieces:
  3) Xdnd specific code
  4) The public interfaces
 
-The code in gtkdnd.c roughly consists of three parts  
+The code in ctkdnd.c roughly consists of three parts  
   
  1) General utility functions
  2) Destination side code

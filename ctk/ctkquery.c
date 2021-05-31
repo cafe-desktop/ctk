@@ -22,7 +22,7 @@
 #include "config.h"
 #include <string.h>
 
-#include "gtkquery.h"
+#include "ctkquery.h"
 
 struct _GtkQueryPrivate
 {

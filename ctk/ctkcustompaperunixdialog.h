@@ -18,7 +18,7 @@
 #ifndef __CTK_CUSTOM_PAPER_UNIX_DIALOG_H__
 #define __CTK_CUSTOM_PAPER_UNIX_DIALOG_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 G_BEGIN_DECLS
 

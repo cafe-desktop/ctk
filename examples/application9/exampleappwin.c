@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include "exampleapp.h"
 #include "exampleappwin.h"
@@ -203,7 +203,7 @@ example_app_window_init (ExampleAppWindow *win)
 
   priv = example_app_window_get_instance_private (win);
   ctk_widget_init_template (CTK_WIDGET (win));
-  priv->settings = g_settings_new ("org.gtk.exampleapp");
+  priv->settings = g_settings_new ("org.ctk.exampleapp");
 
   g_settings_bind (priv->settings, "transition",
                    priv->stack, "transition-type",
@@ -220,7 +220,7 @@ example_app_window_init (ExampleAppWindow *win)
   g_signal_connect (priv->sidebar, "notify::reveal-child",
                     G_CALLBACK (words_changed), win);
 
-  builder = ctk_builder_new_from_resource ("/org/gtk/exampleapp/gears-menu.ui");
+  builder = ctk_builder_new_from_resource ("/org/ctk/exampleapp/gears-menu.ui");
   menu = G_MENU_MODEL (ctk_builder_get_object (builder, "menu"));
   ctk_menu_button_set_menu_model (CTK_MENU_BUTTON (priv->gears), menu);
   g_object_unref (builder);
@@ -258,7 +258,7 @@ example_app_window_class_init (ExampleAppWindowClass *class)
   G_OBJECT_CLASS (class)->dispose = example_app_window_dispose;
 
   ctk_widget_class_set_template_from_resource (CTK_WIDGET_CLASS (class),
-                                               "/org/gtk/exampleapp/window.ui");
+                                               "/org/ctk/exampleapp/window.ui");
 
   ctk_widget_class_bind_template_child_private (CTK_WIDGET_CLASS (class), ExampleAppWindow, stack);
   ctk_widget_class_bind_template_child_private (CTK_WIDGET_CLASS (class), ExampleAppWindow, search);

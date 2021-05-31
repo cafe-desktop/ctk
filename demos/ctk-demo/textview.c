@@ -7,7 +7,7 @@
  *
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <stdlib.h> /* for exit() */
 
 static void easter_egg_callback (GtkWidget *button, gpointer data);
@@ -133,7 +133,7 @@ insert_text (GtkTextBuffer *buffer)
 
   icon_theme = ctk_icon_theme_get_default ();
   pixbuf = ctk_icon_theme_load_icon (icon_theme,
-                                     "gtk3-demo",
+                                     "ctk3-demo",
                                      32,
                                      CTK_ICON_LOOKUP_GENERIC_FALLBACK,
                                      NULL);

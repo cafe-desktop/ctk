@@ -17,11 +17,11 @@
 
 #include "config.h"
 
-#include "gtkcssunsetvalueprivate.h"
+#include "ctkcssunsetvalueprivate.h"
 
-#include "gtkcssinheritvalueprivate.h"
-#include "gtkcssinitialvalueprivate.h"
-#include "gtkcssstylepropertyprivate.h"
+#include "ctkcssinheritvalueprivate.h"
+#include "ctkcssinitialvalueprivate.h"
+#include "ctkcssstylepropertyprivate.h"
 
 struct _GtkCssValue {
   CTK_CSS_VALUE_BASE

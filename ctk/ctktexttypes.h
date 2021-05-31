@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtktexttypes.h Copyright (C) 2000 Red Hat, Inc.
+ * ctktexttypes.h Copyright (C) 2000 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -19,14 +19,14 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __CTK_TEXT_TYPES_H__
 #define __CTK_TEXT_TYPES_H__
 
-#include <gtk/gtk.h>
-#include <gtk/gtktexttagprivate.h>
+#include <ctk/ctk.h>
+#include <ctk/ctktexttagprivate.h>
 
 G_BEGIN_DECLS
 
@@ -40,16 +40,16 @@ typedef struct _GtkTextMarkBody GtkTextMarkBody;
  * Declarations for variables shared among the text-related files:
  */
 
-/* In gtktextbtree.c */
+/* In ctktextbtree.c */
 extern G_GNUC_INTERNAL const GtkTextLineSegmentClass ctk_text_char_type;
 extern G_GNUC_INTERNAL const GtkTextLineSegmentClass ctk_text_toggle_on_type;
 extern G_GNUC_INTERNAL const GtkTextLineSegmentClass ctk_text_toggle_off_type;
 
-/* In gtktextmark.c */
+/* In ctktextmark.c */
 extern G_GNUC_INTERNAL const GtkTextLineSegmentClass ctk_text_left_mark_type;
 extern G_GNUC_INTERNAL const GtkTextLineSegmentClass ctk_text_right_mark_type;
 
-/* In gtktextchild.c */
+/* In ctktextchild.c */
 extern G_GNUC_INTERNAL const GtkTextLineSegmentClass ctk_text_pixbuf_type;
 extern G_GNUC_INTERNAL const GtkTextLineSegmentClass ctk_text_child_type;
 

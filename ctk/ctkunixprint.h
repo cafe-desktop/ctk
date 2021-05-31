@@ -19,12 +19,12 @@
 
 #define __CTK_UNIX_PRINT_H_INSIDE__
 
-#include <gtk/gtkpagesetupunixdialog.h>
-#include <gtk/gtkprinter.h>
-#include <gtk/gtkprintjob.h>
-#include <gtk/gtkprintunixdialog.h>
+#include <ctk/ctkpagesetupunixdialog.h>
+#include <ctk/ctkprinter.h>
+#include <ctk/ctkprintjob.h>
+#include <ctk/ctkprintunixdialog.h>
 
-#include <gtk/gtkunixprint-autocleanups.h>
+#include <ctk/ctkunixprint-autocleanups.h>
 
 #undef __CTK_UNIX_PRINT_H_INSIDE__
 

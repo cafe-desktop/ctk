@@ -103,12 +103,12 @@ printbackends_args = [
   '-DCTK_DISABLE_DEPRECATION_WARNINGS',
   '-DCTK_PRINT_BACKEND_ENABLE_UNSUPPORTED',
 ]
-printbackends_subdir = 'gtk-3.0/@0@/printbackends'.format(ctk_binary_version)
+printbackends_subdir = 'ctk-3.0/@0@/printbackends'.format(ctk_binary_version)
 printbackends_install_dir = join_paths(get_option('libdir'), printbackends_subdir)
 
 if print_backends.contains('file')
   shared_module('printbackend-file',
-                'file/gtkprintbackendfile.c',
+                'file/ctkprintbackendfile.c',
                 c_args: printbackends_args,
                 dependencies: libctk_dep,
                 install_dir: printbackends_install_dir,
@@ -118,7 +118,7 @@ endif
 
 if print_backends.contains('lpr')
   shared_module('printbackend-lpr',
-                'lpr/gtkprintbackendlpr.c',
+                'lpr/ctkprintbackendlpr.c',
                 c_args: printbackends_args,
                 dependencies: libctk_dep,
                 install_dir: printbackends_install_dir,
@@ -128,7 +128,7 @@ endif
 
 if print_backends.contains('test')
   shared_module('printbackend-test',
-                'test/gtkprintbackendtest.c',
+                'test/ctkprintbackendtest.c',
                 c_args: printbackends_args,
                 dependencies: libctk_dep,
                 install_dir: printbackends_install_dir,
@@ -138,9 +138,9 @@ endif
 
 if print_backends.contains('cloudprint')
     shared_module('printbackend-cloudprint',
-                  'cloudprint/gtkprintbackendcloudprint.c',
-                  'cloudprint/gtkprintercloudprint.c',
-                  'cloudprint/gtkcloudprintaccount.c',
+                  'cloudprint/ctkprintbackendcloudprint.c',
+                  'cloudprint/ctkprintercloudprint.c',
+                  'cloudprint/ctkcloudprintaccount.c',
                   c_args: printbackends_args,
                   dependencies: [ libctk_dep, rest_dep, json_glib_dep ],
                   install_dir: printbackends_install_dir,
@@ -150,10 +150,10 @@ endif
 
 if print_backends.contains('cups')
   shared_module('printbackend-cups',
-                'cups/gtkprintbackendcups.c',
-                'cups/gtkprintercups.c',
-                'cups/gtkcupsutils.c',
-                'cups/gtkcupssecretsutils.c',
+                'cups/ctkprintbackendcups.c',
+                'cups/ctkprintercups.c',
+                'cups/ctkcupsutils.c',
+                'cups/ctkcupssecretsutils.c',
                 c_args: printbackends_args,
                 dependencies: [libctk_dep, cups_dep] + cups_extra_deps,
                 install_dir: printbackends_install_dir,

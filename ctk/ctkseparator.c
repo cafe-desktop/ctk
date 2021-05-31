@@ -19,22 +19,22 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
-#include "gtkseparator.h"
+#include "ctkseparator.h"
 
-#include "gtkorientableprivate.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtkrender.h"
-#include "gtkwidgetprivate.h"
-#include "gtkcsscustomgadgetprivate.h"
+#include "ctkorientableprivate.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctkrender.h"
+#include "ctkwidgetprivate.h"
+#include "ctkcsscustomgadgetprivate.h"
 
 /**
- * SECTION:gtkseparator
+ * SECTION:ctkseparator
  * @Short_description: A separator widget
  * @Title: GtkSeparator
  *

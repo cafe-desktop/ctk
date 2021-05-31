@@ -18,4 +18,4 @@ with open(out_file, 'w', encoding='utf-8') as o:
             o.write(line)
 
     o.write('\n')
-    o.write('ISOLATIONAWARE_MANIFEST_RESOURCE_ID RT_MANIFEST libgtk3.manifest')
+    o.write('ISOLATIONAWARE_MANIFEST_RESOURCE_ID RT_MANIFEST libctk3.manifest')

@@ -1,6 +1,6 @@
 /* GTK - The GIMP Toolkit
  *
- * gtkglarea.c: A GL drawing area
+ * ctkglarea.c: A GL drawing area
  *
  * Copyright © 2014  Emmanuele Bassi
  *
@@ -21,18 +21,18 @@
 #include "config.h"
 
 #include "config.h"
-#include "gtkglarea.h"
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
-#include "gtkstylecontext.h"
-#include "gtkmarshalers.h"
-#include "gtkprivate.h"
-#include "gtkrender.h"
+#include "ctkglarea.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
+#include "ctkstylecontext.h"
+#include "ctkmarshalers.h"
+#include "ctkprivate.h"
+#include "ctkrender.h"
 
 #include <epoxy/gl.h>
 
 /**
- * SECTION:gtkglarea
+ * SECTION:ctkglarea
  * @Title: GtkGLArea
  * @Short_description: A widget for custom drawing with OpenGL
  *

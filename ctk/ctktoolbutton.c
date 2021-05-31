@@ -1,4 +1,4 @@
-/* gtktoolbutton.c
+/* ctktoolbutton.c
  *
  * Copyright (C) 2002 Anders Carlsson <andersca@gnome.org>
  * Copyright (C) 2002 James Henstridge <james@daa.com.au>
@@ -19,24 +19,24 @@
  */
 
 #include "config.h"
-#include "gtktoolbutton.h"
-#include "gtkbutton.h"
-#include "gtkimage.h"
-#include "deprecated/gtkimagemenuitem.h"
-#include "gtklabel.h"
-#include "deprecated/gtkstock.h"
-#include "gtkbox.h"
-#include "gtkintl.h"
-#include "gtktoolbarprivate.h"
-#include "deprecated/gtkactivatable.h"
-#include "gtkactionable.h"
-#include "gtkprivate.h"
+#include "ctktoolbutton.h"
+#include "ctkbutton.h"
+#include "ctkimage.h"
+#include "deprecated/ctkimagemenuitem.h"
+#include "ctklabel.h"
+#include "deprecated/ctkstock.h"
+#include "ctkbox.h"
+#include "ctkintl.h"
+#include "ctktoolbarprivate.h"
+#include "deprecated/ctkactivatable.h"
+#include "ctkactionable.h"
+#include "ctkprivate.h"
 
 #include <string.h>
 
 
 /**
- * SECTION:gtktoolbutton
+ * SECTION:ctktoolbutton
  * @Short_description: A GtkToolItem subclass that displays buttons
  * @Title: GtkToolButton
  * @See_also: #GtkToolbar, #GtkMenuToolButton, #GtkToggleToolButton,
@@ -67,7 +67,7 @@
  */
 
 
-#define MENU_ID "gtk-tool-button-menu-id"
+#define MENU_ID "ctk-tool-button-menu-id"
 
 enum {
   CLICKED,

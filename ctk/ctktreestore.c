@@ -1,4 +1,4 @@
-/* gtktreestore.c
+/* ctktreestore.c
  * Copyright (C) 2000  Red Hat, Inc.,  Jonathan Blandford <jrb@redhat.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -18,18 +18,18 @@
 #include "config.h"
 #include <string.h>
 #include <gobject/gvaluecollector.h>
-#include "gtktreemodel.h"
-#include "gtktreestore.h"
-#include "gtktreedatalist.h"
-#include "gtktreednd.h"
-#include "gtkbuildable.h"
-#include "gtkbuilderprivate.h"
-#include "gtkdebug.h"
-#include "gtkintl.h"
+#include "ctktreemodel.h"
+#include "ctktreestore.h"
+#include "ctktreedatalist.h"
+#include "ctktreednd.h"
+#include "ctkbuildable.h"
+#include "ctkbuilderprivate.h"
+#include "ctkdebug.h"
+#include "ctkintl.h"
 
 
 /**
- * SECTION:gtktreestore
+ * SECTION:ctktreestore
  * @Short_description: A tree-like data structure that can be used with the GtkTreeView
  * @Title: GtkTreeStore
  * @See_also: #GtkTreeModel
@@ -39,7 +39,7 @@
  * can use all of the methods available there.  It also implements the
  * #GtkTreeSortable interface so it can be sorted by the view.  Finally,
  * it also implements the tree
- * [drag and drop][gtk3-GtkTreeView-drag-and-drop]
+ * [drag and drop][ctk3-GtkTreeView-drag-and-drop]
  * interfaces.
  *
  * # GtkTreeStore as GtkBuildable

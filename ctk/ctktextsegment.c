@@ -1,5 +1,5 @@
 /*
- * gtktextsegment.c --
+ * ctktextsegment.c --
  *
  * Code for segments in general, and toggle/char segments in particular.
  *
@@ -52,15 +52,15 @@
 
 #define CTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
 #include "config.h"
-#include "gtktextbtree.h"
+#include "ctktextbtree.h"
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "gtktexttag.h"
-#include "gtktexttagtable.h"
-#include "gtktextlayout.h"
-#include "gtktextiterprivate.h"
-#include "gtkdebug.h"
+#include "ctktexttag.h"
+#include "ctktexttagtable.h"
+#include "ctktextlayout.h"
+#include "ctktextiterprivate.h"
+#include "ctkdebug.h"
 
 /*
  *--------------------------------------------------------------

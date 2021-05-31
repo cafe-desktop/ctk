@@ -3,10 +3,10 @@ if x11_enabled
     'shadow.c',
     'shooter.c',
     'widgets.c',
-    '../../tests/gtkgears.c',
+    '../../tests/ctkgears.c',
   ]
 
   doc_shooter = executable('doc-shooter', doc_shooter_sources,
-                           include_directories: [ confinc, gdkinc, gtkinc, testinc, ],
+                           include_directories: [ confinc, gdkinc, ctkinc, testinc, ],
                            dependencies: libctk_dep)
 endif

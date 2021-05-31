@@ -19,23 +19,23 @@
 
 #include "config.h"
 
-#include "gtkmenutoolbutton.h"
+#include "ctkmenutoolbutton.h"
 
-#include "gtktogglebutton.h"
-#include "gtkmenubutton.h"
-#include "gtkmenubuttonprivate.h"
-#include "gtkbox.h"
-#include "gtkmenu.h"
-#include "gtkmain.h"
-#include "gtksizerequest.h"
-#include "gtkbuildable.h"
+#include "ctktogglebutton.h"
+#include "ctkmenubutton.h"
+#include "ctkmenubuttonprivate.h"
+#include "ctkbox.h"
+#include "ctkmenu.h"
+#include "ctkmain.h"
+#include "ctksizerequest.h"
+#include "ctkbuildable.h"
 
-#include "gtkprivate.h"
-#include "gtkintl.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
 
 
 /**
- * SECTION:gtkmenutoolbutton
+ * SECTION:ctkmenutoolbutton
  * @Short_description: A GtkToolItem containing a button with an additional dropdown menu
  * @Title: GtkMenuToolButton
  * @See_also: #GtkToolbar, #GtkToolButton

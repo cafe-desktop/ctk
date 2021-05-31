@@ -20,11 +20,11 @@
 
 #include "config.h"
 
-#include "gtkapplicationprivate.h"
-#include "gtkmenutracker.h"
-#include "gtkicontheme.h"
-#include "gtktoolbarprivate.h"
-#include "gtkquartz.h"
+#include "ctkapplicationprivate.h"
+#include "ctkmenutracker.h"
+#include "ctkicontheme.h"
+#include "ctktoolbarprivate.h"
+#include "ctkquartz.h"
 
 #include <gdk/quartz/gdkquartz.h>
 

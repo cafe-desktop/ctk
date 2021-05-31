@@ -13,7 +13,7 @@
  */
 
 #include <stdlib.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <math.h>
 
 #define BACKGROUND_NAME "/pixbufs/background.jpg"

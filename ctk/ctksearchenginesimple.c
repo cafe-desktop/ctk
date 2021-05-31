@@ -25,9 +25,9 @@
 
 #include <gdk/gdk.h>
 
-#include "gtksearchenginesimple.h"
-#include "gtkfilesystem.h"
-#include "gtkprivate.h"
+#include "ctksearchenginesimple.h"
+#include "ctkfilesystem.h"
+#include "ctkprivate.h"
 
 #include <string.h>
 
@@ -186,7 +186,7 @@ send_batch (SearchThreadData *data)
       batch->thread_data = data;
 
       id = gdk_threads_add_idle (search_thread_add_hits_idle, batch);
-      g_source_set_name_by_id (id, "[gtk+] search_thread_add_hits_idle");
+      g_source_set_name_by_id (id, "[ctk+] search_thread_add_hits_idle");
       data->got_results = TRUE;
     }
 
@@ -294,7 +294,7 @@ search_thread_func (gpointer user_data)
     send_batch (data);
 
   id = gdk_threads_add_idle (search_thread_done_idle, data);
-  g_source_set_name_by_id (id, "[gtk+] search_thread_done_idle");
+  g_source_set_name_by_id (id, "[ctk+] search_thread_done_idle");
 
   return NULL;
 }

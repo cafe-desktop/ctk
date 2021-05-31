@@ -20,7 +20,7 @@
  */
 
 /**
- * SECTION:gtkexpander
+ * SECTION:ctkexpander
  * @Short_description: A container which can hide its child
  * @Title: GtkExpander
  *
@@ -111,23 +111,23 @@
 
 #include <string.h>
 
-#include "gtkexpander.h"
+#include "ctkexpander.h"
 
-#include "gtklabel.h"
-#include "gtkbuildable.h"
-#include "gtkcontainer.h"
-#include "gtkmarshalers.h"
-#include "gtkmain.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtkdnd.h"
-#include "a11y/gtkexpanderaccessible.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkcsscustomgadgetprivate.h"
-#include "gtkboxgadgetprivate.h"
-#include "gtkbuiltiniconprivate.h"
-#include "gtkwidgetprivate.h"
-#include "gtkcontainerprivate.h"
+#include "ctklabel.h"
+#include "ctkbuildable.h"
+#include "ctkcontainer.h"
+#include "ctkmarshalers.h"
+#include "ctkmain.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctkdnd.h"
+#include "a11y/ctkexpanderaccessible.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkcsscustomgadgetprivate.h"
+#include "ctkboxgadgetprivate.h"
+#include "ctkbuiltiniconprivate.h"
+#include "ctkwidgetprivate.h"
+#include "ctkcontainerprivate.h"
 
 
 #define DEFAULT_EXPANDER_SIZE 10
@@ -878,7 +878,7 @@ ctk_expander_drag_motion (GtkWidget        *widget,
   if (!priv->expanded && !priv->expand_timer)
     {
       priv->expand_timer = gdk_threads_add_timeout (TIMEOUT_EXPAND, (GSourceFunc) expand_timeout, expander);
-      g_source_set_name_by_id (priv->expand_timer, "[gtk+] expand_timeout");
+      g_source_set_name_by_id (priv->expand_timer, "[ctk+] expand_timeout");
     }
 
   return TRUE;

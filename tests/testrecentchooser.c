@@ -25,7 +25,7 @@
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
 #endif
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #ifdef G_OS_WIN32
 # include <io.h>

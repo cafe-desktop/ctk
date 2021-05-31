@@ -1,4 +1,4 @@
-/* gtkfontprivatechooser.h - Interface definitions for font selectors UI
+/* ctkfontprivatechooser.h - Interface definitions for font selectors UI
  *
  * Copyright (C) 2006 Emmanuele Bassi
  *
@@ -21,7 +21,7 @@
 #ifndef __CTK_FONT_CHOOSER_PRIVATE_H__
 #define __CTK_FONT_CHOOSER_PRIVATE_H__
 
-#include "gtkfontchooser.h"
+#include "ctkfontchooser.h"
 
 #define CTK_FONT_CHOOSER_DEFAULT_FONT_NAME "Sans 10"
 

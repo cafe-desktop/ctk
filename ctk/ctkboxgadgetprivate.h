@@ -20,8 +20,8 @@
 #ifndef __CTK_BOX_GADGET_PRIVATE_H__
 #define __CTK_BOX_GADGET_PRIVATE_H__
 
-#include "gtk/gtkcssgadgetprivate.h"
-#include "gtk/gtkenums.h"
+#include "ctk/ctkcssgadgetprivate.h"
+#include "ctk/ctkenums.h"
 
 G_BEGIN_DECLS
 

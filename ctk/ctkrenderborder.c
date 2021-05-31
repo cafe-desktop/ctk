@@ -21,20 +21,20 @@
 
 #include <config.h>
 
-#include "gtkrenderborderprivate.h"
+#include "ctkrenderborderprivate.h"
 
 #include <cairo-gobject.h>
 #include <math.h>
 
-#include "gtkcssbordervalueprivate.h"
-#include "gtkcssenumvalueprivate.h"
-#include "gtkcssimagevalueprivate.h"
-#include "gtkcssnumbervalueprivate.h"
-#include "gtkcssrepeatvalueprivate.h"
-#include "gtkcssrgbavalueprivate.h"
-#include "gtkcssstyleprivate.h"
-#include "gtkhslaprivate.h"
-#include "gtkroundedboxprivate.h"
+#include "ctkcssbordervalueprivate.h"
+#include "ctkcssenumvalueprivate.h"
+#include "ctkcssimagevalueprivate.h"
+#include "ctkcssnumbervalueprivate.h"
+#include "ctkcssrepeatvalueprivate.h"
+#include "ctkcssrgbavalueprivate.h"
+#include "ctkcssstyleprivate.h"
+#include "ctkhslaprivate.h"
+#include "ctkroundedboxprivate.h"
 
 /* this is in case round() is not provided by the compiler, 
  * such as in the case of C89 compilers, like MSVC

@@ -24,7 +24,7 @@
 #define _CTK_INSPECTOR_PROP_LIST_H_
 
 
-#include <gtk/gtkbox.h>
+#include <ctk/ctkbox.h>
 
 #define CTK_TYPE_INSPECTOR_PROP_LIST            (ctk_inspector_prop_list_get_type())
 #define CTK_INSPECTOR_PROP_LIST(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_PROP_LIST, GtkInspectorPropList))

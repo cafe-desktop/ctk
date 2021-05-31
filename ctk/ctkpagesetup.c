@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkpagesetup.c: Page Setup
+ * ctkpagesetup.c: Page Setup
  * Copyright (C) 2006, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -18,14 +18,14 @@
 
 #include "config.h"
 
-#include "gtkpagesetup.h"
-#include "gtkprintutils.h"
-#include "gtkprintoperation.h" /* for GtkPrintError */
-#include "gtkintl.h"
-#include "gtktypebuiltins.h"
+#include "ctkpagesetup.h"
+#include "ctkprintutils.h"
+#include "ctkprintoperation.h" /* for GtkPrintError */
+#include "ctkintl.h"
+#include "ctktypebuiltins.h"
 
 /**
- * SECTION:gtkpagesetup
+ * SECTION:ctkpagesetup
  * @Short_description: Stores page setup information
  * @Title: GtkPageSetup
  *

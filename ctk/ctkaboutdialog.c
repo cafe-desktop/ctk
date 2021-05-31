@@ -23,44 +23,44 @@
  * Modified by the GTK+ Team and others 1997-2004.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
 #include <string.h>
 
-#include "gtkaboutdialog.h"
-#include "gtkbutton.h"
-#include "gtkbbox.h"
-#include "gtkdialog.h"
-#include "gtkgrid.h"
-#include "gtkbox.h"
-#include "gtkicontheme.h"
-#include "gtkimage.h"
-#include "gtklabel.h"
-#include "gtklinkbutton.h"
-#include "gtkmarshalers.h"
-#include "gtkstack.h"
-#include "gtkorientable.h"
-#include "gtkscrolledwindow.h"
-#include "gtktextview.h"
-#include "gtkshow.h"
-#include "gtkmain.h"
-#include "gtkmessagedialog.h"
-#include "gtktogglebutton.h"
-#include "gtktypebuiltins.h"
-#include "gtkstack.h"
-#include "gtkstackswitcher.h"
-#include "gtksettings.h"
-#include "gtkheaderbar.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
-#include "gtkdialogprivate.h"
+#include "ctkaboutdialog.h"
+#include "ctkbutton.h"
+#include "ctkbbox.h"
+#include "ctkdialog.h"
+#include "ctkgrid.h"
+#include "ctkbox.h"
+#include "ctkicontheme.h"
+#include "ctkimage.h"
+#include "ctklabel.h"
+#include "ctklinkbutton.h"
+#include "ctkmarshalers.h"
+#include "ctkstack.h"
+#include "ctkorientable.h"
+#include "ctkscrolledwindow.h"
+#include "ctktextview.h"
+#include "ctkshow.h"
+#include "ctkmain.h"
+#include "ctkmessagedialog.h"
+#include "ctktogglebutton.h"
+#include "ctktypebuiltins.h"
+#include "ctkstack.h"
+#include "ctkstackswitcher.h"
+#include "ctksettings.h"
+#include "ctkheaderbar.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
+#include "ctkdialogprivate.h"
 
 
 /**
- * SECTION:gtkaboutdialog
+ * SECTION:ctkaboutdialog
  * @Short_description: Display information about an application
  * @Title: GtkAboutDialog
  *
@@ -78,7 +78,7 @@
  *
  * To specify a person with an email address, use a string like
  * "Edgar Allan Poe <edgar\@poe.com>". To specify a website with a title,
- * use a string like "GTK+ team http://www.gtk.org".
+ * use a string like "GTK+ team http://www.ctk.org".
  *
  * To make constructing a GtkAboutDialog as convenient as possible, you can
  * use the function ctk_show_about_dialog() which constructs and shows a dialog
@@ -587,7 +587,7 @@ ctk_about_dialog_class_init (GtkAboutDialogClass *klass)
   /* Bind class to template
    */
   ctk_widget_class_set_template_from_resource (widget_class,
-					       "/org/gtk/libgtk/ui/gtkaboutdialog.ui");
+					       "/org/ctk/libctk/ui/ctkaboutdialog.ui");
 
   ctk_widget_class_bind_template_child_private (widget_class, GtkAboutDialog, stack);
   ctk_widget_class_bind_template_child_private (widget_class, GtkAboutDialog, stack_switcher);
@@ -2409,7 +2409,7 @@ ctk_show_about_dialog (GtkWindow   *parent,
   va_list var_args;
 
   if (parent)
-    dialog = g_object_get_data (G_OBJECT (parent), "gtk-about-dialog");
+    dialog = g_object_get_data (G_OBJECT (parent), "ctk-about-dialog");
   else
     dialog = global_about_dialog;
 
@@ -2436,7 +2436,7 @@ ctk_show_about_dialog (GtkWindow   *parent,
           ctk_window_set_transient_for (CTK_WINDOW (dialog), parent);
           ctk_window_set_destroy_with_parent (CTK_WINDOW (dialog), TRUE);
           g_object_set_data_full (G_OBJECT (parent),
-                                  I_("gtk-about-dialog"),
+                                  I_("ctk-about-dialog"),
                                   dialog, g_object_unref);
         }
       else

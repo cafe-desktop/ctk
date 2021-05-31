@@ -3,7 +3,7 @@
  * Demonstrates practical handling of drawing tablets in a real world
  * usecase.
  */
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 typedef struct
 {

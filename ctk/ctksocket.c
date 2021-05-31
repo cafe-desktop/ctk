@@ -15,32 +15,32 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.Free
  */
 
-/* By Owen Taylor <otaylor@gtk.org>              98/4/4 */
+/* By Owen Taylor <otaylor@ctk.org>              98/4/4 */
 
 /*
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
 
-#include "gtksocketprivate.h"
+#include "ctksocketprivate.h"
 
 #include <string.h>
 
-#include "gtkmarshalers.h"
-#include "gtksizerequest.h"
-#include "gtkplug.h"
-#include "gtkprivate.h"
-#include "gtkrender.h"
-#include "gtkdnd.h"
-#include "gtkdragdest.h"
-#include "gtkdebug.h"
-#include "gtkintl.h"
-#include "gtkmain.h"
-#include "gtkwidgetprivate.h"
+#include "ctkmarshalers.h"
+#include "ctksizerequest.h"
+#include "ctkplug.h"
+#include "ctkprivate.h"
+#include "ctkrender.h"
+#include "ctkdnd.h"
+#include "ctkdragdest.h"
+#include "ctkdebug.h"
+#include "ctkintl.h"
+#include "ctkmain.h"
+#include "ctkwidgetprivate.h"
 
 #include <gdk/gdkx.h>
 #include <gdk/gdkprivate.h>
@@ -49,16 +49,16 @@
 #include <X11/extensions/Xfixes.h>
 #endif
 
-#include "gtkxembed.h"
+#include "ctkxembed.h"
 
-#include "a11y/gtksocketaccessible.h"
+#include "a11y/ctksocketaccessible.h"
 
 
 /**
- * SECTION:gtksocket
+ * SECTION:ctksocket
  * @Short_description: Container for widgets from other processes
  * @Title: GtkSocket
- * @include: gtk/gtkx.h
+ * @include: ctk/ctkx.h
  * @See_also: #GtkPlug, [XEmbed Protocol](http://www.freedesktop.org/Standards/xembed-spec)
  *
  * Together with #GtkPlug, #GtkSocket provides the ability to embed
@@ -111,7 +111,7 @@
  * The #GtkPlug and #GtkSocket widgets are only available when GTK+
  * is compiled for the X11 platform and %GDK_WINDOWING_X11 is defined.
  * They can only be used on a #GdkX11Display. To use #GtkPlug and
- * #GtkSocket, you need to include the `gtk/gtkx.h` header.
+ * #GtkSocket, you need to include the `ctk/ctkx.h` header.
  */
 
 /* Forward declararations */
@@ -295,7 +295,7 @@ ctk_socket_init (GtkSocket *socket)
   priv->active = FALSE;
 
   priv->accel_group = ctk_accel_group_new ();
-  g_object_set_data (G_OBJECT (priv->accel_group), I_("gtk-socket"), socket);
+  g_object_set_data (G_OBJECT (priv->accel_group), I_("ctk-socket"), socket);
 }
 
 /**
@@ -429,7 +429,7 @@ ctk_socket_realize (GtkWidget *widget)
 			GDK_WINDOW_XID (window),
 			&xattrs);
 
-  /* Sooooo, it turns out that mozilla, as per the gtk2xt code selects
+  /* Sooooo, it turns out that mozilla, as per the ctk2xt code selects
      for input on the socket with a mask of 0x0fffff (for god knows why)
      which includes ButtonPressMask causing a BadAccess if someone else
      also selects for this. As per the client-side windows merge we always
@@ -727,7 +727,7 @@ activate_key (GtkAccelGroup  *accel_group,
 {
   GdkEvent *gdk_event = ctk_get_current_event ();
   
-  GtkSocket *socket = g_object_get_data (G_OBJECT (accel_group), "gtk-socket");
+  GtkSocket *socket = g_object_get_data (G_OBJECT (accel_group), "ctk-socket");
   gboolean retval = FALSE;
 
   if (gdk_event && gdk_event->type == GDK_KEY_PRESS && socket->priv->plug_window)

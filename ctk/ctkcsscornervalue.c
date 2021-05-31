@@ -17,9 +17,9 @@
 
 #include "config.h"
 
-#include "gtkcsscornervalueprivate.h"
+#include "ctkcsscornervalueprivate.h"
 
-#include "gtkcssnumbervalueprivate.h"
+#include "ctkcssnumbervalueprivate.h"
 
 struct _GtkCssValue {
   CTK_CSS_VALUE_BASE

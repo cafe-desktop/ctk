@@ -17,25 +17,25 @@
 
 #include "config.h"
 
-#include "gtkaccessibility.h"
-#include "gtkaccessibilityutil.h"
-#include "gtkaccessibilitymisc.h"
+#include "ctkaccessibility.h"
+#include "ctkaccessibilityutil.h"
+#include "ctkaccessibilitymisc.h"
 
-#include "gtkwindowaccessible.h"
+#include "ctkwindowaccessible.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 
 #include <gdk/gdk.h>
-#include <gtk/gtkcombobox.h>
-#include <gtk/gtkentry.h>
-#include <gtk/gtknotebook.h>
-#include <gtk/gtkmenuitem.h>
-#include <gtk/gtkmenu.h>
-#include <gtk/gtkmenubar.h>
-#include <gtk/gtksocket.h>
-#include <gtk/gtktogglebutton.h>
-#include <gtk/gtkaccessible.h>
+#include <ctk/ctkcombobox.h>
+#include <ctk/ctkentry.h>
+#include <ctk/ctknotebook.h>
+#include <ctk/ctkmenuitem.h>
+#include <ctk/ctkmenu.h>
+#include <ctk/ctkmenubar.h>
+#include <ctk/ctksocket.h>
+#include <ctk/ctktogglebutton.h>
+#include <ctk/ctkaccessible.h>
 
 #ifdef GDK_WINDOWING_X11
 #include <atk-bridge.h>
@@ -504,7 +504,7 @@ gail_focus_notify (GtkWidget *widget)
           void *vp_focus_widget = &_focus_widget;
           g_object_add_weak_pointer (G_OBJECT (_focus_widget), vp_focus_widget);
           /*
-           * The UI may not have been updated yet; e.g. in gtkhtml2
+           * The UI may not have been updated yet; e.g. in ctkhtml2
            * html_view_layout() is called in a idle handler
            */
           if (_focus_widget == focus_before_menu)
@@ -604,7 +604,7 @@ gail_focus_notify_when_idle (GtkWidget *widget)
     }
 
   focus_notify_handler = gdk_threads_add_idle (gail_focus_idle_handler, widget);
-  g_source_set_name_by_id (focus_notify_handler, "[gtk+] gail_focus_idle_handler");
+  g_source_set_name_by_id (focus_notify_handler, "[ctk+] gail_focus_idle_handler");
 }
 
 static gboolean

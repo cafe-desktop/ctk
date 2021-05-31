@@ -1,3 +1,3 @@
 i18n = import('i18n')
 
-i18n.gettext('gtk30', preset : 'glib')
+i18n.gettext('ctk30', preset : 'glib')

@@ -17,12 +17,12 @@
 
 #include "config.h"
 
-#include "gtkcontaineraccessible.h"
-#include "gtkcontaineraccessibleprivate.h"
+#include "ctkcontaineraccessible.h"
+#include "ctkcontaineraccessibleprivate.h"
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
-#include "gtkwidgetprivate.h"
+#include "ctkwidgetprivate.h"
 
 struct _GtkContainerAccessiblePrivate
 {
@@ -94,8 +94,8 @@ _ctk_container_accessible_add (GtkWidget *parent,
   accessible = CTK_CONTAINER_ACCESSIBLE (obj);
   klass = CTK_CONTAINER_ACCESSIBLE_GET_CLASS (accessible);
 
-  if (klass->add_gtk)
-    klass->add_gtk (CTK_CONTAINER (parent), child, obj);
+  if (klass->add_ctk)
+    klass->add_ctk (CTK_CONTAINER (parent), child, obj);
 }
 
 void
@@ -113,12 +113,12 @@ _ctk_container_accessible_remove (GtkWidget *parent,
   accessible = CTK_CONTAINER_ACCESSIBLE (obj);
   klass = CTK_CONTAINER_ACCESSIBLE_GET_CLASS (accessible);
 
-  if (klass->remove_gtk)
-    klass->remove_gtk (CTK_CONTAINER (parent), child, obj);
+  if (klass->remove_ctk)
+    klass->remove_ctk (CTK_CONTAINER (parent), child, obj);
 }
 
 static gint
-ctk_container_accessible_real_add_gtk (GtkContainer *container,
+ctk_container_accessible_real_add_ctk (GtkContainer *container,
                                        GtkWidget    *widget,
                                        gpointer      data)
 {
@@ -140,7 +140,7 @@ ctk_container_accessible_real_add_gtk (GtkContainer *container,
 }
 
 static gint
-ctk_container_accessible_real_remove_gtk (GtkContainer *container,
+ctk_container_accessible_real_remove_ctk (GtkContainer *container,
                                           GtkWidget    *widget,
                                           gpointer      data)
 {
@@ -199,8 +199,8 @@ ctk_container_accessible_class_init (GtkContainerAccessibleClass *klass)
   class->ref_child = ctk_container_accessible_ref_child;
   class->initialize = ctk_container_accessible_real_initialize;
 
-  klass->add_gtk = ctk_container_accessible_real_add_gtk;
-  klass->remove_gtk = ctk_container_accessible_real_remove_gtk;
+  klass->add_ctk = ctk_container_accessible_real_add_ctk;
+  klass->remove_ctk = ctk_container_accessible_real_remove_ctk;
 }
 
 static void

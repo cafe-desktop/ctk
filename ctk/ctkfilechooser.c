@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkfilechooser.c: Abstract interface for file selector GUIs
+ * ctkfilechooser.c: Abstract interface for file selector GUIs
  * Copyright (C) 2003, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -17,16 +17,16 @@
  */
 
 #include "config.h"
-#include "gtkfilechooser.h"
-#include "gtkfilechooserprivate.h"
-#include "gtkintl.h"
-#include "gtktypebuiltins.h"
-#include "gtkprivate.h"
-#include "gtkmarshalers.h"
+#include "ctkfilechooser.h"
+#include "ctkfilechooserprivate.h"
+#include "ctkintl.h"
+#include "ctktypebuiltins.h"
+#include "ctkprivate.h"
+#include "ctkmarshalers.h"
 
 
 /**
- * SECTION:gtkfilechooser
+ * SECTION:ctkfilechooser
  * @Short_description: File chooser interface used by GtkFileChooserWidget and GtkFileChooserDialog
  * @Title: GtkFileChooser
  * @See_also: #GtkFileChooserDialog, #GtkFileChooserWidget, #GtkFileChooserButton
@@ -92,7 +92,7 @@
  * flag that indicates whether your callback could successfully
  * generate a preview.
  *
- * ## Example: Using a Preview Widget ## {#gtkfilechooser-preview}
+ * ## Example: Using a Preview Widget ## {#ctkfilechooser-preview}
  * |[<!-- language="C" -->
  * {
  *   GtkImage *preview;
@@ -254,7 +254,7 @@ ctk_file_chooser_default_init (GtkFileChooserInterface *iface)
    * chooser about whether the preview was generated successfully or not.
    *
    * Please see the example code in
-   * [Using a Preview Widget][gtkfilechooser-preview].
+   * [Using a Preview Widget][ctkfilechooser-preview].
    *
    * See also: ctk_file_chooser_set_preview_widget(),
    * ctk_file_chooser_set_preview_widget_active(),
@@ -323,7 +323,7 @@ ctk_file_chooser_default_init (GtkFileChooserInterface *iface)
    * %CTK_FILE_CHOOSER_CONFIRMATION_CONFIRM. The following example
    * illustrates this.
    *
-   * ## Custom confirmation ## {#gtkfilechooser-confirmation}
+   * ## Custom confirmation ## {#ctkfilechooser-confirmation}
    *
    * |[<!-- language="C" -->
    * static GtkFileChooserConfirmation
@@ -474,7 +474,7 @@ ctk_file_chooser_default_init (GtkFileChooserInterface *iface)
 GQuark
 ctk_file_chooser_error_quark (void)
 {
-  return g_quark_from_static_string ("gtk-file-chooser-error-quark");
+  return g_quark_from_static_string ("ctk-file-chooser-error-quark");
 }
 
 /**
@@ -888,7 +888,7 @@ ctk_file_chooser_get_filenames (GtkFileChooser *chooser)
  * plus user interface elements for navigating to other folders.
  *
  * In general, you should not use this function.  See the
- * [section on setting up a file chooser dialog][gtkfilechooserdialog-setting-up]
+ * [section on setting up a file chooser dialog][ctkfilechooserdialog-setting-up]
  * for the rationale behind this.
  *
  * Returns: Not useful.
@@ -1232,7 +1232,7 @@ ctk_file_chooser_get_uris (GtkFileChooser *chooser)
  * plus user interface elements for navigating to other folders.
  *
  * In general, you should not use this function.  See the
- * [section on setting up a file chooser dialog][gtkfilechooserdialog-setting-up]
+ * [section on setting up a file chooser dialog][ctkfilechooserdialog-setting-up]
  * for the rationale behind this.
  *
  * Returns: %TRUE if the folder could be changed successfully, %FALSE

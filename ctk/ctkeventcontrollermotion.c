@@ -18,7 +18,7 @@
  */
 
 /**
- * SECTION:gtkeventcontrollermotion
+ * SECTION:ctkeventcontrollermotion
  * @Short_description: Event controller for motion events
  * @Title: GtkEventControllerMotion
  * @See_also: #GtkEventController
@@ -30,13 +30,13 @@
  **/
 #include "config.h"
 
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
-#include "gtkwidget.h"
-#include "gtkeventcontrollerprivate.h"
-#include "gtkeventcontrollermotion.h"
-#include "gtktypebuiltins.h"
-#include "gtkmarshalers.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
+#include "ctkwidget.h"
+#include "ctkeventcontrollerprivate.h"
+#include "ctkeventcontrollermotion.h"
+#include "ctktypebuiltins.h"
+#include "ctkmarshalers.h"
 
 struct _GtkEventControllerMotion
 {

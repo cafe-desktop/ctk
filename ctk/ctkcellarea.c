@@ -1,4 +1,4 @@
-/* gtkcellarea.c
+/* ctkcellarea.c
  *
  * Copyright (C) 2010 Openismus GmbH
  *
@@ -20,7 +20,7 @@
  */
 
 /**
- * SECTION:gtkcellarea
+ * SECTION:ctkcellarea
  * @Short_Description: An abstract class for laying out GtkCellRenderers
  * @Title: GtkCellArea
  *
@@ -345,13 +345,13 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "gtkintl.h"
-#include "gtkcelllayout.h"
-#include "gtkcellarea.h"
-#include "gtkcellareacontext.h"
-#include "gtkmarshalers.h"
-#include "gtkprivate.h"
-#include "gtkrender.h"
+#include "ctkintl.h"
+#include "ctkcelllayout.h"
+#include "ctkcellarea.h"
+#include "ctkcellareacontext.h"
+#include "ctkmarshalers.h"
+#include "ctkprivate.h"
+#include "ctkrender.h"
 
 #include <gobject/gvaluecollector.h>
 

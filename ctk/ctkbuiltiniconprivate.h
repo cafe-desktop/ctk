@@ -20,7 +20,7 @@
 #ifndef __CTK_BUILTIN_ICON_PRIVATE_H__
 #define __CTK_BUILTIN_ICON_PRIVATE_H__
 
-#include "gtk/gtkcssgadgetprivate.h"
+#include "ctk/ctkcssgadgetprivate.h"
 
 G_BEGIN_DECLS
 

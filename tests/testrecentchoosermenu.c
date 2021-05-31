@@ -16,7 +16,7 @@
  */
 
 #include "config.h"
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static GtkRecentManager *manager = NULL;
 static GtkWidget *window = NULL;

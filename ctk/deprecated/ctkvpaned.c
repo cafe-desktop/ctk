@@ -19,19 +19,19 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
-#include "gtkorientable.h"
+#include "ctkorientable.h"
 
-#include "gtkvpaned.h"
+#include "ctkvpaned.h"
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
 /**
- * SECTION:gtkvpaned
+ * SECTION:ctkvpaned
  * @Short_description: A container with two panes arranged vertically
  * @Title: GtkVPaned
  *

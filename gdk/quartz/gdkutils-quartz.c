@@ -1,7 +1,7 @@
 /* gdkutils-quartz.c
  *
  * Copyright (C) 2005 Imendio AB
- * Copyright (C) 2010  Kristian Rietveld  <kris@gtk.org>
+ * Copyright (C) 2010  Kristian Rietveld  <kris@ctk.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -22,7 +22,7 @@
 #include <gdk/gdk.h>
 #include <gdkinternals.h>
 
-#include "gdkquartz-gtk-only.h"
+#include "gdkquartz-ctk-only.h"
 #include <gdkquartzutils.h>
 
 NSImage *

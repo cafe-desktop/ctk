@@ -1,7 +1,7 @@
 # 
 # This file contains the compose sequences that GTK+ used to have until GTK+ 2.12
 # but are not found anymore at the upstream Compose file at X.Org.
-# When updating gtkimcontextsimpleseqs.h with compose-parse.py,
+# When updating ctkimcontextsimpleseqs.h with compose-parse.py,
 # we include this file as well. There are 15 conflicts currently
 # in the compose sequences, and we currently favour the sequences from 
 # this file (against the upstream X.Org file). For more, see

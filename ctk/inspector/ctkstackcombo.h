@@ -21,11 +21,11 @@
 #define __CTK_STACK_COMBO_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkcombobox.h>
-#include <gtk/gtkstack.h>
+#include <ctk/ctkcombobox.h>
+#include <ctk/ctkstack.h>
 
 G_BEGIN_DECLS
 

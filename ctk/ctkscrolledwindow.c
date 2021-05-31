@@ -19,39 +19,39 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
-#include "gtkscrolledwindow.h"
+#include "ctkscrolledwindow.h"
 
-#include "gtkadjustment.h"
-#include "gtkadjustmentprivate.h"
-#include "gtkbindings.h"
-#include "gtkcsscustomgadgetprivate.h"
-#include "gtkdnd.h"
-#include "gtkintl.h"
-#include "gtkmain.h"
-#include "gtkmarshalers.h"
-#include "gtkprivate.h"
-#include "gtkscrollable.h"
-#include "gtkscrollbar.h"
-#include "gtkrangeprivate.h"
-#include "gtktypebuiltins.h"
-#include "gtkviewport.h"
-#include "gtkwidgetprivate.h"
-#include "gtkwindow.h"
-#include "gtkkineticscrolling.h"
-#include "a11y/gtkscrolledwindowaccessible.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkprogresstrackerprivate.h"
-#include "gtksettingsprivate.h"
+#include "ctkadjustment.h"
+#include "ctkadjustmentprivate.h"
+#include "ctkbindings.h"
+#include "ctkcsscustomgadgetprivate.h"
+#include "ctkdnd.h"
+#include "ctkintl.h"
+#include "ctkmain.h"
+#include "ctkmarshalers.h"
+#include "ctkprivate.h"
+#include "ctkscrollable.h"
+#include "ctkscrollbar.h"
+#include "ctkrangeprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctkviewport.h"
+#include "ctkwidgetprivate.h"
+#include "ctkwindow.h"
+#include "ctkkineticscrolling.h"
+#include "a11y/ctkscrolledwindowaccessible.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkprogresstrackerprivate.h"
+#include "ctksettingsprivate.h"
 
 #include <math.h>
 
 /**
- * SECTION:gtkscrolledwindow
+ * SECTION:ctkscrolledwindow
  * @Short_description: Adds scrollbars to its child widget
  * @Title: GtkScrolledWindow
  * @See_also: #GtkScrollable, #GtkViewport, #GtkAdjustment
@@ -138,7 +138,7 @@
 
 /* scrolled window policy and size requisition handling:
  *
- * gtk size requisition works as follows:
+ * ctk size requisition works as follows:
  *   a widget upon size-request reports the width and height that it finds
  *   to be best suited to display its contents, including children.
  *   the width and/or height reported from a widget upon size requisition
@@ -703,7 +703,7 @@ ctk_scrolled_window_class_init (GtkScrolledWindowClass *class)
    * as narrow indicators.
    *
    * Note that overlay scrolling can also be globally disabled, with
-   * the #GtkSettings::gtk-overlay-scrolling setting.
+   * the #GtkSettings::ctk-overlay-scrolling setting.
    *
    * Since: 3.16
    */
@@ -3626,7 +3626,7 @@ ctk_scrolled_window_scroll_event (GtkWidget      *widget,
           priv->scroll_events_overshoot_id =
             gdk_threads_add_timeout (50, start_scroll_deceleration_cb, scrolled_window);
           g_source_set_name_by_id (priv->scroll_events_overshoot_id,
-                                   "[gtk+] start_scroll_deceleration_cb");
+                                   "[ctk+] start_scroll_deceleration_cb");
         }
     }
 
@@ -4486,7 +4486,7 @@ ctk_scrolled_window_update_use_indicators (GtkScrolledWindow *scrolled_window)
   GtkSettings *settings = ctk_widget_get_settings (CTK_WIDGET (scrolled_window));
   gboolean overlay_scrolling;
 
-  g_object_get (settings, "gtk-overlay-scrolling", &overlay_scrolling, NULL);
+  g_object_get (settings, "ctk-overlay-scrolling", &overlay_scrolling, NULL);
 
   use_indicators = overlay_scrolling && priv->overlay_scrolling;
 

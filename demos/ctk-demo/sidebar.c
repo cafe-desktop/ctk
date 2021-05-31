@@ -7,7 +7,7 @@
  */
 
 #include <glib/gi18n.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 GtkWidget *
 do_sidebar (GtkWidget *do_widget)

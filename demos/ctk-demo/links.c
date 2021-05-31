@@ -5,7 +5,7 @@
  * this with a custom handler.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 response_cb (GtkWidget *dialog,

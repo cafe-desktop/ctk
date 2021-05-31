@@ -17,10 +17,10 @@
 
 #include "config.h"
 
-#include "gtkcsswin32sizevalueprivate.h"
+#include "ctkcsswin32sizevalueprivate.h"
 
-#include "gtkwin32drawprivate.h"
-#include "gtkwin32themeprivate.h"
+#include "ctkwin32drawprivate.h"
+#include "ctkwin32themeprivate.h"
 
 typedef enum {
   CTK_WIN32_SIZE,
@@ -33,13 +33,13 @@ typedef enum {
 } GtkWin32SizeType;
 
 static const char *css_value_names[] = {
-  "-gtk-win32-size(",
-  "-gtk-win32-part-width(",
-  "-gtk-win32-part-height(",
-  "-gtk-win32-part-border-top(",
-  "-gtk-win32-part-border-right(",
-  "-gtk-win32-part-border-bottom(",
-  "-gtk-win32-part-border-left("
+  "-ctk-win32-size(",
+  "-ctk-win32-part-width(",
+  "-ctk-win32-part-height(",
+  "-ctk-win32-part-border-top(",
+  "-ctk-win32-part-border-right(",
+  "-ctk-win32-part-border-bottom(",
+  "-ctk-win32-part-border-left("
 };
 
 struct _GtkCssValue {

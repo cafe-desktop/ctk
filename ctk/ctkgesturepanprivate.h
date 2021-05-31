@@ -19,8 +19,8 @@
 #ifndef __CTK_GESTURE_PAN_PRIVATE_H__
 #define __CTK_GESTURE_PAN_PRIVATE_H__
 
-#include "gtkgesturedragprivate.h"
-#include "gtkgesturepan.h"
+#include "ctkgesturedragprivate.h"
+#include "ctkgesturepan.h"
 
 struct _GtkGesturePan
 {

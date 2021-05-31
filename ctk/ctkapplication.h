@@ -21,10 +21,10 @@
 #define __CTK_APPLICATION_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkwidget.h>
+#include <ctk/ctkwidget.h>
 #include <gio/gio.h>
 
 G_BEGIN_DECLS

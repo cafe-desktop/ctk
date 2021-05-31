@@ -1,4 +1,4 @@
-/* gtkcellrenderertoggle.c
+/* ctkcellrenderertoggle.c
  * Copyright (C) 2000  Red Hat, Inc.,  Jonathan Blandford <jrb@redhat.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -17,17 +17,17 @@
 
 #include "config.h"
 #include <stdlib.h>
-#include "gtkcellrenderertoggle.h"
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
-#include "gtkprivate.h"
-#include "gtkstylecontextprivate.h"
-#include "gtktreeprivate.h"
-#include "a11y/gtkbooleancellaccessible.h"
+#include "ctkcellrenderertoggle.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
+#include "ctkprivate.h"
+#include "ctkstylecontextprivate.h"
+#include "ctktreeprivate.h"
+#include "a11y/ctkbooleancellaccessible.h"
 
 
 /**
- * SECTION:gtkcellrenderertoggle
+ * SECTION:ctkcellrenderertoggle
  * @Short_description: Renders a toggle button in a cell
  * @Title: GtkCellRendererToggle
  *

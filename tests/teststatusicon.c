@@ -1,4 +1,4 @@
-/* gtkstatusicon-x11.c:
+/* ctkstatusicon-x11.c:
  *
  * Copyright (C) 2003 Sun Microsystems, Inc.
  *
@@ -20,7 +20,7 @@
  */
 
 #define GDK_DISABLE_DEPRECATION_WARNINGS
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <stdlib.h>
 
 typedef enum

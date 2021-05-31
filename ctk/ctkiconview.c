@@ -1,4 +1,4 @@
-/* gtkiconview.c
+/* ctkiconview.c
  * Copyright (C) 2002, 2004  Anders Carlsson <andersca@gnu.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -19,38 +19,38 @@
 
 #include <string.h>
 
-#include "gtkiconview.h"
-#include "gtkiconviewprivate.h"
+#include "ctkiconview.h"
+#include "ctkiconviewprivate.h"
 
-#include "gtkadjustmentprivate.h"
-#include "gtkcelllayout.h"
-#include "gtkcellrenderer.h"
-#include "gtkcellareabox.h"
-#include "gtkcellareacontext.h"
-#include "gtkcellrenderertext.h"
-#include "gtkcellrendererpixbuf.h"
-#include "gtkorientable.h"
-#include "gtkmarshalers.h"
-#include "gtkbindings.h"
-#include "gtkdnd.h"
-#include "gtkmain.h"
-#include "gtkintl.h"
-#include "gtkaccessible.h"
-#include "gtkwindow.h"
-#include "gtkentry.h"
-#include "gtkcombobox.h"
-#include "gtkscrollable.h"
-#include "gtksizerequest.h"
-#include "gtktreednd.h"
-#include "gtktypebuiltins.h"
-#include "gtkprivate.h"
-#include "gtkcssnodeprivate.h"
-#include "gtkwidgetprivate.h"
-#include "gtkstylecontextprivate.h"
-#include "a11y/gtkiconviewaccessibleprivate.h"
+#include "ctkadjustmentprivate.h"
+#include "ctkcelllayout.h"
+#include "ctkcellrenderer.h"
+#include "ctkcellareabox.h"
+#include "ctkcellareacontext.h"
+#include "ctkcellrenderertext.h"
+#include "ctkcellrendererpixbuf.h"
+#include "ctkorientable.h"
+#include "ctkmarshalers.h"
+#include "ctkbindings.h"
+#include "ctkdnd.h"
+#include "ctkmain.h"
+#include "ctkintl.h"
+#include "ctkaccessible.h"
+#include "ctkwindow.h"
+#include "ctkentry.h"
+#include "ctkcombobox.h"
+#include "ctkscrollable.h"
+#include "ctksizerequest.h"
+#include "ctktreednd.h"
+#include "ctktypebuiltins.h"
+#include "ctkprivate.h"
+#include "ctkcssnodeprivate.h"
+#include "ctkwidgetprivate.h"
+#include "ctkstylecontextprivate.h"
+#include "a11y/ctkiconviewaccessibleprivate.h"
 
 /**
- * SECTION:gtkiconview
+ * SECTION:ctkiconview
  * @title: GtkIconView
  * @short_description: A widget which displays a list of icons in a grid
  *
@@ -2015,7 +2015,7 @@ ctk_icon_view_motion (GtkWidget      *widget,
 	  if (icon_view->priv->scroll_timeout_id == 0) {
 	    icon_view->priv->scroll_timeout_id = gdk_threads_add_timeout (30, rubberband_scroll_timeout, 
 								icon_view);
-	    g_source_set_name_by_id (icon_view->priv->scroll_timeout_id, "[gtk+] rubberband_scroll_timeout");
+	    g_source_set_name_by_id (icon_view->priv->scroll_timeout_id, "[ctk+] rubberband_scroll_timeout");
 	  }
  	}
       else 
@@ -6061,7 +6061,7 @@ set_status_pending (GdkDragContext *context,
                     GdkDragAction   suggested_action)
 {
   g_object_set_data (G_OBJECT (context),
-                     I_("gtk-icon-view-status-pending"),
+                     I_("ctk-icon-view-status-pending"),
                      GINT_TO_POINTER (suggested_action));
 }
 
@@ -6069,7 +6069,7 @@ static GdkDragAction
 get_status_pending (GdkDragContext *context)
 {
   return GPOINTER_TO_INT (g_object_get_data (G_OBJECT (context),
-                                             "gtk-icon-view-status-pending"));
+                                             "ctk-icon-view-status-pending"));
 }
 
 static void
@@ -6089,12 +6089,12 @@ set_source_row (GdkDragContext *context,
 {
   if (source_row)
     g_object_set_data_full (G_OBJECT (context),
-			    I_("gtk-icon-view-source-row"),
+			    I_("ctk-icon-view-source-row"),
 			    ctk_tree_row_reference_new (model, source_row),
 			    (GDestroyNotify) ctk_tree_row_reference_free);
   else
     g_object_set_data_full (G_OBJECT (context),
-			    I_("gtk-icon-view-source-row"),
+			    I_("ctk-icon-view-source-row"),
 			    NULL, NULL);
 }
 
@@ -6103,7 +6103,7 @@ get_source_row (GdkDragContext *context)
 {
   GtkTreeRowReference *ref;
 
-  ref = g_object_get_data (G_OBJECT (context), "gtk-icon-view-source-row");
+  ref = g_object_get_data (G_OBJECT (context), "ctk-icon-view-source-row");
 
   if (ref)
     return ctk_tree_row_reference_get_path (ref);
@@ -6139,7 +6139,7 @@ set_dest_row (GdkDragContext *context,
   if (!dest_row)
     {
       g_object_set_data_full (G_OBJECT (context),
-			      I_("gtk-icon-view-dest-row"),
+			      I_("ctk-icon-view-dest-row"),
 			      NULL, NULL);
       return;
     }
@@ -6150,7 +6150,7 @@ set_dest_row (GdkDragContext *context,
   dr->empty_view_drop = empty_view_drop;
   dr->drop_append_mode = drop_append_mode;
   g_object_set_data_full (G_OBJECT (context),
-                          I_("gtk-icon-view-dest-row"),
+                          I_("ctk-icon-view-dest-row"),
                           dr, (GDestroyNotify) dest_row_free);
 }
 
@@ -6159,7 +6159,7 @@ get_dest_row (GdkDragContext *context)
 {
   DestRow *dr;
 
-  dr = g_object_get_data (G_OBJECT (context), "gtk-icon-view-dest-row");
+  dr = g_object_get_data (G_OBJECT (context), "ctk-icon-view-dest-row");
 
   if (dr)
     {
@@ -6194,8 +6194,8 @@ check_model_dnd (GtkTreeModel *model,
                  "is to connect to '%s' and call "
                  "g_signal_stop_emission_by_name() in your signal handler to prevent "
                  "the default handler from running. Look at the source code "
-                 "for the default handler in gtkiconview.c to get an idea what "
-                 "your handler should do. (gtkiconview.c is in the GTK+ source "
+                 "for the default handler in ctkiconview.c to get an idea what "
+                 "your handler should do. (ctkiconview.c is in the GTK+ source "
                  "code.) If you're using GTK+ from a language other than C, "
                  "there may be a more natural way to override default handlers, e.g. via derivation.",
                  signal, g_type_name (required_iface), signal);
@@ -6655,7 +6655,7 @@ ctk_icon_view_drag_motion (GtkWidget      *widget,
 	{
 	  icon_view->priv->scroll_timeout_id =
 	    gdk_threads_add_timeout (50, drag_scroll_timeout, icon_view);
-	  g_source_set_name_by_id (icon_view->priv->scroll_timeout_id, "[gtk+] drag_scroll_timeout");
+	  g_source_set_name_by_id (icon_view->priv->scroll_timeout_id, "[ctk+] drag_scroll_timeout");
 	}
 
       if (target == gdk_atom_intern_static_string ("CTK_TREE_MODEL_ROW"))

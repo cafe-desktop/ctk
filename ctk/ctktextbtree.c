@@ -54,20 +54,20 @@
 
 #define CTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
 #include "config.h"
-#include "gtktextbtree.h"
+#include "ctktextbtree.h"
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "gtktextbufferprivate.h"
-#include "gtktexttag.h"
-#include "gtktexttagprivate.h"
-#include "gtktexttagtableprivate.h"
-#include "gtktextlayout.h"
-#include "gtktextiterprivate.h"
-#include "gtkdebug.h"
-#include "gtktextmarkprivate.h"
-#include "gtktextsegment.h"
-#include "gtkpango.h"
+#include "ctktextbufferprivate.h"
+#include "ctktexttag.h"
+#include "ctktexttagprivate.h"
+#include "ctktexttagtableprivate.h"
+#include "ctktextlayout.h"
+#include "ctktextiterprivate.h"
+#include "ctkdebug.h"
+#include "ctktextmarkprivate.h"
+#include "ctktextsegment.h"
+#include "ctkpango.h"
 
 /*
  * Types
@@ -6595,7 +6595,7 @@ ctk_text_btree_unlink_segment (GtkTextBTree *tree,
 
 /*
  * This is here because it requires BTree internals, it logically
- * belongs in gtktextsegment.c
+ * belongs in ctktextsegment.c
  */
 
 

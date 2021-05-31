@@ -19,17 +19,17 @@
 #define __CTK_X_H__
 
 #if defined (CTK_COMPILATION)
-#error "<gtk/gtkx.h> must not be included by GTK+ headers."
+#error "<ctk/ctkx.h> must not be included by GTK+ headers."
 #endif
 
 #define __GTKX_H_INSIDE__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
-#include <gtk/gtksocket.h>
-#include <gtk/gtkplug.h>
+#include <ctk/ctksocket.h>
+#include <ctk/ctkplug.h>
 
-#include <gtk/gtkx-autocleanups.h>
+#include <ctk/ctkx-autocleanups.h>
 
 #undef __GTKX_H_INSIDE__
 

@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 split_decorations (GtkSettings *settings,
@@ -12,7 +12,7 @@ split_decorations (GtkSettings *settings,
   sheader = (GtkWidget *)ctk_builder_get_object (builder, "sidebar-header");
   mheader = (GtkWidget *)ctk_builder_get_object (builder, "main-header");
 
-  g_object_get (settings, "gtk-decoration-layout", &layout, NULL);
+  g_object_get (settings, "ctk-decoration-layout", &layout, NULL);
 
   p = g_strsplit (layout, ":", -1);
 
@@ -49,12 +49,12 @@ main (int argc, char *argv[])
   win = (GtkWidget *)ctk_builder_get_object (builder, "window");
   settings = ctk_widget_get_settings (win);
 
-  g_signal_connect (settings, "notify::gtk-decoration-layout",
+  g_signal_connect (settings, "notify::ctk-decoration-layout",
                     G_CALLBACK (split_decorations), builder);
   split_decorations (settings, NULL, builder);
   
   entry = (GtkWidget *)ctk_builder_get_object (builder, "layout-entry");
-  g_object_bind_property (settings, "gtk-decoration-layout",
+  g_object_bind_property (settings, "ctk-decoration-layout",
                           entry, "text",
                           G_BINDING_BIDIRECTIONAL|G_BINDING_SYNC_CREATE);                      
   check = (GtkWidget *)ctk_builder_get_object (builder, "decorations");

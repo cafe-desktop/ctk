@@ -20,17 +20,17 @@
 
 #include "visual.h"
 
-#include "gtkadjustment.h"
-#include "gtkbox.h"
-#include "gtkcomboboxtext.h"
-#include "gtkdebug.h"
-#include "gtkprivate.h"
-#include "gtksettings.h"
-#include "gtkswitch.h"
-#include "gtkscale.h"
-#include "gtkwindow.h"
-#include "gtkcssproviderprivate.h"
-#include "gtkversion.h"
+#include "ctkadjustment.h"
+#include "ctkbox.h"
+#include "ctkcomboboxtext.h"
+#include "ctkdebug.h"
+#include "ctkprivate.h"
+#include "ctksettings.h"
+#include "ctkswitch.h"
+#include "ctkscale.h"
+#include "ctkwindow.h"
+#include "ctkcssproviderprivate.h"
+#include "ctkversion.h"
 
 #include "fallback-c89.c"
 
@@ -152,7 +152,7 @@ get_font_scale (GtkInspectorVisual *vis)
       int dpi_int;
 
       g_object_get (ctk_settings_get_default (),
-                    "gtk-xft-dpi", &dpi_int,
+                    "ctk-xft-dpi", &dpi_int,
                     NULL);
 
       return dpi_int / (96.0 * 1024.0);
@@ -164,7 +164,7 @@ get_font_scale (GtkInspectorVisual *vis)
       int dpi_int;
 
       g_object_get (ctk_settings_get_default (),
-                    "gtk-xft-dpi", &dpi_int,
+                    "ctk-xft-dpi", &dpi_int,
                     NULL);
 
       return dpi_int / (96.0 * 1024.0);
@@ -181,7 +181,7 @@ update_font_scale (GtkInspectorVisual *vis,
                    gboolean            update_entry)
 {
   g_object_set (ctk_settings_get_default (),
-                "gtk-xft-dpi", (gint)(factor * 96 * 1024),
+                "ctk-xft-dpi", (gint)(factor * 96 * 1024),
                 NULL);
 
   if (update_adjustment)
@@ -304,7 +304,7 @@ widget_resize_activate (GtkSwitch *sw)
 }
 
 static void
-fill_gtk (const gchar *path,
+fill_ctk (const gchar *path,
           GHashTable  *t)
 {
   const gchar *dir_entry;
@@ -319,7 +319,7 @@ fill_gtk (const gchar *path,
 #define MINOR CTK_MINOR_VERSION
 #endif
 
-  /* Keep this in sync with _ctk_css_find_theme_dir() in gtkcssprovider.c */
+  /* Keep this in sync with _ctk_css_find_theme_dir() in ctkcssprovider.c */
   while ((dir_entry = g_dir_read_name (dir)))
     {
       gint i;
@@ -332,8 +332,8 @@ fill_gtk (const gchar *path,
           if (i < 14)
             i = 0;
 
-          subsubdir = g_strdup_printf ("gtk-3.%d", i);
-          filename = g_build_filename (path, dir_entry, subsubdir, "gtk.css", NULL);
+          subsubdir = g_strdup_printf ("ctk-3.%d", i);
+          filename = g_build_filename (path, dir_entry, subsubdir, "ctk.css", NULL);
           g_free (subsubdir);
 
           if (g_file_test (filename, G_FILE_TEST_IS_REGULAR) &&
@@ -379,7 +379,7 @@ init_theme (GtkInspectorVisual *vis)
 
   t = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
   /* Builtin themes */
-  builtin_themes = g_resources_enumerate_children ("/org/gtk/libgtk/theme", 0, NULL);
+  builtin_themes = g_resources_enumerate_children ("/org/ctk/libctk/theme", 0, NULL);
   for (i = 0; builtin_themes[i] != NULL; i++)
     {
       if (g_str_has_suffix (builtin_themes[i], "/"))
@@ -388,22 +388,22 @@ init_theme (GtkInspectorVisual *vis)
   g_strfreev (builtin_themes);
 
   path = _ctk_get_theme_dir ();
-  fill_gtk (path, t);
+  fill_ctk (path, t);
   g_free (path);
 
   path = g_build_filename (g_get_user_data_dir (), "themes", NULL);
-  fill_gtk (path, t);
+  fill_ctk (path, t);
   g_free (path);
 
   path = g_build_filename (g_get_home_dir (), ".themes", NULL);
-  fill_gtk (path, t);
+  fill_ctk (path, t);
   g_free (path);
 
   dirs = g_get_system_data_dirs ();
   for (i = 0; dirs[i]; i++)
     {
       path = g_build_filename (dirs[i], "themes", NULL);
-      fill_gtk (path, t);
+      fill_ctk (path, t);
       g_free (path);
     }
 
@@ -421,7 +421,7 @@ init_theme (GtkInspectorVisual *vis)
   g_list_free (list);
   g_hash_table_destroy (t);
 
-  g_object_bind_property (ctk_settings_get_default (), "gtk-theme-name",
+  g_object_bind_property (ctk_settings_get_default (), "ctk-theme-name",
                           vis->priv->theme_combo, "active-id",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
 
@@ -436,7 +436,7 @@ init_theme (GtkInspectorVisual *vis)
 static void
 init_dark (GtkInspectorVisual *vis)
 {
-  g_object_bind_property (ctk_settings_get_default (), "gtk-application-prefer-dark-theme",
+  g_object_bind_property (ctk_settings_get_default (), "ctk-application-prefer-dark-theme",
                           vis->priv->dark_switch, "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
 
@@ -506,7 +506,7 @@ init_icons (GtkInspectorVisual *vis)
   g_hash_table_destroy (t);
   g_list_free (list);
 
-  g_object_bind_property (ctk_settings_get_default (), "gtk-icon-theme-name",
+  g_object_bind_property (ctk_settings_get_default (), "ctk-icon-theme-name",
                           vis->priv->icon_combo, "active-id",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
 }
@@ -568,7 +568,7 @@ init_cursors (GtkInspectorVisual *vis)
   g_hash_table_destroy (t);
   g_list_free (list);
 
-  g_object_bind_property (ctk_settings_get_default (), "gtk-cursor-theme-name",
+  g_object_bind_property (ctk_settings_get_default (), "ctk-cursor-theme-name",
                           vis->priv->cursor_combo, "active-id",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
 }
@@ -579,7 +579,7 @@ cursor_size_changed (GtkAdjustment *adjustment, GtkInspectorVisual *vis)
   gint size;
 
   size = ctk_adjustment_get_value (adjustment);
-  g_object_set (ctk_settings_get_default (), "gtk-cursor-theme-size", size, NULL);
+  g_object_set (ctk_settings_get_default (), "ctk-cursor-theme-size", size, NULL);
 }
 
 static void
@@ -587,7 +587,7 @@ init_cursor_size (GtkInspectorVisual *vis)
 {
   gint size;
 
-  g_object_get (ctk_settings_get_default (), "gtk-cursor-theme-size", &size, NULL);
+  g_object_get (ctk_settings_get_default (), "ctk-cursor-theme-size", &size, NULL);
   if (size == 0)
     size = gdk_display_get_default_cursor_size (gdk_display_get_default ());
 
@@ -599,7 +599,7 @@ init_cursor_size (GtkInspectorVisual *vis)
 static void
 init_font (GtkInspectorVisual *vis)
 {
-  g_object_bind_property (ctk_settings_get_default (), "gtk-font-name",
+  g_object_bind_property (ctk_settings_get_default (), "ctk-font-name",
                           vis->priv->font_button, "font-name",
                           G_BINDING_BIDIRECTIONAL|G_BINDING_SYNC_CREATE);
 }
@@ -661,7 +661,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 static void
 init_animation (GtkInspectorVisual *vis)
 {
-  g_object_bind_property (ctk_settings_get_default (), "gtk-enable-animations",
+  g_object_bind_property (ctk_settings_get_default (), "ctk-enable-animations",
                           vis->priv->animation_switch, "active",
                           G_BINDING_BIDIRECTIONAL|G_BINDING_SYNC_CREATE);
 }
@@ -933,7 +933,7 @@ ctk_inspector_visual_class_init (GtkInspectorVisualClass *klass)
 
   object_class->constructed = ctk_inspector_visual_constructed;
 
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/visual.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/visual.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, rendering_mode_combo);
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, updates_switch);
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorVisual, direction_combo);

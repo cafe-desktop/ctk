@@ -17,7 +17,7 @@
 
 #include "config.h"
 
-#include "gtkhslaprivate.h"
+#include "ctkhslaprivate.h"
 
 #include <math.h>
 

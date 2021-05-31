@@ -19,7 +19,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -43,19 +43,19 @@
 #include <glib/gstdio.h>
 #include "gdk/gdk.h"
 
-#include "gtkversion.h"
-#include "gtkrc.h"
-#include "gtkstyle.h"
-#include "gtkbindings.h"
-#include "gtkintl.h"
-#include "gtkiconfactory.h"
-#include "gtkmain.h"
-#include "gtkmodules.h"
-#include "gtkmodulesprivate.h"
-#include "gtkprivate.h"
-#include "gtksettingsprivate.h"
-#include "gtkwidgetpath.h"
-#include "gtkwindow.h"
+#include "ctkversion.h"
+#include "ctkrc.h"
+#include "ctkstyle.h"
+#include "ctkbindings.h"
+#include "ctkintl.h"
+#include "ctkiconfactory.h"
+#include "ctkmain.h"
+#include "ctkmodules.h"
+#include "ctkmodulesprivate.h"
+#include "ctkprivate.h"
+#include "ctksettingsprivate.h"
+#include "ctkwidgetpath.h"
+#include "ctkwindow.h"
 
 #ifdef G_OS_WIN32
 #include <io.h>
@@ -63,7 +63,7 @@
 
 
 /**
- * SECTION:gtkrc
+ * SECTION:ctkrc
  * @Short_description: Deprecated routines for handling resource files
  * @Title: Resource Files
  *
@@ -80,8 +80,8 @@
  * file by calling ctk_rc_parse(). In addition to this,
  * certain files will be read at the end of ctk_init().
  * Unless modified, the files looked for will be
- * `SYSCONFDIR/gtk-2.0/gtkrc`
- * and `.gtkrc-3.0` in the users home directory.
+ * `SYSCONFDIR/ctk-2.0/ctkrc`
+ * and `.ctkrc-3.0` in the users home directory.
  * (`SYSCONFDIR` defaults to
  * `/usr/local/etc`. It can be changed with the
  * `--prefix` or `--sysconfdir` options when
@@ -100,8 +100,8 @@
  * For each RC file, in addition to the file itself, GTK+ will look for
  * a locale-specific file that will be parsed after the main file.
  * For instance, if `LANG` is set to `ja_JP.ujis`,
- * when loading the default file `~/.gtkrc` then GTK+ looks
- * for `~/.gtkrc.ja_JP` and `~/.gtkrc.ja`,
+ * when loading the default file `~/.ctkrc` then GTK+ looks
+ * for `~/.ctkrc.ja_JP` and `~/.ctkrc.ja`,
  * and parses the first of those that exists.
  *
  * # Pathnames and Patterns #
@@ -169,7 +169,7 @@
  *
  * - `application`
  *
- * - `gtk`
+ * - `ctk`
  *
  * - `lowest`
  *
@@ -178,19 +178,19 @@
  * is the default for styles read from theme RC files,
  * `application`
  * should be used for styles an application sets
- * up, and `gtk` is used for styles
+ * up, and `ctk` is used for styles
  * that GTK+ creates internally.
  *
- * # Theme gtkrc Files #
+ * # Theme ctkrc Files #
  *
  * Theme RC files are loaded first from under the `~/.themes/`,
  * then from the directory from ctk_rc_get_theme_dir(). The files looked at will
- * be `gtk-3.0/gtkrc`.
+ * be `ctk-3.0/ctkrc`.
  *
  * When the application prefers dark themes
- * (see the #GtkSettings:gtk-application-prefer-dark-theme property for details),
- * `gtk-3.0/gtkrc-dark` will be loaded first, and if not present
- * `gtk-3.0/gtkrc` will be loaded.
+ * (see the #GtkSettings:ctk-application-prefer-dark-theme property for details),
+ * `ctk-3.0/ctkrc-dark` will be loaded first, and if not present
+ * `ctk-3.0/ctkrc` will be loaded.
  *
  * # Optimizing RC Style Matches #
  *
@@ -532,15 +532,15 @@
  * |[<!-- language="C" -->
  * stock["my-stock-item"] =
  * {
- *   { "itemmenusize.png", *, *, "gtk-menu" },
- *   { "itemtoolbarsize.png", *, *, "gtk-large-toolbar" }
+ *   { "itemmenusize.png", *, *, "ctk-menu" },
+ *   { "itemtoolbarsize.png", *, *, "ctk-large-toolbar" }
  *   { "itemgeneric.png" } // implicit *, *, * as a fallback
  * }
  * ]|
  *
- * The sizes that come with GTK+ itself are `"gtk-menu"`,
- * `"gtk-small-toolbar"`, `"gtk-large-toolbar"`,
- * `"gtk-button"`, `"gtk-dialog"`. Applications
+ * The sizes that come with GTK+ itself are `"ctk-menu"`,
+ * `"ctk-small-toolbar"`, `"ctk-large-toolbar"`,
+ * `"ctk-button"`, `"ctk-dialog"`. Applications
  * can define other sizes.
  *
  * It’s also possible to use custom icons for a given state, for example:
@@ -722,9 +722,9 @@ ctk_rc_make_default_dir (const gchar *type)
   var = g_getenv ("CTK_EXE_PREFIX");
 
   if (var)
-    path = g_build_filename (var, "lib", "gtk-3.0", CTK_BINARY_VERSION, type, NULL);
+    path = g_build_filename (var, "lib", "ctk-3.0", CTK_BINARY_VERSION, type, NULL);
   else
-    path = g_build_filename (_ctk_get_libdir (), "gtk-3.0", CTK_BINARY_VERSION, type, NULL);
+    path = g_build_filename (_ctk_get_libdir (), "ctk-3.0", CTK_BINARY_VERSION, type, NULL);
 
   return path;
 }
@@ -817,7 +817,7 @@ ctk_rc_get_theme_dir (void)
  *
  * Returns a directory in which GTK+ looks for theme engines.
  * For full information about the search for theme engines,
- * see the docs for `CTK_PATH` in [Running GTK+ Applications][gtk-running].
+ * see the docs for `CTK_PATH` in [Running GTK+ Applications][ctk-running].
  *
  * return value: (type filename): the directory. (Must be freed with g_free())
  *

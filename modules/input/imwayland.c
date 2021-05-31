@@ -21,9 +21,9 @@
 #include <string.h>
 #include <wayland-client-protocol.h>
 
-#include <gtk/gtk.h>
-#include "gtk/gtkintl.h"
-#include "gtk/gtkimmodule.h"
+#include <ctk/ctk.h>
+#include "ctk/ctkintl.h"
+#include "ctk/ctkimmodule.h"
 
 #include "gdk/wayland/gdkwayland.h"
 #include "text-input-unstable-v3-client-protocol.h"
@@ -104,7 +104,7 @@ static const GtkIMContextInfo imwayland_info =
   "wayland",      /* ID */
   NC_("input method menu", "Wayland"),      /* Human readable name */
   GETTEXT_PACKAGE, /* Translation domain */
-  CTK_LOCALEDIR,   /* Dir for bindtextdomain (not strictly needed for "gtk+") */
+  CTK_LOCALEDIR,   /* Dir for bindtextdomain (not strictly needed for "ctk+") */
   "",              /* Languages for which this module is the default */
 };
 

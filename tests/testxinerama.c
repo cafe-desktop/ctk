@@ -18,7 +18,7 @@
 
 #include "config.h"
 #include <stdlib.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static gint num_monitors;
 static gint primary_monitor;

@@ -16,9 +16,9 @@
  */
 
 #include "config.h"
-#include "gtk/gtk.h"
-#include "gtkmagnifierprivate.h"
-#include "gtkintl.h"
+#include "ctk/ctk.h"
+#include "ctkmagnifierprivate.h"
+#include "ctkintl.h"
 
 enum {
   PROP_INSPECTED = 1,

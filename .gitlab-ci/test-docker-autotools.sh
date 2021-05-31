@@ -11,7 +11,7 @@ EXTRA_CONFIGURE_OPT=""
 
 # Only enable documentation when distchecking, since it's required
 if [ -n "${DO_DISTCHECK-}" ]; then
-    EXTRA_CONFIGURE_OPTS="${EXTRA_CONFIGURE_OPTS} --enable-gtk-doc"
+    EXTRA_CONFIGURE_OPTS="${EXTRA_CONFIGURE_OPTS} --enable-ctk-doc"
 fi
 
 NOCONFIGURE=1 ./autogen.sh

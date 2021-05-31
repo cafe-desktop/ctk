@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkprintbackendlpr.h: LPR implementation of GtkPrintBackend 
+ * ctkprintbackendlpr.h: LPR implementation of GtkPrintBackend 
  * for printing to lpr 
  * Copyright (C) 2006, 2007 Red Hat, Inc.
  *
@@ -21,7 +21,7 @@
 #define __CTK_PRINT_BACKEND_LPR_H__
 
 #include <glib-object.h>
-#include "gtkprintbackend.h"
+#include "ctkprintbackend.h"
 
 G_BEGIN_DECLS
 

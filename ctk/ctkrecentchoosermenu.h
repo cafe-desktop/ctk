@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkrecentchoosermenu.h - Recently used items menu widget
+ * ctkrecentchoosermenu.h - Recently used items menu widget
  * Copyright (C) 2006, Emmanuele Bassi
  *
  * This library is free software; you can redistribute it and/or
@@ -20,11 +20,11 @@
 #define __CTK_RECENT_CHOOSER_MENU_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkmenu.h>
-#include <gtk/gtkrecentchooser.h>
+#include <ctk/ctkmenu.h>
+#include <ctk/ctkrecentchooser.h>
 
 G_BEGIN_DECLS
 

@@ -19,16 +19,16 @@
 
 #include "config.h"
 
-#include "gtkmenutrackeritem.h"
-#include "gtkactionmuxer.h"
-#include "gtkdebug.h"
+#include "ctkmenutrackeritem.h"
+#include "ctkactionmuxer.h"
+#include "ctkdebug.h"
 
-#include "gtkactionmuxer.h"
+#include "ctkactionmuxer.h"
 
 #include <string.h>
 
 /*< private >
- * SECTION:gtkmenutrackeritem
+ * SECTION:ctkmenutrackeritem
  * @Title: GtkMenuTrackerItem
  * @Short_description: Small helper for model menu items
  *
@@ -711,7 +711,7 @@ ctk_menu_tracker_item_get_special (GtkMenuTrackerItem *self)
 {
   const gchar *special = NULL;
 
-  g_menu_item_get_attribute (self->item, "x-gtk-private-special", "&s", &special);
+  g_menu_item_get_attribute (self->item, "x-ctk-private-special", "&s", &special);
 
   return special;
 }

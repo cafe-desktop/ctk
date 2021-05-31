@@ -6,7 +6,7 @@
  *
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static GtkWidget *window = NULL;
 static GtkTreeModel *model = NULL;

@@ -20,11 +20,11 @@
 
 #include "selector.h"
 
-#include "gtktreeselection.h"
-#include "gtktreestore.h"
-#include "gtktreeview.h"
-#include "gtkwidgetpath.h"
-#include "gtklabel.h"
+#include "ctktreeselection.h"
+#include "ctktreestore.h"
+#include "ctktreeview.h"
+#include "ctkwidgetpath.h"
+#include "ctklabel.h"
 
 
 enum
@@ -52,7 +52,7 @@ ctk_inspector_selector_class_init (GtkInspectorSelectorClass *klass)
 {
   GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/selector.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/selector.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorSelector, model);
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorSelector, tree);
 }

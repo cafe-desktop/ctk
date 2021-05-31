@@ -20,17 +20,17 @@
  */
 
 #include "config.h"
-#include "gtksearchengine.h"
-#include "gtksearchenginesimple.h"
-#include "gtksearchenginemodel.h"
-#include "gtksearchenginequartz.h"
-#include "gtkintl.h"
+#include "ctksearchengine.h"
+#include "ctksearchenginesimple.h"
+#include "ctksearchenginemodel.h"
+#include "ctksearchenginequartz.h"
+#include "ctkintl.h"
 
 #if defined(HAVE_TRACKER3)
-#include "gtksearchenginetracker3.h"
+#include "ctksearchenginetracker3.h"
 #endif
 #if !defined G_OS_WIN32 /* No tracker on windows */
-#include "gtksearchenginetracker.h"
+#include "ctksearchenginetracker.h"
 #define HAVE_TRACKER 1
 #endif
 

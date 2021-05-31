@@ -1,2 +1,2 @@
-ERROR: gtk-builder-error-quark 1
+ERROR: ctk-builder-error-quark 1
 .:7:17 Unsupported tag for GtkContainer: <warbl>

@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtktextbufferprivate.h Copyright (C) 2015 Red Hat, Inc.
+ * ctktextbufferprivate.h Copyright (C) 2015 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -18,7 +18,7 @@
 #ifndef __CTK_TEXT_BUFFER_PRIVATE_H__
 #define __CTK_TEXT_BUFFER_PRIVATE_H__
 
-#include <gtk/gtktextbuffer.h>
+#include <ctk/ctktextbuffer.h>
 
 G_BEGIN_DECLS
 

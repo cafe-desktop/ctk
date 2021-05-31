@@ -6,7 +6,7 @@
  * to search, or online searches.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 search_changed_cb (GtkSearchEntry *entry,

@@ -19,19 +19,19 @@
 
 #include "config.h"
 
-#include "gtkcssgadgetprivate.h"
+#include "ctkcssgadgetprivate.h"
 
 #include <math.h>
 
-#include "gtkcssnumbervalueprivate.h"
-#include "gtkcssshadowsvalueprivate.h"
-#include "gtkcssstyleprivate.h"
-#include "gtkcssstylepropertyprivate.h"
-#include "gtkcsswidgetnodeprivate.h"
-#include "gtkrenderbackgroundprivate.h"
-#include "gtkrenderborderprivate.h"
-#include "gtkdebug.h"
-#include "gtkprivate.h"
+#include "ctkcssnumbervalueprivate.h"
+#include "ctkcssshadowsvalueprivate.h"
+#include "ctkcssstyleprivate.h"
+#include "ctkcssstylepropertyprivate.h"
+#include "ctkcsswidgetnodeprivate.h"
+#include "ctkrenderbackgroundprivate.h"
+#include "ctkrenderborderprivate.h"
+#include "ctkdebug.h"
+#include "ctkprivate.h"
 
 /*
  * Gadgets are 'next-generation widgets' - they combine a CSS node

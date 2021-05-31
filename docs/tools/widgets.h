@@ -1,7 +1,7 @@
 #ifndef __WIDGETS_H__
 #define __WIDGETS_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 
 typedef enum

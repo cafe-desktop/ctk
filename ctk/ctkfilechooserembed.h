@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkfilechooserembed.h: Abstract sizing interface for file selector implementations
+ * ctkfilechooserembed.h: Abstract sizing interface for file selector implementations
  * Copyright (C) 2004, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -19,7 +19,7 @@
 #ifndef __CTK_FILE_CHOOSER_EMBED_H__
 #define __CTK_FILE_CHOOSER_EMBED_H__
 
-#include <gtk/gtkwidget.h>
+#include <ctk/ctkwidget.h>
 
 G_BEGIN_DECLS
 

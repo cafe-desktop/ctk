@@ -17,9 +17,9 @@
  */
 
 #include "config.h"
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #if defined (GDK_WINDOWING_X11)
-#include <gtk/gtkx.h>
+#include <ctk/ctkx.h>
 #elif defined (GDK_WINDOWING_WIN32)
 #include "win32/gdkwin32.h"
 #endif

@@ -23,12 +23,12 @@
 
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkenums.h>
+#include <ctk/ctkenums.h>
 #include <pango/pango.h>
-#include <gtk/gtksizegroup.h>
+#include <ctk/ctksizegroup.h>
 
 
 G_BEGIN_DECLS

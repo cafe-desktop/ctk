@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkprinteroption.c: Handling possible settings for a specific printer setting
+ * ctkprinteroption.c: Handling possible settings for a specific printer setting
  * Copyright (C) 2006, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -20,9 +20,9 @@
 #include <string.h>
 #include <gmodule.h>
 
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtkprinteroption.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctkprinteroption.h"
 
 /*****************************************
  *            GtkPrinterOption           *

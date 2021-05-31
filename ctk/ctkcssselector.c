@@ -17,13 +17,13 @@
 
 #include "config.h"
 
-#include "gtkcssselectorprivate.h"
+#include "ctkcssselectorprivate.h"
 
 #include <stdlib.h>
 #include <string.h>
 
-#include "gtkcssprovider.h"
-#include "gtkstylecontextprivate.h"
+#include "ctkcssprovider.h"
+#include "ctkstylecontextprivate.h"
 
 #if defined(_MSC_VER) && _MSC_VER >= 1500
 # include <intrin.h>

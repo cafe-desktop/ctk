@@ -1,4 +1,4 @@
-/* gtktexttag.c - text tag object
+/* ctktexttag.c - text tag object
  *
  * Copyright (c) 1992-1994 The Regents of the University of California.
  * Copyright (c) 1994-1997 Sun Microsystems, Inc.
@@ -52,11 +52,11 @@
 
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
 #include <gdk/gdk.h>
-#include <gtk/gtkenums.h>
+#include <ctk/ctkenums.h>
 
 
 G_BEGIN_DECLS

@@ -18,7 +18,7 @@
  */
 
 /**
- * SECTION:gtkgesturemultipress
+ * SECTION:ctkgesturemultipress
  * @Short_description: Multipress gesture
  * @Title: GtkGestureMultiPress
  *
@@ -35,12 +35,12 @@
  */
 
 #include "config.h"
-#include "gtkgestureprivate.h"
-#include "gtkgesturemultipress.h"
-#include "gtkgesturemultipressprivate.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
+#include "ctkgestureprivate.h"
+#include "ctkgesturemultipress.h"
+#include "ctkgesturemultipressprivate.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
 
 typedef struct _GtkGestureMultiPressPrivate GtkGestureMultiPressPrivate;
 
@@ -149,7 +149,7 @@ _ctk_gesture_multi_press_update_timeout (GtkGestureMultiPress *gesture)
 
   widget = ctk_event_controller_get_widget (CTK_EVENT_CONTROLLER (gesture));
   settings = ctk_widget_get_settings (widget);
-  g_object_get (settings, "gtk-double-click-time", &double_click_time, NULL);
+  g_object_get (settings, "ctk-double-click-time", &double_click_time, NULL);
 
   priv->double_click_timeout_id =
     gdk_threads_add_timeout (double_click_time,
@@ -175,7 +175,7 @@ _ctk_gesture_multi_press_check_within_threshold (GtkGestureMultiPress *gesture,
   widget = ctk_event_controller_get_widget (CTK_EVENT_CONTROLLER (gesture));
   settings = ctk_widget_get_settings (widget);
   g_object_get (settings,
-                "gtk-double-click-distance", &double_click_distance,
+                "ctk-double-click-distance", &double_click_distance,
                 NULL);
 
   if (ABS (priv->initial_press_x - x) < double_click_distance &&

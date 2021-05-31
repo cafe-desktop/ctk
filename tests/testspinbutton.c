@@ -16,7 +16,7 @@
  */
 
 #include "config.h"
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static gint num_windows = 0;
 

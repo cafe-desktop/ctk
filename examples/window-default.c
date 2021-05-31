@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 activate (GtkApplication* app,
@@ -19,7 +19,7 @@ main (int    argc,
   GtkApplication *app;
   int status;
 
-  app = ctk_application_new ("org.gtk.example", G_APPLICATION_FLAGS_NONE);
+  app = ctk_application_new ("org.ctk.example", G_APPLICATION_FLAGS_NONE);
   g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);
   status = g_application_run (G_APPLICATION (app), argc, argv);
   g_object_unref (app);

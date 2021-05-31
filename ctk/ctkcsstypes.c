@@ -17,10 +17,10 @@
 
 #include "config.h"
 
-#include "gtkcsstypesprivate.h"
+#include "ctkcsstypesprivate.h"
 
-#include "gtkcssnumbervalueprivate.h"
-#include "gtkstylecontextprivate.h"
+#include "ctkcssnumbervalueprivate.h"
+#include "ctkstylecontextprivate.h"
 
 cairo_operator_t
 _ctk_css_blend_mode_get_operator (GtkCssBlendMode mode)

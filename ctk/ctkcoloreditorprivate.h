@@ -18,7 +18,7 @@
 #ifndef __CTK_COLOR_EDITOR_H__
 #define __CTK_COLOR_EDITOR_H__
 
-#include <gtk/gtkbox.h>
+#include <ctk/ctkbox.h>
 
 G_BEGIN_DECLS
 

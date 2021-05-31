@@ -19,7 +19,7 @@
 #define __CTK_LABEL_PRIVATE_H__
 
 
-#include <gtk/gtklabel.h>
+#include <ctk/ctklabel.h>
 
 
 G_BEGIN_DECLS

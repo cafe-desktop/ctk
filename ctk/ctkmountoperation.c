@@ -20,7 +20,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -28,30 +28,30 @@
 #include <errno.h>
 #include <string.h>
 
-#include "gtkmountoperationprivate.h"
-#include "gtkbox.h"
-#include "gtkcssiconthemevalueprivate.h"
-#include "gtkdbusgenerated.h"
-#include "gtkentry.h"
-#include "gtkbox.h"
-#include "gtkintl.h"
-#include "gtklabel.h"
-#include "gtkmessagedialog.h"
-#include "gtkmountoperation.h"
-#include "gtkprivate.h"
-#include "gtkradiobutton.h"
-#include "gtkgrid.h"
-#include "gtkwindow.h"
-#include "gtktreeview.h"
-#include "gtktreeselection.h"
-#include "gtkcellrenderertext.h"
-#include "gtkcellrendererpixbuf.h"
-#include "gtkscrolledwindow.h"
-#include "gtkicontheme.h"
-#include "gtkmenuitem.h"
-#include "gtkmain.h"
-#include "gtksettings.h"
-#include "gtkstylecontextprivate.h"
+#include "ctkmountoperationprivate.h"
+#include "ctkbox.h"
+#include "ctkcssiconthemevalueprivate.h"
+#include "ctkdbusgenerated.h"
+#include "ctkentry.h"
+#include "ctkbox.h"
+#include "ctkintl.h"
+#include "ctklabel.h"
+#include "ctkmessagedialog.h"
+#include "ctkmountoperation.h"
+#include "ctkprivate.h"
+#include "ctkradiobutton.h"
+#include "ctkgrid.h"
+#include "ctkwindow.h"
+#include "ctktreeview.h"
+#include "ctktreeselection.h"
+#include "ctkcellrenderertext.h"
+#include "ctkcellrendererpixbuf.h"
+#include "ctkscrolledwindow.h"
+#include "ctkicontheme.h"
+#include "ctkmenuitem.h"
+#include "ctkmain.h"
+#include "ctksettings.h"
+#include "ctkstylecontextprivate.h"
 
 #include <glib/gprintf.h>
 
@@ -196,8 +196,8 @@ ctk_mount_operation_init (GtkMountOperation *operation)
   operation->priv->handler =
     _ctk_mount_operation_handler_proxy_new_for_bus_sync (G_BUS_TYPE_SESSION,
                                                          G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START,
-                                                         "org.gtk.MountOperationHandler",
-                                                         "/org/gtk/MountOperationHandler",
+                                                         "org.ctk.MountOperationHandler",
+                                                         "/org/ctk/MountOperationHandler",
                                                          NULL, NULL);
   name_owner = g_dbus_proxy_get_name_owner (G_DBUS_PROXY (operation->priv->handler));
   if (!name_owner)
@@ -542,7 +542,7 @@ table_add_entry (GtkMountOperation *operation,
 }
 
 static void
-ctk_mount_operation_ask_password_do_gtk (GtkMountOperation *operation,
+ctk_mount_operation_ask_password_do_ctk (GtkMountOperation *operation,
                                          const gchar       *message,
                                          const gchar       *default_user,
                                          const gchar       *default_domain)
@@ -565,7 +565,7 @@ ctk_mount_operation_ask_password_do_gtk (GtkMountOperation *operation,
   priv = operation->priv;
 
   g_object_get (ctk_settings_get_default (),
-                "gtk-dialogs-use-header", &use_header,
+                "ctk-dialogs-use-header", &use_header,
                 NULL);
   widget = g_object_new (CTK_TYPE_DIALOG,
                          "use-header-bar", use_header,
@@ -886,18 +886,18 @@ ctk_mount_operation_ask_password (GMountOperation   *mount_op,
 {
   GtkMountOperation *operation;
   GtkMountOperationPrivate *priv;
-  gboolean use_gtk;
+  gboolean use_ctk;
 
   operation = CTK_MOUNT_OPERATION (mount_op);
   priv = operation->priv;
   priv->ask_flags = flags;
 
-  use_gtk = (operation->priv->handler == NULL) ||
+  use_ctk = (operation->priv->handler == NULL) ||
     (priv->ask_flags & G_ASK_PASSWORD_NEED_DOMAIN) ||
     (priv->ask_flags & G_ASK_PASSWORD_NEED_USERNAME);
 
-  if (use_gtk)
-    ctk_mount_operation_ask_password_do_gtk (operation, message, default_user, default_domain);
+  if (use_ctk)
+    ctk_mount_operation_ask_password_do_ctk (operation, message, default_user, default_domain);
   else
     ctk_mount_operation_ask_password_do_proxy (operation, message, default_user, default_domain);
 }
@@ -928,7 +928,7 @@ question_dialog_button_clicked (GtkDialog       *dialog,
 }
 
 static void
-ctk_mount_operation_ask_question_do_gtk (GtkMountOperation *op,
+ctk_mount_operation_ask_question_do_ctk (GtkMountOperation *op,
                                          const char        *message,
                                          const char        *choices[])
 {
@@ -1046,13 +1046,13 @@ ctk_mount_operation_ask_question (GMountOperation *op,
                                   const char      *choices[])
 {
   GtkMountOperation *operation;
-  gboolean use_gtk;
+  gboolean use_ctk;
 
   operation = CTK_MOUNT_OPERATION (op);
-  use_gtk = (operation->priv->handler == NULL);
+  use_ctk = (operation->priv->handler == NULL);
 
-  if (use_gtk)
-    ctk_mount_operation_ask_question_do_gtk (operation, message, choices);
+  if (use_ctk)
+    ctk_mount_operation_ask_question_do_ctk (operation, message, choices);
   else
     ctk_mount_operation_ask_question_do_proxy (operation, message, choices);
 }
@@ -1478,7 +1478,7 @@ create_show_processes_dialog (GtkMountOperation *op,
     }
 
   g_object_get (ctk_settings_get_default (),
-                "gtk-dialogs-use-header", &use_header,
+                "ctk-dialogs-use-header", &use_header,
                 NULL);
   dialog = g_object_new (CTK_TYPE_DIALOG,
                          "use-header-bar", use_header,
@@ -1523,7 +1523,7 @@ create_show_processes_dialog (GtkMountOperation *op,
     ctk_window_set_screen (CTK_WINDOW (dialog), priv->screen);
 
   tree_view = ctk_tree_view_new ();
-  /* TODO: should use EM's when gtk+ RI patches land */
+  /* TODO: should use EM's when ctk+ RI patches land */
   ctk_widget_set_size_request (tree_view,
                                300,
                                120);
@@ -1650,7 +1650,7 @@ ctk_mount_operation_show_processes_do_proxy (GtkMountOperation *operation,
 }
 
 static void
-ctk_mount_operation_show_processes_do_gtk (GtkMountOperation *op,
+ctk_mount_operation_show_processes_do_ctk (GtkMountOperation *op,
                                            const char        *message,
                                            GArray            *processes,
                                            const char        *choices[])
@@ -1692,13 +1692,13 @@ ctk_mount_operation_show_processes (GMountOperation *op,
 {
 
   GtkMountOperation *operation;
-  gboolean use_gtk;
+  gboolean use_ctk;
 
   operation = CTK_MOUNT_OPERATION (op);
-  use_gtk = (operation->priv->handler == NULL);
+  use_ctk = (operation->priv->handler == NULL);
 
-  if (use_gtk)
-    ctk_mount_operation_show_processes_do_gtk (operation, message, processes, choices);
+  if (use_ctk)
+    ctk_mount_operation_show_processes_do_ctk (operation, message, processes, choices);
   else
     ctk_mount_operation_show_processes_do_proxy (operation, message, processes, choices);
 }

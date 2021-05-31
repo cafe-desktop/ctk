@@ -19,12 +19,12 @@
 
 #include "config.h"
 
-#include "gtkcssimagefallbackprivate.h"
-#include "gtkcssimagesurfaceprivate.h"
-#include "gtkcsscolorvalueprivate.h"
-#include "gtkcssrgbavalueprivate.h"
+#include "ctkcssimagefallbackprivate.h"
+#include "ctkcssimagesurfaceprivate.h"
+#include "ctkcsscolorvalueprivate.h"
+#include "ctkcssrgbavalueprivate.h"
 
-#include "gtkstyleproviderprivate.h"
+#include "ctkstyleproviderprivate.h"
 
 G_DEFINE_TYPE (GtkCssImageFallback, _ctk_css_image_fallback, CTK_TYPE_CSS_IMAGE)
 

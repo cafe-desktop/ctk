@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static GtkWidget *
 oriented_test_widget (const gchar *label, const gchar *color, gdouble angle)

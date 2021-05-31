@@ -19,8 +19,8 @@
 #include "config.h"
 
 #include <string.h>
-#include <gtk/gtk.h>
-#include "gtklevelbaraccessible.h"
+#include <ctk/ctk.h>
+#include "ctklevelbaraccessible.h"
 
 
 static void atk_value_interface_init (AtkValueIface *iface);
@@ -38,7 +38,7 @@ ctk_level_bar_accessible_initialize (AtkObject *obj,
 }
 
 static void
-ctk_level_bar_accessible_notify_gtk (GObject    *obj,
+ctk_level_bar_accessible_notify_ctk (GObject    *obj,
                                        GParamSpec *pspec)
 {
   GtkWidget *widget = CTK_WIDGET (obj);
@@ -49,7 +49,7 @@ ctk_level_bar_accessible_notify_gtk (GObject    *obj,
       g_object_notify (G_OBJECT (level_bar), "accessible-value");
     }
   else
-    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_level_bar_accessible_parent_class)->notify_gtk (obj, pspec);
+    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_level_bar_accessible_parent_class)->notify_ctk (obj, pspec);
 }
 
 
@@ -60,7 +60,7 @@ ctk_level_bar_accessible_class_init (GtkLevelBarAccessibleClass *klass)
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
   GtkWidgetAccessibleClass *widget_class = (GtkWidgetAccessibleClass*)klass;
 
-  widget_class->notify_gtk = ctk_level_bar_accessible_notify_gtk;
+  widget_class->notify_ctk = ctk_level_bar_accessible_notify_ctk;
 
   class->initialize = ctk_level_bar_accessible_initialize;
 }

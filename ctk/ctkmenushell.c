@@ -19,11 +19,11 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 /**
- * SECTION:gtkmenushell
+ * SECTION:ctkmenushell
  * @Title: GtkMenuShell
  * @Short_description: A base class for menu objects
  *
@@ -57,29 +57,29 @@
  */
 #include "config.h"
 
-#include "gtkbindings.h"
-#include "gtkkeyhash.h"
-#include "gtklabel.h"
-#include "gtkmain.h"
-#include "gtkmarshalers.h"
-#include "gtkmenubar.h"
-#include "gtkmenuitemprivate.h"
-#include "gtkmenushellprivate.h"
-#include "gtkmnemonichash.h"
-#include "gtkrender.h"
-#include "gtkwindow.h"
-#include "gtkwindowprivate.h"
-#include "gtkprivate.h"
-#include "gtkmain.h"
-#include "gtkintl.h"
-#include "gtktypebuiltins.h"
-#include "gtkmodelmenuitem.h"
-#include "gtkwidgetprivate.h"
-#include "gtklabelprivate.h"
+#include "ctkbindings.h"
+#include "ctkkeyhash.h"
+#include "ctklabel.h"
+#include "ctkmain.h"
+#include "ctkmarshalers.h"
+#include "ctkmenubar.h"
+#include "ctkmenuitemprivate.h"
+#include "ctkmenushellprivate.h"
+#include "ctkmnemonichash.h"
+#include "ctkrender.h"
+#include "ctkwindow.h"
+#include "ctkwindowprivate.h"
+#include "ctkprivate.h"
+#include "ctkmain.h"
+#include "ctkintl.h"
+#include "ctktypebuiltins.h"
+#include "ctkmodelmenuitem.h"
+#include "ctkwidgetprivate.h"
+#include "ctklabelprivate.h"
 
-#include "deprecated/gtktearoffmenuitem.h"
+#include "deprecated/ctktearoffmenuitem.h"
 
-#include "a11y/gtkmenushellaccessible.h"
+#include "a11y/ctkmenushellaccessible.h"
 
 
 #define MENU_SHELL_TIMEOUT   500
@@ -798,7 +798,7 @@ ctk_menu_shell_button_release (GtkWidget      *widget,
                   gint64 usec_since_popup = 0;
 
                   popup_time = g_object_get_data (G_OBJECT (submenu),
-                                                  "gtk-menu-exact-popup-time");
+                                                  "ctk-menu-exact-popup-time");
 
                   if (popup_time)
                     {
@@ -812,7 +812,7 @@ ctk_menu_shell_button_release (GtkWidget      *widget,
                                           (gint64) popup_time->tv_usec);
 
                       g_object_set_data (G_OBJECT (submenu),
-                                         "gtk-menu-exact-popup-time", NULL);
+                                         "ctk-menu-exact-popup-time", NULL);
                     }
 
                   /* Only close the submenu on click if we opened the
@@ -966,7 +966,7 @@ ctk_menu_shell_key_press (GtkWidget   *widget,
     return TRUE;
 
   g_object_get (ctk_widget_get_settings (widget),
-                "gtk-enable-mnemonics", &enable_mnemonics,
+                "ctk-enable-mnemonics", &enable_mnemonics,
                 NULL);
 
   if (enable_mnemonics)

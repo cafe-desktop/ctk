@@ -19,11 +19,11 @@ Any action necessary to maintain the invariants in II which is not
 explicitly mentioned in IV), is the responsibility of the core GTK
 code, which is roughly defined as:
 
-  gtkobject.c
-  gtkwidget.c
-  gtkcontainer.c
-  gtkmain.c
-  gtksignal.c
+  ctkobject.c
+  ctkwidget.c
+  ctkcontainer.c
+  ctkmain.c
+  ctksignal.c
 
 Section II is mostly of interest to those maintaining GTK, the
 other sections may also be interesting to people writing
@@ -160,7 +160,7 @@ CTK_USER_STYLE:
 	
 CTK_RESIZE_PENDING:
 	First, this is only valid for GtkContainers.
-	[some of the code should move to gtkcontainer.c therefore]
+	[some of the code should move to ctkcontainer.c therefore]
 	Relies on CTK_WIDGET_REALIZED(widget)
 	[this is not really enforced throughout the code, but should
 	 be. it only requires a few checks for CTK_WIDGET_REALIZED and
@@ -176,7 +176,7 @@ CTK_RESIZE_NEEDED:
 	 can be avoided]
 	Means: a widget has been added to the resize_widgets list of
 	its _toplevel_ container (keep this in mind for GtkViewport).
-	Remark: this flag is also used internally by gtkwindow.c during
+	Remark: this flag is also used internally by ctkwindow.c during
 	the evaluation of resizing worthy widgets.
 
 CTK_LEAVE_PENDING:
@@ -260,7 +260,7 @@ In the following
 Note:, the definition
 
 [  CTK_WIDGET_DRAWABLE = CTK_WIDGET_VISIBLE && CTK_WIDGET_MAPPED
-   is made in gtkwidget.h, but by 3) and 5), 
+   is made in ctkwidget.h, but by 3) and 5), 
      
       CTK_WIDGET_MAPPED => CTK_WIDGET_VISIBLE
 ]
@@ -497,4 +497,4 @@ Then ctk_foo_destroy will call ctk_widget_destroy (because
 it was not overridden in the Bar class structure) and
 ctk_widget_destroy will call ctk_object_destroy because
 the parent_class variable referenced by ctk_foo_destroy is the 
-static variable in gtkwidget.c: GtkObjectClass.
+static variable in ctkwidget.c: GtkObjectClass.

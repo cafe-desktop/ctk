@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static GdkPixbuf *
 get_image_pixbuf (GtkImage *image)

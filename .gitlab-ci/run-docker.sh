@@ -99,7 +99,7 @@ else
 fi
 
 REGISTRY="registry.gitlab.gnome.org"
-TAG="${REGISTRY}/gnome/gtk/${base}:${base_version}"
+TAG="${REGISTRY}/gnome/ctk/${base}:${base_version}"
 
 if [ $build == 1 ]; then
         echo -e "\e[1;32mBUILDING\e[0m: ${base} as ${TAG}"

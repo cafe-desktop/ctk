@@ -1,4 +1,4 @@
-/* gtkshortcutsgroupprivate.h
+/* ctkshortcutsgroupprivate.h
  *
  * Copyright (C) 2015 Christian Hergert <christian@hergert.me>
  *
@@ -19,7 +19,7 @@
 #ifndef __CTK_SHORTCUTS_GROUP_H__
 #define __CTK_SHORTCUTS_GROUP_H__
 
-#include <gtk/gtkbox.h>
+#include <ctk/ctkbox.h>
 
 G_BEGIN_DECLS
 

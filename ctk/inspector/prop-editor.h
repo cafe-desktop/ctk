@@ -19,7 +19,7 @@
 #define _CTK_INSPECTOR_PROP_EDITOR_H_
 
 
-#include <gtk/gtkbox.h>
+#include <ctk/ctkbox.h>
 
 
 #define CTK_TYPE_INSPECTOR_PROP_EDITOR            (ctk_inspector_prop_editor_get_type())

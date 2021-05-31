@@ -1,4 +1,4 @@
-/* gtksizerequest.c
+/* ctksizerequest.c
  * Copyright (C) 2007-2010 Openismus GmbH
  *
  * Authors:
@@ -21,7 +21,7 @@
 
 #include <config.h>
 
-#include "gtksizerequestcacheprivate.h"
+#include "ctksizerequestcacheprivate.h"
 
 #include <string.h>
 

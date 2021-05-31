@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkfilechooserentry.h: Entry with filename completion
+ * ctkfilechooserentry.h: Entry with filename completion
  * Copyright (C) 2003, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -19,8 +19,8 @@
 #ifndef __CTK_FILE_CHOOSER_ENTRY_H__
 #define __CTK_FILE_CHOOSER_ENTRY_H__
 
-#include "gtkfilesystem.h"
-#include "gtkfilechooser.h"
+#include "ctkfilesystem.h"
+#include "ctkfilechooser.h"
 
 G_BEGIN_DECLS
 

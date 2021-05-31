@@ -19,16 +19,16 @@
 #define __CTK_THEMING_ENGINE_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
 #include <glib-object.h>
 #include <cairo.h>
 
-#include <gtk/gtkborder.h>
-#include <gtk/gtkenums.h>
-#include <gtk/deprecated/gtkstyleproperties.h>
-#include <gtk/gtktypes.h>
+#include <ctk/ctkborder.h>
+#include <ctk/ctkenums.h>
+#include <ctk/deprecated/ctkstyleproperties.h>
+#include <ctk/ctktypes.h>
 
 G_BEGIN_DECLS
 
@@ -190,7 +190,7 @@ struct _GtkThemingEngineClass
 GDK_DEPRECATED_IN_3_14
 GType ctk_theming_engine_get_type (void) G_GNUC_CONST;
 
-/* function implemented in gtkcsscustomproperty.c */
+/* function implemented in ctkcsscustomproperty.c */
 GDK_DEPRECATED_IN_3_8
 void ctk_theming_engine_register_property (const gchar            *name_space,
                                            GtkStylePropertyParser  parse_func,

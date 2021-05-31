@@ -1,4 +1,4 @@
-/* gtkliststore.c
+/* ctkliststore.c
  * Copyright (C) 2000  Red Hat, Inc.,  Jonathan Blandford <jrb@redhat.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -20,17 +20,17 @@
 #include <stdlib.h>
 #include <string.h>
 #include <gobject/gvaluecollector.h>
-#include "gtktreemodel.h"
-#include "gtkliststore.h"
-#include "gtktreedatalist.h"
-#include "gtktreednd.h"
-#include "gtkintl.h"
-#include "gtkbuildable.h"
-#include "gtkbuilderprivate.h"
+#include "ctktreemodel.h"
+#include "ctkliststore.h"
+#include "ctktreedatalist.h"
+#include "ctktreednd.h"
+#include "ctkintl.h"
+#include "ctkbuildable.h"
+#include "ctkbuilderprivate.h"
 
 
 /**
- * SECTION:gtkliststore
+ * SECTION:ctkliststore
  * @Short_description: A list-like data structure that can be used with the GtkTreeView
  * @Title: GtkListStore
  * @See_also:#GtkTreeModel, #GtkTreeStore
@@ -40,7 +40,7 @@
  * can use all of the methods available there.  It also implements the
  * #GtkTreeSortable interface so it can be sorted by the view.
  * Finally, it also implements the tree
- * [drag and drop][gtk3-GtkTreeView-drag-and-drop]
+ * [drag and drop][ctk3-GtkTreeView-drag-and-drop]
  * interfaces.
  *
  * The #GtkListStore can accept most GObject types as a column type, though

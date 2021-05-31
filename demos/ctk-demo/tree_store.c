@@ -8,7 +8,7 @@
  *
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 /* TreeItem structure */
 typedef struct _TreeItem TreeItem;

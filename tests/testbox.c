@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 expand_toggled (GtkToggleButton *b, GtkWidget *w)

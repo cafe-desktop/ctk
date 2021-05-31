@@ -47,31 +47,31 @@ NULL=
 !if [call create-lists.bat header resources_sources.mak CTK_RESOURCES]
 !endif
 
-!if [for %f in (..\gtk\theme\Adwaita\gtk.css ..\gtk\theme\Adwaita\gtk-dark.css ..\gtk\theme\Adwaita\gtk-contained.css ..\gtk\theme\Adwaita\gtk-contained-dark.css) do @call create-lists.bat file resources_sources.mak %f]
+!if [for %f in (..\ctk\theme\Adwaita\ctk.css ..\ctk\theme\Adwaita\ctk-dark.css ..\ctk\theme\Adwaita\ctk-contained.css ..\ctk\theme\Adwaita\ctk-contained-dark.css) do @call create-lists.bat file resources_sources.mak %f]
 !endif
 
-!if [for %x in (png svg) do @(for %f in (..\gtk\theme\Adwaita\assets\*.%x) do @call create-lists.bat file resources_sources.mak %f)]
+!if [for %x in (png svg) do @(for %f in (..\ctk\theme\Adwaita\assets\*.%x) do @call create-lists.bat file resources_sources.mak %f)]
 !endif
 
-!if [for %f in (..\gtk\theme\HighContrast\gtk.css ..\gtk\theme\HighContrast\gtk-inverse.css ..\gtk\theme\HighContrast\gtk-contained.css ..\gtk\theme\HighContrast\gtk-contained-inverse.css) do @call create-lists.bat file resources_sources.mak %f]
+!if [for %f in (..\ctk\theme\HighContrast\ctk.css ..\ctk\theme\HighContrast\ctk-inverse.css ..\ctk\theme\HighContrast\ctk-contained.css ..\ctk\theme\HighContrast\ctk-contained-inverse.css) do @call create-lists.bat file resources_sources.mak %f]
 !endif
 
-!if [for %x in (png svg) do @(for %f in (..\gtk\theme\HighContrast\assets\*.%x) do @call create-lists.bat file resources_sources.mak %f)]
+!if [for %x in (png svg) do @(for %f in (..\ctk\theme\HighContrast\assets\*.%x) do @call create-lists.bat file resources_sources.mak %f)]
 !endif
 
-!if [for %f in (..\gtk\theme\win32\gtk-win32-base.css ..\gtk\theme\win32\gtk.css) do @call create-lists.bat file resources_sources.mak %f]
+!if [for %f in (..\ctk\theme\win32\ctk-win32-base.css ..\ctk\theme\win32\ctk.css) do @call create-lists.bat file resources_sources.mak %f]
 !endif
 
-!if [for %f in (..\gtk\cursor\*.png ..\gtk\gesture\*.symbolic.png ..\gtk\ui\*.ui) do @call create-lists.bat file resources_sources.mak %f]
+!if [for %f in (..\ctk\cursor\*.png ..\ctk\gesture\*.symbolic.png ..\ctk\ui\*.ui) do @call create-lists.bat file resources_sources.mak %f]
 !endif
 
-!if [for %s in (16 22 24 32 48) do @(for %c in (actions status categories) do @(for %f in (..\gtk\icons\%sx%s\%c\*.png) do @call create-lists.bat file resources_sources.mak %f))]
+!if [for %s in (16 22 24 32 48) do @(for %c in (actions status categories) do @(for %f in (..\ctk\icons\%sx%s\%c\*.png) do @call create-lists.bat file resources_sources.mak %f))]
 !endif
 
-!if [for %s in (scalable) do @(for %c in (status) do @(for %f in (..\gtk\icons\%s\%c\*.svg) do @call create-lists.bat file resources_sources.mak %f))]
+!if [for %s in (scalable) do @(for %c in (status) do @(for %f in (..\ctk\icons\%s\%c\*.svg) do @call create-lists.bat file resources_sources.mak %f))]
 !endif
 
-!if [for %f in (..\gtk\inspector\*.ui ..\gtk\inspector\logo.png ..\gtk\emoji\emoji.data) do @call create-lists.bat file resources_sources.mak %f]
+!if [for %f in (..\ctk\inspector\*.ui ..\ctk\inspector\logo.png ..\ctk\emoji\emoji.data) do @call create-lists.bat file resources_sources.mak %f]
 !endif
 
 !if [call create-lists.bat footer resources_sources.mak]
@@ -80,7 +80,7 @@ NULL=
 !if [call create-lists.bat header resources_sources.mak CTK_DEMO_RESOURCES]
 !endif
 
-!if [for /f %f in ('$(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir=..\demos\gtk-demo ..\demos\gtk-demo\demo.gresource.xml') do @call create-lists.bat file resources_sources.mak %f]
+!if [for /f %f in ('$(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir=..\demos\ctk-demo ..\demos\ctk-demo\demo.gresource.xml') do @call create-lists.bat file resources_sources.mak %f]
 !endif
 
 !if [call create-lists.bat footer resources_sources.mak]

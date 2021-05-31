@@ -1,7 +1,7 @@
 include $(top_srcdir)/Makefile.decl
 
-libgdkincludedir = $(includedir)/gtk-3.0/gdk
-libgdkquartzincludedir = $(includedir)/gtk-3.0/gdk/quartz
+libgdkincludedir = $(includedir)/ctk-3.0/gdk
+libgdkquartzincludedir = $(includedir)/ctk-3.0/gdk/quartz
 
 AM_CPPFLAGS = 				\
 	-DG_LOG_DOMAIN=\"Gdk\"		\
@@ -60,7 +60,7 @@ libgdkinclude_HEADERS = 	\
 	gdkquartz.h
 
 libgdkquartzinclude_HEADERS =		\
-	gdkquartz-gtk-only.h            \
+	gdkquartz-ctk-only.h            \
 	gdkquartzcursor.h		\
 	gdkquartzdevice-core.h		\
 	gdkquartzdevicemanager-core.h	\

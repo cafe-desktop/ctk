@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 set_insensitive (GtkButton *b, GtkWidget *w)

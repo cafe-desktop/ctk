@@ -26,7 +26,7 @@ GDK_CONFIG_TEMPLATE = ..\gdk\gdkconfig.h.win32
 GDK_MARSHALERS_FLAGS = --prefix=_gdk_marshal --valist-marshallers
 GDK_RESOURCES_ARGS = ..\gdk\gdk.gresource.xml --target=$@ --sourcedir=..\gdk --c-name _gdk --manual-register
 CTK_MARSHALERS_FLAGS = --prefix=_ctk_marshal --valist-marshallers
-CTK_RESOURCES_ARGS = ..\gtk\gtk.gresource.xml --target=$@ --sourcedir=..\gtk --c-name _gtk --manual-register
+CTK_RESOURCES_ARGS = ..\ctk\ctk.gresource.xml --target=$@ --sourcedir=..\ctk --c-name _ctk --manual-register
 
 all:	\
 	..\config.h	\
@@ -36,24 +36,24 @@ all:	\
 	..\gdk\gdkmarshalers.c	\
 	..\gdk\gdkresources.h	\
 	..\gdk\gdkresources.c	\
-	..\gtk\gtk-win32.rc	\
-	..\gtk\libgtk3.manifest	\
-	..\gtk\gtkdbusgenerated.h	\
-	..\gtk\gtkdbusgenerated.c	\
-	..\gtk\gtktypefuncs.inc	\
-	..\gtk\gtk.gresource.xml	\
-	..\gtk\gtkmarshalers.h	\
-	..\gtk\gtkmarshalers.c	\
-	..\gtk\gtkresources.h	\
-	..\gtk\gtkresources.c	\
-	..\demos\gtk-demo\demos.h	\
-	..\demos\gtk-demo\demo_resources.c	\
+	..\ctk\ctk-win32.rc	\
+	..\ctk\libctk3.manifest	\
+	..\ctk\ctkdbusgenerated.h	\
+	..\ctk\ctkdbusgenerated.c	\
+	..\ctk\ctktypefuncs.inc	\
+	..\ctk\ctk.gresource.xml	\
+	..\ctk\ctkmarshalers.h	\
+	..\ctk\ctkmarshalers.c	\
+	..\ctk\ctkresources.h	\
+	..\ctk\ctkresources.c	\
+	..\demos\ctk-demo\demos.h	\
+	..\demos\ctk-demo\demo_resources.c	\
 	..\demos\icon-browser\resources.c
 
 # Copy the pre-defined config.h.win32 and demos.h.win32
 ..\config.h: ..\config.h.win32
-..\demos\gtk-demo\demos.h: ..\demos\gtk-demo\demos.h.win32
-..\gtk\gtk-win32.rc: ..\gtk\gtk-win32.rc.body
+..\demos\ctk-demo\demos.h: ..\demos\ctk-demo\demos.h.win32
+..\ctk\ctk-win32.rc: ..\ctk\ctk-win32.rc.body
 
 ..\gdk-$(CFG)-$(GDK_CONFIG)-build: $(GDK_CONFIG_TEMPLATE)
 	@if exist ..\gdk-$(GDK_OLD_CFG)-$(GDK_DEL_CONFIG)-build del ..\gdk-$(GDK_OLD_CFG)-$(GDK_DEL_CONFIG)-build
@@ -65,8 +65,8 @@ all:	\
 
 ..\config.h	\
 ..\gdk\gdkconfig.h	\
-..\gtk\gtk-win32.rc	\
-..\demos\gtk-demo\demos.h:
+..\ctk\ctk-win32.rc	\
+..\demos\ctk-demo\demos.h:
 	@echo Copying $@...
 	@copy $** $@
 
@@ -88,7 +88,7 @@ all:	\
 	@echo Generating $@...
 	@echo ^<?xml version='1.0' encoding='UTF-8'?^> >$@
 	@echo ^<gresources^> >> $@
-	@echo  ^<gresource prefix='/org/gtk/libgdk'^> >> $@
+	@echo  ^<gresource prefix='/org/ctk/libgdk'^> >> $@
 	@for %%f in (..\gdk\resources\glsl\*.glsl) do @echo     ^<file alias='glsl/%%~nxf'^>resources/glsl/%%~nxf^</file^> >> $@
 	@echo   ^</gresource^> >> $@
 	@echo ^</gresources^> >> $@
@@ -107,7 +107,7 @@ all:	\
 	@if not "$(GDK_PIXBUF_PIXDATA)" == "" set GDK_PIXBUF_PIXDATA=$(GDK_PIXBUF_PIXDATA)
 	@start /min $(GLIB_COMPILE_RESOURCES) $(GDK_RESOURCES_ARGS) --generate-source
 
-..\gtk\libgtk3.manifest: ..\gtk\libgtk3.manifest.in
+..\ctk\libctk3.manifest: ..\ctk\libctk3.manifest.in
 	@echo Generating $@...
 	@$(PYTHON) replace.py	\
 	--action=replace-var	\
@@ -115,77 +115,77 @@ all:	\
 	--var=EXE_MANIFEST_ARCHITECTURE	\
 	--outstring=*
 
-..\gtk\gtkdbusgenerated.h ..\gtk\gtkdbusgenerated.c: ..\gtk\gtkdbusinterfaces.xml
+..\ctk\ctkdbusgenerated.h ..\ctk\ctkdbusgenerated.c: ..\ctk\ctkdbusinterfaces.xml
 	@echo Generating GTK DBus sources...
 	@$(PYTHON) $(PREFIX)\bin\gdbus-codegen	\
 	--interface-prefix org.Gtk. --c-namespace _Gtk	\
-	--generate-c-code gtkdbusgenerated $**	\
+	--generate-c-code ctkdbusgenerated $**	\
 	--output-directory $(@D)
 
-..\gtk\gtktypefuncs.inc: ..\gtk\gentypefuncs.py
+..\ctk\ctktypefuncs.inc: ..\ctk\gentypefuncs.py
 	@echo Generating $@...
 	@echo #undef CTK_COMPILATION > $(@R).preproc.c
-	@echo #include "gtkx.h" >> $(@R).preproc.c
+	@echo #include "ctkx.h" >> $(@R).preproc.c
 	@cl /EP $(CTK_PREPROCESSOR_FLAGS) $(@R).preproc.c > $(@R).combined.c
 	@$(PYTHON) $** $@ $(@R).combined.c
 	@del $(@R).preproc.c $(@R).combined.c
 
-..\gtk\gtk.gresource.xml: $(CTK_RESOURCES)
+..\ctk\ctk.gresource.xml: $(CTK_RESOURCES)
 	@echo Generating $@...
 	@echo ^<?xml version='1.0' encoding='UTF-8'?^>> $@
 	@echo ^<gresources^>>> $@
-	@echo   ^<gresource prefix='/org/gtk/libgtk'^>>> $@
-	@echo     ^<file^>theme/Adwaita/gtk.css^</file^>>> $@
-	@echo     ^<file^>theme/Adwaita/gtk-dark.css^</file^>>> $@
-	@echo     ^<file^>theme/Adwaita/gtk-contained.css^</file^>>> $@
-	@echo     ^<file^>theme/Adwaita/gtk-contained-dark.css^</file^>>> $@
-	@for %%f in (..\gtk\theme\Adwaita\assets\*.png) do @echo     ^<file preprocess='to-pixdata'^>theme/Adwaita/assets/%%~nxf^</file^>>> $@
-	@for %%f in (..\gtk\theme\Adwaita\assets\*.svg) do @echo     ^<file^>theme/Adwaita/assets/%%~nxf^</file^>>> $@
-	@echo     ^<file^>theme/HighContrast/gtk.css^</file^>>> $@
-	@echo     ^<file alias='theme/HighContrastInverse/gtk.css'^>theme/HighContrast/gtk-inverse.css^</file^>>> $@
-	@echo     ^<file^>theme/HighContrast/gtk-contained.css^</file^>>> $@
-	@echo     ^<file^>theme/HighContrast/gtk-contained-inverse.css^</file^>>> $@
-	@for %%f in (..\gtk\theme\HighContrast\assets\*.png) do @echo     ^<file preprocess='to-pixdata'^>theme/HighContrast/assets/%%~nxf^</file^>>> $@
-	@for %%f in (..\gtk\theme\HighContrast\assets\*.svg) do @echo     ^<file^>theme/HighContrast/assets/%%~nxf^</file^>>> $@
-	@echo     ^<file^>theme/win32/gtk-win32-base.css^</file^>>> $@
-	@echo     ^<file^>theme/win32/gtk.css^</file^>>> $@
-	@for %%f in (..\gtk\cursor\*.png) do @echo     ^<file^>cursor/%%~nxf^</file^>>> $@
-	@for %%f in (..\gtk\gesture\*.symbolic.png) do @echo     ^<file alias='icons/64x64/actions/%%~nxf'^>gesture/%%~nxf^</file^>>> $@
-	@for %%f in (..\gtk\ui\*.ui) do @echo     ^<file preprocess='xml-stripblanks'^>ui/%%~nxf^</file^>>> $@
-	@for %%s in (16 22 24 32 48) do @(for %%c in (actions status categories) do @(for %%f in (..\gtk\icons\%%sx%%s\%%c\*.png) do @echo     ^<file^>icons/%%sx%%s/%%c/%%~nxf^</file^>>> $@))
-	@for %%s in (scalable) do @(for %%c in (status) do @(for %%f in (..\gtk\icons\%%s\%%c\*.svg) do @echo     ^<file^>icons/%%s/%%c/%%~nxf^</file^>>> $@))
-	@for %%f in (..\gtk\inspector\*.ui) do @echo     ^<file compressed='true' preprocess='xml-stripblanks'^>inspector/%%~nxf^</file^>>> $@
+	@echo   ^<gresource prefix='/org/ctk/libctk'^>>> $@
+	@echo     ^<file^>theme/Adwaita/ctk.css^</file^>>> $@
+	@echo     ^<file^>theme/Adwaita/ctk-dark.css^</file^>>> $@
+	@echo     ^<file^>theme/Adwaita/ctk-contained.css^</file^>>> $@
+	@echo     ^<file^>theme/Adwaita/ctk-contained-dark.css^</file^>>> $@
+	@for %%f in (..\ctk\theme\Adwaita\assets\*.png) do @echo     ^<file preprocess='to-pixdata'^>theme/Adwaita/assets/%%~nxf^</file^>>> $@
+	@for %%f in (..\ctk\theme\Adwaita\assets\*.svg) do @echo     ^<file^>theme/Adwaita/assets/%%~nxf^</file^>>> $@
+	@echo     ^<file^>theme/HighContrast/ctk.css^</file^>>> $@
+	@echo     ^<file alias='theme/HighContrastInverse/ctk.css'^>theme/HighContrast/ctk-inverse.css^</file^>>> $@
+	@echo     ^<file^>theme/HighContrast/ctk-contained.css^</file^>>> $@
+	@echo     ^<file^>theme/HighContrast/ctk-contained-inverse.css^</file^>>> $@
+	@for %%f in (..\ctk\theme\HighContrast\assets\*.png) do @echo     ^<file preprocess='to-pixdata'^>theme/HighContrast/assets/%%~nxf^</file^>>> $@
+	@for %%f in (..\ctk\theme\HighContrast\assets\*.svg) do @echo     ^<file^>theme/HighContrast/assets/%%~nxf^</file^>>> $@
+	@echo     ^<file^>theme/win32/ctk-win32-base.css^</file^>>> $@
+	@echo     ^<file^>theme/win32/ctk.css^</file^>>> $@
+	@for %%f in (..\ctk\cursor\*.png) do @echo     ^<file^>cursor/%%~nxf^</file^>>> $@
+	@for %%f in (..\ctk\gesture\*.symbolic.png) do @echo     ^<file alias='icons/64x64/actions/%%~nxf'^>gesture/%%~nxf^</file^>>> $@
+	@for %%f in (..\ctk\ui\*.ui) do @echo     ^<file preprocess='xml-stripblanks'^>ui/%%~nxf^</file^>>> $@
+	@for %%s in (16 22 24 32 48) do @(for %%c in (actions status categories) do @(for %%f in (..\ctk\icons\%%sx%%s\%%c\*.png) do @echo     ^<file^>icons/%%sx%%s/%%c/%%~nxf^</file^>>> $@))
+	@for %%s in (scalable) do @(for %%c in (status) do @(for %%f in (..\ctk\icons\%%s\%%c\*.svg) do @echo     ^<file^>icons/%%s/%%c/%%~nxf^</file^>>> $@))
+	@for %%f in (..\ctk\inspector\*.ui) do @echo     ^<file compressed='true' preprocess='xml-stripblanks'^>inspector/%%~nxf^</file^>>> $@
 	@echo     ^<file^>inspector/logo.png^</file^>>> $@
 	@echo     ^<file^>emoji/emoji.data^</file^>>> $@
 	@echo   ^</gresource^>>> $@
 	@echo ^</gresources^>>> $@
 
-..\gtk\gtkresources.h: ..\gtk\gtk.gresource.xml
+..\ctk\ctkresources.h: ..\ctk\ctk.gresource.xml
 	@echo Generating $@...
 	@if not "$(XMLLINT)" == "" set XMLLINT=$(XMLLINT)
 	@if not "$(JSON_GLIB_FORMAT)" == "" set JSON_GLIB_FORMAT=$(JSON_GLIB_FORMAT)
 	@if not "$(GDK_PIXBUF_PIXDATA)" == "" set GDK_PIXBUF_PIXDATA=$(GDK_PIXBUF_PIXDATA)
 	@start /min $(GLIB_COMPILE_RESOURCES) $(CTK_RESOURCES_ARGS) --generate-header
 
-..\gtk\gtkresources.c: ..\gtk\gtk.gresource.xml $(CTK_RESOURCES)
+..\ctk\ctkresources.c: ..\ctk\ctk.gresource.xml $(CTK_RESOURCES)
 	@echo Generating $@...
 	@if not "$(XMLLINT)" == "" set XMLLINT=$(XMLLINT)
 	@if not "$(JSON_GLIB_FORMAT)" == "" set JSON_GLIB_FORMAT=$(JSON_GLIB_FORMAT)
 	@if not "$(GDK_PIXBUF_PIXDATA)" == "" set GDK_PIXBUF_PIXDATA=$(GDK_PIXBUF_PIXDATA)
 	@start /min $(GLIB_COMPILE_RESOURCES) $(CTK_RESOURCES_ARGS) --generate-source
 
-..\gtk\gtkmarshalers.h: ..\gtk\gtkmarshalers.list
+..\ctk\ctkmarshalers.h: ..\ctk\ctkmarshalers.list
 	@echo Generating $@...
 	@$(PYTHON) $(GLIB_GENMARSHAL) $(CTK_MARSHALERS_FLAGS) --header $** > $@.tmp
 	@move $@.tmp $@
 
-..\gtk\gtkmarshalers.c: ..\gtk\gtkmarshalers.list
+..\ctk\ctkmarshalers.c: ..\ctk\ctkmarshalers.list
 	@echo Generating $@...
 	@echo #undef G_ENABLE_DEBUG> $@.tmp
 	@$(PYTHON) $(GLIB_GENMARSHAL) $(CTK_MARSHALERS_FLAGS) --body $** >> $@.tmp
 	@move $@.tmp $@
 
-..\demos\gtk-demo\demo_resources.c: ..\demos\gtk-demo\demo.gresource.xml $(CTK_DEMO_RESOURCES)
+..\demos\ctk-demo\demo_resources.c: ..\demos\ctk-demo\demo.gresource.xml $(CTK_DEMO_RESOURCES)
 	@echo Generating $@...
 	@$(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(@D) --generate-source $(@D)\demo.gresource.xml
 
@@ -196,18 +196,18 @@ all:	\
 # Remove the generated files
 clean:
 	@-del /f /q ..\demos\icon-browser\resources.c
-	@-del /f /q ..\demos\gtk-demo\demo_resources.c
-	@-del /f /q ..\demos\gtk-demo\demos.h
-	@-del /f /q ..\gtk\gtkresources.c
-	@-del /f /q ..\gtk\gtkresources.h
-	@-del /f /q ..\gtk\gtkmarshalers.c
-	@-del /f /q ..\gtk\gtkmarshalers.h
-	@-del /f /q ..\gtk\gtk.gresource.xml
-	@-del /f /q ..\gtk\gtktypefuncs.inc
-	@-del /f /q ..\gtk\gtkdbusgenerated.c
-	@-del /f /q ..\gtk\gtkdbusgenerated.h
-	@-del /f /q ..\gtk\libgtk3.manifest
-	@-del /f /q ..\gtk\gtk-win32.rc
+	@-del /f /q ..\demos\ctk-demo\demo_resources.c
+	@-del /f /q ..\demos\ctk-demo\demos.h
+	@-del /f /q ..\ctk\ctkresources.c
+	@-del /f /q ..\ctk\ctkresources.h
+	@-del /f /q ..\ctk\ctkmarshalers.c
+	@-del /f /q ..\ctk\ctkmarshalers.h
+	@-del /f /q ..\ctk\ctk.gresource.xml
+	@-del /f /q ..\ctk\ctktypefuncs.inc
+	@-del /f /q ..\ctk\ctkdbusgenerated.c
+	@-del /f /q ..\ctk\ctkdbusgenerated.h
+	@-del /f /q ..\ctk\libctk3.manifest
+	@-del /f /q ..\ctk\ctk-win32.rc
 	@-del /f /q ..\gdk\gdkresources.c
 	@-del /f /q ..\gdk\gdkresources.h
 	@-del /f /q ..\gdk\gdk.gresource.xml

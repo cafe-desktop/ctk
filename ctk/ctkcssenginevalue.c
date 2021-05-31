@@ -18,9 +18,9 @@
 #include "config.h"
 
 #define GDK_DISABLE_DEPRECATION_WARNINGS
-#include "gtkcssenginevalueprivate.h"
+#include "ctkcssenginevalueprivate.h"
 
-#include "gtkstylepropertyprivate.h"
+#include "ctkstylepropertyprivate.h"
 
 struct _GtkCssValue {
   CTK_CSS_VALUE_BASE

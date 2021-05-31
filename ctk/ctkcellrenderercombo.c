@@ -18,19 +18,19 @@
 #include "config.h"
 #include <string.h>
 
-#include "gtkintl.h"
-#include "gtkbin.h"
-#include "gtkentry.h"
-#include "gtkcelllayout.h"
-#include "gtkcellrenderercombo.h"
-#include "gtkcellrenderertext.h"
-#include "gtkcombobox.h"
-#include "gtkmarshalers.h"
-#include "gtkprivate.h"
+#include "ctkintl.h"
+#include "ctkbin.h"
+#include "ctkentry.h"
+#include "ctkcelllayout.h"
+#include "ctkcellrenderercombo.h"
+#include "ctkcellrenderertext.h"
+#include "ctkcombobox.h"
+#include "ctkmarshalers.h"
+#include "ctkprivate.h"
 
 
 /**
- * SECTION:gtkcellrenderercombo
+ * SECTION:ctkcellrenderercombo
  * @Short_description: Renders a combobox in a cell
  * @Title: GtkCellRendererCombo
  *
@@ -98,7 +98,7 @@ enum {
 
 static guint cell_renderer_combo_signals[LAST_SIGNAL] = { 0, };
 
-#define CTK_CELL_RENDERER_COMBO_PATH "gtk-cell-renderer-combo-path"
+#define CTK_CELL_RENDERER_COMBO_PATH "ctk-cell-renderer-combo-path"
 
 G_DEFINE_TYPE_WITH_PRIVATE (GtkCellRendererCombo, ctk_cell_renderer_combo, CTK_TYPE_CELL_RENDERER_TEXT)
 

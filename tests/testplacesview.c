@@ -1,6 +1,6 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #define CTK_COMPILATION
-#include "gtk/gtkplacesviewprivate.h"
+#include "ctk/ctkplacesviewprivate.h"
 
 int
 main (int argc, char *argv[])

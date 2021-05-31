@@ -27,11 +27,11 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "gtk/gtk.h"
+#include "ctk/ctk.h"
 #include "gdk/gdkkeysyms.h"
 
-#include "gtk/gtkimmodule.h"
-#include "gtk/gtkintl.h"
+#include "ctk/ctkimmodule.h"
+#include "ctk/ctkintl.h"
 
 GType type_ti_er_translit = 0;
 
@@ -450,7 +450,7 @@ static const GtkIMContextInfo ti_er_info = {
   "ti_er",		   /* ID */
   NC_("input method menu", "Tigrigna-Eritrean (EZ+)"), /* Human readable name */
   GETTEXT_PACKAGE,	   /* Translation domain */
-   CTK_LOCALEDIR,	   /* Dir for bindtextdomain (not strictly needed for "gtk+") */
+   CTK_LOCALEDIR,	   /* Dir for bindtextdomain (not strictly needed for "ctk+") */
   "ti"			   /* Languages for which this module is the default */
 };
 

@@ -18,7 +18,7 @@
 #ifndef _CTK_INSPECTOR_SIZE_GROUPS_H_
 #define _CTK_INSPECTOR_SIZE_GROUPS_H_
 
-#include <gtk/gtkbox.h>
+#include <ctk/ctkbox.h>
 
 #define CTK_TYPE_INSPECTOR_SIZE_GROUPS            (ctk_inspector_size_groups_get_type())
 #define CTK_INSPECTOR_SIZE_GROUPS(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_SIZE_GROUPS, GtkInspectorSizeGroups))

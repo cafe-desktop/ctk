@@ -1,4 +1,4 @@
-## Makefile for building the gtk DLL with Microsoft C
+## Makefile for building the ctk DLL with Microsoft C
 ## Use: nmake -f makefile.msc
 
 ## There is no install target, you have to decide where and 
@@ -14,7 +14,7 @@ CTK_VER = 3.0
 
 
 GDK_LIBS = ../gdk/gdk-win32-$(CTK_VER).lib
-CTK_LIBS = gtk-win32-$(CTK_VER).lib
+CTK_LIBS = ctk-win32-$(CTK_VER).lib
 CTK_BINARY_VERSION = @CTK_BINARY_VERSION@
 
 # Perl and awk are needed to generate some source files.
@@ -28,7 +28,7 @@ DEPCFLAGS = $(PANGO_CFLAGS) $(GLIB_CFLAGS) $(LIBICONV_CFLAGS) \
 		$(INTL_CFLAGS) $(ATK_CFLAGS) $(CAIRO_CFLAGS)
 LDFLAGS = $(ATK_LIBS) /link /machine:ix86 $(LINKDEBUG)
 # Some files use near as an identifier
-# Don't define CTK_COMPILATION here, because it's for gtk-x.x.dll only
+# Don't define CTK_COMPILATION here, because it's for ctk-x.x.dll only
 DEFINES = \
 	-DHAVE_CONFIG_H \
 	$(G_DEBUGGING) -DCTK_DISABLE_COMPAT_H -DG_LOG_DOMAIN=\"Gtk\" -Dnear=xxnear \
@@ -50,592 +50,592 @@ EXTRALIBS = \
 
 TOUCH = copy makefile.msc+nul
 
-gtkbuiltincache.h: gtk-update-icon-cache.exe
-	del gtkicontheme.obj
-	gtk-update-icon-cache --force --ignore-theme-index 	\
-	   --source builtin_icons stock-icons > gtkbuiltincache.h
+ctkbuiltincache.h: ctk-update-icon-cache.exe
+	del ctkicontheme.obj
+	ctk-update-icon-cache --force --ignore-theme-index 	\
+	   --source builtin_icons stock-icons > ctkbuiltincache.h
 
 GENERATED = \
-	gtktypebuiltins.h gtktypebuiltins.c \
-	gtkmarshalers.h gtkmarshalers.c \
-	gtk.def gtktypefuncs.c
+	ctktypebuiltins.h ctktypebuiltins.c \
+	ctkmarshalers.h ctkmarshalers.c \
+	ctk.def ctktypefuncs.c
 
 all :						\
 	..\config.h				\
 	$(GENERATED)				\
-	gtk-update-icon-cache.exe		\
-	gtkbuiltincache.h			\
-	libgtk-win32-$(CTK_VER)-0.dll		\
-	gtk-query-immodules-$(CTK_VER).exe \
-#	gtk-win32-$(CTK_VER)s.lib \
-#	gtk-x11-$(CTK_VER).dll
+	ctk-update-icon-cache.exe		\
+	ctkbuiltincache.h			\
+	libctk-win32-$(CTK_VER)-0.dll		\
+	ctk-query-immodules-$(CTK_VER).exe \
+#	ctk-win32-$(CTK_VER)s.lib \
+#	ctk-x11-$(CTK_VER).dll
 
 ctk_OBJECTS_cell = \
-	gtkcellarea.obj \
-	gtkcellareabox.obj \
-	gtkcellareaboxcontext.obj \
-	gtkcellareacontext.obj \
-	gtkcelleditable.obj \
-	gtkcelllayout.obj \
-	gtkcellrenderer.obj \
-	gtkcellrendereraccel.obj \
-	gtkcellrenderercombo.obj \
-	gtkcellrendererpixbuf.obj \
-	gtkcellrendererprogress.obj \
-	gtkcellrendererspin.obj	\
-	gtkcellrendererspinner.obj \
-	gtkcellrenderertext.obj \
-	gtkcellrenderertoggle.obj \
-	gtkcellview.obj \
-	gtkliststore.obj \
-	gtktreednd.obj \
-	gtktreemenu.obj \
-	gtktreemodel.obj \
-	gtktreemodelfilter.obj \
-	gtktreemodelsort.obj \
-	gtktreeselection.obj \
-	gtktreesortable.obj \
-	gtktreestore.obj \
-	gtktreeview.obj \
-	gtktreeviewcolumn.obj \
+	ctkcellarea.obj \
+	ctkcellareabox.obj \
+	ctkcellareaboxcontext.obj \
+	ctkcellareacontext.obj \
+	ctkcelleditable.obj \
+	ctkcelllayout.obj \
+	ctkcellrenderer.obj \
+	ctkcellrendereraccel.obj \
+	ctkcellrenderercombo.obj \
+	ctkcellrendererpixbuf.obj \
+	ctkcellrendererprogress.obj \
+	ctkcellrendererspin.obj	\
+	ctkcellrendererspinner.obj \
+	ctkcellrenderertext.obj \
+	ctkcellrenderertoggle.obj \
+	ctkcellview.obj \
+	ctkliststore.obj \
+	ctktreednd.obj \
+	ctktreemenu.obj \
+	ctktreemodel.obj \
+	ctktreemodelfilter.obj \
+	ctktreemodelsort.obj \
+	ctktreeselection.obj \
+	ctktreesortable.obj \
+	ctktreestore.obj \
+	ctktreeview.obj \
+	ctktreeviewcolumn.obj \
 
 ctk_OBJECTS_file = \
-	gtkfilechooser.obj \
-	gtkfilechooserbutton.obj \
-	gtkfilechooserdefault.obj \
-	gtkfilechooserdialog.obj \
-	gtkfilechooserembed.obj \
-	gtkfilechooserentry.obj \
-#	gtkfilechoosersettings.obj \
-	gtkfilechooserutils.obj \
-	gtkfilechooserwidget.obj \
-	gtkfilefilter.obj \
-	gtkfilesystem.obj \
-	gtkfilesystemmodel.obj \
+	ctkfilechooser.obj \
+	ctkfilechooserbutton.obj \
+	ctkfilechooserdefault.obj \
+	ctkfilechooserdialog.obj \
+	ctkfilechooserembed.obj \
+	ctkfilechooserentry.obj \
+#	ctkfilechoosersettings.obj \
+	ctkfilechooserutils.obj \
+	ctkfilechooserwidget.obj \
+	ctkfilefilter.obj \
+	ctkfilesystem.obj \
+	ctkfilesystemmodel.obj \
 
 ctk_OBJECTS_print = \
-	gtkprint-win32.obj \
-	gtkprintcontext.obj \
-	gtkprintoperation-win32.obj \
-	gtkprintoperation.obj \
-	gtkprintoperationpreview.obj \
-	gtkprintsettings.obj \
-	gtkprintutils.obj \
+	ctkprint-win32.obj \
+	ctkprintcontext.obj \
+	ctkprintoperation-win32.obj \
+	ctkprintoperation.obj \
+	ctkprintoperationpreview.obj \
+	ctkprintsettings.obj \
+	ctkprintutils.obj \
 
 ctk_OBJECTS_text = \
-	gtktextattributes.obj \
-	gtktextbtree.obj \
-	gtktextbuffer.obj \
-	gtktextbufferrichtext.obj \
-	gtktextbufferserialize.obj \
-	gtktextchild.obj \
-	gtktextdisplay.obj \
-	gtktextiter.obj \
-	gtktextlayout.obj \
-	gtktextmark.obj \
-	gtktextsegment.obj \
-	gtktexttag.obj \
-	gtktexttagtable.obj \
-	gtktexttypes.obj \
-	gtktextutil.obj	\
-	gtktextview.obj \
+	ctktextattributes.obj \
+	ctktextbtree.obj \
+	ctktextbuffer.obj \
+	ctktextbufferrichtext.obj \
+	ctktextbufferserialize.obj \
+	ctktextchild.obj \
+	ctktextdisplay.obj \
+	ctktextiter.obj \
+	ctktextlayout.obj \
+	ctktextmark.obj \
+	ctktextsegment.obj \
+	ctktexttag.obj \
+	ctktexttagtable.obj \
+	ctktexttypes.obj \
+	ctktextutil.obj	\
+	ctktextview.obj \
 
 ctk_OBJECTS_recent = \
-	gtkrecentaction.obj \
-	gtkrecentchooserdefault.obj \
-	gtkrecentchooserdialog.obj \
-	gtkrecentchoosermenu.obj \
-	gtkrecentchooserwidget.obj \
-	gtkrecentchooserutils.obj \
-	gtkrecentchooser.obj \
-	gtkrecentfilter.obj \
-	gtkrecentmanager.obj \
+	ctkrecentaction.obj \
+	ctkrecentchooserdefault.obj \
+	ctkrecentchooserdialog.obj \
+	ctkrecentchoosermenu.obj \
+	ctkrecentchooserwidget.obj \
+	ctkrecentchooserutils.obj \
+	ctkrecentchooser.obj \
+	ctkrecentfilter.obj \
+	ctkrecentmanager.obj \
 
 ctk_OBJECTS = \
 	fnmatch.obj \
-	gtk9slice.obj \
-	gtkaboutdialog.obj \
-	gtkaccelgroup.obj \
-	gtkaccellabel.obj \
-	gtkaccelmap.obj	\
-	gtkaccessible.obj \
-	gtkaction.obj \
-	gtkactiongroup.obj \
-	gtkactivatable.obj \
-	gtkadjustment.obj \
-	gtkalignment.obj \
-	gtkanimationdescription.obj \
-	gtkappchooser.obj \
-	gtkappchooserbutton.obj \
-	gtkappchooserdialog.obj \
-	gtkappchoosermodule.obj \
-	gtkappchooseronline.obj \
-	gtkappchooseronlinepk.obj \
-	gtkappchooserwidget.obj \
-	gtkapplication.obj \
-	gtkarrow.obj \
-	gtkaspectframe.obj \
-	gtkassistant.obj \
-	gtkbin.obj \
-	gtkbindings.obj \
-	gtkbbox.obj \
-	gtkbox.obj \
-	gtkborder.obj \
-	gtkbuildable.obj \
-	gtkbuilder.obj \
-	gtkbuilderparser.obj \
-	gtkbutton.obj \
-	gtkcalendar.obj \
-	gtkcheckbutton.obj \
-	gtkcheckmenuitem.obj \
-	gtkclipboard.obj \
-	gtkcolorbutton.obj \
-	gtkcolorsel.obj \
-	gtkcolorseldialog.obj \
-	gtkcombobox.obj	\
-	gtkcomboboxtext.obj \
-	gtkcontainer.obj \
-	gtkcssprovider.obj \
-	gtkdialog.obj \
-	gtkdnd.obj \
-	gtkdrawingarea.obj \
-	gtkeditable.obj \
-	gtkentry.obj \
-	gtkentrybuffer.obj \
-	gtkentrycompletion.obj \
-	gtkeventbox.obj \
-	gtkexpander.obj \
-	gtkfixed.obj \
-	gtkfontsel.obj \
-	gtkfontbutton.obj \
-	gtkframe.obj \
-	gtkgradient.obj \
-	gtkgrid.obj \
-	gtkhandlebox.obj \
-	gtkhbbox.obj \
-	gtkhbox.obj \
-	gtkhpaned.obj \
-	gtkhscale.obj \
-	gtkhscrollbar.obj \
-	gtkhseparator.obj \
-	gtkhsv.obj \
-	gtkiconcache.obj \
-	gtkiconcachevalidator.obj \
-	gtkiconfactory.obj \
-	gtkicontheme.obj \
-	gtkiconview.obj \
-	gtkimage.obj \
-	gtkimagemenuitem.obj \
-	gtkimcontext.obj \
-	gtkimcontextsimple.obj \
-	gtkimmodule.obj	\
-	gtkimmulticontext.obj \
-	gtkinfobar.obj \
-	gtkinvisible.obj \
-	gtkkeyhash.obj	\
-	gtklabel.obj \
-	gtklayout.obj \
-	gtklinkbutton.obj \
-	gtkmain.obj \
-	gtkmarshalers.obj \
-	gtkmenu.obj \
-	gtkmenubar.obj \
-	gtkmenuitem.obj \
-	gtkmenushell.obj \
-	gtkmenutoolbutton.obj \
-	gtkmessagedialog.obj \
-	gtkmisc.obj \
-	gtkmnemonichash.obj \
-	gtkmodifierstyle.obj \
-	gtkmodules.obj \
-	gtkmountoperation.obj \
-	gtkmountoperation-stub.obj \
-	gtknotebook.obj \
-	gtknumerableicon.obj \
-	gtkoffscreenwindow.obj \
-	gtkorientable.obj \
-	gtkpagesetup.obj \
-	gtkpaned.obj \
-	gtkpango.obj \
-	gtkpapersize.obj \
-	gtkpathbar.obj \
-	gtkprogressbar.obj \
-	gtkquery.obj \
-	gtkradioaction.obj \
-	gtkradiobutton.obj \
-	gtkradiotoolbutton.obj \
-	gtkradiomenuitem.obj \
-	gtkrange.obj \
-	gtkrbtree.obj \
-	gtkrc.obj \
-	gtkscale.obj \
-	gtkscalebutton.obj \
-	gtkscrollable.obj \
-	gtkscrollbar.obj \
-	gtkscrolledwindow.obj \
-	gtksearchengine.obj \
-	gtksearchenginebeagle.obj \
-	gtksearchenginesimple.obj \
-	gtksearchenginetracker.obj \
-	gtkselection.obj \
-	gtkseparator.obj \
-	gtkseparatormenuitem.obj \
-	gtkseparatortoolitem.obj \
-	gtksettings.obj \
-	gtkshow.obj \
-	gtkstacksidebar.obj \
-	gtksizegroup.obj \
-	gtksizerequest.obj \
-	gtkspinbutton.obj \
-	gtkspinner.obj \
-	gtkstatusicon.obj \
-	gtkstyle.obj \
-	gtkstylecontext.obj \
-	gtkstyleproperties.obj \
-	gtkstyleprovider.obj \
-	gtkstatusbar.obj \
-	gtkstock.obj \
-	gtkswitch.obj \
-	gtksymboliccolor.obj \
-	gtktable.obj \
-	gtktearoffmenuitem.obj \
-	gtktestutils.obj \
-	gtkthemingengine.obj \
-	gtktimeline.obj \
-	gtktoggleaction.obj \
-	gtktogglebutton.obj \
-	gtktoggletoolbutton.obj \
-	gtktoolbar.obj \
-	gtktoolbutton.obj \
-	gtktoolitem.obj \
-	gtktoolitemgroup.obj \
-	gtktoolpalette.obj \
-	gtktoolshell.obj \
-	gtktooltip.obj \
-	gtktreedatalist.obj \
-	gtktypebuiltins.obj \
-	gtkuimanager.obj \
-	gtkvbbox.obj \
-	gtkvbox.obj \
-	gtkviewport.obj \
-	gtkvolumebutton.obj \
-	gtkvpaned.obj \
-	gtkvscale.obj \
-	gtkvscrollbar.obj \
-	gtkvseparator.obj \
-	gtkwidget.obj \
-	gtkwidgetpath.obj \
-	gtkwin32embed.obj \
-	gtkwin32embedwidget.obj \
-	gtkwindow.obj \
-#	gtkwrapbox.obj \
+	ctk9slice.obj \
+	ctkaboutdialog.obj \
+	ctkaccelgroup.obj \
+	ctkaccellabel.obj \
+	ctkaccelmap.obj	\
+	ctkaccessible.obj \
+	ctkaction.obj \
+	ctkactiongroup.obj \
+	ctkactivatable.obj \
+	ctkadjustment.obj \
+	ctkalignment.obj \
+	ctkanimationdescription.obj \
+	ctkappchooser.obj \
+	ctkappchooserbutton.obj \
+	ctkappchooserdialog.obj \
+	ctkappchoosermodule.obj \
+	ctkappchooseronline.obj \
+	ctkappchooseronlinepk.obj \
+	ctkappchooserwidget.obj \
+	ctkapplication.obj \
+	ctkarrow.obj \
+	ctkaspectframe.obj \
+	ctkassistant.obj \
+	ctkbin.obj \
+	ctkbindings.obj \
+	ctkbbox.obj \
+	ctkbox.obj \
+	ctkborder.obj \
+	ctkbuildable.obj \
+	ctkbuilder.obj \
+	ctkbuilderparser.obj \
+	ctkbutton.obj \
+	ctkcalendar.obj \
+	ctkcheckbutton.obj \
+	ctkcheckmenuitem.obj \
+	ctkclipboard.obj \
+	ctkcolorbutton.obj \
+	ctkcolorsel.obj \
+	ctkcolorseldialog.obj \
+	ctkcombobox.obj	\
+	ctkcomboboxtext.obj \
+	ctkcontainer.obj \
+	ctkcssprovider.obj \
+	ctkdialog.obj \
+	ctkdnd.obj \
+	ctkdrawingarea.obj \
+	ctkeditable.obj \
+	ctkentry.obj \
+	ctkentrybuffer.obj \
+	ctkentrycompletion.obj \
+	ctkeventbox.obj \
+	ctkexpander.obj \
+	ctkfixed.obj \
+	ctkfontsel.obj \
+	ctkfontbutton.obj \
+	ctkframe.obj \
+	ctkgradient.obj \
+	ctkgrid.obj \
+	ctkhandlebox.obj \
+	ctkhbbox.obj \
+	ctkhbox.obj \
+	ctkhpaned.obj \
+	ctkhscale.obj \
+	ctkhscrollbar.obj \
+	ctkhseparator.obj \
+	ctkhsv.obj \
+	ctkiconcache.obj \
+	ctkiconcachevalidator.obj \
+	ctkiconfactory.obj \
+	ctkicontheme.obj \
+	ctkiconview.obj \
+	ctkimage.obj \
+	ctkimagemenuitem.obj \
+	ctkimcontext.obj \
+	ctkimcontextsimple.obj \
+	ctkimmodule.obj	\
+	ctkimmulticontext.obj \
+	ctkinfobar.obj \
+	ctkinvisible.obj \
+	ctkkeyhash.obj	\
+	ctklabel.obj \
+	ctklayout.obj \
+	ctklinkbutton.obj \
+	ctkmain.obj \
+	ctkmarshalers.obj \
+	ctkmenu.obj \
+	ctkmenubar.obj \
+	ctkmenuitem.obj \
+	ctkmenushell.obj \
+	ctkmenutoolbutton.obj \
+	ctkmessagedialog.obj \
+	ctkmisc.obj \
+	ctkmnemonichash.obj \
+	ctkmodifierstyle.obj \
+	ctkmodules.obj \
+	ctkmountoperation.obj \
+	ctkmountoperation-stub.obj \
+	ctknotebook.obj \
+	ctknumerableicon.obj \
+	ctkoffscreenwindow.obj \
+	ctkorientable.obj \
+	ctkpagesetup.obj \
+	ctkpaned.obj \
+	ctkpango.obj \
+	ctkpapersize.obj \
+	ctkpathbar.obj \
+	ctkprogressbar.obj \
+	ctkquery.obj \
+	ctkradioaction.obj \
+	ctkradiobutton.obj \
+	ctkradiotoolbutton.obj \
+	ctkradiomenuitem.obj \
+	ctkrange.obj \
+	ctkrbtree.obj \
+	ctkrc.obj \
+	ctkscale.obj \
+	ctkscalebutton.obj \
+	ctkscrollable.obj \
+	ctkscrollbar.obj \
+	ctkscrolledwindow.obj \
+	ctksearchengine.obj \
+	ctksearchenginebeagle.obj \
+	ctksearchenginesimple.obj \
+	ctksearchenginetracker.obj \
+	ctkselection.obj \
+	ctkseparator.obj \
+	ctkseparatormenuitem.obj \
+	ctkseparatortoolitem.obj \
+	ctksettings.obj \
+	ctkshow.obj \
+	ctkstacksidebar.obj \
+	ctksizegroup.obj \
+	ctksizerequest.obj \
+	ctkspinbutton.obj \
+	ctkspinner.obj \
+	ctkstatusicon.obj \
+	ctkstyle.obj \
+	ctkstylecontext.obj \
+	ctkstyleproperties.obj \
+	ctkstyleprovider.obj \
+	ctkstatusbar.obj \
+	ctkstock.obj \
+	ctkswitch.obj \
+	ctksymboliccolor.obj \
+	ctktable.obj \
+	ctktearoffmenuitem.obj \
+	ctktestutils.obj \
+	ctkthemingengine.obj \
+	ctktimeline.obj \
+	ctktoggleaction.obj \
+	ctktogglebutton.obj \
+	ctktoggletoolbutton.obj \
+	ctktoolbar.obj \
+	ctktoolbutton.obj \
+	ctktoolitem.obj \
+	ctktoolitemgroup.obj \
+	ctktoolpalette.obj \
+	ctktoolshell.obj \
+	ctktooltip.obj \
+	ctktreedatalist.obj \
+	ctktypebuiltins.obj \
+	ctkuimanager.obj \
+	ctkvbbox.obj \
+	ctkvbox.obj \
+	ctkviewport.obj \
+	ctkvolumebutton.obj \
+	ctkvpaned.obj \
+	ctkvscale.obj \
+	ctkvscrollbar.obj \
+	ctkvseparator.obj \
+	ctkwidget.obj \
+	ctkwidgetpath.obj \
+	ctkwin32embed.obj \
+	ctkwin32embedwidget.obj \
+	ctkwindow.obj \
+#	ctkwrapbox.obj \
 
 # Source headers which are non-autogenerated headers
 ctk_public_h_sources = 		\
-	gtk.h			\
-	gtkaboutdialog.h	\
-	gtkaccelgroup.h		\
-	gtkaccellabel.h		\
-	gtkaccelmap.h		\
-	gtkaccessible.h		\
-	gtkaction.h		\
-	gtkactiongroup.h	\
-	gtkactivatable.h	\
-	gtkadjustment.h		\
-	gtkalignment.h		\
-	gtkappchooser.h		\
-	gtkappchooserbutton.h	\
-	gtkappchooserdialog.h	\
-	gtkappchooserwidget.h	\
-	gtkapplication.h	\
-	gtkarrow.h		\
-	gtkaspectframe.h	\
-	gtkassistant.h		\
-	gtkbbox.h		\
-	gtkbin.h		\
-	gtkbindings.h		\
-	gtkborder.h		\
-	gtkbox.h		\
-	gtkbuilder.h		\
-	gtkbuildable.h		\
-	gtkbutton.h		\
-	gtkcalendar.h		\
-	gtkcellarea.h		\
-	gtkcellareacontext.h	\
-	gtkcellareabox.h	\
-	gtkcelleditable.h	\
-	gtkcelllayout.h		\
-	gtkcellrenderer.h	\
-	gtkcellrendereraccel.h	\
-	gtkcellrenderercombo.h	\
-	gtkcellrendererpixbuf.h	\
-	gtkcellrendererprogress.h \
-	gtkcellrendererspin.h	\
-	gtkcellrendererspinner.h\
-	gtkcellrenderertext.h	\
-	gtkcellrenderertoggle.h	\
-	gtkcellview.h		\
-	gtkcheckbutton.h	\
-	gtkcheckmenuitem.h	\
-	gtkclipboard.h		\
-	gtkcolorbutton.h	\
-	gtkcolorsel.h		\
-	gtkcolorseldialog.h	\
-	gtkcombobox.h		\
-	gtkcomboboxtext.h	\
-	gtkcontainer.h		\
-	gtkcssprovider.h	\
-	gtkdebug.h		\
-	gtkdialog.h		\
-	gtkdnd.h		\
-	gtkdrawingarea.h	\
-	gtkeditable.h		\
-	gtkentry.h		\
-	gtkentrybuffer.h	\
-	gtkentrycompletion.h	\
-	gtkenums.h		\
-	gtkeventbox.h		\
-	gtkexpander.h		\
-	gtkfilechooser.h	\
-	gtkfilechooserbutton.h	\
-	gtkfilechooserdialog.h	\
-	gtkfilechooserwidget.h	\
-	gtkfilefilter.h		\
-	gtkfixed.h		\
-	gtkfontbutton.h		\
-	gtkfontsel.h		\
-	gtkframe.h		\
-	gtkgradient.h		\
-	gtkgrid.h		\
-	gtkhandlebox.h		\
-	gtkhbbox.h		\
-	gtkhbox.h		\
-	gtkhpaned.h		\
-	gtkhscale.h		\
-	gtkhscrollbar.h		\
-	gtkhseparator.h		\
-	gtkhsv.h		\
-	gtkiconfactory.h	\
-	gtkicontheme.h		\
-	gtkiconview.h		\
-	gtkimage.h		\
-	gtkimagemenuitem.h	\
-	gtkimcontext.h		\
-	gtkimcontextsimple.h	\
-	gtkimmodule.h		\
-	gtkimmulticontext.h	\
-	gtkinfobar.h		\
-	gtkinvisible.h		\
-	gtklabel.h		\
-	gtklayout.h		\
-	gtklinkbutton.h		\
-	gtkliststore.h		\
-	gtkmain.h		\
-	gtkmenu.h		\
-	gtkmenubar.h		\
-	gtkmenuitem.h		\
-	gtkmenushell.h		\
-	gtkmenutoolbutton.h	\
-	gtkmessagedialog.h	\
-	gtkmisc.h		\
-	gtkmodules.h		\
-	gtkmountoperation.h	\
-	gtknotebook.h		\
-	gtkoffscreenwindow.h	\
-	gtkorientable.h		\
-	gtkpagesetup.h		\
-	gtkpaned.h		\
-	gtkpapersize.h		\
-	gtkplug.h		\
-	gtkprintcontext.h	\
-	gtkprintoperation.h	\
-	gtkprintoperationpreview.h \
-	gtkprintsettings.h	\
-	gtkprogressbar.h	\
-	gtkradioaction.h	\
-	gtkradiobutton.h	\
-	gtkradiomenuitem.h	\
-	gtkradiotoolbutton.h	\
-	gtkrange.h		\
-	gtkrc.h			\
-	gtkrecentaction.h	\
-	gtkrecentchooser.h	\
-	gtkrecentchooserdialog.h \
-	gtkrecentchoosermenu.h	\
-	gtkrecentchooserwidget.h \
-	gtkrecentfilter.h	\
-	gtkrecentmanager.h	\
-	gtkscale.h		\
-	gtkscalebutton.h	\
-	gtkscrollable.h		\
-	gtkscrollbar.h		\
-	gtkscrolledwindow.h	\
-	gtkselection.h		\
-	gtkseparator.h		\
-	gtkseparatormenuitem.h	\
-	gtkseparatortoolitem.h	\
-	gtksettings.h		\
-	gtkshow.h		\
-	gtkstacksidebar.h	\
-	gtksizegroup.h		\
-	gtksizerequest.h	\
-	gtksocket.h		\
-	gtkspinbutton.h		\
-	gtkspinner.h		\
-	gtkstatusbar.h		\
-	gtkstatusicon.h		\
-	gtkstock.h		\
-	gtkstylecontext.h	\
-	gtkstyleproperties.h	\
-	gtkstyleprovider.h	\
-	gtkstyle.h		\
-	gtkswitch.h		\
-	gtksymboliccolor.h	\
-	gtktable.h		\
-	gtktearoffmenuitem.h	\
-	gtktestutils.h		\
-	gtktextbuffer.h		\
-	gtktextbufferrichtext.h	\
-	gtktextchild.h		\
-	gtktextdisplay.h	\
-	gtktextiter.h		\
-	gtktextmark.h		\
-	gtktexttag.h		\
-	gtktexttagtable.h	\
-	gtktextview.h		\
-	gtkthemingengine.h	\
-	gtktoggleaction.h	\
-	gtktogglebutton.h	\
-	gtktoggletoolbutton.h	\
-	gtktoolbar.h		\
-	gtktoolbutton.h		\
-	gtktoolitem.h		\
-	gtktoolitemgroup.h	\
-	gtktoolpalette.h	\
-	gtktoolshell.h		\
-	gtktooltip.h		\
-	gtktreednd.h		\
-	gtktreemodel.h		\
-	gtktreemodelfilter.h	\
-	gtktreemodelsort.h	\
-	gtktreeselection.h	\
-	gtktreesortable.h	\
-	gtktreestore.h		\
-	gtktreeview.h		\
-	gtktreeviewcolumn.h	\
-	gtkuimanager.h		\
-	gtkvbbox.h		\
-	gtkvbox.h		\
-	gtkviewport.h		\
-	gtkvolumebutton.h	\
-	gtkvpaned.h		\
-	gtkvscale.h		\
-	gtkvscrollbar.h		\
-	gtkvseparator.h		\
-	gtkwidget.h		\
-	gtkwidgetpath.h		\
-	gtkwindow.h
+	ctk.h			\
+	ctkaboutdialog.h	\
+	ctkaccelgroup.h		\
+	ctkaccellabel.h		\
+	ctkaccelmap.h		\
+	ctkaccessible.h		\
+	ctkaction.h		\
+	ctkactiongroup.h	\
+	ctkactivatable.h	\
+	ctkadjustment.h		\
+	ctkalignment.h		\
+	ctkappchooser.h		\
+	ctkappchooserbutton.h	\
+	ctkappchooserdialog.h	\
+	ctkappchooserwidget.h	\
+	ctkapplication.h	\
+	ctkarrow.h		\
+	ctkaspectframe.h	\
+	ctkassistant.h		\
+	ctkbbox.h		\
+	ctkbin.h		\
+	ctkbindings.h		\
+	ctkborder.h		\
+	ctkbox.h		\
+	ctkbuilder.h		\
+	ctkbuildable.h		\
+	ctkbutton.h		\
+	ctkcalendar.h		\
+	ctkcellarea.h		\
+	ctkcellareacontext.h	\
+	ctkcellareabox.h	\
+	ctkcelleditable.h	\
+	ctkcelllayout.h		\
+	ctkcellrenderer.h	\
+	ctkcellrendereraccel.h	\
+	ctkcellrenderercombo.h	\
+	ctkcellrendererpixbuf.h	\
+	ctkcellrendererprogress.h \
+	ctkcellrendererspin.h	\
+	ctkcellrendererspinner.h\
+	ctkcellrenderertext.h	\
+	ctkcellrenderertoggle.h	\
+	ctkcellview.h		\
+	ctkcheckbutton.h	\
+	ctkcheckmenuitem.h	\
+	ctkclipboard.h		\
+	ctkcolorbutton.h	\
+	ctkcolorsel.h		\
+	ctkcolorseldialog.h	\
+	ctkcombobox.h		\
+	ctkcomboboxtext.h	\
+	ctkcontainer.h		\
+	ctkcssprovider.h	\
+	ctkdebug.h		\
+	ctkdialog.h		\
+	ctkdnd.h		\
+	ctkdrawingarea.h	\
+	ctkeditable.h		\
+	ctkentry.h		\
+	ctkentrybuffer.h	\
+	ctkentrycompletion.h	\
+	ctkenums.h		\
+	ctkeventbox.h		\
+	ctkexpander.h		\
+	ctkfilechooser.h	\
+	ctkfilechooserbutton.h	\
+	ctkfilechooserdialog.h	\
+	ctkfilechooserwidget.h	\
+	ctkfilefilter.h		\
+	ctkfixed.h		\
+	ctkfontbutton.h		\
+	ctkfontsel.h		\
+	ctkframe.h		\
+	ctkgradient.h		\
+	ctkgrid.h		\
+	ctkhandlebox.h		\
+	ctkhbbox.h		\
+	ctkhbox.h		\
+	ctkhpaned.h		\
+	ctkhscale.h		\
+	ctkhscrollbar.h		\
+	ctkhseparator.h		\
+	ctkhsv.h		\
+	ctkiconfactory.h	\
+	ctkicontheme.h		\
+	ctkiconview.h		\
+	ctkimage.h		\
+	ctkimagemenuitem.h	\
+	ctkimcontext.h		\
+	ctkimcontextsimple.h	\
+	ctkimmodule.h		\
+	ctkimmulticontext.h	\
+	ctkinfobar.h		\
+	ctkinvisible.h		\
+	ctklabel.h		\
+	ctklayout.h		\
+	ctklinkbutton.h		\
+	ctkliststore.h		\
+	ctkmain.h		\
+	ctkmenu.h		\
+	ctkmenubar.h		\
+	ctkmenuitem.h		\
+	ctkmenushell.h		\
+	ctkmenutoolbutton.h	\
+	ctkmessagedialog.h	\
+	ctkmisc.h		\
+	ctkmodules.h		\
+	ctkmountoperation.h	\
+	ctknotebook.h		\
+	ctkoffscreenwindow.h	\
+	ctkorientable.h		\
+	ctkpagesetup.h		\
+	ctkpaned.h		\
+	ctkpapersize.h		\
+	ctkplug.h		\
+	ctkprintcontext.h	\
+	ctkprintoperation.h	\
+	ctkprintoperationpreview.h \
+	ctkprintsettings.h	\
+	ctkprogressbar.h	\
+	ctkradioaction.h	\
+	ctkradiobutton.h	\
+	ctkradiomenuitem.h	\
+	ctkradiotoolbutton.h	\
+	ctkrange.h		\
+	ctkrc.h			\
+	ctkrecentaction.h	\
+	ctkrecentchooser.h	\
+	ctkrecentchooserdialog.h \
+	ctkrecentchoosermenu.h	\
+	ctkrecentchooserwidget.h \
+	ctkrecentfilter.h	\
+	ctkrecentmanager.h	\
+	ctkscale.h		\
+	ctkscalebutton.h	\
+	ctkscrollable.h		\
+	ctkscrollbar.h		\
+	ctkscrolledwindow.h	\
+	ctkselection.h		\
+	ctkseparator.h		\
+	ctkseparatormenuitem.h	\
+	ctkseparatortoolitem.h	\
+	ctksettings.h		\
+	ctkshow.h		\
+	ctkstacksidebar.h	\
+	ctksizegroup.h		\
+	ctksizerequest.h	\
+	ctksocket.h		\
+	ctkspinbutton.h		\
+	ctkspinner.h		\
+	ctkstatusbar.h		\
+	ctkstatusicon.h		\
+	ctkstock.h		\
+	ctkstylecontext.h	\
+	ctkstyleproperties.h	\
+	ctkstyleprovider.h	\
+	ctkstyle.h		\
+	ctkswitch.h		\
+	ctksymboliccolor.h	\
+	ctktable.h		\
+	ctktearoffmenuitem.h	\
+	ctktestutils.h		\
+	ctktextbuffer.h		\
+	ctktextbufferrichtext.h	\
+	ctktextchild.h		\
+	ctktextdisplay.h	\
+	ctktextiter.h		\
+	ctktextmark.h		\
+	ctktexttag.h		\
+	ctktexttagtable.h	\
+	ctktextview.h		\
+	ctkthemingengine.h	\
+	ctktoggleaction.h	\
+	ctktogglebutton.h	\
+	ctktoggletoolbutton.h	\
+	ctktoolbar.h		\
+	ctktoolbutton.h		\
+	ctktoolitem.h		\
+	ctktoolitemgroup.h	\
+	ctktoolpalette.h	\
+	ctktoolshell.h		\
+	ctktooltip.h		\
+	ctktreednd.h		\
+	ctktreemodel.h		\
+	ctktreemodelfilter.h	\
+	ctktreemodelsort.h	\
+	ctktreeselection.h	\
+	ctktreesortable.h	\
+	ctktreestore.h		\
+	ctktreeview.h		\
+	ctktreeviewcolumn.h	\
+	ctkuimanager.h		\
+	ctkvbbox.h		\
+	ctkvbox.h		\
+	ctkviewport.h		\
+	ctkvolumebutton.h	\
+	ctkvpaned.h		\
+	ctkvscale.h		\
+	ctkvscrollbar.h		\
+	ctkvseparator.h		\
+	ctkwidget.h		\
+	ctkwidgetpath.h		\
+	ctkwindow.h
 
 # these aren't use here, but listed for reference
 ctk_extra_sources = \
-	gtkversion.h		\
-	gtk-boxed.defs		\
-	gtkmarshal.list		\
+	ctkversion.h		\
+	ctk-boxed.defs		\
+	ctkmarshal.list		\
 
 ..\config.h : ..\config.h.win32
 	copy ..\config.h.win32 ..\config.h
 
-gtk.def: gtk.symbols makefile.msc
-	echo EXPORTS > gtk.def
+ctk.def: ctk.symbols makefile.msc
+	echo EXPORTS > ctk.def
 	cl /EP -DG_OS_WIN32 -DGDK_WINDOWING_WIN32 \
 		-DG_GNUC_MALLOC= -DG_GNUC_CONST= -DG_GNUC_NULL_TERMINATED= -DG_GNUC_NORETURN= \
-		-DG_GNUC_PRINTF=;G_GNUC_PRINTF gtk.symbols >> gtk.def
+		-DG_GNUC_PRINTF=;G_GNUC_PRINTF ctk.symbols >> ctk.def
 
 # generate type identifier header (CTK_TYPE_WIDGET_FLAGS)
 # use 'echo' to work around 'command line too long'
-gtktypebuiltins.h: $(ctk_public_h_sources) makefile.msc
-	echo #ifndef __CTK_TYPE_BUILTINS_H__ > gtktypebuiltins.h
-	echo #define __CTK_TYPE_BUILTINS_H__ >> gtktypebuiltins.h
-	echo #include "glib-object.h" >> gtktypebuiltins.h
-	echo G_BEGIN_DECLS >> gtktypebuiltins.h
+ctktypebuiltins.h: $(ctk_public_h_sources) makefile.msc
+	echo #ifndef __CTK_TYPE_BUILTINS_H__ > ctktypebuiltins.h
+	echo #define __CTK_TYPE_BUILTINS_H__ >> ctktypebuiltins.h
+	echo #include "glib-object.h" >> ctktypebuiltins.h
+	echo G_BEGIN_DECLS >> ctktypebuiltins.h
 	$(PERL) $(GLIB)\gobject\glib-mkenums \
 		--fprod "/* enumerations from \"@filename@\" */\n" \
 		--vhead "GType @enum_name@_get_type (void);\n#define CTK_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
 		--ftail "G_END_DECLS\n\n#endif /* __CTK_TYPE_BUILTINS_H__ */" \
-		$(ctk_public_h_sources) >> gtktypebuiltins.h
+		$(ctk_public_h_sources) >> ctktypebuiltins.h
 
-gtktypebuiltins.c: $(ctk_public_h_sources) makefile.msc
+ctktypebuiltins.c: $(ctk_public_h_sources) makefile.msc
 	$(PERL) $(GLIB)\gobject\glib-mkenums \
-		--fhead "#define CTK_ENABLE_BROKEN\n#include \"gtk.h\"\n#include \"gtkprivate.h\"" \
+		--fhead "#define CTK_ENABLE_BROKEN\n#include \"ctk.h\"\n#include \"ctkprivate.h\"" \
 		--fprod "\n/* enumerations from \"@filename@\" */" \
 		--vhead "GType\n@enum_name@_get_type (void)\n{\n  static GType etype = 0;\n  if (etype == 0) {\n    static const G@Type@Value values[] = {" \
 		--vprod "      { @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \
 		--vtail "      { 0, NULL, NULL }\n    };\n    etype = g_@type@_register_static (\"@EnumName@\", values);\n  }\n  return etype;\n}\n" \
 		$(ctk_public_h_sources) > xgen-gtbc
-	copy xgen-gtbc gtktypebuiltins.c
+	copy xgen-gtbc ctktypebuiltins.c
 
 # private marshalers
-gtkmarshalers.h : gtkmarshalers.list makefile.msc
-	$(GLIB)\gobject\glib-genmarshal --prefix=_ctk_marshal gtkmarshalers.list --header >gtkmarshalers.h
+ctkmarshalers.h : ctkmarshalers.list makefile.msc
+	$(GLIB)\gobject\glib-genmarshal --prefix=_ctk_marshal ctkmarshalers.list --header >ctkmarshalers.h
 
-gtkmarshalers.c : gtkmarshalers.list makefile.msc
-	$(GLIB)\gobject\glib-genmarshal --prefix=_ctk_marshal gtkmarshalers.list --body >gtkmarshalers.c
+ctkmarshalers.c : ctkmarshalers.list makefile.msc
+	$(GLIB)\gobject\glib-genmarshal --prefix=_ctk_marshal ctkmarshalers.list --body >ctkmarshalers.c
 
-gtktypefuncs.c : makefile.msc
-	echo /*none*/ > gtktypefuncs.c
+ctktypefuncs.c : makefile.msc
+	echo /*none*/ > ctktypefuncs.c
 
-gtk-win32.res : gtk-win32.rc
-	rc -DBUILDNUMBER=0 -r -fo gtk-win32.res gtk-win32.rc
+ctk-win32.res : ctk-win32.rc
+	rc -DBUILDNUMBER=0 -r -fo ctk-win32.res ctk-win32.rc
 
 # build some static limits to covercome command line too long
 # may also speed up the build
 
-gtk-cell.lib : $(ctk_OBJECTS_cell)
-	lib /out:gtk-cell.lib $(ctk_OBJECTS_cell)
+ctk-cell.lib : $(ctk_OBJECTS_cell)
+	lib /out:ctk-cell.lib $(ctk_OBJECTS_cell)
 
-gtk-file.lib : $(ctk_OBJECTS_file)
-	lib /out:gtk-file.lib $(ctk_OBJECTS_file)
+ctk-file.lib : $(ctk_OBJECTS_file)
+	lib /out:ctk-file.lib $(ctk_OBJECTS_file)
 
-gtk-print.lib : $(ctk_OBJECTS_print)
-	lib /out:gtk-print.lib $(ctk_OBJECTS_print)
+ctk-print.lib : $(ctk_OBJECTS_print)
+	lib /out:ctk-print.lib $(ctk_OBJECTS_print)
 
-gtk-recent.lib : $(ctk_OBJECTS_recent)
-	lib /out:gtk-recent.lib $(ctk_OBJECTS_recent)
+ctk-recent.lib : $(ctk_OBJECTS_recent)
+	lib /out:ctk-recent.lib $(ctk_OBJECTS_recent)
 
-gtk-text.lib : $(ctk_OBJECTS_text)
-	lib /out:gtk-text.lib $(ctk_OBJECTS_text)
+ctk-text.lib : $(ctk_OBJECTS_text)
+	lib /out:ctk-text.lib $(ctk_OBJECTS_text)
 
-gtk-core.lib : $(ctk_OBJECTS) 
-	lib /out:gtk-core.lib $(ctk_OBJECTS)
+ctk-core.lib : $(ctk_OBJECTS) 
+	lib /out:ctk-core.lib $(ctk_OBJECTS)
 
 ctk_SUBLIBS = \
-	gtk-cell.lib \
-	gtk-file.lib \
-	gtk-print.lib \
-	gtk-recent.lib \
-	gtk-text.lib \
-	gtk-core.lib
+	ctk-cell.lib \
+	ctk-file.lib \
+	ctk-print.lib \
+	ctk-recent.lib \
+	ctk-text.lib \
+	ctk-core.lib
 
 #
 # Linking:
 #
-libgtk-win32-$(CTK_VER)-0.dll : $(ctk_SUBLIBS) gtk.def gtk-win32.res
-	$(CC) $(CFLAGS) -LD -Fm -Fe$@ $(ctk_SUBLIBS) gtk-win32.res $(EXTRALIBS) \
+libctk-win32-$(CTK_VER)-0.dll : $(ctk_SUBLIBS) ctk.def ctk-win32.res
+	$(CC) $(CFLAGS) -LD -Fm -Fe$@ $(ctk_SUBLIBS) ctk-win32.res $(EXTRALIBS) \
 	gdi32.lib user32.lib advapi32.lib wsock32.lib shell32.lib ole32.lib \
 	comdlg32.lib winspool.lib comctl32.lib \
-	$(LDFLAGS) /implib:gtk-win32-$(CTK_VER).lib /def:gtk.def
+	$(LDFLAGS) /implib:ctk-win32-$(CTK_VER).lib /def:ctk.def
 
-gtk-win32-$(CTK_VER)s.lib : $(ctk_OBJECTS)
-	lib /out:gtk-win32-$(CTK_VER)s.lib $(ctk_OBJECTS)
+ctk-win32-$(CTK_VER)s.lib : $(ctk_OBJECTS)
+	lib /out:ctk-win32-$(CTK_VER)s.lib $(ctk_OBJECTS)
 
-gtk-query-immodules-$(CTK_VER).exe : queryimmodules.obj
+ctk-query-immodules-$(CTK_VER).exe : queryimmodules.obj
 	$(CC) $(CFLAGS) -Fe$@ queryimmodules.obj $(CTK_LIBS) $(GLIB_LIBS) $(PANGO_LIBS) $(LDFLAGS)
 
-gtk-update-icon-cache.exe : updateiconcache.obj
+ctk-update-icon-cache.exe : updateiconcache.obj
 	$(CC) $(CFLAGS) -Fe$@ updateiconcache.obj $(GDK_PIXBUF_LIBS) $(GLIB_LIBS) $(INTL_LIBS) $(PANGO_LIBS) $(LDFLAGS)
 
-gtk-x11-$(CTK_VER).dll : $(ctk_OBJECTS) gtk.def
-	$(CC) $(CFLAGS) -LD -Fm -Fegtk-x11-$(CTK_VER).dll $(ctk_OBJECTS) ../gdk/gdk-x11-$(CTK_VER).lib $(GDK_PIXBUF_LIBS) $(PANGO_LIBS) $(INTL_LIBS) $(GLIB_LIBS) gdi32.lib user32.lib advapi32.lib $(LDFLAGS) /def:gtk.def
+ctk-x11-$(CTK_VER).dll : $(ctk_OBJECTS) ctk.def
+	$(CC) $(CFLAGS) -LD -Fm -Fectk-x11-$(CTK_VER).dll $(ctk_OBJECTS) ../gdk/gdk-x11-$(CTK_VER).lib $(GDK_PIXBUF_LIBS) $(PANGO_LIBS) $(INTL_LIBS) $(GLIB_LIBS) gdi32.lib user32.lib advapi32.lib $(LDFLAGS) /def:ctk.def
 
 # General rule for compiling the objects into the DLL
 .c.obj :

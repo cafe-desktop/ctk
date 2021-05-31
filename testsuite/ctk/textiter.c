@@ -19,7 +19,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 test_empty_search ()

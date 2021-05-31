@@ -4,10 +4,10 @@ How to do a GTK+ release?
 Make sure you have suitable versions of autoconf and libtool.
 Also make sure you have the following packages installed with all their
 dependencies:
-* gtk-doc
+* ctk-doc
 * docbook-utils
 Without those packages make distcheck will *not* pass.
-Make sure that gtk-doc is the latest released version.
+Make sure that ctk-doc is the latest released version.
 
 
  0) Go back to a pristine working directory. With git, this works:
@@ -15,7 +15,7 @@ Make sure that gtk-doc is the latest released version.
     git clean -f -x
 
  1) autogen and build it, make sure to enable docs by specifying
-    --enable-gtk-doc --enable-man
+    --enable-ctk-doc --enable-man
 
  2) Update NEWS based on the content of git log; follow the format
     of prior entries. This includes finding noteworthy new features,
@@ -28,8 +28,8 @@ Make sure that gtk-doc is the latest released version.
 
  3) Update the pot files and commit the changes:
 
-    make -C po gtk30.pot
-    make -C po-properties gtk30-properties.pot
+    make -C po ctk30.pot
+    make -C po-properties ctk30-properties.pot
 
  4) In particular, if this is a major, stable, release, verify that
     README.in contains the relevant release notes and that the
@@ -89,10 +89,10 @@ Make sure that gtk-doc is the latest released version.
     it to download.gnome.org. If you don't have an account on master.gnome.org,
     find someone who can do it for you. The command for this looks like
 
-      scp gtk+-2.12.10.tar.xz matthiasc@master.gnome.org:
-      ssh matthiasc@master.gnome.org ftpadmin install gtk+-2.12.10.tar.xz
+      scp ctk+-2.12.10.tar.xz matthiasc@master.gnome.org:
+      ssh matthiasc@master.gnome.org ftpadmin install ctk+-2.12.10.tar.xz
 
-15) Upload the tarball and checksum to ftp.gtk.org and put them in the right
+15) Upload the tarball and checksum to ftp.ctk.org and put them in the right
     directory below /ftp/pub. Pay attention to correct ownership, and don't
     forget to update the LATEST file in the directory.
 
@@ -101,8 +101,8 @@ Make sure that gtk-doc is the latest released version.
     commentary at the top about "what this release is about" and the
     summary of changes.
 
-17) Send it to gnome-announce-list, gtk-list, gtk-app-devel-list and
-    gtk-devel-list. Set reply-to to desktop-devel-list.
+17) Send it to gnome-announce-list, ctk-list, ctk-app-devel-list and
+    ctk-devel-list. Set reply-to to desktop-devel-list.
 
-18) Add a link to the release announcement to www.gtk.org which lives
-    in the gtk-web git module.
+18) Add a link to the release announcement to www.ctk.org which lives
+    in the ctk-web git module.

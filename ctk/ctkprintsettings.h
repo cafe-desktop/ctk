@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkprintsettings.h: Print Settings
+ * ctkprintsettings.h: Print Settings
  * Copyright (C) 2006, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -20,10 +20,10 @@
 #define __CTK_PRINT_SETTINGS_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkpapersize.h>
+#include <ctk/ctkpapersize.h>
 
 G_BEGIN_DECLS
 

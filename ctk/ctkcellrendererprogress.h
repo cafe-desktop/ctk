@@ -1,4 +1,4 @@
-/* gtkcellrendererprogress.h
+/* ctkcellrendererprogress.h
  * Copyright (C) 2002 Naba Kumar <kh_naba@users.sourceforge.net>
  * modified by Jörgen Scheibengruber <mfcn@gmx.de>
  *
@@ -20,17 +20,17 @@
  * Modified by the GTK+ Team and others 1997-2004.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __CTK_CELL_RENDERER_PROGRESS_H__
 #define __CTK_CELL_RENDERER_PROGRESS_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkcellrenderer.h>
+#include <ctk/ctkcellrenderer.h>
 
 G_BEGIN_DECLS
 

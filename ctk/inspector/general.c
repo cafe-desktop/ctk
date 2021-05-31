@@ -20,16 +20,16 @@
 
 #include "general.h"
 
-#include "gtkdebug.h"
-#include "gtklabel.h"
-#include "gtkscale.h"
-#include "gtkswitch.h"
-#include "gtklistbox.h"
-#include "gtkprivate.h"
-#include "gtksizegroup.h"
-#include "gtkimage.h"
-#include "gtkadjustment.h"
-#include "gtkbox.h"
+#include "ctkdebug.h"
+#include "ctklabel.h"
+#include "ctkscale.h"
+#include "ctkswitch.h"
+#include "ctklistbox.h"
+#include "ctkprivate.h"
+#include "ctksizegroup.h"
+#include "ctkimage.h"
+#include "ctkadjustment.h"
+#include "ctkbox.h"
 
 #ifdef GDK_WINDOWING_X11
 #include "x11/gdkx.h"
@@ -728,7 +728,7 @@ ctk_inspector_general_class_init (GtkInspectorGeneralClass *klass)
 
   object_class->constructed = ctk_inspector_general_constructed;
 
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/general.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/general.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorGeneral, version_box);
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorGeneral, env_box);
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorGeneral, display_box);

@@ -22,10 +22,10 @@
 #define __CTK_GESTURE_SINGLE_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkgesture.h>
+#include <ctk/ctkgesture.h>
 
 G_BEGIN_DECLS
 

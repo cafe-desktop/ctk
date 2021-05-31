@@ -21,7 +21,7 @@
 #ifndef __CTK_TOOL_PALETTE_PRIVATE_H__
 #define __CTK_TOOL_PALETTE_PRIVATE_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 G_BEGIN_DECLS
 

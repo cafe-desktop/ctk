@@ -19,12 +19,12 @@
 #define __CTK_STYLE_PROPERTIES_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
 #include <glib-object.h>
 #include <gdk/gdk.h>
-#include <gtk/gtkenums.h>
+#include <ctk/ctkenums.h>
 
 G_BEGIN_DECLS
 
@@ -68,7 +68,7 @@ typedef gboolean (* GtkStylePropertyParser) (const gchar  *string,
 GDK_DEPRECATED_IN_3_16
 GType ctk_style_properties_get_type (void) G_GNUC_CONST;
 
-/* Next 2 are implemented in gtkcsscustomproperty.c */
+/* Next 2 are implemented in ctkcsscustomproperty.c */
 GDK_DEPRECATED_IN_3_8
 void     ctk_style_properties_register_property (GtkStylePropertyParser  parse_func,
                                                  GParamSpec             *pspec);

@@ -22,11 +22,11 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 /**
- * SECTION:gtkcalendar
+ * SECTION:ctkcalendar
  * @Short_description: Displays a calendar and allows the user to select a date
  * @Title: GtkCalendar
  *
@@ -71,15 +71,15 @@
 #include <windows.h>
 #endif
 
-#include "gtkcalendar.h"
-#include "gtkdnd.h"
-#include "gtkdragdest.h"
-#include "gtkintl.h"
-#include "gtkmain.h"
-#include "gtkmarshalers.h"
-#include "gtktooltip.h"
-#include "gtkprivate.h"
-#include "gtkrender.h"
+#include "ctkcalendar.h"
+#include "ctkdnd.h"
+#include "ctkdragdest.h"
+#include "ctkintl.h"
+#include "ctkmain.h"
+#include "ctkmarshalers.h"
+#include "ctktooltip.h"
+#include "ctkprivate.h"
+#include "ctkrender.h"
 
 #define TIMEOUT_INITIAL  500
 #define TIMEOUT_REPEAT    50
@@ -2229,7 +2229,7 @@ calendar_paint_header (GtkCalendar *calendar, cairo_t *cr)
   tm->tm_year = priv->year - 1900;
 
   /* Translators: This dictates how the year is displayed in
-   * gtkcalendar widget.  See strftime() manual for the format.
+   * ctkcalendar widget.  See strftime() manual for the format.
    * Use only ASCII in the translation.
    *
    * Also look for the msgid "2000".
@@ -2870,7 +2870,7 @@ calendar_timer (gpointer data)
                                             TIMEOUT_REPEAT * SCROLL_DELAY_FACTOR,
                                             (GSourceFunc) calendar_timer,
                                             (gpointer) calendar, NULL);
-          g_source_set_name_by_id (priv->timer, "[gtk+] calendar_timer");
+          g_source_set_name_by_id (priv->timer, "[ctk+] calendar_timer");
         }
       else
         retval = TRUE;
@@ -2894,7 +2894,7 @@ calendar_start_spinning (GtkCalendar *calendar,
                                         TIMEOUT_INITIAL,
                                         (GSourceFunc) calendar_timer,
                                         (gpointer) calendar, NULL);
-      g_source_set_name_by_id (priv->timer, "[gtk+] calendar_timer");
+      g_source_set_name_by_id (priv->timer, "[ctk+] calendar_timer");
     }
 }
 
@@ -3363,7 +3363,7 @@ set_status_pending (GdkDragContext *context,
                     GdkDragAction   suggested_action)
 {
   g_object_set_data (G_OBJECT (context),
-                     I_("gtk-calendar-status-pending"),
+                     I_("ctk-calendar-status-pending"),
                      GINT_TO_POINTER (suggested_action));
 }
 
@@ -3371,7 +3371,7 @@ static GdkDragAction
 get_status_pending (GdkDragContext *context)
 {
   return GPOINTER_TO_INT (g_object_get_data (G_OBJECT (context),
-                                             "gtk-calendar-status-pending"));
+                                             "ctk-calendar-status-pending"));
 }
 
 static void

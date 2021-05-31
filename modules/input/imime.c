@@ -1,5 +1,5 @@
 /*
- * gtkimmoduleime
+ * ctkimmoduleime
  * Copyright (C) 2003 Takuro Ashie
  *
  * This library is free software; you can redistribute it and/or
@@ -21,9 +21,9 @@
 #include "config.h"
 #include <string.h>
 
-#include "gtk/gtkintl.h"
-#include "gtk/gtkimmodule.h"
-#include "gtkimcontextime.h"
+#include "ctk/ctkintl.h"
+#include "ctk/ctkimmodule.h"
+#include "ctkimcontextime.h"
 
 static const GtkIMContextInfo ime_info = {
   "ime",

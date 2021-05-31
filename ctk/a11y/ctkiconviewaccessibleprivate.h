@@ -18,7 +18,7 @@
 #ifndef __CTK_ICON_VIEW_ACCESSIBLE_PRIVATE_H__
 #define __CTK_ICON_VIEW_ACCESSIBLE_PRIVATE_H__
 
-#include <gtk/a11y/gtkiconviewaccessible.h>
+#include <ctk/a11y/ctkiconviewaccessible.h>
 
 G_BEGIN_DECLS
 

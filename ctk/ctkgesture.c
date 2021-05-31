@@ -19,7 +19,7 @@
  */
 
 /**
- * SECTION:gtkgesture
+ * SECTION:ctkgesture
  * @Short_description: Base class for gestures
  * @Title: GtkGesture
  * @See_also: #GtkEventController, #GtkGestureSingle
@@ -116,15 +116,15 @@
  */
 
 #include "config.h"
-#include "gtkgesture.h"
-#include "gtkwidgetprivate.h"
-#include "gtkeventcontrollerprivate.h"
-#include "gtkgestureprivate.h"
-#include "gtktypebuiltins.h"
-#include "gtkprivate.h"
-#include "gtkmain.h"
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
+#include "ctkgesture.h"
+#include "ctkwidgetprivate.h"
+#include "ctkeventcontrollerprivate.h"
+#include "ctkgestureprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctkprivate.h"
+#include "ctkmain.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
 
 typedef struct _GtkGesturePrivate GtkGesturePrivate;
 typedef struct _PointData PointData;

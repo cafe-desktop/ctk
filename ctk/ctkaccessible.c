@@ -18,12 +18,12 @@
 #include "config.h"
 #include <string.h>
 
-#include "gtkwidget.h"
-#include "gtkintl.h"
-#include "gtkaccessible.h"
+#include "ctkwidget.h"
+#include "ctkintl.h"
+#include "ctkaccessible.h"
 
 /**
- * SECTION:gtkaccessible
+ * SECTION:ctkaccessible
  * @Short_description: Accessibility support for widgets
  * @Title: GtkAccessible
  *

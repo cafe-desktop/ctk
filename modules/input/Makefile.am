@@ -1,4 +1,4 @@
-## Makefile.am for gtk+/modules/input
+## Makefile.am for ctk+/modules/input
 include $(top_srcdir)/Makefile.decl
 
 AM_CPPFLAGS = \
@@ -13,18 +13,18 @@ AM_CPPFLAGS = \
 	$(INCLUDED_IMMODULE_DEFINE)
 
 DEPS = \
-	$(top_builddir)/gtk/libgtk-3.la
+	$(top_builddir)/ctk/libctk-3.la
 
 LDADDS = \
-	$(top_builddir)/gtk/libgtk-3.la	\
+	$(top_builddir)/ctk/libctk-3.la	\
 	$(CTK_DEP_LIBS)
 
-moduledir = $(libdir)/gtk-3.0/$(CTK_BINARY_VERSION)/immodules
+moduledir = $(libdir)/ctk-3.0/$(CTK_BINARY_VERSION)/immodules
 
 im_xim_la_LDFLAGS = -rpath $(moduledir) -avoid-version -module $(no_undefined)
 im_xim_la_SOURCES = 		\
-	gtkimcontextxim.c 	\
-	gtkimcontextxim.h	\
+	ctkimcontextxim.c 	\
+	ctkimcontextxim.h	\
 	imxim.c
 libstatic_im_xim_la_SOURCES = $(im_xim_la_SOURCES)
 im_xim_la_LIBADD = $(LDADDS)
@@ -90,8 +90,8 @@ im_thai_la_LDFLAGS = -rpath $(moduledir) -avoid-version -module $(no_undefined)
 im_thai_la_SOURCES = 		\
 	thai-charprop.c 	\
 	thai-charprop.h 	\
-	gtkimcontextthai.c 	\
-	gtkimcontextthai.h	\
+	ctkimcontextthai.c 	\
+	ctkimcontextthai.h	\
 	imthai.c
 libstatic_im_thai_la_SOURCES = $(im_thai_la_SOURCES)
 im_thai_la_LIBADD = $(LDADDS)
@@ -133,8 +133,8 @@ endif
 
 im_ime_la_LDFLAGS = -rpath $(moduledir) -avoid-version -module $(no_undefined)
 im_ime_la_SOURCES = \
-	gtkimcontextime.c \
-	gtkimcontextime.h \
+	ctkimcontextime.c \
+	ctkimcontextime.h \
 	imime.c 	  \
 	imm-extra.h
 libstatic_im_ime_la_SOURCES = $(im_ime_la_SOURCES)
@@ -191,30 +191,30 @@ WAYLAND_MODULE = im-wayland.la
 endif
 endif
 
-protocol_built_sources_gtk =	\
-	gtk-text-input-protocol.c	\
-	gtk-text-input-client-protocol.h
+protocol_built_sources_ctk =	\
+	ctk-text-input-protocol.c	\
+	ctk-text-input-client-protocol.h
 
 im_waylandctk_la_CPPFLAGS = $(AM_CPPFLAGS)
 im_waylandctk_la_LDFLAGS = -rpath $(moduledir) -avoid-version -module $(no_undefined)
-im_waylandctk_la_SOURCES = imwaylandgtk.c $(protocol_built_sources_gtk)
+im_waylandctk_la_SOURCES = imwaylandctk.c $(protocol_built_sources_ctk)
 libstatic_im_waylandctk_la_SOURCES = $(im_waylandctk_la_SOURCES)
 im_waylandctk_la_LIBADD = $(LDADDS)
 if INCLUDE_IM_WAYLAND
-STATIC_WAYLANDCTK_MODULE = libstatic-im-waylandgtk.la
+STATIC_WAYLANDCTK_MODULE = libstatic-im-waylandctk.la
 else
 if USE_WAYLAND
-WAYLANDCTK_MODULE = im-waylandgtk.la
+WAYLANDCTK_MODULE = im-waylandctk.la
 endif
 endif
 
-multipress_defs = -DMULTIPRESS_LOCALEDIR=\""$(mplocaledir)"\" -DMULTIPRESS_CONFDIR=\""$(sysconfdir)/gtk-3.0"\"
+multipress_defs = -DMULTIPRESS_LOCALEDIR=\""$(mplocaledir)"\" -DMULTIPRESS_CONFDIR=\""$(sysconfdir)/ctk-3.0"\"
 im_multipress_la_CPPFLAGS = $(AM_CPPFLAGS) $(multipress_defs)
 libstatic_im_multipress_la_CPPFLAGS = $(im_multipress_la_CPPFLAGS)
 im_multipress_la_LDFLAGS = -rpath $(moduledir) -avoid-version -module $(no_undefined)
 im_multipress_la_SOURCES =	\
-	gtkimcontextmultipress.c	\
-	gtkimcontextmultipress.h	\
+	ctkimcontextmultipress.c	\
+	ctkimcontextmultipress.h	\
 	immultipress.c
 libstatic_im_multipress_la_SOURCES = $(im_multipress_la_SOURCES)
 im_multipress_la_LIBADD = $(LDADDS)
@@ -224,7 +224,7 @@ else
 MULTIPRESS_MODULE = im-multipress.la
 endif
 
-imconffiledir = $(sysconfdir)/gtk-3.0
+imconffiledir = $(sysconfdir)/ctk-3.0
 dist_imconffile_DATA = im-multipress.conf
 
 if CROSS_COMPILING
@@ -241,21 +241,21 @@ endif
 # after the libraries are installed in their final locations.
 install-data-hook:
 	$(AM_V_GEN) if $(RUN_QUERY_IMMODULES_TEST) ; then \
-	  echo $(mkinstalldirs) $(DESTDIR)$(libdir)/gtk-3.0/3.0.0 ; \
-	  $(mkinstalldirs) $(DESTDIR)$(libdir)/gtk-3.0/3.0.0 ; \
-	  echo "$(top_builddir)/gtk/gtk-query-immodules-3.0$(EXEEXT) > $(DESTDIR)$(libdir)/gtk-3.0/3.0.0/immodules.cache" ; \
-	  $(top_builddir)/gtk/gtk-query-immodules-3.0$(EXEEXT) > $(DESTDIR)$(libdir)/gtk-3.0/3.0.0/immodules.cache ; \
+	  echo $(mkinstalldirs) $(DESTDIR)$(libdir)/ctk-3.0/3.0.0 ; \
+	  $(mkinstalldirs) $(DESTDIR)$(libdir)/ctk-3.0/3.0.0 ; \
+	  echo "$(top_builddir)/ctk/ctk-query-immodules-3.0$(EXEEXT) > $(DESTDIR)$(libdir)/ctk-3.0/3.0.0/immodules.cache" ; \
+	  $(top_builddir)/ctk/ctk-query-immodules-3.0$(EXEEXT) > $(DESTDIR)$(libdir)/ctk-3.0/3.0.0/immodules.cache ; \
 	else \
 	  echo "***" ; \
 	  echo "*** Warning: immodules.cache not built" ; \
 	  echo "***" ; \
 	  echo "*** Generate this file manually on host" ; \
-	  echo "*** system using gtk-query-immodules-3.0" ; \
+	  echo "*** system using ctk-query-immodules-3.0" ; \
 	  echo "***" ; \
         fi
 
 uninstall-local:
-	rm -f $(DESTDIR)$(libdir)/gtk-3.0/3.0.0/immodules.cache
+	rm -f $(DESTDIR)$(libdir)/ctk-3.0/3.0.0/immodules.cache
 
 if BUILD_DYNAMIC_MODULES
 
@@ -300,17 +300,17 @@ noinst_LTLIBRARIES =				\
 included-modules: $(noinst_LTLIBRARIES)
 
 immodules.cache: Makefile.am $(module_LTLIBRARIES)
-	$(AM_V_GEN) $(top_builddir)/gtk/gtk-query-immodules-3.0$(EXEEXT) $(module_LTLIBRARIES) > immodules.cache
+	$(AM_V_GEN) $(top_builddir)/ctk/ctk-query-immodules-3.0$(EXEEXT) $(module_LTLIBRARIES) > immodules.cache
 
 if USE_WAYLAND
-BUILT_SOURCES = $(protocol_built_sources) $(protocol_built_sources_gtk)
+BUILT_SOURCES = $(protocol_built_sources) $(protocol_built_sources_ctk)
 endif
 
 EXTRA_DIST += \
 	README.multipress \
 	meson.build \
 	text-input-unstable-v3.xml \
-	gtk-text-input.xml
+	ctk-text-input.xml
 
 CLEANFILES = immodules.cache
 

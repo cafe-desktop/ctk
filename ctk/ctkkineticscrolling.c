@@ -16,7 +16,7 @@
  */
 
 #include "config.h"
-#include "gtkkineticscrolling.h"
+#include "ctkkineticscrolling.h"
 
 #include <stdio.h>
 

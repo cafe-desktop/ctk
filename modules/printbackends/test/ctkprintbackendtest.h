@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkprintbackendtest.h: Test implementation of GtkPrintBackend 
+ * ctkprintbackendtest.h: Test implementation of GtkPrintBackend 
  * for testing the dialog
  * Copyright (C) 2007, Red Hat, Inc.
  *
@@ -21,7 +21,7 @@
 #define __CTK_PRINT_BACKEND_TEST_H__
 
 #include <glib-object.h>
-#include "gtkprintbackend.h"
+#include "ctkprintbackend.h"
 
 G_BEGIN_DECLS
 

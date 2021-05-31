@@ -23,7 +23,7 @@
  * Modified by the GTK+ Team and others 2003.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -31,27 +31,27 @@
 #define GDK_DISABLE_DEPRECATION_WARNINGS
 
 #include <string.h>
-#include "gtkaccellabel.h"
-#include "gtkactivatable.h"
-#include "gtkbuildable.h"
-#include "gtkimagemenuitem.h"
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
-#include "gtkmenu.h"
-#include "gtkmenushellprivate.h"
-#include "gtkmenubar.h"
-#include "gtkmenutoolbutton.h"
-#include "gtkseparatormenuitem.h"
-#include "gtkseparatortoolitem.h"
-#include "gtktoolbar.h"
-#include "gtkwindow.h"
-#include "gtkprivate.h"
+#include "ctkaccellabel.h"
+#include "ctkactivatable.h"
+#include "ctkbuildable.h"
+#include "ctkimagemenuitem.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
+#include "ctkmenu.h"
+#include "ctkmenushellprivate.h"
+#include "ctkmenubar.h"
+#include "ctkmenutoolbutton.h"
+#include "ctkseparatormenuitem.h"
+#include "ctkseparatortoolitem.h"
+#include "ctktoolbar.h"
+#include "ctkwindow.h"
+#include "ctkprivate.h"
 
-#include "gtkuimanager.h"
-#include "gtktearoffmenuitem.h"
+#include "ctkuimanager.h"
+#include "ctktearoffmenuitem.h"
 
 /**
- * SECTION:gtkuimanager
+ * SECTION:ctkuimanager
  * @Short_description: Constructing menus and toolbars from an XML description
  * @Title: GtkUIManager
  * @See_also: #GtkBuilder
@@ -2465,7 +2465,7 @@ update_smart_separators (GtkWidget *proxy)
       cur = children;
       while (cur) 
 	{
-	  if (g_object_get_data (cur->data, "gtk-empty-menu-item"))
+	  if (g_object_get_data (cur->data, "ctk-empty-menu-item"))
 	    {
 	      filler = cur->data;
 	    }
@@ -2474,7 +2474,7 @@ update_smart_separators (GtkWidget *proxy)
 	    {
 	      gint mode = 
 		GPOINTER_TO_INT (g_object_get_data (G_OBJECT (cur->data), 
-						    "gtk-separator-mode"));
+						    "ctk-separator-mode"));
 	      switch (mode) 
 		{
 		case SEPARATOR_MODE_VISIBLE:
@@ -2708,7 +2708,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                 ctk_menu_shell_append (CTK_MENU_SHELL (menu), tearoff);
                 filler = ctk_menu_item_new_with_label (_("Empty"));
                 g_object_set_data (G_OBJECT (filler),
-                                   I_("gtk-empty-menu-item"),
+                                   I_("ctk-empty-menu-item"),
                                    GINT_TO_POINTER (TRUE));
                 ctk_widget_set_sensitive (filler, FALSE);
                 ctk_widget_set_no_show_all (filler, TRUE);
@@ -2817,7 +2817,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 	      info->proxy = ctk_separator_menu_item_new ();
 	      g_object_ref_sink (info->proxy);
 	      g_object_set_data (G_OBJECT (info->proxy),
-	  		         I_("gtk-separator-mode"),
+	  		         I_("ctk-separator-mode"),
 			         GINT_TO_POINTER (SEPARATOR_MODE_HIDDEN));
 	      ctk_widget_set_no_show_all (info->proxy, TRUE);
 	      ctk_menu_shell_insert (CTK_MENU_SHELL (menushell),
@@ -2826,7 +2826,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 	      info->extra = ctk_separator_menu_item_new ();
 	      g_object_ref_sink (info->extra);
 	      g_object_set_data (G_OBJECT (info->extra),
-			         I_("gtk-separator-mode"),
+			         I_("ctk-separator-mode"),
 			         GINT_TO_POINTER (SEPARATOR_MODE_HIDDEN));
 	      ctk_widget_set_no_show_all (info->extra, TRUE);
 	      ctk_menu_shell_insert (CTK_MENU_SHELL (menushell),
@@ -2867,7 +2867,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 	      info->proxy = CTK_WIDGET (item);
 	      g_object_ref_sink (info->proxy);
 	      g_object_set_data (G_OBJECT (info->proxy),
-			         I_("gtk-separator-mode"),
+			         I_("ctk-separator-mode"),
 			         GINT_TO_POINTER (SEPARATOR_MODE_HIDDEN));
 	      ctk_widget_set_no_show_all (info->proxy, TRUE);
 	  
@@ -2876,7 +2876,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 	      info->extra = CTK_WIDGET (item);
 	      g_object_ref_sink (info->extra);
 	      g_object_set_data (G_OBJECT (info->extra),
-			         I_("gtk-separator-mode"),
+			         I_("ctk-separator-mode"),
 			         GINT_TO_POINTER (SEPARATOR_MODE_HIDDEN));
 	      ctk_widget_set_no_show_all (info->extra, TRUE);
             }
@@ -3022,7 +3022,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 	        separator_mode = SEPARATOR_MODE_SMART;
 	  
 	      g_object_set_data (G_OBJECT (info->proxy),
-			         I_("gtk-separator-mode"),
+			         I_("ctk-separator-mode"),
 			         GINT_TO_POINTER (separator_mode));
 	      ctk_widget_show (info->proxy);
             }
@@ -3046,7 +3046,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 	      g_object_ref_sink (info->proxy);
 	      ctk_widget_set_no_show_all (info->proxy, TRUE);
 	      g_object_set_data (G_OBJECT (info->proxy),
-			         I_("gtk-separator-mode"),
+			         I_("ctk-separator-mode"),
 			         GINT_TO_POINTER (SEPARATOR_MODE_SMART));
 	      ctk_menu_shell_insert (CTK_MENU_SHELL (menushell),
 				     info->proxy, pos);
@@ -3140,7 +3140,7 @@ queue_update (GtkUIManager *manager)
   manager->private_data->update_tag = gdk_threads_add_idle (
 					       (GSourceFunc)do_updates_idle, 
 					       manager);
-  g_source_set_name_by_id (manager->private_data->update_tag, "[gtk+] do_updates_idle");
+  g_source_set_name_by_id (manager->private_data->update_tag, "[ctk+] do_updates_idle");
 }
 
 

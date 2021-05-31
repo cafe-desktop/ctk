@@ -18,7 +18,7 @@
  */
 
 /**
- * SECTION:gtkgesturestylus
+ * SECTION:ctkgesturestylus
  * @Short_description: Gesture for stylus input
  * @Title: GtkGestureStylus
  * @See_also: #GtkGesture, #GtkGestureSingle
@@ -28,12 +28,12 @@
  */
 
 #include "config.h"
-#include "gtkgesturestylus.h"
-#include "gtkgesturestylusprivate.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
-#include "gtkmain.h"
+#include "ctkgesturestylus.h"
+#include "ctkgesturestylusprivate.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
+#include "ctkmain.h"
 
 G_DEFINE_TYPE (GtkGestureStylus, ctk_gesture_stylus, CTK_TYPE_GESTURE_SINGLE)
 

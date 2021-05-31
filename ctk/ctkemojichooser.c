@@ -1,4 +1,4 @@
-/* gtkemojichooser.c: An Emoji chooser widget
+/* ctkemojichooser.c: An Emoji chooser widget
  * Copyright 2017, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -17,23 +17,23 @@
 
 #include "config.h"
 
-#include "gtkemojichooser.h"
+#include "ctkemojichooser.h"
 
-#include "gtkadjustmentprivate.h"
-#include "gtkbox.h"
-#include "gtkbutton.h"
-#include "gtkcssprovider.h"
-#include "gtkentry.h"
-#include "gtkflowbox.h"
-#include "gtkstack.h"
-#include "gtklabel.h"
-#include "gtkgesturelongpress.h"
-#include "gtkgesturemultipress.h"
-#include "gtkpopover.h"
-#include "gtkscrolledwindow.h"
-#include "gtkeventbox.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
+#include "ctkadjustmentprivate.h"
+#include "ctkbox.h"
+#include "ctkbutton.h"
+#include "ctkcssprovider.h"
+#include "ctkentry.h"
+#include "ctkflowbox.h"
+#include "ctkstack.h"
+#include "ctklabel.h"
+#include "ctkgesturelongpress.h"
+#include "ctkgesturemultipress.h"
+#include "ctkpopover.h"
+#include "ctkscrolledwindow.h"
+#include "ctkeventbox.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
 
 #define BOX_SPACE 6
 
@@ -452,7 +452,7 @@ populate_emoji_chooser (gpointer data)
 
   if (!chooser->data)
     {
-      bytes = g_resources_lookup_data ("/org/gtk/libgtk/emoji/emoji.data", 0, NULL);
+      bytes = g_resources_lookup_data ("/org/ctk/libctk/emoji/emoji.data", 0, NULL);
       chooser->data = g_variant_ref_sink (g_variant_new_from_bytes (G_VARIANT_TYPE ("a(auss)"), bytes, TRUE));
     }
 
@@ -671,7 +671,7 @@ ctk_emoji_chooser_init (GtkEmojiChooser *chooser)
 {
   GtkAdjustment *adj;
 
-  chooser->settings = g_settings_new ("org.gtk.Settings.EmojiChooser");
+  chooser->settings = g_settings_new ("org.ctk.Settings.EmojiChooser");
 
   ctk_widget_init_template (CTK_WIDGET (chooser));
 
@@ -731,7 +731,7 @@ ctk_emoji_chooser_init (GtkEmojiChooser *chooser)
   populate_recent_section (chooser);
 
   chooser->populate_idle = g_idle_add (populate_emoji_chooser, chooser);
-  g_source_set_name_by_id (chooser->populate_idle, "[gtk] populate_emoji_chooser");
+  g_source_set_name_by_id (chooser->populate_idle, "[ctk] populate_emoji_chooser");
 }
 
 static void
@@ -765,7 +765,7 @@ ctk_emoji_chooser_class_init (GtkEmojiChooserClass *klass)
                                         NULL,
                                         G_TYPE_NONE, 1, G_TYPE_STRING|G_SIGNAL_TYPE_STATIC_SCOPE);
 
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/ui/gtkemojichooser.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/ui/ctkemojichooser.ui");
 
   ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, search_entry);
   ctk_widget_class_bind_template_child (widget_class, GtkEmojiChooser, stack);

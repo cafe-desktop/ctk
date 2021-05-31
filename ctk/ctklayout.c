@@ -23,24 +23,24 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
 
-#include "gtklayout.h"
+#include "ctklayout.h"
 
 #include "gdk/gdk.h"
 
-#include "gtkadjustment.h"
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
-#include "gtkprivate.h"
-#include "gtkscrollable.h"
+#include "ctkadjustment.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
+#include "ctkprivate.h"
+#include "ctkscrollable.h"
 
 
 /**
- * SECTION:gtklayout
+ * SECTION:ctklayout
  * @Short_description: Infinite scrollable area containing child widgets
  *   and/or custom drawing
  * @Title: GtkLayout

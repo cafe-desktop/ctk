@@ -1,4 +1,4 @@
-/* gtkshortcutsshortcut.c
+/* ctkshortcutsshortcut.c
  *
  * Copyright (C) 2015 Christian Hergert <christian@hergert.me>
  *
@@ -18,15 +18,15 @@
 
 #include "config.h"
 
-#include "gtkshortcutsshortcut.h"
+#include "ctkshortcutsshortcut.h"
 
-#include "gtkshortcutlabel.h"
-#include "gtkshortcutswindowprivate.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
+#include "ctkshortcutlabel.h"
+#include "ctkshortcutswindowprivate.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
 
 /**
- * SECTION:gtkshortcutsshortcut
+ * SECTION:ctkshortcutsshortcut
  * @Title: GtkShortcutsShortcut
  * @Short_description: Represents a keyboard shortcut in a GtkShortcutsWindow
  *

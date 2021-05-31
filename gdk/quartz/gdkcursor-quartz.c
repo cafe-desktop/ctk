@@ -24,7 +24,7 @@
 #include "gdkquartzcursor.h"
 #include "gdkprivate-quartz.h"
 #include "gdkinternal-quartz.h"
-#include "gdkquartz-gtk-only.h"
+#include "gdkquartz-ctk-only.h"
 
 #include "xcursors.h"
 

@@ -18,13 +18,13 @@
 #ifndef __CTK_STYLE_CONTEXT_PRIVATE_H__
 #define __CTK_STYLE_CONTEXT_PRIVATE_H__
 
-#include "gtkstylecontext.h"
+#include "ctkstylecontext.h"
 
-#include "gtkcssnodeprivate.h"
-#include "gtkicontheme.h"
-#include "gtkstyleproviderprivate.h"
-#include "gtkbitmaskprivate.h"
-#include "gtkcssvalueprivate.h"
+#include "ctkcssnodeprivate.h"
+#include "ctkicontheme.h"
+#include "ctkstyleproviderprivate.h"
+#include "ctkbitmaskprivate.h"
+#include "ctkcssvalueprivate.h"
 
 G_BEGIN_DECLS
 

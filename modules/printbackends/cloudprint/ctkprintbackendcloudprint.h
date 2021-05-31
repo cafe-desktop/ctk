@@ -1,4 +1,4 @@
-/* gtkprintbackendcloudprint.h: Google Cloud Print implementation of
+/* ctkprintbackendcloudprint.h: Google Cloud Print implementation of
  * GtkPrintBackend
  * Copyright (C) 2014, Red Hat, Inc.
  *
@@ -20,7 +20,7 @@
 #define __CTK_PRINT_BACKEND_CLOUDPRINT_H__
 
 #include <glib-object.h>
-#include "gtkprintbackend.h"
+#include "ctkprintbackend.h"
 
 G_BEGIN_DECLS
 

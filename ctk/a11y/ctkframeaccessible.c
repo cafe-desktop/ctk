@@ -18,8 +18,8 @@
 #include "config.h"
 
 #include <string.h>
-#include <gtk/gtk.h>
-#include "gtkframeaccessible.h"
+#include <ctk/ctk.h>
+#include "ctkframeaccessible.h"
 
 
 G_DEFINE_TYPE (GtkFrameAccessible, ctk_frame_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)

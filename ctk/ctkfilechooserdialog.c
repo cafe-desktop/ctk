@@ -1,6 +1,6 @@
 /* -*- Mode: C; c-file-style: "gnu"; tab-width: 8 -*- */
 /* GTK - The GIMP Toolkit
- * gtkfilechooserdialog.c: File selector dialog
+ * ctkfilechooserdialog.c: File selector dialog
  * Copyright (C) 2003, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -19,30 +19,30 @@
 
 #include "config.h"
 
-#include "gtkfilechooserdialog.h"
+#include "ctkfilechooserdialog.h"
 
-#include "gtkfilechooserprivate.h"
-#include "gtkfilechooserwidget.h"
-#include "gtkfilechooserwidgetprivate.h"
-#include "gtkfilechooserutils.h"
-#include "gtkfilechooserembed.h"
-#include "gtkfilesystem.h"
-#include "gtksizerequest.h"
-#include "gtktypebuiltins.h"
-#include "gtkintl.h"
-#include "gtksettings.h"
-#include "gtktogglebutton.h"
-#include "gtkstylecontext.h"
-#include "gtkheaderbar.h"
-#include "gtkdialogprivate.h"
-#include "gtklabel.h"
-#include "gtkfilechooserentry.h"
+#include "ctkfilechooserprivate.h"
+#include "ctkfilechooserwidget.h"
+#include "ctkfilechooserwidgetprivate.h"
+#include "ctkfilechooserutils.h"
+#include "ctkfilechooserembed.h"
+#include "ctkfilesystem.h"
+#include "ctksizerequest.h"
+#include "ctktypebuiltins.h"
+#include "ctkintl.h"
+#include "ctksettings.h"
+#include "ctktogglebutton.h"
+#include "ctkstylecontext.h"
+#include "ctkheaderbar.h"
+#include "ctkdialogprivate.h"
+#include "ctklabel.h"
+#include "ctkfilechooserentry.h"
 
 #include <stdarg.h>
 
 
 /**
- * SECTION:gtkfilechooserdialog
+ * SECTION:ctkfilechooserdialog
  * @Short_description: A file chooser dialog, suitable for “File/Open” or “File/Save” commands
  * @Title: GtkFileChooserDialog
  * @See_also: #GtkFileChooser, #GtkDialog, GtkFileChooserNative
@@ -63,7 +63,7 @@
  * dialog if available and fall back to GtkFileChooserDialog
  * otherwise.
  *
- * ## Typical usage ## {#gtkfilechooser-typical-usage}
+ * ## Typical usage ## {#ctkfilechooser-typical-usage}
  *
  * In the simplest of cases, you can the following code to use
  * #GtkFileChooserDialog to select a file for opening:
@@ -135,7 +135,7 @@
  * ctk_widget_destroy (dialog);
  * ]|
  *
- * ## Setting up a file chooser dialog ## {#gtkfilechooserdialog-setting-up}
+ * ## Setting up a file chooser dialog ## {#ctkfilechooserdialog-setting-up}
  *
  * There are various cases in which you may need to use a #GtkFileChooserDialog:
  *
@@ -160,7 +160,7 @@
  * i.e. when you are doing a Save As command and you already
  * have a file saved somewhere.
 
- * ## Response Codes ## {#gtkfilechooserdialog-responses}
+ * ## Response Codes ## {#ctkfilechooserdialog-responses}
  *
  * #GtkFileChooserDialog inherits from #GtkDialog, so buttons that
  * go in its action area have response codes such as
@@ -200,7 +200,7 @@
  * appropriate.
  *
  * To summarize, make sure you use a
- * [stock response code][gtkfilechooserdialog-responses]
+ * [stock response code][ctkfilechooserdialog-responses]
  * when you use #GtkFileChooserDialog to ensure proper operation.
  */
 
@@ -272,7 +272,7 @@ ctk_file_chooser_dialog_class_init (GtkFileChooserDialogClass *class)
   /* Bind class to template
    */
   ctk_widget_class_set_template_from_resource (widget_class,
-                                               "/org/gtk/libgtk/ui/gtkfilechooserdialog.ui");
+                                               "/org/ctk/libctk/ui/ctkfilechooserdialog.ui");
 
   ctk_widget_class_bind_template_child_private (widget_class, GtkFileChooserDialog, widget);
   ctk_widget_class_bind_template_child_private (widget_class, GtkFileChooserDialog, buttons);

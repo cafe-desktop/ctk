@@ -18,7 +18,7 @@
 #ifndef __CTK_WIDGET_ACCESSIBLE_PRIVATE_H__
 #define __CTK_WIDGET_ACCESSIBLE_PRIVATE_H__
 
-#include <gtk/a11y/gtkwidgetaccessible.h>
+#include <ctk/a11y/ctkwidgetaccessible.h>
 
 G_BEGIN_DECLS
 

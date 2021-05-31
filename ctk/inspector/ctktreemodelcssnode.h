@@ -1,4 +1,4 @@
-/* gtktreestore.h
+/* ctktreestore.h
  * Copyright (C) 2014 Benjamin Otte <otte@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -18,9 +18,9 @@
 #ifndef __CTK_TREE_MODEL_CSS_NODE_H__
 #define __CTK_TREE_MODEL_CSS_NODE_H__
 
-#include <gtk/gtktreemodel.h>
+#include <ctk/ctktreemodel.h>
 
-#include "gtk/gtkcssnodeprivate.h"
+#include "ctk/ctkcssnodeprivate.h"
 
 
 G_BEGIN_DECLS

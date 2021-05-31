@@ -21,12 +21,12 @@
 
 #define GDK_DISABLE_DEPRECATION_WARNINGS
 
-#include "gtkcssimagegradientprivate.h"
+#include "ctkcssimagegradientprivate.h"
 
-#include "gtkcssprovider.h"
+#include "ctkcssprovider.h"
 
-#include "deprecated/gtkgradientprivate.h"
-#include "deprecated/gtksymboliccolorprivate.h"
+#include "deprecated/ctkgradientprivate.h"
+#include "deprecated/ctksymboliccolorprivate.h"
 
 G_DEFINE_TYPE (GtkCssImageGradient, _ctk_css_image_gradient, CTK_TYPE_CSS_IMAGE)
 
@@ -324,17 +324,17 @@ _ctk_gradient_parse (GtkCssParser *parser)
 
   g_return_val_if_fail (parser != NULL, NULL);
 
-  if (!_ctk_css_parser_try (parser, "-gtk-gradient", TRUE))
+  if (!_ctk_css_parser_try (parser, "-ctk-gradient", TRUE))
     {
       _ctk_css_parser_error (parser,
-                             "Expected '-gtk-gradient'");
+                             "Expected '-ctk-gradient'");
       return NULL;
     }
 
   if (!_ctk_css_parser_try (parser, "(", TRUE))
     {
       _ctk_css_parser_error (parser,
-                             "Expected '(' after '-gtk-gradient'");
+                             "Expected '(' after '-ctk-gradient'");
       return NULL;
     }
 

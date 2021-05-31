@@ -17,11 +17,11 @@
 
 #include "config.h"
 
-#include "gtkstyleproviderprivate.h"
+#include "ctkstyleproviderprivate.h"
 
-#include "gtkintl.h"
-#include "gtkstyleprovider.h"
-#include "gtkprivate.h"
+#include "ctkintl.h"
+#include "ctkstyleprovider.h"
+#include "ctkprivate.h"
 
 enum {
   CHANGED,
@@ -35,7 +35,7 @@ static guint signals[LAST_SIGNAL];
 static void
 _ctk_style_provider_private_default_init (GtkStyleProviderPrivateInterface *iface)
 {
-  signals[CHANGED] = g_signal_new (I_("-gtk-private-changed"),
+  signals[CHANGED] = g_signal_new (I_("-ctk-private-changed"),
                                    G_TYPE_FROM_INTERFACE (iface),
                                    G_SIGNAL_RUN_LAST,
                                    G_STRUCT_OFFSET (GtkStyleProviderPrivateInterface, changed),

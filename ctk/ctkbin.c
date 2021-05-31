@@ -19,11 +19,11 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 /**
- * SECTION:gtkbin
+ * SECTION:ctkbin
  * @Short_description: A container with just one child
  * @Title: GtkBin
  *
@@ -36,9 +36,9 @@
  */
 
 #include "config.h"
-#include "gtkbin.h"
-#include "gtksizerequest.h"
-#include "gtkintl.h"
+#include "ctkbin.h"
+#include "ctksizerequest.h"
+#include "ctkintl.h"
 
 
 struct _GtkBinPrivate

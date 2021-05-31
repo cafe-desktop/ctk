@@ -5,7 +5,7 @@
  * through these steps.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static GtkWidget *assistant = NULL;
 static GtkWidget *progress_bar = NULL;

@@ -20,13 +20,13 @@
 #ifndef __CTK_WIN32_THEME_PART_H__
 #define __CTK_WIN32_THEME_PART_H__
 
-#include "gtkcssparserprivate.h"
+#include "ctkcssparserprivate.h"
 
 G_BEGIN_DECLS
 
 typedef struct _GtkWin32Theme GtkWin32Theme;
 
-#define CTK_WIN32_THEME_SYMBOLIC_COLOR_NAME "-gtk-win32-color"
+#define CTK_WIN32_THEME_SYMBOLIC_COLOR_NAME "-ctk-win32-color"
 
 GtkWin32Theme *         ctk_win32_theme_lookup          (const char     *class_name);
 GtkWin32Theme *         ctk_win32_theme_parse           (GtkCssParser   *parser);

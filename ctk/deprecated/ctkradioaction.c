@@ -23,21 +23,21 @@
  * Modified by the GTK+ Team and others 2003.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
 
 #define GDK_DISABLE_DEPRECATION_WARNINGS
 
-#include "gtkradioaction.h"
-#include "gtkradiomenuitem.h"
-#include "gtktoggletoolbutton.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
+#include "ctkradioaction.h"
+#include "ctkradiomenuitem.h"
+#include "ctktoggletoolbutton.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
 
 /**
- * SECTION:gtkradioaction
+ * SECTION:ctkradioaction
  * @Short_description: An action of which only one in a group can be active
  * @Title: GtkRadioAction
  *

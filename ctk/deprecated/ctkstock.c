@@ -19,7 +19,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -28,14 +28,14 @@
 
 #include <string.h>
 
-#include "gtkprivate.h"
-#include "gtkstock.h"
-#include "gtkiconfactory.h"
-#include "deprecated/gtkiconfactoryprivate.h"
-#include "gtkintl.h"
+#include "ctkprivate.h"
+#include "ctkstock.h"
+#include "ctkiconfactory.h"
+#include "deprecated/ctkiconfactoryprivate.h"
+#include "ctkintl.h"
 
 /**
- * SECTION:gtkstock
+ * SECTION:ctkstock
  * @Short_description: Prebuilt common menu/toolbar items and corresponding
  *                     icons
  * @Title: Stock Items
@@ -332,7 +332,7 @@ ctk_stock_item_free (GtkStockItem *item)
 
 static const GtkStockItem builtin_items [] =
 {
-  /* KEEP IN SYNC with gtkiconfactory.c stock icons, when appropriate */ 
+  /* KEEP IN SYNC with ctkiconfactory.c stock icons, when appropriate */ 
  
   { CTK_STOCK_DIALOG_INFO, NC_("Stock label", "Information"), 0, 0, GETTEXT_PACKAGE },
   { CTK_STOCK_DIALOG_WARNING, NC_("Stock label", "Warning"), 0, 0, GETTEXT_PACKAGE },

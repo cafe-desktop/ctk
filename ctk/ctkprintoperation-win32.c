@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkprintoperation-win32.c: Print Operation Details for Win32
+ * ctkprintoperation-win32.c: Print Operation Details for Win32
  * Copyright (C) 2006, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -38,14 +38,14 @@
 #include <windows.h>
 #include <cairo-win32.h>
 #include <glib.h>
-#include "gtkprintoperation-private.h"
-#include "gtkprint-win32.h"
-#include "gtkintl.h"
-#include "gtkinvisible.h"
-#include "gtkplug.h"
-#include "gtk.h"
-#include "gtkwin32embedwidget.h"
-#include "gtkprivate.h"
+#include "ctkprintoperation-private.h"
+#include "ctkprint-win32.h"
+#include "ctkintl.h"
+#include "ctkinvisible.h"
+#include "ctkplug.h"
+#include "ctk.h"
+#include "ctkwin32embedwidget.h"
+#include "ctkprivate.h"
 
 #define MAX_PAGE_RANGES 20
 #define STATUS_POLLING_TIME 2000
@@ -536,7 +536,7 @@ win32_poll_status_timeout (GtkPrintOperation *op)
     op_win32->timeout_id = gdk_threads_add_timeout (STATUS_POLLING_TIME,
 					  (GSourceFunc)win32_poll_status_timeout,
 					  op);
-    g_source_set_name_by_id (op_win32->timeout_id, "[gtk+] win32_poll_status_timeout");
+    g_source_set_name_by_id (op_win32->timeout_id, "[ctk+] win32_poll_status_timeout");
   }
   g_object_unref (op);
   return FALSE;
@@ -580,7 +580,7 @@ win32_end_run (GtkPrintOperation *op,
       op_win32->timeout_id = gdk_threads_add_timeout (STATUS_POLLING_TIME,
 					    (GSourceFunc)win32_poll_status_timeout,
 					    op);
-      g_source_set_name_by_id (op_win32->timeout_id, "[gtk+] win32_poll_status_timeout");
+      g_source_set_name_by_id (op_win32->timeout_id, "[ctk+] win32_poll_status_timeout");
     }
   else
     /* Dunno what happened, pretend its finished */
@@ -1746,7 +1746,7 @@ ctk_print_operation_run_with_dialog (GtkPrintOperation *op,
       if (!initialized)
         g_warning ("Failed to InitCommonControlsEx: %lu", GetLastError ());
 
-      _ctk_load_dll_with_libgtk3_manifest ("comdlg32.dll");
+      _ctk_load_dll_with_libctk3_manifest ("comdlg32.dll");
 
       g_once_init_leave (&common_controls_initialized, initialized ? 1 : 0);
     }

@@ -11,15 +11,15 @@ if 'DESTDIR' not in os.environ:
     ctk_bindir = sys.argv[3]
     ctk_libdir = sys.argv[4]
     ctk_datadir = sys.argv[5]
-    ctk_query_immodules = os.path.join(ctk_bindir, 'gtk-query-immodules-' + ctk_api_version)
-    ctk_update_icon_cache = os.path.join(ctk_bindir, 'gtk-update-icon-cache')
+    ctk_query_immodules = os.path.join(ctk_bindir, 'ctk-query-immodules-' + ctk_api_version)
+    ctk_update_icon_cache = os.path.join(ctk_bindir, 'ctk-update-icon-cache')
 
-    ctk_moduledir = os.path.join(ctk_libdir, 'gtk-' + ctk_api_version, ctk_abi_version)
+    ctk_moduledir = os.path.join(ctk_libdir, 'ctk-' + ctk_api_version, ctk_abi_version)
     ctk_immodule_dir = os.path.join(ctk_moduledir, 'immodules')
     ctk_printmodule_dir = os.path.join(ctk_moduledir, 'printbackends')
 
     if os.name == 'nt':
-        for lib in ['gdk', 'gtk', 'gailutil']:
+        for lib in ['gdk', 'ctk', 'gailutil']:
             # Make copy for MSVC-built .lib files, e.g. xxx-3.lib->xxx-3.0.lib
             installed_lib = os.path.join(ctk_libdir, lib + '-' + ctk_api_version.split('.')[0] + '.lib')
             installed_lib_dst = os.path.join(ctk_libdir, lib + '-' + ctk_api_version + '.lib')

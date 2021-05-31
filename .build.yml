@@ -32,7 +32,7 @@ requires:
     - gobject-introspection
     - gettext
     - gvfs
-    - gtk-doc-tools
+    - ctk-doc-tools
     - hicolor-icon-theme
     - itstool
     - libatk-bridge2.0-dev
@@ -86,7 +86,7 @@ requires:
 
 build_scripts:
   - NOCONFIGURE=1 ./autogen.sh
-  - scan-build $CHECKERS ./configure --enable-broadway-backend --enable-x11-backend --enable-gtk-doc --enable-man --enable-shared --enable-introspection --enable-cloudprint --disable-static --enable-installed-tests
+  - scan-build $CHECKERS ./configure --enable-broadway-backend --enable-x11-backend --enable-ctk-doc --enable-man --enable-shared --enable-introspection --enable-cloudprint --disable-static --enable-installed-tests
   - if [ $CPU_COUNT -gt 1 ]; then
   -     scan-build $CHECKERS --keep-cc -o html-report make -j $(( $CPU_COUNT + 1 ))
   - else

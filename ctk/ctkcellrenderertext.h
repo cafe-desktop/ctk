@@ -1,4 +1,4 @@
-/* gtkcellrenderertext.h
+/* ctkcellrenderertext.h
  * Copyright (C) 2000  Red Hat, Inc.,  Jonathan Blandford <jrb@redhat.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -20,10 +20,10 @@
 
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkcellrenderer.h>
+#include <ctk/ctkcellrenderer.h>
 
 
 G_BEGIN_DECLS

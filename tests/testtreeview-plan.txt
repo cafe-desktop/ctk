@@ -3,7 +3,7 @@ verify that GtkTreeView and associated objects are working properly.
 It isn't a very formal test plan or anything.
  
 Launching:
- - Launch testtreeview with --gtk-debug=tree, this will ensure that 
+ - Launch testtreeview with --ctk-debug=tree, this will ensure that 
    debugging code in the tree widget gets run.
 
 Automated tests:

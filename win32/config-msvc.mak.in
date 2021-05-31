@@ -49,7 +49,7 @@ GDK_PREPROCESSOR_FLAGS =	\
 	/I..\gdk\win32
 
 CTK_PREPROCESSOR_FLAGS =	\
-	 /I..\gtk	\
+	 /I..\ctk	\
 	 /I..\gdk	\
 	 /I..\gdk\win32	\
 	 /I..	\
@@ -87,7 +87,7 @@ CTK_PREPROCESSOR_FLAGS =	\
 	 /DCTK_DATADIR=\"$(PREFIX:\=/)/share\"	\
 	 /DCTK_DATA_PREFIX=\"$(PREFIX:\=/)\"	\
 	 /DCTK_SYSCONFDIR=\"$(PREFIX:\=/)/etc\"	\
-	 /DMULTIPRESS_CONFDIR=\"$(PREFIX:\=/)/etc/gtk-3.0\"	\
+	 /DMULTIPRESS_CONFDIR=\"$(PREFIX:\=/)/etc/ctk-3.0\"	\
 	 /DMULTIPRESS_LOCALEDIR=\"$(PREFIX:\=/)/share/locale\"	\
 	 /DCTK_VERSION=\"$(CTK_VERSION)\"	\
 	 /DCTK_BINARY_VERSION=\"3.0.0\"	\

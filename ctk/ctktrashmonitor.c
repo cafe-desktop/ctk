@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtktrashmonitor.h: Monitor the trash:/// folder to see if there is trash or not
+ * ctktrashmonitor.h: Monitor the trash:/// folder to see if there is trash or not
  * Copyright (C) 2011 Suse
  *
  * This program is free software; you can redistribute it and/or modify
@@ -20,9 +20,9 @@
 
 #include "config.h"
 
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
-#include "gtktrashmonitor.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
+#include "ctktrashmonitor.h"
 
 #define UPDATE_RATE_SECONDS 1
 

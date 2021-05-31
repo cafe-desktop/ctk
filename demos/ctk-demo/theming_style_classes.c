@@ -8,7 +8,7 @@
  * inline toolbars and linked buttons.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static GtkWidget *window = NULL;
 

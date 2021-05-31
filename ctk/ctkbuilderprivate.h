@@ -1,4 +1,4 @@
-/* gtkbuilderprivate.h
+/* ctkbuilderprivate.h
  * Copyright (C) 2006-2007 Async Open Source,
  *                         Johan Dahlin <jdahlin@async.com.br>
  *
@@ -19,7 +19,7 @@
 #ifndef __CTK_BUILDER_PRIVATE_H__
 #define __CTK_BUILDER_PRIVATE_H__
 
-#include "gtkbuilder.h"
+#include "ctkbuilder.h"
 
 typedef struct {
   const gchar *name;

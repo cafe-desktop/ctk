@@ -18,10 +18,10 @@
 #include "config.h"
 
 #include <glib/gi18n-lib.h>
-#include <gtk/gtk.h>
-#include "gtkcontainercellaccessible.h"
-#include "gtkcellaccessibleprivate.h"
-#include "gtkcellaccessibleparent.h"
+#include <ctk/ctk.h>
+#include "ctkcontainercellaccessible.h"
+#include "ctkcellaccessibleprivate.h"
+#include "ctkcellaccessibleparent.h"
 
 struct _GtkCellAccessiblePrivate
 {

@@ -17,8 +17,8 @@
 #ifndef __CTK_PRINTER_OPTION_WIDGET_H__
 #define __CTK_PRINTER_OPTION_WIDGET_H__
 
-#include "gtkprinteroption.h"
-#include "gtkbox.h"
+#include "ctkprinteroption.h"
+#include "ctkbox.h"
 
 G_BEGIN_DECLS
 

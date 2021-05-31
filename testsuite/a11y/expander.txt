@@ -2,7 +2,7 @@ window1
   "window"
   index: 0
   state: enabled resizable sensitive showing visible
-  toolkit: gtk
+  toolkit: ctk
   window-type: normal
   <AtkComponent>
   layer: window
@@ -13,7 +13,7 @@ window1
     index: 0
     name: Reveal this
     state: enabled expandable focusable sensitive showing visible
-    toolkit: gtk
+    toolkit: ctk
     <AtkComponent>
     layer: widget
     alpha: 1
@@ -26,7 +26,7 @@ window1
       index: 0
       name: Hello World!
       state: enabled multi-line sensitive visible
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: widget
       alpha: 1

@@ -1,6 +1,6 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 2 -*- */
 
-/* GTK+: gtkfilechooserbutton.c
+/* GTK+: ctkfilechooserbutton.c
  * 
  * Copyright (c) 2004 James M. Cape <jcape@ignore-your.tv>
  *
@@ -29,12 +29,12 @@
 
 #include <string.h>
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
-static gchar *backend = "gtk+";
+static gchar *backend = "ctk+";
 static gboolean rtl = FALSE;
 static GOptionEntry entries[] = {
-  { "backend", 'b', 0, G_OPTION_ARG_STRING, &backend, "The filesystem backend to use.", "gtk+" },
+  { "backend", 'b', 0, G_OPTION_ARG_STRING, &backend, "The filesystem backend to use.", "ctk+" },
   { "right-to-left", 'r', 0, G_OPTION_ARG_NONE, &rtl, "Force right-to-left layout.", NULL },
   { NULL }
 };

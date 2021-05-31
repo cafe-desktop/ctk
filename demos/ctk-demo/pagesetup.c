@@ -5,8 +5,8 @@
  */
 
 #include <math.h>
-#include <gtk/gtk.h>
-#include <gtk/gtkunixprint.h>
+#include <ctk/ctk.h>
+#include <ctk/ctkunixprint.h>
 
 static void
 done_cb (GtkDialog *dialog, gint response, gpointer data)

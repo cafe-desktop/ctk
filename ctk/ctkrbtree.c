@@ -1,4 +1,4 @@
-/* gtkrbtree.c
+/* ctkrbtree.c
  * Copyright (C) 2000  Red Hat, Inc.,  Jonathan Blandford <jrb@redhat.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -16,8 +16,8 @@
  */
 
 #include "config.h"
-#include "gtkrbtree.h"
-#include "gtkdebug.h"
+#include "ctkrbtree.h"
+#include "ctkdebug.h"
 
 static GtkRBNode * _ctk_rbnode_new                (GtkRBTree  *tree,
 						   gint        height);

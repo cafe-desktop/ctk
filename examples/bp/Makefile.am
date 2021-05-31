@@ -7,7 +7,7 @@ AM_CPPFLAGS = \
 	$(CTK_DEP_CFLAGS)
 
 LDADD = \
-        $(top_builddir)/gtk/libgtk-3.la \
+        $(top_builddir)/ctk/libctk-3.la \
         $(top_builddir)/gdk/libgdk-3.la \
         $(CTK_DEP_LIBS)
 
@@ -19,8 +19,8 @@ nodist_bloatpad_SOURCES = bloatpad-gresources.c
 
 resource_files = \
 	bloatpad.gresources.xml		\
-	gtk/menus.ui			\
-	gtk/help-overlay.ui
+	ctk/menus.ui			\
+	ctk/help-overlay.ui
 
 bloatpad-gresources.c: $(resource_files)
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate-source $<

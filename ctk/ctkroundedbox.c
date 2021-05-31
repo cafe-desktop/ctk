@@ -17,11 +17,11 @@
 
 #include "config.h"
 
-#include "gtkroundedboxprivate.h"
+#include "ctkroundedboxprivate.h"
 
-#include "gtkcsscornervalueprivate.h"
-#include "gtkcsstypesprivate.h"
-#include "gtkstylecontextprivate.h"
+#include "ctkcsscornervalueprivate.h"
+#include "ctkcsstypesprivate.h"
+#include "ctkstylecontextprivate.h"
 
 #include <string.h>
 

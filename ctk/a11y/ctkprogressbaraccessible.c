@@ -19,9 +19,9 @@
 
 #include <string.h>
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
-#include "gtkprogressbaraccessible.h"
+#include "ctkprogressbaraccessible.h"
 
 
 static void atk_value_interface_init (AtkValueIface  *iface);
@@ -39,7 +39,7 @@ ctk_progress_bar_accessible_initialize (AtkObject *obj,
 }
 
 static void
-ctk_progress_bar_accessible_notify_gtk (GObject    *obj,
+ctk_progress_bar_accessible_notify_ctk (GObject    *obj,
                                         GParamSpec *pspec)
 {
   GtkWidget *widget = CTK_WIDGET (obj);
@@ -50,7 +50,7 @@ ctk_progress_bar_accessible_notify_gtk (GObject    *obj,
   if (strcmp (pspec->name, "fraction") == 0)
     g_object_notify (G_OBJECT (accessible), "accessible-value");
   else
-    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_progress_bar_accessible_parent_class)->notify_gtk (obj, pspec);
+    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_progress_bar_accessible_parent_class)->notify_ctk (obj, pspec);
 }
 
 static void
@@ -59,7 +59,7 @@ ctk_progress_bar_accessible_class_init (GtkProgressBarAccessibleClass *klass)
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
   GtkWidgetAccessibleClass *widget_class = (GtkWidgetAccessibleClass*)klass;
 
-  widget_class->notify_gtk = ctk_progress_bar_accessible_notify_gtk;
+  widget_class->notify_ctk = ctk_progress_bar_accessible_notify_ctk;
 
   class->initialize = ctk_progress_bar_accessible_initialize;
 }

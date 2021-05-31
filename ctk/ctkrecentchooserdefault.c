@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkrecentchooserdefault.c
+ * ctkrecentchooserdefault.c
  * Copyright (C) 2005-2006, Emmanuele Bassi
  *
  * This library is free software; you can redistribute it and/or
@@ -27,51 +27,51 @@
 #include <unistd.h>
 #endif
 
-#include "gtkicontheme.h"
-#include "gtksettings.h"
-#include "gtktreeview.h"
-#include "gtkliststore.h"
-#include "gtkbutton.h"
-#include "gtkcelllayout.h"
-#include "gtkcellrendererpixbuf.h"
-#include "gtkcellrenderertext.h"
-#include "gtkcheckmenuitem.h"
-#include "gtkclipboard.h"
-#include "gtkcomboboxtext.h"
-#include "gtkcssiconthemevalueprivate.h"
-#include "gtkdragsource.h"
-#include "gtkentry.h"
-#include "gtkeventbox.h"
-#include "gtkexpander.h"
-#include "gtkframe.h"
-#include "gtkbox.h"
-#include "gtkpaned.h"
-#include "gtkimage.h"
-#include "gtkintl.h"
-#include "gtklabel.h"
-#include "gtkmenuitem.h"
-#include "gtkmessagedialog.h"
-#include "gtkscrolledwindow.h"
-#include "gtkseparatormenuitem.h"
-#include "gtksizegroup.h"
-#include "gtksizerequest.h"
-#include "gtkstylecontextprivate.h"
-#include "gtktreemodelsort.h"
-#include "gtktreemodelfilter.h"
-#include "gtktreeselection.h"
-#include "gtktreestore.h"
-#include "gtktooltip.h"
-#include "gtktypebuiltins.h"
-#include "gtkorientable.h"
-#include "gtkwindowgroup.h"
-#include "deprecated/gtkactivatable.h"
+#include "ctkicontheme.h"
+#include "ctksettings.h"
+#include "ctktreeview.h"
+#include "ctkliststore.h"
+#include "ctkbutton.h"
+#include "ctkcelllayout.h"
+#include "ctkcellrendererpixbuf.h"
+#include "ctkcellrenderertext.h"
+#include "ctkcheckmenuitem.h"
+#include "ctkclipboard.h"
+#include "ctkcomboboxtext.h"
+#include "ctkcssiconthemevalueprivate.h"
+#include "ctkdragsource.h"
+#include "ctkentry.h"
+#include "ctkeventbox.h"
+#include "ctkexpander.h"
+#include "ctkframe.h"
+#include "ctkbox.h"
+#include "ctkpaned.h"
+#include "ctkimage.h"
+#include "ctkintl.h"
+#include "ctklabel.h"
+#include "ctkmenuitem.h"
+#include "ctkmessagedialog.h"
+#include "ctkscrolledwindow.h"
+#include "ctkseparatormenuitem.h"
+#include "ctksizegroup.h"
+#include "ctksizerequest.h"
+#include "ctkstylecontextprivate.h"
+#include "ctktreemodelsort.h"
+#include "ctktreemodelfilter.h"
+#include "ctktreeselection.h"
+#include "ctktreestore.h"
+#include "ctktooltip.h"
+#include "ctktypebuiltins.h"
+#include "ctkorientable.h"
+#include "ctkwindowgroup.h"
+#include "deprecated/ctkactivatable.h"
 
-#include "gtkrecentmanager.h"
-#include "gtkrecentfilter.h"
-#include "gtkrecentchooser.h"
-#include "gtkrecentchooserprivate.h"
-#include "gtkrecentchooserutils.h"
-#include "gtkrecentchooserdefault.h"
+#include "ctkrecentmanager.h"
+#include "ctkrecentfilter.h"
+#include "ctkrecentchooser.h"
+#include "ctkrecentchooserprivate.h"
+#include "ctkrecentchooserutils.h"
+#include "ctkrecentchooserdefault.h"
 
 
 enum 
@@ -147,7 +147,7 @@ typedef struct _GtkRecentChooserDefaultClass
   GtkBoxClass parent_class;
 } GtkRecentChooserDefaultClass;
 
-/* Keep inline with GtkTreeStore defined in gtkrecentchooserdefault.ui */
+/* Keep inline with GtkTreeStore defined in ctkrecentchooserdefault.ui */
 enum {
   RECENT_URI_COLUMN,
   RECENT_DISPLAY_NAME_COLUMN,
@@ -350,7 +350,7 @@ _ctk_recent_chooser_default_class_init (GtkRecentChooserDefaultClass *klass)
   /* Bind class to template
    */
   ctk_widget_class_set_template_from_resource (widget_class,
-					       "/org/gtk/libgtk/ui/gtkrecentchooserdefault.ui");
+					       "/org/ctk/libctk/ui/ctkrecentchooserdefault.ui");
 
   ctk_widget_class_bind_template_child_private (widget_class, GtkRecentChooserDefault, filter_combo_hbox);
   ctk_widget_class_bind_template_child_private (widget_class, GtkRecentChooserDefault, filter_combo);
@@ -862,10 +862,10 @@ reload_recent_items (GtkRecentChooserDefault *impl)
                                              load_recent_items,
                                              impl,
                                              cleanup_after_load);
-  g_source_set_name_by_id (impl->priv->load_id, "[gtk+] load_recent_items");
+  g_source_set_name_by_id (impl->priv->load_id, "[ctk+] load_recent_items");
 }
 
-/* taken form gtkfilechooserdialog.c */
+/* taken form ctkfilechooserdialog.c */
 static void
 set_default_size (GtkRecentChooserDefault *impl)
 {

@@ -17,8 +17,8 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
-#include "gtkplugaccessible.h"
+#include <ctk/ctk.h>
+#include "ctkplugaccessible.h"
 
 #ifdef CTK_HAVE_ATK_PLUG_SET_CHILD
 

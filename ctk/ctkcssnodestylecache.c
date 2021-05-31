@@ -17,10 +17,10 @@
 
 #include "config.h"
 
-#include "gtkcssnodestylecacheprivate.h"
+#include "ctkcssnodestylecacheprivate.h"
 
-#include "gtkdebug.h"
-#include "gtkcssstaticstyleprivate.h"
+#include "ctkdebug.h"
+#include "ctkcssstaticstyleprivate.h"
 
 struct _GtkCssNodeStyleCache {
   guint        ref_count;

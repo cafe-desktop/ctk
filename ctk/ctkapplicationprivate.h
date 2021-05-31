@@ -21,11 +21,11 @@
 #ifndef __CTK_APPLICATION_PRIVATE_H__
 #define __CTK_APPLICATION_PRIVATE_H__
 
-#include "gtkapplicationwindow.h"
-#include "gtkwindowprivate.h"
+#include "ctkapplicationwindow.h"
+#include "ctkwindowprivate.h"
 
-#include "gtkactionmuxer.h"
-#include "gtkapplicationaccelsprivate.h"
+#include "ctkactionmuxer.h"
+#include "ctkapplicationaccelsprivate.h"
 
 G_BEGIN_DECLS
 

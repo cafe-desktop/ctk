@@ -1,4 +1,4 @@
-/* gtksidebarrow.c
+/* ctksidebarrow.c
  *
  * Copyright (C) 2015 Carlos Soriano <csoriano@gnome.org>
  *
@@ -18,17 +18,17 @@
 
 #include "config.h"
 
-#include "gtksidebarrowprivate.h"
+#include "ctksidebarrowprivate.h"
 /* For section and place type enums */
-#include "gtkplacessidebarprivate.h"
-#include "gtkplacessidebar.h"
-#include "gtkwidget.h"
-#include "gtkimage.h"
-#include "gtklabel.h"
-#include "gtkstylecontext.h"
-#include "gtkrevealer.h"
-#include "gtkselection.h"
-#include "gtkspinner.h"
+#include "ctkplacessidebarprivate.h"
+#include "ctkplacessidebar.h"
+#include "ctkwidget.h"
+#include "ctkimage.h"
+#include "ctklabel.h"
+#include "ctkstylecontext.h"
+#include "ctkrevealer.h"
+#include "ctkselection.h"
+#include "ctkspinner.h"
 
 #ifdef HAVE_CLOUDPROVIDERS
 #include <cloudproviders/cloudprovidersaccount.h>
@@ -615,7 +615,7 @@ ctk_sidebar_row_class_init (GtkSidebarRowClass *klass)
   g_object_class_install_properties (object_class, LAST_PROP, properties);
 
   ctk_widget_class_set_template_from_resource (widget_class,
-                                               "/org/gtk/libgtk/ui/gtksidebarrow.ui");
+                                               "/org/ctk/libctk/ui/ctksidebarrow.ui");
 
   ctk_widget_class_bind_template_child (widget_class, GtkSidebarRow, start_icon_widget);
   ctk_widget_class_bind_template_child (widget_class, GtkSidebarRow, end_icon_widget);

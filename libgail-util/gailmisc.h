@@ -19,7 +19,7 @@
 #define __GAIL_MISC_H__
 
 #include <glib-object.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <pango/pango.h>
 
 G_BEGIN_DECLS

@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkprintcontext.h: Print Context
+ * ctkprintcontext.h: Print Context
  * Copyright (C) 2006, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -21,11 +21,11 @@
 
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
 #include <pango/pango.h>
-#include <gtk/gtkpagesetup.h>
+#include <ctk/ctkpagesetup.h>
 
 
 G_BEGIN_DECLS

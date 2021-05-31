@@ -1,5 +1,5 @@
 /* GtkIconTheme - a loader for icon themes
- * gtk-icon-loader.h Copyright (C) 2002, 2003 Red Hat, Inc.
+ * ctk-icon-loader.h Copyright (C) 2002, 2003 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -19,12 +19,12 @@
 #define __CTK_ICON_THEME_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gdk/gdk.h>
-#include <gtk/gtkstylecontext.h>
+#include <ctk/ctkstylecontext.h>
 
 G_BEGIN_DECLS
 

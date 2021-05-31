@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkrecentmanager.c: a manager for the recently used resources
+ * ctkrecentmanager.c: a manager for the recently used resources
  *
  * Copyright (C) 2006 Emmanuele Bassi
  *
@@ -18,7 +18,7 @@
  */
 
 #include <glib/gstdio.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 const gchar *uri = "file:///tmp/testrecentchooser.txt";
 const gchar *uri2 = "file:///tmp/testrecentchooser2.txt";

@@ -18,7 +18,7 @@
 #ifndef __CTK_ORIENTABLE_PRIVATE_H__
 #define __CTK_ORIENTABLE_PRIVATE_H__
 
-#include "gtkorientable.h"
+#include "ctkorientable.h"
 
 G_BEGIN_DECLS
 

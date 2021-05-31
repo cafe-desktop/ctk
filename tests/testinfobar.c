@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 typedef enum {
   RESPONSE_UNREVEAL,
@@ -99,7 +99,7 @@ main (int   argc,
   GtkApplication *application;
   int result;
 
-  application = ctk_application_new ("org.gtk.test.infobar",
+  application = ctk_application_new ("org.ctk.test.infobar",
                                      G_APPLICATION_FLAGS_NONE);
   g_signal_connect (application, "activate", G_CALLBACK (on_activate), NULL);
 

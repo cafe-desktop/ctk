@@ -18,9 +18,9 @@
 #ifndef __CTK_STYLE_PROPERTIES_PRIVATE_H__
 #define __CTK_STYLE_PROPERTIES_PRIVATE_H__
 
-#include "gtkstyleproperties.h"
-#include "gtkcssstylepropertyprivate.h"
-#include "gtkstylecontextprivate.h"
+#include "ctkstyleproperties.h"
+#include "ctkcssstylepropertyprivate.h"
+#include "ctkstylecontextprivate.h"
 
 G_BEGIN_DECLS
 

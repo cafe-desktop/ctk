@@ -22,27 +22,27 @@
 #include "strv-editor.h"
 #include "object-tree.h"
 
-#include "gtkactionable.h"
-#include "gtkadjustment.h"
-#include "gtkapplicationwindow.h"
-#include "gtkcelllayout.h"
-#include "gtkcellrenderertext.h"
-#include "gtkcolorbutton.h"
-#include "gtkcolorchooser.h"
-#include "gtkcolorchooserwidget.h"
-#include "gtkcombobox.h"
-#include "gtkfontchooser.h"
-#include "gtkfontchooserwidget.h"
-#include "gtkiconview.h"
-#include "gtklabel.h"
-#include "gtkpopover.h"
-#include "gtkradiobutton.h"
-#include "gtkscrolledwindow.h"
-#include "gtkspinbutton.h"
-#include "gtksettingsprivate.h"
-#include "gtktogglebutton.h"
-#include "gtkwidgetprivate.h"
-#include "gtkcssnodeprivate.h"
+#include "ctkactionable.h"
+#include "ctkadjustment.h"
+#include "ctkapplicationwindow.h"
+#include "ctkcelllayout.h"
+#include "ctkcellrenderertext.h"
+#include "ctkcolorbutton.h"
+#include "ctkcolorchooser.h"
+#include "ctkcolorchooserwidget.h"
+#include "ctkcombobox.h"
+#include "ctkfontchooser.h"
+#include "ctkfontchooserwidget.h"
+#include "ctkiconview.h"
+#include "ctklabel.h"
+#include "ctkpopover.h"
+#include "ctkradiobutton.h"
+#include "ctkscrolledwindow.h"
+#include "ctkspinbutton.h"
+#include "ctksettingsprivate.h"
+#include "ctktogglebutton.h"
+#include "ctkwidgetprivate.h"
+#include "ctkcssnodeprivate.h"
 
 struct _GtkInspectorPropEditorPrivate
 {
@@ -1209,7 +1209,7 @@ attribute_mapping_changed (GtkComboBox            *combo,
   GtkCellArea *area;
 
   col = ctk_combo_box_get_active (combo) - 1;
-  layout = g_object_get_data (editor->priv->object, "gtk-inspector-cell-layout");
+  layout = g_object_get_data (editor->priv->object, "ctk-inspector-cell-layout");
   if (CTK_IS_CELL_LAYOUT (layout))
     {
       cell = CTK_CELL_RENDERER (editor->priv->object);
@@ -1244,7 +1244,7 @@ attribute_editor (GObject                *object,
   GtkListStore *store;
   GtkTreeIter iter;
 
-  layout = g_object_get_data (object, "gtk-inspector-cell-layout");
+  layout = g_object_get_data (object, "ctk-inspector-cell-layout");
   if (CTK_IS_CELL_LAYOUT (layout))
     {
       area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (layout));

@@ -20,7 +20,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -29,19 +29,19 @@
 
 #define GDK_DISABLE_DEPRECATION_WARNINGS
 
-#include "gtkhandlebox.h"
-#include "gtkinvisible.h"
-#include "gtkmain.h"
-#include "gtkmarshalers.h"
-#include "gtkrender.h"
-#include "gtkwindow.h"
-#include "gtktypebuiltins.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
+#include "ctkhandlebox.h"
+#include "ctkinvisible.h"
+#include "ctkmain.h"
+#include "ctkmarshalers.h"
+#include "ctkrender.h"
+#include "ctkwindow.h"
+#include "ctktypebuiltins.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
 
 
 /**
- * SECTION:gtkhandlebox
+ * SECTION:ctkhandlebox
  * @Short_description: a widget for detachable window portions
  * @Title: GtkHandleBox
  *

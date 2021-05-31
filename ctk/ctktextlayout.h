@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtktextlayout.h
+ * ctktextlayout.h
  *
  * Copyright (c) 1992-1994 The Regents of the University of California.
  * Copyright (c) 1994-1997 Sun Microsystems, Inc.
@@ -72,7 +72,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __CTK_TEXT_LAYOUT_H__
@@ -85,15 +85,15 @@
  * to use it.
  */
 #ifndef CTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
-#error "You are not supposed to be including this file; the equivalent public API is in gtktextview.h"
+#error "You are not supposed to be including this file; the equivalent public API is in ctktextview.h"
 #endif
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 G_BEGIN_DECLS
 
 /* forward declarations that have to be here to avoid including
- * gtktextbtree.h
+ * ctktextbtree.h
  */
 typedef struct _GtkTextLine     GtkTextLine;
 typedef struct _GtkTextLineData GtkTextLineData;
@@ -452,7 +452,7 @@ void     ctk_text_layout_get_iter_at_line           (GtkTextLayout *layout,
                                                      gint            byte_offset);
 
 /* Don't use these. Use ctk_text_view_add_child_at_anchor().
- * These functions are defined in gtktextchild.c, but here
+ * These functions are defined in ctktextchild.c, but here
  * since they are semi-public and require GtkTextLayout to
  * be declared.
  */

@@ -17,16 +17,16 @@
 
 #include "config.h"
 
-#include "gtkiconviewaccessibleprivate.h"
+#include "ctkiconviewaccessibleprivate.h"
 
 #include <string.h>
 
-#include "gtk/gtkadjustment.h"
-#include "gtk/gtkiconviewprivate.h"
-#include "gtk/gtkcellrendererpixbuf.h"
-#include "gtk/gtkcellrenderertext.h"
-#include "gtk/gtkpango.h"
-#include "gtk/gtkwidgetprivate.h"
+#include "ctk/ctkadjustment.h"
+#include "ctk/ctkiconviewprivate.h"
+#include "ctk/ctkcellrendererpixbuf.h"
+#include "ctk/ctkcellrenderertext.h"
+#include "ctk/ctkpango.h"
+#include "ctk/ctkwidgetprivate.h"
 
 #define CTK_TYPE_ICON_VIEW_ITEM_ACCESSIBLE      (_ctk_icon_view_item_accessible_get_type ())
 #define CTK_ICON_VIEW_ITEM_ACCESSIBLE(obj)      (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ICON_VIEW_ITEM_ACCESSIBLE, GtkIconViewItemAccessible))
@@ -114,7 +114,7 @@ ctk_icon_view_item_accessible_do_action (AtkAction *action,
   if (!item->action_idle_handler)
     {
       item->action_idle_handler = gdk_threads_add_idle (idle_do_action, item);
-      g_source_set_name_by_id (item->action_idle_handler, "[gtk+] idle_do_action");
+      g_source_set_name_by_id (item->action_idle_handler, "[ctk+] idle_do_action");
     }
 
   return TRUE;
@@ -1264,7 +1264,7 @@ ctk_icon_view_accessible_clear_cache (GtkIconViewAccessible *view)
 }
 
 static void
-ctk_icon_view_accessible_notify_gtk (GObject    *obj,
+ctk_icon_view_accessible_notify_ctk (GObject    *obj,
                                      GParamSpec *pspec)
 {
   GtkIconView *icon_view;
@@ -1312,7 +1312,7 @@ ctk_icon_view_accessible_initialize (AtkObject *accessible,
   view = (GtkIconViewAccessible*)accessible;
 
   g_signal_connect (data, "notify",
-                    G_CALLBACK (ctk_icon_view_accessible_notify_gtk), NULL);
+                    G_CALLBACK (ctk_icon_view_accessible_notify_ctk), NULL);
 
   view->priv->model = icon_view->priv->model;
   if (view->priv->model)

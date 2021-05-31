@@ -20,8 +20,8 @@
 
 #include "config.h"
 
-#include "gtkapplicationprivate.h"
-#include "gtkbuilder.h"
+#include "ctkapplicationprivate.h"
+#include "ctkbuilder.h"
 #import <Cocoa/Cocoa.h>
 
 typedef struct
@@ -155,7 +155,7 @@ ctk_application_impl_quartz_startup (GtkApplicationImpl *impl,
                                      gboolean            register_session)
 {
   GtkApplicationImplQuartz *quartz = (GtkApplicationImplQuartz *) impl;
-  GSimpleActionGroup *gtkinternal;
+  GSimpleActionGroup *ctkinternal;
   GMenuModel *app_menu;
   const gchar *pref_accel[] = {"<Primary>comma", NULL};
   const gchar *hide_others_accel[] = {"<Primary><Alt>h", NULL};
@@ -173,16 +173,16 @@ ctk_application_impl_quartz_startup (GtkApplicationImpl *impl,
 
   /* Add the default accels */
   ctk_application_set_accels_for_action (impl->application, "app.preferences", pref_accel);
-  ctk_application_set_accels_for_action (impl->application, "gtkinternal.hide-others", hide_others_accel);
-  ctk_application_set_accels_for_action (impl->application, "gtkinternal.hide", hide_accel);
+  ctk_application_set_accels_for_action (impl->application, "ctkinternal.hide-others", hide_others_accel);
+  ctk_application_set_accels_for_action (impl->application, "ctkinternal.hide", hide_accel);
   ctk_application_set_accels_for_action (impl->application, "app.quit", quit_accel);
 
   /* and put code behind the 'special' accels */
-  gtkinternal = g_simple_action_group_new ();
-  g_action_map_add_action_entries (G_ACTION_MAP (gtkinternal), ctk_application_impl_quartz_actions,
+  ctkinternal = g_simple_action_group_new ();
+  g_action_map_add_action_entries (G_ACTION_MAP (ctkinternal), ctk_application_impl_quartz_actions,
                                    G_N_ELEMENTS (ctk_application_impl_quartz_actions), quartz);
-  ctk_application_insert_action_group (impl->application, "gtkinternal", G_ACTION_GROUP (gtkinternal));
-  g_object_unref (gtkinternal);
+  ctk_application_insert_action_group (impl->application, "ctkinternal", G_ACTION_GROUP (ctkinternal));
+  g_object_unref (ctkinternal);
 
   /* now setup the menu */
   app_menu = ctk_application_get_app_menu (impl->application);
@@ -195,7 +195,7 @@ ctk_application_impl_quartz_startup (GtkApplicationImpl *impl,
        * The fact that we do this here ensures that we will always have the
        * app menu at index 0 in 'combined'.
        */
-      builder = ctk_builder_new_from_resource ("/org/gtk/libgtk/ui/gtkapplication-quartz.ui");
+      builder = ctk_builder_new_from_resource ("/org/ctk/libctk/ui/ctkapplication-quartz.ui");
       ctk_application_set_app_menu (impl->application, G_MENU_MODEL (ctk_builder_get_object (builder, "app-menu")));
       g_object_unref (builder);
     }

@@ -18,9 +18,9 @@
 #ifndef __CTK_CSS_STYLE_FUNCS_PRIVATE_H__
 #define __CTK_CSS_STYLE_FUNCS_PRIVATE_H__
 
-#include "gtkcssparserprivate.h"
-#include "gtkstylecontext.h"
-#include "gtkcssvalueprivate.h"
+#include "ctkcssparserprivate.h"
+#include "ctkstylecontext.h"
+#include "ctkcssvalueprivate.h"
 
 G_BEGIN_DECLS
 

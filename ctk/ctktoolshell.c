@@ -1,4 +1,4 @@
-/* gtktoolshell.c
+/* ctktoolshell.c
  * Copyright (C) 2007  Openismus GmbH
  *
  * This library is free software; you can redistribute it and/or
@@ -19,13 +19,13 @@
  */
 
 #include "config.h"
-#include "gtktoolshell.h"
-#include "gtkwidget.h"
-#include "gtkintl.h"
+#include "ctktoolshell.h"
+#include "ctkwidget.h"
+#include "ctkintl.h"
 
 
 /**
- * SECTION:gtktoolshell
+ * SECTION:ctktoolshell
  * @Short_description: Interface for containers containing GtkToolItem widgets
  * @Title: GtkToolShell
  * @see_also: #GtkToolbar, #GtkToolItem

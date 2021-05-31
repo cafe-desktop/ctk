@@ -18,7 +18,7 @@
 #ifndef _CTK_INSPECTOR_VISUAL_H_
 #define _CTK_INSPECTOR_VISUAL_H_
 
-#include <gtk/gtkscrolledwindow.h>
+#include <ctk/ctkscrolledwindow.h>
 
 #define CTK_TYPE_INSPECTOR_VISUAL            (ctk_inspector_visual_get_type())
 #define CTK_INSPECTOR_VISUAL(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_VISUAL, GtkInspectorVisual))

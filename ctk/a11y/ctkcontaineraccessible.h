@@ -19,11 +19,11 @@
 #define __CTK_CONTAINER_ACCESSIBLE_H__
 
 #if !defined (__CTK_A11Y_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk-a11y.h> can be included directly."
+#error "Only <ctk/ctk-a11y.h> can be included directly."
 #endif
 
-#include <gtk/gtk.h>
-#include <gtk/a11y/gtkwidgetaccessible.h>
+#include <ctk/ctk.h>
+#include <ctk/a11y/ctkwidgetaccessible.h>
 
 G_BEGIN_DECLS
 
@@ -49,10 +49,10 @@ struct _GtkContainerAccessibleClass
 {
   GtkWidgetAccessibleClass parent_class;
 
-  gint (*add_gtk)    (GtkContainer *container,
+  gint (*add_ctk)    (GtkContainer *container,
                       GtkWidget    *widget,
                       gpointer     data);
-  gint (*remove_gtk) (GtkContainer *container,
+  gint (*remove_ctk) (GtkContainer *container,
                       GtkWidget    *widget,
                       gpointer     data);
 };

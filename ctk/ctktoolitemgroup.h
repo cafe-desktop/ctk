@@ -22,11 +22,11 @@
 #define __CTK_TOOL_ITEM_GROUP_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkcontainer.h>
-#include <gtk/gtktoolitem.h>
+#include <ctk/ctkcontainer.h>
+#include <ctk/ctktoolitem.h>
 
 G_BEGIN_DECLS
 

@@ -1,4 +1,4 @@
-/* gtkstatusicon-quartz.c:
+/* ctkstatusicon-quartz.c:
  *
  * Copyright (C) 2006 Imendio AB
  *
@@ -23,7 +23,7 @@
 
 #import <Cocoa/Cocoa.h>
 #define __CTK_H_INSIDE__
-#include <quartz/gdkquartz-gtk-only.h>
+#include <quartz/gdkquartz-ctk-only.h>
 #undef __CTK_H_INSIDE__
 
 #define QUARTZ_POOL_ALLOC NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init]

@@ -18,7 +18,7 @@
  */
 
 /**
- * SECTION:gtkgesturepan
+ * SECTION:ctkgesturepan
  * @Short_description: Pan gesture
  * @Title: GtkGesturePan
  *
@@ -39,12 +39,12 @@
  */
 
 #include "config.h"
-#include "gtkgesturepan.h"
-#include "gtkgesturepanprivate.h"
-#include "gtktypebuiltins.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
+#include "ctkgesturepan.h"
+#include "ctkgesturepanprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
 
 typedef struct _GtkGesturePanPrivate GtkGesturePanPrivate;
 

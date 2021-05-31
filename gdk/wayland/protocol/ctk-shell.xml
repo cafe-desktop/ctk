@@ -1,7 +1,7 @@
-<protocol name="gtk">
+<protocol name="ctk">
 
   <interface name="ctk_shell1" version="3">
-    <description summary="gtk specific extensions">
+    <description summary="ctk specific extensions">
       ctk_shell is a protocol extension providing additional features for
       clients implementing it.
     </description>

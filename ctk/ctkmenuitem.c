@@ -19,41 +19,41 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
 #include <string.h>
 
-#include "gtkaccellabel.h"
-#include "gtkbuiltiniconprivate.h"
-#include "gtkcontainerprivate.h"
-#include "gtkcsscustomgadgetprivate.h"
-#include "gtkmain.h"
-#include "gtkmarshalers.h"
-#include "gtkmenuprivate.h"
-#include "gtkmenushellprivate.h"
-#include "gtkmenuitemprivate.h"
-#include "gtkmenubar.h"
-#include "gtkmenuprivate.h"
-#include "gtkseparatormenuitem.h"
-#include "gtkprivate.h"
-#include "gtkbuildable.h"
-#include "deprecated/gtkactivatable.h"
-#include "gtkwidgetprivate.h"
-#include "gtkintl.h"
-#include "gtksettings.h"
-#include "gtktypebuiltins.h"
-#include "a11y/gtkmenuitemaccessible.h"
-#include "deprecated/gtktearoffmenuitem.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkcssstylepropertyprivate.h"
+#include "ctkaccellabel.h"
+#include "ctkbuiltiniconprivate.h"
+#include "ctkcontainerprivate.h"
+#include "ctkcsscustomgadgetprivate.h"
+#include "ctkmain.h"
+#include "ctkmarshalers.h"
+#include "ctkmenuprivate.h"
+#include "ctkmenushellprivate.h"
+#include "ctkmenuitemprivate.h"
+#include "ctkmenubar.h"
+#include "ctkmenuprivate.h"
+#include "ctkseparatormenuitem.h"
+#include "ctkprivate.h"
+#include "ctkbuildable.h"
+#include "deprecated/ctkactivatable.h"
+#include "ctkwidgetprivate.h"
+#include "ctkintl.h"
+#include "ctksettings.h"
+#include "ctktypebuiltins.h"
+#include "a11y/ctkmenuitemaccessible.h"
+#include "deprecated/ctktearoffmenuitem.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkcssstylepropertyprivate.h"
 
 #define MENU_POPUP_DELAY     225
 
 /**
- * SECTION:gtkmenuitem
+ * SECTION:ctkmenuitem
  * @Short_description: The widget used for item in menus
  * @Title: GtkMenuItem
  * @See_also: #GtkBin, #GtkMenuShell
@@ -1288,7 +1288,7 @@ ctk_menu_is_empty (GtkWidget *menu)
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
 	  if (!CTK_IS_TEAROFF_MENU_ITEM (cur->data) &&
-	      !g_object_get_data (cur->data, "gtk-empty-menu-item"))
+	      !g_object_get_data (cur->data, "ctk-empty-menu-item"))
             {
 	      result = FALSE;
               break;
@@ -1972,13 +1972,13 @@ ctk_menu_item_real_popup_submenu (GtkWidget      *widget,
           g_get_current_time (popup_time);
 
           g_object_set_data_full (G_OBJECT (priv->submenu),
-                                  "gtk-menu-exact-popup-time", popup_time,
+                                  "ctk-menu-exact-popup-time", popup_time,
                                   (GDestroyNotify) free_timeval);
         }
       else
         {
           g_object_set_data (G_OBJECT (priv->submenu),
-                             "gtk-menu-exact-popup-time", NULL);
+                             "ctk-menu-exact-popup-time", NULL);
         }
 
       /* Position the submenu at the menu item if it is mapped.
@@ -2149,7 +2149,7 @@ _ctk_menu_item_popup_submenu (GtkWidget *widget,
           priv->timer = gdk_threads_add_timeout (popup_delay,
                                                  ctk_menu_item_popup_timeout,
                                                  info);
-          g_source_set_name_by_id (priv->timer, "[gtk+] ctk_menu_item_popup_timeout");
+          g_source_set_name_by_id (priv->timer, "[ctk+] ctk_menu_item_popup_timeout");
 
           return;
         }
@@ -2167,7 +2167,7 @@ _ctk_menu_item_popdown_submenu (GtkWidget *widget)
   if (priv->submenu)
     {
       g_object_set_data (G_OBJECT (priv->submenu),
-                         "gtk-menu-exact-popup-time", NULL);
+                         "ctk-menu-exact-popup-time", NULL);
 
       if (priv->timer)
         {

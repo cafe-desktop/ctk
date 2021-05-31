@@ -19,9 +19,9 @@
 
 #include "config.h"
 
-#include "gtkcsscustomgadgetprivate.h"
+#include "ctkcsscustomgadgetprivate.h"
 
-#include "gtkcssnodeprivate.h"
+#include "ctkcssnodeprivate.h"
 
 /*
  * GtkCssCustomGadget is a subclass that lets widgets customize size

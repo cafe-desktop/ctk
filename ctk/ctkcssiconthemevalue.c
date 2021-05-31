@@ -17,14 +17,14 @@
 
 #include "config.h"
 
-#include "gtkcssiconthemevalueprivate.h"
+#include "ctkcssiconthemevalueprivate.h"
 
-#include "gtkicontheme.h"
-#include "gtksettingsprivate.h"
-#include "gtkstyleproviderprivate.h"
+#include "ctkicontheme.h"
+#include "ctksettingsprivate.h"
+#include "ctkstyleproviderprivate.h"
 
 /*
- * The idea behind this value (and the '-gtk-icon-theme' CSS property) is
+ * The idea behind this value (and the '-ctk-icon-theme' CSS property) is
  * to track changes to the icon theme.
  *
  * We create a new instance of this value whenever the icon theme changes
@@ -45,7 +45,7 @@ ctk_css_value_icon_theme_disconnect_handler (GtkCssValue *value)
   if (value->changed_id == 0)
     return;
 
-  g_object_set_data (G_OBJECT (value->icontheme), "-gtk-css-value", NULL);
+  g_object_set_data (G_OBJECT (value->icontheme), "-ctk-css-value", NULL);
 
   g_signal_handler_disconnect (value->icontheme, value->changed_id);
   value->changed_id = 0;
@@ -127,14 +127,14 @@ ctk_css_icon_theme_value_new (GtkIconTheme *icontheme)
   if (icontheme == NULL)
     return _ctk_css_value_ref (&default_icon_theme_value);
 
-  result = g_object_get_data (G_OBJECT (icontheme), "-gtk-css-value");
+  result = g_object_get_data (G_OBJECT (icontheme), "-ctk-css-value");
   if (result)
     return _ctk_css_value_ref (result);
 
   result = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_ICON_THEME);
   result->icontheme = g_object_ref (icontheme);
 
-  g_object_set_data (G_OBJECT (icontheme), "-gtk-css-value", result);
+  g_object_set_data (G_OBJECT (icontheme), "-ctk-css-value", result);
   result->changed_id = g_signal_connect (icontheme, "changed", G_CALLBACK (ctk_css_value_icon_theme_changed_cb), result);
 
   return result;

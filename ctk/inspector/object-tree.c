@@ -30,24 +30,24 @@
 #include "object-tree.h"
 #include "prop-list.h"
 
-#include "gtkbuildable.h"
-#include "gtkbutton.h"
-#include "gtkcelllayout.h"
-#include "gtkcomboboxprivate.h"
-#include "gtkiconview.h"
-#include "gtklabel.h"
-#include "gtkmenuitem.h"
-#include "gtksettings.h"
-#include "gtktextview.h"
-#include "gtktreeview.h"
-#include "gtktreeselection.h"
-#include "gtktreestore.h"
-#include "gtktreemodelsort.h"
-#include "gtktreemodelfilter.h"
-#include "gtkwidgetprivate.h"
-#include "gtkstylecontext.h"
-#include "gtksearchbar.h"
-#include "gtksearchentry.h"
+#include "ctkbuildable.h"
+#include "ctkbutton.h"
+#include "ctkcelllayout.h"
+#include "ctkcomboboxprivate.h"
+#include "ctkiconview.h"
+#include "ctklabel.h"
+#include "ctkmenuitem.h"
+#include "ctksettings.h"
+#include "ctktextview.h"
+#include "ctktreeview.h"
+#include "ctktreeselection.h"
+#include "ctktreestore.h"
+#include "ctktreemodelsort.h"
+#include "ctktreemodelfilter.h"
+#include "ctkwidgetprivate.h"
+#include "ctkstylecontext.h"
+#include "ctksearchbar.h"
+#include "ctksearchentry.h"
 #include "treewalk.h"
 
 enum
@@ -299,8 +299,8 @@ cell_callback (GtkCellRenderer *renderer,
   ParentForallData *d = data;
   gpointer cell_layout;
 
-  cell_layout = g_object_get_data (d->parent, "gtk-inspector-cell-layout");
-  g_object_set_data (G_OBJECT (renderer), "gtk-inspector-cell-layout", cell_layout);
+  cell_layout = g_object_get_data (d->parent, "ctk-inspector-cell-layout");
+  g_object_set_data (G_OBJECT (renderer), "ctk-inspector-cell-layout", cell_layout);
   d->forall_func (G_OBJECT (renderer), NULL, d->forall_data);
 
   return FALSE;
@@ -335,7 +335,7 @@ object_tree_cell_layout_forall (GObject              *object,
   if (!area)
     return;
 
-  g_object_set_data (G_OBJECT (area), "gtk-inspector-cell-layout", object);
+  g_object_set_data (G_OBJECT (area), "ctk-inspector-cell-layout", object);
   forall_func (G_OBJECT (area), "cell-area", forall_data);
 }
 
@@ -1000,7 +1000,7 @@ ctk_inspector_object_tree_class_init (GtkInspectorObjectTreeClass *klass)
                     NULL,
                     G_TYPE_NONE, 1, G_TYPE_OBJECT);
 
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/object-tree.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/object-tree.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorObjectTree, model);
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorObjectTree, tree);
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorObjectTree, object_column);
@@ -1119,11 +1119,11 @@ ctk_inspector_object_tree_append_object (GtkInspectorObjectTree *wt,
     {
       gchar *title;
       title = g_strconcat (class_name, " — ", name, NULL);
-      g_object_set_data_full (object, "gtk-inspector-object-title", title, g_free);
+      g_object_set_data_full (object, "ctk-inspector-object-title", title, g_free);
     }
   else
     {
-      g_object_set_data (object, "gtk-inspector-object-title", (gpointer)class_name);
+      g_object_set_data (object, "ctk-inspector-object-title", (gpointer)class_name);
     }
 
   g_free (classes);

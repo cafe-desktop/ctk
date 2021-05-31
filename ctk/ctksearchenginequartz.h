@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007  Kristian Rietveld  <kris@gtk.org>
+ * Copyright (C) 2007  Kristian Rietveld  <kris@ctk.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -18,7 +18,7 @@
 #ifndef __CTK_SEARCH_ENGINE_QUARTZ_H__
 #define __CTK_SEARCH_ENGINE_QUARTZ_H__
 
-#include "gtksearchengine.h"
+#include "ctksearchengine.h"
 
 G_BEGIN_DECLS
 

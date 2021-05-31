@@ -19,7 +19,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -30,23 +30,23 @@
 #include <stdlib.h>
 #include <string.h>
 #include <gobject/gvaluecollector.h>
-#include "gtkmarshalers.h"
-#include "gtkpango.h"
-#include "gtkrc.h"
-#include "gtkspinbutton.h"
-#include "gtkstyle.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkwidget.h"
-#include "gtkwidgetprivate.h"
-#include "gtkiconfactory.h"
-#include "gtkintl.h"
-#include "gtkdebug.h"
-#include "gtkrender.h"
-#include "gtkborder.h"
-#include "gtkwidgetpath.h"
+#include "ctkmarshalers.h"
+#include "ctkpango.h"
+#include "ctkrc.h"
+#include "ctkspinbutton.h"
+#include "ctkstyle.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkwidget.h"
+#include "ctkwidgetprivate.h"
+#include "ctkiconfactory.h"
+#include "ctkintl.h"
+#include "ctkdebug.h"
+#include "ctkrender.h"
+#include "ctkborder.h"
+#include "ctkwidgetpath.h"
 
 /**
- * SECTION:gtkstyle
+ * SECTION:ctkstyle
  * @Short_description: Deprecated object that holds style information
  *     for widgets
  * @Title: GtkStyle
@@ -687,7 +687,7 @@ set_color (GtkStyle        *style,
   if (!set_color_from_context (style, state, context, prop))
     {
       ctk_style_context_save (context);
-      ctk_style_context_add_class (context, "gtkstyle-fallback");
+      ctk_style_context_add_class (context, "ctkstyle-fallback");
       set_color_from_context (style, state, context, prop);
       ctk_style_context_restore (context);
     }
@@ -4019,7 +4019,7 @@ ctk_widget_get_default_style_for_screen (GdkScreen *screen)
   GtkStyle *default_style;
 
   if G_UNLIKELY (quark_default_style == 0)
-    quark_default_style = g_quark_from_static_string ("gtk-legacy-default-style");
+    quark_default_style = g_quark_from_static_string ("ctk-legacy-default-style");
 
   default_style = g_object_get_qdata (G_OBJECT (screen), quark_default_style);
   if (default_style == NULL)
@@ -4221,7 +4221,7 @@ ctk_widget_modify_style (GtkWidget      *widget,
   g_return_if_fail (CTK_IS_RC_STYLE (style));
 
   g_object_set_data_full (G_OBJECT (widget),
-                          "gtk-rc-style",
+                          "ctk-rc-style",
                            ctk_rc_style_copy (style),
                            (GDestroyNotify) g_object_unref);
 }
@@ -4257,13 +4257,13 @@ ctk_widget_get_modifier_style (GtkWidget *widget)
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
-  rc_style = g_object_get_data (G_OBJECT (widget), "gtk-rc-style");
+  rc_style = g_object_get_data (G_OBJECT (widget), "ctk-rc-style");
 
   if (!rc_style)
     {
       rc_style = ctk_rc_style_new ();
       g_object_set_data_full (G_OBJECT (widget),
-                              "gtk-rc-style",
+                              "ctk-rc-style",
                               rc_style,
                               (GDestroyNotify) g_object_unref);
     }
@@ -4598,11 +4598,11 @@ ctk_widget_reset_rc_styles (GtkWidget *widget)
  * widget and all its parents in the container hierarchy, separated by
  * periods. The name of a widget comes from
  * ctk_widget_get_name(). Paths are used to apply styles to a widget
- * in gtkrc configuration files. Widget names are the type of the
+ * in ctkrc configuration files. Widget names are the type of the
  * widget by default (e.g. “GtkButton”) or can be set to an
  * application-specific value with ctk_widget_set_name(). By setting
  * the name of a widget, you allow users or theme authors to apply
- * styles to that specific widget in their gtkrc
+ * styles to that specific widget in their ctkrc
  * file. @path_reversed_p fills in the path in reverse order,
  * i.e. starting with @widget’s name instead of starting with the name
  * of @widget’s outermost ancestor.

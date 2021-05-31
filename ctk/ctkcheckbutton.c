@@ -19,31 +19,31 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
 
-#include "gtkcheckbutton.h"
+#include "ctkcheckbutton.h"
 
-#include "gtkbuttonprivate.h"
-#include "gtklabel.h"
+#include "ctkbuttonprivate.h"
+#include "ctklabel.h"
 
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtkrender.h"
-#include "gtkwidgetprivate.h"
-#include "gtkbuiltiniconprivate.h"
-#include "gtkcssnodeprivate.h"
-#include "gtkboxgadgetprivate.h"
-#include "gtkcontainerprivate.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkcssnumbervalueprivate.h"
-#include "gtkradiobutton.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctkrender.h"
+#include "ctkwidgetprivate.h"
+#include "ctkbuiltiniconprivate.h"
+#include "ctkcssnodeprivate.h"
+#include "ctkboxgadgetprivate.h"
+#include "ctkcontainerprivate.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkcssnumbervalueprivate.h"
+#include "ctkradiobutton.h"
 
 
 /**
- * SECTION:gtkcheckbutton
+ * SECTION:ctkcheckbutton
  * @Short_description: Create widgets with a discrete toggle button
  * @Title: GtkCheckButton
  * @See_also: #GtkCheckMenuItem, #GtkButton, #GtkToggleButton, #GtkRadioButton

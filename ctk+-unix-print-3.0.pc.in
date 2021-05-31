@@ -10,5 +10,5 @@ ctk_host=@host@
 Name: GTK+
 Description: GTK+ Unix print support
 Version: @VERSION@
-Requires: gtk+-@CTK_API_VERSION@ @CTK_PACKAGES@
-Cflags: -I${includedir}/gtk-@CTK_API_VERSION@/unix-print
+Requires: ctk+-@CTK_API_VERSION@ @CTK_PACKAGES@
+Cflags: -I${includedir}/ctk-@CTK_API_VERSION@/unix-print

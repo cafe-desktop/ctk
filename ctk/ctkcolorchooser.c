@@ -18,14 +18,14 @@
 
 #include "config.h"
 
-#include "gtkcolorchooser.h"
-#include "gtkcolorchooserprivate.h"
-#include "gtkintl.h"
-#include "gtktypebuiltins.h"
-#include "gtkprivate.h"
+#include "ctkcolorchooser.h"
+#include "ctkcolorchooserprivate.h"
+#include "ctkintl.h"
+#include "ctktypebuiltins.h"
+#include "ctkprivate.h"
 
 /**
- * SECTION:gtkcolorchooser
+ * SECTION:ctkcolorchooser
  * @Short_description: Interface implemented by widgets for choosing colors
  * @Title: GtkColorChooser
  * @See_also: #GtkColorChooserDialog, #GtkColorChooserWidget, #GtkColorButton

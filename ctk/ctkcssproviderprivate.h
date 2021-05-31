@@ -18,7 +18,7 @@
 #ifndef __CTK_CSS_PROVIDER_PRIVATE_H__
 #define __CTK_CSS_PROVIDER_PRIVATE_H__
 
-#include "gtkcssprovider.h"
+#include "ctkcssprovider.h"
 
 G_BEGIN_DECLS
 

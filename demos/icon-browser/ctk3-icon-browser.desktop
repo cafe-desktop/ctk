@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=Icon Browser
 Comment=An application that shows themed icons
-Exec=gtk3-icon-browser
-Icon=gtk3-icon-browser
+Exec=ctk3-icon-browser
+Icon=ctk3-icon-browser
 Terminal=false
 Type=Application
 StartupNotify=true

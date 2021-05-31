@@ -17,11 +17,11 @@
 
 #include "config.h"
 
-#include "gtkstylecascadeprivate.h"
+#include "ctkstylecascadeprivate.h"
 
-#include "gtkstyleprovider.h"
-#include "gtkstyleproviderprivate.h"
-#include "gtkprivate.h"
+#include "ctkstyleprovider.h"
+#include "ctkstyleproviderprivate.h"
+#include "ctkprivate.h"
 
 typedef struct _GtkStyleCascadeIter GtkStyleCascadeIter;
 typedef struct _GtkStyleProviderData GtkStyleProviderData;
@@ -332,7 +332,7 @@ _ctk_style_cascade_set_parent (GtkStyleCascade *cascade,
     {
       g_object_ref (parent);
       g_signal_connect_swapped (parent,
-                                "-gtk-private-changed",
+                                "-ctk-private-changed",
                                 G_CALLBACK (_ctk_style_provider_private_changed),
                                 cascade);
     }
@@ -363,7 +363,7 @@ _ctk_style_cascade_add_provider (GtkStyleCascade  *cascade,
   data.provider = g_object_ref (provider);
   data.priority = priority;
   data.changed_signal_id = g_signal_connect_swapped (provider,
-                                                     "-gtk-private-changed",
+                                                     "-ctk-private-changed",
                                                      G_CALLBACK (_ctk_style_provider_private_changed),
                                                      cascade);
 

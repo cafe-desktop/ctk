@@ -1,5 +1,5 @@
 /*
- * gtkappchooserbutton.h: an app-chooser combobox
+ * ctkappchooserbutton.h: an app-chooser combobox
  *
  * Copyright (C) 2010 Red Hat, Inc.
  *
@@ -23,10 +23,10 @@
 #define __CTK_APP_CHOOSER_BUTTON_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkcombobox.h>
+#include <ctk/ctkcombobox.h>
 #include <gio/gio.h>
 
 G_BEGIN_DECLS

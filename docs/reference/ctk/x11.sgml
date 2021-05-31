@@ -2,7 +2,7 @@
 <!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
                "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
 ]>
-<refentry id="gtk-x11">
+<refentry id="ctk-x11">
 <refmeta>
 <refentrytitle>Using GTK+ on the X Window System</refentrytitle>
 <manvolnum>3</manvolnum>
@@ -34,7 +34,7 @@ System interaction</link> in the GDK manual.
 <para>
 GTK+ includes an cross-process embedding facility in the form of
 the #GtkSocket and #GtkPlug widgets. These are X11-specific, and
-you have to include the <filename>gtk/gtkx.h</filename> header
+you have to include the <filename>ctk/ctkx.h</filename> header
 to use them.
 </para>
 
@@ -110,7 +110,7 @@ The X11 GDK backend can be influenced with some additional environment variables
 
 </refsect1>
 
-<refsect1 id="gtk-X11-arch">
+<refsect1 id="ctk-X11-arch">
 <title>Understanding the X11 architecture</title>
 
 <para>
@@ -167,11 +167,11 @@ url="http://www.freedesktop.org/standards/">convention</ulink>.
 <para>
 GTK+ has functions for asking the window manager to do various things;
 see for example <link
-linkend="gtk-window-iconify">ctk_window_iconify()</link> or <link
-linkend="gtk-window-maximize">ctk_window_maximize()</link> or <link
-linkend="gtk-window-set-decorated">ctk_window_set_decorated()</link>.
+linkend="ctk-window-iconify">ctk_window_iconify()</link> or <link
+linkend="ctk-window-maximize">ctk_window_maximize()</link> or <link
+linkend="ctk-window-set-decorated">ctk_window_set_decorated()</link>.
 Keep in mind that <link
-linkend="gtk-window-move">ctk_window_move()</link> and window sizing
+linkend="ctk-window-move">ctk_window_move()</link> and window sizing
 are ultimately controlled by the window manager as well and most
 window managers <emphasis>will</emphasis> ignore certain requests from
 time to time, in the interests of good user interface.

@@ -17,8 +17,8 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
-#include "gtkcellaccessibleparent.h"
+#include <ctk/ctk.h>
+#include "ctkcellaccessibleparent.h"
 
 GType
 ctk_cell_accessible_parent_get_type (void)

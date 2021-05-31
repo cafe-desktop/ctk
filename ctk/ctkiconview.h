@@ -1,4 +1,4 @@
-/* gtkiconview.h
+/* ctkiconview.h
  * Copyright (C) 2002, 2004  Anders Carlsson <andersca@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -19,15 +19,15 @@
 #define __CTK_ICON_VIEW_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkcontainer.h>
-#include <gtk/gtktreemodel.h>
-#include <gtk/gtkcellrenderer.h>
-#include <gtk/gtkcellarea.h>
-#include <gtk/gtkselection.h>
-#include <gtk/gtktooltip.h>
+#include <ctk/ctkcontainer.h>
+#include <ctk/ctktreemodel.h>
+#include <ctk/ctkcellrenderer.h>
+#include <ctk/ctkcellarea.h>
+#include <ctk/ctkselection.h>
+#include <ctk/ctktooltip.h>
 
 G_BEGIN_DECLS
 

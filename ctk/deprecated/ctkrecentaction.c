@@ -21,18 +21,18 @@
 
 #define GDK_DISABLE_DEPRECATION_WARNINGS
 
-#include "gtkintl.h"
-#include "gtkrecentaction.h"
-#include "gtkimagemenuitem.h"
-#include "gtkmenutoolbutton.h"
-#include "gtkrecentchooser.h"
-#include "gtkrecentchoosermenu.h"
-#include "gtkrecentchooserutils.h"
-#include "gtkrecentchooserprivate.h"
-#include "gtkprivate.h"
+#include "ctkintl.h"
+#include "ctkrecentaction.h"
+#include "ctkimagemenuitem.h"
+#include "ctkmenutoolbutton.h"
+#include "ctkrecentchooser.h"
+#include "ctkrecentchoosermenu.h"
+#include "ctkrecentchooserutils.h"
+#include "ctkrecentchooserprivate.h"
+#include "ctkprivate.h"
 
 /**
- * SECTION:gtkrecentaction
+ * SECTION:ctkrecentaction
  * @Short_description: An action of which represents a list of recently used files
  * @Title: GtkRecentAction
  *

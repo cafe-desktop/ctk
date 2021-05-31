@@ -19,13 +19,13 @@
 #define __CTK_WIDGET_PATH_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
 #include <glib-object.h>
 #include <gdk/gdk.h>
-#include <gtk/gtkenums.h>
-#include <gtk/gtktypes.h>
+#include <ctk/ctkenums.h>
+#include <ctk/ctktypes.h>
 
 G_BEGIN_DECLS
 
@@ -60,7 +60,7 @@ GDK_AVAILABLE_IN_3_2
 gint            ctk_widget_path_append_with_siblings(GtkWidgetPath       *path,
                                                      GtkWidgetPath       *siblings,
                                                      guint                sibling_index);
-/* ctk_widget_path_append_for_widget() is declared in gtkwidget.c */
+/* ctk_widget_path_append_for_widget() is declared in ctkwidget.c */
 GDK_AVAILABLE_IN_3_2
 gint            ctk_widget_path_append_for_widget   (GtkWidgetPath       *path,
                                                      GtkWidget           *widget);

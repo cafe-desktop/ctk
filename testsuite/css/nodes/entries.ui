@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <!-- interface-requires gtk+ 3.0 -->
+  <!-- interface-requires ctk+ 3.0 -->
   <object class="GtkAdjustment" id="adjustment1">
     <property name="lower">0.5</property>
     <property name="upper">99.5</property>

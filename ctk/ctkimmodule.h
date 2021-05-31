@@ -18,7 +18,7 @@
 #ifndef __CTK_IM_MODULE_H__
 #define __CTK_IM_MODULE_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 /* The following entry points are exported by each input method module
  */

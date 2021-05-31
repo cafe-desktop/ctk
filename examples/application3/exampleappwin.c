@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include "exampleapp.h"
 #include "exampleappwin.h"
@@ -27,7 +27,7 @@ static void
 example_app_window_class_init (ExampleAppWindowClass *class)
 {
   ctk_widget_class_set_template_from_resource (CTK_WIDGET_CLASS (class),
-                                               "/org/gtk/exampleapp/window.ui");
+                                               "/org/ctk/exampleapp/window.ui");
   ctk_widget_class_bind_template_child_private (CTK_WIDGET_CLASS (class), ExampleAppWindow, stack);
 }
 

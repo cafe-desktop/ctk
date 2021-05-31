@@ -1,8 +1,8 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static const gchar css[] =
  ".main.background { "
- " background-image: -gtk-gradient (linear, center top, center bottom, "
+ " background-image: -ctk-gradient (linear, center top, center bottom, "
  "      from (red), "
  "      to (blue)); "
  " border-width: 0px; "
@@ -13,7 +13,7 @@ static const gchar css[] =
  " border-radius: 10px 10px 0px 0px; "
  "}"
  ".titlebar { "
- " background-image: -gtk-gradient (linear, center top, center bottom, "
+ " background-image: -ctk-gradient (linear, center top, center bottom, "
  "      from (white), "
  "      to (@bg_color)); "
  " border-radius: 10px 10px 0px 0px; "

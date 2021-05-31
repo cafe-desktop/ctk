@@ -17,10 +17,10 @@
 
 #include "config.h"
 
-#include "gtkcssrgbavalueprivate.h"
+#include "ctkcssrgbavalueprivate.h"
 
-#include "gtkcssstylepropertyprivate.h"
-#include "gtkstylecontextprivate.h"
+#include "ctkcssstylepropertyprivate.h"
+#include "ctkstylecontextprivate.h"
 
 struct _GtkCssValue {
   CTK_CSS_VALUE_BASE

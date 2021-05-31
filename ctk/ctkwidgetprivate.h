@@ -19,18 +19,18 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __CTK_WIDGET_PRIVATE_H__
 #define __CTK_WIDGET_PRIVATE_H__
 
-#include "gtkcsstypesprivate.h"
-#include "gtkwidget.h"
-#include "gtkcontainer.h"
-#include "gtkeventcontroller.h"
-#include "gtkactionmuxer.h"
-#include "gtksizerequestcacheprivate.h"
+#include "ctkcsstypesprivate.h"
+#include "ctkwidget.h"
+#include "ctkcontainer.h"
+#include "ctkeventcontroller.h"
+#include "ctkactionmuxer.h"
+#include "ctksizerequestcacheprivate.h"
 
 G_BEGIN_DECLS
 
@@ -39,7 +39,7 @@ G_BEGIN_DECLS
 struct _GtkWidgetPrivate
 {
   /* The state of the widget. Needs to be able to hold all GtkStateFlags bits
-   * (defined in "gtkenums.h").
+   * (defined in "ctkenums.h").
    */
   guint state_flags : CTK_STATE_FLAGS_BITS;
 

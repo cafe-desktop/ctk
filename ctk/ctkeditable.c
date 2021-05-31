@@ -19,11 +19,11 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 /**
- * SECTION:gtkeditable
+ * SECTION:ctkeditable
  * @Short_description: Interface for text-editing widgets
  * @Title: GtkEditable
  *
@@ -67,9 +67,9 @@
 #include "config.h"
 #include <string.h>
 
-#include "gtkeditable.h"
-#include "gtkmarshalers.h"
-#include "gtkintl.h"
+#include "ctkeditable.h"
+#include "ctkmarshalers.h"
+#include "ctkintl.h"
 
 
 static void ctk_editable_base_init (gpointer g_class);

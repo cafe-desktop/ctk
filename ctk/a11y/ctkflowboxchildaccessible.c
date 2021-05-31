@@ -17,9 +17,9 @@
 
 #include "config.h"
 
-#include "gtkflowboxchildaccessible.h"
+#include "ctkflowboxchildaccessible.h"
 
-#include "gtk/gtkflowbox.h"
+#include "ctk/ctkflowbox.h"
 
 
 G_DEFINE_TYPE (GtkFlowBoxChildAccessible, ctk_flow_box_child_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)

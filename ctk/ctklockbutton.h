@@ -19,7 +19,7 @@
 #ifndef __CTK_LOCK_BUTTON_H__
 #define __CTK_LOCK_BUTTON_H__
 
-#include <gtk/gtkbutton.h>
+#include <ctk/ctkbutton.h>
 #include <gio/gio.h>
 
 G_BEGIN_DECLS

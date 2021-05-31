@@ -18,8 +18,8 @@
 #include <config.h>
 
 #include <glib/gi18n-lib.h>
-#include <gtk/gtk.h>
-#include "gtkscalebuttonaccessible.h"
+#include <ctk/ctk.h>
+#include "ctkscalebuttonaccessible.h"
 
 #include <string.h>
 
@@ -57,7 +57,7 @@ ctk_scale_button_accessible_initialize (AtkObject *obj,
 }
 
 static void
-ctk_scale_button_accessible_notify_gtk (GObject    *obj,
+ctk_scale_button_accessible_notify_ctk (GObject    *obj,
                                         GParamSpec *pspec)
 {
   GtkScaleButton *scale_button;
@@ -78,7 +78,7 @@ ctk_scale_button_accessible_notify_gtk (GObject    *obj,
     }
   else
     {
-      CTK_WIDGET_ACCESSIBLE_CLASS (ctk_scale_button_accessible_parent_class)->notify_gtk (obj, pspec);
+      CTK_WIDGET_ACCESSIBLE_CLASS (ctk_scale_button_accessible_parent_class)->notify_ctk (obj, pspec);
     }
 }
 
@@ -90,7 +90,7 @@ ctk_scale_button_accessible_class_init (GtkScaleButtonAccessibleClass *klass)
 
   atk_object_class->initialize = ctk_scale_button_accessible_initialize;
 
-  widget_class->notify_gtk = ctk_scale_button_accessible_notify_gtk;
+  widget_class->notify_ctk = ctk_scale_button_accessible_notify_ctk;
 }
 
 static void

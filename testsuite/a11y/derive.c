@@ -18,8 +18,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <gtk/gtk.h>
-#include <gtk/gtk-a11y.h>
+#include <ctk/ctk.h>
+#include <ctk/ctk-a11y.h>
 
 /* Implement a (trivial) GtkButton subclass, derive GtkButtonAccessible
  * and use the derived accessible for our new button.

@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 typedef struct
 {
@@ -201,7 +201,7 @@ test_app_new (void)
   g_set_application_name ("Test List 4");
 
   test_app = g_object_new (test_app_get_type (),
-                           "application-id", "org.gtk.testlist4",
+                           "application-id", "org.ctk.testlist4",
                            "flags", G_APPLICATION_FLAGS_NONE,
                            NULL);
 

@@ -17,51 +17,51 @@
 
 #include "config.h"
 
-#include "gtkstylecontextprivate.h"
+#include "ctkstylecontextprivate.h"
 
 #include <gdk/gdk.h>
 #include <math.h>
 #include <stdlib.h>
 #include <gobject/gvaluecollector.h>
 
-#include "gtkcontainerprivate.h"
-#include "gtkcssanimatedstyleprivate.h"
-#include "gtkcsscolorvalueprivate.h"
-#include "gtkcssenumvalueprivate.h"
-#include "gtkcssimagevalueprivate.h"
-#include "gtkcssnodedeclarationprivate.h"
-#include "gtkcssnodeprivate.h"
-#include "gtkcssnumbervalueprivate.h"
-#include "gtkcsspathnodeprivate.h"
-#include "gtkcssrgbavalueprivate.h"
-#include "gtkcsscolorvalueprivate.h"
-#include "gtkcssshadowsvalueprivate.h"
-#include "gtkcssstaticstyleprivate.h"
-#include "gtkcssstylepropertyprivate.h"
-#include "gtkcsstransformvalueprivate.h"
-#include "gtkcsstransientnodeprivate.h"
-#include "gtkcsswidgetnodeprivate.h"
-#include "gtkdebug.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtkrenderbackgroundprivate.h"
-#include "gtkrendericonprivate.h"
-#include "gtksettings.h"
-#include "gtksettingsprivate.h"
-#include "gtkstylecascadeprivate.h"
-#include "gtkstyleproviderprivate.h"
-#include "gtktypebuiltins.h"
-#include "gtkwindow.h"
-#include "gtkwidgetpath.h"
-#include "gtkwidgetprivate.h"
+#include "ctkcontainerprivate.h"
+#include "ctkcssanimatedstyleprivate.h"
+#include "ctkcsscolorvalueprivate.h"
+#include "ctkcssenumvalueprivate.h"
+#include "ctkcssimagevalueprivate.h"
+#include "ctkcssnodedeclarationprivate.h"
+#include "ctkcssnodeprivate.h"
+#include "ctkcssnumbervalueprivate.h"
+#include "ctkcsspathnodeprivate.h"
+#include "ctkcssrgbavalueprivate.h"
+#include "ctkcsscolorvalueprivate.h"
+#include "ctkcssshadowsvalueprivate.h"
+#include "ctkcssstaticstyleprivate.h"
+#include "ctkcssstylepropertyprivate.h"
+#include "ctkcsstransformvalueprivate.h"
+#include "ctkcsstransientnodeprivate.h"
+#include "ctkcsswidgetnodeprivate.h"
+#include "ctkdebug.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctkrenderbackgroundprivate.h"
+#include "ctkrendericonprivate.h"
+#include "ctksettings.h"
+#include "ctksettingsprivate.h"
+#include "ctkstylecascadeprivate.h"
+#include "ctkstyleproviderprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctkwindow.h"
+#include "ctkwidgetpath.h"
+#include "ctkwidgetprivate.h"
 
-#include "deprecated/gtkgradientprivate.h"
-#include "deprecated/gtksymboliccolorprivate.h"
+#include "deprecated/ctkgradientprivate.h"
+#include "deprecated/ctksymboliccolorprivate.h"
 
 #include "fallback-c89.c"
 
 /**
- * SECTION:gtkstylecontext
+ * SECTION:ctkstylecontext
  * @Short_description: Rendering UI elements
  * @Title: GtkStyleContext
  *
@@ -83,9 +83,9 @@
  * If you are using the theming layer standalone, you will need to set a
  * widget path and a screen yourself to the created style context through
  * ctk_style_context_set_path() and possibly ctk_style_context_set_screen(). See
- * the “Foreign drawing“ example in gtk3-demo.
+ * the “Foreign drawing“ example in ctk3-demo.
  *
- * # Style Classes # {#gtkstylecontext-classes}
+ * # Style Classes # {#ctkstylecontext-classes}
  *
  * Widgets can add style classes to their context, which can be used to associate
  * different styles by class. The documentation for individual widgets lists
@@ -115,7 +115,7 @@
  * to make your style information prevail to the theme’s, so you must use
  * a #GtkStyleProvider with the %CTK_STYLE_PROVIDER_PRIORITY_APPLICATION
  * priority, keep in mind that the user settings in
- * `XDG_CONFIG_HOME/gtk-3.0/gtk.css` will
+ * `XDG_CONFIG_HOME/ctk-3.0/ctk.css` will
  * still take precedence over your changes, as it uses the
  * %CTK_STYLE_PROVIDER_PRIORITY_USER priority.
  */
@@ -324,7 +324,7 @@ ctk_style_context_set_cascade (GtkStyleContext *context,
     {
       g_object_ref (cascade);
       priv->cascade_changed_id = g_signal_connect (cascade,
-                                                   "-gtk-private-changed",
+                                                   "-ctk-private-changed",
                                                    G_CALLBACK (ctk_style_context_cascade_changed),
                                                    context);
     }
@@ -2789,7 +2789,7 @@ _ctk_style_context_get_cursor_color (GtkStyleContext *context,
   ctk_style_context_get (context,
                          ctk_style_context_get_state (context),
                          "caret-color", &pc,
-                         "-gtk-secondary-caret-color", &sc,
+                         "-ctk-secondary-caret-color", &sc,
                          NULL);
   if (primary_color)
     *primary_color = *pc;
@@ -2825,7 +2825,7 @@ draw_insertion_cursor (GtkStyleContext *context,
   gdk_cairo_set_source_rgba (cr, is_primary ? &primary_color : &secondary_color);
 
   /* When changing the shape or size of the cursor here,
-   * propagate the changes to gtktextview.c:text_window_invalidate_cursors().
+   * propagate the changes to ctktextview.c:text_window_invalidate_cursors().
    */
 
   stem_width = height * aspect_ratio + 1;
@@ -2912,8 +2912,8 @@ ctk_render_insertion_cursor (GtkStyleContext *context,
   priv = context->priv;
 
   g_object_get (ctk_settings_get_for_screen (priv->screen),
-                "gtk-split-cursor", &split_cursor,
-                "gtk-cursor-aspect-ratio", &aspect_ratio,
+                "ctk-split-cursor", &split_cursor,
+                "ctk-cursor-aspect-ratio", &aspect_ratio,
                 NULL);
 
   keymap_direction = gdk_keymap_get_direction (gdk_keymap_get_for_display (gdk_screen_get_display (priv->screen)));
@@ -3000,7 +3000,7 @@ ctk_draw_insertion_cursor (GtkWidget          *widget,
   context = ctk_widget_get_style_context (widget);
 
   g_object_get (ctk_settings_get_for_screen (context->priv->screen),
-                "gtk-cursor-aspect-ratio", &aspect_ratio,
+                "ctk-cursor-aspect-ratio", &aspect_ratio,
                 NULL);
 
   draw_insertion_cursor (context, cr,

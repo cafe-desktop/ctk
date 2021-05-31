@@ -24,8 +24,8 @@
 #include <glib/gi18n.h>
 #include <glib/gprintf.h>
 #include <glib/gstdio.h>
-#include <gtk/gtk.h>
-#include "gtkbuilderprivate.h"
+#include <ctk/ctk.h>
+#include "ctkbuilderprivate.h"
 
 
 typedef struct {
@@ -658,7 +658,7 @@ do_simplify (int          *argc,
   if (replace)
     {
       int fd;
-      fd = g_file_open_tmp ("gtk-builder-tool-XXXXXX", &data.output_filename, NULL);
+      fd = g_file_open_tmp ("ctk-builder-tool-XXXXXX", &data.output_filename, NULL);
       data.output = fdopen (fd, "w");
     }
   else
@@ -840,7 +840,7 @@ object_get_name (GObject *object)
   if (CTK_IS_BUILDABLE (object))
     return ctk_buildable_get_name (CTK_BUILDABLE (object));
   else
-    return g_object_get_data (object, "gtk-builder-name");
+    return g_object_get_data (object, "ctk-builder-name");
 }
 
 static void
@@ -1056,7 +1056,7 @@ static void
 usage (void)
 {
   g_print (_("Usage:\n"
-             "  gtk-builder-tool [COMMAND] FILE\n"
+             "  ctk-builder-tool [COMMAND] FILE\n"
              "\n"
              "Commands:\n"
              "  validate           Validate the file\n"
@@ -1078,7 +1078,7 @@ usage (void)
 int
 main (int argc, const char *argv[])
 {
-  g_set_prgname ("gtk-builder-tool");
+  g_set_prgname ("ctk-builder-tool");
 
   ctk_init (NULL, NULL);
 

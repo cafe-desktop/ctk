@@ -11,7 +11,7 @@
  * each widget.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 void
 toggle_resize (GtkWidget *widget,

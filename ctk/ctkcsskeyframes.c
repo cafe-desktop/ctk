@@ -17,12 +17,12 @@
 
 #include "config.h"
 
-#include "gtkcsskeyframesprivate.h"
+#include "ctkcsskeyframesprivate.h"
 
-#include "gtkcssarrayvalueprivate.h"
-#include "gtkcssshorthandpropertyprivate.h"
-#include "gtkcssstylepropertyprivate.h"
-#include "gtkstylepropertyprivate.h"
+#include "ctkcssarrayvalueprivate.h"
+#include "ctkcssshorthandpropertyprivate.h"
+#include "ctkcssstylepropertyprivate.h"
+#include "ctkstylepropertyprivate.h"
 
 #include <stdlib.h>
 #include <string.h>

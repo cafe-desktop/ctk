@@ -20,9 +20,9 @@
 #ifndef __CTK_CSS_BORDER_VALUE_PRIVATE_H__
 #define __CTK_CSS_BORDER_VALUE_PRIVATE_H__
 
-#include "gtkcssparserprivate.h"
-#include "gtkcssnumbervalueprivate.h"
-#include "gtkcssvalueprivate.h"
+#include "ctkcssparserprivate.h"
+#include "ctkcssnumbervalueprivate.h"
+#include "ctkcssvalueprivate.h"
 
 G_BEGIN_DECLS
 

@@ -18,7 +18,7 @@
 #ifndef __REFTEST_COMPARE_H__
 #define __REFTEST_COMPARE_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 G_BEGIN_DECLS
 

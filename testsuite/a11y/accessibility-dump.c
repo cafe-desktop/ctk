@@ -23,7 +23,7 @@
 #include <locale.h>
 #include <string.h>
 #include <glib/gstdio.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #ifdef G_OS_WIN32
 # include <io.h>
@@ -116,7 +116,7 @@ get_name (AtkObject *accessible)
 {
   char *name;
 
-  name = g_object_get_data (G_OBJECT (accessible), "gtk-accessibility-dump-name");
+  name = g_object_get_data (G_OBJECT (accessible), "ctk-accessibility-dump-name");
   if (name)
     return name;
 
@@ -138,7 +138,7 @@ get_name (AtkObject *accessible)
       name = g_strdup_printf ("unnamed-%s-%d", G_OBJECT_TYPE_NAME (accessible), unnamed_object_count++);
     }
 
-  g_object_set_data_full (G_OBJECT (accessible), "gtk-accessibility-dump-name", name, g_free);
+  g_object_set_data_full (G_OBJECT (accessible), "ctk-accessibility-dump-name", name, g_free);
   return name;
 }
 
@@ -949,7 +949,7 @@ fix_settings (void)
    */
 
   g_object_set (ctk_settings_get_default (),
-                "gtk-dialogs-use-header", TRUE,
+                "ctk-dialogs-use-header", TRUE,
                 NULL);
 }
 

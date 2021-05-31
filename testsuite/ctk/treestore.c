@@ -28,7 +28,7 @@
 
 #include "treemodel.h"
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static inline gboolean
 iters_equal (GtkTreeIter *a,

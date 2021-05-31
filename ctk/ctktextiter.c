@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtktextiter.c Copyright (C) 2000 Red Hat, Inc.
+ * ctktextiter.c Copyright (C) 2000 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -19,23 +19,23 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #define CTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
 #include "config.h"
-#include "gtktextiter.h"
-#include "gtktextbtree.h"
-#include "gtktextbufferprivate.h"
-#include "gtktextiterprivate.h"
-#include "gtkintl.h"
-#include "gtkdebug.h"
+#include "ctktextiter.h"
+#include "ctktextbtree.h"
+#include "ctktextbufferprivate.h"
+#include "ctktextiterprivate.h"
+#include "ctkintl.h"
+#include "ctkdebug.h"
 
 #include <string.h>
 
 
 /**
- * SECTION:gtktextiter
+ * SECTION:ctktextiter
  * @Short_description: Text buffer iterator
  * @Title: GtkTextIter
  *

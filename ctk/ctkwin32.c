@@ -19,14 +19,14 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
 #include "gdk/gdk.h"
 
-#include "gtkprivate.h"
+#include "ctkprivate.h"
 
 #define STRICT
 #include <windows.h>
@@ -76,15 +76,15 @@ find_first_manifest (HMODULE  module_handle,
 }
 
 /*
- * Grabs the first manifest it finds in libgtk3 (which is expected to be the
+ * Grabs the first manifest it finds in libctk3 (which is expected to be the
  * common-controls-6.0.0.0 manifest we embedded to enable visual styles),
  * uses it to create a process-default activation context, activates that
  * context, loads up the library passed in @dllname, then deactivates and
  * releases the context.
  *
  * In practice this is used to force system DLLs (like comdlg32) to be
- * loaded as if the application had the same manifest as libgtk3
- * (otherwise libgtk3 manifest only affests libgtk3 itself).
+ * loaded as if the application had the same manifest as libctk3
+ * (otherwise libctk3 manifest only affests libctk3 itself).
  * This way application does not need to have a manifest or to link
  * against comctl32.
  *
@@ -92,7 +92,7 @@ find_first_manifest (HMODULE  module_handle,
  * g_once_init_enter (leaking once is OK, Windows will clean up after us).
  */
 void
-_ctk_load_dll_with_libgtk3_manifest (const gchar *dll_name)
+_ctk_load_dll_with_libctk3_manifest (const gchar *dll_name)
 {
   HANDLE activation_ctx_handle;
   ACTCTXA activation_ctx_descriptor;

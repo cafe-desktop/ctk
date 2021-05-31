@@ -17,19 +17,19 @@
 
 #include "config.h"
 
-#include "gtkstylepropertyprivate.h"
+#include "ctkstylepropertyprivate.h"
 
 #include <gobject/gvaluecollector.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <cairo-gobject.h>
 #include <math.h>
 
-#include "gtkcssparserprivate.h"
-#include "gtkcssstylefuncsprivate.h"
-#include "gtkcssstylepropertyprivate.h"
-#include "gtkcsstypesprivate.h"
-#include "gtkintl.h"
-#include "gtkprivatetypebuiltins.h"
+#include "ctkcssparserprivate.h"
+#include "ctkcssstylefuncsprivate.h"
+#include "ctkcssstylepropertyprivate.h"
+#include "ctkcsstypesprivate.h"
+#include "ctkintl.h"
+#include "ctkprivatetypebuiltins.h"
 
 /* this is in case round() is not provided by the compiler, 
  * such as in the case of C89 compilers, like MSVC
@@ -37,32 +37,32 @@
 #include "fallback-c89.c"
 
 /* the actual parsers we have */
-#include "gtkbindings.h"
-#include "gtkcssarrayvalueprivate.h"
-#include "gtkcssbgsizevalueprivate.h"
-#include "gtkcssbordervalueprivate.h"
-#include "gtkcsscolorvalueprivate.h"
-#include "gtkcsscornervalueprivate.h"
-#include "gtkcsseasevalueprivate.h"
-#include "gtkcssenginevalueprivate.h"
-#include "gtkcssiconthemevalueprivate.h"
-#include "gtkcssimageprivate.h"
-#include "gtkcssimagebuiltinprivate.h"
-#include "gtkcssimagegradientprivate.h"
-#include "gtkcssimagevalueprivate.h"
-#include "gtkcssinitialvalueprivate.h"
-#include "gtkcssenumvalueprivate.h"
-#include "gtkcssnumbervalueprivate.h"
-#include "gtkcsspalettevalueprivate.h"
-#include "gtkcsspositionvalueprivate.h"
-#include "gtkcssrepeatvalueprivate.h"
-#include "gtkcssrgbavalueprivate.h"
-#include "gtkcssshadowsvalueprivate.h"
-#include "gtkcssstringvalueprivate.h"
-#include "gtkcsstransformvalueprivate.h"
-#include "gtktypebuiltins.h"
+#include "ctkbindings.h"
+#include "ctkcssarrayvalueprivate.h"
+#include "ctkcssbgsizevalueprivate.h"
+#include "ctkcssbordervalueprivate.h"
+#include "ctkcsscolorvalueprivate.h"
+#include "ctkcsscornervalueprivate.h"
+#include "ctkcsseasevalueprivate.h"
+#include "ctkcssenginevalueprivate.h"
+#include "ctkcssiconthemevalueprivate.h"
+#include "ctkcssimageprivate.h"
+#include "ctkcssimagebuiltinprivate.h"
+#include "ctkcssimagegradientprivate.h"
+#include "ctkcssimagevalueprivate.h"
+#include "ctkcssinitialvalueprivate.h"
+#include "ctkcssenumvalueprivate.h"
+#include "ctkcssnumbervalueprivate.h"
+#include "ctkcsspalettevalueprivate.h"
+#include "ctkcsspositionvalueprivate.h"
+#include "ctkcssrepeatvalueprivate.h"
+#include "ctkcssrgbavalueprivate.h"
+#include "ctkcssshadowsvalueprivate.h"
+#include "ctkcssstringvalueprivate.h"
+#include "ctkcsstransformvalueprivate.h"
+#include "ctktypebuiltins.h"
 
-#include "deprecated/gtkthemingengine.h"
+#include "deprecated/ctkthemingengine.h"
 
 /*** REGISTRATION ***/
 
@@ -1056,7 +1056,7 @@ icon_theme_value_parse (GtkCssStyleProperty *property,
 void
 _ctk_css_style_property_init_properties (void)
 {
-  /* Initialize "color", "-gtk-dpi" and "font-size" first,
+  /* Initialize "color", "-ctk-dpi" and "font-size" first,
    * so that when computing values later they are
    * done first. That way, 'currentColor' and font
    * sizes in em can be looked up properly */
@@ -1069,7 +1069,7 @@ _ctk_css_style_property_init_properties (void)
                                           color_query,
                                           color_assign,
                                           _ctk_css_color_value_new_rgba (1, 1, 1, 1));
-  ctk_css_style_property_register        ("-gtk-dpi",
+  ctk_css_style_property_register        ("-ctk-dpi",
                                           CTK_CSS_PROPERTY_DPI,
                                           G_TYPE_NONE,
                                           CTK_STYLE_PROPERTY_INHERIT | CTK_STYLE_PROPERTY_ANIMATED,
@@ -1087,7 +1087,7 @@ _ctk_css_style_property_init_properties (void)
                                           query_font_size,
                                           assign_font_size,
                                           _ctk_css_font_size_value_new (CTK_CSS_FONT_SIZE_MEDIUM));
-  ctk_css_style_property_register        ("-gtk-icon-theme",
+  ctk_css_style_property_register        ("-ctk-icon-theme",
                                           CTK_CSS_PROPERTY_ICON_THEME,
                                           G_TYPE_NONE,
                                           CTK_STYLE_PROPERTY_INHERIT,
@@ -1096,7 +1096,7 @@ _ctk_css_style_property_init_properties (void)
                                           NULL,
                                           NULL,
                                           ctk_css_icon_theme_value_new (NULL));
-  ctk_css_style_property_register        ("-gtk-icon-palette",
+  ctk_css_style_property_register        ("-ctk-icon-palette",
 					  CTK_CSS_PROPERTY_ICON_PALETTE,
 					  G_TYPE_NONE,
 					  CTK_STYLE_PROPERTY_ANIMATED | CTK_STYLE_PROPERTY_INHERIT,
@@ -1440,7 +1440,7 @@ _ctk_css_style_property_init_properties (void)
                                           assign_length_from_int,
                                           _ctk_css_number_value_new (0.0, CTK_CSS_PX));
 
-  ctk_css_style_property_register        ("-gtk-outline-top-left-radius",
+  ctk_css_style_property_register        ("-ctk-outline-top-left-radius",
                                           CTK_CSS_PROPERTY_OUTLINE_TOP_LEFT_RADIUS,
                                           G_TYPE_NONE,
                                           CTK_STYLE_PROPERTY_ANIMATED,
@@ -1450,8 +1450,8 @@ _ctk_css_style_property_init_properties (void)
                                           NULL,
                                           _ctk_css_corner_value_new (_ctk_css_number_value_new (0, CTK_CSS_PX),
                                                                      _ctk_css_number_value_new (0, CTK_CSS_PX)));
-  _ctk_style_property_add_alias ("-gtk-outline-top-left-radius", "outline-top-left-radius");
-  ctk_css_style_property_register        ("-gtk-outline-top-right-radius",
+  _ctk_style_property_add_alias ("-ctk-outline-top-left-radius", "outline-top-left-radius");
+  ctk_css_style_property_register        ("-ctk-outline-top-right-radius",
                                           CTK_CSS_PROPERTY_OUTLINE_TOP_RIGHT_RADIUS,
                                           G_TYPE_NONE,
                                           CTK_STYLE_PROPERTY_ANIMATED,
@@ -1461,8 +1461,8 @@ _ctk_css_style_property_init_properties (void)
                                           NULL,
                                           _ctk_css_corner_value_new (_ctk_css_number_value_new (0, CTK_CSS_PX),
                                                                      _ctk_css_number_value_new (0, CTK_CSS_PX)));
-  _ctk_style_property_add_alias ("-gtk-outline-top-right-radius", "outline-top-right-radius");
-  ctk_css_style_property_register        ("-gtk-outline-bottom-right-radius",
+  _ctk_style_property_add_alias ("-ctk-outline-top-right-radius", "outline-top-right-radius");
+  ctk_css_style_property_register        ("-ctk-outline-bottom-right-radius",
                                           CTK_CSS_PROPERTY_OUTLINE_BOTTOM_RIGHT_RADIUS,
                                           G_TYPE_NONE,
                                           CTK_STYLE_PROPERTY_ANIMATED,
@@ -1472,8 +1472,8 @@ _ctk_css_style_property_init_properties (void)
                                           NULL,
                                           _ctk_css_corner_value_new (_ctk_css_number_value_new (0, CTK_CSS_PX),
                                                                      _ctk_css_number_value_new (0, CTK_CSS_PX)));
-  _ctk_style_property_add_alias ("-gtk-outline-bottom-right-radius", "outline-bottom-right-radius");
-  ctk_css_style_property_register        ("-gtk-outline-bottom-left-radius",
+  _ctk_style_property_add_alias ("-ctk-outline-bottom-right-radius", "outline-bottom-right-radius");
+  ctk_css_style_property_register        ("-ctk-outline-bottom-left-radius",
                                           CTK_CSS_PROPERTY_OUTLINE_BOTTOM_LEFT_RADIUS,
                                           G_TYPE_NONE,
                                           CTK_STYLE_PROPERTY_ANIMATED,
@@ -1483,7 +1483,7 @@ _ctk_css_style_property_init_properties (void)
                                           NULL,
                                           _ctk_css_corner_value_new (_ctk_css_number_value_new (0, CTK_CSS_PX),
                                                                      _ctk_css_number_value_new (0, CTK_CSS_PX)));
-  _ctk_style_property_add_alias ("-gtk-outline-bottom-left-radius", "outline-bottom-left-radius");
+  _ctk_style_property_add_alias ("-ctk-outline-bottom-left-radius", "outline-bottom-left-radius");
 
   ctk_css_style_property_register        ("background-clip",
                                           CTK_CSS_PROPERTY_BACKGROUND_CLIP,
@@ -1644,7 +1644,7 @@ _ctk_css_style_property_init_properties (void)
                                                                      _ctk_css_number_value_new (1, CTK_CSS_NUMBER),
                                                                      _ctk_css_number_value_new (1, CTK_CSS_NUMBER)));
 
-  ctk_css_style_property_register        ("-gtk-icon-source",
+  ctk_css_style_property_register        ("-ctk-icon-source",
                                           CTK_CSS_PROPERTY_ICON_SOURCE,
                                           G_TYPE_NONE,
                                           CTK_STYLE_PROPERTY_ANIMATED,
@@ -1653,7 +1653,7 @@ _ctk_css_style_property_init_properties (void)
                                           NULL,
                                           NULL,
                                           _ctk_css_image_value_new (ctk_css_image_builtin_new ()));
-  ctk_css_style_property_register        ("-gtk-icon-shadow",
+  ctk_css_style_property_register        ("-ctk-icon-shadow",
                                           CTK_CSS_PROPERTY_ICON_SHADOW,
                                           G_TYPE_NONE,
                                           CTK_STYLE_PROPERTY_INHERIT | CTK_STYLE_PROPERTY_ANIMATED,
@@ -1662,8 +1662,8 @@ _ctk_css_style_property_init_properties (void)
                                           NULL,
                                           NULL,
                                           _ctk_css_shadows_value_new_none ());
-  _ctk_style_property_add_alias ("-gtk-icon-shadow", "icon-shadow");
-  ctk_css_style_property_register        ("-gtk-icon-style",
+  _ctk_style_property_add_alias ("-ctk-icon-shadow", "icon-shadow");
+  ctk_css_style_property_register        ("-ctk-icon-style",
                                           CTK_CSS_PROPERTY_ICON_STYLE,
                                           G_TYPE_NONE,
                                           CTK_STYLE_PROPERTY_INHERIT,
@@ -1672,7 +1672,7 @@ _ctk_css_style_property_init_properties (void)
                                           NULL,
                                           NULL,
                                           _ctk_css_icon_style_value_new (CTK_CSS_ICON_STYLE_REQUESTED));
-  ctk_css_style_property_register        ("-gtk-icon-transform",
+  ctk_css_style_property_register        ("-ctk-icon-transform",
                                           CTK_CSS_PROPERTY_ICON_TRANSFORM,
                                           G_TYPE_NONE,
                                           CTK_STYLE_PROPERTY_ANIMATED,
@@ -1822,7 +1822,7 @@ _ctk_css_style_property_init_properties (void)
                                           opacity_query,
                                           NULL,
                                           _ctk_css_number_value_new (1, CTK_CSS_NUMBER));
-  ctk_css_style_property_register        ("-gtk-icon-effect",
+  ctk_css_style_property_register        ("-ctk-icon-effect",
 					  CTK_CSS_PROPERTY_ICON_EFFECT,
 					  G_TYPE_NONE,
 					  CTK_STYLE_PROPERTY_INHERIT,
@@ -1831,7 +1831,7 @@ _ctk_css_style_property_init_properties (void)
 					  NULL,
 					  NULL,
 					  _ctk_css_icon_effect_value_new (CTK_CSS_ICON_EFFECT_NONE));
-  _ctk_style_property_add_alias ("-gtk-icon-effect", "-gtk-image-effect");
+  _ctk_style_property_add_alias ("-ctk-icon-effect", "-ctk-image-effect");
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_css_style_property_register        ("engine",
@@ -1846,7 +1846,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 G_GNUC_END_IGNORE_DEPRECATIONS
 
   /* Private property holding the binding sets */
-  ctk_css_style_property_register        ("-gtk-key-bindings",
+  ctk_css_style_property_register        ("-ctk-key-bindings",
                                           CTK_CSS_PROPERTY_CTK_KEY_BINDINGS,
                                           G_TYPE_PTR_ARRAY,
                                           0,
@@ -1855,7 +1855,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                                           bindings_value_query,
                                           bindings_value_assign,
                                           _ctk_css_array_value_new (_ctk_css_string_value_new (NULL)));
-  _ctk_style_property_add_alias ("-gtk-key-bindings", "gtk-key-bindings");
+  _ctk_style_property_add_alias ("-ctk-key-bindings", "ctk-key-bindings");
 
   ctk_css_style_property_register        ("caret-color",
                                           CTK_CSS_PROPERTY_CARET_COLOR,
@@ -1866,7 +1866,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                                           color_query,
                                           color_assign,
                                           _ctk_css_color_value_new_current_color ());
-  ctk_css_style_property_register        ("-gtk-secondary-caret-color",
+  ctk_css_style_property_register        ("-ctk-secondary-caret-color",
                                           CTK_CSS_PROPERTY_SECONDARY_CARET_COLOR,
                                           GDK_TYPE_RGBA,
                                           CTK_STYLE_PROPERTY_INHERIT | CTK_STYLE_PROPERTY_ANIMATED,

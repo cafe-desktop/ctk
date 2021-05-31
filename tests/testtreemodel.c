@@ -23,7 +23,7 @@
 #include <malloc.h>
 #endif
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static gint repeats = 2;
 static gint max_size = 8;

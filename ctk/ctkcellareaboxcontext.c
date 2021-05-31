@@ -1,4 +1,4 @@
-/* gtkcellareaboxcontext.c
+/* ctkcellareaboxcontext.c
  *
  * Copyright (C) 2010 Openismus GmbH
  *
@@ -20,10 +20,10 @@
  */
 
 #include "config.h"
-#include "gtkintl.h"
-#include "gtkcellareabox.h"
-#include "gtkcellareaboxcontextprivate.h"
-#include "gtkorientable.h"
+#include "ctkintl.h"
+#include "ctkcellareabox.h"
+#include "ctkcellareaboxcontextprivate.h"
+#include "ctkorientable.h"
 
 /* GObjectClass */
 static void      _ctk_cell_area_box_context_finalize              (GObject               *object);

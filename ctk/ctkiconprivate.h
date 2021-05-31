@@ -20,7 +20,7 @@
 #ifndef __CTK_ICON_PRIVATE_H__
 #define __CTK_ICON_PRIVATE_H__
 
-#include "gtk/gtkwidget.h"
+#include "ctk/ctkwidget.h"
 
 G_BEGIN_DECLS
 

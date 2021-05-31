@@ -1,2 +1,2 @@
-ERROR: gtk-builder-error-quark 1
+ERROR: ctk-builder-error-quark 1
 .:5:15 Unsupported tag for GtkLevelBar: <warbl>

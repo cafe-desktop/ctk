@@ -22,26 +22,26 @@
  * Modified by the GTK+ Team and others 1997-2001.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
 #include <string.h>
 
-#include "gtkaccellabel.h"
-#include "gtkaccelmap.h"
-#include "gtkintl.h"
-#include "gtkmain.h"
-#include "gtkprivate.h"
-#include "gtkrender.h"
-#include "gtksizerequest.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkwidgetprivate.h"
-#include "gtkcssnodeprivate.h"
-#include "gtkcssstylepropertyprivate.h"
+#include "ctkaccellabel.h"
+#include "ctkaccelmap.h"
+#include "ctkintl.h"
+#include "ctkmain.h"
+#include "ctkprivate.h"
+#include "ctkrender.h"
+#include "ctksizerequest.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkwidgetprivate.h"
+#include "ctkcssnodeprivate.h"
+#include "ctkcssstylepropertyprivate.h"
 
 /**
- * SECTION:gtkaccellabel
+ * SECTION:ctkaccellabel
  * @Short_description: A label which displays an accelerator key on the right of the text
  * @Title: GtkAccelLabel
  * @See_also: #GtkAccelGroup
@@ -943,7 +943,7 @@ ctk_accel_label_refetch (GtkAccelLabel *accel_label)
   g_clear_pointer (&accel_label->priv->accel_string, g_free);
 
   g_object_get (ctk_widget_get_settings (CTK_WIDGET (accel_label)),
-                "gtk-enable-accels", &enable_accels,
+                "ctk-enable-accels", &enable_accels,
                 NULL);
 
   if (enable_accels && (accel_label->priv->accel_closure || accel_label->priv->accel_key))

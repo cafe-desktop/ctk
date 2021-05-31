@@ -1,5 +1,5 @@
 #include <string.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static gboolean
 draw_cb_checks (GtkWidget *widget, cairo_t *cr)
@@ -350,7 +350,7 @@ int main (int argc, char *argv[])
                                    ".background {\n"
                                    "   border-radius: 10;\n"
                                    "   border-width: 0;\n"
-                                   "   background-image: -gtk-gradient (linear, left top, right bottom, from(#ff00ff), to(#aabbcc));\n"
+                                   "   background-image: -ctk-gradient (linear, left top, right bottom, from(#ff00ff), to(#aabbcc));\n"
                                    "}\n"
                                    ".frame {\n"
                                    "   border-style: solid;\n"

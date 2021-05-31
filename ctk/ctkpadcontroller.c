@@ -18,7 +18,7 @@
  */
 
 /**
- * SECTION:gtkpadcontroller
+ * SECTION:ctkpadcontroller
  * @Short_description: Controller for drawing tablet pads
  * @Title: GtkPadController
  * @See_also: #GtkEventController, #GdkDevicePad
@@ -69,11 +69,11 @@
 
 #include "config.h"
 
-#include "gtkeventcontrollerprivate.h"
-#include "gtkpadcontroller.h"
-#include "gtkwindow.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
+#include "ctkeventcontrollerprivate.h"
+#include "ctkpadcontroller.h"
+#include "ctkwindow.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
 
 #ifdef GDK_WINDOWING_WAYLAND
 #include <gdk/wayland/gdkwayland.h>

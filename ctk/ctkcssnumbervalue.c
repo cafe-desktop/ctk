@@ -17,11 +17,11 @@
 
 #include "config.h"
 
-#include "gtkcssnumbervalueprivate.h"
+#include "ctkcssnumbervalueprivate.h"
 
-#include "gtkcsscalcvalueprivate.h"
-#include "gtkcssdimensionvalueprivate.h"
-#include "gtkcsswin32sizevalueprivate.h"
+#include "ctkcsscalcvalueprivate.h"
+#include "ctkcssdimensionvalueprivate.h"
+#include "ctkcsswin32sizevalueprivate.h"
 
 struct _GtkCssValue {
   CTK_CSS_VALUE_BASE
@@ -131,13 +131,13 @@ ctk_css_number_value_can_parse (GtkCssParser *parser)
 {
   return _ctk_css_parser_has_number (parser)
       || _ctk_css_parser_has_prefix (parser, "calc")
-      || _ctk_css_parser_has_prefix (parser, "-gtk-win32-size")
-      || _ctk_css_parser_has_prefix (parser, "-gtk-win32-part-width")
-      || _ctk_css_parser_has_prefix (parser, "-gtk-win32-part-height")
-      || _ctk_css_parser_has_prefix (parser, "-gtk-win32-part-border-top")
-      || _ctk_css_parser_has_prefix (parser, "-gtk-win32-part-border-left")
-      || _ctk_css_parser_has_prefix (parser, "-gtk-win32-part-border-bottom")
-      || _ctk_css_parser_has_prefix (parser, "-gtk-win32-part-border-right");
+      || _ctk_css_parser_has_prefix (parser, "-ctk-win32-size")
+      || _ctk_css_parser_has_prefix (parser, "-ctk-win32-part-width")
+      || _ctk_css_parser_has_prefix (parser, "-ctk-win32-part-height")
+      || _ctk_css_parser_has_prefix (parser, "-ctk-win32-part-border-top")
+      || _ctk_css_parser_has_prefix (parser, "-ctk-win32-part-border-left")
+      || _ctk_css_parser_has_prefix (parser, "-ctk-win32-part-border-bottom")
+      || _ctk_css_parser_has_prefix (parser, "-ctk-win32-part-border-right");
 }
 
 GtkCssValue *
@@ -146,13 +146,13 @@ _ctk_css_number_value_parse (GtkCssParser           *parser,
 {
   if (_ctk_css_parser_has_prefix (parser, "calc"))
     return ctk_css_calc_value_parse (parser, flags);
-  if (_ctk_css_parser_has_prefix (parser, "-gtk-win32-size") ||
-      _ctk_css_parser_has_prefix (parser, "-gtk-win32-part-width") ||
-      _ctk_css_parser_has_prefix (parser, "-gtk-win32-part-height") ||
-      _ctk_css_parser_has_prefix (parser, "-gtk-win32-part-border-top") ||
-      _ctk_css_parser_has_prefix (parser, "-gtk-win32-part-border-left") ||
-      _ctk_css_parser_has_prefix (parser, "-gtk-win32-part-border-bottom") ||
-      _ctk_css_parser_has_prefix (parser, "-gtk-win32-part-border-right"))
+  if (_ctk_css_parser_has_prefix (parser, "-ctk-win32-size") ||
+      _ctk_css_parser_has_prefix (parser, "-ctk-win32-part-width") ||
+      _ctk_css_parser_has_prefix (parser, "-ctk-win32-part-height") ||
+      _ctk_css_parser_has_prefix (parser, "-ctk-win32-part-border-top") ||
+      _ctk_css_parser_has_prefix (parser, "-ctk-win32-part-border-left") ||
+      _ctk_css_parser_has_prefix (parser, "-ctk-win32-part-border-bottom") ||
+      _ctk_css_parser_has_prefix (parser, "-ctk-win32-part-border-right"))
     return ctk_css_win32_size_value_parse (parser, flags);
 
   return ctk_css_dimension_value_parse (parser, flags);

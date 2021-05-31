@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkxembed.c: Utilities for the XEMBED protocol
+ * ctkxembed.c: Utilities for the XEMBED protocol
  * Copyright (C) 2001, 2003, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -18,10 +18,10 @@
 
 #include "config.h"
 #include <string.h>
-#include "gtkmain.h"
-#include "gtkprivate.h"
-#include "gtkxembed.h"
-#include "gtkdebug.h"
+#include "ctkmain.h"
+#include "ctkprivate.h"
+#include "ctkxembed.h"
+#include "ctkdebug.h"
 
 
 typedef struct _GtkXEmbedMessage GtkXEmbedMessage;

@@ -17,7 +17,7 @@
  */
 
 #define GDK_DISABLE_DEPRECATION_WARNINGS
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 /* Fixture */
 

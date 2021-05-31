@@ -17,8 +17,8 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
-#include "gtklinkbuttonaccessible.h"
+#include <ctk/ctk.h>
+#include "ctklinkbuttonaccessible.h"
 
 typedef struct _GtkLinkButtonAccessibleLink GtkLinkButtonAccessibleLink;
 typedef struct _GtkLinkButtonAccessibleLinkClass GtkLinkButtonAccessibleLinkClass;

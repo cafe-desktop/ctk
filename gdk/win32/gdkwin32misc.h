@@ -20,7 +20,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __GDK_WIN32_MISC_H__
@@ -51,7 +51,7 @@ G_BEGIN_DECLS
 
 #endif /* INSIDE_GDK_WIN32 */
 
-/* These need to be here so gtkstatusicon.c can pick them up if needed. */
+/* These need to be here so ctkstatusicon.c can pick them up if needed. */
 #ifndef WM_XBUTTONDOWN
 #define WM_XBUTTONDOWN 0x020B
 #endif

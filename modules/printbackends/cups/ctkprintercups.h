@@ -21,10 +21,10 @@
 #include <glib-object.h>
 #include <cups/cups.h>
 #include <cups/ppd.h>
-#include "gtkcupsutils.h"
+#include "ctkcupsutils.h"
 
-#include <gtk/gtkunixprint.h>
-#include <gtk/gtkprinter-private.h>
+#include <ctk/ctkunixprint.h>
+#include <ctk/ctkprinter-private.h>
 
 #ifdef HAVE_COLORD
 #include <colord.h>

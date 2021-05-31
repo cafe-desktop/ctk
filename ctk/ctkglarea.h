@@ -1,6 +1,6 @@
 /* GTK - The GIMP Toolkit
  *
- * gtkglarea.h: A GL drawing area
+ * ctkglarea.h: A GL drawing area
  *
  * Copyright © 2014  Emmanuele Bassi
  *
@@ -22,10 +22,10 @@
 #define __CTK_GL_AREA_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkwidget.h>
+#include <ctk/ctkwidget.h>
 
 G_BEGIN_DECLS
 

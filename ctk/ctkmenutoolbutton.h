@@ -21,11 +21,11 @@
 #define __CTK_MENU_TOOL_BUTTON_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkmenu.h>
-#include <gtk/gtktoolbutton.h>
+#include <ctk/ctkmenu.h>
+#include <ctk/ctktoolbutton.h>
 
 G_BEGIN_DECLS
 

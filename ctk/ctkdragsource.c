@@ -19,18 +19,18 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
 
-#include "gtkdragsource.h"
+#include "ctkdragsource.h"
 
-#include "gtkdnd.h"
-#include "gtkdndprivate.h"
-#include "gtkgesturedrag.h"
-#include "gtkimagedefinitionprivate.h"
-#include "gtkintl.h"
+#include "ctkdnd.h"
+#include "ctkdndprivate.h"
+#include "ctkgesturedrag.h"
+#include "ctkimagedefinitionprivate.h"
+#include "ctkintl.h"
 
 
 typedef struct _GtkDragSourceSite GtkDragSourceSite;
@@ -149,7 +149,7 @@ ctk_drag_source_set (GtkWidget            *widget,
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
-  site = g_object_get_data (G_OBJECT (widget), "gtk-site-data");
+  site = g_object_get_data (G_OBJECT (widget), "ctk-site-data");
 
   ctk_widget_add_events (widget,
                          ctk_widget_get_events (widget) |
@@ -183,7 +183,7 @@ ctk_drag_source_set (GtkWidget            *widget,
                         G_CALLBACK (ctk_drag_source_event_cb),
                         site);
       g_object_set_data_full (G_OBJECT (widget),
-                              I_("gtk-site-data"), 
+                              I_("ctk-site-data"), 
                               site, ctk_drag_source_site_destroy);
     }
 
@@ -207,14 +207,14 @@ ctk_drag_source_unset (GtkWidget *widget)
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
-  site = g_object_get_data (G_OBJECT (widget), "gtk-site-data");
+  site = g_object_get_data (G_OBJECT (widget), "ctk-site-data");
 
   if (site)
     {
       g_signal_handlers_disconnect_by_func (widget,
                                             ctk_drag_source_event_cb,
                                             site);
-      g_object_set_data (G_OBJECT (widget), I_("gtk-site-data"), NULL);
+      g_object_set_data (G_OBJECT (widget), I_("ctk-site-data"), NULL);
     }
 }
 
@@ -236,7 +236,7 @@ ctk_drag_source_get_target_list (GtkWidget *widget)
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
-  site = g_object_get_data (G_OBJECT (widget), "gtk-site-data");
+  site = g_object_get_data (G_OBJECT (widget), "ctk-site-data");
 
   return site ? site->target_list : NULL;
 }
@@ -260,7 +260,7 @@ ctk_drag_source_set_target_list (GtkWidget     *widget,
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
-  site = g_object_get_data (G_OBJECT (widget), "gtk-site-data");
+  site = g_object_get_data (G_OBJECT (widget), "ctk-site-data");
   if (site == NULL)
     {
       g_warning ("ctk_drag_source_set_target_list() requires the widget "
@@ -376,7 +376,7 @@ ctk_drag_source_set_icon_pixbuf (GtkWidget *widget,
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (GDK_IS_PIXBUF (pixbuf));
 
-  site = g_object_get_data (G_OBJECT (widget), "gtk-site-data");
+  site = g_object_get_data (G_OBJECT (widget), "ctk-site-data");
   g_return_if_fail (site != NULL); 
 
   g_clear_pointer (&site->image_def, ctk_image_definition_unref);
@@ -402,7 +402,7 @@ ctk_drag_source_set_icon_stock (GtkWidget   *widget,
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (stock_id != NULL);
 
-  site = g_object_get_data (G_OBJECT (widget), "gtk-site-data");
+  site = g_object_get_data (G_OBJECT (widget), "ctk-site-data");
   g_return_if_fail (site != NULL);
 
   ctk_image_definition_unref (site->image_def);
@@ -428,7 +428,7 @@ ctk_drag_source_set_icon_name (GtkWidget   *widget,
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (icon_name != NULL);
 
-  site = g_object_get_data (G_OBJECT (widget), "gtk-site-data");
+  site = g_object_get_data (G_OBJECT (widget), "ctk-site-data");
   g_return_if_fail (site != NULL);
 
   ctk_image_definition_unref (site->image_def);
@@ -454,7 +454,7 @@ ctk_drag_source_set_icon_gicon (GtkWidget *widget,
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (icon != NULL);
   
-  site = g_object_get_data (G_OBJECT (widget), "gtk-site-data");
+  site = g_object_get_data (G_OBJECT (widget), "ctk-site-data");
   g_return_if_fail (site != NULL);
 
   ctk_image_definition_unref (site->image_def);

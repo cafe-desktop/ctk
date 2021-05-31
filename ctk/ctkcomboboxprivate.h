@@ -18,7 +18,7 @@
 #ifndef __CTK_COMBO_BOX_PRIVATE_H__
 #define __CTK_COMBO_BOX_PRIVATE_H__
 
-#include "gtkcombobox.h"
+#include "ctkcombobox.h"
 
 G_BEGIN_DECLS
 

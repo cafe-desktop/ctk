@@ -21,11 +21,11 @@
 #include "config.h"
 #include <string.h>
 
-#include "gtk/gtk.h"
+#include "ctk/ctk.h"
 #include "gdk/gdkkeysyms.h"
 
-#include "gtk/gtkimmodule.h"
-#include "gtk/gtkintl.h"
+#include "ctk/ctkimmodule.h"
+#include "ctk/ctkintl.h"
 
 GType type_cyrillic_translit = 0;
 
@@ -214,7 +214,7 @@ static const GtkIMContextInfo cyrillic_translit_info = {
   "cyrillic_translit",		   /* ID */
   NC_("input menthod menu", "Cyrillic (Transliterated)"), /* Human readable name */
   GETTEXT_PACKAGE,		   /* Translation domain */
-   CTK_LOCALEDIR,		   /* Dir for bindtextdomain (not strictly needed for "gtk+") */
+   CTK_LOCALEDIR,		   /* Dir for bindtextdomain (not strictly needed for "ctk+") */
   ""			           /* Languages for which this module is the default */
 };
 

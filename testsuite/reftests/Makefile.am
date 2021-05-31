@@ -3,11 +3,11 @@ NULL =
 
 TESTS_ENVIRONMENT = 				\
 	REFTEST_MODULE_DIR=$(abs_builddir)	\
-	CTK_IM_MODULE=gtk-im-context-simple 	\
+	CTK_IM_MODULE=ctk-im-context-simple 	\
 	GSETTINGS_BACKEND=memory		\
 	G_ENABLE_DIAGNOSTIC=0
 
-TEST_PROGS += gtk-reftest
+TEST_PROGS += ctk-reftest
 
 check_PROGRAMS = $(TEST_PROGS)
 
@@ -23,9 +23,9 @@ ctk_reftest_CFLAGS = \
 	$(NULL)
 
 ctk_reftest_LDADD = \
-	libgtkreftestprivate.la		\
+	libctkreftestprivate.la		\
 	$(top_builddir)/gdk/libgdk-3.la \
-	$(top_builddir)/gtk/libgtk-3.la \
+	$(top_builddir)/ctk/libctk-3.la \
 	$(CTK_DEP_LIBS)			\
 	$(GMODULE_LIBS)			\
 	$(NULL)
@@ -33,24 +33,24 @@ ctk_reftest_LDADD = \
 if PLATFORM_WIN32
 noinst_LTLIBRARIES =
 lib_LTLIBRARIES =		\
-	libgtkreftestprivate.la	\
+	libctkreftestprivate.la	\
 	$(NULL)
 else
 noinst_LTLIBRARIES =		\
-	libgtkreftestprivate.la	\
+	libctkreftestprivate.la	\
 	$(NULL)
 endif
 
-libgtkreftestprivate_la_CFLAGS = $(ctk_reftest_CFLAGS)
-libgtkreftestprivate_la_LDFLAGS = $(no_undefined)
-libgtkreftestprivate_la_LIBADD =	\
+libctkreftestprivate_la_CFLAGS = $(ctk_reftest_CFLAGS)
+libctkreftestprivate_la_LDFLAGS = $(no_undefined)
+libctkreftestprivate_la_LIBADD =	\
 	$(top_builddir)/gdk/libgdk-3.la \
-	$(top_builddir)/gtk/libgtk-3.la \
+	$(top_builddir)/ctk/libctk-3.la \
 	$(CTK_DEP_LIBS)			\
 	$(GMODULE_LIBS)			\
 	$(NULL)
 
-libgtkreftestprivate_la_SOURCES =	\
+libctkreftestprivate_la_SOURCES =	\
 	reftest-compare.c		\
 	reftest-compare.h		\
 	reftest-module.c		\
@@ -60,8 +60,8 @@ libgtkreftestprivate_la_SOURCES =	\
 	$(NULL)
 
 ctk_reftest_SOURCES = \
-	gtk-reftest.c			\
-	gtk-reftest.h
+	ctk-reftest.c			\
+	ctk-reftest.h
 
 clean-local:
 	rm -rf output/ || true
@@ -251,9 +251,9 @@ testdata = \
 	font-sizes-names.css \
 	font-sizes-names.ref.ui \
 	font-sizes-names.ui \
-	gtk-image-effect-inherit.css \
-	gtk-image-effect-inherit.ref.ui \
-	gtk-image-effect-inherit.ui \
+	ctk-image-effect-inherit.css \
+	ctk-image-effect-inherit.ref.ui \
+	ctk-image-effect-inherit.ui \
 	green-20x20.png \
 	grid-empty-with-spacing.ref.ui \
 	grid-empty-with-spacing.ui \
@@ -272,9 +272,9 @@ testdata = \
 	grid-spacing3.css \
 	grid-spacing3.ref.ui \
 	grid-spacing3.ui \
-	gtk-icontheme-sizing.css \
-	gtk-icontheme-sizing.ref.ui \
-	gtk-icontheme-sizing.ui \
+	ctk-icontheme-sizing.css \
+	ctk-icontheme-sizing.ref.ui \
+	ctk-icontheme-sizing.ui \
 	icon-effect-missing.css \
 	icon-effect-missing.ref.ui \
 	icon-effect-missing.ui \
@@ -481,8 +481,8 @@ EXTRA_DIST += 			\
 	$(NULL)
 
 CTK_GSETTINGS_SCHEMAS = \
-	$(top_srcdir)/gtk/org.gtk.Settings.ColorChooser.gschema.xml \
-	$(top_srcdir)/gtk/org.gtk.Settings.FileChooser.gschema.xml \
+	$(top_srcdir)/ctk/org.ctk.Settings.ColorChooser.gschema.xml \
+	$(top_srcdir)/ctk/org.ctk.Settings.FileChooser.gschema.xml \
 	$(NULL)
 
 BUILT_SOURCES = gschemas.compiled
@@ -498,7 +498,7 @@ all-am: gschemas.compiled
 
 if BUILDOPT_INSTALL_TESTS
 insttestdir=$(libexecdir)/installed-tests/$(PACKAGE)
-insttest_PROGRAMS = gtk-reftest
+insttest_PROGRAMS = ctk-reftest
 
 reftestdir = $(insttestdir)/reftests
 reftest_DATA = $(testdata)

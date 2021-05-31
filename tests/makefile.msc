@@ -1,4 +1,4 @@
-## Makefile for building the gtk test apps with Microsoft C
+## Makefile for building the ctk test apps with Microsoft C
 ## Use: nmake -f makefile.msc
 
 ## There is no install target, you have to decide where and 
@@ -13,9 +13,9 @@ TOP = ..\..
 CTK_VER = 3.0
 
 GDK_LIBS = ../gdk/gdk-win32-$(CTK_VER).lib
-CTK_LIBS = ../gtk/gtk-win32-$(CTK_VER).lib
+CTK_LIBS = ../ctk/ctk-win32-$(CTK_VER).lib
 
-INCLUDES = -I . -I .. -I ../gdk -I ../gtk $(GDK_PIXBUF_CFLAGS)
+INCLUDES = -I . -I .. -I ../gdk -I ../ctk $(GDK_PIXBUF_CFLAGS)
 DEPCFLAGS = $(PANGO_CFLAGS) $(GLIB_CFLAGS) $(LIBICONV_CFLAGS) $(INTL_CFLAGS) $(ATK_CFLAGS) $(CAIRO_CFLAGS)
 LDFLAGS = /link /machine:ix86 $(LINKDEBUG)
 DEFINES = -DG_LOG_DOMAIN=\"GtkTest\" -DCTK_VERSION=\"$(CTK_VER)\"
@@ -46,7 +46,7 @@ TESTAPPS = \
 	testdnd \
 	testellipsise testentrycompletion testentryicons \
 	testfilechooser testfilechooserbutton testframe \
-	testgrouping testgtk \
+	testgrouping testctk \
 	testicontheme testiconview testimage testinput \
 	testmountoperation testmenubars testmerge testmultidisplay testmultiscreen \
 	testnouiprint testnotebookdnd \
@@ -80,7 +80,7 @@ EXTRA_LIBS = $(ATK_LIBS)
 !ENDIF
 
 !IFDEF EXTRA_testoffscreen
-EXTRA_OBJETCS = gtkoffscreenbox.obj
+EXTRA_OBJETCS = ctkoffscreenbox.obj
 !ENDIF
 
 !IFDEF EXTRA_testprint
@@ -104,7 +104,7 @@ EXTRA_OBJETCS = testsocket_common.obj
 EXTRA_OBJETCS = testsocket_common.obj
 !ENDIF
 
-$(TESTAPP).exe : ../gtk/gtk-win32-$(CTK_VER).lib $(TESTAPP).obj $(EXTRA_OBJETCS)
+$(TESTAPP).exe : ../ctk/ctk-win32-$(CTK_VER).lib $(TESTAPP).obj $(EXTRA_OBJETCS)
 	$(CC) $(CFLAGS) $(TESTAPP).obj $(EXTRA_OBJETCS) $(CTK_LIBS) $(GDK_LIBS) $(GDK_PIXBUF_LIBS) \
 	$(PANGO_LIBS) $(PANGOCAIRO_LIBS) $(GLIB_LIBS) $(CAIRO_LIBS) $(EXTRA_LIBS) $(LDFLAGS)
 

@@ -1,5 +1,5 @@
 /*
- * gtkappchooserprivate.h: app-chooser interface
+ * ctkappchooserprivate.h: app-chooser interface
  *
  * Copyright (C) 2010 Red Hat, Inc.
  *
@@ -25,9 +25,9 @@
 #include <glib.h>
 #include <gio/gio.h>
 
-#include "gtkappchooser.h"
-#include "gtkappchooserwidget.h"
-#include "gtkentry.h"
+#include "ctkappchooser.h"
+#include "ctkappchooserwidget.h"
+#include "ctkentry.h"
 
 G_BEGIN_DECLS
 

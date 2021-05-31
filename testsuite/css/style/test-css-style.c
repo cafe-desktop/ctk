@@ -20,7 +20,7 @@
 
 #include <string.h>
 #include <glib/gstdio.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #ifdef G_OS_WIN32
 # include <io.h>
@@ -248,8 +248,8 @@ main (int argc, char **argv)
   ctk_test_init (&argc, &argv);
 
   g_object_set (ctk_settings_get_default (),
-                "gtk-font-name", "Sans",
-                "gtk-theme-name", "Empty",
+                "ctk-font-name", "Sans",
+                "ctk-theme-name", "Empty",
                 NULL);
   if (argc < 2)
     {

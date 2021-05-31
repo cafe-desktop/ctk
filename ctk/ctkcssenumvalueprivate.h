@@ -20,10 +20,10 @@
 #ifndef __CTK_CSS_ENUM_VALUE_PRIVATE_H__
 #define __CTK_CSS_ENUM_VALUE_PRIVATE_H__
 
-#include "gtkenums.h"
-#include "gtkcssparserprivate.h"
-#include "gtkcsstypesprivate.h"
-#include "gtkcssvalueprivate.h"
+#include "ctkenums.h"
+#include "ctkcssparserprivate.h"
+#include "ctkcsstypesprivate.h"
+#include "ctkcssvalueprivate.h"
 
 G_BEGIN_DECLS
 

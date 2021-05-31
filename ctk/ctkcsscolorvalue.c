@@ -17,16 +17,16 @@
 
 #include "config.h"
 
-#include "gtkcsscolorvalueprivate.h"
+#include "ctkcsscolorvalueprivate.h"
 
-#include "gtkcssrgbavalueprivate.h"
-#include "gtkcssstylepropertyprivate.h"
-#include "gtkhslaprivate.h"
-#include "gtkstylepropertyprivate.h"
-#include "gtkwin32drawprivate.h"
-#include "gtkwin32themeprivate.h"
+#include "ctkcssrgbavalueprivate.h"
+#include "ctkcssstylepropertyprivate.h"
+#include "ctkhslaprivate.h"
+#include "ctkstylepropertyprivate.h"
+#include "ctkwin32drawprivate.h"
+#include "ctkwin32themeprivate.h"
 
-#include "gtkprivate.h"
+#include "ctkprivate.h"
 
 typedef enum {
   COLOR_TYPE_LITERAL,

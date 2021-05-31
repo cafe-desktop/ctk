@@ -23,23 +23,23 @@
  * Modified by the GTK+ Team and others 2003.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
 
 #define GDK_DISABLE_DEPRECATION_WARNINGS
 
-#include "gtkintl.h"
-#include "gtktoggleaction.h"
-#include "gtktoggletoolbutton.h"
-#include "gtktogglebutton.h"
-#include "gtkcheckmenuitem.h"
-#include "gtkprivate.h"
+#include "ctkintl.h"
+#include "ctktoggleaction.h"
+#include "ctktoggletoolbutton.h"
+#include "ctktogglebutton.h"
+#include "ctkcheckmenuitem.h"
+#include "ctkprivate.h"
 
 
 /**
- * SECTION:gtktoggleaction
+ * SECTION:ctktoggleaction
  * @Short_description: An action which can be toggled between two states
  * @Title: GtkToggleAction
  *

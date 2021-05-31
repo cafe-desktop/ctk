@@ -1,4 +1,4 @@
-/* gtkcelleditable.c
+/* ctkcelleditable.c
  * Copyright (C) 2000  Red Hat, Inc.,  Jonathan Blandford <jrb@redhat.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -16,7 +16,7 @@
  */
 
 /**
- * SECTION:gtkcelleditable
+ * SECTION:ctkcelleditable
  * @Short_description: Interface for widgets that can be used for editing cells
  * @Title: GtkCellEditable
  * @See_also: #GtkCellRenderer
@@ -27,10 +27,10 @@
  */
 
 #include "config.h"
-#include "gtkcelleditable.h"
-#include "gtkmarshalers.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
+#include "ctkcelleditable.h"
+#include "ctkmarshalers.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
 
 
 typedef GtkCellEditableIface GtkCellEditableInterface;

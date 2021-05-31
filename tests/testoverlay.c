@@ -1,5 +1,5 @@
 #include <string.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 /* test that margins and non-zero allocation x/y
  * of the main widget are handled correctly

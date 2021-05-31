@@ -23,9 +23,9 @@
 #include <cairo.h>
 #include <glib-object.h>
 
-#include "gtk/gtkwidget.h"
-#include "gtk/gtkcssstylechangeprivate.h"
-#include "gtk/gtkcsstypesprivate.h"
+#include "ctk/ctkwidget.h"
+#include "ctk/ctkcssstylechangeprivate.h"
+#include "ctk/ctkcsstypesprivate.h"
 
 G_BEGIN_DECLS
 

@@ -19,10 +19,10 @@
 #include "config.h"
 
 #include <stdlib.h>
-#include <gtk/gtk.h>
-#include "gtkaccessibility.h"
-#include "gtkaccessibilityutil.h"
-#include "gtktoplevelaccessible.h"
+#include <ctk/ctk.h>
+#include "ctkaccessibility.h"
+#include "ctkaccessibilityutil.h"
+#include "ctktoplevelaccessible.h"
 
 static GSList *key_listener_list = NULL;
 
@@ -87,7 +87,7 @@ get_root (void)
 static const gchar *
 get_toolkit_name (void)
 {
-  return "gtk";
+  return "ctk";
 }
 
 static const gchar *

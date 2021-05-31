@@ -19,7 +19,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 #include "config.h"
 
@@ -27,16 +27,16 @@
 
 #include <string.h>
 #include <glib.h>
-#include "gtkcolorseldialog.h"
-#include "gtkframe.h"
-#include "gtkbutton.h"
-#include "gtkstock.h"
-#include "gtkintl.h"
-#include "gtkbuildable.h"
+#include "ctkcolorseldialog.h"
+#include "ctkframe.h"
+#include "ctkbutton.h"
+#include "ctkstock.h"
+#include "ctkintl.h"
+#include "ctkbuildable.h"
 
 
 /**
- * SECTION:gtkcolorseldlg
+ * SECTION:ctkcolorseldlg
  * @Short_description: Deprecated dialog box for selecting a color
  * @Title: GtkColorSelectionDialog
  *

@@ -19,23 +19,23 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 #include <string.h>
 #include <stdlib.h>
 
-#include "gtkaccelgroup.h"
-#include "gtkaccelgroupprivate.h"
-#include "gtkaccellabel.h"
-#include "gtkaccelmapprivate.h"
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
-#include "gtkprivate.h"
+#include "ctkaccelgroup.h"
+#include "ctkaccelgroupprivate.h"
+#include "ctkaccellabel.h"
+#include "ctkaccelmapprivate.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
+#include "ctkprivate.h"
 
 /**
- * SECTION:gtkaccelgroup
+ * SECTION:ctkaccelgroup
  * @Short_description: Groups of global keyboard accelerators for an
  *     entire GtkWindow
  * @Title: Accelerator Groups
@@ -93,7 +93,7 @@ ctk_accel_group_class_init (GtkAccelGroupClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
 
-  quark_acceleratable_groups = g_quark_from_static_string ("gtk-acceleratable-accel-groups");
+  quark_acceleratable_groups = g_quark_from_static_string ("ctk-acceleratable-accel-groups");
 
   object_class->finalize = ctk_accel_group_finalize;
   object_class->get_property = ctk_accel_group_get_property;
@@ -1712,7 +1712,7 @@ ctk_accelerator_get_label (guint           accelerator_key,
   label = _ctk_accel_label_class_get_accelerator_label (klass,
                                                         accelerator_key,
                                                         accelerator_mods);
-  g_type_class_unref (klass); /* klass is kept alive since gtk uses static types */
+  g_type_class_unref (klass); /* klass is kept alive since ctk uses static types */
 
   return label;
 }

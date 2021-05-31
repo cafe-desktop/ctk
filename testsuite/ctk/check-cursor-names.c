@@ -1,7 +1,7 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static char *cursor_names[] = {
-  /*** resize cursors that we're using for csd, from gtkwindow.c ***/
+  /*** resize cursors that we're using for csd, from ctkwindow.c ***/
   "nw-resize",
   "n-resize",
   "ne-resize",
@@ -11,22 +11,22 @@ static char *cursor_names[] = {
   "s-resize",
   "se-resize",
 
-  /*** resize cursors, from gtkpaned.c ***/
+  /*** resize cursors, from ctkpaned.c ***/
   "col-resize",
   "row-resize",
 
-  /*** dnd cursors, from gtkdnd.c ***/
+  /*** dnd cursors, from ctkdnd.c ***/
   "dnd-ask",
   "copy",
   "move",
   "alias",
   "no-drop",
 
-  "none",      /* used e.g. in gtkentry.c */
-  "pointer",   /* used e.g. in gtklinkbutton.c */
-  "text",      /* used e.g. in gtkentry.c */
-  "crosshair", /* used e.g. in gtkcolorplane.c */
-  "progress",  /* used e.g. in gtkfilechooserwidget.c */
+  "none",      /* used e.g. in ctkentry.c */
+  "pointer",   /* used e.g. in ctklinkbutton.c */
+  "text",      /* used e.g. in ctkentry.c */
+  "crosshair", /* used e.g. in ctkcolorplane.c */
+  "progress",  /* used e.g. in ctkfilechooserwidget.c */
 };
 
 static void
@@ -50,7 +50,7 @@ main (int argc, char *argv[])
 
   ctk_test_init (&argc, &argv);
 
-  g_object_get (ctk_settings_get_default (), "gtk-cursor-theme-name", &theme, NULL);
+  g_object_get (ctk_settings_get_default (), "ctk-cursor-theme-name", &theme, NULL);
   g_test_message ("Testing cursor theme: %s", theme);
   g_free (theme);
 

@@ -238,7 +238,7 @@ main (int argc, char **argv)
 #endif
 #endif
 
-  g_set_prgname ("gtk-encode-symbolic-svg");
+  g_set_prgname ("ctk-encode-symbolic-svg");
 
   context = g_option_context_new ("PATH WIDTHxHEIGHT");
   g_option_context_add_main_entries (context, args, GETTEXT_PACKAGE);

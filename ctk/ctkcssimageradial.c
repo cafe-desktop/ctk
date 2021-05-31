@@ -19,15 +19,15 @@
 
 #include "config.h"
 
-#include "gtkcssimageradialprivate.h"
+#include "ctkcssimageradialprivate.h"
 
 #include <math.h>
 
-#include "gtkcsscolorvalueprivate.h"
-#include "gtkcssnumbervalueprivate.h"
-#include "gtkcsspositionvalueprivate.h"
-#include "gtkcssrgbavalueprivate.h"
-#include "gtkcssprovider.h"
+#include "ctkcsscolorvalueprivate.h"
+#include "ctkcssnumbervalueprivate.h"
+#include "ctkcsspositionvalueprivate.h"
+#include "ctkcssrgbavalueprivate.h"
+#include "ctkcssprovider.h"
 
 G_DEFINE_TYPE (GtkCssImageRadial, _ctk_css_image_radial, CTK_TYPE_CSS_IMAGE)
 

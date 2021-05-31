@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtktexttypes.c Copyright (C) 2000 Red Hat, Inc.
+ * ctktexttypes.c Copyright (C) 2000 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -19,18 +19,18 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
-#include "gtktexttypes.h"
+#include "ctktexttypes.h"
 
 /* These are used to represent embedded non-character objects
  * if you return a string representation of a text buffer
  */
 const gchar _ctk_text_unknown_char_utf8[] = { '\xEF', '\xBF', '\xBC', '\0' };
 
-/* This is to be used only by libgtk test programs */
+/* This is to be used only by libctk test programs */
 const gchar *
 ctk_text_unknown_char_utf8_ctk_tests_only (void)
 {

@@ -17,7 +17,7 @@
  */
 
 #include <stdlib.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
@@ -38,7 +38,7 @@ button_clicked_cb (GtkButton *b,
   GError *error = NULL;
   gchar *data, *bg_str, *grad1, *grad2;
   const gchar data_format[] = "GtkNumerableIcon { background-color: %s; color: #000000;"
-    "background-image: -gtk-gradient (linear, 0 0, 1 1, from(%s), to(%s));"
+    "background-image: -ctk-gradient (linear, 0 0, 1 1, from(%s), to(%s));"
     "font: Monospace 12;"
     /* "background-image: url('apple-red.png');" */
     "}";

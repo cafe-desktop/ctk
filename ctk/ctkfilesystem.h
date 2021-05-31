@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkfilesystem.h: Filesystem abstraction functions.
+ * ctkfilesystem.h: Filesystem abstraction functions.
  * Copyright (C) 2003, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -20,7 +20,7 @@
 #define __CTK_FILE_SYSTEM_H__
 
 #include <gio/gio.h>
-#include <gtk/gtkwidget.h>	/* For icon handling */
+#include <ctk/ctkwidget.h>	/* For icon handling */
 
 G_BEGIN_DECLS
 

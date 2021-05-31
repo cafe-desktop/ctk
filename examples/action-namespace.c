@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 action_activated (GSimpleAction *action,
@@ -128,7 +128,7 @@ main(int    argc,
 {
   GtkApplication *app;
 
-  app = ctk_application_new ("org.gtk.Example", 0);
+  app = ctk_application_new ("org.ctk.Example", 0);
   g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);
 
   return g_application_run (G_APPLICATION (app), argc, argv);

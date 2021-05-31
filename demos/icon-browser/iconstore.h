@@ -1,7 +1,7 @@
 #ifndef __ICON_STORE_H
 #define __ICON_STORE_H
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 
 #define ICON_STORE_TYPE (icon_store_get_type ())

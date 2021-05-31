@@ -1,4 +1,4 @@
-/* gtktextbufferserialize.c
+/* ctktextbufferserialize.c
  *
  * Copyright (C) 2001 Havoc Pennington
  * Copyright (C) 2004 Nokia Corporation
@@ -29,9 +29,9 @@
 #include <errno.h>
 
 #include "gdk-pixbuf/gdk-pixdata.h"
-#include "gtktextbufferserialize.h"
-#include "gtktexttagprivate.h"
-#include "gtkintl.h"
+#include "ctktextbufferserialize.h"
+#include "ctktexttagprivate.h"
+#include "ctkintl.h"
 
 
 typedef struct

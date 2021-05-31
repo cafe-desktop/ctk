@@ -23,11 +23,11 @@
  * Modified by the GTK+ Team and others 2003.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 /**
- * SECTION:gtkaction
+ * SECTION:ctkaction
  * @Short_description: A deprecated action which can be triggered by a menu or toolbar item
  * @Title: GtkAction
  * @See_also: #GtkActionGroup, #GtkUIManager, #GtkActivatable
@@ -85,24 +85,24 @@
 
 #define GDK_DISABLE_DEPRECATION_WARNINGS
 
-#include "gtkaction.h"
-#include "gtkactiongroup.h"
-#include "gtkaccellabel.h"
-#include "gtkbutton.h"
-#include "gtkiconfactory.h"
-#include "gtkimage.h"
-#include "gtkimagemenuitem.h"
-#include "gtkintl.h"
-#include "gtklabel.h"
-#include "gtkmarshalers.h"
-#include "gtkmenuitem.h"
-#include "gtkstock.h"
-#include "gtktearoffmenuitem.h"
-#include "gtktoolbutton.h"
-#include "gtktoolbar.h"
-#include "gtkprivate.h"
-#include "gtkbuildable.h"
-#include "gtkactivatable.h"
+#include "ctkaction.h"
+#include "ctkactiongroup.h"
+#include "ctkaccellabel.h"
+#include "ctkbutton.h"
+#include "ctkiconfactory.h"
+#include "ctkimage.h"
+#include "ctkimagemenuitem.h"
+#include "ctkintl.h"
+#include "ctklabel.h"
+#include "ctkmarshalers.h"
+#include "ctkmenuitem.h"
+#include "ctkstock.h"
+#include "ctktearoffmenuitem.h"
+#include "ctktoolbutton.h"
+#include "ctktoolbar.h"
+#include "ctkprivate.h"
+#include "ctkbuildable.h"
+#include "ctkactivatable.h"
 
 
 struct _GtkActionPrivate 
@@ -502,7 +502,7 @@ ctk_action_class_init (GtkActionClass *klass)
   /**
    * GtkAction:always-show-image:
    *
-   * If %TRUE, the action's menu item proxies will ignore the #GtkSettings:gtk-menu-images 
+   * If %TRUE, the action's menu item proxies will ignore the #GtkSettings:ctk-menu-images 
    * setting and always show their image, if available.
    *
    * Use this property if the menu item would be useless or hard to use
@@ -1358,7 +1358,7 @@ ctk_action_get_is_important (GtkAction *action)
  * @always_show: %TRUE if menuitem proxies should always show their image
  *
  * Sets whether @action's menu item proxies will ignore the
- * #GtkSettings:gtk-menu-images setting and always show their image, if available.
+ * #GtkSettings:ctk-menu-images setting and always show their image, if available.
  *
  * Use this if the menu item would be useless or hard to use
  * without their image.

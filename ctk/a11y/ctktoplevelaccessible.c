@@ -20,16 +20,16 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <gtk/gtkeventbox.h>
-#include <gtk/gtkscrolledwindow.h>
-#include <gtk/gtkframe.h>
-#include <gtk/gtkmenu.h>
-#include <gtk/gtkmenuitem.h>
-#include <gtk/gtkbutton.h>
-#include <gtk/gtkplug.h>
-#include <gtk/gtkwindow.h>
+#include <ctk/ctkeventbox.h>
+#include <ctk/ctkscrolledwindow.h>
+#include <ctk/ctkframe.h>
+#include <ctk/ctkmenu.h>
+#include <ctk/ctkmenuitem.h>
+#include <ctk/ctkbutton.h>
+#include <ctk/ctkplug.h>
+#include <ctk/ctkwindow.h>
 
-#include "gtktoplevelaccessible.h"
+#include "ctktoplevelaccessible.h"
 
 struct _GtkToplevelAccessiblePrivate
 {

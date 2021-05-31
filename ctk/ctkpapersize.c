@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkpapersize.c: Paper Size
+ * ctkpapersize.c: Paper Size
  * Copyright (C) 2006, Red Hat, Inc.
  * Copyright © 2006, 2007 Christian Persch
  *
@@ -26,21 +26,21 @@
 #endif
 #include <math.h>
 
-#include "gtkpapersize.h"
-#include "gtkprintutils.h"
-#include "gtkprintoperation.h"  /* for GtkPrintError */
-#include "gtkintl.h"
+#include "ctkpapersize.h"
+#include "ctkprintutils.h"
+#include "ctkprintoperation.h"  /* for GtkPrintError */
+#include "ctkintl.h"
 
 /* _ctk_load_custom_papers() only on Unix so far  */
 #ifdef G_OS_UNIX
-#include "gtkcustompaperunixdialog.h"
+#include "ctkcustompaperunixdialog.h"
 #endif
 
 #include "paper_names_offsets.c"
 
 
 /**
- * SECTION:gtkpapersize
+ * SECTION:ctkpapersize
  * @Short_description: Support for named paper sizes
  * @Title: GtkPaperSize
  * @See_also:#GtkPageSetup
@@ -1006,7 +1006,7 @@ ctk_paper_size_new_from_key_file (GKeyFile     *key_file,
                                     "PPDName", NULL);
   display_name = g_key_file_get_string (key_file, group_name,
                                         "DisplayName", NULL);
-  /* Fallback for old ~/.gtk-custom-paper entries */
+  /* Fallback for old ~/.ctk-custom-paper entries */
   if (!display_name)
     display_name = g_strdup (name);
 

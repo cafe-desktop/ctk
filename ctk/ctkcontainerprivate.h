@@ -20,7 +20,7 @@
 #ifndef __CTK_CONTAINER_PRIVATE_H__
 #define __CTK_CONTAINER_PRIVATE_H__
 
-#include "gtkcontainer.h"
+#include "ctkcontainer.h"
 
 G_BEGIN_DECLS
 

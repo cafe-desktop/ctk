@@ -1,7 +1,7 @@
 #ifndef __EXAMPLEAPPPREFS_H
 #define __EXAMPLEAPPPREFS_H
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include "exampleappwin.h"
 
 

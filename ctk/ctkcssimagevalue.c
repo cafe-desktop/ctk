@@ -17,9 +17,9 @@
 
 #include "config.h"
 
-#include "gtkcssimagevalueprivate.h"
+#include "ctkcssimagevalueprivate.h"
 
-#include "gtkcssimagecrossfadeprivate.h"
+#include "ctkcssimagecrossfadeprivate.h"
 
 struct _GtkCssValue {
   CTK_CSS_VALUE_BASE

@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkfilesystemmodel.c: GtkTreeModel wrapping a GtkFileSystem
+ * ctkfilesystemmodel.c: GtkTreeModel wrapping a GtkFileSystem
  * Copyright (C) 2003, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -18,17 +18,17 @@
 
 #include "config.h"
 
-#include "gtkfilesystemmodel.h"
+#include "ctkfilesystemmodel.h"
 
 #include <stdlib.h>
 #include <string.h>
 
-#include "gtkfilesystem.h"
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
-#include "gtktreedatalist.h"
-#include "gtktreednd.h"
-#include "gtktreemodel.h"
+#include "ctkfilesystem.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
+#include "ctktreedatalist.h"
+#include "ctktreednd.h"
+#include "ctktreemodel.h"
 
 /*** Structure: how GtkFileSystemModel works
  *
@@ -1155,7 +1155,7 @@ ctk_file_system_model_got_files (GObject *object, GAsyncResult *res, gpointer da
                                                                  thaw_func,
                                                                  model,
                                                                  NULL);
-          g_source_set_name_by_id (model->dir_thaw_source, "[gtk+] thaw_func");
+          g_source_set_name_by_id (model->dir_thaw_source, "[ctk+] thaw_func");
         }
 
       for (walk = files; walk; walk = walk->next)

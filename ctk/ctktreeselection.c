@@ -1,4 +1,4 @@
-/* gtktreeselection.h
+/* ctktreeselection.h
  * Copyright (C) 2000  Red Hat, Inc.,  Jonathan Blandford <jrb@redhat.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -17,24 +17,24 @@
 
 #include "config.h"
 #include <string.h>
-#include "gtktreeselection.h"
-#include "gtktreeprivate.h"
-#include "gtkrbtree.h"
-#include "gtkmarshalers.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtktypebuiltins.h"
-#include "a11y/gtktreeviewaccessibleprivate.h"
+#include "ctktreeselection.h"
+#include "ctktreeprivate.h"
+#include "ctkrbtree.h"
+#include "ctkmarshalers.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctktypebuiltins.h"
+#include "a11y/ctktreeviewaccessibleprivate.h"
 
 
 /**
- * SECTION:gtktreeselection
+ * SECTION:ctktreeselection
  * @Short_description: The selection object for GtkTreeView
  * @Title: GtkTreeSelection
  * @See_also: #GtkTreeView, #GtkTreeViewColumn, #GtkTreeModel,
  *   #GtkTreeSortable, #GtkTreeModelSort, #GtkListStore, #GtkTreeStore,
  *   #GtkCellRenderer, #GtkCellEditable, #GtkCellRendererPixbuf,
- *   #GtkCellRendererText, #GtkCellRendererToggle, [GtkTreeView drag-and-drop][gtk3-GtkTreeView-drag-and-drop]
+ *   #GtkCellRendererText, #GtkCellRendererToggle, [GtkTreeView drag-and-drop][ctk3-GtkTreeView-drag-and-drop]
  *
  * The #GtkTreeSelection object is a helper object to manage the selection
  * for a #GtkTreeView widget.  The #GtkTreeSelection object is
@@ -1463,7 +1463,7 @@ _ctk_tree_selection_row_is_selectable (GtkTreeSelection *selection,
 }
 
 
-/* Called internally by gtktreeview.c It handles actually selecting the tree.
+/* Called internally by ctktreeview.c It handles actually selecting the tree.
  */
 
 /*

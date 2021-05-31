@@ -20,7 +20,7 @@
 #ifndef __CTK_CSS_STYLE_PROPERTY_PRIVATE_H__
 #define __CTK_CSS_STYLE_PROPERTY_PRIVATE_H__
 
-#include "gtk/gtkstylepropertyprivate.h"
+#include "ctk/ctkstylepropertyprivate.h"
 
 G_BEGIN_DECLS
 

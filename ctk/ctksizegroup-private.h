@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtksizegroup-private.h:
+ * ctksizegroup-private.h:
  * Copyright (C) 2000-2010 Red Hat Software
  *
  * This library is free software; you can redistribute it and/or
@@ -19,7 +19,7 @@
 #ifndef __CTK_SIZE_GROUP_PRIVATE_H__
 #define __CTK_SIZE_GROUP_PRIVATE_H__
 
-#include <gtk/gtksizegroup.h>
+#include <ctk/ctksizegroup.h>
 
 G_BEGIN_DECLS
 

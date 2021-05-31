@@ -20,16 +20,16 @@
 #include <string.h>
 #include <stdio.h>
 
-#include "gtkintl.h"
-#include "gtkprivate.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
 
-#include "gtkprinter.h"
-#include "gtkprinter-private.h"
-#include "gtkprintbackend.h"
-#include "gtkprintjob.h"
+#include "ctkprinter.h"
+#include "ctkprinter-private.h"
+#include "ctkprintbackend.h"
+#include "ctkprintjob.h"
 
 /**
- * SECTION:gtkprinter
+ * SECTION:ctkprinter
  * @Short_description: Represents a printer
  * @Title: GtkPrinter
  *

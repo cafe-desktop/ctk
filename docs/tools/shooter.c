@@ -1,5 +1,5 @@
 #include <gdk/gdk.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <gdkx.h>
 #include <stdio.h>
 #include <errno.h>

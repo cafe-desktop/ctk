@@ -1,4 +1,4 @@
-/* gtkactivatable.c
+/* ctkactivatable.c
  * Copyright (C) 2008 Tristan Van Berkom <tristan.van.berkom@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -16,7 +16,7 @@
  */
 
 /**
- * SECTION:gtkactivatable
+ * SECTION:ctkactivatable
  * @Short_Description: An interface for activatable widgets
  * @Title: GtkActivatable
  *
@@ -260,10 +260,10 @@
 
 #define GDK_DISABLE_DEPRECATION_WARNINGS
 
-#include "gtkactivatable.h"
-#include "gtkactiongroup.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
+#include "ctkactivatable.h"
+#include "ctkactiongroup.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
 
 
 typedef GtkActivatableIface GtkActivatableInterface;
@@ -446,7 +446,7 @@ ctk_activatable_do_set_related_action (GtkActivatable *activatable,
           /* Some apps are using the object data directly...
            * so continue to set it for a bit longer
            */
-          g_object_set_data (G_OBJECT (activatable), "gtk-action", NULL);
+          g_object_set_data (G_OBJECT (activatable), "ctk-action", NULL);
 
           /*
            * We don't want prev_action to be activated
@@ -476,7 +476,7 @@ ctk_activatable_do_set_related_action (GtkActivatable *activatable,
           if (CTK_IS_WIDGET (activatable))
             _ctk_action_add_to_proxy_list (action, CTK_WIDGET (activatable));
 
-          g_object_set_data (G_OBJECT (activatable), "gtk-action", action);
+          g_object_set_data (G_OBJECT (activatable), "ctk-action", action);
 	}
     }
 }

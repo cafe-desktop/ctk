@@ -5,7 +5,7 @@
  * interface to set up cell renderers in an icon view.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <string.h>
 
 enum

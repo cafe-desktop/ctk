@@ -19,10 +19,10 @@
 
 #include <glib/gi18n-lib.h>
 #include <string.h>
-#include <gtk/gtk.h>
-#include "gtkmenuitemaccessible.h"
-#include "gtkwidgetaccessibleprivate.h"
-#include "gtk/gtkmenuitemprivate.h"
+#include <ctk/ctk.h>
+#include "ctkmenuitemaccessible.h"
+#include "ctkwidgetaccessibleprivate.h"
+#include "ctk/ctkmenuitemprivate.h"
 
 struct _GtkMenuItemAccessiblePrivate
 {
@@ -38,10 +38,10 @@ static void menu_item_deselect (GtkMenuItem *item);
 static GtkWidget *get_label_from_container   (GtkWidget *container);
 static gchar     *get_text_from_label_widget (GtkWidget *widget);
 
-static gint menu_item_insert_gtk (GtkMenuShell   *shell,
+static gint menu_item_insert_ctk (GtkMenuShell   *shell,
                                   GtkWidget      *widget,
                                   gint            position);
-static gint menu_item_remove_gtk (GtkContainer   *container,
+static gint menu_item_remove_ctk (GtkContainer   *container,
                                   GtkWidget      *widget);
 
 static void atk_action_interface_init    (AtkActionIface *iface);
@@ -88,8 +88,8 @@ ctk_menu_item_accessible_initialize (AtkObject *obj,
   menu = ctk_menu_item_get_submenu (CTK_MENU_ITEM (data));
   if (menu)
     {
-      g_signal_connect (menu, "insert", G_CALLBACK (menu_item_insert_gtk), NULL);
-      g_signal_connect (menu, "remove", G_CALLBACK (menu_item_remove_gtk), NULL);
+      g_signal_connect (menu, "insert", G_CALLBACK (menu_item_insert_ctk), NULL);
+      g_signal_connect (menu, "remove", G_CALLBACK (menu_item_remove_ctk), NULL);
     }
 }
 
@@ -228,7 +228,7 @@ ctk_menu_item_accessible_finalize (GObject *object)
 }
 
 static void
-ctk_menu_item_accessible_notify_gtk (GObject    *obj,
+ctk_menu_item_accessible_notify_ctk (GObject    *obj,
                                      GParamSpec *pspec)
 {
   AtkObject* atk_obj;
@@ -242,7 +242,7 @@ ctk_menu_item_accessible_notify_gtk (GObject    *obj,
       g_signal_emit_by_name (atk_obj, "visible-data-changed");
     }
   else
-    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_menu_item_accessible_parent_class)->notify_gtk (obj, pspec);
+    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_menu_item_accessible_parent_class)->notify_ctk (obj, pspec);
 }
 
 static void
@@ -252,7 +252,7 @@ ctk_menu_item_accessible_class_init (GtkMenuItemAccessibleClass *klass)
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
   GtkWidgetAccessibleClass *widget_class = (GtkWidgetAccessibleClass*)klass;
 
-  widget_class->notify_gtk = ctk_menu_item_accessible_notify_gtk;
+  widget_class->notify_ctk = ctk_menu_item_accessible_notify_ctk;
 
   gobject_class->finalize = ctk_menu_item_accessible_finalize;
 
@@ -883,7 +883,7 @@ atk_selection_interface_init (AtkSelectionIface *iface)
 }
 
 static gint
-menu_item_insert_gtk (GtkMenuShell *shell,
+menu_item_insert_ctk (GtkMenuShell *shell,
                       GtkWidget    *widget,
                       gint          position)
 {
@@ -893,13 +893,13 @@ menu_item_insert_gtk (GtkMenuShell *shell,
 
   parent_widget = ctk_menu_get_attach_widget (CTK_MENU (shell));
   if (CTK_IS_MENU_ITEM (parent_widget))
-    CTK_CONTAINER_ACCESSIBLE_CLASS (ctk_menu_item_accessible_parent_class)->add_gtk (CTK_CONTAINER (shell), widget, ctk_widget_get_accessible (parent_widget));
+    CTK_CONTAINER_ACCESSIBLE_CLASS (ctk_menu_item_accessible_parent_class)->add_ctk (CTK_CONTAINER (shell), widget, ctk_widget_get_accessible (parent_widget));
 
   return 1;
 }
 
 static gint
-menu_item_remove_gtk (GtkContainer *container,
+menu_item_remove_ctk (GtkContainer *container,
                       GtkWidget    *widget)
 {
   GtkWidget *parent_widget;
@@ -909,7 +909,7 @@ menu_item_remove_gtk (GtkContainer *container,
   parent_widget = ctk_menu_get_attach_widget (CTK_MENU (container));
   if (CTK_IS_MENU_ITEM (parent_widget))
     {
-      CTK_CONTAINER_ACCESSIBLE_CLASS (ctk_menu_item_accessible_parent_class)->remove_gtk (container, widget, ctk_widget_get_accessible (parent_widget));
+      CTK_CONTAINER_ACCESSIBLE_CLASS (ctk_menu_item_accessible_parent_class)->remove_ctk (container, widget, ctk_widget_get_accessible (parent_widget));
     }
   return 1;
 }

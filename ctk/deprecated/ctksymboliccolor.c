@@ -19,24 +19,24 @@
 
 #define GDK_DISABLE_DEPRECATION_WARNINGS
 
-#include "gtkcsscolorvalueprivate.h"
-#include "gtkcssrgbavalueprivate.h"
-#include "gtkcssstylepropertyprivate.h"
-#include "gtkhslaprivate.h"
-#include "gtkstylepropertyprivate.h"
-#include "gtksymboliccolorprivate.h"
-#include "gtkstyleproperties.h"
-#include "gtkintl.h"
-#include "gtkwin32themeprivate.h"
+#include "ctkcsscolorvalueprivate.h"
+#include "ctkcssrgbavalueprivate.h"
+#include "ctkcssstylepropertyprivate.h"
+#include "ctkhslaprivate.h"
+#include "ctkstylepropertyprivate.h"
+#include "ctksymboliccolorprivate.h"
+#include "ctkstyleproperties.h"
+#include "ctkintl.h"
+#include "ctkwin32themeprivate.h"
 
 /**
- * SECTION:gtksymboliccolor
+ * SECTION:ctksymboliccolor
  * @Short_description: Symbolic colors
  * @Title: GtkSymbolicColor
  *
  * GtkSymbolicColor is a boxed type that represents a symbolic color.
  * It is the result of parsing a
- * [color expression][gtkcssprovider-symbolic-colors].
+ * [color expression][ctkcssprovider-symbolic-colors].
  * To obtain the color represented by a GtkSymbolicColor, it has to
  * be resolved with ctk_symbolic_color_resolve(), which replaces all
  * symbolic color references by the colors they refer to (in a given

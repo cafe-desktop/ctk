@@ -1,8 +1,8 @@
 ## Process this file with automake to produce Makefile.in
 include $(top_srcdir)/Makefile.decl
 
-libgdkincludedir = $(includedir)/gtk-3.0/gdk
-libgdkwaylandincludedir = $(includedir)/gtk-3.0/gdk/wayland
+libgdkincludedir = $(includedir)/ctk-3.0/gdk
+libgdkwaylandincludedir = $(includedir)/ctk-3.0/gdk/wayland
 
 AM_CPPFLAGS =					\
 	-DG_LOG_DOMAIN=\"Gdk\"			\
@@ -29,8 +29,8 @@ BUILT_SOURCES = 				\
 	xdg-shell-unstable-v6-protocol.c			\
 	xdg-foreign-unstable-v1-client-protocol.h		\
 	xdg-foreign-unstable-v1-protocol.c			\
-	gtk-primary-selection-client-protocol.h			\
-	gtk-primary-selection-protocol.c			\
+	ctk-primary-selection-client-protocol.h			\
+	ctk-primary-selection-protocol.c			\
 	tablet-unstable-v2-client-protocol.h	\
 	tablet-unstable-v2-protocol.c		\
 	xdg-output-unstable-v1-protocol.c			\
@@ -39,8 +39,8 @@ BUILT_SOURCES = 				\
 	keyboard-shortcuts-inhibit-unstable-v1-protocol.c	\
 	server-decoration-client-protocol.h		\
 	server-decoration-protocol.c			\
-	gtk-shell-client-protocol.h		\
-	gtk-shell-protocol.c			\
+	ctk-shell-client-protocol.h		\
+	ctk-shell-protocol.c			\
 	primary-selection-unstable-v1-client-protocol.h		\
 	primary-selection-unstable-v1-protocol.c
 
@@ -107,8 +107,8 @@ endef
 	$(AM_V_GEN)$(WAYLAND_SCANNER) client-header < $< > $@
 
 EXTRA_DIST += 					\
-	protocol/gtk-primary-selection.xml	\
-	protocol/gtk-shell.xml			\
+	protocol/ctk-primary-selection.xml	\
+	protocol/ctk-shell.xml			\
 	protocol/server-decoration.xml	\
 	meson.build
 

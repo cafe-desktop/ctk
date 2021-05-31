@@ -19,7 +19,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -33,48 +33,48 @@
 #include <gobject/gobjectnotifyqueue.c>
 #include <cairo-gobject.h>
 
-#include "gtkcontainer.h"
-#include "gtkaccelmapprivate.h"
-#include "gtkaccelgroupprivate.h"
-#include "gtkclipboard.h"
-#include "gtkcssstylepropertyprivate.h"
-#include "gtkcssnumbervalueprivate.h"
-#include "gtkcssshadowsvalueprivate.h"
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
-#include "gtkselectionprivate.h"
-#include "gtksettingsprivate.h"
-#include "gtksizegroup-private.h"
-#include "gtkwidget.h"
-#include "gtkwidgetprivate.h"
-#include "gtkwindowprivate.h"
-#include "gtkcontainerprivate.h"
-#include "gtkbindings.h"
-#include "gtkprivate.h"
-#include "gtkaccessible.h"
-#include "gtktooltipprivate.h"
-#include "gtkinvisible.h"
-#include "gtkbuildable.h"
-#include "gtkbuilderprivate.h"
-#include "gtksizerequest.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkcssprovider.h"
-#include "gtkcsswidgetnodeprivate.h"
-#include "gtkmodifierstyle.h"
-#include "gtkversion.h"
-#include "gtkdebug.h"
-#include "gtkplug.h"
-#include "gtktypebuiltins.h"
-#include "a11y/gtkwidgetaccessible.h"
-#include "gtkapplicationprivate.h"
-#include "gtkgestureprivate.h"
-#include "gtkwidgetpathprivate.h"
+#include "ctkcontainer.h"
+#include "ctkaccelmapprivate.h"
+#include "ctkaccelgroupprivate.h"
+#include "ctkclipboard.h"
+#include "ctkcssstylepropertyprivate.h"
+#include "ctkcssnumbervalueprivate.h"
+#include "ctkcssshadowsvalueprivate.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
+#include "ctkselectionprivate.h"
+#include "ctksettingsprivate.h"
+#include "ctksizegroup-private.h"
+#include "ctkwidget.h"
+#include "ctkwidgetprivate.h"
+#include "ctkwindowprivate.h"
+#include "ctkcontainerprivate.h"
+#include "ctkbindings.h"
+#include "ctkprivate.h"
+#include "ctkaccessible.h"
+#include "ctktooltipprivate.h"
+#include "ctkinvisible.h"
+#include "ctkbuildable.h"
+#include "ctkbuilderprivate.h"
+#include "ctksizerequest.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkcssprovider.h"
+#include "ctkcsswidgetnodeprivate.h"
+#include "ctkmodifierstyle.h"
+#include "ctkversion.h"
+#include "ctkdebug.h"
+#include "ctkplug.h"
+#include "ctktypebuiltins.h"
+#include "a11y/ctkwidgetaccessible.h"
+#include "ctkapplicationprivate.h"
+#include "ctkgestureprivate.h"
+#include "ctkwidgetpathprivate.h"
 
 /* for the use of round() */
 #include "fallback-c89.c"
 
 /**
- * SECTION:gtkwidget
+ * SECTION:ctkwidget
  * @Short_description: Base class for all widgets
  * @Title: GtkWidget
  *
@@ -261,7 +261,7 @@
  * #GtkWidget introduces “style
  * properties” - these are basically object properties that are stored
  * not on the object, but in the style object associated to the widget. Style
- * properties are set in [resource files][gtk3-Resource-Files].
+ * properties are set in [resource files][ctk3-Resource-Files].
  * This mechanism is used for configuring such things as the location of the
  * scrollbar arrows through the theme, giving theme authors more control over the
  * look of applications without the need to write a theme engine in C.
@@ -996,27 +996,27 @@ ctk_widget_class_init (GtkWidgetClass *klass)
   g_type_class_adjust_private_offset (klass, &GtkWidget_private_offset);
   ctk_widget_parent_class = g_type_class_peek_parent (klass);
 
-  quark_property_parser = g_quark_from_static_string ("gtk-rc-property-parser");
-  quark_accel_path = g_quark_from_static_string ("gtk-accel-path");
-  quark_accel_closures = g_quark_from_static_string ("gtk-accel-closures");
-  quark_event_mask = g_quark_from_static_string ("gtk-event-mask");
-  quark_device_event_mask = g_quark_from_static_string ("gtk-device-event-mask");
-  quark_parent_window = g_quark_from_static_string ("gtk-parent-window");
-  quark_shape_info = g_quark_from_static_string ("gtk-shape-info");
-  quark_input_shape_info = g_quark_from_static_string ("gtk-input-shape-info");
-  quark_pango_context = g_quark_from_static_string ("gtk-pango-context");
-  quark_mnemonic_labels = g_quark_from_static_string ("gtk-mnemonic-labels");
-  quark_tooltip_markup = g_quark_from_static_string ("gtk-tooltip-markup");
-  quark_tooltip_window = g_quark_from_static_string ("gtk-tooltip-window");
-  quark_visual = g_quark_from_static_string ("gtk-widget-visual");
-  quark_modifier_style = g_quark_from_static_string ("gtk-widget-modifier-style");
-  quark_enabled_devices = g_quark_from_static_string ("gtk-widget-enabled-devices");
-  quark_size_groups = g_quark_from_static_string ("gtk-widget-size-groups");
-  quark_auto_children = g_quark_from_static_string ("gtk-widget-auto-children");
-  quark_widget_path = g_quark_from_static_string ("gtk-widget-path");
-  quark_action_muxer = g_quark_from_static_string ("gtk-widget-action-muxer");
-  quark_font_options = g_quark_from_static_string ("gtk-widget-font-options");
-  quark_font_map = g_quark_from_static_string ("gtk-widget-font-map");
+  quark_property_parser = g_quark_from_static_string ("ctk-rc-property-parser");
+  quark_accel_path = g_quark_from_static_string ("ctk-accel-path");
+  quark_accel_closures = g_quark_from_static_string ("ctk-accel-closures");
+  quark_event_mask = g_quark_from_static_string ("ctk-event-mask");
+  quark_device_event_mask = g_quark_from_static_string ("ctk-device-event-mask");
+  quark_parent_window = g_quark_from_static_string ("ctk-parent-window");
+  quark_shape_info = g_quark_from_static_string ("ctk-shape-info");
+  quark_input_shape_info = g_quark_from_static_string ("ctk-input-shape-info");
+  quark_pango_context = g_quark_from_static_string ("ctk-pango-context");
+  quark_mnemonic_labels = g_quark_from_static_string ("ctk-mnemonic-labels");
+  quark_tooltip_markup = g_quark_from_static_string ("ctk-tooltip-markup");
+  quark_tooltip_window = g_quark_from_static_string ("ctk-tooltip-window");
+  quark_visual = g_quark_from_static_string ("ctk-widget-visual");
+  quark_modifier_style = g_quark_from_static_string ("ctk-widget-modifier-style");
+  quark_enabled_devices = g_quark_from_static_string ("ctk-widget-enabled-devices");
+  quark_size_groups = g_quark_from_static_string ("ctk-widget-size-groups");
+  quark_auto_children = g_quark_from_static_string ("ctk-widget-auto-children");
+  quark_widget_path = g_quark_from_static_string ("ctk-widget-path");
+  quark_action_muxer = g_quark_from_static_string ("ctk-widget-action-muxer");
+  quark_font_options = g_quark_from_static_string ("ctk-widget-font-options");
+  quark_font_map = g_quark_from_static_string ("ctk-widget-font-map");
 
   style_property_spec_pool = g_param_spec_pool_new (FALSE);
   _ctk_widget_child_property_pool = g_param_spec_pool_new (TRUE);
@@ -3562,7 +3562,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
    * The color with which to draw the secondary insertion cursor in entries and
    * text views when editing mixed right-to-left and left-to-right text.
    *
-   * Deprecated: 3.20: Use the -gtk-secondary-caret-color CSS property
+   * Deprecated: 3.20: Use the -ctk-secondary-caret-color CSS property
    */
   ctk_widget_class_install_style_property (klass,
 					   g_param_spec_boxed ("secondary-cursor-color",
@@ -11146,7 +11146,7 @@ ctk_widget_keynav_failed (GtkWidget        *widget,
  * @widget: a #GtkWidget
  *
  * Notifies the user about an input-related error on this widget.
- * If the #GtkSettings:gtk-error-bell setting is %TRUE, it calls
+ * If the #GtkSettings:ctk-error-bell setting is %TRUE, it calls
  * gdk_window_beep(), otherwise it does nothing.
  *
  * Note that the effect of gdk_window_beep() can be configured in many
@@ -11171,7 +11171,7 @@ ctk_widget_error_bell (GtkWidget *widget)
     return;
 
   g_object_get (settings,
-                "gtk-error-bell", &beep,
+                "ctk-error-bell", &beep,
                 NULL);
 
   if (beep && priv->window)
@@ -11895,7 +11895,7 @@ ctk_widget_set_composite_name (GtkWidget   *widget,
   g_return_if_fail (name != NULL);
 
   if (!quark_composite_name)
-    quark_composite_name = g_quark_from_static_string ("gtk-composite-name");
+    quark_composite_name = g_quark_from_static_string ("ctk-composite-name");
 
   g_object_set_qdata_full (G_OBJECT (widget),
 			   quark_composite_name,
@@ -12523,7 +12523,7 @@ ctk_widget_real_adjust_size_request (GtkWidget      *widget,
 
   /* Fix it if set_size_request made natural size smaller than min size.
    * This would also silently fix broken widgets, but we warn about them
-   * in gtksizerequest.c when calling their size request vfuncs.
+   * in ctksizerequest.c when calling their size request vfuncs.
    */
   *natural_size = MAX (*natural_size, *minimum_size);
 
@@ -14031,10 +14031,10 @@ static GQuark            quark_builder_set_name = 0;
 static void
 ctk_widget_buildable_interface_init (GtkBuildableIface *iface)
 {
-  quark_builder_has_default = g_quark_from_static_string ("gtk-builder-has-default");
-  quark_builder_has_focus = g_quark_from_static_string ("gtk-builder-has-focus");
-  quark_builder_atk_relations = g_quark_from_static_string ("gtk-builder-atk-relations");
-  quark_builder_set_name = g_quark_from_static_string ("gtk-builder-set-name");
+  quark_builder_has_default = g_quark_from_static_string ("ctk-builder-has-default");
+  quark_builder_has_focus = g_quark_from_static_string ("ctk-builder-has-focus");
+  quark_builder_atk_relations = g_quark_from_static_string ("ctk-builder-atk-relations");
+  quark_builder_set_name = g_quark_from_static_string ("ctk-builder-set-name");
 
   iface->set_name = ctk_widget_buildable_set_name;
   iface->get_name = ctk_widget_buildable_get_name;
@@ -15416,7 +15416,7 @@ ctk_widget_queue_tooltip_query (GtkWidget *widget)
   if (tooltip_query_id == 0)
     {
       tooltip_query_id = gdk_threads_add_idle (tooltip_query_idle, NULL);
-      g_source_set_name_by_id (tooltip_query_id, "[gtk+] tooltip_query_idle");
+      g_source_set_name_by_id (tooltip_query_id, "[ctk+] tooltip_query_idle");
     }
 }
 
@@ -17123,7 +17123,7 @@ ctk_widget_class_set_template_from_resource (GtkWidgetClass    *widget_class,
   g_return_if_fail (resource_name && resource_name[0]);
 
   /* This is a hack, because class initializers now access resources
-   * and GIR/gtk-doc initializes classes without initializing GTK+,
+   * and GIR/ctk-doc initializes classes without initializing GTK+,
    * we ensure that our base resources are registered here and
    * avoid warnings which building GIRs/documentation.
    */

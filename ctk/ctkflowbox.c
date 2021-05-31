@@ -24,7 +24,7 @@
 /* Preamble {{{1 */
 
 /**
- * SECTION:gtkflowbox
+ * SECTION:ctkflowbox
  * @Short_Description: A container that allows reflowing its children
  * @Title: GtkFlowBox
  *
@@ -75,19 +75,19 @@
 
 #include <config.h>
 
-#include "gtkflowbox.h"
-#include "gtkmarshalers.h"
-#include "gtkprivate.h"
-#include "gtkorientableprivate.h"
-#include "gtkintl.h"
-#include "gtkcssnodeprivate.h"
-#include "gtkwidgetprivate.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkcsscustomgadgetprivate.h"
-#include "gtkcontainerprivate.h"
+#include "ctkflowbox.h"
+#include "ctkmarshalers.h"
+#include "ctkprivate.h"
+#include "ctkorientableprivate.h"
+#include "ctkintl.h"
+#include "ctkcssnodeprivate.h"
+#include "ctkwidgetprivate.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkcsscustomgadgetprivate.h"
+#include "ctkcontainerprivate.h"
 
-#include "a11y/gtkflowboxaccessibleprivate.h"
-#include "a11y/gtkflowboxchildaccessible.h"
+#include "a11y/ctkflowboxaccessibleprivate.h"
+#include "a11y/ctkflowboxchildaccessible.h"
 
 /* Forward declarations and utilities {{{1 */
 
@@ -4194,7 +4194,7 @@ ctk_flow_box_bound_model_changed (GListModel *list,
        * from language bindings which will automatically sink the floating
        * reference).
        *
-       * See the similar code in gtklistbox.c:ctk_list_box_bound_model_changed.
+       * See the similar code in ctklistbox.c:ctk_list_box_bound_model_changed.
        */
       if (g_object_is_floating (widget))
         g_object_ref_sink (widget);

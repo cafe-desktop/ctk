@@ -1,4 +1,4 @@
-/* gtktrayicon.h
+/* ctktrayicon.h
  * Copyright (C) 2002 Anders Carlsson <andersca@gnu.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -18,7 +18,7 @@
 #ifndef __CTK_TRAY_ICON_H__
 #define __CTK_TRAY_ICON_H__
 
-#include "gtkplug.h"
+#include "ctkplug.h"
 
 G_BEGIN_DECLS
 

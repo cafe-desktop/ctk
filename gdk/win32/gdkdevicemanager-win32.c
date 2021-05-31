@@ -757,7 +757,7 @@ gdk_device_manager_win32_constructed (GObject *object)
 
   /* Only call Wintab init stuff after the default display
    * is globally known and accessible through the display manager
-   * singleton. Approach lifted from gtkmodules.c.
+   * singleton. Approach lifted from ctkmodules.c.
    */
   display_manager = gdk_display_manager_get();
   g_assert (display_manager != NULL);

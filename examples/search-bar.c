@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static gboolean
 window_key_press_event_cb (GtkWidget *window,
@@ -49,7 +49,7 @@ main (gint argc,
 {
   GtkApplication *app;
 
-  app = ctk_application_new ("org.gtk.Example.GtkSearchBar",
+  app = ctk_application_new ("org.ctk.Example.GtkSearchBar",
       G_APPLICATION_FLAGS_NONE);
   g_signal_connect (app, "activate",
       G_CALLBACK (activate_cb), NULL);

@@ -20,7 +20,7 @@
 
 #include "config.h"
 #include <glib/gstdio.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <string.h>
 
 #ifdef G_OS_WIN32

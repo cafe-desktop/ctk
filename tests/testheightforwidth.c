@@ -18,7 +18,7 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 typedef struct {
   const gchar *name;
@@ -37,7 +37,7 @@ static TestInterface interfaces[] = {
     "Ellipsizing Labels",
     "Demonstrates how labels will request a natural size in a horizontal space",
     "<interface>"
-    "  <requires lib=\"gtk+\" version=\"3.22\"/>"
+    "  <requires lib=\"ctk+\" version=\"3.22\"/>"
     "  <!-- interface-naming-policy project-wide -->"
     "  <object class=\"GtkWindow\" id=\"window\">"
     "    <property name=\"default_width\">450</property>"
@@ -99,7 +99,7 @@ static TestInterface interfaces[] = {
     "Wrapping Label",
     "Demonstrates how a wrapping label can require a height contextual to its allocated width",
     "<interface>"
-    "  <requires lib=\"gtk+\" version=\"3.22\"/>"
+    "  <requires lib=\"ctk+\" version=\"3.22\"/>"
     "  <!-- interface-naming-policy project-wide -->"
     "  <object class=\"GtkWindow\" id=\"window\">"
     "    <property name=\"border_width\">12</property>"
@@ -201,7 +201,7 @@ static TestInterface interfaces[] = {
     "Horizontal Box",
     "Demonstrates how a horizontal box can calculate the collective height for an allocated width",
     "<interface>"
-    "  <requires lib=\"gtk+\" version=\"3.22\"/>"
+    "  <requires lib=\"ctk+\" version=\"3.22\"/>"
     "  <!-- interface-naming-policy project-wide -->"
     "  <object class=\"GtkWindow\" id=\"window\">"
     "    <property name=\"default_height\">200</property>"
@@ -307,7 +307,7 @@ static TestInterface interfaces[] = {
     "Demonstrates how a horizontal box will consider width-for-height when allocating children "
     "even if the toplevel window is requested as height-for-width.",
     "<interface>"
-    "  <requires lib=\"gtk+\" version=\"3.22\"/>"
+    "  <requires lib=\"ctk+\" version=\"3.22\"/>"
     "  <!-- interface-naming-policy project-wide -->"
     "  <object class=\"GtkWindow\" id=\"window\">"
     "    <property name=\"default_width\">400</property>"
@@ -433,7 +433,7 @@ static TestInterface interfaces[] = {
     "This test demonstrates how \"width-chars\" and \"max-width-chars\" can be used "
     "to effect minimum and natural widths in wrapping labels.",
     "<interface>"
-    "  <requires lib=\"gtk+\" version=\"3.22\"/>"
+    "  <requires lib=\"ctk+\" version=\"3.22\"/>"
     "  <!-- interface-naming-policy project-wide -->"
     "  <object class=\"GtkWindow\" id=\"window\">"
     "    <property name=\"default_width\">900</property>"
@@ -560,7 +560,7 @@ static TestInterface interfaces[] = {
     "and also trade height for width.",
     "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
     "<interface>"
-    "  <requires lib=\"gtk+\" version=\"3.22\"/>"
+    "  <requires lib=\"ctk+\" version=\"3.22\"/>"
     "  <!-- interface-naming-policy project-wide -->"
     "  <object class=\"GtkWindow\" id=\"window\">"
     "    <property name=\"default_width\">500</property>"
@@ -631,7 +631,7 @@ static TestInterface interfaces[] = {
     "and also trade height for width.",
     "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
     "<interface>"
-    "  <requires lib=\"gtk+\" version=\"3.22\"/>"
+    "  <requires lib=\"ctk+\" version=\"3.22\"/>"
     "  <!-- interface-naming-policy project-wide -->"
     "  <object class=\"GtkWindow\" id=\"window\">"
     "    <property name=\"default_width\">400</property>"
@@ -668,7 +668,7 @@ static TestInterface interfaces[] = {
     "This test shows wrapping and ellipsizing text in combo boxes (and consequently in menu items).",
     "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
     "<interface>"
-    "  <requires lib=\"gtk+\" version=\"3.22\"/>"
+    "  <requires lib=\"ctk+\" version=\"3.22\"/>"
     "  <!-- interface-naming-policy project-wide -->"
     "  <object class=\"GtkWindow\" id=\"window\">"
     "    <property name=\"border_width\">8</property>"

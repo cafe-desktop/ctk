@@ -18,7 +18,7 @@
 #ifndef _CTK_INSPECTOR_SIGNALS_LIST_H_
 #define _CTK_INSPECTOR_SIGNALS_LIST_H_
 
-#include <gtk/gtkpaned.h>
+#include <ctk/ctkpaned.h>
 
 #define CTK_TYPE_INSPECTOR_SIGNALS_LIST            (ctk_inspector_signals_list_get_type())
 #define CTK_INSPECTOR_SIGNALS_LIST(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_SIGNALS_LIST, GtkInspectorSignalsList))

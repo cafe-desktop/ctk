@@ -22,12 +22,12 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
-#include "gtkspinbutton.h"
+#include "ctkspinbutton.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -35,27 +35,27 @@
 #include <string.h>
 #include <locale.h>
 
-#include "gtkadjustment.h"
-#include "gtkbindings.h"
-#include "gtkboxgadgetprivate.h"
-#include "gtkcssgadgetprivate.h"
-#include "gtkcsscustomgadgetprivate.h"
-#include "gtkentryprivate.h"
-#include "gtkiconhelperprivate.h"
-#include "gtkicontheme.h"
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
-#include "gtkorientable.h"
-#include "gtkorientableprivate.h"
-#include "gtkprivate.h"
-#include "gtksettings.h"
-#include "gtktypebuiltins.h"
-#include "gtkwidgetpath.h"
-#include "gtkwidgetprivate.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkcssstylepropertyprivate.h"
+#include "ctkadjustment.h"
+#include "ctkbindings.h"
+#include "ctkboxgadgetprivate.h"
+#include "ctkcssgadgetprivate.h"
+#include "ctkcsscustomgadgetprivate.h"
+#include "ctkentryprivate.h"
+#include "ctkiconhelperprivate.h"
+#include "ctkicontheme.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
+#include "ctkorientable.h"
+#include "ctkorientableprivate.h"
+#include "ctkprivate.h"
+#include "ctksettings.h"
+#include "ctktypebuiltins.h"
+#include "ctkwidgetpath.h"
+#include "ctkwidgetprivate.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkcssstylepropertyprivate.h"
 
-#include "a11y/gtkspinbuttonaccessible.h"
+#include "a11y/ctkspinbuttonaccessible.h"
 
 #define MIN_SPIN_BUTTON_WIDTH 30
 #define MAX_TIMER_CALLS       5
@@ -65,7 +65,7 @@
 #define TIMEOUT_REPEAT        50
 
 /**
- * SECTION:gtkspinbutton
+ * SECTION:ctkspinbutton
  * @Title: GtkSpinButton
  * @Short_description: Retrieve an integer or floating-point number from
  *     the user
@@ -1395,7 +1395,7 @@ start_spinning (GtkSpinButton *spin,
       priv->timer = gdk_threads_add_timeout (TIMEOUT_INITIAL,
                                    (GSourceFunc) ctk_spin_button_timer,
                                    (gpointer) spin);
-      g_source_set_name_by_id (priv->timer, "[gtk+] ctk_spin_button_timer");
+      g_source_set_name_by_id (priv->timer, "[ctk+] ctk_spin_button_timer");
     }
   ctk_spin_button_real_spin (spin, click_child == priv->up_panel ? step : -step);
 
@@ -1530,7 +1530,7 @@ ctk_spin_button_timer (GtkSpinButton *spin_button)
           priv->timer = gdk_threads_add_timeout (TIMEOUT_REPEAT,
                                               (GSourceFunc) ctk_spin_button_timer,
                                               (gpointer) spin_button);
-          g_source_set_name_by_id (priv->timer, "[gtk+] ctk_spin_button_timer");
+          g_source_set_name_by_id (priv->timer, "[ctk+] ctk_spin_button_timer");
         }
       else
         {

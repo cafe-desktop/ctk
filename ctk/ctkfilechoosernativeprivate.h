@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkfilechoosernativeprivate.h: Native File selector dialog
+ * ctkfilechoosernativeprivate.h: Native File selector dialog
  * Copyright (C) 2015, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -19,7 +19,7 @@
 #ifndef __CTK_FILE_CHOOSER_NATIVE_PRIVATE_H__
 #define __CTK_FILE_CHOOSER_NATIVE_PRIVATE_H__
 
-#include <gtk/gtkfilechoosernative.h>
+#include <ctk/ctkfilechoosernative.h>
 #ifdef GDK_WINDOWING_QUARTZ
 #include <AvailabilityMacros.h>
 #endif

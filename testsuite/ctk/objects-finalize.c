@@ -16,7 +16,7 @@
  *
  * Authors: Tristan Van Berkom <tristanvb@openismus.com>
  */
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <string.h>
 
 #ifdef GDK_WINDOWING_X11

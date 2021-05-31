@@ -4,7 +4,7 @@
  * for shortcuts and gestures in an application.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 show_shortcuts (GtkWidget   *window,

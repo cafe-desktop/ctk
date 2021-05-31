@@ -15,6 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\gtk\gtk-builder-tool.c"><Filter>Sources</Filter></ClCompile>
+    <ClCompile Include="..\..\ctk\ctk-builder-tool.c"><Filter>Sources</Filter></ClCompile>
   </ItemGroup>
 </Project>

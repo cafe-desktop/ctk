@@ -3,7 +3,7 @@ window1
   index: 0
   name: Select a Color
   state: enabled sensitive showing visible
-  toolkit: gtk
+  toolkit: ctk
   window-type: dialog
   <AtkComponent>
   layer: window
@@ -13,7 +13,7 @@ window1
     parent: window1
     index: 1
     state: enabled sensitive showing visible
-    toolkit: gtk
+    toolkit: ctk
     <AtkComponent>
     layer: widget
     alpha: 1
@@ -23,7 +23,7 @@ window1
       index: 1
       name: Select
       state: enabled focusable sensitive showing visible default
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: widget
       alpha: 1
@@ -38,7 +38,7 @@ window1
       "filler"
       parent: headerbar
       state: enabled sensitive showing vertical visible
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: widget
       alpha: 1
@@ -48,7 +48,7 @@ window1
         index: 0
         name: Select a Color
         state: enabled multi-line sensitive showing visible
-        toolkit: gtk
+        toolkit: ctk
         <AtkComponent>
         layer: widget
         alpha: 1
@@ -88,7 +88,7 @@ window1
         index: 1
         name: 
         state: enabled multi-line sensitive
-        toolkit: gtk
+        toolkit: ctk
         <AtkComponent>
         layer: widget
         alpha: 1
@@ -128,7 +128,7 @@ window1
       index: 0
       name: Cancel
       state: enabled focusable sensitive showing visible
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: widget
       alpha: 1
@@ -144,7 +144,7 @@ window1
     parent: window1
     index: 0
     state: enabled sensitive showing vertical visible
-    toolkit: gtk
+    toolkit: ctk
     <AtkComponent>
     layer: widget
     alpha: 1
@@ -153,7 +153,7 @@ window1
       parent: dialog-vbox1
       index: 0
       state: enabled sensitive showing vertical visible
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: widget
       alpha: 1
@@ -162,7 +162,7 @@ window1
         parent: chooser
         index: 0
         state: enabled sensitive showing vertical visible
-        toolkit: gtk
+        toolkit: ctk
         <AtkComponent>
         layer: widget
         alpha: 1
@@ -171,7 +171,7 @@ window1
           parent: unnamed-GtkContainerAccessible-1
           index: 0
           state: enabled horizontal sensitive showing visible
-          toolkit: gtk
+          toolkit: ctk
           <AtkComponent>
           layer: widget
           alpha: 1
@@ -181,7 +181,7 @@ window1
             index: 0
             name: Black
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -198,7 +198,7 @@ window1
             index: 1
             name: Dark Gray 4
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -215,7 +215,7 @@ window1
             index: 2
             name: Dark Gray 3
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -232,7 +232,7 @@ window1
             index: 3
             name: Dark Gray 2
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -249,7 +249,7 @@ window1
             index: 4
             name: Dark Gray 1
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -266,7 +266,7 @@ window1
             index: 5
             name: Light Gray 4
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -283,7 +283,7 @@ window1
             index: 6
             name: Light Gray 3
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -300,7 +300,7 @@ window1
             index: 7
             name: Light Gray 2
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -317,7 +317,7 @@ window1
             index: 8
             name: Light Gray 1
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -334,7 +334,7 @@ window1
             index: 9
             name: White
             state: checked enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -351,7 +351,7 @@ window1
             index: 10
             name: Very Dark Brown
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -368,7 +368,7 @@ window1
             index: 11
             name: Dark Brown
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -385,7 +385,7 @@ window1
             index: 12
             name: Brown
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -402,7 +402,7 @@ window1
             index: 13
             name: Light Brown
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -419,7 +419,7 @@ window1
             index: 14
             name: Very Light Brown
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -436,7 +436,7 @@ window1
             index: 15
             name: Very Dark Purple
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -453,7 +453,7 @@ window1
             index: 16
             name: Dark Purple
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -470,7 +470,7 @@ window1
             index: 17
             name: Purple
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -487,7 +487,7 @@ window1
             index: 18
             name: Light Purple
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -504,7 +504,7 @@ window1
             index: 19
             name: Very Light Purple
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -521,7 +521,7 @@ window1
             index: 20
             name: Very Dark Red
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -538,7 +538,7 @@ window1
             index: 21
             name: Dark Red
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -555,7 +555,7 @@ window1
             index: 22
             name: Red
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -572,7 +572,7 @@ window1
             index: 23
             name: Light Red
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -589,7 +589,7 @@ window1
             index: 24
             name: Very Light Red
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -606,7 +606,7 @@ window1
             index: 25
             name: Very Dark Orange
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -623,7 +623,7 @@ window1
             index: 26
             name: Dark Orange
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -640,7 +640,7 @@ window1
             index: 27
             name: Orange
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -657,7 +657,7 @@ window1
             index: 28
             name: Light Orange
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -674,7 +674,7 @@ window1
             index: 29
             name: Very Light Orange
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -691,7 +691,7 @@ window1
             index: 30
             name: Very Dark Yellow
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -708,7 +708,7 @@ window1
             index: 31
             name: Dark Yellow
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -725,7 +725,7 @@ window1
             index: 32
             name: Yellow
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -742,7 +742,7 @@ window1
             index: 33
             name: Light Yellow
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -759,7 +759,7 @@ window1
             index: 34
             name: Very Light Yellow
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -776,7 +776,7 @@ window1
             index: 35
             name: Very Dark Green
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -793,7 +793,7 @@ window1
             index: 36
             name: Dark Green
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -810,7 +810,7 @@ window1
             index: 37
             name: Green
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -827,7 +827,7 @@ window1
             index: 38
             name: Light Green
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -844,7 +844,7 @@ window1
             index: 39
             name: Very Light Green
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -861,7 +861,7 @@ window1
             index: 40
             name: Very Dark Blue
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -878,7 +878,7 @@ window1
             index: 41
             name: Dark Blue
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -895,7 +895,7 @@ window1
             index: 42
             name: Blue
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -912,7 +912,7 @@ window1
             index: 43
             name: Light Blue
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -929,7 +929,7 @@ window1
             index: 44
             name: Very Light Blue
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -946,7 +946,7 @@ window1
           index: 1
           name: Custom
           state: enabled multi-line sensitive showing visible
-          toolkit: gtk
+          toolkit: ctk
           <AtkComponent>
           layer: widget
           alpha: 1
@@ -985,7 +985,7 @@ window1
           parent: unnamed-GtkContainerAccessible-1
           index: 2
           state: enabled horizontal sensitive showing visible
-          toolkit: gtk
+          toolkit: ctk
           <AtkComponent>
           layer: widget
           alpha: 1
@@ -996,7 +996,7 @@ window1
             name: Custom color
             description: Create a custom color
             state: enabled focusable sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -1012,7 +1012,7 @@ window1
         parent: chooser
         index: 1
         state: enabled horizontal sensitive showing visible
-        toolkit: gtk
+        toolkit: ctk
         <AtkComponent>
         layer: widget
         alpha: 1
@@ -1021,7 +1021,7 @@ window1
           parent: unnamed-GtkContainerAccessible-50
           index: 0
           state: enabled horizontal sensitive
-          toolkit: gtk
+          toolkit: ctk
           <AtkComponent>
           layer: widget
           alpha: 1
@@ -1030,7 +1030,7 @@ window1
             parent: GtkColorEditor
             index: 0
             state: enabled sensitive visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -1039,7 +1039,7 @@ window1
               parent: overlay
               index: 0
               state: enabled horizontal sensitive visible
-              toolkit: gtk
+              toolkit: ctk
               <AtkComponent>
               layer: widget
               alpha: 1
@@ -1049,7 +1049,7 @@ window1
                 index: 0
                 name: Color Plane
                 state: enabled focusable sensitive visible
-                toolkit: gtk
+                toolkit: ctk
                 <AtkComponent>
                 layer: widget
                 alpha: 1
@@ -1059,7 +1059,7 @@ window1
                 index: 1
                 name: Alpha
                 state: enabled focusable horizontal sensitive visible
-                toolkit: gtk
+                toolkit: ctk
                 <AtkComponent>
                 layer: widget
                 alpha: 1
@@ -1073,7 +1073,7 @@ window1
                 index: 2
                 name: Hue
                 state: enabled focusable sensitive vertical visible
-                toolkit: gtk
+                toolkit: ctk
                 <AtkComponent>
                 layer: widget
                 alpha: 1
@@ -1087,7 +1087,7 @@ window1
                 index: 3
                 name: Color Name
                 state: editable enabled focusable sensitive single-line visible
-                toolkit: gtk
+                toolkit: ctk
                 <AtkComponent>
                 layer: widget
                 alpha: 1
@@ -1128,7 +1128,7 @@ window1
                 parent: grid
                 index: 4
                 state: enabled sensitive visible
-                toolkit: gtk
+                toolkit: ctk
                 <AtkComponent>
                 layer: widget
                 alpha: 1
@@ -1144,7 +1144,7 @@ window1
                 parent: grid
                 index: 5
                 state: enabled focusable sensitive
-                toolkit: gtk
+                toolkit: ctk
                 <AtkComponent>
                 layer: widget
                 alpha: 1
@@ -1159,7 +1159,7 @@ window1
               parent: overlay
               index: 1
               state: enabled horizontal sensitive
-              toolkit: gtk
+              toolkit: ctk
               <AtkComponent>
               layer: widget
               alpha: 1
@@ -1168,7 +1168,7 @@ window1
                 parent: sv_popup
                 index: 0
                 state: enabled horizontal sensitive visible
-                toolkit: gtk
+                toolkit: ctk
                 <AtkComponent>
                 layer: widget
                 alpha: 1
@@ -1178,7 +1178,7 @@ window1
                   index: 0
                   name: Value
                   state: editable enabled focusable horizontal sensitive single-line visible
-                  toolkit: gtk
+                  toolkit: ctk
                   <AtkComponent>
                   layer: widget
                   alpha: 1
@@ -1224,7 +1224,7 @@ window1
                   index: 1
                   name: Saturation
                   state: editable enabled focusable horizontal sensitive single-line visible
-                  toolkit: gtk
+                  toolkit: ctk
                   <AtkComponent>
                   layer: widget
                   alpha: 1
@@ -1270,7 +1270,7 @@ window1
                   index: 2
                   name: V
                   state: enabled multi-line sensitive visible
-                  toolkit: gtk
+                  toolkit: ctk
                   <AtkComponent>
                   layer: widget
                   alpha: 1
@@ -1310,7 +1310,7 @@ window1
                   index: 3
                   name: S
                   state: enabled multi-line sensitive visible
-                  toolkit: gtk
+                  toolkit: ctk
                   <AtkComponent>
                   layer: widget
                   alpha: 1
@@ -1349,7 +1349,7 @@ window1
               parent: overlay
               index: 2
               state: enabled horizontal sensitive
-              toolkit: gtk
+              toolkit: ctk
               <AtkComponent>
               layer: widget
               alpha: 1
@@ -1358,7 +1358,7 @@ window1
                 parent: h_popup
                 index: 0
                 state: enabled horizontal sensitive visible
-                toolkit: gtk
+                toolkit: ctk
                 <AtkComponent>
                 layer: widget
                 alpha: 1
@@ -1368,7 +1368,7 @@ window1
                   index: 0
                   name: Hue
                   state: editable enabled focusable horizontal sensitive single-line visible
-                  toolkit: gtk
+                  toolkit: ctk
                   <AtkComponent>
                   layer: widget
                   alpha: 1
@@ -1414,7 +1414,7 @@ window1
                   index: 1
                   name: H
                   state: enabled multi-line sensitive visible
-                  toolkit: gtk
+                  toolkit: ctk
                   <AtkComponent>
                   layer: widget
                   alpha: 1
@@ -1453,7 +1453,7 @@ window1
               parent: overlay
               index: 3
               state: enabled horizontal sensitive
-              toolkit: gtk
+              toolkit: ctk
               <AtkComponent>
               layer: widget
               alpha: 1
@@ -1462,7 +1462,7 @@ window1
                 parent: a_popup
                 index: 0
                 state: enabled horizontal sensitive visible
-                toolkit: gtk
+                toolkit: ctk
                 <AtkComponent>
                 layer: widget
                 alpha: 1
@@ -1472,7 +1472,7 @@ window1
                   index: 0
                   name: Alpha
                   state: editable enabled focusable horizontal sensitive single-line visible
-                  toolkit: gtk
+                  toolkit: ctk
                   <AtkComponent>
                   layer: widget
                   alpha: 1
@@ -1518,7 +1518,7 @@ window1
                   index: 1
                   name: A
                   state: enabled multi-line sensitive visible
-                  toolkit: gtk
+                  toolkit: ctk
                   <AtkComponent>
                   layer: widget
                   alpha: 1
@@ -1557,7 +1557,7 @@ window1
       parent: dialog-vbox1
       index: 1
       state: enabled horizontal sensitive
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: widget
       alpha: 1
@@ -1566,7 +1566,7 @@ window1
         parent: action_box
         index: 0
         state: enabled horizontal sensitive visible
-        toolkit: gtk
+        toolkit: ctk
         <AtkComponent>
         layer: widget
         alpha: 1

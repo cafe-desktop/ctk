@@ -1,4 +1,4 @@
-/* gtktoolitem.c
+/* ctktoolitem.c
  *
  * Copyright (C) 2002 Anders Carlsson <andersca@gnome.org>
  * Copyright (C) 2002 James Henstridge <james@daa.com.au>
@@ -20,21 +20,21 @@
 
 #include "config.h"
 
-#include "gtktoolitem.h"
+#include "ctktoolitem.h"
 
 #include <string.h>
 
-#include "gtkmarshalers.h"
-#include "gtktoolshell.h"
-#include "gtkseparatormenuitem.h"
-#include "gtksizerequest.h"
-#include "deprecated/gtkactivatable.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtkwidgetprivate.h"
+#include "ctkmarshalers.h"
+#include "ctktoolshell.h"
+#include "ctkseparatormenuitem.h"
+#include "ctksizerequest.h"
+#include "deprecated/ctkactivatable.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctkwidgetprivate.h"
 
 /**
- * SECTION:gtktoolitem
+ * SECTION:ctktoolitem
  * @short_description: The base class of widgets that can be added to GtkToolShell
  * @Title: GtkToolItem
  * @see_also: #GtkToolbar, #GtkToolButton, #GtkSeparatorToolItem
@@ -555,11 +555,11 @@ _ctk_tool_item_create_menu_proxy (GtkToolItem *item)
 	  menu_item = ctk_action_create_menu_item (item->priv->action);
 
 	  g_object_ref_sink (menu_item);
-      	  ctk_tool_item_set_proxy_menu_item (item, "gtk-action-menu-item", menu_item);
+      	  ctk_tool_item_set_proxy_menu_item (item, "ctk-action-menu-item", menu_item);
 	  g_object_unref (menu_item);
 	}
       else
-	ctk_tool_item_set_proxy_menu_item (item, "gtk-action-menu-item", NULL);
+	ctk_tool_item_set_proxy_menu_item (item, "ctk-action-menu-item", NULL);
 
       ret = TRUE;
     }

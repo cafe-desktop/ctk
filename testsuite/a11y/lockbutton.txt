@@ -2,7 +2,7 @@ window1
   "window"
   index: 0
   state: enabled resizable sensitive showing visible
-  toolkit: gtk
+  toolkit: ctk
   window-type: normal
   <AtkComponent>
   layer: window
@@ -15,7 +15,7 @@ window1
     description: Dialog is unlocked.
 Click to prevent further changes
     state: enabled focusable sensitive showing visible has-tooltip
-    toolkit: gtk
+    toolkit: ctk
     <AtkComponent>
     layer: widget
     alpha: 1

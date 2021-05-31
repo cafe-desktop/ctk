@@ -17,10 +17,10 @@
 
 #include "config.h"
 
-#include "gtklockbuttonaccessibleprivate.h"
+#include "ctklockbuttonaccessibleprivate.h"
 
-#include "gtk/gtklockbuttonprivate.h"
-#include "gtk/gtkwidgetprivate.h"
+#include "ctk/ctklockbuttonprivate.h"
+#include "ctk/ctkwidgetprivate.h"
 
 G_DEFINE_TYPE (GtkLockButtonAccessible, ctk_lock_button_accessible, CTK_TYPE_BUTTON_ACCESSIBLE)
 

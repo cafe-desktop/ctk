@@ -17,8 +17,8 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
-#include "gtkradiobuttonaccessible.h"
+#include <ctk/ctk.h>
+#include "ctkradiobuttonaccessible.h"
 
 struct _GtkRadioButtonAccessiblePrivate
 {

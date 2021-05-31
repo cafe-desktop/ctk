@@ -2,8 +2,8 @@ include $(top_srcdir)/Makefile.decl
 
 AM_CPPFLAGS = \
 	-I$(top_srcdir) 				\
-	-I$(top_srcdir)/gtk				\
-	-I$(top_builddir)/gtk				\
+	-I$(top_srcdir)/ctk				\
+	-I$(top_builddir)/ctk				\
 	-I$(top_srcdir)/gdk				\
 	-I$(top_builddir)/gdk				\
 	-DCTK_PRINT_BACKEND_ENABLE_UNSUPPORTED		\
@@ -11,18 +11,18 @@ AM_CPPFLAGS = \
 	$(CTK_DEBUG_FLAGS)
 
 LDADDS = \
-	$(top_builddir)/gtk/libgtk-3.la	\
+	$(top_builddir)/ctk/libctk-3.la	\
 	$(CTK_DEP_LIBS)
 
-backenddir = $(libdir)/gtk-3.0/$(CTK_BINARY_VERSION)/printbackends
+backenddir = $(libdir)/ctk-3.0/$(CTK_BINARY_VERSION)/printbackends
 
 backend_LTLIBRARIES = libprintbackend-lpr.la
 
 libprintbackend_lpr_la_SOURCES =	\
-	gtkprintbackendlpr.c
+	ctkprintbackendlpr.c
 
 noinst_HEADERS =			\
-	gtkprintbackendlpr.h
+	ctkprintbackendlpr.h
 
 libprintbackend_lpr_la_LDFLAGS =  -avoid-version -module $(no_undefined)
 libprintbackend_lpr_la_LIBADD = $(LDADDS)

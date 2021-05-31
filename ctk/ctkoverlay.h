@@ -1,6 +1,6 @@
 /*
- * gtkoverlay.h
- * This file is part of gtk
+ * ctkoverlay.h
+ * This file is part of ctk
  *
  * Copyright (C) 2011 - Ignacio Casal Quinteiro
  *
@@ -22,10 +22,10 @@
 #define __CTK_OVERLAY_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkbin.h>
+#include <ctk/ctkbin.h>
 
 G_BEGIN_DECLS
 

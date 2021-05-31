@@ -19,53 +19,53 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
 
-#include "gtkwindow.h"
+#include "ctkwindow.h"
 
 #include <string.h>
 #include <stdlib.h>
 #include <errno.h>
 #include <limits.h>
 
-#include "gtkprivate.h"
-#include "gtkwindowprivate.h"
-#include "gtkaccelgroupprivate.h"
-#include "gtkbindings.h"
-#include "gtkcsscornervalueprivate.h"
-#include "gtkcssiconthemevalueprivate.h"
-#include "gtkcssrgbavalueprivate.h"
-#include "gtkcssshadowsvalueprivate.h"
-#include "gtkkeyhash.h"
-#include "gtkmain.h"
-#include "gtkmnemonichash.h"
-#include "gtkmenubar.h"
-#include "gtkmenushellprivate.h"
-#include "gtkicontheme.h"
-#include "gtkmarshalers.h"
-#include "gtkplug.h"
-#include "gtkbuildable.h"
-#include "gtkbuilderprivate.h"
-#include "gtkwidgetprivate.h"
-#include "gtkcontainerprivate.h"
-#include "gtkintl.h"
-#include "gtkstylecontextprivate.h"
-#include "gtktypebuiltins.h"
-#include "gtkbox.h"
-#include "gtkbutton.h"
-#include "gtkheaderbar.h"
-#include "gtkheaderbarprivate.h"
-#include "gtkpopoverprivate.h"
-#include "a11y/gtkwindowaccessible.h"
-#include "a11y/gtkcontaineraccessibleprivate.h"
-#include "gtkapplicationprivate.h"
-#include "gtkgestureprivate.h"
+#include "ctkprivate.h"
+#include "ctkwindowprivate.h"
+#include "ctkaccelgroupprivate.h"
+#include "ctkbindings.h"
+#include "ctkcsscornervalueprivate.h"
+#include "ctkcssiconthemevalueprivate.h"
+#include "ctkcssrgbavalueprivate.h"
+#include "ctkcssshadowsvalueprivate.h"
+#include "ctkkeyhash.h"
+#include "ctkmain.h"
+#include "ctkmnemonichash.h"
+#include "ctkmenubar.h"
+#include "ctkmenushellprivate.h"
+#include "ctkicontheme.h"
+#include "ctkmarshalers.h"
+#include "ctkplug.h"
+#include "ctkbuildable.h"
+#include "ctkbuilderprivate.h"
+#include "ctkwidgetprivate.h"
+#include "ctkcontainerprivate.h"
+#include "ctkintl.h"
+#include "ctkstylecontextprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctkbox.h"
+#include "ctkbutton.h"
+#include "ctkheaderbar.h"
+#include "ctkheaderbarprivate.h"
+#include "ctkpopoverprivate.h"
+#include "a11y/ctkwindowaccessible.h"
+#include "a11y/ctkcontaineraccessibleprivate.h"
+#include "ctkapplicationprivate.h"
+#include "ctkgestureprivate.h"
 #include "inspector/init.h"
 #include "inspector/window.h"
-#include "gtkcssstylepropertyprivate.h"
+#include "ctkcssstylepropertyprivate.h"
 
 #include "gdk/gdk-private.h"
 
@@ -86,7 +86,7 @@
 #endif
 
 /**
- * SECTION:gtkwindow
+ * SECTION:ctkwindow
  * @title: GtkWindow
  * @short_description: Toplevel which can contain other widgets
  *
@@ -690,10 +690,10 @@ ctk_window_class_init (GtkWindowClass *klass)
   widget_class = (GtkWidgetClass*) klass;
   container_class = (GtkContainerClass*) klass;
   
-  quark_ctk_embedded = g_quark_from_static_string ("gtk-embedded");
-  quark_ctk_window_key_hash = g_quark_from_static_string ("gtk-window-key-hash");
-  quark_ctk_window_icon_info = g_quark_from_static_string ("gtk-window-icon-info");
-  quark_ctk_buildable_accels = g_quark_from_static_string ("gtk-window-buildable-accels");
+  quark_ctk_embedded = g_quark_from_static_string ("ctk-embedded");
+  quark_ctk_window_key_hash = g_quark_from_static_string ("ctk-window-key-hash");
+  quark_ctk_window_icon_info = g_quark_from_static_string ("ctk-window-icon-info");
+  quark_ctk_buildable_accels = g_quark_from_static_string ("ctk-window-buildable-accels");
 
   gobject_class->constructed = ctk_window_constructed;
   gobject_class->dispose = ctk_window_dispose;
@@ -1355,7 +1355,7 @@ ctk_window_close (GtkWindow *window)
     return;
 
   window->priv->delete_event_handler = gdk_threads_add_idle_full (G_PRIORITY_DEFAULT, send_delete_event, window, NULL);
-  g_source_set_name_by_id (window->priv->delete_event_handler, "[gtk+] send_delete_event");
+  g_source_set_name_by_id (window->priv->delete_event_handler, "[ctk+] send_delete_event");
 }
 
 static void
@@ -1391,13 +1391,13 @@ ctk_window_titlebar_action (GtkWindow      *window,
     {
     case GDK_BUTTON_PRIMARY:
       if (n_press == 2)
-        g_object_get (settings, "gtk-titlebar-double-click", &action, NULL);
+        g_object_get (settings, "ctk-titlebar-double-click", &action, NULL);
       break;
     case GDK_BUTTON_MIDDLE:
-      g_object_get (settings, "gtk-titlebar-middle-click", &action, NULL);
+      g_object_get (settings, "ctk-titlebar-middle-click", &action, NULL);
       break;
     case GDK_BUTTON_SECONDARY:
-      g_object_get (settings, "gtk-titlebar-right-click", &action, NULL);
+      g_object_get (settings, "ctk-titlebar-right-click", &action, NULL);
       break;
     }
 
@@ -1409,7 +1409,7 @@ ctk_window_titlebar_action (GtkWindow      *window,
   else if (g_str_has_prefix (action, "toggle-maximize"))
     {
       /*
-       * gtk header bar won't show the maximize button if the following
+       * ctk header bar won't show the maximize button if the following
        * properties are not met, apply the same to title bar actions for
        * consistency.
        */
@@ -1591,7 +1591,7 @@ drag_gesture_update_cb (GtkGestureDrag *gesture,
 
   settings = ctk_widget_get_settings (CTK_WIDGET (window));
   g_object_get (settings,
-                "gtk-double-click-distance", &double_click_distance,
+                "ctk-double-click-distance", &double_click_distance,
                 NULL);
 
   if (ABS (offset_x) > double_click_distance ||
@@ -1712,7 +1712,7 @@ ctk_window_init (GtkWindow *window)
 
 #ifdef GDK_WINDOWING_X11
       g_signal_connect (ctk_settings_get_for_screen (priv->screen),
-                        "notify::gtk-application-prefer-dark-theme",
+                        "notify::ctk-application-prefer-dark-theme",
                         G_CALLBACK (ctk_window_on_theme_variant_changed), window);
 #endif
     }
@@ -2308,7 +2308,7 @@ ctk_window_buildable_custom_finished (GtkBuildable  *buildable,
  * dialogs, though in some other toolkits dialogs are called “popups”.
  * In GTK+, #CTK_WINDOW_POPUP means a pop-up menu or pop-up tooltip.
  * On X11, popup windows are not controlled by the
- * [window manager][gtk-X11-arch].
+ * [window manager][ctk-X11-arch].
  *
  * If you simply want an undecorated window (no window borders), use
  * ctk_window_set_decorated(), don’t use #CTK_WINDOW_POPUP.
@@ -2372,7 +2372,7 @@ ctk_window_set_title_internal (GtkWindow   *window,
  * 
  * Sets the title of the #GtkWindow. The title of a window will be
  * displayed in its title bar; on the X Window System, the title bar
- * is rendered by the [window manager][gtk-X11-arch],
+ * is rendered by the [window manager][ctk-X11-arch],
  * so exactly how the title appears to users may vary
  * according to a user’s exact configuration. The title should help a
  * user distinguish this window from other windows they may have
@@ -2453,7 +2453,7 @@ ctk_window_set_wmclass (GtkWindow *window,
  * This function is only useful on X11, not with other GTK+ targets.
  * 
  * In combination with the window title, the window role allows a
- * [window manager][gtk-X11-arch] to identify "the
+ * [window manager][ctk-X11-arch] to identify "the
  * same" window when an application is restarted. So for example you
  * might set the “toolbox” role on your app’s toolbox window, so that
  * when the user restarts their session, the window manager can put
@@ -2753,7 +2753,7 @@ _ctk_window_notify_keys_changed (GtkWindow *window)
   if (!priv->keys_changed_handler)
     {
       priv->keys_changed_handler = gdk_threads_add_idle (handle_keys_changed, window);
-      g_source_set_name_by_id (priv->keys_changed_handler, "[gtk+] handle_keys_changed");
+      g_source_set_name_by_id (priv->keys_changed_handler, "[ctk+] handle_keys_changed");
     }
 }
 
@@ -3059,7 +3059,7 @@ ctk_window_activate_default (GtkWindow *window)
  * with other windows in the same application. To keep modal dialogs
  * on top of main application windows, use
  * ctk_window_set_transient_for() to make the dialog transient for the
- * parent; most [window managers][gtk-X11-arch]
+ * parent; most [window managers][ctk-X11-arch]
  * will then disallow lowering the dialog below the parent.
  * 
  * 
@@ -3275,7 +3275,7 @@ ctk_window_unset_transient_for  (GtkWindow *window)
  *
  * Dialog windows should be set transient for the main application
  * window they were spawned from. This allows
- * [window managers][gtk-X11-arch] to e.g. keep the
+ * [window managers][ctk-X11-arch] to e.g. keep the
  * dialog on top of the main window, or center the dialog over the
  * main window. ctk_dialog_new_with_buttons() and other convenience
  * functions in GTK+ will sometimes call
@@ -4289,7 +4289,7 @@ _ctk_window_titlebar_shows_app_menu (GtkWindow *window)
  * @setting: %TRUE to decorate the window
  *
  * By default, windows are decorated with a title bar, resize
- * controls, etc.  Some [window managers][gtk-X11-arch]
+ * controls, etc.  Some [window managers][ctk-X11-arch]
  * allow GTK+ to disable these decorations, creating a
  * borderless window. If you set the decorated property to %FALSE
  * using this function, GTK+ will do its best to convince the window
@@ -4362,7 +4362,7 @@ ctk_window_get_decorated (GtkWindow *window)
  * @setting: %TRUE to decorate the window as deletable
  *
  * By default, windows have a close button in the window frame. Some 
- * [window managers][gtk-X11-arch] allow GTK+ to 
+ * [window managers][ctk-X11-arch] allow GTK+ to 
  * disable this button. If you set the deletable property to %FALSE
  * using this function, GTK+ will do its best to convince the window
  * manager not to show a close button. Depending on the system, this
@@ -5438,7 +5438,7 @@ ctk_window_resize_to_geometry (GtkWindow *window,
  * Obtains the current size of @window.
  *
  * If @window is not visible on screen, this function return the size GTK+
- * will suggest to the [window manager][gtk-X11-arch] for the initial window
+ * will suggest to the [window manager][ctk-X11-arch] for the initial window
  * size (but this is not reliably the same as the size the window manager
  * will actually select). See: ctk_window_set_default_size().
  *
@@ -5634,7 +5634,7 @@ ctk_window_translate_csd_pos (GtkWindow *window,
  * @x: X coordinate to move window to
  * @y: Y coordinate to move window to
  *
- * Asks the [window manager][gtk-X11-arch] to move
+ * Asks the [window manager][ctk-X11-arch] to move
  * @window to the given position.  Window managers are free to ignore
  * this; most window managers ignore requests for initial window
  * positions (instead using a user-defined placement algorithm) and
@@ -10582,7 +10582,7 @@ ctk_window_present_with_time (GtkWindow *window,
  * Asks to iconify (i.e. minimize) the specified @window. Note that
  * you shouldn’t assume the window is definitely iconified afterward,
  * because other entities (e.g. the user or
- * [window manager][gtk-X11-arch]) could deiconify it
+ * [window manager][ctk-X11-arch]) could deiconify it
  * again, or there may not be a window manager in which case
  * iconification isn’t possible, etc. But normally the window will end
  * up iconified. Just don’t write code that crashes if not.
@@ -10616,7 +10616,7 @@ ctk_window_iconify (GtkWindow *window)
  * Asks to deiconify (i.e. unminimize) the specified @window. Note
  * that you shouldn’t assume the window is definitely deiconified
  * afterward, because other entities (e.g. the user or
- * [window manager][gtk-X11-arch])) could iconify it
+ * [window manager][ctk-X11-arch])) could iconify it
  * again before your code which assumes deiconification gets to run.
  *
  * You can track iconification via the “window-state-event” signal
@@ -10644,7 +10644,7 @@ ctk_window_deiconify (GtkWindow *window)
  * Asks to stick @window, which means that it will appear on all user
  * desktops. Note that you shouldn’t assume the window is definitely
  * stuck afterward, because other entities (e.g. the user or
- * [window manager][gtk-X11-arch] could unstick it
+ * [window manager][ctk-X11-arch] could unstick it
  * again, and some window managers do not support sticking
  * windows. But normally the window will end up stuck. Just don't
  * write code that crashes if not.
@@ -10676,7 +10676,7 @@ ctk_window_stick (GtkWindow *window)
  * Asks to unstick @window, which means that it will appear on only
  * one of the user’s desktops. Note that you shouldn’t assume the
  * window is definitely unstuck afterward, because other entities
- * (e.g. the user or [window manager][gtk-X11-arch]) could
+ * (e.g. the user or [window manager][ctk-X11-arch]) could
  * stick it again. But normally the window will
  * end up stuck. Just don’t write code that crashes if not.
  *
@@ -10705,7 +10705,7 @@ ctk_window_unstick (GtkWindow *window)
  * Asks to maximize @window, so that it becomes full-screen. Note that
  * you shouldn’t assume the window is definitely maximized afterward,
  * because other entities (e.g. the user or
- * [window manager][gtk-X11-arch]) could unmaximize it
+ * [window manager][ctk-X11-arch]) could unmaximize it
  * again, and not all window managers support maximization. But
  * normally the window will end up maximized. Just don’t write code
  * that crashes if not.
@@ -10739,7 +10739,7 @@ ctk_window_maximize (GtkWindow *window)
  *
  * Asks to unmaximize @window. Note that you shouldn’t assume the
  * window is definitely unmaximized afterward, because other entities
- * (e.g. the user or [window manager][gtk-X11-arch])
+ * (e.g. the user or [window manager][ctk-X11-arch])
  * could maximize it again, and not all window
  * managers honor requests to unmaximize. But normally the window will
  * end up unmaximized. Just don’t write code that crashes if not.
@@ -10769,7 +10769,7 @@ ctk_window_unmaximize (GtkWindow *window)
  * Asks to place @window in the fullscreen state. Note that you
  * shouldn’t assume the window is definitely full screen afterward,
  * because other entities (e.g. the user or
- * [window manager][gtk-X11-arch]) could unfullscreen it
+ * [window manager][ctk-X11-arch]) could unfullscreen it
  * again, and not all window managers honor requests to fullscreen
  * windows. But normally the window will end up fullscreen. Just
  * don’t write code that crashes if not.
@@ -10842,7 +10842,7 @@ ctk_window_fullscreen_on_monitor (GtkWindow *window,
  * Asks to toggle off the fullscreen state for @window. Note that you
  * shouldn’t assume the window is definitely not full screen
  * afterward, because other entities (e.g. the user or
- * [window manager][gtk-X11-arch]) could fullscreen it
+ * [window manager][ctk-X11-arch]) could fullscreen it
  * again, and not all window managers honor requests to unfullscreen
  * windows. But normally the window will end up restored to its normal
  * state. Just don’t write code that crashes if not.
@@ -10876,7 +10876,7 @@ ctk_window_unfullscreen (GtkWindow *window)
  * Asks to keep @window above, so that it stays on top. Note that
  * you shouldn’t assume the window is definitely above afterward,
  * because other entities (e.g. the user or
- * [window manager][gtk-X11-arch]) could not keep it above,
+ * [window manager][ctk-X11-arch]) could not keep it above,
  * and not all window managers support keeping windows above. But
  * normally the window will end kept above. Just don’t write code
  * that crashes if not.
@@ -10923,7 +10923,7 @@ ctk_window_set_keep_above (GtkWindow *window,
  * Asks to keep @window below, so that it stays in bottom. Note that
  * you shouldn’t assume the window is definitely below afterward,
  * because other entities (e.g. the user or
- * [window manager][gtk-X11-arch]) could not keep it below,
+ * [window manager][ctk-X11-arch]) could not keep it below,
  * and not all window managers support putting windows below. But
  * normally the window will be kept below. Just don’t write code
  * that crashes if not.
@@ -11073,7 +11073,7 @@ ctk_window_get_gravity (GtkWindow *window)
  * Starts resizing a window. This function is used if an application
  * has window resizing controls. When GDK can support it, the resize
  * will be done using the standard mechanism for the
- * [window manager][gtk-X11-arch] or windowing
+ * [window manager][ctk-X11-arch] or windowing
  * system. Otherwise, GDK will try to emulate window resizing,
  * potentially not all that well, depending on the windowing system.
  */
@@ -11111,7 +11111,7 @@ ctk_window_begin_resize_drag  (GtkWindow     *window,
  * Starts moving a window. This function is used if an application has
  * window movement grips. When GDK can support it, the window movement
  * will be done using the standard mechanism for the
- * [window manager][gtk-X11-arch] or windowing
+ * [window manager][ctk-X11-arch] or windowing
  * system. Otherwise, GDK will try to emulate window movement,
  * potentially not all that well, depending on the windowing system.
  */
@@ -11202,7 +11202,7 @@ ctk_window_set_screen (GtkWindow *window,
                         G_CALLBACK (ctk_window_on_composited_changed), window);
 #ifdef GDK_WINDOWING_X11
       g_signal_connect (ctk_settings_get_for_screen (screen),
-                        "notify::gtk-application-prefer-dark-theme",
+                        "notify::ctk-application-prefer-dark-theme",
                         G_CALLBACK (ctk_window_on_theme_variant_changed), window);
 #endif
 
@@ -11234,7 +11234,7 @@ ctk_window_set_theme_variant (GtkWindow *window)
   gboolean   dark_theme_requested;
 
   g_object_get (ctk_settings_get_for_screen (window->priv->screen),
-                "gtk-application-prefer-dark-theme", &dark_theme_requested,
+                "ctk-application-prefer-dark-theme", &dark_theme_requested,
                 NULL);
 
   gdk_window = _ctk_widget_get_window (CTK_WIDGET (window));
@@ -11616,7 +11616,7 @@ ctk_XParseGeometry (const char   *string,
  * ctk_widget_show_all() on the contents and ctk_window_set_geometry_hints()
  * on the window.
  * |[<!-- language="C" -->
- * #include <gtk/gtk.h>
+ * #include <ctk/ctk.h>
  *
  * static void
  * fill_with_content (GtkWidget *vbox)
@@ -11775,7 +11775,7 @@ ctk_window_activate_menubar (GtkWindow   *window,
   GdkModifierType mods = 0;
 
   g_object_get (ctk_widget_get_settings (CTK_WIDGET (window)),
-                "gtk-menu-bar-accel", &accel,
+                "ctk-menu-bar-accel", &accel,
                 NULL);
 
   if (accel == NULL || *accel == 0)
@@ -12015,8 +12015,8 @@ ctk_window_activate_key (GtkWindow   *window,
 					      event->group);
 
       g_object_get (ctk_widget_get_settings (CTK_WIDGET (window)),
-                    "gtk-enable-mnemonics", &enable_mnemonics,
-                    "gtk-enable-accels", &enable_accels,
+                    "ctk-enable-mnemonics", &enable_mnemonics,
+                    "ctk-enable-accels", &enable_accels,
                     NULL);
 
       for (tmp_list = entries; tmp_list; tmp_list = tmp_list->next)
@@ -12361,7 +12361,7 @@ _ctk_window_schedule_mnemonics_visible (GtkWindow *window)
 
   window->priv->mnemonics_display_timeout_id =
     gdk_threads_add_timeout (MNEMONICS_DELAY, schedule_mnemonics_visible_cb, window);
-  g_source_set_name_by_id (window->priv->mnemonics_display_timeout_id, "[gtk+] schedule_mnemonics_visible_cb");
+  g_source_set_name_by_id (window->priv->mnemonics_display_timeout_id, "[ctk+] schedule_mnemonics_visible_cb");
 }
 
 /**
@@ -12748,7 +12748,7 @@ ctk_window_update_debugging (void)
       ctk_window_update_debugging_id == 0)
     {
       ctk_window_update_debugging_id = gdk_threads_add_idle (update_debugging, NULL);
-      g_source_set_name_by_id (ctk_window_update_debugging_id, "[gtk+] ctk_window_update_debugging");
+      g_source_set_name_by_id (ctk_window_update_debugging_id, "[ctk+] ctk_window_update_debugging");
     }
 }
 
@@ -12841,7 +12841,7 @@ inspector_keybinding_enabled (gboolean *warn)
   *warn = FALSE;
 
   schema = g_settings_schema_source_lookup (g_settings_schema_source_get_default (),
-                                            "org.gtk.Settings.Debug",
+                                            "org.ctk.Settings.Debug",
                                             TRUE);
 
   if (schema)
@@ -12863,7 +12863,7 @@ set_warn_again (gboolean warn)
   GSettings *settings;
 
   schema = g_settings_schema_source_lookup (g_settings_schema_source_get_default (),
-                                            "org.gtk.Settings.Debug",
+                                            "org.ctk.Settings.Debug",
                                             TRUE);
 
   if (schema)

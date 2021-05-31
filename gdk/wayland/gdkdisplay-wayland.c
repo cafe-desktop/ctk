@@ -57,7 +57,7 @@
  * The functions in this section are specific to the GDK Wayland backend.
  * To use them, you need to include the `<gdk/gdkwayland.h>` header and use
  * the Wayland-specific pkg-config files to build your application (either
- * `gdk-wayland-3.0` or `gtk+-wayland-3.0`).
+ * `gdk-wayland-3.0` or `ctk+-wayland-3.0`).
  *
  * To make your code compile with other GDK backends, guard backend-specific
  * calls by an ifdef as follows. Since GDK may be built with multiple
@@ -1179,14 +1179,14 @@ _gdk_wayland_display_load_cursor_theme (GdkWaylandDisplay *display_wayland)
   g_assert (display_wayland->shm);
 
   g_value_init (&v, G_TYPE_INT);
-  if (gdk_screen_get_setting (display_wayland->screen, "gtk-cursor-theme-size", &v))
+  if (gdk_screen_get_setting (display_wayland->screen, "ctk-cursor-theme-size", &v))
     size = g_value_get_int (&v);
   else
     size = 32;
   g_value_unset (&v);
 
   g_value_init (&v, G_TYPE_STRING);
-  if (gdk_screen_get_setting (display_wayland->screen, "gtk-cursor-theme-name", &v))
+  if (gdk_screen_get_setting (display_wayland->screen, "ctk-cursor-theme-name", &v))
     name = g_value_get_string (&v);
   else
     name = "default";

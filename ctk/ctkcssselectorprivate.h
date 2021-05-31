@@ -18,8 +18,8 @@
 #ifndef __CTK_CSS_SELECTOR_PRIVATE_H__
 #define __CTK_CSS_SELECTOR_PRIVATE_H__
 
-#include "gtk/gtkcssmatcherprivate.h"
-#include "gtk/gtkcssparserprivate.h"
+#include "ctk/ctkcssmatcherprivate.h"
+#include "ctk/ctkcssparserprivate.h"
 
 G_BEGIN_DECLS
 

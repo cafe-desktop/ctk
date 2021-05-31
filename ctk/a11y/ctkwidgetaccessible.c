@@ -17,12 +17,12 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #ifdef GDK_WINDOWING_X11
 #include <gdk/x11/gdkx.h>
 #endif
-#include "gtkwidgetaccessibleprivate.h"
-#include "gtknotebookpageaccessible.h"
+#include "ctkwidgetaccessibleprivate.h"
+#include "ctknotebookpageaccessible.h"
 
 struct _GtkWidgetAccessiblePrivate
 {
@@ -57,7 +57,7 @@ focus_cb (GtkWidget     *widget,
   return FALSE;
 }
 
-/* Translate GtkWidget property change notification to the notify_gtk vfunc */
+/* Translate GtkWidget property change notification to the notify_ctk vfunc */
 static void
 notify_cb (GObject    *obj,
            GParamSpec *pspec)
@@ -67,8 +67,8 @@ notify_cb (GObject    *obj,
 
   widget = CTK_WIDGET_ACCESSIBLE (ctk_widget_get_accessible (CTK_WIDGET (obj)));
   klass = CTK_WIDGET_ACCESSIBLE_GET_CLASS (widget);
-  if (klass->notify_gtk)
-    klass->notify_gtk (obj, pspec);
+  if (klass->notify_ctk)
+    klass->notify_ctk (obj, pspec);
 }
 
 /* Translate GtkWidget::size-allocate to AtkComponent::bounds-changed */
@@ -352,7 +352,7 @@ ctk_widget_accessible_ref_state_set (AtkObject *accessible)
        * We do not currently generate notifications when an ATK object
        * corresponding to a GtkWidget changes visibility by being scrolled
        * on or off the screen.  The testcase for this is the main window
-       * of the testgtk application in which a set of buttons in a GtkVBox
+       * of the testctk application in which a set of buttons in a GtkVBox
        * is in a scrolled window with a viewport.
        *
        * To generate the notifications we would need to do the following:
@@ -457,7 +457,7 @@ ctk_widget_accessible_get_index_in_parent (AtkObject *accessible)
   return index;
 }
 
-/* This function is the default implementation for the notify_gtk
+/* This function is the default implementation for the notify_ctk
  * vfunc which gets called when a property changes value on the
  * GtkWidget associated with a GtkWidgetAccessible. It constructs
  * an AtkPropertyValues structure and emits a “property_changed”
@@ -465,7 +465,7 @@ ctk_widget_accessible_get_index_in_parent (AtkObject *accessible)
  * to be called.
  */
 static void
-ctk_widget_accessible_notify_gtk (GObject    *obj,
+ctk_widget_accessible_notify_ctk (GObject    *obj,
                                   GParamSpec *pspec)
 {
   GtkWidget* widget = CTK_WIDGET (obj);
@@ -532,7 +532,7 @@ ctk_widget_accessible_get_attributes (AtkObject *obj)
 
   toolkit = g_new (AtkAttribute, 1);
   toolkit->name = g_strdup ("toolkit");
-  toolkit->value = g_strdup ("gtk");
+  toolkit->value = g_strdup ("ctk");
 
   attributes = g_slist_append (NULL, toolkit);
 
@@ -544,7 +544,7 @@ ctk_widget_accessible_class_init (GtkWidgetAccessibleClass *klass)
 {
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
 
-  klass->notify_gtk = ctk_widget_accessible_notify_gtk;
+  klass->notify_ctk = ctk_widget_accessible_notify_ctk;
 
   class->get_description = ctk_widget_accessible_get_description;
   class->get_parent = ctk_widget_accessible_get_parent;

@@ -17,9 +17,9 @@
 
 #include "config.h"
 
-#include "gtkheaderbaraccessible.h"
+#include "ctkheaderbaraccessible.h"
 
-#include "gtkcontainerprivate.h"
+#include "ctkcontainerprivate.h"
 
 G_DEFINE_TYPE (GtkHeaderBarAccessible, ctk_header_bar_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)
 

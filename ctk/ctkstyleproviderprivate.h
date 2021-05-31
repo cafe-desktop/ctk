@@ -19,11 +19,11 @@
 #define __CTK_STYLE_PROVIDER_PRIVATE_H__
 
 #include <glib-object.h>
-#include "gtk/gtkcsskeyframesprivate.h"
-#include "gtk/gtkcsslookupprivate.h"
-#include "gtk/gtkcssmatcherprivate.h"
-#include "gtk/gtkcssvalueprivate.h"
-#include <gtk/gtktypes.h>
+#include "ctk/ctkcsskeyframesprivate.h"
+#include "ctk/ctkcsslookupprivate.h"
+#include "ctk/ctkcssmatcherprivate.h"
+#include "ctk/ctkcssvalueprivate.h"
+#include <ctk/ctktypes.h>
 
 G_BEGIN_DECLS
 

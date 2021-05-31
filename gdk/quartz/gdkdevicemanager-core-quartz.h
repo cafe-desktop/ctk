@@ -1,7 +1,7 @@
 /* gdkdevicemanager-quartz.h
  *
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
- * Copyright (C) 2010  Kristian Rietveld  <kris@gtk.org>
+ * Copyright (C) 2010  Kristian Rietveld  <kris@ctk.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public

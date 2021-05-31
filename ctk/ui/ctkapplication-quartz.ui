@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<interface domain="gtk30">
+<interface domain="ctk30">
   <menu id="app-menu">
     <section>
       <item>
         <!-- used for the application menu on MacOS.  %s is replaced with the application name. -->
         <attribute name="label" translatable="yes">About %s</attribute>
         <attribute name="action">app.about</attribute>
-        <attribute name="x-gtk-private-special">replace-appname</attribute>
+        <attribute name="x-ctk-private-special">replace-appname</attribute>
       </item>
     </section>
     <section>
@@ -20,27 +20,27 @@
       <item>
         <!-- used for the application menu on MacOS -->
         <attribute name="label" translatable="yes">Services</attribute>
-        <attribute name="x-gtk-private-special">services-submenu</attribute>
+        <attribute name="x-ctk-private-special">services-submenu</attribute>
       </item>
     </section>
     <section>
       <item>
         <!-- used for the application menu on MacOS.  %s is replaced with the application name. -->
         <attribute name="label" translatable="yes">Hide %s</attribute>
-        <attribute name="x-gtk-private-special">hide-this</attribute>
-        <attribute name="action">gtkinternal.hide</attribute>
+        <attribute name="x-ctk-private-special">hide-this</attribute>
+        <attribute name="action">ctkinternal.hide</attribute>
       </item>
       <item>
         <!-- used for the application menu on MacOS -->
         <attribute name="label" translatable="yes">Hide Others</attribute>
-        <attribute name="x-gtk-private-special">hide-others</attribute>
-        <attribute name="action">gtkinternal.hide-others</attribute>
+        <attribute name="x-ctk-private-special">hide-others</attribute>
+        <attribute name="action">ctkinternal.hide-others</attribute>
       </item>
       <item>
         <!-- used for the application menu on MacOS -->
         <attribute name="label" translatable="yes">Show All</attribute>
-        <attribute name="x-gtk-private-special">show-all</attribute>
-        <attribute name="action">gtkinternal.show-all</attribute>
+        <attribute name="x-ctk-private-special">show-all</attribute>
+        <attribute name="action">ctkinternal.show-all</attribute>
       </item>
     </section>
     <section>
@@ -48,7 +48,7 @@
         <!-- used for the application menu on MacOS.  %s is replaced with the application name. -->
         <attribute name="label" translatable="yes">Quit %s</attribute>
         <attribute name="action">app.quit</attribute>
-        <attribute name="x-gtk-private-special">replace-appname</attribute>
+        <attribute name="x-ctk-private-special">replace-appname</attribute>
       </item>
     </section>
   </menu>

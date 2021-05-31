@@ -18,10 +18,10 @@
 #include "config.h"
 
 #include <string.h>
-#include <gtk/gtk.h>
-#include "gtkimageaccessible.h"
-#include "gtktoolbarprivate.h"
-#include "gtkintl.h"
+#include <ctk/ctk.h>
+#include "ctkimageaccessible.h"
+#include "ctktoolbarprivate.h"
+#include "ctkintl.h"
 
 struct _GtkImageAccessiblePrivate
 {

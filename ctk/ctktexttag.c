@@ -1,4 +1,4 @@
-/* gtktexttag.c - text tag object
+/* ctktexttag.c - text tag object
  *
  * Copyright (c) 1992-1994 The Regents of the University of California.
  * Copyright (c) 1994-1997 Sun Microsystems, Inc.
@@ -48,7 +48,7 @@
  */
 
 /**
- * SECTION:gtktexttag
+ * SECTION:ctktexttag
  * @Title: GtkTextTag
  * @Short_description: A tag that can be applied to text in a GtkTextBuffer
  *
@@ -61,7 +61,7 @@
  * before using them with that buffer.
  *
  * ctk_text_buffer_create_tag() is the best way to create tags.
- * See “gtk3-demo” for numerous examples.
+ * See “ctk3-demo” for numerous examples.
  *
  * For each property of #GtkTextTag, there is a “set” property, e.g.
  * “font-set” corresponds to “font”. These “set” properties reflect
@@ -74,15 +74,15 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "gtktextattributesprivate.h"
-#include "gtktexttag.h"
-#include "gtktexttypes.h"
-#include "gtktexttagtable.h"
-#include "gtktexttagtableprivate.h"
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
-#include "gtkprivate.h"
-#include "gtktypebuiltins.h"
+#include "ctktextattributesprivate.h"
+#include "ctktexttag.h"
+#include "ctktexttypes.h"
+#include "ctktexttagtable.h"
+#include "ctktexttagtableprivate.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
+#include "ctkprivate.h"
+#include "ctktypebuiltins.h"
 
 enum {
   EVENT,

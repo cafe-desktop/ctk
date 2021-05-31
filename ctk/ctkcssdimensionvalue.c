@@ -17,10 +17,10 @@
 
 #include "config.h"
 
-#include "gtkcssdimensionvalueprivate.h"
+#include "ctkcssdimensionvalueprivate.h"
 
-#include "gtkcssenumvalueprivate.h"
-#include "gtkstylepropertyprivate.h"
+#include "ctkcssenumvalueprivate.h"
+#include "ctkstylepropertyprivate.h"
 
 #include "fallback-c89.c"
 

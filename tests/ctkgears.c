@@ -42,7 +42,7 @@
 #include <string.h>
 #include <epoxy/gl.h>
 
-#include "gtkgears.h"
+#include "ctkgears.h"
 
 #define STRIPS_PER_TOOTH 7
 #define VERTICES_PER_TOOTH 34

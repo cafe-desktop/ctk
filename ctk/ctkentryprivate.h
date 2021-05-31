@@ -1,5 +1,5 @@
-/* gtkentryprivate.h
- * Copyright (C) 2003  Kristian Rietveld  <kris@gtk.org>
+/* ctkentryprivate.h
+ * Copyright (C) 2003  Kristian Rietveld  <kris@ctk.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -18,13 +18,13 @@
 #ifndef __CTK_ENTRY_PRIVATE_H__
 #define __CTK_ENTRY_PRIVATE_H__
 
-#include <gtk/gtktreeviewcolumn.h>
-#include <gtk/gtktreemodelfilter.h>
-#include <gtk/gtkliststore.h>
-#include <gtk/gtkentrycompletion.h>
-#include <gtk/gtkentry.h>
-#include <gtk/gtkcssgadgetprivate.h>
-#include <gtk/gtkspinbutton.h>
+#include <ctk/ctktreeviewcolumn.h>
+#include <ctk/ctktreemodelfilter.h>
+#include <ctk/ctkliststore.h>
+#include <ctk/ctkentrycompletion.h>
+#include <ctk/ctkentry.h>
+#include <ctk/ctkcssgadgetprivate.h>
+#include <ctk/ctkspinbutton.h>
 
 G_BEGIN_DECLS
 
@@ -92,7 +92,7 @@ GtkCssGadget* ctk_entry_get_gadget         (GtkEntry  *entry);
 void     _ctk_entry_grab_focus             (GtkEntry  *entry,
                                             gboolean   select_all);
 
-/* in gtkspinbutton.c (because I'm too lazy to create gtkspinbuttonprivate.h) */
+/* in ctkspinbutton.c (because I'm too lazy to create ctkspinbuttonprivate.h) */
 gint     ctk_spin_button_get_text_width    (GtkSpinButton *spin_button);
 
 void     ctk_entry_enter_text              (GtkEntry   *entry,

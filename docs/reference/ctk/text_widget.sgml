@@ -197,7 +197,7 @@ foreground color &mdash; use CSS to override their default values.
 </para>
 
 <para>
-The <application>gtk-demo</application> application that comes with
+The <application>ctk-demo</application> application that comes with
 GTK+ contains more example code for #GtkTextView.
 </para>
 

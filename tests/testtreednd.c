@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 typedef GtkListStore MyModel;
 typedef GtkListStoreClass MyModelClass;

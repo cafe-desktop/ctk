@@ -12,13 +12,13 @@
     <releaseinfo>
       This document is for the GTK+ 3 library, version &version;.
       The latest versions can be found online at
-      <ulink role="online-location" url="https://developer.gnome.org/gtk3/">https://developer.gnome.org/gtk3/</ulink>.
+      <ulink role="online-location" url="https://developer.gnome.org/ctk3/">https://developer.gnome.org/ctk3/</ulink>.
       If you are looking for the older GTK+ 2 series of libraries,
-      see <ulink role="online-location" url="https://developer.gnome.org/gtk2/">https://developer.gnome.org/gtk2/</ulink>.
+      see <ulink role="online-location" url="https://developer.gnome.org/ctk2/">https://developer.gnome.org/ctk2/</ulink>.
     </releaseinfo>
   </bookinfo>
 
-  <part id="gtk">
+  <part id="ctk">
     <title>GTK+ Overview</title>
     <xi:include href="overview.xml"/>
     <xi:include href="xml/getting_started.xml"/>
@@ -28,7 +28,7 @@
     <xi:include href="xml/input-handling.xml" />
   </part>
 
-  <part id="gtkobjects">
+  <part id="ctkobjects">
     <title>GTK+ Widgets and Objects</title>
 
     <chapter>
@@ -43,338 +43,338 @@
 
     <chapter id="Application">
       <title>Application support</title>
-      <xi:include href="xml/gtkapplication.xml" />
-      <xi:include href="xml/gtkapplicationwindow.xml" />
-      <xi:include href="xml/gtkactionable.xml" />
+      <xi:include href="xml/ctkapplication.xml" />
+      <xi:include href="xml/ctkapplicationwindow.xml" />
+      <xi:include href="xml/ctkactionable.xml" />
     </chapter>
 
     <chapter id="Builder">
       <title>Interface builder</title>
-      <xi:include href="xml/gtkbuilder.xml" />
-      <xi:include href="xml/gtkbuildable.xml" />
+      <xi:include href="xml/ctkbuilder.xml" />
+      <xi:include href="xml/ctkbuildable.xml" />
     </chapter>
 
     <chapter id="WindowWidgets">
       <title>Windows</title>
-      <xi:include href="xml/gtkwindow.xml" />
-      <xi:include href="xml/gtkdialog.xml" />
-      <xi:include href="xml/gtkmessagedialog.xml" />
-      <xi:include href="xml/gtkaboutdialog.xml" />
-      <xi:include href="xml/gtkassistant.xml" />
-      <xi:include href="xml/gtkinvisible.xml" />
-      <xi:include href="xml/gtkoffscreenwindow.xml" />
-      <xi:include href="xml/gtkwindowgroup.xml" />
+      <xi:include href="xml/ctkwindow.xml" />
+      <xi:include href="xml/ctkdialog.xml" />
+      <xi:include href="xml/ctkmessagedialog.xml" />
+      <xi:include href="xml/ctkaboutdialog.xml" />
+      <xi:include href="xml/ctkassistant.xml" />
+      <xi:include href="xml/ctkinvisible.xml" />
+      <xi:include href="xml/ctkoffscreenwindow.xml" />
+      <xi:include href="xml/ctkwindowgroup.xml" />
     </chapter>
 
     <chapter id="LayoutContainers">
       <title>Layout Containers</title>
-      <xi:include href="xml/gtkbox.xml" />
-      <xi:include href="xml/gtkgrid.xml" />
-      <xi:include href="xml/gtkrevealer.xml" />
-      <xi:include href="xml/gtklistbox.xml" />
-      <xi:include href="xml/gtkflowbox.xml" />
-      <xi:include href="xml/gtkstack.xml" />
-      <xi:include href="xml/gtkstackswitcher.xml" />
-      <xi:include href="xml/gtkstacksidebar.xml" />
-      <xi:include href="xml/gtkactionbar.xml" />
-      <xi:include href="xml/gtkheaderbar.xml" />
-      <xi:include href="xml/gtkoverlay.xml" />
-      <xi:include href="xml/gtkbbox.xml" />
-      <xi:include href="xml/gtkpaned.xml" />
-      <xi:include href="xml/gtklayout.xml" />
-      <xi:include href="xml/gtknotebook.xml" />
-      <xi:include href="xml/gtkexpander.xml" />
-      <xi:include href="xml/gtkorientable.xml" />
-      <xi:include href="xml/gtkaspectframe.xml" />
-      <xi:include href="xml/gtkfixed.xml" />
+      <xi:include href="xml/ctkbox.xml" />
+      <xi:include href="xml/ctkgrid.xml" />
+      <xi:include href="xml/ctkrevealer.xml" />
+      <xi:include href="xml/ctklistbox.xml" />
+      <xi:include href="xml/ctkflowbox.xml" />
+      <xi:include href="xml/ctkstack.xml" />
+      <xi:include href="xml/ctkstackswitcher.xml" />
+      <xi:include href="xml/ctkstacksidebar.xml" />
+      <xi:include href="xml/ctkactionbar.xml" />
+      <xi:include href="xml/ctkheaderbar.xml" />
+      <xi:include href="xml/ctkoverlay.xml" />
+      <xi:include href="xml/ctkbbox.xml" />
+      <xi:include href="xml/ctkpaned.xml" />
+      <xi:include href="xml/ctklayout.xml" />
+      <xi:include href="xml/ctknotebook.xml" />
+      <xi:include href="xml/ctkexpander.xml" />
+      <xi:include href="xml/ctkorientable.xml" />
+      <xi:include href="xml/ctkaspectframe.xml" />
+      <xi:include href="xml/ctkfixed.xml" />
     </chapter>
 
     <chapter id="DisplayWidgets">
       <title>Display Widgets</title>
-      <xi:include href="xml/gtklabel.xml" />
-      <xi:include href="xml/gtkimage.xml" />
-      <xi:include href="xml/gtkspinner.xml" />
-      <xi:include href="xml/gtkinfobar.xml" />
-      <xi:include href="xml/gtkprogressbar.xml" />
-      <xi:include href="xml/gtklevelbar.xml" />
-      <xi:include href="xml/gtkstatusbar.xml" />
-      <xi:include href="xml/gtkaccellabel.xml" />
+      <xi:include href="xml/ctklabel.xml" />
+      <xi:include href="xml/ctkimage.xml" />
+      <xi:include href="xml/ctkspinner.xml" />
+      <xi:include href="xml/ctkinfobar.xml" />
+      <xi:include href="xml/ctkprogressbar.xml" />
+      <xi:include href="xml/ctklevelbar.xml" />
+      <xi:include href="xml/ctkstatusbar.xml" />
+      <xi:include href="xml/ctkaccellabel.xml" />
     </chapter>
 
     <chapter id="ButtonWidgets">
       <title>Buttons and Toggles</title>
-      <xi:include href="xml/gtkbutton.xml" />
-      <xi:include href="xml/gtkcheckbutton.xml" />
-      <xi:include href="xml/gtkradiobutton.xml" />
-      <xi:include href="xml/gtktogglebutton.xml" />
-      <xi:include href="xml/gtklinkbutton.xml" />
-      <xi:include href="xml/gtkmenubutton.xml" />
-      <xi:include href="xml/gtkswitch.xml" />
-      <xi:include href="xml/gtkscalebutton.xml" />
-      <xi:include href="xml/gtkvolumebutton.xml" />
-      <xi:include href="xml/gtklockbutton.xml" />
-      <xi:include href="xml/gtkmodelbutton.xml" />
+      <xi:include href="xml/ctkbutton.xml" />
+      <xi:include href="xml/ctkcheckbutton.xml" />
+      <xi:include href="xml/ctkradiobutton.xml" />
+      <xi:include href="xml/ctktogglebutton.xml" />
+      <xi:include href="xml/ctklinkbutton.xml" />
+      <xi:include href="xml/ctkmenubutton.xml" />
+      <xi:include href="xml/ctkswitch.xml" />
+      <xi:include href="xml/ctkscalebutton.xml" />
+      <xi:include href="xml/ctkvolumebutton.xml" />
+      <xi:include href="xml/ctklockbutton.xml" />
+      <xi:include href="xml/ctkmodelbutton.xml" />
     </chapter>
 
     <chapter id="NumericEntry">
       <title>Numeric and Text Data Entry</title>
-      <xi:include href="xml/gtkentry.xml" />
-      <xi:include href="xml/gtkentrybuffer.xml" />
-      <xi:include href="xml/gtkentrycompletion.xml" />
-      <xi:include href="xml/gtkscale.xml" />
-      <xi:include href="xml/gtkspinbutton.xml" />
-      <xi:include href="xml/gtksearchentry.xml" />
-      <xi:include href="xml/gtksearchbar.xml" />
-      <xi:include href="xml/gtkeditable.xml" />
+      <xi:include href="xml/ctkentry.xml" />
+      <xi:include href="xml/ctkentrybuffer.xml" />
+      <xi:include href="xml/ctkentrycompletion.xml" />
+      <xi:include href="xml/ctkscale.xml" />
+      <xi:include href="xml/ctkspinbutton.xml" />
+      <xi:include href="xml/ctksearchentry.xml" />
+      <xi:include href="xml/ctksearchbar.xml" />
+      <xi:include href="xml/ctkeditable.xml" />
     </chapter>
 
     <chapter id="TextWidgetObjects">
       <title>Multiline Text Editor</title>
       <xi:include href="xml/text_widget.sgml" />
-      <xi:include href="xml/gtktextiter.xml" />
-      <xi:include href="xml/gtktextmark.xml" />
-      <xi:include href="xml/gtktextbuffer.xml" />
-      <xi:include href="xml/gtktexttag.xml" />
-      <xi:include href="xml/gtktexttagtable.xml" />
-      <xi:include href="xml/gtktextview.xml" />
+      <xi:include href="xml/ctktextiter.xml" />
+      <xi:include href="xml/ctktextmark.xml" />
+      <xi:include href="xml/ctktextbuffer.xml" />
+      <xi:include href="xml/ctktexttag.xml" />
+      <xi:include href="xml/ctktexttagtable.xml" />
+      <xi:include href="xml/ctktextview.xml" />
     </chapter>
 
     <chapter id="TreeWidgetObjects">
       <title>Tree, List and Icon Grid Widgets</title>
       <xi:include href="xml/tree_widget.sgml" />
-      <xi:include href="xml/gtktreemodel.xml" />
-      <xi:include href="xml/gtktreeselection.xml" />
-      <xi:include href="xml/gtktreeviewcolumn.xml" />
-      <xi:include href="xml/gtktreeview.xml" />
-      <xi:include href="xml/gtktreednd.xml" />
-      <xi:include href="xml/gtkcellview.xml" />
-      <xi:include href="xml/gtkiconview.xml" />
-      <xi:include href="xml/gtktreesortable.xml" />
-      <xi:include href="xml/gtktreemodelsort.xml" />
-      <xi:include href="xml/gtktreemodelfilter.xml" />
-      <xi:include href="xml/gtkcelllayout.xml" />
-      <xi:include href="xml/gtkcellarea.xml" />
-      <xi:include href="xml/gtkcellareabox.xml" />
-      <xi:include href="xml/gtkcellareacontext.xml" />
-      <xi:include href="xml/gtkcellrenderer.xml" />
-      <xi:include href="xml/gtkcelleditable.xml" />
-      <xi:include href="xml/gtkcellrendereraccel.xml" />
-      <xi:include href="xml/gtkcellrenderercombo.xml" />
-      <xi:include href="xml/gtkcellrendererpixbuf.xml" />
-      <xi:include href="xml/gtkcellrendererprogress.xml" />
-      <xi:include href="xml/gtkcellrendererspin.xml" />
-      <xi:include href="xml/gtkcellrenderertext.xml" />
-      <xi:include href="xml/gtkcellrenderertoggle.xml" />
-      <xi:include href="xml/gtkcellrendererspinner.xml" />
-      <xi:include href="xml/gtkliststore.xml" />
-      <xi:include href="xml/gtktreestore.xml" />
+      <xi:include href="xml/ctktreemodel.xml" />
+      <xi:include href="xml/ctktreeselection.xml" />
+      <xi:include href="xml/ctktreeviewcolumn.xml" />
+      <xi:include href="xml/ctktreeview.xml" />
+      <xi:include href="xml/ctktreednd.xml" />
+      <xi:include href="xml/ctkcellview.xml" />
+      <xi:include href="xml/ctkiconview.xml" />
+      <xi:include href="xml/ctktreesortable.xml" />
+      <xi:include href="xml/ctktreemodelsort.xml" />
+      <xi:include href="xml/ctktreemodelfilter.xml" />
+      <xi:include href="xml/ctkcelllayout.xml" />
+      <xi:include href="xml/ctkcellarea.xml" />
+      <xi:include href="xml/ctkcellareabox.xml" />
+      <xi:include href="xml/ctkcellareacontext.xml" />
+      <xi:include href="xml/ctkcellrenderer.xml" />
+      <xi:include href="xml/ctkcelleditable.xml" />
+      <xi:include href="xml/ctkcellrendereraccel.xml" />
+      <xi:include href="xml/ctkcellrenderercombo.xml" />
+      <xi:include href="xml/ctkcellrendererpixbuf.xml" />
+      <xi:include href="xml/ctkcellrendererprogress.xml" />
+      <xi:include href="xml/ctkcellrendererspin.xml" />
+      <xi:include href="xml/ctkcellrenderertext.xml" />
+      <xi:include href="xml/ctkcellrenderertoggle.xml" />
+      <xi:include href="xml/ctkcellrendererspinner.xml" />
+      <xi:include href="xml/ctkliststore.xml" />
+      <xi:include href="xml/ctktreestore.xml" />
     </chapter>
 
     <chapter id="MenusAndCombos">
       <title>Menus, Combo Box, Toolbar</title>
-      <xi:include href="xml/gtkcombobox.xml" />
-      <xi:include href="xml/gtkcomboboxtext.xml" />
-      <xi:include href="xml/gtkmenu.xml" />
-      <xi:include href="xml/gtkmenubar.xml" />
-      <xi:include href="xml/gtkmenuitem.xml" />
-      <xi:include href="xml/gtkradiomenuitem.xml" />
-      <xi:include href="xml/gtkcheckmenuitem.xml" />
-      <xi:include href="xml/gtkseparatormenuitem.xml" />
-      <xi:include href="xml/gtktoolshell.xml" />
-      <xi:include href="xml/gtktoolbar.xml" />
-      <xi:include href="xml/gtktoolitem.xml" />
-      <xi:include href="xml/gtktoolpalette.xml" />
-      <xi:include href="xml/gtktoolitemgroup.xml" />
-      <xi:include href="xml/gtkseparatortoolitem.xml" />
-      <xi:include href="xml/gtktoolbutton.xml" />
-      <xi:include href="xml/gtkmenutoolbutton.xml" />
-      <xi:include href="xml/gtktoggletoolbutton.xml" />
-      <xi:include href="xml/gtkradiotoolbutton.xml" />
-      <xi:include href="xml/gtkpopover.xml" />
-      <xi:include href="xml/gtkpopovermenu.xml" />
+      <xi:include href="xml/ctkcombobox.xml" />
+      <xi:include href="xml/ctkcomboboxtext.xml" />
+      <xi:include href="xml/ctkmenu.xml" />
+      <xi:include href="xml/ctkmenubar.xml" />
+      <xi:include href="xml/ctkmenuitem.xml" />
+      <xi:include href="xml/ctkradiomenuitem.xml" />
+      <xi:include href="xml/ctkcheckmenuitem.xml" />
+      <xi:include href="xml/ctkseparatormenuitem.xml" />
+      <xi:include href="xml/ctktoolshell.xml" />
+      <xi:include href="xml/ctktoolbar.xml" />
+      <xi:include href="xml/ctktoolitem.xml" />
+      <xi:include href="xml/ctktoolpalette.xml" />
+      <xi:include href="xml/ctktoolitemgroup.xml" />
+      <xi:include href="xml/ctkseparatortoolitem.xml" />
+      <xi:include href="xml/ctktoolbutton.xml" />
+      <xi:include href="xml/ctkmenutoolbutton.xml" />
+      <xi:include href="xml/ctktoggletoolbutton.xml" />
+      <xi:include href="xml/ctkradiotoolbutton.xml" />
+      <xi:include href="xml/ctkpopover.xml" />
+      <xi:include href="xml/ctkpopovermenu.xml" />
     </chapter>
 
     <chapter id="SelectorWidgets">
       <title>Selector Widgets and Dialogs</title>
-      <xi:include href="xml/gtkcolorchooser.xml" />
-      <xi:include href="xml/gtkcolorbutton.xml" />
-      <xi:include href="xml/gtkcolorchooserwidget.xml" />
-      <xi:include href="xml/gtkcolorchooserdialog.xml" />
-      <xi:include href="xml/gtkfilechooser.xml" />
-      <xi:include href="xml/gtkfilechooserbutton.xml" />
-      <xi:include href="xml/gtkfilechoosernative.xml" />
-      <xi:include href="xml/gtkfilechooserdialog.xml" />
-      <xi:include href="xml/gtkfilechooserwidget.xml" />
-      <xi:include href="xml/gtkfilefilter.xml" />
-      <xi:include href="xml/gtkfontchooser.xml" />
-      <xi:include href="xml/gtkfontbutton.xml" />
-      <xi:include href="xml/gtkfontchooserwidget.xml" />
-      <xi:include href="xml/gtkfontchooserdialog.xml" />
-      <xi:include href="xml/gtkplacessidebar.xml" />
+      <xi:include href="xml/ctkcolorchooser.xml" />
+      <xi:include href="xml/ctkcolorbutton.xml" />
+      <xi:include href="xml/ctkcolorchooserwidget.xml" />
+      <xi:include href="xml/ctkcolorchooserdialog.xml" />
+      <xi:include href="xml/ctkfilechooser.xml" />
+      <xi:include href="xml/ctkfilechooserbutton.xml" />
+      <xi:include href="xml/ctkfilechoosernative.xml" />
+      <xi:include href="xml/ctkfilechooserdialog.xml" />
+      <xi:include href="xml/ctkfilechooserwidget.xml" />
+      <xi:include href="xml/ctkfilefilter.xml" />
+      <xi:include href="xml/ctkfontchooser.xml" />
+      <xi:include href="xml/ctkfontbutton.xml" />
+      <xi:include href="xml/ctkfontchooserwidget.xml" />
+      <xi:include href="xml/ctkfontchooserdialog.xml" />
+      <xi:include href="xml/ctkplacessidebar.xml" />
     </chapter>
 
     <chapter id="Ornaments">
       <title>Ornaments</title>
-      <xi:include href="xml/gtkframe.xml" />
-      <xi:include href="xml/gtkseparator.xml" />
+      <xi:include href="xml/ctkframe.xml" />
+      <xi:include href="xml/ctkseparator.xml" />
     </chapter>
 
     <chapter id="ScrollingWidgets">
       <title>Scrolling</title>
-      <xi:include href="xml/gtkscrollbar.xml" />
-      <xi:include href="xml/gtkscrolledwindow.xml" />
-      <xi:include href="xml/gtkscrollable.xml" />
+      <xi:include href="xml/ctkscrollbar.xml" />
+      <xi:include href="xml/ctkscrolledwindow.xml" />
+      <xi:include href="xml/ctkscrollable.xml" />
     </chapter>
 
     <chapter id="Printing">
       <title>Printing</title>
-      <xi:include href="xml/gtkprintoperation.xml" />
-      <xi:include href="xml/gtkprintcontext.xml" />
-      <xi:include href="xml/gtkprintsettings.xml" />
-      <xi:include href="xml/gtkpagesetup.xml" />
-      <xi:include href="xml/gtkpapersize.xml" />
-      <xi:include href="xml/gtkprinter.xml" />
-      <xi:include href="xml/gtkprintjob.xml" />
-      <xi:include href="xml/gtkprintunixdialog.xml" />
-      <xi:include href="xml/gtkpagesetupunixdialog.xml" />
+      <xi:include href="xml/ctkprintoperation.xml" />
+      <xi:include href="xml/ctkprintcontext.xml" />
+      <xi:include href="xml/ctkprintsettings.xml" />
+      <xi:include href="xml/ctkpagesetup.xml" />
+      <xi:include href="xml/ctkpapersize.xml" />
+      <xi:include href="xml/ctkprinter.xml" />
+      <xi:include href="xml/ctkprintjob.xml" />
+      <xi:include href="xml/ctkprintunixdialog.xml" />
+      <xi:include href="xml/ctkpagesetupunixdialog.xml" />
     </chapter>
 
     <chapter id="ShortcutsOverview">
       <title>Shortcuts Overview</title>
-      <xi:include href="xml/gtkshortcutswindow.xml" />
-      <xi:include href="xml/gtkshortcutssection.xml" />
-      <xi:include href="xml/gtkshortcutsgroup.xml" />
-      <xi:include href="xml/gtkshortcutsshortcut.xml" />
+      <xi:include href="xml/ctkshortcutswindow.xml" />
+      <xi:include href="xml/ctkshortcutssection.xml" />
+      <xi:include href="xml/ctkshortcutsgroup.xml" />
+      <xi:include href="xml/ctkshortcutsshortcut.xml" />
     </chapter>
 
     <chapter id="MiscObjects">
       <title>Miscellaneous</title>
-      <xi:include href="xml/gtkadjustment.xml" />
-      <xi:include href="xml/gtkcalendar.xml" />
-      <xi:include href="xml/gtkdrawingarea.xml" />
-      <xi:include href="xml/gtkglarea.xml" />
-      <xi:include href="xml/gtkeventbox.xml" />
-      <xi:include href="xml/gtkhandlebox.xml" />
-      <xi:include href="xml/gtkimcontextsimple.xml" />
-      <xi:include href="xml/gtkimmulticontext.xml" />
-      <xi:include href="xml/gtksizegroup.xml" />
-      <xi:include href="xml/gtktooltip.xml" />
-      <xi:include href="xml/gtkviewport.xml" />
-      <xi:include href="xml/gtkaccessible.xml" />
+      <xi:include href="xml/ctkadjustment.xml" />
+      <xi:include href="xml/ctkcalendar.xml" />
+      <xi:include href="xml/ctkdrawingarea.xml" />
+      <xi:include href="xml/ctkglarea.xml" />
+      <xi:include href="xml/ctkeventbox.xml" />
+      <xi:include href="xml/ctkhandlebox.xml" />
+      <xi:include href="xml/ctkimcontextsimple.xml" />
+      <xi:include href="xml/ctkimmulticontext.xml" />
+      <xi:include href="xml/ctksizegroup.xml" />
+      <xi:include href="xml/ctktooltip.xml" />
+      <xi:include href="xml/ctkviewport.xml" />
+      <xi:include href="xml/ctkaccessible.xml" />
     </chapter>
 
     <chapter id="AbstractObjects">
       <title>Abstract Base Classes</title>
-      <xi:include href="xml/gtkwidget.xml" />
-      <xi:include href="xml/gtkcontainer.xml" />
-      <xi:include href="xml/gtkbin.xml" />
-      <xi:include href="xml/gtkmenushell.xml" />
-      <xi:include href="xml/gtkrange.xml" />
-      <xi:include href="xml/gtkimcontext.xml" />
-      <xi:include href="xml/gtknativedialog.xml" />
+      <xi:include href="xml/ctkwidget.xml" />
+      <xi:include href="xml/ctkcontainer.xml" />
+      <xi:include href="xml/ctkbin.xml" />
+      <xi:include href="xml/ctkmenushell.xml" />
+      <xi:include href="xml/ctkrange.xml" />
+      <xi:include href="xml/ctkimcontext.xml" />
+      <xi:include href="xml/ctknativedialog.xml" />
     </chapter>
 
     <chapter id="PlugSocket">
       <title>Cross-process Embedding</title>
-      <xi:include href="xml/gtkplug.xml" />
-      <xi:include href="xml/gtksocket.xml" />
+      <xi:include href="xml/ctkplug.xml" />
+      <xi:include href="xml/ctksocket.xml" />
     </chapter>
 
     <chapter id="RecentDocuments">
       <title>Recently Used Documents</title>
-      <xi:include href="xml/gtkrecentmanager.xml" />
-      <xi:include href="xml/gtkrecentchooser.xml" />
-      <xi:include href="xml/gtkrecentchooserdialog.xml" />
-      <xi:include href="xml/gtkrecentchoosermenu.xml" />
-      <xi:include href="xml/gtkrecentchooserwidget.xml" />
-      <xi:include href="xml/gtkrecentfilter.xml" />
+      <xi:include href="xml/ctkrecentmanager.xml" />
+      <xi:include href="xml/ctkrecentchooser.xml" />
+      <xi:include href="xml/ctkrecentchooserdialog.xml" />
+      <xi:include href="xml/ctkrecentchoosermenu.xml" />
+      <xi:include href="xml/ctkrecentchooserwidget.xml" />
+      <xi:include href="xml/ctkrecentfilter.xml" />
     </chapter>
 
     <chapter id="ApplicationChoosing">
       <title>Choosing from installed applications</title>
-      <xi:include href="xml/gtkappchooser.xml" />
-      <xi:include href="xml/gtkappchooserbutton.xml" />
-      <xi:include href="xml/gtkappchooserdialog.xml" />
-      <xi:include href="xml/gtkappchooserwidget.xml" />
+      <xi:include href="xml/ctkappchooser.xml" />
+      <xi:include href="xml/ctkappchooserbutton.xml" />
+      <xi:include href="xml/ctkappchooserdialog.xml" />
+      <xi:include href="xml/ctkappchooserwidget.xml" />
     </chapter>
 
     <chapter id="Gestures">
       <title>Gestures and event handling</title>
-      <xi:include href="xml/gtkeventcontroller.xml" />
-      <xi:include href="xml/gtkeventcontrollerkey.xml" />
-      <xi:include href="xml/gtkeventcontrollerscroll.xml" />
-      <xi:include href="xml/gtkeventcontrollermotion.xml" />
-      <xi:include href="xml/gtkgesture.xml" />
-      <xi:include href="xml/gtkgesturesingle.xml" />
-      <xi:include href="xml/gtkgesturedrag.xml" />
-      <xi:include href="xml/gtkgesturelongpress.xml" />
-      <xi:include href="xml/gtkgesturemultipress.xml" />
-      <xi:include href="xml/gtkgesturepan.xml" />
-      <xi:include href="xml/gtkgestureswipe.xml" />
-      <xi:include href="xml/gtkgesturerotate.xml" />
-      <xi:include href="xml/gtkgesturezoom.xml" />
-      <xi:include href="xml/gtkgesturestylus.xml" />
-      <xi:include href="xml/gtkpadcontroller.xml" />
+      <xi:include href="xml/ctkeventcontroller.xml" />
+      <xi:include href="xml/ctkeventcontrollerkey.xml" />
+      <xi:include href="xml/ctkeventcontrollerscroll.xml" />
+      <xi:include href="xml/ctkeventcontrollermotion.xml" />
+      <xi:include href="xml/ctkgesture.xml" />
+      <xi:include href="xml/ctkgesturesingle.xml" />
+      <xi:include href="xml/ctkgesturedrag.xml" />
+      <xi:include href="xml/ctkgesturelongpress.xml" />
+      <xi:include href="xml/ctkgesturemultipress.xml" />
+      <xi:include href="xml/ctkgesturepan.xml" />
+      <xi:include href="xml/ctkgestureswipe.xml" />
+      <xi:include href="xml/ctkgesturerotate.xml" />
+      <xi:include href="xml/ctkgesturezoom.xml" />
+      <xi:include href="xml/ctkgesturestylus.xml" />
+      <xi:include href="xml/ctkpadcontroller.xml" />
     </chapter>
 
     <chapter id="DeprecatedObjects">
       <title>Deprecated</title>
-      <xi:include href="xml/gtksymboliccolor.xml" />
-      <xi:include href="xml/gtkgradient.xml" />
-      <xi:include href="xml/gtkrc.xml" />
-      <xi:include href="xml/gtkstyle.xml" />
-      <xi:include href="xml/gtkhscale.xml" />
-      <xi:include href="xml/gtkvscale.xml" />
-      <xi:include href="xml/gtktearoffmenuitem.xml" />
-      <xi:include href="xml/gtkcolorsel.xml" />
-      <xi:include href="xml/gtkcolorseldlg.xml" />
-      <xi:include href="xml/gtkhsv.xml" />
-      <xi:include href="xml/gtkfontsel.xml" />
-      <xi:include href="xml/gtkfontseldlg.xml" />
-      <xi:include href="xml/gtkhbox.xml" />
-      <xi:include href="xml/gtkvbox.xml" />
-      <xi:include href="xml/gtkhbbox.xml" />
-      <xi:include href="xml/gtkvbbox.xml" />
-      <xi:include href="xml/gtkhpaned.xml" />
-      <xi:include href="xml/gtkvpaned.xml" />
-      <xi:include href="xml/gtktable.xml" />
-      <xi:include href="xml/gtkhseparator.xml" />
-      <xi:include href="xml/gtkvseparator.xml" />
-      <xi:include href="xml/gtkhscrollbar.xml" />
-      <xi:include href="xml/gtkvscrollbar.xml" />
-      <xi:include href="xml/gtkuimanager.xml" />
-      <xi:include href="xml/gtkactiongroup.xml" />
-      <xi:include href="xml/gtkaction.xml" />
-      <xi:include href="xml/gtktoggleaction.xml" />
-      <xi:include href="xml/gtkradioaction.xml" />
-      <xi:include href="xml/gtkrecentaction.xml" />
-      <xi:include href="xml/gtkactivatable.xml" />
-      <xi:include href="xml/gtkimagemenuitem.xml" />
-      <xi:include href="xml/gtkmisc.xml" />
-      <xi:include href="xml/gtkstock.xml" />
-      <xi:include href="xml/gtkiconfactory.xml" />
-      <xi:include href="xml/gtknumerableicon.xml" />
-      <xi:include href="xml/gtkarrow.xml" />
-      <xi:include href="xml/gtkstatusicon.xml" />
-      <xi:include href="xml/gtkthemingengine.xml" />
-      <xi:include href="xml/gtkalignment.xml" />
+      <xi:include href="xml/ctksymboliccolor.xml" />
+      <xi:include href="xml/ctkgradient.xml" />
+      <xi:include href="xml/ctkrc.xml" />
+      <xi:include href="xml/ctkstyle.xml" />
+      <xi:include href="xml/ctkhscale.xml" />
+      <xi:include href="xml/ctkvscale.xml" />
+      <xi:include href="xml/ctktearoffmenuitem.xml" />
+      <xi:include href="xml/ctkcolorsel.xml" />
+      <xi:include href="xml/ctkcolorseldlg.xml" />
+      <xi:include href="xml/ctkhsv.xml" />
+      <xi:include href="xml/ctkfontsel.xml" />
+      <xi:include href="xml/ctkfontseldlg.xml" />
+      <xi:include href="xml/ctkhbox.xml" />
+      <xi:include href="xml/ctkvbox.xml" />
+      <xi:include href="xml/ctkhbbox.xml" />
+      <xi:include href="xml/ctkvbbox.xml" />
+      <xi:include href="xml/ctkhpaned.xml" />
+      <xi:include href="xml/ctkvpaned.xml" />
+      <xi:include href="xml/ctktable.xml" />
+      <xi:include href="xml/ctkhseparator.xml" />
+      <xi:include href="xml/ctkvseparator.xml" />
+      <xi:include href="xml/ctkhscrollbar.xml" />
+      <xi:include href="xml/ctkvscrollbar.xml" />
+      <xi:include href="xml/ctkuimanager.xml" />
+      <xi:include href="xml/ctkactiongroup.xml" />
+      <xi:include href="xml/ctkaction.xml" />
+      <xi:include href="xml/ctktoggleaction.xml" />
+      <xi:include href="xml/ctkradioaction.xml" />
+      <xi:include href="xml/ctkrecentaction.xml" />
+      <xi:include href="xml/ctkactivatable.xml" />
+      <xi:include href="xml/ctkimagemenuitem.xml" />
+      <xi:include href="xml/ctkmisc.xml" />
+      <xi:include href="xml/ctkstock.xml" />
+      <xi:include href="xml/ctkiconfactory.xml" />
+      <xi:include href="xml/ctknumerableicon.xml" />
+      <xi:include href="xml/ctkarrow.xml" />
+      <xi:include href="xml/ctkstatusicon.xml" />
+      <xi:include href="xml/ctkthemingengine.xml" />
+      <xi:include href="xml/ctkalignment.xml" />
     </chapter>
 
   </part>
 
-  <part  id="gtkbase">
+  <part  id="ctkbase">
     <title>GTK+ Core Reference</title>
-    <xi:include href="xml/gtkmain.xml" />
-    <xi:include href="xml/gtkfeatures.xml" />
-    <xi:include href="xml/gtkaccelgroup.xml" />
-    <xi:include href="xml/gtkaccelmap.xml" />
-    <xi:include href="xml/gtkclipboard.xml" />
-    <xi:include href="xml/gtkdnd.xml" />
-    <xi:include href="xml/gtksettings.xml" />
-    <xi:include href="xml/gtkbindings.xml" />
-    <xi:include href="xml/gtkenums.xml" />
-    <xi:include href="xml/gtkselection.xml" />
-    <xi:include href="xml/gtktesting.xml" />
+    <xi:include href="xml/ctkmain.xml" />
+    <xi:include href="xml/ctkfeatures.xml" />
+    <xi:include href="xml/ctkaccelgroup.xml" />
+    <xi:include href="xml/ctkaccelmap.xml" />
+    <xi:include href="xml/ctkclipboard.xml" />
+    <xi:include href="xml/ctkdnd.xml" />
+    <xi:include href="xml/ctksettings.xml" />
+    <xi:include href="xml/ctkbindings.xml" />
+    <xi:include href="xml/ctkenums.xml" />
+    <xi:include href="xml/ctkselection.xml" />
+    <xi:include href="xml/ctktesting.xml" />
     <xi:include href="xml/filesystem.xml" />
   </part>
 
@@ -382,12 +382,12 @@
     <title>Theming in GTK+</title>
     <xi:include href="css-overview.xml" />
     <xi:include href="css-properties.xml" />
-    <xi:include href="xml/gtkstylecontext.xml" />
-    <xi:include href="xml/gtkcssprovider.xml" />
-    <xi:include href="xml/gtkstyleprovider.xml" />
-    <xi:include href="xml/gtkstyleproperties.xml" />
-    <xi:include href="xml/gtkwidgetpath.xml" />
-    <xi:include href="xml/gtkicontheme.xml" />
+    <xi:include href="xml/ctkstylecontext.xml" />
+    <xi:include href="xml/ctkcssprovider.xml" />
+    <xi:include href="xml/ctkstyleprovider.xml" />
+    <xi:include href="xml/ctkstyleproperties.xml" />
+    <xi:include href="xml/ctkwidgetpath.xml" />
+    <xi:include href="xml/ctkicontheme.xml" />
   </part>
 
   <part id="migrating">
@@ -414,16 +414,16 @@
 
   <part>
     <title>GTK+ Tools</title>
-    <xi:include href="gtk3-demo.xml" />
-    <xi:include href="gtk3-demo-application.xml" />
-    <xi:include href="gtk3-widget-factory.xml" />
-    <xi:include href="gtk3-icon-browser.xml" />
-    <xi:include href="gtk-query-immodules-3.0.xml" />
-    <xi:include href="gtk-update-icon-cache.xml" />
-    <xi:include href="gtk-encode-symbolic-svg.xml" />
-    <xi:include href="gtk-builder-tool.xml" />
-    <xi:include href="gtk-launch.xml" />
-    <xi:include href="gtk-query-settings.xml" />
+    <xi:include href="ctk3-demo.xml" />
+    <xi:include href="ctk3-demo-application.xml" />
+    <xi:include href="ctk3-widget-factory.xml" />
+    <xi:include href="ctk3-icon-browser.xml" />
+    <xi:include href="ctk-query-immodules-3.0.xml" />
+    <xi:include href="ctk-update-icon-cache.xml" />
+    <xi:include href="ctk-encode-symbolic-svg.xml" />
+    <xi:include href="ctk-builder-tool.xml" />
+    <xi:include href="ctk-launch.xml" />
+    <xi:include href="ctk-query-settings.xml" />
     <xi:include href="broadwayd.xml" />
   </part>
 

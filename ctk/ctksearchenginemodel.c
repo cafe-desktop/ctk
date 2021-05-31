@@ -23,8 +23,8 @@
 
 #include <gdk/gdk.h>
 
-#include "gtksearchenginemodel.h"
-#include "gtkprivate.h"
+#include "ctksearchenginemodel.h"
+#include "ctkprivate.h"
 
 #include <string.h>
 
@@ -129,7 +129,7 @@ ctk_search_engine_model_start (GtkSearchEngine *engine)
     return;
 
   model->idle = gdk_threads_add_idle (do_search, engine);
-  g_source_set_name_by_id (model->idle, "[gtk+] ctk_search_engine_model_start");
+  g_source_set_name_by_id (model->idle, "[ctk+] ctk_search_engine_model_start");
 }
 
 static void

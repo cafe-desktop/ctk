@@ -19,7 +19,7 @@
  */
 
 /**
- * SECTION:gtkgesturesingle
+ * SECTION:ctkgesturesingle
  * @Short_description: Base class for mouse/single-touch gestures
  * @Title: GtkGestureSingle
  *
@@ -38,11 +38,11 @@
  */
 
 #include "config.h"
-#include "gtkgesturesingle.h"
-#include "gtkgesturesingleprivate.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
-#include "gtkdebug.h"
+#include "ctkgesturesingle.h"
+#include "ctkgesturesingleprivate.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
+#include "ctkdebug.h"
 
 typedef struct _GtkGestureSinglePrivate GtkGestureSinglePrivate;
 

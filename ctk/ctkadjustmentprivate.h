@@ -19,7 +19,7 @@
 #define __CTK_ADJUSTMENT_PRIVATE_H__
 
 
-#include <gtk/gtkadjustment.h>
+#include <ctk/ctkadjustment.h>
 
 
 G_BEGIN_DECLS

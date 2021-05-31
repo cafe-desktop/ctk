@@ -20,19 +20,19 @@
 #include <string.h>
 #include <locale.h>
 
-#include "gtkimmulticontext.h"
-#include "gtkimmoduleprivate.h"
-#include "gtkintl.h"
-#include "gtklabel.h"
-#include "gtkmain.h"
-#include "gtkprivate.h"
-#include "gtkradiomenuitem.h"
-#include "gtkseparatormenuitem.h"
-#include "gtksettings.h"
+#include "ctkimmulticontext.h"
+#include "ctkimmoduleprivate.h"
+#include "ctkintl.h"
+#include "ctklabel.h"
+#include "ctkmain.h"
+#include "ctkprivate.h"
+#include "ctkradiomenuitem.h"
+#include "ctkseparatormenuitem.h"
+#include "ctksettings.h"
 
 
 /**
- * SECTION:gtkimmulticontext
+ * SECTION:ctkimmulticontext
  * @Short_description: An input method context supporting multiple, loadable input methods
  * @Title: GtkIMMulticontext
  */
@@ -316,12 +316,12 @@ ctk_im_multicontext_set_client_window (GtkIMContext *context,
       settings = ctk_settings_get_for_screen (screen);
 
       connected = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (settings),
-                                                      "gtk-im-module-connected"));
+                                                      "ctk-im-module-connected"));
       if (!connected)
         {
-          g_signal_connect (settings, "notify::gtk-im-module",
+          g_signal_connect (settings, "notify::ctk-im-module",
                             G_CALLBACK (im_module_setting_changed), NULL);
-          g_object_set_data (G_OBJECT (settings), "gtk-im-module-connected",
+          g_object_set_data (G_OBJECT (settings), "ctk-im-module-connected",
                              GINT_TO_POINTER (TRUE));
 
           global_context_id = NULL;
@@ -560,7 +560,7 @@ activate_cb (GtkWidget         *menuitem,
 {
   if (ctk_check_menu_item_get_active (CTK_CHECK_MENU_ITEM (menuitem)))
     {
-      const gchar *id = g_object_get_data (G_OBJECT (menuitem), "gtk-context-id");
+      const gchar *id = g_object_get_data (G_OBJECT (menuitem), "ctk-context-id");
 
       ctk_im_multicontext_set_context_id (context, id);
     }
@@ -616,7 +616,7 @@ ctk_im_multicontext_append_menuitems (GtkIMMulticontext *context,
   if (!priv->context_id_aux)
     ctk_check_menu_item_set_active (CTK_CHECK_MENU_ITEM (menuitem), TRUE);
   group = ctk_radio_menu_item_get_group (CTK_RADIO_MENU_ITEM (menuitem));
-  g_object_set_data (G_OBJECT (menuitem), I_("gtk-context-id"), NULL);
+  g_object_set_data (G_OBJECT (menuitem), I_("ctk-context-id"), NULL);
   g_signal_connect (menuitem, "activate", G_CALLBACK (activate_cb), context);
 
   ctk_widget_show (menuitem);
@@ -698,7 +698,7 @@ ctk_im_multicontext_append_menuitems (GtkIMMulticontext *context,
 
       group = ctk_radio_menu_item_get_group (CTK_RADIO_MENU_ITEM (menuitem));
 
-      g_object_set_data (G_OBJECT (menuitem), I_("gtk-context-id"),
+      g_object_set_data (G_OBJECT (menuitem), I_("ctk-context-id"),
 			 (char *)contexts[i]->context_id);
       g_signal_connect (menuitem, "activate",
 			G_CALLBACK (activate_cb), context);

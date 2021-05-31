@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkrecentchoosermenu.c - Recently used items menu widget
+ * ctkrecentchoosermenu.c - Recently used items menu widget
  * Copyright (C) 2005, Emmanuele Bassi
  * 
  * This library is free software; you can redistribute it and/or
@@ -20,30 +20,30 @@
 
 #include <string.h>
 
-#include "gtkrecentmanager.h"
-#include "gtkrecentfilter.h"
-#include "gtkrecentchooser.h"
-#include "gtkrecentchooserutils.h"
-#include "gtkrecentchooserprivate.h"
-#include "gtkrecentchoosermenu.h"
+#include "ctkrecentmanager.h"
+#include "ctkrecentfilter.h"
+#include "ctkrecentchooser.h"
+#include "ctkrecentchooserutils.h"
+#include "ctkrecentchooserprivate.h"
+#include "ctkrecentchoosermenu.h"
 
-#include "gtkicontheme.h"
-#include "gtkintl.h"
-#include "gtksettings.h"
-#include "gtkmenushell.h"
-#include "gtkmenuitem.h"
-#include "deprecated/gtkimagemenuitem.h"
-#include "gtkseparatormenuitem.h"
-#include "gtkmenu.h"
-#include "gtkimage.h"
-#include "gtklabel.h"
-#include "gtktooltip.h"
-#include "deprecated/gtkactivatable.h"
-#include "gtktypebuiltins.h"
-#include "gtkprivate.h"
+#include "ctkicontheme.h"
+#include "ctkintl.h"
+#include "ctksettings.h"
+#include "ctkmenushell.h"
+#include "ctkmenuitem.h"
+#include "deprecated/ctkimagemenuitem.h"
+#include "ctkseparatormenuitem.h"
+#include "ctkmenu.h"
+#include "ctkimage.h"
+#include "ctklabel.h"
+#include "ctktooltip.h"
+#include "deprecated/ctkactivatable.h"
+#include "ctktypebuiltins.h"
+#include "ctkprivate.h"
 
 /**
- * SECTION:gtkrecentchoosermenu
+ * SECTION:ctkrecentchoosermenu
  * @Short_description: Displays recently used files in a menu
  * @Title: GtkRecentChooserMenu
  * @See_also:#GtkRecentChooser
@@ -343,7 +343,7 @@ ctk_recent_chooser_menu_constructed (GObject *object)
   priv->placeholder = ctk_menu_item_new_with_label (_("No items found"));
   ctk_widget_set_sensitive (priv->placeholder, FALSE);
   g_object_set_data (G_OBJECT (priv->placeholder),
-                     "gtk-recent-menu-placeholder",
+                     "ctk-recent-menu-placeholder",
                      GINT_TO_POINTER (TRUE));
 
   ctk_menu_shell_insert (CTK_MENU_SHELL (menu), priv->placeholder, 0);
@@ -512,7 +512,7 @@ ctk_recent_chooser_menu_set_current_uri (GtkRecentChooser  *chooser,
       
       menu_item = CTK_WIDGET (l->data);
       
-      info = g_object_get_data (G_OBJECT (menu_item), "gtk-recent-info");
+      info = g_object_get_data (G_OBJECT (menu_item), "ctk-recent-info");
       if (!info)
         continue;
       
@@ -549,7 +549,7 @@ ctk_recent_chooser_menu_get_current_uri (GtkRecentChooser  *chooser)
   if (!menu_item)
     return NULL;
   
-  info = g_object_get_data (G_OBJECT (menu_item), "gtk-recent-info");
+  info = g_object_get_data (G_OBJECT (menu_item), "ctk-recent-info");
   if (!info)
     return NULL;
   
@@ -573,7 +573,7 @@ ctk_recent_chooser_menu_select_uri (GtkRecentChooser  *chooser,
       
       menu_item = CTK_WIDGET (l->data);
       
-      info = g_object_get_data (G_OBJECT (menu_item), "gtk-recent-info");
+      info = g_object_get_data (G_OBJECT (menu_item), "ctk-recent-info");
       if (!info)
         continue;
       
@@ -908,7 +908,7 @@ ctk_recent_chooser_menu_insert_item (GtkRecentChooserMenu *menu,
           gboolean is_placeholder = FALSE;
 
           is_placeholder =
-            GPOINTER_TO_INT (g_object_get_data (child, "gtk-recent-menu-placeholder"));
+            GPOINTER_TO_INT (g_object_get_data (child, "ctk-recent-menu-placeholder"));
 
           if (is_placeholder)
             break;
@@ -939,16 +939,16 @@ ctk_recent_chooser_menu_dispose_items (GtkRecentChooserMenu *menu)
       
       /* check for our mark, in order to remove just the items we own */
       has_mark =
-        GPOINTER_TO_INT (g_object_get_data (G_OBJECT (menu_item), "gtk-recent-menu-mark"));
+        GPOINTER_TO_INT (g_object_get_data (G_OBJECT (menu_item), "ctk-recent-menu-mark"));
 
       if (has_mark)
         {
           GtkRecentInfo *info;
           
           /* destroy the attached RecentInfo struct, if found */
-          info = g_object_get_data (G_OBJECT (menu_item), "gtk-recent-info");
+          info = g_object_get_data (G_OBJECT (menu_item), "ctk-recent-info");
           if (info)
-            g_object_set_data_full (G_OBJECT (menu_item), "gtk-recent-info",
+            g_object_set_data_full (G_OBJECT (menu_item), "ctk-recent-info",
             			    NULL, NULL);
           
           /* and finally remove the item from the menu */
@@ -1042,14 +1042,14 @@ idle_populate_func (gpointer data)
       
   /* mark the menu item as one of our own */
   g_object_set_data (G_OBJECT (item),
-                     "gtk-recent-menu-mark",
+                     "ctk-recent-menu-mark",
       		     GINT_TO_POINTER (TRUE));
       
   /* attach the RecentInfo object to the menu item, and own a reference
    * to it, so that it will be destroyed with the menu item when it's
    * not needed anymore.
    */
-  g_object_set_data_full (G_OBJECT (item), "gtk-recent-info",
+  g_object_set_data_full (G_OBJECT (item), "ctk-recent-info",
       			  ctk_recent_info_ref (info),
       			  (GDestroyNotify) ctk_recent_info_unref);
   
@@ -1105,7 +1105,7 @@ ctk_recent_chooser_menu_populate (GtkRecentChooserMenu *menu)
   					         idle_populate_func,
 					         pdata,
                                                  idle_populate_clean_up);
-  g_source_set_name_by_id (priv->populate_id, "[gtk+] idle_populate_func");
+  g_source_set_name_by_id (priv->populate_id, "[ctk+] idle_populate_func");
 }
 
 /* bounce activate signal from the recent menu item widget 
@@ -1116,7 +1116,7 @@ item_activate_cb (GtkWidget *widget,
 		  gpointer   user_data)
 {
   GtkRecentChooser *chooser = CTK_RECENT_CHOOSER (user_data);
-  GtkRecentInfo *info = g_object_get_data (G_OBJECT (widget), "gtk-recent-info");
+  GtkRecentInfo *info = g_object_get_data (G_OBJECT (widget), "ctk-recent-info");
 
   ctk_recent_chooser_menu_set_current_uri (chooser, ctk_recent_info_get_uri (info), NULL);
   _ctk_recent_chooser_item_activated (chooser);
@@ -1176,7 +1176,7 @@ foreach_set_shot_tips (GtkWidget *widget,
 
   /* toggle the tooltip only on the items we create */
   has_mark =
-    GPOINTER_TO_INT (g_object_get_data (G_OBJECT (widget), "gtk-recent-menu-mark"));
+    GPOINTER_TO_INT (g_object_get_data (G_OBJECT (widget), "ctk-recent-menu-mark"));
 
   if (has_mark)
     ctk_widget_set_has_tooltip (widget, priv->show_tips);

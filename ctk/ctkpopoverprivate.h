@@ -18,7 +18,7 @@
 #ifndef __CTK_POPOVER_PRIVATE_H__
 #define __CTK_POPOVER_PRIVATE_H__
 
-#include "gtkpopover.h"
+#include "ctkpopover.h"
 
 G_BEGIN_DECLS
 

@@ -1,7 +1,7 @@
 #ifndef __ICON_BROWSER_WIN_H
 #define __ICON_BROWSER_WIN_H
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include "iconbrowserapp.h"
 
 

@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include "exampleapp.h"
 #include "exampleappwin.h"
@@ -57,7 +57,7 @@ ExampleApp *
 example_app_new (void)
 {
   return g_object_new (EXAMPLE_APP_TYPE,
-                       "application-id", "org.gtk.exampleapp",
+                       "application-id", "org.ctk.exampleapp",
                        "flags", G_APPLICATION_HANDLES_OPEN,
                        NULL);
 }

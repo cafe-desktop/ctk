@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkrecentchooserwidget.c: embeddable recently used resources chooser widget
+ * ctkrecentchooserwidget.c: embeddable recently used resources chooser widget
  * Copyright (C) 2006 Emmanuele Bassi
  * 
  * This library is free software; you can redistribute it and/or
@@ -18,14 +18,14 @@
 
 #include "config.h"
 
-#include "gtkrecentchooserwidget.h"
-#include "gtkrecentchooserdefault.h"
-#include "gtkrecentchooserutils.h"
-#include "gtkorientable.h"
-#include "gtktypebuiltins.h"
+#include "ctkrecentchooserwidget.h"
+#include "ctkrecentchooserdefault.h"
+#include "ctkrecentchooserutils.h"
+#include "ctkorientable.h"
+#include "ctktypebuiltins.h"
 
 /**
- * SECTION:gtkrecentchooserwidget
+ * SECTION:ctkrecentchooserwidget
  * @Short_description: Displays recently used files
  * @Title: GtkRecentChooserWidget
  * @See_also:#GtkRecentChooser, #GtkRecentChooserDialog

@@ -20,8 +20,8 @@
 #ifndef __CTK_CSS_IMAGE_RECOLOR_PRIVATE_H__
 #define __CTK_CSS_IMAGE_RECOLOR_PRIVATE_H__
 
-#include "gtk/gtkcssimageurlprivate.h"
-#include "gtk/gtkcssvalueprivate.h"
+#include "ctk/ctkcssimageurlprivate.h"
+#include "ctk/ctkcssvalueprivate.h"
 
 G_BEGIN_DECLS
 

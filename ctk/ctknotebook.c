@@ -20,7 +20,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp:ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp:ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -29,32 +29,32 @@
 #include <string.h>
 #include <math.h>
 
-#include "gtknotebook.h"
+#include "ctknotebook.h"
 
-#include "gtkmain.h"
-#include "gtkmenu.h"
-#include "gtkmenuitem.h"
-#include "gtklabel.h"
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
-#include "gtkbindings.h"
-#include "gtkprivate.h"
-#include "gtkdnd.h"
-#include "gtkbuildable.h"
-#include "gtktypebuiltins.h"
-#include "gtkwidgetpath.h"
-#include "gtkboxgadgetprivate.h"
-#include "gtkbuiltiniconprivate.h"
-#include "gtkcsscustomgadgetprivate.h"
-#include "gtkcssstylepropertyprivate.h"
-#include "gtksizerequest.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkwidgetprivate.h"
-#include "a11y/gtknotebookaccessible.h"
+#include "ctkmain.h"
+#include "ctkmenu.h"
+#include "ctkmenuitem.h"
+#include "ctklabel.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
+#include "ctkbindings.h"
+#include "ctkprivate.h"
+#include "ctkdnd.h"
+#include "ctkbuildable.h"
+#include "ctktypebuiltins.h"
+#include "ctkwidgetpath.h"
+#include "ctkboxgadgetprivate.h"
+#include "ctkbuiltiniconprivate.h"
+#include "ctkcsscustomgadgetprivate.h"
+#include "ctkcssstylepropertyprivate.h"
+#include "ctksizerequest.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkwidgetprivate.h"
+#include "a11y/ctknotebookaccessible.h"
 
 
 /**
- * SECTION:gtknotebook
+ * SECTION:ctknotebook
  * @Short_description: A tabbed notebook container
  * @Title: GtkNotebook
  * @See_also: #GtkContainer
@@ -3275,7 +3275,7 @@ check_threshold (GtkNotebook *notebook,
   GtkSettings *settings;
 
   settings = ctk_widget_get_settings (CTK_WIDGET (notebook));
-  g_object_get (G_OBJECT (settings), "gtk-dnd-drag-threshold", &dnd_threshold, NULL);
+  g_object_get (G_OBJECT (settings), "ctk-dnd-drag-threshold", &dnd_threshold, NULL);
 
   /* we want a large threshold */
   dnd_threshold *= DND_THRESHOLD_MULTIPLIER;
@@ -3366,7 +3366,7 @@ ctk_notebook_motion_notify (GtkWidget      *widget,
               priv->dnd_timer = gdk_threads_add_timeout (TIMEOUT_REPEAT * SCROLL_DELAY_FACTOR,
                                                scroll_notebook_timer,
                                                (gpointer) notebook);
-              g_source_set_name_by_id (priv->dnd_timer, "[gtk+] scroll_notebook_timer");
+              g_source_set_name_by_id (priv->dnd_timer, "[ctk+] scroll_notebook_timer");
             }
         }
       else
@@ -3897,7 +3897,7 @@ ctk_notebook_drag_motion (GtkWidget      *widget,
           priv->switch_tab_timer = gdk_threads_add_timeout (TIMEOUT_EXPAND,
                                                   ctk_notebook_switch_tab_timeout,
                                                   widget);
-          g_source_set_name_by_id (priv->switch_tab_timer, "[gtk+] ctk_notebook_switch_tab_timeout");
+          g_source_set_name_by_id (priv->switch_tab_timer, "[ctk+] ctk_notebook_switch_tab_timeout");
         }
     }
   else
@@ -4956,7 +4956,7 @@ ctk_notebook_timer (GtkNotebook *notebook)
           priv->timer = gdk_threads_add_timeout (TIMEOUT_REPEAT * SCROLL_DELAY_FACTOR,
                                            (GSourceFunc) ctk_notebook_timer,
                                            (gpointer) notebook);
-          g_source_set_name_by_id (priv->timer, "[gtk+] ctk_notebook_timer");
+          g_source_set_name_by_id (priv->timer, "[ctk+] ctk_notebook_timer");
         }
       else
         retval = TRUE;
@@ -4975,7 +4975,7 @@ ctk_notebook_set_scroll_timer (GtkNotebook *notebook)
       priv->timer = gdk_threads_add_timeout (TIMEOUT_INITIAL,
                                        (GSourceFunc) ctk_notebook_timer,
                                        (gpointer) notebook);
-      g_source_set_name_by_id (priv->timer, "[gtk+] ctk_notebook_timer");
+      g_source_set_name_by_id (priv->timer, "[ctk+] ctk_notebook_timer");
       priv->need_timer = TRUE;
     }
 }

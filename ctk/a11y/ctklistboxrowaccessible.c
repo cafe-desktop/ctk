@@ -17,9 +17,9 @@
 
 #include "config.h"
 
-#include "gtklistboxrowaccessible.h"
+#include "ctklistboxrowaccessible.h"
 
-#include "gtk/gtklistbox.h"
+#include "ctk/ctklistbox.h"
 
 
 G_DEFINE_TYPE (GtkListBoxRowAccessible, ctk_list_box_row_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)

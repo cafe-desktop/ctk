@@ -21,11 +21,11 @@
 #define __CTK_GESTURE_ZOOM_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkgesture.h>
-#include <gtk/gtkwidget.h>
+#include <ctk/ctkgesture.h>
+#include <ctk/ctkwidget.h>
 
 G_BEGIN_DECLS
 

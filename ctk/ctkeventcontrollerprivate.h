@@ -20,7 +20,7 @@
 #ifndef __CTK_EVENT_CONTROLLER_PRIVATE_H__
 #define __CTK_EVENT_CONTROLLER_PRIVATE_H__
 
-#include "gtkeventcontroller.h"
+#include "ctkeventcontroller.h"
 
 struct _GtkEventController
 {

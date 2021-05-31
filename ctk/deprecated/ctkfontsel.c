@@ -24,7 +24,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -37,26 +37,26 @@
 
 #include <atk/atk.h>
 
-#include "gtkbutton.h"
-#include "gtkcellrenderertext.h"
-#include "gtkentry.h"
-#include "gtkframe.h"
-#include "gtklabel.h"
-#include "gtkliststore.h"
-#include "gtkstock.h"
-#include "gtktable.h"
-#include "gtktreeselection.h"
-#include "gtktreeview.h"
-#include "gtkscrolledwindow.h"
-#include "gtkintl.h"
-#include "gtkaccessible.h"
-#include "gtkbuildable.h"
-#include "gtkorientable.h"
-#include "gtkprivate.h"
-#include "gtkfontsel.h"
+#include "ctkbutton.h"
+#include "ctkcellrenderertext.h"
+#include "ctkentry.h"
+#include "ctkframe.h"
+#include "ctklabel.h"
+#include "ctkliststore.h"
+#include "ctkstock.h"
+#include "ctktable.h"
+#include "ctktreeselection.h"
+#include "ctktreeview.h"
+#include "ctkscrolledwindow.h"
+#include "ctkintl.h"
+#include "ctkaccessible.h"
+#include "ctkbuildable.h"
+#include "ctkorientable.h"
+#include "ctkprivate.h"
+#include "ctkfontsel.h"
 
 /**
- * SECTION:gtkfontsel
+ * SECTION:ctkfontsel
  * @Short_description: Deprecated widget for selecting fonts
  * @Title: GtkFontSelection
  * @See_also: #GtkFontSelectionDialog, #GtkFontChooser
@@ -1608,7 +1608,7 @@ ctk_font_selection_set_preview_text  (GtkFontSelection *fontsel,
 
 
 /**
- * SECTION:gtkfontseldlg
+ * SECTION:ctkfontseldlg
  * @Short_description: Deprecated dialog box for selecting fonts
  * @Title: GtkFontSelectionDialog
  * @See_also: #GtkFontSelection, #GtkDialog, #GtkFontChooserDialog

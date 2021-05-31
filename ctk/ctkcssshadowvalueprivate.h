@@ -23,10 +23,10 @@
 #include <cairo.h>
 #include <pango/pango.h>
 
-#include "gtktypes.h"
-#include "gtkcssparserprivate.h"
-#include "gtkcssvalueprivate.h"
-#include "gtkroundedboxprivate.h"
+#include "ctktypes.h"
+#include "ctkcssparserprivate.h"
+#include "ctkcssvalueprivate.h"
+#include "ctkroundedboxprivate.h"
 
 G_BEGIN_DECLS
 

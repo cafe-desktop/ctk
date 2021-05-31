@@ -27,11 +27,11 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <gdk/gdkkeysyms.h>
 
-#include "gtk/gtkimmodule.h"
-#include "gtk/gtkintl.h"
+#include "ctk/ctkimmodule.h"
+#include "ctk/ctkintl.h"
 
 GType type_am_et_translit = 0;
 
@@ -451,7 +451,7 @@ static const GtkIMContextInfo am_et_info = {
   "am_et",		   /* ID */
   NC_("input method menu", "Amharic (EZ+)"),     /* Human readable name */
   GETTEXT_PACKAGE,	   /* Translation domain */
-   CTK_LOCALEDIR,	   /* Dir for bindtextdomain (not strictly needed for "gtk+") */
+   CTK_LOCALEDIR,	   /* Dir for bindtextdomain (not strictly needed for "ctk+") */
   "am"			   /* Languages for which this module is the default */
 };
 

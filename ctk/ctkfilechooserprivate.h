@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkfilechooserprivate.h: Interface definition for file selector GUIs
+ * ctkfilechooserprivate.h: Interface definition for file selector GUIs
  * Copyright (C) 2003, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -19,19 +19,19 @@
 #ifndef __CTK_FILE_CHOOSER_PRIVATE_H__
 #define __CTK_FILE_CHOOSER_PRIVATE_H__
 
-#include "gtkbookmarksmanager.h"
-#include "gtkfilechooser.h"
-#include "gtkfilesystem.h"
-#include "gtkfilesystemmodel.h"
-#include "gtkliststore.h"
-#include "gtkrecentmanager.h"
-#include "gtksearchengine.h"
-#include "gtkquery.h"
-#include "gtksizegroup.h"
-#include "gtktreemodelsort.h"
-#include "gtktreestore.h"
-#include "gtktreeview.h"
-#include "gtkbox.h"
+#include "ctkbookmarksmanager.h"
+#include "ctkfilechooser.h"
+#include "ctkfilesystem.h"
+#include "ctkfilesystemmodel.h"
+#include "ctkliststore.h"
+#include "ctkrecentmanager.h"
+#include "ctksearchengine.h"
+#include "ctkquery.h"
+#include "ctksizegroup.h"
+#include "ctktreemodelsort.h"
+#include "ctktreestore.h"
+#include "ctktreeview.h"
+#include "ctkbox.h"
 
 G_BEGIN_DECLS
 

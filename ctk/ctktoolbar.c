@@ -24,7 +24,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 
@@ -33,37 +33,37 @@
 #include <math.h>
 #include <string.h>
 
-#include "gtktoolbar.h"
-#include "gtktoolbarprivate.h"
+#include "ctktoolbar.h"
+#include "ctktoolbarprivate.h"
 
-#include "gtkbindings.h"
-#include "gtkbox.h"
-#include "gtkcontainerprivate.h"
-#include "gtkcsscustomgadgetprivate.h"
-#include "gtkcssnodeprivate.h"
-#include "gtkimage.h"
-#include "gtkintl.h"
-#include "gtklabel.h"
-#include "gtkmain.h"
-#include "gtkmarshalers.h"
-#include "gtkmenu.h"
-#include "gtkorientable.h"
-#include "gtkorientableprivate.h"
-#include "gtkprivate.h"
-#include "gtkradiobutton.h"
-#include "gtkradiotoolbutton.h"
-#include "gtkrender.h"
-#include "gtkseparatormenuitem.h"
-#include "gtkseparatortoolitem.h"
-#include "gtktoolshell.h"
-#include "gtktypebuiltins.h"
-#include "gtkwidgetpath.h"
-#include "gtkwidgetprivate.h"
-#include "gtkwindowprivate.h"
+#include "ctkbindings.h"
+#include "ctkbox.h"
+#include "ctkcontainerprivate.h"
+#include "ctkcsscustomgadgetprivate.h"
+#include "ctkcssnodeprivate.h"
+#include "ctkimage.h"
+#include "ctkintl.h"
+#include "ctklabel.h"
+#include "ctkmain.h"
+#include "ctkmarshalers.h"
+#include "ctkmenu.h"
+#include "ctkorientable.h"
+#include "ctkorientableprivate.h"
+#include "ctkprivate.h"
+#include "ctkradiobutton.h"
+#include "ctkradiotoolbutton.h"
+#include "ctkrender.h"
+#include "ctkseparatormenuitem.h"
+#include "ctkseparatortoolitem.h"
+#include "ctktoolshell.h"
+#include "ctktypebuiltins.h"
+#include "ctkwidgetpath.h"
+#include "ctkwidgetprivate.h"
+#include "ctkwindowprivate.h"
 
 
 /**
- * SECTION:gtktoolbar
+ * SECTION:ctktoolbar
  * @Short_description: Create bars of buttons and other widgets
  * @Title: GtkToolbar
  * @See_also: #GtkToolItem
@@ -759,7 +759,7 @@ ctk_toolbar_init (GtkToolbar *toolbar)
   ctk_widget_set_focus_on_click (priv->arrow_button, FALSE);
 
   priv->arrow = ctk_image_new_from_icon_name ("pan-down-symbolic", CTK_ICON_SIZE_BUTTON);
-  ctk_widget_set_name (priv->arrow, "gtk-toolbar-arrow");
+  ctk_widget_set_name (priv->arrow, "ctk-toolbar-arrow");
   ctk_widget_show (priv->arrow);
   ctk_container_add (CTK_CONTAINER (priv->arrow_button), priv->arrow);
   
@@ -1326,7 +1326,7 @@ ctk_toolbar_begin_sliding (GtkToolbar *toolbar)
   if (!priv->idle_id)
     {
       priv->idle_id = gdk_threads_add_idle (slide_idle_handler, toolbar);
-      g_source_set_name_by_id (priv->idle_id, "[gtk+] slide_idle_handler");
+      g_source_set_name_by_id (priv->idle_id, "[ctk+] slide_idle_handler");
     }
 
   ctk_css_gadget_get_content_allocation (priv->gadget,
@@ -2077,7 +2077,7 @@ animation_change_notify (GtkToolbar *toolbar)
 
   if (settings)
     g_object_get (settings,
-                  "gtk-enable-animations", &animation,
+                  "ctk-enable-animations", &animation,
                   NULL);
   else
     animation = DEFAULT_ANIMATION_STATE;
@@ -2090,7 +2090,7 @@ settings_change_notify (GtkSettings      *settings,
                         const GParamSpec *pspec,
                         GtkToolbar       *toolbar)
 {
-  if (! strcmp (pspec->name, "gtk-enable-animations"))
+  if (! strcmp (pspec->name, "ctk-enable-animations"))
     animation_change_notify (toolbar);
 }
 

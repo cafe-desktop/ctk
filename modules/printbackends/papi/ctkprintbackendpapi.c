@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkprintbackendpapi.c: Default implementation of GtkPrintBackend 
+ * ctkprintbackendpapi.c: Default implementation of GtkPrintBackend 
  * for printing to papi 
  * Copyright (C) 2003, Red Hat, Inc.
  * Copyright (C) 2009, Sun Microsystems, Inc.
@@ -33,10 +33,10 @@
 
 #include <glib/gi18n-lib.h>
 
-#include "gtk.h"
-#include "gtkprintbackendpapi.h"
-#include "gtkprinterpapi.h"
-#include "gtkprinter-private.h"
+#include "ctk.h"
+#include "ctkprintbackendpapi.h"
+#include "ctkprinterpapi.h"
+#include "ctkprinter-private.h"
 
 typedef struct _GtkPrintBackendPapiClass GtkPrintBackendPapiClass;
 
@@ -661,7 +661,7 @@ papi_printer_get_options (GtkPrinter           *printer,
    * number-up-default is the default value. 
    * number-up-supported is the list of number of able to print per page 
    */
-  option = ctk_printer_option_new ("gtk-n-up", "Pages Per Sheet", CTK_PRINTER_OPTION_TYPE_PICKONE);
+  option = ctk_printer_option_new ("ctk-n-up", "Pages Per Sheet", CTK_PRINTER_OPTION_TYPE_PICKONE);
   ctk_printer_option_choices_from_array (option, G_N_ELEMENTS (n_up),
 					 n_up, n_up);
   ctk_printer_option_set (option, "1");
@@ -673,7 +673,7 @@ papi_printer_get_options (GtkPrinter           *printer,
   /* This relates to job-sheets-supported in PAPI  FIXME*/
   
   /* This relates to job-hold-until-supported in PAPI */
-  option = ctk_printer_option_new ("gtk-print-time", "Print at", CTK_PRINTER_OPTION_TYPE_PICKONE);
+  option = ctk_printer_option_new ("ctk-print-time", "Print at", CTK_PRINTER_OPTION_TYPE_PICKONE);
   ctk_printer_option_choices_from_array (option, G_N_ELEMENTS (print_at),
 					 print_at, print_at);
   ctk_printer_option_set (option, "now");
@@ -690,7 +690,7 @@ papi_printer_get_settings_from_options (GtkPrinter          *printer,
 {
   GtkPrinterOption *option;
 
-  option = ctk_printer_option_set_lookup (options, "gtk-n-up");
+  option = ctk_printer_option_set_lookup (options, "ctk-n-up");
   if (option)
      ctk_print_settings_set (settings, CTK_PRINT_SETTINGS_NUMBER_UP, option->value);
 

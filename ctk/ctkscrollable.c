@@ -1,4 +1,4 @@
-/* gtkscrollable.c
+/* ctkscrollable.c
  * Copyright (C) 2008 Tadej Borovšak <tadeboro@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -16,7 +16,7 @@
  */
 
 /**
- * SECTION:gtkscrollable
+ * SECTION:ctkscrollable
  * @Short_Description: An interface for scrollable widgets
  * @Title: GtkScrollable
  *
@@ -51,12 +51,12 @@
 
 #include "config.h"
 
-#include "gtkscrollable.h"
+#include "ctkscrollable.h"
 
-#include "gtkadjustment.h"
-#include "gtkprivate.h"
-#include "gtktypebuiltins.h"
-#include "gtkintl.h"
+#include "ctkadjustment.h"
+#include "ctkprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctkintl.h"
 
 G_DEFINE_INTERFACE (GtkScrollable, ctk_scrollable, G_TYPE_OBJECT)
 

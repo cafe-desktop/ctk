@@ -19,35 +19,35 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
-#include "gtkpaned.h"
+#include "ctkpaned.h"
 
-#include "gtkbindings.h"
-#include "gtkmain.h"
-#include "gtkmarshalers.h"
-#include "gtkorientable.h"
-#include "gtkwindow.h"
-#include "gtktypebuiltins.h"
-#include "gtkorientableprivate.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
-#include "gtkwidgetprivate.h"
-#include "gtkcontainerprivate.h"
-#include "a11y/gtkpanedaccessible.h"
-#include "gtkcsscustomgadgetprivate.h"
-#include "gtkcssnodeprivate.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkcssstylepropertyprivate.h"
-#include "gtkcssnumbervalueprivate.h"
+#include "ctkbindings.h"
+#include "ctkmain.h"
+#include "ctkmarshalers.h"
+#include "ctkorientable.h"
+#include "ctkwindow.h"
+#include "ctktypebuiltins.h"
+#include "ctkorientableprivate.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
+#include "ctkwidgetprivate.h"
+#include "ctkcontainerprivate.h"
+#include "a11y/ctkpanedaccessible.h"
+#include "ctkcsscustomgadgetprivate.h"
+#include "ctkcssnodeprivate.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkcssstylepropertyprivate.h"
+#include "ctkcssnumbervalueprivate.h"
 
 #include <math.h>
 
 /**
- * SECTION:gtkpaned
+ * SECTION:ctkpaned
  * @Short_description: A widget with two adjustable panes
  * @Title: GtkPaned
  *
@@ -2062,7 +2062,7 @@ ctk_paned_focus (GtkWidget        *widget,
   gboolean retval;
   
   /* This is a hack, but how can this be done without
-   * excessive cut-and-paste from gtkcontainer.c?
+   * excessive cut-and-paste from ctkcontainer.c?
    */
 
   ctk_widget_set_can_focus (widget, FALSE);

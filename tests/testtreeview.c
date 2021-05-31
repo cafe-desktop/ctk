@@ -17,7 +17,7 @@
  */
 
 #include <string.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <stdlib.h>
 
 /* Don't copy this bad example; inline RGB data is always a better

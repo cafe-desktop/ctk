@@ -1,4 +1,4 @@
-/* gtkcellareabox.c
+/* ctkcellareabox.c
  *
  * Copyright (C) 2010 Openismus GmbH
  *
@@ -21,7 +21,7 @@
 
 
 /**
- * SECTION:gtkcellareabox
+ * SECTION:ctkcellareabox
  * @Short_Description: A cell area that renders GtkCellRenderers
  *     into a row or a column
  * @Title: GtkCellAreaBox
@@ -46,13 +46,13 @@
  */
 
 #include "config.h"
-#include "gtkintl.h"
-#include "gtkorientable.h"
-#include "gtkcelllayout.h"
-#include "gtkcellareabox.h"
-#include "gtkcellareaboxcontextprivate.h"
-#include "gtktypebuiltins.h"
-#include "gtkprivate.h"
+#include "ctkintl.h"
+#include "ctkorientable.h"
+#include "ctkcelllayout.h"
+#include "ctkcellareabox.h"
+#include "ctkcellareaboxcontextprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctkprivate.h"
 
 
 /* GObjectClass */

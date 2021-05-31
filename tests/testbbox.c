@@ -16,7 +16,7 @@
  *
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #define N_BUTTONS 3
 

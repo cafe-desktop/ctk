@@ -4,8 +4,8 @@
 
 #include <math.h>
 #include <string.h>
-#include <gtk/gtk.h>
-#include "gtkoffscreenbox.h"
+#include <ctk/ctk.h>
+#include "ctkoffscreenbox.h"
 
 
 static void

@@ -19,7 +19,7 @@
  */
 
 /**
- * SECTION:gtkbuilder
+ * SECTION:ctkbuilder
  * @Short_description: Build an interface from an XML UI definition
  * @Title: GtkBuilder
  *
@@ -67,7 +67,7 @@
  * It is common to use `.ui` as the filename extension for files containing
  * GtkBuilder UI definitions.
  *
- * [RELAX NG Compact Syntax](https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/gtkbuilder.rnc)
+ * [RELAX NG Compact Syntax](https://gitlab.gnome.org/GNOME/ctk/-/blob/ctk-3-24/ctk/ctkbuilder.rnc)
  *
  * The toplevel element is <interface>. It optionally takes a “domain”
  * attribute, which will make the builder look for translated strings
@@ -81,7 +81,7 @@
  * element contains an <object> element which describes the child object.
  * The target toolkit version(s) are described by <requires> elements,
  * the “lib” attribute specifies the widget library in question (currently
- * the only supported value is “gtk+”) and the “version” attribute specifies
+ * the only supported value is “ctk+”) and the “version” attribute specifies
  * the target version in the form “<major>.<minor>”. The builder will error
  * out if the version requirements are not met.
  *
@@ -180,7 +180,7 @@
  *             <property name="border-width">20</property>
  *             <child>
  *               <object class="GtkButton" id="ok_button">
- *                 <property name="label">gtk-ok</property>
+ *                 <property name="label">ctk-ok</property>
  *                 <property name="use-stock">TRUE</property>
  *                 <signal name="clicked" handler="ok_button_clicked"/>
  *               </object>
@@ -212,18 +212,18 @@
 #include <stdlib.h>
 #include <string.h> /* strlen */
 
-#include "gtkbuilder.h"
-#include "gtkbuildable.h"
-#include "gtkbuilderprivate.h"
-#include "gtkdebug.h"
-#include "gtkmain.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtktypebuiltins.h"
-#include "gtkwindow.h"
-#include "gtkicontheme.h"
-#include "gtktestutils.h"
-#include "deprecated/gtkstock.h"
+#include "ctkbuilder.h"
+#include "ctkbuildable.h"
+#include "ctkbuilderprivate.h"
+#include "ctkdebug.h"
+#include "ctkmain.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctkwindow.h"
+#include "ctkicontheme.h"
+#include "ctktestutils.h"
+#include "deprecated/ctkstock.h"
 
 
 static void ctk_builder_class_init     (GtkBuilderClass *klass);
@@ -377,7 +377,7 @@ ctk_builder_get_property (GObject    *object,
  * GtkUIManager -> ctk_ui_manager_get_type
  * GWeatherLocation -> gweather_location_get_type
  *
- * Keep in sync with testsuite/gtk/typename.c !
+ * Keep in sync with testsuite/ctk/typename.c !
  */
 static gchar *
 type_name_mangle (const gchar *name)
@@ -562,7 +562,7 @@ object_get_name (GObject *object)
   if (CTK_IS_BUILDABLE (object))
     return ctk_buildable_get_name (CTK_BUILDABLE (object));
   else
-    return g_object_get_data (object, "gtk-builder-name");
+    return g_object_get_data (object, "ctk-builder-name");
 }
 
 static GObject *
@@ -609,7 +609,7 @@ object_set_name (GObject     *object,
   if (CTK_IS_BUILDABLE (object))
     ctk_buildable_set_name (CTK_BUILDABLE (object), name);
   else
-    g_object_set_data_full (object, "gtk-builder-name", g_strdup (name), g_free);
+    g_object_set_data_full (object, "ctk-builder-name", g_strdup (name), g_free);
 }
 
 void
@@ -1161,7 +1161,7 @@ ctk_builder_add_objects_from_file (GtkBuilder   *builder,
  * Main private entry point for building composite container
  * components from template XML.
  *
- * This is exported purely to let gtk-builder-tool validate
+ * This is exported purely to let ctk-builder-tool validate
  * templates, applications have no need to call this function.
  *
  * Returns: A positive value on success, 0 if an error occurred
@@ -2434,7 +2434,7 @@ ctk_builder_get_type_from_name (GtkBuilder  *builder,
 GQuark
 ctk_builder_error_quark (void)
 {
-  return g_quark_from_static_string ("gtk-builder-error-quark");
+  return g_quark_from_static_string ("ctk-builder-error-quark");
 }
 
 gchar *

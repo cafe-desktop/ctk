@@ -12,8 +12,8 @@ foreach l: immodules
                   immod_sources,
                   c_args: common_cflags + cflags,
                   dependencies: [ libctk_dep ],
-                  install_dir: '@0@/gtk-@1@/@2@/immodules/'.format(ctk_libdir, ctk_api_version, ctk_binary_version),
-                  include_directories: [confinc, gtkinc],
+                  install_dir: '@0@/ctk-@1@/@2@/immodules/'.format(ctk_libdir, ctk_api_version, ctk_binary_version),
+                  include_directories: [confinc, ctkinc],
                   install : true,
                   name_suffix: module_suffix,
                   name_prefix: '')

@@ -20,7 +20,7 @@
 #ifndef __CTK_CSS_INITIAL_VALUE_PRIVATE_H__
 #define __CTK_CSS_INITIAL_VALUE_PRIVATE_H__
 
-#include "gtkcssvalueprivate.h"
+#include "ctkcssvalueprivate.h"
 
 G_BEGIN_DECLS
 

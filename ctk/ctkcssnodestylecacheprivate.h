@@ -18,8 +18,8 @@
 #ifndef __CTK_CSS_NODE_STYLE_CACHE_PRIVATE_H__
 #define __CTK_CSS_NODE_STYLE_CACHE_PRIVATE_H__
 
-#include "gtkcssnodedeclarationprivate.h"
-#include "gtkcssstyleprivate.h"
+#include "ctkcssnodedeclarationprivate.h"
+#include "ctkcssstyleprivate.h"
 
 G_BEGIN_DECLS
 

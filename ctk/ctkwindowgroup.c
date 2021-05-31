@@ -19,18 +19,18 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
 
-#include "gtkmain.h"
-#include "gtkwindowprivate.h"
-#include "gtkwindowgroup.h"
+#include "ctkmain.h"
+#include "ctkwindowprivate.h"
+#include "ctkwindowgroup.h"
 
 
 /**
- * SECTION:gtkwindowgroup
+ * SECTION:ctkwindowgroup
  * @Short_description: Limit the effect of grabs
  * @Title: GtkWindowGroup
  *

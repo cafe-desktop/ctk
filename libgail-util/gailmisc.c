@@ -19,7 +19,7 @@
 
 #include <math.h>
 #include <stdlib.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include "gailmisc.h"
 
 /* IMPORTANT!!! This source file does NOT contain the implementation

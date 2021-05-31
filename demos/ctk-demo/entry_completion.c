@@ -6,7 +6,7 @@
  */
 
 #include <glib/gi18n.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 /* Creates a tree model containing the completions */
 GtkTreeModel *

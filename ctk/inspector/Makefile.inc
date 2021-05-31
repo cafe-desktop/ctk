@@ -8,8 +8,8 @@ inspector_c_sources = 			\
 	inspector/general.c		\
 	inspector/gestures.c		\
 	inspector/graphdata.c		\
-        inspector/gtkstackcombo.c       \
-	inspector/gtktreemodelcssnode.c	\
+        inspector/ctkstackcombo.c       \
+	inspector/ctktreemodelcssnode.c	\
 	inspector/init.c		\
 	inspector/inspect-button.c	\
 	inspector/magnifier.c		\
@@ -39,8 +39,8 @@ inspector_h_sources = 			\
 	inspector/general.h		\
 	inspector/gestures.h		\
 	inspector/graphdata.h		\
-        inspector/gtkstackcombo.h       \
-	inspector/gtktreemodelcssnode.h	\
+        inspector/ctkstackcombo.h       \
+	inspector/ctktreemodelcssnode.h	\
 	inspector/init.h		\
 	inspector/magnifier.h		\
 	inspector/menu.h		\

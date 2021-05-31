@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include "iconbrowserapp.h"
 #include "iconbrowserwin.h"
@@ -68,6 +68,6 @@ IconBrowserApp *
 icon_browser_app_new (void)
 {
   return g_object_new (ICON_BROWSER_APP_TYPE,
-                       "application-id", "org.gtk.IconBrowser",
+                       "application-id", "org.ctk.IconBrowser",
                        NULL);
 }

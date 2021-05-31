@@ -13,7 +13,7 @@
  * to clear the area.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static GtkWidget *window = NULL;
 /* Pixmap for scribble area, to store current scribbles */

@@ -1,6 +1,6 @@
 /* testtreecolumnsizing.c: Test case for tree view column resizing.
  *
- * Copyright (C) 2008  Kristian Rietveld  <kris@gtk.org>
+ * Copyright (C) 2008  Kristian Rietveld  <kris@ctk.org>
  *
  * This work is provided "as is"; redistribution and modification
  * in whole or in part, in any medium, physical or electronic is
@@ -20,7 +20,7 @@
  * if advised of the possibility of such damage.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <string.h>
 
 #define NO_EXPAND "No expandable columns"

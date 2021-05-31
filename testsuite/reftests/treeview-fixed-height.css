@@ -54,22 +54,22 @@ GtkCheckButton:selected {
 /* GRADIENTS */
 
 button, .notebook tab:active, .slider {
-    background-image: -gtk-gradient (linear, left top, left bottom,
+    background-image: -ctk-gradient (linear, left top, left bottom,
      from (shade (@color_base, 1.2)), to (@color_base));
 }
 
 button:active, .notebook tab, .trough {
-    background-image: -gtk-gradient (linear, left top, left bottom,
+    background-image: -ctk-gradient (linear, left top, left bottom,
      from (shade (@color_base, 0.8)), to (@color_base));
 }
 
 button.vertical, .slider.vertical {
-    background-image: -gtk-gradient (linear, left top, right top,
+    background-image: -ctk-gradient (linear, left top, right top,
      from (shade (@color_base, 1.2)), to (@color_base));
 }
 
 button.vertical:active, .trough.vertical {
-    background-image: -gtk-gradient (linear, left top, right top,
+    background-image: -ctk-gradient (linear, left top, right top,
      from (shade (@color_base, 0.8)), to (@color_base));
 }
 
@@ -78,13 +78,13 @@ column-header > .button {
 }
 
 .progressbar {
-    background-image: -gtk-gradient (linear, left top, left bottom,
+    background-image: -ctk-gradient (linear, left top, left bottom,
      from (shade (@color_sel, 1.2)), to (@color_sel));
     border-color: shade (@color_sel, 0.7);
 }
 
 .progressbar.vertical {
-    background-image: -gtk-gradient (linear, left top, right top,
+    background-image: -ctk-gradient (linear, left top, right top,
      from (shade (@color_sel, 1.2)), to (@color_sel));
 }
 

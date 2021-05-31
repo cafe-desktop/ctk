@@ -19,17 +19,17 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
-#include "gtkdragdest.h"
+#include "ctkdragdest.h"
 
-#include "gtkdnd.h"
-#include "gtkdndprivate.h"
-#include "gtkselectionprivate.h"
-#include "gtkintl.h"
+#include "ctkdnd.h"
+#include "ctkdndprivate.h"
+#include "ctkselectionprivate.h"
+#include "ctkintl.h"
 
 
 static void
@@ -71,7 +71,7 @@ ctk_drag_dest_set_internal (GtkWidget       *widget,
 {
   GtkDragDestSite *old_site;
 
-  old_site = g_object_get_data (G_OBJECT (widget), I_("gtk-drag-dest"));
+  old_site = g_object_get_data (G_OBJECT (widget), I_("ctk-drag-dest"));
   if (old_site)
     {
       g_signal_handlers_disconnect_by_func (widget,
@@ -92,7 +92,7 @@ ctk_drag_dest_set_internal (GtkWidget       *widget,
   g_signal_connect (widget, "hierarchy-changed",
                     G_CALLBACK (ctk_drag_dest_hierarchy_changed), site);
 
-  g_object_set_data_full (G_OBJECT (widget), I_("gtk-drag-dest"),
+  g_object_set_data_full (G_OBJECT (widget), I_("ctk-drag-dest"),
                           site, ctk_drag_dest_site_destroy);
 }
 
@@ -231,7 +231,7 @@ ctk_drag_dest_unset (GtkWidget *widget)
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
-  old_site = g_object_get_data (G_OBJECT (widget), I_("gtk-drag-dest"));
+  old_site = g_object_get_data (G_OBJECT (widget), I_("ctk-drag-dest"));
   if (old_site)
     {
       g_signal_handlers_disconnect_by_func (widget,
@@ -242,7 +242,7 @@ ctk_drag_dest_unset (GtkWidget *widget)
                                             old_site);
     }
 
-  g_object_set_data (G_OBJECT (widget), I_("gtk-drag-dest"), NULL);
+  g_object_set_data (G_OBJECT (widget), I_("ctk-drag-dest"), NULL);
 }
 
 /**
@@ -261,7 +261,7 @@ ctk_drag_dest_get_target_list (GtkWidget *widget)
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
-  site = g_object_get_data (G_OBJECT (widget), I_("gtk-drag-dest"));
+  site = g_object_get_data (G_OBJECT (widget), I_("ctk-drag-dest"));
 
   return site ? site->target_list : NULL;
 }
@@ -283,7 +283,7 @@ ctk_drag_dest_set_target_list (GtkWidget     *widget,
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
-  site = g_object_get_data (G_OBJECT (widget), I_("gtk-drag-dest"));
+  site = g_object_get_data (G_OBJECT (widget), I_("ctk-drag-dest"));
 
   if (!site)
     {
@@ -404,7 +404,7 @@ ctk_drag_dest_set_track_motion (GtkWidget *widget,
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
-  site = g_object_get_data (G_OBJECT (widget), I_("gtk-drag-dest"));
+  site = g_object_get_data (G_OBJECT (widget), I_("ctk-drag-dest"));
 
   g_return_if_fail (site != NULL);
 
@@ -430,7 +430,7 @@ ctk_drag_dest_get_track_motion (GtkWidget *widget)
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
-  site = g_object_get_data (G_OBJECT (widget), I_("gtk-drag-dest"));
+  site = g_object_get_data (G_OBJECT (widget), I_("ctk-drag-dest"));
 
   if (site)
     return site->track_motion;

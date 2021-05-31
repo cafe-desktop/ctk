@@ -1,5 +1,5 @@
 /* GtkIconTheme - a loader for icon themes
- * gtk-icon-theme.c Copyright (C) 2002, 2003 Red Hat, Inc.
+ * ctk-icon-theme.c Copyright (C) 2002, 2003 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -38,18 +38,18 @@
 #include "win32/gdkwin32.h"
 #endif /* G_OS_WIN32 */
 
-#include "gtkiconthemeprivate.h"
-#include "gtkcsspalettevalueprivate.h"
-#include "gtkcssrgbavalueprivate.h"
-#include "gtkdebug.h"
-#include "deprecated/gtkiconfactory.h"
-#include "gtkiconcache.h"
-#include "gtkintl.h"
-#include "gtkmain.h"
-#include "deprecated/gtknumerableiconprivate.h"
-#include "gtksettingsprivate.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkprivate.h"
+#include "ctkiconthemeprivate.h"
+#include "ctkcsspalettevalueprivate.h"
+#include "ctkcssrgbavalueprivate.h"
+#include "ctkdebug.h"
+#include "deprecated/ctkiconfactory.h"
+#include "ctkiconcache.h"
+#include "ctkintl.h"
+#include "ctkmain.h"
+#include "deprecated/ctknumerableiconprivate.h"
+#include "ctksettingsprivate.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkprivate.h"
 #include "gdkpixbufutilsprivate.h"
 
 #undef GDK_DEPRECATED
@@ -57,7 +57,7 @@
 #define GDK_DEPRECATED
 #define GDK_DEPRECATED_FOR(f)
 
-#include "deprecated/gtkstyle.h"
+#include "deprecated/ctkstyle.h"
 
 /* this is in case round() is not provided by the compiler, 
  * such as in the case of C89 compilers, like MSVC
@@ -65,7 +65,7 @@
 #include "fallback-c89.c"
 
 /**
- * SECTION:gtkicontheme
+ * SECTION:ctkicontheme
  * @Short_description: Looking up icons by name
  * @Title: GtkIconTheme
  *
@@ -79,12 +79,12 @@
  * should install their icons, but additional icon themes can be installed
  * as operating system vendors and users choose.
  *
- * Named icons are similar to the deprecated [Stock Items][gtkstock],
+ * Named icons are similar to the deprecated [Stock Items][ctkstock],
  * and the distinction between the two may be a bit confusing.
  * A few things to keep in mind:
  * 
  * - Stock images usually are used in conjunction with
- *   [Stock Items][gtkstock], such as %CTK_STOCK_OK or
+ *   [Stock Items][ctkstock], such as %CTK_STOCK_OK or
  *   %CTK_STOCK_OPEN. Named icons are easier to set up and therefore
  *   are more useful for new icons that an application wants to
  *   add, such as application icons or window icons.
@@ -105,7 +105,7 @@
  * terms of one or more named icons. (An example of the
  * more than one case is icons that depend on writing direction;
  * %CTK_STOCK_GO_FORWARD uses the two themed icons
- * “gtk-stock-go-forward-ltr” and “gtk-stock-go-forward-rtl”.)
+ * “ctk-stock-go-forward-ltr” and “ctk-stock-go-forward-rtl”.)
  *
  * In many cases, named themes are used indirectly, via #GtkImage
  * or stock items, rather than directly, but looking up icons
@@ -480,7 +480,7 @@ ctk_icon_theme_get_for_screen (GdkScreen *screen)
 
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
 
-  icon_theme = g_object_get_data (G_OBJECT (screen), "gtk-icon-theme");
+  icon_theme = g_object_get_data (G_OBJECT (screen), "ctk-icon-theme");
   if (!icon_theme)
     {
       GtkIconThemePrivate *priv;
@@ -491,7 +491,7 @@ ctk_icon_theme_get_for_screen (GdkScreen *screen)
       priv = icon_theme->priv;
       priv->is_screen_singleton = TRUE;
 
-      g_object_set_data (G_OBJECT (screen), I_("gtk-icon-theme"), icon_theme);
+      g_object_set_data (G_OBJECT (screen), I_("ctk-icon-theme"), icon_theme);
     }
 
   return icon_theme;
@@ -537,7 +537,7 @@ display_closed (GdkDisplay   *display,
 
   if (was_screen_singleton)
     {
-      g_object_set_data (G_OBJECT (screen), I_("gtk-icon-theme"), NULL);
+      g_object_set_data (G_OBJECT (screen), I_("ctk-icon-theme"), NULL);
       priv->is_screen_singleton = FALSE;
     }
 
@@ -565,7 +565,7 @@ update_current_theme (GtkIconTheme *icon_theme)
       if (priv->screen)
         {
           GtkSettings *settings = ctk_settings_get_for_screen (priv->screen);
-          g_object_get (settings, "gtk-icon-theme-name", &theme, NULL);
+          g_object_get (settings, "ctk-icon-theme-name", &theme, NULL);
         }
 
       if (theme_changed (priv->current_theme, theme))
@@ -652,7 +652,7 @@ ctk_icon_theme_set_screen (GtkIconTheme *icon_theme,
       
       g_signal_connect (display, "closed",
                         G_CALLBACK (display_closed), icon_theme);
-      g_signal_connect (settings, "notify::gtk-icon-theme-name",
+      g_signal_connect (settings, "notify::ctk-icon-theme-name",
                         G_CALLBACK (theme_changed), icon_theme);
     }
 
@@ -745,7 +745,7 @@ ctk_icon_theme_init (GtkIconTheme *icon_theme)
   for (j = 0; xdg_data_dirs[j]; j++) 
     priv->search_path[i++] = g_build_filename (xdg_data_dirs[j], "pixmaps", NULL);
 
-  priv->resource_paths = g_list_append (NULL, g_strdup ("/org/gtk/libgtk/icons/"));
+  priv->resource_paths = g_list_append (NULL, g_strdup ("/org/ctk/libctk/icons/"));
 
   priv->themes_valid = FALSE;
   priv->themes = NULL;
@@ -793,7 +793,7 @@ queue_theme_changed (GtkIconTheme *icon_theme)
       priv->theme_changed_idle =
         gdk_threads_add_idle_full (CTK_PRIORITY_RESIZE - 2,
                                    theme_changed_idle, icon_theme, NULL);
-      g_source_set_name_by_id (priv->theme_changed_idle, "[gtk+] theme_changed_idle");
+      g_source_set_name_by_id (priv->theme_changed_idle, "[ctk+] theme_changed_idle");
     }
 }
 
@@ -2250,7 +2250,7 @@ ctk_icon_theme_choose_icon_for_scale (GtkIconTheme       *icon_theme,
 GQuark
 ctk_icon_theme_error_quark (void)
 {
-  return g_quark_from_static_string ("gtk-icon-theme-error-quark");
+  return g_quark_from_static_string ("ctk-icon-theme-error-quark");
 }
 
 /**

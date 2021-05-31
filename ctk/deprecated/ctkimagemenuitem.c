@@ -19,31 +19,31 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
 #define GDK_DISABLE_DEPRECATION_WARNINGS
 
-#include "gtkimagemenuitem.h"
+#include "ctkimagemenuitem.h"
 
-#include "gtkmenuitemprivate.h"
-#include "gtkaccellabel.h"
-#include "gtkstock.h"
-#include "gtkiconfactory.h"
-#include "gtkimage.h"
-#include "gtkmenubar.h"
-#include "gtkcontainer.h"
-#include "gtkwindow.h"
-#include "gtkactivatable.h"
+#include "ctkmenuitemprivate.h"
+#include "ctkaccellabel.h"
+#include "ctkstock.h"
+#include "ctkiconfactory.h"
+#include "ctkimage.h"
+#include "ctkmenubar.h"
+#include "ctkcontainer.h"
+#include "ctkwindow.h"
+#include "ctkactivatable.h"
 
-#include "gtkintl.h"
-#include "gtkprivate.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
 
 
 /**
- * SECTION:gtkimagemenuitem
+ * SECTION:ctkimagemenuitem
  * @Short_description: A deprecated widget for a menu item with an icon
  * @Title: GtkImageMenuItem
  *
@@ -66,7 +66,7 @@
  * ]|
  *
  * Note that the user may disable display of menu icons using
- * the #GtkSettings:gtk-menu-images setting, so make sure to still
+ * the #GtkSettings:ctk-menu-images setting, so make sure to still
  * fill in the text label. If you want to ensure that your menu items
  * show an icon you are strongly encouraged to use a #GtkMenuItem
  * with a #GtkImage instead.
@@ -378,7 +378,7 @@ show_image (GtkImageMenuItem *image_menu_item)
   if (priv->always_show_image)
     show = TRUE;
   else
-    g_object_get (settings, "gtk-menu-images", &show, NULL);
+    g_object_get (settings, "ctk-menu-images", &show, NULL);
 
   return show;
 }
@@ -1005,7 +1005,7 @@ ctk_image_menu_item_get_use_stock (GtkImageMenuItem *image_menu_item)
  * @image_menu_item: a #GtkImageMenuItem
  * @always_show: %TRUE if the menuitem should always show the image
  *
- * If %TRUE, the menu item will ignore the #GtkSettings:gtk-menu-images
+ * If %TRUE, the menu item will ignore the #GtkSettings:ctk-menu-images
  * setting and always show the image, if available.
  *
  * Use this property if the menuitem would be useless or hard to use
@@ -1045,7 +1045,7 @@ ctk_image_menu_item_set_always_show_image (GtkImageMenuItem *image_menu_item,
  * ctk_image_menu_item_get_always_show_image:
  * @image_menu_item: a #GtkImageMenuItem
  *
- * Returns whether the menu item will ignore the #GtkSettings:gtk-menu-images
+ * Returns whether the menu item will ignore the #GtkSettings:ctk-menu-images
  * setting and always show the image, if available.
  *
  * Returns: %TRUE if the menu item will always show the image
@@ -1262,7 +1262,7 @@ ctk_image_menu_item_screen_changed (GtkWidget *widget,
   if (show_image_connection)
     return;
 
-  g_signal_connect (settings, "notify::gtk-menu-images",
+  g_signal_connect (settings, "notify::ctk-menu-images",
                     G_CALLBACK (ctk_image_menu_item_setting_changed), NULL);
 
   show_image_change_notify (CTK_IMAGE_MENU_ITEM (widget));

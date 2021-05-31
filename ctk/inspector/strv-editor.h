@@ -19,7 +19,7 @@
 #define _CTK_INSPECTOR_STRV_EDITOR_H_
 
 
-#include <gtk/gtkbox.h>
+#include <ctk/ctkbox.h>
 
 
 #define CTK_TYPE_INSPECTOR_STRV_EDITOR            (ctk_inspector_strv_editor_get_type())

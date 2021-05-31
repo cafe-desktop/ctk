@@ -22,7 +22,7 @@
  */
 
 #include <glib/gi18n.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 typedef struct {
   GdkDevice *last_source;
@@ -638,7 +638,7 @@ do_event_axes (GtkWidget *toplevel)
 			     GDK_TOUCH_MASK);
 
       event_data = event_data_new ();
-      g_object_set_data_full (G_OBJECT (box), "gtk-demo-event-data",
+      g_object_set_data_full (G_OBJECT (box), "ctk-demo-event-data",
                               event_data, (GDestroyNotify) event_data_free);
 
       g_signal_connect (box, "event",

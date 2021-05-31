@@ -17,23 +17,23 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #ifdef GDK_WINDOWING_X11
 #include <gdk/x11/gdkx.h>
 #endif
 
-#include "gtktreeprivate.h"
-#include "gtkwidgetprivate.h"
+#include "ctktreeprivate.h"
+#include "ctkwidgetprivate.h"
 
-#include "gtktreeviewaccessibleprivate.h"
+#include "ctktreeviewaccessibleprivate.h"
 
-#include "gtkrenderercellaccessible.h"
-#include "gtkbooleancellaccessible.h"
-#include "gtkimagecellaccessible.h"
-#include "gtkcontainercellaccessible.h"
-#include "gtktextcellaccessible.h"
-#include "gtkcellaccessibleparent.h"
-#include "gtkcellaccessibleprivate.h"
+#include "ctkrenderercellaccessible.h"
+#include "ctkbooleancellaccessible.h"
+#include "ctkimagecellaccessible.h"
+#include "ctkcontainercellaccessible.h"
+#include "ctktextcellaccessible.h"
+#include "ctkcellaccessibleparent.h"
+#include "ctkcellaccessibleprivate.h"
 
 struct _GtkTreeViewAccessiblePrivate
 {
@@ -95,7 +95,7 @@ ctk_tree_view_accessible_get_data_quark (void)
   static GQuark quark = 0;
 
   if (G_UNLIKELY (quark == 0))
-    quark = g_quark_from_static_string ("gtk-tree-view-accessible-data");
+    quark = g_quark_from_static_string ("ctk-tree-view-accessible-data");
 
   return quark;
 }
@@ -178,7 +178,7 @@ ctk_tree_view_accessible_finalize (GObject *object)
 }
 
 static void
-ctk_tree_view_accessible_notify_gtk (GObject    *obj,
+ctk_tree_view_accessible_notify_ctk (GObject    *obj,
                                      GParamSpec *pspec)
 {
   GtkWidget *widget;
@@ -215,17 +215,17 @@ ctk_tree_view_accessible_notify_gtk (GObject    *obj,
       g_object_thaw_notify (G_OBJECT (accessible));
     }
   else
-    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_tree_view_accessible_parent_class)->notify_gtk (obj, pspec);
+    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_tree_view_accessible_parent_class)->notify_ctk (obj, pspec);
 }
 
 static void
-ctk_tree_view_accessible_widget_unset (GtkAccessible *gtkaccessible)
+ctk_tree_view_accessible_widget_unset (GtkAccessible *ctkaccessible)
 {
-  GtkTreeViewAccessible *accessible = CTK_TREE_VIEW_ACCESSIBLE (gtkaccessible);
+  GtkTreeViewAccessible *accessible = CTK_TREE_VIEW_ACCESSIBLE (ctkaccessible);
 
   g_hash_table_remove_all (accessible->priv->cell_infos);
 
-  CTK_ACCESSIBLE_CLASS (ctk_tree_view_accessible_parent_class)->widget_unset (gtkaccessible);
+  CTK_ACCESSIBLE_CLASS (ctk_tree_view_accessible_parent_class)->widget_unset (ctkaccessible);
 }
 
 static gint
@@ -501,7 +501,7 @@ ctk_tree_view_accessible_class_init (GtkTreeViewAccessibleClass *klass)
   class->ref_state_set = ctk_tree_view_accessible_ref_state_set;
   class->initialize = ctk_tree_view_accessible_initialize;
 
-  widget_class->notify_gtk = ctk_tree_view_accessible_notify_gtk;
+  widget_class->notify_ctk = ctk_tree_view_accessible_notify_ctk;
 
   accessible_class->widget_unset = ctk_tree_view_accessible_widget_unset;
 
@@ -509,8 +509,8 @@ ctk_tree_view_accessible_class_init (GtkTreeViewAccessibleClass *klass)
    * we do not represent these as children so we do not want to report
    * children added or deleted when these changed.
    */
-  container_class->add_gtk = NULL;
-  container_class->remove_gtk = NULL;
+  container_class->add_ctk = NULL;
+  container_class->remove_ctk = NULL;
 
   gobject_class->finalize = ctk_tree_view_accessible_finalize;
 }

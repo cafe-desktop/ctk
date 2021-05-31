@@ -1,4 +1,4 @@
-/* gtkrichtext.c
+/* ctkrichtext.c
  *
  * Copyright (C) 2006 Imendio AB
  * Contact: Michael Natterer <mitch@imendio.com>
@@ -21,9 +21,9 @@
 
 #include <string.h>
 
-#include "gtktextbufferrichtext.h"
-#include "gtktextbufferserialize.h"
-#include "gtkintl.h"
+#include "ctktextbufferrichtext.h"
+#include "ctktextbufferserialize.h"
+#include "ctkintl.h"
 
 
 typedef struct
@@ -111,8 +111,8 @@ ctk_text_buffer_register_serialize_format (GtkTextBuffer              *buffer,
  *
  * This function is just a wrapper around
  * ctk_text_buffer_register_serialize_format(). The mime type used
- * for registering is “application/x-gtk-text-buffer-rich-text”, or
- * “application/x-gtk-text-buffer-rich-text;format=@tagset_name” if a
+ * for registering is “application/x-ctk-text-buffer-rich-text”, or
+ * “application/x-ctk-text-buffer-rich-text;format=@tagset_name” if a
  * @tagset_name was passed.
  *
  * The @tagset_name can be used to restrict the transfer of rich text
@@ -130,7 +130,7 @@ GdkAtom
 ctk_text_buffer_register_serialize_tagset (GtkTextBuffer *buffer,
                                            const gchar   *tagset_name)
 {
-  gchar   *mime_type = "application/x-gtk-text-buffer-rich-text";
+  gchar   *mime_type = "application/x-ctk-text-buffer-rich-text";
   GdkAtom  format;
 
   g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), GDK_NONE);
@@ -138,7 +138,7 @@ ctk_text_buffer_register_serialize_tagset (GtkTextBuffer *buffer,
 
   if (tagset_name)
     mime_type =
-      g_strdup_printf ("application/x-gtk-text-buffer-rich-text;format=%s",
+      g_strdup_printf ("application/x-ctk-text-buffer-rich-text;format=%s",
                        tagset_name);
 
   format = ctk_text_buffer_register_serialize_format (buffer, mime_type,
@@ -214,7 +214,7 @@ GdkAtom
 ctk_text_buffer_register_deserialize_tagset (GtkTextBuffer *buffer,
                                              const gchar   *tagset_name)
 {
-  gchar   *mime_type = "application/x-gtk-text-buffer-rich-text";
+  gchar   *mime_type = "application/x-ctk-text-buffer-rich-text";
   GdkAtom  format;
 
   g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), GDK_NONE);
@@ -222,7 +222,7 @@ ctk_text_buffer_register_deserialize_tagset (GtkTextBuffer *buffer,
 
   if (tagset_name)
     mime_type =
-      g_strdup_printf ("application/x-gtk-text-buffer-rich-text;format=%s",
+      g_strdup_printf ("application/x-ctk-text-buffer-rich-text;format=%s",
                        tagset_name);
 
   format = ctk_text_buffer_register_deserialize_format (buffer, mime_type,
@@ -803,7 +803,7 @@ serialize_quark (void)
   static GQuark quark = 0;
 
   if (! quark)
-    quark = g_quark_from_static_string ("gtk-text-buffer-serialize-formats");
+    quark = g_quark_from_static_string ("ctk-text-buffer-serialize-formats");
 
   return quark;
 }
@@ -814,7 +814,7 @@ deserialize_quark (void)
   static GQuark quark = 0;
 
   if (! quark)
-    quark = g_quark_from_static_string ("gtk-text-buffer-deserialize-formats");
+    quark = g_quark_from_static_string ("ctk-text-buffer-deserialize-formats");
 
   return quark;
 }

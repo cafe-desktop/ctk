@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkrecentchooser.h - Abstract interface for recent file selectors GUIs
+ * ctkrecentchooser.h - Abstract interface for recent file selectors GUIs
  *
  * Copyright (C) 2006, Emmanuele Bassi
  *
@@ -21,12 +21,12 @@
 #define __CTK_RECENT_CHOOSER_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkwidget.h>
-#include <gtk/gtkrecentmanager.h>
-#include <gtk/gtkrecentfilter.h>
+#include <ctk/ctkwidget.h>
+#include <ctk/ctkrecentmanager.h>
+#include <ctk/ctkrecentfilter.h>
 
 G_BEGIN_DECLS
 

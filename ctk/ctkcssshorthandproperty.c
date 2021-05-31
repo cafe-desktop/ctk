@@ -19,14 +19,14 @@
 
 #include "config.h"
 
-#include "gtkcssshorthandpropertyprivate.h"
+#include "ctkcssshorthandpropertyprivate.h"
 
-#include "gtkcssarrayvalueprivate.h"
-#include "gtkcssinheritvalueprivate.h"
-#include "gtkcssinitialvalueprivate.h"
-#include "gtkcssstylefuncsprivate.h"
-#include "gtkcssunsetvalueprivate.h"
-#include "gtkintl.h"
+#include "ctkcssarrayvalueprivate.h"
+#include "ctkcssinheritvalueprivate.h"
+#include "ctkcssinitialvalueprivate.h"
+#include "ctkcssstylefuncsprivate.h"
+#include "ctkcssunsetvalueprivate.h"
+#include "ctkintl.h"
 
 enum {
   PROP_0,

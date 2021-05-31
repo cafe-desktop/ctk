@@ -16,9 +16,9 @@ VS_VERSION_INFO VERSIONINFO
 	VALUE "CompanyName", "The GTK developer community"
 	VALUE "FileDescription", "GIMP Toolkit"
 	VALUE "FileVersion", "@CTK_VERSION@.0"
-	VALUE "InternalName", "libgtk-win32-@CTK_API_VERSION@-@LT_CURRENT_MINUS_AGE@"
+	VALUE "InternalName", "libctk-win32-@CTK_API_VERSION@-@LT_CURRENT_MINUS_AGE@"
 	VALUE "LegalCopyright", "Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald. Modified by the GTK+ Team and others 1997-2011."
-	VALUE "OriginalFilename", "libgtk-win32-@CTK_API_VERSION@-@LT_CURRENT_MINUS_AGE@.dll"
+	VALUE "OriginalFilename", "libctk-win32-@CTK_API_VERSION@-@LT_CURRENT_MINUS_AGE@.dll"
 	VALUE "ProductName", "GTK+"
 	VALUE "ProductVersion", "@CTK_VERSION@"
       END

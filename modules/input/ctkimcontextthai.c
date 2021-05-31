@@ -20,7 +20,7 @@
 #include <string.h>
 
 #include <gdk/gdkkeysyms.h>
-#include "gtkimcontextthai.h"
+#include "ctkimcontextthai.h"
 #include "thai-charprop.h"
 
 static void     ctk_im_context_thai_class_init          (GtkIMContextThaiClass *class);

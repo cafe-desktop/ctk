@@ -20,7 +20,7 @@
  */
 
 #include <string.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 test_file (const gchar *filename, GString *string)

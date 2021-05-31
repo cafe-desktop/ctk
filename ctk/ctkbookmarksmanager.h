@@ -1,6 +1,6 @@
 /* -*- Mode: C; c-file-style: "gnu"; tab-width: 8 -*- */
 /* GTK - The GIMP Toolkit
- * gtkbookmarksmanager.h: Utilities to manage and monitor ~/.gtk-bookmarks
+ * ctkbookmarksmanager.h: Utilities to manage and monitor ~/.ctk-bookmarks
  * Copyright (C) 2003, Red Hat, Inc.
  * Copyright (C) 2007-2008 Carlos Garnacho
  * Copyright (C) 2011 Suse

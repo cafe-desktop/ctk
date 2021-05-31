@@ -10,7 +10,7 @@
  * GtkCellRendererCombo and GtkCellRendererProgress.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <string.h>
 #include <stdlib.h>
 

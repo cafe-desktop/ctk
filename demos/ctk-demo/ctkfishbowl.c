@@ -17,9 +17,9 @@
 
 #include "config.h"
 
-#include "gtkfishbowl.h"
+#include "ctkfishbowl.h"
 
-#include "gtk/fallback-c89.c"
+#include "ctk/fallback-c89.c"
 
 typedef struct _GtkFishbowlPrivate       GtkFishbowlPrivate;
 typedef struct _GtkFishbowlChild         GtkFishbowlChild;

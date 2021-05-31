@@ -18,9 +18,9 @@
 #ifndef __CTK_CSS_MATCHER_PRIVATE_H__
 #define __CTK_CSS_MATCHER_PRIVATE_H__
 
-#include <gtk/gtkenums.h>
-#include <gtk/gtktypes.h>
-#include "gtk/gtkcsstypesprivate.h"
+#include <ctk/ctkenums.h>
+#include <ctk/ctktypes.h>
+#include "ctk/ctkcsstypesprivate.h"
 
 G_BEGIN_DECLS
 

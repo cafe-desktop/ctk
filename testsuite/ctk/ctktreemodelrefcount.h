@@ -1,5 +1,5 @@
-/* gtktreemodelrefcount.h
- * Copyright (C) 2011  Kristian Rietveld <kris@gtk.org>
+/* ctktreemodelrefcount.h
+ * Copyright (C) 2011  Kristian Rietveld <kris@ctk.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -18,7 +18,7 @@
 #ifndef __CTK_TREE_MODEL_REF_COUNT_H__
 #define __CTK_TREE_MODEL_REF_COUNT_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 G_BEGIN_DECLS
 

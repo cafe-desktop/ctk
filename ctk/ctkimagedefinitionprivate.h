@@ -18,8 +18,8 @@
 #ifndef __CTK_IMAGE_DEFINITION_H__
 #define __CTK_IMAGE_DEFINITION_H__
 
-#include "gtk/gtkimage.h"
-#include "gtk/gtktypes.h"
+#include "ctk/ctkimage.h"
+#include "ctk/ctktypes.h"
 
 G_BEGIN_DECLS
 

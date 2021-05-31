@@ -18,8 +18,8 @@
 #include "config.h"
 
 #include <string.h>
-#include <gtk/gtk.h>
-#include "gtkcheckmenuitemaccessible.h"
+#include <ctk/ctk.h>
+#include "ctkcheckmenuitemaccessible.h"
 
 
 G_DEFINE_TYPE (GtkCheckMenuItemAccessible, ctk_check_menu_item_accessible, CTK_TYPE_MENU_ITEM_ACCESSIBLE)
@@ -77,7 +77,7 @@ ctk_check_menu_item_accessible_ref_state_set (AtkObject *accessible)
 }
 
 static void
-ctk_check_menu_item_accessible_notify_gtk (GObject    *obj,
+ctk_check_menu_item_accessible_notify_ctk (GObject    *obj,
                                            GParamSpec *pspec)
 {
   GtkCheckMenuItem *check_menu_item = CTK_CHECK_MENU_ITEM (obj);
@@ -107,7 +107,7 @@ ctk_check_menu_item_accessible_notify_gtk (GObject    *obj,
       atk_object_notify_state_change (atk_obj, ATK_STATE_CHECKED, active);
     }
   else
-    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_check_menu_item_accessible_parent_class)->notify_gtk (obj, pspec);
+    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_check_menu_item_accessible_parent_class)->notify_ctk (obj, pspec);
 }
 
 static void
@@ -116,7 +116,7 @@ ctk_check_menu_item_accessible_class_init (GtkCheckMenuItemAccessibleClass *klas
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
   GtkWidgetAccessibleClass *widget_class = (GtkWidgetAccessibleClass*)klass;
 
-  widget_class->notify_gtk = ctk_check_menu_item_accessible_notify_gtk;
+  widget_class->notify_ctk = ctk_check_menu_item_accessible_notify_ctk;
 
   class->ref_state_set = ctk_check_menu_item_accessible_ref_state_set;
   class->initialize = ctk_check_menu_item_accessible_initialize;

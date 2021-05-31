@@ -20,7 +20,7 @@
 
 #include <math.h>
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 oval_path (cairo_t *cr,

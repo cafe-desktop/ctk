@@ -1,4 +1,4 @@
-/* gtkappchooserbutton.c: an app-chooser combobox
+/* ctkappchooserbutton.c: an app-chooser combobox
  *
  * Copyright (C) 2010 Red Hat, Inc.
  *
@@ -19,7 +19,7 @@
  */
 
 /**
- * SECTION:gtkappchooserbutton
+ * SECTION:ctkappchooserbutton
  * @Title: GtkAppChooserButton
  * @Short_description: A button to launch an application chooser dialog
  *
@@ -48,18 +48,18 @@
  */
 #include "config.h"
 
-#include "gtkappchooserbutton.h"
+#include "ctkappchooserbutton.h"
 
-#include "gtkappchooser.h"
-#include "gtkappchooserdialog.h"
-#include "gtkappchooserprivate.h"
-#include "gtkcelllayout.h"
-#include "gtkcellrendererpixbuf.h"
-#include "gtkcellrenderertext.h"
-#include "gtkcombobox.h"
-#include "gtkdialog.h"
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
+#include "ctkappchooser.h"
+#include "ctkappchooserdialog.h"
+#include "ctkappchooserprivate.h"
+#include "ctkcelllayout.h"
+#include "ctkcellrendererpixbuf.h"
+#include "ctkcellrenderertext.h"
+#include "ctkcombobox.h"
+#include "ctkdialog.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
 
 enum {
   PROP_SHOW_DIALOG_ITEM = 1,
@@ -85,7 +85,7 @@ enum {
   NUM_COLUMNS,
 };
 
-#define CUSTOM_ITEM_OTHER_APP "gtk-internal-item-other-app"
+#define CUSTOM_ITEM_OTHER_APP "ctk-internal-item-other-app"
 
 static void app_chooser_iface_init  (GtkAppChooserIface *iface);
 

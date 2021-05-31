@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkrecentfilter.h - Filter object for recently used resources
+ * ctkrecentfilter.h - Filter object for recently used resources
  * Copyright (C) 2006, Emmanuele Bassi
  *
  * This library is free software; you can redistribute it and/or
@@ -20,7 +20,7 @@
 #define __CTK_RECENT_FILTER_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
 #include <glib-object.h>

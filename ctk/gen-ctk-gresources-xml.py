@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 #
-# Generate gtk.gresources.xml
+# Generate ctk.gresources.xml
 #
-# Usage: gen-gtk-gresources-xml SRCDIR_GTK [OUTPUT-FILE]
+# Usage: gen-ctk-gresources-xml SRCDIR_GTK [OUTPUT-FILE]
 
 import os, sys
 
@@ -10,17 +10,17 @@ srcdir = sys.argv[1]
 
 xml = '''<?xml version='1.0' encoding='UTF-8'?>
 <gresources>
-  <gresource prefix='/org/gtk/libgtk'>
+  <gresource prefix='/org/ctk/libctk'>
 '''
 
 def get_files(subdir,extension):
   return sorted(filter(lambda x: x.endswith((extension)), os.listdir(os.path.join(srcdir,subdir))))
 
 xml += '''
-    <file>theme/Adwaita/gtk.css</file>
-    <file>theme/Adwaita/gtk-dark.css</file>
-    <file>theme/Adwaita/gtk-contained.css</file>
-    <file>theme/Adwaita/gtk-contained-dark.css</file>
+    <file>theme/Adwaita/ctk.css</file>
+    <file>theme/Adwaita/ctk-dark.css</file>
+    <file>theme/Adwaita/ctk-contained.css</file>
+    <file>theme/Adwaita/ctk-contained-dark.css</file>
 '''
 
 for f in get_files('theme/Adwaita/assets', '.png'):
@@ -32,10 +32,10 @@ for f in get_files('theme/Adwaita/assets', '.svg'):
   xml += '    <file>theme/Adwaita/assets/{0}</file>\n'.format(f)
 
 xml += '''
-    <file>theme/HighContrast/gtk.css</file>
-    <file alias='theme/HighContrastInverse/gtk.css'>theme/HighContrast/gtk-inverse.css</file>
-    <file>theme/HighContrast/gtk-contained.css</file>
-    <file>theme/HighContrast/gtk-contained-inverse.css</file>
+    <file>theme/HighContrast/ctk.css</file>
+    <file alias='theme/HighContrastInverse/ctk.css'>theme/HighContrast/ctk-inverse.css</file>
+    <file>theme/HighContrast/ctk-contained.css</file>
+    <file>theme/HighContrast/ctk-contained-inverse.css</file>
 '''
 
 for f in get_files('theme/HighContrast/assets', '.png'):
@@ -47,8 +47,8 @@ for f in get_files('theme/HighContrast/assets', '.svg'):
   xml += '    <file>theme/HighContrast/assets/{0}</file>\n'.format(f)
 
 xml += '''
-    <file>theme/win32/gtk-win32-base.css</file>
-    <file>theme/win32/gtk.css</file>
+    <file>theme/win32/ctk-win32-base.css</file>
+    <file>theme/win32/ctk.css</file>
 '''
 
 for f in get_files('cursor', '.png'):

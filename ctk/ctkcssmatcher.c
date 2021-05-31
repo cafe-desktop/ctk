@@ -17,11 +17,11 @@
 
 #include "config.h"
 
-#include "gtkcssmatcherprivate.h"
+#include "ctkcssmatcherprivate.h"
 
-#include "gtkcssnodedeclarationprivate.h"
-#include "gtkcssnodeprivate.h"
-#include "gtkwidgetpath.h"
+#include "ctkcssnodedeclarationprivate.h"
+#include "ctkcssnodeprivate.h"
+#include "ctkwidgetpath.h"
 
 /* CTK_CSS_MATCHER_WIDGET_PATH */
 

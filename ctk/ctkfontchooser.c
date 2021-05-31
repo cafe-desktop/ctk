@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkfontchooser.c - Abstract interface for font file selectors GUIs
+ * ctkfontchooser.c - Abstract interface for font file selectors GUIs
  *
  * Copyright (C) 2006, Emmanuele Bassi
  * Copyright (C) 2011 Alberto Ruiz <aruiz@gnome.org>
@@ -20,14 +20,14 @@
 
 #include "config.h"
 
-#include "gtkfontchooser.h"
-#include "gtkfontchooserprivate.h"
-#include "gtkintl.h"
-#include "gtktypebuiltins.h"
-#include "gtkprivate.h"
+#include "ctkfontchooser.h"
+#include "ctkfontchooserprivate.h"
+#include "ctkintl.h"
+#include "ctktypebuiltins.h"
+#include "ctkprivate.h"
 
 /**
- * SECTION:gtkfontchooser
+ * SECTION:ctkfontchooser
  * @Short_description: Interface implemented by widgets displaying fonts
  * @Title: GtkFontChooser
  * @See_also: #GtkFontChooserDialog, #GtkFontChooserWidget, #GtkFontButton

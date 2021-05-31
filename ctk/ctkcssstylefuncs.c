@@ -17,7 +17,7 @@
 
 #include "config.h"
 
-#include "gtkcssstylefuncsprivate.h"
+#include "ctkcssstylefuncsprivate.h"
 
 #include <errno.h>
 #include <math.h>
@@ -27,20 +27,20 @@
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <cairo-gobject.h>
 
-#include "gtkcsscolorvalueprivate.h"
-#include "gtkcssimagegradientprivate.h"
-#include "gtkcssprovider.h"
-#include "gtkcssrgbavalueprivate.h"
-#include "gtkcsstypedvalueprivate.h"
-#include "gtkcsstypesprivate.h"
-#include "gtkprivatetypebuiltins.h"
-#include "gtkstylecontextprivate.h"
-#include "gtktypebuiltins.h"
-#include "gtkcsswin32sizevalueprivate.h"
+#include "ctkcsscolorvalueprivate.h"
+#include "ctkcssimagegradientprivate.h"
+#include "ctkcssprovider.h"
+#include "ctkcssrgbavalueprivate.h"
+#include "ctkcsstypedvalueprivate.h"
+#include "ctkcsstypesprivate.h"
+#include "ctkprivatetypebuiltins.h"
+#include "ctkstylecontextprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctkcsswin32sizevalueprivate.h"
 
-#include "deprecated/gtkthemingengine.h"
-#include "deprecated/gtkgradientprivate.h"
-#include "deprecated/gtksymboliccolorprivate.h"
+#include "deprecated/ctkthemingengine.h"
+#include "deprecated/ctkgradientprivate.h"
+#include "deprecated/ctksymboliccolorprivate.h"
 
 /* this is in case round() is not provided by the compiler, 
  * such as in the case of C89 compilers, like MSVC
@@ -431,7 +431,7 @@ int_value_parse (GtkCssParser *parser,
 {
   gint i;
 
-  if (_ctk_css_parser_has_prefix (parser, "-gtk"))
+  if (_ctk_css_parser_has_prefix (parser, "-ctk"))
     {
       GtkCssValue *cssvalue = ctk_css_win32_size_value_parse (parser, CTK_CSS_PARSE_NUMBER | CTK_CSS_NUMBER_AS_PIXELS);
 
@@ -618,7 +618,7 @@ border_value_parse (GtkCssParser *parser,
 
   for (i = 0; i < G_N_ELEMENTS (numbers); i++)
     {
-      if (_ctk_css_parser_has_prefix (parser, "-gtk"))
+      if (_ctk_css_parser_has_prefix (parser, "-ctk"))
         {
           GtkCssValue *cssvalue = ctk_css_win32_size_value_parse (parser, CTK_CSS_PARSE_NUMBER | CTK_CSS_NUMBER_AS_PIXELS);
 

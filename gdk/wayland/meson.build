@@ -23,8 +23,8 @@ gdk_wayland_public_headers = files(
   'gdkwaylandwindow.h',
 )
 
-install_headers(gdk_wayland_public_headers, subdir: 'gtk-3.0/gdk/wayland')
-install_headers('gdkwayland.h', subdir: 'gtk-3.0/gdk')
+install_headers(gdk_wayland_public_headers, subdir: 'ctk-3.0/gdk/wayland')
+install_headers('gdkwayland.h', subdir: 'ctk-3.0/gdk')
 
 gdk_wayland_deps = [
   shmlib,
@@ -46,8 +46,8 @@ wayland_scanner = find_program('wayland-scanner')
 #  - protocol stability ('private', 'stable' or 'unstable')
 #  - protocol version (if stability is 'unstable')
 proto_sources = [
-  ['gtk-shell', 'private', ],
-  ['gtk-primary-selection', 'private', ],
+  ['ctk-shell', 'private', ],
+  ['ctk-primary-selection', 'private', ],
   ['pointer-gestures', 'unstable', 'v1', ],
   ['xdg-shell', 'unstable', 'v6', ],
   ['xdg-shell', 'stable', ],

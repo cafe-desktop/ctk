@@ -21,11 +21,11 @@
 #define __CTK_PAD_CONTROLLER_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
 #include <gdk/gdk.h>
-#include <gtk/gtkeventcontroller.h>
+#include <ctk/ctkeventcontroller.h>
 
 G_BEGIN_DECLS
 

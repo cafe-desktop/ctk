@@ -17,8 +17,8 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
-#include "gtkarrowaccessible.h"
+#include <ctk/ctk.h>
+#include "ctkarrowaccessible.h"
 
 struct _GtkArrowAccessiblePrivate
 {

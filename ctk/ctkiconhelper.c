@@ -19,20 +19,20 @@
 
 #include "config.h"
 
-#include "gtkiconhelperprivate.h"
+#include "ctkiconhelperprivate.h"
 
 #include <math.h>
 
-#include "gtkcssenumvalueprivate.h"
-#include "gtkcssiconthemevalueprivate.h"
-#include "gtkcssnodeprivate.h"
-#include "gtkcssstyleprivate.h"
-#include "gtkcssstylepropertyprivate.h"
-#include "gtkcsstransientnodeprivate.h"
-#include "gtkiconthemeprivate.h"
-#include "gtkrendericonprivate.h"
-#include "deprecated/gtkiconfactoryprivate.h"
-#include "deprecated/gtkstock.h"
+#include "ctkcssenumvalueprivate.h"
+#include "ctkcssiconthemevalueprivate.h"
+#include "ctkcssnodeprivate.h"
+#include "ctkcssstyleprivate.h"
+#include "ctkcssstylepropertyprivate.h"
+#include "ctkcsstransientnodeprivate.h"
+#include "ctkiconthemeprivate.h"
+#include "ctkrendericonprivate.h"
+#include "deprecated/ctkiconfactoryprivate.h"
+#include "deprecated/ctkstock.h"
 
 struct _GtkIconHelperPrivate {
   GtkImageDefinition *def;

@@ -19,7 +19,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __CTK_PRIVATE_H__
@@ -28,8 +28,8 @@
 #include <glib-object.h>
 #include <gdk/gdk.h>
 
-#include "gtkcsstypesprivate.h"
-#include "gtktexthandleprivate.h"
+#include "ctkcsstypesprivate.h"
+#include "ctktexthandleprivate.h"
 
 G_BEGIN_DECLS
 
@@ -104,7 +104,7 @@ guint ctk_get_portal_interface_version (GDBusConnection *connection,
                                         const char      *interface_name);
 
 #ifdef G_OS_WIN32
-void _ctk_load_dll_with_libgtk3_manifest (const char *dllname);
+void _ctk_load_dll_with_libctk3_manifest (const char *dllname);
 #endif
 
 gboolean        ctk_simulate_touchscreen (void);

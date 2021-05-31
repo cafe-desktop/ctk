@@ -20,7 +20,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 /*
@@ -30,7 +30,7 @@
 /*
  * Bindings for GtkTextView and GtkEntry
  */
-@binding-set gtk-emacs-text-entry
+@binding-set ctk-emacs-text-entry
 {
   bind "<ctrl>b" { "move-cursor" (logical-positions, -1, 0) };
   bind "<shift><ctrl>b" { "move-cursor" (logical-positions, -1, 1) };
@@ -72,7 +72,7 @@
 /*
  * Bindings for GtkTextView
  */
-@binding-set gtk-emacs-text-view
+@binding-set ctk-emacs-text-view
 {
   bind "<ctrl>p" { "move-cursor" (display-lines, -1, 0) };
   bind "<shift><ctrl>p" { "move-cursor" (display-lines, -1, 1) };
@@ -86,7 +86,7 @@
 /*
  * Bindings for GtkTreeView
  */
-@binding-set gtk-emacs-tree-view
+@binding-set ctk-emacs-tree-view
 {
   bind "<ctrl>s" { "start-interactive-search" () };
   bind "<ctrl>f" { "move-cursor" (logical-positions, 1) };
@@ -96,7 +96,7 @@
 /*
  * Bindings for menus
  */
-@binding-set gtk-emacs-menu
+@binding-set ctk-emacs-menu
 {
   bind "<ctrl>n" { "move-current" (next) };
   bind "<ctrl>p" { "move-current" (prev) };
@@ -105,17 +105,17 @@
 }
 
 entry {
-  -gtk-key-bindings: gtk-emacs-text-entry;
+  -ctk-key-bindings: ctk-emacs-text-entry;
 }
 
 textview {
-  -gtk-key-bindings: gtk-emacs-text-entry, gtk-emacs-text-view;
+  -ctk-key-bindings: ctk-emacs-text-entry, ctk-emacs-text-view;
 }
 
 treeview {
-  -gtk-key-bindings: gtk-emacs-tree-view;
+  -ctk-key-bindings: ctk-emacs-tree-view;
 }
 
 GtkMenuShell {
-  -gtk-key-bindings: gtk-emacs-menu;
+  -ctk-key-bindings: ctk-emacs-menu;
 }

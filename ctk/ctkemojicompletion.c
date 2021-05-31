@@ -1,4 +1,4 @@
-/* gtkemojicompletion.c: An Emoji picker widget
+/* ctkemojicompletion.c: An Emoji picker widget
  * Copyright 2017, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -17,19 +17,19 @@
 
 #include "config.h"
 
-#include "gtkemojicompletion.h"
+#include "ctkemojicompletion.h"
 
-#include "gtkentryprivate.h"
-#include "gtkbox.h"
-#include "gtkcssprovider.h"
-#include "gtklistbox.h"
-#include "gtklabel.h"
-#include "gtkpopover.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtkgesturelongpress.h"
-#include "gtkflowbox.h"
-#include "gtkstack.h"
+#include "ctkentryprivate.h"
+#include "ctkbox.h"
+#include "ctkcssprovider.h"
+#include "ctklistbox.h"
+#include "ctklabel.h"
+#include "ctkpopover.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctkgesturelongpress.h"
+#include "ctkflowbox.h"
+#include "ctkstack.h"
 
 struct _GtkEmojiCompletion
 {
@@ -663,7 +663,7 @@ ctk_emoji_completion_init (GtkEmojiCompletion *completion)
 
   ctk_widget_init_template (CTK_WIDGET (completion));
 
-  bytes = g_resources_lookup_data ("/org/gtk/libgtk/emoji/emoji.data", 0, NULL);
+  bytes = g_resources_lookup_data ("/org/ctk/libctk/emoji/emoji.data", 0, NULL);
   completion->data = g_variant_ref_sink (g_variant_new_from_bytes (G_VARIANT_TYPE ("a(auss)"), bytes, TRUE));
   g_bytes_unref (bytes);
 
@@ -679,7 +679,7 @@ ctk_emoji_completion_class_init (GtkEmojiCompletionClass *klass)
 
   object_class->finalize = ctk_emoji_completion_finalize;
 
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/ui/gtkemojicompletion.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/ui/ctkemojicompletion.ui");
 
   ctk_widget_class_bind_template_child (widget_class, GtkEmojiCompletion, list);
 

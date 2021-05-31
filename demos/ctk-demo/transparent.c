@@ -3,7 +3,7 @@
  * Use transparent background on GdkWindows to create a shadow effect on a GtkOverlay widget.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #define SHADOW_OFFSET_X 7
 #define SHADOW_OFFSET_Y 7

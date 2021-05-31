@@ -1,4 +1,4 @@
-/* gtkentrybuffer.c
+/* ctkentrybuffer.c
  * Copyright (C) 2009  Stefan Walter <stef@memberwebs.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -17,18 +17,18 @@
 
 #include "config.h"
 
-#include "gtkentrybuffer.h"
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
-#include "gtkprivate.h"
-#include "gtkwidget.h"
+#include "ctkentrybuffer.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
+#include "ctkprivate.h"
+#include "ctkwidget.h"
 
 #include <gdk/gdk.h>
 
 #include <string.h>
 
 /**
- * SECTION:gtkentrybuffer
+ * SECTION:ctkentrybuffer
  * @title: GtkEntryBuffer
  * @short_description: Text buffer for GtkEntry
  *

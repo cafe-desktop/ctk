@@ -29,13 +29,13 @@
 #include "prop-editor.h"
 #include "object-tree.h"
 
-#include "gtkcelllayout.h"
-#include "gtktreeview.h"
-#include "gtktreeselection.h"
-#include "gtkpopover.h"
-#include "gtksearchentry.h"
-#include "gtklabel.h"
-#include "gtkstack.h"
+#include "ctkcelllayout.h"
+#include "ctktreeview.h"
+#include "ctktreeselection.h"
+#include "ctkpopover.h"
+#include "ctksearchentry.h"
+#include "ctklabel.h"
+#include "ctkstack.h"
 
 enum
 {
@@ -292,7 +292,7 @@ ctk_inspector_prop_list_class_init (GtkInspectorPropListClass *klass)
       g_param_spec_object ("search-entry", "Search Entry", "Search Entry",
                            CTK_TYPE_WIDGET, G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/prop-list.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/prop-list.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorPropList, model);
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorPropList, attribute_column);
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorPropList, tree);
@@ -436,7 +436,7 @@ ctk_inspector_prop_list_update_prop (GtkInspectorPropList *pl,
       gint column = -1;
 
       area = NULL;
-      layout = g_object_get_data (pl->priv->object, "gtk-inspector-cell-layout");
+      layout = g_object_get_data (pl->priv->object, "ctk-inspector-cell-layout");
       if (layout)
         area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (layout));
       if (area)

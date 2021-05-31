@@ -38,7 +38,7 @@
     <file>theming.ui</file>
   </gresource>
   <gresource prefix="/css_pixbufs">
-    <file alias="gtk.css">css_pixbufs.css</file>
+    <file alias="ctk.css">css_pixbufs.css</file>
     <file>cssview.css</file>
     <file>reset.css</file>
     <file>background.jpg</file>
@@ -52,7 +52,7 @@
     <file>gnu-keys.png</file>
   </gresource>
   <gresource prefix="/css_shadows">
-    <file alias="gtk.css">css_shadows.css</file>
+    <file alias="ctk.css">css_shadows.css</file>
     <file>cssview.css</file>
     <file>reset.css</file>
   </gresource>
@@ -96,8 +96,8 @@
   </gresource>
   <gresource prefix="/fishbowl">
     <file>fishbowl.ui</file>
-    <file>gtkfishbowl.c</file>
-    <file>gtkfishbowl.h</file>
+    <file>ctkfishbowl.c</file>
+    <file>ctkfishbowl.h</file>
   </gresource>
   <gresource prefix="/iconview">
     <file preprocess="to-pixdata">gnome-fs-directory.png</file>

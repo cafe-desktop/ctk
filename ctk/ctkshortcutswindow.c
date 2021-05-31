@@ -1,4 +1,4 @@
-/* gtkshortcutswindow.c
+/* ctkshortcutswindow.c
  *
  * Copyright (C) 2015 Christian Hergert <christian@hergert.me>
  *
@@ -18,19 +18,19 @@
 
 #include "config.h"
 
-#include "gtkshortcutswindow.h"
-#include "gtkscrolledwindow.h"
-#include "gtkshortcutssection.h"
-#include "gtkshortcutsgroup.h"
-#include "gtkshortcutsshortcutprivate.h"
-#include "gtksearchbar.h"
-#include "gtksearchentry.h"
-#include "gtkwidgetprivate.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
+#include "ctkshortcutswindow.h"
+#include "ctkscrolledwindow.h"
+#include "ctkshortcutssection.h"
+#include "ctkshortcutsgroup.h"
+#include "ctkshortcutsshortcutprivate.h"
+#include "ctksearchbar.h"
+#include "ctksearchentry.h"
+#include "ctkwidgetprivate.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
 
 /**
- * SECTION:gtkshortcutswindow
+ * SECTION:ctkshortcutswindow
  * @Title: GtkShortcutsWindow
  * @Short_description: Toplevel which shows help for shortcuts
  *
@@ -55,7 +55,7 @@
  * are arranged in columns, and spread across several pages if there are too
  * many to find on a single page.
  *
- * The .ui file for this example can be found [here](https://git.gnome.org/browse/gtk+/tree/demos/gtk-demo/shortcuts-gedit.ui).
+ * The .ui file for this example can be found [here](https://git.gnome.org/browse/ctk+/tree/demos/ctk-demo/shortcuts-gedit.ui).
  *
  * # An example with multiple views:
  *
@@ -64,7 +64,7 @@
  * This example shows a #GtkShortcutsWindow that has been configured to show only
  * the shortcuts relevant to the "stopwatch" view.
  *
- * The .ui file for this example can be found [here](https://git.gnome.org/browse/gtk+/tree/demos/gtk-demo/shortcuts-clocks.ui).
+ * The .ui file for this example can be found [here](https://git.gnome.org/browse/ctk+/tree/demos/ctk-demo/shortcuts-clocks.ui).
  *
  * # An example with multiple sections:
  *
@@ -73,7 +73,7 @@
  * This example shows a #GtkShortcutsWindow with two sections, "Editor Shortcuts"
  * and "Terminal Shortcuts".
  *
- * The .ui file for this example can be found [here](https://git.gnome.org/browse/gtk+/tree/demos/gtk-demo/shortcuts-builder.ui).
+ * The .ui file for this example can be found [here](https://git.gnome.org/browse/ctk+/tree/demos/ctk-demo/shortcuts-builder.ui).
  */
 
 typedef struct
@@ -289,7 +289,7 @@ section_notify_cb (GObject    *section,
       gchar *title;
       GtkWidget *label;
 
-      label = g_object_get_data (section, "gtk-shortcuts-title");
+      label = g_object_get_data (section, "ctk-shortcuts-title");
       g_object_get (section, "title", &title, NULL);
       ctk_label_set_label (CTK_LABEL (label), title);
       g_free (title);
@@ -329,14 +329,14 @@ ctk_shortcuts_window_add_section (GtkShortcutsWindow  *self,
   row = g_object_new (CTK_TYPE_LIST_BOX_ROW,
                       "visible", TRUE,
                       NULL);
-  g_object_set_data (G_OBJECT (row), "gtk-shortcuts-section", section);
+  g_object_set_data (G_OBJECT (row), "ctk-shortcuts-section", section);
   label = g_object_new (CTK_TYPE_LABEL,
                         "margin", 6,
                         "label", title,
                         "xalign", 0.5f,
                         "visible", TRUE,
                         NULL);
-  g_object_set_data (G_OBJECT (section), "gtk-shortcuts-title", label);
+  g_object_set_data (G_OBJECT (section), "ctk-shortcuts-title", label);
   ctk_container_add (CTK_CONTAINER (row), CTK_WIDGET (label));
   ctk_container_add (CTK_CONTAINER (priv->list_box), CTK_WIDGET (row));
 
@@ -509,7 +509,7 @@ ctk_shortcuts_window__list_box__row_activated (GtkShortcutsWindow *self,
   GtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
   GtkWidget *section;
 
-  section = g_object_get_data (G_OBJECT (row), "gtk-shortcuts-section");
+  section = g_object_get_data (G_OBJECT (row), "ctk-shortcuts-section");
   ctk_stack_set_visible_child (priv->stack, section);
   ctk_popover_popdown (priv->popover);
 }

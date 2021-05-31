@@ -2,7 +2,7 @@
 <!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
                "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
 ]>
-<refentry id="gtk-broadway">
+<refentry id="ctk-broadway">
 <refmeta>
 <refentrytitle>Using GTK+ with Broadway</refentrytitle>
 <manvolnum>3</manvolnum>
@@ -46,7 +46,7 @@ broadwayd :5
 Then point your web browser at <literal>http://127.0.0.1:8085</literal>.
 Start your applications like this:
 <programlisting>
-GDK_BACKEND=broadway BROADWAY_DISPLAY=:5 gtk3-demo
+GDK_BACKEND=broadway BROADWAY_DISPLAY=:5 ctk3-demo
 </programlisting>
 </para>
 

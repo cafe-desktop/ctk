@@ -20,8 +20,8 @@
 #ifndef __CTK_ACTION_HELPER_H__
 #define __CTK_ACTION_HELPER_H__
 
-#include <gtk/gtkapplication.h>
-#include <gtk/gtkactionable.h>
+#include <ctk/ctkapplication.h>
+#include <ctk/ctkactionable.h>
 
 #define CTK_TYPE_ACTION_HELPER                              (ctk_action_helper_get_type ())
 #define CTK_ACTION_HELPER(inst)                             (G_TYPE_CHECK_INSTANCE_CAST ((inst),                      \

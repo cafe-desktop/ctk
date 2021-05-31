@@ -1,4 +1,4 @@
-## Makefile for building the gtk test apps with Microsoft C
+## Makefile for building the ctk test apps with Microsoft C
 ## Use: nmake -f makefile.msc
 
 ## There is no install target, you have to decide where and 
@@ -18,10 +18,10 @@ CTK_VER = 2.0
 GDK_PIXBUF_VER = 2.0
 
 GDK_LIBS = ../../gdk/gdk-win32-$(CTK_VER).lib
-CTK_LIBS = ../../gtk/gtk-win32-$(CTK_VER).lib
+CTK_LIBS = ../../ctk/ctk-win32-$(CTK_VER).lib
 GDK_PIXBUF_LIBS = ../../gdk-pixbuf/gdk_pixbuf-$(GDK_PIXBUF_VER).lib
 
-INCLUDES = -FImsvc_recommended_pragmas.h -I . -I ../.. -I ../../gdk -I ../../gdk-pixbuf -I ../../gtk
+INCLUDES = -FImsvc_recommended_pragmas.h -I . -I ../.. -I ../../gdk -I ../../gdk-pixbuf -I ../../ctk
 DEPCFLAGS = $(PANGO_CFLAGS) $(GLIB_CFLAGS) $(LIBICONV_CFLAGS) $(INTL_CFLAGS) $(ATK_CFLAGS) $(CAIRO_CFLAGS)
 LDFLAGS = /link /machine:ix86 $(LINKDEBUG)
 DEFINES = -DG_LOG_DOMAIN=\"GtkDemo\" -DCTK_VERSION=\"$(CTK_VER)\" \
@@ -31,7 +31,7 @@ TOUCH = copy makefile.msc+nul
 
 all :	\
 	demos.h \
-	gtk-demo.exe
+	ctk-demo.exe
 
 ## These should be in the order you want them to appear in the 
 ## demo app, which means alphabetized by demo title, not filename
@@ -85,7 +85,7 @@ OBJECTS = \
 	ui_manager.obj	\
 	main.obj \
 
-gtk-demo.exe : demos.h $(OBJECTS)
-	$(CC) $(CFLAGS) -Fegtk-demo.exe $(OBJECTS) $(CTK_LIBS) $(GDK_LIBS) $(GDK_PIXBUF_LIBS) \
+ctk-demo.exe : demos.h $(OBJECTS)
+	$(CC) $(CFLAGS) -Fectk-demo.exe $(OBJECTS) $(CTK_LIBS) $(GDK_LIBS) $(GDK_PIXBUF_LIBS) \
 	$(CAIRO_LIBS) $(PANGOCAIRO_LIBS) $(PANGO_LIBS) $(GLIB_LIBS) $(LDFLAGS)
 

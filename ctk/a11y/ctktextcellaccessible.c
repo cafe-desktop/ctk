@@ -17,12 +17,12 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
-#include "../gtkpango.h"
-#include "gtktextcellaccessible.h"
-#include "gtkcontainercellaccessible.h"
-#include "gtkcellaccessibleparent.h"
-#include "gtkstylecontextprivate.h"
+#include <ctk/ctk.h>
+#include "../ctkpango.h"
+#include "ctktextcellaccessible.h"
+#include "ctkcontainercellaccessible.h"
+#include "ctkcellaccessibleparent.h"
+#include "ctkstylecontextprivate.h"
 
 struct _GtkTextCellAccessiblePrivate
 {

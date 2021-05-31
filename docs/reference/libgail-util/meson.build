@@ -1,7 +1,7 @@
 if get_option('ctk_doc')
     configure_file(input: 'version.xml.in', output: 'version.xml', configuration: version_conf)
 
-    gnome.gtkdoc('gail-libgail-util3',
+    gnome.ctkdoc('gail-libgail-util3',
                  mode: 'none',
                  main_xml: 'gail-libgail-util-docs.sgml',
                  src_dir: libgailutilinc,
@@ -15,7 +15,7 @@ if get_option('ctk_doc')
                    '--extra-dir=@0@'.format(join_paths(glib_docpath, 'glib')),
                    '--extra-dir=@0@'.format(join_paths(glib_docpath, 'gobject')),
                    '--extra-dir=@0@'.format(join_paths(glib_docpath, 'gio')),
-                   '--extra-dir=../gtk',
+                   '--extra-dir=../ctk',
                  ],
                  install: true)
 endif

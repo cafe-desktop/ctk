@@ -33,7 +33,7 @@
 #if defined(HAVE_GIO_UNIX) && !defined(__APPLE__)
 #include <gio/gdesktopappinfo.h>
 #endif
-#include <gtk.h>
+#include <ctk.h>
 
 static gboolean show_version;
 static gchar **args = NULL;
@@ -109,7 +109,7 @@ main (int argc, char *argv[])
   if (!args)
     {
       /* Translators: the %s is the program name. This error message */
-      /* means the user is calling gtk-launch without any argument.  */
+      /* means the user is calling ctk-launch without any argument.  */
       g_printerr (_("%s: missing application name"), g_get_prgname ());
       g_printerr ("\n");
       g_printerr (_("Try \"%s --help\" for more information."), g_get_prgname ());

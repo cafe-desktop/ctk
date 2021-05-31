@@ -1,4 +1,4 @@
-## Makefile.am for gtk+/gdk
+## Makefile.am for ctk+/gdk
 include $(top_srcdir)/Makefile.decl
 -include $(INTROSPECTION_MAKEFILE)
 INTROSPECTION_GIRS =
@@ -196,11 +196,11 @@ gdk_built_sources = 				\
 # setup GDK sources and their dependencies
 #
 
-gdkincludedir = $(includedir)/gtk-3.0/gdk
+gdkincludedir = $(includedir)/ctk-3.0/gdk
 gdkinclude_HEADERS = $(gdk_public_h_sources)
 nodist_gdkinclude_HEADERS = gdkconfig.h gdkenumtypes.h gdkversionmacros.h
 
-deprecatedincludedir = $(includedir)/gtk-3.0/gdk/deprecated
+deprecatedincludedir = $(includedir)/ctk-3.0/gdk/deprecated
 deprecatedinclude_HEADERS = $(deprecated_h_sources)
 
 common_sources = 		\
@@ -476,7 +476,7 @@ glsl_sources := $(sort $(wildcard $(srcdir)/resources/glsl/*.glsl))
 gdk.gresource.xml: Makefile.am
 	$(AM_V_GEN) echo "<?xml version='1.0' encoding='UTF-8'?>" > $@; \
 	echo "<gresources>" >> $@; \
-	echo "  <gresource prefix='/org/gtk/libgdk'>" >> $@; \
+	echo "  <gresource prefix='/org/ctk/libgdk'>" >> $@; \
 	for f in $(glsl_sources); do \
 	  n=`basename $$f`; \
 	  echo "    <file alias='glsl/$$n'>resources/glsl/$$n</file>" >> $@; \

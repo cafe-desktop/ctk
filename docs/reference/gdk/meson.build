@@ -158,7 +158,7 @@ if get_option('ctk_doc')
 
     configure_file(input: 'version.xml.in', output: 'version.xml', configuration: version_conf)
 
-    gnome.gtkdoc('gdk3',
+    gnome.ctkdoc('gdk3',
                  mode: 'none',
                  main_xml: 'gdk-docs.sgml',
                  src_dir: src_dir,

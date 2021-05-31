@@ -1,4 +1,4 @@
-/* gtktextattributes.c - text attributes
+/* ctktextattributes.c - text attributes
  *
  * Copyright (c) 1992-1994 The Regents of the University of California.
  * Copyright (c) 1994-1997 Sun Microsystems, Inc.
@@ -49,9 +49,9 @@
 
 #include "config.h"
 
-#include "gtktextattributes.h"
-#include "gtktextattributesprivate.h"
-#include "gtktexttagprivate.h"
+#include "ctktextattributes.h"
+#include "ctktextattributesprivate.h"
+#include "ctktexttagprivate.h"
 
 /**
  * ctk_text_attributes_new:

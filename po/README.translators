@@ -1,6 +1,6 @@
 The .po files in this directory contain only the ui and error 
-messages in the gtk20 domain. See ../po-properties for the 
-property nicks and blurbs in the gtk20-properties domain. 
+messages in the ctk20 domain. See ../po-properties for the 
+property nicks and blurbs in the ctk20-properties domain. 
 
 All the .po files are now in UTF-8!
 

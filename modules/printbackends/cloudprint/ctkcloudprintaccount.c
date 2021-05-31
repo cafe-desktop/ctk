@@ -1,4 +1,4 @@
-/* gtkcloudprintaccount.c: Google Cloud Print account class
+/* ctkcloudprintaccount.c: Google Cloud Print account class
  * Copyright (C) 2014, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -22,9 +22,9 @@
 #include <rest/rest-proxy-call.h>
 #include <json-glib/json-glib.h>
 
-#include <gtk/gtkunixprint.h>
-#include "gtkcloudprintaccount.h"
-#include "gtkprintercloudprint.h"
+#include <ctk/ctkunixprint.h>
+#include "ctkcloudprintaccount.h"
+#include "ctkprintercloudprint.h"
 
 #define CLOUDPRINT_PROXY "GTK+"
 

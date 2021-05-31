@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <gdk/wayland/gdkwayland.h>
 
 static GtkWidget *window;

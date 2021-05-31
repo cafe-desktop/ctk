@@ -19,7 +19,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -28,26 +28,26 @@
 #include <string.h>
 #include <cairo-gobject.h>
 
-#include "gtkcontainer.h"
-#include "gtkcssstylepropertyprivate.h"
-#include "gtkiconhelperprivate.h"
-#include "gtkimageprivate.h"
-#include "deprecated/gtkiconfactory.h"
-#include "deprecated/gtkstock.h"
-#include "gtkicontheme.h"
-#include "gtksizerequest.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtktypebuiltins.h"
-#include "gtkcssshadowsvalueprivate.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkwidgetprivate.h"
-#include "gtkcsscustomgadgetprivate.h"
+#include "ctkcontainer.h"
+#include "ctkcssstylepropertyprivate.h"
+#include "ctkiconhelperprivate.h"
+#include "ctkimageprivate.h"
+#include "deprecated/ctkiconfactory.h"
+#include "deprecated/ctkstock.h"
+#include "ctkicontheme.h"
+#include "ctksizerequest.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctkcssshadowsvalueprivate.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkwidgetprivate.h"
+#include "ctkcsscustomgadgetprivate.h"
 
-#include "a11y/gtkimageaccessible.h"
+#include "a11y/ctkimageaccessible.h"
 
 /**
- * SECTION:gtkimage
+ * SECTION:ctkimage
  * @Short_description: A widget displaying an image
  * @Title: GtkImage
  * @See_also:#GdkPixbuf
@@ -1640,7 +1640,7 @@ animation_timeout (gpointer data)
 
       priv->animation_timeout =
         gdk_threads_add_timeout (delay, animation_timeout, image);
-      g_source_set_name_by_id (priv->animation_timeout, "[gtk+] animation_timeout");
+      g_source_set_name_by_id (priv->animation_timeout, "[ctk+] animation_timeout");
 
       ctk_widget_queue_draw (widget);
     }
@@ -1664,7 +1664,7 @@ get_animation_frame (GtkImage *image)
       if (delay >= 0) {
         priv->animation_timeout =
           gdk_threads_add_timeout (delay, animation_timeout, image);
-        g_source_set_name_by_id (priv->animation_timeout, "[gtk+] animation_timeout");
+        g_source_set_name_by_id (priv->animation_timeout, "[ctk+] animation_timeout");
       }
     }
 

@@ -23,11 +23,11 @@
  * Modified by the GTK+ Team and others 2003.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 /**
- * SECTION:gtkactiongroup
+ * SECTION:ctkactiongroup
  * @Short_description: A group of actions
  * @Title: GtkActionGroup
  *
@@ -73,7 +73,7 @@
  *   <child>
  *       <object class="GtkAction" id="About">
  *           <property name="name">About</property>
- *           <property name="stock_id">gtk-about</property>
+ *           <property name="stock_id">ctk-about</property>
  *           <signal handler="about_activate" name="activate"/>
  *       </object>
  *       <accelerator key="F1" modifiers="GDK_CONTROL_MASK | GDK_SHIFT_MASK"/>
@@ -88,18 +88,18 @@
 
 #define GDK_DISABLE_DEPRECATION_WARNINGS
 
-#include "gtkactiongroup.h"
-#include "gtkbuildable.h"
-#include "gtkiconfactory.h"
-#include "gtkicontheme.h"
-#include "gtkstock.h"
-#include "gtktoggleaction.h"
-#include "gtkradioaction.h"
-#include "gtkaccelmap.h"
-#include "gtkmarshalers.h"
-#include "gtkbuilderprivate.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
+#include "ctkactiongroup.h"
+#include "ctkbuildable.h"
+#include "ctkiconfactory.h"
+#include "ctkicontheme.h"
+#include "ctkstock.h"
+#include "ctktoggleaction.h"
+#include "ctkradioaction.h"
+#include "ctkaccelmap.h"
+#include "ctkmarshalers.h"
+#include "ctkbuilderprivate.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
 
 
 struct _GtkActionGroupPrivate 

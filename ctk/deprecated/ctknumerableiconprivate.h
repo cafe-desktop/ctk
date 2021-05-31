@@ -1,5 +1,5 @@
 /*
- * gtknumerableiconprivate.h: private methods for GtkNumerableIcon
+ * ctknumerableiconprivate.h: private methods for GtkNumerableIcon
  *
  * Copyright (C) 2010 Red Hat, Inc.
  *
@@ -22,7 +22,7 @@
 #ifndef __CTK_NUMERABLE_ICON_PRIVATE_H__
 #define __CTK_NUMERABLE_ICON_PRIVATE_H__
 
-#include "gtknumerableicon.h"
+#include "ctknumerableicon.h"
 
 G_BEGIN_DECLS
 

@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkprintbackendpdf.h: Default implementation of GtkPrintBackend 
+ * ctkprintbackendpdf.h: Default implementation of GtkPrintBackend 
  * for printing to a file
  * Copyright (C) 2003, Red Hat, Inc.
  *
@@ -21,7 +21,7 @@
 #define __CTK_PRINT_BACKEND_FILE_H__
 
 #include <glib-object.h>
-#include "gtkprintbackend.h"
+#include "ctkprintbackend.h"
 
 G_BEGIN_DECLS
 

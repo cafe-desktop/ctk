@@ -19,10 +19,10 @@
 #define __CTK_PAGE_SETUP_UNIX_DIALOG_H__
 
 #if !defined (__CTK_UNIX_PRINT_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtkunixprint.h> can be included directly."
+#error "Only <ctk/ctkunixprint.h> can be included directly."
 #endif
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 G_BEGIN_DECLS
 

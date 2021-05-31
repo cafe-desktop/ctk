@@ -17,9 +17,9 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <glib/gi18n-lib.h>
-#include "gtkbooleancellaccessible.h"
+#include "ctkbooleancellaccessible.h"
 
 struct _GtkBooleanCellAccessiblePrivate
 {

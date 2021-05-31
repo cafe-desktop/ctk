@@ -18,7 +18,7 @@
 #ifndef __CTK_TEXT_HANDLE_PRIVATE_H__
 #define __CTK_TEXT_HANDLE_PRIVATE_H__
 
-#include <gtk/gtkwidget.h>
+#include <ctk/ctkwidget.h>
 
 G_BEGIN_DECLS
 

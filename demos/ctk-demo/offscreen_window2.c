@@ -4,7 +4,7 @@
  * various effects.
  */
 #include <glib/gi18n.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #define CTK_TYPE_MIRROR_BIN              (ctk_mirror_bin_get_type ())
 #define CTK_MIRROR_BIN(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_MIRROR_BIN, GtkMirrorBin))

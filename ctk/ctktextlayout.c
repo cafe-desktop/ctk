@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtktextlayout.c - calculate the layout of the text
+ * ctktextlayout.c - calculate the layout of the text
  *
  * Copyright (c) 1992-1994 The Regents of the University of California.
  * Copyright (c) 1994-1997 Sun Microsystems, Inc.
@@ -72,19 +72,19 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #define CTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
 #include "config.h"
-#include "gtkmarshalers.h"
-#include "gtktextlayout.h"
-#include "gtktextbtree.h"
-#include "gtktextbufferprivate.h"
-#include "gtktextiterprivate.h"
-#include "gtktextattributesprivate.h"
-#include "gtktextutil.h"
-#include "gtkintl.h"
+#include "ctkmarshalers.h"
+#include "ctktextlayout.h"
+#include "ctktextbtree.h"
+#include "ctktextbufferprivate.h"
+#include "ctktextiterprivate.h"
+#include "ctktextattributesprivate.h"
+#include "ctktextutil.h"
+#include "ctkintl.h"
 
 #include <stdlib.h>
 #include <string.h>

@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkfilechooserdialog.h: File selector dialog
+ * ctkfilechooserdialog.h: File selector dialog
  * Copyright (C) 2003, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -20,11 +20,11 @@
 #define __CTK_FILE_CHOOSER_DIALOG_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkdialog.h>
-#include <gtk/gtkfilechooser.h>
+#include <ctk/ctkdialog.h>
+#include <ctk/ctkfilechooser.h>
 
 G_BEGIN_DECLS
 

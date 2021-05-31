@@ -18,7 +18,7 @@
  */
 
 /**
- * SECTION:gtkeventcontrollerkey
+ * SECTION:ctkeventcontrollerkey
  * @Short_description: Event controller for key events
  * @Title: GtkEventControllerKey
  * @See_also: #GtkEventController
@@ -31,13 +31,13 @@
 
 #include "config.h"
 
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
-#include "gtkprivate.h"
-#include "gtkwidgetprivate.h"
-#include "gtkeventcontrollerprivate.h"
-#include "gtkeventcontrollerkey.h"
-#include "gtkbindings.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
+#include "ctkprivate.h"
+#include "ctkwidgetprivate.h"
+#include "ctkeventcontrollerprivate.h"
+#include "ctkeventcontrollerkey.h"
+#include "ctkbindings.h"
 
 #include <gdk/gdk.h>
 

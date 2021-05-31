@@ -24,8 +24,8 @@
 #include <colord.h>
 #endif
 
-#include "gtkintl.h"
-#include "gtkprintercups.h"
+#include "ctkintl.h"
+#include "ctkprintercups.h"
 
 enum {
   PROP_0,

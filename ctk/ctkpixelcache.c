@@ -17,11 +17,11 @@
 
 #include "config.h"
 
-#include "gtkdebug.h"
-#include "gtkprivate.h"
-#include "gtkpixelcacheprivate.h"
-#include "gtkrenderbackgroundprivate.h"
-#include "gtkstylecontextprivate.h"
+#include "ctkdebug.h"
+#include "ctkprivate.h"
+#include "ctkpixelcacheprivate.h"
+#include "ctkrenderbackgroundprivate.h"
+#include "ctkstylecontextprivate.h"
 
 #define BLOW_CACHE_TIMEOUT_SEC 20
 
@@ -439,7 +439,7 @@ _ctk_pixel_cache_draw (GtkPixelCache         *cache,
 
       tag = g_timeout_add_seconds (BLOW_CACHE_TIMEOUT_SEC, blow_cache_cb, cache);
       cache->timeout_source = g_main_context_find_source_by_id (NULL, tag);
-      g_source_set_name (cache->timeout_source, "[gtk+] blow_cache_cb");
+      g_source_set_name (cache->timeout_source, "[ctk+] blow_cache_cb");
     }
 
   _ctk_pixel_cache_create_surface_if_needed (cache, window,

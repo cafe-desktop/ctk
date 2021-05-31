@@ -22,7 +22,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -710,7 +710,7 @@ RegisterGdkClass (GdkWindowType wtype, GdkWindowTypeHint wtype_hint)
  * and complain if that changes, which would break this implementation
  * again.
  *
- * [1] http://mail.gnome.org/archives/gtk-devel-list/2010-August/msg00214.html
+ * [1] http://mail.gnome.org/archives/ctk-devel-list/2010-August/msg00214.html
  */
 void
 _gdk_win32_display_create_window_impl (GdkDisplay    *display,
@@ -802,7 +802,7 @@ _gdk_win32_display_create_window_impl (GdkDisplay    *display,
     {
       /* I very much doubt using WS_EX_TRANSPARENT actually
        * corresponds to how X11 InputOnly windows work, but it appears
-       * to work well enough for the actual use cases in gtk.
+       * to work well enough for the actual use cases in ctk.
        */
       dwExStyle = WS_EX_TRANSPARENT;
       GDK_NOTE (MISC, g_print ("... GDK_INPUT_ONLY\n"));
@@ -1550,7 +1550,7 @@ gdk_win32_window_move (GdkWindow *window,
 
   /* Don't check GDK_WINDOW_TYPE (window) == GDK_WINDOW_CHILD.
    * Foreign windows (another app's windows) might be children of our
-   * windows! Especially in the case of gtkplug/socket.
+   * windows! Especially in the case of ctkplug/socket.
    */
   if (GetAncestor (GDK_WINDOW_HWND (window), GA_PARENT) != GetDesktopWindow ())
     {

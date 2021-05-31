@@ -19,21 +19,21 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
-#include "gtkcontainer.h"
-#include "gtkmisc.h"
-#include "gtklabel.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
+#include "ctkcontainer.h"
+#include "ctkmisc.h"
+#include "ctklabel.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
 
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
 /**
- * SECTION:gtkmisc
+ * SECTION:ctkmisc
  * @Short_description: Base class for widgets with alignments and padding
  * @Title: GtkMisc
  *
@@ -450,7 +450,7 @@ ctk_misc_realize (GtkWidget *widget)
     }
 }
 
-/* Semi-private function used by gtk widgets inheriting from
+/* Semi-private function used by ctk widgets inheriting from
  * GtkMisc that takes into account both css padding and border
  * and the padding specified with the GtkMisc properties.
  */

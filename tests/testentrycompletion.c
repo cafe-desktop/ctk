@@ -19,7 +19,7 @@
 #include "config.h"
 #include <stdlib.h>
 #include <string.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 /* Don't copy this bad example; inline RGB data is always a better
  * idea than inline XPMs.

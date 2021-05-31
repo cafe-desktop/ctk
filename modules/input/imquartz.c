@@ -1,5 +1,5 @@
 /*
- * gtkimmodulequartz
+ * ctkimmodulequartz
  * Copyright (C) 2011 Hiroyuki Yamamoto
  *
  * This library is free software; you can redistribute it and/or
@@ -21,16 +21,16 @@
 #include "config.h"
 #include <string.h>
 
-#include <gtk/gtk.h>
-#include "gtk/gtkintl.h"
-#include "gtk/gtkimmodule.h"
+#include <ctk/ctk.h>
+#include "ctk/ctkintl.h"
+#include "ctk/ctkimmodule.h"
 
 #include <AvailabilityMacros.h>
 
-#define CTK_COMPILATION 1 // For gdkquartz-gtk-only.h
+#define CTK_COMPILATION 1 // For gdkquartz-ctk-only.h
 
 #include "gdk/quartz/gdkinternal-quartz.h"
-#include "gdk/quartz/gdkquartz-gtk-only.h"
+#include "gdk/quartz/gdkquartz-ctk-only.h"
 #include "gdk/quartz/GdkQuartzView.h"
 
 #define CTK_IM_CONTEXT_TYPE_QUARTZ (type_quartz)

@@ -1,4 +1,4 @@
-/* gtkplacesviewrow.c
+/* ctkplacesviewrow.c
  *
  * Copyright (C) 2015 Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
  *
@@ -20,23 +20,23 @@
 
 #include <gio/gio.h>
 
-#include "gtkplacesviewrowprivate.h"
+#include "ctkplacesviewrowprivate.h"
 
 /* As this widget is shared with Nautilus, we use this guard to
  * ensure that internally we only include the files that we need
- * instead of including gtk.h
+ * instead of including ctk.h
  */
 #ifdef CTK_COMPILATION
-#include "gtkbutton.h"
-#include "gtkeventbox.h"
-#include "gtkimage.h"
-#include "gtkintl.h"
-#include "gtklabel.h"
-#include "gtkspinner.h"
-#include "gtkstack.h"
-#include "gtktypebuiltins.h"
+#include "ctkbutton.h"
+#include "ctkeventbox.h"
+#include "ctkimage.h"
+#include "ctkintl.h"
+#include "ctklabel.h"
+#include "ctkspinner.h"
+#include "ctkstack.h"
+#include "ctktypebuiltins.h"
 #else
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #endif
 
 struct _GtkPlacesViewRow
@@ -375,7 +375,7 @@ ctk_places_view_row_class_init (GtkPlacesViewRowClass *klass)
 
   g_object_class_install_properties (object_class, LAST_PROP, properties);
 
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/ui/gtkplacesviewrow.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/ui/ctkplacesviewrow.ui");
 
   ctk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, available_space_label);
   ctk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, mount_stack);

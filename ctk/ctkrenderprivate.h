@@ -22,7 +22,7 @@
 #include <pango/pango.h>
 #include <gdk/gdk.h>
 
-#include "gtkcssenumvalueprivate.h"
+#include "ctkcssenumvalueprivate.h"
 
 void        ctk_render_content_path             (GtkStyleContext        *context,
                                                  cairo_t                *cr,

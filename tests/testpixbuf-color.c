@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #define ICC_PROFILE             "/usr/share/color/icc/bluish.icc"
 #define ICC_PROFILE_SIZE        3966

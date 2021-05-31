@@ -18,7 +18,7 @@
 #ifndef __CTK_CONTAINER_ACCESSIBLE_PRIVATE_H__
 #define __CTK_CONTAINER_ACCESSIBLE_PRIVATE_H__
 
-#include <gtk/a11y/gtkcontaineraccessible.h>
+#include <ctk/a11y/ctkcontaineraccessible.h>
 
 G_BEGIN_DECLS
 

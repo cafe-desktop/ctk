@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 activate_toggle (GSimpleAction *action,
@@ -474,7 +474,7 @@ PlugMan *
 plug_man_new (void)
 {
   return g_object_new (plug_man_get_type (),
-                       "application-id", "org.gtk.Test.plugman",
+                       "application-id", "org.ctk.Test.plugman",
                        "flags", G_APPLICATION_HANDLES_OPEN,
                        NULL);
 }

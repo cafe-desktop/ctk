@@ -19,21 +19,21 @@
 
 #define GDK_DISABLE_DEPRECATION_WARNINGS
 
-#include "gtkgradientprivate.h"
-#include "gtkcsscolorvalueprivate.h"
-#include "gtkcssrgbavalueprivate.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkstyleproperties.h"
-#include "gtksymboliccolorprivate.h"
+#include "ctkgradientprivate.h"
+#include "ctkcsscolorvalueprivate.h"
+#include "ctkcssrgbavalueprivate.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkstyleproperties.h"
+#include "ctksymboliccolorprivate.h"
 
 /**
- * SECTION:gtkgradient
+ * SECTION:ctkgradient
  * @Short_description: Gradients
  * @Title: GtkGradient
  *
  * GtkGradient is a boxed type that represents a gradient.
  * It is the result of parsing a
- * [gradient expression][gtkcssprovider-gradients].
+ * [gradient expression][ctkcssprovider-gradients].
  * To obtain the gradient represented by a GtkGradient, it has to
  * be resolved with ctk_gradient_resolve(), which replaces all
  * symbolic color references by the colors they refer to (in a given
@@ -397,7 +397,7 @@ ctk_gradient_to_string (GtkGradient *gradient)
 
   g_return_val_if_fail (gradient != NULL, NULL);
 
-  str = g_string_new ("-gtk-gradient (");
+  str = g_string_new ("-ctk-gradient (");
 
   if (gradient->radius0 == 0 && gradient->radius1 == 0)
     {

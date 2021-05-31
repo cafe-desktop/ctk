@@ -19,8 +19,8 @@
 #ifndef __CTK_GESTURE_PRIVATE_H__
 #define __CTK_GESTURE_PRIVATE_H__
 
-#include "gtkeventcontrollerprivate.h"
-#include "gtkgesture.h"
+#include "ctkeventcontrollerprivate.h"
+#include "ctkgesture.h"
 
 struct _GtkGesture
 {

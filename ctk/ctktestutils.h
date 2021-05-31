@@ -20,11 +20,11 @@
 #define __CTK_TEST_UTILS_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkwidget.h>
-#include <gtk/gtkspinbutton.h>
+#include <ctk/ctkwidget.h>
+#include <ctk/ctkspinbutton.h>
 
 G_BEGIN_DECLS
 

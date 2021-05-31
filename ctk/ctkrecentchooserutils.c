@@ -1,4 +1,4 @@
-/* gtkrecentchooserutils.h - Private utility functions for implementing a
+/* ctkrecentchooserutils.h - Private utility functions for implementing a
  *                           GtkRecentChooser interface
  *
  * Copyright (C) 2006 Emmanuele Bassi
@@ -18,13 +18,13 @@
  * You should have received a copy of the GNU Library General Public
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  *
- * Based on gtkfilechooserutils.c:
+ * Based on ctkfilechooserutils.c:
  *	Copyright (C) 2003 Red Hat, Inc.
  */
 
 #include "config.h"
 
-#include "gtkrecentchooserutils.h"
+#include "ctkrecentchooserutils.h"
 
 /* Methods */
 static void      delegate_set_sort_func              (GtkRecentChooser  *chooser,
@@ -152,7 +152,7 @@ _ctk_recent_chooser_set_delegate (GtkRecentChooser *receiver,
   g_return_if_fail (CTK_IS_RECENT_CHOOSER (delegate));
   
   g_object_set_data (G_OBJECT (receiver),
-  		    "gtk-recent-chooser-delegate", delegate);
+  		    "ctk-recent-chooser-delegate", delegate);
   
   g_signal_connect (delegate, "notify",
   		    G_CALLBACK (delegate_notify), receiver);
@@ -168,7 +168,7 @@ _ctk_recent_chooser_delegate_get_quark (void)
   static GQuark quark = 0;
   
   if (G_UNLIKELY (quark == 0))
-    quark = g_quark_from_static_string ("gtk-recent-chooser-delegate");
+    quark = g_quark_from_static_string ("ctk-recent-chooser-delegate");
   
   return quark;
 }

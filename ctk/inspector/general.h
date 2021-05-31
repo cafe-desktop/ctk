@@ -18,7 +18,7 @@
 #ifndef _CTK_INSPECTOR_GENERAL_H_
 #define _CTK_INSPECTOR_GENERAL_H_
 
-#include <gtk/gtkscrolledwindow.h>
+#include <ctk/ctkscrolledwindow.h>
 
 #define CTK_TYPE_INSPECTOR_GENERAL            (ctk_inspector_general_get_type())
 #define CTK_INSPECTOR_GENERAL(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_GENERAL, GtkInspectorGeneral))

@@ -20,8 +20,8 @@
 #ifndef __CTK_CSS_IMAGE_ICON_THEME_PRIVATE_H__
 #define __CTK_CSS_IMAGE_ICON_THEME_PRIVATE_H__
 
-#include "gtk/gtkcssimageprivate.h"
-#include "gtk/gtkicontheme.h"
+#include "ctk/ctkcssimageprivate.h"
+#include "ctk/ctkicontheme.h"
 
 G_BEGIN_DECLS
 

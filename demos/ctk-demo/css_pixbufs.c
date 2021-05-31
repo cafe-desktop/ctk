@@ -4,7 +4,7 @@
  * It is done exclusively with CSS as the background of the window.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 show_parsing_error (GtkCssProvider *provider,
@@ -103,7 +103,7 @@ do_css_pixbufs (GtkWidget *do_widget)
       g_signal_connect (text, "changed",
                         G_CALLBACK (css_text_changed), provider);
 
-      bytes = g_resources_lookup_data ("/css_pixbufs/gtk.css", 0, NULL);
+      bytes = g_resources_lookup_data ("/css_pixbufs/ctk.css", 0, NULL);
       ctk_text_buffer_set_text (text, g_bytes_get_data (bytes, NULL), g_bytes_get_size (bytes));
       g_bytes_unref (bytes);
 

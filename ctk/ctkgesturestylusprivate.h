@@ -19,8 +19,8 @@
 #ifndef __CTK_GESTURE_STYLUS_PRIVATE_H__
 #define __CTK_GESTURE_STYLUS_PRIVATE_H__
 
-#include "gtkgesturesingleprivate.h"
-#include "gtkgesturestylus.h"
+#include "ctkgesturesingleprivate.h"
+#include "ctkgesturestylus.h"
 
 struct _GtkGestureStylus
 {

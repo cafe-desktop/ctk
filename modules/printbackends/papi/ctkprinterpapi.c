@@ -17,7 +17,7 @@
  */
 
 #include "config.h"
-#include "gtkprinterpapi.h"
+#include "ctkprinterpapi.h"
 
 static void ctk_printer_papi_init       (GtkPrinterPapi      *printer);
 static void ctk_printer_papi_class_init (GtkPrinterPapiClass *class);

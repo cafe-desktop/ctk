@@ -22,7 +22,7 @@
 #ifndef __CTK_REVEALER_H__
 #define __CTK_REVEALER_H__
 
-#include <gtk/gtkbin.h>
+#include <ctk/ctkbin.h>
 
 G_BEGIN_DECLS
 

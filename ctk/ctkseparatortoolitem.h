@@ -1,4 +1,4 @@
-/* gtktoggletoolbutton.h
+/* ctktoggletoolbutton.h
  *
  * Copyright (C) 2002 Anders Carlsson <andersca@gnome.org>
  * Copyright (C) 2002 James Henstridge <james@daa.com.au>
@@ -21,10 +21,10 @@
 #define __CTK_SEPARATOR_TOOL_ITEM_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtktoolitem.h>
+#include <ctk/ctktoolitem.h>
 
 G_BEGIN_DECLS
 

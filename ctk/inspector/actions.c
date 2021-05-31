@@ -21,13 +21,13 @@
 #include "actions.h"
 #include "action-editor.h"
 
-#include "gtkapplication.h"
-#include "gtkapplicationwindow.h"
-#include "gtktreeview.h"
-#include "gtkliststore.h"
-#include "gtkwidgetprivate.h"
-#include "gtkpopover.h"
-#include "gtklabel.h"
+#include "ctkapplication.h"
+#include "ctkapplicationwindow.h"
+#include "ctktreeview.h"
+#include "ctkliststore.h"
+#include "ctkwidgetprivate.h"
+#include "ctkpopover.h"
+#include "ctklabel.h"
 
 enum
 {
@@ -276,7 +276,7 @@ ctk_inspector_actions_class_init (GtkInspectorActionsClass *klass)
 {
   GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/actions.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/actions.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorActions, model);
   ctk_widget_class_bind_template_callback (widget_class, row_activated);
 }

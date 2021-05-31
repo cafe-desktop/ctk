@@ -20,7 +20,7 @@
  * have submenus.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <gdk/gdkkeysyms.h>
 
 #include <stdio.h>

@@ -21,13 +21,13 @@
 #include "config.h"
 #include <string.h>
 
-#include "gtkclipboard.h"
-#include "gtkclipboardprivate.h"
-#include "gtkinvisible.h"
-#include "gtkmain.h"
-#include "gtkmarshalers.h"
-#include "gtktextbufferrichtext.h"
-#include "gtkintl.h"
+#include "ctkclipboard.h"
+#include "ctkclipboardprivate.h"
+#include "ctkinvisible.h"
+#include "ctkmain.h"
+#include "ctkmarshalers.h"
+#include "ctktextbufferrichtext.h"
+#include "ctkintl.h"
 
 #ifdef GDK_WINDOWING_X11
 #include "x11/gdkx.h"
@@ -43,7 +43,7 @@
 
 
 /**
- * SECTION:gtkclipboard
+ * SECTION:ctkclipboard
  * @Short_description: Storing data on clipboards
  * @Title: Clipboards
  * @See_also: #GtkSelectionData
@@ -199,10 +199,10 @@ enum {
   TARGET_SAVE_TARGETS
 };
 
-static const gchar request_contents_key[] = "gtk-request-contents";
+static const gchar request_contents_key[] = "ctk-request-contents";
 static GQuark request_contents_key_id = 0;
 
-static const gchar clipboards_owned_key[] = "gtk-clipboards-owned";
+static const gchar clipboards_owned_key[] = "ctk-clipboards-owned";
 static GQuark clipboards_owned_key_id = 0;
 
 static guint         clipboard_signals[LAST_SIGNAL] = { 0 };
@@ -261,21 +261,21 @@ ctk_clipboard_finalize (GObject *object)
 
   if (clipboard->display)
     {
-      clipboards = g_object_get_data (G_OBJECT (clipboard->display), "gtk-clipboard-list");
+      clipboards = g_object_get_data (G_OBJECT (clipboard->display), "ctk-clipboard-list");
 
       if (g_slist_index (clipboards, clipboard) >= 0)
         g_warning ("GtkClipboard prematurely finalized");
 
       clipboards = g_slist_remove (clipboards, clipboard);
 
-      g_object_set_data (G_OBJECT (clipboard->display), "gtk-clipboard-list", 
+      g_object_set_data (G_OBJECT (clipboard->display), "ctk-clipboard-list", 
                          clipboards);
 
       /* don't use get_clipboard_widget() here because it would create the
        * widget if it doesn't exist.
        */
       clipboard_widget = g_object_get_data (G_OBJECT (clipboard->display),
-                                            "gtk-clipboard-widget");
+                                            "ctk-clipboard-widget");
     }
 
   clipboard_unset (clipboard);
@@ -302,10 +302,10 @@ clipboard_display_closed (GdkDisplay   *display,
 {
   GSList *clipboards;
 
-  clipboards = g_object_get_data (G_OBJECT (display), "gtk-clipboard-list");
+  clipboards = g_object_get_data (G_OBJECT (display), "ctk-clipboard-list");
   g_object_run_dispose (G_OBJECT (clipboard));
   clipboards = g_slist_remove (clipboards, clipboard);
-  g_object_set_data (G_OBJECT (display), I_("gtk-clipboard-list"), clipboards);
+  g_object_set_data (G_OBJECT (display), I_("ctk-clipboard-list"), clipboards);
   g_object_unref (clipboard);
 }
 
@@ -455,11 +455,11 @@ make_clipboard_widget (GdkDisplay *display,
 static GtkWidget *
 get_clipboard_widget (GdkDisplay *display)
 {
-  GtkWidget *clip_widget = g_object_get_data (G_OBJECT (display), "gtk-clipboard-widget");
+  GtkWidget *clip_widget = g_object_get_data (G_OBJECT (display), "ctk-clipboard-widget");
   if (!clip_widget)
     {
       clip_widget = make_clipboard_widget (display, TRUE);
-      g_object_set_data (G_OBJECT (display), I_("gtk-clipboard-widget"), clip_widget);
+      g_object_set_data (G_OBJECT (display), I_("ctk-clipboard-widget"), clip_widget);
     }
 
   return clip_widget;
@@ -1927,7 +1927,7 @@ clipboard_peek (GdkDisplay *display,
   if (selection == GDK_NONE)
     selection = GDK_SELECTION_CLIPBOARD;
 
-  clipboards = g_object_get_data (G_OBJECT (display), "gtk-clipboard-list");
+  clipboards = g_object_get_data (G_OBJECT (display), "ctk-clipboard-list");
 
   tmp_list = clipboards;
   while (tmp_list)
@@ -1948,7 +1948,7 @@ clipboard_peek (GdkDisplay *display,
       clipboard->n_cached_targets = -1;
       clipboard->n_storable_targets = -1;
       clipboards = g_slist_prepend (clipboards, clipboard);
-      g_object_set_data (G_OBJECT (display), I_("gtk-clipboard-list"), clipboards);
+      g_object_set_data (G_OBJECT (display), I_("ctk-clipboard-list"), clipboards);
       g_signal_connect (display, "closed",
 			G_CALLBACK (clipboard_display_closed), clipboard);
       gdk_display_request_selection_notification (display, selection);
@@ -2167,7 +2167,7 @@ ctk_clipboard_real_store (GtkClipboard *clipboard)
 
   clipboard->store_loop = g_main_loop_new (NULL, TRUE);
   clipboard->store_timeout = g_timeout_add_seconds (10, (GSourceFunc) ctk_clipboard_store_timeout, clipboard);
-  g_source_set_name_by_id (clipboard->store_timeout, "[gtk+] ctk_clipboard_store_timeout");
+  g_source_set_name_by_id (clipboard->store_timeout, "[ctk+] ctk_clipboard_store_timeout");
 
   if (g_main_loop_is_running (clipboard->store_loop))
     {

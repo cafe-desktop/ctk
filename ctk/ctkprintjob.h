@@ -19,13 +19,13 @@
 #define __CTK_PRINT_JOB_H__
 
 #if !defined (__CTK_UNIX_PRINT_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtkunixprint.h> can be included directly."
+#error "Only <ctk/ctkunixprint.h> can be included directly."
 #endif
 
 #include <cairo.h>
 
-#include <gtk/gtk.h>
-#include <gtk/gtkprinter.h>
+#include <ctk/ctk.h>
+#include <ctk/ctkprinter.h>
 
 G_BEGIN_DECLS
 

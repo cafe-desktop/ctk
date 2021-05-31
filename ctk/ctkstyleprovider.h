@@ -19,14 +19,14 @@
 #define __CTK_STYLE_PROVIDER_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
 #include <glib-object.h>
-#include <gtk/gtkenums.h>
-#include <gtk/deprecated/gtkiconfactory.h>
-#include <gtk/deprecated/gtkstyleproperties.h>
-#include <gtk/gtktypes.h>
+#include <ctk/ctkenums.h>
+#include <ctk/deprecated/ctkiconfactory.h>
+#include <ctk/deprecated/ctkstyleproperties.h>
+#include <ctk/ctktypes.h>
 
 G_BEGIN_DECLS
 
@@ -79,7 +79,7 @@ G_BEGIN_DECLS
  * CTK_STYLE_PROVIDER_PRIORITY_USER:
  *
  * The priority used for the style information from
- * `XDG_CONFIG_HOME/gtk-3.0/gtk.css`.
+ * `XDG_CONFIG_HOME/ctk-3.0/ctk.css`.
  *
  * You should not use priorities higher than this, to
  * give the user the last word.

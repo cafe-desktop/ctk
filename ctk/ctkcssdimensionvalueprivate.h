@@ -20,13 +20,13 @@
 #ifndef __CTK_CSS_DIMENSION_VALUE_PRIVATE_H__
 #define __CTK_CSS_DIMENSION_VALUE_PRIVATE_H__
 
-#include "gtkcssnumbervalueprivate.h"
+#include "ctkcssnumbervalueprivate.h"
 
 G_BEGIN_DECLS
 
 GtkCssValue *   ctk_css_dimension_value_new         (double                  value,
                                                      GtkCssUnit              unit);
-/* This function implemented in gtkcssparser.c */
+/* This function implemented in ctkcssparser.c */
 GtkCssValue *   ctk_css_dimension_value_parse       (GtkCssParser           *parser,
                                                      GtkCssNumberParseFlags  flags);
 

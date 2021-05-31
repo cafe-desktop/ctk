@@ -2937,7 +2937,7 @@ find_grab_input_seat (GdkWindow *window, GdkWindow *transient_for)
    * and then transfers the grab over to the correct window later. Look for
    * this window when taking the grab to know it's correct.
    *
-   * See: associate_menu_grab_transfer_window in gtkmenu.c
+   * See: associate_menu_grab_transfer_window in ctkmenu.c
    */
   attached_grab_window = g_object_get_data (G_OBJECT (window), "gdk-attached-grab-window");
   if (attached_grab_window)
@@ -3106,7 +3106,7 @@ gdk_wayland_window_map (GdkWindow *window)
           GdkDevice *grab_device = NULL;
 
           /* The popup menu window is not the grabbed window. This may mean
-           * that a "transfer window" (see gtkmenu.c) is used, and we need
+           * that a "transfer window" (see ctkmenu.c) is used, and we need
            * to find that window to get the grab device. If so is the case
            * the "transfer window" can be retrieved via the
            * "gdk-attached-grab-window" associated data field.

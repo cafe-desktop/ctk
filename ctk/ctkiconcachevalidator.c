@@ -1,4 +1,4 @@
-/* gtkiconcachevalidator.c
+/* ctkiconcachevalidator.c
  * Copyright (C) 2007 Red Hat, Inc
  *
  * This library is free software; you can redistribute it and/or
@@ -15,7 +15,7 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 #include "config.h"
-#include "gtkiconcachevalidator.h"
+#include "ctkiconcachevalidator.h"
 
 #include <glib.h>
 #include <gdk-pixbuf/gdk-pixdata.h>

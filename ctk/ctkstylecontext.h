@@ -19,13 +19,13 @@
 #define __CTK_STYLE_CONTEXT_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkborder.h>
-#include <gtk/gtkcsssection.h>
-#include <gtk/gtkstyleprovider.h>
-#include <gtk/gtktypes.h>
+#include <ctk/ctkborder.h>
+#include <ctk/ctkcsssection.h>
+#include <ctk/ctkstyleprovider.h>
+#include <ctk/ctktypes.h>
 #include <atk/atk.h>
 
 G_BEGIN_DECLS

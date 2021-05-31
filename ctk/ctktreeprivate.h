@@ -1,4 +1,4 @@
-/* gtktreeprivate.h
+/* ctktreeprivate.h
  * Copyright (C) 2000  Red Hat, Inc.,  Jonathan Blandford <jrb@redhat.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -19,9 +19,9 @@
 #define __CTK_TREE_PRIVATE_H__
 
 
-#include <gtk/gtktreeview.h>
-#include <gtk/gtktreeselection.h>
-#include <gtk/gtkrbtree.h>
+#include <ctk/ctktreeview.h>
+#include <ctk/ctktreeselection.h>
+#include <ctk/ctkrbtree.h>
 
 G_BEGIN_DECLS
 

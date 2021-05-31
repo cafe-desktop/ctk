@@ -19,7 +19,7 @@
 
 #include "config.h"
 
-#include "gtkstyleanimationprivate.h"
+#include "ctkstyleanimationprivate.h"
 
 G_DEFINE_ABSTRACT_TYPE (GtkStyleAnimation, _ctk_style_animation, G_TYPE_OBJECT)
 

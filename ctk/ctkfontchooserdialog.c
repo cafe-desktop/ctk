@@ -24,23 +24,23 @@
 
 #include <atk/atk.h>
 
-#include "gtkfontchooserdialog.h"
-#include "gtkfontchooser.h"
-#include "gtkfontchooserwidget.h"
-#include "gtkfontchooserwidgetprivate.h"
-#include "gtkfontchooserutils.h"
-#include "gtkbox.h"
-#include "deprecated/gtkstock.h"
-#include "gtkintl.h"
-#include "gtkaccessible.h"
-#include "gtkbuildable.h"
-#include "gtkprivate.h"
-#include "gtkwidget.h"
-#include "gtksettings.h"
-#include "gtkdialogprivate.h"
-#include "gtktogglebutton.h"
-#include "gtkheaderbar.h"
-#include "gtkactionable.h"
+#include "ctkfontchooserdialog.h"
+#include "ctkfontchooser.h"
+#include "ctkfontchooserwidget.h"
+#include "ctkfontchooserwidgetprivate.h"
+#include "ctkfontchooserutils.h"
+#include "ctkbox.h"
+#include "deprecated/ctkstock.h"
+#include "ctkintl.h"
+#include "ctkaccessible.h"
+#include "ctkbuildable.h"
+#include "ctkprivate.h"
+#include "ctkwidget.h"
+#include "ctksettings.h"
+#include "ctkdialogprivate.h"
+#include "ctktogglebutton.h"
+#include "ctkheaderbar.h"
+#include "ctkactionable.h"
 
 struct _GtkFontChooserDialogPrivate
 {
@@ -52,7 +52,7 @@ struct _GtkFontChooserDialogPrivate
 };
 
 /**
- * SECTION:gtkfontchooserdialog
+ * SECTION:ctkfontchooserdialog
  * @Short_description: A dialog for selecting fonts
  * @Title: GtkFontChooserDialog
  * @See_also: #GtkFontChooser, #GtkDialog
@@ -222,7 +222,7 @@ ctk_font_chooser_dialog_class_init (GtkFontChooserDialogClass *klass)
   /* Bind class to template
    */
   ctk_widget_class_set_template_from_resource (widget_class,
-                                               "/org/gtk/libgtk/ui/gtkfontchooserdialog.ui");
+                                               "/org/ctk/libctk/ui/ctkfontchooserdialog.ui");
 
   ctk_widget_class_bind_template_child_private (widget_class, GtkFontChooserDialog, fontchooser);
   ctk_widget_class_bind_template_child_private (widget_class, GtkFontChooserDialog, select_button);

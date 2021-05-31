@@ -19,7 +19,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -31,12 +31,12 @@
 
 #include <glib/gstdio.h>
 #include <gmodule.h>
-#include "gtkimmoduleprivate.h"
-#include "gtkimcontextsimple.h"
-#include "gtksettings.h"
-#include "gtkprivate.h"
-#include "gtkutilsprivate.h"
-#include "gtkintl.h"
+#include "ctkimmoduleprivate.h"
+#include "ctkimcontextsimple.h"
+#include "ctksettings.h"
+#include "ctkprivate.h"
+#include "ctkutilsprivate.h"
+#include "ctkintl.h"
 
 #ifdef GDK_WINDOWING_X11
 #include "x11/gdkx.h"
@@ -63,7 +63,7 @@
 #define GDK_DEPRECATED
 #define GDK_DEPRECATED_FOR(f)
 
-#include "deprecated/gtkrc.h"
+#include "deprecated/ctkrc.h"
 
 /* We need to call getc() a lot in a loop. This is suboptimal,
  * as getc() does thread locking on the FILE it is given.
@@ -82,8 +82,8 @@
 #  define getc_unlocked(f) _getc_nolock(f)
 #endif
 
-#define SIMPLE_ID "gtk-im-context-simple"
-#define NONE_ID   "gtk-im-context-none"
+#define SIMPLE_ID "ctk-im-context-simple"
+#define NONE_ID   "ctk-im-context-none"
 
 /**
  * GtkIMContextInfo:
@@ -277,7 +277,7 @@ correct_libdir_prefix (gchar **path)
       /* This is an entry put there by make install on the
        * packager's system. On Windows a prebuilt GTK+
        * package can be installed in a random
-       * location. The gtk.immodules file distributed in
+       * location. The ctk.immodules file distributed in
        * such a package contains paths from the package
        * builder's machine. Replace the path with the real
        * one on this machine.
@@ -516,7 +516,7 @@ ctk_im_module_initialize (void)
 }
 
 static gint
-compare_gtkimcontextinfo_name (const GtkIMContextInfo **a,
+compare_ctkimcontextinfo_name (const GtkIMContextInfo **a,
                                const GtkIMContextInfo **b)
 {
   return g_utf8_collate ((*a)->context_name, (*b)->context_name);
@@ -616,7 +616,7 @@ _ctk_im_module_list (const GtkIMContextInfo ***contexts,
 	}
 
       /* first elements (Simple and None) should always be at top */
-      qsort ((*contexts)+2, n-2, sizeof (GtkIMContextInfo *), (GCompareFunc)compare_gtkimcontextinfo_name);
+      qsort ((*contexts)+2, n-2, sizeof (GtkIMContextInfo *), (GCompareFunc)compare_ctkimcontextinfo_name);
     }
 }
 
@@ -704,7 +704,7 @@ match_backend (GtkIMContextInfo *context)
              gdk_wayland_display_query_registry (display,
                                                  "zwp_text_input_manager_v3");
     }
-  if (g_strcmp0 (context->context_id, "waylandgtk") == 0)
+  if (g_strcmp0 (context->context_id, "waylandctk") == 0)
     {
       GdkDisplay *display = gdk_display_get_default ();
 
@@ -855,7 +855,7 @@ _ctk_im_module_get_default_context_id (void)
    */
   screen = gdk_screen_get_default ();
   settings = ctk_settings_get_for_screen (screen);
-  g_object_get (G_OBJECT (settings), "gtk-im-module", &tmp, NULL);
+  g_object_get (G_OBJECT (settings), "ctk-im-module", &tmp, NULL);
   if (tmp)
     {
       immodules = g_strsplit (tmp, ":", 0);

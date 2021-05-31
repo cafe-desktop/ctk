@@ -2,7 +2,7 @@
  *
  * Demonstrates a useful set of available cursors.
  */
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 set_cursor (GtkWidget *button, gpointer data)

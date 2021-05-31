@@ -74,75 +74,75 @@ demos = files([
 ])
 
 
-gtkdemo_deps = [libctk_dep]
+ctkdemo_deps = [libctk_dep]
 
 if harfbuzz_dep.found() and pangoft_dep.found()
   demos += files('font_features.c')
-  gtkdemo_deps += [harfbuzz_dep, pangoft_dep]
+  ctkdemo_deps += [harfbuzz_dep, pangoft_dep]
 endif
 
 if os_unix
   demos += files('pagesetup.c')
 endif
 
-gtkdemo_sources = demos + files([
-  'gtkfishbowl.c',
-  'gtkfishbowl.h',
+ctkdemo_sources = demos + files([
+  'ctkfishbowl.c',
+  'ctkfishbowl.h',
   'main.c',
 ])
 
 
 geninclude = find_program('geninclude.py')
 demos_h = custom_target(
-  'gtk3 demo header',
+  'ctk3 demo header',
   output  : 'demos.h',
   input   : demos,
   command : [geninclude, '@OUTPUT@', '@INPUT@'],
 )
 
-gtkdemo_resources = gnome.compile_resources(
-  'gtkdemo_resources',
+ctkdemo_resources = gnome.compile_resources(
+  'ctkdemo_resources',
   'demo.gresource.xml',
   source_dir: '.'
 )
 
-gtkdemo = executable(
-  'gtk3-demo',
-  gtkdemo_sources,
+ctkdemo = executable(
+  'ctk3-demo',
+  ctkdemo_sources,
   demos_h,
-  gtkdemo_resources,
-  dependencies: gtkdemo_deps,
+  ctkdemo_resources,
+  dependencies: ctkdemo_deps,
   include_directories : confinc,
   install: true
 )
 
-gtkapplicationdemo = executable(
-  'gtk3-demo-application',
+ctkapplicationdemo = executable(
+  'ctk3-demo-application',
   'application.c',
   demos_h,
-  gtkdemo_resources,
-  dependencies: gtkdemo_deps,
+  ctkdemo_resources,
+  dependencies: ctkdemo_deps,
   include_directories : confinc,
   install: true
 )
 
 ctk_settings_schemas = [
-  'org.gtk.Settings.FileChooser.gschema.xml',
-  'org.gtk.Settings.ColorChooser.gschema.xml',
-  'org.gtk.Settings.EmojiChooser.gschema.xml',
-  'org.gtk.Settings.Debug.gschema.xml',
+  'org.ctk.Settings.FileChooser.gschema.xml',
+  'org.ctk.Settings.ColorChooser.gschema.xml',
+  'org.ctk.Settings.EmojiChooser.gschema.xml',
+  'org.ctk.Settings.Debug.gschema.xml',
 ]
 
 foreach s: [ '16', '22', '24', '32', '48', '256']
   icon_destdir = join_paths(ctk_datadir, 'icons', 'hicolor', '@0@x@0@'.format(s), 'apps')
-  icons = [join_paths('data', '@0@x@0@'.format(s), 'gtk3-demo.png'),
-           join_paths('data', '@0@x@0@'.format(s), 'gtk3-demo-symbolic.symbolic.png')]
+  icons = [join_paths('data', '@0@x@0@'.format(s), 'ctk3-demo.png'),
+           join_paths('data', '@0@x@0@'.format(s), 'ctk3-demo-symbolic.symbolic.png')]
   install_data(icons, install_dir: icon_destdir)
 endforeach
 
 # desktop file
-install_data('gtk3-demo.desktop', install_dir: ctk_applicationsdir)
+install_data('ctk3-demo.desktop', install_dir: ctk_applicationsdir)
 
 # GSettings
-install_data('org.gtk.Demo.gschema.xml', install_dir: ctk_schemasdir)
-gnome.compile_schemas(depend_files: files(['org.gtk.Demo.gschema.xml']))
+install_data('org.ctk.Demo.gschema.xml', install_dir: ctk_schemasdir)
+gnome.compile_schemas(depend_files: files(['org.ctk.Demo.gschema.xml']))

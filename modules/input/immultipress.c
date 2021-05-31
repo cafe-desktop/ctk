@@ -16,8 +16,8 @@
 
 #include "config.h"
 
-#include "gtkimcontextmultipress.h"
-#include <gtk/gtkimmodule.h> /* For GtkIMContextInfo */
+#include "ctkimcontextmultipress.h"
+#include <ctk/ctkimmodule.h> /* For GtkIMContextInfo */
 #include <glib/gi18n.h>
 #include <string.h> /* For strcmp() */
 
@@ -29,7 +29,7 @@ static const GtkIMContextInfo info = {
   CONTEXT_ID,		   /* ID */
   NC_("input method menu", "Multipress"),     /* Human readable name */
   GETTEXT_PACKAGE,	   /* Translation domain. Defined in configure.ac */
-  MULTIPRESS_LOCALEDIR,	   /* Dir for bindtextdomain (not strictly needed for "gtk+"). Defined in the Makefile.am */
+  MULTIPRESS_LOCALEDIR,	   /* Dir for bindtextdomain (not strictly needed for "ctk+"). Defined in the Makefile.am */
   ""			   /* Languages for which this module is the default */
 };
 

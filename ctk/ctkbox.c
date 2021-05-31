@@ -19,11 +19,11 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 /**
- * SECTION:gtkbox
+ * SECTION:ctkbox
  * @Short_description: A container for packing widgets in a single row or column
  * @Title: GtkBox
  * @See_also: #GtkGrid
@@ -79,20 +79,20 @@
 
 #include "config.h"
 
-#include "gtkbox.h"
-#include "gtkboxprivate.h"
-#include "gtkcontainerprivate.h"
-#include "gtkcsscustomgadgetprivate.h"
-#include "gtkcssnodeprivate.h"
-#include "gtkintl.h"
-#include "gtkorientable.h"
-#include "gtkorientableprivate.h"
-#include "gtkprivate.h"
-#include "gtktypebuiltins.h"
-#include "gtksizerequest.h"
-#include "gtkwidgetpath.h"
-#include "gtkwidgetprivate.h"
-#include "a11y/gtkcontaineraccessible.h"
+#include "ctkbox.h"
+#include "ctkboxprivate.h"
+#include "ctkcontainerprivate.h"
+#include "ctkcsscustomgadgetprivate.h"
+#include "ctkcssnodeprivate.h"
+#include "ctkintl.h"
+#include "ctkorientable.h"
+#include "ctkorientableprivate.h"
+#include "ctkprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctksizerequest.h"
+#include "ctkwidgetpath.h"
+#include "ctkwidgetprivate.h"
+#include "a11y/ctkcontaineraccessible.h"
 
 
 enum {

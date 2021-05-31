@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkprintoperation-portal.c: Print Operation Details for sandboxed apps
+ * ctkprintoperation-portal.c: Print Operation Details for sandboxed apps
  * Copyright (C) 2016, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -29,15 +29,15 @@
 
 #include <gio/gunixfdlist.h>
 
-#include "gtkprintoperation-private.h"
-#include "gtkprintoperation-portal.h"
-#include "gtkprintsettings.h"
-#include "gtkpagesetup.h"
-#include "gtkprintbackend.h"
-#include "gtkshow.h"
-#include "gtkintl.h"
-#include "gtkwindowprivate.h"
-#include "gtkprivate.h"
+#include "ctkprintoperation-private.h"
+#include "ctkprintoperation-portal.h"
+#include "ctkprintsettings.h"
+#include "ctkpagesetup.h"
+#include "ctkprintbackend.h"
+#include "ctkshow.h"
+#include "ctkintl.h"
+#include "ctkwindowprivate.h"
+#include "ctkprivate.h"
 
 
 typedef struct {
@@ -416,7 +416,7 @@ prepare_print_response (GDBusConnection *connection,
 
       printer = find_file_printer ();
 
-      fd = g_file_open_tmp ("gtkprintXXXXXX", &filename, NULL);
+      fd = g_file_open_tmp ("ctkprintXXXXXX", &filename, NULL);
       uri = g_filename_to_uri (filename, NULL, NULL);
       ctk_print_settings_set (settings, CTK_PRINT_SETTINGS_OUTPUT_URI, uri);
       g_free (uri);

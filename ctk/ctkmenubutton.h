@@ -22,12 +22,12 @@
 #define __CTK_MENU_BUTTON_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtktogglebutton.h>
-#include <gtk/gtkmenu.h>
-#include <gtk/gtkpopover.h>
+#include <ctk/ctktogglebutton.h>
+#include <ctk/ctkmenu.h>
+#include <ctk/ctkpopover.h>
 
 G_BEGIN_DECLS
 

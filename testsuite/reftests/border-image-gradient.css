@@ -7,7 +7,7 @@
 }
 
 .button-image {
-  border-image-source: -gtk-gradient(linear,
+  border-image-source: -ctk-gradient(linear,
                                      left top, left bottom,
                                      from(lime),
                                      to(lime));

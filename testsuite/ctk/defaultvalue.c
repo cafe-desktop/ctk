@@ -17,8 +17,8 @@
  */
 
 #include <string.h>
-#include <gtk/gtk.h>
-#include <gtk/gtkunixprint.h>
+#include <ctk/ctk.h>
+#include <ctk/ctkunixprint.h>
 
 static void
 check_property (const char *output,
@@ -382,7 +382,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
   if (g_type_is_a (type, CTK_TYPE_WIDGET))
     {
-      g_object_set (ctk_settings_get_default (), "gtk-theme-name", "Adwaita", NULL);
+      g_object_set (ctk_settings_get_default (), "ctk-theme-name", "Adwaita", NULL);
       pspecs = ctk_widget_class_list_style_properties (CTK_WIDGET_CLASS (klass), &n_pspecs);
 
       for (i = 0; i < n_pspecs; ++i)

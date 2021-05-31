@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkfilechooserutils.c: Private utility functions useful for
+ * ctkfilechooserutils.c: Private utility functions useful for
  *                        implementing a GtkFileChooser interface
  * Copyright (C) 2003, Red Hat, Inc.
  *
@@ -18,11 +18,11 @@
  */
 
 #include "config.h"
-#include "gtkfilechooserutils.h"
-#include "gtkfilechooser.h"
-#include "gtkfilesystem.h"
-#include "gtktypebuiltins.h"
-#include "gtkintl.h"
+#include "ctkfilechooserutils.h"
+#include "ctkfilechooser.h"
+#include "ctkfilesystem.h"
+#include "ctktypebuiltins.h"
+#include "ctkintl.h"
 
 
 static gboolean       delegate_set_current_folder     (GtkFileChooser    *chooser,
@@ -186,7 +186,7 @@ _ctk_file_chooser_set_delegate (GtkFileChooser *receiver,
   g_return_if_fail (CTK_IS_FILE_CHOOSER (receiver));
   g_return_if_fail (CTK_IS_FILE_CHOOSER (delegate));
 
-  g_object_set_data (G_OBJECT (receiver), I_("gtk-file-chooser-delegate"), delegate);
+  g_object_set_data (G_OBJECT (receiver), I_("ctk-file-chooser-delegate"), delegate);
   g_signal_connect (delegate, "notify",
 		    G_CALLBACK (delegate_notify), receiver);
   g_signal_connect (delegate, "current-folder-changed",
@@ -207,7 +207,7 @@ _ctk_file_chooser_delegate_get_quark (void)
   static GQuark quark = 0;
 
   if (G_UNLIKELY (quark == 0))
-    quark = g_quark_from_static_string ("gtk-file-chooser-delegate");
+    quark = g_quark_from_static_string ("ctk-file-chooser-delegate");
   
   return quark;
 }
@@ -444,21 +444,21 @@ GSettings *
 _ctk_file_chooser_get_settings_for_widget (GtkWidget *widget)
 {
   static GQuark file_chooser_settings_quark = 0;
-  GtkSettings *gtksettings;
+  GtkSettings *ctksettings;
   GSettings *settings;
 
   if (G_UNLIKELY (file_chooser_settings_quark == 0))
-    file_chooser_settings_quark = g_quark_from_static_string ("-gtk-file-chooser-settings");
+    file_chooser_settings_quark = g_quark_from_static_string ("-ctk-file-chooser-settings");
 
-  gtksettings = ctk_widget_get_settings (widget);
-  settings = g_object_get_qdata (G_OBJECT (gtksettings), file_chooser_settings_quark);
+  ctksettings = ctk_widget_get_settings (widget);
+  settings = g_object_get_qdata (G_OBJECT (ctksettings), file_chooser_settings_quark);
 
   if (G_UNLIKELY (settings == NULL))
     {
-      settings = g_settings_new ("org.gtk.Settings.FileChooser");
+      settings = g_settings_new ("org.ctk.Settings.FileChooser");
       g_settings_delay (settings);
 
-      g_object_set_qdata_full (G_OBJECT (gtksettings),
+      g_object_set_qdata_full (G_OBJECT (ctksettings),
                                file_chooser_settings_quark,
                                settings,
                                g_object_unref);

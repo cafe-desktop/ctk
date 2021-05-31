@@ -1,4 +1,4 @@
-/* gtkpango.c - pango-related utilities
+/* ctkpango.c - pango-related utilities
  *
  * Copyright (c) 2010 Red Hat, Inc.
  *
@@ -19,14 +19,14 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
-#include "gtkpango.h"
+#include "ctkpango.h"
 #include <pango/pangocairo.h>
 #include <fribidi.h>
-#include "gtkintl.h"
+#include "ctkintl.h"
 
 #define CTK_TYPE_FILL_LAYOUT_RENDERER            (_ctk_fill_layout_renderer_get_type())
 #define CTK_FILL_LAYOUT_RENDERER(object)         (G_TYPE_CHECK_INSTANCE_CAST ((object), CTK_TYPE_FILL_LAYOUT_RENDERER, GtkFillLayoutRenderer))

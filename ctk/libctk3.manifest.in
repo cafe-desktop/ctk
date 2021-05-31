@@ -3,7 +3,7 @@
   <assemblyIdentity
       version="1.0.0.0"
       processorArchitecture="@EXE_MANIFEST_ARCHITECTURE@"
-      name="libgtk3"
+      name="libctk3"
       type="win32"
   />
   <dependency>

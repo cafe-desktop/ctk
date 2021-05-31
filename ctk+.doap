@@ -5,8 +5,8 @@
          xmlns:gnome="http://api.gnome.org/doap-extensions#"
          xmlns="http://usefulinc.com/ns/doap#">
 
-  <name xml:lang="en">gtk+</name>
-  <shortname>gtk+</shortname>
+  <name xml:lang="en">ctk+</name>
+  <shortname>ctk+</shortname>
   <shortdesc xml:lang="en">Multi-platform toolkit</shortdesc>
   <description xml:lang="en">GTK+ is a multi-platform toolkit for creating graphical user
 interfaces. Offering a complete set of widgets, GTK+ is suitable for
@@ -22,16 +22,16 @@ GTK+ is free software and part of the GNU Project. However, the
 licensing terms for GTK+, the GNU LGPL, allow it to be used by all
 developers, including those developing proprietary software, without
 any license fees or royalties.</description>
-  <homepage rdf:resource="http://www.gtk.org/" />
+  <homepage rdf:resource="http://www.ctk.org/" />
   <license rdf:resource="http://usefulinc.com/doap/licenses/lgpl" />
-  <bug-database rdf:resource="http://bugzilla.gnome.org/enter_bug.cgi?product=gtk%2B" />
-  <download-page rdf:resource="http://download.gnome.org/sources/gtk+/" />
-  <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/gtk-list" />
-  <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/gtk-app-devel-list" />
-  <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/gtk-devel-list" />
-  <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/gtk-doc-list" />
-  <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/gtk-i18n-list" />
-  <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/gtk-perl-list" />
+  <bug-database rdf:resource="http://bugzilla.gnome.org/enter_bug.cgi?product=ctk%2B" />
+  <download-page rdf:resource="http://download.gnome.org/sources/ctk+/" />
+  <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/ctk-list" />
+  <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/ctk-app-devel-list" />
+  <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/ctk-devel-list" />
+  <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/ctk-doc-list" />
+  <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/ctk-i18n-list" />
+  <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/ctk-perl-list" />
   <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/language-bindings" />
   <category rdf:resource="http://api.gnome.org/doap-extensions#core" />
 
@@ -39,8 +39,8 @@ any license fees or royalties.</description>
 
   <repository>
     <GitRepository>
-        <browse rdf:resource="http://git.gnome.org/browse/gtk+/"/>
-      <location rdf:resource="git://git.gnome.org/gtk+"/>
+        <browse rdf:resource="http://git.gnome.org/browse/ctk+/"/>
+      <location rdf:resource="git://git.gnome.org/ctk+"/>
     </GitRepository>
   </repository>
 
@@ -54,7 +54,7 @@ any license fees or royalties.</description>
   <maintainer>
     <foaf:Person>
       <foaf:name>Tim Janik</foaf:name>
-      <foaf:mbox rdf:resource="mailto:timj@gtk.org"/>
+      <foaf:mbox rdf:resource="mailto:timj@ctk.org"/>
       <gnome:userid>timj</gnome:userid>
     </foaf:Person>
   </maintainer>

@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkfilefilter.h: Filters for selecting a file subset
+ * ctkfilefilter.h: Filters for selecting a file subset
  * Copyright (C) 2003, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -20,7 +20,7 @@
 #define __CTK_FILE_FILTER_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
 #include <glib-object.h>

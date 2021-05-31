@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkwin32embed.h: Utilities for Win32 embedding
+ * ctkwin32embed.h: Utilities for Win32 embedding
  * Copyright (C) 2005, Novell, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -29,7 +29,7 @@ G_BEGIN_DECLS
  * When the plug and socket are in separate processes they use a
  * simple protocol, more or less based on XEMBED. The protocol uses
  * registered window messages. The name passed to
- * RegisterWindowMessage() is gtk-win32-embed:%d, with %d being the
+ * RegisterWindowMessage() is ctk-win32-embed:%d, with %d being the
  * numeric value of an GtkWin32EmbedMessageType enum. Each message
  * carries the message type enum value and two integers, the “wparam”
  * and “lparam”, like all window messages.

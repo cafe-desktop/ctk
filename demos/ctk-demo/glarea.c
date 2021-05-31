@@ -4,7 +4,7 @@
  */
 
 #include <math.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <epoxy/gl.h>
 
 static GtkWidget *demo_window = NULL;

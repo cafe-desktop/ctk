@@ -1,5 +1,5 @@
 /*
- * gtknumerableicon.c: an emblemed icon with number emblems
+ * ctknumerableicon.c: an emblemed icon with number emblems
  *
  * Copyright (C) 2010 Red Hat, Inc.
  *
@@ -20,7 +20,7 @@
  */
 
 /**
- * SECTION:gtknumerableicon
+ * SECTION:ctknumerableicon
  * @Title: GtkNumerableIcon
  * @Short_description: A GIcon that allows numbered emblems
  *
@@ -38,16 +38,16 @@
  */
 #include <config.h>
 
-#include "gtknumerableicon.h"
-#include "gtknumerableiconprivate.h"
+#include "ctknumerableicon.h"
+#include "ctknumerableiconprivate.h"
 
-#include "gtkcssiconthemevalueprivate.h"
-#include "gtkicontheme.h"
-#include "gtkintl.h"
-#include "gtkstylepropertyprivate.h"
-#include "gtkwidget.h"
-#include "gtkwidgetpath.h"
-#include "gtkwindow.h"
+#include "ctkcssiconthemevalueprivate.h"
+#include "ctkicontheme.h"
+#include "ctkintl.h"
+#include "ctkstylepropertyprivate.h"
+#include "ctkwidget.h"
+#include "ctkwidgetpath.h"
+#include "ctkwindow.h"
 
 #include <gdk/gdk.h>
 #include <pango/pango.h>
@@ -279,7 +279,7 @@ get_pango_layout (GtkNumerableIcon *self)
     {
       GtkWidget *fake;
 
-      /* steal gtk text settings from the window */
+      /* steal ctk text settings from the window */
       fake = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       layout = ctk_widget_create_pango_layout (fake, self->priv->rendered_string);
       ctk_widget_destroy (fake);

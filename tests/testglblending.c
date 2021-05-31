@@ -1,7 +1,7 @@
 #include <stdlib.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
-#include "gtkgears.h"
+#include "ctkgears.h"
 
 int
 main (int argc, char *argv[])
@@ -11,7 +11,7 @@ main (int argc, char *argv[])
   ctk_init (&argc, &argv);
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
-  ctk_window_set_title (CTK_WINDOW (window), "Test GL/gtk inter-blending");
+  ctk_window_set_title (CTK_WINDOW (window), "Test GL/ctk inter-blending");
   ctk_window_set_default_size (CTK_WINDOW (window), 250, 250);
   ctk_container_set_border_width (CTK_CONTAINER (window), 12);
   g_signal_connect (window, "destroy", G_CALLBACK (ctk_main_quit), NULL);

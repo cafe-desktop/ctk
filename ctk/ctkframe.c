@@ -19,30 +19,30 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
 #include <string.h>
-#include "gtkframe.h"
-#include "gtklabel.h"
-#include "gtkprivate.h"
-#include "gtktypebuiltins.h"
-#include "gtkintl.h"
-#include "gtkbuildable.h"
-#include "gtkwidgetpath.h"
-#include "gtkcssnodeprivate.h"
-#include "gtkcsscustomgadgetprivate.h"
-#include "gtkwidgetprivate.h"
-#include "gtkcontainerprivate.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkcssstylepropertyprivate.h"
-#include "gtklabel.h"
+#include "ctkframe.h"
+#include "ctklabel.h"
+#include "ctkprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctkintl.h"
+#include "ctkbuildable.h"
+#include "ctkwidgetpath.h"
+#include "ctkcssnodeprivate.h"
+#include "ctkcsscustomgadgetprivate.h"
+#include "ctkwidgetprivate.h"
+#include "ctkcontainerprivate.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkcssstylepropertyprivate.h"
+#include "ctklabel.h"
 
-#include "a11y/gtkframeaccessible.h"
+#include "a11y/ctkframeaccessible.h"
 
 /**
- * SECTION:gtkframe
+ * SECTION:ctkframe
  * @Short_description: A bin with a decorative frame and optional label
  * @Title: GtkFrame
  *

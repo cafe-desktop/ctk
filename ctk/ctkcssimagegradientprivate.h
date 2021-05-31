@@ -20,9 +20,9 @@
 #ifndef __CTK_CSS_IMAGE_GRADIENT_PRIVATE_H__
 #define __CTK_CSS_IMAGE_GRADIENT_PRIVATE_H__
 
-#include "gtk/gtkcssimageprivate.h"
+#include "ctk/ctkcssimageprivate.h"
 
-#include <gtk/deprecated/gtkgradient.h>
+#include <ctk/deprecated/ctkgradient.h>
 
 G_BEGIN_DECLS
 

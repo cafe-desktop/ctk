@@ -18,9 +18,9 @@
 #ifndef __CTK_CSS_NODE_DECLARATION_PRIVATE_H__
 #define __CTK_CSS_NODE_DECLARATION_PRIVATE_H__
 
-#include "gtkcsstypesprivate.h"
-#include "gtkenums.h"
-#include "gtkwidgetpath.h"
+#include "ctkcsstypesprivate.h"
+#include "ctkenums.h"
+#include "ctkwidgetpath.h"
 
 G_BEGIN_DECLS
 

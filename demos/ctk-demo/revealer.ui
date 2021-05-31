@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <!-- interface-requires gtk+ 3.6 -->
+  <!-- interface-requires ctk+ 3.6 -->
   <object class="GtkWindow" id="window">
     <property name="border_width">5</property>
     <property name="default_width">300</property>

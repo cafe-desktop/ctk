@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkrecentchooserdialog.h: Recent files selector dialog
+ * ctkrecentchooserdialog.h: Recent files selector dialog
  * Copyright (C) 2006 Emmanuele Bassi
  *
  * This library is free software; you can redistribute it and/or
@@ -20,11 +20,11 @@
 #define __CTK_RECENT_CHOOSER_DIALOG_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkdialog.h>
-#include <gtk/gtkrecentchooser.h>
+#include <ctk/ctkdialog.h>
+#include <ctk/ctkrecentchooser.h>
 
 G_BEGIN_DECLS
 

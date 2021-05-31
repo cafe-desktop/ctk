@@ -24,11 +24,11 @@
 #include "config.h"
 #include <string.h>
 
-#include "gtk/gtk.h"
+#include "ctk/ctk.h"
 #include "gdk/gdkkeysyms.h"
 
-#include "gtk/gtkimmodule.h"
-#include "gtk/gtkintl.h"
+#include "ctk/ctkimmodule.h"
+#include "ctk/ctkintl.h"
 
 GType type_inuktitut_translit = 0;
 
@@ -124,7 +124,7 @@ static const GtkIMContextInfo inuktitut_info = {
   "inuktitut",		   /* ID */
   NC_("input method menu", "Inuktitut (Transliterated)"), /* Human readable name */
   GETTEXT_PACKAGE,	   /* Translation domain */
-  CTK_LOCALEDIR,	   /* Dir for bindtextdomain (not strictly needed for "gtk+") */
+  CTK_LOCALEDIR,	   /* Dir for bindtextdomain (not strictly needed for "ctk+") */
   "iu"			   /* Languages for which this module is the default */
 };
 

@@ -20,7 +20,7 @@
 #ifndef __CTK_CSS_IMAGE_SURFACE_PRIVATE_H__
 #define __CTK_CSS_IMAGE_SURFACE_PRIVATE_H__
 
-#include "gtk/gtkcssimageprivate.h"
+#include "ctk/ctkcssimageprivate.h"
 
 G_BEGIN_DECLS
 

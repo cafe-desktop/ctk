@@ -1,4 +1,4 @@
-/* gtkcellrendereraccel.h
+/* ctkcellrendereraccel.h
  * Copyright (C) 2000  Red Hat, Inc.,  Jonathan Blandford <jrb@redhat.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -17,21 +17,21 @@
 
 #include "config.h"
 
-#include "gtkcellrendereraccel.h"
+#include "ctkcellrendereraccel.h"
 
-#include "gtkintl.h"
-#include "gtkaccelgroup.h"
-#include "gtkmarshalers.h"
-#include "gtklabel.h"
-#include "gtkeventbox.h"
-#include "gtkmain.h"
-#include "gtksizerequest.h"
-#include "gtktypebuiltins.h"
-#include "gtkprivate.h"
+#include "ctkintl.h"
+#include "ctkaccelgroup.h"
+#include "ctkmarshalers.h"
+#include "ctklabel.h"
+#include "ctkeventbox.h"
+#include "ctkmain.h"
+#include "ctksizerequest.h"
+#include "ctktypebuiltins.h"
+#include "ctkprivate.h"
 
 
 /**
- * SECTION:gtkcellrendereraccel
+ * SECTION:ctkcellrendereraccel
  * @Short_description: Renders a keyboard accelerator in a cell
  * @Title: GtkCellRendererAccel
  *

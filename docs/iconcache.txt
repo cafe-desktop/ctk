@@ -1,7 +1,7 @@
 Information about the icon theme cache format used by GTK+
 for more information, see the mailing list threads at 
 
-http://mail.gnome.org/archives/gtk-devel-list/2004-April/msg00065.html
+http://mail.gnome.org/archives/ctk-devel-list/2004-April/msg00065.html
 http://lists.freedesktop.org/archives/xdg/2004-October/005140.html
 
 

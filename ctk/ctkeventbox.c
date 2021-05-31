@@ -19,21 +19,21 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
-#include "gtkeventbox.h"
+#include "ctkeventbox.h"
 
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtkrender.h"
-#include "gtksizerequest.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctkrender.h"
+#include "ctksizerequest.h"
 
 
 /**
- * SECTION:gtkeventbox
+ * SECTION:ctkeventbox
  * @Short_description: A widget used to catch events for widgets which
  *     do not have their own window
  * @Title: GtkEventBox

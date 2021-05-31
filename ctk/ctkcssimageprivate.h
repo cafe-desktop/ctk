@@ -23,8 +23,8 @@
 #include <cairo.h>
 #include <glib-object.h>
 
-#include "gtk/gtkcssparserprivate.h"
-#include "gtk/gtkcsstypesprivate.h"
+#include "ctk/ctkcssparserprivate.h"
+#include "ctk/ctkcsstypesprivate.h"
 
 G_BEGIN_DECLS
 

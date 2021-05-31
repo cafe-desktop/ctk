@@ -1,4 +1,4 @@
-@function gtkalpha($c,$a) {
+@function ctkalpha($c,$a) {
   @return unquote("alpha(#{$c},#{$a})");
 }
 
@@ -46,13 +46,13 @@ $_switch_margin: if($_sizevariant=='default', 10px, 7px);
   // to the adwaita engine: using real CSS properties is faster,
   // and we don't use any outlines for now.
 
-  outline-color: gtkalpha(currentColor, 0.3);
+  outline-color: ctkalpha(currentColor, 0.3);
   outline-style: dashed;
   outline-offset: -3px;
   outline-width: 1px;
-  -gtk-outline-radius: $button-radius - 2;
+  -ctk-outline-radius: $button-radius - 2;
 
-  -gtk-secondary-caret-color: $selected_bg_color
+  -ctk-secondary-caret-color: $selected_bg_color
 }
 
 
@@ -67,7 +67,7 @@ $_switch_margin: if($_sizevariant=='default', 10px, 7px);
     color: $backdrop_fg_color;
     background-color: $backdrop_bg_color;
     text-shadow: none;
-    -gtk-icon-shadow: none;
+    -ctk-icon-shadow: none;
   }
 }
 
@@ -78,9 +78,9 @@ $_switch_margin: if($_sizevariant=='default', 10px, 7px);
    Everytime a wildcard is used a kitten dies, painfully.
 */
 
-*:disabled { -gtk-icon-effect: dim; }
+*:disabled { -ctk-icon-effect: dim; }
 
-.gtkstyle-fallback {
+.ctkstyle-fallback {
   color: $fg_color;
   background-color: $bg_color;
 
@@ -243,11 +243,11 @@ assistant {
   background-color: $osd_bg_color;
   background-clip: padding-box;
   text-shadow: 0 1px black;
-  -gtk-icon-shadow: 0 1px black;
+  -ctk-icon-shadow: 0 1px black;
 
   &:backdrop {
     text-shadow: none;
-    -gtk-icon-shadow: none;
+    -ctk-icon-shadow: none;
   }
 }
 
@@ -256,14 +256,14 @@ assistant {
  * Spinner Animation *
  *********************/
 @keyframes spin {
-  to { -gtk-icon-transform: rotate(1turn); }
+  to { -ctk-icon-transform: rotate(1turn); }
 }
 
 spinner {
   background: none;
   &:backdrop { color: $backdrop_fg_color; }
   opacity: 0; // non spinning spinner makes no sense
-  -gtk-icon-source: -gtk-icontheme('process-working-symbolic');
+  -ctk-icon-source: -ctk-icontheme('process-working-symbolic');
 
   &:checked {
     opacity: 1;
@@ -561,7 +561,7 @@ $_dot_color: if($variant=='light', $selected_bg_color,
                                    lighten($selected_bg_color,15%));
 @keyframes needs_attention {
   from {
-    background-image: -gtk-gradient(radial,
+    background-image: -ctk-gradient(radial,
                                     center center, 0,
                                     center center, 0.01,
                                     to($_dot_color),
@@ -569,7 +569,7 @@ $_dot_color: if($variant=='light', $selected_bg_color,
   }
 
   to {
-    background-image: -gtk-gradient(radial,
+    background-image: -ctk-gradient(radial,
                                     center center, 0,
                                     center center, 0.5,
                                     to($selected_bg_color),
@@ -609,7 +609,7 @@ button {
 
     &:hover {
       @include button(hover);
-      -gtk-icon-effect: highlight;
+      -ctk-icon-effect: highlight;
     }
 
     &:active,
@@ -624,7 +624,7 @@ button {
         @include button(backdrop);
 
         transition: $backdrop_transition;
-        -gtk-icon-effect: none;
+        -ctk-icon-effect: none;
 
         &:active,
         &:checked { @include button(backdrop-active); }
@@ -759,7 +759,7 @@ button {
 
       box-shadow: none; //FIXME respect no edge on the button mixin
       text-shadow: 0 1px black;
-      -gtk-icon-shadow: 0 1px black;
+      -ctk-icon-shadow: 0 1px black;
 
       &:hover { @include button(osd-hover); }
 
@@ -895,7 +895,7 @@ button {
   // inline-toolbar buttons
   .inline-toolbar & { @extend %linked; }
 
-  .primary-toolbar & { -gtk-icon-shadow: none; } // tango icons don't need shadows
+  .primary-toolbar & { -ctk-icon-shadow: none; } // tango icons don't need shadows
 
   .linked > & { @extend %linked; }
 
@@ -903,7 +903,7 @@ button {
 
   &.circular { // The Bloody Circul Button
     border-radius: 9999px;
-    -gtk-outline-radius: 9999px;
+    -ctk-outline-radius: 9999px;
     padding: $_circ_btn_pad; /* circles instead of ellipses */
 
     label { padding: 0; }
@@ -936,12 +936,12 @@ button {
   animation: needs_attention 150ms ease-in;
   $_dot_shadow: _text_shadow_color();
   $_dot_shadow_r: if($variant=='light',0.5,0.45);
-  background-image: -gtk-gradient(radial,
+  background-image: -ctk-gradient(radial,
                                   center center, 0,
                                   center center, 0.5,
                                   to($_dot_color),
                                   to(transparent)),
-                    -gtk-gradient(radial,
+                    -ctk-gradient(radial,
                                   center center, 0,
                                   center center, $_dot_shadow_r,
                                   to($_dot_shadow),
@@ -1010,28 +1010,28 @@ toolbar.inline-toolbar toolbutton {
 %linked_middle {
   border-right-style: none;
   border-radius: 0;
-  -gtk-outline-radius: 0;
+  -ctk-outline-radius: 0;
 }
 
 %linked_left {
     border-top-left-radius: $button_radius;
     border-bottom-left-radius: $button_radius;
-    -gtk-outline-top-left-radius: $button_radius;
-    -gtk-outline-bottom-left-radius: $button_radius;
+    -ctk-outline-top-left-radius: $button_radius;
+    -ctk-outline-bottom-left-radius: $button_radius;
 }
 
 %linked_right {
     border-right-style: solid;
     border-top-right-radius: $button_radius;
     border-bottom-right-radius: $button_radius;
-    -gtk-outline-top-right-radius: $button_radius;
-    -gtk-outline-bottom-right-radius: $button_radius;
+    -ctk-outline-top-right-radius: $button_radius;
+    -ctk-outline-bottom-right-radius: $button_radius;
 }
 
 %linked_only_child {
     border-style: solid;
     border-radius: $button_radius;
-    -gtk-outline-radius: $button_radius;
+    -ctk-outline-radius: $button_radius;
 }
 
 // .linked assumes Box, which reverses nodes in RTL, so 1st child is always left
@@ -1064,28 +1064,28 @@ toolbar.inline-toolbar toolbutton {
 %linked_vertical_middle {
   border-style: solid solid none solid;
   border-radius: 0;
-  -gtk-outline-radius: 0;
+  -ctk-outline-radius: 0;
 }
 
 %linked_vertical_top {
   border-top-left-radius: $button_radius;
   border-top-right-radius: $button_radius;
-  -gtk-outline-top-left-radius: $button_radius;
-  -gtk-outline-top-right-radius: $button_radius;
+  -ctk-outline-top-left-radius: $button_radius;
+  -ctk-outline-top-right-radius: $button_radius;
 }
 
 %linked_vertical_bottom {
   border-bottom-style: solid;
   border-bottom-left-radius: $button_radius;
   border-bottom-right-radius: $button_radius;
-  -gtk-outline-bottom-left-radius: $button_radius;
-  -gtk-outline-bottom-right-radius: $button_radius;
+  -ctk-outline-bottom-left-radius: $button_radius;
+  -ctk-outline-bottom-right-radius: $button_radius;
 }
 
 %linked_vertical_only_child {
   border-style: solid;
   border-radius: $button_radius;
-  -gtk-outline-radius: $button_radius;
+  -ctk-outline-radius: $button_radius;
 }
 
 %linked_vertical {
@@ -1105,7 +1105,7 @@ toolbar.inline-toolbar toolbutton {
   box-shadow: inset 0 1px transparentize(white, 1),
               0 1px transparentize(white, 1);
   text-shadow: none;
-  -gtk-icon-shadow: none;
+  -ctk-icon-shadow: none;
 }
 
 /* menu buttons */
@@ -1132,9 +1132,9 @@ modelbutton.flat arrow {
 
   &:hover { background: none; }
 
-  &.left { -gtk-icon-source: -gtk-icontheme("pan-start-symbolic"); }
+  &.left { -ctk-icon-source: -ctk-icontheme("pan-start-symbolic"); }
 
-  &.right { -gtk-icon-source: -gtk-icontheme("pan-end-symbolic"); }
+  &.right { -ctk-icon-source: -ctk-icontheme("pan-end-symbolic"); }
 }
 
 button.color {
@@ -1325,7 +1325,7 @@ spinbutton {
       border-color: transparentize($osd_borders_color, 0.3);
       border-radius: 0;
       box-shadow: none;
-      -gtk-icon-shadow: 0 1px black;
+      -ctk-icon-shadow: 0 1px black;
 
       &:dir(rtl) { border-style: none solid none none; }
 
@@ -1335,7 +1335,7 @@ spinbutton {
         color: $osd_fg_color;
         border-color: transparentize(opacify($osd_borders_color, 1), 0.5);
         background-color: transparentize($osd_fg_color, 0.9);
-        -gtk-icon-shadow: 0 1px black;
+        -ctk-icon-shadow: 0 1px black;
         box-shadow: none;
       }
 
@@ -1344,7 +1344,7 @@ spinbutton {
 
         color: $osd_fg_color;
         border-color: transparentize(opacify($osd_borders_color, 1), 0.5);
-        -gtk-icon-shadow: none;
+        -ctk-icon-shadow: none;
         box-shadow: none;
       }
 
@@ -1353,7 +1353,7 @@ spinbutton {
 
         color: $osd_insensitive_fg_color;
         border-color: transparentize(opacify($osd_borders_color, 1), 0.5);
-        -gtk-icon-shadow: none;
+        -ctk-icon-shadow: none;
         box-shadow: none;
       }
 
@@ -1441,7 +1441,7 @@ spinbutton {
  **************/
 combobox {
   arrow {
-    -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
+    -ctk-icon-source: -ctk-icontheme('pan-down-symbolic');
     min-height: 16px;
     min-width: 16px;
   }
@@ -1651,7 +1651,7 @@ headerbar {
         &.flat, & {
           @include button(backdrop, $suggested_bg_color, $selected_fg_color);
 
-          -gtk-icon-effect: none;
+          -ctk-icon-effect: none;
           border-color: $suggested_border_color;
 
           &:active,
@@ -1734,9 +1734,9 @@ headerbar {
         arrow { -GtkArrow-arrow-scaling: 1; }
 
         .arrow {
-          -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
+          -ctk-icon-source: -ctk-icontheme('pan-down-symbolic');
           color: transparentize($selected_fg_color,0.5);
-          -gtk-icon-shadow: none;
+          -ctk-icon-shadow: none;
         }
       }
     }
@@ -1803,7 +1803,7 @@ headerbar {
     // work around headerbar sliding animation issues without refactoring
     // Adwaita's support of titlebars and headerbars as it may break
     // applications.
-    // See https://gitlab.gnome.org/GNOME/gtk/issues/1264 for more information.
+    // See https://gitlab.gnome.org/GNOME/ctk/issues/1264 for more information.
     background: none;
     box-shadow: none;
   }
@@ -1885,11 +1885,11 @@ headerbar { // headerbar border rounding
 window.devel {
   headerbar.titlebar:not(.selection-mode) {
     $c: darken($bg_color, 10%);
-    $gradient: cross-fade(10% -gtk-icontheme("system-run-symbolic"), image(transparent)) 90% 0/256px 256px no-repeat,
+    $gradient: cross-fade(10% -ctk-icontheme("system-run-symbolic"), image(transparent)) 90% 0/256px 256px no-repeat,
                linear-gradient(to right, transparent 65%, transparentize($selected_bg_color, 0.8)),
                linear-gradient(to top, darken($c, 3%), $c 3px, lighten($c, 6%));
     @if $variant == 'dark' {
-      $gradient: cross-fade(10% -gtk-icontheme("system-run-symbolic"), image(transparent)) 90% 0/256px 256px no-repeat,
+      $gradient: cross-fade(10% -ctk-icontheme("system-run-symbolic"), image(transparent)) 90% 0/256px 256px no-repeat,
                  linear-gradient(to right, transparent 65%, transparentize($selected_bg_color, 0.9)),
                  linear-gradient(to top, lighten($c, 3%) 3px, lighten($c, 5%));
     }
@@ -1897,7 +1897,7 @@ window.devel {
     background: $bg_color $gradient;
 
     &:backdrop {
-      background: $bg_color cross-fade(10% -gtk-icontheme("system-run-symbolic"), image(transparent)) 90% 0/256px 256px no-repeat,
+      background: $bg_color cross-fade(10% -ctk-icontheme("system-run-symbolic"), image(transparent)) 90% 0/256px 256px no-repeat,
                   image($bg_color); /* background-color would flash */
     }
   }
@@ -2009,9 +2009,9 @@ treeview.view {
   }
 
   &.expander {
-    -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
+    -ctk-icon-source: -ctk-icontheme('pan-end-symbolic');
 
-    &:dir(rtl) { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic-rtl'); }
+    &:dir(rtl) { -ctk-icon-source: -ctk-icontheme('pan-end-symbolic-rtl'); }
 
     color: mix($text_color, $base_color, 70%);
 
@@ -2025,7 +2025,7 @@ treeview.view {
       &:backdrop { color: mix($backdrop_selected_fg_color, $selected_bg_color, 70%); }
     }
 
-    &:checked { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
+    &:checked { -ctk-icon-source: -ctk-icontheme('pan-down-symbolic'); }
 
     &:backdrop { color: mix($backdrop_fg_color, $backdrop_base_color, 70%); }
   }
@@ -2243,12 +2243,12 @@ menu,
       min-width: 16px;
 
       &:dir(ltr) {
-        -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
+        -ctk-icon-source: -ctk-icontheme('pan-end-symbolic');
         margin-left: 10px;
       }
 
       &:dir(rtl) {
-        -gtk-icon-source:-gtk-icontheme('pan-end-symbolic-rtl');
+        -ctk-icon-source:-ctk-icontheme('pan-end-symbolic-rtl');
         margin-right: 10px;
       }
     }
@@ -2273,7 +2273,7 @@ menu,
       border-bottom: 1px solid mix($fg_color, $base_color, 10%);
       border-top-right-radius: $menu_radius;
       border-top-left-radius: $menu_radius;
-      -gtk-icon-source: -gtk-icontheme('pan-up-symbolic');
+      -ctk-icon-source: -ctk-icontheme('pan-up-symbolic');
     }
 
     &.bottom {
@@ -2282,7 +2282,7 @@ menu,
       border-top: 1px solid mix($fg_color, $base_color, 10%);
       border-bottom-right-radius: $menu_radius;
       border-bottom-left-radius: $menu_radius;
-      -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
+      -ctk-icon-source: -ctk-icontheme('pan-down-symbolic');
     }
 
     &:hover { background-color: mix($fg_color, $base_color, 10%); }
@@ -2298,7 +2298,7 @@ menu,
 }
 
 menuitem {
-  accelerator { color: gtkalpha(currentColor,0.55); }
+  accelerator { color: ctkalpha(currentColor,0.55); }
 
   check,
   radio {
@@ -2453,9 +2453,9 @@ notebook {
       padding-left: 4px;
       padding-right: 4px;
 
-      &.down { -gtk-icon-source: -gtk-icontheme('pan-start-symbolic'); }
+      &.down { -ctk-icon-source: -ctk-icontheme('pan-start-symbolic'); }
 
-      &.up { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic'); }
+      &.up { -ctk-icon-source: -ctk-icontheme('pan-end-symbolic'); }
     }
 
     &.left > tabs > arrow {
@@ -2476,9 +2476,9 @@ notebook {
       padding-top: 4px;
       padding-bottom: 4px;
 
-      &.down { -gtk-icon-source: -gtk-icontheme('pan-up-symbolic'); }
+      &.down { -ctk-icon-source: -ctk-icontheme('pan-up-symbolic'); }
 
-      &.up { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
+      &.up { -ctk-icon-source: -ctk-icontheme('pan-down-symbolic'); }
     }
 
     > tabs > arrow {
@@ -2556,7 +2556,7 @@ notebook {
       button.flat {
         &:hover { color: currentColor; }
 
-        &, &:backdrop { color: gtkalpha(currentColor, 0.3); }
+        &, &:backdrop { color: ctkalpha(currentColor, 0.3); }
 
         padding: 0;
         margin-top: 4px;
@@ -2712,7 +2712,7 @@ scrollbar {
         background-clip: padding-box;
         border-radius: 100%;
         border: 1px solid if($variant == 'light', white, black);
-        -gtk-icon-source: none;
+        -ctk-icon-source: none;
       }
 
       &.horizontal {
@@ -2792,17 +2792,17 @@ scrollbar {
   // button icons
   &.vertical {
     button {
-      &.down { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
+      &.down { -ctk-icon-source: -ctk-icontheme('pan-down-symbolic'); }
 
-      &.up { -gtk-icon-source: -gtk-icontheme('pan-up-symbolic'); }
+      &.up { -ctk-icon-source: -ctk-icontheme('pan-up-symbolic'); }
     }
   }
 
   &.horizontal {
     button {
-      &.down { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic'); }
+      &.down { -ctk-icon-source: -ctk-icontheme('pan-end-symbolic'); }
 
-      &.up { -gtk-icon-source: -gtk-icontheme('pan-start-symbolic'); }
+      &.up { -ctk-icon-source: -ctk-icontheme('pan-start-symbolic'); }
     }
   }
 }
@@ -2868,7 +2868,7 @@ switch {
     border: 1px solid;
     border-radius: 50%;
     transition: $button_transition;
-    -gtk-outline-radius: 20px;
+    -ctk-outline-radius: 20px;
 
     @if $variant == 'light' {
       @include button(normal-alt, $edge: $shadow_color);
@@ -2932,10 +2932,10 @@ switch {
   (':hover', 'none', 'transparent', $checkradio_bg_color),
   (':active', 'none', 'transparent', $checkradio_bg_color),
   (':backdrop', 'none', 'transparent', '#{desaturate($checkradio_bg_color, 100%)}'),
-  (':checked', '-gtk-icontheme(\'object-select-symbolic\')', $osd_fg_color, $checkradio_bg_color),
-  (':checked:hover', '-gtk-icontheme(\'object-select-symbolic\')', $osd_fg_color, $checkradio_bg_color),
-  (':checked:active', '-gtk-icontheme(\'object-select-symbolic\')', $osd_fg_color, $checkradio_bg_color),
-  (':backdrop:checked', '-gtk-icontheme(\'object-select-symbolic\')', '#{transparentize($osd_fg_color, 0.2)}', '#{desaturate($checkradio_bg_color, 100%)}'), {
+  (':checked', '-ctk-icontheme(\'object-select-symbolic\')', $osd_fg_color, $checkradio_bg_color),
+  (':checked:hover', '-ctk-icontheme(\'object-select-symbolic\')', $osd_fg_color, $checkradio_bg_color),
+  (':checked:active', '-ctk-icontheme(\'object-select-symbolic\')', $osd_fg_color, $checkradio_bg_color),
+  (':backdrop:checked', '-ctk-icontheme(\'object-select-symbolic\')', '#{transparentize($osd_fg_color, 0.2)}', '#{desaturate($checkradio_bg_color, 100%)}'), {
 
   .view.content-view.check#{$check_state}:not(list),
   .content-view:not(list) check#{$check_state} {
@@ -2949,8 +2949,8 @@ switch {
     transition: 200ms;
     box-shadow: none;
     border-width: 0;
-    -gtk-icon-source: #{$check_icon};
-    -gtk-icon-shadow: none;
+    -ctk-icon-source: #{$check_icon};
+    -ctk-icon-shadow: none;
   }
 }
 
@@ -2987,7 +2987,7 @@ radio {
   min-height: 14px;
   min-width: 14px;
   border: 1px solid;
-  -gtk-icon-source: none;
+  -ctk-icon-source: none;
 
   & {
     // for unchecked
@@ -3050,7 +3050,7 @@ radio {
         background-image: none;
         background-color: transparent;
         box-shadow: none;
-        -gtk-icon-shadow: none;
+        -ctk-icon-shadow: none;
         color: inherit;
         border-color: currentColor;
       }
@@ -3062,37 +3062,37 @@ radio {
 check {
   border-radius: 3px;
 
-  &:checked { -gtk-icon-source: image(-gtk-recolor(url("assets/check-symbolic.svg")),
-                                      -gtk-recolor(url("assets/check-symbolic.symbolic.png"))); }
+  &:checked { -ctk-icon-source: image(-ctk-recolor(url("assets/check-symbolic.svg")),
+                                      -ctk-recolor(url("assets/check-symbolic.symbolic.png"))); }
 
-  &:indeterminate { -gtk-icon-source: image(-gtk-recolor(url("assets/dash-symbolic.svg")),
-                                            -gtk-recolor(url("assets/dash-symbolic.symbolic.png"))); }
+  &:indeterminate { -ctk-icon-source: image(-ctk-recolor(url("assets/dash-symbolic.svg")),
+                                            -ctk-recolor(url("assets/dash-symbolic.symbolic.png"))); }
 }
 
 %radio,
 radio {
   border-radius: 100%;
 
-  &:checked { -gtk-icon-source: image(-gtk-recolor(url("assets/bullet-symbolic.svg")),
-                                      -gtk-recolor(url("assets/bullet-symbolic.symbolic.png"))); }
+  &:checked { -ctk-icon-source: image(-ctk-recolor(url("assets/bullet-symbolic.svg")),
+                                      -ctk-recolor(url("assets/bullet-symbolic.symbolic.png"))); }
 
-  &:indeterminate { -gtk-icon-source: image(-gtk-recolor(url("assets/dash-symbolic.svg")),
-                                            -gtk-recolor(url("assets/dash-symbolic.symbolic.png"))); }
+  &:indeterminate { -ctk-icon-source: image(-ctk-recolor(url("assets/dash-symbolic.svg")),
+                                            -ctk-recolor(url("assets/dash-symbolic.symbolic.png"))); }
 }
 
 // ANIMATION:
 // this is made with those pretty convoluted transitions, since checks and radios have to animate only on state changes,
 // the transformation is set on the active state and it get reset on the checked state.
-radio:not(:indeterminate):not(:checked):active:not(:backdrop) { -gtk-icon-transform: scale(0); }
+radio:not(:indeterminate):not(:checked):active:not(:backdrop) { -ctk-icon-transform: scale(0); }
 
-check:not(:indeterminate):not(:checked):active:not(:backdrop) { -gtk-icon-transform: translate(6px, -3px) rotate(-45deg) scaleY(0.2) rotate(45deg) scaleX(0); }
+check:not(:indeterminate):not(:checked):active:not(:backdrop) { -ctk-icon-transform: translate(6px, -3px) rotate(-45deg) scaleY(0.2) rotate(45deg) scaleX(0); }
 
 radio,
 check {
-  &:active { -gtk-icon-transform: scale(0, 1); } // should tackle the indeterminate state, untested
+  &:active { -ctk-icon-transform: scale(0, 1); } // should tackle the indeterminate state, untested
 
   &:checked:not(:backdrop), &:indeterminate:not(:backdrop) {
-    -gtk-icon-transform: unset;
+    -ctk-icon-transform: unset;
     transition: 400ms;
   }
 }
@@ -3220,7 +3220,7 @@ scale {
     highlight,
     trough {
       border-radius: 5px;
-      -gtk-outline-radius: 7px;
+      -ctk-outline-radius: 7px;
     }
   }
 
@@ -3229,7 +3229,7 @@ scale {
     @extend %scale_trough;
 
     outline-offset: 2px;
-    -gtk-outline-radius: 5px;
+    -ctk-outline-radius: 5px;
   }
 
   // the colored part of the backing bit
@@ -3322,7 +3322,7 @@ scale {
 
   marks,
   value {
-    color: gtkalpha(currentColor, 0.55);
+    color: ctkalpha(currentColor, 0.55);
     font-feature-settings: "tnum";
   }
 
@@ -3391,7 +3391,7 @@ scale {
               border-radius: 0;
 
               background-color: transparent;
-              background-image: -gtk-scaled(url('#{$_scale_asset}.png'), url('#{$_scale_asset}@2.png'));
+              background-image: -ctk-scaled(url('#{$_scale_asset}.png'), url('#{$_scale_asset}@2.png'));
 
               $_scale_slider_bg_pos: bottom;
 
@@ -3902,14 +3902,14 @@ expander {
   title > arrow {
     min-width: 16px;
     min-height: 16px;
-    -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
-    &:dir(rtl) { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic-rtl'); }
+    -ctk-icon-source: -ctk-icontheme('pan-end-symbolic');
+    &:dir(rtl) { -ctk-icon-source: -ctk-icontheme('pan-end-symbolic-rtl'); }
 
     &:hover { color: lighten($fg_color,30%); } //only lightens the arrow
     &:disabled { color: $insensitive_fg_color; }
     &:disabled:backdrop { color: $backdrop_insensitive_color; }
 
-    &:checked { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
+    &:checked { -ctk-icon-source: -ctk-icontheme('pan-down-symbolic'); }
   }
 }
 
@@ -3956,7 +3956,7 @@ calendar {
     border-color: $backdrop_borders_color;
   }
 
-  &:indeterminate { color: gtkalpha(currentColor, 0.1); }
+  &:indeterminate { color: ctkalpha(currentColor, 0.1); }
 }
 
 
@@ -3985,17 +3985,17 @@ messagedialog { // Message Dialog styling
       border-right-style: none;
       border-bottom-style: none;
       border-radius: 0;
-      -gtk-outline-radius: 0;
+      -ctk-outline-radius: 0;
 
       &:first-child {
         border-left-style: none;
         border-bottom-left-radius: $button_radius + 2;
-        -gtk-outline-bottom-left-radius: $button_radius + 2;
+        -ctk-outline-bottom-left-radius: $button_radius + 2;
       }
 
       &:last-child {
         border-bottom-right-radius: $button_radius + 2;
-        -gtk-outline-bottom-right-radius: $button_radius + 2;
+        -ctk-outline-bottom-right-radius: $button_radius + 2;
       }
     }
   }
@@ -4146,7 +4146,7 @@ placessidebar {
       margin-bottom: 3px;
       padding: 0;
       border-radius: 100%;
-      -gtk-outline-radius: 100%;
+      -ctk-outline-radius: 100%;
 
       &:not(:hover):not(:active),
       &:backdrop { > image { opacity: $_placesidebar_icons_opacity; }}
@@ -4180,12 +4180,12 @@ placessidebar {
 placesview {
   .server-list-button > image {
     transition: 200ms $ease-out-quad;
-    -gtk-icon-transform: rotate(0turn);
+    -ctk-icon-transform: rotate(0turn);
   }
 
   .server-list-button:checked > image {
     transition: 200ms $ease-out-quad;
-    -gtk-icon-transform: rotate(-0.5turn);
+    -ctk-icon-transform: rotate(-0.5turn);
   }
 
   row.activatable:hover { background-color: transparent; }
@@ -4205,7 +4205,7 @@ paned {
   > separator {
     min-width: 1px;
     min-height: 1px;
-    -gtk-icon-source: none; // defeats the ugly default handle decoration
+    -ctk-icon-source: none; // defeats the ugly default handle decoration
     border-style: none; // just to be sure
     background-color: transparent;
     // workaround, using background istead of a border since the border will get rendered twice (?)
@@ -4514,7 +4514,7 @@ colorchooser .popover.osd { border-radius: 5px; }
 .content-view {
   background-color: darken($bg_color,7%);
 
-  &:hover { -gtk-icon-effect: highlight; }
+  &:hover { -ctk-icon-effect: highlight; }
 
   &:backdrop { background-color: darken($bg_color,7%); }
 
@@ -4637,7 +4637,7 @@ button.titlebutton {
     @extend %nobg_selected_items;
   }
 
-  &:backdrop { -gtk-icon-shadow: none; }
+  &:backdrop { -ctk-icon-shadow: none; }
 }
 
 .selection-mode headerbar button.titlebutton,
@@ -4646,7 +4646,7 @@ headerbar.selection-mode button.titlebutton,
 .titlebar.selection-mode button.titlebutton {
   @include _button_text_shadow(white, $suggested_bg_color);
 
-  &:backdrop { -gtk-icon-shadow: none; }
+  &:backdrop { -ctk-icon-shadow: none; }
 }
 
 // catch all extend :)
@@ -4687,21 +4687,21 @@ cursor-handle {
                   (':active','-active') { //no need for insensitive and backdrop
     &.top#{$s}:dir(ltr), &.bottom#{$s}:dir(rtl) {
       $_url: 'assets/text-select-start#{$as}#{$asset_suffix}';
-      -gtk-icon-source: -gtk-scaled(url('#{$_url}.png'),
+      -ctk-icon-source: -ctk-scaled(url('#{$_url}.png'),
                                     url('#{$_url}@2.png'));
       padding-left: 10px;
     }
 
     &.bottom#{$s}:dir(ltr), &.top#{$s}:dir(rtl) {
       $_url: 'assets/text-select-end#{$as}#{$asset_suffix}';
-      -gtk-icon-source: -gtk-scaled(url('#{$_url}.png'),
+      -ctk-icon-source: -ctk-scaled(url('#{$_url}.png'),
                                     url('#{$_url}@2.png'));
       padding-right: 10px;
     }
 
     &.insertion-cursor#{$s}:dir(ltr), &.insertion-cursor#{$s}:dir(rtl) {
       $_url: 'assets/slider-horz-scale-has-marks-above#{$as}#{$asset_suffix}';
-      -gtk-icon-source: -gtk-scaled(url('#{$_url}.png'),
+      -ctk-icon-source: -ctk-scaled(url('#{$_url}.png'),
                                     url('#{$_url}@2.png'));
     }
   }
@@ -4754,7 +4754,7 @@ stackswitcher button.text-button.circular { // FIXME aggregate with buttons
  *************/
 /* Outline for low res icons */
 .lowres-icon {
-    -gtk-icon-shadow: 0 -1px rgba(0,0,0,0.05),
+    -ctk-icon-shadow: 0 -1px rgba(0,0,0,0.05),
       1px 0 rgba(0,0,0,0.1),
       0 1px rgba(0,0,0,0.3),
       -1px 0 rgba(0,0,0,0.1);
@@ -4762,7 +4762,7 @@ stackswitcher button.text-button.circular { // FIXME aggregate with buttons
 
 /* Dropshadow for large icons */
 .icon-dropshadow {
-  -gtk-icon-shadow: 0 1px 12px rgba(0,0,0,0.05),
+  -ctk-icon-shadow: 0 1px 12px rgba(0,0,0,0.05),
       0 -1px rgba(0,0,0,0.05),
       1px 0 rgba(0,0,0,0.1),
       0 1px rgba(0,0,0,0.3),

@@ -18,9 +18,9 @@
 #include "config.h"
 
 #include <string.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <glib/gi18n-lib.h>
-#include "gtkbuttonaccessible.h"
+#include "ctkbuttonaccessible.h"
 
 
 static void atk_action_interface_init (AtkActionIface *iface);
@@ -183,7 +183,7 @@ ctk_button_accessible_ref_state_set (AtkObject *obj)
 }
 
 static void
-ctk_button_accessible_notify_gtk (GObject    *obj,
+ctk_button_accessible_notify_ctk (GObject    *obj,
                                   GParamSpec *pspec)
 {
   GtkWidget *widget = CTK_WIDGET (obj);
@@ -197,7 +197,7 @@ ctk_button_accessible_notify_gtk (GObject    *obj,
       g_signal_emit_by_name (atk_obj, "visible-data-changed");
     }
   else
-    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_button_accessible_parent_class)->notify_gtk (obj, pspec);
+    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_button_accessible_parent_class)->notify_ctk (obj, pspec);
 }
 
 static void
@@ -213,10 +213,10 @@ ctk_button_accessible_class_init (GtkButtonAccessibleClass *klass)
   class->ref_state_set = ctk_button_accessible_ref_state_set;
   class->initialize = ctk_button_accessible_initialize;
 
-  widget_class->notify_gtk = ctk_button_accessible_notify_gtk;
+  widget_class->notify_ctk = ctk_button_accessible_notify_ctk;
 
-  container_class->add_gtk = NULL;
-  container_class->remove_gtk = NULL;
+  container_class->add_ctk = NULL;
+  container_class->remove_ctk = NULL;
 }
 
 static void

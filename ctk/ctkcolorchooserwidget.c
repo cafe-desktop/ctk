@@ -18,22 +18,22 @@
 
 #include "config.h"
 
-#include "gtkcolorchooserprivate.h"
-#include "gtkcolorchooserwidget.h"
-#include "gtkcoloreditorprivate.h"
-#include "gtkcolorswatchprivate.h"
-#include "gtkbox.h"
-#include "gtkgrid.h"
-#include "gtklabel.h"
-#include "gtkorientable.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
-#include "gtksizegroup.h"
+#include "ctkcolorchooserprivate.h"
+#include "ctkcolorchooserwidget.h"
+#include "ctkcoloreditorprivate.h"
+#include "ctkcolorswatchprivate.h"
+#include "ctkbox.h"
+#include "ctkgrid.h"
+#include "ctklabel.h"
+#include "ctkorientable.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
+#include "ctksizegroup.h"
 
 #include <math.h>
 
 /**
- * SECTION:gtkcolorchooserwidget
+ * SECTION:ctkcolorchooserwidget
  * @Short_description: A widget for choosing colors
  * @Title: GtkColorChooserWidget
  * @See_also: #GtkColorChooserDialog
@@ -545,7 +545,7 @@ ctk_color_chooser_widget_init (GtkColorChooserWidget *cc)
   ctk_color_swatch_set_selectable (CTK_COLOR_SWATCH (button), FALSE);
   ctk_container_add (CTK_CONTAINER (box), button);
 
-  cc->priv->settings = g_settings_new ("org.gtk.Settings.ColorChooser");
+  cc->priv->settings = g_settings_new ("org.ctk.Settings.ColorChooser");
   variant = g_settings_get_value (cc->priv->settings, "custom-colors");
   g_variant_iter_init (&iter, variant);
   i = 0;

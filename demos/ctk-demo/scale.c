@@ -6,7 +6,7 @@
  * chosen.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 GtkWidget *
 do_scale (GtkWidget *do_widget)

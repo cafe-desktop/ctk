@@ -186,7 +186,7 @@ _gdk_x11_get_xft_setting (GdkScreen   *screen,
 {
   GdkX11Screen *x11_screen = GDK_X11_SCREEN (screen);
   
-  if (strncmp (name, "gtk-xft-", 8) != 0)
+  if (strncmp (name, "ctk-xft-", 8) != 0)
     return FALSE;
 
   name += 8;

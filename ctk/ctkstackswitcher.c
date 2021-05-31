@@ -18,17 +18,17 @@
  */
 
 #include "config.h"
-#include "gtkstackswitcher.h"
-#include "gtkradiobutton.h"
-#include "gtklabel.h"
-#include "gtkdnd.h"
-#include "gtkdragdest.h"
-#include "gtkorientable.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
+#include "ctkstackswitcher.h"
+#include "ctkradiobutton.h"
+#include "ctklabel.h"
+#include "ctkdnd.h"
+#include "ctkdragdest.h"
+#include "ctkorientable.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
 
 /**
- * SECTION:gtkstackswitcher
+ * SECTION:ctkstackswitcher
  * @Short_description: A controller for GtkStack
  * @Title: GtkStackSwitcher
  * @See_also: #GtkStack
@@ -334,7 +334,7 @@ ctk_stack_switcher_drag_motion (GtkWidget      *widget,
       priv->switch_timer = gdk_threads_add_timeout (TIMEOUT_EXPAND,
                                                     ctk_stack_switcher_switch_timeout,
                                                     self);
-      g_source_set_name_by_id (priv->switch_timer, "[gtk+] ctk_stack_switcher_switch_timeout");
+      g_source_set_name_by_id (priv->switch_timer, "[ctk+] ctk_stack_switcher_switch_timeout");
     }
 
   return retval;

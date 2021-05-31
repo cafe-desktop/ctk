@@ -20,25 +20,25 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
-#include "gtkstatusbar.h"
+#include "ctkstatusbar.h"
 
-#include "gtkframe.h"
-#include "gtklabel.h"
-#include "gtkmarshalers.h"
-#include "gtkwindow.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
-#include "gtkorientable.h"
-#include "gtktypebuiltins.h"
-#include "a11y/gtkstatusbaraccessible.h"
+#include "ctkframe.h"
+#include "ctklabel.h"
+#include "ctkmarshalers.h"
+#include "ctkwindow.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
+#include "ctkorientable.h"
+#include "ctktypebuiltins.h"
+#include "a11y/ctkstatusbaraccessible.h"
 
 /**
- * SECTION:gtkstatusbar
+ * SECTION:ctkstatusbar
  * @title: GtkStatusbar
  * @short_description: Report messages of minor importance to the user
  *
@@ -182,7 +182,7 @@ ctk_statusbar_class_init (GtkStatusbarClass *class)
 
   /* Bind class to template
    */
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/ui/gtkstatusbar.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/ui/ctkstatusbar.ui");
   ctk_widget_class_bind_template_child_internal_private (widget_class, GtkStatusbar, message_area);
   ctk_widget_class_bind_template_child_private (widget_class, GtkStatusbar, frame);
   ctk_widget_class_bind_template_child_private (widget_class, GtkStatusbar, label);
@@ -263,7 +263,7 @@ ctk_statusbar_get_context_id (GtkStatusbar *statusbar,
   priv = statusbar->priv;
 
   /* we need to preserve namespaces on object datas */
-  string = g_strconcat ("gtk-status-bar-context:", context_description, NULL);
+  string = g_strconcat ("ctk-status-bar-context:", context_description, NULL);
 
   id = GPOINTER_TO_UINT (g_object_get_data (G_OBJECT (statusbar), string));
   if (id == 0)

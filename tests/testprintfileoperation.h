@@ -1,7 +1,7 @@
 #ifndef __TEST_PRINT_FILE_OPERATION_H__
 #define __TEST_PRINT_FILE_OPERATION_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 G_BEGIN_DECLS
 

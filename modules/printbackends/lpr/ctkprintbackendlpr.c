@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkprintbackendlpr.c: LPR implementation of GtkPrintBackend 
+ * ctkprintbackendlpr.c: LPR implementation of GtkPrintBackend 
  * for printing to lpr 
  * Copyright (C) 2006, 2007 Red Hat, Inc.
  *
@@ -31,10 +31,10 @@
 
 #include <glib/gi18n-lib.h>
 
-#include <gtk/gtk.h>
-#include "gtkprinter-private.h"
+#include <ctk/ctk.h>
+#include "ctkprinter-private.h"
 
-#include "gtkprintbackendlpr.h"
+#include "ctkprintbackendlpr.h"
 
 typedef struct _GtkPrintBackendLprClass GtkPrintBackendLprClass;
 
@@ -420,14 +420,14 @@ lpr_printer_get_options (GtkPrinter           *printer,
 
   set = ctk_printer_option_set_new ();
 
-  option = ctk_printer_option_new ("gtk-n-up", _("Pages Per Sheet"), CTK_PRINTER_OPTION_TYPE_PICKONE);
+  option = ctk_printer_option_new ("ctk-n-up", _("Pages Per Sheet"), CTK_PRINTER_OPTION_TYPE_PICKONE);
   ctk_printer_option_choices_from_array (option, G_N_ELEMENTS (n_up),
 					 n_up, n_up);
   ctk_printer_option_set (option, "1");
   ctk_printer_option_set_add (set, option);
   g_object_unref (option);
 
-  option = ctk_printer_option_new ("gtk-main-page-custom-input", _("Command Line"), CTK_PRINTER_OPTION_TYPE_STRING);
+  option = ctk_printer_option_new ("ctk-main-page-custom-input", _("Command Line"), CTK_PRINTER_OPTION_TYPE_STRING);
   ctk_printer_option_set_activates_default (option, TRUE);
   option->group = g_strdup ("GtkPrintDialogExtension");
   if (settings != NULL &&
@@ -447,15 +447,15 @@ lpr_printer_get_settings_from_options (GtkPrinter          *printer,
 {
   GtkPrinterOption *option;
 
-  option = ctk_printer_option_set_lookup (options, "gtk-main-page-custom-input");
+  option = ctk_printer_option_set_lookup (options, "ctk-main-page-custom-input");
   if (option)
     ctk_print_settings_set (settings, "lpr-commandline", option->value);
 
-  option = ctk_printer_option_set_lookup (options, "gtk-n-up");
+  option = ctk_printer_option_set_lookup (options, "ctk-n-up");
   if (option)
     ctk_print_settings_set (settings, CTK_PRINT_SETTINGS_NUMBER_UP, option->value);
 
-  option = ctk_printer_option_set_lookup (options, "gtk-n-up-layout");
+  option = ctk_printer_option_set_lookup (options, "ctk-n-up-layout");
   if (option)
     ctk_print_settings_set (settings, CTK_PRINT_SETTINGS_NUMBER_UP_LAYOUT, option->value);
 }

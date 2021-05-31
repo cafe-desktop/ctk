@@ -1,4 +1,4 @@
-/* gtktextdisplay.c - display layed-out text
+/* ctktextdisplay.c - display layed-out text
  *
  * Copyright (c) 1992-1994 The Regents of the University of California.
  * Copyright (c) 1994-1997 Sun Microsystems, Inc.
@@ -70,19 +70,19 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #define CTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
 #include "config.h"
-#include "gtktextattributesprivate.h"
-#include "gtktextdisplay.h"
-#include "gtkwidgetprivate.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkintl.h"
+#include "ctktextattributesprivate.h"
+#include "ctktextdisplay.h"
+#include "ctkwidgetprivate.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkintl.h"
 
 /* DO NOT go putting private headers in here. This file should only
- * use the semi-public headers, as with gtktextview.c.
+ * use the semi-public headers, as with ctktextview.c.
  */
 
 #define CTK_TYPE_TEXT_RENDERER            (_ctk_text_renderer_get_type())

@@ -3,12 +3,12 @@
 #define GDK_DISABLE_DEPRECATION_WARNINGS
 #undef CTK_DISABLE_DEPRECATED
 
-#include <gtk/gtkunixprint.h>
+#include <ctk/ctkunixprint.h>
 #include <gdk/gdkkeysyms.h>
 #include <X11/Xatom.h>
 #include <gdkx.h>
 #include "widgets.h"
-#include "gtkgears.h"
+#include "ctkgears.h"
 
 #define SMALL_WIDTH  240
 #define SMALL_HEIGHT 75
@@ -133,7 +133,7 @@ create_link_button (void)
   GtkWidget *widget;
   GtkWidget *align;
 
-  widget = ctk_link_button_new_with_label ("http://www.gtk.org", "Link Button");
+  widget = ctk_link_button_new_with_label ("http://www.ctk.org", "Link Button");
   align = ctk_alignment_new (0.5, 0.5, 0.0, 0.0);
   ctk_container_add (CTK_CONTAINER (align), widget);
 
@@ -946,7 +946,7 @@ create_about_dialog (void)
                 "program-name", "GTK+ Code Demos",
                 "version", PACKAGE_VERSION,
                 "copyright", "© 1997-2013 The GTK+ Team",
-                "website", "http://www.gtk.org",
+                "website", "http://www.ctk.org",
                 "comments", "Program to demonstrate GTK+ functions.",
                 "logo-icon-name", "help-about",
                 "title", "About GTK+ Code Demos",

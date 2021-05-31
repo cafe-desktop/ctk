@@ -1,4 +1,4 @@
-/* gtkcellareacontext.c
+/* ctkcellareacontext.c
  *
  * Copyright (C) 2010 Openismus GmbH
  *
@@ -20,7 +20,7 @@
  */
 
 /**
- * SECTION:gtkcellareacontext
+ * SECTION:ctkcellareacontext
  * @Short_Description: Stores geometrical information for a series of rows in a GtkCellArea
  * @Title: GtkCellAreaContext
  *
@@ -37,10 +37,10 @@
  */
 
 #include "config.h"
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
-#include "gtkcellareacontext.h"
-#include "gtkprivate.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
+#include "ctkcellareacontext.h"
+#include "ctkprivate.h"
 
 /* GObjectClass */
 static void ctk_cell_area_context_dispose       (GObject            *object);

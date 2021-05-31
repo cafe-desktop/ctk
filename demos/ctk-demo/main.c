@@ -5,7 +5,7 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <glib/gstdio.h>
 
 #include "demos.h"
@@ -55,10 +55,10 @@ activate_about (GSimpleAction *action,
                                                      ctk_get_micro_version ()),
                          "copyright", "(C) 1997-2013 The GTK+ Team",
                          "license-type", CTK_LICENSE_LGPL_2_1,
-                         "website", "http://www.gtk.org",
+                         "website", "http://www.ctk.org",
                          "comments", "Program to demonstrate GTK+ widgets",
                          "authors", authors,
-                         "logo-icon-name", "gtk3-demo",
+                         "logo-icon-name", "ctk3-demo",
                          "title", "About GTK+ Demo",
                          NULL);
 }
@@ -1146,7 +1146,7 @@ out:
 static void
 print_version (void)
 {
-  g_print ("gtk3-demo %d.%d.%d\n",
+  g_print ("ctk3-demo %d.%d.%d\n",
            ctk_get_major_version (),
            ctk_get_minor_version (),
            ctk_get_micro_version ());
@@ -1179,8 +1179,8 @@ main (int argc, char **argv)
     { "quit", activate_quit, NULL, NULL, NULL },
   };
 
-  /* Most code in gtk-demo is intended to be exemplary, but not
-   * these few lines, which are just a hack so gtk-demo will work
+  /* Most code in ctk-demo is intended to be exemplary, but not
+   * these few lines, which are just a hack so ctk-demo will work
    * in the GTK tree without installing it.
    */
   if (g_file_test ("../../modules/input/immodules.cache", G_FILE_TEST_EXISTS))
@@ -1189,7 +1189,7 @@ main (int argc, char **argv)
     }
   /* -- End of hack -- */
 
-  app = ctk_application_new ("org.gtk.Demo", G_APPLICATION_NON_UNIQUE|G_APPLICATION_HANDLES_COMMAND_LINE);
+  app = ctk_application_new ("org.ctk.Demo", G_APPLICATION_NON_UNIQUE|G_APPLICATION_HANDLES_COMMAND_LINE);
 
   g_action_map_add_action_entries (G_ACTION_MAP (app),
                                    app_entries, G_N_ELEMENTS (app_entries),

@@ -21,7 +21,7 @@
 #define __CTK_BITMASK_PRIVATE_H__
 
 #include <glib.h>
-#include "gtkallocatedbitmaskprivate.h"
+#include "ctkallocatedbitmaskprivate.h"
 
 G_BEGIN_DECLS
 
@@ -61,7 +61,7 @@ static inline gboolean          _ctk_bitmask_intersects           (const GtkBitm
  * We put it in a separate file so people don’t get scared from looking at this
  * file when reading source code.
  */
-#include "gtkbitmaskprivateimpl.h"
+#include "ctkbitmaskprivateimpl.h"
 
 
 G_END_DECLS

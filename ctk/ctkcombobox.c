@@ -1,5 +1,5 @@
-/* gtkcombobox.c
- * Copyright (C) 2002, 2003  Kristian Rietveld <kris@gtk.org>
+/* ctkcombobox.c
+ * Copyright (C) 2002, 2003  Kristian Rietveld <kris@ctk.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -17,51 +17,51 @@
 
 #include "config.h"
 
-#include "gtkcombobox.h"
+#include "ctkcombobox.h"
 
-#include "gtkadjustment.h"
-#include "gtkcellareabox.h"
-#include "gtktreemenu.h"
-#include "gtkbindings.h"
-#include "gtkcelllayout.h"
-#include "gtkcellrenderertext.h"
-#include "gtkcellview.h"
-#include "gtkcsscustomgadgetprivate.h"
-#include "gtkeventbox.h"
-#include "gtkframe.h"
-#include "gtkiconprivate.h"
-#include "gtkbox.h"
-#include "gtkliststore.h"
-#include "gtkmain.h"
-#include "gtkmenuprivate.h"
-#include "gtkmenushellprivate.h"
-#include "gtkscrolledwindow.h"
-#include "deprecated/gtktearoffmenuitem.h"
-#include "gtktogglebutton.h"
-#include "gtktreeselection.h"
-#include "gtkwidgetpath.h"
-#include "gtkwidgetprivate.h"
-#include "gtkwindow.h"
-#include "gtktypebuiltins.h"
-#include "gtkprivate.h"
-#include "gtktooltipprivate.h"
-#include "gtkcomboboxprivate.h"
+#include "ctkadjustment.h"
+#include "ctkcellareabox.h"
+#include "ctktreemenu.h"
+#include "ctkbindings.h"
+#include "ctkcelllayout.h"
+#include "ctkcellrenderertext.h"
+#include "ctkcellview.h"
+#include "ctkcsscustomgadgetprivate.h"
+#include "ctkeventbox.h"
+#include "ctkframe.h"
+#include "ctkiconprivate.h"
+#include "ctkbox.h"
+#include "ctkliststore.h"
+#include "ctkmain.h"
+#include "ctkmenuprivate.h"
+#include "ctkmenushellprivate.h"
+#include "ctkscrolledwindow.h"
+#include "deprecated/ctktearoffmenuitem.h"
+#include "ctktogglebutton.h"
+#include "ctktreeselection.h"
+#include "ctkwidgetpath.h"
+#include "ctkwidgetprivate.h"
+#include "ctkwindow.h"
+#include "ctktypebuiltins.h"
+#include "ctkprivate.h"
+#include "ctktooltipprivate.h"
+#include "ctkcomboboxprivate.h"
 
 #include <gobject/gvaluecollector.h>
 
 #include <string.h>
 #include <stdarg.h>
 
-#include "gtkmarshalers.h"
-#include "gtkintl.h"
+#include "ctkmarshalers.h"
+#include "ctkintl.h"
 
-#include "gtkentryprivate.h"
-#include "gtktreeprivate.h"
-#include "a11y/gtkcomboboxaccessible.h"
+#include "ctkentryprivate.h"
+#include "ctktreeprivate.h"
+#include "a11y/ctkcomboboxaccessible.h"
 
 
 /**
- * SECTION:gtkcombobox
+ * SECTION:ctkcombobox
  * @Short_description: A widget used to choose from a list of items
  * @Title: GtkComboBox
  * @See_also: #GtkComboBoxText, #GtkTreeModel, #GtkCellRenderer
@@ -1249,7 +1249,7 @@ ctk_combo_box_class_init (GtkComboBoxClass *klass)
                                                               CTK_SHADOW_NONE,
                                                               CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/ui/gtkcombobox.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/ui/ctkcombobox.ui");
   ctk_widget_class_bind_template_child_internal_private (widget_class, GtkComboBox, box);
   ctk_widget_class_bind_template_child_internal_private (widget_class, GtkComboBox, button);
   ctk_widget_class_bind_template_child_internal_private (widget_class, GtkComboBox, arrow);
@@ -1865,7 +1865,7 @@ ctk_combo_box_set_popup_widget (GtkComboBox *combo_box,
       if (!priv->popup_window)
         {
           priv->popup_window = ctk_window_new (CTK_WINDOW_POPUP);
-          ctk_widget_set_name (priv->popup_window, "gtk-combobox-popup-window");
+          ctk_widget_set_name (priv->popup_window, "ctk-combobox-popup-window");
 
           ctk_window_set_type_hint (CTK_WINDOW (priv->popup_window),
                                     GDK_WINDOW_TYPE_HINT_COMBO);
@@ -2754,7 +2754,7 @@ ctk_combo_box_menu_setup (GtkComboBox *combo_box)
 
   /* create our funky menu */
   menu = _ctk_tree_menu_new_with_area (priv->area);
-  ctk_widget_set_name (menu, "gtk-combobox-popup-menu");
+  ctk_widget_set_name (menu, "ctk-combobox-popup-menu");
 
   _ctk_tree_menu_set_model (CTK_TREE_MENU (menu), priv->model);
 
@@ -2962,7 +2962,7 @@ ctk_combo_box_list_popup_resize (GtkComboBox *combo_box)
     {
       priv->resize_idle_id =
         gdk_threads_add_idle (list_popup_resize_idle, combo_box);
-      g_source_set_name_by_id (priv->resize_idle_id, "[gtk+] list_popup_resize_idle");
+      g_source_set_name_by_id (priv->resize_idle_id, "[ctk+] list_popup_resize_idle");
     }
 }
 
@@ -3122,7 +3122,7 @@ ctk_combo_box_list_button_pressed (GtkWidget      *widget,
     priv->scroll_timer = gdk_threads_add_timeout (SCROLL_TIME,
                                                   (GSourceFunc) ctk_combo_box_list_scroll_timeout,
                                                    combo_box);
-    g_source_set_name_by_id (priv->scroll_timer, "[gtk+] ctk_combo_box_list_scroll_timeout");
+    g_source_set_name_by_id (priv->scroll_timer, "[ctk+] ctk_combo_box_list_scroll_timeout");
   }
 
   priv->popup_in_progress = TRUE;
@@ -4391,7 +4391,7 @@ popdown_handler (GtkWidget *widget,
 {
   guint id;
   id = gdk_threads_add_idle (popdown_idle, g_object_ref (data));
-  g_source_set_name_by_id (id, "[gtk+] popdown_idle");
+  g_source_set_name_by_id (id, "[ctk+] popdown_idle");
 }
 
 static gboolean
@@ -4464,7 +4464,7 @@ ctk_combo_box_start_editing (GtkCellEditable *cell_editable,
 
       priv->popup_idle_id =
           gdk_threads_add_idle (popup_idle, combo_box);
-      g_source_set_name_by_id (priv->popup_idle_id, "[gtk+] popup_idle");
+      g_source_set_name_by_id (priv->popup_idle_id, "[ctk+] popup_idle");
     }
 }
 

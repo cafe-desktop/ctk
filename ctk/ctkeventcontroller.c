@@ -19,7 +19,7 @@
  */
 
 /**
- * SECTION:gtkeventcontroller
+ * SECTION:ctkeventcontroller
  * @Short_description: Self-contained handler of series of events
  * @Title: GtkEventController
  * @See_also: #GtkGesture
@@ -30,13 +30,13 @@
  */
 
 #include "config.h"
-#include "gtkeventcontroller.h"
-#include "gtkeventcontrollerprivate.h"
-#include "gtkwidgetprivate.h"
-#include "gtktypebuiltins.h"
-#include "gtkmarshalers.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
+#include "ctkeventcontroller.h"
+#include "ctkeventcontrollerprivate.h"
+#include "ctkwidgetprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctkmarshalers.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
 
 typedef struct _GtkEventControllerPrivate GtkEventControllerPrivate;
 

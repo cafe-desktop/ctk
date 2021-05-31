@@ -20,16 +20,16 @@
 
 #include "config.h"
 
-#include "gtkcellrendererspin.h"
+#include "ctkcellrendererspin.h"
 
-#include "gtkadjustment.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtkspinbutton.h"
+#include "ctkadjustment.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctkspinbutton.h"
 
 
 /**
- * SECTION:gtkcellrendererspin
+ * SECTION:ctkcellrendererspin
  * @Short_description: Renders a spin button in a cell
  * @Title: GtkCellRendererSpin
  * @See_also: #GtkCellRendererText, #GtkSpinButton
@@ -82,7 +82,7 @@ enum {
   PROP_DIGITS
 };
 
-#define CTK_CELL_RENDERER_SPIN_PATH "gtk-cell-renderer-spin-path"
+#define CTK_CELL_RENDERER_SPIN_PATH "ctk-cell-renderer-spin-path"
 
 G_DEFINE_TYPE_WITH_PRIVATE (GtkCellRendererSpin, ctk_cell_renderer_spin, CTK_TYPE_CELL_RENDERER_TEXT)
 

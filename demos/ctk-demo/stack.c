@@ -6,7 +6,7 @@
  * GtkStackSwitcher adds buttons to control which child is visible.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 GtkWidget *
 do_stack (GtkWidget *do_widget)

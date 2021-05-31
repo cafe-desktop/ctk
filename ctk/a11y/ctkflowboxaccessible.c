@@ -17,9 +17,9 @@
 
 #include "config.h"
 
-#include "gtkflowboxaccessibleprivate.h"
+#include "ctkflowboxaccessibleprivate.h"
 
-#include "gtk/gtkflowbox.h"
+#include "ctk/ctkflowbox.h"
 
 static void atk_selection_interface_init (AtkSelectionIface *iface);
 

@@ -21,18 +21,18 @@
  */
 
 #include "config.h"
-#include "gtkrevealer.h"
+#include "ctkrevealer.h"
 #include <gdk/gdk.h>
-#include "gtktypebuiltins.h"
-#include "gtkprivate.h"
-#include "gtksettingsprivate.h"
-#include "gtkprogresstrackerprivate.h"
-#include "gtkintl.h"
+#include "ctktypebuiltins.h"
+#include "ctkprivate.h"
+#include "ctksettingsprivate.h"
+#include "ctkprogresstrackerprivate.h"
+#include "ctkintl.h"
 
 #include "fallback-c89.c"
 
 /**
- * SECTION:gtkrevealer
+ * SECTION:ctkrevealer
  * @Short_description: Hide and show with animation
  * @Title: GtkRevealer
  * @See_also: #GtkExpander
@@ -43,7 +43,7 @@
  * The style of transition can be controlled with
  * ctk_revealer_set_transition_type().
  *
- * These animations respect the #GtkSettings:gtk-enable-animations
+ * These animations respect the #GtkSettings:ctk-enable-animations
  * setting.
  *
  * # CSS nodes

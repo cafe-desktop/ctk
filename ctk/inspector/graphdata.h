@@ -18,7 +18,7 @@
 #ifndef __CTK_GRAPH_DATA_H__
 #define __CTK_GRAPH_DATA_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 G_BEGIN_DECLS
 

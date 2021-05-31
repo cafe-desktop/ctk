@@ -17,12 +17,12 @@
 
 #include "config.h"
 
-#include "gtkcssenumvalueprivate.h"
+#include "ctkcssenumvalueprivate.h"
 
-#include "gtkcssstyleprivate.h"
-#include "gtkcssnumbervalueprivate.h"
-#include "gtkstyleproviderprivate.h"
-#include "gtksettingsprivate.h"
+#include "ctkcssstyleprivate.h"
+#include "ctkcssnumbervalueprivate.h"
+#include "ctkstyleproviderprivate.h"
+#include "ctksettingsprivate.h"
 
 /* repeated API */
 
@@ -196,7 +196,7 @@ get_dpi (GtkCssStyle *style)
 }
 
 /* XXX: Kinda bad to have that machinery here, nobody expects vital font
- * size code to appear in gtkcssvalueenum.c.
+ * size code to appear in ctkcssvalueenum.c.
  */
 #define DEFAULT_FONT_SIZE_PT 10
 

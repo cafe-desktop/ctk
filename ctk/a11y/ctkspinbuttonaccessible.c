@@ -18,8 +18,8 @@
 #include "config.h"
 
 #include <string.h>
-#include <gtk/gtk.h>
-#include "gtkspinbuttonaccessible.h"
+#include <ctk/ctk.h>
+#include "ctkspinbuttonaccessible.h"
 
 struct _GtkSpinButtonAccessiblePrivate
 {
@@ -82,7 +82,7 @@ ctk_spin_button_accessible_initialize (AtkObject *obj,
 }
 
 static void
-ctk_spin_button_accessible_notify_gtk (GObject    *obj,
+ctk_spin_button_accessible_notify_ctk (GObject    *obj,
                                        GParamSpec *pspec)
 {
   GtkWidget *widget = CTK_WIDGET (obj);
@@ -96,7 +96,7 @@ ctk_spin_button_accessible_notify_gtk (GObject    *obj,
 
     }
   else
-    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_spin_button_accessible_parent_class)->notify_gtk (obj, pspec);
+    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_spin_button_accessible_parent_class)->notify_ctk (obj, pspec);
 }
 
 static void
@@ -111,7 +111,7 @@ ctk_spin_button_accessible_class_init (GtkSpinButtonAccessibleClass *klass)
   accessible_class->widget_set = ctk_spin_button_accessible_widget_set;
   accessible_class->widget_unset = ctk_spin_button_accessible_widget_unset;
 
-  widget_class->notify_gtk = ctk_spin_button_accessible_notify_gtk;
+  widget_class->notify_ctk = ctk_spin_button_accessible_notify_ctk;
 }
 
 static void

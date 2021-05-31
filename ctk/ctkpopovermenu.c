@@ -16,14 +16,14 @@
  */
 
 #include "config.h"
-#include "gtkpopovermenu.h"
-#include "gtkstack.h"
-#include "gtkstylecontext.h"
-#include "gtkintl.h"
+#include "ctkpopovermenu.h"
+#include "ctkstack.h"
+#include "ctkstylecontext.h"
+#include "ctkintl.h"
 
 
 /**
- * SECTION:gtkpopovermenu
+ * SECTION:ctkpopovermenu
  * @Short_description: Popovers to use as menus
  * @Title: GtkPopoverMenu
  *

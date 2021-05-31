@@ -9,7 +9,7 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static gboolean name_seen;
 static GtkWidget *placeholder;
@@ -52,7 +52,7 @@ do_application_demo (GtkWidget *toplevel)
 
   if (watch == 0)
     watch = g_bus_watch_name (G_BUS_TYPE_SESSION,
-                              "org.gtk.Demo2",
+                              "org.ctk.Demo2",
                               0,
                               on_name_appeared,
                               on_name_vanished,
@@ -63,10 +63,10 @@ do_application_demo (GtkWidget *toplevel)
       const gchar *command;
       GError *error = NULL;
 
-      if (g_file_test ("./gtk3-demo-application" APP_EXTENSION, G_FILE_TEST_IS_EXECUTABLE))
-        command = "./gtk3-demo-application" APP_EXTENSION;
+      if (g_file_test ("./ctk3-demo-application" APP_EXTENSION, G_FILE_TEST_IS_EXECUTABLE))
+        command = "./ctk3-demo-application" APP_EXTENSION;
       else
-        command = "gtk3-demo-application";
+        command = "ctk3-demo-application";
 
       if (!g_spawn_command_line_async (command, &error))
         {
@@ -80,9 +80,9 @@ do_application_demo (GtkWidget *toplevel)
   else
     {
       g_dbus_connection_call_sync (g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, NULL),
-                                   "org.gtk.Demo2",
-                                   "/org/gtk/Demo2",
-                                   "org.gtk.Actions",
+                                   "org.ctk.Demo2",
+                                   "/org/ctk/Demo2",
+                                   "org.ctk.Actions",
                                    "Activate",
                                    g_variant_new ("(sava{sv})", "quit", NULL, NULL),
                                    NULL,

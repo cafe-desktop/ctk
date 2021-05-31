@@ -20,7 +20,7 @@
 #include "config.h"
 #include <stdio.h>
 #include <string.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #define DEF_PAD 12
 #define DEF_PAD_SMALL 6

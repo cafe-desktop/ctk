@@ -18,7 +18,7 @@
 #ifndef __CTK_CSS_STYLE_CHANGE_PRIVATE_H__
 #define __CTK_CSS_STYLE_CHANGE_PRIVATE_H__
 
-#include "gtkcssstyleprivate.h"
+#include "ctkcssstyleprivate.h"
 
 G_BEGIN_DECLS
 

@@ -1,6 +1,6 @@
 /* -*- mode: C; c-basic-offset: 2; indent-tabs-mode: nil; -*- */
 
-#include <gtk/gtkcairoblurprivate.h>
+#include <ctk/ctkcairoblurprivate.h>
 
 static void
 init_surface (cairo_t *cr)

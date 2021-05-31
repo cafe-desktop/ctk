@@ -23,7 +23,7 @@
 #ifndef _CTK_INSPECTOR_CSS_EDITOR_H_
 #define _CTK_INSPECTOR_CSS_EDITOR_H_
 
-#include <gtk/gtkbox.h>
+#include <ctk/ctkbox.h>
 
 #define CTK_TYPE_INSPECTOR_CSS_EDITOR            (ctk_inspector_css_editor_get_type())
 #define CTK_INSPECTOR_CSS_EDITOR(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_CSS_EDITOR, GtkInspectorCssEditor))

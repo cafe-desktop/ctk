@@ -1,4 +1,4 @@
-/* gtktreeview.c
+/* ctktreeview.c
  * Copyright (C) 2000  Red Hat, Inc.,  Jonathan Blandford <jrb@redhat.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -21,49 +21,49 @@
 #include <math.h>
 #include <string.h>
 
-#include "gtktreeview.h"
+#include "ctktreeview.h"
 
-#include "gtkadjustmentprivate.h"
-#include "gtkcssnumbervalueprivate.h"
-#include "gtkrbtree.h"
-#include "gtktreednd.h"
-#include "gtktreeprivate.h"
-#include "gtkcellrenderer.h"
-#include "gtkmarshalers.h"
-#include "gtkbuildable.h"
-#include "gtkbutton.h"
-#include "gtklabel.h"
-#include "gtkbox.h"
-#include "gtkintl.h"
-#include "gtkbindings.h"
-#include "gtkcontainer.h"
-#include "gtkentry.h"
-#include "gtkframe.h"
-#include "gtkmain.h"
-#include "gtktreemodelsort.h"
-#include "gtktooltip.h"
-#include "gtkscrollable.h"
-#include "gtkcelllayout.h"
-#include "gtkprivate.h"
-#include "gtkwidgetprivate.h"
-#include "gtkentryprivate.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkcssstylepropertyprivate.h"
-#include "gtkcssrgbavalueprivate.h"
-#include "gtktypebuiltins.h"
-#include "gtkmain.h"
-#include "gtksettingsprivate.h"
-#include "gtkwidgetpath.h"
-#include "gtkpixelcacheprivate.h"
-#include "a11y/gtktreeviewaccessibleprivate.h"
+#include "ctkadjustmentprivate.h"
+#include "ctkcssnumbervalueprivate.h"
+#include "ctkrbtree.h"
+#include "ctktreednd.h"
+#include "ctktreeprivate.h"
+#include "ctkcellrenderer.h"
+#include "ctkmarshalers.h"
+#include "ctkbuildable.h"
+#include "ctkbutton.h"
+#include "ctklabel.h"
+#include "ctkbox.h"
+#include "ctkintl.h"
+#include "ctkbindings.h"
+#include "ctkcontainer.h"
+#include "ctkentry.h"
+#include "ctkframe.h"
+#include "ctkmain.h"
+#include "ctktreemodelsort.h"
+#include "ctktooltip.h"
+#include "ctkscrollable.h"
+#include "ctkcelllayout.h"
+#include "ctkprivate.h"
+#include "ctkwidgetprivate.h"
+#include "ctkentryprivate.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkcssstylepropertyprivate.h"
+#include "ctkcssrgbavalueprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctkmain.h"
+#include "ctksettingsprivate.h"
+#include "ctkwidgetpath.h"
+#include "ctkpixelcacheprivate.h"
+#include "a11y/ctktreeviewaccessibleprivate.h"
 
 
 /**
- * SECTION:gtktreeview
+ * SECTION:ctktreeview
  * @Short_description: A widget for displaying both trees and lists
  * @Title: GtkTreeView
  * @See_also: #GtkTreeViewColumn, #GtkTreeSelection, #GtkTreeModel,
- *   [GtkTreeView drag-and-drop][gtk3-GtkTreeView-drag-and-drop],
+ *   [GtkTreeView drag-and-drop][ctk3-GtkTreeView-drag-and-drop],
  *   #GtkTreeSortable, #GtkTreeModelSort, #GtkListStore, #GtkTreeStore,
  *   #GtkCellRenderer, #GtkCellEditable, #GtkCellRendererPixbuf,
  *   #GtkCellRendererText, #GtkCellRendererToggle
@@ -582,7 +582,7 @@ static void     ctk_tree_view_get_property         (GObject         *object,
 						    GValue          *value,
 						    GParamSpec      *pspec);
 
-/* gtkwidget signals */
+/* ctkwidget signals */
 static void     ctk_tree_view_destroy              (GtkWidget        *widget);
 static void     ctk_tree_view_realize              (GtkWidget        *widget);
 static void     ctk_tree_view_unrealize            (GtkWidget        *widget);
@@ -3532,7 +3532,7 @@ ctk_tree_view_column_drag_gesture_begin (GtkGestureDrag *gesture,
       tree_view->priv->in_column_resize = TRUE;
 
       /* block attached dnd signal handler */
-      drag_data = g_object_get_data (G_OBJECT (tree_view), "gtk-site-data");
+      drag_data = g_object_get_data (G_OBJECT (tree_view), "ctk-site-data");
       if (drag_data)
         g_signal_handlers_block_matched (tree_view,
                                          G_SIGNAL_MATCH_DATA,
@@ -3648,7 +3648,7 @@ ctk_tree_view_button_release_column_resize (GtkTreeView *tree_view)
   tree_view->priv->drag_pos = -1;
 
   /* unblock attached dnd signal handler */
-  drag_data = g_object_get_data (G_OBJECT (tree_view), "gtk-site-data");
+  drag_data = g_object_get_data (G_OBJECT (tree_view), "ctk-site-data");
   if (drag_data)
     g_signal_handlers_unblock_matched (tree_view,
 				       G_SIGNAL_MATCH_DATA,
@@ -3898,7 +3898,7 @@ do_prelight (GtkTreeView *tree_view,
     {
       tree_view->priv->auto_expand_timeout = 
 	gdk_threads_add_timeout (AUTO_EXPAND_TIMEOUT, auto_expand_timeout, tree_view);
-      g_source_set_name_by_id (tree_view->priv->auto_expand_timeout, "[gtk+] auto_expand_timeout");
+      g_source_set_name_by_id (tree_view->priv->auto_expand_timeout, "[ctk+] auto_expand_timeout");
     }
 }
 
@@ -7174,7 +7174,7 @@ install_presize_handler (GtkTreeView *tree_view)
     {
       tree_view->priv->validate_rows_timer =
 	gdk_threads_add_idle_full (CTK_TREE_VIEW_PRIORITY_VALIDATE, (GSourceFunc) validate_rows, tree_view, NULL);
-      g_source_set_name_by_id (tree_view->priv->validate_rows_timer, "[gtk+] validate_rows");
+      g_source_set_name_by_id (tree_view->priv->validate_rows_timer, "[ctk+] validate_rows");
     }
 }
 
@@ -7203,7 +7203,7 @@ install_scroll_sync_handler (GtkTreeView *tree_view)
     {
       tree_view->priv->scroll_sync_timer =
 	gdk_threads_add_idle_full (CTK_TREE_VIEW_PRIORITY_SCROLL_SYNC, (GSourceFunc) scroll_sync_handler, tree_view, NULL);
-      g_source_set_name_by_id (tree_view->priv->scroll_sync_timer, "[gtk+] scroll_sync_handler");
+      g_source_set_name_by_id (tree_view->priv->scroll_sync_timer, "[ctk+] scroll_sync_handler");
     }
 }
 
@@ -7358,7 +7358,7 @@ set_source_row (GdkDragContext *context,
                 GtkTreePath    *source_row)
 {
   g_object_set_data_full (G_OBJECT (context),
-                          I_("gtk-tree-view-source-row"),
+                          I_("ctk-tree-view-source-row"),
                           source_row ? ctk_tree_row_reference_new (model, source_row) : NULL,
                           (GDestroyNotify) (source_row ? ctk_tree_row_reference_free : NULL));
 }
@@ -7367,7 +7367,7 @@ static GtkTreePath*
 get_source_row (GdkDragContext *context)
 {
   GtkTreeRowReference *ref =
-    g_object_get_data (G_OBJECT (context), "gtk-tree-view-source-row");
+    g_object_get_data (G_OBJECT (context), "ctk-tree-view-source-row");
 
   if (ref)
     return ctk_tree_row_reference_get_path (ref);
@@ -7405,7 +7405,7 @@ set_dest_row (GdkDragContext *context,
 
   if (!dest_row)
     {
-      g_object_set_data_full (G_OBJECT (context), I_("gtk-tree-view-dest-row"),
+      g_object_set_data_full (G_OBJECT (context), I_("ctk-tree-view-dest-row"),
                               NULL, NULL);
       return;
     }
@@ -7417,7 +7417,7 @@ set_dest_row (GdkDragContext *context,
   dr->empty_view_drop = empty_view_drop != FALSE;
   dr->drop_append_mode = drop_append_mode != FALSE;
 
-  g_object_set_data_full (G_OBJECT (context), I_("gtk-tree-view-dest-row"),
+  g_object_set_data_full (G_OBJECT (context), I_("ctk-tree-view-dest-row"),
                           dr, (GDestroyNotify) dest_row_free);
 }
 
@@ -7426,7 +7426,7 @@ get_dest_row (GdkDragContext *context,
               gboolean       *path_down_mode)
 {
   DestRow *dr =
-    g_object_get_data (G_OBJECT (context), "gtk-tree-view-dest-row");
+    g_object_get_data (G_OBJECT (context), "ctk-tree-view-dest-row");
 
   if (dr)
     {
@@ -7460,7 +7460,7 @@ set_status_pending (GdkDragContext *context,
                     GdkDragAction   suggested_action)
 {
   g_object_set_data (G_OBJECT (context),
-                     I_("gtk-tree-view-status-pending"),
+                     I_("ctk-tree-view-status-pending"),
                      GINT_TO_POINTER (suggested_action));
 }
 
@@ -7468,13 +7468,13 @@ static GdkDragAction
 get_status_pending (GdkDragContext *context)
 {
   return GPOINTER_TO_INT (g_object_get_data (G_OBJECT (context),
-                                             "gtk-tree-view-status-pending"));
+                                             "ctk-tree-view-status-pending"));
 }
 
 static TreeViewDragInfo*
 get_info (GtkTreeView *tree_view)
 {
-  return g_object_get_data (G_OBJECT (tree_view), "gtk-tree-view-drag-info");
+  return g_object_get_data (G_OBJECT (tree_view), "ctk-tree-view-drag-info");
 }
 
 static void
@@ -7495,7 +7495,7 @@ ensure_info (GtkTreeView *tree_view)
       di = g_slice_new0 (TreeViewDragInfo);
 
       g_object_set_data_full (G_OBJECT (tree_view),
-                              I_("gtk-tree-view-drag-info"),
+                              I_("ctk-tree-view-drag-info"),
                               di,
                               (GDestroyNotify) destroy_info);
     }
@@ -7506,7 +7506,7 @@ ensure_info (GtkTreeView *tree_view)
 static void
 remove_info (GtkTreeView *tree_view)
 {
-  g_object_set_data (G_OBJECT (tree_view), I_("gtk-tree-view-drag-info"), NULL);
+  g_object_set_data (G_OBJECT (tree_view), I_("ctk-tree-view-drag-info"), NULL);
 }
 
 #if 0
@@ -7571,7 +7571,7 @@ add_scroll_timeout (GtkTreeView *tree_view)
     {
       tree_view->priv->scroll_timeout =
 	gdk_threads_add_timeout (150, scroll_row_timeout, tree_view);
-      g_source_set_name_by_id (tree_view->priv->scroll_timeout, "[gtk+] scroll_row_timeout");
+      g_source_set_name_by_id (tree_view->priv->scroll_timeout, "[ctk+] scroll_row_timeout");
     }
 }
 
@@ -7598,8 +7598,8 @@ check_model_dnd (GtkTreeModel *model,
                  "is to connect to '%s' and call "
                  "g_signal_stop_emission_by_name() in your signal handler to prevent "
                  "the default handler from running. Look at the source code "
-                 "for the default handler in gtktreeview.c to get an idea what "
-                 "your handler should do. (gtktreeview.c is in the GTK source "
+                 "for the default handler in ctktreeview.c to get an idea what "
+                 "your handler should do. (ctktreeview.c is in the GTK source "
                  "code.) If you're using GTK from a language other than C, "
                  "there may be a more natural way to override default handlers, e.g. via derivation.",
                  signal, g_type_name (required_iface), signal);
@@ -8143,7 +8143,7 @@ ctk_tree_view_drag_motion (GtkWidget        *widget,
         {
           tree_view->priv->open_dest_timeout =
             gdk_threads_add_timeout (AUTO_EXPAND_TIMEOUT, open_row_timeout, tree_view);
-          g_source_set_name_by_id (tree_view->priv->open_dest_timeout, "[gtk+] open_row_timeout");
+          g_source_set_name_by_id (tree_view->priv->open_dest_timeout, "[ctk+] open_row_timeout");
         }
       else
         {
@@ -11142,7 +11142,7 @@ ctk_tree_view_search_entry_flush_timeout (GtkTreeView *tree_view)
   return FALSE;
 }
 
-/* Cut and paste from gtkwindow.c */
+/* Cut and paste from ctkwindow.c */
 static void
 send_focus_change (GtkWidget *widget,
                    GdkDevice *device,
@@ -11353,7 +11353,7 @@ ctk_tree_view_real_start_interactive_search (GtkTreeView *tree_view,
     gdk_threads_add_timeout (CTK_TREE_VIEW_SEARCH_DIALOG_TIMEOUT,
 		   (GSourceFunc) ctk_tree_view_search_entry_flush_timeout,
 		   tree_view);
-  g_source_set_name_by_id (tree_view->priv->typeselect_flush_timeout, "[gtk+] ctk_tree_view_search_entry_flush_timeout");
+  g_source_set_name_by_id (tree_view->priv->typeselect_flush_timeout, "[ctk+] ctk_tree_view_search_entry_flush_timeout");
 
   /* send focus-in event */
   send_focus_change (tree_view->priv->search_entry, device, TRUE);
@@ -15198,7 +15198,7 @@ ctk_tree_view_search_preedit_changed (GtkIMContext *im_context,
 	gdk_threads_add_timeout (CTK_TREE_VIEW_SEARCH_DIALOG_TIMEOUT,
 		       (GSourceFunc) ctk_tree_view_search_entry_flush_timeout,
 		       tree_view);
-      g_source_set_name_by_id (tree_view->priv->typeselect_flush_timeout, "[gtk+] ctk_tree_view_search_entry_flush_timeout");
+      g_source_set_name_by_id (tree_view->priv->typeselect_flush_timeout, "[ctk+] ctk_tree_view_search_entry_flush_timeout");
     }
 
 }
@@ -15251,7 +15251,7 @@ ctk_tree_view_search_enable_popdown (GtkWidget *widget,
 {
   guint id;
   id = gdk_threads_add_timeout_full (G_PRIORITY_HIGH, 200, ctk_tree_view_real_search_enable_popdown, g_object_ref (data), g_object_unref);
-  g_source_set_name_by_id (id, "[gtk+] ctk_tree_view_real_search_enable_popdown");
+  g_source_set_name_by_id (id, "[ctk+] ctk_tree_view_real_search_enable_popdown");
 }
 
 static gboolean
@@ -15308,7 +15308,7 @@ ctk_tree_view_search_scroll_event (GtkWidget *widget,
 	gdk_threads_add_timeout (CTK_TREE_VIEW_SEARCH_DIALOG_TIMEOUT,
 		       (GSourceFunc) ctk_tree_view_search_entry_flush_timeout,
 		       tree_view);
-      g_source_set_name_by_id (tree_view->priv->typeselect_flush_timeout, "[gtk+] ctk_tree_view_search_entry_flush_timeout");
+      g_source_set_name_by_id (tree_view->priv->typeselect_flush_timeout, "[ctk+] ctk_tree_view_search_entry_flush_timeout");
     }
 
   return retval;
@@ -15382,7 +15382,7 @@ ctk_tree_view_search_key_press_event (GtkWidget *widget,
 	gdk_threads_add_timeout (CTK_TREE_VIEW_SEARCH_DIALOG_TIMEOUT,
 		       (GSourceFunc) ctk_tree_view_search_entry_flush_timeout,
 		       tree_view);
-      g_source_set_name_by_id (tree_view->priv->typeselect_flush_timeout, "[gtk+] ctk_tree_view_search_entry_flush_timeout");
+      g_source_set_name_by_id (tree_view->priv->typeselect_flush_timeout, "[ctk+] ctk_tree_view_search_entry_flush_timeout");
     }
 
   return retval;
@@ -15635,7 +15635,7 @@ ctk_tree_view_search_init (GtkWidget   *entry,
 	gdk_threads_add_timeout (CTK_TREE_VIEW_SEARCH_DIALOG_TIMEOUT,
 		       (GSourceFunc) ctk_tree_view_search_entry_flush_timeout,
 		       tree_view);
-      g_source_set_name_by_id (tree_view->priv->typeselect_flush_timeout, "[gtk+] ctk_tree_view_search_entry_flush_timeout");
+      g_source_set_name_by_id (tree_view->priv->typeselect_flush_timeout, "[ctk+] ctk_tree_view_search_entry_flush_timeout");
     }
 
   if (*text == '\0')

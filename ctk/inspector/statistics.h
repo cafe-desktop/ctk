@@ -18,7 +18,7 @@
 #ifndef _CTK_INSPECTOR_STATISTICS_H_
 #define _CTK_INSPECTOR_STATISTICS_H_
 
-#include <gtk/gtkbox.h>
+#include <ctk/ctkbox.h>
 
 #define CTK_TYPE_INSPECTOR_STATISTICS            (ctk_inspector_statistics_get_type())
 #define CTK_INSPECTOR_STATISTICS(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_STATISTICS, GtkInspectorStatistics))

@@ -1,7 +1,7 @@
 #ifndef __CTK_GEARS_H__
 #define __CTK_GEARS_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 G_BEGIN_DECLS
 

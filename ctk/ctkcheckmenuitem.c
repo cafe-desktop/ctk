@@ -19,26 +19,26 @@
  * Modified by the GTK+ Team and others 1997-2001.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
-#include "gtkbuiltiniconprivate.h"
-#include "gtkcheckmenuitem.h"
-#include "gtkmenuitemprivate.h"
-#include "gtkaccellabel.h"
-#include "deprecated/gtkactivatable.h"
-#include "deprecated/gtktoggleaction.h"
-#include "gtkmarshalers.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
-#include "a11y/gtkcheckmenuitemaccessible.h"
-#include "gtkcssnodeprivate.h"
-#include "gtkcssstylepropertyprivate.h"
-#include "gtkwidgetprivate.h"
+#include "ctkbuiltiniconprivate.h"
+#include "ctkcheckmenuitem.h"
+#include "ctkmenuitemprivate.h"
+#include "ctkaccellabel.h"
+#include "deprecated/ctkactivatable.h"
+#include "deprecated/ctktoggleaction.h"
+#include "ctkmarshalers.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
+#include "a11y/ctkcheckmenuitemaccessible.h"
+#include "ctkcssnodeprivate.h"
+#include "ctkcssstylepropertyprivate.h"
+#include "ctkwidgetprivate.h"
 
 /**
- * SECTION:gtkcheckmenuitem
+ * SECTION:ctkcheckmenuitem
  * @Short_description: A menu item with a check box
  * @Title: GtkCheckMenuItem
  *

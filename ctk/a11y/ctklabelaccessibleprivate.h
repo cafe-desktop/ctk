@@ -18,7 +18,7 @@
 #ifndef __CTK_LABEL_ACCESSIBLE_PRIVATE_H__
 #define __CTK_LABEL_ACCESSIBLE_PRIVATE_H__
 
-#include <gtk/a11y/gtklabelaccessible.h>
+#include <ctk/a11y/ctklabelaccessible.h>
 
 G_BEGIN_DECLS
 

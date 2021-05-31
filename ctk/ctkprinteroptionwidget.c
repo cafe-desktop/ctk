@@ -21,22 +21,22 @@
 #include <stdio.h>
 #include <ctype.h>
 
-#include "gtkintl.h"
-#include "gtkcheckbutton.h"
-#include "gtkcelllayout.h"
-#include "gtkcellrenderertext.h"
-#include "gtkcombobox.h"
-#include "gtkfilechooserdialog.h"
-#include "gtkimage.h"
-#include "gtklabel.h"
-#include "gtkliststore.h"
-#include "gtkradiobutton.h"
-#include "gtkgrid.h"
-#include "gtktogglebutton.h"
-#include "gtkorientable.h"
-#include "gtkprivate.h"
+#include "ctkintl.h"
+#include "ctkcheckbutton.h"
+#include "ctkcelllayout.h"
+#include "ctkcellrenderertext.h"
+#include "ctkcombobox.h"
+#include "ctkfilechooserdialog.h"
+#include "ctkimage.h"
+#include "ctklabel.h"
+#include "ctkliststore.h"
+#include "ctkradiobutton.h"
+#include "ctkgrid.h"
+#include "ctktogglebutton.h"
+#include "ctkorientable.h"
+#include "ctkprivate.h"
 
-#include "gtkprinteroptionwidget.h"
+#include "ctkprinteroptionwidget.h"
 
 /* This defines the max file length that the file chooser
  * button should display. The total length will be

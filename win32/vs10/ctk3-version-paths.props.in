@@ -27,7 +27,7 @@
     <IntrospectPythonParam>PYTHON=$(PythonDir)\python.exe</IntrospectPythonParam>
   </PropertyGroup>
   <PropertyGroup>
-    <_PropertySheetDisplayName>gtk3versionpathsprops</_PropertySheetDisplayName>
+    <_PropertySheetDisplayName>ctk3versionpathsprops</_PropertySheetDisplayName>
   </PropertyGroup>
   <ItemGroup>
     <BuildMacro Include="VSVer">

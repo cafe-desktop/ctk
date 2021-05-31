@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.18.3 -->
 <interface>
-  <requires lib="gtk+" version="3.12"/>
+  <requires lib="ctk+" version="3.12"/>
   <object class="GtkMenu" id="menu25">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -424,7 +424,7 @@
                         <property name="can_focus">False</property>
                         <child>
                           <object class="GtkImageMenuItem" id="imagemenuitem1">
-                            <property name="label">gtk-new</property>
+                            <property name="label">ctk-new</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="use_underline">True</property>
@@ -433,7 +433,7 @@
                         </child>
                         <child>
                           <object class="GtkImageMenuItem" id="imagemenuitem2">
-                            <property name="label">gtk-open</property>
+                            <property name="label">ctk-open</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="use_underline">True</property>
@@ -442,7 +442,7 @@
                         </child>
                         <child>
                           <object class="GtkImageMenuItem" id="imagemenuitem3">
-                            <property name="label">gtk-save</property>
+                            <property name="label">ctk-save</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="use_underline">True</property>
@@ -451,7 +451,7 @@
                         </child>
                         <child>
                           <object class="GtkImageMenuItem" id="imagemenuitem4">
-                            <property name="label">gtk-save-as</property>
+                            <property name="label">ctk-save-as</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="use_underline">True</property>
@@ -466,7 +466,7 @@
                         </child>
                         <child>
                           <object class="GtkImageMenuItem" id="imagemenuitem5">
-                            <property name="label">gtk-quit</property>
+                            <property name="label">ctk-quit</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="use_underline">True</property>
@@ -489,7 +489,7 @@
                         <property name="can_focus">False</property>
                         <child>
                           <object class="GtkImageMenuItem" id="imagemenuitem6">
-                            <property name="label">gtk-cut</property>
+                            <property name="label">ctk-cut</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="use_underline">True</property>
@@ -498,7 +498,7 @@
                         </child>
                         <child>
                           <object class="GtkImageMenuItem" id="imagemenuitem7">
-                            <property name="label">gtk-copy</property>
+                            <property name="label">ctk-copy</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="use_underline">True</property>
@@ -507,7 +507,7 @@
                         </child>
                         <child>
                           <object class="GtkImageMenuItem" id="imagemenuitem8">
-                            <property name="label">gtk-paste</property>
+                            <property name="label">ctk-paste</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="use_underline">True</property>
@@ -516,7 +516,7 @@
                         </child>
                         <child>
                           <object class="GtkImageMenuItem" id="imagemenuitem9">
-                            <property name="label">gtk-delete</property>
+                            <property name="label">ctk-delete</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="use_underline">True</property>
@@ -547,7 +547,7 @@
                         <property name="can_focus">False</property>
                         <child>
                           <object class="GtkImageMenuItem" id="imagemenuitem10">
-                            <property name="label">gtk-about</property>
+                            <property name="label">ctk-about</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="use_underline">True</property>
@@ -1282,7 +1282,7 @@
                         <property name="can_focus">False</property>
                         <child>
                           <object class="GtkImageMenuItem" id="imagemenuitem11">
-                            <property name="label">gtk-new</property>
+                            <property name="label">ctk-new</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="use_underline">True</property>
@@ -1291,7 +1291,7 @@
                         </child>
                         <child>
                           <object class="GtkImageMenuItem" id="imagemenuitem12">
-                            <property name="label">gtk-open</property>
+                            <property name="label">ctk-open</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="use_underline">True</property>
@@ -1300,7 +1300,7 @@
                         </child>
                         <child>
                           <object class="GtkImageMenuItem" id="imagemenuitem13">
-                            <property name="label">gtk-save</property>
+                            <property name="label">ctk-save</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="use_underline">True</property>
@@ -1309,7 +1309,7 @@
                         </child>
                         <child>
                           <object class="GtkImageMenuItem" id="imagemenuitem14">
-                            <property name="label">gtk-save-as</property>
+                            <property name="label">ctk-save-as</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="use_underline">True</property>
@@ -1324,7 +1324,7 @@
                         </child>
                         <child>
                           <object class="GtkImageMenuItem" id="imagemenuitem15">
-                            <property name="label">gtk-quit</property>
+                            <property name="label">ctk-quit</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="use_underline">True</property>
@@ -1347,7 +1347,7 @@
                         <property name="can_focus">False</property>
                         <child>
                           <object class="GtkImageMenuItem" id="imagemenuitem16">
-                            <property name="label">gtk-cut</property>
+                            <property name="label">ctk-cut</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="use_underline">True</property>
@@ -1356,7 +1356,7 @@
                         </child>
                         <child>
                           <object class="GtkImageMenuItem" id="imagemenuitem17">
-                            <property name="label">gtk-copy</property>
+                            <property name="label">ctk-copy</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="use_underline">True</property>
@@ -1365,7 +1365,7 @@
                         </child>
                         <child>
                           <object class="GtkImageMenuItem" id="imagemenuitem18">
-                            <property name="label">gtk-paste</property>
+                            <property name="label">ctk-paste</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="use_underline">True</property>
@@ -1374,7 +1374,7 @@
                         </child>
                         <child>
                           <object class="GtkImageMenuItem" id="imagemenuitem19">
-                            <property name="label">gtk-delete</property>
+                            <property name="label">ctk-delete</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="use_underline">True</property>
@@ -1405,7 +1405,7 @@
                         <property name="can_focus">False</property>
                         <child>
                           <object class="GtkImageMenuItem" id="imagemenuitem20">
-                            <property name="label">gtk-about</property>
+                            <property name="label">ctk-about</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="use_underline">True</property>

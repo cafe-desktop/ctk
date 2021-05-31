@@ -20,7 +20,7 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 G_MODULE_EXPORT void
 image_recording_surface_set (GtkWidget *widget,
@@ -32,7 +32,7 @@ image_recording_surface_set (GtkWidget *widget,
   cairo_t *cr;
   cairo_rectangle_t rect;
 
-  pixbuf = gdk_pixbuf_new_from_resource ("/org/gtk/libgtk/inspector/logo.png", &error);
+  pixbuf = gdk_pixbuf_new_from_resource ("/org/ctk/libctk/inspector/logo.png", &error);
   g_assert_no_error (error);
   rect.x = 0;
   rect.y = 0;

@@ -257,16 +257,16 @@
 #endif
 
 /* Define to the address where bug reports for this package should be sent. */
-#define PACKAGE_BUGREPORT "http://bugzilla.gnome.org/enter_bug.cgi?product=gtk%2B"
+#define PACKAGE_BUGREPORT "http://bugzilla.gnome.org/enter_bug.cgi?product=ctk%2B"
 
 /* Define to the full name of this package. */
-#define PACKAGE_NAME "gtk+"
+#define PACKAGE_NAME "ctk+"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "gtk+ @CTK_MAJOR_VERSION@.@CTK_MINOR_VERSION@.@CTK_MICRO_VERSION@"
+#define PACKAGE_STRING "ctk+ @CTK_MAJOR_VERSION@.@CTK_MINOR_VERSION@.@CTK_MICRO_VERSION@"
 
 /* Define to the one symbol short name of this package. */
-#define PACKAGE_TARNAME "gtk+"
+#define PACKAGE_TARNAME "ctk+"
 
 /* Define to the home page for this package. */
 #define PACKAGE_URL ""

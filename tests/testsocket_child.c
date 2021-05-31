@@ -20,7 +20,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 extern guint32 create_child_plug (guint32  xid,
 				  gboolean local);

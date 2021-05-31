@@ -1,5 +1,5 @@
 window {
-  background-image: -gtk-icontheme("edit-delete");
+  background-image: -ctk-icontheme("edit-delete");
   background-repeat: no-repeat;
 }
 

@@ -28,7 +28,7 @@ pacman --noconfirm -S --needed \
     mingw-w64-$MSYS2_ARCH-shared-mime-info \
     mingw-w64-$MSYS2_ARCH-meson \
     mingw-w64-$MSYS2_ARCH-ninja \
-    mingw-w64-$MSYS2_ARCH-gtk-doc
+    mingw-w64-$MSYS2_ARCH-ctk-doc
 
 # https://github.com/msys2/MINGW-packages/pull/6465
 pacman --noconfirm -S --needed mingw-w64-$MSYS2_ARCH-brotli

@@ -19,24 +19,24 @@
 
 #include "config.h"
 
-#include "gtkcssstaticstyleprivate.h"
+#include "ctkcssstaticstyleprivate.h"
 
-#include "gtkcssanimationprivate.h"
-#include "gtkcssarrayvalueprivate.h"
-#include "gtkcssenumvalueprivate.h"
-#include "gtkcssinheritvalueprivate.h"
-#include "gtkcssinitialvalueprivate.h"
-#include "gtkcssnumbervalueprivate.h"
-#include "gtkcsssectionprivate.h"
-#include "gtkcssshorthandpropertyprivate.h"
-#include "gtkcssstringvalueprivate.h"
-#include "gtkcssstylepropertyprivate.h"
-#include "gtkcsstransitionprivate.h"
-#include "gtkprivate.h"
-#include "gtksettings.h"
-#include "gtkstyleanimationprivate.h"
-#include "gtkstylepropertyprivate.h"
-#include "gtkstyleproviderprivate.h"
+#include "ctkcssanimationprivate.h"
+#include "ctkcssarrayvalueprivate.h"
+#include "ctkcssenumvalueprivate.h"
+#include "ctkcssinheritvalueprivate.h"
+#include "ctkcssinitialvalueprivate.h"
+#include "ctkcssnumbervalueprivate.h"
+#include "ctkcsssectionprivate.h"
+#include "ctkcssshorthandpropertyprivate.h"
+#include "ctkcssstringvalueprivate.h"
+#include "ctkcssstylepropertyprivate.h"
+#include "ctkcsstransitionprivate.h"
+#include "ctkprivate.h"
+#include "ctksettings.h"
+#include "ctkstyleanimationprivate.h"
+#include "ctkstylepropertyprivate.h"
+#include "ctkstyleproviderprivate.h"
 
 G_DEFINE_TYPE (GtkCssStaticStyle, ctk_css_static_style, CTK_TYPE_CSS_STYLE)
 
@@ -164,7 +164,7 @@ ctk_css_static_style_get_default (void)
       default_style = ctk_css_static_style_new_compute (CTK_STYLE_PROVIDER_PRIVATE (settings),
                                                         NULL,
                                                         NULL);
-      g_object_set_data_full (G_OBJECT (settings), "gtk-default-style",
+      g_object_set_data_full (G_OBJECT (settings), "ctk-default-style",
                               default_style, clear_default_style);
     }
 

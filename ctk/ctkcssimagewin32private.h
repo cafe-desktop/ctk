@@ -20,8 +20,8 @@
 #ifndef __CTK_CSS_IMAGE_WIN32_PRIVATE_H__
 #define __CTK_CSS_IMAGE_WIN32_PRIVATE_H__
 
-#include "gtk/gtkcssimageprivate.h"
-#include "gtk/gtkwin32themeprivate.h"
+#include "ctk/ctkcssimageprivate.h"
+#include "ctk/ctkwin32themeprivate.h"
 
 G_BEGIN_DECLS
 

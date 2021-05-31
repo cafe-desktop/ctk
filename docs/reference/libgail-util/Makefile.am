@@ -24,14 +24,14 @@ AM_CPPFLAGS =                   \
 
 GTKDOC_LIBS = $(top_builddir)/libgail-util/libgailutil-3.la
 
-# gtkdoc-mkdb related varaibles
+# ctkdoc-mkdb related varaibles
 MKDB_OPTIONS =
 content_files =		\
 	version.xml
 
 HTML_IMAGES =
 
-include $(top_srcdir)/gtk-doc.make
+include $(top_srcdir)/ctk-doc.make
 
 # Other files to distribute
 EXTRA_DIST += \

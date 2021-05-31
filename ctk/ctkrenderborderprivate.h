@@ -22,9 +22,9 @@
 #ifndef __CTK_RENDER_BORDER_H__
 #define __CTK_RENDER_BORDER_H__
 
-#include "gtkborder.h"
-#include "gtkcssimageprivate.h"
-#include "gtkcssvalueprivate.h"
+#include "ctkborder.h"
+#include "ctkcssimageprivate.h"
+#include "ctkcssvalueprivate.h"
 
 G_BEGIN_DECLS
 

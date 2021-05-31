@@ -34,11 +34,11 @@
 #define SOEXT ("." G_MODULE_SUFFIX)
 #endif
 
-#include "gtk/gtkimcontextinfo.h"
-#include "gtk/gtkversion.h"
-#include "gtk/gtkutilsprivate.h"
+#include "ctk/ctkimcontextinfo.h"
+#include "ctk/ctkversion.h"
+#include "ctk/ctkutilsprivate.h"
 
-#include "gtk/deprecated/gtkrc.h"
+#include "ctk/deprecated/ctkrc.h"
 
 static void
 escape_string (GString *contents, const char *str)
@@ -174,7 +174,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   g_string_append_printf (contents,
                           "# GTK+ Input Method Modules file\n"
                           "# Automatically generated file, do not edit\n"
-                          "# Created by %s from gtk+-%d.%d.%d\n"
+                          "# Created by %s from ctk+-%d.%d.%d\n"
                           "#\n",
                           argv[0],
                           CTK_MAJOR_VERSION, CTK_MINOR_VERSION, CTK_MICRO_VERSION);

@@ -161,8 +161,8 @@ use_texture_gles_program (GdkGLContextPaintData *paint_data)
 {
   if (paint_data->texture_2d_quad_program.program == 0)
     make_program (&paint_data->texture_2d_quad_program,
-                  "/org/gtk/libgdk/glsl/gles2-texture.vs.glsl",
-                  "/org/gtk/libgdk/glsl/gles2-texture.fs.glsl");
+                  "/org/ctk/libgdk/glsl/gles2-texture.vs.glsl",
+                  "/org/ctk/libgdk/glsl/gles2-texture.fs.glsl");
 
   if (paint_data->current_program != &paint_data->texture_2d_quad_program)
     {
@@ -175,12 +175,12 @@ static void
 use_texture_2d_program (GdkGLContextPaintData *paint_data)
 {
   const char *vertex_shader_path = paint_data->is_legacy
-    ? "/org/gtk/libgdk/glsl/gl2-texture-2d.vs.glsl"
-    : "/org/gtk/libgdk/glsl/gl3-texture-2d.vs.glsl";
+    ? "/org/ctk/libgdk/glsl/gl2-texture-2d.vs.glsl"
+    : "/org/ctk/libgdk/glsl/gl3-texture-2d.vs.glsl";
 
   const char *fragment_shader_path = paint_data->is_legacy
-    ? "/org/gtk/libgdk/glsl/gl2-texture-2d.fs.glsl"
-    : "/org/gtk/libgdk/glsl/gl3-texture-2d.fs.glsl";
+    ? "/org/ctk/libgdk/glsl/gl2-texture-2d.fs.glsl"
+    : "/org/ctk/libgdk/glsl/gl3-texture-2d.fs.glsl";
 
   if (paint_data->texture_2d_quad_program.program == 0)
     make_program (&paint_data->texture_2d_quad_program, vertex_shader_path, fragment_shader_path);
@@ -196,12 +196,12 @@ static void
 use_texture_rect_program (GdkGLContextPaintData *paint_data)
 {
   const char *vertex_shader_path = paint_data->is_legacy
-    ? "/org/gtk/libgdk/glsl/gl2-texture-rect.vs.glsl"
-    : "/org/gtk/libgdk/glsl/gl3-texture-rect.vs.glsl";
+    ? "/org/ctk/libgdk/glsl/gl2-texture-rect.vs.glsl"
+    : "/org/ctk/libgdk/glsl/gl3-texture-rect.vs.glsl";
 
   const char *fragment_shader_path = paint_data->is_legacy
-    ? "/org/gtk/libgdk/glsl/gl2-texture-rect.fs.glsl"
-    : "/org/gtk/libgdk/glsl/gl3-texture-rect.vs.glsl";
+    ? "/org/ctk/libgdk/glsl/gl2-texture-rect.fs.glsl"
+    : "/org/ctk/libgdk/glsl/gl3-texture-rect.vs.glsl";
 
   if (paint_data->texture_rect_quad_program.program == 0)
     make_program (&paint_data->texture_rect_quad_program, vertex_shader_path, fragment_shader_path);

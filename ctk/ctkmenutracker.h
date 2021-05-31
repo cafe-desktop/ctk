@@ -20,7 +20,7 @@
 #ifndef __CTK_MENU_TRACKER_H__
 #define __CTK_MENU_TRACKER_H__
 
-#include "gtkmenutrackeritem.h"
+#include "ctkmenutrackeritem.h"
 
 typedef struct _GtkMenuTracker GtkMenuTracker;
 

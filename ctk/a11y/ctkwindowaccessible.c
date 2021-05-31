@@ -18,12 +18,12 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
-#include "gtkwidgetaccessibleprivate.h"
-#include "gtkwindowaccessible.h"
-#include "gtktoplevelaccessible.h"
-#include "gtkwindowprivate.h"
+#include "ctkwidgetaccessibleprivate.h"
+#include "ctkwindowaccessible.h"
+#include "ctktoplevelaccessible.h"
+#include "ctkwindowprivate.h"
 
 /* atkcomponent.h */
 
@@ -57,7 +57,7 @@ ctk_window_accessible_focus_event (AtkObject *obj,
 }
 
 static void
-ctk_window_accessible_notify_gtk (GObject    *obj,
+ctk_window_accessible_notify_ctk (GObject    *obj,
                                   GParamSpec *pspec)
 {
   GtkWidget *widget = CTK_WIDGET (obj);
@@ -69,7 +69,7 @@ ctk_window_accessible_notify_gtk (GObject    *obj,
       g_signal_emit_by_name (atk_obj, "visible-data-changed");
     }
   else
-    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_window_accessible_parent_class)->notify_gtk (obj, pspec);
+    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_window_accessible_parent_class)->notify_ctk (obj, pspec);
 }
 
 static gboolean
@@ -355,7 +355,7 @@ ctk_window_accessible_class_init (GtkWindowAccessibleClass *klass)
   GtkWidgetAccessibleClass *widget_class = (GtkWidgetAccessibleClass*)klass;
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
 
-  widget_class->notify_gtk = ctk_window_accessible_notify_gtk;
+  widget_class->notify_ctk = ctk_window_accessible_notify_ctk;
 
   class->get_name = ctk_window_accessible_get_name;
   class->get_index_in_parent = ctk_window_accessible_get_index_in_parent;

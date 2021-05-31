@@ -17,7 +17,7 @@
  */
 
 #include "config.h"
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static gboolean ask_question = FALSE;
 static gboolean anonymous = FALSE;

@@ -35,26 +35,26 @@ translate_buttons (char *layout, int *len_p)
 
   while ((button = strsep (&strp, ",")))
     {
-      char *gtkbutton;
+      char *ctkbutton;
 
       if (strcmp (button, "menu") == 0)
-        gtkbutton = "icon";
+        ctkbutton = "icon";
       else if (strcmp (button, "appmenu") == 0)
-        gtkbutton = "menu";
+        ctkbutton = "menu";
       else if (strcmp (button, "minimize") == 0)
-        gtkbutton = "minimize";
+        ctkbutton = "minimize";
       else if (strcmp (button, "maximize") == 0)
-        gtkbutton = "maximize";
+        ctkbutton = "maximize";
       else if  (strcmp (button, "close") == 0)
-        gtkbutton = "close";
+        ctkbutton = "close";
       else
         continue;
 
       if (len)
         layout[len++] = ',';
 
-      strcpy (layout + len, gtkbutton);
-      len += strlen (gtkbutton);
+      strcpy (layout + len, ctkbutton);
+      len += strlen (ctkbutton);
     }
   layout[len] = '\0';
 
@@ -64,7 +64,7 @@ out:
 }
 
 void
-translate_wm_button_layout_to_gtk (char *layout)
+translate_wm_button_layout_to_ctk (char *layout)
 {
   char *strp = layout, *left_buttons, *right_buttons;
   int left_len, right_len = 0;

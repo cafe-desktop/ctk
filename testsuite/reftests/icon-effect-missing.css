@@ -1,11 +1,11 @@
 * {
-  -gtk-icon-effect: none;
+  -ctk-icon-effect: none;
 }
 
 :nth-child(2) {
-  -gtk-icon-effect: dim;
+  -ctk-icon-effect: dim;
 }
 
 :nth-child(3) {
-  -gtk-icon-effect: highlight;
+  -ctk-icon-effect: highlight;
 }

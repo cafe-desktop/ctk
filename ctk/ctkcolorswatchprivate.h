@@ -18,7 +18,7 @@
 #ifndef __CTK_COLOR_SWATCH_PRIVATE_H__
 #define __CTK_COLOR_SWATCH_PRIVATE_H__
 
-#include <gtk/gtkdrawingarea.h>
+#include <ctk/ctkdrawingarea.h>
 
 G_BEGIN_DECLS
 

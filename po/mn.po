@@ -1,6 +1,6 @@
 # translation of mn.po to Mongolian
-# translation of gtk+.HEAD.po to Mongolian
-# translation of gtk+.mn.po to Mongolian
+# translation of ctk+.HEAD.po to Mongolian
+# translation of ctk+.mn.po to Mongolian
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) 2003 OpenMN team
 # SukhOchir <sukhochir@csms.edu.mn>
@@ -80,9 +80,9 @@ msgstr ""
 
 #. Placeholder in --gdk-debug=FLAGS in --help output
 #. Placeholder in --gdk-no-debug=FLAGS in --help output
-#. Placeholder in --gtk-debug=FLAGS in --help output
-#. Placeholder in --gtk-no-debug=FLAGS in --help output
-#: gdk/gdk.c:165 gdk/gdk.c:168 gtk/gtkmain.c:533 gtk/gtkmain.c:536
+#. Placeholder in --ctk-debug=FLAGS in --help output
+#. Placeholder in --ctk-no-debug=FLAGS in --help output
+#: gdk/gdk.c:165 gdk/gdk.c:168 ctk/ctkmain.c:533 ctk/ctkmain.c:536
 msgid "FLAGS"
 msgstr ""
 
@@ -91,7 +91,7 @@ msgstr ""
 msgid "GDK debugging flags to unset"
 msgstr ""
 
-# gtk/gtkfilesel.c:1712
+# ctk/ctkfilesel.c:1712
 #: gdk/keyname-table.h:3940
 #, fuzzy
 msgctxt "keyboard label"
@@ -108,7 +108,7 @@ msgctxt "keyboard label"
 msgid "Return"
 msgstr ""
 
-# gtk/gtkstock.c:311
+# ctk/ctkstock.c:311
 #: gdk/keyname-table.h:3943
 #, fuzzy
 msgctxt "keyboard label"
@@ -120,7 +120,7 @@ msgctxt "keyboard label"
 msgid "Scroll_Lock"
 msgstr ""
 
-# gtk/gtkfilesel.c:742
+# ctk/ctkfilesel.c:742
 #: gdk/keyname-table.h:3945
 #, fuzzy
 msgctxt "keyboard label"
@@ -137,49 +137,49 @@ msgctxt "keyboard label"
 msgid "Multi_key"
 msgstr ""
 
-# gtk/gtkstock.c:299
+# ctk/ctkstock.c:299
 #: gdk/keyname-table.h:3948
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Home"
 msgstr "Гэр"
 
-# gtk/gtkstock.c:305
+# ctk/ctkstock.c:305
 #: gdk/keyname-table.h:3949
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Left"
 msgstr " _Зүүн"
 
-# gtk/gtkstock.c:297
+# ctk/ctkstock.c:297
 #: gdk/keyname-table.h:3950
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Up"
 msgstr "Дээш"
 
-# gtk/gtkcolorsel.c:1821
+# ctk/ctkcolorsel.c:1821
 #: gdk/keyname-table.h:3951
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Right"
 msgstr "_Өнгө:"
 
-# gtk/gtkstock.c:295
+# ctk/ctkstock.c:295
 #: gdk/keyname-table.h:3952
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Down"
 msgstr "_Доош"
 
-# gtk/gtknotebook.c:2439 gtk/gtknotebook.c:4695
+# ctk/ctknotebook.c:2439 ctk/ctknotebook.c:4695
 #: gdk/keyname-table.h:3953
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Page_Up"
 msgstr "Хуудас %u"
 
-# gtk/gtkstock.c:295
+# ctk/ctkstock.c:295
 #: gdk/keyname-table.h:3954
 #, fuzzy
 msgctxt "keyboard label"
@@ -196,7 +196,7 @@ msgctxt "keyboard label"
 msgid "Begin"
 msgstr ""
 
-# gtk/gtkstock.c:313
+# ctk/ctkstock.c:313
 #: gdk/keyname-table.h:3957
 #, fuzzy
 msgctxt "keyboard label"
@@ -213,7 +213,7 @@ msgctxt "keyboard label"
 msgid "Num_Lock"
 msgstr ""
 
-# gtk/gtkfilesel.c:1712
+# ctk/ctkfilesel.c:1712
 #: gdk/keyname-table.h:3960
 #, fuzzy
 msgctxt "keyboard label"
@@ -225,42 +225,42 @@ msgctxt "keyboard label"
 msgid "KP_Tab"
 msgstr ""
 
-# gtk/gtkstock.c:313
+# ctk/ctkstock.c:313
 #: gdk/keyname-table.h:3962
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Enter"
 msgstr "_хэвлэ"
 
-# gtk/gtkstock.c:299
+# ctk/ctkstock.c:299
 #: gdk/keyname-table.h:3963
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Home"
 msgstr "_Гэрт"
 
-# gtk/gtkstock.c:305
+# ctk/ctkstock.c:305
 #: gdk/keyname-table.h:3964
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Left"
 msgstr " _Зүүн"
 
-# gtk/gtkstock.c:297
+# ctk/ctkstock.c:297
 #: gdk/keyname-table.h:3965
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Up"
 msgstr "_Дээш"
 
-# gtk/gtkcolorsel.c:1821
+# ctk/ctkcolorsel.c:1821
 #: gdk/keyname-table.h:3966
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Right"
 msgstr "_Өнгө:"
 
-# gtk/gtkstock.c:295
+# ctk/ctkstock.c:295
 #: gdk/keyname-table.h:3967
 #, fuzzy
 msgctxt "keyboard label"
@@ -302,14 +302,14 @@ msgctxt "keyboard label"
 msgid "KP_Insert"
 msgstr ""
 
-# gtk/gtkstock.c:285
+# ctk/ctkstock.c:285
 #: gdk/keyname-table.h:3975
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Delete"
 msgstr "_Устга"
 
-# gtk/gtkstock.c:285
+# ctk/ctkstock.c:285
 #: gdk/keyname-table.h:3976
 #, fuzzy
 msgctxt "keyboard label"
@@ -346,7 +346,7 @@ msgstr ""
 msgid "COLORS"
 msgstr ""
 
-# gtk/gtkstock.c:313
+# ctk/ctkstock.c:313
 #: gdk/x11/gdkapplaunchcontext-x11.c:312
 #, fuzzy, c-format
 msgid "Starting %s"
@@ -372,94 +372,94 @@ msgstr ""
 #. Translators: this is the license preamble; the string at the end
 #. * contains the URL of the license.
 #.
-#: gtk/gtkaboutdialog.c:101
+#: ctk/ctkaboutdialog.c:101
 #, c-format
 msgid "This program comes with ABSOLUTELY NO WARRANTY; for details, visit %s"
 msgstr ""
 
-#: gtk/gtkaboutdialog.c:339 gtk/gtkaboutdialog.c:2235
+#: ctk/ctkaboutdialog.c:339 ctk/ctkaboutdialog.c:2235
 msgid "License"
 msgstr ""
 
-#: gtk/gtkaboutdialog.c:340
+#: ctk/ctkaboutdialog.c:340
 msgid "The license of the program"
 msgstr ""
 
-# gtk/gtkfilesel.c:1444
+# ctk/ctkfilesel.c:1444
 #. Add the credits button
-#: gtk/gtkaboutdialog.c:621
+#: ctk/ctkaboutdialog.c:621
 #, fuzzy
 msgid "C_redits"
 msgstr "Үү_сгэх"
 
 #. Add the license button
-#: gtk/gtkaboutdialog.c:635
+#: ctk/ctkaboutdialog.c:635
 msgid "_License"
 msgstr ""
 
-#: gtk/gtkaboutdialog.c:839
+#: ctk/ctkaboutdialog.c:839
 #, fuzzy
 msgid "Could not show link"
 msgstr ""
 "%s-г тэмдэглэж чадсангүй:\n"
 "%s"
 
-#: gtk/gtkaboutdialog.c:932
+#: ctk/ctkaboutdialog.c:932
 #, c-format
 msgid "About %s"
 msgstr ""
 
-#: gtk/gtkaboutdialog.c:2153
+#: ctk/ctkaboutdialog.c:2153
 msgid "Credits"
 msgstr ""
 
-#: gtk/gtkaboutdialog.c:2185
+#: ctk/ctkaboutdialog.c:2185
 msgid "Written by"
 msgstr ""
 
-#: gtk/gtkaboutdialog.c:2188
+#: ctk/ctkaboutdialog.c:2188
 msgid "Documented by"
 msgstr ""
 
-#: gtk/gtkaboutdialog.c:2200
+#: ctk/ctkaboutdialog.c:2200
 msgid "Translated by"
 msgstr ""
 
-#: gtk/gtkaboutdialog.c:2204
+#: ctk/ctkaboutdialog.c:2204
 msgid "Artwork by"
 msgstr ""
 
-# gtk/gtkaccellabel.c:116
+# ctk/ctkaccellabel.c:116
 #. This is the text that should appear next to menu accelerators
 #. * that use the shift key. If the text on this key isn't typically
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: gtk/gtkaccellabel.c:160
+#: ctk/ctkaccellabel.c:160
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Shift"
 msgstr "Shift"
 
-# gtk/gtkaccellabel.c:122
+# ctk/ctkaccellabel.c:122
 #. This is the text that should appear next to menu accelerators
 #. * that use the control key. If the text on this key isn't typically
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: gtk/gtkaccellabel.c:166
+#: ctk/ctkaccellabel.c:166
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Ctrl"
 msgstr "Ctrl"
 
-# gtk/gtkaccellabel.c:128
+# ctk/ctkaccellabel.c:128
 #. This is the text that should appear next to menu accelerators
 #. * that use the alt key. If the text on this key isn't typically
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: gtk/gtkaccellabel.c:172
+#: ctk/ctkaccellabel.c:172
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Alt"
@@ -470,7 +470,7 @@ msgstr "Alt"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: gtk/gtkaccellabel.c:770
+#: ctk/ctkaccellabel.c:770
 msgctxt "keyboard label"
 msgid "Super"
 msgstr ""
@@ -480,7 +480,7 @@ msgstr ""
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: gtk/gtkaccellabel.c:783
+#: ctk/ctkaccellabel.c:783
 msgctxt "keyboard label"
 msgid "Hyper"
 msgstr ""
@@ -490,46 +490,46 @@ msgstr ""
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: gtk/gtkaccellabel.c:797
+#: ctk/ctkaccellabel.c:797
 msgctxt "keyboard label"
 msgid "Meta"
 msgstr ""
 
-# gtk/gtkfilesel.c:1712
-#: gtk/gtkaccellabel.c:813
+# ctk/ctkfilesel.c:1712
+#: ctk/ctkaccellabel.c:813
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Space"
 msgstr "_Сольж нэрлэх"
 
-#: gtk/gtkaccellabel.c:816
+#: ctk/ctkaccellabel.c:816
 msgctxt "keyboard label"
 msgid "Backslash"
 msgstr ""
 
 # gdk-pixbuf/io-xbm.c:283
-#: gtk/gtkbuilderparser.c:343
+#: ctk/ctkbuilderparser.c:343
 #, fuzzy, c-format
 msgid "Invalid type function on line %d: '%s'"
 msgstr "Буруу файлын нэр: %s"
 
-#: gtk/gtkbuilderparser.c:407
+#: ctk/ctkbuilderparser.c:407
 #, c-format
 msgid "Duplicate object ID '%s' on line %d (previously on line %d)"
 msgstr ""
 
 # gdk-pixbuf/io-xbm.c:283
-#: gtk/gtkbuilderparser.c:859
+#: ctk/ctkbuilderparser.c:859
 #, fuzzy, c-format
 msgid "Invalid root element: '%s'"
 msgstr "Буруу файлын нэр: %s"
 
-#: gtk/gtkbuilderparser.c:898
+#: ctk/ctkbuilderparser.c:898
 #, c-format
 msgid "Unhandled tag: '%s'"
 msgstr ""
 
-# gtk/gtkinputdialog.c:667
+# ctk/ctkinputdialog.c:667
 #. Translate to calendar:YM if you want years to be displayed
 #. * before months; otherwise translate to calendar:MY.
 #. * Do *not* translate it to anything else, if it
@@ -540,7 +540,7 @@ msgstr ""
 #. * text direction of RTL and specify "calendar:YM", then the year
 #. * will appear to the right of the month.
 #.
-#: gtk/gtkcalendar.c:883
+#: ctk/ctkcalendar.c:883
 msgid "calendar:MY"
 msgstr "calendar:MY"
 
@@ -548,7 +548,7 @@ msgstr "calendar:MY"
 #. * first day of the week to calendar:week_start:1 if you want Monday
 #. * to be the first day of the week, and so on.
 #.
-#: gtk/gtkcalendar.c:921
+#: ctk/ctkcalendar.c:921
 msgid "calendar:week_start:0"
 msgstr "calendar:week_start:0"
 
@@ -557,7 +557,7 @@ msgstr "calendar:week_start:0"
 #. *
 #. * If you don't understand this, leave it as "2000"
 #.
-#: gtk/gtkcalendar.c:2006
+#: ctk/ctkcalendar.c:2006
 msgctxt "year measurement template"
 msgid "2000"
 msgstr ""
@@ -572,7 +572,7 @@ msgstr ""
 #. * digits. That needs support from your system and locale definition
 #. * too.
 #.
-#: gtk/gtkcalendar.c:2037 gtk/gtkcalendar.c:2719
+#: ctk/ctkcalendar.c:2037 ctk/ctkcalendar.c:2719
 #, c-format
 msgctxt "calendar:day:digits"
 msgid "%d"
@@ -588,15 +588,15 @@ msgstr ""
 #. * digits. That needs support from your system and locale definition
 #. * too.
 #.
-#: gtk/gtkcalendar.c:2069 gtk/gtkcalendar.c:2579
+#: ctk/ctkcalendar.c:2069 ctk/ctkcalendar.c:2579
 #, c-format
 msgctxt "calendar:week:digits"
 msgid "%d"
 msgstr ""
 
-# gtk/gtkinputdialog.c:475
+# ctk/ctkinputdialog.c:475
 #. Translators: This dictates how the year is displayed in
-#. * gtkcalendar widget.  See strftime() manual for the format.
+#. * ctkcalendar widget.  See strftime() manual for the format.
 #. * Use only ASCII in the translation.
 #. *
 #. * Also look for the msgid "2000".
@@ -605,28 +605,28 @@ msgstr ""
 #. *
 #. * "%Y" is appropriate for most locales.
 #.
-#: gtk/gtkcalendar.c:2361
+#: ctk/ctkcalendar.c:2361
 #, fuzzy
 msgctxt "calendar year format"
 msgid "%Y"
 msgstr "Y"
 
-# gtk/gtkinputdialog.c:238
+# ctk/ctkinputdialog.c:238
 #. This label is displayed in a treeview cell displaying
 #. * a disabled accelerator key combination.
 #.
-#: gtk/gtkcellrendereraccel.c:272
+#: ctk/ctkcellrendereraccel.c:272
 #, fuzzy
 msgctxt "Accelerator"
 msgid "Disabled"
 msgstr "Идэвхжээгүй."
 
-# gtk/gtkfilesel.c:2986
+# ctk/ctkfilesel.c:2986
 #. This label is displayed in a treeview cell displaying
 #. * an accelerator key combination that is not valid according
 #. * to ctk_accelerator_valid().
 #.
-#: gtk/gtkcellrendereraccel.c:282
+#: ctk/ctkcellrendereraccel.c:282
 #, fuzzy
 msgctxt "Accelerator"
 msgid "Invalid"
@@ -636,26 +636,26 @@ msgstr "Хүчингүй UTF-8"
 #. * an accelerator when the cell is clicked to change the
 #. * acelerator.
 #.
-#: gtk/gtkcellrendereraccel.c:418 gtk/gtkcellrendereraccel.c:675
+#: ctk/ctkcellrendereraccel.c:418 ctk/ctkcellrendereraccel.c:675
 msgid "New accelerator..."
 msgstr ""
 
-#: gtk/gtkcellrendererprogress.c:362 gtk/gtkcellrendererprogress.c:452
+#: ctk/ctkcellrendererprogress.c:362 ctk/ctkcellrendererprogress.c:452
 #, fuzzy, c-format
 msgctxt "progress bar label"
 msgid "%d %%"
 msgstr "%d/%b/%Y"
 
-#: gtk/gtkcolorbutton.c:176 gtk/gtkcolorbutton.c:445
+#: ctk/ctkcolorbutton.c:176 ctk/ctkcolorbutton.c:445
 msgid "Pick a Color"
 msgstr "Өнгө сонгох"
 
-#: gtk/gtkcolorbutton.c:336
+#: ctk/ctkcolorbutton.c:336
 msgid "Received invalid color data\n"
 msgstr "Хүчингүй өнгөний өгөгдөл хүлээн авлаа\n"
 
-# gtk/gtkcolorsel.c:1784
-#: gtk/gtkcolorsel.c:384
+# ctk/ctkcolorsel.c:1784
+#: ctk/ctkcolorsel.c:384
 msgid ""
 "Select the color you want from the outer ring. Select the darkness or "
 "lightness of that color using the inner triangle."
@@ -663,8 +663,8 @@ msgstr ""
 "Та гадна талаас өнгө сонгохыг бодож байвал  Тэгш өнцөгт доторх өнгийг "
 "Харавтар эсвэл  Гэгээлэг өнгө сонго "
 
-# gtk/gtkcolorsel.c:1812
-#: gtk/gtkcolorsel.c:408
+# ctk/ctkcolorsel.c:1812
+#: ctk/ctkcolorsel.c:408
 msgid ""
 "Click the eyedropper, then click a color anywhere on your screen to select "
 "that color."
@@ -672,85 +672,85 @@ msgstr ""
 "Таны дэлгэцний хаа нэгтээ нүдэнд харагдахгүй нэг товш, тэгээд тэр өнгийг "
 "сонгох болно. "
 
-# gtk/gtkcolorsel.c:1821
-#: gtk/gtkcolorsel.c:417
+# ctk/ctkcolorsel.c:1821
+#: ctk/ctkcolorsel.c:417
 msgid "_Hue:"
 msgstr "_Өнгө:"
 
-# gtk/gtkcolorsel.c:1822
-#: gtk/gtkcolorsel.c:418
+# ctk/ctkcolorsel.c:1822
+#: ctk/ctkcolorsel.c:418
 msgid "Position on the color wheel."
 msgstr "Өнгөндээрх дугуй байрлал."
 
-# gtk/gtkcolorsel.c:1823
-#: gtk/gtkcolorsel.c:420
+# ctk/ctkcolorsel.c:1823
+#: ctk/ctkcolorsel.c:420
 msgid "_Saturation:"
 msgstr "Хан_галуун:"
 
-# gtk/gtkcolorsel.c:1843
-#: gtk/gtkcolorsel.c:421
+# ctk/ctkcolorsel.c:1843
+#: ctk/ctkcolorsel.c:421
 #, fuzzy
 msgid "Intensity of the color."
 msgstr "Өнгөний тунгалаг."
 
-# gtk/gtkcolorsel.c:1825
-#: gtk/gtkcolorsel.c:422
+# ctk/ctkcolorsel.c:1825
+#: ctk/ctkcolorsel.c:422
 msgid "_Value:"
 msgstr "Ут_га:"
 
-# gtk/gtkcolorsel.c:1826
-#: gtk/gtkcolorsel.c:423
+# ctk/ctkcolorsel.c:1826
+#: ctk/ctkcolorsel.c:423
 msgid "Brightness of the color."
 msgstr "Өнгөний гэрэлдэлт."
 
-# gtk/gtkcolorsel.c:1827
-#: gtk/gtkcolorsel.c:424
+# ctk/ctkcolorsel.c:1827
+#: ctk/ctkcolorsel.c:424
 msgid "_Red:"
 msgstr "Улаан:"
 
-# gtk/gtkcolorsel.c:1828
-#: gtk/gtkcolorsel.c:425
+# ctk/ctkcolorsel.c:1828
+#: ctk/ctkcolorsel.c:425
 msgid "Amount of red light in the color."
 msgstr "Өнгө дахь цайвар улааны утга."
 
-# gtk/gtkcolorsel.c:1829
-#: gtk/gtkcolorsel.c:426
+# ctk/ctkcolorsel.c:1829
+#: ctk/ctkcolorsel.c:426
 msgid "_Green:"
 msgstr "Ногоон:"
 
-# gtk/gtkcolorsel.c:1830
-#: gtk/gtkcolorsel.c:427
+# ctk/ctkcolorsel.c:1830
+#: ctk/ctkcolorsel.c:427
 msgid "Amount of green light in the color."
 msgstr "Өнгө дахь цайвар ногооны утга."
 
-# gtk/gtkcolorsel.c:1831
-#: gtk/gtkcolorsel.c:428
+# ctk/ctkcolorsel.c:1831
+#: ctk/ctkcolorsel.c:428
 msgid "_Blue:"
 msgstr "Хөх:"
 
-# gtk/gtkcolorsel.c:1832
-#: gtk/gtkcolorsel.c:429
+# ctk/ctkcolorsel.c:1832
+#: ctk/ctkcolorsel.c:429
 msgid "Amount of blue light in the color."
 msgstr "Өнгө дахь цайвар хөхийн утга."
 
-# gtk/gtkcolorsel.c:1835
-#: gtk/gtkcolorsel.c:432
+# ctk/ctkcolorsel.c:1835
+#: ctk/ctkcolorsel.c:432
 #, fuzzy
 msgid "Op_acity:"
 msgstr "Харанхуй:"
 
-# gtk/gtkcolorsel.c:1843
-#: gtk/gtkcolorsel.c:439 gtk/gtkcolorsel.c:449
+# ctk/ctkcolorsel.c:1843
+#: ctk/ctkcolorsel.c:439 ctk/ctkcolorsel.c:449
 msgid "Transparency of the color."
 msgstr "Өнгөний тунгалаг."
 
-# gtk/gtkcolorsel.c:1858
-#: gtk/gtkcolorsel.c:456
+# ctk/ctkcolorsel.c:1858
+#: ctk/ctkcolorsel.c:456
 #, fuzzy
 msgid "Color _name:"
 msgstr "Өнгөний _Нэр:"
 
-#: gtk/gtkcolorsel.c:470
+#: ctk/ctkcolorsel.c:470
 msgid ""
 "You can enter an HTML-style hexadecimal color value, or simply a color name "
 "such as 'orange' in this entry."
@@ -758,19 +758,19 @@ msgstr ""
 "Та HTML загвараар өнгөний утгыг 16-тын тоогоор эсвэл 'orange' гэдэг шиг "
 "өнгөний нэрээр оруулж болно."
 
-# gtk/gtkcolorsel.c:1889
-#: gtk/gtkcolorsel.c:500
+# ctk/ctkcolorsel.c:1889
+#: ctk/ctkcolorsel.c:500
 #, fuzzy
 msgid "_Palette:"
 msgstr "Будгийн нийлүүр"
 
-# gtk/gtkinputdialog.c:479
-#: gtk/gtkcolorsel.c:529
+# ctk/ctkinputdialog.c:479
+#: ctk/ctkcolorsel.c:529
 #, fuzzy
 msgid "Color Wheel"
 msgstr "Дугуй"
 
-#: gtk/gtkcolorsel.c:988
+#: ctk/ctkcolorsel.c:988
 msgid ""
 "The previously-selected color, for comparison to the color you're selecting "
 "now. You can drag this color to a palette entry, or select this color as "
@@ -780,7 +780,7 @@ msgstr ""
 "нийлүүрийг чирч орох, эсвэл энэ бусад өнгөний жижигрүүлсэн юм уу  чирч "
 "байгаа шиг өнгө сонгох. "
 
-#: gtk/gtkcolorsel.c:991
+#: ctk/ctkcolorsel.c:991
 msgid ""
 "The color you've chosen. You can drag this color to a palette entry to save "
 "it for use in the future."
@@ -788,21 +788,21 @@ msgstr ""
 "Таны сонгосон өнгө. Та энэ өнгөний нийлүүлгэтэйгээ дараа нь ашиглахын  тулд "
 "хадгалж орж чадна."
 
-#: gtk/gtkcolorsel.c:996
+#: ctk/ctkcolorsel.c:996
 msgid ""
 "The previously-selected color, for comparison to the color you're selecting "
 "now."
 msgstr ""
 
-#: gtk/gtkcolorsel.c:999
+#: ctk/ctkcolorsel.c:999
 msgid "The color you've chosen."
 msgstr ""
 
-#: gtk/gtkcolorsel.c:1396
+#: ctk/ctkcolorsel.c:1396
 msgid "_Save color here"
 msgstr "Энд _Хадгалах өнгө "
 
-#: gtk/gtkcolorsel.c:1601
+#: ctk/ctkcolorsel.c:1601
 msgid ""
 "Click this palette entry to make it the current color. To change this entry, "
 "drag a color swatch here or right-click it and select \"Save color here.\""
@@ -811,178 +811,178 @@ msgstr ""
 "өөрчлөхийн тулд, харагдах өнгө дээрээ баруун товшилт хийж   \"Энд хадгалах "
 "өнгө\" гэдгийг сонго"
 
-# gtk/gtkfontsel.c:1253
-#: gtk/gtkcolorseldialog.c:189
+# ctk/ctkfontsel.c:1253
+#: ctk/ctkcolorseldialog.c:189
 msgid "Color Selection"
 msgstr "Өнгө сонголт"
 
-# gtk/gtkmain.c:731
+# ctk/ctkmain.c:731
 #. Translate to the default units to use for presenting
 #. * lengths to the user. Translate to default:inch if you
 #. * want inches, otherwise translate to default:mm.
 #. * Do *not* translate it to "predefinito:mm", if it
 #. * it isn't default:mm or default:inch it will not work
 #.
-#: gtk/gtkcustompaperunixdialog.c:116
+#: ctk/ctkcustompaperunixdialog.c:116
 #, fuzzy
 msgid "default:mm"
 msgstr "default:mm"
 
 #. And show the custom paper dialog
-#: gtk/gtkcustompaperunixdialog.c:374 gtk/gtkprintunixdialog.c:3233
+#: ctk/ctkcustompaperunixdialog.c:374 ctk/ctkprintunixdialog.c:3233
 msgid "Manage Custom Sizes"
 msgstr ""
 
-#: gtk/gtkcustompaperunixdialog.c:534 gtk/gtkpagesetupunixdialog.c:790
+#: ctk/ctkcustompaperunixdialog.c:534 ctk/ctkpagesetupunixdialog.c:790
 msgid "inch"
 msgstr ""
 
-#: gtk/gtkcustompaperunixdialog.c:536 gtk/gtkpagesetupunixdialog.c:788
+#: ctk/ctkcustompaperunixdialog.c:536 ctk/ctkpagesetupunixdialog.c:788
 msgid "mm"
 msgstr ""
 
-#: gtk/gtkcustompaperunixdialog.c:581
+#: ctk/ctkcustompaperunixdialog.c:581
 msgid "Margins from Printer..."
 msgstr ""
 
-#: gtk/gtkcustompaperunixdialog.c:747
+#: ctk/ctkcustompaperunixdialog.c:747
 #, c-format
 msgid "Custom Size %d"
 msgstr ""
 
-#: gtk/gtkcustompaperunixdialog.c:1059
+#: ctk/ctkcustompaperunixdialog.c:1059
 msgid "_Width:"
 msgstr ""
 
-# gtk/gtkcolorsel.c:1821
-#: gtk/gtkcustompaperunixdialog.c:1071
+# ctk/ctkcolorsel.c:1821
+#: ctk/ctkcustompaperunixdialog.c:1071
 #, fuzzy
 msgid "_Height:"
 msgstr "_Өнгө:"
 
-# gtk/gtkstock.c:315
-#: gtk/gtkcustompaperunixdialog.c:1083
+# ctk/ctkstock.c:315
+#: ctk/ctkcustompaperunixdialog.c:1083
 #, fuzzy
 msgid "Paper Size"
 msgstr "_Гар тохируулга"
 
-# gtk/gtkstock.c:293
-#: gtk/gtkcustompaperunixdialog.c:1092
+# ctk/ctkstock.c:293
+#: ctk/ctkcustompaperunixdialog.c:1092
 #, fuzzy
 msgid "_Top:"
 msgstr "_Дээд"
 
-# gtk/gtkstock.c:290
-#: gtk/gtkcustompaperunixdialog.c:1104
+# ctk/ctkstock.c:290
+#: ctk/ctkcustompaperunixdialog.c:1104
 #, fuzzy
 msgid "_Bottom:"
 msgstr "_Доод"
 
-# gtk/gtkstock.c:305
-#: gtk/gtkcustompaperunixdialog.c:1116
+# ctk/ctkstock.c:305
+#: ctk/ctkcustompaperunixdialog.c:1116
 #, fuzzy
 msgid "_Left:"
 msgstr " _Зүүн"
 
-# gtk/gtkcolorsel.c:1821
-#: gtk/gtkcustompaperunixdialog.c:1128
+# ctk/ctkcolorsel.c:1821
+#: ctk/ctkcustompaperunixdialog.c:1128
 #, fuzzy
 msgid "_Right:"
 msgstr "_Өнгө:"
 
-#: gtk/gtkcustompaperunixdialog.c:1169
+#: ctk/ctkcustompaperunixdialog.c:1169
 msgid "Paper Margins"
 msgstr ""
 
-# gtk/gtktextview.c:6366
-#: gtk/gtkentry.c:8601 gtk/gtktextview.c:8248
+# ctk/ctktextview.c:6366
+#: ctk/ctkentry.c:8601 ctk/ctktextview.c:8248
 msgid "Input _Methods"
 msgstr "Оролт_Арга"
 
-# gtk/gtkentry.c:3870 gtk/gtktextview.c:6375
-#: gtk/gtkentry.c:8615 gtk/gtktextview.c:8262
+# ctk/ctkentry.c:3870 ctk/ctktextview.c:6375
+#: ctk/ctkentry.c:8615 ctk/ctktextview.c:8262
 msgid "_Insert Unicode Control Character"
 msgstr "Удирдлагын Unicode тэмдэгт _оруулах"
 
-#: gtk/gtkentry.c:10015
+#: ctk/ctkentry.c:10015
 msgid "Caps Lock and Num Lock are on"
 msgstr ""
 
-#: gtk/gtkentry.c:10017
+#: ctk/ctkentry.c:10017
 #, fuzzy
 msgid "Num Lock is on"
 msgstr "Байршил нээх"
 
-#: gtk/gtkentry.c:10019
+#: ctk/ctkentry.c:10019
 #, fuzzy
 msgid "Caps Lock is on"
 msgstr "Байршил нээх"
 
-# gtk/gtkfilesel.c:1547
+# ctk/ctkfilesel.c:1547
 #. **************** *
 #. *  Private Macros  *
 #. * ****************
-#: gtk/gtkfilechooserbutton.c:61
+#: ctk/ctkfilechooserbutton.c:61
 #, fuzzy
 msgid "Select A File"
 msgstr "Файл устгах"
 
-#: gtk/gtkfilechooserbutton.c:62 gtk/gtkfilechooserdefault.c:1812
+#: ctk/ctkfilechooserbutton.c:62 ctk/ctkfilechooserdefault.c:1812
 msgid "Desktop"
 msgstr "Ажлын тавцан"
 
-# gtk/gtkinputdialog.c:519
-#: gtk/gtkfilechooserbutton.c:63
+# ctk/ctkinputdialog.c:519
+#: ctk/ctkfilechooserbutton.c:63
 #, fuzzy
 msgid "(None)"
 msgstr "байхгүй"
 
-#: gtk/gtkfilechooserbutton.c:2005
+#: ctk/ctkfilechooserbutton.c:2005
 msgid "Other..."
 msgstr ""
 
-#: gtk/gtkfilechooserdefault.c:148
+#: ctk/ctkfilechooserdefault.c:148
 msgid "Type name of new folder"
 msgstr "Шинэ хавтасын нэрийг бич"
 
-#: gtk/gtkfilechooserdefault.c:938
+#: ctk/ctkfilechooserdefault.c:938
 #, fuzzy
 msgid "Could not retrieve information about the file"
 msgstr ""
 "%s-н тухай мэдээлэл өгөгдөх боломжгүй:\n"
 "%s"
 
-#: gtk/gtkfilechooserdefault.c:949
+#: ctk/ctkfilechooserdefault.c:949
 #, fuzzy
 msgid "Could not add a bookmark"
 msgstr ""
 "%s-н хувьд хавчуур нэмэгдэх боломжгүй:\n"
 "%s"
 
-#: gtk/gtkfilechooserdefault.c:960
+#: ctk/ctkfilechooserdefault.c:960
 #, fuzzy
 msgid "Could not remove bookmark"
 msgstr ""
 "%s-н хувьд лавлах устгах боломжгүй:\n"
 "%s"
 
-#: gtk/gtkfilechooserdefault.c:971
+#: ctk/ctkfilechooserdefault.c:971
 msgid "The folder could not be created"
 msgstr ""
 
-#: gtk/gtkfilechooserdefault.c:984
+#: ctk/ctkfilechooserdefault.c:984
 msgid ""
 "The folder could not be created, as a file with the same name already "
 "exists.  Try using a different name for the folder, or rename the file first."
 msgstr ""
 
 # gdk-pixbuf/io-xbm.c:283
-#: gtk/gtkfilechooserdefault.c:995
+#: ctk/ctkfilechooserdefault.c:995
 #, fuzzy
 msgid "Invalid file name"
 msgstr "Буруу файлын нэр: %s"
 
-#: gtk/gtkfilechooserdefault.c:1005
+#: ctk/ctkfilechooserdefault.c:1005
 msgid "The folder contents could not be displayed"
 msgstr ""
 
@@ -990,259 +990,259 @@ msgstr ""
 #. * is a hostname. Nautilus and the panel contain the same string
 #. * to translate.
 #.
-#: gtk/gtkfilechooserdefault.c:1555
+#: ctk/ctkfilechooserdefault.c:1555
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%1$s, %2$s"
 
-#: gtk/gtkfilechooserdefault.c:1731
+#: ctk/ctkfilechooserdefault.c:1731
 msgid "Search"
 msgstr ""
 
-#: gtk/gtkfilechooserdefault.c:1755 gtk/gtkfilechooserdefault.c:9289
+#: ctk/ctkfilechooserdefault.c:1755 ctk/ctkfilechooserdefault.c:9289
 msgid "Recently Used"
 msgstr ""
 
-#: gtk/gtkfilechooserdefault.c:2409
+#: ctk/ctkfilechooserdefault.c:2409
 msgid "Select which types of files are shown"
 msgstr ""
 
-#: gtk/gtkfilechooserdefault.c:2768
+#: ctk/ctkfilechooserdefault.c:2768
 #, c-format
 msgid "Add the folder '%s' to the bookmarks"
 msgstr ""
 
-#: gtk/gtkfilechooserdefault.c:2812
+#: ctk/ctkfilechooserdefault.c:2812
 #, c-format
 msgid "Add the current folder to the bookmarks"
 msgstr ""
 
-#: gtk/gtkfilechooserdefault.c:2814
+#: ctk/ctkfilechooserdefault.c:2814
 #, c-format
 msgid "Add the selected folders to the bookmarks"
 msgstr ""
 
-#: gtk/gtkfilechooserdefault.c:2852
+#: ctk/ctkfilechooserdefault.c:2852
 #, c-format
 msgid "Remove the bookmark '%s'"
 msgstr ""
 
-#: gtk/gtkfilechooserdefault.c:2854
+#: ctk/ctkfilechooserdefault.c:2854
 #, c-format
 msgid "Bookmark '%s' cannot be removed"
 msgstr ""
 
-#: gtk/gtkfilechooserdefault.c:2861 gtk/gtkfilechooserdefault.c:3725
+#: ctk/ctkfilechooserdefault.c:2861 ctk/ctkfilechooserdefault.c:3725
 msgid "Remove the selected bookmark"
 msgstr ""
 
-# gtk/gtkstock.c:319
-#: gtk/gtkfilechooserdefault.c:3421
+# ctk/ctkstock.c:319
+#: ctk/ctkfilechooserdefault.c:3421
 msgid "Remove"
 msgstr "Устга"
 
-# gtk/gtkfilesel.c:1712
-#: gtk/gtkfilechooserdefault.c:3430
+# ctk/ctkfilesel.c:1712
+#: ctk/ctkfilechooserdefault.c:3430
 #, fuzzy
 msgid "Rename..."
 msgstr "_Сольж нэрлэх"
 
 #. Accessible object name for the file chooser's shortcuts pane
-#: gtk/gtkfilechooserdefault.c:3593
+#: ctk/ctkfilechooserdefault.c:3593
 msgid "Places"
 msgstr ""
 
-# gtk/gtkfilesel.c:1712
+# ctk/ctkfilesel.c:1712
 #. Column header for the file chooser's shortcuts pane
-#: gtk/gtkfilechooserdefault.c:3650
+#: ctk/ctkfilechooserdefault.c:3650
 #, fuzzy
 msgid "_Places"
 msgstr "_Сольж нэрлэх"
 
-#: gtk/gtkfilechooserdefault.c:3706
+#: ctk/ctkfilechooserdefault.c:3706
 msgid "_Add"
 msgstr "_Нэм"
 
-#: gtk/gtkfilechooserdefault.c:3713
+#: ctk/ctkfilechooserdefault.c:3713
 msgid "Add the selected folder to the Bookmarks"
 msgstr ""
 
-# gtk/gtkstock.c:319
-#: gtk/gtkfilechooserdefault.c:3718
+# ctk/ctkstock.c:319
+#: ctk/ctkfilechooserdefault.c:3718
 msgid "_Remove"
 msgstr "_Арилгах"
 
-#: gtk/gtkfilechooserdefault.c:3860
+#: ctk/ctkfilechooserdefault.c:3860
 #, fuzzy
 msgid "Could not select file"
 msgstr ""
 "%s-г тэмдэглэж чадсангүй:\n"
 "%s"
 
-#: gtk/gtkfilechooserdefault.c:4035
+#: ctk/ctkfilechooserdefault.c:4035
 msgid "_Add to Bookmarks"
 msgstr ""
 
-#: gtk/gtkfilechooserdefault.c:4048
+#: ctk/ctkfilechooserdefault.c:4048
 msgid "Show _Hidden Files"
 msgstr ""
 
-#: gtk/gtkfilechooserdefault.c:4055
+#: ctk/ctkfilechooserdefault.c:4055
 msgid "Show _Size Column"
 msgstr ""
 
-# gtk/gtkfilesel.c:742
-#: gtk/gtkfilechooserdefault.c:4281
+# ctk/ctkfilesel.c:742
+#: ctk/ctkfilechooserdefault.c:4281
 msgid "Files"
 msgstr "Файлууд"
 
-# gtk/gtkcolorsel.c:1858
-#: gtk/gtkfilechooserdefault.c:4332
+# ctk/ctkcolorsel.c:1858
+#: ctk/ctkfilechooserdefault.c:4332
 msgid "Name"
 msgstr "Нэр"
 
-# gtk/gtkfontsel.c:333
-#: gtk/gtkfilechooserdefault.c:4355
+# ctk/ctkfontsel.c:333
+#: ctk/ctkfilechooserdefault.c:4355
 msgid "Size"
 msgstr "Хэмжээ"
 
-# gtk/gtksizegroup.c:242
-#: gtk/gtkfilechooserdefault.c:4369
+# ctk/ctksizegroup.c:242
+#: ctk/ctkfilechooserdefault.c:4369
 msgid "Modified"
 msgstr "Өөрчлөгдсөн"
 
-# gtk/gtkcolorsel.c:1858
+# ctk/ctkcolorsel.c:1858
 #. Label
-#: gtk/gtkfilechooserdefault.c:4624 gtk/gtkprinteroptionwidget.c:801
+#: ctk/ctkfilechooserdefault.c:4624 ctk/ctkprinteroptionwidget.c:801
 msgid "_Name:"
 msgstr "_Нэр:"
 
-#: gtk/gtkfilechooserdefault.c:4667
+#: ctk/ctkfilechooserdefault.c:4667
 msgid "_Browse for other folders"
 msgstr "Бусад лавлахуудыг _нэгжих"
 
 # gdk-pixbuf/io-xbm.c:283
-#: gtk/gtkfilechooserdefault.c:4937
+#: ctk/ctkfilechooserdefault.c:4937
 #, fuzzy
 msgid "Type a file name"
 msgstr "Буруу файлын нэр: %s"
 
-# gtk/gtkfilesel.c:1403
+# ctk/ctkfilesel.c:1403
 #. Create Folder
-#: gtk/gtkfilechooserdefault.c:4980
+#: ctk/ctkfilechooserdefault.c:4980
 #, fuzzy
 msgid "Create Fo_lder"
 msgstr "_Хавтас үүсгэх"
 
-# gtk/gtkfilesel.c:2103
-#: gtk/gtkfilechooserdefault.c:4990
+# ctk/ctkfilesel.c:2103
+#: ctk/ctkfilechooserdefault.c:4990
 #, fuzzy
 msgid "_Location:"
 msgstr "_Байршил:"
 
-# gtk/gtkfilesel.c:1403
-#: gtk/gtkfilechooserdefault.c:5194
+# ctk/ctkfilesel.c:1403
+#: ctk/ctkfilechooserdefault.c:5194
 msgid "Save in _folder:"
 msgstr "_Хавтас дотор хадгалах:"
 
-# gtk/gtkfilesel.c:1403
-#: gtk/gtkfilechooserdefault.c:5196
+# ctk/ctkfilesel.c:1403
+#: ctk/ctkfilechooserdefault.c:5196
 msgid "Create in _folder:"
 msgstr "_Хавтас дотор үүсгэх:"
 
-# gtk/gtkfilesel.c:1369
-#: gtk/gtkfilechooserdefault.c:6248
+# ctk/ctkfilesel.c:1369
+#: ctk/ctkfilechooserdefault.c:6248
 #, fuzzy, c-format
 msgid "Could not read the contents of %s"
 msgstr "\"%s\" хавтас үүсгэхэд алдлаа: %s"
 
-#: gtk/gtkfilechooserdefault.c:6252
+#: ctk/ctkfilechooserdefault.c:6252
 #, fuzzy
 msgid "Could not read the contents of the folder"
 msgstr ""
 "%s хавтас үүсгэж чадсангүй:\n"
 "%s"
 
-# gtk/gtkinputdialog.c:582
-#: gtk/gtkfilechooserdefault.c:6345 gtk/gtkfilechooserdefault.c:6413
-#: gtk/gtkfilechooserdefault.c:6558
+# ctk/ctkinputdialog.c:582
+#: ctk/ctkfilechooserdefault.c:6345 ctk/ctkfilechooserdefault.c:6413
+#: ctk/ctkfilechooserdefault.c:6558
 msgid "Unknown"
 msgstr "Тодорхойгүй"
 
-#: gtk/gtkfilechooserdefault.c:6360
+#: ctk/ctkfilechooserdefault.c:6360
 msgid "%H:%M"
 msgstr ""
 
-#: gtk/gtkfilechooserdefault.c:6362
+#: ctk/ctkfilechooserdefault.c:6362
 #, fuzzy
 msgid "Yesterday at %H:%M"
 msgstr "Өчигдар"
 
-#: gtk/gtkfilechooserdefault.c:7028
+#: ctk/ctkfilechooserdefault.c:7028
 #, fuzzy
 msgid "Cannot change to folder because it is not local"
 msgstr "Хавтас руу очих боломжгүй.Учир нь өгсөн зам дотоод зам биш байна"
 
-#: gtk/gtkfilechooserdefault.c:7625 gtk/gtkfilechooserdefault.c:7646
+#: ctk/ctkfilechooserdefault.c:7625 ctk/ctkfilechooserdefault.c:7646
 #, fuzzy, c-format
 msgid "Shortcut %s already exists"
 msgstr "%s богино тушаал алга"
 
-#: gtk/gtkfilechooserdefault.c:7736
+#: ctk/ctkfilechooserdefault.c:7736
 #, fuzzy, c-format
 msgid "Shortcut %s does not exist"
 msgstr "%s богино тушаал алга"
 
-#: gtk/gtkfilechooserdefault.c:7997 gtk/gtkprintunixdialog.c:480
+#: ctk/ctkfilechooserdefault.c:7997 ctk/ctkprintunixdialog.c:480
 #, c-format
 msgid "A file named \"%s\" already exists.  Do you want to replace it?"
 msgstr ""
 
-#: gtk/gtkfilechooserdefault.c:8000 gtk/gtkprintunixdialog.c:484
+#: ctk/ctkfilechooserdefault.c:8000 ctk/ctkprintunixdialog.c:484
 #, c-format
 msgid ""
 "The file already exists in \"%s\".  Replacing it will overwrite its contents."
 msgstr ""
 
-# gtk/gtkfilesel.c:1712
-#: gtk/gtkfilechooserdefault.c:8005 gtk/gtkprintunixdialog.c:491
+# ctk/ctkfilesel.c:1712
+#: ctk/ctkfilechooserdefault.c:8005 ctk/ctkprintunixdialog.c:491
 #, fuzzy
 msgid "_Replace"
 msgstr "_Сольж нэрлэх"
 
 # gdk-pixbuf/io-wbmp.c:366
-#: gtk/gtkfilechooserdefault.c:8658
+#: ctk/ctkfilechooserdefault.c:8658
 #, fuzzy
 msgid "Could not start the search process"
 msgstr "Хадгалж чадсангүй"
 
-#: gtk/gtkfilechooserdefault.c:8659
+#: ctk/ctkfilechooserdefault.c:8659
 msgid ""
 "The program was not able to create a connection to the indexer daemon.  "
 "Please make sure it is running."
 msgstr ""
 
 # gdk-pixbuf/io-wbmp.c:366
-#: gtk/gtkfilechooserdefault.c:8673
+#: ctk/ctkfilechooserdefault.c:8673
 #, fuzzy
 msgid "Could not send the search request"
 msgstr "Хадгалж чадсангүй"
 
-#: gtk/gtkfilechooserdefault.c:8861
+#: ctk/ctkfilechooserdefault.c:8861
 msgid "Search:"
 msgstr ""
 
-#: gtk/gtkfilechooserdefault.c:9466
+#: ctk/ctkfilechooserdefault.c:9466
 #, fuzzy, c-format
 msgid "Could not mount %s"
 msgstr ""
 "%s-г тэмдэглэж чадсангүй:\n"
 "%s"
 
-# gtk/gtkfilesel.c:2986
+# ctk/ctkfilesel.c:2986
 #. Translators: this is shown in the feedback for Tab-completion in a file
 #. * chooser's text entry, when the user enters an invalid path.
-#: gtk/gtkfilechooserentry.c:702 gtk/gtkfilechooserentry.c:1169
+#: ctk/ctkfilechooserentry.c:702 ctk/ctkfilechooserentry.c:1169
 #, fuzzy
 msgid "Invalid path"
 msgstr "Хүчингүй UTF-8"
@@ -1250,15 +1250,15 @@ msgstr "Хүчингүй UTF-8"
 #. translators: this text is shown when there are no completions
 #. * for something the user typed in a file chooser entry
 #.
-#: gtk/gtkfilechooserentry.c:1101
+#: ctk/ctkfilechooserentry.c:1101
 msgid "No match"
 msgstr ""
 
-# gtk/gtkfontsel.c:1253
+# ctk/ctkfontsel.c:1253
 #. translators: this text is shown when there is exactly one completion
 #. * for something the user typed in a file chooser entry
 #.
-#: gtk/gtkfilechooserentry.c:1112
+#: ctk/ctkfilechooserentry.c:1112
 #, fuzzy
 msgid "Sole completion"
 msgstr "Өнгө сонголт"
@@ -1267,13 +1267,13 @@ msgstr "Өнгө сонголт"
 #. * entry is a complete filename, but could be continued to find
 #. * a longer match
 #.
-#: gtk/gtkfilechooserentry.c:1128
+#: ctk/ctkfilechooserentry.c:1128
 msgid "Complete, but not unique"
 msgstr ""
 
 #. Translators: this text is shown while the system is searching
 #. * for possible completions for filenames in a file chooser entry.
-#: gtk/gtkfilechooserentry.c:1160
+#: ctk/ctkfilechooserentry.c:1160
 msgid "Completing..."
 msgstr ""
 
@@ -1281,7 +1281,7 @@ msgstr ""
 #. Translators: this is shown in the feedback for Tab-completion in a
 #. * file chooser's text entry when the user enters something like
 #. * "sftp://blahblah" in an app that only supports local filenames.
-#: gtk/gtkfilechooserentry.c:1182 gtk/gtkfilechooserentry.c:1207
+#: ctk/ctkfilechooserentry.c:1182 ctk/ctkfilechooserentry.c:1207
 msgid "Only local files may be selected"
 msgstr ""
 
@@ -1289,92 +1289,92 @@ msgstr ""
 #. Translators: this is shown in the feedback for Tab-completion in a
 #. * file chooser's text entry when the user hasn't entered the first '/'
 #. * after a hostname and yet hits Tab (such as "sftp://blahblah[Tab]")
-#: gtk/gtkfilechooserentry.c:1191
+#: ctk/ctkfilechooserentry.c:1191
 msgid "Incomplete hostname; end it with '/'"
 msgstr ""
 
 #. Translators: this is shown in the feedback for Tab-completion in a file
 #. * chooser's text entry when the user enters a path that does not exist
 #. * and then hits Tab
-#: gtk/gtkfilechooserentry.c:1202
+#: ctk/ctkfilechooserentry.c:1202
 #, fuzzy
 msgid "Path does not exist"
 msgstr "%s богино тушаал алга"
 
-# gtk/gtkfilesel.c:1369
-#: gtk/gtkfilechoosersettings.c:486
+# ctk/ctkfilesel.c:1369
+#: ctk/ctkfilechoosersettings.c:486
 #, fuzzy, c-format
 msgid "Error creating folder '%s': %s"
 msgstr "\"%s\" хавтас үүсгэхэд алдлаа: %s\n"
 
-# gtk/gtkfilesel.c:742
+# ctk/ctkfilesel.c:742
 #. The pointers we return for a GtkFileSystemVolume are opaque tokens; they are
 #. * really pointers to GDrive, GVolume or GMount objects.  We need an extra
 #. * token for the fake "File System" volume.  So, we'll return a pointer to
 #. * this particular string.
 #.
-#: gtk/gtkfilesystem.c:48
+#: ctk/ctkfilesystem.c:48
 #, fuzzy
 msgid "File System"
 msgstr "Файл систем"
 
-#: gtk/gtkfontbutton.c:142 gtk/gtkfontbutton.c:266
+#: ctk/ctkfontbutton.c:142 ctk/ctkfontbutton.c:266
 msgid "Pick a Font"
 msgstr "Бичиг сонгох"
 
 #. Initialize fields
-#: gtk/gtkfontbutton.c:260
+#: ctk/ctkfontbutton.c:260
 msgid "Sans 12"
 msgstr "Санс 12"
 
-# gtk/gtkcellrenderertext.c:239 gtk/gtkcellrenderertext.c:247
-# gtk/gtkfontsel.c:209 gtk/gtktexttag.c:285 gtk/gtktexttag.c:293
-#: gtk/gtkfontbutton.c:785
+# ctk/ctkcellrenderertext.c:239 ctk/ctkcellrenderertext.c:247
+# ctk/ctkfontsel.c:209 ctk/ctktexttag.c:285 ctk/ctktexttag.c:293
+#: ctk/ctkfontbutton.c:785
 msgid "Font"
 msgstr "Фонт "
 
-# gtk/gtkfontsel.c:69
+# ctk/ctkfontsel.c:69
 #. This is the default text shown in the preview entry, though the user
 #. can set it. Remember that some fonts only have capital letters.
-#: gtk/gtkfontsel.c:103
+#: ctk/ctkfontsel.c:103
 msgid "abcdefghijk ABCDEFGHIJK"
 msgstr "абвгдеёжзийк АБВГДЕЁЖЗИЙК"
 
-# gtk/gtkfontsel.c:321
-#: gtk/gtkfontsel.c:370
+# ctk/ctkfontsel.c:321
+#: ctk/ctkfontsel.c:370
 msgid "_Family:"
 msgstr "Овог:"
 
-# gtk/gtkfontsel.c:327
-#: gtk/gtkfontsel.c:376
+# ctk/ctkfontsel.c:327
+#: ctk/ctkfontsel.c:376
 msgid "_Style:"
 msgstr "Загвар:"
 
-# gtk/gtkfontsel.c:333
-#: gtk/gtkfontsel.c:382
+# ctk/ctkfontsel.c:333
+#: ctk/ctkfontsel.c:382
 msgid "Si_ze:"
 msgstr "Хэмжээ:"
 
 #. create the text entry widget
-#: gtk/gtkfontsel.c:559
+#: ctk/ctkfontsel.c:559
 msgid "_Preview:"
 msgstr "Харагдалт:"
 
-# gtk/gtkfontsel.c:1253
-#: gtk/gtkfontsel.c:1659
+# ctk/ctkfontsel.c:1253
+#: ctk/ctkfontsel.c:1659
 msgid "Font Selection"
 msgstr "Бичгийн сонголт"
 
-# gtk/gtkiconfactory.c:1318
+# ctk/ctkiconfactory.c:1318
 #. Remove this icon source so we don't keep trying to
 #. * load it.
 #.
-#: gtk/gtkiconfactory.c:1356
+#: ctk/ctkiconfactory.c:1356
 #, c-format
 msgid "Error loading icon: %s"
 msgstr "Дүрслэл дуудахад алдаа гарлаа: %s"
 
-#: gtk/gtkicontheme.c:1354
+#: ctk/ctkicontheme.c:1354
 #, c-format
 msgid ""
 "Could not find the icon '%s'. The '%s' theme\n"
@@ -1387,225 +1387,225 @@ msgstr ""
 "Та дараахаас хуулж авч болно:\n"
 "\t%s"
 
-#: gtk/gtkicontheme.c:1535
+#: ctk/ctkicontheme.c:1535
 #, c-format
 msgid "Icon '%s' not present in theme"
 msgstr "'%s' эмблем хэлбэрт дүрслэгдэхгүй"
 
 # gdk-pixbuf/io-tiff.c:419 gdk-pixbuf/io-tiff.c:433
-#: gtk/gtkicontheme.c:3048
+#: ctk/ctkicontheme.c:3048
 #, fuzzy
 msgid "Failed to load icon"
 msgstr "TIFF зураг ачаалагдсангүй"
 
-# gtk/gtkfontsel.c:333
-#: gtk/gtkimmodule.c:526
+# ctk/ctkfontsel.c:333
+#: ctk/ctkimmodule.c:526
 #, fuzzy
 msgid "Simple"
 msgstr "Хэмжээ"
 
-# gtk/gtkfilesel.c:742
-#: gtk/gtkimmulticontext.c:588
+# ctk/ctkfilesel.c:742
+#: ctk/ctkimmulticontext.c:588
 #, fuzzy
 msgctxt "input method menu"
 msgid "System"
 msgstr "Файл систем"
 
-# gtk/gtkinputdialog.c:519
-#: gtk/gtkimmulticontext.c:598
+# ctk/ctkinputdialog.c:519
+#: ctk/ctkimmulticontext.c:598
 #, fuzzy
 msgctxt "input method menu"
 msgid "None"
 msgstr "байхгүй"
 
-#: gtk/gtkimmulticontext.c:681
+#: ctk/ctkimmulticontext.c:681
 #, fuzzy, c-format
 msgctxt "input method menu"
 msgid "System (%s)"
 msgstr "%s: %s"
 
 #. Open Link
-#: gtk/gtklabel.c:6202
+#: ctk/ctklabel.c:6202
 #, fuzzy
 msgid "_Open Link"
 msgstr "Байршил нээх"
 
 #. Copy Link Address
-#: gtk/gtklabel.c:6214
+#: ctk/ctklabel.c:6214
 msgid "Copy _Link Address"
 msgstr ""
 
-# gtk/gtkstock.c:283
-#: gtk/gtklinkbutton.c:449
+# ctk/ctkstock.c:283
+#: ctk/ctklinkbutton.c:449
 #, fuzzy
 msgid "Copy URL"
 msgstr "_Хуул"
 
-# gtk/gtkfilesel.c:2986
-#: gtk/gtklinkbutton.c:601
+# ctk/ctkfilesel.c:2986
+#: ctk/ctklinkbutton.c:601
 #, fuzzy
 msgid "Invalid URI"
 msgstr "Хүчингүй UTF-8"
 
-#. Description of --gtk-module=MODULES in --help output
-#: gtk/gtkmain.c:526
+#. Description of --ctk-module=MODULES in --help output
+#: ctk/ctkmain.c:526
 msgid "Load additional GTK+ modules"
 msgstr ""
 
-#. Placeholder in --gtk-module=MODULES in --help output
-#: gtk/gtkmain.c:527
+#. Placeholder in --ctk-module=MODULES in --help output
+#: ctk/ctkmain.c:527
 msgid "MODULES"
 msgstr ""
 
 #. Description of --g-fatal-warnings in --help output
-#: gtk/gtkmain.c:529
+#: ctk/ctkmain.c:529
 msgid "Make all warnings fatal"
 msgstr ""
 
-#. Description of --gtk-debug=FLAGS in --help output
-#: gtk/gtkmain.c:532
+#. Description of --ctk-debug=FLAGS in --help output
+#: ctk/ctkmain.c:532
 msgid "GTK+ debugging flags to set"
 msgstr ""
 
-#. Description of --gtk-no-debug=FLAGS in --help output
-#: gtk/gtkmain.c:535
+#. Description of --ctk-no-debug=FLAGS in --help output
+#: ctk/ctkmain.c:535
 msgid "GTK+ debugging flags to unset"
 msgstr ""
 
-# gtk/gtkmain.c:731
+# ctk/ctkmain.c:731
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
 #. * Do *not* translate it to "predefinito:LTR", if it
 #. * it isn't default:LTR or default:RTL it will not work
 #.
-#: gtk/gtkmain.c:798
+#: ctk/ctkmain.c:798
 msgid "default:LTR"
 msgstr "default:LTR"
 
-#: gtk/gtkmain.c:863
+#: ctk/ctkmain.c:863
 #, c-format
 msgid "Cannot open display: %s"
 msgstr ""
 
-#: gtk/gtkmain.c:922
+#: ctk/ctkmain.c:922
 msgid "GTK+ Options"
 msgstr ""
 
-#: gtk/gtkmain.c:922
+#: ctk/ctkmain.c:922
 msgid "Show GTK+ Options"
 msgstr ""
 
-# gtk/gtkstock.c:282
-#: gtk/gtkmountoperation.c:491
+# ctk/ctkstock.c:282
+#: ctk/ctkmountoperation.c:491
 #, fuzzy
 msgid "Co_nnect"
 msgstr "_Хувиргах"
 
-#: gtk/gtkmountoperation.c:558
+#: ctk/ctkmountoperation.c:558
 msgid "Connect _anonymously"
 msgstr ""
 
-#: gtk/gtkmountoperation.c:567
+#: ctk/ctkmountoperation.c:567
 msgid "Connect as u_ser:"
 msgstr ""
 
-# gtk/gtkfilesel.c:1712
-#: gtk/gtkmountoperation.c:605
+# ctk/ctkfilesel.c:1712
+#: ctk/ctkmountoperation.c:605
 #, fuzzy
 msgid "_Username:"
 msgstr "_Сольж нэрлэх"
 
-# gtk/gtkfilesel.c:2103
-#: gtk/gtkmountoperation.c:610
+# ctk/ctkfilesel.c:2103
+#: ctk/ctkmountoperation.c:610
 #, fuzzy
 msgid "_Domain:"
 msgstr "_Байршил:"
 
-# gtk/gtkinputdialog.c:476
-#: gtk/gtkmountoperation.c:616
+# ctk/ctkinputdialog.c:476
+#: ctk/ctkmountoperation.c:616
 #, fuzzy
 msgid "_Password:"
 msgstr "Даралт"
 
-#: gtk/gtkmountoperation.c:634
+#: ctk/ctkmountoperation.c:634
 msgid "Forget password _immediately"
 msgstr ""
 
-#: gtk/gtkmountoperation.c:644
+#: ctk/ctkmountoperation.c:644
 msgid "Remember password until you _logout"
 msgstr ""
 
-#: gtk/gtkmountoperation.c:654
+#: ctk/ctkmountoperation.c:654
 msgid "Remember _forever"
 msgstr ""
 
-#: gtk/gtkmountoperation.c:883
+#: ctk/ctkmountoperation.c:883
 #, c-format
 msgid "Unknown Application (PID %d)"
 msgstr ""
 
-#: gtk/gtkmountoperation.c:1066
+#: ctk/ctkmountoperation.c:1066
 #, c-format
 msgid "Unable to end process"
 msgstr ""
 
-#: gtk/gtkmountoperation.c:1103
+#: ctk/ctkmountoperation.c:1103
 msgid "_End Process"
 msgstr ""
 
-#: gtk/gtkmountoperation-stub.c:64
+#: ctk/ctkmountoperation-stub.c:64
 #, c-format
 msgid "Cannot kill process with PID %d. Operation is not implemented."
 msgstr ""
 
 #. translators: this string is a name for the 'less' command
-#: gtk/gtkmountoperation-x11.c:862
+#: ctk/ctkmountoperation-x11.c:862
 #, fuzzy
 msgid "Terminal Pager"
 msgstr "Хэвлэх_харагдац"
 
-#: gtk/gtkmountoperation-x11.c:863
+#: ctk/ctkmountoperation-x11.c:863
 msgid "Top Command"
 msgstr ""
 
-#: gtk/gtkmountoperation-x11.c:864
+#: ctk/ctkmountoperation-x11.c:864
 msgid "Bourne Again Shell"
 msgstr ""
 
-#: gtk/gtkmountoperation-x11.c:865
+#: ctk/ctkmountoperation-x11.c:865
 msgid "Bourne Shell"
 msgstr ""
 
-#: gtk/gtkmountoperation-x11.c:866
+#: ctk/ctkmountoperation-x11.c:866
 msgid "Z Shell"
 msgstr ""
 
-#: gtk/gtkmountoperation-x11.c:963
+#: ctk/ctkmountoperation-x11.c:963
 #, c-format
 msgid "Cannot end process with PID %d: %s"
 msgstr ""
 
-# gtk/gtknotebook.c:2439 gtk/gtknotebook.c:4695
-#: gtk/gtknotebook.c:4619 gtk/gtknotebook.c:7170
+# ctk/ctknotebook.c:2439 ctk/ctknotebook.c:4695
+#: ctk/ctknotebook.c:4619 ctk/ctknotebook.c:7170
 #, c-format
 msgid "Page %u"
 msgstr "Хуудас %u"
 
-#: gtk/gtkpagesetup.c:596 gtk/gtkpapersize.c:838 gtk/gtkpapersize.c:880
+#: ctk/ctkpagesetup.c:596 ctk/ctkpapersize.c:838 ctk/ctkpapersize.c:880
 msgid "Not a valid page setup file"
 msgstr ""
 
-# gtk/gtkstock.c:313
-#: gtk/gtkpagesetupunixdialog.c:179
+# ctk/ctkstock.c:313
+#: ctk/ctkpagesetupunixdialog.c:179
 #, fuzzy
 msgid "Any Printer"
 msgstr "_хэвлэ"
 
-#: gtk/gtkpagesetupunixdialog.c:179
+#: ctk/ctkpagesetupunixdialog.c:179
 msgid "For portable documents"
 msgstr ""
 
-#: gtk/gtkpagesetupunixdialog.c:809
+#: ctk/ctkpagesetupunixdialog.c:809
 #, c-format
 msgid ""
 "Margins:\n"
@@ -1615,64 +1615,64 @@ msgid ""
 " Bottom: %s %s"
 msgstr ""
 
-#: gtk/gtkpagesetupunixdialog.c:858 gtk/gtkprintunixdialog.c:3284
+#: ctk/ctkpagesetupunixdialog.c:858 ctk/ctkprintunixdialog.c:3284
 msgid "Manage Custom Sizes..."
 msgstr ""
 
-#: gtk/gtkpagesetupunixdialog.c:909
+#: ctk/ctkpagesetupunixdialog.c:909
 msgid "_Format for:"
 msgstr ""
 
-# gtk/gtkstock.c:315
-#: gtk/gtkpagesetupunixdialog.c:931 gtk/gtkprintunixdialog.c:3456
+# ctk/ctkstock.c:315
+#: ctk/ctkpagesetupunixdialog.c:931 ctk/ctkprintunixdialog.c:3456
 #, fuzzy
 msgid "_Paper size:"
 msgstr "_Гар тохируулга"
 
-# gtk/gtkcolorsel.c:1823
-#: gtk/gtkpagesetupunixdialog.c:962
+# ctk/ctkcolorsel.c:1823
+#: ctk/ctkpagesetupunixdialog.c:962
 #, fuzzy
 msgid "_Orientation:"
 msgstr "Хан_галуун:"
 
-# gtk/gtknotebook.c:2439 gtk/gtknotebook.c:4695
-#: gtk/gtkpagesetupunixdialog.c:1026 gtk/gtkprintunixdialog.c:3518
+# ctk/ctknotebook.c:2439 ctk/ctknotebook.c:4695
+#: ctk/ctkpagesetupunixdialog.c:1026 ctk/ctkprintunixdialog.c:3518
 #, fuzzy
 msgid "Page Setup"
 msgstr "Хуудас %u"
 
-#: gtk/gtkpathbar.c:154
+#: ctk/ctkpathbar.c:154
 msgid "Up Path"
 msgstr ""
 
-#: gtk/gtkpathbar.c:156
+#: ctk/ctkpathbar.c:156
 msgid "Down Path"
 msgstr ""
 
-# gtk/gtkfilesel.c:742
-#: gtk/gtkpathbar.c:1497
+# ctk/ctkfilesel.c:742
+#: ctk/ctkpathbar.c:1497
 #, fuzzy
 msgid "File System Root"
 msgstr "Файл систем"
 
-# gtk/gtkfilesel.c:2103
-#: gtk/gtkprintbackend.c:749
+# ctk/ctkfilesel.c:2103
+#: ctk/ctkprintbackend.c:749
 #, fuzzy
 msgid "Authentication"
 msgstr "_Байршил:"
 
-#: gtk/gtkprinteroptionwidget.c:694
+#: ctk/ctkprinteroptionwidget.c:694
 msgid "Not available"
 msgstr ""
 
-# gtk/gtkfilesel.c:1547
-#: gtk/gtkprinteroptionwidget.c:794
+# ctk/ctkfilesel.c:1547
+#: ctk/ctkprinteroptionwidget.c:794
 #, fuzzy
 msgid "Select a folder"
 msgstr "Файл устгах"
 
-# gtk/gtkfilesel.c:1403
-#: gtk/gtkprinteroptionwidget.c:813
+# ctk/ctkfilesel.c:1403
+#: ctk/ctkprinteroptionwidget.c:813
 #, fuzzy
 msgid "_Save in folder:"
 msgstr "_Хавтас дотор хадгалах:"
@@ -1681,445 +1681,445 @@ msgstr "_Хавтас дотор хадгалах:"
 #. * jobs. %s gets replaced by the application name, %d gets replaced
 #. * by the job number.
 #.
-#: gtk/gtkprintoperation.c:190
+#: ctk/ctkprintoperation.c:190
 #, c-format
 msgid "%s job #%d"
 msgstr ""
 
-#: gtk/gtkprintoperation.c:1695
+#: ctk/ctkprintoperation.c:1695
 msgctxt "print operation status"
 msgid "Initial state"
 msgstr ""
 
-# gtk/gtkstock.c:268
-#: gtk/gtkprintoperation.c:1696
+# ctk/ctkstock.c:268
+#: ctk/ctkprintoperation.c:1696
 #, fuzzy
 msgctxt "print operation status"
 msgid "Preparing to print"
 msgstr "Сануулга"
 
-#: gtk/gtkprintoperation.c:1697
+#: ctk/ctkprintoperation.c:1697
 msgctxt "print operation status"
 msgid "Generating data"
 msgstr ""
 
-#: gtk/gtkprintoperation.c:1698
+#: ctk/ctkprintoperation.c:1698
 msgctxt "print operation status"
 msgid "Sending data"
 msgstr ""
 
-# gtk/gtkstock.c:268
-#: gtk/gtkprintoperation.c:1699
+# ctk/ctkstock.c:268
+#: ctk/ctkprintoperation.c:1699
 #, fuzzy
 msgctxt "print operation status"
 msgid "Waiting"
 msgstr "Сануулга"
 
-#: gtk/gtkprintoperation.c:1700
+#: ctk/ctkprintoperation.c:1700
 msgctxt "print operation status"
 msgid "Blocking on issue"
 msgstr ""
 
-# gtk/gtkstock.c:313
-#: gtk/gtkprintoperation.c:1701
+# ctk/ctkstock.c:313
+#: ctk/ctkprintoperation.c:1701
 #, fuzzy
 msgctxt "print operation status"
 msgid "Printing"
 msgstr "_хэвлэ"
 
-# gtk/gtkstock.c:287
-#: gtk/gtkprintoperation.c:1702
+# ctk/ctkstock.c:287
+#: ctk/ctkprintoperation.c:1702
 #, fuzzy
 msgctxt "print operation status"
 msgid "Finished"
 msgstr "_Хайх"
 
-#: gtk/gtkprintoperation.c:1703
+#: ctk/ctkprintoperation.c:1703
 msgctxt "print operation status"
 msgid "Finished with error"
 msgstr ""
 
-#: gtk/gtkprintoperation.c:2270
+#: ctk/ctkprintoperation.c:2270
 #, c-format
 msgid "Preparing %d"
 msgstr ""
 
-# gtk/gtkstock.c:268
-#: gtk/gtkprintoperation.c:2272 gtk/gtkprintoperation.c:2902
+# ctk/ctkstock.c:268
+#: ctk/ctkprintoperation.c:2272 ctk/ctkprintoperation.c:2902
 #, fuzzy, c-format
 msgid "Preparing"
 msgstr "Сануулга"
 
-# gtk/gtkstock.c:313
-#: gtk/gtkprintoperation.c:2275
+# ctk/ctkstock.c:313
+#: ctk/ctkprintoperation.c:2275
 #, fuzzy, c-format
 msgid "Printing %d"
 msgstr "_хэвлэ"
 
-#: gtk/gtkprintoperation.c:2932
+#: ctk/ctkprintoperation.c:2932
 #, c-format
 msgid "Error creating print preview"
 msgstr ""
 
-#: gtk/gtkprintoperation.c:2935
+#: ctk/ctkprintoperation.c:2935
 #, c-format
 msgid "The most probable reason is that a temporary file could not be created."
 msgstr ""
 
-#: gtk/gtkprintoperation-unix.c:297
+#: ctk/ctkprintoperation-unix.c:297
 msgid "Error launching preview"
 msgstr ""
 
-# gtk/gtkfilesel.c:2103
-#: gtk/gtkprintoperation-unix.c:470 gtk/gtkprintoperation-win32.c:1447
+# ctk/ctkfilesel.c:2103
+#: ctk/ctkprintoperation-unix.c:470 ctk/ctkprintoperation-win32.c:1447
 #, fuzzy
 msgid "Application"
 msgstr "_Байршил:"
 
-#: gtk/gtkprintoperation-win32.c:611
+#: ctk/ctkprintoperation-win32.c:611
 msgid "Printer offline"
 msgstr ""
 
-#: gtk/gtkprintoperation-win32.c:613
+#: ctk/ctkprintoperation-win32.c:613
 msgid "Out of paper"
 msgstr ""
 
-# gtk/gtkstock.c:311
+# ctk/ctkstock.c:311
 #. Translators: this is a printer status.
-#: gtk/gtkprintoperation-win32.c:615
-#: modules/printbackends/cups/gtkprintbackendcups.c:1998
+#: ctk/ctkprintoperation-win32.c:615
+#: modules/printbackends/cups/ctkprintbackendcups.c:1998
 #, fuzzy
 msgid "Paused"
 msgstr "_Буулгах"
 
-#: gtk/gtkprintoperation-win32.c:617
+#: ctk/ctkprintoperation-win32.c:617
 msgid "Need user intervention"
 msgstr ""
 
-#: gtk/gtkprintoperation-win32.c:717
+#: ctk/ctkprintoperation-win32.c:717
 msgid "Custom size"
 msgstr ""
 
 # gdk-pixbuf/io-xpm.c:1235
-#: gtk/gtkprintoperation-win32.c:1539
+#: ctk/ctkprintoperation-win32.c:1539
 #, fuzzy
 msgid "No printer found"
 msgstr "XPM биш толгой олдлоо"
 
 # gdk-pixbuf/io-ico.c:303
-#: gtk/gtkprintoperation-win32.c:1566
+#: ctk/ctkprintoperation-win32.c:1566
 #, fuzzy
 msgid "Invalid argument to CreateDC"
 msgstr "Дүрсний толгой нь буруу"
 
-#: gtk/gtkprintoperation-win32.c:1602 gtk/gtkprintoperation-win32.c:1829
+#: ctk/ctkprintoperation-win32.c:1602 ctk/ctkprintoperation-win32.c:1829
 msgid "Error from StartDoc"
 msgstr ""
 
 # gdk-pixbuf/io-ico.c:262 gdk-pixbuf/io-ico.c:318 gdk-pixbuf/io-ico.c:381
 # gdk-pixbuf/io-ico.c:443 gdk-pixbuf/io-ico.c:460
-#: gtk/gtkprintoperation-win32.c:1684 gtk/gtkprintoperation-win32.c:1707
-#: gtk/gtkprintoperation-win32.c:1755
+#: ctk/ctkprintoperation-win32.c:1684 ctk/ctkprintoperation-win32.c:1707
+#: ctk/ctkprintoperation-win32.c:1755
 #, fuzzy
 msgid "Not enough free memory"
 msgstr "Дүрс ачаалахад санах ой хүрэлцэхгүй байна"
 
-#: gtk/gtkprintoperation-win32.c:1760
+#: ctk/ctkprintoperation-win32.c:1760
 msgid "Invalid argument to PrintDlgEx"
 msgstr ""
 
-#: gtk/gtkprintoperation-win32.c:1765
+#: ctk/ctkprintoperation-win32.c:1765
 msgid "Invalid pointer to PrintDlgEx"
 msgstr ""
 
 # gdk-pixbuf/io-ico.c:303
-#: gtk/gtkprintoperation-win32.c:1770
+#: ctk/ctkprintoperation-win32.c:1770
 #, fuzzy
 msgid "Invalid handle to PrintDlgEx"
 msgstr "Дүрсний толгой нь буруу"
 
-#: gtk/gtkprintoperation-win32.c:1775
+#: ctk/ctkprintoperation-win32.c:1775
 msgid "Unspecified error"
 msgstr ""
 
-#: gtk/gtkprintunixdialog.c:618
+#: ctk/ctkprintunixdialog.c:618
 msgid "Getting printer information failed"
 msgstr ""
 
-#: gtk/gtkprintunixdialog.c:1873
+#: ctk/ctkprintunixdialog.c:1873
 msgid "Getting printer information..."
 msgstr ""
 
-# gtk/gtkstock.c:313
-#: gtk/gtkprintunixdialog.c:2139
+# ctk/ctkstock.c:313
+#: ctk/ctkprintunixdialog.c:2139
 #, fuzzy
 msgid "Printer"
 msgstr "_хэвлэ"
 
-# gtk/gtkfilesel.c:2103
+# ctk/ctkfilesel.c:2103
 #. Translators: this is the header for the location column in the print dialog
-#: gtk/gtkprintunixdialog.c:2149
+#: ctk/ctkprintunixdialog.c:2149
 #, fuzzy
 msgid "Location"
 msgstr "_Байршил:"
 
 #. Translators: this is the header for the printer status column in the print dialog
-#: gtk/gtkprintunixdialog.c:2160
+#: ctk/ctkprintunixdialog.c:2160
 msgid "Status"
 msgstr ""
 
-#: gtk/gtkprintunixdialog.c:2186
+#: ctk/ctkprintunixdialog.c:2186
 msgid "Range"
 msgstr ""
 
-#: gtk/gtkprintunixdialog.c:2190
+#: ctk/ctkprintunixdialog.c:2190
 msgid "_All Pages"
 msgstr ""
 
-# gtk/gtkfilesel.c:1444
-#: gtk/gtkprintunixdialog.c:2197
+# ctk/ctkfilesel.c:1444
+#: ctk/ctkprintunixdialog.c:2197
 #, fuzzy
 msgid "C_urrent Page"
 msgstr "Үү_сгэх"
 
-# gtk/gtkfilesel.c:2103
-#: gtk/gtkprintunixdialog.c:2207
+# ctk/ctkfilesel.c:2103
+#: ctk/ctkprintunixdialog.c:2207
 #, fuzzy
 msgid "Se_lection"
 msgstr "_Сонголт: "
 
-#: gtk/gtkprintunixdialog.c:2216
+#: ctk/ctkprintunixdialog.c:2216
 msgid "Pag_es:"
 msgstr ""
 
-#: gtk/gtkprintunixdialog.c:2217
+#: ctk/ctkprintunixdialog.c:2217
 msgid ""
 "Specify one or more page ranges,\n"
 " e.g. 1-3,7,11"
 msgstr ""
 
-# gtk/gtkfilesel.c:1712
-#: gtk/gtkprintunixdialog.c:2227
+# ctk/ctkfilesel.c:1712
+#: ctk/ctkprintunixdialog.c:2227
 #, fuzzy
 msgid "Pages"
 msgstr "_Сольж нэрлэх"
 
-#: gtk/gtkprintunixdialog.c:2240
+#: ctk/ctkprintunixdialog.c:2240
 msgid "Copies"
 msgstr ""
 
 #. FIXME chpe: too much space between Copies and spinbutton, put those 2 in a hbox and make it span 2 columns
-#: gtk/gtkprintunixdialog.c:2245
+#: ctk/ctkprintunixdialog.c:2245
 msgid "Copie_s:"
 msgstr ""
 
-# gtk/gtkfilesel.c:1444
-#: gtk/gtkprintunixdialog.c:2263
+# ctk/ctkfilesel.c:1444
+#: ctk/ctkprintunixdialog.c:2263
 #, fuzzy
 msgid "C_ollate"
 msgstr "Үү_сгэх"
 
-# gtk/gtkstock.c:320
-#: gtk/gtkprintunixdialog.c:2271
+# ctk/ctkstock.c:320
+#: ctk/ctkprintunixdialog.c:2271
 #, fuzzy
 msgid "_Reverse"
 msgstr "_Буцааж тавих"
 
-#: gtk/gtkprintunixdialog.c:2291
+#: ctk/ctkprintunixdialog.c:2291
 msgid "General"
 msgstr ""
 
 #. Translators: These strings name the possible arrangements of
-#. * multiple pages on a sheet when printing (same as in gtkprintbackendcups.c)
+#. * multiple pages on a sheet when printing (same as in ctkprintbackendcups.c)
 #.
 #. Translators: These strings name the possible arrangements of
 #. * multiple pages on a sheet when printing
 #.
-#: gtk/gtkprintunixdialog.c:3017
-#: modules/printbackends/cups/gtkprintbackendcups.c:3508
+#: ctk/ctkprintunixdialog.c:3017
+#: modules/printbackends/cups/ctkprintbackendcups.c:3508
 msgid "Left to right, top to bottom"
 msgstr ""
 
-#: gtk/gtkprintunixdialog.c:3017
-#: modules/printbackends/cups/gtkprintbackendcups.c:3508
+#: ctk/ctkprintunixdialog.c:3017
+#: modules/printbackends/cups/ctkprintbackendcups.c:3508
 msgid "Left to right, bottom to top"
 msgstr ""
 
-#: gtk/gtkprintunixdialog.c:3018
-#: modules/printbackends/cups/gtkprintbackendcups.c:3509
+#: ctk/ctkprintunixdialog.c:3018
+#: modules/printbackends/cups/ctkprintbackendcups.c:3509
 msgid "Right to left, top to bottom"
 msgstr ""
 
-#: gtk/gtkprintunixdialog.c:3018
-#: modules/printbackends/cups/gtkprintbackendcups.c:3509
+#: ctk/ctkprintunixdialog.c:3018
+#: modules/printbackends/cups/ctkprintbackendcups.c:3509
 msgid "Right to left, bottom to top"
 msgstr ""
 
-#: gtk/gtkprintunixdialog.c:3019
-#: modules/printbackends/cups/gtkprintbackendcups.c:3510
+#: ctk/ctkprintunixdialog.c:3019
+#: modules/printbackends/cups/ctkprintbackendcups.c:3510
 msgid "Top to bottom, left to right"
 msgstr ""
 
-#: gtk/gtkprintunixdialog.c:3019
-#: modules/printbackends/cups/gtkprintbackendcups.c:3510
+#: ctk/ctkprintunixdialog.c:3019
+#: modules/printbackends/cups/ctkprintbackendcups.c:3510
 msgid "Top to bottom, right to left"
 msgstr ""
 
-#: gtk/gtkprintunixdialog.c:3020
-#: modules/printbackends/cups/gtkprintbackendcups.c:3511
+#: ctk/ctkprintunixdialog.c:3020
+#: modules/printbackends/cups/ctkprintbackendcups.c:3511
 msgid "Bottom to top, left to right"
 msgstr ""
 
-#: gtk/gtkprintunixdialog.c:3020
-#: modules/printbackends/cups/gtkprintbackendcups.c:3511
+#: ctk/ctkprintunixdialog.c:3020
+#: modules/printbackends/cups/ctkprintbackendcups.c:3511
 msgid "Bottom to top, right to left"
 msgstr ""
 
-# gtk/gtkstock.c:268
+# ctk/ctkstock.c:268
 #. Translators, this string is used to label the option in the print
 #. * dialog that controls in what order multiple pages are arranged
 #.
-#: gtk/gtkprintunixdialog.c:3024 gtk/gtkprintunixdialog.c:3037
-#: modules/printbackends/cups/gtkprintbackendcups.c:3543
+#: ctk/ctkprintunixdialog.c:3024 ctk/ctkprintunixdialog.c:3037
+#: modules/printbackends/cups/ctkprintbackendcups.c:3543
 #, fuzzy
 msgid "Page Ordering"
 msgstr "Сануулга"
 
-#: gtk/gtkprintunixdialog.c:3053
+#: ctk/ctkprintunixdialog.c:3053
 #, fuzzy
 msgid "Left to right"
 msgstr "LRM Зүүнээс баруун тийш тэмдэглэх"
 
-# gtk/gtkstock.c:313
-#: gtk/gtkprintunixdialog.c:3054
+# ctk/ctkstock.c:313
+#: ctk/ctkprintunixdialog.c:3054
 #, fuzzy
 msgid "Right to left"
 msgstr "_хэвлэ"
 
-#: gtk/gtkprintunixdialog.c:3066
+#: ctk/ctkprintunixdialog.c:3066
 msgid "Top to bottom"
 msgstr ""
 
-#: gtk/gtkprintunixdialog.c:3067
+#: ctk/ctkprintunixdialog.c:3067
 msgid "Bottom to top"
 msgstr ""
 
-#: gtk/gtkprintunixdialog.c:3307
+#: ctk/ctkprintunixdialog.c:3307
 msgid "Layout"
 msgstr ""
 
-#: gtk/gtkprintunixdialog.c:3311
+#: ctk/ctkprintunixdialog.c:3311
 msgid "T_wo-sided:"
 msgstr ""
 
-# gtk/gtkstock.c:315
-#: gtk/gtkprintunixdialog.c:3326
+# ctk/ctkstock.c:315
+#: ctk/ctkprintunixdialog.c:3326
 #, fuzzy
 msgid "Pages per _side:"
 msgstr "_Гар тохируулга"
 
-# gtk/gtkstock.c:315
-#: gtk/gtkprintunixdialog.c:3343
+# ctk/ctkstock.c:315
+#: ctk/ctkprintunixdialog.c:3343
 #, fuzzy
 msgid "Page or_dering:"
 msgstr "_Гар тохируулга"
 
-# gtk/gtkstock.c:313
-#: gtk/gtkprintunixdialog.c:3359
+# ctk/ctkstock.c:313
+#: ctk/ctkprintunixdialog.c:3359
 #, fuzzy
 msgid "_Only print:"
 msgstr "_хэвлэ"
 
 #. In enum order
-#: gtk/gtkprintunixdialog.c:3374
+#: ctk/ctkprintunixdialog.c:3374
 msgid "All sheets"
 msgstr ""
 
-#: gtk/gtkprintunixdialog.c:3375
+#: ctk/ctkprintunixdialog.c:3375
 msgid "Even sheets"
 msgstr ""
 
-#: gtk/gtkprintunixdialog.c:3376
+#: ctk/ctkprintunixdialog.c:3376
 msgid "Odd sheets"
 msgstr ""
 
-# gtk/gtkcolorsel.c:1825
-#: gtk/gtkprintunixdialog.c:3379
+# ctk/ctkcolorsel.c:1825
+#: ctk/ctkprintunixdialog.c:3379
 #, fuzzy
 msgid "Sc_ale:"
 msgstr "Ут_га:"
 
-#: gtk/gtkprintunixdialog.c:3406
+#: ctk/ctkprintunixdialog.c:3406
 msgid "Paper"
 msgstr ""
 
-# gtk/gtkstock.c:315
-#: gtk/gtkprintunixdialog.c:3410
+# ctk/ctkstock.c:315
+#: ctk/ctkprintunixdialog.c:3410
 #, fuzzy
 msgid "Paper _type:"
 msgstr "_Гар тохируулга"
 
-# gtk/gtkstock.c:315
-#: gtk/gtkprintunixdialog.c:3425
+# ctk/ctkstock.c:315
+#: ctk/ctkprintunixdialog.c:3425
 #, fuzzy
 msgid "Paper _source:"
 msgstr "_Гар тохируулга"
 
-#: gtk/gtkprintunixdialog.c:3440
+#: ctk/ctkprintunixdialog.c:3440
 msgid "Output t_ray:"
 msgstr ""
 
-# gtk/gtkcolorsel.c:1823
-#: gtk/gtkprintunixdialog.c:3480
+# ctk/ctkcolorsel.c:1823
+#: ctk/ctkprintunixdialog.c:3480
 #, fuzzy
 msgid "Or_ientation:"
 msgstr "Хан_галуун:"
 
-# gtk/gtkstock.c:313
+# ctk/ctkstock.c:313
 #. In enum order
-#: gtk/gtkprintunixdialog.c:3495
+#: ctk/ctkprintunixdialog.c:3495
 #, fuzzy
 msgid "Portrait"
 msgstr "_хэвлэ"
 
-#: gtk/gtkprintunixdialog.c:3496
+#: ctk/ctkprintunixdialog.c:3496
 msgid "Landscape"
 msgstr ""
 
-#: gtk/gtkprintunixdialog.c:3497
+#: ctk/ctkprintunixdialog.c:3497
 msgid "Reverse portrait"
 msgstr ""
 
-#: gtk/gtkprintunixdialog.c:3498
+#: ctk/ctkprintunixdialog.c:3498
 msgid "Reverse landscape"
 msgstr ""
 
-#: gtk/gtkprintunixdialog.c:3543
+#: ctk/ctkprintunixdialog.c:3543
 msgid "Job Details"
 msgstr ""
 
-#: gtk/gtkprintunixdialog.c:3549
+#: ctk/ctkprintunixdialog.c:3549
 msgid "Pri_ority:"
 msgstr ""
 
-#: gtk/gtkprintunixdialog.c:3564
+#: ctk/ctkprintunixdialog.c:3564
 msgid "_Billing info:"
 msgstr ""
 
-#: gtk/gtkprintunixdialog.c:3582
+#: ctk/ctkprintunixdialog.c:3582
 msgid "Print Document"
 msgstr ""
 
-# gtk/gtkstock.c:308
+# ctk/ctkstock.c:308
 #. Translators: this is one of the choices for the print at option
 #. * in the print dialog
 #.
-#: gtk/gtkprintunixdialog.c:3591
+#: ctk/ctkprintunixdialog.c:3591
 #, fuzzy
 msgid "_Now"
 msgstr "_Үгүй"
 
-#: gtk/gtkprintunixdialog.c:3602
+#: ctk/ctkprintunixdialog.c:3602
 msgid "A_t:"
 msgstr ""
 
@@ -2127,144 +2127,144 @@ msgstr ""
 #. * You can remove the am/pm values below for your locale if they are not
 #. * supported.
 #.
-#: gtk/gtkprintunixdialog.c:3608
+#: ctk/ctkprintunixdialog.c:3608
 msgid ""
 "Specify the time of print,\n"
 " e.g. 15:30, 2:35 pm, 14:15:20, 11:46:30 am, 4 pm"
 msgstr ""
 
-#: gtk/gtkprintunixdialog.c:3618
+#: ctk/ctkprintunixdialog.c:3618
 msgid "Time of print"
 msgstr ""
 
-# gtk/gtkstock.c:277
-#: gtk/gtkprintunixdialog.c:3634
+# ctk/ctkstock.c:277
+#: ctk/ctkprintunixdialog.c:3634
 #, fuzzy
 msgid "On _hold"
 msgstr "_Тод"
 
-#: gtk/gtkprintunixdialog.c:3635
+#: ctk/ctkprintunixdialog.c:3635
 msgid "Hold the job until it is explicitly released"
 msgstr ""
 
-#: gtk/gtkprintunixdialog.c:3655
+#: ctk/ctkprintunixdialog.c:3655
 msgid "Add Cover Page"
 msgstr ""
 
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the front cover page.
 #.
-#: gtk/gtkprintunixdialog.c:3664
+#: ctk/ctkprintunixdialog.c:3664
 msgid "Be_fore:"
 msgstr ""
 
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the back cover page.
 #.
-#: gtk/gtkprintunixdialog.c:3682
+#: ctk/ctkprintunixdialog.c:3682
 msgid "_After:"
 msgstr ""
 
 #. Translators: this is the tab label for the notebook tab containing
 #. * job-specific options in the print dialog
 #.
-#: gtk/gtkprintunixdialog.c:3700
+#: ctk/ctkprintunixdialog.c:3700
 msgid "Job"
 msgstr ""
 
-#: gtk/gtkprintunixdialog.c:3766
+#: ctk/ctkprintunixdialog.c:3766
 msgid "Advanced"
 msgstr ""
 
 #. Translators: this will appear as tab label in print dialog.
-#: gtk/gtkprintunixdialog.c:3804
+#: ctk/ctkprintunixdialog.c:3804
 msgid "Image Quality"
 msgstr ""
 
-# gtk/gtkstock.c:323
+# ctk/ctkstock.c:323
 #. Translators: this will appear as tab label in print dialog.
-#: gtk/gtkprintunixdialog.c:3808
+#: ctk/ctkprintunixdialog.c:3808
 #, fuzzy
 msgid "Color"
 msgstr "_Өнгө"
 
 #. Translators: this will appear as tab label in print dialog.
 #. It's a typographical term, as in "Binding and finishing"
-#: gtk/gtkprintunixdialog.c:3813
+#: ctk/ctkprintunixdialog.c:3813
 msgid "Finishing"
 msgstr ""
 
-#: gtk/gtkprintunixdialog.c:3823
+#: ctk/ctkprintunixdialog.c:3823
 msgid "Some of the settings in the dialog conflict"
 msgstr ""
 
-# gtk/gtkstock.c:313
-#: gtk/gtkprintunixdialog.c:3846
+# ctk/ctkstock.c:313
+#: ctk/ctkprintunixdialog.c:3846
 #, fuzzy
 msgid "Print"
 msgstr "_хэвлэ"
 
-# gtk/gtkrc.c:2270
-#: gtk/gtkrc.c:2834
+# ctk/ctkrc.c:2270
+#: ctk/ctkrc.c:2834
 #, c-format
 msgid "Unable to find include file: \"%s\""
 msgstr "Дагалдах файлыг олж чадсангүй: \"%s\""
 
-# gtk/gtkrc.c:2912 gtk/gtkrc.c:2915
-#: gtk/gtkrc.c:3470 gtk/gtkrc.c:3473
+# ctk/ctkrc.c:2912 ctk/ctkrc.c:2915
+#: ctk/ctkrc.c:3470 ctk/ctkrc.c:3473
 #, c-format
 msgid "Unable to locate image file in pixmap_path: \"%s\""
 msgstr "pixmap_path: \"%s\" дэх зурагтай файл олдсонгүй."
 
-#: gtk/gtkrecentaction.c:165 gtk/gtkrecentaction.c:173
-#: gtk/gtkrecentchoosermenu.c:615 gtk/gtkrecentchoosermenu.c:623
+#: ctk/ctkrecentaction.c:165 ctk/ctkrecentaction.c:173
+#: ctk/ctkrecentchoosermenu.c:615 ctk/ctkrecentchoosermenu.c:623
 #, c-format
 msgid "This function is not implemented for widgets of class '%s'"
 msgstr ""
 
-#: gtk/gtkrecentchooserdefault.c:482
+#: ctk/ctkrecentchooserdefault.c:482
 msgid "Select which type of documents are shown"
 msgstr ""
 
-#: gtk/gtkrecentchooserdefault.c:1138 gtk/gtkrecentchooserdefault.c:1175
+#: ctk/ctkrecentchooserdefault.c:1138 ctk/ctkrecentchooserdefault.c:1175
 #, c-format
 msgid "No item for URI '%s' found"
 msgstr ""
 
-#: gtk/gtkrecentchooserdefault.c:1302
+#: ctk/ctkrecentchooserdefault.c:1302
 msgid "Untitled filter"
 msgstr ""
 
-#: gtk/gtkrecentchooserdefault.c:1655
+#: ctk/ctkrecentchooserdefault.c:1655
 #, fuzzy
 msgid "Could not remove item"
 msgstr ""
 "%s-г тэмдэглэж чадсангүй:\n"
 "%s"
 
-#: gtk/gtkrecentchooserdefault.c:1699
+#: ctk/ctkrecentchooserdefault.c:1699
 #, fuzzy
 msgid "Could not clear list"
 msgstr ""
 "%s-г тэмдэглэж чадсангүй:\n"
 "%s"
 
-#: gtk/gtkrecentchooserdefault.c:1783
+#: ctk/ctkrecentchooserdefault.c:1783
 #, fuzzy
 msgid "Copy _Location"
 msgstr "Байршил нээх"
 
-#: gtk/gtkrecentchooserdefault.c:1796
+#: ctk/ctkrecentchooserdefault.c:1796
 msgid "_Remove From List"
 msgstr ""
 
-# gtk/gtkstock.c:280
-#: gtk/gtkrecentchooserdefault.c:1805
+# ctk/ctkstock.c:280
+#: ctk/ctkrecentchooserdefault.c:1805
 #, fuzzy
 msgid "_Clear List"
 msgstr "_Цэвэрлэх"
 
-#: gtk/gtkrecentchooserdefault.c:1819
+#: ctk/ctkrecentchooserdefault.c:1819
 msgid "Show _Private Resources"
 msgstr ""
 
@@ -2279,23 +2279,23 @@ msgstr ""
 #. * user appended or prepended custom menu items to the
 #. * recent chooser menu widget.
 #.
-#: gtk/gtkrecentchoosermenu.c:369
+#: ctk/ctkrecentchoosermenu.c:369
 #, fuzzy
 msgid "No items found"
 msgstr "XPM биш толгой олдлоо"
 
-#: gtk/gtkrecentchoosermenu.c:535 gtk/gtkrecentchoosermenu.c:591
+#: ctk/ctkrecentchoosermenu.c:535 ctk/ctkrecentchoosermenu.c:591
 #, c-format
 msgid "No recently used resource found with URI `%s'"
 msgstr ""
 
-#: gtk/gtkrecentchoosermenu.c:802
+#: ctk/ctkrecentchoosermenu.c:802
 #, c-format
 msgid "Open '%s'"
 msgstr ""
 
-# gtk/gtkinputdialog.c:582
-#: gtk/gtkrecentchoosermenu.c:832
+# ctk/ctkinputdialog.c:582
+#: ctk/ctkrecentchoosermenu.c:832
 #, fuzzy
 msgid "Unknown item"
 msgstr "Тодорхойгүй"
@@ -2305,7 +2305,7 @@ msgstr "Тодорхойгүй"
 #. * the %s is the name of the item. Please keep the _ in front
 #. * of the number to give these menu items a mnemonic.
 #.
-#: gtk/gtkrecentchoosermenu.c:843
+#: ctk/ctkrecentchoosermenu.c:843
 #, c-format
 msgctxt "recent menu label"
 msgid "_%d. %s"
@@ -2314,54 +2314,54 @@ msgstr ""
 #. This is the format that is used for items in a recent files menu.
 #. * The %d is the number of the item, the %s is the name of the item.
 #.
-#: gtk/gtkrecentchoosermenu.c:848
+#: ctk/ctkrecentchoosermenu.c:848
 #, fuzzy, c-format
 msgctxt "recent menu label"
 msgid "%d. %s"
 msgstr "%s: %s"
 
-# gtk/gtkrc.c:2270
-#: gtk/gtkrecentmanager.c:980 gtk/gtkrecentmanager.c:993
-#: gtk/gtkrecentmanager.c:1131 gtk/gtkrecentmanager.c:1141
-#: gtk/gtkrecentmanager.c:1194 gtk/gtkrecentmanager.c:1203
-#: gtk/gtkrecentmanager.c:1218
+# ctk/ctkrc.c:2270
+#: ctk/ctkrecentmanager.c:980 ctk/ctkrecentmanager.c:993
+#: ctk/ctkrecentmanager.c:1131 ctk/ctkrecentmanager.c:1141
+#: ctk/ctkrecentmanager.c:1194 ctk/ctkrecentmanager.c:1203
+#: ctk/ctkrecentmanager.c:1218
 #, fuzzy, c-format
 msgid "Unable to find an item with URI '%s'"
 msgstr "Дагалдах файлыг олж чадсангүй: \"%s\""
 
-#: gtk/gtkspinner.c:456
+#: ctk/ctkspinner.c:456
 msgctxt "throbbing progress animation widget"
 msgid "Spinner"
 msgstr ""
 
-#: gtk/gtkspinner.c:457
+#: ctk/ctkspinner.c:457
 msgid "Provides visual indication of progress"
 msgstr ""
 
-# gtk/gtkstock.c:267
-#. KEEP IN SYNC with gtkiconfactory.c stock icons, when appropriate
-#: gtk/gtkstock.c:313
+# ctk/ctkstock.c:267
+#. KEEP IN SYNC with ctkiconfactory.c stock icons, when appropriate
+#: ctk/ctkstock.c:313
 #, fuzzy
 msgctxt "Stock label"
 msgid "Information"
 msgstr "Мэдээлэл"
 
-# gtk/gtkstock.c:268
-#: gtk/gtkstock.c:314
+# ctk/ctkstock.c:268
+#: ctk/ctkstock.c:314
 #, fuzzy
 msgctxt "Stock label"
 msgid "Warning"
 msgstr "Сануулга"
 
-# gtk/gtkstock.c:269
-#: gtk/gtkstock.c:315
+# ctk/ctkstock.c:269
+#: ctk/ctkstock.c:315
 #, fuzzy
 msgctxt "Stock label"
 msgid "Error"
 msgstr "Алдаа"
 
-# gtk/gtkstock.c:270
-#: gtk/gtkstock.c:316
+# ctk/ctkstock.c:270
+#: ctk/ctkstock.c:316
 #, fuzzy
 msgctxt "Stock label"
 msgid "Question"
@@ -2370,853 +2370,853 @@ msgstr "Хариулт"
 #. FIXME these need accelerators when appropriate, and
 #. * need the mnemonics to be rationalized
 #.
-#: gtk/gtkstock.c:321
+#: ctk/ctkstock.c:321
 msgctxt "Stock label"
 msgid "_About"
 msgstr ""
 
-#: gtk/gtkstock.c:322
+#: ctk/ctkstock.c:322
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Add"
 msgstr "_Нэм"
 
-# gtk/gtkstock.c:276
-#: gtk/gtkstock.c:323
+# ctk/ctkstock.c:276
+#: ctk/ctkstock.c:323
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Apply"
 msgstr "_Хэрэглэх"
 
-# gtk/gtkstock.c:277
-#: gtk/gtkstock.c:324
+# ctk/ctkstock.c:277
+#: ctk/ctkstock.c:324
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Bold"
 msgstr "_Тод"
 
-# gtk/gtkstock.c:278
-#: gtk/gtkstock.c:325
+# ctk/ctkstock.c:278
+#: ctk/ctkstock.c:325
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Cancel"
 msgstr "_Хүчингүй"
 
-# gtk/gtkstock.c:279
-#: gtk/gtkstock.c:326
+# ctk/ctkstock.c:279
+#: ctk/ctkstock.c:326
 #, fuzzy
 msgctxt "Stock label"
 msgid "_CD-ROM"
 msgstr "_CD-Rom"
 
-# gtk/gtkstock.c:280
-#: gtk/gtkstock.c:327
+# ctk/ctkstock.c:280
+#: ctk/ctkstock.c:327
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Clear"
 msgstr "_Цэвэрлэх"
 
-# gtk/gtkstock.c:281
-#: gtk/gtkstock.c:328
+# ctk/ctkstock.c:281
+#: ctk/ctkstock.c:328
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Close"
 msgstr "_Хаах"
 
-# gtk/gtkstock.c:282
-#: gtk/gtkstock.c:329
+# ctk/ctkstock.c:282
+#: ctk/ctkstock.c:329
 #, fuzzy
 msgctxt "Stock label"
 msgid "C_onnect"
 msgstr "_Хувиргах"
 
-# gtk/gtkstock.c:282
-#: gtk/gtkstock.c:330
+# ctk/ctkstock.c:282
+#: ctk/ctkstock.c:330
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Convert"
 msgstr "_Хувиргах"
 
-# gtk/gtkstock.c:283
-#: gtk/gtkstock.c:331
+# ctk/ctkstock.c:283
+#: ctk/ctkstock.c:331
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Copy"
 msgstr "_Хуул"
 
-# gtk/gtkstock.c:284
-#: gtk/gtkstock.c:332
+# ctk/ctkstock.c:284
+#: ctk/ctkstock.c:332
 #, fuzzy
 msgctxt "Stock label"
 msgid "Cu_t"
 msgstr "_Зөө"
 
-# gtk/gtkstock.c:285
-#: gtk/gtkstock.c:333
+# ctk/ctkstock.c:285
+#: ctk/ctkstock.c:333
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Delete"
 msgstr "_Устга"
 
-# gtk/gtkinputdialog.c:238
-#: gtk/gtkstock.c:334
+# ctk/ctkinputdialog.c:238
+#: ctk/ctkstock.c:334
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Discard"
 msgstr "Идэвхжээгүй."
 
-# gtk/gtkstock.c:282
-#: gtk/gtkstock.c:335
+# ctk/ctkstock.c:282
+#: ctk/ctkstock.c:335
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Disconnect"
 msgstr "_Хувиргах"
 
-# gtk/gtkstock.c:286
-#: gtk/gtkstock.c:336
+# ctk/ctkstock.c:286
+#: ctk/ctkstock.c:336
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Execute"
 msgstr "_Биелүүлэх"
 
-# gtk/gtkfilesel.c:1444
-#: gtk/gtkstock.c:337
+# ctk/ctkfilesel.c:1444
+#: ctk/ctkstock.c:337
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Edit"
 msgstr "Үү_сгэх"
 
-# gtk/gtkfilesel.c:746
-#: gtk/gtkstock.c:338
+# ctk/ctkfilesel.c:746
+#: ctk/ctkstock.c:338
 #, fuzzy
 msgctxt "Stock label"
 msgid "_File"
 msgstr "Файлууд"
 
-# gtk/gtkstock.c:287
-#: gtk/gtkstock.c:339
+# ctk/ctkstock.c:287
+#: ctk/ctkstock.c:339
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Find"
 msgstr "_Хайх"
 
-# gtk/gtkstock.c:288
-#: gtk/gtkstock.c:340
+# ctk/ctkstock.c:288
+#: ctk/ctkstock.c:340
 #, fuzzy
 msgctxt "Stock label"
 msgid "Find and _Replace"
 msgstr "Хайх_дарах"
 
-# gtk/gtkstock.c:289
-#: gtk/gtkstock.c:341
+# ctk/ctkstock.c:289
+#: ctk/ctkstock.c:341
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Floppy"
 msgstr "_Уян диск"
 
-#: gtk/gtkstock.c:342
+#: ctk/ctkstock.c:342
 msgctxt "Stock label"
 msgid "_Fullscreen"
 msgstr ""
 
-#: gtk/gtkstock.c:343
+#: ctk/ctkstock.c:343
 msgctxt "Stock label"
 msgid "_Leave Fullscreen"
 msgstr ""
 
-# gtk/gtkstock.c:290
+# ctk/ctkstock.c:290
 #. This is a navigation label as in "go to the bottom of the page"
-#: gtk/gtkstock.c:345
+#: ctk/ctkstock.c:345
 #, fuzzy
 msgctxt "Stock label, navigation"
 msgid "_Bottom"
 msgstr "_Доод"
 
-# gtk/gtkstock.c:291
+# ctk/ctkstock.c:291
 #. This is a navigation label as in "go to the first page"
-#: gtk/gtkstock.c:347
+#: ctk/ctkstock.c:347
 #, fuzzy
 msgctxt "Stock label, navigation"
 msgid "_First"
 msgstr "_Эхэн"
 
-# gtk/gtkstock.c:292
+# ctk/ctkstock.c:292
 #. This is a navigation label as in "go to the last page"
-#: gtk/gtkstock.c:349
+#: ctk/ctkstock.c:349
 #, fuzzy
 msgctxt "Stock label, navigation"
 msgid "_Last"
 msgstr "_Сүүлч"
 
-# gtk/gtkstock.c:293
+# ctk/ctkstock.c:293
 #. This is a navigation label as in "go to the top of the page"
-#: gtk/gtkstock.c:351
+#: ctk/ctkstock.c:351
 #, fuzzy
 msgctxt "Stock label, navigation"
 msgid "_Top"
 msgstr "_Дээд"
 
-# gtk/gtkstock.c:294
+# ctk/ctkstock.c:294
 #. This is a navigation label as in "go back"
-#: gtk/gtkstock.c:353
+#: ctk/ctkstock.c:353
 #, fuzzy
 msgctxt "Stock label, navigation"
 msgid "_Back"
 msgstr "_Буцах"
 
-# gtk/gtkstock.c:295
+# ctk/ctkstock.c:295
 #. This is a navigation label as in "go down"
-#: gtk/gtkstock.c:355
+#: ctk/ctkstock.c:355
 #, fuzzy
 msgctxt "Stock label, navigation"
 msgid "_Down"
 msgstr "_Доош"
 
-# gtk/gtkstock.c:296
+# ctk/ctkstock.c:296
 #. This is a navigation label as in "go forward"
-#: gtk/gtkstock.c:357
+#: ctk/ctkstock.c:357
 #, fuzzy
 msgctxt "Stock label, navigation"
 msgid "_Forward"
 msgstr "_Урагш"
 
-# gtk/gtkstock.c:297
+# ctk/ctkstock.c:297
 #. This is a navigation label as in "go up"
-#: gtk/gtkstock.c:359
+#: ctk/ctkstock.c:359
 #, fuzzy
 msgctxt "Stock label, navigation"
 msgid "_Up"
 msgstr "_Дээш"
 
-#: gtk/gtkstock.c:360
+#: ctk/ctkstock.c:360
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Hard Disk"
 msgstr "_Хатуу диск"
 
-# gtk/gtkstock.c:298
-#: gtk/gtkstock.c:361
+# ctk/ctkstock.c:298
+#: ctk/ctkstock.c:361
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Help"
 msgstr "_Тусламж"
 
-# gtk/gtkstock.c:299
-#: gtk/gtkstock.c:362
+# ctk/ctkstock.c:299
+#: ctk/ctkstock.c:362
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Home"
 msgstr "_Гэрт"
 
-#: gtk/gtkstock.c:363
+#: ctk/ctkstock.c:363
 #, fuzzy
 msgctxt "Stock label"
 msgid "Increase Indent"
 msgstr "Шүд нэмэх"
 
-#: gtk/gtkstock.c:364
+#: ctk/ctkstock.c:364
 #, fuzzy
 msgctxt "Stock label"
 msgid "Decrease Indent"
 msgstr "Шүд хасах"
 
-# gtk/gtkstock.c:300
-#: gtk/gtkstock.c:365
+# ctk/ctkstock.c:300
+#: ctk/ctkstock.c:365
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Index"
 msgstr "_Товчоон"
 
-# gtk/gtkstock.c:267
-#: gtk/gtkstock.c:366
+# ctk/ctkstock.c:267
+#: ctk/ctkstock.c:366
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Information"
 msgstr "Мэдээлэл"
 
-# gtk/gtkstock.c:301
-#: gtk/gtkstock.c:367
+# ctk/ctkstock.c:301
+#: ctk/ctkstock.c:367
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Italic"
 msgstr "_Налуу"
 
-# gtk/gtkstock.c:302
-#: gtk/gtkstock.c:368
+# ctk/ctkstock.c:302
+#: ctk/ctkstock.c:368
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Jump to"
 msgstr "�уу _үсэр"
 
-# gtk/gtkstock.c:282
+# ctk/ctkstock.c:282
 #. This is about text justification, "centered text"
-#: gtk/gtkstock.c:370
+#: ctk/ctkstock.c:370
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Center"
 msgstr "_Хувиргах"
 
-# gtk/gtkfilesel.c:746
+# ctk/ctkfilesel.c:746
 #. This is about text justification
-#: gtk/gtkstock.c:372
+#: ctk/ctkstock.c:372
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Fill"
 msgstr "Файлууд"
 
-# gtk/gtkstock.c:305
+# ctk/ctkstock.c:305
 #. This is about text justification, "left-justified text"
-#: gtk/gtkstock.c:374
+#: ctk/ctkstock.c:374
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Left"
 msgstr " _Зүүн"
 
-# gtk/gtkcolorsel.c:1821
+# ctk/ctkcolorsel.c:1821
 #. This is about text justification, "right-justified text"
-#: gtk/gtkstock.c:376
+#: ctk/ctkstock.c:376
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Right"
 msgstr "_Өнгө:"
 
-# gtk/gtkstock.c:296
+# ctk/ctkstock.c:296
 #. Media label, as in "fast forward"
-#: gtk/gtkstock.c:379
+#: ctk/ctkstock.c:379
 #, fuzzy
 msgctxt "Stock label, media"
 msgid "_Forward"
 msgstr "_Урагш"
 
-# gtk/gtkstock.c:307
+# ctk/ctkstock.c:307
 #. Media label, as in "next song"
-#: gtk/gtkstock.c:381
+#: ctk/ctkstock.c:381
 #, fuzzy
 msgctxt "Stock label, media"
 msgid "_Next"
 msgstr "_Шинэ"
 
-# gtk/gtkstock.c:311
+# ctk/ctkstock.c:311
 #. Media label, as in "pause music"
-#: gtk/gtkstock.c:383
+#: ctk/ctkstock.c:383
 #, fuzzy
 msgctxt "Stock label, media"
 msgid "P_ause"
 msgstr "_Буулгах"
 
-# gtk/gtkfilesel.c:1712
+# ctk/ctkfilesel.c:1712
 #. Media label, as in "play music"
-#: gtk/gtkstock.c:385
+#: ctk/ctkstock.c:385
 #, fuzzy
 msgctxt "Stock label, media"
 msgid "_Play"
 msgstr "_Сольж нэрлэх"
 
 #. Media label, as in  "previous song"
-#: gtk/gtkstock.c:387
+#: ctk/ctkstock.c:387
 #, fuzzy
 msgctxt "Stock label, media"
 msgid "Pre_vious"
 msgstr "_Харагдалт"
 
-# gtk/gtkcolorsel.c:1827
+# ctk/ctkcolorsel.c:1827
 #. Media label
-#: gtk/gtkstock.c:389
+#: ctk/ctkstock.c:389
 #, fuzzy
 msgctxt "Stock label, media"
 msgid "_Record"
 msgstr "Улаан:"
 
-# gtk/gtkstock.c:287
+# ctk/ctkstock.c:287
 #. Media label
-#: gtk/gtkstock.c:391
+#: ctk/ctkstock.c:391
 #, fuzzy
 msgctxt "Stock label, media"
 msgid "R_ewind"
 msgstr "_Хайх"
 
-# gtk/gtkstock.c:328
+# ctk/ctkstock.c:328
 #. Media label
-#: gtk/gtkstock.c:393
+#: ctk/ctkstock.c:393
 #, fuzzy
 msgctxt "Stock label, media"
 msgid "_Stop"
 msgstr "_Зогс"
 
-# gtk/gtkstock.c:307
-#: gtk/gtkstock.c:394
+# ctk/ctkstock.c:307
+#: ctk/ctkstock.c:394
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Network"
 msgstr "_Сүлжээ"
 
-# gtk/gtkstock.c:307
-#: gtk/gtkstock.c:395
+# ctk/ctkstock.c:307
+#: ctk/ctkstock.c:395
 #, fuzzy
 msgctxt "Stock label"
 msgid "_New"
 msgstr "_Шинэ"
 
-# gtk/gtkstock.c:308
-#: gtk/gtkstock.c:396
+# ctk/ctkstock.c:308
+#: ctk/ctkstock.c:396
 #, fuzzy
 msgctxt "Stock label"
 msgid "_No"
 msgstr "_Үгүй"
 
-# gtk/gtkstock.c:309
-#: gtk/gtkstock.c:397
+# ctk/ctkstock.c:309
+#: ctk/ctkstock.c:397
 #, fuzzy
 msgctxt "Stock label"
 msgid "_OK"
 msgstr "_OK"
 
-# gtk/gtkstock.c:310
-#: gtk/gtkstock.c:398
+# ctk/ctkstock.c:310
+#: ctk/ctkstock.c:398
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Open"
 msgstr "_Нээх"
 
 #. Page orientation
-#: gtk/gtkstock.c:400
+#: ctk/ctkstock.c:400
 msgctxt "Stock label"
 msgid "Landscape"
 msgstr ""
 
-# gtk/gtkstock.c:313
+# ctk/ctkstock.c:313
 #. Page orientation
-#: gtk/gtkstock.c:402
+#: ctk/ctkstock.c:402
 #, fuzzy
 msgctxt "Stock label"
 msgid "Portrait"
 msgstr "_хэвлэ"
 
 #. Page orientation
-#: gtk/gtkstock.c:404
+#: ctk/ctkstock.c:404
 msgctxt "Stock label"
 msgid "Reverse landscape"
 msgstr ""
 
 #. Page orientation
-#: gtk/gtkstock.c:406
+#: ctk/ctkstock.c:406
 msgctxt "Stock label"
 msgid "Reverse portrait"
 msgstr ""
 
-# gtk/gtknotebook.c:2439 gtk/gtknotebook.c:4695
-#: gtk/gtkstock.c:407
+# ctk/ctknotebook.c:2439 ctk/ctknotebook.c:4695
+#: ctk/ctkstock.c:407
 #, fuzzy
 msgctxt "Stock label"
 msgid "Page Set_up"
 msgstr "Хуудас %u"
 
-# gtk/gtkstock.c:311
-#: gtk/gtkstock.c:408
+# ctk/ctkstock.c:311
+#: ctk/ctkstock.c:408
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Paste"
 msgstr "_Буулгах"
 
-# gtk/gtkstock.c:312
-#: gtk/gtkstock.c:409
+# ctk/ctkstock.c:312
+#: ctk/ctkstock.c:409
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Preferences"
 msgstr "_Тохируулгууд"
 
-# gtk/gtkstock.c:313
-#: gtk/gtkstock.c:410
+# ctk/ctkstock.c:313
+#: ctk/ctkstock.c:410
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Print"
 msgstr "_хэвлэ"
 
-#: gtk/gtkstock.c:411
+#: ctk/ctkstock.c:411
 #, fuzzy
 msgctxt "Stock label"
 msgid "Print Pre_view"
 msgstr "Хэвлэх_харагдац"
 
-# gtk/gtkstock.c:315
-#: gtk/gtkstock.c:412
+# ctk/ctkstock.c:315
+#: ctk/ctkstock.c:412
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Properties"
 msgstr "_Гар тохируулга"
 
-# gtk/gtkstock.c:316
-#: gtk/gtkstock.c:413
+# ctk/ctkstock.c:316
+#: ctk/ctkstock.c:413
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Quit"
 msgstr "_Гарах"
 
-# gtk/gtkstock.c:317
-#: gtk/gtkstock.c:414
+# ctk/ctkstock.c:317
+#: ctk/ctkstock.c:414
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Redo"
 msgstr "_Давтах"
 
-# gtk/gtkstock.c:318
-#: gtk/gtkstock.c:415
+# ctk/ctkstock.c:318
+#: ctk/ctkstock.c:415
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Refresh"
 msgstr "_Сэргээх"
 
-# gtk/gtkstock.c:319
-#: gtk/gtkstock.c:416
+# ctk/ctkstock.c:319
+#: ctk/ctkstock.c:416
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Remove"
 msgstr "_Арилгах"
 
-# gtk/gtkstock.c:320
-#: gtk/gtkstock.c:417
+# ctk/ctkstock.c:320
+#: ctk/ctkstock.c:417
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Revert"
 msgstr "_Буцааж тавих"
 
-# gtk/gtkstock.c:321
-#: gtk/gtkstock.c:418
+# ctk/ctkstock.c:321
+#: ctk/ctkstock.c:418
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Save"
 msgstr "_Хадгалах"
 
-# gtk/gtkstock.c:322
-#: gtk/gtkstock.c:419
+# ctk/ctkstock.c:322
+#: ctk/ctkstock.c:419
 #, fuzzy
 msgctxt "Stock label"
 msgid "Save _As"
 msgstr "Гэж _хадгалах"
 
-# gtk/gtkentry.c:3850 gtk/gtklabel.c:3164
-#: gtk/gtkstock.c:420
+# ctk/ctkentry.c:3850 ctk/ctklabel.c:3164
+#: ctk/ctkstock.c:420
 #, fuzzy
 msgctxt "Stock label"
 msgid "Select _All"
 msgstr "_Бүгдийг сонгох"
 
-# gtk/gtkstock.c:323
-#: gtk/gtkstock.c:421
+# ctk/ctkstock.c:323
+#: ctk/ctkstock.c:421
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Color"
 msgstr "_Өнгө"
 
-# gtk/gtkstock.c:324
-#: gtk/gtkstock.c:422
+# ctk/ctkstock.c:324
+#: ctk/ctkstock.c:422
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Font"
 msgstr "_Фонт"
 
-# gtk/gtkstock.c:325
+# ctk/ctkstock.c:325
 #. Sorting direction
-#: gtk/gtkstock.c:424
+#: ctk/ctkstock.c:424
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Ascending"
 msgstr "_Өсөхөөр"
 
-# gtk/gtkstock.c:326
+# ctk/ctkstock.c:326
 #. Sorting direction
-#: gtk/gtkstock.c:426
+#: ctk/ctkstock.c:426
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Descending"
 msgstr "_Буурахаар"
 
-# gtk/gtkstock.c:327
-#: gtk/gtkstock.c:427
+# ctk/ctkstock.c:327
+#: ctk/ctkstock.c:427
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Spell Check"
 msgstr "_Дүрэм шалга"
 
-# gtk/gtkstock.c:328
-#: gtk/gtkstock.c:428
+# ctk/ctkstock.c:328
+#: ctk/ctkstock.c:428
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Stop"
 msgstr "_Зогс"
 
-# gtk/gtkstock.c:329
+# ctk/ctkstock.c:329
 #. Font variant
-#: gtk/gtkstock.c:430
+#: ctk/ctkstock.c:430
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Strikethrough"
 msgstr "_Голоороо зураастай"
 
-# gtk/gtkstock.c:330
-#: gtk/gtkstock.c:431
+# ctk/ctkstock.c:330
+#: ctk/ctkstock.c:431
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Undelete"
 msgstr "_Устгаснаа ухар"
 
-# gtk/gtkstock.c:331
+# ctk/ctkstock.c:331
 #. Font variant
-#: gtk/gtkstock.c:433
+#: ctk/ctkstock.c:433
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Underline"
 msgstr "Доогуур_зураас"
 
-# gtk/gtkstock.c:332
-#: gtk/gtkstock.c:434
+# ctk/ctkstock.c:332
+#: ctk/ctkstock.c:434
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Undo"
 msgstr "_Ухар"
 
-# gtk/gtkstock.c:333
-#: gtk/gtkstock.c:435
+# ctk/ctkstock.c:333
+#: ctk/ctkstock.c:435
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Yes"
 msgstr "_Тийм"
 
 #. Zoom
-#: gtk/gtkstock.c:437
+#: ctk/ctkstock.c:437
 #, fuzzy
 msgctxt "Stock label"
 msgid "_Normal Size"
 msgstr "_Энгийн хэмжээ"
 
 #. Zoom
-#: gtk/gtkstock.c:439
+#: ctk/ctkstock.c:439
 #, fuzzy
 msgctxt "Stock label"
 msgid "Best _Fit"
 msgstr "Хамгийн _таарамжтай"
 
-#: gtk/gtkstock.c:440
+#: ctk/ctkstock.c:440
 #, fuzzy
 msgctxt "Stock label"
 msgid "Zoom _In"
 msgstr "Масштаб _томруулах"
 
-#: gtk/gtkstock.c:441
+#: ctk/ctkstock.c:441
 #, fuzzy
 msgctxt "Stock label"
 msgid "Zoom _Out"
 msgstr "Масштаб жижигрүүлэх"
 
-#: gtk/gtktextbufferrichtext.c:650
+#: ctk/ctktextbufferrichtext.c:650
 #, c-format
 msgid "Unknown error when trying to deserialize %s"
 msgstr ""
 
-#: gtk/gtktextbufferrichtext.c:709
+#: ctk/ctktextbufferrichtext.c:709
 #, c-format
 msgid "No deserialize function found for format %s"
 msgstr ""
 
-#: gtk/gtktextbufferserialize.c:795 gtk/gtktextbufferserialize.c:821
+#: ctk/ctktextbufferserialize.c:795 ctk/ctktextbufferserialize.c:821
 #, c-format
 msgid "Both \"id\" and \"name\" were found on the <%s> element"
 msgstr ""
 
-#: gtk/gtktextbufferserialize.c:805 gtk/gtktextbufferserialize.c:831
+#: ctk/ctktextbufferserialize.c:805 ctk/ctktextbufferserialize.c:831
 #, c-format
 msgid "The attribute \"%s\" was found twice on the <%s> element"
 msgstr ""
 
-#: gtk/gtktextbufferserialize.c:845
+#: ctk/ctktextbufferserialize.c:845
 #, c-format
 msgid "<%s> element has invalid ID \"%s\""
 msgstr ""
 
-#: gtk/gtktextbufferserialize.c:855
+#: ctk/ctktextbufferserialize.c:855
 #, c-format
 msgid "<%s> element has neither a \"name\" nor an \"id\" attribute"
 msgstr ""
 
-#: gtk/gtktextbufferserialize.c:942
+#: ctk/ctktextbufferserialize.c:942
 #, c-format
 msgid "Attribute \"%s\" repeated twice on the same <%s> element"
 msgstr ""
 
-#: gtk/gtktextbufferserialize.c:960 gtk/gtktextbufferserialize.c:985
+#: ctk/ctktextbufferserialize.c:960 ctk/ctktextbufferserialize.c:985
 #, c-format
 msgid "Attribute \"%s\" is invalid on <%s> element in this context"
 msgstr ""
 
-#: gtk/gtktextbufferserialize.c:1024
+#: ctk/ctktextbufferserialize.c:1024
 #, c-format
 msgid "Tag \"%s\" has not been defined."
 msgstr ""
 
-#: gtk/gtktextbufferserialize.c:1036
+#: ctk/ctktextbufferserialize.c:1036
 msgid "Anonymous tag found and tags can not be created."
 msgstr ""
 
-#: gtk/gtktextbufferserialize.c:1047
+#: ctk/ctktextbufferserialize.c:1047
 #, c-format
 msgid "Tag \"%s\" does not exist in buffer and tags can not be created."
 msgstr ""
 
-#: gtk/gtktextbufferserialize.c:1146 gtk/gtktextbufferserialize.c:1221
-#: gtk/gtktextbufferserialize.c:1324 gtk/gtktextbufferserialize.c:1398
+#: ctk/ctktextbufferserialize.c:1146 ctk/ctktextbufferserialize.c:1221
+#: ctk/ctktextbufferserialize.c:1324 ctk/ctktextbufferserialize.c:1398
 #, c-format
 msgid "Element <%s> is not allowed below <%s>"
 msgstr ""
 
-#: gtk/gtktextbufferserialize.c:1177
+#: ctk/ctktextbufferserialize.c:1177
 #, c-format
 msgid "\"%s\" is not a valid attribute type"
 msgstr ""
 
-#: gtk/gtktextbufferserialize.c:1185
+#: ctk/ctktextbufferserialize.c:1185
 #, c-format
 msgid "\"%s\" is not a valid attribute name"
 msgstr ""
 
-#: gtk/gtktextbufferserialize.c:1195
+#: ctk/ctktextbufferserialize.c:1195
 #, c-format
 msgid ""
 "\"%s\" could not be converted to a value of type \"%s\" for attribute \"%s\""
 msgstr ""
 
-#: gtk/gtktextbufferserialize.c:1204
+#: ctk/ctktextbufferserialize.c:1204
 #, c-format
 msgid "\"%s\" is not a valid value for attribute \"%s\""
 msgstr ""
 
-#: gtk/gtktextbufferserialize.c:1289
+#: ctk/ctktextbufferserialize.c:1289
 #, c-format
 msgid "Tag \"%s\" already defined"
 msgstr ""
 
-#: gtk/gtktextbufferserialize.c:1300
+#: ctk/ctktextbufferserialize.c:1300
 #, c-format
 msgid "Tag \"%s\" has invalid priority \"%s\""
 msgstr ""
 
-#: gtk/gtktextbufferserialize.c:1353
+#: ctk/ctktextbufferserialize.c:1353
 #, c-format
 msgid "Outermost element in text must be <text_view_markup> not <%s>"
 msgstr ""
 
-#: gtk/gtktextbufferserialize.c:1362 gtk/gtktextbufferserialize.c:1378
+#: ctk/ctktextbufferserialize.c:1362 ctk/ctktextbufferserialize.c:1378
 #, c-format
 msgid "A <%s> element has already been specified"
 msgstr ""
 
-#: gtk/gtktextbufferserialize.c:1384
+#: ctk/ctktextbufferserialize.c:1384
 msgid "A <text> element can't occur before a <tags> element"
 msgstr ""
 
-#: gtk/gtktextbufferserialize.c:1784
+#: ctk/ctktextbufferserialize.c:1784
 msgid "Serialized data is malformed"
 msgstr ""
 
-#: gtk/gtktextbufferserialize.c:1862
+#: ctk/ctktextbufferserialize.c:1862
 msgid ""
 "Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 
-#: gtk/gtktextutil.c:60
+#: ctk/ctktextutil.c:60
 msgid "LRM _Left-to-right mark"
 msgstr "LRM Зүүнээс баруун тийш тэмдэглэх"
 
-#: gtk/gtktextutil.c:61
+#: ctk/ctktextutil.c:61
 msgid "RLM _Right-to-left mark"
 msgstr "RLM Баруунаас зүүн тийш тэмдэглэх"
 
-#: gtk/gtktextutil.c:62
+#: ctk/ctktextutil.c:62
 msgid "LRE Left-to-right _embedding"
 msgstr "LRE Зүүнээс баруун тийш _шигтгэх"
 
-#: gtk/gtktextutil.c:63
+#: ctk/ctktextutil.c:63
 msgid "RLE Right-to-left e_mbedding"
 msgstr "RLE Баруунаас зүүн тийш _шигтгэх"
 
-#: gtk/gtktextutil.c:64
+#: ctk/ctktextutil.c:64
 msgid "LRO Left-to-right _override"
 msgstr "LRO Зүүнээс баруун тийш _дарах"
 
-#: gtk/gtktextutil.c:65
+#: ctk/ctktextutil.c:65
 msgid "RLO Right-to-left o_verride"
 msgstr "RLO Баруунаас зүүн тийш дарах"
 
-#: gtk/gtktextutil.c:66
+#: ctk/ctktextutil.c:66
 msgid "PDF _Pop directional formatting"
 msgstr "PDF _Босоогоор байрлуулах"
 
-#: gtk/gtktextutil.c:67
+#: ctk/ctktextutil.c:67
 msgid "ZWS _Zero width space"
 msgstr "ZWS _Тэг өргөнт зай"
 
-#: gtk/gtktextutil.c:68
+#: ctk/ctktextutil.c:68
 msgid "ZWJ Zero width _joiner"
 msgstr "ZWJ Тэг өргөнт нэгтгэгч"
 
-#: gtk/gtktextutil.c:69
+#: ctk/ctktextutil.c:69
 msgid "ZWNJ Zero width _non-joiner"
 msgstr "ZWNJ Тэг өргөнт салгагч"
 
-# gtk/gtkthemes.c:69
-#: gtk/gtkthemes.c:72
+# ctk/ctkthemes.c:69
+#: ctk/ctkthemes.c:72
 #, c-format
 msgid "Unable to locate theme engine in module_path: \"%s\","
 msgstr "module_path: \"%s\" д сэдэв үүсгэх байрлал зөвшөөрөгдсөнгүй"
 
-#: gtk/gtkuimanager.c:1505
+#: ctk/ctkuimanager.c:1505
 #, c-format
 msgid "Unexpected start tag '%s' on line %d char %d"
 msgstr "'%s' хүлээгдээгүй эхлэл таг %d мөрний %d тэмдэгтэнд"
 
-#: gtk/gtkuimanager.c:1595
+#: ctk/ctkuimanager.c:1595
 #, c-format
 msgid "Unexpected character data on line %d char %d"
 msgstr "Хүлээгдээгүй тэмдэгтийн өгөгдөл %d мөрний %d тэмдэгтэнд"
 
-#: gtk/gtkuimanager.c:2427
+#: ctk/ctkuimanager.c:2427
 msgid "Empty"
 msgstr "Хоосон"
 
-# gtk/gtkcolorsel.c:1825
-#: gtk/gtkvolumebutton.c:83
+# ctk/ctkcolorsel.c:1825
+#: ctk/ctkvolumebutton.c:83
 #, fuzzy
 msgid "Volume"
 msgstr "Ут_га:"
 
-#: gtk/gtkvolumebutton.c:85
+#: ctk/ctkvolumebutton.c:85
 msgid "Turns volume down or up"
 msgstr ""
 
-#: gtk/gtkvolumebutton.c:88
+#: ctk/ctkvolumebutton.c:88
 msgid "Adjusts the volume"
 msgstr ""
 
-#: gtk/gtkvolumebutton.c:94 gtk/gtkvolumebutton.c:97
+#: ctk/ctkvolumebutton.c:94 ctk/ctkvolumebutton.c:97
 msgid "Volume Down"
 msgstr ""
 
-#: gtk/gtkvolumebutton.c:96
+#: ctk/ctkvolumebutton.c:96
 msgid "Decreases the volume"
 msgstr ""
 
-#: gtk/gtkvolumebutton.c:100 gtk/gtkvolumebutton.c:103
+#: ctk/ctkvolumebutton.c:100 ctk/ctkvolumebutton.c:103
 msgid "Volume Up"
 msgstr ""
 
-#: gtk/gtkvolumebutton.c:102
+#: ctk/ctkvolumebutton.c:102
 msgid "Increases the volume"
 msgstr ""
 
-#: gtk/gtkvolumebutton.c:160
+#: ctk/ctkvolumebutton.c:160
 msgid "Muted"
 msgstr ""
 
-#: gtk/gtkvolumebutton.c:164
+#: ctk/ctkvolumebutton.c:164
 msgid "Full Volume"
 msgstr ""
 
@@ -3225,954 +3225,954 @@ msgstr ""
 #. * Translate the "%d" to "%Id" if you want to use localised digits,
 #. * or otherwise translate the "%d" to "%d".
 #.
-#: gtk/gtkvolumebutton.c:177
+#: ctk/ctkvolumebutton.c:177
 #, fuzzy, c-format
 msgctxt "volume percentage"
 msgid "%d %%"
 msgstr "%d/%b/%Y"
 
-# gtk/gtkcolorsel.c:1858
-#: gtk/paper_names_offsets.c:4
+# ctk/ctkcolorsel.c:1858
+#: ctk/paper_names_offsets.c:4
 #, fuzzy
 msgctxt "paper size"
 msgid "asme_f"
 msgstr "Нэр"
 
-#: gtk/paper_names_offsets.c:5
+#: ctk/paper_names_offsets.c:5
 msgctxt "paper size"
 msgid "A0x2"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:6
+#: ctk/paper_names_offsets.c:6
 msgctxt "paper size"
 msgid "A0"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:7
+#: ctk/paper_names_offsets.c:7
 msgctxt "paper size"
 msgid "A0x3"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:8
+#: ctk/paper_names_offsets.c:8
 msgctxt "paper size"
 msgid "A1"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:9
+#: ctk/paper_names_offsets.c:9
 msgctxt "paper size"
 msgid "A10"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:10
+#: ctk/paper_names_offsets.c:10
 msgctxt "paper size"
 msgid "A1x3"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:11
+#: ctk/paper_names_offsets.c:11
 msgctxt "paper size"
 msgid "A1x4"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:12
+#: ctk/paper_names_offsets.c:12
 msgctxt "paper size"
 msgid "A2"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:13
+#: ctk/paper_names_offsets.c:13
 msgctxt "paper size"
 msgid "A2x3"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:14
+#: ctk/paper_names_offsets.c:14
 msgctxt "paper size"
 msgid "A2x4"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:15
+#: ctk/paper_names_offsets.c:15
 msgctxt "paper size"
 msgid "A2x5"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:16
+#: ctk/paper_names_offsets.c:16
 msgctxt "paper size"
 msgid "A3"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:17
+#: ctk/paper_names_offsets.c:17
 msgctxt "paper size"
 msgid "A3 Extra"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:18
+#: ctk/paper_names_offsets.c:18
 msgctxt "paper size"
 msgid "A3x3"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:19
+#: ctk/paper_names_offsets.c:19
 msgctxt "paper size"
 msgid "A3x4"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:20
+#: ctk/paper_names_offsets.c:20
 msgctxt "paper size"
 msgid "A3x5"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:21
+#: ctk/paper_names_offsets.c:21
 msgctxt "paper size"
 msgid "A3x6"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:22
+#: ctk/paper_names_offsets.c:22
 msgctxt "paper size"
 msgid "A3x7"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:23
+#: ctk/paper_names_offsets.c:23
 msgctxt "paper size"
 msgid "A4"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:24
+#: ctk/paper_names_offsets.c:24
 msgctxt "paper size"
 msgid "A4 Extra"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:25
+#: ctk/paper_names_offsets.c:25
 msgctxt "paper size"
 msgid "A4 Tab"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:26
+#: ctk/paper_names_offsets.c:26
 msgctxt "paper size"
 msgid "A4x3"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:27
+#: ctk/paper_names_offsets.c:27
 msgctxt "paper size"
 msgid "A4x4"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:28
+#: ctk/paper_names_offsets.c:28
 msgctxt "paper size"
 msgid "A4x5"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:29
+#: ctk/paper_names_offsets.c:29
 msgctxt "paper size"
 msgid "A4x6"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:30
+#: ctk/paper_names_offsets.c:30
 msgctxt "paper size"
 msgid "A4x7"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:31
+#: ctk/paper_names_offsets.c:31
 msgctxt "paper size"
 msgid "A4x8"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:32
+#: ctk/paper_names_offsets.c:32
 msgctxt "paper size"
 msgid "A4x9"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:33
+#: ctk/paper_names_offsets.c:33
 msgctxt "paper size"
 msgid "A5"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:34
+#: ctk/paper_names_offsets.c:34
 msgctxt "paper size"
 msgid "A5 Extra"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:35
+#: ctk/paper_names_offsets.c:35
 msgctxt "paper size"
 msgid "A6"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:36
+#: ctk/paper_names_offsets.c:36
 msgctxt "paper size"
 msgid "A7"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:37
+#: ctk/paper_names_offsets.c:37
 msgctxt "paper size"
 msgid "A8"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:38
+#: ctk/paper_names_offsets.c:38
 msgctxt "paper size"
 msgid "A9"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:39
+#: ctk/paper_names_offsets.c:39
 msgctxt "paper size"
 msgid "B0"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:40
+#: ctk/paper_names_offsets.c:40
 msgctxt "paper size"
 msgid "B1"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:41
+#: ctk/paper_names_offsets.c:41
 msgctxt "paper size"
 msgid "B10"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:42
+#: ctk/paper_names_offsets.c:42
 msgctxt "paper size"
 msgid "B2"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:43
+#: ctk/paper_names_offsets.c:43
 msgctxt "paper size"
 msgid "B3"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:44
+#: ctk/paper_names_offsets.c:44
 msgctxt "paper size"
 msgid "B4"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:45
+#: ctk/paper_names_offsets.c:45
 msgctxt "paper size"
 msgid "B5"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:46
+#: ctk/paper_names_offsets.c:46
 msgctxt "paper size"
 msgid "B5 Extra"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:47
+#: ctk/paper_names_offsets.c:47
 msgctxt "paper size"
 msgid "B6"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:48
+#: ctk/paper_names_offsets.c:48
 msgctxt "paper size"
 msgid "B6/C4"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:49
+#: ctk/paper_names_offsets.c:49
 msgctxt "paper size"
 msgid "B7"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:50
+#: ctk/paper_names_offsets.c:50
 msgctxt "paper size"
 msgid "B8"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:51
+#: ctk/paper_names_offsets.c:51
 msgctxt "paper size"
 msgid "B9"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:52
+#: ctk/paper_names_offsets.c:52
 msgctxt "paper size"
 msgid "C0"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:53
+#: ctk/paper_names_offsets.c:53
 msgctxt "paper size"
 msgid "C1"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:54
+#: ctk/paper_names_offsets.c:54
 msgctxt "paper size"
 msgid "C10"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:55
+#: ctk/paper_names_offsets.c:55
 msgctxt "paper size"
 msgid "C2"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:56
+#: ctk/paper_names_offsets.c:56
 msgctxt "paper size"
 msgid "C3"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:57
+#: ctk/paper_names_offsets.c:57
 msgctxt "paper size"
 msgid "C4"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:58
+#: ctk/paper_names_offsets.c:58
 msgctxt "paper size"
 msgid "C5"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:59
+#: ctk/paper_names_offsets.c:59
 msgctxt "paper size"
 msgid "C6"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:60
+#: ctk/paper_names_offsets.c:60
 msgctxt "paper size"
 msgid "C6/C5"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:61
+#: ctk/paper_names_offsets.c:61
 msgctxt "paper size"
 msgid "C7"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:62
+#: ctk/paper_names_offsets.c:62
 msgctxt "paper size"
 msgid "C7/C6"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:63
+#: ctk/paper_names_offsets.c:63
 msgctxt "paper size"
 msgid "C8"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:64
+#: ctk/paper_names_offsets.c:64
 msgctxt "paper size"
 msgid "C9"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:65
+#: ctk/paper_names_offsets.c:65
 msgctxt "paper size"
 msgid "DL Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:66
+#: ctk/paper_names_offsets.c:66
 msgctxt "paper size"
 msgid "RA0"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:67
+#: ctk/paper_names_offsets.c:67
 msgctxt "paper size"
 msgid "RA1"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:68
+#: ctk/paper_names_offsets.c:68
 msgctxt "paper size"
 msgid "RA2"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:69
+#: ctk/paper_names_offsets.c:69
 msgctxt "paper size"
 msgid "SRA0"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:70
+#: ctk/paper_names_offsets.c:70
 msgctxt "paper size"
 msgid "SRA1"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:71
+#: ctk/paper_names_offsets.c:71
 msgctxt "paper size"
 msgid "SRA2"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:72
+#: ctk/paper_names_offsets.c:72
 msgctxt "paper size"
 msgid "JB0"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:73
+#: ctk/paper_names_offsets.c:73
 msgctxt "paper size"
 msgid "JB1"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:74
+#: ctk/paper_names_offsets.c:74
 msgctxt "paper size"
 msgid "JB10"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:75
+#: ctk/paper_names_offsets.c:75
 msgctxt "paper size"
 msgid "JB2"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:76
+#: ctk/paper_names_offsets.c:76
 msgctxt "paper size"
 msgid "JB3"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:77
+#: ctk/paper_names_offsets.c:77
 msgctxt "paper size"
 msgid "JB4"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:78
+#: ctk/paper_names_offsets.c:78
 msgctxt "paper size"
 msgid "JB5"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:79
+#: ctk/paper_names_offsets.c:79
 msgctxt "paper size"
 msgid "JB6"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:80
+#: ctk/paper_names_offsets.c:80
 msgctxt "paper size"
 msgid "JB7"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:81
+#: ctk/paper_names_offsets.c:81
 msgctxt "paper size"
 msgid "JB8"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:82
+#: ctk/paper_names_offsets.c:82
 msgctxt "paper size"
 msgid "JB9"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:83
+#: ctk/paper_names_offsets.c:83
 msgctxt "paper size"
 msgid "jis exec"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:84
+#: ctk/paper_names_offsets.c:84
 msgctxt "paper size"
 msgid "Choukei 2 Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:85
+#: ctk/paper_names_offsets.c:85
 msgctxt "paper size"
 msgid "Choukei 3 Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:86
+#: ctk/paper_names_offsets.c:86
 msgctxt "paper size"
 msgid "Choukei 4 Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:87
+#: ctk/paper_names_offsets.c:87
 msgctxt "paper size"
 msgid "hagaki (postcard)"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:88
+#: ctk/paper_names_offsets.c:88
 msgctxt "paper size"
 msgid "kahu Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:89
+#: ctk/paper_names_offsets.c:89
 msgctxt "paper size"
 msgid "kaku2 Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:90
+#: ctk/paper_names_offsets.c:90
 msgctxt "paper size"
 msgid "oufuku (reply postcard)"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:91
+#: ctk/paper_names_offsets.c:91
 msgctxt "paper size"
 msgid "you4 Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:92
+#: ctk/paper_names_offsets.c:92
 msgctxt "paper size"
 msgid "10x11"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:93
+#: ctk/paper_names_offsets.c:93
 msgctxt "paper size"
 msgid "10x13"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:94
+#: ctk/paper_names_offsets.c:94
 msgctxt "paper size"
 msgid "10x14"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:95 gtk/paper_names_offsets.c:96
+#: ctk/paper_names_offsets.c:95 ctk/paper_names_offsets.c:96
 msgctxt "paper size"
 msgid "10x15"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:97
+#: ctk/paper_names_offsets.c:97
 msgctxt "paper size"
 msgid "11x12"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:98
+#: ctk/paper_names_offsets.c:98
 msgctxt "paper size"
 msgid "11x15"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:99
+#: ctk/paper_names_offsets.c:99
 msgctxt "paper size"
 msgid "12x19"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:100
+#: ctk/paper_names_offsets.c:100
 msgctxt "paper size"
 msgid "5x7"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:101
+#: ctk/paper_names_offsets.c:101
 msgctxt "paper size"
 msgid "6x9 Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:102
+#: ctk/paper_names_offsets.c:102
 msgctxt "paper size"
 msgid "7x9 Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:103
+#: ctk/paper_names_offsets.c:103
 msgctxt "paper size"
 msgid "9x11 Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:104
+#: ctk/paper_names_offsets.c:104
 msgctxt "paper size"
 msgid "a2 Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:105
+#: ctk/paper_names_offsets.c:105
 msgctxt "paper size"
 msgid "Arch A"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:106
+#: ctk/paper_names_offsets.c:106
 msgctxt "paper size"
 msgid "Arch B"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:107
+#: ctk/paper_names_offsets.c:107
 msgctxt "paper size"
 msgid "Arch C"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:108
+#: ctk/paper_names_offsets.c:108
 msgctxt "paper size"
 msgid "Arch D"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:109
+#: ctk/paper_names_offsets.c:109
 msgctxt "paper size"
 msgid "Arch E"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:110
+#: ctk/paper_names_offsets.c:110
 msgctxt "paper size"
 msgid "b-plus"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:111
+#: ctk/paper_names_offsets.c:111
 msgctxt "paper size"
 msgid "c"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:112
+#: ctk/paper_names_offsets.c:112
 msgctxt "paper size"
 msgid "c5 Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:113
+#: ctk/paper_names_offsets.c:113
 msgctxt "paper size"
 msgid "d"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:114
+#: ctk/paper_names_offsets.c:114
 msgctxt "paper size"
 msgid "e"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:115
+#: ctk/paper_names_offsets.c:115
 msgctxt "paper size"
 msgid "edp"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:116
+#: ctk/paper_names_offsets.c:116
 msgctxt "paper size"
 msgid "European edp"
 msgstr ""
 
-# gtk/gtkstock.c:286
-#: gtk/paper_names_offsets.c:117
+# ctk/ctkstock.c:286
+#: ctk/paper_names_offsets.c:117
 #, fuzzy
 msgctxt "paper size"
 msgid "Executive"
 msgstr "_Биелүүлэх"
 
-#: gtk/paper_names_offsets.c:118
+#: ctk/paper_names_offsets.c:118
 msgctxt "paper size"
 msgid "f"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:119
+#: ctk/paper_names_offsets.c:119
 msgctxt "paper size"
 msgid "FanFold European"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:120
+#: ctk/paper_names_offsets.c:120
 msgctxt "paper size"
 msgid "FanFold US"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:121
+#: ctk/paper_names_offsets.c:121
 msgctxt "paper size"
 msgid "FanFold German Legal"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:122
+#: ctk/paper_names_offsets.c:122
 msgctxt "paper size"
 msgid "Government Legal"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:123
+#: ctk/paper_names_offsets.c:123
 msgctxt "paper size"
 msgid "Government Letter"
 msgstr ""
 
-# gtk/gtkstock.c:300
-#: gtk/paper_names_offsets.c:124
+# ctk/ctkstock.c:300
+#: ctk/paper_names_offsets.c:124
 #, fuzzy
 msgctxt "paper size"
 msgid "Index 3x5"
 msgstr "_Товчоон"
 
-#: gtk/paper_names_offsets.c:125
+#: ctk/paper_names_offsets.c:125
 msgctxt "paper size"
 msgid "Index 4x6 (postcard)"
 msgstr ""
 
-# gtk/gtkstock.c:300
-#: gtk/paper_names_offsets.c:126
+# ctk/ctkstock.c:300
+#: ctk/paper_names_offsets.c:126
 #, fuzzy
 msgctxt "paper size"
 msgid "Index 4x6 ext"
 msgstr "_Товчоон"
 
-# gtk/gtkstock.c:300
-#: gtk/paper_names_offsets.c:127
+# ctk/ctkstock.c:300
+#: ctk/paper_names_offsets.c:127
 #, fuzzy
 msgctxt "paper size"
 msgid "Index 5x8"
 msgstr "_Товчоон"
 
-#: gtk/paper_names_offsets.c:128
+#: ctk/paper_names_offsets.c:128
 msgctxt "paper size"
 msgid "Invoice"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:129
+#: ctk/paper_names_offsets.c:129
 msgctxt "paper size"
 msgid "Tabloid"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:130
+#: ctk/paper_names_offsets.c:130
 msgctxt "paper size"
 msgid "US Legal"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:131
+#: ctk/paper_names_offsets.c:131
 msgctxt "paper size"
 msgid "US Legal Extra"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:132
+#: ctk/paper_names_offsets.c:132
 msgctxt "paper size"
 msgid "US Letter"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:133
+#: ctk/paper_names_offsets.c:133
 msgctxt "paper size"
 msgid "US Letter Extra"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:134
+#: ctk/paper_names_offsets.c:134
 msgctxt "paper size"
 msgid "US Letter Plus"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:135
+#: ctk/paper_names_offsets.c:135
 msgctxt "paper size"
 msgid "Monarch Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:136
+#: ctk/paper_names_offsets.c:136
 msgctxt "paper size"
 msgid "#10 Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:137
+#: ctk/paper_names_offsets.c:137
 msgctxt "paper size"
 msgid "#11 Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:138
+#: ctk/paper_names_offsets.c:138
 msgctxt "paper size"
 msgid "#12 Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:139
+#: ctk/paper_names_offsets.c:139
 msgctxt "paper size"
 msgid "#14 Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:140
+#: ctk/paper_names_offsets.c:140
 msgctxt "paper size"
 msgid "#9 Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:141
+#: ctk/paper_names_offsets.c:141
 msgctxt "paper size"
 msgid "Personal Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:142
+#: ctk/paper_names_offsets.c:142
 msgctxt "paper size"
 msgid "Quarto"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:143
+#: ctk/paper_names_offsets.c:143
 msgctxt "paper size"
 msgid "Super A"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:144
+#: ctk/paper_names_offsets.c:144
 msgctxt "paper size"
 msgid "Super B"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:145
+#: ctk/paper_names_offsets.c:145
 msgctxt "paper size"
 msgid "Wide Format"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:146
+#: ctk/paper_names_offsets.c:146
 msgctxt "paper size"
 msgid "Dai-pa-kai"
 msgstr ""
 
-# gtk/gtkstock.c:323
-#: gtk/paper_names_offsets.c:147
+# ctk/ctkstock.c:323
+#: ctk/paper_names_offsets.c:147
 #, fuzzy
 msgctxt "paper size"
 msgid "Folio"
 msgstr "_Өнгө"
 
-#: gtk/paper_names_offsets.c:148
+#: ctk/paper_names_offsets.c:148
 msgctxt "paper size"
 msgid "Folio sp"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:149
+#: ctk/paper_names_offsets.c:149
 msgctxt "paper size"
 msgid "Invite Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:150
+#: ctk/paper_names_offsets.c:150
 msgctxt "paper size"
 msgid "Italian Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:151
+#: ctk/paper_names_offsets.c:151
 msgctxt "paper size"
 msgid "juuro-ku-kai"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:152
+#: ctk/paper_names_offsets.c:152
 msgctxt "paper size"
 msgid "pa-kai"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:153
+#: ctk/paper_names_offsets.c:153
 msgctxt "paper size"
 msgid "Postfix Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:154
+#: ctk/paper_names_offsets.c:154
 msgctxt "paper size"
 msgid "Small Photo"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:155
+#: ctk/paper_names_offsets.c:155
 msgctxt "paper size"
 msgid "prc1 Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:156
+#: ctk/paper_names_offsets.c:156
 msgctxt "paper size"
 msgid "prc10 Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:157
+#: ctk/paper_names_offsets.c:157
 msgctxt "paper size"
 msgid "prc 16k"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:158
+#: ctk/paper_names_offsets.c:158
 msgctxt "paper size"
 msgid "prc2 Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:159
+#: ctk/paper_names_offsets.c:159
 msgctxt "paper size"
 msgid "prc3 Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:160
+#: ctk/paper_names_offsets.c:160
 msgctxt "paper size"
 msgid "prc 32k"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:161
+#: ctk/paper_names_offsets.c:161
 msgctxt "paper size"
 msgid "prc4 Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:162
+#: ctk/paper_names_offsets.c:162
 msgctxt "paper size"
 msgid "prc5 Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:163
+#: ctk/paper_names_offsets.c:163
 msgctxt "paper size"
 msgid "prc6 Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:164
+#: ctk/paper_names_offsets.c:164
 msgctxt "paper size"
 msgid "prc7 Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:165
+#: ctk/paper_names_offsets.c:165
 msgctxt "paper size"
 msgid "prc8 Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:166
+#: ctk/paper_names_offsets.c:166
 msgctxt "paper size"
 msgid "prc9 Envelope"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:167
+#: ctk/paper_names_offsets.c:167
 msgctxt "paper size"
 msgid "ROC 16k"
 msgstr ""
 
-#: gtk/paper_names_offsets.c:168
+#: ctk/paper_names_offsets.c:168
 msgctxt "paper size"
 msgid "ROC 8k"
 msgstr ""
 
-#: gtk/updateiconcache.c:492 gtk/updateiconcache.c:552
+#: ctk/updateiconcache.c:492 ctk/updateiconcache.c:552
 #, c-format
 msgid "different idatas found for symlinked '%s' and '%s'\n"
 msgstr ""
 
 # gdk-pixbuf/io-tiff.c:273
-#: gtk/updateiconcache.c:1374
+#: ctk/updateiconcache.c:1374
 #, fuzzy, c-format
 msgid "Failed to write header\n"
 msgstr "TIFF зураг онгойсонгүй "
 
 # gdk-pixbuf/io-tiff.c:273
-#: gtk/updateiconcache.c:1380
+#: ctk/updateiconcache.c:1380
 #, fuzzy, c-format
 msgid "Failed to write hash table\n"
 msgstr "TIFF зураг онгойсонгүй "
 
 # gdk-pixbuf/io-xbm.c:427
-#: gtk/updateiconcache.c:1386
+#: ctk/updateiconcache.c:1386
 #, fuzzy, c-format
 msgid "Failed to write folder index\n"
 msgstr "Түр зуурын файлаас уншигдсангүй"
 
 # gdk-pixbuf/io-tiff.c:273
-#: gtk/updateiconcache.c:1394
+#: ctk/updateiconcache.c:1394
 #, fuzzy, c-format
 msgid "Failed to rewrite header\n"
 msgstr "TIFF зураг онгойсонгүй "
 
 # gdk-pixbuf/gdk-pixbuf-animation.c:144 gdk-pixbuf/gdk-pixbuf-io.c:581
-#: gtk/updateiconcache.c:1463
+#: ctk/updateiconcache.c:1463
 #, fuzzy, c-format
 msgid "Failed to open file %s : %s\n"
 msgstr "\"%s\" файл нээгдсэнгүй: %s"
 
 # gdk-pixbuf/gdk-pixbuf-animation.c:144 gdk-pixbuf/gdk-pixbuf-io.c:581
-#: gtk/updateiconcache.c:1471
+#: ctk/updateiconcache.c:1471
 #, fuzzy, c-format
 msgid "Failed to write cache file: %s\n"
 msgstr "\"%s\" файл нээгдсэнгүй: %s"
 
-#: gtk/updateiconcache.c:1507
+#: ctk/updateiconcache.c:1507
 #, c-format
 msgid "The generated cache was invalid.\n"
 msgstr ""
 
-#: gtk/updateiconcache.c:1521
+#: ctk/updateiconcache.c:1521
 #, c-format
 msgid "Could not rename %s to %s: %s, removing %s then.\n"
 msgstr ""
 
-# gtk/gtkfilesel.c:1369
-#: gtk/updateiconcache.c:1535
+# ctk/ctkfilesel.c:1369
+#: ctk/updateiconcache.c:1535
 #, fuzzy, c-format
 msgid "Could not rename %s to %s: %s\n"
 msgstr "\"%s\" хавтас үүсгэхэд алдлаа: %s"
 
-# gtk/gtkfilesel.c:1369
-#: gtk/updateiconcache.c:1545
+# ctk/ctkfilesel.c:1369
+#: ctk/updateiconcache.c:1545
 #, fuzzy, c-format
 msgid "Could not rename %s back to %s: %s.\n"
 msgstr "\"%s\" хавтас үүсгэхэд алдлаа: %s"
 
-#: gtk/updateiconcache.c:1572
+#: ctk/updateiconcache.c:1572
 #, c-format
 msgid "Cache file created successfully.\n"
 msgstr ""
 
-#: gtk/updateiconcache.c:1611
+#: ctk/updateiconcache.c:1611
 msgid "Overwrite an existing cache, even if up to date"
 msgstr ""
 
-#: gtk/updateiconcache.c:1612
+#: ctk/updateiconcache.c:1612
 msgid "Don't check for the existence of index.theme"
 msgstr ""
 
-#: gtk/updateiconcache.c:1613
+#: ctk/updateiconcache.c:1613
 msgid "Don't include image data in the cache"
 msgstr ""
 
-#: gtk/updateiconcache.c:1614
+#: ctk/updateiconcache.c:1614
 msgid "Output a C header file"
 msgstr ""
 
-#: gtk/updateiconcache.c:1615
+#: ctk/updateiconcache.c:1615
 msgid "Turn off verbose output"
 msgstr ""
 
-#: gtk/updateiconcache.c:1616
+#: ctk/updateiconcache.c:1616
 msgid "Validate existing icon cache"
 msgstr ""
 
-#: gtk/updateiconcache.c:1683
+#: ctk/updateiconcache.c:1683
 #, fuzzy, c-format
 msgid "File not found: %s\n"
 msgstr ""
 "%s-г тэмдэглэж чадсангүй:\n"
 "%s"
 
-#: gtk/updateiconcache.c:1689
+#: ctk/updateiconcache.c:1689
 #, c-format
 msgid "Not a valid icon cache: %s\n"
 msgstr ""
 
-#: gtk/updateiconcache.c:1702
+#: ctk/updateiconcache.c:1702
 #, c-format
 msgid "No theme index file.\n"
 msgstr ""
 
-#: gtk/updateiconcache.c:1706
+#: ctk/updateiconcache.c:1706
 #, c-format
 msgid ""
 "No theme index file in '%s'.\n"
@@ -4239,268 +4239,268 @@ msgstr "Вьетнам (VIQR)"
 msgid "X Input Method"
 msgstr "Х оролтын тогтолцоо"
 
-# gtk/gtkfilesel.c:1712
-#: modules/printbackends/cups/gtkprintbackendcups.c:811
-#: modules/printbackends/cups/gtkprintbackendcups.c:1020
+# ctk/ctkfilesel.c:1712
+#: modules/printbackends/cups/ctkprintbackendcups.c:811
+#: modules/printbackends/cups/ctkprintbackendcups.c:1020
 #, fuzzy
 msgid "Username:"
 msgstr "_Сольж нэрлэх"
 
-# gtk/gtkinputdialog.c:476
-#: modules/printbackends/cups/gtkprintbackendcups.c:812
-#: modules/printbackends/cups/gtkprintbackendcups.c:1029
+# ctk/ctkinputdialog.c:476
+#: modules/printbackends/cups/ctkprintbackendcups.c:812
+#: modules/printbackends/cups/ctkprintbackendcups.c:1029
 #, fuzzy
 msgid "Password:"
 msgstr "Даралт"
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:850
+#: modules/printbackends/cups/ctkprintbackendcups.c:850
 #, c-format
 msgid "Authentication is required to get a file from %s"
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:854
-#: modules/printbackends/cups/gtkprintbackendcups.c:1042
+#: modules/printbackends/cups/ctkprintbackendcups.c:854
+#: modules/printbackends/cups/ctkprintbackendcups.c:1042
 #, c-format
 msgid "Authentication is required to print document '%s' on printer %s"
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:856
+#: modules/printbackends/cups/ctkprintbackendcups.c:856
 #, c-format
 msgid "Authentication is required to print a document on %s"
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:860
+#: modules/printbackends/cups/ctkprintbackendcups.c:860
 #, c-format
 msgid "Authentication is required to get attributes of job '%s'"
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:862
+#: modules/printbackends/cups/ctkprintbackendcups.c:862
 msgid "Authentication is required to get attributes of a job"
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:866
+#: modules/printbackends/cups/ctkprintbackendcups.c:866
 #, c-format
 msgid "Authentication is required to get attributes of printer %s"
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:868
+#: modules/printbackends/cups/ctkprintbackendcups.c:868
 msgid "Authentication is required to get attributes of a printer"
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:871
+#: modules/printbackends/cups/ctkprintbackendcups.c:871
 #, c-format
 msgid "Authentication is required to get default printer of %s"
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:874
+#: modules/printbackends/cups/ctkprintbackendcups.c:874
 #, c-format
 msgid "Authentication is required to get printers from %s"
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:877
+#: modules/printbackends/cups/ctkprintbackendcups.c:877
 #, c-format
 msgid "Authentication is required on %s"
 msgstr ""
 
-# gtk/gtkfilesel.c:2103
-#: modules/printbackends/cups/gtkprintbackendcups.c:1014
+# ctk/ctkfilesel.c:2103
+#: modules/printbackends/cups/ctkprintbackendcups.c:1014
 #, fuzzy
 msgid "Domain:"
 msgstr "_Байршил:"
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:1044
+#: modules/printbackends/cups/ctkprintbackendcups.c:1044
 #, c-format
 msgid "Authentication is required to print document '%s'"
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:1049
+#: modules/printbackends/cups/ctkprintbackendcups.c:1049
 #, c-format
 msgid "Authentication is required to print this document on printer %s"
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:1051
+#: modules/printbackends/cups/ctkprintbackendcups.c:1051
 msgid "Authentication is required to print this document"
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:1672
+#: modules/printbackends/cups/ctkprintbackendcups.c:1672
 #, c-format
 msgid "Printer '%s' is low on toner."
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:1673
+#: modules/printbackends/cups/ctkprintbackendcups.c:1673
 #, c-format
 msgid "Printer '%s' has no toner left."
 msgstr ""
 
 #. Translators: "Developer" like on photo development context
-#: modules/printbackends/cups/gtkprintbackendcups.c:1675
+#: modules/printbackends/cups/ctkprintbackendcups.c:1675
 #, c-format
 msgid "Printer '%s' is low on developer."
 msgstr ""
 
 #. Translators: "Developer" like on photo development context
-#: modules/printbackends/cups/gtkprintbackendcups.c:1677
+#: modules/printbackends/cups/ctkprintbackendcups.c:1677
 #, c-format
 msgid "Printer '%s' is out of developer."
 msgstr ""
 
 #. Translators: "marker" is one color bin of the printer
-#: modules/printbackends/cups/gtkprintbackendcups.c:1679
+#: modules/printbackends/cups/ctkprintbackendcups.c:1679
 #, c-format
 msgid "Printer '%s' is low on at least one marker supply."
 msgstr ""
 
 #. Translators: "marker" is one color bin of the printer
-#: modules/printbackends/cups/gtkprintbackendcups.c:1681
+#: modules/printbackends/cups/ctkprintbackendcups.c:1681
 #, c-format
 msgid "Printer '%s' is out of at least one marker supply."
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:1682
+#: modules/printbackends/cups/ctkprintbackendcups.c:1682
 #, c-format
 msgid "The cover is open on printer '%s'."
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:1683
+#: modules/printbackends/cups/ctkprintbackendcups.c:1683
 #, c-format
 msgid "The door is open on printer '%s'."
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:1684
+#: modules/printbackends/cups/ctkprintbackendcups.c:1684
 #, c-format
 msgid "Printer '%s' is low on paper."
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:1685
+#: modules/printbackends/cups/ctkprintbackendcups.c:1685
 #, c-format
 msgid "Printer '%s' is out of paper."
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:1686
+#: modules/printbackends/cups/ctkprintbackendcups.c:1686
 #, c-format
 msgid "Printer '%s' is currently offline."
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:1687
+#: modules/printbackends/cups/ctkprintbackendcups.c:1687
 #, c-format
 msgid "There is a problem on printer '%s'."
 msgstr ""
 
 #. Translators: this is a printer status.
-#: modules/printbackends/cups/gtkprintbackendcups.c:1995
+#: modules/printbackends/cups/ctkprintbackendcups.c:1995
 msgid "Paused; Rejecting Jobs"
 msgstr ""
 
 #. Translators: this is a printer status.
-#: modules/printbackends/cups/gtkprintbackendcups.c:2001
+#: modules/printbackends/cups/ctkprintbackendcups.c:2001
 msgid "Rejecting Jobs"
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:2777
+#: modules/printbackends/cups/ctkprintbackendcups.c:2777
 msgid "Two Sided"
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:2778
+#: modules/printbackends/cups/ctkprintbackendcups.c:2778
 msgid "Paper Type"
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:2779
+#: modules/printbackends/cups/ctkprintbackendcups.c:2779
 msgid "Paper Source"
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:2780
+#: modules/printbackends/cups/ctkprintbackendcups.c:2780
 msgid "Output Tray"
 msgstr ""
 
-# gtk/gtkstock.c:270
-#: modules/printbackends/cups/gtkprintbackendcups.c:2781
+# ctk/ctkstock.c:270
+#: modules/printbackends/cups/ctkprintbackendcups.c:2781
 #, fuzzy
 msgid "Resolution"
 msgstr "Хариулт"
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:2782
+#: modules/printbackends/cups/ctkprintbackendcups.c:2782
 msgid "GhostScript pre-filtering"
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:2791
+#: modules/printbackends/cups/ctkprintbackendcups.c:2791
 msgid "One Sided"
 msgstr ""
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/gtkprintbackendcups.c:2793
+#: modules/printbackends/cups/ctkprintbackendcups.c:2793
 msgid "Long Edge (Standard)"
 msgstr ""
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/gtkprintbackendcups.c:2795
+#: modules/printbackends/cups/ctkprintbackendcups.c:2795
 msgid "Short Edge (Flip)"
 msgstr ""
 
-# gtk/gtkfontsel.c:1253
+# ctk/ctkfontsel.c:1253
 #. Translators: this is an option of "Paper Source"
-#: modules/printbackends/cups/gtkprintbackendcups.c:2797
-#: modules/printbackends/cups/gtkprintbackendcups.c:2799
-#: modules/printbackends/cups/gtkprintbackendcups.c:2807
+#: modules/printbackends/cups/ctkprintbackendcups.c:2797
+#: modules/printbackends/cups/ctkprintbackendcups.c:2799
+#: modules/printbackends/cups/ctkprintbackendcups.c:2807
 #, fuzzy
 msgid "Auto Select"
 msgstr "Бичгийн сонголт"
 
-# gtk/gtkwindow.c:466
+# ctk/ctkwindow.c:466
 #. Translators: this is an option of "Paper Source"
 #. Translators: this is an option of "Resolution"
-#: modules/printbackends/cups/gtkprintbackendcups.c:2801
-#: modules/printbackends/cups/gtkprintbackendcups.c:2803
-#: modules/printbackends/cups/gtkprintbackendcups.c:2805
-#: modules/printbackends/cups/gtkprintbackendcups.c:2809
-#: modules/printbackends/cups/gtkprintbackendcups.c:3295
+#: modules/printbackends/cups/ctkprintbackendcups.c:2801
+#: modules/printbackends/cups/ctkprintbackendcups.c:2803
+#: modules/printbackends/cups/ctkprintbackendcups.c:2805
+#: modules/printbackends/cups/ctkprintbackendcups.c:2809
+#: modules/printbackends/cups/ctkprintbackendcups.c:3295
 #, fuzzy
 msgid "Printer Default"
 msgstr "Стандарт"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/gtkprintbackendcups.c:2811
+#: modules/printbackends/cups/ctkprintbackendcups.c:2811
 msgid "Embed GhostScript fonts only"
 msgstr ""
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/gtkprintbackendcups.c:2813
+#: modules/printbackends/cups/ctkprintbackendcups.c:2813
 msgid "Convert to PS level 1"
 msgstr ""
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/gtkprintbackendcups.c:2815
+#: modules/printbackends/cups/ctkprintbackendcups.c:2815
 msgid "Convert to PS level 2"
 msgstr ""
 
 # gdk-pixbuf/io-xpm.c:1235
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/gtkprintbackendcups.c:2817
+#: modules/printbackends/cups/ctkprintbackendcups.c:2817
 #, fuzzy
 msgid "No pre-filtering"
 msgstr "XPM биш толгой олдлоо"
 
 #. Translators: "Miscellaneous" is the label for a button, that opens
 #. up an extra panel of settings in a print dialog.
-#: modules/printbackends/cups/gtkprintbackendcups.c:2826
+#: modules/printbackends/cups/ctkprintbackendcups.c:2826
 msgid "Miscellaneous"
 msgstr ""
 
 #. Translators: These strings name the possible values of the
 #. * job priority option in the print dialog
 #.
-#: modules/printbackends/cups/gtkprintbackendcups.c:3503
+#: modules/printbackends/cups/ctkprintbackendcups.c:3503
 msgid "Urgent"
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:3503
+#: modules/printbackends/cups/ctkprintbackendcups.c:3503
 msgid "High"
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:3503
+#: modules/printbackends/cups/ctkprintbackendcups.c:3503
 msgid "Medium"
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:3503
+#: modules/printbackends/cups/ctkprintbackendcups.c:3503
 msgid "Low"
 msgstr ""
 
@@ -4509,7 +4509,7 @@ msgstr ""
 #. Translators, this string is used to label the pages-per-sheet option
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/gtkprintbackendcups.c:3527
+#: modules/printbackends/cups/ctkprintbackendcups.c:3527
 #, fuzzy
 msgid "Pages per Sheet"
 msgstr "Зурагын өндөр '' 0 '' болжээ"
@@ -4517,81 +4517,81 @@ msgstr "Зурагын өндөр '' 0 '' болжээ"
 #. Translators, this string is used to label the job priority option
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/gtkprintbackendcups.c:3564
+#: modules/printbackends/cups/ctkprintbackendcups.c:3564
 msgid "Job Priority"
 msgstr ""
 
 #. Translators, this string is used to label the billing info entry
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/gtkprintbackendcups.c:3575
+#: modules/printbackends/cups/ctkprintbackendcups.c:3575
 msgid "Billing Info"
 msgstr ""
 
-# gtk/gtkinputdialog.c:519
+# ctk/ctkinputdialog.c:519
 #. Translators, these strings are names for various 'standard' cover
 #. * pages that the printing system may support.
 #.
-#: modules/printbackends/cups/gtkprintbackendcups.c:3590
+#: modules/printbackends/cups/ctkprintbackendcups.c:3590
 #, fuzzy
 msgid "None"
 msgstr "байхгүй"
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:3590
+#: modules/printbackends/cups/ctkprintbackendcups.c:3590
 msgid "Classified"
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:3590
+#: modules/printbackends/cups/ctkprintbackendcups.c:3590
 msgid "Confidential"
 msgstr ""
 
-# gtk/gtkinputdialog.c:246
-#: modules/printbackends/cups/gtkprintbackendcups.c:3590
+# ctk/ctkinputdialog.c:246
+#: modules/printbackends/cups/ctkprintbackendcups.c:3590
 #, fuzzy
 msgid "Secret"
 msgstr "Дэлгэц"
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:3590
+#: modules/printbackends/cups/ctkprintbackendcups.c:3590
 msgid "Standard"
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:3590
+#: modules/printbackends/cups/ctkprintbackendcups.c:3590
 msgid "Top Secret"
 msgstr ""
 
-#: modules/printbackends/cups/gtkprintbackendcups.c:3590
+#: modules/printbackends/cups/ctkprintbackendcups.c:3590
 msgid "Unclassified"
 msgstr ""
 
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the front cover page.
 #.
-#: modules/printbackends/cups/gtkprintbackendcups.c:3625
+#: modules/printbackends/cups/ctkprintbackendcups.c:3625
 msgid "Before"
 msgstr ""
 
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the back cover page.
 #.
-#: modules/printbackends/cups/gtkprintbackendcups.c:3640
+#: modules/printbackends/cups/ctkprintbackendcups.c:3640
 msgid "After"
 msgstr ""
 
-# gtk/gtkstock.c:313
+# ctk/ctkstock.c:313
 #. Translators: this is the name of the option that controls when
 #. * a print job is printed. Possible values are 'now', a specified time,
 #. * or 'on hold'
 #.
-#: modules/printbackends/cups/gtkprintbackendcups.c:3660
+#: modules/printbackends/cups/ctkprintbackendcups.c:3660
 #, fuzzy
 msgid "Print at"
 msgstr "_хэвлэ"
 
-# gtk/gtkstock.c:313
+# ctk/ctkstock.c:313
 #. Translators: this is the name of the option that allows the user
 #. * to specify a time when a print job will be printed.
 #.
-#: modules/printbackends/cups/gtkprintbackendcups.c:3671
+#: modules/printbackends/cups/ctkprintbackendcups.c:3671
 #, fuzzy
 msgid "Print at time"
 msgstr "_хэвлэ"
@@ -4600,107 +4600,107 @@ msgstr "_хэвлэ"
 #. * size. The two placeholders are replaced with the width and height
 #. * in points. E.g: "Custom 230.4x142.9"
 #.
-#: modules/printbackends/cups/gtkprintbackendcups.c:3706
+#: modules/printbackends/cups/ctkprintbackendcups.c:3706
 #, c-format
 msgid "Custom %sx%s"
 msgstr ""
 
 #. default filename used for print-to-file
-#: modules/printbackends/file/gtkprintbackendfile.c:250
+#: modules/printbackends/file/ctkprintbackendfile.c:250
 #, c-format
 msgid "output.%s"
 msgstr ""
 
-# gtk/gtkstock.c:313
-#: modules/printbackends/file/gtkprintbackendfile.c:493
+# ctk/ctkstock.c:313
+#: modules/printbackends/file/ctkprintbackendfile.c:493
 #, fuzzy
 msgid "Print to File"
 msgstr "_хэвлэ"
 
-#: modules/printbackends/file/gtkprintbackendfile.c:570
+#: modules/printbackends/file/ctkprintbackendfile.c:570
 msgid "PDF"
 msgstr ""
 
-# gtk/gtkstock.c:313
-#: modules/printbackends/file/gtkprintbackendfile.c:570
+# ctk/ctkstock.c:313
+#: modules/printbackends/file/ctkprintbackendfile.c:570
 #, fuzzy
 msgid "Postscript"
 msgstr "_хэвлэ"
 
-#: modules/printbackends/file/gtkprintbackendfile.c:570
+#: modules/printbackends/file/ctkprintbackendfile.c:570
 msgid "SVG"
 msgstr ""
 
-#: modules/printbackends/file/gtkprintbackendfile.c:582
-#: modules/printbackends/test/gtkprintbackendtest.c:503
+#: modules/printbackends/file/ctkprintbackendfile.c:582
+#: modules/printbackends/test/ctkprintbackendtest.c:503
 msgid "Pages per _sheet:"
 msgstr ""
 
-# gtk/gtkfilesel.c:742
-#: modules/printbackends/file/gtkprintbackendfile.c:641
+# ctk/ctkfilesel.c:742
+#: modules/printbackends/file/ctkprintbackendfile.c:641
 #, fuzzy
 msgid "File"
 msgstr "Файлууд"
 
-#: modules/printbackends/file/gtkprintbackendfile.c:651
+#: modules/printbackends/file/ctkprintbackendfile.c:651
 msgid "_Output format"
 msgstr ""
 
-#: modules/printbackends/lpr/gtkprintbackendlpr.c:395
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:395
 msgid "Print to LPR"
 msgstr ""
 
 # gdk-pixbuf/io-wbmp.c:296
-#: modules/printbackends/lpr/gtkprintbackendlpr.c:421
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:421
 #, fuzzy
 msgid "Pages Per Sheet"
 msgstr "Зурагын өндөр '' 0 '' болжээ"
 
-#: modules/printbackends/lpr/gtkprintbackendlpr.c:428
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:428
 msgid "Command Line"
 msgstr ""
 
 # gdk-pixbuf/io-xpm.c:1235
 #. SUN_BRANDING
-#: modules/printbackends/papi/gtkprintbackendpapi.c:811
+#: modules/printbackends/papi/ctkprintbackendpapi.c:811
 #, fuzzy
 msgid "printer offline"
 msgstr "XPM биш толгой олдлоо"
 
-# gtk/gtkstock.c:268
+# ctk/ctkstock.c:268
 #. SUN_BRANDING
-#: modules/printbackends/papi/gtkprintbackendpapi.c:829
+#: modules/printbackends/papi/ctkprintbackendpapi.c:829
 #, fuzzy
 msgid "ready to print"
 msgstr "Сануулга"
 
 #. SUN_BRANDING
-#: modules/printbackends/papi/gtkprintbackendpapi.c:832
+#: modules/printbackends/papi/ctkprintbackendpapi.c:832
 msgid "processing job"
 msgstr ""
 
-# gtk/gtkstock.c:311
+# ctk/ctkstock.c:311
 #. SUN_BRANDING
-#: modules/printbackends/papi/gtkprintbackendpapi.c:836
+#: modules/printbackends/papi/ctkprintbackendpapi.c:836
 #, fuzzy
 msgid "paused"
 msgstr "_Буулгах"
 
-# gtk/gtkinputdialog.c:582
+# ctk/ctkinputdialog.c:582
 #. SUN_BRANDING
-#: modules/printbackends/papi/gtkprintbackendpapi.c:839
+#: modules/printbackends/papi/ctkprintbackendpapi.c:839
 #, fuzzy
 msgid "unknown"
 msgstr "(тодорхойгүй)"
 
 #. default filename used for print-to-test
-#: modules/printbackends/test/gtkprintbackendtest.c:234
+#: modules/printbackends/test/ctkprintbackendtest.c:234
 #, c-format
 msgid "test-output.%s"
 msgstr ""
 
-# gtk/gtkstock.c:313
-#: modules/printbackends/test/gtkprintbackendtest.c:467
+# ctk/ctkstock.c:313
+#: modules/printbackends/test/ctkprintbackendtest.c:467
 #, fuzzy
 msgid "Print to Test Printer"
 msgstr "_хэвлэ"
@@ -4882,7 +4882,7 @@ msgstr ""
 #~ msgid "Couldn't allocate memory for saving BMP file"
 #~ msgstr "JPEG төрлийн файлыг санах ойд байрлуулж чадсангүй"
 
-# gtk/gtkfilesel.c:3854
+# ctk/ctkfilesel.c:3854
 #, fuzzy
 #~ msgid "Couldn't write to BMP file"
 #~ msgstr "Файлын нэр өөрчлөгдсөнгүй"
@@ -5021,7 +5021,7 @@ msgstr ""
 #~ msgid "Couldn't allocate memory for stream"
 #~ msgstr "Файлын толгойг санах ойд ачаалж чадахгүй байна"
 
-# gtk/gtkfilesel.c:3854
+# ctk/ctkfilesel.c:3854
 #, fuzzy
 #~ msgid "Couldn't decode image"
 #~ msgstr "Файлын нэр өөрчлөгдсөнгүй"
@@ -5447,7 +5447,7 @@ msgstr ""
 #~ msgid "Failed to write TIFF data"
 #~ msgstr "TIFF зураг онгойсонгүй "
 
-# gtk/gtkfilesel.c:3854
+# ctk/ctkfilesel.c:3854
 #, fuzzy
 #~ msgid "Couldn't write to TIFF file"
 #~ msgstr "Файлын нэр өөрчлөгдсөнгүй"
@@ -5541,7 +5541,7 @@ msgstr ""
 #~ msgid "Could not allocate memory: %s"
 #~ msgstr "Файлын толгойг санах ойд ачаалж чадахгүй байна"
 
-# gtk/gtkfilesel.c:1369
+# ctk/ctkfilesel.c:1369
 #, fuzzy
 #~ msgid "Could not create stream: %s"
 #~ msgstr "\"%s\" хавтас үүсгэхэд алдлаа: %s"
@@ -5552,17 +5552,17 @@ msgstr ""
 #~ "%s-г тэмдэглэж чадсангүй:\n"
 #~ "%s"
 
-# gtk/gtkfilesel.c:1369
+# ctk/ctkfilesel.c:1369
 #, fuzzy
 #~ msgid "Could not read from stream: %s"
 #~ msgstr "\"%s\" хавтас үүсгэхэд алдлаа: %s"
 
-# gtk/gtkfilesel.c:3854
+# ctk/ctkfilesel.c:3854
 #, fuzzy
 #~ msgid "Couldn't load bitmap"
 #~ msgstr "Файлын нэр өөрчлөгдсөнгүй"
 
-# gtk/gtkfilesel.c:3854
+# ctk/ctkfilesel.c:3854
 #, fuzzy
 #~ msgid "Couldn't load metafile"
 #~ msgstr "Файлын нэр өөрчлөгдсөнгүй"
@@ -5581,19 +5581,19 @@ msgstr ""
 #~ msgid "The WMF image format"
 #~ msgstr "WBMP зургийн төрөл "
 
-# gtk/gtkcolorsel.c:1824
+# ctk/ctkcolorsel.c:1824
 #~ msgid "\"Deepness\" of the color."
 #~ msgstr "Өнгөний \"Гүн гүнзгий\" байдал."
 
-# gtk/gtkfilesel.c:707
+# ctk/ctkfilesel.c:707
 #~ msgid "Folders"
 #~ msgstr "Хавтсууд"
 
-# gtk/gtkfilesel.c:711
+# ctk/ctkfilesel.c:711
 #~ msgid "Fol_ders"
 #~ msgstr "Хавтсууд"
 
-# gtk/gtkfilesel.c:822 gtk/gtkfilesel.c:2124
+# ctk/ctkfilesel.c:822 ctk/ctkfilesel.c:2124
 #~ msgid "Folder unreadable: %s"
 #~ msgstr "Уншигдахгүй хавтас: %s"
 
@@ -5606,15 +5606,15 @@ msgstr ""
 #~ "чөлөөтэй биш байна.\n"
 #~ "Та үүнийг сонгох уу?"
 
-# gtk/gtkfilesel.c:1076
+# ctk/ctkfilesel.c:1076
 #~ msgid "_New Folder"
 #~ msgstr "Хавтас үүсгэх"
 
-# gtk/gtkfilesel.c:1087
+# ctk/ctkfilesel.c:1087
 #~ msgid "De_lete File"
 #~ msgstr "Файл устгах"
 
-# gtk/gtkfilesel.c:1098
+# ctk/ctkfilesel.c:1098
 #~ msgid "_Rename File"
 #~ msgstr "Файл шинээр нэрлэх"
 
@@ -5624,15 +5624,15 @@ msgstr ""
 #~ "\"%s\" хавтас үүсгэхэд оролцсон тэмдэгтүүд нь файл нэрлэхэд "
 #~ "зөвшөөрөгдөөгүй"
 
-# gtk/gtkfilesel.c:1403
+# ctk/ctkfilesel.c:1403
 #~ msgid "New Folder"
 #~ msgstr "Шинэ хавтас"
 
-# gtk/gtkfilesel.c:1418
+# ctk/ctkfilesel.c:1418
 #~ msgid "_Folder name:"
 #~ msgstr "_Хавтсын нэр:"
 
-# gtk/gtkfilesel.c:1444
+# ctk/ctkfilesel.c:1444
 #~ msgid "C_reate"
 #~ msgstr "Үү_сгэх"
 
@@ -5641,50 +5641,50 @@ msgstr ""
 #~ msgstr ""
 #~ "Файлын \"%s\" нэрэнд файлыг нэрлэхэд зөвшөөрөгдөөгүй тэмдэгт орсон байна"
 
-# gtk/gtkfilesel.c:1499
+# ctk/ctkfilesel.c:1499
 #, fuzzy
 #~ msgid "Error deleting file '%s': %s"
 #~ msgstr "\"%s\" файлыг устгахад алдлаа: %s"
 
-# gtk/gtkfilesel.c:1542
+# ctk/ctkfilesel.c:1542
 #~ msgid "Really delete file \"%s\"?"
 #~ msgstr " \"%s\" файлыг үнэхээр устгах уу?"
 
-# gtk/gtkfilesel.c:1547
+# ctk/ctkfilesel.c:1547
 #~ msgid "Delete File"
 #~ msgstr "Файл устгах"
 
-# gtk/gtkfilesel.c:1595
+# ctk/ctkfilesel.c:1595
 #, fuzzy
 #~ msgid "Error renaming file to \"%s\": %s"
 #~ msgstr ""
 #~ "Файлыг \"%s\"-ээр нэрлэхэд алдлаа: %s\n"
 #~ "%s"
 
-# gtk/gtkfilesel.c:1609
+# ctk/ctkfilesel.c:1609
 #, fuzzy
 #~ msgid "Error renaming file \"%s\": %s"
 #~ msgstr ""
 #~ "\"%s\" файлыг дахин нэрлэхэд алдлаа: %s\n"
 #~ "%s"
 
-# gtk/gtkfilesel.c:1619
+# ctk/ctkfilesel.c:1619
 #~ msgid "Error renaming file \"%s\" to \"%s\": %s"
 #~ msgstr "\"%s\" файлыг \"%s\" -ээр нэрлэхэд алдлаа: %s"
 
-# gtk/gtkfilesel.c:1666
+# ctk/ctkfilesel.c:1666
 #~ msgid "Rename File"
 #~ msgstr "Файлын шинээр нэрлэх"
 
-# gtk/gtkfilesel.c:1681
+# ctk/ctkfilesel.c:1681
 #~ msgid "Rename file \"%s\" to:"
 #~ msgstr "\"%s\" файлын шинэ нэр:"
 
-# gtk/gtkfilesel.c:1712
+# ctk/ctkfilesel.c:1712
 #~ msgid "_Rename"
 #~ msgstr "_Сольж нэрлэх"
 
-# gtk/gtkfilesel.c:2103
+# ctk/ctkfilesel.c:2103
 #~ msgid "_Selection: "
 #~ msgstr "_Сонголт: "
 
@@ -5696,103 +5696,103 @@ msgstr ""
 #~ "Файлын \"%s\" нэр UTF-8 руу хөрвүүлэгдсэнгүй (G_BROKEN_FILENAMES -ын авах "
 #~ "утгуудыг тохируул): %s"
 
-# gtk/gtkfilesel.c:2986
+# ctk/ctkfilesel.c:2986
 #~ msgid "Invalid UTF-8"
 #~ msgstr "Хүчингүй UTF-8"
 
-# gtk/gtkfilesel.c:3852
+# ctk/ctkfilesel.c:3852
 #~ msgid "Name too long"
 #~ msgstr "Нэр хэт урт"
 
-# gtk/gtkfilesel.c:3854
+# ctk/ctkfilesel.c:3854
 #~ msgid "Couldn't convert filename"
 #~ msgstr "Файлын нэр өөрчлөгдсөнгүй"
 
-# gtk/gtkgamma.c:396
+# ctk/ctkgamma.c:396
 #~ msgid "Gamma"
 #~ msgstr "Гамма"
 
-# gtk/gtkgamma.c:406
+# ctk/ctkgamma.c:406
 #~ msgid "_Gamma value"
 #~ msgstr "_Гамма утга"
 
-# gtk/gtkinputdialog.c:184
+# ctk/ctkinputdialog.c:184
 #~ msgid "Input"
 #~ msgstr "Оролт"
 
-# gtk/gtkinputdialog.c:192
+# ctk/ctkinputdialog.c:192
 #~ msgid "No extended input devices"
 #~ msgstr "Өргөтгөсөн оролтын төхөөрөмж алга."
 
-# gtk/gtkinputdialog.c:221
+# ctk/ctkinputdialog.c:221
 #~ msgid "_Device:"
 #~ msgstr "_Төхөөрөмж:"
 
-# gtk/gtkinputdialog.c:238
+# ctk/ctkinputdialog.c:238
 #~ msgid "Disabled"
 #~ msgstr "Идэвхжээгүй."
 
-# gtk/gtkinputdialog.c:246
+# ctk/ctkinputdialog.c:246
 #~ msgid "Screen"
 #~ msgstr "Дэлгэц"
 
-# gtk/gtkinputdialog.c:254
+# ctk/ctkinputdialog.c:254
 #~ msgid "Window"
 #~ msgstr "Цонх"
 
-# gtk/gtkinputdialog.c:262
+# ctk/ctkinputdialog.c:262
 #, fuzzy
 #~ msgid "_Mode:"
 #~ msgstr "_Горим: "
 
-# gtk/gtkinputdialog.c:293
+# ctk/ctkinputdialog.c:293
 #, fuzzy
 #~ msgid "Axes"
 #~ msgstr "Тэнхлэг"
 
-# gtk/gtkinputdialog.c:309
+# ctk/ctkinputdialog.c:309
 #, fuzzy
 #~ msgid "Keys"
 #~ msgstr "_Товчлуурууд"
 
-# gtk/gtkinputdialog.c:476
+# ctk/ctkinputdialog.c:476
 #, fuzzy
 #~ msgid "_Pressure:"
 #~ msgstr "Даралт"
 
-# gtk/gtkinputdialog.c:477
+# ctk/ctkinputdialog.c:477
 #, fuzzy
 #~ msgid "X _tilt:"
 #~ msgstr "X хэлбийлт"
 
-# gtk/gtkinputdialog.c:478
+# ctk/ctkinputdialog.c:478
 #, fuzzy
 #~ msgid "Y t_ilt:"
 #~ msgstr "Y хэлбийлт"
 
-# gtk/gtkinputdialog.c:479
+# ctk/ctkinputdialog.c:479
 #, fuzzy
 #~ msgid "_Wheel:"
 #~ msgstr "Дугуй"
 
-# gtk/gtkinputdialog.c:519
+# ctk/ctkinputdialog.c:519
 #~ msgid "none"
 #~ msgstr "байхгүй"
 
-# gtk/gtkinputdialog.c:553 gtk/gtkinputdialog.c:589
+# ctk/ctkinputdialog.c:553 ctk/ctkinputdialog.c:589
 #~ msgid "(disabled)"
 #~ msgstr "(идэвхжээгүй)"
 
-# gtk/gtkinputdialog.c:582
+# ctk/ctkinputdialog.c:582
 #~ msgid "(unknown)"
 #~ msgstr "(тодорхойгүй)"
 
-# gtk/gtkstock.c:280
+# ctk/ctkstock.c:280
 #, fuzzy
 #~ msgid "Cl_ear"
 #~ msgstr "_Цэвэрлэх"
 
-# gtk/gtktipsquery.c:182
+# ctk/ctktipsquery.c:182
 #~ msgid "--- No Tip ---"
 #~ msgstr "-Тайлбарлалтгүй-"
 
@@ -5820,27 +5820,27 @@ msgstr ""
 #~ msgid "%.1f GB"
 #~ msgstr "%.1f Г"
 
-# gtk/gtkstock.c:303
+# ctk/ctkstock.c:303
 #, fuzzy
 #~ msgid "Justify|_Center"
 #~ msgstr "_Төв"
 
-# gtk/gtkstock.c:306
+# ctk/ctkstock.c:306
 #, fuzzy
 #~ msgid "Justify|_Right"
 #~ msgstr "_Баруун"
 
-# gtk/gtkstock.c:307
+# ctk/ctkstock.c:307
 #, fuzzy
 #~ msgid "Media|_Next"
 #~ msgstr "_Шинэ"
 
-# gtk/gtkstock.c:311
+# ctk/ctkstock.c:311
 #, fuzzy
 #~ msgid "Media|P_ause"
 #~ msgstr "_Буулгах"
 
-# gtk/gtkstock.c:328
+# ctk/ctkstock.c:328
 #, fuzzy
 #~ msgid "Media|_Stop"
 #~ msgstr "_Зогс"
@@ -5874,7 +5874,7 @@ msgstr ""
 #~ msgid "Could not get a stock icon for %s\n"
 #~ msgstr "\"%s\" файлын мэдээлэл авагдахгүй байна: %s"
 
-# gtk/gtkfilesel.c:1369
+# ctk/ctkfilesel.c:1369
 #, fuzzy
 #~ msgid "Error getting information for '%s': %s"
 #~ msgstr "\"%s\" хувьд мэдээлэл авахад алдлаа: %s"
@@ -5889,20 +5889,20 @@ msgstr ""
 #~ msgid "Unknown attribute '%s' on line %d char %d"
 #~ msgstr "'%s' тодорхойгүй аттрибут %d мөрний %d тэмдэгтэнд"
 
-# gtk/gtkwindow.c:466
+# ctk/ctkwindow.c:466
 #~ msgid "Default"
 #~ msgstr "Стандарт"
 
-# gtk/gtkstock.c:304
+# ctk/ctkstock.c:304
 #, fuzzy
 #~ msgid "_All"
 #~ msgstr "_Бөглө"
 
-# gtk/gtkwindow.c:449
+# ctk/ctkwindow.c:449
 #~ msgid "Today"
 #~ msgstr "Өнөөдөр"
 
-# gtk/gtkfilesel.c:2103
+# ctk/ctkfilesel.c:2103
 #, fuzzy
 #~ msgid "Location:"
 #~ msgstr "_Байршил:"
@@ -5911,7 +5911,7 @@ msgstr ""
 #~ msgid "PNM image format is invalid"
 #~ msgstr "PNM зургийн төрөл нь хүчингүй"
 
-# gtk/gtkfilesel.c:1369
+# ctk/ctkfilesel.c:1369
 #, fuzzy
 #~ msgid "Error creating directory '%s': %s"
 #~ msgstr "\"%s\" хавтас үүсгэхэд алдлаа: %s"
@@ -5919,7 +5919,7 @@ msgstr ""
 #~ msgid "Thai (Broken)"
 #~ msgstr "Тай (асуудалтай байгаа)"
 
-# gtk/gtkfilesel.c:1360
+# ctk/ctkfilesel.c:1360
 #~ msgid ""
 #~ "Error creating folder \"%s\": %s\n"
 #~ "%s"
@@ -5930,7 +5930,7 @@ msgstr ""
 #~ msgid "You probably used symbols not allowed in filenames."
 #~ msgstr "Таны хэрэглэсэн тэмдэгтүүд файлыг нэрлэхэд зөвшөөрөгдөөгүй."
 
-# gtk/gtkfilesel.c:1488
+# ctk/ctkfilesel.c:1488
 #~ msgid ""
 #~ "Error deleting file \"%s\": %s\n"
 #~ "%s"
@@ -5938,22 +5938,22 @@ msgstr ""
 #~ "\"%s\" файлыг устгахад алдлаа: %s\n"
 #~ "%s"
 
-# gtk/gtkfilesel.c:1490 gtk/gtkfilesel.c:1611
+# ctk/ctkfilesel.c:1490 ctk/ctkfilesel.c:1611
 #~ msgid "It probably contains symbols not allowed in filenames."
 #~ msgstr "Энэ нь файлыг нэрлэхэд зөвшөөрөгдөөгүй тэмдэгт байна."
 
-# gtk/gtkfilesel.c:1593 gtk/gtkfilesel.c:1607
+# ctk/ctkfilesel.c:1593 ctk/ctkfilesel.c:1607
 #~ msgid ""
 #~ "The file name \"%s\" contains symbols that are not allowed in filenames"
 #~ msgstr ""
 #~ "Файлын \"%s\" нэрэнд файлыг нэрлэхэд зөвшөөрөгдөөгүй тэмдэгт орсон байна"
 
-# gtk/gtkfilesel.c:1369
+# ctk/ctkfilesel.c:1369
 #, fuzzy
 #~ msgid "Error getting information for '/': %s"
 #~ msgstr "\"%s\" хувьд мэдээлэл авахад алдлаа: %s"
 
-# gtk/gtkentry.c:3850 gtk/gtklabel.c:3164
+# ctk/ctkentry.c:3850 ctk/ctklabel.c:3164
 #~ msgid "Select All"
 #~ msgstr "Бүгдийг сонгох"
 
@@ -5972,11 +5972,11 @@ msgstr ""
 #~ "%s-н тухай мэдээлэл өгөгдөх боломжгүй:\n"
 #~ "%s"
 
-# gtk/gtkfilesel.c:707
+# ctk/ctkfilesel.c:707
 #~ msgid "Folder"
 #~ msgstr "Хавтас"
 
-# gtk/gtkfilesel.c:1403
+# ctk/ctkfilesel.c:1403
 #, fuzzy
 #~ msgid "Cannot change folder"
 #~ msgstr "_Хавтас дотор үүсгэх:"
@@ -5995,11 +5995,11 @@ msgstr ""
 #~ msgid "Save in Location"
 #~ msgstr "Байршил нээх"
 
-# gtk/gtkinputdialog.c:474
+# ctk/ctkinputdialog.c:474
 #~ msgid "X"
 #~ msgstr "X"
 
-# gtk/gtkinputdialog.c:667
+# ctk/ctkinputdialog.c:667
 #~ msgid "clear"
 #~ msgstr "цэвэрлэх"
 
@@ -6010,7 +6010,7 @@ msgstr ""
 #~ msgid "Writing %s failed: %s"
 #~ msgstr "Хавчуурга хадгалах бүтсэнгүй (%s)"
 
-# gtk/gtkfilesel.c:1369
+# ctk/ctkfilesel.c:1369
 #, fuzzy
 #~ msgid "Error getting information for '%s'"
 #~ msgstr "\"%s\" хувьд мэдээлэл авахад алдаа гарлаа"
@@ -6033,7 +6033,7 @@ msgstr ""
 #~ msgid "Could not find the path"
 #~ msgstr "Хадгалж чадсангүй"
 
-# gtk/gtkentry.c:3860 gtk/gtklabel.c:3174
+# ctk/ctkentry.c:3860 ctk/ctklabel.c:3174
 #~ msgid "Input Methods"
 #~ msgstr "Оруулах арга"
 
@@ -6048,17 +6048,17 @@ msgstr ""
 #~ "%s-н эцэг лавлах руу очих боломжгүй:\n"
 #~ "%s"
 
-# gtk/gtkfilesel.c:536 gtk/gtkimage.c:161
+# ctk/ctkfilesel.c:536 ctk/ctkimage.c:161
 #~ msgid "File name"
 #~ msgstr "Файлын нэр"
 
 #~ msgid "Add"
 #~ msgstr "Нэм"
 
-# gtk/gtkfilesel.c:536 gtk/gtkimage.c:161
+# ctk/ctkfilesel.c:536 ctk/ctkimage.c:161
 #~ msgid "_Filename:"
 #~ msgstr "_Файлын нэр"
 
-# gtk/gtkcolorsel.c:1718
+# ctk/ctkcolorsel.c:1718
 #~ msgid "Current folder: %s"
 #~ msgstr "Идэвхитэй хавтас: %s"

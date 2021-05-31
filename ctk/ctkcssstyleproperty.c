@@ -19,18 +19,18 @@
 
 #include "config.h"
 
-#include "gtkcssstylepropertyprivate.h"
+#include "ctkcssstylepropertyprivate.h"
 
-#include "gtkcssenumvalueprivate.h"
-#include "gtkcssinheritvalueprivate.h"
-#include "gtkcssinitialvalueprivate.h"
-#include "gtkcssstylefuncsprivate.h"
-#include "gtkcsstypesprivate.h"
-#include "gtkcssunsetvalueprivate.h"
-#include "gtkintl.h"
-#include "gtkprivatetypebuiltins.h"
-#include "deprecated/gtkstylepropertiesprivate.h"
-#include "gtkprivate.h"
+#include "ctkcssenumvalueprivate.h"
+#include "ctkcssinheritvalueprivate.h"
+#include "ctkcssinitialvalueprivate.h"
+#include "ctkcssstylefuncsprivate.h"
+#include "ctkcsstypesprivate.h"
+#include "ctkcssunsetvalueprivate.h"
+#include "ctkintl.h"
+#include "ctkprivatetypebuiltins.h"
+#include "deprecated/ctkstylepropertiesprivate.h"
+#include "ctkprivate.h"
 
 /* this is in case round() is not provided by the compiler, 
  * such as in the case of C89 compilers, like MSVC

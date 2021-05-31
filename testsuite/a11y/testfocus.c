@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static const gchar *
 get_name (gpointer obj)
@@ -47,7 +47,7 @@ compare_focus (gpointer data)
     ctk_focus = NULL;
 
   if (ctk_focus != atk_focus)
-    g_print ("gtk focus: %s != atk focus: %s\n",
+    g_print ("ctk focus: %s != atk focus: %s\n",
              get_name (ctk_focus), get_name (atk_focus));
 
   return G_SOURCE_CONTINUE;

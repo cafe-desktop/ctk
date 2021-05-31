@@ -19,7 +19,7 @@
 
 #include "config.h"
 #include <math.h>
-#include "gtk/gtk.h"
+#include "ctk/ctk.h"
 
 static void
 draw_page (GtkPrintOperation *operation,

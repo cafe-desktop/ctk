@@ -20,18 +20,18 @@
 
 #include "config.h"
 
-#include "gtkmenusectionbox.h"
+#include "ctkmenusectionbox.h"
 
-#include "gtkwidgetprivate.h"
-#include "gtklabel.h"
-#include "gtkmenutracker.h"
-#include "gtkmodelbutton.h"
-#include "gtkseparator.h"
-#include "gtksizegroup.h"
-#include "gtkstack.h"
-#include "gtkstylecontext.h"
-#include "gtkpopover.h"
-#include "gtkorientable.h"
+#include "ctkwidgetprivate.h"
+#include "ctklabel.h"
+#include "ctkmenutracker.h"
+#include "ctkmodelbutton.h"
+#include "ctkseparator.h"
+#include "ctksizegroup.h"
+#include "ctkstack.h"
+#include "ctkstylecontext.h"
+#include "ctkpopover.h"
+#include "ctkorientable.h"
 
 typedef GtkBoxClass GtkMenuSectionBoxClass;
 

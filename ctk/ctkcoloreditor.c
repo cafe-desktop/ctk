@@ -17,25 +17,25 @@
 
 #include "config.h"
 
-#include "gtkcoloreditorprivate.h"
+#include "ctkcoloreditorprivate.h"
 
-#include "gtkcolorchooserprivate.h"
-#include "gtkcolorplaneprivate.h"
-#include "gtkcolorscaleprivate.h"
-#include "gtkcolorswatchprivate.h"
-#include "gtkcolorutils.h"
-#include "gtkcolorpickerprivate.h"
-#include "gtkgrid.h"
-#include "gtkbutton.h"
-#include "gtkintl.h"
-#include "gtkorientable.h"
-#include "gtkentry.h"
-#include "gtkoverlay.h"
-#include "gtkadjustment.h"
-#include "gtklabel.h"
-#include "gtkrender.h"
-#include "gtkspinbutton.h"
-#include "gtkstylecontext.h"
+#include "ctkcolorchooserprivate.h"
+#include "ctkcolorplaneprivate.h"
+#include "ctkcolorscaleprivate.h"
+#include "ctkcolorswatchprivate.h"
+#include "ctkcolorutils.h"
+#include "ctkcolorpickerprivate.h"
+#include "ctkgrid.h"
+#include "ctkbutton.h"
+#include "ctkintl.h"
+#include "ctkorientable.h"
+#include "ctkentry.h"
+#include "ctkoverlay.h"
+#include "ctkadjustment.h"
+#include "ctklabel.h"
+#include "ctkrender.h"
+#include "ctkspinbutton.h"
+#include "ctkstylecontext.h"
 
 #include <math.h>
 
@@ -523,7 +523,7 @@ ctk_color_editor_class_init (GtkColorEditorClass *class)
   /* Bind class to template
    */
   ctk_widget_class_set_template_from_resource (widget_class,
-					       "/org/gtk/libgtk/ui/gtkcoloreditor.ui");
+					       "/org/ctk/libctk/ui/ctkcoloreditor.ui");
 
   ctk_widget_class_bind_template_child_private (widget_class, GtkColorEditor, overlay);
   ctk_widget_class_bind_template_child_private (widget_class, GtkColorEditor, grid);

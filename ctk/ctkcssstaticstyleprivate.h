@@ -20,8 +20,8 @@
 #ifndef __CTK_CSS_STATIC_STYLE_PRIVATE_H__
 #define __CTK_CSS_STATIC_STYLE_PRIVATE_H__
 
-#include "gtk/gtkcssmatcherprivate.h"
-#include "gtk/gtkcssstyleprivate.h"
+#include "ctk/ctkcssmatcherprivate.h"
+#include "ctk/ctkcssstyleprivate.h"
 
 G_BEGIN_DECLS
 

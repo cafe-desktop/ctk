@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkprintbackend.h: Abstract printer backend interfaces
+ * ctkprintbackend.h: Abstract printer backend interfaces
  * Copyright (C) 2003, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -21,12 +21,12 @@
 
 #include <gmodule.h>
 
-#include "gtkintl.h"
-#include "gtkmodules.h"
-#include "gtkmodulesprivate.h"
-#include "gtkmarshalers.h"
-#include "gtkprivate.h"
-#include "gtkprintbackend.h"
+#include "ctkintl.h"
+#include "ctkmodules.h"
+#include "ctkmodulesprivate.h"
+#include "ctkmarshalers.h"
+#include "ctkprivate.h"
+#include "ctkprintbackend.h"
 
 
 static void ctk_print_backend_dispose      (GObject      *object);
@@ -75,7 +75,7 @@ ctk_print_backend_error_quark (void)
 {
   static GQuark quark = 0;
   if (quark == 0)
-    quark = g_quark_from_static_string ("gtk-print-backend-error-quark");
+    quark = g_quark_from_static_string ("ctk-print-backend-error-quark");
   return quark;
 }
 
@@ -315,7 +315,7 @@ ctk_print_backend_load_modules (void)
 
   settings = ctk_settings_get_default ();
   if (settings)
-    g_object_get (settings, "gtk-print-backends", &setting, NULL);
+    g_object_get (settings, "ctk-print-backends", &setting, NULL);
   else
     setting = g_strdup (CTK_PRINT_BACKENDS);
 

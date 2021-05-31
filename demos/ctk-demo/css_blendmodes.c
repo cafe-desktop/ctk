@@ -3,7 +3,7 @@
  * You can blend multiple backgrounds using the CSS blend modes available.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #define WID(x) ((GtkWidget*) ctk_builder_get_object (builder, x))
 

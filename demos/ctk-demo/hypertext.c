@@ -6,7 +6,7 @@
  * shows.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <gdk/gdkkeysyms.h>
 
 /* Inserts a piece of text into the buffer, giving it the usual

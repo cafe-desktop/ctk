@@ -17,19 +17,19 @@
 
 #include "config.h"
 
-#include "gtkwidgetpath.h"
+#include "ctkwidgetpath.h"
 
 #include <string.h>
 
-#include "gtkcssnodedeclarationprivate.h"
-#include "gtkprivate.h"
-#include "gtkstylecontextprivate.h"
-#include "gtktypebuiltins.h"
-#include "gtkwidget.h"
-#include "gtkwidgetpathprivate.h"
+#include "ctkcssnodedeclarationprivate.h"
+#include "ctkprivate.h"
+#include "ctkstylecontextprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctkwidget.h"
+#include "ctkwidgetpathprivate.h"
 
 /**
- * SECTION:gtkwidgetpath
+ * SECTION:ctkwidgetpath
  * @Short_description: Widget path abstraction
  * @Title: GtkWidgetPath
  * @See_also: #GtkStyleContext

@@ -1,4 +1,4 @@
-@binding-set gtk-mac-alt-arrows
+@binding-set ctk-mac-alt-arrows
 {
   bind "<alt>Right"           { "move-cursor" (words, 1, 0) };
   bind "<alt>KP_Right"        { "move-cursor" (words, 1, 0) };
@@ -10,14 +10,14 @@
   bind "<shift><alt>KP_Left"  { "move-cursor" (words, -1, 1) };
 }
 
-@binding-set gtk-mac-alt-delete
+@binding-set ctk-mac-alt-delete
 {
   bind "<alt>Delete" { "delete-from-cursor" (word-ends, 1) };
   bind "<alt>KP_Delete" { "delete-from-cursor" (word-ends, 1) };
   bind "<alt>BackSpace" { "delete-from-cursor" (word-ends, -1) };
 }
 
-@binding-set gtk-mac-cmd-c
+@binding-set ctk-mac-cmd-c
 {
   bind "<meta>x" { "cut-clipboard" () };
   bind "<meta>c" { "copy-clipboard" () };
@@ -27,7 +27,7 @@
   unbind "<ctrl>v";
 }
 
-@binding-set gtk-mac-text-view
+@binding-set ctk-mac-text-view
 {
   bind "<shift><meta>a" { "select-all" (0) };
   bind "<meta>a" { "select-all" (1) };
@@ -35,7 +35,7 @@
   unbind "<ctrl>a";
 }
 
-@binding-set gtk-mac-label
+@binding-set ctk-mac-label
 {
   bind "<meta>a" {
     "move-cursor" (paragraph-ends, -1, 0)
@@ -48,7 +48,7 @@
   unbind "<ctrl>c";
 }
 
-@binding-set gtk-mac-entry
+@binding-set ctk-mac-entry
 {
   bind "<meta>a" {
     "move-cursor" (buffer-ends, -1, 0)
@@ -59,7 +59,7 @@
   unbind "<shift><ctrl>a";
 }
 
-@binding-set gtk-mac-cmd-arrows
+@binding-set ctk-mac-cmd-arrows
 {
   bind "<meta>Left" { "move-cursor" (paragraph-ends, -1, 0) };
   bind "<meta>KP_Left" { "move-cursor" (paragraph-ends, -1, 0) };
@@ -71,7 +71,7 @@
   bind "<shift><meta>KP_Right" { "move-cursor" (paragraph-ends, 1, 1) };
 }
 
-@binding-set gtk-mac-emacs-like
+@binding-set ctk-mac-emacs-like
 {
   bind "<ctrl>a" { "move-cursor" (paragraph-ends, -1, 0) };
   bind "<shift><ctrl>a" { "move-cursor" (paragraph-ends, -1, 1) };
@@ -84,7 +84,7 @@
   bind "<shift><ctrl>f" { "move-cursor" (logical-positions, 1, 1) };
 }
 
-@binding-set gtk-mac-file-chooser
+@binding-set ctk-mac-file-chooser
 {
   bind "<meta>v" { "location-popup-on-paste" () };
   unbind "<ctrl>v";
@@ -94,7 +94,7 @@
   bind "<meta>Up" { "up-folder" () };
 }
 
-@binding-set gtk-mac-tree-view
+@binding-set ctk-mac-tree-view
 {
   bind "<meta>a" { "select-all" () };
   bind "<shift><meta>a" { "unselect-all" () };
@@ -106,7 +106,7 @@
   unbind "<ctrl>F";
 }
 
-@binding-set gtk-mac-icon-view
+@binding-set ctk-mac-icon-view
 {
   bind "<meta>a" { "select-all" () };
   bind "<shift><meta>a" { "unselect-all" () };
@@ -115,25 +115,25 @@
 }
 
 iconview {
-  -gtk-key-bindings: gtk-mac-icon-view;
+  -ctk-key-bindings: ctk-mac-icon-view;
 }
 
 textview {
-  -gtk-key-bindings: gtk-mac-alt-arrows, gtk-mac-alt-delete, gtk-mac-cmd-c, gtk-mac-cmd-arrows, gtk-mac-emacs-like, gtk-mac-text-view;
+  -ctk-key-bindings: ctk-mac-alt-arrows, ctk-mac-alt-delete, ctk-mac-cmd-c, ctk-mac-cmd-arrows, ctk-mac-emacs-like, ctk-mac-text-view;
 }
 
 entry {
-  -gtk-key-bindings: gtk-mac-alt-arrows, gtk-mac-alt-delete, gtk-mac-cmd-c, gtk-mac-cmd-arrows, gtk-mac-emacs-like, gtk-mac-entry;
+  -ctk-key-bindings: ctk-mac-alt-arrows, ctk-mac-alt-delete, ctk-mac-cmd-c, ctk-mac-cmd-arrows, ctk-mac-emacs-like, ctk-mac-entry;
 }
 
 label {
-  -gtk-key-bindings: gtk-mac-alt-arrows, gtk-mac-cmd-arrows, gtk-mac-emacs-like, gtk-mac-label;
+  -ctk-key-bindings: ctk-mac-alt-arrows, ctk-mac-cmd-arrows, ctk-mac-emacs-like, ctk-mac-label;
 }
 
 GtkFileChooserWidget {
-  -gtk-key-bindings: gtk-mac-file-chooser;
+  -ctk-key-bindings: ctk-mac-file-chooser;
 }
 
 treeview {
-  -gtk-key-bindings: gtk-mac-tree-view;
+  -ctk-key-bindings: ctk-mac-tree-view;
 }

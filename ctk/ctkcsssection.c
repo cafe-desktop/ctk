@@ -17,10 +17,10 @@
 
 #include "config.h"
 
-#include "gtkcsssectionprivate.h"
+#include "ctkcsssectionprivate.h"
 
-#include "gtkcssparserprivate.h"
-#include "gtkprivate.h"
+#include "ctkcssparserprivate.h"
+#include "ctkprivate.h"
 
 struct _GtkCssSection
 {

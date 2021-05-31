@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void rgba_changed (GtkColorChooser *chooser, GParamSpec *pspec, gpointer data);
 

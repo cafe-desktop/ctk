@@ -12,14 +12,14 @@ developers, including those developing proprietary software, without any
 license fees or royalties.
 
 The official download locations are:
-  ftp://ftp.gtk.org/pub/gtk
-  http://download.gnome.org/sources/gtk+
+  ftp://ftp.ctk.org/pub/ctk
+  http://download.gnome.org/sources/ctk+
 
 The official web site is:
-  http://www.gtk.org/
+  http://www.ctk.org/
 
 Information about mailing lists can be found at
-  http://www.gtk.org/mailing-lists.php
+  http://www.ctk.org/mailing-lists.php
 
 
 Installation
@@ -79,4 +79,4 @@ Release notes
 Release notes for releases of GTK+ 3.x are part of the migration
 guide in the GTK+ documentation. See
 
-https://developer.gnome.org/gtk3/unstable/gtk-migrating-2-to-3.html
+https://developer.gnome.org/ctk3/unstable/ctk-migrating-2-to-3.html

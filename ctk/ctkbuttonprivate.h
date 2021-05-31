@@ -19,10 +19,10 @@
 #ifndef __CTK_BUTTON_PRIVATE_H__
 #define __CTK_BUTTON_PRIVATE_H__
 
-#include "gtkactionhelper.h"
-#include "gtkgesturesingle.h"
-#include "deprecated/gtkaction.h"
-#include "gtkcssgadgetprivate.h"
+#include "ctkactionhelper.h"
+#include "ctkgesturesingle.h"
+#include "deprecated/ctkaction.h"
+#include "ctkcssgadgetprivate.h"
 
 G_BEGIN_DECLS
 

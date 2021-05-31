@@ -28,7 +28,7 @@
 }
 
 {
-   gtk-style-context
+   ctk-style-context
    Memcheck:Leak
    match-leak-kinds: possible
    fun:malloc
@@ -40,7 +40,7 @@
 }
 
 {
-   gtk-style-context2
+   ctk-style-context2
    Memcheck:Leak
    match-leak-kinds: possible
    fun:malloc

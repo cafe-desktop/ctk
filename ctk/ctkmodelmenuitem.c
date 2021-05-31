@@ -19,12 +19,12 @@
 
 #include "config.h"
 
-#include "gtkmodelmenuitem.h"
+#include "ctkmodelmenuitem.h"
 
-#include "gtkaccellabel.h"
-#include "gtkcheckmenuitemprivate.h"
-#include "gtkimage.h"
-#include "gtkbox.h"
+#include "ctkaccellabel.h"
+#include "ctkcheckmenuitemprivate.h"
+#include "ctkimage.h"
+#include "ctkbox.h"
 
 struct _GtkModelMenuItem
 {

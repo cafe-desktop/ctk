@@ -15,6 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-#include "gtk3-icon-browser.vs10.sourcefiles.filters"
+#include "ctk3-icon-browser.vs10.sourcefiles.filters"
   </ItemGroup>
 </Project>

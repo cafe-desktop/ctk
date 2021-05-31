@@ -2,7 +2,7 @@ window1
   "frame"
   index: 0
   state: enabled resizable sensitive showing visible
-  toolkit: gtk
+  toolkit: ctk
   window-type: normal
   <AtkComponent>
   layer: window
@@ -12,7 +12,7 @@ window1
     parent: window1
     index: 0
     state: enabled sensitive showing visible
-    toolkit: gtk
+    toolkit: ctk
     <AtkComponent>
     layer: widget
     alpha: 1
@@ -23,7 +23,7 @@ window1
       index: 0
       name: File
       state: enabled selectable sensitive showing visible
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: popup
       alpha: 1
@@ -38,7 +38,7 @@ window1
         index: 0
         name: New
         state: enabled selectable sensitive visible
-        toolkit: gtk
+        toolkit: ctk
         <AtkComponent>
         layer: popup
         alpha: 1
@@ -53,7 +53,7 @@ window1
         index: 1
         name: bla
         state: enabled selectable sensitive visible
-        toolkit: gtk
+        toolkit: ctk
         <AtkComponent>
         layer: popup
         alpha: 1
@@ -66,7 +66,7 @@ window1
         parent: menuitem1
         index: 2
         state: enabled selectable sensitive visible
-        toolkit: gtk
+        toolkit: ctk
         <AtkComponent>
         layer: popup
         alpha: 1
@@ -78,7 +78,7 @@ window1
         index: 3
         name: check item
         state: enabled selectable sensitive visible
-        toolkit: gtk
+        toolkit: ctk
         <AtkComponent>
         layer: popup
         alpha: 1
@@ -92,7 +92,7 @@ window1
       index: 1
       name: Edit
       state: enabled selectable sensitive showing visible
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: popup
       alpha: 1
@@ -109,7 +109,7 @@ window1
         member-of: menuitem5
                    menuitem4
         state: enabled selectable sensitive visible
-        toolkit: gtk
+        toolkit: ctk
         <AtkComponent>
         layer: popup
         alpha: 1
@@ -125,7 +125,7 @@ window1
         member-of: menuitem5
                    menuitem4
         state: enabled selectable sensitive visible
-        toolkit: gtk
+        toolkit: ctk
         <AtkComponent>
         layer: popup
         alpha: 1

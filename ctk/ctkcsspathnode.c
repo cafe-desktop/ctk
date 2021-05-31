@@ -17,10 +17,10 @@
 
 #include "config.h"
 
-#include "gtkcsspathnodeprivate.h"
-#include "gtkcssstylepropertyprivate.h"
-#include "gtkprivate.h"
-#include "gtkstylecontextprivate.h"
+#include "ctkcsspathnodeprivate.h"
+#include "ctkcssstylepropertyprivate.h"
+#include "ctkprivate.h"
+#include "ctkstylecontextprivate.h"
 
 G_DEFINE_TYPE (GtkCssPathNode, ctk_css_path_node, CTK_TYPE_CSS_NODE)
 

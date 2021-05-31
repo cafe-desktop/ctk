@@ -18,8 +18,8 @@
 #ifndef __CTK_COLOR_PLANE_H__
 #define __CTK_COLOR_PLANE_H__
 
-#include <gtk/gtkdrawingarea.h>
-#include <gtk/gtktypes.h>
+#include <ctk/ctkdrawingarea.h>
+#include <ctk/ctktypes.h>
 
 G_BEGIN_DECLS
 

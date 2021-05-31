@@ -21,7 +21,7 @@
 #ifndef __CTK_MENU_BUTTON_PRIVATE_H__
 #define __CTK_MENU_BUTTON_PRIVATE_H__
 
-#include <gtk/gtkmenubutton.h>
+#include <ctk/ctkmenubutton.h>
 
 G_BEGIN_DECLS
 

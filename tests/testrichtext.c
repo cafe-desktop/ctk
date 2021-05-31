@@ -17,7 +17,7 @@
  */
 
 #include <string.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static guint32 quick_rand32_accu = 2147483563;
 

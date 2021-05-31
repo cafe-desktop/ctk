@@ -1,3 +1,3 @@
 box {
-  background-image: -gtk-icontheme("pan-down-symbolic");
+  background-image: -ctk-icontheme("pan-down-symbolic");
 }

@@ -20,13 +20,13 @@
 
 #include <string.h>
 
-#include "gtkmodules.h"
-#include "gtksettings.h"
-#include "gtkdebug.h"
-#include "gtkprivate.h"
-#include "gtkmodulesprivate.h"
-#include "gtkintl.h"
-#include "gtkutilsprivate.h"
+#include "ctkmodules.h"
+#include "ctksettings.h"
+#include "ctkdebug.h"
+#include "ctkprivate.h"
+#include "ctkmodulesprivate.h"
+#include "ctkintl.h"
+#include "ctkutilsprivate.h"
 
 #include <gmodule.h>
 
@@ -65,9 +65,9 @@ get_module_path (void)
   exe_prefix = g_getenv ("CTK_EXE_PREFIX");
 
   if (exe_prefix)
-    default_dir = g_build_filename (exe_prefix, "lib", "gtk-3.0", NULL);
+    default_dir = g_build_filename (exe_prefix, "lib", "ctk-3.0", NULL);
   else
-    default_dir = g_build_filename (_ctk_get_libdir (), "gtk-3.0", NULL);
+    default_dir = g_build_filename (_ctk_get_libdir (), "ctk-3.0", NULL);
 
   if (module_path_env)
     module_path = g_build_path (G_SEARCHPATH_SEPARATOR_S,
@@ -465,7 +465,7 @@ display_closed_cb (GdkDisplay *display,
   settings = ctk_settings_get_for_screen (screen);
   if (settings)
     g_object_set_data_full (G_OBJECT (settings),
-			    I_("gtk-modules"),
+			    I_("ctk-modules"),
 			    NULL, NULL);
 }
 		   
@@ -493,7 +493,7 @@ display_opened_cb (GdkDisplayManager *display_manager,
   g_value_init (&value, G_TYPE_STRING);
   screen = gdk_display_get_default_screen (display);
 
-  if (gdk_screen_get_setting (screen, "gtk-modules", &value))
+  if (gdk_screen_get_setting (screen, "ctk-modules", &value))
     {
       settings = ctk_settings_get_for_screen (screen);
       _ctk_modules_settings_changed (settings, g_value_get_string (&value));
@@ -564,14 +564,14 @@ _ctk_modules_settings_changed (GtkSettings *settings,
 {
   GSList *new_modules = NULL;
 
-  CTK_NOTE (MODULES, g_message ("gtk-modules setting changed to: %s", modules));
+  CTK_NOTE (MODULES, g_message ("ctk-modules setting changed to: %s", modules));
 
   /* load/ref before unreffing existing */
   if (modules && modules[0])
     new_modules = load_modules (modules);
 
   g_object_set_data_full (G_OBJECT (settings),
-			  I_("gtk-modules"),
+			  I_("ctk-modules"),
 			  new_modules,
 			  settings_destroy_notify);
 }

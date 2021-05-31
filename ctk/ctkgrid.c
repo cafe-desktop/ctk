@@ -20,20 +20,20 @@
 
 #include <string.h>
 
-#include "gtkgrid.h"
+#include "ctkgrid.h"
 
-#include "gtkorientableprivate.h"
-#include "gtkrender.h"
-#include "gtksizerequest.h"
-#include "gtkwidgetprivate.h"
-#include "gtkcontainerprivate.h"
-#include "gtkcsscustomgadgetprivate.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
+#include "ctkorientableprivate.h"
+#include "ctkrender.h"
+#include "ctksizerequest.h"
+#include "ctkwidgetprivate.h"
+#include "ctkcontainerprivate.h"
+#include "ctkcsscustomgadgetprivate.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
 
 
 /**
- * SECTION:gtkgrid
+ * SECTION:ctkgrid
  * @Short_description: Pack widgets in rows and columns
  * @Title: GtkGrid
  * @See_also: #GtkBox

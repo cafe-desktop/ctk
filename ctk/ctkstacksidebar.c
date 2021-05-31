@@ -21,18 +21,18 @@
 
 #include "config.h"
 
-#include "gtkstacksidebar.h"
+#include "ctkstacksidebar.h"
 
-#include "gtklabel.h"
-#include "gtklistbox.h"
-#include "gtkscrolledwindow.h"
-#include "gtkseparator.h"
-#include "gtkstylecontext.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
+#include "ctklabel.h"
+#include "ctklistbox.h"
+#include "ctkscrolledwindow.h"
+#include "ctkseparator.h"
+#include "ctkstylecontext.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
 
 /**
- * SECTION:gtkstacksidebar
+ * SECTION:ctkstacksidebar
  * @Title: GtkStackSidebar
  * @Short_description: An automatic sidebar widget
  *

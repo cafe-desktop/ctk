@@ -1,4 +1,4 @@
-/* gtkemojichooser.h: An Emoji chooser widget
+/* ctkemojichooser.h: An Emoji chooser widget
  * Copyright 2017, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -18,10 +18,10 @@
 #pragma once
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkwidget.h>
+#include <ctk/ctkwidget.h>
 
 G_BEGIN_DECLS
 

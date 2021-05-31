@@ -21,8 +21,8 @@
 #ifndef __CTK_GESTURE_SINGLE_PRIVATE_H__
 #define __CTK_GESTURE_SINGLE_PRIVATE_H__
 
-#include "gtkgestureprivate.h"
-#include "gtkgesturesingle.h"
+#include "ctkgestureprivate.h"
+#include "ctkgesturesingle.h"
 
 struct _GtkGestureSingle
 {

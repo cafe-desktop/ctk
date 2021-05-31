@@ -1,4 +1,4 @@
-/* gtkrecentprivatechooser.h - Interface definitions for recent selectors UI
+/* ctkrecentprivatechooser.h - Interface definitions for recent selectors UI
  *
  * Copyright (C) 2006 Emmanuele Bassi
  *
@@ -21,9 +21,9 @@
 #ifndef __CTK_RECENT_CHOOSER_PRIVATE_H__
 #define __CTK_RECENT_CHOOSER_PRIVATE_H__
 
-#include "gtkrecentmanager.h"
-#include "gtkrecentchooser.h"
-#include "deprecated/gtkactivatable.h"
+#include "ctkrecentmanager.h"
+#include "ctkrecentchooser.h"
+#include "deprecated/ctkactivatable.h"
 
 G_BEGIN_DECLS
 

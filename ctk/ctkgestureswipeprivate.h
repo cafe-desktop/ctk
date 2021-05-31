@@ -20,8 +20,8 @@
 #ifndef __CTK_GESTURE_SWIPE_PRIVATE_H__
 #define __CTK_GESTURE_SWIPE_PRIVATE_H__
 
-#include "gtkgesturesingleprivate.h"
-#include "gtkgestureswipe.h"
+#include "ctkgesturesingleprivate.h"
+#include "ctkgestureswipe.h"
 
 struct _GtkGestureSwipe
 {

@@ -19,7 +19,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -54,7 +54,7 @@
  * The functions in this section are specific to the GDK X11 backend.
  * To use them, you need to include the `<gdk/gdkx.h>` header and use
  * the X11-specific pkg-config files to build your application (either
- * `gdk-x11-3.0` or `gtk+-x11-3.0`).
+ * `gdk-x11-3.0` or `ctk+-x11-3.0`).
  *
  * To make your code compile with other GDK backends, guard backend-specific
  * calls by an ifdef as follows. Since GDK may be built with multiple

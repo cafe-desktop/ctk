@@ -6,7 +6,7 @@
  * The children of a GtkFlowBox are regular widgets
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <stdlib.h>
 #include <string.h>
 

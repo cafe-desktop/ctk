@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 toggle_center (GtkCheckButton *button,
@@ -157,7 +157,7 @@ main (int argc, char *argv[])
 {
   GtkApplication *app;
 
-  app = ctk_application_new ("org.gtk.Test.ActionBar", 0);
+  app = ctk_application_new ("org.ctk.Test.ActionBar", 0);
   g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);
 
   return g_application_run (G_APPLICATION (app), argc, argv);

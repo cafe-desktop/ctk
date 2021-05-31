@@ -3,7 +3,7 @@
                "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
 <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
 ]>
-<chapter id="gtk-migrating-3-x-to-y">
+<chapter id="ctk-migrating-3-x-to-y">
   <title>Migrating from one GTK+ 3 release to another</title>
 
   <para>
@@ -23,7 +23,7 @@
 
     <para>
       The accessible implementations for GTK+ widgets have been integrated
-      into libgtk itself, and the gail module does not exist anymore. This
+      into libctk itself, and the gail module does not exist anymore. This
       change should not affect applications very much.
     </para>
   </section>
@@ -101,10 +101,10 @@
       GTK+ now follows the XDG Base Directory specification for
       user configuration and data files. In detail,
       <itemizedlist>
-        <listitem>$XDG_CONFIG_HOME/gtk-3.0/custom-papers is the new location
-          for $HOME/.gtk-custom-papers</listitem>
-        <listitem>$XDG_CONFIG_HOME/gtk-3.0/bookmarks is the new location
-          for $HOME/.gtk-bookmarks</listitem>
+        <listitem>$XDG_CONFIG_HOME/ctk-3.0/custom-papers is the new location
+          for $HOME/.ctk-custom-papers</listitem>
+        <listitem>$XDG_CONFIG_HOME/ctk-3.0/bookmarks is the new location
+          for $HOME/.ctk-bookmarks</listitem>
         <listitem>$XDG_DATA_HOME/themes is preferred over $HOME/.themes</listitem>
         <listitem>$XDG_DATA_HOME/icons is preferred over $HOME/.icons.</listitem>
       </itemizedlist>
@@ -113,7 +113,7 @@
     </para>
 
     <para>
-      $HOME/.gtk-3.0 is no longer in the default module load path.
+      $HOME/.ctk-3.0 is no longer in the default module load path.
       If you want to load modules from there, add it to the CTK_PATH
       environment variable.
     </para>
@@ -244,7 +244,7 @@
       GTK+ now includes an interactive debugger which can be activated with
       the keyboard shortcuts Ctrl-Shift-d or Ctrl-Shift-i. If these shortcuts
       interfere with application keybindings, they can be disabled with the
-      setting org.gtk.Settings.Debug.enable-inspector-keybinding.
+      setting org.ctk.Settings.Debug.enable-inspector-keybinding.
     </para>
 
     <para>
@@ -279,8 +279,8 @@
     </para>
 
     <para>
-      GTK+ no longer uses gtk-update-icon-cache during its build. The
-      --enable-gtk2-dependency configure option has been removed.
+      GTK+ no longer uses ctk-update-icon-cache during its build. The
+      --enable-ctk2-dependency configure option has been removed.
     </para>
 
     <para>

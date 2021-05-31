@@ -19,10 +19,10 @@
 #ifndef __CTK_GESTURE_STYLUS_H__
 #define __CTK_GESTURE_STYLUS_H__
 
-#include <gtk/gtkgesture.h>
+#include <ctk/ctkgesture.h>
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
 G_BEGIN_DECLS

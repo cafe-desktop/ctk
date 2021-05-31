@@ -1,4 +1,4 @@
-/* gtktextchild.c - child pixmaps and widgets
+/* ctktextchild.c - child pixmaps and widgets
  *
  * Copyright (c) 1994 The Regents of the University of California.
  * Copyright (c) 1994-1997 Sun Microsystems, Inc.
@@ -49,10 +49,10 @@
 
 #define CTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
 #include "config.h"
-#include "gtktextchild.h"
-#include "gtktextbtree.h"
-#include "gtktextlayout.h"
-#include "gtkintl.h"
+#include "ctktextchild.h"
+#include "ctktextbtree.h"
+#include "ctktextlayout.h"
+#include "ctkintl.h"
 
 #define CHECK_IN_BUFFER(anchor)                                         \
   G_STMT_START {                                                        \
@@ -295,7 +295,7 @@ _ctk_widget_segment_unref (GtkTextLineSegment *widget_segment)
 GtkTextLayout*
 _ctk_anchored_child_get_layout (GtkWidget *child)
 {
-  return g_object_get_data (G_OBJECT (child), "gtk-text-child-anchor-layout");  
+  return g_object_get_data (G_OBJECT (child), "ctk-text-child-anchor-layout");  
 }
 
 static void
@@ -303,7 +303,7 @@ _ctk_anchored_child_set_layout (GtkWidget     *child,
                                 GtkTextLayout *layout)
 {
   g_object_set_data (G_OBJECT (child),
-                     I_("gtk-text-child-anchor-layout"),
+                     I_("ctk-text-child-anchor-layout"),
                      layout);  
 }
      

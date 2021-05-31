@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 on_action_beep (GSimpleAction *action,
@@ -97,7 +97,7 @@ int
 main (int   argc,
       char *argv[])
 {
-  GtkApplication *application = ctk_application_new ("org.gtk.test.modelbutton",
+  GtkApplication *application = ctk_application_new ("org.ctk.test.modelbutton",
                                                      G_APPLICATION_FLAGS_NONE);
   int result;
 

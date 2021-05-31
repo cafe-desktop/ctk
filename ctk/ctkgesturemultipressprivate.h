@@ -19,8 +19,8 @@
 #ifndef __CTK_GESTURE_MULTI_PRESS_PRIVATE_H__
 #define __CTK_GESTURE_MULTI_PRESS_PRIVATE_H__
 
-#include "gtkgesturesingleprivate.h"
-#include "gtkgesturemultipress.h"
+#include "ctkgesturesingleprivate.h"
+#include "ctkgesturemultipress.h"
 
 struct _GtkGestureMultiPress
 {

@@ -436,7 +436,7 @@ It is also possible to align the columns to the next tab:
 Public headers should never be included directly:
 
   #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-  #error "Only <gtk/gtk.h> can be included directly."
+  #error "Only <ctk/ctk.h> can be included directly."
   #endif
 
 All headers should have inclusion guards (for internal usage)
@@ -445,7 +445,7 @@ and C++ guards:
   #ifndef __CTK_FOO_H__
   #define __CTK_FOO_H__
 
-  #include <gtk/gtk-bar.h>
+  #include <ctk/ctk-bar.h>
 
   G_BEGIN_DECLS
 
@@ -457,7 +457,7 @@ and C++ guards:
 
 + Includes
 
-GTK+ source files should never include the global gtk.h header, but
+GTK+ source files should never include the global ctk.h header, but
 instead include the individual headers that are needed. Every file must
 include config.h first, then its own header, then other GTK+ headers
 that it needs, then system and third-party headers that it needs.
@@ -465,10 +465,10 @@ that it needs, then system and third-party headers that it needs.
   /* valid */
   #include "config.h"
 
-  #include "gtkfoo.h"
+  #include "ctkfoo.h"
 
-  #include "gtkwidget.h"
-  #include "gtkbutton.h"
+  #include "ctkwidget.h"
+  #include "ctkbutton.h"
 
   ...
 
@@ -501,7 +501,7 @@ And callback types:
 
 Instance structures should only contain the parent type, and optionally a
 pointer to a private data structure, and they should be annotated as
-"private" using the gtk-doc trigraph:
+"private" using the ctk-doc trigraph:
 
   struct _GtkFoo
   {
@@ -569,7 +569,7 @@ Public macros should not be used unless they evaluate to a constant.
 Avoid exporting variables as public API, since this is cumbersome on some
 platforms. It is always preferable to add getters and setters instead.
 
-All public functions must be listed in the gtk.symbols file.
+All public functions must be listed in the ctk.symbols file.
 
 + Private API
 
@@ -583,7 +583,7 @@ should be declared static.
 
 + Documentation
 
-All public APIs must have gtk-doc comments. For functions, these should
+All public APIs must have ctk-doc comments. For functions, these should
 be placed in the source file, directly above the function.
 
   /* valid */
@@ -613,7 +613,7 @@ after the license header:
 
   /* valid */
   /**
-   * SECTION:gtksizerequest
+   * SECTION:ctksizerequest
    * @Short_Description: Height-for-width geometry management
    * @Title: GtkSizeRequest
    *
@@ -623,11 +623,11 @@ after the license header:
    */
 
 To properly document a new function, macro, function type or struct,
-it needs to be listed in the gtk3-sections.txt file.
+it needs to be listed in the ctk3-sections.txt file.
 
 To properly document a new class, it needs to be given its own section
-in gtk3-sections.txt, needs to be included in gtk-docs.sgml, and the
-get_type function needs to listed in gtk3.types.
+in ctk3-sections.txt, needs to be included in ctk-docs.sgml, and the
+get_type function needs to listed in ctk3.types.
 
 + Old code
 

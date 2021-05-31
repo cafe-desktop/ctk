@@ -19,28 +19,28 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
 
-#include "gtkviewport.h"
+#include "ctkviewport.h"
 
-#include "gtkadjustment.h"
-#include "gtkcsscustomgadgetprivate.h"
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
-#include "gtkpixelcacheprivate.h"
-#include "gtkprivate.h"
-#include "gtkscrollable.h"
-#include "gtkrenderbackgroundprivate.h"
-#include "gtkstylecontextprivate.h"
-#include "gtktypebuiltins.h"
-#include "gtkwidgetprivate.h"
+#include "ctkadjustment.h"
+#include "ctkcsscustomgadgetprivate.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
+#include "ctkpixelcacheprivate.h"
+#include "ctkprivate.h"
+#include "ctkscrollable.h"
+#include "ctkrenderbackgroundprivate.h"
+#include "ctkstylecontextprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctkwidgetprivate.h"
 
 
 /**
- * SECTION:gtkviewport
+ * SECTION:ctkviewport
  * @Short_description: An adapter which makes widgets scrollable
  * @Title: GtkViewport
  * @See_also:#GtkScrolledWindow, #GtkAdjustment

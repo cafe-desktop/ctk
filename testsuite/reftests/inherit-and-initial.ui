@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <!-- interface-requires gtk+ 3.0 -->
+  <!-- interface-requires ctk+ 3.0 -->
   <object class="GtkAdjustment" id="adjustment1">
     <property name="upper">100</property>
     <property name="value">50</property>
@@ -1294,7 +1294,7 @@ Suspendisse feugiat quam quis dolor accumsan cursus. </property>
                             <property name="has_tooltip">True</property>
                             <property name="use_action_appearance">False</property>
                             <property name="relief">none</property>
-                            <property name="uri">http://www.gtk.org</property>
+                            <property name="uri">http://www.ctk.org</property>
                           </object>
                         </child>
                       </object>

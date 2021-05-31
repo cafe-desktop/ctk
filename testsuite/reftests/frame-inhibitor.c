@@ -20,9 +20,9 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
-#include "gtk-reftest.h"
+#include "ctk-reftest.h"
 
 static gboolean 
 tick_callback_for_1_frame (GtkWidget     *widget,
@@ -95,7 +95,7 @@ add_reference_class_if_no_animation (GtkWidget *widget)
   gboolean enabled;
   GtkStyleContext *context;
 
-  g_object_get (ctk_widget_get_settings (widget), "gtk-enable-animations", &enabled, NULL);
+  g_object_get (ctk_widget_get_settings (widget), "ctk-enable-animations", &enabled, NULL);
   if (enabled)
     return FALSE;
 

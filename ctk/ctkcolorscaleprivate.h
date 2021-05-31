@@ -18,7 +18,7 @@
 #ifndef __CTK_COLOR_SCALE_H__
 #define __CTK_COLOR_SCALE_H__
 
-#include <gtk/gtkscale.h>
+#include <ctk/ctkscale.h>
 
 G_BEGIN_DECLS
 

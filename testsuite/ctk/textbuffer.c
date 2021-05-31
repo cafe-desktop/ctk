@@ -20,8 +20,8 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <gtk/gtk.h>
-#include "gtk/gtktexttypes.h" /* Private header, for UNKNOWN_CHAR */
+#include <ctk/ctk.h>
+#include "ctk/ctktexttypes.h" /* Private header, for UNKNOWN_CHAR */
 
 static void
 ctk_text_iter_spew (const GtkTextIter *iter, const gchar *desc)

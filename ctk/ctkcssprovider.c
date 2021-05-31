@@ -23,32 +23,32 @@
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <cairo-gobject.h>
 
-#include "gtkcssproviderprivate.h"
+#include "ctkcssproviderprivate.h"
 
-#include "gtkbitmaskprivate.h"
-#include "gtkcssarrayvalueprivate.h"
-#include "gtkcsscolorvalueprivate.h"
-#include "gtkcsskeyframesprivate.h"
-#include "gtkcssparserprivate.h"
-#include "gtkcsssectionprivate.h"
-#include "gtkcssselectorprivate.h"
-#include "gtkcssshorthandpropertyprivate.h"
-#include "gtkcssstylefuncsprivate.h"
-#include "gtksettingsprivate.h"
-#include "gtkstyleprovider.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkstylepropertyprivate.h"
-#include "gtkstyleproviderprivate.h"
-#include "gtkwidgetpath.h"
-#include "gtkbindings.h"
-#include "gtkmarshalers.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
-#include "gtkutilsprivate.h"
-#include "gtkversion.h"
+#include "ctkbitmaskprivate.h"
+#include "ctkcssarrayvalueprivate.h"
+#include "ctkcsscolorvalueprivate.h"
+#include "ctkcsskeyframesprivate.h"
+#include "ctkcssparserprivate.h"
+#include "ctkcsssectionprivate.h"
+#include "ctkcssselectorprivate.h"
+#include "ctkcssshorthandpropertyprivate.h"
+#include "ctkcssstylefuncsprivate.h"
+#include "ctksettingsprivate.h"
+#include "ctkstyleprovider.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkstylepropertyprivate.h"
+#include "ctkstyleproviderprivate.h"
+#include "ctkwidgetpath.h"
+#include "ctkbindings.h"
+#include "ctkmarshalers.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
+#include "ctkutilsprivate.h"
+#include "ctkversion.h"
 
 /**
- * SECTION:gtkcssprovider
+ * SECTION:ctkcssprovider
  * @Short_description: CSS-like styling for widgets
  * @Title: GtkCssProvider
  * @See_also: #GtkStyleContext, #GtkStyleProvider
@@ -62,20 +62,20 @@
  * ctk_style_context_add_provider_for_screen().
 
  * In addition, certain files will be read when GTK+ is initialized. First, the
- * file `$XDG_CONFIG_HOME/gtk-3.0/gtk.css` is loaded if it exists. Then, GTK+
+ * file `$XDG_CONFIG_HOME/ctk-3.0/ctk.css` is loaded if it exists. Then, GTK+
  * loads the first existing file among
- * `XDG_DATA_HOME/themes/THEME/gtk-VERSION/gtk.css`,
- * `$HOME/.themes/THEME/gtk-VERSION/gtk.css`,
- * `$XDG_DATA_DIRS/themes/THEME/gtk-VERSION/gtk.css` and
- * `DATADIR/share/themes/THEME/gtk-VERSION/gtk.css`, where `THEME` is the name of
- * the current theme (see the #GtkSettings:gtk-theme-name setting), `DATADIR`
+ * `XDG_DATA_HOME/themes/THEME/ctk-VERSION/ctk.css`,
+ * `$HOME/.themes/THEME/ctk-VERSION/ctk.css`,
+ * `$XDG_DATA_DIRS/themes/THEME/ctk-VERSION/ctk.css` and
+ * `DATADIR/share/themes/THEME/ctk-VERSION/ctk.css`, where `THEME` is the name of
+ * the current theme (see the #GtkSettings:ctk-theme-name setting), `DATADIR`
  * is the prefix configured when GTK+ was compiled (unless overridden by the
  * `CTK_DATA_PREFIX` environment variable), and `VERSION` is the GTK+ version number.
  * If no file is found for the current version, GTK+ tries older versions all the
  * way back to 3.0.
  *
- * In the same way, GTK+ tries to load a gtk-keys.css file for the current
- * key theme, as defined by #GtkSettings:gtk-key-theme-name.
+ * In the same way, GTK+ tries to load a ctk-keys.css file for the current
+ * key theme, as defined by #GtkSettings:ctk-key-theme-name.
  */
 
 
@@ -161,7 +161,7 @@ ctk_css_provider_load_internal (GtkCssProvider *css_provider,
 GQuark
 ctk_css_provider_error_quark (void)
 {
-  return g_quark_from_static_string ("gtk-css-provider-error-quark");
+  return g_quark_from_static_string ("ctk-css-provider-error-quark");
 }
 
 G_DEFINE_TYPE_EXTENDED (GtkCssProvider, ctk_css_provider, G_TYPE_OBJECT, 0,
@@ -1351,7 +1351,7 @@ name_is_style_property (const char *name)
   if (name[0] != '-')
     return FALSE;
 
-  if (g_str_has_prefix (name, "-gtk-"))
+  if (g_str_has_prefix (name, "-ctk-"))
     return FALSE;
 
   return TRUE;
@@ -1999,7 +1999,7 @@ _ctk_get_theme_dir (void)
   return g_build_filename (var, "share", "themes", NULL);
 }
 
-/* Return the path that this providers gtk.css was loaded from,
+/* Return the path that this providers ctk.css was loaded from,
  * if it is part of a theme, otherwise NULL.
  */
 const gchar *
@@ -2016,10 +2016,10 @@ _ctk_css_provider_get_theme_dir (GtkCssProvider *provider)
 
 /*
  * Look for
- * $dir/$subdir/gtk-3.16/gtk-$variant.css
- * $dir/$subdir/gtk-3.14/gtk-$variant.css
+ * $dir/$subdir/ctk-3.16/ctk-$variant.css
+ * $dir/$subdir/ctk-3.14/ctk-$variant.css
  *  ...
- * $dir/$subdir/gtk-3.0/gtk-$variant.css
+ * $dir/$subdir/ctk-3.0/ctk-$variant.css
  * and return the first found file.
  * We don't check versions before 3.14,
  * since those GTK+ versions didn't have
@@ -2038,9 +2038,9 @@ _ctk_css_find_theme_dir (const gchar *dir,
   gchar *path;
 
   if (variant)
-    file = g_strconcat ("gtk-", variant, ".css", NULL);
+    file = g_strconcat ("ctk-", variant, ".css", NULL);
   else
-    file = g_strdup ("gtk.css");
+    file = g_strdup ("ctk.css");
 
   if (subdir)
     base = g_build_filename (dir, subdir, name, NULL);
@@ -2052,7 +2052,7 @@ _ctk_css_find_theme_dir (const gchar *dir,
       if (i < 14)
         i = 0;
 
-      subsubdir = g_strdup_printf ("gtk-3.%d", i);
+      subsubdir = g_strdup_printf ("ctk-3.%d", i);
       path = g_build_filename (base, subsubdir, file, NULL);
       g_free (subsubdir);
 
@@ -2136,9 +2136,9 @@ _ctk_css_provider_load_named (GtkCssProvider *provider,
    * themes.
    */
   if (variant)
-    resource_path = g_strdup_printf ("/org/gtk/libgtk/theme/%s/gtk-%s.css", name, variant);
+    resource_path = g_strdup_printf ("/org/ctk/libctk/theme/%s/ctk-%s.css", name, variant);
   else
-    resource_path = g_strdup_printf ("/org/gtk/libgtk/theme/%s/gtk.css", name);
+    resource_path = g_strdup_printf ("/org/ctk/libctk/theme/%s/ctk.css", name);
 
   if (g_resources_get_info (resource_path, 0, NULL, NULL, NULL))
     {
@@ -2156,7 +2156,7 @@ _ctk_css_provider_load_named (GtkCssProvider *provider,
       GResource *resource;
 
       dir = g_path_get_dirname (path);
-      resource_file = g_build_filename (dir, "gtk.gresource", NULL);
+      resource_file = g_build_filename (dir, "ctk.gresource", NULL);
       resource = g_resource_load (resource_file, NULL);
       g_free (resource_file);
 

@@ -1,5 +1,5 @@
 #include "config.h"
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include <stdio.h>
 #include <stdlib.h>

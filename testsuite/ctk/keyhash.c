@@ -16,10 +16,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <gdk/gdkkeysyms.h>
-#include "../../gtk/gtkkeyhash.h"
-#include "../../gtk/gtkprivate.h"
+#include "../../ctk/ctkkeyhash.h"
+#include "../../ctk/ctkprivate.h"
 
 static gint count;
 

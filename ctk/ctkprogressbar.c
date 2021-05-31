@@ -19,32 +19,32 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
 #include <string.h>
 
-#include "gtkprogressbar.h"
-#include "gtkorientableprivate.h"
-#include "gtkwidgetprivate.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
-#include "gtkcssshadowsvalueprivate.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkcssnodeprivate.h"
-#include "gtkcssstylepropertyprivate.h"
-#include "gtkcsscustomgadgetprivate.h"
-#include "gtkcssnumbervalueprivate.h"
-#include "gtkprogresstrackerprivate.h"
+#include "ctkprogressbar.h"
+#include "ctkorientableprivate.h"
+#include "ctkwidgetprivate.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
+#include "ctkcssshadowsvalueprivate.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkcssnodeprivate.h"
+#include "ctkcssstylepropertyprivate.h"
+#include "ctkcsscustomgadgetprivate.h"
+#include "ctkcssnumbervalueprivate.h"
+#include "ctkprogresstrackerprivate.h"
 
-#include "a11y/gtkprogressbaraccessible.h"
+#include "a11y/ctkprogressbaraccessible.h"
 
 #include "fallback-c89.c"
 
 /**
- * SECTION:gtkprogressbar
+ * SECTION:ctkprogressbar
  * @Short_description: A widget which indicates progress visually
  * @Title: GtkProgressBar
  *

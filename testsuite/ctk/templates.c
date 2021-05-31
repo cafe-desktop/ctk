@@ -16,10 +16,10 @@
  *
  * Authors: Tristan Van Berkom <tristanvb@openismus.com>
  */
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #ifdef HAVE_UNIX_PRINT_WIDGETS
-#  include <gtk/gtkunixprint.h>
+#  include <ctk/ctkunixprint.h>
 #endif
 
 static gboolean

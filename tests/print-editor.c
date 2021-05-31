@@ -1,6 +1,6 @@
 #include <math.h>
 #include <pango/pangocairo.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static GtkWidget *main_window;
 static char *filename = NULL;
@@ -988,7 +988,7 @@ main (int argc, char **argv)
     g_clear_error (&error);
   }
 
-  app = ctk_application_new ("org.gtk.PrintEditor", 0);
+  app = ctk_application_new ("org.ctk.PrintEditor", 0);
 
   g_action_map_add_action_entries (G_ACTION_MAP (app),
                                    app_entries, G_N_ELEMENTS (app_entries),

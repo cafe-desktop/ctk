@@ -19,21 +19,21 @@
 
 #include "config.h"
 
-#include "gtkactionbar.h"
-#include "gtkintl.h"
-#include "gtkaccessible.h"
-#include "gtkbuildable.h"
-#include "gtktypebuiltins.h"
-#include "gtkbox.h"
-#include "gtkrevealer.h"
-#include "gtkcsscustomgadgetprivate.h"
-#include "gtkwidgetprivate.h"
-#include "gtkcontainerprivate.h"
+#include "ctkactionbar.h"
+#include "ctkintl.h"
+#include "ctkaccessible.h"
+#include "ctkbuildable.h"
+#include "ctktypebuiltins.h"
+#include "ctkbox.h"
+#include "ctkrevealer.h"
+#include "ctkcsscustomgadgetprivate.h"
+#include "ctkwidgetprivate.h"
+#include "ctkcontainerprivate.h"
 
 #include <string.h>
 
 /**
- * SECTION:gtkactionbar
+ * SECTION:ctkactionbar
  * @Short_description: A full width bar for presenting contextual actions
  * @Title: GtkActionBar
  * @See_also: #GtkBox
@@ -347,7 +347,7 @@ ctk_action_bar_class_init (GtkActionBarClass *klass)
                                                                 -1, G_MAXINT, 0,
                                                                 G_PARAM_READWRITE));
 
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/ui/gtkactionbar.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/ui/ctkactionbar.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkActionBar, box);
   ctk_widget_class_bind_template_child_private (widget_class, GtkActionBar, revealer);
 

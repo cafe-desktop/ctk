@@ -17,7 +17,7 @@ AM_CPPFLAGS =				\
 
 LDADD = \
 	$(top_builddir)/gdk/libgdk-3.la \
-	$(top_builddir)/gtk/libgtk-3.la \
+	$(top_builddir)/ctk/libctk-3.la \
 	$(CTK_DEP_LIBS)
 
 # work around random file systems showing up in the file chooser,
@@ -102,8 +102,8 @@ test_in_files = \
 EXTRA_DIST += $(test_in_files) $(testdata) meson.build
 
 CTK_GSETTINGS_SCHEMAS = \
-	$(top_srcdir)/gtk/org.gtk.Settings.ColorChooser.gschema.xml \
-	$(top_srcdir)/gtk/org.gtk.Settings.FileChooser.gschema.xml \
+	$(top_srcdir)/ctk/org.ctk.Settings.ColorChooser.gschema.xml \
+	$(top_srcdir)/ctk/org.ctk.Settings.FileChooser.gschema.xml \
 	$(NULL)
 
 gschemas.compiled: $(CTK_GSETTINGS_SCHEMAS)

@@ -19,17 +19,17 @@
 
 #include "config.h"
 
-#include "gtkcsscustompropertyprivate.h"
+#include "ctkcsscustompropertyprivate.h"
 
 #include <string.h>
 
-#include "gtkcssstylefuncsprivate.h"
-#include "gtkcsstypedvalueprivate.h"
-#include "deprecated/gtkstylepropertiesprivate.h"
+#include "ctkcssstylefuncsprivate.h"
+#include "ctkcsstypedvalueprivate.h"
+#include "deprecated/ctkstylepropertiesprivate.h"
 
-#include "deprecated/gtkthemingengine.h"
+#include "deprecated/ctkthemingengine.h"
 
-#include "deprecated/gtksymboliccolor.h"
+#include "deprecated/ctksymboliccolor.h"
 
 G_DEFINE_TYPE (GtkCssCustomProperty, _ctk_css_custom_property, CTK_TYPE_CSS_STYLE_PROPERTY)
 

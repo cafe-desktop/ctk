@@ -19,7 +19,7 @@
 
 #include <locale.h>
 
-#include "../../gtk/gtkbitmaskprivate.h"
+#include "../../ctk/ctkbitmaskprivate.h"
 
 #include <string.h>
 

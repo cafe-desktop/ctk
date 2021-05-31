@@ -2,7 +2,7 @@ window1
   "window"
   index: 0
   state: enabled resizable sensitive showing visible
-  toolkit: gtk
+  toolkit: ctk
   window-type: normal
   <AtkComponent>
   layer: window
@@ -13,7 +13,7 @@ window1
     index: 0
     name: Information
     state: enabled horizontal sensitive showing visible
-    toolkit: gtk
+    toolkit: ctk
     <AtkComponent>
     layer: widget
     alpha: 1
@@ -22,7 +22,7 @@ window1
       parent: bar1
       index: 0
       state: enabled sensitive showing visible
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: widget
       alpha: 1
@@ -31,7 +31,7 @@ window1
         parent: revealer
         index: 0
         state: enabled horizontal sensitive showing visible
-        toolkit: gtk
+        toolkit: ctk
         <AtkComponent>
         layer: widget
         alpha: 1
@@ -40,7 +40,7 @@ window1
           parent: content
           index: 0
           state: enabled horizontal sensitive showing visible
-          toolkit: gtk
+          toolkit: ctk
           <AtkComponent>
           layer: widget
           alpha: 1
@@ -50,7 +50,7 @@ window1
             index: 0
             name: Some important info
             state: enabled multi-line sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -89,7 +89,7 @@ window1
           parent: content
           index: 1
           state: enabled horizontal sensitive showing visible
-          toolkit: gtk
+          toolkit: ctk
           <AtkComponent>
           layer: widget
           alpha: 1
@@ -98,7 +98,7 @@ window1
           parent: content
           index: 2
           state: enabled focusable sensitive
-          toolkit: gtk
+          toolkit: ctk
           <AtkComponent>
           layer: widget
           alpha: 1

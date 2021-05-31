@@ -21,9 +21,9 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
-#include "gtkintl.h"
-#include "gtkspinneraccessible.h"
+#include <ctk/ctk.h>
+#include "ctkintl.h"
+#include "ctkspinneraccessible.h"
 
 static void atk_image_interface_init (AtkImageIface *iface);
 

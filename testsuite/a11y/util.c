@@ -18,7 +18,7 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 test_toolkit_name (void)
@@ -26,7 +26,7 @@ test_toolkit_name (void)
   const gchar *s;
 
   s = atk_get_toolkit_name ();
-  g_assert_cmpstr (s, ==, "gtk");
+  g_assert_cmpstr (s, ==, "ctk");
 }
 
 static void

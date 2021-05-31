@@ -18,8 +18,8 @@
 #include "config.h"
 
 #include <glib/gi18n-lib.h>
-#include <gtk/gtk.h>
-#include "gtkcomboboxaccessible.h"
+#include <ctk/ctk.h>
+#include "ctkcomboboxaccessible.h"
 
 struct _GtkComboBoxAccessiblePrivate
 {

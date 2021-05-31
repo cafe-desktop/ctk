@@ -1,4 +1,4 @@
-/* gtktextmark.h - mark segments
+/* ctktextmark.h - mark segments
  *
  * Copyright (c) 1994 The Regents of the University of California.
  * Copyright (c) 1994-1997 Sun Microsystems, Inc.
@@ -51,7 +51,7 @@
 #define __CTK_TEXT_MARK_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
 G_BEGIN_DECLS

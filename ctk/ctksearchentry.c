@@ -22,21 +22,21 @@
  * Modified by the GTK+ Team and others 2012.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
-#include "gtksearchentry.h"
+#include "ctksearchentry.h"
 
-#include "gtkaccessible.h"
-#include "gtkbindings.h"
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
-#include "gtkstylecontext.h"
+#include "ctkaccessible.h"
+#include "ctkbindings.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
+#include "ctkstylecontext.h"
 
 /**
- * SECTION:gtksearchentry
+ * SECTION:ctksearchentry
  * @Short_description: An entry which shows a search icon
  * @Title: GtkSearchEntry
  *
@@ -308,7 +308,7 @@ reset_timeout (GtkSearchEntry *entry)
   priv->delayed_changed_id = g_timeout_add (DELAYED_TIMEOUT_ID,
                                             ctk_search_entry_changed_timeout_cb,
                                             entry);
-  g_source_set_name_by_id (priv->delayed_changed_id, "[gtk+] ctk_search_entry_changed_timeout_cb");
+  g_source_set_name_by_id (priv->delayed_changed_id, "[ctk+] ctk_search_entry_changed_timeout_cb");
 }
 
 static void

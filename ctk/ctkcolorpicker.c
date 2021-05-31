@@ -17,10 +17,10 @@
 
 #include "config.h"
 
-#include "gtkcolorpickerprivate.h"
-#include "gtkcolorpickerportalprivate.h"
-#include "gtkcolorpickershellprivate.h"
-#include "gtkcolorpickerkwinprivate.h"
+#include "ctkcolorpickerprivate.h"
+#include "ctkcolorpickerportalprivate.h"
+#include "ctkcolorpickershellprivate.h"
+#include "ctkcolorpickerkwinprivate.h"
 #include <gio/gio.h>
 
 

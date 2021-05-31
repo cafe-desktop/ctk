@@ -1,6 +1,6 @@
 /* -*- Mode: C; c-file-style: "gnu"; tab-width: 8 -*- */
 /* GTK - The GIMP Toolkit
- * gtkfilechoosernativequartz.c: Quartz Native File selector dialog
+ * ctkfilechoosernativequartz.c: Quartz Native File selector dialog
  * Copyright (C) 2017, Tom Schoonjans
  *
  * This library is free software; you can redistribute it and/or
@@ -19,28 +19,28 @@
 
 #include "config.h"
 
-#include "gtkfilechoosernativeprivate.h"
-#include "gtknativedialogprivate.h"
+#include "ctkfilechoosernativeprivate.h"
+#include "ctknativedialogprivate.h"
 
-#include "gtkprivate.h"
-#include "gtkfilechooserdialog.h"
-#include "gtkfilechooserprivate.h"
-#include "gtkfilechooserwidget.h"
-#include "gtkfilechooserwidgetprivate.h"
-#include "gtkfilechooserutils.h"
-#include "gtkfilechooserembed.h"
-#include "gtkfilesystem.h"
-#include "gtksizerequest.h"
-#include "gtktypebuiltins.h"
-#include "gtkintl.h"
-#include "gtksettings.h"
-#include "gtktogglebutton.h"
-#include "gtkstylecontext.h"
-#include "gtkheaderbar.h"
-#include "gtklabel.h"
-#include "gtkfilechooserentry.h"
-#include "gtkfilefilterprivate.h"
-#include <quartz/gdkquartz-gtk-only.h>
+#include "ctkprivate.h"
+#include "ctkfilechooserdialog.h"
+#include "ctkfilechooserprivate.h"
+#include "ctkfilechooserwidget.h"
+#include "ctkfilechooserwidgetprivate.h"
+#include "ctkfilechooserutils.h"
+#include "ctkfilechooserembed.h"
+#include "ctkfilesystem.h"
+#include "ctksizerequest.h"
+#include "ctktypebuiltins.h"
+#include "ctkintl.h"
+#include "ctksettings.h"
+#include "ctktogglebutton.h"
+#include "ctkstylecontext.h"
+#include "ctkheaderbar.h"
+#include "ctklabel.h"
+#include "ctkfilechooserentry.h"
+#include "ctkfilefilterprivate.h"
+#include <quartz/gdkquartz-ctk-only.h>
 
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
 typedef struct {

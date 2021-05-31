@@ -2,63 +2,63 @@
 
 # Build zipfiles for GTK on Win32
 
-ZIP=/tmp/gtk+-@CTK_VERSION@.zip
-DEVZIP=/tmp/gtk+-dev-@CTK_VERSION@.zip
+ZIP=/tmp/ctk+-@CTK_VERSION@.zip
+DEVZIP=/tmp/ctk+-dev-@CTK_VERSION@.zip
 
 SHORTAPIVERSION=`echo @CTK_API_VERSION@ | tr -d '.'`
 APIVERSIONMAJOR=`echo @CTK_API_VERSION@ | sed -e 's/\..*//'`
 
 cd @prefix@
 
-mkdir -p share/doc/gtk+-@CTK_VERSION@
-cp -p @abs_srcdir@/COPYING share/doc/gtk+-@CTK_VERSION@
+mkdir -p share/doc/ctk+-@CTK_VERSION@
+cp -p @abs_srcdir@/COPYING share/doc/ctk+-@CTK_VERSION@
 
-mkdir -p share/doc/gtk+-dev-@CTK_VERSION@
-cp -p @abs_srcdir@/COPYING share/doc/gtk+-dev-@CTK_VERSION@
+mkdir -p share/doc/ctk+-dev-@CTK_VERSION@
+cp -p @abs_srcdir@/COPYING share/doc/ctk+-dev-@CTK_VERSION@
 
 rm $ZIP
 zip $ZIP -@ <<EOF
-etc/gtk-@CTK_API_VERSION@/gtkrc
-etc/gtk-@CTK_API_VERSION@/im-multipress.conf
+etc/ctk-@CTK_API_VERSION@/ctkrc
+etc/ctk-@CTK_API_VERSION@/im-multipress.conf
 bin/libgdk-win32-@CTK_API_VERSION@-@LT_CURRENT_MINUS_AGE@.dll
-bin/libgtk-win32-@CTK_API_VERSION@-@LT_CURRENT_MINUS_AGE@.dll
+bin/libctk-win32-@CTK_API_VERSION@-@LT_CURRENT_MINUS_AGE@.dll
 bin/libgailutil-@CTK_API_VERSION@-@GAIL_LT_CURRENT_MINUS_AGE@.dll
-bin/gtk-query-immodules-@CTK_API_VERSION@.exe
-lib/gtk-@CTK_API_VERSION@/3.0.0/loaders.cache
-lib/gtk-@CTK_API_VERSION@/3.0.0/immodules.cache
+bin/ctk-query-immodules-@CTK_API_VERSION@.exe
+lib/ctk-@CTK_API_VERSION@/3.0.0/loaders.cache
+lib/ctk-@CTK_API_VERSION@/3.0.0/immodules.cache
 EOF
 
-zip $ZIP lib/gtk-@CTK_API_VERSION@/modules/libgail.dll lib/gtk-@CTK_API_VERSION@/@CTK_BINARY_VERSION@/loaders/*.dll lib/gtk-@CTK_API_VERSION@/@CTK_BINARY_VERSION@/immodules/*.dll lib/gtk-@CTK_API_VERSION@/@CTK_BINARY_VERSION@/engines/*.dll
+zip $ZIP lib/ctk-@CTK_API_VERSION@/modules/libgail.dll lib/ctk-@CTK_API_VERSION@/@CTK_BINARY_VERSION@/loaders/*.dll lib/ctk-@CTK_API_VERSION@/@CTK_BINARY_VERSION@/immodules/*.dll lib/ctk-@CTK_API_VERSION@/@CTK_BINARY_VERSION@/engines/*.dll
 
-zip $ZIP share/themes/Raleigh/gtk-@CTK_API_VERSION@/gtkrc
-zip $ZIP share/themes/Default/gtk-@CTK_API_VERSION@-key/gtkrc
-zip $ZIP share/themes/Emacs/gtk-@CTK_API_VERSION@-key/gtkrc
-zip $ZIP share/themes/MS-Windows/gtk-@CTK_API_VERSION@/gtkrc
+zip $ZIP share/themes/Raleigh/ctk-@CTK_API_VERSION@/ctkrc
+zip $ZIP share/themes/Default/ctk-@CTK_API_VERSION@-key/ctkrc
+zip $ZIP share/themes/Emacs/ctk-@CTK_API_VERSION@-key/ctkrc
+zip $ZIP share/themes/MS-Windows/ctk-@CTK_API_VERSION@/ctkrc
 
-zip $ZIP share/locale/*/LC_MESSAGES/gtk${SHORTAPIVERSION}.mo
-zip $ZIP share/locale/*/LC_MESSAGES/gtk${SHORTAPIVERSION}-properties.mo
+zip $ZIP share/locale/*/LC_MESSAGES/ctk${SHORTAPIVERSION}.mo
+zip $ZIP share/locale/*/LC_MESSAGES/ctk${SHORTAPIVERSION}-properties.mo
 
-zip -r -D $ZIP share/doc/gtk+-@CTK_VERSION@
+zip -r -D $ZIP share/doc/ctk+-@CTK_VERSION@
 
 rm $DEVZIP
 zip -r -D $DEVZIP -@ <<EOF
-include/gtk-@CTK_API_VERSION@
+include/ctk-@CTK_API_VERSION@
 include/gail-1.0
-bin/gtk-builder-convert
-bin/gtk${APIVERSIONMAJOR}-demo.exe
-bin/gtk-update-icon-cache.exe
+bin/ctk-builder-convert
+bin/ctk${APIVERSIONMAJOR}-demo.exe
+bin/ctk-update-icon-cache.exe
 share/man
 lib/libgdk-win32-@CTK_API_VERSION@.dll.a
 lib/gdk-win32-@CTK_API_VERSION@.lib
-lib/libgtk-win32-@CTK_API_VERSION@.dll.a
-lib/gtk-win32-@CTK_API_VERSION@.lib
+lib/libctk-win32-@CTK_API_VERSION@.dll.a
+lib/ctk-win32-@CTK_API_VERSION@.lib
 lib/libgailutil.dll.a
 lib/gailutil.lib
-lib/gtk-@CTK_API_VERSION@/include
+lib/ctk-@CTK_API_VERSION@/include
 lib/pkgconfig
 share/aclocal
-share/gtk-@CTK_API_VERSION@
-share/gtk-doc
+share/ctk-@CTK_API_VERSION@
+share/ctk-doc
 EOF
 
-zip -r $DEVZIP share/doc/gtk+-dev-@CTK_VERSION@
+zip -r $DEVZIP share/doc/ctk+-dev-@CTK_VERSION@

@@ -19,11 +19,11 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 /**
- * SECTION:gtkmenubar
+ * SECTION:ctkmenubar
  * @Title: GtkMenuBar
  * @Short_description: A subclass of GtkMenuShell which holds GtkMenuItem widgets
  * @See_also: #GtkMenuShell, #GtkMenu, #GtkMenuItem
@@ -39,24 +39,24 @@
 
 #include "config.h"
 
-#include "gtkmenubar.h"
+#include "ctkmenubar.h"
 
-#include "gtkbindings.h"
-#include "gtkcsscustomgadgetprivate.h"
-#include "gtkmain.h"
-#include "gtkmarshalers.h"
-#include "gtkmenuitemprivate.h"
-#include "gtkmenuprivate.h"
-#include "gtkmenushellprivate.h"
-#include "gtkrender.h"
-#include "gtksettings.h"
-#include "gtksizerequest.h"
-#include "gtkwindow.h"
-#include "gtkcontainerprivate.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtktypebuiltins.h"
-#include "gtkwidgetprivate.h"
+#include "ctkbindings.h"
+#include "ctkcsscustomgadgetprivate.h"
+#include "ctkmain.h"
+#include "ctkmarshalers.h"
+#include "ctkmenuitemprivate.h"
+#include "ctkmenuprivate.h"
+#include "ctkmenushellprivate.h"
+#include "ctkrender.h"
+#include "ctksettings.h"
+#include "ctksizerequest.h"
+#include "ctkwindow.h"
+#include "ctkcontainerprivate.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctkwidgetprivate.h"
 
 #define MENU_BAR_POPUP_DELAY 0
 
@@ -685,7 +685,7 @@ ctk_menu_bar_draw (GtkWidget *widget,
 static GList *
 get_menu_bars (GtkWindow *window)
 {
-  return g_object_get_data (G_OBJECT (window), "gtk-menu-bar-list");
+  return g_object_get_data (G_OBJECT (window), "ctk-menu-bar-list");
 }
 
 GList *
@@ -720,7 +720,7 @@ static void
 set_menu_bars (GtkWindow *window,
 	       GList     *menubars)
 {
-  g_object_set_data (G_OBJECT (window), I_("gtk-menu-bar-list"), menubars);
+  g_object_set_data (G_OBJECT (window), I_("ctk-menu-bar-list"), menubars);
 }
 
 static void

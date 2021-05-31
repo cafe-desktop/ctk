@@ -20,7 +20,7 @@
 
 #include "config.h"
 
-#include "gtkapplication.h"
+#include "ctkapplication.h"
 #include "gdkprivate.h"
 
 #ifdef G_OS_UNIX
@@ -35,23 +35,23 @@
 
 #include "gdk/gdk-private.h"
 
-#include "gtkapplicationprivate.h"
-#include "gtkclipboardprivate.h"
-#include "gtkmarshalers.h"
-#include "gtkmain.h"
-#include "gtkrecentmanager.h"
-#include "gtkaccelmapprivate.h"
-#include "gtkicontheme.h"
-#include "gtkbuilder.h"
-#include "gtkshortcutswindow.h"
-#include "gtkintl.h"
+#include "ctkapplicationprivate.h"
+#include "ctkclipboardprivate.h"
+#include "ctkmarshalers.h"
+#include "ctkmain.h"
+#include "ctkrecentmanager.h"
+#include "ctkaccelmapprivate.h"
+#include "ctkicontheme.h"
+#include "ctkbuilder.h"
+#include "ctkshortcutswindow.h"
+#include "ctkintl.h"
 
 /* NB: please do not add backend-specific GDK headers here.  This should
  * be abstracted via GtkApplicationImpl.
  */
 
 /**
- * SECTION:gtkapplication
+ * SECTION:ctkapplication
  * @title: GtkApplication
  * @short_description: Application class
  *
@@ -80,7 +80,7 @@
  * ## Automatic resources ## {#automatic-resources}
  *
  * #GtkApplication will automatically load menus from the #GtkBuilder
- * resource located at "gtk/menus.ui", relative to the application's
+ * resource located at "ctk/menus.ui", relative to the application's
  * resource base path (see g_application_set_resource_base_path()).  The
  * menu with the ID "app-menu" is taken as the application's app menu
  * and the menu with the ID "menubar" is taken as the application's
@@ -88,12 +88,12 @@
  * and accessed via ctk_application_get_menu_by_id() which allows for
  * dynamic population of a part of the menu structure.
  *
- * If the resources "gtk/menus-appmenu.ui" or "gtk/menus-traditional.ui" are
+ * If the resources "ctk/menus-appmenu.ui" or "ctk/menus-traditional.ui" are
  * present then these files will be used in preference, depending on the value
- * of ctk_application_prefers_app_menu(). If the resource "gtk/menus-common.ui"
+ * of ctk_application_prefers_app_menu(). If the resource "ctk/menus-common.ui"
  * is present it will be loaded as well. This is useful for storing items that
- * are referenced from both "gtk/menus-appmenu.ui" and
- * "gtk/menus-traditional.ui".
+ * are referenced from both "ctk/menus-appmenu.ui" and
+ * "ctk/menus-traditional.ui".
  *
  * It is also possible to provide the menus manually using
  * ctk_application_set_app_menu() and ctk_application_set_menubar().
@@ -104,16 +104,16 @@
  * resources.  See ctk_icon_theme_add_resource_path() for more
  * information.
  *
- * If there is a resource located at "gtk/help-overlay.ui" which
+ * If there is a resource located at "ctk/help-overlay.ui" which
  * defines a #GtkShortcutsWindow with ID "help_overlay" then GtkApplication
  * associates an instance of this shortcuts window with each
  * #GtkApplicationWindow and sets up keyboard accelerators (Control-F1
  * and Control-?) to open it. To create a menu item that displays the
  * shortcuts window, associate the item with the action win.show-help-overlay.
  *
- * ## A simple application ## {#gtkapplication}
+ * ## A simple application ## {#ctkapplication}
  *
- * [A simple example](https://git.gnome.org/browse/gtk+/tree/examples/bp/bloatpad.c)
+ * [A simple example](https://git.gnome.org/browse/ctk+/tree/examples/bp/bloatpad.c)
  *
  * GtkApplication optionally registers with a session manager
  * of the users session (if you set the #GtkApplication:register-session
@@ -130,7 +130,7 @@
  *
  * ## See Also ## {#seealso}
  * [HowDoI: Using GtkApplication](https://wiki.gnome.org/HowDoI/GtkApplication),
- * [Getting Started with GTK+: Basics](https://developer.gnome.org/gtk3/stable/gtk-getting-started.html#id-1.2.3.3)
+ * [Getting Started with GTK+: Basics](https://developer.gnome.org/ctk3/stable/ctk-getting-started.html#id-1.2.3.3)
  */
 
 enum {
@@ -228,9 +228,9 @@ ctk_application_load_resources (GtkApplication *application)
      * that we are looking for, use it with preference.
      */
     if (ctk_application_prefers_app_menu (application))
-      menuspath = g_strconcat (base_path, "/gtk/menus-appmenu.ui", NULL);
+      menuspath = g_strconcat (base_path, "/ctk/menus-appmenu.ui", NULL);
     else
-      menuspath = g_strconcat (base_path, "/gtk/menus-traditional.ui", NULL);
+      menuspath = g_strconcat (base_path, "/ctk/menus-traditional.ui", NULL);
 
     if (g_resources_get_info (menuspath, G_RESOURCE_LOOKUP_FLAGS_NONE, NULL, NULL, NULL))
       application->priv->menus_builder = ctk_builder_new_from_resource (menuspath);
@@ -239,14 +239,14 @@ ctk_application_load_resources (GtkApplication *application)
     /* If we didn't get the specific file, fall back. */
     if (application->priv->menus_builder == NULL)
       {
-        menuspath = g_strconcat (base_path, "/gtk/menus.ui", NULL);
+        menuspath = g_strconcat (base_path, "/ctk/menus.ui", NULL);
         if (g_resources_get_info (menuspath, G_RESOURCE_LOOKUP_FLAGS_NONE, NULL, NULL, NULL))
           application->priv->menus_builder = ctk_builder_new_from_resource (menuspath);
         g_free (menuspath);
       }
 
     /* Always load from -common as well, if we have it */
-    menuspath = g_strconcat (base_path, "/gtk/menus-common.ui", NULL);
+    menuspath = g_strconcat (base_path, "/ctk/menus-common.ui", NULL);
     if (g_resources_get_info (menuspath, G_RESOURCE_LOOKUP_FLAGS_NONE, NULL, NULL, NULL))
       {
         GError *error = NULL;
@@ -276,7 +276,7 @@ ctk_application_load_resources (GtkApplication *application)
   {
     gchar *path;
 
-    path = g_strconcat (base_path, "/gtk/help-overlay.ui", NULL);
+    path = g_strconcat (base_path, "/ctk/help-overlay.ui", NULL);
     if (g_resources_get_info (path, G_RESOURCE_LOOKUP_FLAGS_NONE, NULL, NULL, NULL))
       {
         const gchar * const accels[] = { "<Primary>F1", "<Primary>question", NULL };
@@ -718,7 +718,7 @@ ctk_application_dbus_register (GApplication     *application,
     }
 
   priv->profiler_id = g_dbus_connection_register_object (connection,
-                                                         "/org/gtk/Profiler",
+                                                         "/org/ctk/Profiler",
                                                          org_gnome_Sysprof3_Profiler,
                                                          &vtable,
                                                          NULL,

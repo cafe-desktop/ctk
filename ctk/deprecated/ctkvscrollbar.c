@@ -20,22 +20,22 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
-#include "gtkvscrollbar.h"
+#include "ctkvscrollbar.h"
 
-#include "gtkadjustment.h"
-#include "gtkintl.h"
-#include "gtkorientable.h"
-#include "gtkscrollbar.h"
+#include "ctkadjustment.h"
+#include "ctkintl.h"
+#include "ctkorientable.h"
+#include "ctkscrollbar.h"
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
 /**
- * SECTION:gtkvscrollbar
+ * SECTION:ctkvscrollbar
  * @Short_description: A vertical scrollbar
  * @Title: GtkVScrollbar
  * @See_also:#GtkScrollbar, #GtkScrolledWindow

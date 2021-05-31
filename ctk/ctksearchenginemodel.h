@@ -20,8 +20,8 @@
 #ifndef __CTK_SEARCH_ENGINE_MODEL_H__
 #define __CTK_SEARCH_ENGINE_MODEL_H__
 
-#include "gtksearchengine.h"
-#include "gtkfilesystemmodel.h"
+#include "ctksearchengine.h"
+#include "ctkfilesystemmodel.h"
 
 G_BEGIN_DECLS
 

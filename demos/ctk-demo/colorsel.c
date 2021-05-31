@@ -6,7 +6,7 @@
  * GtkColorChooserWidget.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static GtkWidget *window = NULL;
 static GtkWidget *da;

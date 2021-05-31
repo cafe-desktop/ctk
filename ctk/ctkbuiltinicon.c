@@ -19,11 +19,11 @@
 
 #include "config.h"
 
-#include "gtkbuiltiniconprivate.h"
+#include "ctkbuiltiniconprivate.h"
 
-#include "gtkcssnodeprivate.h"
-#include "gtkcssnumbervalueprivate.h"
-#include "gtkrendericonprivate.h"
+#include "ctkcssnodeprivate.h"
+#include "ctkcssnumbervalueprivate.h"
+#include "ctkrendericonprivate.h"
 
 /* GtkBuiltinIcon is a gadget implementation that is meant to replace
  * all calls to ctk_render_ functions to render arrows, expanders, checks
@@ -39,7 +39,7 @@
  * use ctk_builtin_icon_set_default_size_property.
  *
  * Themes can override the acutal image that is used with the
- * -gtk-icon-source property. If it is not specified, a builtin
+ * -ctk-icon-source property. If it is not specified, a builtin
  * fallback is used.
  */
 

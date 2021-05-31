@@ -20,52 +20,52 @@
  * Modified by the GTK+ Team and others 1997-2001.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
 #define GDK_DISABLE_DEPRECATION_WARNINGS
 
-#include "gtkcolorsel.h"
+#include "ctkcolorsel.h"
 
 #include <math.h>
 #include <string.h>
 
 #include "gdk/gdk.h"
-#include "gtkadjustment.h"
-#include "gtkorientable.h"
-#include "gtkhsv.h"
-#include "gtkwindowgroup.h"
-#include "gtkselection.h"
-#include "gtkcolorutils.h"
-#include "gtkdnd.h"
-#include "gtkdragsource.h"
-#include "gtkdragdest.h"
-#include "gtkdrawingarea.h"
-#include "gtkframe.h"
-#include "gtkgrid.h"
-#include "gtklabel.h"
-#include "gtkmarshalers.h"
-#include "gtkimage.h"
-#include "gtkspinbutton.h"
-#include "gtkrange.h"
-#include "gtkscale.h"
-#include "gtkentry.h"
-#include "gtkbutton.h"
-#include "gtkmenuitem.h"
-#include "gtkmain.h"
-#include "gtksettings.h"
-#include "gtkstock.h"
-#include "gtkaccessible.h"
-#include "gtksizerequest.h"
-#include "gtkseparator.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
+#include "ctkadjustment.h"
+#include "ctkorientable.h"
+#include "ctkhsv.h"
+#include "ctkwindowgroup.h"
+#include "ctkselection.h"
+#include "ctkcolorutils.h"
+#include "ctkdnd.h"
+#include "ctkdragsource.h"
+#include "ctkdragdest.h"
+#include "ctkdrawingarea.h"
+#include "ctkframe.h"
+#include "ctkgrid.h"
+#include "ctklabel.h"
+#include "ctkmarshalers.h"
+#include "ctkimage.h"
+#include "ctkspinbutton.h"
+#include "ctkrange.h"
+#include "ctkscale.h"
+#include "ctkentry.h"
+#include "ctkbutton.h"
+#include "ctkmenuitem.h"
+#include "ctkmain.h"
+#include "ctksettings.h"
+#include "ctkstock.h"
+#include "ctkaccessible.h"
+#include "ctksizerequest.h"
+#include "ctkseparator.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
 
 
 /**
- * SECTION:gtkcolorsel
+ * SECTION:ctkcolorsel
  * @Short_description: Deprecated widget used to select a color
  * @Title: GtkColorSelection
  *
@@ -77,7 +77,7 @@
  */
 
 
-/* Keep it in sync with gtksettings.c:default_color_palette */
+/* Keep it in sync with ctksettings.c:default_color_palette */
 #define DEFAULT_COLOR_PALETTE   "black:white:gray50:red:purple:blue:light blue:green:yellow:orange:lavender:brown:goldenrod4:dodger blue:pink:light green:gray10:gray30:gray75:gray90"
 
 /* Number of elements in the custom palatte */
@@ -708,7 +708,7 @@ ctk_color_selection_realize (GtkWidget *widget)
   GtkSettings *settings = ctk_widget_get_settings (widget);
 
   priv->settings_connection =  g_signal_connect (settings,
-                                                 "notify::gtk-color-palette",
+                                                 "notify::ctk-color-palette",
                                                  G_CALLBACK (palette_change_notify_instance),
                                                  widget);
   update_palette (colorsel);
@@ -831,7 +831,7 @@ color_sample_drag_end (GtkWidget      *widget,
                        GdkDragContext *context,
                        gpointer        data)
 {
-  g_object_set_data (G_OBJECT (widget), I_("gtk-color-selection-drag-window"), NULL);
+  g_object_set_data (G_OBJECT (widget), I_("ctk-color-selection-drag-window"), NULL);
 }
 
 static void
@@ -1266,7 +1266,7 @@ palette_drag_end (GtkWidget      *widget,
                   GdkDragContext *context,
                   gpointer        data)
 {
-  g_object_set_data (G_OBJECT (widget), I_("gtk-color-selection-drag-window"), NULL);
+  g_object_set_data (G_OBJECT (widget), I_("ctk-color-selection-drag-window"), NULL);
 }
 
 static GdkColor *
@@ -1278,7 +1278,7 @@ get_current_colors (GtkColorSelection *colorsel)
   gchar *palette;
 
   settings = ctk_widget_get_settings (CTK_WIDGET (colorsel));
-  g_object_get (settings, "gtk-color-palette", &palette, NULL);
+  g_object_get (settings, "ctk-color-palette", &palette, NULL);
 
   if (!ctk_color_selection_palette_from_string (palette, &colors, &n_colors))
     {
@@ -1433,7 +1433,7 @@ save_color_selected (GtkWidget *menuitem,
   drawing_area = CTK_WIDGET (data);
 
   colorsel = CTK_COLOR_SELECTION (g_object_get_data (G_OBJECT (drawing_area),
-                                                     "gtk-color-sel"));
+                                                     "ctk-color-sel"));
 
   priv = colorsel->private_data;
 
@@ -1449,7 +1449,7 @@ do_popup (GtkColorSelection *colorsel,
   GtkWidget *mi;
 
   g_object_set_data (G_OBJECT (drawing_area),
-                     I_("gtk-color-sel"),
+                     I_("ctk-color-sel"),
                      colorsel);
 
   menu = ctk_menu_new ();
@@ -1482,7 +1482,7 @@ palette_enter (GtkWidget        *drawing_area,
                gpointer        data)
 {
   g_object_set_data (G_OBJECT (drawing_area),
-                     I_("gtk-colorsel-have-pointer"),
+                     I_("ctk-colorsel-have-pointer"),
                      GUINT_TO_POINTER (TRUE));
 
   return FALSE;
@@ -1494,7 +1494,7 @@ palette_leave (GtkWidget        *drawing_area,
                gpointer        data)
 {
   g_object_set_data (G_OBJECT (drawing_area),
-                     I_("gtk-colorsel-have-pointer"),
+                     I_("ctk-colorsel-have-pointer"),
                      NULL);
 
   return FALSE;
@@ -1529,7 +1529,7 @@ palette_release (GtkWidget      *drawing_area,
 
   if (event->button == GDK_BUTTON_PRIMARY &&
       g_object_get_data (G_OBJECT (drawing_area),
-                         "gtk-colorsel-have-pointer") != NULL)
+                         "ctk-colorsel-have-pointer") != NULL)
     {
       if (GPOINTER_TO_INT (g_object_get_data (G_OBJECT (drawing_area), "color_set")) != 0)
         {
@@ -2329,7 +2329,7 @@ default_change_palette_func (GdkScreen      *screen,
   str = ctk_color_selection_palette_to_string (colors, n_colors);
 
   ctk_settings_set_string_property (ctk_settings_get_for_screen (screen),
-                                    "gtk-color-palette",
+                                    "ctk-color-palette",
                                     str,
                                     "ctk_color_selection_palette_to_string");
 
@@ -3039,7 +3039,7 @@ ctk_color_selection_palette_to_string (const GdkColor *colors,
  * tries to modify the palette in a color selection.
  *
  * This function should save the new palette contents, and update
- * the #GtkSettings:gtk-color-palette GtkSettings property so all
+ * the #GtkSettings:ctk-color-palette GtkSettings property so all
  * GtkColorSelection widgets will be modified.
  *
  * Returns: the previous change palette hook (that was replaced)

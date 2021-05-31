@@ -2,10 +2,10 @@
 <VisualStudioPropertySheet
 	ProjectType="Visual C++"
 	Version="8.00"
-	Name="gtk3builddefinesprops"
+	Name="ctk3builddefinesprops"
 	OutputDirectory="$(SolutionDir)$(ConfigurationName)\$(PlatformName)\bin"
 	IntermediateDirectory="$(SolutionDir)$(ConfigurationName)\$(PlatformName)\obj\$(ProjectName)\"
-	InheritedPropertySheets=".\gtk3-version-paths.vsprops"
+	InheritedPropertySheets=".\ctk3-version-paths.vsprops"
 	>
 	<Tool
 		Name="VCCLCompilerTool"
@@ -41,7 +41,7 @@
 	/>
 	<UserMacro
 		Name="GtkDefines"
-		Value="CTK_COMPILATION;G_LOG_DOMAIN=\&quot;Gtk\&quot;;CTK_HOST=\&quot;i686-pc-vs$(VSVer)\&quot;;CTK_PRINT_BACKENDS=\&quot;file\&quot;;CTK_PRINT_BACKEND_ENABLE_UNSUPPORTED;$(GtkIncludedImmodulesDefines);CTK_LIBDIR=\&quot;$(GtkDummyPrefix)/lib\&quot;;CTK_DATADIR=\&quot;$(GtkDummyPrefix)/share\&quot;CTK_DATA_PREFIX=\&quot;$(GtkDummyPrefix)\&quot;;CTK_SYSCONFDIR=\&quot;$(GtkDummyPrefix)/etc\&quot;;MULTIPRESS_CONFDIR=\&quot;$(GtkDummyPrefix)/etc/gtk-$(ApiVersion)\&quot;;MULTIPRESS_LOCALEDIR=\&quot;$(GtkDummyPrefix)/share/locale\&quot;;CTK_VERSION=\&quot;$(GtkVersion)/etc\&quot;;CTK_BINARY_VERSION=\&quot;$(GtkBinaryVersion)/etc\&quot;;GDK_DISABLE_DEPRECATED;ISOLATION_AWARE_ENABLED"
+		Value="CTK_COMPILATION;G_LOG_DOMAIN=\&quot;Gtk\&quot;;CTK_HOST=\&quot;i686-pc-vs$(VSVer)\&quot;;CTK_PRINT_BACKENDS=\&quot;file\&quot;;CTK_PRINT_BACKEND_ENABLE_UNSUPPORTED;$(GtkIncludedImmodulesDefines);CTK_LIBDIR=\&quot;$(GtkDummyPrefix)/lib\&quot;;CTK_DATADIR=\&quot;$(GtkDummyPrefix)/share\&quot;CTK_DATA_PREFIX=\&quot;$(GtkDummyPrefix)\&quot;;CTK_SYSCONFDIR=\&quot;$(GtkDummyPrefix)/etc\&quot;;MULTIPRESS_CONFDIR=\&quot;$(GtkDummyPrefix)/etc/ctk-$(ApiVersion)\&quot;;MULTIPRESS_LOCALEDIR=\&quot;$(GtkDummyPrefix)/share/locale\&quot;;CTK_VERSION=\&quot;$(GtkVersion)/etc\&quot;;CTK_BINARY_VERSION=\&quot;$(GtkBinaryVersion)/etc\&quot;;GDK_DISABLE_DEPRECATED;ISOLATION_AWARE_ENABLED"
 	/>
 	<UserMacro
 		Name="GtkGdkCommonLibs"
@@ -61,7 +61,7 @@
 	/>
 	<UserMacro
 		Name="GtkIntrospectNMakeCmd"
-		Value="cd ..&#x0D;&#x0A;set VCInstallDir=$(VCInstallDir)&#x0D;&#x0A;nmake -f gtk-introspection-msvc.mak CFG=$(ConfigurationName) PREFIX=$(GlibEtcInstallRoot)"
+		Value="cd ..&#x0D;&#x0A;set VCInstallDir=$(VCInstallDir)&#x0D;&#x0A;nmake -f ctk-introspection-msvc.mak CFG=$(ConfigurationName) PREFIX=$(GlibEtcInstallRoot)"
 	/>
 	<UserMacro
 		Name="GtkIntrospectBuiltFiles"

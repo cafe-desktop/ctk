@@ -19,15 +19,15 @@
 
 #include "config.h"
 
-#include "gtkcssimageiconthemeprivate.h"
+#include "ctkcssimageiconthemeprivate.h"
 
 #include <math.h>
 
-#include "gtkcssiconthemevalueprivate.h"
-#include "gtkcssrgbavalueprivate.h"
-#include "gtksettingsprivate.h"
-#include "gtkstyleproviderprivate.h"
-#include "gtkiconthemeprivate.h"
+#include "ctkcssiconthemevalueprivate.h"
+#include "ctkcssrgbavalueprivate.h"
+#include "ctksettingsprivate.h"
+#include "ctkstyleproviderprivate.h"
+#include "ctkiconthemeprivate.h"
 
 G_DEFINE_TYPE (GtkCssImageIconTheme, _ctk_css_image_icon_theme, CTK_TYPE_CSS_IMAGE)
 
@@ -98,9 +98,9 @@ ctk_css_image_icon_theme_parse (GtkCssImage  *image,
 {
   GtkCssImageIconTheme *icon_theme = CTK_CSS_IMAGE_ICON_THEME (image);
 
-  if (!_ctk_css_parser_try (parser, "-gtk-icontheme(", TRUE))
+  if (!_ctk_css_parser_try (parser, "-ctk-icontheme(", TRUE))
     {
-      _ctk_css_parser_error (parser, "Expected '-gtk-icontheme('");
+      _ctk_css_parser_error (parser, "Expected '-ctk-icontheme('");
       return FALSE;
     }
 
@@ -110,7 +110,7 @@ ctk_css_image_icon_theme_parse (GtkCssImage  *image,
 
   if (!_ctk_css_parser_try (parser, ")", TRUE))
     {
-      _ctk_css_parser_error (parser, "Missing closing bracket at end of '-gtk-icontheme'");
+      _ctk_css_parser_error (parser, "Missing closing bracket at end of '-ctk-icontheme'");
       return FALSE;
     }
 
@@ -123,7 +123,7 @@ ctk_css_image_icon_theme_print (GtkCssImage *image,
 {
   GtkCssImageIconTheme *icon_theme = CTK_CSS_IMAGE_ICON_THEME (image);
 
-  g_string_append (string, "-gtk-icontheme(");
+  g_string_append (string, "-ctk-icontheme(");
   _ctk_css_print_string (string, icon_theme->name);
   g_string_append (string, ")");
 }

@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkprintoperationpreview.c: Abstract print preview interface
+ * ctkprintoperationpreview.c: Abstract print preview interface
  * Copyright (C) 2006, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -18,9 +18,9 @@
 
 #include "config.h"
 
-#include "gtkprintoperationpreview.h"
-#include "gtkmarshalers.h"
-#include "gtkintl.h"
+#include "ctkprintoperationpreview.h"
+#include "ctkmarshalers.h"
+#include "ctkintl.h"
 
 
 static void ctk_print_operation_preview_base_init (gpointer g_iface);

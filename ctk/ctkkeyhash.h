@@ -1,4 +1,4 @@
-/* gtkkeyhash.h: Keymap aware matching of key bindings
+/* ctkkeyhash.h: Keymap aware matching of key bindings
  *
  * GTK - The GIMP Toolkit
  * Copyright (C) 2002, Red Hat Inc.

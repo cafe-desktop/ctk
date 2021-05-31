@@ -20,7 +20,7 @@
 #ifndef __CTK_MENU_TRACKER_ITEM_H__
 #define __CTK_MENU_TRACKER_ITEM_H__
 
-#include "gtkactionobservable.h"
+#include "ctkactionobservable.h"
 
 #define CTK_TYPE_MENU_TRACKER_ITEM                          (ctk_menu_tracker_item_get_type ())
 #define CTK_MENU_TRACKER_ITEM(inst)                         (G_TYPE_CHECK_INSTANCE_CAST ((inst), \

@@ -17,14 +17,14 @@
 
 #include "config.h"
 
-#include "gtkcssinitialvalueprivate.h"
+#include "ctkcssinitialvalueprivate.h"
 
-#include "gtkcssarrayvalueprivate.h"
-#include "gtkcssnumbervalueprivate.h"
-#include "gtkcssstringvalueprivate.h"
-#include "gtkcssstylepropertyprivate.h"
-#include "gtksettingsprivate.h"
-#include "gtkstyleproviderprivate.h"
+#include "ctkcssarrayvalueprivate.h"
+#include "ctkcssnumbervalueprivate.h"
+#include "ctkcssstringvalueprivate.h"
+#include "ctkcssstylepropertyprivate.h"
+#include "ctksettingsprivate.h"
+#include "ctkstyleproviderprivate.h"
 
 struct _GtkCssValue {
   CTK_CSS_VALUE_BASE

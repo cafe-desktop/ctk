@@ -1,4 +1,4 @@
-/* gtkradiotoolbutton.c
+/* ctkradiotoolbutton.c
  *
  * Copyright (C) 2002 Anders Carlsson <andersca@gnome.og>
  * Copyright (C) 2002 James Henstridge <james@daa.com.au>
@@ -19,14 +19,14 @@
  */
 
 #include "config.h"
-#include "gtkradiotoolbutton.h"
-#include "gtkradiobutton.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
+#include "ctkradiotoolbutton.h"
+#include "ctkradiobutton.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
 
 
 /**
- * SECTION:gtkradiotoolbutton
+ * SECTION:ctkradiotoolbutton
  * @Short_description: A toolbar item that contains a radio button
  * @Title: GtkRadioToolButton
  * @See_also: #GtkToolbar, #GtkToolButton

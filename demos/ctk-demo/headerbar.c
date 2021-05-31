@@ -9,7 +9,7 @@
  * It is commonly used with ctk_window_set_titlebar()
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 GtkWidget *
 do_headerbar (GtkWidget *do_widget)

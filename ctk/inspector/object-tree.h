@@ -23,8 +23,8 @@
 #ifndef _CTK_INSPECTOR_OBJECT_TREE_H_
 #define _CTK_INSPECTOR_OBJECT_TREE_H_
 
-#include <gtk/gtkbox.h>
-#include <gtk/gtktreemodel.h>
+#include <ctk/ctkbox.h>
+#include <ctk/ctktreemodel.h>
 
 #define CTK_TYPE_INSPECTOR_OBJECT_TREE            (ctk_inspector_object_tree_get_type())
 #define CTK_INSPECTOR_OBJECT_TREE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_OBJECT_TREE, GtkInspectorObjectTree))

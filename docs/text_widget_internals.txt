@@ -65,8 +65,8 @@ the leaf nodes of the BTree.
 A line is a list of GtkTextLineSegment. Line segments contain the
 actual data found in the text buffer.
  
-Here are the types of line segment (see gtktextsegment.h,
-gtktextchild.h, etc.):
+Here are the types of line segment (see ctktextsegment.h,
+ctktextchild.h, etc.):
 
   Character:         contains a block of UTF-8 text. 
 
@@ -296,7 +296,7 @@ Once you get GtkTextLayout and GtkTextBTree the actual GtkTextView
 widget is not that complicated.
 
 The main complexity is the interaction between scrolling and line
-validation, which is documented with a long comment in gtktextview.c.
+validation, which is documented with a long comment in ctktextview.c.
 
 The other thing to know about is just that the text view has "border
 windows" on the sides, used to draw line numbers and such; these

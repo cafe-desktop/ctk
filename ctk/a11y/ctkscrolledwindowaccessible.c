@@ -17,8 +17,8 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
-#include "gtkscrolledwindowaccessible.h"
+#include <ctk/ctk.h>
+#include "ctkscrolledwindowaccessible.h"
 
 
 G_DEFINE_TYPE (GtkScrolledWindowAccessible, ctk_scrolled_window_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)

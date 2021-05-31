@@ -1,5 +1,5 @@
 /*
- * gtknumerableicon.h: an emblemed icon with number emblems
+ * ctknumerableicon.h: an emblemed icon with number emblems
  *
  * Copyright (C) 2010 Red Hat, Inc.
  *
@@ -23,11 +23,11 @@
 #define __CTK_NUMERABLE_ICON_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
 #include <gio/gio.h>
-#include <gtk/gtkstylecontext.h>
+#include <ctk/ctkstylecontext.h>
 
 G_BEGIN_DECLS
 

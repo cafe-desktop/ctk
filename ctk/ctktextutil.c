@@ -19,20 +19,20 @@
  * Modified by the GTK+ Team and others 1997-2001.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
 
-#include "gtktextview.h"
-#include "gtktextutil.h"
+#include "ctktextview.h"
+#include "ctktextutil.h"
 
 #define CTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
 
-#include "gtktextdisplay.h"
-#include "gtktextbuffer.h"
-#include "gtkmenuitem.h"
-#include "gtkintl.h"
+#include "ctktextdisplay.h"
+#include "ctktextbuffer.h"
+#include "ctkmenuitem.h"
+#include "ctkintl.h"
 
 #define DRAG_ICON_MAX_WIDTH 250
 #define DRAG_ICON_MAX_HEIGHT 250
@@ -94,7 +94,7 @@ activate_cb (GtkWidget *menu_item,
   GtkTextUtilCallbackInfo *info = data;
   char buf[7];
   
-  entry = g_object_get_data (G_OBJECT (menu_item), "gtk-unicode-menu-entry");
+  entry = g_object_get_data (G_OBJECT (menu_item), "ctk-unicode-menu-entry");
 
   buf[g_unichar_to_utf8 (entry->ch, buf)] = '\0';
   
@@ -131,7 +131,7 @@ _ctk_text_util_append_special_char_menuitems (GtkMenuShell              *menushe
       info = callback_info_new (func, data);
 
       menuitem = ctk_menu_item_new_with_mnemonic (_(bidi_menu_entries[i].label));
-      g_object_set_data (G_OBJECT (menuitem), I_("gtk-unicode-menu-entry"),
+      g_object_set_data (G_OBJECT (menuitem), I_("ctk-unicode-menu-entry"),
                          (gpointer)&bidi_menu_entries[i]);
 
       g_signal_connect_data (menuitem, "activate",

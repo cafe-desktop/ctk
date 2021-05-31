@@ -19,7 +19,7 @@
 
 #include "config.h"
 
-#include "gtkcssimagesurfaceprivate.h"
+#include "ctkcssimagesurfaceprivate.h"
 #include <math.h>
 
 G_DEFINE_TYPE (GtkCssImageSurface, _ctk_css_image_surface, CTK_TYPE_CSS_IMAGE)

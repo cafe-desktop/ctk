@@ -17,20 +17,20 @@
 
 #include "config.h"
 
-#include "gtkdialog.h"
-#include "gtkdialogprivate.h"
-#include "gtkbutton.h"
-#include "gtkbox.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
-#include "gtksettings.h"
+#include "ctkdialog.h"
+#include "ctkdialogprivate.h"
+#include "ctkbutton.h"
+#include "ctkbox.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
+#include "ctksettings.h"
 
-#include "gtkcolorchooserprivate.h"
-#include "gtkcolorchooserdialog.h"
-#include "gtkcolorchooserwidget.h"
+#include "ctkcolorchooserprivate.h"
+#include "ctkcolorchooserdialog.h"
+#include "ctkcolorchooserwidget.h"
 
 /**
- * SECTION:gtkcolorchooserdialog
+ * SECTION:ctkcolorchooserdialog
  * @Short_description: A dialog for choosing colors
  * @Title: GtkColorChooserDialog
  * @See_also: #GtkColorChooser, #GtkDialog
@@ -216,7 +216,7 @@ ctk_color_chooser_dialog_class_init (GtkColorChooserDialogClass *class)
   /* Bind class to template
    */
   ctk_widget_class_set_template_from_resource (widget_class,
-					       "/org/gtk/libgtk/ui/gtkcolorchooserdialog.ui");
+					       "/org/ctk/libctk/ui/ctkcolorchooserdialog.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkColorChooserDialog, chooser);
   ctk_widget_class_bind_template_callback (widget_class, propagate_notify);
   ctk_widget_class_bind_template_callback (widget_class, color_activated_cb);

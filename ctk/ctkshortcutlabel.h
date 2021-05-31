@@ -1,4 +1,4 @@
-/* gtkshortcutlabelprivate.h
+/* ctkshortcutlabelprivate.h
  *
  * Copyright (C) 2015 Christian Hergert <christian@hergert.me>
  *
@@ -19,7 +19,7 @@
 #ifndef __CTK_SHORTCUT_LABEL_H__
 #define __CTK_SHORTCUT_LABEL_H__
 
-#include <gtk/gtkbox.h>
+#include <ctk/ctkbox.h>
 
 G_BEGIN_DECLS
 

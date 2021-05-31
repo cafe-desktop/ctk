@@ -20,7 +20,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -336,7 +336,7 @@ gdk_window_class_init (GdkWindowClass *klass)
 
   klass->create_surface = _gdk_offscreen_window_create_surface;
 
-  quark_pointer_window = g_quark_from_static_string ("gtk-pointer-window");
+  quark_pointer_window = g_quark_from_static_string ("ctk-pointer-window");
 
 
   /* Properties */
@@ -3854,7 +3854,7 @@ _gdk_window_process_updates_recurse_helper (GdkWindow *window,
 
   /* Paint the window before the children, clipped to the window region */
 
-  /* While gtk+ no longer handles exposes on anything but native
+  /* While ctk+ no longer handles exposes on anything but native
      window we still have to send them to all windows that have the
      event mask set for backwards compat. We also need to send
      it to all native windows, even if they don't specify the
@@ -4830,7 +4830,7 @@ gdk_window_thaw_toplevel_updates (GdkWindow *window)
  * debugging causes GTK to flicker slowly and noticeably, so you can
  * see exactly what’s being redrawn when, in what order.
  *
- * The --gtk-debug=updates command line option passed to GTK+ programs
+ * The --ctk-debug=updates command line option passed to GTK+ programs
  * enables this debug option at application startup time. That's
  * usually more useful than calling gdk_window_set_debug_updates()
  * yourself, though you might want to use this function to enable
@@ -9050,7 +9050,7 @@ _gdk_synthesize_crossing_events_for_geometry_change (GdkWindow *changed_window)
                                    do_synthesize_crossing_event,
                                    toplevel, NULL);
       g_source_set_name_by_id (toplevel->synthesized_crossing_event_id,
-                               "[gtk+] do_synthesize_crossing_event");
+                               "[ctk+] do_synthesize_crossing_event");
     }
 }
 

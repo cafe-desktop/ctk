@@ -3,7 +3,7 @@
 window {
   background-color: @doesntexist;
   box-shadow: @nonexistant 5px 5px;
-  border-image: -gtk-gradient(linear,
+  border-image: -ctk-gradient(linear,
                               left top, left bottom,
                               from(@notaavailable),
                               to(@whatever)) 2;
